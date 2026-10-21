@@ -159,3 +159,14 @@ registration = "compat/host-environments/napari-threedee-registration.json"
 wheel_sha256 = "de115619e84a7967b0386651163c29ec12228d59e58000736067f066237ce91e"
 qualification = "installed_packaging_and_plugin_registration_cpu_only"
 rendering = false
+
+[phylib.linux_environment]
+platform = "linux-x86_64"
+python = "3.12.8"
+binding = "none"
+requirements = "compat/host-environments/phylib-linux-cpython312-cpu.txt"
+requirements_sha256 = "7c58e59c2847b790faf8420436960c54fba0123a5fa1889e52020ac7581de406"
+import_inventory = "compat/host-environments/phylib-linux.import-inventory.json"
+import_inventory_sha256 = "2ffdc4197ee272f549a9bcf1d4690e096d7fa7f7a3544ecf7bf751d29a951fe4"
+qualification = "import_inventory_only"
+host_installation = "unchanged verified source package copy; no invented distribution metadata"

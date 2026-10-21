@@ -1,0 +1,186 @@
+{
+  "distributions": [
+    {
+      "name": "PyYAML",
+      "record_sha256": "7d0856221a182f5b25fde9bb976af79b4883090f54680d86a42b35fc8d6735a2",
+      "version": "6.0.3"
+    },
+    {
+      "name": "certifi",
+      "record_sha256": "cff9d243744c96445494c29abee3d592d0a6955d5504f4fbe034dce7aaf38490",
+      "version": "2026.7.22"
+    },
+    {
+      "name": "charset-normalizer",
+      "record_sha256": "245f411c21aed3189d82f7c82fe2ba92696cfd77bec2b4ec3a5296b2d2abda0a",
+      "version": "3.5.2"
+    },
+    {
+      "name": "click",
+      "record_sha256": "924078ec3a47b97192425dbc0c3693085af7a7b863afcf6b4e110cf0bd97dea4",
+      "version": "8.5.0"
+    },
+    {
+      "name": "cloudpickle",
+      "record_sha256": "a24820e3d3ea3f0fb210f58b84abb5450a94cc649e573a9a0a69354afc6fa1de",
+      "version": "3.1.2"
+    },
+    {
+      "name": "dask",
+      "record_sha256": "3905480161823c62a3d9271747c88816e1f4b0b68d36edb0c2a3e47093dd881b",
+      "version": "2026.8.0"
+    },
+    {
+      "name": "fsspec",
+      "record_sha256": "f7b3713c1750221155b0601147f3b68a24f11e342dca818b5fd551f5ef88a74b",
+      "version": "2026.9.0"
+    },
+    {
+      "name": "idna",
+      "record_sha256": "b215c4b79e6b7e70c3509d8b2436bc4595b18ce7ac0e83cb7df71163640744b0",
+      "version": "3.20"
+    },
+    {
+      "name": "joblib",
+      "record_sha256": "c1088eee5a30f2c8e5b1611ee43a7ccd8e8a9fcc53ebba0606692431d896a873",
+      "version": "1.6.0"
+    },
+    {
+      "name": "locket",
+      "record_sha256": "b74fc4678ecab0096f1917e70ca3434ff437a12261e4ff73ccbb1accfbaf9637",
+      "version": "1.0.0"
+    },
+    {
+      "name": "mtscomp",
+      "record_sha256": "f087b3b5d373cae2df82eb121d2ffb99ae3b82bd812634e999a58c740ea0588c",
+      "version": "1.0.2"
+    },
+    {
+      "name": "numpy",
+      "record_sha256": "25b46594ff3053027decdb5651388d2a4fec504e5cf286e6c22c7319ec579357",
+      "version": "2.5.3"
+    },
+    {
+      "name": "packaging",
+      "record_sha256": "1b8655965b0d83e9a067fd7f84b977bd1e117e0fb9f2874b2572781bdc9e2147",
+      "version": "26.3"
+    },
+    {
+      "name": "partd",
+      "record_sha256": "5c853745ab303595a07edf266ddb64a2b8a6d701a23e5ec89930823efbb03438",
+      "version": "1.4.2"
+    },
+    {
+      "name": "requests",
+      "record_sha256": "fc8c5216d0e865d815bd04cc240b5adc5d56f6c3dbe9aef3b4ea3b83d735bdfe",
+      "version": "2.34.2"
+    },
+    {
+      "name": "responses",
+      "record_sha256": "d76ed61ebe1b7bce311f2cead352430c6ee551b3a90ac03354ab5ae3c70d2881",
+      "version": "0.26.3"
+    },
+    {
+      "name": "scipy",
+      "record_sha256": "cda958e21648ffe0b8528473532ef59f89db82bf1fa7d4a9a47161785046e979",
+      "version": "1.18.1"
+    },
+    {
+      "name": "toolz",
+      "record_sha256": "dfc571823a934e91b876f32cc474e345cb3d528c7842fe06a2d38cd0c73d9706",
+      "version": "1.2.0"
+    },
+    {
+      "name": "tqdm",
+      "record_sha256": "0cb216f39a16ed65acda957dc388514c66024ed20da97361e5e881020d2ac027",
+      "version": "4.70.1"
+    },
+    {
+      "name": "urllib3",
+      "record_sha256": "1753d325c8936a612ecdc947e686ade56b21f591fbb7518330cb0f2f7619c330",
+      "version": "2.8.0"
+    }
+  ],
+  "errors": [],
+  "executable": "/tmp/vispy-phylib-linux-cuwy6ejk/venv/bin/python",
+  "host": "phylib",
+  "installation": "unchanged verified upstream source package copy; no generated distribution metadata",
+  "inventory_tool_sha256": "7dee7e661d7b9d66dffd34fecfdf7ddf044b94f38b5adbebfd3eeed916e87058",
+  "loaded_qt_modules": [],
+  "loaded_vispy_modules": [],
+  "modules": [
+    {
+      "name": "phylib",
+      "origin": "/tmp/vispy-phylib-linux-cuwy6ejk/venv/lib/python3.12/site-packages/phylib/__init__.py",
+      "sha256": "79b41b62e94709fbd9634e534645f7af9dea0c8f13c0017171504cebc4ad3eb7",
+      "version": "2.7.1"
+    },
+    {
+      "name": "phylib.utils",
+      "origin": "/tmp/vispy-phylib-linux-cuwy6ejk/venv/lib/python3.12/site-packages/phylib/utils/__init__.py",
+      "sha256": "89d1a7bd172744f8f894d3990e5cd0217fde9a06f229ac651487a3793e65ad39"
+    },
+    {
+      "name": "phylib.utils._misc",
+      "origin": "/tmp/vispy-phylib-linux-cuwy6ejk/venv/lib/python3.12/site-packages/phylib/utils/_misc.py",
+      "sha256": "0d8ae879506259fb51dc265ce8201bd35925c3db525ddc4abe636193e97e77c6"
+    },
+    {
+      "name": "phylib.utils.geometry",
+      "origin": "/tmp/vispy-phylib-linux-cuwy6ejk/venv/lib/python3.12/site-packages/phylib/utils/geometry.py",
+      "sha256": "4b03e4334740fbcb12bc0e576b24da1bbb25ec189cc9ea82c94ef7287316e26d"
+    },
+    {
+      "name": "phylib.io",
+      "origin": "/tmp/vispy-phylib-linux-cuwy6ejk/venv/lib/python3.12/site-packages/phylib/io/__init__.py",
+      "sha256": "14f994d62c46ce73dd413432d71af5a8de594e6873516932beb389b5df648004"
+    },
+    {
+      "name": "phylib.io.model",
+      "origin": "/tmp/vispy-phylib-linux-cuwy6ejk/venv/lib/python3.12/site-packages/phylib/io/model.py",
+      "sha256": "45ea8e4144d123d687e92e393863e1f8255058c2f43ac40797a49a3d6d46ba3a"
+    },
+    {
+      "name": "phylib.io.traces",
+      "origin": "/tmp/vispy-phylib-linux-cuwy6ejk/venv/lib/python3.12/site-packages/phylib/io/traces.py",
+      "sha256": "f689fdc906ffb10055aa30a20eb536a7495e115005435e1a376ac6f9dcfbc8cb"
+    },
+    {
+      "name": "phylib.stats",
+      "origin": "/tmp/vispy-phylib-linux-cuwy6ejk/venv/lib/python3.12/site-packages/phylib/stats/__init__.py",
+      "sha256": "48c6cc1585df83cb35019b3007d6fe8cbc9ac8000b51b0d7cc31ab283cce1a1e"
+    },
+    {
+      "name": "phylib.stats.ccg",
+      "origin": "/tmp/vispy-phylib-linux-cuwy6ejk/venv/lib/python3.12/site-packages/phylib/stats/ccg.py",
+      "sha256": "1c1f0d15117e837a9b243a455931be18d0b335982094001de7da9ef358338a32"
+    },
+    {
+      "name": "phylib.stats.clusters",
+      "origin": "/tmp/vispy-phylib-linux-cuwy6ejk/venv/lib/python3.12/site-packages/phylib/stats/clusters.py",
+      "sha256": "9350004d25afc33b67ef653eae5fc66f654e205002f84545393b9fb74f8c23ab"
+    },
+    {
+      "name": "phylib.electrode",
+      "origin": "/tmp/vispy-phylib-linux-cuwy6ejk/venv/lib/python3.12/site-packages/phylib/electrode/__init__.py",
+      "sha256": "1e32b4119abf7f7e663b9c7078677f5d8939661422e8a1ee790f38a664affcba"
+    },
+    {
+      "name": "phylib.electrode.mea",
+      "origin": "/tmp/vispy-phylib-linux-cuwy6ejk/venv/lib/python3.12/site-packages/phylib/electrode/mea.py",
+      "sha256": "34c169e293d112a36a6e90e22a4a51934fa69fca090a285bc2f4440ac305293d"
+    }
+  ],
+  "package_source_sha256": "3db4814e19aa3a6f9e477a7ae7a5472d1d86237b566088ecf521cbfb2e3c2a98",
+  "package_tree_sha256": "3db4814e19aa3a6f9e477a7ae7a5472d1d86237b566088ecf521cbfb2e3c2a98",
+  "platform": "Linux-6.18.54.1-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "python": "3.12.8 (main, Jan 14 2025, 22:49:14) [Clang 19.1.6 ]",
+  "qualification": "import_inventory_only",
+  "release_qualified": false,
+  "rendering": false,
+  "rendering_qualified": false,
+  "schema": 1,
+  "scope": "import-only",
+  "source_tree_sha256": "4cd998c2e2d6e01240c52f653553224ddd16e4c11d2e2fc95a5b76e857de35a1",
+  "status": "PASS_PHYLIB_LINUX_IMPORT_ONLY"
+}

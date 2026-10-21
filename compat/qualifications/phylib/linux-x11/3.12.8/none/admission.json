@@ -1,0 +1,21 @@
+{
+  "cell": {
+    "binding": "none",
+    "platform": "linux-x11",
+    "python": "3.12.8"
+  },
+  "host": "phylib",
+  "import_inventory": "compat/host-environments/phylib-linux.import-inventory.json",
+  "import_inventory_sha256": "2ffdc4197ee272f549a9bcf1d4690e096d7fa7f7a3544ecf7bf751d29a951fe4",
+  "note": "WSL Linux x86_64 CPU imports only; no X11, Vulkan, Metal, phy GUI or rendering admission",
+  "package_tree_sha256": "3db4814e19aa3a6f9e477a7ae7a5472d1d86237b566088ecf521cbfb2e3c2a98",
+  "release_qualified": false,
+  "rendering": false,
+  "requirements_file": "compat/host-environments/phylib-linux-cpython312-cpu.txt",
+  "requirements_sha256": "7c58e59c2847b790faf8420436960c54fba0123a5fa1889e52020ac7581de406",
+  "schema": 1,
+  "scope": "import-only",
+  "source_tree_sha256": "4cd998c2e2d6e01240c52f653553224ddd16e4c11d2e2fc95a5b76e857de35a1",
+  "upstream_vispy_version": "0.17.0",
+  "version": "2.7.1"
+}

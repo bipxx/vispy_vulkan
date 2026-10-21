@@ -1,0 +1,2841 @@
+{
+  "declared_dependencies": [
+    "numpy",
+    "scipy",
+    "dask",
+    "requests",
+    "responses",
+    "tqdm",
+    "toolz",
+    "joblib",
+    "mtscomp"
+  ],
+  "dynamic_imports": [
+    {
+      "call": "import_module(parts[0])",
+      "file": "phylib/utils/_misc.py",
+      "line": 407,
+      "scope": "_load_from_fullname"
+    }
+  ],
+  "host": "phylib",
+  "imports": [
+    {
+      "file": "benchmarks/benchmark_flatten_per_cluster.py",
+      "level": 0,
+      "line": 12,
+      "module": "argparse",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "benchmarks/benchmark_flatten_per_cluster.py",
+      "level": 0,
+      "line": 13,
+      "module": "gc",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "benchmarks/benchmark_flatten_per_cluster.py",
+      "level": 0,
+      "line": 14,
+      "module": "pathlib",
+      "names": [
+        "Path"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "benchmarks/benchmark_flatten_per_cluster.py",
+      "level": 0,
+      "line": 15,
+      "module": "sys",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "benchmarks/benchmark_flatten_per_cluster.py",
+      "level": 0,
+      "line": 16,
+      "module": "time",
+      "names": [
+        "perf_counter"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "benchmarks/benchmark_flatten_per_cluster.py",
+      "level": 0,
+      "line": 18,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "benchmarks/benchmark_flatten_per_cluster.py",
+      "level": 0,
+      "line": 23,
+      "module": "phylib.io.array",
+      "names": [
+        "_flatten_per_cluster"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "benchmarks/benchmark_get_spike_waveforms.py",
+      "level": 0,
+      "line": 11,
+      "module": "argparse",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "benchmarks/benchmark_get_spike_waveforms.py",
+      "level": 0,
+      "line": 12,
+      "module": "pathlib",
+      "names": [
+        "Path"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "benchmarks/benchmark_get_spike_waveforms.py",
+      "level": 0,
+      "line": 13,
+      "module": "sys",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "benchmarks/benchmark_get_spike_waveforms.py",
+      "level": 0,
+      "line": 14,
+      "module": "time",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "benchmarks/benchmark_get_spike_waveforms.py",
+      "level": 0,
+      "line": 16,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "benchmarks/benchmark_get_spike_waveforms.py",
+      "level": 0,
+      "line": 21,
+      "module": "phylib.io.array",
+      "names": [
+        "_index_of"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "benchmarks/benchmark_get_spike_waveforms.py",
+      "level": 0,
+      "line": 22,
+      "module": "phylib.io.traces",
+      "names": [
+        "_get_spike_ids_rel",
+        "_get_spike_waveforms_fast",
+        "_get_spike_waveforms_legacy",
+        "get_spike_waveforms"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "benchmarks/benchmark_get_spike_waveforms.py",
+      "level": 0,
+      "line": 25,
+      "module": "phylib.utils",
+      "names": [
+        "Bunch"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "benchmarks/benchmark_sample_spikes_evenly.py",
+      "level": 0,
+      "line": 11,
+      "module": "argparse",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "benchmarks/benchmark_sample_spikes_evenly.py",
+      "level": 0,
+      "line": 12,
+      "module": "pathlib",
+      "names": [
+        "Path"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "benchmarks/benchmark_sample_spikes_evenly.py",
+      "level": 0,
+      "line": 13,
+      "module": "sys",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "benchmarks/benchmark_sample_spikes_evenly.py",
+      "level": 0,
+      "line": 14,
+      "module": "time",
+      "names": [
+        "perf_counter"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "benchmarks/benchmark_sample_spikes_evenly.py",
+      "level": 0,
+      "line": 16,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "benchmarks/benchmark_sample_spikes_evenly.py",
+      "level": 0,
+      "line": 20,
+      "module": "phylib.io.array",
+      "names": [
+        "_sample_spikes_evenly"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/__init__.py",
+      "level": 0,
+      "line": 11,
+      "module": "atexit",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "phylib/__init__.py",
+      "level": 0,
+      "line": 12,
+      "module": "logging",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "phylib/__init__.py",
+      "level": 0,
+      "line": 13,
+      "module": "os.path",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "phylib/__init__.py",
+      "level": 1,
+      "line": 15,
+      "module": "utils._misc",
+      "names": [
+        "_git_version"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/__init__.py",
+      "level": 1,
+      "line": 16,
+      "module": "utils.event",
+      "names": [
+        "connect",
+        "unconnect",
+        "emit"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/__init__.py",
+      "level": 0,
+      "line": 82,
+      "module": "pytest",
+      "names": [],
+      "scope": "test"
+    },
+    {
+      "file": "phylib/conftest.py",
+      "level": 0,
+      "line": 9,
+      "module": "logging",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "phylib/conftest.py",
+      "level": 0,
+      "line": 10,
+      "module": "os",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "phylib/conftest.py",
+      "level": 0,
+      "line": 11,
+      "module": "pathlib",
+      "names": [
+        "Path"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/conftest.py",
+      "level": 0,
+      "line": 12,
+      "module": "tempfile",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "phylib/conftest.py",
+      "level": 0,
+      "line": 13,
+      "module": "shutil",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "phylib/conftest.py",
+      "level": 0,
+      "line": 14,
+      "module": "warnings",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "phylib/conftest.py",
+      "level": 0,
+      "line": 16,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "phylib/conftest.py",
+      "level": 0,
+      "line": 17,
+      "module": "pytest",
+      "names": [
+        "fixture"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/conftest.py",
+      "level": 0,
+      "line": 19,
+      "module": "phylib",
+      "names": [
+        "add_default_handler"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/electrode/__init__.py",
+      "level": 1,
+      "line": 6,
+      "module": "mea",
+      "names": [
+        "MEA",
+        "load_probe"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/electrode/mea.py",
+      "level": 0,
+      "line": 10,
+      "module": "itertools",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "phylib/electrode/mea.py",
+      "level": 0,
+      "line": 11,
+      "module": "pathlib",
+      "names": [
+        "Path"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/electrode/mea.py",
+      "level": 0,
+      "line": 13,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "phylib/electrode/mea.py",
+      "level": 0,
+      "line": 15,
+      "module": "phylib.utils._types",
+      "names": [
+        "_as_array"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/electrode/mea.py",
+      "level": 0,
+      "line": 16,
+      "module": "phylib.utils._misc",
+      "names": [
+        "read_python"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/electrode/tests/test_mea.py",
+      "level": 0,
+      "line": 9,
+      "module": "pathlib",
+      "names": [
+        "Path"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/electrode/tests/test_mea.py",
+      "level": 0,
+      "line": 11,
+      "module": "pytest",
+      "names": [
+        "raises"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/electrode/tests/test_mea.py",
+      "level": 0,
+      "line": 12,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "phylib/electrode/tests/test_mea.py",
+      "level": 0,
+      "line": 13,
+      "module": "numpy.testing",
+      "names": [
+        "assert_array_equal"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/electrode/tests/test_mea.py",
+      "level": 2,
+      "line": 15,
+      "module": "mea",
+      "names": [
+        "_probe_channels",
+        "_remap_adjacency",
+        "_adjacency_subset",
+        "_probe_positions",
+        "_probe_adjacency_list",
+        "MEA",
+        "load_probe",
+        "list_probes"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/__init__.py",
+      "level": 1,
+      "line": 6,
+      "module": "array",
+      "names": [
+        "SpikeSelector"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/__init__.py",
+      "level": 1,
+      "line": 7,
+      "module": "traces",
+      "names": [
+        "get_ephys_reader",
+        "get_spike_waveforms",
+        "NpyWriter",
+        "extract_waveforms",
+        "iter_waveforms",
+        "export_waveforms"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/alf.py",
+      "level": 0,
+      "line": 10,
+      "module": "logging",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/alf.py",
+      "level": 0,
+      "line": 11,
+      "module": "pathlib",
+      "names": [
+        "Path"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/alf.py",
+      "level": 0,
+      "line": 12,
+      "module": "shutil",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/alf.py",
+      "level": 0,
+      "line": 13,
+      "module": "ast",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/alf.py",
+      "level": 0,
+      "line": 14,
+      "module": "uuid",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/alf.py",
+      "level": 0,
+      "line": 16,
+      "module": "tqdm",
+      "names": [
+        "tqdm"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/alf.py",
+      "level": 0,
+      "line": 17,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/alf.py",
+      "level": 0,
+      "line": 19,
+      "module": "phylib.utils._misc",
+      "names": [
+        "_read_tsv_simple",
+        "ensure_dir_exists"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/alf.py",
+      "level": 0,
+      "line": 20,
+      "module": "phylib.io.array",
+      "names": [
+        "_spikes_per_cluster",
+        "_unique"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/alf.py",
+      "level": 0,
+      "line": 21,
+      "module": "phylib.io.model",
+      "names": [
+        "load_model"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/alf.py",
+      "level": 0,
+      "line": 399,
+      "module": "pandas",
+      "names": [],
+      "scope": "alf2phy"
+    },
+    {
+      "file": "phylib/io/array.py",
+      "level": 0,
+      "line": 9,
+      "module": "logging",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/array.py",
+      "level": 0,
+      "line": 10,
+      "module": "math",
+      "names": [
+        "floor",
+        "ceil"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/array.py",
+      "level": 0,
+      "line": 11,
+      "module": "operator",
+      "names": [
+        "itemgetter"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/array.py",
+      "level": 0,
+      "line": 12,
+      "module": "pathlib",
+      "names": [
+        "Path"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/array.py",
+      "level": 0,
+      "line": 14,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/array.py",
+      "level": 0,
+      "line": 16,
+      "module": "phylib.utils",
+      "names": [
+        "_as_scalar",
+        "_as_scalars"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/array.py",
+      "level": 0,
+      "line": 17,
+      "module": "phylib.utils._types",
+      "names": [
+        "_as_array"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/datasets.py",
+      "level": 0,
+      "line": 9,
+      "module": "hashlib",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/datasets.py",
+      "level": 0,
+      "line": 10,
+      "module": "logging",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/datasets.py",
+      "level": 0,
+      "line": 11,
+      "module": "pathlib",
+      "names": [
+        "Path"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/datasets.py",
+      "level": 0,
+      "line": 13,
+      "module": "phylib.utils._misc",
+      "names": [
+        "ensure_dir_exists",
+        "phy_config_dir"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/datasets.py",
+      "level": 0,
+      "line": 14,
+      "module": "phylib.utils.event",
+      "names": [
+        "ProgressReporter"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/datasets.py",
+      "level": 0,
+      "line": 25,
+      "module": "requests",
+      "names": [],
+      "scope": "_remote_file_size"
+    },
+    {
+      "file": "phylib/io/datasets.py",
+      "level": 0,
+      "line": 54,
+      "module": "requests",
+      "names": [
+        "get"
+      ],
+      "scope": "_download"
+    },
+    {
+      "file": "phylib/io/merge.py",
+      "level": 0,
+      "line": 10,
+      "module": "logging",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/merge.py",
+      "level": 0,
+      "line": 11,
+      "module": "pathlib",
+      "names": [
+        "Path"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/merge.py",
+      "level": 0,
+      "line": 13,
+      "module": "tqdm",
+      "names": [
+        "tqdm"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/merge.py",
+      "level": 0,
+      "line": 14,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/merge.py",
+      "level": 0,
+      "line": 15,
+      "module": "scipy.linalg",
+      "names": [
+        "block_diag"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/merge.py",
+      "level": 0,
+      "line": 17,
+      "module": "phylib.utils._misc",
+      "names": [
+        "_read_tsv_simple",
+        "_write_tsv_simple",
+        "write_tsv",
+        "read_python",
+        "write_python"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/merge.py",
+      "level": 0,
+      "line": 19,
+      "module": "phylib.io.model",
+      "names": [
+        "load_model"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/mock.py",
+      "level": 0,
+      "line": 9,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/mock.py",
+      "level": 0,
+      "line": 10,
+      "module": "numpy.random",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/model.py",
+      "level": 0,
+      "line": 10,
+      "module": "logging",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/model.py",
+      "level": 0,
+      "line": 11,
+      "module": "os",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/model.py",
+      "level": 0,
+      "line": 12,
+      "module": "os.path",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/model.py",
+      "level": 0,
+      "line": 13,
+      "module": "operator",
+      "names": [
+        "itemgetter"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/model.py",
+      "level": 0,
+      "line": 14,
+      "module": "pathlib",
+      "names": [
+        "Path"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/model.py",
+      "level": 0,
+      "line": 15,
+      "module": "shutil",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/model.py",
+      "level": 0,
+      "line": 17,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/model.py",
+      "level": 0,
+      "line": 19,
+      "module": "scipy.io",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/model.py",
+      "level": 1,
+      "line": 22,
+      "module": "array",
+      "names": [
+        "_index_of",
+        "_spikes_in_clusters",
+        "_spikes_per_cluster",
+        "SpikeSelector"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/model.py",
+      "level": 1,
+      "line": 23,
+      "module": "traces",
+      "names": [
+        "get_ephys_reader",
+        "RandomEphysReader",
+        "extract_waveforms",
+        "get_spike_waveforms",
+        "export_waveforms"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/model.py",
+      "level": 0,
+      "line": 26,
+      "module": "phylib.utils",
+      "names": [
+        "Bunch"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/model.py",
+      "level": 0,
+      "line": 27,
+      "module": "phylib.utils._misc",
+      "names": [
+        "_atomic_open",
+        "_write_tsv_simple",
+        "read_tsv",
+        "read_python"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/model.py",
+      "level": 0,
+      "line": 28,
+      "module": "phylib.utils.geometry",
+      "names": [
+        "linear_positions"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/tests/conftest.py",
+      "level": 0,
+      "line": 9,
+      "module": "logging",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/tests/conftest.py",
+      "level": 0,
+      "line": 10,
+      "module": "shutil",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/tests/conftest.py",
+      "level": 0,
+      "line": 11,
+      "module": "stat",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/tests/conftest.py",
+      "level": 0,
+      "line": 13,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/tests/conftest.py",
+      "level": 0,
+      "line": 14,
+      "module": "pytest",
+      "names": [
+        "fixture"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/tests/conftest.py",
+      "level": 0,
+      "line": 16,
+      "module": "phylib.utils._misc",
+      "names": [
+        "write_text",
+        "write_tsv"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/tests/conftest.py",
+      "level": 2,
+      "line": 17,
+      "module": "model",
+      "names": [
+        "load_model",
+        "write_array"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/tests/conftest.py",
+      "level": 0,
+      "line": 18,
+      "module": "phylib.io.datasets",
+      "names": [
+        "download_test_file"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/tests/test_alf.py",
+      "level": 0,
+      "line": 10,
+      "module": "os",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/tests/test_alf.py",
+      "level": 0,
+      "line": 11,
+      "module": "pathlib",
+      "names": [
+        "Path"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/tests/test_alf.py",
+      "level": 0,
+      "line": 12,
+      "module": "shutil",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/tests/test_alf.py",
+      "level": 0,
+      "line": 13,
+      "module": "pytest",
+      "names": [
+        "fixture",
+        "raises"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/tests/test_alf.py",
+      "level": 0,
+      "line": 15,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/tests/test_alf.py",
+      "level": 0,
+      "line": 16,
+      "module": "numpy.random",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/tests/test_alf.py",
+      "level": 0,
+      "line": 18,
+      "module": "phylib.utils._misc",
+      "names": [
+        "_write_tsv_simple"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/tests/test_alf.py",
+      "level": 2,
+      "line": 19,
+      "module": "alf",
+      "names": [
+        "_FILE_RENAMES",
+        "_load",
+        "EphysAlfCreator",
+        "alf2phy"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/tests/test_alf.py",
+      "level": 2,
+      "line": 20,
+      "module": "model",
+      "names": [
+        "TemplateModel"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/tests/test_array.py",
+      "level": 0,
+      "line": 9,
+      "module": "pathlib",
+      "names": [
+        "Path"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/tests/test_array.py",
+      "level": 0,
+      "line": 11,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/tests/test_array.py",
+      "level": 0,
+      "line": 12,
+      "module": "pytest",
+      "names": [
+        "raises"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/tests/test_array.py",
+      "level": 2,
+      "line": 14,
+      "module": "array",
+      "names": [
+        "_unique",
+        "_normalize",
+        "_index_of",
+        "_spikes_in_clusters",
+        "_spikes_per_cluster",
+        "_flatten_per_cluster",
+        "get_closest_clusters",
+        "_get_data_lim",
+        "_flatten",
+        "_clip",
+        "chunk_bounds",
+        "excerpts",
+        "data_chunk",
+        "grouped_mean",
+        "SpikeSelector",
+        "get_excerpts",
+        "_range_from_slice",
+        "_pad",
+        "_get_padded",
+        "read_array",
+        "write_array",
+        "_intersect_sorted",
+        "_sample_spikes",
+        "_sample_spikes_evenly"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/tests/test_array.py",
+      "level": 0,
+      "line": 20,
+      "module": "phylib.utils._types",
+      "names": [
+        "_as_array"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/tests/test_array.py",
+      "level": 0,
+      "line": 21,
+      "module": "phylib.utils.testing",
+      "names": [
+        "_assert_equal"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/tests/test_array.py",
+      "level": 2,
+      "line": 22,
+      "module": "mock",
+      "names": [
+        "artificial_spike_clusters",
+        "artificial_spike_samples"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/tests/test_datasets.py",
+      "level": 0,
+      "line": 9,
+      "module": "logging",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/tests/test_datasets.py",
+      "level": 0,
+      "line": 10,
+      "module": "pathlib",
+      "names": [
+        "Path"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/tests/test_datasets.py",
+      "level": 0,
+      "line": 11,
+      "module": "itertools",
+      "names": [
+        "product"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/tests/test_datasets.py",
+      "level": 0,
+      "line": 13,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/tests/test_datasets.py",
+      "level": 0,
+      "line": 14,
+      "module": "numpy.testing",
+      "names": [
+        "assert_array_equal"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/tests/test_datasets.py",
+      "level": 0,
+      "line": 15,
+      "module": "responses",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/tests/test_datasets.py",
+      "level": 0,
+      "line": 16,
+      "module": "pytest",
+      "names": [
+        "raises",
+        "fixture"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/tests/test_datasets.py",
+      "level": 2,
+      "line": 18,
+      "module": "datasets",
+      "names": [
+        "download_file",
+        "download_test_file",
+        "_check_md5_of_url"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/tests/test_datasets.py",
+      "level": 0,
+      "line": 22,
+      "module": "phylib.utils.testing",
+      "names": [
+        "captured_logging"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/tests/test_merge.py",
+      "level": 0,
+      "line": 10,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/tests/test_merge.py",
+      "level": 2,
+      "line": 12,
+      "module": "merge",
+      "names": [
+        "Merger"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/tests/test_merge.py",
+      "level": 0,
+      "line": 13,
+      "module": "phylib.io.alf",
+      "names": [
+        "EphysAlfCreator"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/tests/test_merge.py",
+      "level": 0,
+      "line": 14,
+      "module": "phylib.io.model",
+      "names": [
+        "load_model"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/tests/test_merge.py",
+      "level": 0,
+      "line": 15,
+      "module": "phylib.io.tests.conftest",
+      "names": [
+        "_make_dataset"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/tests/test_mock.py",
+      "level": 0,
+      "line": 9,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/tests/test_mock.py",
+      "level": 0,
+      "line": 10,
+      "module": "numpy.testing",
+      "names": [
+        "assert_array_equal"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/tests/test_mock.py",
+      "level": 2,
+      "line": 12,
+      "module": "mock",
+      "names": [
+        "artificial_waveforms",
+        "artificial_traces",
+        "artificial_spike_clusters",
+        "artificial_features",
+        "artificial_masks",
+        "artificial_spike_samples",
+        "artificial_correlograms"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/tests/test_model.py",
+      "level": 0,
+      "line": 9,
+      "module": "logging",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/tests/test_model.py",
+      "level": 0,
+      "line": 10,
+      "module": "os",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/tests/test_model.py",
+      "level": 0,
+      "line": 11,
+      "module": "stat",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/tests/test_model.py",
+      "level": 0,
+      "line": 13,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/tests/test_model.py",
+      "level": 0,
+      "line": 14,
+      "module": "numpy.testing",
+      "names": [
+        "assert_equal"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/tests/test_model.py",
+      "level": 0,
+      "line": 15,
+      "module": "pytest",
+      "names": [
+        "raises"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/tests/test_model.py",
+      "level": 0,
+      "line": 18,
+      "module": "phylib.utils.testing",
+      "names": [
+        "captured_output"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/tests/test_model.py",
+      "level": 2,
+      "line": 19,
+      "module": "",
+      "names": [
+        "model"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/tests/test_model.py",
+      "level": 2,
+      "line": 20,
+      "module": "model",
+      "names": [
+        "from_sparse",
+        "get_template_params",
+        "load_model"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/tests/test_traces.py",
+      "level": 0,
+      "line": 9,
+      "module": "logging",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/tests/test_traces.py",
+      "level": 0,
+      "line": 11,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/tests/test_traces.py",
+      "level": 0,
+      "line": 12,
+      "module": "numpy.testing",
+      "names": [
+        "assert_equal"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/tests/test_traces.py",
+      "level": 0,
+      "line": 13,
+      "module": "numpy.testing",
+      "names": [
+        "assert_allclose"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/tests/test_traces.py",
+      "level": 0,
+      "line": 14,
+      "module": "mtscomp",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/tests/test_traces.py",
+      "level": 0,
+      "line": 15,
+      "module": "pytest",
+      "names": [
+        "raises",
+        "fixture",
+        "mark"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/tests/test_traces.py",
+      "level": 0,
+      "line": 17,
+      "module": "phylib.utils",
+      "names": [
+        "Bunch"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/tests/test_traces.py",
+      "level": 2,
+      "line": 18,
+      "module": "array",
+      "names": [
+        "_index_of"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/tests/test_traces.py",
+      "level": 2,
+      "line": 19,
+      "module": "traces",
+      "names": [
+        "_get_subitems",
+        "_get_chunk_bounds",
+        "get_ephys_reader",
+        "BaseEphysReader",
+        "extract_waveforms",
+        "export_waveforms",
+        "RandomEphysReader",
+        "_get_spike_ids_rel",
+        "_get_spike_waveforms_fast",
+        "get_spike_waveforms"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/traces.py",
+      "level": 0,
+      "line": 10,
+      "module": "copy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/traces.py",
+      "level": 0,
+      "line": 11,
+      "module": "logging",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/traces.py",
+      "level": 0,
+      "line": 12,
+      "module": "functools",
+      "names": [
+        "reduce"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/traces.py",
+      "level": 0,
+      "line": 13,
+      "module": "math",
+      "names": [
+        "ceil"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/traces.py",
+      "level": 0,
+      "line": 14,
+      "module": "multiprocessing",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/traces.py",
+      "level": 0,
+      "line": 15,
+      "module": "operator",
+      "names": [
+        "mul"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/traces.py",
+      "level": 0,
+      "line": 16,
+      "module": "pathlib",
+      "names": [
+        "Path"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/traces.py",
+      "level": 0,
+      "line": 18,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/traces.py",
+      "level": 0,
+      "line": 19,
+      "module": "numpy.lib.format",
+      "names": [
+        "write_array_header_1_0",
+        "dtype_to_descr"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/traces.py",
+      "level": 0,
+      "line": 20,
+      "module": "mtscomp",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/traces.py",
+      "level": 0,
+      "line": 21,
+      "module": "tqdm",
+      "names": [
+        "tqdm"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/io/traces.py",
+      "level": 1,
+      "line": 23,
+      "module": "array",
+      "names": [
+        "_index_of"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/stats/__init__.py",
+      "level": 1,
+      "line": 6,
+      "module": "ccg",
+      "names": [
+        "correlograms",
+        "firing_rate"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/stats/ccg.py",
+      "level": 0,
+      "line": 9,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "phylib/stats/ccg.py",
+      "level": 0,
+      "line": 11,
+      "module": "phylib.utils._types",
+      "names": [
+        "_as_array"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/stats/ccg.py",
+      "level": 0,
+      "line": 12,
+      "module": "phylib.io.array",
+      "names": [
+        "_index_of",
+        "_unique"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/stats/clusters.py",
+      "level": 0,
+      "line": 9,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "phylib/stats/tests/test_ccg.py",
+      "level": 0,
+      "line": 9,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "phylib/stats/tests/test_ccg.py",
+      "level": 0,
+      "line": 10,
+      "module": "numpy.testing",
+      "names": [
+        "assert_array_equal"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/stats/tests/test_ccg.py",
+      "level": 2,
+      "line": 12,
+      "module": "ccg",
+      "names": [
+        "_increment",
+        "_diff_shifted",
+        "correlograms",
+        "firing_rate"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/stats/tests/test_clusters.py",
+      "level": 0,
+      "line": 9,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "phylib/stats/tests/test_clusters.py",
+      "level": 0,
+      "line": 10,
+      "module": "numpy.testing",
+      "names": [
+        "assert_array_equal"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/stats/tests/test_clusters.py",
+      "level": 0,
+      "line": 11,
+      "module": "numpy.testing",
+      "names": [
+        "assert_allclose"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/stats/tests/test_clusters.py",
+      "level": 0,
+      "line": 12,
+      "module": "pytest",
+      "names": [
+        "fixture"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/stats/tests/test_clusters.py",
+      "level": 2,
+      "line": 14,
+      "module": "clusters",
+      "names": [
+        "mean",
+        "get_unmasked_channels",
+        "get_mean_probe_position",
+        "get_sorted_main_channels",
+        "get_mean_masked_features_distance",
+        "get_waveform_amplitude"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/stats/tests/test_clusters.py",
+      "level": 0,
+      "line": 21,
+      "module": "phylib.utils.geometry",
+      "names": [
+        "staggered_positions"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/stats/tests/test_clusters.py",
+      "level": 0,
+      "line": 22,
+      "module": "phylib.io.mock",
+      "names": [
+        "artificial_features",
+        "artificial_masks",
+        "artificial_waveforms"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/utils/__init__.py",
+      "level": 1,
+      "line": 6,
+      "module": "_misc",
+      "names": [
+        "load_json",
+        "save_json",
+        "load_pickle",
+        "save_pickle",
+        "_fullname",
+        "read_python",
+        "read_text",
+        "write_text",
+        "read_tsv",
+        "write_tsv"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/utils/__init__.py",
+      "level": 1,
+      "line": 9,
+      "module": "_types",
+      "names": [
+        "_is_array_like",
+        "_as_array",
+        "_as_tuple",
+        "_as_list",
+        "_as_scalar",
+        "_as_scalars",
+        "Bunch",
+        "_is_list",
+        "_bunchify"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/utils/__init__.py",
+      "level": 1,
+      "line": 12,
+      "module": "event",
+      "names": [
+        "ProgressReporter",
+        "emit",
+        "connect",
+        "unconnect",
+        "silent",
+        "reset",
+        "set_silent"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/utils/_misc.py",
+      "level": 0,
+      "line": 10,
+      "module": "base64",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "phylib/utils/_misc.py",
+      "level": 0,
+      "line": 11,
+      "module": "contextlib",
+      "names": [
+        "contextmanager"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/utils/_misc.py",
+      "level": 0,
+      "line": 12,
+      "module": "csv",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "phylib/utils/_misc.py",
+      "level": 0,
+      "line": 13,
+      "module": "importlib",
+      "names": [
+        "import_module"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/utils/_misc.py",
+      "level": 0,
+      "line": 14,
+      "module": "json",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "phylib/utils/_misc.py",
+      "level": 0,
+      "line": 15,
+      "module": "logging",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "phylib/utils/_misc.py",
+      "level": 0,
+      "line": 16,
+      "module": "os",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "phylib/utils/_misc.py",
+      "level": 0,
+      "line": 17,
+      "module": "pathlib",
+      "names": [
+        "Path"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/utils/_misc.py",
+      "level": 0,
+      "line": 18,
+      "module": "secrets",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "phylib/utils/_misc.py",
+      "level": 0,
+      "line": 19,
+      "module": "stat",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "phylib/utils/_misc.py",
+      "level": 0,
+      "line": 20,
+      "module": "subprocess",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "phylib/utils/_misc.py",
+      "level": 0,
+      "line": 21,
+      "module": "textwrap",
+      "names": [
+        "dedent"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/utils/_misc.py",
+      "level": 0,
+      "line": 23,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "phylib/utils/_misc.py",
+      "level": 1,
+      "line": 25,
+      "module": "_types",
+      "names": [
+        "_is_integer"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/utils/_misc.py",
+      "level": 0,
+      "line": 101,
+      "module": "PyQt5.QtCore",
+      "names": [
+        "QByteArray"
+      ],
+      "scope": "_decode_qbytearray"
+    },
+    {
+      "file": "phylib/utils/_misc.py",
+      "level": 0,
+      "line": 200,
+      "module": "joblib",
+      "names": [
+        "load"
+      ],
+      "scope": "load_pickle"
+    },
+    {
+      "file": "phylib/utils/_misc.py",
+      "level": 0,
+      "line": 206,
+      "module": "joblib",
+      "names": [
+        "dump"
+      ],
+      "scope": "save_pickle"
+    },
+    {
+      "file": "phylib/utils/_types.py",
+      "level": 0,
+      "line": 10,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "phylib/utils/event.py",
+      "level": 0,
+      "line": 2,
+      "module": "__future__",
+      "names": [
+        "print_function"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/utils/event.py",
+      "level": 0,
+      "line": 10,
+      "module": "contextlib",
+      "names": [
+        "contextmanager"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/utils/event.py",
+      "level": 0,
+      "line": 11,
+      "module": "logging",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "phylib/utils/event.py",
+      "level": 0,
+      "line": 12,
+      "module": "string",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "phylib/utils/event.py",
+      "level": 0,
+      "line": 13,
+      "module": "re",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "phylib/utils/event.py",
+      "level": 0,
+      "line": 14,
+      "module": "functools",
+      "names": [
+        "partial"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/utils/geometry.py",
+      "level": 0,
+      "line": 10,
+      "module": "functools",
+      "names": [
+        "partial"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/utils/geometry.py",
+      "level": 0,
+      "line": 11,
+      "module": "logging",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "phylib/utils/geometry.py",
+      "level": 0,
+      "line": 13,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "phylib/utils/testing.py",
+      "level": 0,
+      "line": 9,
+      "module": "contextlib",
+      "names": [
+        "contextmanager"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/utils/testing.py",
+      "level": 0,
+      "line": 10,
+      "module": "io",
+      "names": [
+        "StringIO"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/utils/testing.py",
+      "level": 0,
+      "line": 11,
+      "module": "logging",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "phylib/utils/testing.py",
+      "level": 0,
+      "line": 12,
+      "module": "os",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "phylib/utils/testing.py",
+      "level": 0,
+      "line": 13,
+      "module": "sys",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "phylib/utils/testing.py",
+      "level": 0,
+      "line": 15,
+      "module": "numpy.testing",
+      "names": [
+        "assert_array_equal"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/utils/testing.py",
+      "level": 0,
+      "line": 16,
+      "module": "numpy.testing",
+      "names": [
+        "assert_allclose"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/utils/testing.py",
+      "level": 1,
+      "line": 18,
+      "module": "_types",
+      "names": [
+        "_is_array_like"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/utils/tests/test_event.py",
+      "level": 0,
+      "line": 9,
+      "module": "pytest",
+      "names": [
+        "raises"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/utils/tests/test_event.py",
+      "level": 2,
+      "line": 11,
+      "module": "event",
+      "names": [
+        "EventEmitter",
+        "ProgressReporter",
+        "connect"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/utils/tests/test_geometry.py",
+      "level": 0,
+      "line": 10,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "phylib/utils/tests/test_geometry.py",
+      "level": 0,
+      "line": 11,
+      "module": "numpy.testing",
+      "names": [
+        "assert_array_equal"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/utils/tests/test_geometry.py",
+      "level": 0,
+      "line": 12,
+      "module": "numpy.testing",
+      "names": [
+        "assert_allclose"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/utils/tests/test_geometry.py",
+      "level": 0,
+      "line": 13,
+      "module": "pytest",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "phylib/utils/tests/test_geometry.py",
+      "level": 2,
+      "line": 15,
+      "module": "geometry",
+      "names": [
+        "linear_positions",
+        "staggered_positions",
+        "_get_data_bounds",
+        "_boxes_overlap",
+        "_binary_search",
+        "_find_box_size",
+        "get_non_overlapping_boxes",
+        "get_closest_box"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/utils/tests/test_misc.py",
+      "level": 0,
+      "line": 9,
+      "module": "csv",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "phylib/utils/tests/test_misc.py",
+      "level": 0,
+      "line": 10,
+      "module": "json",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "phylib/utils/tests/test_misc.py",
+      "level": 0,
+      "line": 11,
+      "module": "os",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "phylib/utils/tests/test_misc.py",
+      "level": 0,
+      "line": 12,
+      "module": "re",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "phylib/utils/tests/test_misc.py",
+      "level": 0,
+      "line": 13,
+      "module": "stat",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "phylib/utils/tests/test_misc.py",
+      "level": 0,
+      "line": 15,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "phylib/utils/tests/test_misc.py",
+      "level": 0,
+      "line": 16,
+      "module": "numpy.testing",
+      "names": [
+        "assert_array_equal"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/utils/tests/test_misc.py",
+      "level": 0,
+      "line": 17,
+      "module": "pytest",
+      "names": [
+        "raises",
+        "mark"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/utils/tests/test_misc.py",
+      "level": 2,
+      "line": 19,
+      "module": "_misc",
+      "names": [
+        "_atomic_open",
+        "_git_version",
+        "load_json",
+        "save_json",
+        "load_pickle",
+        "save_pickle",
+        "read_python",
+        "write_python",
+        "read_text",
+        "write_text",
+        "_read_tsv_simple",
+        "_write_tsv_simple",
+        "read_tsv",
+        "write_tsv",
+        "_pretty_floats",
+        "_encode_qbytearray",
+        "_decode_qbytearray",
+        "_fullname",
+        "_load_from_fullname"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/utils/tests/test_misc.py",
+      "level": 0,
+      "line": 31,
+      "module": "PyQt5.QtCore",
+      "names": [
+        "QByteArray"
+      ],
+      "scope": "test_qbytearray"
+    },
+    {
+      "file": "phylib/utils/tests/test_testing.py",
+      "level": 0,
+      "line": 9,
+      "module": "copy",
+      "names": [
+        "deepcopy"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/utils/tests/test_testing.py",
+      "level": 0,
+      "line": 10,
+      "module": "logging",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "phylib/utils/tests/test_testing.py",
+      "level": 0,
+      "line": 12,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "phylib/utils/tests/test_testing.py",
+      "level": 2,
+      "line": 14,
+      "module": "testing",
+      "names": [
+        "captured_output",
+        "captured_logging",
+        "_assert_equal"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/utils/tests/test_types.py",
+      "level": 0,
+      "line": 9,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "phylib/utils/tests/test_types.py",
+      "level": 0,
+      "line": 10,
+      "module": "pytest",
+      "names": [
+        "raises"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/utils/tests/test_types.py",
+      "level": 2,
+      "line": 12,
+      "module": "_types",
+      "names": [
+        "Bunch",
+        "_bunchify",
+        "_is_integer",
+        "_is_list",
+        "_is_float",
+        "_as_list",
+        "_is_array_like",
+        "_as_array",
+        "_as_tuple",
+        "_as_scalar",
+        "_as_scalars"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/utils/tests/test_version.py",
+      "level": 0,
+      "line": 5,
+      "module": "re",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "phylib/utils/tests/test_version.py",
+      "level": 0,
+      "line": 6,
+      "module": "subprocess",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "phylib/utils/tests/test_version.py",
+      "level": 0,
+      "line": 7,
+      "module": "sys",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "phylib/utils/tests/test_version.py",
+      "level": 0,
+      "line": 8,
+      "module": "pathlib",
+      "names": [
+        "Path"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "phylib/utils/tests/test_version.py",
+      "level": 0,
+      "line": 10,
+      "module": "phylib",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "setup.py",
+      "level": 0,
+      "line": 11,
+      "module": "os",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "setup.py",
+      "level": 0,
+      "line": 12,
+      "module": "os.path",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "setup.py",
+      "level": 0,
+      "line": 13,
+      "module": "pathlib",
+      "names": [
+        "Path"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "setup.py",
+      "level": 0,
+      "line": 14,
+      "module": "re",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "setup.py",
+      "level": 0,
+      "line": 16,
+      "module": "setuptools",
+      "names": [
+        "setup"
+      ],
+      "scope": ""
+    }
+  ],
+  "inventory_tool_sha256": "7dee7e661d7b9d66dffd34fecfdf7ddf044b94f38b5adbebfd3eeed916e87058",
+  "parse_diagnostics": [],
+  "pin": "457915ba7ef9063504484769d775b3bb1ccfd74a",
+  "qt_imports": [
+    {
+      "file": "phylib/utils/_misc.py",
+      "level": 0,
+      "line": 101,
+      "module": "PyQt5.QtCore",
+      "names": [
+        "QByteArray"
+      ],
+      "scope": "_decode_qbytearray"
+    },
+    {
+      "file": "phylib/utils/tests/test_misc.py",
+      "level": 0,
+      "line": 31,
+      "module": "PyQt5.QtCore",
+      "names": [
+        "QByteArray"
+      ],
+      "scope": "test_qbytearray"
+    }
+  ],
+  "qualification": "source_inventory_only",
+  "schema": 1,
+  "source": {
+    "algorithm": "sorted-relative-path-nul-file-bytes-sha256",
+    "files": [
+      {
+        "path": ".github/workflows/ci.yml",
+        "sha256": "38a31be92260cda9358aab928b3725a1f86d604c271d38bb1d605d1f5a095cda",
+        "size": 3027
+      },
+      {
+        "path": ".gitignore",
+        "sha256": "e974ab20b12a8ac60e90f1b6b91ec57c65f7533be08d279d600b5d8c4f537234",
+        "size": 297
+      },
+      {
+        "path": ".travis.yml",
+        "sha256": "1db5cdb6b74970277341e9a2a9b80267604116a576f66e455aac3b502880872b",
+        "size": 707
+      },
+      {
+        "path": "CHANGELOG.md",
+        "sha256": "f3b304cff97dec7c28c634cf30d52fd192c39e434aeea9a7b3face9618155ec3",
+        "size": 2049
+      },
+      {
+        "path": "CODE_OF_CONDUCT.md",
+        "sha256": "af9617872a74eb41594c55093f4911c8ef091d1519890cc488a0607967dd0a62",
+        "size": 4644
+      },
+      {
+        "path": "LICENSE.md",
+        "sha256": "0612f1a9f4060fbfa1b6d3ffca43f0da2393f2cb19b967d9457454828286f2e5",
+        "size": 1463
+      },
+      {
+        "path": "MANIFEST.in",
+        "sha256": "b9a3adb4dc8de33835ad0973a56025a52b3771e98fa06fc05349887344052b01",
+        "size": 222
+      },
+      {
+        "path": "Makefile",
+        "sha256": "6c144349b6c2ff28d12b7b2c1d9f344e17aacb946f98b5eca949cee7d517aa76",
+        "size": 508
+      },
+      {
+        "path": "README.md",
+        "sha256": "35e7e4e32cd7be3671ce0609c7c0273e862c9e8ccaffa2ae8ee9453fbcd8836d",
+        "size": 2297
+      },
+      {
+        "path": "benchmarks/benchmark_flatten_per_cluster.py",
+        "sha256": "5f05c3a235168debe7e6a0df3b6f2a622336a9c524c6caadbfe2cc5d83921150",
+        "size": 2651
+      },
+      {
+        "path": "benchmarks/benchmark_get_spike_waveforms.py",
+        "sha256": "95f6136818e8dd15c03e46f7e4a3709d23a22c10aad15016d1bc72b7ea5fae67",
+        "size": 5929
+      },
+      {
+        "path": "benchmarks/benchmark_sample_spikes_evenly.py",
+        "sha256": "bfc82db26128430b943999a9b1ebd7dfe25ca259b02436bbb014cc3e7684ec0b",
+        "size": 1468
+      },
+      {
+        "path": "environment.yml",
+        "sha256": "f661c821e42f48b5234798e3ab305bfb4918f523996ba3b042d5d9307c99096f",
+        "size": 127
+      },
+      {
+        "path": "phylib/__init__.py",
+        "sha256": "79b41b62e94709fbd9634e534645f7af9dea0c8f13c0017171504cebc4ad3eb7",
+        "size": 2505
+      },
+      {
+        "path": "phylib/conftest.py",
+        "sha256": "bcb50d6a49163fc19024c507265c688727a452cbf21bf4931c266025618dfaa1",
+        "size": 1058
+      },
+      {
+        "path": "phylib/electrode/__init__.py",
+        "sha256": "1e32b4119abf7f7e663b9c7078677f5d8939661422e8a1ee790f38a664affcba",
+        "size": 92
+      },
+      {
+        "path": "phylib/electrode/mea.py",
+        "sha256": "34c169e293d112a36a6e90e22a4a51934fa69fca090a285bc2f4440ac305293d",
+        "size": 5254
+      },
+      {
+        "path": "phylib/electrode/probes/1x32_buzsaki.prb",
+        "sha256": "f865c97e0ff9a6494a94f51e4c95a81df7ba9ede9174c0e181d9b08f73d895eb",
+        "size": 2558
+      },
+      {
+        "path": "phylib/electrode/tests/__init__.py",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      },
+      {
+        "path": "phylib/electrode/tests/test_mea.py",
+        "sha256": "f9de0721b486121f50e40e13846abea0736c9a9a400eec6e6849797e6f988462",
+        "size": 3081
+      },
+      {
+        "path": "phylib/io/__init__.py",
+        "sha256": "14f994d62c46ce73dd413432d71af5a8de594e6873516932beb389b5df648004",
+        "size": 227
+      },
+      {
+        "path": "phylib/io/alf.py",
+        "sha256": "e2ed1c797469fd0bdf67ca69bd55a62f2bde51eeb5f9d08479857c4f7475698f",
+        "size": 18474
+      },
+      {
+        "path": "phylib/io/array.py",
+        "sha256": "69e7fa87bf7261ed2726e287be8da5b18630647b523835fce6f5fba0af6cc2e6",
+        "size": 18082
+      },
+      {
+        "path": "phylib/io/datasets.py",
+        "sha256": "b642ce46b31c7c8a0dd8ab6acfd5fc3af6da8b95c7651efb0b26e4a838f91779",
+        "size": 4203
+      },
+      {
+        "path": "phylib/io/merge.py",
+        "sha256": "da83231189755c475e667365a0fb81bac20ca94ed8b7b6e58b99e5245b9fe97c",
+        "size": 12293
+      },
+      {
+        "path": "phylib/io/mock.py",
+        "sha256": "bb96ca69d9aaac37ece618c8141fd62d6385ca5f1963115eff8fe5e46fcfd1c6",
+        "size": 1288
+      },
+      {
+        "path": "phylib/io/model.py",
+        "sha256": "45ea8e4144d123d687e92e393863e1f8255058c2f43ac40797a49a3d6d46ba3a",
+        "size": 61391
+      },
+      {
+        "path": "phylib/io/tests/__init__.py",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      },
+      {
+        "path": "phylib/io/tests/conftest.py",
+        "sha256": "bca3a344609c5f339a62849a4b4712bf2c84a6c0fb942c975435c6c7656f16e8",
+        "size": 5201
+      },
+      {
+        "path": "phylib/io/tests/test_alf.py",
+        "sha256": "4dffafa32447f9dde70fffec3bda7559bded5f40fde51d5a0f79c4bafe57bdaf",
+        "size": 12033
+      },
+      {
+        "path": "phylib/io/tests/test_array.py",
+        "sha256": "150696e17720d8c72655de44d75dd1d5b778a44e48793f206f45927634a2e126",
+        "size": 21083
+      },
+      {
+        "path": "phylib/io/tests/test_datasets.py",
+        "sha256": "4df70f542f73abb07b51ab6eb463f09130aa8eea0cbb55b4b7e6fb471d07d32e",
+        "size": 4729
+      },
+      {
+        "path": "phylib/io/tests/test_merge.py",
+        "sha256": "ecba0d9773a8c80c3cf8393f453a92612d3a279f8fdaf1f95fd50a1cafa2d6a7",
+        "size": 5419
+      },
+      {
+        "path": "phylib/io/tests/test_mock.py",
+        "sha256": "273cca34380a0a34faa2cf3c6510750b74d0ff8dcfa4f85f7449c9f3a05552a7",
+        "size": 2396
+      },
+      {
+        "path": "phylib/io/tests/test_model.py",
+        "sha256": "2b69c74c96db469a66c90fbd2c9cb0142864bdc73eb13f93badd68fb051ebef2",
+        "size": 11799
+      },
+      {
+        "path": "phylib/io/tests/test_traces.py",
+        "sha256": "68de391229b7d1695667681b473dddaf62d7c1d8c98f2a7322332e9f3e4f7d1a",
+        "size": 16713
+      },
+      {
+        "path": "phylib/io/traces.py",
+        "sha256": "f689fdc906ffb10055aa30a20eb536a7495e115005435e1a376ac6f9dcfbc8cb",
+        "size": 29035
+      },
+      {
+        "path": "phylib/stats/__init__.py",
+        "sha256": "48c6cc1585df83cb35019b3007d6fe8cbc9ac8000b51b0d7cc31ab283cce1a1e",
+        "size": 112
+      },
+      {
+        "path": "phylib/stats/ccg.py",
+        "sha256": "1c1f0d15117e837a9b243a455931be18d0b335982094001de7da9ef358338a32",
+        "size": 6193
+      },
+      {
+        "path": "phylib/stats/clusters.py",
+        "sha256": "9350004d25afc33b67ef653eae5fc66f654e205002f84545393b9fb74f8c23ab",
+        "size": 2527
+      },
+      {
+        "path": "phylib/stats/tests/__init__.py",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      },
+      {
+        "path": "phylib/stats/tests/test_ccg.py",
+        "sha256": "fcaefd0036ae4713799137233647189baec8bdc3e0f7d5b7ff647e13f6e1a0e8",
+        "size": 5818
+      },
+      {
+        "path": "phylib/stats/tests/test_clusters.py",
+        "sha256": "6961b611bf51e758be2faff1270e88e19635acbe43dc039c3d5ea6e86f2e5a68",
+        "size": 3929
+      },
+      {
+        "path": "phylib/utils/__init__.py",
+        "sha256": "89d1a7bd172744f8f894d3990e5cd0217fde9a06f229ac651487a3793e65ad39",
+        "size": 423
+      },
+      {
+        "path": "phylib/utils/_misc.py",
+        "sha256": "0d8ae879506259fb51dc265ce8201bd35925c3db525ddc4abe636193e97e77c6",
+        "size": 13535
+      },
+      {
+        "path": "phylib/utils/_types.py",
+        "sha256": "ada73cc983896b69f1e8988bc4261aa956779fafb5988709c6ae460cf51826d0",
+        "size": 3109
+      },
+      {
+        "path": "phylib/utils/event.py",
+        "sha256": "f35740f593ee1567feb1e048cb8f39ec9a202cc721f97fb48e4091ce14b2b5db",
+        "size": 9521
+      },
+      {
+        "path": "phylib/utils/geometry.py",
+        "sha256": "4b03e4334740fbcb12bc0e576b24da1bbb25ec189cc9ea82c94ef7287316e26d",
+        "size": 6879
+      },
+      {
+        "path": "phylib/utils/testing.py",
+        "sha256": "14bdc238ef25a297703e1baac8fccf081a4395956974f4a8baa2250b8c05a106",
+        "size": 2168
+      },
+      {
+        "path": "phylib/utils/tests/__init__.py",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      },
+      {
+        "path": "phylib/utils/tests/test_event.py",
+        "sha256": "669c889c427a0d8c0dea13c2d1b23a6ff04b90094089d9101e4c58853270cf72",
+        "size": 3344
+      },
+      {
+        "path": "phylib/utils/tests/test_geometry.py",
+        "sha256": "abd2e3d91607e58d47ab18e37b173e7cfce380f712a42ea85f7666de9881c71d",
+        "size": 4119
+      },
+      {
+        "path": "phylib/utils/tests/test_misc.py",
+        "sha256": "a312271f4e0d1d229d9682f46e0a606d314646d99d0696fec195960a30d93c73",
+        "size": 7347
+      },
+      {
+        "path": "phylib/utils/tests/test_testing.py",
+        "sha256": "a1a991782b4522d44d6ca4042ac8017b55407bc8f1f9900cb255ab48ec99a3c4",
+        "size": 1334
+      },
+      {
+        "path": "phylib/utils/tests/test_types.py",
+        "sha256": "34bb4eb517865cee4c3be72f32568d2bc932ecd8e3629dd06b2af3c420d98f86",
+        "size": 2721
+      },
+      {
+        "path": "phylib/utils/tests/test_version.py",
+        "sha256": "a30f92a523b3368e936da122b62b08d9cbf3dbd321fced298755f00cbec13830",
+        "size": 494
+      },
+      {
+        "path": "requirements-dev.txt",
+        "sha256": "3e4dbd9e3b94e6fc87c163282d8648e3980704d805c9c8531df02fba335d8e10",
+        "size": 54
+      },
+      {
+        "path": "requirements.txt",
+        "sha256": "8c6ab92c923cdd8a7c922fbc66a60bde4e2fb8979aa1a3e2555e84b420995e8c",
+        "size": 62
+      },
+      {
+        "path": "setup.cfg",
+        "sha256": "826772c4349099be8312dbaa3cc03a141f422f13b6e7465fe0fc0651edc8af17",
+        "size": 434
+      },
+      {
+        "path": "setup.py",
+        "sha256": "af4d4d47436501d3d3e709da0273b41aa6e2aa62fa69a40d0c145abf8a138237",
+        "size": 2151
+      }
+    ],
+    "sha256": "4cd998c2e2d6e01240c52f653553224ddd16e4c11d2e2fc95a5b76e857de35a1"
+  },
+  "vispy_imports": []
+}

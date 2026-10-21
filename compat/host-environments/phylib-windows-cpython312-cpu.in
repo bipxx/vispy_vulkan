@@ -1,0 +1,11 @@
+# Host package is the unchanged source archive in compat/hosts.lock.toml.
+# Dependency environment only; this does not admit a rendering fixture.
+numpy==2.5.3
+scipy
+dask
+requests
+responses
+tqdm
+toolz
+joblib
+mtscomp
