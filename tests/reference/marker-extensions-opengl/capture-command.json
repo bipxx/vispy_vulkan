@@ -1,0 +1,20 @@
+{
+  "argv": [
+    "build/oracle-napari/Scripts/python.exe",
+    "tools/oracle_marker_extensions_capture.py",
+    "--kind",
+    "upstream",
+    "--output",
+    "tests/reference/marker-extensions-opengl"
+  ],
+  "authoring_sha256": "49249b73ffecfaacfac05effaf49cab00b5656516288a23489b3d7e333fc212e",
+  "candidate_capture": false,
+  "cwd": "C:\\Users\\HEQ\\Projects\\vispy_vulkan",
+  "kind": "upstream",
+  "parent_log": "capture.log",
+  "protected_native_before": {
+    "src/vispy/_dawn.cp312-win_amd64.pyd": "028ccceb6f8e7842ea2dfde227a1a12cf13568e533f3214e79c63c065548ddad",
+    "src/vispy/visuals/text/_sdf_cpu.cp312-win_amd64.pyd": "6d993cee8fb963d51276674e70a6de71b102d3f9d067f96570600b1e989425a0"
+  },
+  "schema": 1
+}

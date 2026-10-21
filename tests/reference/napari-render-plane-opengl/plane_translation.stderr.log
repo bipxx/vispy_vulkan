@@ -1,0 +1,49 @@
+WARNING: SetProcessDpiAwarenessContext() failed: Access is denied.
+Qt's default DPI awareness context is DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE_V2. If you know what you are doing, you can overwrite this default using qt.conf (https://doc.qt.io/qt-6/highdpi.html#configuring-windows).
+C:\Users\HEQ\Projects\vispy_vulkan\build\host-environments\napari-threedee-cpython312-pyqt6-packaged\Lib\site-packages\pydantic\_internal\_config.py:408: UserWarning: Valid config keys have changed in V2:
+* 'allow_mutation' has been removed
+  warnings.warn(message, UserWarning)
+C:\Users\HEQ\Projects\vispy_vulkan\build\host-environments\napari-threedee-cpython312-pyqt6-packaged\Lib\site-packages\pydantic\_internal\_config.py:408: UserWarning: Valid config keys have changed in V2:
+* 'allow_mutation' has been removed
+  warnings.warn(message, UserWarning)
+Traceback (most recent call last):
+  File "C:\Users\HEQ\Projects\vispy_vulkan\tools\oracle_napari_render_plane_capture.py", line 124, in main
+    image, commands, shaders, params, extras = render(args.worker)
+                                               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HEQ\Projects\vispy_vulkan\tools\fixture_napari_render_plane.py", line 115, in render
+    dock, widget = viewer.window.add_plugin_dock_widget("napari-threedee", WIDGET)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HEQ\Projects\vispy_vulkan\build\host-environments\napari-threedee-cpython312-pyqt6-packaged\Lib\site-packages\napari\_qt\qt_main_window.py", line 1124, in add_plugin_dock_widget
+    wdg = _instantiate_dock_widget(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HEQ\Projects\vispy_vulkan\build\host-environments\napari-threedee-cpython312-pyqt6-packaged\Lib\site-packages\napari\_qt\qt_main_window.py", line 1938, in _instantiate_dock_widget
+    return wdg_cls(**kwargs)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\HEQ\Projects\vispy_vulkan\build\host-environments\napari-threedee-cpython312-pyqt6-packaged\Lib\site-packages\napari_threedee\manipulators\_qt\qt_render_plane_manipulator.py", line 9, in __init__
+    super().__init__(model_class=RenderPlaneManipulator, viewer=viewer, *args, **kwargs)
+  File "C:\Users\HEQ\Projects\vispy_vulkan\build\host-environments\napari-threedee-cpython312-pyqt6-packaged\Lib\site-packages\napari_threedee\_backend\threedee_widget_base.py", line 19, in __init__
+    self.model: N3dComponent = model_class(viewer, enabled=False)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HEQ\Projects\vispy_vulkan\build\host-environments\napari-threedee-cpython312-pyqt6-packaged\Lib\site-packages\napari_threedee\manipulators\render_plane_manipulator.py", line 13, in __init__
+    super().__init__(viewer, layer, rotator_axes='xyz', translator_axes='z', enabled=enabled)
+  File "C:\Users\HEQ\Projects\vispy_vulkan\build\host-environments\napari-threedee-cpython312-pyqt6-packaged\Lib\site-packages\napari_threedee\manipulators\base_manipulator.py", line 50, in __init__
+    self._backend = NapariManipulatorBackend(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HEQ\Projects\vispy_vulkan\build\host-environments\napari-threedee-cpython312-pyqt6-packaged\Lib\site-packages\napari_threedee\_backend\manipulator\napari_manipulator_backend.py", line 32, in __init__
+    self.vispy_visual_data = ManipulatorVisualData.from_manipulator(self.manipulator_model)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HEQ\Projects\vispy_vulkan\build\host-environments\napari-threedee-cpython312-pyqt6-packaged\Lib\site-packages\napari_threedee\_backend\manipulator\vispy_visual_data.py", line 197, in from_manipulator
+    rotator_line_data = ManipulatorLineData.from_rotator_set(manipulator.rotators)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HEQ\Projects\vispy_vulkan\build\host-environments\napari-threedee-cpython312-pyqt6-packaged\Lib\site-packages\napari_threedee\_backend\manipulator\vispy_visual_data.py", line 73, in from_rotator_set
+    return sum(cls.from_rotator(rotator, n_segments=n_segments) for rotator in rotators)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HEQ\Projects\vispy_vulkan\build\host-environments\napari-threedee-cpython312-pyqt6-packaged\Lib\site-packages\napari_threedee\_backend\manipulator\vispy_visual_data.py", line 73, in <genexpr>
+    return sum(cls.from_rotator(rotator, n_segments=n_segments) for rotator in rotators)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HEQ\Projects\vispy_vulkan\build\host-environments\napari-threedee-cpython312-pyqt6-packaged\Lib\site-packages\napari_threedee\_backend\manipulator\vispy_visual_data.py", line 62, in from_rotator
+    colors = np.row_stack([rotator.axis.color for _ in vertices])
+             ^^^^^^^^^^^^
+  File "C:\Users\HEQ\Projects\vispy_vulkan\build\host-environments\napari-threedee-cpython312-pyqt6-packaged\Lib\site-packages\numpy\__init__.py", line 782, in __getattr__
+    raise AttributeError(f"module {__name__!r} has no attribute {attr!r}")
+AttributeError: module 'numpy' has no attribute 'row_stack'

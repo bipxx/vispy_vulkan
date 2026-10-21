@@ -1,0 +1,286 @@
+[
+  [
+    "CURRENT",
+    0,
+    1
+  ],
+  [
+    "FUNC",
+    "glViewport",
+    0,
+    0,
+    32,
+    24
+  ],
+  [
+    "FUNC",
+    "glDisable",
+    "cull_face"
+  ],
+  [
+    "FUNC",
+    "glDisable",
+    "blend"
+  ],
+  [
+    "FUNC",
+    "glDisable",
+    "depth_test"
+  ],
+  [
+    "FUNC",
+    "glDisable",
+    "scissor_test"
+  ],
+  [
+    "FUNC",
+    "glClearColor",
+    0.0,
+    0.0,
+    0.0,
+    1.0
+  ],
+  [
+    "FUNC",
+    "glClear",
+    16384
+  ],
+  [
+    "FUNC",
+    "glEnable",
+    "blend"
+  ],
+  [
+    "FUNC",
+    "glBlendFuncSeparate",
+    "src_alpha",
+    "one_minus_src_alpha",
+    "one",
+    "one_minus_src_alpha"
+  ],
+  [
+    "CREATE",
+    1,
+    "Program"
+  ],
+  [
+    "CREATE",
+    2,
+    "VertexShader"
+  ],
+  [
+    "DATA",
+    2,
+    0,
+    "#version 330\nin vec2 a_base;\nin vec3 a_tint;\nin float a_size;\nin vec2 a_offset;\nuniform vec2 u_viewport;\nuniform bool u_instanced;\nuniform int u_divisor;\nflat out vec3 v_color;\nvoid main() {\n    vec2 p = a_base + a_offset;\n    if (u_instanced) {\n        p += vec2(2 * gl_InstanceID, 2 * gl_VertexID);\n        if (u_divisor == 2) p.y += float(4 * (gl_InstanceID % 2));\n        v_color = gl_InstanceID % 2 == 0 ? a_tint : a_tint.bgr;\n    } else {\n        p.y += gl_VertexID % 2 == 1 ? 4.0 : 0.0;\n        int color = gl_VertexID % 4;\n        v_color = (color == 0 ? vec3(1, 0, 0) :\n                   color == 1 ? vec3(0, 1, 0) :\n                   color == 2 ? vec3(0, 0, 1) : vec3(1, 1, 0)) * a_tint;\n    }\n    gl_Position = vec4(p / u_viewport * 2.0 - 1.0, 0, 1);\n    gl_PointSize = a_size;\n}\n"
+  ],
+  [
+    "ATTACH",
+    1,
+    2
+  ],
+  [
+    "CREATE",
+    3,
+    "FragmentShader"
+  ],
+  [
+    "DATA",
+    3,
+    0,
+    "#version 330\nflat in vec3 v_color;\nuniform float u_alpha;\nout vec4 frag_color;\nvoid main() { frag_color = vec4(v_color, u_alpha); }\n"
+  ],
+  [
+    "ATTACH",
+    1,
+    3
+  ],
+  [
+    "LINK",
+    1
+  ],
+  [
+    "DELETE",
+    2
+  ],
+  [
+    "DELETE",
+    3
+  ],
+  [
+    "UNIFORM",
+    1,
+    "u_viewport",
+    "vec2",
+    {
+      "array": {
+        "bytes": 8,
+        "dtype": "<f4",
+        "sha256": "cc73abb4e5c4a85ec94b5d3687c307a6a5e57da80ba476bc20db032ce5085246",
+        "shape": [
+          2
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    1,
+    "u_instanced",
+    "bool",
+    {
+      "array": {
+        "bytes": 4,
+        "dtype": "<i4",
+        "sha256": "67abdd721024f0ff4e0b3f4c2fc13bc5bad42d0b7851d456d88d203d15aaa450",
+        "shape": [
+          1
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    1,
+    "u_divisor",
+    "int",
+    {
+      "array": {
+        "bytes": 4,
+        "dtype": "<i4",
+        "sha256": "67abdd721024f0ff4e0b3f4c2fc13bc5bad42d0b7851d456d88d203d15aaa450",
+        "shape": [
+          1
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    1,
+    "u_alpha",
+    "float",
+    {
+      "array": {
+        "bytes": 4,
+        "dtype": "<f4",
+        "sha256": "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c",
+        "shape": [
+          1
+        ]
+      }
+    }
+  ],
+  [
+    "ATTRIBUTE",
+    1,
+    "a_size",
+    "float",
+    [
+      0,
+      3.0
+    ],
+    null
+  ],
+  [
+    "CREATE",
+    4,
+    "VertexBuffer"
+  ],
+  [
+    "SIZE",
+    4,
+    56
+  ],
+  [
+    "DATA",
+    4,
+    0,
+    {
+      "array": {
+        "bytes": 56,
+        "dtype": "|V28",
+        "sha256": "61f5af4f0dbffeaa241313730ed79dc576dbe6cdda55238d6be8fbcc6f920257",
+        "shape": [
+          2
+        ]
+      }
+    }
+  ],
+  [
+    "ATTRIBUTE",
+    1,
+    "a_base",
+    "vec2",
+    [
+      4,
+      28,
+      4
+    ],
+    null
+  ],
+  [
+    "ATTRIBUTE",
+    1,
+    "a_tint",
+    "vec3",
+    [
+      4,
+      28,
+      16
+    ],
+    null
+  ],
+  [
+    "CREATE",
+    5,
+    "VertexBuffer"
+  ],
+  [
+    "SIZE",
+    5,
+    32
+  ],
+  [
+    "DATA",
+    5,
+    0,
+    {
+      "array": {
+        "bytes": 32,
+        "dtype": "|V8",
+        "sha256": "20032dcd380575a5133bd6bdbc62b04189ebfa4a900aeeed76ff18b78a22fc27",
+        "shape": [
+          4,
+          1
+        ]
+      }
+    }
+  ],
+  [
+    "ATTRIBUTE",
+    1,
+    "a_offset",
+    "vec2",
+    [
+      5,
+      8,
+      0
+    ],
+    1
+  ],
+  [
+    "DRAW",
+    1,
+    "points",
+    [
+      0,
+      2
+    ],
+    4
+  ],
+  [
+    "FUNC",
+    "glFinish"
+  ]
+]

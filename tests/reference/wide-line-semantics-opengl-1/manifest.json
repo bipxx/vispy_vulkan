@@ -1,0 +1,691 @@
+{
+  "authoring_sha256": "664f86d483fb672824fddb99d1b906cb4d458f67c63be51f35cde21b3a3a35ce",
+  "candidate_seen": false,
+  "comparison": "exact entire independently captured RGBA with unchanged analytic invariants",
+  "errors": {},
+  "fixtures": {
+    "clipped_noperspective_aliased": {
+      "authoring_sha256": "664f86d483fb672824fddb99d1b906cb4d458f67c63be51f35cde21b3a3a35ce",
+      "capture": {
+        "file": "clipped_noperspective_aliased.capture.json",
+        "sha256": "c7e2a8d5d3714f19775ea3e2e4cfd7303cac01eec2e488d2f45abd2ce7637b8f"
+      },
+      "dtype": "|u1",
+      "expanded_shaders": {
+        "file": "clipped_noperspective_aliased.shaders.json",
+        "sha256": "a69afc791bbd3f5d6b4915e538ddb0524c2b3a92e887d926fec1be3d67d30960"
+      },
+      "filtered_glir": {
+        "file": "clipped_noperspective_aliased.glir.json",
+        "sha256": "639b0cea54f0a62cd8b150d3fab142deec54bfbd1708c838217f8fc87e735a7a"
+      },
+      "observations": {
+        "file": "clipped_noperspective_aliased.observations.json",
+        "sha256": "c7d2e1da13aab2cb4f10265620a1f3ed8fb40e69a93f2956c67cf41dd3e842b6"
+      },
+      "parameters": {
+        "blend": true,
+        "case": "clipped_noperspective_aliased",
+        "clip_derivation": {
+          "homogeneous_first_parameter_at_left_and_right": [
+            0.1,
+            0.5
+          ],
+          "screen_first_parameter_at_left_and_right": [
+            0.25,
+            0.75
+          ],
+          "screen_fraction": "q=t*w1/((1-t)*w0+t*w1)",
+          "sections": [
+            "13.7.1",
+            "14.5.1"
+          ],
+          "source": "https://registry.khronos.org/OpenGL/specs/gl/glspec46.core.pdf"
+        },
+        "colors": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0,
+            1.0
+          ]
+        ],
+        "comparison": "exact entire independently captured RGBA frame, no mask/alignment/tolerance",
+        "cull_face": false,
+        "depth_test": false,
+        "intermediate_finish": false,
+        "line_smooth": false,
+        "line_width": 3.0,
+        "points": [
+          [
+            -16.0,
+            12.5
+          ],
+          [
+            48.0,
+            12.5
+          ]
+        ],
+        "primitive": "lines",
+        "private_state": null,
+        "qualifier": "noperspective",
+        "readbacks": 1,
+        "samples": 1,
+        "size": [
+          32,
+          24
+        ],
+        "stencil_test": false,
+        "weights": [
+          1.0,
+          3.0
+        ]
+      },
+      "process": {
+        "command": [
+          "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Scripts\\python.exe",
+          "-X",
+          "faulthandler",
+          "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\tools\\oracle_wide_line_semantics_capture.py",
+          "--output",
+          "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\tests\\reference\\wide-line-semantics-opengl-1",
+          "--worker",
+          "clipped_noperspective_aliased"
+        ],
+        "exit_code": 0,
+        "stderr": {
+          "file": "clipped_noperspective_aliased.stderr.log",
+          "sha256": "b1d8d1e72b862b2b97cd31253e5ea272299c884b4d8079ddfbf436853e425c15"
+        },
+        "stdout": {
+          "file": "clipped_noperspective_aliased.stdout.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "rgba": {
+        "file": "clipped_noperspective_aliased.npy",
+        "sha256": "226946dd9d2cefbc80bc2c996647bf2db6440d4e254b287bef1dc5aba8d1c565"
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ]
+    },
+    "clipped_noperspective_smooth": {
+      "authoring_sha256": "664f86d483fb672824fddb99d1b906cb4d458f67c63be51f35cde21b3a3a35ce",
+      "capture": {
+        "file": "clipped_noperspective_smooth.capture.json",
+        "sha256": "7c055809e9d08c30c0e5ab3be69bba947dfdcc79157fd05616d1bd3d2b8f2af2"
+      },
+      "dtype": "|u1",
+      "expanded_shaders": {
+        "file": "clipped_noperspective_smooth.shaders.json",
+        "sha256": "a69afc791bbd3f5d6b4915e538ddb0524c2b3a92e887d926fec1be3d67d30960"
+      },
+      "filtered_glir": {
+        "file": "clipped_noperspective_smooth.glir.json",
+        "sha256": "02d1ef7f3b8ed2028bb3c4c4dc640ad265dfe92a696c294e4fc4bfd96742b488"
+      },
+      "observations": {
+        "file": "clipped_noperspective_smooth.observations.json",
+        "sha256": "1fcb8620512216f142f11acc98c2b85c1c91c9d616c9f0c040142e7b979be168"
+      },
+      "parameters": {
+        "blend": true,
+        "case": "clipped_noperspective_smooth",
+        "clip_derivation": {
+          "homogeneous_first_parameter_at_left_and_right": [
+            0.1,
+            0.5
+          ],
+          "screen_first_parameter_at_left_and_right": [
+            0.25,
+            0.75
+          ],
+          "screen_fraction": "q=t*w1/((1-t)*w0+t*w1)",
+          "sections": [
+            "13.7.1",
+            "14.5.1"
+          ],
+          "source": "https://registry.khronos.org/OpenGL/specs/gl/glspec46.core.pdf"
+        },
+        "colors": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0,
+            1.0
+          ]
+        ],
+        "comparison": "exact entire independently captured RGBA frame, no mask/alignment/tolerance",
+        "cull_face": false,
+        "depth_test": false,
+        "intermediate_finish": false,
+        "line_smooth": true,
+        "line_width": 3.0,
+        "points": [
+          [
+            -16.0,
+            12.5
+          ],
+          [
+            48.0,
+            12.5
+          ]
+        ],
+        "primitive": "lines",
+        "private_state": null,
+        "qualifier": "noperspective",
+        "readbacks": 1,
+        "samples": 1,
+        "size": [
+          32,
+          24
+        ],
+        "stencil_test": false,
+        "weights": [
+          1.0,
+          3.0
+        ]
+      },
+      "process": {
+        "command": [
+          "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Scripts\\python.exe",
+          "-X",
+          "faulthandler",
+          "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\tools\\oracle_wide_line_semantics_capture.py",
+          "--output",
+          "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\tests\\reference\\wide-line-semantics-opengl-1",
+          "--worker",
+          "clipped_noperspective_smooth"
+        ],
+        "exit_code": 0,
+        "stderr": {
+          "file": "clipped_noperspective_smooth.stderr.log",
+          "sha256": "b1d8d1e72b862b2b97cd31253e5ea272299c884b4d8079ddfbf436853e425c15"
+        },
+        "stdout": {
+          "file": "clipped_noperspective_smooth.stdout.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "rgba": {
+        "file": "clipped_noperspective_smooth.npy",
+        "sha256": "226946dd9d2cefbc80bc2c996647bf2db6440d4e254b287bef1dc5aba8d1c565"
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ]
+    },
+    "clipped_perspective_aliased": {
+      "authoring_sha256": "664f86d483fb672824fddb99d1b906cb4d458f67c63be51f35cde21b3a3a35ce",
+      "capture": {
+        "file": "clipped_perspective_aliased.capture.json",
+        "sha256": "51ebb3d30f56ccfbbe02e0169bbfd0afb0cbc5ae1fb3ab2cef81682aa16fe52c"
+      },
+      "dtype": "|u1",
+      "expanded_shaders": {
+        "file": "clipped_perspective_aliased.shaders.json",
+        "sha256": "d27d0b2564ea30578af7e7e58bad1dc16307e2ba0253d8826258da108d746d4e"
+      },
+      "filtered_glir": {
+        "file": "clipped_perspective_aliased.glir.json",
+        "sha256": "ca5dc899a8b12e5ecfc6a775a74b6bee0fae1b6b181df9f4b72ca6cac06d1134"
+      },
+      "observations": {
+        "file": "clipped_perspective_aliased.observations.json",
+        "sha256": "c7d2e1da13aab2cb4f10265620a1f3ed8fb40e69a93f2956c67cf41dd3e842b6"
+      },
+      "parameters": {
+        "blend": true,
+        "case": "clipped_perspective_aliased",
+        "clip_derivation": {
+          "homogeneous_first_parameter_at_left_and_right": [
+            0.1,
+            0.5
+          ],
+          "screen_first_parameter_at_left_and_right": [
+            0.25,
+            0.75
+          ],
+          "screen_fraction": "q=t*w1/((1-t)*w0+t*w1)",
+          "sections": [
+            "13.7.1",
+            "14.5.1"
+          ],
+          "source": "https://registry.khronos.org/OpenGL/specs/gl/glspec46.core.pdf"
+        },
+        "colors": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0,
+            1.0
+          ]
+        ],
+        "comparison": "exact entire independently captured RGBA frame, no mask/alignment/tolerance",
+        "cull_face": false,
+        "depth_test": false,
+        "intermediate_finish": false,
+        "line_smooth": false,
+        "line_width": 3.0,
+        "points": [
+          [
+            -16.0,
+            12.5
+          ],
+          [
+            48.0,
+            12.5
+          ]
+        ],
+        "primitive": "lines",
+        "private_state": null,
+        "qualifier": "smooth",
+        "readbacks": 1,
+        "samples": 1,
+        "size": [
+          32,
+          24
+        ],
+        "stencil_test": false,
+        "weights": [
+          1.0,
+          3.0
+        ]
+      },
+      "process": {
+        "command": [
+          "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Scripts\\python.exe",
+          "-X",
+          "faulthandler",
+          "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\tools\\oracle_wide_line_semantics_capture.py",
+          "--output",
+          "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\tests\\reference\\wide-line-semantics-opengl-1",
+          "--worker",
+          "clipped_perspective_aliased"
+        ],
+        "exit_code": 0,
+        "stderr": {
+          "file": "clipped_perspective_aliased.stderr.log",
+          "sha256": "b1d8d1e72b862b2b97cd31253e5ea272299c884b4d8079ddfbf436853e425c15"
+        },
+        "stdout": {
+          "file": "clipped_perspective_aliased.stdout.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "rgba": {
+        "file": "clipped_perspective_aliased.npy",
+        "sha256": "6c3a1b4f45febc6bf19bcc12f2af19f99287f6f62c5cec0f2ac9ee77bb577942"
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ]
+    },
+    "clipped_perspective_smooth": {
+      "authoring_sha256": "664f86d483fb672824fddb99d1b906cb4d458f67c63be51f35cde21b3a3a35ce",
+      "capture": {
+        "file": "clipped_perspective_smooth.capture.json",
+        "sha256": "2d7f5827eb2d00a75a52141b2ea3a8f437a8ceaedf69b592da4df2a27053893e"
+      },
+      "dtype": "|u1",
+      "expanded_shaders": {
+        "file": "clipped_perspective_smooth.shaders.json",
+        "sha256": "d27d0b2564ea30578af7e7e58bad1dc16307e2ba0253d8826258da108d746d4e"
+      },
+      "filtered_glir": {
+        "file": "clipped_perspective_smooth.glir.json",
+        "sha256": "1b3533e9f65f4bf92bb57207e4605ecb379d8eb30e3e67224cd475b5d852a74d"
+      },
+      "observations": {
+        "file": "clipped_perspective_smooth.observations.json",
+        "sha256": "1fcb8620512216f142f11acc98c2b85c1c91c9d616c9f0c040142e7b979be168"
+      },
+      "parameters": {
+        "blend": true,
+        "case": "clipped_perspective_smooth",
+        "clip_derivation": {
+          "homogeneous_first_parameter_at_left_and_right": [
+            0.1,
+            0.5
+          ],
+          "screen_first_parameter_at_left_and_right": [
+            0.25,
+            0.75
+          ],
+          "screen_fraction": "q=t*w1/((1-t)*w0+t*w1)",
+          "sections": [
+            "13.7.1",
+            "14.5.1"
+          ],
+          "source": "https://registry.khronos.org/OpenGL/specs/gl/glspec46.core.pdf"
+        },
+        "colors": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0,
+            1.0
+          ]
+        ],
+        "comparison": "exact entire independently captured RGBA frame, no mask/alignment/tolerance",
+        "cull_face": false,
+        "depth_test": false,
+        "intermediate_finish": false,
+        "line_smooth": true,
+        "line_width": 3.0,
+        "points": [
+          [
+            -16.0,
+            12.5
+          ],
+          [
+            48.0,
+            12.5
+          ]
+        ],
+        "primitive": "lines",
+        "private_state": null,
+        "qualifier": "smooth",
+        "readbacks": 1,
+        "samples": 1,
+        "size": [
+          32,
+          24
+        ],
+        "stencil_test": false,
+        "weights": [
+          1.0,
+          3.0
+        ]
+      },
+      "process": {
+        "command": [
+          "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Scripts\\python.exe",
+          "-X",
+          "faulthandler",
+          "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\tools\\oracle_wide_line_semantics_capture.py",
+          "--output",
+          "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\tests\\reference\\wide-line-semantics-opengl-1",
+          "--worker",
+          "clipped_perspective_smooth"
+        ],
+        "exit_code": 0,
+        "stderr": {
+          "file": "clipped_perspective_smooth.stderr.log",
+          "sha256": "b1d8d1e72b862b2b97cd31253e5ea272299c884b4d8079ddfbf436853e425c15"
+        },
+        "stdout": {
+          "file": "clipped_perspective_smooth.stdout.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "rgba": {
+        "file": "clipped_perspective_smooth.npy",
+        "sha256": "6c3a1b4f45febc6bf19bcc12f2af19f99287f6f62c5cec0f2ac9ee77bb577942"
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ]
+    },
+    "private_state_aliased": {
+      "authoring_sha256": "664f86d483fb672824fddb99d1b906cb4d458f67c63be51f35cde21b3a3a35ce",
+      "capture": {
+        "file": "private_state_aliased.capture.json",
+        "sha256": "cbaebed103e96dfa543c913b9450138f96522f330a9c664ec1892533e490d458"
+      },
+      "dtype": "|u1",
+      "expanded_shaders": {
+        "file": "private_state_aliased.shaders.json",
+        "sha256": "d0eaa6105aa18a82e94c862943c97e8308f080b0e662810a90c0c469897ef2ab"
+      },
+      "filtered_glir": {
+        "file": "private_state_aliased.glir.json",
+        "sha256": "a6ac0013f20c1a58677528e12f7b3da460ed5677f327e44fd79d4c6268950b61"
+      },
+      "observations": {
+        "file": "private_state_aliased.observations.json",
+        "sha256": "c7d2e1da13aab2cb4f10265620a1f3ed8fb40e69a93f2956c67cf41dd3e842b6"
+      },
+      "parameters": {
+        "blend": true,
+        "case": "private_state_aliased",
+        "clip_derivation": null,
+        "colors": null,
+        "comparison": "exact entire independently captured RGBA frame, no mask/alignment/tolerance",
+        "cull_face": false,
+        "depth_test": false,
+        "intermediate_finish": false,
+        "line_smooth": false,
+        "line_width": 3.0,
+        "points": [
+          [
+            4.5,
+            6.5
+          ],
+          [
+            28.5,
+            6.5
+          ]
+        ],
+        "primitive": "lines",
+        "private_state": "per-invocation initialized zero; one helper increments to one and leaves original position unchanged",
+        "qualifier": "flat",
+        "readbacks": 1,
+        "samples": 1,
+        "size": [
+          32,
+          24
+        ],
+        "stencil_test": false,
+        "weights": [
+          1.0,
+          1.0
+        ]
+      },
+      "process": {
+        "command": [
+          "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Scripts\\python.exe",
+          "-X",
+          "faulthandler",
+          "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\tools\\oracle_wide_line_semantics_capture.py",
+          "--output",
+          "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\tests\\reference\\wide-line-semantics-opengl-1",
+          "--worker",
+          "private_state_aliased"
+        ],
+        "exit_code": 0,
+        "stderr": {
+          "file": "private_state_aliased.stderr.log",
+          "sha256": "b1d8d1e72b862b2b97cd31253e5ea272299c884b4d8079ddfbf436853e425c15"
+        },
+        "stdout": {
+          "file": "private_state_aliased.stdout.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "rgba": {
+        "file": "private_state_aliased.npy",
+        "sha256": "d3fb8379d82452930287e9b4618d833ed2f471b9abf20ca8a8b7e0d4b98bf711"
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ]
+    },
+    "private_state_smooth": {
+      "authoring_sha256": "664f86d483fb672824fddb99d1b906cb4d458f67c63be51f35cde21b3a3a35ce",
+      "capture": {
+        "file": "private_state_smooth.capture.json",
+        "sha256": "72424de7da3a631c555567fddfac217b0e1a8c67ef23d4a7b4f2d1403a3f6d0a"
+      },
+      "dtype": "|u1",
+      "expanded_shaders": {
+        "file": "private_state_smooth.shaders.json",
+        "sha256": "d0eaa6105aa18a82e94c862943c97e8308f080b0e662810a90c0c469897ef2ab"
+      },
+      "filtered_glir": {
+        "file": "private_state_smooth.glir.json",
+        "sha256": "4cedaa3f3a162f635067b46da39b5104642e900bdd0e55b7ec440d9ea0c91ef2"
+      },
+      "observations": {
+        "file": "private_state_smooth.observations.json",
+        "sha256": "1fcb8620512216f142f11acc98c2b85c1c91c9d616c9f0c040142e7b979be168"
+      },
+      "parameters": {
+        "blend": true,
+        "case": "private_state_smooth",
+        "clip_derivation": null,
+        "colors": null,
+        "comparison": "exact entire independently captured RGBA frame, no mask/alignment/tolerance",
+        "cull_face": false,
+        "depth_test": false,
+        "intermediate_finish": false,
+        "line_smooth": true,
+        "line_width": 3.0,
+        "points": [
+          [
+            4.5,
+            6.5
+          ],
+          [
+            28.5,
+            6.5
+          ]
+        ],
+        "primitive": "lines",
+        "private_state": "per-invocation initialized zero; one helper increments to one and leaves original position unchanged",
+        "qualifier": "flat",
+        "readbacks": 1,
+        "samples": 1,
+        "size": [
+          32,
+          24
+        ],
+        "stencil_test": false,
+        "weights": [
+          1.0,
+          1.0
+        ]
+      },
+      "process": {
+        "command": [
+          "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Scripts\\python.exe",
+          "-X",
+          "faulthandler",
+          "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\tools\\oracle_wide_line_semantics_capture.py",
+          "--output",
+          "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\tests\\reference\\wide-line-semantics-opengl-1",
+          "--worker",
+          "private_state_smooth"
+        ],
+        "exit_code": 0,
+        "stderr": {
+          "file": "private_state_smooth.stderr.log",
+          "sha256": "b1d8d1e72b862b2b97cd31253e5ea272299c884b4d8079ddfbf436853e425c15"
+        },
+        "stdout": {
+          "file": "private_state_smooth.stdout.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "rgba": {
+        "file": "private_state_smooth.npy",
+        "sha256": "e15236605381392e79157b8a57781852eb1c103802ea633ac2fb60b0d9d34fce"
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ]
+    }
+  },
+  "kind": "upstream",
+  "provenance": {
+    "capture_source_sha256": "66ae25247831c184f38f2c7a2ff151b940013087104907523b11e1ed2b9b151a",
+    "cmake": null,
+    "distribution_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Lib\\site-packages",
+    "distribution_record_sha256": "455e084c0cb78e19e41c79d08a57d533b07d52b3248c2ebd4b73e80584b067cc",
+    "environment": {
+      "PYTHONPATH": null,
+      "QT_API": "pyqt6",
+      "QT_QPA_PLATFORM": "windows",
+      "QT_SCALE_FACTOR": "1",
+      "VISPY_PYQT5_SHARE_CONTEXT": "true"
+    },
+    "fixture_source_sha256": "37797259727afd9c6b15c7074319b935dcddb330deb2b6c99a03c8df6f36fddb",
+    "kind": "upstream",
+    "line_semantics_capture_sha256": "b2f2bf03f9d1d084f8946721b75fa2e98ce7425a714abc5ce24f1be59b683fc7",
+    "line_semantics_fixture_sha256": "1117ee6c4562acf7a84845dd22389f39411c1a0f4bd9dff61756d2216c4d4da5",
+    "machine": "AMD64",
+    "numpy_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Lib\\site-packages\\numpy\\__init__.py",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.12.8",
+    "python_executable": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Scripts\\python.exe",
+    "qt_runtime": "6.11.2",
+    "regenerate": "uv venv build/oracle-opengl --python 3.12; uv pip install --python build/oracle-opengl/Scripts/python.exe -r tools/oracle_requirements.txt; build/oracle-opengl/Scripts/python.exe tools/oracle_capture.py --kind upstream --output tests/reference/opengl",
+    "renderer": {
+      "renderer": "NVIDIA GeForce RTX 4090/PCIe/SSE2",
+      "vendor": "NVIDIA Corporation",
+      "version": "4.6.0 NVIDIA 595.79"
+    },
+    "requirements_sha256": "a784b5a5e2b4ea201578acddc41e28e0997275ea2542642148322153cd240ffd",
+    "source_sha256": {
+      "gloo/buffer.py": "68e37b184b74814e0ae7a6f4f754c9f0c0af5b4e6369a60a8357c70da974e138",
+      "gloo/context.py": "6afc97492f65a5e865723535206fb769a1c4b55694d69786123fdee78bef992a",
+      "gloo/glir.py": "a3bb8a75b33f47420e9c100b8a6d81037a2f03c905e6c9f7d8399f4fb2eb8f7c",
+      "gloo/program.py": "4d3ab8e36260f9b5dc50f6aec075b12d642535f3cb8f49bfd4a27056301d5492",
+      "gloo/texture.py": "9f6d5f2e448e02c0ca4d66c65d17ddcdb6c0182bb8f15f1292a427f5a9faf6bc",
+      "gloo/wrappers.py": "73dbb5eb8ca78b2822266d272ffb14db9fcadd7a56512843209187714c9e8dcc"
+    },
+    "upstream_commit": "117b054598f4758b598f4b8f48feea48c11fe7b0",
+    "versions": {
+      "PyOpenGL": "3.1.10",
+      "PyQt6": "6.11.0",
+      "PyQt6-Qt6": "6.11.2",
+      "PyQt6-sip": "13.13.0",
+      "freetype-py": "2.5.1",
+      "hsluv": "5.0.4",
+      "kiwisolver": "1.5.1",
+      "numpy": "2.5.3",
+      "packaging": "26.3",
+      "vispy": "0.17.0"
+    },
+    "vispy_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Lib\\site-packages\\vispy",
+    "vispy_version": "0.17.0"
+  },
+  "schema": 1
+}

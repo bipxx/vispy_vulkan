@@ -1,0 +1,18 @@
+#include <metal_stdlib>
+using namespace metal;
+
+struct tint_module_vars_struct {
+  device uint* tint_member;
+};
+const constant array<uint, 4> v_1 = array<uint, 4>{0u, 1u, 2u, 4u};
+
+uint foo(tint_module_vars_struct tint_module_vars) {
+  return v_1[min((*tint_module_vars.tint_member), 3u)];
+}
+
+[[max_total_threads_per_threadgroup(1)]]
+kernel void v_2(device uint* v_3 [[buffer(0)]]) {
+  tint_module_vars_struct const tint_module_vars = tint_module_vars_struct{.tint_member=v_3};
+  uint const v = v_1[min((*tint_module_vars.tint_member), 3u)];
+  (*tint_module_vars.tint_member) = (v + foo(tint_module_vars));
+}

@@ -1,0 +1,10 @@
+WARNING: SetProcessDpiAwarenessContext() failed: Access is denied.
+Qt's default DPI awareness context is DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE_V2. If you know what you are doing, you can overwrite this default using qt.conf (https://doc.qt.io/qt-6/highdpi.html#configuring-windows).
+Traceback (most recent call last):
+  File "C:\Users\HEQ\Projects\vispy_vulkan\tools\oracle_line_endpoints_capture.py", line 130, in capture_case
+    actual, raw, observations = f.capture_upstream(name, ROOT)
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HEQ\Projects\vispy_vulkan\tools\fixture_line_endpoints.py", line 546, in capture_upstream
+    query = int(GL.glGenQueries(1))
+            ^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: only 0-dimensional arrays can be converted to Python scalars

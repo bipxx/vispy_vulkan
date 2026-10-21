@@ -1,0 +1,29 @@
+#include <metal_stdlib>
+using namespace metal;
+
+struct tint_packed_vec3_f16_array_element {
+  /* 0x0000 */ packed_half3 packed;
+  /* 0x0006 */ array<int8_t, 2> tint_pad_1;
+};
+
+struct S_packed_vec3 {
+  /* 0x0000 */ int before;
+  /* 0x0004 */ array<int8_t, 4> tint_pad;
+  /* 0x0008 */ array<tint_packed_vec3_f16_array_element, 3> m;
+  /* 0x0020 */ array<int8_t, 32> tint_pad_2;
+  /* 0x0040 */ int after;
+  /* 0x0044 */ array<int8_t, 60> tint_pad_3;
+};
+
+struct tint_module_vars_struct {
+  const constant array<S_packed_vec3, 4>* u;
+};
+
+[[max_total_threads_per_threadgroup(1)]]
+kernel void f(const constant array<S_packed_vec3, 4>* u [[buffer(0)]]) {
+  tint_module_vars_struct const tint_module_vars = tint_module_vars_struct{.u=u};
+  array<tint_packed_vec3_f16_array_element, 3> const v = (*tint_module_vars.u)[2].m;
+  half3x3 const t = transpose(half3x3(half3(v[0u].packed), half3(v[1u].packed), half3(v[2u].packed)));
+  half const l = length(half3((*tint_module_vars.u)[0].m[1].packed).zxy);
+  half const a = abs((*tint_module_vars.u)[0].m[1].packed.z);
+}

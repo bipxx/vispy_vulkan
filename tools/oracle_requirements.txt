@@ -1,0 +1,10 @@
+vispy==0.17.0
+numpy==2.5.3
+PyQt6==6.11.0
+PyQt6-Qt6==6.11.2
+PyQt6-sip==13.13.0
+PyOpenGL==3.1.10
+freetype-py==2.5.1
+hsluv==5.0.4
+kiwisolver==1.5.1
+packaging==26.3

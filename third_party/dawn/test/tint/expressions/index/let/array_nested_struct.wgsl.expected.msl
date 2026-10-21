@@ -1,0 +1,17 @@
+#include <metal_stdlib>
+using namespace metal;
+
+struct S {
+  int m;
+  array<uint, 4> n;
+};
+
+uint f() {
+  array<S, 2> const a = array<S, 2>{};
+  return a[1].n[1];
+}
+
+[[max_total_threads_per_threadgroup(1)]]
+kernel void v() {
+  (f());
+}

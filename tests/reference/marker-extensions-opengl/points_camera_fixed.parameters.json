@@ -1,0 +1,151 @@
+{
+  "antialias": 0.0,
+  "api_scope": "public scene Markers / MarkersVisual.set_data, camera.rect and SceneCanvas FBO/draw APIs",
+  "camera_depth_value": 100.0,
+  "camera_flip": [
+    false,
+    true,
+    false
+  ],
+  "camera_rect": [
+    0,
+    0,
+    128,
+    96
+  ],
+  "case": "points_camera_fixed",
+  "clear_depth": 1.0,
+  "comparison": {
+    "candidate_alignment_or_color_fit": false,
+    "full_frame_exact": true,
+    "landmarks": "fixed analytic RGBA values or fixed channel bounds; no edge exclusions"
+  },
+  "dependent_intermediate_present_or_finish": false,
+  "depth_func": "less",
+  "dpi": 96,
+  "final_camera_rect": [
+    16,
+    12,
+    64,
+    48
+  ],
+  "input": {
+    "edge_color": [
+      0,
+      0,
+      0,
+      1
+    ],
+    "edge_width": 0.0,
+    "face_color": {
+      "bytes": 32,
+      "dtype": "<f4",
+      "dtype_descr": [
+        [
+          "",
+          "<f4"
+        ]
+      ],
+      "sha256": "f4eacc0d8a8a9596fbb86861f03830a57c2914484ab46a0459387736ff719de7",
+      "shape": [
+        2,
+        4
+      ]
+    },
+    "pos": {
+      "bytes": 24,
+      "dtype": "<f4",
+      "dtype_descr": [
+        [
+          "",
+          "<f4"
+        ]
+      ],
+      "sha256": "a4d1284a750940eb060ddf8f062ecc2a007f6df2d1be3d0464e35bebb4c7b22a",
+      "shape": [
+        2,
+        3
+      ]
+    },
+    "size": 10.0,
+    "symbol": "disc"
+  },
+  "landmarks": [
+    {
+      "column": 2,
+      "rgba": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "row": 2
+    },
+    {
+      "column": 32,
+      "rgba": [
+        255,
+        0,
+        0,
+        255
+      ],
+      "row": 48
+    },
+    {
+      "column": 80,
+      "rgba": [
+        0,
+        255,
+        0,
+        255
+      ],
+      "row": 24
+    },
+    {
+      "column": 39,
+      "rgba": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "row": 48
+    },
+    {
+      "column": 46,
+      "rgba": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "row": 48
+    },
+    {
+      "column": 54,
+      "rgba": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "row": 48
+    }
+  ],
+  "method": "points",
+  "prewarm_submission_without_read": true,
+  "readbacks": 1,
+  "samples": 1,
+  "scaling": "fixed",
+  "size": [
+    128,
+    96
+  ],
+  "spherical": false,
+  "visual_scale": [
+    2,
+    2,
+    1
+  ],
+  "workflow": "camera_fixed"
+}

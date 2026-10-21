@@ -1,0 +1,49 @@
+#include <metal_stdlib>
+using namespace metal;
+
+struct tint_module_vars_struct {
+  device array<uint, 1>* buf;
+};
+
+int g() {
+  return 0;
+}
+
+int f() {
+  {
+    uint2 tint_loop_idx = uint2(4294967295u);
+    while(true) {
+      if (all((tint_loop_idx == uint2(0u)))) {
+        break;
+      }
+      (g());
+      break;
+    }
+  }
+  int const o = g();
+  return 0;
+}
+
+[[max_total_threads_per_threadgroup(1)]]
+kernel void v(device array<uint, 1>* buf [[buffer(0)]]) {
+  tint_module_vars_struct const tint_module_vars = tint_module_vars_struct{.buf=buf};
+  {
+    uint2 tint_loop_idx = uint2(4294967295u);
+    while(true) {
+      if (all((tint_loop_idx == uint2(0u)))) {
+        break;
+      }
+      if (((*tint_module_vars.buf)[0] == 0u)) {
+        break;
+      }
+      int s = f();
+      (*tint_module_vars.buf)[0] = 0u;
+      {
+        uint const tint_low_inc_1 = (tint_loop_idx.x - 1u);
+        tint_loop_idx.x = tint_low_inc_1;
+        uint const tint_carry_1 = uint((tint_low_inc_1 == 4294967295u));
+        tint_loop_idx.y = (tint_loop_idx.y - tint_carry_1);
+      }
+    }
+  }
+}

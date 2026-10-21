@@ -1,0 +1,102 @@
+{
+  "actual_marker_uploads": [
+    {
+      "bytes": 112,
+      "dtype": "|V56",
+      "dtype_descr": [
+        [
+          "a_position",
+          "<f4",
+          [
+            3
+          ]
+        ],
+        [
+          "a_fg_color",
+          "<f4",
+          [
+            4
+          ]
+        ],
+        [
+          "a_bg_color",
+          "<f4",
+          [
+            4
+          ]
+        ],
+        [
+          "a_size",
+          "<f4"
+        ],
+        [
+          "a_edgewidth",
+          "<f4"
+        ],
+        [
+          "a_symbol",
+          "<f4"
+        ]
+      ],
+      "sha256": "21f464b6d39c76a54488d972cb17046481b3ce2778ab87924216bcb0bbc6d36c",
+      "shape": [
+        2
+      ]
+    }
+  ],
+  "dependent_trace_start": 72,
+  "gl_samples": 0,
+  "marker_vbo_id": 9,
+  "physical_samples": 1,
+  "point_size_range": [
+    1.0,
+    2047.0
+  ],
+  "readbacks": 1,
+  "sample_source": "OpenGL driver GL_SAMPLES",
+  "structured_revisions": [
+    {
+      "bytes": 112,
+      "dtype": "|V56",
+      "dtype_descr": [
+        [
+          "a_position",
+          "<f4",
+          [
+            3
+          ]
+        ],
+        [
+          "a_fg_color",
+          "<f4",
+          [
+            4
+          ]
+        ],
+        [
+          "a_bg_color",
+          "<f4",
+          [
+            4
+          ]
+        ],
+        [
+          "a_size",
+          "<f4"
+        ],
+        [
+          "a_edgewidth",
+          "<f4"
+        ],
+        [
+          "a_symbol",
+          "<f4"
+        ]
+      ],
+      "sha256": "21f464b6d39c76a54488d972cb17046481b3ce2778ab87924216bcb0bbc6d36c",
+      "shape": [
+        2
+      ]
+    }
+  ]
+}

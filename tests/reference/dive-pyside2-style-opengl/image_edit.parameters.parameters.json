@@ -1,0 +1,132 @@
+{
+  "artist": "pixels",
+  "axis": "2d",
+  "before_landmarks": {
+    "left": {
+      "pixel": [
+        229,
+        175
+      ],
+      "rgba": [
+        255,
+        255,
+        255,
+        255
+      ],
+      "world": [
+        -0.1875,
+        0,
+        0
+      ]
+    },
+    "right": {
+      "pixel": [
+        399,
+        175
+      ],
+      "rgba": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "world": [
+        0.1875,
+        0,
+        0
+      ]
+    }
+  },
+  "canvas_offset": [
+    0,
+    0
+  ],
+  "canvas_size": [
+    618,
+    392
+  ],
+  "canvas_theme": "dark",
+  "case": "image_edit",
+  "device_pixel_ratio": 1.0,
+  "grid": false,
+  "inputs": [
+    {
+      "dtype": "<f4",
+      "edited": false,
+      "field": "values",
+      "sha256": "480eac44b404a04d2cb808606b10039b28745bb18cc66191e4416b3f90e7ac7e",
+      "shape": [
+        8,
+        8
+      ]
+    },
+    {
+      "dtype": "<f4",
+      "edited": true,
+      "field": "values",
+      "sha256": "85b0f7fed999a852401999516ee94345a101fd013e833f8aa76e2c168fd35a03",
+      "shape": [
+        8,
+        8
+      ]
+    }
+  ],
+  "landmarks": {
+    "left": {
+      "pixel": [
+        229,
+        175
+      ],
+      "rgba": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "world": [
+        -0.1875,
+        0,
+        0
+      ]
+    },
+    "right": {
+      "pixel": [
+        399,
+        175
+      ],
+      "rgba": [
+        255,
+        255,
+        255,
+        255
+      ],
+      "world": [
+        0.1875,
+        0,
+        0
+      ]
+    }
+  },
+  "native_mro": [
+    "CanvasBackendDesktop",
+    "QtBaseCanvasBackend",
+    "BaseCanvasBackend",
+    "QOpenGLWidget",
+    "QWidget",
+    "QObject",
+    "QPaintDevice",
+    "Object",
+    "object"
+  ],
+  "qt_font": "Arial,10,-1,5,50,0,0,0,0,0",
+  "qt_style": "fusion",
+  "screenshot_api": "DIVEWidget.take_screenshot",
+  "screenshot_size": [
+    618,
+    421
+  ],
+  "widget_size": [
+    640,
+    480
+  ]
+}

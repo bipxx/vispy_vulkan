@@ -1,0 +1,21 @@
+{
+  "abseil-LICENSE.txt": "f54fff0b905df5b3464527c652a30e903b172d6dcab4d89b5e6f105d5e4a4603",
+  "dawn-LICENSE.txt": "0493f897193af1796d5054659f45ec7d4c5af648fa67a99f01d30e55cc805abc",
+  "glslang-LICENSE.txt": "7d4c1655be3a4d99e8a4859335e28c8950f2e7f72dcf3eed3379846120f5bf47",
+  "nanobind-LICENSE.txt": "f305091a4e57805870b217a28ea4b1f16610eece8457d2370f822a9696b75836",
+  "OpenSans-Apache-2.0.txt": "f54fff0b905df5b3464527c652a30e903b172d6dcab4d89b5e6f105d5e4a4603",
+  "robin-map-LICENSE.txt": "1b69097c95e2fa5b011cd3754fa35e10f5ce68172877bc59b89523bcb1b9f951",
+  "spirv-headers-LICENSE.txt": "841a6e68e16bfc98db8eca98d7002d4f2b508c56ce865fd6f1726be30ed489eb",
+  "spirv-headers-MIT.txt": "e841940147d59e33874ee623a6a3ca0574364de359297fbc427b5824cde30957",
+  "spirv-tools-LICENSE.txt": "3ddf9be5c28fe27dad143a5dc76eea25222ad1dd68934a047064e56ed2fa40c5",
+  "THIRD-PARTY-NOTICES.txt": "5d0535f3b27d7fbe0326ef150f705a8c2e71c39e2ebea87fd0bf949859279333",
+  "vispy-LICENSE.txt": "a28bb857d763513c810ca843558c12cf97f64b990b855c1ce7f5e291e52fc25c",
+  "vulkan-headers-Apache-2.0.txt": "3ddf9be5c28fe27dad143a5dc76eea25222ad1dd68934a047064e56ed2fa40c5",
+  "vulkan-headers-LICENSE.txt": "a2d4407962c909f84807774cbfe9fad05a1ebe972472c08ed5ad43d482afd288",
+  "vulkan-headers-MIT.txt": "051daae2dae99c2b0fc9d8363cf704b9456ae0e3c89589ac755d506a0b2c10c3",
+  "vulkan-loader-LICENSE.txt": "557bd2cc07eff373f3f26c8d5726fefe8e7fc4add97796c2fbf24f74a200214a",
+  "vulkan-utility-libraries-Apache-2.0.txt": "3ddf9be5c28fe27dad143a5dc76eea25222ad1dd68934a047064e56ed2fa40c5",
+  "vulkan-utility-libraries-CC-BY-4.0.txt": "4500200b91acb1324538d8e8f9665d5f4142d3f1c5cd9730564cf1895b6170f7",
+  "vulkan-utility-libraries-LICENSE.txt": "fb0245cd3d866045abba509dc85905a7c2cd1f6642d679d9857e85deb82bfcd5",
+  "webgpu-headers-LICENSE.txt": "55fdaed683a2d7330a4102faf61f45ec12a0526aada329c4f89f7df0a523116a"
+}

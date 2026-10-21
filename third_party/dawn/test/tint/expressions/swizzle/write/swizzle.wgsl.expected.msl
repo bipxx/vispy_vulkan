@@ -1,0 +1,15 @@
+#include <metal_stdlib>
+using namespace metal;
+
+struct S {
+  array<float3, 3> val;
+};
+
+[[max_total_threads_per_threadgroup(1)]]
+kernel void a() {
+  int4 a_1 = int4(0);
+  a_1.x = 1;
+  a_1.z = 2;
+  S d = S{};
+  d.val[2].y = 3.0f;
+}

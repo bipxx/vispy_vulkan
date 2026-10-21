@@ -1,0 +1,147 @@
+{
+  "schema": 1,
+  "digest_algorithm": "sha256(sorted relative path + NUL + file SHA256 bytes)",
+  "dependencies": [
+    {
+      "name": "dawn",
+      "path": "third_party/dawn",
+      "revision": "499e5c6ff9b37d5de70c6493fb74c251e0d35c1c",
+      "tree_sha256": "facb3ed322bd327a45cb5e343e33bed8987347ce525cbc2e3949c6bffa53103a",
+      "file_count": 85899,
+      "exclude_directory_names": [
+        ".git",
+        "__pycache__",
+        "build",
+        "out",
+        ".cache",
+        "third_party"
+      ]
+    },
+    {
+      "name": "vispy",
+      "path": "third_party/parity/vispy",
+      "revision": "117b054598f4758b598f4b8f48feea48c11fe7b0",
+      "tree_sha256": "34cca44e484c5a2293dd3cb2bdfc232baeb22fdb7db299c729a84404eb932547",
+      "file_count": 838,
+      "exclude_directory_names": [
+        ".git",
+        "__pycache__",
+        "build",
+        "out",
+        ".cache"
+      ]
+    },
+    {
+      "name": "glslang",
+      "path": "third_party/dawn/third_party/glslang/src",
+      "revision": "23baa3f7b58f0dfdccec6755c53e85c31e52efba",
+      "tree_sha256": "be19fc06bdd11925cd21cd37ab6997f45d12fbc02baee0970b34e78d80ed1279",
+      "file_count": 3723,
+      "exclude_directory_names": [
+        ".git",
+        "__pycache__",
+        "build",
+        "out",
+        ".cache"
+      ]
+    },
+    {
+      "name": "spirv-headers",
+      "path": "third_party/dawn/third_party/spirv-headers/src",
+      "revision": "86f980c731e62ae4eaf383d320449d71687936bf",
+      "tree_sha256": "332665967c8276294ac54c88460a09138197b87f9885766d0d3356d97e43d466",
+      "file_count": 121,
+      "exclude_directory_names": [
+        ".git",
+        "__pycache__",
+        "build",
+        "out",
+        ".cache"
+      ]
+    },
+    {
+      "name": "spirv-tools",
+      "path": "third_party/dawn/third_party/spirv-tools/src",
+      "revision": "ce818d1f2db53916d89fa1fe0012237779480a9b",
+      "tree_sha256": "050bcfd4bb57498a73c685e476a9c476b59597ca24ed60761cf052fdc9fe3e68",
+      "file_count": 1756,
+      "exclude_directory_names": [
+        ".git",
+        "__pycache__",
+        "build",
+        "out",
+        ".cache"
+      ]
+    },
+    {
+      "name": "vulkan-headers",
+      "path": "third_party/dawn/third_party/vulkan-headers/src",
+      "revision": "c46850864f4661461b0f6cb9922c058ffea4915e",
+      "tree_sha256": "6952eaa4510e3fdce3a75597bf1dabedbda1d262a4e5ea911794f56ebde14fdf",
+      "file_count": 89,
+      "exclude_directory_names": [
+        ".git",
+        "__pycache__",
+        "build",
+        "out",
+        ".cache"
+      ]
+    },
+    {
+      "name": "vulkan-loader",
+      "path": "third_party/dawn/third_party/vulkan-loader/src",
+      "revision": "b82e310e99c20bfac8dd3123c9e939f81ce54b89",
+      "tree_sha256": "da9e52b153849f1575d882b7a59f23ee42a73dde8787abefa2fcfbac7b8e45f5",
+      "file_count": 292,
+      "exclude_directory_names": [
+        ".git",
+        "__pycache__",
+        "build",
+        "out",
+        ".cache"
+      ]
+    },
+    {
+      "name": "vulkan-utility-libraries",
+      "path": "third_party/dawn/third_party/vulkan-utility-libraries/src",
+      "revision": "90738f6edfa19561a978fc5f97543ba37075ba9d",
+      "tree_sha256": "d499b6f38ea3661bb388dfb1d6d2182b6a1dbf1ec0f23fff34ce61dd5ff29bf7",
+      "file_count": 87,
+      "exclude_directory_names": [
+        ".git",
+        "__pycache__",
+        "build",
+        "out",
+        ".cache"
+      ]
+    },
+    {
+      "name": "abseil-cpp",
+      "path": "third_party/dawn/third_party/abseil-cpp",
+      "revision": "af5aede14a0b4013be6890148d34e0fd7b1fac69",
+      "tree_sha256": "c1333e9a309e3a9662df285c56613d1ccf03163f6321c496a2033e8d2815a768",
+      "file_count": 1655,
+      "exclude_directory_names": [
+        ".git",
+        "__pycache__",
+        "build",
+        "out",
+        ".cache"
+      ]
+    },
+    {
+      "name": "webgpu-headers",
+      "path": "third_party/dawn/third_party/webgpu-headers/src",
+      "revision": "a1dc77409bb2b8bd80540cbf4b8db219e123e909",
+      "tree_sha256": "6c154a712c1aafcc9517a50cf4a7710243ce18b5c1b70c1236e42ad3060a07c3",
+      "file_count": 46,
+      "exclude_directory_names": [
+        ".git",
+        "__pycache__",
+        "build",
+        "out",
+        ".cache"
+      ]
+    }
+  ]
+}

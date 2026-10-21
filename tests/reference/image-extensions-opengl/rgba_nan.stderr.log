@@ -1,0 +1,32 @@
+WARNING: SetProcessDpiAwarenessContext() failed: Access is denied.
+Qt's default DPI awareness context is DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE_V2. If you know what you are doing, you can overwrite this default using qt.conf (https://doc.qt.io/qt-6/highdpi.html#configuring-windows).
+Traceback (most recent call last):
+  File "C:\Users\HEQ\Projects\vispy_vulkan\tools\oracle_image_extensions_capture.py", line 166, in main
+    image, commands, shaders, params = render(args.worker,
+                                       ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HEQ\Projects\vispy_vulkan\tools\fixture_image_extensions.py", line 420, in render
+    return _render_vispy(name, backend) if name in VISPY_CASES else _render_host(name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HEQ\Projects\vispy_vulkan\tools\fixture_image_extensions.py", line 255, in _render_vispy
+    visual = scene.visuals.Image(data, cmap="gray", clim=(10, 20) if data.ndim == 2 else (0, 1),
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HEQ\Projects\vispy_vulkan\build\oracle-napari\Lib\site-packages\vispy\scene\visuals.py", line 134, in __init__
+    subclass.__init__(self, *args, **kwargs)
+  File "C:\Users\HEQ\Projects\vispy_vulkan\build\oracle-napari\Lib\site-packages\vispy\visuals\image.py", line 304, in __init__
+    self._texture = self._init_texture(data, texture_format)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HEQ\Projects\vispy_vulkan\build\oracle-napari\Lib\site-packages\vispy\visuals\image.py", line 368, in _init_texture
+    tex = GPUScaledTexture2D(
+          ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HEQ\Projects\vispy_vulkan\build\oracle-napari\Lib\site-packages\vispy\visuals\_scalable_textures.py", line 73, in __init__
+    super().__init__(data, **texture_kwargs)
+  File "C:\Users\HEQ\Projects\vispy_vulkan\build\oracle-napari\Lib\site-packages\vispy\gloo\texture.py", line 543, in __init__
+    BaseTexture.__init__(self, data, format, resizable, interpolation,
+  File "C:\Users\HEQ\Projects\vispy_vulkan\build\oracle-napari\Lib\site-packages\vispy\gloo\texture.py", line 164, in __init__
+    self._resize(data.shape, format, internalformat)
+  File "C:\Users\HEQ\Projects\vispy_vulkan\build\oracle-napari\Lib\site-packages\vispy\gloo\texture.py", line 331, in _resize
+    internalformat = self._check_internalformat_change(internalformat, shape[-1])
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HEQ\Projects\vispy_vulkan\build\oracle-napari\Lib\site-packages\vispy\gloo\texture.py", line 314, in _check_internalformat_change
+    raise ValueError(
+ValueError: Invalid texture internalformat: 'rgbagba32f'. Allowed formats: {'r8': 1, 'r16': 1, 'r16f': 1, 'r32f': 1, 'rg8': 2, 'rg16': 2, 'rg16f': 2, 'rg32f': 2, 'rgb8': 3, 'rgb16': 3, 'rgb16f': 3, 'rgb32f': 3, 'rgba8': 4, 'rgba16': 4, 'rgba16f': 4, 'rgba32f': 4, 'luminance': 1, 'alpha': 1, 'red': 1, 'luminance_alpha': 2, 'rg': 2, 'rgb': 3, 'rgba': 4, 'depth_component': 1}

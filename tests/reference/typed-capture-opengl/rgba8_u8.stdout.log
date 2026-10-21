@@ -1,0 +1,1 @@
+PASS typed capture rgba8_u8: (6, 8, 4), uint8, 1 readbacks

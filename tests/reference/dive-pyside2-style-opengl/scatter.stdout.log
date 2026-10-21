@@ -1,0 +1,1 @@
+CLEANUP scatter: all test-owned widgets and QApplication destroyed

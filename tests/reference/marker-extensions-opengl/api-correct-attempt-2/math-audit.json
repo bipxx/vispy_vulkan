@@ -1,0 +1,66 @@
+{
+  "GPU_used": false,
+  "authoring_sha256": "cd5acf4038fe030c0bc7e7f40199daba70b79cc2330079bf992a4f64002cbd7e",
+  "camera": {
+    "fixed_scene_visual_diameters": [
+      10,
+      20,
+      20
+    ],
+    "published_visual_contract": "markers.py visual scaling excludes camera zoom; scale2 times size10 = diameter20"
+  },
+  "candidate_seen": false,
+  "depth": {
+    "front_mesh": 0.45,
+    "sphere": ".5-.1*sqrt(1-(dx/20)^2-(dy/20)^2)"
+  },
+  "findings": "No concrete criterion issue found in corrected variant; GPU admission must prove actual target/transforms",
+  "ordering": "both dependent revisions remain pending until one final read; camera prewarm submits without read",
+  "pinned_visual_source_sha256": {
+    "scene/cameras/base_camera.py": "fa93697ff791b24c657c78420365e6460cd1b73efa57b43562a12900e2a84b93",
+    "scene/cameras/panzoom.py": "6cb92f82e5075a8a374122ebed6c9910ba77590b9ee9a0efd4f02db8c51853c2",
+    "scene/canvas.py": "d404365a8183d4fe6ee4a10212ee75d7417a4273d9ce441e46930d6dc1490b6e",
+    "visuals/markers.py": "84990f7b14ff92a4acfcccf39bcc8c788b7c9df76e75e85fc8c4e4e102b119c3",
+    "visuals/mesh.py": "9d6fc7616eef5caff4da302ff94c561df1aab8c8b6498d6b901f8e51c5b1ef88",
+    "visuals/transforms/transform_system.py": "74a44c89dd469b46e187d2bfbf54620bec716e6405eb5387cffd14afc19d3265"
+  },
+  "reviewer": "independent shader worker read-only source/math review",
+  "ring_aa": {
+    "antialias": 1.0,
+    "edge_width": 2.0,
+    "formula": "r=max(hypot(dx,dy)-12,6-hypot(dx,dy)); mix=exp(-r*r); color=(mix,1-mix,0,1)",
+    "full_frame_exact_unchanged": true,
+    "gaussian_edge_mix": [
+      0.0017933286510088025,
+      0.0020612783823213496
+    ],
+    "maximum_rgba": [
+      2,
+      255,
+      0,
+      255
+    ],
+    "minimum_rgba": [
+      0,
+      253,
+      0,
+      255
+    ],
+    "point": [
+      72,
+      117
+    ],
+    "radius_samples": [
+      8.514693182963201,
+      9.513148795220223
+    ],
+    "signed_distances": [
+      -2.5146931829632013,
+      -2.486851204779777
+    ],
+    "symbol_size": 24.0
+  },
+  "schema": 1,
+  "scope_limit": "CPU/source review only; original failed capture and its mistaken diameter40 audit preserved",
+  "target_scope": "public Visual.draw does not call SceneCanvas.set_current; activated FBO observed after every draw"
+}

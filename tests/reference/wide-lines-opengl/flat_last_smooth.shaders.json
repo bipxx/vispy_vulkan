@@ -1,0 +1,4 @@
+{
+  "2": "#version 130\n                in vec4 a_position; in vec4 a_color; flat out vec4 v_color;\n                void main() { gl_Position = a_position; v_color = a_color; }\n                ",
+  "3": "#version 130\n                flat in vec4 v_color; out vec4 out_color;\n                void main() { out_color = v_color; }\n                "
+}

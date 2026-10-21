@@ -1,0 +1,28 @@
+WARNING: SetProcessDpiAwarenessContext() failed: Access is denied.
+Qt's default DPI awareness context is DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE_V2. If you know what you are doing, you can overwrite this default using qt.conf (https://doc.qt.io/qt-6/highdpi.html#configuring-windows).
+C:\Users\HEQ\Projects\vispy_vulkan\build\host-environments\napari-threedee-cpython312-pyqt6-upstream-numpy246-w5\Lib\site-packages\pydantic\_internal\_config.py:408: UserWarning: Valid config keys have changed in V2:
+* 'allow_mutation' has been removed
+  warnings.warn(message, UserWarning)
+C:\Users\HEQ\Projects\vispy_vulkan\build\host-environments\napari-threedee-cpython312-pyqt6-upstream-numpy246-w5\Lib\site-packages\pydantic\_internal\_config.py:408: UserWarning: Valid config keys have changed in V2:
+* 'allow_mutation' has been removed
+  warnings.warn(message, UserWarning)
+Traceback (most recent call last):
+  File "C:\Users\HEQ\Projects\vispy_vulkan\tools\oracle_napari_render_plane_capture.py", line 124, in main
+    image, commands, shaders, params, extras = render(args.worker)
+                                               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HEQ\Projects\vispy_vulkan\tools\fixture_napari_render_plane.py", line 204, in render
+    np.testing.assert_allclose(layer.plane.position if kind == "translator" else layer.plane.normal, expected, rtol=0, atol=1e-6)
+  File "C:\Users\HEQ\Projects\vispy_vulkan\build\host-environments\napari-threedee-cpython312-pyqt6-upstream-numpy246-w5\Lib\site-packages\numpy\testing\_private\utils.py", line 1768, in assert_allclose
+    assert_array_compare(compare, actual, desired, err_msg=str(err_msg),
+  File "C:\Users\HEQ\Projects\vispy_vulkan\build\host-environments\napari-threedee-cpython312-pyqt6-upstream-numpy246-w5\Lib\site-packages\numpy\testing\_private\utils.py", line 983, in assert_array_compare
+    raise AssertionError(msg)
+AssertionError: 
+Not equal to tolerance rtol=0, atol=1e-06
+
+Mismatched elements: 1 / 3 (33.3%)
+Mismatch at index:
+ [0]: 8.0 (ACTUAL), 8.570927760208821 (DESIRED)
+Max absolute difference among violations: 0.57092776
+Max relative difference among violations: 0.06661213
+ ACTUAL: array([ 8., 12., 14.])
+ DESIRED: array([ 8.570928, 12.      , 14.      ])

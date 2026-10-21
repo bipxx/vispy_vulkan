@@ -1,0 +1,96 @@
+name: CPU contracts (no platform admission)
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  cpu:
+    name: CPU ${{ matrix.target.name }} CPython ${{ matrix.python }}
+    runs-on: ${{ matrix.target.runner }}
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ['3.10.19', '3.11.14', '3.12.8', '3.13.8', '3.14.0']
+        target:
+          - {name: windows-x86_64, runner: windows-2022, arch: x64}
+          - {name: linux-x86_64, runner: ubuntu-24.04, arch: x64}
+          - {name: macos-arm64, runner: macos-15, arch: arm64}
+          - {name: macos-x86_64, runner: macos-15-intel, arch: x64}
+    defaults:
+      run:
+        shell: bash
+    env:
+      UV_PROJECT_ENVIRONMENT: build/ci-env-${{ github.run_id }}-${{ matrix.target.name }}-${{ matrix.python }}
+      PYTHONPATH: ${{ github.workspace }}/src
+      PYTEST_DISABLE_PLUGIN_AUTOLOAD: '1'
+      CMAKE_BUILD_PARALLEL_LEVEL: '3'
+      EVIDENCE: build/evidence
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+          submodules: false
+      - name: Restore immutable vendor bytes
+        shell: bash
+        run: |
+          printf '%s\n' '* -text -eol -filter -ident' > .git/info/attributes
+          git config core.autocrlf false
+          git config core.longpaths true
+          git checkout-index --all --force
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7
+        with:
+          python-version: ${{ matrix.python }}
+          architecture: ${{ matrix.target.arch }}
+          check-latest: false
+      - uses: astral-sh/setup-uv@bec219d24cd3e171d82865faccec33120bb574f4 # v10.1.0
+        with:
+          version: '0.12.5'
+          enable-cache: false
+      - name: Install exact hashed CPU/build dependencies in a job-owned environment
+        run: |
+          mkdir -p "$EVIDENCE"
+          uv lock --check
+          uv venv "$UV_PROJECT_ENVIRONMENT" --python python
+          python - <<'PY'
+          import os
+          from pathlib import Path
+          environment = Path(os.environ['UV_PROJECT_ENVIRONMENT']).resolve()
+          binary = environment / ('Scripts/python.exe' if os.name == 'nt' else 'bin/python')
+          with open(os.environ['GITHUB_ENV'], 'a') as file:
+              file.write(f'CI_PYTHON={binary.as_posix()}\n')
+          with open(os.environ['GITHUB_PATH'], 'a') as file:
+              file.write(str(binary.parent) + '\n')
+          PY
+          uv export --locked --no-default-groups --group dev --group build --no-emit-project --output-file "$EVIDENCE/requirements.txt" > /dev/null
+          uv pip install --python "$UV_PROJECT_ENVIRONMENT" --require-hashes --only-binary :all: --requirements "$EVIDENCE/requirements.txt"
+      - name: Capture environment and verify immutable native source trees
+        run: |
+          "$CI_PYTHON" .github/workflows/qualification_gate.py capture --output "$EVIDENCE/environment.json"
+          "$CI_PYTHON" cmake/verify_dependencies.py
+      - name: Configure CPU extension and all six native CPU contracts
+        run: |
+          if [[ "$RUNNER_OS" == 'Windows' ]]; then
+            cmake -S . -B build/ci-native -G 'Visual Studio 17 2022' -A x64 -DPython_EXECUTABLE="$CI_PYTHON" -DPython3_EXECUTABLE="$CI_PYTHON" -DVISPY_INPLACE=ON -DVISPY_VERIFY_DEPENDENCIES=ON -DVISPY_BUILD_CONTRACT_TESTS=ON -DVISPY_CPU_CONTRACTS_ONLY=ON
+          else
+            cmake -S . -B build/ci-native -DCMAKE_BUILD_TYPE=Release -DPython_EXECUTABLE="$CI_PYTHON" -DPython3_EXECUTABLE="$CI_PYTHON" -DVISPY_INPLACE=ON -DVISPY_VERIFY_DEPENDENCIES=ON -DVISPY_BUILD_CONTRACT_TESTS=ON -DVISPY_CPU_CONTRACTS_ONLY=ON
+          fi
+          cmake --build build/ci-native --config Release --target _sdf_cpu shader_contract texture_contract state_contract point_contract native_contract vk_layer_contract --parallel 3
+          ctest --test-dir build/ci-native -C Release --output-on-failure --no-tests=error
+      - name: Execute original CPU assertions and CPU contract cases
+        run: |
+          "$CI_PYTHON" .github/workflows/qualification_gate.py pytest --output "$EVIDENCE/pytest.json" -- -q tests/contract/test_sdf_cpu.py tests/contract/test_package_inputs.py tests/contract/test_source_manifest.py tests/contract/test_reference_inventory.py src/vispy/color/tests/test_color.py src/vispy/geometry/tests/test_generation.py src/vispy/geometry/tests/test_meshdata.py src/vispy/geometry/tests/test_calculations.py src/vispy/util/tests/test_fourier.py src/vispy/util/tests/test_transforms.py src/vispy/util/tests/test_event_emitter.py src/vispy/util/tests/test_emitter_group.py src/vispy/util/tests/test_key.py src/vispy/util/tests/test_logging.py --junitxml=build/evidence/pytest.xml
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        if: always()
+        with:
+          name: cpu-${{ matrix.target.name }}-${{ matrix.python }}
+          path: |
+            build/evidence
+            build/ci-native/CMakeCache.txt
+            build/ci-native/Testing/Temporary/LastTest.log
+          if-no-files-found: error

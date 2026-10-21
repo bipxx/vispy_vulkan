@@ -1,0 +1,37 @@
+{
+  "admitted": 2,
+  "all_children_terminal": true,
+  "errors": 0,
+  "files": {
+    "authoring.json": "d34d95dce4593c0495d60114951911c2a333fe79e19c651f02c91f6784f004bc",
+    "capture-command.json": "079bdc6afd5e56c542d4c5956f74dcc676bb279f7e9ac3402845839d28a79499",
+    "capture.log": "4ce56ff033080f340ce65357a8dcf09fee5cc3b3e9c2e11e7ed0f978dd2df4ba",
+    "cpu-validation.xml": "1673eec7c534f793bc3160f9492f5ab9942642c51f14e85190abfe47efe15360",
+    "manifest.json": "462a709812c7b30438cd6b02c279879c34523c342a22629eb0df87418d088b6c",
+    "pending_middle_subdata.capture.json": "0f515fb697875ddfe00d7c4b2230c08ea24915c82fc88e4d031e4cf9831abb0b",
+    "pending_middle_subdata.glir.json": "936a52b86b55409ff76df56de5e40dd6bfc72ade4bc38b6acb78a7b55df6c9e8",
+    "pending_middle_subdata.npy": "7d8f75a17eb61cd3fa0c3e2a5d4161602f7f89117bf4ca4996bf888afe2dd7d7",
+    "pending_middle_subdata.observations.json": "e907444a070a886d0e2a1ccb42df9c233d81296aa9de57feb58e3c94e0e46754",
+    "pending_middle_subdata.parameters.json": "168c5195071ee0de2243bdd291b215b3af333eeda4eafcd36ee98576860a0a04",
+    "pending_middle_subdata.shaders.json": "7c83b2b76268931d184eb902c8f601dd14acdd10e247118dd04fc7b5114dce73",
+    "pending_middle_subdata.stderr.log": "b1d8d1e72b862b2b97cd31253e5ea272299c884b4d8079ddfbf436853e425c15",
+    "pending_middle_subdata.stdout.log": "71a26dfc3e5e06a452170910369b7905685868ecae26154077c4b92d25561888",
+    "single_flush_resize_filter.capture.json": "8646b9fb4928dadda9e34c5bf83684412111172291e7edbbb8fe38368d991202",
+    "single_flush_resize_filter.glir.json": "94769b523877e9a94c315a7cc6c3c6143eab952ef00da3b80b28863e83c15d53",
+    "single_flush_resize_filter.npy": "3cfd015a30e633e0de3f03fde825ee60c7e858a3948762d6a08828c4235bf263",
+    "single_flush_resize_filter.observations.json": "7daaeb31fa7da31e08baab3a1802ca55273885483b97097ce21fcb5349bc3f0c",
+    "single_flush_resize_filter.parameters.json": "2db3e6c31a6ee4b437ce0a8658b8fff0938e2e9909c0868d41792a54df55ea67",
+    "single_flush_resize_filter.shaders.json": "d2acdcba752189a79e51ff95abd2000d2720e4297e8efd2061b5f7586f3073a5",
+    "single_flush_resize_filter.stderr.log": "b1d8d1e72b862b2b97cd31253e5ea272299c884b4d8079ddfbf436853e425c15",
+    "single_flush_resize_filter.stdout.log": "8a3d34cd14149dc303bad4fb0d28c13e21d413fdb9c52cd0d7e9b1b96aefb525",
+    "upstream-cpu-filter-transcript.json": "a2c5b10ccf36665f9201dfd8e0c8828f85478031b6b4d5d22ed84c37c42d1670"
+  },
+  "native_after": {
+    "src\\vispy\\_dawn.cp312-win_amd64.pyd": "89862fbc265bee109a2409cda7631442b8fc1b562a18fc2c21519cdc81fd7116",
+    "src\\vispy\\visuals\\text\\_sdf_cpu.cp312-win_amd64.pyd": "11638220e99ad064a4a0d373145cc2b0f47b7983bae8e4007398f167d76355e0"
+  },
+  "native_unchanged": true,
+  "parent_exit_code": 0,
+  "schema": 1,
+  "source_unchanged": true
+}

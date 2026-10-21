@@ -1,0 +1,1052 @@
+{
+  "comparison": {
+    "analytic_expected_exact": true,
+    "dtype_exact": true,
+    "values_exact": true
+  },
+  "errors": {},
+  "fixtures": {
+    "float_crop_rgb": {
+      "capture": {
+        "file": "float_crop_rgb.capture.json",
+        "sha256": "28ce84d5c87103c01c9bdefa5dab65339e5ac85eabf7ef8a9bb3db008e5d8428"
+      },
+      "dtype": "<f4",
+      "expanded_shaders": {
+        "file": "float_crop_rgb.shaders.json",
+        "sha256": "520eee67f67e0eb76f58f10a81cbddb66ba1703be1ab354f34218dce1ff52b64"
+      },
+      "filtered_glir": {
+        "file": "float_crop_rgb.glir.json",
+        "sha256": "8beb290dcea32fd93828f23833ae37c7fcee15629345deedaa1e55650a46a0bf"
+      },
+      "parameters": {
+        "alpha": false,
+        "attachment_size": [
+          8,
+          6
+        ],
+        "bottom_rgba": [
+          -2,
+          15,
+          0.125,
+          0.25
+        ],
+        "channels": 4,
+        "crop": [
+          2,
+          1,
+          4,
+          3
+        ],
+        "explicit_gloo_finish_calls": 0,
+        "format": "rgba",
+        "input_dtype": "<f4",
+        "internalformat": "rgba32f",
+        "orientation": "top-left array, bottom-left viewport crop",
+        "out_type": "float",
+        "out_type_argument": "numpy.float32",
+        "readback_between_ownership_stages": false,
+        "readbacks": 1,
+        "top_rgba": [
+          0.125,
+          -2,
+          15,
+          0.75
+        ],
+        "x_pattern": "pixel-center red channel"
+      },
+      "process": {
+        "exit_code": 0,
+        "stderr": {
+          "file": "float_crop_rgb.stderr.log",
+          "sha256": "b1d8d1e72b862b2b97cd31253e5ea272299c884b4d8079ddfbf436853e425c15"
+        },
+        "stdout": {
+          "file": "float_crop_rgb.stdout.log",
+          "sha256": "70b4e80bd181d9250e0de8ae225f13588ee4b47aa53da0294b379a839eeb22d5"
+        }
+      },
+      "readbacks": 1,
+      "returned_array_layout": {
+        "c_contiguous": false,
+        "own_data": false,
+        "strides": [
+          -48,
+          12,
+          4
+        ],
+        "writeable": false
+      },
+      "rgba": {
+        "file": "float_crop_rgb.npy",
+        "sha256": "10ac77fa57491d24b8016d1a6deb6b0e3dad0841d5db633045edecbd14d7753e"
+      },
+      "shape": [
+        3,
+        4,
+        3
+      ]
+    },
+    "float_owned_arrays": {
+      "capture": {
+        "file": "float_owned_arrays.capture.json",
+        "sha256": "4626b183c895cce6782426369b8bf93b075c7d9778d92d10dab34e488ea94c7e"
+      },
+      "dtype": "<f4",
+      "expanded_shaders": {
+        "file": "float_owned_arrays.shaders.json",
+        "sha256": "d85b82a26535835545c0d9698b48a288c8916e1ea064a37da45ddcfd14d559aa"
+      },
+      "filtered_glir": {
+        "file": "float_owned_arrays.glir.json",
+        "sha256": "f6ba7f19edd63750dc7f61ac36e17d307063e037211894788010c88f7a03220c"
+      },
+      "first": {
+        "file": "float_owned_arrays.first.npy",
+        "sha256": "329d4f225c160f25252466638f53a3c6c311830d2088ae7023aaa38654092dab"
+      },
+      "parameters": {
+        "alpha": true,
+        "attachment_size": [
+          8,
+          6
+        ],
+        "bottom_rgba": [
+          -2,
+          15,
+          0.125,
+          0.25
+        ],
+        "channels": 4,
+        "crop": [
+          0,
+          0,
+          8,
+          6
+        ],
+        "explicit_gloo_finish_calls": 0,
+        "format": "rgba",
+        "input_dtype": "<f4",
+        "internalformat": "rgba32f",
+        "orientation": "top-left array, bottom-left viewport crop",
+        "out_type": "float",
+        "out_type_argument": "float",
+        "readback_between_ownership_stages": true,
+        "readbacks": 2,
+        "top_rgba": [
+          0.125,
+          -2,
+          15,
+          0.75
+        ],
+        "x_pattern": "constant"
+      },
+      "process": {
+        "exit_code": 0,
+        "stderr": {
+          "file": "float_owned_arrays.stderr.log",
+          "sha256": "b1d8d1e72b862b2b97cd31253e5ea272299c884b4d8079ddfbf436853e425c15"
+        },
+        "stdout": {
+          "file": "float_owned_arrays.stdout.log",
+          "sha256": "68e82192a72d80de26c2004f071911058caa9c9a0a4c9a2877d3c735cf5b73c9"
+        }
+      },
+      "readbacks": 2,
+      "returned_array_layout": {
+        "c_contiguous": false,
+        "own_data": false,
+        "strides": [
+          -128,
+          16,
+          4
+        ],
+        "writeable": false
+      },
+      "rgba": {
+        "file": "float_owned_arrays.npy",
+        "sha256": "db670156e727d353be90f0b35dd24f212628443ceac86c281ad69b4c2b90936b"
+      },
+      "shape": [
+        6,
+        8,
+        4
+      ]
+    },
+    "r32f_float": {
+      "capture": {
+        "file": "r32f_float.capture.json",
+        "sha256": "59c278b9f495843e6c48d5e271ac4f79b4b73415755f381b90ed675c97660049"
+      },
+      "dtype": "<f4",
+      "expanded_shaders": {
+        "file": "r32f_float.shaders.json",
+        "sha256": "d85b82a26535835545c0d9698b48a288c8916e1ea064a37da45ddcfd14d559aa"
+      },
+      "filtered_glir": {
+        "file": "r32f_float.glir.json",
+        "sha256": "e288eedcd7a1683d36dce4998f0395455933d5eece0c845f030a590767ae97c2"
+      },
+      "parameters": {
+        "alpha": true,
+        "attachment_size": [
+          8,
+          6
+        ],
+        "bottom_rgba": [
+          -2,
+          15,
+          0.125,
+          0.25
+        ],
+        "channels": 1,
+        "crop": [
+          0,
+          0,
+          8,
+          6
+        ],
+        "explicit_gloo_finish_calls": 0,
+        "format": "red",
+        "input_dtype": "<f4",
+        "internalformat": "r32f",
+        "orientation": "top-left array, bottom-left viewport crop",
+        "out_type": "float",
+        "out_type_argument": "float",
+        "readback_between_ownership_stages": false,
+        "readbacks": 1,
+        "top_rgba": [
+          0.125,
+          -2,
+          15,
+          0.75
+        ],
+        "x_pattern": "constant"
+      },
+      "process": {
+        "exit_code": 0,
+        "stderr": {
+          "file": "r32f_float.stderr.log",
+          "sha256": "b1d8d1e72b862b2b97cd31253e5ea272299c884b4d8079ddfbf436853e425c15"
+        },
+        "stdout": {
+          "file": "r32f_float.stdout.log",
+          "sha256": "ce81d0edc51ddb83bc6e17eeadf32b5dca1ae54a13f69573735c2200297eb93f"
+        }
+      },
+      "readbacks": 1,
+      "returned_array_layout": {
+        "c_contiguous": false,
+        "own_data": false,
+        "strides": [
+          -128,
+          16,
+          4
+        ],
+        "writeable": false
+      },
+      "rgba": {
+        "file": "r32f_float.npy",
+        "sha256": "140ea720f06796850a598e48d6bc72aa539b97e2261fff87c48d2484f10ad407"
+      },
+      "shape": [
+        6,
+        8,
+        4
+      ]
+    },
+    "r8_float": {
+      "capture": {
+        "file": "r8_float.capture.json",
+        "sha256": "3e5c9849576e3ddd58afc2bcc636a5ced94e26b30fde27a0bd35b06e62f4db6e"
+      },
+      "dtype": "<f4",
+      "expanded_shaders": {
+        "file": "r8_float.shaders.json",
+        "sha256": "d85b82a26535835545c0d9698b48a288c8916e1ea064a37da45ddcfd14d559aa"
+      },
+      "filtered_glir": {
+        "file": "r8_float.glir.json",
+        "sha256": "96beefaa0a35d690745ddedf1fc26dbef4b2a63f28a21915e1b9cce6ddc5d990"
+      },
+      "parameters": {
+        "alpha": true,
+        "attachment_size": [
+          8,
+          6
+        ],
+        "bottom_rgba": [
+          0,
+          0.25,
+          0.125,
+          0.25
+        ],
+        "channels": 1,
+        "crop": [
+          0,
+          0,
+          8,
+          6
+        ],
+        "explicit_gloo_finish_calls": 0,
+        "format": "red",
+        "input_dtype": "|u1",
+        "internalformat": "r8",
+        "orientation": "top-left array, bottom-left viewport crop",
+        "out_type": "float",
+        "out_type_argument": "float",
+        "readback_between_ownership_stages": false,
+        "readbacks": 1,
+        "top_rgba": [
+          0.75,
+          0.125,
+          1,
+          0.75
+        ],
+        "x_pattern": "constant"
+      },
+      "process": {
+        "exit_code": 0,
+        "stderr": {
+          "file": "r8_float.stderr.log",
+          "sha256": "b1d8d1e72b862b2b97cd31253e5ea272299c884b4d8079ddfbf436853e425c15"
+        },
+        "stdout": {
+          "file": "r8_float.stdout.log",
+          "sha256": "23430771af3898337c1c17714ff68cb96d76ee63148bfaa846b4e2b6eb0aef93"
+        }
+      },
+      "readbacks": 1,
+      "returned_array_layout": {
+        "c_contiguous": false,
+        "own_data": false,
+        "strides": [
+          -128,
+          16,
+          4
+        ],
+        "writeable": false
+      },
+      "rgba": {
+        "file": "r8_float.npy",
+        "sha256": "33899d91c996d4798824b992ae06cd645a5a7afbf23a90aea48dee40ad787850"
+      },
+      "shape": [
+        6,
+        8,
+        4
+      ]
+    },
+    "rg16_float": {
+      "capture": {
+        "file": "rg16_float.capture.json",
+        "sha256": "a8a9196cb676022cb71dd4c6c7d02b684885e5fd15b734af2ca98ab501b4024b"
+      },
+      "dtype": "<f4",
+      "expanded_shaders": {
+        "file": "rg16_float.shaders.json",
+        "sha256": "d85b82a26535835545c0d9698b48a288c8916e1ea064a37da45ddcfd14d559aa"
+      },
+      "filtered_glir": {
+        "file": "rg16_float.glir.json",
+        "sha256": "68b4e27487d8edb7739eda6f793b2d5fe7b019c4f5ec6147807b7738ced0a2cc"
+      },
+      "parameters": {
+        "alpha": true,
+        "attachment_size": [
+          8,
+          6
+        ],
+        "bottom_rgba": [
+          0,
+          0.25,
+          0.125,
+          0.25
+        ],
+        "channels": 2,
+        "crop": [
+          0,
+          0,
+          8,
+          6
+        ],
+        "explicit_gloo_finish_calls": 0,
+        "format": "rg",
+        "input_dtype": "<u2",
+        "internalformat": "rg16",
+        "orientation": "top-left array, bottom-left viewport crop",
+        "out_type": "float",
+        "out_type_argument": "float",
+        "readback_between_ownership_stages": false,
+        "readbacks": 1,
+        "top_rgba": [
+          0.75,
+          0.125,
+          1,
+          0.75
+        ],
+        "x_pattern": "constant"
+      },
+      "process": {
+        "exit_code": 0,
+        "stderr": {
+          "file": "rg16_float.stderr.log",
+          "sha256": "b1d8d1e72b862b2b97cd31253e5ea272299c884b4d8079ddfbf436853e425c15"
+        },
+        "stdout": {
+          "file": "rg16_float.stdout.log",
+          "sha256": "87bb5103bb73a80d6453826e27b8591329050ea6a29dd82d56b1118acf48bd42"
+        }
+      },
+      "readbacks": 1,
+      "returned_array_layout": {
+        "c_contiguous": false,
+        "own_data": false,
+        "strides": [
+          -128,
+          16,
+          4
+        ],
+        "writeable": false
+      },
+      "rgba": {
+        "file": "rg16_float.npy",
+        "sha256": "9ab0af358455ecdbf0d0df2ab7d4f733d8d832dd8c3b86b5d542f7bc2ab1f7b4"
+      },
+      "shape": [
+        6,
+        8,
+        4
+      ]
+    },
+    "rg32f_float": {
+      "capture": {
+        "file": "rg32f_float.capture.json",
+        "sha256": "e6f8a2a89a2cc54f559932a4b53f0226c0e8e39dd61b574073ce6bbe13c1b23e"
+      },
+      "dtype": "<f4",
+      "expanded_shaders": {
+        "file": "rg32f_float.shaders.json",
+        "sha256": "d85b82a26535835545c0d9698b48a288c8916e1ea064a37da45ddcfd14d559aa"
+      },
+      "filtered_glir": {
+        "file": "rg32f_float.glir.json",
+        "sha256": "3e78850ced5d34665cf37852feced38efaa8befb20ba6cdac9ec373f3613fe36"
+      },
+      "parameters": {
+        "alpha": true,
+        "attachment_size": [
+          8,
+          6
+        ],
+        "bottom_rgba": [
+          -2,
+          15,
+          0.125,
+          0.25
+        ],
+        "channels": 2,
+        "crop": [
+          0,
+          0,
+          8,
+          6
+        ],
+        "explicit_gloo_finish_calls": 0,
+        "format": "rg",
+        "input_dtype": "<f4",
+        "internalformat": "rg32f",
+        "orientation": "top-left array, bottom-left viewport crop",
+        "out_type": "float",
+        "out_type_argument": "float",
+        "readback_between_ownership_stages": false,
+        "readbacks": 1,
+        "top_rgba": [
+          0.125,
+          -2,
+          15,
+          0.75
+        ],
+        "x_pattern": "constant"
+      },
+      "process": {
+        "exit_code": 0,
+        "stderr": {
+          "file": "rg32f_float.stderr.log",
+          "sha256": "b1d8d1e72b862b2b97cd31253e5ea272299c884b4d8079ddfbf436853e425c15"
+        },
+        "stdout": {
+          "file": "rg32f_float.stdout.log",
+          "sha256": "4fe0750eeac68815eb7181df25a9f0f3adc004a17a8b6501172d1e8ad20fc17f"
+        }
+      },
+      "readbacks": 1,
+      "returned_array_layout": {
+        "c_contiguous": false,
+        "own_data": false,
+        "strides": [
+          -128,
+          16,
+          4
+        ],
+        "writeable": false
+      },
+      "rgba": {
+        "file": "rg32f_float.npy",
+        "sha256": "7ce466a7ddeb1456d0023e6910968432a4660ba820abe7a52479054c4d2f1d0d"
+      },
+      "shape": [
+        6,
+        8,
+        4
+      ]
+    },
+    "rgba16_float": {
+      "capture": {
+        "file": "rgba16_float.capture.json",
+        "sha256": "e4b4854d60def51cec05b66110af2db0998dceca55a1bb8c27cee7eea54eedaf"
+      },
+      "dtype": "<f4",
+      "expanded_shaders": {
+        "file": "rgba16_float.shaders.json",
+        "sha256": "d85b82a26535835545c0d9698b48a288c8916e1ea064a37da45ddcfd14d559aa"
+      },
+      "filtered_glir": {
+        "file": "rgba16_float.glir.json",
+        "sha256": "7786de8d554aa08c7d5e416177bcfd5d3ed3f09ec58a4b33ab8399ab10699cd8"
+      },
+      "parameters": {
+        "alpha": true,
+        "attachment_size": [
+          8,
+          6
+        ],
+        "bottom_rgba": [
+          0,
+          0.25,
+          0.125,
+          0.25
+        ],
+        "channels": 4,
+        "crop": [
+          0,
+          0,
+          8,
+          6
+        ],
+        "explicit_gloo_finish_calls": 0,
+        "format": "rgba",
+        "input_dtype": "<u2",
+        "internalformat": "rgba16",
+        "orientation": "top-left array, bottom-left viewport crop",
+        "out_type": "float",
+        "out_type_argument": "float",
+        "readback_between_ownership_stages": false,
+        "readbacks": 1,
+        "top_rgba": [
+          0.75,
+          0.125,
+          1,
+          0.75
+        ],
+        "x_pattern": "constant"
+      },
+      "process": {
+        "exit_code": 0,
+        "stderr": {
+          "file": "rgba16_float.stderr.log",
+          "sha256": "b1d8d1e72b862b2b97cd31253e5ea272299c884b4d8079ddfbf436853e425c15"
+        },
+        "stdout": {
+          "file": "rgba16_float.stdout.log",
+          "sha256": "0f532076750e22cae21fb3352c57c6e24319f1d6f8bf417cf3477c0457897123"
+        }
+      },
+      "readbacks": 1,
+      "returned_array_layout": {
+        "c_contiguous": false,
+        "own_data": false,
+        "strides": [
+          -128,
+          16,
+          4
+        ],
+        "writeable": false
+      },
+      "rgba": {
+        "file": "rgba16_float.npy",
+        "sha256": "9cc877a1fcb704a9a7ff87223df61db1ff8004d89464d4d8ffe32b7b6ec01056"
+      },
+      "shape": [
+        6,
+        8,
+        4
+      ]
+    },
+    "rgba16_u8": {
+      "capture": {
+        "file": "rgba16_u8.capture.json",
+        "sha256": "40a63decf0495d9da44b2ef6bd5aa02cd1180340f470ccd41ddea12ba1d3159d"
+      },
+      "dtype": "|u1",
+      "expanded_shaders": {
+        "file": "rgba16_u8.shaders.json",
+        "sha256": "d85b82a26535835545c0d9698b48a288c8916e1ea064a37da45ddcfd14d559aa"
+      },
+      "filtered_glir": {
+        "file": "rgba16_u8.glir.json",
+        "sha256": "7786de8d554aa08c7d5e416177bcfd5d3ed3f09ec58a4b33ab8399ab10699cd8"
+      },
+      "parameters": {
+        "alpha": true,
+        "attachment_size": [
+          8,
+          6
+        ],
+        "bottom_rgba": [
+          0,
+          0.25,
+          0.125,
+          0.25
+        ],
+        "channels": 4,
+        "crop": [
+          0,
+          0,
+          8,
+          6
+        ],
+        "explicit_gloo_finish_calls": 0,
+        "format": "rgba",
+        "input_dtype": "<u2",
+        "internalformat": "rgba16",
+        "orientation": "top-left array, bottom-left viewport crop",
+        "out_type": "unsigned_byte",
+        "out_type_argument": "unsigned_byte",
+        "readback_between_ownership_stages": false,
+        "readbacks": 1,
+        "top_rgba": [
+          0.75,
+          0.125,
+          1,
+          0.75
+        ],
+        "x_pattern": "constant"
+      },
+      "process": {
+        "exit_code": 0,
+        "stderr": {
+          "file": "rgba16_u8.stderr.log",
+          "sha256": "b1d8d1e72b862b2b97cd31253e5ea272299c884b4d8079ddfbf436853e425c15"
+        },
+        "stdout": {
+          "file": "rgba16_u8.stdout.log",
+          "sha256": "c19ce011f1d9d80e90ce6551291ba38322e2fe7e559372286c75128d3482879b"
+        }
+      },
+      "readbacks": 1,
+      "returned_array_layout": {
+        "c_contiguous": false,
+        "own_data": false,
+        "strides": [
+          -32,
+          4,
+          1
+        ],
+        "writeable": false
+      },
+      "rgba": {
+        "file": "rgba16_u8.npy",
+        "sha256": "c35fce04a764fc6b2223e94836493305531af986aafb9703f6bf8e8da7812885"
+      },
+      "shape": [
+        6,
+        8,
+        4
+      ]
+    },
+    "rgba16f_float": {
+      "capture": {
+        "file": "rgba16f_float.capture.json",
+        "sha256": "c0b1f8fafdefca5ae0e78f5f83acd02a1bbd65044b45a075b07677e8e69f6d40"
+      },
+      "dtype": "<f4",
+      "expanded_shaders": {
+        "file": "rgba16f_float.shaders.json",
+        "sha256": "d85b82a26535835545c0d9698b48a288c8916e1ea064a37da45ddcfd14d559aa"
+      },
+      "filtered_glir": {
+        "file": "rgba16f_float.glir.json",
+        "sha256": "eb84e90697c6b230fe4e1e932000a4512e6c16d03437190ffa6150d34aec82f4"
+      },
+      "parameters": {
+        "alpha": true,
+        "attachment_size": [
+          8,
+          6
+        ],
+        "bottom_rgba": [
+          -2,
+          15,
+          0.125,
+          0.25
+        ],
+        "channels": 4,
+        "crop": [
+          0,
+          0,
+          8,
+          6
+        ],
+        "explicit_gloo_finish_calls": 0,
+        "format": "rgba",
+        "input_dtype": "<f4",
+        "internalformat": "rgba16f",
+        "orientation": "top-left array, bottom-left viewport crop",
+        "out_type": "float",
+        "out_type_argument": "float",
+        "readback_between_ownership_stages": false,
+        "readbacks": 1,
+        "top_rgba": [
+          0.125,
+          -2,
+          15,
+          0.75
+        ],
+        "x_pattern": "constant"
+      },
+      "process": {
+        "exit_code": 0,
+        "stderr": {
+          "file": "rgba16f_float.stderr.log",
+          "sha256": "b1d8d1e72b862b2b97cd31253e5ea272299c884b4d8079ddfbf436853e425c15"
+        },
+        "stdout": {
+          "file": "rgba16f_float.stdout.log",
+          "sha256": "690ebfdbc1d1be8ce97edeb164bfc28d9d13f499a6b66bb962c90e0882c63f55"
+        }
+      },
+      "readbacks": 1,
+      "returned_array_layout": {
+        "c_contiguous": false,
+        "own_data": false,
+        "strides": [
+          -128,
+          16,
+          4
+        ],
+        "writeable": false
+      },
+      "rgba": {
+        "file": "rgba16f_float.npy",
+        "sha256": "329d4f225c160f25252466638f53a3c6c311830d2088ae7023aaa38654092dab"
+      },
+      "shape": [
+        6,
+        8,
+        4
+      ]
+    },
+    "rgba32f_float": {
+      "capture": {
+        "file": "rgba32f_float.capture.json",
+        "sha256": "9a867a58dce33f3be2a9825a765fc72d9c9ccf78b21079d7347e163096a6c543"
+      },
+      "dtype": "<f4",
+      "expanded_shaders": {
+        "file": "rgba32f_float.shaders.json",
+        "sha256": "d85b82a26535835545c0d9698b48a288c8916e1ea064a37da45ddcfd14d559aa"
+      },
+      "filtered_glir": {
+        "file": "rgba32f_float.glir.json",
+        "sha256": "c4f8733748296c233ec0eb105618ced7cedaf79613f2df0bc029efe5734ca1d3"
+      },
+      "parameters": {
+        "alpha": true,
+        "attachment_size": [
+          8,
+          6
+        ],
+        "bottom_rgba": [
+          -2,
+          15,
+          0.125,
+          0.25
+        ],
+        "channels": 4,
+        "crop": [
+          0,
+          0,
+          8,
+          6
+        ],
+        "explicit_gloo_finish_calls": 0,
+        "format": "rgba",
+        "input_dtype": "<f4",
+        "internalformat": "rgba32f",
+        "orientation": "top-left array, bottom-left viewport crop",
+        "out_type": "float",
+        "out_type_argument": "float",
+        "readback_between_ownership_stages": false,
+        "readbacks": 1,
+        "top_rgba": [
+          0.125,
+          -2,
+          15,
+          0.75
+        ],
+        "x_pattern": "constant"
+      },
+      "process": {
+        "exit_code": 0,
+        "stderr": {
+          "file": "rgba32f_float.stderr.log",
+          "sha256": "b1d8d1e72b862b2b97cd31253e5ea272299c884b4d8079ddfbf436853e425c15"
+        },
+        "stdout": {
+          "file": "rgba32f_float.stdout.log",
+          "sha256": "38330ce8a0d73904c02fb20c8d19da86be15f32ec2025be89203f92b9352e749"
+        }
+      },
+      "readbacks": 1,
+      "returned_array_layout": {
+        "c_contiguous": false,
+        "own_data": false,
+        "strides": [
+          -128,
+          16,
+          4
+        ],
+        "writeable": false
+      },
+      "rgba": {
+        "file": "rgba32f_float.npy",
+        "sha256": "329d4f225c160f25252466638f53a3c6c311830d2088ae7023aaa38654092dab"
+      },
+      "shape": [
+        6,
+        8,
+        4
+      ]
+    },
+    "rgba8_float": {
+      "capture": {
+        "file": "rgba8_float.capture.json",
+        "sha256": "0ae966d79b42cabebd09958b2dc5f7850f4ac85e186d376eff4aefbd6dd80287"
+      },
+      "dtype": "<f4",
+      "expanded_shaders": {
+        "file": "rgba8_float.shaders.json",
+        "sha256": "d85b82a26535835545c0d9698b48a288c8916e1ea064a37da45ddcfd14d559aa"
+      },
+      "filtered_glir": {
+        "file": "rgba8_float.glir.json",
+        "sha256": "f85b008b6dfc6c80edb4e2f7f47bc277873c244767b49f9884619dfdd41e8be9"
+      },
+      "parameters": {
+        "alpha": true,
+        "attachment_size": [
+          8,
+          6
+        ],
+        "bottom_rgba": [
+          0,
+          0.25,
+          0.125,
+          0.25
+        ],
+        "channels": 4,
+        "crop": [
+          0,
+          0,
+          8,
+          6
+        ],
+        "explicit_gloo_finish_calls": 0,
+        "format": "rgba",
+        "input_dtype": "|u1",
+        "internalformat": "rgba8",
+        "orientation": "top-left array, bottom-left viewport crop",
+        "out_type": "float",
+        "out_type_argument": "float",
+        "readback_between_ownership_stages": false,
+        "readbacks": 1,
+        "top_rgba": [
+          0.75,
+          0.125,
+          1,
+          0.75
+        ],
+        "x_pattern": "constant"
+      },
+      "process": {
+        "exit_code": 0,
+        "stderr": {
+          "file": "rgba8_float.stderr.log",
+          "sha256": "b1d8d1e72b862b2b97cd31253e5ea272299c884b4d8079ddfbf436853e425c15"
+        },
+        "stdout": {
+          "file": "rgba8_float.stdout.log",
+          "sha256": "d7bc18550deb473864dc9eb6c7efd6b47dda5a3f0c271971323380d92afa5d6e"
+        }
+      },
+      "readbacks": 1,
+      "returned_array_layout": {
+        "c_contiguous": false,
+        "own_data": false,
+        "strides": [
+          -128,
+          16,
+          4
+        ],
+        "writeable": false
+      },
+      "rgba": {
+        "file": "rgba8_float.npy",
+        "sha256": "c312a9c021da0730c38190fe50e5706beb6007c6299591d7d8862f17afba3e72"
+      },
+      "shape": [
+        6,
+        8,
+        4
+      ]
+    },
+    "rgba8_u8": {
+      "capture": {
+        "file": "rgba8_u8.capture.json",
+        "sha256": "fe9779faa2ccaf432a3f0152dd07b612d5b848c331090c41eab6e067ff1dd88c"
+      },
+      "dtype": "|u1",
+      "expanded_shaders": {
+        "file": "rgba8_u8.shaders.json",
+        "sha256": "d85b82a26535835545c0d9698b48a288c8916e1ea064a37da45ddcfd14d559aa"
+      },
+      "filtered_glir": {
+        "file": "rgba8_u8.glir.json",
+        "sha256": "f85b008b6dfc6c80edb4e2f7f47bc277873c244767b49f9884619dfdd41e8be9"
+      },
+      "parameters": {
+        "alpha": true,
+        "attachment_size": [
+          8,
+          6
+        ],
+        "bottom_rgba": [
+          0,
+          0.25,
+          0.125,
+          0.25
+        ],
+        "channels": 4,
+        "crop": [
+          0,
+          0,
+          8,
+          6
+        ],
+        "explicit_gloo_finish_calls": 0,
+        "format": "rgba",
+        "input_dtype": "|u1",
+        "internalformat": "rgba8",
+        "orientation": "top-left array, bottom-left viewport crop",
+        "out_type": "unsigned_byte",
+        "out_type_argument": "numpy.uint8",
+        "readback_between_ownership_stages": false,
+        "readbacks": 1,
+        "top_rgba": [
+          0.75,
+          0.125,
+          1,
+          0.75
+        ],
+        "x_pattern": "constant"
+      },
+      "process": {
+        "exit_code": 0,
+        "stderr": {
+          "file": "rgba8_u8.stderr.log",
+          "sha256": "b1d8d1e72b862b2b97cd31253e5ea272299c884b4d8079ddfbf436853e425c15"
+        },
+        "stdout": {
+          "file": "rgba8_u8.stdout.log",
+          "sha256": "167b04c476f765f616bb8c607825d92b8587f790e8d06dd26e88b469bca62157"
+        }
+      },
+      "readbacks": 1,
+      "returned_array_layout": {
+        "c_contiguous": false,
+        "own_data": false,
+        "strides": [
+          -32,
+          4,
+          1
+        ],
+        "writeable": false
+      },
+      "rgba": {
+        "file": "rgba8_u8.npy",
+        "sha256": "c35fce04a764fc6b2223e94836493305531af986aafb9703f6bf8e8da7812885"
+      },
+      "shape": [
+        6,
+        8,
+        4
+      ]
+    }
+  },
+  "provenance": {
+    "capture_source_sha256": "66ae25247831c184f38f2c7a2ff151b940013087104907523b11e1ed2b9b151a",
+    "cmake": null,
+    "distribution_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Lib\\site-packages",
+    "distribution_record_sha256": "455e084c0cb78e19e41c79d08a57d533b07d52b3248c2ebd4b73e80584b067cc",
+    "environment": {
+      "PYTHONPATH": null,
+      "QT_API": "pyqt6",
+      "QT_QPA_PLATFORM": null,
+      "QT_SCALE_FACTOR": "1",
+      "VISPY_PYQT5_SHARE_CONTEXT": "true"
+    },
+    "fixture_source_sha256": "37797259727afd9c6b15c7074319b935dcddb330deb2b6c99a03c8df6f36fddb",
+    "kind": "upstream",
+    "machine": "AMD64",
+    "numpy_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Lib\\site-packages\\numpy\\__init__.py",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.12.8",
+    "python_executable": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Scripts\\python.exe",
+    "qt_runtime": "6.11.2",
+    "regenerate": "build/oracle-opengl/Scripts/python.exe tools/oracle_typed_capture.py --kind upstream --output tests/reference/typed-capture-opengl",
+    "renderer": {
+      "renderer": "NVIDIA GeForce RTX 4090/PCIe/SSE2",
+      "vendor": "NVIDIA Corporation",
+      "version": "4.6.0 NVIDIA 595.79"
+    },
+    "requirements_sha256": "a784b5a5e2b4ea201578acddc41e28e0997275ea2542642148322153cd240ffd",
+    "source_sha256": {
+      "gloo/buffer.py": "68e37b184b74814e0ae7a6f4f754c9f0c0af5b4e6369a60a8357c70da974e138",
+      "gloo/context.py": "6afc97492f65a5e865723535206fb769a1c4b55694d69786123fdee78bef992a",
+      "gloo/glir.py": "a3bb8a75b33f47420e9c100b8a6d81037a2f03c905e6c9f7d8399f4fb2eb8f7c",
+      "gloo/program.py": "4d3ab8e36260f9b5dc50f6aec075b12d642535f3cb8f49bfd4a27056301d5492",
+      "gloo/texture.py": "9f6d5f2e448e02c0ca4d66c65d17ddcdb6c0182bb8f15f1292a427f5a9faf6bc",
+      "gloo/wrappers.py": "73dbb5eb8ca78b2822266d272ffb14db9fcadd7a56512843209187714c9e8dcc"
+    },
+    "typed_capture_sha256": "6f1b535d3eb8729f6cc017c333fce94edbc876ed667243f116c5f36cbe5f0741",
+    "typed_fixture_sha256": "8070e7e34b9ced2ff7449b30f19d613768b196e76fa3df51421c5fbbf8017e21",
+    "upstream_commit": "117b054598f4758b598f4b8f48feea48c11fe7b0",
+    "versions": {
+      "PyOpenGL": "3.1.10",
+      "PyQt6": "6.11.0",
+      "PyQt6-Qt6": "6.11.2",
+      "PyQt6-sip": "13.13.0",
+      "freetype-py": "2.5.1",
+      "hsluv": "5.0.4",
+      "kiwisolver": "1.5.1",
+      "numpy": "2.5.3",
+      "packaging": "26.3",
+      "vispy": "0.17.0"
+    },
+    "vispy_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Lib\\site-packages\\vispy",
+    "vispy_version": "0.17.0"
+  },
+  "schema": 1
+}

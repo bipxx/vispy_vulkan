@@ -1,0 +1,4 @@
+{
+  "2": "\n                attribute vec2 a_position;\n                attribute vec2 a_offset;\n                void main() { gl_Position = vec4(a_position + a_offset, 0.0, 1.0); }\n                ",
+  "3": "\nuniform vec4 u_color;\nvoid main() { gl_FragColor = u_color; }\n"
+}

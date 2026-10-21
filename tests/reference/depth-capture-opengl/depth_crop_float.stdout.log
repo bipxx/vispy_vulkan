@@ -1,0 +1,1 @@
+PASS depth/stencil capture depth_crop_float: (3, 4, 1), float32, 1 readbacks

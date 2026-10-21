@@ -1,0 +1,185 @@
+{
+  "comparison": {
+    "full_frame_exact": true,
+    "landmark_domain": "analytic input through host CPU scene transform",
+    "landmarks_exact": true
+  },
+  "errors": {
+    "image_edit": {
+      "error": "index 0 has type 'float' but 'int' is expected",
+      "type": "TypeError"
+    }
+  },
+  "fixtures": {},
+  "provenance": {
+    "capture_source_sha256": "6b4cc9f60b3936f41de7a078de30f3fab83aa0ecbf1b736fbb898f1cb61adcdb",
+    "environment": {
+      "PYTHONPATH": null,
+      "QT_API": "pyqt5",
+      "QT_QPA_PLATFORM": null,
+      "QT_SCALE_FACTOR": "1",
+      "VISPY_PYQT5_SHARE_CONTEXT": "true"
+    },
+    "fixture_source_sha256": "fbd3e6c532a8043db87b0ad89ea5c164f0ef8df0e9d75e1d1523f237f1404f12",
+    "host_archived_sources": {
+      "README.md": {
+        "origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-sources\\dive-aa575e1c020f0c5e8227bfb234fa192fa2b12924\\DIVE-aa575e1c020f0c5e8227bfb234fa192fa2b12924\\README.md",
+        "sha256": "3853e087d6294616a19398c96364011145b3abf937ff91da701e7c2693bcbaed",
+        "url": "https://raw.githubusercontent.com/Dive576/DIVE/aa575e1c020f0c5e8227bfb234fa192fa2b12924/README.md"
+      },
+      "dive_example.py": {
+        "origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-sources\\dive-aa575e1c020f0c5e8227bfb234fa192fa2b12924\\DIVE-aa575e1c020f0c5e8227bfb234fa192fa2b12924\\dive_example.py",
+        "sha256": "0d521b2768e7fef01e0d631b69f19cc2296e8748d66505fdff50608fca9e796f",
+        "url": "https://raw.githubusercontent.com/Dive576/DIVE/aa575e1c020f0c5e8227bfb234fa192fa2b12924/dive_example.py"
+      }
+    },
+    "host_commit": "aa575e1c020f0c5e8227bfb234fa192fa2b12924",
+    "host_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\dive-cpython311-pyqt5\\Lib\\site-packages\\DIVE",
+    "host_package_sources": {
+      "DIVE/__init__.py": {
+        "origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\dive-cpython311-pyqt5\\Lib\\site-packages\\DIVE\\__init__.py",
+        "sha256": "f63a96f83fb4ca608d5b5cf93c2cff94cc348e2b38d680505d2c9dc37b70dde3",
+        "url": "https://raw.githubusercontent.com/Dive576/DIVE/aa575e1c020f0c5e8227bfb234fa192fa2b12924/DIVE/__init__.py"
+      },
+      "DIVE/_components/dive_manager.py": {
+        "origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\dive-cpython311-pyqt5\\Lib\\site-packages\\DIVE\\_components\\dive_manager.py",
+        "sha256": "b3ac51b6ad0adcb21a37768c6089e33ad5312a72771a797492e118967609f346",
+        "url": "https://raw.githubusercontent.com/Dive576/DIVE/aa575e1c020f0c5e8227bfb234fa192fa2b12924/DIVE/_components/dive_manager.py"
+      },
+      "DIVE/_plotting/artists.py": {
+        "origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\dive-cpython311-pyqt5\\Lib\\site-packages\\DIVE\\_plotting\\artists.py",
+        "sha256": "7b596c9980a15e971c4f437f5f850f48e7922f1b62b2b5ac6b400539c2048bd9",
+        "url": "https://raw.githubusercontent.com/Dive576/DIVE/aa575e1c020f0c5e8227bfb234fa192fa2b12924/DIVE/_plotting/artists.py"
+      },
+      "DIVE/_plotting/axis_instance.py": {
+        "origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\dive-cpython311-pyqt5\\Lib\\site-packages\\DIVE\\_plotting\\axis_instance.py",
+        "sha256": "91a62a693b6ea888fb45b36c63fbb779bf2f8766d2e864acfa9992a8b65846ca",
+        "url": "https://raw.githubusercontent.com/Dive576/DIVE/aa575e1c020f0c5e8227bfb234fa192fa2b12924/DIVE/_plotting/axis_instance.py"
+      },
+      "DIVE/_plotting/custom_vispy.py": {
+        "origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\dive-cpython311-pyqt5\\Lib\\site-packages\\DIVE\\_plotting\\custom_vispy.py",
+        "sha256": "92be526e65dd71105d4dced48d5bcbaa6963daa6e75529202451cb9090778f90",
+        "url": "https://raw.githubusercontent.com/Dive576/DIVE/aa575e1c020f0c5e8227bfb234fa192fa2b12924/DIVE/_plotting/custom_vispy.py"
+      },
+      "DIVE/_widget.py": {
+        "origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\dive-cpython311-pyqt5\\Lib\\site-packages\\DIVE\\_widget.py",
+        "sha256": "99327bb594a0729f3f12f984618d2fa79c39c763f8405c7d110ae67ee112e34e",
+        "url": "https://raw.githubusercontent.com/Dive576/DIVE/aa575e1c020f0c5e8227bfb234fa192fa2b12924/DIVE/_widget.py"
+      }
+    },
+    "host_package_tree_sha256": "545fef99d793c155a9e04441b41d54ce3a3964e5ace1005e5f90ee50353cd026",
+    "host_version_metadata": null,
+    "import_inventory_sha256": "b50a0b80083bd352b7cacbab81153026c40eb8ff27f3d5c742c8cd02d9fe321c",
+    "installed": [
+      {
+        "name": "PyOpenGL",
+        "origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\dive-cpython311-pyqt5\\Lib\\site-packages",
+        "record_sha256": "272d2da2b0e48fc99572459d394b1731c210dd956f3e39a934f3bc289f8794df",
+        "version": "3.1.10"
+      },
+      {
+        "name": "PyQt5",
+        "origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\dive-cpython311-pyqt5\\Lib\\site-packages",
+        "record_sha256": "1136aada5fec2edb90f600d3c89ec5f5871f03bda6a4a1779793cc66aaf85d1d",
+        "version": "5.15.11"
+      },
+      {
+        "name": "PyQt5-Qt5",
+        "origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\dive-cpython311-pyqt5\\Lib\\site-packages",
+        "record_sha256": "221bbe9c28903e0515e08bce28f3c32397a5244e6556141897a5b81793fe5275",
+        "version": "5.15.2"
+      },
+      {
+        "name": "PyQt5_sip",
+        "origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\dive-cpython311-pyqt5\\Lib\\site-packages",
+        "record_sha256": "640872568c05febe5c5f37f6193ea53cdc5fbe504b123cee8b073d1404034778",
+        "version": "12.20.0"
+      },
+      {
+        "name": "freetype-py",
+        "origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\dive-cpython311-pyqt5\\Lib\\site-packages",
+        "record_sha256": "b396657045f9e98eda5bef1ef54b1381b6b43acfbd7322c6d00d36697b0d2e1d",
+        "version": "2.5.1"
+      },
+      {
+        "name": "hsluv",
+        "origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\dive-cpython311-pyqt5\\Lib\\site-packages",
+        "record_sha256": "f50df1714241d29a5d98d11c3db7b0bab9c874d8d2b8c05f5d3dc84126980ef5",
+        "version": "5.0.4"
+      },
+      {
+        "name": "kiwisolver",
+        "origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\dive-cpython311-pyqt5\\Lib\\site-packages",
+        "record_sha256": "ee0c994ef225f7489b4ec53ac8fd4edcab466d7b16af6e96b0015635c15a76ae",
+        "version": "1.5.1"
+      },
+      {
+        "name": "numpy",
+        "origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\dive-cpython311-pyqt5\\Lib\\site-packages",
+        "record_sha256": "feaa76fb579ab5950d1a5fea63f3051b0c2e3fc4b83d0f17f15a1f91128f850e",
+        "version": "1.26.4"
+      },
+      {
+        "name": "packaging",
+        "origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\dive-cpython311-pyqt5\\Lib\\site-packages",
+        "record_sha256": "1b8655965b0d83e9a067fd7f84b977bd1e117e0fb9f2874b2572781bdc9e2147",
+        "version": "26.3"
+      },
+      {
+        "name": "pandas",
+        "origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\dive-cpython311-pyqt5\\Lib\\site-packages",
+        "record_sha256": "3d7e00fbaaad8844a57c14ff8f1e22368fade0368de9e64d1a055522d66b5ad8",
+        "version": "1.5.3"
+      },
+      {
+        "name": "python-dateutil",
+        "origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\dive-cpython311-pyqt5\\Lib\\site-packages",
+        "record_sha256": "e15e868a50b9c4e71df17b31369843617780146ac5adb1bbfdcced0ebe501824",
+        "version": "2.9.0.post0"
+      },
+      {
+        "name": "pytz",
+        "origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\dive-cpython311-pyqt5\\Lib\\site-packages",
+        "record_sha256": "20599acd6dfd38a2bdb94c261f7388340c37fda705dc9917e0a4bf8ac6e3c156",
+        "version": "2026.5"
+      },
+      {
+        "name": "six",
+        "origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\dive-cpython311-pyqt5\\Lib\\site-packages",
+        "record_sha256": "d16e50f347969b1e1919fb0c88bac4b9c644f5305bcfcfb00f72b646dbd4065d",
+        "version": "1.17.0"
+      },
+      {
+        "name": "vispy",
+        "origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\dive-cpython311-pyqt5\\Lib\\site-packages",
+        "record_sha256": "e2d6d7f301848f52ee3914a7e3b54c7375194bbd4145fcb501ed03b773cbb514",
+        "version": "0.17.0"
+      }
+    ],
+    "kind": "upstream",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "python": "3.11.11",
+    "python_executable": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\dive-cpython311-pyqt5\\Scripts\\python.exe",
+    "qt_runtime": "5.15.2",
+    "regenerate": "Use the verified unchanged DIVE source copy and hashed compat/host-environments/dive-windows-cpython311-pyqt5.txt; build/host-environments/dive-cpython311-pyqt5/Scripts/python.exe tools/oracle_dive_capture.py --kind upstream --output tests/reference/dive-opengl",
+    "renderer": {
+      "renderer": "NVIDIA GeForce RTX 4090/PCIe/SSE2",
+      "vendor": "NVIDIA Corporation",
+      "version": "4.6.0 NVIDIA 595.79"
+    },
+    "requirements_sha256": "a80c62d02b2b958dab1b5be112d58526df2312020aa8db7be90397944531767d",
+    "source_inventory_sha256": "a68ef983f201931624f086c4e65393b8b662ba0c553758f436cebdcd69609dc0",
+    "upstream_commit": "117b054598f4758b598f4b8f48feea48c11fe7b0",
+    "vispy_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\dive-cpython311-pyqt5\\Lib\\site-packages\\vispy",
+    "vispy_source_sha256": {
+      "gloo/buffer.py": "68e37b184b74814e0ae7a6f4f754c9f0c0af5b4e6369a60a8357c70da974e138",
+      "gloo/context.py": "6afc97492f65a5e865723535206fb769a1c4b55694d69786123fdee78bef992a",
+      "gloo/glir.py": "a3bb8a75b33f47420e9c100b8a6d81037a2f03c905e6c9f7d8399f4fb2eb8f7c",
+      "gloo/program.py": "4d3ab8e36260f9b5dc50f6aec075b12d642535f3cb8f49bfd4a27056301d5492",
+      "gloo/texture.py": "9f6d5f2e448e02c0ca4d66c65d17ddcdb6c0182bb8f15f1292a427f5a9faf6bc",
+      "gloo/wrappers.py": "73dbb5eb8ca78b2822266d272ffb14db9fcadd7a56512843209187714c9e8dcc"
+    },
+    "vispy_version": "0.17.0"
+  },
+  "schema": 1
+}

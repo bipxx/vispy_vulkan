@@ -1,0 +1,1 @@
+PASS depth/stencil capture depth_u8: (6, 8, 1), uint8, 1 readbacks

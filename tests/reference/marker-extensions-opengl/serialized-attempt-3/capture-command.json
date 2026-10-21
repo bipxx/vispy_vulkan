@@ -1,0 +1,34 @@
+{
+  "argv": [
+    "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-napari\\Scripts\\python.exe",
+    "-X",
+    "faulthandler",
+    "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\tools\\oracle_marker_extensions_serialized_capture.py",
+    "--kind",
+    "upstream",
+    "--output",
+    "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\tests\\reference\\marker-extensions-opengl\\serialized-attempt-3"
+  ],
+  "authoring_sha256": "a25bb74278607c775859b28af6babe933367ef444b0a9d9d569ba499490afb28",
+  "cwd": "C:\\Users\\HEQ\\Projects\\vispy_vulkan",
+  "environment": {
+    "PYTHONHASHSEED": "0",
+    "QT_API": "pyqt6",
+    "QT_SCALE_FACTOR": "1"
+  },
+  "job_source_sha256": "bee0432c79d87570c71928eb6b406384a8bf0c962f2c635dd473ce54668c1ace",
+  "native_before": {
+    "src\\vispy\\_dawn.cp312-win_amd64.pyd": "89862fbc265bee109a2409cda7631442b8fc1b562a18fc2c21519cdc81fd7116",
+    "src\\vispy\\visuals\\text\\_sdf_cpu.cp312-win_amd64.pyd": "11638220e99ad064a4a0d373145cc2b0f47b7983bae8e4007398f167d76355e0"
+  },
+  "sources_before": {
+    "tests/parity/test_marker_extensions_corrected_parity.py": "c78bbb31056d8ed086dda90706695ffde7d39f3bdbffb2f4106604f2c45742f1",
+    "tests/parity/test_marker_extensions_serialized_parity.py": "de98a93453e191b4871da495331acdcf1aa6657470ef1b76145afdab05123906",
+    "tools/fixture_gloo.py": "37797259727afd9c6b15c7074319b935dcddb330deb2b6c99a03c8df6f36fddb",
+    "tools/fixture_marker_extensions_corrected.py": "d7fc196d5aff03a2656f9ac1d71bd4b796acf617464dd4a2afa591875467fbaf",
+    "tools/oracle_capture.py": "66ae25247831c184f38f2c7a2ff151b940013087104907523b11e1ed2b9b151a",
+    "tools/oracle_image_extensions_capture.py": "5583a42fd34b105651cb1f81c77621f96efd92fedc54e78ee5367eb95e0b6211",
+    "tools/oracle_marker_extensions_corrected_capture.py": "e362f26265c648a92646b835502aeeec4ce30bb8d9768b197c91b7970efb90dd",
+    "tools/oracle_marker_extensions_serialized_capture.py": "0c2ca083cee50e574105e6f6c2562a41a57fd1cb6e0ee6b0b32e910b0c944a53"
+  }
+}

@@ -1,0 +1,321 @@
+// Copyright 2017 The Dawn & Tint Authors
+//
+// Redistribution and use in source and binary forms, with or without
+// modification, are permitted provided that the following conditions are met:
+//
+// 1. Redistributions of source code must retain the above copyright notice, this
+//    list of conditions and the following disclaimer.
+//
+// 2. Redistributions in binary form must reproduce the above copyright notice,
+//    this list of conditions and the following disclaimer in the documentation
+//    and/or other materials provided with the distribution.
+//
+// 3. Neither the name of the copyright holder nor the names of its
+//    contributors may be used to endorse or promote products derived from
+//    this software without specific prior written permission.
+//
+// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+// AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+// IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+// DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+// FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+// DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+// SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+// CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+// OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+// OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+#include "src/dawn/native/opengl/PipelineGL.h"
+
+#include <algorithm>
+#include <set>
+#include <sstream>
+#include <string>
+#include <tuple>
+
+#include "src/dawn/common/Range.h"
+#include "src/dawn/native/BindGroupLayoutInternal.h"
+#include "src/dawn/native/Device.h"
+#include "src/dawn/native/Pipeline.h"
+#include "src/dawn/native/opengl/BufferGL.h"
+#include "src/dawn/native/opengl/DeviceGL.h"
+#include "src/dawn/native/opengl/Forward.h"
+#include "src/dawn/native/opengl/ImmediatesLayoutGL.h"
+#include "src/dawn/native/opengl/OpenGLFunctions.h"
+#include "src/dawn/native/opengl/PipelineLayoutGL.h"
+#include "src/dawn/native/opengl/SamplerGL.h"
+#include "src/dawn/native/opengl/TextureGL.h"
+#include "src/dawn/native/opengl/UtilsGL.h"
+#include "src/utils/numeric.h"
+
+namespace dawn::native::opengl {
+
+PipelineGL::PipelineGL() : mProgram(0) {}
+
+PipelineGL::~PipelineGL() = default;
+
+MaybeUnknownError PipelineGL::InitializeShaders(
+    const OpenGLFunctions& gl,
+    const PipelineLayout* layout,
+    const PerStage<ProgrammableStage>& stages,
+    ImmediateMask& pipelineImmediateMask,
+    VertexAttributeMask bgraSwizzleAttributes,
+    Extent3D* workgroupSize,
+    std::set<CombinedSampler>* combinedSamplers,
+    std::unordered_map<SingleShaderStage, std::string>* shaders) {
+    // Compute the set of active stages.
+    wgpu::ShaderStage activeStages = wgpu::ShaderStage::None;
+    for (SingleShaderStage stage : IterateStages(kAllStages)) {
+        if (stages[stage].module != nullptr) {
+            activeStages |= StageBit(stage);
+        }
+    }
+
+    if (layout->GetDevice()->IsToggleEnabled(Toggle::GLUseArrayLengthFromImmediate)) {
+        uint32_t storageBufferCount = 0;
+        for (BindGroupIndex group : layout->GetBindGroupLayoutsMask()) {
+            const BindGroupLayoutInternalBase* bgl = layout->GetBindGroupLayout(group);
+            auto& pipelineBindings = mStorageBufferSizeImmediateInfo.bindings[group];
+            for (BindingIndex bindingIndex : bgl->GetBufferIndices()) {
+                const BindingInfo& bindingInfo = bgl->GetBindingInfo(bindingIndex);
+                if (!(bindingInfo.visibility & activeStages) ||
+                    !bgl->IsStorageBufferBinding(bindingIndex)) {
+                    continue;
+                }
+                bool isUsed = false;
+                for (SingleShaderStage stage : IterateStages(activeStages)) {
+                    if (stages[stage].metadata->bindings[group].contains(bindingInfo.binding)) {
+                        isUsed = true;
+                        break;
+                    }
+                }
+                if (isUsed) {
+                    pipelineBindings.push_back(
+                        {bindingIndex, bindingInfo.binding, storageBufferCount++});
+                }
+            }
+        }
+        if (activeStages & StageBit(SingleShaderStage::Compute)) {
+            DAWN_ASSERT(storageBufferCount <=
+                        std::tuple_size_v<decltype(ComputeImmediates::storageBufferSizes)>);
+            pipelineImmediateMask |=
+                GetImmediateBlockBits(offsetof(ComputeImmediates, storageBufferSizes),
+                                      size_t{storageBufferCount} * kImmediateElementByteSize);
+        } else {
+            DAWN_ASSERT(storageBufferCount <=
+                        std::tuple_size_v<decltype(RenderImmediates::storageBufferSizes)>);
+            pipelineImmediateMask |=
+                GetImmediateBlockBits(offsetof(RenderImmediates, storageBufferSizes),
+                                      size_t{storageBufferCount} * kImmediateElementByteSize);
+        }
+    }
+
+    EmulatedTextureBuiltinRegistrar emulatedTextureBuiltins(layout);
+
+    // Create an OpenGL shader for each stage and gather the list of combined samplers.
+    for (SingleShaderStage stage : IterateStages(activeStages)) {
+        ShaderModule* module = ToBackend(stages[stage].module.Get());
+        std::vector<CombinedSampler> stageCombinedSamplers;
+        Extent3D localWorkgroupSize;
+        std::string shader;
+        DAWN_TRY_ASSIGN(
+            shader, module->CompileShader(gl, stages[stage], stage, pipelineImmediateMask,
+                                          bgraSwizzleAttributes, &stageCombinedSamplers, layout,
+                                          mStorageBufferSizeImmediateInfo, &emulatedTextureBuiltins,
+                                          &localWorkgroupSize));
+        if (stage == SingleShaderStage::Compute) {
+            *workgroupSize = localWorkgroupSize;
+        }
+
+        combinedSamplers->insert(stageCombinedSamplers.begin(), stageCombinedSamplers.end());
+        shaders->emplace(stage, shader);
+    }
+
+    mEmulatedTextureBuiltinInfo = emulatedTextureBuiltins.AcquireInfo();
+    return {};
+}
+
+MaybeError PipelineGL::InitializeBase(
+    const OpenGLFunctions& gl,
+    const PipelineLayout* layout,
+    const PerStage<ProgrammableStage>& stages,
+    ImmediateMask& pipelineImmediateMask,
+    const std::set<CombinedSampler>& combinedSamplers,
+    const std::unordered_map<SingleShaderStage, std::string>& shaders) {
+    // Compute the set of active stages.
+    wgpu::ShaderStage activeStages = wgpu::ShaderStage::None;
+    for (SingleShaderStage stage : IterateStages(kAllStages)) {
+        if (stages[stage].module != nullptr) {
+            activeStages |= StageBit(stage);
+        }
+    }
+
+    mProgram = DAWN_GL_TRY(gl, CreateProgram());
+
+    std::vector<GLuint> glShaders;
+    for (SingleShaderStage stage : IterateStages(activeStages)) {
+        ShaderModule* module = ToBackend(stages[stage].module.Get());
+
+        DAWN_CHECK(shaders.contains(stage));
+
+        GLuint shader;
+        DAWN_TRY_ASSIGN(shader, module->CreateGLShaderObject(gl, stage, shaders.at(stage)));
+
+        DAWN_GL_TRY(gl, AttachShader(mProgram, shader));
+        glShaders.push_back(shader);
+    }
+
+    // Link all the shaders together.
+    DAWN_GL_TRY(gl, LinkProgram(mProgram));
+
+    GLint linkStatus = GL_FALSE;
+    DAWN_GL_TRY(gl, GetProgramiv(mProgram, GL_LINK_STATUS, &linkStatus));
+    if (linkStatus == GL_FALSE) {
+        GLint infoLogLength = 0;
+        DAWN_GL_TRY(gl, GetProgramiv(mProgram, GL_INFO_LOG_LENGTH, &infoLogLength));
+
+        if (infoLogLength > 1) {
+            std::vector<char> buffer(infoLogLength);
+            DAWN_GL_TRY(gl, GetProgramInfoLog(mProgram, infoLogLength, nullptr, &buffer[0]));
+            return DAWN_PIPELINE_UNCATEGORIZED_ERROR("Program link failed:\n%s", buffer.data());
+        }
+    }
+
+    // Compute links between stages for combined samplers, then bind them to texture units
+    DAWN_GL_TRY(gl, UseProgram(mProgram));
+    const auto& indices = layout->GetBindingIndexInfo();
+
+    mUnitsForSamplers.resize(layout->GetNumSamplers());
+    mUnitsForTextures.resize(layout->GetNumSampledTextures());
+
+    // Assign combined texture/samplers to GL texture units.
+    TextureUnit textureUnit{0u};
+    for (const auto& combined : combinedSamplers) {
+        // All the texture/samplers of a binding_array are set in a single glUniform1iv, gather them
+        // all in this vector.
+        absl::InlinedVector<GLint, 1> uniformsToSet;
+
+        BindingIndex textureArrayStart = combined.textureLocation.index;
+        for (auto textureArrayElement : Range(combined.textureLocation.shaderArraySize)) {
+            FlatBindingIndex textureGLIndex =
+                indices[combined.textureLocation.group][textureArrayStart + textureArrayElement];
+            mUnitsForTextures[textureGLIndex].push_back(textureUnit);
+
+            // Record that the placeholder sampler must be set for this texture unit if no sampler
+            // is used in the shader.
+            if (!combined.samplerLocation) {
+                mPlaceholderSamplerUnits.push_back(textureUnit);
+            } else {
+                // Record that the sampler used in the shader must be set for this texture unit.
+                BindingIndex samplerBindingIndex = combined.samplerLocation->index;
+                FlatBindingIndex samplerGLIndex =
+                    indices[combined.samplerLocation->group][samplerBindingIndex];
+                mUnitsForSamplers[samplerGLIndex].push_back(textureUnit);
+            }
+
+            uniformsToSet.push_back(dchecked_cast<GLint>(textureUnit));
+            textureUnit++;
+        }
+
+        std::string name = combined.GetName();
+        GLint location = DAWN_GL_TRY(gl, GetUniformLocation(mProgram, name.c_str()));
+        // Non-arrayed GLSL variables cannot be set with glUniform1iv
+        if (uniformsToSet.size() == 1) {
+            DAWN_GL_TRY(gl, Uniform1i(location, uniformsToSet[0]));
+        } else {
+            DAWN_GL_TRY(gl, Uniform1iv(location, checked_cast<GLsizei>(uniformsToSet.size()),
+                                       uniformsToSet.data()));
+        }
+    }
+
+    if (!mPlaceholderSamplerUnits.empty()) {
+        Ref<SamplerBase> sampler;
+        DAWN_TRY_ASSIGN(sampler, layout->GetDevice()->CreateSampler());
+        mPlaceholderSampler = ToBackend(std::move(sampler));
+    }
+
+    // If the pipeline declares immediates but the GL driver determines that they are unused and
+    // optimizes out the uniform variable, reset the mask. This prevents a GL_INVALID_VALUE error
+    // when trying to update it via glUniform*().
+    if (pipelineImmediateMask.any()) {
+        auto location = DAWN_GL_TRY(gl, GetUniformLocation(mProgram, "tint_immediates"));
+        if (location == -1) {
+            pipelineImmediateMask.reset();
+        }
+    }
+
+    for (GLuint glShader : glShaders) {
+        DAWN_GL_TRY(gl, DetachShader(mProgram, glShader));
+        DAWN_GL_TRY(gl, DeleteShader(glShader));
+    }
+
+    return {};
+}
+
+const std::vector<TextureUnit>& PipelineGL::GetTextureUnitsForSampler(
+    FlatBindingIndex index) const {
+    DAWN_ASSERT(index < mUnitsForSamplers.size());
+    return mUnitsForSamplers[index];
+}
+
+const std::vector<TextureUnit>& PipelineGL::GetTextureUnitsForTextureView(
+    FlatBindingIndex index) const {
+    DAWN_ASSERT(index < mUnitsForTextures.size());
+    return mUnitsForTextures[index];
+}
+
+MaybeError PipelineGL::ApplyNow(const OpenGLFunctions& gl, const PipelineLayout* layout) {
+    DAWN_GL_TRY(gl, UseProgram(mProgram));
+    for (TextureUnit unit : mPlaceholderSamplerUnits) {
+        DAWN_ASSERT(mPlaceholderSampler.Get() != nullptr);
+        DAWN_GL_TRY(gl, BindSampler(GLuint(unit), mPlaceholderSampler->GetHandle()));
+    }
+
+    return {};
+}
+
+const EmulatedTextureBuiltinInfo& PipelineGL::GetEmulatedTextureBuiltinInfo() const {
+    return mEmulatedTextureBuiltinInfo;
+}
+
+bool PipelineGL::NeedsTextureBuiltinUniformBuffer() const {
+    return !mEmulatedTextureBuiltinInfo.empty();
+}
+
+const StorageBufferSizeImmediateInfo& PipelineGL::GetStorageBufferSizeImmediateInfo() const {
+    return mStorageBufferSizeImmediateInfo;
+}
+
+// EmulatedTextureBuiltinRegistrar
+
+EmulatedTextureBuiltinRegistrar::EmulatedTextureBuiltinRegistrar(const PipelineLayout* layout)
+    : mLayout(layout) {}
+
+uint32_t EmulatedTextureBuiltinRegistrar::Register(BindGroupIndex group,
+                                                   BindingIndex binding,
+                                                   TextureQuery query) {
+    FlatBindingIndex firstTextureIndex = mLayout->GetBindingIndexInfo()[group][binding];
+
+    if (!mEmulatedTextureBuiltinInfo.contains(firstTextureIndex)) {
+        // Register the metadata to add for each element of the binding_array (if there is one).
+        BindingIndex arraySize =
+            mLayout->GetBindGroupLayout(group)->GetBindingInfo(binding).arraySize;
+        for (BindingIndex arrayElement : Range(arraySize)) {
+            FlatBindingIndex textureIndex =
+                mLayout->GetBindingIndexInfo()[group][binding + arrayElement];
+
+            mEmulatedTextureBuiltinInfo.emplace(
+                textureIndex,
+                EmulatedTextureBuiltin{.index = mCurrentIndex, .query = query, .group = group});
+            mCurrentIndex++;
+        }
+    }
+
+    return mEmulatedTextureBuiltinInfo[firstTextureIndex].index;
+}
+
+EmulatedTextureBuiltinInfo EmulatedTextureBuiltinRegistrar::AcquireInfo() {
+    return mEmulatedTextureBuiltinInfo;
+}
+
+}  // namespace dawn::native::opengl

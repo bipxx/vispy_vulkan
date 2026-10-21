@@ -1,0 +1,175 @@
+{
+  "bounded_fixture_plan": {
+    "cases": [
+      "scatter",
+      "scatter_edit",
+      "image",
+      "image_edit"
+    ],
+    "comparison": {
+      "full_frame_exact": true,
+      "landmark_domain": "analytic input through host CPU scene transform",
+      "landmarks_exact": true
+    },
+    "fixture_source_sha256": "fbd3e6c532a8043db87b0ad89ea5c164f0ef8df0e9d75e1d1523f237f1404f12",
+    "public_api": "DIVEWidget.take_screenshot",
+    "updates": [
+      "DIVEWidget.edit_data",
+      "DIVEWidget.edit_artist"
+    ],
+    "widget_size": [
+      640,
+      480
+    ]
+  },
+  "bounded_fixture_qualification": "unresolved",
+  "candidate_qualification": "pending",
+  "commit": "aa575e1c020f0c5e8227bfb234fa192fa2b12924",
+  "host": "DIVE",
+  "import_inventory": "compat/host-environments/dive.import-inventory.json",
+  "import_inventory_sha256": "b50a0b80083bd352b7cacbab81153026c40eb8ff27f3d5c742c8cd02d9fe321c",
+  "known_source_constraints": [
+    {
+      "detail": "qtwidgets.QAction and Qt5 enum usage require an independently tested Qt5 environment; generic Qt6 admission is not implied.",
+      "file": "DIVE/_components/dive_manager.py",
+      "line": 87
+    },
+    {
+      "detail": "ArrowArtist uses pandas.DataFrame.append; pandas1.5.3 and NumPy1.26.4 are pinned in the Python3.11 environment.",
+      "file": "DIVE/_plotting/artists.py",
+      "line": 213
+    },
+    {
+      "detail": "Public screenshot path requires native.grabFramebuffer; CPU imports do not verify that method renders correctly.",
+      "file": "DIVE/_components/dive_manager.py",
+      "line": 262
+    }
+  ],
+  "public_fixture_plan": {
+    "backend": "vispy.app.use_app(\"PyQt5\") before importing DIVE",
+    "capture_contract": "Public take_screenshot uses QWidget.grab, native.grabFramebuffer and QPainter. Assert output exists, contains plotted landmarks, and differs after public edit_data; then preserve shader/GLIR capture and source/dependency/environment hashes.",
+    "import": "from DIVE import DIVEWidget",
+    "qt_application": "PyQt5.QtWidgets.QApplication",
+    "steps": [
+      "DIVEWidget()",
+      "resize(640, 480)",
+      "add_data(\"points\", pandas.DataFrame({\"x\": [-1.0, 0.0, 1.0], \"y\": [1.0, -1.0, 1.0]}))",
+      "add_axis(\"xy\", \"2d\", x_label=\"X\", y_label=\"Y\")",
+      "add_scatter_artist(axis_name=\"xy\", name=\"points\", data_name=\"points\", x_field=\"x\", y_field=\"y\", marker_color=\"red\", line_width=0)",
+      "display_axis(\"xy\")",
+      "show(); process Qt paint events until canvas is visible",
+      "take_screenshot(str(output_png))",
+      "edit_data(\"points\", data=edited_dataframe); repeat settled screenshot",
+      "close(); verify clean process exit"
+    ]
+  },
+  "reference_manifest": "tests/reference/dive-opengl/manifest.json",
+  "reference_manifest_sha256": "ef6e8c00c81e4c8b854ee31b3914b58799984d1bce912a3e47bdd93f98f5eee7",
+  "repository": "https://github.com/Dive576/DIVE",
+  "requirements": "compat/host-environments/dive-windows-cpython311-pyqt5.txt",
+  "requirements_sha256": "a80c62d02b2b958dab1b5be112d58526df2312020aa8db7be90397944531767d",
+  "schema": 1,
+  "source_archive_sha256": "28300472a4cc2d77e4f13820c7cc26369a6ae3148c0ebcba6cc03bb7b3fd7659",
+  "source_archive_url": "https://codeload.github.com/Dive576/DIVE/tar.gz/aa575e1c020f0c5e8227bfb234fa192fa2b12924",
+  "source_files": {
+    "DIVE/__init__.py": {
+      "sha256": "f63a96f83fb4ca608d5b5cf93c2cff94cc348e2b38d680505d2c9dc37b70dde3",
+      "url": "https://raw.githubusercontent.com/Dive576/DIVE/aa575e1c020f0c5e8227bfb234fa192fa2b12924/DIVE/__init__.py"
+    },
+    "DIVE/_components/dive_manager.py": {
+      "sha256": "b3ac51b6ad0adcb21a37768c6089e33ad5312a72771a797492e118967609f346",
+      "url": "https://raw.githubusercontent.com/Dive576/DIVE/aa575e1c020f0c5e8227bfb234fa192fa2b12924/DIVE/_components/dive_manager.py"
+    },
+    "DIVE/_plotting/artists.py": {
+      "sha256": "7b596c9980a15e971c4f437f5f850f48e7922f1b62b2b5ac6b400539c2048bd9",
+      "url": "https://raw.githubusercontent.com/Dive576/DIVE/aa575e1c020f0c5e8227bfb234fa192fa2b12924/DIVE/_plotting/artists.py"
+    },
+    "DIVE/_plotting/axis_instance.py": {
+      "sha256": "91a62a693b6ea888fb45b36c63fbb779bf2f8766d2e864acfa9992a8b65846ca",
+      "url": "https://raw.githubusercontent.com/Dive576/DIVE/aa575e1c020f0c5e8227bfb234fa192fa2b12924/DIVE/_plotting/axis_instance.py"
+    },
+    "DIVE/_plotting/custom_vispy.py": {
+      "sha256": "92be526e65dd71105d4dced48d5bcbaa6963daa6e75529202451cb9090778f90",
+      "url": "https://raw.githubusercontent.com/Dive576/DIVE/aa575e1c020f0c5e8227bfb234fa192fa2b12924/DIVE/_plotting/custom_vispy.py"
+    },
+    "DIVE/_widget.py": {
+      "sha256": "99327bb594a0729f3f12f984618d2fa79c39c763f8405c7d110ae67ee112e34e",
+      "url": "https://raw.githubusercontent.com/Dive576/DIVE/aa575e1c020f0c5e8227bfb234fa192fa2b12924/DIVE/_widget.py"
+    },
+    "README.md": {
+      "sha256": "3853e087d6294616a19398c96364011145b3abf937ff91da701e7c2693bcbaed",
+      "url": "https://raw.githubusercontent.com/Dive576/DIVE/aa575e1c020f0c5e8227bfb234fa192fa2b12924/README.md"
+    },
+    "dive_example.py": {
+      "sha256": "0d521b2768e7fef01e0d631b69f19cc2296e8748d66505fdff50608fca9e796f",
+      "url": "https://raw.githubusercontent.com/Dive576/DIVE/aa575e1c020f0c5e8227bfb234fa192fa2b12924/dive_example.py"
+    }
+  },
+  "source_inventory": "compat/host-environments/dive.source-inventory.json",
+  "source_tree_sha256": "fa15d4d94cd33548cba4a1c3f1fcf22547f30f07a4b60c23adee27da09ab7ce6",
+  "successful_fixtures": [],
+  "unresolved_fixtures": {
+    "arrow": "No real rendering fixture yet.",
+    "image": {
+      "error": "index 0 has type 'float' but 'int' is expected",
+      "process": {
+        "exit_code": 1,
+        "stderr": {
+          "file": "image.stderr.log",
+          "sha256": "ba265139333ba2d75e599e199daa0fbe6e1b2fb0ace358ee4f0767eb8d3f3054"
+        },
+        "stdout": {
+          "file": "image.stdout.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "type": "TypeError"
+    },
+    "image_edit": {
+      "error": "index 0 has type 'float' but 'int' is expected",
+      "process": {
+        "exit_code": 1,
+        "stderr": {
+          "file": "image_edit.stderr.log",
+          "sha256": "ba265139333ba2d75e599e199daa0fbe6e1b2fb0ace358ee4f0767eb8d3f3054"
+        },
+        "stdout": {
+          "file": "image_edit.stdout.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "type": "TypeError"
+    },
+    "scatter": {
+      "error": "index 0 has type 'float' but 'int' is expected",
+      "process": {
+        "exit_code": 1,
+        "stderr": {
+          "file": "scatter.stderr.log",
+          "sha256": "ba265139333ba2d75e599e199daa0fbe6e1b2fb0ace358ee4f0767eb8d3f3054"
+        },
+        "stdout": {
+          "file": "scatter.stdout.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "type": "TypeError"
+    },
+    "scatter_edit": {
+      "error": "index 0 has type 'float' but 'int' is expected",
+      "process": {
+        "exit_code": 1,
+        "stderr": {
+          "file": "scatter_edit.stderr.log",
+          "sha256": "ba265139333ba2d75e599e199daa0fbe6e1b2fb0ace358ee4f0767eb8d3f3054"
+        },
+        "stdout": {
+          "file": "scatter_edit.stdout.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "type": "TypeError"
+    }
+  },
+  "upstream_qualification": "unresolved"
+}

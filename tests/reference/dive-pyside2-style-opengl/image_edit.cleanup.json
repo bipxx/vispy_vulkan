@@ -1,0 +1,36 @@
+{
+  "documentation": [
+    "https://doc.qt.io/archives/qt-5.15/qobject.html#deleteLater",
+    "https://doc.qt.io/archives/qt-5.15/qcoreapplication.html#sendPostedEvents",
+    "https://doc.qt.io/archives/qt-5.15/qapplication.html#topLevelWidgets"
+  ],
+  "installed_vispy_record_integrity": {
+    "files_checked": 519,
+    "record_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\dive-pyside2-cpython310-upstream\\lib\\site-packages\\vispy-0.17.0.dist-info\\RECORD",
+    "record_sha256": "4993b2ab1a6198fbf4eaafe6a81e8372a81fa9fa8423f447096fd65fdb662445",
+    "selected": {
+      "vispy/app/backends/_pyside2.py": {
+        "origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\dive-pyside2-cpython310-upstream\\lib\\site-packages\\vispy\\app\\backends\\_pyside2.py",
+        "sha256": "a99a416c4566aeaeae5edcbc7e7f9c9a2b56409ca13e9ba80180be302e370a78"
+      },
+      "vispy/app/backends/_qt.py": {
+        "origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\dive-pyside2-cpython310-upstream\\lib\\site-packages\\vispy\\app\\backends\\_qt.py",
+        "sha256": "6e8b2ed3cae39e05546f759c7bf68325c94a4835a82666885806497eda63b976"
+      },
+      "vispy/visuals/markers.py": {
+        "origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\dive-pyside2-cpython310-upstream\\lib\\site-packages\\vispy\\visuals\\markers.py",
+        "sha256": "84990f7b14ff92a4acfcccf39bcc8c788b7c9df76e75e85fc8c4e4e102b119c3"
+      }
+    },
+    "version": "0.17.0"
+  },
+  "phases": [
+    "close/deleteLater all remaining public topLevelWidgets",
+    "flush DeferredDelete and collect Python cycles while QApplication is alive",
+    "quit and deleteLater QApplication last"
+  ],
+  "qapplication_destroyed": true,
+  "top_level_after": [],
+  "top_level_before": [],
+  "widget_destroyed_signals": []
+}

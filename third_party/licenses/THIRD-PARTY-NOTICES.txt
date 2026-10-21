@@ -1,0 +1,19 @@
+Bundled third-party notices
+
+VisPy 0.17.0: BSD-3-Clause (vispy-LICENSE.txt).
+Dawn and Tint: BSD-3-Clause (dawn-LICENSE.txt).
+GLSLang: BSD and MIT terms (glslang-LICENSE.txt).
+SPIRV-Tools and SPIRV-Headers: see their license files.
+Abseil: Apache-2.0 (abseil-LICENSE.txt).
+WebGPU-Headers, Vulkan-Headers, Vulkan-Loader and Vulkan-Utility-Libraries:
+see their individual notices and included license texts.
+Nanobind 3.1.0 and its bundled robin-map: see nanobind-LICENSE.txt and robin-map-LICENSE.txt.
+
+The bundled OpenSans-{Regular,Italic,Bold,BoldItalic}.ttf files are version
+1.10 from pinned VisPy. Their embedded name table states:
+Digitized data copyright (c) 2010-2011, Google Corporation.
+Licensed under the Apache License, Version 2.0.
+The matching Apache-2.0 text is OpenSans-Apache-2.0.txt.
+These files predate Open Sans's 2021 OFL relicensing.
+
+No external fonts are downloaded to render the deterministic text fixtures.

@@ -1,0 +1,1413 @@
+{
+  "comparison": {
+    "fixed_landmarks_exact": true,
+    "full_frame_exact": true
+  },
+  "errors": {
+    "depth_occlusion_smooth": {
+      "capture": {
+        "file": "depth_occlusion_smooth.capture.json",
+        "sha256": "def88a5f7de9db98b8ec2403fca571d8905f0966d8e5090e7cb9966aa64f0fbc"
+      },
+      "error": "('depth_occlusion_smooth', 'fixed wide-line landmark', [8, 12], [0, 0, 0, 255], [0, 255, 0, 255])",
+      "process": {
+        "exit_code": 1,
+        "stderr": {
+          "file": "depth_occlusion_smooth.stderr.log",
+          "sha256": "77573a7b1d42dc1f069220400f488231f4518cc96d7e98b01748281de569465c"
+        },
+        "stdout": {
+          "file": "depth_occlusion_smooth.stdout.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "type": "AssertionError",
+      "unadmitted_artifacts": {
+        "expanded_shaders": {
+          "file": "depth_occlusion_smooth.shaders.json",
+          "sha256": "9b8fb09ec20d345d2309e130e541228a40a669480cae7ed6057babf3607d0e18"
+        },
+        "filtered_glir": {
+          "file": "depth_occlusion_smooth.glir.json",
+          "sha256": "54bb93804b4dcbf103e1a3892a8295bfa6f72aaffe4dab76895b4d82450b5f33"
+        },
+        "observations": {
+          "file": "depth_occlusion_smooth.observations.json",
+          "sha256": "cca9a196582e17ccde7a4a4b67aa694d1396bfc8bd0d59eca94c2f417aecf1b1"
+        },
+        "rgba": {
+          "file": "depth_occlusion_smooth.npy",
+          "sha256": "25f19884216eeeec412c7a36de1423b7eed458e448608e48526c10e506e00573"
+        }
+      }
+    }
+  },
+  "fixtures": {
+    "color_smooth": {
+      "capture": {
+        "file": "color_smooth.capture.json",
+        "sha256": "de798553e5b99b93139a71f442c8e8c38ada1ba1903e3692e94dece8faab061d"
+      },
+      "dtype": "|u1",
+      "expanded_shaders": {
+        "file": "color_smooth.shaders.json",
+        "sha256": "7f13a9d720a0fda51eb756ae91d94059e17c7dd93294207b22105941bb55ee3f"
+      },
+      "filtered_glir": {
+        "file": "color_smooth.glir.json",
+        "sha256": "fdaca9a8a3a88d39fab8b9f4d9081f63641bf89d46f8c94764bee48ca5e97c0a"
+      },
+      "observations": {
+        "file": "color_smooth.observations.json",
+        "sha256": "cca9a196582e17ccde7a4a4b67aa694d1396bfc8bd0d59eca94c2f417aecf1b1"
+      },
+      "parameters": {
+        "blend": true,
+        "blend_alpha": [
+          "one",
+          "one_minus_src_alpha"
+        ],
+        "blend_rgb": [
+          "src_alpha",
+          "one_minus_src_alpha"
+        ],
+        "case": "color_smooth",
+        "colors": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0,
+            1.0
+          ]
+        ],
+        "comparison": "entire fixed driver frame exact; no masks, alignment or tolerance",
+        "depth_test": false,
+        "intermediate_finish": false,
+        "line_smooth": true,
+        "line_width": 3.0,
+        "ordered_widths": null,
+        "points": [
+          [
+            4.5,
+            6.5
+          ],
+          [
+            28.5,
+            6.5
+          ]
+        ],
+        "primitive": "lines",
+        "readbacks": 1,
+        "scissor": null,
+        "shader": "color",
+        "size": [
+          32,
+          24
+        ],
+        "source_alpha": 1.0,
+        "vertices_sha256": "039021b024aeb675b6603c9f6142fa4e6863e928b8212f20ef3aca243fcd57df",
+        "weights": [
+          1.0,
+          1.0
+        ]
+      },
+      "process": {
+        "exit_code": 0,
+        "stderr": {
+          "file": "color_smooth.stderr.log",
+          "sha256": "b1d8d1e72b862b2b97cd31253e5ea272299c884b4d8079ddfbf436853e425c15"
+        },
+        "stdout": {
+          "file": "color_smooth.stdout.log",
+          "sha256": "aef3eb0b70eb657851ab3c695ef6387105666abe8471d9c0ecb4dd371d8f2c23"
+        }
+      },
+      "rgba": {
+        "file": "color_smooth.npy",
+        "sha256": "491f06defbd0c426944dfbf86d8b4d86cfc92a6d4691475f28c2a147d36ec8e0"
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ]
+    },
+    "diagonal_aliased": {
+      "capture": {
+        "file": "diagonal_aliased.capture.json",
+        "sha256": "3cdac38e2fca621246b0459cd4b4818a76c05409275c23fe9c604a75127834eb"
+      },
+      "dtype": "|u1",
+      "expanded_shaders": {
+        "file": "diagonal_aliased.shaders.json",
+        "sha256": "9b8fb09ec20d345d2309e130e541228a40a669480cae7ed6057babf3607d0e18"
+      },
+      "filtered_glir": {
+        "file": "diagonal_aliased.glir.json",
+        "sha256": "36ce0709e31ca9d7a8038fcc95bc3ee11038c8a87b62f2d5189e068894874e1e"
+      },
+      "observations": {
+        "file": "diagonal_aliased.observations.json",
+        "sha256": "36c3feae8d3f9c4fad2b742d46524edd93ad32b36e002bb0345f0d73c33add77"
+      },
+      "parameters": {
+        "blend": true,
+        "blend_alpha": [
+          "one",
+          "one_minus_src_alpha"
+        ],
+        "blend_rgb": [
+          "src_alpha",
+          "one_minus_src_alpha"
+        ],
+        "case": "diagonal_aliased",
+        "colors": null,
+        "comparison": "entire fixed driver frame exact; no masks, alignment or tolerance",
+        "depth_test": false,
+        "intermediate_finish": false,
+        "line_smooth": false,
+        "line_width": 3.0,
+        "ordered_widths": null,
+        "points": [
+          [
+            4.5,
+            4.5
+          ],
+          [
+            24.5,
+            18.5
+          ]
+        ],
+        "primitive": "lines",
+        "readbacks": 1,
+        "scissor": null,
+        "shader": "solid",
+        "size": [
+          32,
+          24
+        ],
+        "source_alpha": 1.0,
+        "vertices_sha256": "8bd3459948524f44ae8eb12cd53addce2c787d394e531ea449a9ba93aecafc27",
+        "weights": [
+          1.0,
+          1.0
+        ]
+      },
+      "process": {
+        "exit_code": 0,
+        "stderr": {
+          "file": "diagonal_aliased.stderr.log",
+          "sha256": "b1d8d1e72b862b2b97cd31253e5ea272299c884b4d8079ddfbf436853e425c15"
+        },
+        "stdout": {
+          "file": "diagonal_aliased.stdout.log",
+          "sha256": "61ff8732fc8127f72212679ea0296332e4be219b1929414436f95eebb7cae809"
+        }
+      },
+      "rgba": {
+        "file": "diagonal_aliased.npy",
+        "sha256": "969f2c8fc541e392d863bdbbaf7a294b35fcede7b7ca79110d92f6fe9b24be87"
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ]
+    },
+    "diagonal_smooth_forward": {
+      "capture": {
+        "file": "diagonal_smooth_forward.capture.json",
+        "sha256": "f2285532a6159e2133682c71c9cf7e3a4748ba1c618236ec88096b630abe29aa"
+      },
+      "dtype": "|u1",
+      "expanded_shaders": {
+        "file": "diagonal_smooth_forward.shaders.json",
+        "sha256": "9b8fb09ec20d345d2309e130e541228a40a669480cae7ed6057babf3607d0e18"
+      },
+      "filtered_glir": {
+        "file": "diagonal_smooth_forward.glir.json",
+        "sha256": "b5bac5b2c7326b6679b179661ad765bf6a52c87f65bc98003ae6dde88a74d004"
+      },
+      "observations": {
+        "file": "diagonal_smooth_forward.observations.json",
+        "sha256": "cca9a196582e17ccde7a4a4b67aa694d1396bfc8bd0d59eca94c2f417aecf1b1"
+      },
+      "parameters": {
+        "blend": true,
+        "blend_alpha": [
+          "one",
+          "one_minus_src_alpha"
+        ],
+        "blend_rgb": [
+          "src_alpha",
+          "one_minus_src_alpha"
+        ],
+        "case": "diagonal_smooth_forward",
+        "colors": null,
+        "comparison": "entire fixed driver frame exact; no masks, alignment or tolerance",
+        "depth_test": false,
+        "intermediate_finish": false,
+        "line_smooth": true,
+        "line_width": 3.0,
+        "ordered_widths": null,
+        "points": [
+          [
+            4.5,
+            4.5
+          ],
+          [
+            24.5,
+            18.5
+          ]
+        ],
+        "primitive": "lines",
+        "readbacks": 1,
+        "scissor": null,
+        "shader": "solid",
+        "size": [
+          32,
+          24
+        ],
+        "source_alpha": 1.0,
+        "vertices_sha256": "8bd3459948524f44ae8eb12cd53addce2c787d394e531ea449a9ba93aecafc27",
+        "weights": [
+          1.0,
+          1.0
+        ]
+      },
+      "process": {
+        "exit_code": 0,
+        "stderr": {
+          "file": "diagonal_smooth_forward.stderr.log",
+          "sha256": "b1d8d1e72b862b2b97cd31253e5ea272299c884b4d8079ddfbf436853e425c15"
+        },
+        "stdout": {
+          "file": "diagonal_smooth_forward.stdout.log",
+          "sha256": "8e94c243d3c3e4cf55b6fdd76d6be548fadbb603a3aa13315e57b3bde7360467"
+        }
+      },
+      "rgba": {
+        "file": "diagonal_smooth_forward.npy",
+        "sha256": "f61aca5144320ed96074723a6e5c14e3fbeef16d96a3083c6ebef0f07738a872"
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ]
+    },
+    "diagonal_smooth_reverse": {
+      "capture": {
+        "file": "diagonal_smooth_reverse.capture.json",
+        "sha256": "1be006737a11b685c88645a42aaa56607a41a3f66ce54c0012ac1b5f054acac8"
+      },
+      "dtype": "|u1",
+      "expanded_shaders": {
+        "file": "diagonal_smooth_reverse.shaders.json",
+        "sha256": "9b8fb09ec20d345d2309e130e541228a40a669480cae7ed6057babf3607d0e18"
+      },
+      "filtered_glir": {
+        "file": "diagonal_smooth_reverse.glir.json",
+        "sha256": "ff88ae18c48d69133b24d6f71259533e25bfaa2ca7b961086dfb2ec0bb27a8ad"
+      },
+      "observations": {
+        "file": "diagonal_smooth_reverse.observations.json",
+        "sha256": "cca9a196582e17ccde7a4a4b67aa694d1396bfc8bd0d59eca94c2f417aecf1b1"
+      },
+      "parameters": {
+        "blend": true,
+        "blend_alpha": [
+          "one",
+          "one_minus_src_alpha"
+        ],
+        "blend_rgb": [
+          "src_alpha",
+          "one_minus_src_alpha"
+        ],
+        "case": "diagonal_smooth_reverse",
+        "colors": null,
+        "comparison": "entire fixed driver frame exact; no masks, alignment or tolerance",
+        "depth_test": false,
+        "intermediate_finish": false,
+        "line_smooth": true,
+        "line_width": 3.0,
+        "ordered_widths": null,
+        "points": [
+          [
+            24.5,
+            18.5
+          ],
+          [
+            4.5,
+            4.5
+          ]
+        ],
+        "primitive": "lines",
+        "readbacks": 1,
+        "scissor": null,
+        "shader": "solid",
+        "size": [
+          32,
+          24
+        ],
+        "source_alpha": 1.0,
+        "vertices_sha256": "8230b776f458ffc9a63abfedb3afb2511c90af0e355ff1759200a047c24346fa",
+        "weights": [
+          1.0,
+          1.0
+        ]
+      },
+      "process": {
+        "exit_code": 0,
+        "stderr": {
+          "file": "diagonal_smooth_reverse.stderr.log",
+          "sha256": "b1d8d1e72b862b2b97cd31253e5ea272299c884b4d8079ddfbf436853e425c15"
+        },
+        "stdout": {
+          "file": "diagonal_smooth_reverse.stdout.log",
+          "sha256": "c7c24fb1ac5e9bb60896ffcdd8bbfeb958062961b9622fc0f507319f915ffe2f"
+        }
+      },
+      "rgba": {
+        "file": "diagonal_smooth_reverse.npy",
+        "sha256": "f61aca5144320ed96074723a6e5c14e3fbeef16d96a3083c6ebef0f07738a872"
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ]
+    },
+    "endpoints_smooth": {
+      "capture": {
+        "file": "endpoints_smooth.capture.json",
+        "sha256": "fb65b604959881cd076ec7094de4c67a7027df3cc1065af1805269e42535dba0"
+      },
+      "dtype": "|u1",
+      "expanded_shaders": {
+        "file": "endpoints_smooth.shaders.json",
+        "sha256": "9b8fb09ec20d345d2309e130e541228a40a669480cae7ed6057babf3607d0e18"
+      },
+      "filtered_glir": {
+        "file": "endpoints_smooth.glir.json",
+        "sha256": "6bc8cfadb80b80d98440a122aa43628a9e60d92a29dde77807d46afc67021853"
+      },
+      "observations": {
+        "file": "endpoints_smooth.observations.json",
+        "sha256": "cca9a196582e17ccde7a4a4b67aa694d1396bfc8bd0d59eca94c2f417aecf1b1"
+      },
+      "parameters": {
+        "blend": true,
+        "blend_alpha": [
+          "one",
+          "one_minus_src_alpha"
+        ],
+        "blend_rgb": [
+          "src_alpha",
+          "one_minus_src_alpha"
+        ],
+        "case": "endpoints_smooth",
+        "colors": null,
+        "comparison": "entire fixed driver frame exact; no masks, alignment or tolerance",
+        "depth_test": false,
+        "intermediate_finish": false,
+        "line_smooth": true,
+        "line_width": 3.0,
+        "ordered_widths": null,
+        "points": [
+          [
+            4.25,
+            6.25
+          ],
+          [
+            24.75,
+            6.25
+          ],
+          [
+            12.25,
+            12.25
+          ],
+          [
+            12.25,
+            20.75
+          ]
+        ],
+        "primitive": "lines",
+        "readbacks": 1,
+        "scissor": null,
+        "shader": "solid",
+        "size": [
+          32,
+          24
+        ],
+        "source_alpha": 1.0,
+        "vertices_sha256": "e493f78adc4673a90f561ca88cbb146eaa6f972df156358739507bd65828e336",
+        "weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "process": {
+        "exit_code": 0,
+        "stderr": {
+          "file": "endpoints_smooth.stderr.log",
+          "sha256": "b1d8d1e72b862b2b97cd31253e5ea272299c884b4d8079ddfbf436853e425c15"
+        },
+        "stdout": {
+          "file": "endpoints_smooth.stdout.log",
+          "sha256": "9ce6eff9b440ad6de9713dbc150b099d87c78465fd0edce35420395a5e51c84e"
+        }
+      },
+      "rgba": {
+        "file": "endpoints_smooth.npy",
+        "sha256": "27d3f15f3f863ebb083353727fea8a0668555091d738fb360debc6129601467c"
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ]
+    },
+    "flat_last_smooth": {
+      "capture": {
+        "file": "flat_last_smooth.capture.json",
+        "sha256": "20f71e9c069af3b4af1cb4c35ba31e8d390fc0261a1d91c1ea1edc6debeae5b0"
+      },
+      "dtype": "|u1",
+      "expanded_shaders": {
+        "file": "flat_last_smooth.shaders.json",
+        "sha256": "7865b91268a2e7d4a9278d7ea27a2ac6ef1df489ab56d208b52164391e3acdb9"
+      },
+      "filtered_glir": {
+        "file": "flat_last_smooth.glir.json",
+        "sha256": "47cfcd6673126ad4cd5c3fa0d9a01ae3187169f9009ac15187e86842a9ea85b5"
+      },
+      "observations": {
+        "file": "flat_last_smooth.observations.json",
+        "sha256": "cca9a196582e17ccde7a4a4b67aa694d1396bfc8bd0d59eca94c2f417aecf1b1"
+      },
+      "parameters": {
+        "blend": true,
+        "blend_alpha": [
+          "one",
+          "one_minus_src_alpha"
+        ],
+        "blend_rgb": [
+          "src_alpha",
+          "one_minus_src_alpha"
+        ],
+        "case": "flat_last_smooth",
+        "colors": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "comparison": "entire fixed driver frame exact; no masks, alignment or tolerance",
+        "depth_test": false,
+        "intermediate_finish": false,
+        "line_smooth": true,
+        "line_width": 3.0,
+        "ordered_widths": null,
+        "points": [
+          [
+            4.5,
+            6.5
+          ],
+          [
+            28.5,
+            6.5
+          ]
+        ],
+        "primitive": "lines",
+        "readbacks": 1,
+        "scissor": null,
+        "shader": "flat-last",
+        "size": [
+          32,
+          24
+        ],
+        "source_alpha": 1.0,
+        "vertices_sha256": "039021b024aeb675b6603c9f6142fa4e6863e928b8212f20ef3aca243fcd57df",
+        "weights": [
+          1.0,
+          1.0
+        ]
+      },
+      "process": {
+        "exit_code": 0,
+        "stderr": {
+          "file": "flat_last_smooth.stderr.log",
+          "sha256": "b1d8d1e72b862b2b97cd31253e5ea272299c884b4d8079ddfbf436853e425c15"
+        },
+        "stdout": {
+          "file": "flat_last_smooth.stdout.log",
+          "sha256": "4d13a5c3bed51be0b5e4d01ab510cc7747469146d244da7cdaf372f320031c2a"
+        }
+      },
+      "rgba": {
+        "file": "flat_last_smooth.npy",
+        "sha256": "e15236605381392e79157b8a57781852eb1c103802ea633ac2fb60b0d9d34fce"
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ]
+    },
+    "horizontal_aliased": {
+      "capture": {
+        "file": "horizontal_aliased.capture.json",
+        "sha256": "ac728a5ca66300d9751bbfd70f5f5ab93fa1be34d6a33670bafa49796f1ecdad"
+      },
+      "dtype": "|u1",
+      "expanded_shaders": {
+        "file": "horizontal_aliased.shaders.json",
+        "sha256": "9b8fb09ec20d345d2309e130e541228a40a669480cae7ed6057babf3607d0e18"
+      },
+      "filtered_glir": {
+        "file": "horizontal_aliased.glir.json",
+        "sha256": "2eda9fc95b53d6a2312a3518ab0eabaf84360b38aeab071bb60c80fdada978f1"
+      },
+      "observations": {
+        "file": "horizontal_aliased.observations.json",
+        "sha256": "36c3feae8d3f9c4fad2b742d46524edd93ad32b36e002bb0345f0d73c33add77"
+      },
+      "parameters": {
+        "blend": true,
+        "blend_alpha": [
+          "one",
+          "one_minus_src_alpha"
+        ],
+        "blend_rgb": [
+          "src_alpha",
+          "one_minus_src_alpha"
+        ],
+        "case": "horizontal_aliased",
+        "colors": null,
+        "comparison": "entire fixed driver frame exact; no masks, alignment or tolerance",
+        "depth_test": false,
+        "intermediate_finish": false,
+        "line_smooth": false,
+        "line_width": 3.0,
+        "ordered_widths": null,
+        "points": [
+          [
+            4.5,
+            6.5
+          ],
+          [
+            28.5,
+            6.5
+          ]
+        ],
+        "primitive": "lines",
+        "readbacks": 1,
+        "scissor": null,
+        "shader": "solid",
+        "size": [
+          32,
+          24
+        ],
+        "source_alpha": 1.0,
+        "vertices_sha256": "039021b024aeb675b6603c9f6142fa4e6863e928b8212f20ef3aca243fcd57df",
+        "weights": [
+          1.0,
+          1.0
+        ]
+      },
+      "process": {
+        "exit_code": 0,
+        "stderr": {
+          "file": "horizontal_aliased.stderr.log",
+          "sha256": "b1d8d1e72b862b2b97cd31253e5ea272299c884b4d8079ddfbf436853e425c15"
+        },
+        "stdout": {
+          "file": "horizontal_aliased.stdout.log",
+          "sha256": "0a81a3162900e7c50850223a659039081088b44db5e88d876c5fd92f9bdfc767"
+        }
+      },
+      "rgba": {
+        "file": "horizontal_aliased.npy",
+        "sha256": "d3fb8379d82452930287e9b4618d833ed2f471b9abf20ca8a8b7e0d4b98bf711"
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ]
+    },
+    "horizontal_smooth": {
+      "capture": {
+        "file": "horizontal_smooth.capture.json",
+        "sha256": "360619fe60a6b46058289a2e280885bcd5dd6c89fc8b3b2a561fafff4cc49505"
+      },
+      "dtype": "|u1",
+      "expanded_shaders": {
+        "file": "horizontal_smooth.shaders.json",
+        "sha256": "9b8fb09ec20d345d2309e130e541228a40a669480cae7ed6057babf3607d0e18"
+      },
+      "filtered_glir": {
+        "file": "horizontal_smooth.glir.json",
+        "sha256": "353466f60b928ccb5dd6c914895f436ae4f60540ff55914720ed69618418d419"
+      },
+      "observations": {
+        "file": "horizontal_smooth.observations.json",
+        "sha256": "cca9a196582e17ccde7a4a4b67aa694d1396bfc8bd0d59eca94c2f417aecf1b1"
+      },
+      "parameters": {
+        "blend": true,
+        "blend_alpha": [
+          "one",
+          "one_minus_src_alpha"
+        ],
+        "blend_rgb": [
+          "src_alpha",
+          "one_minus_src_alpha"
+        ],
+        "case": "horizontal_smooth",
+        "colors": null,
+        "comparison": "entire fixed driver frame exact; no masks, alignment or tolerance",
+        "depth_test": false,
+        "intermediate_finish": false,
+        "line_smooth": true,
+        "line_width": 3.0,
+        "ordered_widths": null,
+        "points": [
+          [
+            4.5,
+            6.5
+          ],
+          [
+            28.5,
+            6.5
+          ]
+        ],
+        "primitive": "lines",
+        "readbacks": 1,
+        "scissor": null,
+        "shader": "solid",
+        "size": [
+          32,
+          24
+        ],
+        "source_alpha": 1.0,
+        "vertices_sha256": "039021b024aeb675b6603c9f6142fa4e6863e928b8212f20ef3aca243fcd57df",
+        "weights": [
+          1.0,
+          1.0
+        ]
+      },
+      "process": {
+        "exit_code": 0,
+        "stderr": {
+          "file": "horizontal_smooth.stderr.log",
+          "sha256": "b1d8d1e72b862b2b97cd31253e5ea272299c884b4d8079ddfbf436853e425c15"
+        },
+        "stdout": {
+          "file": "horizontal_smooth.stdout.log",
+          "sha256": "f552ba5ff206aaa4e4b1accd3d5bedecf4ce613709370aed30e62aa8e0ac3c61"
+        }
+      },
+      "rgba": {
+        "file": "horizontal_smooth.npy",
+        "sha256": "e15236605381392e79157b8a57781852eb1c103802ea633ac2fb60b0d9d34fce"
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ]
+    },
+    "loop_alpha_smooth": {
+      "capture": {
+        "file": "loop_alpha_smooth.capture.json",
+        "sha256": "73712d68b9fdac5de742ef5c6e67e9b5c9e620415d1a94285aa8747428c786fc"
+      },
+      "dtype": "|u1",
+      "expanded_shaders": {
+        "file": "loop_alpha_smooth.shaders.json",
+        "sha256": "9b8fb09ec20d345d2309e130e541228a40a669480cae7ed6057babf3607d0e18"
+      },
+      "filtered_glir": {
+        "file": "loop_alpha_smooth.glir.json",
+        "sha256": "d889c897d9f71700e523aba296f93b1a26e750dd9ebfd4184a3215989d1230ae"
+      },
+      "observations": {
+        "file": "loop_alpha_smooth.observations.json",
+        "sha256": "cca9a196582e17ccde7a4a4b67aa694d1396bfc8bd0d59eca94c2f417aecf1b1"
+      },
+      "parameters": {
+        "blend": true,
+        "blend_alpha": [
+          "one",
+          "one_minus_src_alpha"
+        ],
+        "blend_rgb": [
+          "src_alpha",
+          "one_minus_src_alpha"
+        ],
+        "case": "loop_alpha_smooth",
+        "colors": null,
+        "comparison": "entire fixed driver frame exact; no masks, alignment or tolerance",
+        "depth_test": false,
+        "intermediate_finish": false,
+        "line_smooth": true,
+        "line_width": 3.0,
+        "ordered_widths": null,
+        "points": [
+          [
+            4.5,
+            4.5
+          ],
+          [
+            26.5,
+            4.5
+          ],
+          [
+            26.5,
+            18.5
+          ],
+          [
+            4.5,
+            18.5
+          ]
+        ],
+        "primitive": "line_loop",
+        "readbacks": 1,
+        "scissor": null,
+        "shader": "solid",
+        "size": [
+          32,
+          24
+        ],
+        "source_alpha": 0.25,
+        "vertices_sha256": "a933bdfa1a53e8a4d2725011707a7be4298134961e71150c3ed2bf9dcb0c9f86",
+        "weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "process": {
+        "exit_code": 0,
+        "stderr": {
+          "file": "loop_alpha_smooth.stderr.log",
+          "sha256": "b1d8d1e72b862b2b97cd31253e5ea272299c884b4d8079ddfbf436853e425c15"
+        },
+        "stdout": {
+          "file": "loop_alpha_smooth.stdout.log",
+          "sha256": "6e1966292b4cf26f6d52005d1a5cc451412cf54916c0ba17e6c1de7519812641"
+        }
+      },
+      "rgba": {
+        "file": "loop_alpha_smooth.npy",
+        "sha256": "c1402b0f1058ed6cad03bb1dede7561b5159149ca57c5a812efa126b0c0a3aa0"
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ]
+    },
+    "ordered_width_smooth": {
+      "capture": {
+        "file": "ordered_width_smooth.capture.json",
+        "sha256": "2f40ab61076844bef94fddd3d496304b8aeb5a69d1dd0fed8c02b35ff48bd003"
+      },
+      "dtype": "|u1",
+      "expanded_shaders": {
+        "file": "ordered_width_smooth.shaders.json",
+        "sha256": "9b8fb09ec20d345d2309e130e541228a40a669480cae7ed6057babf3607d0e18"
+      },
+      "filtered_glir": {
+        "file": "ordered_width_smooth.glir.json",
+        "sha256": "8b27eb659ba37709bb227f83604925b6f6faa288b8137540f3b5b4b5a1251817"
+      },
+      "observations": {
+        "file": "ordered_width_smooth.observations.json",
+        "sha256": "f5a986a86338be64065e606eb97eeb113cc4834fd6943f20be2be72cb7e6e419"
+      },
+      "parameters": {
+        "blend": true,
+        "blend_alpha": [
+          "one",
+          "one_minus_src_alpha"
+        ],
+        "blend_rgb": [
+          "src_alpha",
+          "one_minus_src_alpha"
+        ],
+        "case": "ordered_width_smooth",
+        "colors": null,
+        "comparison": "entire fixed driver frame exact; no masks, alignment or tolerance",
+        "depth_test": false,
+        "intermediate_finish": false,
+        "line_smooth": true,
+        "line_width": 3.0,
+        "ordered_widths": [
+          3.0,
+          1.0
+        ],
+        "points": [
+          [
+            4.5,
+            6.5
+          ],
+          [
+            28.5,
+            6.5
+          ]
+        ],
+        "primitive": "lines",
+        "readbacks": 1,
+        "scissor": null,
+        "shader": "solid",
+        "size": [
+          32,
+          24
+        ],
+        "source_alpha": 1.0,
+        "vertices_sha256": "039021b024aeb675b6603c9f6142fa4e6863e928b8212f20ef3aca243fcd57df",
+        "weights": [
+          1.0,
+          1.0
+        ]
+      },
+      "process": {
+        "exit_code": 0,
+        "stderr": {
+          "file": "ordered_width_smooth.stderr.log",
+          "sha256": "b1d8d1e72b862b2b97cd31253e5ea272299c884b4d8079ddfbf436853e425c15"
+        },
+        "stdout": {
+          "file": "ordered_width_smooth.stdout.log",
+          "sha256": "bdaec650f55af4f3c2762d839a724a0a994c5c62a234d49563a4d29628aadfbd"
+        }
+      },
+      "rgba": {
+        "file": "ordered_width_smooth.npy",
+        "sha256": "70b6f8cfd8369d4557a0e10867d5fd0cf0120136f84c19807c1d4212a14755fc"
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ]
+    },
+    "perspective_color_smooth": {
+      "capture": {
+        "file": "perspective_color_smooth.capture.json",
+        "sha256": "1390831e2eb467aa4b8d3725d5942cffdaee8145feba5f1157d1face2877da16"
+      },
+      "dtype": "|u1",
+      "expanded_shaders": {
+        "file": "perspective_color_smooth.shaders.json",
+        "sha256": "7f13a9d720a0fda51eb756ae91d94059e17c7dd93294207b22105941bb55ee3f"
+      },
+      "filtered_glir": {
+        "file": "perspective_color_smooth.glir.json",
+        "sha256": "adfe2ffe64754d6785f5f144f6537c39c68f174514596fa516bc79e17fb577a5"
+      },
+      "observations": {
+        "file": "perspective_color_smooth.observations.json",
+        "sha256": "cca9a196582e17ccde7a4a4b67aa694d1396bfc8bd0d59eca94c2f417aecf1b1"
+      },
+      "parameters": {
+        "blend": true,
+        "blend_alpha": [
+          "one",
+          "one_minus_src_alpha"
+        ],
+        "blend_rgb": [
+          "src_alpha",
+          "one_minus_src_alpha"
+        ],
+        "case": "perspective_color_smooth",
+        "colors": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0,
+            1.0
+          ]
+        ],
+        "comparison": "entire fixed driver frame exact; no masks, alignment or tolerance",
+        "depth_test": false,
+        "intermediate_finish": false,
+        "line_smooth": true,
+        "line_width": 3.0,
+        "ordered_widths": null,
+        "points": [
+          [
+            4.5,
+            6.5
+          ],
+          [
+            28.5,
+            6.5
+          ]
+        ],
+        "primitive": "lines",
+        "readbacks": 1,
+        "scissor": null,
+        "shader": "color",
+        "size": [
+          32,
+          24
+        ],
+        "source_alpha": 1.0,
+        "vertices_sha256": "fe34e778ac3bd7c92dcfb46fc166f134d908d54a67d99daf2ee7a5e212094987",
+        "weights": [
+          1.0,
+          2.0
+        ]
+      },
+      "process": {
+        "exit_code": 0,
+        "stderr": {
+          "file": "perspective_color_smooth.stderr.log",
+          "sha256": "b1d8d1e72b862b2b97cd31253e5ea272299c884b4d8079ddfbf436853e425c15"
+        },
+        "stdout": {
+          "file": "perspective_color_smooth.stdout.log",
+          "sha256": "4e01c9b28572084eb918132b21a8231c941bea9cbfaa6a5dd0fc1cbc2ec4f5af"
+        }
+      },
+      "rgba": {
+        "file": "perspective_color_smooth.npy",
+        "sha256": "716efb8af03f0fcf3f51f3b7add55827f67e12ebd6a1a973008c0557d7627fb8"
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ]
+    },
+    "scissor_smooth": {
+      "capture": {
+        "file": "scissor_smooth.capture.json",
+        "sha256": "6c371e6cc8edec05e3facda0ae42101e6090e930403b4fba06c69e17800a5b4a"
+      },
+      "dtype": "|u1",
+      "expanded_shaders": {
+        "file": "scissor_smooth.shaders.json",
+        "sha256": "9b8fb09ec20d345d2309e130e541228a40a669480cae7ed6057babf3607d0e18"
+      },
+      "filtered_glir": {
+        "file": "scissor_smooth.glir.json",
+        "sha256": "2102d8feb23350d8c507a2779c12828f65fce09952bfa5503e9052979e4a9081"
+      },
+      "observations": {
+        "file": "scissor_smooth.observations.json",
+        "sha256": "cca9a196582e17ccde7a4a4b67aa694d1396bfc8bd0d59eca94c2f417aecf1b1"
+      },
+      "parameters": {
+        "blend": true,
+        "blend_alpha": [
+          "one",
+          "one_minus_src_alpha"
+        ],
+        "blend_rgb": [
+          "src_alpha",
+          "one_minus_src_alpha"
+        ],
+        "case": "scissor_smooth",
+        "colors": null,
+        "comparison": "entire fixed driver frame exact; no masks, alignment or tolerance",
+        "depth_test": false,
+        "intermediate_finish": false,
+        "line_smooth": true,
+        "line_width": 3.0,
+        "ordered_widths": null,
+        "points": [
+          [
+            -4.5,
+            12.5
+          ],
+          [
+            35.5,
+            12.5
+          ],
+          [
+            16.5,
+            -4.5
+          ],
+          [
+            16.5,
+            29.5
+          ]
+        ],
+        "primitive": "lines",
+        "readbacks": 1,
+        "scissor": [
+          6,
+          5,
+          20,
+          14
+        ],
+        "shader": "solid",
+        "size": [
+          32,
+          24
+        ],
+        "source_alpha": 1.0,
+        "vertices_sha256": "1fdfa65592a678749a6e33c63602427c7542660e473a6447727e502e65059b67",
+        "weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "process": {
+        "exit_code": 0,
+        "stderr": {
+          "file": "scissor_smooth.stderr.log",
+          "sha256": "b1d8d1e72b862b2b97cd31253e5ea272299c884b4d8079ddfbf436853e425c15"
+        },
+        "stdout": {
+          "file": "scissor_smooth.stdout.log",
+          "sha256": "ae7839fee174ad14d02c31e36b5e62c322610c15b4f97513a0d16668022ac4a4"
+        }
+      },
+      "rgba": {
+        "file": "scissor_smooth.npy",
+        "sha256": "4fc3bc00012343b519d2ed4f4a766fb8b2a37bfccc8c4d5871ab848207fda47d"
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ]
+    },
+    "strip_alpha_smooth": {
+      "capture": {
+        "file": "strip_alpha_smooth.capture.json",
+        "sha256": "af69e9b58b4a06ddc2fcbabaa4382d9e99ca124df7b66b713d321f0c2bb4d555"
+      },
+      "dtype": "|u1",
+      "expanded_shaders": {
+        "file": "strip_alpha_smooth.shaders.json",
+        "sha256": "9b8fb09ec20d345d2309e130e541228a40a669480cae7ed6057babf3607d0e18"
+      },
+      "filtered_glir": {
+        "file": "strip_alpha_smooth.glir.json",
+        "sha256": "552f531565d2b7291c0f47ed1ee7f19e814ed1d7f083c50da43c5d822a8a4c72"
+      },
+      "observations": {
+        "file": "strip_alpha_smooth.observations.json",
+        "sha256": "cca9a196582e17ccde7a4a4b67aa694d1396bfc8bd0d59eca94c2f417aecf1b1"
+      },
+      "parameters": {
+        "blend": true,
+        "blend_alpha": [
+          "one",
+          "one_minus_src_alpha"
+        ],
+        "blend_rgb": [
+          "src_alpha",
+          "one_minus_src_alpha"
+        ],
+        "case": "strip_alpha_smooth",
+        "colors": null,
+        "comparison": "entire fixed driver frame exact; no masks, alignment or tolerance",
+        "depth_test": false,
+        "intermediate_finish": false,
+        "line_smooth": true,
+        "line_width": 3.0,
+        "ordered_widths": null,
+        "points": [
+          [
+            4.5,
+            6.5
+          ],
+          [
+            16.5,
+            6.5
+          ],
+          [
+            16.5,
+            18.5
+          ]
+        ],
+        "primitive": "line_strip",
+        "readbacks": 1,
+        "scissor": null,
+        "shader": "solid",
+        "size": [
+          32,
+          24
+        ],
+        "source_alpha": 0.25,
+        "vertices_sha256": "a56c49113576c22d64bcf45b20b8ebc21fa52ce9f9480c8bf67a6eebd887b387",
+        "weights": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "process": {
+        "exit_code": 0,
+        "stderr": {
+          "file": "strip_alpha_smooth.stderr.log",
+          "sha256": "b1d8d1e72b862b2b97cd31253e5ea272299c884b4d8079ddfbf436853e425c15"
+        },
+        "stdout": {
+          "file": "strip_alpha_smooth.stdout.log",
+          "sha256": "2d5c4683d1aa999a910542df5a9a39a996d9f6f94eb80845e7b150b155bb87d2"
+        }
+      },
+      "rgba": {
+        "file": "strip_alpha_smooth.npy",
+        "sha256": "b37b63931b9e8d8ba87c2f768f6f23f63e045cd3fa73f9d6083389e83f7cd36b"
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ]
+    },
+    "vertical_aliased": {
+      "capture": {
+        "file": "vertical_aliased.capture.json",
+        "sha256": "c1666238c45b9cf26bc23344e530f8134714744ed3fbf4d245647b23b8cd8091"
+      },
+      "dtype": "|u1",
+      "expanded_shaders": {
+        "file": "vertical_aliased.shaders.json",
+        "sha256": "9b8fb09ec20d345d2309e130e541228a40a669480cae7ed6057babf3607d0e18"
+      },
+      "filtered_glir": {
+        "file": "vertical_aliased.glir.json",
+        "sha256": "db609e636b558327ad6fd95f6eaabff0a07b5c85cfd5faeaeafa884ce62703ed"
+      },
+      "observations": {
+        "file": "vertical_aliased.observations.json",
+        "sha256": "36c3feae8d3f9c4fad2b742d46524edd93ad32b36e002bb0345f0d73c33add77"
+      },
+      "parameters": {
+        "blend": true,
+        "blend_alpha": [
+          "one",
+          "one_minus_src_alpha"
+        ],
+        "blend_rgb": [
+          "src_alpha",
+          "one_minus_src_alpha"
+        ],
+        "case": "vertical_aliased",
+        "colors": null,
+        "comparison": "entire fixed driver frame exact; no masks, alignment or tolerance",
+        "depth_test": false,
+        "intermediate_finish": false,
+        "line_smooth": false,
+        "line_width": 3.0,
+        "ordered_widths": null,
+        "points": [
+          [
+            12.5,
+            4.5
+          ],
+          [
+            12.5,
+            20.5
+          ]
+        ],
+        "primitive": "lines",
+        "readbacks": 1,
+        "scissor": null,
+        "shader": "solid",
+        "size": [
+          32,
+          24
+        ],
+        "source_alpha": 1.0,
+        "vertices_sha256": "3ecd88a7c5403e8485e262ac6548f8585c647f0b5eaba86ea422b7c728e25bcc",
+        "weights": [
+          1.0,
+          1.0
+        ]
+      },
+      "process": {
+        "exit_code": 0,
+        "stderr": {
+          "file": "vertical_aliased.stderr.log",
+          "sha256": "b1d8d1e72b862b2b97cd31253e5ea272299c884b4d8079ddfbf436853e425c15"
+        },
+        "stdout": {
+          "file": "vertical_aliased.stdout.log",
+          "sha256": "e46b3e76e8608613a86788254a694f1e9ae1e62c7530469e6fd02a34df6702fc"
+        }
+      },
+      "rgba": {
+        "file": "vertical_aliased.npy",
+        "sha256": "0eea28f1f554f61218ea55e36f0c7545260cf97b7fec4eead011abf2d391813e"
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ]
+    },
+    "vertical_smooth": {
+      "capture": {
+        "file": "vertical_smooth.capture.json",
+        "sha256": "b698960f267bdb43ae5a7fbf9894377f0da9bfc91564e6d4369b4fbb978d1b7a"
+      },
+      "dtype": "|u1",
+      "expanded_shaders": {
+        "file": "vertical_smooth.shaders.json",
+        "sha256": "9b8fb09ec20d345d2309e130e541228a40a669480cae7ed6057babf3607d0e18"
+      },
+      "filtered_glir": {
+        "file": "vertical_smooth.glir.json",
+        "sha256": "5ade1b3a12a651e6d82489e5b606386ceffb19bd43ed3dca08b8cef2da956110"
+      },
+      "observations": {
+        "file": "vertical_smooth.observations.json",
+        "sha256": "cca9a196582e17ccde7a4a4b67aa694d1396bfc8bd0d59eca94c2f417aecf1b1"
+      },
+      "parameters": {
+        "blend": true,
+        "blend_alpha": [
+          "one",
+          "one_minus_src_alpha"
+        ],
+        "blend_rgb": [
+          "src_alpha",
+          "one_minus_src_alpha"
+        ],
+        "case": "vertical_smooth",
+        "colors": null,
+        "comparison": "entire fixed driver frame exact; no masks, alignment or tolerance",
+        "depth_test": false,
+        "intermediate_finish": false,
+        "line_smooth": true,
+        "line_width": 3.0,
+        "ordered_widths": null,
+        "points": [
+          [
+            12.5,
+            4.5
+          ],
+          [
+            12.5,
+            20.5
+          ]
+        ],
+        "primitive": "lines",
+        "readbacks": 1,
+        "scissor": null,
+        "shader": "solid",
+        "size": [
+          32,
+          24
+        ],
+        "source_alpha": 1.0,
+        "vertices_sha256": "3ecd88a7c5403e8485e262ac6548f8585c647f0b5eaba86ea422b7c728e25bcc",
+        "weights": [
+          1.0,
+          1.0
+        ]
+      },
+      "process": {
+        "exit_code": 0,
+        "stderr": {
+          "file": "vertical_smooth.stderr.log",
+          "sha256": "b1d8d1e72b862b2b97cd31253e5ea272299c884b4d8079ddfbf436853e425c15"
+        },
+        "stdout": {
+          "file": "vertical_smooth.stdout.log",
+          "sha256": "1a502002a7e8358316ba2b4c7ec8a1d5d9564340915fb4f582b913f0e9a563b9"
+        }
+      },
+      "rgba": {
+        "file": "vertical_smooth.npy",
+        "sha256": "1cf13802e612447250f94cfb9ab5f4f027787721c3e8402d9644e58a8c53080f"
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ]
+    }
+  },
+  "provenance": {
+    "capture_source_sha256": "66ae25247831c184f38f2c7a2ff151b940013087104907523b11e1ed2b9b151a",
+    "cmake": null,
+    "distribution_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Lib\\site-packages",
+    "distribution_record_sha256": "455e084c0cb78e19e41c79d08a57d533b07d52b3248c2ebd4b73e80584b067cc",
+    "environment": {
+      "PYTHONPATH": null,
+      "QT_API": "pyqt6",
+      "QT_QPA_PLATFORM": null,
+      "QT_SCALE_FACTOR": "1",
+      "VISPY_PYQT5_SHARE_CONTEXT": "true"
+    },
+    "fixture_source_sha256": "37797259727afd9c6b15c7074319b935dcddb330deb2b6c99a03c8df6f36fddb",
+    "kind": "upstream",
+    "machine": "AMD64",
+    "numpy_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Lib\\site-packages\\numpy\\__init__.py",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.12.8",
+    "python_executable": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Scripts\\python.exe",
+    "qt_runtime": "6.11.2",
+    "regenerate": "build/oracle-opengl/Scripts/python.exe tools/oracle_wide_lines_capture.py --kind upstream --output <fresh-output>",
+    "renderer": {
+      "renderer": "NVIDIA GeForce RTX 4090/PCIe/SSE2",
+      "vendor": "NVIDIA Corporation",
+      "version": "4.6.0 NVIDIA 595.79"
+    },
+    "requirements_sha256": "a784b5a5e2b4ea201578acddc41e28e0997275ea2542642148322153cd240ffd",
+    "source_sha256": {
+      "gloo/buffer.py": "68e37b184b74814e0ae7a6f4f754c9f0c0af5b4e6369a60a8357c70da974e138",
+      "gloo/context.py": "6afc97492f65a5e865723535206fb769a1c4b55694d69786123fdee78bef992a",
+      "gloo/glir.py": "a3bb8a75b33f47420e9c100b8a6d81037a2f03c905e6c9f7d8399f4fb2eb8f7c",
+      "gloo/program.py": "4d3ab8e36260f9b5dc50f6aec075b12d642535f3cb8f49bfd4a27056301d5492",
+      "gloo/texture.py": "9f6d5f2e448e02c0ca4d66c65d17ddcdb6c0182bb8f15f1292a427f5a9faf6bc",
+      "gloo/wrappers.py": "73dbb5eb8ca78b2822266d272ffb14db9fcadd7a56512843209187714c9e8dcc"
+    },
+    "upstream_commit": "117b054598f4758b598f4b8f48feea48c11fe7b0",
+    "versions": {
+      "PyOpenGL": "3.1.10",
+      "PyQt6": "6.11.0",
+      "PyQt6-Qt6": "6.11.2",
+      "PyQt6-sip": "13.13.0",
+      "freetype-py": "2.5.1",
+      "hsluv": "5.0.4",
+      "kiwisolver": "1.5.1",
+      "numpy": "2.5.3",
+      "packaging": "26.3",
+      "vispy": "0.17.0"
+    },
+    "vispy_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Lib\\site-packages\\vispy",
+    "vispy_version": "0.17.0",
+    "wide_capture_sha256": "089cc7386a41dadb6bd4893f159047a5e175f781756677eadd734652f9c0de91",
+    "wide_fixture_sha256": "f689a08a8df084058eaa5cacf9c9833a155b1a2c210bcd8ad325c182852d750c"
+  },
+  "schema": 1
+}

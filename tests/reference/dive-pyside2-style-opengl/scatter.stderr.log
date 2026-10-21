@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "C:\Users\HEQ\Projects\vispy_vulkan\tools\oracle_dive_pyside2_capture.py", line 170, in main
+    image, commands, shaders, params, extras = render(name)
+  File "C:\Users\HEQ\Projects\vispy_vulkan\tools\fixture_dive_pyside2.py", line 106, in render
+    widget.add_scatter_artist("xy", "points", "analytic", "x", "y", marker="o",
+  File "C:\Users\HEQ\Projects\vispy_vulkan\build\host-environments\dive-pyside2-cpython310-upstream\lib\site-packages\DIVE\_widget.py", line 882, in add_scatter_artist
+    self._dive_manager.add_artist(axis_name, 'scatter', dict(name=name, data_name=data_name, x_field=x_field, y_field=y_field, z_field=z_field, label_field=label_field, label_size=label_size, visible=visible, draw_order=draw_order, label_draw_order=label_draw_order, legend_text=legend_text, selectable=selectable,
+  File "C:\Users\HEQ\Projects\vispy_vulkan\build\host-environments\dive-pyside2-cpython310-upstream\lib\site-packages\DIVE\_components\dive_manager.py", line 613, in add_artist
+    err_msg = axis_obj.add_artist(self.data, artist_type, self.unit_reg, state)
+  File "C:\Users\HEQ\Projects\vispy_vulkan\build\host-environments\dive-pyside2-cpython310-upstream\lib\site-packages\DIVE\_components\dive_axis.py", line 15, in add_artist
+    err_msg = artist_obj.set_state(data_objs, self.axis_type, list(self.artists), unit_reg, state)
+  File "C:\Users\HEQ\Projects\vispy_vulkan\build\host-environments\dive-pyside2-cpython310-upstream\lib\site-packages\DIVE\_plotting\artists.py", line 1423, in set_state
+    elif attrs['marker'] not in vpvisuals.MarkersVisual._marker_funcs:
+AttributeError: type object 'MarkersVisual' has no attribute '_marker_funcs'

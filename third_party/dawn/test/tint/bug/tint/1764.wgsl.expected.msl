@@ -1,0 +1,35 @@
+#include <metal_stdlib>
+using namespace metal;
+
+struct tint_module_vars_struct {
+  threadgroup array<int, 246>* W;
+};
+
+struct tint_symbol_1 {
+  array<int, 246> tint_symbol;
+};
+
+void main_inner(uint tint_local_index, tint_module_vars_struct tint_module_vars) {
+  {
+    uint idx = tint_local_index;
+    while(true) {
+      uint const v = idx;
+      if ((v >= 246u)) {
+        break;
+      }
+      (*tint_module_vars.W)[v] = 0;
+      {
+        idx = (idx + 1u);
+      }
+    }
+  }
+  (threadgroup_barrier(mem_flags::mem_threadgroup));
+  threadgroup array<int, 246>* const p = tint_module_vars.W;
+  (*p)[0] = 42;
+}
+
+[[max_total_threads_per_threadgroup(1)]]
+kernel void v_1(uint tint_local_index [[thread_index_in_threadgroup]], threadgroup tint_symbol_1* v_2 [[threadgroup(0)]]) {
+  tint_module_vars_struct const tint_module_vars = tint_module_vars_struct{.W=(&(*v_2).tint_symbol)};
+  (main_inner(tint_local_index, tint_module_vars));
+}

@@ -1,0 +1,45 @@
+name: Hardware qualification matrix (explicit self-hosted GPUs)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  core:
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix:
+        python: ['3.10.19', '3.11.14', '3.12.8', '3.13.8', '3.14.0']
+        binding: [pyqt5, pyqt6, pyside6]
+        target:
+          - {name: windows, labels: [self-hosted, Windows, X64, vispy-vulkan-hardware], architecture: x64, backend: Vulkan}
+          - {name: linux-x11, labels: [self-hosted, Linux, X64, vispy-vulkan-hardware, x11-desktop], architecture: x64, backend: Vulkan}
+          - {name: macos13-arm64, labels: [self-hosted, macOS, ARM64, macos-13, vispy-metal-hardware], architecture: arm64, backend: Metal}
+          - {name: macos13-x86_64, labels: [self-hosted, macOS, X64, macos-13, vispy-metal-hardware], architecture: x64, backend: Metal}
+    uses: ./.github/workflows/native-qualification.yml
+    with:
+      cell: core-${{ matrix.target.name }}-${{ matrix.python }}-${{ matrix.binding }}
+      platform: ${{ matrix.target.name }}
+      runner_labels: ${{ toJSON(matrix.target.labels) }}
+      architecture: ${{ matrix.target.architecture }}
+      python: ${{ matrix.python }}
+      binding: ${{ matrix.binding }}
+      backend: ${{ matrix.target.backend }}
+      mode: core
+
+  software-vulkan:
+    # Runner service environment must define VK_DRIVER_FILES and
+    # VISPY_SOFTWARE_STACK_MANIFEST pointing to the audited immutable stack.
+    uses: ./.github/workflows/native-qualification.yml
+    with:
+      cell: software-linux-x11-3.12.8-pyqt6
+      platform: linux-x11
+      runner_labels: '["self-hosted", "Linux", "X64", "vispy-lavapipe-pinned", "x11-desktop"]'
+      architecture: x64
+      python: '3.12.8'
+      binding: pyqt6
+      backend: Vulkan
+      mode: software

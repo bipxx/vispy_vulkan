@@ -1,0 +1,96 @@
+#version 310 es
+#extension GL_AMD_gpu_shader_half_float: require
+
+
+struct tint_pad16 {
+  uint tint_pad_0;
+  uint tint_pad_1;
+  uint tint_pad_2;
+  uint tint_pad_3;
+};
+const tint_pad16 tint_pad16_init = tint_pad16(0u, 0u, 0u, 0u);
+
+struct S {
+  int before;
+  f16mat2 m;
+  uint tint_pad_0;
+  tint_pad16 tint_pad_1;
+  tint_pad16 tint_pad_2;
+  tint_pad16 tint_pad_3;
+  int after;
+  uint tint_pad_4;
+  uint tint_pad_5;
+  uint tint_pad_6;
+  tint_pad16 tint_pad_7;
+  tint_pad16 tint_pad_8;
+  tint_pad16 tint_pad_9;
+};
+
+layout(binding = 0, std140)
+uniform u_block_1_ubo {
+  uvec4 inner[32];
+} v;
+layout(binding = 1, std430)
+buffer s_block_1_ssbo {
+  S inner[4];
+} v_1;
+f16vec2 tint_bitcast_to_16bit(uint src) {
+  return unpackFloat2x16(src);
+}
+f16mat2 v_2(uint start_byte_offset) {
+  f16vec2 v_3 = tint_bitcast_to_16bit(v.inner[(start_byte_offset / 16u)][((start_byte_offset & 15u) >> 2u)]);
+  uint v_4 = (4u + start_byte_offset);
+  return f16mat2(v_3, tint_bitcast_to_16bit(v.inner[(v_4 / 16u)][((v_4 & 15u) >> 2u)]));
+}
+void tint_store_and_preserve_padding_1(uint target_indices[1], S value_param) {
+  v_1.inner[target_indices[0u]].before = value_param.before;
+  v_1.inner[target_indices[0u]].m = value_param.m;
+  v_1.inner[target_indices[0u]].after = value_param.after;
+}
+S v_5(uint start_byte_offset) {
+  uvec4 v_6 = v.inner[(start_byte_offset / 16u)];
+  int v_7 = int(v_6[((start_byte_offset & 15u) >> 2u)]);
+  f16mat2 v_8 = v_2((4u + start_byte_offset));
+  uint v_9 = (64u + start_byte_offset);
+  uvec4 v_10 = v.inner[(v_9 / 16u)];
+  return S(v_7, v_8, 0u, tint_pad16_init, tint_pad16_init, tint_pad16_init, int(v_10[((v_9 & 15u) >> 2u)]), 0u, 0u, 0u, tint_pad16_init, tint_pad16_init, tint_pad16_init);
+}
+void tint_store_and_preserve_padding(S value_param[4]) {
+  {
+    uint idx = 0u;
+    while(true) {
+      uint v_11 = idx;
+      if ((v_11 >= 4u)) {
+        break;
+      }
+      tint_store_and_preserve_padding_1(uint[1](v_11), value_param[v_11]);
+      {
+        idx = (idx + 1u);
+      }
+    }
+  }
+}
+S[4] v_12(uint start_byte_offset) {
+  S a[4] = S[4](S(0, f16mat2(f16vec2(0.0hf), f16vec2(0.0hf)), 0u, tint_pad16_init, tint_pad16_init, tint_pad16_init, 0, 0u, 0u, 0u, tint_pad16_init, tint_pad16_init, tint_pad16_init), S(0, f16mat2(f16vec2(0.0hf), f16vec2(0.0hf)), 0u, tint_pad16_init, tint_pad16_init, tint_pad16_init, 0, 0u, 0u, 0u, tint_pad16_init, tint_pad16_init, tint_pad16_init), S(0, f16mat2(f16vec2(0.0hf), f16vec2(0.0hf)), 0u, tint_pad16_init, tint_pad16_init, tint_pad16_init, 0, 0u, 0u, 0u, tint_pad16_init, tint_pad16_init, tint_pad16_init), S(0, f16mat2(f16vec2(0.0hf), f16vec2(0.0hf)), 0u, tint_pad16_init, tint_pad16_init, tint_pad16_init, 0, 0u, 0u, 0u, tint_pad16_init, tint_pad16_init, tint_pad16_init));
+  {
+    uint idx = 0u;
+    while(true) {
+      uint v_13 = idx;
+      if ((v_13 >= 4u)) {
+        break;
+      }
+      a[v_13] = v_5((start_byte_offset + (v_13 * 128u)));
+      {
+        idx = (idx + 1u);
+      }
+    }
+  }
+  return a;
+}
+layout(local_size_x = 1, local_size_y = 1, local_size_z = 1) in;
+void main() {
+  tint_store_and_preserve_padding(v_12(0u));
+  tint_store_and_preserve_padding_1(uint[1](1u), v_5(256u));
+  v_1.inner[3].m = v_2(260u);
+  v_1.inner[1].m[0] = tint_bitcast_to_16bit(v.inner[0u].z).yx;
+}

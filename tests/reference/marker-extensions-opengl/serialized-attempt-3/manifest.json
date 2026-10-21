@@ -1,0 +1,6173 @@
+{
+  "authoring_sha256": "a25bb74278607c775859b28af6babe933367ef444b0a9d9d569ba499490afb28",
+  "comparison": {
+    "candidate_alignment_or_color_fit": false,
+    "full_frame_exact": true,
+    "landmarks": "fixed analytic RGBA values or fixed channel bounds; no edge exclusions"
+  },
+  "errors": {},
+  "fixtures": {
+    "instanced_camera_fixed": {
+      "actual_renderer_provenance": {
+        "capture_source_sha256": "66ae25247831c184f38f2c7a2ff151b940013087104907523b11e1ed2b9b151a",
+        "cmake": null,
+        "distribution_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-napari\\Lib\\site-packages",
+        "distribution_record_sha256": "455e084c0cb78e19e41c79d08a57d533b07d52b3248c2ebd4b73e80584b067cc",
+        "environment": {
+          "PYTHONPATH": null,
+          "QT_API": "pyqt6",
+          "QT_QPA_PLATFORM": null,
+          "QT_SCALE_FACTOR": "1",
+          "VISPY_PYQT5_SHARE_CONTEXT": null
+        },
+        "fixture_source_sha256": "37797259727afd9c6b15c7074319b935dcddb330deb2b6c99a03c8df6f36fddb",
+        "kind": "upstream",
+        "machine": "AMD64",
+        "numpy_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-napari\\Lib\\site-packages\\numpy\\__init__.py",
+        "platform": "Windows-11-10.0.26200-SP0",
+        "python": "3.12.8",
+        "python_executable": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-napari\\Scripts\\python.exe",
+        "qt_runtime": "6.11.2",
+        "regenerate": "uv venv build/oracle-opengl --python 3.12; uv pip install --python build/oracle-opengl/Scripts/python.exe -r tools/oracle_requirements.txt; build/oracle-opengl/Scripts/python.exe tools/oracle_capture.py --kind upstream --output tests/reference/opengl",
+        "renderer": {
+          "renderer": "NVIDIA GeForce RTX 4090/PCIe/SSE2",
+          "vendor": "NVIDIA Corporation",
+          "version": "4.6.0 NVIDIA 595.79"
+        },
+        "requirements_sha256": "a784b5a5e2b4ea201578acddc41e28e0997275ea2542642148322153cd240ffd",
+        "source_sha256": {
+          "gloo/buffer.py": "68e37b184b74814e0ae7a6f4f754c9f0c0af5b4e6369a60a8357c70da974e138",
+          "gloo/context.py": "6afc97492f65a5e865723535206fb769a1c4b55694d69786123fdee78bef992a",
+          "gloo/glir.py": "a3bb8a75b33f47420e9c100b8a6d81037a2f03c905e6c9f7d8399f4fb2eb8f7c",
+          "gloo/program.py": "4d3ab8e36260f9b5dc50f6aec075b12d642535f3cb8f49bfd4a27056301d5492",
+          "gloo/texture.py": "9f6d5f2e448e02c0ca4d66c65d17ddcdb6c0182bb8f15f1292a427f5a9faf6bc",
+          "gloo/wrappers.py": "73dbb5eb8ca78b2822266d272ffb14db9fcadd7a56512843209187714c9e8dcc"
+        },
+        "upstream_commit": "117b054598f4758b598f4b8f48feea48c11fe7b0",
+        "versions": {
+          "PyOpenGL": "3.1.10",
+          "PyQt6": "6.11.0",
+          "PyQt6-Qt6": "6.11.2",
+          "PyQt6-sip": "13.13.0",
+          "freetype-py": "2.5.1",
+          "hsluv": "5.0.4",
+          "kiwisolver": "1.5.1",
+          "numpy": "2.5.3",
+          "packaging": "26.3",
+          "vispy": "0.17.0"
+        },
+        "vispy_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-napari\\Lib\\site-packages\\vispy",
+        "vispy_version": "0.17.0"
+      },
+      "artifacts": {
+        "expanded_shaders": {
+          "file": "instanced_camera_fixed.shaders.json",
+          "sha256": "005eb885b5cc4585b6fcbdf53633488ed111c07781412a338c8af2bf4837c77c"
+        },
+        "filtered_glir": {
+          "file": "instanced_camera_fixed.glir.json",
+          "sha256": "789a8e54c78a51c77f8b42781683792b2cb4a963ae1d97915eaf39566090970c"
+        },
+        "observations": {
+          "file": "instanced_camera_fixed.observations.json",
+          "sha256": "9a51d7073c662424970da7310f2b595e15705bc0e7a5ed012250a96c751e679b"
+        },
+        "parameters": {
+          "file": "instanced_camera_fixed.parameters.json",
+          "sha256": "47e7275160892438f5d136cf081a4267af0c114748c58eb61906c727d0598330"
+        },
+        "rgba": {
+          "file": "instanced_camera_fixed.npy",
+          "sha256": "fac04910b027a8a219b04e8ad409480ca51933ba5c350aae08c15a08e699b422"
+        }
+      },
+      "capture": {
+        "file": "instanced_camera_fixed.capture.json",
+        "sha256": "909484f8a9a7045e642a1780655a280af701cacecabfec3e4da06a397f56e7f0"
+      },
+      "observations": {
+        "actual_marker_uploads": [
+          {
+            "bytes": 112,
+            "dtype": "|V56",
+            "dtype_descr": [
+              [
+                "a_position",
+                "<f4",
+                [
+                  3
+                ]
+              ],
+              [
+                "a_fg_color",
+                "<f4",
+                [
+                  4
+                ]
+              ],
+              [
+                "a_bg_color",
+                "<f4",
+                [
+                  4
+                ]
+              ],
+              [
+                "a_size",
+                "<f4"
+              ],
+              [
+                "a_edgewidth",
+                "<f4"
+              ],
+              [
+                "a_symbol",
+                "<f4"
+              ]
+            ],
+            "sha256": "21f464b6d39c76a54488d972cb17046481b3ce2778ab87924216bcb0bbc6d36c",
+            "shape": [
+              2
+            ]
+          }
+        ],
+        "dependent_trace_start": 77,
+        "gl_samples": 0,
+        "gloo_framebuffer_id": 14,
+        "marker_vbo_id": 9,
+        "physical_samples": 1,
+        "point_size_range": [
+          1.0,
+          2047.0
+        ],
+        "readbacks": 1,
+        "sample_source": "OpenGL driver GL_SAMPLES",
+        "structured_revisions": [
+          {
+            "bytes": 112,
+            "dtype": "|V56",
+            "dtype_descr": [
+              [
+                "a_position",
+                "<f4",
+                [
+                  3
+                ]
+              ],
+              [
+                "a_fg_color",
+                "<f4",
+                [
+                  4
+                ]
+              ],
+              [
+                "a_bg_color",
+                "<f4",
+                [
+                  4
+                ]
+              ],
+              [
+                "a_size",
+                "<f4"
+              ],
+              [
+                "a_edgewidth",
+                "<f4"
+              ],
+              [
+                "a_symbol",
+                "<f4"
+              ]
+            ],
+            "sha256": "21f464b6d39c76a54488d972cb17046481b3ce2778ab87924216bcb0bbc6d36c",
+            "shape": [
+              2
+            ]
+          }
+        ],
+        "target_observations": [
+          {
+            "driver_framebuffer_binding": 2,
+            "expected_gloo_framebuffer": 14,
+            "parser_framebuffer_handle": 2,
+            "scope": "OpenGL driver GL_FRAMEBUFFER_BINDING after actual parse",
+            "stage": "prewarm_markers"
+          },
+          {
+            "driver_framebuffer_binding": 2,
+            "expected_gloo_framebuffer": 14,
+            "parser_framebuffer_handle": 2,
+            "scope": "OpenGL driver GL_FRAMEBUFFER_BINDING after actual parse",
+            "stage": "initial_markers"
+          },
+          {
+            "driver_framebuffer_binding": 2,
+            "expected_gloo_framebuffer": 14,
+            "parser_framebuffer_handle": 2,
+            "scope": "OpenGL driver GL_FRAMEBUFFER_BINDING after actual parse",
+            "stage": "before_final_read"
+          }
+        ]
+      },
+      "parameters": {
+        "antialias": 0.0,
+        "api_scope": "public scene Markers / MarkersVisual.set_data, camera.rect, SceneCanvas.push_fbo and Visual.draw",
+        "authoring_variant": "separate API-correct attempt2; original failed capture remains immutable",
+        "camera_depth_value": 100.0,
+        "camera_flip": [
+          false,
+          true,
+          false
+        ],
+        "camera_rect": [
+          0,
+          0,
+          128,
+          96
+        ],
+        "case": "instanced_camera_fixed",
+        "clear_depth": 1.0,
+        "comparison": {
+          "candidate_alignment_or_color_fit": false,
+          "full_frame_exact": true,
+          "landmarks": "fixed analytic RGBA values or fixed channel bounds; no edge exclusions"
+        },
+        "dependent_intermediate_present_or_finish": false,
+        "depth_func": "less",
+        "dpi": 96,
+        "final_camera_rect": [
+          16,
+          12,
+          64,
+          48
+        ],
+        "input": {
+          "edge_color": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "edge_width": 0.0,
+          "face_color": {
+            "bytes": 32,
+            "dtype": "<f4",
+            "dtype_descr": [
+              [
+                "",
+                "<f4"
+              ]
+            ],
+            "sha256": "f4eacc0d8a8a9596fbb86861f03830a57c2914484ab46a0459387736ff719de7",
+            "shape": [
+              2,
+              4
+            ]
+          },
+          "pos": {
+            "bytes": 24,
+            "dtype": "<f4",
+            "dtype_descr": [
+              [
+                "",
+                "<f4"
+              ]
+            ],
+            "sha256": "a4d1284a750940eb060ddf8f062ecc2a007f6df2d1be3d0464e35bebb4c7b22a",
+            "shape": [
+              2,
+              3
+            ]
+          },
+          "size": 10.0,
+          "symbol": "disc"
+        },
+        "landmarks": [
+          {
+            "column": 2,
+            "rgba": [
+              0,
+              0,
+              0,
+              255
+            ],
+            "row": 2
+          },
+          {
+            "column": 32,
+            "rgba": [
+              255,
+              0,
+              0,
+              255
+            ],
+            "row": 48
+          },
+          {
+            "column": 80,
+            "rgba": [
+              0,
+              255,
+              0,
+              255
+            ],
+            "row": 24
+          },
+          {
+            "column": 39,
+            "rgba": [
+              0,
+              0,
+              0,
+              255
+            ],
+            "row": 48
+          },
+          {
+            "column": 46,
+            "rgba": [
+              0,
+              0,
+              0,
+              255
+            ],
+            "row": 48
+          },
+          {
+            "column": 54,
+            "rgba": [
+              0,
+              0,
+              0,
+              255
+            ],
+            "row": 48
+          }
+        ],
+        "method": "instanced",
+        "prewarm_submission_without_read": true,
+        "published_diameter_pixels": 10.0,
+        "readbacks": 1,
+        "samples": 1,
+        "scaling": "fixed",
+        "size": [
+          128,
+          96
+        ],
+        "spherical": false,
+        "visual_scale": [
+          2,
+          2,
+          1
+        ],
+        "visual_scaling_contract": "own Visual scale2 times size10; camera zoom excluded",
+        "workflow": "camera_fixed"
+      }
+    },
+    "instanced_camera_scene": {
+      "actual_renderer_provenance": {
+        "capture_source_sha256": "66ae25247831c184f38f2c7a2ff151b940013087104907523b11e1ed2b9b151a",
+        "cmake": null,
+        "distribution_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-napari\\Lib\\site-packages",
+        "distribution_record_sha256": "455e084c0cb78e19e41c79d08a57d533b07d52b3248c2ebd4b73e80584b067cc",
+        "environment": {
+          "PYTHONPATH": null,
+          "QT_API": "pyqt6",
+          "QT_QPA_PLATFORM": null,
+          "QT_SCALE_FACTOR": "1",
+          "VISPY_PYQT5_SHARE_CONTEXT": null
+        },
+        "fixture_source_sha256": "37797259727afd9c6b15c7074319b935dcddb330deb2b6c99a03c8df6f36fddb",
+        "kind": "upstream",
+        "machine": "AMD64",
+        "numpy_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-napari\\Lib\\site-packages\\numpy\\__init__.py",
+        "platform": "Windows-11-10.0.26200-SP0",
+        "python": "3.12.8",
+        "python_executable": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-napari\\Scripts\\python.exe",
+        "qt_runtime": "6.11.2",
+        "regenerate": "uv venv build/oracle-opengl --python 3.12; uv pip install --python build/oracle-opengl/Scripts/python.exe -r tools/oracle_requirements.txt; build/oracle-opengl/Scripts/python.exe tools/oracle_capture.py --kind upstream --output tests/reference/opengl",
+        "renderer": {
+          "renderer": "NVIDIA GeForce RTX 4090/PCIe/SSE2",
+          "vendor": "NVIDIA Corporation",
+          "version": "4.6.0 NVIDIA 595.79"
+        },
+        "requirements_sha256": "a784b5a5e2b4ea201578acddc41e28e0997275ea2542642148322153cd240ffd",
+        "source_sha256": {
+          "gloo/buffer.py": "68e37b184b74814e0ae7a6f4f754c9f0c0af5b4e6369a60a8357c70da974e138",
+          "gloo/context.py": "6afc97492f65a5e865723535206fb769a1c4b55694d69786123fdee78bef992a",
+          "gloo/glir.py": "a3bb8a75b33f47420e9c100b8a6d81037a2f03c905e6c9f7d8399f4fb2eb8f7c",
+          "gloo/program.py": "4d3ab8e36260f9b5dc50f6aec075b12d642535f3cb8f49bfd4a27056301d5492",
+          "gloo/texture.py": "9f6d5f2e448e02c0ca4d66c65d17ddcdb6c0182bb8f15f1292a427f5a9faf6bc",
+          "gloo/wrappers.py": "73dbb5eb8ca78b2822266d272ffb14db9fcadd7a56512843209187714c9e8dcc"
+        },
+        "upstream_commit": "117b054598f4758b598f4b8f48feea48c11fe7b0",
+        "versions": {
+          "PyOpenGL": "3.1.10",
+          "PyQt6": "6.11.0",
+          "PyQt6-Qt6": "6.11.2",
+          "PyQt6-sip": "13.13.0",
+          "freetype-py": "2.5.1",
+          "hsluv": "5.0.4",
+          "kiwisolver": "1.5.1",
+          "numpy": "2.5.3",
+          "packaging": "26.3",
+          "vispy": "0.17.0"
+        },
+        "vispy_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-napari\\Lib\\site-packages\\vispy",
+        "vispy_version": "0.17.0"
+      },
+      "artifacts": {
+        "expanded_shaders": {
+          "file": "instanced_camera_scene.shaders.json",
+          "sha256": "005eb885b5cc4585b6fcbdf53633488ed111c07781412a338c8af2bf4837c77c"
+        },
+        "filtered_glir": {
+          "file": "instanced_camera_scene.glir.json",
+          "sha256": "f63034e163b2fd7da6b31f23b8b0a7716d8a2d25fd7eb22342b8b63612e06c93"
+        },
+        "observations": {
+          "file": "instanced_camera_scene.observations.json",
+          "sha256": "9a51d7073c662424970da7310f2b595e15705bc0e7a5ed012250a96c751e679b"
+        },
+        "parameters": {
+          "file": "instanced_camera_scene.parameters.json",
+          "sha256": "37440fefd57d193f8826425ecaea510c4ef7b1f18e82fcb4b81fcf43745e9d58"
+        },
+        "rgba": {
+          "file": "instanced_camera_scene.npy",
+          "sha256": "1bf694c9b0b2ef07da9525deff4545eb6c74506c177e461076e26840a8eb7e05"
+        }
+      },
+      "capture": {
+        "file": "instanced_camera_scene.capture.json",
+        "sha256": "17ac2ab634ed304872dd016603e10caadcc9829b3dae4150bf3f1fe9db749dde"
+      },
+      "observations": {
+        "actual_marker_uploads": [
+          {
+            "bytes": 112,
+            "dtype": "|V56",
+            "dtype_descr": [
+              [
+                "a_position",
+                "<f4",
+                [
+                  3
+                ]
+              ],
+              [
+                "a_fg_color",
+                "<f4",
+                [
+                  4
+                ]
+              ],
+              [
+                "a_bg_color",
+                "<f4",
+                [
+                  4
+                ]
+              ],
+              [
+                "a_size",
+                "<f4"
+              ],
+              [
+                "a_edgewidth",
+                "<f4"
+              ],
+              [
+                "a_symbol",
+                "<f4"
+              ]
+            ],
+            "sha256": "21f464b6d39c76a54488d972cb17046481b3ce2778ab87924216bcb0bbc6d36c",
+            "shape": [
+              2
+            ]
+          }
+        ],
+        "dependent_trace_start": 77,
+        "gl_samples": 0,
+        "gloo_framebuffer_id": 14,
+        "marker_vbo_id": 9,
+        "physical_samples": 1,
+        "point_size_range": [
+          1.0,
+          2047.0
+        ],
+        "readbacks": 1,
+        "sample_source": "OpenGL driver GL_SAMPLES",
+        "structured_revisions": [
+          {
+            "bytes": 112,
+            "dtype": "|V56",
+            "dtype_descr": [
+              [
+                "a_position",
+                "<f4",
+                [
+                  3
+                ]
+              ],
+              [
+                "a_fg_color",
+                "<f4",
+                [
+                  4
+                ]
+              ],
+              [
+                "a_bg_color",
+                "<f4",
+                [
+                  4
+                ]
+              ],
+              [
+                "a_size",
+                "<f4"
+              ],
+              [
+                "a_edgewidth",
+                "<f4"
+              ],
+              [
+                "a_symbol",
+                "<f4"
+              ]
+            ],
+            "sha256": "21f464b6d39c76a54488d972cb17046481b3ce2778ab87924216bcb0bbc6d36c",
+            "shape": [
+              2
+            ]
+          }
+        ],
+        "target_observations": [
+          {
+            "driver_framebuffer_binding": 2,
+            "expected_gloo_framebuffer": 14,
+            "parser_framebuffer_handle": 2,
+            "scope": "OpenGL driver GL_FRAMEBUFFER_BINDING after actual parse",
+            "stage": "prewarm_markers"
+          },
+          {
+            "driver_framebuffer_binding": 2,
+            "expected_gloo_framebuffer": 14,
+            "parser_framebuffer_handle": 2,
+            "scope": "OpenGL driver GL_FRAMEBUFFER_BINDING after actual parse",
+            "stage": "initial_markers"
+          },
+          {
+            "driver_framebuffer_binding": 2,
+            "expected_gloo_framebuffer": 14,
+            "parser_framebuffer_handle": 2,
+            "scope": "OpenGL driver GL_FRAMEBUFFER_BINDING after actual parse",
+            "stage": "before_final_read"
+          }
+        ]
+      },
+      "parameters": {
+        "antialias": 0.0,
+        "api_scope": "public scene Markers / MarkersVisual.set_data, camera.rect, SceneCanvas.push_fbo and Visual.draw",
+        "authoring_variant": "separate API-correct attempt2; original failed capture remains immutable",
+        "camera_depth_value": 100.0,
+        "camera_flip": [
+          false,
+          true,
+          false
+        ],
+        "camera_rect": [
+          0,
+          0,
+          128,
+          96
+        ],
+        "case": "instanced_camera_scene",
+        "clear_depth": 1.0,
+        "comparison": {
+          "candidate_alignment_or_color_fit": false,
+          "full_frame_exact": true,
+          "landmarks": "fixed analytic RGBA values or fixed channel bounds; no edge exclusions"
+        },
+        "dependent_intermediate_present_or_finish": false,
+        "depth_func": "less",
+        "dpi": 96,
+        "final_camera_rect": [
+          16,
+          12,
+          64,
+          48
+        ],
+        "input": {
+          "edge_color": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "edge_width": 0.0,
+          "face_color": {
+            "bytes": 32,
+            "dtype": "<f4",
+            "dtype_descr": [
+              [
+                "",
+                "<f4"
+              ]
+            ],
+            "sha256": "f4eacc0d8a8a9596fbb86861f03830a57c2914484ab46a0459387736ff719de7",
+            "shape": [
+              2,
+              4
+            ]
+          },
+          "pos": {
+            "bytes": 24,
+            "dtype": "<f4",
+            "dtype_descr": [
+              [
+                "",
+                "<f4"
+              ]
+            ],
+            "sha256": "a4d1284a750940eb060ddf8f062ecc2a007f6df2d1be3d0464e35bebb4c7b22a",
+            "shape": [
+              2,
+              3
+            ]
+          },
+          "size": 10.0,
+          "symbol": "disc"
+        },
+        "landmarks": [
+          {
+            "column": 2,
+            "rgba": [
+              0,
+              0,
+              0,
+              255
+            ],
+            "row": 2
+          },
+          {
+            "column": 32,
+            "rgba": [
+              255,
+              0,
+              0,
+              255
+            ],
+            "row": 48
+          },
+          {
+            "column": 80,
+            "rgba": [
+              0,
+              255,
+              0,
+              255
+            ],
+            "row": 24
+          },
+          {
+            "column": 39,
+            "rgba": [
+              255,
+              0,
+              0,
+              255
+            ],
+            "row": 48
+          },
+          {
+            "column": 46,
+            "rgba": [
+              0,
+              0,
+              0,
+              255
+            ],
+            "row": 48
+          },
+          {
+            "column": 54,
+            "rgba": [
+              0,
+              0,
+              0,
+              255
+            ],
+            "row": 48
+          }
+        ],
+        "method": "instanced",
+        "prewarm_submission_without_read": true,
+        "published_diameter_pixels": 20.0,
+        "readbacks": 1,
+        "samples": 1,
+        "scaling": "scene",
+        "size": [
+          128,
+          96
+        ],
+        "spherical": false,
+        "visual_scale": [
+          2,
+          2,
+          1
+        ],
+        "visual_scaling_contract": "own Visual scale2 times size10; camera zoom excluded",
+        "workflow": "camera_scene"
+      }
+    },
+    "instanced_camera_visual": {
+      "actual_renderer_provenance": {
+        "capture_source_sha256": "66ae25247831c184f38f2c7a2ff151b940013087104907523b11e1ed2b9b151a",
+        "cmake": null,
+        "distribution_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-napari\\Lib\\site-packages",
+        "distribution_record_sha256": "455e084c0cb78e19e41c79d08a57d533b07d52b3248c2ebd4b73e80584b067cc",
+        "environment": {
+          "PYTHONPATH": null,
+          "QT_API": "pyqt6",
+          "QT_QPA_PLATFORM": null,
+          "QT_SCALE_FACTOR": "1",
+          "VISPY_PYQT5_SHARE_CONTEXT": null
+        },
+        "fixture_source_sha256": "37797259727afd9c6b15c7074319b935dcddb330deb2b6c99a03c8df6f36fddb",
+        "kind": "upstream",
+        "machine": "AMD64",
+        "numpy_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-napari\\Lib\\site-packages\\numpy\\__init__.py",
+        "platform": "Windows-11-10.0.26200-SP0",
+        "python": "3.12.8",
+        "python_executable": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-napari\\Scripts\\python.exe",
+        "qt_runtime": "6.11.2",
+        "regenerate": "uv venv build/oracle-opengl --python 3.12; uv pip install --python build/oracle-opengl/Scripts/python.exe -r tools/oracle_requirements.txt; build/oracle-opengl/Scripts/python.exe tools/oracle_capture.py --kind upstream --output tests/reference/opengl",
+        "renderer": {
+          "renderer": "NVIDIA GeForce RTX 4090/PCIe/SSE2",
+          "vendor": "NVIDIA Corporation",
+          "version": "4.6.0 NVIDIA 595.79"
+        },
+        "requirements_sha256": "a784b5a5e2b4ea201578acddc41e28e0997275ea2542642148322153cd240ffd",
+        "source_sha256": {
+          "gloo/buffer.py": "68e37b184b74814e0ae7a6f4f754c9f0c0af5b4e6369a60a8357c70da974e138",
+          "gloo/context.py": "6afc97492f65a5e865723535206fb769a1c4b55694d69786123fdee78bef992a",
+          "gloo/glir.py": "a3bb8a75b33f47420e9c100b8a6d81037a2f03c905e6c9f7d8399f4fb2eb8f7c",
+          "gloo/program.py": "4d3ab8e36260f9b5dc50f6aec075b12d642535f3cb8f49bfd4a27056301d5492",
+          "gloo/texture.py": "9f6d5f2e448e02c0ca4d66c65d17ddcdb6c0182bb8f15f1292a427f5a9faf6bc",
+          "gloo/wrappers.py": "73dbb5eb8ca78b2822266d272ffb14db9fcadd7a56512843209187714c9e8dcc"
+        },
+        "upstream_commit": "117b054598f4758b598f4b8f48feea48c11fe7b0",
+        "versions": {
+          "PyOpenGL": "3.1.10",
+          "PyQt6": "6.11.0",
+          "PyQt6-Qt6": "6.11.2",
+          "PyQt6-sip": "13.13.0",
+          "freetype-py": "2.5.1",
+          "hsluv": "5.0.4",
+          "kiwisolver": "1.5.1",
+          "numpy": "2.5.3",
+          "packaging": "26.3",
+          "vispy": "0.17.0"
+        },
+        "vispy_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-napari\\Lib\\site-packages\\vispy",
+        "vispy_version": "0.17.0"
+      },
+      "artifacts": {
+        "expanded_shaders": {
+          "file": "instanced_camera_visual.shaders.json",
+          "sha256": "005eb885b5cc4585b6fcbdf53633488ed111c07781412a338c8af2bf4837c77c"
+        },
+        "filtered_glir": {
+          "file": "instanced_camera_visual.glir.json",
+          "sha256": "f63034e163b2fd7da6b31f23b8b0a7716d8a2d25fd7eb22342b8b63612e06c93"
+        },
+        "observations": {
+          "file": "instanced_camera_visual.observations.json",
+          "sha256": "9a51d7073c662424970da7310f2b595e15705bc0e7a5ed012250a96c751e679b"
+        },
+        "parameters": {
+          "file": "instanced_camera_visual.parameters.json",
+          "sha256": "a5f6899c6bd17d055acf72715563f1bb0f3ea0c663735b0273c013822a9b66a9"
+        },
+        "rgba": {
+          "file": "instanced_camera_visual.npy",
+          "sha256": "1bf694c9b0b2ef07da9525deff4545eb6c74506c177e461076e26840a8eb7e05"
+        }
+      },
+      "capture": {
+        "file": "instanced_camera_visual.capture.json",
+        "sha256": "42d8585a6c834df449943766eaa6c3ba4bbf43e90f8fc9b9473bd62645c6f7b0"
+      },
+      "observations": {
+        "actual_marker_uploads": [
+          {
+            "bytes": 112,
+            "dtype": "|V56",
+            "dtype_descr": [
+              [
+                "a_position",
+                "<f4",
+                [
+                  3
+                ]
+              ],
+              [
+                "a_fg_color",
+                "<f4",
+                [
+                  4
+                ]
+              ],
+              [
+                "a_bg_color",
+                "<f4",
+                [
+                  4
+                ]
+              ],
+              [
+                "a_size",
+                "<f4"
+              ],
+              [
+                "a_edgewidth",
+                "<f4"
+              ],
+              [
+                "a_symbol",
+                "<f4"
+              ]
+            ],
+            "sha256": "21f464b6d39c76a54488d972cb17046481b3ce2778ab87924216bcb0bbc6d36c",
+            "shape": [
+              2
+            ]
+          }
+        ],
+        "dependent_trace_start": 77,
+        "gl_samples": 0,
+        "gloo_framebuffer_id": 14,
+        "marker_vbo_id": 9,
+        "physical_samples": 1,
+        "point_size_range": [
+          1.0,
+          2047.0
+        ],
+        "readbacks": 1,
+        "sample_source": "OpenGL driver GL_SAMPLES",
+        "structured_revisions": [
+          {
+            "bytes": 112,
+            "dtype": "|V56",
+            "dtype_descr": [
+              [
+                "a_position",
+                "<f4",
+                [
+                  3
+                ]
+              ],
+              [
+                "a_fg_color",
+                "<f4",
+                [
+                  4
+                ]
+              ],
+              [
+                "a_bg_color",
+                "<f4",
+                [
+                  4
+                ]
+              ],
+              [
+                "a_size",
+                "<f4"
+              ],
+              [
+                "a_edgewidth",
+                "<f4"
+              ],
+              [
+                "a_symbol",
+                "<f4"
+              ]
+            ],
+            "sha256": "21f464b6d39c76a54488d972cb17046481b3ce2778ab87924216bcb0bbc6d36c",
+            "shape": [
+              2
+            ]
+          }
+        ],
+        "target_observations": [
+          {
+            "driver_framebuffer_binding": 2,
+            "expected_gloo_framebuffer": 14,
+            "parser_framebuffer_handle": 2,
+            "scope": "OpenGL driver GL_FRAMEBUFFER_BINDING after actual parse",
+            "stage": "prewarm_markers"
+          },
+          {
+            "driver_framebuffer_binding": 2,
+            "expected_gloo_framebuffer": 14,
+            "parser_framebuffer_handle": 2,
+            "scope": "OpenGL driver GL_FRAMEBUFFER_BINDING after actual parse",
+            "stage": "initial_markers"
+          },
+          {
+            "driver_framebuffer_binding": 2,
+            "expected_gloo_framebuffer": 14,
+            "parser_framebuffer_handle": 2,
+            "scope": "OpenGL driver GL_FRAMEBUFFER_BINDING after actual parse",
+            "stage": "before_final_read"
+          }
+        ]
+      },
+      "parameters": {
+        "antialias": 0.0,
+        "api_scope": "public scene Markers / MarkersVisual.set_data, camera.rect, SceneCanvas.push_fbo and Visual.draw",
+        "authoring_variant": "separate API-correct attempt2; original failed capture remains immutable",
+        "camera_depth_value": 100.0,
+        "camera_flip": [
+          false,
+          true,
+          false
+        ],
+        "camera_rect": [
+          0,
+          0,
+          128,
+          96
+        ],
+        "case": "instanced_camera_visual",
+        "clear_depth": 1.0,
+        "comparison": {
+          "candidate_alignment_or_color_fit": false,
+          "full_frame_exact": true,
+          "landmarks": "fixed analytic RGBA values or fixed channel bounds; no edge exclusions"
+        },
+        "dependent_intermediate_present_or_finish": false,
+        "depth_func": "less",
+        "dpi": 96,
+        "final_camera_rect": [
+          16,
+          12,
+          64,
+          48
+        ],
+        "input": {
+          "edge_color": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "edge_width": 0.0,
+          "face_color": {
+            "bytes": 32,
+            "dtype": "<f4",
+            "dtype_descr": [
+              [
+                "",
+                "<f4"
+              ]
+            ],
+            "sha256": "f4eacc0d8a8a9596fbb86861f03830a57c2914484ab46a0459387736ff719de7",
+            "shape": [
+              2,
+              4
+            ]
+          },
+          "pos": {
+            "bytes": 24,
+            "dtype": "<f4",
+            "dtype_descr": [
+              [
+                "",
+                "<f4"
+              ]
+            ],
+            "sha256": "a4d1284a750940eb060ddf8f062ecc2a007f6df2d1be3d0464e35bebb4c7b22a",
+            "shape": [
+              2,
+              3
+            ]
+          },
+          "size": 10.0,
+          "symbol": "disc"
+        },
+        "landmarks": [
+          {
+            "column": 2,
+            "rgba": [
+              0,
+              0,
+              0,
+              255
+            ],
+            "row": 2
+          },
+          {
+            "column": 32,
+            "rgba": [
+              255,
+              0,
+              0,
+              255
+            ],
+            "row": 48
+          },
+          {
+            "column": 80,
+            "rgba": [
+              0,
+              255,
+              0,
+              255
+            ],
+            "row": 24
+          },
+          {
+            "column": 39,
+            "rgba": [
+              255,
+              0,
+              0,
+              255
+            ],
+            "row": 48
+          },
+          {
+            "column": 46,
+            "rgba": [
+              0,
+              0,
+              0,
+              255
+            ],
+            "row": 48
+          },
+          {
+            "column": 54,
+            "rgba": [
+              0,
+              0,
+              0,
+              255
+            ],
+            "row": 48
+          }
+        ],
+        "method": "instanced",
+        "prewarm_submission_without_read": true,
+        "published_diameter_pixels": 20.0,
+        "readbacks": 1,
+        "samples": 1,
+        "scaling": "visual",
+        "size": [
+          128,
+          96
+        ],
+        "spherical": false,
+        "visual_scale": [
+          2,
+          2,
+          1
+        ],
+        "visual_scaling_contract": "own Visual scale2 times size10; camera zoom excluded",
+        "workflow": "camera_visual"
+      }
+    },
+    "instanced_color_revision": {
+      "actual_renderer_provenance": {
+        "capture_source_sha256": "66ae25247831c184f38f2c7a2ff151b940013087104907523b11e1ed2b9b151a",
+        "cmake": null,
+        "distribution_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-napari\\Lib\\site-packages",
+        "distribution_record_sha256": "455e084c0cb78e19e41c79d08a57d533b07d52b3248c2ebd4b73e80584b067cc",
+        "environment": {
+          "PYTHONPATH": null,
+          "QT_API": "pyqt6",
+          "QT_QPA_PLATFORM": null,
+          "QT_SCALE_FACTOR": "1",
+          "VISPY_PYQT5_SHARE_CONTEXT": null
+        },
+        "fixture_source_sha256": "37797259727afd9c6b15c7074319b935dcddb330deb2b6c99a03c8df6f36fddb",
+        "kind": "upstream",
+        "machine": "AMD64",
+        "numpy_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-napari\\Lib\\site-packages\\numpy\\__init__.py",
+        "platform": "Windows-11-10.0.26200-SP0",
+        "python": "3.12.8",
+        "python_executable": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-napari\\Scripts\\python.exe",
+        "qt_runtime": "6.11.2",
+        "regenerate": "uv venv build/oracle-opengl --python 3.12; uv pip install --python build/oracle-opengl/Scripts/python.exe -r tools/oracle_requirements.txt; build/oracle-opengl/Scripts/python.exe tools/oracle_capture.py --kind upstream --output tests/reference/opengl",
+        "renderer": {
+          "renderer": "NVIDIA GeForce RTX 4090/PCIe/SSE2",
+          "vendor": "NVIDIA Corporation",
+          "version": "4.6.0 NVIDIA 595.79"
+        },
+        "requirements_sha256": "a784b5a5e2b4ea201578acddc41e28e0997275ea2542642148322153cd240ffd",
+        "source_sha256": {
+          "gloo/buffer.py": "68e37b184b74814e0ae7a6f4f754c9f0c0af5b4e6369a60a8357c70da974e138",
+          "gloo/context.py": "6afc97492f65a5e865723535206fb769a1c4b55694d69786123fdee78bef992a",
+          "gloo/glir.py": "a3bb8a75b33f47420e9c100b8a6d81037a2f03c905e6c9f7d8399f4fb2eb8f7c",
+          "gloo/program.py": "4d3ab8e36260f9b5dc50f6aec075b12d642535f3cb8f49bfd4a27056301d5492",
+          "gloo/texture.py": "9f6d5f2e448e02c0ca4d66c65d17ddcdb6c0182bb8f15f1292a427f5a9faf6bc",
+          "gloo/wrappers.py": "73dbb5eb8ca78b2822266d272ffb14db9fcadd7a56512843209187714c9e8dcc"
+        },
+        "upstream_commit": "117b054598f4758b598f4b8f48feea48c11fe7b0",
+        "versions": {
+          "PyOpenGL": "3.1.10",
+          "PyQt6": "6.11.0",
+          "PyQt6-Qt6": "6.11.2",
+          "PyQt6-sip": "13.13.0",
+          "freetype-py": "2.5.1",
+          "hsluv": "5.0.4",
+          "kiwisolver": "1.5.1",
+          "numpy": "2.5.3",
+          "packaging": "26.3",
+          "vispy": "0.17.0"
+        },
+        "vispy_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-napari\\Lib\\site-packages\\vispy",
+        "vispy_version": "0.17.0"
+      },
+      "artifacts": {
+        "expanded_shaders": {
+          "file": "instanced_color_revision.shaders.json",
+          "sha256": "e2ebafd572cf7139098a57e546e6460af95dc5e8dc56a508b507186b1ce3d8ed"
+        },
+        "filtered_glir": {
+          "file": "instanced_color_revision.glir.json",
+          "sha256": "7e6eb00c41d6a5642b03a71d4fc1e67b0d5004347a53cd267b9bca8f156528da"
+        },
+        "observations": {
+          "file": "instanced_color_revision.observations.json",
+          "sha256": "43c3fb29c5ee1ad603dcb8950533fc4a3c98ba2ed449fce421148ea58a82bd06"
+        },
+        "parameters": {
+          "file": "instanced_color_revision.parameters.json",
+          "sha256": "ad3d287e464dc85d0e2deb7cba7db3a683126de537701c1c95c759e5d2ae0a3d"
+        },
+        "rgba": {
+          "file": "instanced_color_revision.npy",
+          "sha256": "8c6b382e468d153dd19984ef5b10ca2a921a3e02e903df97d33d5fcf49a93cc5"
+        }
+      },
+      "capture": {
+        "file": "instanced_color_revision.capture.json",
+        "sha256": "2d9f1b29cd7624bf7b6a10c486af23ce4ed6753caa89a21eaf9064bf802f53c4"
+      },
+      "observations": {
+        "actual_marker_uploads": [
+          {
+            "bytes": 168,
+            "dtype": "|V56",
+            "dtype_descr": [
+              [
+                "a_position",
+                "<f4",
+                [
+                  3
+                ]
+              ],
+              [
+                "a_fg_color",
+                "<f4",
+                [
+                  4
+                ]
+              ],
+              [
+                "a_bg_color",
+                "<f4",
+                [
+                  4
+                ]
+              ],
+              [
+                "a_size",
+                "<f4"
+              ],
+              [
+                "a_edgewidth",
+                "<f4"
+              ],
+              [
+                "a_symbol",
+                "<f4"
+              ]
+            ],
+            "sha256": "63aaedc829d6d4b173fc3e594bb51a2fb79f27593aa04e79789f300f17944c00",
+            "shape": [
+              3
+            ]
+          },
+          {
+            "bytes": 168,
+            "dtype": "|V56",
+            "dtype_descr": [
+              [
+                "a_position",
+                "<f4",
+                [
+                  3
+                ]
+              ],
+              [
+                "a_fg_color",
+                "<f4",
+                [
+                  4
+                ]
+              ],
+              [
+                "a_bg_color",
+                "<f4",
+                [
+                  4
+                ]
+              ],
+              [
+                "a_size",
+                "<f4"
+              ],
+              [
+                "a_edgewidth",
+                "<f4"
+              ],
+              [
+                "a_symbol",
+                "<f4"
+              ]
+            ],
+            "sha256": "06220a65f85bb38726e963b9bd54ce599d9970d46f3a69599a3e7e5d3e7e1330",
+            "shape": [
+              3
+            ]
+          }
+        ],
+        "dependent_trace_start": 10,
+        "gl_samples": 0,
+        "gloo_framebuffer_id": 14,
+        "marker_vbo_id": 9,
+        "physical_samples": 1,
+        "point_size_range": [
+          1.0,
+          2047.0
+        ],
+        "readbacks": 1,
+        "sample_source": "OpenGL driver GL_SAMPLES",
+        "structured_revisions": [
+          {
+            "bytes": 168,
+            "dtype": "|V56",
+            "dtype_descr": [
+              [
+                "a_position",
+                "<f4",
+                [
+                  3
+                ]
+              ],
+              [
+                "a_fg_color",
+                "<f4",
+                [
+                  4
+                ]
+              ],
+              [
+                "a_bg_color",
+                "<f4",
+                [
+                  4
+                ]
+              ],
+              [
+                "a_size",
+                "<f4"
+              ],
+              [
+                "a_edgewidth",
+                "<f4"
+              ],
+              [
+                "a_symbol",
+                "<f4"
+              ]
+            ],
+            "sha256": "63aaedc829d6d4b173fc3e594bb51a2fb79f27593aa04e79789f300f17944c00",
+            "shape": [
+              3
+            ]
+          },
+          {
+            "bytes": 168,
+            "dtype": "|V56",
+            "dtype_descr": [
+              [
+                "a_position",
+                "<f4",
+                [
+                  3
+                ]
+              ],
+              [
+                "a_fg_color",
+                "<f4",
+                [
+                  4
+                ]
+              ],
+              [
+                "a_bg_color",
+                "<f4",
+                [
+                  4
+                ]
+              ],
+              [
+                "a_size",
+                "<f4"
+              ],
+              [
+                "a_edgewidth",
+                "<f4"
+              ],
+              [
+                "a_symbol",
+                "<f4"
+              ]
+            ],
+            "sha256": "06220a65f85bb38726e963b9bd54ce599d9970d46f3a69599a3e7e5d3e7e1330",
+            "shape": [
+              3
+            ]
+          }
+        ],
+        "target_observations": [
+          {
+            "driver_framebuffer_binding": 2,
+            "expected_gloo_framebuffer": 14,
+            "parser_framebuffer_handle": 2,
+            "scope": "OpenGL driver GL_FRAMEBUFFER_BINDING after actual parse",
+            "stage": "initial_markers"
+          },
+          {
+            "driver_framebuffer_binding": 2,
+            "expected_gloo_framebuffer": 14,
+            "parser_framebuffer_handle": 2,
+            "scope": "OpenGL driver GL_FRAMEBUFFER_BINDING after actual parse",
+            "stage": "updated_markers"
+          },
+          {
+            "driver_framebuffer_binding": 2,
+            "expected_gloo_framebuffer": 14,
+            "parser_framebuffer_handle": 2,
+            "scope": "OpenGL driver GL_FRAMEBUFFER_BINDING after actual parse",
+            "stage": "before_final_read"
+          }
+        ]
+      },
+      "parameters": {
+        "antialias": 1.0,
+        "api_scope": "public scene Markers / MarkersVisual.set_data, camera.rect, SceneCanvas.push_fbo and Visual.draw",
+        "authoring_variant": "separate API-correct attempt2; original failed capture remains immutable",
+        "camera_depth_value": 100.0,
+        "camera_flip": [
+          false,
+          true,
+          false
+        ],
+        "camera_rect": [
+          0,
+          0,
+          128,
+          96
+        ],
+        "case": "instanced_color_revision",
+        "clear_depth": 1.0,
+        "comparison": {
+          "candidate_alignment_or_color_fit": false,
+          "full_frame_exact": true,
+          "landmarks": "fixed analytic RGBA values or fixed channel bounds; no edge exclusions"
+        },
+        "dependent_intermediate_present_or_finish": false,
+        "depth_func": "less",
+        "dpi": 96,
+        "input": {
+          "edge_color": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "edge_width": 0.0,
+          "face_color": {
+            "bytes": 48,
+            "dtype": "<f4",
+            "dtype_descr": [
+              [
+                "",
+                "<f4"
+              ]
+            ],
+            "sha256": "eb8329d357ac90ed79393607ae5cb9b9b5b305c7ce5dd25a9a4fa7b3cef9d934",
+            "shape": [
+              3,
+              4
+            ]
+          },
+          "pos": {
+            "bytes": 36,
+            "dtype": "<f4",
+            "dtype_descr": [
+              [
+                "",
+                "<f4"
+              ]
+            ],
+            "sha256": "134b89fe6bb5bc9faebe3f63cbf5937a636d8135c0d8c6b03d7d9554f5c31fd2",
+            "shape": [
+              3,
+              3
+            ]
+          },
+          "size": 14.0,
+          "symbol": "disc"
+        },
+        "landmarks": [
+          {
+            "column": 2,
+            "rgba": [
+              0,
+              0,
+              0,
+              255
+            ],
+            "row": 2
+          },
+          {
+            "column": 24,
+            "rgba": [
+              255,
+              0,
+              0,
+              255
+            ],
+            "row": 24
+          },
+          {
+            "column": 56,
+            "rgba": [
+              0,
+              255,
+              0,
+              255
+            ],
+            "row": 24
+          },
+          {
+            "column": 88,
+            "rgba": [
+              0,
+              0,
+              255,
+              255
+            ],
+            "row": 24
+          },
+          {
+            "column": 24,
+            "rgba": [
+              0,
+              255,
+              255,
+              255
+            ],
+            "row": 72
+          },
+          {
+            "column": 56,
+            "rgba": [
+              255,
+              0,
+              255,
+              255
+            ],
+            "row": 72
+          },
+          {
+            "column": 88,
+            "rgba": [
+              255,
+              255,
+              0,
+              255
+            ],
+            "row": 72
+          },
+          {
+            "column": 56,
+            "rgba": [
+              0,
+              0,
+              0,
+              255
+            ],
+            "row": 48
+          }
+        ],
+        "method": "instanced",
+        "prewarm_submission_without_read": false,
+        "readbacks": 1,
+        "samples": 1,
+        "scaling": "fixed",
+        "size": [
+          128,
+          96
+        ],
+        "spherical": false,
+        "updated_input": {
+          "edge_color": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "edge_width": 0.0,
+          "face_color": {
+            "bytes": 48,
+            "dtype": "<f4",
+            "dtype_descr": [
+              [
+                "",
+                "<f4"
+              ]
+            ],
+            "sha256": "ce4f4375f035de86cf242860635847aa5fc475b70b67db1ff69acb13ae789aee",
+            "shape": [
+              3,
+              4
+            ]
+          },
+          "pos": {
+            "bytes": 36,
+            "dtype": "<f4",
+            "dtype_descr": [
+              [
+                "",
+                "<f4"
+              ]
+            ],
+            "sha256": "134b89fe6bb5bc9faebe3f63cbf5937a636d8135c0d8c6b03d7d9554f5c31fd2",
+            "shape": [
+              3,
+              3
+            ]
+          },
+          "size": 14.0,
+          "symbol": "disc"
+        },
+        "updated_visual_translation": [
+          0,
+          48,
+          0
+        ],
+        "workflow": "color_revision"
+      }
+    },
+    "instanced_position_revision": {
+      "actual_renderer_provenance": {
+        "capture_source_sha256": "66ae25247831c184f38f2c7a2ff151b940013087104907523b11e1ed2b9b151a",
+        "cmake": null,
+        "distribution_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-napari\\Lib\\site-packages",
+        "distribution_record_sha256": "455e084c0cb78e19e41c79d08a57d533b07d52b3248c2ebd4b73e80584b067cc",
+        "environment": {
+          "PYTHONPATH": null,
+          "QT_API": "pyqt6",
+          "QT_QPA_PLATFORM": null,
+          "QT_SCALE_FACTOR": "1",
+          "VISPY_PYQT5_SHARE_CONTEXT": null
+        },
+        "fixture_source_sha256": "37797259727afd9c6b15c7074319b935dcddb330deb2b6c99a03c8df6f36fddb",
+        "kind": "upstream",
+        "machine": "AMD64",
+        "numpy_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-napari\\Lib\\site-packages\\numpy\\__init__.py",
+        "platform": "Windows-11-10.0.26200-SP0",
+        "python": "3.12.8",
+        "python_executable": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-napari\\Scripts\\python.exe",
+        "qt_runtime": "6.11.2",
+        "regenerate": "uv venv build/oracle-opengl --python 3.12; uv pip install --python build/oracle-opengl/Scripts/python.exe -r tools/oracle_requirements.txt; build/oracle-opengl/Scripts/python.exe tools/oracle_capture.py --kind upstream --output tests/reference/opengl",
+        "renderer": {
+          "renderer": "NVIDIA GeForce RTX 4090/PCIe/SSE2",
+          "vendor": "NVIDIA Corporation",
+          "version": "4.6.0 NVIDIA 595.79"
+        },
+        "requirements_sha256": "a784b5a5e2b4ea201578acddc41e28e0997275ea2542642148322153cd240ffd",
+        "source_sha256": {
+          "gloo/buffer.py": "68e37b184b74814e0ae7a6f4f754c9f0c0af5b4e6369a60a8357c70da974e138",
+          "gloo/context.py": "6afc97492f65a5e865723535206fb769a1c4b55694d69786123fdee78bef992a",
+          "gloo/glir.py": "a3bb8a75b33f47420e9c100b8a6d81037a2f03c905e6c9f7d8399f4fb2eb8f7c",
+          "gloo/program.py": "4d3ab8e36260f9b5dc50f6aec075b12d642535f3cb8f49bfd4a27056301d5492",
+          "gloo/texture.py": "9f6d5f2e448e02c0ca4d66c65d17ddcdb6c0182bb8f15f1292a427f5a9faf6bc",
+          "gloo/wrappers.py": "73dbb5eb8ca78b2822266d272ffb14db9fcadd7a56512843209187714c9e8dcc"
+        },
+        "upstream_commit": "117b054598f4758b598f4b8f48feea48c11fe7b0",
+        "versions": {
+          "PyOpenGL": "3.1.10",
+          "PyQt6": "6.11.0",
+          "PyQt6-Qt6": "6.11.2",
+          "PyQt6-sip": "13.13.0",
+          "freetype-py": "2.5.1",
+          "hsluv": "5.0.4",
+          "kiwisolver": "1.5.1",
+          "numpy": "2.5.3",
+          "packaging": "26.3",
+          "vispy": "0.17.0"
+        },
+        "vispy_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-napari\\Lib\\site-packages\\vispy",
+        "vispy_version": "0.17.0"
+      },
+      "artifacts": {
+        "expanded_shaders": {
+          "file": "instanced_position_revision.shaders.json",
+          "sha256": "c143dfbf5a9987d13e099eba419ad730a345a5585971da7f5186e27949f1c4c0"
+        },
+        "filtered_glir": {
+          "file": "instanced_position_revision.glir.json",
+          "sha256": "7bb0133f016bf06a6a7c99cfa54694bdf4dd3b4217fc72db5ccad63f0dbbe98a"
+        },
+        "observations": {
+          "file": "instanced_position_revision.observations.json",
+          "sha256": "c284eed490241380dfb5e90c36e7c650ecdeafb7e84af4ce1a8dab29f7aa729e"
+        },
+        "parameters": {
+          "file": "instanced_position_revision.parameters.json",
+          "sha256": "e1ab9db17261276099838aac770b803e8916f63d2294cb023350694ea08cae28"
+        },
+        "rgba": {
+          "file": "instanced_position_revision.npy",
+          "sha256": "f3b9d7a787dcb90b504b0e5530ef4b540097e00c3591dfeea5ec45b3c2a9ad19"
+        }
+      },
+      "capture": {
+        "file": "instanced_position_revision.capture.json",
+        "sha256": "be9ef0fdffe369082998ff33a8d67558e016750d7a8872ead43ff68fb7526d1b"
+      },
+      "observations": {
+        "actual_marker_uploads": [
+          {
+            "bytes": 168,
+            "dtype": "|V56",
+            "dtype_descr": [
+              [
+                "a_position",
+                "<f4",
+                [
+                  3
+                ]
+              ],
+              [
+                "a_fg_color",
+                "<f4",
+                [
+                  4
+                ]
+              ],
+              [
+                "a_bg_color",
+                "<f4",
+                [
+                  4
+                ]
+              ],
+              [
+                "a_size",
+                "<f4"
+              ],
+              [
+                "a_edgewidth",
+                "<f4"
+              ],
+              [
+                "a_symbol",
+                "<f4"
+              ]
+            ],
+            "sha256": "63aaedc829d6d4b173fc3e594bb51a2fb79f27593aa04e79789f300f17944c00",
+            "shape": [
+              3
+            ]
+          },
+          {
+            "bytes": 168,
+            "dtype": "|V56",
+            "dtype_descr": [
+              [
+                "a_position",
+                "<f4",
+                [
+                  3
+                ]
+              ],
+              [
+                "a_fg_color",
+                "<f4",
+                [
+                  4
+                ]
+              ],
+              [
+                "a_bg_color",
+                "<f4",
+                [
+                  4
+                ]
+              ],
+              [
+                "a_size",
+                "<f4"
+              ],
+              [
+                "a_edgewidth",
+                "<f4"
+              ],
+              [
+                "a_symbol",
+                "<f4"
+              ]
+            ],
+            "sha256": "155e19102f7dd31f04c6a01468ed2722c7a880ab36c32d8dda9aeb14881e355e",
+            "shape": [
+              3
+            ]
+          }
+        ],
+        "dependent_trace_start": 10,
+        "gl_samples": 0,
+        "gloo_framebuffer_id": 14,
+        "marker_vbo_id": 9,
+        "physical_samples": 1,
+        "point_size_range": [
+          1.0,
+          2047.0
+        ],
+        "readbacks": 1,
+        "sample_source": "OpenGL driver GL_SAMPLES",
+        "structured_revisions": [
+          {
+            "bytes": 168,
+            "dtype": "|V56",
+            "dtype_descr": [
+              [
+                "a_position",
+                "<f4",
+                [
+                  3
+                ]
+              ],
+              [
+                "a_fg_color",
+                "<f4",
+                [
+                  4
+                ]
+              ],
+              [
+                "a_bg_color",
+                "<f4",
+                [
+                  4
+                ]
+              ],
+              [
+                "a_size",
+                "<f4"
+              ],
+              [
+                "a_edgewidth",
+                "<f4"
+              ],
+              [
+                "a_symbol",
+                "<f4"
+              ]
+            ],
+            "sha256": "63aaedc829d6d4b173fc3e594bb51a2fb79f27593aa04e79789f300f17944c00",
+            "shape": [
+              3
+            ]
+          },
+          {
+            "bytes": 168,
+            "dtype": "|V56",
+            "dtype_descr": [
+              [
+                "a_position",
+                "<f4",
+                [
+                  3
+                ]
+              ],
+              [
+                "a_fg_color",
+                "<f4",
+                [
+                  4
+                ]
+              ],
+              [
+                "a_bg_color",
+                "<f4",
+                [
+                  4
+                ]
+              ],
+              [
+                "a_size",
+                "<f4"
+              ],
+              [
+                "a_edgewidth",
+                "<f4"
+              ],
+              [
+                "a_symbol",
+                "<f4"
+              ]
+            ],
+            "sha256": "155e19102f7dd31f04c6a01468ed2722c7a880ab36c32d8dda9aeb14881e355e",
+            "shape": [
+              3
+            ]
+          }
+        ],
+        "target_observations": [
+          {
+            "driver_framebuffer_binding": 2,
+            "expected_gloo_framebuffer": 14,
+            "parser_framebuffer_handle": 2,
+            "scope": "OpenGL driver GL_FRAMEBUFFER_BINDING after actual parse",
+            "stage": "initial_markers"
+          },
+          {
+            "driver_framebuffer_binding": 2,
+            "expected_gloo_framebuffer": 14,
+            "parser_framebuffer_handle": 2,
+            "scope": "OpenGL driver GL_FRAMEBUFFER_BINDING after actual parse",
+            "stage": "updated_markers"
+          },
+          {
+            "driver_framebuffer_binding": 2,
+            "expected_gloo_framebuffer": 14,
+            "parser_framebuffer_handle": 2,
+            "scope": "OpenGL driver GL_FRAMEBUFFER_BINDING after actual parse",
+            "stage": "before_final_read"
+          }
+        ]
+      },
+      "parameters": {
+        "antialias": 1.0,
+        "api_scope": "public scene Markers / MarkersVisual.set_data, camera.rect, SceneCanvas.push_fbo and Visual.draw",
+        "authoring_variant": "separate API-correct attempt2; original failed capture remains immutable",
+        "camera_depth_value": 100.0,
+        "camera_flip": [
+          false,
+          true,
+          false
+        ],
+        "camera_rect": [
+          0,
+          0,
+          128,
+          96
+        ],
+        "case": "instanced_position_revision",
+        "clear_depth": 1.0,
+        "comparison": {
+          "candidate_alignment_or_color_fit": false,
+          "full_frame_exact": true,
+          "landmarks": "fixed analytic RGBA values or fixed channel bounds; no edge exclusions"
+        },
+        "dependent_intermediate_present_or_finish": false,
+        "depth_func": "less",
+        "dpi": 96,
+        "input": {
+          "edge_color": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "edge_width": 0.0,
+          "face_color": {
+            "bytes": 48,
+            "dtype": "<f4",
+            "dtype_descr": [
+              [
+                "",
+                "<f4"
+              ]
+            ],
+            "sha256": "eb8329d357ac90ed79393607ae5cb9b9b5b305c7ce5dd25a9a4fa7b3cef9d934",
+            "shape": [
+              3,
+              4
+            ]
+          },
+          "pos": {
+            "bytes": 36,
+            "dtype": "<f4",
+            "dtype_descr": [
+              [
+                "",
+                "<f4"
+              ]
+            ],
+            "sha256": "134b89fe6bb5bc9faebe3f63cbf5937a636d8135c0d8c6b03d7d9554f5c31fd2",
+            "shape": [
+              3,
+              3
+            ]
+          },
+          "size": 14.0,
+          "symbol": "disc"
+        },
+        "landmarks": [
+          {
+            "column": 2,
+            "rgba": [
+              0,
+              0,
+              0,
+              255
+            ],
+            "row": 2
+          },
+          {
+            "column": 24,
+            "rgba": [
+              255,
+              0,
+              0,
+              255
+            ],
+            "row": 24
+          },
+          {
+            "column": 56,
+            "rgba": [
+              0,
+              255,
+              0,
+              255
+            ],
+            "row": 24
+          },
+          {
+            "column": 88,
+            "rgba": [
+              0,
+              0,
+              255,
+              255
+            ],
+            "row": 24
+          },
+          {
+            "column": 40,
+            "rgba": [
+              255,
+              0,
+              0,
+              255
+            ],
+            "row": 72
+          },
+          {
+            "column": 72,
+            "rgba": [
+              0,
+              255,
+              0,
+              255
+            ],
+            "row": 72
+          },
+          {
+            "column": 104,
+            "rgba": [
+              0,
+              0,
+              255,
+              255
+            ],
+            "row": 72
+          },
+          {
+            "column": 56,
+            "rgba": [
+              0,
+              0,
+              0,
+              255
+            ],
+            "row": 48
+          }
+        ],
+        "method": "instanced",
+        "prewarm_submission_without_read": false,
+        "readbacks": 1,
+        "samples": 1,
+        "scaling": "fixed",
+        "size": [
+          128,
+          96
+        ],
+        "spherical": false,
+        "updated_input": {
+          "edge_color": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "edge_width": 0.0,
+          "face_color": {
+            "bytes": 48,
+            "dtype": "<f4",
+            "dtype_descr": [
+              [
+                "",
+                "<f4"
+              ]
+            ],
+            "sha256": "eb8329d357ac90ed79393607ae5cb9b9b5b305c7ce5dd25a9a4fa7b3cef9d934",
+            "shape": [
+              3,
+              4
+            ]
+          },
+          "pos": {
+            "bytes": 36,
+            "dtype": "<f4",
+            "dtype_descr": [
+              [
+                "",
+                "<f4"
+              ]
+            ],
+            "sha256": "97b8766291e0bdabad392facd7645f55dfe79dee33ad9e21d0a6ad727f9f8061",
+            "shape": [
+              3,
+              3
+            ]
+          },
+          "size": 14.0,
+          "symbol": "disc"
+        },
+        "workflow": "position_revision"
+      }
+    },
+    "instanced_spherical_depth": {
+      "actual_renderer_provenance": {
+        "capture_source_sha256": "66ae25247831c184f38f2c7a2ff151b940013087104907523b11e1ed2b9b151a",
+        "cmake": null,
+        "distribution_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-napari\\Lib\\site-packages",
+        "distribution_record_sha256": "455e084c0cb78e19e41c79d08a57d533b07d52b3248c2ebd4b73e80584b067cc",
+        "environment": {
+          "PYTHONPATH": null,
+          "QT_API": "pyqt6",
+          "QT_QPA_PLATFORM": null,
+          "QT_SCALE_FACTOR": "1",
+          "VISPY_PYQT5_SHARE_CONTEXT": null
+        },
+        "fixture_source_sha256": "37797259727afd9c6b15c7074319b935dcddb330deb2b6c99a03c8df6f36fddb",
+        "kind": "upstream",
+        "machine": "AMD64",
+        "numpy_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-napari\\Lib\\site-packages\\numpy\\__init__.py",
+        "platform": "Windows-11-10.0.26200-SP0",
+        "python": "3.12.8",
+        "python_executable": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-napari\\Scripts\\python.exe",
+        "qt_runtime": "6.11.2",
+        "regenerate": "uv venv build/oracle-opengl --python 3.12; uv pip install --python build/oracle-opengl/Scripts/python.exe -r tools/oracle_requirements.txt; build/oracle-opengl/Scripts/python.exe tools/oracle_capture.py --kind upstream --output tests/reference/opengl",
+        "renderer": {
+          "renderer": "NVIDIA GeForce RTX 4090/PCIe/SSE2",
+          "vendor": "NVIDIA Corporation",
+          "version": "4.6.0 NVIDIA 595.79"
+        },
+        "requirements_sha256": "a784b5a5e2b4ea201578acddc41e28e0997275ea2542642148322153cd240ffd",
+        "source_sha256": {
+          "gloo/buffer.py": "68e37b184b74814e0ae7a6f4f754c9f0c0af5b4e6369a60a8357c70da974e138",
+          "gloo/context.py": "6afc97492f65a5e865723535206fb769a1c4b55694d69786123fdee78bef992a",
+          "gloo/glir.py": "a3bb8a75b33f47420e9c100b8a6d81037a2f03c905e6c9f7d8399f4fb2eb8f7c",
+          "gloo/program.py": "4d3ab8e36260f9b5dc50f6aec075b12d642535f3cb8f49bfd4a27056301d5492",
+          "gloo/texture.py": "9f6d5f2e448e02c0ca4d66c65d17ddcdb6c0182bb8f15f1292a427f5a9faf6bc",
+          "gloo/wrappers.py": "73dbb5eb8ca78b2822266d272ffb14db9fcadd7a56512843209187714c9e8dcc"
+        },
+        "upstream_commit": "117b054598f4758b598f4b8f48feea48c11fe7b0",
+        "versions": {
+          "PyOpenGL": "3.1.10",
+          "PyQt6": "6.11.0",
+          "PyQt6-Qt6": "6.11.2",
+          "PyQt6-sip": "13.13.0",
+          "freetype-py": "2.5.1",
+          "hsluv": "5.0.4",
+          "kiwisolver": "1.5.1",
+          "numpy": "2.5.3",
+          "packaging": "26.3",
+          "vispy": "0.17.0"
+        },
+        "vispy_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-napari\\Lib\\site-packages\\vispy",
+        "vispy_version": "0.17.0"
+      },
+      "artifacts": {
+        "expanded_shaders": {
+          "file": "instanced_spherical_depth.shaders.json",
+          "sha256": "5f21aa78b728152348354b2f51614b6f5e85b79c04862251781ebecbda477465"
+        },
+        "filtered_glir": {
+          "file": "instanced_spherical_depth.glir.json",
+          "sha256": "dee70e883ef2c80899ca5e877f057b05f2200269276736060eae9cbecef9194c"
+        },
+        "observations": {
+          "file": "instanced_spherical_depth.observations.json",
+          "sha256": "82158d4056612808f9e60d3811fdc11d29c598c95249601fc143d9a18afb4adf"
+        },
+        "parameters": {
+          "file": "instanced_spherical_depth.parameters.json",
+          "sha256": "d1bddbae805d3233904912bc0338dca4b3d773df6d0a564a9b16167bf2bf5241"
+        },
+        "rgba": {
+          "file": "instanced_spherical_depth.npy",
+          "sha256": "13f28466f07401321157733bc290e3b6224cb226a662dc95869a4987c153e05f"
+        }
+      },
+      "capture": {
+        "file": "instanced_spherical_depth.capture.json",
+        "sha256": "8b6c428d2a9b896275ded4de487f065e41c1c4d45efb9a28cdaccfab1d3bfe58"
+      },
+      "observations": {
+        "actual_marker_uploads": [
+          {
+            "bytes": 56,
+            "dtype": "|V56",
+            "dtype_descr": [
+              [
+                "a_position",
+                "<f4",
+                [
+                  3
+                ]
+              ],
+              [
+                "a_fg_color",
+                "<f4",
+                [
+                  4
+                ]
+              ],
+              [
+                "a_bg_color",
+                "<f4",
+                [
+                  4
+                ]
+              ],
+              [
+                "a_size",
+                "<f4"
+              ],
+              [
+                "a_edgewidth",
+                "<f4"
+              ],
+              [
+                "a_symbol",
+                "<f4"
+              ]
+            ],
+            "sha256": "cd8d2e179fe9034eae2bb662b11776dc8919e6b612848372a2a917eda2aad81a",
+            "shape": [
+              1
+            ]
+          }
+        ],
+        "dependent_trace_start": 10,
+        "gl_samples": 0,
+        "gloo_framebuffer_id": 16,
+        "marker_vbo_id": 9,
+        "physical_samples": 1,
+        "point_size_range": [
+          1.0,
+          2047.0
+        ],
+        "readbacks": 1,
+        "sample_source": "OpenGL driver GL_SAMPLES",
+        "structured_revisions": [
+          {
+            "bytes": 56,
+            "dtype": "|V56",
+            "dtype_descr": [
+              [
+                "a_position",
+                "<f4",
+                [
+                  3
+                ]
+              ],
+              [
+                "a_fg_color",
+                "<f4",
+                [
+                  4
+                ]
+              ],
+              [
+                "a_bg_color",
+                "<f4",
+                [
+                  4
+                ]
+              ],
+              [
+                "a_size",
+                "<f4"
+              ],
+              [
+                "a_edgewidth",
+                "<f4"
+              ],
+              [
+                "a_symbol",
+                "<f4"
+              ]
+            ],
+            "sha256": "cd8d2e179fe9034eae2bb662b11776dc8919e6b612848372a2a917eda2aad81a",
+            "shape": [
+              1
+            ]
+          }
+        ],
+        "target_observations": [
+          {
+            "driver_framebuffer_binding": 2,
+            "expected_gloo_framebuffer": 16,
+            "parser_framebuffer_handle": 2,
+            "scope": "OpenGL driver GL_FRAMEBUFFER_BINDING after actual parse",
+            "stage": "initial_markers"
+          },
+          {
+            "driver_framebuffer_binding": 2,
+            "expected_gloo_framebuffer": 16,
+            "parser_framebuffer_handle": 2,
+            "scope": "OpenGL driver GL_FRAMEBUFFER_BINDING after actual parse",
+            "stage": "initial_mesh"
+          },
+          {
+            "driver_framebuffer_binding": 2,
+            "expected_gloo_framebuffer": 16,
+            "parser_framebuffer_handle": 2,
+            "scope": "OpenGL driver GL_FRAMEBUFFER_BINDING after actual parse",
+            "stage": "before_final_read"
+          }
+        ]
+      },
+      "parameters": {
+        "antialias": 1.0,
+        "api_scope": "public scene Markers / MarkersVisual.set_data, camera.rect, SceneCanvas.push_fbo and Visual.draw",
+        "authoring_variant": "separate API-correct attempt2; original failed capture remains immutable",
+        "camera_depth_value": 100.0,
+        "camera_flip": [
+          false,
+          true,
+          false
+        ],
+        "camera_rect": [
+          0,
+          0,
+          128,
+          96
+        ],
+        "case": "instanced_spherical_depth",
+        "clear_depth": 1.0,
+        "comparison": {
+          "candidate_alignment_or_color_fit": false,
+          "full_frame_exact": true,
+          "landmarks": "fixed analytic RGBA values or fixed channel bounds; no edge exclusions"
+        },
+        "dependent_intermediate_present_or_finish": false,
+        "depth_func": "less",
+        "depth_geometry": {
+          "formula": ".5 - .1 * sqrt(1 - (dx/20)^2 - (dy/20)^2)",
+          "front_mesh_window_depth": 0.45,
+          "sphere_center_depth_change": -0.1,
+          "sphere_center_window_depth": 0.5
+        },
+        "dpi": 96,
+        "front_mesh_color": [
+          1,
+          0,
+          0,
+          1
+        ],
+        "front_mesh_faces": [
+          [
+            0,
+            1,
+            2
+          ],
+          [
+            2,
+            1,
+            3
+          ]
+        ],
+        "front_mesh_vertices": [
+          [
+            40,
+            24,
+            -10
+          ],
+          [
+            88,
+            24,
+            -10
+          ],
+          [
+            40,
+            72,
+            -10
+          ],
+          [
+            88,
+            72,
+            -10
+          ]
+        ],
+        "input": {
+          "edge_color": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "edge_width": 0.0,
+          "face_color": [
+            0,
+            1,
+            0,
+            1
+          ],
+          "pos": {
+            "bytes": 12,
+            "dtype": "<f4",
+            "dtype_descr": [
+              [
+                "",
+                "<f4"
+              ]
+            ],
+            "sha256": "246037d734d05a50b5d69eb68b957ad1a653fcd9264fb27189ed970346c6b592",
+            "shape": [
+              1,
+              3
+            ]
+          },
+          "size": 40.0,
+          "symbol": "disc"
+        },
+        "landmarks": [
+          {
+            "column": 2,
+            "rgba": [
+              0,
+              0,
+              0,
+              255
+            ],
+            "row": 2
+          },
+          {
+            "column": 64,
+            "maximum": [
+              255,
+              255,
+              255,
+              255
+            ],
+            "minimum": [
+              180,
+              230,
+              180,
+              255
+            ],
+            "row": 48
+          },
+          {
+            "column": 76,
+            "maximum": [
+              15,
+              255,
+              15,
+              255
+            ],
+            "minimum": [
+              0,
+              170,
+              0,
+              255
+            ],
+            "row": 48
+          },
+          {
+            "column": 83,
+            "rgba": [
+              255,
+              0,
+              0,
+              255
+            ],
+            "row": 48
+          },
+          {
+            "column": 35,
+            "rgba": [
+              0,
+              0,
+              0,
+              255
+            ],
+            "row": 48
+          }
+        ],
+        "light_ambient": 0.05,
+        "light_color": [
+          1,
+          1,
+          1
+        ],
+        "light_position": [
+          0,
+          0,
+          1
+        ],
+        "method": "instanced",
+        "prewarm_submission_without_read": false,
+        "readbacks": 1,
+        "samples": 1,
+        "scaling": "fixed",
+        "size": [
+          128,
+          96
+        ],
+        "spherical": true,
+        "workflow": "spherical_depth"
+      }
+    },
+    "instanced_style_grid": {
+      "actual_renderer_provenance": {
+        "capture_source_sha256": "66ae25247831c184f38f2c7a2ff151b940013087104907523b11e1ed2b9b151a",
+        "cmake": null,
+        "distribution_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-napari\\Lib\\site-packages",
+        "distribution_record_sha256": "455e084c0cb78e19e41c79d08a57d533b07d52b3248c2ebd4b73e80584b067cc",
+        "environment": {
+          "PYTHONPATH": null,
+          "QT_API": "pyqt6",
+          "QT_QPA_PLATFORM": null,
+          "QT_SCALE_FACTOR": "1",
+          "VISPY_PYQT5_SHARE_CONTEXT": null
+        },
+        "fixture_source_sha256": "37797259727afd9c6b15c7074319b935dcddb330deb2b6c99a03c8df6f36fddb",
+        "kind": "upstream",
+        "machine": "AMD64",
+        "numpy_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-napari\\Lib\\site-packages\\numpy\\__init__.py",
+        "platform": "Windows-11-10.0.26200-SP0",
+        "python": "3.12.8",
+        "python_executable": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-napari\\Scripts\\python.exe",
+        "qt_runtime": "6.11.2",
+        "regenerate": "uv venv build/oracle-opengl --python 3.12; uv pip install --python build/oracle-opengl/Scripts/python.exe -r tools/oracle_requirements.txt; build/oracle-opengl/Scripts/python.exe tools/oracle_capture.py --kind upstream --output tests/reference/opengl",
+        "renderer": {
+          "renderer": "NVIDIA GeForce RTX 4090/PCIe/SSE2",
+          "vendor": "NVIDIA Corporation",
+          "version": "4.6.0 NVIDIA 595.79"
+        },
+        "requirements_sha256": "a784b5a5e2b4ea201578acddc41e28e0997275ea2542642148322153cd240ffd",
+        "source_sha256": {
+          "gloo/buffer.py": "68e37b184b74814e0ae7a6f4f754c9f0c0af5b4e6369a60a8357c70da974e138",
+          "gloo/context.py": "6afc97492f65a5e865723535206fb769a1c4b55694d69786123fdee78bef992a",
+          "gloo/glir.py": "a3bb8a75b33f47420e9c100b8a6d81037a2f03c905e6c9f7d8399f4fb2eb8f7c",
+          "gloo/program.py": "4d3ab8e36260f9b5dc50f6aec075b12d642535f3cb8f49bfd4a27056301d5492",
+          "gloo/texture.py": "9f6d5f2e448e02c0ca4d66c65d17ddcdb6c0182bb8f15f1292a427f5a9faf6bc",
+          "gloo/wrappers.py": "73dbb5eb8ca78b2822266d272ffb14db9fcadd7a56512843209187714c9e8dcc"
+        },
+        "upstream_commit": "117b054598f4758b598f4b8f48feea48c11fe7b0",
+        "versions": {
+          "PyOpenGL": "3.1.10",
+          "PyQt6": "6.11.0",
+          "PyQt6-Qt6": "6.11.2",
+          "PyQt6-sip": "13.13.0",
+          "freetype-py": "2.5.1",
+          "hsluv": "5.0.4",
+          "kiwisolver": "1.5.1",
+          "numpy": "2.5.3",
+          "packaging": "26.3",
+          "vispy": "0.17.0"
+        },
+        "vispy_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-napari\\Lib\\site-packages\\vispy",
+        "vispy_version": "0.17.0"
+      },
+      "artifacts": {
+        "expanded_shaders": {
+          "file": "instanced_style_grid.shaders.json",
+          "sha256": "c143dfbf5a9987d13e099eba419ad730a345a5585971da7f5186e27949f1c4c0"
+        },
+        "filtered_glir": {
+          "file": "instanced_style_grid.glir.json",
+          "sha256": "85a3357e4a0d498fa5c2d602f81ad3d53ce85ab35b389f93bf6f8ee4d3c45520"
+        },
+        "observations": {
+          "file": "instanced_style_grid.observations.json",
+          "sha256": "e8c8d4cdb16c68cb00e6daa51ea6967c1585d76b72fe98493d3de1eabc8f3453"
+        },
+        "parameters": {
+          "file": "instanced_style_grid.parameters.json",
+          "sha256": "7c713342f73ce39c876ed4882af08bcc36e59ff2fcf21d7829cdcb7d2c64fcab"
+        },
+        "rgba": {
+          "file": "instanced_style_grid.npy",
+          "sha256": "cb2f41a29a8a23e3960c562de7b340eb57177a918c86c09a345e25a90d3ab7ae"
+        }
+      },
+      "capture": {
+        "file": "instanced_style_grid.capture.json",
+        "sha256": "e111c5ba99bf39a41c31006e747b4b8793305cbaece5c126fcea5cb051d92065"
+      },
+      "observations": {
+        "actual_marker_uploads": [
+          {
+            "bytes": 336,
+            "dtype": "|V56",
+            "dtype_descr": [
+              [
+                "a_position",
+                "<f4",
+                [
+                  3
+                ]
+              ],
+              [
+                "a_fg_color",
+                "<f4",
+                [
+                  4
+                ]
+              ],
+              [
+                "a_bg_color",
+                "<f4",
+                [
+                  4
+                ]
+              ],
+              [
+                "a_size",
+                "<f4"
+              ],
+              [
+                "a_edgewidth",
+                "<f4"
+              ],
+              [
+                "a_symbol",
+                "<f4"
+              ]
+            ],
+            "sha256": "d99fa6a7ac55cc20a04b8b44e646c423aa58ec1712a33de185897961daa8ca43",
+            "shape": [
+              6
+            ]
+          }
+        ],
+        "dependent_trace_start": 10,
+        "gl_samples": 0,
+        "gloo_framebuffer_id": 14,
+        "marker_vbo_id": 9,
+        "physical_samples": 1,
+        "point_size_range": [
+          1.0,
+          2047.0
+        ],
+        "readbacks": 1,
+        "sample_source": "OpenGL driver GL_SAMPLES",
+        "structured_revisions": [
+          {
+            "bytes": 336,
+            "dtype": "|V56",
+            "dtype_descr": [
+              [
+                "a_position",
+                "<f4",
+                [
+                  3
+                ]
+              ],
+              [
+                "a_fg_color",
+                "<f4",
+                [
+                  4
+                ]
+              ],
+              [
+                "a_bg_color",
+                "<f4",
+                [
+                  4
+                ]
+              ],
+              [
+                "a_size",
+                "<f4"
+              ],
+              [
+                "a_edgewidth",
+                "<f4"
+              ],
+              [
+                "a_symbol",
+                "<f4"
+              ]
+            ],
+            "sha256": "d99fa6a7ac55cc20a04b8b44e646c423aa58ec1712a33de185897961daa8ca43",
+            "shape": [
+              6
+            ]
+          }
+        ],
+        "target_observations": [
+          {
+            "driver_framebuffer_binding": 2,
+            "expected_gloo_framebuffer": 14,
+            "parser_framebuffer_handle": 2,
+            "scope": "OpenGL driver GL_FRAMEBUFFER_BINDING after actual parse",
+            "stage": "initial_markers"
+          },
+          {
+            "driver_framebuffer_binding": 2,
+            "expected_gloo_framebuffer": 14,
+            "parser_framebuffer_handle": 2,
+            "scope": "OpenGL driver GL_FRAMEBUFFER_BINDING after actual parse",
+            "stage": "before_final_read"
+          }
+        ]
+      },
+      "parameters": {
+        "antialias": 1.0,
+        "api_scope": "public scene Markers / MarkersVisual.set_data, camera.rect, SceneCanvas.push_fbo and Visual.draw",
+        "authoring_variant": "separate API-correct attempt2; original failed capture remains immutable",
+        "camera_depth_value": 100.0,
+        "camera_flip": [
+          false,
+          true,
+          false
+        ],
+        "camera_rect": [
+          0,
+          0,
+          128,
+          96
+        ],
+        "case": "instanced_style_grid",
+        "clear_depth": 1.0,
+        "comparison": {
+          "candidate_alignment_or_color_fit": false,
+          "full_frame_exact": true,
+          "landmarks": "fixed analytic RGBA values or fixed channel bounds; no edge exclusions"
+        },
+        "dependent_intermediate_present_or_finish": false,
+        "depth_func": "less",
+        "dpi": 96,
+        "input": {
+          "edge_color": [
+            1,
+            0,
+            0,
+            1
+          ],
+          "edge_width": {
+            "bytes": 24,
+            "dtype": "<f4",
+            "dtype_descr": [
+              [
+                "",
+                "<f4"
+              ]
+            ],
+            "sha256": "aeecc6c277c7082f19f083f14c2607fb57dc0fd4c57bb469b7b2e27c3ff147ab",
+            "shape": [
+              6
+            ]
+          },
+          "face_color": [
+            0,
+            1,
+            0,
+            1
+          ],
+          "pos": {
+            "bytes": 72,
+            "dtype": "<f4",
+            "dtype_descr": [
+              [
+                "",
+                "<f4"
+              ]
+            ],
+            "sha256": "efb43319b9cd4cc3d3b6b8d88661cf953af914457a0830f11a9f39103a0ec676",
+            "shape": [
+              6,
+              3
+            ]
+          },
+          "size": {
+            "bytes": 24,
+            "dtype": "<f4",
+            "dtype_descr": [
+              [
+                "",
+                "<f4"
+              ]
+            ],
+            "sha256": "f8369a041fb710563c6d6efe557a4840ad68120cd4bd6f3c1719b006b3d63114",
+            "shape": [
+              6
+            ]
+          },
+          "symbol": [
+            "disc",
+            "square",
+            "diamond",
+            "triangle_up",
+            "cross",
+            "ring"
+          ]
+        },
+        "landmarks": [
+          {
+            "column": 2,
+            "rgba": [
+              0,
+              0,
+              0,
+              255
+            ],
+            "row": 2
+          },
+          {
+            "column": 20,
+            "maximum": [
+              15,
+              255,
+              0,
+              255
+            ],
+            "minimum": [
+              0,
+              240,
+              0,
+              255
+            ],
+            "row": 24
+          },
+          {
+            "column": 64,
+            "maximum": [
+              15,
+              255,
+              0,
+              255
+            ],
+            "minimum": [
+              0,
+              240,
+              0,
+              255
+            ],
+            "row": 24
+          },
+          {
+            "column": 108,
+            "maximum": [
+              15,
+              255,
+              0,
+              255
+            ],
+            "minimum": [
+              0,
+              240,
+              0,
+              255
+            ],
+            "row": 24
+          },
+          {
+            "column": 20,
+            "maximum": [
+              15,
+              255,
+              0,
+              255
+            ],
+            "minimum": [
+              0,
+              240,
+              0,
+              255
+            ],
+            "row": 72
+          },
+          {
+            "column": 64,
+            "maximum": [
+              15,
+              255,
+              0,
+              255
+            ],
+            "minimum": [
+              0,
+              240,
+              0,
+              255
+            ],
+            "row": 72
+          },
+          {
+            "column": 26,
+            "rgba": [
+              255,
+              0,
+              0,
+              255
+            ],
+            "row": 24
+          },
+          {
+            "column": 108,
+            "rgba": [
+              0,
+              0,
+              0,
+              255
+            ],
+            "row": 72
+          },
+          {
+            "column": 117,
+            "maximum": [
+              2,
+              255,
+              0,
+              255
+            ],
+            "minimum": [
+              0,
+              253,
+              0,
+              255
+            ],
+            "row": 72
+          }
+        ],
+        "method": "instanced",
+        "prewarm_submission_without_read": false,
+        "readbacks": 1,
+        "ring_aa_geometry": {
+          "antialias": 1.0,
+          "edge_width": 2.0,
+          "formula": "r=max(hypot(dx,dy)-12,6-hypot(dx,dy)); mix=exp(-r*r); color=(mix,1-mix,0,1)",
+          "full_frame_exact_unchanged": true,
+          "gaussian_edge_mix": [
+            0.0017933286510088025,
+            0.0020612783823213496
+          ],
+          "maximum_rgba": [
+            2,
+            255,
+            0,
+            255
+          ],
+          "minimum_rgba": [
+            0,
+            253,
+            0,
+            255
+          ],
+          "point": [
+            72,
+            117
+          ],
+          "radius_samples": [
+            8.514693182963201,
+            9.513148795220223
+          ],
+          "signed_distances": [
+            -2.5146931829632013,
+            -2.486851204779777
+          ],
+          "symbol_size": 24.0
+        },
+        "samples": 1,
+        "scaling": "fixed",
+        "size": [
+          128,
+          96
+        ],
+        "spherical": false,
+        "workflow": "style_grid"
+      }
+    },
+    "points_camera_fixed": {
+      "actual_renderer_provenance": {
+        "capture_source_sha256": "66ae25247831c184f38f2c7a2ff151b940013087104907523b11e1ed2b9b151a",
+        "cmake": null,
+        "distribution_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-napari\\Lib\\site-packages",
+        "distribution_record_sha256": "455e084c0cb78e19e41c79d08a57d533b07d52b3248c2ebd4b73e80584b067cc",
+        "environment": {
+          "PYTHONPATH": null,
+          "QT_API": "pyqt6",
+          "QT_QPA_PLATFORM": null,
+          "QT_SCALE_FACTOR": "1",
+          "VISPY_PYQT5_SHARE_CONTEXT": null
+        },
+        "fixture_source_sha256": "37797259727afd9c6b15c7074319b935dcddb330deb2b6c99a03c8df6f36fddb",
+        "kind": "upstream",
+        "machine": "AMD64",
+        "numpy_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-napari\\Lib\\site-packages\\numpy\\__init__.py",
+        "platform": "Windows-11-10.0.26200-SP0",
+        "python": "3.12.8",
+        "python_executable": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-napari\\Scripts\\python.exe",
+        "qt_runtime": "6.11.2",
+        "regenerate": "uv venv build/oracle-opengl --python 3.12; uv pip install --python build/oracle-opengl/Scripts/python.exe -r tools/oracle_requirements.txt; build/oracle-opengl/Scripts/python.exe tools/oracle_capture.py --kind upstream --output tests/reference/opengl",
+        "renderer": {
+          "renderer": "NVIDIA GeForce RTX 4090/PCIe/SSE2",
+          "vendor": "NVIDIA Corporation",
+          "version": "4.6.0 NVIDIA 595.79"
+        },
+        "requirements_sha256": "a784b5a5e2b4ea201578acddc41e28e0997275ea2542642148322153cd240ffd",
+        "source_sha256": {
+          "gloo/buffer.py": "68e37b184b74814e0ae7a6f4f754c9f0c0af5b4e6369a60a8357c70da974e138",
+          "gloo/context.py": "6afc97492f65a5e865723535206fb769a1c4b55694d69786123fdee78bef992a",
+          "gloo/glir.py": "a3bb8a75b33f47420e9c100b8a6d81037a2f03c905e6c9f7d8399f4fb2eb8f7c",
+          "gloo/program.py": "4d3ab8e36260f9b5dc50f6aec075b12d642535f3cb8f49bfd4a27056301d5492",
+          "gloo/texture.py": "9f6d5f2e448e02c0ca4d66c65d17ddcdb6c0182bb8f15f1292a427f5a9faf6bc",
+          "gloo/wrappers.py": "73dbb5eb8ca78b2822266d272ffb14db9fcadd7a56512843209187714c9e8dcc"
+        },
+        "upstream_commit": "117b054598f4758b598f4b8f48feea48c11fe7b0",
+        "versions": {
+          "PyOpenGL": "3.1.10",
+          "PyQt6": "6.11.0",
+          "PyQt6-Qt6": "6.11.2",
+          "PyQt6-sip": "13.13.0",
+          "freetype-py": "2.5.1",
+          "hsluv": "5.0.4",
+          "kiwisolver": "1.5.1",
+          "numpy": "2.5.3",
+          "packaging": "26.3",
+          "vispy": "0.17.0"
+        },
+        "vispy_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-napari\\Lib\\site-packages\\vispy",
+        "vispy_version": "0.17.0"
+      },
+      "artifacts": {
+        "expanded_shaders": {
+          "file": "points_camera_fixed.shaders.json",
+          "sha256": "d9005db078812504b5b1e9c6014bd5560e0ca2e9021b69c61b33847e61ac1103"
+        },
+        "filtered_glir": {
+          "file": "points_camera_fixed.glir.json",
+          "sha256": "8ee10d7f842efc80bb759870104ded8659fe998f4685a2e236f703e552883180"
+        },
+        "observations": {
+          "file": "points_camera_fixed.observations.json",
+          "sha256": "9920682d727a3ec4afeca21da44e346ad043dff466bdbabe01c341fa9da2e576"
+        },
+        "parameters": {
+          "file": "points_camera_fixed.parameters.json",
+          "sha256": "19f0a7f33b55eb6bfc67c03bf56f759be40c53d9894c446b04fbf9aa5396e56c"
+        },
+        "rgba": {
+          "file": "points_camera_fixed.npy",
+          "sha256": "fac04910b027a8a219b04e8ad409480ca51933ba5c350aae08c15a08e699b422"
+        }
+      },
+      "capture": {
+        "file": "points_camera_fixed.capture.json",
+        "sha256": "5a2fc469b135791f2b98fc00ab52851e8ad8f7a02437de63fbb36853029efa05"
+      },
+      "observations": {
+        "actual_marker_uploads": [
+          {
+            "bytes": 112,
+            "dtype": "|V56",
+            "dtype_descr": [
+              [
+                "a_position",
+                "<f4",
+                [
+                  3
+                ]
+              ],
+              [
+                "a_fg_color",
+                "<f4",
+                [
+                  4
+                ]
+              ],
+              [
+                "a_bg_color",
+                "<f4",
+                [
+                  4
+                ]
+              ],
+              [
+                "a_size",
+                "<f4"
+              ],
+              [
+                "a_edgewidth",
+                "<f4"
+              ],
+              [
+                "a_symbol",
+                "<f4"
+              ]
+            ],
+            "sha256": "21f464b6d39c76a54488d972cb17046481b3ce2778ab87924216bcb0bbc6d36c",
+            "shape": [
+              2
+            ]
+          }
+        ],
+        "dependent_trace_start": 72,
+        "gl_samples": 0,
+        "gloo_framebuffer_id": 13,
+        "marker_vbo_id": 9,
+        "physical_samples": 1,
+        "point_size_range": [
+          1.0,
+          2047.0
+        ],
+        "readbacks": 1,
+        "sample_source": "OpenGL driver GL_SAMPLES",
+        "structured_revisions": [
+          {
+            "bytes": 112,
+            "dtype": "|V56",
+            "dtype_descr": [
+              [
+                "a_position",
+                "<f4",
+                [
+                  3
+                ]
+              ],
+              [
+                "a_fg_color",
+                "<f4",
+                [
+                  4
+                ]
+              ],
+              [
+                "a_bg_color",
+                "<f4",
+                [
+                  4
+                ]
+              ],
+              [
+                "a_size",
+                "<f4"
+              ],
+              [
+                "a_edgewidth",
+                "<f4"
+              ],
+              [
+                "a_symbol",
+                "<f4"
+              ]
+            ],
+            "sha256": "21f464b6d39c76a54488d972cb17046481b3ce2778ab87924216bcb0bbc6d36c",
+            "shape": [
+              2
+            ]
+          }
+        ],
+        "target_observations": [
+          {
+            "driver_framebuffer_binding": 2,
+            "expected_gloo_framebuffer": 13,
+            "parser_framebuffer_handle": 2,
+            "scope": "OpenGL driver GL_FRAMEBUFFER_BINDING after actual parse",
+            "stage": "prewarm_markers"
+          },
+          {
+            "driver_framebuffer_binding": 2,
+            "expected_gloo_framebuffer": 13,
+            "parser_framebuffer_handle": 2,
+            "scope": "OpenGL driver GL_FRAMEBUFFER_BINDING after actual parse",
+            "stage": "initial_markers"
+          },
+          {
+            "driver_framebuffer_binding": 2,
+            "expected_gloo_framebuffer": 13,
+            "parser_framebuffer_handle": 2,
+            "scope": "OpenGL driver GL_FRAMEBUFFER_BINDING after actual parse",
+            "stage": "before_final_read"
+          }
+        ]
+      },
+      "parameters": {
+        "antialias": 0.0,
+        "api_scope": "public scene Markers / MarkersVisual.set_data, camera.rect, SceneCanvas.push_fbo and Visual.draw",
+        "authoring_variant": "separate API-correct attempt2; original failed capture remains immutable",
+        "camera_depth_value": 100.0,
+        "camera_flip": [
+          false,
+          true,
+          false
+        ],
+        "camera_rect": [
+          0,
+          0,
+          128,
+          96
+        ],
+        "case": "points_camera_fixed",
+        "clear_depth": 1.0,
+        "comparison": {
+          "candidate_alignment_or_color_fit": false,
+          "full_frame_exact": true,
+          "landmarks": "fixed analytic RGBA values or fixed channel bounds; no edge exclusions"
+        },
+        "dependent_intermediate_present_or_finish": false,
+        "depth_func": "less",
+        "dpi": 96,
+        "final_camera_rect": [
+          16,
+          12,
+          64,
+          48
+        ],
+        "input": {
+          "edge_color": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "edge_width": 0.0,
+          "face_color": {
+            "bytes": 32,
+            "dtype": "<f4",
+            "dtype_descr": [
+              [
+                "",
+                "<f4"
+              ]
+            ],
+            "sha256": "f4eacc0d8a8a9596fbb86861f03830a57c2914484ab46a0459387736ff719de7",
+            "shape": [
+              2,
+              4
+            ]
+          },
+          "pos": {
+            "bytes": 24,
+            "dtype": "<f4",
+            "dtype_descr": [
+              [
+                "",
+                "<f4"
+              ]
+            ],
+            "sha256": "a4d1284a750940eb060ddf8f062ecc2a007f6df2d1be3d0464e35bebb4c7b22a",
+            "shape": [
+              2,
+              3
+            ]
+          },
+          "size": 10.0,
+          "symbol": "disc"
+        },
+        "landmarks": [
+          {
+            "column": 2,
+            "rgba": [
+              0,
+              0,
+              0,
+              255
+            ],
+            "row": 2
+          },
+          {
+            "column": 32,
+            "rgba": [
+              255,
+              0,
+              0,
+              255
+            ],
+            "row": 48
+          },
+          {
+            "column": 80,
+            "rgba": [
+              0,
+              255,
+              0,
+              255
+            ],
+            "row": 24
+          },
+          {
+            "column": 39,
+            "rgba": [
+              0,
+              0,
+              0,
+              255
+            ],
+            "row": 48
+          },
+          {
+            "column": 46,
+            "rgba": [
+              0,
+              0,
+              0,
+              255
+            ],
+            "row": 48
+          },
+          {
+            "column": 54,
+            "rgba": [
+              0,
+              0,
+              0,
+              255
+            ],
+            "row": 48
+          }
+        ],
+        "method": "points",
+        "prewarm_submission_without_read": true,
+        "published_diameter_pixels": 10.0,
+        "readbacks": 1,
+        "samples": 1,
+        "scaling": "fixed",
+        "size": [
+          128,
+          96
+        ],
+        "spherical": false,
+        "visual_scale": [
+          2,
+          2,
+          1
+        ],
+        "visual_scaling_contract": "own Visual scale2 times size10; camera zoom excluded",
+        "workflow": "camera_fixed"
+      }
+    },
+    "points_camera_scene": {
+      "actual_renderer_provenance": {
+        "capture_source_sha256": "66ae25247831c184f38f2c7a2ff151b940013087104907523b11e1ed2b9b151a",
+        "cmake": null,
+        "distribution_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-napari\\Lib\\site-packages",
+        "distribution_record_sha256": "455e084c0cb78e19e41c79d08a57d533b07d52b3248c2ebd4b73e80584b067cc",
+        "environment": {
+          "PYTHONPATH": null,
+          "QT_API": "pyqt6",
+          "QT_QPA_PLATFORM": null,
+          "QT_SCALE_FACTOR": "1",
+          "VISPY_PYQT5_SHARE_CONTEXT": null
+        },
+        "fixture_source_sha256": "37797259727afd9c6b15c7074319b935dcddb330deb2b6c99a03c8df6f36fddb",
+        "kind": "upstream",
+        "machine": "AMD64",
+        "numpy_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-napari\\Lib\\site-packages\\numpy\\__init__.py",
+        "platform": "Windows-11-10.0.26200-SP0",
+        "python": "3.12.8",
+        "python_executable": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-napari\\Scripts\\python.exe",
+        "qt_runtime": "6.11.2",
+        "regenerate": "uv venv build/oracle-opengl --python 3.12; uv pip install --python build/oracle-opengl/Scripts/python.exe -r tools/oracle_requirements.txt; build/oracle-opengl/Scripts/python.exe tools/oracle_capture.py --kind upstream --output tests/reference/opengl",
+        "renderer": {
+          "renderer": "NVIDIA GeForce RTX 4090/PCIe/SSE2",
+          "vendor": "NVIDIA Corporation",
+          "version": "4.6.0 NVIDIA 595.79"
+        },
+        "requirements_sha256": "a784b5a5e2b4ea201578acddc41e28e0997275ea2542642148322153cd240ffd",
+        "source_sha256": {
+          "gloo/buffer.py": "68e37b184b74814e0ae7a6f4f754c9f0c0af5b4e6369a60a8357c70da974e138",
+          "gloo/context.py": "6afc97492f65a5e865723535206fb769a1c4b55694d69786123fdee78bef992a",
+          "gloo/glir.py": "a3bb8a75b33f47420e9c100b8a6d81037a2f03c905e6c9f7d8399f4fb2eb8f7c",
+          "gloo/program.py": "4d3ab8e36260f9b5dc50f6aec075b12d642535f3cb8f49bfd4a27056301d5492",
+          "gloo/texture.py": "9f6d5f2e448e02c0ca4d66c65d17ddcdb6c0182bb8f15f1292a427f5a9faf6bc",
+          "gloo/wrappers.py": "73dbb5eb8ca78b2822266d272ffb14db9fcadd7a56512843209187714c9e8dcc"
+        },
+        "upstream_commit": "117b054598f4758b598f4b8f48feea48c11fe7b0",
+        "versions": {
+          "PyOpenGL": "3.1.10",
+          "PyQt6": "6.11.0",
+          "PyQt6-Qt6": "6.11.2",
+          "PyQt6-sip": "13.13.0",
+          "freetype-py": "2.5.1",
+          "hsluv": "5.0.4",
+          "kiwisolver": "1.5.1",
+          "numpy": "2.5.3",
+          "packaging": "26.3",
+          "vispy": "0.17.0"
+        },
+        "vispy_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-napari\\Lib\\site-packages\\vispy",
+        "vispy_version": "0.17.0"
+      },
+      "artifacts": {
+        "expanded_shaders": {
+          "file": "points_camera_scene.shaders.json",
+          "sha256": "d9005db078812504b5b1e9c6014bd5560e0ca2e9021b69c61b33847e61ac1103"
+        },
+        "filtered_glir": {
+          "file": "points_camera_scene.glir.json",
+          "sha256": "63bfeb48a803d985a2e8bd97a4bbecc40a27a70740b06cba1f50a666fc4a07de"
+        },
+        "observations": {
+          "file": "points_camera_scene.observations.json",
+          "sha256": "9920682d727a3ec4afeca21da44e346ad043dff466bdbabe01c341fa9da2e576"
+        },
+        "parameters": {
+          "file": "points_camera_scene.parameters.json",
+          "sha256": "a2ce41da68f9b0c8fdf5ef4e145dc3e862a3b14fe79cfe4fe62ac93c75bdb4f4"
+        },
+        "rgba": {
+          "file": "points_camera_scene.npy",
+          "sha256": "1bf694c9b0b2ef07da9525deff4545eb6c74506c177e461076e26840a8eb7e05"
+        }
+      },
+      "capture": {
+        "file": "points_camera_scene.capture.json",
+        "sha256": "98581bc822f924b6d3145d06c5d0e37e46bcd1073d23980500b6861e64128d56"
+      },
+      "observations": {
+        "actual_marker_uploads": [
+          {
+            "bytes": 112,
+            "dtype": "|V56",
+            "dtype_descr": [
+              [
+                "a_position",
+                "<f4",
+                [
+                  3
+                ]
+              ],
+              [
+                "a_fg_color",
+                "<f4",
+                [
+                  4
+                ]
+              ],
+              [
+                "a_bg_color",
+                "<f4",
+                [
+                  4
+                ]
+              ],
+              [
+                "a_size",
+                "<f4"
+              ],
+              [
+                "a_edgewidth",
+                "<f4"
+              ],
+              [
+                "a_symbol",
+                "<f4"
+              ]
+            ],
+            "sha256": "21f464b6d39c76a54488d972cb17046481b3ce2778ab87924216bcb0bbc6d36c",
+            "shape": [
+              2
+            ]
+          }
+        ],
+        "dependent_trace_start": 72,
+        "gl_samples": 0,
+        "gloo_framebuffer_id": 13,
+        "marker_vbo_id": 9,
+        "physical_samples": 1,
+        "point_size_range": [
+          1.0,
+          2047.0
+        ],
+        "readbacks": 1,
+        "sample_source": "OpenGL driver GL_SAMPLES",
+        "structured_revisions": [
+          {
+            "bytes": 112,
+            "dtype": "|V56",
+            "dtype_descr": [
+              [
+                "a_position",
+                "<f4",
+                [
+                  3
+                ]
+              ],
+              [
+                "a_fg_color",
+                "<f4",
+                [
+                  4
+                ]
+              ],
+              [
+                "a_bg_color",
+                "<f4",
+                [
+                  4
+                ]
+              ],
+              [
+                "a_size",
+                "<f4"
+              ],
+              [
+                "a_edgewidth",
+                "<f4"
+              ],
+              [
+                "a_symbol",
+                "<f4"
+              ]
+            ],
+            "sha256": "21f464b6d39c76a54488d972cb17046481b3ce2778ab87924216bcb0bbc6d36c",
+            "shape": [
+              2
+            ]
+          }
+        ],
+        "target_observations": [
+          {
+            "driver_framebuffer_binding": 2,
+            "expected_gloo_framebuffer": 13,
+            "parser_framebuffer_handle": 2,
+            "scope": "OpenGL driver GL_FRAMEBUFFER_BINDING after actual parse",
+            "stage": "prewarm_markers"
+          },
+          {
+            "driver_framebuffer_binding": 2,
+            "expected_gloo_framebuffer": 13,
+            "parser_framebuffer_handle": 2,
+            "scope": "OpenGL driver GL_FRAMEBUFFER_BINDING after actual parse",
+            "stage": "initial_markers"
+          },
+          {
+            "driver_framebuffer_binding": 2,
+            "expected_gloo_framebuffer": 13,
+            "parser_framebuffer_handle": 2,
+            "scope": "OpenGL driver GL_FRAMEBUFFER_BINDING after actual parse",
+            "stage": "before_final_read"
+          }
+        ]
+      },
+      "parameters": {
+        "antialias": 0.0,
+        "api_scope": "public scene Markers / MarkersVisual.set_data, camera.rect, SceneCanvas.push_fbo and Visual.draw",
+        "authoring_variant": "separate API-correct attempt2; original failed capture remains immutable",
+        "camera_depth_value": 100.0,
+        "camera_flip": [
+          false,
+          true,
+          false
+        ],
+        "camera_rect": [
+          0,
+          0,
+          128,
+          96
+        ],
+        "case": "points_camera_scene",
+        "clear_depth": 1.0,
+        "comparison": {
+          "candidate_alignment_or_color_fit": false,
+          "full_frame_exact": true,
+          "landmarks": "fixed analytic RGBA values or fixed channel bounds; no edge exclusions"
+        },
+        "dependent_intermediate_present_or_finish": false,
+        "depth_func": "less",
+        "dpi": 96,
+        "final_camera_rect": [
+          16,
+          12,
+          64,
+          48
+        ],
+        "input": {
+          "edge_color": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "edge_width": 0.0,
+          "face_color": {
+            "bytes": 32,
+            "dtype": "<f4",
+            "dtype_descr": [
+              [
+                "",
+                "<f4"
+              ]
+            ],
+            "sha256": "f4eacc0d8a8a9596fbb86861f03830a57c2914484ab46a0459387736ff719de7",
+            "shape": [
+              2,
+              4
+            ]
+          },
+          "pos": {
+            "bytes": 24,
+            "dtype": "<f4",
+            "dtype_descr": [
+              [
+                "",
+                "<f4"
+              ]
+            ],
+            "sha256": "a4d1284a750940eb060ddf8f062ecc2a007f6df2d1be3d0464e35bebb4c7b22a",
+            "shape": [
+              2,
+              3
+            ]
+          },
+          "size": 10.0,
+          "symbol": "disc"
+        },
+        "landmarks": [
+          {
+            "column": 2,
+            "rgba": [
+              0,
+              0,
+              0,
+              255
+            ],
+            "row": 2
+          },
+          {
+            "column": 32,
+            "rgba": [
+              255,
+              0,
+              0,
+              255
+            ],
+            "row": 48
+          },
+          {
+            "column": 80,
+            "rgba": [
+              0,
+              255,
+              0,
+              255
+            ],
+            "row": 24
+          },
+          {
+            "column": 39,
+            "rgba": [
+              255,
+              0,
+              0,
+              255
+            ],
+            "row": 48
+          },
+          {
+            "column": 46,
+            "rgba": [
+              0,
+              0,
+              0,
+              255
+            ],
+            "row": 48
+          },
+          {
+            "column": 54,
+            "rgba": [
+              0,
+              0,
+              0,
+              255
+            ],
+            "row": 48
+          }
+        ],
+        "method": "points",
+        "prewarm_submission_without_read": true,
+        "published_diameter_pixels": 20.0,
+        "readbacks": 1,
+        "samples": 1,
+        "scaling": "scene",
+        "size": [
+          128,
+          96
+        ],
+        "spherical": false,
+        "visual_scale": [
+          2,
+          2,
+          1
+        ],
+        "visual_scaling_contract": "own Visual scale2 times size10; camera zoom excluded",
+        "workflow": "camera_scene"
+      }
+    },
+    "points_camera_visual": {
+      "actual_renderer_provenance": {
+        "capture_source_sha256": "66ae25247831c184f38f2c7a2ff151b940013087104907523b11e1ed2b9b151a",
+        "cmake": null,
+        "distribution_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-napari\\Lib\\site-packages",
+        "distribution_record_sha256": "455e084c0cb78e19e41c79d08a57d533b07d52b3248c2ebd4b73e80584b067cc",
+        "environment": {
+          "PYTHONPATH": null,
+          "QT_API": "pyqt6",
+          "QT_QPA_PLATFORM": null,
+          "QT_SCALE_FACTOR": "1",
+          "VISPY_PYQT5_SHARE_CONTEXT": null
+        },
+        "fixture_source_sha256": "37797259727afd9c6b15c7074319b935dcddb330deb2b6c99a03c8df6f36fddb",
+        "kind": "upstream",
+        "machine": "AMD64",
+        "numpy_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-napari\\Lib\\site-packages\\numpy\\__init__.py",
+        "platform": "Windows-11-10.0.26200-SP0",
+        "python": "3.12.8",
+        "python_executable": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-napari\\Scripts\\python.exe",
+        "qt_runtime": "6.11.2",
+        "regenerate": "uv venv build/oracle-opengl --python 3.12; uv pip install --python build/oracle-opengl/Scripts/python.exe -r tools/oracle_requirements.txt; build/oracle-opengl/Scripts/python.exe tools/oracle_capture.py --kind upstream --output tests/reference/opengl",
+        "renderer": {
+          "renderer": "NVIDIA GeForce RTX 4090/PCIe/SSE2",
+          "vendor": "NVIDIA Corporation",
+          "version": "4.6.0 NVIDIA 595.79"
+        },
+        "requirements_sha256": "a784b5a5e2b4ea201578acddc41e28e0997275ea2542642148322153cd240ffd",
+        "source_sha256": {
+          "gloo/buffer.py": "68e37b184b74814e0ae7a6f4f754c9f0c0af5b4e6369a60a8357c70da974e138",
+          "gloo/context.py": "6afc97492f65a5e865723535206fb769a1c4b55694d69786123fdee78bef992a",
+          "gloo/glir.py": "a3bb8a75b33f47420e9c100b8a6d81037a2f03c905e6c9f7d8399f4fb2eb8f7c",
+          "gloo/program.py": "4d3ab8e36260f9b5dc50f6aec075b12d642535f3cb8f49bfd4a27056301d5492",
+          "gloo/texture.py": "9f6d5f2e448e02c0ca4d66c65d17ddcdb6c0182bb8f15f1292a427f5a9faf6bc",
+          "gloo/wrappers.py": "73dbb5eb8ca78b2822266d272ffb14db9fcadd7a56512843209187714c9e8dcc"
+        },
+        "upstream_commit": "117b054598f4758b598f4b8f48feea48c11fe7b0",
+        "versions": {
+          "PyOpenGL": "3.1.10",
+          "PyQt6": "6.11.0",
+          "PyQt6-Qt6": "6.11.2",
+          "PyQt6-sip": "13.13.0",
+          "freetype-py": "2.5.1",
+          "hsluv": "5.0.4",
+          "kiwisolver": "1.5.1",
+          "numpy": "2.5.3",
+          "packaging": "26.3",
+          "vispy": "0.17.0"
+        },
+        "vispy_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-napari\\Lib\\site-packages\\vispy",
+        "vispy_version": "0.17.0"
+      },
+      "artifacts": {
+        "expanded_shaders": {
+          "file": "points_camera_visual.shaders.json",
+          "sha256": "d9005db078812504b5b1e9c6014bd5560e0ca2e9021b69c61b33847e61ac1103"
+        },
+        "filtered_glir": {
+          "file": "points_camera_visual.glir.json",
+          "sha256": "63bfeb48a803d985a2e8bd97a4bbecc40a27a70740b06cba1f50a666fc4a07de"
+        },
+        "observations": {
+          "file": "points_camera_visual.observations.json",
+          "sha256": "9920682d727a3ec4afeca21da44e346ad043dff466bdbabe01c341fa9da2e576"
+        },
+        "parameters": {
+          "file": "points_camera_visual.parameters.json",
+          "sha256": "348ebcd8488cb534df5cf8ac8e8a91c2156a0b82641df5eb9336e1f157fd00cf"
+        },
+        "rgba": {
+          "file": "points_camera_visual.npy",
+          "sha256": "1bf694c9b0b2ef07da9525deff4545eb6c74506c177e461076e26840a8eb7e05"
+        }
+      },
+      "capture": {
+        "file": "points_camera_visual.capture.json",
+        "sha256": "329969bd86c7d072d583ff7f3672890a230be6f1f8e816661f72985023930fbb"
+      },
+      "observations": {
+        "actual_marker_uploads": [
+          {
+            "bytes": 112,
+            "dtype": "|V56",
+            "dtype_descr": [
+              [
+                "a_position",
+                "<f4",
+                [
+                  3
+                ]
+              ],
+              [
+                "a_fg_color",
+                "<f4",
+                [
+                  4
+                ]
+              ],
+              [
+                "a_bg_color",
+                "<f4",
+                [
+                  4
+                ]
+              ],
+              [
+                "a_size",
+                "<f4"
+              ],
+              [
+                "a_edgewidth",
+                "<f4"
+              ],
+              [
+                "a_symbol",
+                "<f4"
+              ]
+            ],
+            "sha256": "21f464b6d39c76a54488d972cb17046481b3ce2778ab87924216bcb0bbc6d36c",
+            "shape": [
+              2
+            ]
+          }
+        ],
+        "dependent_trace_start": 72,
+        "gl_samples": 0,
+        "gloo_framebuffer_id": 13,
+        "marker_vbo_id": 9,
+        "physical_samples": 1,
+        "point_size_range": [
+          1.0,
+          2047.0
+        ],
+        "readbacks": 1,
+        "sample_source": "OpenGL driver GL_SAMPLES",
+        "structured_revisions": [
+          {
+            "bytes": 112,
+            "dtype": "|V56",
+            "dtype_descr": [
+              [
+                "a_position",
+                "<f4",
+                [
+                  3
+                ]
+              ],
+              [
+                "a_fg_color",
+                "<f4",
+                [
+                  4
+                ]
+              ],
+              [
+                "a_bg_color",
+                "<f4",
+                [
+                  4
+                ]
+              ],
+              [
+                "a_size",
+                "<f4"
+              ],
+              [
+                "a_edgewidth",
+                "<f4"
+              ],
+              [
+                "a_symbol",
+                "<f4"
+              ]
+            ],
+            "sha256": "21f464b6d39c76a54488d972cb17046481b3ce2778ab87924216bcb0bbc6d36c",
+            "shape": [
+              2
+            ]
+          }
+        ],
+        "target_observations": [
+          {
+            "driver_framebuffer_binding": 2,
+            "expected_gloo_framebuffer": 13,
+            "parser_framebuffer_handle": 2,
+            "scope": "OpenGL driver GL_FRAMEBUFFER_BINDING after actual parse",
+            "stage": "prewarm_markers"
+          },
+          {
+            "driver_framebuffer_binding": 2,
+            "expected_gloo_framebuffer": 13,
+            "parser_framebuffer_handle": 2,
+            "scope": "OpenGL driver GL_FRAMEBUFFER_BINDING after actual parse",
+            "stage": "initial_markers"
+          },
+          {
+            "driver_framebuffer_binding": 2,
+            "expected_gloo_framebuffer": 13,
+            "parser_framebuffer_handle": 2,
+            "scope": "OpenGL driver GL_FRAMEBUFFER_BINDING after actual parse",
+            "stage": "before_final_read"
+          }
+        ]
+      },
+      "parameters": {
+        "antialias": 0.0,
+        "api_scope": "public scene Markers / MarkersVisual.set_data, camera.rect, SceneCanvas.push_fbo and Visual.draw",
+        "authoring_variant": "separate API-correct attempt2; original failed capture remains immutable",
+        "camera_depth_value": 100.0,
+        "camera_flip": [
+          false,
+          true,
+          false
+        ],
+        "camera_rect": [
+          0,
+          0,
+          128,
+          96
+        ],
+        "case": "points_camera_visual",
+        "clear_depth": 1.0,
+        "comparison": {
+          "candidate_alignment_or_color_fit": false,
+          "full_frame_exact": true,
+          "landmarks": "fixed analytic RGBA values or fixed channel bounds; no edge exclusions"
+        },
+        "dependent_intermediate_present_or_finish": false,
+        "depth_func": "less",
+        "dpi": 96,
+        "final_camera_rect": [
+          16,
+          12,
+          64,
+          48
+        ],
+        "input": {
+          "edge_color": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "edge_width": 0.0,
+          "face_color": {
+            "bytes": 32,
+            "dtype": "<f4",
+            "dtype_descr": [
+              [
+                "",
+                "<f4"
+              ]
+            ],
+            "sha256": "f4eacc0d8a8a9596fbb86861f03830a57c2914484ab46a0459387736ff719de7",
+            "shape": [
+              2,
+              4
+            ]
+          },
+          "pos": {
+            "bytes": 24,
+            "dtype": "<f4",
+            "dtype_descr": [
+              [
+                "",
+                "<f4"
+              ]
+            ],
+            "sha256": "a4d1284a750940eb060ddf8f062ecc2a007f6df2d1be3d0464e35bebb4c7b22a",
+            "shape": [
+              2,
+              3
+            ]
+          },
+          "size": 10.0,
+          "symbol": "disc"
+        },
+        "landmarks": [
+          {
+            "column": 2,
+            "rgba": [
+              0,
+              0,
+              0,
+              255
+            ],
+            "row": 2
+          },
+          {
+            "column": 32,
+            "rgba": [
+              255,
+              0,
+              0,
+              255
+            ],
+            "row": 48
+          },
+          {
+            "column": 80,
+            "rgba": [
+              0,
+              255,
+              0,
+              255
+            ],
+            "row": 24
+          },
+          {
+            "column": 39,
+            "rgba": [
+              255,
+              0,
+              0,
+              255
+            ],
+            "row": 48
+          },
+          {
+            "column": 46,
+            "rgba": [
+              0,
+              0,
+              0,
+              255
+            ],
+            "row": 48
+          },
+          {
+            "column": 54,
+            "rgba": [
+              0,
+              0,
+              0,
+              255
+            ],
+            "row": 48
+          }
+        ],
+        "method": "points",
+        "prewarm_submission_without_read": true,
+        "published_diameter_pixels": 20.0,
+        "readbacks": 1,
+        "samples": 1,
+        "scaling": "visual",
+        "size": [
+          128,
+          96
+        ],
+        "spherical": false,
+        "visual_scale": [
+          2,
+          2,
+          1
+        ],
+        "visual_scaling_contract": "own Visual scale2 times size10; camera zoom excluded",
+        "workflow": "camera_visual"
+      }
+    },
+    "points_color_revision": {
+      "actual_renderer_provenance": {
+        "capture_source_sha256": "66ae25247831c184f38f2c7a2ff151b940013087104907523b11e1ed2b9b151a",
+        "cmake": null,
+        "distribution_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-napari\\Lib\\site-packages",
+        "distribution_record_sha256": "455e084c0cb78e19e41c79d08a57d533b07d52b3248c2ebd4b73e80584b067cc",
+        "environment": {
+          "PYTHONPATH": null,
+          "QT_API": "pyqt6",
+          "QT_QPA_PLATFORM": null,
+          "QT_SCALE_FACTOR": "1",
+          "VISPY_PYQT5_SHARE_CONTEXT": null
+        },
+        "fixture_source_sha256": "37797259727afd9c6b15c7074319b935dcddb330deb2b6c99a03c8df6f36fddb",
+        "kind": "upstream",
+        "machine": "AMD64",
+        "numpy_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-napari\\Lib\\site-packages\\numpy\\__init__.py",
+        "platform": "Windows-11-10.0.26200-SP0",
+        "python": "3.12.8",
+        "python_executable": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-napari\\Scripts\\python.exe",
+        "qt_runtime": "6.11.2",
+        "regenerate": "uv venv build/oracle-opengl --python 3.12; uv pip install --python build/oracle-opengl/Scripts/python.exe -r tools/oracle_requirements.txt; build/oracle-opengl/Scripts/python.exe tools/oracle_capture.py --kind upstream --output tests/reference/opengl",
+        "renderer": {
+          "renderer": "NVIDIA GeForce RTX 4090/PCIe/SSE2",
+          "vendor": "NVIDIA Corporation",
+          "version": "4.6.0 NVIDIA 595.79"
+        },
+        "requirements_sha256": "a784b5a5e2b4ea201578acddc41e28e0997275ea2542642148322153cd240ffd",
+        "source_sha256": {
+          "gloo/buffer.py": "68e37b184b74814e0ae7a6f4f754c9f0c0af5b4e6369a60a8357c70da974e138",
+          "gloo/context.py": "6afc97492f65a5e865723535206fb769a1c4b55694d69786123fdee78bef992a",
+          "gloo/glir.py": "a3bb8a75b33f47420e9c100b8a6d81037a2f03c905e6c9f7d8399f4fb2eb8f7c",
+          "gloo/program.py": "4d3ab8e36260f9b5dc50f6aec075b12d642535f3cb8f49bfd4a27056301d5492",
+          "gloo/texture.py": "9f6d5f2e448e02c0ca4d66c65d17ddcdb6c0182bb8f15f1292a427f5a9faf6bc",
+          "gloo/wrappers.py": "73dbb5eb8ca78b2822266d272ffb14db9fcadd7a56512843209187714c9e8dcc"
+        },
+        "upstream_commit": "117b054598f4758b598f4b8f48feea48c11fe7b0",
+        "versions": {
+          "PyOpenGL": "3.1.10",
+          "PyQt6": "6.11.0",
+          "PyQt6-Qt6": "6.11.2",
+          "PyQt6-sip": "13.13.0",
+          "freetype-py": "2.5.1",
+          "hsluv": "5.0.4",
+          "kiwisolver": "1.5.1",
+          "numpy": "2.5.3",
+          "packaging": "26.3",
+          "vispy": "0.17.0"
+        },
+        "vispy_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-napari\\Lib\\site-packages\\vispy",
+        "vispy_version": "0.17.0"
+      },
+      "artifacts": {
+        "expanded_shaders": {
+          "file": "points_color_revision.shaders.json",
+          "sha256": "b26da2710fc46e5f5795917536fe1f9e73f60efe63bd1c9d174ecc56b2b16e94"
+        },
+        "filtered_glir": {
+          "file": "points_color_revision.glir.json",
+          "sha256": "cab2e46ce636cb5f9a352b26731d90eecda1182eb8cc72c40bfe68ad9869160d"
+        },
+        "observations": {
+          "file": "points_color_revision.observations.json",
+          "sha256": "de6514030a8822b983b4e0c7347c0f5b02b5e7d3b48ea1444bbef79f3bb31313"
+        },
+        "parameters": {
+          "file": "points_color_revision.parameters.json",
+          "sha256": "b83ae8b4b8081e578e1185f3a8804d3b4458c01d6ea15db955fa72c63acc776e"
+        },
+        "rgba": {
+          "file": "points_color_revision.npy",
+          "sha256": "8c6b382e468d153dd19984ef5b10ca2a921a3e02e903df97d33d5fcf49a93cc5"
+        }
+      },
+      "capture": {
+        "file": "points_color_revision.capture.json",
+        "sha256": "8619cffbdfc9386d6af9decb3a50036bc629dfe35c3d2ea462033ba8f6d12301"
+      },
+      "observations": {
+        "actual_marker_uploads": [
+          {
+            "bytes": 168,
+            "dtype": "|V56",
+            "dtype_descr": [
+              [
+                "a_position",
+                "<f4",
+                [
+                  3
+                ]
+              ],
+              [
+                "a_fg_color",
+                "<f4",
+                [
+                  4
+                ]
+              ],
+              [
+                "a_bg_color",
+                "<f4",
+                [
+                  4
+                ]
+              ],
+              [
+                "a_size",
+                "<f4"
+              ],
+              [
+                "a_edgewidth",
+                "<f4"
+              ],
+              [
+                "a_symbol",
+                "<f4"
+              ]
+            ],
+            "sha256": "63aaedc829d6d4b173fc3e594bb51a2fb79f27593aa04e79789f300f17944c00",
+            "shape": [
+              3
+            ]
+          },
+          {
+            "bytes": 168,
+            "dtype": "|V56",
+            "dtype_descr": [
+              [
+                "a_position",
+                "<f4",
+                [
+                  3
+                ]
+              ],
+              [
+                "a_fg_color",
+                "<f4",
+                [
+                  4
+                ]
+              ],
+              [
+                "a_bg_color",
+                "<f4",
+                [
+                  4
+                ]
+              ],
+              [
+                "a_size",
+                "<f4"
+              ],
+              [
+                "a_edgewidth",
+                "<f4"
+              ],
+              [
+                "a_symbol",
+                "<f4"
+              ]
+            ],
+            "sha256": "06220a65f85bb38726e963b9bd54ce599d9970d46f3a69599a3e7e5d3e7e1330",
+            "shape": [
+              3
+            ]
+          }
+        ],
+        "dependent_trace_start": 10,
+        "gl_samples": 0,
+        "gloo_framebuffer_id": 13,
+        "marker_vbo_id": 9,
+        "physical_samples": 1,
+        "point_size_range": [
+          1.0,
+          2047.0
+        ],
+        "readbacks": 1,
+        "sample_source": "OpenGL driver GL_SAMPLES",
+        "structured_revisions": [
+          {
+            "bytes": 168,
+            "dtype": "|V56",
+            "dtype_descr": [
+              [
+                "a_position",
+                "<f4",
+                [
+                  3
+                ]
+              ],
+              [
+                "a_fg_color",
+                "<f4",
+                [
+                  4
+                ]
+              ],
+              [
+                "a_bg_color",
+                "<f4",
+                [
+                  4
+                ]
+              ],
+              [
+                "a_size",
+                "<f4"
+              ],
+              [
+                "a_edgewidth",
+                "<f4"
+              ],
+              [
+                "a_symbol",
+                "<f4"
+              ]
+            ],
+            "sha256": "63aaedc829d6d4b173fc3e594bb51a2fb79f27593aa04e79789f300f17944c00",
+            "shape": [
+              3
+            ]
+          },
+          {
+            "bytes": 168,
+            "dtype": "|V56",
+            "dtype_descr": [
+              [
+                "a_position",
+                "<f4",
+                [
+                  3
+                ]
+              ],
+              [
+                "a_fg_color",
+                "<f4",
+                [
+                  4
+                ]
+              ],
+              [
+                "a_bg_color",
+                "<f4",
+                [
+                  4
+                ]
+              ],
+              [
+                "a_size",
+                "<f4"
+              ],
+              [
+                "a_edgewidth",
+                "<f4"
+              ],
+              [
+                "a_symbol",
+                "<f4"
+              ]
+            ],
+            "sha256": "06220a65f85bb38726e963b9bd54ce599d9970d46f3a69599a3e7e5d3e7e1330",
+            "shape": [
+              3
+            ]
+          }
+        ],
+        "target_observations": [
+          {
+            "driver_framebuffer_binding": 2,
+            "expected_gloo_framebuffer": 13,
+            "parser_framebuffer_handle": 2,
+            "scope": "OpenGL driver GL_FRAMEBUFFER_BINDING after actual parse",
+            "stage": "initial_markers"
+          },
+          {
+            "driver_framebuffer_binding": 2,
+            "expected_gloo_framebuffer": 13,
+            "parser_framebuffer_handle": 2,
+            "scope": "OpenGL driver GL_FRAMEBUFFER_BINDING after actual parse",
+            "stage": "updated_markers"
+          },
+          {
+            "driver_framebuffer_binding": 2,
+            "expected_gloo_framebuffer": 13,
+            "parser_framebuffer_handle": 2,
+            "scope": "OpenGL driver GL_FRAMEBUFFER_BINDING after actual parse",
+            "stage": "before_final_read"
+          }
+        ]
+      },
+      "parameters": {
+        "antialias": 1.0,
+        "api_scope": "public scene Markers / MarkersVisual.set_data, camera.rect, SceneCanvas.push_fbo and Visual.draw",
+        "authoring_variant": "separate API-correct attempt2; original failed capture remains immutable",
+        "camera_depth_value": 100.0,
+        "camera_flip": [
+          false,
+          true,
+          false
+        ],
+        "camera_rect": [
+          0,
+          0,
+          128,
+          96
+        ],
+        "case": "points_color_revision",
+        "clear_depth": 1.0,
+        "comparison": {
+          "candidate_alignment_or_color_fit": false,
+          "full_frame_exact": true,
+          "landmarks": "fixed analytic RGBA values or fixed channel bounds; no edge exclusions"
+        },
+        "dependent_intermediate_present_or_finish": false,
+        "depth_func": "less",
+        "dpi": 96,
+        "input": {
+          "edge_color": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "edge_width": 0.0,
+          "face_color": {
+            "bytes": 48,
+            "dtype": "<f4",
+            "dtype_descr": [
+              [
+                "",
+                "<f4"
+              ]
+            ],
+            "sha256": "eb8329d357ac90ed79393607ae5cb9b9b5b305c7ce5dd25a9a4fa7b3cef9d934",
+            "shape": [
+              3,
+              4
+            ]
+          },
+          "pos": {
+            "bytes": 36,
+            "dtype": "<f4",
+            "dtype_descr": [
+              [
+                "",
+                "<f4"
+              ]
+            ],
+            "sha256": "134b89fe6bb5bc9faebe3f63cbf5937a636d8135c0d8c6b03d7d9554f5c31fd2",
+            "shape": [
+              3,
+              3
+            ]
+          },
+          "size": 14.0,
+          "symbol": "disc"
+        },
+        "landmarks": [
+          {
+            "column": 2,
+            "rgba": [
+              0,
+              0,
+              0,
+              255
+            ],
+            "row": 2
+          },
+          {
+            "column": 24,
+            "rgba": [
+              255,
+              0,
+              0,
+              255
+            ],
+            "row": 24
+          },
+          {
+            "column": 56,
+            "rgba": [
+              0,
+              255,
+              0,
+              255
+            ],
+            "row": 24
+          },
+          {
+            "column": 88,
+            "rgba": [
+              0,
+              0,
+              255,
+              255
+            ],
+            "row": 24
+          },
+          {
+            "column": 24,
+            "rgba": [
+              0,
+              255,
+              255,
+              255
+            ],
+            "row": 72
+          },
+          {
+            "column": 56,
+            "rgba": [
+              255,
+              0,
+              255,
+              255
+            ],
+            "row": 72
+          },
+          {
+            "column": 88,
+            "rgba": [
+              255,
+              255,
+              0,
+              255
+            ],
+            "row": 72
+          },
+          {
+            "column": 56,
+            "rgba": [
+              0,
+              0,
+              0,
+              255
+            ],
+            "row": 48
+          }
+        ],
+        "method": "points",
+        "prewarm_submission_without_read": false,
+        "readbacks": 1,
+        "samples": 1,
+        "scaling": "fixed",
+        "size": [
+          128,
+          96
+        ],
+        "spherical": false,
+        "updated_input": {
+          "edge_color": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "edge_width": 0.0,
+          "face_color": {
+            "bytes": 48,
+            "dtype": "<f4",
+            "dtype_descr": [
+              [
+                "",
+                "<f4"
+              ]
+            ],
+            "sha256": "ce4f4375f035de86cf242860635847aa5fc475b70b67db1ff69acb13ae789aee",
+            "shape": [
+              3,
+              4
+            ]
+          },
+          "pos": {
+            "bytes": 36,
+            "dtype": "<f4",
+            "dtype_descr": [
+              [
+                "",
+                "<f4"
+              ]
+            ],
+            "sha256": "134b89fe6bb5bc9faebe3f63cbf5937a636d8135c0d8c6b03d7d9554f5c31fd2",
+            "shape": [
+              3,
+              3
+            ]
+          },
+          "size": 14.0,
+          "symbol": "disc"
+        },
+        "updated_visual_translation": [
+          0,
+          48,
+          0
+        ],
+        "workflow": "color_revision"
+      }
+    },
+    "points_position_revision": {
+      "actual_renderer_provenance": {
+        "capture_source_sha256": "66ae25247831c184f38f2c7a2ff151b940013087104907523b11e1ed2b9b151a",
+        "cmake": null,
+        "distribution_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-napari\\Lib\\site-packages",
+        "distribution_record_sha256": "455e084c0cb78e19e41c79d08a57d533b07d52b3248c2ebd4b73e80584b067cc",
+        "environment": {
+          "PYTHONPATH": null,
+          "QT_API": "pyqt6",
+          "QT_QPA_PLATFORM": null,
+          "QT_SCALE_FACTOR": "1",
+          "VISPY_PYQT5_SHARE_CONTEXT": null
+        },
+        "fixture_source_sha256": "37797259727afd9c6b15c7074319b935dcddb330deb2b6c99a03c8df6f36fddb",
+        "kind": "upstream",
+        "machine": "AMD64",
+        "numpy_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-napari\\Lib\\site-packages\\numpy\\__init__.py",
+        "platform": "Windows-11-10.0.26200-SP0",
+        "python": "3.12.8",
+        "python_executable": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-napari\\Scripts\\python.exe",
+        "qt_runtime": "6.11.2",
+        "regenerate": "uv venv build/oracle-opengl --python 3.12; uv pip install --python build/oracle-opengl/Scripts/python.exe -r tools/oracle_requirements.txt; build/oracle-opengl/Scripts/python.exe tools/oracle_capture.py --kind upstream --output tests/reference/opengl",
+        "renderer": {
+          "renderer": "NVIDIA GeForce RTX 4090/PCIe/SSE2",
+          "vendor": "NVIDIA Corporation",
+          "version": "4.6.0 NVIDIA 595.79"
+        },
+        "requirements_sha256": "a784b5a5e2b4ea201578acddc41e28e0997275ea2542642148322153cd240ffd",
+        "source_sha256": {
+          "gloo/buffer.py": "68e37b184b74814e0ae7a6f4f754c9f0c0af5b4e6369a60a8357c70da974e138",
+          "gloo/context.py": "6afc97492f65a5e865723535206fb769a1c4b55694d69786123fdee78bef992a",
+          "gloo/glir.py": "a3bb8a75b33f47420e9c100b8a6d81037a2f03c905e6c9f7d8399f4fb2eb8f7c",
+          "gloo/program.py": "4d3ab8e36260f9b5dc50f6aec075b12d642535f3cb8f49bfd4a27056301d5492",
+          "gloo/texture.py": "9f6d5f2e448e02c0ca4d66c65d17ddcdb6c0182bb8f15f1292a427f5a9faf6bc",
+          "gloo/wrappers.py": "73dbb5eb8ca78b2822266d272ffb14db9fcadd7a56512843209187714c9e8dcc"
+        },
+        "upstream_commit": "117b054598f4758b598f4b8f48feea48c11fe7b0",
+        "versions": {
+          "PyOpenGL": "3.1.10",
+          "PyQt6": "6.11.0",
+          "PyQt6-Qt6": "6.11.2",
+          "PyQt6-sip": "13.13.0",
+          "freetype-py": "2.5.1",
+          "hsluv": "5.0.4",
+          "kiwisolver": "1.5.1",
+          "numpy": "2.5.3",
+          "packaging": "26.3",
+          "vispy": "0.17.0"
+        },
+        "vispy_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-napari\\Lib\\site-packages\\vispy",
+        "vispy_version": "0.17.0"
+      },
+      "artifacts": {
+        "expanded_shaders": {
+          "file": "points_position_revision.shaders.json",
+          "sha256": "89135c43ba37f841538815f8a6773a5651b3ff879d486b0856a2f553785f9e1a"
+        },
+        "filtered_glir": {
+          "file": "points_position_revision.glir.json",
+          "sha256": "253d97c8e0de73c15a44fe44b87573dc5eb4f7625dbb3dc39f55db286bb09224"
+        },
+        "observations": {
+          "file": "points_position_revision.observations.json",
+          "sha256": "8d69bcb66f3334cde5f8eee51082f058e5a473629cc1470f956f8c16e005bf46"
+        },
+        "parameters": {
+          "file": "points_position_revision.parameters.json",
+          "sha256": "1fca79a7afbb83efbe7cdf2acaa50d661fb0753b47697e5545168fb9c1a21aae"
+        },
+        "rgba": {
+          "file": "points_position_revision.npy",
+          "sha256": "f3b9d7a787dcb90b504b0e5530ef4b540097e00c3591dfeea5ec45b3c2a9ad19"
+        }
+      },
+      "capture": {
+        "file": "points_position_revision.capture.json",
+        "sha256": "b32843f4f47505f3da5575329a6eb3f5b8353a12e373a5d79af1e436ec7f53dc"
+      },
+      "observations": {
+        "actual_marker_uploads": [
+          {
+            "bytes": 168,
+            "dtype": "|V56",
+            "dtype_descr": [
+              [
+                "a_position",
+                "<f4",
+                [
+                  3
+                ]
+              ],
+              [
+                "a_fg_color",
+                "<f4",
+                [
+                  4
+                ]
+              ],
+              [
+                "a_bg_color",
+                "<f4",
+                [
+                  4
+                ]
+              ],
+              [
+                "a_size",
+                "<f4"
+              ],
+              [
+                "a_edgewidth",
+                "<f4"
+              ],
+              [
+                "a_symbol",
+                "<f4"
+              ]
+            ],
+            "sha256": "63aaedc829d6d4b173fc3e594bb51a2fb79f27593aa04e79789f300f17944c00",
+            "shape": [
+              3
+            ]
+          },
+          {
+            "bytes": 168,
+            "dtype": "|V56",
+            "dtype_descr": [
+              [
+                "a_position",
+                "<f4",
+                [
+                  3
+                ]
+              ],
+              [
+                "a_fg_color",
+                "<f4",
+                [
+                  4
+                ]
+              ],
+              [
+                "a_bg_color",
+                "<f4",
+                [
+                  4
+                ]
+              ],
+              [
+                "a_size",
+                "<f4"
+              ],
+              [
+                "a_edgewidth",
+                "<f4"
+              ],
+              [
+                "a_symbol",
+                "<f4"
+              ]
+            ],
+            "sha256": "155e19102f7dd31f04c6a01468ed2722c7a880ab36c32d8dda9aeb14881e355e",
+            "shape": [
+              3
+            ]
+          }
+        ],
+        "dependent_trace_start": 10,
+        "gl_samples": 0,
+        "gloo_framebuffer_id": 13,
+        "marker_vbo_id": 9,
+        "physical_samples": 1,
+        "point_size_range": [
+          1.0,
+          2047.0
+        ],
+        "readbacks": 1,
+        "sample_source": "OpenGL driver GL_SAMPLES",
+        "structured_revisions": [
+          {
+            "bytes": 168,
+            "dtype": "|V56",
+            "dtype_descr": [
+              [
+                "a_position",
+                "<f4",
+                [
+                  3
+                ]
+              ],
+              [
+                "a_fg_color",
+                "<f4",
+                [
+                  4
+                ]
+              ],
+              [
+                "a_bg_color",
+                "<f4",
+                [
+                  4
+                ]
+              ],
+              [
+                "a_size",
+                "<f4"
+              ],
+              [
+                "a_edgewidth",
+                "<f4"
+              ],
+              [
+                "a_symbol",
+                "<f4"
+              ]
+            ],
+            "sha256": "63aaedc829d6d4b173fc3e594bb51a2fb79f27593aa04e79789f300f17944c00",
+            "shape": [
+              3
+            ]
+          },
+          {
+            "bytes": 168,
+            "dtype": "|V56",
+            "dtype_descr": [
+              [
+                "a_position",
+                "<f4",
+                [
+                  3
+                ]
+              ],
+              [
+                "a_fg_color",
+                "<f4",
+                [
+                  4
+                ]
+              ],
+              [
+                "a_bg_color",
+                "<f4",
+                [
+                  4
+                ]
+              ],
+              [
+                "a_size",
+                "<f4"
+              ],
+              [
+                "a_edgewidth",
+                "<f4"
+              ],
+              [
+                "a_symbol",
+                "<f4"
+              ]
+            ],
+            "sha256": "155e19102f7dd31f04c6a01468ed2722c7a880ab36c32d8dda9aeb14881e355e",
+            "shape": [
+              3
+            ]
+          }
+        ],
+        "target_observations": [
+          {
+            "driver_framebuffer_binding": 2,
+            "expected_gloo_framebuffer": 13,
+            "parser_framebuffer_handle": 2,
+            "scope": "OpenGL driver GL_FRAMEBUFFER_BINDING after actual parse",
+            "stage": "initial_markers"
+          },
+          {
+            "driver_framebuffer_binding": 2,
+            "expected_gloo_framebuffer": 13,
+            "parser_framebuffer_handle": 2,
+            "scope": "OpenGL driver GL_FRAMEBUFFER_BINDING after actual parse",
+            "stage": "updated_markers"
+          },
+          {
+            "driver_framebuffer_binding": 2,
+            "expected_gloo_framebuffer": 13,
+            "parser_framebuffer_handle": 2,
+            "scope": "OpenGL driver GL_FRAMEBUFFER_BINDING after actual parse",
+            "stage": "before_final_read"
+          }
+        ]
+      },
+      "parameters": {
+        "antialias": 1.0,
+        "api_scope": "public scene Markers / MarkersVisual.set_data, camera.rect, SceneCanvas.push_fbo and Visual.draw",
+        "authoring_variant": "separate API-correct attempt2; original failed capture remains immutable",
+        "camera_depth_value": 100.0,
+        "camera_flip": [
+          false,
+          true,
+          false
+        ],
+        "camera_rect": [
+          0,
+          0,
+          128,
+          96
+        ],
+        "case": "points_position_revision",
+        "clear_depth": 1.0,
+        "comparison": {
+          "candidate_alignment_or_color_fit": false,
+          "full_frame_exact": true,
+          "landmarks": "fixed analytic RGBA values or fixed channel bounds; no edge exclusions"
+        },
+        "dependent_intermediate_present_or_finish": false,
+        "depth_func": "less",
+        "dpi": 96,
+        "input": {
+          "edge_color": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "edge_width": 0.0,
+          "face_color": {
+            "bytes": 48,
+            "dtype": "<f4",
+            "dtype_descr": [
+              [
+                "",
+                "<f4"
+              ]
+            ],
+            "sha256": "eb8329d357ac90ed79393607ae5cb9b9b5b305c7ce5dd25a9a4fa7b3cef9d934",
+            "shape": [
+              3,
+              4
+            ]
+          },
+          "pos": {
+            "bytes": 36,
+            "dtype": "<f4",
+            "dtype_descr": [
+              [
+                "",
+                "<f4"
+              ]
+            ],
+            "sha256": "134b89fe6bb5bc9faebe3f63cbf5937a636d8135c0d8c6b03d7d9554f5c31fd2",
+            "shape": [
+              3,
+              3
+            ]
+          },
+          "size": 14.0,
+          "symbol": "disc"
+        },
+        "landmarks": [
+          {
+            "column": 2,
+            "rgba": [
+              0,
+              0,
+              0,
+              255
+            ],
+            "row": 2
+          },
+          {
+            "column": 24,
+            "rgba": [
+              255,
+              0,
+              0,
+              255
+            ],
+            "row": 24
+          },
+          {
+            "column": 56,
+            "rgba": [
+              0,
+              255,
+              0,
+              255
+            ],
+            "row": 24
+          },
+          {
+            "column": 88,
+            "rgba": [
+              0,
+              0,
+              255,
+              255
+            ],
+            "row": 24
+          },
+          {
+            "column": 40,
+            "rgba": [
+              255,
+              0,
+              0,
+              255
+            ],
+            "row": 72
+          },
+          {
+            "column": 72,
+            "rgba": [
+              0,
+              255,
+              0,
+              255
+            ],
+            "row": 72
+          },
+          {
+            "column": 104,
+            "rgba": [
+              0,
+              0,
+              255,
+              255
+            ],
+            "row": 72
+          },
+          {
+            "column": 56,
+            "rgba": [
+              0,
+              0,
+              0,
+              255
+            ],
+            "row": 48
+          }
+        ],
+        "method": "points",
+        "prewarm_submission_without_read": false,
+        "readbacks": 1,
+        "samples": 1,
+        "scaling": "fixed",
+        "size": [
+          128,
+          96
+        ],
+        "spherical": false,
+        "updated_input": {
+          "edge_color": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "edge_width": 0.0,
+          "face_color": {
+            "bytes": 48,
+            "dtype": "<f4",
+            "dtype_descr": [
+              [
+                "",
+                "<f4"
+              ]
+            ],
+            "sha256": "eb8329d357ac90ed79393607ae5cb9b9b5b305c7ce5dd25a9a4fa7b3cef9d934",
+            "shape": [
+              3,
+              4
+            ]
+          },
+          "pos": {
+            "bytes": 36,
+            "dtype": "<f4",
+            "dtype_descr": [
+              [
+                "",
+                "<f4"
+              ]
+            ],
+            "sha256": "97b8766291e0bdabad392facd7645f55dfe79dee33ad9e21d0a6ad727f9f8061",
+            "shape": [
+              3,
+              3
+            ]
+          },
+          "size": 14.0,
+          "symbol": "disc"
+        },
+        "workflow": "position_revision"
+      }
+    },
+    "points_spherical_depth": {
+      "actual_renderer_provenance": {
+        "capture_source_sha256": "66ae25247831c184f38f2c7a2ff151b940013087104907523b11e1ed2b9b151a",
+        "cmake": null,
+        "distribution_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-napari\\Lib\\site-packages",
+        "distribution_record_sha256": "455e084c0cb78e19e41c79d08a57d533b07d52b3248c2ebd4b73e80584b067cc",
+        "environment": {
+          "PYTHONPATH": null,
+          "QT_API": "pyqt6",
+          "QT_QPA_PLATFORM": null,
+          "QT_SCALE_FACTOR": "1",
+          "VISPY_PYQT5_SHARE_CONTEXT": null
+        },
+        "fixture_source_sha256": "37797259727afd9c6b15c7074319b935dcddb330deb2b6c99a03c8df6f36fddb",
+        "kind": "upstream",
+        "machine": "AMD64",
+        "numpy_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-napari\\Lib\\site-packages\\numpy\\__init__.py",
+        "platform": "Windows-11-10.0.26200-SP0",
+        "python": "3.12.8",
+        "python_executable": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-napari\\Scripts\\python.exe",
+        "qt_runtime": "6.11.2",
+        "regenerate": "uv venv build/oracle-opengl --python 3.12; uv pip install --python build/oracle-opengl/Scripts/python.exe -r tools/oracle_requirements.txt; build/oracle-opengl/Scripts/python.exe tools/oracle_capture.py --kind upstream --output tests/reference/opengl",
+        "renderer": {
+          "renderer": "NVIDIA GeForce RTX 4090/PCIe/SSE2",
+          "vendor": "NVIDIA Corporation",
+          "version": "4.6.0 NVIDIA 595.79"
+        },
+        "requirements_sha256": "a784b5a5e2b4ea201578acddc41e28e0997275ea2542642148322153cd240ffd",
+        "source_sha256": {
+          "gloo/buffer.py": "68e37b184b74814e0ae7a6f4f754c9f0c0af5b4e6369a60a8357c70da974e138",
+          "gloo/context.py": "6afc97492f65a5e865723535206fb769a1c4b55694d69786123fdee78bef992a",
+          "gloo/glir.py": "a3bb8a75b33f47420e9c100b8a6d81037a2f03c905e6c9f7d8399f4fb2eb8f7c",
+          "gloo/program.py": "4d3ab8e36260f9b5dc50f6aec075b12d642535f3cb8f49bfd4a27056301d5492",
+          "gloo/texture.py": "9f6d5f2e448e02c0ca4d66c65d17ddcdb6c0182bb8f15f1292a427f5a9faf6bc",
+          "gloo/wrappers.py": "73dbb5eb8ca78b2822266d272ffb14db9fcadd7a56512843209187714c9e8dcc"
+        },
+        "upstream_commit": "117b054598f4758b598f4b8f48feea48c11fe7b0",
+        "versions": {
+          "PyOpenGL": "3.1.10",
+          "PyQt6": "6.11.0",
+          "PyQt6-Qt6": "6.11.2",
+          "PyQt6-sip": "13.13.0",
+          "freetype-py": "2.5.1",
+          "hsluv": "5.0.4",
+          "kiwisolver": "1.5.1",
+          "numpy": "2.5.3",
+          "packaging": "26.3",
+          "vispy": "0.17.0"
+        },
+        "vispy_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-napari\\Lib\\site-packages\\vispy",
+        "vispy_version": "0.17.0"
+      },
+      "artifacts": {
+        "expanded_shaders": {
+          "file": "points_spherical_depth.shaders.json",
+          "sha256": "b13db2bb03c11e14957e13c70f67c568456f5fd617c4e5c02352c83a7756af05"
+        },
+        "filtered_glir": {
+          "file": "points_spherical_depth.glir.json",
+          "sha256": "b15c229da0b9deb7090973774412a330338d3213aa6fbf1918da3a0fd1d3a45b"
+        },
+        "observations": {
+          "file": "points_spherical_depth.observations.json",
+          "sha256": "d7c614f4b85140688596e59b377f3da2cd053532df6effd1f014f38bda452eea"
+        },
+        "parameters": {
+          "file": "points_spherical_depth.parameters.json",
+          "sha256": "8089a389156d0162dc9bdfceecfac3875938a315d3d38751c6ff540eddce0755"
+        },
+        "rgba": {
+          "file": "points_spherical_depth.npy",
+          "sha256": "13f28466f07401321157733bc290e3b6224cb226a662dc95869a4987c153e05f"
+        }
+      },
+      "capture": {
+        "file": "points_spherical_depth.capture.json",
+        "sha256": "dbb749d974d1305122f1823ee3bd2dd883765872be35e04f399173c9c899f221"
+      },
+      "observations": {
+        "actual_marker_uploads": [
+          {
+            "bytes": 56,
+            "dtype": "|V56",
+            "dtype_descr": [
+              [
+                "a_position",
+                "<f4",
+                [
+                  3
+                ]
+              ],
+              [
+                "a_fg_color",
+                "<f4",
+                [
+                  4
+                ]
+              ],
+              [
+                "a_bg_color",
+                "<f4",
+                [
+                  4
+                ]
+              ],
+              [
+                "a_size",
+                "<f4"
+              ],
+              [
+                "a_edgewidth",
+                "<f4"
+              ],
+              [
+                "a_symbol",
+                "<f4"
+              ]
+            ],
+            "sha256": "cd8d2e179fe9034eae2bb662b11776dc8919e6b612848372a2a917eda2aad81a",
+            "shape": [
+              1
+            ]
+          }
+        ],
+        "dependent_trace_start": 10,
+        "gl_samples": 0,
+        "gloo_framebuffer_id": 15,
+        "marker_vbo_id": 9,
+        "physical_samples": 1,
+        "point_size_range": [
+          1.0,
+          2047.0
+        ],
+        "readbacks": 1,
+        "sample_source": "OpenGL driver GL_SAMPLES",
+        "structured_revisions": [
+          {
+            "bytes": 56,
+            "dtype": "|V56",
+            "dtype_descr": [
+              [
+                "a_position",
+                "<f4",
+                [
+                  3
+                ]
+              ],
+              [
+                "a_fg_color",
+                "<f4",
+                [
+                  4
+                ]
+              ],
+              [
+                "a_bg_color",
+                "<f4",
+                [
+                  4
+                ]
+              ],
+              [
+                "a_size",
+                "<f4"
+              ],
+              [
+                "a_edgewidth",
+                "<f4"
+              ],
+              [
+                "a_symbol",
+                "<f4"
+              ]
+            ],
+            "sha256": "cd8d2e179fe9034eae2bb662b11776dc8919e6b612848372a2a917eda2aad81a",
+            "shape": [
+              1
+            ]
+          }
+        ],
+        "target_observations": [
+          {
+            "driver_framebuffer_binding": 2,
+            "expected_gloo_framebuffer": 15,
+            "parser_framebuffer_handle": 2,
+            "scope": "OpenGL driver GL_FRAMEBUFFER_BINDING after actual parse",
+            "stage": "initial_markers"
+          },
+          {
+            "driver_framebuffer_binding": 2,
+            "expected_gloo_framebuffer": 15,
+            "parser_framebuffer_handle": 2,
+            "scope": "OpenGL driver GL_FRAMEBUFFER_BINDING after actual parse",
+            "stage": "initial_mesh"
+          },
+          {
+            "driver_framebuffer_binding": 2,
+            "expected_gloo_framebuffer": 15,
+            "parser_framebuffer_handle": 2,
+            "scope": "OpenGL driver GL_FRAMEBUFFER_BINDING after actual parse",
+            "stage": "before_final_read"
+          }
+        ]
+      },
+      "parameters": {
+        "antialias": 1.0,
+        "api_scope": "public scene Markers / MarkersVisual.set_data, camera.rect, SceneCanvas.push_fbo and Visual.draw",
+        "authoring_variant": "separate API-correct attempt2; original failed capture remains immutable",
+        "camera_depth_value": 100.0,
+        "camera_flip": [
+          false,
+          true,
+          false
+        ],
+        "camera_rect": [
+          0,
+          0,
+          128,
+          96
+        ],
+        "case": "points_spherical_depth",
+        "clear_depth": 1.0,
+        "comparison": {
+          "candidate_alignment_or_color_fit": false,
+          "full_frame_exact": true,
+          "landmarks": "fixed analytic RGBA values or fixed channel bounds; no edge exclusions"
+        },
+        "dependent_intermediate_present_or_finish": false,
+        "depth_func": "less",
+        "depth_geometry": {
+          "formula": ".5 - .1 * sqrt(1 - (dx/20)^2 - (dy/20)^2)",
+          "front_mesh_window_depth": 0.45,
+          "sphere_center_depth_change": -0.1,
+          "sphere_center_window_depth": 0.5
+        },
+        "dpi": 96,
+        "front_mesh_color": [
+          1,
+          0,
+          0,
+          1
+        ],
+        "front_mesh_faces": [
+          [
+            0,
+            1,
+            2
+          ],
+          [
+            2,
+            1,
+            3
+          ]
+        ],
+        "front_mesh_vertices": [
+          [
+            40,
+            24,
+            -10
+          ],
+          [
+            88,
+            24,
+            -10
+          ],
+          [
+            40,
+            72,
+            -10
+          ],
+          [
+            88,
+            72,
+            -10
+          ]
+        ],
+        "input": {
+          "edge_color": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "edge_width": 0.0,
+          "face_color": [
+            0,
+            1,
+            0,
+            1
+          ],
+          "pos": {
+            "bytes": 12,
+            "dtype": "<f4",
+            "dtype_descr": [
+              [
+                "",
+                "<f4"
+              ]
+            ],
+            "sha256": "246037d734d05a50b5d69eb68b957ad1a653fcd9264fb27189ed970346c6b592",
+            "shape": [
+              1,
+              3
+            ]
+          },
+          "size": 40.0,
+          "symbol": "disc"
+        },
+        "landmarks": [
+          {
+            "column": 2,
+            "rgba": [
+              0,
+              0,
+              0,
+              255
+            ],
+            "row": 2
+          },
+          {
+            "column": 64,
+            "maximum": [
+              255,
+              255,
+              255,
+              255
+            ],
+            "minimum": [
+              180,
+              230,
+              180,
+              255
+            ],
+            "row": 48
+          },
+          {
+            "column": 76,
+            "maximum": [
+              15,
+              255,
+              15,
+              255
+            ],
+            "minimum": [
+              0,
+              170,
+              0,
+              255
+            ],
+            "row": 48
+          },
+          {
+            "column": 83,
+            "rgba": [
+              255,
+              0,
+              0,
+              255
+            ],
+            "row": 48
+          },
+          {
+            "column": 35,
+            "rgba": [
+              0,
+              0,
+              0,
+              255
+            ],
+            "row": 48
+          }
+        ],
+        "light_ambient": 0.05,
+        "light_color": [
+          1,
+          1,
+          1
+        ],
+        "light_position": [
+          0,
+          0,
+          1
+        ],
+        "method": "points",
+        "prewarm_submission_without_read": false,
+        "readbacks": 1,
+        "samples": 1,
+        "scaling": "fixed",
+        "size": [
+          128,
+          96
+        ],
+        "spherical": true,
+        "workflow": "spherical_depth"
+      }
+    },
+    "points_style_grid": {
+      "actual_renderer_provenance": {
+        "capture_source_sha256": "66ae25247831c184f38f2c7a2ff151b940013087104907523b11e1ed2b9b151a",
+        "cmake": null,
+        "distribution_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-napari\\Lib\\site-packages",
+        "distribution_record_sha256": "455e084c0cb78e19e41c79d08a57d533b07d52b3248c2ebd4b73e80584b067cc",
+        "environment": {
+          "PYTHONPATH": null,
+          "QT_API": "pyqt6",
+          "QT_QPA_PLATFORM": null,
+          "QT_SCALE_FACTOR": "1",
+          "VISPY_PYQT5_SHARE_CONTEXT": null
+        },
+        "fixture_source_sha256": "37797259727afd9c6b15c7074319b935dcddb330deb2b6c99a03c8df6f36fddb",
+        "kind": "upstream",
+        "machine": "AMD64",
+        "numpy_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-napari\\Lib\\site-packages\\numpy\\__init__.py",
+        "platform": "Windows-11-10.0.26200-SP0",
+        "python": "3.12.8",
+        "python_executable": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-napari\\Scripts\\python.exe",
+        "qt_runtime": "6.11.2",
+        "regenerate": "uv venv build/oracle-opengl --python 3.12; uv pip install --python build/oracle-opengl/Scripts/python.exe -r tools/oracle_requirements.txt; build/oracle-opengl/Scripts/python.exe tools/oracle_capture.py --kind upstream --output tests/reference/opengl",
+        "renderer": {
+          "renderer": "NVIDIA GeForce RTX 4090/PCIe/SSE2",
+          "vendor": "NVIDIA Corporation",
+          "version": "4.6.0 NVIDIA 595.79"
+        },
+        "requirements_sha256": "a784b5a5e2b4ea201578acddc41e28e0997275ea2542642148322153cd240ffd",
+        "source_sha256": {
+          "gloo/buffer.py": "68e37b184b74814e0ae7a6f4f754c9f0c0af5b4e6369a60a8357c70da974e138",
+          "gloo/context.py": "6afc97492f65a5e865723535206fb769a1c4b55694d69786123fdee78bef992a",
+          "gloo/glir.py": "a3bb8a75b33f47420e9c100b8a6d81037a2f03c905e6c9f7d8399f4fb2eb8f7c",
+          "gloo/program.py": "4d3ab8e36260f9b5dc50f6aec075b12d642535f3cb8f49bfd4a27056301d5492",
+          "gloo/texture.py": "9f6d5f2e448e02c0ca4d66c65d17ddcdb6c0182bb8f15f1292a427f5a9faf6bc",
+          "gloo/wrappers.py": "73dbb5eb8ca78b2822266d272ffb14db9fcadd7a56512843209187714c9e8dcc"
+        },
+        "upstream_commit": "117b054598f4758b598f4b8f48feea48c11fe7b0",
+        "versions": {
+          "PyOpenGL": "3.1.10",
+          "PyQt6": "6.11.0",
+          "PyQt6-Qt6": "6.11.2",
+          "PyQt6-sip": "13.13.0",
+          "freetype-py": "2.5.1",
+          "hsluv": "5.0.4",
+          "kiwisolver": "1.5.1",
+          "numpy": "2.5.3",
+          "packaging": "26.3",
+          "vispy": "0.17.0"
+        },
+        "vispy_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-napari\\Lib\\site-packages\\vispy",
+        "vispy_version": "0.17.0"
+      },
+      "artifacts": {
+        "expanded_shaders": {
+          "file": "points_style_grid.shaders.json",
+          "sha256": "89135c43ba37f841538815f8a6773a5651b3ff879d486b0856a2f553785f9e1a"
+        },
+        "filtered_glir": {
+          "file": "points_style_grid.glir.json",
+          "sha256": "88c108d435c03c3d2b0f1409e7c7b14e4cee6cfde95fe2e8dba69772b0a2337f"
+        },
+        "observations": {
+          "file": "points_style_grid.observations.json",
+          "sha256": "da2a5419d791ebddbe80948b498ee3401e965b72ed31d16917c2c800036a0131"
+        },
+        "parameters": {
+          "file": "points_style_grid.parameters.json",
+          "sha256": "4a59146d7104a17bf47d7dce54c7d683810e23cece481802765f34869662175b"
+        },
+        "rgba": {
+          "file": "points_style_grid.npy",
+          "sha256": "cb2f41a29a8a23e3960c562de7b340eb57177a918c86c09a345e25a90d3ab7ae"
+        }
+      },
+      "capture": {
+        "file": "points_style_grid.capture.json",
+        "sha256": "b3e9713979cb0dc09f048df8994b2359b6b18ddaac6d12361248cc17e09fdf73"
+      },
+      "observations": {
+        "actual_marker_uploads": [
+          {
+            "bytes": 336,
+            "dtype": "|V56",
+            "dtype_descr": [
+              [
+                "a_position",
+                "<f4",
+                [
+                  3
+                ]
+              ],
+              [
+                "a_fg_color",
+                "<f4",
+                [
+                  4
+                ]
+              ],
+              [
+                "a_bg_color",
+                "<f4",
+                [
+                  4
+                ]
+              ],
+              [
+                "a_size",
+                "<f4"
+              ],
+              [
+                "a_edgewidth",
+                "<f4"
+              ],
+              [
+                "a_symbol",
+                "<f4"
+              ]
+            ],
+            "sha256": "d99fa6a7ac55cc20a04b8b44e646c423aa58ec1712a33de185897961daa8ca43",
+            "shape": [
+              6
+            ]
+          }
+        ],
+        "dependent_trace_start": 10,
+        "gl_samples": 0,
+        "gloo_framebuffer_id": 13,
+        "marker_vbo_id": 9,
+        "physical_samples": 1,
+        "point_size_range": [
+          1.0,
+          2047.0
+        ],
+        "readbacks": 1,
+        "sample_source": "OpenGL driver GL_SAMPLES",
+        "structured_revisions": [
+          {
+            "bytes": 336,
+            "dtype": "|V56",
+            "dtype_descr": [
+              [
+                "a_position",
+                "<f4",
+                [
+                  3
+                ]
+              ],
+              [
+                "a_fg_color",
+                "<f4",
+                [
+                  4
+                ]
+              ],
+              [
+                "a_bg_color",
+                "<f4",
+                [
+                  4
+                ]
+              ],
+              [
+                "a_size",
+                "<f4"
+              ],
+              [
+                "a_edgewidth",
+                "<f4"
+              ],
+              [
+                "a_symbol",
+                "<f4"
+              ]
+            ],
+            "sha256": "d99fa6a7ac55cc20a04b8b44e646c423aa58ec1712a33de185897961daa8ca43",
+            "shape": [
+              6
+            ]
+          }
+        ],
+        "target_observations": [
+          {
+            "driver_framebuffer_binding": 2,
+            "expected_gloo_framebuffer": 13,
+            "parser_framebuffer_handle": 2,
+            "scope": "OpenGL driver GL_FRAMEBUFFER_BINDING after actual parse",
+            "stage": "initial_markers"
+          },
+          {
+            "driver_framebuffer_binding": 2,
+            "expected_gloo_framebuffer": 13,
+            "parser_framebuffer_handle": 2,
+            "scope": "OpenGL driver GL_FRAMEBUFFER_BINDING after actual parse",
+            "stage": "before_final_read"
+          }
+        ]
+      },
+      "parameters": {
+        "antialias": 1.0,
+        "api_scope": "public scene Markers / MarkersVisual.set_data, camera.rect, SceneCanvas.push_fbo and Visual.draw",
+        "authoring_variant": "separate API-correct attempt2; original failed capture remains immutable",
+        "camera_depth_value": 100.0,
+        "camera_flip": [
+          false,
+          true,
+          false
+        ],
+        "camera_rect": [
+          0,
+          0,
+          128,
+          96
+        ],
+        "case": "points_style_grid",
+        "clear_depth": 1.0,
+        "comparison": {
+          "candidate_alignment_or_color_fit": false,
+          "full_frame_exact": true,
+          "landmarks": "fixed analytic RGBA values or fixed channel bounds; no edge exclusions"
+        },
+        "dependent_intermediate_present_or_finish": false,
+        "depth_func": "less",
+        "dpi": 96,
+        "input": {
+          "edge_color": [
+            1,
+            0,
+            0,
+            1
+          ],
+          "edge_width": {
+            "bytes": 24,
+            "dtype": "<f4",
+            "dtype_descr": [
+              [
+                "",
+                "<f4"
+              ]
+            ],
+            "sha256": "aeecc6c277c7082f19f083f14c2607fb57dc0fd4c57bb469b7b2e27c3ff147ab",
+            "shape": [
+              6
+            ]
+          },
+          "face_color": [
+            0,
+            1,
+            0,
+            1
+          ],
+          "pos": {
+            "bytes": 72,
+            "dtype": "<f4",
+            "dtype_descr": [
+              [
+                "",
+                "<f4"
+              ]
+            ],
+            "sha256": "efb43319b9cd4cc3d3b6b8d88661cf953af914457a0830f11a9f39103a0ec676",
+            "shape": [
+              6,
+              3
+            ]
+          },
+          "size": {
+            "bytes": 24,
+            "dtype": "<f4",
+            "dtype_descr": [
+              [
+                "",
+                "<f4"
+              ]
+            ],
+            "sha256": "f8369a041fb710563c6d6efe557a4840ad68120cd4bd6f3c1719b006b3d63114",
+            "shape": [
+              6
+            ]
+          },
+          "symbol": [
+            "disc",
+            "square",
+            "diamond",
+            "triangle_up",
+            "cross",
+            "ring"
+          ]
+        },
+        "landmarks": [
+          {
+            "column": 2,
+            "rgba": [
+              0,
+              0,
+              0,
+              255
+            ],
+            "row": 2
+          },
+          {
+            "column": 20,
+            "maximum": [
+              15,
+              255,
+              0,
+              255
+            ],
+            "minimum": [
+              0,
+              240,
+              0,
+              255
+            ],
+            "row": 24
+          },
+          {
+            "column": 64,
+            "maximum": [
+              15,
+              255,
+              0,
+              255
+            ],
+            "minimum": [
+              0,
+              240,
+              0,
+              255
+            ],
+            "row": 24
+          },
+          {
+            "column": 108,
+            "maximum": [
+              15,
+              255,
+              0,
+              255
+            ],
+            "minimum": [
+              0,
+              240,
+              0,
+              255
+            ],
+            "row": 24
+          },
+          {
+            "column": 20,
+            "maximum": [
+              15,
+              255,
+              0,
+              255
+            ],
+            "minimum": [
+              0,
+              240,
+              0,
+              255
+            ],
+            "row": 72
+          },
+          {
+            "column": 64,
+            "maximum": [
+              15,
+              255,
+              0,
+              255
+            ],
+            "minimum": [
+              0,
+              240,
+              0,
+              255
+            ],
+            "row": 72
+          },
+          {
+            "column": 26,
+            "rgba": [
+              255,
+              0,
+              0,
+              255
+            ],
+            "row": 24
+          },
+          {
+            "column": 108,
+            "rgba": [
+              0,
+              0,
+              0,
+              255
+            ],
+            "row": 72
+          },
+          {
+            "column": 117,
+            "maximum": [
+              2,
+              255,
+              0,
+              255
+            ],
+            "minimum": [
+              0,
+              253,
+              0,
+              255
+            ],
+            "row": 72
+          }
+        ],
+        "method": "points",
+        "prewarm_submission_without_read": false,
+        "readbacks": 1,
+        "ring_aa_geometry": {
+          "antialias": 1.0,
+          "edge_width": 2.0,
+          "formula": "r=max(hypot(dx,dy)-12,6-hypot(dx,dy)); mix=exp(-r*r); color=(mix,1-mix,0,1)",
+          "full_frame_exact_unchanged": true,
+          "gaussian_edge_mix": [
+            0.0017933286510088025,
+            0.0020612783823213496
+          ],
+          "maximum_rgba": [
+            2,
+            255,
+            0,
+            255
+          ],
+          "minimum_rgba": [
+            0,
+            253,
+            0,
+            255
+          ],
+          "point": [
+            72,
+            117
+          ],
+          "radius_samples": [
+            8.514693182963201,
+            9.513148795220223
+          ],
+          "signed_distances": [
+            -2.5146931829632013,
+            -2.486851204779777
+          ],
+          "symbol_size": 24.0
+        },
+        "samples": 1,
+        "scaling": "fixed",
+        "size": [
+          128,
+          96
+        ],
+        "spherical": false,
+        "workflow": "style_grid"
+      }
+    }
+  },
+  "processes": {
+    "instanced_camera_fixed": {
+      "exit_code": 0,
+      "stderr": {
+        "file": "instanced_camera_fixed.stderr.log",
+        "sha256": "b1d8d1e72b862b2b97cd31253e5ea272299c884b4d8079ddfbf436853e425c15"
+      },
+      "stdout": {
+        "file": "instanced_camera_fixed.stdout.log",
+        "sha256": "d93c7237583fbedac0f6859ff0e12b53bbbf197d5dc945cfe9db4663586dd7bd"
+      }
+    },
+    "instanced_camera_scene": {
+      "exit_code": 0,
+      "stderr": {
+        "file": "instanced_camera_scene.stderr.log",
+        "sha256": "b1d8d1e72b862b2b97cd31253e5ea272299c884b4d8079ddfbf436853e425c15"
+      },
+      "stdout": {
+        "file": "instanced_camera_scene.stdout.log",
+        "sha256": "04b6a6a11b06e846108b647efcb37cc3c09697af24d1bfdf3e3e60bb8460ebb9"
+      }
+    },
+    "instanced_camera_visual": {
+      "exit_code": 0,
+      "stderr": {
+        "file": "instanced_camera_visual.stderr.log",
+        "sha256": "b1d8d1e72b862b2b97cd31253e5ea272299c884b4d8079ddfbf436853e425c15"
+      },
+      "stdout": {
+        "file": "instanced_camera_visual.stdout.log",
+        "sha256": "a15b72a1f6639d31ae72956fca1c459c1bee530de254dc357be4430514ca92fa"
+      }
+    },
+    "instanced_color_revision": {
+      "exit_code": 0,
+      "stderr": {
+        "file": "instanced_color_revision.stderr.log",
+        "sha256": "b1d8d1e72b862b2b97cd31253e5ea272299c884b4d8079ddfbf436853e425c15"
+      },
+      "stdout": {
+        "file": "instanced_color_revision.stdout.log",
+        "sha256": "c3e99d86e6d8b83badd4396683fcd08dbb856252d919ed22de8155aed89d3deb"
+      }
+    },
+    "instanced_position_revision": {
+      "exit_code": 0,
+      "stderr": {
+        "file": "instanced_position_revision.stderr.log",
+        "sha256": "b1d8d1e72b862b2b97cd31253e5ea272299c884b4d8079ddfbf436853e425c15"
+      },
+      "stdout": {
+        "file": "instanced_position_revision.stdout.log",
+        "sha256": "710c8f733df4b8b50c4ce4edf266382428fd7d4b218566087f7b32dccbb32530"
+      }
+    },
+    "instanced_spherical_depth": {
+      "exit_code": 0,
+      "stderr": {
+        "file": "instanced_spherical_depth.stderr.log",
+        "sha256": "b1d8d1e72b862b2b97cd31253e5ea272299c884b4d8079ddfbf436853e425c15"
+      },
+      "stdout": {
+        "file": "instanced_spherical_depth.stdout.log",
+        "sha256": "3ba1b6db548c2281e2167ee4d8c952b3837229eebd4a41e17e9add134dc957db"
+      }
+    },
+    "instanced_style_grid": {
+      "exit_code": 0,
+      "stderr": {
+        "file": "instanced_style_grid.stderr.log",
+        "sha256": "b1d8d1e72b862b2b97cd31253e5ea272299c884b4d8079ddfbf436853e425c15"
+      },
+      "stdout": {
+        "file": "instanced_style_grid.stdout.log",
+        "sha256": "df2d5aacaccf054133fd4a4a47661856ede92bf6edd8aab5b86612a6e689aa45"
+      }
+    },
+    "points_camera_fixed": {
+      "exit_code": 0,
+      "stderr": {
+        "file": "points_camera_fixed.stderr.log",
+        "sha256": "b1d8d1e72b862b2b97cd31253e5ea272299c884b4d8079ddfbf436853e425c15"
+      },
+      "stdout": {
+        "file": "points_camera_fixed.stdout.log",
+        "sha256": "c1fc7b9267a8ac5ff8bf063e6c1a7c9a30dd5f40a4edfd5086e8d086796025bb"
+      }
+    },
+    "points_camera_scene": {
+      "exit_code": 0,
+      "stderr": {
+        "file": "points_camera_scene.stderr.log",
+        "sha256": "b1d8d1e72b862b2b97cd31253e5ea272299c884b4d8079ddfbf436853e425c15"
+      },
+      "stdout": {
+        "file": "points_camera_scene.stdout.log",
+        "sha256": "4c49ca66b0b89c535193728071ae8ddb58851aa73f5cfada4e07d41bdd68fd12"
+      }
+    },
+    "points_camera_visual": {
+      "exit_code": 0,
+      "stderr": {
+        "file": "points_camera_visual.stderr.log",
+        "sha256": "b1d8d1e72b862b2b97cd31253e5ea272299c884b4d8079ddfbf436853e425c15"
+      },
+      "stdout": {
+        "file": "points_camera_visual.stdout.log",
+        "sha256": "11e50980f8b300524723219c054be15ca6adf3ebe431d5b2e525a170c34769b2"
+      }
+    },
+    "points_color_revision": {
+      "exit_code": 0,
+      "stderr": {
+        "file": "points_color_revision.stderr.log",
+        "sha256": "b1d8d1e72b862b2b97cd31253e5ea272299c884b4d8079ddfbf436853e425c15"
+      },
+      "stdout": {
+        "file": "points_color_revision.stdout.log",
+        "sha256": "d76fa13016b7c32016f413de79afad3e4581ce73f9306ce8b5cd2febef7f30ee"
+      }
+    },
+    "points_position_revision": {
+      "exit_code": 0,
+      "stderr": {
+        "file": "points_position_revision.stderr.log",
+        "sha256": "b1d8d1e72b862b2b97cd31253e5ea272299c884b4d8079ddfbf436853e425c15"
+      },
+      "stdout": {
+        "file": "points_position_revision.stdout.log",
+        "sha256": "54da50cd04035e5e224fbff740e0cbee199f8fefa707ed483b67ba2122224be1"
+      }
+    },
+    "points_spherical_depth": {
+      "exit_code": 0,
+      "stderr": {
+        "file": "points_spherical_depth.stderr.log",
+        "sha256": "b1d8d1e72b862b2b97cd31253e5ea272299c884b4d8079ddfbf436853e425c15"
+      },
+      "stdout": {
+        "file": "points_spherical_depth.stdout.log",
+        "sha256": "facf761844db7c76a0b8692c9d12620a734025c3bf3cb0ee8b3d73907a945611"
+      }
+    },
+    "points_style_grid": {
+      "exit_code": 0,
+      "stderr": {
+        "file": "points_style_grid.stderr.log",
+        "sha256": "b1d8d1e72b862b2b97cd31253e5ea272299c884b4d8079ddfbf436853e425c15"
+      },
+      "stdout": {
+        "file": "points_style_grid.stdout.log",
+        "sha256": "b516d3dc49c640ae7b0cd01c22f99c526c5ae58a432d5446fc1e33f051385548"
+      }
+    }
+  },
+  "provenance": {
+    "capture_sha256": "5583a42fd34b105651cb1f81c77621f96efd92fedc54e78ee5367eb95e0b6211",
+    "environment": {
+      "PYTHONHASHSEED": "0",
+      "PYTHONPATH": null,
+      "QT_API": "pyqt6",
+      "QT_QPA_PLATFORM": null,
+      "QT_SCALE_FACTOR": "1"
+    },
+    "fixture_sha256": "7d18601e08982c0b0f73c656f1746899760c9fd042650470ef1504ba7cb5056d",
+    "host_lock_sha256": "bae850d37ba4c84b6c0ad42e2aa40d495d1e7ccab1aa20454d875764bdbbb732",
+    "host_source_sha256": {
+      "_vispy/layers/base.py": "77c7724baf17aac4ff90c7abcdf2b86284dc85c2220cdc0bc140695a2de1e52f",
+      "_vispy/layers/labels.py": "f959697110efcc48ef012e6adf2c44b0a8b649e4cb16b7ab48e0fd5a46baf29e",
+      "_vispy/utils/gl.py": "76278bb2e622cc723ef8cbfc7302b9cba0869520e68475c126aa302c6641f65e",
+      "layers/_scalar_field/scalar_field.py": "50d0f2c6adb4412589394dde4a55a8b156799b89ed55610a57496ef6d0d2a0b4",
+      "layers/image/image.py": "73027b2f096445c6aea88689bbf29f8707a75847d1348fa3b80eaf867c728c56",
+      "layers/labels/labels.py": "8d5ac1e119018af7b49df29838a91273910df09c2d4e4e6ec7e58a3744e7a176",
+      "utils/colormaps/colormap.py": "af2eed8dfa33850a7e8000cd3ac36cffca00d2519ffdcbed024aeae27819ff80"
+    },
+    "installed_versions": {
+      "HeapDict": "1.0.1",
+      "ImageIO": "2.38.1",
+      "Pint": "0.26.1",
+      "PyOpenGL": "3.1.10",
+      "PyQt6": "6.11.0",
+      "PyQt6-Qt6": "6.11.2",
+      "PyQt6_sip": "13.13.0",
+      "PyYAML": "6.0.3",
+      "Pygments": "2.21.0",
+      "QtPy": "2.4.3",
+      "annotated-doc": "0.0.5",
+      "annotated-types": "0.8.0",
+      "app-model": "0.5.1",
+      "asttokens": "3.0.2",
+      "attrs": "26.1.0",
+      "build": "1.6.1",
+      "cachey": "0.2.1",
+      "certifi": "2026.7.22",
+      "charset-normalizer": "3.5.2",
+      "click": "8.5.0",
+      "cloudpickle": "3.1.2",
+      "colorama": "0.4.6",
+      "comm": "0.2.3",
+      "dask": "2026.8.0",
+      "debugpy": "1.8.22",
+      "docstring_parser": "0.18.0",
+      "executing": "2.2.1",
+      "flexcache": "0.3",
+      "flexparser": "0.4",
+      "freetype-py": "2.5.1",
+      "fsspec": "2026.9.0",
+      "hsluv": "5.0.4",
+      "idna": "3.20",
+      "in-n-out": "0.2.1",
+      "ipykernel": "6.31.0",
+      "ipython": "9.17.1",
+      "ipython_pygments_lexers": "1.1.1",
+      "jedi": "0.20.0",
+      "jsonschema": "4.26.0",
+      "jsonschema-specifications": "2025.9.1",
+      "jupyter_client": "8.10.0",
+      "jupyter_core": "5.9.1",
+      "kiwisolver": "1.5.1",
+      "lazy-loader": "0.6",
+      "llvmlite": "0.50.0",
+      "locket": "1.0.0",
+      "lxml": "6.1.3",
+      "magicgui": "0.10.2",
+      "markdown-it-py": "4.2.0",
+      "matplotlib-inline": "0.2.2",
+      "mdurl": "0.1.2",
+      "napari": "0.9.2",
+      "napari-console": "0.1.4",
+      "napari-plugin-engine": "0.2.1",
+      "napari-resources": "1.0.1",
+      "napari-svg": "0.2.1",
+      "nest-asyncio": "1.6.0",
+      "networkx": "3.7",
+      "npe2": "0.9.0",
+      "numba": "0.68.0",
+      "numpy": "2.5.3",
+      "packaging": "26.3",
+      "pandas": "3.0.6",
+      "parso": "0.8.7",
+      "partd": "1.4.2",
+      "pillow": "12.3.0",
+      "platformdirs": "4.12.4",
+      "pooch": "1.9.0",
+      "prompt_toolkit": "3.0.53",
+      "psutil": "7.2.2",
+      "psygnal": "0.16.1",
+      "pure_eval": "0.2.4",
+      "pyconify": "0.2.1",
+      "pydantic": "2.14.0",
+      "pydantic-extra-types": "2.11.1",
+      "pydantic-settings": "2.15.0",
+      "pydantic_core": "2.50.0",
+      "pyproject_hooks": "1.3.3",
+      "python-dateutil": "2.9.0.post0",
+      "python-dotenv": "1.2.4",
+      "pywin32": "312",
+      "pyzmq": "27.2.0",
+      "qtconsole": "5.7.2",
+      "referencing": "0.37.0",
+      "requests": "2.34.2",
+      "rich": "15.0.0",
+      "rpds-py": "2026.9.1",
+      "scikit-image": "0.26.0",
+      "scipy": "1.18.1",
+      "shellingham": "1.5.4",
+      "six": "1.17.0",
+      "stack-data": "0.6.3",
+      "superqt": "0.8.2",
+      "tifffile": "2026.9.20",
+      "tomli_w": "1.2.0",
+      "toolz": "1.2.0",
+      "tornado": "6.5.10",
+      "tqdm": "4.70.1",
+      "traitlets": "5.16.1",
+      "typer": "0.27.3",
+      "typing-inspection": "0.4.4",
+      "typing_extensions": "4.16.0",
+      "tzdata": "2026.5",
+      "urllib3": "2.8.0",
+      "vispy": "0.17.0",
+      "wcwidth": "0.9.2",
+      "wrapt": "2.5.0"
+    },
+    "kind": "upstream",
+    "marker_capture_sha256": "0c2ca083cee50e574105e6f6c2562a41a57fd1cb6e0ee6b0b32e910b0c944a53",
+    "marker_fixture_sha256": "d7fc196d5aff03a2656f9ac1d71bd4b796acf617464dd4a2afa591875467fbaf",
+    "marker_source_sha256": {
+      "scene/cameras/base_camera.py": "fa93697ff791b24c657c78420365e6460cd1b73efa57b43562a12900e2a84b93",
+      "scene/cameras/panzoom.py": "6cb92f82e5075a8a374122ebed6c9910ba77590b9ee9a0efd4f02db8c51853c2",
+      "scene/canvas.py": "d404365a8183d4fe6ee4a10212ee75d7417a4273d9ce441e46930d6dc1490b6e",
+      "visuals/markers.py": "84990f7b14ff92a4acfcccf39bcc8c788b7c9df76e75e85fc8c4e4e102b119c3",
+      "visuals/mesh.py": "9d6fc7616eef5caff4da302ff94c561df1aab8c8b6498d6b901f8e51c5b1ef88",
+      "visuals/transforms/transform_system.py": "74a44c89dd469b46e187d2bfbf54620bec716e6405eb5387cffd14afc19d3265"
+    },
+    "napari_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-napari\\Lib\\site-packages\\napari",
+    "native_artifacts": {},
+    "python_executable": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-napari\\Scripts\\python.exe",
+    "vispy_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-napari\\Lib\\site-packages\\vispy",
+    "visual_source_sha256": {
+      "visuals/_scalable_textures.py": "0ac2389093cfa551dd1cdc35fc84a025819dfaa25403710230fa95586ed6540e",
+      "visuals/image.py": "0f2a1c25c37a22586350d9a6a8e7569ed057e0416d699b546db58445b992cb3e"
+    }
+  },
+  "schema": 1
+}

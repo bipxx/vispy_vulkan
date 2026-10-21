@@ -1,0 +1,51 @@
+{
+  "alpha": true,
+  "attachment_size": [
+    8,
+    6
+  ],
+  "background": {
+    "depth": 1,
+    "stencil": 3
+  },
+  "capture_api": "gloo.gl.glReadPixels(GL_STENCIL_INDEX)",
+  "crop": [
+    0,
+    0,
+    8,
+    6
+  ],
+  "explicit_gloo_finish_calls": 1,
+  "logical_depth_bits": 24,
+  "mode": "stencil",
+  "orientation": "top-left array, bottom-left viewport crop",
+  "out_type": "float",
+  "physical_samples": 1,
+  "readbacks": 1,
+  "regions": [
+    {
+      "depth": 0.25,
+      "operation": "draw",
+      "stencil": 37,
+      "viewport": [
+        1,
+        1,
+        3,
+        2
+      ]
+    },
+    {
+      "depth": 0.75,
+      "operation": "scissor clear",
+      "stencil": 203,
+      "viewport": [
+        4,
+        3,
+        3,
+        2
+      ]
+    }
+  ],
+  "renderbuffer_internalformat": 35056,
+  "stencil_bits": 8
+}

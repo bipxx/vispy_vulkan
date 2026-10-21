@@ -1,0 +1,9 @@
+WARNING: SetProcessDpiAwarenessContext() failed: Access is denied.
+Qt's default DPI awareness context is DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE_V2. If you know what you are doing, you can overwrite this default using qt.conf (https://doc.qt.io/qt-6/highdpi.html#configuring-windows).
+Traceback (most recent call last):
+  File "C:\Users\HEQ\Projects\vispy_vulkan\tools\oracle_wide_lines_capture.py", line 86, in main
+    assert_landmarks(args.worker, image)
+  File "C:\Users\HEQ\Projects\vispy_vulkan\tools\fixture_wide_lines.py", line 112, in assert_landmarks
+    assert image[SIZE[1] - 1 - y, x].tolist() == expected, (name, "fixed wide-line landmark", [x, y],
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ('depth_occlusion_smooth', 'fixed wide-line landmark', [8, 12], [0, 0, 0, 255], [0, 255, 0, 255])

@@ -1,0 +1,22 @@
+#include <metal_stdlib>
+using namespace metal;
+
+struct S {
+  /* 0x0000 */ int before;
+  /* 0x0004 */ array<int8_t, 12> tint_pad;
+  /* 0x0010 */ float3x4 m;
+  /* 0x0040 */ int after;
+  /* 0x0044 */ array<int8_t, 60> tint_pad_1;
+};
+
+struct tint_module_vars_struct {
+  const constant array<S, 4>* u;
+};
+
+[[max_total_threads_per_threadgroup(1)]]
+kernel void f(const constant array<S, 4>* u [[buffer(0)]]) {
+  tint_module_vars_struct const tint_module_vars = tint_module_vars_struct{.u=u};
+  float4x3 const t = transpose((*tint_module_vars.u)[2].m);
+  float const l = length((*tint_module_vars.u)[0].m[1].ywxz);
+  float const a = abs((*tint_module_vars.u)[0].m[1].y);
+}

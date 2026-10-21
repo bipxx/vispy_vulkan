@@ -1,0 +1,32 @@
+#include <metal_stdlib>
+using namespace metal;
+
+struct S {
+  array<int, 64> data;
+};
+
+struct UBO {
+  /* 0x0000 */ int dynamic_idx;
+};
+
+struct Result {
+  /* 0x0000 */ int out;
+};
+
+struct tint_module_vars_struct {
+  const constant UBO* ubo;
+  device Result* result;
+  thread S* s;
+};
+
+void x(thread S* const p, tint_module_vars_struct tint_module_vars) {
+  (*p).data[min(uint((*tint_module_vars.ubo).dynamic_idx), 63u)] = 1;
+}
+
+[[max_total_threads_per_threadgroup(1)]]
+kernel void f(const constant UBO* ubo [[buffer(1)]], device Result* result [[buffer(0)]]) {
+  thread S s = {};
+  tint_module_vars_struct const tint_module_vars = tint_module_vars_struct{.ubo=ubo, .result=result, .s=(&s)};
+  (x(tint_module_vars.s, tint_module_vars));
+  (*tint_module_vars.result).out = (*tint_module_vars.s).data[3];
+}

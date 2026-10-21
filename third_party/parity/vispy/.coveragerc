@@ -1,0 +1,17 @@
+[run]
+relative_files = True
+branch = True
+source = vispy
+#include = */vispy/*
+# Omit fonts/_quartz.py and _win32 for platform specificity
+omit =
+    */vispy/app/backends/_egl.py
+    */vispy/gloo/gl/es2.py
+    */vispy/gloo/gl/_es2.py
+    */vispy/testing/*
+    */vispy/ext/*
+    */vispy/geometry/_triangulation_debugger.py
+    */vispy/util/fonts/_quartz.py
+    */vispy/util/fonts/_win32.py
+    */vispy/util/dpi/_quartz.py
+    */vispy/util/dpi/_win32.py

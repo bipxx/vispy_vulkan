@@ -1,0 +1,8 @@
+# Live Dawn trace from a headless clear-and-draw on vispy 0.17.0+vulkan.1.
+# VisPy 117b054598f4758b598f4b8f48feea48c11fe7b0
+# Dawn 499e5c6ff9b37d5de70c6493fb74c251e0d35c1c
+# napari 595639295a153c84bcb127a9e07d801355440a35
+CURRENT fbo=0
+record DRAW program=1
+DRAW snapshots-kept mode=triangles count=3
+presentation flip format=bgra8unorm

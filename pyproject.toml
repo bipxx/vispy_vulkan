@@ -1,0 +1,58 @@
+[build-system]
+requires = [
+    "scikit-build-core==0.11.6", "nanobind==3.1.0", "cmake==4.4.4",
+    "Cython==3.1.5", "numpy==2.2.6; python_version < '3.11'",
+    "numpy==2.4.6; python_version == '3.11'",
+    "numpy==2.5.3; python_version >= '3.12'",
+]
+build-backend = "scikit_build_core.build"
+
+[project]
+name = "vispy"
+version = "0.17.0+vulkan.1"
+description = "VisPy 0.17.0 compatibility fork rendered with Dawn (Vulkan on Windows)"
+readme = { file = "third_party/parity/vispy/README.rst", content-type = "text/x-rst" }
+requires-python = ">=3.10"
+license = "BSD-3-Clause"
+license-files = ["third_party/licenses/*.txt"]
+authors = [{ name = "Vispy contributors" }]
+dependencies = [
+    "numpy",
+    "freetype-py",
+    "hsluv",
+    "kiwisolver",
+    "packaging",
+]
+
+[project.optional-dependencies]
+pyqt5 = ["PyQt5"]
+pyqt6 = ["PyQt6"]
+pyside6 = ["PySide6"]
+test = ["pytest", "pillow"]
+
+[dependency-groups]
+dev = ["pytest", "pillow", "tomli; python_version < '3.11'"]
+build = ["scikit-build-core==0.11.6", "nanobind==3.1.0", "cmake==4.4.4", "Cython==3.1.5"]
+# Windows qualification uses one Qt binding. Other bindings/hosts are installed
+# in separate environments, so synchronizing this group cannot remove napari.
+hosts = ["napari==0.9.2; python_version >= '3.11'", "PyQt6==6.11.0; python_version >= '3.11'", "numba==0.68.0; python_version >= '3.11'"]
+
+[tool.scikit-build]
+minimum-version = "0.10"
+build-dir = "build/{wheel_tag}"
+editable.mode = "redirect"
+cmake.build-type = "Release"
+wheel.packages = ["src/vispy"]
+sdist.exclude = ["build/**", "dist/**", ".venv/**", "**/__pycache__/**", "**/*.pyc", "src/vispy/**/*.pyd", "src/vispy/**/*.dll", "src/vispy/**/*.so", "src/vispy/VkLayer_vispy_submit.json"]
+
+[tool.scikit-build.cmake.define]
+CMAKE_BUILD_TYPE = "Release"
+VISPY_INPLACE = "OFF"
+VISPY_VERIFY_DEPENDENCIES = "ON"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = [
+    "gpu: requires the Dawn Vulkan device (a skip is not a pass)",
+    "wheel: requires a freshly built wheel and tests an isolated external consumer",
+]

@@ -1,0 +1,121 @@
+{
+  "comparison": {
+    "atlas_exact": true,
+    "edge_max_differing_fraction": 0.001,
+    "interior_max_abs_u8": 2,
+    "mask": "tools.fixture_scene.masks"
+  },
+  "errors": {},
+  "fixtures": {
+    "line_gl_segments": {
+      "exact": true,
+      "expanded_shaders": {
+        "file": "line_gl_segments.shaders.json",
+        "sha256": "cbb6f76d2352e1c319fe021a6bec96dab8ec777544a4d42fd2f4afd13d1d1831"
+      },
+      "filtered_glir": {
+        "file": "line_gl_segments.glir.json",
+        "sha256": "86ae084567b2b0b7a3e93c21a6f986ba7978e632ce0b762d8786342b57441c7a"
+      },
+      "parameters": {
+        "case": "line_gl_segments",
+        "connect": "segments",
+        "dpi": 96,
+        "method": "gl",
+        "positions": [
+          [
+            16.0,
+            24.0
+          ],
+          [
+            112.0,
+            24.0
+          ],
+          [
+            16.0,
+            72.0
+          ],
+          [
+            112.0,
+            72.0
+          ]
+        ],
+        "size": [
+          128,
+          96
+        ],
+        "width": 1
+      },
+      "rgba": {
+        "file": "line_gl_segments.npy",
+        "sha256": "8497fc28dc7e621b3c3fe9d969ad9061ffd780aeaeb11093196b411368315dac"
+      },
+      "shape": [
+        96,
+        128,
+        4
+      ]
+    }
+  },
+  "provenance": {
+    "capture_source_sha256": "66ae25247831c184f38f2c7a2ff151b940013087104907523b11e1ed2b9b151a",
+    "cmake": null,
+    "distribution_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Lib\\site-packages",
+    "distribution_record_sha256": "455e084c0cb78e19e41c79d08a57d533b07d52b3248c2ebd4b73e80584b067cc",
+    "environment": {
+      "PYTHONPATH": null,
+      "QT_API": "pyqt6",
+      "QT_QPA_PLATFORM": null,
+      "QT_SCALE_FACTOR": "1",
+      "VISPY_PYQT5_SHARE_CONTEXT": "true"
+    },
+    "fixture_source_sha256": "37797259727afd9c6b15c7074319b935dcddb330deb2b6c99a03c8df6f36fddb",
+    "kind": "upstream",
+    "machine": "AMD64",
+    "numpy_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Lib\\site-packages\\numpy\\__init__.py",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.12.8",
+    "python_executable": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Scripts\\python.exe",
+    "qt_runtime": "6.11.2",
+    "regenerate": "build/oracle-opengl/Scripts/python.exe tools/oracle_scene_capture.py --kind upstream --output tests/reference/scene-opengl",
+    "renderer": {
+      "renderer": "NVIDIA GeForce RTX 4090/PCIe/SSE2",
+      "vendor": "NVIDIA Corporation",
+      "version": "4.6.0 NVIDIA 595.79"
+    },
+    "requirements_sha256": "a784b5a5e2b4ea201578acddc41e28e0997275ea2542642148322153cd240ffd",
+    "scene_capture_sha256": "3080d3dd2ca8c482d4fbffe5a6316466a3464886bf61d3a731f9a1dca971b0ea",
+    "scene_fixture_sha256": "8ab39d1f291354b17918ef6412385437a07e229a190ff5fb195f8bd559786468",
+    "scene_source_sha256": {
+      "util/fonts/data/OpenSans-Regular.ttf": "e64e508b2aa2880f907e470c4550980ec4c0694d103a43f36150ac3f93189bee",
+      "visuals/line/line.py": "027dde892f0590da192168481d227f8654a40e199c05b89ba0615f79edcaeec6",
+      "visuals/markers.py": "84990f7b14ff92a4acfcccf39bcc8c788b7c9df76e75e85fc8c4e4e102b119c3",
+      "visuals/mesh.py": "9d6fc7616eef5caff4da302ff94c561df1aab8c8b6498d6b901f8e51c5b1ef88",
+      "visuals/text/text.py": "5907ac03bd6c6c13709ae4994616ec183407189b2645f7e52e20a32da3ce7e60"
+    },
+    "source_sha256": {
+      "gloo/buffer.py": "68e37b184b74814e0ae7a6f4f754c9f0c0af5b4e6369a60a8357c70da974e138",
+      "gloo/context.py": "6afc97492f65a5e865723535206fb769a1c4b55694d69786123fdee78bef992a",
+      "gloo/glir.py": "a3bb8a75b33f47420e9c100b8a6d81037a2f03c905e6c9f7d8399f4fb2eb8f7c",
+      "gloo/program.py": "4d3ab8e36260f9b5dc50f6aec075b12d642535f3cb8f49bfd4a27056301d5492",
+      "gloo/texture.py": "9f6d5f2e448e02c0ca4d66c65d17ddcdb6c0182bb8f15f1292a427f5a9faf6bc",
+      "gloo/wrappers.py": "73dbb5eb8ca78b2822266d272ffb14db9fcadd7a56512843209187714c9e8dcc"
+    },
+    "upstream_commit": "117b054598f4758b598f4b8f48feea48c11fe7b0",
+    "versions": {
+      "PyOpenGL": "3.1.10",
+      "PyQt6": "6.11.0",
+      "PyQt6-Qt6": "6.11.2",
+      "PyQt6-sip": "13.13.0",
+      "freetype-py": "2.5.1",
+      "hsluv": "5.0.4",
+      "kiwisolver": "1.5.1",
+      "numpy": "2.5.3",
+      "packaging": "26.3",
+      "vispy": "0.17.0"
+    },
+    "vispy_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Lib\\site-packages\\vispy",
+    "vispy_version": "0.17.0"
+  },
+  "schema": 1
+}

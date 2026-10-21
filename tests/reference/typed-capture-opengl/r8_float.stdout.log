@@ -1,0 +1,1 @@
+PASS typed capture r8_float: (6, 8, 4), float32, 1 readbacks

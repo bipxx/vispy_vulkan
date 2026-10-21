@@ -1,0 +1,8 @@
+#include <metal_stdlib>
+using namespace metal;
+
+[[max_total_threads_per_threadgroup(1)]]
+kernel void v() {
+  array<int, 3> zero = {};
+  array<int, 3> init = array<int, 3>{1, 2, 3};
+}

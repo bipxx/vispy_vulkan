@@ -1,0 +1,53 @@
+#include <metal_stdlib>
+using namespace metal;
+
+struct FSUniformData {
+  /* 0x0000 */ array<float4, 7> k;
+  /* 0x0070 */ int2 size;
+  /* 0x0078 */ array<int8_t, 8> tint_pad;
+};
+
+struct FSUniforms {
+  /* 0x0000 */ array<FSUniformData, 1> fsUniformData;
+};
+
+struct tint_immediate_data_struct {
+  /* 0x0000 */ uint tint_non_constant_zero;
+  /* 0x0004 */ array<int8_t, 2044> tint_pad_1;
+  /* 0x0800 */ array<uint, 1> tint_storage_buffer_sizes;
+};
+
+struct tint_module_vars_struct {
+  thread uint* idx;
+  const device FSUniforms* _storage;
+  const constant tint_immediate_data_struct* tint_immediate_data;
+};
+
+struct tint_array_lengths_struct {
+  uint tint_array_length_0_0;
+};
+
+[[max_total_threads_per_threadgroup(1)]]
+kernel void v(const device FSUniforms* _storage [[buffer(0)]], const constant tint_immediate_data_struct* tint_immediate_data [[buffer(30)]]) {
+  thread uint idx = 0u;
+  tint_module_vars_struct const tint_module_vars = tint_module_vars_struct{.idx=(&idx), ._storage=_storage, .tint_immediate_data=tint_immediate_data};
+  tint_array_lengths_struct const v_1 = tint_array_lengths_struct{.tint_array_length_0_0=(((*tint_module_vars.tint_immediate_data).tint_storage_buffer_sizes[0u] - 0u) / 128u)};
+  int2 v_2 = int2(0);
+  {
+    uint2 tint_loop_idx = uint2(4294967295u);
+    while(true) {
+      if (all((tint_loop_idx == uint2(0u)))) {
+        break;
+      }
+      if ((v_2.y >= (*tint_module_vars._storage).fsUniformData[min((*tint_module_vars.idx), (v_1.tint_array_length_0_0 - 1u))].size.y)) {
+        break;
+      }
+      {
+        uint const tint_low_inc = (tint_loop_idx.x - 1u);
+        tint_loop_idx.x = tint_low_inc;
+        uint const tint_carry = uint((tint_low_inc == 4294967295u));
+        tint_loop_idx.y = (tint_loop_idx.y - tint_carry);
+      }
+    }
+  }
+}

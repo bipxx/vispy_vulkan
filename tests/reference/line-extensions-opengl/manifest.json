@@ -1,0 +1,1091 @@
+{
+  "comparison": {
+    "fixed_landmarks_exact": true,
+    "full_frame_exact": true
+  },
+  "errors": {},
+  "fixtures": {
+    "depth_gradient_color": {
+      "artifacts": {
+        "expanded_shaders": {
+          "file": "depth_gradient_color.shaders.json",
+          "sha256": "a6a3bb3b04fbb94077caa92a7cee7ffb2b7a8f8598237bb1d507569785af92b0"
+        },
+        "filtered_glir": {
+          "file": "depth_gradient_color.glir.json",
+          "sha256": "74067f205a7b3ce102d2bbc07da268a9950e6cfc9a9843fdb17d566345f9888c"
+        },
+        "rgba": {
+          "file": "depth_gradient_color.npy",
+          "sha256": "9521a45443268b113db68d14c923c36beadee9707ce7c188af4212afb9014493"
+        }
+      },
+      "capture": {
+        "file": "depth_gradient_color.capture.json",
+        "sha256": "8a24319589b08b96c79cbb6692c702ab1c12a461b0f766b6407d6ca418de6085"
+      },
+      "observations": {
+        "physical_samples": 1,
+        "sample_api": "gloo.gl.glGetParameter(GL_SAMPLES)",
+        "sample_source": "OpenGL driver query",
+        "samples_raw": 0
+      },
+      "parameters": {
+        "case": "depth_gradient_color",
+        "comparison": "entire driver frame exact and fixed independent landmarks",
+        "depth_test": false,
+        "first": 0,
+        "intermediate_finish": false,
+        "line_width": 1,
+        "primitive": "lines",
+        "readbacks": 1,
+        "shader": "depth-color",
+        "size": [
+          32,
+          24
+        ],
+        "vertices": [
+          [
+            -0.71875,
+            0.041666626930236816,
+            -0.75,
+            1.0
+          ],
+          [
+            0.78125,
+            0.041666626930236816,
+            0.75,
+            1.0
+          ]
+        ],
+        "vertices_sha256": "4b43556a6b6f25a542879cbecf453f64fbcbf7b835539447116e14e3219a5cac"
+      },
+      "process": {
+        "exit_code": 0,
+        "stderr": {
+          "file": "depth_gradient_color.stderr.log",
+          "sha256": "b1d8d1e72b862b2b97cd31253e5ea272299c884b4d8079ddfbf436853e425c15"
+        },
+        "stdout": {
+          "file": "depth_gradient_color.stdout.log",
+          "sha256": "cda6240330570bdd14e5a3cbb7a2e68098a3b0fc769006fc213b0dba2e516311"
+        }
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ]
+    },
+    "depth_occlusion": {
+      "artifacts": {
+        "expanded_shaders": {
+          "file": "depth_occlusion.shaders.json",
+          "sha256": "48700aafccccc56eadbe59c9f667ee8b1d1593f5c3e4521736d814f6812ceff0"
+        },
+        "filtered_glir": {
+          "file": "depth_occlusion.glir.json",
+          "sha256": "54cc2c5b14901d296a8231c958d123adf831f14a7bb712ea21b2625e7b960e67"
+        },
+        "rgba": {
+          "file": "depth_occlusion.npy",
+          "sha256": "3178e065982cf24555a7fb0a73d7bc3d578f0ca42eabe66dbe47db40e0bfdff2"
+        }
+      },
+      "capture": {
+        "file": "depth_occlusion.capture.json",
+        "sha256": "8715bf9431b23ed8b28e776abbd6a3900b4bb04a123bf06f2a6b6cdd599fcf79"
+      },
+      "observations": {
+        "physical_samples": 1,
+        "sample_api": "gloo.gl.glGetParameter(GL_SAMPLES)",
+        "sample_source": "OpenGL driver query",
+        "samples_raw": 0
+      },
+      "parameters": {
+        "case": "depth_occlusion",
+        "comparison": "entire driver frame exact and fixed independent landmarks",
+        "depth_test": true,
+        "first": 0,
+        "intermediate_finish": false,
+        "line_width": 1,
+        "primitive": "lines",
+        "readbacks": 1,
+        "shader": "solid",
+        "size": [
+          32,
+          24
+        ],
+        "vertices": [
+          [
+            -0.71875,
+            0.041666626930236816,
+            -0.75,
+            1.0
+          ],
+          [
+            0.78125,
+            0.041666626930236816,
+            0.75,
+            1.0
+          ]
+        ],
+        "vertices_sha256": "4b43556a6b6f25a542879cbecf453f64fbcbf7b835539447116e14e3219a5cac"
+      },
+      "process": {
+        "exit_code": 0,
+        "stderr": {
+          "file": "depth_occlusion.stderr.log",
+          "sha256": "b1d8d1e72b862b2b97cd31253e5ea272299c884b4d8079ddfbf436853e425c15"
+        },
+        "stdout": {
+          "file": "depth_occlusion.stdout.log",
+          "sha256": "c33c549ab428a9fe831a7240578a15551da01a027e82941f2b019c693aecefd9"
+        }
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ]
+    },
+    "far_clip": {
+      "artifacts": {
+        "expanded_shaders": {
+          "file": "far_clip.shaders.json",
+          "sha256": "c2907ff2f2c441c7fc719478cc92b42b3b2791a624354a285636411e0458c7f9"
+        },
+        "filtered_glir": {
+          "file": "far_clip.glir.json",
+          "sha256": "fe2607bef9e28efd5b2ed56e4e113320c9f5101f0ea06e7776afb1a55bd8ea80"
+        },
+        "rgba": {
+          "file": "far_clip.npy",
+          "sha256": "f4bf224611023e15af41990b08fd483a3f7337e820b30a1d5d1dc114b186d66e"
+        }
+      },
+      "capture": {
+        "file": "far_clip.capture.json",
+        "sha256": "327e2976935932bf819bc124ec8040c34f48187b2de983a3abdc1bca69e2d82e"
+      },
+      "observations": {
+        "physical_samples": 1,
+        "sample_api": "gloo.gl.glGetParameter(GL_SAMPLES)",
+        "sample_source": "OpenGL driver query",
+        "samples_raw": 0
+      },
+      "parameters": {
+        "case": "far_clip",
+        "comparison": "entire driver frame exact and fixed independent landmarks",
+        "depth_test": false,
+        "first": 0,
+        "intermediate_finish": false,
+        "line_width": 1,
+        "primitive": "lines",
+        "readbacks": 1,
+        "shader": "solid",
+        "size": [
+          32,
+          24
+        ],
+        "vertices": [
+          [
+            -0.71875,
+            0.5416666269302368,
+            0.0,
+            1.0
+          ],
+          [
+            0.78125,
+            0.5416666269302368,
+            2.0,
+            1.0
+          ]
+        ],
+        "vertices_sha256": "0395ae647bb8cd2f9e73ff282d9de8bb4a3853e61f40ea3639f989a451d326b9"
+      },
+      "process": {
+        "exit_code": 0,
+        "stderr": {
+          "file": "far_clip.stderr.log",
+          "sha256": "b1d8d1e72b862b2b97cd31253e5ea272299c884b4d8079ddfbf436853e425c15"
+        },
+        "stdout": {
+          "file": "far_clip.stdout.log",
+          "sha256": "d5e490a73dc8df43912451c139bdd34ca87597b70bff781efed56a280b78fa3c"
+        }
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ]
+    },
+    "indexed_uint16": {
+      "artifacts": {
+        "expanded_shaders": {
+          "file": "indexed_uint16.shaders.json",
+          "sha256": "c2907ff2f2c441c7fc719478cc92b42b3b2791a624354a285636411e0458c7f9"
+        },
+        "filtered_glir": {
+          "file": "indexed_uint16.glir.json",
+          "sha256": "9a02422ee0f5dd4890252ed0f87b7b1580a4c83cd9c286acdf1177de45bec3e8"
+        },
+        "rgba": {
+          "file": "indexed_uint16.npy",
+          "sha256": "d94120043e9a48d6feb37d0ad206d984901e002c4d1a2c72667d56c2846aaf50"
+        }
+      },
+      "capture": {
+        "file": "indexed_uint16.capture.json",
+        "sha256": "0f26edcea154286dc499c101a86c2c2e994f192f7bcf241f02d97ee56a9dc2c8"
+      },
+      "observations": {
+        "physical_samples": 1,
+        "sample_api": "gloo.gl.glGetParameter(GL_SAMPLES)",
+        "sample_source": "OpenGL driver query",
+        "samples_raw": 0
+      },
+      "parameters": {
+        "case": "indexed_uint16",
+        "comparison": "entire driver frame exact and fixed independent landmarks",
+        "depth_test": false,
+        "first": 0,
+        "index_dtype": "<u2",
+        "indices": [
+          2,
+          0,
+          3,
+          1
+        ],
+        "indices_sha256": "cf7357ee9ff6322200f168b5e3996a54792598612f5065db7c23ecf47c0036cd",
+        "intermediate_finish": false,
+        "line_width": 1,
+        "primitive": "lines",
+        "readbacks": 1,
+        "shader": "solid",
+        "size": [
+          32,
+          24
+        ],
+        "vertices": [
+          [
+            0.78125,
+            -0.4583333134651184,
+            0.0,
+            1.0
+          ],
+          [
+            0.78125,
+            0.5416666269302368,
+            0.0,
+            1.0
+          ],
+          [
+            -0.71875,
+            -0.4583333134651184,
+            0.0,
+            1.0
+          ],
+          [
+            -0.71875,
+            0.5416666269302368,
+            0.0,
+            1.0
+          ],
+          [
+            4.0,
+            5.666666507720947,
+            0.0,
+            1.0
+          ]
+        ],
+        "vertices_sha256": "3cc7b11053f0ccb5928ef46ea82f8152784838f83d53c616cbf990d2a2846b81"
+      },
+      "process": {
+        "exit_code": 0,
+        "stderr": {
+          "file": "indexed_uint16.stderr.log",
+          "sha256": "b1d8d1e72b862b2b97cd31253e5ea272299c884b4d8079ddfbf436853e425c15"
+        },
+        "stdout": {
+          "file": "indexed_uint16.stdout.log",
+          "sha256": "dc87943ea02a1e0341443cf1dcc864ff7880bb61496f3f8c36aaffa49cd973a3"
+        }
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ]
+    },
+    "indexed_uint32": {
+      "artifacts": {
+        "expanded_shaders": {
+          "file": "indexed_uint32.shaders.json",
+          "sha256": "c2907ff2f2c441c7fc719478cc92b42b3b2791a624354a285636411e0458c7f9"
+        },
+        "filtered_glir": {
+          "file": "indexed_uint32.glir.json",
+          "sha256": "846f53102d49669c3b0b45c17ec628e03c07f4703933cccf420695b4da1c1151"
+        },
+        "rgba": {
+          "file": "indexed_uint32.npy",
+          "sha256": "d94120043e9a48d6feb37d0ad206d984901e002c4d1a2c72667d56c2846aaf50"
+        }
+      },
+      "capture": {
+        "file": "indexed_uint32.capture.json",
+        "sha256": "087d554d0373205e0edd7ff7f69ea9db7c2328730d0cd380c491dd321ac8cc89"
+      },
+      "observations": {
+        "physical_samples": 1,
+        "sample_api": "gloo.gl.glGetParameter(GL_SAMPLES)",
+        "sample_source": "OpenGL driver query",
+        "samples_raw": 0
+      },
+      "parameters": {
+        "case": "indexed_uint32",
+        "comparison": "entire driver frame exact and fixed independent landmarks",
+        "depth_test": false,
+        "first": 0,
+        "index_dtype": "<u4",
+        "indices": [
+          2,
+          0,
+          3,
+          1
+        ],
+        "indices_sha256": "1e6da613753287dc062af148289470d936a3cb4b606ff0bab5a2a26b2a5810f7",
+        "intermediate_finish": false,
+        "line_width": 1,
+        "primitive": "lines",
+        "readbacks": 1,
+        "shader": "solid",
+        "size": [
+          32,
+          24
+        ],
+        "vertices": [
+          [
+            0.78125,
+            -0.4583333134651184,
+            0.0,
+            1.0
+          ],
+          [
+            0.78125,
+            0.5416666269302368,
+            0.0,
+            1.0
+          ],
+          [
+            -0.71875,
+            -0.4583333134651184,
+            0.0,
+            1.0
+          ],
+          [
+            -0.71875,
+            0.5416666269302368,
+            0.0,
+            1.0
+          ],
+          [
+            4.0,
+            5.666666507720947,
+            0.0,
+            1.0
+          ]
+        ],
+        "vertices_sha256": "3cc7b11053f0ccb5928ef46ea82f8152784838f83d53c616cbf990d2a2846b81"
+      },
+      "process": {
+        "exit_code": 0,
+        "stderr": {
+          "file": "indexed_uint32.stderr.log",
+          "sha256": "b1d8d1e72b862b2b97cd31253e5ea272299c884b4d8079ddfbf436853e425c15"
+        },
+        "stdout": {
+          "file": "indexed_uint32.stdout.log",
+          "sha256": "0c1432a9117be995a59e34506e5c3c3f75adc128f9c841a3bd9f719d86a6f39c"
+        }
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ]
+    },
+    "indexed_uint8": {
+      "artifacts": {
+        "expanded_shaders": {
+          "file": "indexed_uint8.shaders.json",
+          "sha256": "c2907ff2f2c441c7fc719478cc92b42b3b2791a624354a285636411e0458c7f9"
+        },
+        "filtered_glir": {
+          "file": "indexed_uint8.glir.json",
+          "sha256": "10939a798a0b80113474164f94e3dba0bf449006f3782918a931adb69599f6d1"
+        },
+        "rgba": {
+          "file": "indexed_uint8.npy",
+          "sha256": "d94120043e9a48d6feb37d0ad206d984901e002c4d1a2c72667d56c2846aaf50"
+        }
+      },
+      "capture": {
+        "file": "indexed_uint8.capture.json",
+        "sha256": "9f22410c54dbc68561c5e256fbaa21bc8e565e2fb341c9d9cd7d11eb486e6e82"
+      },
+      "observations": {
+        "physical_samples": 1,
+        "sample_api": "gloo.gl.glGetParameter(GL_SAMPLES)",
+        "sample_source": "OpenGL driver query",
+        "samples_raw": 0
+      },
+      "parameters": {
+        "case": "indexed_uint8",
+        "comparison": "entire driver frame exact and fixed independent landmarks",
+        "depth_test": false,
+        "first": 0,
+        "index_dtype": "|u1",
+        "indices": [
+          2,
+          0,
+          3,
+          1
+        ],
+        "indices_sha256": "a8ea375c4e383a82a405a75e30a8752be43b6da652f8be5467cad3095b3eaec2",
+        "intermediate_finish": false,
+        "line_width": 1,
+        "primitive": "lines",
+        "readbacks": 1,
+        "shader": "solid",
+        "size": [
+          32,
+          24
+        ],
+        "vertices": [
+          [
+            0.78125,
+            -0.4583333134651184,
+            0.0,
+            1.0
+          ],
+          [
+            0.78125,
+            0.5416666269302368,
+            0.0,
+            1.0
+          ],
+          [
+            -0.71875,
+            -0.4583333134651184,
+            0.0,
+            1.0
+          ],
+          [
+            -0.71875,
+            0.5416666269302368,
+            0.0,
+            1.0
+          ],
+          [
+            4.0,
+            5.666666507720947,
+            0.0,
+            1.0
+          ]
+        ],
+        "vertices_sha256": "3cc7b11053f0ccb5928ef46ea82f8152784838f83d53c616cbf990d2a2846b81"
+      },
+      "process": {
+        "exit_code": 0,
+        "stderr": {
+          "file": "indexed_uint8.stderr.log",
+          "sha256": "b1d8d1e72b862b2b97cd31253e5ea272299c884b4d8079ddfbf436853e425c15"
+        },
+        "stdout": {
+          "file": "indexed_uint8.stdout.log",
+          "sha256": "362fca073796f3e0d51bd8d8040b61c52564323b6f90275c9e9b7d34c9d8ca9d"
+        }
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ]
+    },
+    "indexed_vertex_id": {
+      "artifacts": {
+        "expanded_shaders": {
+          "file": "indexed_vertex_id.shaders.json",
+          "sha256": "e853f0a3e1fbf94e7310bac1a1e176d7b826c8514d238471c22ea58b51574ce1"
+        },
+        "filtered_glir": {
+          "file": "indexed_vertex_id.glir.json",
+          "sha256": "d97619d0bcf3a9287d4c3ecafc8cc3be4d9bb9f5519a7c1c80f2f9aa62c8f227"
+        },
+        "rgba": {
+          "file": "indexed_vertex_id.npy",
+          "sha256": "30d5b8c2a56c448a9a21e3e4f392d507d8f8c44146e593f411c752013fc71bbe"
+        }
+      },
+      "capture": {
+        "file": "indexed_vertex_id.capture.json",
+        "sha256": "6f7c64ac4d6938656ecffa3549aea65c78287b36c47452eac7da1a016fb5329a"
+      },
+      "observations": {
+        "physical_samples": 1,
+        "sample_api": "gloo.gl.glGetParameter(GL_SAMPLES)",
+        "sample_source": "OpenGL driver query",
+        "samples_raw": 0
+      },
+      "parameters": {
+        "case": "indexed_vertex_id",
+        "comparison": "entire driver frame exact and fixed independent landmarks",
+        "depth_test": false,
+        "first": 0,
+        "index_dtype": "<u2",
+        "indices": [
+          2,
+          4,
+          1,
+          3
+        ],
+        "indices_sha256": "e3f2b4e4d1f528eee28a7ead51855544b9e1b6b70c61152439ae2884696c83fe",
+        "intermediate_finish": false,
+        "line_width": 1,
+        "primitive": "lines",
+        "readbacks": 1,
+        "shader": "index-id",
+        "size": [
+          32,
+          24
+        ],
+        "vertices": [
+          [
+            4.0,
+            5.666666507720947,
+            0.0,
+            1.0
+          ],
+          [
+            -0.71875,
+            -0.4583333134651184,
+            0.0,
+            1.0
+          ],
+          [
+            -0.71875,
+            0.5416666269302368,
+            0.0,
+            1.0
+          ],
+          [
+            0.78125,
+            -0.4583333134651184,
+            0.0,
+            1.0
+          ],
+          [
+            0.78125,
+            0.5416666269302368,
+            0.0,
+            1.0
+          ]
+        ],
+        "vertices_sha256": "0e60b7d89a683719bdb8f7e96dee874d7305fd3964b1e884da2d8f8eb2569bdc"
+      },
+      "process": {
+        "exit_code": 0,
+        "stderr": {
+          "file": "indexed_vertex_id.stderr.log",
+          "sha256": "0e1e82e7d287bbc45d4e1c1eb1d0fcabdc1b3355033d9e1543270f5c2e86cdd4"
+        },
+        "stdout": {
+          "file": "indexed_vertex_id.stdout.log",
+          "sha256": "47eba6d0176cf8da48cdceb00e14e86a95707c34924589ca64dae0e51a5f2a46"
+        }
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ]
+    },
+    "loop_indexed_vertex_id": {
+      "artifacts": {
+        "expanded_shaders": {
+          "file": "loop_indexed_vertex_id.shaders.json",
+          "sha256": "2046dd55cbff32b5083bb13467a39090d57b5973de99e74df2fceaa1d6a91fda"
+        },
+        "filtered_glir": {
+          "file": "loop_indexed_vertex_id.glir.json",
+          "sha256": "c685602694f9383acad2c749456414e48a2b9a86730295560033059e5003a3c0"
+        },
+        "rgba": {
+          "file": "loop_indexed_vertex_id.npy",
+          "sha256": "3ff615a39fd40dd165f96e689439bcb6abccd2b23c33c7739d8bf5ecd8d75849"
+        }
+      },
+      "capture": {
+        "file": "loop_indexed_vertex_id.capture.json",
+        "sha256": "dd02ec8cbf322ce1a08d99c46029fab0b6089cb3fdeb41c099776d99fc47bff4"
+      },
+      "observations": {
+        "physical_samples": 1,
+        "sample_api": "gloo.gl.glGetParameter(GL_SAMPLES)",
+        "sample_source": "OpenGL driver query",
+        "samples_raw": 0
+      },
+      "parameters": {
+        "case": "loop_indexed_vertex_id",
+        "comparison": "entire driver frame exact and fixed independent landmarks",
+        "depth_test": false,
+        "first": 0,
+        "index_dtype": "<u4",
+        "indices": [
+          1,
+          3,
+          5,
+          7
+        ],
+        "indices_sha256": "49c16b6f0ef802f3aaf7fc52dc1e6925199eddc6e255028182bba4e236f8f855",
+        "intermediate_finish": false,
+        "line_width": 1,
+        "primitive": "line_loop",
+        "readbacks": 1,
+        "shader": "loop-id",
+        "size": [
+          32,
+          24
+        ],
+        "vertices": [
+          [
+            4.0,
+            5.666666507720947,
+            0.0,
+            1.0
+          ],
+          [
+            -0.59375,
+            -0.5416666269302368,
+            0.0,
+            1.0
+          ],
+          [
+            4.0,
+            5.666666507720947,
+            0.0,
+            1.0
+          ],
+          [
+            0.59375,
+            -0.5416666269302368,
+            0.0,
+            1.0
+          ],
+          [
+            4.0,
+            5.666666507720947,
+            0.0,
+            1.0
+          ],
+          [
+            0.59375,
+            0.5416666269302368,
+            0.0,
+            1.0
+          ],
+          [
+            4.0,
+            5.666666507720947,
+            0.0,
+            1.0
+          ],
+          [
+            -0.59375,
+            0.5416666269302368,
+            0.0,
+            1.0
+          ]
+        ],
+        "vertices_sha256": "dd82cfcb64e482310daef585d676c87a9964688c7739740faf6d2dc0c120226c"
+      },
+      "process": {
+        "exit_code": 0,
+        "stderr": {
+          "file": "loop_indexed_vertex_id.stderr.log",
+          "sha256": "0e1e82e7d287bbc45d4e1c1eb1d0fcabdc1b3355033d9e1543270f5c2e86cdd4"
+        },
+        "stdout": {
+          "file": "loop_indexed_vertex_id.stdout.log",
+          "sha256": "1bd2f254834f144fbcba44ad7a54ea725b2dc673eb94d1d1395bc624f342c404"
+        }
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ]
+    },
+    "near_clip": {
+      "artifacts": {
+        "expanded_shaders": {
+          "file": "near_clip.shaders.json",
+          "sha256": "c2907ff2f2c441c7fc719478cc92b42b3b2791a624354a285636411e0458c7f9"
+        },
+        "filtered_glir": {
+          "file": "near_clip.glir.json",
+          "sha256": "73ebedd4c48be233bcb2d874f3af3a260c95cc11bc0288a841d44feddb11ac5d"
+        },
+        "rgba": {
+          "file": "near_clip.npy",
+          "sha256": "27012cdced9aa0bcfadd4da096a0ad50c77fc1f54045d159e99ea1867b1c1516"
+        }
+      },
+      "capture": {
+        "file": "near_clip.capture.json",
+        "sha256": "595dee1fa0be7450ffb5afb9f8e39366d3b60a07971572afd3adcafcd52f5295"
+      },
+      "observations": {
+        "physical_samples": 1,
+        "sample_api": "gloo.gl.glGetParameter(GL_SAMPLES)",
+        "sample_source": "OpenGL driver query",
+        "samples_raw": 0
+      },
+      "parameters": {
+        "case": "near_clip",
+        "comparison": "entire driver frame exact and fixed independent landmarks",
+        "depth_test": false,
+        "first": 0,
+        "intermediate_finish": false,
+        "line_width": 1,
+        "primitive": "lines",
+        "readbacks": 1,
+        "shader": "solid",
+        "size": [
+          32,
+          24
+        ],
+        "vertices": [
+          [
+            -0.71875,
+            -0.4583333134651184,
+            -2.0,
+            1.0
+          ],
+          [
+            0.78125,
+            -0.4583333134651184,
+            0.0,
+            1.0
+          ]
+        ],
+        "vertices_sha256": "4d48701d3cc146e9720e0bbfdcb1a7219a29ae0ad6099f076d50673a20a111ff"
+      },
+      "process": {
+        "exit_code": 0,
+        "stderr": {
+          "file": "near_clip.stderr.log",
+          "sha256": "b1d8d1e72b862b2b97cd31253e5ea272299c884b4d8079ddfbf436853e425c15"
+        },
+        "stdout": {
+          "file": "near_clip.stdout.log",
+          "sha256": "70de127609c0825885a7ff4bf0470a0426a7cb12ab5319b17ec5e91a49bcd566"
+        }
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ]
+    },
+    "near_far_perspective_clip": {
+      "artifacts": {
+        "expanded_shaders": {
+          "file": "near_far_perspective_clip.shaders.json",
+          "sha256": "c2907ff2f2c441c7fc719478cc92b42b3b2791a624354a285636411e0458c7f9"
+        },
+        "filtered_glir": {
+          "file": "near_far_perspective_clip.glir.json",
+          "sha256": "b943203b2a1e0062769b5d0162d02f7c41e6fd4c93f4f1ca1cbef755c3e38bb9"
+        },
+        "rgba": {
+          "file": "near_far_perspective_clip.npy",
+          "sha256": "df6dfe8c5c8cdcb03aba1d8fb69c206a3726add9d3d699865c8845906a38c291"
+        }
+      },
+      "capture": {
+        "file": "near_far_perspective_clip.capture.json",
+        "sha256": "dc1dcbf08c1bebd8933109fd022998ea40083dcc45f2ba34c4a5dce925ec56f3"
+      },
+      "observations": {
+        "physical_samples": 1,
+        "sample_api": "gloo.gl.glGetParameter(GL_SAMPLES)",
+        "sample_source": "OpenGL driver query",
+        "samples_raw": 0
+      },
+      "parameters": {
+        "case": "near_far_perspective_clip",
+        "comparison": "entire driver frame exact and fixed independent landmarks",
+        "depth_test": false,
+        "first": 0,
+        "intermediate_finish": false,
+        "line_width": 1,
+        "primitive": "lines",
+        "readbacks": 1,
+        "shader": "solid",
+        "size": [
+          32,
+          24
+        ],
+        "vertices": [
+          [
+            -0.71875,
+            0.041666626930236816,
+            -2.0,
+            1.0
+          ],
+          [
+            1.5625,
+            0.08333325386047363,
+            4.0,
+            2.0
+          ]
+        ],
+        "vertices_sha256": "51bf35560ae722c76020dc4f469d49ea9f318bb5a8b5ab01bf02e7d9ecef4b06"
+      },
+      "process": {
+        "exit_code": 0,
+        "stderr": {
+          "file": "near_far_perspective_clip.stderr.log",
+          "sha256": "b1d8d1e72b862b2b97cd31253e5ea272299c884b4d8079ddfbf436853e425c15"
+        },
+        "stdout": {
+          "file": "near_far_perspective_clip.stdout.log",
+          "sha256": "5d3dca821df1406b538967d9997323b3ec006cd6ce6c82873f63a9a1e1f6710f"
+        }
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ]
+    },
+    "nonzero_first_vertex_id": {
+      "artifacts": {
+        "expanded_shaders": {
+          "file": "nonzero_first_vertex_id.shaders.json",
+          "sha256": "bf12e3731c9aa8b55bbff3447fa927a5eef0164ecb425c259c814952495b6b2f"
+        },
+        "filtered_glir": {
+          "file": "nonzero_first_vertex_id.glir.json",
+          "sha256": "81a67653d982c0f4edbee1e505f3b3dd24ee084d80f62e6eb964db347054e170"
+        },
+        "rgba": {
+          "file": "nonzero_first_vertex_id.npy",
+          "sha256": "5f898c8bd00427573333cc3c43c2eb267293fb0700792feda39bb422682401a4"
+        }
+      },
+      "capture": {
+        "file": "nonzero_first_vertex_id.capture.json",
+        "sha256": "43a6a1bba339e8d6bdafd7ad17a3c908ce61cf8821540c5419ff3feeae99b2ae"
+      },
+      "observations": {
+        "physical_samples": 1,
+        "sample_api": "gloo.gl.glGetParameter(GL_SAMPLES)",
+        "sample_source": "OpenGL driver query",
+        "samples_raw": 0
+      },
+      "parameters": {
+        "case": "nonzero_first_vertex_id",
+        "comparison": "entire driver frame exact and fixed independent landmarks",
+        "count": 2,
+        "depth_test": false,
+        "first": 2,
+        "intermediate_finish": false,
+        "line_width": 1,
+        "primitive": "lines",
+        "readbacks": 1,
+        "selection_api": "context.glir.command; public Program.draw always uses first=0",
+        "setup_draw_discarded_by_ordered_clear": true,
+        "shader": "first-id",
+        "size": [
+          32,
+          24
+        ],
+        "vertices": [
+          [
+            -0.71875,
+            0.7083333730697632,
+            0.0,
+            1.0
+          ],
+          [
+            0.78125,
+            0.7083333730697632,
+            0.0,
+            1.0
+          ],
+          [
+            -0.71875,
+            -0.4583333134651184,
+            0.0,
+            1.0
+          ],
+          [
+            0.78125,
+            -0.4583333134651184,
+            0.0,
+            1.0
+          ]
+        ],
+        "vertices_sha256": "66ed9f3f9ed2cd8b63620d3b037f86e29a53a791455e41a4067f83047fab177d"
+      },
+      "process": {
+        "exit_code": 0,
+        "stderr": {
+          "file": "nonzero_first_vertex_id.stderr.log",
+          "sha256": "0e1e82e7d287bbc45d4e1c1eb1d0fcabdc1b3355033d9e1543270f5c2e86cdd4"
+        },
+        "stdout": {
+          "file": "nonzero_first_vertex_id.stdout.log",
+          "sha256": "2933b0c5ca373d1d3535a7e87ba9d77beb12b85daa9282b5880332d4d5999f1d"
+        }
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ]
+    },
+    "perspective_depth_color": {
+      "artifacts": {
+        "expanded_shaders": {
+          "file": "perspective_depth_color.shaders.json",
+          "sha256": "a6a3bb3b04fbb94077caa92a7cee7ffb2b7a8f8598237bb1d507569785af92b0"
+        },
+        "filtered_glir": {
+          "file": "perspective_depth_color.glir.json",
+          "sha256": "4158f97a902db21515636f23ac3ce0360b4182e48b964b4f3e316114560981d6"
+        },
+        "rgba": {
+          "file": "perspective_depth_color.npy",
+          "sha256": "9521a45443268b113db68d14c923c36beadee9707ce7c188af4212afb9014493"
+        }
+      },
+      "capture": {
+        "file": "perspective_depth_color.capture.json",
+        "sha256": "22aaa3ec47ff6582607a2f0f8f01a5b2aebb7c81e9e055ccfe0c9b5050321b4d"
+      },
+      "observations": {
+        "physical_samples": 1,
+        "sample_api": "gloo.gl.glGetParameter(GL_SAMPLES)",
+        "sample_source": "OpenGL driver query",
+        "samples_raw": 0
+      },
+      "parameters": {
+        "case": "perspective_depth_color",
+        "comparison": "entire driver frame exact and fixed independent landmarks",
+        "depth_test": false,
+        "first": 0,
+        "intermediate_finish": false,
+        "line_width": 1,
+        "primitive": "lines",
+        "readbacks": 1,
+        "shader": "depth-color",
+        "size": [
+          32,
+          24
+        ],
+        "vertices": [
+          [
+            -0.71875,
+            0.041666626930236816,
+            -0.75,
+            1.0
+          ],
+          [
+            1.5625,
+            0.08333325386047363,
+            1.5,
+            2.0
+          ]
+        ],
+        "vertices_sha256": "1874ff0b6766c8b8b83caa27c1a274728d462fafeae7eaaeed0460a123e19df2"
+      },
+      "process": {
+        "exit_code": 0,
+        "stderr": {
+          "file": "perspective_depth_color.stderr.log",
+          "sha256": "b1d8d1e72b862b2b97cd31253e5ea272299c884b4d8079ddfbf436853e425c15"
+        },
+        "stdout": {
+          "file": "perspective_depth_color.stdout.log",
+          "sha256": "7cb555ea2d108afc4b08ed47de93e3ad78862bd6534c33e26b444d2791536f38"
+        }
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ]
+    }
+  },
+  "provenance": {
+    "capture_source_sha256": "66ae25247831c184f38f2c7a2ff151b940013087104907523b11e1ed2b9b151a",
+    "cmake": null,
+    "distribution_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Lib\\site-packages",
+    "distribution_record_sha256": "455e084c0cb78e19e41c79d08a57d533b07d52b3248c2ebd4b73e80584b067cc",
+    "environment": {
+      "PYTHONPATH": null,
+      "QT_API": "pyqt6",
+      "QT_QPA_PLATFORM": null,
+      "QT_SCALE_FACTOR": "1",
+      "VISPY_PYQT5_SHARE_CONTEXT": null
+    },
+    "extension_capture_sha256": "98b68353954f69f0d21ac36d502461c1ad46669a6937b1d88492421cab304558",
+    "extension_fixture_sha256": "5512e46a98c510c86ba69e12ac9e85db2be7f4084be45b8e0b96b3998f9bd6e4",
+    "fixture_source_sha256": "37797259727afd9c6b15c7074319b935dcddb330deb2b6c99a03c8df6f36fddb",
+    "kind": "upstream",
+    "machine": "AMD64",
+    "numpy_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Lib\\site-packages\\numpy\\__init__.py",
+    "original_lines_manifest_sha256": "454765c9aa349e3da7c2985fb8ea692400f94ce53602b7c8b1d89113ffb0ba0a",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.12.8",
+    "python_executable": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Scripts\\python.exe",
+    "qt_runtime": "6.11.2",
+    "regenerate": "uv venv build/oracle-opengl --python 3.12; uv pip install --python build/oracle-opengl/Scripts/python.exe -r tools/oracle_requirements.txt; build/oracle-opengl/Scripts/python.exe tools/oracle_capture.py --kind upstream --output tests/reference/opengl",
+    "renderer": {
+      "renderer": "NVIDIA GeForce RTX 4090/PCIe/SSE2",
+      "vendor": "NVIDIA Corporation",
+      "version": "4.6.0 NVIDIA 595.79"
+    },
+    "requirements_sha256": "a784b5a5e2b4ea201578acddc41e28e0997275ea2542642148322153cd240ffd",
+    "source_sha256": {
+      "gloo/buffer.py": "68e37b184b74814e0ae7a6f4f754c9f0c0af5b4e6369a60a8357c70da974e138",
+      "gloo/context.py": "6afc97492f65a5e865723535206fb769a1c4b55694d69786123fdee78bef992a",
+      "gloo/glir.py": "a3bb8a75b33f47420e9c100b8a6d81037a2f03c905e6c9f7d8399f4fb2eb8f7c",
+      "gloo/program.py": "4d3ab8e36260f9b5dc50f6aec075b12d642535f3cb8f49bfd4a27056301d5492",
+      "gloo/texture.py": "9f6d5f2e448e02c0ca4d66c65d17ddcdb6c0182bb8f15f1292a427f5a9faf6bc",
+      "gloo/wrappers.py": "73dbb5eb8ca78b2822266d272ffb14db9fcadd7a56512843209187714c9e8dcc"
+    },
+    "upstream_commit": "117b054598f4758b598f4b8f48feea48c11fe7b0",
+    "versions": {
+      "PyOpenGL": "3.1.10",
+      "PyQt6": "6.11.0",
+      "PyQt6-Qt6": "6.11.2",
+      "PyQt6-sip": "13.13.0",
+      "freetype-py": "2.5.1",
+      "hsluv": "5.0.4",
+      "kiwisolver": "1.5.1",
+      "numpy": "2.5.3",
+      "packaging": "26.3",
+      "vispy": "0.17.0"
+    },
+    "vispy_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Lib\\site-packages\\vispy",
+    "vispy_version": "0.17.0"
+  },
+  "schema": 1
+}

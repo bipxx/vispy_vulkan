@@ -1,0 +1,111 @@
+{
+  "comparison": {
+    "fixed_landmarks_exact": true,
+    "full_frame_exact": true
+  },
+  "errors": {},
+  "fixtures": {
+    "perspective_color": {
+      "dtype": "|u1",
+      "expanded_shaders": {
+        "file": "perspective_color.shaders.json",
+        "sha256": "5ef36b2283cc8ddeef45ee4e34e7f207f44ce57d10620e54bba6e457274a84d1"
+      },
+      "filtered_glir": {
+        "file": "perspective_color.glir.json",
+        "sha256": "f4ef4dcf24ede38ce3ad9715fc89436f8f83c7201619bf6250f0d487862d3bb1"
+      },
+      "parameters": {
+        "blending": false,
+        "case": "perspective_color",
+        "comparison": "entire fixed driver frame exact; fixed independent landmarks",
+        "intermediate_finish": false,
+        "line_width": 1,
+        "physical_samples": 1,
+        "points": [
+          [
+            4.5,
+            6.5
+          ],
+          [
+            26.5,
+            18.5
+          ]
+        ],
+        "points_sha256": "9d4acd3d4ed78d8bce3bec5a0f25e93670e43703d60d7c5cde37c18e52988842",
+        "primitive": "lines",
+        "readbacks": 1,
+        "size": [
+          32,
+          24
+        ],
+        "source_alpha": 1,
+        "varying": "perspective"
+      },
+      "readbacks": 1,
+      "rgba": {
+        "file": "perspective_color.npy",
+        "sha256": "c24faf7a2ec70628cdaae88ae57f0ae09146739e0ed0fa6c874bdfd35c12f827"
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ]
+    }
+  },
+  "provenance": {
+    "capture_source_sha256": "66ae25247831c184f38f2c7a2ff151b940013087104907523b11e1ed2b9b151a",
+    "cmake": null,
+    "distribution_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Lib\\site-packages",
+    "distribution_record_sha256": "455e084c0cb78e19e41c79d08a57d533b07d52b3248c2ebd4b73e80584b067cc",
+    "environment": {
+      "PYTHONPATH": null,
+      "QT_API": "pyqt6",
+      "QT_QPA_PLATFORM": null,
+      "QT_SCALE_FACTOR": "1",
+      "VISPY_PYQT5_SHARE_CONTEXT": "true"
+    },
+    "fixture_source_sha256": "37797259727afd9c6b15c7074319b935dcddb330deb2b6c99a03c8df6f36fddb",
+    "kind": "upstream",
+    "line_capture_sha256": "a10db94ff8c9b20331f37c5b0751a53e7bfc9295ff66e2b50895a5bdf89b88ec",
+    "line_fixture_sha256": "df026faa8434f1e4e8efa798a314f38765d5d3eceb77a097b411d2278621636e",
+    "machine": "AMD64",
+    "numpy_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Lib\\site-packages\\numpy\\__init__.py",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.12.8",
+    "python_executable": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Scripts\\python.exe",
+    "qt_runtime": "6.11.2",
+    "regenerate": "build/oracle-opengl/Scripts/python.exe tools/oracle_lines_capture.py --kind upstream --output tests/reference/lines-opengl",
+    "renderer": {
+      "renderer": "NVIDIA GeForce RTX 4090/PCIe/SSE2",
+      "vendor": "NVIDIA Corporation",
+      "version": "4.6.0 NVIDIA 595.79"
+    },
+    "requirements_sha256": "a784b5a5e2b4ea201578acddc41e28e0997275ea2542642148322153cd240ffd",
+    "source_sha256": {
+      "gloo/buffer.py": "68e37b184b74814e0ae7a6f4f754c9f0c0af5b4e6369a60a8357c70da974e138",
+      "gloo/context.py": "6afc97492f65a5e865723535206fb769a1c4b55694d69786123fdee78bef992a",
+      "gloo/glir.py": "a3bb8a75b33f47420e9c100b8a6d81037a2f03c905e6c9f7d8399f4fb2eb8f7c",
+      "gloo/program.py": "4d3ab8e36260f9b5dc50f6aec075b12d642535f3cb8f49bfd4a27056301d5492",
+      "gloo/texture.py": "9f6d5f2e448e02c0ca4d66c65d17ddcdb6c0182bb8f15f1292a427f5a9faf6bc",
+      "gloo/wrappers.py": "73dbb5eb8ca78b2822266d272ffb14db9fcadd7a56512843209187714c9e8dcc"
+    },
+    "upstream_commit": "117b054598f4758b598f4b8f48feea48c11fe7b0",
+    "versions": {
+      "PyOpenGL": "3.1.10",
+      "PyQt6": "6.11.0",
+      "PyQt6-Qt6": "6.11.2",
+      "PyQt6-sip": "13.13.0",
+      "freetype-py": "2.5.1",
+      "hsluv": "5.0.4",
+      "kiwisolver": "1.5.1",
+      "numpy": "2.5.3",
+      "packaging": "26.3",
+      "vispy": "0.17.0"
+    },
+    "vispy_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Lib\\site-packages\\vispy",
+    "vispy_version": "0.17.0"
+  },
+  "schema": 1
+}

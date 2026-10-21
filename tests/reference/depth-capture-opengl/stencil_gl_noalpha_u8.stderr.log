@@ -1,0 +1,13 @@
+WARNING: SetProcessDpiAwarenessContext() failed: Access is denied.
+Qt's default DPI awareness context is DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE_V2. If you know what you are doing, you can overwrite this default using qt.conf (https://doc.qt.io/qt-6/highdpi.html#configuring-windows).
+Traceback (most recent call last):
+  File "C:\Users\HEQ\Projects\vispy_vulkan\tools\oracle_depth_capture.py", line 75, in main
+    image, commands, shaders, parameters = render(
+                                           ^^^^^^^
+  File "C:\Users\HEQ\Projects\vispy_vulkan\tools\fixture_depth_capture.py", line 98, in render
+    raw = gloo.gl.glReadPixels(x, y, width, height, STENCIL_INDEX, out_type)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HEQ\Projects\vispy_vulkan\build\oracle-opengl\Lib\site-packages\vispy\gloo\gl\_gl2.py", line 980, in glReadPixels
+    t = {6406:1, 6407:3, 6408:4, 6402:1}[format]
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+KeyError: 6401

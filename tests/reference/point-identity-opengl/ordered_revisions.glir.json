@@ -1,0 +1,348 @@
+[
+  [
+    "CURRENT",
+    0,
+    1
+  ],
+  [
+    "FUNC",
+    "glViewport",
+    0,
+    0,
+    32,
+    24
+  ],
+  [
+    "FUNC",
+    "glDisable",
+    "cull_face"
+  ],
+  [
+    "FUNC",
+    "glDisable",
+    "blend"
+  ],
+  [
+    "FUNC",
+    "glDisable",
+    "depth_test"
+  ],
+  [
+    "FUNC",
+    "glDisable",
+    "scissor_test"
+  ],
+  [
+    "FUNC",
+    "glClearColor",
+    0.0,
+    0.0,
+    0.0,
+    1.0
+  ],
+  [
+    "FUNC",
+    "glClear",
+    16384
+  ],
+  [
+    "FUNC",
+    "glEnable",
+    "blend"
+  ],
+  [
+    "FUNC",
+    "glBlendFuncSeparate",
+    "src_alpha",
+    "one_minus_src_alpha",
+    "one",
+    "one_minus_src_alpha"
+  ],
+  [
+    "CREATE",
+    1,
+    "Program"
+  ],
+  [
+    "CREATE",
+    2,
+    "VertexShader"
+  ],
+  [
+    "DATA",
+    2,
+    0,
+    "#version 330\nin vec2 a_base;\nin vec3 a_tint;\nin float a_size;\nin vec2 a_offset;\nuniform vec2 u_viewport;\nuniform bool u_instanced;\nuniform int u_divisor;\nflat out vec3 v_color;\nvoid main() {\n    vec2 p = a_base + a_offset;\n    if (u_instanced) {\n        p += vec2(2 * gl_InstanceID, 2 * gl_VertexID);\n        if (u_divisor == 2) p.y += float(4 * (gl_InstanceID % 2));\n        v_color = gl_InstanceID % 2 == 0 ? a_tint : a_tint.bgr;\n    } else {\n        p.y += gl_VertexID % 2 == 1 ? 4.0 : 0.0;\n        int color = gl_VertexID % 4;\n        v_color = (color == 0 ? vec3(1, 0, 0) :\n                   color == 1 ? vec3(0, 1, 0) :\n                   color == 2 ? vec3(0, 0, 1) : vec3(1, 1, 0)) * a_tint;\n    }\n    gl_Position = vec4(p / u_viewport * 2.0 - 1.0, 0, 1);\n    gl_PointSize = a_size;\n}\n"
+  ],
+  [
+    "ATTACH",
+    1,
+    2
+  ],
+  [
+    "CREATE",
+    3,
+    "FragmentShader"
+  ],
+  [
+    "DATA",
+    3,
+    0,
+    "#version 330\nflat in vec3 v_color;\nuniform float u_alpha;\nout vec4 frag_color;\nvoid main() { frag_color = vec4(v_color, u_alpha); }\n"
+  ],
+  [
+    "ATTACH",
+    1,
+    3
+  ],
+  [
+    "LINK",
+    1
+  ],
+  [
+    "DELETE",
+    2
+  ],
+  [
+    "DELETE",
+    3
+  ],
+  [
+    "UNIFORM",
+    1,
+    "u_viewport",
+    "vec2",
+    {
+      "array": {
+        "bytes": 8,
+        "dtype": "<f4",
+        "sha256": "cc73abb4e5c4a85ec94b5d3687c307a6a5e57da80ba476bc20db032ce5085246",
+        "shape": [
+          2
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    1,
+    "u_instanced",
+    "bool",
+    {
+      "array": {
+        "bytes": 4,
+        "dtype": "<i4",
+        "sha256": "df3f619804a92fdb4057192dc43dd748ea778adc52bc498ce80524c014b81119",
+        "shape": [
+          1
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    1,
+    "u_divisor",
+    "int",
+    {
+      "array": {
+        "bytes": 4,
+        "dtype": "<i4",
+        "sha256": "df3f619804a92fdb4057192dc43dd748ea778adc52bc498ce80524c014b81119",
+        "shape": [
+          1
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    1,
+    "u_alpha",
+    "float",
+    {
+      "array": {
+        "bytes": 4,
+        "dtype": "<f4",
+        "sha256": "75e253f50979177eba47b2d0805ad36038789108924514d2a761a70de057d16f",
+        "shape": [
+          1
+        ]
+      }
+    }
+  ],
+  [
+    "ATTRIBUTE",
+    1,
+    "a_size",
+    "float",
+    [
+      0,
+      3.0
+    ],
+    null
+  ],
+  [
+    "CREATE",
+    4,
+    "VertexBuffer"
+  ],
+  [
+    "SIZE",
+    4,
+    224
+  ],
+  [
+    "DATA",
+    4,
+    0,
+    {
+      "array": {
+        "bytes": 224,
+        "dtype": "|V28",
+        "sha256": "451870170261389fb997ae90ab933221de4724a241b16fb206aee7f351e7523d",
+        "shape": [
+          8
+        ]
+      }
+    }
+  ],
+  [
+    "ATTRIBUTE",
+    1,
+    "a_base",
+    "vec2",
+    [
+      4,
+      28,
+      4
+    ],
+    null
+  ],
+  [
+    "ATTRIBUTE",
+    1,
+    "a_tint",
+    "vec3",
+    [
+      4,
+      28,
+      16
+    ],
+    null
+  ],
+  [
+    "ATTRIBUTE",
+    1,
+    "a_offset",
+    "vec2",
+    [
+      0,
+      0.0,
+      0.0
+    ],
+    null
+  ],
+  [
+    "CREATE",
+    5,
+    "IndexBuffer"
+  ],
+  [
+    "SIZE",
+    5,
+    6
+  ],
+  [
+    "DATA",
+    5,
+    0,
+    {
+      "array": {
+        "bytes": 6,
+        "dtype": "<u2",
+        "sha256": "35791c8b33ce57ad3b40faa8c6249eebded1d81cd9bec3cd0026c743643f42cb",
+        "shape": [
+          3
+        ]
+      }
+    }
+  ],
+  [
+    "DRAW",
+    1,
+    "points",
+    [
+      5,
+      "UNSIGNED_SHORT",
+      3
+    ],
+    1
+  ],
+  [
+    "SIZE",
+    4,
+    224
+  ],
+  [
+    "DATA",
+    4,
+    0,
+    {
+      "array": {
+        "bytes": 224,
+        "dtype": "|V28",
+        "sha256": "7f31cba1ccb6820193a080d43007b5d517c3495aaae21d58cee69c6017c079ac",
+        "shape": [
+          8
+        ]
+      }
+    }
+  ],
+  [
+    "SIZE",
+    5,
+    6
+  ],
+  [
+    "DATA",
+    5,
+    0,
+    {
+      "array": {
+        "bytes": 6,
+        "dtype": "<u2",
+        "sha256": "7cea24837ee505cd56c985ae5bb9e8ec9306015c9d8262c32371f1b48855e8e5",
+        "shape": [
+          3
+        ]
+      }
+    }
+  ],
+  [
+    "ATTRIBUTE",
+    1,
+    "a_size",
+    "float",
+    [
+      0,
+      1.0
+    ],
+    null
+  ],
+  [
+    "DRAW",
+    1,
+    "points",
+    [
+      5,
+      "UNSIGNED_SHORT",
+      3
+    ],
+    1
+  ],
+  [
+    "FUNC",
+    "glFinish"
+  ]
+]

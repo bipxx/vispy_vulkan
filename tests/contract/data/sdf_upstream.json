@@ -1,0 +1,23 @@
+{
+  "schema": 1,
+  "vispy_version": "0.17.0",
+  "vispy_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\upstream-restore\\Lib\\site-packages\\vispy\\__init__.py",
+  "sdf_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\upstream-restore\\Lib\\site-packages\\vispy\\visuals\\text\\_sdf_cpu.cp312-win_amd64.pyd",
+  "sdf_sha256": "8a4f322600e1e68ac8e71f9e86cce0b5dcaaeca3ae65e7a8edb22e5dcc11d24c",
+  "font_sha256": "e64e508b2aa2880f907e470c4550980ec4c0694d103a43f36150ac3f93189bee",
+  "font": "OpenSans-Regular.ttf version 1.10 (Apache-2.0)",
+  "python": "3.12.8",
+  "numpy": "2.5.3",
+  "freetype_py": "2.5.1",
+  "spread": 8,
+  "random_seed": 8192,
+  "cases": [
+    "rectangle",
+    "antialias",
+    "random",
+    "glyph_R"
+  ],
+  "source": "PyPI vispy==0.17.0; isolated installed wheel, no fork overlay",
+  "capture_script_sha256": "2834f61e072a36d460bbc69cca0ea45f75b29ec0dd36649a599d243d83da7248",
+  "arrays_sha256": "f128074fd99247a20029ba873247252881b54ce118359f75d1ae180d34c0686f"
+}

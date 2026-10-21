@@ -1,0 +1,1 @@
+PASS depth/stencil capture depth_noalpha_float: (6, 8, 1), float32, 1 readbacks

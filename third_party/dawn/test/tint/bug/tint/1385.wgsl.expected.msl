@@ -1,0 +1,27 @@
+#include <metal_stdlib>
+using namespace metal;
+
+struct tint_array_lengths_struct {
+  uint tint_array_length_0_0;
+};
+
+struct tint_immediate_data_struct {
+  /* 0x0000 */ uint tint_non_constant_zero;
+  /* 0x0004 */ array<int8_t, 2044> tint_pad;
+  /* 0x0800 */ array<uint, 1> tint_storage_buffer_sizes;
+};
+
+struct tint_module_vars_struct {
+  const device array<int, 1>* data;
+  const constant tint_immediate_data_struct* tint_immediate_data;
+};
+
+int foo(tint_array_lengths_struct tint_array_lengths, tint_module_vars_struct tint_module_vars) {
+  return (*tint_module_vars.data)[min(0u, (tint_array_lengths.tint_array_length_0_0 - 1u))];
+}
+
+[[max_total_threads_per_threadgroup(256)]]
+kernel void v(const device array<int, 1>* data [[buffer(0)]], const constant tint_immediate_data_struct* tint_immediate_data [[buffer(30)]]) {
+  tint_module_vars_struct const tint_module_vars = tint_module_vars_struct{.data=data, .tint_immediate_data=tint_immediate_data};
+  (foo(tint_array_lengths_struct{.tint_array_length_0_0=((*tint_module_vars.tint_immediate_data).tint_storage_buffer_sizes[0u] / 4u)}, tint_module_vars));
+}

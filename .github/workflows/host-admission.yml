@@ -1,0 +1,80 @@
+name: Host admission (missing locks or upstream fixtures fail)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  admitted-renderer-host:
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix:
+        python: ['3.10.19', '3.11.14', '3.12.8', '3.13.8', '3.14.0']
+        host: [napari, glue_vispy_viewers, dive, napari_threedee, visbrain]
+        binding: [pyqt5, pyqt6, pyside6]
+        target:
+          - {name: windows, labels: [self-hosted, Windows, X64, vispy-vulkan-hardware], architecture: x64, backend: Vulkan}
+          - {name: linux-x11, labels: [self-hosted, Linux, X64, vispy-vulkan-hardware, x11-desktop], architecture: x64, backend: Vulkan}
+          - {name: macos13-arm64, labels: [self-hosted, macOS, ARM64, macos-13, vispy-metal-hardware], architecture: arm64, backend: Metal}
+          - {name: macos13-x86_64, labels: [self-hosted, macOS, X64, macos-13, vispy-metal-hardware], architecture: x64, backend: Metal}
+        exclude:
+          # napari 0.9.2 requires Python >=3.11; this row is outside its
+          # supported interpreter contract and has no invented rendering pass.
+          - {host: napari, python: '3.10.19'}
+    uses: ./.github/workflows/native-qualification.yml
+    with:
+      cell: host-${{ matrix.host }}-${{ matrix.target.name }}-${{ matrix.python }}-${{ matrix.binding }}
+      platform: ${{ matrix.target.name }}
+      runner_labels: ${{ toJSON(matrix.target.labels) }}
+      architecture: ${{ matrix.target.architecture }}
+      python: ${{ matrix.python }}
+      binding: ${{ matrix.binding }}
+      backend: ${{ matrix.target.backend }}
+      mode: host
+      host: ${{ matrix.host }}
+
+  phylib-import-inventory:
+    # phylib has no rendering workload and never acquires a GPU admission.
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - name: Restore immutable vendor bytes
+        shell: bash
+        run: |
+          printf '%s\n' '* -text -eol -filter -ident' > .git/info/attributes
+          git config core.autocrlf false
+          git config core.longpaths true
+          git checkout-index --all --force
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7
+        with:
+          python-version: '3.12.8'
+      - uses: astral-sh/setup-uv@bec219d24cd3e171d82865faccec33120bb574f4 # v10.1.0
+        with:
+          version: '0.12.5'
+          enable-cache: false
+      - name: Require the hashed import-only environment
+        run: |
+          python .github/workflows/qualification_gate.py admission --host phylib --platform linux-x11 --python 3.12.8 --binding none --output build/evidence/phylib-admission.json
+          uv venv build/ci-phylib-${{ github.run_id }} --python python
+          python - <<'PY'
+          import json, pathlib, subprocess
+          record = json.loads(pathlib.Path('build/evidence/phylib-admission.json').read_text())['admission']
+          interpreter = 'build/ci-phylib-${{ github.run_id }}/bin/python'
+          subprocess.run(['uv', 'pip', 'install', '--python', interpreter, '--require-hashes', '--only-binary', ':all:', '--requirements', record['requirements_file']], check=True)
+          subprocess.run([interpreter, '-I', '-c', 'import phylib; import importlib.metadata as m; assert m.version("phylib") == "2.7.1"; print(phylib.__file__)'], check=True)
+          PY
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        if: always()
+        with:
+          name: phylib-import-inventory
+          path: build/evidence
+          if-no-files-found: error

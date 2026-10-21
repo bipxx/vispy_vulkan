@@ -1,0 +1,410 @@
+{
+  "capture_sha256": "5d34d5409290374881e0739b60d716d65c462704b12a9962a5de1d513db61d3f",
+  "comparison": "exact all frozen arrays; no candidate-dependent tolerance",
+  "errors": {
+    "no_alpha_buffer": {
+      "case": "no_alpha_buffer",
+      "error": "",
+      "process": {
+        "command": [
+          "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Scripts\\python.exe",
+          "-X",
+          "faulthandler",
+          "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\tools\\oracle_qt_framebuffer_alpha_capture.py",
+          "--kind",
+          "upstream",
+          "--output",
+          "tests\\reference\\qt-framebuffer-alpha-opengl",
+          "--worker",
+          "no_alpha_buffer"
+        ],
+        "exit_code": 1,
+        "stderr": {
+          "file": "no_alpha_buffer.stderr.log",
+          "sha256": "b1d8d1e72b862b2b97cd31253e5ea272299c884b4d8079ddfbf436853e425c15"
+        },
+        "stdout": {
+          "file": "no_alpha_buffer.stdout.log",
+          "sha256": "8ae0a00ed8f1ab0baef910650b16862603ad8d086d1e1ccd48b087cc27367673"
+        }
+      },
+      "provenance": {
+        "capture_source_sha256": "66ae25247831c184f38f2c7a2ff151b940013087104907523b11e1ed2b9b151a",
+        "cmake": null,
+        "distribution_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Lib\\site-packages",
+        "distribution_record_sha256": "455e084c0cb78e19e41c79d08a57d533b07d52b3248c2ebd4b73e80584b067cc",
+        "environment": {
+          "PYTHONPATH": null,
+          "QT_API": "pyqt6",
+          "QT_QPA_PLATFORM": null,
+          "QT_SCALE_FACTOR": "1",
+          "VISPY_PYQT5_SHARE_CONTEXT": null
+        },
+        "fixture_source_sha256": "37797259727afd9c6b15c7074319b935dcddb330deb2b6c99a03c8df6f36fddb",
+        "kind": "upstream",
+        "machine": "AMD64",
+        "numpy_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Lib\\site-packages\\numpy\\__init__.py",
+        "platform": "Windows-11-10.0.26200-SP0",
+        "python": "3.12.8",
+        "python_executable": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Scripts\\python.exe",
+        "qt_runtime": "6.11.2",
+        "regenerate": "uv venv build/oracle-opengl --python 3.12; uv pip install --python build/oracle-opengl/Scripts/python.exe -r tools/oracle_requirements.txt; build/oracle-opengl/Scripts/python.exe tools/oracle_capture.py --kind upstream --output tests/reference/opengl",
+        "renderer": {
+          "renderer": "NVIDIA GeForce RTX 4090/PCIe/SSE2",
+          "vendor": "NVIDIA Corporation",
+          "version": "4.6.0 NVIDIA 595.79"
+        },
+        "requirements_sha256": "a784b5a5e2b4ea201578acddc41e28e0997275ea2542642148322153cd240ffd",
+        "source_sha256": {
+          "gloo/buffer.py": "68e37b184b74814e0ae7a6f4f754c9f0c0af5b4e6369a60a8357c70da974e138",
+          "gloo/context.py": "6afc97492f65a5e865723535206fb769a1c4b55694d69786123fdee78bef992a",
+          "gloo/glir.py": "a3bb8a75b33f47420e9c100b8a6d81037a2f03c905e6c9f7d8399f4fb2eb8f7c",
+          "gloo/program.py": "4d3ab8e36260f9b5dc50f6aec075b12d642535f3cb8f49bfd4a27056301d5492",
+          "gloo/texture.py": "9f6d5f2e448e02c0ca4d66c65d17ddcdb6c0182bb8f15f1292a427f5a9faf6bc",
+          "gloo/wrappers.py": "73dbb5eb8ca78b2822266d272ffb14db9fcadd7a56512843209187714c9e8dcc"
+        },
+        "upstream_commit": "117b054598f4758b598f4b8f48feea48c11fe7b0",
+        "versions": {
+          "PyOpenGL": "3.1.10",
+          "PyQt6": "6.11.0",
+          "PyQt6-Qt6": "6.11.2",
+          "PyQt6-sip": "13.13.0",
+          "freetype-py": "2.5.1",
+          "hsluv": "5.0.4",
+          "kiwisolver": "1.5.1",
+          "numpy": "2.5.3",
+          "packaging": "26.3",
+          "vispy": "0.17.0"
+        },
+        "vispy_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Lib\\site-packages\\vispy",
+        "vispy_version": "0.17.0"
+      },
+      "status": "failed",
+      "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\HEQ\\Projects\\vispy_vulkan\\tools\\oracle_qt_framebuffer_alpha_capture.py\", line 29, in main\n    arrays,params,observations=render(args.worker)\n                               ^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\HEQ\\Projects\\vispy_vulkan\\tools\\fixture_qt_framebuffer_alpha.py\", line 87, in render\n    assert canvas.native.isVisible() and canvas.physical_size == SIZE\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n"
+    },
+    "opaque_alpha": {
+      "case": "opaque_alpha",
+      "error": "",
+      "process": {
+        "command": [
+          "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Scripts\\python.exe",
+          "-X",
+          "faulthandler",
+          "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\tools\\oracle_qt_framebuffer_alpha_capture.py",
+          "--kind",
+          "upstream",
+          "--output",
+          "tests\\reference\\qt-framebuffer-alpha-opengl",
+          "--worker",
+          "opaque_alpha"
+        ],
+        "exit_code": 1,
+        "stderr": {
+          "file": "opaque_alpha.stderr.log",
+          "sha256": "b1d8d1e72b862b2b97cd31253e5ea272299c884b4d8079ddfbf436853e425c15"
+        },
+        "stdout": {
+          "file": "opaque_alpha.stdout.log",
+          "sha256": "263406d61b37b0463040820c182aae5c9b1b90e25661973d74d08cb722633959"
+        }
+      },
+      "provenance": {
+        "capture_source_sha256": "66ae25247831c184f38f2c7a2ff151b940013087104907523b11e1ed2b9b151a",
+        "cmake": null,
+        "distribution_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Lib\\site-packages",
+        "distribution_record_sha256": "455e084c0cb78e19e41c79d08a57d533b07d52b3248c2ebd4b73e80584b067cc",
+        "environment": {
+          "PYTHONPATH": null,
+          "QT_API": "pyqt6",
+          "QT_QPA_PLATFORM": null,
+          "QT_SCALE_FACTOR": "1",
+          "VISPY_PYQT5_SHARE_CONTEXT": null
+        },
+        "fixture_source_sha256": "37797259727afd9c6b15c7074319b935dcddb330deb2b6c99a03c8df6f36fddb",
+        "kind": "upstream",
+        "machine": "AMD64",
+        "numpy_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Lib\\site-packages\\numpy\\__init__.py",
+        "platform": "Windows-11-10.0.26200-SP0",
+        "python": "3.12.8",
+        "python_executable": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Scripts\\python.exe",
+        "qt_runtime": "6.11.2",
+        "regenerate": "uv venv build/oracle-opengl --python 3.12; uv pip install --python build/oracle-opengl/Scripts/python.exe -r tools/oracle_requirements.txt; build/oracle-opengl/Scripts/python.exe tools/oracle_capture.py --kind upstream --output tests/reference/opengl",
+        "renderer": {
+          "renderer": "NVIDIA GeForce RTX 4090/PCIe/SSE2",
+          "vendor": "NVIDIA Corporation",
+          "version": "4.6.0 NVIDIA 595.79"
+        },
+        "requirements_sha256": "a784b5a5e2b4ea201578acddc41e28e0997275ea2542642148322153cd240ffd",
+        "source_sha256": {
+          "gloo/buffer.py": "68e37b184b74814e0ae7a6f4f754c9f0c0af5b4e6369a60a8357c70da974e138",
+          "gloo/context.py": "6afc97492f65a5e865723535206fb769a1c4b55694d69786123fdee78bef992a",
+          "gloo/glir.py": "a3bb8a75b33f47420e9c100b8a6d81037a2f03c905e6c9f7d8399f4fb2eb8f7c",
+          "gloo/program.py": "4d3ab8e36260f9b5dc50f6aec075b12d642535f3cb8f49bfd4a27056301d5492",
+          "gloo/texture.py": "9f6d5f2e448e02c0ca4d66c65d17ddcdb6c0182bb8f15f1292a427f5a9faf6bc",
+          "gloo/wrappers.py": "73dbb5eb8ca78b2822266d272ffb14db9fcadd7a56512843209187714c9e8dcc"
+        },
+        "upstream_commit": "117b054598f4758b598f4b8f48feea48c11fe7b0",
+        "versions": {
+          "PyOpenGL": "3.1.10",
+          "PyQt6": "6.11.0",
+          "PyQt6-Qt6": "6.11.2",
+          "PyQt6-sip": "13.13.0",
+          "freetype-py": "2.5.1",
+          "hsluv": "5.0.4",
+          "kiwisolver": "1.5.1",
+          "numpy": "2.5.3",
+          "packaging": "26.3",
+          "vispy": "0.17.0"
+        },
+        "vispy_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Lib\\site-packages\\vispy",
+        "vispy_version": "0.17.0"
+      },
+      "status": "failed",
+      "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\HEQ\\Projects\\vispy_vulkan\\tools\\oracle_qt_framebuffer_alpha_capture.py\", line 29, in main\n    arrays,params,observations=render(args.worker)\n                               ^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\HEQ\\Projects\\vispy_vulkan\\tools\\fixture_qt_framebuffer_alpha.py\", line 87, in render\n    assert canvas.native.isVisible() and canvas.physical_size == SIZE\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n"
+    },
+    "quarter_alpha": {
+      "case": "quarter_alpha",
+      "error": "",
+      "process": {
+        "command": [
+          "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Scripts\\python.exe",
+          "-X",
+          "faulthandler",
+          "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\tools\\oracle_qt_framebuffer_alpha_capture.py",
+          "--kind",
+          "upstream",
+          "--output",
+          "tests\\reference\\qt-framebuffer-alpha-opengl",
+          "--worker",
+          "quarter_alpha"
+        ],
+        "exit_code": 1,
+        "stderr": {
+          "file": "quarter_alpha.stderr.log",
+          "sha256": "b1d8d1e72b862b2b97cd31253e5ea272299c884b4d8079ddfbf436853e425c15"
+        },
+        "stdout": {
+          "file": "quarter_alpha.stdout.log",
+          "sha256": "0579868d7aad58f33709bb0f91ba953172a28bba92911c8810c26f5fee31384d"
+        }
+      },
+      "provenance": {
+        "capture_source_sha256": "66ae25247831c184f38f2c7a2ff151b940013087104907523b11e1ed2b9b151a",
+        "cmake": null,
+        "distribution_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Lib\\site-packages",
+        "distribution_record_sha256": "455e084c0cb78e19e41c79d08a57d533b07d52b3248c2ebd4b73e80584b067cc",
+        "environment": {
+          "PYTHONPATH": null,
+          "QT_API": "pyqt6",
+          "QT_QPA_PLATFORM": null,
+          "QT_SCALE_FACTOR": "1",
+          "VISPY_PYQT5_SHARE_CONTEXT": null
+        },
+        "fixture_source_sha256": "37797259727afd9c6b15c7074319b935dcddb330deb2b6c99a03c8df6f36fddb",
+        "kind": "upstream",
+        "machine": "AMD64",
+        "numpy_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Lib\\site-packages\\numpy\\__init__.py",
+        "platform": "Windows-11-10.0.26200-SP0",
+        "python": "3.12.8",
+        "python_executable": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Scripts\\python.exe",
+        "qt_runtime": "6.11.2",
+        "regenerate": "uv venv build/oracle-opengl --python 3.12; uv pip install --python build/oracle-opengl/Scripts/python.exe -r tools/oracle_requirements.txt; build/oracle-opengl/Scripts/python.exe tools/oracle_capture.py --kind upstream --output tests/reference/opengl",
+        "renderer": {
+          "renderer": "NVIDIA GeForce RTX 4090/PCIe/SSE2",
+          "vendor": "NVIDIA Corporation",
+          "version": "4.6.0 NVIDIA 595.79"
+        },
+        "requirements_sha256": "a784b5a5e2b4ea201578acddc41e28e0997275ea2542642148322153cd240ffd",
+        "source_sha256": {
+          "gloo/buffer.py": "68e37b184b74814e0ae7a6f4f754c9f0c0af5b4e6369a60a8357c70da974e138",
+          "gloo/context.py": "6afc97492f65a5e865723535206fb769a1c4b55694d69786123fdee78bef992a",
+          "gloo/glir.py": "a3bb8a75b33f47420e9c100b8a6d81037a2f03c905e6c9f7d8399f4fb2eb8f7c",
+          "gloo/program.py": "4d3ab8e36260f9b5dc50f6aec075b12d642535f3cb8f49bfd4a27056301d5492",
+          "gloo/texture.py": "9f6d5f2e448e02c0ca4d66c65d17ddcdb6c0182bb8f15f1292a427f5a9faf6bc",
+          "gloo/wrappers.py": "73dbb5eb8ca78b2822266d272ffb14db9fcadd7a56512843209187714c9e8dcc"
+        },
+        "upstream_commit": "117b054598f4758b598f4b8f48feea48c11fe7b0",
+        "versions": {
+          "PyOpenGL": "3.1.10",
+          "PyQt6": "6.11.0",
+          "PyQt6-Qt6": "6.11.2",
+          "PyQt6-sip": "13.13.0",
+          "freetype-py": "2.5.1",
+          "hsluv": "5.0.4",
+          "kiwisolver": "1.5.1",
+          "numpy": "2.5.3",
+          "packaging": "26.3",
+          "vispy": "0.17.0"
+        },
+        "vispy_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Lib\\site-packages\\vispy",
+        "vispy_version": "0.17.0"
+      },
+      "status": "failed",
+      "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\HEQ\\Projects\\vispy_vulkan\\tools\\oracle_qt_framebuffer_alpha_capture.py\", line 29, in main\n    arrays,params,observations=render(args.worker)\n                               ^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\HEQ\\Projects\\vispy_vulkan\\tools\\fixture_qt_framebuffer_alpha.py\", line 87, in render\n    assert canvas.native.isVisible() and canvas.physical_size == SIZE\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n"
+    },
+    "redraw_and_ownership": {
+      "case": "redraw_and_ownership",
+      "error": "",
+      "process": {
+        "command": [
+          "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Scripts\\python.exe",
+          "-X",
+          "faulthandler",
+          "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\tools\\oracle_qt_framebuffer_alpha_capture.py",
+          "--kind",
+          "upstream",
+          "--output",
+          "tests\\reference\\qt-framebuffer-alpha-opengl",
+          "--worker",
+          "redraw_and_ownership"
+        ],
+        "exit_code": 1,
+        "stderr": {
+          "file": "redraw_and_ownership.stderr.log",
+          "sha256": "b1d8d1e72b862b2b97cd31253e5ea272299c884b4d8079ddfbf436853e425c15"
+        },
+        "stdout": {
+          "file": "redraw_and_ownership.stdout.log",
+          "sha256": "ac82886c45aa64948325e0a8b5aeae083ea8df6ee6e64d0984cc065521aab7b0"
+        }
+      },
+      "provenance": {
+        "capture_source_sha256": "66ae25247831c184f38f2c7a2ff151b940013087104907523b11e1ed2b9b151a",
+        "cmake": null,
+        "distribution_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Lib\\site-packages",
+        "distribution_record_sha256": "455e084c0cb78e19e41c79d08a57d533b07d52b3248c2ebd4b73e80584b067cc",
+        "environment": {
+          "PYTHONPATH": null,
+          "QT_API": "pyqt6",
+          "QT_QPA_PLATFORM": null,
+          "QT_SCALE_FACTOR": "1",
+          "VISPY_PYQT5_SHARE_CONTEXT": null
+        },
+        "fixture_source_sha256": "37797259727afd9c6b15c7074319b935dcddb330deb2b6c99a03c8df6f36fddb",
+        "kind": "upstream",
+        "machine": "AMD64",
+        "numpy_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Lib\\site-packages\\numpy\\__init__.py",
+        "platform": "Windows-11-10.0.26200-SP0",
+        "python": "3.12.8",
+        "python_executable": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Scripts\\python.exe",
+        "qt_runtime": "6.11.2",
+        "regenerate": "uv venv build/oracle-opengl --python 3.12; uv pip install --python build/oracle-opengl/Scripts/python.exe -r tools/oracle_requirements.txt; build/oracle-opengl/Scripts/python.exe tools/oracle_capture.py --kind upstream --output tests/reference/opengl",
+        "renderer": {
+          "renderer": "NVIDIA GeForce RTX 4090/PCIe/SSE2",
+          "vendor": "NVIDIA Corporation",
+          "version": "4.6.0 NVIDIA 595.79"
+        },
+        "requirements_sha256": "a784b5a5e2b4ea201578acddc41e28e0997275ea2542642148322153cd240ffd",
+        "source_sha256": {
+          "gloo/buffer.py": "68e37b184b74814e0ae7a6f4f754c9f0c0af5b4e6369a60a8357c70da974e138",
+          "gloo/context.py": "6afc97492f65a5e865723535206fb769a1c4b55694d69786123fdee78bef992a",
+          "gloo/glir.py": "a3bb8a75b33f47420e9c100b8a6d81037a2f03c905e6c9f7d8399f4fb2eb8f7c",
+          "gloo/program.py": "4d3ab8e36260f9b5dc50f6aec075b12d642535f3cb8f49bfd4a27056301d5492",
+          "gloo/texture.py": "9f6d5f2e448e02c0ca4d66c65d17ddcdb6c0182bb8f15f1292a427f5a9faf6bc",
+          "gloo/wrappers.py": "73dbb5eb8ca78b2822266d272ffb14db9fcadd7a56512843209187714c9e8dcc"
+        },
+        "upstream_commit": "117b054598f4758b598f4b8f48feea48c11fe7b0",
+        "versions": {
+          "PyOpenGL": "3.1.10",
+          "PyQt6": "6.11.0",
+          "PyQt6-Qt6": "6.11.2",
+          "PyQt6-sip": "13.13.0",
+          "freetype-py": "2.5.1",
+          "hsluv": "5.0.4",
+          "kiwisolver": "1.5.1",
+          "numpy": "2.5.3",
+          "packaging": "26.3",
+          "vispy": "0.17.0"
+        },
+        "vispy_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Lib\\site-packages\\vispy",
+        "vispy_version": "0.17.0"
+      },
+      "status": "failed",
+      "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\HEQ\\Projects\\vispy_vulkan\\tools\\oracle_qt_framebuffer_alpha_capture.py\", line 29, in main\n    arrays,params,observations=render(args.worker)\n                               ^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\HEQ\\Projects\\vispy_vulkan\\tools\\fixture_qt_framebuffer_alpha.py\", line 87, in render\n    assert canvas.native.isVisible() and canvas.physical_size == SIZE\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n"
+    },
+    "zero_alpha": {
+      "case": "zero_alpha",
+      "error": "",
+      "process": {
+        "command": [
+          "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Scripts\\python.exe",
+          "-X",
+          "faulthandler",
+          "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\tools\\oracle_qt_framebuffer_alpha_capture.py",
+          "--kind",
+          "upstream",
+          "--output",
+          "tests\\reference\\qt-framebuffer-alpha-opengl",
+          "--worker",
+          "zero_alpha"
+        ],
+        "exit_code": 1,
+        "stderr": {
+          "file": "zero_alpha.stderr.log",
+          "sha256": "b1d8d1e72b862b2b97cd31253e5ea272299c884b4d8079ddfbf436853e425c15"
+        },
+        "stdout": {
+          "file": "zero_alpha.stdout.log",
+          "sha256": "18b2927c1eacb78bf0a48e29b1c83e7f08dee3100af184a815f37dc665aac4f4"
+        }
+      },
+      "provenance": {
+        "capture_source_sha256": "66ae25247831c184f38f2c7a2ff151b940013087104907523b11e1ed2b9b151a",
+        "cmake": null,
+        "distribution_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Lib\\site-packages",
+        "distribution_record_sha256": "455e084c0cb78e19e41c79d08a57d533b07d52b3248c2ebd4b73e80584b067cc",
+        "environment": {
+          "PYTHONPATH": null,
+          "QT_API": "pyqt6",
+          "QT_QPA_PLATFORM": null,
+          "QT_SCALE_FACTOR": "1",
+          "VISPY_PYQT5_SHARE_CONTEXT": null
+        },
+        "fixture_source_sha256": "37797259727afd9c6b15c7074319b935dcddb330deb2b6c99a03c8df6f36fddb",
+        "kind": "upstream",
+        "machine": "AMD64",
+        "numpy_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Lib\\site-packages\\numpy\\__init__.py",
+        "platform": "Windows-11-10.0.26200-SP0",
+        "python": "3.12.8",
+        "python_executable": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Scripts\\python.exe",
+        "qt_runtime": "6.11.2",
+        "regenerate": "uv venv build/oracle-opengl --python 3.12; uv pip install --python build/oracle-opengl/Scripts/python.exe -r tools/oracle_requirements.txt; build/oracle-opengl/Scripts/python.exe tools/oracle_capture.py --kind upstream --output tests/reference/opengl",
+        "renderer": {
+          "renderer": "NVIDIA GeForce RTX 4090/PCIe/SSE2",
+          "vendor": "NVIDIA Corporation",
+          "version": "4.6.0 NVIDIA 595.79"
+        },
+        "requirements_sha256": "a784b5a5e2b4ea201578acddc41e28e0997275ea2542642148322153cd240ffd",
+        "source_sha256": {
+          "gloo/buffer.py": "68e37b184b74814e0ae7a6f4f754c9f0c0af5b4e6369a60a8357c70da974e138",
+          "gloo/context.py": "6afc97492f65a5e865723535206fb769a1c4b55694d69786123fdee78bef992a",
+          "gloo/glir.py": "a3bb8a75b33f47420e9c100b8a6d81037a2f03c905e6c9f7d8399f4fb2eb8f7c",
+          "gloo/program.py": "4d3ab8e36260f9b5dc50f6aec075b12d642535f3cb8f49bfd4a27056301d5492",
+          "gloo/texture.py": "9f6d5f2e448e02c0ca4d66c65d17ddcdb6c0182bb8f15f1292a427f5a9faf6bc",
+          "gloo/wrappers.py": "73dbb5eb8ca78b2822266d272ffb14db9fcadd7a56512843209187714c9e8dcc"
+        },
+        "upstream_commit": "117b054598f4758b598f4b8f48feea48c11fe7b0",
+        "versions": {
+          "PyOpenGL": "3.1.10",
+          "PyQt6": "6.11.0",
+          "PyQt6-Qt6": "6.11.2",
+          "PyQt6-sip": "13.13.0",
+          "freetype-py": "2.5.1",
+          "hsluv": "5.0.4",
+          "kiwisolver": "1.5.1",
+          "numpy": "2.5.3",
+          "packaging": "26.3",
+          "vispy": "0.17.0"
+        },
+        "vispy_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Lib\\site-packages\\vispy",
+        "vispy_version": "0.17.0"
+      },
+      "status": "failed",
+      "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\HEQ\\Projects\\vispy_vulkan\\tools\\oracle_qt_framebuffer_alpha_capture.py\", line 29, in main\n    arrays,params,observations=render(args.worker)\n                               ^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\HEQ\\Projects\\vispy_vulkan\\tools\\fixture_qt_framebuffer_alpha.py\", line 87, in render\n    assert canvas.native.isVisible() and canvas.physical_size == SIZE\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n"
+    }
+  },
+  "fixture_sha256": "d67df7bd0f60dc2645999eb1d24e8229ff578890fbe809968bedfa25c192c179",
+  "fixtures": {},
+  "kind": "upstream",
+  "schema": 1
+}

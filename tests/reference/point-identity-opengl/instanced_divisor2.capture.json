@@ -1,0 +1,283 @@
+{
+  "comparison": {
+    "analytic_pixels_exact": true,
+    "full_frame_exact": true
+  },
+  "errors": {},
+  "fixtures": {
+    "instanced_divisor2": {
+      "artifacts": {
+        "expanded_shaders": {
+          "file": "instanced_divisor2.shaders.json",
+          "sha256": "09e4fe49482bad49709a6e24e8b5f25395d0bf88c9b00d566ccc20125ed14146"
+        },
+        "filtered_glir": {
+          "file": "instanced_divisor2.glir.json",
+          "sha256": "bdf6811b0c6d356365b284b23bcfb6e32c88d4c524a60481383a78658e8245a4"
+        },
+        "rgba": {
+          "file": "instanced_divisor2.npy",
+          "sha256": "ff61ee02dac9546816c467480da2fb2144f6fad6f5d3a28376c01524a02f63df"
+        }
+      },
+      "observations": {
+        "gl_version": "4.6.0 NVIDIA 595.79",
+        "physical_samples": 1,
+        "point_smooth": false,
+        "program_point_size": true,
+        "program_point_size_after_draw": true,
+        "sample_source": "OpenGL driver",
+        "samples_raw": 0
+      },
+      "parameters": {
+        "alpha": 1.0,
+        "analytic_rgba_sha256": "b31f7ba58f33e9f01f12a093f863fe34a890746aba77b64bb2f5a6211c4f1f8a",
+        "api_scope": "public gloo.Program.draw",
+        "case": "instanced_divisor2",
+        "comparison": "entire frame equals fixed analytic pixels and independent OpenGL exactly",
+        "count": null,
+        "data": {
+          "dtype": [
+            [
+              "padding",
+              "<f4"
+            ],
+            [
+              "a_base",
+              "<f4",
+              [
+                2
+              ]
+            ],
+            [
+              "padding2",
+              "<f4"
+            ],
+            [
+              "a_tint",
+              "<f4",
+              [
+                3
+              ]
+            ]
+          ],
+          "sha256": "61f5af4f0dbffeaa241313730ed79dc576dbe6cdda55238d6be8fbcc6f920257",
+          "shape": [
+            2
+          ],
+          "values": [
+            [
+              91.0,
+              [
+                6.5,
+                4.5
+              ],
+              -73.0,
+              [
+                1.0,
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              91.0,
+              [
+                16.5,
+                4.5
+              ],
+              -73.0,
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          ]
+        },
+        "divisor": 2,
+        "first": 0,
+        "fragment_shader_sha256": "2ad327d367066eea57f9c0f3208f263a4dc55175d190965a3f63c3f9355e2d1e",
+        "indices": null,
+        "intermediate_finish": false,
+        "intermediate_present": false,
+        "offsets": {
+          "dtype": "<f4",
+          "sha256": "9de0020fd09dd94f64fe5ad300663ee0c001f50ad10fe793d1fd6b984cfe7c80",
+          "shape": [
+            2,
+            2
+          ],
+          "values": [
+            [
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              8.0
+            ]
+          ]
+        },
+        "operations": [
+          [
+            6,
+            4,
+            3,
+            [
+              255,
+              0,
+              0
+            ],
+            1.0
+          ],
+          [
+            16,
+            6,
+            3,
+            [
+              0,
+              0,
+              255
+            ],
+            1.0
+          ],
+          [
+            8,
+            8,
+            3,
+            [
+              0,
+              0,
+              255
+            ],
+            1.0
+          ],
+          [
+            18,
+            10,
+            3,
+            [
+              255,
+              0,
+              0
+            ],
+            1.0
+          ],
+          [
+            10,
+            12,
+            3,
+            [
+              255,
+              0,
+              0
+            ],
+            1.0
+          ],
+          [
+            20,
+            14,
+            3,
+            [
+              0,
+              0,
+              255
+            ],
+            1.0
+          ],
+          [
+            12,
+            16,
+            3,
+            [
+              0,
+              0,
+              255
+            ],
+            1.0
+          ],
+          [
+            22,
+            18,
+            3,
+            [
+              255,
+              0,
+              0
+            ],
+            1.0
+          ]
+        ],
+        "point_size": 3.0,
+        "primitive": "points",
+        "readbacks": 1,
+        "size": [
+          32,
+          24
+        ],
+        "vertex_shader_sha256": "9bd7db3dfa9da3ff578ef6cc99cd999f9264cd823c3a1c420312107082272e28"
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ]
+    }
+  },
+  "provenance": {
+    "authoring": "full analytic pixel arrays, data, shaders and selection fixed before candidate results",
+    "capture_source_sha256": "66ae25247831c184f38f2c7a2ff151b940013087104907523b11e1ed2b9b151a",
+    "cmake": null,
+    "distribution_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Lib\\site-packages",
+    "distribution_record_sha256": "455e084c0cb78e19e41c79d08a57d533b07d52b3248c2ebd4b73e80584b067cc",
+    "environment": {
+      "PYTHONPATH": null,
+      "QT_API": "pyqt6",
+      "QT_QPA_PLATFORM": null,
+      "QT_SCALE_FACTOR": "1",
+      "VISPY_PYQT5_SHARE_CONTEXT": null
+    },
+    "fixture_source_sha256": "37797259727afd9c6b15c7074319b935dcddb330deb2b6c99a03c8df6f36fddb",
+    "kind": "upstream",
+    "machine": "AMD64",
+    "numpy_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Lib\\site-packages\\numpy\\__init__.py",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "point_capture_sha256": "879af496b60b6927a97a6f9d3db378e598271a34c54b1979b2cf57c042a125fa",
+    "point_fixture_sha256": "7ac8526d887e2753be6d5e12269cd853f7bc7b00bce75ccab27871c78a99fe77",
+    "python": "3.12.8",
+    "python_executable": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Scripts\\python.exe",
+    "qt_runtime": "6.11.2",
+    "regenerate": "uv venv build/oracle-opengl --python 3.12; uv pip install --python build/oracle-opengl/Scripts/python.exe -r tools/oracle_requirements.txt; build/oracle-opengl/Scripts/python.exe tools/oracle_capture.py --kind upstream --output tests/reference/opengl",
+    "renderer": {
+      "renderer": "NVIDIA GeForce RTX 4090/PCIe/SSE2",
+      "vendor": "NVIDIA Corporation",
+      "version": "4.6.0 NVIDIA 595.79"
+    },
+    "requested_upstream_context": "OpenGL4.6 compatibility via public QSurfaceFormat; gl+ backend",
+    "requirements_sha256": "a784b5a5e2b4ea201578acddc41e28e0997275ea2542642148322153cd240ffd",
+    "source_sha256": {
+      "gloo/buffer.py": "68e37b184b74814e0ae7a6f4f754c9f0c0af5b4e6369a60a8357c70da974e138",
+      "gloo/context.py": "6afc97492f65a5e865723535206fb769a1c4b55694d69786123fdee78bef992a",
+      "gloo/glir.py": "a3bb8a75b33f47420e9c100b8a6d81037a2f03c905e6c9f7d8399f4fb2eb8f7c",
+      "gloo/program.py": "4d3ab8e36260f9b5dc50f6aec075b12d642535f3cb8f49bfd4a27056301d5492",
+      "gloo/texture.py": "9f6d5f2e448e02c0ca4d66c65d17ddcdb6c0182bb8f15f1292a427f5a9faf6bc",
+      "gloo/wrappers.py": "73dbb5eb8ca78b2822266d272ffb14db9fcadd7a56512843209187714c9e8dcc"
+    },
+    "upstream_commit": "117b054598f4758b598f4b8f48feea48c11fe7b0",
+    "versions": {
+      "PyOpenGL": "3.1.10",
+      "PyQt6": "6.11.0",
+      "PyQt6-Qt6": "6.11.2",
+      "PyQt6-sip": "13.13.0",
+      "freetype-py": "2.5.1",
+      "hsluv": "5.0.4",
+      "kiwisolver": "1.5.1",
+      "numpy": "2.5.3",
+      "packaging": "26.3",
+      "vispy": "0.17.0"
+    },
+    "vispy_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Lib\\site-packages\\vispy",
+    "vispy_version": "0.17.0"
+  },
+  "schema": 1
+}

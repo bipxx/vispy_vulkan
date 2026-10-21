@@ -1,0 +1,1 @@
+PASS typed capture float_crop_rgb: (3, 4, 3), float32, 1 readbacks

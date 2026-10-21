@@ -1,0 +1,44 @@
+{
+  "admitted": 10,
+  "all13child_processes_terminal": true,
+  "authoring_setup_errors": {
+    "cpu_scalar_nan": {
+      "error": "'colormap name gray not found'",
+      "type": "KeyError"
+    },
+    "gpu_scalar_nan": {
+      "error": "'colormap name gray not found'",
+      "type": "KeyError"
+    },
+    "rgba_nan": {
+      "error": "Invalid texture internalformat: 'rgbagba32f'. Allowed formats: {'r8': 1, 'r16': 1, 'r16f': 1, 'r32f': 1, 'rg8': 2, 'rg16': 2, 'rg16f': 2, 'rg32f': 2, 'rgb8': 3, 'rgb16': 3, 'rgb16f': 3, 'rgb32f': 3, 'rgba8': 4, 'rgba16': 4, 'rgba16f': 4, 'rgba32f': 4, 'luminance': 1, 'alpha': 1, 'red': 1, 'luminance_alpha': 2, 'rg': 2, 'rgb': 3, 'rgba': 4, 'depth_component': 1}",
+      "type": "ValueError"
+    }
+  },
+  "authoring_sha256": "28768db97a432279d62fcc72836cfa8585399e766b93fb7578ecd6b727e020c6",
+  "candidate_graphics_seen": false,
+  "child_exits": {
+    "additive_channels": 0,
+    "cpu_scalar_nan": 1,
+    "gpu_scalar_nan": 1,
+    "labels_paint_tile": 0,
+    "labels_signed_remap": 0,
+    "multiplicative": 0,
+    "multiscale_level0_retained": 0,
+    "multiscale_level1_edit": 0,
+    "rgb_three": 0,
+    "rgba_nan": 1,
+    "scalar_int8_host": 0,
+    "scalar_uint8_host": 0,
+    "slice_change": 0
+  },
+  "log_sha256": "f3924a7097017faca0548674caff9cd7ce208f9ada97e601414b1fd7a7483d6e",
+  "manifest_sha256": "8ad6a6ba1dfd8a6f8c8adbee0f7cc5fedb22439e255a12ec15302de54c5bbda6",
+  "parent_exit_code": 1,
+  "source_hashes_unchanged_during_capture": true,
+  "source_snapshots": {
+    "tests/parity/test_image_extensions_parity.py": "cd80ea0d3fb7ffcb9316362eef42884d88be763e2a20fbf17345516fa73c619c",
+    "tools/fixture_image_extensions.py": "ae396eb72a8477fb659e382e62fdc950f83e7cf5b58027b4e918e5c2cced7b4a",
+    "tools/oracle_image_extensions_capture.py": "e6d97e3ed91145632dff7540ab29ac38b105bc4085aefb50219c75c3d37e3d9f"
+  }
+}

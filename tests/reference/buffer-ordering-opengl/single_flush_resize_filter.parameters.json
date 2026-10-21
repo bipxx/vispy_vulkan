@@ -1,0 +1,134 @@
+{
+  "case": "single_flush_resize_filter",
+  "comparison": {
+    "analytic_full_frame_exact": true,
+    "candidate_alignment_or_color_fit": false,
+    "full_frame_exact": true
+  },
+  "dependent_explicit_flushes": 1,
+  "dependent_window": "no capture, finish, swap or GPU wait between dependent draws/updates",
+  "expected_rgba": {
+    "bytes": 3072,
+    "dtype": "|u1",
+    "sha256": "04c2d5f9d52b2b5d465dc648a61000133d854bae16b67a1f6c7c9d6e6459b79a",
+    "shape": [
+      24,
+      32,
+      4
+    ]
+  },
+  "filter_semantics": "later SIZE removes earlier DATA across DRAW; first DRAW uses already uploaded initial bytes",
+  "filtered_buffer_draw_ops": [
+    "DRAW",
+    "SIZE",
+    "DATA",
+    "DRAW"
+  ],
+  "initial_capacity_bytes": 72,
+  "inputs": {
+    "early_partial": {
+      "bytes": 48,
+      "dtype": "<f4",
+      "sha256": "6597a3031f72b75c7194a59e01e9f8f8b8e9b6f8488f668b476bf89dea87e091",
+      "shape": [
+        6,
+        2
+      ]
+    },
+    "initial": {
+      "bytes": 72,
+      "dtype": "<f4",
+      "sha256": "fa0d56b4f83fa0e89d63cd86852d032c44ce11c6c7ea0ddce52548375fa39ec2",
+      "shape": [
+        9,
+        2
+      ]
+    },
+    "late_partial": {
+      "bytes": 72,
+      "dtype": "<f4",
+      "sha256": "aebb5165c1cf8ee231c30b2827187cfb894f310ecc8e547140e4388f34cfde5a",
+      "shape": [
+        9,
+        2
+      ]
+    }
+  },
+  "landmarks": [
+    {
+      "column": 4,
+      "rgba": [
+        0,
+        0,
+        255,
+        255
+      ],
+      "row": 5
+    },
+    {
+      "column": 15,
+      "rgba": [
+        0,
+        0,
+        255,
+        255
+      ],
+      "row": 5
+    },
+    {
+      "column": 27,
+      "rgba": [
+        0,
+        255,
+        0,
+        255
+      ],
+      "row": 5
+    },
+    {
+      "column": 4,
+      "rgba": [
+        0,
+        0,
+        255,
+        255
+      ],
+      "row": 18
+    },
+    {
+      "column": 15,
+      "rgba": [
+        0,
+        0,
+        255,
+        255
+      ],
+      "row": 18
+    },
+    {
+      "column": 27,
+      "rgba": [
+        0,
+        255,
+        0,
+        255
+      ],
+      "row": 18
+    }
+  ],
+  "new_capacity_bytes": 96,
+  "prewarm": "one public draw and swap_buffers before dependent window; no readback",
+  "raw_buffer_draw_ops": [
+    "DATA",
+    "DRAW",
+    "SIZE",
+    "DATA",
+    "DRAW"
+  ],
+  "readbacks": 1,
+  "scope": "U03 internal documented GLIR queue boundary, not a public Program.draw batch",
+  "size": [
+    32,
+    24
+  ]
+}

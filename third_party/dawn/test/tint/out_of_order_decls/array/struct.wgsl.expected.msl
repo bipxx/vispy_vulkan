@@ -1,0 +1,16 @@
+#include <metal_stdlib>
+using namespace metal;
+
+struct S {
+  int m;
+};
+
+struct tint_module_vars_struct {
+  thread array<S, 4>* A;
+};
+
+fragment void f() {
+  thread array<S, 4> A = {};
+  tint_module_vars_struct const tint_module_vars = tint_module_vars_struct{.A=(&A)};
+  (*tint_module_vars.A)[0] = S{.m=1};
+}

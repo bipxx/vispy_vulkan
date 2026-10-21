@@ -1,0 +1,11 @@
+{
+  "vispy": "117b054598f4758b598f4b8f48feea48c11fe7b0",
+  "napari": "595639295a153c84bcb127a9e07d801355440a35",
+  "glue_vispy_viewers": "33509adb53909b7542069563f77fb9a80bd565a4",
+  "visbrain_sdist_sha256": "1b5596e9e6971ffa1ef5450d297955f1d8f3c1d020050b8f4d935e3fa7276ea6",
+  "phylib_peeled": "457915ba7ef9063504484769d775b3bb1ccfd74a",
+  "dive": "aa575e1c020f0c5e8227bfb234fa192fa2b12924",
+  "napari_threedee": "7bd485085186ebe1907f8de931aa7a93e0d58a83",
+  "dawn": "499e5c6ff9b37d5de70c6493fb74c251e0d35c1c",
+  "rendering_matrix": ["napari-image", "custom-function"]
+}

@@ -1,0 +1,136 @@
+{
+  "comparison": {
+    "analytic_expected_exact": true,
+    "dtype_exact": true,
+    "values_exact": true
+  },
+  "errors": {},
+  "fixtures": {
+    "depth_noalpha_float": {
+      "dtype": "<f4",
+      "expanded_shaders": {
+        "file": "depth_noalpha_float.shaders.json",
+        "sha256": "399db07ac73da735a955432eba29a7bffa61502bad46e97bb397e4f5e8126c68"
+      },
+      "filtered_glir": {
+        "file": "depth_noalpha_float.glir.json",
+        "sha256": "1f8ba4f77dafada620ecf9004350c71949b4bf44165b77a8c9cc085ffba4354c"
+      },
+      "parameters": {
+        "alpha": false,
+        "attachment_size": [
+          8,
+          6
+        ],
+        "background": {
+          "depth": 1,
+          "stencil": 3
+        },
+        "capture_api": "gloo.read_pixels",
+        "crop": [
+          0,
+          0,
+          8,
+          6
+        ],
+        "explicit_gloo_finish_calls": 0,
+        "logical_depth_bits": 24,
+        "mode": "depth",
+        "orientation": "top-left array, bottom-left viewport crop",
+        "out_type": "float",
+        "physical_samples": 1,
+        "readbacks": 1,
+        "regions": [
+          {
+            "depth": 0.25,
+            "operation": "draw",
+            "stencil": 37,
+            "viewport": [
+              1,
+              1,
+              3,
+              2
+            ]
+          },
+          {
+            "depth": 0.75,
+            "operation": "scissor clear",
+            "stencil": 203,
+            "viewport": [
+              4,
+              3,
+              3,
+              2
+            ]
+          }
+        ],
+        "renderbuffer_internalformat": 35056,
+        "stencil_bits": 8
+      },
+      "readbacks": 1,
+      "rgba": {
+        "file": "depth_noalpha_float.npy",
+        "sha256": "cc5e3de182dba4843df52cccb18e0561cfe9ef5a6c185c059a876cc3c9e4e756"
+      },
+      "shape": [
+        6,
+        8,
+        1
+      ]
+    }
+  },
+  "provenance": {
+    "capture_source_sha256": "66ae25247831c184f38f2c7a2ff151b940013087104907523b11e1ed2b9b151a",
+    "cmake": null,
+    "depth_capture_sha256": "0e4dc323eb439c950e640fc40c38cb37656b6a56b355ef3d45269722bb8fa7fe",
+    "depth_fixture_sha256": "c068ccde5364fcb755db39d31fb8e1b2aa93cb157dcfae059852710864277d4f",
+    "distribution_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Lib\\site-packages",
+    "distribution_record_sha256": "455e084c0cb78e19e41c79d08a57d533b07d52b3248c2ebd4b73e80584b067cc",
+    "environment": {
+      "PYTHONPATH": null,
+      "QT_API": "pyqt6",
+      "QT_QPA_PLATFORM": null,
+      "QT_SCALE_FACTOR": "1",
+      "VISPY_PYQT5_SHARE_CONTEXT": "true"
+    },
+    "fixture_source_sha256": "37797259727afd9c6b15c7074319b935dcddb330deb2b6c99a03c8df6f36fddb",
+    "kind": "upstream",
+    "machine": "AMD64",
+    "numpy_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Lib\\site-packages\\numpy\\__init__.py",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.12.8",
+    "python_executable": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Scripts\\python.exe",
+    "qt_runtime": "6.11.2",
+    "regenerate": "build/oracle-opengl/Scripts/python.exe tools/oracle_depth_capture.py --kind upstream --output tests/reference/depth-capture-opengl",
+    "renderer": {
+      "renderer": "NVIDIA GeForce RTX 4090/PCIe/SSE2",
+      "vendor": "NVIDIA Corporation",
+      "version": "4.6.0 NVIDIA 595.79"
+    },
+    "requirements_sha256": "a784b5a5e2b4ea201578acddc41e28e0997275ea2542642148322153cd240ffd",
+    "source_sha256": {
+      "gloo/buffer.py": "68e37b184b74814e0ae7a6f4f754c9f0c0af5b4e6369a60a8357c70da974e138",
+      "gloo/context.py": "6afc97492f65a5e865723535206fb769a1c4b55694d69786123fdee78bef992a",
+      "gloo/glir.py": "a3bb8a75b33f47420e9c100b8a6d81037a2f03c905e6c9f7d8399f4fb2eb8f7c",
+      "gloo/program.py": "4d3ab8e36260f9b5dc50f6aec075b12d642535f3cb8f49bfd4a27056301d5492",
+      "gloo/texture.py": "9f6d5f2e448e02c0ca4d66c65d17ddcdb6c0182bb8f15f1292a427f5a9faf6bc",
+      "gloo/wrappers.py": "73dbb5eb8ca78b2822266d272ffb14db9fcadd7a56512843209187714c9e8dcc"
+    },
+    "upstream_commit": "117b054598f4758b598f4b8f48feea48c11fe7b0",
+    "versions": {
+      "PyOpenGL": "3.1.10",
+      "PyQt6": "6.11.0",
+      "PyQt6-Qt6": "6.11.2",
+      "PyQt6-sip": "13.13.0",
+      "freetype-py": "2.5.1",
+      "hsluv": "5.0.4",
+      "kiwisolver": "1.5.1",
+      "numpy": "2.5.3",
+      "packaging": "26.3",
+      "vispy": "0.17.0"
+    },
+    "vispy_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Lib\\site-packages\\vispy",
+    "vispy_version": "0.17.0"
+  },
+  "schema": 1
+}

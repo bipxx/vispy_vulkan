@@ -1,0 +1,6 @@
+{
+  "2": "\nattribute vec2 a_position;\nvoid main() { gl_Position = vec4(a_position, 0.0, 1.0); }\n",
+  "3": "\nuniform vec4 u_color;\nvoid main() { gl_FragColor = u_color; }\n",
+  "6": "\nattribute vec2 a_position;\nvoid main() { gl_Position = vec4(a_position, 0.0, 1.0); }\n",
+  "7": "\nuniform vec4 u_color;\nvoid main() { gl_FragColor = u_color; }\n"
+}

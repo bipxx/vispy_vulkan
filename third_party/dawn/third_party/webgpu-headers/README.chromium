@@ -1,0 +1,10 @@
+Name: WebGPU-Headers
+Short Name: webgpu-headers
+URL: https://github.com/webgpu-native/webgpu-headers
+Update Mechanism: Autoroll
+Security Critical: no
+Version: N/A
+Revision: a1dc77409bb2b8bd80540cbf4b8db219e123e909
+License: BSD-3-Clause
+License File: LICENSE
+Shipped: no

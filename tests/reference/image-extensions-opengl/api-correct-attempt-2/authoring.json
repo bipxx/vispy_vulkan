@@ -1,0 +1,1155 @@
+{
+  "GPU_used": false,
+  "candidate_seen": false,
+  "cases": {
+    "additive_channels": {
+      "case": "additive_channels",
+      "comparison": {
+        "candidate_alignment_or_color_fit": false,
+        "full_frame_exact": true,
+        "landmark_max_abs_u8": 1
+      },
+      "final_inputs": [
+        {
+          "dtype": "<f4",
+          "sha256": "61300466d6c6de3df775d105ccc86993e3ea82b5fc4316f305da8a0b0344e80a",
+          "shape": [
+            3,
+            24,
+            32
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "dtype": "<f4",
+          "sha256": "61300466d6c6de3df775d105ccc86993e3ea82b5fc4316f305da8a0b0344e80a",
+          "shape": [
+            3,
+            24,
+            32
+          ]
+        }
+      ],
+      "landmarks": [
+        {
+          "column": 80,
+          "rgba": [
+            32,
+            32,
+            143,
+            255
+          ],
+          "row": 48
+        },
+        {
+          "column": 16,
+          "rgba": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "row": 20
+        }
+      ],
+      "multiscale_revision_scope": "per-level CPU content plus real selected-texture GLIR uploads; no fictitious per-level GPU cache",
+      "readbacks": "one final scene.render; no intermediate readback",
+      "size": [
+        128,
+        96
+      ],
+      "workflow": "public napari0.9.2"
+    },
+    "cpu_scalar_nan": {
+      "case": "cpu_scalar_nan",
+      "comparison": {
+        "candidate_alignment_or_color_fit": false,
+        "full_frame_exact": true,
+        "landmark_max_abs_u8": 1
+      },
+      "final_inputs": [
+        {
+          "dtype": "<f4",
+          "sha256": "eebb6d5b5e4a525e1926c8446125a07db49272963e1f249cc88b834cc175fd6a",
+          "shape": [
+            24,
+            32
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "dtype": "<f4",
+          "sha256": "eebb6d5b5e4a525e1926c8446125a07db49272963e1f249cc88b834cc175fd6a",
+          "shape": [
+            24,
+            32
+          ]
+        }
+      ],
+      "landmarks": [
+        {
+          "column": 16,
+          "rgba": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "row": 48
+        },
+        {
+          "column": 48,
+          "rgba": [
+            64,
+            64,
+            64,
+            255
+          ],
+          "row": 48
+        },
+        {
+          "column": 80,
+          "rgba": [
+            128,
+            128,
+            128,
+            255
+          ],
+          "row": 48
+        },
+        {
+          "column": 112,
+          "rgba": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "row": 48
+        },
+        {
+          "column": 16,
+          "rgba": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "row": 20
+        }
+      ],
+      "multiscale_revision_scope": "per-level CPU content plus real selected-texture GLIR uploads; no fictitious per-level GPU cache",
+      "readbacks": "one final scene.render; no intermediate readback",
+      "size": [
+        128,
+        96
+      ],
+      "workflow": "public ImageVisual"
+    },
+    "gpu_scalar_nan": {
+      "case": "gpu_scalar_nan",
+      "comparison": {
+        "candidate_alignment_or_color_fit": false,
+        "full_frame_exact": true,
+        "landmark_max_abs_u8": 1
+      },
+      "final_inputs": [
+        {
+          "dtype": "<f4",
+          "sha256": "eebb6d5b5e4a525e1926c8446125a07db49272963e1f249cc88b834cc175fd6a",
+          "shape": [
+            24,
+            32
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "dtype": "<f4",
+          "sha256": "eebb6d5b5e4a525e1926c8446125a07db49272963e1f249cc88b834cc175fd6a",
+          "shape": [
+            24,
+            32
+          ]
+        }
+      ],
+      "landmarks": [
+        {
+          "column": 16,
+          "rgba": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "row": 48
+        },
+        {
+          "column": 48,
+          "rgba": [
+            64,
+            64,
+            64,
+            255
+          ],
+          "row": 48
+        },
+        {
+          "column": 80,
+          "rgba": [
+            128,
+            128,
+            128,
+            255
+          ],
+          "row": 48
+        },
+        {
+          "column": 112,
+          "rgba": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "row": 48
+        },
+        {
+          "column": 16,
+          "rgba": [
+            32,
+            64,
+            128,
+            255
+          ],
+          "row": 20
+        }
+      ],
+      "multiscale_revision_scope": "per-level CPU content plus real selected-texture GLIR uploads; no fictitious per-level GPU cache",
+      "readbacks": "one final scene.render; no intermediate readback",
+      "size": [
+        128,
+        96
+      ],
+      "workflow": "public ImageVisual"
+    },
+    "labels_paint_tile": {
+      "case": "labels_paint_tile",
+      "comparison": {
+        "candidate_alignment_or_color_fit": false,
+        "full_frame_exact": true,
+        "landmark_max_abs_u8": 1
+      },
+      "final_inputs": [
+        {
+          "dtype": "<i4",
+          "sha256": "d28e3a8113520952620db8979249dee3a6701f48904c2feeb0b8c51355260da7",
+          "shape": [
+            24,
+            32
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "dtype": "<i4",
+          "sha256": "3236e15c0e53720f8f81017fa5b9278253e4bf93db20b7396338486e6e5442ca",
+          "shape": [
+            24,
+            32
+          ]
+        }
+      ],
+      "landmarks": [
+        {
+          "column": 16,
+          "rgba": [
+            255,
+            0,
+            0,
+            255
+          ],
+          "row": 48
+        },
+        {
+          "column": 48,
+          "rgba": [
+            32,
+            64,
+            128,
+            255
+          ],
+          "row": 48
+        },
+        {
+          "column": 80,
+          "rgba": [
+            0,
+            255,
+            0,
+            255
+          ],
+          "row": 48
+        },
+        {
+          "column": 112,
+          "rgba": [
+            0,
+            0,
+            255,
+            255
+          ],
+          "row": 48
+        },
+        {
+          "column": 42,
+          "rgba": [
+            0,
+            0,
+            255,
+            255
+          ],
+          "row": 26
+        },
+        {
+          "column": 34,
+          "rgba": [
+            32,
+            64,
+            128,
+            255
+          ],
+          "row": 18
+        },
+        {
+          "column": 42,
+          "rgba": [
+            32,
+            64,
+            128,
+            255
+          ],
+          "row": 14
+        }
+      ],
+      "multiscale_revision_scope": "per-level CPU content plus real selected-texture GLIR uploads; no fictitious per-level GPU cache",
+      "readbacks": "one final scene.render; no intermediate readback",
+      "size": [
+        128,
+        96
+      ],
+      "workflow": "public napari0.9.2"
+    },
+    "labels_signed_remap": {
+      "case": "labels_signed_remap",
+      "comparison": {
+        "candidate_alignment_or_color_fit": false,
+        "full_frame_exact": true,
+        "landmark_max_abs_u8": 1
+      },
+      "final_inputs": [
+        {
+          "dtype": "<i4",
+          "sha256": "3236e15c0e53720f8f81017fa5b9278253e4bf93db20b7396338486e6e5442ca",
+          "shape": [
+            24,
+            32
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "dtype": "<i4",
+          "sha256": "3236e15c0e53720f8f81017fa5b9278253e4bf93db20b7396338486e6e5442ca",
+          "shape": [
+            24,
+            32
+          ]
+        }
+      ],
+      "landmarks": [
+        {
+          "column": 16,
+          "rgba": [
+            255,
+            0,
+            0,
+            255
+          ],
+          "row": 48
+        },
+        {
+          "column": 48,
+          "rgba": [
+            32,
+            64,
+            128,
+            255
+          ],
+          "row": 48
+        },
+        {
+          "column": 80,
+          "rgba": [
+            0,
+            255,
+            0,
+            255
+          ],
+          "row": 48
+        },
+        {
+          "column": 112,
+          "rgba": [
+            0,
+            0,
+            255,
+            255
+          ],
+          "row": 48
+        }
+      ],
+      "multiscale_revision_scope": "per-level CPU content plus real selected-texture GLIR uploads; no fictitious per-level GPU cache",
+      "readbacks": "one final scene.render; no intermediate readback",
+      "size": [
+        128,
+        96
+      ],
+      "workflow": "public napari0.9.2"
+    },
+    "multiplicative": {
+      "case": "multiplicative",
+      "comparison": {
+        "candidate_alignment_or_color_fit": false,
+        "full_frame_exact": true,
+        "landmark_max_abs_u8": 1
+      },
+      "final_inputs": [
+        {
+          "dtype": "|u1",
+          "sha256": "55e64a228e4afaa0a05111b15198f2544dc3fe58612fb558eb3c47a70b63c1a3",
+          "shape": [
+            24,
+            32,
+            4
+          ]
+        },
+        {
+          "dtype": "|u1",
+          "sha256": "4766ac6b34d610ab9f1106a020146cf24e1ccc5448309ddffe4623f0f107b1cb",
+          "shape": [
+            24,
+            32,
+            4
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "dtype": "|u1",
+          "sha256": "55e64a228e4afaa0a05111b15198f2544dc3fe58612fb558eb3c47a70b63c1a3",
+          "shape": [
+            24,
+            32,
+            4
+          ]
+        },
+        {
+          "dtype": "|u1",
+          "sha256": "4766ac6b34d610ab9f1106a020146cf24e1ccc5448309ddffe4623f0f107b1cb",
+          "shape": [
+            24,
+            32,
+            4
+          ]
+        }
+      ],
+      "landmarks": [
+        {
+          "column": 80,
+          "rgba": [
+            64,
+            48,
+            48,
+            255
+          ],
+          "row": 48
+        },
+        {
+          "column": 28,
+          "rgba": [
+            32,
+            145,
+            32,
+            255
+          ],
+          "row": 20
+        }
+      ],
+      "multiscale_revision_scope": "per-level CPU content plus real selected-texture GLIR uploads; no fictitious per-level GPU cache",
+      "readbacks": "one final scene.render; no intermediate readback",
+      "size": [
+        128,
+        96
+      ],
+      "workflow": "public napari0.9.2"
+    },
+    "multiscale_level0_retained": {
+      "case": "multiscale_level0_retained",
+      "comparison": {
+        "candidate_alignment_or_color_fit": false,
+        "full_frame_exact": true,
+        "landmark_max_abs_u8": 1
+      },
+      "final_inputs": [
+        {
+          "dtype": "|u1",
+          "sha256": "96c117a32e74822735108bb5f6e5630d9194348b515d2d5ec5c07d51f4f26b2d",
+          "shape": [
+            24,
+            32
+          ]
+        },
+        {
+          "dtype": "|u1",
+          "sha256": "d48dd268108712bc70e8ab0ca335959f06ce1d6e9f855f9db7eb8f90354306ae",
+          "shape": [
+            12,
+            16
+          ]
+        },
+        {
+          "dtype": "|u1",
+          "sha256": "e384028ce5a7f7c8b664fb7666690bb342896920821247558c280a08c1cfb1c0",
+          "shape": [
+            6,
+            8
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "dtype": "|u1",
+          "sha256": "96c117a32e74822735108bb5f6e5630d9194348b515d2d5ec5c07d51f4f26b2d",
+          "shape": [
+            24,
+            32
+          ]
+        },
+        {
+          "dtype": "|u1",
+          "sha256": "1b882cfa39b290a110b21118fdd0f92802d7741469b7f5ac1aac89097ed1ed6e",
+          "shape": [
+            12,
+            16
+          ]
+        },
+        {
+          "dtype": "|u1",
+          "sha256": "e384028ce5a7f7c8b664fb7666690bb342896920821247558c280a08c1cfb1c0",
+          "shape": [
+            6,
+            8
+          ]
+        }
+      ],
+      "landmarks": [
+        {
+          "column": 16,
+          "rgba": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "row": 48
+        },
+        {
+          "column": 48,
+          "rgba": [
+            64,
+            64,
+            64,
+            255
+          ],
+          "row": 48
+        },
+        {
+          "column": 80,
+          "rgba": [
+            128,
+            128,
+            128,
+            255
+          ],
+          "row": 48
+        },
+        {
+          "column": 112,
+          "rgba": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "row": 48
+        },
+        {
+          "column": 48,
+          "rgba": [
+            64,
+            64,
+            64,
+            255
+          ],
+          "row": 24
+        }
+      ],
+      "multiscale_revision_scope": "per-level CPU content plus real selected-texture GLIR uploads; no fictitious per-level GPU cache",
+      "readbacks": "one final scene.render; no intermediate readback",
+      "size": [
+        128,
+        96
+      ],
+      "workflow": "public napari0.9.2"
+    },
+    "multiscale_level1_edit": {
+      "case": "multiscale_level1_edit",
+      "comparison": {
+        "candidate_alignment_or_color_fit": false,
+        "full_frame_exact": true,
+        "landmark_max_abs_u8": 1
+      },
+      "final_inputs": [
+        {
+          "dtype": "|u1",
+          "sha256": "96c117a32e74822735108bb5f6e5630d9194348b515d2d5ec5c07d51f4f26b2d",
+          "shape": [
+            24,
+            32
+          ]
+        },
+        {
+          "dtype": "|u1",
+          "sha256": "d48dd268108712bc70e8ab0ca335959f06ce1d6e9f855f9db7eb8f90354306ae",
+          "shape": [
+            12,
+            16
+          ]
+        },
+        {
+          "dtype": "|u1",
+          "sha256": "e384028ce5a7f7c8b664fb7666690bb342896920821247558c280a08c1cfb1c0",
+          "shape": [
+            6,
+            8
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "dtype": "|u1",
+          "sha256": "96c117a32e74822735108bb5f6e5630d9194348b515d2d5ec5c07d51f4f26b2d",
+          "shape": [
+            24,
+            32
+          ]
+        },
+        {
+          "dtype": "|u1",
+          "sha256": "1b882cfa39b290a110b21118fdd0f92802d7741469b7f5ac1aac89097ed1ed6e",
+          "shape": [
+            12,
+            16
+          ]
+        },
+        {
+          "dtype": "|u1",
+          "sha256": "e384028ce5a7f7c8b664fb7666690bb342896920821247558c280a08c1cfb1c0",
+          "shape": [
+            6,
+            8
+          ]
+        }
+      ],
+      "landmarks": [
+        {
+          "column": 16,
+          "rgba": [
+            32,
+            32,
+            32,
+            255
+          ],
+          "row": 48
+        },
+        {
+          "column": 48,
+          "rgba": [
+            96,
+            96,
+            96,
+            255
+          ],
+          "row": 48
+        },
+        {
+          "column": 80,
+          "rgba": [
+            160,
+            160,
+            160,
+            255
+          ],
+          "row": 48
+        },
+        {
+          "column": 112,
+          "rgba": [
+            224,
+            224,
+            224,
+            255
+          ],
+          "row": 48
+        },
+        {
+          "column": 48,
+          "rgba": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "row": 24
+        }
+      ],
+      "multiscale_revision_scope": "per-level CPU content plus real selected-texture GLIR uploads; no fictitious per-level GPU cache",
+      "readbacks": "one final scene.render; no intermediate readback",
+      "size": [
+        128,
+        96
+      ],
+      "workflow": "public napari0.9.2"
+    },
+    "rgb_three": {
+      "case": "rgb_three",
+      "comparison": {
+        "candidate_alignment_or_color_fit": false,
+        "full_frame_exact": true,
+        "landmark_max_abs_u8": 1
+      },
+      "final_inputs": [
+        {
+          "dtype": "|u1",
+          "sha256": "95a7229e5bce47cfa52ccdb51fc109c173e13347205a3d60d477192c4ab60a6a",
+          "shape": [
+            24,
+            32,
+            3
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "dtype": "|u1",
+          "sha256": "95a7229e5bce47cfa52ccdb51fc109c173e13347205a3d60d477192c4ab60a6a",
+          "shape": [
+            24,
+            32,
+            3
+          ]
+        }
+      ],
+      "landmarks": [
+        {
+          "column": 28,
+          "rgba": [
+            255,
+            0,
+            0,
+            255
+          ],
+          "row": 20
+        },
+        {
+          "column": 92,
+          "rgba": [
+            0,
+            255,
+            0,
+            255
+          ],
+          "row": 64
+        },
+        {
+          "column": 28,
+          "rgba": [
+            0,
+            0,
+            255,
+            255
+          ],
+          "row": 64
+        },
+        {
+          "column": 16,
+          "rgba": [
+            20,
+            40,
+            60,
+            255
+          ],
+          "row": 80
+        }
+      ],
+      "multiscale_revision_scope": "per-level CPU content plus real selected-texture GLIR uploads; no fictitious per-level GPU cache",
+      "readbacks": "one final scene.render; no intermediate readback",
+      "size": [
+        128,
+        96
+      ],
+      "workflow": "public napari0.9.2"
+    },
+    "rgba_nan": {
+      "case": "rgba_nan",
+      "comparison": {
+        "candidate_alignment_or_color_fit": false,
+        "full_frame_exact": true,
+        "landmark_max_abs_u8": 1
+      },
+      "final_inputs": [
+        {
+          "dtype": "<f4",
+          "sha256": "c68508c77300352c4e0de9d3d7fc0459fbaff830815a51af23d12d6f396369f4",
+          "shape": [
+            24,
+            32,
+            4
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "dtype": "<f4",
+          "sha256": "c68508c77300352c4e0de9d3d7fc0459fbaff830815a51af23d12d6f396369f4",
+          "shape": [
+            24,
+            32,
+            4
+          ]
+        }
+      ],
+      "landmarks": [
+        {
+          "column": 16,
+          "rgba": [
+            0,
+            128,
+            191,
+            255
+          ],
+          "row": 20
+        },
+        {
+          "column": 92,
+          "rgba": [
+            32,
+            64,
+            128,
+            255
+          ],
+          "row": 64
+        },
+        {
+          "column": 16,
+          "rgba": [
+            64,
+            128,
+            191,
+            255
+          ],
+          "row": 80
+        }
+      ],
+      "multiscale_revision_scope": "per-level CPU content plus real selected-texture GLIR uploads; no fictitious per-level GPU cache",
+      "readbacks": "one final scene.render; no intermediate readback",
+      "size": [
+        128,
+        96
+      ],
+      "workflow": "public ImageVisual"
+    },
+    "scalar_int8_host": {
+      "case": "scalar_int8_host",
+      "comparison": {
+        "candidate_alignment_or_color_fit": false,
+        "full_frame_exact": true,
+        "landmark_max_abs_u8": 1
+      },
+      "final_inputs": [
+        {
+          "dtype": "|i1",
+          "sha256": "a157ab47cecca3aa889c3b4fc618bd26bdfd42d16bf61319aa662ae49ca3763a",
+          "shape": [
+            24,
+            32
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "dtype": "|i1",
+          "sha256": "a157ab47cecca3aa889c3b4fc618bd26bdfd42d16bf61319aa662ae49ca3763a",
+          "shape": [
+            24,
+            32
+          ]
+        }
+      ],
+      "landmarks": [
+        {
+          "column": 16,
+          "rgba": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "row": 48
+        },
+        {
+          "column": 48,
+          "rgba": [
+            64,
+            64,
+            64,
+            255
+          ],
+          "row": 48
+        },
+        {
+          "column": 80,
+          "rgba": [
+            192,
+            192,
+            192,
+            255
+          ],
+          "row": 48
+        },
+        {
+          "column": 112,
+          "rgba": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "row": 48
+        }
+      ],
+      "multiscale_revision_scope": "per-level CPU content plus real selected-texture GLIR uploads; no fictitious per-level GPU cache",
+      "readbacks": "one final scene.render; no intermediate readback",
+      "size": [
+        128,
+        96
+      ],
+      "workflow": "public napari0.9.2"
+    },
+    "scalar_uint8_host": {
+      "case": "scalar_uint8_host",
+      "comparison": {
+        "candidate_alignment_or_color_fit": false,
+        "full_frame_exact": true,
+        "landmark_max_abs_u8": 1
+      },
+      "final_inputs": [
+        {
+          "dtype": "|u1",
+          "sha256": "cf751d4d11f799a7a64fafe9d8e87a10fa63d673f629974e44459357b28f2599",
+          "shape": [
+            24,
+            32
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "dtype": "|u1",
+          "sha256": "cf751d4d11f799a7a64fafe9d8e87a10fa63d673f629974e44459357b28f2599",
+          "shape": [
+            24,
+            32
+          ]
+        }
+      ],
+      "landmarks": [
+        {
+          "column": 16,
+          "rgba": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "row": 48
+        },
+        {
+          "column": 48,
+          "rgba": [
+            64,
+            64,
+            64,
+            255
+          ],
+          "row": 48
+        },
+        {
+          "column": 80,
+          "rgba": [
+            192,
+            192,
+            192,
+            255
+          ],
+          "row": 48
+        },
+        {
+          "column": 112,
+          "rgba": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "row": 48
+        }
+      ],
+      "multiscale_revision_scope": "per-level CPU content plus real selected-texture GLIR uploads; no fictitious per-level GPU cache",
+      "readbacks": "one final scene.render; no intermediate readback",
+      "size": [
+        128,
+        96
+      ],
+      "workflow": "public napari0.9.2"
+    },
+    "slice_change": {
+      "case": "slice_change",
+      "comparison": {
+        "candidate_alignment_or_color_fit": false,
+        "full_frame_exact": true,
+        "landmark_max_abs_u8": 1
+      },
+      "final_inputs": [
+        {
+          "dtype": "|u1",
+          "sha256": "18373bec9923a9ecf75d911d6f2bdd0f72eddb7411f9a263c4df0edc92343aab",
+          "shape": [
+            3,
+            24,
+            32
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "dtype": "|u1",
+          "sha256": "835370e1f5cf4e1433bff56d80e51a1173819bbacd739f3d8a2ead5e107d420b",
+          "shape": [
+            3,
+            24,
+            32
+          ]
+        }
+      ],
+      "landmarks": [
+        {
+          "column": 16,
+          "rgba": [
+            32,
+            32,
+            32,
+            255
+          ],
+          "row": 48
+        },
+        {
+          "column": 48,
+          "rgba": [
+            96,
+            96,
+            96,
+            255
+          ],
+          "row": 48
+        },
+        {
+          "column": 80,
+          "rgba": [
+            160,
+            160,
+            160,
+            255
+          ],
+          "row": 48
+        },
+        {
+          "column": 112,
+          "rgba": [
+            224,
+            224,
+            224,
+            255
+          ],
+          "row": 48
+        },
+        {
+          "column": 44,
+          "rgba": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "row": 24
+        },
+        {
+          "column": 32,
+          "rgba": [
+            96,
+            96,
+            96,
+            255
+          ],
+          "row": 24
+        }
+      ],
+      "multiscale_revision_scope": "per-level CPU content plus real selected-texture GLIR uploads; no fictitious per-level GPU cache",
+      "readbacks": "one final scene.render; no intermediate readback",
+      "size": [
+        128,
+        96
+      ],
+      "workflow": "public napari0.9.2"
+    }
+  },
+  "comparison": {
+    "candidate_alignment_or_color_fit": false,
+    "full_frame_exact": true,
+    "landmark_max_abs_u8": 1
+  },
+  "installed_upstream_lock": {
+    "file": "tools\\oracle_napari_requirements.txt",
+    "sha256": "bae850d37ba4c84b6c0ad42e2aa40d495d1e7ccab1aa20454d875764bdbbb732"
+  },
+  "schema": 1,
+  "scope": "13public workflows; remap is observed from real uploads, multiscale uses one selected host texture, original level content/revisit frames are distinct cases",
+  "sources_sha256": {
+    "tests/parity/test_image_extensions_parity.py": "ea1fb8f19d5e0c6ea49900a22ebe5875dcd6a62ba8d0a05c3023125ba9d8bf7a",
+    "tools/fixture_image_extensions.py": "7d18601e08982c0b0f73c656f1746899760c9fd042650470ef1504ba7cb5056d",
+    "tools/oracle_image_extensions_capture.py": "5583a42fd34b105651cb1f81c77621f96efd92fedc54e78ee5367eb95e0b6211"
+  }
+}

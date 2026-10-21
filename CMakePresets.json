@@ -1,0 +1,110 @@
+{
+  "version": 3,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 22,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "windows-release",
+      "displayName": "Windows Vulkan, Visual Studio x64",
+      "generator": "Visual Studio 17 2022",
+      "architecture": "x64",
+      "binaryDir": "${sourceDir}/build/windows-release",
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Windows"
+      },
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "Python_EXECUTABLE": "${sourceDir}/.venv/Scripts/python.exe",
+        "Python3_EXECUTABLE": "${sourceDir}/.venv/Scripts/python.exe",
+        "nanobind_DIR": "${sourceDir}/.venv/Lib/site-packages/nanobind/cmake",
+        "VISPY_INPLACE": "ON",
+        "VISPY_LEGACY_MSVC_CRT_MUTEX": "ON",
+        "VISPY_VERIFY_DEPENDENCIES": "ON"
+      }
+    },
+    {
+      "name": "linux-release",
+      "displayName": "Linux X11 Vulkan (platform qualification required)",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/linux-release",
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Linux"
+      },
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "Python_EXECUTABLE": "${sourceDir}/.venv/bin/python",
+        "Python3_EXECUTABLE": "${sourceDir}/.venv/bin/python",
+        "VISPY_INPLACE": "ON",
+        "VISPY_VERIFY_DEPENDENCIES": "ON"
+      }
+    },
+    {
+      "name": "macos-release",
+      "displayName": "macOS Metal, minimum macOS 13 (platform qualification required)",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/macos-release",
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Darwin"
+      },
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "Python_EXECUTABLE": "${sourceDir}/.venv/bin/python",
+        "Python3_EXECUTABLE": "${sourceDir}/.venv/bin/python",
+        "VISPY_INPLACE": "ON",
+        "VISPY_VERIFY_DEPENDENCIES": "ON",
+        "CMAKE_OSX_DEPLOYMENT_TARGET": "13.0"
+      }
+    },
+    {
+      "name": "unix-release",
+      "displayName": "Linux release alias",
+      "inherits": "linux-release"
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "windows-release",
+      "configurePreset": "windows-release",
+      "configuration": "Release",
+      "jobs": 4,
+      "targets": [
+        "_dawn",
+        "_sdf_cpu",
+        "VkLayer_vispy_submit"
+      ]
+    },
+    {
+      "name": "linux-release",
+      "configurePreset": "linux-release",
+      "jobs": 4,
+      "targets": [
+        "_dawn",
+        "_sdf_cpu",
+        "VkLayer_vispy_submit"
+      ]
+    },
+    {
+      "name": "macos-release",
+      "configurePreset": "macos-release",
+      "jobs": 4,
+      "targets": [
+        "_dawn",
+        "_sdf_cpu"
+      ]
+    },
+    {
+      "name": "unix-release",
+      "inherits": "linux-release",
+      "configurePreset": "unix-release"
+    }
+  ]
+}

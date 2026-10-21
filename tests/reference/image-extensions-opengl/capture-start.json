@@ -1,0 +1,18 @@
+{
+  "authoring_sha256": "28768db97a432279d62fcc72836cfa8585399e766b93fb7578ecd6b727e020c6",
+  "command": [
+    "build/oracle-napari/Scripts/python.exe",
+    "tools/oracle_image_extensions_capture.py",
+    "--kind",
+    "upstream",
+    "--output",
+    "tests/reference/image-extensions-opengl"
+  ],
+  "lock_sha256": "bae850d37ba4c84b6c0ad42e2aa40d495d1e7ccab1aa20454d875764bdbbb732",
+  "phase": "before authorized upstream GPU capture",
+  "sources_sha256": {
+    "tests/parity/test_image_extensions_parity.py": "cd80ea0d3fb7ffcb9316362eef42884d88be763e2a20fbf17345516fa73c619c",
+    "tools/fixture_image_extensions.py": "ae396eb72a8477fb659e382e62fdc950f83e7cf5b58027b4e918e5c2cced7b4a",
+    "tools/oracle_image_extensions_capture.py": "e6d97e3ed91145632dff7540ab29ac38b105bc4085aefb50219c75c3d37e3d9f"
+  }
+}

@@ -1,0 +1,4 @@
+{
+  "2": "#version 330\nin vec4 a_position;\nflat out vec4 v_color;\nfloat private_state = 0.;\nvec4 evaluate_endpoint(vec4 position) {\n    private_state += 1.;\n    position.y += (private_state - 1.) * (16./24.) * position.w;\n    return position;\n}\nvoid main() {\n    gl_Position = evaluate_endpoint(a_position);\n    v_color = vec4(0., private_state == 1. ? 1. : 0., private_state > 1. ? 1. : 0., 1.);\n}\n",
+  "3": "#version 330\nflat in vec4 v_color;\nout vec4 out_color;\nvoid main() { out_color = v_color; }\n"
+}

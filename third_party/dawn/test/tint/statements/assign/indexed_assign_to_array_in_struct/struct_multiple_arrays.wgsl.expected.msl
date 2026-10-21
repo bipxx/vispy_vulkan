@@ -1,0 +1,28 @@
+#include <metal_stdlib>
+using namespace metal;
+
+struct Uniforms {
+  /* 0x0000 */ uint i;
+};
+
+struct tint_module_vars_struct {
+  const constant Uniforms* uniforms;
+};
+
+struct InnerS {
+  int v;
+};
+
+struct OuterS {
+  array<InnerS, 8> a1;
+  array<InnerS, 8> a2;
+};
+
+[[max_total_threads_per_threadgroup(1)]]
+kernel void v_1(const constant Uniforms* uniforms [[buffer(0)]]) {
+  tint_module_vars_struct const tint_module_vars = tint_module_vars_struct{.uniforms=uniforms};
+  InnerS v = {};
+  OuterS s1 = {};
+  s1.a1[min((*tint_module_vars.uniforms).i, 7u)] = v;
+  s1.a2[min((*tint_module_vars.uniforms).i, 7u)] = v;
+}

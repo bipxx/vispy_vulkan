@@ -1,0 +1,21 @@
+#include <metal_stdlib>
+using namespace metal;
+
+int foo() {
+  return 1;
+}
+
+fragment void v() {
+  array<float, 4> arr = array<float, 4>{};
+  {
+    uint2 tint_loop_idx = uint2(4294967295u);
+    thread float* const a = (&arr[min(uint(foo()), 3u)]);
+    while(true) {
+      if (all((tint_loop_idx == uint2(0u)))) {
+        break;
+      }
+      float const x = (*a);
+      break;
+    }
+  }
+}

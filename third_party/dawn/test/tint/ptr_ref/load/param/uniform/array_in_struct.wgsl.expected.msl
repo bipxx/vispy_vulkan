@@ -1,0 +1,20 @@
+#include <metal_stdlib>
+using namespace metal;
+
+struct str {
+  /* 0x0000 */ array<int4, 4> arr;
+};
+
+struct tint_module_vars_struct {
+  const constant str* S;
+};
+
+array<int4, 4> func(const constant array<int4, 4>* const pointer) {
+  return (*pointer);
+}
+
+[[max_total_threads_per_threadgroup(1)]]
+kernel void v(const constant str* S [[buffer(0)]]) {
+  tint_module_vars_struct const tint_module_vars = tint_module_vars_struct{.S=S};
+  array<int4, 4> const r = func((&(*tint_module_vars.S).arr));
+}

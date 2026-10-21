@@ -1,0 +1,32 @@
+{
+  "argv": [
+    "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-napari\\Scripts\\python.exe",
+    "tools/oracle_buffer_ordering_capture.py",
+    "--kind",
+    "upstream",
+    "--output",
+    "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\tests\\reference\\buffer-ordering-opengl"
+  ],
+  "authoring_sha256": "d34d95dce4593c0495d60114951911c2a333fe79e19c651f02c91f6784f004bc",
+  "cwd": "C:\\Users\\HEQ\\Projects\\vispy_vulkan",
+  "environment": {
+    "PYTHONHASHSEED": "0",
+    "QT_API": "pyqt6",
+    "QT_SCALE_FACTOR": "1"
+  },
+  "graphics_started": false,
+  "kind": "independent upstream; candidate unobserved",
+  "native_before": {
+    "src\\vispy\\_dawn.cp312-win_amd64.pyd": "89862fbc265bee109a2409cda7631442b8fc1b562a18fc2c21519cdc81fd7116",
+    "src\\vispy\\visuals\\text\\_sdf_cpu.cp312-win_amd64.pyd": "11638220e99ad064a4a0d373145cc2b0f47b7983bae8e4007398f167d76355e0"
+  },
+  "source_sha256": {
+    "tests/parity/test_buffer_ordering_parity.py": "96f4acbe2fc747d9883b72df09881ce4a3b4c4902ea2f3c2ecb05b3ff5a6d2ba",
+    "tools/fixture_buffer_ordering.py": "385d551f9f9bbc2db3714f2141bb93728037c594e41e6d55621d5041fcaaff57",
+    "tools/fixture_gloo.py": "37797259727afd9c6b15c7074319b935dcddb330deb2b6c99a03c8df6f36fddb",
+    "tools/oracle_buffer_ordering_capture.py": "906b8e9a8ed5f03420ee3198ed3621705d491947b4a46b20ae8c5805cfe09888",
+    "tools/oracle_capture.py": "66ae25247831c184f38f2c7a2ff151b940013087104907523b11e1ed2b9b151a",
+    "tools/oracle_image_extensions_capture.py": "5583a42fd34b105651cb1f81c77621f96efd92fedc54e78ee5367eb95e0b6211"
+  },
+  "upstream_cpu_transcript_sha256": "a2c5b10ccf36665f9201dfd8e0c8828f85478031b6b4d5d22ed84c37c42d1670"
+}

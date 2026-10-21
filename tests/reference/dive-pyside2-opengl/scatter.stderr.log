@@ -1,0 +1,20 @@
+Traceback (most recent call last):
+  File "C:\Users\HEQ\Projects\vispy_vulkan\tools\oracle_dive_pyside2_capture.py", line 170, in main
+    image, commands, shaders, params, extras = render(name)
+  File "C:\Users\HEQ\Projects\vispy_vulkan\tools\fixture_dive_pyside2.py", line 106, in render
+    widget.add_scatter_artist("xy", "points", "analytic", "x", "y", marker="o",
+  File "C:\Users\HEQ\Projects\vispy_vulkan\build\host-environments\dive-pyside2-cpython310-upstream\lib\site-packages\DIVE\_widget.py", line 882, in add_scatter_artist
+    self._dive_manager.add_artist(axis_name, 'scatter', dict(name=name, data_name=data_name, x_field=x_field, y_field=y_field, z_field=z_field, label_field=label_field, label_size=label_size, visible=visible, draw_order=draw_order, label_draw_order=label_draw_order, legend_text=legend_text, selectable=selectable,
+  File "C:\Users\HEQ\Projects\vispy_vulkan\build\host-environments\dive-pyside2-cpython310-upstream\lib\site-packages\DIVE\_components\dive_manager.py", line 613, in add_artist
+    err_msg = axis_obj.add_artist(self.data, artist_type, self.unit_reg, state)
+  File "C:\Users\HEQ\Projects\vispy_vulkan\build\host-environments\dive-pyside2-cpython310-upstream\lib\site-packages\DIVE\_components\dive_axis.py", line 15, in add_artist
+    err_msg = artist_obj.set_state(data_objs, self.axis_type, list(self.artists), unit_reg, state)
+  File "C:\Users\HEQ\Projects\vispy_vulkan\build\host-environments\dive-pyside2-cpython310-upstream\lib\site-packages\DIVE\_plotting\artists.py", line 1423, in set_state
+    elif attrs['marker'] not in vpvisuals.MarkersVisual._marker_funcs:
+AttributeError: type object 'MarkersVisual' has no attribute '_marker_funcs'
+Fatal Python error: Aborted
+
+Current thread 0x00010344 (most recent call first):
+  <no Python frame>
+
+Extension modules: numpy.core._multiarray_umath, numpy.core._multiarray_tests, numpy.linalg._umath_linalg, numpy.fft._pocketfft_internal, numpy.random._common, numpy.random.bit_generator, numpy.random._bounded_integers, numpy.random._mt19937, numpy.random.mtrand, numpy.random._philox, numpy.random._pcg64, numpy.random._sfc64, numpy.random._generator, xxsubtype, shiboken2.shiboken2, PySide2.QtCore, PySide2.QtGui, PySide2.QtWidgets, PySide2.QtOpenGL, PySide2.QtTest, pandas._libs.tslibs.np_datetime, pandas._libs.tslibs.dtypes, pandas._libs.tslibs.base, pandas._libs.tslibs.nattype, pandas._libs.tslibs.timezones, pandas._libs.tslibs.tzconversion, pandas._libs.tslibs.ccalendar, pandas._libs.tslibs.fields, pandas._libs.tslibs.timedeltas, pandas._libs.tslibs.timestamps, pandas._libs.properties, pandas._libs.tslibs.offsets, pandas._libs.tslibs.parsing, pandas._libs.tslibs.conversion, pandas._libs.tslibs.period, pandas._libs.tslibs.vectorized, pandas._libs.ops_dispatch, pandas._libs.missing, pandas._libs.hashtable, pandas._libs.algos, pandas._libs.interval, pandas._libs.tslib, pandas._libs.lib, pandas._libs.hashing, pandas._libs.ops, pandas._libs.arrays, pandas._libs.index, pandas._libs.join, pandas._libs.sparse, pandas._libs.reduction, pandas._libs.indexing, pandas._libs.internals, pandas._libs.writers, pandas._libs.window.aggregations, pandas._libs.window.indexers, pandas._libs.reshape, pandas._libs.tslibs.strptime, pandas._libs.groupby, pandas._libs.testing, pandas._libs.parsers, pandas._libs.json, vispy.visuals.text._sdf_cpu, kiwisolver._cext (total: 63)

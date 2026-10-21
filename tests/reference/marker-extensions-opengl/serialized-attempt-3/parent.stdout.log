@@ -1,0 +1,14 @@
+PASS independent marker points_style_grid fixed landmarks, trace revisions and exact whole-frame policy
+PASS independent marker points_camera_fixed fixed landmarks, trace revisions and exact whole-frame policy
+PASS independent marker points_camera_scene fixed landmarks, trace revisions and exact whole-frame policy
+PASS independent marker points_camera_visual fixed landmarks, trace revisions and exact whole-frame policy
+PASS independent marker points_spherical_depth fixed landmarks, trace revisions and exact whole-frame policy
+PASS independent marker points_color_revision fixed landmarks, trace revisions and exact whole-frame policy
+PASS independent marker points_position_revision fixed landmarks, trace revisions and exact whole-frame policy
+PASS independent marker instanced_style_grid fixed landmarks, trace revisions and exact whole-frame policy
+PASS independent marker instanced_camera_fixed fixed landmarks, trace revisions and exact whole-frame policy
+PASS independent marker instanced_camera_scene fixed landmarks, trace revisions and exact whole-frame policy
+PASS independent marker instanced_camera_visual fixed landmarks, trace revisions and exact whole-frame policy
+PASS independent marker instanced_spherical_depth fixed landmarks, trace revisions and exact whole-frame policy
+PASS independent marker instanced_color_revision fixed landmarks, trace revisions and exact whole-frame policy
+PASS independent marker instanced_position_revision fixed landmarks, trace revisions and exact whole-frame policy

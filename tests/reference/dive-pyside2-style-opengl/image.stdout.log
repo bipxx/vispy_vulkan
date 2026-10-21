@@ -1,0 +1,2 @@
+PASS DIVE image: public PNG (421, 618, 4), independent upstream
+CLEANUP image: all test-owned widgets and QApplication destroyed

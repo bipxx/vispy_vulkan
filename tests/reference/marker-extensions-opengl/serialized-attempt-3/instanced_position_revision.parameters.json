@@ -1,0 +1,202 @@
+{
+  "antialias": 1.0,
+  "api_scope": "public scene Markers / MarkersVisual.set_data, camera.rect, SceneCanvas.push_fbo and Visual.draw",
+  "authoring_variant": "separate API-correct attempt2; original failed capture remains immutable",
+  "camera_depth_value": 100.0,
+  "camera_flip": [
+    false,
+    true,
+    false
+  ],
+  "camera_rect": [
+    0,
+    0,
+    128,
+    96
+  ],
+  "case": "instanced_position_revision",
+  "clear_depth": 1.0,
+  "comparison": {
+    "candidate_alignment_or_color_fit": false,
+    "full_frame_exact": true,
+    "landmarks": "fixed analytic RGBA values or fixed channel bounds; no edge exclusions"
+  },
+  "dependent_intermediate_present_or_finish": false,
+  "depth_func": "less",
+  "dpi": 96,
+  "input": {
+    "edge_color": [
+      0,
+      0,
+      0,
+      1
+    ],
+    "edge_width": 0.0,
+    "face_color": {
+      "bytes": 48,
+      "dtype": "<f4",
+      "dtype_descr": [
+        [
+          "",
+          "<f4"
+        ]
+      ],
+      "sha256": "eb8329d357ac90ed79393607ae5cb9b9b5b305c7ce5dd25a9a4fa7b3cef9d934",
+      "shape": [
+        3,
+        4
+      ]
+    },
+    "pos": {
+      "bytes": 36,
+      "dtype": "<f4",
+      "dtype_descr": [
+        [
+          "",
+          "<f4"
+        ]
+      ],
+      "sha256": "134b89fe6bb5bc9faebe3f63cbf5937a636d8135c0d8c6b03d7d9554f5c31fd2",
+      "shape": [
+        3,
+        3
+      ]
+    },
+    "size": 14.0,
+    "symbol": "disc"
+  },
+  "landmarks": [
+    {
+      "column": 2,
+      "rgba": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "row": 2
+    },
+    {
+      "column": 24,
+      "rgba": [
+        255,
+        0,
+        0,
+        255
+      ],
+      "row": 24
+    },
+    {
+      "column": 56,
+      "rgba": [
+        0,
+        255,
+        0,
+        255
+      ],
+      "row": 24
+    },
+    {
+      "column": 88,
+      "rgba": [
+        0,
+        0,
+        255,
+        255
+      ],
+      "row": 24
+    },
+    {
+      "column": 40,
+      "rgba": [
+        255,
+        0,
+        0,
+        255
+      ],
+      "row": 72
+    },
+    {
+      "column": 72,
+      "rgba": [
+        0,
+        255,
+        0,
+        255
+      ],
+      "row": 72
+    },
+    {
+      "column": 104,
+      "rgba": [
+        0,
+        0,
+        255,
+        255
+      ],
+      "row": 72
+    },
+    {
+      "column": 56,
+      "rgba": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "row": 48
+    }
+  ],
+  "method": "instanced",
+  "prewarm_submission_without_read": false,
+  "readbacks": 1,
+  "samples": 1,
+  "scaling": "fixed",
+  "size": [
+    128,
+    96
+  ],
+  "spherical": false,
+  "updated_input": {
+    "edge_color": [
+      0,
+      0,
+      0,
+      1
+    ],
+    "edge_width": 0.0,
+    "face_color": {
+      "bytes": 48,
+      "dtype": "<f4",
+      "dtype_descr": [
+        [
+          "",
+          "<f4"
+        ]
+      ],
+      "sha256": "eb8329d357ac90ed79393607ae5cb9b9b5b305c7ce5dd25a9a4fa7b3cef9d934",
+      "shape": [
+        3,
+        4
+      ]
+    },
+    "pos": {
+      "bytes": 36,
+      "dtype": "<f4",
+      "dtype_descr": [
+        [
+          "",
+          "<f4"
+        ]
+      ],
+      "sha256": "97b8766291e0bdabad392facd7645f55dfe79dee33ad9e21d0a6ad727f9f8061",
+      "shape": [
+        3,
+        3
+      ]
+    },
+    "size": 14.0,
+    "symbol": "disc"
+  },
+  "workflow": "position_revision"
+}

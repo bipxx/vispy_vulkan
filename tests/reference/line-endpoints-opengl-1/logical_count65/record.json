@@ -1,0 +1,117 @@
+{
+  "GPU_attempted": true,
+  "GPU_used": true,
+  "authored_case_nodeid": "tests/native/test_line_endpoints.py::test_upstream_original_vertex_outputs_match_exact_logical_criteria[logical_count65]",
+  "candidate_seen": false,
+  "case": "logical_count65",
+  "error": "only 0-dimensional arrays can be converted to Python scalars",
+  "error_type": "TypeError",
+  "execution": "direct isolated rawGL child, not pytest",
+  "native_imported": false,
+  "observations": {
+    "GPU_used": true,
+    "TF_queried": {
+      "mode": 35980,
+      "stride": 28,
+      "varyings": [
+        {
+          "actual_name": "gl_Position",
+          "array_length": 1,
+          "buffer_index": 0,
+          "gl_type": 35666,
+          "offset": 0
+        },
+        {
+          "actual_name": "v_ids",
+          "array_length": 1,
+          "buffer_index": 0,
+          "gl_type": 36294,
+          "offset": 16
+        },
+        {
+          "actual_name": "v_visits",
+          "array_length": 1,
+          "buffer_index": 0,
+          "gl_type": 5125,
+          "offset": 24
+        }
+      ]
+    },
+    "TF_shader_layout_is_native_layout": false,
+    "admission_scope": {
+      "integer_constant_scope": "internal typed compiler/evaluator ABI probe; public upstream GLIR constant setters support float/vec only",
+      "internal_integer_constant_attributes": [],
+      "logical_criteria_independent_of_native_padding": true,
+      "public_GLIR_constant_types": [
+        "float",
+        "vec2",
+        "vec3",
+        "vec4"
+      ],
+      "transport": "original shader/raw GL transform feedback; no public Program.draw admission"
+    },
+    "calls": [],
+    "candidate_seen": false,
+    "cleanup_errors": [],
+    "compile": [
+      {
+        "log": "",
+        "stage": 35633,
+        "status": 1
+      },
+      {
+        "log": "",
+        "stage": 35632,
+        "status": 1
+      }
+    ],
+    "context": {
+      "GLSL": "4.60 NVIDIA",
+      "renderer": "NVIDIA GeForce RTX 4090/PCIe/SSE2",
+      "vendor": "NVIDIA Corporation",
+      "version": "4.6.0 NVIDIA 595.79"
+    },
+    "context_creation_attempted": true,
+    "input_binding_layout": {
+      "a_position": {
+        "constant": {
+          "dtype": "<f4",
+          "dtype_descriptor": "[('', '<f4')]",
+          "sha256": "4ffe9ef7d59db6c55c63874e6d469098567ac3b518eefc230d89e7f1faab76d4",
+          "shape": [
+            4
+          ]
+        },
+        "location": 0
+      }
+    },
+    "kind": "upstream",
+    "limits": {
+      "TF_buffers": 4,
+      "TF_interleaved_components": 128,
+      "context_profile_mask": 2,
+      "samples": 0,
+      "vertex_attributes": 16
+    },
+    "link": {
+      "log": "",
+      "status": 1
+    },
+    "original_primitive": "line_strip",
+    "owned_resources_cleanup_completed": true,
+    "package_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Lib\\site-packages\\vispy\\__init__.py",
+    "packages": {
+      "PyOpenGL": "3.1.10",
+      "PyQt6": "6.11.0",
+      "PyQt6-Qt6": "6.11.2",
+      "numpy": "2.5.3",
+      "vispy": "0.17.0"
+    },
+    "source_sha256": {
+      "fragment": "a87cacaaa618a6b8e114a8f5afb23ff0e71d5df468d14520c180031b2d9d26f3",
+      "vertex": "096c2e60a0b8753ed9ffb5f84eb43675f62eda80e507ea52f7a0b60988700d35"
+    },
+    "transport": "actual API-configured GL transform feedback; unchanged vertex source; GL_POINTS/rasterizer discard"
+  },
+  "process_exit": 1
+}

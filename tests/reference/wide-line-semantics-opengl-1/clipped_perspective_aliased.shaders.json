@@ -1,0 +1,4 @@
+{
+  "2": "#version 330\nin vec4 a_position;\nin vec4 a_color;\nsmooth out vec4 v_color;\nvoid main() { gl_Position = a_position; v_color = a_color; }\n",
+  "3": "#version 330\nsmooth in vec4 v_color;\nout vec4 out_color;\nvoid main() { out_color = v_color; }\n"
+}

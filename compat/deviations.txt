@@ -1,0 +1,13 @@
+# Files in src/vispy that differ from VisPy 0.17.0 commit 117b054598f4758b598f4b8f48feea48c11fe7b0.
+# The parity checkout is third_party/parity/vispy.
+version.py
+gloo/context.py
+gloo/wrappers.py
+gloo/dawn_parser.py
+gloo/gl/__init__.py
+app/backends/__init__.py
+app/backends/_qt.py
+app/backends/_dawn_headless.py
+visuals/text/_sdf_cpu.py
+gloo/program.py
+gloo/texture.py

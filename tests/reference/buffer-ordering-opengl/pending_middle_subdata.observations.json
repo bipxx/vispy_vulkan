@@ -1,0 +1,261 @@
+{
+  "actual_parser_batches": [
+    [
+      [
+        "CURRENT",
+        0,
+        1
+      ]
+    ],
+    [
+      [
+        "FUNC",
+        "glViewport",
+        0,
+        0,
+        32,
+        24
+      ],
+      [
+        "FUNC",
+        "glDisable",
+        "cull_face"
+      ],
+      [
+        "FUNC",
+        "glDisable",
+        "blend"
+      ],
+      [
+        "FUNC",
+        "glDisable",
+        "depth_test"
+      ],
+      [
+        "FUNC",
+        "glDisable",
+        "scissor_test"
+      ],
+      [
+        "FUNC",
+        "glClearColor",
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      [
+        "FUNC",
+        "glClear",
+        16384
+      ],
+      [
+        "CREATE",
+        2,
+        "Program"
+      ],
+      [
+        "CREATE",
+        3,
+        "VertexShader"
+      ],
+      [
+        "DATA",
+        3,
+        0,
+        "\nattribute vec2 a_position;\nattribute vec3 a_color;\nuniform vec2 u_offset;\nvarying vec3 v_color;\nvoid main() {\n    gl_Position = vec4(a_position + u_offset, 0.0, 1.0);\n    v_color = a_color;\n}\n"
+      ],
+      [
+        "ATTACH",
+        2,
+        3
+      ],
+      [
+        "CREATE",
+        4,
+        "FragmentShader"
+      ],
+      [
+        "DATA",
+        4,
+        0,
+        "\nvarying vec3 v_color;\nvoid main() { gl_FragColor = vec4(v_color, 1.0); }\n"
+      ],
+      [
+        "ATTACH",
+        2,
+        4
+      ],
+      [
+        "LINK",
+        2
+      ],
+      [
+        "DELETE",
+        3
+      ],
+      [
+        "DELETE",
+        4
+      ],
+      [
+        "CREATE",
+        1,
+        "VertexBuffer"
+      ],
+      [
+        "SIZE",
+        1,
+        504
+      ],
+      [
+        "DATA",
+        1,
+        0,
+        {
+          "array": {
+            "bytes": 504,
+            "dtype": "|V28",
+            "sha256": "57680bf8737e04be6aef6222c95e64fa465a73edd529dc3866acab4f3c82a82d",
+            "shape": [
+              18
+            ]
+          }
+        }
+      ],
+      [
+        "ATTRIBUTE",
+        2,
+        "a_position",
+        "vec2",
+        [
+          1,
+          28,
+          4
+        ],
+        null
+      ],
+      [
+        "ATTRIBUTE",
+        2,
+        "a_color",
+        "vec3",
+        [
+          1,
+          28,
+          12
+        ],
+        null
+      ],
+      [
+        "UNIFORM",
+        2,
+        "u_offset",
+        "vec2",
+        {
+          "array": {
+            "bytes": 8,
+            "dtype": "<f4",
+            "sha256": "af5570f5a1810b7af78caf4bc70a660f0df51e42baf91d4de5b2328de0e83dfc",
+            "shape": [
+              2
+            ]
+          }
+        }
+      ],
+      [
+        "DRAW",
+        2,
+        "triangles",
+        [
+          0,
+          18
+        ],
+        1
+      ]
+    ],
+    [
+      [
+        "FUNC",
+        "glClearColor",
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      [
+        "FUNC",
+        "glClear",
+        16384
+      ],
+      [
+        "DRAW",
+        2,
+        "triangles",
+        [
+          0,
+          18
+        ],
+        1
+      ]
+    ],
+    [
+      [
+        "DATA",
+        1,
+        168,
+        {
+          "array": {
+            "bytes": 168,
+            "dtype": "|V28",
+            "sha256": "68d93623915d680bdbfbdba4085dc6ebe18e77f7bf088e233eb702788ab833a2",
+            "shape": [
+              6
+            ]
+          }
+        }
+      ],
+      [
+        "UNIFORM",
+        2,
+        "u_offset",
+        "vec2",
+        {
+          "array": {
+            "bytes": 8,
+            "dtype": "<f4",
+            "sha256": "22b6f43bd8d27738d3213f29e96b62d01d9d6c0ab4f9732aaae803186f51eab7",
+            "shape": [
+              2
+            ]
+          }
+        }
+      ],
+      [
+        "DRAW",
+        2,
+        "triangles",
+        [
+          0,
+          18
+        ],
+        1
+      ]
+    ],
+    [
+      [
+        "FUNC",
+        "glFinish"
+      ]
+    ]
+  ],
+  "buffer_id": 1,
+  "dependent_explicit_flushes": 0,
+  "physical_samples": 1,
+  "prewarm_swaps": 1,
+  "program_id": 2,
+  "readbacks": 1,
+  "sample_source": "OpenGL driver GL_SAMPLES",
+  "window_end": 31,
+  "window_start": 25
+}

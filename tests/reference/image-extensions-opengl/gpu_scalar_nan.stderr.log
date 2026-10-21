@@ -1,0 +1,25 @@
+WARNING: SetProcessDpiAwarenessContext() failed: Access is denied.
+Qt's default DPI awareness context is DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE_V2. If you know what you are doing, you can overwrite this default using qt.conf (https://doc.qt.io/qt-6/highdpi.html#configuring-windows).
+Traceback (most recent call last):
+  File "C:\Users\HEQ\Projects\vispy_vulkan\tools\oracle_image_extensions_capture.py", line 166, in main
+    image, commands, shaders, params = render(args.worker,
+                                       ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HEQ\Projects\vispy_vulkan\tools\fixture_image_extensions.py", line 420, in render
+    return _render_vispy(name, backend) if name in VISPY_CASES else _render_host(name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HEQ\Projects\vispy_vulkan\tools\fixture_image_extensions.py", line 255, in _render_vispy
+    visual = scene.visuals.Image(data, cmap="gray", clim=(10, 20) if data.ndim == 2 else (0, 1),
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HEQ\Projects\vispy_vulkan\build\oracle-napari\Lib\site-packages\vispy\scene\visuals.py", line 134, in __init__
+    subclass.__init__(self, *args, **kwargs)
+  File "C:\Users\HEQ\Projects\vispy_vulkan\build\oracle-napari\Lib\site-packages\vispy\visuals\image.py", line 326, in __init__
+    self.cmap = cmap
+    ^^^^^^^^^
+  File "C:\Users\HEQ\Projects\vispy_vulkan\build\oracle-napari\Lib\site-packages\vispy\util\frozen.py", line 17, in __setattr__
+    object.__setattr__(self, key, value)
+  File "C:\Users\HEQ\Projects\vispy_vulkan\build\oracle-napari\Lib\site-packages\vispy\visuals\image.py", line 442, in cmap
+    self._cmap = get_colormap(cmap)
+                 ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HEQ\Projects\vispy_vulkan\build\oracle-napari\Lib\site-packages\vispy\color\colormap.py", line 1207, in get_colormap
+    raise KeyError('colormap name %s not found' % name)
+KeyError: 'colormap name gray not found'

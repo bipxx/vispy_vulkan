@@ -1,0 +1,4 @@
+{
+  "3": "\nattribute vec2 a_position;\nattribute vec2 a_texcoord;\nvarying vec2 v_texcoord;\nvoid main() {\n    v_texcoord = a_texcoord;\n    gl_Position = vec4(a_position, 0.0, 1.0);\n}\n",
+  "4": "\n                uniform sampler2D u_texture;\n                varying vec2 v_texcoord;\n                uniform vec2 u_clim;\n                void main() {\n                    float value = (texture2D(u_texture, v_texcoord).r - u_clim.x) / (u_clim.y - u_clim.x);\n                    gl_FragColor = vec4(value, value, value, 1.0);\n                }\n                "
+}

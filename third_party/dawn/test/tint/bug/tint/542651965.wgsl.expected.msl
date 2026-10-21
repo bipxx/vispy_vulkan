@@ -1,0 +1,110 @@
+#include <metal_stdlib>
+using namespace metal;
+
+struct tint_packed_vec3_f32_array_element {
+  /* 0x0000 */ packed_float3 packed;
+  /* 0x000c */ array<int8_t, 4> tint_pad;
+};
+
+struct S_packed_vec3 {
+  /* 0x0000 */ array<array<tint_packed_vec3_f32_array_element, 3>, 3> a;
+  /* 0x0090 */ array<array<tint_packed_vec3_f32_array_element, 3>, 3> b;
+};
+
+struct S {
+  array<float3x3, 3> a;
+  array<array<float3, 3>, 3> b;
+};
+
+struct tint_module_vars_struct {
+  device S_packed_vec3* s;
+};
+
+void tint_store_and_preserve_padding_4(device array<tint_packed_vec3_f32_array_element, 3>* const target, array<float3, 3> value_param) {
+  {
+    uint idx = 0u;
+    while(true) {
+      uint const v = idx;
+      if ((v >= 3u)) {
+        break;
+      }
+      (*target)[v].packed = packed_float3(value_param[v]);
+      {
+        idx = (idx + 1u);
+      }
+    }
+  }
+}
+
+void tint_store_and_preserve_padding_3(device array<array<tint_packed_vec3_f32_array_element, 3>, 3>* const target, array<array<float3, 3>, 3> value_param) {
+  {
+    uint idx = 0u;
+    while(true) {
+      uint const v_1 = idx;
+      if ((v_1 >= 3u)) {
+        break;
+      }
+      (tint_store_and_preserve_padding_4((&(*target)[v_1]), value_param[v_1]));
+      {
+        idx = (idx + 1u);
+      }
+    }
+  }
+}
+
+void tint_store_and_preserve_padding_2(device array<tint_packed_vec3_f32_array_element, 3>* const target, float3x3 value_param) {
+  (*target)[0u].packed = packed_float3(value_param[0u]);
+  (*target)[1u].packed = packed_float3(value_param[1u]);
+  (*target)[2u].packed = packed_float3(value_param[2u]);
+}
+
+void tint_store_and_preserve_padding_1(device array<array<tint_packed_vec3_f32_array_element, 3>, 3>* const target, array<float3x3, 3> value_param) {
+  {
+    uint idx = 0u;
+    while(true) {
+      uint const v_2 = idx;
+      if ((v_2 >= 3u)) {
+        break;
+      }
+      (tint_store_and_preserve_padding_2((&(*target)[v_2]), value_param[v_2]));
+      {
+        idx = (idx + 1u);
+      }
+    }
+  }
+}
+
+void tint_store_and_preserve_padding(device S_packed_vec3* const target, S value_param) {
+  (tint_store_and_preserve_padding_1((&(*target).a), value_param.a));
+  (tint_store_and_preserve_padding_3((&(*target).b), value_param.b));
+}
+
+array<float3, 3> tint_load_array_packed_vec3_2(device array<tint_packed_vec3_f32_array_element, 3>* const from) {
+  return array<float3, 3>{float3((*from)[0u].packed), float3((*from)[1u].packed), float3((*from)[2u].packed)};
+}
+
+array<array<float3, 3>, 3> tint_load_array_packed_vec3_1(device array<array<tint_packed_vec3_f32_array_element, 3>, 3>* const from) {
+  array<float3, 3> const v_3 = tint_load_array_packed_vec3_2((&(*from)[0u]));
+  array<float3, 3> const v_4 = tint_load_array_packed_vec3_2((&(*from)[1u]));
+  return array<array<float3, 3>, 3>{v_3, v_4, tint_load_array_packed_vec3_2((&(*from)[2u]))};
+}
+
+array<float3x3, 3> tint_load_array_packed_vec3(device array<array<tint_packed_vec3_f32_array_element, 3>, 3>* const from) {
+  array<tint_packed_vec3_f32_array_element, 3> const v_5 = (*from)[0u];
+  float3x3 const v_6 = float3x3(float3(v_5[0u].packed), float3(v_5[1u].packed), float3(v_5[2u].packed));
+  array<tint_packed_vec3_f32_array_element, 3> const v_7 = (*from)[1u];
+  float3x3 const v_8 = float3x3(float3(v_7[0u].packed), float3(v_7[1u].packed), float3(v_7[2u].packed));
+  array<tint_packed_vec3_f32_array_element, 3> const v_9 = (*from)[2u];
+  return array<float3x3, 3>{v_6, v_8, float3x3(float3(v_9[0u].packed), float3(v_9[1u].packed), float3(v_9[2u].packed))};
+}
+
+S tint_load_struct_packed_vec3(device S_packed_vec3* const from) {
+  array<float3x3, 3> const v_10 = tint_load_array_packed_vec3((&(*from).a));
+  return S{.a=v_10, .b=tint_load_array_packed_vec3_1((&(*from).b))};
+}
+
+[[max_total_threads_per_threadgroup(1)]]
+kernel void v_11(device S_packed_vec3* s [[buffer(0)]]) {
+  tint_module_vars_struct const tint_module_vars = tint_module_vars_struct{.s=s};
+  (tint_store_and_preserve_padding(tint_module_vars.s, tint_load_struct_packed_vec3(tint_module_vars.s)));
+}

@@ -1,0 +1,454 @@
+{
+  "comparison": {
+    "analytic_expected_exact": true,
+    "rgba_exact": true
+  },
+  "errors": {},
+  "fixtures": {
+    "fan_indexed_uint16": {
+      "capture": {
+        "file": "fan_indexed_uint16.capture.json",
+        "sha256": "72f5084ea3597ed712052401f21db2a22ddba6f35a4b3aebdf7b7e1be4729901"
+      },
+      "dtype": "|u1",
+      "expanded_shaders": {
+        "file": "fan_indexed_uint16.shaders.json",
+        "sha256": "6d0550b04fb734758da36fa1161fa32b94d6954f45a315368b21134b709b287b"
+      },
+      "filtered_glir": {
+        "file": "fan_indexed_uint16.glir.json",
+        "sha256": "24058b1b05f4f3f923e58688f882672db0ef15099ba2217d2fd12dce895b4c76"
+      },
+      "parameters": {
+        "count": 4,
+        "cull_face": "back",
+        "final_readbacks": 1,
+        "front_face": "ccw",
+        "index_dtype": "<u2",
+        "indices": [
+          1,
+          4,
+          3,
+          0
+        ],
+        "intermediate_finish": false,
+        "intermediate_present": false,
+        "mode": "triangle_fan",
+        "vertices": [
+          [
+            -0.5,
+            0.5
+          ],
+          [
+            -0.5,
+            -0.5
+          ],
+          [
+            9.0,
+            9.0
+          ],
+          [
+            0.5,
+            0.5
+          ],
+          [
+            0.5,
+            -0.5
+          ]
+        ]
+      },
+      "readbacks": 1,
+      "rgba": {
+        "file": "fan_indexed_uint16.npy",
+        "sha256": "f2c37276fde1c1bcb527ea3fe07f9ef4f78619126fd61ad739388cf15ba2de32"
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ]
+    },
+    "fan_indexed_uint32": {
+      "capture": {
+        "file": "fan_indexed_uint32.capture.json",
+        "sha256": "4d6d6fbba368a011e9e83d39e9b2e2a1ab5cc42073e0464ba154f2299ad5a66f"
+      },
+      "dtype": "|u1",
+      "expanded_shaders": {
+        "file": "fan_indexed_uint32.shaders.json",
+        "sha256": "6d0550b04fb734758da36fa1161fa32b94d6954f45a315368b21134b709b287b"
+      },
+      "filtered_glir": {
+        "file": "fan_indexed_uint32.glir.json",
+        "sha256": "6962687082dbd5354248f285edbaa99d8c5299203d5b128913a6b54ea11fef9f"
+      },
+      "parameters": {
+        "count": 4,
+        "cull_face": "back",
+        "final_readbacks": 1,
+        "front_face": "ccw",
+        "index_dtype": "<u4",
+        "indices": [
+          1,
+          4,
+          3,
+          0
+        ],
+        "intermediate_finish": false,
+        "intermediate_present": false,
+        "mode": "triangle_fan",
+        "vertices": [
+          [
+            -0.5,
+            0.5
+          ],
+          [
+            -0.5,
+            -0.5
+          ],
+          [
+            9.0,
+            9.0
+          ],
+          [
+            0.5,
+            0.5
+          ],
+          [
+            0.5,
+            -0.5
+          ]
+        ]
+      },
+      "readbacks": 1,
+      "rgba": {
+        "file": "fan_indexed_uint32.npy",
+        "sha256": "f2c37276fde1c1bcb527ea3fe07f9ef4f78619126fd61ad739388cf15ba2de32"
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ]
+    },
+    "fan_indexed_uint8": {
+      "capture": {
+        "file": "fan_indexed_uint8.capture.json",
+        "sha256": "e54d4cee72b73be357070442335a489673097741576ac36e5d4b5206ed81df4f"
+      },
+      "dtype": "|u1",
+      "expanded_shaders": {
+        "file": "fan_indexed_uint8.shaders.json",
+        "sha256": "6d0550b04fb734758da36fa1161fa32b94d6954f45a315368b21134b709b287b"
+      },
+      "filtered_glir": {
+        "file": "fan_indexed_uint8.glir.json",
+        "sha256": "d6851319b640929f448d5f15c390fa8a9028684cdd2314f54135fa03fe21e808"
+      },
+      "parameters": {
+        "count": 4,
+        "cull_face": "back",
+        "final_readbacks": 1,
+        "front_face": "ccw",
+        "index_dtype": "|u1",
+        "indices": [
+          1,
+          4,
+          3,
+          0
+        ],
+        "intermediate_finish": false,
+        "intermediate_present": false,
+        "mode": "triangle_fan",
+        "vertices": [
+          [
+            -0.5,
+            0.5
+          ],
+          [
+            -0.5,
+            -0.5
+          ],
+          [
+            9.0,
+            9.0
+          ],
+          [
+            0.5,
+            0.5
+          ],
+          [
+            0.5,
+            -0.5
+          ]
+        ]
+      },
+      "readbacks": 1,
+      "rgba": {
+        "file": "fan_indexed_uint8.npy",
+        "sha256": "f2c37276fde1c1bcb527ea3fe07f9ef4f78619126fd61ad739388cf15ba2de32"
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ]
+    },
+    "fan_nonzero_first": {
+      "capture": {
+        "file": "fan_nonzero_first.capture.json",
+        "sha256": "2a5e0835d94d7ca44b3377be4a0135be9b5a3dfbba6239c99ce197f4889e529e"
+      },
+      "dtype": "|u1",
+      "expanded_shaders": {
+        "file": "fan_nonzero_first.shaders.json",
+        "sha256": "6d0550b04fb734758da36fa1161fa32b94d6954f45a315368b21134b709b287b"
+      },
+      "filtered_glir": {
+        "file": "fan_nonzero_first.glir.json",
+        "sha256": "0c2adb61b7ada6e389ccfc899fb1cf3bac2cc2c233988951cf1bb23d74be0175"
+      },
+      "parameters": {
+        "count": 4,
+        "final_readbacks": 1,
+        "first": 2,
+        "intermediate_finish": false,
+        "intermediate_present": false,
+        "mode": "triangle_fan",
+        "selection_api": "context.glir.command; public Program.draw always emits first=0",
+        "setup_draw_discarded_by_ordered_clear": true,
+        "vertices": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ],
+          [
+            -0.5,
+            -0.5
+          ],
+          [
+            0.5,
+            -0.5
+          ],
+          [
+            0.5,
+            0.5
+          ],
+          [
+            -0.5,
+            0.5
+          ]
+        ]
+      },
+      "readbacks": 1,
+      "rgba": {
+        "file": "fan_nonzero_first.npy",
+        "sha256": "f2c37276fde1c1bcb527ea3fe07f9ef4f78619126fd61ad739388cf15ba2de32"
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ]
+    },
+    "fan_winding": {
+      "capture": {
+        "file": "fan_winding.capture.json",
+        "sha256": "5a0f0cea997ccf099de38c100dae4bbcb2b20a40a03f56e4ce46d39eacbaa83c"
+      },
+      "dtype": "|u1",
+      "expanded_shaders": {
+        "file": "fan_winding.shaders.json",
+        "sha256": "81282e2faffa217c82130cafb0bdf23404e910d27f037c08eca1d5de240752ff"
+      },
+      "filtered_glir": {
+        "file": "fan_winding.glir.json",
+        "sha256": "cf3a7965261a35a815766a5e7e625767c6a446597cb966ecac20f26460c9e98b"
+      },
+      "parameters": {
+        "cull_face": "back",
+        "final_readbacks": 1,
+        "front_face": "ccw",
+        "intermediate_finish": false,
+        "intermediate_present": false,
+        "left_ccw": [
+          [
+            -0.875,
+            -0.75
+          ],
+          [
+            -0.125,
+            -0.75
+          ],
+          [
+            -0.125,
+            0.75
+          ],
+          [
+            -0.875,
+            0.75
+          ]
+        ],
+        "mode": "triangle_fan",
+        "right_cw": [
+          [
+            0.125,
+            -0.75
+          ],
+          [
+            0.125,
+            0.75
+          ],
+          [
+            0.875,
+            0.75
+          ],
+          [
+            0.875,
+            -0.75
+          ]
+        ]
+      },
+      "readbacks": 1,
+      "rgba": {
+        "file": "fan_winding.npy",
+        "sha256": "a66fab81e805c0f20f0239741857cb85038cbe991e6faccca055c81fe5751cd2"
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ]
+    },
+    "line_loop_closure": {
+      "capture": {
+        "file": "line_loop_closure.capture.json",
+        "sha256": "853b01bd43eada48a4d4f2934f858c40349314fbd1e77e9727b3e6270ee06436"
+      },
+      "dtype": "|u1",
+      "expanded_shaders": {
+        "file": "line_loop_closure.shaders.json",
+        "sha256": "6d0550b04fb734758da36fa1161fa32b94d6954f45a315368b21134b709b287b"
+      },
+      "filtered_glir": {
+        "file": "line_loop_closure.glir.json",
+        "sha256": "2cd6df77687d7537dde199add45fe4024b317416fe9e0c4f4f4fabbd800a5cd0"
+      },
+      "parameters": {
+        "closure_segment": [
+          3,
+          0
+        ],
+        "final_readbacks": 1,
+        "intermediate_finish": false,
+        "intermediate_present": false,
+        "mode": "line_loop",
+        "pixel_centers_bottom_left": [
+          [
+            8.5,
+            6.5
+          ],
+          [
+            24.5,
+            6.5
+          ],
+          [
+            24.5,
+            18.5
+          ],
+          [
+            8.5,
+            18.5
+          ]
+        ],
+        "vertices": [
+          [
+            -0.46875,
+            -0.4583333134651184
+          ],
+          [
+            0.53125,
+            -0.4583333134651184
+          ],
+          [
+            0.53125,
+            0.5416666269302368
+          ],
+          [
+            -0.46875,
+            0.5416666269302368
+          ]
+        ],
+        "width": 1
+      },
+      "readbacks": 1,
+      "rgba": {
+        "file": "line_loop_closure.npy",
+        "sha256": "eef74af3079fd99bc7014c5438ccd43c1772e506be5079fc33bc78cfc48d7f83"
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ]
+    }
+  },
+  "provenance": {
+    "capture_source_sha256": "66ae25247831c184f38f2c7a2ff151b940013087104907523b11e1ed2b9b151a",
+    "cmake": null,
+    "distribution_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Lib\\site-packages",
+    "distribution_record_sha256": "455e084c0cb78e19e41c79d08a57d533b07d52b3248c2ebd4b73e80584b067cc",
+    "environment": {
+      "PYTHONPATH": null,
+      "QT_API": "pyqt6",
+      "QT_QPA_PLATFORM": null,
+      "QT_SCALE_FACTOR": "1",
+      "VISPY_PYQT5_SHARE_CONTEXT": "true"
+    },
+    "fixture_source_sha256": "37797259727afd9c6b15c7074319b935dcddb330deb2b6c99a03c8df6f36fddb",
+    "kind": "upstream",
+    "machine": "AMD64",
+    "numpy_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Lib\\site-packages\\numpy\\__init__.py",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.12.8",
+    "python_executable": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Scripts\\python.exe",
+    "qt_runtime": "6.11.2",
+    "regenerate": "build/oracle-opengl/Scripts/python.exe tools/oracle_topology_capture.py --kind upstream --output tests/reference/topology-opengl",
+    "renderer": {
+      "renderer": "NVIDIA GeForce RTX 4090/PCIe/SSE2",
+      "vendor": "NVIDIA Corporation",
+      "version": "4.6.0 NVIDIA 595.79"
+    },
+    "requirements_sha256": "a784b5a5e2b4ea201578acddc41e28e0997275ea2542642148322153cd240ffd",
+    "source_sha256": {
+      "gloo/buffer.py": "68e37b184b74814e0ae7a6f4f754c9f0c0af5b4e6369a60a8357c70da974e138",
+      "gloo/context.py": "6afc97492f65a5e865723535206fb769a1c4b55694d69786123fdee78bef992a",
+      "gloo/glir.py": "a3bb8a75b33f47420e9c100b8a6d81037a2f03c905e6c9f7d8399f4fb2eb8f7c",
+      "gloo/program.py": "4d3ab8e36260f9b5dc50f6aec075b12d642535f3cb8f49bfd4a27056301d5492",
+      "gloo/texture.py": "9f6d5f2e448e02c0ca4d66c65d17ddcdb6c0182bb8f15f1292a427f5a9faf6bc",
+      "gloo/wrappers.py": "73dbb5eb8ca78b2822266d272ffb14db9fcadd7a56512843209187714c9e8dcc"
+    },
+    "topology_capture_sha256": "be411514b6595adb2b0bb8f66bf4d2869af66c8c1f5afb239ec8433510c9ebb9",
+    "topology_fixture_sha256": "7eeac6cb8974499a2cfe4388bfe9234f68d0cf68b89abdbdf799845ce9716836",
+    "upstream_commit": "117b054598f4758b598f4b8f48feea48c11fe7b0",
+    "versions": {
+      "PyOpenGL": "3.1.10",
+      "PyQt6": "6.11.0",
+      "PyQt6-Qt6": "6.11.2",
+      "PyQt6-sip": "13.13.0",
+      "freetype-py": "2.5.1",
+      "hsluv": "5.0.4",
+      "kiwisolver": "1.5.1",
+      "numpy": "2.5.3",
+      "packaging": "26.3",
+      "vispy": "0.17.0"
+    },
+    "vispy_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Lib\\site-packages\\vispy",
+    "vispy_version": "0.17.0"
+  },
+  "schema": 1
+}

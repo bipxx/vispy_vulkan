@@ -1,0 +1,9 @@
+WARNING: SetProcessDpiAwarenessContext() failed: Access is denied.
+Qt's default DPI awareness context is DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE_V2. If you know what you are doing, you can overwrite this default using qt.conf (https://doc.qt.io/qt-6/highdpi.html#configuring-windows).
+Traceback (most recent call last):
+  File "C:\Users\HEQ\Projects\vispy_vulkan\tools\oracle_marker_extensions_capture.py", line 136, in main
+    assert_landmarks(args.worker, image)
+  File "C:\Users\HEQ\Projects\vispy_vulkan\tools\fixture_marker_extensions.py", line 143, in assert_landmarks
+    assert pixel.tolist() == mark["rgba"], (name, mark, pixel.tolist())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ('instanced_position_revision', {'row': 24, 'column': 24, 'rgba': [255, 0, 0, 255]}, [0, 0, 0, 255])

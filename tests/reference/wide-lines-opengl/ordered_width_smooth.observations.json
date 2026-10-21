@@ -1,0 +1,18 @@
+{
+  "aliased_line_width_range": [
+    1.0,
+    10.0
+  ],
+  "line_smooth_enabled": true,
+  "line_width": 1.0,
+  "physical_samples": 1,
+  "sample_query_kind": "actual OpenGL target",
+  "samples_raw": 0,
+  "smooth_line_width_granularity": 0.125,
+  "smooth_line_width_range": [
+    0.5,
+    10.0
+  ],
+  "smooth_range_query_api": "PyOpenGL.GL.glGetFloatv; pinned generic gloo getter would round these float-only observations",
+  "state_query_kind": "actual OpenGL driver after final readback"
+}

@@ -1,0 +1,212 @@
+{
+  "actual_marker_uploads": [
+    {
+      "bytes": 168,
+      "dtype": "|V56",
+      "dtype_descr": [
+        [
+          "a_position",
+          "<f4",
+          [
+            3
+          ]
+        ],
+        [
+          "a_fg_color",
+          "<f4",
+          [
+            4
+          ]
+        ],
+        [
+          "a_bg_color",
+          "<f4",
+          [
+            4
+          ]
+        ],
+        [
+          "a_size",
+          "<f4"
+        ],
+        [
+          "a_edgewidth",
+          "<f4"
+        ],
+        [
+          "a_symbol",
+          "<f4"
+        ]
+      ],
+      "sha256": "63aaedc829d6d4b173fc3e594bb51a2fb79f27593aa04e79789f300f17944c00",
+      "shape": [
+        3
+      ]
+    },
+    {
+      "bytes": 168,
+      "dtype": "|V56",
+      "dtype_descr": [
+        [
+          "a_position",
+          "<f4",
+          [
+            3
+          ]
+        ],
+        [
+          "a_fg_color",
+          "<f4",
+          [
+            4
+          ]
+        ],
+        [
+          "a_bg_color",
+          "<f4",
+          [
+            4
+          ]
+        ],
+        [
+          "a_size",
+          "<f4"
+        ],
+        [
+          "a_edgewidth",
+          "<f4"
+        ],
+        [
+          "a_symbol",
+          "<f4"
+        ]
+      ],
+      "sha256": "155e19102f7dd31f04c6a01468ed2722c7a880ab36c32d8dda9aeb14881e355e",
+      "shape": [
+        3
+      ]
+    }
+  ],
+  "dependent_trace_start": 10,
+  "gl_samples": 0,
+  "gloo_framebuffer_id": 14,
+  "marker_vbo_id": 9,
+  "physical_samples": 1,
+  "point_size_range": [
+    1.0,
+    2047.0
+  ],
+  "readbacks": 1,
+  "sample_source": "OpenGL driver GL_SAMPLES",
+  "structured_revisions": [
+    {
+      "bytes": 168,
+      "dtype": "|V56",
+      "dtype_descr": [
+        [
+          "a_position",
+          "<f4",
+          [
+            3
+          ]
+        ],
+        [
+          "a_fg_color",
+          "<f4",
+          [
+            4
+          ]
+        ],
+        [
+          "a_bg_color",
+          "<f4",
+          [
+            4
+          ]
+        ],
+        [
+          "a_size",
+          "<f4"
+        ],
+        [
+          "a_edgewidth",
+          "<f4"
+        ],
+        [
+          "a_symbol",
+          "<f4"
+        ]
+      ],
+      "sha256": "63aaedc829d6d4b173fc3e594bb51a2fb79f27593aa04e79789f300f17944c00",
+      "shape": [
+        3
+      ]
+    },
+    {
+      "bytes": 168,
+      "dtype": "|V56",
+      "dtype_descr": [
+        [
+          "a_position",
+          "<f4",
+          [
+            3
+          ]
+        ],
+        [
+          "a_fg_color",
+          "<f4",
+          [
+            4
+          ]
+        ],
+        [
+          "a_bg_color",
+          "<f4",
+          [
+            4
+          ]
+        ],
+        [
+          "a_size",
+          "<f4"
+        ],
+        [
+          "a_edgewidth",
+          "<f4"
+        ],
+        [
+          "a_symbol",
+          "<f4"
+        ]
+      ],
+      "sha256": "155e19102f7dd31f04c6a01468ed2722c7a880ab36c32d8dda9aeb14881e355e",
+      "shape": [
+        3
+      ]
+    }
+  ],
+  "target_observations": [
+    {
+      "driver_framebuffer_binding": 2,
+      "expected_gloo_framebuffer": 14,
+      "parser_framebuffer_handle": 2,
+      "scope": "OpenGL driver GL_FRAMEBUFFER_BINDING after actual parse",
+      "stage": "initial_markers"
+    },
+    {
+      "driver_framebuffer_binding": 2,
+      "expected_gloo_framebuffer": 14,
+      "parser_framebuffer_handle": 2,
+      "scope": "OpenGL driver GL_FRAMEBUFFER_BINDING after actual parse",
+      "stage": "updated_markers"
+    },
+    {
+      "driver_framebuffer_binding": 2,
+      "expected_gloo_framebuffer": 14,
+      "parser_framebuffer_handle": 2,
+      "scope": "OpenGL driver GL_FRAMEBUFFER_BINDING after actual parse",
+      "stage": "before_final_read"
+    }
+  ]
+}

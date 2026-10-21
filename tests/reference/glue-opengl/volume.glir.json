@@ -1,0 +1,1932 @@
+[
+  [
+    "CURRENT",
+    0,
+    1
+  ],
+  [
+    "FUNC",
+    "glViewport",
+    0,
+    0,
+    128,
+    128
+  ],
+  [
+    "FUNC",
+    "glClearColor",
+    0.0,
+    0.0,
+    0.0,
+    1.0
+  ],
+  [
+    "FUNC",
+    "glClear",
+    17664
+  ],
+  [
+    "FUNC",
+    "glDisable",
+    "cull_face"
+  ],
+  [
+    "FUNC",
+    "glEnable",
+    "depth_test"
+  ],
+  [
+    "FUNC",
+    "glEnable",
+    "blend"
+  ],
+  [
+    "FUNC",
+    "glBlendFuncSeparate",
+    "src_alpha",
+    "one_minus_src_alpha",
+    "zero",
+    "one"
+  ],
+  [
+    "FUNC",
+    "glBlendEquationSeparate",
+    "func_add",
+    "func_add"
+  ],
+  [
+    "CREATE",
+    49,
+    "Program"
+  ],
+  [
+    "CREATE",
+    85,
+    "VertexShader"
+  ],
+  [
+    "DATA",
+    85,
+    0,
+    "uniform vec4 u_scale;\nuniform vec4 u_translate;\nuniform vec4 u_innerscale;\nuniform vec4 u_innertranslate;\n\nvec4 st_transform_map(vec4 pos) {\n    return vec4((pos.xyz * u_innerscale.xyz + u_innertranslate.xyz * pos.w).xyz\n                 * u_scale.xyz + u_translate.xyz * pos.w, pos.w);\n}\n\n\nvec4 transform_map_chain(vec4 pos) {\n    vec4 result_1 = st_transform_map(pos);\n    return result_1;\n}\n\nvec4 transform_map_chain_1(vec4 pos) {\n    vec4 result_1 = transform_map_chain(pos);\n    return result_1;\n}\n\nuniform mat4 u_inv_matrix;\n\nvec4 affine_transform_imap(vec4 pos) {\n    return u_inv_matrix * pos;\n}\n\n\nvec4 transform_imap_chain(vec4 pos) {\n    vec4 result_1 = affine_transform_imap(pos);\n    return result_1;\n}\n\nuniform mat4 u_matrix;\n\nvec4 affine_transform_map(vec4 pos) {\n    return u_matrix * pos;\n}\n\n\nuniform vec4 u_scale_1;\nuniform vec4 u_translate_1;\n\nvec4 st_transform_map_1(vec4 pos) {\n    return vec4(pos.xyz * u_scale_1.xyz + u_translate_1.xyz * pos.w, pos.w);\n}\n\n\nvec4 transform_map_chain_2(vec4 pos) {\n    vec4 result_1 = transform_imap_chain(pos);\n    vec4 result_2 = affine_transform_map(result_1);\n    vec4 result_3 = st_transform_map_1(result_2);\n    return result_3;\n}\n\nuniform vec4 u_scale_2;\nuniform vec4 u_translate_2;\n\nvec4 st_transform_map_2(vec4 pos) {\n    return vec4(pos.xyz * u_scale_2.xyz + u_translate_2.xyz * pos.w, pos.w);\n}\n\n\nvec4 transform_map_chain_3(vec4 pos) {\n    vec4 result_1 = transform_map_chain_2(pos);\n    vec4 result_2 = st_transform_map_2(result_1);\n    return result_2;\n}\n\nvec4 transform_map_chain_4(vec4 pos) {\n    vec4 result_1 = transform_map_chain_3(pos);\n    return result_1;\n}\n\nvec4 null_transform_map(vec4 pos) {return pos;}\n\nvec4 transform_map_chain_5(vec4 pos) {\n    vec4 result_1 = null_transform_map(pos);\n    return result_1;\n}\n\nvec4 transform_map_chain_6(vec4 pos) {\n    vec4 result_1 = transform_map_chain_5(pos);\n    return result_1;\n}\n\nuniform vec4 u_scale_3;\nuniform vec4 u_translate_3;\n\nvec4 st_transform_map_3(vec4 pos) {\n    return vec4(pos.xyz * u_scale_3.xyz + u_translate_3.xyz * pos.w, pos.w);\n}\n\n\nuniform vec4 u_scale_4;\nuniform vec4 u_translate_4;\n\nvec4 st_transform_map_4(vec4 pos) {\n    return vec4(pos.xyz * u_scale_4.xyz + u_translate_4.xyz * pos.w, pos.w);\n}\n\n\nvec4 transform_map_chain_7(vec4 pos) {\n    vec4 result_1 = st_transform_map_3(pos);\n    vec4 result_2 = st_transform_map_4(result_1);\n    return result_2;\n}\n\nvec4 transform_map_chain_8(vec4 pos) {\n    vec4 result_1 = transform_map_chain_7(pos);\n    return result_1;\n}\n\nuniform vec4 u_scale_5;\nuniform vec4 u_translate_5;\n\nvec4 st_transform_map_5(vec4 pos) {\n    return vec4(pos.xyz * u_scale_5.xyz + u_translate_5.xyz * pos.w, pos.w);\n}\n\n\nvec4 transform_map_chain_9(vec4 pos) {\n    vec4 result_1 = st_transform_map_5(pos);\n    return result_1;\n}\n\nvec4 transform_map_chain_10(vec4 pos) {\n    vec4 result_1 = transform_map_chain_9(pos);\n    return result_1;\n}\n\nvec4 transform_map_chain_11(vec4 pos) {\n    vec4 result_1 = transform_map_chain_1(pos);\n    vec4 result_2 = transform_map_chain_4(result_1);\n    vec4 result_3 = transform_map_chain_6(result_2);\n    vec4 result_4 = transform_map_chain_8(result_3);\n    vec4 result_5 = transform_map_chain_10(result_4);\n    return result_5;\n}\n\nvec4 transform_map_chain_12(vec4 pos) {\n    vec4 result_1 = transform_map_chain_1(pos);\n    vec4 result_2 = transform_map_chain_4(result_1);\n    return result_2;\n}\n\nuniform vec4 u_scale_6;\nuniform vec4 u_translate_6;\n\nvec4 st_transform_imap(vec4 pos) {\n    return vec4((pos.xyz - u_translate_6.xyz * pos.w) / u_scale_6.xyz,\n                pos.w);\n}\n\n\nuniform vec4 u_scale_7;\nuniform vec4 u_translate_7;\n\nvec4 st_transform_imap_1(vec4 pos) {\n    return vec4((pos.xyz - u_translate_7.xyz * pos.w) / u_scale_7.xyz,\n                pos.w);\n}\n\n\nuniform mat4 u_inv_matrix_1;\n\nvec4 affine_transform_imap_1(vec4 pos) {\n    return u_inv_matrix_1 * pos;\n}\n\n\nuniform mat4 u_matrix_1;\n\nvec4 affine_transform_map_1(vec4 pos) {\n    return u_matrix_1 * pos;\n}\n\n\nvec4 transform_map_chain_13(vec4 pos) {\n    vec4 result_1 = affine_transform_map_1(pos);\n    return result_1;\n}\n\nvec4 transform_imap_chain_1(vec4 pos) {\n    vec4 result_1 = st_transform_imap_1(pos);\n    vec4 result_2 = affine_transform_imap_1(result_1);\n    vec4 result_3 = transform_map_chain_13(result_2);\n    return result_3;\n}\n\nvec4 transform_imap_chain_2(vec4 pos) {\n    vec4 result_1 = st_transform_imap(pos);\n    vec4 result_2 = transform_imap_chain_1(result_1);\n    return result_2;\n}\n\nvec4 transform_imap_chain_3(vec4 pos) {\n    vec4 result_1 = transform_imap_chain_2(pos);\n    return result_1;\n}\n\nuniform vec4 u_scale_8;\nuniform vec4 u_translate_8;\nuniform vec4 u_innerscale_1;\nuniform vec4 u_innertranslate_1;\n\nvec4 st_transform_imap_2(vec4 pos) {\n    return vec4((((pos.xyz - u_innertranslate_1.xyz * pos.w) / u_innerscale_1.xyz)\n                 - u_translate_8.xyz * pos.w) / u_scale_8.xyz, pos.w);\n}\n\n\nvec4 transform_imap_chain_4(vec4 pos) {\n    vec4 result_1 = st_transform_imap_2(pos);\n    return result_1;\n}\n\nvec4 transform_imap_chain_5(vec4 pos) {\n    vec4 result_1 = transform_imap_chain_4(pos);\n    return result_1;\n}\n\nvec4 transform_imap_chain_6(vec4 pos) {\n    vec4 result_1 = transform_imap_chain_3(pos);\n    vec4 result_2 = transform_imap_chain_5(result_1);\n    return result_2;\n}\n\n\nattribute vec3 a_position;\nuniform vec3 u_shape;\nvarying vec3 v_position;\nvarying vec4 v_nearpos;\nvarying vec4 v_farpos;\nvoid main() {\n    v_position = a_position;\n    // Project local vertex coordinate to camera position. Then do a step\n    // backward (in cam coords) and project back. Voila, we get our ray vector.\n    vec4 pos_in_cam = transform_map_chain_12(vec4(v_position, 1));\n    // intersection of ray and near clipping plane (z = -1 in clip coords)\n    pos_in_cam.z = -pos_in_cam.w;\n    v_nearpos = transform_imap_chain_6(pos_in_cam);\n    // intersection of ray and far clipping plane (z = +1 in clip coords)\n    pos_in_cam.z = pos_in_cam.w;\n    v_farpos = transform_imap_chain_6(pos_in_cam);\n    gl_Position = transform_map_chain_11(vec4(v_position, 1.0));\n}\n\n"
+  ],
+  [
+    "ATTACH",
+    49,
+    85
+  ],
+  [
+    "CREATE",
+    86,
+    "FragmentShader"
+  ],
+  [
+    "DATA",
+    86,
+    0,
+    "uniform float u_alpha;\n\nvoid apply_alpha() {\n    gl_FragColor.a = gl_FragColor.a * u_alpha;\n}\n\n\nuniform vec4 u_id_color;\nuniform int u_enabled;\n\nvoid picking_filter() {\n    if( u_enabled == 0 )\n        return;\n    if( gl_FragColor.a == 0.0 )\n        discard;\n    gl_FragColor = u_id_color;\n}\n\n\nvec4 null_transform_map(vec4 pos) {return pos;}\n\nuniform vec4 u_view;\n\nvoid clip() {\n    vec4 pos = null_transform_map(gl_FragCoord);\n    if( pos.x < u_view.x || pos.x > u_view.y ||\n        pos.y < u_view.z || pos.y > u_view.w ) {\n        discard;\n    }\n}\n\n\n\nvec4 translucent_fire(float t) {\n// Map NaN to bad_color\nif (!(t <= 0.0 || 0.0 <= t)) {\n    return vec4(0.000, 0.000, 0.000, 0.000);\n}\n    return vec4(0.0, 1.0, 0.0, t);\n}\n\n\n\n// uniforms\nuniform sampler3D u_volumetex_0;\nuniform sampler3D u_volumetex_1;\nuniform sampler3D u_volumetex_2;\nuniform sampler3D u_volumetex_3;\nuniform sampler3D u_volumetex_4;\nuniform sampler3D u_volumetex_5;\nuniform sampler3D u_volumetex_6;\nuniform sampler3D u_volumetex_7;\nuniform sampler3D u_volumetex_8;\nuniform sampler3D u_volumetex_9;\nuniform sampler3D u_volumetex_10;\nuniform sampler3D u_volumetex_11;\nuniform sampler3D u_volumetex_12;\nuniform sampler3D u_volumetex_13;\nuniform sampler3D u_volumetex_14;\nuniform sampler3D u_volumetex_15;\nuniform sampler3D dummy1;\nfloat dummy;\nuniform float u_weight_0;\nuniform int u_enabled_0;\n\nuniform vec3 u_shape;\nuniform float u_downsample;\nuniform vec4 u_bgcolor;\n\nuniform vec3 u_clip_min;\nuniform vec3 u_clip_max;\n\n//varyings\n// varying vec3 v_texcoord;\nvarying vec3 v_position;\nvarying vec4 v_nearpos;\nvarying vec4 v_farpos;\n\n// uniforms for lighting. Hard coded until we figure out how to do lights\nconst vec4 u_ambient = vec4(0.2, 0.4, 0.2, 1.0);\nconst vec4 u_diffuse = vec4(0.8, 0.2, 0.2, 1.0);\nconst vec4 u_specular = vec4(1.0, 1.0, 1.0, 1.0);\nconst float u_shininess = 40.0;\n\n//varying vec3 lightDirs[1];\n\n// global holding view direction in local coordinates\nvec3 view_ray;\n\n\n// for some reason, this has to be the last function in order for the\n// filters to be inserted in the correct place...\n\nfloat rand(vec3 co) {\n    float a = 12.9898;\n    float b = 78.233;\n    float c = 43758.5453;\n    float dt= dot(vec2(co.x, co.y + co.z) ,vec2(a,b));\n    float sn= mod(dt,3.14);\n    return fract(sin(sn) * c);\n}\n\nvoid main() {\n    clip();\n\n\n    vec3 farpos = v_farpos.xyz / v_farpos.w;\n    vec3 nearpos = v_nearpos.xyz / v_nearpos.w;\n\n    // Calculate unit vector pointing in the view direction through this\n    // fragment.\n    view_ray = normalize(farpos.xyz - nearpos.xyz);\n\n    // Compute the distance to the front surface or near clipping plane\n    float distance = dot(nearpos-v_position, view_ray);\n    distance = max(distance, min((-0.5 - v_position.x) / view_ray.x,\n                            (u_shape.x - 0.5 - v_position.x) / view_ray.x));\n    distance = max(distance, min((-0.5 - v_position.y) / view_ray.y,\n                            (u_shape.y - 0.5 - v_position.y) / view_ray.y));\n    distance = max(distance, min((-0.5 - v_position.z) / view_ray.z,\n                            (u_shape.z - 0.5 - v_position.z) / view_ray.z));\n\n    // Now we have the starting position on the front surface\n    vec3 front = v_position + view_ray * distance;\n\n    // Decide how many steps to take\n    int nsteps = int(-distance / u_downsample + 0.5);\n    if(nsteps < 1) discard;\n\n    // Get starting location and step vector in texture coordinates\n    vec3 step = ((v_position - front) / u_shape) / nsteps;\n    vec3 start_loc = front / u_shape;\n\n    float val;\n\n    // This outer loop seems necessary on some systems for large\n    // datasets. Ugly, but it works ...\n    vec3 loc = start_loc;\n    int iter = 0;\n\n    dummy = texture3D(u_volumetex_0, loc).g;\n    dummy = texture3D(u_volumetex_1, loc).g;\n    dummy = texture3D(u_volumetex_2, loc).g;\n    dummy = texture3D(u_volumetex_3, loc).g;\n    dummy = texture3D(u_volumetex_4, loc).g;\n    dummy = texture3D(u_volumetex_5, loc).g;\n    dummy = texture3D(u_volumetex_6, loc).g;\n    dummy = texture3D(u_volumetex_7, loc).g;\n    dummy = texture3D(u_volumetex_8, loc).g;\n    dummy = texture3D(u_volumetex_9, loc).g;\n    dummy = texture3D(u_volumetex_10, loc).g;\n    dummy = texture3D(u_volumetex_11, loc).g;\n    dummy = texture3D(u_volumetex_12, loc).g;\n    dummy = texture3D(u_volumetex_13, loc).g;\n    dummy = texture3D(u_volumetex_14, loc).g;\n    dummy = texture3D(u_volumetex_15, loc).g;\n    float max_val_0 = 0;\n\n    // We avoid putting this if statement in the loop for performance\n\n    if (u_downsample > 1.) {\n\n        // In the case where we are downsampling we use a step size that is\n        // random to avoid artifacts in the output. This appears to be fast\n        // enough to still make the downsampling worth it.\n\n        while (iter < nsteps) {\n            for (iter=iter; iter<nsteps; iter++)\n            {\n\n                if(u_enabled_0 == 1) {\n\n                if(loc.r > u_clip_min.r && loc.r < u_clip_max.r &&\n                   loc.g > u_clip_min.g && loc.g < u_clip_max.g &&\n                   loc.b > u_clip_min.b && loc.b < u_clip_max.b) {\n\n                // Sample texture for layer f7383a17-aaff-4876-8eb5-65c1abf2eee3\n                val = texture3D(u_volumetex_0, loc).g;\n                max_val_0 = max(val, max_val_0);\n\n                }\n\n                }\n\n                // Advance location deeper into the volume\n                loc += (0.5 + rand(loc)) * step;\n\n            }\n        }\n\n    } else {\n\n        while (iter < nsteps) {\n            for (iter=iter; iter<nsteps; iter++)\n            {\n\n                if(u_enabled_0 == 1) {\n\n                if(loc.r > u_clip_min.r && loc.r < u_clip_max.r &&\n                   loc.g > u_clip_min.g && loc.g < u_clip_max.g &&\n                   loc.b > u_clip_min.b && loc.b < u_clip_max.b) {\n\n                // Sample texture for layer f7383a17-aaff-4876-8eb5-65c1abf2eee3\n                val = texture3D(u_volumetex_0, loc).g;\n                max_val_0 = max(val, max_val_0);\n\n                }\n\n                }\n\n                // Advance location deeper into the volume\n                loc += step;\n\n            }\n        }\n\n    }\n\n\n    float count = 0;\n    vec4 color = vec4(0., 0., 0., 0.);\n    vec4 total_color = vec4(0., 0., 0., 0.);\n    float max_alpha = 0;\n\n    // Compute final color for layer f7383a17-aaff-4876-8eb5-65c1abf2eee3\n    color = translucent_fire(max_val_0);\n    color.a *= u_weight_0;\n    total_color += color.a * color;\n    max_alpha = max(color.a, max_alpha);\n    count += color.a;\n\n    if(count > 0) {\n\n        total_color /= count;\n        total_color.a = max_alpha;\n\n        // Due to issues with transparency in Qt5, we need to convert the color\n        // to a flattened version without transparency, so we do alpha blending\n        // with the background and set alpha to 1:\n        total_color.r = total_color.r * total_color.a + u_bgcolor.r * (1 - total_color.a);\n        total_color.g = total_color.g * total_color.a + u_bgcolor.g * (1 - total_color.a);\n        total_color.b = total_color.b * total_color.a + u_bgcolor.b * (1 - total_color.a);\n        total_color.a = 1.;\n\n    } else {\n\n        // For this it seems we can get away with using transparency (which we need\n        // to make sure axes/ticks/labels aren't hidden)\n        total_color = vec4(0, 0, 0, 0);\n\n    }\n\n    gl_FragColor = total_color;\n\n    /* Set depth value - from visvis TODO\n    int iter_depth = int(maxi);\n    // Calculate end position in world coordinates\n    vec4 position2 = vertexPosition;\n    position2.xyz += ray*shape*float(iter_depth);\n    // Project to device coordinates and set fragment depth\n    vec4 iproj = gl_ModelViewProjectionMatrix * position2;\n    iproj.z /= iproj.w;\n    gl_FragDepth = (iproj.z+1.0)/2.0;\n    */\n\n    apply_alpha();\npicking_filter();\n\n}\n\n"
+  ],
+  [
+    "ATTACH",
+    49,
+    86
+  ],
+  [
+    "LINK",
+    49
+  ],
+  [
+    "DELETE",
+    85
+  ],
+  [
+    "DELETE",
+    86
+  ],
+  [
+    "UNIFORM",
+    49,
+    "u_alpha",
+    "float",
+    {
+      "array": {
+        "bytes": 4,
+        "dtype": "<f4",
+        "sha256": "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c",
+        "shape": [
+          1
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    49,
+    "u_enabled",
+    "int",
+    {
+      "array": {
+        "bytes": 4,
+        "dtype": "<i4",
+        "sha256": "df3f619804a92fdb4057192dc43dd748ea778adc52bc498ce80524c014b81119",
+        "shape": [
+          1
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    49,
+    "u_id_color",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "029f518600b4ab2b61f489ea37ecd363c2923ee838d358e2881186d1a1e5526a",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    49,
+    "u_innerscale",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "f6bb1294da2f78cd935b01c7656280df5eaa0439e9d97bc03775825a41a508e4",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    49,
+    "u_innerscale_1",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "f6bb1294da2f78cd935b01c7656280df5eaa0439e9d97bc03775825a41a508e4",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    49,
+    "u_innertranslate",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "a904561c8247b185dbcc8e41606517e727717dd5f0c8d2ff425e2d546bc310e9",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    49,
+    "u_innertranslate_1",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "a904561c8247b185dbcc8e41606517e727717dd5f0c8d2ff425e2d546bc310e9",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    49,
+    "u_inv_matrix",
+    "mat4",
+    {
+      "array": {
+        "bytes": 64,
+        "dtype": "<f4",
+        "sha256": "605c43c637d476875ced06c146257542a57c3e336dcc59987b02953613dafa66",
+        "shape": [
+          16
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    49,
+    "u_inv_matrix_1",
+    "mat4",
+    {
+      "array": {
+        "bytes": 64,
+        "dtype": "<f4",
+        "sha256": "58c3410cd2c255f62a6b1f76af48faf1d7f5fc9c88494b8d23791c351faab29c",
+        "shape": [
+          16
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    49,
+    "u_matrix",
+    "mat4",
+    {
+      "array": {
+        "bytes": 64,
+        "dtype": "<f4",
+        "sha256": "02204cc448808153ca9813c48f0a8deda07da75acf63c0324755b76a972ccfc0",
+        "shape": [
+          16
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    49,
+    "u_matrix_1",
+    "mat4",
+    {
+      "array": {
+        "bytes": 64,
+        "dtype": "<f4",
+        "sha256": "77d0e82f0d659e07a5e784c3300a92b4b9e9726716c8b2d233e48f3f5be08f47",
+        "shape": [
+          16
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    49,
+    "u_scale",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "fa3fe2ea2163a8067230557cd1e08f13c2b6814c209734ed1142c71743103a92",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    49,
+    "u_scale_1",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "3cd55981d3a48ed314c649f3e4636c400395116e8a94cce18ecbc4f631133ca5",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    49,
+    "u_scale_2",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "f6bb1294da2f78cd935b01c7656280df5eaa0439e9d97bc03775825a41a508e4",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    49,
+    "u_scale_3",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "a416fff845c77f5467c037c96e18453dd9a307d0af8be8aa4d3aac93ee821b03",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    49,
+    "u_scale_4",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "f6bb1294da2f78cd935b01c7656280df5eaa0439e9d97bc03775825a41a508e4",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    49,
+    "u_scale_5",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "2013c25dd250158367e0bc004269462900f37bd61dafd0479bba4bc808bf7534",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    49,
+    "u_scale_6",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "f6bb1294da2f78cd935b01c7656280df5eaa0439e9d97bc03775825a41a508e4",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    49,
+    "u_scale_7",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "3cd55981d3a48ed314c649f3e4636c400395116e8a94cce18ecbc4f631133ca5",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    49,
+    "u_scale_8",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "fa3fe2ea2163a8067230557cd1e08f13c2b6814c209734ed1142c71743103a92",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    49,
+    "u_translate",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "6f16ef42632e7e6eff2b24aa4a84b669180c51d7948724f2fcf4771b5dfc8dc8",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    49,
+    "u_translate_1",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "cd32aa2981193ae54155bc42d2ff90b1593f4ccab42a2b61a610383b9888ffd4",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    49,
+    "u_translate_2",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "374708fff7719dd5979ec875d56cd2286f6d3cf7ec317a3b25632aab28ec37bb",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    49,
+    "u_translate_3",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "fa7954689efe3af16eac92a8b2bf5f6840fbb15c98f50d20f2366725ac5d3222",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    49,
+    "u_translate_4",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "374708fff7719dd5979ec875d56cd2286f6d3cf7ec317a3b25632aab28ec37bb",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    49,
+    "u_translate_5",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "c4ed2338fa8bdfe87ba22b0b14e6f74e4bbf6d849f85310370833d9cc56510ac",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    49,
+    "u_translate_6",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "374708fff7719dd5979ec875d56cd2286f6d3cf7ec317a3b25632aab28ec37bb",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    49,
+    "u_translate_7",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "cd32aa2981193ae54155bc42d2ff90b1593f4ccab42a2b61a610383b9888ffd4",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    49,
+    "u_translate_8",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "6f16ef42632e7e6eff2b24aa4a84b669180c51d7948724f2fcf4771b5dfc8dc8",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    49,
+    "u_view",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "96ef1dcce6c60b6aae5a1bdf1370379459a0d42ddb344cd1d522965ebe447e93",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "CREATE",
+    50,
+    "VertexBuffer"
+  ],
+  [
+    "SIZE",
+    50,
+    96
+  ],
+  [
+    "DATA",
+    50,
+    0,
+    {
+      "array": {
+        "bytes": 96,
+        "dtype": "|V12",
+        "sha256": "20f39721be80f4ca31e4ef4a99e89cd64d2a446f8c40d2adfa2c7f1478e93227",
+        "shape": [
+          8,
+          1
+        ]
+      }
+    }
+  ],
+  [
+    "ATTRIBUTE",
+    49,
+    "a_position",
+    "vec3",
+    [
+      50,
+      12,
+      0
+    ],
+    null
+  ],
+  [
+    "CREATE",
+    53,
+    "Texture3D"
+  ],
+  [
+    "INTERPOLATION",
+    53,
+    "linear",
+    "linear"
+  ],
+  [
+    "WRAPPING",
+    53,
+    [
+      "clamp_to_edge",
+      "clamp_to_edge",
+      "clamp_to_edge"
+    ]
+  ],
+  [
+    "SIZE",
+    53,
+    [
+      32,
+      32,
+      32,
+      1
+    ],
+    "luminance",
+    null
+  ],
+  [
+    "DATA",
+    53,
+    [
+      0,
+      0,
+      0
+    ],
+    {
+      "array": {
+        "bytes": 131072,
+        "dtype": "<f4",
+        "sha256": "169de19bd02834e21778b4e5cc963c6bbd212ac4dff0b09b2cfe9c1bafcb3957",
+        "shape": [
+          32,
+          32,
+          32,
+          1
+        ]
+      }
+    }
+  ],
+  [
+    "TEXTURE",
+    49,
+    "u_volumetex_0",
+    53
+  ],
+  [
+    "CREATE",
+    54,
+    "Texture3D"
+  ],
+  [
+    "INTERPOLATION",
+    54,
+    "linear",
+    "linear"
+  ],
+  [
+    "WRAPPING",
+    54,
+    [
+      "clamp_to_edge",
+      "clamp_to_edge",
+      "clamp_to_edge"
+    ]
+  ],
+  [
+    "SIZE",
+    54,
+    [
+      256,
+      256,
+      256,
+      1
+    ],
+    "luminance",
+    null
+  ],
+  [
+    "TEXTURE",
+    49,
+    "u_volumetex_1",
+    54
+  ],
+  [
+    "CREATE",
+    55,
+    "Texture3D"
+  ],
+  [
+    "INTERPOLATION",
+    55,
+    "linear",
+    "linear"
+  ],
+  [
+    "WRAPPING",
+    55,
+    [
+      "clamp_to_edge",
+      "clamp_to_edge",
+      "clamp_to_edge"
+    ]
+  ],
+  [
+    "SIZE",
+    55,
+    [
+      256,
+      256,
+      256,
+      1
+    ],
+    "luminance",
+    null
+  ],
+  [
+    "TEXTURE",
+    49,
+    "u_volumetex_2",
+    55
+  ],
+  [
+    "CREATE",
+    56,
+    "Texture3D"
+  ],
+  [
+    "INTERPOLATION",
+    56,
+    "linear",
+    "linear"
+  ],
+  [
+    "WRAPPING",
+    56,
+    [
+      "clamp_to_edge",
+      "clamp_to_edge",
+      "clamp_to_edge"
+    ]
+  ],
+  [
+    "SIZE",
+    56,
+    [
+      256,
+      256,
+      256,
+      1
+    ],
+    "luminance",
+    null
+  ],
+  [
+    "TEXTURE",
+    49,
+    "u_volumetex_3",
+    56
+  ],
+  [
+    "CREATE",
+    57,
+    "Texture3D"
+  ],
+  [
+    "INTERPOLATION",
+    57,
+    "linear",
+    "linear"
+  ],
+  [
+    "WRAPPING",
+    57,
+    [
+      "clamp_to_edge",
+      "clamp_to_edge",
+      "clamp_to_edge"
+    ]
+  ],
+  [
+    "SIZE",
+    57,
+    [
+      256,
+      256,
+      256,
+      1
+    ],
+    "luminance",
+    null
+  ],
+  [
+    "TEXTURE",
+    49,
+    "u_volumetex_4",
+    57
+  ],
+  [
+    "CREATE",
+    58,
+    "Texture3D"
+  ],
+  [
+    "INTERPOLATION",
+    58,
+    "linear",
+    "linear"
+  ],
+  [
+    "WRAPPING",
+    58,
+    [
+      "clamp_to_edge",
+      "clamp_to_edge",
+      "clamp_to_edge"
+    ]
+  ],
+  [
+    "SIZE",
+    58,
+    [
+      256,
+      256,
+      256,
+      1
+    ],
+    "luminance",
+    null
+  ],
+  [
+    "TEXTURE",
+    49,
+    "u_volumetex_5",
+    58
+  ],
+  [
+    "CREATE",
+    59,
+    "Texture3D"
+  ],
+  [
+    "INTERPOLATION",
+    59,
+    "linear",
+    "linear"
+  ],
+  [
+    "WRAPPING",
+    59,
+    [
+      "clamp_to_edge",
+      "clamp_to_edge",
+      "clamp_to_edge"
+    ]
+  ],
+  [
+    "SIZE",
+    59,
+    [
+      256,
+      256,
+      256,
+      1
+    ],
+    "luminance",
+    null
+  ],
+  [
+    "TEXTURE",
+    49,
+    "u_volumetex_6",
+    59
+  ],
+  [
+    "CREATE",
+    60,
+    "Texture3D"
+  ],
+  [
+    "INTERPOLATION",
+    60,
+    "linear",
+    "linear"
+  ],
+  [
+    "WRAPPING",
+    60,
+    [
+      "clamp_to_edge",
+      "clamp_to_edge",
+      "clamp_to_edge"
+    ]
+  ],
+  [
+    "SIZE",
+    60,
+    [
+      256,
+      256,
+      256,
+      1
+    ],
+    "luminance",
+    null
+  ],
+  [
+    "TEXTURE",
+    49,
+    "u_volumetex_7",
+    60
+  ],
+  [
+    "CREATE",
+    61,
+    "Texture3D"
+  ],
+  [
+    "INTERPOLATION",
+    61,
+    "linear",
+    "linear"
+  ],
+  [
+    "WRAPPING",
+    61,
+    [
+      "clamp_to_edge",
+      "clamp_to_edge",
+      "clamp_to_edge"
+    ]
+  ],
+  [
+    "SIZE",
+    61,
+    [
+      256,
+      256,
+      256,
+      1
+    ],
+    "luminance",
+    null
+  ],
+  [
+    "TEXTURE",
+    49,
+    "u_volumetex_8",
+    61
+  ],
+  [
+    "CREATE",
+    62,
+    "Texture3D"
+  ],
+  [
+    "INTERPOLATION",
+    62,
+    "linear",
+    "linear"
+  ],
+  [
+    "WRAPPING",
+    62,
+    [
+      "clamp_to_edge",
+      "clamp_to_edge",
+      "clamp_to_edge"
+    ]
+  ],
+  [
+    "SIZE",
+    62,
+    [
+      256,
+      256,
+      256,
+      1
+    ],
+    "luminance",
+    null
+  ],
+  [
+    "TEXTURE",
+    49,
+    "u_volumetex_9",
+    62
+  ],
+  [
+    "CREATE",
+    63,
+    "Texture3D"
+  ],
+  [
+    "INTERPOLATION",
+    63,
+    "linear",
+    "linear"
+  ],
+  [
+    "WRAPPING",
+    63,
+    [
+      "clamp_to_edge",
+      "clamp_to_edge",
+      "clamp_to_edge"
+    ]
+  ],
+  [
+    "SIZE",
+    63,
+    [
+      256,
+      256,
+      256,
+      1
+    ],
+    "luminance",
+    null
+  ],
+  [
+    "TEXTURE",
+    49,
+    "u_volumetex_10",
+    63
+  ],
+  [
+    "CREATE",
+    64,
+    "Texture3D"
+  ],
+  [
+    "INTERPOLATION",
+    64,
+    "linear",
+    "linear"
+  ],
+  [
+    "WRAPPING",
+    64,
+    [
+      "clamp_to_edge",
+      "clamp_to_edge",
+      "clamp_to_edge"
+    ]
+  ],
+  [
+    "SIZE",
+    64,
+    [
+      256,
+      256,
+      256,
+      1
+    ],
+    "luminance",
+    null
+  ],
+  [
+    "TEXTURE",
+    49,
+    "u_volumetex_11",
+    64
+  ],
+  [
+    "CREATE",
+    65,
+    "Texture3D"
+  ],
+  [
+    "INTERPOLATION",
+    65,
+    "linear",
+    "linear"
+  ],
+  [
+    "WRAPPING",
+    65,
+    [
+      "clamp_to_edge",
+      "clamp_to_edge",
+      "clamp_to_edge"
+    ]
+  ],
+  [
+    "SIZE",
+    65,
+    [
+      256,
+      256,
+      256,
+      1
+    ],
+    "luminance",
+    null
+  ],
+  [
+    "TEXTURE",
+    49,
+    "u_volumetex_12",
+    65
+  ],
+  [
+    "CREATE",
+    66,
+    "Texture3D"
+  ],
+  [
+    "INTERPOLATION",
+    66,
+    "linear",
+    "linear"
+  ],
+  [
+    "WRAPPING",
+    66,
+    [
+      "clamp_to_edge",
+      "clamp_to_edge",
+      "clamp_to_edge"
+    ]
+  ],
+  [
+    "SIZE",
+    66,
+    [
+      256,
+      256,
+      256,
+      1
+    ],
+    "luminance",
+    null
+  ],
+  [
+    "TEXTURE",
+    49,
+    "u_volumetex_13",
+    66
+  ],
+  [
+    "CREATE",
+    67,
+    "Texture3D"
+  ],
+  [
+    "INTERPOLATION",
+    67,
+    "linear",
+    "linear"
+  ],
+  [
+    "WRAPPING",
+    67,
+    [
+      "clamp_to_edge",
+      "clamp_to_edge",
+      "clamp_to_edge"
+    ]
+  ],
+  [
+    "SIZE",
+    67,
+    [
+      256,
+      256,
+      256,
+      1
+    ],
+    "luminance",
+    null
+  ],
+  [
+    "TEXTURE",
+    49,
+    "u_volumetex_14",
+    67
+  ],
+  [
+    "CREATE",
+    68,
+    "Texture3D"
+  ],
+  [
+    "INTERPOLATION",
+    68,
+    "linear",
+    "linear"
+  ],
+  [
+    "WRAPPING",
+    68,
+    [
+      "clamp_to_edge",
+      "clamp_to_edge",
+      "clamp_to_edge"
+    ]
+  ],
+  [
+    "SIZE",
+    68,
+    [
+      256,
+      256,
+      256,
+      1
+    ],
+    "luminance",
+    null
+  ],
+  [
+    "TEXTURE",
+    49,
+    "u_volumetex_15",
+    68
+  ],
+  [
+    "UNIFORM",
+    49,
+    "u_downsample",
+    "float",
+    {
+      "array": {
+        "bytes": 4,
+        "dtype": "<f4",
+        "sha256": "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c",
+        "shape": [
+          1
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    49,
+    "u_bgcolor",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "7ab8f6c26e4f9862c95a18c8e5c50403eeb64d8869fbbf9a7a6397d9a63b7b0e",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    49,
+    "u_shape",
+    "vec3",
+    {
+      "array": {
+        "bytes": 12,
+        "dtype": "<f4",
+        "sha256": "80e1364201a4810546c6bbded8c7e82446a8a1d357cb5f715e9a191faae1ec54",
+        "shape": [
+          3
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    49,
+    "u_clip_min",
+    "vec3",
+    {
+      "array": {
+        "bytes": 12,
+        "dtype": "<f4",
+        "sha256": "48fa39cb2b8f68cd8a95bfa355ac8ec06136b21d9a51aa567e7086e6d467ce8f",
+        "shape": [
+          3
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    49,
+    "u_clip_max",
+    "vec3",
+    {
+      "array": {
+        "bytes": 12,
+        "dtype": "<f4",
+        "sha256": "47d9bc92c040bcc40880b5e14aebe505bfc5f16fceb728f4bc29aad3d2bb8890",
+        "shape": [
+          3
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    49,
+    "u_enabled_0",
+    "int",
+    {
+      "array": {
+        "bytes": 4,
+        "dtype": "<i4",
+        "sha256": "67abdd721024f0ff4e0b3f4c2fc13bc5bad42d0b7851d456d88d203d15aaa450",
+        "shape": [
+          1
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    49,
+    "u_weight_0",
+    "float",
+    {
+      "array": {
+        "bytes": 4,
+        "dtype": "<f4",
+        "sha256": "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c",
+        "shape": [
+          1
+        ]
+      }
+    }
+  ],
+  [
+    "CREATE",
+    52,
+    "IndexBuffer"
+  ],
+  [
+    "SIZE",
+    52,
+    56
+  ],
+  [
+    "DATA",
+    52,
+    0,
+    {
+      "array": {
+        "bytes": 56,
+        "dtype": "<u4",
+        "sha256": "b94833219dfff70fa9a154b31b044c7a4b9399acd6923523b7d8de32fa803dd7",
+        "shape": [
+          14
+        ]
+      }
+    }
+  ],
+  [
+    "DRAW",
+    49,
+    "triangle_strip",
+    [
+      52,
+      "UNSIGNED_INT",
+      14
+    ],
+    1
+  ],
+  [
+    "FUNC",
+    "glColorMask",
+    false,
+    false,
+    false,
+    true
+  ],
+  [
+    "FUNC",
+    "glClear",
+    16384
+  ],
+  [
+    "FUNC",
+    "glColorMask",
+    true,
+    true,
+    true,
+    true
+  ],
+  [
+    "FUNC",
+    "glFlush"
+  ],
+  [
+    "CURRENT",
+    0,
+    1
+  ],
+  [
+    "FUNC",
+    "glClearColor",
+    0.0,
+    0.0,
+    0.0,
+    1.0
+  ],
+  [
+    "FUNC",
+    "glClear",
+    17664
+  ],
+  [
+    "SIZE",
+    50,
+    96
+  ],
+  [
+    "DATA",
+    50,
+    0,
+    {
+      "array": {
+        "bytes": 96,
+        "dtype": "|V12",
+        "sha256": "20f39721be80f4ca31e4ef4a99e89cd64d2a446f8c40d2adfa2c7f1478e93227",
+        "shape": [
+          8,
+          1
+        ]
+      }
+    }
+  ],
+  [
+    "SIZE",
+    52,
+    56
+  ],
+  [
+    "DATA",
+    52,
+    0,
+    {
+      "array": {
+        "bytes": 56,
+        "dtype": "<u4",
+        "sha256": "b94833219dfff70fa9a154b31b044c7a4b9399acd6923523b7d8de32fa803dd7",
+        "shape": [
+          14
+        ]
+      }
+    }
+  ],
+  [
+    "FUNC",
+    "glDisable",
+    "cull_face"
+  ],
+  [
+    "FUNC",
+    "glEnable",
+    "depth_test"
+  ],
+  [
+    "FUNC",
+    "glEnable",
+    "blend"
+  ],
+  [
+    "FUNC",
+    "glBlendFuncSeparate",
+    "src_alpha",
+    "one_minus_src_alpha",
+    "zero",
+    "one"
+  ],
+  [
+    "FUNC",
+    "glBlendEquationSeparate",
+    "func_add",
+    "func_add"
+  ],
+  [
+    "DRAW",
+    49,
+    "triangle_strip",
+    [
+      52,
+      "UNSIGNED_INT",
+      14
+    ],
+    1
+  ],
+  [
+    "FUNC",
+    "glColorMask",
+    false,
+    false,
+    false,
+    true
+  ],
+  [
+    "FUNC",
+    "glClear",
+    16384
+  ],
+  [
+    "FUNC",
+    "glColorMask",
+    true,
+    true,
+    true,
+    true
+  ],
+  [
+    "FUNC",
+    "glFlush"
+  ],
+  [
+    "CURRENT",
+    0,
+    1
+  ],
+  [
+    "UNIFORM",
+    49,
+    "u_clip_min",
+    "vec3",
+    {
+      "array": {
+        "bytes": 12,
+        "dtype": "<f4",
+        "sha256": "15ec7bf0b50732b49f8228e07d24365338f9e3ab994b00af08e5a3bffe55fd8b",
+        "shape": [
+          3
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    49,
+    "u_clip_max",
+    "vec3",
+    {
+      "array": {
+        "bytes": 12,
+        "dtype": "<f4",
+        "sha256": "8a31a40ecac0ceb4d87b30bd156ca7a547e8e33dc071454b765fbc777d1c34a1",
+        "shape": [
+          3
+        ]
+      }
+    }
+  ],
+  [
+    "FUNC",
+    "glClearColor",
+    0.0,
+    0.0,
+    0.0,
+    1.0
+  ],
+  [
+    "FUNC",
+    "glClear",
+    17664
+  ],
+  [
+    "SIZE",
+    50,
+    96
+  ],
+  [
+    "DATA",
+    50,
+    0,
+    {
+      "array": {
+        "bytes": 96,
+        "dtype": "|V12",
+        "sha256": "20f39721be80f4ca31e4ef4a99e89cd64d2a446f8c40d2adfa2c7f1478e93227",
+        "shape": [
+          8,
+          1
+        ]
+      }
+    }
+  ],
+  [
+    "SIZE",
+    52,
+    56
+  ],
+  [
+    "DATA",
+    52,
+    0,
+    {
+      "array": {
+        "bytes": 56,
+        "dtype": "<u4",
+        "sha256": "b94833219dfff70fa9a154b31b044c7a4b9399acd6923523b7d8de32fa803dd7",
+        "shape": [
+          14
+        ]
+      }
+    }
+  ],
+  [
+    "FUNC",
+    "glDisable",
+    "cull_face"
+  ],
+  [
+    "FUNC",
+    "glEnable",
+    "depth_test"
+  ],
+  [
+    "FUNC",
+    "glEnable",
+    "blend"
+  ],
+  [
+    "FUNC",
+    "glBlendFuncSeparate",
+    "src_alpha",
+    "one_minus_src_alpha",
+    "zero",
+    "one"
+  ],
+  [
+    "FUNC",
+    "glBlendEquationSeparate",
+    "func_add",
+    "func_add"
+  ],
+  [
+    "UNIFORM",
+    49,
+    "u_inv_matrix",
+    "mat4",
+    {
+      "array": {
+        "bytes": 64,
+        "dtype": "<f4",
+        "sha256": "2aa98347b564e75c611acb19a22ff9a204bfd677627864777ef3b0bf8e8345a0",
+        "shape": [
+          16
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    49,
+    "u_inv_matrix_1",
+    "mat4",
+    {
+      "array": {
+        "bytes": 64,
+        "dtype": "<f4",
+        "sha256": "ed62c49a55ea18dbaac4d78d65303321391a545dca98c5763ac3dd0111a7a29f",
+        "shape": [
+          16
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    49,
+    "u_matrix",
+    "mat4",
+    {
+      "array": {
+        "bytes": 64,
+        "dtype": "<f4",
+        "sha256": "c3a96a2768cd1ed4d4bf68b584af1d43fb9ad027526bfe4915e4ef4c41761500",
+        "shape": [
+          16
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    49,
+    "u_matrix_1",
+    "mat4",
+    {
+      "array": {
+        "bytes": 64,
+        "dtype": "<f4",
+        "sha256": "b7dc8ff5c51c35c0c2016cbd965e11637bbfc9469834d52a0e4b65981093169f",
+        "shape": [
+          16
+        ]
+      }
+    }
+  ],
+  [
+    "DRAW",
+    49,
+    "triangle_strip",
+    [
+      52,
+      "UNSIGNED_INT",
+      14
+    ],
+    1
+  ],
+  [
+    "FUNC",
+    "glColorMask",
+    false,
+    false,
+    false,
+    true
+  ],
+  [
+    "FUNC",
+    "glClear",
+    16384
+  ],
+  [
+    "FUNC",
+    "glColorMask",
+    true,
+    true,
+    true,
+    true
+  ],
+  [
+    "FUNC",
+    "glFlush"
+  ],
+  [
+    "CURRENT",
+    0,
+    1
+  ],
+  [
+    "CREATE",
+    89,
+    "FrameBuffer"
+  ],
+  [
+    "CREATE",
+    87,
+    "RenderBuffer"
+  ],
+  [
+    "SIZE",
+    87,
+    [
+      128,
+      128
+    ],
+    "color"
+  ],
+  [
+    "ATTACH",
+    89,
+    "color",
+    87
+  ],
+  [
+    "CREATE",
+    88,
+    "RenderBuffer"
+  ],
+  [
+    "SIZE",
+    88,
+    [
+      128,
+      128
+    ],
+    "depth"
+  ],
+  [
+    "ATTACH",
+    89,
+    "depth",
+    88
+  ],
+  [
+    "FRAMEBUFFER",
+    89,
+    true
+  ],
+  [
+    "FUNC",
+    "glViewport",
+    0,
+    0,
+    128,
+    128
+  ],
+  [
+    "FUNC",
+    "glClearColor",
+    0.0,
+    0.0,
+    0.0,
+    1.0
+  ],
+  [
+    "FUNC",
+    "glClear",
+    17664
+  ],
+  [
+    "SIZE",
+    50,
+    96
+  ],
+  [
+    "DATA",
+    50,
+    0,
+    {
+      "array": {
+        "bytes": 96,
+        "dtype": "|V12",
+        "sha256": "20f39721be80f4ca31e4ef4a99e89cd64d2a446f8c40d2adfa2c7f1478e93227",
+        "shape": [
+          8,
+          1
+        ]
+      }
+    }
+  ],
+  [
+    "SIZE",
+    52,
+    56
+  ],
+  [
+    "DATA",
+    52,
+    0,
+    {
+      "array": {
+        "bytes": 56,
+        "dtype": "<u4",
+        "sha256": "b94833219dfff70fa9a154b31b044c7a4b9399acd6923523b7d8de32fa803dd7",
+        "shape": [
+          14
+        ]
+      }
+    }
+  ],
+  [
+    "FUNC",
+    "glDisable",
+    "cull_face"
+  ],
+  [
+    "FUNC",
+    "glEnable",
+    "depth_test"
+  ],
+  [
+    "FUNC",
+    "glEnable",
+    "blend"
+  ],
+  [
+    "FUNC",
+    "glBlendFuncSeparate",
+    "src_alpha",
+    "one_minus_src_alpha",
+    "zero",
+    "one"
+  ],
+  [
+    "FUNC",
+    "glBlendEquationSeparate",
+    "func_add",
+    "func_add"
+  ],
+  [
+    "DRAW",
+    49,
+    "triangle_strip",
+    [
+      52,
+      "UNSIGNED_INT",
+      14
+    ],
+    1
+  ],
+  [
+    "FUNC",
+    "glFinish"
+  ]
+]

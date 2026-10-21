@@ -1,0 +1,28 @@
+{
+  "policy": "Existing pyproject uses NumPy2.2.6 on Python3.10; no shared pyproject or uv.lock changes required.",
+  "primary_metadata": [
+    {
+      "metadata_sha256": "161349496c9aa02ec136064b242b66678574fd197214be82b1007dcfff95e6b0",
+      "metadata_url": "https://pypi.org/pypi/numpy/2.2.6/json",
+      "name": "numpy",
+      "requires_python": ">=3.10",
+      "version": "2.2.6",
+      "windows_cpython310_wheels": [
+        {
+          "filename": "numpy-2.2.6-cp310-cp310-win_amd64.whl",
+          "requires_python": ">=3.10",
+          "sha256": "f0fd6321b839904e15c46e0d257fdd101dd7f530fe03fd6359c1ea63738703f3",
+          "url": "https://files.pythonhosted.org/packages/a3/dd/4b822569d6b96c39d1215dbae0582fd99954dcbcf0c1a13c61783feaca3f/numpy-2.2.6-cp310-cp310-win_amd64.whl"
+        }
+      ]
+    },
+    {
+      "metadata_sha256": "fc316414566d77fbc82c92f9d710d913778a701b253d0568aa033bd85d3e5169",
+      "metadata_url": "https://pypi.org/pypi/numpy/2.4.6/json",
+      "name": "numpy",
+      "requires_python": ">=3.11",
+      "version": "2.4.6",
+      "windows_cpython310_wheels": []
+    }
+  ]
+}

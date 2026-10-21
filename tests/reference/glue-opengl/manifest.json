@@ -1,0 +1,550 @@
+{
+  "comparison": {
+    "categorical_landmarks_exact": true,
+    "edge_max_differing_fraction": 0.001,
+    "full_frame_exact": true,
+    "interior_max_abs_u8": 2
+  },
+  "errors": {
+    "volume_edit": {
+      "error": "[  0   0 255 255]",
+      "type": "AssertionError",
+      "unadmitted_artifacts": {
+        "glir.json": {
+          "file": "volume_edit.glir.json",
+          "sha256": "4ee5d8f0df19baf74c969304223e704d3ad6da3b857a6638227d381ef33e7841"
+        },
+        "npy": {
+          "file": "volume_edit.npy",
+          "sha256": "4d8a05a68dd9c60e2ae5e916c5998b50e4d9a12ce79fed48f54bfe04c972695d"
+        },
+        "shaders.json": {
+          "file": "volume_edit.shaders.json",
+          "sha256": "3e14b715f43a5fa8fb162d78de37da80e3fd5d72800752f937deec76b92fac09"
+        }
+      }
+    }
+  },
+  "fixtures": {
+    "scatter": {
+      "capture": {
+        "file": "scatter.capture.json",
+        "sha256": "19fd447b8143fe193b8e069daf064c7dc0981c6bf27a50dc5e1e07c73441fa23"
+      },
+      "expanded_shaders": {
+        "file": "scatter.shaders.json",
+        "sha256": "38aadc515fc9476cf3ab5c4782d5ff486517f5d5de0650bf41beebea86111502"
+      },
+      "filtered_glir": {
+        "file": "scatter.glir.json",
+        "sha256": "9f602a6ea3e03bd7cfc7911fc4e22523ecf8ea9ccd156aaad86303ab0a644de7"
+      },
+      "parameters": {
+        "alpha": 1.0,
+        "axes": false,
+        "camera": {
+          "azimuth": 0.0,
+          "center": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "elevation": 0.0,
+          "scale_factor": 2.5
+        },
+        "case": "scatter",
+        "color": "#ff0000",
+        "error_dialogs": [],
+        "host_context_available": true,
+        "inputs": [
+          {
+            "dtype": "<f4",
+            "sha256": "d556cc0117cefd62844a7ced63235c5da8f8225b0f23f1f50a68713b4b51f00b",
+            "shape": [
+              2
+            ]
+          },
+          {
+            "dtype": "<f4",
+            "sha256": "b3f689962d5d23d2c4d34e32885e60cb9af0119e64bbf4ce2446694c45d9cdb9",
+            "shape": [
+              2
+            ]
+          },
+          {
+            "dtype": "<f4",
+            "sha256": "b3f689962d5d23d2c4d34e32885e60cb9af0119e64bbf4ce2446694c45d9cdb9",
+            "shape": [
+              2
+            ]
+          }
+        ],
+        "limits": [
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        "native_mro": [
+          "CanvasBackendDesktop",
+          "QtBaseCanvasBackend",
+          "BaseCanvasBackend",
+          "QOpenGLWidget",
+          "QWidget",
+          "QObject",
+          "wrapper",
+          "QPaintDevice",
+          "simplewrapper",
+          "object"
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "viewer_class": "VispyScatterViewer"
+      },
+      "rgba": {
+        "file": "scatter.npy",
+        "sha256": "c20738dfe3f1478e9a0f8e0273230d9684e6d9fcf6dfd3c5b0b6d2266056ef59"
+      },
+      "shape": [
+        128,
+        128,
+        4
+      ]
+    },
+    "scatter_axes": {
+      "capture": {
+        "file": "scatter_axes.capture.json",
+        "sha256": "69ca22f684d3c34b8c1447bb8084ba6e3622e052401a69ba9b207504253ab012"
+      },
+      "expanded_shaders": {
+        "file": "scatter_axes.shaders.json",
+        "sha256": "ef0c1616e6722e89b60b61c8bd0c897d4ee767228d97cc883b8bc5a3a433f164"
+      },
+      "filtered_glir": {
+        "file": "scatter_axes.glir.json",
+        "sha256": "788d1525bd6065179d29f9559841298708f57ac65dfb02bc4c5dc214cff4eb79"
+      },
+      "parameters": {
+        "alpha": 1.0,
+        "axes": true,
+        "camera": {
+          "azimuth": 0.0,
+          "center": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "elevation": 0.0,
+          "scale_factor": 2.5
+        },
+        "case": "scatter_axes",
+        "color": "#ff0000",
+        "error_dialogs": [],
+        "host_context_available": true,
+        "inputs": [
+          {
+            "dtype": "<f4",
+            "sha256": "d556cc0117cefd62844a7ced63235c5da8f8225b0f23f1f50a68713b4b51f00b",
+            "shape": [
+              2
+            ]
+          },
+          {
+            "dtype": "<f4",
+            "sha256": "b3f689962d5d23d2c4d34e32885e60cb9af0119e64bbf4ce2446694c45d9cdb9",
+            "shape": [
+              2
+            ]
+          },
+          {
+            "dtype": "<f4",
+            "sha256": "b3f689962d5d23d2c4d34e32885e60cb9af0119e64bbf4ce2446694c45d9cdb9",
+            "shape": [
+              2
+            ]
+          }
+        ],
+        "limits": [
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        "native_mro": [
+          "CanvasBackendDesktop",
+          "QtBaseCanvasBackend",
+          "BaseCanvasBackend",
+          "QOpenGLWidget",
+          "QWidget",
+          "QObject",
+          "wrapper",
+          "QPaintDevice",
+          "simplewrapper",
+          "object"
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "viewer_class": "VispyScatterViewer"
+      },
+      "rgba": {
+        "file": "scatter_axes.npy",
+        "sha256": "ae646b650ce3145a08fc4ff633ee2fc6035f2ebc40f378970a8a3b64faaee6cc"
+      },
+      "shape": [
+        128,
+        128,
+        4
+      ]
+    },
+    "scatter_edit": {
+      "capture": {
+        "file": "scatter_edit.capture.json",
+        "sha256": "8e2e4ce62ea7541012ddb17086df5217a2366965931d141cbc23212b025d7f12"
+      },
+      "expanded_shaders": {
+        "file": "scatter_edit.shaders.json",
+        "sha256": "38aadc515fc9476cf3ab5c4782d5ff486517f5d5de0650bf41beebea86111502"
+      },
+      "filtered_glir": {
+        "file": "scatter_edit.glir.json",
+        "sha256": "3e033e48d0cc6f0d4de53af14995c951e044fff97512fd317f7fcd8774496ef8"
+      },
+      "parameters": {
+        "alpha": 1.0,
+        "axes": false,
+        "camera": {
+          "azimuth": 0.0,
+          "center": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "elevation": 0.0,
+          "scale_factor": 2.5
+        },
+        "case": "scatter_edit",
+        "color": "#0000ff",
+        "error_dialogs": [],
+        "host_context_available": true,
+        "inputs": [
+          {
+            "dtype": "<f4",
+            "sha256": "d556cc0117cefd62844a7ced63235c5da8f8225b0f23f1f50a68713b4b51f00b",
+            "shape": [
+              2
+            ]
+          },
+          {
+            "dtype": "<f4",
+            "sha256": "b3f689962d5d23d2c4d34e32885e60cb9af0119e64bbf4ce2446694c45d9cdb9",
+            "shape": [
+              2
+            ]
+          },
+          {
+            "dtype": "<f4",
+            "sha256": "b3f689962d5d23d2c4d34e32885e60cb9af0119e64bbf4ce2446694c45d9cdb9",
+            "shape": [
+              2
+            ]
+          },
+          {
+            "dtype": "<f4",
+            "sha256": "59cdf3a4bed401dd19cfa4defd34ac9ee3f2a83024eb7204893faea675a99c38",
+            "shape": [
+              2
+            ]
+          }
+        ],
+        "limits": [
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        "native_mro": [
+          "CanvasBackendDesktop",
+          "QtBaseCanvasBackend",
+          "BaseCanvasBackend",
+          "QOpenGLWidget",
+          "QWidget",
+          "QObject",
+          "wrapper",
+          "QPaintDevice",
+          "simplewrapper",
+          "object"
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "viewer_class": "VispyScatterViewer"
+      },
+      "rgba": {
+        "file": "scatter_edit.npy",
+        "sha256": "abff74a56c4cbb32bcbdfc53196ce1c7a081838aeba7ca8dcd840ade9cb18e78"
+      },
+      "shape": [
+        128,
+        128,
+        4
+      ]
+    },
+    "volume": {
+      "capture": {
+        "file": "volume.capture.json",
+        "sha256": "197d11e53b15340d0fb6023f392fb70160a7dde7fcd264f74daf59634f1e9c1f"
+      },
+      "expanded_shaders": {
+        "file": "volume.shaders.json",
+        "sha256": "5b1786361590f7c9d28ab55d68d884afcfb853cd9faa8733d54c5cd1302a235a"
+      },
+      "filtered_glir": {
+        "file": "volume.glir.json",
+        "sha256": "5755656278fe58fbd035e24d7537c8bdefa0f2219e63a142ec4ab7aab5bfe272"
+      },
+      "parameters": {
+        "alpha": 1.0,
+        "axes": false,
+        "camera": {
+          "azimuth": 0.0,
+          "center": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "elevation": 0.0,
+          "scale_factor": 2.5
+        },
+        "case": "volume",
+        "clim": [
+          0,
+          1
+        ],
+        "color": "#00ff00",
+        "downsample": false,
+        "error_dialogs": [],
+        "host_context_available": true,
+        "inputs": [
+          {
+            "dtype": "<f4",
+            "sha256": "169de19bd02834e21778b4e5cc963c6bbd212ac4dff0b09b2cfe9c1bafcb3957",
+            "shape": [
+              32,
+              32,
+              32
+            ]
+          }
+        ],
+        "limits": [
+          -0.5,
+          31.5,
+          -0.5,
+          31.5,
+          -0.5,
+          31.5
+        ],
+        "native_mro": [
+          "CanvasBackendDesktop",
+          "QtBaseCanvasBackend",
+          "BaseCanvasBackend",
+          "QOpenGLWidget",
+          "QWidget",
+          "QObject",
+          "wrapper",
+          "QPaintDevice",
+          "simplewrapper",
+          "object"
+        ],
+        "resolution": 32,
+        "size": [
+          128,
+          128
+        ],
+        "viewer_class": "VispyVolumeViewer"
+      },
+      "rgba": {
+        "file": "volume.npy",
+        "sha256": "967163f3ac46541990eabbcbfdfd3d84175a2efbabde4492b5c7ef0f68855318"
+      },
+      "shape": [
+        128,
+        128,
+        4
+      ]
+    }
+  },
+  "provenance": {
+    "capture_source_sha256": "66ae25247831c184f38f2c7a2ff151b940013087104907523b11e1ed2b9b151a",
+    "cmake": null,
+    "distribution_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-glue\\Lib\\site-packages",
+    "distribution_record_sha256": "455e084c0cb78e19e41c79d08a57d533b07d52b3248c2ebd4b73e80584b067cc",
+    "environment": {
+      "PYTHONPATH": null,
+      "QT_API": "pyqt6",
+      "QT_QPA_PLATFORM": null,
+      "QT_SCALE_FACTOR": "1",
+      "VISPY_PYQT5_SHARE_CONTEXT": "true"
+    },
+    "fixture_source_sha256": "37797259727afd9c6b15c7074319b935dcddb330deb2b6c99a03c8df6f36fddb",
+    "glue_core_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-glue\\Lib\\site-packages\\glue\\__init__.py",
+    "glue_qt_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-glue\\Lib\\site-packages\\glue_qt\\__init__.py",
+    "glue_vispy_viewers_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-glue\\Lib\\site-packages\\glue_vispy_viewers\\__init__.py",
+    "glue_vispy_viewers_version": "1.4.0",
+    "historical_windows_test_skip": {
+      "files": [
+        "scatter/qt/tests/test_scatter_viewer.py",
+        "volume/qt/tests/test_volume_viewer.py"
+      ],
+      "reason": "Windows fatal exception: access violation"
+    },
+    "host_capture_sha256": "99c0b3dfdbcb0f4caca93251aa7da28f41decb2db04d84bcbef454fe9213c1c3",
+    "host_commit": "33509adb53909b7542069563f77fb9a80bd565a4",
+    "host_fixture_sha256": "f5dcf37968064a83282c3eb1e73548c4a7136249c2b7753f01e10bf2cbd02f9b",
+    "host_requirements_sha256": "6dbfd71fd13b1a76dd33012027355cd482984b416f07b1b405a1fa4e3b7467ff",
+    "host_source_sha256": {
+      "common/axes.py": "8d4f0b30806313e98cd542c1ec667abc07264464ab0bab27f24f66b49a9e6399",
+      "common/qt/data_viewer.py": "733c98fc8a9b5194f0d0ef001ebb646cadc35bf876f2a529807f598706b9f9dc",
+      "common/vispy_widget.py": "b22ae25136d7e30ff2881a2743a8f286f8891be69e4e07c7ddeeba0980531881",
+      "scatter/layer_artist.py": "fcb9af921d0d9167c68ef8568659b36ff922334b7bb09cd0379e12330dd2fe27",
+      "scatter/multi_scatter.py": "2849441e9f0ad3f61b7ece3f87be46b094e21450fbfa015fd591bcaab14a554d",
+      "scatter/qt/tests/test_scatter_viewer.py": "538652b942e606998512a821ae3a85e4564efc1aaab7a8ae7cf63cd87fdebed0",
+      "volume/qt/tests/test_volume_viewer.py": "3e9414440bd4fb0762dc6f7e97785755608d247456363d428f2dc87c5e9ddba4",
+      "volume/shaders.py": "dddaa003b049c9abe44204bca69dd081e4ed311820cde7489510ee5de52b0d57",
+      "volume/volume_visual.py": "eba8e9b5c37041dde0189d71b34506f9230ec4223a426803b5b1580169061b04"
+    },
+    "installed": {
+      "ImageIO": "2.38.1",
+      "PyOpenGL": "3.1.10",
+      "PyQt6": "6.11.0",
+      "PyQt6-Qt6": "6.11.2",
+      "PyQt6_sip": "13.13.0",
+      "PyYAML": "6.0.3",
+      "Pygments": "2.21.0",
+      "QtPy": "2.4.3",
+      "astropy": "8.0.1",
+      "astropy-iers-data": "0.2026.10.5.1.0.7",
+      "asttokens": "3.0.2",
+      "casa-formats-io": "0.3.1",
+      "click": "8.5.0",
+      "cloudpickle": "3.1.2",
+      "colorama": "0.4.6",
+      "comm": "0.2.3",
+      "contourpy": "1.4.0",
+      "cycler": "0.12.1",
+      "dask": "2026.8.0",
+      "debugpy": "1.8.22",
+      "decorator": "5.3.1",
+      "dill": "0.4.1",
+      "echo": "0.16.0",
+      "et_xmlfile": "2.0.0",
+      "executing": "2.2.1",
+      "fast-histogram": "0.14",
+      "fonttools": "4.66.1",
+      "freetype-py": "2.5.1",
+      "fsspec": "2026.9.0",
+      "glfw": "2.10.2",
+      "glue-core": "1.27.0",
+      "glue-qt": "0.4.2",
+      "glue-vispy-viewers": "1.4.0",
+      "h5py": "3.16.0",
+      "hsluv": "5.0.4",
+      "iniconfig": "2.3.1",
+      "ipykernel": "7.4.0",
+      "ipython": "8.39.0",
+      "ipython_pygments_lexers": "1.1.1",
+      "jedi": "0.20.0",
+      "joblib": "1.6.0",
+      "jupyter_client": "8.10.0",
+      "jupyter_core": "5.9.1",
+      "kiwisolver": "1.5.1",
+      "locket": "1.0.0",
+      "matplotlib": "3.11.2",
+      "matplotlib-inline": "0.2.2",
+      "mpl-scatter-density": "0.8",
+      "nest-asyncio2": "1.7.4",
+      "numpy": "2.5.3",
+      "openpyxl": "3.1.5",
+      "packaging": "26.3",
+      "pandas": "3.0.6",
+      "parso": "0.8.7",
+      "partd": "1.4.2",
+      "pillow": "12.3.0",
+      "platformdirs": "4.12.4",
+      "pluggy": "1.6.0",
+      "prompt_toolkit": "3.0.53",
+      "pure_eval": "0.2.4",
+      "pvextractor": "0.5",
+      "pyerfa": "2.0.1.5",
+      "pyparsing": "3.3.3",
+      "pytest": "9.1.1",
+      "python-dateutil": "2.9.0.post0",
+      "pyzmq": "27.2.0",
+      "qtconsole": "5.7.2",
+      "radio-beam": "0.3.10",
+      "scipy": "1.18.1",
+      "setuptools": "84.0.0",
+      "shapely": "2.2.0",
+      "six": "1.17.0",
+      "spectral-cube": "0.7.0",
+      "stack-data": "0.6.3",
+      "toolz": "1.2.0",
+      "tornado": "6.5.10",
+      "tqdm": "4.70.1",
+      "traitlets": "5.16.1",
+      "typing_extensions": "4.16.0",
+      "tzdata": "2026.5",
+      "vispy": "0.17.0",
+      "wcwidth": "0.9.2",
+      "xlrd": "2.0.2"
+    },
+    "kind": "upstream",
+    "machine": "AMD64",
+    "numpy_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-glue\\Lib\\site-packages\\numpy\\__init__.py",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.12.8",
+    "python_executable": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-glue\\Scripts\\python.exe",
+    "qt_runtime": "6.11.2",
+    "regenerate": "uv venv build/oracle-glue --python 3.12; uv pip install --python build/oracle-glue/Scripts/python.exe --require-hashes -r tools/oracle_glue_requirements.txt; build/oracle-glue/Scripts/python.exe tools/oracle_glue_capture.py --kind upstream --output tests/reference/glue-opengl",
+    "renderer": {
+      "renderer": "NVIDIA GeForce RTX 4090/PCIe/SSE2",
+      "vendor": "NVIDIA Corporation",
+      "version": "4.6.0 NVIDIA 595.79"
+    },
+    "requirements_sha256": "a784b5a5e2b4ea201578acddc41e28e0997275ea2542642148322153cd240ffd",
+    "source_sha256": {
+      "gloo/buffer.py": "68e37b184b74814e0ae7a6f4f754c9f0c0af5b4e6369a60a8357c70da974e138",
+      "gloo/context.py": "6afc97492f65a5e865723535206fb769a1c4b55694d69786123fdee78bef992a",
+      "gloo/glir.py": "a3bb8a75b33f47420e9c100b8a6d81037a2f03c905e6c9f7d8399f4fb2eb8f7c",
+      "gloo/program.py": "4d3ab8e36260f9b5dc50f6aec075b12d642535f3cb8f49bfd4a27056301d5492",
+      "gloo/texture.py": "9f6d5f2e448e02c0ca4d66c65d17ddcdb6c0182bb8f15f1292a427f5a9faf6bc",
+      "gloo/wrappers.py": "73dbb5eb8ca78b2822266d272ffb14db9fcadd7a56512843209187714c9e8dcc"
+    },
+    "upstream_commit": "117b054598f4758b598f4b8f48feea48c11fe7b0",
+    "versions": {
+      "PyOpenGL": "3.1.10",
+      "PyQt6": "6.11.0",
+      "PyQt6-Qt6": "6.11.2",
+      "PyQt6-sip": "13.13.0",
+      "freetype-py": "2.5.1",
+      "hsluv": "5.0.4",
+      "kiwisolver": "1.5.1",
+      "numpy": "2.5.3",
+      "packaging": "26.3",
+      "vispy": "0.17.0"
+    },
+    "vispy_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-glue\\Lib\\site-packages\\vispy",
+    "vispy_version": "0.17.0"
+  },
+  "schema": 1
+}

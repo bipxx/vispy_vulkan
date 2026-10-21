@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "C:\Users\HEQ\Projects\vispy_vulkan\tools\oracle_dive_capture.py", line 161, in main
+    image, commands, shaders, params, extras = render(name)
+                                               ^^^^^^^^^^^^
+  File "C:\Users\HEQ\Projects\vispy_vulkan\tools\fixture_dive.py", line 83, in render
+    widget = DIVEWidget()
+             ^^^^^^^^^^^^
+  File "C:\Users\HEQ\Projects\vispy_vulkan\build\host-environments\dive-cpython311-pyqt5\Lib\site-packages\DIVE\_widget.py", line 38, in __init__
+    self._dive_manager = _DIVEManager(self, unit_reg)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HEQ\Projects\vispy_vulkan\build\host-environments\dive-cpython311-pyqt5\Lib\site-packages\DIVE\_components\dive_manager.py", line 170, in __init__
+    splitter.setSizes([splitter.size().width() * 0.1, splitter.size().width() * 0.8, splitter.size().width() * 0.1])
+TypeError: index 0 has type 'float' but 'int' is expected

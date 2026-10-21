@@ -1,0 +1,30 @@
+#include <metal_stdlib>
+using namespace metal;
+
+struct tint_module_vars_struct {
+  device float* s;
+};
+
+float f1(array<float, 4> a) {
+  return a[3];
+}
+
+float f2(array<array<float, 4>, 3> a) {
+  return a[2][3];
+}
+
+float f3(array<array<array<float, 4>, 3>, 2> a) {
+  return a[1][2][3];
+}
+
+[[max_total_threads_per_threadgroup(1)]]
+kernel void v(device float* s [[buffer(0)]]) {
+  tint_module_vars_struct const tint_module_vars = tint_module_vars_struct{.s=s};
+  array<float, 4> const a1 = array<float, 4>{};
+  array<array<float, 4>, 3> const a2 = array<array<float, 4>, 3>{};
+  array<array<array<float, 4>, 3>, 2> const a3 = array<array<array<float, 4>, 3>, 2>{};
+  float const v1 = f1(a1);
+  float const v2 = f2(a2);
+  float const v3 = f3(a3);
+  (*tint_module_vars.s) = ((v1 + v2) + v3);
+}

@@ -1,0 +1,23 @@
+# Portable wide-line implementation packet
+
+Status: design and independent upstream references are ready; native geometry and candidate admission remain open. This packet supplements the [completion plan](2026-10-09-vispy-vulkan-completion-plan.md).
+
+The required width-three workflows have sixteen valid upstream references: fifteen original cases in `tests/reference/wide-lines-opengl` and one explicit depth-clear/LESS case in `tests/reference/wide-lines-depth-opengl`. Preserve the original undefined-depth failure separately. All comparison criteria, raw frames and analytic landmarks remain fixed. The five installed napari-threedee overlay candidates currently fail the renderer's explicit width-one limitation.
+
+## Coverage uncertainty
+
+The renderer agent's parameter-free CPU rectangle/pixel-square area study is archived in `build/evidence/wide-lines-portable-area/manifest.json`. At horizontal endpoints its ideal coverage predicts channel value 128, while the independently frozen OpenGL frame contains 164. The study examines seven constant-color cases, preserves model/reference/output hashes and does not establish candidate parity. The OpenGL specification permits approximations to ideal smooth-line coverage; exact box coverage alone therefore cannot establish this driver's fixed reference parity. See the recorded sections in the [Khronos OpenGL 4.6 specification](https://registry.khronos.org/OpenGL/specs/gl/glspec46.core.pdf).
+
+Determine a justified coverage and byte-quantization algorithm before claiming smooth-line admission. Keep this uncertainty separate from implementable identity, clipping and interpolation semantics. Ordinary perpendicular quads do not reproduce aliased wide-line major-axis replication. Independent strip/loop segments must retain ordered blending: replacing overlapping segments with their union changes source-over results.
+
+## Native implementation order
+
+1. Finish point identity and instancing first. Preserve original integer vertex and instance IDs, indexed selections, nonzero-first GLIR selections, divisors and interleaved/constant attributes when lowering points to quads. Cache derived buffers against exact source revisions and selection identities; check multiplication, index and allocation bounds before conversion. Independent public upstream fixtures precede candidate comparisons.
+2. Capture positive finite line width and smoothing in each render-state snapshot. Build ordered segment identities from line lists, strips and loops before existing loop conversion loses their original structure. Retain original LAST payloads, instance identities and source revisions.
+3. Evaluate original vertex code once per source endpoint and instance. A compute evaluator provides an isolated invocation with captured attributes/uniforms/textures and integer IDs, then writes typed outputs for the expansion stage. Calling the original vertex main twice in one invocation can share mutable private globals and requires an isolation proof before use. Preserve original diagnostics, shader policy identity and cache ownership for additional modules.
+4. Clip the homogeneous centerline before screen-width expansion. Carry interpolation metadata for full varying types. Preserve perspective, noperspective and flat LAST semantics even when clipping replaces an endpoint, and handle near/far/behind-eye and degenerate segments explicitly.
+5. Emit instanced corner geometry and reconstruct original fragment inputs from projected line coordinates. Invoke the original fragment code once, retain discard/fragment depth and apply smooth coverage to its output alpha. Preserve GL line front-facing/stencil-front behavior; disable triangle culling and polygon-fill bias introduced by expansion. Cover viewport/scissor, depth range, `gl_FragCoord` and user depth writes.
+6. Submit evaluator and render work in order, retaining storage/derived resources until owned completion. Include real compute dispatches, pass timing, uploads and cache work in telemetry. Keep single-sample and multisample admission distinct, and prevent duplicate coverage at internal quad seams.
+7. Compare all sixteen fixed references and actual pipeline/dispatch counters, then rerun installed overlay and scheduled plane workflows. Recheck resident uploads, source updates, device loss and cleanup before adding the geometry to the full integration and final wheels.
+
+The local renderer agent provided this read-only design. An optional Claude planning invocation returned HTTP 429 without analysis (`build/evidence/claude-wide-line-plan-1.log`); it supplied no evidence or recommendation. The accepted design still requires implementation and executable verification on Vulkan and Metal.

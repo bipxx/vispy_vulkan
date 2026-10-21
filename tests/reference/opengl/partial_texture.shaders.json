@@ -1,0 +1,4 @@
+{
+  "3": "\nattribute vec2 a_position;\nattribute vec2 a_texcoord;\nvarying vec2 v_texcoord;\nvoid main() {\n    v_texcoord = a_texcoord;\n    gl_Position = vec4(a_position, 0.0, 1.0);\n}\n",
+  "4": "\nuniform sampler2D u_texture;\nvarying vec2 v_texcoord;\nvoid main() { gl_FragColor = texture2D(u_texture, v_texcoord); }\n"
+}

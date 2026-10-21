@@ -1,0 +1,56 @@
+WARNING: SetProcessDpiAwarenessContext() failed: Access is denied.
+Qt's default DPI awareness context is DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE_V2. If you know what you are doing, you can overwrite this default using qt.conf (https://doc.qt.io/qt-6/highdpi.html#configuring-windows).
+C:\Users\HEQ\Projects\vispy_vulkan\build\host-environments\napari-threedee-cpython312-pyqt6-packaged\Lib\site-packages\pydantic\_internal\_config.py:408: UserWarning: Valid config keys have changed in V2:
+* 'allow_mutation' has been removed
+  warnings.warn(message, UserWarning)
+C:\Users\HEQ\Projects\vispy_vulkan\build\host-environments\napari-threedee-cpython312-pyqt6-packaged\Lib\site-packages\pydantic\_internal\_config.py:408: UserWarning: Valid config keys have changed in V2:
+* 'allow_mutation' has been removed
+  warnings.warn(message, UserWarning)
+Traceback (most recent call last):
+  File "C:\Users\HEQ\Projects\vispy_vulkan\tools\oracle_napari_threedee_capture.py", line 122, in main
+    image, commands, shaders, params, extras = render(args.worker)
+                                               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HEQ\Projects\vispy_vulkan\tools\fixture_napari_threedee.py", line 121, in render
+    viewer.dims.ndisplay = 2
+    ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HEQ\Projects\vispy_vulkan\build\host-environments\napari-threedee-cpython312-pyqt6-packaged\Lib\site-packages\napari\utils\events\evented_model.py", line 268, in __setattr__
+    with ComparisonDelayer(self):
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HEQ\Projects\vispy_vulkan\build\host-environments\napari-threedee-cpython312-pyqt6-packaged\Lib\site-packages\napari\utils\events\evented_model.py", line 524, in __exit__
+    self._target._check_if_values_changed_and_emit_if_needed()
+  File "C:\Users\HEQ\Projects\vispy_vulkan\build\host-environments\napari-threedee-cpython312-pyqt6-packaged\Lib\site-packages\napari\utils\events\evented_model.py", line 313, in _check_if_values_changed_and_emit_if_needed
+    getattr(self.events, name)(value=new_value)
+  File "C:\Users\HEQ\Projects\vispy_vulkan\build\host-environments\napari-threedee-cpython312-pyqt6-packaged\Lib\site-packages\napari\utils\events\event.py", line 709, in __call__
+    self._invoke_callback(cb, event if pass_event else None)
+  File "C:\Users\HEQ\Projects\vispy_vulkan\build\host-environments\napari-threedee-cpython312-pyqt6-packaged\Lib\site-packages\napari\utils\events\event.py", line 742, in _invoke_callback
+    _handle_exception(
+  File "C:\Users\HEQ\Projects\vispy_vulkan\build\host-environments\napari-threedee-cpython312-pyqt6-packaged\Lib\site-packages\napari\utils\events\event.py", line 731, in _invoke_callback
+    cb()
+  File "C:\Users\HEQ\Projects\vispy_vulkan\build\host-environments\napari-threedee-cpython312-pyqt6-packaged\Lib\site-packages\napari\_vispy\camera.py", line 315, in _on_ndisplay_change
+    self._view.camera = self._2D_camera
+    ^^^^^^^^^^^^^^^^^
+  File "C:\Users\HEQ\Projects\vispy_vulkan\build\host-environments\napari-threedee-cpython312-pyqt6-packaged\Lib\site-packages\vispy\util\frozen.py", line 17, in __setattr__
+    object.__setattr__(self, key, value)
+  File "C:\Users\HEQ\Projects\vispy_vulkan\build\host-environments\napari-threedee-cpython312-pyqt6-packaged\Lib\site-packages\vispy\scene\widgets\viewbox.py", line 117, in camera
+    cam.view_changed()
+  File "C:\Users\HEQ\Projects\vispy_vulkan\build\host-environments\napari-threedee-cpython312-pyqt6-packaged\Lib\site-packages\vispy\scene\cameras\base_camera.py", line 447, in view_changed
+    self.set_range(*args)
+  File "C:\Users\HEQ\Projects\vispy_vulkan\build\host-environments\napari-threedee-cpython312-pyqt6-packaged\Lib\site-packages\vispy\scene\cameras\base_camera.py", line 293, in set_range
+    bounds = self._viewbox.get_scene_bounds()
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HEQ\Projects\vispy_vulkan\build\host-environments\napari-threedee-cpython312-pyqt6-packaged\Lib\site-packages\vispy\scene\widgets\viewbox.py", line 156, in get_scene_bounds
+    b = ob.bounds(axis)
+        ^^^^^^^^^^^^^^^
+  File "C:\Users\HEQ\Projects\vispy_vulkan\build\host-environments\napari-threedee-cpython312-pyqt6-packaged\Lib\site-packages\vispy\visuals\visual.py", line 254, in bounds
+    self._vshare.bounds[axis] = self._compute_bounds(axis, view)
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HEQ\Projects\vispy_vulkan\build\host-environments\napari-threedee-cpython312-pyqt6-packaged\Lib\site-packages\vispy\visuals\visual.py", line 798, in _compute_bounds
+    vb = v.bounds(axis)
+         ^^^^^^^^^^^^^^
+  File "C:\Users\HEQ\Projects\vispy_vulkan\build\host-environments\napari-threedee-cpython312-pyqt6-packaged\Lib\site-packages\vispy\visuals\visual.py", line 254, in bounds
+    self._vshare.bounds[axis] = self._compute_bounds(axis, view)
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HEQ\Projects\vispy_vulkan\build\host-environments\napari-threedee-cpython312-pyqt6-packaged\Lib\site-packages\vispy\visuals\markers.py", line 1066, in _compute_bounds
+    pos = self._data['a_position']
+          ~~~~~~~~~~^^^^^^^^^^^^^^
+TypeError: 'NoneType' object is not subscriptable

@@ -1,0 +1,20 @@
+#include <metal_stdlib>
+using namespace metal;
+
+struct S_packed_vec3 {
+  /* 0x0000 */ packed_half3 v;
+  /* 0x0006 */ array<int8_t, 2> tint_pad;
+};
+
+struct tint_module_vars_struct {
+  device S_packed_vec3* U;
+};
+
+[[max_total_threads_per_threadgroup(1)]]
+kernel void f(device S_packed_vec3* U [[buffer(0)]]) {
+  tint_module_vars_struct const tint_module_vars = tint_module_vars_struct{.U=U};
+  (*tint_module_vars.U).v = packed_half3(half3(1.0h, 2.0h, 3.0h));
+  (*tint_module_vars.U).v.x = 1.0h;
+  (*tint_module_vars.U).v.y = 2.0h;
+  (*tint_module_vars.U).v.z = 3.0h;
+}

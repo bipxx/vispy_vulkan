@@ -1,0 +1,2095 @@
+{
+  "comparison": {
+    "analytic_pixels_exact": true,
+    "full_frame_exact": true
+  },
+  "errors": {},
+  "fixtures": {
+    "indexed_uint16": {
+      "artifacts": {
+        "expanded_shaders": {
+          "file": "indexed_uint16.shaders.json",
+          "sha256": "09e4fe49482bad49709a6e24e8b5f25395d0bf88c9b00d566ccc20125ed14146"
+        },
+        "filtered_glir": {
+          "file": "indexed_uint16.glir.json",
+          "sha256": "df63c7cddf3908bfa2d76262e41b6cdfa06ed302b5ec315b189cccffed020739"
+        },
+        "rgba": {
+          "file": "indexed_uint16.npy",
+          "sha256": "8e3ccfea27898d169333e3c20db1482fdf854e131e17dd7a3b72d3d23ab7009e"
+        }
+      },
+      "capture": {
+        "file": "indexed_uint16.capture.json",
+        "sha256": "47d28dc4ea2ea3696a18c6df124294183cdab06df5c96cc175333b1cc467dc84"
+      },
+      "observations": {
+        "gl_version": "4.6.0 NVIDIA 595.79",
+        "physical_samples": 1,
+        "point_smooth": false,
+        "program_point_size": true,
+        "program_point_size_after_draw": true,
+        "sample_source": "OpenGL driver",
+        "samples_raw": 0
+      },
+      "parameters": {
+        "alpha": 0.25,
+        "analytic_rgba_sha256": "3cef9a3c0c4549e21a0dc992da540864cb27ac608efe5dd57151ca822f9dbfc1",
+        "api_scope": "public gloo.Program.draw",
+        "case": "indexed_uint16",
+        "comparison": "entire frame equals fixed analytic pixels and independent OpenGL exactly",
+        "count": null,
+        "data": {
+          "dtype": [
+            [
+              "padding",
+              "<f4"
+            ],
+            [
+              "a_base",
+              "<f4",
+              [
+                2
+              ]
+            ],
+            [
+              "padding2",
+              "<f4"
+            ],
+            [
+              "a_tint",
+              "<f4",
+              [
+                3
+              ]
+            ]
+          ],
+          "sha256": "451870170261389fb997ae90ab933221de4724a241b16fb206aee7f351e7523d",
+          "shape": [
+            8
+          ],
+          "values": [
+            [
+              91.0,
+              [
+                2.5,
+                4.5
+              ],
+              -73.0,
+              [
+                1.0,
+                1.0,
+                1.0
+              ]
+            ],
+            [
+              91.0,
+              [
+                8.5,
+                4.5
+              ],
+              -73.0,
+              [
+                1.0,
+                1.0,
+                1.0
+              ]
+            ],
+            [
+              91.0,
+              [
+                12.5,
+                4.5
+              ],
+              -73.0,
+              [
+                1.0,
+                1.0,
+                1.0
+              ]
+            ],
+            [
+              91.0,
+              [
+                4.5,
+                4.5
+              ],
+              -73.0,
+              [
+                1.0,
+                1.0,
+                1.0
+              ]
+            ],
+            [
+              91.0,
+              [
+                16.5,
+                4.5
+              ],
+              -73.0,
+              [
+                1.0,
+                1.0,
+                1.0
+              ]
+            ],
+            [
+              91.0,
+              [
+                28.5,
+                4.5
+              ],
+              -73.0,
+              [
+                1.0,
+                1.0,
+                1.0
+              ]
+            ],
+            [
+              91.0,
+              [
+                24.5,
+                4.5
+              ],
+              -73.0,
+              [
+                1.0,
+                1.0,
+                1.0
+              ]
+            ],
+            [
+              91.0,
+              [
+                30.5,
+                4.5
+              ],
+              -73.0,
+              [
+                1.0,
+                1.0,
+                1.0
+              ]
+            ]
+          ]
+        },
+        "divisor": 0,
+        "first": 0,
+        "fragment_shader_sha256": "2ad327d367066eea57f9c0f3208f263a4dc55175d190965a3f63c3f9355e2d1e",
+        "indices": {
+          "dtype": "<u2",
+          "sha256": "10305a05d1566e2fd21b94217d2300be1c04908819cbe6947f0ab3f8f753ffd1",
+          "shape": [
+            4
+          ],
+          "values": [
+            6,
+            1,
+            4,
+            1
+          ]
+        },
+        "intermediate_finish": false,
+        "intermediate_present": false,
+        "offsets": null,
+        "operations": [
+          [
+            24,
+            4,
+            3,
+            [
+              0,
+              0,
+              255
+            ],
+            0.25
+          ],
+          [
+            8,
+            8,
+            3,
+            [
+              0,
+              255,
+              0
+            ],
+            0.25
+          ],
+          [
+            16,
+            4,
+            3,
+            [
+              255,
+              0,
+              0
+            ],
+            0.25
+          ],
+          [
+            8,
+            8,
+            3,
+            [
+              0,
+              255,
+              0
+            ],
+            0.25
+          ]
+        ],
+        "point_size": 3.0,
+        "primitive": "points",
+        "readbacks": 1,
+        "size": [
+          32,
+          24
+        ],
+        "vertex_shader_sha256": "9bd7db3dfa9da3ff578ef6cc99cd999f9264cd823c3a1c420312107082272e28"
+      },
+      "process": {
+        "exit_code": 0,
+        "stderr": {
+          "file": "indexed_uint16.stderr.log",
+          "sha256": "ede76a09bfff01b391bc05479bed630e5f945682d01898e5c2514a9622ebf183"
+        },
+        "stdout": {
+          "file": "indexed_uint16.stdout.log",
+          "sha256": "634b7fd131670c2de19e97f89ca2136cf0115350bc30fdcacc99d8fdb46f8533"
+        }
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ]
+    },
+    "indexed_uint32": {
+      "artifacts": {
+        "expanded_shaders": {
+          "file": "indexed_uint32.shaders.json",
+          "sha256": "09e4fe49482bad49709a6e24e8b5f25395d0bf88c9b00d566ccc20125ed14146"
+        },
+        "filtered_glir": {
+          "file": "indexed_uint32.glir.json",
+          "sha256": "def57f00e0d72099fc9e41ef43a92479cfe10bbb744e31e6fb89834b696ba893"
+        },
+        "rgba": {
+          "file": "indexed_uint32.npy",
+          "sha256": "8e3ccfea27898d169333e3c20db1482fdf854e131e17dd7a3b72d3d23ab7009e"
+        }
+      },
+      "capture": {
+        "file": "indexed_uint32.capture.json",
+        "sha256": "55ba6240792535c5f9cc76b4fb5210b03a2894be83f56fe945ba4f2aff25b514"
+      },
+      "observations": {
+        "gl_version": "4.6.0 NVIDIA 595.79",
+        "physical_samples": 1,
+        "point_smooth": false,
+        "program_point_size": true,
+        "program_point_size_after_draw": true,
+        "sample_source": "OpenGL driver",
+        "samples_raw": 0
+      },
+      "parameters": {
+        "alpha": 0.25,
+        "analytic_rgba_sha256": "3cef9a3c0c4549e21a0dc992da540864cb27ac608efe5dd57151ca822f9dbfc1",
+        "api_scope": "public gloo.Program.draw",
+        "case": "indexed_uint32",
+        "comparison": "entire frame equals fixed analytic pixels and independent OpenGL exactly",
+        "count": null,
+        "data": {
+          "dtype": [
+            [
+              "padding",
+              "<f4"
+            ],
+            [
+              "a_base",
+              "<f4",
+              [
+                2
+              ]
+            ],
+            [
+              "padding2",
+              "<f4"
+            ],
+            [
+              "a_tint",
+              "<f4",
+              [
+                3
+              ]
+            ]
+          ],
+          "sha256": "451870170261389fb997ae90ab933221de4724a241b16fb206aee7f351e7523d",
+          "shape": [
+            8
+          ],
+          "values": [
+            [
+              91.0,
+              [
+                2.5,
+                4.5
+              ],
+              -73.0,
+              [
+                1.0,
+                1.0,
+                1.0
+              ]
+            ],
+            [
+              91.0,
+              [
+                8.5,
+                4.5
+              ],
+              -73.0,
+              [
+                1.0,
+                1.0,
+                1.0
+              ]
+            ],
+            [
+              91.0,
+              [
+                12.5,
+                4.5
+              ],
+              -73.0,
+              [
+                1.0,
+                1.0,
+                1.0
+              ]
+            ],
+            [
+              91.0,
+              [
+                4.5,
+                4.5
+              ],
+              -73.0,
+              [
+                1.0,
+                1.0,
+                1.0
+              ]
+            ],
+            [
+              91.0,
+              [
+                16.5,
+                4.5
+              ],
+              -73.0,
+              [
+                1.0,
+                1.0,
+                1.0
+              ]
+            ],
+            [
+              91.0,
+              [
+                28.5,
+                4.5
+              ],
+              -73.0,
+              [
+                1.0,
+                1.0,
+                1.0
+              ]
+            ],
+            [
+              91.0,
+              [
+                24.5,
+                4.5
+              ],
+              -73.0,
+              [
+                1.0,
+                1.0,
+                1.0
+              ]
+            ],
+            [
+              91.0,
+              [
+                30.5,
+                4.5
+              ],
+              -73.0,
+              [
+                1.0,
+                1.0,
+                1.0
+              ]
+            ]
+          ]
+        },
+        "divisor": 0,
+        "first": 0,
+        "fragment_shader_sha256": "2ad327d367066eea57f9c0f3208f263a4dc55175d190965a3f63c3f9355e2d1e",
+        "indices": {
+          "dtype": "<u4",
+          "sha256": "b376e726774974c28ca7110b3185f10d372396b59aa2673a31ff2212cc20930f",
+          "shape": [
+            4
+          ],
+          "values": [
+            6,
+            1,
+            4,
+            1
+          ]
+        },
+        "intermediate_finish": false,
+        "intermediate_present": false,
+        "offsets": null,
+        "operations": [
+          [
+            24,
+            4,
+            3,
+            [
+              0,
+              0,
+              255
+            ],
+            0.25
+          ],
+          [
+            8,
+            8,
+            3,
+            [
+              0,
+              255,
+              0
+            ],
+            0.25
+          ],
+          [
+            16,
+            4,
+            3,
+            [
+              255,
+              0,
+              0
+            ],
+            0.25
+          ],
+          [
+            8,
+            8,
+            3,
+            [
+              0,
+              255,
+              0
+            ],
+            0.25
+          ]
+        ],
+        "point_size": 3.0,
+        "primitive": "points",
+        "readbacks": 1,
+        "size": [
+          32,
+          24
+        ],
+        "vertex_shader_sha256": "9bd7db3dfa9da3ff578ef6cc99cd999f9264cd823c3a1c420312107082272e28"
+      },
+      "process": {
+        "exit_code": 0,
+        "stderr": {
+          "file": "indexed_uint32.stderr.log",
+          "sha256": "ede76a09bfff01b391bc05479bed630e5f945682d01898e5c2514a9622ebf183"
+        },
+        "stdout": {
+          "file": "indexed_uint32.stdout.log",
+          "sha256": "645811458409db9cca27612e3ace29387a77056ed013ac51a8ed131c3e330241"
+        }
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ]
+    },
+    "indexed_uint8": {
+      "artifacts": {
+        "expanded_shaders": {
+          "file": "indexed_uint8.shaders.json",
+          "sha256": "09e4fe49482bad49709a6e24e8b5f25395d0bf88c9b00d566ccc20125ed14146"
+        },
+        "filtered_glir": {
+          "file": "indexed_uint8.glir.json",
+          "sha256": "a85eed79698810ce068a73d8f8a937b3ca39b70c8950daeba23af682847650b5"
+        },
+        "rgba": {
+          "file": "indexed_uint8.npy",
+          "sha256": "8e3ccfea27898d169333e3c20db1482fdf854e131e17dd7a3b72d3d23ab7009e"
+        }
+      },
+      "capture": {
+        "file": "indexed_uint8.capture.json",
+        "sha256": "b784840a6b727e728648dcc9492c1b7de8f8426b63d284b161ec17f6579aa96a"
+      },
+      "observations": {
+        "gl_version": "4.6.0 NVIDIA 595.79",
+        "physical_samples": 1,
+        "point_smooth": false,
+        "program_point_size": true,
+        "program_point_size_after_draw": true,
+        "sample_source": "OpenGL driver",
+        "samples_raw": 0
+      },
+      "parameters": {
+        "alpha": 0.25,
+        "analytic_rgba_sha256": "3cef9a3c0c4549e21a0dc992da540864cb27ac608efe5dd57151ca822f9dbfc1",
+        "api_scope": "public gloo.Program.draw",
+        "case": "indexed_uint8",
+        "comparison": "entire frame equals fixed analytic pixels and independent OpenGL exactly",
+        "count": null,
+        "data": {
+          "dtype": [
+            [
+              "padding",
+              "<f4"
+            ],
+            [
+              "a_base",
+              "<f4",
+              [
+                2
+              ]
+            ],
+            [
+              "padding2",
+              "<f4"
+            ],
+            [
+              "a_tint",
+              "<f4",
+              [
+                3
+              ]
+            ]
+          ],
+          "sha256": "451870170261389fb997ae90ab933221de4724a241b16fb206aee7f351e7523d",
+          "shape": [
+            8
+          ],
+          "values": [
+            [
+              91.0,
+              [
+                2.5,
+                4.5
+              ],
+              -73.0,
+              [
+                1.0,
+                1.0,
+                1.0
+              ]
+            ],
+            [
+              91.0,
+              [
+                8.5,
+                4.5
+              ],
+              -73.0,
+              [
+                1.0,
+                1.0,
+                1.0
+              ]
+            ],
+            [
+              91.0,
+              [
+                12.5,
+                4.5
+              ],
+              -73.0,
+              [
+                1.0,
+                1.0,
+                1.0
+              ]
+            ],
+            [
+              91.0,
+              [
+                4.5,
+                4.5
+              ],
+              -73.0,
+              [
+                1.0,
+                1.0,
+                1.0
+              ]
+            ],
+            [
+              91.0,
+              [
+                16.5,
+                4.5
+              ],
+              -73.0,
+              [
+                1.0,
+                1.0,
+                1.0
+              ]
+            ],
+            [
+              91.0,
+              [
+                28.5,
+                4.5
+              ],
+              -73.0,
+              [
+                1.0,
+                1.0,
+                1.0
+              ]
+            ],
+            [
+              91.0,
+              [
+                24.5,
+                4.5
+              ],
+              -73.0,
+              [
+                1.0,
+                1.0,
+                1.0
+              ]
+            ],
+            [
+              91.0,
+              [
+                30.5,
+                4.5
+              ],
+              -73.0,
+              [
+                1.0,
+                1.0,
+                1.0
+              ]
+            ]
+          ]
+        },
+        "divisor": 0,
+        "first": 0,
+        "fragment_shader_sha256": "2ad327d367066eea57f9c0f3208f263a4dc55175d190965a3f63c3f9355e2d1e",
+        "indices": {
+          "dtype": "|u1",
+          "sha256": "a7cf66cb6bfbb8f92bc8b5de3e3807eb57a08127e897a4c9a13493f879b2b01c",
+          "shape": [
+            4
+          ],
+          "values": [
+            6,
+            1,
+            4,
+            1
+          ]
+        },
+        "intermediate_finish": false,
+        "intermediate_present": false,
+        "offsets": null,
+        "operations": [
+          [
+            24,
+            4,
+            3,
+            [
+              0,
+              0,
+              255
+            ],
+            0.25
+          ],
+          [
+            8,
+            8,
+            3,
+            [
+              0,
+              255,
+              0
+            ],
+            0.25
+          ],
+          [
+            16,
+            4,
+            3,
+            [
+              255,
+              0,
+              0
+            ],
+            0.25
+          ],
+          [
+            8,
+            8,
+            3,
+            [
+              0,
+              255,
+              0
+            ],
+            0.25
+          ]
+        ],
+        "point_size": 3.0,
+        "primitive": "points",
+        "readbacks": 1,
+        "size": [
+          32,
+          24
+        ],
+        "vertex_shader_sha256": "9bd7db3dfa9da3ff578ef6cc99cd999f9264cd823c3a1c420312107082272e28"
+      },
+      "process": {
+        "exit_code": 0,
+        "stderr": {
+          "file": "indexed_uint8.stderr.log",
+          "sha256": "ede76a09bfff01b391bc05479bed630e5f945682d01898e5c2514a9622ebf183"
+        },
+        "stdout": {
+          "file": "indexed_uint8.stdout.log",
+          "sha256": "eac74c08bffd26672c9e47e6dbca5b6c38e4addc5b222b110338247d9ba3099a"
+        }
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ]
+    },
+    "instanced_divisor1": {
+      "artifacts": {
+        "expanded_shaders": {
+          "file": "instanced_divisor1.shaders.json",
+          "sha256": "09e4fe49482bad49709a6e24e8b5f25395d0bf88c9b00d566ccc20125ed14146"
+        },
+        "filtered_glir": {
+          "file": "instanced_divisor1.glir.json",
+          "sha256": "ca0992d5818e64068603d17dc0192911b85bc936c6604c1fd7ef5c265fbe93f4"
+        },
+        "rgba": {
+          "file": "instanced_divisor1.npy",
+          "sha256": "ff61ee02dac9546816c467480da2fb2144f6fad6f5d3a28376c01524a02f63df"
+        }
+      },
+      "capture": {
+        "file": "instanced_divisor1.capture.json",
+        "sha256": "15ee5dc02dc97c0913a5c11ea4bc11a61a64cb9a4f51afb4c1428117df2bb503"
+      },
+      "observations": {
+        "gl_version": "4.6.0 NVIDIA 595.79",
+        "physical_samples": 1,
+        "point_smooth": false,
+        "program_point_size": true,
+        "program_point_size_after_draw": true,
+        "sample_source": "OpenGL driver",
+        "samples_raw": 0
+      },
+      "parameters": {
+        "alpha": 1.0,
+        "analytic_rgba_sha256": "b31f7ba58f33e9f01f12a093f863fe34a890746aba77b64bb2f5a6211c4f1f8a",
+        "api_scope": "public gloo.Program.draw",
+        "case": "instanced_divisor1",
+        "comparison": "entire frame equals fixed analytic pixels and independent OpenGL exactly",
+        "count": null,
+        "data": {
+          "dtype": [
+            [
+              "padding",
+              "<f4"
+            ],
+            [
+              "a_base",
+              "<f4",
+              [
+                2
+              ]
+            ],
+            [
+              "padding2",
+              "<f4"
+            ],
+            [
+              "a_tint",
+              "<f4",
+              [
+                3
+              ]
+            ]
+          ],
+          "sha256": "61f5af4f0dbffeaa241313730ed79dc576dbe6cdda55238d6be8fbcc6f920257",
+          "shape": [
+            2
+          ],
+          "values": [
+            [
+              91.0,
+              [
+                6.5,
+                4.5
+              ],
+              -73.0,
+              [
+                1.0,
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              91.0,
+              [
+                16.5,
+                4.5
+              ],
+              -73.0,
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          ]
+        },
+        "divisor": 1,
+        "first": 0,
+        "fragment_shader_sha256": "2ad327d367066eea57f9c0f3208f263a4dc55175d190965a3f63c3f9355e2d1e",
+        "indices": null,
+        "intermediate_finish": false,
+        "intermediate_present": false,
+        "offsets": {
+          "dtype": "<f4",
+          "sha256": "20032dcd380575a5133bd6bdbc62b04189ebfa4a900aeeed76ff18b78a22fc27",
+          "shape": [
+            4,
+            2
+          ],
+          "values": [
+            [
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              4.0
+            ],
+            [
+              0.0,
+              8.0
+            ],
+            [
+              0.0,
+              12.0
+            ]
+          ]
+        },
+        "operations": [
+          [
+            6,
+            4,
+            3,
+            [
+              255,
+              0,
+              0
+            ],
+            1.0
+          ],
+          [
+            16,
+            6,
+            3,
+            [
+              0,
+              0,
+              255
+            ],
+            1.0
+          ],
+          [
+            8,
+            8,
+            3,
+            [
+              0,
+              0,
+              255
+            ],
+            1.0
+          ],
+          [
+            18,
+            10,
+            3,
+            [
+              255,
+              0,
+              0
+            ],
+            1.0
+          ],
+          [
+            10,
+            12,
+            3,
+            [
+              255,
+              0,
+              0
+            ],
+            1.0
+          ],
+          [
+            20,
+            14,
+            3,
+            [
+              0,
+              0,
+              255
+            ],
+            1.0
+          ],
+          [
+            12,
+            16,
+            3,
+            [
+              0,
+              0,
+              255
+            ],
+            1.0
+          ],
+          [
+            22,
+            18,
+            3,
+            [
+              255,
+              0,
+              0
+            ],
+            1.0
+          ]
+        ],
+        "point_size": 3.0,
+        "primitive": "points",
+        "readbacks": 1,
+        "size": [
+          32,
+          24
+        ],
+        "vertex_shader_sha256": "9bd7db3dfa9da3ff578ef6cc99cd999f9264cd823c3a1c420312107082272e28"
+      },
+      "process": {
+        "exit_code": 0,
+        "stderr": {
+          "file": "instanced_divisor1.stderr.log",
+          "sha256": "ede76a09bfff01b391bc05479bed630e5f945682d01898e5c2514a9622ebf183"
+        },
+        "stdout": {
+          "file": "instanced_divisor1.stdout.log",
+          "sha256": "661187186c4a63961c98d585e6b38adc8bb6cff365f78979bc9439d8efbe46cf"
+        }
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ]
+    },
+    "instanced_divisor2": {
+      "artifacts": {
+        "expanded_shaders": {
+          "file": "instanced_divisor2.shaders.json",
+          "sha256": "09e4fe49482bad49709a6e24e8b5f25395d0bf88c9b00d566ccc20125ed14146"
+        },
+        "filtered_glir": {
+          "file": "instanced_divisor2.glir.json",
+          "sha256": "bdf6811b0c6d356365b284b23bcfb6e32c88d4c524a60481383a78658e8245a4"
+        },
+        "rgba": {
+          "file": "instanced_divisor2.npy",
+          "sha256": "ff61ee02dac9546816c467480da2fb2144f6fad6f5d3a28376c01524a02f63df"
+        }
+      },
+      "capture": {
+        "file": "instanced_divisor2.capture.json",
+        "sha256": "776586714da20f38c654f8c5a7510ecb5b5f61eb8c15932f115e4f5cf9e5b4de"
+      },
+      "observations": {
+        "gl_version": "4.6.0 NVIDIA 595.79",
+        "physical_samples": 1,
+        "point_smooth": false,
+        "program_point_size": true,
+        "program_point_size_after_draw": true,
+        "sample_source": "OpenGL driver",
+        "samples_raw": 0
+      },
+      "parameters": {
+        "alpha": 1.0,
+        "analytic_rgba_sha256": "b31f7ba58f33e9f01f12a093f863fe34a890746aba77b64bb2f5a6211c4f1f8a",
+        "api_scope": "public gloo.Program.draw",
+        "case": "instanced_divisor2",
+        "comparison": "entire frame equals fixed analytic pixels and independent OpenGL exactly",
+        "count": null,
+        "data": {
+          "dtype": [
+            [
+              "padding",
+              "<f4"
+            ],
+            [
+              "a_base",
+              "<f4",
+              [
+                2
+              ]
+            ],
+            [
+              "padding2",
+              "<f4"
+            ],
+            [
+              "a_tint",
+              "<f4",
+              [
+                3
+              ]
+            ]
+          ],
+          "sha256": "61f5af4f0dbffeaa241313730ed79dc576dbe6cdda55238d6be8fbcc6f920257",
+          "shape": [
+            2
+          ],
+          "values": [
+            [
+              91.0,
+              [
+                6.5,
+                4.5
+              ],
+              -73.0,
+              [
+                1.0,
+                0.0,
+                0.0
+              ]
+            ],
+            [
+              91.0,
+              [
+                16.5,
+                4.5
+              ],
+              -73.0,
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          ]
+        },
+        "divisor": 2,
+        "first": 0,
+        "fragment_shader_sha256": "2ad327d367066eea57f9c0f3208f263a4dc55175d190965a3f63c3f9355e2d1e",
+        "indices": null,
+        "intermediate_finish": false,
+        "intermediate_present": false,
+        "offsets": {
+          "dtype": "<f4",
+          "sha256": "9de0020fd09dd94f64fe5ad300663ee0c001f50ad10fe793d1fd6b984cfe7c80",
+          "shape": [
+            2,
+            2
+          ],
+          "values": [
+            [
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              8.0
+            ]
+          ]
+        },
+        "operations": [
+          [
+            6,
+            4,
+            3,
+            [
+              255,
+              0,
+              0
+            ],
+            1.0
+          ],
+          [
+            16,
+            6,
+            3,
+            [
+              0,
+              0,
+              255
+            ],
+            1.0
+          ],
+          [
+            8,
+            8,
+            3,
+            [
+              0,
+              0,
+              255
+            ],
+            1.0
+          ],
+          [
+            18,
+            10,
+            3,
+            [
+              255,
+              0,
+              0
+            ],
+            1.0
+          ],
+          [
+            10,
+            12,
+            3,
+            [
+              255,
+              0,
+              0
+            ],
+            1.0
+          ],
+          [
+            20,
+            14,
+            3,
+            [
+              0,
+              0,
+              255
+            ],
+            1.0
+          ],
+          [
+            12,
+            16,
+            3,
+            [
+              0,
+              0,
+              255
+            ],
+            1.0
+          ],
+          [
+            22,
+            18,
+            3,
+            [
+              255,
+              0,
+              0
+            ],
+            1.0
+          ]
+        ],
+        "point_size": 3.0,
+        "primitive": "points",
+        "readbacks": 1,
+        "size": [
+          32,
+          24
+        ],
+        "vertex_shader_sha256": "9bd7db3dfa9da3ff578ef6cc99cd999f9264cd823c3a1c420312107082272e28"
+      },
+      "process": {
+        "exit_code": 0,
+        "stderr": {
+          "file": "instanced_divisor2.stderr.log",
+          "sha256": "ede76a09bfff01b391bc05479bed630e5f945682d01898e5c2514a9622ebf183"
+        },
+        "stdout": {
+          "file": "instanced_divisor2.stdout.log",
+          "sha256": "d65c68f0ef8a9a7ee651f70eedee1410c61543a8f2451824556012a93a017169"
+        }
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ]
+    },
+    "large_uint32_constant_geometry": {
+      "artifacts": {
+        "expanded_shaders": {
+          "file": "large_uint32_constant_geometry.shaders.json",
+          "sha256": "20c1adc140ac725b94cf9460b963ca48a215f040e2630620a608c45f3446ee7d"
+        },
+        "filtered_glir": {
+          "file": "large_uint32_constant_geometry.glir.json",
+          "sha256": "48877fc899003e9ace3ad4365e3bd4b74fcc4ca12f2702fce26d03750b6a8204"
+        },
+        "rgba": {
+          "file": "large_uint32_constant_geometry.npy",
+          "sha256": "12706ccc630116582b78c3becd8b1b391107091b66e1124732058fa527489bbb"
+        }
+      },
+      "capture": {
+        "file": "large_uint32_constant_geometry.capture.json",
+        "sha256": "482aa3d5dc3f0a7faa1bd6a95a8ddeb555119c837269a0333b25d32255cfd3df"
+      },
+      "observations": {
+        "count_attribute_location": -1,
+        "count_input_query": "canonical GL_CURRENT_PROGRAM/glGetAttribLocation; inactive input has no enabled vertex fetch",
+        "gl_version": "4.6.0 NVIDIA 595.79",
+        "physical_samples": 1,
+        "point_smooth": false,
+        "program_point_size": true,
+        "program_point_size_after_draw": true,
+        "sample_source": "OpenGL driver",
+        "samples_raw": 0
+      },
+      "parameters": {
+        "alpha": 0.25,
+        "analytic_rgba_sha256": "dd3267eb6d292d12e57303f56489ab5cc71b489fa7f0de40ec33dbeb8276ae69",
+        "api_scope": "public gloo.Program.draw",
+        "case": "large_uint32_constant_geometry",
+        "comparison": "entire frame equals fixed analytic pixels and independent OpenGL exactly",
+        "constant_base": [
+          16.5,
+          8.5
+        ],
+        "count": null,
+        "data": null,
+        "divisor": 0,
+        "first": 0,
+        "fragment_shader_sha256": "2ad327d367066eea57f9c0f3208f263a4dc55175d190965a3f63c3f9355e2d1e",
+        "inactive_count_input_required": true,
+        "indices": {
+          "dtype": "<u4",
+          "sha256": "afa7518106309c22d325df6d2663249d158d2f36f1976269d6d4104d9198a108",
+          "shape": [
+            1
+          ],
+          "values": [
+            16777217
+          ]
+        },
+        "intermediate_finish": false,
+        "intermediate_present": false,
+        "offsets": null,
+        "operations": [
+          [
+            16,
+            12,
+            3,
+            [
+              0,
+              255,
+              0
+            ],
+            0.25
+          ]
+        ],
+        "point_size": 3.0,
+        "primitive": "points",
+        "readbacks": 1,
+        "size": [
+          32,
+          24
+        ],
+        "vertex_shader_sha256": "f7a52f7ff69487ca55ae0237e250ecede24c9c68d8c2619b7afd01d1da3bfd3b"
+      },
+      "process": {
+        "exit_code": 0,
+        "stderr": {
+          "file": "large_uint32_constant_geometry.stderr.log",
+          "sha256": "ede76a09bfff01b391bc05479bed630e5f945682d01898e5c2514a9622ebf183"
+        },
+        "stdout": {
+          "file": "large_uint32_constant_geometry.stdout.log",
+          "sha256": "23ef140a0a7a23408640eaa8fb699e25d73d79d02a2350ab235c18d229f68c7a"
+        }
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ]
+    },
+    "nonzero_first_queue": {
+      "artifacts": {
+        "expanded_shaders": {
+          "file": "nonzero_first_queue.shaders.json",
+          "sha256": "09e4fe49482bad49709a6e24e8b5f25395d0bf88c9b00d566ccc20125ed14146"
+        },
+        "filtered_glir": {
+          "file": "nonzero_first_queue.glir.json",
+          "sha256": "919e1783c41bfbbf79db9f13c365a787f1fb8200a6311af2641feacf4a00b9ae"
+        },
+        "rgba": {
+          "file": "nonzero_first_queue.npy",
+          "sha256": "28493fab4c34f80fdab217305a68f0ddb41b1680804b9793038ef44b45b55c26"
+        }
+      },
+      "capture": {
+        "file": "nonzero_first_queue.capture.json",
+        "sha256": "9705ca2dd077d43d6846137547f4d7795f4a484361141b1afba535e95feda8d3"
+      },
+      "observations": {
+        "gl_version": "4.6.0 NVIDIA 595.79",
+        "physical_samples": 1,
+        "point_smooth": false,
+        "program_point_size": true,
+        "program_point_size_after_draw": true,
+        "sample_source": "OpenGL driver",
+        "samples_raw": 0
+      },
+      "parameters": {
+        "alpha": 0.25,
+        "analytic_rgba_sha256": "7268e5ae27f6e55a884c1f542cf7406eca6c4fd5ae28fa8956cbc24662695c82",
+        "api_scope": "explicit GLIR queue boundary; not public Program.draw first admission",
+        "case": "nonzero_first_queue",
+        "comparison": "entire frame equals fixed analytic pixels and independent OpenGL exactly",
+        "count": 3,
+        "data": {
+          "dtype": [
+            [
+              "padding",
+              "<f4"
+            ],
+            [
+              "a_base",
+              "<f4",
+              [
+                2
+              ]
+            ],
+            [
+              "padding2",
+              "<f4"
+            ],
+            [
+              "a_tint",
+              "<f4",
+              [
+                3
+              ]
+            ]
+          ],
+          "sha256": "451870170261389fb997ae90ab933221de4724a241b16fb206aee7f351e7523d",
+          "shape": [
+            8
+          ],
+          "values": [
+            [
+              91.0,
+              [
+                2.5,
+                4.5
+              ],
+              -73.0,
+              [
+                1.0,
+                1.0,
+                1.0
+              ]
+            ],
+            [
+              91.0,
+              [
+                8.5,
+                4.5
+              ],
+              -73.0,
+              [
+                1.0,
+                1.0,
+                1.0
+              ]
+            ],
+            [
+              91.0,
+              [
+                12.5,
+                4.5
+              ],
+              -73.0,
+              [
+                1.0,
+                1.0,
+                1.0
+              ]
+            ],
+            [
+              91.0,
+              [
+                4.5,
+                4.5
+              ],
+              -73.0,
+              [
+                1.0,
+                1.0,
+                1.0
+              ]
+            ],
+            [
+              91.0,
+              [
+                16.5,
+                4.5
+              ],
+              -73.0,
+              [
+                1.0,
+                1.0,
+                1.0
+              ]
+            ],
+            [
+              91.0,
+              [
+                28.5,
+                4.5
+              ],
+              -73.0,
+              [
+                1.0,
+                1.0,
+                1.0
+              ]
+            ],
+            [
+              91.0,
+              [
+                24.5,
+                4.5
+              ],
+              -73.0,
+              [
+                1.0,
+                1.0,
+                1.0
+              ]
+            ],
+            [
+              91.0,
+              [
+                30.5,
+                4.5
+              ],
+              -73.0,
+              [
+                1.0,
+                1.0,
+                1.0
+              ]
+            ]
+          ]
+        },
+        "discarded_setup_draw": true,
+        "divisor": 0,
+        "first": 3,
+        "fragment_shader_sha256": "2ad327d367066eea57f9c0f3208f263a4dc55175d190965a3f63c3f9355e2d1e",
+        "indices": null,
+        "intermediate_finish": false,
+        "intermediate_present": false,
+        "offsets": null,
+        "operations": [
+          [
+            4,
+            8,
+            3,
+            [
+              255,
+              255,
+              0
+            ],
+            0.25
+          ],
+          [
+            16,
+            4,
+            3,
+            [
+              255,
+              0,
+              0
+            ],
+            0.25
+          ],
+          [
+            28,
+            8,
+            3,
+            [
+              0,
+              255,
+              0
+            ],
+            0.25
+          ]
+        ],
+        "point_size": 3.0,
+        "primitive": "points",
+        "readbacks": 1,
+        "size": [
+          32,
+          24
+        ],
+        "vertex_shader_sha256": "9bd7db3dfa9da3ff578ef6cc99cd999f9264cd823c3a1c420312107082272e28"
+      },
+      "process": {
+        "exit_code": 0,
+        "stderr": {
+          "file": "nonzero_first_queue.stderr.log",
+          "sha256": "ede76a09bfff01b391bc05479bed630e5f945682d01898e5c2514a9622ebf183"
+        },
+        "stdout": {
+          "file": "nonzero_first_queue.stdout.log",
+          "sha256": "b12944dd3592a7e6942a293cdbe14110c3a513f5ac36b27186782ef9a2363321"
+        }
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ]
+    },
+    "ordered_revisions": {
+      "artifacts": {
+        "expanded_shaders": {
+          "file": "ordered_revisions.shaders.json",
+          "sha256": "09e4fe49482bad49709a6e24e8b5f25395d0bf88c9b00d566ccc20125ed14146"
+        },
+        "filtered_glir": {
+          "file": "ordered_revisions.glir.json",
+          "sha256": "845c6e11982e66402292e17c4b453142cbe5e06424e9922b4d661ef27cb0ecaa"
+        },
+        "rgba": {
+          "file": "ordered_revisions.npy",
+          "sha256": "43cdf73a2e5e2221ff278920dc0d6bdb2d5507e218754712c32b2f590724d113"
+        }
+      },
+      "capture": {
+        "file": "ordered_revisions.capture.json",
+        "sha256": "499223ede18593ac78503ff2198b823d0bd390ff9284f486927168ea4ef610e8"
+      },
+      "observations": {
+        "gl_version": "4.6.0 NVIDIA 595.79",
+        "physical_samples": 1,
+        "point_smooth": false,
+        "program_point_size": true,
+        "program_point_size_after_draw": true,
+        "sample_source": "OpenGL driver",
+        "samples_raw": 0
+      },
+      "parameters": {
+        "alpha": 0.25,
+        "analytic_rgba_sha256": "dc8091394aa69d3560c871d592dfffe1da0803eca816e93246e808664f3b432f",
+        "api_scope": "public gloo.Program.draw",
+        "case": "ordered_revisions",
+        "comparison": "entire frame equals fixed analytic pixels and independent OpenGL exactly",
+        "count": null,
+        "data": {
+          "dtype": [
+            [
+              "padding",
+              "<f4"
+            ],
+            [
+              "a_base",
+              "<f4",
+              [
+                2
+              ]
+            ],
+            [
+              "padding2",
+              "<f4"
+            ],
+            [
+              "a_tint",
+              "<f4",
+              [
+                3
+              ]
+            ]
+          ],
+          "sha256": "451870170261389fb997ae90ab933221de4724a241b16fb206aee7f351e7523d",
+          "shape": [
+            8
+          ],
+          "values": [
+            [
+              91.0,
+              [
+                2.5,
+                4.5
+              ],
+              -73.0,
+              [
+                1.0,
+                1.0,
+                1.0
+              ]
+            ],
+            [
+              91.0,
+              [
+                8.5,
+                4.5
+              ],
+              -73.0,
+              [
+                1.0,
+                1.0,
+                1.0
+              ]
+            ],
+            [
+              91.0,
+              [
+                12.5,
+                4.5
+              ],
+              -73.0,
+              [
+                1.0,
+                1.0,
+                1.0
+              ]
+            ],
+            [
+              91.0,
+              [
+                4.5,
+                4.5
+              ],
+              -73.0,
+              [
+                1.0,
+                1.0,
+                1.0
+              ]
+            ],
+            [
+              91.0,
+              [
+                16.5,
+                4.5
+              ],
+              -73.0,
+              [
+                1.0,
+                1.0,
+                1.0
+              ]
+            ],
+            [
+              91.0,
+              [
+                28.5,
+                4.5
+              ],
+              -73.0,
+              [
+                1.0,
+                1.0,
+                1.0
+              ]
+            ],
+            [
+              91.0,
+              [
+                24.5,
+                4.5
+              ],
+              -73.0,
+              [
+                1.0,
+                1.0,
+                1.0
+              ]
+            ],
+            [
+              91.0,
+              [
+                30.5,
+                4.5
+              ],
+              -73.0,
+              [
+                1.0,
+                1.0,
+                1.0
+              ]
+            ]
+          ]
+        },
+        "divisor": 0,
+        "first": 0,
+        "fragment_shader_sha256": "2ad327d367066eea57f9c0f3208f263a4dc55175d190965a3f63c3f9355e2d1e",
+        "indices": {
+          "dtype": "<u2",
+          "sha256": "35791c8b33ce57ad3b40faa8c6249eebded1d81cd9bec3cd0026c743643f42cb",
+          "shape": [
+            3
+          ],
+          "values": [
+            6,
+            1,
+            4
+          ]
+        },
+        "intermediate_finish": false,
+        "intermediate_present": false,
+        "offsets": null,
+        "operations": [
+          [
+            24,
+            4,
+            3,
+            [
+              0,
+              0,
+              255
+            ],
+            0.25
+          ],
+          [
+            8,
+            8,
+            3,
+            [
+              0,
+              255,
+              0
+            ],
+            0.25
+          ],
+          [
+            16,
+            4,
+            3,
+            [
+              255,
+              0,
+              0
+            ],
+            0.25
+          ],
+          [
+            16,
+            16,
+            1,
+            [
+              255,
+              0,
+              0
+            ],
+            0.25
+          ],
+          [
+            24,
+            16,
+            1,
+            [
+              0,
+              0,
+              255
+            ],
+            0.25
+          ],
+          [
+            16,
+            16,
+            1,
+            [
+              255,
+              0,
+              0
+            ],
+            0.25
+          ]
+        ],
+        "point_size": 3.0,
+        "primitive": "points",
+        "readbacks": 1,
+        "size": [
+          32,
+          24
+        ],
+        "updated_data": {
+          "dtype": [
+            [
+              "padding",
+              "<f4"
+            ],
+            [
+              "a_base",
+              "<f4",
+              [
+                2
+              ]
+            ],
+            [
+              "padding2",
+              "<f4"
+            ],
+            [
+              "a_tint",
+              "<f4",
+              [
+                3
+              ]
+            ]
+          ],
+          "sha256": "7f31cba1ccb6820193a080d43007b5d517c3495aaae21d58cee69c6017c079ac",
+          "shape": [
+            8
+          ],
+          "values": [
+            [
+              91.0,
+              [
+                2.5,
+                16.5
+              ],
+              -73.0,
+              [
+                1.0,
+                1.0,
+                1.0
+              ]
+            ],
+            [
+              91.0,
+              [
+                8.5,
+                16.5
+              ],
+              -73.0,
+              [
+                1.0,
+                1.0,
+                1.0
+              ]
+            ],
+            [
+              91.0,
+              [
+                12.5,
+                16.5
+              ],
+              -73.0,
+              [
+                1.0,
+                1.0,
+                1.0
+              ]
+            ],
+            [
+              91.0,
+              [
+                4.5,
+                16.5
+              ],
+              -73.0,
+              [
+                1.0,
+                1.0,
+                1.0
+              ]
+            ],
+            [
+              91.0,
+              [
+                16.5,
+                16.5
+              ],
+              -73.0,
+              [
+                1.0,
+                1.0,
+                1.0
+              ]
+            ],
+            [
+              91.0,
+              [
+                28.5,
+                16.5
+              ],
+              -73.0,
+              [
+                1.0,
+                1.0,
+                1.0
+              ]
+            ],
+            [
+              91.0,
+              [
+                24.5,
+                16.5
+              ],
+              -73.0,
+              [
+                1.0,
+                1.0,
+                1.0
+              ]
+            ],
+            [
+              91.0,
+              [
+                30.5,
+                16.5
+              ],
+              -73.0,
+              [
+                1.0,
+                1.0,
+                1.0
+              ]
+            ]
+          ]
+        },
+        "updated_indices": {
+          "dtype": "<u2",
+          "sha256": "7cea24837ee505cd56c985ae5bb9e8ec9306015c9d8262c32371f1b48855e8e5",
+          "shape": [
+            3
+          ],
+          "values": [
+            4,
+            6,
+            4
+          ]
+        },
+        "updated_point_size": 1.0,
+        "vertex_shader_sha256": "9bd7db3dfa9da3ff578ef6cc99cd999f9264cd823c3a1c420312107082272e28"
+      },
+      "process": {
+        "exit_code": 0,
+        "stderr": {
+          "file": "ordered_revisions.stderr.log",
+          "sha256": "ede76a09bfff01b391bc05479bed630e5f945682d01898e5c2514a9622ebf183"
+        },
+        "stdout": {
+          "file": "ordered_revisions.stdout.log",
+          "sha256": "76fe6885b835c3ae4ed89b2508738e4fb24710baac58197bc959add7b26a5195"
+        }
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ]
+    }
+  },
+  "provenance": {
+    "authoring": "full analytic pixel arrays, data, shaders and selection fixed before candidate results",
+    "capture_source_sha256": "66ae25247831c184f38f2c7a2ff151b940013087104907523b11e1ed2b9b151a",
+    "cmake": null,
+    "distribution_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Lib\\site-packages",
+    "distribution_record_sha256": "455e084c0cb78e19e41c79d08a57d533b07d52b3248c2ebd4b73e80584b067cc",
+    "environment": {
+      "PYTHONPATH": null,
+      "QT_API": "pyqt6",
+      "QT_QPA_PLATFORM": null,
+      "QT_SCALE_FACTOR": "1",
+      "VISPY_PYQT5_SHARE_CONTEXT": null
+    },
+    "fixture_source_sha256": "37797259727afd9c6b15c7074319b935dcddb330deb2b6c99a03c8df6f36fddb",
+    "kind": "upstream",
+    "machine": "AMD64",
+    "numpy_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Lib\\site-packages\\numpy\\__init__.py",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "point_capture_sha256": "879af496b60b6927a97a6f9d3db378e598271a34c54b1979b2cf57c042a125fa",
+    "point_fixture_sha256": "7ac8526d887e2753be6d5e12269cd853f7bc7b00bce75ccab27871c78a99fe77",
+    "python": "3.12.8",
+    "python_executable": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Scripts\\python.exe",
+    "qt_runtime": "6.11.2",
+    "regenerate": "uv venv build/oracle-opengl --python 3.12; uv pip install --python build/oracle-opengl/Scripts/python.exe -r tools/oracle_requirements.txt; build/oracle-opengl/Scripts/python.exe tools/oracle_capture.py --kind upstream --output tests/reference/opengl",
+    "renderer": {
+      "renderer": "NVIDIA GeForce RTX 4090/PCIe/SSE2",
+      "vendor": "NVIDIA Corporation",
+      "version": "4.6.0 NVIDIA 595.79"
+    },
+    "requested_upstream_context": "OpenGL4.6 compatibility via public QSurfaceFormat; gl+ backend",
+    "requirements_sha256": "a784b5a5e2b4ea201578acddc41e28e0997275ea2542642148322153cd240ffd",
+    "source_sha256": {
+      "gloo/buffer.py": "68e37b184b74814e0ae7a6f4f754c9f0c0af5b4e6369a60a8357c70da974e138",
+      "gloo/context.py": "6afc97492f65a5e865723535206fb769a1c4b55694d69786123fdee78bef992a",
+      "gloo/glir.py": "a3bb8a75b33f47420e9c100b8a6d81037a2f03c905e6c9f7d8399f4fb2eb8f7c",
+      "gloo/program.py": "4d3ab8e36260f9b5dc50f6aec075b12d642535f3cb8f49bfd4a27056301d5492",
+      "gloo/texture.py": "9f6d5f2e448e02c0ca4d66c65d17ddcdb6c0182bb8f15f1292a427f5a9faf6bc",
+      "gloo/wrappers.py": "73dbb5eb8ca78b2822266d272ffb14db9fcadd7a56512843209187714c9e8dcc"
+    },
+    "upstream_commit": "117b054598f4758b598f4b8f48feea48c11fe7b0",
+    "versions": {
+      "PyOpenGL": "3.1.10",
+      "PyQt6": "6.11.0",
+      "PyQt6-Qt6": "6.11.2",
+      "PyQt6-sip": "13.13.0",
+      "freetype-py": "2.5.1",
+      "hsluv": "5.0.4",
+      "kiwisolver": "1.5.1",
+      "numpy": "2.5.3",
+      "packaging": "26.3",
+      "vispy": "0.17.0"
+    },
+    "vispy_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Lib\\site-packages\\vispy",
+    "vispy_version": "0.17.0"
+  },
+  "schema": 1
+}

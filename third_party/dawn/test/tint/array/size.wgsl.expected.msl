@@ -1,0 +1,20 @@
+#include <metal_stdlib>
+using namespace metal;
+
+struct tint_module_vars_struct {
+  device float* s;
+};
+
+fragment void v(device float* s [[buffer(0)]]) {
+  tint_module_vars_struct const tint_module_vars = tint_module_vars_struct{.s=s};
+  array<float, 4> signed_literal = {};
+  array<float, 4> unsigned_literal = {};
+  array<float, 4> signed_constant = {};
+  array<float, 4> unsigned_constant = {};
+  array<float, 4> shr_const_expr = {};
+  unsigned_literal = signed_literal;
+  signed_constant = signed_literal;
+  unsigned_constant = signed_literal;
+  shr_const_expr = signed_literal;
+  (*tint_module_vars.s) = ((((signed_literal[0] + unsigned_literal[0]) + signed_constant[0]) + unsigned_constant[0]) + shr_const_expr[0]);
+}

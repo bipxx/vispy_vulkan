@@ -1,0 +1,32 @@
+#include <metal_stdlib>
+using namespace metal;
+
+struct S {
+  array<int, 4> arr;
+};
+
+struct tint_module_vars_struct {
+  device int* s;
+};
+
+int foo() {
+  array<int, 4> const src = array<int, 4>{};
+  array<int, 4> dst = {};
+  S dst_struct = {};
+  array<array<int, 4>, 2> dst_array = {};
+  thread array<int, 4>* const dst_ptr = (&dst);
+  thread S* const dst_struct_ptr = (&dst_struct);
+  thread array<array<int, 4>, 2>* const dst_array_ptr = (&dst_array);
+  dst_struct.arr = src;
+  dst_array[1] = src;
+  (*dst_ptr) = src;
+  (*dst_struct_ptr).arr = src;
+  (*dst_array_ptr)[0] = src;
+  return as_type<int>((as_type<uint>(as_type<int>((as_type<uint>((*dst_ptr)[0]) + as_type<uint>((*dst_struct_ptr).arr[0])))) + as_type<uint>((*dst_array_ptr)[0][0])));
+}
+
+[[max_total_threads_per_threadgroup(1)]]
+kernel void v(device int* s [[buffer(0)]]) {
+  tint_module_vars_struct const tint_module_vars = tint_module_vars_struct{.s=s};
+  (*tint_module_vars.s) = foo();
+}

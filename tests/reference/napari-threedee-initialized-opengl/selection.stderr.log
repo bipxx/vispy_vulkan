@@ -1,0 +1,18 @@
+WARNING: SetProcessDpiAwarenessContext() failed: Access is denied.
+Qt's default DPI awareness context is DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE_V2. If you know what you are doing, you can overwrite this default using qt.conf (https://doc.qt.io/qt-6/highdpi.html#configuring-windows).
+C:\Users\HEQ\Projects\vispy_vulkan\build\host-environments\napari-threedee-cpython312-pyqt6-packaged\Lib\site-packages\pydantic\_internal\_config.py:408: UserWarning: Valid config keys have changed in V2:
+* 'allow_mutation' has been removed
+  warnings.warn(message, UserWarning)
+C:\Users\HEQ\Projects\vispy_vulkan\build\host-environments\napari-threedee-cpython312-pyqt6-packaged\Lib\site-packages\pydantic\_internal\_config.py:408: UserWarning: Valid config keys have changed in V2:
+* 'allow_mutation' has been removed
+  warnings.warn(message, UserWarning)
+Traceback (most recent call last):
+  File "C:\Users\HEQ\Projects\vispy_vulkan\tools\oracle_napari_threedee_initialized_capture.py", line 123, in main
+    image, commands, shaders, params, extras = render(args.worker)
+                                               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HEQ\Projects\vispy_vulkan\tools\fixture_napari_threedee_initialized.py", line 261, in render
+    assert_landmarks(name, image, params, extras)
+  File "C:\Users\HEQ\Projects\vispy_vulkan\tools\fixture_napari_threedee_initialized.py", line 282, in assert_landmarks
+    assert face.min() > 0 and image[y, x, 3] == 255, (name, axis, face)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ('selection', 'x', array([0, 0, 0]))

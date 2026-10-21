@@ -1,0 +1,51 @@
+#include <metal_stdlib>
+using namespace metal;
+
+struct S {
+  simdgroup_float8x8 l;
+  simdgroup_float8x8 r;
+};
+
+struct S_Nested {
+  S s;
+};
+
+struct tint_array_lengths_struct {
+  uint tint_array_length_0_0;
+};
+
+struct tint_immediate_data_struct {
+  /* 0x0000 */ uint tint_non_constant_zero;
+  /* 0x0004 */ array<int8_t, 2044> tint_pad;
+  /* 0x0800 */ array<uint, 1> tint_storage_buffer_sizes;
+};
+
+struct tint_module_vars_struct {
+  device array<float, 1>* tint_member;
+  const constant tint_immediate_data_struct* tint_immediate_data;
+};
+
+void foo(simdgroup_float8x8 m, array<simdgroup_float8x8, 4> m_array, array<array<simdgroup_float8x8, 4>, 4> m_nested_array, S m_struct, S_Nested m_nested_struct, tint_array_lengths_struct tint_array_lengths, tint_module_vars_struct tint_module_vars) {
+  bool const v = (456u <= tint_array_lengths.tint_array_length_0_0);
+  (simdgroup_store(m, (&(*tint_module_vars.tint_member)[select(0u, 0u, v)]), ulong(select(8u, 64u, v)), ulong2(0ul), false));
+  bool const v_1 = (456u <= tint_array_lengths.tint_array_length_0_0);
+  (simdgroup_store(m_array[0], (&(*tint_module_vars.tint_member)[select(0u, 0u, v_1)]), ulong(select(8u, 64u, v_1)), ulong2(0ul), false));
+  bool const v_2 = (456u <= tint_array_lengths.tint_array_length_0_0);
+  (simdgroup_store(m_nested_array[1][2], (&(*tint_module_vars.tint_member)[select(0u, 0u, v_2)]), ulong(select(8u, 64u, v_2)), ulong2(0ul), false));
+  bool const v_3 = (456u <= tint_array_lengths.tint_array_length_0_0);
+  (simdgroup_store(m_struct.l, (&(*tint_module_vars.tint_member)[select(0u, 0u, v_3)]), ulong(select(8u, 64u, v_3)), ulong2(0ul), false));
+  bool const v_4 = (456u <= tint_array_lengths.tint_array_length_0_0);
+  (simdgroup_store(m_nested_struct.s.r, (&(*tint_module_vars.tint_member)[select(0u, 0u, v_4)]), ulong(select(8u, 64u, v_4)), ulong2(0ul), false));
+}
+
+[[max_total_threads_per_threadgroup(64)]]
+kernel void v_5(device array<float, 1>* v_6 [[buffer(0)]], const constant tint_immediate_data_struct* tint_immediate_data [[buffer(30)]]) {
+  tint_module_vars_struct const tint_module_vars = tint_module_vars_struct{.tint_member=v_6, .tint_immediate_data=tint_immediate_data};
+  tint_array_lengths_struct const v_7 = tint_array_lengths_struct{.tint_array_length_0_0=((*tint_module_vars.tint_immediate_data).tint_storage_buffer_sizes[0u] / 4u)};
+  simdgroup_float8x8 m = make_filled_simdgroup_matrix<float, 8, 8>(0.0f);
+  array<simdgroup_float8x8, 4> m_array = {};
+  array<array<simdgroup_float8x8, 4>, 4> m_nested_array = {};
+  S m_struct = {};
+  S_Nested m_nested_struct = {};
+  (foo(m, m_array, m_nested_array, m_struct, m_nested_struct, v_7, tint_module_vars));
+}

@@ -1,0 +1,20 @@
+#include <metal_stdlib>
+using namespace metal;
+
+struct tint_immediate_data_struct {
+  /* 0x0000 */ float2x2 user_immediate_data;
+  /* 0x0010 */ uint tint_non_constant_zero;
+  /* 0x0014 */ array<int8_t, 4> tint_pad;
+};
+
+struct tint_module_vars_struct {
+  device float* out;
+  const constant uint2* indices;
+  const constant tint_immediate_data_struct* tint_immediate_data;
+};
+
+[[max_total_threads_per_threadgroup(1)]]
+kernel void v(device float* out [[buffer(0)]], const constant uint2* indices [[buffer(1)]], const constant tint_immediate_data_struct* tint_immediate_data [[buffer(30)]]) {
+  tint_module_vars_struct const tint_module_vars = tint_module_vars_struct{.out=out, .indices=indices, .tint_immediate_data=tint_immediate_data};
+  (*tint_module_vars.out) = (*tint_module_vars.tint_immediate_data).user_immediate_data[min((*tint_module_vars.indices).x, 1u)][min((*tint_module_vars.indices).y, 1u)];
+}

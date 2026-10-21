@@ -1,0 +1,600 @@
+{
+  "comparison": {
+    "actual_qt_events": true,
+    "fixed_cpu_projection_landmarks": true,
+    "full_frame_exact": true,
+    "picking": "installed CPU ray/sphere callbacks"
+  },
+  "errors": {},
+  "fixtures": {
+    "miss": {
+      "artifacts": {
+        "before": {
+          "file": "miss.before.npy",
+          "sha256": "872ae6fdc95e0017ae99c16ef4d74dd36c351f78e56b00b0e8622a10d7061cd5"
+        },
+        "expanded_shaders": {
+          "file": "miss.expanded_shaders.shaders.json",
+          "sha256": "14b6eb6a22c3a7416620d135e18399f6f72705a7b4284f2e94deff0fa6e01691"
+        },
+        "filtered_glir": {
+          "file": "miss.filtered_glir.glir.json",
+          "sha256": "dbcd8b39bcabc50cbb7cb98568b6132cc8c0175adcabfcdf1f68a1f75bcfa869"
+        },
+        "parameters": {
+          "file": "miss.parameters.parameters.json",
+          "sha256": "0ddc5ee541c9b7a1a43098a8dbae4e31dddede669c69d988708de869ea743ab5"
+        },
+        "rgba": {
+          "file": "miss.rgba.npy",
+          "sha256": "872ae6fdc95e0017ae99c16ef4d74dd36c351f78e56b00b0e8622a10d7061cd5"
+        }
+      },
+      "parameters": {
+        "camera": {
+          "angles": [
+            20.0,
+            35.0,
+            0.0
+          ],
+          "center": [
+            4.5,
+            5.5,
+            7.5
+          ],
+          "perspective": 0.0,
+          "zoom": 6.0
+        },
+        "case": "miss",
+        "comparison": "whole-frame exact uint8 RGBA; no alignment, edge masks or fitted tolerance",
+        "event_api": "real QtTest.QTest mousePress/mouseMove/mouseRelease on the installed canvas widget",
+        "final_projection": {
+          "x": [
+            145.78733626470233,
+            59.85984136418
+          ],
+          "y": [
+            116.41225836109302,
+            136.76260721087462
+          ],
+          "z": [
+            65.18768220443611,
+            80.38104996372012
+          ]
+        },
+        "handle_size": 2.0,
+        "handle_world": {
+          "x": [
+            0.0,
+            0.0,
+            10.0
+          ],
+          "y": [
+            0.0,
+            10.0,
+            0.0
+          ],
+          "z": [
+            10.0,
+            0.0,
+            0.0
+          ]
+        },
+        "initial_projection": {
+          "x": [
+            145.78733626470233,
+            59.85984136418
+          ],
+          "y": [
+            116.41225836109302,
+            136.76260721087462
+          ],
+          "z": [
+            65.18768220443611,
+            80.38104996372012
+          ]
+        },
+        "input": {
+          "dtype": "<f4",
+          "sha256": "fcdfa0e7dc56690719caeea1ad30361734ef946012220aea7ddecbb76d8f25ca",
+          "shape": [
+            12,
+            16,
+            20
+          ]
+        },
+        "native_mro": [
+          "CanvasBackendDesktop",
+          "QtBaseCanvasBackend",
+          "BaseCanvasBackend",
+          "QOpenGLWidget",
+          "QWidget",
+          "QObject",
+          "wrapper",
+          "QPaintDevice",
+          "simplewrapper",
+          "object"
+        ],
+        "origin": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "picking": "installed CPU ray/sphere callbacks, not GPU ID picking",
+        "plugin": "napari-threedee",
+        "press_pixel": [
+          3,
+          3
+        ],
+        "radius": 8.0,
+        "registered_widget": "layer manipulator",
+        "screenshot_api": "napari.Viewer.screenshot(canvas_only=True, flash=False)",
+        "size": [
+          256,
+          192
+        ],
+        "stages": [
+          {
+            "colors": {
+              "0": [
+                0.5,
+                0.8,
+                0.5,
+                1.0
+              ],
+              "1": [
+                0.75,
+                0.68,
+                0.83,
+                1.0
+              ],
+              "2": [
+                1.0,
+                0.75,
+                0.52,
+                1.0
+              ]
+            },
+            "enabled": true,
+            "is_dragging": false,
+            "mouse_pan": true,
+            "origin": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "owned_callbacks": [
+              true,
+              true
+            ],
+            "selected_axis_id": null,
+            "stage": "activated",
+            "translate": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "colors": {
+              "0": [
+                0.5,
+                0.8,
+                0.5,
+                1.0
+              ],
+              "1": [
+                0.75,
+                0.68,
+                0.83,
+                1.0
+              ],
+              "2": [
+                1.0,
+                0.75,
+                0.52,
+                1.0
+              ]
+            },
+            "enabled": true,
+            "is_dragging": false,
+            "mouse_pan": true,
+            "origin": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "owned_callbacks": [
+              true,
+              true
+            ],
+            "selected_axis_id": null,
+            "stage": "before_events",
+            "translate": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "colors": {
+              "0": [
+                0.5,
+                0.8,
+                0.5,
+                1.0
+              ],
+              "1": [
+                0.75,
+                0.68,
+                0.83,
+                1.0
+              ],
+              "2": [
+                1.0,
+                0.75,
+                0.52,
+                1.0
+              ]
+            },
+            "enabled": true,
+            "is_dragging": false,
+            "mouse_pan": true,
+            "origin": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "owned_callbacks": [
+              true,
+              true
+            ],
+            "selected_axis_id": null,
+            "stage": "missed",
+            "translate": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        ],
+        "volume_blending": "translucent_no_depth",
+        "widget_origin": "napari_threedee.manipulators._qt.qt_layer_manipulator"
+      },
+      "shape": [
+        192,
+        256,
+        4
+      ]
+    }
+  },
+  "provenance": {
+    "capture_source_sha256": "66ae25247831c184f38f2c7a2ff151b940013087104907523b11e1ed2b9b151a",
+    "cmake": null,
+    "distribution_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages",
+    "distribution_record_sha256": "455e084c0cb78e19e41c79d08a57d533b07d52b3248c2ebd4b73e80584b067cc",
+    "environment": {
+      "PYTHONPATH": null,
+      "QT_API": "pyqt6",
+      "QT_QPA_PLATFORM": null,
+      "QT_SCALE_FACTOR": "1",
+      "VISPY_PYQT5_SHARE_CONTEXT": "true"
+    },
+    "fixture_source_sha256": "37797259727afd9c6b15c7074319b935dcddb330deb2b6c99a03c8df6f36fddb",
+    "kind": "upstream",
+    "machine": "AMD64",
+    "numpy_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\numpy\\__init__.py",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "plugin": {
+      "capture_source_sha256": "a234ed24c5d4328d4728d4b95b3c6716a9c42f0f7c5a4564f5f00fe543cbe4bd",
+      "evidence_sha256": {
+        "build-tools-windows-cpython312.txt": "431b0bca16553f49b37fb8d33a40bfdb11f5b4651e08f926c94b0183a5ad29a6",
+        "napari-threedee-generated-version.py": "04444c98f216e0fffad1c65035836fd4a05e33fadcae1f47c8c764c7e6287ae5",
+        "napari-threedee-package-build-windows-cpython312.txt": "4bd1ad2ae1a5236aafa1782fa2128d48e79425143584766cb11ca74061fb5468",
+        "napari-threedee-package-wheel-windows-cpython312.txt": "3606498218009eae99d4f1c84d5384528c3110d59a8264e2f8433a6aba9fa0aa",
+        "napari-threedee-packaging-provenance.json": "f505af33f23589362d914e88195c4537e4323b546fc2bcdb00c5b31cdbddd57a",
+        "napari-threedee-pinned-manifest.yaml": "bf3416d61c4b739883fb1e014760b9ce75863086a21b994a659f1042e4a11bb0",
+        "napari-threedee-pinned-pyproject.toml": "ea68783542a5ab8c12e5ab720fca3b6a13266a9f6ae7ca165cef79471cbe17a1",
+        "napari-threedee-registration.json": "b0c1cab1f747641f0100804d7ec4bf3a2988163ef31d680601b9f6c559594a1a",
+        "napari-threedee-wheel-content.json": "24e69fc36f43440ffa7aed6017c2dee4a37d782f51cf91b90326c940621fefd8",
+        "napari-threedee-windows-cpython312-pyqt6.txt": "a3bda7b33481d5d9ecbf856f05ff27bfd66ac46df6ad1f312d9fa8faa3e1e92c"
+      },
+      "fixture_source_sha256": "e9196a7e7f06fcf9cdcb97c675f631b13fca4d05ba681a8fff6e08ca1f745244",
+      "installed": {
+        "Deprecated": "3.0.0",
+        "HeapDict": "1.0.1",
+        "ImageIO": "2.38.1",
+        "Pint": "0.26.1",
+        "PyOpenGL": "3.1.10",
+        "PyQt6": "6.11.0",
+        "PyQt6-Qt6": "6.11.2",
+        "PyQt6_sip": "13.13.0",
+        "PyYAML": "6.0.3",
+        "Pygments": "2.21.0",
+        "QtPy": "2.4.3",
+        "annotated-doc": "0.0.5",
+        "annotated-types": "0.8.0",
+        "app-model": "0.5.1",
+        "asciitree": "0.3.3",
+        "asttokens": "3.0.2",
+        "attrs": "26.1.0",
+        "build": "1.6.1",
+        "cachey": "0.2.1",
+        "certifi": "2026.7.22",
+        "charset-normalizer": "3.5.2",
+        "click": "8.5.0",
+        "cloudpickle": "3.1.2",
+        "colorama": "0.4.6",
+        "comm": "0.2.3",
+        "dask": "2026.8.0",
+        "debugpy": "1.8.22",
+        "docstring_parser": "0.18.0",
+        "einops": "0.8.2",
+        "executing": "2.2.1",
+        "fasteners": "0.20",
+        "flexcache": "0.3",
+        "flexparser": "0.4",
+        "freetype-py": "2.5.1",
+        "fsspec": "2026.9.0",
+        "hsluv": "5.0.4",
+        "idna": "3.20",
+        "in-n-out": "0.2.1",
+        "ipykernel": "6.31.0",
+        "ipython": "9.17.1",
+        "ipython_pygments_lexers": "1.1.1",
+        "jedi": "0.20.0",
+        "jsonschema": "4.26.0",
+        "jsonschema-specifications": "2025.9.1",
+        "jupyter_client": "8.10.0",
+        "jupyter_core": "5.9.1",
+        "kiwisolver": "1.5.1",
+        "lazy-loader": "0.6",
+        "libigl": "2.6.3",
+        "locket": "1.0.0",
+        "lxml": "6.1.3",
+        "magicgui": "0.10.2",
+        "markdown-it-py": "4.2.0",
+        "matplotlib-inline": "0.2.2",
+        "mdurl": "0.1.2",
+        "morphosamplers": "0.0.16",
+        "mrcfile": "1.5.4",
+        "napari": "0.9.2",
+        "napari-console": "0.1.4",
+        "napari-plugin-engine": "0.2.1",
+        "napari-resources": "1.0.1",
+        "napari-svg": "0.2.1",
+        "napari-threedee": "0.0.29",
+        "nest-asyncio": "1.6.0",
+        "networkx": "3.7",
+        "npe2": "0.9.0",
+        "numcodecs": "0.15.1",
+        "numpy": "2.5.3",
+        "packaging": "26.3",
+        "pandas": "3.0.6",
+        "parso": "0.8.7",
+        "partd": "1.4.2",
+        "pillow": "12.3.0",
+        "platformdirs": "4.12.4",
+        "pooch": "1.9.0",
+        "prompt_toolkit": "3.0.53",
+        "psutil": "7.2.2",
+        "psygnal": "0.16.1",
+        "pure_eval": "0.2.4",
+        "pyconify": "0.2.1",
+        "pydantic": "2.14.0",
+        "pydantic-compat": "0.1.2",
+        "pydantic-extra-types": "2.11.1",
+        "pydantic-settings": "2.15.0",
+        "pydantic_core": "2.50.0",
+        "pyproject_hooks": "1.3.3",
+        "python-dateutil": "2.9.0.post0",
+        "python-dotenv": "1.2.4",
+        "pywin32": "312",
+        "pyzmq": "27.2.0",
+        "qtconsole": "5.7.2",
+        "referencing": "0.37.0",
+        "requests": "2.34.2",
+        "rich": "15.0.0",
+        "rpds-py": "2026.9.1",
+        "scikit-image": "0.26.0",
+        "scipy": "1.18.1",
+        "setuptools": "80.9.0",
+        "shellingham": "1.5.4",
+        "six": "1.17.0",
+        "stack-data": "0.6.3",
+        "superqt": "0.8.2",
+        "tifffile": "2026.9.20",
+        "tomli_w": "1.2.0",
+        "toolz": "1.2.0",
+        "tornado": "6.5.10",
+        "tqdm": "4.70.1",
+        "traitlets": "5.16.1",
+        "typer": "0.27.3",
+        "typing-inspection": "0.4.4",
+        "typing_extensions": "4.16.0",
+        "tzdata": "2026.5",
+        "urllib3": "2.8.0",
+        "vispy": "0.17.0",
+        "wcwidth": "0.9.2",
+        "wheel": "0.45.1",
+        "wrapt": "2.5.0",
+        "zarr": "2.18.7"
+      },
+      "napari_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\napari\\__init__.py",
+      "napari_version": "0.9.2",
+      "plugin_commit": "7bd485085186ebe1907f8de931aa7a93e0d58a83",
+      "plugin_entry_points": [
+        [
+          "napari-threedee",
+          "napari_threedee:napari.yaml"
+        ]
+      ],
+      "plugin_files_sha256": {
+        "napari_threedee/__init__.py": "48f54549a69cc301f47156d9c79d896a9f85228969eb10b9b7cd5c8183019811",
+        "napari_threedee/_backend/__init__.py": "8b06d61b99beffe3196237b4f5517f71c01a341f531b9f9979ae8360f55d81bc",
+        "napari_threedee/_backend/manipulator/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "napari_threedee/_backend/manipulator/_interface.py": "f651bdea4ab3ed862bf965feb3dab926623608ffe422d4d908938ecd6dad8935",
+        "napari_threedee/_backend/manipulator/_tests/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "napari_threedee/_backend/manipulator/_tests/test_axis_model.py": "713c26695d6a8cfca0ad6d408a309bc0eb5c6ad8e874adfb1502a178735e44bc",
+        "napari_threedee/_backend/manipulator/_tests/test_central_axis.py": "143c753f56f5608eb96d2299c68fc91ec5dd5fede2481b8388daf5911c81c2b9",
+        "napari_threedee/_backend/manipulator/_tests/test_drag_manager.py": "e2eb3597f83d93e45f768ef8528ad5f95dbd8f8bbf0a55508fb58125c43b2d08",
+        "napari_threedee/_backend/manipulator/_tests/test_manipulator.py": "ef0e24391aaca0503ac33c77583ce6905bf639e2cadeb0a80be5b23f61c89aa8",
+        "napari_threedee/_backend/manipulator/_tests/test_manipulator_visual_data.py": "2831b91c18dace135be2648d33b4a3b39ce6feb83bdea7d30387f38556ea06ca",
+        "napari_threedee/_backend/manipulator/_tests/test_rotator.py": "b23e67a5810c50a84fc53756bd2613ed38c3c517a609833e8ade568d746b45d2",
+        "napari_threedee/_backend/manipulator/_tests/test_translator.py": "ca0fdb2aeef7441e704ff6051abfe8e0c7cff399d6478211f261c382bcaf7cbb",
+        "napari_threedee/_backend/manipulator/axis_model.py": "706f2ac6fbba0b6c5e493c91ff66ebecb9e32cd92e7a86853c3a8414e7af023e",
+        "napari_threedee/_backend/manipulator/central_axis.py": "d6214eda6cbeb5f435e370de39988d32d129479be7c9fe36bab05b839ace5190",
+        "napari_threedee/_backend/manipulator/drag_managers.py": "b8e3f16ff7ec5dc3a01cb2f85e1e0fced343a2d46ae2e7270170d3fd641fa263",
+        "napari_threedee/_backend/manipulator/manipulator_model.py": "d039d71f7d473d870448f35135f6437ab9118661d5b98b0df135aa76e93f3ee1",
+        "napari_threedee/_backend/manipulator/napari_manipulator_backend.py": "591aa5c1d5a7c0ad7cb5baefb62e10f9ad98cbf1339967fc2aeeab9c6f5c8604",
+        "napari_threedee/_backend/manipulator/rotator.py": "c3dc194c046e4571d40273b8c1f0f845d138ea32473f478af1643c819b979039",
+        "napari_threedee/_backend/manipulator/translator.py": "d8e3cf0dd51bb8404069799973f105a9f6869b133fbcd0dc8d3d239f92dedc9a",
+        "napari_threedee/_backend/manipulator/utils.py": "43f383621c27d938393c07bec857f89f876e2ba35be0e5206218ccce3722ce6f",
+        "napari_threedee/_backend/manipulator/vispy_manipulator_visual.py": "fa3ee6e2aa0538f9fc8b62abe68930cd4e7c6ca400cb5593cde839fac0887fe2",
+        "napari_threedee/_backend/manipulator/vispy_visual_data.py": "ef828c1943837b17f4d0981c6ba98869e8eaa2faf2716c29bb28256a2e84f0f1",
+        "napari_threedee/_backend/threedee_model.py": "fc571d705b9ad9431f154185fb522eceb72691896c533a74a095bc8090a5f44a",
+        "napari_threedee/_backend/threedee_widget_base.py": "1ec899a97fdfcaf90611e88379d55ab40cceb32e1b9fe3047fa1ce0eb467e182",
+        "napari_threedee/_sample_data.py": "2adf6972a85add7372f6b1ba65ab9f09b8fc6194cd66837d5c4522e5cc136bf1",
+        "napari_threedee/_tests/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "napari_threedee/_tests/test_dock_widget.py": "5f40581e52ff17f66c8f79c9801aa7a8e87d82541f13915a0bab87e6913fe7f1",
+        "napari_threedee/_version.py": "04444c98f216e0fffad1c65035836fd4a05e33fadcae1f47c8c764c7e6287ae5",
+        "napari_threedee/annotators/__init__.py": "d7cd27bc34380fcfdadeeb6c65aa674faf7ec9c2f2b80a26062ef6e0697c552f",
+        "napari_threedee/annotators/_qt/__init__.py": "9d21fcec961972fef49184b043caae9e44a5e6bdcd156cb9dd2f698a7379dc56",
+        "napari_threedee/annotators/_qt/qt_label_annotator.py": "1eb34247fa0318eeefec2b948bc8a2f8d93aaa55e1ab5fdc6727cc56257e67d4",
+        "napari_threedee/annotators/_qt/qt_path_annotator.py": "88371480a2ae1c6b25d4f128daf7e91f93a4e9903bd203b8203b969790b2b829",
+        "napari_threedee/annotators/_qt/qt_plane_point_annotator.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "napari_threedee/annotators/_qt/qt_point_annotator.py": "32ebe366a8c87f0b5b5592954f090abd9d1e6df00cd635973293e5717731d794",
+        "napari_threedee/annotators/_qt/qt_sphere_annotator.py": "0715945dccbec5f9acb2172b93692c6365ef60eceb763faef5ae3690e78b26f0",
+        "napari_threedee/annotators/_qt/qt_surface_annotator.py": "bad8db7d1f4cdeb3f427dfe8edd40b46702ebfe1a9697510f29c7c7698cac54e",
+        "napari_threedee/annotators/_tests/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "napari_threedee/annotators/_tests/conftest.py": "12add1cd60c1b04a22361a3f8ef91fd8197ae80264d21ffd925e5894992b640b",
+        "napari_threedee/annotators/_tests/test_path_annotator.py": "56a2459640e6f8c55fac70e97211a5bd8aaca12c8bd003fc31504c20fe6cf362",
+        "napari_threedee/annotators/_tests/test_plane_labeler.py": "f68a320c81fc54d47101be726a64eec76e26b4c25cb0453112463cd59d709218",
+        "napari_threedee/annotators/_tests/test_point_annotator.py": "02ba15946b849c9931a3bc38d1fa7ad91bf2484ac8aeab63551a54a4efa2b1a9",
+        "napari_threedee/annotators/_tests/test_sphere_annotator.py": "015f0d1a4946f81280a0b2dfc4b07eb3c5acb22d7db13ceca625f39333c3d6f9",
+        "napari_threedee/annotators/base.py": "43029668651d8006acd5da0b86be5b8542ef5ea60bb480aca4608f0e184c239c",
+        "napari_threedee/annotators/constants.py": "8dbeaa93ca6f1cfcd0e8a57fe01f44926fd4759e973d7f68b78124efa4602a92",
+        "napari_threedee/annotators/dipoles/__init__.py": "07e26ded0bf734ebe0f6ff09f5a7a5db19566bacb2ab90b8ab75cedf666a46c7",
+        "napari_threedee/annotators/dipoles/annotator.py": "99348127e73613e50fed52450ada3356dd55d1750da53975e9925641fb55fba1",
+        "napari_threedee/annotators/dipoles/constants.py": "5715ba705d94eb2b2392a47c58d0e12a2ee49ef7b0fbcf6f8026523b9dbd21cf",
+        "napari_threedee/annotators/dipoles/validation.py": "620984d6c7d423516bd28223f24cbda87b90d5aaaa8e7df0bb07690c6c70a6bf",
+        "napari_threedee/annotators/label/__init__.py": "3c72032c68b9f652c5fef2172b985cd077331f59772262f0534cc500d85e4c07",
+        "napari_threedee/annotators/label/annotator.py": "b35bfb0447c58e88042f03b196981dfed6d662ca4ce8e727ae768f8d771bcff2",
+        "napari_threedee/annotators/paths/__init__.py": "f057979108187cab999e1453d62b6c440776848b3bbc7a896ad3ba8d863ebf8c",
+        "napari_threedee/annotators/paths/annotator.py": "8b458a5d74b0fd657611dd2c129b183f76b2638fe02bce225302abbf0a3aa1b0",
+        "napari_threedee/annotators/paths/constants.py": "da1a943c53ee3bc6931f1e91a3f64bbdbf0f97f1cc9907a39b06209f72ba11e6",
+        "napari_threedee/annotators/paths/validation.py": "483e5fbc5c1a333cac3916b4dcee8fff4174aa8c3b7f3a993ac8e283d511b8c6",
+        "napari_threedee/annotators/points/__init__.py": "fdfc6f4cfd1ba6e37baabd706ffcf51126a7e91f728f6550c75ab2658cd271e1",
+        "napari_threedee/annotators/points/annotator.py": "81026a7054197f88b5c779f118305ae4a20259e32439426dd8bcec9c79d871ee",
+        "napari_threedee/annotators/points/constants.py": "f198fa7ca6d441a046b947113f8d951a14226107a402b08997d32d2c29665ccf",
+        "napari_threedee/annotators/points/validation.py": "8ddaa272db0cc7590359d58906eb05ca72869706fad149b813b4f2bc1cda72c0",
+        "napari_threedee/annotators/spheres/__init__.py": "1a8da0f14f7b1e5392b9534bbb36ec3abeba90d0659499242508da207a61c430",
+        "napari_threedee/annotators/spheres/_tests/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "napari_threedee/annotators/spheres/_tests/test_data_model.py": "adcaa66c431808f4466fb9e5dc554c6629ec625cf519050a75e6999a299a562b",
+        "napari_threedee/annotators/spheres/annotator.py": "8ea8eb5e424857f5448b488746e3cd0e36a1b88e7792c721e120332477278663",
+        "napari_threedee/annotators/spheres/constants.py": "4325625166cb5443152cae56d5418ed24f37140bfb77cfb1e6297c90bb7bf377",
+        "napari_threedee/annotators/spheres/validation.py": "5f3cc54e936bad2cca885c17f7c120685bf52d599aed233a256479481226ddc3",
+        "napari_threedee/annotators/surfaces/__init__.py": "551718edc737c3aead253e615faa493ad03b8c857750cd21362a6fb8da7194e9",
+        "napari_threedee/annotators/surfaces/_tests/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "napari_threedee/annotators/surfaces/_tests/test_data_model.py": "98bdc937291ef348b9fd4f2d2bf8fb4aff81ccba04a1e0661246a1230ba2731b",
+        "napari_threedee/annotators/surfaces/annotator.py": "ca90bf987bc846e806bbebb2a5fcf99025763d56cf98fad4089f03c57bb71074",
+        "napari_threedee/annotators/surfaces/constants.py": "36c156950db97c54f45648828a8b10c7bb8215d3cae205b28d4eaee2f6c6c1af",
+        "napari_threedee/annotators/surfaces/validation.py": "b3031e77e279a3585dc785e766d50c0527aac8da244313d924e73af3fcf4c0e5",
+        "napari_threedee/conftest.py": "2d81a70f04cba748dc2d59bb5516180e5fd395e82e53b5475bcb12aa2c6dd9f1",
+        "napari_threedee/data_models/__init__.py": "5bdeb5db064eadcaf47c209578744991b9369071298e472a42dbd1ef08d0c7ea",
+        "napari_threedee/data_models/_tests/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "napari_threedee/data_models/_tests/test_dipoles.py": "0f8bbaf07bea0f93f5c56981a65b393b572dbcc1b44aef8a83154edd27a83130",
+        "napari_threedee/data_models/_tests/test_paths.py": "f3359b8b5d01ae9a36e269fe0f3c60451c0ba19c630acf58338b209e2cbad808",
+        "napari_threedee/data_models/_tests/test_points.py": "3b60d30d3d9a33834222236491a8f7a1efd5cc2d93254649dc28e5ccbf2423d6",
+        "napari_threedee/data_models/_tests/test_spheres.py": "20c9f290145f219d5f85adb9ebd2325e8b35d9078fc535262b2a5f3db63a1e11",
+        "napari_threedee/data_models/dipoles.py": "7305656ff70ad136aae344bcaa8867ebf0a5846d7a35e2a99521cf993a917d1c",
+        "napari_threedee/data_models/paths.py": "432482af9a01471cf652430fd939d95334751e9e168403d27492e27001e5e560",
+        "napari_threedee/data_models/points.py": "06e21a628bc3f5aa959ca05a84636522986a2f1d5c864fdcf8b87f516ecbc997",
+        "napari_threedee/data_models/spheres.py": "74285c6990e8a100f23abbc578ec0d06127e0fd9867a072e542202532bde11ff",
+        "napari_threedee/data_models/spline_sampler.py": "677c6def4e3edda88034c152e43ad3a17f6b1099323a38505c7069dc4f0bc9d4",
+        "napari_threedee/data_models/surfaces.py": "cdea1d4e4f344c737db9d3b8f4074eca973ef1d13d9770770c7350b3a3b158ac",
+        "napari_threedee/dock_widgets.py": "fdb726666db760b3693a216e177def4954dfe34156769cb325d5d3ba7b08a715",
+        "napari_threedee/manipulators/__init__.py": "e6e9f76814aef4ce3589d3e0d9e9f425399e431a7c1db0b3f49581850f3c4442",
+        "napari_threedee/manipulators/_qt/__init__.py": "c8b6a0e22edb5d5a7d046920b7dd338b4c53666118a2c8bbd89a37ba62155adb",
+        "napari_threedee/manipulators/_qt/qt_layer_manipulator.py": "87356de15c583b0bc2c1d5e2e7f8cde412af720de3c31118400f3db3a7ec8fc2",
+        "napari_threedee/manipulators/_qt/qt_point_manipulator.py": "00e27536a6d590eb4ef3c0a1af0e9054140ada403fc4001d28d2ea33d33b3161",
+        "napari_threedee/manipulators/_qt/qt_render_plane_manipulator.py": "45242695399cd4b5c9d60ff1dbe0e9ac4e915df93b68d6626f92d107af0a86d4",
+        "napari_threedee/manipulators/_tests/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "napari_threedee/manipulators/_tests/test_manipulator_utils.py": "d1b672e10458274384446840b215b213450b029e9ff8330e3ca9da9d83d22bef",
+        "napari_threedee/manipulators/base_manipulator.py": "10fb352f5c79621a461e4113f9ad0dbe420d9ad1254ca22e4219b9de2a45f70c",
+        "napari_threedee/manipulators/constants.py": "f32d3667b7a90f588c2da25e005cb6c78daaae1cfc2db554d3365878fdd0f33d",
+        "napari_threedee/manipulators/layer_manipulator.py": "c5f792341e2b983b7840006037f06c12124430b03caaa4ee905a8805debd2c46",
+        "napari_threedee/manipulators/manipulator_utils.py": "fd7729a677e635bceda00bb0c68eb47ebb18445d0cfbd8881f16e66bfcd9be9e",
+        "napari_threedee/manipulators/point_manipulator.py": "702b7722c72cba615cf8687744f3317ee96121ec3c9ccd283299d0e86850aa87",
+        "napari_threedee/manipulators/render_plane_manipulator.py": "f0f994bfee0a2889dbd189c0a22b1e1c38f5fbcad334836486ca331bf2bf50c5",
+        "napari_threedee/napari.yaml": "bf3416d61c4b739883fb1e014760b9ce75863086a21b994a659f1042e4a11bb0",
+        "napari_threedee/utils/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "napari_threedee/utils/_tests/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "napari_threedee/utils/_tests/test_geometry.py": "0cabd94736c9b83f9513b3673df69464e2a922ab5325c1dc216efa701bb5bf58",
+        "napari_threedee/utils/_tests/test_mouse_callbacks.py": "e79a4789c80da60cd5ef0ccdc7c219aca88f244c2bee7c54b1bf04229d6746de",
+        "napari_threedee/utils/geometry.py": "357ed4ba7b88eeed19cc0e622e8dcc8b34afa905c67d33d142f87b39836053cf",
+        "napari_threedee/utils/mouse_callbacks.py": "e8dfd6998e6ef07e7045420d96c8f144c3a097b71a01c54ab6f49a55ac2276b2",
+        "napari_threedee/utils/napari_utils.py": "080c7b55c4f275eae2d648df6242ea2564d267bae1fc2a4dbdf4ac9353cb3f8d",
+        "napari_threedee/utils/selection_utils.py": "0b5388b4ee51e71758f3cc75a6ace702dfb4604a911713c98bff2a67741edff5",
+        "napari_threedee/vispy.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "napari_threedee/visualization/__init__.py": "c9b7a68c8c7910e47ee03b0e88df032617683357a4e96b814c15881c9330fed6",
+        "napari_threedee/visualization/_qt/__init__.py": "68c9e5da927c24f41eca0c0314bc3aa69ce9920ce0f648cc5abea351b13ee6c8",
+        "napari_threedee/visualization/_qt/qt_camera_spline.py": "4123f4645f892b13189af64894c4619543384f9925e05809c9e08190c280ba3c",
+        "napari_threedee/visualization/_qt/qt_lighting_control.py": "3f5d1421e2375e0ad6aef0587efaac9bb2dd5039994a26c227b2fea6708eba2d",
+        "napari_threedee/visualization/_tests/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "napari_threedee/visualization/_tests/test_camera_spline.py": "d1455217d1d0f6cffed99a2bfd8e43b3261c1c4c1ca3e59fa9c1cc071abfd8a0",
+        "napari_threedee/visualization/_tests/test_lighting_control.py": "a655869eb3210df260e38d322fab90b9fe79acc409edddeb9f68a0844189ef12",
+        "napari_threedee/visualization/camera_spline.py": "9c6abb0a589853ab51afb7e875b54c88b892ecd44692ced3f8d5f9bcd38c71a8",
+        "napari_threedee/visualization/lighting_control.py": "1db65d5c5b60d517f42b9785cc7fea856fff6d80daec538248f6bbf7bc40941a"
+      },
+      "plugin_name": "napari-threedee",
+      "plugin_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\napari_threedee",
+      "plugin_tag_object": "42be31adce55bed767dd5f835c32d08c329f3e35",
+      "plugin_version": "0.0.29",
+      "plugin_wheel": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-wheels\\napari-threedee-v0.0.29-qualification-1\\napari_threedee-0.0.29-py3-none-any.whl",
+      "plugin_wheel_sha256": "de115619e84a7967b0386651163c29ec12228d59e58000736067f066237ce91e",
+      "public_initialization": "Viewer(ndisplay=2), add unchanged 3D data, ndisplay=3 before plugin construction; mandatory post-activation 2D/3D transitions retained",
+      "public_volume_blending": "translucent_no_depth: distinct visible-handle workflow; opaque depth occlusion remains preserved and is valid renderer behavior",
+      "python_hash_seed": "0",
+      "registered_layer_widget": {
+        "class": "QtLayerManipulatorWidget",
+        "command": "napari-threedee.QtLayerManipulatorWidget",
+        "module": "napari_threedee.manipulators._qt.qt_layer_manipulator"
+      }
+    },
+    "python": "3.12.8",
+    "python_executable": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Scripts\\python.exe",
+    "qt_runtime": "6.11.2",
+    "regenerate": "uv venv build/oracle-opengl --python 3.12; uv pip install --python build/oracle-opengl/Scripts/python.exe -r tools/oracle_requirements.txt; build/oracle-opengl/Scripts/python.exe tools/oracle_capture.py --kind upstream --output tests/reference/opengl",
+    "renderer": {
+      "renderer": "NVIDIA GeForce RTX 4090/PCIe/SSE2",
+      "vendor": "NVIDIA Corporation",
+      "version": "4.6.0 NVIDIA 595.79"
+    },
+    "requirements_sha256": "a784b5a5e2b4ea201578acddc41e28e0997275ea2542642148322153cd240ffd",
+    "source_sha256": {
+      "gloo/buffer.py": "68e37b184b74814e0ae7a6f4f754c9f0c0af5b4e6369a60a8357c70da974e138",
+      "gloo/context.py": "6afc97492f65a5e865723535206fb769a1c4b55694d69786123fdee78bef992a",
+      "gloo/glir.py": "a3bb8a75b33f47420e9c100b8a6d81037a2f03c905e6c9f7d8399f4fb2eb8f7c",
+      "gloo/program.py": "4d3ab8e36260f9b5dc50f6aec075b12d642535f3cb8f49bfd4a27056301d5492",
+      "gloo/texture.py": "9f6d5f2e448e02c0ca4d66c65d17ddcdb6c0182bb8f15f1292a427f5a9faf6bc",
+      "gloo/wrappers.py": "73dbb5eb8ca78b2822266d272ffb14db9fcadd7a56512843209187714c9e8dcc"
+    },
+    "upstream_commit": "117b054598f4758b598f4b8f48feea48c11fe7b0",
+    "versions": {
+      "PyOpenGL": "3.1.10",
+      "PyQt6": "6.11.0",
+      "PyQt6-Qt6": "6.11.2",
+      "PyQt6-sip": "13.13.0",
+      "freetype-py": "2.5.1",
+      "hsluv": "5.0.4",
+      "kiwisolver": "1.5.1",
+      "numpy": "2.5.3",
+      "packaging": "26.3",
+      "vispy": "0.17.0"
+    },
+    "vispy_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\vispy",
+    "vispy_version": "0.17.0"
+  },
+  "schema": 1
+}

@@ -1,0 +1,20 @@
+{
+  "exit_code": 1,
+  "manifest_sha256": "71900775f4a1f1f2cc2e7d7a24d27357927fd6cb2f0a442ef3178a13523e3590",
+  "native_after": {
+    "src\\vispy\\_dawn.cp312-win_amd64.pyd": "89862fbc265bee109a2409cda7631442b8fc1b562a18fc2c21519cdc81fd7116",
+    "src\\vispy\\visuals\\text\\_sdf_cpu.cp312-win_amd64.pyd": "11638220e99ad064a4a0d373145cc2b0f47b7983bae8e4007398f167d76355e0"
+  },
+  "native_unchanged": true,
+  "parent_stderr_sha256": "db8dfd640d53e7550d0a3727d2f88b4ee072d0ea717b5eaa208d32140e03cefe",
+  "parent_stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "sources_after": {
+    "tests/parity/test_marker_extensions_corrected_parity.py": "c78bbb31056d8ed086dda90706695ffde7d39f3bdbffb2f4106604f2c45742f1",
+    "tools/fixture_gloo.py": "37797259727afd9c6b15c7074319b935dcddb330deb2b6c99a03c8df6f36fddb",
+    "tools/fixture_marker_extensions_corrected.py": "d7fc196d5aff03a2656f9ac1d71bd4b796acf617464dd4a2afa591875467fbaf",
+    "tools/oracle_capture.py": "66ae25247831c184f38f2c7a2ff151b940013087104907523b11e1ed2b9b151a",
+    "tools/oracle_image_extensions_capture.py": "5583a42fd34b105651cb1f81c77621f96efd92fedc54e78ee5367eb95e0b6211",
+    "tools/oracle_marker_extensions_corrected_capture.py": "e362f26265c648a92646b835502aeeec4ce30bb8d9768b197c91b7970efb90dd"
+  },
+  "sources_unchanged": true
+}

@@ -1,0 +1,259 @@
+{
+  "GPU_attempted": true,
+  "GPU_used": true,
+  "authored_case_nodeid": "tests/native/test_line_endpoints.py::test_upstream_original_vertex_outputs_match_exact_logical_criteria[interleaved_divisors]",
+  "candidate_seen": false,
+  "case": "interleaved_divisors",
+  "exact_logical_outputs": true,
+  "execution": "direct isolated rawGL child, not pytest",
+  "native_imported": false,
+  "observations": {
+    "GPU_used": true,
+    "TF_queried": {
+      "mode": 35980,
+      "stride": 80,
+      "varyings": [
+        {
+          "actual_name": "gl_Position",
+          "array_length": 1,
+          "buffer_index": 0,
+          "gl_type": 35666,
+          "offset": 0
+        },
+        {
+          "actual_name": "v_ids",
+          "array_length": 1,
+          "buffer_index": 0,
+          "gl_type": 36294,
+          "offset": 16
+        },
+        {
+          "actual_name": "v_signed",
+          "array_length": 1,
+          "buffer_index": 0,
+          "gl_type": 35667,
+          "offset": 24
+        },
+        {
+          "actual_name": "v_unsigned",
+          "array_length": 1,
+          "buffer_index": 0,
+          "gl_type": 36294,
+          "offset": 32
+        },
+        {
+          "actual_name": "v_raw",
+          "array_length": 1,
+          "buffer_index": 0,
+          "gl_type": 35666,
+          "offset": 40
+        },
+        {
+          "actual_name": "v_one",
+          "array_length": 1,
+          "buffer_index": 0,
+          "gl_type": 35664,
+          "offset": 56
+        },
+        {
+          "actual_name": "v_two",
+          "array_length": 1,
+          "buffer_index": 0,
+          "gl_type": 35667,
+          "offset": 64
+        },
+        {
+          "actual_name": "v_constant",
+          "array_length": 1,
+          "buffer_index": 0,
+          "gl_type": 36294,
+          "offset": 72
+        }
+      ]
+    },
+    "TF_shader_layout_is_native_layout": false,
+    "admission_scope": {
+      "integer_constant_scope": "internal typed compiler/evaluator ABI probe; public upstream GLIR constant setters support float/vec only",
+      "internal_integer_constant_attributes": [
+        "a_constant"
+      ],
+      "logical_criteria_independent_of_native_padding": true,
+      "public_GLIR_constant_types": [
+        "float",
+        "vec2",
+        "vec3",
+        "vec4"
+      ],
+      "transport": "original shader/raw GL transform feedback; no public Program.draw admission"
+    },
+    "calls": [
+      {
+        "count": 4,
+        "first": 3,
+        "instances": 3,
+        "name": "glDrawArraysInstanced"
+      }
+    ],
+    "candidate_seen": false,
+    "cleanup_errors": [],
+    "compile": [
+      {
+        "log": "",
+        "stage": 35633,
+        "status": 1
+      },
+      {
+        "log": "",
+        "stage": 35632,
+        "status": 1
+      }
+    ],
+    "context": {
+      "GLSL": "4.60 NVIDIA",
+      "renderer": "NVIDIA GeForce RTX 4090/PCIe/SSE2",
+      "vendor": "NVIDIA Corporation",
+      "version": "4.6.0 NVIDIA 595.79"
+    },
+    "context_creation_attempted": true,
+    "generated_IDs": [
+      {
+        "GLuint": 1,
+        "operation": "glGenVertexArrays",
+        "return_dtype": "<u4",
+        "return_shape": []
+      },
+      {
+        "GLuint": 1,
+        "operation": "glGenBuffers",
+        "return_dtype": "<u4",
+        "return_shape": []
+      },
+      {
+        "GLuint": 2,
+        "operation": "glGenBuffers",
+        "return_dtype": "<u4",
+        "return_shape": []
+      },
+      {
+        "GLuint": 3,
+        "operation": "glGenBuffers",
+        "return_dtype": "<u4",
+        "return_shape": []
+      },
+      {
+        "GLuint": 1,
+        "operation": "glGenTransformFeedbacks",
+        "return_dtype": "<u4",
+        "return_shape": []
+      },
+      {
+        "GLuint": 1,
+        "operation": "glGenQueries",
+        "return_dtype": "<u4",
+        "return_shape": [
+          1
+        ]
+      }
+    ],
+    "gl_error": 0,
+    "input_binding_layout": {
+      "a_constant": {
+        "constant": {
+          "dtype": "<u4",
+          "dtype_descriptor": "[('', '<u4')]",
+          "sha256": "9198a577ba5d25d151bcfbba80aeee64548af441c9fa61db2138b37baa8a9126",
+          "shape": [
+            2
+          ]
+        },
+        "location": 5
+      },
+      "a_one": {
+        "buffer": "instance",
+        "components": 2,
+        "divisor": 1,
+        "gl_type": 5126,
+        "location": 3,
+        "normalized": false,
+        "offset": 0,
+        "stride": 16
+      },
+      "a_position": {
+        "buffer": "vertex",
+        "components": 4,
+        "divisor": 0,
+        "gl_type": 5126,
+        "location": 0,
+        "normalized": false,
+        "offset": 0,
+        "stride": 32
+      },
+      "a_signed": {
+        "buffer": "vertex",
+        "components": 2,
+        "divisor": 0,
+        "gl_type": 5124,
+        "location": 1,
+        "normalized": false,
+        "offset": 16,
+        "stride": 32
+      },
+      "a_two": {
+        "buffer": "instance",
+        "components": 2,
+        "divisor": 2,
+        "gl_type": 5124,
+        "location": 4,
+        "normalized": false,
+        "offset": 8,
+        "stride": 16
+      },
+      "a_unsigned": {
+        "buffer": "vertex",
+        "components": 2,
+        "divisor": 0,
+        "gl_type": 5125,
+        "location": 2,
+        "normalized": false,
+        "offset": 24,
+        "stride": 32
+      }
+    },
+    "kind": "upstream",
+    "limits": {
+      "TF_buffers": 4,
+      "TF_interleaved_components": 128,
+      "context_profile_mask": 2,
+      "samples": 0,
+      "vertex_attributes": 16
+    },
+    "link": {
+      "log": "",
+      "status": 1
+    },
+    "logical_bytes": 960,
+    "native_imported": false,
+    "original_primitive": "line_strip",
+    "output_count": 12,
+    "owned_resources_cleanup_completed": true,
+    "package_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Lib\\site-packages\\vispy\\__init__.py",
+    "packages": {
+      "PyOpenGL": "3.1.10",
+      "PyQt6": "6.11.0",
+      "PyQt6-Qt6": "6.11.2",
+      "numpy": "2.5.3",
+      "vispy": "0.17.0"
+    },
+    "primitives_written": 12,
+    "raw_bytes": 1280,
+    "raw_sha256": "738a29db50de795500c32a051bd9b937361b99a8559d423df10cbb398ac38b09",
+    "source_sha256": {
+      "fragment": "83e7c426f48ae834338f4d352c7bc6f3ec0a3330c03e6fbd6195f369f53351de",
+      "vertex": "a1523824bd8f5c1ef8cf3be14c95912fc562c1bcc093c4031e39358d9da3d35f"
+    },
+    "tail_guard_rows": 4,
+    "tail_guard_unchanged": true,
+    "transport": "actual API-configured GL transform feedback; unchanged vertex source; GL_POINTS/rasterizer discard"
+  },
+  "process_exit": 0
+}

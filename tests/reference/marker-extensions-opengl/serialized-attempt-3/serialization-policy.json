@@ -1,0 +1,116 @@
+{
+  "GPU_used": false,
+  "authoring_sha256": "a25bb74278607c775859b28af6babe933367ef444b0a9d9d569ba499490afb28",
+  "candidate_seen": false,
+  "cases_and_comparison_exactly_equal": true,
+  "cause": "parser framebuffer handle is a NumPy uintc; previous observation artifact JSON serialization raises TypeError before assertions",
+  "preserved_failed_attempt": {
+    "manifest_file": "tests\\reference\\marker-extensions-opengl\\api-correct-attempt-2\\manifest.json",
+    "manifest_sha256": "71900775f4a1f1f2cc2e7d7a24d27357927fd6cb2f0a442ef3178a13523e3590",
+    "terminal_sha256": "a8c5aecef988a08df7a253ce82920ffb233fa5c8a0440d0aab982baf1223c652"
+  },
+  "prior_failed_frames": {
+    "instanced_camera_fixed": {
+      "CPU_landmarks_only_pass": true,
+      "admitted": false,
+      "child_exit_code": 1,
+      "file": "tests\\reference\\marker-extensions-opengl\\api-correct-attempt-2\\instanced_camera_fixed.npy",
+      "sha256": "fac04910b027a8a219b04e8ad409480ca51933ba5c350aae08c15a08e699b422"
+    },
+    "instanced_camera_scene": {
+      "CPU_landmarks_only_pass": true,
+      "admitted": false,
+      "child_exit_code": 1,
+      "file": "tests\\reference\\marker-extensions-opengl\\api-correct-attempt-2\\instanced_camera_scene.npy",
+      "sha256": "1bf694c9b0b2ef07da9525deff4545eb6c74506c177e461076e26840a8eb7e05"
+    },
+    "instanced_camera_visual": {
+      "CPU_landmarks_only_pass": true,
+      "admitted": false,
+      "child_exit_code": 1,
+      "file": "tests\\reference\\marker-extensions-opengl\\api-correct-attempt-2\\instanced_camera_visual.npy",
+      "sha256": "1bf694c9b0b2ef07da9525deff4545eb6c74506c177e461076e26840a8eb7e05"
+    },
+    "instanced_color_revision": {
+      "CPU_landmarks_only_pass": true,
+      "admitted": false,
+      "child_exit_code": 1,
+      "file": "tests\\reference\\marker-extensions-opengl\\api-correct-attempt-2\\instanced_color_revision.npy",
+      "sha256": "8c6b382e468d153dd19984ef5b10ca2a921a3e02e903df97d33d5fcf49a93cc5"
+    },
+    "instanced_position_revision": {
+      "CPU_landmarks_only_pass": true,
+      "admitted": false,
+      "child_exit_code": 1,
+      "file": "tests\\reference\\marker-extensions-opengl\\api-correct-attempt-2\\instanced_position_revision.npy",
+      "sha256": "f3b9d7a787dcb90b504b0e5530ef4b540097e00c3591dfeea5ec45b3c2a9ad19"
+    },
+    "instanced_spherical_depth": {
+      "CPU_landmarks_only_pass": true,
+      "admitted": false,
+      "child_exit_code": 1,
+      "file": "tests\\reference\\marker-extensions-opengl\\api-correct-attempt-2\\instanced_spherical_depth.npy",
+      "sha256": "13f28466f07401321157733bc290e3b6224cb226a662dc95869a4987c153e05f"
+    },
+    "instanced_style_grid": {
+      "CPU_landmarks_only_pass": true,
+      "admitted": false,
+      "child_exit_code": 1,
+      "file": "tests\\reference\\marker-extensions-opengl\\api-correct-attempt-2\\instanced_style_grid.npy",
+      "sha256": "cb2f41a29a8a23e3960c562de7b340eb57177a918c86c09a345e25a90d3ab7ae"
+    },
+    "points_camera_fixed": {
+      "CPU_landmarks_only_pass": true,
+      "admitted": false,
+      "child_exit_code": 1,
+      "file": "tests\\reference\\marker-extensions-opengl\\api-correct-attempt-2\\points_camera_fixed.npy",
+      "sha256": "fac04910b027a8a219b04e8ad409480ca51933ba5c350aae08c15a08e699b422"
+    },
+    "points_camera_scene": {
+      "CPU_landmarks_only_pass": true,
+      "admitted": false,
+      "child_exit_code": 1,
+      "file": "tests\\reference\\marker-extensions-opengl\\api-correct-attempt-2\\points_camera_scene.npy",
+      "sha256": "1bf694c9b0b2ef07da9525deff4545eb6c74506c177e461076e26840a8eb7e05"
+    },
+    "points_camera_visual": {
+      "CPU_landmarks_only_pass": true,
+      "admitted": false,
+      "child_exit_code": 1,
+      "file": "tests\\reference\\marker-extensions-opengl\\api-correct-attempt-2\\points_camera_visual.npy",
+      "sha256": "1bf694c9b0b2ef07da9525deff4545eb6c74506c177e461076e26840a8eb7e05"
+    },
+    "points_color_revision": {
+      "CPU_landmarks_only_pass": true,
+      "admitted": false,
+      "child_exit_code": 1,
+      "file": "tests\\reference\\marker-extensions-opengl\\api-correct-attempt-2\\points_color_revision.npy",
+      "sha256": "8c6b382e468d153dd19984ef5b10ca2a921a3e02e903df97d33d5fcf49a93cc5"
+    },
+    "points_position_revision": {
+      "CPU_landmarks_only_pass": true,
+      "admitted": false,
+      "child_exit_code": 1,
+      "file": "tests\\reference\\marker-extensions-opengl\\api-correct-attempt-2\\points_position_revision.npy",
+      "sha256": "f3b9d7a787dcb90b504b0e5530ef4b540097e00c3591dfeea5ec45b3c2a9ad19"
+    },
+    "points_spherical_depth": {
+      "CPU_landmarks_only_pass": true,
+      "admitted": false,
+      "child_exit_code": 1,
+      "file": "tests\\reference\\marker-extensions-opengl\\api-correct-attempt-2\\points_spherical_depth.npy",
+      "sha256": "13f28466f07401321157733bc290e3b6224cb226a662dc95869a4987c153e05f"
+    },
+    "points_style_grid": {
+      "CPU_landmarks_only_pass": true,
+      "admitted": false,
+      "child_exit_code": 1,
+      "file": "tests\\reference\\marker-extensions-opengl\\api-correct-attempt-2\\points_style_grid.npy",
+      "sha256": "cb2f41a29a8a23e3960c562de7b340eb57177a918c86c09a345e25a90d3ab7ae"
+    }
+  },
+  "schema": 1,
+  "scope": "CPU validation only; failed child exits are preserved and unadmitted",
+  "serializer_change": "JSON numbers for np.generic.item(); no GL calls, binding changes, source pin changes, image or criteria edits",
+  "unchanged_scene_criteria_sha256": "d7fc196d5aff03a2656f9ac1d71bd4b796acf617464dd4a2afa591875467fbaf"
+}

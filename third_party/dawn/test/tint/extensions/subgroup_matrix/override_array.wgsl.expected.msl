@@ -1,0 +1,57 @@
+#include <metal_stdlib>
+using namespace metal;
+
+struct tint_immediate_data_struct {
+  /* 0x0000 */ uint tint_non_constant_zero;
+  /* 0x0004 */ array<int8_t, 2044> tint_pad;
+  /* 0x0800 */ array<uint, 1> tint_storage_buffer_sizes;
+};
+
+struct tint_module_vars_struct {
+  device array<float, 1>* s_var;
+  threadgroup array<float, 1024>* wg_var;
+  const constant tint_immediate_data_struct* tint_immediate_data;
+};
+
+struct tint_array_lengths_struct {
+  uint tint_array_length_0_0;
+};
+
+struct tint_symbol_1 {
+  array<float, 1024> tint_symbol;
+};
+
+void main_inner(uint tint_local_index, tint_module_vars_struct tint_module_vars) {
+  {
+    uint idx = tint_local_index;
+    while(true) {
+      uint const v = idx;
+      if ((v >= 1024u)) {
+        break;
+      }
+      (*tint_module_vars.wg_var)[v] = 0.0f;
+      {
+        idx = (idx + 32u);
+      }
+    }
+  }
+  (threadgroup_barrier(mem_flags::mem_threadgroup));
+  tint_array_lengths_struct const v_1 = tint_array_lengths_struct{.tint_array_length_0_0=((*tint_module_vars.tint_immediate_data).tint_storage_buffer_sizes[0u] / 4u)};
+  bool const v_2 = (64u <= v_1.tint_array_length_0_0);
+  simdgroup_float8x8 v_3 = make_filled_simdgroup_matrix<float, 8, 8>(0.0f);
+  (simdgroup_load(v_3, (&(*tint_module_vars.s_var)[select(0u, 0u, v_2)]), ulong(select(8u, 8u, v_2)), ulong2(0ul), false));
+  simdgroup_float8x8 const m = v_3;
+  (simdgroup_store(m, (&(*tint_module_vars.wg_var)[0]), ulong(8u), ulong2(0ul), false));
+  (threadgroup_barrier(mem_flags::mem_threadgroup));
+  simdgroup_float8x8 v_4 = make_filled_simdgroup_matrix<float, 8, 8>(0.0f);
+  (simdgroup_load(v_4, (&(*tint_module_vars.wg_var)[0]), ulong(8u), ulong2(0ul), true));
+  simdgroup_float8x8 const m2 = v_4;
+  bool const v_5 = (64u <= v_1.tint_array_length_0_0);
+  (simdgroup_store(m2, (&(*tint_module_vars.s_var)[select(0u, 0u, v_5)]), ulong(select(8u, 8u, v_5)), ulong2(0ul), true));
+}
+
+[[max_total_threads_per_threadgroup(32)]]
+kernel void v_6(uint tint_local_index [[thread_index_in_threadgroup]], device array<float, 1>* s_var [[buffer(0)]], threadgroup tint_symbol_1* v_7 [[threadgroup(0)]], const constant tint_immediate_data_struct* tint_immediate_data [[buffer(30)]]) {
+  tint_module_vars_struct const tint_module_vars = tint_module_vars_struct{.s_var=s_var, .wg_var=(&(*v_7).tint_symbol), .tint_immediate_data=tint_immediate_data};
+  (main_inner(tint_local_index, tint_module_vars));
+}

@@ -1,0 +1,30 @@
+{
+  "admitted": 13,
+  "all_children_terminal": true,
+  "authoring_sha256": "711139ed3902a4545b9f38ad0c54fab64a656c4668def5a803b0bb7c242c4e1a",
+  "candidate_graphics_seen": false,
+  "child_exit_codes": {
+    "additive_channels": 0,
+    "cpu_scalar_nan": 0,
+    "gpu_scalar_nan": 0,
+    "labels_paint_tile": 0,
+    "labels_signed_remap": 0,
+    "multiplicative": 0,
+    "multiscale_level0_retained": 0,
+    "multiscale_level1_edit": 0,
+    "rgb_three": 0,
+    "rgba_nan": 0,
+    "scalar_int8_host": 0,
+    "scalar_uint8_host": 0,
+    "slice_change": 0
+  },
+  "command": "build/oracle-napari/Scripts/python.exe tools/oracle_image_extensions_capture.py --kind upstream --output tests/reference/image-extensions-opengl/api-correct-attempt-2",
+  "errors": {},
+  "first_attempt_manifest_unchanged": true,
+  "frozen_sources_unchanged": true,
+  "manifest_sha256": "9675b84eda8cd0c910d31fa668c6b77cda35ea94f26e8bc2e45a8d0ccd7bf70d",
+  "parent_exit_code": 0,
+  "schema": 1,
+  "session_id": 51111,
+  "upstream_lock_unchanged": true
+}

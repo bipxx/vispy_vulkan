@@ -1,0 +1,224 @@
+{
+  "antialias": 1.0,
+  "api_scope": "public scene Markers / MarkersVisual.set_data, camera.rect and SceneCanvas FBO/draw APIs",
+  "camera_depth_value": 100.0,
+  "camera_flip": [
+    false,
+    true,
+    false
+  ],
+  "camera_rect": [
+    0,
+    0,
+    128,
+    96
+  ],
+  "case": "instanced_style_grid",
+  "clear_depth": 1.0,
+  "comparison": {
+    "candidate_alignment_or_color_fit": false,
+    "full_frame_exact": true,
+    "landmarks": "fixed analytic RGBA values or fixed channel bounds; no edge exclusions"
+  },
+  "dependent_intermediate_present_or_finish": false,
+  "depth_func": "less",
+  "dpi": 96,
+  "input": {
+    "edge_color": [
+      1,
+      0,
+      0,
+      1
+    ],
+    "edge_width": {
+      "bytes": 24,
+      "dtype": "<f4",
+      "dtype_descr": [
+        [
+          "",
+          "<f4"
+        ]
+      ],
+      "sha256": "aeecc6c277c7082f19f083f14c2607fb57dc0fd4c57bb469b7b2e27c3ff147ab",
+      "shape": [
+        6
+      ]
+    },
+    "face_color": [
+      0,
+      1,
+      0,
+      1
+    ],
+    "pos": {
+      "bytes": 72,
+      "dtype": "<f4",
+      "dtype_descr": [
+        [
+          "",
+          "<f4"
+        ]
+      ],
+      "sha256": "efb43319b9cd4cc3d3b6b8d88661cf953af914457a0830f11a9f39103a0ec676",
+      "shape": [
+        6,
+        3
+      ]
+    },
+    "size": {
+      "bytes": 24,
+      "dtype": "<f4",
+      "dtype_descr": [
+        [
+          "",
+          "<f4"
+        ]
+      ],
+      "sha256": "f8369a041fb710563c6d6efe557a4840ad68120cd4bd6f3c1719b006b3d63114",
+      "shape": [
+        6
+      ]
+    },
+    "symbol": [
+      "disc",
+      "square",
+      "diamond",
+      "triangle_up",
+      "cross",
+      "ring"
+    ]
+  },
+  "landmarks": [
+    {
+      "column": 2,
+      "rgba": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "row": 2
+    },
+    {
+      "column": 20,
+      "maximum": [
+        15,
+        255,
+        0,
+        255
+      ],
+      "minimum": [
+        0,
+        240,
+        0,
+        255
+      ],
+      "row": 24
+    },
+    {
+      "column": 64,
+      "maximum": [
+        15,
+        255,
+        0,
+        255
+      ],
+      "minimum": [
+        0,
+        240,
+        0,
+        255
+      ],
+      "row": 24
+    },
+    {
+      "column": 108,
+      "maximum": [
+        15,
+        255,
+        0,
+        255
+      ],
+      "minimum": [
+        0,
+        240,
+        0,
+        255
+      ],
+      "row": 24
+    },
+    {
+      "column": 20,
+      "maximum": [
+        15,
+        255,
+        0,
+        255
+      ],
+      "minimum": [
+        0,
+        240,
+        0,
+        255
+      ],
+      "row": 72
+    },
+    {
+      "column": 64,
+      "maximum": [
+        15,
+        255,
+        0,
+        255
+      ],
+      "minimum": [
+        0,
+        240,
+        0,
+        255
+      ],
+      "row": 72
+    },
+    {
+      "column": 26,
+      "rgba": [
+        255,
+        0,
+        0,
+        255
+      ],
+      "row": 24
+    },
+    {
+      "column": 108,
+      "rgba": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "row": 72
+    },
+    {
+      "column": 117,
+      "rgba": [
+        0,
+        255,
+        0,
+        255
+      ],
+      "row": 72
+    }
+  ],
+  "method": "instanced",
+  "prewarm_submission_without_read": false,
+  "readbacks": 1,
+  "samples": 1,
+  "scaling": "fixed",
+  "size": [
+    128,
+    96
+  ],
+  "spherical": false,
+  "workflow": "style_grid"
+}

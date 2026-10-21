@@ -1,0 +1,4 @@
+{
+  "2": "\nattribute vec2 a_position;\nvoid main() { gl_Position = vec4(a_position, 0.0, 1.0); }\n",
+  "3": "\n                uniform float u_values[3];\n                void main() { gl_FragColor = vec4(u_values[1], u_values[2], 0.0, 1.0); }\n                "
+}

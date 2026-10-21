@@ -1,0 +1,237 @@
+{
+  "comparison": {
+    "full_frame_exact": true,
+    "landmark_domain": "analytic input through host CPU scene transform",
+    "landmarks_exact": true
+  },
+  "errors": {
+    "scatter": {
+      "error": "type object 'MarkersVisual' has no attribute '_marker_funcs'",
+      "type": "AttributeError"
+    }
+  },
+  "fixtures": {},
+  "provenance": {
+    "binding": "PySide2",
+    "binding_version": "5.15.2.1",
+    "capture_source_sha256": "ca3763bdd82855a999ec0f12f741cb7947ca5f4ca30fb8ac485974f9df6aa0ca",
+    "environment": {
+      "PYTHONPATH": null,
+      "QT_API": "pyside2",
+      "QT_QPA_PLATFORM": null,
+      "QT_SCALE_FACTOR": "1",
+      "VISPY_PYSIDE2_SHARE_CONTEXT": "true"
+    },
+    "environment_proof_sha256": "9331dc05a296077aa791a43bdbb58369fa663d4835fa2a5986089987eae46fdd",
+    "fixture_source_sha256": "4aa33086db9e754901edf68f81e42c5f59c6d9a222bb5d6bd93743a516a3b9ad",
+    "host_archived_sources": {
+      "README.md": {
+        "origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-sources\\dive-aa575e1c020f0c5e8227bfb234fa192fa2b12924\\DIVE-aa575e1c020f0c5e8227bfb234fa192fa2b12924\\README.md",
+        "sha256": "3853e087d6294616a19398c96364011145b3abf937ff91da701e7c2693bcbaed",
+        "url": "https://raw.githubusercontent.com/Dive576/DIVE/aa575e1c020f0c5e8227bfb234fa192fa2b12924/README.md"
+      },
+      "dive_example.py": {
+        "origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-sources\\dive-aa575e1c020f0c5e8227bfb234fa192fa2b12924\\DIVE-aa575e1c020f0c5e8227bfb234fa192fa2b12924\\dive_example.py",
+        "sha256": "0d521b2768e7fef01e0d631b69f19cc2296e8748d66505fdff50608fca9e796f",
+        "url": "https://raw.githubusercontent.com/Dive576/DIVE/aa575e1c020f0c5e8227bfb234fa192fa2b12924/dive_example.py"
+      }
+    },
+    "host_commit": "aa575e1c020f0c5e8227bfb234fa192fa2b12924",
+    "host_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\dive-pyside2-cpython310-upstream\\Lib\\site-packages\\DIVE",
+    "host_package_sources": {
+      "DIVE/__init__.py": {
+        "origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\dive-pyside2-cpython310-upstream\\Lib\\site-packages\\DIVE\\__init__.py",
+        "sha256": "f63a96f83fb4ca608d5b5cf93c2cff94cc348e2b38d680505d2c9dc37b70dde3",
+        "url": "https://raw.githubusercontent.com/Dive576/DIVE/aa575e1c020f0c5e8227bfb234fa192fa2b12924/DIVE/__init__.py"
+      },
+      "DIVE/_components/dive_manager.py": {
+        "origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\dive-pyside2-cpython310-upstream\\Lib\\site-packages\\DIVE\\_components\\dive_manager.py",
+        "sha256": "b3ac51b6ad0adcb21a37768c6089e33ad5312a72771a797492e118967609f346",
+        "url": "https://raw.githubusercontent.com/Dive576/DIVE/aa575e1c020f0c5e8227bfb234fa192fa2b12924/DIVE/_components/dive_manager.py"
+      },
+      "DIVE/_plotting/artists.py": {
+        "origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\dive-pyside2-cpython310-upstream\\Lib\\site-packages\\DIVE\\_plotting\\artists.py",
+        "sha256": "7b596c9980a15e971c4f437f5f850f48e7922f1b62b2b5ac6b400539c2048bd9",
+        "url": "https://raw.githubusercontent.com/Dive576/DIVE/aa575e1c020f0c5e8227bfb234fa192fa2b12924/DIVE/_plotting/artists.py"
+      },
+      "DIVE/_plotting/axis_instance.py": {
+        "origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\dive-pyside2-cpython310-upstream\\Lib\\site-packages\\DIVE\\_plotting\\axis_instance.py",
+        "sha256": "91a62a693b6ea888fb45b36c63fbb779bf2f8766d2e864acfa9992a8b65846ca",
+        "url": "https://raw.githubusercontent.com/Dive576/DIVE/aa575e1c020f0c5e8227bfb234fa192fa2b12924/DIVE/_plotting/axis_instance.py"
+      },
+      "DIVE/_plotting/custom_vispy.py": {
+        "origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\dive-pyside2-cpython310-upstream\\Lib\\site-packages\\DIVE\\_plotting\\custom_vispy.py",
+        "sha256": "92be526e65dd71105d4dced48d5bcbaa6963daa6e75529202451cb9090778f90",
+        "url": "https://raw.githubusercontent.com/Dive576/DIVE/aa575e1c020f0c5e8227bfb234fa192fa2b12924/DIVE/_plotting/custom_vispy.py"
+      },
+      "DIVE/_widget.py": {
+        "origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\dive-pyside2-cpython310-upstream\\Lib\\site-packages\\DIVE\\_widget.py",
+        "sha256": "99327bb594a0729f3f12f984618d2fa79c39c763f8405c7d110ae67ee112e34e",
+        "url": "https://raw.githubusercontent.com/Dive576/DIVE/aa575e1c020f0c5e8227bfb234fa192fa2b12924/DIVE/_widget.py"
+      }
+    },
+    "host_package_tree_sha256": "545fef99d793c155a9e04441b41d54ce3a3964e5ace1005e5f90ee50353cd026",
+    "host_version_metadata": null,
+    "import_inventory_sha256": "252bf1beb3f5311bfa48bcc5b80b122df08b866b6349e5ea5027af7f469f5060",
+    "installed": [
+      {
+        "name": "PyOpenGL",
+        "origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\dive-pyside2-cpython310-upstream\\lib\\site-packages",
+        "record_sha256": "272d2da2b0e48fc99572459d394b1731c210dd956f3e39a934f3bc289f8794df",
+        "version": "3.1.10"
+      },
+      {
+        "name": "PySide2",
+        "origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\dive-pyside2-cpython310-upstream\\lib\\site-packages",
+        "record_sha256": "40f54270deb1965abdaf6cd63b3eeb5b90243f3c7da7c96097e63b9fb8f720e2",
+        "version": "5.15.2.1"
+      },
+      {
+        "name": "Pygments",
+        "origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\dive-pyside2-cpython310-upstream\\lib\\site-packages",
+        "record_sha256": "28c83d25928b3a08e722e4973b651b61c0ca26c3e3d3f06a2aa8afb47edf6b76",
+        "version": "2.21.0"
+      },
+      {
+        "name": "colorama",
+        "origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\dive-pyside2-cpython310-upstream\\lib\\site-packages",
+        "record_sha256": "88413e126edc8a81419b409279ef89424081f27bccd4aeec0140d6f03f1ade7f",
+        "version": "0.4.6"
+      },
+      {
+        "name": "exceptiongroup",
+        "origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\dive-pyside2-cpython310-upstream\\lib\\site-packages",
+        "record_sha256": "8d98b067ff01e83e232f994c4e16ed108bb0eee517c1c68a54fc7960b27e9d86",
+        "version": "1.3.1"
+      },
+      {
+        "name": "freetype-py",
+        "origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\dive-pyside2-cpython310-upstream\\lib\\site-packages",
+        "record_sha256": "b396657045f9e98eda5bef1ef54b1381b6b43acfbd7322c6d00d36697b0d2e1d",
+        "version": "2.5.1"
+      },
+      {
+        "name": "hsluv",
+        "origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\dive-pyside2-cpython310-upstream\\lib\\site-packages",
+        "record_sha256": "f50df1714241d29a5d98d11c3db7b0bab9c874d8d2b8c05f5d3dc84126980ef5",
+        "version": "5.0.4"
+      },
+      {
+        "name": "iniconfig",
+        "origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\dive-pyside2-cpython310-upstream\\lib\\site-packages",
+        "record_sha256": "0000f3396bc6bfd4ddf9c29d9a1f4c099b1b18479ef23a3a6548278c7cf9f48d",
+        "version": "2.3.1"
+      },
+      {
+        "name": "kiwisolver",
+        "origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\dive-pyside2-cpython310-upstream\\lib\\site-packages",
+        "record_sha256": "66448e83bb0b716b11b4bd4a179bc71fe0b491df1d60281fdcfcd8b1e3c1d484",
+        "version": "1.5.1"
+      },
+      {
+        "name": "numpy",
+        "origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\dive-pyside2-cpython310-upstream\\lib\\site-packages",
+        "record_sha256": "53e7d52637ec5ab8857abb1cd66915823082e661bf107f2f4a5a928af520f6cc",
+        "version": "1.26.4"
+      },
+      {
+        "name": "packaging",
+        "origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\dive-pyside2-cpython310-upstream\\lib\\site-packages",
+        "record_sha256": "1b8655965b0d83e9a067fd7f84b977bd1e117e0fb9f2874b2572781bdc9e2147",
+        "version": "26.3"
+      },
+      {
+        "name": "pandas",
+        "origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\dive-pyside2-cpython310-upstream\\lib\\site-packages",
+        "record_sha256": "c37a3c7d11044dcb0b2bbc37c6ea26f7f043b221e540bcadca9723c9c08f7c56",
+        "version": "1.5.3"
+      },
+      {
+        "name": "pillow",
+        "origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\dive-pyside2-cpython310-upstream\\lib\\site-packages",
+        "record_sha256": "8806d50ba26567e963814c22a7b425a703ac0a5db464f230c5b54d70fbfce7d1",
+        "version": "12.3.0"
+      },
+      {
+        "name": "pluggy",
+        "origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\dive-pyside2-cpython310-upstream\\lib\\site-packages",
+        "record_sha256": "a42a63bcba12ddb7e7db19158c8d05d8fc41d51f48686b411ad3a0213fbd7721",
+        "version": "1.6.0"
+      },
+      {
+        "name": "pytest",
+        "origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\dive-pyside2-cpython310-upstream\\lib\\site-packages",
+        "record_sha256": "da88ecde7f186807acad0ac52a7e444008cf09b446ef93d0399de7b578868292",
+        "version": "9.1.1"
+      },
+      {
+        "name": "python-dateutil",
+        "origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\dive-pyside2-cpython310-upstream\\lib\\site-packages",
+        "record_sha256": "e15e868a50b9c4e71df17b31369843617780146ac5adb1bbfdcced0ebe501824",
+        "version": "2.9.0.post0"
+      },
+      {
+        "name": "pytz",
+        "origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\dive-pyside2-cpython310-upstream\\lib\\site-packages",
+        "record_sha256": "20599acd6dfd38a2bdb94c261f7388340c37fda705dc9917e0a4bf8ac6e3c156",
+        "version": "2026.5"
+      },
+      {
+        "name": "shiboken2",
+        "origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\dive-pyside2-cpython310-upstream\\lib\\site-packages",
+        "record_sha256": "389ada106939c8ef1461802838263a330edb4714f8374d0e6be19f070677124a",
+        "version": "5.15.2.1"
+      },
+      {
+        "name": "six",
+        "origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\dive-pyside2-cpython310-upstream\\lib\\site-packages",
+        "record_sha256": "d16e50f347969b1e1919fb0c88bac4b9c644f5305bcfcfb00f72b646dbd4065d",
+        "version": "1.17.0"
+      },
+      {
+        "name": "tomli",
+        "origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\dive-pyside2-cpython310-upstream\\lib\\site-packages",
+        "record_sha256": "3408d9f67228a2fb3288b488a35e34e5c22250be8b1ead5ab167c4e060b4607b",
+        "version": "2.5.0"
+      },
+      {
+        "name": "typing_extensions",
+        "origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\dive-pyside2-cpython310-upstream\\lib\\site-packages",
+        "record_sha256": "9e07fea845cac76293d927afa7157a14ecba39b318bc8af236b8de530b7656c1",
+        "version": "4.16.0"
+      },
+      {
+        "name": "vispy",
+        "origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\dive-pyside2-cpython310-upstream\\lib\\site-packages",
+        "record_sha256": "4993b2ab1a6198fbf4eaafe6a81e8372a81fa9fa8423f447096fd65fdb662445",
+        "version": "0.17.0"
+      }
+    ],
+    "kind": "upstream",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "python": "3.10.16",
+    "python_executable": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\dive-pyside2-cpython310-upstream\\Scripts\\python.exe",
+    "qt_runtime": "5.15.2",
+    "regenerate": "Use the verified unchanged DIVE source copy and hashed compat/host-environments/dive-pyside2-windows-cpython310.txt; build/host-environments/dive-pyside2-cpython310-upstream/Scripts/python.exe tools/oracle_dive_pyside2_capture.py --kind upstream --output tests/reference/dive-pyside2-opengl",
+    "renderer": {
+      "renderer": "NVIDIA GeForce RTX 4090/PCIe/SSE2",
+      "vendor": "NVIDIA Corporation",
+      "version": "4.6.0 NVIDIA 595.79"
+    },
+    "requirements_sha256": "95d408e748299a6b573d7fb025e5a7418eef8a4ec1c7cc14af3eeb6ca31376d9",
+    "shared_fixture_source_sha256": "fbd3e6c532a8043db87b0ad89ea5c164f0ef8df0e9d75e1d1523f237f1404f12",
+    "source_inventory_sha256": "a68ef983f201931624f086c4e65393b8b662ba0c553758f436cebdcd69609dc0",
+    "upstream_commit": "117b054598f4758b598f4b8f48feea48c11fe7b0",
+    "vispy_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\dive-pyside2-cpython310-upstream\\Lib\\site-packages\\vispy",
+    "vispy_source_sha256": {
+      "gloo/buffer.py": "68e37b184b74814e0ae7a6f4f754c9f0c0af5b4e6369a60a8357c70da974e138",
+      "gloo/context.py": "6afc97492f65a5e865723535206fb769a1c4b55694d69786123fdee78bef992a",
+      "gloo/glir.py": "a3bb8a75b33f47420e9c100b8a6d81037a2f03c905e6c9f7d8399f4fb2eb8f7c",
+      "gloo/program.py": "4d3ab8e36260f9b5dc50f6aec075b12d642535f3cb8f49bfd4a27056301d5492",
+      "gloo/texture.py": "9f6d5f2e448e02c0ca4d66c65d17ddcdb6c0182bb8f15f1292a427f5a9faf6bc",
+      "gloo/wrappers.py": "73dbb5eb8ca78b2822266d272ffb14db9fcadd7a56512843209187714c9e8dcc"
+    },
+    "vispy_version": "0.17.0"
+  },
+  "schema": 1
+}

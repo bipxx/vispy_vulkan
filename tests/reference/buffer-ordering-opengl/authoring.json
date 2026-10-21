@@ -1,0 +1,371 @@
+{
+  "GPU_used": false,
+  "candidate_seen": false,
+  "cases": {
+    "pending_middle_subdata": {
+      "attribute_stride": 28,
+      "case": "pending_middle_subdata",
+      "comparison": {
+        "analytic_full_frame_exact": true,
+        "candidate_alignment_or_color_fit": false,
+        "full_frame_exact": true
+      },
+      "dependent_window": "no capture, finish, swap or GPU wait between dependent draws/updates",
+      "expected_rgba": {
+        "bytes": 3072,
+        "dtype": "|u1",
+        "sha256": "2aede646ee97a1b46cf80f9a7778e7cd44444914610633733d498ea45213d16d",
+        "shape": [
+          24,
+          32,
+          4
+        ]
+      },
+      "first_draw_middle": "green",
+      "inputs": {
+        "final": {
+          "bytes": 504,
+          "dtype": "|V28",
+          "fields": {
+            "a_color": {
+              "dtype": "<f4",
+              "offset": 12,
+              "shape": [
+                3
+              ]
+            },
+            "a_position": {
+              "dtype": "<f4",
+              "offset": 4,
+              "shape": [
+                2
+              ]
+            },
+            "sentinel_left": {
+              "dtype": "<u4",
+              "offset": 0,
+              "shape": []
+            },
+            "sentinel_right": {
+              "dtype": "<u4",
+              "offset": 24,
+              "shape": []
+            }
+          },
+          "sha256": "42fd04763fcbb2a081aea9df95fcc4c4bd0211f130afc2b1c97b3593092c4105",
+          "shape": [
+            18
+          ]
+        },
+        "initial": {
+          "bytes": 504,
+          "dtype": "|V28",
+          "fields": {
+            "a_color": {
+              "dtype": "<f4",
+              "offset": 12,
+              "shape": [
+                3
+              ]
+            },
+            "a_position": {
+              "dtype": "<f4",
+              "offset": 4,
+              "shape": [
+                2
+              ]
+            },
+            "sentinel_left": {
+              "dtype": "<u4",
+              "offset": 0,
+              "shape": []
+            },
+            "sentinel_right": {
+              "dtype": "<u4",
+              "offset": 24,
+              "shape": []
+            }
+          },
+          "sha256": "57680bf8737e04be6aef6222c95e64fa465a73edd529dc3866acab4f3c82a82d",
+          "shape": [
+            18
+          ]
+        },
+        "middle_patch": {
+          "bytes": 168,
+          "dtype": "|V28",
+          "fields": {
+            "a_color": {
+              "dtype": "<f4",
+              "offset": 12,
+              "shape": [
+                3
+              ]
+            },
+            "a_position": {
+              "dtype": "<f4",
+              "offset": 4,
+              "shape": [
+                2
+              ]
+            },
+            "sentinel_left": {
+              "dtype": "<u4",
+              "offset": 0,
+              "shape": []
+            },
+            "sentinel_right": {
+              "dtype": "<u4",
+              "offset": 24,
+              "shape": []
+            }
+          },
+          "sha256": "68d93623915d680bdbfbdba4085dc6ebe18e77f7bf088e233eb702788ab833a2",
+          "shape": [
+            6
+          ]
+        }
+      },
+      "landmarks": [
+        {
+          "column": 4,
+          "rgba": [
+            255,
+            0,
+            0,
+            255
+          ],
+          "row": 5
+        },
+        {
+          "column": 15,
+          "rgba": [
+            255,
+            255,
+            0,
+            255
+          ],
+          "row": 5
+        },
+        {
+          "column": 27,
+          "rgba": [
+            0,
+            0,
+            255,
+            255
+          ],
+          "row": 5
+        },
+        {
+          "column": 4,
+          "rgba": [
+            255,
+            0,
+            0,
+            255
+          ],
+          "row": 18
+        },
+        {
+          "column": 15,
+          "rgba": [
+            0,
+            255,
+            0,
+            255
+          ],
+          "row": 18
+        },
+        {
+          "column": 27,
+          "rgba": [
+            0,
+            0,
+            255,
+            255
+          ],
+          "row": 18
+        }
+      ],
+      "outside_patch_vertices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "patch_byte_offset": 168,
+      "patch_byte_size": 168,
+      "patch_element_offset": 6,
+      "prewarm": "one public draw and swap_buffers before dependent window; no readback",
+      "readbacks": 1,
+      "scope": "U01 public Program.draw / VertexBuffer.set_subdata, middle structured patch",
+      "second_draw_middle": "yellow",
+      "size": [
+        32,
+        24
+      ]
+    },
+    "single_flush_resize_filter": {
+      "case": "single_flush_resize_filter",
+      "comparison": {
+        "analytic_full_frame_exact": true,
+        "candidate_alignment_or_color_fit": false,
+        "full_frame_exact": true
+      },
+      "dependent_explicit_flushes": 1,
+      "dependent_window": "no capture, finish, swap or GPU wait between dependent draws/updates",
+      "expected_rgba": {
+        "bytes": 3072,
+        "dtype": "|u1",
+        "sha256": "04c2d5f9d52b2b5d465dc648a61000133d854bae16b67a1f6c7c9d6e6459b79a",
+        "shape": [
+          24,
+          32,
+          4
+        ]
+      },
+      "filter_semantics": "later SIZE removes earlier DATA across DRAW; first DRAW uses already uploaded initial bytes",
+      "filtered_buffer_draw_ops": [
+        "DRAW",
+        "SIZE",
+        "DATA",
+        "DRAW"
+      ],
+      "initial_capacity_bytes": 72,
+      "inputs": {
+        "early_partial": {
+          "bytes": 48,
+          "dtype": "<f4",
+          "sha256": "6597a3031f72b75c7194a59e01e9f8f8b8e9b6f8488f668b476bf89dea87e091",
+          "shape": [
+            6,
+            2
+          ]
+        },
+        "initial": {
+          "bytes": 72,
+          "dtype": "<f4",
+          "sha256": "fa0d56b4f83fa0e89d63cd86852d032c44ce11c6c7ea0ddce52548375fa39ec2",
+          "shape": [
+            9,
+            2
+          ]
+        },
+        "late_partial": {
+          "bytes": 72,
+          "dtype": "<f4",
+          "sha256": "aebb5165c1cf8ee231c30b2827187cfb894f310ecc8e547140e4388f34cfde5a",
+          "shape": [
+            9,
+            2
+          ]
+        }
+      },
+      "landmarks": [
+        {
+          "column": 4,
+          "rgba": [
+            0,
+            0,
+            255,
+            255
+          ],
+          "row": 5
+        },
+        {
+          "column": 15,
+          "rgba": [
+            0,
+            0,
+            255,
+            255
+          ],
+          "row": 5
+        },
+        {
+          "column": 27,
+          "rgba": [
+            0,
+            255,
+            0,
+            255
+          ],
+          "row": 5
+        },
+        {
+          "column": 4,
+          "rgba": [
+            0,
+            0,
+            255,
+            255
+          ],
+          "row": 18
+        },
+        {
+          "column": 15,
+          "rgba": [
+            0,
+            0,
+            255,
+            255
+          ],
+          "row": 18
+        },
+        {
+          "column": 27,
+          "rgba": [
+            0,
+            255,
+            0,
+            255
+          ],
+          "row": 18
+        }
+      ],
+      "new_capacity_bytes": 96,
+      "prewarm": "one public draw and swap_buffers before dependent window; no readback",
+      "raw_buffer_draw_ops": [
+        "DATA",
+        "DRAW",
+        "SIZE",
+        "DATA",
+        "DRAW"
+      ],
+      "readbacks": 1,
+      "scope": "U03 internal documented GLIR queue boundary, not a public Program.draw batch",
+      "size": [
+        32,
+        24
+      ]
+    }
+  },
+  "comparison": {
+    "analytic_full_frame_exact": true,
+    "candidate_alignment_or_color_fit": false,
+    "full_frame_exact": true
+  },
+  "installed_upstream_lock": {
+    "file": "tools\\oracle_napari_requirements.txt",
+    "sha256": "bae850d37ba4c84b6c0ad42e2aa40d495d1e7ccab1aa20454d875764bdbbb732"
+  },
+  "schema": 1,
+  "scope": "U01 public middle-subdata with old/new draws pending; U03 internal real GLIR boundary with unchanged filter; public Program.draw auto-flushes",
+  "sources_sha256": {
+    "tests/parity/test_buffer_ordering_parity.py": "96f4acbe2fc747d9883b72df09881ce4a3b4c4902ea2f3c2ecb05b3ff5a6d2ba",
+    "tools/fixture_buffer_ordering.py": "385d551f9f9bbc2db3714f2141bb93728037c594e41e6d55621d5041fcaaff57",
+    "tools/fixture_gloo.py": "37797259727afd9c6b15c7074319b935dcddb330deb2b6c99a03c8df6f36fddb",
+    "tools/oracle_buffer_ordering_capture.py": "906b8e9a8ed5f03420ee3198ed3621705d491947b4a46b20ae8c5805cfe09888",
+    "tools/oracle_capture.py": "66ae25247831c184f38f2c7a2ff151b940013087104907523b11e1ed2b9b151a",
+    "tools/oracle_image_extensions_capture.py": "5583a42fd34b105651cb1f81c77621f96efd92fedc54e78ee5367eb95e0b6211"
+  }
+}

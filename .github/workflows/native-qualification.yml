@@ -1,0 +1,166 @@
+name: Native qualification cell (implementation gates remain open)
+
+on:
+  workflow_call:
+    inputs:
+      cell: {type: string, required: true}
+      platform: {type: string, required: true}
+      runner_labels: {type: string, required: true}
+      architecture: {type: string, required: true}
+      python: {type: string, required: true}
+      binding: {type: string, required: true}
+      backend: {type: string, required: true}
+      mode: {type: string, default: core}
+      host: {type: string, default: ''}
+
+permissions:
+  contents: read
+
+jobs:
+  qualify:
+    runs-on: ${{ fromJSON(inputs.runner_labels) }}
+    timeout-minutes: 180
+    defaults:
+      run:
+        shell: bash
+    env:
+      UV_PROJECT_ENVIRONMENT: build/ci-env-${{ github.run_id }}-${{ inputs.cell }}
+      EVIDENCE: build/evidence/${{ inputs.cell }}
+      QT_API: ${{ inputs.binding }}
+      QT_QPA_PLATFORM: ${{ startsWith(inputs.platform, 'linux') && 'xcb' || '' }}
+      PYTEST_DISABLE_PLUGIN_AUTOLOAD: '1'
+      MACOSX_DEPLOYMENT_TARGET: '13.0'
+      CMAKE_BUILD_PARALLEL_LEVEL: '3'
+      VISPY_EXPECTED_BACKEND: ${{ inputs.backend }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+          submodules: false
+      - name: Restore immutable vendor bytes
+        shell: bash
+        run: |
+          printf '%s\n' '* -text -eol -filter -ident' > .git/info/attributes
+          git config core.autocrlf false
+          git config core.longpaths true
+          git checkout-index --all --force
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7
+        with:
+          python-version: ${{ inputs.python }}
+          architecture: ${{ inputs.architecture }}
+          check-latest: false
+      - uses: astral-sh/setup-uv@bec219d24cd3e171d82865faccec33120bb574f4 # v10.1.0
+        with:
+          version: '0.12.5'
+          enable-cache: false
+      - name: Install one Qt binding and hashed build dependencies
+        run: |
+          mkdir -p "$EVIDENCE"
+          uv lock --check
+          uv venv "$UV_PROJECT_ENVIRONMENT" --python python
+          python - <<'PY'
+          import os
+          from pathlib import Path
+          environment = Path(os.environ['UV_PROJECT_ENVIRONMENT']).resolve()
+          binary = environment / ('Scripts/python.exe' if os.name == 'nt' else 'bin/python')
+          with open(os.environ['GITHUB_ENV'], 'a') as file:
+              file.write(f'CI_PYTHON={binary.as_posix()}\n')
+          with open(os.environ['GITHUB_PATH'], 'a') as file:
+              file.write(str(binary.parent) + '\n')
+          PY
+          if [[ '${{ inputs.mode }}' == 'core' && '${{ inputs.binding }}' == 'pyqt6' ]]; then
+            uv export --locked --no-default-groups --group dev --group build --group hosts --extra pyqt6 --no-emit-project --output-file "$EVIDENCE/requirements.txt" > /dev/null
+          else
+            uv export --locked --no-default-groups --group dev --group build --extra '${{ inputs.binding }}' --no-emit-project --output-file "$EVIDENCE/requirements.txt" > /dev/null
+          fi
+          uv pip install --python "$UV_PROJECT_ENVIRONMENT" --require-hashes --only-binary :all: --requirements "$EVIDENCE/requirements.txt"
+      - name: Capture tools and require the actual requested desktop
+        run: |
+          "$CI_PYTHON" .github/workflows/qualification_gate.py capture --without-package --output "$EVIDENCE/build-environment.json"
+          "$CI_PYTHON" .github/workflows/qualification_gate.py platform --platform '${{ inputs.platform }}' --binding '${{ inputs.binding }}'
+          "$CI_PYTHON" cmake/verify_dependencies.py
+      - name: Require an independently qualified host environment
+        if: inputs.mode == 'host'
+        run: |
+          "$CI_PYTHON" .github/workflows/qualification_gate.py admission --host '${{ inputs.host }}' --platform '${{ inputs.platform }}' --python '${{ inputs.python }}' --binding '${{ inputs.binding }}' --output "$EVIDENCE/host-admission.json"
+          "$CI_PYTHON" - <<'PY'
+          import json, os, subprocess
+          from pathlib import Path
+          record = json.loads((Path(os.environ['EVIDENCE']) / 'host-admission.json').read_text())['admission']
+          subprocess.run(['uv', 'pip', 'install', '--python', os.environ['CI_PYTHON'], '--require-hashes', '--only-binary', ':all:', '--requirements', record['requirements_file']], check=True)
+          PY
+          "$CI_PYTHON" .github/workflows/qualification_gate.py platform --platform '${{ inputs.platform }}' --binding '${{ inputs.binding }}'
+      - name: Require pinned software Vulkan and OpenGL drivers
+        if: inputs.mode == 'software'
+        run: |
+          "$CI_PYTHON" .github/workflows/qualification_gate.py software-stack --output "$EVIDENCE/software-stack.json"
+      - name: Build the platform wheel with the hashed installed build tools
+        run: |
+          uv build --python "$CI_PYTHON" --no-build-isolation --wheel --out-dir "$EVIDENCE/wheels" --config-setting 'build-dir=build/ci-native-${{ github.run_id }}-${{ inputs.cell }}'
+          "$CI_PYTHON" - <<'PY'
+          import hashlib, os, subprocess
+          from pathlib import Path
+          import sys
+          from packaging.utils import parse_wheel_filename
+          directory = Path(os.environ['EVIDENCE'])
+          wheels = list((directory / 'wheels').glob('*.whl'))
+          assert len(wheels) == 1, wheels
+          wheel = wheels[0].resolve()
+          assert wheel.stat().st_size <= 100 * 1024 * 1024, 'Compressed wheel exceeds the v1 100 MiB budget'
+          name, version, _, tags = parse_wheel_filename(wheel.name)
+          expected = f'cp{sys.version_info.major}{sys.version_info.minor}'
+          assert name == 'vispy' and str(version) == '0.17.0+vulkan.1'
+          assert tags and all(tag.interpreter == expected and tag.abi == expected for tag in tags), tags
+          requirements = directory / 'wheel.txt'
+          requirements.write_text(f'vispy @ {wheel.as_uri()} --hash=sha256:{hashlib.sha256(wheel.read_bytes()).hexdigest()}\n')
+          subprocess.run(['uv', 'pip', 'install', '--python', os.environ['CI_PYTHON'], '--no-deps', '--require-hashes', '--requirements', str(requirements)], check=True)
+          with open(os.environ['GITHUB_ENV'], 'a') as file:
+              file.write(f'VISPY_TEST_WHEEL={wheel.as_posix()}\n')
+          PY
+      - name: Require the correct backend, driver class, and installed module origins
+        run: |
+          if [[ '${{ inputs.mode }}' == 'software' ]]; then
+            "$CI_PYTHON" .github/workflows/qualification_gate.py capture --gpu --software --backend '${{ inputs.backend }}' --output "$EVIDENCE/device.json"
+          else
+            "$CI_PYTHON" .github/workflows/qualification_gate.py capture --gpu --backend '${{ inputs.backend }}' --output "$EVIDENCE/device.json"
+          fi
+      - name: Run hardware renderer, scientific and Qt cases with every skip rejected
+        if: inputs.mode == 'core'
+        run: |
+          suites=(tests/native tests/shaders tests/gloo tests/parity tests/textures tests/qt/test_widget_lifecycle.py)
+          if [[ '${{ inputs.binding }}' == 'pyqt6' && '${{ inputs.python }}' != '3.10.19' ]]; then
+            suites+=(tests/qt/test_embed_image.py)
+          fi
+          "$CI_PYTHON" .github/workflows/qualification_gate.py pytest --output "$EVIDENCE/pytest.json" -- -q "${suites[@]}" -m gpu --junitxml="$EVIDENCE/pytest.xml"
+          "$CI_PYTHON" .github/workflows/qualification_gate.py pytest --output "$EVIDENCE/wheel-consumer.json" -- -q tests/contract/test_installation.py -m wheel --junitxml="$EVIDENCE/wheel-consumer.xml"
+      - name: Run every admitted host fixture; missing fixtures fail
+        if: inputs.mode == 'host'
+        run: |
+          "$CI_PYTHON" - <<'PY'
+          import json, os, subprocess
+          from pathlib import Path
+          directory = Path(os.environ['EVIDENCE'])
+          record = json.loads((directory / 'host-admission.json').read_text())['admission']
+          subprocess.run([os.environ['CI_PYTHON'], '.github/workflows/qualification_gate.py', 'pytest', '--output', str(directory / 'pytest.json'), '--', '-q', *record['fixture_files'], '--junitxml=' + str(directory / 'pytest.xml')], check=True)
+          PY
+      - name: Capture independent software OpenGL and candidate Vulkan fixtures
+        if: inputs.mode == 'software'
+        env:
+          LIBGL_ALWAYS_SOFTWARE: '1'
+          MESA_LOADER_DRIVER_OVERRIDE: llvmpipe
+        run: |
+          "$CI_PYTHON" .github/workflows/qualification_gate.py oracle-requirements --output "$EVIDENCE/upstream-requirements.txt"
+          uv venv "build/ci-oracle-${{ github.run_id }}-${{ inputs.cell }}" --python "$CI_PYTHON"
+          uv pip install --python "build/ci-oracle-${{ github.run_id }}-${{ inputs.cell }}" --require-hashes --only-binary :all: --requirements "$EVIDENCE/upstream-requirements.txt"
+          "build/ci-oracle-${{ github.run_id }}-${{ inputs.cell }}/bin/python" tools/oracle_capture.py --kind upstream --output "$EVIDENCE/upstream"
+          "$CI_PYTHON" tools/oracle_capture.py --kind candidate --output "$EVIDENCE/candidate"
+          "$CI_PYTHON" .github/workflows/qualification_gate.py compare-pair --reference "$EVIDENCE/upstream" --candidate "$EVIDENCE/candidate" --output "$EVIDENCE/parity.json"
+          "$CI_PYTHON" .github/workflows/qualification_gate.py pytest --output "$EVIDENCE/pytest.json" -- -q tests/shaders tests/gloo tests/textures tests/native/test_submission_lifetime.py -m gpu --junitxml="$EVIDENCE/pytest.xml"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        if: always()
+        with:
+          name: native-${{ inputs.cell }}
+          path: |
+            ${{ env.EVIDENCE }}
+            build/ci-native-${{ github.run_id }}-${{ inputs.cell }}/CMakeCache.txt
+          if-no-files-found: error

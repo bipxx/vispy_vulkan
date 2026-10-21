@@ -1,0 +1,1357 @@
+{
+  "camera_rect": [
+    -0.5,
+    -0.5,
+    32.0,
+    24.0
+  ],
+  "case": "additive_channels",
+  "comparison": {
+    "candidate_alignment_or_color_fit": false,
+    "full_frame_exact": true,
+    "landmark_max_abs_u8": 1
+  },
+  "current_context_samples": 0,
+  "final_inputs": [
+    {
+      "dtype": "<f4",
+      "sha256": "61300466d6c6de3df775d105ccc86993e3ea82b5fc4316f305da8a0b0344e80a",
+      "shape": [
+        3,
+        24,
+        32
+      ]
+    }
+  ],
+  "inputs": [
+    {
+      "dtype": "<f4",
+      "sha256": "61300466d6c6de3df775d105ccc86993e3ea82b5fc4316f305da8a0b0344e80a",
+      "shape": [
+        3,
+        24,
+        32
+      ]
+    }
+  ],
+  "landmarks": [
+    {
+      "column": 80,
+      "rgba": [
+        32,
+        32,
+        143,
+        255
+      ],
+      "row": 48
+    },
+    {
+      "column": 16,
+      "rgba": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "row": 20
+    }
+  ],
+  "layer_names": [
+    "Image [2]",
+    "Image",
+    "Image [1]"
+  ],
+  "layer_types": [
+    "Image",
+    "Image",
+    "Image"
+  ],
+  "multiscale_revision_scope": "per-level CPU content plus real selected-texture GLIR uploads; no fictitious per-level GPU cache",
+  "native_mro": [
+    "CanvasBackendDesktop",
+    "QtBaseCanvasBackend",
+    "BaseCanvasBackend",
+    "QOpenGLWidget",
+    "QWidget",
+    "QObject",
+    "wrapper",
+    "QPaintDevice",
+    "simplewrapper",
+    "object"
+  ],
+  "partial_labels_events": [],
+  "readbacks": "one final scene.render; no intermediate readback",
+  "sample_query_scope": "actual current context; scene.render uses a separate single-sample export FBO",
+  "selected_texture_uploads": [
+    {
+      "command_index": 36,
+      "dtype": "<f4",
+      "offset": [
+        0,
+        0
+      ],
+      "sha256": "68233fda3eaf2975243188e85f0b61afbca2fd34d2eebb2f4804647f0430bc6d",
+      "shape": [
+        24,
+        32,
+        1
+      ],
+      "stage": "initial"
+    }
+  ],
+  "size": [
+    128,
+    96
+  ],
+  "source_revisions": [
+    {
+      "levels": [
+        {
+          "dtype": "<f4",
+          "sha256": "61300466d6c6de3df775d105ccc86993e3ea82b5fc4316f305da8a0b0344e80a",
+          "shape": [
+            3,
+            24,
+            32
+          ]
+        }
+      ],
+      "stage": "initial"
+    }
+  ],
+  "stage_commands": [
+    {
+      "command_index": 0,
+      "stage": "initial"
+    },
+    {
+      "command_index": 1,
+      "stage": "initial"
+    },
+    {
+      "command_index": 2,
+      "stage": "initial"
+    },
+    {
+      "command_index": 3,
+      "stage": "initial"
+    },
+    {
+      "command_index": 4,
+      "stage": "initial"
+    },
+    {
+      "command_index": 5,
+      "stage": "initial"
+    },
+    {
+      "command_index": 6,
+      "stage": "initial"
+    },
+    {
+      "command_index": 7,
+      "stage": "initial"
+    },
+    {
+      "command_index": 8,
+      "stage": "initial"
+    },
+    {
+      "command_index": 9,
+      "stage": "initial"
+    },
+    {
+      "command_index": 10,
+      "stage": "initial"
+    },
+    {
+      "command_index": 11,
+      "stage": "initial"
+    },
+    {
+      "command_index": 12,
+      "stage": "initial"
+    },
+    {
+      "command_index": 13,
+      "stage": "initial"
+    },
+    {
+      "command_index": 14,
+      "stage": "initial"
+    },
+    {
+      "command_index": 15,
+      "stage": "initial"
+    },
+    {
+      "command_index": 16,
+      "stage": "initial"
+    },
+    {
+      "command_index": 17,
+      "stage": "initial"
+    },
+    {
+      "command_index": 18,
+      "stage": "initial"
+    },
+    {
+      "command_index": 19,
+      "stage": "initial"
+    },
+    {
+      "command_index": 20,
+      "stage": "initial"
+    },
+    {
+      "command_index": 21,
+      "stage": "initial"
+    },
+    {
+      "command_index": 22,
+      "stage": "initial"
+    },
+    {
+      "command_index": 23,
+      "stage": "initial"
+    },
+    {
+      "command_index": 24,
+      "stage": "initial"
+    },
+    {
+      "command_index": 25,
+      "stage": "initial"
+    },
+    {
+      "command_index": 26,
+      "stage": "initial"
+    },
+    {
+      "command_index": 27,
+      "stage": "initial"
+    },
+    {
+      "command_index": 28,
+      "stage": "initial"
+    },
+    {
+      "command_index": 29,
+      "stage": "initial"
+    },
+    {
+      "command_index": 30,
+      "stage": "initial"
+    },
+    {
+      "command_index": 31,
+      "stage": "initial"
+    },
+    {
+      "command_index": 32,
+      "stage": "initial"
+    },
+    {
+      "command_index": 33,
+      "stage": "initial"
+    },
+    {
+      "command_index": 34,
+      "stage": "initial"
+    },
+    {
+      "command_index": 35,
+      "stage": "initial"
+    },
+    {
+      "command_index": 36,
+      "stage": "initial"
+    },
+    {
+      "command_index": 37,
+      "stage": "initial"
+    },
+    {
+      "command_index": 38,
+      "stage": "initial"
+    },
+    {
+      "command_index": 39,
+      "stage": "initial"
+    },
+    {
+      "command_index": 40,
+      "stage": "initial"
+    },
+    {
+      "command_index": 41,
+      "stage": "initial"
+    },
+    {
+      "command_index": 42,
+      "stage": "initial"
+    },
+    {
+      "command_index": 43,
+      "stage": "initial"
+    },
+    {
+      "command_index": 44,
+      "stage": "initial"
+    },
+    {
+      "command_index": 45,
+      "stage": "initial"
+    },
+    {
+      "command_index": 46,
+      "stage": "initial"
+    },
+    {
+      "command_index": 47,
+      "stage": "initial"
+    },
+    {
+      "command_index": 48,
+      "stage": "initial"
+    },
+    {
+      "command_index": 49,
+      "stage": "initial"
+    },
+    {
+      "command_index": 50,
+      "stage": "initial"
+    },
+    {
+      "command_index": 51,
+      "stage": "initial"
+    },
+    {
+      "command_index": 52,
+      "stage": "initial"
+    },
+    {
+      "command_index": 53,
+      "stage": "initial"
+    },
+    {
+      "command_index": 54,
+      "stage": "initial"
+    },
+    {
+      "command_index": 55,
+      "stage": "initial"
+    },
+    {
+      "command_index": 56,
+      "stage": "initial"
+    },
+    {
+      "command_index": 57,
+      "stage": "initial"
+    },
+    {
+      "command_index": 58,
+      "stage": "initial"
+    },
+    {
+      "command_index": 59,
+      "stage": "initial"
+    },
+    {
+      "command_index": 60,
+      "stage": "initial"
+    },
+    {
+      "command_index": 61,
+      "stage": "initial"
+    },
+    {
+      "command_index": 62,
+      "stage": "initial"
+    },
+    {
+      "command_index": 63,
+      "stage": "initial"
+    },
+    {
+      "command_index": 64,
+      "stage": "initial"
+    },
+    {
+      "command_index": 65,
+      "stage": "initial"
+    },
+    {
+      "command_index": 66,
+      "stage": "initial"
+    },
+    {
+      "command_index": 67,
+      "stage": "initial"
+    },
+    {
+      "command_index": 68,
+      "stage": "initial"
+    },
+    {
+      "command_index": 69,
+      "stage": "initial"
+    },
+    {
+      "command_index": 70,
+      "stage": "initial"
+    },
+    {
+      "command_index": 71,
+      "stage": "initial"
+    },
+    {
+      "command_index": 72,
+      "stage": "initial"
+    },
+    {
+      "command_index": 73,
+      "stage": "initial"
+    },
+    {
+      "command_index": 74,
+      "stage": "initial"
+    },
+    {
+      "command_index": 75,
+      "stage": "initial"
+    },
+    {
+      "command_index": 76,
+      "stage": "initial"
+    },
+    {
+      "command_index": 77,
+      "stage": "initial"
+    },
+    {
+      "command_index": 78,
+      "stage": "initial"
+    },
+    {
+      "command_index": 79,
+      "stage": "initial"
+    },
+    {
+      "command_index": 80,
+      "stage": "initial"
+    },
+    {
+      "command_index": 81,
+      "stage": "initial"
+    },
+    {
+      "command_index": 82,
+      "stage": "initial"
+    },
+    {
+      "command_index": 83,
+      "stage": "initial"
+    },
+    {
+      "command_index": 84,
+      "stage": "initial"
+    },
+    {
+      "command_index": 85,
+      "stage": "initial"
+    },
+    {
+      "command_index": 86,
+      "stage": "initial"
+    },
+    {
+      "command_index": 87,
+      "stage": "initial"
+    },
+    {
+      "command_index": 88,
+      "stage": "initial"
+    },
+    {
+      "command_index": 89,
+      "stage": "initial"
+    },
+    {
+      "command_index": 90,
+      "stage": "initial"
+    },
+    {
+      "command_index": 91,
+      "stage": "initial"
+    },
+    {
+      "command_index": 92,
+      "stage": "initial"
+    },
+    {
+      "command_index": 93,
+      "stage": "initial"
+    },
+    {
+      "command_index": 94,
+      "stage": "initial"
+    },
+    {
+      "command_index": 95,
+      "stage": "initial"
+    },
+    {
+      "command_index": 96,
+      "stage": "initial"
+    },
+    {
+      "command_index": 97,
+      "stage": "initial"
+    },
+    {
+      "command_index": 98,
+      "stage": "initial"
+    },
+    {
+      "command_index": 99,
+      "stage": "initial"
+    },
+    {
+      "command_index": 100,
+      "stage": "initial"
+    },
+    {
+      "command_index": 101,
+      "stage": "initial"
+    },
+    {
+      "command_index": 102,
+      "stage": "initial"
+    },
+    {
+      "command_index": 103,
+      "stage": "initial"
+    },
+    {
+      "command_index": 104,
+      "stage": "initial"
+    },
+    {
+      "command_index": 105,
+      "stage": "initial"
+    },
+    {
+      "command_index": 106,
+      "stage": "initial"
+    },
+    {
+      "command_index": 107,
+      "stage": "initial"
+    },
+    {
+      "command_index": 108,
+      "stage": "initial"
+    },
+    {
+      "command_index": 109,
+      "stage": "initial"
+    },
+    {
+      "command_index": 110,
+      "stage": "initial"
+    },
+    {
+      "command_index": 111,
+      "stage": "initial"
+    },
+    {
+      "command_index": 112,
+      "stage": "initial"
+    },
+    {
+      "command_index": 113,
+      "stage": "initial"
+    },
+    {
+      "command_index": 114,
+      "stage": "initial"
+    },
+    {
+      "command_index": 115,
+      "stage": "initial"
+    },
+    {
+      "command_index": 116,
+      "stage": "initial"
+    },
+    {
+      "command_index": 117,
+      "stage": "initial"
+    },
+    {
+      "command_index": 118,
+      "stage": "initial"
+    },
+    {
+      "command_index": 119,
+      "stage": "initial"
+    },
+    {
+      "command_index": 120,
+      "stage": "initial"
+    },
+    {
+      "command_index": 121,
+      "stage": "initial"
+    },
+    {
+      "command_index": 122,
+      "stage": "initial"
+    },
+    {
+      "command_index": 123,
+      "stage": "initial"
+    },
+    {
+      "command_index": 124,
+      "stage": "initial"
+    },
+    {
+      "command_index": 125,
+      "stage": "initial"
+    },
+    {
+      "command_index": 126,
+      "stage": "initial"
+    },
+    {
+      "command_index": 127,
+      "stage": "initial"
+    },
+    {
+      "command_index": 128,
+      "stage": "initial"
+    },
+    {
+      "command_index": 129,
+      "stage": "initial"
+    },
+    {
+      "command_index": 130,
+      "stage": "initial"
+    },
+    {
+      "command_index": 131,
+      "stage": "initial"
+    },
+    {
+      "command_index": 132,
+      "stage": "initial"
+    },
+    {
+      "command_index": 133,
+      "stage": "initial"
+    },
+    {
+      "command_index": 134,
+      "stage": "initial"
+    },
+    {
+      "command_index": 135,
+      "stage": "initial"
+    },
+    {
+      "command_index": 136,
+      "stage": "initial"
+    },
+    {
+      "command_index": 137,
+      "stage": "initial"
+    },
+    {
+      "command_index": 138,
+      "stage": "initial"
+    },
+    {
+      "command_index": 139,
+      "stage": "initial"
+    },
+    {
+      "command_index": 140,
+      "stage": "initial"
+    },
+    {
+      "command_index": 141,
+      "stage": "initial"
+    },
+    {
+      "command_index": 142,
+      "stage": "initial"
+    },
+    {
+      "command_index": 143,
+      "stage": "initial"
+    },
+    {
+      "command_index": 144,
+      "stage": "initial"
+    },
+    {
+      "command_index": 145,
+      "stage": "initial"
+    },
+    {
+      "command_index": 146,
+      "stage": "initial"
+    },
+    {
+      "command_index": 147,
+      "stage": "initial"
+    },
+    {
+      "command_index": 148,
+      "stage": "initial"
+    },
+    {
+      "command_index": 149,
+      "stage": "initial"
+    },
+    {
+      "command_index": 150,
+      "stage": "initial"
+    },
+    {
+      "command_index": 151,
+      "stage": "initial"
+    },
+    {
+      "command_index": 152,
+      "stage": "initial"
+    },
+    {
+      "command_index": 153,
+      "stage": "initial"
+    },
+    {
+      "command_index": 154,
+      "stage": "initial"
+    },
+    {
+      "command_index": 155,
+      "stage": "initial"
+    },
+    {
+      "command_index": 156,
+      "stage": "initial"
+    },
+    {
+      "command_index": 157,
+      "stage": "initial"
+    },
+    {
+      "command_index": 158,
+      "stage": "initial"
+    },
+    {
+      "command_index": 159,
+      "stage": "initial"
+    },
+    {
+      "command_index": 160,
+      "stage": "initial"
+    },
+    {
+      "command_index": 161,
+      "stage": "initial"
+    },
+    {
+      "command_index": 162,
+      "stage": "initial"
+    },
+    {
+      "command_index": 163,
+      "stage": "initial"
+    },
+    {
+      "command_index": 164,
+      "stage": "initial"
+    },
+    {
+      "command_index": 165,
+      "stage": "initial"
+    },
+    {
+      "command_index": 166,
+      "stage": "initial"
+    },
+    {
+      "command_index": 167,
+      "stage": "initial"
+    },
+    {
+      "command_index": 168,
+      "stage": "initial"
+    },
+    {
+      "command_index": 169,
+      "stage": "initial"
+    },
+    {
+      "command_index": 170,
+      "stage": "initial"
+    },
+    {
+      "command_index": 171,
+      "stage": "initial"
+    },
+    {
+      "command_index": 172,
+      "stage": "initial"
+    },
+    {
+      "command_index": 173,
+      "stage": "initial"
+    },
+    {
+      "command_index": 174,
+      "stage": "initial"
+    },
+    {
+      "command_index": 175,
+      "stage": "initial"
+    },
+    {
+      "command_index": 176,
+      "stage": "initial"
+    },
+    {
+      "command_index": 177,
+      "stage": "initial"
+    },
+    {
+      "command_index": 178,
+      "stage": "initial"
+    },
+    {
+      "command_index": 179,
+      "stage": "initial"
+    },
+    {
+      "command_index": 180,
+      "stage": "initial"
+    },
+    {
+      "command_index": 181,
+      "stage": "initial"
+    },
+    {
+      "command_index": 182,
+      "stage": "initial"
+    },
+    {
+      "command_index": 183,
+      "stage": "initial"
+    },
+    {
+      "command_index": 184,
+      "stage": "initial"
+    },
+    {
+      "command_index": 185,
+      "stage": "initial"
+    },
+    {
+      "command_index": 186,
+      "stage": "initial"
+    },
+    {
+      "command_index": 187,
+      "stage": "initial"
+    },
+    {
+      "command_index": 188,
+      "stage": "initial"
+    },
+    {
+      "command_index": 189,
+      "stage": "initial"
+    },
+    {
+      "command_index": 190,
+      "stage": "initial"
+    },
+    {
+      "command_index": 191,
+      "stage": "initial"
+    },
+    {
+      "command_index": 192,
+      "stage": "initial"
+    },
+    {
+      "command_index": 193,
+      "stage": "initial"
+    },
+    {
+      "command_index": 194,
+      "stage": "initial"
+    },
+    {
+      "command_index": 195,
+      "stage": "initial"
+    },
+    {
+      "command_index": 196,
+      "stage": "initial"
+    },
+    {
+      "command_index": 197,
+      "stage": "initial"
+    },
+    {
+      "command_index": 198,
+      "stage": "initial"
+    },
+    {
+      "command_index": 199,
+      "stage": "initial"
+    },
+    {
+      "command_index": 200,
+      "stage": "initial"
+    },
+    {
+      "command_index": 201,
+      "stage": "initial"
+    },
+    {
+      "command_index": 202,
+      "stage": "initial"
+    },
+    {
+      "command_index": 203,
+      "stage": "initial"
+    },
+    {
+      "command_index": 204,
+      "stage": "initial"
+    },
+    {
+      "command_index": 205,
+      "stage": "initial"
+    },
+    {
+      "command_index": 206,
+      "stage": "initial"
+    },
+    {
+      "command_index": 207,
+      "stage": "initial"
+    },
+    {
+      "command_index": 208,
+      "stage": "initial"
+    },
+    {
+      "command_index": 209,
+      "stage": "initial"
+    },
+    {
+      "command_index": 210,
+      "stage": "initial"
+    },
+    {
+      "command_index": 211,
+      "stage": "initial"
+    },
+    {
+      "command_index": 212,
+      "stage": "initial"
+    },
+    {
+      "command_index": 213,
+      "stage": "initial"
+    },
+    {
+      "command_index": 214,
+      "stage": "initial"
+    },
+    {
+      "command_index": 215,
+      "stage": "initial"
+    },
+    {
+      "command_index": 216,
+      "stage": "initial"
+    },
+    {
+      "command_index": 217,
+      "stage": "initial"
+    },
+    {
+      "command_index": 218,
+      "stage": "initial"
+    },
+    {
+      "command_index": 219,
+      "stage": "initial"
+    },
+    {
+      "command_index": 220,
+      "stage": "initial"
+    },
+    {
+      "command_index": 221,
+      "stage": "initial"
+    },
+    {
+      "command_index": 222,
+      "stage": "initial"
+    },
+    {
+      "command_index": 223,
+      "stage": "prewarm"
+    },
+    {
+      "command_index": 224,
+      "stage": "prewarm"
+    },
+    {
+      "command_index": 225,
+      "stage": "prewarm"
+    },
+    {
+      "command_index": 226,
+      "stage": "prewarm"
+    },
+    {
+      "command_index": 227,
+      "stage": "prewarm"
+    },
+    {
+      "command_index": 228,
+      "stage": "prewarm"
+    },
+    {
+      "command_index": 229,
+      "stage": "prewarm"
+    },
+    {
+      "command_index": 230,
+      "stage": "prewarm"
+    },
+    {
+      "command_index": 231,
+      "stage": "prewarm"
+    },
+    {
+      "command_index": 232,
+      "stage": "prewarm"
+    },
+    {
+      "command_index": 233,
+      "stage": "prewarm"
+    },
+    {
+      "command_index": 234,
+      "stage": "prewarm"
+    },
+    {
+      "command_index": 235,
+      "stage": "prewarm"
+    },
+    {
+      "command_index": 236,
+      "stage": "prewarm"
+    },
+    {
+      "command_index": 237,
+      "stage": "prewarm"
+    },
+    {
+      "command_index": 238,
+      "stage": "prewarm"
+    },
+    {
+      "command_index": 239,
+      "stage": "prewarm"
+    },
+    {
+      "command_index": 240,
+      "stage": "prewarm"
+    },
+    {
+      "command_index": 241,
+      "stage": "prewarm"
+    },
+    {
+      "command_index": 242,
+      "stage": "prewarm"
+    },
+    {
+      "command_index": 243,
+      "stage": "prewarm"
+    },
+    {
+      "command_index": 244,
+      "stage": "prewarm"
+    },
+    {
+      "command_index": 245,
+      "stage": "prewarm"
+    },
+    {
+      "command_index": 246,
+      "stage": "prewarm"
+    },
+    {
+      "command_index": 247,
+      "stage": "prewarm"
+    },
+    {
+      "command_index": 248,
+      "stage": "prewarm"
+    },
+    {
+      "command_index": 249,
+      "stage": "prewarm"
+    },
+    {
+      "command_index": 250,
+      "stage": "prewarm"
+    },
+    {
+      "command_index": 251,
+      "stage": "reordered_opacity"
+    },
+    {
+      "command_index": 252,
+      "stage": "reordered_opacity"
+    },
+    {
+      "command_index": 253,
+      "stage": "reordered_opacity"
+    },
+    {
+      "command_index": 254,
+      "stage": "reordered_opacity"
+    },
+    {
+      "command_index": 255,
+      "stage": "reordered_opacity"
+    },
+    {
+      "command_index": 256,
+      "stage": "reordered_opacity"
+    },
+    {
+      "command_index": 257,
+      "stage": "reordered_opacity"
+    },
+    {
+      "command_index": 258,
+      "stage": "reordered_opacity"
+    },
+    {
+      "command_index": 259,
+      "stage": "reordered_opacity"
+    },
+    {
+      "command_index": 260,
+      "stage": "reordered_opacity"
+    },
+    {
+      "command_index": 261,
+      "stage": "reordered_opacity"
+    },
+    {
+      "command_index": 262,
+      "stage": "reordered_opacity"
+    },
+    {
+      "command_index": 263,
+      "stage": "reordered_opacity"
+    },
+    {
+      "command_index": 264,
+      "stage": "reordered_opacity"
+    },
+    {
+      "command_index": 265,
+      "stage": "reordered_opacity"
+    },
+    {
+      "command_index": 266,
+      "stage": "reordered_opacity"
+    },
+    {
+      "command_index": 267,
+      "stage": "reordered_opacity"
+    },
+    {
+      "command_index": 268,
+      "stage": "reordered_opacity"
+    },
+    {
+      "command_index": 269,
+      "stage": "reordered_opacity"
+    },
+    {
+      "command_index": 270,
+      "stage": "reordered_opacity"
+    },
+    {
+      "command_index": 271,
+      "stage": "reordered_opacity"
+    },
+    {
+      "command_index": 272,
+      "stage": "reordered_opacity"
+    },
+    {
+      "command_index": 273,
+      "stage": "reordered_opacity"
+    },
+    {
+      "command_index": 274,
+      "stage": "reordered_opacity"
+    },
+    {
+      "command_index": 275,
+      "stage": "reordered_opacity"
+    },
+    {
+      "command_index": 276,
+      "stage": "reordered_opacity"
+    },
+    {
+      "command_index": 277,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 278,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 279,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 280,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 281,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 282,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 283,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 284,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 285,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 286,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 287,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 288,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 289,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 290,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 291,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 292,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 293,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 294,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 295,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 296,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 297,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 298,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 299,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 300,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 301,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 302,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 303,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 304,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 305,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 306,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 307,
+      "stage": "final_read"
+    }
+  ],
+  "workflow": "public napari0.9.2"
+}

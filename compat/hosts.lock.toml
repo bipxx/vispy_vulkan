@@ -1,0 +1,161 @@
+# Reference pins checked against primary source. Rendering workloads are listed
+# only after an upstream 0.17.0 run exists.
+
+[vispy]
+commit = "117b054598f4758b598f4b8f48feea48c11fe7b0"
+tag_object = "59b7b96e5cdec4cbd7a05f1b81d1a35c316035d0"
+parity = "third_party/parity/vispy"
+github = "https://github.com/vispy/vispy"
+
+[napari]
+version = "0.9.2"
+commit = "595639295a153c84bcb127a9e07d801355440a35"
+github = "https://github.com/napari/napari"
+
+[glue_vispy_viewers]
+version = "1.4.0"
+commit = "33509adb53909b7542069563f77fb9a80bd565a4"
+github = "https://github.com/glue-viz/glue-vispy-viewers"
+imports = "top-level vispy"
+
+[visbrain]
+source_required_imports = ["pkg_resources (visbrain/io/path.py:4; supplied by pinned setuptools==80.9.0)"]
+source_inventory = "compat/host-environments/visbrain.source-inventory.json"
+source_inventory_sha256 = "22d7636624fbd8429f347d93ed1a078ab3c15b62d9d364381b23485669c69763"
+package_tree_sha256 = "bfddb5dde9ffcbb3e5778f79b2ba7c511e03c09a0143448d150d4cc27f61889b"
+version = "0.4.5"
+sdist_sha256 = "1b5596e9e6971ffa1ef5450d297955f1d8f3c1d020050b8f4d935e3fa7276ea6"
+wheel_sha256 = "b483683577a619d565212ae0e0b35091f72258173f8cae5850152938b359ad84"
+rendering = false
+reason = "PyPI sdist is the pin. No Git commit resolved. Not in the rendering matrix until the fixture runs on upstream VisPy 0.17.0."
+package_directory = "visbrain"
+dependency_metadata = "setup.py: install_requires"
+declared_dependencies = ["numpy>=1.13", "scipy", "vispy>=0.5.3", "matplotlib>=1.5.5", "pyqt5", "pillow", "PyOpenGL"]
+inventory_qt_binding = "PyQt5"
+import_probe_modules = ["visbrain", "visbrain.objects", "visbrain.visuals"]
+source_archive_url = "https://files.pythonhosted.org/packages/0a/14/aca063fcfe0041ba1f54619e26fa107b3c4e2bdcb89fb8d43ce82d0f45ee/visbrain-0.4.5.tar.gz"
+source_archive_sha256 = "1b5596e9e6971ffa1ef5450d297955f1d8f3c1d020050b8f4d935e3fa7276ea6"
+source_tree_sha256 = "13480f470db5b745b4ac297f52a0136cdb87ec6d7a925597f247b7c91e5201a1"
+source_file_count = 148
+
+[phylib]
+source_inventory = "compat/host-environments/phylib.source-inventory.json"
+source_inventory_sha256 = "12f35fbfdbfca71280c30e553f16fa570b2914f9b456d9fb13c7a549eb2f28d1"
+package_tree_sha256 = "3db4814e19aa3a6f9e477a7ae7a5472d1d86237b566088ecf521cbfb2e3c2a98"
+version = "2.7.1"
+tag_object = "c9cc6ca910948a3948f9dd9abee08006873bd80a"
+peeled_commit = "457915ba7ef9063504484769d775b3bb1ccfd74a"
+github = "https://github.com/cortex-lab/phylib"
+gpu = false
+note = "Import inventory only. Not the phy GUI renderer."
+package_directory = "phylib"
+dependency_metadata = "requirements.txt (setup.py reads this file)"
+declared_dependencies = ["numpy", "scipy", "dask", "requests", "responses", "tqdm", "toolz", "joblib", "mtscomp"]
+import_probe_modules = ["phylib", "phylib.utils", "phylib.utils._misc", "phylib.utils.geometry", "phylib.io", "phylib.io.model", "phylib.io.traces", "phylib.stats", "phylib.stats.ccg", "phylib.stats.clusters", "phylib.electrode", "phylib.electrode.mea"]
+source_archive_url = "https://codeload.github.com/cortex-lab/phylib/tar.gz/457915ba7ef9063504484769d775b3bb1ccfd74a"
+source_archive_sha256 = "f57a049cc44d0c3b610dcc0cb4bd25ad5bac8fa76d7553611502c72b8afa88e9"
+source_tree_sha256 = "4cd998c2e2d6e01240c52f653553224ddd16e4c11d2e2fc95a5b76e857de35a1"
+source_file_count = 60
+
+[dive]
+source_inventory = "compat/host-environments/dive.source-inventory.json"
+source_inventory_sha256 = "a68ef983f201931624f086c4e65393b8b662ba0c553758f436cebdcd69609dc0"
+package_tree_sha256 = "545fef99d793c155a9e04441b41d54ce3a3964e5ace1005e5f90ee50353cd026"
+commit = "aa575e1c020f0c5e8227bfb234fa192fa2b12924"
+github = "https://github.com/Dive576/DIVE"
+package_directory = "DIVE"
+python_requires = ">=3.7 (README.md)"
+dependency_metadata = "README.md; no packaging metadata"
+declared_dependencies = ["pandas", "vispy"]
+source_required_imports = ["numpy", "pandas", "pytz", "Qt binding selected through vispy.app.use_app().backend_name"]
+optional_dependencies = ["opencv-python", "pint", "qdarkstyle"]
+inventory_qt_binding = "PyQt5"
+import_probe_modules = ["DIVE", "DIVE._plotting.artists", "DIVE._plotting.custom_vispy"]
+rendering = false
+source_archive_url = "https://codeload.github.com/Dive576/DIVE/tar.gz/aa575e1c020f0c5e8227bfb234fa192fa2b12924"
+source_archive_sha256 = "28300472a4cc2d77e4f13820c7cc26369a6ae3148c0ebcba6cc03bb7b3fd7659"
+source_tree_sha256 = "fa15d4d94cd33548cba4a1c3f1fcf22547f30f07a4b60c23adee27da09ab7ce6"
+source_file_count = 60
+
+[napari_threedee]
+source_inventory = "compat/host-environments/napari_threedee.source-inventory.json"
+source_inventory_sha256 = "759f6a6d4c3b995ac4d9dbda2486a5bb6edc34d1f86a42b40eb42c27832eecfa"
+package_tree_sha256 = "464d2b686b4377d83c3af81d239d073c1e221afe376c3926f43c8ecbb8bd2438"
+commit = "7bd485085186ebe1907f8de931aa7a93e0d58a83"
+github = "https://github.com/napari-threedee/napari-threedee"
+package_directory = "src/napari_threedee"
+dependency_metadata = "pyproject.toml: project.dependencies"
+python_requires = ">=3.10"
+declared_dependencies = ["einops", "imageio>=2.5.0,!=2.11.0,!=2.22.1", "libigl", "magicgui", "morphosamplers", "mrcfile", "napari>=0.5.0", "numpy", "pandas", "pooch", "psygnal", "pydantic", "qtpy", "scipy", "superqt", "vispy", "zarr<3"]
+inventory_qt_binding = "PyQt6"
+import_probe_modules = ["napari_threedee", "napari_threedee._backend.manipulator.vispy_manipulator_visual", "napari_threedee._backend.manipulator.vispy_visual_data"]
+rendering = false
+source_archive_url = "https://codeload.github.com/napari-threedee/napari-threedee/tar.gz/7bd485085186ebe1907f8de931aa7a93e0d58a83"
+source_archive_sha256 = "4ec3034db322ae8b4de34de2a30f6258a0a0ea8bec0b0b57ecd0db6e8cfb993e"
+source_tree_sha256 = "efddd50707a9b17b3e17eeb0c57f942d474db66b51be73d666363d3ecb8975ae"
+source_file_count = 174
+
+[dawn]
+commit = "499e5c6ff9b37d5de70c6493fb74c251e0d35c1c"
+glslang = "23baa3f7b58f0dfdccec6755c53e85c31e52efba"
+spirv_headers = "86f980c731e62ae4eaf383d320449d71687936bf"
+spirv_tools = "ce818d1f2db53916d89fa1fe0012237779480a9b"
+
+[dive.environment]
+platform = "windows-x86_64"
+python = "3.11.11"
+binding = "PyQt5"
+requirements = "compat/host-environments/dive-windows-cpython311-pyqt5.txt"
+requirements_sha256 = "a80c62d02b2b958dab1b5be112d58526df2312020aa8db7be90397944531767d"
+import_inventory = "compat/host-environments/dive.import-inventory.json"
+import_inventory_sha256 = "b50a0b80083bd352b7cacbab81153026c40eb8ff27f3d5c742c8cd02d9fe321c"
+qualification = "import_inventory_only"
+host_installation = "unchanged verified source package copy; no invented distribution metadata"
+
+[phylib.environment]
+platform = "windows-x86_64"
+python = "3.12.8"
+binding = "none"
+requirements = "compat/host-environments/phylib-windows-cpython312-cpu.txt"
+requirements_sha256 = "bf146d64ab8af399adb1b571bc12aee432a7ef93c70c1577228667e699d6b053"
+import_inventory = "compat/host-environments/phylib.import-inventory.json"
+import_inventory_sha256 = "9fa2253e4051dcdcf025967d46d94451f70f97d50c404f7357dee10b8d8c2ec7"
+qualification = "import_inventory_only"
+host_installation = "unchanged verified source package copy; no invented distribution metadata"
+
+[visbrain.environment]
+platform = "windows-x86_64"
+python = "3.11.11"
+binding = "PyQt5"
+requirements = "compat/host-environments/visbrain-windows-cpython311-pyqt5.txt"
+requirements_sha256 = "9636d58aeeba4d402333342387aabdc4a550f3b91c2caabd3260c682331b735b"
+import_inventory = "compat/host-environments/visbrain.import-inventory.json"
+import_inventory_sha256 = "4bb37f8237b2de6280247f126c8c95c5a99725e079b227c0e111593544c10795"
+qualification = "import_inventory_only"
+host_installation = "unchanged verified source package copy; no invented distribution metadata"
+
+[napari_threedee.environment]
+platform = "windows-x86_64"
+python = "3.12.8"
+binding = "PyQt6"
+requirements = "compat/host-environments/napari-threedee-windows-cpython312-pyqt6.txt"
+requirements_sha256 = "a3bda7b33481d5d9ecbf856f05ff27bfd66ac46df6ad1f312d9fa8faa3e1e92c"
+import_inventory = "compat/host-environments/napari_threedee.import-inventory.json"
+import_inventory_sha256 = "7f330d1fa9e7254714188a24971aa3e2d21f5d797bf7d4c40a6ee45058b1c42a"
+qualification = "import_inventory_only"
+host_installation = "unchanged verified source package copy; no invented distribution metadata"
+build_requirements = "compat/host-environments/build-tools-windows-cpython312.txt"
+build_requirements_sha256 = "431b0bca16553f49b37fb8d33a40bfdb11f5b4651e08f926c94b0183a5ad29a6"
+source_build_exception = "asciitree==0.3.3; hashed sdist, preinstalled hashed setuptools80.9.0/wheel0.45.1, build isolation disabled"
+
+[napari_threedee.packaging]
+version = "0.0.29"
+source_tag = "v0.0.29"
+source_tag_object = "42be31adce55bed767dd5f835c32d08c329f3e35"
+environment = "build/host-environments/napari-threedee-cpython312-pyqt6-packaged"
+provenance = "compat/host-environments/napari-threedee-packaging-provenance.json"
+provenance_sha256 = "f505af33f23589362d914e88195c4537e4323b546fc2bcdb00c5b31cdbddd57a"
+registration = "compat/host-environments/napari-threedee-registration.json"
+wheel_sha256 = "de115619e84a7967b0386651163c29ec12228d59e58000736067f066237ce91e"
+qualification = "installed_packaging_and_plugin_registration_cpu_only"
+rendering = false

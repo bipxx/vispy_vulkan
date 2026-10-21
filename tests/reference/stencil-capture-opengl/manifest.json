@@ -1,0 +1,434 @@
+{
+  "comparison": {
+    "analytic_expected_exact": true,
+    "dtype_exact": true,
+    "values_exact": true
+  },
+  "errors": {},
+  "fixtures": {
+    "stencil_crop_float": {
+      "capture": {
+        "file": "stencil_crop_float.capture.json",
+        "sha256": "c7625012b9fb0a72d5268a74954151d56b118fe2070a7ffa6436ff61eeb70170"
+      },
+      "dtype": "<f4",
+      "expanded_shaders": {
+        "file": "stencil_crop_float.shaders.json",
+        "sha256": "399db07ac73da735a955432eba29a7bffa61502bad46e97bb397e4f5e8126c68"
+      },
+      "filtered_glir": {
+        "file": "stencil_crop_float.glir.json",
+        "sha256": "a548c828905ac8c994cf98617d15c0333acdb2eb9dcf4280fc7b3fb4c8a27d53"
+      },
+      "parameters": {
+        "alpha": true,
+        "attachment_size": [
+          8,
+          6
+        ],
+        "background": {
+          "depth": 1,
+          "stencil": 3
+        },
+        "capture_api": "PyOpenGL.GL.glReadPixels(GL_STENCIL_INDEX)",
+        "crop": [
+          2,
+          1,
+          4,
+          3
+        ],
+        "explicit_gloo_finish_calls": 1,
+        "logical_depth_bits": 24,
+        "mode": "stencil",
+        "oracle_scope": "GL stencil semantics; upstream VisPy wrapper remains unadmitted",
+        "orientation": "top-left array, bottom-left viewport crop",
+        "out_type": "float",
+        "output_units": "unnormalized stencil integer values",
+        "physical_samples": 1,
+        "readbacks": 1,
+        "regions": [
+          {
+            "depth": 0.25,
+            "operation": "draw",
+            "stencil": 37,
+            "viewport": [
+              1,
+              1,
+              3,
+              2
+            ]
+          },
+          {
+            "depth": 0.75,
+            "operation": "scissor clear",
+            "stencil": 203,
+            "viewport": [
+              4,
+              3,
+              3,
+              2
+            ]
+          }
+        ],
+        "renderbuffer_internalformat": 35056,
+        "stencil_bits": 8
+      },
+      "process": {
+        "exit_code": 0,
+        "stderr": {
+          "file": "stencil_crop_float.stderr.log",
+          "sha256": "b1d8d1e72b862b2b97cd31253e5ea272299c884b4d8079ddfbf436853e425c15"
+        },
+        "stdout": {
+          "file": "stencil_crop_float.stdout.log",
+          "sha256": "cd1323b991a8a90833ff8dc2b286bbe6238a353680472bf275dd73e8bf062d48"
+        }
+      },
+      "readbacks": 1,
+      "rgba": {
+        "file": "stencil_crop_float.npy",
+        "sha256": "0e69f1ef8fef3859adddc3bd30ba666983d5219ce76083253b29efce58c45390"
+      },
+      "shape": [
+        3,
+        4,
+        1
+      ]
+    },
+    "stencil_float": {
+      "capture": {
+        "file": "stencil_float.capture.json",
+        "sha256": "427bd2fc7beae43a890d1ad30140b22aa3a60da856b89c1e6d8a50cbd4088ff0"
+      },
+      "dtype": "<f4",
+      "expanded_shaders": {
+        "file": "stencil_float.shaders.json",
+        "sha256": "399db07ac73da735a955432eba29a7bffa61502bad46e97bb397e4f5e8126c68"
+      },
+      "filtered_glir": {
+        "file": "stencil_float.glir.json",
+        "sha256": "a548c828905ac8c994cf98617d15c0333acdb2eb9dcf4280fc7b3fb4c8a27d53"
+      },
+      "parameters": {
+        "alpha": true,
+        "attachment_size": [
+          8,
+          6
+        ],
+        "background": {
+          "depth": 1,
+          "stencil": 3
+        },
+        "capture_api": "PyOpenGL.GL.glReadPixels(GL_STENCIL_INDEX)",
+        "crop": [
+          0,
+          0,
+          8,
+          6
+        ],
+        "explicit_gloo_finish_calls": 1,
+        "logical_depth_bits": 24,
+        "mode": "stencil",
+        "oracle_scope": "GL stencil semantics; upstream VisPy wrapper remains unadmitted",
+        "orientation": "top-left array, bottom-left viewport crop",
+        "out_type": "float",
+        "output_units": "unnormalized stencil integer values",
+        "physical_samples": 1,
+        "readbacks": 1,
+        "regions": [
+          {
+            "depth": 0.25,
+            "operation": "draw",
+            "stencil": 37,
+            "viewport": [
+              1,
+              1,
+              3,
+              2
+            ]
+          },
+          {
+            "depth": 0.75,
+            "operation": "scissor clear",
+            "stencil": 203,
+            "viewport": [
+              4,
+              3,
+              3,
+              2
+            ]
+          }
+        ],
+        "renderbuffer_internalformat": 35056,
+        "stencil_bits": 8
+      },
+      "process": {
+        "exit_code": 0,
+        "stderr": {
+          "file": "stencil_float.stderr.log",
+          "sha256": "b1d8d1e72b862b2b97cd31253e5ea272299c884b4d8079ddfbf436853e425c15"
+        },
+        "stdout": {
+          "file": "stencil_float.stdout.log",
+          "sha256": "2d79b7598053b9208f01bcbd61991a472b292f5aa97f50a4fa7c46594c450968"
+        }
+      },
+      "readbacks": 1,
+      "rgba": {
+        "file": "stencil_float.npy",
+        "sha256": "0f5e63207d5212b89d2efdc98010558331c54cf7e62e30771a3043cf25675a56"
+      },
+      "shape": [
+        6,
+        8,
+        1
+      ]
+    },
+    "stencil_noalpha_u8": {
+      "capture": {
+        "file": "stencil_noalpha_u8.capture.json",
+        "sha256": "3a27cda0f865fc91c910a1815ed8a40ae83dca10b4a450d58cc5392918457131"
+      },
+      "dtype": "|u1",
+      "expanded_shaders": {
+        "file": "stencil_noalpha_u8.shaders.json",
+        "sha256": "399db07ac73da735a955432eba29a7bffa61502bad46e97bb397e4f5e8126c68"
+      },
+      "filtered_glir": {
+        "file": "stencil_noalpha_u8.glir.json",
+        "sha256": "a548c828905ac8c994cf98617d15c0333acdb2eb9dcf4280fc7b3fb4c8a27d53"
+      },
+      "parameters": {
+        "alpha": false,
+        "attachment_size": [
+          8,
+          6
+        ],
+        "background": {
+          "depth": 1,
+          "stencil": 3
+        },
+        "capture_api": "PyOpenGL.GL.glReadPixels(GL_STENCIL_INDEX)",
+        "crop": [
+          0,
+          0,
+          8,
+          6
+        ],
+        "explicit_gloo_finish_calls": 1,
+        "logical_depth_bits": 24,
+        "mode": "stencil",
+        "oracle_scope": "GL stencil semantics; upstream VisPy wrapper remains unadmitted",
+        "orientation": "top-left array, bottom-left viewport crop",
+        "out_type": "unsigned_byte",
+        "output_units": "unnormalized stencil integer values",
+        "physical_samples": 1,
+        "readbacks": 1,
+        "regions": [
+          {
+            "depth": 0.25,
+            "operation": "draw",
+            "stencil": 37,
+            "viewport": [
+              1,
+              1,
+              3,
+              2
+            ]
+          },
+          {
+            "depth": 0.75,
+            "operation": "scissor clear",
+            "stencil": 203,
+            "viewport": [
+              4,
+              3,
+              3,
+              2
+            ]
+          }
+        ],
+        "renderbuffer_internalformat": 35056,
+        "stencil_bits": 8
+      },
+      "process": {
+        "exit_code": 0,
+        "stderr": {
+          "file": "stencil_noalpha_u8.stderr.log",
+          "sha256": "b1d8d1e72b862b2b97cd31253e5ea272299c884b4d8079ddfbf436853e425c15"
+        },
+        "stdout": {
+          "file": "stencil_noalpha_u8.stdout.log",
+          "sha256": "d570aa823c6137952a1c00aed3bbea463a180a0ac124c9e188785ce723320e6a"
+        }
+      },
+      "readbacks": 1,
+      "rgba": {
+        "file": "stencil_noalpha_u8.npy",
+        "sha256": "6b468e9c241070f2d86412f409da82d07449ddae71b5d95fb810e2e86baa9383"
+      },
+      "shape": [
+        6,
+        8,
+        1
+      ]
+    },
+    "stencil_u8": {
+      "capture": {
+        "file": "stencil_u8.capture.json",
+        "sha256": "43d81b04a7d9bbbc5179be0922792bc4ef79c316c018ee9ef168435a38b84189"
+      },
+      "dtype": "|u1",
+      "expanded_shaders": {
+        "file": "stencil_u8.shaders.json",
+        "sha256": "399db07ac73da735a955432eba29a7bffa61502bad46e97bb397e4f5e8126c68"
+      },
+      "filtered_glir": {
+        "file": "stencil_u8.glir.json",
+        "sha256": "a548c828905ac8c994cf98617d15c0333acdb2eb9dcf4280fc7b3fb4c8a27d53"
+      },
+      "parameters": {
+        "alpha": true,
+        "attachment_size": [
+          8,
+          6
+        ],
+        "background": {
+          "depth": 1,
+          "stencil": 3
+        },
+        "capture_api": "PyOpenGL.GL.glReadPixels(GL_STENCIL_INDEX)",
+        "crop": [
+          0,
+          0,
+          8,
+          6
+        ],
+        "explicit_gloo_finish_calls": 1,
+        "logical_depth_bits": 24,
+        "mode": "stencil",
+        "oracle_scope": "GL stencil semantics; upstream VisPy wrapper remains unadmitted",
+        "orientation": "top-left array, bottom-left viewport crop",
+        "out_type": "unsigned_byte",
+        "output_units": "unnormalized stencil integer values",
+        "physical_samples": 1,
+        "readbacks": 1,
+        "regions": [
+          {
+            "depth": 0.25,
+            "operation": "draw",
+            "stencil": 37,
+            "viewport": [
+              1,
+              1,
+              3,
+              2
+            ]
+          },
+          {
+            "depth": 0.75,
+            "operation": "scissor clear",
+            "stencil": 203,
+            "viewport": [
+              4,
+              3,
+              3,
+              2
+            ]
+          }
+        ],
+        "renderbuffer_internalformat": 35056,
+        "stencil_bits": 8
+      },
+      "process": {
+        "exit_code": 0,
+        "stderr": {
+          "file": "stencil_u8.stderr.log",
+          "sha256": "b1d8d1e72b862b2b97cd31253e5ea272299c884b4d8079ddfbf436853e425c15"
+        },
+        "stdout": {
+          "file": "stencil_u8.stdout.log",
+          "sha256": "325711e17d13d3fb6a7fa6a22201556521cb9e6c2c430dcd3ea8eaf8182ac9ce"
+        }
+      },
+      "readbacks": 1,
+      "rgba": {
+        "file": "stencil_u8.npy",
+        "sha256": "6b468e9c241070f2d86412f409da82d07449ddae71b5d95fb810e2e86baa9383"
+      },
+      "shape": [
+        6,
+        8,
+        1
+      ]
+    }
+  },
+  "provenance": {
+    "analytic_setup_source_sha256": "c068ccde5364fcb755db39d31fb8e1b2aa93cb157dcfae059852710864277d4f",
+    "capture_source_sha256": "66ae25247831c184f38f2c7a2ff151b940013087104907523b11e1ed2b9b151a",
+    "cmake": null,
+    "distribution_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Lib\\site-packages",
+    "distribution_record_sha256": "455e084c0cb78e19e41c79d08a57d533b07d52b3248c2ebd4b73e80584b067cc",
+    "environment": {
+      "PYTHONPATH": null,
+      "QT_API": "pyqt6",
+      "QT_QPA_PLATFORM": null,
+      "QT_SCALE_FACTOR": "1",
+      "VISPY_PYQT5_SHARE_CONTEXT": "true"
+    },
+    "external_readback": {
+      "api": "OpenGL.GL.glReadPixels(GL_STENCIL_INDEX)",
+      "origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Lib\\site-packages\\OpenGL",
+      "source_sha256": {
+        "GL/images.py": "448cdcff47ffc94d7ef352d17581bd2f23d889d0379fdf95c992f048692bb7ef",
+        "raw/GL/VERSION/GL_1_0.py": "7a5572ab18e9a0aa2265ef6fc6d11019c61b2acffcd38d49a912fb38116d38ef"
+      },
+      "unchanged_upstream_wrapper": "gloo.read_pixels(mode='stencil') raises KeyError GL_STENCIL_INDEX8",
+      "version": "3.1.10",
+      "wrapper_failure_manifest": "tests/reference/depth-capture-opengl/manifest.json",
+      "wrapper_failure_manifest_sha256": "7e9e31c9d883a71c903161a79279f1bbac4f2b4d9d282c3417d3a0de4ce9c024"
+    },
+    "fixture_source_sha256": "37797259727afd9c6b15c7074319b935dcddb330deb2b6c99a03c8df6f36fddb",
+    "kind": "upstream",
+    "machine": "AMD64",
+    "numpy_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Lib\\site-packages\\numpy\\__init__.py",
+    "oracle_scope": "GL stencil semantics; not upstream VisPy wrapper admission",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.12.8",
+    "python_executable": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Scripts\\python.exe",
+    "qt_runtime": "6.11.2",
+    "regenerate": "build/oracle-opengl/Scripts/python.exe tools/oracle_stencil_capture.py --kind upstream --output tests/reference/stencil-capture-opengl",
+    "renderer": {
+      "renderer": "NVIDIA GeForce RTX 4090/PCIe/SSE2",
+      "vendor": "NVIDIA Corporation",
+      "version": "4.6.0 NVIDIA 595.79"
+    },
+    "requirements_sha256": "a784b5a5e2b4ea201578acddc41e28e0997275ea2542642148322153cd240ffd",
+    "source_sha256": {
+      "gloo/buffer.py": "68e37b184b74814e0ae7a6f4f754c9f0c0af5b4e6369a60a8357c70da974e138",
+      "gloo/context.py": "6afc97492f65a5e865723535206fb769a1c4b55694d69786123fdee78bef992a",
+      "gloo/glir.py": "a3bb8a75b33f47420e9c100b8a6d81037a2f03c905e6c9f7d8399f4fb2eb8f7c",
+      "gloo/program.py": "4d3ab8e36260f9b5dc50f6aec075b12d642535f3cb8f49bfd4a27056301d5492",
+      "gloo/texture.py": "9f6d5f2e448e02c0ca4d66c65d17ddcdb6c0182bb8f15f1292a427f5a9faf6bc",
+      "gloo/wrappers.py": "73dbb5eb8ca78b2822266d272ffb14db9fcadd7a56512843209187714c9e8dcc"
+    },
+    "stencil_capture_sha256": "68895e7c69434d7ab27c12e55e766698a2258d2ed0c43939659b280153d67845",
+    "stencil_fixture_sha256": "4065f5cb11cdd331cc92e6885dde64c144db269543d007d83c87196ba89c31aa",
+    "upstream_commit": "117b054598f4758b598f4b8f48feea48c11fe7b0",
+    "versions": {
+      "PyOpenGL": "3.1.10",
+      "PyQt6": "6.11.0",
+      "PyQt6-Qt6": "6.11.2",
+      "PyQt6-sip": "13.13.0",
+      "freetype-py": "2.5.1",
+      "hsluv": "5.0.4",
+      "kiwisolver": "1.5.1",
+      "numpy": "2.5.3",
+      "packaging": "26.3",
+      "vispy": "0.17.0"
+    },
+    "vispy_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Lib\\site-packages\\vispy",
+    "vispy_version": "0.17.0"
+  },
+  "schema": 1
+}

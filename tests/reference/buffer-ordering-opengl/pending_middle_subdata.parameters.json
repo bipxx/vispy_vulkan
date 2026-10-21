@@ -1,0 +1,212 @@
+{
+  "attribute_stride": 28,
+  "case": "pending_middle_subdata",
+  "comparison": {
+    "analytic_full_frame_exact": true,
+    "candidate_alignment_or_color_fit": false,
+    "full_frame_exact": true
+  },
+  "dependent_window": "no capture, finish, swap or GPU wait between dependent draws/updates",
+  "expected_rgba": {
+    "bytes": 3072,
+    "dtype": "|u1",
+    "sha256": "2aede646ee97a1b46cf80f9a7778e7cd44444914610633733d498ea45213d16d",
+    "shape": [
+      24,
+      32,
+      4
+    ]
+  },
+  "first_draw_middle": "green",
+  "inputs": {
+    "final": {
+      "bytes": 504,
+      "dtype": "|V28",
+      "fields": {
+        "a_color": {
+          "dtype": "<f4",
+          "offset": 12,
+          "shape": [
+            3
+          ]
+        },
+        "a_position": {
+          "dtype": "<f4",
+          "offset": 4,
+          "shape": [
+            2
+          ]
+        },
+        "sentinel_left": {
+          "dtype": "<u4",
+          "offset": 0,
+          "shape": []
+        },
+        "sentinel_right": {
+          "dtype": "<u4",
+          "offset": 24,
+          "shape": []
+        }
+      },
+      "sha256": "42fd04763fcbb2a081aea9df95fcc4c4bd0211f130afc2b1c97b3593092c4105",
+      "shape": [
+        18
+      ]
+    },
+    "initial": {
+      "bytes": 504,
+      "dtype": "|V28",
+      "fields": {
+        "a_color": {
+          "dtype": "<f4",
+          "offset": 12,
+          "shape": [
+            3
+          ]
+        },
+        "a_position": {
+          "dtype": "<f4",
+          "offset": 4,
+          "shape": [
+            2
+          ]
+        },
+        "sentinel_left": {
+          "dtype": "<u4",
+          "offset": 0,
+          "shape": []
+        },
+        "sentinel_right": {
+          "dtype": "<u4",
+          "offset": 24,
+          "shape": []
+        }
+      },
+      "sha256": "57680bf8737e04be6aef6222c95e64fa465a73edd529dc3866acab4f3c82a82d",
+      "shape": [
+        18
+      ]
+    },
+    "middle_patch": {
+      "bytes": 168,
+      "dtype": "|V28",
+      "fields": {
+        "a_color": {
+          "dtype": "<f4",
+          "offset": 12,
+          "shape": [
+            3
+          ]
+        },
+        "a_position": {
+          "dtype": "<f4",
+          "offset": 4,
+          "shape": [
+            2
+          ]
+        },
+        "sentinel_left": {
+          "dtype": "<u4",
+          "offset": 0,
+          "shape": []
+        },
+        "sentinel_right": {
+          "dtype": "<u4",
+          "offset": 24,
+          "shape": []
+        }
+      },
+      "sha256": "68d93623915d680bdbfbdba4085dc6ebe18e77f7bf088e233eb702788ab833a2",
+      "shape": [
+        6
+      ]
+    }
+  },
+  "landmarks": [
+    {
+      "column": 4,
+      "rgba": [
+        255,
+        0,
+        0,
+        255
+      ],
+      "row": 5
+    },
+    {
+      "column": 15,
+      "rgba": [
+        255,
+        255,
+        0,
+        255
+      ],
+      "row": 5
+    },
+    {
+      "column": 27,
+      "rgba": [
+        0,
+        0,
+        255,
+        255
+      ],
+      "row": 5
+    },
+    {
+      "column": 4,
+      "rgba": [
+        255,
+        0,
+        0,
+        255
+      ],
+      "row": 18
+    },
+    {
+      "column": 15,
+      "rgba": [
+        0,
+        255,
+        0,
+        255
+      ],
+      "row": 18
+    },
+    {
+      "column": 27,
+      "rgba": [
+        0,
+        0,
+        255,
+        255
+      ],
+      "row": 18
+    }
+  ],
+  "outside_patch_vertices": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17
+  ],
+  "patch_byte_offset": 168,
+  "patch_byte_size": 168,
+  "patch_element_offset": 6,
+  "prewarm": "one public draw and swap_buffers before dependent window; no readback",
+  "readbacks": 1,
+  "scope": "U01 public Program.draw / VertexBuffer.set_subdata, middle structured patch",
+  "second_draw_middle": "yellow",
+  "size": [
+    32,
+    24
+  ]
+}

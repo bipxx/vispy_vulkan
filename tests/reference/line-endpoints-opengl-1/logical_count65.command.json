@@ -1,0 +1,27 @@
+{
+  "command": [
+    "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Scripts\\python.exe",
+    "-B",
+    "-X",
+    "faulthandler",
+    "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\tools\\oracle_line_endpoints_capture.py",
+    "--capture",
+    "--output",
+    "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\tests\\reference\\line-endpoints-opengl-1",
+    "--preflight-output",
+    "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\evidence\\line-endpoints-upstream-preflight-2",
+    "--expected-authoring-sha256",
+    "a24f9c1344d7dd2217b7080ea358c8924eab4fef21a7c6fba36815c0cf074d50",
+    "--expected-preflight-sha256",
+    "d8eadda1d0dac1733d9e2411b09175b0cf903b4c25560fb8f151ca99225bf570",
+    "--worker",
+    "logical_count65"
+  ],
+  "environment": {
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "PYTHONHASHSEED": "0",
+    "QT_API": "pyqt6",
+    "QT_SCALE_FACTOR": "1"
+  },
+  "pid": 6740
+}

@@ -1,0 +1,17 @@
+#include <metal_stdlib>
+using namespace metal;
+
+struct Results {
+  /* 0x0000 */ array<float, 4> colorSamples;
+};
+
+struct tint_module_vars_struct {
+  texture2d_ms<float, access::read> texture0;
+  device Results* results;
+};
+
+[[max_total_threads_per_threadgroup(1)]]
+kernel void v(texture2d_ms<float, access::read> texture0 [[texture(0)]], device Results* results [[buffer(0)]]) {
+  tint_module_vars_struct const tint_module_vars = tint_module_vars_struct{.texture0=texture0, .results=results};
+  (*tint_module_vars.results).colorSamples[0] = tint_module_vars.texture0.read(min(uint2(0u), (uint2(tint_module_vars.texture0.get_width(), tint_module_vars.texture0.get_height()) - uint2(1u))), min(0u, (tint_module_vars.texture0.get_num_samples() - 1u))).x;
+}

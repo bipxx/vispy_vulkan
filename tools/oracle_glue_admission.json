@@ -1,0 +1,82 @@
+{
+  "candidate_qualification": "pending",
+  "commit": "33509adb53909b7542069563f77fb9a80bd565a4",
+  "historical_windows_test_skip": {
+    "files": [
+      "scatter/qt/tests/test_scatter_viewer.py",
+      "volume/qt/tests/test_volume_viewer.py"
+    ],
+    "reason": "Windows fatal exception: access violation"
+  },
+  "host": "glue-vispy-viewers",
+  "reference_manifest": "tests\\reference\\glue-opengl\\manifest.json",
+  "requirements": "tools/oracle_glue_requirements.txt",
+  "requirements_sha256": "6dbfd71fd13b1a76dd33012027355cd482984b416f07b1b405a1fa4e3b7467ff",
+  "schema": 1,
+  "source_files": {
+    "common/axes.py": {
+      "sha256": "8d4f0b30806313e98cd542c1ec667abc07264464ab0bab27f24f66b49a9e6399",
+      "url": "https://raw.githubusercontent.com/glue-viz/glue-vispy-viewers/33509adb53909b7542069563f77fb9a80bd565a4/glue_vispy_viewers/common/axes.py"
+    },
+    "common/qt/data_viewer.py": {
+      "sha256": "733c98fc8a9b5194f0d0ef001ebb646cadc35bf876f2a529807f598706b9f9dc",
+      "url": "https://raw.githubusercontent.com/glue-viz/glue-vispy-viewers/33509adb53909b7542069563f77fb9a80bd565a4/glue_vispy_viewers/common/qt/data_viewer.py"
+    },
+    "common/vispy_widget.py": {
+      "sha256": "b22ae25136d7e30ff2881a2743a8f286f8891be69e4e07c7ddeeba0980531881",
+      "url": "https://raw.githubusercontent.com/glue-viz/glue-vispy-viewers/33509adb53909b7542069563f77fb9a80bd565a4/glue_vispy_viewers/common/vispy_widget.py"
+    },
+    "scatter/layer_artist.py": {
+      "sha256": "fcb9af921d0d9167c68ef8568659b36ff922334b7bb09cd0379e12330dd2fe27",
+      "url": "https://raw.githubusercontent.com/glue-viz/glue-vispy-viewers/33509adb53909b7542069563f77fb9a80bd565a4/glue_vispy_viewers/scatter/layer_artist.py"
+    },
+    "scatter/multi_scatter.py": {
+      "sha256": "2849441e9f0ad3f61b7ece3f87be46b094e21450fbfa015fd591bcaab14a554d",
+      "url": "https://raw.githubusercontent.com/glue-viz/glue-vispy-viewers/33509adb53909b7542069563f77fb9a80bd565a4/glue_vispy_viewers/scatter/multi_scatter.py"
+    },
+    "scatter/qt/tests/test_scatter_viewer.py": {
+      "sha256": "538652b942e606998512a821ae3a85e4564efc1aaab7a8ae7cf63cd87fdebed0",
+      "url": "https://raw.githubusercontent.com/glue-viz/glue-vispy-viewers/33509adb53909b7542069563f77fb9a80bd565a4/glue_vispy_viewers/scatter/qt/tests/test_scatter_viewer.py"
+    },
+    "volume/qt/tests/test_volume_viewer.py": {
+      "sha256": "3e9414440bd4fb0762dc6f7e97785755608d247456363d428f2dc87c5e9ddba4",
+      "url": "https://raw.githubusercontent.com/glue-viz/glue-vispy-viewers/33509adb53909b7542069563f77fb9a80bd565a4/glue_vispy_viewers/volume/qt/tests/test_volume_viewer.py"
+    },
+    "volume/shaders.py": {
+      "sha256": "dddaa003b049c9abe44204bca69dd081e4ed311820cde7489510ee5de52b0d57",
+      "url": "https://raw.githubusercontent.com/glue-viz/glue-vispy-viewers/33509adb53909b7542069563f77fb9a80bd565a4/glue_vispy_viewers/volume/shaders.py"
+    },
+    "volume/volume_visual.py": {
+      "sha256": "eba8e9b5c37041dde0189d71b34506f9230ec4223a426803b5b1580169061b04",
+      "url": "https://raw.githubusercontent.com/glue-viz/glue-vispy-viewers/33509adb53909b7542069563f77fb9a80bd565a4/glue_vispy_viewers/volume/volume_visual.py"
+    }
+  },
+  "successful_fixtures": [
+    "scatter",
+    "scatter_edit",
+    "scatter_axes",
+    "volume"
+  ],
+  "unresolved_fixtures": {
+    "volume_edit": {
+      "error": "[  0   0 255 255]",
+      "type": "AssertionError",
+      "unadmitted_artifacts": {
+        "glir.json": {
+          "file": "volume_edit.glir.json",
+          "sha256": "4ee5d8f0df19baf74c969304223e704d3ad6da3b857a6638227d381ef33e7841"
+        },
+        "npy": {
+          "file": "volume_edit.npy",
+          "sha256": "4d8a05a68dd9c60e2ae5e916c5998b50e4d9a12ce79fed48f54bfe04c972695d"
+        },
+        "shaders.json": {
+          "file": "volume_edit.shaders.json",
+          "sha256": "3e14b715f43a5fa8fb162d78de37da80e3fd5d72800752f937deec76b92fac09"
+        }
+      }
+    }
+  },
+  "upstream_qualification": "unresolved",
+  "version": "1.4.0"
+}

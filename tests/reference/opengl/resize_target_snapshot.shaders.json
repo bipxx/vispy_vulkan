@@ -1,0 +1,10 @@
+{
+  "10": "\nattribute vec2 a_position;\nattribute vec2 a_texcoord;\nvarying vec2 v_texcoord;\nvoid main() {\n    v_texcoord = a_texcoord;\n    gl_Position = vec4(a_position, 0.0, 1.0);\n}\n",
+  "11": "\nuniform sampler2D u_texture;\nvarying vec2 v_texcoord;\nvoid main() { gl_FragColor = texture2D(u_texture, v_texcoord); }\n",
+  "15": "\nattribute vec2 a_position;\nvoid main() { gl_Position = vec4(a_position, 0.0, 1.0); }\n",
+  "16": "\nuniform vec4 u_color;\nvoid main() { gl_FragColor = u_color; }\n",
+  "19": "\nattribute vec2 a_position;\nattribute vec2 a_texcoord;\nvarying vec2 v_texcoord;\nvoid main() {\n    v_texcoord = a_texcoord;\n    gl_Position = vec4(a_position, 0.0, 1.0);\n}\n",
+  "20": "\nuniform sampler2D u_texture;\nvarying vec2 v_texcoord;\nvoid main() { gl_FragColor = texture2D(u_texture, v_texcoord); }\n",
+  "6": "\nattribute vec2 a_position;\nvoid main() { gl_Position = vec4(a_position, 0.0, 1.0); }\n",
+  "7": "\nuniform vec4 u_color;\nvoid main() { gl_FragColor = u_color; }\n"
+}

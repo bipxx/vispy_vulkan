@@ -1,0 +1,112 @@
+WARNING: SetProcessDpiAwarenessContext() failed: Access is denied.
+Qt's default DPI awareness context is DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE_V2. If you know what you are doing, you can overwrite this default using qt.conf (https://doc.qt.io/qt-6/highdpi.html#configuring-windows).
+Traceback (most recent call last):
+  File "C:\Users\HEQ\Projects\vispy_vulkan\tools\oracle_marker_extensions_capture.py", line 136, in main
+    assert_landmarks(args.worker, image)
+  File "C:\Users\HEQ\Projects\vispy_vulkan\tools\fixture_marker_extensions.py", line 143, in assert_landmarks
+    assert pixel.tolist() == mark["rgba"], (name, mark, pixel.tolist())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ('points_style_grid', {'row': 72, 'column': 117, 'rgba': [0, 255, 0, 255]}, [0, 254, 0, 255])
+PASS independent marker points_camera_fixed fixed landmarks, trace revisions and exact whole-frame policy
+WARNING: SetProcessDpiAwarenessContext() failed: Access is denied.
+Qt's default DPI awareness context is DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE_V2. If you know what you are doing, you can overwrite this default using qt.conf (https://doc.qt.io/qt-6/highdpi.html#configuring-windows).
+PASS independent marker points_camera_scene fixed landmarks, trace revisions and exact whole-frame policy
+WARNING: SetProcessDpiAwarenessContext() failed: Access is denied.
+Qt's default DPI awareness context is DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE_V2. If you know what you are doing, you can overwrite this default using qt.conf (https://doc.qt.io/qt-6/highdpi.html#configuring-windows).
+WARNING: SetProcessDpiAwarenessContext() failed: Access is denied.
+Qt's default DPI awareness context is DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE_V2. If you know what you are doing, you can overwrite this default using qt.conf (https://doc.qt.io/qt-6/highdpi.html#configuring-windows).
+Traceback (most recent call last):
+  File "C:\Users\HEQ\Projects\vispy_vulkan\tools\oracle_marker_extensions_capture.py", line 136, in main
+    assert_landmarks(args.worker, image)
+  File "C:\Users\HEQ\Projects\vispy_vulkan\tools\fixture_marker_extensions.py", line 143, in assert_landmarks
+    assert pixel.tolist() == mark["rgba"], (name, mark, pixel.tolist())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ('points_camera_visual', {'row': 48, 'column': 46, 'rgba': [255, 0, 0, 255]}, [0, 0, 0, 255])
+WARNING: SetProcessDpiAwarenessContext() failed: Access is denied.
+PASS independent marker points_spherical_depth fixed landmarks, trace revisions and exact whole-frame policy
+Qt's default DPI awareness context is DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE_V2. If you know what you are doing, you can overwrite this default using qt.conf (https://doc.qt.io/qt-6/highdpi.html#configuring-windows).
+WARNING: SetProcessDpiAwarenessContext() failed: Access is denied.
+Qt's default DPI awareness context is DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE_V2. If you know what you are doing, you can overwrite this default using qt.conf (https://doc.qt.io/qt-6/highdpi.html#configuring-windows).
+Traceback (most recent call last):
+  File "C:\Users\HEQ\Projects\vispy_vulkan\tools\oracle_marker_extensions_capture.py", line 136, in main
+    assert_landmarks(args.worker, image)
+  File "C:\Users\HEQ\Projects\vispy_vulkan\tools\fixture_marker_extensions.py", line 143, in assert_landmarks
+    assert pixel.tolist() == mark["rgba"], (name, mark, pixel.tolist())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ('points_color_revision', {'row': 24, 'column': 24, 'rgba': [255, 0, 0, 255]}, [0, 0, 0, 255])
+WARNING: SetProcessDpiAwarenessContext() failed: Access is denied.
+Qt's default DPI awareness context is DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE_V2. If you know what you are doing, you can overwrite this default using qt.conf (https://doc.qt.io/qt-6/highdpi.html#configuring-windows).
+Traceback (most recent call last):
+  File "C:\Users\HEQ\Projects\vispy_vulkan\tools\oracle_marker_extensions_capture.py", line 136, in main
+    assert_landmarks(args.worker, image)
+  File "C:\Users\HEQ\Projects\vispy_vulkan\tools\fixture_marker_extensions.py", line 143, in assert_landmarks
+    assert pixel.tolist() == mark["rgba"], (name, mark, pixel.tolist())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ('points_position_revision', {'row': 24, 'column': 24, 'rgba': [255, 0, 0, 255]}, [0, 0, 0, 255])
+WARNING: SetProcessDpiAwarenessContext() failed: Access is denied.
+Qt's default DPI awareness context is DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE_V2. If you know what you are doing, you can overwrite this default using qt.conf (https://doc.qt.io/qt-6/highdpi.html#configuring-windows).
+Traceback (most recent call last):
+  File "C:\Users\HEQ\Projects\vispy_vulkan\tools\oracle_marker_extensions_capture.py", line 136, in main
+    assert_landmarks(args.worker, image)
+  File "C:\Users\HEQ\Projects\vispy_vulkan\tools\fixture_marker_extensions.py", line 143, in assert_landmarks
+    assert pixel.tolist() == mark["rgba"], (name, mark, pixel.tolist())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ('instanced_style_grid', {'row': 72, 'column': 117, 'rgba': [0, 255, 0, 255]}, [0, 254, 0, 255])
+PASS independent marker instanced_camera_fixed fixed landmarks, trace revisions and exact whole-frame policy
+WARNING: SetProcessDpiAwarenessContext() failed: Access is denied.
+Qt's default DPI awareness context is DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE_V2. If you know what you are doing, you can overwrite this default using qt.conf (https://doc.qt.io/qt-6/highdpi.html#configuring-windows).
+PASS independent marker instanced_camera_scene fixed landmarks, trace revisions and exact whole-frame policy
+WARNING: SetProcessDpiAwarenessContext() failed: Access is denied.
+Qt's default DPI awareness context is DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE_V2. If you know what you are doing, you can overwrite this default using qt.conf (https://doc.qt.io/qt-6/highdpi.html#configuring-windows).
+WARNING: SetProcessDpiAwarenessContext() failed: Access is denied.
+Qt's default DPI awareness context is DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE_V2. If you know what you are doing, you can overwrite this default using qt.conf (https://doc.qt.io/qt-6/highdpi.html#configuring-windows).
+Traceback (most recent call last):
+  File "C:\Users\HEQ\Projects\vispy_vulkan\tools\oracle_marker_extensions_capture.py", line 136, in main
+    assert_landmarks(args.worker, image)
+  File "C:\Users\HEQ\Projects\vispy_vulkan\tools\fixture_marker_extensions.py", line 143, in assert_landmarks
+    assert pixel.tolist() == mark["rgba"], (name, mark, pixel.tolist())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ('instanced_camera_visual', {'row': 48, 'column': 46, 'rgba': [255, 0, 0, 255]}, [0, 0, 0, 255])
+Windows fatal exception: code 0x8007000e
+
+Thread 0x0000cb48 (most recent call first):
+  File "C:\Users\HEQ\AppData\Roaming\uv\python\cpython-3.12.8-windows-x86_64-none\Lib\platform.py", line 327 in _wmi_query
+  File "C:\Users\HEQ\AppData\Roaming\uv\python\cpython-3.12.8-windows-x86_64-none\Lib\platform.py", line 775 in _get_machine_win32
+  File "C:\Users\HEQ\AppData\Roaming\uv\python\cpython-3.12.8-windows-x86_64-none\Lib\platform.py", line 922 in uname
+  File "C:\Users\HEQ\AppData\Roaming\uv\python\cpython-3.12.8-windows-x86_64-none\Lib\platform.py", line 1023 in machine
+  File "C:\Users\HEQ\Projects\vispy_vulkan\build\oracle-napari\Lib\site-packages\packaging\markers.py", line 353 in _cached_default_environment
+  File "C:\Users\HEQ\Projects\vispy_vulkan\build\oracle-napari\Lib\site-packages\packaging\markers.py", line 377 in default_environment
+  File "C:\Users\HEQ\Projects\vispy_vulkan\build\oracle-napari\Lib\site-packages\packaging\markers.py", line 533 in evaluate
+  File "C:\Users\HEQ\Projects\vispy_vulkan\tools\oracle_image_extensions_capture.py", line 69 in cpu_origins
+  File "C:\Users\HEQ\Projects\vispy_vulkan\tools\oracle_marker_extensions_capture.py", line 82 in main
+  File "C:\Users\HEQ\Projects\vispy_vulkan\tools\oracle_marker_extensions_capture.py", line 152 in <module>
+WARNING: SetProcessDpiAwarenessContext() failed: Access is denied.
+Qt's default DPI awareness context is DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE_V2. If you know what you are doing, you can overwrite this default using qt.conf (https://doc.qt.io/qt-6/highdpi.html#configuring-windows).
+Windows fatal exception: code 0xc000070a
+
+Thread 0x0000cb48 (most recent call first):
+  File "C:\Users\HEQ\Projects\vispy_vulkan\build\oracle-napari\Lib\site-packages\vispy\app\backends\_qt.py", line 366 in _vispy_get_native_app
+  File "C:\Users\HEQ\Projects\vispy_vulkan\build\oracle-napari\Lib\site-packages\vispy\app\application.py", line 183 in native
+  File "C:\Users\HEQ\Projects\vispy_vulkan\build\oracle-napari\Lib\site-packages\vispy\app\canvas.py", line 235 in create_native
+  File "C:\Users\HEQ\Projects\vispy_vulkan\build\oracle-napari\Lib\site-packages\vispy\app\canvas.py", line 218 in __init__
+  File "C:\Users\HEQ\Projects\vispy_vulkan\tools\oracle_capture.py", line 57 in provenance
+  File "C:\Users\HEQ\Projects\vispy_vulkan\tools\oracle_marker_extensions_capture.py", line 126 in main
+  File "C:\Users\HEQ\Projects\vispy_vulkan\tools\oracle_marker_extensions_capture.py", line 152 in <module>
+WARNING: SetProcessDpiAwarenessContext() failed: Access is denied.
+Qt's default DPI awareness context is DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE_V2. If you know what you are doing, you can overwrite this default using qt.conf (https://doc.qt.io/qt-6/highdpi.html#configuring-windows).
+Traceback (most recent call last):
+  File "C:\Users\HEQ\Projects\vispy_vulkan\tools\oracle_marker_extensions_capture.py", line 136, in main
+    assert_landmarks(args.worker, image)
+  File "C:\Users\HEQ\Projects\vispy_vulkan\tools\fixture_marker_extensions.py", line 143, in assert_landmarks
+    assert pixel.tolist() == mark["rgba"], (name, mark, pixel.tolist())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ('instanced_color_revision', {'row': 24, 'column': 24, 'rgba': [255, 0, 0, 255]}, [0, 0, 0, 255])
+WARNING: SetProcessDpiAwarenessContext() failed: Access is denied.
+Qt's default DPI awareness context is DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE_V2. If you know what you are doing, you can overwrite this default using qt.conf (https://doc.qt.io/qt-6/highdpi.html#configuring-windows).
+Traceback (most recent call last):
+  File "C:\Users\HEQ\Projects\vispy_vulkan\tools\oracle_marker_extensions_capture.py", line 136, in main
+    assert_landmarks(args.worker, image)
+  File "C:\Users\HEQ\Projects\vispy_vulkan\tools\fixture_marker_extensions.py", line 143, in assert_landmarks
+    assert pixel.tolist() == mark["rgba"], (name, mark, pixel.tolist())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ('instanced_position_revision', {'row': 24, 'column': 24, 'rgba': [255, 0, 0, 255]}, [0, 0, 0, 255])

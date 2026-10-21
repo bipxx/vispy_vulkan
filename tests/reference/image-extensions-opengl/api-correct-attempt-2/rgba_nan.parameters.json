@@ -1,0 +1,329 @@
+{
+  "case": "rgba_nan",
+  "clim": [
+    0.0,
+    1.0
+  ],
+  "comparison": {
+    "candidate_alignment_or_color_fit": false,
+    "full_frame_exact": true,
+    "landmark_max_abs_u8": 1
+  },
+  "current_context_samples": 0,
+  "final_inputs": [
+    {
+      "dtype": "<f4",
+      "sha256": "c68508c77300352c4e0de9d3d7fc0459fbaff830815a51af23d12d6f396369f4",
+      "shape": [
+        24,
+        32,
+        4
+      ]
+    }
+  ],
+  "inputs": [
+    {
+      "dtype": "<f4",
+      "sha256": "c68508c77300352c4e0de9d3d7fc0459fbaff830815a51af23d12d6f396369f4",
+      "shape": [
+        24,
+        32,
+        4
+      ]
+    }
+  ],
+  "landmarks": [
+    {
+      "column": 16,
+      "rgba": [
+        0,
+        128,
+        191,
+        255
+      ],
+      "row": 20
+    },
+    {
+      "column": 92,
+      "rgba": [
+        32,
+        64,
+        128,
+        255
+      ],
+      "row": 64
+    },
+    {
+      "column": 16,
+      "rgba": [
+        64,
+        128,
+        191,
+        255
+      ],
+      "row": 80
+    }
+  ],
+  "multiscale_revision_scope": "per-level CPU content plus real selected-texture GLIR uploads; no fictitious per-level GPU cache",
+  "readbacks": "one final scene.render; no intermediate readback",
+  "sample_query_scope": "actual current context; render export allocates its own single-sample FBO",
+  "selected_texture_descriptor_from_gloo": {
+    "format": "rgba",
+    "internalformat": "rgba32f",
+    "interpolation": "nearest",
+    "shape": [
+      24,
+      32,
+      4
+    ]
+  },
+  "size": [
+    128,
+    96
+  ],
+  "stage_commands": [
+    {
+      "command_index": 0,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 1,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 2,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 3,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 4,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 5,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 6,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 7,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 8,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 9,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 10,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 11,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 12,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 13,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 14,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 15,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 16,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 17,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 18,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 19,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 20,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 21,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 22,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 23,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 24,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 25,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 26,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 27,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 28,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 29,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 30,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 31,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 32,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 33,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 34,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 35,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 36,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 37,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 38,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 39,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 40,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 41,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 42,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 43,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 44,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 45,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 46,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 47,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 48,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 49,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 50,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 51,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 52,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 53,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 54,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 55,
+      "stage": "final_read"
+    }
+  ],
+  "texture_format_requested": "r32f",
+  "texture_uploads": [
+    {
+      "command_index": 38,
+      "dtype": "<f4",
+      "offset": [
+        0,
+        0
+      ],
+      "sha256": "c68508c77300352c4e0de9d3d7fc0459fbaff830815a51af23d12d6f396369f4",
+      "shape": [
+        24,
+        32,
+        4
+      ],
+      "stage": "final_read"
+    }
+  ],
+  "workflow": "public ImageVisual"
+}

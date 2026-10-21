@@ -1,0 +1,971 @@
+[
+  [
+    "CURRENT",
+    0,
+    1
+  ],
+  [
+    "CREATE",
+    5,
+    "FrameBuffer"
+  ],
+  [
+    "CREATE",
+    3,
+    "RenderBuffer"
+  ],
+  [
+    "SIZE",
+    3,
+    [
+      96,
+      128
+    ],
+    "color"
+  ],
+  [
+    "ATTACH",
+    5,
+    "color",
+    3
+  ],
+  [
+    "CREATE",
+    4,
+    "RenderBuffer"
+  ],
+  [
+    "SIZE",
+    4,
+    [
+      96,
+      128
+    ],
+    "depth"
+  ],
+  [
+    "ATTACH",
+    5,
+    "depth",
+    4
+  ],
+  [
+    "FRAMEBUFFER",
+    5,
+    true
+  ],
+  [
+    "FUNC",
+    "glViewport",
+    0,
+    0,
+    128,
+    96
+  ],
+  [
+    "FUNC",
+    "glClearColor",
+    0.0,
+    0.0,
+    0.0,
+    1.0
+  ],
+  [
+    "FUNC",
+    "glClear",
+    17664
+  ],
+  [
+    "FUNC",
+    "glViewport",
+    0,
+    0,
+    128,
+    96
+  ],
+  [
+    "FUNC",
+    "glDisable",
+    "cull_face"
+  ],
+  [
+    "FUNC",
+    "glEnable",
+    "blend"
+  ],
+  [
+    "FUNC",
+    "glDisable",
+    "depth_test"
+  ],
+  [
+    "FUNC",
+    "glBlendFuncSeparate",
+    "src_alpha",
+    "one_minus_src_alpha",
+    "src_alpha",
+    "one_minus_src_alpha"
+  ],
+  [
+    "FUNC",
+    "glDisable",
+    "cull_face"
+  ],
+  [
+    "FUNC",
+    "glEnable",
+    "blend"
+  ],
+  [
+    "FUNC",
+    "glDisable",
+    "depth_test"
+  ],
+  [
+    "FUNC",
+    "glBlendFuncSeparate",
+    "src_alpha",
+    "one_minus_src_alpha",
+    "src_alpha",
+    "one_minus_src_alpha"
+  ],
+  [
+    "CREATE",
+    1,
+    "Program"
+  ],
+  [
+    "CREATE",
+    9,
+    "VertexShader"
+  ],
+  [
+    "DATA",
+    9,
+    0,
+    "vec4 null_transform_map(vec4 pos) {return pos;}\n\nvec4 transform_map_chain(vec4 pos) {\n    vec4 result_1 = null_transform_map(pos);\n    return result_1;\n}\n\nvec4 transform_map_chain_1(vec4 pos) {\n    vec4 result_1 = transform_map_chain(pos);\n    return result_1;\n}\n\nvec4 null_transform_map_1(vec4 pos) {return pos;}\n\nvec4 transform_map_chain_2(vec4 pos) {\n    vec4 result_1 = null_transform_map_1(pos);\n    return result_1;\n}\n\nvec4 transform_map_chain_3(vec4 pos) {\n    vec4 result_1 = transform_map_chain_2(pos);\n    return result_1;\n}\n\nvec4 null_transform_map_2(vec4 pos) {return pos;}\n\nvec4 transform_map_chain_4(vec4 pos) {\n    vec4 result_1 = null_transform_map_2(pos);\n    return result_1;\n}\n\nvec4 transform_map_chain_5(vec4 pos) {\n    vec4 result_1 = transform_map_chain_4(pos);\n    return result_1;\n}\n\nuniform vec4 u_scale;\nuniform vec4 u_translate;\n\nvec4 st_transform_map(vec4 pos) {\n    return vec4(pos.xyz * u_scale.xyz + u_translate.xyz * pos.w, pos.w);\n}\n\n\nuniform vec4 u_scale_1;\nuniform vec4 u_translate_1;\n\nvec4 st_transform_map_1(vec4 pos) {\n    return vec4(pos.xyz * u_scale_1.xyz + u_translate_1.xyz * pos.w, pos.w);\n}\n\n\nvec4 transform_map_chain_6(vec4 pos) {\n    vec4 result_1 = st_transform_map(pos);\n    vec4 result_2 = st_transform_map_1(result_1);\n    return result_2;\n}\n\nvec4 transform_map_chain_7(vec4 pos) {\n    vec4 result_1 = transform_map_chain_6(pos);\n    return result_1;\n}\n\nuniform vec4 u_scale_2;\nuniform vec4 u_translate_2;\n\nvec4 st_transform_map_2(vec4 pos) {\n    return vec4(pos.xyz * u_scale_2.xyz + u_translate_2.xyz * pos.w, pos.w);\n}\n\n\nvec4 transform_map_chain_8(vec4 pos) {\n    vec4 result_1 = st_transform_map_2(pos);\n    return result_1;\n}\n\nvec4 transform_map_chain_9(vec4 pos) {\n    vec4 result_1 = transform_map_chain_8(pos);\n    return result_1;\n}\n\nvec4 transform_map_chain_10(vec4 pos) {\n    vec4 result_1 = transform_map_chain_1(pos);\n    vec4 result_2 = transform_map_chain_3(result_1);\n    vec4 result_3 = transform_map_chain_5(result_2);\n    vec4 result_4 = transform_map_chain_7(result_3);\n    vec4 result_5 = transform_map_chain_9(result_4);\n    return result_5;\n}\n\nattribute vec4 a_color;\n\nuniform bool u_scaling;\nuniform vec2 u_px_scale;\nuniform float u_npix;\nattribute float a_rotation;  // rotation in rad\nattribute vec2 a_position; // in point units\nattribute vec2 a_texcoord;\nattribute vec3 a_pos;  // anchor position\nvarying vec2 v_texcoord;\nvarying vec4 v_color;\n\nvoid main(void) {\n    // Eventually \"rot\" should be handled by SRTTransform or so...\n    mat4 rot = mat4(cos(a_rotation), -sin(a_rotation), 0, 0,\n                    sin(a_rotation), cos(a_rotation), 0, 0,\n                    0, 0, 1, 0, 0, 0, 0, 1);\n    vec4 pos = transform_map_chain_10(vec4(a_pos, 1));\n    vec2 vertex = (rot * vec4(a_position, 0, 1)).xy;\n    vec2 px_direction = normalize(u_px_scale);\n\n    float scale;\n\n    if ( u_scaling ) {\n        // small step along each axis for jacobian by finite-differences\n        vec2 ndc_anchor = pos.xy / pos.w;\n        float e = 1e-3;\n        vec4 cx = transform_map_chain_10(vec4(a_pos + vec3(e, 0, 0), 1));\n        vec4 cy = transform_map_chain_10(vec4(a_pos + vec3(0, e, 0), 1));\n        vec4 cz = transform_map_chain_10(vec4(a_pos + vec3(0, 0, e), 1));\n        vec2 dx = cx.xy / cx.w - ndc_anchor;\n        vec2 dy = cy.xy / cy.w - ndc_anchor;\n        vec2 dz = cz.xy / cz.w - ndc_anchor;\n\n        float world_mag = sqrt(dot(dx, dx) + dot(dy, dy) + dot(dz, dz)) / e;\n        // non-positive clip.w means the anchor (or a step) is behind the camera\n        if (pos.w <= 0 || cx.w <= 0 || cy.w <= 0 || cz.w <= 0) {\n            world_mag = 0;\n        }\n\n        scale = u_npix * world_mag;\n    } else {\n        scale = u_npix * length(u_px_scale);\n    }\n\n    float scale_x = scale * px_direction.x * vertex.x;\n    float scale_y = scale * px_direction.y * vertex.y;\n    vec4 offset = vec4(scale_x, scale_y, 0, 1);\n\n    gl_Position = vec4(pos.xyz + offset.xyz * pos.w, pos.w);\n    v_texcoord = a_texcoord;\n    v_color = a_color;\n}\n\n"
+  ],
+  [
+    "ATTACH",
+    1,
+    9
+  ],
+  [
+    "CREATE",
+    10,
+    "FragmentShader"
+  ],
+  [
+    "DATA",
+    10,
+    0,
+    "uniform float u_alpha;\n\nvoid apply_alpha() {\n    gl_FragColor.a = gl_FragColor.a * u_alpha;\n}\n\n\nuniform vec4 u_id_color;\nuniform int u_enabled;\n\nvoid picking_filter() {\n    if( u_enabled == 0 )\n        return;\n    if( gl_FragColor.a == 0.0 )\n        discard;\n    gl_FragColor = u_id_color;\n}\n\n\n\n    // Extensions for WebGL\n    #extension GL_OES_standard_derivatives : enable\n    #extension GL_OES_element_index_uint : enable\n    \n// --- start of \"misc/spatial-filters.frag\" ---\n// ------------------------------------\n// Automatically generated, do not edit\n// ------------------------------------\nconst float kernel_bias  = -0.23437733388100893;\nconst float kernel_scale = 1.2419743353536359;\nconst float kernel_size = 1024;\nconst vec4 bits = vec4(1, 0.00390625, 1.52587890625e-05, 5.960464477539063e-08);\nuniform sampler2D u_kernel;\n\nfloat unpack_unit(vec4 rgba) {\n    // return rgba.r;  // uncomment this for r32f debugging\n    return dot(rgba, bits);\n}\n\nfloat unpack_ieee(vec4 rgba) {\n    // return rgba.r;  // uncomment this for r32f debugging\n    rgba.rgba = rgba.abgr * 255;\n    float sign = 1 - step(128 , rgba[0]) * 2;\n    float exponent = 2 * mod(rgba[0] , 128) + step(128 , rgba[1]) - 127;\n    float mantissa = mod(rgba[1] , 128) * 65536 + rgba[2] * 256 + rgba[3] + float(0x800000);\n    return sign * exp2(exponent) * (mantissa * exp2(-23.));\n}\n\n\nfloat unpack_interpolate(sampler2D kernel, vec2 uv) {\n    // return texture2D(kernel, uv).r;  //uncomment this for r32f debug without interpolation\n    float kpixel = 1. / kernel_size;\n    float u = uv.x / kpixel;\n    float v = uv.y;\n    float uf = fract(u);\n    u = (u - uf) * kpixel;\n    float d0 = unpack_unit(texture2D(kernel, vec2(u, v)));\n    float d1 = unpack_unit(texture2D(kernel, vec2(u + 1. * kpixel, v)));\n    return mix(d0, d1, uf);\n}\n\nvec4 filter1D_radius1(sampler2D kernel, float index, float x, vec4 c0, vec4 c1) {\n    float w, w_sum = 0;\n    vec4 r = vec4(0);\n    \n    w = unpack_interpolate(kernel, vec2(0.0 + (x / 1), index));\n    w = w * kernel_scale + kernel_bias;\n    r += c0 * w;\n    w = unpack_interpolate(kernel, vec2(1.0 - (x / 1), index));\n    w = w * kernel_scale + kernel_bias;\n    r += c1 * w;\n    return r;\n}\n\nvec4 filter2D_radius1(sampler2D texture, sampler2D kernel, float index, vec2 uv, vec2 pixel) {\n    vec2 texel = uv / pixel - vec2(0.5);\n    vec2 f = fract(texel);\n    texel = (texel - fract(texel) + vec2(0.001)) * pixel;\n    \n    vec4 t0 = filter1D_radius1(kernel, index, f.x,\n        texture2D(texture, texel + vec2(0, 0) * pixel),\n        texture2D(texture, texel + vec2(1, 0) * pixel));\n    vec4 t1 = filter1D_radius1(kernel, index, f.x,\n        texture2D(texture, texel + vec2(0, 1) * pixel),\n        texture2D(texture, texel + vec2(1, 1) * pixel));\n    return filter1D_radius1(kernel, index, f.y, t0, t1);\n}\n\nvec4 filter3D_radius1(sampler3D texture, sampler2D kernel, float index, vec3 uv, vec3 pixel) {\n    vec3 texel = uv / pixel - vec3(0.5);\n    vec3 f = fract(texel);\n    texel = (texel - fract(texel) + vec3(0.001)) * pixel;\n    \n    vec4 t00 = filter1D_radius1(kernel, index, f.x,\n        texture3D(texture, texel + vec3(0, 0, 0) * pixel),\n        texture3D(texture, texel + vec3(1, 0, 0) * pixel));\n    vec4 t01 = filter1D_radius1(kernel, index, f.x,\n        texture3D(texture, texel + vec3(0, 1, 0) * pixel),\n        texture3D(texture, texel + vec3(1, 1, 0) * pixel));\n    vec4 t10 = filter1D_radius1(kernel, index, f.x,\n        texture3D(texture, texel + vec3(0, 0, 1) * pixel),\n        texture3D(texture, texel + vec3(1, 0, 1) * pixel));\n    vec4 t11 = filter1D_radius1(kernel, index, f.x,\n        texture3D(texture, texel + vec3(0, 1, 1) * pixel),\n        texture3D(texture, texel + vec3(1, 1, 1) * pixel));\n    \n    vec4 t0 = filter1D_radius1(kernel, index, f.y, t00, t01);\n    vec4 t1 = filter1D_radius1(kernel, index, f.y, t10, t11);\n    return filter1D_radius1(kernel, index, f.z, t0, t1);\n}\n\nvec4 filter1D_radius2(sampler2D kernel, float index, float x, vec4 c0, vec4 c1, vec4 c2, vec4 c3) {\n    float w, w_sum = 0;\n    vec4 r = vec4(0);\n    \n    w = unpack_interpolate(kernel, vec2(0.5 + (x / 2), index));\n    w = w * kernel_scale + kernel_bias;\n    r += c0 * w;\n    w = unpack_interpolate(kernel, vec2(0.5 - (x / 2), index));\n    w = w * kernel_scale + kernel_bias;\n    r += c2 * w;\n    w = unpack_interpolate(kernel, vec2(0.0 + (x / 2), index));\n    w = w * kernel_scale + kernel_bias;\n    r += c1 * w;\n    w = unpack_interpolate(kernel, vec2(1.0 - (x / 2), index));\n    w = w * kernel_scale + kernel_bias;\n    r += c3 * w;\n    return r;\n}\n\nvec4 filter2D_radius2(sampler2D texture, sampler2D kernel, float index, vec2 uv, vec2 pixel) {\n    vec2 texel = uv / pixel - vec2(0.5);\n    vec2 f = fract(texel);\n    texel = (texel - fract(texel) + vec2(0.001)) * pixel;\n    \n    vec4 t0 = filter1D_radius2(kernel, index, f.x,\n        texture2D(texture, texel + vec2(-1, -1) * pixel),\n        texture2D(texture, texel + vec2(0, -1) * pixel),\n        texture2D(texture, texel + vec2(1, -1) * pixel),\n        texture2D(texture, texel + vec2(2, -1) * pixel));\n    vec4 t1 = filter1D_radius2(kernel, index, f.x,\n        texture2D(texture, texel + vec2(-1, 0) * pixel),\n        texture2D(texture, texel + vec2(0, 0) * pixel),\n        texture2D(texture, texel + vec2(1, 0) * pixel),\n        texture2D(texture, texel + vec2(2, 0) * pixel));\n    vec4 t2 = filter1D_radius2(kernel, index, f.x,\n        texture2D(texture, texel + vec2(-1, 1) * pixel),\n        texture2D(texture, texel + vec2(0, 1) * pixel),\n        texture2D(texture, texel + vec2(1, 1) * pixel),\n        texture2D(texture, texel + vec2(2, 1) * pixel));\n    vec4 t3 = filter1D_radius2(kernel, index, f.x,\n        texture2D(texture, texel + vec2(-1, 2) * pixel),\n        texture2D(texture, texel + vec2(0, 2) * pixel),\n        texture2D(texture, texel + vec2(1, 2) * pixel),\n        texture2D(texture, texel + vec2(2, 2) * pixel));\n    return filter1D_radius2(kernel, index, f.y, t0, t1, t2, t3);\n}\n\nvec4 filter3D_radius2(sampler3D texture, sampler2D kernel, float index, vec3 uv, vec3 pixel) {\n    vec3 texel = uv / pixel - vec3(0.5);\n    vec3 f = fract(texel);\n    texel = (texel - fract(texel) + vec3(0.001)) * pixel;\n    \n    vec4 t00 = filter1D_radius2(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-1, -1, -1) * pixel),\n        texture3D(texture, texel + vec3(0, -1, -1) * pixel),\n        texture3D(texture, texel + vec3(1, -1, -1) * pixel),\n        texture3D(texture, texel + vec3(2, -1, -1) * pixel));\n    vec4 t01 = filter1D_radius2(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-1, 0, -1) * pixel),\n        texture3D(texture, texel + vec3(0, 0, -1) * pixel),\n        texture3D(texture, texel + vec3(1, 0, -1) * pixel),\n        texture3D(texture, texel + vec3(2, 0, -1) * pixel));\n    vec4 t02 = filter1D_radius2(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-1, 1, -1) * pixel),\n        texture3D(texture, texel + vec3(0, 1, -1) * pixel),\n        texture3D(texture, texel + vec3(1, 1, -1) * pixel),\n        texture3D(texture, texel + vec3(2, 1, -1) * pixel));\n    vec4 t03 = filter1D_radius2(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-1, 2, -1) * pixel),\n        texture3D(texture, texel + vec3(0, 2, -1) * pixel),\n        texture3D(texture, texel + vec3(1, 2, -1) * pixel),\n        texture3D(texture, texel + vec3(2, 2, -1) * pixel));\n    vec4 t10 = filter1D_radius2(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-1, -1, 0) * pixel),\n        texture3D(texture, texel + vec3(0, -1, 0) * pixel),\n        texture3D(texture, texel + vec3(1, -1, 0) * pixel),\n        texture3D(texture, texel + vec3(2, -1, 0) * pixel));\n    vec4 t11 = filter1D_radius2(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-1, 0, 0) * pixel),\n        texture3D(texture, texel + vec3(0, 0, 0) * pixel),\n        texture3D(texture, texel + vec3(1, 0, 0) * pixel),\n        texture3D(texture, texel + vec3(2, 0, 0) * pixel));\n    vec4 t12 = filter1D_radius2(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-1, 1, 0) * pixel),\n        texture3D(texture, texel + vec3(0, 1, 0) * pixel),\n        texture3D(texture, texel + vec3(1, 1, 0) * pixel),\n        texture3D(texture, texel + vec3(2, 1, 0) * pixel));\n    vec4 t13 = filter1D_radius2(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-1, 2, 0) * pixel),\n        texture3D(texture, texel + vec3(0, 2, 0) * pixel),\n        texture3D(texture, texel + vec3(1, 2, 0) * pixel),\n        texture3D(texture, texel + vec3(2, 2, 0) * pixel));\n    vec4 t20 = filter1D_radius2(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-1, -1, 1) * pixel),\n        texture3D(texture, texel + vec3(0, -1, 1) * pixel),\n        texture3D(texture, texel + vec3(1, -1, 1) * pixel),\n        texture3D(texture, texel + vec3(2, -1, 1) * pixel));\n    vec4 t21 = filter1D_radius2(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-1, 0, 1) * pixel),\n        texture3D(texture, texel + vec3(0, 0, 1) * pixel),\n        texture3D(texture, texel + vec3(1, 0, 1) * pixel),\n        texture3D(texture, texel + vec3(2, 0, 1) * pixel));\n    vec4 t22 = filter1D_radius2(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-1, 1, 1) * pixel),\n        texture3D(texture, texel + vec3(0, 1, 1) * pixel),\n        texture3D(texture, texel + vec3(1, 1, 1) * pixel),\n        texture3D(texture, texel + vec3(2, 1, 1) * pixel));\n    vec4 t23 = filter1D_radius2(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-1, 2, 1) * pixel),\n        texture3D(texture, texel + vec3(0, 2, 1) * pixel),\n        texture3D(texture, texel + vec3(1, 2, 1) * pixel),\n        texture3D(texture, texel + vec3(2, 2, 1) * pixel));\n    vec4 t30 = filter1D_radius2(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-1, -1, 2) * pixel),\n        texture3D(texture, texel + vec3(0, -1, 2) * pixel),\n        texture3D(texture, texel + vec3(1, -1, 2) * pixel),\n        texture3D(texture, texel + vec3(2, -1, 2) * pixel));\n    vec4 t31 = filter1D_radius2(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-1, 0, 2) * pixel),\n        texture3D(texture, texel + vec3(0, 0, 2) * pixel),\n        texture3D(texture, texel + vec3(1, 0, 2) * pixel),\n        texture3D(texture, texel + vec3(2, 0, 2) * pixel));\n    vec4 t32 = filter1D_radius2(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-1, 1, 2) * pixel),\n        texture3D(texture, texel + vec3(0, 1, 2) * pixel),\n        texture3D(texture, texel + vec3(1, 1, 2) * pixel),\n        texture3D(texture, texel + vec3(2, 1, 2) * pixel));\n    vec4 t33 = filter1D_radius2(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-1, 2, 2) * pixel),\n        texture3D(texture, texel + vec3(0, 2, 2) * pixel),\n        texture3D(texture, texel + vec3(1, 2, 2) * pixel),\n        texture3D(texture, texel + vec3(2, 2, 2) * pixel));\n    \n    vec4 t0 = filter1D_radius2(kernel, index, f.y, t00, t01, t02, t03);\n    vec4 t1 = filter1D_radius2(kernel, index, f.y, t10, t11, t12, t13);\n    vec4 t2 = filter1D_radius2(kernel, index, f.y, t20, t21, t22, t23);\n    vec4 t3 = filter1D_radius2(kernel, index, f.y, t30, t31, t32, t33);\n    return filter1D_radius2(kernel, index, f.z, t0, t1, t2, t3);\n}\n\nvec4 filter1D_radius3(sampler2D kernel, float index, float x, vec4 c0, vec4 c1, vec4 c2, vec4 c3, vec4 c4, vec4 c5) {\n    float w, w_sum = 0;\n    vec4 r = vec4(0);\n    \n    w = unpack_interpolate(kernel, vec2(0.6666666666666667 + (x / 3), index));\n    w = w * kernel_scale + kernel_bias;\n    r += c0 * w;\n    w = unpack_interpolate(kernel, vec2(0.3333333333333333 - (x / 3), index));\n    w = w * kernel_scale + kernel_bias;\n    r += c3 * w;\n    w = unpack_interpolate(kernel, vec2(0.33333333333333337 + (x / 3), index));\n    w = w * kernel_scale + kernel_bias;\n    r += c1 * w;\n    w = unpack_interpolate(kernel, vec2(0.6666666666666666 - (x / 3), index));\n    w = w * kernel_scale + kernel_bias;\n    r += c4 * w;\n    w = unpack_interpolate(kernel, vec2(0.0 + (x / 3), index));\n    w = w * kernel_scale + kernel_bias;\n    r += c2 * w;\n    w = unpack_interpolate(kernel, vec2(1.0 - (x / 3), index));\n    w = w * kernel_scale + kernel_bias;\n    r += c5 * w;\n    return r;\n}\n\nvec4 filter2D_radius3(sampler2D texture, sampler2D kernel, float index, vec2 uv, vec2 pixel) {\n    vec2 texel = uv / pixel - vec2(0.5);\n    vec2 f = fract(texel);\n    texel = (texel - fract(texel) + vec2(0.001)) * pixel;\n    \n    vec4 t0 = filter1D_radius3(kernel, index, f.x,\n        texture2D(texture, texel + vec2(-2, -2) * pixel),\n        texture2D(texture, texel + vec2(-1, -2) * pixel),\n        texture2D(texture, texel + vec2(0, -2) * pixel),\n        texture2D(texture, texel + vec2(1, -2) * pixel),\n        texture2D(texture, texel + vec2(2, -2) * pixel),\n        texture2D(texture, texel + vec2(3, -2) * pixel));\n    vec4 t1 = filter1D_radius3(kernel, index, f.x,\n        texture2D(texture, texel + vec2(-2, -1) * pixel),\n        texture2D(texture, texel + vec2(-1, -1) * pixel),\n        texture2D(texture, texel + vec2(0, -1) * pixel),\n        texture2D(texture, texel + vec2(1, -1) * pixel),\n        texture2D(texture, texel + vec2(2, -1) * pixel),\n        texture2D(texture, texel + vec2(3, -1) * pixel));\n    vec4 t2 = filter1D_radius3(kernel, index, f.x,\n        texture2D(texture, texel + vec2(-2, 0) * pixel),\n        texture2D(texture, texel + vec2(-1, 0) * pixel),\n        texture2D(texture, texel + vec2(0, 0) * pixel),\n        texture2D(texture, texel + vec2(1, 0) * pixel),\n        texture2D(texture, texel + vec2(2, 0) * pixel),\n        texture2D(texture, texel + vec2(3, 0) * pixel));\n    vec4 t3 = filter1D_radius3(kernel, index, f.x,\n        texture2D(texture, texel + vec2(-2, 1) * pixel),\n        texture2D(texture, texel + vec2(-1, 1) * pixel),\n        texture2D(texture, texel + vec2(0, 1) * pixel),\n        texture2D(texture, texel + vec2(1, 1) * pixel),\n        texture2D(texture, texel + vec2(2, 1) * pixel),\n        texture2D(texture, texel + vec2(3, 1) * pixel));\n    vec4 t4 = filter1D_radius3(kernel, index, f.x,\n        texture2D(texture, texel + vec2(-2, 2) * pixel),\n        texture2D(texture, texel + vec2(-1, 2) * pixel),\n        texture2D(texture, texel + vec2(0, 2) * pixel),\n        texture2D(texture, texel + vec2(1, 2) * pixel),\n        texture2D(texture, texel + vec2(2, 2) * pixel),\n        texture2D(texture, texel + vec2(3, 2) * pixel));\n    vec4 t5 = filter1D_radius3(kernel, index, f.x,\n        texture2D(texture, texel + vec2(-2, 3) * pixel),\n        texture2D(texture, texel + vec2(-1, 3) * pixel),\n        texture2D(texture, texel + vec2(0, 3) * pixel),\n        texture2D(texture, texel + vec2(1, 3) * pixel),\n        texture2D(texture, texel + vec2(2, 3) * pixel),\n        texture2D(texture, texel + vec2(3, 3) * pixel));\n    return filter1D_radius3(kernel, index, f.y, t0, t1, t2, t3, t4, t5);\n}\n\nvec4 filter3D_radius3(sampler3D texture, sampler2D kernel, float index, vec3 uv, vec3 pixel) {\n    vec3 texel = uv / pixel - vec3(0.5);\n    vec3 f = fract(texel);\n    texel = (texel - fract(texel) + vec3(0.001)) * pixel;\n    \n    vec4 t00 = filter1D_radius3(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-2, -2, -2) * pixel),\n        texture3D(texture, texel + vec3(-1, -2, -2) * pixel),\n        texture3D(texture, texel + vec3(0, -2, -2) * pixel),\n        texture3D(texture, texel + vec3(1, -2, -2) * pixel),\n        texture3D(texture, texel + vec3(2, -2, -2) * pixel),\n        texture3D(texture, texel + vec3(3, -2, -2) * pixel));\n    vec4 t01 = filter1D_radius3(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-2, -1, -2) * pixel),\n        texture3D(texture, texel + vec3(-1, -1, -2) * pixel),\n        texture3D(texture, texel + vec3(0, -1, -2) * pixel),\n        texture3D(texture, texel + vec3(1, -1, -2) * pixel),\n        texture3D(texture, texel + vec3(2, -1, -2) * pixel),\n        texture3D(texture, texel + vec3(3, -1, -2) * pixel));\n    vec4 t02 = filter1D_radius3(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-2, 0, -2) * pixel),\n        texture3D(texture, texel + vec3(-1, 0, -2) * pixel),\n        texture3D(texture, texel + vec3(0, 0, -2) * pixel),\n        texture3D(texture, texel + vec3(1, 0, -2) * pixel),\n        texture3D(texture, texel + vec3(2, 0, -2) * pixel),\n        texture3D(texture, texel + vec3(3, 0, -2) * pixel));\n    vec4 t03 = filter1D_radius3(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-2, 1, -2) * pixel),\n        texture3D(texture, texel + vec3(-1, 1, -2) * pixel),\n        texture3D(texture, texel + vec3(0, 1, -2) * pixel),\n        texture3D(texture, texel + vec3(1, 1, -2) * pixel),\n        texture3D(texture, texel + vec3(2, 1, -2) * pixel),\n        texture3D(texture, texel + vec3(3, 1, -2) * pixel));\n    vec4 t04 = filter1D_radius3(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-2, 2, -2) * pixel),\n        texture3D(texture, texel + vec3(-1, 2, -2) * pixel),\n        texture3D(texture, texel + vec3(0, 2, -2) * pixel),\n        texture3D(texture, texel + vec3(1, 2, -2) * pixel),\n        texture3D(texture, texel + vec3(2, 2, -2) * pixel),\n        texture3D(texture, texel + vec3(3, 2, -2) * pixel));\n    vec4 t05 = filter1D_radius3(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-2, 3, -2) * pixel),\n        texture3D(texture, texel + vec3(-1, 3, -2) * pixel),\n        texture3D(texture, texel + vec3(0, 3, -2) * pixel),\n        texture3D(texture, texel + vec3(1, 3, -2) * pixel),\n        texture3D(texture, texel + vec3(2, 3, -2) * pixel),\n        texture3D(texture, texel + vec3(3, 3, -2) * pixel));\n    vec4 t10 = filter1D_radius3(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-2, -2, -1) * pixel),\n        texture3D(texture, texel + vec3(-1, -2, -1) * pixel),\n        texture3D(texture, texel + vec3(0, -2, -1) * pixel),\n        texture3D(texture, texel + vec3(1, -2, -1) * pixel),\n        texture3D(texture, texel + vec3(2, -2, -1) * pixel),\n        texture3D(texture, texel + vec3(3, -2, -1) * pixel));\n    vec4 t11 = filter1D_radius3(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-2, -1, -1) * pixel),\n        texture3D(texture, texel + vec3(-1, -1, -1) * pixel),\n        texture3D(texture, texel + vec3(0, -1, -1) * pixel),\n        texture3D(texture, texel + vec3(1, -1, -1) * pixel),\n        texture3D(texture, texel + vec3(2, -1, -1) * pixel),\n        texture3D(texture, texel + vec3(3, -1, -1) * pixel));\n    vec4 t12 = filter1D_radius3(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-2, 0, -1) * pixel),\n        texture3D(texture, texel + vec3(-1, 0, -1) * pixel),\n        texture3D(texture, texel + vec3(0, 0, -1) * pixel),\n        texture3D(texture, texel + vec3(1, 0, -1) * pixel),\n        texture3D(texture, texel + vec3(2, 0, -1) * pixel),\n        texture3D(texture, texel + vec3(3, 0, -1) * pixel));\n    vec4 t13 = filter1D_radius3(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-2, 1, -1) * pixel),\n        texture3D(texture, texel + vec3(-1, 1, -1) * pixel),\n        texture3D(texture, texel + vec3(0, 1, -1) * pixel),\n        texture3D(texture, texel + vec3(1, 1, -1) * pixel),\n        texture3D(texture, texel + vec3(2, 1, -1) * pixel),\n        texture3D(texture, texel + vec3(3, 1, -1) * pixel));\n    vec4 t14 = filter1D_radius3(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-2, 2, -1) * pixel),\n        texture3D(texture, texel + vec3(-1, 2, -1) * pixel),\n        texture3D(texture, texel + vec3(0, 2, -1) * pixel),\n        texture3D(texture, texel + vec3(1, 2, -1) * pixel),\n        texture3D(texture, texel + vec3(2, 2, -1) * pixel),\n        texture3D(texture, texel + vec3(3, 2, -1) * pixel));\n    vec4 t15 = filter1D_radius3(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-2, 3, -1) * pixel),\n        texture3D(texture, texel + vec3(-1, 3, -1) * pixel),\n        texture3D(texture, texel + vec3(0, 3, -1) * pixel),\n        texture3D(texture, texel + vec3(1, 3, -1) * pixel),\n        texture3D(texture, texel + vec3(2, 3, -1) * pixel),\n        texture3D(texture, texel + vec3(3, 3, -1) * pixel));\n    vec4 t20 = filter1D_radius3(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-2, -2, 0) * pixel),\n        texture3D(texture, texel + vec3(-1, -2, 0) * pixel),\n        texture3D(texture, texel + vec3(0, -2, 0) * pixel),\n        texture3D(texture, texel + vec3(1, -2, 0) * pixel),\n        texture3D(texture, texel + vec3(2, -2, 0) * pixel),\n        texture3D(texture, texel + vec3(3, -2, 0) * pixel));\n    vec4 t21 = filter1D_radius3(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-2, -1, 0) * pixel),\n        texture3D(texture, texel + vec3(-1, -1, 0) * pixel),\n        texture3D(texture, texel + vec3(0, -1, 0) * pixel),\n        texture3D(texture, texel + vec3(1, -1, 0) * pixel),\n        texture3D(texture, texel + vec3(2, -1, 0) * pixel),\n        texture3D(texture, texel + vec3(3, -1, 0) * pixel));\n    vec4 t22 = filter1D_radius3(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-2, 0, 0) * pixel),\n        texture3D(texture, texel + vec3(-1, 0, 0) * pixel),\n        texture3D(texture, texel + vec3(0, 0, 0) * pixel),\n        texture3D(texture, texel + vec3(1, 0, 0) * pixel),\n        texture3D(texture, texel + vec3(2, 0, 0) * pixel),\n        texture3D(texture, texel + vec3(3, 0, 0) * pixel));\n    vec4 t23 = filter1D_radius3(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-2, 1, 0) * pixel),\n        texture3D(texture, texel + vec3(-1, 1, 0) * pixel),\n        texture3D(texture, texel + vec3(0, 1, 0) * pixel),\n        texture3D(texture, texel + vec3(1, 1, 0) * pixel),\n        texture3D(texture, texel + vec3(2, 1, 0) * pixel),\n        texture3D(texture, texel + vec3(3, 1, 0) * pixel));\n    vec4 t24 = filter1D_radius3(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-2, 2, 0) * pixel),\n        texture3D(texture, texel + vec3(-1, 2, 0) * pixel),\n        texture3D(texture, texel + vec3(0, 2, 0) * pixel),\n        texture3D(texture, texel + vec3(1, 2, 0) * pixel),\n        texture3D(texture, texel + vec3(2, 2, 0) * pixel),\n        texture3D(texture, texel + vec3(3, 2, 0) * pixel));\n    vec4 t25 = filter1D_radius3(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-2, 3, 0) * pixel),\n        texture3D(texture, texel + vec3(-1, 3, 0) * pixel),\n        texture3D(texture, texel + vec3(0, 3, 0) * pixel),\n        texture3D(texture, texel + vec3(1, 3, 0) * pixel),\n        texture3D(texture, texel + vec3(2, 3, 0) * pixel),\n        texture3D(texture, texel + vec3(3, 3, 0) * pixel));\n    vec4 t30 = filter1D_radius3(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-2, -2, 1) * pixel),\n        texture3D(texture, texel + vec3(-1, -2, 1) * pixel),\n        texture3D(texture, texel + vec3(0, -2, 1) * pixel),\n        texture3D(texture, texel + vec3(1, -2, 1) * pixel),\n        texture3D(texture, texel + vec3(2, -2, 1) * pixel),\n        texture3D(texture, texel + vec3(3, -2, 1) * pixel));\n    vec4 t31 = filter1D_radius3(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-2, -1, 1) * pixel),\n        texture3D(texture, texel + vec3(-1, -1, 1) * pixel),\n        texture3D(texture, texel + vec3(0, -1, 1) * pixel),\n        texture3D(texture, texel + vec3(1, -1, 1) * pixel),\n        texture3D(texture, texel + vec3(2, -1, 1) * pixel),\n        texture3D(texture, texel + vec3(3, -1, 1) * pixel));\n    vec4 t32 = filter1D_radius3(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-2, 0, 1) * pixel),\n        texture3D(texture, texel + vec3(-1, 0, 1) * pixel),\n        texture3D(texture, texel + vec3(0, 0, 1) * pixel),\n        texture3D(texture, texel + vec3(1, 0, 1) * pixel),\n        texture3D(texture, texel + vec3(2, 0, 1) * pixel),\n        texture3D(texture, texel + vec3(3, 0, 1) * pixel));\n    vec4 t33 = filter1D_radius3(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-2, 1, 1) * pixel),\n        texture3D(texture, texel + vec3(-1, 1, 1) * pixel),\n        texture3D(texture, texel + vec3(0, 1, 1) * pixel),\n        texture3D(texture, texel + vec3(1, 1, 1) * pixel),\n        texture3D(texture, texel + vec3(2, 1, 1) * pixel),\n        texture3D(texture, texel + vec3(3, 1, 1) * pixel));\n    vec4 t34 = filter1D_radius3(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-2, 2, 1) * pixel),\n        texture3D(texture, texel + vec3(-1, 2, 1) * pixel),\n        texture3D(texture, texel + vec3(0, 2, 1) * pixel),\n        texture3D(texture, texel + vec3(1, 2, 1) * pixel),\n        texture3D(texture, texel + vec3(2, 2, 1) * pixel),\n        texture3D(texture, texel + vec3(3, 2, 1) * pixel));\n    vec4 t35 = filter1D_radius3(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-2, 3, 1) * pixel),\n        texture3D(texture, texel + vec3(-1, 3, 1) * pixel),\n        texture3D(texture, texel + vec3(0, 3, 1) * pixel),\n        texture3D(texture, texel + vec3(1, 3, 1) * pixel),\n        texture3D(texture, texel + vec3(2, 3, 1) * pixel),\n        texture3D(texture, texel + vec3(3, 3, 1) * pixel));\n    vec4 t40 = filter1D_radius3(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-2, -2, 2) * pixel),\n        texture3D(texture, texel + vec3(-1, -2, 2) * pixel),\n        texture3D(texture, texel + vec3(0, -2, 2) * pixel),\n        texture3D(texture, texel + vec3(1, -2, 2) * pixel),\n        texture3D(texture, texel + vec3(2, -2, 2) * pixel),\n        texture3D(texture, texel + vec3(3, -2, 2) * pixel));\n    vec4 t41 = filter1D_radius3(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-2, -1, 2) * pixel),\n        texture3D(texture, texel + vec3(-1, -1, 2) * pixel),\n        texture3D(texture, texel + vec3(0, -1, 2) * pixel),\n        texture3D(texture, texel + vec3(1, -1, 2) * pixel),\n        texture3D(texture, texel + vec3(2, -1, 2) * pixel),\n        texture3D(texture, texel + vec3(3, -1, 2) * pixel));\n    vec4 t42 = filter1D_radius3(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-2, 0, 2) * pixel),\n        texture3D(texture, texel + vec3(-1, 0, 2) * pixel),\n        texture3D(texture, texel + vec3(0, 0, 2) * pixel),\n        texture3D(texture, texel + vec3(1, 0, 2) * pixel),\n        texture3D(texture, texel + vec3(2, 0, 2) * pixel),\n        texture3D(texture, texel + vec3(3, 0, 2) * pixel));\n    vec4 t43 = filter1D_radius3(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-2, 1, 2) * pixel),\n        texture3D(texture, texel + vec3(-1, 1, 2) * pixel),\n        texture3D(texture, texel + vec3(0, 1, 2) * pixel),\n        texture3D(texture, texel + vec3(1, 1, 2) * pixel),\n        texture3D(texture, texel + vec3(2, 1, 2) * pixel),\n        texture3D(texture, texel + vec3(3, 1, 2) * pixel));\n    vec4 t44 = filter1D_radius3(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-2, 2, 2) * pixel),\n        texture3D(texture, texel + vec3(-1, 2, 2) * pixel),\n        texture3D(texture, texel + vec3(0, 2, 2) * pixel),\n        texture3D(texture, texel + vec3(1, 2, 2) * pixel),\n        texture3D(texture, texel + vec3(2, 2, 2) * pixel),\n        texture3D(texture, texel + vec3(3, 2, 2) * pixel));\n    vec4 t45 = filter1D_radius3(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-2, 3, 2) * pixel),\n        texture3D(texture, texel + vec3(-1, 3, 2) * pixel),\n        texture3D(texture, texel + vec3(0, 3, 2) * pixel),\n        texture3D(texture, texel + vec3(1, 3, 2) * pixel),\n        texture3D(texture, texel + vec3(2, 3, 2) * pixel),\n        texture3D(texture, texel + vec3(3, 3, 2) * pixel));\n    vec4 t50 = filter1D_radius3(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-2, -2, 3) * pixel),\n        texture3D(texture, texel + vec3(-1, -2, 3) * pixel),\n        texture3D(texture, texel + vec3(0, -2, 3) * pixel),\n        texture3D(texture, texel + vec3(1, -2, 3) * pixel),\n        texture3D(texture, texel + vec3(2, -2, 3) * pixel),\n        texture3D(texture, texel + vec3(3, -2, 3) * pixel));\n    vec4 t51 = filter1D_radius3(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-2, -1, 3) * pixel),\n        texture3D(texture, texel + vec3(-1, -1, 3) * pixel),\n        texture3D(texture, texel + vec3(0, -1, 3) * pixel),\n        texture3D(texture, texel + vec3(1, -1, 3) * pixel),\n        texture3D(texture, texel + vec3(2, -1, 3) * pixel),\n        texture3D(texture, texel + vec3(3, -1, 3) * pixel));\n    vec4 t52 = filter1D_radius3(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-2, 0, 3) * pixel),\n        texture3D(texture, texel + vec3(-1, 0, 3) * pixel),\n        texture3D(texture, texel + vec3(0, 0, 3) * pixel),\n        texture3D(texture, texel + vec3(1, 0, 3) * pixel),\n        texture3D(texture, texel + vec3(2, 0, 3) * pixel),\n        texture3D(texture, texel + vec3(3, 0, 3) * pixel));\n    vec4 t53 = filter1D_radius3(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-2, 1, 3) * pixel),\n        texture3D(texture, texel + vec3(-1, 1, 3) * pixel),\n        texture3D(texture, texel + vec3(0, 1, 3) * pixel),\n        texture3D(texture, texel + vec3(1, 1, 3) * pixel),\n        texture3D(texture, texel + vec3(2, 1, 3) * pixel),\n        texture3D(texture, texel + vec3(3, 1, 3) * pixel));\n    vec4 t54 = filter1D_radius3(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-2, 2, 3) * pixel),\n        texture3D(texture, texel + vec3(-1, 2, 3) * pixel),\n        texture3D(texture, texel + vec3(0, 2, 3) * pixel),\n        texture3D(texture, texel + vec3(1, 2, 3) * pixel),\n        texture3D(texture, texel + vec3(2, 2, 3) * pixel),\n        texture3D(texture, texel + vec3(3, 2, 3) * pixel));\n    vec4 t55 = filter1D_radius3(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-2, 3, 3) * pixel),\n        texture3D(texture, texel + vec3(-1, 3, 3) * pixel),\n        texture3D(texture, texel + vec3(0, 3, 3) * pixel),\n        texture3D(texture, texel + vec3(1, 3, 3) * pixel),\n        texture3D(texture, texel + vec3(2, 3, 3) * pixel),\n        texture3D(texture, texel + vec3(3, 3, 3) * pixel));\n    \n    vec4 t0 = filter1D_radius3(kernel, index, f.y, t00, t01, t02, t03, t04, t05);\n    vec4 t1 = filter1D_radius3(kernel, index, f.y, t10, t11, t12, t13, t14, t15);\n    vec4 t2 = filter1D_radius3(kernel, index, f.y, t20, t21, t22, t23, t24, t25);\n    vec4 t3 = filter1D_radius3(kernel, index, f.y, t30, t31, t32, t33, t34, t35);\n    vec4 t4 = filter1D_radius3(kernel, index, f.y, t40, t41, t42, t43, t44, t45);\n    vec4 t5 = filter1D_radius3(kernel, index, f.y, t50, t51, t52, t53, t54, t55);\n    return filter1D_radius3(kernel, index, f.z, t0, t1, t2, t3, t4, t5);\n}\n\nvec4 filter1D_radius4(sampler2D kernel, float index, float x, vec4 c0, vec4 c1, vec4 c2, vec4 c3, vec4 c4, vec4 c5, vec4 c6, vec4 c7) {\n    float w, w_sum = 0;\n    vec4 r = vec4(0);\n    \n    w = unpack_interpolate(kernel, vec2(0.75 + (x / 4), index));\n    w = w * kernel_scale + kernel_bias;\n    r += c0 * w;\n    w = unpack_interpolate(kernel, vec2(0.25 - (x / 4), index));\n    w = w * kernel_scale + kernel_bias;\n    r += c4 * w;\n    w = unpack_interpolate(kernel, vec2(0.5 + (x / 4), index));\n    w = w * kernel_scale + kernel_bias;\n    r += c1 * w;\n    w = unpack_interpolate(kernel, vec2(0.5 - (x / 4), index));\n    w = w * kernel_scale + kernel_bias;\n    r += c5 * w;\n    w = unpack_interpolate(kernel, vec2(0.25 + (x / 4), index));\n    w = w * kernel_scale + kernel_bias;\n    r += c2 * w;\n    w = unpack_interpolate(kernel, vec2(0.75 - (x / 4), index));\n    w = w * kernel_scale + kernel_bias;\n    r += c6 * w;\n    w = unpack_interpolate(kernel, vec2(0.0 + (x / 4), index));\n    w = w * kernel_scale + kernel_bias;\n    r += c3 * w;\n    w = unpack_interpolate(kernel, vec2(1.0 - (x / 4), index));\n    w = w * kernel_scale + kernel_bias;\n    r += c7 * w;\n    return r;\n}\n\nvec4 filter2D_radius4(sampler2D texture, sampler2D kernel, float index, vec2 uv, vec2 pixel) {\n    vec2 texel = uv / pixel - vec2(0.5);\n    vec2 f = fract(texel);\n    texel = (texel - fract(texel) + vec2(0.001)) * pixel;\n    \n    vec4 t0 = filter1D_radius4(kernel, index, f.x,\n        texture2D(texture, texel + vec2(-3, -3) * pixel),\n        texture2D(texture, texel + vec2(-2, -3) * pixel),\n        texture2D(texture, texel + vec2(-1, -3) * pixel),\n        texture2D(texture, texel + vec2(0, -3) * pixel),\n        texture2D(texture, texel + vec2(1, -3) * pixel),\n        texture2D(texture, texel + vec2(2, -3) * pixel),\n        texture2D(texture, texel + vec2(3, -3) * pixel),\n        texture2D(texture, texel + vec2(4, -3) * pixel));\n    vec4 t1 = filter1D_radius4(kernel, index, f.x,\n        texture2D(texture, texel + vec2(-3, -2) * pixel),\n        texture2D(texture, texel + vec2(-2, -2) * pixel),\n        texture2D(texture, texel + vec2(-1, -2) * pixel),\n        texture2D(texture, texel + vec2(0, -2) * pixel),\n        texture2D(texture, texel + vec2(1, -2) * pixel),\n        texture2D(texture, texel + vec2(2, -2) * pixel),\n        texture2D(texture, texel + vec2(3, -2) * pixel),\n        texture2D(texture, texel + vec2(4, -2) * pixel));\n    vec4 t2 = filter1D_radius4(kernel, index, f.x,\n        texture2D(texture, texel + vec2(-3, -1) * pixel),\n        texture2D(texture, texel + vec2(-2, -1) * pixel),\n        texture2D(texture, texel + vec2(-1, -1) * pixel),\n        texture2D(texture, texel + vec2(0, -1) * pixel),\n        texture2D(texture, texel + vec2(1, -1) * pixel),\n        texture2D(texture, texel + vec2(2, -1) * pixel),\n        texture2D(texture, texel + vec2(3, -1) * pixel),\n        texture2D(texture, texel + vec2(4, -1) * pixel));\n    vec4 t3 = filter1D_radius4(kernel, index, f.x,\n        texture2D(texture, texel + vec2(-3, 0) * pixel),\n        texture2D(texture, texel + vec2(-2, 0) * pixel),\n        texture2D(texture, texel + vec2(-1, 0) * pixel),\n        texture2D(texture, texel + vec2(0, 0) * pixel),\n        texture2D(texture, texel + vec2(1, 0) * pixel),\n        texture2D(texture, texel + vec2(2, 0) * pixel),\n        texture2D(texture, texel + vec2(3, 0) * pixel),\n        texture2D(texture, texel + vec2(4, 0) * pixel));\n    vec4 t4 = filter1D_radius4(kernel, index, f.x,\n        texture2D(texture, texel + vec2(-3, 1) * pixel),\n        texture2D(texture, texel + vec2(-2, 1) * pixel),\n        texture2D(texture, texel + vec2(-1, 1) * pixel),\n        texture2D(texture, texel + vec2(0, 1) * pixel),\n        texture2D(texture, texel + vec2(1, 1) * pixel),\n        texture2D(texture, texel + vec2(2, 1) * pixel),\n        texture2D(texture, texel + vec2(3, 1) * pixel),\n        texture2D(texture, texel + vec2(4, 1) * pixel));\n    vec4 t5 = filter1D_radius4(kernel, index, f.x,\n        texture2D(texture, texel + vec2(-3, 2) * pixel),\n        texture2D(texture, texel + vec2(-2, 2) * pixel),\n        texture2D(texture, texel + vec2(-1, 2) * pixel),\n        texture2D(texture, texel + vec2(0, 2) * pixel),\n        texture2D(texture, texel + vec2(1, 2) * pixel),\n        texture2D(texture, texel + vec2(2, 2) * pixel),\n        texture2D(texture, texel + vec2(3, 2) * pixel),\n        texture2D(texture, texel + vec2(4, 2) * pixel));\n    vec4 t6 = filter1D_radius4(kernel, index, f.x,\n        texture2D(texture, texel + vec2(-3, 3) * pixel),\n        texture2D(texture, texel + vec2(-2, 3) * pixel),\n        texture2D(texture, texel + vec2(-1, 3) * pixel),\n        texture2D(texture, texel + vec2(0, 3) * pixel),\n        texture2D(texture, texel + vec2(1, 3) * pixel),\n        texture2D(texture, texel + vec2(2, 3) * pixel),\n        texture2D(texture, texel + vec2(3, 3) * pixel),\n        texture2D(texture, texel + vec2(4, 3) * pixel));\n    vec4 t7 = filter1D_radius4(kernel, index, f.x,\n        texture2D(texture, texel + vec2(-3, 4) * pixel),\n        texture2D(texture, texel + vec2(-2, 4) * pixel),\n        texture2D(texture, texel + vec2(-1, 4) * pixel),\n        texture2D(texture, texel + vec2(0, 4) * pixel),\n        texture2D(texture, texel + vec2(1, 4) * pixel),\n        texture2D(texture, texel + vec2(2, 4) * pixel),\n        texture2D(texture, texel + vec2(3, 4) * pixel),\n        texture2D(texture, texel + vec2(4, 4) * pixel));\n    return filter1D_radius4(kernel, index, f.y, t0, t1, t2, t3, t4, t5, t6, t7);\n}\n\nvec4 filter3D_radius4(sampler3D texture, sampler2D kernel, float index, vec3 uv, vec3 pixel) {\n    vec3 texel = uv / pixel - vec3(0.5);\n    vec3 f = fract(texel);\n    texel = (texel - fract(texel) + vec3(0.001)) * pixel;\n    \n    vec4 t00 = filter1D_radius4(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-3, -3, -3) * pixel),\n        texture3D(texture, texel + vec3(-2, -3, -3) * pixel),\n        texture3D(texture, texel + vec3(-1, -3, -3) * pixel),\n        texture3D(texture, texel + vec3(0, -3, -3) * pixel),\n        texture3D(texture, texel + vec3(1, -3, -3) * pixel),\n        texture3D(texture, texel + vec3(2, -3, -3) * pixel),\n        texture3D(texture, texel + vec3(3, -3, -3) * pixel),\n        texture3D(texture, texel + vec3(4, -3, -3) * pixel));\n    vec4 t01 = filter1D_radius4(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-3, -2, -3) * pixel),\n        texture3D(texture, texel + vec3(-2, -2, -3) * pixel),\n        texture3D(texture, texel + vec3(-1, -2, -3) * pixel),\n        texture3D(texture, texel + vec3(0, -2, -3) * pixel),\n        texture3D(texture, texel + vec3(1, -2, -3) * pixel),\n        texture3D(texture, texel + vec3(2, -2, -3) * pixel),\n        texture3D(texture, texel + vec3(3, -2, -3) * pixel),\n        texture3D(texture, texel + vec3(4, -2, -3) * pixel));\n    vec4 t02 = filter1D_radius4(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-3, -1, -3) * pixel),\n        texture3D(texture, texel + vec3(-2, -1, -3) * pixel),\n        texture3D(texture, texel + vec3(-1, -1, -3) * pixel),\n        texture3D(texture, texel + vec3(0, -1, -3) * pixel),\n        texture3D(texture, texel + vec3(1, -1, -3) * pixel),\n        texture3D(texture, texel + vec3(2, -1, -3) * pixel),\n        texture3D(texture, texel + vec3(3, -1, -3) * pixel),\n        texture3D(texture, texel + vec3(4, -1, -3) * pixel));\n    vec4 t03 = filter1D_radius4(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-3, 0, -3) * pixel),\n        texture3D(texture, texel + vec3(-2, 0, -3) * pixel),\n        texture3D(texture, texel + vec3(-1, 0, -3) * pixel),\n        texture3D(texture, texel + vec3(0, 0, -3) * pixel),\n        texture3D(texture, texel + vec3(1, 0, -3) * pixel),\n        texture3D(texture, texel + vec3(2, 0, -3) * pixel),\n        texture3D(texture, texel + vec3(3, 0, -3) * pixel),\n        texture3D(texture, texel + vec3(4, 0, -3) * pixel));\n    vec4 t04 = filter1D_radius4(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-3, 1, -3) * pixel),\n        texture3D(texture, texel + vec3(-2, 1, -3) * pixel),\n        texture3D(texture, texel + vec3(-1, 1, -3) * pixel),\n        texture3D(texture, texel + vec3(0, 1, -3) * pixel),\n        texture3D(texture, texel + vec3(1, 1, -3) * pixel),\n        texture3D(texture, texel + vec3(2, 1, -3) * pixel),\n        texture3D(texture, texel + vec3(3, 1, -3) * pixel),\n        texture3D(texture, texel + vec3(4, 1, -3) * pixel));\n    vec4 t05 = filter1D_radius4(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-3, 2, -3) * pixel),\n        texture3D(texture, texel + vec3(-2, 2, -3) * pixel),\n        texture3D(texture, texel + vec3(-1, 2, -3) * pixel),\n        texture3D(texture, texel + vec3(0, 2, -3) * pixel),\n        texture3D(texture, texel + vec3(1, 2, -3) * pixel),\n        texture3D(texture, texel + vec3(2, 2, -3) * pixel),\n        texture3D(texture, texel + vec3(3, 2, -3) * pixel),\n        texture3D(texture, texel + vec3(4, 2, -3) * pixel));\n    vec4 t06 = filter1D_radius4(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-3, 3, -3) * pixel),\n        texture3D(texture, texel + vec3(-2, 3, -3) * pixel),\n        texture3D(texture, texel + vec3(-1, 3, -3) * pixel),\n        texture3D(texture, texel + vec3(0, 3, -3) * pixel),\n        texture3D(texture, texel + vec3(1, 3, -3) * pixel),\n        texture3D(texture, texel + vec3(2, 3, -3) * pixel),\n        texture3D(texture, texel + vec3(3, 3, -3) * pixel),\n        texture3D(texture, texel + vec3(4, 3, -3) * pixel));\n    vec4 t07 = filter1D_radius4(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-3, 4, -3) * pixel),\n        texture3D(texture, texel + vec3(-2, 4, -3) * pixel),\n        texture3D(texture, texel + vec3(-1, 4, -3) * pixel),\n        texture3D(texture, texel + vec3(0, 4, -3) * pixel),\n        texture3D(texture, texel + vec3(1, 4, -3) * pixel),\n        texture3D(texture, texel + vec3(2, 4, -3) * pixel),\n        texture3D(texture, texel + vec3(3, 4, -3) * pixel),\n        texture3D(texture, texel + vec3(4, 4, -3) * pixel));\n    vec4 t10 = filter1D_radius4(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-3, -3, -2) * pixel),\n        texture3D(texture, texel + vec3(-2, -3, -2) * pixel),\n        texture3D(texture, texel + vec3(-1, -3, -2) * pixel),\n        texture3D(texture, texel + vec3(0, -3, -2) * pixel),\n        texture3D(texture, texel + vec3(1, -3, -2) * pixel),\n        texture3D(texture, texel + vec3(2, -3, -2) * pixel),\n        texture3D(texture, texel + vec3(3, -3, -2) * pixel),\n        texture3D(texture, texel + vec3(4, -3, -2) * pixel));\n    vec4 t11 = filter1D_radius4(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-3, -2, -2) * pixel),\n        texture3D(texture, texel + vec3(-2, -2, -2) * pixel),\n        texture3D(texture, texel + vec3(-1, -2, -2) * pixel),\n        texture3D(texture, texel + vec3(0, -2, -2) * pixel),\n        texture3D(texture, texel + vec3(1, -2, -2) * pixel),\n        texture3D(texture, texel + vec3(2, -2, -2) * pixel),\n        texture3D(texture, texel + vec3(3, -2, -2) * pixel),\n        texture3D(texture, texel + vec3(4, -2, -2) * pixel));\n    vec4 t12 = filter1D_radius4(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-3, -1, -2) * pixel),\n        texture3D(texture, texel + vec3(-2, -1, -2) * pixel),\n        texture3D(texture, texel + vec3(-1, -1, -2) * pixel),\n        texture3D(texture, texel + vec3(0, -1, -2) * pixel),\n        texture3D(texture, texel + vec3(1, -1, -2) * pixel),\n        texture3D(texture, texel + vec3(2, -1, -2) * pixel),\n        texture3D(texture, texel + vec3(3, -1, -2) * pixel),\n        texture3D(texture, texel + vec3(4, -1, -2) * pixel));\n    vec4 t13 = filter1D_radius4(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-3, 0, -2) * pixel),\n        texture3D(texture, texel + vec3(-2, 0, -2) * pixel),\n        texture3D(texture, texel + vec3(-1, 0, -2) * pixel),\n        texture3D(texture, texel + vec3(0, 0, -2) * pixel),\n        texture3D(texture, texel + vec3(1, 0, -2) * pixel),\n        texture3D(texture, texel + vec3(2, 0, -2) * pixel),\n        texture3D(texture, texel + vec3(3, 0, -2) * pixel),\n        texture3D(texture, texel + vec3(4, 0, -2) * pixel));\n    vec4 t14 = filter1D_radius4(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-3, 1, -2) * pixel),\n        texture3D(texture, texel + vec3(-2, 1, -2) * pixel),\n        texture3D(texture, texel + vec3(-1, 1, -2) * pixel),\n        texture3D(texture, texel + vec3(0, 1, -2) * pixel),\n        texture3D(texture, texel + vec3(1, 1, -2) * pixel),\n        texture3D(texture, texel + vec3(2, 1, -2) * pixel),\n        texture3D(texture, texel + vec3(3, 1, -2) * pixel),\n        texture3D(texture, texel + vec3(4, 1, -2) * pixel));\n    vec4 t15 = filter1D_radius4(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-3, 2, -2) * pixel),\n        texture3D(texture, texel + vec3(-2, 2, -2) * pixel),\n        texture3D(texture, texel + vec3(-1, 2, -2) * pixel),\n        texture3D(texture, texel + vec3(0, 2, -2) * pixel),\n        texture3D(texture, texel + vec3(1, 2, -2) * pixel),\n        texture3D(texture, texel + vec3(2, 2, -2) * pixel),\n        texture3D(texture, texel + vec3(3, 2, -2) * pixel),\n        texture3D(texture, texel + vec3(4, 2, -2) * pixel));\n    vec4 t16 = filter1D_radius4(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-3, 3, -2) * pixel),\n        texture3D(texture, texel + vec3(-2, 3, -2) * pixel),\n        texture3D(texture, texel + vec3(-1, 3, -2) * pixel),\n        texture3D(texture, texel + vec3(0, 3, -2) * pixel),\n        texture3D(texture, texel + vec3(1, 3, -2) * pixel),\n        texture3D(texture, texel + vec3(2, 3, -2) * pixel),\n        texture3D(texture, texel + vec3(3, 3, -2) * pixel),\n        texture3D(texture, texel + vec3(4, 3, -2) * pixel));\n    vec4 t17 = filter1D_radius4(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-3, 4, -2) * pixel),\n        texture3D(texture, texel + vec3(-2, 4, -2) * pixel),\n        texture3D(texture, texel + vec3(-1, 4, -2) * pixel),\n        texture3D(texture, texel + vec3(0, 4, -2) * pixel),\n        texture3D(texture, texel + vec3(1, 4, -2) * pixel),\n        texture3D(texture, texel + vec3(2, 4, -2) * pixel),\n        texture3D(texture, texel + vec3(3, 4, -2) * pixel),\n        texture3D(texture, texel + vec3(4, 4, -2) * pixel));\n    vec4 t20 = filter1D_radius4(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-3, -3, -1) * pixel),\n        texture3D(texture, texel + vec3(-2, -3, -1) * pixel),\n        texture3D(texture, texel + vec3(-1, -3, -1) * pixel),\n        texture3D(texture, texel + vec3(0, -3, -1) * pixel),\n        texture3D(texture, texel + vec3(1, -3, -1) * pixel),\n        texture3D(texture, texel + vec3(2, -3, -1) * pixel),\n        texture3D(texture, texel + vec3(3, -3, -1) * pixel),\n        texture3D(texture, texel + vec3(4, -3, -1) * pixel));\n    vec4 t21 = filter1D_radius4(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-3, -2, -1) * pixel),\n        texture3D(texture, texel + vec3(-2, -2, -1) * pixel),\n        texture3D(texture, texel + vec3(-1, -2, -1) * pixel),\n        texture3D(texture, texel + vec3(0, -2, -1) * pixel),\n        texture3D(texture, texel + vec3(1, -2, -1) * pixel),\n        texture3D(texture, texel + vec3(2, -2, -1) * pixel),\n        texture3D(texture, texel + vec3(3, -2, -1) * pixel),\n        texture3D(texture, texel + vec3(4, -2, -1) * pixel));\n    vec4 t22 = filter1D_radius4(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-3, -1, -1) * pixel),\n        texture3D(texture, texel + vec3(-2, -1, -1) * pixel),\n        texture3D(texture, texel + vec3(-1, -1, -1) * pixel),\n        texture3D(texture, texel + vec3(0, -1, -1) * pixel),\n        texture3D(texture, texel + vec3(1, -1, -1) * pixel),\n        texture3D(texture, texel + vec3(2, -1, -1) * pixel),\n        texture3D(texture, texel + vec3(3, -1, -1) * pixel),\n        texture3D(texture, texel + vec3(4, -1, -1) * pixel));\n    vec4 t23 = filter1D_radius4(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-3, 0, -1) * pixel),\n        texture3D(texture, texel + vec3(-2, 0, -1) * pixel),\n        texture3D(texture, texel + vec3(-1, 0, -1) * pixel),\n        texture3D(texture, texel + vec3(0, 0, -1) * pixel),\n        texture3D(texture, texel + vec3(1, 0, -1) * pixel),\n        texture3D(texture, texel + vec3(2, 0, -1) * pixel),\n        texture3D(texture, texel + vec3(3, 0, -1) * pixel),\n        texture3D(texture, texel + vec3(4, 0, -1) * pixel));\n    vec4 t24 = filter1D_radius4(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-3, 1, -1) * pixel),\n        texture3D(texture, texel + vec3(-2, 1, -1) * pixel),\n        texture3D(texture, texel + vec3(-1, 1, -1) * pixel),\n        texture3D(texture, texel + vec3(0, 1, -1) * pixel),\n        texture3D(texture, texel + vec3(1, 1, -1) * pixel),\n        texture3D(texture, texel + vec3(2, 1, -1) * pixel),\n        texture3D(texture, texel + vec3(3, 1, -1) * pixel),\n        texture3D(texture, texel + vec3(4, 1, -1) * pixel));\n    vec4 t25 = filter1D_radius4(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-3, 2, -1) * pixel),\n        texture3D(texture, texel + vec3(-2, 2, -1) * pixel),\n        texture3D(texture, texel + vec3(-1, 2, -1) * pixel),\n        texture3D(texture, texel + vec3(0, 2, -1) * pixel),\n        texture3D(texture, texel + vec3(1, 2, -1) * pixel),\n        texture3D(texture, texel + vec3(2, 2, -1) * pixel),\n        texture3D(texture, texel + vec3(3, 2, -1) * pixel),\n        texture3D(texture, texel + vec3(4, 2, -1) * pixel));\n    vec4 t26 = filter1D_radius4(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-3, 3, -1) * pixel),\n        texture3D(texture, texel + vec3(-2, 3, -1) * pixel),\n        texture3D(texture, texel + vec3(-1, 3, -1) * pixel),\n        texture3D(texture, texel + vec3(0, 3, -1) * pixel),\n        texture3D(texture, texel + vec3(1, 3, -1) * pixel),\n        texture3D(texture, texel + vec3(2, 3, -1) * pixel),\n        texture3D(texture, texel + vec3(3, 3, -1) * pixel),\n        texture3D(texture, texel + vec3(4, 3, -1) * pixel));\n    vec4 t27 = filter1D_radius4(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-3, 4, -1) * pixel),\n        texture3D(texture, texel + vec3(-2, 4, -1) * pixel),\n        texture3D(texture, texel + vec3(-1, 4, -1) * pixel),\n        texture3D(texture, texel + vec3(0, 4, -1) * pixel),\n        texture3D(texture, texel + vec3(1, 4, -1) * pixel),\n        texture3D(texture, texel + vec3(2, 4, -1) * pixel),\n        texture3D(texture, texel + vec3(3, 4, -1) * pixel),\n        texture3D(texture, texel + vec3(4, 4, -1) * pixel));\n    vec4 t30 = filter1D_radius4(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-3, -3, 0) * pixel),\n        texture3D(texture, texel + vec3(-2, -3, 0) * pixel),\n        texture3D(texture, texel + vec3(-1, -3, 0) * pixel),\n        texture3D(texture, texel + vec3(0, -3, 0) * pixel),\n        texture3D(texture, texel + vec3(1, -3, 0) * pixel),\n        texture3D(texture, texel + vec3(2, -3, 0) * pixel),\n        texture3D(texture, texel + vec3(3, -3, 0) * pixel),\n        texture3D(texture, texel + vec3(4, -3, 0) * pixel));\n    vec4 t31 = filter1D_radius4(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-3, -2, 0) * pixel),\n        texture3D(texture, texel + vec3(-2, -2, 0) * pixel),\n        texture3D(texture, texel + vec3(-1, -2, 0) * pixel),\n        texture3D(texture, texel + vec3(0, -2, 0) * pixel),\n        texture3D(texture, texel + vec3(1, -2, 0) * pixel),\n        texture3D(texture, texel + vec3(2, -2, 0) * pixel),\n        texture3D(texture, texel + vec3(3, -2, 0) * pixel),\n        texture3D(texture, texel + vec3(4, -2, 0) * pixel));\n    vec4 t32 = filter1D_radius4(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-3, -1, 0) * pixel),\n        texture3D(texture, texel + vec3(-2, -1, 0) * pixel),\n        texture3D(texture, texel + vec3(-1, -1, 0) * pixel),\n        texture3D(texture, texel + vec3(0, -1, 0) * pixel),\n        texture3D(texture, texel + vec3(1, -1, 0) * pixel),\n        texture3D(texture, texel + vec3(2, -1, 0) * pixel),\n        texture3D(texture, texel + vec3(3, -1, 0) * pixel),\n        texture3D(texture, texel + vec3(4, -1, 0) * pixel));\n    vec4 t33 = filter1D_radius4(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-3, 0, 0) * pixel),\n        texture3D(texture, texel + vec3(-2, 0, 0) * pixel),\n        texture3D(texture, texel + vec3(-1, 0, 0) * pixel),\n        texture3D(texture, texel + vec3(0, 0, 0) * pixel),\n        texture3D(texture, texel + vec3(1, 0, 0) * pixel),\n        texture3D(texture, texel + vec3(2, 0, 0) * pixel),\n        texture3D(texture, texel + vec3(3, 0, 0) * pixel),\n        texture3D(texture, texel + vec3(4, 0, 0) * pixel));\n    vec4 t34 = filter1D_radius4(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-3, 1, 0) * pixel),\n        texture3D(texture, texel + vec3(-2, 1, 0) * pixel),\n        texture3D(texture, texel + vec3(-1, 1, 0) * pixel),\n        texture3D(texture, texel + vec3(0, 1, 0) * pixel),\n        texture3D(texture, texel + vec3(1, 1, 0) * pixel),\n        texture3D(texture, texel + vec3(2, 1, 0) * pixel),\n        texture3D(texture, texel + vec3(3, 1, 0) * pixel),\n        texture3D(texture, texel + vec3(4, 1, 0) * pixel));\n    vec4 t35 = filter1D_radius4(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-3, 2, 0) * pixel),\n        texture3D(texture, texel + vec3(-2, 2, 0) * pixel),\n        texture3D(texture, texel + vec3(-1, 2, 0) * pixel),\n        texture3D(texture, texel + vec3(0, 2, 0) * pixel),\n        texture3D(texture, texel + vec3(1, 2, 0) * pixel),\n        texture3D(texture, texel + vec3(2, 2, 0) * pixel),\n        texture3D(texture, texel + vec3(3, 2, 0) * pixel),\n        texture3D(texture, texel + vec3(4, 2, 0) * pixel));\n    vec4 t36 = filter1D_radius4(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-3, 3, 0) * pixel),\n        texture3D(texture, texel + vec3(-2, 3, 0) * pixel),\n        texture3D(texture, texel + vec3(-1, 3, 0) * pixel),\n        texture3D(texture, texel + vec3(0, 3, 0) * pixel),\n        texture3D(texture, texel + vec3(1, 3, 0) * pixel),\n        texture3D(texture, texel + vec3(2, 3, 0) * pixel),\n        texture3D(texture, texel + vec3(3, 3, 0) * pixel),\n        texture3D(texture, texel + vec3(4, 3, 0) * pixel));\n    vec4 t37 = filter1D_radius4(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-3, 4, 0) * pixel),\n        texture3D(texture, texel + vec3(-2, 4, 0) * pixel),\n        texture3D(texture, texel + vec3(-1, 4, 0) * pixel),\n        texture3D(texture, texel + vec3(0, 4, 0) * pixel),\n        texture3D(texture, texel + vec3(1, 4, 0) * pixel),\n        texture3D(texture, texel + vec3(2, 4, 0) * pixel),\n        texture3D(texture, texel + vec3(3, 4, 0) * pixel),\n        texture3D(texture, texel + vec3(4, 4, 0) * pixel));\n    vec4 t40 = filter1D_radius4(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-3, -3, 1) * pixel),\n        texture3D(texture, texel + vec3(-2, -3, 1) * pixel),\n        texture3D(texture, texel + vec3(-1, -3, 1) * pixel),\n        texture3D(texture, texel + vec3(0, -3, 1) * pixel),\n        texture3D(texture, texel + vec3(1, -3, 1) * pixel),\n        texture3D(texture, texel + vec3(2, -3, 1) * pixel),\n        texture3D(texture, texel + vec3(3, -3, 1) * pixel),\n        texture3D(texture, texel + vec3(4, -3, 1) * pixel));\n    vec4 t41 = filter1D_radius4(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-3, -2, 1) * pixel),\n        texture3D(texture, texel + vec3(-2, -2, 1) * pixel),\n        texture3D(texture, texel + vec3(-1, -2, 1) * pixel),\n        texture3D(texture, texel + vec3(0, -2, 1) * pixel),\n        texture3D(texture, texel + vec3(1, -2, 1) * pixel),\n        texture3D(texture, texel + vec3(2, -2, 1) * pixel),\n        texture3D(texture, texel + vec3(3, -2, 1) * pixel),\n        texture3D(texture, texel + vec3(4, -2, 1) * pixel));\n    vec4 t42 = filter1D_radius4(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-3, -1, 1) * pixel),\n        texture3D(texture, texel + vec3(-2, -1, 1) * pixel),\n        texture3D(texture, texel + vec3(-1, -1, 1) * pixel),\n        texture3D(texture, texel + vec3(0, -1, 1) * pixel),\n        texture3D(texture, texel + vec3(1, -1, 1) * pixel),\n        texture3D(texture, texel + vec3(2, -1, 1) * pixel),\n        texture3D(texture, texel + vec3(3, -1, 1) * pixel),\n        texture3D(texture, texel + vec3(4, -1, 1) * pixel));\n    vec4 t43 = filter1D_radius4(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-3, 0, 1) * pixel),\n        texture3D(texture, texel + vec3(-2, 0, 1) * pixel),\n        texture3D(texture, texel + vec3(-1, 0, 1) * pixel),\n        texture3D(texture, texel + vec3(0, 0, 1) * pixel),\n        texture3D(texture, texel + vec3(1, 0, 1) * pixel),\n        texture3D(texture, texel + vec3(2, 0, 1) * pixel),\n        texture3D(texture, texel + vec3(3, 0, 1) * pixel),\n        texture3D(texture, texel + vec3(4, 0, 1) * pixel));\n    vec4 t44 = filter1D_radius4(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-3, 1, 1) * pixel),\n        texture3D(texture, texel + vec3(-2, 1, 1) * pixel),\n        texture3D(texture, texel + vec3(-1, 1, 1) * pixel),\n        texture3D(texture, texel + vec3(0, 1, 1) * pixel),\n        texture3D(texture, texel + vec3(1, 1, 1) * pixel),\n        texture3D(texture, texel + vec3(2, 1, 1) * pixel),\n        texture3D(texture, texel + vec3(3, 1, 1) * pixel),\n        texture3D(texture, texel + vec3(4, 1, 1) * pixel));\n    vec4 t45 = filter1D_radius4(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-3, 2, 1) * pixel),\n        texture3D(texture, texel + vec3(-2, 2, 1) * pixel),\n        texture3D(texture, texel + vec3(-1, 2, 1) * pixel),\n        texture3D(texture, texel + vec3(0, 2, 1) * pixel),\n        texture3D(texture, texel + vec3(1, 2, 1) * pixel),\n        texture3D(texture, texel + vec3(2, 2, 1) * pixel),\n        texture3D(texture, texel + vec3(3, 2, 1) * pixel),\n        texture3D(texture, texel + vec3(4, 2, 1) * pixel));\n    vec4 t46 = filter1D_radius4(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-3, 3, 1) * pixel),\n        texture3D(texture, texel + vec3(-2, 3, 1) * pixel),\n        texture3D(texture, texel + vec3(-1, 3, 1) * pixel),\n        texture3D(texture, texel + vec3(0, 3, 1) * pixel),\n        texture3D(texture, texel + vec3(1, 3, 1) * pixel),\n        texture3D(texture, texel + vec3(2, 3, 1) * pixel),\n        texture3D(texture, texel + vec3(3, 3, 1) * pixel),\n        texture3D(texture, texel + vec3(4, 3, 1) * pixel));\n    vec4 t47 = filter1D_radius4(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-3, 4, 1) * pixel),\n        texture3D(texture, texel + vec3(-2, 4, 1) * pixel),\n        texture3D(texture, texel + vec3(-1, 4, 1) * pixel),\n        texture3D(texture, texel + vec3(0, 4, 1) * pixel),\n        texture3D(texture, texel + vec3(1, 4, 1) * pixel),\n        texture3D(texture, texel + vec3(2, 4, 1) * pixel),\n        texture3D(texture, texel + vec3(3, 4, 1) * pixel),\n        texture3D(texture, texel + vec3(4, 4, 1) * pixel));\n    vec4 t50 = filter1D_radius4(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-3, -3, 2) * pixel),\n        texture3D(texture, texel + vec3(-2, -3, 2) * pixel),\n        texture3D(texture, texel + vec3(-1, -3, 2) * pixel),\n        texture3D(texture, texel + vec3(0, -3, 2) * pixel),\n        texture3D(texture, texel + vec3(1, -3, 2) * pixel),\n        texture3D(texture, texel + vec3(2, -3, 2) * pixel),\n        texture3D(texture, texel + vec3(3, -3, 2) * pixel),\n        texture3D(texture, texel + vec3(4, -3, 2) * pixel));\n    vec4 t51 = filter1D_radius4(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-3, -2, 2) * pixel),\n        texture3D(texture, texel + vec3(-2, -2, 2) * pixel),\n        texture3D(texture, texel + vec3(-1, -2, 2) * pixel),\n        texture3D(texture, texel + vec3(0, -2, 2) * pixel),\n        texture3D(texture, texel + vec3(1, -2, 2) * pixel),\n        texture3D(texture, texel + vec3(2, -2, 2) * pixel),\n        texture3D(texture, texel + vec3(3, -2, 2) * pixel),\n        texture3D(texture, texel + vec3(4, -2, 2) * pixel));\n    vec4 t52 = filter1D_radius4(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-3, -1, 2) * pixel),\n        texture3D(texture, texel + vec3(-2, -1, 2) * pixel),\n        texture3D(texture, texel + vec3(-1, -1, 2) * pixel),\n        texture3D(texture, texel + vec3(0, -1, 2) * pixel),\n        texture3D(texture, texel + vec3(1, -1, 2) * pixel),\n        texture3D(texture, texel + vec3(2, -1, 2) * pixel),\n        texture3D(texture, texel + vec3(3, -1, 2) * pixel),\n        texture3D(texture, texel + vec3(4, -1, 2) * pixel));\n    vec4 t53 = filter1D_radius4(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-3, 0, 2) * pixel),\n        texture3D(texture, texel + vec3(-2, 0, 2) * pixel),\n        texture3D(texture, texel + vec3(-1, 0, 2) * pixel),\n        texture3D(texture, texel + vec3(0, 0, 2) * pixel),\n        texture3D(texture, texel + vec3(1, 0, 2) * pixel),\n        texture3D(texture, texel + vec3(2, 0, 2) * pixel),\n        texture3D(texture, texel + vec3(3, 0, 2) * pixel),\n        texture3D(texture, texel + vec3(4, 0, 2) * pixel));\n    vec4 t54 = filter1D_radius4(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-3, 1, 2) * pixel),\n        texture3D(texture, texel + vec3(-2, 1, 2) * pixel),\n        texture3D(texture, texel + vec3(-1, 1, 2) * pixel),\n        texture3D(texture, texel + vec3(0, 1, 2) * pixel),\n        texture3D(texture, texel + vec3(1, 1, 2) * pixel),\n        texture3D(texture, texel + vec3(2, 1, 2) * pixel),\n        texture3D(texture, texel + vec3(3, 1, 2) * pixel),\n        texture3D(texture, texel + vec3(4, 1, 2) * pixel));\n    vec4 t55 = filter1D_radius4(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-3, 2, 2) * pixel),\n        texture3D(texture, texel + vec3(-2, 2, 2) * pixel),\n        texture3D(texture, texel + vec3(-1, 2, 2) * pixel),\n        texture3D(texture, texel + vec3(0, 2, 2) * pixel),\n        texture3D(texture, texel + vec3(1, 2, 2) * pixel),\n        texture3D(texture, texel + vec3(2, 2, 2) * pixel),\n        texture3D(texture, texel + vec3(3, 2, 2) * pixel),\n        texture3D(texture, texel + vec3(4, 2, 2) * pixel));\n    vec4 t56 = filter1D_radius4(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-3, 3, 2) * pixel),\n        texture3D(texture, texel + vec3(-2, 3, 2) * pixel),\n        texture3D(texture, texel + vec3(-1, 3, 2) * pixel),\n        texture3D(texture, texel + vec3(0, 3, 2) * pixel),\n        texture3D(texture, texel + vec3(1, 3, 2) * pixel),\n        texture3D(texture, texel + vec3(2, 3, 2) * pixel),\n        texture3D(texture, texel + vec3(3, 3, 2) * pixel),\n        texture3D(texture, texel + vec3(4, 3, 2) * pixel));\n    vec4 t57 = filter1D_radius4(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-3, 4, 2) * pixel),\n        texture3D(texture, texel + vec3(-2, 4, 2) * pixel),\n        texture3D(texture, texel + vec3(-1, 4, 2) * pixel),\n        texture3D(texture, texel + vec3(0, 4, 2) * pixel),\n        texture3D(texture, texel + vec3(1, 4, 2) * pixel),\n        texture3D(texture, texel + vec3(2, 4, 2) * pixel),\n        texture3D(texture, texel + vec3(3, 4, 2) * pixel),\n        texture3D(texture, texel + vec3(4, 4, 2) * pixel));\n    vec4 t60 = filter1D_radius4(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-3, -3, 3) * pixel),\n        texture3D(texture, texel + vec3(-2, -3, 3) * pixel),\n        texture3D(texture, texel + vec3(-1, -3, 3) * pixel),\n        texture3D(texture, texel + vec3(0, -3, 3) * pixel),\n        texture3D(texture, texel + vec3(1, -3, 3) * pixel),\n        texture3D(texture, texel + vec3(2, -3, 3) * pixel),\n        texture3D(texture, texel + vec3(3, -3, 3) * pixel),\n        texture3D(texture, texel + vec3(4, -3, 3) * pixel));\n    vec4 t61 = filter1D_radius4(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-3, -2, 3) * pixel),\n        texture3D(texture, texel + vec3(-2, -2, 3) * pixel),\n        texture3D(texture, texel + vec3(-1, -2, 3) * pixel),\n        texture3D(texture, texel + vec3(0, -2, 3) * pixel),\n        texture3D(texture, texel + vec3(1, -2, 3) * pixel),\n        texture3D(texture, texel + vec3(2, -2, 3) * pixel),\n        texture3D(texture, texel + vec3(3, -2, 3) * pixel),\n        texture3D(texture, texel + vec3(4, -2, 3) * pixel));\n    vec4 t62 = filter1D_radius4(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-3, -1, 3) * pixel),\n        texture3D(texture, texel + vec3(-2, -1, 3) * pixel),\n        texture3D(texture, texel + vec3(-1, -1, 3) * pixel),\n        texture3D(texture, texel + vec3(0, -1, 3) * pixel),\n        texture3D(texture, texel + vec3(1, -1, 3) * pixel),\n        texture3D(texture, texel + vec3(2, -1, 3) * pixel),\n        texture3D(texture, texel + vec3(3, -1, 3) * pixel),\n        texture3D(texture, texel + vec3(4, -1, 3) * pixel));\n    vec4 t63 = filter1D_radius4(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-3, 0, 3) * pixel),\n        texture3D(texture, texel + vec3(-2, 0, 3) * pixel),\n        texture3D(texture, texel + vec3(-1, 0, 3) * pixel),\n        texture3D(texture, texel + vec3(0, 0, 3) * pixel),\n        texture3D(texture, texel + vec3(1, 0, 3) * pixel),\n        texture3D(texture, texel + vec3(2, 0, 3) * pixel),\n        texture3D(texture, texel + vec3(3, 0, 3) * pixel),\n        texture3D(texture, texel + vec3(4, 0, 3) * pixel));\n    vec4 t64 = filter1D_radius4(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-3, 1, 3) * pixel),\n        texture3D(texture, texel + vec3(-2, 1, 3) * pixel),\n        texture3D(texture, texel + vec3(-1, 1, 3) * pixel),\n        texture3D(texture, texel + vec3(0, 1, 3) * pixel),\n        texture3D(texture, texel + vec3(1, 1, 3) * pixel),\n        texture3D(texture, texel + vec3(2, 1, 3) * pixel),\n        texture3D(texture, texel + vec3(3, 1, 3) * pixel),\n        texture3D(texture, texel + vec3(4, 1, 3) * pixel));\n    vec4 t65 = filter1D_radius4(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-3, 2, 3) * pixel),\n        texture3D(texture, texel + vec3(-2, 2, 3) * pixel),\n        texture3D(texture, texel + vec3(-1, 2, 3) * pixel),\n        texture3D(texture, texel + vec3(0, 2, 3) * pixel),\n        texture3D(texture, texel + vec3(1, 2, 3) * pixel),\n        texture3D(texture, texel + vec3(2, 2, 3) * pixel),\n        texture3D(texture, texel + vec3(3, 2, 3) * pixel),\n        texture3D(texture, texel + vec3(4, 2, 3) * pixel));\n    vec4 t66 = filter1D_radius4(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-3, 3, 3) * pixel),\n        texture3D(texture, texel + vec3(-2, 3, 3) * pixel),\n        texture3D(texture, texel + vec3(-1, 3, 3) * pixel),\n        texture3D(texture, texel + vec3(0, 3, 3) * pixel),\n        texture3D(texture, texel + vec3(1, 3, 3) * pixel),\n        texture3D(texture, texel + vec3(2, 3, 3) * pixel),\n        texture3D(texture, texel + vec3(3, 3, 3) * pixel),\n        texture3D(texture, texel + vec3(4, 3, 3) * pixel));\n    vec4 t67 = filter1D_radius4(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-3, 4, 3) * pixel),\n        texture3D(texture, texel + vec3(-2, 4, 3) * pixel),\n        texture3D(texture, texel + vec3(-1, 4, 3) * pixel),\n        texture3D(texture, texel + vec3(0, 4, 3) * pixel),\n        texture3D(texture, texel + vec3(1, 4, 3) * pixel),\n        texture3D(texture, texel + vec3(2, 4, 3) * pixel),\n        texture3D(texture, texel + vec3(3, 4, 3) * pixel),\n        texture3D(texture, texel + vec3(4, 4, 3) * pixel));\n    vec4 t70 = filter1D_radius4(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-3, -3, 4) * pixel),\n        texture3D(texture, texel + vec3(-2, -3, 4) * pixel),\n        texture3D(texture, texel + vec3(-1, -3, 4) * pixel),\n        texture3D(texture, texel + vec3(0, -3, 4) * pixel),\n        texture3D(texture, texel + vec3(1, -3, 4) * pixel),\n        texture3D(texture, texel + vec3(2, -3, 4) * pixel),\n        texture3D(texture, texel + vec3(3, -3, 4) * pixel),\n        texture3D(texture, texel + vec3(4, -3, 4) * pixel));\n    vec4 t71 = filter1D_radius4(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-3, -2, 4) * pixel),\n        texture3D(texture, texel + vec3(-2, -2, 4) * pixel),\n        texture3D(texture, texel + vec3(-1, -2, 4) * pixel),\n        texture3D(texture, texel + vec3(0, -2, 4) * pixel),\n        texture3D(texture, texel + vec3(1, -2, 4) * pixel),\n        texture3D(texture, texel + vec3(2, -2, 4) * pixel),\n        texture3D(texture, texel + vec3(3, -2, 4) * pixel),\n        texture3D(texture, texel + vec3(4, -2, 4) * pixel));\n    vec4 t72 = filter1D_radius4(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-3, -1, 4) * pixel),\n        texture3D(texture, texel + vec3(-2, -1, 4) * pixel),\n        texture3D(texture, texel + vec3(-1, -1, 4) * pixel),\n        texture3D(texture, texel + vec3(0, -1, 4) * pixel),\n        texture3D(texture, texel + vec3(1, -1, 4) * pixel),\n        texture3D(texture, texel + vec3(2, -1, 4) * pixel),\n        texture3D(texture, texel + vec3(3, -1, 4) * pixel),\n        texture3D(texture, texel + vec3(4, -1, 4) * pixel));\n    vec4 t73 = filter1D_radius4(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-3, 0, 4) * pixel),\n        texture3D(texture, texel + vec3(-2, 0, 4) * pixel),\n        texture3D(texture, texel + vec3(-1, 0, 4) * pixel),\n        texture3D(texture, texel + vec3(0, 0, 4) * pixel),\n        texture3D(texture, texel + vec3(1, 0, 4) * pixel),\n        texture3D(texture, texel + vec3(2, 0, 4) * pixel),\n        texture3D(texture, texel + vec3(3, 0, 4) * pixel),\n        texture3D(texture, texel + vec3(4, 0, 4) * pixel));\n    vec4 t74 = filter1D_radius4(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-3, 1, 4) * pixel),\n        texture3D(texture, texel + vec3(-2, 1, 4) * pixel),\n        texture3D(texture, texel + vec3(-1, 1, 4) * pixel),\n        texture3D(texture, texel + vec3(0, 1, 4) * pixel),\n        texture3D(texture, texel + vec3(1, 1, 4) * pixel),\n        texture3D(texture, texel + vec3(2, 1, 4) * pixel),\n        texture3D(texture, texel + vec3(3, 1, 4) * pixel),\n        texture3D(texture, texel + vec3(4, 1, 4) * pixel));\n    vec4 t75 = filter1D_radius4(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-3, 2, 4) * pixel),\n        texture3D(texture, texel + vec3(-2, 2, 4) * pixel),\n        texture3D(texture, texel + vec3(-1, 2, 4) * pixel),\n        texture3D(texture, texel + vec3(0, 2, 4) * pixel),\n        texture3D(texture, texel + vec3(1, 2, 4) * pixel),\n        texture3D(texture, texel + vec3(2, 2, 4) * pixel),\n        texture3D(texture, texel + vec3(3, 2, 4) * pixel),\n        texture3D(texture, texel + vec3(4, 2, 4) * pixel));\n    vec4 t76 = filter1D_radius4(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-3, 3, 4) * pixel),\n        texture3D(texture, texel + vec3(-2, 3, 4) * pixel),\n        texture3D(texture, texel + vec3(-1, 3, 4) * pixel),\n        texture3D(texture, texel + vec3(0, 3, 4) * pixel),\n        texture3D(texture, texel + vec3(1, 3, 4) * pixel),\n        texture3D(texture, texel + vec3(2, 3, 4) * pixel),\n        texture3D(texture, texel + vec3(3, 3, 4) * pixel),\n        texture3D(texture, texel + vec3(4, 3, 4) * pixel));\n    vec4 t77 = filter1D_radius4(kernel, index, f.x,\n        texture3D(texture, texel + vec3(-3, 4, 4) * pixel),\n        texture3D(texture, texel + vec3(-2, 4, 4) * pixel),\n        texture3D(texture, texel + vec3(-1, 4, 4) * pixel),\n        texture3D(texture, texel + vec3(0, 4, 4) * pixel),\n        texture3D(texture, texel + vec3(1, 4, 4) * pixel),\n        texture3D(texture, texel + vec3(2, 4, 4) * pixel),\n        texture3D(texture, texel + vec3(3, 4, 4) * pixel),\n        texture3D(texture, texel + vec3(4, 4, 4) * pixel));\n    \n    vec4 t0 = filter1D_radius4(kernel, index, f.y, t00, t01, t02, t03, t04, t05, t06, t07);\n    vec4 t1 = filter1D_radius4(kernel, index, f.y, t10, t11, t12, t13, t14, t15, t16, t17);\n    vec4 t2 = filter1D_radius4(kernel, index, f.y, t20, t21, t22, t23, t24, t25, t26, t27);\n    vec4 t3 = filter1D_radius4(kernel, index, f.y, t30, t31, t32, t33, t34, t35, t36, t37);\n    vec4 t4 = filter1D_radius4(kernel, index, f.y, t40, t41, t42, t43, t44, t45, t46, t47);\n    vec4 t5 = filter1D_radius4(kernel, index, f.y, t50, t51, t52, t53, t54, t55, t56, t57);\n    vec4 t6 = filter1D_radius4(kernel, index, f.y, t60, t61, t62, t63, t64, t65, t66, t67);\n    vec4 t7 = filter1D_radius4(kernel, index, f.y, t70, t71, t72, t73, t74, t75, t76, t77);\n    return filter1D_radius4(kernel, index, f.z, t0, t1, t2, t3, t4, t5, t6, t7);\n}\n\nvec4 Nearest2D(sampler2D texture, vec2 shape, vec2 uv) {\n    return texture2D(texture, uv);\n}\n\nvec4 Nearest3D(sampler3D texture, vec3 shape, vec3 uv) {\n    return texture3D(texture, uv);\n}\n\nvec4 Linear2D(sampler2D texture, vec2 shape, vec2 uv) {\n    return filter2D_radius1(texture, u_kernel, 0.03125, uv, 1 / shape);\n}\n\nvec4 Linear3D(sampler3D texture, vec3 shape, vec3 uv) {\n    return filter3D_radius1(texture, u_kernel, 0.03125, uv, 1 / shape);\n}\n\nvec4 Hanning2D(sampler2D texture, vec2 shape, vec2 uv) {\n    return filter2D_radius1(texture, u_kernel, 0.09375, uv, 1 / shape);\n}\n\nvec4 Hanning3D(sampler3D texture, vec3 shape, vec3 uv) {\n    return filter3D_radius1(texture, u_kernel, 0.09375, uv, 1 / shape);\n}\n\nvec4 Hamming2D(sampler2D texture, vec2 shape, vec2 uv) {\n    return filter2D_radius1(texture, u_kernel, 0.15625, uv, 1 / shape);\n}\n\nvec4 Hamming3D(sampler3D texture, vec3 shape, vec3 uv) {\n    return filter3D_radius1(texture, u_kernel, 0.15625, uv, 1 / shape);\n}\n\nvec4 Hermite2D(sampler2D texture, vec2 shape, vec2 uv) {\n    return filter2D_radius1(texture, u_kernel, 0.21875, uv, 1 / shape);\n}\n\nvec4 Hermite3D(sampler3D texture, vec3 shape, vec3 uv) {\n    return filter3D_radius1(texture, u_kernel, 0.21875, uv, 1 / shape);\n}\n\nvec4 Kaiser2D(sampler2D texture, vec2 shape, vec2 uv) {\n    return filter2D_radius1(texture, u_kernel, 0.28125, uv, 1 / shape);\n}\n\nvec4 Kaiser3D(sampler3D texture, vec3 shape, vec3 uv) {\n    return filter3D_radius1(texture, u_kernel, 0.28125, uv, 1 / shape);\n}\n\nvec4 Quadric2D(sampler2D texture, vec2 shape, vec2 uv) {\n    return filter2D_radius2(texture, u_kernel, 0.34375, uv, 1 / shape);\n}\n\nvec4 Quadric3D(sampler3D texture, vec3 shape, vec3 uv) {\n    return filter3D_radius2(texture, u_kernel, 0.34375, uv, 1 / shape);\n}\n\nvec4 Cubic2D(sampler2D texture, vec2 shape, vec2 uv) {\n    return filter2D_radius2(texture, u_kernel, 0.40625, uv, 1 / shape);\n}\n\nvec4 Cubic3D(sampler3D texture, vec3 shape, vec3 uv) {\n    return filter3D_radius2(texture, u_kernel, 0.40625, uv, 1 / shape);\n}\n\nvec4 CatRom2D(sampler2D texture, vec2 shape, vec2 uv) {\n    return filter2D_radius2(texture, u_kernel, 0.46875, uv, 1 / shape);\n}\n\nvec4 CatRom3D(sampler3D texture, vec3 shape, vec3 uv) {\n    return filter3D_radius2(texture, u_kernel, 0.46875, uv, 1 / shape);\n}\n\nvec4 Mitchell2D(sampler2D texture, vec2 shape, vec2 uv) {\n    return filter2D_radius2(texture, u_kernel, 0.53125, uv, 1 / shape);\n}\n\nvec4 Mitchell3D(sampler3D texture, vec3 shape, vec3 uv) {\n    return filter3D_radius2(texture, u_kernel, 0.53125, uv, 1 / shape);\n}\n\nvec4 Spline162D(sampler2D texture, vec2 shape, vec2 uv) {\n    return filter2D_radius2(texture, u_kernel, 0.59375, uv, 1 / shape);\n}\n\nvec4 Spline163D(sampler3D texture, vec3 shape, vec3 uv) {\n    return filter3D_radius2(texture, u_kernel, 0.59375, uv, 1 / shape);\n}\n\nvec4 Spline362D(sampler2D texture, vec2 shape, vec2 uv) {\n    return filter2D_radius3(texture, u_kernel, 0.65625, uv, 1 / shape);\n}\n\nvec4 Spline363D(sampler3D texture, vec3 shape, vec3 uv) {\n    return filter3D_radius3(texture, u_kernel, 0.65625, uv, 1 / shape);\n}\n\nvec4 Gaussian2D(sampler2D texture, vec2 shape, vec2 uv) {\n    return filter2D_radius2(texture, u_kernel, 0.71875, uv, 1 / shape);\n}\n\nvec4 Gaussian3D(sampler3D texture, vec3 shape, vec3 uv) {\n    return filter3D_radius2(texture, u_kernel, 0.71875, uv, 1 / shape);\n}\n\nvec4 Bessel2D(sampler2D texture, vec2 shape, vec2 uv) {\n    return filter2D_radius4(texture, u_kernel, 0.78125, uv, 1 / shape);\n}\n\nvec4 Bessel3D(sampler3D texture, vec3 shape, vec3 uv) {\n    return filter3D_radius4(texture, u_kernel, 0.78125, uv, 1 / shape);\n}\n\nvec4 Sinc2D(sampler2D texture, vec2 shape, vec2 uv) {\n    return filter2D_radius4(texture, u_kernel, 0.84375, uv, 1 / shape);\n}\n\nvec4 Sinc3D(sampler3D texture, vec3 shape, vec3 uv) {\n    return filter3D_radius4(texture, u_kernel, 0.84375, uv, 1 / shape);\n}\n\nvec4 Lanczos2D(sampler2D texture, vec2 shape, vec2 uv) {\n    return filter2D_radius4(texture, u_kernel, 0.90625, uv, 1 / shape);\n}\n\nvec4 Lanczos3D(sampler3D texture, vec3 shape, vec3 uv) {\n    return filter3D_radius4(texture, u_kernel, 0.90625, uv, 1 / shape);\n}\n\nvec4 Blackman2D(sampler2D texture, vec2 shape, vec2 uv) {\n    return filter2D_radius4(texture, u_kernel, 0.96875, uv, 1 / shape);\n}\n\nvec4 Blackman3D(sampler3D texture, vec3 shape, vec3 uv) {\n    return filter3D_radius4(texture, u_kernel, 0.96875, uv, 1 / shape);\n}\n// --- end of \"misc/spatial-filters.frag\" ---\n\n    // Adapted from glumpy with permission\n    const float M_SQRT1_2 = 0.707106781186547524400844362104849039;\n\n    uniform sampler2D u_font_atlas;\n    uniform vec2 u_font_atlas_shape;\n    varying vec4 v_color;\n    uniform float u_npix;\n\n    varying vec2 v_texcoord;\n    const float center = 0.5;\n\n    float contour(in float d, in float w)\n    {\n        return smoothstep(center - w, center + w, d);\n    }\n\n    float sample(sampler2D texture, vec2 uv, float w)\n    {\n        return contour(texture2D(texture, uv).r, w);\n    }\n\n    void main(void) {\n        vec2 uv = v_texcoord.xy;\n        vec4 rgb;\n\n        // Use interpolation at high font sizes\n        if(u_npix >= 50.0)\n            rgb = CatRom2D(u_font_atlas, u_font_atlas_shape, uv);\n        else\n            rgb = texture2D(u_font_atlas, uv);\n        float distance = rgb.r;\n\n        // GLSL's fwidth = abs(dFdx(uv)) + abs(dFdy(uv))\n        float width = 0.5 * fwidth(distance);  // sharpens a bit\n\n        // Regular SDF\n        float alpha = contour(distance, width);\n\n        if (u_npix < 30.) {\n            // Supersample, 4 extra points\n            // Half of 1/sqrt2; you can play with this\n            float dscale = 0.5 * M_SQRT1_2;\n            vec2 duv = dscale * (dFdx(v_texcoord) + dFdy(v_texcoord));\n            vec4 box = vec4(v_texcoord-duv, v_texcoord+duv);\n            float asum = sample(u_font_atlas, box.xy, width)\n                       + sample(u_font_atlas, box.zw, width)\n                       + sample(u_font_atlas, box.xw, width)\n                       + sample(u_font_atlas, box.zy, width);\n            // weighted average, with 4 extra points having 0.5 weight\n            // each, so 1 + 0.5*4 = 3 is the divisor\n            alpha = (alpha + 0.5 * asum) / 3.0;\n        }\n\n        if (alpha <= 0) discard;\n\n        gl_FragColor = vec4(v_color.rgb, v_color.a * alpha);\n    \n    apply_alpha();\npicking_filter();\n\n}\n    \n"
+  ],
+  [
+    "ATTACH",
+    1,
+    10
+  ],
+  [
+    "LINK",
+    1
+  ],
+  [
+    "DELETE",
+    9
+  ],
+  [
+    "DELETE",
+    10
+  ],
+  [
+    "CREATE",
+    8,
+    "VertexBuffer"
+  ],
+  [
+    "SIZE",
+    8,
+    320
+  ],
+  [
+    "DATA",
+    8,
+    0,
+    {
+      "array": {
+        "bytes": 320,
+        "dtype": "|V16",
+        "sha256": "beea08e0b2386530f2625dfcc037b7237b4ca13ad5732e9798f5bbc619054fc2",
+        "shape": [
+          20,
+          1
+        ]
+      }
+    }
+  ],
+  [
+    "ATTRIBUTE",
+    1,
+    "a_color",
+    "vec4",
+    [
+      8,
+      16,
+      0
+    ],
+    null
+  ],
+  [
+    "UNIFORM",
+    1,
+    "u_alpha",
+    "float",
+    {
+      "array": {
+        "bytes": 4,
+        "dtype": "<f4",
+        "sha256": "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c",
+        "shape": [
+          1
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    1,
+    "u_enabled",
+    "int",
+    {
+      "array": {
+        "bytes": 4,
+        "dtype": "<i4",
+        "sha256": "df3f619804a92fdb4057192dc43dd748ea778adc52bc498ce80524c014b81119",
+        "shape": [
+          1
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    1,
+    "u_id_color",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "bd4f23915b59dc9560b98559d719972260ba70ddab11d1528786495c270294f1",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    1,
+    "u_scale",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "a416fff845c77f5467c037c96e18453dd9a307d0af8be8aa4d3aac93ee821b03",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    1,
+    "u_scale_1",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "f6bb1294da2f78cd935b01c7656280df5eaa0439e9d97bc03775825a41a508e4",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    1,
+    "u_scale_2",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "3323b07f7de182de035e8eafb61d12f9b4ae1e4d6e4e06710126e4fa6f5b5c34",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    1,
+    "u_translate",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "67d676cf62c5904ac14c953353b0237bd9897678bcd8134de5ad3398722685fa",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    1,
+    "u_translate_1",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "374708fff7719dd5979ec875d56cd2286f6d3cf7ec317a3b25632aab28ec37bb",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    1,
+    "u_translate_2",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "c4ed2338fa8bdfe87ba22b0b14e6f74e4bbf6d849f85310370833d9cc56510ac",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "CREATE",
+    6,
+    "VertexBuffer"
+  ],
+  [
+    "SIZE",
+    6,
+    320
+  ],
+  [
+    "DATA",
+    6,
+    0,
+    {
+      "array": {
+        "bytes": 320,
+        "dtype": "|V16",
+        "sha256": "1c8a52161f18243ef3100a965f99969a6230d207188f3502690812201131df3b",
+        "shape": [
+          20
+        ]
+      }
+    }
+  ],
+  [
+    "ATTRIBUTE",
+    1,
+    "a_position",
+    "vec2",
+    [
+      6,
+      16,
+      0
+    ],
+    null
+  ],
+  [
+    "ATTRIBUTE",
+    1,
+    "a_texcoord",
+    "vec2",
+    [
+      6,
+      16,
+      8
+    ],
+    null
+  ],
+  [
+    "CREATE",
+    11,
+    "VertexBuffer"
+  ],
+  [
+    "SIZE",
+    11,
+    80
+  ],
+  [
+    "DATA",
+    11,
+    0,
+    {
+      "array": {
+        "bytes": 80,
+        "dtype": "|V4",
+        "sha256": "5b6fb58e61fa475939767d68a446f97f1bff02c0e5935a3ea8bb51e6515783d8",
+        "shape": [
+          20
+        ]
+      }
+    }
+  ],
+  [
+    "ATTRIBUTE",
+    1,
+    "a_rotation",
+    "float",
+    [
+      11,
+      4,
+      0
+    ],
+    null
+  ],
+  [
+    "CREATE",
+    12,
+    "VertexBuffer"
+  ],
+  [
+    "SIZE",
+    12,
+    240
+  ],
+  [
+    "DATA",
+    12,
+    0,
+    {
+      "array": {
+        "bytes": 240,
+        "dtype": "|V12",
+        "sha256": "11226e944d0d198a17115203097943bddad3f8aed5e4a852fba98474f33fcebd",
+        "shape": [
+          20,
+          1
+        ]
+      }
+    }
+  ],
+  [
+    "ATTRIBUTE",
+    1,
+    "a_pos",
+    "vec3",
+    [
+      12,
+      12,
+      0
+    ],
+    null
+  ],
+  [
+    "UNIFORM",
+    1,
+    "u_npix",
+    "float",
+    {
+      "array": {
+        "bytes": 4,
+        "dtype": "<f4",
+        "sha256": "825ac1bb838d399fb1ba55a6247e2c8c7a0c3ec25898f3c94dbfb51fa6e73951",
+        "shape": [
+          1
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    1,
+    "u_px_scale",
+    "vec2",
+    {
+      "array": {
+        "bytes": 8,
+        "dtype": "<f4",
+        "sha256": "4d0aa5542cf648f16737262e85ee3c3f31f225650f2dc328593e6f27323d9467",
+        "shape": [
+          2
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    1,
+    "u_scaling",
+    "bool",
+    {
+      "array": {
+        "bytes": 4,
+        "dtype": "<i4",
+        "sha256": "df3f619804a92fdb4057192dc43dd748ea778adc52bc498ce80524c014b81119",
+        "shape": [
+          1
+        ]
+      }
+    }
+  ],
+  [
+    "CREATE",
+    13,
+    "Texture2D"
+  ],
+  [
+    "INTERPOLATION",
+    13,
+    "nearest",
+    "nearest"
+  ],
+  [
+    "WRAPPING",
+    13,
+    [
+      "clamp_to_edge",
+      "clamp_to_edge"
+    ]
+  ],
+  [
+    "SIZE",
+    13,
+    [
+      16,
+      1024,
+      4
+    ],
+    "rgba",
+    null
+  ],
+  [
+    "DATA",
+    13,
+    [
+      0,
+      0
+    ],
+    {
+      "array": {
+        "bytes": 65536,
+        "dtype": "|u1",
+        "sha256": "77c9aef53bcf6a3721f527992b5a7c2f619462502254916c1f09f34a906ff13c",
+        "shape": [
+          16,
+          1024,
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "TEXTURE",
+    1,
+    "u_kernel",
+    13
+  ],
+  [
+    "CREATE",
+    2,
+    "Texture2D"
+  ],
+  [
+    "INTERPOLATION",
+    2,
+    "linear",
+    "linear"
+  ],
+  [
+    "WRAPPING",
+    2,
+    [
+      "clamp_to_edge",
+      "clamp_to_edge"
+    ]
+  ],
+  [
+    "SIZE",
+    2,
+    [
+      1024,
+      1024,
+      3
+    ],
+    "rgb",
+    null
+  ],
+  [
+    "DATA",
+    2,
+    [
+      0,
+      0
+    ],
+    {
+      "array": {
+        "bytes": 3145728,
+        "dtype": "|u1",
+        "sha256": "bbd05cf6097ac9b1f89ea29d2542c1b7b67ee46848393895f5a9e43fa1f621e5",
+        "shape": [
+          1024,
+          1024,
+          3
+        ]
+      }
+    }
+  ],
+  [
+    "WRAPPING",
+    2,
+    [
+      "clamp_to_edge",
+      "clamp_to_edge"
+    ]
+  ],
+  [
+    "DATA",
+    2,
+    [
+      1,
+      1
+    ],
+    {
+      "array": {
+        "bytes": 12096,
+        "dtype": "|u1",
+        "sha256": "03f224f42036c752ad798a70edf76e53caf3ee0bfb95d5b43462a946a0382d86",
+        "shape": [
+          72,
+          56,
+          3
+        ]
+      }
+    }
+  ],
+  [
+    "DATA",
+    2,
+    [
+      1,
+      59
+    ],
+    {
+      "array": {
+        "bytes": 9225,
+        "dtype": "|u1",
+        "sha256": "afa9afa9959bbcf3027c3a91c1cd6800b2f787bbbd38bc19b6ca918d254382a8",
+        "shape": [
+          75,
+          41,
+          3
+        ]
+      }
+    }
+  ],
+  [
+    "DATA",
+    2,
+    [
+      1,
+      102
+    ],
+    {
+      "array": {
+        "bytes": 11169,
+        "dtype": "|u1",
+        "sha256": "63da4f401b88042352eac481943ae2bda944119b08232d5f51ef1d778a5ce683",
+        "shape": [
+          73,
+          51,
+          3
+        ]
+      }
+    }
+  ],
+  [
+    "DATA",
+    2,
+    [
+      1,
+      155
+    ],
+    {
+      "array": {
+        "bytes": 13224,
+        "dtype": "|u1",
+        "sha256": "4c0f24e185a78ee9a4957ac5d0be7330b8e8c47ef1031aa24a8e26e3968e73bd",
+        "shape": [
+          76,
+          58,
+          3
+        ]
+      }
+    }
+  ],
+  [
+    "DATA",
+    2,
+    [
+      1,
+      215
+    ],
+    {
+      "array": {
+        "bytes": 7020,
+        "dtype": "|u1",
+        "sha256": "1813a7dc2699bcfd3cb76d5564f00a97214c67a0c8721754edf90004d054bfd9",
+        "shape": [
+          78,
+          30,
+          3
+        ]
+      }
+    }
+  ],
+  [
+    "DATA",
+    2,
+    [
+      1,
+      247
+    ],
+    {
+      "array": {
+        "bytes": 9504,
+        "dtype": "|u1",
+        "sha256": "3fbd122744046959583afb41a881e4e355db7161d8eaa254c3ace0d1368a0bb9",
+        "shape": [
+          66,
+          48,
+          3
+        ]
+      }
+    }
+  ],
+  [
+    "DATA",
+    2,
+    [
+      1,
+      297
+    ],
+    {
+      "array": {
+        "bytes": 9108,
+        "dtype": "|u1",
+        "sha256": "fd3ef0a2bf7c52b711ee461b442e0d29d7c6a095f27052947d1a47a710227c6e",
+        "shape": [
+          66,
+          46,
+          3
+        ]
+      }
+    }
+  ],
+  [
+    "DATA",
+    2,
+    [
+      1,
+      345
+    ],
+    {
+      "array": {
+        "bytes": 9108,
+        "dtype": "|u1",
+        "sha256": "72d10bf0d1b9735e3d41094fcc4f64d66dc0625c8223f5e6c6aa663a3430c5b1",
+        "shape": [
+          66,
+          46,
+          3
+        ]
+      }
+    }
+  ],
+  [
+    "DATA",
+    2,
+    [
+      1,
+      393
+    ],
+    {
+      "array": {
+        "bytes": 9360,
+        "dtype": "|u1",
+        "sha256": "b0201207b15beee3cec3275d97f7a31952309c10bce04853c6aca68373f2f585",
+        "shape": [
+          65,
+          48,
+          3
+        ]
+      }
+    }
+  ],
+  [
+    "DATA",
+    2,
+    [
+      1,
+      443
+    ],
+    {
+      "array": {
+        "bytes": 768,
+        "dtype": "|u1",
+        "sha256": "ef115a0e0c15cdc41958ca46b5b14b456115f4baec5e3ca68599d2a8f435e3b8",
+        "shape": [
+          16,
+          16,
+          3
+        ]
+      }
+    }
+  ],
+  [
+    "DATA",
+    2,
+    [
+      1,
+      461
+    ],
+    {
+      "array": {
+        "bytes": 10416,
+        "dtype": "|u1",
+        "sha256": "3b8247d736b5708fc8b57cd81b277b3649d6e84a32eb718945714369be7a84e9",
+        "shape": [
+          62,
+          56,
+          3
+        ]
+      }
+    }
+  ],
+  [
+    "DATA",
+    2,
+    [
+      1,
+      519
+    ],
+    {
+      "array": {
+        "bytes": 5856,
+        "dtype": "|u1",
+        "sha256": "4f9571bf8a4a512e62c970c8e498ac734383c64e766ef8ccc62040780eeafced",
+        "shape": [
+          61,
+          32,
+          3
+        ]
+      }
+    }
+  ],
+  [
+    "DATA",
+    2,
+    [
+      1,
+      553
+    ],
+    {
+      "array": {
+        "bytes": 8370,
+        "dtype": "|u1",
+        "sha256": "437e7ef48c53b9a5c8ddf89f69bde31c37e3258e765a3c83186c3811b2dc724b",
+        "shape": [
+          62,
+          45,
+          3
+        ]
+      }
+    }
+  ],
+  [
+    "TEXTURE",
+    1,
+    "u_font_atlas",
+    2
+  ],
+  [
+    "UNIFORM",
+    1,
+    "u_font_atlas_shape",
+    "vec2",
+    {
+      "array": {
+        "bytes": 8,
+        "dtype": "<f4",
+        "sha256": "30cf2a147cfaaf6f26c66c17651179611d139d449d83482ffc1ee351d96e71f4",
+        "shape": [
+          2
+        ]
+      }
+    }
+  ],
+  [
+    "CREATE",
+    7,
+    "IndexBuffer"
+  ],
+  [
+    "SIZE",
+    7,
+    120
+  ],
+  [
+    "DATA",
+    7,
+    0,
+    {
+      "array": {
+        "bytes": 120,
+        "dtype": "<u4",
+        "sha256": "836c1b8364e8f2c31f0020c63da385a7c3a02fbae6a3cc887f39669458848120",
+        "shape": [
+          30
+        ]
+      }
+    }
+  ],
+  [
+    "DRAW",
+    1,
+    "triangles",
+    [
+      7,
+      "UNSIGNED_INT",
+      30
+    ],
+    1
+  ],
+  [
+    "FUNC",
+    "glFinish"
+  ]
+]

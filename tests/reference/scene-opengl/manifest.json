@@ -1,0 +1,1272 @@
+{
+  "comparison": {
+    "atlas_exact": true,
+    "edge_max_differing_fraction": 0.001,
+    "interior_max_abs_u8": 2,
+    "mask": "tools.fixture_scene.masks"
+  },
+  "errors": {},
+  "fixtures": {
+    "line_agg_round": {
+      "capture": {
+        "file": "line_agg_round.capture.json",
+        "sha256": "8484a89d68f3c1d20e593859c0f9a1f45c9a5d6e3c3f4b4943218b2de443fc84"
+      },
+      "exact": false,
+      "expanded_shaders": {
+        "file": "line_agg_round.shaders.json",
+        "sha256": "5b0b0923c5fc675ca88d1fe3d79e23597f90165ee08cbcfac3860201177effbb"
+      },
+      "filtered_glir": {
+        "file": "line_agg_round.glir.json",
+        "sha256": "1cfd31d5801d8d1a23152c9e786a2034224006943500f05b6b838f65425ec637"
+      },
+      "parameters": {
+        "caps": [
+          "round",
+          "round"
+        ],
+        "case": "line_agg_round",
+        "dpi": 96,
+        "method": "agg",
+        "positions": [
+          [
+            20.0,
+            70.0
+          ],
+          [
+            20.0,
+            20.0
+          ],
+          [
+            100.0,
+            20.0
+          ]
+        ],
+        "size": [
+          128,
+          96
+        ],
+        "width": 7
+      },
+      "rgba": {
+        "file": "line_agg_round.npy",
+        "sha256": "f12f93bfe557e652e159130db83553350183c1edbc32eb3340b9ae02824ff5af"
+      },
+      "shape": [
+        96,
+        128,
+        4
+      ]
+    },
+    "line_agg_square": {
+      "capture": {
+        "file": "line_agg_square.capture.json",
+        "sha256": "a14c985376d332f9ebdde5b9a610155f001efb99118b546a95d835787e1dfcb6"
+      },
+      "exact": false,
+      "expanded_shaders": {
+        "file": "line_agg_square.shaders.json",
+        "sha256": "5b0b0923c5fc675ca88d1fe3d79e23597f90165ee08cbcfac3860201177effbb"
+      },
+      "filtered_glir": {
+        "file": "line_agg_square.glir.json",
+        "sha256": "1f15b1af413c11cfdcfdb649b07c779a8ed36c07f7f70f6be2a0161bdafa46fa"
+      },
+      "parameters": {
+        "caps": [
+          "square",
+          "square"
+        ],
+        "case": "line_agg_square",
+        "dpi": 96,
+        "method": "agg",
+        "positions": [
+          [
+            20.0,
+            70.0
+          ],
+          [
+            20.0,
+            20.0
+          ],
+          [
+            100.0,
+            20.0
+          ]
+        ],
+        "size": [
+          128,
+          96
+        ],
+        "width": 7
+      },
+      "rgba": {
+        "file": "line_agg_square.npy",
+        "sha256": "356512585f7b72acdc7125cd3f90a77304e3045ca95c55aaf3167896f1c52cb8"
+      },
+      "shape": [
+        96,
+        128,
+        4
+      ]
+    },
+    "line_gl_segments": {
+      "capture": {
+        "file": "line_gl_segments.capture.json",
+        "sha256": "3f12bd84026afccbbc9fa75c1b6034a92b98840b9c28d0de6fe1d9b3580e2d22"
+      },
+      "exact": true,
+      "expanded_shaders": {
+        "file": "line_gl_segments.shaders.json",
+        "sha256": "cbb6f76d2352e1c319fe021a6bec96dab8ec777544a4d42fd2f4afd13d1d1831"
+      },
+      "filtered_glir": {
+        "file": "line_gl_segments.glir.json",
+        "sha256": "86ae084567b2b0b7a3e93c21a6f986ba7978e632ce0b762d8786342b57441c7a"
+      },
+      "parameters": {
+        "case": "line_gl_segments",
+        "connect": "segments",
+        "dpi": 96,
+        "method": "gl",
+        "positions": [
+          [
+            16.0,
+            24.0
+          ],
+          [
+            112.0,
+            24.0
+          ],
+          [
+            16.0,
+            72.0
+          ],
+          [
+            112.0,
+            72.0
+          ]
+        ],
+        "size": [
+          128,
+          96
+        ],
+        "width": 1
+      },
+      "rgba": {
+        "file": "line_gl_segments.npy",
+        "sha256": "8497fc28dc7e621b3c3fe9d969ad9061ffd780aeaeb11093196b411368315dac"
+      },
+      "shape": [
+        96,
+        128,
+        4
+      ]
+    },
+    "marker_symbols": {
+      "capture": {
+        "file": "marker_symbols.capture.json",
+        "sha256": "1dd6b1309cbb83caf06149e26bee2a8104cff9c3cbdb9a1271ea790539d0bf81"
+      },
+      "exact": true,
+      "expanded_shaders": {
+        "file": "marker_symbols.shaders.json",
+        "sha256": "9f062dbcd52cfa4923d53c79faffe0ffb62915a103dca8f7a975b9f1605ad4cc"
+      },
+      "filtered_glir": {
+        "file": "marker_symbols.glir.json",
+        "sha256": "ee41fecfe75c2f9d1c6169c643b7ae0f56f461bbeaba22ef04b7357b9ead3b4a"
+      },
+      "parameters": {
+        "case": "marker_symbols",
+        "dpi": 96,
+        "edge_width": 2,
+        "positions": [
+          [
+            24.0,
+            24.0
+          ],
+          [
+            64.0,
+            24.0
+          ],
+          [
+            104.0,
+            24.0
+          ],
+          [
+            24.0,
+            72.0
+          ],
+          [
+            64.0,
+            72.0
+          ],
+          [
+            104.0,
+            72.0
+          ]
+        ],
+        "size": 16,
+        "symbols": [
+          "disc",
+          "square",
+          "diamond",
+          "triangle_up",
+          "cross",
+          "star"
+        ]
+      },
+      "rgba": {
+        "file": "marker_symbols.npy",
+        "sha256": "fe7945fa0df58139e4864f07fcb5186f4fb3b8b09015b9832fc4af2443709849"
+      },
+      "shape": [
+        96,
+        128,
+        4
+      ]
+    },
+    "mesh_clip": {
+      "capture": {
+        "file": "mesh_clip.capture.json",
+        "sha256": "570d04da29fde7a3cc1c5e2124027a45957e86286638bf82623bdeaea1ef1a9c"
+      },
+      "exact": true,
+      "expanded_shaders": {
+        "file": "mesh_clip.shaders.json",
+        "sha256": "f743f16df9aab656bf468ef64283ed56052d5d1f9086a8fbffe938c6aa5d5398"
+      },
+      "filtered_glir": {
+        "file": "mesh_clip.glir.json",
+        "sha256": "49a1962dce07cc8581959c6bc0ff16c0c383fab7c259de86c03704e672766b89"
+      },
+      "parameters": {
+        "case": "mesh_clip",
+        "dpi": 96,
+        "planes": [
+          [
+            [
+              64.0,
+              0.0,
+              0.0
+            ],
+            [
+              1.0,
+              0.0,
+              0.0
+            ]
+          ]
+        ],
+        "size": [
+          128,
+          96
+        ]
+      },
+      "rgba": {
+        "file": "mesh_clip.npy",
+        "sha256": "e307824e9f57ba0684c56ad62a88462a9c689464124c4d9ab29e9742149ddf7d"
+      },
+      "shape": [
+        96,
+        128,
+        4
+      ]
+    },
+    "shapes": {
+      "capture": {
+        "file": "shapes.capture.json",
+        "sha256": "794c9859844bbc74964d4b6b5c5cf3f2456d7a4546612f34854cd876cccef64f"
+      },
+      "exact": true,
+      "expanded_shaders": {
+        "file": "shapes.shaders.json",
+        "sha256": "64398e79bc8c39fc9fc32a75e19fdb5d2e005111d534a9814e9f41434a41eef3"
+      },
+      "filtered_glir": {
+        "file": "shapes.glir.json",
+        "sha256": "02e0dbc90cfa542e931d6c1a3e9a999f41d2fb7e7c186a21638a54c59ceb2c4d"
+      },
+      "parameters": {
+        "case": "shapes",
+        "dpi": 96,
+        "geometry": "red rectangle, green ellipse64, blue triangle fan",
+        "size": [
+          128,
+          96
+        ]
+      },
+      "rgba": {
+        "file": "shapes.npy",
+        "sha256": "78580f39a2c9d14e75185356b1dbe316e9c0202d9792b8d6bbc72191185fd265"
+      },
+      "shape": [
+        96,
+        128,
+        4
+      ]
+    },
+    "text_dpi144": {
+      "capture": {
+        "file": "text_dpi144.capture.json",
+        "sha256": "b0d59237264136a0c22b52e7d1ff615d4516fdbc7492e21fd7123b80d7146170"
+      },
+      "cpu_atlas": {
+        "file": "text_dpi144.cpu_atlas.npy",
+        "sha256": "2a87432eadaaad922fb14fd908679f6e4bc30b197cc85cc01f9b9283ff9ebed7"
+      },
+      "exact": true,
+      "expanded_shaders": {
+        "file": "text_dpi144.shaders.json",
+        "sha256": "0c877ce125fb77d83a53e29bc1f14d47d17feabef58b210c93d2f38fd0f5082e"
+      },
+      "filtered_glir": {
+        "file": "text_dpi144.glir.json",
+        "sha256": "3156a151910cadb5a06965a4fa29f4d8abb36b615659d3dbbcd16d86a55a405c"
+      },
+      "parameters": {
+        "atlas_shape": [
+          1024,
+          1024,
+          3
+        ],
+        "case": "text_dpi144",
+        "dpi": 144,
+        "face": "OpenSans",
+        "font_license": "Apache License, Version 2.0 (font SFNT name ID 13)",
+        "font_sha256": "e64e508b2aa2880f907e470c4550980ec4c0694d103a43f36150ac3f93189bee",
+        "font_size": 16,
+        "glyphs": {
+          " ": {
+            "advance": 66.5,
+            "char": " ",
+            "kerning": "{'\u00c5': 0.0, '\u00c9': 0.0, '\u00d1': 0.0, '\u0150': 0.0, 'j': 0.0, 'g': 0.0, 'p': 0.0, 'q': 0.0, 'y': 0.0, ' ': 0.0, 'A': 0.0, '1': 0.0, '5': 0.0}",
+            "offset": [
+              0,
+              0
+            ],
+            "size": [
+              16,
+              16
+            ],
+            "texcoords": [
+              0.4326171875,
+              0.0009765625,
+              0.4482421875,
+              0.0166015625
+            ]
+          },
+          "1": {
+            "advance": 146.375,
+            "char": "1",
+            "kerning": "{'\u00c5': 0.0, '\u00c9': 0.0, '\u00d1': 0.0, '\u0150': 0.0, 'j': 0.0, 'g': 0.0, 'p': 0.0, 'q': 0.0, 'y': 0.0, ' ': 0.0, 'A': 0.0, '1': 0.0, '5': 0.0}",
+            "offset": [
+              23,
+              183
+            ],
+            "size": [
+              32,
+              61
+            ],
+            "texcoords": [
+              0.5068359375,
+              0.0009765625,
+              0.5380859375,
+              0.060546875
+            ]
+          },
+          "5": {
+            "advance": 146.375,
+            "char": "5",
+            "kerning": "{'\u00c5': 0.0, '\u00c9': 0.0, '\u00d1': 0.0, '\u0150': 0.0, 'j': 0.0, 'g': 0.0, 'p': 0.0, 'q': 0.0, 'y': 0.0, ' ': 0.0, 'A': 0.0, '1': 0.0, '5': 0.0}",
+            "offset": [
+              16,
+              183
+            ],
+            "size": [
+              45,
+              62
+            ],
+            "texcoords": [
+              0.5400390625,
+              0.0009765625,
+              0.583984375,
+              0.0615234375
+            ]
+          },
+          "A": {
+            "advance": 162.0,
+            "char": "A",
+            "kerning": "{'\u00c5': 0.0, '\u00c9': 0.0, '\u00d1': 0.0, '\u0150': -5.0, 'j': 0.0, 'g': 0.0, 'p': 0.0, 'q': 0.0, 'y': 0.0, ' ': 0.0, 'A': 0.0, '1': 0.0, '5': 0.0}",
+            "offset": [
+              0,
+              184
+            ],
+            "size": [
+              56,
+              62
+            ],
+            "texcoords": [
+              0.4501953125,
+              0.0009765625,
+              0.5048828125,
+              0.0615234375
+            ]
+          },
+          "g": {
+            "advance": 140.25,
+            "char": "g",
+            "kerning": "{'\u00c5': 0.0, '\u00c9': 0.0, '\u00d1': 0.0, '\u0150': 0.0, 'j': 0.0, 'g': 0.0, 'p': 0.0, 'q': 0.0, 'y': 0.0, ' ': 0.0, 'A': 0.0, '1': 0.0, '5': 0.0}",
+            "offset": [
+              4,
+              140
+            ],
+            "size": [
+              48,
+              66
+            ],
+            "texcoords": [
+              0.2412109375,
+              0.0009765625,
+              0.2880859375,
+              0.0654296875
+            ]
+          },
+          "j": {
+            "advance": 64.75,
+            "char": "j",
+            "kerning": "{'\u00c5': 0.0, '\u00c9': 0.0, '\u00d1': 0.0, '\u0150': 0.0, 'j': 0.0, 'g': 0.0, 'p': 0.0, 'q': 0.0, 'y': 0.0, ' ': 0.0, 'A': 0.0, '1': 0.0, '5': 0.0}",
+            "offset": [
+              -14,
+              188
+            ],
+            "size": [
+              30,
+              78
+            ],
+            "texcoords": [
+              0.2099609375,
+              0.0009765625,
+              0.2392578125,
+              0.0771484375
+            ]
+          },
+          "p": {
+            "advance": 156.875,
+            "char": "p",
+            "kerning": "{'\u00c5': 0.0, '\u00c9': 0.0, '\u00d1': 0.0, '\u0150': 0.0, 'j': 0.0, 'g': 0.0, 'p': 0.0, 'q': 0.0, 'y': 0.0, ' ': 0.0, 'A': 0.0, '1': 0.0, '5': 0.0}",
+            "offset": [
+              22,
+              140
+            ],
+            "size": [
+              46,
+              66
+            ],
+            "texcoords": [
+              0.2900390625,
+              0.0009765625,
+              0.3349609375,
+              0.0654296875
+            ]
+          },
+          "q": {
+            "advance": 156.875,
+            "char": "q",
+            "kerning": "{'\u00c5': 0.0, '\u00c9': 0.0, '\u00d1': 0.0, '\u0150': 0.0, 'j': 0.0, 'g': 0.0, 'p': 0.0, 'q': 0.0, 'y': 0.0, ' ': 0.0, 'A': 0.0, '1': 0.0, '5': 0.0}",
+            "offset": [
+              14,
+              140
+            ],
+            "size": [
+              46,
+              66
+            ],
+            "texcoords": [
+              0.3369140625,
+              0.0009765625,
+              0.3818359375,
+              0.0654296875
+            ]
+          },
+          "y": {
+            "advance": 129.0,
+            "char": "y",
+            "kerning": "{'\u00c5': 0.0, '\u00c9': 0.0, '\u00d1': 0.0, '\u0150': 0.0, 'j': 0.0, 'g': 0.0, 'p': -5.0, 'q': 0.0, 'y': 0.0, ' ': 0.0, 'A': 0.0, '1': 0.0, '5': 0.0}",
+            "offset": [
+              0,
+              137
+            ],
+            "size": [
+              48,
+              65
+            ],
+            "texcoords": [
+              0.3837890625,
+              0.0009765625,
+              0.4306640625,
+              0.064453125
+            ]
+          },
+          "\u00c5": {
+            "advance": 162.0,
+            "char": "\u00c5",
+            "kerning": "{'\u00c5': 0.0, '\u00c9': 0.0, '\u00d1': 0.0, '\u0150': -5.0, 'j': 0.0, 'g': 0.0, 'p': 0.0, 'q': 0.0, 'y': 0.0, ' ': 0.0, 'A': 0.0, '1': 0.0, '5': 0.0}",
+            "offset": [
+              0,
+              225
+            ],
+            "size": [
+              56,
+              72
+            ],
+            "texcoords": [
+              0.0009765625,
+              0.0009765625,
+              0.0556640625,
+              0.0712890625
+            ]
+          },
+          "\u00c9": {
+            "advance": 142.375,
+            "char": "\u00c9",
+            "kerning": "{'\u00c5': 0.0, '\u00c9': 0.0, '\u00d1': 0.0, '\u0150': 0.0, 'j': 0.0, 'g': 0.0, 'p': 0.0, 'q': 0.0, 'y': 0.0, ' ': 0.0, 'A': 0.0, '1': 0.0, '5': 0.0}",
+            "offset": [
+              25,
+              239
+            ],
+            "size": [
+              41,
+              75
+            ],
+            "texcoords": [
+              0.0576171875,
+              0.0009765625,
+              0.09765625,
+              0.07421875
+            ]
+          },
+          "\u00d1": {
+            "advance": 193.0,
+            "char": "\u00d1",
+            "kerning": "{'\u00c5': 0.0, '\u00c9': 0.0, '\u00d1': 0.0, '\u0150': 0.0, 'j': 0.0, 'g': 0.0, 'p': 0.0, 'q': 0.0, 'y': 0.0, ' ': 0.0, 'A': 0.0, '1': 0.0, '5': 0.0}",
+            "offset": [
+              25,
+              230
+            ],
+            "size": [
+              51,
+              73
+            ],
+            "texcoords": [
+              0.099609375,
+              0.0009765625,
+              0.1494140625,
+              0.072265625
+            ]
+          },
+          "\u0150": {
+            "advance": 199.375,
+            "char": "\u0150",
+            "kerning": "{'\u00c5': -5.0, '\u00c9': 0.0, '\u00d1': 0.0, '\u0150': 0.0, 'j': 0.0, 'g': 0.0, 'p': 0.0, 'q': 0.0, 'y': 0.0, ' ': 0.0, 'A': -5.0, '1': 0.0, '5': 0.0}",
+            "offset": [
+              15,
+              239
+            ],
+            "size": [
+              58,
+              76
+            ],
+            "texcoords": [
+              0.1513671875,
+              0.0009765625,
+              0.2080078125,
+              0.0751953125
+            ]
+          }
+        },
+        "method": "cpu",
+        "position": [
+          12,
+          48
+        ],
+        "size": [
+          128,
+          96
+        ],
+        "text": "Ag 15"
+      },
+      "rgba": {
+        "file": "text_dpi144.npy",
+        "sha256": "f1013edd4b059302981b2213eb5948cc45b6914ff37d40b1d63aab00ff5ee5f3"
+      },
+      "shape": [
+        96,
+        128,
+        4
+      ]
+    },
+    "text_dpi192": {
+      "capture": {
+        "file": "text_dpi192.capture.json",
+        "sha256": "2953340a16a38b87286ce63630bf4dd6bff3ac0e4ca6a1f57b84e438db26894a"
+      },
+      "cpu_atlas": {
+        "file": "text_dpi192.cpu_atlas.npy",
+        "sha256": "2a87432eadaaad922fb14fd908679f6e4bc30b197cc85cc01f9b9283ff9ebed7"
+      },
+      "exact": true,
+      "expanded_shaders": {
+        "file": "text_dpi192.shaders.json",
+        "sha256": "0c877ce125fb77d83a53e29bc1f14d47d17feabef58b210c93d2f38fd0f5082e"
+      },
+      "filtered_glir": {
+        "file": "text_dpi192.glir.json",
+        "sha256": "38071a11e112e32f0fad68bdc916d276028c95723f76aa1926bddf83b6c2bc3c"
+      },
+      "parameters": {
+        "atlas_shape": [
+          1024,
+          1024,
+          3
+        ],
+        "case": "text_dpi192",
+        "dpi": 192,
+        "face": "OpenSans",
+        "font_license": "Apache License, Version 2.0 (font SFNT name ID 13)",
+        "font_sha256": "e64e508b2aa2880f907e470c4550980ec4c0694d103a43f36150ac3f93189bee",
+        "font_size": 16,
+        "glyphs": {
+          " ": {
+            "advance": 66.5,
+            "char": " ",
+            "kerning": "{'\u00c5': 0.0, '\u00c9': 0.0, '\u00d1': 0.0, '\u0150': 0.0, 'j': 0.0, 'g': 0.0, 'p': 0.0, 'q': 0.0, 'y': 0.0, ' ': 0.0, 'A': 0.0, '1': 0.0, '5': 0.0}",
+            "offset": [
+              0,
+              0
+            ],
+            "size": [
+              16,
+              16
+            ],
+            "texcoords": [
+              0.4326171875,
+              0.0009765625,
+              0.4482421875,
+              0.0166015625
+            ]
+          },
+          "1": {
+            "advance": 146.375,
+            "char": "1",
+            "kerning": "{'\u00c5': 0.0, '\u00c9': 0.0, '\u00d1': 0.0, '\u0150': 0.0, 'j': 0.0, 'g': 0.0, 'p': 0.0, 'q': 0.0, 'y': 0.0, ' ': 0.0, 'A': 0.0, '1': 0.0, '5': 0.0}",
+            "offset": [
+              23,
+              183
+            ],
+            "size": [
+              32,
+              61
+            ],
+            "texcoords": [
+              0.5068359375,
+              0.0009765625,
+              0.5380859375,
+              0.060546875
+            ]
+          },
+          "5": {
+            "advance": 146.375,
+            "char": "5",
+            "kerning": "{'\u00c5': 0.0, '\u00c9': 0.0, '\u00d1': 0.0, '\u0150': 0.0, 'j': 0.0, 'g': 0.0, 'p': 0.0, 'q': 0.0, 'y': 0.0, ' ': 0.0, 'A': 0.0, '1': 0.0, '5': 0.0}",
+            "offset": [
+              16,
+              183
+            ],
+            "size": [
+              45,
+              62
+            ],
+            "texcoords": [
+              0.5400390625,
+              0.0009765625,
+              0.583984375,
+              0.0615234375
+            ]
+          },
+          "A": {
+            "advance": 162.0,
+            "char": "A",
+            "kerning": "{'\u00c5': 0.0, '\u00c9': 0.0, '\u00d1': 0.0, '\u0150': -5.0, 'j': 0.0, 'g': 0.0, 'p': 0.0, 'q': 0.0, 'y': 0.0, ' ': 0.0, 'A': 0.0, '1': 0.0, '5': 0.0}",
+            "offset": [
+              0,
+              184
+            ],
+            "size": [
+              56,
+              62
+            ],
+            "texcoords": [
+              0.4501953125,
+              0.0009765625,
+              0.5048828125,
+              0.0615234375
+            ]
+          },
+          "g": {
+            "advance": 140.25,
+            "char": "g",
+            "kerning": "{'\u00c5': 0.0, '\u00c9': 0.0, '\u00d1': 0.0, '\u0150': 0.0, 'j': 0.0, 'g': 0.0, 'p': 0.0, 'q': 0.0, 'y': 0.0, ' ': 0.0, 'A': 0.0, '1': 0.0, '5': 0.0}",
+            "offset": [
+              4,
+              140
+            ],
+            "size": [
+              48,
+              66
+            ],
+            "texcoords": [
+              0.2412109375,
+              0.0009765625,
+              0.2880859375,
+              0.0654296875
+            ]
+          },
+          "j": {
+            "advance": 64.75,
+            "char": "j",
+            "kerning": "{'\u00c5': 0.0, '\u00c9': 0.0, '\u00d1': 0.0, '\u0150': 0.0, 'j': 0.0, 'g': 0.0, 'p': 0.0, 'q': 0.0, 'y': 0.0, ' ': 0.0, 'A': 0.0, '1': 0.0, '5': 0.0}",
+            "offset": [
+              -14,
+              188
+            ],
+            "size": [
+              30,
+              78
+            ],
+            "texcoords": [
+              0.2099609375,
+              0.0009765625,
+              0.2392578125,
+              0.0771484375
+            ]
+          },
+          "p": {
+            "advance": 156.875,
+            "char": "p",
+            "kerning": "{'\u00c5': 0.0, '\u00c9': 0.0, '\u00d1': 0.0, '\u0150': 0.0, 'j': 0.0, 'g': 0.0, 'p': 0.0, 'q': 0.0, 'y': 0.0, ' ': 0.0, 'A': 0.0, '1': 0.0, '5': 0.0}",
+            "offset": [
+              22,
+              140
+            ],
+            "size": [
+              46,
+              66
+            ],
+            "texcoords": [
+              0.2900390625,
+              0.0009765625,
+              0.3349609375,
+              0.0654296875
+            ]
+          },
+          "q": {
+            "advance": 156.875,
+            "char": "q",
+            "kerning": "{'\u00c5': 0.0, '\u00c9': 0.0, '\u00d1': 0.0, '\u0150': 0.0, 'j': 0.0, 'g': 0.0, 'p': 0.0, 'q': 0.0, 'y': 0.0, ' ': 0.0, 'A': 0.0, '1': 0.0, '5': 0.0}",
+            "offset": [
+              14,
+              140
+            ],
+            "size": [
+              46,
+              66
+            ],
+            "texcoords": [
+              0.3369140625,
+              0.0009765625,
+              0.3818359375,
+              0.0654296875
+            ]
+          },
+          "y": {
+            "advance": 129.0,
+            "char": "y",
+            "kerning": "{'\u00c5': 0.0, '\u00c9': 0.0, '\u00d1': 0.0, '\u0150': 0.0, 'j': 0.0, 'g': 0.0, 'p': -5.0, 'q': 0.0, 'y': 0.0, ' ': 0.0, 'A': 0.0, '1': 0.0, '5': 0.0}",
+            "offset": [
+              0,
+              137
+            ],
+            "size": [
+              48,
+              65
+            ],
+            "texcoords": [
+              0.3837890625,
+              0.0009765625,
+              0.4306640625,
+              0.064453125
+            ]
+          },
+          "\u00c5": {
+            "advance": 162.0,
+            "char": "\u00c5",
+            "kerning": "{'\u00c5': 0.0, '\u00c9': 0.0, '\u00d1': 0.0, '\u0150': -5.0, 'j': 0.0, 'g': 0.0, 'p': 0.0, 'q': 0.0, 'y': 0.0, ' ': 0.0, 'A': 0.0, '1': 0.0, '5': 0.0}",
+            "offset": [
+              0,
+              225
+            ],
+            "size": [
+              56,
+              72
+            ],
+            "texcoords": [
+              0.0009765625,
+              0.0009765625,
+              0.0556640625,
+              0.0712890625
+            ]
+          },
+          "\u00c9": {
+            "advance": 142.375,
+            "char": "\u00c9",
+            "kerning": "{'\u00c5': 0.0, '\u00c9': 0.0, '\u00d1': 0.0, '\u0150': 0.0, 'j': 0.0, 'g': 0.0, 'p': 0.0, 'q': 0.0, 'y': 0.0, ' ': 0.0, 'A': 0.0, '1': 0.0, '5': 0.0}",
+            "offset": [
+              25,
+              239
+            ],
+            "size": [
+              41,
+              75
+            ],
+            "texcoords": [
+              0.0576171875,
+              0.0009765625,
+              0.09765625,
+              0.07421875
+            ]
+          },
+          "\u00d1": {
+            "advance": 193.0,
+            "char": "\u00d1",
+            "kerning": "{'\u00c5': 0.0, '\u00c9': 0.0, '\u00d1': 0.0, '\u0150': 0.0, 'j': 0.0, 'g': 0.0, 'p': 0.0, 'q': 0.0, 'y': 0.0, ' ': 0.0, 'A': 0.0, '1': 0.0, '5': 0.0}",
+            "offset": [
+              25,
+              230
+            ],
+            "size": [
+              51,
+              73
+            ],
+            "texcoords": [
+              0.099609375,
+              0.0009765625,
+              0.1494140625,
+              0.072265625
+            ]
+          },
+          "\u0150": {
+            "advance": 199.375,
+            "char": "\u0150",
+            "kerning": "{'\u00c5': -5.0, '\u00c9': 0.0, '\u00d1': 0.0, '\u0150': 0.0, 'j': 0.0, 'g': 0.0, 'p': 0.0, 'q': 0.0, 'y': 0.0, ' ': 0.0, 'A': -5.0, '1': 0.0, '5': 0.0}",
+            "offset": [
+              15,
+              239
+            ],
+            "size": [
+              58,
+              76
+            ],
+            "texcoords": [
+              0.1513671875,
+              0.0009765625,
+              0.2080078125,
+              0.0751953125
+            ]
+          }
+        },
+        "method": "cpu",
+        "position": [
+          12,
+          48
+        ],
+        "size": [
+          128,
+          96
+        ],
+        "text": "Ag 15"
+      },
+      "rgba": {
+        "file": "text_dpi192.npy",
+        "sha256": "5f8d22da7b63e631aafbd9334330a7209862af109546e69bfbe102be00e45a3c"
+      },
+      "shape": [
+        96,
+        128,
+        4
+      ]
+    },
+    "text_dpi96": {
+      "capture": {
+        "file": "text_dpi96.capture.json",
+        "sha256": "99f01fea3fa372b2777df661c33c4eaec736a08db1f21c9286a7db100ca7256f"
+      },
+      "cpu_atlas": {
+        "file": "text_dpi96.cpu_atlas.npy",
+        "sha256": "2a87432eadaaad922fb14fd908679f6e4bc30b197cc85cc01f9b9283ff9ebed7"
+      },
+      "exact": true,
+      "expanded_shaders": {
+        "file": "text_dpi96.shaders.json",
+        "sha256": "0c877ce125fb77d83a53e29bc1f14d47d17feabef58b210c93d2f38fd0f5082e"
+      },
+      "filtered_glir": {
+        "file": "text_dpi96.glir.json",
+        "sha256": "c79191aca035fe0eb1c44f5aefcadfabe6310555d0bf012eb9af07d80d9682c5"
+      },
+      "parameters": {
+        "atlas_shape": [
+          1024,
+          1024,
+          3
+        ],
+        "case": "text_dpi96",
+        "dpi": 96,
+        "face": "OpenSans",
+        "font_license": "Apache License, Version 2.0 (font SFNT name ID 13)",
+        "font_sha256": "e64e508b2aa2880f907e470c4550980ec4c0694d103a43f36150ac3f93189bee",
+        "font_size": 16,
+        "glyphs": {
+          " ": {
+            "advance": 66.5,
+            "char": " ",
+            "kerning": "{'\u00c5': 0.0, '\u00c9': 0.0, '\u00d1': 0.0, '\u0150': 0.0, 'j': 0.0, 'g': 0.0, 'p': 0.0, 'q': 0.0, 'y': 0.0, ' ': 0.0, 'A': 0.0, '1': 0.0, '5': 0.0}",
+            "offset": [
+              0,
+              0
+            ],
+            "size": [
+              16,
+              16
+            ],
+            "texcoords": [
+              0.4326171875,
+              0.0009765625,
+              0.4482421875,
+              0.0166015625
+            ]
+          },
+          "1": {
+            "advance": 146.375,
+            "char": "1",
+            "kerning": "{'\u00c5': 0.0, '\u00c9': 0.0, '\u00d1': 0.0, '\u0150': 0.0, 'j': 0.0, 'g': 0.0, 'p': 0.0, 'q': 0.0, 'y': 0.0, ' ': 0.0, 'A': 0.0, '1': 0.0, '5': 0.0}",
+            "offset": [
+              23,
+              183
+            ],
+            "size": [
+              32,
+              61
+            ],
+            "texcoords": [
+              0.5068359375,
+              0.0009765625,
+              0.5380859375,
+              0.060546875
+            ]
+          },
+          "5": {
+            "advance": 146.375,
+            "char": "5",
+            "kerning": "{'\u00c5': 0.0, '\u00c9': 0.0, '\u00d1': 0.0, '\u0150': 0.0, 'j': 0.0, 'g': 0.0, 'p': 0.0, 'q': 0.0, 'y': 0.0, ' ': 0.0, 'A': 0.0, '1': 0.0, '5': 0.0}",
+            "offset": [
+              16,
+              183
+            ],
+            "size": [
+              45,
+              62
+            ],
+            "texcoords": [
+              0.5400390625,
+              0.0009765625,
+              0.583984375,
+              0.0615234375
+            ]
+          },
+          "A": {
+            "advance": 162.0,
+            "char": "A",
+            "kerning": "{'\u00c5': 0.0, '\u00c9': 0.0, '\u00d1': 0.0, '\u0150': -5.0, 'j': 0.0, 'g': 0.0, 'p': 0.0, 'q': 0.0, 'y': 0.0, ' ': 0.0, 'A': 0.0, '1': 0.0, '5': 0.0}",
+            "offset": [
+              0,
+              184
+            ],
+            "size": [
+              56,
+              62
+            ],
+            "texcoords": [
+              0.4501953125,
+              0.0009765625,
+              0.5048828125,
+              0.0615234375
+            ]
+          },
+          "g": {
+            "advance": 140.25,
+            "char": "g",
+            "kerning": "{'\u00c5': 0.0, '\u00c9': 0.0, '\u00d1': 0.0, '\u0150': 0.0, 'j': 0.0, 'g': 0.0, 'p': 0.0, 'q': 0.0, 'y': 0.0, ' ': 0.0, 'A': 0.0, '1': 0.0, '5': 0.0}",
+            "offset": [
+              4,
+              140
+            ],
+            "size": [
+              48,
+              66
+            ],
+            "texcoords": [
+              0.2412109375,
+              0.0009765625,
+              0.2880859375,
+              0.0654296875
+            ]
+          },
+          "j": {
+            "advance": 64.75,
+            "char": "j",
+            "kerning": "{'\u00c5': 0.0, '\u00c9': 0.0, '\u00d1': 0.0, '\u0150': 0.0, 'j': 0.0, 'g': 0.0, 'p': 0.0, 'q': 0.0, 'y': 0.0, ' ': 0.0, 'A': 0.0, '1': 0.0, '5': 0.0}",
+            "offset": [
+              -14,
+              188
+            ],
+            "size": [
+              30,
+              78
+            ],
+            "texcoords": [
+              0.2099609375,
+              0.0009765625,
+              0.2392578125,
+              0.0771484375
+            ]
+          },
+          "p": {
+            "advance": 156.875,
+            "char": "p",
+            "kerning": "{'\u00c5': 0.0, '\u00c9': 0.0, '\u00d1': 0.0, '\u0150': 0.0, 'j': 0.0, 'g': 0.0, 'p': 0.0, 'q': 0.0, 'y': 0.0, ' ': 0.0, 'A': 0.0, '1': 0.0, '5': 0.0}",
+            "offset": [
+              22,
+              140
+            ],
+            "size": [
+              46,
+              66
+            ],
+            "texcoords": [
+              0.2900390625,
+              0.0009765625,
+              0.3349609375,
+              0.0654296875
+            ]
+          },
+          "q": {
+            "advance": 156.875,
+            "char": "q",
+            "kerning": "{'\u00c5': 0.0, '\u00c9': 0.0, '\u00d1': 0.0, '\u0150': 0.0, 'j': 0.0, 'g': 0.0, 'p': 0.0, 'q': 0.0, 'y': 0.0, ' ': 0.0, 'A': 0.0, '1': 0.0, '5': 0.0}",
+            "offset": [
+              14,
+              140
+            ],
+            "size": [
+              46,
+              66
+            ],
+            "texcoords": [
+              0.3369140625,
+              0.0009765625,
+              0.3818359375,
+              0.0654296875
+            ]
+          },
+          "y": {
+            "advance": 129.0,
+            "char": "y",
+            "kerning": "{'\u00c5': 0.0, '\u00c9': 0.0, '\u00d1': 0.0, '\u0150': 0.0, 'j': 0.0, 'g': 0.0, 'p': -5.0, 'q': 0.0, 'y': 0.0, ' ': 0.0, 'A': 0.0, '1': 0.0, '5': 0.0}",
+            "offset": [
+              0,
+              137
+            ],
+            "size": [
+              48,
+              65
+            ],
+            "texcoords": [
+              0.3837890625,
+              0.0009765625,
+              0.4306640625,
+              0.064453125
+            ]
+          },
+          "\u00c5": {
+            "advance": 162.0,
+            "char": "\u00c5",
+            "kerning": "{'\u00c5': 0.0, '\u00c9': 0.0, '\u00d1': 0.0, '\u0150': -5.0, 'j': 0.0, 'g': 0.0, 'p': 0.0, 'q': 0.0, 'y': 0.0, ' ': 0.0, 'A': 0.0, '1': 0.0, '5': 0.0}",
+            "offset": [
+              0,
+              225
+            ],
+            "size": [
+              56,
+              72
+            ],
+            "texcoords": [
+              0.0009765625,
+              0.0009765625,
+              0.0556640625,
+              0.0712890625
+            ]
+          },
+          "\u00c9": {
+            "advance": 142.375,
+            "char": "\u00c9",
+            "kerning": "{'\u00c5': 0.0, '\u00c9': 0.0, '\u00d1': 0.0, '\u0150': 0.0, 'j': 0.0, 'g': 0.0, 'p': 0.0, 'q': 0.0, 'y': 0.0, ' ': 0.0, 'A': 0.0, '1': 0.0, '5': 0.0}",
+            "offset": [
+              25,
+              239
+            ],
+            "size": [
+              41,
+              75
+            ],
+            "texcoords": [
+              0.0576171875,
+              0.0009765625,
+              0.09765625,
+              0.07421875
+            ]
+          },
+          "\u00d1": {
+            "advance": 193.0,
+            "char": "\u00d1",
+            "kerning": "{'\u00c5': 0.0, '\u00c9': 0.0, '\u00d1': 0.0, '\u0150': 0.0, 'j': 0.0, 'g': 0.0, 'p': 0.0, 'q': 0.0, 'y': 0.0, ' ': 0.0, 'A': 0.0, '1': 0.0, '5': 0.0}",
+            "offset": [
+              25,
+              230
+            ],
+            "size": [
+              51,
+              73
+            ],
+            "texcoords": [
+              0.099609375,
+              0.0009765625,
+              0.1494140625,
+              0.072265625
+            ]
+          },
+          "\u0150": {
+            "advance": 199.375,
+            "char": "\u0150",
+            "kerning": "{'\u00c5': -5.0, '\u00c9': 0.0, '\u00d1': 0.0, '\u0150': 0.0, 'j': 0.0, 'g': 0.0, 'p': 0.0, 'q': 0.0, 'y': 0.0, ' ': 0.0, 'A': -5.0, '1': 0.0, '5': 0.0}",
+            "offset": [
+              15,
+              239
+            ],
+            "size": [
+              58,
+              76
+            ],
+            "texcoords": [
+              0.1513671875,
+              0.0009765625,
+              0.2080078125,
+              0.0751953125
+            ]
+          }
+        },
+        "method": "cpu",
+        "position": [
+          12,
+          48
+        ],
+        "size": [
+          128,
+          96
+        ],
+        "text": "Ag 15"
+      },
+      "rgba": {
+        "file": "text_dpi96.npy",
+        "sha256": "36edf556e07d7a873f0e610e2373ff57962c2d02283ea2456bc9bd8968d6751f"
+      },
+      "shape": [
+        96,
+        128,
+        4
+      ]
+    }
+  },
+  "provenance": {
+    "capture_source_sha256": "66ae25247831c184f38f2c7a2ff151b940013087104907523b11e1ed2b9b151a",
+    "cmake": null,
+    "distribution_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Lib\\site-packages",
+    "distribution_record_sha256": "455e084c0cb78e19e41c79d08a57d533b07d52b3248c2ebd4b73e80584b067cc",
+    "environment": {
+      "PYTHONPATH": null,
+      "QT_API": "pyqt6",
+      "QT_QPA_PLATFORM": null,
+      "QT_SCALE_FACTOR": "1",
+      "VISPY_PYQT5_SHARE_CONTEXT": "true"
+    },
+    "fixture_source_sha256": "37797259727afd9c6b15c7074319b935dcddb330deb2b6c99a03c8df6f36fddb",
+    "kind": "upstream",
+    "machine": "AMD64",
+    "numpy_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Lib\\site-packages\\numpy\\__init__.py",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.12.8",
+    "python_executable": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Scripts\\python.exe",
+    "qt_runtime": "6.11.2",
+    "regenerate": "build/oracle-opengl/Scripts/python.exe tools/oracle_scene_capture.py --kind upstream --output tests/reference/scene-opengl",
+    "renderer": {
+      "renderer": "NVIDIA GeForce RTX 4090/PCIe/SSE2",
+      "vendor": "NVIDIA Corporation",
+      "version": "4.6.0 NVIDIA 595.79"
+    },
+    "requirements_sha256": "a784b5a5e2b4ea201578acddc41e28e0997275ea2542642148322153cd240ffd",
+    "scene_capture_sha256": "3080d3dd2ca8c482d4fbffe5a6316466a3464886bf61d3a731f9a1dca971b0ea",
+    "scene_fixture_sha256": "8ab39d1f291354b17918ef6412385437a07e229a190ff5fb195f8bd559786468",
+    "scene_source_sha256": {
+      "util/fonts/data/OpenSans-Regular.ttf": "e64e508b2aa2880f907e470c4550980ec4c0694d103a43f36150ac3f93189bee",
+      "visuals/line/line.py": "027dde892f0590da192168481d227f8654a40e199c05b89ba0615f79edcaeec6",
+      "visuals/markers.py": "84990f7b14ff92a4acfcccf39bcc8c788b7c9df76e75e85fc8c4e4e102b119c3",
+      "visuals/mesh.py": "9d6fc7616eef5caff4da302ff94c561df1aab8c8b6498d6b901f8e51c5b1ef88",
+      "visuals/text/text.py": "5907ac03bd6c6c13709ae4994616ec183407189b2645f7e52e20a32da3ce7e60"
+    },
+    "source_sha256": {
+      "gloo/buffer.py": "68e37b184b74814e0ae7a6f4f754c9f0c0af5b4e6369a60a8357c70da974e138",
+      "gloo/context.py": "6afc97492f65a5e865723535206fb769a1c4b55694d69786123fdee78bef992a",
+      "gloo/glir.py": "a3bb8a75b33f47420e9c100b8a6d81037a2f03c905e6c9f7d8399f4fb2eb8f7c",
+      "gloo/program.py": "4d3ab8e36260f9b5dc50f6aec075b12d642535f3cb8f49bfd4a27056301d5492",
+      "gloo/texture.py": "9f6d5f2e448e02c0ca4d66c65d17ddcdb6c0182bb8f15f1292a427f5a9faf6bc",
+      "gloo/wrappers.py": "73dbb5eb8ca78b2822266d272ffb14db9fcadd7a56512843209187714c9e8dcc"
+    },
+    "upstream_commit": "117b054598f4758b598f4b8f48feea48c11fe7b0",
+    "versions": {
+      "PyOpenGL": "3.1.10",
+      "PyQt6": "6.11.0",
+      "PyQt6-Qt6": "6.11.2",
+      "PyQt6-sip": "13.13.0",
+      "freetype-py": "2.5.1",
+      "hsluv": "5.0.4",
+      "kiwisolver": "1.5.1",
+      "numpy": "2.5.3",
+      "packaging": "26.3",
+      "vispy": "0.17.0"
+    },
+    "vispy_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Lib\\site-packages\\vispy",
+    "vispy_version": "0.17.0"
+  },
+  "schema": 1
+}

@@ -1,0 +1,1183 @@
+{
+  "authoring_sha256": "28768db97a432279d62fcc72836cfa8585399e766b93fb7578ecd6b727e020c6",
+  "comparison": {
+    "candidate_alignment_or_color_fit": false,
+    "full_frame_exact": true,
+    "landmark_max_abs_u8": 1
+  },
+  "errors": {},
+  "fixtures": {
+    "slice_change": {
+      "actual_renderer_provenance": {
+        "capture_source_sha256": "66ae25247831c184f38f2c7a2ff151b940013087104907523b11e1ed2b9b151a",
+        "cmake": null,
+        "distribution_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-napari\\Lib\\site-packages",
+        "distribution_record_sha256": "455e084c0cb78e19e41c79d08a57d533b07d52b3248c2ebd4b73e80584b067cc",
+        "environment": {
+          "PYTHONPATH": null,
+          "QT_API": "pyqt6",
+          "QT_QPA_PLATFORM": null,
+          "QT_SCALE_FACTOR": "1",
+          "VISPY_PYQT5_SHARE_CONTEXT": null
+        },
+        "fixture_source_sha256": "37797259727afd9c6b15c7074319b935dcddb330deb2b6c99a03c8df6f36fddb",
+        "kind": "upstream",
+        "machine": "AMD64",
+        "numpy_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-napari\\Lib\\site-packages\\numpy\\__init__.py",
+        "platform": "Windows-11-10.0.26200-SP0",
+        "python": "3.12.8",
+        "python_executable": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-napari\\Scripts\\python.exe",
+        "qt_runtime": "6.11.2",
+        "regenerate": "uv venv build/oracle-opengl --python 3.12; uv pip install --python build/oracle-opengl/Scripts/python.exe -r tools/oracle_requirements.txt; build/oracle-opengl/Scripts/python.exe tools/oracle_capture.py --kind upstream --output tests/reference/opengl",
+        "renderer": {
+          "renderer": "NVIDIA GeForce RTX 4090/PCIe/SSE2",
+          "vendor": "NVIDIA Corporation",
+          "version": "4.6.0 NVIDIA 595.79"
+        },
+        "requirements_sha256": "a784b5a5e2b4ea201578acddc41e28e0997275ea2542642148322153cd240ffd",
+        "source_sha256": {
+          "gloo/buffer.py": "68e37b184b74814e0ae7a6f4f754c9f0c0af5b4e6369a60a8357c70da974e138",
+          "gloo/context.py": "6afc97492f65a5e865723535206fb769a1c4b55694d69786123fdee78bef992a",
+          "gloo/glir.py": "a3bb8a75b33f47420e9c100b8a6d81037a2f03c905e6c9f7d8399f4fb2eb8f7c",
+          "gloo/program.py": "4d3ab8e36260f9b5dc50f6aec075b12d642535f3cb8f49bfd4a27056301d5492",
+          "gloo/texture.py": "9f6d5f2e448e02c0ca4d66c65d17ddcdb6c0182bb8f15f1292a427f5a9faf6bc",
+          "gloo/wrappers.py": "73dbb5eb8ca78b2822266d272ffb14db9fcadd7a56512843209187714c9e8dcc"
+        },
+        "upstream_commit": "117b054598f4758b598f4b8f48feea48c11fe7b0",
+        "versions": {
+          "PyOpenGL": "3.1.10",
+          "PyQt6": "6.11.0",
+          "PyQt6-Qt6": "6.11.2",
+          "PyQt6-sip": "13.13.0",
+          "freetype-py": "2.5.1",
+          "hsluv": "5.0.4",
+          "kiwisolver": "1.5.1",
+          "numpy": "2.5.3",
+          "packaging": "26.3",
+          "vispy": "0.17.0"
+        },
+        "vispy_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-napari\\Lib\\site-packages\\vispy",
+        "vispy_version": "0.17.0"
+      },
+      "expanded_shaders": {
+        "file": "slice_change.shaders.json",
+        "sha256": "8051dc470b31c3fccab2b3cbcfedfac10ae9a7b21068321a23bbc7f68cd2cbb5"
+      },
+      "filtered_glir": {
+        "file": "slice_change.glir.json",
+        "sha256": "24889ed4ac35be7d8e26890859aca7b306c48c528d05e37d1c22b6e352aa2102"
+      },
+      "parameters": {
+        "camera_rect": [
+          -0.5,
+          -0.5,
+          32.0,
+          24.0
+        ],
+        "case": "slice_change",
+        "comparison": {
+          "candidate_alignment_or_color_fit": false,
+          "full_frame_exact": true,
+          "landmark_max_abs_u8": 1
+        },
+        "current_context_samples": 0,
+        "final_inputs": [
+          {
+            "dtype": "|u1",
+            "sha256": "18373bec9923a9ecf75d911d6f2bdd0f72eddb7411f9a263c4df0edc92343aab",
+            "shape": [
+              3,
+              24,
+              32
+            ]
+          }
+        ],
+        "initial_slice_records": [
+          {
+            "dtype": "|u1",
+            "sha256": "96c117a32e74822735108bb5f6e5630d9194348b515d2d5ec5c07d51f4f26b2d",
+            "shape": [
+              24,
+              32
+            ]
+          },
+          {
+            "dtype": "|u1",
+            "sha256": "631b585c9805b4bce1f5baf7a0d2ec717509b2287a7177661460c4817391b8b1",
+            "shape": [
+              24,
+              32
+            ]
+          },
+          {
+            "dtype": "|u1",
+            "sha256": "7a8f1467e9e4b0634a5b8c4e704a37a6354894b6dc5c6da28f206624f126df40",
+            "shape": [
+              24,
+              32
+            ]
+          }
+        ],
+        "inputs": [
+          {
+            "dtype": "|u1",
+            "sha256": "835370e1f5cf4e1433bff56d80e51a1173819bbacd739f3d8a2ead5e107d420b",
+            "shape": [
+              3,
+              24,
+              32
+            ]
+          }
+        ],
+        "landmarks": [
+          {
+            "column": 16,
+            "rgba": [
+              32,
+              32,
+              32,
+              255
+            ],
+            "row": 48
+          },
+          {
+            "column": 48,
+            "rgba": [
+              96,
+              96,
+              96,
+              255
+            ],
+            "row": 48
+          },
+          {
+            "column": 80,
+            "rgba": [
+              160,
+              160,
+              160,
+              255
+            ],
+            "row": 48
+          },
+          {
+            "column": 112,
+            "rgba": [
+              224,
+              224,
+              224,
+              255
+            ],
+            "row": 48
+          },
+          {
+            "column": 44,
+            "rgba": [
+              255,
+              255,
+              255,
+              255
+            ],
+            "row": 24
+          },
+          {
+            "column": 32,
+            "rgba": [
+              96,
+              96,
+              96,
+              255
+            ],
+            "row": 24
+          }
+        ],
+        "layer_names": [
+          "Image"
+        ],
+        "layer_types": [
+          "Image"
+        ],
+        "multiscale_revision_scope": "per-level CPU content plus real selected-texture GLIR uploads; no fictitious per-level GPU cache",
+        "native_mro": [
+          "CanvasBackendDesktop",
+          "QtBaseCanvasBackend",
+          "BaseCanvasBackend",
+          "QOpenGLWidget",
+          "QWidget",
+          "QObject",
+          "wrapper",
+          "QPaintDevice",
+          "simplewrapper",
+          "object"
+        ],
+        "partial_labels_events": [],
+        "readbacks": "one final scene.render; no intermediate readback",
+        "sample_query_scope": "actual current context; scene.render uses a separate single-sample export FBO",
+        "selected_slice_sequence": [
+          0,
+          2,
+          1
+        ],
+        "selected_texture_uploads": [
+          {
+            "command_index": 44,
+            "dtype": "|u1",
+            "offset": [
+              0,
+              0
+            ],
+            "sha256": "631b585c9805b4bce1f5baf7a0d2ec717509b2287a7177661460c4817391b8b1",
+            "shape": [
+              24,
+              32,
+              1
+            ],
+            "stage": "initial"
+          },
+          {
+            "command_index": 78,
+            "dtype": "|u1",
+            "offset": [
+              0,
+              0
+            ],
+            "sha256": "96c117a32e74822735108bb5f6e5630d9194348b515d2d5ec5c07d51f4f26b2d",
+            "shape": [
+              24,
+              32,
+              1
+            ],
+            "stage": "initial"
+          },
+          {
+            "command_index": 125,
+            "dtype": "|u1",
+            "offset": [
+              0,
+              0
+            ],
+            "sha256": "7a8f1467e9e4b0634a5b8c4e704a37a6354894b6dc5c6da28f206624f126df40",
+            "shape": [
+              24,
+              32,
+              1
+            ],
+            "stage": "selected_slice2"
+          },
+          {
+            "command_index": 140,
+            "dtype": "|u1",
+            "offset": [
+              0,
+              0
+            ],
+            "sha256": "9d92c7cf9aadb82ce94b863c79565c2b592724ab5613222fb8e4f67dacbd58e3",
+            "shape": [
+              24,
+              32,
+              1
+            ],
+            "stage": "selected_slice1_edit"
+          }
+        ],
+        "size": [
+          128,
+          96
+        ],
+        "source_revisions": [
+          {
+            "levels": [
+              {
+                "dtype": "|u1",
+                "sha256": "835370e1f5cf4e1433bff56d80e51a1173819bbacd739f3d8a2ead5e107d420b",
+                "shape": [
+                  3,
+                  24,
+                  32
+                ]
+              }
+            ],
+            "stage": "initial"
+          },
+          {
+            "levels": [
+              {
+                "dtype": "|u1",
+                "sha256": "18373bec9923a9ecf75d911d6f2bdd0f72eddb7411f9a263c4df0edc92343aab",
+                "shape": [
+                  3,
+                  24,
+                  32
+                ]
+              }
+            ],
+            "slice_records": [
+              {
+                "dtype": "|u1",
+                "sha256": "96c117a32e74822735108bb5f6e5630d9194348b515d2d5ec5c07d51f4f26b2d",
+                "shape": [
+                  24,
+                  32
+                ]
+              },
+              {
+                "dtype": "|u1",
+                "sha256": "9d92c7cf9aadb82ce94b863c79565c2b592724ab5613222fb8e4f67dacbd58e3",
+                "shape": [
+                  24,
+                  32
+                ]
+              },
+              {
+                "dtype": "|u1",
+                "sha256": "7a8f1467e9e4b0634a5b8c4e704a37a6354894b6dc5c6da28f206624f126df40",
+                "shape": [
+                  24,
+                  32
+                ]
+              }
+            ],
+            "stage": "slice1_edit"
+          }
+        ],
+        "stage_commands": [
+          {
+            "command_index": 0,
+            "stage": "initial"
+          },
+          {
+            "command_index": 1,
+            "stage": "initial"
+          },
+          {
+            "command_index": 2,
+            "stage": "initial"
+          },
+          {
+            "command_index": 3,
+            "stage": "initial"
+          },
+          {
+            "command_index": 4,
+            "stage": "initial"
+          },
+          {
+            "command_index": 5,
+            "stage": "initial"
+          },
+          {
+            "command_index": 6,
+            "stage": "initial"
+          },
+          {
+            "command_index": 7,
+            "stage": "initial"
+          },
+          {
+            "command_index": 8,
+            "stage": "initial"
+          },
+          {
+            "command_index": 9,
+            "stage": "initial"
+          },
+          {
+            "command_index": 10,
+            "stage": "initial"
+          },
+          {
+            "command_index": 11,
+            "stage": "initial"
+          },
+          {
+            "command_index": 12,
+            "stage": "initial"
+          },
+          {
+            "command_index": 13,
+            "stage": "initial"
+          },
+          {
+            "command_index": 14,
+            "stage": "initial"
+          },
+          {
+            "command_index": 15,
+            "stage": "initial"
+          },
+          {
+            "command_index": 16,
+            "stage": "initial"
+          },
+          {
+            "command_index": 17,
+            "stage": "initial"
+          },
+          {
+            "command_index": 18,
+            "stage": "initial"
+          },
+          {
+            "command_index": 19,
+            "stage": "initial"
+          },
+          {
+            "command_index": 20,
+            "stage": "initial"
+          },
+          {
+            "command_index": 21,
+            "stage": "initial"
+          },
+          {
+            "command_index": 22,
+            "stage": "initial"
+          },
+          {
+            "command_index": 23,
+            "stage": "initial"
+          },
+          {
+            "command_index": 24,
+            "stage": "initial"
+          },
+          {
+            "command_index": 25,
+            "stage": "initial"
+          },
+          {
+            "command_index": 26,
+            "stage": "initial"
+          },
+          {
+            "command_index": 27,
+            "stage": "initial"
+          },
+          {
+            "command_index": 28,
+            "stage": "initial"
+          },
+          {
+            "command_index": 29,
+            "stage": "initial"
+          },
+          {
+            "command_index": 30,
+            "stage": "initial"
+          },
+          {
+            "command_index": 31,
+            "stage": "initial"
+          },
+          {
+            "command_index": 32,
+            "stage": "initial"
+          },
+          {
+            "command_index": 33,
+            "stage": "initial"
+          },
+          {
+            "command_index": 34,
+            "stage": "initial"
+          },
+          {
+            "command_index": 35,
+            "stage": "initial"
+          },
+          {
+            "command_index": 36,
+            "stage": "initial"
+          },
+          {
+            "command_index": 37,
+            "stage": "initial"
+          },
+          {
+            "command_index": 38,
+            "stage": "initial"
+          },
+          {
+            "command_index": 39,
+            "stage": "initial"
+          },
+          {
+            "command_index": 40,
+            "stage": "initial"
+          },
+          {
+            "command_index": 41,
+            "stage": "initial"
+          },
+          {
+            "command_index": 42,
+            "stage": "initial"
+          },
+          {
+            "command_index": 43,
+            "stage": "initial"
+          },
+          {
+            "command_index": 44,
+            "stage": "initial"
+          },
+          {
+            "command_index": 45,
+            "stage": "initial"
+          },
+          {
+            "command_index": 46,
+            "stage": "initial"
+          },
+          {
+            "command_index": 47,
+            "stage": "initial"
+          },
+          {
+            "command_index": 48,
+            "stage": "initial"
+          },
+          {
+            "command_index": 49,
+            "stage": "initial"
+          },
+          {
+            "command_index": 50,
+            "stage": "initial"
+          },
+          {
+            "command_index": 51,
+            "stage": "initial"
+          },
+          {
+            "command_index": 52,
+            "stage": "initial"
+          },
+          {
+            "command_index": 53,
+            "stage": "initial"
+          },
+          {
+            "command_index": 54,
+            "stage": "initial"
+          },
+          {
+            "command_index": 55,
+            "stage": "initial"
+          },
+          {
+            "command_index": 56,
+            "stage": "initial"
+          },
+          {
+            "command_index": 57,
+            "stage": "initial"
+          },
+          {
+            "command_index": 58,
+            "stage": "initial"
+          },
+          {
+            "command_index": 59,
+            "stage": "initial"
+          },
+          {
+            "command_index": 60,
+            "stage": "initial"
+          },
+          {
+            "command_index": 61,
+            "stage": "initial"
+          },
+          {
+            "command_index": 62,
+            "stage": "initial"
+          },
+          {
+            "command_index": 63,
+            "stage": "initial"
+          },
+          {
+            "command_index": 64,
+            "stage": "initial"
+          },
+          {
+            "command_index": 65,
+            "stage": "initial"
+          },
+          {
+            "command_index": 66,
+            "stage": "initial"
+          },
+          {
+            "command_index": 67,
+            "stage": "initial"
+          },
+          {
+            "command_index": 68,
+            "stage": "initial"
+          },
+          {
+            "command_index": 69,
+            "stage": "initial"
+          },
+          {
+            "command_index": 70,
+            "stage": "initial"
+          },
+          {
+            "command_index": 71,
+            "stage": "initial"
+          },
+          {
+            "command_index": 72,
+            "stage": "initial"
+          },
+          {
+            "command_index": 73,
+            "stage": "initial"
+          },
+          {
+            "command_index": 74,
+            "stage": "initial"
+          },
+          {
+            "command_index": 75,
+            "stage": "initial"
+          },
+          {
+            "command_index": 76,
+            "stage": "initial"
+          },
+          {
+            "command_index": 77,
+            "stage": "initial"
+          },
+          {
+            "command_index": 78,
+            "stage": "initial"
+          },
+          {
+            "command_index": 79,
+            "stage": "initial"
+          },
+          {
+            "command_index": 80,
+            "stage": "initial"
+          },
+          {
+            "command_index": 81,
+            "stage": "initial"
+          },
+          {
+            "command_index": 82,
+            "stage": "initial"
+          },
+          {
+            "command_index": 83,
+            "stage": "initial"
+          },
+          {
+            "command_index": 84,
+            "stage": "initial"
+          },
+          {
+            "command_index": 85,
+            "stage": "initial"
+          },
+          {
+            "command_index": 86,
+            "stage": "initial"
+          },
+          {
+            "command_index": 87,
+            "stage": "initial"
+          },
+          {
+            "command_index": 88,
+            "stage": "initial"
+          },
+          {
+            "command_index": 89,
+            "stage": "initial"
+          },
+          {
+            "command_index": 90,
+            "stage": "initial"
+          },
+          {
+            "command_index": 91,
+            "stage": "initial"
+          },
+          {
+            "command_index": 92,
+            "stage": "initial"
+          },
+          {
+            "command_index": 93,
+            "stage": "initial"
+          },
+          {
+            "command_index": 94,
+            "stage": "initial"
+          },
+          {
+            "command_index": 95,
+            "stage": "initial"
+          },
+          {
+            "command_index": 96,
+            "stage": "initial"
+          },
+          {
+            "command_index": 97,
+            "stage": "initial"
+          },
+          {
+            "command_index": 98,
+            "stage": "initial"
+          },
+          {
+            "command_index": 99,
+            "stage": "initial"
+          },
+          {
+            "command_index": 100,
+            "stage": "initial"
+          },
+          {
+            "command_index": 101,
+            "stage": "initial"
+          },
+          {
+            "command_index": 102,
+            "stage": "initial"
+          },
+          {
+            "command_index": 103,
+            "stage": "initial"
+          },
+          {
+            "command_index": 104,
+            "stage": "initial"
+          },
+          {
+            "command_index": 105,
+            "stage": "initial"
+          },
+          {
+            "command_index": 106,
+            "stage": "initial"
+          },
+          {
+            "command_index": 107,
+            "stage": "prewarm"
+          },
+          {
+            "command_index": 108,
+            "stage": "prewarm"
+          },
+          {
+            "command_index": 109,
+            "stage": "prewarm"
+          },
+          {
+            "command_index": 110,
+            "stage": "prewarm"
+          },
+          {
+            "command_index": 111,
+            "stage": "prewarm"
+          },
+          {
+            "command_index": 112,
+            "stage": "prewarm"
+          },
+          {
+            "command_index": 113,
+            "stage": "prewarm"
+          },
+          {
+            "command_index": 114,
+            "stage": "prewarm"
+          },
+          {
+            "command_index": 115,
+            "stage": "prewarm"
+          },
+          {
+            "command_index": 116,
+            "stage": "prewarm"
+          },
+          {
+            "command_index": 117,
+            "stage": "prewarm"
+          },
+          {
+            "command_index": 118,
+            "stage": "prewarm"
+          },
+          {
+            "command_index": 119,
+            "stage": "prewarm"
+          },
+          {
+            "command_index": 120,
+            "stage": "prewarm"
+          },
+          {
+            "command_index": 121,
+            "stage": "selected_slice2"
+          },
+          {
+            "command_index": 122,
+            "stage": "selected_slice2"
+          },
+          {
+            "command_index": 123,
+            "stage": "selected_slice2"
+          },
+          {
+            "command_index": 124,
+            "stage": "selected_slice2"
+          },
+          {
+            "command_index": 125,
+            "stage": "selected_slice2"
+          },
+          {
+            "command_index": 126,
+            "stage": "selected_slice2"
+          },
+          {
+            "command_index": 127,
+            "stage": "selected_slice2"
+          },
+          {
+            "command_index": 128,
+            "stage": "selected_slice2"
+          },
+          {
+            "command_index": 129,
+            "stage": "selected_slice2"
+          },
+          {
+            "command_index": 130,
+            "stage": "selected_slice2"
+          },
+          {
+            "command_index": 131,
+            "stage": "selected_slice2"
+          },
+          {
+            "command_index": 132,
+            "stage": "selected_slice2"
+          },
+          {
+            "command_index": 133,
+            "stage": "selected_slice2"
+          },
+          {
+            "command_index": 134,
+            "stage": "selected_slice2"
+          },
+          {
+            "command_index": 135,
+            "stage": "selected_slice2"
+          },
+          {
+            "command_index": 136,
+            "stage": "selected_slice1_edit"
+          },
+          {
+            "command_index": 137,
+            "stage": "selected_slice1_edit"
+          },
+          {
+            "command_index": 138,
+            "stage": "selected_slice1_edit"
+          },
+          {
+            "command_index": 139,
+            "stage": "selected_slice1_edit"
+          },
+          {
+            "command_index": 140,
+            "stage": "selected_slice1_edit"
+          },
+          {
+            "command_index": 141,
+            "stage": "selected_slice1_edit"
+          },
+          {
+            "command_index": 142,
+            "stage": "selected_slice1_edit"
+          },
+          {
+            "command_index": 143,
+            "stage": "selected_slice1_edit"
+          },
+          {
+            "command_index": 144,
+            "stage": "selected_slice1_edit"
+          },
+          {
+            "command_index": 145,
+            "stage": "selected_slice1_edit"
+          },
+          {
+            "command_index": 146,
+            "stage": "selected_slice1_edit"
+          },
+          {
+            "command_index": 147,
+            "stage": "selected_slice1_edit"
+          },
+          {
+            "command_index": 148,
+            "stage": "selected_slice1_edit"
+          },
+          {
+            "command_index": 149,
+            "stage": "selected_slice1_edit"
+          },
+          {
+            "command_index": 150,
+            "stage": "selected_slice1_edit"
+          },
+          {
+            "command_index": 151,
+            "stage": "final_read"
+          },
+          {
+            "command_index": 152,
+            "stage": "final_read"
+          },
+          {
+            "command_index": 153,
+            "stage": "final_read"
+          },
+          {
+            "command_index": 154,
+            "stage": "final_read"
+          },
+          {
+            "command_index": 155,
+            "stage": "final_read"
+          },
+          {
+            "command_index": 156,
+            "stage": "final_read"
+          },
+          {
+            "command_index": 157,
+            "stage": "final_read"
+          },
+          {
+            "command_index": 158,
+            "stage": "final_read"
+          },
+          {
+            "command_index": 159,
+            "stage": "final_read"
+          },
+          {
+            "command_index": 160,
+            "stage": "final_read"
+          },
+          {
+            "command_index": 161,
+            "stage": "final_read"
+          },
+          {
+            "command_index": 162,
+            "stage": "final_read"
+          },
+          {
+            "command_index": 163,
+            "stage": "final_read"
+          },
+          {
+            "command_index": 164,
+            "stage": "final_read"
+          },
+          {
+            "command_index": 165,
+            "stage": "final_read"
+          },
+          {
+            "command_index": 166,
+            "stage": "final_read"
+          },
+          {
+            "command_index": 167,
+            "stage": "final_read"
+          },
+          {
+            "command_index": 168,
+            "stage": "final_read"
+          },
+          {
+            "command_index": 169,
+            "stage": "final_read"
+          }
+        ],
+        "workflow": "public napari0.9.2"
+      },
+      "parameters_file": {
+        "file": "slice_change.parameters.json",
+        "sha256": "07dfdcb9660df78e925d91948bbd34af38e9a61a8ceedfb2b6c9de914243e66a"
+      },
+      "rgba": {
+        "file": "slice_change.npy",
+        "sha256": "4cab399a606b0291fca85920af3a9433423c10a71dbd885101bec8f4b74e026c"
+      },
+      "shape": [
+        96,
+        128,
+        4
+      ]
+    }
+  },
+  "processes": {},
+  "provenance": {
+    "capture_sha256": "e6d97e3ed91145632dff7540ab29ac38b105bc4085aefb50219c75c3d37e3d9f",
+    "environment": {
+      "PYTHONHASHSEED": "0",
+      "PYTHONPATH": null,
+      "QT_API": "pyqt6",
+      "QT_QPA_PLATFORM": null,
+      "QT_SCALE_FACTOR": "1"
+    },
+    "fixture_sha256": "ae396eb72a8477fb659e382e62fdc950f83e7cf5b58027b4e918e5c2cced7b4a",
+    "host_lock_sha256": "bae850d37ba4c84b6c0ad42e2aa40d495d1e7ccab1aa20454d875764bdbbb732",
+    "host_source_sha256": {
+      "_vispy/layers/base.py": "77c7724baf17aac4ff90c7abcdf2b86284dc85c2220cdc0bc140695a2de1e52f",
+      "_vispy/layers/labels.py": "f959697110efcc48ef012e6adf2c44b0a8b649e4cb16b7ab48e0fd5a46baf29e",
+      "_vispy/utils/gl.py": "76278bb2e622cc723ef8cbfc7302b9cba0869520e68475c126aa302c6641f65e",
+      "layers/_scalar_field/scalar_field.py": "50d0f2c6adb4412589394dde4a55a8b156799b89ed55610a57496ef6d0d2a0b4",
+      "layers/image/image.py": "73027b2f096445c6aea88689bbf29f8707a75847d1348fa3b80eaf867c728c56",
+      "layers/labels/labels.py": "8d5ac1e119018af7b49df29838a91273910df09c2d4e4e6ec7e58a3744e7a176",
+      "utils/colormaps/colormap.py": "af2eed8dfa33850a7e8000cd3ac36cffca00d2519ffdcbed024aeae27819ff80"
+    },
+    "installed_versions": {
+      "HeapDict": "1.0.1",
+      "ImageIO": "2.38.1",
+      "Pint": "0.26.1",
+      "PyOpenGL": "3.1.10",
+      "PyQt6": "6.11.0",
+      "PyQt6-Qt6": "6.11.2",
+      "PyQt6_sip": "13.13.0",
+      "PyYAML": "6.0.3",
+      "Pygments": "2.21.0",
+      "QtPy": "2.4.3",
+      "annotated-doc": "0.0.5",
+      "annotated-types": "0.8.0",
+      "app-model": "0.5.1",
+      "asttokens": "3.0.2",
+      "attrs": "26.1.0",
+      "build": "1.6.1",
+      "cachey": "0.2.1",
+      "certifi": "2026.7.22",
+      "charset-normalizer": "3.5.2",
+      "click": "8.5.0",
+      "cloudpickle": "3.1.2",
+      "colorama": "0.4.6",
+      "comm": "0.2.3",
+      "dask": "2026.8.0",
+      "debugpy": "1.8.22",
+      "docstring_parser": "0.18.0",
+      "executing": "2.2.1",
+      "flexcache": "0.3",
+      "flexparser": "0.4",
+      "freetype-py": "2.5.1",
+      "fsspec": "2026.9.0",
+      "hsluv": "5.0.4",
+      "idna": "3.20",
+      "in-n-out": "0.2.1",
+      "ipykernel": "6.31.0",
+      "ipython": "9.17.1",
+      "ipython_pygments_lexers": "1.1.1",
+      "jedi": "0.20.0",
+      "jsonschema": "4.26.0",
+      "jsonschema-specifications": "2025.9.1",
+      "jupyter_client": "8.10.0",
+      "jupyter_core": "5.9.1",
+      "kiwisolver": "1.5.1",
+      "lazy-loader": "0.6",
+      "llvmlite": "0.50.0",
+      "locket": "1.0.0",
+      "lxml": "6.1.3",
+      "magicgui": "0.10.2",
+      "markdown-it-py": "4.2.0",
+      "matplotlib-inline": "0.2.2",
+      "mdurl": "0.1.2",
+      "napari": "0.9.2",
+      "napari-console": "0.1.4",
+      "napari-plugin-engine": "0.2.1",
+      "napari-resources": "1.0.1",
+      "napari-svg": "0.2.1",
+      "nest-asyncio": "1.6.0",
+      "networkx": "3.7",
+      "npe2": "0.9.0",
+      "numba": "0.68.0",
+      "numpy": "2.5.3",
+      "packaging": "26.3",
+      "pandas": "3.0.6",
+      "parso": "0.8.7",
+      "partd": "1.4.2",
+      "pillow": "12.3.0",
+      "platformdirs": "4.12.4",
+      "pooch": "1.9.0",
+      "prompt_toolkit": "3.0.53",
+      "psutil": "7.2.2",
+      "psygnal": "0.16.1",
+      "pure_eval": "0.2.4",
+      "pyconify": "0.2.1",
+      "pydantic": "2.14.0",
+      "pydantic-extra-types": "2.11.1",
+      "pydantic-settings": "2.15.0",
+      "pydantic_core": "2.50.0",
+      "pyproject_hooks": "1.3.3",
+      "python-dateutil": "2.9.0.post0",
+      "python-dotenv": "1.2.4",
+      "pywin32": "312",
+      "pyzmq": "27.2.0",
+      "qtconsole": "5.7.2",
+      "referencing": "0.37.0",
+      "requests": "2.34.2",
+      "rich": "15.0.0",
+      "rpds-py": "2026.9.1",
+      "scikit-image": "0.26.0",
+      "scipy": "1.18.1",
+      "shellingham": "1.5.4",
+      "six": "1.17.0",
+      "stack-data": "0.6.3",
+      "superqt": "0.8.2",
+      "tifffile": "2026.9.20",
+      "tomli_w": "1.2.0",
+      "toolz": "1.2.0",
+      "tornado": "6.5.10",
+      "tqdm": "4.70.1",
+      "traitlets": "5.16.1",
+      "typer": "0.27.3",
+      "typing-inspection": "0.4.4",
+      "typing_extensions": "4.16.0",
+      "tzdata": "2026.5",
+      "urllib3": "2.8.0",
+      "vispy": "0.17.0",
+      "wcwidth": "0.9.2",
+      "wrapt": "2.5.0"
+    },
+    "kind": "upstream",
+    "napari_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-napari\\Lib\\site-packages\\napari",
+    "native_artifacts": {},
+    "python_executable": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-napari\\Scripts\\python.exe",
+    "vispy_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-napari\\Lib\\site-packages\\vispy",
+    "visual_source_sha256": {
+      "visuals/_scalable_textures.py": "0ac2389093cfa551dd1cdc35fc84a025819dfaa25403710230fa95586ed6540e",
+      "visuals/image.py": "0f2a1c25c37a22586350d9a6a8e7569ed057e0416d699b546db58445b992cb3e"
+    }
+  },
+  "schema": 1
+}

@@ -1,0 +1,5 @@
+-r oracle_requirements.txt
+glue-vispy-viewers==1.4.0
+glue-qt
+qtpy==2.4.3
+pytest==9.1.1

@@ -1,0 +1,1660 @@
+{
+  "comparison": {
+    "categorical_exact": true,
+    "edge_max_differing_fraction": 0.001,
+    "interior_max_abs_u8": 2,
+    "mask": "tools.fixture_gloo.comparison_masks"
+  },
+  "errors": {},
+  "fixtures": {
+    "blend_separate": {
+      "capture": {
+        "file": "blend_separate.capture.json",
+        "sha256": "ecbace4ec1ef15b565eca9192b7236ed2cdcc9c3dce2085e610dfc77e9af6a10"
+      },
+      "capture_method": "gloo.read_pixels",
+      "dtype": "|u1",
+      "edge_columns": [],
+      "edge_rows": [],
+      "exact": false,
+      "expanded_shaders": {
+        "file": "blend_separate.shaders.json",
+        "sha256": "6d0550b04fb734758da36fa1161fa32b94d6954f45a315368b21134b709b287b"
+      },
+      "filtered_glir": {
+        "file": "blend_separate.glir.json",
+        "sha256": "e65b7665d8d984e14dc987bfb8f06252b0e376286e78a32ee46290eb49874cdd"
+      },
+      "operation": "distinct RGB and alpha blend factors",
+      "readbacks": 1,
+      "requested_samples": 0,
+      "rgba": {
+        "file": "blend_separate.npy",
+        "sha256": "8e2934401da79e78f6ef59a577e94e01867f93c569f3b3033de38223319845fb"
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ],
+      "size": [
+        32,
+        24
+      ]
+    },
+    "bool_uniform": {
+      "capture": {
+        "file": "bool_uniform.capture.json",
+        "sha256": "1b5ef0ee3f0fac0e5a591d1a05eea8c613f302091277db784e71e4e3577975b5"
+      },
+      "capture_method": "gloo.read_pixels",
+      "dtype": "|u1",
+      "edge_columns": [],
+      "edge_rows": [],
+      "exact": true,
+      "expanded_shaders": {
+        "file": "bool_uniform.shaders.json",
+        "sha256": "3b4b98bf223c884f6815e0c3b872e82e62a1779475f8006df5b27e437301a22b"
+      },
+      "filtered_glir": {
+        "file": "bool_uniform.glir.json",
+        "sha256": "53a27ac9263dd02a1f53dc351012ca86df7e731386f2b386961e70b347e39000"
+      },
+      "operation": "boolean branch with boolean negation",
+      "readbacks": 1,
+      "requested_samples": 0,
+      "rgba": {
+        "file": "bool_uniform.npy",
+        "sha256": "3f5ff30b03554c1bd1bb405dc27242d5fdb5808a4c9a940069a201720d847b93"
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ],
+      "size": [
+        32,
+        24
+      ]
+    },
+    "buffer_snapshot": {
+      "capture": {
+        "file": "buffer_snapshot.capture.json",
+        "sha256": "b03ad0aae635cc0a2a0f0468ef77b1052aeac2852a521b7cbf3a43d4a2e9d5fc"
+      },
+      "capture_method": "gloo.read_pixels",
+      "dtype": "|u1",
+      "edge_columns": [
+        16
+      ],
+      "edge_rows": [],
+      "exact": true,
+      "expanded_shaders": {
+        "file": "buffer_snapshot.shaders.json",
+        "sha256": "6d0550b04fb734758da36fa1161fa32b94d6954f45a315368b21134b709b287b"
+      },
+      "filtered_glir": {
+        "file": "buffer_snapshot.glir.json",
+        "sha256": "70f6edb11e0485d04f12bb5c966ef15d5b7c8976c1d6ce38668e62bbc93f46fc"
+      },
+      "operation": "two buffer generations before one read",
+      "readbacks": 1,
+      "requested_samples": 0,
+      "rgba": {
+        "file": "buffer_snapshot.npy",
+        "sha256": "f1e2242e80e5285caa43d455de20378fe387e7c985141a3d628a5cd904eefa3d"
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ],
+      "size": [
+        32,
+        24
+      ]
+    },
+    "clear_only_fbo": {
+      "capture": {
+        "file": "clear_only_fbo.capture.json",
+        "sha256": "2ed5b093839f9e446f0be785cb4b2fda9aad18d8309dc7675ce545f84d2b597e"
+      },
+      "capture_method": "gloo.read_pixels",
+      "dtype": "|u1",
+      "edge_columns": [],
+      "edge_rows": [],
+      "exact": true,
+      "expanded_shaders": {
+        "file": "clear_only_fbo.shaders.json",
+        "sha256": "e3566b3a06430868d71e9287dfd6c6c520a3da027aabea01951d407ee131dc2f"
+      },
+      "filtered_glir": {
+        "file": "clear_only_fbo.glir.json",
+        "sha256": "87382454867362dad99d6c8557865f2e28a6a97b5c6879f53d3a1441474ca2a2"
+      },
+      "operation": "blue canvas then red clear-only framebuffer",
+      "readbacks": 1,
+      "requested_samples": 0,
+      "rgba": {
+        "file": "clear_only_fbo.npy",
+        "sha256": "5f6ee494dc5ca0e05f947c56c3916078d7c807c6f3a90fdfd7f1aff117bcfe8b"
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ],
+      "size": [
+        32,
+        24
+      ]
+    },
+    "clear_then_draw": {
+      "capture": {
+        "file": "clear_then_draw.capture.json",
+        "sha256": "3a729b483184e854b01de03663a23baa016f9ea14eff8ab240d9507cb39c6182"
+      },
+      "capture_method": "gloo.read_pixels",
+      "dtype": "|u1",
+      "edge_columns": [
+        16
+      ],
+      "edge_rows": [],
+      "exact": true,
+      "expanded_shaders": {
+        "file": "clear_then_draw.shaders.json",
+        "sha256": "6d0550b04fb734758da36fa1161fa32b94d6954f45a315368b21134b709b287b"
+      },
+      "filtered_glir": {
+        "file": "clear_then_draw.glir.json",
+        "sha256": "ad7b0a265fd63ab43dfc4773aa9ebac75f8f1b3acec9a76cbefa766e588f07b5"
+      },
+      "operation": "blue clear then left red draw",
+      "readbacks": 1,
+      "requested_samples": 0,
+      "rgba": {
+        "file": "clear_then_draw.npy",
+        "sha256": "ef33ddfab187536f15d214c29ebc9c479d039383659d27ab60405117cd619ac5"
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ],
+      "size": [
+        32,
+        24
+      ]
+    },
+    "color_mask": {
+      "capture": {
+        "file": "color_mask.capture.json",
+        "sha256": "abcad41b9cba1c24fb35843814eeb439bf50e40d118bc2d43e2a53319a02c849"
+      },
+      "capture_method": "gloo.read_pixels",
+      "dtype": "|u1",
+      "edge_columns": [
+        16
+      ],
+      "edge_rows": [],
+      "exact": true,
+      "expanded_shaders": {
+        "file": "color_mask.shaders.json",
+        "sha256": "81282e2faffa217c82130cafb0bdf23404e910d27f037c08eca1d5de240752ff"
+      },
+      "filtered_glir": {
+        "file": "color_mask.glir.json",
+        "sha256": "49574db9113fb544e99acb494b8cda9a7aea57cca28fe1a11f4784e72b51f748"
+      },
+      "operation": "per-draw channel write masks",
+      "readbacks": 1,
+      "requested_samples": 0,
+      "rgba": {
+        "file": "color_mask.npy",
+        "sha256": "38cf1aa5c3aeb097397d596553610aed8b4b00683d1cd19322bb0ee28aa2ce6a"
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ],
+      "size": [
+        32,
+        24
+      ]
+    },
+    "constant_attribute": {
+      "capture": {
+        "file": "constant_attribute.capture.json",
+        "sha256": "9695c7a2563e848a3ebc87ed634b2d5385b3d1cd84f1b014b65ba81560c46b2c"
+      },
+      "capture_method": "gloo.read_pixels",
+      "dtype": "|u1",
+      "edge_columns": [],
+      "edge_rows": [],
+      "exact": true,
+      "expanded_shaders": {
+        "file": "constant_attribute.shaders.json",
+        "sha256": "df585fcec8053d87656296cea3e3aed6d5ef748f4ead9b82d225b6f5b0a27b8e"
+      },
+      "filtered_glir": {
+        "file": "constant_attribute.glir.json",
+        "sha256": "d5677145304e4ccb4fa694e423f58bf449e06f3e42a0af0e262627e02ab79236"
+      },
+      "operation": "constant color and buffered positions",
+      "readbacks": 1,
+      "requested_samples": 0,
+      "rgba": {
+        "file": "constant_attribute.npy",
+        "sha256": "3f5ff30b03554c1bd1bb405dc27242d5fdb5808a4c9a940069a201720d847b93"
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ],
+      "size": [
+        32,
+        24
+      ]
+    },
+    "cull_frontface": {
+      "capture": {
+        "file": "cull_frontface.capture.json",
+        "sha256": "ebece3d95a63bdde91b034b4586cec40679290dd83ba1b9d61ae613454d9524c"
+      },
+      "capture_method": "gloo.read_pixels",
+      "dtype": "|u1",
+      "edge_columns": [
+        16
+      ],
+      "edge_rows": [],
+      "exact": true,
+      "expanded_shaders": {
+        "file": "cull_frontface.shaders.json",
+        "sha256": "81282e2faffa217c82130cafb0bdf23404e910d27f037c08eca1d5de240752ff"
+      },
+      "filtered_glir": {
+        "file": "cull_frontface.glir.json",
+        "sha256": "8b74db58b23ad9344ada7fc242d81ad1eed2f067c7510bd94b208f9d86324e71"
+      },
+      "operation": "CCW front-facing draw survives backface culling, CW does not",
+      "readbacks": 1,
+      "requested_samples": 0,
+      "rgba": {
+        "file": "cull_frontface.npy",
+        "sha256": "b5be6328f0ecceef663843ce1acbfb21af180defcb79d474e3b9eade79fa27ca"
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ],
+      "size": [
+        32,
+        24
+      ]
+    },
+    "delete_snapshot": {
+      "capture": {
+        "file": "delete_snapshot.capture.json",
+        "sha256": "8b24d26c7f0ed2084435033c509d843a2bd67f69a5bb10f060c355f2e40e51cd"
+      },
+      "capture_method": "gloo.read_pixels",
+      "dtype": "|u1",
+      "edge_columns": [],
+      "edge_rows": [],
+      "exact": true,
+      "expanded_shaders": {
+        "file": "delete_snapshot.shaders.json",
+        "sha256": "6d0550b04fb734758da36fa1161fa32b94d6954f45a315368b21134b709b287b"
+      },
+      "filtered_glir": {
+        "file": "delete_snapshot.glir.json",
+        "sha256": "6eb7272770f05e8dc480c6862bb193c5277687e45d882c163f7139abb6a19f82"
+      },
+      "operation": "delete vertex buffer after recording its draw",
+      "readbacks": 1,
+      "requested_samples": 0,
+      "rgba": {
+        "file": "delete_snapshot.npy",
+        "sha256": "3f5ff30b03554c1bd1bb405dc27242d5fdb5808a4c9a940069a201720d847b93"
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ],
+      "size": [
+        32,
+        24
+      ]
+    },
+    "delete_target_snapshot": {
+      "capture": {
+        "file": "delete_target_snapshot.capture.json",
+        "sha256": "eeb73149b7e6fce8fb6715fad52eb0804043e0a33996d265997a2badf1e92077"
+      },
+      "capture_method": "gloo.read_pixels",
+      "dtype": "|u1",
+      "edge_columns": [
+        16
+      ],
+      "edge_rows": [],
+      "exact": true,
+      "expanded_shaders": {
+        "file": "delete_target_snapshot.shaders.json",
+        "sha256": "cd718a8b7f7f5eafd9718eb1d60aa59d5aeeadb943cf36476ceeb7e67e4a18c1"
+      },
+      "filtered_glir": {
+        "file": "delete_target_snapshot.glir.json",
+        "sha256": "5e381549bd7bc35ecbf82b56b497d5611c818569e7834a07ffb784fb08a0c161"
+      },
+      "operation": "pending attachment sample survives deletion",
+      "readbacks": 1,
+      "requested_samples": 0,
+      "rgba": {
+        "file": "delete_target_snapshot.npy",
+        "sha256": "f1e2242e80e5285caa43d455de20378fe387e7c985141a3d628a5cd904eefa3d"
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ],
+      "size": [
+        32,
+        24
+      ]
+    },
+    "depth_clear_only": {
+      "capture": {
+        "file": "depth_clear_only.capture.json",
+        "sha256": "75ef23986f99ca3de02fa8c06293bc348acb769312da864c6dd1be03adf5f381"
+      },
+      "capture_method": "gloo.read_pixels",
+      "dtype": "|u1",
+      "edge_columns": [
+        16
+      ],
+      "edge_rows": [],
+      "exact": true,
+      "expanded_shaders": {
+        "file": "depth_clear_only.shaders.json",
+        "sha256": "7127ad94dd557b855fa6a1e27ca4848194ba17bd04878d2d27a5ede9da4e44f7"
+      },
+      "filtered_glir": {
+        "file": "depth_clear_only.glir.json",
+        "sha256": "452715628827fe2c0166bd756c8ef55abfa8478bea1f95103146008c3f74496b"
+      },
+      "operation": "depth-only clear preserves color and resets depth",
+      "readbacks": 1,
+      "requested_samples": 0,
+      "rgba": {
+        "file": "depth_clear_only.npy",
+        "sha256": "e20840ce087c75f868c77ee464d43bbd6814b7c9ef92954ad1335865e60ae43f"
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ],
+      "size": [
+        32,
+        24
+      ]
+    },
+    "depth_occlusion": {
+      "capture": {
+        "file": "depth_occlusion.capture.json",
+        "sha256": "393ee21f7a8f0c75979009a2da3afa4ea955439c523e2dd698dcbbe1959cf359"
+      },
+      "capture_method": "gloo.read_pixels",
+      "dtype": "|u1",
+      "edge_columns": [],
+      "edge_rows": [],
+      "exact": true,
+      "expanded_shaders": {
+        "file": "depth_occlusion.shaders.json",
+        "sha256": "7127ad94dd557b855fa6a1e27ca4848194ba17bd04878d2d27a5ede9da4e44f7"
+      },
+      "filtered_glir": {
+        "file": "depth_occlusion.glir.json",
+        "sha256": "3e3688e16f071a9e0e4181a5b920cfbf77c0fbe9b43b9fefa6106f4bf81fae14"
+      },
+      "operation": "near geometry occludes a later farther draw",
+      "readbacks": 1,
+      "requested_samples": 0,
+      "rgba": {
+        "file": "depth_occlusion.npy",
+        "sha256": "9607bd42571ef95a16b5658ae27c99e75e3dedab45dd822299dc53075755b27d"
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ],
+      "size": [
+        32,
+        24
+      ]
+    },
+    "depth_range": {
+      "capture": {
+        "file": "depth_range.capture.json",
+        "sha256": "c9745621ec61564218f07b6588b04efdec6f8bbb490c9b52366939a965b3002a"
+      },
+      "capture_method": "gloo.read_pixels",
+      "dtype": "|u1",
+      "edge_columns": [],
+      "edge_rows": [],
+      "exact": true,
+      "expanded_shaders": {
+        "file": "depth_range.shaders.json",
+        "sha256": "7127ad94dd557b855fa6a1e27ca4848194ba17bd04878d2d27a5ede9da4e44f7"
+      },
+      "filtered_glir": {
+        "file": "depth_range.glir.json",
+        "sha256": "c2dd1ed46d08c9b63fca6677fe9ed80ed25353eb0adec2f1c30ebcf270b2f7c5"
+      },
+      "operation": "different depth ranges order two overlapping draws",
+      "readbacks": 1,
+      "requested_samples": 0,
+      "rgba": {
+        "file": "depth_range.npy",
+        "sha256": "3f5ff30b03554c1bd1bb405dc27242d5fdb5808a4c9a940069a201720d847b93"
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ],
+      "size": [
+        32,
+        24
+      ]
+    },
+    "draw_then_clear": {
+      "capture": {
+        "file": "draw_then_clear.capture.json",
+        "sha256": "1c5df829584de0735a8a0b56180881faebec3a072f0ed7938dbefd0d42e049fb"
+      },
+      "capture_method": "gloo.read_pixels",
+      "dtype": "|u1",
+      "edge_columns": [],
+      "edge_rows": [],
+      "exact": true,
+      "expanded_shaders": {
+        "file": "draw_then_clear.shaders.json",
+        "sha256": "6d0550b04fb734758da36fa1161fa32b94d6954f45a315368b21134b709b287b"
+      },
+      "filtered_glir": {
+        "file": "draw_then_clear.glir.json",
+        "sha256": "7a6e52739028a0a0369489e877b0ee1c018732e6e2a34b4748646e67092b224c"
+      },
+      "operation": "red draw then blue clear",
+      "readbacks": 1,
+      "requested_samples": 0,
+      "rgba": {
+        "file": "draw_then_clear.npy",
+        "sha256": "5f6ee494dc5ca0e05f947c56c3916078d7c807c6f3a90fdfd7f1aff117bcfe8b"
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ],
+      "size": [
+        32,
+        24
+      ]
+    },
+    "float_texture_clim": {
+      "capture": {
+        "file": "float_texture_clim.capture.json",
+        "sha256": "30821dedc49db24039d7da11d0cf09fa09dc12cb9396144e14cd85a8e579e6c4"
+      },
+      "capture_method": "gloo.read_pixels",
+      "dtype": "|u1",
+      "edge_columns": [],
+      "edge_rows": [],
+      "exact": false,
+      "expanded_shaders": {
+        "file": "float_texture_clim.shaders.json",
+        "sha256": "353003fb552ff3225a9266d261f2ea9446431da83f9f0d9513973fe28d5e62a8"
+      },
+      "filtered_glir": {
+        "file": "float_texture_clim.glir.json",
+        "sha256": "aaafa5d687beff7c0111a41cc8babb46f8cf9c3b91679578389e812cf80c7715"
+      },
+      "operation": "r32f 15 with clim 10..20",
+      "readbacks": 1,
+      "requested_samples": 0,
+      "rgba": {
+        "file": "float_texture_clim.npy",
+        "sha256": "12627ffc47fc6c32c09f7d9b85975824e1b9b5db70c2e4e00de96c4135cb946e"
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ],
+      "size": [
+        32,
+        24
+      ]
+    },
+    "float_texture_range": {
+      "capture": {
+        "file": "float_texture_range.capture.json",
+        "sha256": "990bcf63223bab4b74d9458be6d7cf2f57921e5ac2acf92931fd61d66d3903be"
+      },
+      "capture_method": "gloo.read_pixels",
+      "dtype": "|u1",
+      "edge_columns": [
+        8,
+        16,
+        24
+      ],
+      "edge_rows": [],
+      "exact": false,
+      "expanded_shaders": {
+        "file": "float_texture_range.shaders.json",
+        "sha256": "353003fb552ff3225a9266d261f2ea9446431da83f9f0d9513973fe28d5e62a8"
+      },
+      "filtered_glir": {
+        "file": "float_texture_range.glir.json",
+        "sha256": "9dc682048740c272ec0394a329ad54842680d64435ca727555dc4b69b83282f2"
+      },
+      "operation": "r32f values below zero and above one",
+      "readbacks": 1,
+      "requested_samples": 0,
+      "rgba": {
+        "file": "float_texture_range.npy",
+        "sha256": "6c107a71656ccb2e47c15d706ad2e2acb932561d95c2362ca2f7d45597ad75d2"
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ],
+      "size": [
+        32,
+        24
+      ]
+    },
+    "framebuffer_sample": {
+      "capture": {
+        "file": "framebuffer_sample.capture.json",
+        "sha256": "9c5c68c06d1226371bb761b974c4f74e3734162be2bf82b1019c7aee27364e57"
+      },
+      "capture_method": "gloo.read_pixels",
+      "dtype": "|u1",
+      "edge_columns": [],
+      "edge_rows": [],
+      "exact": true,
+      "expanded_shaders": {
+        "file": "framebuffer_sample.shaders.json",
+        "sha256": "ad8fadf9980112f75d098e86a803919d7cf6aabeb341f5cb52f57e3d9c067ebe"
+      },
+      "filtered_glir": {
+        "file": "framebuffer_sample.glir.json",
+        "sha256": "f9693874002b796494f3d2c293030d25437cc018192978edaefe4ef822bccad5"
+      },
+      "operation": "offscreen draw followed by attachment sampling",
+      "readbacks": 1,
+      "requested_samples": 0,
+      "rgba": {
+        "file": "framebuffer_sample.npy",
+        "sha256": "3f5ff30b03554c1bd1bb405dc27242d5fdb5808a4c9a940069a201720d847b93"
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ],
+      "size": [
+        32,
+        24
+      ]
+    },
+    "indexed_uint16": {
+      "capture": {
+        "file": "indexed_uint16.capture.json",
+        "sha256": "e67e124e57f9458024cb299ddcd354034a9091e4e4e2d6513410c24c40511f68"
+      },
+      "capture_method": "gloo.read_pixels",
+      "dtype": "|u1",
+      "edge_columns": [],
+      "edge_rows": [],
+      "exact": true,
+      "expanded_shaders": {
+        "file": "indexed_uint16.shaders.json",
+        "sha256": "6d0550b04fb734758da36fa1161fa32b94d6954f45a315368b21134b709b287b"
+      },
+      "filtered_glir": {
+        "file": "indexed_uint16.glir.json",
+        "sha256": "04985c59739a2f049a845ef719e0ed9c1f01fad5268b58b89d357da37a7d153b"
+      },
+      "operation": "four vertices selected by six uint16 indices",
+      "readbacks": 1,
+      "requested_samples": 0,
+      "rgba": {
+        "file": "indexed_uint16.npy",
+        "sha256": "3f5ff30b03554c1bd1bb405dc27242d5fdb5808a4c9a940069a201720d847b93"
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ],
+      "size": [
+        32,
+        24
+      ]
+    },
+    "indexed_uint32": {
+      "capture": {
+        "file": "indexed_uint32.capture.json",
+        "sha256": "4089c45c4653fed4b66e7076de3660b0096d09ff916cb5eab5964b456c71ed88"
+      },
+      "capture_method": "gloo.read_pixels",
+      "dtype": "|u1",
+      "edge_columns": [],
+      "edge_rows": [],
+      "exact": true,
+      "expanded_shaders": {
+        "file": "indexed_uint32.shaders.json",
+        "sha256": "6d0550b04fb734758da36fa1161fa32b94d6954f45a315368b21134b709b287b"
+      },
+      "filtered_glir": {
+        "file": "indexed_uint32.glir.json",
+        "sha256": "5f304dbe3127f523f70f42ee0706da8b19e67fdd7ff69217d35145a376828404"
+      },
+      "operation": "four vertices selected by six uint32 indices",
+      "readbacks": 1,
+      "requested_samples": 0,
+      "rgba": {
+        "file": "indexed_uint32.npy",
+        "sha256": "3f5ff30b03554c1bd1bb405dc27242d5fdb5808a4c9a940069a201720d847b93"
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ],
+      "size": [
+        32,
+        24
+      ]
+    },
+    "indexed_uint8": {
+      "capture": {
+        "file": "indexed_uint8.capture.json",
+        "sha256": "3009e490e13bcbd230931b95af6b6109841bcac824e1115d28e28f033a2749a5"
+      },
+      "capture_method": "gloo.read_pixels",
+      "dtype": "|u1",
+      "edge_columns": [],
+      "edge_rows": [],
+      "exact": true,
+      "expanded_shaders": {
+        "file": "indexed_uint8.shaders.json",
+        "sha256": "6d0550b04fb734758da36fa1161fa32b94d6954f45a315368b21134b709b287b"
+      },
+      "filtered_glir": {
+        "file": "indexed_uint8.glir.json",
+        "sha256": "0b375d6b03f16212c473934c96f213af2681696bc4fd5539a0bd8a672b391829"
+      },
+      "operation": "four vertices selected by six uint8 indices",
+      "readbacks": 1,
+      "requested_samples": 0,
+      "rgba": {
+        "file": "indexed_uint8.npy",
+        "sha256": "3f5ff30b03554c1bd1bb405dc27242d5fdb5808a4c9a940069a201720d847b93"
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ],
+      "size": [
+        32,
+        24
+      ]
+    },
+    "instanced_divisor1": {
+      "capture": {
+        "file": "instanced_divisor1.capture.json",
+        "sha256": "e027ac0870c91a9ebc7cfac18c214f57a8471d3b1263ef92fbaa9173d3e314f6"
+      },
+      "capture_method": "gloo.read_pixels",
+      "dtype": "|u1",
+      "edge_columns": [
+        16
+      ],
+      "edge_rows": [],
+      "exact": true,
+      "expanded_shaders": {
+        "file": "instanced_divisor1.shaders.json",
+        "sha256": "e5ec01aab1931a1902e047797f67eb20d0c789df5de285747588b2f4655f5fcd"
+      },
+      "filtered_glir": {
+        "file": "instanced_divisor1.glir.json",
+        "sha256": "0c2ca458efb99f89a86f5ca91d3ba01d19821794e5132c31a843d19ba1ab0fcc"
+      },
+      "operation": "two rectangle instances with per-instance offsets",
+      "readbacks": 1,
+      "requested_samples": 0,
+      "rgba": {
+        "file": "instanced_divisor1.npy",
+        "sha256": "3f5ff30b03554c1bd1bb405dc27242d5fdb5808a4c9a940069a201720d847b93"
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ],
+      "size": [
+        32,
+        24
+      ]
+    },
+    "instanced_divisor2": {
+      "capture": {
+        "file": "instanced_divisor2.capture.json",
+        "sha256": "299f959c18000e462a7daeb783048e1c84308e5130512a98ca7814e41db2e21b"
+      },
+      "capture_method": "gloo.read_pixels",
+      "dtype": "|u1",
+      "edge_columns": [
+        16
+      ],
+      "edge_rows": [],
+      "exact": true,
+      "expanded_shaders": {
+        "file": "instanced_divisor2.shaders.json",
+        "sha256": "e5ec01aab1931a1902e047797f67eb20d0c789df5de285747588b2f4655f5fcd"
+      },
+      "filtered_glir": {
+        "file": "instanced_divisor2.glir.json",
+        "sha256": "71906718bf72086c9b3968168c97a4652716f78f612b2c65863e954a64366180"
+      },
+      "operation": "four instances sharing offsets in pairs",
+      "readbacks": 1,
+      "requested_samples": 0,
+      "rgba": {
+        "file": "instanced_divisor2.npy",
+        "sha256": "3f5ff30b03554c1bd1bb405dc27242d5fdb5808a4c9a940069a201720d847b93"
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ],
+      "size": [
+        32,
+        24
+      ]
+    },
+    "interleaved": {
+      "capture": {
+        "file": "interleaved.capture.json",
+        "sha256": "ee541c0011b3b8d0dc8e2fcb35cfc107a8d3a0dcdd309436fc8eff597c36af6b"
+      },
+      "capture_method": "gloo.read_pixels",
+      "dtype": "|u1",
+      "edge_columns": [],
+      "edge_rows": [],
+      "exact": true,
+      "expanded_shaders": {
+        "file": "interleaved.shaders.json",
+        "sha256": "df585fcec8053d87656296cea3e3aed6d5ef748f4ead9b82d225b6f5b0a27b8e"
+      },
+      "filtered_glir": {
+        "file": "interleaved.glir.json",
+        "sha256": "922c66d9c3d3bf031c98ad8db666cc500ffbbd837d97976c7306a10e7147ff1e"
+      },
+      "operation": "structured position/color buffer with field offsets",
+      "readbacks": 1,
+      "requested_samples": 0,
+      "rgba": {
+        "file": "interleaved.npy",
+        "sha256": "3f5ff30b03554c1bd1bb405dc27242d5fdb5808a4c9a940069a201720d847b93"
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ],
+      "size": [
+        32,
+        24
+      ]
+    },
+    "mat2": {
+      "capture": {
+        "file": "mat2.capture.json",
+        "sha256": "60d2d04fef93b92d39ddabf8cff6f29dc2b7a71c1035cfbb1662bccc477b73c3"
+      },
+      "capture_method": "gloo.read_pixels",
+      "dtype": "|u1",
+      "edge_columns": [],
+      "edge_rows": [],
+      "exact": false,
+      "expanded_shaders": {
+        "file": "mat2.shaders.json",
+        "sha256": "a6bd37fa8bba0748dc873f947e1c209251fa11ffeacf4c5a333de12a12c9446f"
+      },
+      "filtered_glir": {
+        "file": "mat2.glir.json",
+        "sha256": "85d67b12c75f85859b5b4c7bf9a62e22c8ad61bc37ee56172890d0098dce163c"
+      },
+      "operation": "non-symmetric column-major mat2 transform",
+      "readbacks": 1,
+      "requested_samples": 0,
+      "rgba": {
+        "file": "mat2.npy",
+        "sha256": "8d4585a7d6eb093a3bdd012fe08fabaceed988683f7856b492ffd2a37fdc786b"
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ],
+      "size": [
+        32,
+        24
+      ]
+    },
+    "mat3": {
+      "capture": {
+        "file": "mat3.capture.json",
+        "sha256": "ca99aecafde8cedb540e5aa08fabff103c86ad63c2dc02876c0dc4fe2fecb535"
+      },
+      "capture_method": "gloo.read_pixels",
+      "dtype": "|u1",
+      "edge_columns": [],
+      "edge_rows": [],
+      "exact": false,
+      "expanded_shaders": {
+        "file": "mat3.shaders.json",
+        "sha256": "01c8fae5db2100abcec6d249c2ac8ad4869f560d507780a1a22abebeea1b14c6"
+      },
+      "filtered_glir": {
+        "file": "mat3.glir.json",
+        "sha256": "12c274585e320f9f7e56d3873abaa7f4affc7ce97127d2ca6455e44e6bc7add5"
+      },
+      "operation": "non-symmetric column-major mat3 transform",
+      "readbacks": 1,
+      "requested_samples": 0,
+      "rgba": {
+        "file": "mat3.npy",
+        "sha256": "8d4585a7d6eb093a3bdd012fe08fabaceed988683f7856b492ffd2a37fdc786b"
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ],
+      "size": [
+        32,
+        24
+      ]
+    },
+    "mat4": {
+      "capture": {
+        "file": "mat4.capture.json",
+        "sha256": "2fb932548a3db92070b26218f91ffba2d338778596ff65a63d443393422d2624"
+      },
+      "capture_method": "gloo.read_pixels",
+      "dtype": "|u1",
+      "edge_columns": [],
+      "edge_rows": [],
+      "exact": false,
+      "expanded_shaders": {
+        "file": "mat4.shaders.json",
+        "sha256": "e42465485d0f4b72ffd25993e16d0240228b5e616516e0d42eed0b737290cd11"
+      },
+      "filtered_glir": {
+        "file": "mat4.glir.json",
+        "sha256": "594c487ee9c73fc5be9abfee770beb1cc7e2c7f44441f05df9a4efbe492845b8"
+      },
+      "operation": "non-symmetric column-major mat4 transform",
+      "readbacks": 1,
+      "requested_samples": 0,
+      "rgba": {
+        "file": "mat4.npy",
+        "sha256": "8d4585a7d6eb093a3bdd012fe08fabaceed988683f7856b492ffd2a37fdc786b"
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ],
+      "size": [
+        32,
+        24
+      ]
+    },
+    "matrix_array": {
+      "capture": {
+        "file": "matrix_array.capture.json",
+        "sha256": "7bcedfe86ec26342f19817bd078da51a0ca6a202631c0cf4716edbedff615744"
+      },
+      "capture_method": "gloo.read_pixels",
+      "dtype": "|u1",
+      "edge_columns": [],
+      "edge_rows": [],
+      "exact": false,
+      "expanded_shaders": {
+        "file": "matrix_array.shaders.json",
+        "sha256": "16e3eebdd4721ecf1883c3e17356a0ed66c2f4cfb4f0cdca8c259989a36a2ab3"
+      },
+      "filtered_glir": {
+        "file": "matrix_array.glir.json",
+        "sha256": "3eb7164dbe006177528ff26d4a5b9c06ffe51a9dadd349a045f8f7e90139074d"
+      },
+      "operation": "second mat3-array entry",
+      "readbacks": 1,
+      "requested_samples": 0,
+      "rgba": {
+        "file": "matrix_array.npy",
+        "sha256": "8d4585a7d6eb093a3bdd012fe08fabaceed988683f7856b492ffd2a37fdc786b"
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ],
+      "size": [
+        32,
+        24
+      ]
+    },
+    "msaa4": {
+      "capture": {
+        "file": "msaa4.capture.json",
+        "sha256": "d5393cfdadc926574e5d54d2c8dc2aa649b8a674dd4efd543955c152162de3ac"
+      },
+      "capture_method": "qt_owned_msaa_resolve",
+      "dtype": "|u1",
+      "edge_columns": [],
+      "edge_rows": [],
+      "exact": false,
+      "expanded_shaders": {
+        "file": "msaa4.shaders.json",
+        "sha256": "6d0550b04fb734758da36fa1161fa32b94d6954f45a315368b21134b709b287b"
+      },
+      "filtered_glir": {
+        "file": "msaa4.glir.json",
+        "sha256": "b599bfb05954876fbca831a998a10caefd7c12843656cd9654afe2693406e851"
+      },
+      "operation": "asymmetric triangle resolved from actual four-sample target",
+      "readbacks": 1,
+      "requested_samples": 4,
+      "rgba": {
+        "file": "msaa4.npy",
+        "sha256": "22e4bbc7011b1f65d66552fd24c8e7d20a88fb6dd8380b093de546540939e2af"
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ],
+      "size": [
+        32,
+        24
+      ]
+    },
+    "nested_framebuffer": {
+      "capture": {
+        "file": "nested_framebuffer.capture.json",
+        "sha256": "984f57862901295a3c401876feebd150e5502109bbb7513231b401211999617c"
+      },
+      "capture_method": "gloo.read_pixels",
+      "dtype": "|u1",
+      "edge_columns": [],
+      "edge_rows": [],
+      "exact": true,
+      "expanded_shaders": {
+        "file": "nested_framebuffer.shaders.json",
+        "sha256": "e0f82b562b5b88de8d782a39316bd844e1cb0929bb805320cb24eda82fe7b5d9"
+      },
+      "filtered_glir": {
+        "file": "nested_framebuffer.glir.json",
+        "sha256": "d45f6390ce59d8ebd222bb3bf2ee60d5e8a0014291b46d735619af488a571ad4"
+      },
+      "operation": "nested deactivation restores the outer attachment",
+      "readbacks": 1,
+      "requested_samples": 0,
+      "rgba": {
+        "file": "nested_framebuffer.npy",
+        "sha256": "5f6ee494dc5ca0e05f947c56c3916078d7c807c6f3a90fdfd7f1aff117bcfe8b"
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ],
+      "size": [
+        32,
+        24
+      ]
+    },
+    "partial_texture": {
+      "capture": {
+        "file": "partial_texture.capture.json",
+        "sha256": "99f788349d65cedf73587af674248db2cb7d09fb46eb72d818ce184de3610c18"
+      },
+      "capture_method": "gloo.read_pixels",
+      "dtype": "|u1",
+      "edge_columns": [
+        8
+      ],
+      "edge_rows": [
+        18
+      ],
+      "exact": true,
+      "expanded_shaders": {
+        "file": "partial_texture.shaders.json",
+        "sha256": "8337def395aeec2aa124bf414f25d3172ce055945efae05668819cf3e6a17d32"
+      },
+      "filtered_glir": {
+        "file": "partial_texture.glir.json",
+        "sha256": "8959e9a0b1d3ed289fc2f2a34464eea3157ef91f5a1b2a9f9b05d0ca1b57305c"
+      },
+      "operation": "corner patch preserves outside texels",
+      "readbacks": 1,
+      "requested_samples": 0,
+      "rgba": {
+        "file": "partial_texture.npy",
+        "sha256": "f1976995ba2db9482071f082e3e7fd93e9a7598b9750806bd63f89e2b874d28c"
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ],
+      "size": [
+        32,
+        24
+      ]
+    },
+    "partial_texture_snapshot": {
+      "capture": {
+        "file": "partial_texture_snapshot.capture.json",
+        "sha256": "4c5afcbf4c16e070255cb092c1c30272ed97d1f44ec52734bee99bf1bc6cd0de"
+      },
+      "capture_method": "gloo.read_pixels",
+      "dtype": "|u1",
+      "edge_columns": [
+        16,
+        20
+      ],
+      "edge_rows": [
+        18
+      ],
+      "exact": true,
+      "expanded_shaders": {
+        "file": "partial_texture_snapshot.shaders.json",
+        "sha256": "8337def395aeec2aa124bf414f25d3172ce055945efae05668819cf3e6a17d32"
+      },
+      "filtered_glir": {
+        "file": "partial_texture_snapshot.glir.json",
+        "sha256": "2431e5f2398f7ad31c17497c0f83eab750f3fa95f5ece94f5facaa7918d39a5b"
+      },
+      "operation": "old texture left, patched texture right",
+      "readbacks": 1,
+      "requested_samples": 0,
+      "rgba": {
+        "file": "partial_texture_snapshot.npy",
+        "sha256": "7048121204b15ac08cbc25da34a006e9409500e91a360621b19ccc51dbc5f015"
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ],
+      "size": [
+        32,
+        24
+      ]
+    },
+    "reattach_snapshot": {
+      "capture": {
+        "file": "reattach_snapshot.capture.json",
+        "sha256": "2ca29ded9c70a6870b96ce487730223d465e418310ef9b7d8d07f84ef01dc541"
+      },
+      "capture_method": "gloo.read_pixels",
+      "dtype": "|u1",
+      "edge_columns": [
+        16
+      ],
+      "edge_rows": [],
+      "exact": true,
+      "expanded_shaders": {
+        "file": "reattach_snapshot.shaders.json",
+        "sha256": "67debfefad914ec4e5607e2352bad118c58c98695e03916ef473b18fbba7a067"
+      },
+      "filtered_glir": {
+        "file": "reattach_snapshot.glir.json",
+        "sha256": "a26cc2007012c5662f242fc7a5d4aa07d0f1600e6b9a6c20c4c0cee4175eea4b"
+      },
+      "operation": "pending draw keeps its original attachment",
+      "readbacks": 1,
+      "requested_samples": 0,
+      "rgba": {
+        "file": "reattach_snapshot.npy",
+        "sha256": "f1e2242e80e5285caa43d455de20378fe387e7c985141a3d628a5cd904eefa3d"
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ],
+      "size": [
+        32,
+        24
+      ]
+    },
+    "resize_target_snapshot": {
+      "capture": {
+        "file": "resize_target_snapshot.capture.json",
+        "sha256": "45e8e54843cb355d70eb5b367e5561d91f0c3ba17140f925502e1f596bdab09f"
+      },
+      "capture_method": "gloo.read_pixels",
+      "dtype": "|u1",
+      "edge_columns": [
+        16
+      ],
+      "edge_rows": [],
+      "exact": true,
+      "expanded_shaders": {
+        "file": "resize_target_snapshot.shaders.json",
+        "sha256": "c896d4f9a4c301fce66f01dc497c39f329bd1c43e555f1ebd7897261b9cf201c"
+      },
+      "filtered_glir": {
+        "file": "resize_target_snapshot.glir.json",
+        "sha256": "8c9757fb130f4c4b6c35fe65593e6463a5a8ca552244afe2e594d32a415c5122"
+      },
+      "operation": "pending target/sample keeps the old allocation",
+      "readbacks": 1,
+      "requested_samples": 0,
+      "rgba": {
+        "file": "resize_target_snapshot.npy",
+        "sha256": "f1e2242e80e5285caa43d455de20378fe387e7c985141a3d628a5cd904eefa3d"
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ],
+      "size": [
+        32,
+        24
+      ]
+    },
+    "scalar_array": {
+      "capture": {
+        "file": "scalar_array.capture.json",
+        "sha256": "c3bc4bb2793fc6a2c4eb2bd51459a2ffadf6303247ccd5f0618cfeff0467d2f5"
+      },
+      "capture_method": "gloo.read_pixels",
+      "dtype": "|u1",
+      "edge_columns": [],
+      "edge_rows": [],
+      "exact": false,
+      "expanded_shaders": {
+        "file": "scalar_array.shaders.json",
+        "sha256": "8ee8e91c299c093f0e967e765257d28852838b0156b89ad1c322fdffc27d8fb2"
+      },
+      "filtered_glir": {
+        "file": "scalar_array.glir.json",
+        "sha256": "c82c2900f8d9b0a5b66075a8fb61efb1bd7e7e280c737547188db93ae257d62b"
+      },
+      "operation": "second and third scalar-array entries",
+      "readbacks": 1,
+      "requested_samples": 0,
+      "rgba": {
+        "file": "scalar_array.npy",
+        "sha256": "75945e6c45aaf84f92bafc9e62711b8fe4d1b7d0dc31a2cbc12ffca143995ba2"
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ],
+      "size": [
+        32,
+        24
+      ]
+    },
+    "scissor": {
+      "capture": {
+        "file": "scissor.capture.json",
+        "sha256": "2dbffec5087c462a9f9af0f2c4dc0f725217c29de7d7fda070d8ee761fdde42a"
+      },
+      "capture_method": "gloo.read_pixels",
+      "dtype": "|u1",
+      "edge_columns": [
+        8,
+        24
+      ],
+      "edge_rows": [
+        6,
+        18
+      ],
+      "exact": true,
+      "expanded_shaders": {
+        "file": "scissor.shaders.json",
+        "sha256": "6d0550b04fb734758da36fa1161fa32b94d6954f45a315368b21134b709b287b"
+      },
+      "filtered_glir": {
+        "file": "scissor.glir.json",
+        "sha256": "4137ba59576f723d823eb6faf07952c5be8a27242e2ffc385b204a6461270eea"
+      },
+      "operation": "center rectangle scissor",
+      "readbacks": 1,
+      "requested_samples": 0,
+      "rgba": {
+        "file": "scissor.npy",
+        "sha256": "f5569663eafe524d31a0ac6e4034b3609e54aac489593adceefcccdd1d29fe25"
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ],
+      "size": [
+        32,
+        24
+      ]
+    },
+    "scissor_clear": {
+      "capture": {
+        "file": "scissor_clear.capture.json",
+        "sha256": "108296803207c1570557dfb2678e1ab65fcdccd3466303a983d32e241bf391dd"
+      },
+      "capture_method": "gloo.read_pixels",
+      "dtype": "|u1",
+      "edge_columns": [
+        8,
+        24
+      ],
+      "edge_rows": [
+        6,
+        18
+      ],
+      "exact": true,
+      "expanded_shaders": {
+        "file": "scissor_clear.shaders.json",
+        "sha256": "6d0550b04fb734758da36fa1161fa32b94d6954f45a315368b21134b709b287b"
+      },
+      "filtered_glir": {
+        "file": "scissor_clear.glir.json",
+        "sha256": "0ce6f9d85c6f196331d60863ec85df2901de01d92b5daf20494aafdee6ce1cf0"
+      },
+      "operation": "clear respects the current scissor rectangle",
+      "readbacks": 1,
+      "requested_samples": 0,
+      "rgba": {
+        "file": "scissor_clear.npy",
+        "sha256": "8eaf7b686b93f2b50c78c926a98dafc0b8d331750b6ace33aed09d74b4a587d7"
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ],
+      "size": [
+        32,
+        24
+      ]
+    },
+    "shared_canvases": {
+      "capture": {
+        "file": "shared_canvases.capture.json",
+        "sha256": "57f0d2a430bc00897f3e3c4fe6bad9c80c6bc6318d77dc79428f021c837c34a6"
+      },
+      "capture_method": "gloo.read_pixels",
+      "dtype": "|u1",
+      "edge_columns": [
+        32
+      ],
+      "edge_rows": [],
+      "exact": true,
+      "expanded_shaders": {
+        "file": "shared_canvases.shaders.json",
+        "sha256": "81282e2faffa217c82130cafb0bdf23404e910d27f037c08eca1d5de240752ff"
+      },
+      "filtered_glir": {
+        "file": "shared_canvases.glir.json",
+        "sha256": "759c81a9e9aef391d5b515d183a6c77eb086729b65bfe88c7880f95c52542637"
+      },
+      "operation": "shared context with independent owned targets",
+      "readbacks": 2,
+      "requested_samples": 0,
+      "rgba": {
+        "file": "shared_canvases.npy",
+        "sha256": "f13e3358d0c1e8d9062c82d0cff92c6cd3982fbe63efda957fc6d05053007c8c"
+      },
+      "shape": [
+        24,
+        64,
+        4
+      ],
+      "size": [
+        32,
+        24
+      ]
+    },
+    "stencil": {
+      "capture": {
+        "file": "stencil.capture.json",
+        "sha256": "ee9ff1b45bb0833cf86206705c4be0bf924eb9b3063ab4fa6e643a6b97cca327"
+      },
+      "capture_method": "gloo.read_pixels",
+      "dtype": "|u1",
+      "edge_columns": [
+        16
+      ],
+      "edge_rows": [],
+      "exact": true,
+      "expanded_shaders": {
+        "file": "stencil.shaders.json",
+        "sha256": "81282e2faffa217c82130cafb0bdf23404e910d27f037c08eca1d5de240752ff"
+      },
+      "filtered_glir": {
+        "file": "stencil.glir.json",
+        "sha256": "c66ba2775868355fa41a5c8846dbc49423b11e337f0b422a7230cb3980c76265"
+      },
+      "operation": "first draw writes a stencil mask used by the second",
+      "readbacks": 1,
+      "requested_samples": 0,
+      "rgba": {
+        "file": "stencil.npy",
+        "sha256": "b5be6328f0ecceef663843ce1acbfb21af180defcb79d474e3b9eade79fa27ca"
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ],
+      "size": [
+        32,
+        24
+      ]
+    },
+    "texture_snapshot_resize": {
+      "capture": {
+        "file": "texture_snapshot_resize.capture.json",
+        "sha256": "b26543040d73e59ed466bb266d92546bc41e4c974fa4c161179c889d49ba4917"
+      },
+      "capture_method": "gloo.read_pixels",
+      "dtype": "|u1",
+      "edge_columns": [
+        16
+      ],
+      "edge_rows": [],
+      "exact": true,
+      "expanded_shaders": {
+        "file": "texture_snapshot_resize.shaders.json",
+        "sha256": "8337def395aeec2aa124bf414f25d3172ce055945efae05668819cf3e6a17d32"
+      },
+      "filtered_glir": {
+        "file": "texture_snapshot_resize.glir.json",
+        "sha256": "6d77056f716d0c588629e7d17a6c65e2709eaa573f014fa614f9462d4570334d"
+      },
+      "operation": "filtered resize and two texture generations",
+      "readbacks": 1,
+      "requested_samples": 0,
+      "rgba": {
+        "file": "texture_snapshot_resize.npy",
+        "sha256": "f1e2242e80e5285caa43d455de20378fe387e7c985141a3d628a5cd904eefa3d"
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ],
+      "size": [
+        32,
+        24
+      ]
+    },
+    "triangle_strip": {
+      "capture": {
+        "file": "triangle_strip.capture.json",
+        "sha256": "2837ca448ebb5cb90669a2c57008e97154969599c4b9ece8fd4a7e8b1f3f22b6"
+      },
+      "capture_method": "gloo.read_pixels",
+      "dtype": "|u1",
+      "edge_columns": [],
+      "edge_rows": [],
+      "exact": true,
+      "expanded_shaders": {
+        "file": "triangle_strip.shaders.json",
+        "sha256": "6d0550b04fb734758da36fa1161fa32b94d6954f45a315368b21134b709b287b"
+      },
+      "filtered_glir": {
+        "file": "triangle_strip.glir.json",
+        "sha256": "f723f8fe152768be23fa27ad6dcfaadbd7b9bd580d9dbc42de68c7437dff663b"
+      },
+      "operation": "four vertices as triangle_strip",
+      "readbacks": 1,
+      "requested_samples": 0,
+      "rgba": {
+        "file": "triangle_strip.npy",
+        "sha256": "3f5ff30b03554c1bd1bb405dc27242d5fdb5808a4c9a940069a201720d847b93"
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ],
+      "size": [
+        32,
+        24
+      ]
+    },
+    "uniform_snapshot": {
+      "capture": {
+        "file": "uniform_snapshot.capture.json",
+        "sha256": "811a8ae898e4a51e675e03359487822c2a40b8c49473062137501bb3b9b0bf90"
+      },
+      "capture_method": "gloo.read_pixels",
+      "dtype": "|u1",
+      "edge_columns": [
+        16
+      ],
+      "edge_rows": [],
+      "exact": true,
+      "expanded_shaders": {
+        "file": "uniform_snapshot.shaders.json",
+        "sha256": "4e4607bf93d2e2fdfdda6e12ba6c68c0ab7428e416e58e6d7d4838ec61c1ae8c"
+      },
+      "filtered_glir": {
+        "file": "uniform_snapshot.glir.json",
+        "sha256": "9200909a426a94f49c6916cf815e0f4f41eabe9f5ea913e7eabfb3760adf5733"
+      },
+      "operation": "two colors and transforms before one read",
+      "readbacks": 1,
+      "requested_samples": 0,
+      "rgba": {
+        "file": "uniform_snapshot.npy",
+        "sha256": "f1e2242e80e5285caa43d455de20378fe387e7c985141a3d628a5cd904eefa3d"
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ],
+      "size": [
+        32,
+        24
+      ]
+    },
+    "vector_array": {
+      "capture": {
+        "file": "vector_array.capture.json",
+        "sha256": "e141abcb62f03129a8937e3341ca88a54b6e322e686db9363a65400998a737dc"
+      },
+      "capture_method": "gloo.read_pixels",
+      "dtype": "|u1",
+      "edge_columns": [],
+      "edge_rows": [],
+      "exact": false,
+      "expanded_shaders": {
+        "file": "vector_array.shaders.json",
+        "sha256": "a68326201aca80df11db2892e20b6e2943b501788cbedcf99d5e3049c1682dc4"
+      },
+      "filtered_glir": {
+        "file": "vector_array.glir.json",
+        "sha256": "cdba904c8d3734919c709ca8913ffe6647016a85f139aa86c712da20e809aec2"
+      },
+      "operation": "second vec3-array entry",
+      "readbacks": 1,
+      "requested_samples": 0,
+      "rgba": {
+        "file": "vector_array.npy",
+        "sha256": "8a8067ea79d7ca275d89c42864887a257e5bf03762599afbff2c09dd81d51bf8"
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ],
+      "size": [
+        32,
+        24
+      ]
+    },
+    "vertex_post_hook": {
+      "capture": {
+        "file": "vertex_post_hook.capture.json",
+        "sha256": "850fcb8bde15cbcf40bab07b68f70beaf330798f3895d20ab52069b659622350"
+      },
+      "capture_method": "gloo.read_pixels",
+      "dtype": "|u1",
+      "edge_columns": [],
+      "edge_rows": [
+        12
+      ],
+      "exact": true,
+      "expanded_shaders": {
+        "file": "vertex_post_hook.shaders.json",
+        "sha256": "c7b3458f2c3e3f8ad885c60fd74345c6bc39365a9eb31572df7f0ee4c0553642"
+      },
+      "filtered_glir": {
+        "file": "vertex_post_hook.glir.json",
+        "sha256": "fe065daa05e141cc8057789bcb103118e35bbfef73cba3cb07325a594c1dcfbe"
+      },
+      "operation": "gl_Position edits after helper returns apply before conversion",
+      "readbacks": 1,
+      "requested_samples": 0,
+      "rgba": {
+        "file": "vertex_post_hook.npy",
+        "sha256": "cc57892a40dd7263ed58240dd3c8bd09f14030838b9d2709b96a4cc6ff0b9bad"
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ],
+      "size": [
+        32,
+        24
+      ]
+    },
+    "viewport": {
+      "capture": {
+        "file": "viewport.capture.json",
+        "sha256": "c3a83e633b9000582692fe48590f175264f9894995da3db865c24431034ea479"
+      },
+      "capture_method": "gloo.read_pixels",
+      "dtype": "|u1",
+      "edge_columns": [
+        16
+      ],
+      "edge_rows": [],
+      "exact": true,
+      "expanded_shaders": {
+        "file": "viewport.shaders.json",
+        "sha256": "6d0550b04fb734758da36fa1161fa32b94d6954f45a315368b21134b709b287b"
+      },
+      "filtered_glir": {
+        "file": "viewport.glir.json",
+        "sha256": "f63c2f3787ecb1844705eaff67d4e5215a3dbf9dd758fb7bd2c62319caa7103f"
+      },
+      "operation": "half-width viewport with full geometry",
+      "readbacks": 1,
+      "requested_samples": 0,
+      "rgba": {
+        "file": "viewport.npy",
+        "sha256": "9678ae4fc5fcaf691548519a08e7ac77754dc355b78fc550241ef28035e33568"
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ],
+      "size": [
+        32,
+        24
+      ]
+    }
+  },
+  "provenance": {
+    "capture_source_sha256": "66ae25247831c184f38f2c7a2ff151b940013087104907523b11e1ed2b9b151a",
+    "cmake": null,
+    "distribution_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Lib\\site-packages",
+    "distribution_record_sha256": "455e084c0cb78e19e41c79d08a57d533b07d52b3248c2ebd4b73e80584b067cc",
+    "environment": {
+      "PYTHONPATH": null,
+      "QT_API": "pyqt6",
+      "QT_QPA_PLATFORM": null,
+      "QT_SCALE_FACTOR": "1",
+      "VISPY_PYQT5_SHARE_CONTEXT": "true"
+    },
+    "fixture_source_sha256": "37797259727afd9c6b15c7074319b935dcddb330deb2b6c99a03c8df6f36fddb",
+    "kind": "upstream",
+    "machine": "AMD64",
+    "numpy_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Lib\\site-packages\\numpy\\__init__.py",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.12.8",
+    "python_executable": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Scripts\\python.exe",
+    "qt_runtime": "6.11.2",
+    "regenerate": "uv venv build/oracle-opengl --python 3.12; uv pip install --python build/oracle-opengl/Scripts/python.exe -r tools/oracle_requirements.txt; build/oracle-opengl/Scripts/python.exe tools/oracle_capture.py --kind upstream --output tests/reference/opengl",
+    "renderer": {
+      "renderer": "NVIDIA GeForce RTX 4090/PCIe/SSE2",
+      "vendor": "NVIDIA Corporation",
+      "version": "4.6.0 NVIDIA 595.79"
+    },
+    "requirements_sha256": "a784b5a5e2b4ea201578acddc41e28e0997275ea2542642148322153cd240ffd",
+    "source_sha256": {
+      "gloo/buffer.py": "68e37b184b74814e0ae7a6f4f754c9f0c0af5b4e6369a60a8357c70da974e138",
+      "gloo/context.py": "6afc97492f65a5e865723535206fb769a1c4b55694d69786123fdee78bef992a",
+      "gloo/glir.py": "a3bb8a75b33f47420e9c100b8a6d81037a2f03c905e6c9f7d8399f4fb2eb8f7c",
+      "gloo/program.py": "4d3ab8e36260f9b5dc50f6aec075b12d642535f3cb8f49bfd4a27056301d5492",
+      "gloo/texture.py": "9f6d5f2e448e02c0ca4d66c65d17ddcdb6c0182bb8f15f1292a427f5a9faf6bc",
+      "gloo/wrappers.py": "73dbb5eb8ca78b2822266d272ffb14db9fcadd7a56512843209187714c9e8dcc"
+    },
+    "upstream_commit": "117b054598f4758b598f4b8f48feea48c11fe7b0",
+    "versions": {
+      "PyOpenGL": "3.1.10",
+      "PyQt6": "6.11.0",
+      "PyQt6-Qt6": "6.11.2",
+      "PyQt6-sip": "13.13.0",
+      "freetype-py": "2.5.1",
+      "hsluv": "5.0.4",
+      "kiwisolver": "1.5.1",
+      "numpy": "2.5.3",
+      "packaging": "26.3",
+      "vispy": "0.17.0"
+    },
+    "vispy_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Lib\\site-packages\\vispy",
+    "vispy_version": "0.17.0"
+  },
+  "schema": 1
+}

@@ -1,0 +1,47 @@
+{
+  "GPU_used": false,
+  "camera": {
+    "final_centers": [
+      [
+        32,
+        48
+      ],
+      [
+        80,
+        24
+      ]
+    ],
+    "fixed_scene_visual_diameters": [
+      10,
+      20,
+      40
+    ]
+  },
+  "candidate_seen": false,
+  "depth": {
+    "front_mesh": 0.45,
+    "sample_depth_margin": "center/12.5px sphere in front;19.5px rim behind mesh",
+    "sphere": ".5-.1*sqrt(1-(dx/20)^2-(dy/20)^2)"
+  },
+  "findings": "No concrete analytic criterion error identified; actual pinned transforms and marker shaders checked",
+  "ordering": "Both revision draws remain pending before one final read; camera prewarm submits without read",
+  "pinned_visual_source_sha256": {
+    "scene/cameras/base_camera.py": "fa93697ff791b24c657c78420365e6460cd1b73efa57b43562a12900e2a84b93",
+    "scene/cameras/panzoom.py": "6cb92f82e5075a8a374122ebed6c9910ba77590b9ee9a0efd4f02db8c51853c2",
+    "scene/canvas.py": "d404365a8183d4fe6ee4a10212ee75d7417a4273d9ce441e46930d6dc1490b6e",
+    "visuals/markers.py": "84990f7b14ff92a4acfcccf39bcc8c788b7c9df76e75e85fc8c4e4e102b119c3",
+    "visuals/mesh.py": "9d6fc7616eef5caff4da302ff94c561df1aab8c8b6498d6b901f8e51c5b1ef88",
+    "visuals/transforms/transform_system.py": "74a44c89dd469b46e187d2bfbf54620bec716e6405eb5387cffd14afc19d3265"
+  },
+  "reviewer": "independent shader worker read-only audit",
+  "schema": 1,
+  "scope_limit": "CPU/source review only; zero upstream or candidate GPU admission",
+  "source_sha256": {
+    "tests/parity/test_marker_extensions_parity.py": "58bb19fb248cd52f1851284c51b8834457693d78ea4dadea48afabd2201bbf02",
+    "tools/fixture_gloo.py": "37797259727afd9c6b15c7074319b935dcddb330deb2b6c99a03c8df6f36fddb",
+    "tools/fixture_marker_extensions.py": "7758b09c40333999298fee2d72178b4e4172535a7896a5504f5d8e05fa47756e",
+    "tools/oracle_capture.py": "66ae25247831c184f38f2c7a2ff151b940013087104907523b11e1ed2b9b151a",
+    "tools/oracle_image_extensions_capture.py": "5583a42fd34b105651cb1f81c77621f96efd92fedc54e78ee5367eb95e0b6211",
+    "tools/oracle_marker_extensions_capture.py": "108ef68259f73dbd5df83085316f5a8ecdbd9988e2a249efe9b79f215215e292"
+  }
+}

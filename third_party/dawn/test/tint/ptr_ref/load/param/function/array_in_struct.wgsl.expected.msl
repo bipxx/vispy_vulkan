@@ -1,0 +1,16 @@
+#include <metal_stdlib>
+using namespace metal;
+
+struct str {
+  array<int, 4> arr;
+};
+
+array<int, 4> func(thread array<int, 4>* const pointer) {
+  return (*pointer);
+}
+
+[[max_total_threads_per_threadgroup(1)]]
+kernel void v() {
+  str F = {};
+  array<int, 4> const r = func((&F.arr));
+}

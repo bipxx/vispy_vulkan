@@ -1,0 +1,17 @@
+{
+  "actions": [
+    {
+      "previous_owner": "SliderStyle",
+      "public_apis": [
+        "QObject.setParent(None)",
+        "QApplication.setStyle('Fusion')"
+      ],
+      "receiver": "DIVEWidget",
+      "style_name_after": "fusion",
+      "style_name_before": "fusion"
+    }
+  ],
+  "phase": "DIVEWidget DeferredDelete after the fixture screenshot phase",
+  "qt_source": "https://raw.githubusercontent.com/qt/qtbase/v5.15.2/src/widgets/styles/qproxystyle.cpp",
+  "scope": "DIVE rendering/export with public test-owned style restoration during fixture cleanup; ordinary unchanged host teardown and scatter admission remain unresolved"
+}

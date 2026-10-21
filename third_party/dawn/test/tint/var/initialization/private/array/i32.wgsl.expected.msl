@@ -1,0 +1,16 @@
+#include <metal_stdlib>
+using namespace metal;
+
+struct tint_module_vars_struct {
+  thread array<int, 3>* zero;
+  thread array<int, 3>* init;
+};
+
+[[max_total_threads_per_threadgroup(1)]]
+kernel void v() {
+  thread array<int, 3> zero = {};
+  thread array<int, 3> init = array<int, 3>{1, 2, 3};
+  tint_module_vars_struct const tint_module_vars = tint_module_vars_struct{.zero=(&zero), .init=(&init)};
+  array<int, 3> v0 = (*tint_module_vars.zero);
+  array<int, 3> v1 = (*tint_module_vars.init);
+}

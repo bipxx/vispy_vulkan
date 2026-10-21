@@ -1,0 +1,8 @@
+{
+  "candidate_seen": false,
+  "line_smooth_enabled": true,
+  "line_width": 3.0,
+  "readbacks": 1,
+  "samples_raw": 0,
+  "state_query_kind": "actual upstream OpenGL after one final readback"
+}

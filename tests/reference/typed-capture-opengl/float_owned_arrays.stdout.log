@@ -1,0 +1,1 @@
+PASS typed capture float_owned_arrays: (6, 8, 4), float32, 2 readbacks

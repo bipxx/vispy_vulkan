@@ -1,0 +1,19 @@
+#include <metal_stdlib>
+using namespace metal;
+
+struct tint_module_vars_struct {
+  const constant array<half4x4, 4>* a;
+  device half* s;
+};
+
+[[max_total_threads_per_threadgroup(1)]]
+kernel void f(const constant array<half4x4, 4>* a [[buffer(0)]], device half* s [[buffer(1)]]) {
+  tint_module_vars_struct const tint_module_vars = tint_module_vars_struct{.a=a, .s=s};
+  const constant array<half4x4, 4>* const p_a = tint_module_vars.a;
+  const constant half4x4* const p_a_2 = (&(*p_a)[2]);
+  const constant half4* const p_a_2_1 = (&(*p_a_2)[1]);
+  array<half4x4, 4> const l_a = (*p_a);
+  half4x4 const l_a_i = (*p_a_2);
+  half4 const l_a_i_i = (*p_a_2_1);
+  (*tint_module_vars.s) = ((((*p_a_2_1).x + l_a[0][0].x) + l_a_i[0].x) + l_a_i_i.x);
+}

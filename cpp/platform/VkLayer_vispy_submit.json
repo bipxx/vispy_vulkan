@@ -1,0 +1,15 @@
+{
+    "file_format_version": "1.2.0",
+    "layer": {
+        "name": "VK_LAYER_VISPY_submit_count",
+        "type": "GLOBAL",
+        "library_path": ".\\VkLayer_vispy_submit.dll",
+        "api_version": "1.3.0",
+        "implementation_version": "1",
+        "description": "Counts vkQueueSubmit calls for the VisPy Dawn fork",
+        "functions": {
+            "vkGetInstanceProcAddr": "vispy_GetInstanceProcAddr",
+            "vkGetDeviceProcAddr": "vispy_GetDeviceProcAddr"
+        }
+    }
+}

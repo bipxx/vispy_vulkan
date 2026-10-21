@@ -1,0 +1,1188 @@
+{
+  "comparison": {
+    "fixed_landmarks_exact": true,
+    "full_frame_exact": true
+  },
+  "errors": {},
+  "fixtures": {
+    "clipped_segment": {
+      "capture": {
+        "file": "clipped_segment.capture.json",
+        "sha256": "56600ee25879d66186e554defe0b1115aae8c3c9e3407a0e9c1dd63edc7af79d"
+      },
+      "dtype": "|u1",
+      "expanded_shaders": {
+        "file": "clipped_segment.shaders.json",
+        "sha256": "6d0550b04fb734758da36fa1161fa32b94d6954f45a315368b21134b709b287b"
+      },
+      "filtered_glir": {
+        "file": "clipped_segment.glir.json",
+        "sha256": "cc7c5c9d100175f0467f2cfc2a0937956099a9bdad3cfac2e47c2dece61dc82d"
+      },
+      "parameters": {
+        "blending": false,
+        "case": "clipped_segment",
+        "comparison": "entire fixed driver frame exact; fixed independent landmarks",
+        "intermediate_finish": false,
+        "line_width": 1,
+        "physical_samples": 1,
+        "points": [
+          [
+            -5.375,
+            12.375
+          ],
+          [
+            35.375,
+            12.375
+          ]
+        ],
+        "points_sha256": "f3795aca9aec167df8c89b24c8c054afef0a37cdb0782882cab484c828defdb1",
+        "primitive": "lines",
+        "readbacks": 1,
+        "size": [
+          32,
+          24
+        ],
+        "source_alpha": 1,
+        "varying": "constant"
+      },
+      "process": {
+        "exit_code": 0,
+        "stderr": {
+          "file": "clipped_segment.stderr.log",
+          "sha256": "b1d8d1e72b862b2b97cd31253e5ea272299c884b4d8079ddfbf436853e425c15"
+        },
+        "stdout": {
+          "file": "clipped_segment.stdout.log",
+          "sha256": "9c1245939fecf50515450bdf43a6d69dc717ad7212e00cc0dd1fda8b5db0bf53"
+        }
+      },
+      "readbacks": 1,
+      "rgba": {
+        "file": "clipped_segment.npy",
+        "sha256": "90e24e4aa0337cbb5c398d2d420acbd29b3835a9c723710c5e965f3c1e52c3ff"
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ]
+    },
+    "degenerate_equal": {
+      "capture": {
+        "file": "degenerate_equal.capture.json",
+        "sha256": "2484ac9d56f27c92f0ecb2479c87eddfa82c5e4a80bf8652a190c536194f0ba8"
+      },
+      "dtype": "|u1",
+      "expanded_shaders": {
+        "file": "degenerate_equal.shaders.json",
+        "sha256": "6d0550b04fb734758da36fa1161fa32b94d6954f45a315368b21134b709b287b"
+      },
+      "filtered_glir": {
+        "file": "degenerate_equal.glir.json",
+        "sha256": "a5601ad0e6fed2f02660a4a432eff9583584be077321ca4c169dcfc7c1085cd3"
+      },
+      "parameters": {
+        "blending": false,
+        "case": "degenerate_equal",
+        "comparison": "entire fixed driver frame exact; fixed independent landmarks",
+        "intermediate_finish": false,
+        "line_width": 1,
+        "physical_samples": 1,
+        "points": [
+          [
+            10.375,
+            10.375
+          ],
+          [
+            10.375,
+            10.375
+          ]
+        ],
+        "points_sha256": "5f4ac895233be1b63d0ac67ec7af7907691c5d93c23793bfcb358485dff57c29",
+        "primitive": "lines",
+        "readbacks": 1,
+        "size": [
+          32,
+          24
+        ],
+        "source_alpha": 1,
+        "varying": "constant"
+      },
+      "process": {
+        "exit_code": 0,
+        "stderr": {
+          "file": "degenerate_equal.stderr.log",
+          "sha256": "b1d8d1e72b862b2b97cd31253e5ea272299c884b4d8079ddfbf436853e425c15"
+        },
+        "stdout": {
+          "file": "degenerate_equal.stdout.log",
+          "sha256": "6e83eae482d38900526d1abab5e7a214b83e1cde79319dcf26e7a489219ca897"
+        }
+      },
+      "readbacks": 1,
+      "rgba": {
+        "file": "degenerate_equal.npy",
+        "sha256": "06adb8b16f5827be3e9b0e205bc4a17132bf7e6ba0b4f6e3f3380ac16e398d4d"
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ]
+    },
+    "flat_provoking_color": {
+      "capture": {
+        "file": "flat_provoking_color.capture.json",
+        "sha256": "271831dde8a392382fc877036f0301fca4c8d768626d52afb7f3f77c6c7ffbe3"
+      },
+      "dtype": "|u1",
+      "expanded_shaders": {
+        "file": "flat_provoking_color.shaders.json",
+        "sha256": "be93f5eeae812eafb75731fd4c272f2a4ffdb070f36b2ca96a3b1cdf7518acfd"
+      },
+      "filtered_glir": {
+        "file": "flat_provoking_color.glir.json",
+        "sha256": "5c831ffad5734c0425baf06ab529f1e281921a3a846236f8f145f04a43aebcb2"
+      },
+      "parameters": {
+        "blending": false,
+        "case": "flat_provoking_color",
+        "comparison": "entire fixed driver frame exact; fixed independent landmarks",
+        "intermediate_finish": false,
+        "line_width": 1,
+        "physical_samples": 1,
+        "points": [
+          [
+            5.5,
+            6.5
+          ],
+          [
+            26.5,
+            6.5
+          ]
+        ],
+        "points_sha256": "d2a8ac0694f9c639325a29495569a7b63cfb009bc6c85a40cb8dd3d19337a898",
+        "primitive": "lines",
+        "readbacks": 1,
+        "size": [
+          32,
+          24
+        ],
+        "source_alpha": 1,
+        "varying": "flat-last-provoking"
+      },
+      "process": {
+        "exit_code": 0,
+        "stderr": {
+          "file": "flat_provoking_color.stderr.log",
+          "sha256": "b1d8d1e72b862b2b97cd31253e5ea272299c884b4d8079ddfbf436853e425c15"
+        },
+        "stdout": {
+          "file": "flat_provoking_color.stdout.log",
+          "sha256": "7fb34de167b64af69cb74fbf2ab414a649708250412196ebbc5ed94cdbbb1798"
+        }
+      },
+      "readbacks": 1,
+      "rgba": {
+        "file": "flat_provoking_color.npy",
+        "sha256": "169952b843193aceffaa13c69259e11b007bb9296b532373190578e98022a3ae"
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ]
+    },
+    "half_open_endpoints": {
+      "capture": {
+        "file": "half_open_endpoints.capture.json",
+        "sha256": "dee41a3fb1014c5389672e3ec9d80d905170a03ff726b8c3844490d312224b42"
+      },
+      "dtype": "|u1",
+      "expanded_shaders": {
+        "file": "half_open_endpoints.shaders.json",
+        "sha256": "6d0550b04fb734758da36fa1161fa32b94d6954f45a315368b21134b709b287b"
+      },
+      "filtered_glir": {
+        "file": "half_open_endpoints.glir.json",
+        "sha256": "4f1aac963bfbb597e26299453472488353db42d49c6f53d6c181881b05f89f89"
+      },
+      "parameters": {
+        "blending": false,
+        "case": "half_open_endpoints",
+        "comparison": "entire fixed driver frame exact; fixed independent landmarks",
+        "intermediate_finish": false,
+        "line_width": 1,
+        "physical_samples": 1,
+        "points": [
+          [
+            4.5,
+            6.5
+          ],
+          [
+            24.5,
+            6.5
+          ],
+          [
+            4.5,
+            10.5
+          ],
+          [
+            4.5,
+            20.5
+          ]
+        ],
+        "points_sha256": "e0cab9a29bc8fd524216151c53dfd452b9027718499f5bbf4dd430fbeb468494",
+        "primitive": "lines",
+        "readbacks": 1,
+        "size": [
+          32,
+          24
+        ],
+        "source_alpha": 1,
+        "varying": "constant"
+      },
+      "process": {
+        "exit_code": 0,
+        "stderr": {
+          "file": "half_open_endpoints.stderr.log",
+          "sha256": "b1d8d1e72b862b2b97cd31253e5ea272299c884b4d8079ddfbf436853e425c15"
+        },
+        "stdout": {
+          "file": "half_open_endpoints.stdout.log",
+          "sha256": "7ea3fbb9e3ebf08049114fcd4b4c93e18ddb4e8d1ffc6b05112faad5517e1d8d"
+        }
+      },
+      "readbacks": 1,
+      "rgba": {
+        "file": "half_open_endpoints.npy",
+        "sha256": "c7090a42b979971065cfd37dd6c4f3b70bf88ba85a7f01522f74b4e83b48418d"
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ]
+    },
+    "join_acute_alpha": {
+      "capture": {
+        "file": "join_acute_alpha.capture.json",
+        "sha256": "86eee8d0ac8d0c45875c3bd1ebed893c5dc3a114cab45a4529e38384cf3a2560"
+      },
+      "dtype": "|u1",
+      "expanded_shaders": {
+        "file": "join_acute_alpha.shaders.json",
+        "sha256": "6d0550b04fb734758da36fa1161fa32b94d6954f45a315368b21134b709b287b"
+      },
+      "filtered_glir": {
+        "file": "join_acute_alpha.glir.json",
+        "sha256": "891b9aa8407f73c692a32424e80c53c816a2ab4cd576a86dc89dd8448ba51f89"
+      },
+      "parameters": {
+        "blending": true,
+        "case": "join_acute_alpha",
+        "comparison": "entire fixed driver frame exact; fixed independent landmarks",
+        "intermediate_finish": false,
+        "line_width": 1,
+        "physical_samples": 1,
+        "points": [
+          [
+            4.375,
+            4.375
+          ],
+          [
+            16.375,
+            12.375
+          ],
+          [
+            24.375,
+            6.375
+          ]
+        ],
+        "points_sha256": "041e3e03f9a4a309abb53d939a1f13271676c10ca6cfcf887413ac0f37e9a9e3",
+        "primitive": "line_strip",
+        "readbacks": 1,
+        "size": [
+          32,
+          24
+        ],
+        "source_alpha": 0.25,
+        "varying": "constant"
+      },
+      "process": {
+        "exit_code": 0,
+        "stderr": {
+          "file": "join_acute_alpha.stderr.log",
+          "sha256": "b1d8d1e72b862b2b97cd31253e5ea272299c884b4d8079ddfbf436853e425c15"
+        },
+        "stdout": {
+          "file": "join_acute_alpha.stdout.log",
+          "sha256": "79caf07106b4f774587df07d6969332843f228fafe84263ae56d8a84f96d4a89"
+        }
+      },
+      "readbacks": 1,
+      "rgba": {
+        "file": "join_acute_alpha.npy",
+        "sha256": "104b39b2b870e74402fef9c41b9f6d09510d06cb8e102494ae627fe6729a94cc"
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ]
+    },
+    "join_orthogonal_alpha": {
+      "capture": {
+        "file": "join_orthogonal_alpha.capture.json",
+        "sha256": "1cd408954468e2185ad1ef5debbba680eb0e7eb02bd316fbc74ac0ff8c71ec2d"
+      },
+      "dtype": "|u1",
+      "expanded_shaders": {
+        "file": "join_orthogonal_alpha.shaders.json",
+        "sha256": "6d0550b04fb734758da36fa1161fa32b94d6954f45a315368b21134b709b287b"
+      },
+      "filtered_glir": {
+        "file": "join_orthogonal_alpha.glir.json",
+        "sha256": "0c7490cd1c2badb94f5c26810b1d3b216acc326774a4d1b193dbc9f81ae51701"
+      },
+      "parameters": {
+        "blending": true,
+        "case": "join_orthogonal_alpha",
+        "comparison": "entire fixed driver frame exact; fixed independent landmarks",
+        "intermediate_finish": false,
+        "line_width": 1,
+        "physical_samples": 1,
+        "points": [
+          [
+            4.5,
+            6.5
+          ],
+          [
+            16.5,
+            6.5
+          ],
+          [
+            16.5,
+            18.5
+          ]
+        ],
+        "points_sha256": "d82a1c9298beee5d68a3e22c9a3e5a9d0f925223d2ec96d6c954e5500d9710ad",
+        "primitive": "line_strip",
+        "readbacks": 1,
+        "size": [
+          32,
+          24
+        ],
+        "source_alpha": 0.25,
+        "varying": "constant"
+      },
+      "process": {
+        "exit_code": 0,
+        "stderr": {
+          "file": "join_orthogonal_alpha.stderr.log",
+          "sha256": "b1d8d1e72b862b2b97cd31253e5ea272299c884b4d8079ddfbf436853e425c15"
+        },
+        "stdout": {
+          "file": "join_orthogonal_alpha.stdout.log",
+          "sha256": "a81860c875e91a58ca8764b6b0c5e90de6570b10a838b58b5af2a74b794471e1"
+        }
+      },
+      "readbacks": 1,
+      "rgba": {
+        "file": "join_orthogonal_alpha.npy",
+        "sha256": "42316d2c1ba059108707c53a25fc0ec1c88fd08477d96ef337fca1ec616ca9fe"
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ]
+    },
+    "join_straight_alpha": {
+      "capture": {
+        "file": "join_straight_alpha.capture.json",
+        "sha256": "dedd602a2ea230c5b70780d9884bd38c5b7b840c2f8e627c266944c84f0cffeb"
+      },
+      "dtype": "|u1",
+      "expanded_shaders": {
+        "file": "join_straight_alpha.shaders.json",
+        "sha256": "6d0550b04fb734758da36fa1161fa32b94d6954f45a315368b21134b709b287b"
+      },
+      "filtered_glir": {
+        "file": "join_straight_alpha.glir.json",
+        "sha256": "5fd1d1b920842e40be5bb0879a964e4b57e3b685c6b8da49b1b1ea44a9fa527f"
+      },
+      "parameters": {
+        "blending": true,
+        "case": "join_straight_alpha",
+        "comparison": "entire fixed driver frame exact; fixed independent landmarks",
+        "intermediate_finish": false,
+        "line_width": 1,
+        "physical_samples": 1,
+        "points": [
+          [
+            4.5,
+            6.5
+          ],
+          [
+            16.5,
+            6.5
+          ],
+          [
+            26.5,
+            6.5
+          ]
+        ],
+        "points_sha256": "4019c2b5ba076fc9f4c70fc6e9198b978e8bac3bf8bc3eb19c74ebe75f747e1c",
+        "primitive": "line_strip",
+        "readbacks": 1,
+        "size": [
+          32,
+          24
+        ],
+        "source_alpha": 0.25,
+        "varying": "constant"
+      },
+      "process": {
+        "exit_code": 0,
+        "stderr": {
+          "file": "join_straight_alpha.stderr.log",
+          "sha256": "b1d8d1e72b862b2b97cd31253e5ea272299c884b4d8079ddfbf436853e425c15"
+        },
+        "stdout": {
+          "file": "join_straight_alpha.stdout.log",
+          "sha256": "f37f88b1440187a254561e7665a86e012ed89d2fabd9317d951db713458e804c"
+        }
+      },
+      "readbacks": 1,
+      "rgba": {
+        "file": "join_straight_alpha.npy",
+        "sha256": "c5d91da1aebcda4347ff722ec8102da4df884f183043415399799c6176af75b5"
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ]
+    },
+    "loop_alpha": {
+      "capture": {
+        "file": "loop_alpha.capture.json",
+        "sha256": "fa218b57cb8566bc52a08bf1eb8f211716f11eed055ab55094c891d967d2653b"
+      },
+      "dtype": "|u1",
+      "expanded_shaders": {
+        "file": "loop_alpha.shaders.json",
+        "sha256": "6d0550b04fb734758da36fa1161fa32b94d6954f45a315368b21134b709b287b"
+      },
+      "filtered_glir": {
+        "file": "loop_alpha.glir.json",
+        "sha256": "b3bff2032eb6b5c9eacfdfd6609aff73d0ea4f1f8180b4e578bcc1a9e2ba2996"
+      },
+      "parameters": {
+        "blending": true,
+        "case": "loop_alpha",
+        "comparison": "entire fixed driver frame exact; fixed independent landmarks",
+        "intermediate_finish": false,
+        "line_width": 1,
+        "physical_samples": 1,
+        "points": [
+          [
+            4.5,
+            4.5
+          ],
+          [
+            26.5,
+            4.5
+          ],
+          [
+            26.5,
+            18.5
+          ],
+          [
+            4.5,
+            18.5
+          ]
+        ],
+        "points_sha256": "421330ff1c9c753b867c0b7e490a3da39d53f06240d1c6fa01450cbb093b18b4",
+        "primitive": "line_loop",
+        "readbacks": 1,
+        "size": [
+          32,
+          24
+        ],
+        "source_alpha": 0.25,
+        "varying": "constant"
+      },
+      "process": {
+        "exit_code": 0,
+        "stderr": {
+          "file": "loop_alpha.stderr.log",
+          "sha256": "b1d8d1e72b862b2b97cd31253e5ea272299c884b4d8079ddfbf436853e425c15"
+        },
+        "stdout": {
+          "file": "loop_alpha.stdout.log",
+          "sha256": "d40a3e6a8c960132711c24ed25d008b2a276f72f5ee4254e064a4b9defbcc5ce"
+        }
+      },
+      "readbacks": 1,
+      "rgba": {
+        "file": "loop_alpha.npy",
+        "sha256": "11cd48d3abcbb02c105ed54f45c4b705917b4d49b5aee4a6a65b3a2f1beca8f3"
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ]
+    },
+    "octants_forward": {
+      "capture": {
+        "file": "octants_forward.capture.json",
+        "sha256": "f43992623f92baf265fabf69d887a1982cfe799e2d138012e2acbad7b1e853cb"
+      },
+      "dtype": "|u1",
+      "expanded_shaders": {
+        "file": "octants_forward.shaders.json",
+        "sha256": "6d0550b04fb734758da36fa1161fa32b94d6954f45a315368b21134b709b287b"
+      },
+      "filtered_glir": {
+        "file": "octants_forward.glir.json",
+        "sha256": "a74e3040d8fe086a9f9ff9fee769587bfc373e2d3a27759abb3a0b8df004b3cd"
+      },
+      "parameters": {
+        "blending": false,
+        "case": "octants_forward",
+        "comparison": "entire fixed driver frame exact; fixed independent landmarks",
+        "intermediate_finish": false,
+        "line_width": 1,
+        "physical_samples": 1,
+        "points": [
+          [
+            16.375,
+            12.375
+          ],
+          [
+            26.375,
+            16.375
+          ],
+          [
+            16.375,
+            12.375
+          ],
+          [
+            20.375,
+            22.375
+          ],
+          [
+            16.375,
+            12.375
+          ],
+          [
+            12.375,
+            22.375
+          ],
+          [
+            16.375,
+            12.375
+          ],
+          [
+            6.375,
+            16.375
+          ],
+          [
+            16.375,
+            12.375
+          ],
+          [
+            6.375,
+            8.375
+          ],
+          [
+            16.375,
+            12.375
+          ],
+          [
+            12.375,
+            2.375
+          ],
+          [
+            16.375,
+            12.375
+          ],
+          [
+            20.375,
+            2.375
+          ],
+          [
+            16.375,
+            12.375
+          ],
+          [
+            26.375,
+            8.375
+          ]
+        ],
+        "points_sha256": "058db352cbc4ce147b1bf643654e5ee0280f39e9dda50963fb18684ef2b34b0b",
+        "primitive": "lines",
+        "readbacks": 1,
+        "size": [
+          32,
+          24
+        ],
+        "source_alpha": 1,
+        "varying": "constant"
+      },
+      "process": {
+        "exit_code": 0,
+        "stderr": {
+          "file": "octants_forward.stderr.log",
+          "sha256": "b1d8d1e72b862b2b97cd31253e5ea272299c884b4d8079ddfbf436853e425c15"
+        },
+        "stdout": {
+          "file": "octants_forward.stdout.log",
+          "sha256": "e6c99bc127de8cc35f191e9537d5bfe89c9641e27fc24a6d5469a20d176ec3da"
+        }
+      },
+      "readbacks": 1,
+      "rgba": {
+        "file": "octants_forward.npy",
+        "sha256": "e6fb1a72682082b5ee39edaf1c1966f6eaa6874f6bfb163459c9c9b940bd0bfc"
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ]
+    },
+    "octants_reverse": {
+      "capture": {
+        "file": "octants_reverse.capture.json",
+        "sha256": "a6d39f4d67f4731b36f897b4b7b3f645c87646c17eeed42896101dfb29bd787c"
+      },
+      "dtype": "|u1",
+      "expanded_shaders": {
+        "file": "octants_reverse.shaders.json",
+        "sha256": "6d0550b04fb734758da36fa1161fa32b94d6954f45a315368b21134b709b287b"
+      },
+      "filtered_glir": {
+        "file": "octants_reverse.glir.json",
+        "sha256": "f973f3026972f0f1c612d9fa179cda83b5feca26a553cac0c2ab07b07ce48999"
+      },
+      "parameters": {
+        "blending": false,
+        "case": "octants_reverse",
+        "comparison": "entire fixed driver frame exact; fixed independent landmarks",
+        "intermediate_finish": false,
+        "line_width": 1,
+        "physical_samples": 1,
+        "points": [
+          [
+            26.375,
+            16.375
+          ],
+          [
+            16.375,
+            12.375
+          ],
+          [
+            20.375,
+            22.375
+          ],
+          [
+            16.375,
+            12.375
+          ],
+          [
+            12.375,
+            22.375
+          ],
+          [
+            16.375,
+            12.375
+          ],
+          [
+            6.375,
+            16.375
+          ],
+          [
+            16.375,
+            12.375
+          ],
+          [
+            6.375,
+            8.375
+          ],
+          [
+            16.375,
+            12.375
+          ],
+          [
+            12.375,
+            2.375
+          ],
+          [
+            16.375,
+            12.375
+          ],
+          [
+            20.375,
+            2.375
+          ],
+          [
+            16.375,
+            12.375
+          ],
+          [
+            26.375,
+            8.375
+          ],
+          [
+            16.375,
+            12.375
+          ]
+        ],
+        "points_sha256": "54302a59501303facf4b05004d4d2ff14160b2431a20999a8e1efce8ef573f7f",
+        "primitive": "lines",
+        "readbacks": 1,
+        "size": [
+          32,
+          24
+        ],
+        "source_alpha": 1,
+        "varying": "constant"
+      },
+      "process": {
+        "exit_code": 0,
+        "stderr": {
+          "file": "octants_reverse.stderr.log",
+          "sha256": "b1d8d1e72b862b2b97cd31253e5ea272299c884b4d8079ddfbf436853e425c15"
+        },
+        "stdout": {
+          "file": "octants_reverse.stdout.log",
+          "sha256": "2cb8977a1f4df6e7130d4fc47c99b795860996abb80a98b01c6d18b85ba6e15b"
+        }
+      },
+      "readbacks": 1,
+      "rgba": {
+        "file": "octants_reverse.npy",
+        "sha256": "8c08f0d59e74920e01bb4c6c35b69d9f8de214e4e9371db7f1916f2bc9a88d5d"
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ]
+    },
+    "perspective_color": {
+      "capture": {
+        "file": "perspective_color.capture.json",
+        "sha256": "692244353f8d906879ec9c2fc38c3532ae02fb5fb9b5d9e8e848db7dd284eb44"
+      },
+      "dtype": "|u1",
+      "expanded_shaders": {
+        "file": "perspective_color.shaders.json",
+        "sha256": "5ef36b2283cc8ddeef45ee4e34e7f207f44ce57d10620e54bba6e457274a84d1"
+      },
+      "filtered_glir": {
+        "file": "perspective_color.glir.json",
+        "sha256": "f4ef4dcf24ede38ce3ad9715fc89436f8f83c7201619bf6250f0d487862d3bb1"
+      },
+      "parameters": {
+        "blending": false,
+        "case": "perspective_color",
+        "comparison": "entire fixed driver frame exact; fixed independent landmarks",
+        "intermediate_finish": false,
+        "line_width": 1,
+        "physical_samples": 1,
+        "points": [
+          [
+            4.5,
+            6.5
+          ],
+          [
+            26.5,
+            18.5
+          ]
+        ],
+        "points_sha256": "9d4acd3d4ed78d8bce3bec5a0f25e93670e43703d60d7c5cde37c18e52988842",
+        "primitive": "lines",
+        "readbacks": 1,
+        "size": [
+          32,
+          24
+        ],
+        "source_alpha": 1,
+        "varying": "perspective"
+      },
+      "process": {
+        "exit_code": 0,
+        "stderr": {
+          "file": "perspective_color.stderr.log",
+          "sha256": "b1d8d1e72b862b2b97cd31253e5ea272299c884b4d8079ddfbf436853e425c15"
+        },
+        "stdout": {
+          "file": "perspective_color.stdout.log",
+          "sha256": "2f8f4c87fb6c6932e66d496c678b35e49356522bb94102eb59cc00f156af769e"
+        }
+      },
+      "readbacks": 1,
+      "rgba": {
+        "file": "perspective_color.npy",
+        "sha256": "c24faf7a2ec70628cdaae88ae57f0ae09146739e0ed0fa6c874bdfd35c12f827"
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ]
+    },
+    "scissor_lines": {
+      "capture": {
+        "file": "scissor_lines.capture.json",
+        "sha256": "ec48e3bae15e7507d59c393e6d814fdd9639914a950784532bcb67f91365f2ab"
+      },
+      "dtype": "|u1",
+      "expanded_shaders": {
+        "file": "scissor_lines.shaders.json",
+        "sha256": "6d0550b04fb734758da36fa1161fa32b94d6954f45a315368b21134b709b287b"
+      },
+      "filtered_glir": {
+        "file": "scissor_lines.glir.json",
+        "sha256": "3cc31d5538258cff19e89a8e5826e5ef36aa5477f8e588907f97323851bf3dd4"
+      },
+      "parameters": {
+        "blending": false,
+        "case": "scissor_lines",
+        "comparison": "entire fixed driver frame exact; fixed independent landmarks",
+        "intermediate_finish": false,
+        "line_width": 1,
+        "physical_samples": 1,
+        "points": [
+          [
+            -5.375,
+            12.375
+          ],
+          [
+            35.375,
+            12.375
+          ],
+          [
+            16.375,
+            -4.375
+          ],
+          [
+            16.375,
+            29.375
+          ]
+        ],
+        "points_sha256": "47f51fa3ad7f294aee9f96f092070c57a90482507e60ff4a86276a5671945842",
+        "primitive": "lines",
+        "readbacks": 1,
+        "size": [
+          32,
+          24
+        ],
+        "source_alpha": 1,
+        "varying": "constant"
+      },
+      "process": {
+        "exit_code": 0,
+        "stderr": {
+          "file": "scissor_lines.stderr.log",
+          "sha256": "b1d8d1e72b862b2b97cd31253e5ea272299c884b4d8079ddfbf436853e425c15"
+        },
+        "stdout": {
+          "file": "scissor_lines.stdout.log",
+          "sha256": "e6dfbcd5ae41667c52a83b13f550aa3b4a10d8c3f7143db078853ca0ea4f7d97"
+        }
+      },
+      "readbacks": 1,
+      "rgba": {
+        "file": "scissor_lines.npy",
+        "sha256": "617e9d23cee42485166e8455dc38773657bb1e929189c1c3a45345f7744f78a8"
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ]
+    },
+    "slopes_forward": {
+      "capture": {
+        "file": "slopes_forward.capture.json",
+        "sha256": "4503bd3335ca04a77c38b52b3a5914ade0bc58c2ce841f40ca6f975c5a3f94cd"
+      },
+      "dtype": "|u1",
+      "expanded_shaders": {
+        "file": "slopes_forward.shaders.json",
+        "sha256": "6d0550b04fb734758da36fa1161fa32b94d6954f45a315368b21134b709b287b"
+      },
+      "filtered_glir": {
+        "file": "slopes_forward.glir.json",
+        "sha256": "609974cede1300dfa460bfcedc5646450400c65eaca8221e43dadc0b4bdc9d92"
+      },
+      "parameters": {
+        "blending": false,
+        "case": "slopes_forward",
+        "comparison": "entire fixed driver frame exact; fixed independent landmarks",
+        "intermediate_finish": false,
+        "line_width": 1,
+        "physical_samples": 1,
+        "points": [
+          [
+            3.375,
+            3.375
+          ],
+          [
+            13.375,
+            8.375
+          ],
+          [
+            18.375,
+            3.375
+          ],
+          [
+            23.375,
+            13.375
+          ],
+          [
+            3.375,
+            13.375
+          ],
+          [
+            11.375,
+            21.375
+          ]
+        ],
+        "points_sha256": "e74e915bf0bc9c7b9f0b15c0d38730f5a126489369d19184c341c05e89fa7046",
+        "primitive": "lines",
+        "readbacks": 1,
+        "size": [
+          32,
+          24
+        ],
+        "source_alpha": 1,
+        "varying": "constant"
+      },
+      "process": {
+        "exit_code": 0,
+        "stderr": {
+          "file": "slopes_forward.stderr.log",
+          "sha256": "b1d8d1e72b862b2b97cd31253e5ea272299c884b4d8079ddfbf436853e425c15"
+        },
+        "stdout": {
+          "file": "slopes_forward.stdout.log",
+          "sha256": "50167c3cb4a94c46164d52854295b2e3a4607f9f7b7d199da28eb241f00e3540"
+        }
+      },
+      "readbacks": 1,
+      "rgba": {
+        "file": "slopes_forward.npy",
+        "sha256": "6483119874dcc31b3f22d86235189be857488834282d533ffb3933660afabc53"
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ]
+    },
+    "slopes_reverse": {
+      "capture": {
+        "file": "slopes_reverse.capture.json",
+        "sha256": "33114635eb580d1bcf6b932bf1568942de9a8cb783e83857d30b723134f97e12"
+      },
+      "dtype": "|u1",
+      "expanded_shaders": {
+        "file": "slopes_reverse.shaders.json",
+        "sha256": "6d0550b04fb734758da36fa1161fa32b94d6954f45a315368b21134b709b287b"
+      },
+      "filtered_glir": {
+        "file": "slopes_reverse.glir.json",
+        "sha256": "e66b1c2a1320e4c3d5c12ed360b79a0ccc7b7a90b8d32d7b87ad46d851b36050"
+      },
+      "parameters": {
+        "blending": false,
+        "case": "slopes_reverse",
+        "comparison": "entire fixed driver frame exact; fixed independent landmarks",
+        "intermediate_finish": false,
+        "line_width": 1,
+        "physical_samples": 1,
+        "points": [
+          [
+            13.375,
+            8.375
+          ],
+          [
+            3.375,
+            3.375
+          ],
+          [
+            23.375,
+            13.375
+          ],
+          [
+            18.375,
+            3.375
+          ],
+          [
+            11.375,
+            21.375
+          ],
+          [
+            3.375,
+            13.375
+          ]
+        ],
+        "points_sha256": "ad851af34b7867db927dbf0e515d9506c372dee5f98d971ac053661ac4ae7c60",
+        "primitive": "lines",
+        "readbacks": 1,
+        "size": [
+          32,
+          24
+        ],
+        "source_alpha": 1,
+        "varying": "constant"
+      },
+      "process": {
+        "exit_code": 0,
+        "stderr": {
+          "file": "slopes_reverse.stderr.log",
+          "sha256": "b1d8d1e72b862b2b97cd31253e5ea272299c884b4d8079ddfbf436853e425c15"
+        },
+        "stdout": {
+          "file": "slopes_reverse.stdout.log",
+          "sha256": "abf5f80b678acca40362fe82539d947cc37806f18371005a5a34a75a7c3ed7be"
+        }
+      },
+      "readbacks": 1,
+      "rgba": {
+        "file": "slopes_reverse.npy",
+        "sha256": "b035fdf956bfef3ab57b49adc8761232d5db88a16ac80c8b212d2c2164860688"
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ]
+    },
+    "two_vertex_loop_alpha": {
+      "capture": {
+        "file": "two_vertex_loop_alpha.capture.json",
+        "sha256": "945c5d61106f0e5cb749b8623614c029e6ee1f016d510d6ca3b36e10a9193459"
+      },
+      "dtype": "|u1",
+      "expanded_shaders": {
+        "file": "two_vertex_loop_alpha.shaders.json",
+        "sha256": "6d0550b04fb734758da36fa1161fa32b94d6954f45a315368b21134b709b287b"
+      },
+      "filtered_glir": {
+        "file": "two_vertex_loop_alpha.glir.json",
+        "sha256": "08d74cf9240d485309f86938c70f5d187c6837221c3bc2ac11452a5f94bce31d"
+      },
+      "parameters": {
+        "blending": true,
+        "case": "two_vertex_loop_alpha",
+        "comparison": "entire fixed driver frame exact; fixed independent landmarks",
+        "intermediate_finish": false,
+        "line_width": 1,
+        "physical_samples": 1,
+        "points": [
+          [
+            5.375,
+            7.375
+          ],
+          [
+            25.375,
+            7.375
+          ]
+        ],
+        "points_sha256": "241000dca9dd2ee4f9f9e3215550a9582698160431e625cc2402e14144f4c4e4",
+        "primitive": "line_loop",
+        "readbacks": 1,
+        "size": [
+          32,
+          24
+        ],
+        "source_alpha": 0.25,
+        "varying": "constant"
+      },
+      "process": {
+        "exit_code": 0,
+        "stderr": {
+          "file": "two_vertex_loop_alpha.stderr.log",
+          "sha256": "b1d8d1e72b862b2b97cd31253e5ea272299c884b4d8079ddfbf436853e425c15"
+        },
+        "stdout": {
+          "file": "two_vertex_loop_alpha.stdout.log",
+          "sha256": "9a7813c838e2366c62b08d701d408709f1ee2cd2eb7dcd84ae88d7ea6f2a295d"
+        }
+      },
+      "readbacks": 1,
+      "rgba": {
+        "file": "two_vertex_loop_alpha.npy",
+        "sha256": "56b8fd9ab18f9607576379e266767181ad6d128eb7d85cda8fd83d63ae74cf9f"
+      },
+      "shape": [
+        24,
+        32,
+        4
+      ]
+    }
+  },
+  "provenance": {
+    "capture_source_sha256": "66ae25247831c184f38f2c7a2ff151b940013087104907523b11e1ed2b9b151a",
+    "cmake": null,
+    "distribution_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Lib\\site-packages",
+    "distribution_record_sha256": "455e084c0cb78e19e41c79d08a57d533b07d52b3248c2ebd4b73e80584b067cc",
+    "environment": {
+      "PYTHONPATH": null,
+      "QT_API": "pyqt6",
+      "QT_QPA_PLATFORM": null,
+      "QT_SCALE_FACTOR": "1",
+      "VISPY_PYQT5_SHARE_CONTEXT": "true"
+    },
+    "fixture_source_sha256": "37797259727afd9c6b15c7074319b935dcddb330deb2b6c99a03c8df6f36fddb",
+    "kind": "upstream",
+    "line_capture_sha256": "a10db94ff8c9b20331f37c5b0751a53e7bfc9295ff66e2b50895a5bdf89b88ec",
+    "line_fixture_sha256": "df026faa8434f1e4e8efa798a314f38765d5d3eceb77a097b411d2278621636e",
+    "machine": "AMD64",
+    "numpy_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Lib\\site-packages\\numpy\\__init__.py",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.12.8",
+    "python_executable": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Scripts\\python.exe",
+    "qt_runtime": "6.11.2",
+    "regenerate": "build/oracle-opengl/Scripts/python.exe tools/oracle_lines_capture.py --kind upstream --output tests/reference/lines-opengl",
+    "renderer": {
+      "renderer": "NVIDIA GeForce RTX 4090/PCIe/SSE2",
+      "vendor": "NVIDIA Corporation",
+      "version": "4.6.0 NVIDIA 595.79"
+    },
+    "requirements_sha256": "a784b5a5e2b4ea201578acddc41e28e0997275ea2542642148322153cd240ffd",
+    "source_sha256": {
+      "gloo/buffer.py": "68e37b184b74814e0ae7a6f4f754c9f0c0af5b4e6369a60a8357c70da974e138",
+      "gloo/context.py": "6afc97492f65a5e865723535206fb769a1c4b55694d69786123fdee78bef992a",
+      "gloo/glir.py": "a3bb8a75b33f47420e9c100b8a6d81037a2f03c905e6c9f7d8399f4fb2eb8f7c",
+      "gloo/program.py": "4d3ab8e36260f9b5dc50f6aec075b12d642535f3cb8f49bfd4a27056301d5492",
+      "gloo/texture.py": "9f6d5f2e448e02c0ca4d66c65d17ddcdb6c0182bb8f15f1292a427f5a9faf6bc",
+      "gloo/wrappers.py": "73dbb5eb8ca78b2822266d272ffb14db9fcadd7a56512843209187714c9e8dcc"
+    },
+    "upstream_commit": "117b054598f4758b598f4b8f48feea48c11fe7b0",
+    "versions": {
+      "PyOpenGL": "3.1.10",
+      "PyQt6": "6.11.0",
+      "PyQt6-Qt6": "6.11.2",
+      "PyQt6-sip": "13.13.0",
+      "freetype-py": "2.5.1",
+      "hsluv": "5.0.4",
+      "kiwisolver": "1.5.1",
+      "numpy": "2.5.3",
+      "packaging": "26.3",
+      "vispy": "0.17.0"
+    },
+    "vispy_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Lib\\site-packages\\vispy",
+    "vispy_version": "0.17.0"
+  },
+  "schema": 1
+}
