@@ -36,28 +36,29 @@ jobs:
         with:
           persist-credentials: false
           submodules: false
+          sparse-checkout: .github
       - name: Restore immutable vendor bytes
         shell: bash
         run: |
           printf '%s\n' '* -text -eol -filter -ident' > .git/info/attributes
           git config core.autocrlf false
           git config core.longpaths true
-          git checkout-index --all --force
-      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7
-        with:
-          python-version: ${{ matrix.python }}
-          architecture: ${{ matrix.target.arch }}
-          check-latest: false
+          git sparse-checkout disable
       - uses: astral-sh/setup-uv@bec219d24cd3e171d82865faccec33120bb574f4 # v10.1.0
         with:
           version: '0.12.5'
           enable-cache: false
+      - name: Install exact managed CPython
+        run: |
+          mkdir -p "$EVIDENCE"
+          uv --version > "$EVIDENCE/uv-version.txt"
+          uv python install '${{ matrix.python }}'
       - name: Install exact hashed CPU/build dependencies in a job-owned environment
         run: |
           mkdir -p "$EVIDENCE"
           uv lock --check
-          uv venv "$UV_PROJECT_ENVIRONMENT" --python python
-          python - <<'PY'
+          uv venv "$UV_PROJECT_ENVIRONMENT" --python '${{ matrix.python }}' --managed-python
+          uv run --no-project --python '${{ matrix.python }}' --managed-python python - <<'PY'
           import os
           from pathlib import Path
           environment = Path(os.environ['UV_PROJECT_ENVIRONMENT']).resolve()
@@ -73,14 +74,14 @@ jobs:
         run: |
           "$CI_PYTHON" .github/workflows/qualification_gate.py capture --output "$EVIDENCE/environment.json"
           "$CI_PYTHON" cmake/verify_dependencies.py
-      - name: Configure CPU extension and all six native CPU contracts
+      - name: Configure CPU extension and build every registered native CPU contract
         run: |
           if [[ "$RUNNER_OS" == 'Windows' ]]; then
             cmake -S . -B build/ci-native -G 'Visual Studio 17 2022' -A x64 -DPython_EXECUTABLE="$CI_PYTHON" -DPython3_EXECUTABLE="$CI_PYTHON" -DVISPY_INPLACE=ON -DVISPY_VERIFY_DEPENDENCIES=ON -DVISPY_BUILD_CONTRACT_TESTS=ON -DVISPY_CPU_CONTRACTS_ONLY=ON
           else
             cmake -S . -B build/ci-native -DCMAKE_BUILD_TYPE=Release -DPython_EXECUTABLE="$CI_PYTHON" -DPython3_EXECUTABLE="$CI_PYTHON" -DVISPY_INPLACE=ON -DVISPY_VERIFY_DEPENDENCIES=ON -DVISPY_BUILD_CONTRACT_TESTS=ON -DVISPY_CPU_CONTRACTS_ONLY=ON
           fi
-          cmake --build build/ci-native --config Release --target _sdf_cpu shader_contract texture_contract state_contract point_contract native_contract vk_layer_contract --parallel 3
+          cmake --build build/ci-native --config Release --parallel 3
           ctest --test-dir build/ci-native -C Release --output-on-failure --no-tests=error
       - name: Execute original CPU assertions and CPU contract cases
         run: |

@@ -47,13 +47,14 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           persist-credentials: false
+          sparse-checkout: .github
       - name: Restore immutable vendor bytes
         shell: bash
         run: |
           printf '%s\n' '* -text -eol -filter -ident' > .git/info/attributes
           git config core.autocrlf false
           git config core.longpaths true
-          git checkout-index --all --force
+          git sparse-checkout disable
       - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7
         with:
           python-version: '3.12.8'
