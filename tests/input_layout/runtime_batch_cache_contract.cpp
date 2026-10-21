@@ -481,7 +481,8 @@ static void actual_fit_domain_reuse(){
     selection.instances=1;
     require(cached_fit(cache,selection,layout)==one&&cache.builders==2&&cache.scanned==6,"1to13to1 restores exact historical decision without new scan");
     const auto current=cache.current.find(CurrentCategory::CompactFit,b::draw_domain_key(selection_key(selection,41,7),1));
-    const auto history_size=cache.history.size(),evictions=cache.oversized.evictions();
+    const auto history_size=cache.history.size();
+    const auto evictions=cache.oversized.evictions();
     selection.instances=2;
     throws([&]{(void)cached_fit(cache,selection,layout,true);},"injected fit decision builder");
     require(cache.current.find(CurrentCategory::CompactFit,b::draw_domain_key(selection_key(selection,41,7),1))==current&&
