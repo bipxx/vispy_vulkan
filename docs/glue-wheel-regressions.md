@@ -66,5 +66,21 @@ Both newly owned environments were removed. The candidate wheel SHA256 was
 `105698c7c6cef1e643b788a7b3a800e9630ebd7d9d6422fb4d11323389286f81`.
 Independent saved-result verification SHA256:
 `5638fb93615444e0529a5812ac680375b1e7efbae994b7a3e9d3776a2f835cef`.
-The suite remains failed. Raw local evidence is retained locally; formal host
-cell admission and wider release qualification remain open.
+The suite remains failed. Raw local evidence is retained locally; wider release
+qualification remains open.
+
+The independently verified upstream packet is also attached in
+`tests/reference/glue-cache-update-opengl`, with all five exact frames, GLIR,
+shaders and parameter artifacts. It preserves the original failed packet in
+`tests/reference/glue-opengl`. Its formal upstream environment admission is
+`compat/qualifications/glue_vispy_viewers/windows/3.12.8/pyqt6/admission.json`.
+This admission covers the observed Windows CPython 3.12.8/PyQt6/NVIDIA RTX 4090
+upstream fixtures. It grants no candidate, lifecycle or release qualification.
+
+The existing host matrix uses that admission and runs every node in
+`tests/hosts/test_glue_wheel_parity.py`. `tools/prepare_glue_host_cell.py` supplies
+the hash-pinned original wheel and a fresh evidence directory; the CI job's built
+candidate wheel remains mandatory. The test still captures all five fresh original
+scenes before running candidates. Other cells retain missing-admission failures.
+This workflow requires the declared self-hosted hardware; hosted CPU CI does not
+exercise the graphics job or promote the recorded four-of-five candidate result.

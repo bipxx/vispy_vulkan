@@ -1,0 +1,507 @@
+{
+  "candidate_qualified": false,
+  "errors": [],
+  "fixture_sha256": "c17a1fe9266137b334b27ccc718172824fc62ef1e406ebc4341d9bd459ef93c8",
+  "fixtures": {
+    "scatter": {
+      "comparison": {
+        "dtype": "uint8",
+        "exact": true,
+        "excluded_pixels": 0,
+        "shape": [
+          128,
+          128,
+          4
+        ]
+      },
+      "expanded_shaders": {
+        "file": "scatter.shaders.json",
+        "sha256": "39a1cb7a2d740a4181b32a089ed996af840d02040393ea94b4314b62cab75c68"
+      },
+      "filtered_glir": {
+        "file": "scatter.commands.json",
+        "sha256": "5468e1cad6c656fcf42ac17e774c7ad24be74c9636f7500a96447be3fc013a4f"
+      },
+      "parameters": {
+        "alpha": 1.0,
+        "axes": false,
+        "camera": {
+          "azimuth": 0.0,
+          "center": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "elevation": 0.0,
+          "scale_factor": 2.5
+        },
+        "case": "scatter",
+        "color": "#ff0000",
+        "error_dialogs": [],
+        "host_context_available": true,
+        "inputs": [
+          {
+            "dtype": "<f4",
+            "sha256": "d556cc0117cefd62844a7ced63235c5da8f8225b0f23f1f50a68713b4b51f00b",
+            "shape": [
+              2
+            ]
+          },
+          {
+            "dtype": "<f4",
+            "sha256": "b3f689962d5d23d2c4d34e32885e60cb9af0119e64bbf4ce2446694c45d9cdb9",
+            "shape": [
+              2
+            ]
+          },
+          {
+            "dtype": "<f4",
+            "sha256": "b3f689962d5d23d2c4d34e32885e60cb9af0119e64bbf4ce2446694c45d9cdb9",
+            "shape": [
+              2
+            ]
+          }
+        ],
+        "limits": [
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        "native_mro": [
+          "CanvasBackendDesktop",
+          "QtBaseCanvasBackend",
+          "BaseCanvasBackend",
+          "QOpenGLWidget",
+          "QWidget",
+          "QObject",
+          "wrapper",
+          "QPaintDevice",
+          "simplewrapper",
+          "object"
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "viewer_class": "VispyScatterViewer"
+      },
+      "parameters_artifact": {
+        "file": "scatter.parameters.json",
+        "sha256": "480ad50dc2b5eb2f4be98d3f62a38191e4ee30348f9a279096cbbec3db24664b"
+      },
+      "rgba": {
+        "file": "scatter.rgba.npy",
+        "sha256": "c20738dfe3f1478e9a0f8e0273230d9684e6d9fcf6dfd3c5b0b6d2266056ef59"
+      }
+    },
+    "scatter_axes": {
+      "comparison": {
+        "dtype": "uint8",
+        "exact": true,
+        "excluded_pixels": 0,
+        "shape": [
+          128,
+          128,
+          4
+        ]
+      },
+      "expanded_shaders": {
+        "file": "scatter_axes.shaders.json",
+        "sha256": "9927ca1a066348b3474b537a095ff279f78e02be429c23ecd94662d5d517c2e1"
+      },
+      "filtered_glir": {
+        "file": "scatter_axes.commands.json",
+        "sha256": "290d55969ba425ffbc67452d3808760b62670fc8b174903af3bc6e8630b4158e"
+      },
+      "parameters": {
+        "alpha": 1.0,
+        "axes": true,
+        "camera": {
+          "azimuth": 0.0,
+          "center": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "elevation": 0.0,
+          "scale_factor": 2.5
+        },
+        "case": "scatter_axes",
+        "color": "#ff0000",
+        "error_dialogs": [],
+        "host_context_available": true,
+        "inputs": [
+          {
+            "dtype": "<f4",
+            "sha256": "d556cc0117cefd62844a7ced63235c5da8f8225b0f23f1f50a68713b4b51f00b",
+            "shape": [
+              2
+            ]
+          },
+          {
+            "dtype": "<f4",
+            "sha256": "b3f689962d5d23d2c4d34e32885e60cb9af0119e64bbf4ce2446694c45d9cdb9",
+            "shape": [
+              2
+            ]
+          },
+          {
+            "dtype": "<f4",
+            "sha256": "b3f689962d5d23d2c4d34e32885e60cb9af0119e64bbf4ce2446694c45d9cdb9",
+            "shape": [
+              2
+            ]
+          }
+        ],
+        "limits": [
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        "native_mro": [
+          "CanvasBackendDesktop",
+          "QtBaseCanvasBackend",
+          "BaseCanvasBackend",
+          "QOpenGLWidget",
+          "QWidget",
+          "QObject",
+          "wrapper",
+          "QPaintDevice",
+          "simplewrapper",
+          "object"
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "viewer_class": "VispyScatterViewer"
+      },
+      "parameters_artifact": {
+        "file": "scatter_axes.parameters.json",
+        "sha256": "09d8caf4abfb14ed43ce8deed2bd5c41f86445c68a504caa7517e4be1ee760ed"
+      },
+      "rgba": {
+        "file": "scatter_axes.rgba.npy",
+        "sha256": "ae646b650ce3145a08fc4ff633ee2fc6035f2ebc40f378970a8a3b64faaee6cc"
+      }
+    },
+    "scatter_edit": {
+      "comparison": {
+        "dtype": "uint8",
+        "exact": true,
+        "excluded_pixels": 0,
+        "shape": [
+          128,
+          128,
+          4
+        ]
+      },
+      "expanded_shaders": {
+        "file": "scatter_edit.shaders.json",
+        "sha256": "39a1cb7a2d740a4181b32a089ed996af840d02040393ea94b4314b62cab75c68"
+      },
+      "filtered_glir": {
+        "file": "scatter_edit.commands.json",
+        "sha256": "7f1ad672127d70e1869f913fe364c9f8ecf31a7bff85b311d5b754482b8bfc23"
+      },
+      "parameters": {
+        "alpha": 1.0,
+        "axes": false,
+        "camera": {
+          "azimuth": 0.0,
+          "center": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "elevation": 0.0,
+          "scale_factor": 2.5
+        },
+        "case": "scatter_edit",
+        "color": "#0000ff",
+        "error_dialogs": [],
+        "host_context_available": true,
+        "inputs": [
+          {
+            "dtype": "<f4",
+            "sha256": "d556cc0117cefd62844a7ced63235c5da8f8225b0f23f1f50a68713b4b51f00b",
+            "shape": [
+              2
+            ]
+          },
+          {
+            "dtype": "<f4",
+            "sha256": "b3f689962d5d23d2c4d34e32885e60cb9af0119e64bbf4ce2446694c45d9cdb9",
+            "shape": [
+              2
+            ]
+          },
+          {
+            "dtype": "<f4",
+            "sha256": "b3f689962d5d23d2c4d34e32885e60cb9af0119e64bbf4ce2446694c45d9cdb9",
+            "shape": [
+              2
+            ]
+          },
+          {
+            "dtype": "<f4",
+            "sha256": "59cdf3a4bed401dd19cfa4defd34ac9ee3f2a83024eb7204893faea675a99c38",
+            "shape": [
+              2
+            ]
+          }
+        ],
+        "limits": [
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        "native_mro": [
+          "CanvasBackendDesktop",
+          "QtBaseCanvasBackend",
+          "BaseCanvasBackend",
+          "QOpenGLWidget",
+          "QWidget",
+          "QObject",
+          "wrapper",
+          "QPaintDevice",
+          "simplewrapper",
+          "object"
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "viewer_class": "VispyScatterViewer"
+      },
+      "parameters_artifact": {
+        "file": "scatter_edit.parameters.json",
+        "sha256": "ea913042e21fca48debf74868883b963f25881f35f46b52b9816c0f2dff31a7c"
+      },
+      "rgba": {
+        "file": "scatter_edit.rgba.npy",
+        "sha256": "abff74a56c4cbb32bcbdfc53196ce1c7a081838aeba7ca8dcd840ade9cb18e78"
+      }
+    },
+    "volume": {
+      "comparison": {
+        "dtype": "uint8",
+        "exact": true,
+        "excluded_pixels": 0,
+        "shape": [
+          128,
+          128,
+          4
+        ]
+      },
+      "expanded_shaders": {
+        "file": "volume.shaders.json",
+        "sha256": "67107cedf1e465a26d5d58aabff45c0fa1e2d6764f3d136c69f027957221c7aa"
+      },
+      "filtered_glir": {
+        "file": "volume.commands.json",
+        "sha256": "4aad5df7b8a9a8e24de9d8c4a156bfd772b1d2c6e417256fe6ee3d25774b6def"
+      },
+      "parameters": {
+        "alpha": 1.0,
+        "axes": false,
+        "camera": {
+          "azimuth": 0.0,
+          "center": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "elevation": 0.0,
+          "scale_factor": 2.5
+        },
+        "case": "volume",
+        "clim": [
+          0,
+          1
+        ],
+        "color": "#00ff00",
+        "downsample": false,
+        "error_dialogs": [],
+        "host_context_available": true,
+        "inputs": [
+          {
+            "dtype": "<f4",
+            "sha256": "169de19bd02834e21778b4e5cc963c6bbd212ac4dff0b09b2cfe9c1bafcb3957",
+            "shape": [
+              32,
+              32,
+              32
+            ]
+          }
+        ],
+        "limits": [
+          -0.5,
+          31.5,
+          -0.5,
+          31.5,
+          -0.5,
+          31.5
+        ],
+        "native_mro": [
+          "CanvasBackendDesktop",
+          "QtBaseCanvasBackend",
+          "BaseCanvasBackend",
+          "QOpenGLWidget",
+          "QWidget",
+          "QObject",
+          "wrapper",
+          "QPaintDevice",
+          "simplewrapper",
+          "object"
+        ],
+        "resolution": 32,
+        "size": [
+          128,
+          128
+        ],
+        "viewer_class": "VispyVolumeViewer"
+      },
+      "parameters_artifact": {
+        "file": "volume.parameters.json",
+        "sha256": "fbd41a11a8064a948613d2f7f279cfbc3849fc9a623ed2b5fb1df97ec515bc22"
+      },
+      "rgba": {
+        "file": "volume.rgba.npy",
+        "sha256": "967163f3ac46541990eabbcbfdfd3d84175a2efbabde4492b5c7ef0f68855318"
+      }
+    },
+    "volume_edit": {
+      "comparison": {
+        "dtype": "uint8",
+        "exact": true,
+        "excluded_pixels": 0,
+        "shape": [
+          128,
+          128,
+          4
+        ]
+      },
+      "expanded_shaders": {
+        "file": "volume_edit.shaders.json",
+        "sha256": "95463802e0777be0695f9ac0ab8e7107dcb6dad12694f9851e99335f691031f2"
+      },
+      "filtered_glir": {
+        "file": "volume_edit.commands.json",
+        "sha256": "e3a39f5ebb657f4fc56195e1bde2dd53fa407acc1af56e8a01b29f0f0c0d1173"
+      },
+      "parameters": {
+        "alpha": 1.0,
+        "axes": false,
+        "camera": {
+          "azimuth": 0.0,
+          "center": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "elevation": 0.0,
+          "scale_factor": 2.5
+        },
+        "case": "volume_edit",
+        "clim": [
+          0,
+          1
+        ],
+        "color": "#0000ff",
+        "downsample": false,
+        "error_dialogs": [],
+        "host_context_available": true,
+        "inputs": [
+          {
+            "dtype": "<f4",
+            "sha256": "169de19bd02834e21778b4e5cc963c6bbd212ac4dff0b09b2cfe9c1bafcb3957",
+            "shape": [
+              32,
+              32,
+              32
+            ]
+          },
+          {
+            "dtype": "<f4",
+            "sha256": "0924b51b23938d81e476ef299e62f6b54c05d60a83eaf5a2de820e00644af578",
+            "shape": [
+              32,
+              32,
+              32
+            ]
+          }
+        ],
+        "limits": [
+          -0.5,
+          31.5,
+          -0.5,
+          31.5,
+          -0.5,
+          31.5
+        ],
+        "native_mro": [
+          "CanvasBackendDesktop",
+          "QtBaseCanvasBackend",
+          "BaseCanvasBackend",
+          "QOpenGLWidget",
+          "QWidget",
+          "QObject",
+          "wrapper",
+          "QPaintDevice",
+          "simplewrapper",
+          "object"
+        ],
+        "resolution": 32,
+        "size": [
+          128,
+          128
+        ],
+        "viewer_class": "VispyVolumeViewer"
+      },
+      "parameters_artifact": {
+        "file": "volume_edit.parameters.json",
+        "sha256": "1dcf2a955103d81a1cffcb2b810e29b4b3d3c7ae0772d395eecd69af17f092ac"
+      },
+      "rgba": {
+        "file": "volume_edit.rgba.npy",
+        "sha256": "7f5f0ed2247e9627277a3d97434dd156dcd92d1fa52d10438251842e5b0c86b9"
+      }
+    }
+  },
+  "protocol": "Public Glue FRB invalidation before update_components; fixture settings and full RGBA exact criteria unchanged",
+  "provenance": {
+    "binding": "pyqt6",
+    "host_versions": {
+      "PyQt6": "6.11.0",
+      "glue-core": "1.27.0",
+      "glue-qt": "0.4.2",
+      "glue-vispy-viewers": "1.4.0"
+    },
+    "kind": "upstream",
+    "platform": "Windows",
+    "python": "3.12.8",
+    "renderer": {
+      "renderer": "NVIDIA GeForce RTX 4090/PCIe/SSE2",
+      "vendor": "NVIDIA Corporation",
+      "version": "4.6.0 NVIDIA 610.88"
+    },
+    "scope": "Five upstream fixture references only; candidate, lifecycle and release qualification remain separate",
+    "vispy_version": "0.17.0",
+    "wheel_sha256": "c4862155e735009b1af6aeda45ea94a72e1a375d6086c89273455d66238bb18e"
+  },
+  "release_qualified": false,
+  "saved_inspection_sha256": "5638fb93615444e0529a5812ac680375b1e7efbae994b7a3e9d3776a2f835cef",
+  "schema": 1,
+  "source_manifest_sha256": "8291eff4e8f87cdb83ff43a0fdf861380d00ef50a0a9ac6973d0076521ba7b09",
+  "upstream_only": true
+}
