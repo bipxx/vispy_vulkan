@@ -192,6 +192,8 @@ def compare_pair(options):
 
 
 def run_pytest(options):
+    repository_root = Path(__file__).resolve().parents[2]
+    sys.path.insert(0, str(repository_root))
     import pytest
 
     class Evidence:
