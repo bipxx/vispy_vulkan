@@ -43,7 +43,24 @@ build-dir = "build/{wheel_tag}"
 editable.mode = "redirect"
 cmake.build-type = "Release"
 wheel.packages = ["src/vispy"]
-sdist.exclude = ["build/**", "dist/**", ".venv/**", "**/__pycache__/**", "**/*.pyc", "src/vispy/**/*.pyd", "src/vispy/**/*.dll", "src/vispy/**/*.so", "src/vispy/VkLayer_vispy_submit.json"]
+# Dawn's Git ignores describe fetched dependencies, which this fork vendors.
+# Explicit includes precede excludes in scikit-build-core, so keep generated
+# files outside the include selection as well as the exclusion selection.
+sdist.include = [
+    "third_party/dawn/third_party/abseil-cpp/**",
+    "third_party/dawn/third_party/glslang/src/**",
+    "third_party/dawn/third_party/spirv-headers/src/**",
+    "third_party/dawn/third_party/spirv-tools/src/**",
+    "third_party/dawn/third_party/vulkan-headers/src/**",
+    "third_party/dawn/third_party/vulkan-loader/src/**",
+    "third_party/dawn/third_party/vulkan-utility-libraries/src/**",
+    "third_party/dawn/third_party/jinja2/**",
+    "third_party/dawn/third_party/markupsafe/**",
+    "third_party/dawn/tools/android/gradle/wrapper/gradle-wrapper.properties",
+    "!**/.git", "!**/.git/**", "!**/__pycache__/**", "!**/*.pyc", "!**/*.pyo",
+    "!**/build/**", "!**/out/**", "!**/.cache/**",
+]
+sdist.exclude = ["build/**", "dist/**", ".venv/**", "**/__pycache__/**", "**/*.pyc", "**/*.pyo", "**/.git/**", "**/build/**", "**/out/**", "**/.cache/**", "src/vispy/**/*.pyd", "src/vispy/**/*.dll", "src/vispy/**/*.so", "src/vispy/VkLayer_vispy_submit.json"]
 
 [tool.scikit-build.cmake.define]
 CMAKE_BUILD_TYPE = "Release"
