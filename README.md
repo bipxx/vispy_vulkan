@@ -44,11 +44,11 @@ See [build instructions](cmake/README.md) for CPU contracts, wheels, isolated en
 
 ## Current qualification
 
-Local Windows CPython 3.12 validation has independently admitted the tested clean-consumer lifecycle: compiled SDF, text and clear rendering, uninstall, absence verification, upstream restoration, and complete-array comparison. This does not qualify other Python ABIs or hosts.
+Earlier bounded Windows CPython 3.12 validation independently admitted the tested clean-consumer lifecycle: compiled SDF, text and clear rendering, uninstall, absence verification, upstream restoration, and complete-array comparison. This does not qualify other Python ABIs or hosts.
 
-The current 256-byte partition capture passed 19 cases, 22 complete frames, and 66 attachment comparisons. Broader stencil, primitive identity, residency, and performance requirements remain separate.
+The earlier 256-byte partition capture passed 19 cases, 22 complete frames, and 66 attachment comparisons. Broader stencil, primitive identity, residency, and performance requirements remain separate.
 
-The uniform reference remains unqualified. The latest capture with an explicit reversible upstream-only compatibility adapter failed its pytest gate; failed captures are retained and are not counted as passes.
+Fresh Native58 Windows CPython 3.12 validation passes all 14 original uniform tests and a separate two-frame same-generation reuse case. Independent saved review matched all 16 complete frames (4,096 RGBA bytes) against the new OpenGL reference on Vulkan with an RTX 4090, and verified reuse counters and cleanup. The OpenGL fixture uses disclosed reversible compatibility and widget teardown adapters. Broader uniform coverage, other platforms, hosts, and performance remain open; earlier failed captures remain preserved.
 
 The [implementation plan](docs/superpowers/plans/2026-10-10-vispy-vulkan-next-batch-plan.md) records the wider scope. Its links to local `build/` evidence refer to retained qualification packets that are not distributed in this repository.
 

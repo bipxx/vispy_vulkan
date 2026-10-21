@@ -16,16 +16,16 @@ jobs:
   cpu:
     name: CPU ${{ matrix.target.name }} CPython ${{ matrix.python }}
     runs-on: ${{ matrix.target.runner }}
-    timeout-minutes: 60
+    timeout-minutes: ${{ matrix.target.timeout_minutes }}
     strategy:
       fail-fast: false
       matrix:
         python: ['3.10.19', '3.11.14', '3.12.8', '3.13.8', '3.14.0']
         target:
-          - {name: windows-x86_64, runner: windows-2022, arch: x64}
-          - {name: linux-x86_64, runner: ubuntu-24.04, arch: x64}
-          - {name: macos-arm64, runner: macos-15, arch: arm64}
-          - {name: macos-x86_64, runner: macos-15-intel, arch: x64}
+          - {name: windows-x86_64, runner: windows-2022, arch: x64, timeout_minutes: 60}
+          - {name: linux-x86_64, runner: ubuntu-24.04, arch: x64, timeout_minutes: 60}
+          - {name: macos-arm64, runner: macos-15, arch: arm64, timeout_minutes: 60}
+          - {name: macos-x86_64, runner: macos-15-intel, arch: x64, timeout_minutes: 90}
     defaults:
       run:
         shell: bash
