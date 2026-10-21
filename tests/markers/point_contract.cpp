@@ -970,7 +970,9 @@ void ordinary_oversized_working_set() {
     require(vertex != instance && working.find(CurrentCategory::Vertex, "same:exact-key") == vertex &&
             working.find(CurrentCategory::Instance, "same:exact-key") == instance && !working.find(CurrentCategory::Vertex, "same:other-key"),
             "oversized history distinguishes category and complete identity key");
-    const auto old_size = working.size(), old_bytes = working.storage_bytes(graph), old_evictions = working.evictions();
+    const auto old_size = working.size();
+    const auto old_bytes = working.storage_bytes(graph);
+    const auto old_evictions = working.evictions();
     rejects([&] { working_cached_conversion(current, working, CurrentCategory::Selection, history, "selection:failed",
         []() -> Ptr { throw std::runtime_error("failed oversized builder"); }, cost, graph, 3, 1024); }, "builder failure propagates");
     require(current.find(CurrentCategory::Selection, "selection:rev1:first0") == again &&
