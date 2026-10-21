@@ -89,7 +89,7 @@ jobs:
           ctest --test-dir build/ci-native -C Release --output-on-failure --no-tests=error
       - name: Execute original CPU assertions and CPU contract cases
         run: |
-          "$CI_PYTHON" .github/workflows/qualification_gate.py pytest --output "$EVIDENCE/pytest.json" -- -q tests/contract/test_sdf_cpu.py tests/contract/test_package_inputs.py tests/contract/test_source_manifest.py tests/contract/test_reference_inventory.py src/vispy/color/tests/test_color.py src/vispy/geometry/tests/test_generation.py src/vispy/geometry/tests/test_meshdata.py src/vispy/geometry/tests/test_calculations.py src/vispy/util/tests/test_fourier.py src/vispy/util/tests/test_transforms.py src/vispy/util/tests/test_event_emitter.py src/vispy/util/tests/test_emitter_group.py src/vispy/util/tests/test_key.py src/vispy/util/tests/test_logging.py --junitxml=build/evidence/pytest.xml
+          "$CI_PYTHON" .github/workflows/qualification_gate.py pytest --output "$EVIDENCE/pytest.json" -- -q tests/contract/test_sdf_cpu.py tests/contract/test_package_inputs.py tests/contract/test_source_manifest.py tests/contract/test_reference_inventory.py tests/contract/test_upstream_qt_lifecycle.py src/vispy/color/tests/test_color.py src/vispy/geometry/tests/test_generation.py src/vispy/geometry/tests/test_meshdata.py src/vispy/geometry/tests/test_calculations.py src/vispy/util/tests/test_fourier.py src/vispy/util/tests/test_transforms.py src/vispy/util/tests/test_event_emitter.py src/vispy/util/tests/test_emitter_group.py src/vispy/util/tests/test_key.py src/vispy/util/tests/test_logging.py --junitxml=build/evidence/pytest.xml
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         if: always()
         with:
