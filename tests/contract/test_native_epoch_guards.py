@@ -72,8 +72,8 @@ def packet(tmp_path, monkeypatch):
     # SDK byte/configuration policy and source-tree checks have independent real
     # contracts; these fixtures exercise ownership/path/cache orchestration.
     write(root, "cmake/native_sdk.py", "def verify(*args):\n    return {}\n")
-    monkeypatch.setattr(epoch, "check_dependencies", lambda *args: None)
-    for name in ("CMakeLists.txt", "CMakePresets.json", "pyproject.toml", "uv.lock", "cmake/dependencies.lock.json",
+    monkeypatch.setattr(epoch, "check_dependencies", lambda *args, **kwargs: None)
+    for name in ("CMakeLists.txt", "CMakePresets.json", "pyproject.toml", "uv.lock", "LICENSE", "LICENSE-BSD", "LICENSING.md", "cmake/dependencies.lock.json",
                  "cmake/verify_dependencies.py", "cpp/runtime.cpp", "src/vispy/__init__.py"):
         write(root, name, "sealed project " + name)
     packets, harness = [], {}
@@ -254,6 +254,19 @@ def test_isolated_synthetic_freeze_archives_all_proofs_and_build_preflight_ignor
     for item in record["packets"]:
         epoch.verify_inventory(root / record["paths"]["evidence"] / "sealed-packets" / item["name"], item["files"])
     epoch.verify_inventory(root / record["paths"]["evidence"] / "guard-tools", record["tool_files"])
+
+
+@pytest.mark.parametrize("name", ["LICENSE", "LICENSE-BSD", "LICENSING.md"])
+def test_frozen_build_includes_license_text_and_rejects_mutation(packet, monkeypatch, name):
+    root, record, _ = packet
+    original = (root / name).read_bytes()
+    manifest, approved, frozen = freeze_fixture(root, record, monkeypatch)
+    copied = root / record["paths"]["snapshot"] / name
+    assert copied.read_bytes() == original
+    assert record["source_files"][name] == epoch.sha(copied)
+    copied.write_bytes(original + b"\nmodified after freeze")
+    reject_unchanged(root, lambda: epoch.build(root, manifest, approved, frozen, preflight_only=True),
+                     "Frozen project source inventory changed")
 
 
 def test_archived_guard_bytes_are_pinned_before_build(packet, monkeypatch):

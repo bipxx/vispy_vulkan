@@ -22,6 +22,7 @@ import xml.etree.ElementTree as ET
 ROOT = Path(__file__).resolve().parents[1]
 TOOLS = {"tools/native_epoch.py", "tools/freeze_native_epoch.py", "tools/build_native_epoch.py"}
 SOURCE_ROOTS = ("CMakeLists.txt", "CMakePresets.json", "pyproject.toml", "uv.lock",
+                "LICENSE", "LICENSE-BSD", "LICENSING.md",
                 "cmake", "cpp", "src", "third_party/licenses")
 FROZEN_ITEMS = {"frozen-inputs.json", "ownership-manifest.json", "harness", "sealed-packets", "guard-tools"}
 REQUIRED_TARGETS = {"_dawn", "_sdf_cpu", "VkLayer_vispy_submit", "shader_contract", "point_contract",
