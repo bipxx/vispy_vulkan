@@ -50,6 +50,10 @@ The earlier 256-byte partition capture passed 19 cases, 22 complete frames, and 
 
 Fresh Native58 Windows CPython 3.12 validation passes all 14 original uniform tests and a separate two-frame same-generation reuse case. Independent saved review matched all 16 complete frames (4,096 RGBA bytes) against the new OpenGL reference on Vulkan with an RTX 4090, and verified reuse counters and cleanup. The OpenGL fixture uses disclosed reversible compatibility and widget teardown adapters. Broader uniform coverage, other platforms, hosts, and performance remain open; earlier failed captures remain preserved.
 
+Fresh Native58 WSL Linux CPython 3.12 validation builds all 42 targets and passes all 44 CTests without skips. A separate saved-output review confirms six software Vulkan culling cases on lavapipe: nine complete color/depth/stencil frames (27 attachments) match the analytic expectations and retained OpenGL reference byte-for-byte, with draw accounting and cleanup checked. This covers software Vulkan; native Linux GPU and macOS Metal hardware qualification remain open.
+
+The [20-job CPU contract run](https://github.com/bipxx/vispy_vulkan/actions/runs/39570591551) passed at commit `3b531de`, covering CPython 3.10–3.14 on Windows x86_64, Linux x86_64, macOS ARM64, and macOS x86_64. CPU contracts do not establish GPU hardware admission.
+
 The [implementation plan](docs/superpowers/plans/2026-10-10-vispy-vulkan-next-batch-plan.md) records the wider scope. Its links to local `build/` evidence refer to retained qualification packets that are not distributed in this repository.
 
 ## Licensing
