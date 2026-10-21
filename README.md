@@ -54,6 +54,8 @@ Fresh Native58 WSL Linux CPython 3.12 validation builds all 42 targets and passe
 
 The [20-job CPU contract run](https://github.com/bipxx/vispy_vulkan/actions/runs/39570591551) passed at commit `3b531de`, covering CPython 3.10–3.14 on Windows x86_64, Linux x86_64, macOS ARM64, and macOS x86_64. CPU contracts do not establish GPU hardware admission.
 
+Windows wheels for CPython 3.10–3.14, built from the Native58 runtime plus a Python 3.10 build-helper compatibility fix, pass archive/license checks and clean external consumers on hardware Vulkan. Each consumer verifies compiled SDF, clear/text rendering and notices, then uninstalls and restores hash-verified upstream VisPy. All five wheels include AGPL and the unchanged original BSD license. Other platform artifacts, broader hosts and scientific/performance coverage remain separate release requirements.
+
 The [implementation plan](docs/superpowers/plans/2026-10-10-vispy-vulkan-next-batch-plan.md) records the wider scope. Its links to local `build/` evidence refer to retained qualification packets that are not distributed in this repository.
 
 ## Licensing
