@@ -43,6 +43,9 @@ function(vispy_export_native_sdk)
         FILES_MATCHING PATTERN "*.h" PATTERN "*.hpp" PATTERN "*.hpp11")
     install(FILES "${CMAKE_SOURCE_DIR}/cmake/dependencies.lock.json"
         DESTINATION share/VispyNativeSDK COMPONENT ${component})
+    install(FILES "${CMAKE_SOURCE_DIR}/LICENSE"
+        "${CMAKE_SOURCE_DIR}/LICENSE-BSD" "${CMAKE_SOURCE_DIR}/LICENSING.md"
+        DESTINATION share/VispyNativeSDK/licenses COMPONENT ${component})
     install(DIRECTORY "${CMAKE_SOURCE_DIR}/third_party/licenses/"
         DESTINATION share/VispyNativeSDK/licenses COMPONENT ${component})
 

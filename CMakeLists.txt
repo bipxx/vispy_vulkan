@@ -464,3 +464,5 @@ install(FILES "${VISPY_LAYER_MANIFEST}" DESTINATION vispy)
 endif()
 install(DIRECTORY third_party/licenses/ DESTINATION vispy/_licenses
     FILES_MATCHING PATTERN "*.txt" PATTERN "*.md" PATTERN "*.json")
+
+install(FILES LICENSE LICENSE-BSD LICENSING.md DESTINATION vispy/_licenses)

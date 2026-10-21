@@ -54,4 +54,4 @@ The [implementation plan](docs/superpowers/plans/2026-10-10-vispy-vulkan-next-ba
 
 ## Licensing
 
-VisPy uses the BSD 3-Clause license. Native dependencies and font assets retain their own licenses and notices in [third_party/licenses](third_party/licenses). Vendored dependency trees also retain their upstream license files.
+This fork’s implementation and modifications are licensed under [AGPL-3.0-only](LICENSE). The original VisPy [BSD 3-Clause license](LICENSE-BSD) remains attached unchanged, and original code retains its copyright and license notices. Bundled dependencies and fonts retain their own licenses. See [licensing details](LICENSING.md) and [third-party notices](third_party/licenses/THIRD-PARTY-NOTICES.txt).
