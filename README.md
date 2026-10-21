@@ -64,6 +64,8 @@ The [installed-wheel mesh/layout regressions](docs/mesh-layout-wheel-regressions
 
 The [installed-wheel image/label regressions](docs/image-wheel-regressions.md) cover thirteen original workflows, including NaNs, signed labels, offset painting, multiscale revisions and slice changes. All thirteen passed with exact frames and semantic observations in a bounded Windows CPython 3.12 run. Wider platform, host, performance and release qualification remains open.
 
+The [installed-wheel volume regressions](docs/volume-wheel-regressions.md) retain eleven scalar and six categorical napari workflows, including clipping, plane depiction, sparse-label edits and depth ordering against geometry. All seventeen matched the original full frames byte-for-byte in a bounded Windows CPython 3.12 run, with the original comparison rules unchanged. The separate Glue volume discrepancy remains open.
+
 ## Licensing
 
 This fork’s implementation and modifications are licensed under [AGPL-3.0-only](LICENSE). The original VisPy [BSD 3-Clause license](LICENSE-BSD) remains attached unchanged, and original code retains its copyright and license notices. Bundled dependencies and fonts retain their own licenses. See [licensing details](LICENSING.md) and [third-party notices](third_party/licenses/THIRD-PARTY-NOTICES.txt).

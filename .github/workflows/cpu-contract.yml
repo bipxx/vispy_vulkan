@@ -79,7 +79,7 @@ jobs:
           "$CI_PYTHON" .github/workflows/qualification_gate.py pytest --output "$EVIDENCE/native-epoch-guards.json" -- -q tests/contract/test_native_epoch_guards.py --junitxml="$EVIDENCE/native-epoch-guards.xml"
       - name: Verify immutable scientific references and isolated consumer controls without graphics
         run: |
-          "$CI_PYTHON" .github/workflows/qualification_gate.py pytest --output "$EVIDENCE/scientific-wheel-cpu.json" -- -q tests/contract/test_mesh_layout_authoring.py tests/contract/test_mesh_layout_reference.py tests/contract/test_mesh_layout_wheel_consumer.py tests/contract/test_mesh_layout_process.py tests/contract/test_image_wheel_reference.py tests/contract/test_image_wheel_runner.py --junitxml="$EVIDENCE/scientific-wheel-cpu.xml"
+          "$CI_PYTHON" .github/workflows/qualification_gate.py pytest --output "$EVIDENCE/scientific-wheel-cpu.json" -- -q tests/contract/test_mesh_layout_authoring.py tests/contract/test_mesh_layout_reference.py tests/contract/test_mesh_layout_wheel_consumer.py tests/contract/test_mesh_layout_process.py tests/contract/test_image_wheel_reference.py tests/contract/test_image_wheel_runner.py tests/contract/test_volume_wheel_reference.py tests/contract/test_volume_wheel_runner.py --junitxml="$EVIDENCE/scientific-wheel-cpu.xml"
       - name: Capture environment and verify immutable native source trees
         run: |
           "$CI_PYTHON" .github/workflows/qualification_gate.py capture --output "$EVIDENCE/environment.json"
