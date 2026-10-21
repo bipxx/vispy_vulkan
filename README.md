@@ -66,6 +66,8 @@ The [installed-wheel image/label regressions](docs/image-wheel-regressions.md) c
 
 The [installed-wheel volume regressions](docs/volume-wheel-regressions.md) retain eleven scalar and six categorical napari workflows, including clipping, plane depiction, sparse-label edits and depth ordering against geometry. All seventeen matched the original full frames byte-for-byte in a bounded Windows CPython 3.12 run, with the original comparison rules unchanged. The separate Glue volume discrepancy remains open.
 
+The [Glue cache-update regressions](docs/glue-wheel-regressions.md) use the pinned host's public cache invalidation before a data update, preserving the original data, geometry and criteria. All five fresh upstream scenes pass, including volume edit. Four candidate scenes match exactly; scatter axes remains a required failure at unsupported smooth lines. The historical failed-reference audit is retained, and active coverage lives under `tests/hosts`.
+
 ## Licensing
 
 This fork’s implementation and modifications are licensed under [AGPL-3.0-only](LICENSE). The original VisPy [BSD 3-Clause license](LICENSE-BSD) remains attached unchanged, and original code retains its copyright and license notices. Bundled dependencies and fonts retain their own licenses. See [licensing details](LICENSING.md) and [third-party notices](third_party/licenses/THIRD-PARTY-NOTICES.txt).
