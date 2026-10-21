@@ -418,14 +418,16 @@ def test_actual_entrypoints_without_explicit_ownership_cannot_mutate_history(too
     assert epoch.native_inventory(ROOT) == native_before
 
 
-def test_actual_freeze_rejects_old_pass25_manifest_without_mutation():
-    before = retained(ROOT / "build/evidence/native-pass-25")
-    native_before = epoch.native_inventory(ROOT)
-    path = ROOT / "build/evidence/native-pass-25/frozen-inputs.json"
-    process = subprocess.run([sys.executable, "-B", str(ROOT / "tools/freeze_native_epoch.py"),
-                              "--ownership-manifest", path.relative_to(ROOT).as_posix(), "--ownership-sha256", epoch.sha(path)],
-                             capture_output=True, encoding="utf-8", errors="replace", check=False)
+def test_actual_freeze_rejects_old_pass25_manifest_without_mutation(packet):
+    root, record, _ = packet
+    path = dump(root, "build/evidence/native-pass-25/frozen-inputs.json",
+                {"schema": 1, "sealed": False, "epoch": 25, "source_files": record["source_files"]})
+    before = retained(root)
+    native_before = epoch.native_inventory(root)
+    process = subprocess.run([sys.executable, "-B", str(root / "tools/freeze_native_epoch.py"),
+                              "--ownership-manifest", path.relative_to(root).as_posix(), "--ownership-sha256", epoch.sha(path)],
+                             cwd=root, capture_output=True, encoding="utf-8", errors="replace", check=False)
     assert process.returncode == 2
     assert "sealed schema1" in process.stderr
-    assert retained(ROOT / "build/evidence/native-pass-25") == before
-    assert epoch.native_inventory(ROOT) == native_before
+    assert retained(root) == before
+    assert epoch.native_inventory(root) == native_before
