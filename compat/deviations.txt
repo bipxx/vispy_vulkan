@@ -11,3 +11,21 @@ app/backends/_dawn_headless.py
 visuals/text/_sdf_cpu.py
 gloo/program.py
 gloo/texture.py
+# Mesh updates, texture-coordinate reuse, empty instances, and shared-view return values.
+visuals/filters/mesh.py
+visuals/instanced_mesh.py
+visuals/mesh.py
+visuals/visual.py
+# Image resize/luminance transitions and shared uniforms.
+visuals/image.py
+# Empty contours and retained level-to-color indices.
+visuals/isocurve.py
+# Retained text-font kernel textures.
+visuals/text/text.py
+# Volume redraw, geometry reuse, and interpolation shape invalidation.
+visuals/volume.py
+# Added regressions; original upstream test functions are retained.
+visuals/tests/test_image.py
+visuals/tests/test_instanced_mesh.py
+visuals/tests/test_mesh.py
+visuals/tests/test_volume.py
