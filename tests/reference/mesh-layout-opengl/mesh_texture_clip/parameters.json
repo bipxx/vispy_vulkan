@@ -1,0 +1,169 @@
+{
+  "background": [
+    16,
+    24,
+    32,
+    255
+  ],
+  "case": "mesh_texture_clip",
+  "clipping_halfspaces": "x >= 112 and y <= 120 in visual coordinates",
+  "comparison": {
+    "alpha_exact": true,
+    "candidate_alignment_or_color_fit": false,
+    "excluded_pixels": 0,
+    "full_frame_max_abs_u8": 1
+  },
+  "context": {
+    "renderer": "NVIDIA GeForce RTX 4090/PCIe/SSE2",
+    "version": "4.6.0 NVIDIA 610.88"
+  },
+  "cpu_atlases": {},
+  "dpi": 96,
+  "face_normals": [
+    [
+      0.0,
+      0.0,
+      1.0
+    ],
+    [
+      -0.3010752688172043,
+      -0.4731182795698925,
+      0.8279569892473119
+    ]
+  ],
+  "font": "OpenSans",
+  "font_size": 18,
+  "inputs": {
+    "faces": {
+      "dtype": "<u4",
+      "sha256": "a55571c9db30026e44ac0bdd7674d9c597d8254732feb18418f3aaf8a5b4f418",
+      "shape": [
+        2,
+        3
+      ]
+    },
+    "planes": {
+      "dtype": "<f4",
+      "sha256": "81fd07e82db81e8e7df721a6a3ff82102ed6d46ef42b3b80b26f61c72a1e464d",
+      "shape": [
+        2,
+        2,
+        3
+      ]
+    },
+    "texcoords": {
+      "dtype": "<f4",
+      "sha256": "57a4ad6a5dda1d1cb845be6039169c69a740bc7ee39cd385ffa082da7104b769",
+      "shape": [
+        4,
+        2
+      ]
+    },
+    "texture": {
+      "dtype": "|u1",
+      "sha256": "2496743087dc3b2ddf5e528fbe8c91c07b0dcfac38164aeb5cf6990f0bababf5",
+      "shape": [
+        8,
+        8,
+        4
+      ]
+    },
+    "vertices": {
+      "dtype": "<f4",
+      "sha256": "348a00b3c2858733192e56bb3910cce7ab1e2c018df293fd8a2fd024e20fdfe7",
+      "shape": [
+        4,
+        3
+      ]
+    },
+    "x": {
+      "dtype": "<f4",
+      "sha256": "442027d79d0a37f798ddcb165e8186350f09a1cb308386ab037854958d7b0b0b",
+      "shape": [
+        7
+      ]
+    },
+    "y": {
+      "dtype": "<f4",
+      "sha256": "91c08a6ea262f7b3d6e0b0c1beed220ef97f5efb0dd329c3b1a294ef9049a491",
+      "shape": [
+        5
+      ]
+    },
+    "z": {
+      "dtype": "<f4",
+      "sha256": "34d29d2cd483c17c3ba798ce1005eb9cebd91d1f1f54892304f33c42eec78d3e",
+      "shape": [
+        7,
+        5
+      ]
+    }
+  },
+  "lighting": {
+    "ambient": 0.2,
+    "diffuse": 0.8,
+    "direction": [
+      0,
+      0,
+      1
+    ],
+    "specular": 0
+  },
+  "mesh_projection": {
+    "depth_value": 1000,
+    "flip": [
+      false,
+      true,
+      false
+    ],
+    "rect": [
+      0,
+      0,
+      224,
+      160
+    ]
+  },
+  "reads": 1,
+  "size": [
+    224,
+    160
+  ],
+  "text": "Ag\n15",
+  "text_placements": [
+    [
+      [
+        32,
+        24
+      ],
+      "left",
+      "top",
+      0
+    ],
+    [
+      [
+        112,
+        80
+      ],
+      "center",
+      "center",
+      30
+    ],
+    [
+      [
+        192,
+        136
+      ],
+      "right",
+      "bottom",
+      -90
+    ]
+  ],
+  "view_rectangles": [
+    [
+      0.0,
+      0.0,
+      224.0,
+      160.0
+    ]
+  ]
+}

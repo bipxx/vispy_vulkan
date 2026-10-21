@@ -1,0 +1,408 @@
+{
+  "cases": [
+    "mesh_flat",
+    "mesh_smooth",
+    "surface_plot",
+    "mesh_texture_clip",
+    "mesh_filter_detach",
+    "mesh_wireframe_clip",
+    "mesh_perspective",
+    "mesh_polygon_offset",
+    "grid_clipping",
+    "axes_colorbar",
+    "text_dpi96",
+    "text_dpi120",
+    "text_dpi144"
+  ],
+  "comparison": "Unchanged per-case complete-frame contract, exact alpha, zero excluded pixels",
+  "fixture_sources_sha256": {
+    "tools/fixture_gloo.py": "37797259727afd9c6b15c7074319b935dcddb330deb2b6c99a03c8df6f36fddb",
+    "tools/fixture_mesh_layout_extensions.py": "ddbce05089ccb7b3b6b9f0b529159c4bd6de15ef152918f14400ddcea0571cd1"
+  },
+  "fixtures": {
+    "axes_colorbar": {
+      "artifacts": {
+        "commands.json": {
+          "file": "axes_colorbar/commands.json",
+          "sha256": "096f303882f2ae2a3101c93b07e58ee42ce651d60d98732a39f91734ca49166e"
+        },
+        "parameters.json": {
+          "file": "axes_colorbar/parameters.json",
+          "sha256": "b902a0485abe33bb889080a36ecd1c25a75dfac8d51b6beab29bbe6aa1089fa7"
+        },
+        "rgba.npy": {
+          "file": "axes_colorbar/rgba.npy",
+          "sha256": "4e4c56beec5fc0e4ce6abb9a972cbca054a3fdf8d5af08d61ed38007fc631380"
+        },
+        "shaders.json": {
+          "file": "axes_colorbar/shaders.json",
+          "sha256": "663f9ff7e579186f5885c8d2fd2904a4fec39e9e5d3d06986e58aa246e6f96e0"
+        }
+      },
+      "source_report": {
+        "file": "axes_colorbar/source-report.json",
+        "sha256": "847d4e64eea6dc859f97a77c7ac215e4ea56b64bd7bac1e4ce80decf7faa82cf"
+      }
+    },
+    "grid_clipping": {
+      "artifacts": {
+        "commands.json": {
+          "file": "grid_clipping/commands.json",
+          "sha256": "fb7da3420b8664b89af7d64792cc8f920efc01883d763ab4a06b55e019fd5c00"
+        },
+        "parameters.json": {
+          "file": "grid_clipping/parameters.json",
+          "sha256": "944ecd3daaf1bcbff21b701d37bf5d3a78fd984f2563fda017b126f5d886c40e"
+        },
+        "rgba.npy": {
+          "file": "grid_clipping/rgba.npy",
+          "sha256": "da69ba7a02d9ecebdbbc7dc3e14b9cfb5963f653dbbcb14d06c2364a31f817b0"
+        },
+        "shaders.json": {
+          "file": "grid_clipping/shaders.json",
+          "sha256": "9d552b01ba62848a4ba57057c8dbe422c7ed7574d7848a85b614a021451a096d"
+        }
+      },
+      "source_report": {
+        "file": "grid_clipping/source-report.json",
+        "sha256": "3839d54948052dca7db1380829c9e2482c7f466d00c8389c1d608521ec2c60da"
+      }
+    },
+    "mesh_filter_detach": {
+      "artifacts": {
+        "commands.json": {
+          "file": "mesh_filter_detach/commands.json",
+          "sha256": "3da99dba6d1b3f606b91a18df302cba9a44cd8abb1e30f909bd9b8b5bca8a277"
+        },
+        "parameters.json": {
+          "file": "mesh_filter_detach/parameters.json",
+          "sha256": "b8a370612b7cc6a9c489013fa3b2a3808792af136b74d9350f0e5e84ffc69df4"
+        },
+        "rgba.npy": {
+          "file": "mesh_filter_detach/rgba.npy",
+          "sha256": "df5808702c717fb2a70ec75d22faeb957afd105d73db06691d138b54b8382b78"
+        },
+        "shaders.json": {
+          "file": "mesh_filter_detach/shaders.json",
+          "sha256": "2e8d6ac6e312b0dee6f92f716b306683b2eed315ee1fc650fd092d03878dd33e"
+        }
+      },
+      "source_report": {
+        "file": "mesh_filter_detach/source-report.json",
+        "sha256": "70ba290ad8846c9f826140d20ab628426e6e8df2a55fac31303b3dde8def0229"
+      }
+    },
+    "mesh_flat": {
+      "artifacts": {
+        "commands.json": {
+          "file": "mesh_flat/commands.json",
+          "sha256": "f350903f0a08fdb374c4b9d45fa24cf580819551a7888815c8f49909ee47f39c"
+        },
+        "parameters.json": {
+          "file": "mesh_flat/parameters.json",
+          "sha256": "98d3645992793b5f08b1a2417a55efb03dbec1f4aa344a8cc9d486ea56ed095b"
+        },
+        "rgba.npy": {
+          "file": "mesh_flat/rgba.npy",
+          "sha256": "03ee4f72aed2fa801c9426d6912a6cd4331ffceea74091d1ffa18fb458bf6d57"
+        },
+        "shaders.json": {
+          "file": "mesh_flat/shaders.json",
+          "sha256": "2467293bc3aba281ee9da9e1913e6dd9cabe90abacb8440d4e4800928c8fa0bd"
+        }
+      },
+      "source_report": {
+        "file": "mesh_flat/source-report.json",
+        "sha256": "eac6da23aa335c41e2c96e2cb0bfb97128b6b5a30c5f9be74659428f0cd690c6"
+      }
+    },
+    "mesh_perspective": {
+      "artifacts": {
+        "commands.json": {
+          "file": "mesh_perspective/commands.json",
+          "sha256": "f1e093d9f0be07e4ea473eab99ed2513e5fe0c8293555ee86a89e56dfa369799"
+        },
+        "parameters.json": {
+          "file": "mesh_perspective/parameters.json",
+          "sha256": "8080efce8b0cf5988555e93a78c348346b0e17fad8bf43a4e46963f9deb8ca6d"
+        },
+        "rgba.npy": {
+          "file": "mesh_perspective/rgba.npy",
+          "sha256": "e9f2fe5413d5a9a24a50630ba69934d0a1e97009a603597fa3c709d4b084f77b"
+        },
+        "shaders.json": {
+          "file": "mesh_perspective/shaders.json",
+          "sha256": "ba7102f4e4f52622f204357087591480ded9fed16dd170db3f9710437a54166f"
+        }
+      },
+      "source_report": {
+        "file": "mesh_perspective/source-report.json",
+        "sha256": "d6c5df32fb9d2949c3600754e9587fb14f7011134a00f621c659b7765e81072c"
+      }
+    },
+    "mesh_polygon_offset": {
+      "artifacts": {
+        "commands.json": {
+          "file": "mesh_polygon_offset/commands.json",
+          "sha256": "98b7c8ef1bd6c07cc0d7cfed978afb3cbd2d7d5e50a815a1246f774badda51d4"
+        },
+        "parameters.json": {
+          "file": "mesh_polygon_offset/parameters.json",
+          "sha256": "fd09aed3a77891f13d5d40c49043534cb8e2d25c851498a0b9cd30e53560b47d"
+        },
+        "rgba.npy": {
+          "file": "mesh_polygon_offset/rgba.npy",
+          "sha256": "149b7159f63abbd4c4ee6e0322eb2351108b8c2c2c3a54f2df2d9c382ae719fb"
+        },
+        "shaders.json": {
+          "file": "mesh_polygon_offset/shaders.json",
+          "sha256": "4d8866d1bd52de40eac810409e1217233399e90c37f993b4c97bec0b42ad13c9"
+        }
+      },
+      "source_report": {
+        "file": "mesh_polygon_offset/source-report.json",
+        "sha256": "883d559f67da3d97fff7b4b51650ea594a7c5d8160018963789405a50fc616d0"
+      }
+    },
+    "mesh_smooth": {
+      "artifacts": {
+        "commands.json": {
+          "file": "mesh_smooth/commands.json",
+          "sha256": "18b76954aef3a5fb8f306709a5c659556ae7426523ef25db8a5509d79c58a834"
+        },
+        "parameters.json": {
+          "file": "mesh_smooth/parameters.json",
+          "sha256": "9ab89ce77feeafe73ba5ed2e7dc2c91155b97994ffacca791df27eb406b4cd39"
+        },
+        "rgba.npy": {
+          "file": "mesh_smooth/rgba.npy",
+          "sha256": "c2f2ac1047451a74acff7931b5f4f45146ecbb2f9ae5cac9824ab5a30aa216ac"
+        },
+        "shaders.json": {
+          "file": "mesh_smooth/shaders.json",
+          "sha256": "2467293bc3aba281ee9da9e1913e6dd9cabe90abacb8440d4e4800928c8fa0bd"
+        }
+      },
+      "source_report": {
+        "file": "mesh_smooth/source-report.json",
+        "sha256": "99ef5bcc91a1f2307dc0fd6714aed5296a2d98144768d1566fa075a9ec0a1f58"
+      }
+    },
+    "mesh_texture_clip": {
+      "artifacts": {
+        "commands.json": {
+          "file": "mesh_texture_clip/commands.json",
+          "sha256": "cf3c6eb88d6ef472a04dadbd6d4b9d79b45df499d623f123236d9834edf59e51"
+        },
+        "parameters.json": {
+          "file": "mesh_texture_clip/parameters.json",
+          "sha256": "541c81de437a0419aff45994665a63eaffe3912da811305b302136056c233354"
+        },
+        "rgba.npy": {
+          "file": "mesh_texture_clip/rgba.npy",
+          "sha256": "17f21ca980388d345fe56fc24990dba158aafa7d6c397d0fa94c115ef3fceb6f"
+        },
+        "shaders.json": {
+          "file": "mesh_texture_clip/shaders.json",
+          "sha256": "6119256f92dfaa6ab1f5ff2d5a2f5e39904df36f7483491b28b84a9985afb934"
+        }
+      },
+      "source_report": {
+        "file": "mesh_texture_clip/source-report.json",
+        "sha256": "9b84c9a3eb060302e3a79559df47a602bcbb7b016bdfd8c111f220c5e42e65ad"
+      }
+    },
+    "mesh_wireframe_clip": {
+      "artifacts": {
+        "commands.json": {
+          "file": "mesh_wireframe_clip/commands.json",
+          "sha256": "a36341d463fffd693c7a1960be8ca09aa21dd6afe9b83c1068a62f83920ffd32"
+        },
+        "parameters.json": {
+          "file": "mesh_wireframe_clip/parameters.json",
+          "sha256": "18fe241b1ab905cd0ce26127196cd14ac01965fbb766db558a2ff8e3dc7c7e8c"
+        },
+        "rgba.npy": {
+          "file": "mesh_wireframe_clip/rgba.npy",
+          "sha256": "e2d2b5cce236537cc208dc7ba7e648cef5ce19f7c702fe794f0853a5e802ece6"
+        },
+        "shaders.json": {
+          "file": "mesh_wireframe_clip/shaders.json",
+          "sha256": "8899fc056a1c98a61ced0d89f364911cfc2fed1688e725e9e75a243f245d6533"
+        }
+      },
+      "source_report": {
+        "file": "mesh_wireframe_clip/source-report.json",
+        "sha256": "4ffb1308c819258eb1ed6054b1fc22ce33fec7675d35fe8c81993cb14d053217"
+      }
+    },
+    "surface_plot": {
+      "artifacts": {
+        "commands.json": {
+          "file": "surface_plot/commands.json",
+          "sha256": "4345990ca74554aba6161c747f45af1793410d084a6c9ab5dddc3f6f199da6ea"
+        },
+        "parameters.json": {
+          "file": "surface_plot/parameters.json",
+          "sha256": "9b656d087df660a1e4c4c22239017306c6884f31131acc0f6923ea3822c09bfc"
+        },
+        "rgba.npy": {
+          "file": "surface_plot/rgba.npy",
+          "sha256": "fd071a275c0155d99ba55100e41ed3c891fb978c39ddbabe45ed3c42e471c93e"
+        },
+        "shaders.json": {
+          "file": "surface_plot/shaders.json",
+          "sha256": "2467293bc3aba281ee9da9e1913e6dd9cabe90abacb8440d4e4800928c8fa0bd"
+        }
+      },
+      "source_report": {
+        "file": "surface_plot/source-report.json",
+        "sha256": "5a6f4c1f5d7f1c2eb6d4cebf44d316b88be7750ea0d984f383cd021330cbe8f4"
+      }
+    },
+    "text_dpi120": {
+      "artifacts": {
+        "commands.json": {
+          "file": "text_dpi120/commands.json",
+          "sha256": "ceabdd6aeb8641e027d91926eed9490b4d803666e2209cb4edcf10849787b2fc"
+        },
+        "cpu_atlas_0.npy": {
+          "file": "text_dpi120/cpu_atlas_0.npy",
+          "sha256": "2a87432eadaaad922fb14fd908679f6e4bc30b197cc85cc01f9b9283ff9ebed7"
+        },
+        "cpu_atlas_1.npy": {
+          "file": "text_dpi120/cpu_atlas_1.npy",
+          "sha256": "2a87432eadaaad922fb14fd908679f6e4bc30b197cc85cc01f9b9283ff9ebed7"
+        },
+        "cpu_atlas_2.npy": {
+          "file": "text_dpi120/cpu_atlas_2.npy",
+          "sha256": "2a87432eadaaad922fb14fd908679f6e4bc30b197cc85cc01f9b9283ff9ebed7"
+        },
+        "parameters.json": {
+          "file": "text_dpi120/parameters.json",
+          "sha256": "ffe4f8059b2003772bcdb9e1f0ad00e1724542c0bf6038064c92834d02c3138f"
+        },
+        "rgba.npy": {
+          "file": "text_dpi120/rgba.npy",
+          "sha256": "8c01fe4caa5051cf1f049389a9c5434f01d3c5efec55225ee30b41e0a446740d"
+        },
+        "shaders.json": {
+          "file": "text_dpi120/shaders.json",
+          "sha256": "c7108ce99973f532107fcec4d011fece0646896dfb384e76292652dc095b06c4"
+        }
+      },
+      "source_report": {
+        "file": "text_dpi120/source-report.json",
+        "sha256": "09b96308e8562dacf31e4c4f15f398c92095479f9ece79245c496350c02172a9"
+      }
+    },
+    "text_dpi144": {
+      "artifacts": {
+        "commands.json": {
+          "file": "text_dpi144/commands.json",
+          "sha256": "8d66fb5dd19e5e087238039e85317270ba228bc7af5436cc3ce659dc2e950330"
+        },
+        "cpu_atlas_0.npy": {
+          "file": "text_dpi144/cpu_atlas_0.npy",
+          "sha256": "2a87432eadaaad922fb14fd908679f6e4bc30b197cc85cc01f9b9283ff9ebed7"
+        },
+        "cpu_atlas_1.npy": {
+          "file": "text_dpi144/cpu_atlas_1.npy",
+          "sha256": "2a87432eadaaad922fb14fd908679f6e4bc30b197cc85cc01f9b9283ff9ebed7"
+        },
+        "cpu_atlas_2.npy": {
+          "file": "text_dpi144/cpu_atlas_2.npy",
+          "sha256": "2a87432eadaaad922fb14fd908679f6e4bc30b197cc85cc01f9b9283ff9ebed7"
+        },
+        "parameters.json": {
+          "file": "text_dpi144/parameters.json",
+          "sha256": "7aef33b9f4c1290165b4786ea3c9d3612c4bc55fafeebdc4ae8c62d8e354f9d1"
+        },
+        "rgba.npy": {
+          "file": "text_dpi144/rgba.npy",
+          "sha256": "ee0c31761747589e58581e5fd78558d370a092d3c65fe288504134fcf46a16b6"
+        },
+        "shaders.json": {
+          "file": "text_dpi144/shaders.json",
+          "sha256": "c7108ce99973f532107fcec4d011fece0646896dfb384e76292652dc095b06c4"
+        }
+      },
+      "source_report": {
+        "file": "text_dpi144/source-report.json",
+        "sha256": "76d0ca3433398abe0d5120c37805cfe65c9c6dc1547acfc1329fa0c7dd81d175"
+      }
+    },
+    "text_dpi96": {
+      "artifacts": {
+        "commands.json": {
+          "file": "text_dpi96/commands.json",
+          "sha256": "87f54212dc3904b068f49d1c4a5d60f4f0b3942eb0290017045e36e45993944b"
+        },
+        "cpu_atlas_0.npy": {
+          "file": "text_dpi96/cpu_atlas_0.npy",
+          "sha256": "2a87432eadaaad922fb14fd908679f6e4bc30b197cc85cc01f9b9283ff9ebed7"
+        },
+        "cpu_atlas_1.npy": {
+          "file": "text_dpi96/cpu_atlas_1.npy",
+          "sha256": "2a87432eadaaad922fb14fd908679f6e4bc30b197cc85cc01f9b9283ff9ebed7"
+        },
+        "cpu_atlas_2.npy": {
+          "file": "text_dpi96/cpu_atlas_2.npy",
+          "sha256": "2a87432eadaaad922fb14fd908679f6e4bc30b197cc85cc01f9b9283ff9ebed7"
+        },
+        "parameters.json": {
+          "file": "text_dpi96/parameters.json",
+          "sha256": "ff18622b666e67ff3ae155bbbe0d79d143327a855905bfd669735fda0f2cc2ed"
+        },
+        "rgba.npy": {
+          "file": "text_dpi96/rgba.npy",
+          "sha256": "15a07ddc282ded243ba600383ef666b17817d1352c0b990a3825f0adefd6212b"
+        },
+        "shaders.json": {
+          "file": "text_dpi96/shaders.json",
+          "sha256": "c7108ce99973f532107fcec4d011fece0646896dfb384e76292652dc095b06c4"
+        }
+      },
+      "source_report": {
+        "file": "text_dpi96/source-report.json",
+        "sha256": "8cd1431ba07f63828d30b2733e8f0df1210b9b3018f631fbf06e2e762972d355"
+      }
+    }
+  },
+  "full_suite_qualified": false,
+  "historical": {
+    "authoring.json": {
+      "file": "authoring.json",
+      "sha256": "c6d88db15f4dccd9e7770467b3fba924cc6e2360780319e590a19a3eab47592a"
+    },
+    "historical-capture.json": {
+      "file": "historical-capture.json",
+      "sha256": "c51a3cf5e28deb11b762f28723a7b1d080ba42d4b35c8a9600ac24ba3a3923f4"
+    },
+    "historical-review.json": {
+      "file": "historical-review.json",
+      "sha256": "24e58de10783b54da44fa01d137ad042340e1bae57adb67e59e8fec31ed1e95b"
+    }
+  },
+  "historical_candidate_cases_passed": 12,
+  "historical_required_refusal": "axes_colorbar",
+  "kind": "upstream",
+  "licenses": {
+    "LICENSE": {
+      "file": "LICENSE",
+      "sha256": "0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0"
+    },
+    "LICENSE-BSD": {
+      "file": "LICENSE-BSD",
+      "sha256": "a28bb857d763513c810ca843558c12cf97f64b990b855c1ce7f5e291e52fc25c"
+    }
+  },
+  "original_upstream_cases_passed": 13,
+  "reference_bytes_modified": false,
+  "schema": 1,
+  "scope": "Original NVIDIA OpenGL13-case regression packet; not platform or release admission",
+  "size": [
+    224,
+    160
+  ]
+}

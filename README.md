@@ -60,6 +60,8 @@ Linux x86_64 wheels for CPython 3.10–3.14 pass the same bounded archive and co
 
 The [implementation plan](docs/superpowers/plans/2026-10-10-vispy-vulkan-next-batch-plan.md) records the wider scope. Its links to local `build/` evidence refer to retained qualification packets that are not distributed in this repository.
 
+The [installed-wheel mesh/layout regressions](docs/mesh-layout-wheel-regressions.md) retain thirteen required original OpenGL scenes. A bounded Windows CPython 3.12 run matches twelve complete frames byte-for-byte, including mesh/filter/layout and three text DPI cases. Axes/colorbar remains a required failure because smooth-line coverage is unsupported. This is not a complete scene-suite or release qualification.
+
 ## Licensing
 
 This fork’s implementation and modifications are licensed under [AGPL-3.0-only](LICENSE). The original VisPy [BSD 3-Clause license](LICENSE-BSD) remains attached unchanged, and original code retains its copyright and license notices. Bundled dependencies and fonts retain their own licenses. See [licensing details](LICENSING.md) and [third-party notices](third_party/licenses/THIRD-PARTY-NOTICES.txt).
