@@ -1,0 +1,1422 @@
+[
+  {
+    "excluded_root": false,
+    "path": "c:\\programdata\\microsoft\\windows defender\\platform\\4.18.26090.9-0\\mpoav.dll",
+    "sha256": "24870690fb1e4dfaf6acdb09f12a7ffbbb44b5f3942f24a18ecc17900dfba044"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\ac51d50a4f4b6d748b8c__mypyc.cp312-win_amd64.pyd",
+    "sha256": "b7f52c8d9f8c41cd64692315e7a6ab45ce8e79c411ca39e377c0d22f33953fe5"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\charset_normalizer\\cd.cp312-win_amd64.pyd",
+    "sha256": "2bdbc0805f85565d76f8d6166e451bfafa6d5490b06b36c9f423cd0102b4f149"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\charset_normalizer\\md.cp312-win_amd64.pyd",
+    "sha256": "b08be5d29125f39a92e22d0abe4b9160753f7a790fffd07258319a8e16394afa"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\kiwisolver\\_cext.cp312-win_amd64.pyd",
+    "sha256": "54abfa3bb07e45fd2ce60600cd1f4cf308dc3c3dd3e88b4868727f4f761c9446"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\llvmlite.libs\\msvcp140-8f141b4454fa78db34bc1f28c571b4da.dll",
+    "sha256": "8f141b4454fa78db34bc1f28c571b4da0e00cd2c43f7ad0e282f313036826aae"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\llvmlite\\binding\\llvmlite.dll",
+    "sha256": "a3500f4ffd7c4b47ec785c5964af7ed01fb95dd125c0d7efcdb680920821da6f"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\lxml\\_elementpath.cp312-win_amd64.pyd",
+    "sha256": "02d38ab4cc4ac2ed7398828990dd7a0a9f70b0b9e06ad6aabdc485181beb9b5a"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\lxml\\etree.cp312-win_amd64.pyd",
+    "sha256": "b42ee5cb764ab38afb290d5aa62fa4c81ee0bdbe09b1bf06d906b02d9a56e170"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\numba\\_devicearray.cp312-win_amd64.pyd",
+    "sha256": "95c2b1cfcfddfcf96b6e90b774e887268b69137c02c6d244ea9211f775a333ad"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\numba\\_dispatcher.cp312-win_amd64.pyd",
+    "sha256": "146c952c2efed21af67df8573789d6d66fa282f893d6af0d67aa681d57701405"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\numba\\_dynfunc.cp312-win_amd64.pyd",
+    "sha256": "210a175dc9912b877516384412ea3f95fa3052ee39f4663c8c1d7c3edc092c49"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\numba\\_helperlib.cp312-win_amd64.pyd",
+    "sha256": "2322bf8e9963ea11d4248811aecdb3aff36e4f934bdc7a44e03f9e208f8f321a"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\numba\\core\\runtime\\_nrt_python.cp312-win_amd64.pyd",
+    "sha256": "0368a72bb9fa8039235394f50c86e172729bcfccf9aa1360bf73a2252979b063"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\numba\\core\\typeconv\\_typeconv.cp312-win_amd64.pyd",
+    "sha256": "85e48a9fdb7a5a709e1e8797134c1b5918e779ce5c70dc48234c22662b1c45dd"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\numba\\experimental\\jitclass\\_box.cp312-win_amd64.pyd",
+    "sha256": "6eb097958e8f961daf0c65e8a93961fa721c3491a1da1241e9ad25c57a1b80e9"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\numba\\np\\ufunc\\_internal.cp312-win_amd64.pyd",
+    "sha256": "3dff64bcf0ca1a917d66cc36dd4ea2d4d48d475e7412c79cd462c7f0feadfd7f"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\numba\\np\\ufunc\\omppool.cp312-win_amd64.pyd",
+    "sha256": "190c28d8d9f2d87d3ecc0e9f3118ff592af13e91f3d92e92b1d536a901d54356"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\numpy.libs\\libscipy_openblas64_-63c857e738469261263c764a36be9436.dll",
+    "sha256": "63c857e738469261263c764a36be9436ebdeaa272e340a828f42047a97131080"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\numpy.libs\\msvcp140-a4c2229bdc2a2a630acdc095b4d86008.dll",
+    "sha256": "a4c2229bdc2a2a630acdc095b4d86008e5c3e3bc7773174354f3da4f5beb9cde"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\numpy\\_core\\_multiarray_umath.cp312-win_amd64.pyd",
+    "sha256": "80e7dc34f51cf6cef24da060e1e8620936b2cf188bae0ea367dc8619b2316204"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\numpy\\fft\\_pocketfft_umath.cp312-win_amd64.pyd",
+    "sha256": "9bdebd71ec1d4b301d0874a0d906d9d4b1cc1ea8331a6d98cd02b9ca2b99e9d4"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\numpy\\linalg\\_umath_linalg.cp312-win_amd64.pyd",
+    "sha256": "b465dda08f9238ae83b05a0acbfbddec969d0b5fc5de366bbbe312a4600d6e31"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\numpy\\random\\_bounded_integers.cp312-win_amd64.pyd",
+    "sha256": "32b8584df91938ed48412b8033337623aedda14754b5f16da7ecd6240cd37651"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\numpy\\random\\_common.cp312-win_amd64.pyd",
+    "sha256": "7bad497891be587c15d9c5f1c10d7dafaa29c3811b6da656c0d279ec550a64de"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\numpy\\random\\_generator.cp312-win_amd64.pyd",
+    "sha256": "0037c60072091c1f79f4f72426da3ce75ae59152549ebd601a5750fc38ab552c"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\numpy\\random\\_mt19937.cp312-win_amd64.pyd",
+    "sha256": "5bca9225bb4688c0c010c53e60acf15e7fe9de0732e200ccdac509b48628e86a"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\numpy\\random\\_pcg64.cp312-win_amd64.pyd",
+    "sha256": "aaf391493c2a70781e2c6f757cd8e18839718d79a145a6250b36d267088bb5bc"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\numpy\\random\\_philox.cp312-win_amd64.pyd",
+    "sha256": "86329e7846f674b53fcd09f4cff3abac76f825a764e21b587f14df1e258c114a"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\numpy\\random\\_sfc64.cp312-win_amd64.pyd",
+    "sha256": "c582965a7338b791b98d6397ebd58755002bbc06239d44535377fa53639d29ef"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\numpy\\random\\bit_generator.cp312-win_amd64.pyd",
+    "sha256": "472d4d7369bdc1c9444f7504f6d574090b3deda72536ac286139780659438b02"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\numpy\\random\\mtrand.cp312-win_amd64.pyd",
+    "sha256": "be0ae4e7991e5e72ad6e07edcf034f93a31ab163da499b716354acd9da177367"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\pandas\\_libs\\_cyutility.cp312-win_amd64.pyd",
+    "sha256": "5b8039d96aca448c0a1826294cddff1e3d904bde4797b77a18b6fbb9ddea3ae6"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\pandas\\_libs\\algos.cp312-win_amd64.pyd",
+    "sha256": "a5f7403ec0edfdb0ca8836ec8034133343c86acbba08aa7e9141c5a85d44458d"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\pandas\\_libs\\arrays.cp312-win_amd64.pyd",
+    "sha256": "3a71b05ebcd4b443ffbbc1e51551feb1c5b7fda439a6c4c01652b26cf14c346f"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\pandas\\_libs\\groupby.cp312-win_amd64.pyd",
+    "sha256": "a0cf0aa7c972b5ba11a38414107ef8a52b64e75a6db4dd4057ae1e38895e141e"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\pandas\\_libs\\hashing.cp312-win_amd64.pyd",
+    "sha256": "9338f6b2ea77d0a5a221920ce42bb207d7f1f0f2a6d5f23d69ca76bb3d8f2bab"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\pandas\\_libs\\hashtable.cp312-win_amd64.pyd",
+    "sha256": "b00dd092739f555feda8206fb2b5026aa41e0b523118142c73ded3a3fa1f6f63"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\pandas\\_libs\\index.cp312-win_amd64.pyd",
+    "sha256": "38b6605c45a7c5b7273098cf842ffbc70a94e13bcf74be0ea80f062233666340"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\pandas\\_libs\\indexing.cp312-win_amd64.pyd",
+    "sha256": "0bc2e69b0f445cfac6658b949130ae7e1af16a008be4d991ff5815dce16474b2"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\pandas\\_libs\\internals.cp312-win_amd64.pyd",
+    "sha256": "12a7064bd1462454c580620ea2e5c5cdb588535da5463f8eebb82791612ccfd4"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\pandas\\_libs\\interval.cp312-win_amd64.pyd",
+    "sha256": "af9a24982c4a2a65be76b3746bd093b9e034f6a0f777450d90744f40b6e917a9"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\pandas\\_libs\\join.cp312-win_amd64.pyd",
+    "sha256": "ff1941d135539d511b695189e47401336daf17dcdd0be6fac26da61e3cd2dc8a"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\pandas\\_libs\\json.cp312-win_amd64.pyd",
+    "sha256": "55fb01c3877e7e4848b9000188b72ea5a171e019f449c1091d1d4b115a1ccb88"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\pandas\\_libs\\lib.cp312-win_amd64.pyd",
+    "sha256": "f669f57c6a3dd6b2305ce440f51633fdf838947d4cfb8de1e3fdbe280d0d7b7e"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\pandas\\_libs\\missing.cp312-win_amd64.pyd",
+    "sha256": "4aac25986e181cfc6237c900b337c0fddcf5581c374799880044fde7f3350503"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\pandas\\_libs\\ops.cp312-win_amd64.pyd",
+    "sha256": "5f91d662ec18a5b72275ab8a86098f78505c66ce17dc6066562d5a659b00c006"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\pandas\\_libs\\ops_dispatch.cp312-win_amd64.pyd",
+    "sha256": "0263a773b2b2258e416556d462568838b92670a3ec7b8d33407c2bb709966189"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\pandas\\_libs\\pandas_datetime.cp312-win_amd64.pyd",
+    "sha256": "6b921c5e893c6b093900811a75a0a3df354ee7407d8f5116502ca973c96c9235"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\pandas\\_libs\\pandas_parser.cp312-win_amd64.pyd",
+    "sha256": "e84d4f7c97340b6c652a07f7dfbfbef822e78e4600c80e26b507cd7c7fb6e714"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\pandas\\_libs\\parsers.cp312-win_amd64.pyd",
+    "sha256": "2d2a22cce3e0e653ea76487b4e0bb46a4f3e2315e9c913ed11cb101238bdbb03"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\pandas\\_libs\\properties.cp312-win_amd64.pyd",
+    "sha256": "3ec19c4f119636af9c17656e7b91b87ccf73693ede12f2251ea2c00f5aa206d5"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\pandas\\_libs\\reshape.cp312-win_amd64.pyd",
+    "sha256": "3bdf30863c955efd22d8e132d35ae76d20309d314ff7b9ab71b57228bf3ed864"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\pandas\\_libs\\sparse.cp312-win_amd64.pyd",
+    "sha256": "428f63c37204ccb12fc3211326c9810612660c15418671e4e01ce1c98d3cfabe"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\pandas\\_libs\\testing.cp312-win_amd64.pyd",
+    "sha256": "e89505ea7c9a92bfc9a0b8c39943420e6cd592d039d2d6082b18aa5e95ebc929"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\pandas\\_libs\\tslib.cp312-win_amd64.pyd",
+    "sha256": "fd45e899febd9d3e35868a3dacfb517281998f7621873d6528852f3cc98b6e11"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\pandas\\_libs\\tslibs\\base.cp312-win_amd64.pyd",
+    "sha256": "d191ac409d184ab7b3d3fbc2632679e2d48dece2ef61da34a127eafac544b1a2"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\pandas\\_libs\\tslibs\\ccalendar.cp312-win_amd64.pyd",
+    "sha256": "b500ac47162c4ab4e2b62a63c502d978e195683585cfc6d67b25e93823c489fe"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\pandas\\_libs\\tslibs\\conversion.cp312-win_amd64.pyd",
+    "sha256": "9ba143bfb753a8c3e89880b52319320ac89867ece539d425e0db9dcbc78b95a8"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\pandas\\_libs\\tslibs\\dtypes.cp312-win_amd64.pyd",
+    "sha256": "b18afb64d44e94b9852fddd22e94aa549c919b93917fb40726bee047051449de"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\pandas\\_libs\\tslibs\\fields.cp312-win_amd64.pyd",
+    "sha256": "5d0348f8dac17eeea1120ed7d62a0152629058b5eb7254cec980f75c9cacca39"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\pandas\\_libs\\tslibs\\nattype.cp312-win_amd64.pyd",
+    "sha256": "61c145b15998fa5378b6a95b9966087c53d6ceea7f55932fe358551909f749aa"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\pandas\\_libs\\tslibs\\np_datetime.cp312-win_amd64.pyd",
+    "sha256": "ff9df7d9ee6f584c632a29b1980d8709b4de344364b2a1c5e982d18a0a461a70"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\pandas\\_libs\\tslibs\\offsets.cp312-win_amd64.pyd",
+    "sha256": "3830fc90ca5a355691c710a47330d067e77d41728d278562866b7a081c5d4363"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\pandas\\_libs\\tslibs\\parsing.cp312-win_amd64.pyd",
+    "sha256": "39203962c2a8334baab7b51aad48f0a876fd0d7a6a5c1bc06d9ef645b3795ae5"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\pandas\\_libs\\tslibs\\period.cp312-win_amd64.pyd",
+    "sha256": "7eef30c83f215ea6c0834fba5903d050d329d9843ef2ff4a61a199c479a20bec"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\pandas\\_libs\\tslibs\\strptime.cp312-win_amd64.pyd",
+    "sha256": "bae775d71f3c8bfaf641ffd12ea32acbb33f1d8ac7c84117c659787dd82a3263"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\pandas\\_libs\\tslibs\\timedeltas.cp312-win_amd64.pyd",
+    "sha256": "e09fa568c612132be1cef95f7b068669ad27999489e418e1e041f58547d55db0"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\pandas\\_libs\\tslibs\\timestamps.cp312-win_amd64.pyd",
+    "sha256": "6cc76fa3f7ed3816a9659093d23093c90ce68b8bc50ee5077e9eba9ca7bc4349"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\pandas\\_libs\\tslibs\\timezones.cp312-win_amd64.pyd",
+    "sha256": "2f9d54f0de0b236c54f22babfe323a2ef55144eed8218e0457bf656bcc885047"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\pandas\\_libs\\tslibs\\tzconversion.cp312-win_amd64.pyd",
+    "sha256": "69e3444c5231bb033ba7f5683975d1ca505d47d5ca0bb4363af2327417c33efc"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\pandas\\_libs\\tslibs\\vectorized.cp312-win_amd64.pyd",
+    "sha256": "e0318d06291f6d307f5e7c9b369c3bf99d54bcd08027e918558b19aa5972ad89"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\pandas\\_libs\\window\\aggregations.cp312-win_amd64.pyd",
+    "sha256": "b63f7e21feef07cfc959aa44554c737351774259e5b25daba9743dfee9458f84"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\pandas\\_libs\\window\\indexers.cp312-win_amd64.pyd",
+    "sha256": "b2efaf262a79384e144308906e6a2d154256cc6ad9f3c927fe29c90c04e1f21c"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\pandas\\_libs\\writers.cp312-win_amd64.pyd",
+    "sha256": "50c68e9b84355d1e0b89a8491e6ebdddb4b7b004c33a3991abf29044cabc3cc0"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\psutil\\_psutil_windows.pyd",
+    "sha256": "0035450801bd7d938e9e146c5ec28e619cb5a5f4a18cdc53ac7e9734c7f94f78"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\psygnal\\_evented_decorator.cp312-win_amd64.pyd",
+    "sha256": "ac11be5e404344418ec83368c2164b9dea118b722d66f95dbaec56317a2629bf"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\pydantic_core\\_pydantic_core.cp312-win_amd64.pyd",
+    "sha256": "49e3534652d91c79cb33017de4e0acedb9c9a98724c580d4f3ff023e9490a578"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\pyqt6\\qt6\\bin\\msvcp140_2.dll",
+    "sha256": "3ea06f0ee098b4823cb79599df3780e7f23cce52c19aac31d2a0d47efe33a5e9"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\pyqt6\\qt6\\bin\\qt6core.dll",
+    "sha256": "22c113a5644b875b2c85482723cd5d2e6a3a4029169778fcc78adde08ef3b6aa"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\pyqt6\\qt6\\bin\\qt6gui.dll",
+    "sha256": "19265a4e76efc12ef5f5bcf59be6c6a5b9b59ec4c89660797738bd2da7f719cc"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\pyqt6\\qt6\\bin\\qt6opengl.dll",
+    "sha256": "d1d212853c2a858c00d9560616ba67f6238c2d11ffa5549a4251fcc566d16477"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\pyqt6\\qt6\\bin\\qt6openglwidgets.dll",
+    "sha256": "60e24b49a2ab70d8b0709475b843913afefc69fbe727361495f14d7e7a5985b5"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\pyqt6\\qt6\\bin\\qt6svg.dll",
+    "sha256": "1052c17a9df0eb82023e0e4c369bbd0af58e4c5fea3c27a4b5ee83b60c015492"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\pyqt6\\qt6\\bin\\qt6test.dll",
+    "sha256": "43601fc45d2f4e4def09c744914b864a26b82d5193418913191678ebc3a437fb"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\pyqt6\\qt6\\bin\\qt6widgets.dll",
+    "sha256": "e6d0b7e2e697de6ad985b97f9ed8b381c1c2172fcae87b6ab08455b3b7330f32"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\pyqt6\\qt6\\plugins\\iconengines\\qsvgicon.dll",
+    "sha256": "7879ba1d2f293ad09c515de736add8c1023b0a4e80e2301d1283555efc2e8828"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\pyqt6\\qt6\\plugins\\imageformats\\qsvg.dll",
+    "sha256": "486b395e23e258d03d54cdba045f129e9b1321f9ff12f99fe58293e0351b8caf"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\pyqt6\\qt6\\plugins\\platforms\\qwindows.dll",
+    "sha256": "d94c584a18829d11fbf3aefd07e7b1e189e0cf063a0515826960037efa7465df"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\pyqt6\\qt6\\plugins\\styles\\qmodernwindowsstyle.dll",
+    "sha256": "f6b88d403d7175f5b830d4958264690e5c8bbaf0148e1ccf42d52704b0480792"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\pyqt6\\qtcore.pyd",
+    "sha256": "91dd5166110b88a4f4d3acda6fe6c10ed699882dd3602328a59e9f656cc766b1"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\pyqt6\\qtgui.pyd",
+    "sha256": "cf5ae37fd119fb29a53f1f2cea1362fdf036d940191be45d83da0f98ce8752b8"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\pyqt6\\qtopengl.pyd",
+    "sha256": "e713fec5304657bf10231309021b95279374de072998ee192eb324b39f6ea384"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\pyqt6\\qtopenglwidgets.pyd",
+    "sha256": "0f61eb1a3c8fff30e86c2ea0176b78df5f8f909a4d98e64d6355b94d5a58e859"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\pyqt6\\qtsvg.pyd",
+    "sha256": "542d023e993274d9a8c54135fba79cbeb0a99934b04bd47ae181413b55581684"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\pyqt6\\qttest.pyd",
+    "sha256": "26b0af0e59848382e81ac48a745bcb8e81f93e00897203b81277059da3aeff6f"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\pyqt6\\qtwidgets.pyd",
+    "sha256": "4f81361816e94e1ae05f178085b22d5b9b19e417713b1966dd481a4017aa3b21"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\pyqt6\\sip.cp312-win_amd64.pyd",
+    "sha256": "0c7c7abf5a9d1cef66c6b566a74c1ae38bffa7e1ab4b3365fc0085f2b191ee77"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\pywin32_system32\\pythoncom312.dll",
+    "sha256": "18e5d69b62110f48da01842f9ddfd99d06cc561f0866371714ec6534fcb4e5ec"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\pywin32_system32\\pywintypes312.dll",
+    "sha256": "9bd7f8c39a84d7b1ea43bfcd33c04631c60f4ff28167e82bb21987cc1c353766"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\scipy.libs\\libscipy_openblas-197ee2fc9b4d071f7e048078cac74115.dll",
+    "sha256": "197ee2fc9b4d071f7e048078cac741151a6585d871061cf5f88c0c73e31963a5"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\scipy\\_cyutility.cp312-win_amd64.pyd",
+    "sha256": "5d31b649995f6e9fb95e15f2ba35de18618347c33aee07b9b3eab506a2fdbd8f"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\scipy\\_lib\\_ccallback_c.cp312-win_amd64.pyd",
+    "sha256": "4ba005064af61e94ad473f09ba67836523db6773458470a6d8d7e5c1234bbdac"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\scipy\\_lib\\messagestream.cp312-win_amd64.pyd",
+    "sha256": "a45ee93e69c84e9c198444df93b6f8ffc4ce09c852f3892137b5b6f6034bae6a"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\scipy\\linalg\\_batched_linalg.cp312-win_amd64.pyd",
+    "sha256": "4ff2e41e64d34a0f34ca4363d48074451e1e9977bfc366bf0b80d4c2f4a50268"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\scipy\\linalg\\_cythonized_array_utils.cp312-win_amd64.pyd",
+    "sha256": "deab4aaecda674e2b45c4a19742da78dc03f624ce023846417b7a18a8339031f"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\scipy\\linalg\\_decomp_update.cp312-win_amd64.pyd",
+    "sha256": "2bf6c314edd1a8bf354f238415f3295ae464fde97e1f276ca7efcdc177afe546"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\scipy\\linalg\\_fblas.cp312-win_amd64.pyd",
+    "sha256": "4832bd6d4e8f9ba7317985fdfa8656e8661e98ce952ba757671e3c2d236d9389"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\scipy\\linalg\\_flapack.cp312-win_amd64.pyd",
+    "sha256": "ea9fc3ba84abfb7bc1be930d94a237ae494df9ede89a919602d661b606f55138"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\scipy\\linalg\\_internal_matfuncs.cp312-win_amd64.pyd",
+    "sha256": "ad0ec88336620b15d80f8588a212cade3700b90c329c90b26bb10c5d4b8579c8"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\scipy\\linalg\\_linalg_pythran.cp312-win_amd64.pyd",
+    "sha256": "6ac6bea5e09d9f07f9e986bc2edbe2b632cafacdfab9815865573427814a03e4"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\scipy\\linalg\\_solve_toeplitz.cp312-win_amd64.pyd",
+    "sha256": "f7627f12ffc46542802ed6940a7c449589226548d32b8db6dd1c9abc04cd0671"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\scipy\\linalg\\cython_blas.cp312-win_amd64.pyd",
+    "sha256": "3b74e06f76feab1041954f5b3efedee516bd1259cc97846338d9570ebd39c0a5"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\scipy\\linalg\\cython_lapack.cp312-win_amd64.pyd",
+    "sha256": "5f9f5128647dc62ebbf518b8f4993061b01497adf19cf26ffa1021f9db88ca5b"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\scipy\\ndimage\\_nd_image.cp312-win_amd64.pyd",
+    "sha256": "24b51c516e9344dfe459f5fd3932d04049f6ab7f9a131e2789e27c69ea7157fd"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\scipy\\ndimage\\_ni_label.cp312-win_amd64.pyd",
+    "sha256": "94e09844b8a3371f1b523a0aa2ce32ada0e3627456afd1e785c5a5e67849a27a"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\scipy\\ndimage\\_rank_filter_1d.cp312-win_amd64.pyd",
+    "sha256": "77f996dd45d7f2aa4e563340015791c067cda9971bf55dbaebedc117e26e9dc1"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\scipy\\sparse\\_csparsetools.cp312-win_amd64.pyd",
+    "sha256": "aed673d21bb62c5c21448c954439522629e6aeba99e031ca60f45731358d2162"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\scipy\\sparse\\_sparsetools.cp312-win_amd64.pyd",
+    "sha256": "c582d431dcc2e3f6863de23c1ba875eb88a88b8ba9bda833c15cb0eba306010e"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\scipy\\spatial\\_ckdtree.cp312-win_amd64.pyd",
+    "sha256": "c7ba13c929c2cc4cf29bec12c35176575dfcd7ab52af3ad850d8262bce0e1cab"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\scipy\\spatial\\_distance_pybind.cp312-win_amd64.pyd",
+    "sha256": "3f7567c238ca2970586ce8a7a22420053c009f9be1113cb2cb59ccbde2411b64"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\scipy\\spatial\\_distance_wrap.cp312-win_amd64.pyd",
+    "sha256": "eb9331555f5e41913cf427588277fd54ae6abb6e84a67feb66e103efcf3d3967"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\scipy\\spatial\\_hausdorff.cp312-win_amd64.pyd",
+    "sha256": "e475c94dbb2e89a0349135be436579c718ba51a288709e183f33ba4a3a4c4698"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\scipy\\spatial\\_qhull.cp312-win_amd64.pyd",
+    "sha256": "0fda7b02882cf95ac6e870b4472837366afe8bb45da148c9c7a91fe7f8678f47"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\scipy\\spatial\\_voronoi.cp312-win_amd64.pyd",
+    "sha256": "c77df5feaf55ab9c54ef5290e6d5af51e3b92729841ea9db1c6ea9f21410cc84"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\scipy\\spatial\\transform\\_rigid_transform_cy.cp312-win_amd64.pyd",
+    "sha256": "7243e5be688306c3c024aef4372e8b7cbcb17880edce50838815d55758eec7b1"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\scipy\\spatial\\transform\\_rotation_cy.cp312-win_amd64.pyd",
+    "sha256": "3f9c4835b41355056dfc8e9a0070931edd5f7866063ef9623338a20411f14cd9"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\scipy\\special\\_comb.cp312-win_amd64.pyd",
+    "sha256": "b11317038aba00d901591974e3ff3866be148424300e7324684729af94f5d178"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\scipy\\special\\_ellip_harm_2.cp312-win_amd64.pyd",
+    "sha256": "86df2b3aa07f1fb3fa2849d63a0cc133099a518bf164465360099b1f088c5fe5"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\scipy\\special\\_gufuncs.cp312-win_amd64.pyd",
+    "sha256": "3a0b65590282876be90bcbf6c4e7a0e407faab76f2cf8f99fb7adb715d136c65"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\scipy\\special\\_specfun.cp312-win_amd64.pyd",
+    "sha256": "57218e37f6c0ac1da054745868e6e962e210013aa50d614c80850599a1ee9629"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\scipy\\special\\_special_ufuncs.cp312-win_amd64.pyd",
+    "sha256": "7b8968e440aa7d613f0d90f5994f7c72268679409e0ea40685532452383a3cac"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\scipy\\special\\_ufuncs.cp312-win_amd64.pyd",
+    "sha256": "4ee53d84cd5fff84e7c82292aa3e986a91f0309b1952ae800fcb2af68fb2161d"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\scipy\\special\\_ufuncs_cxx.cp312-win_amd64.pyd",
+    "sha256": "11a9cdb4608a02bfef01f68f73aa033ba0e6474a2d9527cd300f0410e9c87f46"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\skimage\\_shared\\geometry.cp312-win_amd64.pyd",
+    "sha256": "bbf43a358c758a7f3697980bbe802951789c6e584ccfe3d7de2b7ac34ad39807"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\skimage\\draw\\_draw.cp312-win_amd64.pyd",
+    "sha256": "b0ca75b580cdf55befde002ecfbe39603f1ed0aba1a25aaaf36baefb80996c3d"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\vispy\\_dawn.cp312-win_amd64.pyd",
+    "sha256": "08fccf15adf7ecc7090956ca937ffac2b88f68722eb56a9321f05a8fe2446427"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\vispy\\visuals\\text\\_sdf_cpu.cp312-win_amd64.pyd",
+    "sha256": "bc1155d0bd5e5854ba874fbeb374cca3494591b8ad4a60fdb0e56e47144c8095"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\vispy\\vklayer_vispy_submit.dll",
+    "sha256": "43cf5aaed2dbb284a45d85bfa13fd342482fa21a29174919e4f6149b537012d5"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\win32\\_win32sysloader.pyd",
+    "sha256": "db277aae2b8417dbd01435a8691cc74707f6699ae3199e1b205f609cefa5ad24"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\win32\\win32api.pyd",
+    "sha256": "8e09d7aa57dc33b663afd219fab21b6a70e9d98cc74a044df4d6cd94799d98c2"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\wrapt\\_wrappers.cp312-win_amd64.pyd",
+    "sha256": "73329190f4b9cefa4bc05b4e786892f4e6bd185c22cd49a9bb4644afa8d32e1f"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\yaml\\_yaml.cp312-win_amd64.pyd",
+    "sha256": "4fd0e84f50261ed0886cffcdd8008b055af3352546e649c3d741b50eae1f9b5f"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\roaming\\uv\\python\\cpython-3.12.8-windows-x86_64-none\\dlls\\_asyncio.pyd",
+    "sha256": "d4fd8fe9de676987b1e019b64c96084093ecb0139b784265e4ecc7afe563eeef"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\roaming\\uv\\python\\cpython-3.12.8-windows-x86_64-none\\dlls\\_bz2.pyd",
+    "sha256": "cefd48b6d9846cf6549cabacbab5d1cfc0aba03eb80c951c420688e27b36d4da"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\roaming\\uv\\python\\cpython-3.12.8-windows-x86_64-none\\dlls\\_ctypes.pyd",
+    "sha256": "42ffe4f0a3f60b59a75d2254e42d5e35e316f99f90bf1df20495ec2118b85a02"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\roaming\\uv\\python\\cpython-3.12.8-windows-x86_64-none\\dlls\\_decimal.pyd",
+    "sha256": "18d26b535cc46b3a2d2483296e690fbba99715eca3bf881b6fba596a16d8309f"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\roaming\\uv\\python\\cpython-3.12.8-windows-x86_64-none\\dlls\\_hashlib.pyd",
+    "sha256": "64eac4e71a72d97ae2bafc78b7b47b38e375244c5b888cda77c10798146ccbb1"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\roaming\\uv\\python\\cpython-3.12.8-windows-x86_64-none\\dlls\\_lzma.pyd",
+    "sha256": "26916a5c44e294b6ccf58b06e4d63f61d900bff232a769c89d3ad06842efe31c"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\roaming\\uv\\python\\cpython-3.12.8-windows-x86_64-none\\dlls\\_multiprocessing.pyd",
+    "sha256": "cc91733dc597e9701faa0b07b4702f2ac60c86bf15b87ab49e5b98c61ddb9a43"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\roaming\\uv\\python\\cpython-3.12.8-windows-x86_64-none\\dlls\\_overlapped.pyd",
+    "sha256": "65e00b15a138090fca65f164cd2d67dc28c45619b9fb0bd5e3681ad455be6d67"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\roaming\\uv\\python\\cpython-3.12.8-windows-x86_64-none\\dlls\\_queue.pyd",
+    "sha256": "b78640a907ced560bec21f23690ded3baf02fbf62cb9a6673679d36e3a52c85e"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\roaming\\uv\\python\\cpython-3.12.8-windows-x86_64-none\\dlls\\_socket.pyd",
+    "sha256": "a523c1fb96438ad33a0b1d1e2a9cbaca7758e9f2cc4931bfa64ff7baf4a31553"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\roaming\\uv\\python\\cpython-3.12.8-windows-x86_64-none\\dlls\\_ssl.pyd",
+    "sha256": "f5bcff65a3e837c3df135c153656b88f56a3b80c9106b239513b31636b411bad"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\roaming\\uv\\python\\cpython-3.12.8-windows-x86_64-none\\dlls\\_uuid.pyd",
+    "sha256": "171d55e6820e273f7fcd5645ec49a4edaa309008877f5f5f2c3a0121330ca230"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\roaming\\uv\\python\\cpython-3.12.8-windows-x86_64-none\\dlls\\_wmi.pyd",
+    "sha256": "afb46c920ee2b951b7e7ff7166350472665124cdf30c718ea5f2931649606414"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\roaming\\uv\\python\\cpython-3.12.8-windows-x86_64-none\\dlls\\_zoneinfo.pyd",
+    "sha256": "a83d56b2cbb80323743b8c3a134992e882f99a13166242ca17d0188b026c1bb2"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\roaming\\uv\\python\\cpython-3.12.8-windows-x86_64-none\\dlls\\libcrypto-3-x64.dll",
+    "sha256": "a552bf5efaffca7be1a6e9e74aec37b753e238f21ca4545c2d024173c0fd4477"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\roaming\\uv\\python\\cpython-3.12.8-windows-x86_64-none\\dlls\\libffi-8.dll",
+    "sha256": "fdec74a558b630c0e9e8bff76a94dcd8b1abdbbd4eeb3aefb209d79577de976b"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\roaming\\uv\\python\\cpython-3.12.8-windows-x86_64-none\\dlls\\libssl-3-x64.dll",
+    "sha256": "8318cbcd17566a67b24fa4359cc60833d57803eda380240446c07b8c0ff86671"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\roaming\\uv\\python\\cpython-3.12.8-windows-x86_64-none\\dlls\\select.pyd",
+    "sha256": "992775e552a8bf1f464da22cb714c5723e6c74a39850b1fbfe0f0943c5d120b8"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\roaming\\uv\\python\\cpython-3.12.8-windows-x86_64-none\\dlls\\unicodedata.pyd",
+    "sha256": "346fb11fde41278c4e1560fc0ad1f3dc074abb5ae4113b6a017fedc34b9003f7"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\roaming\\uv\\python\\cpython-3.12.8-windows-x86_64-none\\python.exe",
+    "sha256": "71b986e874ae1382c434f95852f5670e6d87576db2861cd03737dd4bce9d69ed"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\roaming\\uv\\python\\cpython-3.12.8-windows-x86_64-none\\python3.dll",
+    "sha256": "f924f86ae87fd7dc26c3c50e31c59dc34ce57b9a05797d40f62e1ec82e52f0da"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\roaming\\uv\\python\\cpython-3.12.8-windows-x86_64-none\\python312.dll",
+    "sha256": "fbddf09b578bc1489827bcc19f591e2cd6be687f3db26b60e4dfca15f331800b"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\roaming\\uv\\python\\cpython-3.12.8-windows-x86_64-none\\vcruntime140.dll",
+    "sha256": "bb2281b178b5c47fc98e4cf4293e59a07684e6c6d929d1c2f0acdcb245211417"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\roaming\\uv\\python\\cpython-3.12.8-windows-x86_64-none\\vcruntime140_1.dll",
+    "sha256": "c2fa6e9ad1b41bd3f7621ba7cb6cddfc10903b73a33c36d7b13afcf3ff99dbf8"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\advapi32.dll",
+    "sha256": "b864e1468a01a44f1901e03c05c1029e71655dd9abddd6d840bcfff5e7227d44"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\amsi.dll",
+    "sha256": "9df7ad9e6826ab76294a91bef274696ee13d18a8cebabcd5c4c352a3d1141df3"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\authz.dll",
+    "sha256": "59dbbee701b9010e6120886ef21c03a21363e75b87fa4ca3a91a60e25b855db9"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\bcrypt.dll",
+    "sha256": "d0fc7863d7b034da33f34dc82b96a8604572598a217668a43fc9eca3a8e2a8e1"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\bcryptprimitives.dll",
+    "sha256": "f0dba794068893c9616b0b54bef1be8f904be89eb2cb09b575d3d7fb1b5000f8"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\cfgmgr32.dll",
+    "sha256": "fea3f02ba1a9ac87f7ec53932a5821d3d894d70c828a441c8767059efa53f5c5"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\clbcatq.dll",
+    "sha256": "48a18351e09d5da0a7b45eb81bc7819488b160fb71f8979129ff5a4bd34d2595"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\combase.dll",
+    "sha256": "087f72ecc0c979a3b784ab319285ab64d053dfc0c274df5b28fd40cf204a234f"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\comdlg32.dll",
+    "sha256": "7d87ea4e567e74005a7a0ffbb11707265962a24aeb73f909ba7f3d004b5925bf"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\crypt32.dll",
+    "sha256": "71da5f9806f7aaf9e081c1df28b13182d2643b7f3534173f868ba65287612bbb"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\cryptbase.dll",
+    "sha256": "09c2d3e0f1c3d86f4a69496acf6d0c0901715ee2f02f20afc10d6dc9e639b03f"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\cryptnet.dll",
+    "sha256": "e478dd3d872606a1b0cbb4b50bed941ea8aca92b71df4178ca7b164aafb7428a"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\cryptsp.dll",
+    "sha256": "a00222ccee9f6fbbfd3f34437cc54f4bfbe9025e3f3399a9c2cedc88c37c3f46"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\d3d11.dll",
+    "sha256": "c9aee071495039e820cd0be0afdeb927b9ad32edc1d0dae460b6d64064b524f6"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\d3d12.dll",
+    "sha256": "0963513f3291a67ea56985a6e8b7ed8088a1e858803be6dc3373faa07460ce02"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\d3d12core.dll",
+    "sha256": "c146301fda4b73517a6ed591e498fb1e227ae0fa32f65c59c267e15b8a7c7227"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\d3d9.dll",
+    "sha256": "9c2343d50ab0e219d6526be5c419b2c5dc62e88c30444c936927001e3bdc89e6"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\d3dscache.dll",
+    "sha256": "ac53b9016f3ed3a0e029c64e3082838e4650ab0b0ed87eff0f5ca1301459be67"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\dataexchange.dll",
+    "sha256": "e427d8b37cde980a4746659e27d514c2c87c1883718286710a21f3aa43bd1ca0"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\dcomp.dll",
+    "sha256": "4077bf81a9a178d097288ed5b47a66b21881fb7581ddd142e53e66f0f94376ed"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\devobj.dll",
+    "sha256": "39ce6ba5957b16d36ad8ee09224126a1d194f2e9b1bfc048a269a9ba1d9feb50"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\directxdatabasehelper.dll",
+    "sha256": "5d93b932415287f077ac3bde9dad9de2fb87d907f818c976b35e6caf1c095ddd"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\dispbroker.dll",
+    "sha256": "45bd46679df5c7077bfebdedeb063f5cff18b9036ac67e434e52a46bb3f9e5c1"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\driverstore\\filerepository\\iigd_dch.inf_amd64_7dec88a1950b9616\\igc64.dll",
+    "sha256": "8a7b608d3151e4fb2dd121fc2dbc37e83fd04c00b6bc87227b9959bc06e502b2"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\driverstore\\filerepository\\iigd_dch.inf_amd64_7dec88a1950b9616\\igddxvacommon64.dll",
+    "sha256": "b4586188d48c0700c680791d3d23267caa81d5a8d205ebe6849b699d15dc1b7a"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\driverstore\\filerepository\\iigd_dch.inf_amd64_7dec88a1950b9616\\igdgmm64.dll",
+    "sha256": "f19632dd3964391b18ecc2e8b933f781c8118919a71d3d81cf992deef2910160"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\driverstore\\filerepository\\iigd_dch.inf_amd64_7dec88a1950b9616\\igvk64.dll",
+    "sha256": "8dd07ca26c8e46b896da3b98657b0c4ffe738e09d42608d5503571ebc0fcb234"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\driverstore\\filerepository\\iigd_dch.inf_amd64_7dec88a1950b9616\\igvkmedia64.dll",
+    "sha256": "e8e532d7b1e662bb43a8815c1d1ba5d3dcf458fc90633611a8c6982f83f9adf0"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\driverstore\\filerepository\\iigd_dch.inf_amd64_7dec88a1950b9616\\media_bin_64.dll",
+    "sha256": "0e9fa2af939ae54f1926a7da7587a8e6e5a638c398bae63fca94868bd56643e3"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\driverstore\\filerepository\\nvmd.inf_amd64_ffd9a18b05442e28\\nvapi64_impl.dll",
+    "sha256": "0a57c1422b0f4f786e224ce7a83d74d8f72c2f5ae1641f08e40f43bdcf3390f7"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\driverstore\\filerepository\\nvmd.inf_amd64_ffd9a18b05442e28\\nvgpucomp64.dll",
+    "sha256": "bd94d0927ad026ca509bd42228a48a9196b0a894ba33642681bc4866d2af3076"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\driverstore\\filerepository\\nvmd.inf_amd64_ffd9a18b05442e28\\nvldumdx.dll",
+    "sha256": "5099d5db44e1efc9b4fd1d55ace842bc691f1e6465913ef2eadcf44634914b53"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\driverstore\\filerepository\\nvmd.inf_amd64_ffd9a18b05442e28\\nvmemmapstoragex.dll",
+    "sha256": "0685dd077a85635637a9705765634fd72a24bb4bb6c798c1de9addfbc10f0b4b"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\driverstore\\filerepository\\nvmd.inf_amd64_ffd9a18b05442e28\\nvoglv64.dll",
+    "sha256": "c06da682a5646caa45aaa1dfe2fa96015fff418e189cbda530e9fea67f02be19"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\driverstore\\filerepository\\nvmd.inf_amd64_ffd9a18b05442e28\\nvppex.dll",
+    "sha256": "00121b4ac62e292907a5e262e67b82f4b2af4502a8bd3e72a10eae7f84cc8683"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\driverstore\\filerepository\\nvmd.inf_amd64_ffd9a18b05442e28\\nvwgf2umx.dll",
+    "sha256": "93cf576772e57544b74ced7066c020cdf55cad42331d8189dce839da7d759650"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\drvstore.dll",
+    "sha256": "f9301cab112ebf2971af6f4e70b3f9d263204861219ce4933f80d53d99c806ee"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\dwmapi.dll",
+    "sha256": "733c4dbf3e3fc521199ae57a5adc0b780d8c63d3de96676670cbf6d27cfed5e2"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\dwrite.dll",
+    "sha256": "45b8d6534fd6cd884bfc38a62c007da0d9d5f29324bcb1f31cbf0528bc2e7eae"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\dxcore.dll",
+    "sha256": "df9b1da21162c1dba8399c755805b66d2bfde06e55313c73b1360bbed2e2f71d"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\dxgi.dll",
+    "sha256": "4225e13f27a4f3a4a4738e64a57fa0949d8589f317fc6f8ec194b3a4d394a528"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\gdi32.dll",
+    "sha256": "772c73e294a4c5f5e0d4146288af95287a85c074d3aee3fa9f320dc010d7dbfe"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\gdi32full.dll",
+    "sha256": "52de3e02898e9c0e243d08d5c51d54871e9bce90de883eff7df29a30fc8aeac9"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\glu32.dll",
+    "sha256": "3120ba185c4505b0864fe4c113caff3fd0bbf0e231f8a95c89caf9b74e957a54"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\icu.dll",
+    "sha256": "218ee9bff41e8e9ffe8032ccd5ddf9c651d2dd72dde7643bac03865b9ddb163f"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\icuuc.dll",
+    "sha256": "59d134ddc15ae0594f0a328979f8201662fc82634ddb7c537b156e7cf871f5eb"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\iertutil.dll",
+    "sha256": "bb005953b1d8a44c36394662bd16425dacced13e9716b1f3e14b4108e285542a"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\imagehlp.dll",
+    "sha256": "58117bbc51c4a56b6c4789e190f33a540b7734e394ada9652e2832e3d2e16588"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\imm32.dll",
+    "sha256": "7e45f12c1c555e2407c5ca082bd925b34655278fde4dbfac53a0468cc1e77411"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\iphlpapi.dll",
+    "sha256": "8521026d021cc5193a7cd7c0256bd14c7ab39738d22c019e6d544b37deee12c0"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\kernel.appcore.dll",
+    "sha256": "ed6d62f2555d260547cc94a5cdfe2a6fcb684f18b8e182f78f9e4de224321fc9"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\kernel32.dll",
+    "sha256": "e132eba4166256e2f414b91fe7d5386590bc5ea8626aee5af9c9738383cf2ae1"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\kernelbase.dll",
+    "sha256": "5c29b73622ce0976e1ada566f31f2197ba0f8beaea89c3ec033366126172c3d0"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\microsoft.internal.warppal.dll",
+    "sha256": "c9ab2e96692ba5b74d27c5287fd3aa5d892fe16ef6210c4ce04fb22ac0496450"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\mpr.dll",
+    "sha256": "8bb319c8c8255e915c05c03eccc24981cf9653025d2f720fb7fffdd4d524309c"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\msasn1.dll",
+    "sha256": "a28902ae7ad6ff2d1b904f73c7ca22dbbf11a36cee70b5b22dd605364dd0fa2e"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\msctf.dll",
+    "sha256": "e8f3fe84ee46760e6e9eb914d61f88125d699047ad0e17b9283fb553927417be"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\msvcp140.dll",
+    "sha256": "def46aa6a8f72f27bafac0c43334419486a4d1dcdb6c479a8ef7034b3e1fa4cb"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\msvcp140_1.dll",
+    "sha256": "2dd670f874562fbdca5b022df1943d70a57ba91fde559280e3a1daebe4db2380"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\msvcp140_atomic_wait.dll",
+    "sha256": "e7963645e0d1db08e300614d4c5fa7194bd8173e9ab7a5558859e6b232ed3241"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\msvcp_win.dll",
+    "sha256": "b9dacd83201e59bb74e5282d8f0dcc8c428525409b4bc458a39eb8d2a9373a9a"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\msvcrt.dll",
+    "sha256": "fc1447db4e4814cbcb002179a8003a41f383fc417879f628727043cab8c25093"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\mswsock.dll",
+    "sha256": "b4b75a9e5bfaa236a06f78c96f9655529a83d80b6558a84fdd4128d5cf46381c"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\netapi32.dll",
+    "sha256": "d5b12248b116177329bf72cb517d515637cf2476dff1c159a0e1e7d28420be09"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\netutils.dll",
+    "sha256": "71e1eb4a3027cf348d71bfdfebf0ede76d05d521293250d627417f7c2d9478d8"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\ntdll.dll",
+    "sha256": "651ac9041af8e6b5ebd331d53163244c0a27d36d1433f0f15cac1f28c5f2e82c"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\ntmarta.dll",
+    "sha256": "f2bfd7121052ddfa5affae30efa070ac98052d76e6a5723f31ff75171c561974"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\nvapi64.dll",
+    "sha256": "79dfd011ac0e25eb2899af72ffe8f78722738ddf5edccada377007f42aa9e615"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\nvspcap64.dll",
+    "sha256": "e943f2761252400dd9dc2fdac85078d14cac2c781ed982f7fb6566fb9992b973"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\ole32.dll",
+    "sha256": "1053ffb858cddbe29eaaa6a5b0836b88c7cd11fbd58605288600e507c06db443"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\oleacc.dll",
+    "sha256": "f250765d7f61f7c5aeb5e8bb3b5fa737f148fd444783357e52aef21000def46f"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\oleaut32.dll",
+    "sha256": "e3fcdbbf040fd1e3c3504876cf060ac3908c134ac81b3d0c57f0f735769280ea"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\onecorecommonproxystub.dll",
+    "sha256": "7da22a9982cd68cdd4c5fa58585de462f43dd615c449606e18ca79f0625a4c63"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\opengl32.dll",
+    "sha256": "659be03cf2b88b5063a35b2637d9ef38122d7f6f30dafff118fa41b273aa5ece"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\pdh.dll",
+    "sha256": "e7b56a43e9c3f8208968530b83b600afa401463254796a1630a12864ae646bc4"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\powrprof.dll",
+    "sha256": "096b3c77ad7fece122be0362c72530b1edc024fe7107d1d40d8bcd8fa5428a0e"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\profapi.dll",
+    "sha256": "8983b0b95ce9e3282d3a09890316fc7290ba1ad45624167c576fbc691fbe66b0"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\propsys.dll",
+    "sha256": "1d9e7fc09a540c6b23d239f2dceeb0a57a7a1f51e1c90ad28401ecb202f4b39b"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\psapi.dll",
+    "sha256": "6c8ebe6621224d11ded0c920873d67b5255fd515e8c4ea803cd587c8232bee5c"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\rometadata.dll",
+    "sha256": "47a51a488149bd7aebfdab0b4bdcd19b758cc78f87ca606ca3c23ddb3046c0d4"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\rpcrt4.dll",
+    "sha256": "c060f02c11fb19c9c8a30b5077a87cdb17d4be40f08070a539ec73eb53402775"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\rsaenh.dll",
+    "sha256": "731771049467b6d01c7028a1269df17da37af8d323621e01a32856e306795400"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\sechost.dll",
+    "sha256": "b4a345ad9af0635f50e27eea8ae0ff37255dca90e6d5991bdbc4806fb02aaa72"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\secur32.dll",
+    "sha256": "4050dfd0d4e04e8d013cb16c09d90c2177e2b7e4f102f5931187b2bd0c9d14fc"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\setupapi.dll",
+    "sha256": "9cca168a1a95fef4a69b8cb0f1e310b793563833658169cacaf3ad67382ba2c7"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\shcore.dll",
+    "sha256": "60fa3face0cfeccd442ef8c10f0d98f7991998784d21c8f7b77fc1048b222c95"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\shell32.dll",
+    "sha256": "c55a5f3b6ef059871fe2a0c8d82f086e0998d1154023e3ecf49698b97f9341f6"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\shlwapi.dll",
+    "sha256": "77b883ae848e1209b17ded14e6558656651f84d47cd656d1d3c118cc5409ed5b"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\srvcli.dll",
+    "sha256": "6170dddf6a03b2b3e9520e301fb3a06fae7fb4c617b2c7d7cceb2160e829fd4d"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\sspicli.dll",
+    "sha256": "5aa8f7bbcc7a8a422d14612d9ca1f8a50acd6030eb4bff204a205fec76f27a59"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\sxs.dll",
+    "sha256": "bbcc45057e7baf30632eda64354bbc945e82de55696952914938a6a2d43c1858"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\textinputframework.dll",
+    "sha256": "29b8e6b039e8de5b3aa68d6d64f8a7868a69bd8f137b885f326810aabfc5d076"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\twinapi.appcore.dll",
+    "sha256": "000736bd54e9376e78ebe8eef87832606a058e0c2a1df290642177e7858b81a0"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\tzres.dll",
+    "sha256": "1398cf1d866e49a8ba351e2a30a7803b50c8b595d17f776abe8d2ec4a9c6fb10"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\ucrtbase.dll",
+    "sha256": "dedb7611e1abc1ff3852dcac3d4c93a048d729e25b061973b9969f22698f14ca"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\uiautomationcore.dll",
+    "sha256": "be5037bf46e61566d3e5a83a6c628cebe9035771e4ae741a7b9aa27b5696d989"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\umpdc.dll",
+    "sha256": "b3407a812c7f34ac6b5beefb2a78e8f2d7c4376f7c7012f880aab4fe07235e4e"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\urlmon.dll",
+    "sha256": "ed9262ab87744cf701e2cdd6a3714c3d1bdd30a1985f0d97a76c4bd35b03e239"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\user32.dll",
+    "sha256": "f285937030bcb325cad39ee5be4818f6666241229adeadea4ff1ae469dfd7ef3"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\userenv.dll",
+    "sha256": "aeb1a6a15397bee7a0ebc67b8188f751e10089c0adadfd86146496c5faae914c"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\uxtheme.dll",
+    "sha256": "e5087142f87989c7430d82a65616817a2515a79fa582549ba48a1dd6ac1b7200"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\vcomp140.dll",
+    "sha256": "31af29c03643f8396a6f26bcd601c6369d26493d7d78b714827ab2801bd284c7"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\version.dll",
+    "sha256": "cea99f212af557a9613150c5509631403ed0f05f5d9a06ac42039bd59b40e39a"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\vulkan-1.dll",
+    "sha256": "236ba2bb71d0254a669ec85e67ae7814dc074fc04c90300b035617e7aa17d0e9"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\win32u.dll",
+    "sha256": "d46a695db805e808efa63d1095ce3e1b6be9c0155dad405d444530efc1ed0362"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\windows.staterepositorycore.dll",
+    "sha256": "153c79f36f5c9d8b541cdd5c2cc838ab430aba0298ee81ceaca641ba82bf9370"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\windows.storage.dll",
+    "sha256": "a0d41fcfd66f4fbba8dbb84776c7d344f66969ce8b6edac19b3ac1dd737a628a"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\windows.ui.dll",
+    "sha256": "f8bbe0a73569bede3d2141384997086942ed49af6749a61aa723044425cf2c05"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\windows.ui.immersive.dll",
+    "sha256": "76fbe28ac74cf50ce7e6e33bf3a0b67047b314296356dad915e6b06ab6101d23"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\winmm.dll",
+    "sha256": "b9035da2ee058fe565ecb3c0064f46f2d09bde01f29e423ffe6b33e15c773f04"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\wintrust.dll",
+    "sha256": "a24ff2ace63b7facf6f62cd024a596083342eebc6a8d3748ff98938b6de93a0e"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\wintypes.dll",
+    "sha256": "d19da3e350f70116097eb200a25aa31497415ed3999bb2d87faf7b724b7d2e74"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\wldp.dll",
+    "sha256": "5f09d68230309d09c6c0123dbccf85a6f9b70d5ec8bcbe69613d9f2c6e6fe24b"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\ws2_32.dll",
+    "sha256": "b123b00c46c415d7baeaada58c29c3e6920895db836ee4c0cfee49d738af60ad"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\wtsapi32.dll",
+    "sha256": "9bc998a7b2e3eca0941bf7b5449049b3aa0ef67a840baf78a7b04dbc323595c4"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\winsxs\\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.26100.9711_none_3e07b8b0e334e825\\comctl32.dll",
+    "sha256": "645e27c04538e8079b0db62cef14b6353dd83a1b09a68a7d6c1b69e83cfd65e3"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\winsxs\\amd64_microsoft.windows.gdiplus_6595b64144ccf1df_1.1.26100.9711_none_6ef2ab963dc761f3\\gdiplus.dll",
+    "sha256": "a010137a9f89d49a484a0603f0e35a19195305002c857f313f857be662e1ab92"
+  }
+]

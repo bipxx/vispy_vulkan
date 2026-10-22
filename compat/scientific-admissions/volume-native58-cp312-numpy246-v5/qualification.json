@@ -1,0 +1,236 @@
+{
+  "cases": {
+    "volume-256-1024-iso-full": {
+      "admission_sha256": "d41030dcf0988b29d38320c22bb543b1b20f10677e877c2251f1ca164e085c15",
+      "maximum_channel_error": 1,
+      "visible_change_checks": 2
+    },
+    "volume-256-1024-iso-resident": {
+      "admission_sha256": "b5e576fa49e60de5823df93602a63efb2d930df60fb36a5a6f6e8e683354c0f0",
+      "maximum_channel_error": 1,
+      "visible_change_checks": 2
+    },
+    "volume-256-1024-mip-full": {
+      "admission_sha256": "d22f2c837ecdc4a99d4c49a254356e3d727f0f0c39a5281fcfce4747b4578295",
+      "maximum_channel_error": 1,
+      "visible_change_checks": 2
+    },
+    "volume-256-1024-mip-resident": {
+      "admission_sha256": "7ba6aa3a6f95e538fcd371dd25f0b714eb0c2f92193ad1ab5a1180ba09295e1f",
+      "maximum_channel_error": 1,
+      "visible_change_checks": 2
+    },
+    "volume-256-1024-translucent-full": {
+      "admission_sha256": "876dc0b0034cee74afd4abfbf243c8edaffefdfec363c36a1284ac15d7a1a7a3",
+      "maximum_channel_error": 1,
+      "visible_change_checks": 2
+    },
+    "volume-256-1024-translucent-resident": {
+      "admission_sha256": "acc050e221764bbe4d5a9fb50253b66f9db78cd0a7b2d774fa8895365a4f6fb0",
+      "maximum_channel_error": 1,
+      "visible_change_checks": 2
+    },
+    "volume-256-2048-iso-full": {
+      "admission_sha256": "3eeee4fe6c825f05fbd3409b93ab962e536cb74e316ffc842d8421592b815111",
+      "maximum_channel_error": 1,
+      "visible_change_checks": 2
+    },
+    "volume-256-2048-iso-resident": {
+      "admission_sha256": "fcf2e8bd8b653337aca95e2e50caf08b1a8b885ef1ef7693d2ad5fa90280cf6a",
+      "maximum_channel_error": 1,
+      "visible_change_checks": 2
+    },
+    "volume-256-2048-mip-full": {
+      "admission_sha256": "f58e75556af4674100a964aa6a7ab9dbd9949f35f7fb985f35b843cb9d8183c0",
+      "maximum_channel_error": 1,
+      "visible_change_checks": 2
+    },
+    "volume-256-2048-mip-resident": {
+      "admission_sha256": "97f1b3bf1159701380bf2a7d754ae82e626178f89a1899be9e2020fb3047a8cc",
+      "maximum_channel_error": 1,
+      "visible_change_checks": 2
+    },
+    "volume-256-2048-translucent-full": {
+      "admission_sha256": "e71f7e5ba751c39949cb222bb22f79da5bb2bf33b95d4b94e9bdc7754513c2ea",
+      "maximum_channel_error": 1,
+      "visible_change_checks": 2
+    },
+    "volume-256-2048-translucent-resident": {
+      "admission_sha256": "17af14a5bb608fdc8c2a56714af87e5f1c7a3aa750e6b2aa8792d5cf677a7c85",
+      "maximum_channel_error": 1,
+      "visible_change_checks": 2
+    },
+    "volume-512-1024-iso-full": {
+      "admission_sha256": "bff56c907e662725c1569d8e6c7221a2749acdba3944ba3fe27e1cb20b410488",
+      "maximum_channel_error": 1,
+      "visible_change_checks": 2
+    },
+    "volume-512-1024-iso-resident": {
+      "admission_sha256": "35cc7317822145e8d6ca8fb35895a374efa8e70a26ad531299dfa78470885e2e",
+      "maximum_channel_error": 1,
+      "visible_change_checks": 2
+    },
+    "volume-512-1024-mip-full": {
+      "admission_sha256": "a9662e749a707a6d8726fd509624ef62a057500dba195225fde2e528bffdf203",
+      "maximum_channel_error": 1,
+      "visible_change_checks": 2
+    },
+    "volume-512-1024-mip-resident": {
+      "admission_sha256": "36c66279349ec4ee2add2cd8e6371b919fc21dbe95af67d4cf98f18e6e953dc2",
+      "maximum_channel_error": 1,
+      "visible_change_checks": 2
+    },
+    "volume-512-1024-translucent-full": {
+      "admission_sha256": "a8abc7c30979b09148e27f93df0cceeb34a0359a982f784356e57402e33b05a9",
+      "maximum_channel_error": 1,
+      "visible_change_checks": 2
+    },
+    "volume-512-1024-translucent-resident": {
+      "admission_sha256": "64e0cb96041296873dbe549447317b82f0830203df5f153517c720902b898eb9",
+      "maximum_channel_error": 1,
+      "visible_change_checks": 2
+    },
+    "volume-512-2048-iso-full": {
+      "admission_sha256": "943a6d446b7091e542ca1ac348725fe23cab3d724b2636d41e5fea7d56863276",
+      "maximum_channel_error": 1,
+      "visible_change_checks": 2
+    },
+    "volume-512-2048-iso-resident": {
+      "admission_sha256": "40fea2d800f22d309ceeed333f5c8267114a09cbda964d98062165f5103c0417",
+      "maximum_channel_error": 1,
+      "visible_change_checks": 2
+    },
+    "volume-512-2048-mip-full": {
+      "admission_sha256": "fb30e103fac33ca6fe1063422c4eb730d1fc239b7726d1d3ff0889ff6a664bd3",
+      "maximum_channel_error": 1,
+      "visible_change_checks": 2
+    },
+    "volume-512-2048-mip-resident": {
+      "admission_sha256": "d35aab764ee4ee19059df94ee847677222c95441eb0198aca8b6d48a7dca3c7e",
+      "maximum_channel_error": 1,
+      "visible_change_checks": 2
+    },
+    "volume-512-2048-translucent-full": {
+      "admission_sha256": "46464511e63abd5084ab49974af03e6303265cf4cb3a2d46b249e9d7a2ca2485",
+      "maximum_channel_error": 1,
+      "visible_change_checks": 2
+    },
+    "volume-512-2048-translucent-resident": {
+      "admission_sha256": "f266178ac8e62a96157bb8beb004c441b020206b031cbcd68e99845255ce4333",
+      "maximum_channel_error": 1,
+      "visible_change_checks": 2
+    }
+  },
+  "controls": {
+    "additive": {
+      "compared_pixels": 9216,
+      "max_channel_error": 0,
+      "parameters_sha256": "f7455413f659759313c442be8be6445e16ca258b7d7a2767b8718eacee7eb87b",
+      "result_sha256": "9ef422b3ff39d312d98918e5806404fb636ffe18727bce730e2fee4ad6e313d3"
+    },
+    "attenuated_mip": {
+      "compared_pixels": 9216,
+      "max_channel_error": 0,
+      "parameters_sha256": "02752070647b6800f64a2d30d72d94bd81b1032ae6f6ff1ac23f823f136eab8f",
+      "result_sha256": "5ffdb4d8d8ba664325819ded3de9a18e93b2f585fc75dbf03175018ae136dacc"
+    },
+    "average": {
+      "compared_pixels": 9216,
+      "max_channel_error": 0,
+      "parameters_sha256": "b3f5858faa65b91619e8b7b42ec655fcbfde43b00c6fa796555ce9a0d489ac98",
+      "result_sha256": "fcd760c695ef4f92593eb761a29fb9a92c6d30d4b4ebf2d545f41c74c16b314c"
+    },
+    "categorical_clip": {
+      "compared_pixels": 9216,
+      "max_channel_error": 0,
+      "parameters_sha256": "a20fa1766709b1f7038691536878acfc1dd7f34aa64e8f4fcd644dc01637cf37",
+      "result_sha256": "27353e4dbfdae828561845407497cc6841dacdf4d1c4658dc9c11de2792bc8eb"
+    },
+    "categorical_edit": {
+      "compared_pixels": 9216,
+      "max_channel_error": 0,
+      "parameters_sha256": "b8233c6715d9d491a93ff4b4fad3dd7b251ed76d0057347baafbe7b9d3e53c7b",
+      "result_sha256": "01911e0d48d3bd27ba0064d5ea44dc4cf91612f3182fa3a5f424ad05c03323c5"
+    },
+    "categorical_plane": {
+      "compared_pixels": 9216,
+      "max_channel_error": 0,
+      "parameters_sha256": "bc1b841de20cc58fe4061f6bf7e4efaa842c923adc57dbbd499c6342bc90cd5a",
+      "result_sha256": "462b7a9057bef5709c108aee3e436e3cb455751e1c790315005daffb53db6c37"
+    },
+    "clipped_mip": {
+      "compared_pixels": 9216,
+      "max_channel_error": 0,
+      "parameters_sha256": "ee9195b5090609ee1a612c6827ffe604c8264ee8cddcd10b94e71114dda7a600",
+      "result_sha256": "20979da2469587531e2cb14362c12672c8ae8a79746028b261f3844eeec68794"
+    },
+    "iso": {
+      "compared_pixels": 9216,
+      "max_channel_error": 0,
+      "parameters_sha256": "09887afdbe22dad70672c554663400a7f31105742333a3faf6357e8745e64b20",
+      "result_sha256": "0703526956983cbf2553c045c9cdf2fe72db73c4e1fe7f7d5f2a6dd4f99b97d0"
+    },
+    "iso_categorical_fast": {
+      "compared_pixels": 9216,
+      "max_channel_error": 0,
+      "parameters_sha256": "d58300e2e9d8e095613b73c879c7aaffc4610ad0ad9ffd2962a2424e8ab08e7e",
+      "result_sha256": "e602403a5c05830758dbbe5a8e2f05ca2545a191297db3324a5acba7145e3f05"
+    },
+    "iso_categorical_smooth": {
+      "compared_pixels": 9216,
+      "max_channel_error": 0,
+      "parameters_sha256": "a711ea4c12b7d3ea051f457f3eaf74c97b567103ad11959098e96b61fdef01cb",
+      "result_sha256": "6609d6e76b0ffe55f214de07901e55a2814662a48da95082abe5305a4de95b98"
+    },
+    "mesh_front_iso": {
+      "compared_pixels": 9216,
+      "max_channel_error": 0,
+      "parameters_sha256": "456eebd07a60f00b7c016750112456db275b91382d504cf9cfadb4fc973bf8d8",
+      "result_sha256": "c9c004458fcbef08bbce27843b64e4402ff3eb23f2f171a0e59f97140af92c4e"
+    },
+    "minip": {
+      "compared_pixels": 9216,
+      "max_channel_error": 0,
+      "parameters_sha256": "7e2576a28161a21f003dc8412608634dde636b2320e427e05986b790f91e430d",
+      "result_sha256": "f8651f6e76f550d3e5e5f2249fc32f11f8b9ce3dc4cf795ef73153b1380bf705"
+    },
+    "mip": {
+      "compared_pixels": 9216,
+      "max_channel_error": 0,
+      "parameters_sha256": "4e51edcf33eba613590bc9dfe407f10a96e4b17d2070693d2350060b6fdf206f",
+      "result_sha256": "69af6e3a49cc88afe6683864ce68e36b3b8608465b4a62f1f6a8dfe26e489216"
+    },
+    "mip_linear": {
+      "compared_pixels": 9216,
+      "max_channel_error": 0,
+      "parameters_sha256": "f6ebbb58f0bdf93fab9db189a3cc8b87c17315802043a7e1b3bbb9669b749174",
+      "result_sha256": "5f7ae3b42936d199465a1ca80350d3ac811d45c60148f19e92bd08238c54160b"
+    },
+    "plane_mip": {
+      "compared_pixels": 9216,
+      "max_channel_error": 0,
+      "parameters_sha256": "724debe4610b75f1da7ad5c4041c0e114715442ad8a5565d7ffd5e322953812e",
+      "result_sha256": "8476a4bb49d614aea0d0adc417e5d3b072fc0cfe1ade0ae080b9408b7cd9c7e6"
+    },
+    "translucent": {
+      "compared_pixels": 9216,
+      "max_channel_error": 0,
+      "parameters_sha256": "45d7fa354870a92ac7ff118ac7fb065a4298a0858d9e267c1d279fa522fae128",
+      "result_sha256": "1c5bd6e6af26c910ce94f7862c03770dbdb3bda48afe0355d92afedafecfb58c"
+    },
+    "translucent_categorical": {
+      "compared_pixels": 9216,
+      "max_channel_error": 0,
+      "parameters_sha256": "0c23b77132e14492f3764de8f01fee1665324e6ce81cd4702bf1e2f79117cc14",
+      "result_sha256": "e69a78dafb15c0049bc11ba1142a547d0bbae35b8a0211687bdaeb9255bb1985"
+    }
+  },
+  "controls_manifest_sha256": "e9f2ef17e59a222372a4588dd5faa639f73beab0a8ad41e6713625864bbd406f",
+  "full_release_qualified": false,
+  "large_candidate_manifest_sha256": "e3f285bcbf97d4a40cb75e031bda9c23abf5fc5d35cf2ad6047c0c8ada9cd576",
+  "large_original_manifest_sha256": "af7919c6f59dca7addee614a674942697b33d53df3446df0cea422ef980bf2ac",
+  "measured_performance_claimed": false,
+  "measurement_identity_required": true,
+  "schema": 1,
+  "status": "PASS_24_BOUND_VOLUME_SCIENTIFIC_ADMISSIONS"
+}

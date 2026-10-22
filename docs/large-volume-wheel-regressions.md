@@ -142,6 +142,7 @@ with allocation/free conservation; rendering inputs and pixel rules are identica
 to Source2. Every failed status and artifact remains unchanged. Source review and
 explicit root resolutions are retained; no later peer READY verdict is claimed.
 
-This closes the bounded large-data quality/residency component only. Performance,
-per-workload links to the independent categorical/depth/clipping/numeric controls,
+This closes the bounded large-data quality/residency component only. Per-workload
+links to the independent categorical/depth/clipping/numeric controls are recorded
+in [volume scientific admissions](volume-scientific-admissions.md). Performance,
 other hardware/platform/binding/ABI cells and the full release remain unqualified.
