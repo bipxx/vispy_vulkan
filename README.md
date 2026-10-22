@@ -64,9 +64,13 @@ The [installed-wheel mesh/layout regressions](docs/mesh-layout-wheel-regressions
 
 The [installed-wheel image/label regressions](docs/image-wheel-regressions.md) cover thirteen original workflows, including NaNs, signed labels, offset painting, multiscale revisions and slice changes. All thirteen passed with exact frames and semantic observations in a bounded Windows CPython 3.12 run. Wider platform, host, performance and release qualification remains open.
 
-The [installed-wheel volume regressions](docs/volume-wheel-regressions.md) retain eleven scalar and six categorical napari workflows, including clipping, plane depiction, sparse-label edits and depth ordering against geometry. All seventeen matched the original full frames byte-for-byte in a bounded Windows CPython 3.12 run, with the original comparison rules unchanged. The separate Glue volume discrepancy remains open.
+The [installed-wheel volume regressions](docs/volume-wheel-regressions.md) retain eleven scalar and six categorical napari workflows, including clipping, plane depiction, sparse-label edits and depth ordering against geometry. All seventeen matched the original full frames byte-for-byte in a bounded Windows CPython 3.12 run, with the original comparison rules unchanged. Glue volume updates use the public cache-invalidation protocol described below; the complete Glue suite remains blocked by smooth lines.
 
 The [Glue cache-update regressions](docs/glue-wheel-regressions.md) use the pinned host's public cache invalidation before a data update, preserving the original data, geometry and criteria. All five fresh upstream scenes pass, including volume edit. Four candidate scenes match exactly; scatter axes remains a required failure at unsupported smooth lines. The historical failed-reference audit is retained, and active coverage lives under `tests/hosts`.
+
+The [installed-wheel plugin overlay regressions](docs/napari-plugin-wheel-regressions.md) retain all five napari-threedee handle, mouse-event and retirement workflows. All five fresh original cases reproduce the retained frames and state exactly. Candidate retirement matches exactly; four workflows remain required failures at the existing smooth-line refusal. Exact small test-input artifacts and upstream licenses are included, with no private build-directory dependency.
+
+The [phylib Linux import admission](docs/phylib-import-admission.md) verifies twelve source-pinned CPU imports in WSL and on the Ubuntu CI runner. It imports no VisPy or Qt and grants no GUI or graphics qualification.
 
 ## Licensing
 

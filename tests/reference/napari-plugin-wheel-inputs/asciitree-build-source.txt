@@ -1,0 +1,50 @@
+"""Build the exact locked pure-Python dependency into a binary-installable wheel."""
+import hashlib,json,os,shutil,subprocess,sys,tempfile,tarfile,urllib.request,zipfile
+from email.parser import BytesParser
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[2]
+assert sys.flags.isolated and sys.flags.dont_write_bytecode
+OUT=ROOT/'build/napari-plugin-asciitree-wheel-root-1'
+assert not OUT.exists();OUT.mkdir()
+def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+expected='4aa4b9b649f85e3fcb343363d97564aa1fb62e249677f2e18a96765145cc0f6e'
+with urllib.request.urlopen('https://pypi.org/pypi/asciitree/0.3.3/json',timeout=30) as response:metadata=json.load(response)
+row=next(f for f in metadata['urls'] if f['packagetype']=='sdist' and f['digests']['sha256']==expected)
+archive=OUT/row['filename']
+with urllib.request.urlopen(row['url'],timeout=30) as response,archive.open('xb') as stream:stream.write(response.read())
+assert sha(archive)==expected
+owner=Path(tempfile.mkdtemp(prefix='vispy-plugin-dependency-build-')).resolve()
+assert owner.parent==Path(tempfile.gettempdir()).resolve() and not owner.is_relative_to(ROOT)
+uv=Path(shutil.which('uv')).resolve();python=owner/'venv/Scripts/python.exe'
+requirements=ROOT/'compat/host-environments/build-tools-windows-cpython312.txt'
+env=dict(os.environ,PYTHONDONTWRITEBYTECODE='1',UV_CACHE_DIR=str(owner/'cache'),SOURCE_DATE_EPOCH='946684800')
+env.pop('PYTHONPATH',None);env.pop('PYTHONHOME',None)
+commands=[[uv,'venv',owner/'venv','--python',sys.executable],
+ [uv,'pip','install','--python',python,'--require-hashes','--only-binary',':all:','--requirements',requirements],
+ [uv,'build',archive,'--wheel','--no-build-isolation','--python',python,'--out-dir',OUT/'wheels']]
+stages=[]
+try:
+ for i,argv in enumerate(commands):
+  with (OUT/f'stage-{i}.log').open('xb') as log:
+   child=subprocess.Popen([str(v) for v in argv],cwd=owner,env=env,stdout=log,stderr=subprocess.STDOUT);code=child.wait()
+  stages.append(dict(argv=[str(v) for v in argv],pid=child.pid,process_exit=code,child_waited=True,log_sha256=sha(OUT/f'stage-{i}.log')))
+  assert code==0
+finally:
+ assert owner.parent==Path(tempfile.gettempdir()).resolve() and owner.name.startswith('vispy-plugin-dependency-build-')
+ shutil.rmtree(owner)
+wheels=list((OUT/'wheels').glob('*.whl'));assert len(wheels)==1;wheel=wheels[0]
+with tarfile.open(archive,'r:gz') as tar,zipfile.ZipFile(wheel) as whl:
+ members={m.name.split('/',1)[1]:tar.extractfile(m).read() for m in tar.getmembers() if m.isfile() and '/' in m.name}
+ package={name:body for name,body in members.items() if name.startswith('asciitree/')}
+ assert package and all(whl.read(name)==body for name,body in package.items())
+ wheel_meta=BytesParser().parsebytes(whl.read('asciitree-0.3.3.dist-info/METADATA'))
+ assert wheel_meta['Name']=='asciitree' and wheel_meta['Version']=='0.3.3'
+ licenses={name:body for name,body in members.items() if Path(name).name.upper().startswith(('LICENSE','COPYING'))}
+ assert licenses and all(any(whl.read(name)==body for name in whl.namelist() if not name.endswith('/')) for body in licenses.values())
+ record=dict(status='VERIFIED_PINNED_ASCIITREE_WHEEL',source_url=row['url'],source_sha256=expected,
+  wheel=dict(path=wheel.relative_to(ROOT).as_posix(),sha256=sha(wheel)),package_files_sha256={n:hashlib.sha256(b).hexdigest() for n,b in package.items()},
+  upstream_license_files_sha256={n:hashlib.sha256(b).hexdigest() for n,b in licenses.items()},
+  build_requirements_sha256=sha(requirements),source_date_epoch=946684800,stages=stages,
+  owned_build_environment_removed=not owner.exists(),graphics_invoked=False,version_unchanged='0.3.3')
+with (OUT/'result.json').open('x',encoding='utf-8') as f:json.dump(record,f,indent=2)
+print(json.dumps(dict(status=record['status'],wheel=record['wheel'],result_sha256=sha(OUT/'result.json'))))

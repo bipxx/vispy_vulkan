@@ -1,0 +1,73 @@
+{
+  "status": "VERIFIED_PINNED_ASCIITREE_WHEEL",
+  "source_url": "https://files.pythonhosted.org/packages/2d/6a/885bc91484e1aa8f618f6f0228d76d0e67000b0fdd6090673b777e311913/asciitree-0.3.3.tar.gz",
+  "source_sha256": "4aa4b9b649f85e3fcb343363d97564aa1fb62e249677f2e18a96765145cc0f6e",
+  "wheel": {
+    "path": "build/napari-plugin-asciitree-wheel-root-1/wheels/asciitree-0.3.3-py3-none-any.whl",
+    "sha256": "d3c865c2cea5e56b52c090526c3ea87287356eaa7f8f4d78d4a872ca1c4cef10"
+  },
+  "package_files_sha256": {
+    "asciitree/util.py": "60153179c82ef31e377d5158033726c216e7181322caa8f2371b678851b47500",
+    "asciitree/traversal.py": "0a7d92c5fe459bfadd0fcd20e8c22a4cba8de31497e20acedaaee474aafc22f1",
+    "asciitree/drawing.py": "120f2a9701249d77b508a55a9f3e4c7c70596245710ef8900b5475210106ed2e",
+    "asciitree/__init__.py": "b960dfd052a030ba0dbdd8602f247dd3175d7009e8de5af25434584fad52b6ec"
+  },
+  "upstream_license_files_sha256": {
+    "LICENSE": "184d1ebb65da97ada36447f3c028f2fd4890b874f17b18c023ce200dd96639af"
+  },
+  "build_requirements_sha256": "431b0bca16553f49b37fb8d33a40bfdb11f5b4651e08f926c94b0183a5ad29a6",
+  "source_date_epoch": 946684800,
+  "stages": [
+    {
+      "argv": [
+        "C:\\Users\\HEQ\\.local\\bin\\uv.exe",
+        "venv",
+        "C:\\Users\\HEQ\\AppData\\Local\\Temp\\vispy-plugin-dependency-build-xd_vnuu1\\venv",
+        "--python",
+        "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\.venv\\Scripts\\python.exe"
+      ],
+      "pid": 79056,
+      "process_exit": 0,
+      "child_waited": true,
+      "log_sha256": "4eabdd77d61e77572ffa2c3a86e870073cd9485eeb5d179b030170628c11e9f7"
+    },
+    {
+      "argv": [
+        "C:\\Users\\HEQ\\.local\\bin\\uv.exe",
+        "pip",
+        "install",
+        "--python",
+        "C:\\Users\\HEQ\\AppData\\Local\\Temp\\vispy-plugin-dependency-build-xd_vnuu1\\venv\\Scripts\\python.exe",
+        "--require-hashes",
+        "--only-binary",
+        ":all:",
+        "--requirements",
+        "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\compat\\host-environments\\build-tools-windows-cpython312.txt"
+      ],
+      "pid": 82760,
+      "process_exit": 0,
+      "child_waited": true,
+      "log_sha256": "8c61467cee4e2cf240bb1e0401c6409056f6fcaef5ab6e9965a6486556352c72"
+    },
+    {
+      "argv": [
+        "C:\\Users\\HEQ\\.local\\bin\\uv.exe",
+        "build",
+        "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\napari-plugin-asciitree-wheel-root-1\\asciitree-0.3.3.tar.gz",
+        "--wheel",
+        "--no-build-isolation",
+        "--python",
+        "C:\\Users\\HEQ\\AppData\\Local\\Temp\\vispy-plugin-dependency-build-xd_vnuu1\\venv\\Scripts\\python.exe",
+        "--out-dir",
+        "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\napari-plugin-asciitree-wheel-root-1\\wheels"
+      ],
+      "pid": 69132,
+      "process_exit": 0,
+      "child_waited": true,
+      "log_sha256": "5bd3cbcd6c8f93a9527efa86c2ad7b53a41f9dc916231d58e573932cc82e4345"
+    }
+  ],
+  "owned_build_environment_removed": true,
+  "graphics_invoked": false,
+  "version_unchanged": "0.3.3"
+}

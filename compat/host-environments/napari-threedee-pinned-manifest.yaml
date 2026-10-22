@@ -1,0 +1,122 @@
+name: napari-threedee
+schema_version: 0.1.0
+visibility: hidden
+contributions:
+  commands:
+    # Annotators
+    - id: napari-threedee.QtPointAnnotatorWidget
+      title: Create point annotator
+      python_name: napari_threedee.dock_widgets:QtPointAnnotatorWidget
+
+    - id: napari-threedee.QtPathAnnotatorWidget
+      title: Create path annotator
+      python_name: napari_threedee.dock_widgets:QtPathAnnotatorWidget
+
+    - id: napari-threedee.QtSphereAnnotatorWidget
+      title: Create sphere annotator
+      python_name: napari_threedee.dock_widgets:QtSphereAnnotatorWidget
+
+    - id: napari-threedee.QtSurfaceAnnotatorWidget
+      title: Create surface annotator
+      python_name: napari_threedee.dock_widgets:QtSurfaceAnnotatorWidget
+
+    - id: napari-threedee.QtLabelAnnotatorWidget
+      title: Create label annotator
+      python_name: napari_threedee.dock_widgets:QtLabelAnnotatorWidget
+
+    # Manipulators
+    - id: napari-threedee.QtRenderPlaneManipulatorWidget
+      title: Create render plane manipulator
+      python_name: napari_threedee.dock_widgets:QtRenderPlaneManipulatorWidget
+
+    - id: napari-threedee.QtPointManipulatorWidget
+      title: Create point manipulator
+      python_name: napari_threedee.dock_widgets:QtPointManipulatorWidget
+
+    - id: napari-threedee.QtLayerManipulatorWidget
+      title: Create layer manipulator
+      python_name: napari_threedee.dock_widgets:QtLayerManipulatorWidget
+
+    # Lighting
+    - id: napari-threedee.QtLightingControlWidget
+      title: Create mesh lighting control
+      python_name: napari_threedee.dock_widgets:QtLightingControlWidget
+    - id: napari-threedee.QtAmbientOcclusionWidget
+      title: Create ambient occlusion widget
+      python_name: napari_threedee.dock_widgets:QtAmbientOcclusionWidget
+
+    # Visualisation
+    - id: napari-threedee.QtCameraSplineWidget
+      title: Create camera spline control widget
+      python_name: napari_threedee.dock_widgets:QtCameraSpline
+
+    # Sample data
+    - id: napari-threedee.hiv_particles
+      title: Load HIV tomogram
+      python_name: napari_threedee._sample_data:hiv_sample_tomogram
+
+    # # Reader
+    # - id: napari-threedee.read_n3d
+    #   title: Read ".n3d" files
+    #   python_name: napari_threedee.annotators.io._napari:read_n3d_zarr
+
+    # # Writers
+    # - id: napari-threedee.write_n3d
+    #   title: Save points layer to n3d
+    #   python_name: napari_threedee.annotators.io._napari:write_n3d_zarr
+
+
+  widgets:
+    # Annotators
+    - command: napari-threedee.QtPointAnnotatorWidget
+      display_name: point annotator
+
+    - command: napari-threedee.QtPathAnnotatorWidget
+      display_name: path annotator
+
+    - command: napari-threedee.QtSphereAnnotatorWidget
+      display_name: sphere annotator
+
+    - command: napari-threedee.QtSurfaceAnnotatorWidget
+      display_name: surface annotator
+
+    - command: napari-threedee.QtLabelAnnotatorWidget
+      display_name: label annotator
+
+    # Manipulators
+    - command: napari-threedee.QtRenderPlaneManipulatorWidget
+      display_name: render plane manipulator
+
+    - command: napari-threedee.QtPointManipulatorWidget
+      display_name: point manipulator
+
+    - command: napari-threedee.QtLayerManipulatorWidget
+      display_name: layer manipulator
+
+    # Lighting
+    - command: napari-threedee.QtLightingControlWidget
+      display_name: mesh lighting controls
+    - command: napari-threedee.QtAmbientOcclusionWidget
+      display_name: ambient occlusion controls
+
+    # Visualisation
+    - command: napari-threedee.QtCameraSplineWidget
+      display_name: camera spline control
+
+  sample_data:
+    - command: napari-threedee.hiv_particles
+      display_name: HIV virus-like particles tomogram
+      key: unique_id.1
+
+  # writers:
+  #   - command: napari-threedee.write_n3d
+  #     layer_types:
+  #       - points
+  #     filename_extensions:
+  #       - .n3d
+
+  # readers:
+  #   - command: napari-threedee.read_n3d
+  #     filename_patterns:
+  #       - '*.n3d'
+  #     accepts_directories: true
