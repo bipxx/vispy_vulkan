@@ -15,10 +15,14 @@ if sys.flags.optimize:
 spec = importlib.util.spec_from_file_location("_owned_upload_contract", binary)
 native = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(native)
-tree = ast.parse(source.read_text())
+source_text = source.read_text(encoding="utf-8")
+tree = ast.parse(source_text)
 functions = [n for n in tree.body if isinstance(n, ast.FunctionDef) and n.name in ("_freeze", "_freeze_owned", "pack_commands")]
 assert len(functions) == 3
-assert hashlib.sha256(ast.dump(functions[0], include_attributes=False).encode()).hexdigest() == "1404823fd7e1c328d324b1d6634567c35780fca6ae06ce107c801de9fbba1d83", "legacy freezer changed"
+# AST dump fields vary across Python releases. Pin the unchanged function's
+# exact source instead; read_text normalizes platform line endings.
+legacy_source = ast.get_source_segment(source_text, functions[0])
+assert legacy_source is not None and hashlib.sha256(legacy_source.encode()).hexdigest() == "51f69590e0dc52c8e871400a283a4a1a4931028b49f340330f17a0418aa887b8", "legacy freezer changed"
 namespace = {"np": np}
 exec(compile(ast.Module(body=functions, type_ignores=[]), str(source), "exec"), namespace)
 pack = namespace["pack_commands"]
