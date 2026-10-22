@@ -44,6 +44,47 @@ See [build instructions](cmake/README.md) for CPU contracts, wheels, isolated en
 
 ## Current qualification
 
+The current Native63 Windows CPython 3.12 build passes all 47 native CTests.
+A fresh wheel passes package, native-origin and license checks, followed by
+35 hardware Vulkan cases on an RTX 4090: eight rendering/transfer cases,
+eight queued-lifetime cases, seven device-recovery cases and twelve numeric
+transfer cases. Separate saved-output audits verify the original complete
+images, transfer bytes and counters. Both the native build and the wheel's
+binding pass 17 failure-path CPU checks. These results cover this artifact;
+broader scientific workflows, performance, other ABIs and platforms remain
+release requirements. The wheel includes AGPL and the unchanged original
+VisPy BSD license and notices.
+
+Nine additional cases pass on that same wheel, with 15 exact complete-image
+comparisons: queued 1D texture revisions and recovery, generated lines in
+color-only and depth-attached targets, and Qt recovery during an actual paint.
+These bring the bounded hardware case count to 44. The generated-line checks
+cover the whole route; forced chunking remains a separate private experiment.
+
+The same Native63 wheel also passes all 17 original scalar and categorical
+scientific volume controls. A separate saved-output audit verifies every
+complete 96-by-96 RGBA frame against its unchanged OpenGL reference, together
+with the host, native-module, process and cleanup records. Performance and the
+wider platform matrix remain open.
+
+All 13 original image and label cases also pass on the Native63 wheel. The
+independent audit verifies complete 128-by-96 RGBA frames, original host
+observations, native origins and cleanup, with zero differing bytes or excluded
+pixels. These results retain the original reference images and assertions.
+
+The Native63 large-workload checks also pass: 24 volume cases cover 96 complete
+frames and 48 change-discrimination checks. The largest channel difference is
+1, within the original limit of 2, with no excluded pixels. Four large-image
+cases cover 16 complete 4096-by-4096 frames with exact equality. Separate audits
+recompute the original image, analytic, residency and raw counter checks.
+These are quality checks; performance, opaque driver memory peaks, scanout and
+the remaining platform and host requirements remain open.
+
+Smooth-line coverage remains incomplete. A private native Vulkan experiment
+matches the fixed horizontal OpenGL frame but fails the fixed diagonal frame
+at one color byte. The exact comparison and references are unchanged, and
+the experiment has not been promoted into the renderer.
+
 Earlier bounded Windows CPython 3.12 validation independently admitted the tested clean-consumer lifecycle: compiled SDF, text and clear rendering, uninstall, absence verification, upstream restoration, and complete-array comparison. This does not qualify other Python ABIs or hosts.
 
 The earlier 256-byte partition capture passed 19 cases, 22 complete frames, and 66 attachment comparisons. Broader stencil, primitive identity, residency, and performance requirements remain separate.

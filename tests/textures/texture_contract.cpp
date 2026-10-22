@@ -1,4 +1,5 @@
 #include "runtime_texture.hpp"
+#include "texture_full_upload_contract.hpp"
 
 #include <iostream>
 #include <stdexcept>
@@ -292,6 +293,70 @@ void mixed_storage_roundtrip() {
             "mixed patches preserve uint32 byte narrowing at upper-byte boundaries");
 }
 
+void interpreter_texture_dimensions() {
+    using namespace texture_detail;
+    for (const std::string name : {"Program", "VertexShader", "FragmentShader", "GeometryShader",
+            "VertexBuffer", "IndexBuffer", "Texture1D", "Texture2D", "Texture3D", "RenderBuffer", "FrameBuffer"})
+        require(supported_glir_object_class(name), "CREATE supported class " + name);
+    require(!supported_glir_object_class("Texture4D"), "CREATE unknown class must reject");
+    require(texture_dimensions_for_class("Texture1D") == 1 && texture_dimensions_for_class("Texture2D") == 2 &&
+        texture_dimensions_for_class("Texture3D") == 3 && texture_dimensions_for_class("RenderBuffer") == 2,
+        "actual SIZE class rank dispatch");
+    rejects([] { texture_dimensions_for_class("Program"); }, "SIZE nontexture class must reject");
+    for (int dimensions : {1, 2, 3}) {
+        std::vector<int64_t> shape = dimensions == 1 ? std::vector<int64_t>{65, 4} :
+            dimensions == 2 ? std::vector<int64_t>{7, 65, 4} : std::vector<int64_t>{3, 7, 65, 4};
+        const auto layout = texture_shape_layout(dimensions, shape);
+        require(layout.width == 65 && layout.height == (dimensions >= 2 ? 7 : 1) &&
+            layout.depth == (dimensions == 3 ? 3 : 1) && layout.channels == 4, "SIZE shape axes");
+        TextureData data; data.dimensions = dimensions; data.width = layout.width; data.height = layout.height;
+        data.depth = layout.depth; data.channels = layout.channels;
+        ByteBlob upload; upload.shape.assign(shape.begin(), shape.end()); upload.dtype = "u8";
+        std::vector<int> offset(dimensions, 0);
+        require(texture_upload_is_entire(data, upload, offset), "DATA complete shape classification");
+        offset.back() = 1;
+        require(!texture_upload_is_entire(data, upload, offset), "DATA offset must prevent full classification");
+        const auto region = texture_region_layout(dimensions, upload.shape, offset);
+        require(region.x == 1 && region.y == 0 && region.z == 0 && region.width == layout.width &&
+            region.height == layout.height && region.depth == layout.depth, "upload region coordinates");
+        shape.pop_back();
+        require(texture_shape_layout(dimensions, shape).channels == 4, "legacy implicit four-channel SIZE");
+    }
+    for (int dimensions : {2, 3}) {
+        const std::vector<int> shape = dimensions == 2 ? std::vector<int>{7, 65, 4} : std::vector<int>{3, 7, 65, 4};
+        const std::vector<int> offset = dimensions == 2 ? std::vector<int>{5, 11} : std::vector<int>{2, 5, 11};
+        const auto region = texture_region_layout(dimensions, shape, offset);
+        require(region.x == 11 && region.y == 5 && region.z == (dimensions == 3 ? 2 : 0),
+            "existing DATA all distinct nonzero origin axes");
+        std::vector<int64_t> legacy = dimensions == 2 ? std::vector<int64_t>{0, 65, 7, 99} :
+            std::vector<int64_t>{0, 7, 65, 7, 99};
+        const auto layout = texture_shape_layout(dimensions, legacy);
+        require(layout.width == 65 && layout.height == (dimensions == 2 ? 0 : 7) &&
+            layout.depth == (dimensions == 3 ? 0 : 1) && layout.channels == 7,
+            "existing SIZE transient zero extent, channel and ignored trailing axes preserved");
+    }
+    rejects([] { texture_shape_layout(1, {5, 4, 1}); }, "1D extra SIZE axis");
+    rejects([] { texture_shape_layout(3, {5, 4}); }, "3D missing SIZE axis");
+    rejects([] { texture_shape_layout(1, {0, 4}); }, "zero SIZE extent");
+    rejects([] { texture_shape_layout(1, {int64_t(std::numeric_limits<int>::max()) + 1, 4}); }, "SIZE native overflow");
+    rejects([] { texture_region_layout(1, {5, 4}, {0, 0}); }, "1D extra origin axis");
+    rejects([] { texture_region_layout(1, {5, 4}, {-1}); }, "negative1D origin");
+    const auto region = texture_region_layout(1, {9, 4}, {17});
+    require(region.x == 17 && region.y == 0 && region.z == 0 && region.width == 9 &&
+        region.height == 1 && region.depth == 1, "real partial1D patch box");
+    TextureData one; one.dimensions = 1; one.width = 65;
+    std::vector<uint8_t> original(65 * 4); for (size_t n = 0; n < original.size(); ++n) original[n] = uint8_t(n % 251);
+    auto entire = blob<uint8_t>(original, {65, 4}, "u8");
+    apply_texture_data(one, entire, {0});
+    require(texture_upload_is_entire(one, entire, {0}), "full1D must clear history");
+    const auto allocation = one;
+    auto patch = blob<uint8_t>(std::vector<uint8_t>(9 * 4, 123), {9, 4}, "u8");
+    apply_texture_data(one, patch, {17}, &allocation);
+    std::fill(original.begin() + 17 * 4, original.begin() + 26 * 4, uint8_t(123));
+    require(prepare_texture(one, &allocation).bytes == original, "partial1D CPU shadow bytes");
+    require(prepare_region(allocation, patch).bytes == patch.bytes, "partial1D upload region bytes");
+}
+
 void sampler_contracts() {
     TextureData data;
     data.min_filter = "linear"; data.mag_filter = "nearest";
@@ -311,7 +376,9 @@ void sampler_contracts() {
 
 int main() {
     try {
+        interpreter_texture_dimensions();
         unsized_storage(); partial_regions(); scientific_formats(); channel_semantics(); fixed_allocation_conversion(); region_conversion(); mixed_source_partial_shadow(); mixed_storage_roundtrip(); sampler_contracts();
+        vispy::texture_contracts::full_upload_equivalence_contract();
         std::cout << "texture allocation, partial upload, scientific format, channel, and sampler contracts passed\n";
         return 0;
     } catch (const std::exception& error) {

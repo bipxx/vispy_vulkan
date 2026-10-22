@@ -947,7 +947,8 @@ bool reflect_sampler_types(const std::vector<uint32_t>& words,
         const auto& image = found->second;
         if (!scalars.contains(image.scalar) || scalars.at(image.scalar) != sampler.sample_scalar)
             return fail("sampled scalar differs for " + sampler.name);
-        const std::string dimension = image.dimension == static_cast<uint32_t>(spv::Dim::Dim2D) ? "2d" :
+        const std::string dimension = image.dimension == static_cast<uint32_t>(spv::Dim::Dim1D) ? "1d" :
+            image.dimension == static_cast<uint32_t>(spv::Dim::Dim2D) ? "2d" :
             image.dimension == static_cast<uint32_t>(spv::Dim::Dim3D) ? "3d" :
             image.dimension == static_cast<uint32_t>(spv::Dim::Cube) ? "cube" : "unsupported";
         if (dimension != sampler.dim || image.arrayed || image.multisampled || image.sampled != 1)

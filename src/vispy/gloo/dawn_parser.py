@@ -37,6 +37,52 @@ def _freeze(value, arrays):
     return value
 
 
+def _freeze_owned(value, arrays, capture, stats):
+    if isinstance(value, np.ndarray):
+        array = np.ascontiguousarray(value)
+        mapped = ((array.dtype.kind in "iu" and array.dtype.itemsize in (1, 2, 4)) or
+                  (array.dtype.kind == "f" and array.dtype.itemsize in (2, 4, 8)) or
+                  array.dtype.kind == "b")
+        if mapped:
+            try:
+                snapshot = capture(memoryview(array))
+            except (BufferError, TypeError, ValueError):
+                stats["fallback_exports"] += 1
+            else:
+                stats["captures"] += 1
+                stats["bytes"] += array.nbytes
+                return {"__owned_blob__": snapshot,
+                        "shape": [int(dim) for dim in array.shape], "dtype": array.dtype.str}
+        else:
+            stats["fallback_dtypes"] += 1
+        return {
+            "__bytes__": array.tobytes(),
+            "shape": [int(dim) for dim in array.shape],
+            "dtype": array.dtype.str,
+        }
+    if isinstance(value, np.generic):
+        if isinstance(value, np.floating):
+            return float(value)
+        if isinstance(value, np.integer):
+            return int(value)
+        return value.item()
+    if isinstance(value, bool):
+        return bool(value)
+    if isinstance(value, (int, np.integer)):
+        return int(value)
+    if isinstance(value, float):
+        return float(value)
+    if isinstance(value, str):
+        return value
+    if isinstance(value, (list, tuple)):
+        return [_freeze_owned(item, arrays, capture, stats) for item in value]
+    if value is None:
+        return None
+    if hasattr(value, "__int__") and type(value).__name__ == "Enum":
+        return int(value)
+    return value
+
+
 def install_gl_queries():
     """Answer the GL queries hosts issue before a context exists."""
     import vispy.gloo.gl as glmod
@@ -112,12 +158,18 @@ def install_gl_queries():
     glmod._dawn_queries = True
 
 
-def pack_commands(commands):
-    """Copy ndarray payloads into a side list before the binding returns."""
+def pack_commands(commands, *, native_capture=None, capture_stats=None):
+    """Snapshot payloads during packing; default output retains the bytes protocol."""
     arrays = []
     packed = []
+    if native_capture is None:
+        freeze = lambda item: _freeze(item, arrays)
+    else:
+        if capture_stats is None:
+            raise ValueError("owned packing requires capture counters")
+        freeze = lambda item: _freeze_owned(item, arrays, native_capture, capture_stats)
     for command in commands:
-        packed.append(tuple(_freeze(item, arrays) for item in command))
+        packed.append(tuple(freeze(item) for item in command))
     return packed, arrays
 
 
@@ -139,8 +191,14 @@ class DawnGlirParser(BaseGlirParser):
     def parse(self, commands):
         from vispy import _dawn
 
-        packed, arrays = pack_commands(commands)
-        _dawn.execute(int(self.canvas_id), packed, arrays)
+        if hasattr(_dawn, "_capture_upload") and hasattr(_dawn, "_execute_owned"):
+            stats = dict(captures=0, bytes=0, fallback_dtypes=0, fallback_exports=0)
+            packed, arrays = pack_commands(commands, native_capture=_dawn._capture_upload,
+                                           capture_stats=stats)
+            _dawn._execute_owned(int(self.canvas_id), packed, arrays, stats)
+        else:
+            packed, arrays = pack_commands(commands)
+            _dawn.execute(int(self.canvas_id), packed, arrays)
         info = _dawn.device_info()
         if info.get("max_texture_dimension_2d"):
             self.capabilities["max_texture_size"] = int(info["max_texture_dimension_2d"])

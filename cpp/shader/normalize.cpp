@@ -101,13 +101,13 @@ bool is_type(const std::string& text) {
         "float", "int", "uint", "bool", "vec2", "vec3", "vec4", "ivec2", "ivec3", "ivec4",
         "uvec2", "uvec3", "uvec4", "bvec2", "bvec3", "bvec4", "mat2", "mat3", "mat4",
         "mat2x3", "mat2x4", "mat3x2", "mat3x4", "mat4x2", "mat4x3",
-        "sampler2D", "sampler3D", "samplerCube", "usampler2D", "isampler2D", "void"};
+        "sampler1D", "sampler2D", "sampler3D", "samplerCube", "usampler2D", "isampler2D", "void"};
     for (const char* type : types) if (text == type) return true;
     return false;
 }
 
 bool is_sampler(const std::string& type) {
-    return type == "sampler2D" || type == "sampler3D" || type == "samplerCube" ||
+    return type == "sampler1D" || type == "sampler2D" || type == "sampler3D" || type == "samplerCube" ||
            type == "usampler2D" || type == "isampler2D";
 }
 
@@ -122,15 +122,16 @@ std::string sampler_prefix(ShaderScalarType scalar) {
 
 std::string sampler_type(const NormSampler& sampler) {
     return sampler_prefix(sampler.sample_scalar) +
-        (sampler.dim == "3d" ? "sampler3D" : sampler.dim == "cube" ? "samplerCube" : "sampler2D");
+        (sampler.dim == "1d" ? "sampler1D" : sampler.dim == "3d" ? "sampler3D" : sampler.dim == "cube" ? "samplerCube" : "sampler2D");
 }
 
 std::string texture_type(const std::string& sampler) {
     return sampler_prefix(sampler_scalar(sampler)) +
-        (sampler == "sampler3D" ? "texture3D" : sampler == "samplerCube" ? "textureCube" : "texture2D");
+        (sampler == "sampler1D" ? "texture1D" : sampler == "sampler3D" ? "texture3D" : sampler == "samplerCube" ? "textureCube" : "texture2D");
 }
 
 std::string sampler_dim(const std::string& type) {
+    if (type == "sampler1D") return "1d";
     if (type == "sampler3D") return "3d";
     if (type == "samplerCube") return "cube";
     return "2d";
@@ -694,7 +695,7 @@ std::string emit_body(const std::vector<Tok>& tokens, const std::vector<Decl>& d
         // `sample` became an interpolation keyword after upstream's GLSL 1.20
         // Text shader was written. Preserve its helper under a distinct name.
         else if (text == "sample" && user_sample) text = "vispy_user_sample";
-        const bool sample_call = tok.ident && (text == "texture2D" || text == "texture3D" ||
+        const bool sample_call = tok.ident && (text == "texture1D" || text == "texture2D" || text == "texture3D" ||
                                  text == "textureCube" || text == "texture");
         if (sample_call && i + 1 < tokens.size() && tokens[i + 1].text == "(") {
             text = "texture";
@@ -720,7 +721,7 @@ std::string emit_body(const std::vector<Tok>& tokens, const std::vector<Decl>& d
                 suffixes[close].push_back(", 0.0");
             }
         } else if (options.base_level_sampling && tok.ident &&
-                   (text == "textureLod" || text == "texture2DLod" || text == "texture3DLod" ||
+                   (text == "textureLod" || text == "texture1DLod" || text == "texture2DLod" || text == "texture3DLod" ||
                     text == "textureCubeLod" || text == "textureGrad" || text == "texture2DGradEXT")) {
             error = std::string(vertex ? "vertex" : "fragment") + " line=" + std::to_string(tok.line) +
                     ": explicit LOD/gradient sampling is outside base-level texture admission";

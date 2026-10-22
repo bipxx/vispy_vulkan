@@ -52,7 +52,7 @@ struct FragmentHelpers {
     bool needed() const { return builtin || query; }
 };
 
-std::string fragment_identifiers(const std::string& source, FragmentHelpers& helpers) {
+std::string fragment_identifiers(const std::string& source, FragmentHelpers& helpers, bool depth_output) {
     const auto lexed = tokens(source);
     std::unordered_map<size_t, std::string> replace;
     size_t mains = 0;
@@ -62,6 +62,8 @@ std::string fragment_identifiers(const std::string& source, FragmentHelpers& hel
             lexed[i + 1].text == "(" && lexed[i + 2].text == ")" && lexed[i + 3].text == "{") {
             replace.emplace(token.begin, "vispy_line_consumer_original_fragment"); ++mains;
         } else if (token.text == "gl_FragCoord") replace.emplace(token.begin, "vispy_line_consumer_fragment_coord");
+        else if (!depth_output && token.text == "gl_FragDepth")
+            replace.emplace(token.begin, "vispy_line_consumer_fragment_depth");
         else if (token.text == "gl_HelperInvocation") {
             replace.emplace(token.begin, "vispy_line_consumer_helper_invocation"); helpers.builtin = true;
         } else if (token.text == "helperInvocationEXT" && i + 1 < lexed.size() && lexed[i + 1].text == "(") {
@@ -342,7 +344,7 @@ std::string value_expression(const LineOutputField& field, size_t n, const std::
     return "((1.0 - " + parameter + ") * " + first + " + " + parameter + " * " + second + ')';
 }
 
-std::string fragment_main(const LineEvaluatorArtifact& evaluator, const FragmentHelpers& helpers) {
+std::string fragment_main(const LineEvaluatorArtifact& evaluator, const FragmentHelpers& helpers, bool depth_output) {
     std::string out = R"GLSL(
 void vispy_line_consumer_initialize_globals() {}
 void main() {
@@ -415,6 +417,8 @@ void main() {
     }
     out += "    vispy_line_consumer_initialize_globals();\n    vispy_line_consumer_original_fragment();\n"
         "    if (!vispy_line_consumer_covered || !vispy_line_consumer_valid) discard;\n}\n";
+    if (!depth_output) replace_one(out, "    gl_FragDepth = depth;",
+        "    vispy_line_consumer_fragment_depth = depth;");
     return out;
 }
 
@@ -626,22 +630,23 @@ std::shared_ptr<const GeneratedLineConsumerArtifact> build_generated_line_consum
             replace_one(fragment, varying_declaration(field.varying), private_declaration(field.varying));
         }
         FragmentHelpers helpers;
-        fragment = fragment_identifiers(fragment, helpers);
+        fragment = fragment_identifiers(fragment, helpers, policy.depth_output);
         fragment.erase(0, std::string("#version 450\n").size());
         std::string generated_prefix = "#version 450\n";
         if (helpers.query) generated_prefix += "#extension GL_EXT_demote_to_helper_invocation : require\n";
         generated_prefix += common +
             "layout(location = 0) flat in uvec4 vispy_line_consumer_ids;\nvec4 vispy_line_consumer_fragment_coord;\n";
+        if (!policy.depth_output) generated_prefix += "float vispy_line_consumer_fragment_depth;\n";
         if (helpers.needed()) generated_prefix += "bool vispy_line_consumer_helper_invocation;\n";
         if (helpers.query) generated_prefix +=
             "bool vispy_line_consumer_query_helper() {\n"
             "    return vispy_line_consumer_helper_invocation || helperInvocationEXT();\n}\n";
-        result->fragment = generated_prefix + fragment + fragment_main(evaluator_ref, helpers);
+        result->fragment = generated_prefix + fragment + fragment_main(evaluator_ref, helpers, policy.depth_output);
         result->vertex_line_map.assign(std::count(result->vertex.begin(), result->vertex.end(), '\n'), 0);
         result->fragment_line_map.assign(std::count(generated_prefix.begin(), generated_prefix.end(), '\n'), 0);
         // Preserve composer lines after the exact generated UBO/version removal.
         result->fragment_line_map.insert(result->fragment_line_map.end(), canonical_map.begin() + 1, canonical_map.end());
-        const auto suffix = fragment_main(evaluator_ref, helpers);
+        const auto suffix = fragment_main(evaluator_ref, helpers, policy.depth_output);
         result->fragment_line_map.insert(result->fragment_line_map.end(), std::count(suffix.begin(), suffix.end(), '\n'), 0);
         if (result->fragment_line_map.size() != static_cast<size_t>(std::count(result->fragment.begin(), result->fragment.end(), '\n')))
             return fail("generated fragment diagnostic map differs");

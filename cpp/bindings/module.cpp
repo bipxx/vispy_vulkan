@@ -1,4 +1,5 @@
 #include "runtime.hpp"
+#include "command_decode.hpp"
 
 #include <nanobind/nanobind.h>
 #include <nanobind/ndarray.h>
@@ -14,78 +15,7 @@
 namespace nb = nanobind;
 
 namespace {
-
-Value from_py(nb::handle obj, const nb::list& arrays, uint64_t& decoded_bytes) {
-    Value value;
-    if (obj.is_none()) return value;
-    if (nb::isinstance<nb::bool_>(obj) && !nb::isinstance<nb::int_>(obj)) {
-        value.kind = Value::Kind::Bool;
-        value.b = nb::cast<bool>(obj);
-        value.i = value.b ? 1 : 0;
-        return value;
-    }
-    if (nb::isinstance<nb::int_>(obj)) {
-        value.kind = Value::Kind::Int;
-        value.i = nb::cast<int64_t>(obj);
-        value.f = static_cast<double>(value.i);
-        return value;
-    }
-    if (nb::isinstance<nb::float_>(obj)) {
-        value.kind = Value::Kind::Float;
-        value.f = nb::cast<double>(obj);
-        value.i = static_cast<int64_t>(value.f);
-        return value;
-    }
-    if (nb::isinstance<nb::str>(obj)) {
-        value.kind = Value::Kind::Str;
-        value.s = nb::cast<std::string>(obj);
-        return value;
-    }
-    if (nb::isinstance<nb::dict>(obj)) {
-        nb::dict dict = nb::cast<nb::dict>(obj);
-        if (dict.contains("__bytes__")) {
-            nb::bytes raw = nb::cast<nb::bytes>(dict["__bytes__"]);
-            value.kind = Value::Kind::Blob;
-            value.blob.bytes.assign(raw.c_str(), raw.c_str() + raw.size());
-            decoded_bytes += raw.size();
-            std::string dtype = nb::cast<std::string>(dict["dtype"]);
-            if (dtype.find("f4") != std::string::npos) value.blob.dtype = "f32";
-            else if (dtype.find("f2") != std::string::npos) value.blob.dtype = "f16";
-            else if (dtype.find("f8") != std::string::npos) value.blob.dtype = "f64";
-            else if (dtype.find("i4") != std::string::npos) value.blob.dtype = "i32";
-            else if (dtype.find("u1") != std::string::npos) value.blob.dtype = "u8";
-            else if (dtype.find("u2") != std::string::npos) value.blob.dtype = "u16";
-            else if (dtype.find("i2") != std::string::npos) value.blob.dtype = "i16";
-            else if (dtype.find("u4") != std::string::npos) value.blob.dtype = "u32";
-            else if (dtype.find("i1") != std::string::npos) value.blob.dtype = "i8";
-            else if (dtype.find("b1") != std::string::npos) value.blob.dtype = "bool";
-            else value.blob.dtype = "bytes";
-            for (nb::handle dim : nb::cast<nb::list>(dict["shape"])) {
-                value.blob.shape.push_back(static_cast<int>(nb::cast<int64_t>(dim)));
-            }
-            return value;
-        }
-    }
-    if (nb::isinstance<nb::list>(obj) || nb::isinstance<nb::tuple>(obj)) {
-        value.kind = Value::Kind::List;
-        for (nb::handle item : obj) value.list.push_back(from_py(item, arrays, decoded_bytes));
-        return value;
-    }
-    return value;
-}
-
-std::vector<Command> decode(nb::list commands, nb::list arrays, uint64_t& decoded_bytes) {
-    std::vector<Command> out;
-    for (nb::handle item : commands) {
-        Command cmd;
-        nb::sequence seq = nb::cast<nb::sequence>(item);
-        cmd.op = nb::cast<std::string>(seq[0]);
-        size_t n = nb::len(seq);
-        for (size_t i = 1; i < n; ++i) cmd.args.push_back(from_py(seq[i], arrays, decoded_bytes));
-        out.push_back(std::move(cmd));
-    }
-    return out;
-}
+using vispy_binding::decode;
 
 nb::dict info_dict(const DeviceInfo& info) {
     nb::dict out;
@@ -96,6 +26,7 @@ nb::dict info_dict(const DeviceInfo& info) {
     out["driver"] = info.driver;
     out["vendor_id"] = info.vendor_id;
     out["device_id"] = info.device_id;
+    out["max_texture_dimension_1d"] = info.max_texture_1d;
     out["max_texture_dimension_2d"] = info.max_texture_2d;
     out["max_texture_dimension_3d"] = info.max_texture_3d;
     out["max_vertex_attributes"] = info.max_vertex_attributes;
@@ -191,6 +122,12 @@ nb::dict probe_dict(const Probe& probe) {
     out["last_vertex_pipelines"] = probe.last_vertex_pipelines;
     out["binding_decode_ns"] = probe.binding_decode_ns;
     out["binding_decode_bytes"] = probe.binding_decode_bytes;
+    out["owned_upload_captures"] = probe.owned_upload_captures;
+    out["owned_upload_capture_bytes"] = probe.owned_upload_capture_bytes;
+    out["owned_upload_fallback_dtypes"] = probe.owned_upload_fallback_dtypes;
+    out["owned_upload_fallback_exports"] = probe.owned_upload_fallback_exports;
+    out["owned_texture_transfers"] = probe.owned_texture_transfers;
+    out["owned_texture_transfer_bytes"] = probe.owned_texture_transfer_bytes;
     out["native_batches"] = probe.native_batches;
     out["native_commands"] = probe.native_commands;
     out["native_interpret_ns"] = probe.native_interpret_ns;
@@ -458,6 +395,7 @@ static nb::dict memory_window_dict(const VulkanMemoryWindow& window) {
 }
 
 NB_MODULE(_dawn, m) {
+    m.def("_capture_upload", &vispy_binding::capture_upload);
     m.def("revision", &runtime_revision);
     m.def("device_info", []() { return info_dict(ensure_device()); });
     m.def("probe", []() { return probe_dict(probe_counters()); });
@@ -483,6 +421,19 @@ NB_MODULE(_dawn, m) {
         const uint64_t decode_ns = static_cast<uint64_t>(std::chrono::duration_cast<std::chrono::nanoseconds>(
             std::chrono::steady_clock::now() - started).count());
         execute_commands(canvas_id, decoded, decode_ns, decoded_bytes);
+    });
+    m.def("_execute_owned", [](int canvas_id, nb::list commands, nb::list arrays, nb::dict stats) {
+        const auto started = std::chrono::steady_clock::now();
+        uint64_t decoded_bytes = 0;
+        auto decoded = decode(commands, arrays, decoded_bytes, true);
+        UploadCaptureStats capture;
+        capture.captures = nb::cast<uint64_t>(stats["captures"]);
+        capture.bytes = nb::cast<uint64_t>(stats["bytes"]);
+        capture.fallback_dtypes = nb::cast<uint64_t>(stats["fallback_dtypes"]);
+        capture.fallback_exports = nb::cast<uint64_t>(stats["fallback_exports"]);
+        const uint64_t decode_ns = static_cast<uint64_t>(std::chrono::duration_cast<std::chrono::nanoseconds>(
+            std::chrono::steady_clock::now() - started).count());
+        execute_owned_commands(canvas_id, std::move(decoded), decode_ns, decoded_bytes, capture);
     });
     m.def("finish", &finish_canvas);
     m.def("present", &present_canvas);
@@ -572,7 +523,7 @@ NB_MODULE(_dawn, m) {
         info["timing_clock"] = "steady_clock monotonic host wall nanoseconds";
         info["timings_enabled"] = "always";
         info["timing_scope"] = "inclusive host intervals overlap and cannot be summed; excludes engine mutex acquisition; not CPU thread, GPU, or scanout time";
-        info["binding_decode_scope"] = "nanobind command conversion and owned ByteBlob copies; bytes count payload copies, not Python GLIR packing";
+        info["binding_decode_scope"] = "nanobind command conversion, legacy bytes copies and owned snapshot transfers; bytes count logical payload size, not physical copies or Python GLIR packing/capture; owned capture counts/bytes and fallback reasons are separate; scopes overlap";
         info["shader_stage_scope"] = "actual compiler calls only; retained historical timings are never added on cache hits or portable recovery; SPIR-V includes emission, validation and compatibility passes; reflection includes live resource stage masks and physical uniform layout";
         info["cache_lookup_scope"] = "identity/lookup/admission host time excluding portable compilation; pipeline lookup excludes pipeline creation";
         info["creation_scope"] = "native API invocation counts, including attempts rejected by validation; module/pipeline host calls and existing pipeline validation checks";

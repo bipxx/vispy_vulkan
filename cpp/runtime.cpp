@@ -4,6 +4,7 @@
 #include "shader/artifact.hpp"
 #include "shader/normalize.hpp"
 #include "runtime_texture.hpp"
+#include "runtime_owned_texture.hpp"
 #include "runtime_readback.hpp"
 #include "runtime_state.hpp"
 #include "runtime_point.hpp"
@@ -461,7 +462,8 @@ void refresh_storage_sample_type(TextureRev& rev) {
 }
 
 void validate_sampler_storage(const NormSampler& sampler, TextureRev& rev) {
-    if ((sampler.dim == "2d" && rev.dimensions != 2) ||
+    if ((sampler.dim == "1d" && rev.dimensions != 1) ||
+        (sampler.dim == "2d" && rev.dimensions != 2) ||
         (sampler.dim == "3d" && rev.dimensions != 3))
         throw std::runtime_error("TEXTURE " + sampler.name + ": shader texture dimension differs from retained allocation");
     refresh_storage_sample_type(rev);
@@ -1011,7 +1013,7 @@ struct Engine {
         last_memory_window = record;
         return record;
     }
-    std::shared_ptr<TextureRev> dummy_texture;
+    std::array<std::shared_ptr<TextureRev>, 3> dummy_textures;
     wgpu::RenderPipeline present_pipeline;
     wgpu::BindGroupLayout present_layout;
     wgpu::Sampler present_sampler;
@@ -1689,7 +1691,7 @@ struct Engine {
         present_ready = false;
         depth_capture_pipeline = nullptr;
         depth_capture_layout = nullptr;
-        dummy_texture.reset();
+        for (auto& texture : dummy_textures) texture.reset();
         if (device) device.Destroy();
         if (instance) instance.ProcessEvents();
         tickets.clear();
@@ -1745,7 +1747,7 @@ struct Engine {
         tickets.clear();
         line_pool.reset();
         line_canary = nullptr;
-        dummy_texture.reset();
+        for (auto& texture : dummy_textures) texture.reset();
         present_pipeline = nullptr;
         present_layout = nullptr;
         present_sampler = nullptr;
@@ -2033,6 +2035,7 @@ struct Engine {
             last_error = info.error;
             return false;
         }
+        info.max_texture_1d = limits.maxTextureDimension1D;
         info.max_texture_2d = limits.maxTextureDimension2D;
         info.max_texture_3d = limits.maxTextureDimension3D;
         info.max_vertex_attributes = limits.maxVertexAttributes;
@@ -2519,7 +2522,8 @@ struct Engine {
             tex.binding = sampler.texture_binding;
             tex.visibility = resource_stages(sampler.texture_stage_mask);
             tex.texture.sampleType = declared_sample_type(sampler);
-            tex.texture.viewDimension = sampler.dim == "3d" ? wgpu::TextureViewDimension::e3D
+            tex.texture.viewDimension = sampler.dim == "1d" ? wgpu::TextureViewDimension::e1D :
+                sampler.dim == "3d" ? wgpu::TextureViewDimension::e3D
                                                              : wgpu::TextureViewDimension::e2D;
             if (sampler.texture_stage_mask) entries.push_back(tex);
             wgpu::BindGroupLayoutEntry samp;
@@ -2685,7 +2689,8 @@ struct Engine {
             if (consumer->original != original->portable || consumer->evaluator != evaluator ||
                     consumer->policy_identity != policy_identity || consumer->policy.coverage != policy.coverage ||
                     consumer->policy.sample_count != policy.sample_count ||
-                    consumer->policy.coverage_identity != policy.coverage_identity)
+                    consumer->policy.coverage_identity != policy.coverage_identity ||
+                    consumer->policy.depth_output != policy.depth_output)
                 throw std::runtime_error("lines: retained consumer has a different captured pair or coverage policy");
             ++probe.line_consumer_hits;
         } else {
@@ -2754,7 +2759,8 @@ struct Engine {
                 entry.binding = sampler.texture_binding;
                 entry.visibility = wgpu::ShaderStage::Compute;
                 entry.texture.sampleType = declared_sample_type(sampler);
-                entry.texture.viewDimension = sampler.dim == "3d" ? wgpu::TextureViewDimension::e3D :
+                entry.texture.viewDimension = sampler.dim == "1d" ? wgpu::TextureViewDimension::e1D :
+                sampler.dim == "3d" ? wgpu::TextureViewDimension::e3D :
                                                                     wgpu::TextureViewDimension::e2D;
                 entries.push_back(entry);
             }
@@ -2823,7 +2829,8 @@ struct Engine {
                 entry.binding = sampler.texture_binding;
                 entry.visibility = resource_stages(sampler.texture_stage_mask);
                 entry.texture.sampleType = declared_sample_type(sampler);
-                entry.texture.viewDimension = sampler.dim == "3d" ? wgpu::TextureViewDimension::e3D :
+                entry.texture.viewDimension = sampler.dim == "1d" ? wgpu::TextureViewDimension::e1D :
+                sampler.dim == "3d" ? wgpu::TextureViewDimension::e3D :
                                                                     wgpu::TextureViewDimension::e2D;
                 entries.push_back(entry);
             }
@@ -2997,6 +3004,7 @@ struct Engine {
         policy.coverage = captured.selection.state.smooth ? vispy::shader::LineCoveragePolicy::SmoothReference :
                                                           vispy::shader::LineCoveragePolicy::AliasedMajorAxis;
         policy.sample_count = static_cast<uint32_t>(snap.state.sample_count);
+        policy.depth_output = bool(snap.depth_view) || bool(snap.depth_attachment);
         policy.coverage_identity = captured.selection.state.smooth ? "smooth-reference-open" :
             vispy::shader::kAliasedLineCoverageIdentity;
         const auto consumer = prepare_line_consumer(captured.original_artifact, policy);
@@ -3159,6 +3167,7 @@ struct Engine {
         policy.coverage = selected.state.smooth ? vispy::shader::LineCoveragePolicy::SmoothReference :
                                                 vispy::shader::LineCoveragePolicy::AliasedMajorAxis;
         policy.sample_count = static_cast<uint32_t>(snap.state.sample_count);
+        policy.depth_output = bool(snap.depth_view) || bool(snap.depth_attachment);
         policy.coverage_identity = selected.state.smooth ? "smooth-reference-open" :
             vispy::shader::kAliasedLineCoverageIdentity;
         auto consumer = prepare_line_consumer(captured.original_artifact, policy);
@@ -4341,6 +4350,9 @@ struct Engine {
             if (!art.consumer_ready_for(selected_consumer, device_generation) ||
                     selected_consumer->consumer != snap.line_work->consumer)
                 throw std::runtime_error("lines: render artifact has stale or different consumer modules");
+            if (selected_consumer->consumer->policy.depth_output !=
+                    (bool(snap.depth_view) || bool(snap.depth_attachment)))
+                throw std::runtime_error("lines: consumer depth output differs from captured target");
             // A display digest can collide. Native pipeline lookup retains
             // the complete generated shader/policy identity instead.
             const auto& identity = selected_consumer->consumer->identity;
@@ -4525,7 +4537,8 @@ struct Engine {
                 refresh_sampler(rev);
             return;
         }
-        const uint32_t limit = rev.dimensions == 3 ? info.max_texture_3d : info.max_texture_2d;
+        const uint32_t limit = rev.dimensions == 1 ? info.max_texture_1d :
+            rev.dimensions == 3 ? info.max_texture_3d : info.max_texture_2d;
         if (static_cast<uint32_t>(rev.width) > limit || static_cast<uint32_t>(rev.height) > limit ||
             static_cast<uint32_t>(rev.depth) > limit)
             throw std::runtime_error("texture dimensions exceed granted device limit");
@@ -4554,12 +4567,14 @@ struct Engine {
         // Before the first native upload, the assembled CPU shadow includes
         // both the initial image and any subsequent patches.
         const bool partial = !rev.updates.empty() && (rev.texture || rev.base);
-        PreparedTexture prepared;
+        PreparedTexture partial_prepared;
+        vispy::textures::FullUpload full_upload;
         {
             HostTimer timer(probe.texture_conversion_ns);
-            prepared = partial ? prepare_region(*rev.allocation_descriptor, rev.updates.front().data) :
-                                 prepare_texture(rev, rev.allocation_descriptor.get());
+            if (partial) partial_prepared = prepare_region(*rev.allocation_descriptor, rev.updates.front().data);
+            else full_upload = vispy::textures::prepare_full_upload(rev, rev.allocation_descriptor.get());
         }
+        const PreparedTexture& prepared = partial ? partial_prepared : full_upload.prepared();
         wgpu::TextureDescriptor td;
         td.dimension = prepared.dimension;
         // The normalized-integer sampling specialization snapshots this
@@ -4579,7 +4594,7 @@ struct Engine {
         }
         // Validate sampling against stable storage rather than DATA's dtype.
         if (!rev.sampler) refresh_sampler(rev);
-        rev.gpu_bytes = prepared.bytes.size();
+        rev.gpu_bytes = partial ? prepared.bytes.size() : full_upload.size();
         if (partial) {
             if (!encoder || !ticket) throw std::runtime_error("partial texture upload requires an ordered encoder");
             rev.gpu_bytes = static_cast<size_t>(rev.width) * rev.height * rev.depth * prepared.texel_size;
@@ -4601,10 +4616,10 @@ struct Engine {
             for (const auto& update : rev.updates) {
                 HostTimer conversion_timer(probe.texture_conversion_ns);
                 auto region = prepare_region(*rev.allocation_descriptor, update.data);
-                const int shift = rev.dimensions == 3 ? 1 : 0;
-                const uint32_t height = static_cast<uint32_t>(update.data.shape[shift]);
-                const uint32_t width = static_cast<uint32_t>(update.data.shape[shift + 1]);
-                const uint32_t depth = shift ? static_cast<uint32_t>(update.data.shape[0]) : 1;
+                const auto layout = texture_detail::texture_region_layout(rev.dimensions, update.data.shape, update.offset);
+                const uint32_t height = static_cast<uint32_t>(layout.height);
+                const uint32_t width = static_cast<uint32_t>(layout.width);
+                const uint32_t depth = static_cast<uint32_t>(layout.depth);
                 const uint32_t row_bytes = static_cast<uint32_t>(width * region.texel_size);
                 const uint32_t bpr = (row_bytes + 255u) & ~255u;
                 std::vector<uint8_t> rows(static_cast<size_t>(bpr) * height * depth, 0);
@@ -4621,9 +4636,8 @@ struct Engine {
                 source.layout.rowsPerImage = height;
                 wgpu::TexelCopyTextureInfo destination;
                 destination.texture = rev.texture;
-                destination.origin = {static_cast<uint32_t>(update.offset[shift + 1]),
-                                      static_cast<uint32_t>(update.offset[shift]),
-                                      shift ? static_cast<uint32_t>(update.offset[0]) : 0};
+                destination.origin = {static_cast<uint32_t>(layout.x), static_cast<uint32_t>(layout.y),
+                                      static_cast<uint32_t>(layout.z)};
                 wgpu::Extent3D size{width, height, depth};
                 {
                     HostTimer timer(probe.texture_upload_cpu_ns);
@@ -4634,32 +4648,28 @@ struct Engine {
             ticket->ordered_uploads.push_back({&rev, rev.revision, rev.updates.size(), upload_bytes, copied_bytes});
             return;
         }
+        // The engine mutex holds the source revision stable. Dawn captures the
+        // bytes synchronously in WriteTexture; no pointer is retained by us.
         HostTimer conversion_timer(probe.texture_conversion_ns);
-        const uint32_t row_bytes = static_cast<uint32_t>(rev.width * prepared.texel_size);
-        const uint32_t bpr = (row_bytes + 255u) & ~255u;
-        std::vector<uint8_t> rows(static_cast<size_t>(bpr) * rev.height * rev.depth, 0);
-        for (int z = 0; z < rev.depth; ++z) {
-            for (int y = 0; y < rev.height; ++y) {
-                const size_t row = static_cast<size_t>(z) * rev.height + y;
-                std::memcpy(rows.data() + row * bpr, prepared.bytes.data() + row * row_bytes, row_bytes);
-            }
-        }
-        conversion_timer.finish();
-        wgpu::TexelCopyTextureInfo dest;
-        dest.texture = rev.texture;
-        dest.aspect = wgpu::TextureAspect::All;
-        wgpu::TexelCopyBufferLayout layout;
-        layout.bytesPerRow = bpr;
-        layout.rowsPerImage = static_cast<uint32_t>(rev.height);
-        wgpu::Extent3D extent{static_cast<uint32_t>(rev.width), static_cast<uint32_t>(rev.height),
-                             static_cast<uint32_t>(rev.depth)};
-        {
-            HostTimer timer(probe.texture_upload_cpu_ns);
-            queue.WriteTexture(&dest, rows.data(), rows.size(), &layout, &extent);
-        }
-        probe.texture_uploads++;
-        probe.copy_bytes += rows.size();
-        probe.texture_upload_bytes += rows.size();
+        vispy::textures::with_upload_rows(full_upload,
+            [&](const PreparedTexture&, const uint8_t* bytes, size_t submitted_bytes, uint32_t pitch, int height) {
+                conversion_timer.finish();
+                wgpu::TexelCopyTextureInfo dest;
+                dest.texture = rev.texture;
+                dest.aspect = wgpu::TextureAspect::All;
+                wgpu::TexelCopyBufferLayout layout;
+                layout.bytesPerRow = pitch;
+                layout.rowsPerImage = static_cast<uint32_t>(height);
+                wgpu::Extent3D extent{static_cast<uint32_t>(rev.width), static_cast<uint32_t>(rev.height),
+                                     static_cast<uint32_t>(rev.depth)};
+                {
+                    HostTimer timer(probe.texture_upload_cpu_ns);
+                    queue.WriteTexture(&dest, bytes, submitted_bytes, &layout, &extent);
+                }
+                probe.texture_uploads++;
+                probe.copy_bytes += submitted_bytes;
+                probe.texture_upload_bytes += submitted_bytes;
+            });
         rev.updates.clear();
         rev.base.reset();
         rev.gpu_revision = rev.revision;
@@ -4677,16 +4687,18 @@ struct Engine {
         ticket.ordered_uploads.clear();
     }
 
-    std::shared_ptr<TextureRev> placeholder_texture() {
-        if (dummy_texture && dummy_texture->texture) return dummy_texture;
-        dummy_texture = std::make_shared<TextureRev>();
-        dummy_texture->width = 1;
-        dummy_texture->height = 1;
-        dummy_texture->channels = 4;
-        dummy_texture->dtype = "u8";
-        dummy_texture->pixels = {255, 255, 255, 255};
-        upload_texture(*dummy_texture);
-        return dummy_texture;
+    std::shared_ptr<TextureRev> placeholder_texture(const NormSampler& sampler) {
+        const int dimensions = sampler.dim == "1d" ? 1 : sampler.dim == "3d" ? 3 : 2;
+        auto& texture = dummy_textures[dimensions - 1];
+        if (texture && texture->texture) return texture;
+        texture = std::make_shared<TextureRev>();
+        texture->dimensions = dimensions;
+        texture->width = texture->height = texture->depth = 1;
+        texture->channels = 4;
+        texture->dtype = "u8";
+        texture->pixels = {255, 255, 255, 255};
+        upload_texture(*texture);
+        return texture;
     }
 
     wgpu::Texture encode_depth_capture(const wgpu::Texture& source,
@@ -5742,7 +5754,7 @@ void main() {
             obj.input_current.for_each([&](auto, const auto& key, const auto& record) {
                 ++eng.probe.vertex_input_current_entries;
                 eng.probe.vertex_input_current_bytes +=
-                    sizeof(decltype(obj.input_current)::Entry) + key.capacity() + current_record_bytes(record);
+                    sizeof(typename decltype(obj.input_current)::Entry) + key.capacity() + current_record_bytes(record);
                 count_buffer(record);
             });
             eng.probe.vertex_input_oversized_entries += obj.input_oversized.size();
@@ -5760,7 +5772,7 @@ void main() {
             count_texture(obj.texture);
             for (const auto& [name, binding] : obj.attributes) count_buffer(binding.constant_buffer);
         }
-        count_texture(eng.dummy_texture);
+        for (const auto& texture : eng.dummy_textures) count_texture(texture);
         for (const auto& [id, canvas] : eng.canvases) {
             count_target(canvas.color);
             count_target(canvas.multisampled_color);
@@ -6018,13 +6030,19 @@ void update_surface_scale(int canvas_id, double scale) {
         canvas.surface_owner->update(canvas.width, canvas.height, scale);
 }
 
-void execute_commands(int canvas_id, const std::vector<Command>& commands,
-                      uint64_t binding_decode_ns, uint64_t binding_decode_bytes) {
+static void execute_commands_impl(int canvas_id, const std::vector<Command>& commands,
+                                  std::vector<Command>* owned_commands,
+                                  uint64_t binding_decode_ns, uint64_t binding_decode_bytes,
+                                  const UploadCaptureStats& capture_stats) {
     auto& eng = engine();
     std::lock_guard<std::mutex> lock(eng.mu);
     HostTimer interpret_timer(eng.probe.native_interpret_ns);
     eng.probe.binding_decode_ns += binding_decode_ns;
     eng.probe.binding_decode_bytes += binding_decode_bytes;
+    eng.probe.owned_upload_captures += capture_stats.captures;
+    eng.probe.owned_upload_capture_bytes += capture_stats.bytes;
+    eng.probe.owned_upload_fallback_dtypes += capture_stats.fallback_dtypes;
+    eng.probe.owned_upload_fallback_exports += capture_stats.fallback_exports;
     ++eng.probe.native_batches;
     if (!eng.init_device()) throw std::runtime_error(eng.info.error);
     eng.poll();
@@ -6032,7 +6050,8 @@ void execute_commands(int canvas_id, const std::vector<Command>& commands,
     eng.drop_next.clear();
     eng.deleted_now.clear();
     auto& canvas = eng.canvas(canvas_id);
-    for (const Command& cmd : commands) {
+    for (size_t command_index = 0; command_index < commands.size(); ++command_index) {
+      const Command& cmd = commands[command_index];
       ++eng.probe.native_commands;
       try {
         static const bool stderr_trace = std::getenv("VISPY_DAWN_TRACE") != nullptr;
@@ -6056,11 +6075,7 @@ void execute_commands(int canvas_id, const std::vector<Command>& commands,
         if (cmd.op == "CREATE") {
             GpuObject obj;
             obj.class_name = cmd.args.size() > 1 ? cmd.args[1].s : "";
-            static const std::unordered_set<std::string> classes = {
-                "Program", "VertexShader", "FragmentShader", "GeometryShader", "VertexBuffer",
-                "IndexBuffer", "Texture2D", "Texture3D", "RenderBuffer", "FrameBuffer"
-            };
-            if (!classes.count(obj.class_name))
+            if (!texture_detail::supported_glir_object_class(obj.class_name))
                 throw std::runtime_error("unsupported object class " + obj.class_name);
             obj.generation = 1;
             eng.objects[arg_id(cmd, 0)] = obj;
@@ -6160,16 +6175,29 @@ void execute_commands(int canvas_id, const std::vector<Command>& commands,
                 const auto& blob = cmd.args[2].blob;
                 std::vector<int> offset;
                 for (const auto& axis : cmd.args[1].list) offset.push_back(static_cast<int>(axis.i));
+                bool transferred = false;
                 {
                     HostTimer timer(eng.probe.texture_conversion_ns);
-                    apply_texture_data(*rev, blob, offset, rev->allocation_descriptor.get());
+                    if (owned_commands) {
+                        // Validate inside the helper before inspecting shape metadata.
+                        // Keep 1D and depth/stencil uploads on the canonical copy path.
+                        const bool allow_transfer = (rev->dimensions == 2 || rev->dimensions == 3) &&
+                            rev->format != "depth" && rev->format != "stencil" && rev->format != "depth_stencil";
+                        transferred = vispy::textures::apply_owned_texture_data(*rev,
+                            (*owned_commands)[command_index].args[2].blob, offset,
+                            allow_transfer, rev->allocation_descriptor.get());
+                    } else {
+                        apply_texture_data(*rev, blob, offset, rev->allocation_descriptor.get());
+                    }
+                }
+                if (transferred) {
+                    ++eng.probe.owned_texture_transfers;
+                    eng.probe.owned_texture_transfer_bytes += rev->pixels.size();
                 }
                 eng.freeze_texture_allocation(*rev);
-                const bool full = std::all_of(offset.begin(), offset.end(), [](int value) { return value == 0; }) &&
-                    blob.shape.size() >= static_cast<size_t>(rev->dimensions) &&
-                    (rev->dimensions == 3 ? blob.shape[0] == rev->depth && blob.shape[1] == rev->height &&
-                                           blob.shape[2] == rev->width :
-                                           blob.shape[0] == rev->height && blob.shape[1] == rev->width);
+                const bool full = texture_detail::texture_upload_is_entire(*rev, blob, offset);
+                // A transferred full payload cannot enter partial-update history.
+                if (transferred && !full) throw std::logic_error("owned texture transfer differs from full DATA classification");
                 if (full) {
                     rev->base.reset();
                     rev->updates.clear();
@@ -6201,7 +6229,7 @@ void execute_commands(int canvas_id, const std::vector<Command>& commands,
                     obj.buffer = rev;
                     eng.discard_point_geometry(id);
                 }
-            } else if (cmd.args.size() >= 2 && cmd.args[1].kind == Value::Kind::List && cmd.args[1].list.size() >= 2) {
+            } else if (cmd.args.size() >= 2 && cmd.args[1].kind == Value::Kind::List && cmd.args[1].list.size() >= (obj.class_name == "Texture1D" ? 1u : 2u)) {
                 auto rev = std::make_shared<TextureRev>();
                 if (obj.texture) {
                     rev->min_filter = obj.texture->min_filter;
@@ -6210,15 +6238,19 @@ void execute_commands(int canvas_id, const std::vector<Command>& commands,
                     rev->revision = obj.texture->revision + 1;
                 }
                 const auto& shape = cmd.args[1].list;
-                rev->dimensions = obj.class_name == "Texture3D" ? 3 : 2;
-                const int shift = rev->dimensions == 3 ? 1 : 0;
-                if (static_cast<int>(shape.size()) < rev->dimensions)
-                    throw std::runtime_error("SIZE invalid texture shape");
-                rev->height = static_cast<int>(shape[shift].i);
-                rev->width = static_cast<int>(shape[shift + 1].i);
-                rev->depth = shift ? static_cast<int>(shape[0].i) : 1;
-                rev->channels = static_cast<int>(shape.size()) > rev->dimensions ?
-                    static_cast<int>(shape[rev->dimensions].i) : 4;
+                rev->dimensions = texture_detail::texture_dimensions_for_class(obj.class_name);
+                std::vector<int64_t> shape_values;
+                shape_values.reserve(shape.size());
+                for (const auto& value : shape) {
+                    if (rev->dimensions == 1 && value.kind != Value::Kind::Int)
+                        throw std::runtime_error("SIZE texture shape requires integers");
+                    shape_values.push_back(value.i);
+                }
+                const auto layout = texture_detail::texture_shape_layout(rev->dimensions, shape_values);
+                rev->width = layout.width;
+                rev->height = layout.height;
+                rev->depth = layout.depth;
+                rev->channels = layout.channels;
                 rev->format = cmd.args.size() > 2 && !cmd.args[2].s.empty() ? lower_token(cmd.args[2].s) : "rgba";
                 if (rev->format == "color") rev->format = "rgba";
                 rev->internal_format = cmd.args.size() > 3 ? lower_token(cmd.args[3].s) : "";
@@ -6596,7 +6628,7 @@ void execute_commands(int canvas_id, const std::vector<Command>& commands,
                     // Every active reflected sampler needs its layout entry.
                     // Declaration-only sampler uniforms were removed from
                     // portable metadata and cannot consume binding limits.
-                    if (!bound) bound = eng.placeholder_texture();
+                    if (!bound) bound = eng.placeholder_texture(sampler);
                     validate_sampler_storage(sampler, *bound);
                     snap.textures.push_back(bound);
                 }
@@ -6743,6 +6775,19 @@ void execute_commands(int canvas_id, const std::vector<Command>& commands,
       }
     }
     eng.drop_next = eng.deleted_now;
+}
+
+void execute_commands(int canvas_id, const std::vector<Command>& commands,
+                      uint64_t binding_decode_ns, uint64_t binding_decode_bytes) {
+    execute_commands_impl(canvas_id, commands, nullptr, binding_decode_ns, binding_decode_bytes, {});
+}
+
+void execute_owned_commands(int canvas_id, std::vector<Command>&& commands,
+                            uint64_t binding_decode_ns, uint64_t binding_decode_bytes,
+                            const UploadCaptureStats& capture_stats) {
+    // Own even the non-transferred payloads until the interpreter returns or throws.
+    auto owned = std::move(commands);
+    execute_commands_impl(canvas_id, owned, &owned, binding_decode_ns, binding_decode_bytes, capture_stats);
 }
 
 void finish_canvas(int canvas_id) {

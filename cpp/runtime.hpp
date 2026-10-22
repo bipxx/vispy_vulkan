@@ -9,6 +9,10 @@
 #include "runtime_line_ownership.hpp"
 #include "runtime_line_capture.hpp"
 
+struct UploadCaptureStats {
+    uint64_t captures = 0, bytes = 0, fallback_dtypes = 0, fallback_exports = 0;
+};
+
 struct ByteBlob {
     std::vector<uint8_t> bytes;
     std::vector<int> shape;
@@ -40,6 +44,7 @@ struct DeviceInfo {
     std::string error;
     uint32_t vendor_id = 0;
     uint32_t device_id = 0;
+    uint32_t max_texture_1d = 0;
     uint32_t max_texture_2d = 0;
     uint32_t max_texture_3d = 0;
     uint32_t max_vertex_attributes = 0;
@@ -135,6 +140,9 @@ struct Probe {
     // Monotonic host wall intervals, always enabled. Inclusive intervals
     // overlap; these are not CPU thread time, GPU time, or scanout time.
     uint64_t binding_decode_ns = 0, binding_decode_bytes = 0;
+    uint64_t owned_upload_captures = 0, owned_upload_capture_bytes = 0;
+    uint64_t owned_upload_fallback_dtypes = 0, owned_upload_fallback_exports = 0;
+    uint64_t owned_texture_transfers = 0, owned_texture_transfer_bytes = 0;
     uint64_t native_batches = 0, native_commands = 0;
     uint64_t native_interpret_ns = 0, native_submit_ns = 0;
     uint64_t texture_conversion_ns = 0, texture_upload_cpu_ns = 0, buffer_upload_cpu_ns = 0;
@@ -270,6 +278,10 @@ void clear_surface(int canvas_id);
 void update_surface_scale(int canvas_id, double scale);
 void execute_commands(int canvas_id, const std::vector<Command>& commands,
                       uint64_t binding_decode_ns = 0, uint64_t binding_decode_bytes = 0);
+// Consumes the command vector; the const entry point above remains replayable.
+void execute_owned_commands(int canvas_id, std::vector<Command>&& commands,
+                            uint64_t binding_decode_ns = 0, uint64_t binding_decode_bytes = 0,
+                            const UploadCaptureStats& capture_stats = {});
 void finish_canvas(int canvas_id);
 void present_canvas(int canvas_id);
 bool process_events();

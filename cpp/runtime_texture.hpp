@@ -12,6 +12,7 @@
 #include <stdexcept>
 #include <string>
 #include <vector>
+#include <utility>
 
 // CPU source allocation. SIZE establishes dimensions; DATA updates regions
 // within that allocation. Mixed source dtypes use a numeric f64 CPU shadow;
@@ -68,6 +69,65 @@ namespace texture_detail {
 
 inline std::runtime_error error(const std::string& message) {
     return std::runtime_error("texture: " + message);
+}
+
+// Shared with the command interpreter: texture rank must agree from CREATE
+// through SIZE, DATA history and the native upload origin/extent.
+inline bool supported_glir_object_class(const std::string& name) {
+    return name == "Program" || name == "VertexShader" || name == "FragmentShader" ||
+        name == "GeometryShader" || name == "VertexBuffer" || name == "IndexBuffer" ||
+        name == "Texture1D" || name == "Texture2D" || name == "Texture3D" ||
+        name == "RenderBuffer" || name == "FrameBuffer";
+}
+inline int texture_dimensions_for_class(const std::string& name) {
+    if (name == "Texture1D") return 1;
+    if (name == "Texture2D" || name == "RenderBuffer") return 2;
+    if (name == "Texture3D") return 3;
+    throw error("SIZE object is not a texture or renderbuffer");
+}
+struct TextureShapeLayout { int width = 1, height = 1, depth = 1, channels = 4; };
+inline TextureShapeLayout texture_shape_layout(int dimensions, const std::vector<int64_t>& shape) {
+    if (dimensions < 1 || dimensions > 3 || shape.size() < static_cast<size_t>(dimensions) ||
+        (dimensions == 1 && shape.size() > 2)) throw error("SIZE invalid texture shape rank");
+    auto component = [&](size_t axis) {
+        // Existing 2D/3D and renderbuffer SIZE accepts transient zero extents
+        // and defers storage validation until DATA/upload. Keep that contract.
+        if (dimensions == 1 && (shape[axis] < 1 || shape[axis] > std::numeric_limits<int>::max()))
+            throw error("SIZE texture extent/channel count is outside positive native range");
+        return static_cast<int>(shape[axis]);
+    };
+    TextureShapeLayout result;
+    result.width = component(dimensions - 1);
+    if (dimensions >= 2) result.height = component(dimensions - 2);
+    if (dimensions == 3) result.depth = component(0);
+    if (shape.size() > static_cast<size_t>(dimensions)) result.channels = component(dimensions);
+    if (dimensions == 1 && result.channels > 4) throw error("SIZE invalid channel count");
+    return result;
+}
+struct TextureRegionLayout : TextureShapeLayout { int x = 0, y = 0, z = 0; };
+inline TextureRegionLayout texture_region_layout(int dimensions, const std::vector<int>& shape,
+                                                  const std::vector<int>& offset) {
+    if (offset.size() != static_cast<size_t>(dimensions) ||
+        shape.size() != static_cast<size_t>(dimensions + 1)) throw error("DATA region rank differs from texture rank");
+    TextureRegionLayout result;
+    static_cast<TextureShapeLayout&>(result) = texture_shape_layout(dimensions,
+        std::vector<int64_t>(shape.begin(), shape.end()));
+    for (int value : offset) if (value < 0) throw error("DATA negative texture origin");
+    result.x = offset[dimensions - 1];
+    if (dimensions >= 2) result.y = offset[dimensions - 2];
+    if (dimensions == 3) result.z = offset[0];
+    return result;
+}
+inline bool texture_upload_is_entire(const TextureData& data, const ByteBlob& upload,
+                                      const std::vector<int>& offset) {
+    if (data.dimensions < 1 || data.dimensions > 3 ||
+        upload.shape.size() != static_cast<size_t>(data.dimensions + 1) ||
+        offset.size() != static_cast<size_t>(data.dimensions) || upload.shape.back() != data.channels)
+        return false;
+    if (!std::all_of(offset.begin(), offset.end(), [](int value) { return value == 0; })) return false;
+    return upload.shape[data.dimensions - 1] == data.width &&
+        (data.dimensions < 2 || upload.shape[data.dimensions - 2] == data.height) &&
+        (data.dimensions != 3 || upload.shape[0] == data.depth);
 }
 
 inline size_t dtype_size(const std::string& dtype) {
@@ -396,7 +456,22 @@ inline void apply_texture_data(TextureData& data, const ByteBlob& upload, const 
     data.dtype = mixed ? "f64" : upload.dtype;
 }
 
-inline PreparedTexture prepare_texture(const TextureData& data, const TextureData* allocation = nullptr) {
+struct TexturePreparation {
+    PreparedTexture descriptor;
+    texture_detail::Description storage;
+    size_t count,input_component,input_pixel;
+    bool direct;
+};
+inline bool texture_source_is_direct(const TextureData& data,const texture_detail::Description& description) {
+    using namespace texture_detail;
+    const bool direct_f32 = data.dtype == "f32" && description.storage == Storage::Float32;
+    const bool direct_u8 = data.dtype == "u8" && description.storage == Storage::Unorm8;
+    const bool direct_integer = description.integer && data.dtype ==
+        std::string(description.signed_integer ? "i" : "u") + std::to_string(description.component_bytes * 8);
+    return description.channels == data.channels && (direct_f32 || direct_u8 || direct_integer);
+}
+inline TexturePreparation describe_texture_preparation(const TextureData& data,const TextureData* allocation=nullptr) {
+
     using namespace texture_detail;
     const size_t count = texels(data);
     // DATA may change the source dtype while the allocated GL internal format
@@ -419,11 +494,15 @@ inline PreparedTexture prepare_texture(const TextureData& data, const TextureDat
                          description.storage == Storage::Float32 || description.storage == Storage::Unorm16 ? wgpu::TextureSampleType::UnfilterableFloat : wgpu::TextureSampleType::Float;
     result.requires_float32_filterable = description.storage == Storage::Float32 && (data.min_filter == "linear" || data.mag_filter == "linear");
     result.requires_unorm16 = description.storage == Storage::Unorm16;
-    const bool direct_f32 = data.dtype == "f32" && description.storage == Storage::Float32;
-    const bool direct_u8 = data.dtype == "u8" && description.storage == Storage::Unorm8;
-    const bool direct_integer = description.integer && data.dtype ==
-        std::string(description.signed_integer ? "i" : "u") + std::to_string(description.component_bytes * 8);
-    if (description.channels == data.channels && (direct_f32 || direct_u8 || direct_integer)) {
+    return {std::move(result),description,count,input_component,input_pixel,texture_source_is_direct(data,description)};
+}
+inline PreparedTexture prepare_texture(const TextureData& data,const TextureData* allocation=nullptr) {
+    using namespace texture_detail;
+    auto layout=describe_texture_preparation(data,allocation);
+    auto result=std::move(layout.descriptor);
+    const auto& description=layout.storage;
+    const auto count=layout.count,input_component=layout.input_component,input_pixel=layout.input_pixel;
+    if (layout.direct) {
         // Preserve float bits (including signed zero and NaN payloads), exact
         // categorical identity, and avoid per-texel conversion for resident
         // image/volume uploads already in their native format.
@@ -446,6 +525,66 @@ inline PreparedTexture prepare_texture(const TextureData& data, const TextureDat
     }
     return result;
 }
+
+namespace vispy::textures {
+class FullUpload {
+    PreparedTexture prepared_;
+    const std::vector<uint8_t>* borrowed_=nullptr;
+    const uint8_t* address_=nullptr;
+    size_t byte_count_=0;
+    int width_=0,height_=0,depth_=0;
+    friend FullUpload prepare_full_upload(const TextureData&,const TextureData*);
+    void check_source() const {
+        if(borrowed_ && (borrowed_->data()!=address_ || borrowed_->size()!=byte_count_))
+            throw texture_detail::error("borrowed upload source storage changed");
+    }
+public:
+    FullUpload()=default;
+    FullUpload(FullUpload&&)=default;
+    FullUpload& operator=(FullUpload&&)=default;
+    FullUpload(const FullUpload&)=delete;
+    FullUpload& operator=(const FullUpload&)=delete;
+    const PreparedTexture& prepared() const {return prepared_;}
+    bool is_borrowed() const {return borrowed_!=nullptr;}
+    const uint8_t* data() const {check_source();return borrowed_?borrowed_->data():prepared_.bytes.data();}
+    size_t size() const {check_source();return borrowed_?byte_count_:prepared_.bytes.size();}
+    int width() const {return width_;}
+    int height() const {return height_;}
+    int depth() const {return depth_;}
+};
+
+inline FullUpload prepare_full_upload(const TextureData& data,const TextureData* allocation=nullptr) {
+    auto layout=describe_texture_preparation(data,allocation);
+    FullUpload upload;
+    upload.width_=data.width;upload.height_=data.height;upload.depth_=data.depth;
+    if(layout.direct && !data.pixels.empty()) {
+        upload.prepared_=std::move(layout.descriptor);
+        upload.borrowed_=&data.pixels;upload.address_=data.pixels.data();upload.byte_count_=data.pixels.size();
+    } else upload.prepared_=prepare_texture(data,allocation);
+    return upload;
+}
+FullUpload prepare_full_upload(TextureData&&,const TextureData* =nullptr)=delete;
+FullUpload prepare_full_upload(const TextureData&&,const TextureData* =nullptr)=delete;
+
+template<class Consume>
+inline void with_upload_rows(const FullUpload& upload,Consume&& consume) {
+    using namespace texture_detail;
+    const size_t row_bytes=multiply(static_cast<size_t>(upload.width()),upload.prepared().texel_size);
+    const size_t rows=multiply(static_cast<size_t>(upload.height()),upload.depth());
+    if(upload.size()!=multiply(row_bytes,rows))throw error("upload layout byte size differs");
+    if(row_bytes>UINT32_MAX-255u)throw error("upload row pitch overflows");
+    const uint32_t pitch=(static_cast<uint32_t>(row_bytes)+255u)&~255u;
+    if(pitch==row_bytes) {
+        consume(upload.prepared(),upload.data(),upload.size(),pitch,upload.height());
+        return;
+    }
+    std::vector<uint8_t> padded(multiply(pitch,rows),0);
+    for(size_t row=0;row<rows;++row)
+        std::memcpy(padded.data()+row*pitch,upload.data()+row*row_bytes,row_bytes);
+    consume(upload.prepared(),padded.data(),padded.size(),pitch,upload.height());
+}
+} // namespace vispy::textures
+
 
 inline PreparedTexture prepare_region(const TextureData& allocation, const ByteBlob& upload) {
     using namespace texture_detail;

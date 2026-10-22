@@ -20,6 +20,9 @@ struct LineConsumerPolicy {
     uint32_t sample_count = 1;
     // Exact algorithm/compiler identity; the smooth reference model is OPEN.
     std::string coverage_identity;
+    // A color-only target ignores depth writes; retain them as private values
+    // so user shader expressions still execute without a FragDepth output.
+    bool depth_output = true;
 };
 
 // Every grant must come from the selected device, rather than these defaults.
@@ -334,7 +337,8 @@ inline constexpr const char* kAliasedLineCoverageIdentity =
 
 // Complete CPU lookup identity, available before shader generation. Limits,
 // DRAW width/viewport, device generation and attachment formats do not change
-// generated shader policy. Unsupported policies still refuse in the builder.
+// generated shader policy. Depth attachment presence selects depth_output.
+// Unsupported policies still refuse in the builder.
 inline std::string generated_line_consumer_policy_identity(
         const LineEvaluatorArtifact& evaluator, const LineConsumerPolicy& policy) {
     if (!evaluator.original) throw std::invalid_argument("line consumer policy requires an original");
@@ -349,7 +353,8 @@ inline std::string generated_line_consumer_policy_identity(
         ";samples=" + std::to_string(policy.sample_count) + ";base=" +
         std::to_string(original.options.base_level_sampling) + ";render-derivatives=" +
         spirv_derivative_mode_name(original.derivative_mode) + ";evaluator-derivatives=" +
-        spirv_derivative_mode_name(evaluator.derivative_mode) + ';';
+        spirv_derivative_mode_name(evaluator.derivative_mode) + ";depth-output=" +
+        std::to_string(policy.depth_output) + ';';
     for (const auto* field : {&original.identity, &evaluator.identity, &original.compiler_identity, &policy.coverage_identity})
         key += std::to_string(field->size()) + ':' + *field;
     return key;

@@ -300,6 +300,40 @@ void coordinate_entry() {
     require(normalized.vertex.find("vispy_user_main();") < normalized.vertex.find("gl_Position.y = -gl_Position.y"), "wrapper converts final user output");
 }
 
+void sampler1d_fragment_case(const std::string& body,bool base){
+    NormalizeOptions options;options.base_level_sampling=base;
+    auto normalized=normalize_program("attribute vec2 a_position; varying float v_uv; void main(){v_uv=(a_position.x+1.)*.5;gl_Position=vec4(a_position,0.,1.);}","uniform sampler1D u_source; varying float v_uv; "+body,options);
+    require(normalized.error.empty(),normalized.error);
+    require(normalized.samplers.size()==1,"sampler1D must have a resource binding");
+    require(normalized.samplers[0].dim=="1d","1D normalized metadata");
+    require(normalized.fragment.find("texture1D vispy_")!=std::string::npos || normalized.fragment.find("texture1D ")!=std::string::npos,"separate texture1D declaration");
+    auto compiled=compile_vulkan_glsl(normalized.vertex,normalized.fragment);
+    require(compiled.ok,compiled.log+"\n"+normalized.fragment);
+#ifdef VISPY_TEST_TINT_READER
+    for (const auto* stage : {&compiled.vertex, &compiled.fragment}) {
+        auto ir = tint::spirv::reader::ReadIR(stage->words);
+        require(ir == tint::Success, ir == tint::Success ? "" : ir.Failure().reason);
+    }
+#endif
+    std::string error;
+    require(reflect_sampler_types(compiled.fragment.words,normalized.samplers,2,error),error);
+    auto wrong=normalized.samplers;wrong[0].dim="2d";
+    require(!reflect_sampler_types(compiled.fragment.words,wrong,2,error),"1D SPIR-V must not masquerade as 2D");
+    require(error.find("shape differs")!=std::string::npos,"dimension mismatch diagnostic");
+}
+void one_dimensional_sampling(){
+    for(bool base:{false,true}){
+        sampler1d_fragment_case("void main(){gl_FragColor=texture1D(u_source,v_uv);}",base);
+        sampler1d_fragment_case("vec4 sample_value(sampler1D source,float x){return texture1D(source,x);} void main(){gl_FragColor=sample_value(u_source,v_uv);}",base);
+        sampler1d_fragment_case("vec4 nested(sampler1D s,float x){return texture1D(s,x);} vec4 forwarded(sampler1D s,float x){return nested(s,x);} void main(){gl_FragColor=forwarded(u_source,v_uv);}",base);
+    }
+    NormalizeOptions options;options.base_level_sampling=true;
+    auto bias=normalize_program("attribute vec2 a_position; varying float v_uv; void main(){v_uv=(a_position.x+1.)*.5;gl_Position=vec4(a_position,0.,1.);}","uniform sampler1D u_source; varying float v_uv;void main(){gl_FragColor=texture1D(u_source,v_uv,1.);}",options);
+    require(!bias.error.empty()&&bias.error.find("bias is unsupported")!=std::string::npos,"base-level 1D bias must reject");
+    auto lod=normalize_program("attribute vec2 a_position; varying float v_uv; void main(){v_uv=(a_position.x+1.)*.5;gl_Position=vec4(a_position,0.,1.);}","uniform sampler1D u_source; varying float v_uv;void main(){gl_FragColor=texture1DLod(u_source,v_uv,0.);}",options);
+    require(!lod.error.empty()&&lod.error.find("explicit LOD")!=std::string::npos,"base-level legacy1D LOD must reject");
+}
+
 void sampling_policy() {
     const std::string fragment = "uniform sampler2D u_image; void main(){ gl_FragColor=texture2D(u_image,vec2(0.5)); }";
     auto implicit = normalize_program(vertex, fragment);
@@ -481,6 +515,7 @@ int main(int argc, char** argv) {
         boolean_lowering();
         boolean_scope_lowering();
         coordinate_entry();
+        one_dimensional_sampling();
         sampling_policy();
         composer_diagnostics();
         composed_parameter_qualifiers();

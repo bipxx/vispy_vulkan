@@ -49,10 +49,13 @@ def test_native_is_parentable_qwidget_not_qopenglwidget():
     print("swapchain present", "swapchain present" in trace)
     assert "hwnd surface configured" in trace
     assert "swapchain present" in trace
+    old_info = _dawn.device_info()
+    before_loss = _dawn.probe()
     _dawn.lose_device()
-    lost = _dawn.device_info()
-    print("device loss", lost["ok"], lost["error"])
-    assert lost["ok"] is False
+    # device_info() initializes/recreates the device. Observe without recovering
+    # here so that the real QWidget paint below must perform recovery.
+    lost = _dawn.probe()
+    assert lost["device_generation"] == before_loss["device_generation"]
     marked = len(_dawn.debug_trace())
 
     import numpy as np
@@ -77,9 +80,14 @@ def test_native_is_parentable_qwidget_not_qopenglwidget():
     print("swapchain present after loss", presented)
     assert configured
     assert presented
+    recovered = _dawn.probe()
+    assert recovered["device_generation"] > before_loss["device_generation"]
+    recovered_info = _dawn.device_info()
+    assert recovered_info["ok"], recovered_info["error"]
+    assert recovered_info["loss_count"] == old_info["loss_count"] + 1
     image = np.array(_dawn.read_pixels(int(native._dawn_canvas_id), 0, 0, 4, 4, True))
-    assert image.shape[2] == 4
-    assert int(image[0, 0, 0]) == 255
+    assert image.shape == (4, 4, 4)
+    np.testing.assert_array_equal(image, np.full_like(image, [255, 0, 0, 255]))
     canvas.close()
     parent.close()
     print("QWidget lifecycle ok")

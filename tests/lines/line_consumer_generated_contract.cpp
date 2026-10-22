@@ -586,6 +586,45 @@ void basic() {
     }
 }
 
+
+void depth_attachment_specialization() {
+    const std::string fragment = "varying vec4 color; void main() { gl_FragDepth = .25; gl_FragColor = vec4(color.rgb, gl_FragDepth * 4.0); }";
+    for (const auto& source : {basic_fragment, fragment}) {
+        auto e = evaluator(basic_vertex, source);
+        auto attached = policy(); auto color_only = attached; color_only.depth_output = false;
+        auto with_depth = build_generated_line_consumer(e, attached, grants());
+        auto without_depth = build_generated_line_consumer(e, color_only, grants());
+        require(with_depth->ok, "attached-depth generated consumer: " + with_depth->error);
+        require(without_depth->ok, "color-only generated consumer: " + without_depth->error);
+        require(with_depth->policy_identity != without_depth->policy_identity &&
+            with_depth->identity != without_depth->identity && with_depth->cache_key != without_depth->cache_key,
+            "actual depth output is part of complete CPU/module/pipeline identity");
+        require(without_depth->fragment.find("gl_FragDepth") == std::string::npos &&
+            without_depth->fragment.find("float vispy_line_consumer_fragment_depth;") != std::string::npos &&
+            without_depth->fragment.find("vispy_line_consumer_fragment_depth = depth;") != std::string::npos,
+            "color-only wrapper keeps depth computations in private storage");
+        if (source == fragment) require(without_depth->fragment.find("vispy_line_consumer_fragment_depth = .25") != std::string::npos &&
+            without_depth->fragment.find("vispy_line_consumer_fragment_depth * 4.0") != std::string::npos,
+            "user depth assignment and following expression remain invocation-local computations");
+        for (const auto& consumer : {with_depth, without_depth}) {
+            bool depth_builtin = false, depth_replacing = false;
+            for (size_t p = 5; p < consumer->fragment_spv.size();) {
+                const auto& words = consumer->fragment_spv; const size_t count = words[p] >> 16;
+                if (!count || count > words.size() - p) throw std::runtime_error("depth-specialization SPIR-V instruction bounds");
+                const auto op = static_cast<spv::Op>(words[p] & 0xffffu);
+                if (op == spv::Op::OpDecorate && count == 4 && words[p+2] == uint32_t(spv::Decoration::BuiltIn) &&
+                    words[p+3] == uint32_t(spv::BuiltIn::FragDepth)) depth_builtin = true;
+                if (op == spv::Op::OpExecutionMode && count >= 3 && words[p+2] == uint32_t(spv::ExecutionMode::DepthReplacing)) depth_replacing = true;
+                p += count;
+            }
+            require(depth_builtin == consumer->policy.depth_output && depth_replacing == consumer->policy.depth_output,
+                "compiled fragment depth interface agrees with captured attachment policy");
+            require(consumer->fragment_line_map.size() == size_t(std::count(consumer->fragment.begin(), consumer->fragment.end(), '\n')),
+                "depth specialization preserves composer diagnostic line mapping");
+        }
+    }
+}
+
 void bounded_product_arithmetic() {
     using vispy::lines::Mode;
     // Independent wide arithmetic covers all topologies, including values
@@ -1332,7 +1371,7 @@ int main(int argc, char** argv) {
             diagnostics_directory = argv[1];
             if (!std::filesystem::create_directory(diagnostics_directory)) throw std::runtime_error("diagnostics directory must be fresh");
         }
-        basic(); bounded_product_arithmetic(); viewport_coordinate_contract(); initializer_order(); typed_and_resources(); fragment_contexts(); dynamic_helper_queries(); plans_and_clip(); chunk_mapping_contract(); aliased_projection_and_clipped_terminal();
+        basic(); depth_attachment_specialization(); bounded_product_arithmetic(); viewport_coordinate_contract(); initializer_order(); typed_and_resources(); fragment_contexts(); dynamic_helper_queries(); plans_and_clip(); chunk_mapping_contract(); aliased_projection_and_clipped_terminal();
         std::cout << "line consumer generated compiler contract: " << checks << " checks\n";
         return 0;
     } catch (const std::exception& error) {
