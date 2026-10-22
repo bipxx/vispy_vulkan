@@ -1,10 +1,14 @@
 # Scientific fixture coverage — current evidence
 
-This CPU-only inventory maps the revised v1 requirements in [the design spec](../specs/2026-10-08-vispy-vulkan-design.md) to independent references and actual candidate evidence. The machine-readable [report](../../../build/reports/scientific-fixture-coverage-current.json) records source/reference/report hashes, case selections and matched test nodes. No GPU, renderer, reference or tolerance changes are part of this packet.
+This inventory maps the revised v1 requirements in [the design spec](../specs/2026-10-08-vispy-vulkan-design.md) to independent references and actual candidate evidence. The machine-readable [report](../../../build/reports/scientific-fixture-coverage-current.json) records source/reference/report hashes, case selections and matched test nodes. The original inventory was CPU-only; the Native58 supplement below records new GPU evidence without renderer changes or changes to criteria after candidate execution.
+
+Native58 update, 2026-10-21: [saved mesh/layout review](../../../build/mesh-layout-saved-review-root-4/result.json) SHA24e58de10783b54da44fa01d137ad042340e1bae57adb67e59e8fec31ed1e95b recomputes twelve exact whole-frame pairs from thirteen admitted upstream cases on Windows CPython3.12.8/NumPy2.5.3, NVIDIA RTX4090 Vulkan hardware. The required axes/colorbar candidate remains a real smooth-line refusal. All eight shutdown counters are zero in every candidate worker, and both external environments are cleaned. This is a Root-only saved review, not independent-person or all-platform admission. The [bounded row supplement](../../../build/reports/scientific-fixture-coverage-native58-mesh-layout.json) adds only the scopes below; the older pass23 report remains historical.
+
+Color-volume update, 2026-10-21: [the installed RGB/RGBA packet](../../color-volume-wheel-regressions.md) adds24 successful fresh originals and24 matching installed Native58 candidate cases. All221184 final and36864 before-frame pixels match exactly, including alpha. Independent inspection rechecks48 actual case workers, two parent suites, package/native origins, native work, eight shutdown zeros and removed environments/cache. The [portable original manifest](../../../tests/reference/color-volume-opengl/manifest.json) is c8af8d76e1ecdaac1e21303a47ba75a7cce83cb269085a230e89cf0f127c4337. This updates V08 only; it is a finite Windows CPython3.12.8/NumPy2.4.6/NVIDIA RTX4090 cell, not universal volume, platform or release qualification. The historical185/39 reference aggregate is not recomputed or enlarged by this row update.
 
 ## Evidence boundary
 
-The sealed [reference inventory](../../../build/reports/reference-inventory-current-pass-10.json) has **185 admitted captured variants and 39 unresolved attempts**. These are not 185 distinct requirements. The current native pass23/w7 core report is **247 passed, 8 explicit historical stencil-wrapper deselections, exit 0**. Its command explicitly ignores both required wide-line test files. The eight point identity references were authored afterward and have no candidate result. Glue, DIVE, registered plugin, alternate Qt binding/platform and performance qualification are separate gates.
+The sealed [reference inventory](../../../build/reports/reference-inventory-current-pass-10.json) has **185 admitted captured variants and 39 unresolved attempts**. These are not 185 distinct requirements. The historical native pass23/w7 core report is **247 passed, 8 explicit historical stencil-wrapper deselections, exit 0**. Its command explicitly ignores both required wide-line test files. The eight point identity references were authored afterward and have no candidate result. Glue, DIVE, registered plugin, alternate Qt binding/platform and performance qualification are separate gates.
 
 Pass23 also has 22 actual GPU-query/memory hardware checks and one actual 12-frame CPU/GPU collector join. They prove owned query completion, multiple submissions, FBO/capture/loss and Vulkan allocation/free attribution. Their GPU intervals exclude upload work before the first measured render pass, query resolve/readback and compositor/scanout; they do not prove input-to-visible latency. The current Qt error tests have 4 passes and prevent a native validation exception from aborting through Qt callbacks. They do not catch native access violations or describe old w5 wheel behavior.
 
@@ -48,11 +52,11 @@ The table contains 71 scoped rows: 23 passed, 29 incomplete, 16 missing and 3 up
 | M10 | Rectangle, ellipse and polygon topology | passed | Fixed bounded scene; not host arrows/vectors/tracks. |
 | M11 | Arrows, vectors, tracks and selection outlines used by admitted hosts | missing | No independent public workflow corpus for these requirements. |
 | E01 | Unshaded planar mesh with a clipping plane | passed | shading=None; one planar fixture only. |
-| E02 | Flat/smooth shading and SurfacePlot | missing | No actual shaded mesh or SurfacePlot fixture. |
-| E03 | Inventoried mesh filters and filter composition | missing | Only PlanesClipper is rendered; Texture/Wireframe/Shading combinations not qualified. |
-| E04 | 3D cameras, planes and scene depth/stencil/polygon offset | incomplete | Raw gloo depth/stencil passes do not prove scientific scene/filter polygon-offset ordering. |
-| E05 | Grid/ViewBox clipping and multiple viewports | missing | Raw viewport/scissor state does not prove scene Grid clipping/layout. |
-| E06 | Axes and colorbars integrated with scientific layout | incomplete | Text atlas does not qualify layout; installed-w5 Glue scatter_axes fails line_smooth. |
+| E02 | Flat/smooth shading and SurfacePlot | bounded pass | Windows CP312; asymmetric two-face mesh and7x5 SurfacePlot; fixed light; whole frames exact. |
+| E03 | Inventoried mesh filters and filter composition | incomplete | Texture+two visual clipping planes, derivative Wireframe composition and pre-draw detach pass exactly; complete filter inventory and pending-draw invalidation remain open. |
+| E04 | 3D cameras, planes and scene depth/stencil/polygon offset | incomplete | Fixed perspective camera and coplanar scene polygon-offset ordering pass exactly; broader scene depth/stencil/camera matrix remains open. |
+| E05 | Grid/ViewBox clipping and multiple viewports | bounded pass | Two adjacent clipped Grid ViewBoxes with oversized red/green rectangles, exact gap/outside pixels; one offscreen layout. |
+| E06 | Axes and colorbars integrated with scientific layout | incomplete | Current installed Native58 candidate refuses the required upstream-passing axes/colorbar scene at generated smooth-line consumer policy. |
 | V01 | Seven scalar ray modes | passed | 32-cubed float32 ellipsoid, one orthographic camera and fixed controls. |
 | V02 | Advertised volume/plane constructor raycasting modes | passed | One plane MIP workflow; dynamic host plane controls separate. |
 | V03 | Nearest/linear MIP, clip plane and mesh-front ISO depth | passed | Limited interpolation/control/occlusion cases. |
@@ -60,12 +64,12 @@ The table contains 71 scoped rows: 23 passed, 29 incomplete, 16 missing and 3 up
 | V05 | Categorical ISO fast/smooth and translucent with background zero | passed | 32-cubed positive label set only. |
 | V06 | Categorical plane, clip and edit workflows | passed | One fixed camera/plane; does not prove mesh-front depth or all categorical controls. |
 | V07 | Registered public dynamic plane position/rotation/clipping | incomplete | Four public Qt timer-delivered references, paired NumPy2.4.6; installed candidate graphics pending wide lines. |
-| V08 | RGB/RGBA volume variants exposed by legal admitted APIs | missing | Pinned public VolumeVisual supports 3/4-channel arrays, but corpus is scalar/categorical. |
+| V08 | RGB/RGBA volume variants exposed by legal admitted APIs | bounded pass | All seven methods in both color forms; opacity, plane, linear, color updates and RGB/RGBA transitions. Exact 24-case installed Native58/Windows CPython3.12.8/RTX4090 packet; float32 auto textures and one camera only. Other cells remain unqualified. |
 | V09 | 256-cubed and 512-cubed quality/performance data | missing | Small numerical fixtures do not close required benchmark sizes. |
 | T01 | Licensed font, real CPU SDF atlas and rendered text | passed | OpenSans Ag15 single line, left/baseline anchor and rotation zero. |
-| T02 | Anchor, rotation and newline semantics | missing | No nonbaseline/rotated/multiline text reference. |
-| T03 | Required DPI1,1.25,1.5 text captures | incomplete | 96/144/192 proves1/1.5/2; required120(1.25) absent. |
-| T04 | Annotation, axis labels, colorbars and scale bars | incomplete | Only standalone text; host/layout annotation placement not qualified. |
+| T02 | Anchor, rotation and newline semantics | bounded pass | OpenSans CPU SDF; Ag/newline/15 at left/top0deg, center/center30deg, right/bottom-90deg; exact full frames, glyph records and atlases. |
+| T03 | Required DPI1,1.25,1.5 text captures | bounded pass | Numeric DPI96/120/144 all match exactly and produce three distinct frames; this is not monitor-move or physical desktop scale admission. |
+| T04 | Annotation, axis labels, colorbars and scale bars | incomplete | Rotated standalone text is now covered; axis/colorbar scene remains refused by smooth lines, and scale bars/host annotation placement remain open. |
 | B01 | Opaque/translucent/translucent_no_depth/additive/minimum host modes | passed | Two RGBA layers, first opaque, top opacity.75 only. |
 | B02 | Legal multiplicative host blending | missing | Pinned napari Blending enum and GL factor map expose it; no upstream blocker. |
 | B03 | First-layer behavior, opacity mutation and multichannel additive order | incomplete | Finite export and one two-layer additive case only. |
