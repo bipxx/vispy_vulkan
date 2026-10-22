@@ -59,13 +59,14 @@ input-identity records when producing these files. Those records are CPU schema
 checks, not captured timing runs. `measurement_identity` additionally requires
 an actual timing run's complete installed package fingerprint, wheel digest,
 input digest and Python/NumPy cell. The old benchmark's seven Python source
-hashes cannot satisfy this check. Its timing adapter has not yet been wired to
-provide and enforce the stronger identity.
+hashes cannot satisfy this check. The [versioned volume timing adapter](volume-benchmark-adapter.md)
+now enforces the stronger identity in the worker and saved-run gate. Its full
+paired controller and release qualification remain pending.
 
-Before performance qualification, the original renderer's unchanged repeated
-96-byte vertex and 56-byte index uploads need a narrowly attested measurement
-allowance. Their actual work and time must remain in the baseline. The candidate
-resident counters must stay zero. Full 100-warmup/1000-measured-frame, five-pair
+The versioned adapter now attests the original renderer's unchanged repeated
+96-byte vertex and 56-byte index uploads while retaining their work and time.
+The candidate resident counters stay zero in the first actual timing diagnostic.
+Full 100-warmup/1000-measured-frame, five-pair
 timings, the 20% resident speedup target, p95 and update limits, presentation,
 other platforms and the full release remain pending.
 
