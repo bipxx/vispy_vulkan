@@ -6,6 +6,7 @@ from pathlib import Path
 import shutil
 import subprocess
 import sys
+from types import SimpleNamespace
 
 import pytest
 
@@ -131,7 +132,9 @@ def test_later_case_failure_cannot_publish_partial_admission_set(tmp_path, contr
     actual = admission.verify_large_case(first, controls)
     monkeypatch.setattr(admission, 'verify_controls', lambda directory: controls)
     monkeypatch.setattr(admission.large, 'CASES', (first, second))
+    verified = []
     def verify(name, *args):
+        verified.append(name)
         if name == second:
             raise ValueError('injected later-case failure')
         return actual
@@ -140,11 +143,20 @@ def test_later_case_failure_cannot_publish_partial_admission_set(tmp_path, contr
     # Deep pytest paths can exceed Windows' limit before resolving '..' paths.
     # Real producer executions and the saved closure tests cover schema checks.
     monkeypatch.setattr(admission.benchmark, 'validate_admission', lambda *args: {'status': 'passed'})
+    # This lifecycle-only fixture need not serialize usable evidence links.
+    # Windows CI checks out on D: while pytest scratch is on C:, so real
+    # relpath() would fail before reaching the injected second-case failure.
+    # Replace only this module's formatter, keeping global os.path untouched.
+    monkeypatch.setattr(admission, 'os', SimpleNamespace(path=SimpleNamespace(
+        relpath=lambda path, start: 'lifecycle-only-evidence/' + Path(path).name)))
     output = tmp_path / 'admissions'
     with pytest.raises(ValueError, match='injected later-case failure'):
         admission.produce(output)
     assert not output.exists()
     pending = output.with_name('admissions.pending')
+    assert verified == [first, second]
+    assert (pending / (first + '.json')).exists()
+    assert not (pending / (second + '.json')).exists()
     assert pending.exists() and not (pending / 'qualification.json').exists()
     with pytest.raises(AssertionError, match='Preserve prior admission sets'):
         admission.produce(output)
