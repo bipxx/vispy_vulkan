@@ -1,0 +1,174 @@
+{
+  "blend": false,
+  "camera": {
+    "aspect": 1,
+    "flip": [
+      false,
+      true,
+      false
+    ],
+    "rect": [
+      0,
+      0,
+      4096,
+      4096
+    ]
+  },
+  "canvas_to_framebuffer_corners": [
+    [
+      0.0,
+      4096.0,
+      0.0,
+      1.0
+    ],
+    [
+      4096.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "case": "rgba_linear",
+  "clim": "auto",
+  "cmap": "grays",
+  "comparison": {
+    "analytic_alpha_tolerance": 0,
+    "analytic_rgb_tolerance": 0,
+    "excluded_pixels": 0,
+    "full_frame_exact_original": true
+  },
+  "depth_test": false,
+  "framebuffer_shape": [
+    4096,
+    4096,
+    4
+  ],
+  "grid": [
+    1,
+    1
+  ],
+  "image_shape": [
+    4096,
+    4096
+  ],
+  "interpolation": "linear",
+  "logical_canvas_size": [
+    64,
+    64
+  ],
+  "method": "subdivide",
+  "pan": [
+    -13,
+    17
+  ],
+  "performance_qualified": false,
+  "physical_canvas_size": [
+    64,
+    64
+  ],
+  "resident_zero": [
+    "texture_uploads",
+    "buffer_uploads",
+    "geometry_upload_bytes",
+    "texture_conversion_ns",
+    "point_conversion_builds",
+    "point_conversion_bytes",
+    "vertex_input_conversion_builds",
+    "vertex_input_conversion_bytes",
+    "line_endpoint_conversion_builds",
+    "line_endpoint_conversion_bytes",
+    "pipeline_misses",
+    "portable_shader_misses",
+    "shader_normalizations",
+    "shader_parse_calls",
+    "shader_link_calls",
+    "shader_spirv_stages",
+    "shader_module_creations",
+    "render_pipeline_creations",
+    "compute_pipeline_creations",
+    "texture_upload_bytes"
+  ],
+  "source_texture_shape": [
+    4096,
+    4096,
+    4
+  ],
+  "stages": [
+    "baseline",
+    "repeat",
+    "pan",
+    "return"
+  ],
+  "stages_observed": {
+    "baseline": {
+      "camera_rect": [
+        0.0,
+        0.0,
+        4096.0,
+        4096.0
+      ],
+      "command_start": 14,
+      "command_stop": 74,
+      "counter_after": null,
+      "counter_before": null,
+      "counter_delta": null,
+      "framebuffer_id": 17,
+      "source_texture_id": 10,
+      "target_texture_id": 16
+    },
+    "pan": {
+      "camera_rect": [
+        -13.0,
+        17.0,
+        4096.0,
+        4096.0
+      ],
+      "command_start": 83,
+      "command_stop": 93,
+      "counter_after": null,
+      "counter_before": null,
+      "counter_delta": null,
+      "framebuffer_id": 17,
+      "source_texture_id": 10,
+      "target_texture_id": 16
+    },
+    "repeat": {
+      "camera_rect": [
+        0.0,
+        0.0,
+        4096.0,
+        4096.0
+      ],
+      "command_start": 74,
+      "command_stop": 83,
+      "counter_after": null,
+      "counter_before": null,
+      "counter_delta": null,
+      "framebuffer_id": 17,
+      "source_texture_id": 10,
+      "target_texture_id": 16
+    },
+    "return": {
+      "camera_rect": [
+        0.0,
+        0.0,
+        4096.0,
+        4096.0
+      ],
+      "command_start": 93,
+      "command_stop": 103,
+      "counter_after": null,
+      "counter_before": null,
+      "counter_delta": null,
+      "framebuffer_id": 17,
+      "source_texture_id": 10,
+      "target_texture_id": 16
+    }
+  },
+  "texture_format": "auto",
+  "viewbox": {
+    "border_width": 0,
+    "margin": 0,
+    "padding": 0
+  }
+}
