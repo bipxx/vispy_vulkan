@@ -61,7 +61,8 @@ an actual timing run's complete installed package fingerprint, wheel digest,
 input digest and Python/NumPy cell. The old benchmark's seven Python source
 hashes cannot satisfy this check. The [versioned volume timing adapter](volume-benchmark-adapter.md)
 now enforces the stronger identity in the worker and saved-run gate. Its full
-paired controller and release qualification remain pending.
+paired controller is implemented with a first five-pair collection;
+release qualification remains pending.
 
 The versioned adapter now attests the original renderer's unchanged repeated
 96-byte vertex and 56-byte index uploads while retaining their work and time.

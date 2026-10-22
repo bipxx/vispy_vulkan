@@ -43,8 +43,9 @@ verify `worker.json` and its process stamp and run digest, then join retained
 samples, captures, scientific admission and designated hardware records. The
 worker CLI accepts `--worker`, `--launch-id`, `--workload`, `--wheel`,
 `--admission` and `--output`; it enforces the minimum warmup/frame counts.
-An individual worker is not paired performance qualification. The full paired
-controller and matrix execution remain pending.
+An individual worker is not paired performance qualification. The
+[paired controller](volume-benchmark-pairs.md) now owns the environment, process
+and evidence joins. Matrix execution and release qualification remain pending.
 
 The frozen worker still reports input-to-visible scanout and complete driver
 allocator accounting as instrumentation gaps. They are preserved. This adapter
