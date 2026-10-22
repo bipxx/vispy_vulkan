@@ -6,6 +6,10 @@ Each workload requires at least five pairs, 100 warm frames and 1,000 measured
 frames. Select workloads explicitly with `--workloads`, or use `--all-workloads`
 for all 24 registered volume workloads. The full 66-workload release is separate.
 
+The newer [observer-free integration](volume-benchmark-observer-free.md) uses
+versioned worker/controller entry points. This page describes the original
+controller and its retained observation-overhead gap.
+
 Supply the two qualified wheels, the completed scientific `quality-plan.json`,
 a predeclared hardware JSON and a fresh output directory. The admitted Windows
 cell's hardware designation is in
