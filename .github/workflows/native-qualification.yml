@@ -138,6 +138,10 @@ jobs:
         if: inputs.mode == 'host' && inputs.host == 'glue_vispy_viewers'
         run: |
           "$CI_PYTHON" tools/prepare_glue_host_cell.py --admission "$EVIDENCE/host-admission.json" --evidence "$EVIDENCE/glue-host" --github-env "$GITHUB_ENV"
+      - name: Prepare the admitted plugin original and candidate wheel pair
+        if: inputs.mode == 'host' && inputs.host == 'napari_threedee'
+        run: |
+          "$CI_PYTHON" tools/prepare_napari_plugin_host_cell.py --admission "$EVIDENCE/host-admission.json" --evidence "$EVIDENCE/napari-plugin-host" --github-env "$GITHUB_ENV"
       - name: Run every admitted host fixture; missing fixtures fail
         if: inputs.mode == 'host'
         run: |

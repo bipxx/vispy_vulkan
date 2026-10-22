@@ -1,0 +1,1589 @@
+{
+  "candidate_qualified": false,
+  "errors": [],
+  "fixtures": {
+    "handles": {
+      "comparison": {
+        "dtype": "uint8",
+        "exact": true,
+        "excluded_pixels": 0,
+        "shape": [
+          192,
+          256,
+          4
+        ]
+      },
+      "expanded_shaders": {
+        "file": "handles.expanded_shaders.shaders.json",
+        "sha256": "639225cc27a07480b38503d743c48c34e757ee5aa76781954964933d3f0a3aec"
+      },
+      "filtered_glir": {
+        "file": "handles.filtered_glir.glir.json",
+        "sha256": "11c28ddd4b1e074be115437026c6eec2f84f16c845631838c242ab7cf7485369"
+      },
+      "parameters": {
+        "camera": {
+          "angles": [
+            20.0,
+            35.0,
+            0.0
+          ],
+          "center": [
+            4.5,
+            5.5,
+            7.5
+          ],
+          "perspective": 0.0,
+          "zoom": 6.0
+        },
+        "case": "handles",
+        "comparison": "whole-frame exact uint8 RGBA; no alignment, edge masks or fitted tolerance",
+        "event_api": "real QtTest.QTest mousePress/mouseMove/mouseRelease on the installed canvas widget",
+        "final_projection": {
+          "x": [
+            145.78733626470233,
+            59.85984136418
+          ],
+          "y": [
+            116.41225836109302,
+            136.76260721087462
+          ],
+          "z": [
+            65.18768220443611,
+            80.38104996372012
+          ]
+        },
+        "handle_size": 2.0,
+        "handle_world": {
+          "x": [
+            0.0,
+            0.0,
+            10.0
+          ],
+          "y": [
+            0.0,
+            10.0,
+            0.0
+          ],
+          "z": [
+            10.0,
+            0.0,
+            0.0
+          ]
+        },
+        "initial_projection": {
+          "x": [
+            145.78733626470233,
+            59.85984136418
+          ],
+          "y": [
+            116.41225836109302,
+            136.76260721087462
+          ],
+          "z": [
+            65.18768220443611,
+            80.38104996372012
+          ]
+        },
+        "input": {
+          "dtype": "<f4",
+          "sha256": "fcdfa0e7dc56690719caeea1ad30361734ef946012220aea7ddecbb76d8f25ca",
+          "shape": [
+            12,
+            16,
+            20
+          ]
+        },
+        "native_mro": [
+          "CanvasBackendDesktop",
+          "QtBaseCanvasBackend",
+          "BaseCanvasBackend",
+          "QOpenGLWidget",
+          "QWidget",
+          "QObject",
+          "wrapper",
+          "QPaintDevice",
+          "simplewrapper",
+          "object"
+        ],
+        "origin": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "picking": "installed CPU ray/sphere callbacks, not GPU ID picking",
+        "plugin": "napari-threedee",
+        "radius": 8.0,
+        "registered_widget": "layer manipulator",
+        "screenshot_api": "napari.Viewer.screenshot(canvas_only=True, flash=False)",
+        "size": [
+          256,
+          192
+        ],
+        "stages": [
+          {
+            "colors": {
+              "0": [
+                0.5,
+                0.8,
+                0.5,
+                1.0
+              ],
+              "1": [
+                0.75,
+                0.68,
+                0.83,
+                1.0
+              ],
+              "2": [
+                1.0,
+                0.75,
+                0.52,
+                1.0
+              ]
+            },
+            "enabled": true,
+            "is_dragging": false,
+            "mouse_pan": true,
+            "origin": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "owned_callbacks": [
+              true,
+              true
+            ],
+            "selected_axis_id": null,
+            "stage": "activated",
+            "translate": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "colors": {
+              "0": [
+                0.5,
+                0.8,
+                0.5,
+                1.0
+              ],
+              "1": [
+                0.75,
+                0.68,
+                0.83,
+                1.0
+              ],
+              "2": [
+                1.0,
+                0.75,
+                0.52,
+                1.0
+              ]
+            },
+            "enabled": true,
+            "is_dragging": false,
+            "mouse_pan": true,
+            "origin": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "owned_callbacks": [
+              true,
+              true
+            ],
+            "selected_axis_id": null,
+            "stage": "handles",
+            "translate": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        ],
+        "volume_blending": "translucent_no_depth",
+        "widget_origin": "napari_threedee.manipulators._qt.qt_layer_manipulator"
+      },
+      "parameters_artifact": {
+        "file": "handles.parameters.parameters.json",
+        "sha256": "5026841306089ddefa0a2500550635b2f3f6eec889d5fc8bec8385e399c94d4a"
+      },
+      "rgba": {
+        "file": "handles.rgba.npy",
+        "sha256": "872ae6fdc95e0017ae99c16ef4d74dd36c351f78e56b00b0e8622a10d7061cd5"
+      }
+    },
+    "miss": {
+      "before": {
+        "file": "miss.before.npy",
+        "sha256": "872ae6fdc95e0017ae99c16ef4d74dd36c351f78e56b00b0e8622a10d7061cd5"
+      },
+      "comparison": {
+        "dtype": "uint8",
+        "exact": true,
+        "excluded_pixels": 0,
+        "shape": [
+          192,
+          256,
+          4
+        ]
+      },
+      "expanded_shaders": {
+        "file": "miss.expanded_shaders.shaders.json",
+        "sha256": "14b6eb6a22c3a7416620d135e18399f6f72705a7b4284f2e94deff0fa6e01691"
+      },
+      "filtered_glir": {
+        "file": "miss.filtered_glir.glir.json",
+        "sha256": "dbcd8b39bcabc50cbb7cb98568b6132cc8c0175adcabfcdf1f68a1f75bcfa869"
+      },
+      "parameters": {
+        "camera": {
+          "angles": [
+            20.0,
+            35.0,
+            0.0
+          ],
+          "center": [
+            4.5,
+            5.5,
+            7.5
+          ],
+          "perspective": 0.0,
+          "zoom": 6.0
+        },
+        "case": "miss",
+        "comparison": "whole-frame exact uint8 RGBA; no alignment, edge masks or fitted tolerance",
+        "event_api": "real QtTest.QTest mousePress/mouseMove/mouseRelease on the installed canvas widget",
+        "final_projection": {
+          "x": [
+            145.78733626470233,
+            59.85984136418
+          ],
+          "y": [
+            116.41225836109302,
+            136.76260721087462
+          ],
+          "z": [
+            65.18768220443611,
+            80.38104996372012
+          ]
+        },
+        "handle_size": 2.0,
+        "handle_world": {
+          "x": [
+            0.0,
+            0.0,
+            10.0
+          ],
+          "y": [
+            0.0,
+            10.0,
+            0.0
+          ],
+          "z": [
+            10.0,
+            0.0,
+            0.0
+          ]
+        },
+        "initial_projection": {
+          "x": [
+            145.78733626470233,
+            59.85984136418
+          ],
+          "y": [
+            116.41225836109302,
+            136.76260721087462
+          ],
+          "z": [
+            65.18768220443611,
+            80.38104996372012
+          ]
+        },
+        "input": {
+          "dtype": "<f4",
+          "sha256": "fcdfa0e7dc56690719caeea1ad30361734ef946012220aea7ddecbb76d8f25ca",
+          "shape": [
+            12,
+            16,
+            20
+          ]
+        },
+        "native_mro": [
+          "CanvasBackendDesktop",
+          "QtBaseCanvasBackend",
+          "BaseCanvasBackend",
+          "QOpenGLWidget",
+          "QWidget",
+          "QObject",
+          "wrapper",
+          "QPaintDevice",
+          "simplewrapper",
+          "object"
+        ],
+        "origin": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "picking": "installed CPU ray/sphere callbacks, not GPU ID picking",
+        "plugin": "napari-threedee",
+        "press_pixel": [
+          3,
+          3
+        ],
+        "radius": 8.0,
+        "registered_widget": "layer manipulator",
+        "screenshot_api": "napari.Viewer.screenshot(canvas_only=True, flash=False)",
+        "size": [
+          256,
+          192
+        ],
+        "stages": [
+          {
+            "colors": {
+              "0": [
+                0.5,
+                0.8,
+                0.5,
+                1.0
+              ],
+              "1": [
+                0.75,
+                0.68,
+                0.83,
+                1.0
+              ],
+              "2": [
+                1.0,
+                0.75,
+                0.52,
+                1.0
+              ]
+            },
+            "enabled": true,
+            "is_dragging": false,
+            "mouse_pan": true,
+            "origin": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "owned_callbacks": [
+              true,
+              true
+            ],
+            "selected_axis_id": null,
+            "stage": "activated",
+            "translate": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "colors": {
+              "0": [
+                0.5,
+                0.8,
+                0.5,
+                1.0
+              ],
+              "1": [
+                0.75,
+                0.68,
+                0.83,
+                1.0
+              ],
+              "2": [
+                1.0,
+                0.75,
+                0.52,
+                1.0
+              ]
+            },
+            "enabled": true,
+            "is_dragging": false,
+            "mouse_pan": true,
+            "origin": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "owned_callbacks": [
+              true,
+              true
+            ],
+            "selected_axis_id": null,
+            "stage": "before_events",
+            "translate": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "colors": {
+              "0": [
+                0.5,
+                0.8,
+                0.5,
+                1.0
+              ],
+              "1": [
+                0.75,
+                0.68,
+                0.83,
+                1.0
+              ],
+              "2": [
+                1.0,
+                0.75,
+                0.52,
+                1.0
+              ]
+            },
+            "enabled": true,
+            "is_dragging": false,
+            "mouse_pan": true,
+            "origin": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "owned_callbacks": [
+              true,
+              true
+            ],
+            "selected_axis_id": null,
+            "stage": "missed",
+            "translate": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        ],
+        "volume_blending": "translucent_no_depth",
+        "widget_origin": "napari_threedee.manipulators._qt.qt_layer_manipulator"
+      },
+      "parameters_artifact": {
+        "file": "miss.parameters.parameters.json",
+        "sha256": "0ddc5ee541c9b7a1a43098a8dbae4e31dddede669c69d988708de869ea743ab5"
+      },
+      "rgba": {
+        "file": "miss.rgba.npy",
+        "sha256": "872ae6fdc95e0017ae99c16ef4d74dd36c351f78e56b00b0e8622a10d7061cd5"
+      }
+    },
+    "retirement": {
+      "comparison": {
+        "dtype": "uint8",
+        "exact": true,
+        "excluded_pixels": 0,
+        "shape": [
+          192,
+          256,
+          4
+        ]
+      },
+      "expanded_shaders": {
+        "file": "retirement.expanded_shaders.shaders.json",
+        "sha256": "d9be2ad075f705b269893c4180db53e2dffbc2455a663f695ea2936eff584b3c"
+      },
+      "filtered_glir": {
+        "file": "retirement.filtered_glir.glir.json",
+        "sha256": "3db28f26a708eb1e054d9df75fdec6c7ad4eb37424b6ccf2b73a3819c616b0d4"
+      },
+      "parameters": {
+        "camera": {
+          "angles": [
+            20.0,
+            35.0,
+            0.0
+          ],
+          "center": [
+            4.5,
+            5.5,
+            7.5
+          ],
+          "perspective": 0.0,
+          "zoom": 6.0
+        },
+        "case": "retirement",
+        "comparison": "whole-frame exact uint8 RGBA; no alignment, edge masks or fitted tolerance",
+        "event_api": "real QtTest.QTest mousePress/mouseMove/mouseRelease on the installed canvas widget",
+        "final_projection": {
+          "x": [
+            145.78733626470233,
+            59.85984136418
+          ],
+          "y": [
+            116.41225836109302,
+            136.76260721087462
+          ],
+          "z": [
+            65.18768220443611,
+            80.38104996372012
+          ]
+        },
+        "handle_size": 2.0,
+        "handle_world": {
+          "x": [
+            0.0,
+            0.0,
+            10.0
+          ],
+          "y": [
+            0.0,
+            10.0,
+            0.0
+          ],
+          "z": [
+            10.0,
+            0.0,
+            0.0
+          ]
+        },
+        "initial_projection": {
+          "x": [
+            145.78733626470233,
+            59.85984136418
+          ],
+          "y": [
+            116.41225836109302,
+            136.76260721087462
+          ],
+          "z": [
+            65.18768220443611,
+            80.38104996372012
+          ]
+        },
+        "input": {
+          "dtype": "<f4",
+          "sha256": "fcdfa0e7dc56690719caeea1ad30361734ef946012220aea7ddecbb76d8f25ca",
+          "shape": [
+            12,
+            16,
+            20
+          ]
+        },
+        "native_mro": [
+          "CanvasBackendDesktop",
+          "QtBaseCanvasBackend",
+          "BaseCanvasBackend",
+          "QOpenGLWidget",
+          "QWidget",
+          "QObject",
+          "wrapper",
+          "QPaintDevice",
+          "simplewrapper",
+          "object"
+        ],
+        "origin": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "picking": "installed CPU ray/sphere callbacks, not GPU ID picking",
+        "plugin": "napari-threedee",
+        "radius": 8.0,
+        "registered_widget": "layer manipulator",
+        "screenshot_api": "napari.Viewer.screenshot(canvas_only=True, flash=False)",
+        "size": [
+          256,
+          192
+        ],
+        "stages": [
+          {
+            "colors": {
+              "0": [
+                0.5,
+                0.8,
+                0.5,
+                1.0
+              ],
+              "1": [
+                0.75,
+                0.68,
+                0.83,
+                1.0
+              ],
+              "2": [
+                1.0,
+                0.75,
+                0.52,
+                1.0
+              ]
+            },
+            "enabled": true,
+            "is_dragging": false,
+            "mouse_pan": true,
+            "origin": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "owned_callbacks": [
+              true,
+              true
+            ],
+            "selected_axis_id": null,
+            "stage": "activated",
+            "translate": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "colors": {
+              "0": [
+                0.5,
+                0.8,
+                0.5,
+                1.0
+              ],
+              "1": [
+                0.75,
+                0.68,
+                0.83,
+                1.0
+              ],
+              "2": [
+                1.0,
+                0.75,
+                0.52,
+                1.0
+              ]
+            },
+            "enabled": false,
+            "is_dragging": false,
+            "mouse_pan": true,
+            "origin": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "owned_callbacks": [
+              true,
+              false
+            ],
+            "selected_axis_id": null,
+            "stage": "deactivated",
+            "translate": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "colors": {
+              "0": [
+                0.5,
+                0.8,
+                0.5,
+                1.0
+              ],
+              "1": [
+                0.75,
+                0.68,
+                0.83,
+                1.0
+              ],
+              "2": [
+                1.0,
+                0.75,
+                0.52,
+                1.0
+              ]
+            },
+            "enabled": false,
+            "is_dragging": false,
+            "mouse_pan": true,
+            "origin": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "owned_callbacks": [
+              false,
+              false
+            ],
+            "selected_axis_id": null,
+            "stage": "two_dimensional",
+            "translate": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "colors": {
+              "0": [
+                0.5,
+                0.8,
+                0.5,
+                1.0
+              ],
+              "1": [
+                0.75,
+                0.68,
+                0.83,
+                1.0
+              ],
+              "2": [
+                1.0,
+                0.75,
+                0.52,
+                1.0
+              ]
+            },
+            "enabled": false,
+            "is_dragging": false,
+            "mouse_pan": true,
+            "origin": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "owned_callbacks": [
+              false,
+              false
+            ],
+            "selected_axis_id": null,
+            "stage": "retired",
+            "translate": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "colors": {
+              "0": [
+                0.5,
+                0.8,
+                0.5,
+                1.0
+              ],
+              "1": [
+                0.75,
+                0.68,
+                0.83,
+                1.0
+              ],
+              "2": [
+                1.0,
+                0.75,
+                0.52,
+                1.0
+              ]
+            },
+            "enabled": false,
+            "is_dragging": false,
+            "mouse_pan": true,
+            "origin": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "owned_callbacks": [
+              false,
+              false
+            ],
+            "selected_axis_id": null,
+            "stage": "layer_removed",
+            "translate": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        ],
+        "volume_blending": "translucent_no_depth",
+        "widget_origin": "napari_threedee.manipulators._qt.qt_layer_manipulator"
+      },
+      "parameters_artifact": {
+        "file": "retirement.parameters.parameters.json",
+        "sha256": "0da7f2e7c1eee96c7b9135abcb8301210e37facf55e450ea3710832f03644d65"
+      },
+      "rgba": {
+        "file": "retirement.rgba.npy",
+        "sha256": "e90aa07ee649f18b93f73bf7ce7f79c4e058c850f820259413bf75060cfe6dac"
+      }
+    },
+    "selection": {
+      "before": {
+        "file": "selection.before.npy",
+        "sha256": "872ae6fdc95e0017ae99c16ef4d74dd36c351f78e56b00b0e8622a10d7061cd5"
+      },
+      "comparison": {
+        "dtype": "uint8",
+        "exact": true,
+        "excluded_pixels": 0,
+        "shape": [
+          192,
+          256,
+          4
+        ]
+      },
+      "expanded_shaders": {
+        "file": "selection.expanded_shaders.shaders.json",
+        "sha256": "14b6eb6a22c3a7416620d135e18399f6f72705a7b4284f2e94deff0fa6e01691"
+      },
+      "filtered_glir": {
+        "file": "selection.filtered_glir.glir.json",
+        "sha256": "9d5d374cc169e70c1e850cf7193c34891100b0061618593a66d7b9ff0929b404"
+      },
+      "parameters": {
+        "camera": {
+          "angles": [
+            20.0,
+            35.0,
+            0.0
+          ],
+          "center": [
+            4.5,
+            5.5,
+            7.5
+          ],
+          "perspective": 0.0,
+          "zoom": 6.0
+        },
+        "case": "selection",
+        "comparison": "whole-frame exact uint8 RGBA; no alignment, edge masks or fitted tolerance",
+        "event_api": "real QtTest.QTest mousePress/mouseMove/mouseRelease on the installed canvas widget",
+        "final_projection": {
+          "x": [
+            145.78733626470233,
+            59.85984136418
+          ],
+          "y": [
+            116.41225836109302,
+            136.76260721087462
+          ],
+          "z": [
+            65.18768220443611,
+            80.38104996372012
+          ]
+        },
+        "handle_size": 2.0,
+        "handle_world": {
+          "x": [
+            0.0,
+            0.0,
+            10.0
+          ],
+          "y": [
+            0.0,
+            10.0,
+            0.0
+          ],
+          "z": [
+            10.0,
+            0.0,
+            0.0
+          ]
+        },
+        "initial_projection": {
+          "x": [
+            145.78733626470233,
+            59.85984136418
+          ],
+          "y": [
+            116.41225836109302,
+            136.76260721087462
+          ],
+          "z": [
+            65.18768220443611,
+            80.38104996372012
+          ]
+        },
+        "input": {
+          "dtype": "<f4",
+          "sha256": "fcdfa0e7dc56690719caeea1ad30361734ef946012220aea7ddecbb76d8f25ca",
+          "shape": [
+            12,
+            16,
+            20
+          ]
+        },
+        "native_mro": [
+          "CanvasBackendDesktop",
+          "QtBaseCanvasBackend",
+          "BaseCanvasBackend",
+          "QOpenGLWidget",
+          "QWidget",
+          "QObject",
+          "wrapper",
+          "QPaintDevice",
+          "simplewrapper",
+          "object"
+        ],
+        "origin": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "picking": "installed CPU ray/sphere callbacks, not GPU ID picking",
+        "plugin": "napari-threedee",
+        "press_pixel": [
+          146,
+          60
+        ],
+        "radius": 8.0,
+        "registered_widget": "layer manipulator",
+        "screenshot_api": "napari.Viewer.screenshot(canvas_only=True, flash=False)",
+        "size": [
+          256,
+          192
+        ],
+        "stages": [
+          {
+            "colors": {
+              "0": [
+                0.5,
+                0.8,
+                0.5,
+                1.0
+              ],
+              "1": [
+                0.75,
+                0.68,
+                0.83,
+                1.0
+              ],
+              "2": [
+                1.0,
+                0.75,
+                0.52,
+                1.0
+              ]
+            },
+            "enabled": true,
+            "is_dragging": false,
+            "mouse_pan": true,
+            "origin": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "owned_callbacks": [
+              true,
+              true
+            ],
+            "selected_axis_id": null,
+            "stage": "activated",
+            "translate": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "colors": {
+              "0": [
+                0.5,
+                0.8,
+                0.5,
+                1.0
+              ],
+              "1": [
+                0.75,
+                0.68,
+                0.83,
+                1.0
+              ],
+              "2": [
+                1.0,
+                0.75,
+                0.52,
+                1.0
+              ]
+            },
+            "enabled": true,
+            "is_dragging": false,
+            "mouse_pan": true,
+            "origin": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "owned_callbacks": [
+              true,
+              true
+            ],
+            "selected_axis_id": null,
+            "stage": "before_events",
+            "translate": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "colors": {
+              "0": [
+                0.25,
+                0.4,
+                0.25,
+                0.5
+              ],
+              "1": [
+                0.375,
+                0.34,
+                0.415,
+                0.5
+              ],
+              "2": [
+                1.0,
+                0.75,
+                0.52,
+                1.0
+              ]
+            },
+            "enabled": true,
+            "is_dragging": true,
+            "mouse_pan": false,
+            "origin": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "owned_callbacks": [
+              true,
+              true
+            ],
+            "selected_axis_id": 2,
+            "stage": "pressed",
+            "translate": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "colors": {
+              "0": [
+                0.25,
+                0.4,
+                0.25,
+                0.5
+              ],
+              "1": [
+                0.375,
+                0.34,
+                0.415,
+                0.5
+              ],
+              "2": [
+                1.0,
+                0.75,
+                0.52,
+                1.0
+              ]
+            },
+            "enabled": true,
+            "is_dragging": true,
+            "mouse_pan": false,
+            "origin": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "owned_callbacks": [
+              true,
+              true
+            ],
+            "selected_axis_id": 2,
+            "stage": "selected",
+            "translate": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "colors": {
+              "0": [
+                0.5,
+                0.8,
+                0.5,
+                1.0
+              ],
+              "1": [
+                0.75,
+                0.68,
+                0.83,
+                1.0
+              ],
+              "2": [
+                1.0,
+                0.75,
+                0.52,
+                1.0
+              ]
+            },
+            "enabled": true,
+            "is_dragging": false,
+            "mouse_pan": true,
+            "origin": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "owned_callbacks": [
+              true,
+              true
+            ],
+            "selected_axis_id": null,
+            "stage": "released_after_capture",
+            "translate": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        ],
+        "volume_blending": "translucent_no_depth",
+        "widget_origin": "napari_threedee.manipulators._qt.qt_layer_manipulator"
+      },
+      "parameters_artifact": {
+        "file": "selection.parameters.parameters.json",
+        "sha256": "27932ca9d74a25948d9151e7b996bbfc31dc3da7794053baea90028949430c92"
+      },
+      "rgba": {
+        "file": "selection.rgba.npy",
+        "sha256": "98c6990a4b05240d95b427965be7c274c46303d060c1e7e577c088b92aab75a1"
+      }
+    },
+    "translation": {
+      "before": {
+        "file": "translation.before.npy",
+        "sha256": "872ae6fdc95e0017ae99c16ef4d74dd36c351f78e56b00b0e8622a10d7061cd5"
+      },
+      "comparison": {
+        "dtype": "uint8",
+        "exact": true,
+        "excluded_pixels": 0,
+        "shape": [
+          192,
+          256,
+          4
+        ]
+      },
+      "expanded_shaders": {
+        "file": "translation.expanded_shaders.shaders.json",
+        "sha256": "14b6eb6a22c3a7416620d135e18399f6f72705a7b4284f2e94deff0fa6e01691"
+      },
+      "filtered_glir": {
+        "file": "translation.filtered_glir.glir.json",
+        "sha256": "c500e2abfc446885b65d7075ac207e6489a25136332668462d01c1112392d523"
+      },
+      "parameters": {
+        "analytic_drag_translation": [
+          0.0,
+          0.0,
+          1.069053084966666
+        ],
+        "camera": {
+          "angles": [
+            20.0,
+            35.0,
+            0.0
+          ],
+          "center": [
+            4.5,
+            5.5,
+            7.5
+          ],
+          "perspective": 0.0,
+          "zoom": 6.0
+        },
+        "case": "translation",
+        "comparison": "whole-frame exact uint8 RGBA; no alignment, edge masks or fitted tolerance",
+        "drag_pixel": [
+          155,
+          56
+        ],
+        "event_api": "real QtTest.QTest mousePress/mouseMove/mouseRelease on the installed canvas widget",
+        "final_projection": {
+          "x": [
+            150.72476519426928,
+            57.66601522812118
+          ],
+          "y": [
+            121.34968729065994,
+            134.5687810748158
+          ],
+          "z": [
+            70.12511113400305,
+            78.1872238276613
+          ]
+        },
+        "handle_size": 2.0,
+        "handle_world": {
+          "x": [
+            0.0,
+            0.0,
+            10.0
+          ],
+          "y": [
+            0.0,
+            10.0,
+            0.0
+          ],
+          "z": [
+            10.0,
+            0.0,
+            0.0
+          ]
+        },
+        "initial_projection": {
+          "x": [
+            145.78733626470233,
+            59.85984136418
+          ],
+          "y": [
+            116.41225836109302,
+            136.76260721087462
+          ],
+          "z": [
+            65.18768220443611,
+            80.38104996372012
+          ]
+        },
+        "initialization_pixel": [
+          148,
+          59
+        ],
+        "input": {
+          "dtype": "<f4",
+          "sha256": "fcdfa0e7dc56690719caeea1ad30361734ef946012220aea7ddecbb76d8f25ca",
+          "shape": [
+            12,
+            16,
+            20
+          ]
+        },
+        "native_mro": [
+          "CanvasBackendDesktop",
+          "QtBaseCanvasBackend",
+          "BaseCanvasBackend",
+          "QOpenGLWidget",
+          "QWidget",
+          "QObject",
+          "wrapper",
+          "QPaintDevice",
+          "simplewrapper",
+          "object"
+        ],
+        "origin": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "picking": "installed CPU ray/sphere callbacks, not GPU ID picking",
+        "plugin": "napari-threedee",
+        "press_pixel": [
+          146,
+          60
+        ],
+        "radius": 8.0,
+        "registered_widget": "layer manipulator",
+        "screenshot_api": "napari.Viewer.screenshot(canvas_only=True, flash=False)",
+        "size": [
+          256,
+          192
+        ],
+        "stages": [
+          {
+            "colors": {
+              "0": [
+                0.5,
+                0.8,
+                0.5,
+                1.0
+              ],
+              "1": [
+                0.75,
+                0.68,
+                0.83,
+                1.0
+              ],
+              "2": [
+                1.0,
+                0.75,
+                0.52,
+                1.0
+              ]
+            },
+            "enabled": true,
+            "is_dragging": false,
+            "mouse_pan": true,
+            "origin": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "owned_callbacks": [
+              true,
+              true
+            ],
+            "selected_axis_id": null,
+            "stage": "activated",
+            "translate": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "colors": {
+              "0": [
+                0.5,
+                0.8,
+                0.5,
+                1.0
+              ],
+              "1": [
+                0.75,
+                0.68,
+                0.83,
+                1.0
+              ],
+              "2": [
+                1.0,
+                0.75,
+                0.52,
+                1.0
+              ]
+            },
+            "enabled": true,
+            "is_dragging": false,
+            "mouse_pan": true,
+            "origin": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "owned_callbacks": [
+              true,
+              true
+            ],
+            "selected_axis_id": null,
+            "stage": "before_events",
+            "translate": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "colors": {
+              "0": [
+                0.25,
+                0.4,
+                0.25,
+                0.5
+              ],
+              "1": [
+                0.375,
+                0.34,
+                0.415,
+                0.5
+              ],
+              "2": [
+                1.0,
+                0.75,
+                0.52,
+                1.0
+              ]
+            },
+            "enabled": true,
+            "is_dragging": true,
+            "mouse_pan": false,
+            "origin": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "owned_callbacks": [
+              true,
+              true
+            ],
+            "selected_axis_id": 2,
+            "stage": "pressed",
+            "translate": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "colors": {
+              "0": [
+                0.25,
+                0.4,
+                0.25,
+                0.5
+              ],
+              "1": [
+                0.375,
+                0.34,
+                0.415,
+                0.5
+              ],
+              "2": [
+                1.0,
+                0.75,
+                0.52,
+                1.0
+              ]
+            },
+            "enabled": true,
+            "is_dragging": true,
+            "mouse_pan": false,
+            "origin": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "owned_callbacks": [
+              true,
+              true
+            ],
+            "selected_axis_id": 2,
+            "stage": "drag_initialized",
+            "translate": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "colors": {
+              "0": [
+                0.25,
+                0.4,
+                0.25,
+                0.5
+              ],
+              "1": [
+                0.375,
+                0.34,
+                0.415,
+                0.5
+              ],
+              "2": [
+                1.0,
+                0.75,
+                0.52,
+                1.0
+              ]
+            },
+            "enabled": true,
+            "is_dragging": true,
+            "mouse_pan": false,
+            "origin": [
+              0.0,
+              0.0,
+              1.0690530849669262
+            ],
+            "owned_callbacks": [
+              true,
+              true
+            ],
+            "selected_axis_id": 2,
+            "stage": "moved",
+            "translate": [
+              0.0,
+              0.0,
+              1.0690530849669262
+            ]
+          },
+          {
+            "colors": {
+              "0": [
+                0.5,
+                0.8,
+                0.5,
+                1.0
+              ],
+              "1": [
+                0.75,
+                0.68,
+                0.83,
+                1.0
+              ],
+              "2": [
+                1.0,
+                0.75,
+                0.52,
+                1.0
+              ]
+            },
+            "enabled": true,
+            "is_dragging": false,
+            "mouse_pan": true,
+            "origin": [
+              0.0,
+              0.0,
+              1.0690530849669262
+            ],
+            "owned_callbacks": [
+              true,
+              true
+            ],
+            "selected_axis_id": null,
+            "stage": "translated",
+            "translate": [
+              0.0,
+              0.0,
+              1.0690530849669262
+            ]
+          }
+        ],
+        "volume_blending": "translucent_no_depth",
+        "widget_origin": "napari_threedee.manipulators._qt.qt_layer_manipulator"
+      },
+      "parameters_artifact": {
+        "file": "translation.parameters.parameters.json",
+        "sha256": "8f01b24c208f0ba18fb43aa6c714211ec90bd8d2aa1fd535dec84cddbd28002e"
+      },
+      "rgba": {
+        "file": "translation.rgba.npy",
+        "sha256": "86eef5742ed40c6a71becb48d73b050a5b4900c2cd34f106d44734fe02d9f49a"
+      }
+    }
+  },
+  "fresh_original_manifest_sha256": "43ebafd4d0505a26302ed6bb66b2d08da8e9c3492076605fe50279c60ec00737",
+  "provenance": {
+    "binding": "pyqt6",
+    "host_versions": {
+      "PyQt6": "6.11.0",
+      "napari": "0.9.2",
+      "napari-threedee": "0.0.29",
+      "numpy": "2.4.6"
+    },
+    "kind": "upstream",
+    "platform": "Windows",
+    "python": "3.12.8",
+    "renderer": {
+      "renderer": "NVIDIA GeForce RTX 4090/PCIe/SSE2",
+      "vendor": "NVIDIA Corporation",
+      "version": "4.6.0 NVIDIA 610.88"
+    },
+    "vispy_version": "0.17.0",
+    "wheel_sha256": "c4862155e735009b1af6aeda45ea94a72e1a375d6086c89273455d66238bb18e"
+  },
+  "release_qualified": false,
+  "retained_manifest_sha256": "b4a118f6320af8f8d12010948ff00964fe5966f967003ab40cb887af37ddc77e",
+  "saved_inspection_sha256": "712bef63a385b25cc2710d0b21c9432f13d09f456eda0d1803831183cfee78e1",
+  "schema": 1,
+  "upstream_only": true
+}

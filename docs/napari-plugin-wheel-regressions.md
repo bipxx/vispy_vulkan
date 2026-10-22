@@ -80,5 +80,15 @@ A separate check materialized all required staged Git files in a clean temporary
 tree with no `build/` directory and verified the complete runtime source and input
 closure. The publication checkout passed all 156 combined CPU controls.
 
-No plugin host-cell, wider graphics or release qualification is granted by the
+No candidate plugin host-cell, wider graphics or release qualification is granted by the
 recorded one-of-five candidate result. All four failing workflows stay mandatory.
+
+The upstream-only environment/fixture admission for Windows CPython 3.12.8/PyQt6
+is `compat/qualifications/napari_threedee/windows/3.12.8/pyqt6/admission.json`.
+It references the exact original frame artifacts through a separate standard
+manifest, preserving the original manifest unchanged. The matching host matrix
+row installs the hash-locked portable host closure and supplies the original
+wheel through `tools/prepare_napari_plugin_host_cell.py`; the candidate still
+comes from the job's actual build. Every fresh original and candidate case stays
+mandatory. Other missing admissions keep failing. This upstream admission grants
+no candidate or release pass and schedules no hardware job by itself.
