@@ -1,0 +1,522 @@
+[
+  {
+    "excluded_root": false,
+    "path": "/home/heq/.local/share/uv/python/cpython-3.12.8-linux-x86_64-gnu/bin/python3.12",
+    "sha256": "0dc3a692fa85fcdb7f1a5877d2adf179809ac417a07ffde2373c832863800a15"
+  },
+  {
+    "excluded_root": false,
+    "path": "/home/heq/.local/share/uv/python/cpython-3.12.8-linux-x86_64-gnu/lib/libpython3.12.so.1.0",
+    "sha256": "b8f547cdf6a3b892600cc9eb5151ff893ad4525ff5b0b3dc595533a624777048"
+  },
+  {
+    "excluded_root": false,
+    "path": "/tmp/vispy-image-wheel-vx8ybo6d/venv/lib/python3.12/site-packages/PyQt6/Qt6/lib/libQt6Core.so.6",
+    "sha256": "23651543e0ff970f1d21b2abc1250221f0dd854fe68e3027462925532afbe22b"
+  },
+  {
+    "excluded_root": false,
+    "path": "/tmp/vispy-image-wheel-vx8ybo6d/venv/lib/python3.12/site-packages/PyQt6/Qt6/lib/libQt6DBus.so.6",
+    "sha256": "548e934455d147fe9c2f9e78a345a4458bcfad846c0d1e7fe0a80d71b0a04e15"
+  },
+  {
+    "excluded_root": false,
+    "path": "/tmp/vispy-image-wheel-vx8ybo6d/venv/lib/python3.12/site-packages/PyQt6/Qt6/lib/libQt6Gui.so.6",
+    "sha256": "c1797794be8cfd5e64e324c5068ff9f32bd54fda21af1a637c087550ebae73a0"
+  },
+  {
+    "excluded_root": false,
+    "path": "/tmp/vispy-image-wheel-vx8ybo6d/venv/lib/python3.12/site-packages/PyQt6/Qt6/lib/libQt6OpenGL.so.6",
+    "sha256": "7a529f90ab931734fa6a05bc7dce2ef23ee206c073f7f42b0838fb68ae999ec6"
+  },
+  {
+    "excluded_root": false,
+    "path": "/tmp/vispy-image-wheel-vx8ybo6d/venv/lib/python3.12/site-packages/PyQt6/Qt6/lib/libQt6OpenGLWidgets.so.6",
+    "sha256": "746527a2a362f5add70147523c3ef59abd80bfad1aa70a445e4b010a8b80ab98"
+  },
+  {
+    "excluded_root": false,
+    "path": "/tmp/vispy-image-wheel-vx8ybo6d/venv/lib/python3.12/site-packages/PyQt6/Qt6/lib/libQt6Test.so.6",
+    "sha256": "4758b8b7eea18ee2700533c9b8e065c4a51db2c027bf1a4ce95d73a2ca9568f9"
+  },
+  {
+    "excluded_root": false,
+    "path": "/tmp/vispy-image-wheel-vx8ybo6d/venv/lib/python3.12/site-packages/PyQt6/Qt6/lib/libQt6Widgets.so.6",
+    "sha256": "0cb5f5ab05e519487b0900a4592351a54420fe703a29bb929e06220a2fc2b616"
+  },
+  {
+    "excluded_root": false,
+    "path": "/tmp/vispy-image-wheel-vx8ybo6d/venv/lib/python3.12/site-packages/PyQt6/Qt6/lib/libQt6XcbQpa.so.6",
+    "sha256": "0e582e1461f9fe9fa208d83ff09edab901dcd3ba2702e047f458f72f00f9a9f5"
+  },
+  {
+    "excluded_root": false,
+    "path": "/tmp/vispy-image-wheel-vx8ybo6d/venv/lib/python3.12/site-packages/PyQt6/Qt6/lib/libicui18n.so.73",
+    "sha256": "a18e48266e59efff3ec872d9dc5cc99b776e180b8ede57269d354e6bc6595778"
+  },
+  {
+    "excluded_root": false,
+    "path": "/tmp/vispy-image-wheel-vx8ybo6d/venv/lib/python3.12/site-packages/PyQt6/Qt6/lib/libicuuc.so.73",
+    "sha256": "b76380b2c15c8ff8b3c94576ac98b40d34fc0a091db4a89324d72e271c7699f0"
+  },
+  {
+    "excluded_root": false,
+    "path": "/tmp/vispy-image-wheel-vx8ybo6d/venv/lib/python3.12/site-packages/PyQt6/Qt6/plugins/platforminputcontexts/libcomposeplatforminputcontextplugin.so",
+    "sha256": "d08bff4c3b137632a4498933e7d38c6338b8133e75c42ccb9d5e2e9ecc72696d"
+  },
+  {
+    "excluded_root": false,
+    "path": "/tmp/vispy-image-wheel-vx8ybo6d/venv/lib/python3.12/site-packages/PyQt6/Qt6/plugins/platforms/libqxcb.so",
+    "sha256": "83981915129d4143e1a93d0bc8d190cf430f4f4bed37bfea544244eff18baf2f"
+  },
+  {
+    "excluded_root": false,
+    "path": "/tmp/vispy-image-wheel-vx8ybo6d/venv/lib/python3.12/site-packages/PyQt6/Qt6/plugins/xcbglintegrations/libqxcb-glx-integration.so",
+    "sha256": "318a5e905246d26ac0640d34a011d7b34ed2e5302553792388c073176164c7ac"
+  },
+  {
+    "excluded_root": false,
+    "path": "/tmp/vispy-image-wheel-vx8ybo6d/venv/lib/python3.12/site-packages/PyQt6/QtCore.abi3.so",
+    "sha256": "6700a9ec2f5062caf544a63cb5d2164f08c2bdfda2ccc5d13c7387a6a730ec9c"
+  },
+  {
+    "excluded_root": false,
+    "path": "/tmp/vispy-image-wheel-vx8ybo6d/venv/lib/python3.12/site-packages/PyQt6/QtGui.abi3.so",
+    "sha256": "25bfbfc86683822a9741e91af60c5bda7ddee32b3c1ba6645b3ee10cf402c231"
+  },
+  {
+    "excluded_root": false,
+    "path": "/tmp/vispy-image-wheel-vx8ybo6d/venv/lib/python3.12/site-packages/PyQt6/QtOpenGL.abi3.so",
+    "sha256": "e233393f5fd5a549431e2feef9d643cefcb519fd93ef9a06259f5491d13b19e0"
+  },
+  {
+    "excluded_root": false,
+    "path": "/tmp/vispy-image-wheel-vx8ybo6d/venv/lib/python3.12/site-packages/PyQt6/QtOpenGLWidgets.abi3.so",
+    "sha256": "95b4dbd755bb9ee591b682feb8c10f10d8b396d855f0e231f8043cb22dc117f5"
+  },
+  {
+    "excluded_root": false,
+    "path": "/tmp/vispy-image-wheel-vx8ybo6d/venv/lib/python3.12/site-packages/PyQt6/QtTest.abi3.so",
+    "sha256": "974fb2ba8c0a7b8b128a860854a4ad10ebdc5db4a58810de074c5ee567890f7c"
+  },
+  {
+    "excluded_root": false,
+    "path": "/tmp/vispy-image-wheel-vx8ybo6d/venv/lib/python3.12/site-packages/PyQt6/QtWidgets.abi3.so",
+    "sha256": "95ae703b26b7b97b13e419f72a6f5133a12114ab43e92ece0d332b7f66d154c4"
+  },
+  {
+    "excluded_root": false,
+    "path": "/tmp/vispy-image-wheel-vx8ybo6d/venv/lib/python3.12/site-packages/PyQt6/sip.cpython-312-x86_64-linux-gnu.so",
+    "sha256": "7ef4c972f4f70b5303025819dbb4ae3cc4a6767ff9bd53b4da36480a1909332c"
+  },
+  {
+    "excluded_root": false,
+    "path": "/tmp/vispy-image-wheel-vx8ybo6d/venv/lib/python3.12/site-packages/kiwisolver/_cext.cpython-312-x86_64-linux-gnu.so",
+    "sha256": "587aff4260609430fca627c9b56fb42ad87935e32535e8bb8928571413ce1f39"
+  },
+  {
+    "excluded_root": false,
+    "path": "/tmp/vispy-image-wheel-vx8ybo6d/venv/lib/python3.12/site-packages/numpy.libs/libgfortran-040039e1-0352e75f.so.5.0.0",
+    "sha256": "c6090048eccc763522c12ef016f81da6b627cb3a044f55cf0479a839c41c0980"
+  },
+  {
+    "excluded_root": false,
+    "path": "/tmp/vispy-image-wheel-vx8ybo6d/venv/lib/python3.12/site-packages/numpy.libs/libquadmath-96973f99-934c22de.so.0.0.0",
+    "sha256": "6ed5137f412781ad7863439fb543613f620b43c32b63292a0029246162f5bbc6"
+  },
+  {
+    "excluded_root": false,
+    "path": "/tmp/vispy-image-wheel-vx8ybo6d/venv/lib/python3.12/site-packages/numpy.libs/libscipy_openblas64_-32a4b2a6.so",
+    "sha256": "05c9f9eb89ee68a4b9d673184fa91c99587e736392c0c2d49180a8aa5303d080"
+  },
+  {
+    "excluded_root": false,
+    "path": "/tmp/vispy-image-wheel-vx8ybo6d/venv/lib/python3.12/site-packages/numpy/_core/_multiarray_umath.cpython-312-x86_64-linux-gnu.so",
+    "sha256": "2bd8ea4ada756eb29d34bcb5049df8d48710721b57c2c23cbdd87d77cdf5fa77"
+  },
+  {
+    "excluded_root": false,
+    "path": "/tmp/vispy-image-wheel-vx8ybo6d/venv/lib/python3.12/site-packages/numpy/linalg/_umath_linalg.cpython-312-x86_64-linux-gnu.so",
+    "sha256": "d826c92d6a98bda58ddb2f5a6f086d9581937538c2c2aef5b8879ed43282b995"
+  },
+  {
+    "excluded_root": false,
+    "path": "/tmp/vispy-image-wheel-vx8ybo6d/venv/lib/python3.12/site-packages/vispy/visuals/text/_sdf_cpu.cpython-312-x86_64-linux-gnu.so",
+    "sha256": "762d35acece2365538be943b0fc7292a5a690703675f6e95ea9be14557243bee"
+  },
+  {
+    "excluded_root": false,
+    "path": "/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2",
+    "sha256": "c20a2dc8917c755f02b94049356320fe1f62ac7d9f8994731f807d9df39302da"
+  },
+  {
+    "excluded_root": false,
+    "path": "/usr/lib/x86_64-linux-gnu/libEGL.so.1.1.0",
+    "sha256": "875ecbb2a07d60e32216c9f102965abc1e9cc1da7789558e2e9b8b9c107e231d"
+  },
+  {
+    "excluded_root": false,
+    "path": "/usr/lib/x86_64-linux-gnu/libGL.so.1.7.0",
+    "sha256": "67f471213576d225d38347a0b6d2a08a231980685301ff6461bd74d3994e5027"
+  },
+  {
+    "excluded_root": false,
+    "path": "/usr/lib/x86_64-linux-gnu/libGLX.so.0.0.0",
+    "sha256": "16fc8a37eea9210dc83c57eeff5aedc10ab4c6673f2f97e8bb6ee103df657b40"
+  },
+  {
+    "excluded_root": false,
+    "path": "/usr/lib/x86_64-linux-gnu/libGLX_mesa.so.0.0.0",
+    "sha256": "409f932670504cc5829c7526db466eb69a6b7f9997fd5df8afc8dfb1588278c2"
+  },
+  {
+    "excluded_root": false,
+    "path": "/usr/lib/x86_64-linux-gnu/libGLdispatch.so.0.0.0",
+    "sha256": "ca01a91104c8887b3d8e59499b58cbb8f604cc285666b50d9ec888eb0c915182"
+  },
+  {
+    "excluded_root": false,
+    "path": "/usr/lib/x86_64-linux-gnu/libLLVM.so.20.1",
+    "sha256": "4b93481bd1c9d42c0951275dd275d4a9d30db78c309ae2cc0405669bc6dbbf8a"
+  },
+  {
+    "excluded_root": false,
+    "path": "/usr/lib/x86_64-linux-gnu/libX11-xcb.so.1.0.0",
+    "sha256": "941ab0ca78131e168817049d4c9935bb0e29b584cf05b58c47e3071f1fa81cf8"
+  },
+  {
+    "excluded_root": false,
+    "path": "/usr/lib/x86_64-linux-gnu/libX11.so.6.4.0",
+    "sha256": "edd2ddf6e00a81c40b8645f7dbb6d6603c6a0a78d583bdbe7491d8a84de6e3b6"
+  },
+  {
+    "excluded_root": false,
+    "path": "/usr/lib/x86_64-linux-gnu/libXau.so.6.0.0",
+    "sha256": "8040da3f8516c1acfe39f04ff022480cdb273705ba5e7a4ca70bbdb1527cd67a"
+  },
+  {
+    "excluded_root": false,
+    "path": "/usr/lib/x86_64-linux-gnu/libXdmcp.so.6.0.0",
+    "sha256": "667d97d6da16016400ab10de9f83ef4ab209ceb6adf68ff9650225ec13e723b0"
+  },
+  {
+    "excluded_root": false,
+    "path": "/usr/lib/x86_64-linux-gnu/libXext.so.6.4.0",
+    "sha256": "2907e6a996465de5b32a0dd10534d4416b87f1dee5670aaa7b19301a1fc93f44"
+  },
+  {
+    "excluded_root": false,
+    "path": "/usr/lib/x86_64-linux-gnu/libXxf86vm.so.1.0.0",
+    "sha256": "7dc2d9687e3b238c2caa25ce8c8c7a6c90bce157239ee7fbb2ead2b5cd34c888"
+  },
+  {
+    "excluded_root": false,
+    "path": "/usr/lib/x86_64-linux-gnu/libbrotlicommon.so.1.1.0",
+    "sha256": "a91ead095d2c80520c55a89057bbe10b031a075340442e63f44b310f93883a1b"
+  },
+  {
+    "excluded_root": false,
+    "path": "/usr/lib/x86_64-linux-gnu/libbrotlidec.so.1.1.0",
+    "sha256": "64d8a5019d4c294b89fde1193343ea324bbd8603652554e5545f0a01595fa2c5"
+  },
+  {
+    "excluded_root": false,
+    "path": "/usr/lib/x86_64-linux-gnu/libbsd.so.0.12.1",
+    "sha256": "e86cd4f0019f42c2ba5e60602e0edc8694d2948377d98c3654d0f6bddb5254bb"
+  },
+  {
+    "excluded_root": false,
+    "path": "/usr/lib/x86_64-linux-gnu/libbz2.so.1.0.4",
+    "sha256": "cc08c9f50a8009ffd6391e0116a100369b11ca9238fa52392c019e6645b122a1"
+  },
+  {
+    "excluded_root": false,
+    "path": "/usr/lib/x86_64-linux-gnu/libc.so.6",
+    "sha256": "3a15d66867d83762c7f2f1e37359cb8f6c5743edb369c65285cb0b1c4f7498bf"
+  },
+  {
+    "excluded_root": false,
+    "path": "/usr/lib/x86_64-linux-gnu/libcap.so.2.66",
+    "sha256": "6ac6abc86ac891c6e13486470e26f1d939f47fda9e6b5d5508a7f5ec881adc84"
+  },
+  {
+    "excluded_root": false,
+    "path": "/usr/lib/x86_64-linux-gnu/libdbus-1.so.3.32.4",
+    "sha256": "a6ae7b4ef48562b40d7b9ba8efd2e49f6528b7cc6364bea382dcee4b473b5413"
+  },
+  {
+    "excluded_root": false,
+    "path": "/usr/lib/x86_64-linux-gnu/libdl.so.2",
+    "sha256": "c2994527172cc23b7fb0f7d611b71e00a37da27af12c2e5e9e0dc1a742886c96"
+  },
+  {
+    "excluded_root": false,
+    "path": "/usr/lib/x86_64-linux-gnu/libdrm.so.2.125.0",
+    "sha256": "ff39219aa058421e46afd36851342370cd1932d2557eb22f54e129755642bf67"
+  },
+  {
+    "excluded_root": false,
+    "path": "/usr/lib/x86_64-linux-gnu/libdrm_amdgpu.so.1.125.0",
+    "sha256": "b4353f38e7d1f6097732d326dfdc605e720bfde0488c8582b9af71ffbc0a3d97"
+  },
+  {
+    "excluded_root": false,
+    "path": "/usr/lib/x86_64-linux-gnu/libdrm_intel.so.1.125.0",
+    "sha256": "be4c3b86ea638cb1df8a4237ea20269021b97e3aae27633027839d40e3ebf0ae"
+  },
+  {
+    "excluded_root": false,
+    "path": "/usr/lib/x86_64-linux-gnu/libedit.so.2.0.72",
+    "sha256": "195c607216f8581dbf516346ed38f4c73500cac4b84e18eb0a4fd49931e4cd56"
+  },
+  {
+    "excluded_root": false,
+    "path": "/usr/lib/x86_64-linux-gnu/libelf-0.190.so",
+    "sha256": "248c989360783cdc52f3659921de852c2efcc2097253ce58e34443f856412814"
+  },
+  {
+    "excluded_root": false,
+    "path": "/usr/lib/x86_64-linux-gnu/libexpat.so.1.9.1",
+    "sha256": "286682ecbc5e59a638963b1a4e6351e65eb32fcf4bdcb9cb7569b6a61fe06a8d"
+  },
+  {
+    "excluded_root": false,
+    "path": "/usr/lib/x86_64-linux-gnu/libffi.so.8.1.4",
+    "sha256": "00f593fe192f2851b8ce23b25cec2488d769beb5a8f63e8c9e563071e1075153"
+  },
+  {
+    "excluded_root": false,
+    "path": "/usr/lib/x86_64-linux-gnu/libfontconfig.so.1.12.1",
+    "sha256": "a94b4059b27766f563894c8f7e61762b6f6b2e25c59ef36b730164d4b75c6c98"
+  },
+  {
+    "excluded_root": false,
+    "path": "/usr/lib/x86_64-linux-gnu/libfreetype.so.6.20.1",
+    "sha256": "992dac80abe3a3854f3eb2668da4207c029664ceca5f122ddb46e2a8169e9499"
+  },
+  {
+    "excluded_root": false,
+    "path": "/usr/lib/x86_64-linux-gnu/libgallium-25.2.8-0ubuntu0.24.04.2.so",
+    "sha256": "e37486422ecafdad74fb05bbcdcfc35300241a5f46e72b63ca442d4e0c0cca8b"
+  },
+  {
+    "excluded_root": false,
+    "path": "/usr/lib/x86_64-linux-gnu/libgcc_s.so.1",
+    "sha256": "d93224d2b0dab4247598be683adca02f5cf00586f99c187579cd7e92058fb7cb"
+  },
+  {
+    "excluded_root": false,
+    "path": "/usr/lib/x86_64-linux-gnu/libgcrypt.so.20.4.3",
+    "sha256": "6ad6d7007ee1ad8319eb18ba9a512cf09dda49396a303774c68b47477020bad4"
+  },
+  {
+    "excluded_root": false,
+    "path": "/usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.8000.0",
+    "sha256": "96ef9163aee942bdc09e6f4a1acd2fd6b178c03af824c569741440d63ac9f4f4"
+  },
+  {
+    "excluded_root": false,
+    "path": "/usr/lib/x86_64-linux-gnu/libgpg-error.so.0.34.0",
+    "sha256": "6cb18a007bfcb623029f4528a36b46578fea7dc34c2b505b8e6e0d99e6348cd1"
+  },
+  {
+    "excluded_root": false,
+    "path": "/usr/lib/x86_64-linux-gnu/libgthread-2.0.so.0.8000.0",
+    "sha256": "51fa5b2641eda4bfe17bb753cb07c78154d24b9aaedc35c6f7c803681282bd33"
+  },
+  {
+    "excluded_root": false,
+    "path": "/usr/lib/x86_64-linux-gnu/libicudata.so.74.2",
+    "sha256": "ddbb3718b8bd9cbd780e5ab08b4503c30a6c4fa0706ebe5d074ed6b596c1714e"
+  },
+  {
+    "excluded_root": false,
+    "path": "/usr/lib/x86_64-linux-gnu/libicuuc.so.74.2",
+    "sha256": "7560aadde38e5f4237a47a1ddd5891f9b36768a77a60faae30beee003ac01901"
+  },
+  {
+    "excluded_root": false,
+    "path": "/usr/lib/x86_64-linux-gnu/liblz4.so.1.9.4",
+    "sha256": "40bffd0a098387368b16b992abd5f7cf43c0fa2f05cabe5a6d483719554adfda"
+  },
+  {
+    "excluded_root": false,
+    "path": "/usr/lib/x86_64-linux-gnu/liblzma.so.5.4.5",
+    "sha256": "26b37d25f7ca2a2d348de8ecabacda12e921cd933b21fa069a179760db77219d"
+  },
+  {
+    "excluded_root": false,
+    "path": "/usr/lib/x86_64-linux-gnu/libm.so.6",
+    "sha256": "fce00b6f25f459cf4ae0b7fae4257909a1a8a86f9149e7c029a5d617baf1ccd0"
+  },
+  {
+    "excluded_root": false,
+    "path": "/usr/lib/x86_64-linux-gnu/libmd.so.0.1.0",
+    "sha256": "423e18586b6ea740f4465afd64f7a9a4cb7264ed979c8e7256f9085af5345fef"
+  },
+  {
+    "excluded_root": false,
+    "path": "/usr/lib/x86_64-linux-gnu/libpciaccess.so.0.11.1",
+    "sha256": "8f84e18b27f8e5808762b389667628be13076cc432d96c793daeb6fde5ee2a4b"
+  },
+  {
+    "excluded_root": false,
+    "path": "/usr/lib/x86_64-linux-gnu/libpcre2-8.so.0.11.2",
+    "sha256": "e00576d71d81d3ba0cfa4903c835a44a8723aac96f72f79ff75200b4cff9071b"
+  },
+  {
+    "excluded_root": false,
+    "path": "/usr/lib/x86_64-linux-gnu/libpng16.so.16.43.0",
+    "sha256": "89c0c6569a8c00480d451401ad4c0a74942e62dc57f229a970592fdc5adb29e8"
+  },
+  {
+    "excluded_root": false,
+    "path": "/usr/lib/x86_64-linux-gnu/libpthread.so.0",
+    "sha256": "90491a21ce44efcf3bd4b65ec82501c091d7ebe7f8d9b341dd01d721001d9ecd"
+  },
+  {
+    "excluded_root": false,
+    "path": "/usr/lib/x86_64-linux-gnu/librt.so.1",
+    "sha256": "6d072187d88e092e81561a44c03a4a41397319022c6d43519757cc051c576d82"
+  },
+  {
+    "excluded_root": false,
+    "path": "/usr/lib/x86_64-linux-gnu/libsensors.so.5.0.0",
+    "sha256": "5464959e6896b27396304c91706089f1339f10430d7381fef0beebf183332a36"
+  },
+  {
+    "excluded_root": false,
+    "path": "/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33",
+    "sha256": "1fd75fe70354a416d75aef22bcae68c47bd25d20e2d0568c30b1a9838cf62f11"
+  },
+  {
+    "excluded_root": false,
+    "path": "/usr/lib/x86_64-linux-gnu/libsystemd.so.0.38.0",
+    "sha256": "b10be60fc80ea6910df1b253658e638bd29f3d1aeeb3798006fc66972366cb94"
+  },
+  {
+    "excluded_root": false,
+    "path": "/usr/lib/x86_64-linux-gnu/libtinfo.so.6.4",
+    "sha256": "e6089d7bb95eee5b545f3770dd69095b0bca47d26701cad145af429561d16306"
+  },
+  {
+    "excluded_root": false,
+    "path": "/usr/lib/x86_64-linux-gnu/libutil.so.1",
+    "sha256": "5181d2b5de571bf054395684bfe77db685badf0163ac50b5e47d2148b52f11c3"
+  },
+  {
+    "excluded_root": false,
+    "path": "/usr/lib/x86_64-linux-gnu/libxcb-cursor.so.0.0.0",
+    "sha256": "10fc489c85d5a208843437d4a9b8867b9599b29a1b0a8e864afa79dca141aceb"
+  },
+  {
+    "excluded_root": false,
+    "path": "/usr/lib/x86_64-linux-gnu/libxcb-dri3.so.0.1.0",
+    "sha256": "a919146693e71897484c2996beb837273a7a278d1a2afe477bc072f10681f3b0"
+  },
+  {
+    "excluded_root": false,
+    "path": "/usr/lib/x86_64-linux-gnu/libxcb-glx.so.0.0.0",
+    "sha256": "7537790510f7a4a14cc54785761dffb1c6fc0058fc379f9cdb0ff26bafee3ff1"
+  },
+  {
+    "excluded_root": false,
+    "path": "/usr/lib/x86_64-linux-gnu/libxcb-icccm.so.4.0.0",
+    "sha256": "3373d6518194012d73658443165450232f0dcb08bf126d09da67cbe0ec4c29df"
+  },
+  {
+    "excluded_root": false,
+    "path": "/usr/lib/x86_64-linux-gnu/libxcb-image.so.0.0.0",
+    "sha256": "bc618150f945e862397c575d642e55ff79937b4060d3aa1d7665bde34a0e4b27"
+  },
+  {
+    "excluded_root": false,
+    "path": "/usr/lib/x86_64-linux-gnu/libxcb-keysyms.so.1.0.0",
+    "sha256": "f131860e51ff109c1255c91a05ebf2c2a3f612939e35b00df24f63483521a568"
+  },
+  {
+    "excluded_root": false,
+    "path": "/usr/lib/x86_64-linux-gnu/libxcb-present.so.0.0.0",
+    "sha256": "d06d982abe6e9202aecd22322166be8ba49e68e05889fb6c6faec0daa88530a4"
+  },
+  {
+    "excluded_root": false,
+    "path": "/usr/lib/x86_64-linux-gnu/libxcb-randr.so.0.1.0",
+    "sha256": "9fa6b0ec4af163a86bc9a9ded3309a5979155fb5ef2d311fdda7fff0e9eee01a"
+  },
+  {
+    "excluded_root": false,
+    "path": "/usr/lib/x86_64-linux-gnu/libxcb-render-util.so.0.0.0",
+    "sha256": "637b518e674812ce9dc03ad4fbdfa58fe34d789190f144e9d58ea3726d50dfa6"
+  },
+  {
+    "excluded_root": false,
+    "path": "/usr/lib/x86_64-linux-gnu/libxcb-render.so.0.0.0",
+    "sha256": "35fdef7a90d7f44a0ad9cb259c9ee22f04a48cb064ceb1fc7d17be815acab327"
+  },
+  {
+    "excluded_root": false,
+    "path": "/usr/lib/x86_64-linux-gnu/libxcb-shape.so.0.0.0",
+    "sha256": "370c60dd84cfe5f8517866b573ccbaf2b3fd97bd980f427f3bbb3dbc9288369e"
+  },
+  {
+    "excluded_root": false,
+    "path": "/usr/lib/x86_64-linux-gnu/libxcb-shm.so.0.0.0",
+    "sha256": "ad78a7b22409685ca82e54346c2b9465d697f303e69e74a9c1693bb206e319df"
+  },
+  {
+    "excluded_root": false,
+    "path": "/usr/lib/x86_64-linux-gnu/libxcb-sync.so.1.0.0",
+    "sha256": "27c2d6dddde34146904c3c64cfcc885a14a351636d6611877368a48e29355c39"
+  },
+  {
+    "excluded_root": false,
+    "path": "/usr/lib/x86_64-linux-gnu/libxcb-util.so.1.0.0",
+    "sha256": "53a59cf786fc63d7e5968392fc70098e8d922b311015b7ccd711c44ca352bd39"
+  },
+  {
+    "excluded_root": false,
+    "path": "/usr/lib/x86_64-linux-gnu/libxcb-xfixes.so.0.0.0",
+    "sha256": "e59ef497333a6ede2096a0bd9eeb6ec4023374c16d3a8d7511d1251fb7f9b9df"
+  },
+  {
+    "excluded_root": false,
+    "path": "/usr/lib/x86_64-linux-gnu/libxcb-xkb.so.1.0.0",
+    "sha256": "f6b3ca63ff23f3e82d122af4622aaebed49c58614e2f840568a0bb4c9048436c"
+  },
+  {
+    "excluded_root": false,
+    "path": "/usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0",
+    "sha256": "7958a0136b121bdc4c708968569ad152a9ed208ab026e2537b1005dde64ca440"
+  },
+  {
+    "excluded_root": false,
+    "path": "/usr/lib/x86_64-linux-gnu/libxkbcommon-x11.so.0.0.0",
+    "sha256": "109a5c2095ab6bcc36f751d3c0deb3b066ecbfb664a36904b6ca212f987a408a"
+  },
+  {
+    "excluded_root": false,
+    "path": "/usr/lib/x86_64-linux-gnu/libxkbcommon.so.0.0.0",
+    "sha256": "3eb6c7315985803a7c72cb81aa3293b763e6cfc907b70b7b2f641c2827cd90f9"
+  },
+  {
+    "excluded_root": false,
+    "path": "/usr/lib/x86_64-linux-gnu/libxml2.so.2.9.14",
+    "sha256": "209e941be9eb2eb9ab36caaa0b81d1c6b36c8f5d7268c24f19e81039137e6485"
+  },
+  {
+    "excluded_root": false,
+    "path": "/usr/lib/x86_64-linux-gnu/libxshmfence.so.1.0.0",
+    "sha256": "7d40b02b27d449b6b26cea10ea10aafd0cce5a1e2d7859ea57f34b29fe88923f"
+  },
+  {
+    "excluded_root": false,
+    "path": "/usr/lib/x86_64-linux-gnu/libz.so.1.3",
+    "sha256": "86200da370f20476a2507e9097a789b5ef97269b4ca8d5e164ad82dab9d99892"
+  },
+  {
+    "excluded_root": false,
+    "path": "/usr/lib/x86_64-linux-gnu/libzstd.so.1.5.5",
+    "sha256": "0a2128bc10841fb29e76d08d945864dfb0b6a66da5df6df5d8299197439e54bb"
+  }
+]

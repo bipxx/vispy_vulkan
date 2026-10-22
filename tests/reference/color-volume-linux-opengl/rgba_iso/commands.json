@@ -1,0 +1,951 @@
+[
+  [
+    "CURRENT",
+    0,
+    1
+  ],
+  [
+    "FUNC",
+    "glClearColor",
+    0.0,
+    0.0,
+    0.0,
+    1.0
+  ],
+  [
+    "FUNC",
+    "glClear",
+    17664
+  ],
+  [
+    "FUNC",
+    "glColorMask",
+    false,
+    false,
+    false,
+    true
+  ],
+  [
+    "FUNC",
+    "glClear",
+    16384
+  ],
+  [
+    "FUNC",
+    "glColorMask",
+    true,
+    true,
+    true,
+    true
+  ],
+  [
+    "FUNC",
+    "glFlush"
+  ],
+  [
+    "CURRENT",
+    0,
+    1
+  ],
+  [
+    "CREATE",
+    16,
+    "FrameBuffer"
+  ],
+  [
+    "CREATE",
+    14,
+    "RenderBuffer"
+  ],
+  [
+    "SIZE",
+    14,
+    [
+      96,
+      96
+    ],
+    "color"
+  ],
+  [
+    "ATTACH",
+    16,
+    "color",
+    14
+  ],
+  [
+    "CREATE",
+    15,
+    "RenderBuffer"
+  ],
+  [
+    "SIZE",
+    15,
+    [
+      96,
+      96
+    ],
+    "depth"
+  ],
+  [
+    "ATTACH",
+    16,
+    "depth",
+    15
+  ],
+  [
+    "FRAMEBUFFER",
+    16,
+    true
+  ],
+  [
+    "FUNC",
+    "glViewport",
+    0,
+    0,
+    96,
+    96
+  ],
+  [
+    "FUNC",
+    "glClearColor",
+    0.0,
+    0.0,
+    0.0,
+    1.0
+  ],
+  [
+    "FUNC",
+    "glClear",
+    17664
+  ],
+  [
+    "FUNC",
+    "glDisable",
+    "cull_face"
+  ],
+  [
+    "FUNC",
+    "glEnable",
+    "depth_test"
+  ],
+  [
+    "FUNC",
+    "glEnable",
+    "blend"
+  ],
+  [
+    "FUNC",
+    "glBlendFuncSeparate",
+    "src_alpha",
+    "one_minus_src_alpha",
+    "zero",
+    "one"
+  ],
+  [
+    "FUNC",
+    "glBlendEquationSeparate",
+    "func_add",
+    "func_add"
+  ],
+  [
+    "CREATE",
+    12,
+    "Program"
+  ],
+  [
+    "CREATE",
+    17,
+    "VertexShader"
+  ],
+  [
+    "DATA",
+    17,
+    0,
+    "vec4 null_transform_map(vec4 pos) {return pos;}\n\nvec4 transform_map_chain(vec4 pos) {\n    vec4 result_1 = null_transform_map(pos);\n    return result_1;\n}\n\nvec4 transform_map_chain_1(vec4 pos) {\n    vec4 result_1 = transform_map_chain(pos);\n    return result_1;\n}\n\nuniform mat4 u_inv_matrix;\n\nvec4 affine_transform_imap(vec4 pos) {\n    return u_inv_matrix * pos;\n}\n\n\nvec4 transform_imap_chain(vec4 pos) {\n    vec4 result_1 = affine_transform_imap(pos);\n    return result_1;\n}\n\nuniform mat4 u_matrix;\n\nvec4 affine_transform_map(vec4 pos) {\n    return u_matrix * pos;\n}\n\n\nuniform vec4 u_scale;\nuniform vec4 u_translate;\n\nvec4 st_transform_map(vec4 pos) {\n    return vec4(pos.xyz * u_scale.xyz + u_translate.xyz * pos.w, pos.w);\n}\n\n\nvec4 transform_map_chain_2(vec4 pos) {\n    vec4 result_1 = transform_imap_chain(pos);\n    vec4 result_2 = affine_transform_map(result_1);\n    vec4 result_3 = st_transform_map(result_2);\n    return result_3;\n}\n\nuniform vec4 u_scale_1;\nuniform vec4 u_translate_1;\n\nvec4 st_transform_map_1(vec4 pos) {\n    return vec4(pos.xyz * u_scale_1.xyz + u_translate_1.xyz * pos.w, pos.w);\n}\n\n\nuniform vec4 u_scale_2;\nuniform vec4 u_translate_2;\n\nvec4 st_transform_map_2(vec4 pos) {\n    return vec4(pos.xyz * u_scale_2.xyz + u_translate_2.xyz * pos.w, pos.w);\n}\n\n\nvec4 transform_map_chain_3(vec4 pos) {\n    vec4 result_1 = transform_map_chain_2(pos);\n    vec4 result_2 = st_transform_map_1(result_1);\n    vec4 result_3 = st_transform_map_2(result_2);\n    return result_3;\n}\n\nvec4 transform_map_chain_4(vec4 pos) {\n    vec4 result_1 = transform_map_chain_3(pos);\n    return result_1;\n}\n\nvec4 null_transform_map_1(vec4 pos) {return pos;}\n\nvec4 transform_map_chain_5(vec4 pos) {\n    vec4 result_1 = null_transform_map_1(pos);\n    return result_1;\n}\n\nvec4 transform_map_chain_6(vec4 pos) {\n    vec4 result_1 = transform_map_chain_5(pos);\n    return result_1;\n}\n\nuniform vec4 u_scale_3;\nuniform vec4 u_translate_3;\n\nvec4 st_transform_map_3(vec4 pos) {\n    return vec4(pos.xyz * u_scale_3.xyz + u_translate_3.xyz * pos.w, pos.w);\n}\n\n\nuniform vec4 u_scale_4;\nuniform vec4 u_translate_4;\n\nvec4 st_transform_map_4(vec4 pos) {\n    return vec4(pos.xyz * u_scale_4.xyz + u_translate_4.xyz * pos.w, pos.w);\n}\n\n\nvec4 transform_map_chain_7(vec4 pos) {\n    vec4 result_1 = st_transform_map_3(pos);\n    vec4 result_2 = st_transform_map_4(result_1);\n    return result_2;\n}\n\nvec4 transform_map_chain_8(vec4 pos) {\n    vec4 result_1 = transform_map_chain_7(pos);\n    return result_1;\n}\n\nuniform vec4 u_scale_5;\nuniform vec4 u_translate_5;\n\nvec4 st_transform_map_5(vec4 pos) {\n    return vec4(pos.xyz * u_scale_5.xyz + u_translate_5.xyz * pos.w, pos.w);\n}\n\n\nvec4 transform_map_chain_9(vec4 pos) {\n    vec4 result_1 = st_transform_map_5(pos);\n    return result_1;\n}\n\nvec4 transform_map_chain_10(vec4 pos) {\n    vec4 result_1 = transform_map_chain_9(pos);\n    return result_1;\n}\n\nvec4 transform_map_chain_11(vec4 pos) {\n    vec4 result_1 = transform_map_chain_1(pos);\n    vec4 result_2 = transform_map_chain_4(result_1);\n    vec4 result_3 = transform_map_chain_6(result_2);\n    vec4 result_4 = transform_map_chain_8(result_3);\n    vec4 result_5 = transform_map_chain_10(result_4);\n    return result_5;\n}\n\nvec4 transform_map_chain_12(vec4 pos) {\n    vec4 result_1 = transform_map_chain_1(pos);\n    vec4 result_2 = transform_map_chain_4(result_1);\n    return result_2;\n}\n\nuniform vec4 u_scale_6;\nuniform vec4 u_translate_6;\n\nvec4 st_transform_imap(vec4 pos) {\n    return vec4((pos.xyz - u_translate_6.xyz * pos.w) / u_scale_6.xyz,\n                pos.w);\n}\n\n\nuniform vec4 u_scale_7;\nuniform vec4 u_translate_7;\n\nvec4 st_transform_imap_1(vec4 pos) {\n    return vec4((pos.xyz - u_translate_7.xyz * pos.w) / u_scale_7.xyz,\n                pos.w);\n}\n\n\nuniform vec4 u_scale_8;\nuniform vec4 u_translate_8;\n\nvec4 st_transform_imap_2(vec4 pos) {\n    return vec4((pos.xyz - u_translate_8.xyz * pos.w) / u_scale_8.xyz,\n                pos.w);\n}\n\n\nuniform mat4 u_inv_matrix_1;\n\nvec4 affine_transform_imap_1(vec4 pos) {\n    return u_inv_matrix_1 * pos;\n}\n\n\nuniform mat4 u_matrix_1;\n\nvec4 affine_transform_map_1(vec4 pos) {\n    return u_matrix_1 * pos;\n}\n\n\nvec4 transform_map_chain_13(vec4 pos) {\n    vec4 result_1 = affine_transform_map_1(pos);\n    return result_1;\n}\n\nvec4 transform_imap_chain_1(vec4 pos) {\n    vec4 result_1 = st_transform_imap_2(pos);\n    vec4 result_2 = affine_transform_imap_1(result_1);\n    vec4 result_3 = transform_map_chain_13(result_2);\n    return result_3;\n}\n\nvec4 transform_imap_chain_2(vec4 pos) {\n    vec4 result_1 = st_transform_imap(pos);\n    vec4 result_2 = st_transform_imap_1(result_1);\n    vec4 result_3 = transform_imap_chain_1(result_2);\n    return result_3;\n}\n\nvec4 transform_imap_chain_3(vec4 pos) {\n    vec4 result_1 = transform_imap_chain_2(pos);\n    return result_1;\n}\n\nvec4 null_transform_imap(vec4 pos) {return pos;}\n\nvec4 transform_imap_chain_4(vec4 pos) {\n    vec4 result_1 = null_transform_imap(pos);\n    return result_1;\n}\n\nvec4 transform_imap_chain_5(vec4 pos) {\n    vec4 result_1 = transform_imap_chain_4(pos);\n    return result_1;\n}\n\nvec4 transform_imap_chain_6(vec4 pos) {\n    vec4 result_1 = transform_imap_chain_3(pos);\n    vec4 result_2 = transform_imap_chain_5(result_1);\n    return result_2;\n}\n\n\nattribute vec3 a_position;\nuniform vec3 u_shape;\n\nvarying vec3 v_position;\nvarying vec4 v_nearpos;\nvarying vec4 v_farpos;\n\nvoid main() {\n    v_position = a_position;\n\n    // Project local vertex coordinate to camera position. Then do a step\n    // backward (in cam coords) and project back. Voila, we get our ray vector.\n    vec4 pos_in_cam = transform_map_chain_12(vec4(v_position, 1));\n\n    // intersection of ray and near clipping plane (z = -1 in clip coords)\n    pos_in_cam.z = -pos_in_cam.w;\n    v_nearpos = transform_imap_chain_6(pos_in_cam);\n\n    // intersection of ray and far clipping plane (z = +1 in clip coords)\n    pos_in_cam.z = pos_in_cam.w;\n    v_farpos = transform_imap_chain_6(pos_in_cam);\n\n    gl_Position = transform_map_chain_11(vec4(v_position, 1.0));\n}\n\n"
+  ],
+  [
+    "ATTACH",
+    12,
+    17
+  ],
+  [
+    "CREATE",
+    18,
+    "FragmentShader"
+  ],
+  [
+    "DATA",
+    18,
+    0,
+    "vec4 null_transform_map(vec4 pos) {return pos;}\n\nvec4 transform_map_chain(vec4 pos) {\n    vec4 result_1 = null_transform_map(pos);\n    return result_1;\n}\n\nvec4 transform_map_chain_1(vec4 pos) {\n    vec4 result_1 = transform_map_chain(pos);\n    return result_1;\n}\n\nuniform mat4 u_inv_matrix;\n\nvec4 affine_transform_imap(vec4 pos) {\n    return u_inv_matrix * pos;\n}\n\n\nvec4 transform_imap_chain(vec4 pos) {\n    vec4 result_1 = affine_transform_imap(pos);\n    return result_1;\n}\n\nuniform mat4 u_matrix;\n\nvec4 affine_transform_map(vec4 pos) {\n    return u_matrix * pos;\n}\n\n\nuniform vec4 u_scale;\nuniform vec4 u_translate;\n\nvec4 st_transform_map(vec4 pos) {\n    return vec4(pos.xyz * u_scale.xyz + u_translate.xyz * pos.w, pos.w);\n}\n\n\nvec4 transform_map_chain_2(vec4 pos) {\n    vec4 result_1 = transform_imap_chain(pos);\n    vec4 result_2 = affine_transform_map(result_1);\n    vec4 result_3 = st_transform_map(result_2);\n    return result_3;\n}\n\nuniform vec4 u_scale_1;\nuniform vec4 u_translate_1;\n\nvec4 st_transform_map_1(vec4 pos) {\n    return vec4(pos.xyz * u_scale_1.xyz + u_translate_1.xyz * pos.w, pos.w);\n}\n\n\nuniform vec4 u_scale_2;\nuniform vec4 u_translate_2;\n\nvec4 st_transform_map_2(vec4 pos) {\n    return vec4(pos.xyz * u_scale_2.xyz + u_translate_2.xyz * pos.w, pos.w);\n}\n\n\nvec4 transform_map_chain_3(vec4 pos) {\n    vec4 result_1 = transform_map_chain_2(pos);\n    vec4 result_2 = st_transform_map_1(result_1);\n    vec4 result_3 = st_transform_map_2(result_2);\n    return result_3;\n}\n\nvec4 transform_map_chain_4(vec4 pos) {\n    vec4 result_1 = transform_map_chain_3(pos);\n    return result_1;\n}\n\nvec4 transform_map_chain_12(vec4 pos) {\n    vec4 result_1 = transform_map_chain_1(pos);\n    vec4 result_2 = transform_map_chain_4(result_1);\n    return result_2;\n}\n\n\nvec4 grays(float t) {\n    // Map NaN to bad_color\n    if (!(t <= 0.0 || 0.0 <= t)) {\n        return vec4(0.000, 0.000, 0.000, 0.000);\n    }\n    return vec4(t, t, t, 1.0);\n}\n\n\nvec4 transform_map_chain_14(vec4 pos) {\n    vec4 result_1 = transform_map_chain_1(pos);\n    return result_1;\n}\n\n\nfloat clip_planes(vec3 loc, vec3 vol_shape) {\n    vec3 loc_transf = transform_map_chain_14(vec4(loc * vol_shape, 1)).xyz;\n    float distance_from_clip = 3.4e38; // max float\n    ;\n    return distance_from_clip;\n}\n\n\nvec4 null_transform_map_2(vec4 pos) {return pos;}\n\nuniform vec4 u_view;\n\nvoid clip() {\n    vec4 pos = null_transform_map_2(gl_FragCoord);\n    if( pos.x < u_view.x || pos.x > u_view.y ||\n        pos.y < u_view.z || pos.y > u_view.w ) {\n        discard;\n    }\n}\n\n\nuniform float u_alpha;\n\nvoid apply_alpha() {\n    gl_FragColor.a = gl_FragColor.a * u_alpha;\n}\n\n\nuniform vec4 u_id_color;\nuniform int u_enabled;\n\nvoid picking_filter() {\n    if( u_enabled == 0 )\n        return;\n    if( gl_FragColor.a == 0.0 )\n        discard;\n    gl_FragColor = u_id_color;\n}\n\n\nuniform sampler3D u_texture;\n\nvec4 texture_lookup(vec3 texcoord) {\n    // no need to discard out of bounds, already checked during raycasting\n    return texture3D(u_texture, texcoord);\n}\n\n\n// uniforms\nuniform sampler3D u_volumetex;\nuniform vec3 u_shape;\nuniform vec2 clim;\nuniform float gamma;\nuniform float u_threshold;\nuniform float u_attenuation;\nuniform float u_relative_step_size;\nuniform float u_mip_cutoff;\nuniform float u_minip_cutoff;\nuniform int u_rgb_mode;\n\n//varyings\nvarying vec3 v_position;\nvarying vec4 v_nearpos;\nvarying vec4 v_farpos;\n\n// uniforms for lighting. Hard coded until we figure out how to do lights\nconst vec4 u_ambient = vec4(0.2, 0.2, 0.2, 1.0);\nconst vec4 u_diffuse = vec4(0.8, 0.2, 0.2, 1.0);\nconst vec4 u_specular = vec4(1.0, 1.0, 1.0, 1.0);\nconst float u_shininess = 40.0;\n\n// uniforms for plane definition. Defined in data coordinates.\nuniform vec3 u_plane_normal;\nuniform vec3 u_plane_position;\nuniform float u_plane_thickness;\n\n//varying vec3 lightDirs[1];\n\n// global holding view direction in local coordinates\nvec3 view_ray;\n\nfloat rand(vec2 co)\n{\n    // Create a pseudo-random number between 0 and 1.\n    // http://stackoverflow.com/questions/4200224\n    return fract(sin(dot(co.xy ,vec2(12.9898, 78.233))) * 43758.5453);\n}\n\nfloat colorToVal(vec4 color)\n{\n    if (u_rgb_mode == 1)\n        // perceptual luminance, a good approach to transform rgb into a single\n        // value for things like gradient calculations in isosurface\n        return dot(color.rgb, vec3(0.2126, 0.7152, 0.0722)) * color.a;\n    return color.r;\n}\n\nvec4 applyColormap(vec4 color) {\n    // clim and gamma are applied identically in both modes: per channel for rgb\n    // data, and to the single (red) channel for scalar data.\n    color.rgb = clamp(color.rgb, min(clim.x, clim.y), max(clim.x, clim.y));\n    color.rgb = (color.rgb - clim.x) / (clim.y - clim.x);\n    color.rgb = pow(color.rgb, vec3(gamma));\n    if (u_rgb_mode == 1) {\n        // no colormapping, the rgb values are used directly\n        return color;\n    }\n    return grays(color.r);\n}\n\n\nvec4 calculateColor(vec4 betterColor, vec3 loc, vec3 step)\n{   \n    // Calculate color by incorporating lighting\n    vec4 color1;\n    vec4 color2;\n\n    // View direction\n    vec3 V = normalize(view_ray);\n\n    // calculate normal vector from gradient\n    vec3 N; // normal\n    color1 = texture_lookup(loc+vec3(-step[0],0.0,0.0) );\n    color2 = texture_lookup(loc+vec3(step[0],0.0,0.0) );\n    N[0] = colorToVal(color1) - colorToVal(color2);\n    betterColor = max(max(color1, color2),betterColor);\n    color1 = texture_lookup(loc+vec3(0.0,-step[1],0.0) );\n    color2 = texture_lookup(loc+vec3(0.0,step[1],0.0) );\n    N[1] = colorToVal(color1) - colorToVal(color2);\n    betterColor = max(max(color1, color2),betterColor);\n    color1 = texture_lookup(loc+vec3(0.0,0.0,-step[2]) );\n    color2 = texture_lookup(loc+vec3(0.0,0.0,step[2]) );\n    N[2] = colorToVal(color1) - colorToVal(color2);\n    betterColor = max(max(color1, color2),betterColor);\n    float gm = length(N); // gradient magnitude\n    N = normalize(N);\n\n    // Flip normal so it points towards viewer\n    float Nselect = float(dot(N,V) > 0.0);\n    N = (2.0*Nselect - 1.0) * N;  // ==  Nselect * N - (1.0-Nselect)*N;\n\n    // Get color of the texture (albeido)\n    color1 = betterColor;\n    color2 = color1;\n    // todo: parametrise color1_to_color2\n\n    // Init colors\n    vec4 ambient_color = vec4(0.0, 0.0, 0.0, 0.0);\n    vec4 diffuse_color = vec4(0.0, 0.0, 0.0, 0.0);\n    vec4 specular_color = vec4(0.0, 0.0, 0.0, 0.0);\n    vec4 final_color;\n\n    // todo: allow multiple light, define lights on viewvox or subscene\n    int nlights = 1; \n    for (int i=0; i<nlights; i++)\n    { \n        // Get light direction (make sure to prevent zero devision)\n        vec3 L = normalize(view_ray);  //lightDirs[i]; \n        float lightEnabled = float( length(L) > 0.0 );\n        L = normalize(L+(1.0-lightEnabled));\n\n        // Calculate lighting properties\n        float lambertTerm = clamp( dot(N,L), 0.0, 1.0 );\n        vec3 H = normalize(L+V); // Halfway vector\n        float specularTerm = pow( max(dot(H,N),0.0), u_shininess);\n\n        // Calculate mask\n        float mask1 = lightEnabled;\n\n        // Calculate colors\n        ambient_color +=  mask1 * u_ambient;  // * gl_LightSource[i].ambient;\n        diffuse_color +=  mask1 * lambertTerm;\n        specular_color += mask1 * specularTerm * u_specular;\n    }\n\n    // Calculate final color by componing different components\n    final_color = color2 * ( ambient_color + diffuse_color) + specular_color;\n    final_color.a = color2.a;\n\n    // Done\n    return final_color;\n}\n\n\nvec3 intersectLinePlane(vec3 linePosition, \n                        vec3 lineVector, \n                        vec3 planePosition, \n                        vec3 planeNormal) {\n    // function to find the intersection between a line and a plane\n    // line is defined by position and vector\n    // plane is defined by position and normal vector\n    // https://en.wikipedia.org/wiki/Line%E2%80%93plane_intersection\n\n    // find scale factor for line vector\n    float scaleFactor = dot(planePosition - linePosition, planeNormal) / \n                        dot(lineVector, planeNormal);\n\n    // calculate intersection\n    return linePosition + ( scaleFactor * lineVector );\n}\n\n// for some reason, this has to be the last function in order for the\n// filters to be inserted in the correct place...\n\nvoid main() {\n    clip();\n\n\n    vec3 farpos = v_farpos.xyz / v_farpos.w;\n    vec3 nearpos = v_nearpos.xyz / v_nearpos.w;\n\n    // Calculate unit vector pointing in the view direction through this\n    // fragment.\n    view_ray = normalize(farpos.xyz - nearpos.xyz);\n\n    // Variables to keep track of where to set the frag depth.\n    // frag_depth_point is in data coordinates.\n    vec3 frag_depth_point;\n\n    // Set up the ray casting\n    // This snippet must define three variables:\n    // vec3 start_loc - the starting location of the ray in texture coordinates\n    // vec3 step - the step vector in texture coordinates\n    // int nsteps - the number of steps to make through the texture\n    \n    \n    // Compute the distance to the front surface or near clipping plane\n    float distance = dot(nearpos-v_position, view_ray);\n    distance = max(distance, min((-0.5 - v_position.x) / view_ray.x,\n                            (u_shape.x - 0.5 - v_position.x) / view_ray.x));\n    distance = max(distance, min((-0.5 - v_position.y) / view_ray.y,\n                            (u_shape.y - 0.5 - v_position.y) / view_ray.y));\n    distance = max(distance, min((-0.5 - v_position.z) / view_ray.z,\n                            (u_shape.z - 0.5 - v_position.z) / view_ray.z));\n\n    // Now we have the starting position on the front surface\n    vec3 front = v_position + view_ray * distance;\n\n    // Decide how many steps to take\n    int nsteps = int(-distance / u_relative_step_size + 0.5);\n    float f_nsteps = float(nsteps);\n    if( nsteps < 1 )\n        discard;\n\n    // Get starting location and step vector in texture coordinates\n    vec3 step = ((v_position - front) / u_shape) / f_nsteps;\n    // 0.5 offset needed to get back to correct texture coordinates (vispy#2239)\n    vec3 start_loc = (front + 0.5) / u_shape;\n\n    // set frag depth to the cube face; this can be overridden by projection snippets\n    frag_depth_point = front;\n\n\n    // For testing: show the number of steps. This helps to establish\n    // whether the rays are correctly oriented\n    //gl_FragColor = vec4(0.0, f_nsteps / 3.0 / u_shape.x, 1.0, 1.0);\n    //return;\n\n    \n        vec4 color3 = vec4(0.0);  // final color\n        vec3 dstep = 1.5 / u_shape;  // step to sample derivative\n        gl_FragColor = vec4(0.0);\n        bool discard_fragment = true;\n    \n\n    // This outer loop seems necessary on some systems for large\n    // datasets. Ugly, but it works ...\n    vec3 loc = start_loc;\n    int iter = 0;\n\n    // keep track if the texture is ever sampled; if not, fragment will be discarded\n    // this allows us to discard fragments that only traverse clipped parts of the texture\n    bool texture_sampled = false;\n\n    while (iter < nsteps) {\n        for (iter=iter; iter<nsteps; iter++)\n        {\n            // Only sample volume if loc is not clipped by clipping planes\n            float distance_from_clip = clip_planes(loc, u_shape);\n            if (distance_from_clip >= 0)\n            {\n                // Get sample color\n                vec4 color = texture_lookup(loc);\n                float val = colorToVal(color);\n                texture_sampled = true;\n\n                \n        if (val > u_threshold-0.2) {\n            // Take the last interval in smaller steps\n            vec3 iloc = loc - step;\n            for (int i=0; i<10; i++) {\n                color = texture_lookup(iloc);\n                if (colorToVal(color) > u_threshold) {\n                    color = calculateColor(color, iloc, dstep);\n                    gl_FragColor = applyColormap(color);\n\n                    // set the variables for the depth buffer\n                    frag_depth_point = iloc * u_shape;\n                    discard_fragment = false;\n\n                    iter = nsteps;\n                    break;\n                }\n                iloc += step * 0.1;\n            }\n        }\n        \n            }\n            // Advance location deeper into the volume\n            loc += step;\n        }\n    }\n\n    if (!texture_sampled)\n        discard;\n\n    \n        if (discard_fragment)\n            discard;\n    \n\n    // set frag depth\n    vec4 frag_depth_vector = vec4(frag_depth_point, 1);\n    vec4 iproj = transform_map_chain_12(frag_depth_vector);\n    iproj.z /= iproj.w;\n    gl_FragDepth = (iproj.z+1.0)/2.0;\n\n    apply_alpha();\npicking_filter();\n\n}\n\n"
+  ],
+  [
+    "ATTACH",
+    12,
+    18
+  ],
+  [
+    "LINK",
+    12
+  ],
+  [
+    "DELETE",
+    17
+  ],
+  [
+    "DELETE",
+    18
+  ],
+  [
+    "UNIFORM",
+    12,
+    "u_alpha",
+    "float",
+    {
+      "array": {
+        "bytes": 4,
+        "dtype": "<f4",
+        "sha256": "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c",
+        "shape": [
+          1
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    12,
+    "u_enabled",
+    "int",
+    {
+      "array": {
+        "bytes": 4,
+        "dtype": "<i4",
+        "sha256": "df3f619804a92fdb4057192dc43dd748ea778adc52bc498ce80524c014b81119",
+        "shape": [
+          1
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    12,
+    "u_id_color",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "557396081ff5baef197a3c454203ad97bbd62aa256a483ee3a92688243f178d8",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    12,
+    "u_inv_matrix",
+    "mat4",
+    {
+      "array": {
+        "bytes": 64,
+        "dtype": "<f4",
+        "sha256": "bab34954d990e9cf51f3f43138481caaf7950ade09f0c5978ac8453435afb42f",
+        "shape": [
+          16
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    12,
+    "u_inv_matrix_1",
+    "mat4",
+    {
+      "array": {
+        "bytes": 64,
+        "dtype": "<f4",
+        "sha256": "85d99dd97ef40025653bdb8a03f9e6b852f93e98c998cfbd169a73a0b105864b",
+        "shape": [
+          16
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    12,
+    "u_matrix",
+    "mat4",
+    {
+      "array": {
+        "bytes": 64,
+        "dtype": "<f4",
+        "sha256": "3cfc446a1a1ad6c5f773d9de076f1155cd2df9ded37f31dbe5a99aa6d7c9bea4",
+        "shape": [
+          16
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    12,
+    "u_matrix_1",
+    "mat4",
+    {
+      "array": {
+        "bytes": 64,
+        "dtype": "<f4",
+        "sha256": "5d487497c95cbe4ae939341fd01582ffd874d182071051dd221e802e3967b12e",
+        "shape": [
+          16
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    12,
+    "u_scale",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "291e6a4561d6c422b259ef4158bd01e176328ec0fbfd77f5eb31edbdade8a4ef",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    12,
+    "u_scale_1",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "f6bb1294da2f78cd935b01c7656280df5eaa0439e9d97bc03775825a41a508e4",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    12,
+    "u_scale_2",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "f6bb1294da2f78cd935b01c7656280df5eaa0439e9d97bc03775825a41a508e4",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    12,
+    "u_scale_3",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "a416fff845c77f5467c037c96e18453dd9a307d0af8be8aa4d3aac93ee821b03",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    12,
+    "u_scale_4",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "f6bb1294da2f78cd935b01c7656280df5eaa0439e9d97bc03775825a41a508e4",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    12,
+    "u_scale_5",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "7c82f72f4cd639166ab1ae0537823f293e69745983c3d1e039149e95779f4a55",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    12,
+    "u_scale_6",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "f6bb1294da2f78cd935b01c7656280df5eaa0439e9d97bc03775825a41a508e4",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    12,
+    "u_scale_7",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "f6bb1294da2f78cd935b01c7656280df5eaa0439e9d97bc03775825a41a508e4",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    12,
+    "u_scale_8",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "291e6a4561d6c422b259ef4158bd01e176328ec0fbfd77f5eb31edbdade8a4ef",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "CREATE",
+    11,
+    "Texture3D"
+  ],
+  [
+    "INTERPOLATION",
+    11,
+    "nearest",
+    "nearest"
+  ],
+  [
+    "WRAPPING",
+    11,
+    [
+      "clamp_to_edge",
+      "clamp_to_edge",
+      "clamp_to_edge"
+    ]
+  ],
+  [
+    "SIZE",
+    11,
+    [
+      32,
+      32,
+      32,
+      4
+    ],
+    "rgba",
+    "rgba32f"
+  ],
+  [
+    "DATA",
+    11,
+    [
+      0,
+      0,
+      0
+    ],
+    {
+      "array": {
+        "bytes": 524288,
+        "dtype": "<f4",
+        "sha256": "69484a5e04b94d1439ab6db28e646e42a5b35d5c5c8b9ec8b9cae1b503fc0d6c",
+        "shape": [
+          32,
+          32,
+          32,
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "TEXTURE",
+    12,
+    "u_texture",
+    11
+  ],
+  [
+    "UNIFORM",
+    12,
+    "u_translate",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "b9b7d01f61ef7b6af0906f2351ea57b3206c02349f893ba554a3c9052a314b6b",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    12,
+    "u_translate_1",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "374708fff7719dd5979ec875d56cd2286f6d3cf7ec317a3b25632aab28ec37bb",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    12,
+    "u_translate_2",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "374708fff7719dd5979ec875d56cd2286f6d3cf7ec317a3b25632aab28ec37bb",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    12,
+    "u_translate_3",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "67d676cf62c5904ac14c953353b0237bd9897678bcd8134de5ad3398722685fa",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    12,
+    "u_translate_4",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "374708fff7719dd5979ec875d56cd2286f6d3cf7ec317a3b25632aab28ec37bb",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    12,
+    "u_translate_5",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "c4ed2338fa8bdfe87ba22b0b14e6f74e4bbf6d849f85310370833d9cc56510ac",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    12,
+    "u_translate_6",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "374708fff7719dd5979ec875d56cd2286f6d3cf7ec317a3b25632aab28ec37bb",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    12,
+    "u_translate_7",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "374708fff7719dd5979ec875d56cd2286f6d3cf7ec317a3b25632aab28ec37bb",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    12,
+    "u_translate_8",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "b9b7d01f61ef7b6af0906f2351ea57b3206c02349f893ba554a3c9052a314b6b",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    12,
+    "u_view",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "2448141ffad338fdf6583535438c922519db0112f3629f09c793e891e02ba9b1",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "TEXTURE",
+    12,
+    "u_volumetex",
+    11
+  ],
+  [
+    "CREATE",
+    9,
+    "VertexBuffer"
+  ],
+  [
+    "SIZE",
+    9,
+    96
+  ],
+  [
+    "DATA",
+    9,
+    0,
+    {
+      "array": {
+        "bytes": 96,
+        "dtype": "|V12",
+        "sha256": "20f39721be80f4ca31e4ef4a99e89cd64d2a446f8c40d2adfa2c7f1478e93227",
+        "shape": [
+          8,
+          1
+        ]
+      }
+    }
+  ],
+  [
+    "ATTRIBUTE",
+    12,
+    "a_position",
+    "vec3",
+    [
+      9,
+      12,
+      0
+    ],
+    null
+  ],
+  [
+    "UNIFORM",
+    12,
+    "gamma",
+    "float",
+    {
+      "array": {
+        "bytes": 4,
+        "dtype": "<f4",
+        "sha256": "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c",
+        "shape": [
+          1
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    12,
+    "clim",
+    "vec2",
+    {
+      "array": {
+        "bytes": 8,
+        "dtype": "<f4",
+        "sha256": "22b6f43bd8d27738d3213f29e96b62d01d9d6c0ab4f9732aaae803186f51eab7",
+        "shape": [
+          2
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    12,
+    "u_shape",
+    "vec3",
+    {
+      "array": {
+        "bytes": 12,
+        "dtype": "<f4",
+        "sha256": "80e1364201a4810546c6bbded8c7e82446a8a1d357cb5f715e9a191faae1ec54",
+        "shape": [
+          3
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    12,
+    "u_rgb_mode",
+    "int",
+    {
+      "array": {
+        "bytes": 4,
+        "dtype": "<i4",
+        "sha256": "67abdd721024f0ff4e0b3f4c2fc13bc5bad42d0b7851d456d88d203d15aaa450",
+        "shape": [
+          1
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    12,
+    "u_mip_cutoff",
+    "float",
+    {
+      "array": {
+        "bytes": 4,
+        "dtype": "<f4",
+        "sha256": "abc4c4e7eee2ce04c6be04358adf5b3d0958255a80f712a8b6d4f4fdda588276",
+        "shape": [
+          1
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    12,
+    "u_minip_cutoff",
+    "float",
+    {
+      "array": {
+        "bytes": 4,
+        "dtype": "<f4",
+        "sha256": "6048235e823ffe3c303299c2d9ad4cbd9e5ec680a5dc19c9c4eb97538ea6498f",
+        "shape": [
+          1
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    12,
+    "u_relative_step_size",
+    "float",
+    {
+      "array": {
+        "bytes": 4,
+        "dtype": "<f4",
+        "sha256": "d99e58435243d9fef9c88273b8d553b4fba4d0baf8009d29eae74fa99e0d9f57",
+        "shape": [
+          1
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    12,
+    "u_threshold",
+    "float",
+    {
+      "array": {
+        "bytes": 4,
+        "dtype": "<f4",
+        "sha256": "75e253f50979177eba47b2d0805ad36038789108924514d2a761a70de057d16f",
+        "shape": [
+          1
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    12,
+    "u_attenuation",
+    "float",
+    {
+      "array": {
+        "bytes": 4,
+        "dtype": "<f4",
+        "sha256": "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c",
+        "shape": [
+          1
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    12,
+    "u_plane_position",
+    "vec3",
+    {
+      "array": {
+        "bytes": 12,
+        "dtype": "<f4",
+        "sha256": "f491a6042586d35e43a708f78e2794eaae59ed737c16f4a9e35f952aec95728f",
+        "shape": [
+          3
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    12,
+    "u_plane_normal",
+    "vec3",
+    {
+      "array": {
+        "bytes": 12,
+        "dtype": "<f4",
+        "sha256": "caccb9a8fbd2401135207066c4b53d6e88467839318ea2f1e8bfadf8fef6844e",
+        "shape": [
+          3
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    12,
+    "u_plane_thickness",
+    "float",
+    {
+      "array": {
+        "bytes": 4,
+        "dtype": "<f4",
+        "sha256": "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c",
+        "shape": [
+          1
+        ]
+      }
+    }
+  ],
+  [
+    "CREATE",
+    13,
+    "IndexBuffer"
+  ],
+  [
+    "SIZE",
+    13,
+    56
+  ],
+  [
+    "DATA",
+    13,
+    0,
+    {
+      "array": {
+        "bytes": 56,
+        "dtype": "<u4",
+        "sha256": "b94833219dfff70fa9a154b31b044c7a4b9399acd6923523b7d8de32fa803dd7",
+        "shape": [
+          14
+        ]
+      }
+    }
+  ],
+  [
+    "DRAW",
+    12,
+    "triangle_strip",
+    [
+      13,
+      "UNSIGNED_INT",
+      14
+    ],
+    1
+  ],
+  [
+    "FUNC",
+    "glFinish"
+  ]
+]

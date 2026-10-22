@@ -1,0 +1,73 @@
+{
+  "camera": {
+    "azimuth": 0,
+    "center": [
+      15.5,
+      15.5,
+      15.5
+    ],
+    "distance": 100,
+    "elevation": 0,
+    "fov": 0,
+    "scale_factor": 40,
+    "up": "+z"
+  },
+  "case": "rgba_additive",
+  "clim": [
+    0,
+    1
+  ],
+  "cmap": "grays",
+  "comparison": {
+    "excluded_pixels": 0,
+    "full_frame_exact": true
+  },
+  "exposed_methods": [
+    "mip",
+    "minip",
+    "attenuated_mip",
+    "iso",
+    "translucent",
+    "additive",
+    "average"
+  ],
+  "exposed_raycasting_modes": [
+    "volume",
+    "plane"
+  ],
+  "final_texture_shape": [
+    32,
+    32,
+    32,
+    4
+  ],
+  "final_volume_shape": [
+    32,
+    32,
+    32
+  ],
+  "gamma": 1,
+  "inputs": [
+    {
+      "dtype": "<f4",
+      "sha256": "69484a5e04b94d1439ab6db28e646e42a5b35d5c5c8b9ec8b9cae1b503fc0d6c",
+      "shape": [
+        32,
+        32,
+        32,
+        4
+      ]
+    }
+  ],
+  "interpolation": "nearest",
+  "method": "additive",
+  "public_update": null,
+  "raycasting_mode": "volume",
+  "relative_step_size": 0.5,
+  "size": [
+    96,
+    96
+  ],
+  "texture_format": "auto",
+  "threshold": 0.25
+}
