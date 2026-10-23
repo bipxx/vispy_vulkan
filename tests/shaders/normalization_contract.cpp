@@ -352,6 +352,15 @@ void literal_sampler_arrays() {
                 [&](const auto& resource) { return resource.binding == binding && resource.stage_mask == 2; }),
                 "real SPIR-V fragment reflection uses each array element resource");
     }
+    for (const std::string spelling : {"0x1", "01", "1u", "1U"}) {
+        auto integer_index = normalize_program(vertex,
+            "uniform sampler2D images[2];void main(){gl_FragColor=texture2D(images[" + spelling + "],vec2(.5));}");
+        compile_and_reflect(integer_index);
+    }
+    auto fractional_index = normalize_program(vertex,
+        "uniform sampler2D images[2];void main(){gl_FragColor=texture2D(images[1.0],vec2(.5));}");
+    require(fractional_index.error.find("integer index") != std::string::npos,
+        "floating numeric prefixes cannot masquerade as literal integer array indices");
     auto helper = normalize_program(vertex,
         "uniform sampler2D images[2]; vec4 fetch(sampler2D image,vec2 uv){return texture2D(image,uv);}"
         "void main(){gl_FragColor=fetch((images[0]),vec2(.25))+fetch(images[1],vec2(.75));}");

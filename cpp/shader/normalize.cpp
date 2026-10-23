@@ -437,12 +437,18 @@ bool lower_sampler_functions(const std::vector<Tok>& tokens, const std::vector<N
             error = "line=" + std::to_string(tokens[first].line) + " sampler array " + tokens[first].text + ": " + reason;
             return nullptr;
         };
-        if (first + 3 >= tokens.size() || tokens[first + 1].text != "[" || tokens[first + 3].text != "]" ||
-            tokens[first + 2].text.empty() || !std::all_of(tokens[first + 2].text.begin(), tokens[first + 2].text.end(),
-                [](unsigned char c) { return std::isdigit(c); }))
+        if (first + 3 >= tokens.size() || tokens[first + 1].text != "[" || tokens[first + 3].text != "]")
             return fail("a literal nonnegative element index is required; dynamic indexing remains unsupported");
         uint64_t index = UINT64_MAX;
-        try { index = std::stoull(tokens[first + 2].text); } catch (...) {}
+        size_t consumed = 0;
+        const auto& literal = tokens[first + 2].text;
+        // GLSL integer literals include decimal, octal and hexadecimal forms,
+        // optionally with an unsigned suffix. Never reinterpret a leading-zero
+        // index as decimal or accept a numeric prefix of a float/expression.
+        try { index = std::stoull(literal, &consumed, 0); } catch (...) {}
+        if (!consumed || (consumed != literal.size() &&
+            !(consumed + 1 == literal.size() && (literal.back() == 'u' || literal.back() == 'U'))))
+            return fail("a literal nonnegative integer index is required; dynamic indexing remains unsupported");
         if (index >= array->second) return fail("literal element index exceeds the declared length");
         end = first + 4;
         const auto key = tokens[first].text + '[' + std::to_string(index) + ']';
