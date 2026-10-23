@@ -41,6 +41,15 @@ and static ldconfig helper coverage have real controls. Auditor-only mode remain
 explicitly UNVERIFIED for aggregate absence gates. Private implementations/manual
 export parsing are outside both platform observers' public API scope.
 
+A Windows concurrent resolver control reproduced a queued-INT3 ownership bug:
+the original observer could overwrite its active step owner and leave both
+threads manually suspended. The corrected observer defers the queued peer and
+restores the trap before releasing it. A 32-thread native control verifies
+exact instruction counts, arguments and returns, with GL lookup/direct-call
+traps still active. The original failing trace and stacks remain preserved;
+fixed control evidence is `build/no-opengl/windows-resolver-race3/controls.json`
+in the validation worktree. Timeout diagnostics now retain pending step state.
+
 Dependency receipts bind exact installed wheel bytes, package/native inventory,
 actual selected process loads and resolved native dependencies. Linux receipts
 also scan system runtime files and package inventory in the fresh rootfs.
@@ -82,6 +91,14 @@ Recorded installed-artifact results are scoped to the exact tested bytes:
   and `<scenario>-qualified2.json`. Historical receipts are retained. The
   core-only profile excludes unused HWLOC plugins; these results do not qualify
   a newer renderer artifact or other bindings.
+  Separate selected PyQt5 and PySide6 QWidget consumers also pass all three
+  gates and full lifecycle with nine-zero shutdown on this same renderer.
+  Their Python-worktree receipts are
+  `build/no-opengl-windows-otherprofiles-1/pyqt5/qualified-fixed4.json` and
+  `pyside6/qualified2.json`. The first PyQt5 trace timed out before Qt import;
+  the independent resolver control above proved and fixed that observer defect
+  before replay. The distinct earlier intermittent Qt5 OLE lifecycle hang
+  remains an unresolved historical result, not silently reclassified.
 - Earlier Windows `6bef4403...` headless clear/lines/text/image/recovery, markers
   and ten framebuffer cases have scoped three-gate receipts. These remain
   historical evidence and do not qualify a newer renderer artifact.
@@ -91,6 +108,28 @@ Recorded installed-artifact results are scoped to the exact tested bytes:
   Newly integrated endpoint/sample-zero native changes also require GPU
   qualification on freshly built artifacts. No older result is transferred to
   these changed native bytes.
+- Linux renderer SHA256
+  `cd2c1f43b9718535fad33ac969554d71dd68fdb4c4471818e92ef3805fe6e860`
+  built from Git archive `2dda23bb9...`, with project inputs matching Windows
+  source `99d110b6b`. A fresh strict rootfs consumer verified all 536 installed
+  members, GL-free package/system inventory and four exact native origins via
+  controlled stripping of unchanged raw outputs. Its unobserved Lavapipe run
+  produced 91 passes and one retained-depth CPU recovery failure, matching the
+  Windows finding without another Linux-specific failure. All nine global
+  shutdown gauges were zero. Evidence is
+  `build/opengl-removal-n345-linux-wheel-root-1/qualification1/result1.json`.
+  This artifact remains a preserved failing candidate; the run does not claim
+  native execution/load absence gates.
+- Current Windows renderer SHA256
+  `62df5e4c31bf9a1bb1bea47fd68d50e4198d6ec13d2551c991da1e7f30a2b38f`
+  includes the target-reset fix from source `7734055f8`, source tree
+  `e536b975...`. All 95 installed GPU cases pass, with unchanged test-source
+  hashes and nine-zero global shutdown. Evidence is
+  `build/opengl-removal-n345c-stable-consumer-root-1/result1.json`. Same-artifact
+  binding/host/native observer and inventory replays remain required; earlier
+  `20c443...` receipts are not transferred to it. A separate fresh full-source
+  Linux build from `c781deb92` has the identical 623 shipping input pins and is
+  in progress under `build/opengl-removal-n345c-linux-wheel-root-1`.
 
 The 2026-10-23 Linux continuation encountered a WSL filesystem failure. The
 resumed Qt 6.12 build reached 1480/1636 actions before
@@ -108,8 +147,10 @@ fsynced write probe. The coordinator retained recovery logs and removed the
 temporary helper after verifying its exact registration path. The receipt is
 `build/opengl-removal-wsl-recovery-root-1/result1.json` in the canonical workspace.
 A full backup could not fit in the available space; this is recorded in that
-receipt. Qt 6.12 source/archive integrity checks precede restarting the failed
-build. Historical Linux proofs above remain scoped to their earlier exact
+receipt. After source/archive verification, Qt 6.12 runtime and SVG builds
+completed successfully. Selected PySide6/Shiboken source compilation is running;
+module smoke, relocation, closure and normative packaging remain pending. Qt5
+is a separate subsequent build. Historical Linux proofs above remain scoped to their earlier exact
 artifacts; recovery itself earns no new package or runtime qualification.
 
 The Windows N3/N4/N5 SDK-backed attempt from source `99d110b6b` and frozen source
@@ -123,14 +164,15 @@ approved Dawn and VisPy physical captures. Preparation rehashed the complete
 snapshot and protected native bytes. Existing snapshots, failed results,
 locks, admission records and verifier are unchanged. Its receipt is
 `build/opengl-removal-n345-windows-root-1/source3.json`; the original full build
-verifier remains mandatory. The replacement native build and actual 92 GPU
-cases remain pending. Current Windows CPU checks pass:
+verifier remains mandatory. That replacement exposed the retained-depth
+recovery defect in the 92-case run; the later current Windows artifact above
+passes the expanded 95-case suite after its fix. Current Windows CPU checks pass:
 60 no-OpenGL contract tests with one platform skip, plus six canonical
 package/source-contract tests. Those checks do not replace the pending native
 build, installed GPU runs or three-gate receipts for the changed artifact.
 
 Remaining work includes final changed-native-artifact GPU/functional/native
-replays, all mandatory feature cases, Windows selected PyQt5/PySide6 complete
+replays, all mandatory feature cases, current-artifact Windows binding/host
 receipts, Linux Qt5/PyQt5 and Qt6.12/PySide6 source packaging and actual runtime
 qualification, and the remaining required host/platform matrix. The initial
 PyQt6 host results above are real rendering admission for those exact artifacts;
