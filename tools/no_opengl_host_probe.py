@@ -4,6 +4,7 @@
 This is functional evidence. Native dependency/load/context gates are reported
 by tools/audit_no_opengl.py, which should wrap this script in scenario=script.
 No missing dependency, display, adapter or functional stage counts as a skip.
+The napari sparse-label case requires numba==0.68.0 and compatible NumPy.
 """
 
 import argparse
@@ -214,7 +215,7 @@ def qwidget(evidence, application, dawn):
                 rgba_qimage(native.grabFramebuffer(), backend.QtGui))
             np.testing.assert_array_equal(without_overlay, updated)
             events = []
-            canvas.events.mouse_press.connect(lambda event: events.append(tuple(event.pos)))
+            canvas.events.mouse_press.connect(lambda event: events.append(tuple(int(value) for value in event.pos)))
             buttons = getattr(backend.QtCore.Qt, 'MouseButton', backend.QtCore.Qt)
             backend.QtTest.QTest.mouseClick(native, buttons.LeftButton,
                                             pos=backend.QtCore.QPoint(40, 40))
@@ -254,8 +255,9 @@ def napari(evidence, application, dawn):
     from napari.utils.colormaps import DirectLabelColormap
     assert metadata.version('napari') == '0.9.2'
     assert metadata.version('QtPy') == '2.4.3'
+    assert metadata.version('numba') == '0.68.0'
     evidence.report['host_versions'] = {name: metadata.version(name)
-                                        for name in ('napari', 'QtPy', 'superqt', 'numpy')}
+                                        for name in ('napari', 'QtPy', 'superqt', 'numpy', 'numba', 'llvmlite')}
     viewer = host.Viewer(show=True)
     canvas = viewer.window._qt_viewer.canvas
     scene, native = canvas._scene_canvas, canvas.native
