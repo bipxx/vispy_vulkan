@@ -30,6 +30,18 @@ def source_roots(tmp_path_factory):
     return qtpy, napari
 
 
+def test_qtpy_distribution_declares_both_original_and_agpl_licenses(source_roots):
+    qtpy, _ = source_roots
+    from configparser import ConfigParser
+    config = ConfigParser()
+    config.read(qtpy / 'setup.cfg', encoding='utf-8')
+    declared = config['metadata']['license_files'].split()
+    assert {'LICENSE.txt', 'LICENSE-AGPL', 'DAWN-PATCH-LICENSING.txt'} <= set(declared)
+    assert config['metadata']['license'] == 'AGPL-3.0-only'
+    assert (qtpy / 'LICENSE.txt').is_file()
+    assert (qtpy / 'LICENSE-AGPL').read_bytes() == (ROOT / 'LICENSE').read_bytes()
+
+
 def test_real_napari_import_chain_and_explicit_gl_export_errors(source_roots):
     qtpy, napari = source_roots
     sites = [str(Path(p).resolve()) for p in sys.path
