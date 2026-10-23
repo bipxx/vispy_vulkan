@@ -12,7 +12,9 @@ from no_opengl.dependencies import BinaryError, elf_image, pe_image
 from no_opengl.policy import assess, import_reason, is_gl_entrypoint, library_reason
 
 
-@pytest.mark.parametrize('name', ['opengl32.dll', 'libGL.so.1', 'libEGL.so.1', 'libGLX_mesa.so.0',
+@pytest.mark.parametrize('name', ['opengl32.dll', 'opengl32sw.dll', 'openglrenderer.dll',
+                                  'libqxcb-glx-integration.so', 'libqxcb-egl-integration.so',
+                                  'libGL.so.1', 'libEGL.so.1', 'libGLX_mesa.so.0',
                                   'Qt6OpenGL.dll', 'QtOpenGL.abi3.so', 'libGLdispatch.so.0', 'libglapi.so.0',
                                   'libQt6OpenGL.so.6', 'libQt5OpenGLWidgets.so.5.15.2',
                                   'libQt6OpenGL.6.dylib', '/qt/QtOpenGLWidgets.framework/QtOpenGLWidgets',

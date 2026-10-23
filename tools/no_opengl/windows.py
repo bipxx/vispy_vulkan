@@ -86,7 +86,7 @@ def trace(command, *, environment, cwd, log, timeout=120):
     nt.NtResumeThread.argtypes = [w.HANDLE, c.POINTER(w.ULONG)]
     nt.NtResumeThread.restype = c.c_long
     events, processes, modules, breakpoints, errors = [], {}, {}, {}, []
-    threads, stepping, resolver_hooks, ordinal_names = {}, {}, {}, {}
+    threads, stepping, resolver_hooks, ordinal_names, image_sizes = {}, {}, {}, {}, {}
     observed_pids, exited_pids = set(), set()
     started = time.monotonic()
     killed = False
@@ -133,6 +133,13 @@ def trace(command, *, environment, cwd, log, timeout=120):
         return storage, address
     def reg(address, offset):
         return c.c_uint64.from_address(address + offset).value
+    def module_at(pid, address):
+        matches = [{'path': path, 'address': address, 'rva': address - base}
+                   for (owner, base), path in modules.items() if owner == pid and path
+                   and base <= address < base + image_sizes.get((pid, base), 0)]
+        return matches[0] if len(matches) == 1 else {'address': address, 'path': None}
+    def caller(pid, registers):
+        return module_at(pid, int.from_bytes(read(pid, reg(registers, 152), 8), 'little'))
     def ansi(pid, address, length=None):
         if not address:
             return ""
@@ -177,7 +184,8 @@ def trace(command, *, environment, cwd, log, timeout=120):
             else:
                 name = ordinal_names.get((pid, reg(registers, 128), reg(registers, 184) & 0xffff), '')
         if is_gl_entrypoint(name):
-            emit('native_gl_binding', pid=pid, name=name, resolver=export['resolver'], path=export['path'])
+            emit('native_gl_binding', pid=pid, name=name, resolver=export['resolver'], path=export['path'],
+                 direct_caller=caller(pid, registers))
             return True
         # Execute the replaced instruction once. Suspend peer threads until the
         # trap is restored, so another thread cannot pass through an open hook.
@@ -215,6 +223,7 @@ def trace(command, *, environment, cwd, log, timeout=120):
             return
         try:
             image = inspect_binary(Path(path))
+            image_sizes[(pid, base)] = image['image_size']
             for export in image['exports']:
                 ordinal_names[(pid, base, export['ordinal'])] = export['name']
                 symbol_resolver = export['name'] in ('GetProcAddress', 'LdrGetProcedureAddress', 'LdrGetProcedureAddressEx')
@@ -301,6 +310,7 @@ def trace(command, *, environment, cwd, log, timeout=120):
                         install(pid, data.base, path)
                     elif event.code == 7:
                         base = event.data.unload.base
+                        image_sizes.pop((pid, base), None)
                         emit('native_unload', pid=pid, path=modules.pop((pid, base), None), base=base)
                         for key in [key for key, value in breakpoints.items() if key[0] == pid and value['base'] == base]:
                             del breakpoints[key]
@@ -328,6 +338,8 @@ def trace(command, *, environment, cwd, log, timeout=120):
                         elif info.record.code == 0x80000004 and pid in stepping and stepping[pid]['tid'] == event.tid:
                             resume_step(pid)
                         elif info.record.code not in (0x80000003, 0x40010006, 0x4001000a):
+                            emit('native_exception', pid=pid, tid=event.tid, code=hex(info.record.code),
+                                 first_chance=bool(info.first_chance), location=module_at(pid, address))
                             status = 0x80010001  # DBG_EXCEPTION_NOT_HANDLED
                     elif event.code == 5:  # EXIT_PROCESS_DEBUG_EVENT
                         emit('native_process_exit', pid=pid, exit_code=event.data.exit_process.code)

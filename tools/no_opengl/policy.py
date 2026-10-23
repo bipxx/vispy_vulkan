@@ -4,7 +4,7 @@ from __future__ import annotations
 import re
 
 _LIBRARIES = re.compile(
-    r"^(?:opengl32|libegl|libglesv1_cm|libglesv2|osmesa|qt[56]?opengl(?:widgets)?)\.dll$"
+    r"^(?:opengl32(?:sw)?|openglrenderer|libegl|libglesv1_cm|libglesv2|osmesa|qt[56]?opengl(?:widgets)?)\.dll$"
     r"|^(?:libgl|libopengl|libgldispatch|libglapi|libglx(?:_[a-z0-9_-]+)?|libegl(?:_[a-z0-9_-]+)?|libglesv[12](?:_cm)?|libosmesa)\.so(?:\.\d+)*$"
     r"|^(?:qtopengl(?:widgets)?)(?:\.[a-z0-9_-]+)?\.(?:pyd|so)$",
     # Qt module ELF/dylib names are distinct from its Python binding names.
@@ -22,6 +22,8 @@ def library_reason(path: str) -> str | None:
         return "OpenGL-specific runtime library"
     if re.match(r'^libqt[56]opengl(?:widgets)?(?:\.so(?:\.\d+)*|(?:\.\d+)*\.dylib)$', name, re.IGNORECASE):
         return "Qt OpenGL-specific runtime library"
+    if re.match(r'^libqxcb-(?:glx|egl)-integration\.so(?:\.\d+)*$', name, re.IGNORECASE):
+        return "Qt XCB OpenGL integration plugin"
     if "/OpenGL.framework/" in str(path).replace("\\", "/"):
         return "OpenGL framework"
     if re.search(r'/(?:QtOpenGL|QtOpenGLWidgets)\.framework/', str(path).replace('\\', '/'), re.IGNORECASE):

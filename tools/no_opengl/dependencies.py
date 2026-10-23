@@ -140,7 +140,8 @@ def pe_image(data: bytes) -> dict:
             forwarded = value <= address < value + size
             exports.append({"name": name, "ordinal": ordinal_base + ordinal, "rva": address,
                             "forwarder": _cstring(data, rva(address)) if forwarded else None})
-    return {"format": "PE", "machine": machine, "pointer_bytes": pointer, "imports": imports, "exports": exports}
+    return {"format": "PE", "machine": machine, "pointer_bytes": pointer,
+            "image_size": struct.unpack_from('<I', data, optional + 56)[0], "imports": imports, "exports": exports}
 
 
 def elf_image(data: bytes) -> dict:
