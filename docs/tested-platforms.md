@@ -30,6 +30,16 @@ original metadata; this binding run used corrected exported requirements.
 The owned Qt download-cache deletion was rejected by automatic approval review;
 that cache remains, while all external test environments were removed.
 
+A fresh final Windows CPython 3.12 wheel was subsequently built at
+`933e6484c2f42105fb46272fe78fa08f12704ef3` with the platform-specific Qt metadata.
+Direct `vispy[pyqt5]` installation into a new external environment selected
+Qt 5.15.2 without a separately supplied Qt pin. That installed artifact passes
+renderbuffer/clear/smooth-line/text checks and seven PyQt5 lifecycle/capture
+cases; native origins, license payloads and zero shutdown gauges pass. The
+unpinned direct install selected NumPy 2.5.4; its exact package versions are
+retained with the results. Removed its external environment, owned caches and
+24 build objects after terminal verification; the artifact and reports remain.
+
 ## Retained artifact hashes
 
 These artifacts are retained locally with the validation reports. They have not
@@ -42,6 +52,7 @@ been uploaded as a GitHub release or published to a package index.
 | 3.12.8 | `vispy-0.17.0+vulkan.1-cp312-cp312-win_amd64.whl` | `459be77bed067410dbfaf52150cd8e9a16b458714c1fc317a82ddaff5b31c140` |
 | 3.13.8 | `vispy-0.17.0+vulkan.1-cp313-cp313-win_amd64.whl` | `8762544bfd0b8a4955f1bd551a3ff1b913c2555924df58b427f1cb79cd963ef7` |
 | 3.14.0 | `vispy-0.17.0+vulkan.1-cp314-cp314-win_amd64.whl` | `b114e023655fc4a04df169ed6a2e11d5fef8ba30b899428a12de5ad1722cae34` |
+| 3.12.8 (Windows, final Qt metadata) | `vispy-0.17.0+vulkan.1-cp312-cp312-win_amd64.whl` | `4a7f8ab01f633d89b98b1c4c1be33d644ad81ea03bc7a006ed69b0de4db08f6d` |
 | 3.12.8 (WSL Linux) | `vispy-0.17.0+vulkan.1-cp312-cp312-linux_x86_64.whl` | `47d93d415127a777f95d956c8215973f53450a29dead05f2c795a8dd2647dcbb` |
 
 ## Limitations and follow-up
