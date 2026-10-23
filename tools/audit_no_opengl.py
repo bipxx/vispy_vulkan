@@ -31,6 +31,8 @@ def run_candidate(args):
             command.extend(['--' + name.replace('_', '-'), str(value.resolve(strict=True))])
     for path in args.dependency_path:
         command.extend(['--dependency-path', str(path.resolve(strict=True))])
+    if args.dependencies_report:
+        command.extend(['--environment-receipt', str(args.dependencies_report.resolve(strict=True))])
     if args.arguments:
         command.extend(['--', *args.arguments])
     environment = os.environ.copy()
@@ -76,9 +78,16 @@ def run_candidate(args):
         gates['no_gl_install_link_requirement'] = dependencies.get('gate', 'UNVERIFIED')
         # A declared binary closure alone cannot establish the installed package
         # environment, and must bind to this exact wheel before integration.
-        if not dependencies.get('coverage', {}).get('environment_without_gl_packages') or not args.wheel or dependencies.get('wheel_sha256') != hashlib.sha256(args.wheel.read_bytes()).hexdigest():
+        if not dependencies.get('coverage', {}).get('environment_without_gl_packages') or not dependencies.get('coverage', {}).get('selected_candidate_requirements') or not args.wheel or dependencies.get('wheel_sha256') != hashlib.sha256(args.wheel.read_bytes()).hexdigest() or child_report.get('environment_id') != dependencies.get('environment_id'):
             if gates['no_gl_install_link_requirement'] != 'FAIL':
                 gates['no_gl_install_link_requirement'] = 'UNVERIFIED'
+        audited = {os.path.normcase(str(Path(row['path']).resolve())) for row in dependencies.get('raw_declared_closure', {}).get('binaries', [])}
+        uncovered = sorted({row['path'] for row in native['events'] if row['kind'] == 'native_load'
+                            and row.get('path') and Path(row['path']).is_file()
+                            and os.path.normcase(str(Path(row['path']).resolve())) not in audited})
+        gates['loaded_files_outside_installed_receipt'] = uncovered
+        if uncovered and gates['no_gl_install_link_requirement'] != 'FAIL':
+            gates['no_gl_install_link_requirement'] = 'UNVERIFIED'
     imports_pass = succeeded and not child_report.get('forbidden_modules_present') and not any(
         row['kind'] == 'python_import' for row in gates['violations'])
     if gates['violations'] or not succeeded:
@@ -104,6 +113,12 @@ def main():
     dependencies.add_argument('--qt-root', type=Path)
     dependencies.add_argument('--wheel', type=Path)
     dependencies.add_argument('--output', type=Path, required=True)
+    inventory = sub.add_parser('inventory', help='Bind exact installed environment, native closure and admitted runtime evidence')
+    inventory.add_argument('--python', type=Path, required=True)
+    inventory.add_argument('--wheel', type=Path, required=True)
+    inventory.add_argument('--runtime-report', type=Path, required=True)
+    inventory.add_argument('--search-dir', type=Path, action='append', default=[])
+    inventory.add_argument('--output', type=Path, required=True)
     run = sub.add_parser('run')
     run.add_argument('--python', type=Path, required=True)
     run.add_argument('--output', type=Path, required=True)
@@ -124,7 +139,10 @@ def main():
     args.output.parent.mkdir(parents=True, exist_ok=True)
     if args.output.exists():
         parser.error('A new output report path is required')
-    if args.mode == 'dependencies':
+    if args.mode == 'inventory':
+        from no_opengl.receipt import build
+        report = build(args)
+    elif args.mode == 'dependencies':
         roots, directories = list(args.root), list(args.search_dir)
         if args.qt_root:
             qt = args.qt_root.resolve(strict=True)

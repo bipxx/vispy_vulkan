@@ -25,11 +25,13 @@ def main():
     parser.add_argument('--source-root', type=Path)
     parser.add_argument('--dependency-path', type=Path, action='append', default=[])
     parser.add_argument('--wheel', type=Path)
+    parser.add_argument('--environment-receipt', type=Path)
     parser.add_argument('--script', type=Path)
     parser.add_argument('arguments', nargs=argparse.REMAINDER)
     args = parser.parse_args()
     report = {'status': 'FAILED', 'pid': os.getpid(), 'parent_pid': os.getppid(), 'scenario': args.scenario,
               'binding': args.binding, 'policy': args.policy, 'python': sys.version, 'executable': sys.executable,
+              'prefix': sys.prefix, 'base_prefix': sys.base_prefix,
               'events': [], 'snapshots': [], 'source_mode': bool(args.source_root)}
     native = canvas = None
     began = time.monotonic()
@@ -131,6 +133,17 @@ def main():
             report.update(wheel_sha256=hashlib.sha256(args.wheel.read_bytes()).hexdigest(),
                           wheel_members_verified=len(members), vispy_origin=str(Path(vispy.__file__).resolve()),
                           native_origin=str(Path(_dawn.__file__).resolve()))
+            if args.environment_receipt:
+                from no_opengl.inventory import collect, digest
+                receipt = json.loads(args.environment_receipt.read_text())
+                assert receipt['schema'] == 1 and receipt['gate'] == 'PASS'
+                current = collect(args.wheel)
+                assert current['environment_id'] == receipt['environment_id']
+                assert current['wheel_sha256'] == receipt['wheel_sha256']
+                assert Path(receipt['consumer_executable']).resolve() == Path(sys.executable).resolve()
+                for binary in receipt['raw_declared_closure']['binaries']:
+                    assert digest(binary['path']) == binary['sha256'], binary['path']
+                report['environment_id'] = current['environment_id']
         snapshot('after_scenario')
         report['status'] = 'PASS_SCENARIO'
     except BaseException:

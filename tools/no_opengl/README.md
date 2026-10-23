@@ -67,3 +67,21 @@ All three candidate gates also require a fresh GL-free installed environment
 bound to the exact wheel hash. A declared dependency report alone does not meet
 that requirement. Matrix requirements live in `compat/no-opengl-matrix.json`;
 pending rows remain pending until functional and same-artifact evidence exists.
+
+`tools/audit_no_opengl.py inventory --python <consumer-python> --wheel <wheel>
+--runtime-report <successful-native-runtime.json> --output <new-receipt.json>`
+validates all installed candidate bytes, distribution metadata/active requirements,
+installed native package files and their dependency graph. On Linux it also
+inventories system packages and scans system library directories for GL runtimes.
+Windows records its actual API-set namespace, OS-file version resources and
+resolver results for absent delayed OS components unused in that successful
+flow. The full raw OS optional-extension closure remains UNVERIFIED; the receipt
+separately establishes the selected candidate installation boundary. Candidate
+unresolved imports and GL-specific imports are never waived. Windows' installed
+OS opengl32.dll is allowed; candidate/selected package dependencies are not.
+
+Pass that receipt to a fresh `run --dependencies-report <receipt.json>`. The
+worker recomputes the environment fingerprint and all recorded native hashes;
+the controller checks that every newly loaded file belongs to the audited graph.
+Different wheels, package changes, changed native bytes, unseen loaded files,
+failed scenarios and import-only runs cannot qualify the complete matrix.
