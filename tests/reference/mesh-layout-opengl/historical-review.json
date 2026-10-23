@@ -1,0 +1,173 @@
+{
+  "accepted": [
+    {
+      "adapter": "NVIDIA GeForce RTX 4090",
+      "alpha_exact": true,
+      "candidate_sha256": "16087fddc5b9b12e9b9e8587ca1d52cfc7a50fdf1466f81f9fa8d969c5111dcb",
+      "case": "grid_clipping",
+      "compared_pixels": 35840,
+      "differing_bytes": 0,
+      "driver": "NVIDIA: 610.88 610.88.0.0",
+      "excluded_pixels": 0,
+      "max_abs_u8": 0,
+      "upstream_sha256": "3839d54948052dca7db1380829c9e2482c7f466d00c8389c1d608521ec2c60da"
+    },
+    {
+      "adapter": "NVIDIA GeForce RTX 4090",
+      "alpha_exact": true,
+      "candidate_sha256": "1c03aaeea271deea850a728eaf05ad372ac5196a8dc828d2ecd4332eab493344",
+      "case": "mesh_filter_detach",
+      "compared_pixels": 35840,
+      "differing_bytes": 0,
+      "driver": "NVIDIA: 610.88 610.88.0.0",
+      "excluded_pixels": 0,
+      "max_abs_u8": 0,
+      "upstream_sha256": "70ba290ad8846c9f826140d20ab628426e6e8df2a55fac31303b3dde8def0229"
+    },
+    {
+      "adapter": "NVIDIA GeForce RTX 4090",
+      "alpha_exact": true,
+      "candidate_sha256": "6f8fe513405dd1eec46e846deba51c951f8588efef6430739fadf96454d64a1c",
+      "case": "mesh_flat",
+      "compared_pixels": 35840,
+      "differing_bytes": 0,
+      "driver": "NVIDIA: 610.88 610.88.0.0",
+      "excluded_pixels": 0,
+      "max_abs_u8": 0,
+      "upstream_sha256": "eac6da23aa335c41e2c96e2cb0bfb97128b6b5a30c5f9be74659428f0cd690c6"
+    },
+    {
+      "adapter": "NVIDIA GeForce RTX 4090",
+      "alpha_exact": true,
+      "candidate_sha256": "d621eccdc98f6237a887bb142b16c6f5aaa3f45f3a2e0b9cf071f8e6a6f88025",
+      "case": "mesh_perspective",
+      "compared_pixels": 35840,
+      "differing_bytes": 0,
+      "driver": "NVIDIA: 610.88 610.88.0.0",
+      "excluded_pixels": 0,
+      "max_abs_u8": 0,
+      "upstream_sha256": "d6c5df32fb9d2949c3600754e9587fb14f7011134a00f621c659b7765e81072c"
+    },
+    {
+      "adapter": "NVIDIA GeForce RTX 4090",
+      "alpha_exact": true,
+      "candidate_sha256": "9ec5555940e108bc62ce8f2dfe7e0ad1c726a92057ba9d6a5cf8577baa68ef3c",
+      "case": "mesh_polygon_offset",
+      "compared_pixels": 35840,
+      "differing_bytes": 0,
+      "driver": "NVIDIA: 610.88 610.88.0.0",
+      "excluded_pixels": 0,
+      "max_abs_u8": 0,
+      "upstream_sha256": "883d559f67da3d97fff7b4b51650ea594a7c5d8160018963789405a50fc616d0"
+    },
+    {
+      "adapter": "NVIDIA GeForce RTX 4090",
+      "alpha_exact": true,
+      "candidate_sha256": "66ac576167688c3ac5f481e0631b2de067b59350669b40c79146c773aa4b8f7b",
+      "case": "mesh_smooth",
+      "compared_pixels": 35840,
+      "differing_bytes": 0,
+      "driver": "NVIDIA: 610.88 610.88.0.0",
+      "excluded_pixels": 0,
+      "max_abs_u8": 0,
+      "upstream_sha256": "99ef5bcc91a1f2307dc0fd6714aed5296a2d98144768d1566fa075a9ec0a1f58"
+    },
+    {
+      "adapter": "NVIDIA GeForce RTX 4090",
+      "alpha_exact": true,
+      "candidate_sha256": "1c1f3ecabfb25322f526421f6247f27a712276eec7eff006a6445eac13daea21",
+      "case": "mesh_texture_clip",
+      "compared_pixels": 35840,
+      "differing_bytes": 0,
+      "driver": "NVIDIA: 610.88 610.88.0.0",
+      "excluded_pixels": 0,
+      "max_abs_u8": 0,
+      "upstream_sha256": "9b84c9a3eb060302e3a79559df47a602bcbb7b016bdfd8c111f220c5e42e65ad"
+    },
+    {
+      "adapter": "NVIDIA GeForce RTX 4090",
+      "alpha_exact": true,
+      "candidate_sha256": "ae827fc497d6faa0d946359b53b57d751d639dfad63fa479cb97ea84f60c0ac6",
+      "case": "mesh_wireframe_clip",
+      "compared_pixels": 35840,
+      "differing_bytes": 0,
+      "driver": "NVIDIA: 610.88 610.88.0.0",
+      "excluded_pixels": 0,
+      "max_abs_u8": 0,
+      "upstream_sha256": "4ffb1308c819258eb1ed6054b1fc22ce33fec7675d35fe8c81993cb14d053217"
+    },
+    {
+      "adapter": "NVIDIA GeForce RTX 4090",
+      "alpha_exact": true,
+      "candidate_sha256": "0808d83d56153f8c1f76e8878c0960995163c548ae2c0d65dd9eb419d038c14c",
+      "case": "surface_plot",
+      "compared_pixels": 35840,
+      "differing_bytes": 0,
+      "driver": "NVIDIA: 610.88 610.88.0.0",
+      "excluded_pixels": 0,
+      "max_abs_u8": 0,
+      "upstream_sha256": "5a6f4c1f5d7f1c2eb6d4cebf44d316b88be7750ea0d984f383cd021330cbe8f4"
+    },
+    {
+      "adapter": "NVIDIA GeForce RTX 4090",
+      "alpha_exact": true,
+      "candidate_sha256": "5430770d6ef54b94edc96595e998e60a8ca07974c2ae2e692b40949d086c935f",
+      "case": "text_dpi120",
+      "compared_pixels": 35840,
+      "differing_bytes": 0,
+      "driver": "NVIDIA: 610.88 610.88.0.0",
+      "excluded_pixels": 0,
+      "max_abs_u8": 0,
+      "upstream_sha256": "09b96308e8562dacf31e4c4f15f398c92095479f9ece79245c496350c02172a9"
+    },
+    {
+      "adapter": "NVIDIA GeForce RTX 4090",
+      "alpha_exact": true,
+      "candidate_sha256": "e786f5f29202ac6934b730f40bf64065b31fc0f3c04d10a359e395111b852d7c",
+      "case": "text_dpi144",
+      "compared_pixels": 35840,
+      "differing_bytes": 0,
+      "driver": "NVIDIA: 610.88 610.88.0.0",
+      "excluded_pixels": 0,
+      "max_abs_u8": 0,
+      "upstream_sha256": "76d0ca3433398abe0d5120c37805cfe65c9c6dc1547acfc1329fa0c7dd81d175"
+    },
+    {
+      "adapter": "NVIDIA GeForce RTX 4090",
+      "alpha_exact": true,
+      "candidate_sha256": "5f075abda4a84748a754d3e3929fdaa0e60bab7760e1845b4884878a3367fd2e",
+      "case": "text_dpi96",
+      "compared_pixels": 35840,
+      "differing_bytes": 0,
+      "driver": "NVIDIA: 610.88 610.88.0.0",
+      "excluded_pixels": 0,
+      "max_abs_u8": 0,
+      "upstream_sha256": "8cd1431ba07f63828d30b2733e8f0df1210b9b3018f631fbf06e2e762972d355"
+    }
+  ],
+  "all_eight_shutdown_fields_zero": true,
+  "all_raw_artifact_hashes_verified": true,
+  "authoring_contracts_recomputed": true,
+  "authoring_sha256": "c6d88db15f4dccd9e7770467b3fba924cc6e2360780319e590a19a3eab47592a",
+  "candidate_cases_passed": 12,
+  "complete_thirteen_case_packet_passed": false,
+  "current_native_driver_and_ABI_scope_only": true,
+  "external_environments_cleaned": true,
+  "full_frames_recompared": true,
+  "full_platform_host_or_performance_admission": false,
+  "independent_person_review": false,
+  "original13complete": false,
+  "parent_sha256": "c51a3cf5e28deb11b762f28723a7b1d080ba42d4b35c8a9600ac24ba3a3923f4",
+  "process_exit": 0,
+  "reader_sha256": "5030591d7e87e21d5cf532bdaef65b81781860eb12483114914b33b116611692",
+  "refused": [
+    {
+      "candidate_sha256": "e029e1288e5b2c0936ceeac70ec97c822022662b65c6be9325f1862807d63328",
+      "case": "axes_colorbar",
+      "reason": "RuntimeError: GLIR DRAW object=12: lines: generated consumer: line consumer: only the explicit single-sample aliased policy is implemented; smooth/MSAA remain open"
+    }
+  ],
+  "schema": 1,
+  "status": "CLEAR_TWELVE_CASE_SCOPE_WITH_REQUIRED_AXES_REFUSAL",
+  "upstream_cases_passed": 13
+}

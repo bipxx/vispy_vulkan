@@ -1,0 +1,35 @@
+{
+  "mesa_version": "25.2.8",
+  "paths": {
+    "gl_driver": {
+      "path": "/usr/lib/x86_64-linux-gnu/dri/libdril_dri.so",
+      "sha256": "c28638b02783ebc96a78bb982fe59ad0d54230bc1faf53305af33edab29cd388"
+    },
+    "gl_gallium": {
+      "path": "/usr/lib/x86_64-linux-gnu/libgallium-25.2.8-0ubuntu0.24.04.2.so",
+      "sha256": "e37486422ecafdad74fb05bbcdcfc35300241a5f46e72b63ca442d4e0c0cca8b"
+    },
+    "glx_library": {
+      "path": "/usr/lib/x86_64-linux-gnu/libGLX_mesa.so.0.0.0",
+      "sha256": "409f932670504cc5829c7526db466eb69a6b7f9997fd5df8afc8dfb1588278c2"
+    },
+    "llvm": {
+      "path": "/usr/lib/x86_64-linux-gnu/libLLVM.so.20.1",
+      "sha256": "4b93481bd1c9d42c0951275dd275d4a9d30db78c309ae2cc0405669bc6dbbf8a"
+    },
+    "vulkan_driver": {
+      "path": "/usr/lib/x86_64-linux-gnu/libvulkan_lvp.so",
+      "sha256": "9d69cae2004b16572acca424741109be37c4ffc759c2461af69d75f7d1c6c139"
+    },
+    "vulkan_icd": {
+      "path": "/usr/share/vulkan/icd.d/lvp_icd.json",
+      "sha256": "70d49f7fd41a7593a4e283543ed4855c139c700e5c1b31792f56e9576ede2398"
+    }
+  },
+  "platform": "linux-x86_64",
+  "python": "3.12.8",
+  "renderer_token": "llvmpipe",
+  "schema": 1,
+  "scope": "WSL Mesa software Vulkan/OpenGL offscreen only; no native hardware qualification",
+  "software": true
+}

@@ -1,0 +1,35 @@
+{
+  "adapter_sources_sha256": {
+    "LICENSE": "0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0",
+    "LICENSE-BSD": "a28bb857d763513c810ca843558c12cf97f64b990b855c1ce7f5e291e52fc25c",
+    "LICENSING.md": "e8a28d2d2c78d86fa2b6f83284e8f1a32237f87bfd417fd1cdfc84c8f3ce37f5",
+    "compat/host-environments/napari-threedee-upstream-numpy246-windows-cpython312-pyqt6.txt": "f2e578773ed6233b177c38f4717210de3df587b7383086e59cf227df21dd5c65",
+    "tools/benchmark_frames.py": "55f76b5cf1bc95b23547b572af61e41a6bd524911fd44bc2305318002e60ab26",
+    "tools/benchmark_opengl.py": "b508ff18b30f03b871901dcc3d59fe6f159a57fc86b0edee78ff789aa02af417",
+    "tools/benchmark_pacing.py": "fc0ad5439c84689bee33a06f42d7205aa3b4f22b3a322ee9f566d28e23fecff9",
+    "tools/benchmark_work.py": "94e9d0e470ede5f403776e87c30f8960bc2f927feb03bc965edf29e2a9afb3c7",
+    "tools/color_volume_wheel_suite.py": "862747b7b60a114fef5cce31e00afac27c2ff4a18319c974241b06e393535235",
+    "tools/fixture_color_volume.py": "9102c5838fa55c8f25b4867869bb2512afd5850cfce2da5ccccb785134759501",
+    "tools/fixture_gloo.py": "37797259727afd9c6b15c7074319b935dcddb330deb2b6c99a03c8df6f36fddb",
+    "tools/fixture_image_extensions.py": "7d18601e08982c0b0f73c656f1746899760c9fd042650470ef1504ba7cb5056d",
+    "tools/fixture_large_image.py": "58be30b44363a29c5270b75b502a77fc14dc2bd48713fe5cee60e1101f2e06ae",
+    "tools/fixture_large_volume.py": "96ffd638b92b099c85af48f80b09bb25232b8114f2f208d9b073ba9337a4fa12",
+    "tools/image_wheel_runner.py": "f49abeb3e220f5075acbc067438a883188a54489d92bf067563e4b612772f246",
+    "tools/large_volume_wheel_suite.py": "1a4b283894ab2d98db6f0742fa22ed5e2578df46381c353b96fa8a4983ac715b",
+    "tools/mesh_layout_process.py": "129628ca97afc62755c109db6219d987766b702265c4ca23c21105ad5bd2ae1b",
+    "tools/volume_benchmark_adapter.py": "56b5aebf95a510907974cac0670e4e1d503d68b700276f85be5dcfb7560b24de",
+    "tools/volume_benchmark_geometry.py": "a6821b45e122eb9f24f0d95c7f9ac10b1b4888b3111b74f193a97fa7d1c8808b",
+    "tools/volume_scientific_admission.py": "6335eedd69454a87a2ae5d127a0536f132ffcbf93aa508a861ef2ea6c40eec30"
+  },
+  "launch_id": "6d599c843c01490a878d16b00f25f176",
+  "pid": 68784,
+  "process_exit": 0,
+  "process_stamp": {
+    "parent_pid": 88168,
+    "pid": 68784,
+    "windows_creation_time": 134371200625006374
+  },
+  "run_sha256": "e3e83d30a0307c17b79e97b48f8035a6d1f631cdeefffd08683b5f92e4300b6b",
+  "schema": 1,
+  "status": "measured"
+}

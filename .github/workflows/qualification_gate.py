@@ -100,6 +100,12 @@ def admission(options):
     assert "--hash=sha256:" in requirements.read_text(encoding="utf-8")
     if options.host == "phylib":
         assert manifest["rendering"] is False and manifest["scope"] == "import-only"
+        repository_root = Path(__file__).resolve().parents[2]
+        sys.path.insert(0, str(repository_root))
+        from tools.phylib_import_cell import inventory, validate_observation
+        import_path = Path(manifest["import_inventory"])
+        assert digest(import_path) == manifest["import_inventory_sha256"]
+        validate_observation(json.loads(import_path.read_bytes()), inventory.read_hosts()["phylib"])
     else:
         assert manifest["upstream_fixture_status"] == "passed"
         assert manifest["fixture_files"] and all(Path(file).is_file() for file in manifest["fixture_files"])

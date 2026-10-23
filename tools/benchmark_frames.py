@@ -205,6 +205,7 @@ class Workload:
     threshold: float = 0.5
     gamma: float = 1.0
     clim: tuple[float, float] = (0.0, 1.0)
+    colormap: str = "grays"
     edge_width: float = 1.0
     antialias: float = 1.0
     seed: int = SEED
@@ -228,7 +229,8 @@ def workload_catalog():
             for method in ("mip", "translucent", "iso"):
                 for update in ("resident", "full"):
                     name = f"volume-{side}-{viewport[0]}-{method}-{update}"
-                    result[name] = Workload(name, "volume", (side, side, side), viewport, update=update, method=method)
+                    result[name] = Workload(name, "volume", (side, side, side), viewport, update=update, method=method,
+                                            colormap="density-alpha" if method == "translucent" else "grays")
     return result
 
 
@@ -1105,12 +1107,41 @@ def configure_qt_presentation(vsync, observation=None, *, qt_core=None, qt_gui=N
     return observation
 
 
-def build_scene(workload, kind, vsync):
+def prepare_benchmark_canvas(canvas, viewport):
+    """Fix the actual physical extent after Qt's initial window-size constraint."""
+    canvas._backend._vispy_warmup()
+    initial = tuple(canvas.physical_size)
+    if initial != tuple(viewport):
+        logical = tuple(canvas.size)
+        assert all(value > 0 for value in logical + initial)
+        canvas.size = tuple(round(target*length/physical)
+                            for target, length, physical in zip(viewport, logical, initial))
+        canvas._backend._vispy_warmup()
+    actual = tuple(canvas.physical_size)
+    if actual != tuple(viewport):
+        raise InstrumentationUnavailable(f"physical viewport {actual} differs from required {tuple(viewport)} after public resize")
+    return dict(initial_physical=list(initial), final_physical=list(actual), logical=list(canvas.size))
+
+
+def volume_colormap(workload):
+    """Zero density must transmit the ray rather than immediately stop it."""
+    if workload.colormap == "density-alpha":
+        from vispy.color import Colormap
+        return Colormap([(0, 0, 0, 0), (1, 1, 1, 1)], controls=(0, 1), interpolation="linear")
+    return workload.colormap
+
+
+def build_scene(workload, kind, vsync, *, on_canvas=None):
     import numpy as np
     from vispy import scene
     canvas = scene.SceneCanvas(app="pyqt6", size=workload.viewport, show=True, vsync=vsync,
                                bgcolor="black", config={"depth_size": 24, "stencil_size": 8, "samples": 0})
     canvas.app.native.setQuitOnLastWindowClosed(False)
+    prepare_benchmark_canvas(canvas, workload.viewport)
+    # Qualification can attach capture instrumentation before any source data
+    # is constructed. The ordinary benchmark keeps the identical default path.
+    if on_canvas is not None:
+        on_canvas(canvas)
     view = canvas.central_widget.add_view()
     visuals, data = [], None
     rng = np.random.default_rng(workload.seed)
@@ -1127,7 +1158,7 @@ def build_scene(workload, kind, vsync):
             data[..., 2] = ((axis[:, None] ^ axis[None, :]) % 256).astype(np.uint8)
             data[..., 3] = 255
         for layer in range(workload.layers):
-            visual = scene.visuals.Image(data, parent=view.scene, cmap="grays", clim=workload.clim,
+            visual = scene.visuals.Image(data, parent=view.scene, cmap=workload.colormap, clim=workload.clim,
                                           gamma=workload.gamma, interpolation=workload.interpolation,
                                           texture_format="r32f" if channels == 1 else "rgba8")
             visual.set_gl_state(workload.blend, depth_test=False)
@@ -1151,6 +1182,7 @@ def build_scene(workload, kind, vsync):
             data[z] = np.clip(1 - plane - (axis[z] / .42) ** 2, 0, 1)
         data[side // 2, side // 2, side // 2] = 1.0
         visual = scene.visuals.Volume(data, parent=view.scene, method=workload.method, clim=workload.clim,
+                                      cmap=volume_colormap(workload),
                                       gamma=workload.gamma, threshold=workload.threshold,
                                       relative_step_size=workload.relative_step_size,
                                       interpolation=workload.interpolation, texture_format="r32f")

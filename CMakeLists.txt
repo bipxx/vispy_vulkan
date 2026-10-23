@@ -62,8 +62,12 @@ elseif(NOT VISPY_DEPENDENCY_LOCK STREQUAL "")
     message(FATAL_ERROR "A separate dependency lock requires explicit immutable origin authority")
 endif()
 if(VISPY_VERIFY_DEPENDENCIES)
+    set(_vispy_verify_args ${_vispy_origin_args})
+    if(_vispy_origin_any STREQUAL "")
+        list(APPEND _vispy_verify_args --restore-archive-metadata)
+    endif()
     execute_process(
-        COMMAND "${Python_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/cmake/verify_dependencies.py" ${_vispy_origin_args}
+        COMMAND "${Python_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/cmake/verify_dependencies.py" ${_vispy_verify_args}
         WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
         COMMAND_ERROR_IS_FATAL ANY
     )
@@ -138,6 +142,9 @@ set(TINT_BUILD_TESTS OFF CACHE BOOL "" FORCE)
 set(TINT_BUILD_CMD_TOOLS OFF CACHE BOOL "" FORCE)
 set(TINT_BUILD_FUZZERS OFF CACHE BOOL "" FORCE)
 set(DAWN_BUILD_PROTOBUF OFF CACHE BOOL "" FORCE)
+# The extension uses Dawn's headers, not its optional C++ module interface.
+# A successful module syntax probe does not imply Ninja dependency-scan support.
+set(DAWN_SUPPORTS_CXX_MODULES OFF CACHE BOOL "Header-based VisPy extension" FORCE)
 set(TINT_BUILD_IR_BINARY OFF CACHE BOOL "" FORCE)
 
 if(VISPY_NATIVE_SDK)
@@ -232,6 +239,25 @@ if(VISPY_BUILD_CONTRACT_TESTS)
         endif()
     endif()
     add_executable(texture_contract "${VISPY_CONTRACT_TESTS_ROOT}/textures/texture_contract.cpp")
+    add_executable(owned_texture_contract "${VISPY_CONTRACT_TESTS_ROOT}/textures/owned_texture_contract.cpp")
+    target_include_directories(owned_texture_contract PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/cpp")
+    target_link_libraries(owned_texture_contract PRIVATE webgpu_dawn)
+    nanobind_add_module(owned_upload_contract NB_STATIC
+        "${VISPY_CONTRACT_TESTS_ROOT}/bindings/owned_upload_contract.cpp")
+    set_target_properties(owned_upload_contract PROPERTIES OUTPUT_NAME "_owned_upload_contract")
+    target_include_directories(owned_upload_contract PRIVATE
+        "${CMAKE_CURRENT_SOURCE_DIR}/cpp" "${CMAKE_CURRENT_SOURCE_DIR}/cpp/bindings")
+    target_link_libraries(owned_upload_contract PRIVATE webgpu_dawn)
+    add_test(NAME owned_texture_contract COMMAND owned_texture_contract)
+    add_test(NAME owned_upload_decoder_contract
+        COMMAND "${Python_EXECUTABLE}" -I -B
+        "${VISPY_CONTRACT_TESTS_ROOT}/bindings/owned_decoder_contract.py"
+        "$<TARGET_FILE:owned_upload_contract>")
+    add_test(NAME owned_upload_packing_contract
+        COMMAND "${Python_EXECUTABLE}" -I -B
+        "${VISPY_CONTRACT_TESTS_ROOT}/bindings/owned_packing_contract.py"
+        "$<TARGET_FILE:owned_upload_contract>"
+        "${CMAKE_CURRENT_SOURCE_DIR}/src/vispy/gloo/dawn_parser.py")
     add_executable(integer_sampler_snapshot_contract "${VISPY_CONTRACT_TESTS_ROOT}/textures/integer_sampler_snapshot_contract.cpp")
     add_executable(state_contract "${VISPY_CONTRACT_TESTS_ROOT}/state/state_contract.cpp")
     add_executable(readback_contract "${VISPY_CONTRACT_TESTS_ROOT}/capture/readback_contract.cpp")

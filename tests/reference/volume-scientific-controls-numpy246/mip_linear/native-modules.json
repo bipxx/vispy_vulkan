@@ -1,0 +1,507 @@
+[
+  {
+    "excluded_root": false,
+    "path": "c:\\programdata\\microsoft\\windows defender\\platform\\4.18.26090.9-0\\mpoav.dll",
+    "sha256": "24870690fb1e4dfaf6acdb09f12a7ffbbb44b5f3942f24a18ecc17900dfba044"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\kiwisolver\\_cext.cp312-win_amd64.pyd",
+    "sha256": "54abfa3bb07e45fd2ce60600cd1f4cf308dc3c3dd3e88b4868727f4f761c9446"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\numpy.libs\\libscipy_openblas64_-63c857e738469261263c764a36be9436.dll",
+    "sha256": "63c857e738469261263c764a36be9436ebdeaa272e340a828f42047a97131080"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\numpy.libs\\msvcp140-a4c2229bdc2a2a630acdc095b4d86008.dll",
+    "sha256": "a4c2229bdc2a2a630acdc095b4d86008e5c3e3bc7773174354f3da4f5beb9cde"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\numpy\\_core\\_multiarray_umath.cp312-win_amd64.pyd",
+    "sha256": "80e7dc34f51cf6cef24da060e1e8620936b2cf188bae0ea367dc8619b2316204"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\numpy\\linalg\\_umath_linalg.cp312-win_amd64.pyd",
+    "sha256": "b465dda08f9238ae83b05a0acbfbddec969d0b5fc5de366bbbe312a4600d6e31"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\vispy\\_dawn.cp312-win_amd64.pyd",
+    "sha256": "08fccf15adf7ecc7090956ca937ffac2b88f68722eb56a9321f05a8fe2446427"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\vispy\\visuals\\text\\_sdf_cpu.cp312-win_amd64.pyd",
+    "sha256": "bc1155d0bd5e5854ba874fbeb374cca3494591b8ad4a60fdb0e56e47144c8095"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\local\\temp\\vispy-volume-wheel-7i2nt0vl\\venv\\lib\\site-packages\\vispy\\vklayer_vispy_submit.dll",
+    "sha256": "43cf5aaed2dbb284a45d85bfa13fd342482fa21a29174919e4f6149b537012d5"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\roaming\\uv\\python\\cpython-3.12.8-windows-x86_64-none\\dlls\\_bz2.pyd",
+    "sha256": "cefd48b6d9846cf6549cabacbab5d1cfc0aba03eb80c951c420688e27b36d4da"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\roaming\\uv\\python\\cpython-3.12.8-windows-x86_64-none\\dlls\\_ctypes.pyd",
+    "sha256": "42ffe4f0a3f60b59a75d2254e42d5e35e316f99f90bf1df20495ec2118b85a02"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\roaming\\uv\\python\\cpython-3.12.8-windows-x86_64-none\\dlls\\_hashlib.pyd",
+    "sha256": "64eac4e71a72d97ae2bafc78b7b47b38e375244c5b888cda77c10798146ccbb1"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\roaming\\uv\\python\\cpython-3.12.8-windows-x86_64-none\\dlls\\_lzma.pyd",
+    "sha256": "26916a5c44e294b6ccf58b06e4d63f61d900bff232a769c89d3ad06842efe31c"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\roaming\\uv\\python\\cpython-3.12.8-windows-x86_64-none\\dlls\\_socket.pyd",
+    "sha256": "a523c1fb96438ad33a0b1d1e2a9cbaca7758e9f2cc4931bfa64ff7baf4a31553"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\roaming\\uv\\python\\cpython-3.12.8-windows-x86_64-none\\dlls\\_ssl.pyd",
+    "sha256": "f5bcff65a3e837c3df135c153656b88f56a3b80c9106b239513b31636b411bad"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\roaming\\uv\\python\\cpython-3.12.8-windows-x86_64-none\\dlls\\_wmi.pyd",
+    "sha256": "afb46c920ee2b951b7e7ff7166350472665124cdf30c718ea5f2931649606414"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\roaming\\uv\\python\\cpython-3.12.8-windows-x86_64-none\\dlls\\libcrypto-3-x64.dll",
+    "sha256": "a552bf5efaffca7be1a6e9e74aec37b753e238f21ca4545c2d024173c0fd4477"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\roaming\\uv\\python\\cpython-3.12.8-windows-x86_64-none\\dlls\\libffi-8.dll",
+    "sha256": "fdec74a558b630c0e9e8bff76a94dcd8b1abdbbd4eeb3aefb209d79577de976b"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\roaming\\uv\\python\\cpython-3.12.8-windows-x86_64-none\\dlls\\libssl-3-x64.dll",
+    "sha256": "8318cbcd17566a67b24fa4359cc60833d57803eda380240446c07b8c0ff86671"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\roaming\\uv\\python\\cpython-3.12.8-windows-x86_64-none\\dlls\\select.pyd",
+    "sha256": "992775e552a8bf1f464da22cb714c5723e6c74a39850b1fbfe0f0943c5d120b8"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\roaming\\uv\\python\\cpython-3.12.8-windows-x86_64-none\\python.exe",
+    "sha256": "71b986e874ae1382c434f95852f5670e6d87576db2861cd03737dd4bce9d69ed"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\roaming\\uv\\python\\cpython-3.12.8-windows-x86_64-none\\python3.dll",
+    "sha256": "f924f86ae87fd7dc26c3c50e31c59dc34ce57b9a05797d40f62e1ec82e52f0da"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\roaming\\uv\\python\\cpython-3.12.8-windows-x86_64-none\\python312.dll",
+    "sha256": "fbddf09b578bc1489827bcc19f591e2cd6be687f3db26b60e4dfca15f331800b"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\roaming\\uv\\python\\cpython-3.12.8-windows-x86_64-none\\vcruntime140.dll",
+    "sha256": "bb2281b178b5c47fc98e4cf4293e59a07684e6c6d929d1c2f0acdcb245211417"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\users\\heq\\appdata\\roaming\\uv\\python\\cpython-3.12.8-windows-x86_64-none\\vcruntime140_1.dll",
+    "sha256": "c2fa6e9ad1b41bd3f7621ba7cb6cddfc10903b73a33c36d7b13afcf3ff99dbf8"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\advapi32.dll",
+    "sha256": "b864e1468a01a44f1901e03c05c1029e71655dd9abddd6d840bcfff5e7227d44"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\amsi.dll",
+    "sha256": "9df7ad9e6826ab76294a91bef274696ee13d18a8cebabcd5c4c352a3d1141df3"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\bcrypt.dll",
+    "sha256": "d0fc7863d7b034da33f34dc82b96a8604572598a217668a43fc9eca3a8e2a8e1"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\bcryptprimitives.dll",
+    "sha256": "f0dba794068893c9616b0b54bef1be8f904be89eb2cb09b575d3d7fb1b5000f8"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\cfgmgr32.dll",
+    "sha256": "fea3f02ba1a9ac87f7ec53932a5821d3d894d70c828a441c8767059efa53f5c5"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\clbcatq.dll",
+    "sha256": "48a18351e09d5da0a7b45eb81bc7819488b160fb71f8979129ff5a4bd34d2595"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\combase.dll",
+    "sha256": "087f72ecc0c979a3b784ab319285ab64d053dfc0c274df5b28fd40cf204a234f"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\crypt32.dll",
+    "sha256": "71da5f9806f7aaf9e081c1df28b13182d2643b7f3534173f868ba65287612bbb"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\cryptbase.dll",
+    "sha256": "09c2d3e0f1c3d86f4a69496acf6d0c0901715ee2f02f20afc10d6dc9e639b03f"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\cryptnet.dll",
+    "sha256": "e478dd3d872606a1b0cbb4b50bed941ea8aca92b71df4178ca7b164aafb7428a"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\cryptsp.dll",
+    "sha256": "a00222ccee9f6fbbfd3f34437cc54f4bfbe9025e3f3399a9c2cedc88c37c3f46"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\devobj.dll",
+    "sha256": "39ce6ba5957b16d36ad8ee09224126a1d194f2e9b1bfc048a269a9ba1d9feb50"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\directxdatabasehelper.dll",
+    "sha256": "5d93b932415287f077ac3bde9dad9de2fb87d907f818c976b35e6caf1c095ddd"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\driverstore\\filerepository\\iigd_dch.inf_amd64_7dec88a1950b9616\\igc64.dll",
+    "sha256": "8a7b608d3151e4fb2dd121fc2dbc37e83fd04c00b6bc87227b9959bc06e502b2"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\driverstore\\filerepository\\iigd_dch.inf_amd64_7dec88a1950b9616\\igddxvacommon64.dll",
+    "sha256": "b4586188d48c0700c680791d3d23267caa81d5a8d205ebe6849b699d15dc1b7a"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\driverstore\\filerepository\\iigd_dch.inf_amd64_7dec88a1950b9616\\igdgmm64.dll",
+    "sha256": "f19632dd3964391b18ecc2e8b933f781c8118919a71d3d81cf992deef2910160"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\driverstore\\filerepository\\iigd_dch.inf_amd64_7dec88a1950b9616\\igvk64.dll",
+    "sha256": "8dd07ca26c8e46b896da3b98657b0c4ffe738e09d42608d5503571ebc0fcb234"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\driverstore\\filerepository\\iigd_dch.inf_amd64_7dec88a1950b9616\\igvkmedia64.dll",
+    "sha256": "e8e532d7b1e662bb43a8815c1d1ba5d3dcf458fc90633611a8c6982f83f9adf0"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\driverstore\\filerepository\\iigd_dch.inf_amd64_7dec88a1950b9616\\media_bin_64.dll",
+    "sha256": "0e9fa2af939ae54f1926a7da7587a8e6e5a638c398bae63fca94868bd56643e3"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\driverstore\\filerepository\\nvmd.inf_amd64_ffd9a18b05442e28\\nvgpucomp64.dll",
+    "sha256": "bd94d0927ad026ca509bd42228a48a9196b0a894ba33642681bc4866d2af3076"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\driverstore\\filerepository\\nvmd.inf_amd64_ffd9a18b05442e28\\nvoglv64.dll",
+    "sha256": "c06da682a5646caa45aaa1dfe2fa96015fff418e189cbda530e9fea67f02be19"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\drvstore.dll",
+    "sha256": "f9301cab112ebf2971af6f4e70b3f9d263204861219ce4933f80d53d99c806ee"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\dwmapi.dll",
+    "sha256": "733c4dbf3e3fc521199ae57a5adc0b780d8c63d3de96676670cbf6d27cfed5e2"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\dxcore.dll",
+    "sha256": "df9b1da21162c1dba8399c755805b66d2bfde06e55313c73b1360bbed2e2f71d"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\dxgi.dll",
+    "sha256": "4225e13f27a4f3a4a4738e64a57fa0949d8589f317fc6f8ec194b3a4d394a528"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\gdi32.dll",
+    "sha256": "772c73e294a4c5f5e0d4146288af95287a85c074d3aee3fa9f320dc010d7dbfe"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\gdi32full.dll",
+    "sha256": "52de3e02898e9c0e243d08d5c51d54871e9bce90de883eff7df29a30fc8aeac9"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\glu32.dll",
+    "sha256": "3120ba185c4505b0864fe4c113caff3fd0bbf0e231f8a95c89caf9b74e957a54"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\imagehlp.dll",
+    "sha256": "58117bbc51c4a56b6c4789e190f33a540b7734e394ada9652e2832e3d2e16588"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\imm32.dll",
+    "sha256": "7e45f12c1c555e2407c5ca082bd925b34655278fde4dbfac53a0468cc1e77411"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\iphlpapi.dll",
+    "sha256": "8521026d021cc5193a7cd7c0256bd14c7ab39738d22c019e6d544b37deee12c0"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\kernel.appcore.dll",
+    "sha256": "ed6d62f2555d260547cc94a5cdfe2a6fcb684f18b8e182f78f9e4de224321fc9"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\kernel32.dll",
+    "sha256": "e132eba4166256e2f414b91fe7d5386590bc5ea8626aee5af9c9738383cf2ae1"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\kernelbase.dll",
+    "sha256": "5c29b73622ce0976e1ada566f31f2197ba0f8beaea89c3ec033366126172c3d0"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\msasn1.dll",
+    "sha256": "a28902ae7ad6ff2d1b904f73c7ca22dbbf11a36cee70b5b22dd605364dd0fa2e"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\msctf.dll",
+    "sha256": "e8f3fe84ee46760e6e9eb914d61f88125d699047ad0e17b9283fb553927417be"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\msvcp140.dll",
+    "sha256": "def46aa6a8f72f27bafac0c43334419486a4d1dcdb6c479a8ef7034b3e1fa4cb"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\msvcp140_1.dll",
+    "sha256": "2dd670f874562fbdca5b022df1943d70a57ba91fde559280e3a1daebe4db2380"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\msvcp140_atomic_wait.dll",
+    "sha256": "e7963645e0d1db08e300614d4c5fa7194bd8173e9ab7a5558859e6b232ed3241"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\msvcp_win.dll",
+    "sha256": "b9dacd83201e59bb74e5282d8f0dcc8c428525409b4bc458a39eb8d2a9373a9a"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\msvcrt.dll",
+    "sha256": "fc1447db4e4814cbcb002179a8003a41f383fc417879f628727043cab8c25093"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\ntdll.dll",
+    "sha256": "651ac9041af8e6b5ebd331d53163244c0a27d36d1433f0f15cac1f28c5f2e82c"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\ntmarta.dll",
+    "sha256": "f2bfd7121052ddfa5affae30efa070ac98052d76e6a5723f31ff75171c561974"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\nvspcap64.dll",
+    "sha256": "e943f2761252400dd9dc2fdac85078d14cac2c781ed982f7fb6566fb9992b973"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\ole32.dll",
+    "sha256": "1053ffb858cddbe29eaaa6a5b0836b88c7cd11fbd58605288600e507c06db443"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\oleaut32.dll",
+    "sha256": "e3fcdbbf040fd1e3c3504876cf060ac3908c134ac81b3d0c57f0f735769280ea"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\opengl32.dll",
+    "sha256": "659be03cf2b88b5063a35b2637d9ef38122d7f6f30dafff118fa41b273aa5ece"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\powrprof.dll",
+    "sha256": "096b3c77ad7fece122be0362c72530b1edc024fe7107d1d40d8bcd8fa5428a0e"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\profapi.dll",
+    "sha256": "8983b0b95ce9e3282d3a09890316fc7290ba1ad45624167c576fbc691fbe66b0"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\propsys.dll",
+    "sha256": "1d9e7fc09a540c6b23d239f2dceeb0a57a7a1f51e1c90ad28401ecb202f4b39b"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\psapi.dll",
+    "sha256": "6c8ebe6621224d11ded0c920873d67b5255fd515e8c4ea803cd587c8232bee5c"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\rometadata.dll",
+    "sha256": "47a51a488149bd7aebfdab0b4bdcd19b758cc78f87ca606ca3c23ddb3046c0d4"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\rpcrt4.dll",
+    "sha256": "c060f02c11fb19c9c8a30b5077a87cdb17d4be40f08070a539ec73eb53402775"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\rsaenh.dll",
+    "sha256": "731771049467b6d01c7028a1269df17da37af8d323621e01a32856e306795400"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\sechost.dll",
+    "sha256": "b4a345ad9af0635f50e27eea8ae0ff37255dca90e6d5991bdbc4806fb02aaa72"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\setupapi.dll",
+    "sha256": "9cca168a1a95fef4a69b8cb0f1e310b793563833658169cacaf3ad67382ba2c7"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\shcore.dll",
+    "sha256": "60fa3face0cfeccd442ef8c10f0d98f7991998784d21c8f7b77fc1048b222c95"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\shell32.dll",
+    "sha256": "c55a5f3b6ef059871fe2a0c8d82f086e0998d1154023e3ecf49698b97f9341f6"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\shlwapi.dll",
+    "sha256": "77b883ae848e1209b17ded14e6558656651f84d47cd656d1d3c118cc5409ed5b"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\sspicli.dll",
+    "sha256": "5aa8f7bbcc7a8a422d14612d9ca1f8a50acd6030eb4bff204a205fec76f27a59"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\ucrtbase.dll",
+    "sha256": "dedb7611e1abc1ff3852dcac3d4c93a048d729e25b061973b9969f22698f14ca"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\umpdc.dll",
+    "sha256": "b3407a812c7f34ac6b5beefb2a78e8f2d7c4376f7c7012f880aab4fe07235e4e"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\user32.dll",
+    "sha256": "f285937030bcb325cad39ee5be4818f6666241229adeadea4ff1ae469dfd7ef3"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\userenv.dll",
+    "sha256": "aeb1a6a15397bee7a0ebc67b8188f751e10089c0adadfd86146496c5faae914c"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\uxtheme.dll",
+    "sha256": "e5087142f87989c7430d82a65616817a2515a79fa582549ba48a1dd6ac1b7200"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\version.dll",
+    "sha256": "cea99f212af557a9613150c5509631403ed0f05f5d9a06ac42039bd59b40e39a"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\vulkan-1.dll",
+    "sha256": "236ba2bb71d0254a669ec85e67ae7814dc074fc04c90300b035617e7aa17d0e9"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\win32u.dll",
+    "sha256": "d46a695db805e808efa63d1095ce3e1b6be9c0155dad405d444530efc1ed0362"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\windows.staterepositorycore.dll",
+    "sha256": "153c79f36f5c9d8b541cdd5c2cc838ab430aba0298ee81ceaca641ba82bf9370"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\windows.storage.dll",
+    "sha256": "a0d41fcfd66f4fbba8dbb84776c7d344f66969ce8b6edac19b3ac1dd737a628a"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\wintrust.dll",
+    "sha256": "a24ff2ace63b7facf6f62cd024a596083342eebc6a8d3748ff98938b6de93a0e"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\wintypes.dll",
+    "sha256": "d19da3e350f70116097eb200a25aa31497415ed3999bb2d87faf7b724b7d2e74"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\wldp.dll",
+    "sha256": "5f09d68230309d09c6c0123dbccf85a6f9b70d5ec8bcbe69613d9f2c6e6fe24b"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\ws2_32.dll",
+    "sha256": "b123b00c46c415d7baeaada58c29c3e6920895db836ee4c0cfee49d738af60ad"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\system32\\wtsapi32.dll",
+    "sha256": "9bc998a7b2e3eca0941bf7b5449049b3aa0ef67a840baf78a7b04dbc323595c4"
+  },
+  {
+    "excluded_root": false,
+    "path": "c:\\windows\\winsxs\\amd64_microsoft.windows.gdiplus_6595b64144ccf1df_1.1.26100.9711_none_6ef2ab963dc761f3\\gdiplus.dll",
+    "sha256": "a010137a9f89d49a484a0603f0e35a19195305002c857f313f857be662e1ab92"
+  }
+]

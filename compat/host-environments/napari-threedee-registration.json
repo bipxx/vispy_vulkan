@@ -1,0 +1,1843 @@
+{
+  "current_opengl_context": false,
+  "dawn_modules": [],
+  "direct_url": {
+    "archive_info": {},
+    "url": "file:///C:/Users/HEQ/Projects/vispy_vulkan/build/host-wheels/napari-threedee-v0.0.29-qualification-1/napari_threedee-0.0.29-py3-none-any.whl"
+  },
+  "direct_url_archive_sha256": null,
+  "discover_count": 4,
+  "distribution_files": {
+    "METADATA": {
+      "origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\napari_threedee-0.0.29.dist-info\\METADATA",
+      "sha256": "673656ed15d1ccde8d67aa4311933588da1414dca57e5c92c83196e90958b4e6"
+    },
+    "RECORD": {
+      "origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\napari_threedee-0.0.29.dist-info\\RECORD",
+      "sha256": "d19ad51927872d0c95cb64ac38c197d8ce0932288ade1608ff6c11224828c87a"
+    },
+    "direct_url.json": {
+      "origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\napari_threedee-0.0.29.dist-info\\direct_url.json",
+      "sha256": "b6b48fab5355ad02c7e460b366eff708c8b7b79d9cf7b6f4ba5cf59c9e1f994c"
+    },
+    "entry_points.txt": {
+      "origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\napari_threedee-0.0.29.dist-info\\entry_points.txt",
+      "sha256": "a5772b2a003f06281eeb46ab35527f152dde02e9fc3ec17204d5928dd53ff0e7"
+    }
+  },
+  "distributions": [
+    {
+      "name": "Deprecated",
+      "record_sha256": "1ba8e87ed75092ad56125165a1e987bf0247fa3a581ecc398b0a7a75cbc33099",
+      "version": "3.0.0"
+    },
+    {
+      "name": "HeapDict",
+      "record_sha256": "65a07eacf13d7082e87f6121909ca0ce861a83bef391c167236e98b392a90e7b",
+      "version": "1.0.1"
+    },
+    {
+      "name": "ImageIO",
+      "record_sha256": "59729f5de5b305cd0158554f2eefb1b455d789aeb23ed32802e3b135da96a71a",
+      "version": "2.38.1"
+    },
+    {
+      "name": "Pint",
+      "record_sha256": "6185d5101e3636834aa208d15fae1c64e79eeb7975aa55c92e7469d90d19ce91",
+      "version": "0.26.1"
+    },
+    {
+      "name": "PyOpenGL",
+      "record_sha256": "272d2da2b0e48fc99572459d394b1731c210dd956f3e39a934f3bc289f8794df",
+      "version": "3.1.10"
+    },
+    {
+      "name": "PyQt6",
+      "record_sha256": "da4e0375a328226a508f42c7b30c077db7726db7ecbaa8f0c92f3a1c70951762",
+      "version": "6.11.0"
+    },
+    {
+      "name": "PyQt6-Qt6",
+      "record_sha256": "dfa8309efaceb71f1f847a6866b0a5ebe604a4b2df16cb5d1024a1a680fc2e10",
+      "version": "6.11.2"
+    },
+    {
+      "name": "PyQt6_sip",
+      "record_sha256": "29fb7f7c13ef9f0f60e382e4e2b6febbc17cf42ca5d1fc81f46c87d7a82cc8ce",
+      "version": "13.13.0"
+    },
+    {
+      "name": "PyYAML",
+      "record_sha256": "6fef717920e6590ce79f8f922755690f9d1f3199508e9d79baeb382ea4813c9c",
+      "version": "6.0.3"
+    },
+    {
+      "name": "Pygments",
+      "record_sha256": "d73d09d36f54820eaf71e5426e6638adc0a12f281d37d587db0388c7504531fa",
+      "version": "2.21.0"
+    },
+    {
+      "name": "QtPy",
+      "record_sha256": "53de674906462aad466ed0cf6df8ed487dc07c4c7ace7eb778346742fa065002",
+      "version": "2.4.3"
+    },
+    {
+      "name": "annotated-doc",
+      "record_sha256": "eee5b3b5754ae1cb431e5aba650cdab050673d518473f0fb2b4ad9f48671e2e7",
+      "version": "0.0.5"
+    },
+    {
+      "name": "annotated-types",
+      "record_sha256": "8191d3aa1ac93480688819b4db2385606219a3f7a453b85e086646134ded4f96",
+      "version": "0.8.0"
+    },
+    {
+      "name": "app-model",
+      "record_sha256": "9e78d18ba4081a6694af3dd5dc2fcedb0a8539caf8d3f23e430aeda0b1e86707",
+      "version": "0.5.1"
+    },
+    {
+      "name": "asciitree",
+      "record_sha256": "ca9e9edfc666a854af67890784cdc9737b181b9774ed4306685c5bb5841d7c07",
+      "version": "0.3.3"
+    },
+    {
+      "name": "asttokens",
+      "record_sha256": "7f0b4dabfd410366c48fb66b1af7671f17ab499310c80c3103855a7893694314",
+      "version": "3.0.2"
+    },
+    {
+      "name": "attrs",
+      "record_sha256": "6b0b326d4b4ee0fac27909ac7cbb066fc4bdf8e93d87031e27e770db059e5a04",
+      "version": "26.1.0"
+    },
+    {
+      "name": "build",
+      "record_sha256": "ddc3f4c91604e20c661422e59c813f0eed3ef2e3262caa8a4f9e5037feba5e43",
+      "version": "1.6.1"
+    },
+    {
+      "name": "cachey",
+      "record_sha256": "3f46350f59b6cf3d9793915b7efd406fc93632dd11f1939c4ed968f8ebc12688",
+      "version": "0.2.1"
+    },
+    {
+      "name": "certifi",
+      "record_sha256": "cff9d243744c96445494c29abee3d592d0a6955d5504f4fbe034dce7aaf38490",
+      "version": "2026.7.22"
+    },
+    {
+      "name": "charset-normalizer",
+      "record_sha256": "3142133257aab7581f2a8b62694dd0a43f496a9c91830720d2ee468297ec146b",
+      "version": "3.5.2"
+    },
+    {
+      "name": "click",
+      "record_sha256": "924078ec3a47b97192425dbc0c3693085af7a7b863afcf6b4e110cf0bd97dea4",
+      "version": "8.5.0"
+    },
+    {
+      "name": "cloudpickle",
+      "record_sha256": "a24820e3d3ea3f0fb210f58b84abb5450a94cc649e573a9a0a69354afc6fa1de",
+      "version": "3.1.2"
+    },
+    {
+      "name": "colorama",
+      "record_sha256": "88413e126edc8a81419b409279ef89424081f27bccd4aeec0140d6f03f1ade7f",
+      "version": "0.4.6"
+    },
+    {
+      "name": "comm",
+      "record_sha256": "d4854a07c72d25313dfa1c7322a12a09455a57adbf66939d785aeb8f07b79ee5",
+      "version": "0.2.3"
+    },
+    {
+      "name": "dask",
+      "record_sha256": "632043e3ad7faa0d7dde5cc73dbf44fd2694acb87d8aa6e1572215c158df158a",
+      "version": "2026.8.0"
+    },
+    {
+      "name": "debugpy",
+      "record_sha256": "1332b19764c21cc8286cf0471a399089a7c6de7c19c01a605bbd87fd94b7461f",
+      "version": "1.8.22"
+    },
+    {
+      "name": "docstring_parser",
+      "record_sha256": "ed0a3538437bb77b4efc7e9b93ed802ac99acf1dedd7b1c5b36d0b0ef0f11398",
+      "version": "0.18.0"
+    },
+    {
+      "name": "einops",
+      "record_sha256": "f5ab2503eead94b7dbb3c722415260439feee273c0b91019e1f0788f041400bc",
+      "version": "0.8.2"
+    },
+    {
+      "name": "executing",
+      "record_sha256": "483767c8f250006b2655250353b993e605b581fd6f5f41a5b7e2accb9bf3a414",
+      "version": "2.2.1"
+    },
+    {
+      "name": "fasteners",
+      "record_sha256": "149be2130b636d8993156f863954c95a0442dd880619654c41b5f60da50e3d65",
+      "version": "0.20"
+    },
+    {
+      "name": "flexcache",
+      "record_sha256": "36c96a9fe853ed423ab17dde2a30e66ab68fb2489a3f874f7806a3e11f45c8f7",
+      "version": "0.3"
+    },
+    {
+      "name": "flexparser",
+      "record_sha256": "118718b3baaef4f105c94e63bf33cb4d07f719927641e89cb6844cce6eb4c964",
+      "version": "0.4"
+    },
+    {
+      "name": "freetype-py",
+      "record_sha256": "b396657045f9e98eda5bef1ef54b1381b6b43acfbd7322c6d00d36697b0d2e1d",
+      "version": "2.5.1"
+    },
+    {
+      "name": "fsspec",
+      "record_sha256": "f7b3713c1750221155b0601147f3b68a24f11e342dca818b5fd551f5ef88a74b",
+      "version": "2026.9.0"
+    },
+    {
+      "name": "hsluv",
+      "record_sha256": "f50df1714241d29a5d98d11c3db7b0bab9c874d8d2b8c05f5d3dc84126980ef5",
+      "version": "5.0.4"
+    },
+    {
+      "name": "idna",
+      "record_sha256": "b612971259eee573a52cd745ce57d280af5a227c60622f6a394a582fe3b7aab1",
+      "version": "3.20"
+    },
+    {
+      "name": "in-n-out",
+      "record_sha256": "9e0e2883e7e67496cb7ec2f50833cc586efea9a7ddf7fb20ed5ccdbd0ce12600",
+      "version": "0.2.1"
+    },
+    {
+      "name": "ipykernel",
+      "record_sha256": "ea8c513c3fdc8d1850fd38cade81ea0fb1aeb05f57cb124e99c4eb6ffbd9ec19",
+      "version": "6.31.0"
+    },
+    {
+      "name": "ipython",
+      "record_sha256": "78ca396be0aca1733f481fa5a52f5cadad9f2760e716706d7377e08a3c5b5801",
+      "version": "9.17.1"
+    },
+    {
+      "name": "ipython_pygments_lexers",
+      "record_sha256": "a601c87e87a63f4e126ce5e320367930d30129be677cb4a4980332f61b8aff31",
+      "version": "1.1.1"
+    },
+    {
+      "name": "jedi",
+      "record_sha256": "8aee5a15141dd898d3356eca862cd70ad85f382c676ced7d51041f98d32e63d9",
+      "version": "0.20.0"
+    },
+    {
+      "name": "jsonschema",
+      "record_sha256": "79fc9778a3e438afc255a98709f07b5b903b0e243a7fa57af2ca61f87ebb2ef6",
+      "version": "4.26.0"
+    },
+    {
+      "name": "jsonschema-specifications",
+      "record_sha256": "0b1047ee6c7d5d7c242b642d689820f4572860ecf7886b2074f821ed85cbe7b6",
+      "version": "2025.9.1"
+    },
+    {
+      "name": "jupyter_client",
+      "record_sha256": "707b78b7644c59c9c80fabac1d5daae8c7014cc7ffa8ce173f75962aa19d7322",
+      "version": "8.10.0"
+    },
+    {
+      "name": "jupyter_core",
+      "record_sha256": "d369348d39dcd2ce79973e4c99d81b85c721fb41b594c26479dddc4435606dcf",
+      "version": "5.9.1"
+    },
+    {
+      "name": "kiwisolver",
+      "record_sha256": "3116e4ed5a372aa5c2f7cc59b78006c82d14bd568d5e99d84327e524a87157c8",
+      "version": "1.5.1"
+    },
+    {
+      "name": "lazy-loader",
+      "record_sha256": "fe635a4b213c271fc498fecab243e34fc7f0a0c73326ff5a3accef2cf710aaf1",
+      "version": "0.6"
+    },
+    {
+      "name": "libigl",
+      "record_sha256": "619ea883cd1767fde7769d036a00855e8f28eab861e7e7175ed93b60e664f4ce",
+      "version": "2.6.3"
+    },
+    {
+      "name": "locket",
+      "record_sha256": "b74fc4678ecab0096f1917e70ca3434ff437a12261e4ff73ccbb1accfbaf9637",
+      "version": "1.0.0"
+    },
+    {
+      "name": "lxml",
+      "record_sha256": "623391421e06ff97cac25cac461820eb029600e1922238184d45e43405ad93e1",
+      "version": "6.1.3"
+    },
+    {
+      "name": "magicgui",
+      "record_sha256": "26eeac48777d238dee0ca8608a48ffd70373c6d2d3b54101bbf76a4ae9f1d584",
+      "version": "0.10.2"
+    },
+    {
+      "name": "markdown-it-py",
+      "record_sha256": "f32ffaf96bd51cf7a0083ec40b7cb6e32cc07f4c84e75ca293b5874dd1597fbf",
+      "version": "4.2.0"
+    },
+    {
+      "name": "matplotlib-inline",
+      "record_sha256": "9e3fca031d79eb520bebf44c820c831d604ddb76157308c28e9f7813f71268fe",
+      "version": "0.2.2"
+    },
+    {
+      "name": "mdurl",
+      "record_sha256": "9a1b05128e711beabd7684e116fcf408ce8cff7ef10e7e8b359b248924fe529c",
+      "version": "0.1.2"
+    },
+    {
+      "name": "morphosamplers",
+      "record_sha256": "bc3f3793df859617cf68df35d2ee65067a7c9d8625d2c7041ddc690dc5e593a2",
+      "version": "0.0.16"
+    },
+    {
+      "name": "mrcfile",
+      "record_sha256": "4b7d846c9805d09d093b1fdbd5213a60093a70fa03319ba60d2d418ede8517f7",
+      "version": "1.5.4"
+    },
+    {
+      "name": "napari",
+      "record_sha256": "dabf7789a4cd184154b67ab72f175dc1e7f6ba644f90ce0e94afc28636bcdf7a",
+      "version": "0.9.2"
+    },
+    {
+      "name": "napari-console",
+      "record_sha256": "5664bde5de73ed386519d8782af4df88786d438e8bd575264430c234a921a1ac",
+      "version": "0.1.4"
+    },
+    {
+      "name": "napari-plugin-engine",
+      "record_sha256": "5eb395f50524dfb831ea874db439657ac670113e12859597e19f54ac62c7fa90",
+      "version": "0.2.1"
+    },
+    {
+      "name": "napari-resources",
+      "record_sha256": "7cb9b271daa7347ac68060d020ed6ad655fba023e3c25a54d82af77d880d0679",
+      "version": "1.0.1"
+    },
+    {
+      "name": "napari-svg",
+      "record_sha256": "6fc0f2a709d1e482a8fb283b029d48ced0d5b6bfad51bedaeb6480be858e2a7e",
+      "version": "0.2.1"
+    },
+    {
+      "name": "napari-threedee",
+      "record_sha256": "d19ad51927872d0c95cb64ac38c197d8ce0932288ade1608ff6c11224828c87a",
+      "version": "0.0.29"
+    },
+    {
+      "name": "nest-asyncio",
+      "record_sha256": "97b48ddb4cbc4cb0f2add67e0cca4425900357d4e2576a9fc0914709e0a9aa83",
+      "version": "1.6.0"
+    },
+    {
+      "name": "networkx",
+      "record_sha256": "0403c7ac1516dc6dc03a4f0d8256c3b5d333c5721e6ab116c9f2b37fdeb6eb30",
+      "version": "3.7"
+    },
+    {
+      "name": "npe2",
+      "record_sha256": "79aac684dd2eabb0810f0c189b429bf2a64ab2cd392e59c1498c4dd4c39860e8",
+      "version": "0.9.0"
+    },
+    {
+      "name": "numcodecs",
+      "record_sha256": "f12abbd63b267e665da0d0c5d72dc97bf4c6f2c118b5f3342f6dc586f9892d6d",
+      "version": "0.15.1"
+    },
+    {
+      "name": "numpy",
+      "record_sha256": "384cadd9d70f7852f94021ca10d0f00142b5ea5504b42b028012223025540f15",
+      "version": "2.5.3"
+    },
+    {
+      "name": "packaging",
+      "record_sha256": "1b8655965b0d83e9a067fd7f84b977bd1e117e0fb9f2874b2572781bdc9e2147",
+      "version": "26.3"
+    },
+    {
+      "name": "pandas",
+      "record_sha256": "951adfdeb098d407847af0b05becb513c97add81ab7f97bfb836499c99056a4b",
+      "version": "3.0.6"
+    },
+    {
+      "name": "parso",
+      "record_sha256": "f12d7035431df6048bd4ed5e00a3ff1b3e5821c6201e269ac0ad7f1e643cd9b7",
+      "version": "0.8.7"
+    },
+    {
+      "name": "partd",
+      "record_sha256": "5c853745ab303595a07edf266ddb64a2b8a6d701a23e5ec89930823efbb03438",
+      "version": "1.4.2"
+    },
+    {
+      "name": "pillow",
+      "record_sha256": "85afc050a07e9e71f698a7481c9a89c525d08f73c14ed49248a521b34e9f38c4",
+      "version": "12.3.0"
+    },
+    {
+      "name": "platformdirs",
+      "record_sha256": "82d494ae5b99c3504a29e0aa8edadd65ee9aff03cc78c9f828d5adf2e2c855cd",
+      "version": "4.12.4"
+    },
+    {
+      "name": "pooch",
+      "record_sha256": "7baabed9c89c1bebdd4a629b1784759faa0937e96930cb8f4dcec2b5271a2f4d",
+      "version": "1.9.0"
+    },
+    {
+      "name": "prompt_toolkit",
+      "record_sha256": "a40bdf71ed62886d4459e1462979f862f83d6fde483551fb8e547c0a6764df1d",
+      "version": "3.0.53"
+    },
+    {
+      "name": "psutil",
+      "record_sha256": "0d4c336a396000d4cae7c9225ae020e4ec471be9873d2e3b92fb516fc9d6fff4",
+      "version": "7.2.2"
+    },
+    {
+      "name": "psygnal",
+      "record_sha256": "c6b4cddd55b4f9196a346ae77b4857857b8a912c35f3d2b4e7ebdfd5bd3903e8",
+      "version": "0.16.1"
+    },
+    {
+      "name": "pure_eval",
+      "record_sha256": "a7827467bcdf9877f51deaf911c479feca74b4123dd93953acdc5a155347b933",
+      "version": "0.2.4"
+    },
+    {
+      "name": "pyconify",
+      "record_sha256": "e7c7b998b303a889e3b32316c744506f90274d62996e0e184e114a2568581e6e",
+      "version": "0.2.1"
+    },
+    {
+      "name": "pydantic",
+      "record_sha256": "2d6d86bbcab2118c60d7fb459296f3b5a4d3c121516a2606c50c3b172e8fc5ce",
+      "version": "2.14.0"
+    },
+    {
+      "name": "pydantic-compat",
+      "record_sha256": "6d1b1fa5a570a4d793a68f9b1c624fda5ea87e9ab392857dde7fd9c75ef54f6e",
+      "version": "0.1.2"
+    },
+    {
+      "name": "pydantic-extra-types",
+      "record_sha256": "97cdd61dee1a5d20bd92f941aaf66a6b47c6509a411bd731d7e169198e072925",
+      "version": "2.11.1"
+    },
+    {
+      "name": "pydantic-settings",
+      "record_sha256": "5572a2e2cf981af8f9fc9e507dca3e957a2e398b5150cc01bfc0e673909d7aa3",
+      "version": "2.15.0"
+    },
+    {
+      "name": "pydantic_core",
+      "record_sha256": "b6a90a006a3cc4d462a7dfc810811bebbad1f5a6486f544370cde1b9967229c7",
+      "version": "2.50.0"
+    },
+    {
+      "name": "pyproject_hooks",
+      "record_sha256": "86adcee4c250c3b18b913f21545e2d735b780b382fbf67ac27816d04c908be8e",
+      "version": "1.3.3"
+    },
+    {
+      "name": "python-dateutil",
+      "record_sha256": "e15e868a50b9c4e71df17b31369843617780146ac5adb1bbfdcced0ebe501824",
+      "version": "2.9.0.post0"
+    },
+    {
+      "name": "python-dotenv",
+      "record_sha256": "dd014f8044398708833f24d49b3121c4d93befcb45fbdcf68921e89aef5d61cc",
+      "version": "1.2.4"
+    },
+    {
+      "name": "pywin32",
+      "record_sha256": "e5cd146a02138dab3f2528fd7bdd0e8cd9532061ab04b0a478bd8692c7d5d9c0",
+      "version": "312"
+    },
+    {
+      "name": "pyzmq",
+      "record_sha256": "70b694ec582cc40919470abf5fec8c189d54a9e21bdec371862ea7fd3f40567e",
+      "version": "27.2.0"
+    },
+    {
+      "name": "qtconsole",
+      "record_sha256": "368f0de40adb56b67b12de410bfa13a0b3c131c2d741a3f27302a698f23568fa",
+      "version": "5.7.2"
+    },
+    {
+      "name": "referencing",
+      "record_sha256": "d7ecf9906a4a4ea4837d16e324e344f9f00b328570cf695a96a8de46b8766982",
+      "version": "0.37.0"
+    },
+    {
+      "name": "requests",
+      "record_sha256": "fc8c5216d0e865d815bd04cc240b5adc5d56f6c3dbe9aef3b4ea3b83d735bdfe",
+      "version": "2.34.2"
+    },
+    {
+      "name": "rich",
+      "record_sha256": "1b725253b1bd316b53169a3a0b35d03d6c81bad9009ddae73d8645fb3cd3f292",
+      "version": "15.0.0"
+    },
+    {
+      "name": "rpds-py",
+      "record_sha256": "ea0b5ce57a17a2bbbe915c53b31abd57dcb70770bd67d049f69f95810533d63a",
+      "version": "2026.9.1"
+    },
+    {
+      "name": "scikit-image",
+      "record_sha256": "f7799a102b803e3ebc9ebb71506edda1f9123360c4620403eeed4f9bcbb6131d",
+      "version": "0.26.0"
+    },
+    {
+      "name": "scipy",
+      "record_sha256": "483f156162db81c9305e925f7af6edc03b6a603d219aa8e5affbb163d24fba11",
+      "version": "1.18.1"
+    },
+    {
+      "name": "setuptools",
+      "record_sha256": "d05f27232d4390e8dacd30244d75bc805e7e611710402e89e4962e7a9ed3dcfb",
+      "version": "80.9.0"
+    },
+    {
+      "name": "shellingham",
+      "record_sha256": "2a878ed08ec32adc6b08a9b6a83754cd7c30ffb8a67e26527292456da9ff2fee",
+      "version": "1.5.4"
+    },
+    {
+      "name": "six",
+      "record_sha256": "d16e50f347969b1e1919fb0c88bac4b9c644f5305bcfcfb00f72b646dbd4065d",
+      "version": "1.17.0"
+    },
+    {
+      "name": "stack-data",
+      "record_sha256": "522b69b3fb8bc2aba2e176a824f62b51cda7c3c30e78abbf9ebf90ce5e3cb615",
+      "version": "0.6.3"
+    },
+    {
+      "name": "superqt",
+      "record_sha256": "05ae762388735855023cd92a9c28a846ee42c92f7d17535289fbecbe17f6cd3a",
+      "version": "0.8.2"
+    },
+    {
+      "name": "tifffile",
+      "record_sha256": "7d46c860e3ed86c3dc25a19f828c78b822e8385ba61534efdf2a1bd62cc4da91",
+      "version": "2026.9.20"
+    },
+    {
+      "name": "tomli_w",
+      "record_sha256": "6758ea1fa917909e7f6f8f313e168e3627f1d480167ff78174dea2d7e1b501d3",
+      "version": "1.2.0"
+    },
+    {
+      "name": "toolz",
+      "record_sha256": "dfc571823a934e91b876f32cc474e345cb3d528c7842fe06a2d38cd0c73d9706",
+      "version": "1.2.0"
+    },
+    {
+      "name": "tornado",
+      "record_sha256": "cd3ecea4cff71896db487a686ea3a279569606bc03a6b6dc2422aa65391dc6fd",
+      "version": "6.5.10"
+    },
+    {
+      "name": "tqdm",
+      "record_sha256": "20f0e5e0e67755796ff93c7ddec22be982cfa72b0e47e9e5cd31c9d21a2c838d",
+      "version": "4.70.1"
+    },
+    {
+      "name": "traitlets",
+      "record_sha256": "aff43c4596f0dbd321faaca9fe02b93fb1e62b8ff070763cd77ad26a97fc084f",
+      "version": "5.16.1"
+    },
+    {
+      "name": "typer",
+      "record_sha256": "4e742bd23fe4531964de008405e8a8afeb7f36712aa0f351eb34266d548eb45b",
+      "version": "0.27.3"
+    },
+    {
+      "name": "typing-inspection",
+      "record_sha256": "83fc23669db31500d06056b13ecebe4f088f56a81c1ea86e3b68f1de3b8c7d95",
+      "version": "0.4.4"
+    },
+    {
+      "name": "typing_extensions",
+      "record_sha256": "9e07fea845cac76293d927afa7157a14ecba39b318bc8af236b8de530b7656c1",
+      "version": "4.16.0"
+    },
+    {
+      "name": "tzdata",
+      "record_sha256": "bc03ea1afd3394eb010013e6112f91d884785445c8453b7d56ddb7ba0cc4939d",
+      "version": "2026.5"
+    },
+    {
+      "name": "urllib3",
+      "record_sha256": "1753d325c8936a612ecdc947e686ade56b21f591fbb7518330cb0f2f7619c330",
+      "version": "2.8.0"
+    },
+    {
+      "name": "vispy",
+      "record_sha256": "455e084c0cb78e19e41c79d08a57d533b07d52b3248c2ebd4b73e80584b067cc",
+      "version": "0.17.0"
+    },
+    {
+      "name": "wcwidth",
+      "record_sha256": "02e6bffe75b5bbfdb11d6c5d92e2c5a474f41895c4b19d6f786e300ca6d29ee9",
+      "version": "0.9.2"
+    },
+    {
+      "name": "wheel",
+      "record_sha256": "1c29b1f8ab3a9955b7f574994273ef97248cbe6c0211c9012841a2ef594c14f7",
+      "version": "0.45.1"
+    },
+    {
+      "name": "wrapt",
+      "record_sha256": "b03728c98b81c9efe67a9af438a66206077dc85fa20513023f22d2655d965e47",
+      "version": "2.5.0"
+    },
+    {
+      "name": "zarr",
+      "record_sha256": "b2f5bc3330d15d12a007e36fa02104f072b9c8502dd6a8fa8e66080634545f80",
+      "version": "2.18.7"
+    }
+  ],
+  "entry_point": {
+    "distribution": "napari-threedee",
+    "group": "napari.manifest",
+    "name": "napari-threedee",
+    "value": "napari_threedee:napari.yaml",
+    "version": "0.0.29"
+  },
+  "environment": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged",
+  "errors": [],
+  "executable": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Scripts\\python.exe",
+  "generated_version": {
+    "generation": "unmodified upstream pyproject Hatch VCS build hook",
+    "origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\napari_threedee\\_version.py",
+    "sha256": "04444c98f216e0fffad1c65035836fd4a05e33fadcae1f47c8c764c7e6287ae5"
+  },
+  "graphics_context_created": false,
+  "graphics_device_created": false,
+  "installed_manifest": {
+    "origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\napari_threedee\\napari.yaml",
+    "sha256": "bf3416d61c4b739883fb1e014760b9ce75863086a21b994a659f1042e4a11bb0"
+  },
+  "installed_source_files": {
+    "__init__.py": "48f54549a69cc301f47156d9c79d896a9f85228969eb10b9b7cd5c8183019811",
+    "_backend/__init__.py": "8b06d61b99beffe3196237b4f5517f71c01a341f531b9f9979ae8360f55d81bc",
+    "_backend/manipulator/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "_backend/manipulator/_interface.py": "f651bdea4ab3ed862bf965feb3dab926623608ffe422d4d908938ecd6dad8935",
+    "_backend/manipulator/_tests/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "_backend/manipulator/_tests/test_axis_model.py": "713c26695d6a8cfca0ad6d408a309bc0eb5c6ad8e874adfb1502a178735e44bc",
+    "_backend/manipulator/_tests/test_central_axis.py": "143c753f56f5608eb96d2299c68fc91ec5dd5fede2481b8388daf5911c81c2b9",
+    "_backend/manipulator/_tests/test_drag_manager.py": "e2eb3597f83d93e45f768ef8528ad5f95dbd8f8bbf0a55508fb58125c43b2d08",
+    "_backend/manipulator/_tests/test_manipulator.py": "ef0e24391aaca0503ac33c77583ce6905bf639e2cadeb0a80be5b23f61c89aa8",
+    "_backend/manipulator/_tests/test_manipulator_visual_data.py": "2831b91c18dace135be2648d33b4a3b39ce6feb83bdea7d30387f38556ea06ca",
+    "_backend/manipulator/_tests/test_rotator.py": "b23e67a5810c50a84fc53756bd2613ed38c3c517a609833e8ade568d746b45d2",
+    "_backend/manipulator/_tests/test_translator.py": "ca0fdb2aeef7441e704ff6051abfe8e0c7cff399d6478211f261c382bcaf7cbb",
+    "_backend/manipulator/axis_model.py": "706f2ac6fbba0b6c5e493c91ff66ebecb9e32cd92e7a86853c3a8414e7af023e",
+    "_backend/manipulator/central_axis.py": "d6214eda6cbeb5f435e370de39988d32d129479be7c9fe36bab05b839ace5190",
+    "_backend/manipulator/drag_managers.py": "b8e3f16ff7ec5dc3a01cb2f85e1e0fced343a2d46ae2e7270170d3fd641fa263",
+    "_backend/manipulator/manipulator_model.py": "d039d71f7d473d870448f35135f6437ab9118661d5b98b0df135aa76e93f3ee1",
+    "_backend/manipulator/napari_manipulator_backend.py": "591aa5c1d5a7c0ad7cb5baefb62e10f9ad98cbf1339967fc2aeeab9c6f5c8604",
+    "_backend/manipulator/rotator.py": "c3dc194c046e4571d40273b8c1f0f845d138ea32473f478af1643c819b979039",
+    "_backend/manipulator/translator.py": "d8e3cf0dd51bb8404069799973f105a9f6869b133fbcd0dc8d3d239f92dedc9a",
+    "_backend/manipulator/utils.py": "43f383621c27d938393c07bec857f89f876e2ba35be0e5206218ccce3722ce6f",
+    "_backend/manipulator/vispy_manipulator_visual.py": "fa3ee6e2aa0538f9fc8b62abe68930cd4e7c6ca400cb5593cde839fac0887fe2",
+    "_backend/manipulator/vispy_visual_data.py": "ef828c1943837b17f4d0981c6ba98869e8eaa2faf2716c29bb28256a2e84f0f1",
+    "_backend/threedee_model.py": "fc571d705b9ad9431f154185fb522eceb72691896c533a74a095bc8090a5f44a",
+    "_backend/threedee_widget_base.py": "1ec899a97fdfcaf90611e88379d55ab40cceb32e1b9fe3047fa1ce0eb467e182",
+    "_sample_data.py": "2adf6972a85add7372f6b1ba65ab9f09b8fc6194cd66837d5c4522e5cc136bf1",
+    "_tests/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "_tests/test_dock_widget.py": "5f40581e52ff17f66c8f79c9801aa7a8e87d82541f13915a0bab87e6913fe7f1",
+    "_version.py": "04444c98f216e0fffad1c65035836fd4a05e33fadcae1f47c8c764c7e6287ae5",
+    "annotators/__init__.py": "d7cd27bc34380fcfdadeeb6c65aa674faf7ec9c2f2b80a26062ef6e0697c552f",
+    "annotators/_qt/__init__.py": "9d21fcec961972fef49184b043caae9e44a5e6bdcd156cb9dd2f698a7379dc56",
+    "annotators/_qt/qt_label_annotator.py": "1eb34247fa0318eeefec2b948bc8a2f8d93aaa55e1ab5fdc6727cc56257e67d4",
+    "annotators/_qt/qt_path_annotator.py": "88371480a2ae1c6b25d4f128daf7e91f93a4e9903bd203b8203b969790b2b829",
+    "annotators/_qt/qt_plane_point_annotator.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "annotators/_qt/qt_point_annotator.py": "32ebe366a8c87f0b5b5592954f090abd9d1e6df00cd635973293e5717731d794",
+    "annotators/_qt/qt_sphere_annotator.py": "0715945dccbec5f9acb2172b93692c6365ef60eceb763faef5ae3690e78b26f0",
+    "annotators/_qt/qt_surface_annotator.py": "bad8db7d1f4cdeb3f427dfe8edd40b46702ebfe1a9697510f29c7c7698cac54e",
+    "annotators/_tests/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "annotators/_tests/conftest.py": "12add1cd60c1b04a22361a3f8ef91fd8197ae80264d21ffd925e5894992b640b",
+    "annotators/_tests/test_path_annotator.py": "56a2459640e6f8c55fac70e97211a5bd8aaca12c8bd003fc31504c20fe6cf362",
+    "annotators/_tests/test_plane_labeler.py": "f68a320c81fc54d47101be726a64eec76e26b4c25cb0453112463cd59d709218",
+    "annotators/_tests/test_point_annotator.py": "02ba15946b849c9931a3bc38d1fa7ad91bf2484ac8aeab63551a54a4efa2b1a9",
+    "annotators/_tests/test_sphere_annotator.py": "015f0d1a4946f81280a0b2dfc4b07eb3c5acb22d7db13ceca625f39333c3d6f9",
+    "annotators/base.py": "43029668651d8006acd5da0b86be5b8542ef5ea60bb480aca4608f0e184c239c",
+    "annotators/constants.py": "8dbeaa93ca6f1cfcd0e8a57fe01f44926fd4759e973d7f68b78124efa4602a92",
+    "annotators/dipoles/__init__.py": "07e26ded0bf734ebe0f6ff09f5a7a5db19566bacb2ab90b8ab75cedf666a46c7",
+    "annotators/dipoles/annotator.py": "99348127e73613e50fed52450ada3356dd55d1750da53975e9925641fb55fba1",
+    "annotators/dipoles/constants.py": "5715ba705d94eb2b2392a47c58d0e12a2ee49ef7b0fbcf6f8026523b9dbd21cf",
+    "annotators/dipoles/validation.py": "620984d6c7d423516bd28223f24cbda87b90d5aaaa8e7df0bb07690c6c70a6bf",
+    "annotators/label/__init__.py": "3c72032c68b9f652c5fef2172b985cd077331f59772262f0534cc500d85e4c07",
+    "annotators/label/annotator.py": "b35bfb0447c58e88042f03b196981dfed6d662ca4ce8e727ae768f8d771bcff2",
+    "annotators/paths/__init__.py": "f057979108187cab999e1453d62b6c440776848b3bbc7a896ad3ba8d863ebf8c",
+    "annotators/paths/annotator.py": "8b458a5d74b0fd657611dd2c129b183f76b2638fe02bce225302abbf0a3aa1b0",
+    "annotators/paths/constants.py": "da1a943c53ee3bc6931f1e91a3f64bbdbf0f97f1cc9907a39b06209f72ba11e6",
+    "annotators/paths/validation.py": "483e5fbc5c1a333cac3916b4dcee8fff4174aa8c3b7f3a993ac8e283d511b8c6",
+    "annotators/points/__init__.py": "fdfc6f4cfd1ba6e37baabd706ffcf51126a7e91f728f6550c75ab2658cd271e1",
+    "annotators/points/annotator.py": "81026a7054197f88b5c779f118305ae4a20259e32439426dd8bcec9c79d871ee",
+    "annotators/points/constants.py": "f198fa7ca6d441a046b947113f8d951a14226107a402b08997d32d2c29665ccf",
+    "annotators/points/validation.py": "8ddaa272db0cc7590359d58906eb05ca72869706fad149b813b4f2bc1cda72c0",
+    "annotators/spheres/__init__.py": "1a8da0f14f7b1e5392b9534bbb36ec3abeba90d0659499242508da207a61c430",
+    "annotators/spheres/_tests/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "annotators/spheres/_tests/test_data_model.py": "adcaa66c431808f4466fb9e5dc554c6629ec625cf519050a75e6999a299a562b",
+    "annotators/spheres/annotator.py": "8ea8eb5e424857f5448b488746e3cd0e36a1b88e7792c721e120332477278663",
+    "annotators/spheres/constants.py": "4325625166cb5443152cae56d5418ed24f37140bfb77cfb1e6297c90bb7bf377",
+    "annotators/spheres/validation.py": "5f3cc54e936bad2cca885c17f7c120685bf52d599aed233a256479481226ddc3",
+    "annotators/surfaces/__init__.py": "551718edc737c3aead253e615faa493ad03b8c857750cd21362a6fb8da7194e9",
+    "annotators/surfaces/_tests/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "annotators/surfaces/_tests/test_data_model.py": "98bdc937291ef348b9fd4f2d2bf8fb4aff81ccba04a1e0661246a1230ba2731b",
+    "annotators/surfaces/annotator.py": "ca90bf987bc846e806bbebb2a5fcf99025763d56cf98fad4089f03c57bb71074",
+    "annotators/surfaces/constants.py": "36c156950db97c54f45648828a8b10c7bb8215d3cae205b28d4eaee2f6c6c1af",
+    "annotators/surfaces/validation.py": "b3031e77e279a3585dc785e766d50c0527aac8da244313d924e73af3fcf4c0e5",
+    "conftest.py": "2d81a70f04cba748dc2d59bb5516180e5fd395e82e53b5475bcb12aa2c6dd9f1",
+    "data_models/__init__.py": "5bdeb5db064eadcaf47c209578744991b9369071298e472a42dbd1ef08d0c7ea",
+    "data_models/_tests/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "data_models/_tests/test_dipoles.py": "0f8bbaf07bea0f93f5c56981a65b393b572dbcc1b44aef8a83154edd27a83130",
+    "data_models/_tests/test_paths.py": "f3359b8b5d01ae9a36e269fe0f3c60451c0ba19c630acf58338b209e2cbad808",
+    "data_models/_tests/test_points.py": "3b60d30d3d9a33834222236491a8f7a1efd5cc2d93254649dc28e5ccbf2423d6",
+    "data_models/_tests/test_spheres.py": "20c9f290145f219d5f85adb9ebd2325e8b35d9078fc535262b2a5f3db63a1e11",
+    "data_models/dipoles.py": "7305656ff70ad136aae344bcaa8867ebf0a5846d7a35e2a99521cf993a917d1c",
+    "data_models/paths.py": "432482af9a01471cf652430fd939d95334751e9e168403d27492e27001e5e560",
+    "data_models/points.py": "06e21a628bc3f5aa959ca05a84636522986a2f1d5c864fdcf8b87f516ecbc997",
+    "data_models/spheres.py": "74285c6990e8a100f23abbc578ec0d06127e0fd9867a072e542202532bde11ff",
+    "data_models/spline_sampler.py": "677c6def4e3edda88034c152e43ad3a17f6b1099323a38505c7069dc4f0bc9d4",
+    "data_models/surfaces.py": "cdea1d4e4f344c737db9d3b8f4074eca973ef1d13d9770770c7350b3a3b158ac",
+    "dock_widgets.py": "fdb726666db760b3693a216e177def4954dfe34156769cb325d5d3ba7b08a715",
+    "manipulators/__init__.py": "e6e9f76814aef4ce3589d3e0d9e9f425399e431a7c1db0b3f49581850f3c4442",
+    "manipulators/_qt/__init__.py": "c8b6a0e22edb5d5a7d046920b7dd338b4c53666118a2c8bbd89a37ba62155adb",
+    "manipulators/_qt/qt_layer_manipulator.py": "87356de15c583b0bc2c1d5e2e7f8cde412af720de3c31118400f3db3a7ec8fc2",
+    "manipulators/_qt/qt_point_manipulator.py": "00e27536a6d590eb4ef3c0a1af0e9054140ada403fc4001d28d2ea33d33b3161",
+    "manipulators/_qt/qt_render_plane_manipulator.py": "45242695399cd4b5c9d60ff1dbe0e9ac4e915df93b68d6626f92d107af0a86d4",
+    "manipulators/_tests/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "manipulators/_tests/test_manipulator_utils.py": "d1b672e10458274384446840b215b213450b029e9ff8330e3ca9da9d83d22bef",
+    "manipulators/base_manipulator.py": "10fb352f5c79621a461e4113f9ad0dbe420d9ad1254ca22e4219b9de2a45f70c",
+    "manipulators/constants.py": "f32d3667b7a90f588c2da25e005cb6c78daaae1cfc2db554d3365878fdd0f33d",
+    "manipulators/layer_manipulator.py": "c5f792341e2b983b7840006037f06c12124430b03caaa4ee905a8805debd2c46",
+    "manipulators/manipulator_utils.py": "fd7729a677e635bceda00bb0c68eb47ebb18445d0cfbd8881f16e66bfcd9be9e",
+    "manipulators/point_manipulator.py": "702b7722c72cba615cf8687744f3317ee96121ec3c9ccd283299d0e86850aa87",
+    "manipulators/render_plane_manipulator.py": "f0f994bfee0a2889dbd189c0a22b1e1c38f5fbcad334836486ca331bf2bf50c5",
+    "napari.yaml": "bf3416d61c4b739883fb1e014760b9ce75863086a21b994a659f1042e4a11bb0",
+    "utils/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "utils/_tests/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "utils/_tests/test_geometry.py": "0cabd94736c9b83f9513b3673df69464e2a922ab5325c1dc216efa701bb5bf58",
+    "utils/_tests/test_mouse_callbacks.py": "e79a4789c80da60cd5ef0ccdc7c219aca88f244c2bee7c54b1bf04229d6746de",
+    "utils/geometry.py": "357ed4ba7b88eeed19cc0e622e8dcc8b34afa905c67d33d142f87b39836053cf",
+    "utils/mouse_callbacks.py": "e8dfd6998e6ef07e7045420d96c8f144c3a097b71a01c54ab6f49a55ac2276b2",
+    "utils/napari_utils.py": "080c7b55c4f275eae2d648df6242ea2564d267bae1fc2a4dbdf4ac9353cb3f8d",
+    "utils/selection_utils.py": "0b5388b4ee51e71758f3cc75a6ace702dfb4604a911713c98bff2a67741edff5",
+    "vispy.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "visualization/__init__.py": "c9b7a68c8c7910e47ee03b0e88df032617683357a4e96b814c15881c9330fed6",
+    "visualization/_qt/__init__.py": "68c9e5da927c24f41eca0c0314bc3aa69ce9920ce0f648cc5abea351b13ee6c8",
+    "visualization/_qt/qt_camera_spline.py": "4123f4645f892b13189af64894c4619543384f9925e05809c9e08190c280ba3c",
+    "visualization/_qt/qt_lighting_control.py": "3f5d1421e2375e0ad6aef0587efaac9bb2dd5039994a26c227b2fea6708eba2d",
+    "visualization/_tests/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "visualization/_tests/test_camera_spline.py": "d1455217d1d0f6cffed99a2bfd8e43b3261c1c4c1ca3e59fa9c1cc071abfd8a0",
+    "visualization/_tests/test_lighting_control.py": "a655869eb3210df260e38d322fab90b9fe79acc409edddeb9f68a0844189ef12",
+    "visualization/camera_spline.py": "9c6abb0a589853ab51afb7e875b54c88b892ecd44692ced3f8d5f9bcd38c71a8",
+    "visualization/lighting_control.py": "1db65d5c5b60d517f42b9785cc7fea856fff6d80daec538248f6bbf7bc40941a"
+  },
+  "manifest": {
+    "categories": [],
+    "contributions": {
+      "commands": [
+        {
+          "category": null,
+          "enablement": null,
+          "icon": null,
+          "id": "napari-threedee.QtPointAnnotatorWidget",
+          "python_name": "napari_threedee.dock_widgets:QtPointAnnotatorWidget",
+          "short_title": null,
+          "title": "Create point annotator"
+        },
+        {
+          "category": null,
+          "enablement": null,
+          "icon": null,
+          "id": "napari-threedee.QtPathAnnotatorWidget",
+          "python_name": "napari_threedee.dock_widgets:QtPathAnnotatorWidget",
+          "short_title": null,
+          "title": "Create path annotator"
+        },
+        {
+          "category": null,
+          "enablement": null,
+          "icon": null,
+          "id": "napari-threedee.QtSphereAnnotatorWidget",
+          "python_name": "napari_threedee.dock_widgets:QtSphereAnnotatorWidget",
+          "short_title": null,
+          "title": "Create sphere annotator"
+        },
+        {
+          "category": null,
+          "enablement": null,
+          "icon": null,
+          "id": "napari-threedee.QtSurfaceAnnotatorWidget",
+          "python_name": "napari_threedee.dock_widgets:QtSurfaceAnnotatorWidget",
+          "short_title": null,
+          "title": "Create surface annotator"
+        },
+        {
+          "category": null,
+          "enablement": null,
+          "icon": null,
+          "id": "napari-threedee.QtLabelAnnotatorWidget",
+          "python_name": "napari_threedee.dock_widgets:QtLabelAnnotatorWidget",
+          "short_title": null,
+          "title": "Create label annotator"
+        },
+        {
+          "category": null,
+          "enablement": null,
+          "icon": null,
+          "id": "napari-threedee.QtRenderPlaneManipulatorWidget",
+          "python_name": "napari_threedee.dock_widgets:QtRenderPlaneManipulatorWidget",
+          "short_title": null,
+          "title": "Create render plane manipulator"
+        },
+        {
+          "category": null,
+          "enablement": null,
+          "icon": null,
+          "id": "napari-threedee.QtPointManipulatorWidget",
+          "python_name": "napari_threedee.dock_widgets:QtPointManipulatorWidget",
+          "short_title": null,
+          "title": "Create point manipulator"
+        },
+        {
+          "category": null,
+          "enablement": null,
+          "icon": null,
+          "id": "napari-threedee.QtLayerManipulatorWidget",
+          "python_name": "napari_threedee.dock_widgets:QtLayerManipulatorWidget",
+          "short_title": null,
+          "title": "Create layer manipulator"
+        },
+        {
+          "category": null,
+          "enablement": null,
+          "icon": null,
+          "id": "napari-threedee.QtLightingControlWidget",
+          "python_name": "napari_threedee.dock_widgets:QtLightingControlWidget",
+          "short_title": null,
+          "title": "Create mesh lighting control"
+        },
+        {
+          "category": null,
+          "enablement": null,
+          "icon": null,
+          "id": "napari-threedee.QtAmbientOcclusionWidget",
+          "python_name": "napari_threedee.dock_widgets:QtAmbientOcclusionWidget",
+          "short_title": null,
+          "title": "Create ambient occlusion widget"
+        },
+        {
+          "category": null,
+          "enablement": null,
+          "icon": null,
+          "id": "napari-threedee.QtCameraSplineWidget",
+          "python_name": "napari_threedee.dock_widgets:QtCameraSpline",
+          "short_title": null,
+          "title": "Create camera spline control widget"
+        },
+        {
+          "category": null,
+          "enablement": null,
+          "icon": null,
+          "id": "napari-threedee.hiv_particles",
+          "python_name": "napari_threedee._sample_data:hiv_sample_tomogram",
+          "short_title": null,
+          "title": "Load HIV tomogram"
+        }
+      ],
+      "configurations": {},
+      "keybindings": null,
+      "menus": {},
+      "readers": null,
+      "sample_data": [
+        {
+          "command": "napari-threedee.hiv_particles",
+          "display_name": "HIV virus-like particles tomogram",
+          "key": "unique_id.1"
+        }
+      ],
+      "submenus": null,
+      "themes": null,
+      "widgets": [
+        {
+          "autogenerate": false,
+          "command": "napari-threedee.QtPointAnnotatorWidget",
+          "display_name": "point annotator"
+        },
+        {
+          "autogenerate": false,
+          "command": "napari-threedee.QtPathAnnotatorWidget",
+          "display_name": "path annotator"
+        },
+        {
+          "autogenerate": false,
+          "command": "napari-threedee.QtSphereAnnotatorWidget",
+          "display_name": "sphere annotator"
+        },
+        {
+          "autogenerate": false,
+          "command": "napari-threedee.QtSurfaceAnnotatorWidget",
+          "display_name": "surface annotator"
+        },
+        {
+          "autogenerate": false,
+          "command": "napari-threedee.QtLabelAnnotatorWidget",
+          "display_name": "label annotator"
+        },
+        {
+          "autogenerate": false,
+          "command": "napari-threedee.QtRenderPlaneManipulatorWidget",
+          "display_name": "render plane manipulator"
+        },
+        {
+          "autogenerate": false,
+          "command": "napari-threedee.QtPointManipulatorWidget",
+          "display_name": "point manipulator"
+        },
+        {
+          "autogenerate": false,
+          "command": "napari-threedee.QtLayerManipulatorWidget",
+          "display_name": "layer manipulator"
+        },
+        {
+          "autogenerate": false,
+          "command": "napari-threedee.QtLightingControlWidget",
+          "display_name": "mesh lighting controls"
+        },
+        {
+          "autogenerate": false,
+          "command": "napari-threedee.QtAmbientOcclusionWidget",
+          "display_name": "ambient occlusion controls"
+        },
+        {
+          "autogenerate": false,
+          "command": "napari-threedee.QtCameraSplineWidget",
+          "display_name": "camera spline control"
+        }
+      ],
+      "writers": null
+    },
+    "display_name": "napari-threedee",
+    "icon": null,
+    "name": "napari-threedee",
+    "npe1_shim": false,
+    "on_activate": null,
+    "on_deactivate": null,
+    "package_metadata": {
+      "author": null,
+      "author_email": "napari team <napari-steering-council@googlegroups.com>",
+      "classifier": [
+        "Development Status :: 2 - Pre-Alpha",
+        "Framework :: napari",
+        "Intended Audience :: Developers",
+        "License :: OSI Approved :: BSD License",
+        "Operating System :: OS Independent",
+        "Programming Language :: Python",
+        "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.12",
+        "Programming Language :: Python :: 3.13",
+        "Topic :: Software Development :: Testing"
+      ],
+      "description": "# napari-threedee\n\n[![License](https://img.shields.io/pypi/l/napari-threedee.svg?color=green)](https://github.com/alisterburt/napari-threedee/raw/main/LICENSE)\n[![PyPI](https://img.shields.io/pypi/v/napari-threedee.svg?color=green)](https://pypi.org/project/napari-threedee)\n[![Python Version](https://img.shields.io/pypi/pyversions/napari-threedee.svg?color=green)](https://python.org)\n[![tests](https://github.com/napari-threedee/napari-threedee/workflows/tests/badge.svg)](https://github.com/napari-threedee/napari-threedee/actions)\n[![codecov](https://codecov.io/gh/napari-threedee/napari-threedee/branch/main/graph/badge.svg)](https://codecov.io/gh/napari-threedee/napari-threedee)\n[![napari hub](https://img.shields.io/endpoint?url=https://api.napari-hub.org/shields/napari-threedee)](https://napari-hub.org/plugins/napari-threedee)\n\nA suite of useful tools based on 3D interactivity in napari\n\n----------------------------------\n\nThis [napari] plugin was generated with [Cookiecutter] using [@napari]'s [cookiecutter-napari-plugin] template.\n\n<!--\nDon't miss the full getting started guide to set up your new package:\nhttps://github.com/napari/cookiecutter-napari-plugin#getting-started\n\nand review the napari docs for plugin developers:\nhttps://napari.org/docs/plugins/index.html\n-->\n\n## Installation\n\nYou can install `napari-threedee` via [pip]:\n\n    pip install napari-threedee\n\n\n\nTo install latest development version :\n\n    pip install git+https://github.com/alisterburt/napari-threedee.git\n\n## Example applications\n\nSee the full list of [example gallery scripts here on our website](https://napari-threedee.github.io/generated/gallery/).\n\n<table border=\"0\">\n<tr><td>\n\n\n<img src=\"https://user-images.githubusercontent.com/1120672/173021751-9206de7d-5675-4aac-aa9e-8585457a7799.gif\"\nwidth=\"300\"/>\n\n</td><td>\n\n[mesh lighting control](https://github.com/napari-threedee/napari-threedee/blob/main/docs/examples/plugin/mesh_headlight_plugin.py)\n\n</td></tr><tr><td>\n\n<img src=\"https://user-images.githubusercontent.com/1120672/173022286-2473b6b2-a20e-4514-88a4-8295e001f099.gif\"\nwidth=\"300\"/>\n\n</td><td>\n\n[annotate points on planes](https://github.com/napari-threedee/napari-threedee/blob/main/docs/examples/plugin/point_annotator_plugin.py)\n\n</td></tr><tr><td>\n\n<img src=\"https://user-images.githubusercontent.com/1120672/173023185-b6936d1d-590c-4b9b-816a-3779dfe774da.gif\"\nwidth=\"300\"/>\n\n</td><td>\n\n[render plane manipulator](https://github.com/napari-threedee/napari-threedee/blob/main/docs/examples/plugin/render_plane_manipulator_plugin.py)\n\n</td></tr><tr><td>\n\n<img src=\"https://user-images.githubusercontent.com/1120672/173023795-7150d3c2-d3d1-4913-981d-1092c1b59f21.gif\"\nwidth=\"300\"/>\n\n</td><td>\n\n[layer manipulator](https://github.com/napari-threedee/napari-threedee/blob/main/docs/examples/plugin/layer_manipulator_plugin.py)\n\n</td></tr><tr><td>\n\n<img src=\"https://user-images.githubusercontent.com/1120672/173024361-2f05c68b-e94d-4734-9f5e-1606391e6463.gif\"\nwidth=\"300\"/>\n\n</td><td>\n\n[point manipulator](https://github.com/napari-threedee/napari-threedee/blob/main/docs/examples/plugin/points_manipulator_plugin.py)\n\n\n</td></tr></table>\n\n\n## Contributing\n\nContributions are very welcome. Tests can be run with [tox], please ensure\nthe coverage at least stays the same before you submit a pull request.\n\n## License\n\nDistributed under the terms of the [BSD-3] license,\n\"napari-threedee\" is free and open source software\n\n## Issues\n\nIf you encounter any problems, please [file an issue] along with a detailed description.\n\n[napari]: https://github.com/napari/napari\n[Cookiecutter]: https://github.com/audreyr/cookiecutter\n[@napari]: https://github.com/napari\n[MIT]: http://opensource.org/licenses/MIT\n[BSD-3]: http://opensource.org/licenses/BSD-3-Clause\n[GNU GPL v3.0]: http://www.gnu.org/licenses/gpl-3.0.txt\n[GNU LGPL v3.0]: http://www.gnu.org/licenses/lgpl-3.0.txt\n[Apache Software License 2.0]: http://www.apache.org/licenses/LICENSE-2.0\n[Mozilla Public License 2.0]: https://www.mozilla.org/media/MPL/2.0/index.txt\n[cookiecutter-napari-plugin]: https://github.com/napari/cookiecutter-napari-plugin\n\n[file an issue]: https://github.com/alisterburt/napari-threedee/issues\n\n[napari]: https://github.com/napari/napari\n[tox]: https://tox.readthedocs.io/en/latest/\n[pip]: https://pypi.org/project/pip/\n[PyPI]: https://pypi.org/\n",
+      "description_content_type": "text/markdown",
+      "download_url": null,
+      "dynamic": null,
+      "home_page": null,
+      "keywords": null,
+      "license": "BSD-3-Clause",
+      "maintainer": null,
+      "maintainer_email": null,
+      "metadata_version": "2.5",
+      "name": "napari-threedee",
+      "obsoletes_dist": null,
+      "platform": null,
+      "project_url": [
+        "homepage, https://github.com/alisterburt/napari-threedee",
+        "repository, https://github.com/napari-threedee/napari-threedee",
+        "Bug Tracker, https://github.com/napari-threedee/napari-threedee/issues",
+        "Documentation, https://github.com/napari-threedee/napari-threedee#README.md",
+        "Source Code, https://github.com/napari-threedee/napari-threedee",
+        "User Support, https://github.com/napari-threedee/napari-threedee/issues"
+      ],
+      "provides_dist": null,
+      "provides_extra": [
+        "dev"
+      ],
+      "requires_dist": [
+        "einops",
+        "imageio!=2.11.0,!=2.22.1,>=2.5.0",
+        "libigl",
+        "magicgui",
+        "morphosamplers",
+        "mrcfile",
+        "napari>=0.5.0",
+        "numpy",
+        "pandas",
+        "pooch",
+        "psygnal",
+        "pydantic",
+        "qtpy",
+        "scipy",
+        "superqt",
+        "vispy",
+        "zarr<3",
+        "lxml[html-clean]>5; extra == 'dev'",
+        "mkdocs; extra == 'dev'",
+        "mkdocs-gallery>0.7.6; extra == 'dev'",
+        "mkdocs-material; extra == 'dev'",
+        "mkdocs-video; extra == 'dev'",
+        "mkdocstrings[python]; extra == 'dev'",
+        "pytest; extra == 'dev'",
+        "pytest-qt; extra == 'dev'",
+        "qtgallery; extra == 'dev'",
+        "scikit-image[data]; extra == 'dev'"
+      ],
+      "requires_external": null,
+      "requires_python": ">=3.10",
+      "summary": "A suite of useful tools based on 3D interactivity in napari",
+      "supported_platform": null,
+      "version": "0.0.29"
+    },
+    "schema_version": "0.1.0",
+    "visibility": "hidden"
+  },
+  "modules": [
+    {
+      "name": "napari_threedee",
+      "origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\napari_threedee\\__init__.py",
+      "sha256": "48f54549a69cc301f47156d9c79d896a9f85228969eb10b9b7cd5c8183019811",
+      "version": "0.0.29"
+    },
+    {
+      "name": "napari",
+      "origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\napari\\__init__.py",
+      "sha256": "450a47e7b594799359a6efab1dd899ddcf9963d72381c635f3ecd45afcb1f8e2",
+      "version": "0.9.2"
+    },
+    {
+      "name": "vispy",
+      "origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\vispy\\__init__.py",
+      "sha256": "43e1025ff84261a2b43749c769551033a6cd4d47f8037b864f119c9e56361455",
+      "version": "0.17.0"
+    },
+    {
+      "name": "npe2",
+      "origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\npe2\\__init__.py",
+      "sha256": "204f3a9c52c7cc5ca92da80b1379459a2785408346abee690c7ec801edfd9415",
+      "version": "0.9.0"
+    },
+    {
+      "name": "PyQt6.QtGui",
+      "origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\PyQt6\\QtGui.pyd",
+      "sha256": "cf5ae37fd119fb29a53f1f2cea1362fdf036d940191be45d83da0f98ce8752b8",
+      "version": ""
+    },
+    {
+      "name": "PyQt6.QtWidgets",
+      "origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\PyQt6\\QtWidgets.pyd",
+      "sha256": "4f81361816e94e1ae05f178085b22d5b9b19e417713b1966dd481a4017aa3b21",
+      "version": ""
+    }
+  ],
+  "other_qt_bindings": [],
+  "python": "3.12.8",
+  "qapplication_created": false,
+  "qualification": "installed_packaging_and_plugin_registration_cpu_only",
+  "registered_manifest_names": [
+    "napari",
+    "napari-console",
+    "napari-svg",
+    "napari-threedee"
+  ],
+  "rendering_qualified": false,
+  "resolved_commands": [
+    {
+      "executed": false,
+      "id": "napari-threedee.QtPointAnnotatorWidget",
+      "module_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\napari_threedee\\annotators\\_qt\\qt_point_annotator.py",
+      "origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\napari_threedee\\annotators\\_qt\\qt_point_annotator.py",
+      "python_name": "napari_threedee.dock_widgets:QtPointAnnotatorWidget",
+      "resolved_name": "napari_threedee.annotators._qt.qt_point_annotator:QtPointAnnotatorWidget",
+      "sha256": "32ebe366a8c87f0b5b5592954f090abd9d1e6df00cd635973293e5717731d794"
+    },
+    {
+      "executed": false,
+      "id": "napari-threedee.QtPathAnnotatorWidget",
+      "module_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\napari_threedee\\annotators\\_qt\\qt_path_annotator.py",
+      "origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\napari_threedee\\annotators\\_qt\\qt_path_annotator.py",
+      "python_name": "napari_threedee.dock_widgets:QtPathAnnotatorWidget",
+      "resolved_name": "napari_threedee.annotators._qt.qt_path_annotator:QtPathAnnotatorWidget",
+      "sha256": "88371480a2ae1c6b25d4f128daf7e91f93a4e9903bd203b8203b969790b2b829"
+    },
+    {
+      "executed": false,
+      "id": "napari-threedee.QtSphereAnnotatorWidget",
+      "module_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\napari_threedee\\annotators\\_qt\\qt_sphere_annotator.py",
+      "origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\napari_threedee\\annotators\\_qt\\qt_sphere_annotator.py",
+      "python_name": "napari_threedee.dock_widgets:QtSphereAnnotatorWidget",
+      "resolved_name": "napari_threedee.annotators._qt.qt_sphere_annotator:QtSphereAnnotatorWidget",
+      "sha256": "0715945dccbec5f9acb2172b93692c6365ef60eceb763faef5ae3690e78b26f0"
+    },
+    {
+      "executed": false,
+      "id": "napari-threedee.QtSurfaceAnnotatorWidget",
+      "module_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\napari_threedee\\annotators\\_qt\\qt_surface_annotator.py",
+      "origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\napari_threedee\\annotators\\_qt\\qt_surface_annotator.py",
+      "python_name": "napari_threedee.dock_widgets:QtSurfaceAnnotatorWidget",
+      "resolved_name": "napari_threedee.annotators._qt.qt_surface_annotator:QtSurfaceAnnotatorWidget",
+      "sha256": "bad8db7d1f4cdeb3f427dfe8edd40b46702ebfe1a9697510f29c7c7698cac54e"
+    },
+    {
+      "executed": false,
+      "id": "napari-threedee.QtLabelAnnotatorWidget",
+      "module_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\napari_threedee\\annotators\\_qt\\qt_label_annotator.py",
+      "origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\napari_threedee\\annotators\\_qt\\qt_label_annotator.py",
+      "python_name": "napari_threedee.dock_widgets:QtLabelAnnotatorWidget",
+      "resolved_name": "napari_threedee.annotators._qt.qt_label_annotator:QtLabelAnnotatorWidget",
+      "sha256": "1eb34247fa0318eeefec2b948bc8a2f8d93aaa55e1ab5fdc6727cc56257e67d4"
+    },
+    {
+      "executed": false,
+      "id": "napari-threedee.QtRenderPlaneManipulatorWidget",
+      "module_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\napari_threedee\\manipulators\\_qt\\qt_render_plane_manipulator.py",
+      "origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\napari_threedee\\manipulators\\_qt\\qt_render_plane_manipulator.py",
+      "python_name": "napari_threedee.dock_widgets:QtRenderPlaneManipulatorWidget",
+      "resolved_name": "napari_threedee.manipulators._qt.qt_render_plane_manipulator:QtRenderPlaneManipulatorWidget",
+      "sha256": "45242695399cd4b5c9d60ff1dbe0e9ac4e915df93b68d6626f92d107af0a86d4"
+    },
+    {
+      "executed": false,
+      "id": "napari-threedee.QtPointManipulatorWidget",
+      "module_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\napari_threedee\\manipulators\\_qt\\qt_point_manipulator.py",
+      "origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\napari_threedee\\manipulators\\_qt\\qt_point_manipulator.py",
+      "python_name": "napari_threedee.dock_widgets:QtPointManipulatorWidget",
+      "resolved_name": "napari_threedee.manipulators._qt.qt_point_manipulator:QtPointManipulatorWidget",
+      "sha256": "00e27536a6d590eb4ef3c0a1af0e9054140ada403fc4001d28d2ea33d33b3161"
+    },
+    {
+      "executed": false,
+      "id": "napari-threedee.QtLayerManipulatorWidget",
+      "module_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\napari_threedee\\manipulators\\_qt\\qt_layer_manipulator.py",
+      "origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\napari_threedee\\manipulators\\_qt\\qt_layer_manipulator.py",
+      "python_name": "napari_threedee.dock_widgets:QtLayerManipulatorWidget",
+      "resolved_name": "napari_threedee.manipulators._qt.qt_layer_manipulator:QtLayerManipulatorWidget",
+      "sha256": "87356de15c583b0bc2c1d5e2e7f8cde412af720de3c31118400f3db3a7ec8fc2"
+    },
+    {
+      "executed": false,
+      "id": "napari-threedee.QtLightingControlWidget",
+      "module_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\napari_threedee\\visualization\\_qt\\qt_lighting_control.py",
+      "origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\napari_threedee\\visualization\\_qt\\qt_lighting_control.py",
+      "python_name": "napari_threedee.dock_widgets:QtLightingControlWidget",
+      "resolved_name": "napari_threedee.visualization._qt.qt_lighting_control:QtLightingControlWidget",
+      "sha256": "3f5d1421e2375e0ad6aef0587efaac9bb2dd5039994a26c227b2fea6708eba2d"
+    },
+    {
+      "executed": false,
+      "id": "napari-threedee.QtAmbientOcclusionWidget",
+      "module_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\napari_threedee\\visualization\\_qt\\qt_lighting_control.py",
+      "origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\napari_threedee\\visualization\\_qt\\qt_lighting_control.py",
+      "python_name": "napari_threedee.dock_widgets:QtAmbientOcclusionWidget",
+      "resolved_name": "napari_threedee.visualization._qt.qt_lighting_control:QtAmbientOcclusionWidget",
+      "sha256": "3f5d1421e2375e0ad6aef0587efaac9bb2dd5039994a26c227b2fea6708eba2d"
+    },
+    {
+      "executed": false,
+      "id": "napari-threedee.QtCameraSplineWidget",
+      "module_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\napari_threedee\\visualization\\_qt\\qt_camera_spline.py",
+      "origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\napari_threedee\\visualization\\_qt\\qt_camera_spline.py",
+      "python_name": "napari_threedee.dock_widgets:QtCameraSpline",
+      "resolved_name": "napari_threedee.visualization._qt.qt_camera_spline:QtCameraSpline",
+      "sha256": "4123f4645f892b13189af64894c4619543384f9925e05809c9e08190c280ba3c"
+    },
+    {
+      "executed": false,
+      "id": "napari-threedee.hiv_particles",
+      "module_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\napari_threedee\\_sample_data.py",
+      "origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\napari_threedee\\_sample_data.py",
+      "python_name": "napari_threedee._sample_data:hiv_sample_tomogram",
+      "resolved_name": "napari_threedee._sample_data:hiv_sample_tomogram",
+      "sha256": "2adf6972a85add7372f6b1ba65ab9f09b8fc6194cd66837d5c4522e5cc136bf1"
+    }
+  ],
+  "source_commit": "7bd485085186ebe1907f8de931aa7a93e0d58a83",
+  "source_tree_sha256": "efddd50707a9b17b3e17eeb0c57f942d474db66b51be73d666363d3ecb8975ae",
+  "tool_sha256": "338853a969f2e3893e18674ad7837a41eb9398d971253641fc01e28071c14056",
+  "unchanged_source_file_count": 115,
+  "version": "0.0.29",
+  "viewer_constructed": false,
+  "warnings": [
+    {
+      "category": "PydanticDeprecatedSince20",
+      "filename": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\pydantic\\_internal\\_generate_schema.py",
+      "line": 299,
+      "message": "`json_encoders` is deprecated. See https://pydantic.dev/docs/validation/2.14/concepts/serialization/#custom-serializers for alternatives. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.14/migration/"
+    },
+    {
+      "category": "PydanticDeprecatedSince20",
+      "filename": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\pydantic\\_internal\\_generate_schema.py",
+      "line": 299,
+      "message": "`json_encoders` is deprecated. See https://pydantic.dev/docs/validation/2.14/concepts/serialization/#custom-serializers for alternatives. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.14/migration/"
+    },
+    {
+      "category": "PydanticDeprecatedSince20",
+      "filename": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\pydantic\\_internal\\_generate_schema.py",
+      "line": 299,
+      "message": "`json_encoders` is deprecated. See https://pydantic.dev/docs/validation/2.14/concepts/serialization/#custom-serializers for alternatives. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.14/migration/"
+    },
+    {
+      "category": "PydanticDeprecatedSince20",
+      "filename": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\pydantic\\_internal\\_generate_schema.py",
+      "line": 299,
+      "message": "`json_encoders` is deprecated. See https://pydantic.dev/docs/validation/2.14/concepts/serialization/#custom-serializers for alternatives. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.14/migration/"
+    },
+    {
+      "category": "PydanticDeprecatedSince20",
+      "filename": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\pydantic\\_internal\\_generate_schema.py",
+      "line": 299,
+      "message": "`json_encoders` is deprecated. See https://pydantic.dev/docs/validation/2.14/concepts/serialization/#custom-serializers for alternatives. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.14/migration/"
+    },
+    {
+      "category": "PydanticDeprecatedSince20",
+      "filename": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\pydantic\\_internal\\_generate_schema.py",
+      "line": 299,
+      "message": "`json_encoders` is deprecated. See https://pydantic.dev/docs/validation/2.14/concepts/serialization/#custom-serializers for alternatives. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.14/migration/"
+    },
+    {
+      "category": "PydanticDeprecatedSince20",
+      "filename": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\pydantic\\_internal\\_generate_schema.py",
+      "line": 299,
+      "message": "`json_encoders` is deprecated. See https://pydantic.dev/docs/validation/2.14/concepts/serialization/#custom-serializers for alternatives. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.14/migration/"
+    },
+    {
+      "category": "PydanticDeprecatedSince20",
+      "filename": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\pydantic\\_internal\\_generate_schema.py",
+      "line": 299,
+      "message": "`json_encoders` is deprecated. See https://pydantic.dev/docs/validation/2.14/concepts/serialization/#custom-serializers for alternatives. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.14/migration/"
+    },
+    {
+      "category": "PydanticDeprecatedSince20",
+      "filename": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\npe2\\manifest\\_package_metadata.py",
+      "line": 45,
+      "message": "Using extra keyword arguments on `Field` is deprecated and will be removed. Use `json_schema_extra` instead. (Extra keys: 'min_ver'). Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.14/migration/"
+    },
+    {
+      "category": "PydanticDeprecatedSince20",
+      "filename": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\npe2\\manifest\\_package_metadata.py",
+      "line": 57,
+      "message": "Using extra keyword arguments on `Field` is deprecated and will be removed. Use `json_schema_extra` instead. (Extra keys: 'min_ver'). Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.14/migration/"
+    },
+    {
+      "category": "PydanticDeprecatedSince20",
+      "filename": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\npe2\\manifest\\_package_metadata.py",
+      "line": 72,
+      "message": "Using extra keyword arguments on `Field` is deprecated and will be removed. Use `json_schema_extra` instead. (Extra keys: 'min_ver'). Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.14/migration/"
+    },
+    {
+      "category": "PydanticDeprecatedSince20",
+      "filename": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\npe2\\manifest\\_package_metadata.py",
+      "line": 89,
+      "message": "Using extra keyword arguments on `Field` is deprecated and will be removed. Use `json_schema_extra` instead. (Extra keys: 'min_ver'). Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.14/migration/"
+    },
+    {
+      "category": "PydanticDeprecatedSince20",
+      "filename": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\npe2\\manifest\\_package_metadata.py",
+      "line": 105,
+      "message": "Using extra keyword arguments on `Field` is deprecated and will be removed. Use `json_schema_extra` instead. (Extra keys: 'min_ver'). Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.14/migration/"
+    },
+    {
+      "category": "PydanticDeprecatedSince20",
+      "filename": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\npe2\\manifest\\_package_metadata.py",
+      "line": 111,
+      "message": "Using extra keyword arguments on `Field` is deprecated and will be removed. Use `json_schema_extra` instead. (Extra keys: 'min_ver'). Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.14/migration/"
+    },
+    {
+      "category": "PydanticDeprecatedSince20",
+      "filename": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\npe2\\manifest\\_package_metadata.py",
+      "line": 126,
+      "message": "Using extra keyword arguments on `Field` is deprecated and will be removed. Use `json_schema_extra` instead. (Extra keys: 'min_ver'). Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.14/migration/"
+    },
+    {
+      "category": "PydanticDeprecatedSince20",
+      "filename": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\npe2\\manifest\\_package_metadata.py",
+      "line": 133,
+      "message": "Using extra keyword arguments on `Field` is deprecated and will be removed. Use `json_schema_extra` instead. (Extra keys: 'min_ver'). Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.14/migration/"
+    },
+    {
+      "category": "PydanticDeprecatedSince20",
+      "filename": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\npe2\\manifest\\_package_metadata.py",
+      "line": 140,
+      "message": "Using extra keyword arguments on `Field` is deprecated and will be removed. Use `json_schema_extra` instead. (Extra keys: 'min_ver'). Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.14/migration/"
+    },
+    {
+      "category": "PydanticDeprecatedSince20",
+      "filename": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\npe2\\manifest\\_package_metadata.py",
+      "line": 148,
+      "message": "Using extra keyword arguments on `Field` is deprecated and will be removed. Use `json_schema_extra` instead. (Extra keys: 'min_ver'). Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.14/migration/"
+    },
+    {
+      "category": "PydanticDeprecatedSince20",
+      "filename": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\npe2\\manifest\\_package_metadata.py",
+      "line": 157,
+      "message": "Using extra keyword arguments on `Field` is deprecated and will be removed. Use `json_schema_extra` instead. (Extra keys: 'min_ver'). Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.14/migration/"
+    },
+    {
+      "category": "PydanticDeprecatedSince20",
+      "filename": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\npe2\\manifest\\_package_metadata.py",
+      "line": 163,
+      "message": "Using extra keyword arguments on `Field` is deprecated and will be removed. Use `json_schema_extra` instead. (Extra keys: 'min_ver'). Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.14/migration/"
+    },
+    {
+      "category": "PydanticDeprecatedSince20",
+      "filename": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\npe2\\manifest\\_package_metadata.py",
+      "line": 172,
+      "message": "Using extra keyword arguments on `Field` is deprecated and will be removed. Use `json_schema_extra` instead. (Extra keys: 'min_ver'). Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.14/migration/"
+    },
+    {
+      "category": "PydanticDeprecatedSince20",
+      "filename": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\npe2\\manifest\\_package_metadata.py",
+      "line": 173,
+      "message": "Using extra keyword arguments on `Field` is deprecated and will be removed. Use `json_schema_extra` instead. (Extra keys: 'min_ver'). Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.14/migration/"
+    },
+    {
+      "category": "PydanticDeprecatedSince20",
+      "filename": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\npe2\\manifest\\contributions\\_contributions.py",
+      "line": 46,
+      "message": "Using extra keyword arguments on `Field` is deprecated and will be removed. Use `json_schema_extra` instead. (Extra keys: 'hide_docs'). Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.14/migration/"
+    },
+    {
+      "category": "PydanticDeprecatedSince20",
+      "filename": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\npe2\\manifest\\schema.py",
+      "line": 101,
+      "message": "`allow_mutation` is deprecated and will be removed. use `frozen` instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.14/migration/"
+    },
+    {
+      "category": "PydanticDeprecatedSince20",
+      "filename": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\npe2\\manifest\\schema.py",
+      "line": 197,
+      "message": "Using extra keyword arguments on `Field` is deprecated and will be removed. Use `json_schema_extra` instead. (Extra keys: 'hide_docs'). Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.14/migration/"
+    },
+    {
+      "category": "PydanticDeprecatedSince20",
+      "filename": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\npe2\\manifest\\schema.py",
+      "line": 206,
+      "message": "Using extra keyword arguments on `Field` is deprecated and will be removed. Use `json_schema_extra` instead. (Extra keys: 'hide_docs'). Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.14/migration/"
+    },
+    {
+      "category": "PydanticDeprecatedSince20",
+      "filename": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\pydantic\\_internal\\_generate_schema.py",
+      "line": 299,
+      "message": "`json_encoders` is deprecated. See https://pydantic.dev/docs/validation/2.14/concepts/serialization/#custom-serializers for alternatives. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.14/migration/"
+    },
+    {
+      "category": "PydanticDeprecatedSince20",
+      "filename": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\pydantic\\_internal\\_generate_schema.py",
+      "line": 299,
+      "message": "`json_encoders` is deprecated. See https://pydantic.dev/docs/validation/2.14/concepts/serialization/#custom-serializers for alternatives. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.14/migration/"
+    },
+    {
+      "category": "PydanticDeprecatedSince20",
+      "filename": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\pydantic\\_internal\\_generate_schema.py",
+      "line": 299,
+      "message": "`json_encoders` is deprecated. See https://pydantic.dev/docs/validation/2.14/concepts/serialization/#custom-serializers for alternatives. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.14/migration/"
+    },
+    {
+      "category": "PydanticDeprecatedSince20",
+      "filename": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\pydantic\\_internal\\_generate_schema.py",
+      "line": 299,
+      "message": "`json_encoders` is deprecated. See https://pydantic.dev/docs/validation/2.14/concepts/serialization/#custom-serializers for alternatives. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.14/migration/"
+    },
+    {
+      "category": "PydanticDeprecatedSince20",
+      "filename": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\pydantic\\_internal\\_generate_schema.py",
+      "line": 299,
+      "message": "`json_encoders` is deprecated. See https://pydantic.dev/docs/validation/2.14/concepts/serialization/#custom-serializers for alternatives. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.14/migration/"
+    },
+    {
+      "category": "PydanticDeprecatedSince20",
+      "filename": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\pydantic\\_internal\\_generate_schema.py",
+      "line": 299,
+      "message": "`json_encoders` is deprecated. See https://pydantic.dev/docs/validation/2.14/concepts/serialization/#custom-serializers for alternatives. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.14/migration/"
+    },
+    {
+      "category": "PydanticDeprecatedSince20",
+      "filename": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\pydantic\\_internal\\_generate_schema.py",
+      "line": 299,
+      "message": "`json_encoders` is deprecated. See https://pydantic.dev/docs/validation/2.14/concepts/serialization/#custom-serializers for alternatives. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.14/migration/"
+    },
+    {
+      "category": "PydanticDeprecatedSince20",
+      "filename": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\pydantic\\_internal\\_generate_schema.py",
+      "line": 299,
+      "message": "`json_encoders` is deprecated. See https://pydantic.dev/docs/validation/2.14/concepts/serialization/#custom-serializers for alternatives. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.14/migration/"
+    },
+    {
+      "category": "PydanticDeprecatedSince20",
+      "filename": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\pydantic\\_internal\\_generate_schema.py",
+      "line": 299,
+      "message": "`json_encoders` is deprecated. See https://pydantic.dev/docs/validation/2.14/concepts/serialization/#custom-serializers for alternatives. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.14/migration/"
+    },
+    {
+      "category": "PydanticDeprecatedSince20",
+      "filename": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\pydantic\\_internal\\_generate_schema.py",
+      "line": 299,
+      "message": "`json_encoders` is deprecated. See https://pydantic.dev/docs/validation/2.14/concepts/serialization/#custom-serializers for alternatives. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.14/migration/"
+    },
+    {
+      "category": "PydanticDeprecatedSince20",
+      "filename": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\pydantic\\_internal\\_generate_schema.py",
+      "line": 299,
+      "message": "`json_encoders` is deprecated. See https://pydantic.dev/docs/validation/2.14/concepts/serialization/#custom-serializers for alternatives. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.14/migration/"
+    },
+    {
+      "category": "PydanticDeprecatedSince20",
+      "filename": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\pydantic\\_internal\\_generate_schema.py",
+      "line": 299,
+      "message": "`json_encoders` is deprecated. See https://pydantic.dev/docs/validation/2.14/concepts/serialization/#custom-serializers for alternatives. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.14/migration/"
+    },
+    {
+      "category": "PydanticDeprecatedSince20",
+      "filename": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\pydantic\\_internal\\_generate_schema.py",
+      "line": 299,
+      "message": "`json_encoders` is deprecated. See https://pydantic.dev/docs/validation/2.14/concepts/serialization/#custom-serializers for alternatives. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.14/migration/"
+    },
+    {
+      "category": "PydanticDeprecatedSince20",
+      "filename": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\pydantic\\_internal\\_generate_schema.py",
+      "line": 299,
+      "message": "`json_encoders` is deprecated. See https://pydantic.dev/docs/validation/2.14/concepts/serialization/#custom-serializers for alternatives. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.14/migration/"
+    },
+    {
+      "category": "PydanticDeprecatedSince20",
+      "filename": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\pydantic\\_internal\\_generate_schema.py",
+      "line": 299,
+      "message": "`json_encoders` is deprecated. See https://pydantic.dev/docs/validation/2.14/concepts/serialization/#custom-serializers for alternatives. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.14/migration/"
+    },
+    {
+      "category": "PydanticDeprecatedSince20",
+      "filename": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\pydantic\\_internal\\_generate_schema.py",
+      "line": 299,
+      "message": "`json_encoders` is deprecated. See https://pydantic.dev/docs/validation/2.14/concepts/serialization/#custom-serializers for alternatives. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.14/migration/"
+    },
+    {
+      "category": "PydanticDeprecatedSince20",
+      "filename": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\napari_threedee\\_backend\\manipulator\\axis_model.py",
+      "line": 17,
+      "message": "Pydantic V1 style `@validator` validators are deprecated. You should migrate to Pydantic V2 style `@field_validator` validators, see the migration guide for more details. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.14/migration/"
+    },
+    {
+      "category": "PydanticDeprecatedSince20",
+      "filename": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\napari_threedee\\_backend\\manipulator\\axis_model.py",
+      "line": 7,
+      "message": "Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.14/migration/"
+    },
+    {
+      "category": "PydanticDeprecatedSince20",
+      "filename": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\napari_threedee\\_backend\\manipulator\\manipulator_model.py",
+      "line": 51,
+      "message": "Pydantic V1 style `@validator` validators are deprecated. You should migrate to Pydantic V2 style `@field_validator` validators, see the migration guide for more details. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.14/migration/"
+    },
+    {
+      "category": "PydanticDeprecatedSince20",
+      "filename": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\napari_threedee\\_backend\\manipulator\\manipulator_model.py",
+      "line": 57,
+      "message": "Pydantic V1 style `@validator` validators are deprecated. You should migrate to Pydantic V2 style `@field_validator` validators, see the migration guide for more details. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.14/migration/"
+    },
+    {
+      "category": "PydanticDeprecatedSince20",
+      "filename": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\napari_threedee\\_backend\\manipulator\\manipulator_model.py",
+      "line": 63,
+      "message": "Pydantic V1 style `@validator` validators are deprecated. You should migrate to Pydantic V2 style `@field_validator` validators, see the migration guide for more details. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.14/migration/"
+    },
+    {
+      "category": "PydanticDeprecatedSince20",
+      "filename": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\psygnal\\_evented_model.py",
+      "line": 172,
+      "message": "Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.14/migration/"
+    },
+    {
+      "category": "PydanticDeprecatedSince20",
+      "filename": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\napari_threedee\\_backend\\manipulator\\vispy_visual_data.py",
+      "line": 14,
+      "message": "Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.14/migration/"
+    },
+    {
+      "category": "PydanticDeprecatedSince20",
+      "filename": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\napari_threedee\\_backend\\manipulator\\vispy_visual_data.py",
+      "line": 106,
+      "message": "Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.14/migration/"
+    },
+    {
+      "category": "PydanticDeprecatedSince20",
+      "filename": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\napari_threedee\\_backend\\manipulator\\vispy_visual_data.py",
+      "line": 158,
+      "message": "Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.14/migration/"
+    },
+    {
+      "category": "PydanticDeprecatedSince20",
+      "filename": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\morphosamplers\\core.py",
+      "line": 6,
+      "message": "`pydantic.generics:GenericModel` has been moved to `pydantic.BaseModel`. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.14/migration/"
+    },
+    {
+      "category": "PydanticDeprecatedSince20",
+      "filename": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\psygnal\\_evented_model.py",
+      "line": 172,
+      "message": "Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.14/migration/"
+    },
+    {
+      "category": "PydanticDeprecatedSince20",
+      "filename": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\psygnal\\_evented_model.py",
+      "line": 172,
+      "message": "Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.14/migration/"
+    },
+    {
+      "category": "PydanticDeprecatedSince20",
+      "filename": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\napari_threedee\\annotators\\surfaces\\annotator.py",
+      "line": 49,
+      "message": "Pydantic V1 style `@validator` validators are deprecated. You should migrate to Pydantic V2 style `@field_validator` validators, see the migration guide for more details. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.14/migration/"
+    },
+    {
+      "category": "PydanticDeprecatedSince20",
+      "filename": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\psygnal\\_evented_model.py",
+      "line": 172,
+      "message": "Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.14/migration/"
+    },
+    {
+      "category": "PydanticDeprecatedSince20",
+      "filename": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\napari_threedee\\annotators\\base.py",
+      "line": 8,
+      "message": "Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.14/migration/"
+    },
+    {
+      "category": "UserWarning",
+      "filename": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\pydantic\\_internal\\_config.py",
+      "line": 408,
+      "message": "Valid config keys have changed in V2:\n* 'allow_mutation' has been removed"
+    },
+    {
+      "category": "UserWarning",
+      "filename": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\pydantic\\_internal\\_config.py",
+      "line": 408,
+      "message": "Valid config keys have changed in V2:\n* 'allow_mutation' has been removed"
+    },
+    {
+      "category": "PydanticDeprecatedSince20",
+      "filename": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\napari_threedee\\data_models\\points.py",
+      "line": 58,
+      "message": "Pydantic V1 style `@validator` validators are deprecated. You should migrate to Pydantic V2 style `@field_validator` validators, see the migration guide for more details. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.14/migration/"
+    },
+    {
+      "category": "UserWarning",
+      "filename": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\pydantic\\_internal\\_config.py",
+      "line": 408,
+      "message": "Valid config keys have changed in V2:\n* 'allow_mutation' has been removed"
+    },
+    {
+      "category": "PydanticDeprecatedSince20",
+      "filename": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\napari_threedee\\data_models\\spline_sampler.py",
+      "line": 36,
+      "message": "Pydantic V1 style `@validator` validators are deprecated. You should migrate to Pydantic V2 style `@field_validator` validators, see the migration guide for more details. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.14/migration/"
+    },
+    {
+      "category": "PydanticDeprecatedSince20",
+      "filename": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\psygnal\\_evented_model.py",
+      "line": 172,
+      "message": "Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.14/migration/"
+    },
+    {
+      "category": "PydanticDeprecatedSince20",
+      "filename": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\napari_threedee\\data_models\\paths.py",
+      "line": 43,
+      "message": "Pydantic V1 style `@validator` validators are deprecated. You should migrate to Pydantic V2 style `@field_validator` validators, see the migration guide for more details. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.14/migration/"
+    },
+    {
+      "category": "PydanticDeprecatedSince20",
+      "filename": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\napari_threedee\\data_models\\paths.py",
+      "line": 23,
+      "message": "Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.14/migration/"
+    },
+    {
+      "category": "UserWarning",
+      "filename": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\pydantic\\_internal\\_config.py",
+      "line": 408,
+      "message": "Valid config keys have changed in V2:\n* 'allow_mutation' has been removed"
+    },
+    {
+      "category": "UserWarning",
+      "filename": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\pydantic\\_internal\\_config.py",
+      "line": 408,
+      "message": "Valid config keys have changed in V2:\n* 'allow_mutation' has been removed"
+    },
+    {
+      "category": "UserWarning",
+      "filename": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\pydantic\\_internal\\_config.py",
+      "line": 408,
+      "message": "Valid config keys have changed in V2:\n* 'allow_mutation' has been removed"
+    },
+    {
+      "category": "PydanticDeprecatedSince20",
+      "filename": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\napari_threedee\\data_models\\spheres.py",
+      "line": 76,
+      "message": "Pydantic V1 style `@validator` validators are deprecated. You should migrate to Pydantic V2 style `@field_validator` validators, see the migration guide for more details. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.14/migration/"
+    },
+    {
+      "category": "PydanticDeprecatedSince20",
+      "filename": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\napari_threedee\\data_models\\spheres.py",
+      "line": 80,
+      "message": "Pydantic V1 style `@validator` validators are deprecated. You should migrate to Pydantic V2 style `@field_validator` validators, see the migration guide for more details. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.14/migration/"
+    },
+    {
+      "category": "UserWarning",
+      "filename": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\pydantic\\_internal\\_config.py",
+      "line": 408,
+      "message": "Valid config keys have changed in V2:\n* 'allow_mutation' has been removed"
+    },
+    {
+      "category": "PydanticDeprecatedSince20",
+      "filename": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\napari_threedee\\data_models\\surfaces.py",
+      "line": 28,
+      "message": "Pydantic V1 style `@validator` validators are deprecated. You should migrate to Pydantic V2 style `@field_validator` validators, see the migration guide for more details. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.14/migration/"
+    },
+    {
+      "category": "PydanticDeprecatedSince20",
+      "filename": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\napari_threedee\\data_models\\surfaces.py",
+      "line": 18,
+      "message": "Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.14/migration/"
+    },
+    {
+      "category": "UserWarning",
+      "filename": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\pydantic\\_internal\\_config.py",
+      "line": 408,
+      "message": "Valid config keys have changed in V2:\n* 'allow_mutation' has been removed"
+    },
+    {
+      "category": "PydanticDeprecatedSince20",
+      "filename": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\napari_threedee\\data_models\\dipoles.py",
+      "line": 30,
+      "message": "Pydantic V1 style `@validator` validators are deprecated. You should migrate to Pydantic V2 style `@field_validator` validators, see the migration guide for more details. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.14/migration/"
+    },
+    {
+      "category": "PydanticDeprecatedSince20",
+      "filename": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\napari_threedee\\data_models\\dipoles.py",
+      "line": 22,
+      "message": "Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.14/migration/"
+    },
+    {
+      "category": "UserWarning",
+      "filename": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\pydantic\\_internal\\_config.py",
+      "line": 408,
+      "message": "Valid config keys have changed in V2:\n* 'allow_mutation' has been removed"
+    },
+    {
+      "category": "UserWarning",
+      "filename": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\pydantic\\_internal\\_config.py",
+      "line": 408,
+      "message": "Valid config keys have changed in V2:\n* 'allow_mutation' has been removed"
+    },
+    {
+      "category": "UserWarning",
+      "filename": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-cpython312-pyqt6-packaged\\Lib\\site-packages\\pydantic\\_internal\\_config.py",
+      "line": 408,
+      "message": "Valid config keys have changed in V2:\n* 'allow_mutation' has been removed"
+    }
+  ],
+  "wheel": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-wheels\\napari-threedee-v0.0.29-qualification-1\\napari_threedee-0.0.29-py3-none-any.whl",
+  "wheel_files_verified_against_installation": [
+    "__init__.py",
+    "napari_threedee/__init__.py",
+    "napari_threedee/_sample_data.py",
+    "napari_threedee/_version.py",
+    "napari_threedee/conftest.py",
+    "napari_threedee/dock_widgets.py",
+    "napari_threedee/napari.yaml",
+    "napari_threedee/vispy.py",
+    "napari_threedee/_backend/__init__.py",
+    "napari_threedee/_backend/threedee_model.py",
+    "napari_threedee/_backend/threedee_widget_base.py",
+    "napari_threedee/_backend/manipulator/__init__.py",
+    "napari_threedee/_backend/manipulator/_interface.py",
+    "napari_threedee/_backend/manipulator/axis_model.py",
+    "napari_threedee/_backend/manipulator/central_axis.py",
+    "napari_threedee/_backend/manipulator/drag_managers.py",
+    "napari_threedee/_backend/manipulator/manipulator_model.py",
+    "napari_threedee/_backend/manipulator/napari_manipulator_backend.py",
+    "napari_threedee/_backend/manipulator/rotator.py",
+    "napari_threedee/_backend/manipulator/translator.py",
+    "napari_threedee/_backend/manipulator/utils.py",
+    "napari_threedee/_backend/manipulator/vispy_manipulator_visual.py",
+    "napari_threedee/_backend/manipulator/vispy_visual_data.py",
+    "napari_threedee/_backend/manipulator/_tests/__init__.py",
+    "napari_threedee/_backend/manipulator/_tests/test_axis_model.py",
+    "napari_threedee/_backend/manipulator/_tests/test_central_axis.py",
+    "napari_threedee/_backend/manipulator/_tests/test_drag_manager.py",
+    "napari_threedee/_backend/manipulator/_tests/test_manipulator.py",
+    "napari_threedee/_backend/manipulator/_tests/test_manipulator_visual_data.py",
+    "napari_threedee/_backend/manipulator/_tests/test_rotator.py",
+    "napari_threedee/_backend/manipulator/_tests/test_translator.py",
+    "napari_threedee/_tests/__init__.py",
+    "napari_threedee/_tests/test_dock_widget.py",
+    "napari_threedee/annotators/__init__.py",
+    "napari_threedee/annotators/base.py",
+    "napari_threedee/annotators/constants.py",
+    "napari_threedee/annotators/_qt/__init__.py",
+    "napari_threedee/annotators/_qt/qt_label_annotator.py",
+    "napari_threedee/annotators/_qt/qt_path_annotator.py",
+    "napari_threedee/annotators/_qt/qt_plane_point_annotator.py",
+    "napari_threedee/annotators/_qt/qt_point_annotator.py",
+    "napari_threedee/annotators/_qt/qt_sphere_annotator.py",
+    "napari_threedee/annotators/_qt/qt_surface_annotator.py",
+    "napari_threedee/annotators/_tests/__init__.py",
+    "napari_threedee/annotators/_tests/conftest.py",
+    "napari_threedee/annotators/_tests/test_path_annotator.py",
+    "napari_threedee/annotators/_tests/test_plane_labeler.py",
+    "napari_threedee/annotators/_tests/test_point_annotator.py",
+    "napari_threedee/annotators/_tests/test_sphere_annotator.py",
+    "napari_threedee/annotators/dipoles/__init__.py",
+    "napari_threedee/annotators/dipoles/annotator.py",
+    "napari_threedee/annotators/dipoles/constants.py",
+    "napari_threedee/annotators/dipoles/validation.py",
+    "napari_threedee/annotators/label/__init__.py",
+    "napari_threedee/annotators/label/annotator.py",
+    "napari_threedee/annotators/paths/__init__.py",
+    "napari_threedee/annotators/paths/annotator.py",
+    "napari_threedee/annotators/paths/constants.py",
+    "napari_threedee/annotators/paths/validation.py",
+    "napari_threedee/annotators/points/__init__.py",
+    "napari_threedee/annotators/points/annotator.py",
+    "napari_threedee/annotators/points/constants.py",
+    "napari_threedee/annotators/points/validation.py",
+    "napari_threedee/annotators/spheres/__init__.py",
+    "napari_threedee/annotators/spheres/annotator.py",
+    "napari_threedee/annotators/spheres/constants.py",
+    "napari_threedee/annotators/spheres/validation.py",
+    "napari_threedee/annotators/spheres/_tests/__init__.py",
+    "napari_threedee/annotators/spheres/_tests/test_data_model.py",
+    "napari_threedee/annotators/surfaces/__init__.py",
+    "napari_threedee/annotators/surfaces/annotator.py",
+    "napari_threedee/annotators/surfaces/constants.py",
+    "napari_threedee/annotators/surfaces/validation.py",
+    "napari_threedee/annotators/surfaces/_tests/__init__.py",
+    "napari_threedee/annotators/surfaces/_tests/test_data_model.py",
+    "napari_threedee/data_models/__init__.py",
+    "napari_threedee/data_models/dipoles.py",
+    "napari_threedee/data_models/paths.py",
+    "napari_threedee/data_models/points.py",
+    "napari_threedee/data_models/spheres.py",
+    "napari_threedee/data_models/spline_sampler.py",
+    "napari_threedee/data_models/surfaces.py",
+    "napari_threedee/data_models/_tests/__init__.py",
+    "napari_threedee/data_models/_tests/test_dipoles.py",
+    "napari_threedee/data_models/_tests/test_paths.py",
+    "napari_threedee/data_models/_tests/test_points.py",
+    "napari_threedee/data_models/_tests/test_spheres.py",
+    "napari_threedee/manipulators/__init__.py",
+    "napari_threedee/manipulators/base_manipulator.py",
+    "napari_threedee/manipulators/constants.py",
+    "napari_threedee/manipulators/layer_manipulator.py",
+    "napari_threedee/manipulators/manipulator_utils.py",
+    "napari_threedee/manipulators/point_manipulator.py",
+    "napari_threedee/manipulators/render_plane_manipulator.py",
+    "napari_threedee/manipulators/_qt/__init__.py",
+    "napari_threedee/manipulators/_qt/qt_layer_manipulator.py",
+    "napari_threedee/manipulators/_qt/qt_point_manipulator.py",
+    "napari_threedee/manipulators/_qt/qt_render_plane_manipulator.py",
+    "napari_threedee/manipulators/_tests/__init__.py",
+    "napari_threedee/manipulators/_tests/test_manipulator_utils.py",
+    "napari_threedee/utils/__init__.py",
+    "napari_threedee/utils/geometry.py",
+    "napari_threedee/utils/mouse_callbacks.py",
+    "napari_threedee/utils/napari_utils.py",
+    "napari_threedee/utils/selection_utils.py",
+    "napari_threedee/utils/_tests/__init__.py",
+    "napari_threedee/utils/_tests/test_geometry.py",
+    "napari_threedee/utils/_tests/test_mouse_callbacks.py",
+    "napari_threedee/visualization/__init__.py",
+    "napari_threedee/visualization/camera_spline.py",
+    "napari_threedee/visualization/lighting_control.py",
+    "napari_threedee/visualization/_qt/__init__.py",
+    "napari_threedee/visualization/_qt/qt_camera_spline.py",
+    "napari_threedee/visualization/_qt/qt_lighting_control.py",
+    "napari_threedee/visualization/_tests/__init__.py",
+    "napari_threedee/visualization/_tests/test_camera_spline.py",
+    "napari_threedee/visualization/_tests/test_lighting_control.py",
+    "napari_threedee-0.0.29.dist-info/METADATA",
+    "napari_threedee-0.0.29.dist-info/WHEEL",
+    "napari_threedee-0.0.29.dist-info/entry_points.txt",
+    "napari_threedee-0.0.29.dist-info/licenses/LICENSE"
+  ],
+  "wheel_sha256": "de115619e84a7967b0386651163c29ec12228d59e58000736067f066237ce91e",
+  "widget_constructed": false,
+  "widgets": [
+    {
+      "command": "napari-threedee.QtPointAnnotatorWidget",
+      "display_name": "point annotator"
+    },
+    {
+      "command": "napari-threedee.QtPathAnnotatorWidget",
+      "display_name": "path annotator"
+    },
+    {
+      "command": "napari-threedee.QtSphereAnnotatorWidget",
+      "display_name": "sphere annotator"
+    },
+    {
+      "command": "napari-threedee.QtSurfaceAnnotatorWidget",
+      "display_name": "surface annotator"
+    },
+    {
+      "command": "napari-threedee.QtLabelAnnotatorWidget",
+      "display_name": "label annotator"
+    },
+    {
+      "command": "napari-threedee.QtRenderPlaneManipulatorWidget",
+      "display_name": "render plane manipulator"
+    },
+    {
+      "command": "napari-threedee.QtPointManipulatorWidget",
+      "display_name": "point manipulator"
+    },
+    {
+      "command": "napari-threedee.QtLayerManipulatorWidget",
+      "display_name": "layer manipulator"
+    },
+    {
+      "command": "napari-threedee.QtLightingControlWidget",
+      "display_name": "mesh lighting controls"
+    },
+    {
+      "command": "napari-threedee.QtAmbientOcclusionWidget",
+      "display_name": "ambient occlusion controls"
+    },
+    {
+      "command": "napari-threedee.QtCameraSplineWidget",
+      "display_name": "camera spline control"
+    }
+  ]
+}

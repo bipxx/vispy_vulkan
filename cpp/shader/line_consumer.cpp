@@ -52,7 +52,7 @@ struct FragmentHelpers {
     bool needed() const { return builtin || query; }
 };
 
-std::string fragment_identifiers(const std::string& source, FragmentHelpers& helpers) {
+std::string fragment_identifiers(const std::string& source, FragmentHelpers& helpers, bool depth_output) {
     const auto lexed = tokens(source);
     std::unordered_map<size_t, std::string> replace;
     size_t mains = 0;
@@ -62,6 +62,8 @@ std::string fragment_identifiers(const std::string& source, FragmentHelpers& hel
             lexed[i + 1].text == "(" && lexed[i + 2].text == ")" && lexed[i + 3].text == "{") {
             replace.emplace(token.begin, "vispy_line_consumer_original_fragment"); ++mains;
         } else if (token.text == "gl_FragCoord") replace.emplace(token.begin, "vispy_line_consumer_fragment_coord");
+        else if (!depth_output && token.text == "gl_FragDepth")
+            replace.emplace(token.begin, "vispy_line_consumer_fragment_depth");
         else if (token.text == "gl_HelperInvocation") {
             replace.emplace(token.begin, "vispy_line_consumer_helper_invocation"); helpers.builtin = true;
         } else if (token.text == "helperInvocationEXT" && i + 1 < lexed.size() && lexed[i + 1].text == "(") {
@@ -310,6 +312,45 @@ void main() {
 }
 )GLSL";
 
+// A separable one-pixel filter of a butt-ended rectangle in line coordinates.
+// Fractional widths retain their area, including widths below one pixel. The
+// rotated filter is deliberately an approximation to hardware GL line smoothing.
+const char* smooth_geometry = R"GLSL(
+float vispy_line_consumer_smooth(vec2 a, vec2 b, vec2 pixel) {
+    vec2 delta = b - a;
+    float segment_length = length(delta);
+    if (segment_length <= 0.0 || !vispy_line_consumer_finite(segment_length)) return 0.0;
+    vec2 tangent = delta / segment_length;
+    vec2 relative = pixel - a;
+    float along = dot(relative, tangent);
+    float across = abs(dot(relative, vec2(-tangent.y, tangent.x)));
+    float width = vispy_line_consumer_raster.x;
+    float side = clamp(min(width, width * 0.5 + 0.5 - across), 0.0, 1.0);
+    float cap = clamp(min(segment_length, min(along + 0.5, segment_length - along + 0.5)), 0.0, 1.0);
+    return side * cap;
+}
+)GLSL";
+
+// Normalization emits one canonical global output. Respect its original name;
+// function parameters also use 'out', so only inspect top-level declarations.
+std::string smooth_color_output(const std::string& fragment) {
+    const auto lexed = tokens(fragment);
+    int braces = 0, parentheses = 0;
+    for (size_t i = 0; i < lexed.size(); ++i) {
+        const auto& t = lexed[i].text;
+        if (t == "{") ++braces;
+        else if (t == "}") --braces;
+        else if (t == "(") ++parentheses;
+        else if (t == ")") --parentheses;
+        else if (t == "out" && !braces && !parentheses && i + 3 < lexed.size()) {
+            if (lexed[i + 1].text != "vec4" || lexed[i + 3].text != ";")
+                throw std::invalid_argument("smooth lines require a vec4 color output for coverage alpha");
+            return lexed[i + 2].text;
+        }
+    }
+    throw std::invalid_argument("smooth line color output is missing");
+}
+
 std::string varying_declaration(const NormVarying& varying) {
     std::string out = "layout(location = " + std::to_string(varying.location) + ") ";
     if (varying.centroid) out += "centroid "; if (varying.sample) out += "sample ";
@@ -342,7 +383,7 @@ std::string value_expression(const LineOutputField& field, size_t n, const std::
     return "((1.0 - " + parameter + ") * " + first + " + " + parameter + " * " + second + ')';
 }
 
-std::string fragment_main(const LineEvaluatorArtifact& evaluator, const FragmentHelpers& helpers) {
+std::string fragment_main(const LineEvaluatorArtifact& evaluator, const FragmentHelpers& helpers, bool depth_output) {
     std::string out = R"GLSL(
 void vispy_line_consumer_initialize_globals() {}
 void main() {
@@ -415,6 +456,8 @@ void main() {
     }
     out += "    vispy_line_consumer_initialize_globals();\n    vispy_line_consumer_original_fragment();\n"
         "    if (!vispy_line_consumer_covered || !vispy_line_consumer_valid) discard;\n}\n";
+    if (!depth_output) replace_one(out, "    gl_FragDepth = depth;",
+        "    vispy_line_consumer_fragment_depth = depth;");
     return out;
 }
 
@@ -577,9 +620,11 @@ std::shared_ptr<const GeneratedLineConsumerArtifact> build_generated_line_consum
             return fail("a compiled evaluator and its exact original are required");
         result->original = result->evaluator->original;
         result->policy_identity = generated_line_consumer_policy_identity(*result->evaluator, policy);
-        if (policy.coverage != LineCoveragePolicy::AliasedMajorAxis || policy.sample_count != 1 ||
-            policy.coverage_identity != kAliasedLineCoverageIdentity)
-            return fail("only the explicit single-sample aliased policy is implemented; smooth/MSAA remain open");
+        const bool smooth = policy.coverage == LineCoveragePolicy::SmoothAnalytic;
+        if (policy.sample_count != 1 ||
+            !(smooth ? policy.coverage_identity == kSmoothLineCoverageIdentity :
+              policy.coverage == LineCoveragePolicy::AliasedMajorAxis && policy.coverage_identity == kAliasedLineCoverageIdentity))
+            return fail("explicit single-sample aliased or analytic-smooth policy required; reference-exact smooth/MSAA remain open");
         const auto& evaluator_ref = *result->evaluator; const auto& original = *result->original;
         if (original.point_sprites || original.options.line_evaluator) return fail("original line render snapshot required");
         if (const auto error = fragment_context_error(original.spv_frag); !error.empty()) return fail(error);
@@ -604,8 +649,13 @@ std::shared_ptr<const GeneratedLineConsumerArtifact> build_generated_line_consum
         if (!result->output_binding || result->output_binding >= limits.max_bindings_per_group)
             return fail("output binding exceeds actual grant");
         const auto block = uniform_block(result->uniforms);
-        const auto common = "#define VISPY_LINE_CONSUMER_ROW_BYTES " + std::to_string(evaluator_ref.output_row_bytes) +
+        auto common = "#define VISPY_LINE_CONSUMER_ROW_BYTES " + std::to_string(evaluator_ref.output_row_bytes) +
             "u\n" + block + storage_block(evaluator_ref) + geometry;
+        if (smooth) {
+            replace_one(common, "vispy_line_consumer_raster.x < 1.0", "vispy_line_consumer_raster.x <= 0.0");
+            replace_one(common, "floor(vispy_line_consumer_raster.x) != vispy_line_consumer_raster.x", "false");
+            common += smooth_geometry;
+        }
         result->vertex = "#version 450\n" + common + vertex_main;
         std::string fragment = original.fragment;
         if (fragment.rfind("#version 450\n", 0) != 0) return fail("unexpected canonical fragment version header");
@@ -626,22 +676,32 @@ std::shared_ptr<const GeneratedLineConsumerArtifact> build_generated_line_consum
             replace_one(fragment, varying_declaration(field.varying), private_declaration(field.varying));
         }
         FragmentHelpers helpers;
-        fragment = fragment_identifiers(fragment, helpers);
+        fragment = fragment_identifiers(fragment, helpers, policy.depth_output);
         fragment.erase(0, std::string("#version 450\n").size());
         std::string generated_prefix = "#version 450\n";
         if (helpers.query) generated_prefix += "#extension GL_EXT_demote_to_helper_invocation : require\n";
         generated_prefix += common +
             "layout(location = 0) flat in uvec4 vispy_line_consumer_ids;\nvec4 vispy_line_consumer_fragment_coord;\n";
+        if (!policy.depth_output) generated_prefix += "float vispy_line_consumer_fragment_depth;\n";
         if (helpers.needed()) generated_prefix += "bool vispy_line_consumer_helper_invocation;\n";
         if (helpers.query) generated_prefix +=
             "bool vispy_line_consumer_query_helper() {\n"
             "    return vispy_line_consumer_helper_invocation || helperInvocationEXT();\n}\n";
-        result->fragment = generated_prefix + fragment + fragment_main(evaluator_ref, helpers);
+        auto suffix = fragment_main(evaluator_ref, helpers, policy.depth_output);
+        if (smooth) {
+            replace_one(suffix,
+                "    bool vispy_line_consumer_covered = vispy_line_consumer_aliased(a, b, pixel, interval.y == 1.0);",
+                "    float vispy_line_consumer_coverage = vispy_line_consumer_smooth(pa, pb, pixel);\n"
+                "    bool vispy_line_consumer_covered = vispy_line_consumer_coverage > 0.0;");
+            replace_one(suffix, "    if (!vispy_line_consumer_covered || !vispy_line_consumer_valid) discard;\n",
+                "    if (!vispy_line_consumer_covered || !vispy_line_consumer_valid) discard;\n    " +
+                smooth_color_output(fragment) + ".a *= vispy_line_consumer_coverage;\n");
+        }
+        result->fragment = generated_prefix + fragment + suffix;
         result->vertex_line_map.assign(std::count(result->vertex.begin(), result->vertex.end(), '\n'), 0);
         result->fragment_line_map.assign(std::count(generated_prefix.begin(), generated_prefix.end(), '\n'), 0);
         // Preserve composer lines after the exact generated UBO/version removal.
         result->fragment_line_map.insert(result->fragment_line_map.end(), canonical_map.begin() + 1, canonical_map.end());
-        const auto suffix = fragment_main(evaluator_ref, helpers);
         result->fragment_line_map.insert(result->fragment_line_map.end(), std::count(suffix.begin(), suffix.end(), '\n'), 0);
         if (result->fragment_line_map.size() != static_cast<size_t>(std::count(result->fragment.begin(), result->fragment.end(), '\n')))
             return fail("generated fragment diagnostic map differs");
@@ -707,14 +767,16 @@ GeneratedLineConsumerDraw plan_generated_line_consumer_draw(
     if (!artifact.ok || !artifact.evaluator || artifact.original != artifact.evaluator->original)
         throw std::invalid_argument("line consumer: compiled exact original/evaluator pair required");
     lines::validate_line_draw_slice(selection, slice); state = lines::state(state.width, state.smooth);
-    if (state.smooth || artifact.policy.coverage != LineCoveragePolicy::AliasedMajorAxis || artifact.policy.sample_count != 1)
-        throw std::invalid_argument("line consumer: smooth/multisample coverage is not implemented");
+    const bool smooth = artifact.policy.coverage == LineCoveragePolicy::SmoothAnalytic;
+    if (state.smooth != smooth || (!smooth && artifact.policy.coverage != LineCoveragePolicy::AliasedMajorAxis) ||
+        artifact.policy.sample_count != 1)
+        throw std::invalid_argument("line consumer: runtime smoothing must match the compiled single-sample policy");
     GeneratedLineConsumerDraw draw;
     draw.parameters.viewport = {representable(viewport.x, "viewport x"), representable(viewport.y, "viewport y"),
         representable(viewport.width, "viewport width", true), representable(viewport.height, "viewport height", true)};
     if (viewport.width < 0 || viewport.height < 0 || framebuffer_height <= 0 || depth_near < 0 || depth_near > 1 ||
         depth_far < 0 || depth_far > 1) throw std::invalid_argument("line consumer: invalid viewport/framebuffer/depth range");
-    const auto rounded_width = std::max(1.0, std::floor(state.width + 0.5));
+    const auto rounded_width = smooth ? state.width : std::max(1.0, std::floor(state.width + 0.5));
     if (rounded_width > 16777216.0) throw std::length_error("line consumer: aliased width exceeds exact shader integer range");
     draw.parameters.raster = {representable(rounded_width, "width", true), representable(framebuffer_height, "framebuffer height", true),
         representable(depth_near, "depth near"), representable(depth_far, "depth far")};

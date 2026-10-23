@@ -6,6 +6,19 @@ the vendored tree checksums; run the same check independently with:
 .venv/Scripts/python.exe cmake/verify_dependencies.py
 ```
 
+GitHub source archives expand the vendored VisPy `.git_archival.txt` placeholders.
+CMake restores recognized archive expansions to their original pinned bytes before
+checking dependencies. To prepare a downloaded archive before a direct checksum
+check or source-distribution build, run:
+
+```console
+python cmake/verify_dependencies.py --restore-archive-metadata
+```
+
+The default standalone checker remains read-only. Git checkouts and unrecognized
+metadata edits are not rewritten; every dependency still has to match the existing
+lock byte for byte. Explicit immutable-origin builds retain their separate checks.
+
 For a fresh Windows qualification environment, synchronize the lock with the
 primary host and build tools, then use the Visual Studio x64 preset:
 
@@ -20,6 +33,11 @@ Use `uv sync --inexact` when preserving those packages; do not clear another
 worker's environment. `hosts` selects napari 0.9.2 and PyQt6 6.11.0. Run PyQt5
 and PySide6 admission in separate environments using their corresponding
 extras. No alternate host is admitted by an import alone.
+
+The `pyqt5` extra pins its Qt runtime by platform: Windows uses
+`PyQt5-Qt5==5.15.2`, which provides Windows wheels, while Linux/macOS retain
+`5.15.19`. The newer runtime has no Windows wheel. Export the project lock for
+the selected binding rather than combining Qt bindings in one environment.
 
 PEP 517 builds pin CMake, nanobind, Cython, and build NumPy. The compiled CPU
 SDF helper comes directly from the unchanged upstream `.pyx` file and includes
@@ -67,6 +85,25 @@ macOS 13 deployment target. Native Wayland is not an admitted surface. The
 Vulkan layer manifest is generated with the actual platform library suffix;
 Metal packages do not load a Vulkan layer. Linux/macOS rendering still requires
 qualification on the designated systems.
+
+The [Linux software-Vulkan workflow](../.github/workflows/linux-vulkan.yml)
+builds a real CPython 3.12 renderer wheel on Ubuntu, checks package/license bytes
+and controlled stripped native origins, then installs it outside the checkout.
+Its lavapipe consumer checks renderbuffer allocation/resize ownership, clear,
+fractional smooth lines/reuse, compiled text and million-marker rendering.
+Adapter details, ICD descriptor/hash, system package versions, raw frames,
+counters and logs are retained. The job fails on a missing software adapter or
+failed rendering check; it grants no native GPU or manylinux qualification.
+WSLg X11/Qt checks remain separate local validation.
+
+The [Metal wheel build workflow](../.github/workflows/metal-wheel.yml) provides
+separate hosted macOS arm64 and Intel CPython 3.12 jobs for the native renderer.
+It checks the macOS 13 wheel tag, Mach-O architecture, controlled stripped native
+origins, system-library dependencies, source package bytes, license copies and
+the 100-MiB compressed-wheel budget. A fresh external consumer imports both
+compiled extensions and compares the CPU SDF helper with the retained upstream
+arrays. These jobs provide build/package evidence; graphics qualification still
+requires actual Metal rendering and lifecycle results.
 
 For a stable milestone while other agents continue source edits, run
 `python cmake/snapshot_wheel_sources.py <new-snapshot-directory>` and build that

@@ -1,0 +1,2 @@
+# Genuine wheel from verified pinned Git commit and upstream annotated tag.
+./build/host-wheels/napari-threedee-v0.0.29-qualification-1/napari_threedee-0.0.29-py3-none-any.whl --hash=sha256:de115619e84a7967b0386651163c29ec12228d59e58000736067f066237ce91e

@@ -1,0 +1,8814 @@
+{
+  "declared_dependencies": [
+    "numpy>=1.13",
+    "scipy",
+    "vispy>=0.5.3",
+    "matplotlib>=1.5.5",
+    "pyqt5",
+    "pillow",
+    "PyOpenGL"
+  ],
+  "dynamic_imports": [],
+  "host": "visbrain",
+  "imports": [
+    {
+      "file": "setup.py",
+      "level": 0,
+      "line": 3,
+      "module": "os",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "setup.py",
+      "level": 0,
+      "line": 4,
+      "module": "setuptools",
+      "names": [
+        "setup",
+        "find_packages"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/__init__.py",
+      "level": 0,
+      "line": 19,
+      "module": "sys",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/_pyqt_module.py",
+      "level": 0,
+      "line": 2,
+      "module": "os",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/_pyqt_module.py",
+      "level": 0,
+      "line": 3,
+      "module": "sip",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/_pyqt_module.py",
+      "level": 0,
+      "line": 5,
+      "module": "PyQt5",
+      "names": [
+        "QtGui"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/_pyqt_module.py",
+      "level": 0,
+      "line": 6,
+      "module": "logging",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/_pyqt_module.py",
+      "level": 1,
+      "line": 8,
+      "module": "utils",
+      "names": [
+        "set_widget_size",
+        "set_log_level"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/_pyqt_module.py",
+      "level": 1,
+      "line": 9,
+      "module": "config",
+      "names": [
+        "PROFILER",
+        "CONFIG"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/_pyqt_module.py",
+      "level": 1,
+      "line": 10,
+      "module": "io",
+      "names": [
+        "path_to_tmp",
+        "download_file",
+        "clean_tmp",
+        "path_to_visbrain_data"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/_pyqt_module.py",
+      "level": 0,
+      "line": 38,
+      "module": "faulthandler",
+      "names": [],
+      "scope": "_PyQtModule.__init__"
+    },
+    {
+      "file": "visbrain/config.py",
+      "level": 0,
+      "line": 2,
+      "module": "sys",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/config.py",
+      "level": 0,
+      "line": 3,
+      "module": "getopt",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/config.py",
+      "level": 0,
+      "line": 4,
+      "module": "logging",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/config.py",
+      "level": 0,
+      "line": 6,
+      "module": "PyQt5",
+      "names": [
+        "QtWidgets"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/config.py",
+      "level": 0,
+      "line": 7,
+      "module": "vispy",
+      "names": [
+        "app"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/config.py",
+      "level": 0,
+      "line": 9,
+      "module": "visbrain.utils.others",
+      "names": [
+        "Profiler"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/config.py",
+      "level": 0,
+      "line": 10,
+      "module": "visbrain.utils.logging",
+      "names": [
+        "set_log_level"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/config.py",
+      "level": 0,
+      "line": 46,
+      "module": "vispy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/__init__.py",
+      "level": 1,
+      "line": 1,
+      "module": "brain",
+      "names": [
+        "Brain"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/__init__.py",
+      "level": 1,
+      "line": 2,
+      "module": "figure",
+      "names": [
+        "Figure"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/__init__.py",
+      "level": 1,
+      "line": 3,
+      "module": "signal",
+      "names": [
+        "Signal"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/__init__.py",
+      "level": 1,
+      "line": 4,
+      "module": "sleep",
+      "names": [
+        "Sleep"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/brain/__init__.py",
+      "level": 1,
+      "line": 2,
+      "module": "brain",
+      "names": [
+        "Brain"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/brain/brain.py",
+      "level": 0,
+      "line": 9,
+      "module": "logging",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/brain/brain.py",
+      "level": 0,
+      "line": 11,
+      "module": "vispy.scene.cameras",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/brain/brain.py",
+      "level": 1,
+      "line": 13,
+      "module": "interface",
+      "names": [
+        "UiInit",
+        "UiElements",
+        "BrainShortcuts"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/brain/brain.py",
+      "level": 1,
+      "line": 14,
+      "module": "visuals",
+      "names": [
+        "Visuals"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/brain/brain.py",
+      "level": 1,
+      "line": 15,
+      "module": "cbar",
+      "names": [
+        "BrainCbar"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/brain/brain.py",
+      "level": 1,
+      "line": 16,
+      "module": "user",
+      "names": [
+        "BrainUserMethods"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/brain/brain.py",
+      "level": 0,
+      "line": 17,
+      "module": "visbrain._pyqt_module",
+      "names": [
+        "_PyQtModule"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/brain/brain.py",
+      "level": 0,
+      "line": 18,
+      "module": "visbrain.config",
+      "names": [
+        "PROFILER"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/brain/cbar.py",
+      "level": 0,
+      "line": 2,
+      "module": "logging",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/brain/cbar.py",
+      "level": 0,
+      "line": 4,
+      "module": "visbrain.visuals",
+      "names": [
+        "CbarQt",
+        "CbarObjetcs",
+        "CbarBase"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/brain/interface/__init__.py",
+      "level": 1,
+      "line": 2,
+      "module": "ui_init",
+      "names": [
+        "UiInit",
+        "BrainShortcuts"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/brain/interface/__init__.py",
+      "level": 1,
+      "line": 3,
+      "module": "ui_elements",
+      "names": [
+        "UiElements"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/brain/interface/gui/__init__.py",
+      "level": 1,
+      "line": 1,
+      "module": "brain_gui",
+      "names": [
+        "Ui_MainWindow"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/brain/interface/gui/brain_gui.py",
+      "level": 0,
+      "line": 9,
+      "module": "PyQt5",
+      "names": [
+        "QtCore",
+        "QtGui",
+        "QtWidgets"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/brain/interface/gui/brain_gui.py",
+      "level": 0,
+      "line": 2194,
+      "module": "sys",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/brain/interface/ui_elements/__init__.py",
+      "level": 1,
+      "line": 2,
+      "module": "ui_elements",
+      "names": [
+        "UiElements"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/brain/interface/ui_elements/ui_atlas.py",
+      "level": 0,
+      "line": 6,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/brain/interface/ui_elements/ui_atlas.py",
+      "level": 0,
+      "line": 7,
+      "module": "logging",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/brain/interface/ui_elements/ui_atlas.py",
+      "level": 0,
+      "line": 8,
+      "module": "PyQt5",
+      "names": [
+        "QtCore"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/brain/interface/ui_elements/ui_atlas.py",
+      "level": 0,
+      "line": 10,
+      "module": "visbrain.objects.volume_obj",
+      "names": [
+        "VOLUME_CMAPS"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/brain/interface/ui_elements/ui_atlas.py",
+      "level": 0,
+      "line": 11,
+      "module": "visbrain.utils",
+      "names": [
+        "fill_pyqt_table"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/brain/interface/ui_elements/ui_config.py",
+      "level": 0,
+      "line": 2,
+      "module": "warnings",
+      "names": [
+        "warn"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/brain/interface/ui_elements/ui_config.py",
+      "level": 0,
+      "line": 4,
+      "module": "visbrain.io",
+      "names": [
+        "dialog_load",
+        "dialog_save",
+        "save_config_json",
+        "load_config_json"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/brain/interface/ui_elements/ui_config.py",
+      "level": 0,
+      "line": 6,
+      "module": "visbrain.utils",
+      "names": [
+        "color2json"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/brain/interface/ui_elements/ui_connectivity.py",
+      "level": 1,
+      "line": 6,
+      "module": "ui_objects",
+      "names": [
+        "_run_method_if_needed"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/brain/interface/ui_elements/ui_elements.py",
+      "level": 1,
+      "line": 3,
+      "module": "ui_atlas",
+      "names": [
+        "UiAtlas"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/brain/interface/ui_elements/ui_elements.py",
+      "level": 1,
+      "line": 4,
+      "module": "ui_menu",
+      "names": [
+        "UiMenu"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/brain/interface/ui_elements/ui_elements.py",
+      "level": 1,
+      "line": 5,
+      "module": "ui_config",
+      "names": [
+        "UiConfig"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/brain/interface/ui_elements/ui_elements.py",
+      "level": 1,
+      "line": 6,
+      "module": "ui_screenshot",
+      "names": [
+        "UiScreenshot"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/brain/interface/ui_elements/ui_elements.py",
+      "level": 1,
+      "line": 8,
+      "module": "ui_connectivity",
+      "names": [
+        "UiConnectivity"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/brain/interface/ui_elements/ui_elements.py",
+      "level": 1,
+      "line": 9,
+      "module": "ui_sources",
+      "names": [
+        "UiSources"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/brain/interface/ui_elements/ui_elements.py",
+      "level": 1,
+      "line": 10,
+      "module": "ui_timeseries",
+      "names": [
+        "UiTimeSeries"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/brain/interface/ui_elements/ui_elements.py",
+      "level": 1,
+      "line": 11,
+      "module": "ui_pictures",
+      "names": [
+        "UiPictures"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/brain/interface/ui_elements/ui_elements.py",
+      "level": 1,
+      "line": 12,
+      "module": "ui_vectors",
+      "names": [
+        "UiVectors"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/brain/interface/ui_elements/ui_elements.py",
+      "level": 1,
+      "line": 13,
+      "module": "ui_objects",
+      "names": [
+        "UiObjects"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/brain/interface/ui_elements/ui_menu.py",
+      "level": 0,
+      "line": 2,
+      "module": "vispy.scene.cameras",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/brain/interface/ui_elements/ui_menu.py",
+      "level": 0,
+      "line": 4,
+      "module": "visbrain.utils",
+      "names": [
+        "HelpMenu"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/brain/interface/ui_elements/ui_objects.py",
+      "level": 0,
+      "line": 2,
+      "module": "functools",
+      "names": [
+        "wraps"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/brain/interface/ui_elements/ui_objects.py",
+      "level": 0,
+      "line": 4,
+      "module": "visbrain.utils",
+      "names": [
+        "disconnect_all"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/brain/interface/ui_elements/ui_pictures.py",
+      "level": 1,
+      "line": 3,
+      "module": "ui_objects",
+      "names": [
+        "_run_method_if_needed"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/brain/interface/ui_elements/ui_screenshot.py",
+      "level": 0,
+      "line": 2,
+      "module": "visbrain.io",
+      "names": [
+        "write_fig_pyqt",
+        "dialog_save"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/brain/interface/ui_elements/ui_screenshot.py",
+      "level": 0,
+      "line": 3,
+      "module": "visbrain.utils",
+      "names": [
+        "ScreenshotPopup"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/brain/interface/ui_elements/ui_sources.py",
+      "level": 0,
+      "line": 2,
+      "module": "logging",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/brain/interface/ui_elements/ui_sources.py",
+      "level": 0,
+      "line": 3,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/brain/interface/ui_elements/ui_sources.py",
+      "level": 1,
+      "line": 5,
+      "module": "ui_objects",
+      "names": [
+        "_run_method_if_needed"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/brain/interface/ui_elements/ui_sources.py",
+      "level": 0,
+      "line": 6,
+      "module": "visbrain.utils",
+      "names": [
+        "textline2color",
+        "safely_set_cbox",
+        "fill_pyqt_table"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/brain/interface/ui_elements/ui_sources.py",
+      "level": 0,
+      "line": 7,
+      "module": "visbrain.io",
+      "names": [
+        "dialog_color"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/brain/interface/ui_elements/ui_timeseries.py",
+      "level": 1,
+      "line": 3,
+      "module": "ui_objects",
+      "names": [
+        "_run_method_if_needed"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/brain/interface/ui_elements/ui_timeseries.py",
+      "level": 0,
+      "line": 4,
+      "module": "visbrain.io",
+      "names": [
+        "dialog_color"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/brain/interface/ui_elements/ui_timeseries.py",
+      "level": 0,
+      "line": 5,
+      "module": "visbrain.utils",
+      "names": [
+        "textline2color"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/brain/interface/ui_elements/ui_vectors.py",
+      "level": 0,
+      "line": 2,
+      "module": "vispy.visuals.line.arrow",
+      "names": [
+        "ARROW_TYPES"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/brain/interface/ui_elements/ui_vectors.py",
+      "level": 1,
+      "line": 4,
+      "module": "ui_objects",
+      "names": [
+        "_run_method_if_needed"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/brain/interface/ui_init.py",
+      "level": 0,
+      "line": 9,
+      "module": "PyQt5",
+      "names": [
+        "QtWidgets"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/brain/interface/ui_init.py",
+      "level": 0,
+      "line": 11,
+      "module": "vispy",
+      "names": [
+        "app"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/brain/interface/ui_init.py",
+      "level": 0,
+      "line": 12,
+      "module": "vispy.scene.cameras",
+      "names": [
+        "TurntableCamera"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/brain/interface/ui_init.py",
+      "level": 1,
+      "line": 14,
+      "module": "gui",
+      "names": [
+        "Ui_MainWindow"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/brain/interface/ui_init.py",
+      "level": 0,
+      "line": 15,
+      "module": "visbrain.objects",
+      "names": [
+        "VisbrainCanvas"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/brain/user.py",
+      "level": 0,
+      "line": 8,
+      "module": "logging",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/brain/user.py",
+      "level": 0,
+      "line": 10,
+      "module": "scipy.spatial",
+      "names": [
+        "ConvexHull"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/brain/user.py",
+      "level": 0,
+      "line": 12,
+      "module": "visbrain.visuals",
+      "names": [
+        "BrainMesh"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/brain/user.py",
+      "level": 0,
+      "line": 13,
+      "module": "visbrain.utils",
+      "names": [
+        "color2vb",
+        "safely_set_cbox"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/brain/user.py",
+      "level": 0,
+      "line": 14,
+      "module": "visbrain.io",
+      "names": [
+        "save_config_json",
+        "write_fig_canvas"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/brain/visuals.py",
+      "level": 0,
+      "line": 2,
+      "module": "logging",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/brain/visuals.py",
+      "level": 0,
+      "line": 4,
+      "module": "vispy",
+      "names": [
+        "scene"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/brain/visuals.py",
+      "level": 0,
+      "line": 5,
+      "module": "vispy.visuals.transforms",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/brain/visuals.py",
+      "level": 0,
+      "line": 7,
+      "module": "visbrain.objects",
+      "names": [
+        "CombineSources",
+        "CombineConnect",
+        "CombineTimeSeries",
+        "CombinePictures",
+        "CombineVectors",
+        "BrainObj",
+        "VolumeObj",
+        "RoiObj",
+        "CrossSecObj"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/brain/visuals.py",
+      "level": 0,
+      "line": 11,
+      "module": "visbrain.config",
+      "names": [
+        "PROFILER"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/figure/__init__.py",
+      "level": 1,
+      "line": 1,
+      "module": "figure",
+      "names": [
+        "Figure"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/figure/figure.py",
+      "level": 0,
+      "line": 3,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/figure/figure.py",
+      "level": 0,
+      "line": 4,
+      "module": "os",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/figure/figure.py",
+      "level": 0,
+      "line": 6,
+      "module": "matplotlib.pyplot",
+      "names": [
+        "imread"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/figure/figure.py",
+      "level": 0,
+      "line": 7,
+      "module": "matplotlib.pyplot",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/figure/figure.py",
+      "level": 0,
+      "line": 8,
+      "module": "matplotlib",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/figure/figure.py",
+      "level": 0,
+      "line": 10,
+      "module": "visbrain.utils",
+      "names": [
+        "color2tuple",
+        "piccrop",
+        "picresize"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/signal/__init__.py",
+      "level": 1,
+      "line": 1,
+      "module": "signal",
+      "names": [
+        "Signal"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/signal/gui/__init__.py",
+      "level": 1,
+      "line": 1,
+      "module": "signal_gui",
+      "names": [
+        "Ui_MainWindow"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/signal/gui/signal_gui.py",
+      "level": 0,
+      "line": 9,
+      "module": "PyQt5",
+      "names": [
+        "QtCore",
+        "QtGui",
+        "QtWidgets"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/signal/gui/signal_gui.py",
+      "level": 0,
+      "line": 1609,
+      "module": "sys",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/signal/signal.py",
+      "level": 0,
+      "line": 2,
+      "module": "os",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/signal/signal.py",
+      "level": 0,
+      "line": 3,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/signal/signal.py",
+      "level": 1,
+      "line": 5,
+      "module": "ui_elements",
+      "names": [
+        "UiElements",
+        "UiInit"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/signal/signal.py",
+      "level": 1,
+      "line": 6,
+      "module": "visuals",
+      "names": [
+        "Visuals"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/signal/signal.py",
+      "level": 0,
+      "line": 7,
+      "module": "visbrain.utils",
+      "names": [
+        "safely_set_cbox",
+        "color2tuple",
+        "color2vb",
+        "mpl_cmap",
+        "toggle_enable_tab"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/signal/signal.py",
+      "level": 0,
+      "line": 9,
+      "module": "visbrain.io",
+      "names": [
+        "write_fig_canvas"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/signal/signal.py",
+      "level": 0,
+      "line": 10,
+      "module": "visbrain._pyqt_module",
+      "names": [
+        "_PyQtModule"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/signal/ui_elements/__init__.py",
+      "level": 1,
+      "line": 1,
+      "module": "ui_elements",
+      "names": [
+        "UiElements"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/signal/ui_elements/__init__.py",
+      "level": 1,
+      "line": 2,
+      "module": "ui_init",
+      "names": [
+        "UiInit"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/signal/ui_elements/ui_annotations.py",
+      "level": 0,
+      "line": 2,
+      "module": "PyQt5",
+      "names": [
+        "QtWidgets"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/signal/ui_elements/ui_annotations.py",
+      "level": 0,
+      "line": 3,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/signal/ui_elements/ui_annotations.py",
+      "level": 0,
+      "line": 5,
+      "module": "visbrain.utils",
+      "names": [
+        "textline2color"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/signal/ui_elements/ui_annotations.py",
+      "level": 0,
+      "line": 6,
+      "module": "visbrain.io",
+      "names": [
+        "dialog_color"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/signal/ui_elements/ui_elements.py",
+      "level": 1,
+      "line": 2,
+      "module": "ui_menu",
+      "names": [
+        "UiMenu",
+        "UiScreenshot"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/signal/ui_elements/ui_elements.py",
+      "level": 1,
+      "line": 3,
+      "module": "ui_signals",
+      "names": [
+        "UiSignals"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/signal/ui_elements/ui_elements.py",
+      "level": 1,
+      "line": 4,
+      "module": "ui_annotations",
+      "names": [
+        "UiAnnotations"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/signal/ui_elements/ui_elements.py",
+      "level": 1,
+      "line": 5,
+      "module": "ui_settings",
+      "names": [
+        "UiSettings"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/signal/ui_elements/ui_elements.py",
+      "level": 1,
+      "line": 6,
+      "module": "ui_grid",
+      "names": [
+        "UiGrid"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/signal/ui_elements/ui_grid.py",
+      "level": 0,
+      "line": 2,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/signal/ui_elements/ui_grid.py",
+      "level": 0,
+      "line": 4,
+      "module": "visbrain.utils",
+      "names": [
+        "textline2color",
+        "safely_set_spin"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/signal/ui_elements/ui_grid.py",
+      "level": 0,
+      "line": 5,
+      "module": "visbrain.io",
+      "names": [
+        "dialog_color",
+        "is_opengl_installed"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/signal/ui_elements/ui_init.py",
+      "level": 0,
+      "line": 2,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/signal/ui_elements/ui_init.py",
+      "level": 0,
+      "line": 3,
+      "module": "PyQt5",
+      "names": [
+        "QtWidgets"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/signal/ui_elements/ui_init.py",
+      "level": 0,
+      "line": 4,
+      "module": "warnings",
+      "names": [
+        "warn"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/signal/ui_elements/ui_init.py",
+      "level": 0,
+      "line": 6,
+      "module": "vispy.scene.cameras",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/signal/ui_elements/ui_init.py",
+      "level": 0,
+      "line": 7,
+      "module": "vispy",
+      "names": [
+        "app"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/signal/ui_elements/ui_init.py",
+      "level": 2,
+      "line": 9,
+      "module": "gui",
+      "names": [
+        "Ui_MainWindow"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/signal/ui_elements/ui_init.py",
+      "level": 0,
+      "line": 10,
+      "module": "visbrain.objects",
+      "names": [
+        "VisbrainCanvas"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/signal/ui_elements/ui_menu.py",
+      "level": 0,
+      "line": 2,
+      "module": "os",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/signal/ui_elements/ui_menu.py",
+      "level": 0,
+      "line": 3,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/signal/ui_elements/ui_menu.py",
+      "level": 0,
+      "line": 5,
+      "module": "visbrain.utils",
+      "names": [
+        "ScreenshotPopup",
+        "HelpMenu"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/signal/ui_elements/ui_menu.py",
+      "level": 0,
+      "line": 6,
+      "module": "visbrain.io",
+      "names": [
+        "dialog_save",
+        "dialog_load",
+        "write_fig_pyqt",
+        "write_fig_canvas",
+        "write_csv",
+        "write_txt"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/signal/ui_elements/ui_settings.py",
+      "level": 0,
+      "line": 2,
+      "module": "visbrain.utils",
+      "names": [
+        "textline2color"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/signal/ui_elements/ui_settings.py",
+      "level": 0,
+      "line": 3,
+      "module": "visbrain.io",
+      "names": [
+        "dialog_color"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/signal/ui_elements/ui_signals.py",
+      "level": 0,
+      "line": 2,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/signal/ui_elements/ui_signals.py",
+      "level": 0,
+      "line": 4,
+      "module": "visbrain.utils",
+      "names": [
+        "textline2color",
+        "safely_set_spin"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/signal/ui_elements/ui_signals.py",
+      "level": 0,
+      "line": 5,
+      "module": "visbrain.io",
+      "names": [
+        "dialog_color",
+        "is_opengl_installed"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/signal/visuals.py",
+      "level": 0,
+      "line": 2,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/signal/visuals.py",
+      "level": 0,
+      "line": 3,
+      "module": "scipy.signal",
+      "names": [
+        "welch"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/signal/visuals.py",
+      "level": 0,
+      "line": 4,
+      "module": "itertools",
+      "names": [
+        "product"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/signal/visuals.py",
+      "level": 0,
+      "line": 6,
+      "module": "vispy",
+      "names": [
+        "scene"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/signal/visuals.py",
+      "level": 0,
+      "line": 7,
+      "module": "vispy.visuals.transforms",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/signal/visuals.py",
+      "level": 0,
+      "line": 9,
+      "module": "visbrain.visuals",
+      "names": [
+        "GridSignal",
+        "TFmapsMesh"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/signal/visuals.py",
+      "level": 0,
+      "line": 10,
+      "module": "visbrain.utils",
+      "names": [
+        "color2vb",
+        "vispy_array",
+        "PrepareData"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/__init__.py",
+      "level": 1,
+      "line": 1,
+      "module": "sleep",
+      "names": [
+        "Sleep"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/interface/__init__.py",
+      "level": 1,
+      "line": 1,
+      "module": "ui_init",
+      "names": [
+        "UiInit"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/interface/__init__.py",
+      "level": 1,
+      "line": 2,
+      "module": "ui_elements",
+      "names": [
+        "UiElements"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/interface/gui/__init__.py",
+      "level": 1,
+      "line": 1,
+      "module": "sleep_gui",
+      "names": [
+        "Ui_MainWindow"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/interface/gui/sleep_gui.py",
+      "level": 0,
+      "line": 9,
+      "module": "PyQt5",
+      "names": [
+        "QtCore",
+        "QtGui",
+        "QtWidgets"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/interface/gui/sleep_gui.py",
+      "level": 0,
+      "line": 2367,
+      "module": "sys",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/interface/ui_elements/__init__.py",
+      "level": 1,
+      "line": 1,
+      "module": "ui_elements",
+      "names": [
+        "UiElements"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/interface/ui_elements/ui_annotate.py",
+      "level": 0,
+      "line": 3,
+      "module": "PyQt5",
+      "names": [
+        "QtWidgets"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/interface/ui_elements/ui_annotate.py",
+      "level": 0,
+      "line": 4,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/interface/ui_elements/ui_detection.py",
+      "level": 0,
+      "line": 2,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/interface/ui_elements/ui_detection.py",
+      "level": 0,
+      "line": 3,
+      "module": "PyQt5",
+      "names": [
+        "QtWidgets",
+        "QtCore"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/interface/ui_elements/ui_detection.py",
+      "level": 0,
+      "line": 4,
+      "module": "logging",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/interface/ui_elements/ui_detection.py",
+      "level": 0,
+      "line": 6,
+      "module": "visbrain.utils",
+      "names": [
+        "remdetect",
+        "spindlesdetect",
+        "slowwavedetect",
+        "kcdetect",
+        "peakdetect",
+        "mtdetect"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/interface/ui_elements/ui_detection.py",
+      "level": 0,
+      "line": 8,
+      "module": "visbrain.utils.sleep.event",
+      "names": [
+        "_events_to_index"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/interface/ui_elements/ui_elements.py",
+      "level": 1,
+      "line": 3,
+      "module": "ui_settings",
+      "names": [
+        "UiSettings"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/interface/ui_elements/ui_elements.py",
+      "level": 1,
+      "line": 4,
+      "module": "ui_panels",
+      "names": [
+        "UiPanels"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/interface/ui_elements/ui_elements.py",
+      "level": 1,
+      "line": 5,
+      "module": "ui_info",
+      "names": [
+        "UiInfo"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/interface/ui_elements/ui_elements.py",
+      "level": 1,
+      "line": 6,
+      "module": "ui_tools",
+      "names": [
+        "UiTools"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/interface/ui_elements/ui_elements.py",
+      "level": 1,
+      "line": 7,
+      "module": "ui_scoring",
+      "names": [
+        "UiScoring"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/interface/ui_elements/ui_elements.py",
+      "level": 1,
+      "line": 8,
+      "module": "ui_detection",
+      "names": [
+        "UiDetection"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/interface/ui_elements/ui_elements.py",
+      "level": 1,
+      "line": 9,
+      "module": "ui_menu",
+      "names": [
+        "UiMenu"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/interface/ui_elements/ui_elements.py",
+      "level": 1,
+      "line": 10,
+      "module": "ui_annotate",
+      "names": [
+        "UiAnnotate"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/interface/ui_elements/ui_elements.py",
+      "level": 1,
+      "line": 11,
+      "module": "ui_screenshot",
+      "names": [
+        "UiScreenshot"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/interface/ui_elements/ui_elements.py",
+      "level": 0,
+      "line": 12,
+      "module": "visbrain.config",
+      "names": [
+        "PROFILER"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/interface/ui_elements/ui_info.py",
+      "level": 0,
+      "line": 2,
+      "module": "os",
+      "names": [
+        "path"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/interface/ui_elements/ui_info.py",
+      "level": 0,
+      "line": 4,
+      "module": "PyQt5",
+      "names": [
+        "QtWidgets"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/interface/ui_elements/ui_info.py",
+      "level": 0,
+      "line": 6,
+      "module": "visbrain.utils",
+      "names": [
+        "sleepstats"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/interface/ui_elements/ui_menu.py",
+      "level": 0,
+      "line": 2,
+      "module": "os",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/interface/ui_elements/ui_menu.py",
+      "level": 0,
+      "line": 4,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/interface/ui_elements/ui_menu.py",
+      "level": 0,
+      "line": 5,
+      "module": "PyQt5",
+      "names": [
+        "QtWidgets"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/interface/ui_elements/ui_menu.py",
+      "level": 0,
+      "line": 7,
+      "module": "visbrain.utils",
+      "names": [
+        "HelpMenu"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/interface/ui_elements/ui_menu.py",
+      "level": 0,
+      "line": 8,
+      "module": "visbrain.io",
+      "names": [
+        "dialog_save",
+        "dialog_load",
+        "write_fig_hyp",
+        "write_csv",
+        "write_txt",
+        "write_hypno",
+        "read_hypno",
+        "annotations_to_array",
+        "oversample_hypno",
+        "save_config_json"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/interface/ui_elements/ui_menu.py",
+      "level": 0,
+      "line": 333,
+      "module": "json",
+      "names": [],
+      "scope": "UiMenu._load_config"
+    },
+    {
+      "file": "visbrain/gui/sleep/interface/ui_elements/ui_panels.py",
+      "level": 0,
+      "line": 2,
+      "module": "PyQt5",
+      "names": [
+        "QtCore",
+        "QtGui",
+        "QtWidgets"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/interface/ui_elements/ui_panels.py",
+      "level": 0,
+      "line": 4,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/interface/ui_elements/ui_panels.py",
+      "level": 2,
+      "line": 6,
+      "module": "ui_init",
+      "names": [
+        "AxisCanvas",
+        "TimeAxis"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/interface/ui_elements/ui_panels.py",
+      "level": 0,
+      "line": 7,
+      "module": "visbrain.utils",
+      "names": [
+        "mpl_cmap",
+        "color2vb"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/interface/ui_elements/ui_panels.py",
+      "level": 0,
+      "line": 8,
+      "module": "visbrain.config",
+      "names": [
+        "PROFILER"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/interface/ui_elements/ui_panels.py",
+      "level": 0,
+      "line": 9,
+      "module": "visbrain.io.dependencies",
+      "names": [
+        "is_lspopt_installed"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/interface/ui_elements/ui_scoring.py",
+      "level": 0,
+      "line": 2,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/interface/ui_elements/ui_scoring.py",
+      "level": 0,
+      "line": 3,
+      "module": "PyQt5",
+      "names": [
+        "QtWidgets"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/interface/ui_elements/ui_scoring.py",
+      "level": 0,
+      "line": 5,
+      "module": "visbrain.utils",
+      "names": [
+        "transient"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/interface/ui_elements/ui_screenshot.py",
+      "level": 0,
+      "line": 2,
+      "module": "visbrain.io",
+      "names": [
+        "write_fig_pyqt",
+        "write_fig_canvas",
+        "dialog_save"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/interface/ui_elements/ui_screenshot.py",
+      "level": 0,
+      "line": 3,
+      "module": "visbrain.utils",
+      "names": [
+        "ScreenshotPopup"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/interface/ui_elements/ui_settings.py",
+      "level": 0,
+      "line": 2,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/interface/ui_elements/ui_settings.py",
+      "level": 0,
+      "line": 3,
+      "module": "datetime",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/interface/ui_elements/ui_settings.py",
+      "level": 0,
+      "line": 4,
+      "module": "PyQt5.QtCore",
+      "names": [
+        "QObjectCleanupHandler"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/interface/ui_elements/ui_settings.py",
+      "level": 0,
+      "line": 6,
+      "module": "vispy.visuals.transforms",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/interface/ui_elements/ui_settings.py",
+      "level": 1,
+      "line": 318,
+      "module": "uiElements",
+      "names": [
+        "uiElements"
+      ],
+      "scope": "UiSettings._fcn_reset_gui"
+    },
+    {
+      "file": "visbrain/gui/sleep/interface/ui_elements/ui_settings.py",
+      "level": 3,
+      "line": 319,
+      "module": "visuals",
+      "names": [
+        "visuals"
+      ],
+      "scope": "UiSettings._fcn_reset_gui"
+    },
+    {
+      "file": "visbrain/gui/sleep/interface/ui_elements/ui_settings.py",
+      "level": 3,
+      "line": 320,
+      "module": "tools",
+      "names": [
+        "Tools"
+      ],
+      "scope": "UiSettings._fcn_reset_gui"
+    },
+    {
+      "file": "visbrain/gui/sleep/interface/ui_elements/ui_tools.py",
+      "level": 0,
+      "line": 3,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/interface/ui_elements/ui_tools.py",
+      "level": 0,
+      "line": 4,
+      "module": "PyQt5",
+      "names": [
+        "QtWidgets"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/interface/ui_elements/ui_tools.py",
+      "level": 0,
+      "line": 5,
+      "module": "visbrain.utils",
+      "names": [
+        "rereferencing",
+        "bipolarization",
+        "find_non_eeg",
+        "commonaverage"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/interface/ui_init.py",
+      "level": 0,
+      "line": 8,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/interface/ui_init.py",
+      "level": 0,
+      "line": 10,
+      "module": "PyQt5",
+      "names": [
+        "QtWidgets"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/interface/ui_init.py",
+      "level": 0,
+      "line": 11,
+      "module": "vispy",
+      "names": [
+        "app",
+        "scene"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/interface/ui_init.py",
+      "level": 0,
+      "line": 12,
+      "module": "vispy.visuals.transforms",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/interface/ui_init.py",
+      "level": 2,
+      "line": 14,
+      "module": "visuals.marker",
+      "names": [
+        "Markers"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/interface/ui_init.py",
+      "level": 1,
+      "line": 15,
+      "module": "gui",
+      "names": [
+        "Ui_MainWindow"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/interface/ui_init.py",
+      "level": 0,
+      "line": 16,
+      "module": "visbrain.utils",
+      "names": [
+        "color2vb"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/sleep.py",
+      "level": 0,
+      "line": 2,
+      "module": "logging",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/sleep.py",
+      "level": 0,
+      "line": 4,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/sleep.py",
+      "level": 0,
+      "line": 6,
+      "module": "vispy.scene.cameras",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/sleep.py",
+      "level": 1,
+      "line": 8,
+      "module": "interface",
+      "names": [
+        "UiInit",
+        "UiElements"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/sleep.py",
+      "level": 1,
+      "line": 9,
+      "module": "visuals",
+      "names": [
+        "Visuals"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/sleep.py",
+      "level": 0,
+      "line": 10,
+      "module": "visbrain._pyqt_module",
+      "names": [
+        "_PyQtModule"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/sleep.py",
+      "level": 0,
+      "line": 11,
+      "module": "visbrain.utils",
+      "names": [
+        "FixedCam",
+        "color2vb",
+        "MouseEventControl"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/sleep.py",
+      "level": 0,
+      "line": 12,
+      "module": "visbrain.io",
+      "names": [
+        "ReadSleepData"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/sleep.py",
+      "level": 0,
+      "line": 13,
+      "module": "visbrain.config",
+      "names": [
+        "PROFILER"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/visuals/__init__.py",
+      "level": 1,
+      "line": 3,
+      "module": "visuals",
+      "names": [
+        "Visuals"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/visuals/__init__.py",
+      "level": 1,
+      "line": 4,
+      "module": "marker",
+      "names": [
+        "Markers"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/visuals/marker.py",
+      "level": 0,
+      "line": 3,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/visuals/marker.py",
+      "level": 0,
+      "line": 5,
+      "module": "vispy.color",
+      "names": [
+        "ColorArray"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/visuals/marker.py",
+      "level": 0,
+      "line": 6,
+      "module": "vispy.gloo",
+      "names": [
+        "VertexBuffer",
+        "_check_valid"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/visuals/marker.py",
+      "level": 0,
+      "line": 7,
+      "module": "vispy.visuals.shaders",
+      "names": [
+        "Function",
+        "Variable"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/visuals/marker.py",
+      "level": 0,
+      "line": 8,
+      "module": "vispy.visuals.visual",
+      "names": [
+        "Visual"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/visuals/marker.py",
+      "level": 0,
+      "line": 9,
+      "module": "vispy.scene",
+      "names": [
+        "visuals"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/visuals/marker.py",
+      "level": 0,
+      "line": 617,
+      "module": "vispy.gloo",
+      "names": [
+        "gl"
+      ],
+      "scope": "MarkersVisual._prepare_draw"
+    },
+    {
+      "file": "visbrain/gui/sleep/visuals/visuals.py",
+      "level": 0,
+      "line": 6,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/visuals/visuals.py",
+      "level": 0,
+      "line": 7,
+      "module": "scipy.signal",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/visuals/visuals.py",
+      "level": 0,
+      "line": 8,
+      "module": "itertools",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/visuals/visuals.py",
+      "level": 0,
+      "line": 9,
+      "module": "logging",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/visuals/visuals.py",
+      "level": 0,
+      "line": 11,
+      "module": "vispy",
+      "names": [
+        "scene"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/visuals/visuals.py",
+      "level": 0,
+      "line": 12,
+      "module": "vispy.visuals.transforms",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/visuals/visuals.py",
+      "level": 1,
+      "line": 14,
+      "module": "marker",
+      "names": [
+        "Markers"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/visuals/visuals.py",
+      "level": 0,
+      "line": 15,
+      "module": "visbrain.utils",
+      "names": [
+        "color2vb",
+        "PrepareData",
+        "cmap_to_glsl"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/visuals/visuals.py",
+      "level": 0,
+      "line": 16,
+      "module": "visbrain.utils.sleep.event",
+      "names": [
+        "_index_to_events"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/visuals/visuals.py",
+      "level": 0,
+      "line": 17,
+      "module": "visbrain.visuals",
+      "names": [
+        "TopoMesh",
+        "TFmapsMesh"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/visuals/visuals.py",
+      "level": 0,
+      "line": 18,
+      "module": "visbrain.config",
+      "names": [
+        "PROFILER"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/visuals/visuals.py",
+      "level": 0,
+      "line": 489,
+      "module": "lspopt",
+      "names": [
+        "spectrogram_lspopt"
+      ],
+      "scope": "Spectrogram.set_data"
+    },
+    {
+      "file": "visbrain/io/__init__.py",
+      "level": 1,
+      "line": 2,
+      "module": "dependencies",
+      "names": [
+        "is_mne_installed",
+        "is_nibabel_installed",
+        "is_opengl_installed",
+        "is_pandas_installed",
+        "is_lspopt_installed",
+        "is_xlrd_installed",
+        "is_tensorpac_installed",
+        "is_sc_image_installed"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/io/__init__.py",
+      "level": 1,
+      "line": 6,
+      "module": "dialog",
+      "names": [
+        "*"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/io/__init__.py",
+      "level": 1,
+      "line": 7,
+      "module": "download",
+      "names": [
+        "*"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/io/__init__.py",
+      "level": 1,
+      "line": 8,
+      "module": "mneio",
+      "names": [
+        "*"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/io/__init__.py",
+      "level": 1,
+      "line": 9,
+      "module": "path",
+      "names": [
+        "*"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/io/__init__.py",
+      "level": 1,
+      "line": 10,
+      "module": "read_annotations",
+      "names": [
+        "*"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/io/__init__.py",
+      "level": 1,
+      "line": 11,
+      "module": "read_data",
+      "names": [
+        "*"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/io/__init__.py",
+      "level": 1,
+      "line": 12,
+      "module": "rw_nifti",
+      "names": [
+        "read_nifti",
+        "read_mist",
+        "niimg_to_transform"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/io/__init__.py",
+      "level": 1,
+      "line": 13,
+      "module": "read_sleep",
+      "names": [
+        "ReadSleepData",
+        "get_sleep_stats"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/io/__init__.py",
+      "level": 1,
+      "line": 14,
+      "module": "rw_config",
+      "names": [
+        "*"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/io/__init__.py",
+      "level": 1,
+      "line": 15,
+      "module": "rw_hypno",
+      "names": [
+        "*"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/io/__init__.py",
+      "level": 1,
+      "line": 16,
+      "module": "rw_utils",
+      "names": [
+        "*"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/io/__init__.py",
+      "level": 1,
+      "line": 17,
+      "module": "write_data",
+      "names": [
+        "*"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/io/__init__.py",
+      "level": 1,
+      "line": 18,
+      "module": "write_image",
+      "names": [
+        "*"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/io/__init__.py",
+      "level": 1,
+      "line": 19,
+      "module": "write_table",
+      "names": [
+        "*"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/io/__init__.py",
+      "level": 1,
+      "line": 20,
+      "module": "write_template",
+      "names": [
+        "*"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/io/dependencies.py",
+      "level": 0,
+      "line": 18,
+      "module": "distutils.version",
+      "names": [
+        "LooseVersion"
+      ],
+      "scope": "_check_version"
+    },
+    {
+      "file": "visbrain/io/dependencies.py",
+      "level": 0,
+      "line": 25,
+      "module": "mne",
+      "names": [],
+      "scope": "is_mne_installed"
+    },
+    {
+      "file": "visbrain/io/dependencies.py",
+      "level": 0,
+      "line": 39,
+      "module": "nibabel",
+      "names": [],
+      "scope": "is_nibabel_installed"
+    },
+    {
+      "file": "visbrain/io/dependencies.py",
+      "level": 0,
+      "line": 53,
+      "module": "OpenGL.GL",
+      "names": [],
+      "scope": "is_opengl_installed"
+    },
+    {
+      "file": "visbrain/io/dependencies.py",
+      "level": 0,
+      "line": 68,
+      "module": "pandas",
+      "names": [],
+      "scope": "is_pandas_installed"
+    },
+    {
+      "file": "visbrain/io/dependencies.py",
+      "level": 0,
+      "line": 82,
+      "module": "lspopt",
+      "names": [],
+      "scope": "is_lspopt_installed"
+    },
+    {
+      "file": "visbrain/io/dependencies.py",
+      "level": 0,
+      "line": 96,
+      "module": "tensorpac",
+      "names": [],
+      "scope": "is_tensorpac_installed"
+    },
+    {
+      "file": "visbrain/io/dependencies.py",
+      "level": 0,
+      "line": 111,
+      "module": "xlrd",
+      "names": [],
+      "scope": "is_xlrd_installed"
+    },
+    {
+      "file": "visbrain/io/dependencies.py",
+      "level": 0,
+      "line": 125,
+      "module": "skimage",
+      "names": [],
+      "scope": "is_sc_image_installed"
+    },
+    {
+      "file": "visbrain/io/dialog.py",
+      "level": 0,
+      "line": 6,
+      "module": "PyQt5.QtWidgets",
+      "names": [
+        "QFileDialog",
+        "QColorDialog"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/io/dialog.py",
+      "level": 0,
+      "line": 7,
+      "module": "os",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/io/dialog.py",
+      "level": 1,
+      "line": 9,
+      "module": "rw_utils",
+      "names": [
+        "safety_save"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/io/download.py",
+      "level": 0,
+      "line": 2,
+      "module": "logging",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/io/download.py",
+      "level": 0,
+      "line": 3,
+      "module": "os",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/io/download.py",
+      "level": 0,
+      "line": 4,
+      "module": "sys",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/io/download.py",
+      "level": 0,
+      "line": 5,
+      "module": "urllib",
+      "names": [
+        "request"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/io/download.py",
+      "level": 0,
+      "line": 6,
+      "module": "zipfile",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/io/download.py",
+      "level": 0,
+      "line": 7,
+      "module": "warnings",
+      "names": [
+        "warn"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/io/download.py",
+      "level": 1,
+      "line": 9,
+      "module": "rw_config",
+      "names": [
+        "load_config_json"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/io/download.py",
+      "level": 1,
+      "line": 10,
+      "module": "path",
+      "names": [
+        "get_data_url_path"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/io/mneio.py",
+      "level": 0,
+      "line": 2,
+      "module": "datetime",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/io/mneio.py",
+      "level": 0,
+      "line": 3,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/io/mneio.py",
+      "level": 2,
+      "line": 4,
+      "module": "utils",
+      "names": [
+        "get_dsf"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/io/mneio.py",
+      "level": 0,
+      "line": 40,
+      "module": "mne",
+      "names": [
+        "io"
+      ],
+      "scope": "mne_switch"
+    },
+    {
+      "file": "visbrain/io/path.py",
+      "level": 0,
+      "line": 2,
+      "module": "logging",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/io/path.py",
+      "level": 0,
+      "line": 3,
+      "module": "os",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/io/path.py",
+      "level": 0,
+      "line": 4,
+      "module": "pkg_resources",
+      "names": [
+        "resource_filename"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/io/path.py",
+      "level": 0,
+      "line": 75,
+      "module": "glob",
+      "names": [],
+      "scope": "get_files_in_folders"
+    },
+    {
+      "file": "visbrain/io/path.py",
+      "level": 0,
+      "line": 95,
+      "module": "itertools",
+      "names": [
+        "product"
+      ],
+      "scope": "get_files_in_folders"
+    },
+    {
+      "file": "visbrain/io/path.py",
+      "level": 0,
+      "line": 123,
+      "module": "shutil",
+      "names": [],
+      "scope": "clean_tmp"
+    },
+    {
+      "file": "visbrain/io/read_annotations.py",
+      "level": 0,
+      "line": 2,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/io/read_annotations.py",
+      "level": 1,
+      "line": 3,
+      "module": "dependencies",
+      "names": [
+        "is_mne_installed"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/io/read_annotations.py",
+      "level": 0,
+      "line": 44,
+      "module": "mne",
+      "names": [],
+      "scope": "annotations_to_array"
+    },
+    {
+      "file": "visbrain/io/read_data.py",
+      "level": 0,
+      "line": 11,
+      "module": "os",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/io/read_data.py",
+      "level": 0,
+      "line": 12,
+      "module": "logging",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/io/read_data.py",
+      "level": 0,
+      "line": 14,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/io/read_data.py",
+      "level": 1,
+      "line": 16,
+      "module": "dependencies",
+      "names": [
+        "is_nibabel_installed"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/io/read_data.py",
+      "level": 0,
+      "line": 28,
+      "module": "scipy.io",
+      "names": [
+        "loadmat"
+      ],
+      "scope": "read_mat"
+    },
+    {
+      "file": "visbrain/io/read_data.py",
+      "level": 0,
+      "line": 141,
+      "module": "lxml",
+      "names": [
+        "etree"
+      ],
+      "scope": "read_x3d"
+    },
+    {
+      "file": "visbrain/io/read_data.py",
+      "level": 0,
+      "line": 142,
+      "module": "re",
+      "names": [],
+      "scope": "read_x3d"
+    },
+    {
+      "file": "visbrain/io/read_data.py",
+      "level": 0,
+      "line": 182,
+      "module": "nibabel",
+      "names": [],
+      "scope": "read_gii"
+    },
+    {
+      "file": "visbrain/io/read_data.py",
+      "level": 0,
+      "line": 273,
+      "module": "nibabel",
+      "names": [],
+      "scope": "read_freesurfer_mesh"
+    },
+    {
+      "file": "visbrain/io/read_sleep.py",
+      "level": 0,
+      "line": 10,
+      "module": "os",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/io/read_sleep.py",
+      "level": 0,
+      "line": 11,
+      "module": "io",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/io/read_sleep.py",
+      "level": 0,
+      "line": 12,
+      "module": "warnings",
+      "names": [
+        "warn"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/io/read_sleep.py",
+      "level": 0,
+      "line": 13,
+      "module": "logging",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/io/read_sleep.py",
+      "level": 0,
+      "line": 14,
+      "module": "datetime",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/io/read_sleep.py",
+      "level": 0,
+      "line": 16,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/io/read_sleep.py",
+      "level": 0,
+      "line": 17,
+      "module": "scipy.stats",
+      "names": [
+        "iqr"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/io/read_sleep.py",
+      "level": 0,
+      "line": 19,
+      "module": "visbrain.io.dependencies",
+      "names": [
+        "is_mne_installed"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/io/read_sleep.py",
+      "level": 0,
+      "line": 20,
+      "module": "visbrain.io.dialog",
+      "names": [
+        "dialog_load"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/io/read_sleep.py",
+      "level": 0,
+      "line": 21,
+      "module": "visbrain.io.mneio",
+      "names": [
+        "mne_switch"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/io/read_sleep.py",
+      "level": 0,
+      "line": 22,
+      "module": "visbrain.io.rw_hypno",
+      "names": [
+        "read_hypno",
+        "oversample_hypno"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/io/read_sleep.py",
+      "level": 0,
+      "line": 23,
+      "module": "visbrain.io.rw_utils",
+      "names": [
+        "get_file_ext"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/io/read_sleep.py",
+      "level": 0,
+      "line": 24,
+      "module": "visbrain.io.write_data",
+      "names": [
+        "write_csv"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/io/read_sleep.py",
+      "level": 0,
+      "line": 25,
+      "module": "visbrain.io",
+      "names": [
+        "merge_annotations"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/io/read_sleep.py",
+      "level": 0,
+      "line": 27,
+      "module": "visbrain.utils.others",
+      "names": [
+        "get_dsf"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/io/read_sleep.py",
+      "level": 0,
+      "line": 28,
+      "module": "visbrain.utils.mesh",
+      "names": [
+        "vispy_array"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/io/read_sleep.py",
+      "level": 0,
+      "line": 29,
+      "module": "visbrain.utils.sleep.hypnoprocessing",
+      "names": [
+        "sleepstats"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/io/read_sleep.py",
+      "level": 0,
+      "line": 31,
+      "module": "visbrain.config",
+      "names": [
+        "PROFILER"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/io/read_sleep.py",
+      "level": 2,
+      "line": 312,
+      "module": "utils.sleep.edf",
+      "names": [
+        "Edf"
+      ],
+      "scope": "read_edf"
+    },
+    {
+      "file": "visbrain/io/read_sleep.py",
+      "level": 0,
+      "line": 374,
+      "module": "struct",
+      "names": [],
+      "scope": "read_trc"
+    },
+    {
+      "file": "visbrain/io/read_sleep.py",
+      "level": 0,
+      "line": 477,
+      "module": "re",
+      "names": [],
+      "scope": "read_bva"
+    },
+    {
+      "file": "visbrain/io/rw_config.py",
+      "level": 0,
+      "line": 16,
+      "module": "io",
+      "names": [],
+      "scope": "save_config_json"
+    },
+    {
+      "file": "visbrain/io/rw_config.py",
+      "level": 0,
+      "line": 17,
+      "module": "json",
+      "names": [],
+      "scope": "save_config_json"
+    },
+    {
+      "file": "visbrain/io/rw_config.py",
+      "level": 0,
+      "line": 46,
+      "module": "json",
+      "names": [],
+      "scope": "load_config_json"
+    },
+    {
+      "file": "visbrain/io/rw_hypno.py",
+      "level": 0,
+      "line": 20,
+      "module": "os",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/io/rw_hypno.py",
+      "level": 0,
+      "line": 21,
+      "module": "logging",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/io/rw_hypno.py",
+      "level": 0,
+      "line": 22,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/io/rw_hypno.py",
+      "level": 2,
+      "line": 24,
+      "module": "utils.sleep.hypnoprocessing",
+      "names": [
+        "transient"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/io/rw_hypno.py",
+      "level": 2,
+      "line": 25,
+      "module": "utils.mesh",
+      "names": [
+        "vispy_array"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/io/rw_hypno.py",
+      "level": 2,
+      "line": 26,
+      "module": "io",
+      "names": [
+        "is_pandas_installed",
+        "is_xlrd_installed"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/io/rw_hypno.py",
+      "level": 0,
+      "line": 108,
+      "module": "pandas",
+      "names": [],
+      "scope": "hypno_sample_to_time"
+    },
+    {
+      "file": "visbrain/io/rw_hypno.py",
+      "level": 0,
+      "line": 197,
+      "module": "pandas",
+      "names": [],
+      "scope": "write_hypno"
+    },
+    {
+      "file": "visbrain/io/rw_hypno.py",
+      "level": 0,
+      "line": 207,
+      "module": "pandas",
+      "names": [],
+      "scope": "write_hypno"
+    },
+    {
+      "file": "visbrain/io/rw_hypno.py",
+      "level": 0,
+      "line": 322,
+      "module": "pandas",
+      "names": [],
+      "scope": "read_hypno"
+    },
+    {
+      "file": "visbrain/io/rw_hypno.py",
+      "level": 0,
+      "line": 327,
+      "module": "pandas",
+      "names": [],
+      "scope": "read_hypno"
+    },
+    {
+      "file": "visbrain/io/rw_nifti.py",
+      "level": 0,
+      "line": 2,
+      "module": "os",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/io/rw_nifti.py",
+      "level": 0,
+      "line": 4,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/io/rw_nifti.py",
+      "level": 1,
+      "line": 6,
+      "module": "dependencies",
+      "names": [
+        "is_nibabel_installed"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/io/rw_nifti.py",
+      "level": 1,
+      "line": 7,
+      "module": "path",
+      "names": [
+        "path_to_visbrain_data"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/io/rw_nifti.py",
+      "level": 2,
+      "line": 8,
+      "module": "utils.transform",
+      "names": [
+        "array_to_stt"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/io/rw_nifti.py",
+      "level": 0,
+      "line": 10,
+      "module": "vispy.visuals.transforms",
+      "names": [
+        "MatrixTransform",
+        "ChainTransform",
+        "STTransform"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/io/rw_nifti.py",
+      "level": 0,
+      "line": 32,
+      "module": "nibabel",
+      "names": [],
+      "scope": "read_nifti"
+    },
+    {
+      "file": "visbrain/io/rw_utils.py",
+      "level": 0,
+      "line": 6,
+      "module": "os",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/io/write_data.py",
+      "level": 0,
+      "line": 57,
+      "module": "csv",
+      "names": [],
+      "scope": "write_csv"
+    },
+    {
+      "file": "visbrain/io/write_image.py",
+      "level": 0,
+      "line": 7,
+      "module": "os",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/io/write_image.py",
+      "level": 0,
+      "line": 8,
+      "module": "logging",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/io/write_image.py",
+      "level": 0,
+      "line": 9,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/io/write_image.py",
+      "level": 2,
+      "line": 11,
+      "module": "utils.color",
+      "names": [
+        "color2vb"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/io/write_image.py",
+      "level": 2,
+      "line": 12,
+      "module": "config",
+      "names": [
+        "CONFIG"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/io/write_image.py",
+      "level": 0,
+      "line": 46,
+      "module": "matplotlib.pyplot",
+      "names": [],
+      "scope": "write_fig_hyp"
+    },
+    {
+      "file": "visbrain/io/write_image.py",
+      "level": 0,
+      "line": 47,
+      "module": "datetime",
+      "names": [],
+      "scope": "write_fig_hyp"
+    },
+    {
+      "file": "visbrain/io/write_image.py",
+      "level": 0,
+      "line": 177,
+      "module": "matplotlib.pyplot",
+      "names": [],
+      "scope": "write_fig_spindles"
+    },
+    {
+      "file": "visbrain/io/write_image.py",
+      "level": 2,
+      "line": 178,
+      "module": "utils.sleep",
+      "names": [
+        "spindlesdetect"
+      ],
+      "scope": "write_fig_spindles"
+    },
+    {
+      "file": "visbrain/io/write_image.py",
+      "level": 2,
+      "line": 179,
+      "module": "utils.filtering",
+      "names": [
+        "filt"
+      ],
+      "scope": "write_fig_spindles"
+    },
+    {
+      "file": "visbrain/io/write_image.py",
+      "level": 0,
+      "line": 313,
+      "module": "visbrain.utils",
+      "names": [
+        "piccrop"
+      ],
+      "scope": "write_fig_canvas"
+    },
+    {
+      "file": "visbrain/io/write_image.py",
+      "level": 0,
+      "line": 314,
+      "module": "vispy.io",
+      "names": [
+        "imsave"
+      ],
+      "scope": "write_fig_canvas"
+    },
+    {
+      "file": "visbrain/io/write_image.py",
+      "level": 0,
+      "line": 431,
+      "module": "PyQt5",
+      "names": [
+        "QtWidgets",
+        "QtCore"
+      ],
+      "scope": "write_fig_pyqt"
+    },
+    {
+      "file": "visbrain/io/write_image.py",
+      "level": 0,
+      "line": 452,
+      "module": "matplotlib.pyplot",
+      "names": [],
+      "scope": "mpl_preview"
+    },
+    {
+      "file": "visbrain/io/write_template.py",
+      "level": 0,
+      "line": 2,
+      "module": "logging",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/io/write_template.py",
+      "level": 0,
+      "line": 3,
+      "module": "os",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/io/write_template.py",
+      "level": 0,
+      "line": 4,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/io/write_template.py",
+      "level": 1,
+      "line": 6,
+      "module": "path",
+      "names": [
+        "path_to_visbrain_data",
+        "path_to_tmp"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/io/write_template.py",
+      "level": 2,
+      "line": 7,
+      "module": "utils.mesh",
+      "names": [
+        "convert_meshdata"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/mne/__init__.py",
+      "level": 1,
+      "line": 1,
+      "module": "plot_mne",
+      "names": [
+        "*"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/mne/plot_mne.py",
+      "level": 0,
+      "line": 5,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/mne/plot_mne.py",
+      "level": 0,
+      "line": 6,
+      "module": "logging",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/mne/plot_mne.py",
+      "level": 0,
+      "line": 7,
+      "module": "os",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/mne/plot_mne.py",
+      "level": 2,
+      "line": 9,
+      "module": "io",
+      "names": [
+        "is_mne_installed"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/mne/plot_mne.py",
+      "level": 0,
+      "line": 37,
+      "module": "visbrain.objects",
+      "names": [
+        "BrainObj",
+        "SourceObj",
+        "SceneObj"
+      ],
+      "scope": "_plt_src"
+    },
+    {
+      "file": "visbrain/mne/plot_mne.py",
+      "level": 0,
+      "line": 51,
+      "module": "visbrain.gui",
+      "names": [
+        "Brain"
+      ],
+      "scope": "_plt_src"
+    },
+    {
+      "file": "visbrain/mne/plot_mne.py",
+      "level": 0,
+      "line": 122,
+      "module": "mne",
+      "names": [],
+      "scope": "mne_plot_source_estimation"
+    },
+    {
+      "file": "visbrain/mne/plot_mne.py",
+      "level": 0,
+      "line": 123,
+      "module": "mne.source_space",
+      "names": [
+        "head_to_mni"
+      ],
+      "scope": "mne_plot_source_estimation"
+    },
+    {
+      "file": "visbrain/mne/plot_mne.py",
+      "level": 0,
+      "line": 197,
+      "module": "mne",
+      "names": [
+        "read_source_spaces"
+      ],
+      "scope": "mne_plot_source_space"
+    },
+    {
+      "file": "visbrain/objects/__init__.py",
+      "level": 1,
+      "line": 2,
+      "module": "brain_obj",
+      "names": [
+        "BrainObj"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/__init__.py",
+      "level": 1,
+      "line": 3,
+      "module": "cbar_obj",
+      "names": [
+        "ColorbarObj"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/__init__.py",
+      "level": 1,
+      "line": 4,
+      "module": "connect_obj",
+      "names": [
+        "ConnectObj",
+        "CombineConnect"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/__init__.py",
+      "level": 1,
+      "line": 5,
+      "module": "crossec_obj",
+      "names": [
+        "CrossSecObj"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/__init__.py",
+      "level": 1,
+      "line": 6,
+      "module": "gridsig_obj",
+      "names": [
+        "GridSignalsObj"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/__init__.py",
+      "level": 1,
+      "line": 7,
+      "module": "hypno_obj",
+      "names": [
+        "HypnogramObj"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/__init__.py",
+      "level": 1,
+      "line": 8,
+      "module": "image_obj",
+      "names": [
+        "ImageObj"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/__init__.py",
+      "level": 1,
+      "line": 9,
+      "module": "pacmap_obj",
+      "names": [
+        "PacmapObj"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/__init__.py",
+      "level": 1,
+      "line": 10,
+      "module": "picture3d_obj",
+      "names": [
+        "Picture3DObj",
+        "CombinePictures"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/__init__.py",
+      "level": 1,
+      "line": 11,
+      "module": "roi_obj",
+      "names": [
+        "RoiObj",
+        "CombineRoi"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/__init__.py",
+      "level": 1,
+      "line": 12,
+      "module": "scene_obj",
+      "names": [
+        "SceneObj",
+        "VisbrainCanvas"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/__init__.py",
+      "level": 1,
+      "line": 13,
+      "module": "source_obj",
+      "names": [
+        "SourceObj",
+        "CombineSources"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/__init__.py",
+      "level": 1,
+      "line": 14,
+      "module": "tf_obj",
+      "names": [
+        "TimeFrequencyObj"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/__init__.py",
+      "level": 1,
+      "line": 15,
+      "module": "topo_obj",
+      "names": [
+        "TopoObj"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/__init__.py",
+      "level": 1,
+      "line": 16,
+      "module": "ts3d_obj",
+      "names": [
+        "TimeSeries3DObj",
+        "CombineTimeSeries"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/__init__.py",
+      "level": 1,
+      "line": 17,
+      "module": "vector_obj",
+      "names": [
+        "VectorObj",
+        "CombineVectors"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/__init__.py",
+      "level": 1,
+      "line": 18,
+      "module": "visbrain_obj",
+      "names": [
+        "VisbrainObject",
+        "CombineObjects"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/__init__.py",
+      "level": 1,
+      "line": 19,
+      "module": "vispy_obj",
+      "names": [
+        "VispyObj"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/__init__.py",
+      "level": 1,
+      "line": 20,
+      "module": "volume_obj",
+      "names": [
+        "VolumeObj"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/_projection.py",
+      "level": 0,
+      "line": 2,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/_projection.py",
+      "level": 0,
+      "line": 3,
+      "module": "scipy.spatial.distance",
+      "names": [
+        "cdist"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/_projection.py",
+      "level": 2,
+      "line": 5,
+      "module": "utils",
+      "names": [
+        "normalize",
+        "color2vb"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/_projection.py",
+      "level": 0,
+      "line": 7,
+      "module": "logging",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/brain_obj.py",
+      "level": 0,
+      "line": 2,
+      "module": "os",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/brain_obj.py",
+      "level": 0,
+      "line": 3,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/brain_obj.py",
+      "level": 0,
+      "line": 4,
+      "module": "logging",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/brain_obj.py",
+      "level": 0,
+      "line": 6,
+      "module": "vispy",
+      "names": [
+        "scene"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/brain_obj.py",
+      "level": 1,
+      "line": 8,
+      "module": "visbrain_obj",
+      "names": [
+        "VisbrainObject"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/brain_obj.py",
+      "level": 1,
+      "line": 9,
+      "module": "_projection",
+      "names": [
+        "_project_sources_data"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/brain_obj.py",
+      "level": 2,
+      "line": 10,
+      "module": "visuals",
+      "names": [
+        "BrainMesh"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/brain_obj.py",
+      "level": 2,
+      "line": 11,
+      "module": "utils",
+      "names": [
+        "mesh_edges",
+        "smoothing_matrix",
+        "rotate_turntable"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/brain_obj.py",
+      "level": 2,
+      "line": 12,
+      "module": "io",
+      "names": [
+        "is_nibabel_installed",
+        "is_pandas_installed",
+        "add_brain_template",
+        "remove_brain_template",
+        "read_x3d",
+        "read_gii",
+        "read_obj",
+        "is_freesurfer_mesh_file",
+        "read_freesurfer_mesh"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/brain_obj.py",
+      "level": 0,
+      "line": 419,
+      "module": "visbrain.io",
+      "names": [
+        "read_nifti"
+      ],
+      "scope": "BrainObj.add_activation"
+    },
+    {
+      "file": "visbrain/objects/brain_obj.py",
+      "level": 0,
+      "line": 426,
+      "module": "nibabel",
+      "names": [],
+      "scope": "BrainObj.add_activation"
+    },
+    {
+      "file": "visbrain/objects/brain_obj.py",
+      "level": 0,
+      "line": 567,
+      "module": "pandas",
+      "names": [],
+      "scope": "BrainObj.get_parcellates"
+    },
+    {
+      "file": "visbrain/objects/brain_obj.py",
+      "level": 0,
+      "line": 628,
+      "module": "nibabel",
+      "names": [],
+      "scope": "BrainObj._load_annot_file"
+    },
+    {
+      "file": "visbrain/objects/cbar_obj.py",
+      "level": 0,
+      "line": 2,
+      "module": "logging",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/cbar_obj.py",
+      "level": 0,
+      "line": 4,
+      "module": "vispy",
+      "names": [
+        "scene"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/cbar_obj.py",
+      "level": 1,
+      "line": 6,
+      "module": "visbrain_obj",
+      "names": [
+        "VisbrainObject"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/cbar_obj.py",
+      "level": 2,
+      "line": 7,
+      "module": "visuals",
+      "names": [
+        "CbarVisual"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/connect_obj.py",
+      "level": 0,
+      "line": 2,
+      "module": "logging",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/connect_obj.py",
+      "level": 0,
+      "line": 4,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/connect_obj.py",
+      "level": 0,
+      "line": 5,
+      "module": "collections",
+      "names": [
+        "Counter"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/connect_obj.py",
+      "level": 0,
+      "line": 7,
+      "module": "vispy",
+      "names": [
+        "scene"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/connect_obj.py",
+      "level": 0,
+      "line": 8,
+      "module": "vispy.scene",
+      "names": [
+        "visuals"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/connect_obj.py",
+      "level": 1,
+      "line": 10,
+      "module": "visbrain_obj",
+      "names": [
+        "VisbrainObject",
+        "CombineObjects"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/connect_obj.py",
+      "level": 1,
+      "line": 11,
+      "module": "source_obj",
+      "names": [
+        "SourceObj"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/connect_obj.py",
+      "level": 2,
+      "line": 12,
+      "module": "utils",
+      "names": [
+        "array2colormap",
+        "color2vb",
+        "wrap_properties",
+        "vector_to_opacity"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/connect_obj.py",
+      "level": 0,
+      "line": 309,
+      "module": "pandas",
+      "names": [],
+      "scope": "ConnectObj.analyse_connections"
+    },
+    {
+      "file": "visbrain/objects/connect_obj.py",
+      "level": 1,
+      "line": 319,
+      "module": "roi_obj",
+      "names": [
+        "RoiObj"
+      ],
+      "scope": "ConnectObj.analyse_connections"
+    },
+    {
+      "file": "visbrain/objects/crossec_obj.py",
+      "level": 0,
+      "line": 2,
+      "module": "logging",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/crossec_obj.py",
+      "level": 0,
+      "line": 3,
+      "module": "os",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/crossec_obj.py",
+      "level": 0,
+      "line": 5,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/crossec_obj.py",
+      "level": 0,
+      "line": 7,
+      "module": "vispy",
+      "names": [
+        "scene"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/crossec_obj.py",
+      "level": 0,
+      "line": 8,
+      "module": "vispy.visuals.transforms",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/crossec_obj.py",
+      "level": 2,
+      "line": 10,
+      "module": "utils",
+      "names": [
+        "cmap_to_glsl",
+        "wrap_properties",
+        "color2vb",
+        "FixedCam"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/crossec_obj.py",
+      "level": 2,
+      "line": 11,
+      "module": "io",
+      "names": [
+        "read_nifti",
+        "niimg_to_transform"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/crossec_obj.py",
+      "level": 1,
+      "line": 12,
+      "module": "volume_obj",
+      "names": [
+        "_Volume"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/gridsig_obj.py",
+      "level": 0,
+      "line": 2,
+      "module": "logging",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/gridsig_obj.py",
+      "level": 0,
+      "line": 4,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/gridsig_obj.py",
+      "level": 0,
+      "line": 6,
+      "module": "itertools",
+      "names": [
+        "product"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/gridsig_obj.py",
+      "level": 0,
+      "line": 8,
+      "module": "vispy",
+      "names": [
+        "scene"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/gridsig_obj.py",
+      "level": 1,
+      "line": 10,
+      "module": "visbrain_obj",
+      "names": [
+        "VisbrainObject"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/gridsig_obj.py",
+      "level": 2,
+      "line": 11,
+      "module": "visuals.grid_signal_visual",
+      "names": [
+        "GridSignal"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/gridsig_obj.py",
+      "level": 2,
+      "line": 12,
+      "module": "io.dependencies",
+      "names": [
+        "is_mne_installed"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/gridsig_obj.py",
+      "level": 2,
+      "line": 13,
+      "module": "utils.cameras",
+      "names": [
+        "ScrollCamera"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/gridsig_obj.py",
+      "level": 0,
+      "line": 97,
+      "module": "mne",
+      "names": [],
+      "scope": "GridSignalsObj.__init__"
+    },
+    {
+      "file": "visbrain/objects/hypno_obj.py",
+      "level": 0,
+      "line": 2,
+      "module": "os",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/hypno_obj.py",
+      "level": 0,
+      "line": 4,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/hypno_obj.py",
+      "level": 0,
+      "line": 5,
+      "module": "vispy",
+      "names": [
+        "scene"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/hypno_obj.py",
+      "level": 1,
+      "line": 7,
+      "module": "visbrain_obj",
+      "names": [
+        "VisbrainObject"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/hypno_obj.py",
+      "level": 2,
+      "line": 8,
+      "module": "visuals",
+      "names": [
+        "Hypnogram"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/hypno_obj.py",
+      "level": 2,
+      "line": 9,
+      "module": "io",
+      "names": [
+        "read_hypno"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/image_obj.py",
+      "level": 0,
+      "line": 2,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/image_obj.py",
+      "level": 0,
+      "line": 3,
+      "module": "logging",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/image_obj.py",
+      "level": 0,
+      "line": 5,
+      "module": "vispy",
+      "names": [
+        "scene"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/image_obj.py",
+      "level": 1,
+      "line": 7,
+      "module": "visbrain_obj",
+      "names": [
+        "VisbrainObject"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/image_obj.py",
+      "level": 2,
+      "line": 8,
+      "module": "utils",
+      "names": [
+        "vispy_array",
+        "wrap_properties",
+        "color2vb"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/pacmap_obj.py",
+      "level": 0,
+      "line": 2,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/pacmap_obj.py",
+      "level": 1,
+      "line": 4,
+      "module": "image_obj",
+      "names": [
+        "ImageObj"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/pacmap_obj.py",
+      "level": 2,
+      "line": 5,
+      "module": "io.dependencies",
+      "names": [
+        "is_tensorpac_installed"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/pacmap_obj.py",
+      "level": 0,
+      "line": 106,
+      "module": "tensorpac",
+      "names": [
+        "Pac"
+      ],
+      "scope": "PacmapObj.set_data"
+    },
+    {
+      "file": "visbrain/objects/picture3d_obj.py",
+      "level": 0,
+      "line": 2,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/picture3d_obj.py",
+      "level": 0,
+      "line": 4,
+      "module": "vispy",
+      "names": [
+        "scene"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/picture3d_obj.py",
+      "level": 0,
+      "line": 5,
+      "module": "vispy.visuals.transforms",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/picture3d_obj.py",
+      "level": 1,
+      "line": 7,
+      "module": "visbrain_obj",
+      "names": [
+        "VisbrainObject",
+        "CombineObjects"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/picture3d_obj.py",
+      "level": 2,
+      "line": 8,
+      "module": "utils",
+      "names": [
+        "wrap_properties"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/picture3d_obj.py",
+      "level": 2,
+      "line": 9,
+      "module": "visuals",
+      "names": [
+        "PicMesh"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/roi_obj.py",
+      "level": 0,
+      "line": 2,
+      "module": "os",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/roi_obj.py",
+      "level": 0,
+      "line": 3,
+      "module": "logging",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/roi_obj.py",
+      "level": 0,
+      "line": 4,
+      "module": "functools",
+      "names": [
+        "wraps"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/roi_obj.py",
+      "level": 0,
+      "line": 6,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/roi_obj.py",
+      "level": 0,
+      "line": 7,
+      "module": "numpy.core.defchararray",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/roi_obj.py",
+      "level": 0,
+      "line": 8,
+      "module": "scipy.spatial.distance",
+      "names": [
+        "cdist"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/roi_obj.py",
+      "level": 0,
+      "line": 10,
+      "module": "vispy",
+      "names": [
+        "scene"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/roi_obj.py",
+      "level": 0,
+      "line": 11,
+      "module": "vispy.geometry.isosurface",
+      "names": [
+        "isosurface"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/roi_obj.py",
+      "level": 1,
+      "line": 13,
+      "module": "volume_obj",
+      "names": [
+        "_Volume",
+        "_CombineVolume"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/roi_obj.py",
+      "level": 1,
+      "line": 14,
+      "module": "_projection",
+      "names": [
+        "_project_sources_data"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/roi_obj.py",
+      "level": 2,
+      "line": 15,
+      "module": "io",
+      "names": [
+        "is_pandas_installed"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/roi_obj.py",
+      "level": 2,
+      "line": 16,
+      "module": "utils",
+      "names": [
+        "mni2tal",
+        "smooth_3d",
+        "color2vb"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/roi_obj.py",
+      "level": 2,
+      "line": 17,
+      "module": "visuals",
+      "names": [
+        "BrainMesh"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/roi_obj.py",
+      "level": 0,
+      "line": 212,
+      "module": "pandas",
+      "names": [],
+      "scope": "RoiObj.set_data"
+    },
+    {
+      "file": "visbrain/objects/roi_obj.py",
+      "level": 0,
+      "line": 255,
+      "module": "pandas",
+      "names": [],
+      "scope": "RoiObj.get_labels"
+    },
+    {
+      "file": "visbrain/objects/roi_obj.py",
+      "level": 0,
+      "line": 295,
+      "module": "pandas",
+      "names": [],
+      "scope": "RoiObj.where_is"
+    },
+    {
+      "file": "visbrain/objects/scene_obj.py",
+      "level": 0,
+      "line": 2,
+      "module": "sys",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/scene_obj.py",
+      "level": 0,
+      "line": 3,
+      "module": "logging",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/scene_obj.py",
+      "level": 0,
+      "line": 5,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/scene_obj.py",
+      "level": 0,
+      "line": 6,
+      "module": "vispy",
+      "names": [
+        "scene"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/scene_obj.py",
+      "level": 2,
+      "line": 8,
+      "module": "io",
+      "names": [
+        "write_fig_canvas",
+        "mpl_preview",
+        "dialog_save"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/scene_obj.py",
+      "level": 2,
+      "line": 9,
+      "module": "utils",
+      "names": [
+        "color2vb",
+        "set_log_level",
+        "rotate_turntable",
+        "FixedCam"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/scene_obj.py",
+      "level": 2,
+      "line": 10,
+      "module": "visuals",
+      "names": [
+        "CbarVisual"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/scene_obj.py",
+      "level": 2,
+      "line": 11,
+      "module": "config",
+      "names": [
+        "CONFIG",
+        "PROFILER"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/scene_obj.py",
+      "level": 0,
+      "line": 633,
+      "module": "imageio",
+      "names": [],
+      "scope": "SceneObj.record_animation"
+    },
+    {
+      "file": "visbrain/objects/scene_obj.py",
+      "level": 0,
+      "line": 650,
+      "module": "PyQt5.QtWidgets",
+      "names": [
+        "QWidget"
+      ],
+      "scope": "SceneObj._scene_shortcuts.key_pressed"
+    },
+    {
+      "file": "visbrain/objects/source_obj.py",
+      "level": 0,
+      "line": 2,
+      "module": "warnings",
+      "names": [
+        "warn"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/source_obj.py",
+      "level": 0,
+      "line": 3,
+      "module": "logging",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/source_obj.py",
+      "level": 0,
+      "line": 4,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/source_obj.py",
+      "level": 0,
+      "line": 5,
+      "module": "itertools",
+      "names": [
+        "product"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/source_obj.py",
+      "level": 0,
+      "line": 6,
+      "module": "scipy.spatial.distance",
+      "names": [
+        "cdist"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/source_obj.py",
+      "level": 0,
+      "line": 8,
+      "module": "vispy",
+      "names": [
+        "scene"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/source_obj.py",
+      "level": 0,
+      "line": 9,
+      "module": "vispy.scene",
+      "names": [
+        "visuals"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/source_obj.py",
+      "level": 0,
+      "line": 10,
+      "module": "vispy.visuals.transforms",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/source_obj.py",
+      "level": 1,
+      "line": 12,
+      "module": "visbrain_obj",
+      "names": [
+        "VisbrainObject",
+        "CombineObjects"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/source_obj.py",
+      "level": 1,
+      "line": 13,
+      "module": "_projection",
+      "names": [
+        "_project_sources_data"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/source_obj.py",
+      "level": 1,
+      "line": 14,
+      "module": "roi_obj",
+      "names": [
+        "RoiObj"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/source_obj.py",
+      "level": 2,
+      "line": 15,
+      "module": "utils",
+      "names": [
+        "tal2mni",
+        "color2vb",
+        "normalize",
+        "vispy_array",
+        "wrap_properties",
+        "array2colormap"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/source_obj.py",
+      "level": 0,
+      "line": 392,
+      "module": "pandas",
+      "names": [],
+      "scope": "SourceObj.analyse_sources"
+    },
+    {
+      "file": "visbrain/objects/source_obj.py",
+      "level": 0,
+      "line": 859,
+      "module": "pandas",
+      "names": [],
+      "scope": "CombineSources.analyse_sources"
+    },
+    {
+      "file": "visbrain/objects/tf_obj.py",
+      "level": 0,
+      "line": 2,
+      "module": "logging",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/tf_obj.py",
+      "level": 0,
+      "line": 3,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/tf_obj.py",
+      "level": 0,
+      "line": 4,
+      "module": "scipy.signal",
+      "names": [
+        "spectrogram"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/tf_obj.py",
+      "level": 1,
+      "line": 6,
+      "module": "image_obj",
+      "names": [
+        "ImageObj"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/tf_obj.py",
+      "level": 2,
+      "line": 7,
+      "module": "utils",
+      "names": [
+        "morlet",
+        "averaging",
+        "normalization"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/tf_obj.py",
+      "level": 2,
+      "line": 8,
+      "module": "io.dependencies",
+      "names": [
+        "is_lspopt_installed"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/tf_obj.py",
+      "level": 0,
+      "line": 174,
+      "module": "lspopt",
+      "names": [
+        "spectrogram_lspopt"
+      ],
+      "scope": "TimeFrequencyObj.set_data"
+    },
+    {
+      "file": "visbrain/objects/topo_obj.py",
+      "level": 0,
+      "line": 2,
+      "module": "logging",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/topo_obj.py",
+      "level": 0,
+      "line": 4,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/topo_obj.py",
+      "level": 0,
+      "line": 5,
+      "module": "scipy.interpolate",
+      "names": [
+        "interp2d"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/topo_obj.py",
+      "level": 0,
+      "line": 7,
+      "module": "vispy",
+      "names": [
+        "scene"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/topo_obj.py",
+      "level": 0,
+      "line": 8,
+      "module": "vispy.scene",
+      "names": [
+        "visuals"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/topo_obj.py",
+      "level": 0,
+      "line": 9,
+      "module": "vispy.visuals.transforms",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/topo_obj.py",
+      "level": 1,
+      "line": 11,
+      "module": "visbrain_obj",
+      "names": [
+        "VisbrainObject"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/topo_obj.py",
+      "level": 2,
+      "line": 12,
+      "module": "objects",
+      "names": [
+        "ConnectObj"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/topo_obj.py",
+      "level": 2,
+      "line": 13,
+      "module": "io",
+      "names": [
+        "download_file",
+        "is_sc_image_installed"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/topo_obj.py",
+      "level": 2,
+      "line": 14,
+      "module": "utils",
+      "names": [
+        "array2colormap",
+        "color2vb",
+        "mpl_cmap",
+        "normalize",
+        "vpnormalize",
+        "vprecenter"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/ts3d_obj.py",
+      "level": 0,
+      "line": 2,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/ts3d_obj.py",
+      "level": 0,
+      "line": 4,
+      "module": "vispy",
+      "names": [
+        "scene"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/ts3d_obj.py",
+      "level": 0,
+      "line": 5,
+      "module": "vispy.scene",
+      "names": [
+        "visuals"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/ts3d_obj.py",
+      "level": 0,
+      "line": 6,
+      "module": "vispy.visuals.transforms",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/ts3d_obj.py",
+      "level": 1,
+      "line": 8,
+      "module": "visbrain_obj",
+      "names": [
+        "VisbrainObject",
+        "CombineObjects"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/ts3d_obj.py",
+      "level": 2,
+      "line": 9,
+      "module": "utils",
+      "names": [
+        "normalize",
+        "color2vb",
+        "wrap_properties"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/vector_obj.py",
+      "level": 0,
+      "line": 2,
+      "module": "logging",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/vector_obj.py",
+      "level": 0,
+      "line": 3,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/vector_obj.py",
+      "level": 0,
+      "line": 5,
+      "module": "vispy",
+      "names": [
+        "scene"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/vector_obj.py",
+      "level": 0,
+      "line": 6,
+      "module": "vispy.scene.visuals",
+      "names": [
+        "Arrow"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/vector_obj.py",
+      "level": 0,
+      "line": 7,
+      "module": "vispy.visuals.line.arrow",
+      "names": [
+        "ARROW_TYPES"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/vector_obj.py",
+      "level": 1,
+      "line": 9,
+      "module": "visbrain_obj",
+      "names": [
+        "VisbrainObject",
+        "CombineObjects"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/vector_obj.py",
+      "level": 2,
+      "line": 10,
+      "module": "utils",
+      "names": [
+        "array2colormap",
+        "color2vb",
+        "wrap_properties",
+        "normalize",
+        "vector_to_opacity"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/visbrain_obj.py",
+      "level": 0,
+      "line": 2,
+      "module": "os",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/visbrain_obj.py",
+      "level": 0,
+      "line": 3,
+      "module": "sys",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/visbrain_obj.py",
+      "level": 0,
+      "line": 4,
+      "module": "logging",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/visbrain_obj.py",
+      "level": 0,
+      "line": 6,
+      "module": "vispy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/visbrain_obj.py",
+      "level": 0,
+      "line": 7,
+      "module": "vispy.visuals.transforms",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/visbrain_obj.py",
+      "level": 1,
+      "line": 9,
+      "module": "scene_obj",
+      "names": [
+        "VisbrainCanvas"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/visbrain_obj.py",
+      "level": 2,
+      "line": 10,
+      "module": "io",
+      "names": [
+        "write_fig_canvas",
+        "dialog_save",
+        "path_to_visbrain_data",
+        "load_config_json",
+        "get_data_url_path",
+        "download_file",
+        "get_files_in_folders",
+        "mpl_preview"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/visbrain_obj.py",
+      "level": 2,
+      "line": 13,
+      "module": "utils",
+      "names": [
+        "color2vb",
+        "set_log_level",
+        "merge_cameras"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/visbrain_obj.py",
+      "level": 2,
+      "line": 14,
+      "module": "config",
+      "names": [
+        "CONFIG"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/visbrain_obj.py",
+      "level": 2,
+      "line": 15,
+      "module": "visuals",
+      "names": [
+        "CbarBase"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/visbrain_obj.py",
+      "level": 0,
+      "line": 40,
+      "module": "PyQt5.QtWidgets",
+      "names": [
+        "QWidget"
+      ],
+      "scope": "_VisbrainShortcuts.set_shortcuts_to_canvas._save_canvas"
+    },
+    {
+      "file": "visbrain/objects/visbrain_obj.py",
+      "level": 0,
+      "line": 260,
+      "module": "vispy.app",
+      "names": [
+        "Timer"
+      ],
+      "scope": "VisbrainObject.animate"
+    },
+    {
+      "file": "visbrain/objects/visbrain_obj.py",
+      "level": 0,
+      "line": 286,
+      "module": "imageio",
+      "names": [],
+      "scope": "VisbrainObject.record_animation"
+    },
+    {
+      "file": "visbrain/objects/visbrain_obj.py",
+      "level": 0,
+      "line": 370,
+      "module": "copy",
+      "names": [
+        "copy"
+      ],
+      "scope": "VisbrainObject.copy"
+    },
+    {
+      "file": "visbrain/objects/vispy_obj.py",
+      "level": 0,
+      "line": 2,
+      "module": "vispy",
+      "names": [
+        "scene"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/vispy_obj.py",
+      "level": 1,
+      "line": 4,
+      "module": "visbrain_obj",
+      "names": [
+        "VisbrainObject"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/volume_obj.py",
+      "level": 0,
+      "line": 2,
+      "module": "os",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/volume_obj.py",
+      "level": 0,
+      "line": 3,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/volume_obj.py",
+      "level": 0,
+      "line": 4,
+      "module": "logging",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/volume_obj.py",
+      "level": 0,
+      "line": 6,
+      "module": "vispy",
+      "names": [
+        "scene"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/volume_obj.py",
+      "level": 0,
+      "line": 7,
+      "module": "vispy.scene",
+      "names": [
+        "visuals"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/volume_obj.py",
+      "level": 0,
+      "line": 8,
+      "module": "vispy.color",
+      "names": [
+        "BaseColormap"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/volume_obj.py",
+      "level": 0,
+      "line": 9,
+      "module": "vispy.visuals.transforms",
+      "names": [
+        "MatrixTransform"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/volume_obj.py",
+      "level": 1,
+      "line": 11,
+      "module": "visbrain_obj",
+      "names": [
+        "VisbrainObject",
+        "CombineObjects"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/volume_obj.py",
+      "level": 2,
+      "line": 12,
+      "module": "utils",
+      "names": [
+        "wrap_properties",
+        "normalize",
+        "array_to_stt",
+        "stt_to_array"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/volume_obj.py",
+      "level": 2,
+      "line": 13,
+      "module": "io",
+      "names": [
+        "read_nifti",
+        "save_volume_template",
+        "remove_volume_template",
+        "download_file",
+        "path_to_visbrain_data",
+        "read_mist"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/utils/__init__.py",
+      "level": 1,
+      "line": 1,
+      "module": "cameras",
+      "names": [
+        "*"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/utils/__init__.py",
+      "level": 1,
+      "line": 2,
+      "module": "color",
+      "names": [
+        "*"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/utils/__init__.py",
+      "level": 1,
+      "line": 3,
+      "module": "filtering",
+      "names": [
+        "*"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/utils/__init__.py",
+      "level": 1,
+      "line": 4,
+      "module": "gui",
+      "names": [
+        "*"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/utils/__init__.py",
+      "level": 1,
+      "line": 5,
+      "module": "guitools",
+      "names": [
+        "*"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/utils/__init__.py",
+      "level": 1,
+      "line": 6,
+      "module": "logging",
+      "names": [
+        "*"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/utils/__init__.py",
+      "level": 1,
+      "line": 7,
+      "module": "memory",
+      "names": [
+        "*"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/utils/__init__.py",
+      "level": 1,
+      "line": 8,
+      "module": "mesh",
+      "names": [
+        "*"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/utils/__init__.py",
+      "level": 1,
+      "line": 9,
+      "module": "others",
+      "names": [
+        "*"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/utils/__init__.py",
+      "level": 1,
+      "line": 10,
+      "module": "physio",
+      "names": [
+        "*"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/utils/__init__.py",
+      "level": 1,
+      "line": 11,
+      "module": "picture",
+      "names": [
+        "piccrop",
+        "picresize"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/utils/__init__.py",
+      "level": 1,
+      "line": 12,
+      "module": "sigproc",
+      "names": [
+        "*"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/utils/__init__.py",
+      "level": 1,
+      "line": 13,
+      "module": "sleep",
+      "names": [
+        "*"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/utils/__init__.py",
+      "level": 1,
+      "line": 14,
+      "module": "transform",
+      "names": [
+        "*"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/utils/__init__.py",
+      "level": 1,
+      "line": 15,
+      "module": "wrappers",
+      "names": [
+        "*"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/utils/cameras.py",
+      "level": 0,
+      "line": 2,
+      "module": "logging",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/utils/cameras.py",
+      "level": 0,
+      "line": 3,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/utils/cameras.py",
+      "level": 0,
+      "line": 5,
+      "module": "vispy.scene.cameras",
+      "names": [
+        "PanZoomCamera",
+        "TurntableCamera",
+        "BaseCamera"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/utils/color.py",
+      "level": 0,
+      "line": 7,
+      "module": "logging",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/utils/color.py",
+      "level": 0,
+      "line": 9,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/utils/color.py",
+      "level": 0,
+      "line": 11,
+      "module": "vispy.color.colormap",
+      "names": [
+        "Colormap"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/utils/color.py",
+      "level": 0,
+      "line": 13,
+      "module": "matplotlib",
+      "names": [
+        "cm"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/utils/color.py",
+      "level": 0,
+      "line": 14,
+      "module": "matplotlib.colors",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/utils/color.py",
+      "level": 0,
+      "line": 15,
+      "module": "warnings",
+      "names": [
+        "warn"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/utils/color.py",
+      "level": 1,
+      "line": 17,
+      "module": "sigproc",
+      "names": [
+        "normalize"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/utils/color.py",
+      "level": 1,
+      "line": 18,
+      "module": "mesh",
+      "names": [
+        "vispy_array"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/utils/color.py",
+      "level": 0,
+      "line": 104,
+      "module": "scipy.interpolate",
+      "names": [
+        "interp2d"
+      ],
+      "scope": "Colormap.__init__"
+    },
+    {
+      "file": "visbrain/utils/filtering.py",
+      "level": 0,
+      "line": 3,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/utils/filtering.py",
+      "level": 0,
+      "line": 4,
+      "module": "scipy.signal",
+      "names": [
+        "butter",
+        "filtfilt",
+        "lfilter",
+        "bessel",
+        "welch",
+        "detrend"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/utils/gui/__init__.py",
+      "level": 1,
+      "line": 1,
+      "module": "screenshot_gui",
+      "names": [
+        "Ui_Screenshot"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/utils/gui/__init__.py",
+      "level": 1,
+      "line": 2,
+      "module": "popup",
+      "names": [
+        "*"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/utils/gui/popup.py",
+      "level": 0,
+      "line": 3,
+      "module": "PyQt5.Qt",
+      "names": [
+        "QWidget",
+        "QRect"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/utils/gui/popup.py",
+      "level": 0,
+      "line": 4,
+      "module": "PyQt5",
+      "names": [
+        "QtWidgets",
+        "QtCore"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/utils/gui/popup.py",
+      "level": 0,
+      "line": 5,
+      "module": "webbrowser",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/utils/gui/popup.py",
+      "level": 1,
+      "line": 7,
+      "module": "screenshot_gui",
+      "names": [
+        "Ui_Screenshot"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/utils/gui/popup.py",
+      "level": 2,
+      "line": 8,
+      "module": "guitools",
+      "names": [
+        "textline2color"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/utils/gui/screenshot_gui.py",
+      "level": 0,
+      "line": 9,
+      "module": "PyQt5",
+      "names": [
+        "QtCore",
+        "QtGui",
+        "QtWidgets"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/utils/gui/screenshot_gui.py",
+      "level": 0,
+      "line": 264,
+      "module": "sys",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/utils/guitools.py",
+      "level": 0,
+      "line": 3,
+      "module": "PyQt5",
+      "names": [
+        "QtCore"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/utils/guitools.py",
+      "level": 0,
+      "line": 5,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/utils/guitools.py",
+      "level": 1,
+      "line": 7,
+      "module": "color",
+      "names": [
+        "color2vb",
+        "color2tuple"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/utils/guitools.py",
+      "level": 0,
+      "line": 442,
+      "module": "PyQt5.QtWidgets",
+      "names": [
+        "QTableWidgetItem",
+        "QTableWidget",
+        "QTableView"
+      ],
+      "scope": "fill_pyqt_table"
+    },
+    {
+      "file": "visbrain/utils/guitools.py",
+      "level": 0,
+      "line": 443,
+      "module": "PyQt5",
+      "names": [
+        "QtGui",
+        "QtCore"
+      ],
+      "scope": "fill_pyqt_table"
+    },
+    {
+      "file": "visbrain/utils/logging.py",
+      "level": 0,
+      "line": 6,
+      "module": "logging",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/utils/logging.py",
+      "level": 0,
+      "line": 7,
+      "module": "sys",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/utils/logging.py",
+      "level": 0,
+      "line": 8,
+      "module": "re",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/utils/memory.py",
+      "level": 0,
+      "line": 5,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/utils/memory.py",
+      "level": 0,
+      "line": 43,
+      "module": "time",
+      "names": [
+        "time"
+      ],
+      "scope": "code_timer"
+    },
+    {
+      "file": "visbrain/utils/mesh.py",
+      "level": 0,
+      "line": 2,
+      "module": "logging",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/utils/mesh.py",
+      "level": 0,
+      "line": 4,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/utils/mesh.py",
+      "level": 0,
+      "line": 5,
+      "module": "scipy.spatial.distance",
+      "names": [
+        "cdist"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/utils/mesh.py",
+      "level": 0,
+      "line": 7,
+      "module": "vispy.geometry",
+      "names": [
+        "MeshData"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/utils/mesh.py",
+      "level": 0,
+      "line": 8,
+      "module": "vispy.geometry.isosurface",
+      "names": [
+        "isosurface"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/utils/mesh.py",
+      "level": 1,
+      "line": 10,
+      "module": "sigproc",
+      "names": [
+        "smooth_3d"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/utils/mesh.py",
+      "level": 0,
+      "line": 169,
+      "module": "scipy",
+      "names": [
+        "sparse"
+      ],
+      "scope": "smoothing_matrix"
+    },
+    {
+      "file": "visbrain/utils/mesh.py",
+      "level": 0,
+      "line": 218,
+      "module": "scipy",
+      "names": [
+        "sparse"
+      ],
+      "scope": "mesh_edges"
+    },
+    {
+      "file": "visbrain/utils/others.py",
+      "level": 0,
+      "line": 2,
+      "module": "logging",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/utils/others.py",
+      "level": 0,
+      "line": 4,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/utils/others.py",
+      "level": 0,
+      "line": 5,
+      "module": "vispy.util",
+      "names": [
+        "profiler"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/utils/physio.py",
+      "level": 0,
+      "line": 2,
+      "module": "re",
+      "names": [
+        "findall"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/utils/physio.py",
+      "level": 0,
+      "line": 3,
+      "module": "logging",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/utils/physio.py",
+      "level": 0,
+      "line": 5,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/utils/physio.py",
+      "level": 0,
+      "line": 6,
+      "module": "itertools",
+      "names": [
+        "product"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/utils/physio.py",
+      "level": 0,
+      "line": 7,
+      "module": "scipy.stats",
+      "names": [
+        "zscore"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/utils/physio.py",
+      "level": 1,
+      "line": 9,
+      "module": "sigproc",
+      "names": [
+        "smoothing"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/utils/picture.py",
+      "level": 0,
+      "line": 2,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/utils/picture.py",
+      "level": 0,
+      "line": 84,
+      "module": "visbrain.io",
+      "names": [
+        "is_sc_image_installed"
+      ],
+      "scope": "picresize"
+    },
+    {
+      "file": "visbrain/utils/picture.py",
+      "level": 0,
+      "line": 86,
+      "module": "skimage.transform",
+      "names": [
+        "resize"
+      ],
+      "scope": "picresize"
+    },
+    {
+      "file": "visbrain/utils/sigproc.py",
+      "level": 0,
+      "line": 2,
+      "module": "logging",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/utils/sigproc.py",
+      "level": 0,
+      "line": 4,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/utils/sigproc.py",
+      "level": 0,
+      "line": 5,
+      "module": "scipy.signal",
+      "names": [
+        "fftconvolve"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/utils/sigproc.py",
+      "level": 0,
+      "line": 7,
+      "module": "vispy.visuals.transforms",
+      "names": [
+        "STTransform",
+        "NullTransform"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/utils/sleep/__init__.py",
+      "level": 1,
+      "line": 1,
+      "module": "detection",
+      "names": [
+        "*"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/utils/sleep/__init__.py",
+      "level": 1,
+      "line": 2,
+      "module": "hypnoprocessing",
+      "names": [
+        "*"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/utils/sleep/detection.py",
+      "level": 0,
+      "line": 13,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/utils/sleep/detection.py",
+      "level": 0,
+      "line": 14,
+      "module": "scipy.signal",
+      "names": [
+        "hilbert",
+        "detrend",
+        "welch"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/utils/sleep/detection.py",
+      "level": 2,
+      "line": 16,
+      "module": "filtering",
+      "names": [
+        "filt",
+        "morlet",
+        "morlet_power"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/utils/sleep/detection.py",
+      "level": 2,
+      "line": 17,
+      "module": "sigproc",
+      "names": [
+        "derivative",
+        "tkeo",
+        "smoothing",
+        "normalization"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/utils/sleep/detection.py",
+      "level": 1,
+      "line": 18,
+      "module": "event",
+      "names": [
+        "_events_distance_fill",
+        "_index_to_events",
+        "_events_to_index"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/utils/sleep/edf.py",
+      "level": 0,
+      "line": 11,
+      "module": "logging",
+      "names": [
+        "getLogger"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/utils/sleep/edf.py",
+      "level": 0,
+      "line": 13,
+      "module": "datetime",
+      "names": [
+        "datetime"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/utils/sleep/edf.py",
+      "level": 0,
+      "line": 14,
+      "module": "math",
+      "names": [
+        "floor"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/utils/sleep/edf.py",
+      "level": 0,
+      "line": 15,
+      "module": "re",
+      "names": [
+        "findall"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/utils/sleep/edf.py",
+      "level": 0,
+      "line": 16,
+      "module": "numpy",
+      "names": [
+        "empty",
+        "asarray",
+        "frombuffer",
+        "iinfo"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/utils/sleep/event.py",
+      "level": 0,
+      "line": 3,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/utils/sleep/hypnoprocessing.py",
+      "level": 0,
+      "line": 3,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/utils/transform.py",
+      "level": 0,
+      "line": 2,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/utils/transform.py",
+      "level": 0,
+      "line": 3,
+      "module": "vispy.visuals.transforms",
+      "names": [
+        "STTransform",
+        "ChainTransform",
+        "MatrixTransform"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/utils/wrappers.py",
+      "level": 0,
+      "line": 2,
+      "module": "functools",
+      "names": [
+        "wraps"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/visuals/__init__.py",
+      "level": 1,
+      "line": 2,
+      "module": "brain_visual",
+      "names": [
+        "BrainMesh"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/visuals/__init__.py",
+      "level": 1,
+      "line": 3,
+      "module": "cbar",
+      "names": [
+        "*"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/visuals/__init__.py",
+      "level": 1,
+      "line": 4,
+      "module": "grid_signal_visual",
+      "names": [
+        "GridSignal"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/visuals/__init__.py",
+      "level": 1,
+      "line": 5,
+      "module": "hypno_visual",
+      "names": [
+        "Hypnogram"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/visuals/__init__.py",
+      "level": 1,
+      "line": 6,
+      "module": "pic_visual",
+      "names": [
+        "PicMesh"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/visuals/__init__.py",
+      "level": 1,
+      "line": 7,
+      "module": "tf_map_visual",
+      "names": [
+        "TFmapsMesh"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/visuals/__init__.py",
+      "level": 1,
+      "line": 8,
+      "module": "topo_visual",
+      "names": [
+        "TopoMesh"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/visuals/brain_visual.py",
+      "level": 0,
+      "line": 19,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/visuals/brain_visual.py",
+      "level": 0,
+      "line": 20,
+      "module": "logging",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/visuals/brain_visual.py",
+      "level": 0,
+      "line": 22,
+      "module": "vispy",
+      "names": [
+        "gloo"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/visuals/brain_visual.py",
+      "level": 0,
+      "line": 23,
+      "module": "vispy.visuals",
+      "names": [
+        "Visual"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/visuals/brain_visual.py",
+      "level": 0,
+      "line": 24,
+      "module": "vispy.visuals.transforms",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/visuals/brain_visual.py",
+      "level": 0,
+      "line": 25,
+      "module": "vispy.scene.visuals",
+      "names": [
+        "create_visual_node"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/visuals/brain_visual.py",
+      "level": 0,
+      "line": 27,
+      "module": "visbrain.utils",
+      "names": [
+        "Colormap",
+        "color2vb",
+        "convert_meshdata",
+        "wrap_properties",
+        "normalize"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/visuals/cbar/CbarBase.py",
+      "level": 3,
+      "line": 2,
+      "module": "utils",
+      "names": [
+        "color2tuple",
+        "wrap_properties",
+        "cmap_to_glsl"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/visuals/cbar/CbarObjects.py",
+      "level": 1,
+      "line": 2,
+      "module": "CbarBase",
+      "names": [
+        "CbarBase"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/visuals/cbar/CbarObjects.py",
+      "level": 3,
+      "line": 3,
+      "module": "io",
+      "names": [
+        "save_config_json",
+        "load_config_json"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/visuals/cbar/CbarQt.py",
+      "level": 0,
+      "line": 2,
+      "module": "functools",
+      "names": [
+        "wraps"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/visuals/cbar/CbarQt.py",
+      "level": 1,
+      "line": 4,
+      "module": "gui",
+      "names": [
+        "CbarForm"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/visuals/cbar/CbarQt.py",
+      "level": 1,
+      "line": 5,
+      "module": "CbarVisual",
+      "names": [
+        "CbarVisual"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/visuals/cbar/CbarQt.py",
+      "level": 3,
+      "line": 6,
+      "module": "utils",
+      "names": [
+        "color2json",
+        "mpl_cmap",
+        "mpl_cmap_index",
+        "disconnect_all"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/visuals/cbar/CbarVisual.py",
+      "level": 0,
+      "line": 2,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/visuals/cbar/CbarVisual.py",
+      "level": 0,
+      "line": 3,
+      "module": "vispy.scene",
+      "names": [
+        "Node",
+        "visuals"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/visuals/cbar/CbarVisual.py",
+      "level": 0,
+      "line": 4,
+      "module": "vispy",
+      "names": [
+        "scene"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/visuals/cbar/CbarVisual.py",
+      "level": 0,
+      "line": 5,
+      "module": "vispy.visuals.transforms",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/visuals/cbar/CbarVisual.py",
+      "level": 3,
+      "line": 7,
+      "module": "utils",
+      "names": [
+        "array2colormap",
+        "color2tuple",
+        "FixedCam"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/visuals/cbar/CbarVisual.py",
+      "level": 1,
+      "line": 8,
+      "module": "CbarBase",
+      "names": [
+        "CbarBase"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/visuals/cbar/__init__.py",
+      "level": 1,
+      "line": 1,
+      "module": "CbarBase",
+      "names": [
+        "*"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/visuals/cbar/__init__.py",
+      "level": 1,
+      "line": 2,
+      "module": "CbarObjects",
+      "names": [
+        "*"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/visuals/cbar/__init__.py",
+      "level": 1,
+      "line": 3,
+      "module": "CbarQt",
+      "names": [
+        "*"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/visuals/cbar/__init__.py",
+      "level": 1,
+      "line": 4,
+      "module": "CbarVisual",
+      "names": [
+        "CbarVisual"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/visuals/cbar/__init__.py",
+      "level": 1,
+      "line": 5,
+      "module": "gui",
+      "names": [
+        "CbarForm"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/visuals/cbar/gui/CbarPyQtGui.py",
+      "level": 0,
+      "line": 9,
+      "module": "PyQt5",
+      "names": [
+        "QtCore",
+        "QtGui",
+        "QtWidgets"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/visuals/cbar/gui/CbarPyQtGui.py",
+      "level": 0,
+      "line": 438,
+      "module": "sys",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/visuals/cbar/gui/__init__.py",
+      "level": 1,
+      "line": 1,
+      "module": "CbarPyQtGui",
+      "names": [
+        "Ui_Form"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/visuals/grid_signal_visual.py",
+      "level": 0,
+      "line": 7,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/visuals/grid_signal_visual.py",
+      "level": 0,
+      "line": 8,
+      "module": "itertools",
+      "names": [
+        "product"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/visuals/grid_signal_visual.py",
+      "level": 0,
+      "line": 10,
+      "module": "vispy",
+      "names": [
+        "gloo",
+        "visuals"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/visuals/grid_signal_visual.py",
+      "level": 0,
+      "line": 11,
+      "module": "vispy.scene.visuals",
+      "names": [
+        "create_visual_node",
+        "Text"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/visuals/grid_signal_visual.py",
+      "level": 0,
+      "line": 13,
+      "module": "visbrain.utils",
+      "names": [
+        "color2vb",
+        "vispy_array",
+        "PrepareData",
+        "ndsubplot"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/visuals/grid_signal_visual.py",
+      "level": 0,
+      "line": 282,
+      "module": "OpenGL.GL",
+      "names": [],
+      "scope": "GridSignalVisual._prepare_draw"
+    },
+    {
+      "file": "visbrain/visuals/hypno_visual.py",
+      "level": 0,
+      "line": 7,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/visuals/hypno_visual.py",
+      "level": 0,
+      "line": 9,
+      "module": "vispy",
+      "names": [
+        "gloo",
+        "visuals"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/visuals/hypno_visual.py",
+      "level": 0,
+      "line": 10,
+      "module": "vispy.visuals.shaders",
+      "names": [
+        "Function"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/visuals/hypno_visual.py",
+      "level": 0,
+      "line": 11,
+      "module": "vispy.scene.visuals",
+      "names": [
+        "create_visual_node"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/visuals/hypno_visual.py",
+      "level": 0,
+      "line": 13,
+      "module": "visbrain.utils",
+      "names": [
+        "vispy_array",
+        "wrap_properties",
+        "color2vb",
+        "transient"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/visuals/hypno_visual.py",
+      "level": 0,
+      "line": 213,
+      "module": "OpenGL.GL",
+      "names": [],
+      "scope": "HypogramVisual._prepare_draw"
+    },
+    {
+      "file": "visbrain/visuals/pic_visual.py",
+      "level": 0,
+      "line": 7,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/visuals/pic_visual.py",
+      "level": 0,
+      "line": 9,
+      "module": "vispy",
+      "names": [
+        "gloo",
+        "visuals",
+        "scene"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/visuals/pic_visual.py",
+      "level": 2,
+      "line": 11,
+      "module": "utils",
+      "names": [
+        "cmap_to_glsl",
+        "vispy_array"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/visuals/tf_map_visual.py",
+      "level": 0,
+      "line": 7,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/visuals/tf_map_visual.py",
+      "level": 0,
+      "line": 9,
+      "module": "vispy.visuals.transforms",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/visuals/tf_map_visual.py",
+      "level": 0,
+      "line": 10,
+      "module": "vispy.scene.visuals",
+      "names": [
+        "Image"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/visuals/tf_map_visual.py",
+      "level": 2,
+      "line": 12,
+      "module": "visuals",
+      "names": [
+        "CbarBase"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/visuals/tf_map_visual.py",
+      "level": 2,
+      "line": 13,
+      "module": "utils",
+      "names": [
+        "morlet",
+        "cmap_to_glsl",
+        "averaging",
+        "normalization"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/visuals/topo_visual.py",
+      "level": 0,
+      "line": 14,
+      "module": "logging",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/visuals/topo_visual.py",
+      "level": 0,
+      "line": 16,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/visuals/topo_visual.py",
+      "level": 0,
+      "line": 17,
+      "module": "scipy.interpolate",
+      "names": [
+        "interp2d"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/visuals/topo_visual.py",
+      "level": 0,
+      "line": 19,
+      "module": "vispy",
+      "names": [
+        "scene"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/visuals/topo_visual.py",
+      "level": 0,
+      "line": 20,
+      "module": "vispy.scene",
+      "names": [
+        "visuals"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/visuals/topo_visual.py",
+      "level": 0,
+      "line": 21,
+      "module": "vispy.visuals.transforms",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/visuals/topo_visual.py",
+      "level": 2,
+      "line": 23,
+      "module": "utils",
+      "names": [
+        "array2colormap",
+        "color2vb",
+        "mpl_cmap",
+        "normalize",
+        "vpnormalize",
+        "vprecenter"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/visuals/topo_visual.py",
+      "level": 2,
+      "line": 25,
+      "module": "io",
+      "names": [
+        "download_file"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/visuals/topo_visual.py",
+      "level": 1,
+      "line": 26,
+      "module": "cbar",
+      "names": [
+        "CbarVisual"
+      ],
+      "scope": ""
+    }
+  ],
+  "inventory_tool_sha256": "7dee7e661d7b9d66dffd34fecfdf7ddf044b94f38b5adbebfd3eeed916e87058",
+  "parse_diagnostics": [
+    {
+      "category": "SyntaxWarning",
+      "file": "visbrain/io/read_data.py",
+      "line": 151,
+      "message": "invalid escape sequence '\\s'"
+    },
+    {
+      "category": "SyntaxWarning",
+      "file": "visbrain/io/read_data.py",
+      "line": 159,
+      "message": "invalid escape sequence '\\s'"
+    },
+    {
+      "category": "SyntaxWarning",
+      "file": "visbrain/io/read_sleep.py",
+      "line": 494,
+      "message": "invalid escape sequence '\\d'"
+    },
+    {
+      "category": "SyntaxWarning",
+      "file": "visbrain/io/read_sleep.py",
+      "line": 496,
+      "message": "invalid escape sequence '\\d'"
+    },
+    {
+      "category": "SyntaxWarning",
+      "file": "visbrain/io/read_sleep.py",
+      "line": 516,
+      "message": "invalid escape sequence '\\W'"
+    },
+    {
+      "category": "SyntaxWarning",
+      "file": "visbrain/io/read_sleep.py",
+      "line": 529,
+      "message": "invalid escape sequence '\\W'"
+    },
+    {
+      "category": "SyntaxWarning",
+      "file": "visbrain/utils/logging.py",
+      "line": 49,
+      "message": "invalid escape sequence '\\*'"
+    },
+    {
+      "category": "SyntaxWarning",
+      "file": "visbrain/utils/sleep/edf.py",
+      "line": 69,
+      "message": "invalid escape sequence '\\d'"
+    },
+    {
+      "category": "SyntaxWarning",
+      "file": "visbrain/utils/sleep/edf.py",
+      "line": 71,
+      "message": "invalid escape sequence '\\d'"
+    }
+  ],
+  "pin": "0.4.5",
+  "qt_imports": [
+    {
+      "file": "visbrain/_pyqt_module.py",
+      "level": 0,
+      "line": 5,
+      "module": "PyQt5",
+      "names": [
+        "QtGui"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/config.py",
+      "level": 0,
+      "line": 6,
+      "module": "PyQt5",
+      "names": [
+        "QtWidgets"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/brain/interface/gui/brain_gui.py",
+      "level": 0,
+      "line": 9,
+      "module": "PyQt5",
+      "names": [
+        "QtCore",
+        "QtGui",
+        "QtWidgets"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/brain/interface/ui_elements/ui_atlas.py",
+      "level": 0,
+      "line": 8,
+      "module": "PyQt5",
+      "names": [
+        "QtCore"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/brain/interface/ui_init.py",
+      "level": 0,
+      "line": 9,
+      "module": "PyQt5",
+      "names": [
+        "QtWidgets"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/signal/gui/signal_gui.py",
+      "level": 0,
+      "line": 9,
+      "module": "PyQt5",
+      "names": [
+        "QtCore",
+        "QtGui",
+        "QtWidgets"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/signal/ui_elements/ui_annotations.py",
+      "level": 0,
+      "line": 2,
+      "module": "PyQt5",
+      "names": [
+        "QtWidgets"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/signal/ui_elements/ui_init.py",
+      "level": 0,
+      "line": 3,
+      "module": "PyQt5",
+      "names": [
+        "QtWidgets"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/interface/gui/sleep_gui.py",
+      "level": 0,
+      "line": 9,
+      "module": "PyQt5",
+      "names": [
+        "QtCore",
+        "QtGui",
+        "QtWidgets"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/interface/ui_elements/ui_annotate.py",
+      "level": 0,
+      "line": 3,
+      "module": "PyQt5",
+      "names": [
+        "QtWidgets"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/interface/ui_elements/ui_detection.py",
+      "level": 0,
+      "line": 3,
+      "module": "PyQt5",
+      "names": [
+        "QtWidgets",
+        "QtCore"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/interface/ui_elements/ui_info.py",
+      "level": 0,
+      "line": 4,
+      "module": "PyQt5",
+      "names": [
+        "QtWidgets"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/interface/ui_elements/ui_menu.py",
+      "level": 0,
+      "line": 5,
+      "module": "PyQt5",
+      "names": [
+        "QtWidgets"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/interface/ui_elements/ui_panels.py",
+      "level": 0,
+      "line": 2,
+      "module": "PyQt5",
+      "names": [
+        "QtCore",
+        "QtGui",
+        "QtWidgets"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/interface/ui_elements/ui_scoring.py",
+      "level": 0,
+      "line": 3,
+      "module": "PyQt5",
+      "names": [
+        "QtWidgets"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/interface/ui_elements/ui_settings.py",
+      "level": 0,
+      "line": 4,
+      "module": "PyQt5.QtCore",
+      "names": [
+        "QObjectCleanupHandler"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/interface/ui_elements/ui_tools.py",
+      "level": 0,
+      "line": 4,
+      "module": "PyQt5",
+      "names": [
+        "QtWidgets"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/interface/ui_init.py",
+      "level": 0,
+      "line": 10,
+      "module": "PyQt5",
+      "names": [
+        "QtWidgets"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/io/dialog.py",
+      "level": 0,
+      "line": 6,
+      "module": "PyQt5.QtWidgets",
+      "names": [
+        "QFileDialog",
+        "QColorDialog"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/io/write_image.py",
+      "level": 0,
+      "line": 431,
+      "module": "PyQt5",
+      "names": [
+        "QtWidgets",
+        "QtCore"
+      ],
+      "scope": "write_fig_pyqt"
+    },
+    {
+      "file": "visbrain/objects/scene_obj.py",
+      "level": 0,
+      "line": 650,
+      "module": "PyQt5.QtWidgets",
+      "names": [
+        "QWidget"
+      ],
+      "scope": "SceneObj._scene_shortcuts.key_pressed"
+    },
+    {
+      "file": "visbrain/objects/visbrain_obj.py",
+      "level": 0,
+      "line": 40,
+      "module": "PyQt5.QtWidgets",
+      "names": [
+        "QWidget"
+      ],
+      "scope": "_VisbrainShortcuts.set_shortcuts_to_canvas._save_canvas"
+    },
+    {
+      "file": "visbrain/utils/gui/popup.py",
+      "level": 0,
+      "line": 3,
+      "module": "PyQt5.Qt",
+      "names": [
+        "QWidget",
+        "QRect"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/utils/gui/popup.py",
+      "level": 0,
+      "line": 4,
+      "module": "PyQt5",
+      "names": [
+        "QtWidgets",
+        "QtCore"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/utils/gui/screenshot_gui.py",
+      "level": 0,
+      "line": 9,
+      "module": "PyQt5",
+      "names": [
+        "QtCore",
+        "QtGui",
+        "QtWidgets"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/utils/guitools.py",
+      "level": 0,
+      "line": 3,
+      "module": "PyQt5",
+      "names": [
+        "QtCore"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/utils/guitools.py",
+      "level": 0,
+      "line": 442,
+      "module": "PyQt5.QtWidgets",
+      "names": [
+        "QTableWidgetItem",
+        "QTableWidget",
+        "QTableView"
+      ],
+      "scope": "fill_pyqt_table"
+    },
+    {
+      "file": "visbrain/utils/guitools.py",
+      "level": 0,
+      "line": 443,
+      "module": "PyQt5",
+      "names": [
+        "QtGui",
+        "QtCore"
+      ],
+      "scope": "fill_pyqt_table"
+    },
+    {
+      "file": "visbrain/visuals/cbar/gui/CbarPyQtGui.py",
+      "level": 0,
+      "line": 9,
+      "module": "PyQt5",
+      "names": [
+        "QtCore",
+        "QtGui",
+        "QtWidgets"
+      ],
+      "scope": ""
+    }
+  ],
+  "qualification": "source_inventory_only",
+  "schema": 1,
+  "source": {
+    "algorithm": "sorted-relative-path-nul-file-bytes-sha256",
+    "files": [
+      {
+        "path": "LICENSE",
+        "sha256": "da40a1b828c8ed9c297ce76f8836435b8f43ef166574433980b88324e87484d7",
+        "size": 1549
+      },
+      {
+        "path": "MANIFEST.in",
+        "sha256": "26ee02d8ddebd02f9592328e426750e7d74c8b7fa2ae58a96c09493d45651c6f",
+        "size": 150
+      },
+      {
+        "path": "PKG-INFO",
+        "sha256": "21f1d5cfb5ba76cd68a1f3330ec2b4bb0959ed8c3ebe72a4101612f38bd5beeb",
+        "size": 3714
+      },
+      {
+        "path": "README.rst",
+        "sha256": "4d33e6a58ed8267ad09512a76b832ea9077a11e1085a3030f738541d4facbd49",
+        "size": 2080
+      },
+      {
+        "path": "setup.cfg",
+        "sha256": "85445160d613036510d9a8e63701f96a9b8ee627e3ed89db64f07c08154812bc",
+        "size": 258
+      },
+      {
+        "path": "setup.py",
+        "sha256": "9bc066878c968ef12b925ffe3a6acabe0bef173429a4149ab1d29f99cf075086",
+        "size": 2450
+      },
+      {
+        "path": "visbrain.egg-info/PKG-INFO",
+        "sha256": "21f1d5cfb5ba76cd68a1f3330ec2b4bb0959ed8c3ebe72a4101612f38bd5beeb",
+        "size": 3714
+      },
+      {
+        "path": "visbrain.egg-info/SOURCES.txt",
+        "sha256": "e8b07e96a40e4b50c0b298d45904f5d225e00b2b087a6eb36bf8fd44ac7480b9",
+        "size": 5066
+      },
+      {
+        "path": "visbrain.egg-info/dependency_links.txt",
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+        "size": 1
+      },
+      {
+        "path": "visbrain.egg-info/requires.txt",
+        "sha256": "63de81bd4df22304ff7a5819c585aa49ee83f149edf0b6933a18fbf8c657f124",
+        "size": 197
+      },
+      {
+        "path": "visbrain.egg-info/top_level.txt",
+        "sha256": "2d467b9b94fcc83ca508e8c62f76a1550c3450adc8259f3f558b51be9b961623",
+        "size": 9
+      },
+      {
+        "path": "visbrain/__init__.py",
+        "sha256": "556c3f2185b597a9652c742ac94266df108396586ad1364adbfe5146a5213b28",
+        "size": 1077
+      },
+      {
+        "path": "visbrain/_pyqt_module.py",
+        "sha256": "82463ac65f72ab6aef02335579036f3e79152190ef5220eac4010635e2db8e98",
+        "size": 4410
+      },
+      {
+        "path": "visbrain/config.py",
+        "sha256": "a0f9b967ed01c4aff8a39617fc33ac3ad4271919808470778e03690e40cfe846",
+        "size": 2261
+      },
+      {
+        "path": "visbrain/data_url.json",
+        "sha256": "a09ce075d7a5dde78e650362a9fa136ace565b060543d0dfb191cf68abfaa726",
+        "size": 5212
+      },
+      {
+        "path": "visbrain/gui/__init__.py",
+        "sha256": "850b74bc0a94a57d4b2d3b5db5b422b2694297e59cfc05a4e741cda62a90ade1",
+        "size": 136
+      },
+      {
+        "path": "visbrain/gui/brain/__init__.py",
+        "sha256": "e253d00207da8676235ac5d6f2ab0a51a2d68ff9bdb3864354e8122b33adea2b",
+        "size": 77
+      },
+      {
+        "path": "visbrain/gui/brain/brain.py",
+        "sha256": "bc80b96b1b056059b8f6fae2cd3ed7c884c44d4b8fa5c5f5bae9b4627add6586",
+        "size": 6373
+      },
+      {
+        "path": "visbrain/gui/brain/cbar.py",
+        "sha256": "22cbd2dfedcabb1e50fa813345397c45589b3c7a3d14e50b212f0d05edb8dabe",
+        "size": 6316
+      },
+      {
+        "path": "visbrain/gui/brain/interface/__init__.py",
+        "sha256": "308d3f848ea463d5626e9459d4be4b709c09408b90a9f9e83c6f29f5393a621c",
+        "size": 116
+      },
+      {
+        "path": "visbrain/gui/brain/interface/gui/__init__.py",
+        "sha256": "08a3edd18b3d6dc5917d9128138228accc533008510ab8a9a59960e4c59f8a2e",
+        "size": 36
+      },
+      {
+        "path": "visbrain/gui/brain/interface/gui/brain_gui.py",
+        "sha256": "728778e279177e271689ad6df35f7d38cb1046a06a576cb24cefdf036ed6c32d",
+        "size": 131116
+      },
+      {
+        "path": "visbrain/gui/brain/interface/ui_elements/__init__.py",
+        "sha256": "07aeb7505896be1c64899721ad471800ecffdff2ac5edc7746e6dc503b28b44f",
+        "size": 97
+      },
+      {
+        "path": "visbrain/gui/brain/interface/ui_elements/ui_atlas.py",
+        "sha256": "c6a26856847b1ad5b85884e010b45e444d4c789c7d0a34bc3bc99a0af472acd5",
+        "size": 17590
+      },
+      {
+        "path": "visbrain/gui/brain/interface/ui_elements/ui_config.py",
+        "sha256": "91fe4f81900ac06b923652de8e6aab9ad20f936bbbc2fccfdca2d10b7d7976e6",
+        "size": 13878
+      },
+      {
+        "path": "visbrain/gui/brain/interface/ui_elements/ui_connectivity.py",
+        "sha256": "ebd0454468329eec57eac60a901c487e133ab96a931e07cd10f8c2adf4fd65cb",
+        "size": 3321
+      },
+      {
+        "path": "visbrain/gui/brain/interface/ui_elements/ui_elements.py",
+        "sha256": "98fe0f4b8a9cc323a5a2e7fd2238f705d205ba935e7c84d15c2189329397662f",
+        "size": 1025
+      },
+      {
+        "path": "visbrain/gui/brain/interface/ui_elements/ui_menu.py",
+        "sha256": "67fc904c909c4ccee6502b508999ec27c8a1cb918c4e57ad01fbded029c3c5af",
+        "size": 8123
+      },
+      {
+        "path": "visbrain/gui/brain/interface/ui_elements/ui_objects.py",
+        "sha256": "2e534b941f9b822472a55a9a6e558a0584765df2557c9e7ce25858f997fce9b3",
+        "size": 3096
+      },
+      {
+        "path": "visbrain/gui/brain/interface/ui_elements/ui_pictures.py",
+        "sha256": "33fb2a2b3224154e89aab5300db26866190b3dbac8825af6c6313a783447261d",
+        "size": 2030
+      },
+      {
+        "path": "visbrain/gui/brain/interface/ui_elements/ui_screenshot.py",
+        "sha256": "59d806238f4c8507bcfbebf8024ea7c8d413fc943808f0c4c112d6b801bf6609",
+        "size": 1254
+      },
+      {
+        "path": "visbrain/gui/brain/interface/ui_elements/ui_sources.py",
+        "sha256": "4b678f4356737807603218a0832ecb839bdbe20771279a30680296f9a696fdfb",
+        "size": 8423
+      },
+      {
+        "path": "visbrain/gui/brain/interface/ui_elements/ui_timeseries.py",
+        "sha256": "6a209842f78e48a4c336f0d9bb1078cae45aefbd2182b190e4f94684b509c446",
+        "size": 2912
+      },
+      {
+        "path": "visbrain/gui/brain/interface/ui_elements/ui_vectors.py",
+        "sha256": "64e1f027bef863ad3bc759dc5bf590450d439edfdb81ce2c3e2546a62b9cfae4",
+        "size": 1669
+      },
+      {
+        "path": "visbrain/gui/brain/interface/ui_init.py",
+        "sha256": "13765dbc5d0f9ff77e325036bcbc269234e6522f03514d48be62bd9331ca6bf2",
+        "size": 5608
+      },
+      {
+        "path": "visbrain/gui/brain/user.py",
+        "sha256": "8152196b0680ec9775ca1c71e6b66c778cea2386b612546c6fe05f4a47ac30c7",
+        "size": 28711
+      },
+      {
+        "path": "visbrain/gui/brain/visuals.py",
+        "sha256": "23a21c392dcbde8c4e8a0e9fbc79b2e18e92e7341ea20d5098fa7a19ef7d2f68",
+        "size": 5086
+      },
+      {
+        "path": "visbrain/gui/figure/__init__.py",
+        "sha256": "bf67e7ccb0054d930b3ca60ded2157719c89e7f9eac4f37b3f66026efbcf5871",
+        "size": 27
+      },
+      {
+        "path": "visbrain/gui/figure/figure.py",
+        "sha256": "b4c3c3d57f4128c451e139c17742dc05af8116061cd7fbeb899c329a8d5b9b30",
+        "size": 20564
+      },
+      {
+        "path": "visbrain/gui/signal/__init__.py",
+        "sha256": "3ffec71eead70a58aec86bc214a7b94f14fbf7190b7da85b6186816aa7d13a8e",
+        "size": 26
+      },
+      {
+        "path": "visbrain/gui/signal/gui/__init__.py",
+        "sha256": "046144eaed0ee1ce8029a001ea954836772eec8d450897cbdd97e49899d54d2b",
+        "size": 38
+      },
+      {
+        "path": "visbrain/gui/signal/gui/signal_gui.py",
+        "sha256": "358f82131bdd9ece62b227b7cb7601be9085ac79ca732b4dba544a751f7ccc3a",
+        "size": 93217
+      },
+      {
+        "path": "visbrain/gui/signal/signal.py",
+        "sha256": "b9337652708ea90db9aa830d3eb16dcf022be5a3be49bbe7832a313fe13fb8c3",
+        "size": 16959
+      },
+      {
+        "path": "visbrain/gui/signal/ui_elements/__init__.py",
+        "sha256": "503a3080645402742990bf20cbbf1c840a691ad06ce856477f8deb2d79ef0930",
+        "size": 63
+      },
+      {
+        "path": "visbrain/gui/signal/ui_elements/ui_annotations.py",
+        "sha256": "cd1edc8854fd2419a756a23de710231beefbb11a1bc21216d2ccad0f8bf0ce70",
+        "size": 4395
+      },
+      {
+        "path": "visbrain/gui/signal/ui_elements/ui_elements.py",
+        "sha256": "e6e690f30c05bec220507daef6f890c8671f8deafc6b187acff614a33b50f625",
+        "size": 630
+      },
+      {
+        "path": "visbrain/gui/signal/ui_elements/ui_grid.py",
+        "sha256": "fae5bfa1ea8b6ff92de145b19154a5a483a33a1d15bfc2df9b5c12c5deccd4a3",
+        "size": 3181
+      },
+      {
+        "path": "visbrain/gui/signal/ui_elements/ui_init.py",
+        "sha256": "0618f108ffd28eb76448e8b326b466bbeb147c9b6513ea77ab08649cf32d1124",
+        "size": 6294
+      },
+      {
+        "path": "visbrain/gui/signal/ui_elements/ui_menu.py",
+        "sha256": "683535e9abf875475ea2e61e6635781550bfdacb1bd66fe65236dbeefdd7b9ec",
+        "size": 4918
+      },
+      {
+        "path": "visbrain/gui/signal/ui_elements/ui_settings.py",
+        "sha256": "1b178d903af4251db538e7f8fb3cf98d438bdbb41eb9f53519548b8fea9e8b48",
+        "size": 3242
+      },
+      {
+        "path": "visbrain/gui/signal/ui_elements/ui_signals.py",
+        "sha256": "c3a177de2bf8325215e9ab2df4e2d32e569cd777753979175a57e0dacc62bcbc",
+        "size": 11108
+      },
+      {
+        "path": "visbrain/gui/signal/visuals.py",
+        "sha256": "1c981069c864ad8631a1650f5951c01b45a40840f5f39dd8b6c2ad0b519ca271",
+        "size": 15811
+      },
+      {
+        "path": "visbrain/gui/sleep/__init__.py",
+        "sha256": "9d4f1aeb2823d8144a09b1abc140f4de72e2a589969f5fae5fb4ac6232d0306a",
+        "size": 33
+      },
+      {
+        "path": "visbrain/gui/sleep/interface/__init__.py",
+        "sha256": "56e306b23a36ad2e32ec5cbda854a4f5d3de3af6ef358b09c76fdefbedadb4da",
+        "size": 80
+      },
+      {
+        "path": "visbrain/gui/sleep/interface/gui/__init__.py",
+        "sha256": "0d577f1a9288d99a4a0c1b18cf0a75eca944601db15bd0d76cf5ee5a81ac42f7",
+        "size": 37
+      },
+      {
+        "path": "visbrain/gui/sleep/interface/gui/sleep_gui.py",
+        "sha256": "3b0a74a2092be5142eb327b1753a8e12e30641b0def17346735ea9194641dfff",
+        "size": 146681
+      },
+      {
+        "path": "visbrain/gui/sleep/interface/ui_elements/__init__.py",
+        "sha256": "2b68f1c7709208afccc9e1bd4e48c0e95756f74429e59b98db5464617033e8ea",
+        "size": 36
+      },
+      {
+        "path": "visbrain/gui/sleep/interface/ui_elements/ui_annotate.py",
+        "sha256": "c7323ff5930f40096898cef96f31d5d84209a8a9eb31d0537152d6b9650e4198",
+        "size": 2163
+      },
+      {
+        "path": "visbrain/gui/sleep/interface/ui_elements/ui_detection.py",
+        "sha256": "756af755cf0999114bbf05e5ab124546c2cd2cc8a3605500cd44a2a30bfaf744",
+        "size": 19025
+      },
+      {
+        "path": "visbrain/gui/sleep/interface/ui_elements/ui_elements.py",
+        "sha256": "8b1a7367fb8fd0d929c1ebed6273f9924ef40ce524a63aae87617e8cf1bbf3f3",
+        "size": 860
+      },
+      {
+        "path": "visbrain/gui/sleep/interface/ui_elements/ui_info.py",
+        "sha256": "5952b7e0e851e30af7677d5f5a618036a5797ec80ef480c4b3e4cb2ce009fd63",
+        "size": 1280
+      },
+      {
+        "path": "visbrain/gui/sleep/interface/ui_elements/ui_menu.py",
+        "sha256": "192bf79fc08e8b83b6084a9e1e27746ef02e83adcd2179b6276c3b170b10e9a0",
+        "size": 27208
+      },
+      {
+        "path": "visbrain/gui/sleep/interface/ui_elements/ui_panels.py",
+        "sha256": "5f68e34677920a424cb9c98aa5ee5692732701398077fa79198095239c7b0d6c",
+        "size": 24863
+      },
+      {
+        "path": "visbrain/gui/sleep/interface/ui_elements/ui_scoring.py",
+        "sha256": "c05523451507b1de0abc734afe2d805c7a4a42c3af0bca4ba3671441e9ce8176",
+        "size": 5101
+      },
+      {
+        "path": "visbrain/gui/sleep/interface/ui_elements/ui_screenshot.py",
+        "sha256": "4121ce9e397f4830e7be40a972e30107e28686a195b4237aaeca720b6fe40f74",
+        "size": 2784
+      },
+      {
+        "path": "visbrain/gui/sleep/interface/ui_elements/ui_settings.py",
+        "sha256": "51c29c1af067bd232c4a1cc990ef73e7350981977fbfef6e25c5f41c899176cc",
+        "size": 13147
+      },
+      {
+        "path": "visbrain/gui/sleep/interface/ui_elements/ui_tools.py",
+        "sha256": "fb92cf42845729a37e11bf0a582ce5dace3f1859274e0d96b6f077ae39eeaaa3",
+        "size": 10040
+      },
+      {
+        "path": "visbrain/gui/sleep/interface/ui_init.py",
+        "sha256": "d0b18528c72cf150dac74830b3e6e3341a824eb3e055256577c8770ce7a6c665",
+        "size": 5393
+      },
+      {
+        "path": "visbrain/gui/sleep/sleep.py",
+        "sha256": "056931eb84967f2bdab29237b15270b0daa5a29c33927fa3ad33d6005483dcc7",
+        "size": 11353
+      },
+      {
+        "path": "visbrain/gui/sleep/visuals/__init__.py",
+        "sha256": "51400e40e6593f0687f1be2e83cfabe43fea297d03951acb48637e14f68603f5",
+        "size": 64
+      },
+      {
+        "path": "visbrain/gui/sleep/visuals/marker.py",
+        "sha256": "9ea3b5c43aa391de97d2e64d032b02460fab04d314db332865e169897a099126",
+        "size": 20713
+      },
+      {
+        "path": "visbrain/gui/sleep/visuals/visuals.py",
+        "sha256": "cb5dfc4f40830844eb2de8aaa29caf432f06be2e30ecbef19ebf6daccb1fd6b7",
+        "size": 42723
+      },
+      {
+        "path": "visbrain/io/__init__.py",
+        "sha256": "0b3bb1a9ed43a6b2b69388d48b22b10135d9bb1109ba05f4e2c49c841dfa9f71",
+        "size": 892
+      },
+      {
+        "path": "visbrain/io/dependencies.py",
+        "sha256": "f8f556c9a210ca96ad921b6050c953459163fb3fa9ab97a48053ab2049056907",
+        "size": 4137
+      },
+      {
+        "path": "visbrain/io/dialog.py",
+        "sha256": "420c7889fe3075f697e2d4517ffd386b69a10bd9f9a782a62cf244bec358a327",
+        "size": 2127
+      },
+      {
+        "path": "visbrain/io/download.py",
+        "sha256": "1fcece72423af138d15714c040d3323dd3d5b22e77814c1b4c8c21d983ad3d7e",
+        "size": 3991
+      },
+      {
+        "path": "visbrain/io/mneio.py",
+        "sha256": "14c2e112419b22cc029633494fa6ec0485c052ee2ce6dad2bf9f9175bc0781c0",
+        "size": 2335
+      },
+      {
+        "path": "visbrain/io/path.py",
+        "sha256": "a0cc8c9a639ae3b51cf1639fcc8d1dcd997bcead8cecb4cd1a33d9fb00cd4c5f",
+        "size": 3856
+      },
+      {
+        "path": "visbrain/io/read_annotations.py",
+        "sha256": "b2515b027f6554028338d112b6dd3d6270ac63b11b227909de47fc5a5fac1faa",
+        "size": 2684
+      },
+      {
+        "path": "visbrain/io/read_data.py",
+        "sha256": "6b838643a5ec83d889fcee44ada4084c3cdd6b5cc635bcd66a17b6ed9fc8fec5",
+        "size": 8614
+      },
+      {
+        "path": "visbrain/io/read_sleep.py",
+        "sha256": "bf687a2834d4cfedc86afd9b8e54038b73f96cf30c72536423fd7052cff3fa48",
+        "size": 24890
+      },
+      {
+        "path": "visbrain/io/rw_config.py",
+        "sha256": "2e1bc8b47b1ade70613e5b85d2214357422b8c9db65728a337c29c3e461cc00a",
+        "size": 1188
+      },
+      {
+        "path": "visbrain/io/rw_hypno.py",
+        "sha256": "50dc652ed051a5c9adc96c08ef06cc17ced617c8c6406d5305635ea4dd105384",
+        "size": 19586
+      },
+      {
+        "path": "visbrain/io/rw_nifti.py",
+        "sha256": "9942296bb79690c558859de4dfaaa704a9ad837778327444b18a9e6a10590c1f",
+        "size": 7319
+      },
+      {
+        "path": "visbrain/io/rw_utils.py",
+        "sha256": "79f70986622bc93032862252e53acf5cdb55491e1a9bd67325695ef6c2cf4615",
+        "size": 1515
+      },
+      {
+        "path": "visbrain/io/write_data.py",
+        "sha256": "08ede86f85d9135bee7df6817cab83d34b2bdb8a558aa589b7b2f66433059c15",
+        "size": 1478
+      },
+      {
+        "path": "visbrain/io/write_image.py",
+        "sha256": "98af80a45d9076db7d373f5b2158ccb9ae0fb266d5a7e7ac786e3a173334bd02",
+        "size": 16472
+      },
+      {
+        "path": "visbrain/io/write_table.py",
+        "sha256": "c1d5c8d5c8c4827f60e43f0556bef2f9a8b7c40b93699bd404ef49f6fa602013",
+        "size": 300
+      },
+      {
+        "path": "visbrain/io/write_template.py",
+        "sha256": "c7c4a489aff00f7abf0ca7d508266c6b624c15b9ea01e53f175a10add5c31f89",
+        "size": 3905
+      },
+      {
+        "path": "visbrain/mne/__init__.py",
+        "sha256": "23390be154d9b30746da4b714c6dc38eed6dd2ff5de9b601b24ced524e76219c",
+        "size": 23
+      },
+      {
+        "path": "visbrain/mne/plot_mne.py",
+        "sha256": "bf42b13929fd98bbfab30ec044e1c069ab800ca533533564323fa66648f68b93",
+        "size": 8826
+      },
+      {
+        "path": "visbrain/objects/__init__.py",
+        "sha256": "dffa0946a57865f438739ccfee2559427023f2d069c4facee9f65b7f694f0764",
+        "size": 972
+      },
+      {
+        "path": "visbrain/objects/_projection.py",
+        "sha256": "8fe25b7338b8499c1d1b955e4dd85c23e380ebefee74068dcc51591238ede33a",
+        "size": 9402
+      },
+      {
+        "path": "visbrain/objects/brain_obj.py",
+        "sha256": "2a771b8b1d0f5b90646d444a2b012feea3aef9157d37991298dc2fb7af2737ef",
+        "size": 31400
+      },
+      {
+        "path": "visbrain/objects/cbar_obj.py",
+        "sha256": "8e8f1f7d8b662585a9c06e729d96f79ed8faa3af5cf24acc5defcb95487c7c08",
+        "size": 4461
+      },
+      {
+        "path": "visbrain/objects/connect_obj.py",
+        "sha256": "a8e891b0f966f74dd24b8b415e47ef0074c14203b13bd8c4259a7246cec40598",
+        "size": 18417
+      },
+      {
+        "path": "visbrain/objects/crossec_obj.py",
+        "sha256": "ef0295a38936dd38a798b7ab3483db624ed81eeb9618e3daa074164e0c525394",
+        "size": 24276
+      },
+      {
+        "path": "visbrain/objects/gridsig_obj.py",
+        "sha256": "056d9ca83b705ca53f30f6003956bb714204798c62c31576499e506a1d4bf7ef",
+        "size": 6496
+      },
+      {
+        "path": "visbrain/objects/hypno_obj.py",
+        "sha256": "86096eadc4cae1e1ecab00fc417aad7e84801769b88e40082ab2771c1cc17c34",
+        "size": 4642
+      },
+      {
+        "path": "visbrain/objects/image_obj.py",
+        "sha256": "1c5d589d2bf0c17070fce0b847ba12ae095ed7dedac4d8dbac2f286400cd962b",
+        "size": 8494
+      },
+      {
+        "path": "visbrain/objects/pacmap_obj.py",
+        "sha256": "d171d8a4ae2df99dbfb4dbd5ea3637f21dd3d9a6540a0c8ee8ac08da90280974",
+        "size": 5525
+      },
+      {
+        "path": "visbrain/objects/picture3d_obj.py",
+        "sha256": "fca7f0e10e7d447892c3d212dbc6b392e7be2c8abba5b9531c3349942cd8a775",
+        "size": 7176
+      },
+      {
+        "path": "visbrain/objects/roi_obj.py",
+        "sha256": "7138ef1aa03694282c0acd091f4868bce50845e5ace4e4ec035d0fa1bbb62406",
+        "size": 30699
+      },
+      {
+        "path": "visbrain/objects/scene_obj.py",
+        "sha256": "1e303adcc85a0e2e5222382076bd76a7821114b79ae6a1a1698aace8d42298d6",
+        "size": 26113
+      },
+      {
+        "path": "visbrain/objects/source_obj.py",
+        "sha256": "adb985871b7c532d775609191c234a2e3945b337429b49e1bc5e7ee9a4d47330",
+        "size": 37070
+      },
+      {
+        "path": "visbrain/objects/tf_obj.py",
+        "sha256": "7f1c7d35f6e7d1829006d61e61caacac06e083f71ee0f780e7f197284945ef39",
+        "size": 7620
+      },
+      {
+        "path": "visbrain/objects/topo_obj.py",
+        "sha256": "48df8072926b8c358b85c23f4391b6109d48ccaf2fa6b15d506d927b99e958bc",
+        "size": 21742
+      },
+      {
+        "path": "visbrain/objects/ts3d_obj.py",
+        "sha256": "343473bc57d31168def2f97dbb14915806a889a2cf7e4d6f136c29a50187431e",
+        "size": 8487
+      },
+      {
+        "path": "visbrain/objects/vector_obj.py",
+        "sha256": "caf1cb7941bd1cf29ef1d7e50c8e4e0c0ceeff2fb83da1906e3327b52dac18b4",
+        "size": 11200
+      },
+      {
+        "path": "visbrain/objects/visbrain_obj.py",
+        "sha256": "3af338400892f6edecca712e0d641be88764ef83d40d200f6f556dbbcfa1e3af",
+        "size": 19903
+      },
+      {
+        "path": "visbrain/objects/vispy_obj.py",
+        "sha256": "fe16184392adc7c65e62bde6e40cdeaeb8b82e025fd3ed86e77855b066d6d8e6",
+        "size": 850
+      },
+      {
+        "path": "visbrain/objects/volume_obj.py",
+        "sha256": "72a18024dd0556222d6595a9f8b98042207d1b39ed2bde587a76c9ee92212303",
+        "size": 13630
+      },
+      {
+        "path": "visbrain/utils/__init__.py",
+        "sha256": "25a58189f2326016ddb80df3b1a17baf16a9f95f7a3e35bc99fddfe100718e27",
+        "size": 356
+      },
+      {
+        "path": "visbrain/utils/cameras.py",
+        "sha256": "26f87a7e73e944af7ed6b790179585f8432409e9f8f37cc46e8032eadc68ed73",
+        "size": 7133
+      },
+      {
+        "path": "visbrain/utils/color.py",
+        "sha256": "4a1380894d0c428ca38b05039a52d169aed3c681dd80f2d339d58b258920c89d",
+        "size": 23237
+      },
+      {
+        "path": "visbrain/utils/filtering.py",
+        "sha256": "23752b665e23682e295aa55dc40615ff00e97188609eafce9a328711b8025e8a",
+        "size": 9538
+      },
+      {
+        "path": "visbrain/utils/gui/__init__.py",
+        "sha256": "765c5bda178fb6037ffa6b605d6dead6de46958ca58ba9b7b7e41cd1cfa8f088",
+        "size": 62
+      },
+      {
+        "path": "visbrain/utils/gui/popup.py",
+        "sha256": "be3e8ca78e370661cec2f83400bb0614eba0698aa04a4aeb27c6615ec066b089",
+        "size": 5904
+      },
+      {
+        "path": "visbrain/utils/gui/screenshot_gui.py",
+        "sha256": "0aa702c422d30f348d027a5f29561835df0a2a2e55dca4b1a925e941f336d610",
+        "size": 16274
+      },
+      {
+        "path": "visbrain/utils/guitools.py",
+        "sha256": "83e30c4d0b1fdc0671f5c718856bb6a49533024651c43e521ee887b83f3eb40b",
+        "size": 13351
+      },
+      {
+        "path": "visbrain/utils/logging.py",
+        "sha256": "88330997e0249086e6db46d864478aacbaf813532eac06b000238951633e6289",
+        "size": 4586
+      },
+      {
+        "path": "visbrain/utils/memory.py",
+        "sha256": "3fd70d3464993559ccddeaa835c6281e683d6d5277e7b0fa9f473ad82eb826e5",
+        "size": 1290
+      },
+      {
+        "path": "visbrain/utils/mesh.py",
+        "sha256": "e133354309f8ee64da11a34bc329f265926d88b6ac3c4a495763c2d0d70a55d5",
+        "size": 8628
+      },
+      {
+        "path": "visbrain/utils/others.py",
+        "sha256": "c8a82dc6163122078de8bf9421e497cd761c999084c8b38c00b4c0c5be186b6e",
+        "size": 2656
+      },
+      {
+        "path": "visbrain/utils/physio.py",
+        "sha256": "3ef5032fceed256aceaff170b114c2b78654d03a9081490a06e9e7f9bcaf5dd8",
+        "size": 12093
+      },
+      {
+        "path": "visbrain/utils/picture.py",
+        "sha256": "9b5f3bf05399e05a22ead889d5fbafb83e4358823048469131a311696fe1d4b5",
+        "size": 3224
+      },
+      {
+        "path": "visbrain/utils/sigproc.py",
+        "sha256": "80d01af6e60080338ef330678065c6f2c884f64487e96a19f2561fd9f66fda56",
+        "size": 10720
+      },
+      {
+        "path": "visbrain/utils/sleep/__init__.py",
+        "sha256": "a9e47148c3b774e33bf70c0092d28d250c006e3fd9ad07999a09042ef2b86b2f",
+        "size": 56
+      },
+      {
+        "path": "visbrain/utils/sleep/detection.py",
+        "sha256": "c7808cdb1df5c1ca405a67c082a36c1b4af16407530c37e0625e0dfe484c7442",
+        "size": 27940
+      },
+      {
+        "path": "visbrain/utils/sleep/edf.py",
+        "sha256": "3ac4be68a79ca1cdbfdd81dda949b647b4665ebc62aef6d1bb1d6bab10ad0ef9",
+        "size": 7813
+      },
+      {
+        "path": "visbrain/utils/sleep/event.py",
+        "sha256": "ea9e905e502a54d6bc4230e4c5b902edb2fbe180c7dc481b21979a82c4813c7b",
+        "size": 2211
+      },
+      {
+        "path": "visbrain/utils/sleep/hypnoprocessing.py",
+        "sha256": "014408f96cf458c50cd3873abe7f2564483f87a7350d30f2fd4804679b193061",
+        "size": 3788
+      },
+      {
+        "path": "visbrain/utils/transform.py",
+        "sha256": "4f6e60efd1bd104e9f767e6ced49326aa6f0cfe55214cd8a01a7690d9ff87b0e",
+        "size": 3187
+      },
+      {
+        "path": "visbrain/utils/wrappers.py",
+        "sha256": "8f83aaa3dc619dff343fb5f5e030a13afcc808e03a7f74560b439ee51349cea4",
+        "size": 263
+      },
+      {
+        "path": "visbrain/visuals/__init__.py",
+        "sha256": "a5b912e500bf3c98bfb3aabd93fb196a96176b2d8e1dcaeeec1e9c88193bbc37",
+        "size": 317
+      },
+      {
+        "path": "visbrain/visuals/brain_visual.py",
+        "sha256": "6634c2234cbc5c46ddfc993b99c9e0d3d866cd164e58fb0d84b67f0eec61bcb2",
+        "size": 25466
+      },
+      {
+        "path": "visbrain/visuals/cbar/CbarBase.py",
+        "sha256": "90a66344714846bac6a0de48b66cd14da944ce2227be77505d4fdd37a9e08dff",
+        "size": 7257
+      },
+      {
+        "path": "visbrain/visuals/cbar/CbarObjects.py",
+        "sha256": "5618f2690bdc6cc0b74199f0888b24e41cb9be7c81066a93411338aac6bd82cf",
+        "size": 4541
+      },
+      {
+        "path": "visbrain/visuals/cbar/CbarQt.py",
+        "sha256": "41554691c37bc5eaf3777db24fd40eaf844a3f431161674ac8579539fefd37e4",
+        "size": 19902
+      },
+      {
+        "path": "visbrain/visuals/cbar/CbarVisual.py",
+        "sha256": "d05b46ce34b08594a0200cfe4faeb79cb80a57dab69818c6146d49c81a824461",
+        "size": 17926
+      },
+      {
+        "path": "visbrain/visuals/cbar/__init__.py",
+        "sha256": "3943d8409ba755d5d18b10eae617819fe17e8b8c8095aa5b70afc3e0a9ed60d6",
+        "size": 134
+      },
+      {
+        "path": "visbrain/visuals/cbar/gui/CbarPyQtGui.py",
+        "sha256": "9a7421e7a3bdc1434b8bbc774aa95f13568358723559f3f33709abb1522f3c35",
+        "size": 24807
+      },
+      {
+        "path": "visbrain/visuals/cbar/gui/__init__.py",
+        "sha256": "508513221387a04d369dfa9092fe3ce737a317611ad39affca9485f5aa414327",
+        "size": 44
+      },
+      {
+        "path": "visbrain/visuals/grid_signal_visual.py",
+        "sha256": "3aeaa370f1b47d5ad158896bcdcf5d9c02518285093a4c28df8ace3b580e5252",
+        "size": 13757
+      },
+      {
+        "path": "visbrain/visuals/hypno_visual.py",
+        "sha256": "37ce5980802687aaae37aa20facbea4862c5f33590d422ae60fb9714d382e6b3",
+        "size": 15760
+      },
+      {
+        "path": "visbrain/visuals/pic_visual.py",
+        "sha256": "f494402f04a8f9913cc8f67043bc061df32738c7a16444d821a43355bf45e730",
+        "size": 7046
+      },
+      {
+        "path": "visbrain/visuals/tf_map_visual.py",
+        "sha256": "d429b71a5033670ae54add4441bc50e4bfbd20bc0ca6c6b8008f5c81cee1b49b",
+        "size": 5730
+      },
+      {
+        "path": "visbrain/visuals/topo_visual.py",
+        "sha256": "461d74684b152e9d74185458b3566ffea33cb241e829e1ffbb109b5b48f4c305",
+        "size": 20617
+      }
+    ],
+    "sha256": "13480f470db5b745b4ac297f52a0136cdb87ec6d7a925597f247b7c91e5201a1"
+  },
+  "vispy_imports": [
+    {
+      "file": "visbrain/config.py",
+      "level": 0,
+      "line": 7,
+      "module": "vispy",
+      "names": [
+        "app"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/config.py",
+      "level": 0,
+      "line": 46,
+      "module": "vispy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/brain/brain.py",
+      "level": 0,
+      "line": 11,
+      "module": "vispy.scene.cameras",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/brain/interface/ui_elements/ui_menu.py",
+      "level": 0,
+      "line": 2,
+      "module": "vispy.scene.cameras",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/brain/interface/ui_elements/ui_vectors.py",
+      "level": 0,
+      "line": 2,
+      "module": "vispy.visuals.line.arrow",
+      "names": [
+        "ARROW_TYPES"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/brain/interface/ui_init.py",
+      "level": 0,
+      "line": 11,
+      "module": "vispy",
+      "names": [
+        "app"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/brain/interface/ui_init.py",
+      "level": 0,
+      "line": 12,
+      "module": "vispy.scene.cameras",
+      "names": [
+        "TurntableCamera"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/brain/visuals.py",
+      "level": 0,
+      "line": 4,
+      "module": "vispy",
+      "names": [
+        "scene"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/brain/visuals.py",
+      "level": 0,
+      "line": 5,
+      "module": "vispy.visuals.transforms",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/signal/ui_elements/ui_init.py",
+      "level": 0,
+      "line": 6,
+      "module": "vispy.scene.cameras",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/signal/ui_elements/ui_init.py",
+      "level": 0,
+      "line": 7,
+      "module": "vispy",
+      "names": [
+        "app"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/signal/visuals.py",
+      "level": 0,
+      "line": 6,
+      "module": "vispy",
+      "names": [
+        "scene"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/signal/visuals.py",
+      "level": 0,
+      "line": 7,
+      "module": "vispy.visuals.transforms",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/interface/ui_elements/ui_settings.py",
+      "level": 0,
+      "line": 6,
+      "module": "vispy.visuals.transforms",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/interface/ui_init.py",
+      "level": 0,
+      "line": 11,
+      "module": "vispy",
+      "names": [
+        "app",
+        "scene"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/interface/ui_init.py",
+      "level": 0,
+      "line": 12,
+      "module": "vispy.visuals.transforms",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/sleep.py",
+      "level": 0,
+      "line": 6,
+      "module": "vispy.scene.cameras",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/visuals/marker.py",
+      "level": 0,
+      "line": 5,
+      "module": "vispy.color",
+      "names": [
+        "ColorArray"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/visuals/marker.py",
+      "level": 0,
+      "line": 6,
+      "module": "vispy.gloo",
+      "names": [
+        "VertexBuffer",
+        "_check_valid"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/visuals/marker.py",
+      "level": 0,
+      "line": 7,
+      "module": "vispy.visuals.shaders",
+      "names": [
+        "Function",
+        "Variable"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/visuals/marker.py",
+      "level": 0,
+      "line": 8,
+      "module": "vispy.visuals.visual",
+      "names": [
+        "Visual"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/visuals/marker.py",
+      "level": 0,
+      "line": 9,
+      "module": "vispy.scene",
+      "names": [
+        "visuals"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/visuals/marker.py",
+      "level": 0,
+      "line": 617,
+      "module": "vispy.gloo",
+      "names": [
+        "gl"
+      ],
+      "scope": "MarkersVisual._prepare_draw"
+    },
+    {
+      "file": "visbrain/gui/sleep/visuals/visuals.py",
+      "level": 0,
+      "line": 11,
+      "module": "vispy",
+      "names": [
+        "scene"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/gui/sleep/visuals/visuals.py",
+      "level": 0,
+      "line": 12,
+      "module": "vispy.visuals.transforms",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/io/rw_nifti.py",
+      "level": 0,
+      "line": 10,
+      "module": "vispy.visuals.transforms",
+      "names": [
+        "MatrixTransform",
+        "ChainTransform",
+        "STTransform"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/io/write_image.py",
+      "level": 0,
+      "line": 314,
+      "module": "vispy.io",
+      "names": [
+        "imsave"
+      ],
+      "scope": "write_fig_canvas"
+    },
+    {
+      "file": "visbrain/objects/brain_obj.py",
+      "level": 0,
+      "line": 6,
+      "module": "vispy",
+      "names": [
+        "scene"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/cbar_obj.py",
+      "level": 0,
+      "line": 4,
+      "module": "vispy",
+      "names": [
+        "scene"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/connect_obj.py",
+      "level": 0,
+      "line": 7,
+      "module": "vispy",
+      "names": [
+        "scene"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/connect_obj.py",
+      "level": 0,
+      "line": 8,
+      "module": "vispy.scene",
+      "names": [
+        "visuals"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/crossec_obj.py",
+      "level": 0,
+      "line": 7,
+      "module": "vispy",
+      "names": [
+        "scene"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/crossec_obj.py",
+      "level": 0,
+      "line": 8,
+      "module": "vispy.visuals.transforms",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/gridsig_obj.py",
+      "level": 0,
+      "line": 8,
+      "module": "vispy",
+      "names": [
+        "scene"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/hypno_obj.py",
+      "level": 0,
+      "line": 5,
+      "module": "vispy",
+      "names": [
+        "scene"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/image_obj.py",
+      "level": 0,
+      "line": 5,
+      "module": "vispy",
+      "names": [
+        "scene"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/picture3d_obj.py",
+      "level": 0,
+      "line": 4,
+      "module": "vispy",
+      "names": [
+        "scene"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/picture3d_obj.py",
+      "level": 0,
+      "line": 5,
+      "module": "vispy.visuals.transforms",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/roi_obj.py",
+      "level": 0,
+      "line": 10,
+      "module": "vispy",
+      "names": [
+        "scene"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/roi_obj.py",
+      "level": 0,
+      "line": 11,
+      "module": "vispy.geometry.isosurface",
+      "names": [
+        "isosurface"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/scene_obj.py",
+      "level": 0,
+      "line": 6,
+      "module": "vispy",
+      "names": [
+        "scene"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/source_obj.py",
+      "level": 0,
+      "line": 8,
+      "module": "vispy",
+      "names": [
+        "scene"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/source_obj.py",
+      "level": 0,
+      "line": 9,
+      "module": "vispy.scene",
+      "names": [
+        "visuals"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/source_obj.py",
+      "level": 0,
+      "line": 10,
+      "module": "vispy.visuals.transforms",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/topo_obj.py",
+      "level": 0,
+      "line": 7,
+      "module": "vispy",
+      "names": [
+        "scene"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/topo_obj.py",
+      "level": 0,
+      "line": 8,
+      "module": "vispy.scene",
+      "names": [
+        "visuals"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/topo_obj.py",
+      "level": 0,
+      "line": 9,
+      "module": "vispy.visuals.transforms",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/ts3d_obj.py",
+      "level": 0,
+      "line": 4,
+      "module": "vispy",
+      "names": [
+        "scene"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/ts3d_obj.py",
+      "level": 0,
+      "line": 5,
+      "module": "vispy.scene",
+      "names": [
+        "visuals"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/ts3d_obj.py",
+      "level": 0,
+      "line": 6,
+      "module": "vispy.visuals.transforms",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/vector_obj.py",
+      "level": 0,
+      "line": 5,
+      "module": "vispy",
+      "names": [
+        "scene"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/vector_obj.py",
+      "level": 0,
+      "line": 6,
+      "module": "vispy.scene.visuals",
+      "names": [
+        "Arrow"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/vector_obj.py",
+      "level": 0,
+      "line": 7,
+      "module": "vispy.visuals.line.arrow",
+      "names": [
+        "ARROW_TYPES"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/visbrain_obj.py",
+      "level": 0,
+      "line": 6,
+      "module": "vispy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/visbrain_obj.py",
+      "level": 0,
+      "line": 7,
+      "module": "vispy.visuals.transforms",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/visbrain_obj.py",
+      "level": 0,
+      "line": 260,
+      "module": "vispy.app",
+      "names": [
+        "Timer"
+      ],
+      "scope": "VisbrainObject.animate"
+    },
+    {
+      "file": "visbrain/objects/vispy_obj.py",
+      "level": 0,
+      "line": 2,
+      "module": "vispy",
+      "names": [
+        "scene"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/volume_obj.py",
+      "level": 0,
+      "line": 6,
+      "module": "vispy",
+      "names": [
+        "scene"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/volume_obj.py",
+      "level": 0,
+      "line": 7,
+      "module": "vispy.scene",
+      "names": [
+        "visuals"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/volume_obj.py",
+      "level": 0,
+      "line": 8,
+      "module": "vispy.color",
+      "names": [
+        "BaseColormap"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/objects/volume_obj.py",
+      "level": 0,
+      "line": 9,
+      "module": "vispy.visuals.transforms",
+      "names": [
+        "MatrixTransform"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/utils/cameras.py",
+      "level": 0,
+      "line": 5,
+      "module": "vispy.scene.cameras",
+      "names": [
+        "PanZoomCamera",
+        "TurntableCamera",
+        "BaseCamera"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/utils/color.py",
+      "level": 0,
+      "line": 11,
+      "module": "vispy.color.colormap",
+      "names": [
+        "Colormap"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/utils/mesh.py",
+      "level": 0,
+      "line": 7,
+      "module": "vispy.geometry",
+      "names": [
+        "MeshData"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/utils/mesh.py",
+      "level": 0,
+      "line": 8,
+      "module": "vispy.geometry.isosurface",
+      "names": [
+        "isosurface"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/utils/others.py",
+      "level": 0,
+      "line": 5,
+      "module": "vispy.util",
+      "names": [
+        "profiler"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/utils/sigproc.py",
+      "level": 0,
+      "line": 7,
+      "module": "vispy.visuals.transforms",
+      "names": [
+        "STTransform",
+        "NullTransform"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/utils/transform.py",
+      "level": 0,
+      "line": 3,
+      "module": "vispy.visuals.transforms",
+      "names": [
+        "STTransform",
+        "ChainTransform",
+        "MatrixTransform"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/visuals/brain_visual.py",
+      "level": 0,
+      "line": 22,
+      "module": "vispy",
+      "names": [
+        "gloo"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/visuals/brain_visual.py",
+      "level": 0,
+      "line": 23,
+      "module": "vispy.visuals",
+      "names": [
+        "Visual"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/visuals/brain_visual.py",
+      "level": 0,
+      "line": 24,
+      "module": "vispy.visuals.transforms",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/visuals/brain_visual.py",
+      "level": 0,
+      "line": 25,
+      "module": "vispy.scene.visuals",
+      "names": [
+        "create_visual_node"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/visuals/cbar/CbarVisual.py",
+      "level": 0,
+      "line": 3,
+      "module": "vispy.scene",
+      "names": [
+        "Node",
+        "visuals"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/visuals/cbar/CbarVisual.py",
+      "level": 0,
+      "line": 4,
+      "module": "vispy",
+      "names": [
+        "scene"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/visuals/cbar/CbarVisual.py",
+      "level": 0,
+      "line": 5,
+      "module": "vispy.visuals.transforms",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/visuals/grid_signal_visual.py",
+      "level": 0,
+      "line": 10,
+      "module": "vispy",
+      "names": [
+        "gloo",
+        "visuals"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/visuals/grid_signal_visual.py",
+      "level": 0,
+      "line": 11,
+      "module": "vispy.scene.visuals",
+      "names": [
+        "create_visual_node",
+        "Text"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/visuals/hypno_visual.py",
+      "level": 0,
+      "line": 9,
+      "module": "vispy",
+      "names": [
+        "gloo",
+        "visuals"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/visuals/hypno_visual.py",
+      "level": 0,
+      "line": 10,
+      "module": "vispy.visuals.shaders",
+      "names": [
+        "Function"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/visuals/hypno_visual.py",
+      "level": 0,
+      "line": 11,
+      "module": "vispy.scene.visuals",
+      "names": [
+        "create_visual_node"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/visuals/pic_visual.py",
+      "level": 0,
+      "line": 9,
+      "module": "vispy",
+      "names": [
+        "gloo",
+        "visuals",
+        "scene"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/visuals/tf_map_visual.py",
+      "level": 0,
+      "line": 9,
+      "module": "vispy.visuals.transforms",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/visuals/tf_map_visual.py",
+      "level": 0,
+      "line": 10,
+      "module": "vispy.scene.visuals",
+      "names": [
+        "Image"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/visuals/topo_visual.py",
+      "level": 0,
+      "line": 19,
+      "module": "vispy",
+      "names": [
+        "scene"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/visuals/topo_visual.py",
+      "level": 0,
+      "line": 20,
+      "module": "vispy.scene",
+      "names": [
+        "visuals"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "visbrain/visuals/topo_visual.py",
+      "level": 0,
+      "line": 21,
+      "module": "vispy.visuals.transforms",
+      "names": [],
+      "scope": ""
+    }
+  ]
+}

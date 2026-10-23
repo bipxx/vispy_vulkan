@@ -1,0 +1,193 @@
+{
+  "artifacts": {
+    "commands.json": "f1e093d9f0be07e4ea473eab99ed2513e5fe0c8293555ee86a89e56dfa369799",
+    "parameters.json": "8080efce8b0cf5988555e93a78c348346b0e17fad8bf43a4e46963f9deb8ca6d",
+    "rgba.npy": "e9f2fe5413d5a9a24a50630ba69934d0a1e97009a603597fa3c709d4b084f77b",
+    "shaders.json": "ba7102f4e4f52622f204357087591480ded9fed16dd170db3f9710437a54166f"
+  },
+  "authoring_sha256": "c6d88db15f4dccd9e7770467b3fba924cc6e2360780319e590a19a3eab47592a",
+  "case": "mesh_perspective",
+  "executable": "C:\\Users\\HEQ\\AppData\\Local\\Temp\\vispy-mesh-layout-consumers-mpsefur5\\upstream\\Scripts\\python.exe",
+  "full_platform_or_scientific_admission": false,
+  "kind": "upstream",
+  "package": "C:\\Users\\HEQ\\AppData\\Local\\Temp\\vispy-mesh-layout-consumers-mpsefur5\\upstream\\Lib\\site-packages\\vispy",
+  "parameters": {
+    "background": [
+      16,
+      24,
+      32,
+      255
+    ],
+    "case": "mesh_perspective",
+    "clipping_halfspaces": "x >= 112 and y <= 120 in visual coordinates",
+    "comparison": {
+      "alpha_exact": true,
+      "candidate_alignment_or_color_fit": false,
+      "excluded_pixels": 0,
+      "full_frame_max_abs_u8": 1
+    },
+    "context": {
+      "renderer": "NVIDIA GeForce RTX 4090/PCIe/SSE2",
+      "version": "4.6.0 NVIDIA 610.88"
+    },
+    "cpu_atlases": {},
+    "dpi": 96,
+    "face_normals": [
+      [
+        0.0,
+        0.0,
+        1.0
+      ],
+      [
+        -0.3010752688172043,
+        -0.4731182795698925,
+        0.8279569892473119
+      ]
+    ],
+    "font": "OpenSans",
+    "font_size": 18,
+    "inputs": {
+      "faces": {
+        "dtype": "<u4",
+        "sha256": "a55571c9db30026e44ac0bdd7674d9c597d8254732feb18418f3aaf8a5b4f418",
+        "shape": [
+          2,
+          3
+        ]
+      },
+      "planes": {
+        "dtype": "<f4",
+        "sha256": "81fd07e82db81e8e7df721a6a3ff82102ed6d46ef42b3b80b26f61c72a1e464d",
+        "shape": [
+          2,
+          2,
+          3
+        ]
+      },
+      "texcoords": {
+        "dtype": "<f4",
+        "sha256": "57a4ad6a5dda1d1cb845be6039169c69a740bc7ee39cd385ffa082da7104b769",
+        "shape": [
+          4,
+          2
+        ]
+      },
+      "texture": {
+        "dtype": "|u1",
+        "sha256": "2496743087dc3b2ddf5e528fbe8c91c07b0dcfac38164aeb5cf6990f0bababf5",
+        "shape": [
+          8,
+          8,
+          4
+        ]
+      },
+      "vertices": {
+        "dtype": "<f4",
+        "sha256": "348a00b3c2858733192e56bb3910cce7ab1e2c018df293fd8a2fd024e20fdfe7",
+        "shape": [
+          4,
+          3
+        ]
+      },
+      "x": {
+        "dtype": "<f4",
+        "sha256": "442027d79d0a37f798ddcb165e8186350f09a1cb308386ab037854958d7b0b0b",
+        "shape": [
+          7
+        ]
+      },
+      "y": {
+        "dtype": "<f4",
+        "sha256": "91c08a6ea262f7b3d6e0b0c1beed220ef97f5efb0dd329c3b1a294ef9049a491",
+        "shape": [
+          5
+        ]
+      },
+      "z": {
+        "dtype": "<f4",
+        "sha256": "34d29d2cd483c17c3ba798ce1005eb9cebd91d1f1f54892304f33c42eec78d3e",
+        "shape": [
+          7,
+          5
+        ]
+      }
+    },
+    "lighting": {
+      "ambient": 0.2,
+      "diffuse": 0.8,
+      "direction": [
+        0,
+        0,
+        1
+      ],
+      "specular": 0
+    },
+    "mesh_projection": null,
+    "reads": 1,
+    "size": [
+      224,
+      160
+    ],
+    "text": "Ag\n15",
+    "text_placements": [
+      [
+        [
+          32,
+          24
+        ],
+        "left",
+        "top",
+        0
+      ],
+      [
+        [
+          112,
+          80
+        ],
+        "center",
+        "center",
+        30
+      ],
+      [
+        [
+          192,
+          136
+        ],
+        "right",
+        "bottom",
+        -90
+      ]
+    ],
+    "view_rectangles": [
+      [
+        0.0,
+        0.0,
+        224.0,
+        160.0
+      ]
+    ]
+  },
+  "pid": 74336,
+  "process_exit": 0,
+  "python": "3.12.8 (main, Dec 19 2024, 14:41:01) [MSC v.1942 64 bit (AMD64)]",
+  "schema": 1,
+  "source_hashes": {
+    "gloo/glir.py": "a3bb8a75b33f47420e9c100b8a6d81037a2f03c905e6c9f7d8399f4fb2eb8f7c",
+    "gloo/program.py": "4d3ab8e36260f9b5dc50f6aec075b12d642535f3cb8f49bfd4a27056301d5492",
+    "gloo/texture.py": "9f6d5f2e448e02c0ca4d66c65d17ddcdb6c0182bb8f15f1292a427f5a9faf6bc",
+    "scene/canvas.py": "d404365a8183d4fe6ee4a10212ee75d7417a4273d9ce441e46930d6dc1490b6e",
+    "visuals/mesh.py": "9d6fc7616eef5caff4da302ff94c561df1aab8c8b6498d6b901f8e51c5b1ef88",
+    "visuals/text/text.py": "5907ac03bd6c6c13709ae4994616ec183407189b2645f7e52e20a32da3ce7e60"
+  },
+  "status": "PASS_UPSTREAM_CASE",
+  "versions": {
+    "PyQt6": "6.11.0",
+    "PyQt6-Qt6": "6.11.2",
+    "PyQt6-sip": "13.13.0",
+    "freetype-py": "2.5.1",
+    "hsluv": "5.0.4",
+    "kiwisolver": "1.5.1",
+    "numpy": "2.5.3",
+    "packaging": "26.3"
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "alpha": 1.0,
+  "axes": false,
+  "camera": {
+    "azimuth": 0.0,
+    "center": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "elevation": 0.0,
+    "scale_factor": 2.5
+  },
+  "case": "volume_edit",
+  "clim": [
+    0,
+    1
+  ],
+  "color": "#0000ff",
+  "downsample": false,
+  "error_dialogs": [],
+  "host_context_available": true,
+  "inputs": [
+    {
+      "dtype": "<f4",
+      "sha256": "169de19bd02834e21778b4e5cc963c6bbd212ac4dff0b09b2cfe9c1bafcb3957",
+      "shape": [
+        32,
+        32,
+        32
+      ]
+    },
+    {
+      "dtype": "<f4",
+      "sha256": "0924b51b23938d81e476ef299e62f6b54c05d60a83eaf5a2de820e00644af578",
+      "shape": [
+        32,
+        32,
+        32
+      ]
+    }
+  ],
+  "limits": [
+    -0.5,
+    31.5,
+    -0.5,
+    31.5,
+    -0.5,
+    31.5
+  ],
+  "native_mro": [
+    "CanvasBackendDesktop",
+    "QtBaseCanvasBackend",
+    "BaseCanvasBackend",
+    "QOpenGLWidget",
+    "QWidget",
+    "QObject",
+    "wrapper",
+    "QPaintDevice",
+    "simplewrapper",
+    "object"
+  ],
+  "resolution": 32,
+  "size": [
+    128,
+    128
+  ],
+  "viewer_class": "VispyVolumeViewer"
+}

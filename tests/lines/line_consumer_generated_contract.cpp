@@ -586,6 +586,45 @@ void basic() {
     }
 }
 
+
+void depth_attachment_specialization() {
+    const std::string fragment = "varying vec4 color; void main() { gl_FragDepth = .25; gl_FragColor = vec4(color.rgb, gl_FragDepth * 4.0); }";
+    for (const auto& source : {basic_fragment, fragment}) {
+        auto e = evaluator(basic_vertex, source);
+        auto attached = policy(); auto color_only = attached; color_only.depth_output = false;
+        auto with_depth = build_generated_line_consumer(e, attached, grants());
+        auto without_depth = build_generated_line_consumer(e, color_only, grants());
+        require(with_depth->ok, "attached-depth generated consumer: " + with_depth->error);
+        require(without_depth->ok, "color-only generated consumer: " + without_depth->error);
+        require(with_depth->policy_identity != without_depth->policy_identity &&
+            with_depth->identity != without_depth->identity && with_depth->cache_key != without_depth->cache_key,
+            "actual depth output is part of complete CPU/module/pipeline identity");
+        require(without_depth->fragment.find("gl_FragDepth") == std::string::npos &&
+            without_depth->fragment.find("float vispy_line_consumer_fragment_depth;") != std::string::npos &&
+            without_depth->fragment.find("vispy_line_consumer_fragment_depth = depth;") != std::string::npos,
+            "color-only wrapper keeps depth computations in private storage");
+        if (source == fragment) require(without_depth->fragment.find("vispy_line_consumer_fragment_depth = .25") != std::string::npos &&
+            without_depth->fragment.find("vispy_line_consumer_fragment_depth * 4.0") != std::string::npos,
+            "user depth assignment and following expression remain invocation-local computations");
+        for (const auto& consumer : {with_depth, without_depth}) {
+            bool depth_builtin = false, depth_replacing = false;
+            for (size_t p = 5; p < consumer->fragment_spv.size();) {
+                const auto& words = consumer->fragment_spv; const size_t count = words[p] >> 16;
+                if (!count || count > words.size() - p) throw std::runtime_error("depth-specialization SPIR-V instruction bounds");
+                const auto op = static_cast<spv::Op>(words[p] & 0xffffu);
+                if (op == spv::Op::OpDecorate && count == 4 && words[p+2] == uint32_t(spv::Decoration::BuiltIn) &&
+                    words[p+3] == uint32_t(spv::BuiltIn::FragDepth)) depth_builtin = true;
+                if (op == spv::Op::OpExecutionMode && count >= 3 && words[p+2] == uint32_t(spv::ExecutionMode::DepthReplacing)) depth_replacing = true;
+                p += count;
+            }
+            require(depth_builtin == consumer->policy.depth_output && depth_replacing == consumer->policy.depth_output,
+                "compiled fragment depth interface agrees with captured attachment policy");
+            require(consumer->fragment_line_map.size() == size_t(std::count(consumer->fragment.begin(), consumer->fragment.end(), '\n')),
+                "depth specialization preserves composer diagnostic line mapping");
+        }
+    }
+}
+
 void bounded_product_arithmetic() {
     using vispy::lines::Mode;
     // Independent wide arithmetic covers all topologies, including values
@@ -1323,6 +1362,49 @@ void aliased_projection_and_clipped_terminal() {
     require(generated_line_consumer_policy_identity(*e, prior) != c->policy_identity,
             "old rounded-plane/clipped-terminal policy cannot reuse the repaired CPU cache entry");
 }
+void analytic_smooth_contract() {
+    namespace lines = vispy::lines;
+    auto e = evaluator();
+    auto p = policy(); p.coverage = LineCoveragePolicy::SmoothAnalytic;
+    p.coverage_identity = kSmoothLineCoverageIdentity;
+    auto c = build_generated_line_consumer(e, p, grants());
+    require(c->ok, "analytic smooth consumer compiles: " + c->error);
+    diagnostics("analytic-smooth", *c);
+    Trace trace(c->fragment_spv);
+    require(trace.id("vispy_line_consumer_smooth", true) != 0,
+            "real fragment SPIR-V contains analytic coverage");
+    require(c->fragment.find("vispy_out_color.a *= vispy_line_consumer_coverage;") >
+            c->fragment.find("    vispy_line_consumer_original_fragment();"),
+            "coverage modulates user alpha after the original fragment call");
+    require(c->policy_identity != generated_line_consumer_policy_identity(*e, policy()),
+            "smooth and aliased consumers cannot share a cache entry");
+    const lines::LineConsumerSelection selection(lines::Mode::Strip, lines::Selection{0, 3, 1});
+    for (double width : {0.25, 1.0, 1.5, 3.75}) {
+        auto draw = plan_generated_line_consumer_draw(*c, selection, {0, 2}, lines::state(width, true),
+            {0, 0, 32, 24}, 24, 0, 1, grants());
+        require(draw.parameters.raster[0] == width && draw.instance_count == 2,
+                "smooth widths remain fractional and use the existing topology");
+        auto chunk = plan_generated_line_consumer_chunk_draw(*c, 2, 3, 2, true, false, false, 5,
+            lines::state(width, true), {0, 0, 32, 24}, 24, 0, 1, grants());
+        require(chunk.parameters.raster[0] == width && chunk.parameters.ranges[1] == 5,
+                "smooth chunk preserves fractional width and original primitive identity");
+    }
+    refusal([&]{plan_generated_line_consumer_draw(*c, selection, {0, 2}, lines::state(1, false),
+        {0, 0, 32, 24}, 24, 0, 1, grants());}, "aliased draws cannot reuse smooth artifacts");
+    p.sample_count = 4;
+    require(!build_generated_line_consumer(e, p, grants())->ok, "analytic policy does not silently enable MSAA");
+    p.sample_count = 1; p.depth_output = false;
+    auto named = evaluator(basic_vertex,
+        "out vec4 result_color; void helper(out float x) { x = 0.5; } "
+        "void main() { float x; helper(x); result_color = vec4(1, 0, 0, x); }");
+    auto color_only = build_generated_line_consumer(named, p, grants());
+    require(color_only->ok, "named smooth color-only output compiles: " + color_only->error);
+    require(color_only->fragment.find("result_color.a *= vispy_line_consumer_coverage;") != std::string::npos,
+            "coverage finds the named global output instead of out function parameters");
+    auto rgb = evaluator(basic_vertex, "out vec3 result_color; void main() { result_color = vec3(1); }");
+    require(!build_generated_line_consumer(rgb, p, grants())->ok,
+            "output without alpha explicitly refuses smooth coverage");
+}
 } // namespace
 
 int main(int argc, char** argv) {
@@ -1332,7 +1414,8 @@ int main(int argc, char** argv) {
             diagnostics_directory = argv[1];
             if (!std::filesystem::create_directory(diagnostics_directory)) throw std::runtime_error("diagnostics directory must be fresh");
         }
-        basic(); bounded_product_arithmetic(); viewport_coordinate_contract(); initializer_order(); typed_and_resources(); fragment_contexts(); dynamic_helper_queries(); plans_and_clip(); chunk_mapping_contract(); aliased_projection_and_clipped_terminal();
+        basic(); depth_attachment_specialization(); bounded_product_arithmetic(); viewport_coordinate_contract(); initializer_order(); typed_and_resources(); fragment_contexts(); dynamic_helper_queries(); plans_and_clip(); chunk_mapping_contract(); aliased_projection_and_clipped_terminal();
+        analytic_smooth_contract();
         std::cout << "line consumer generated compiler contract: " << checks << " checks\n";
         return 0;
     } catch (const std::exception& error) {

@@ -1,0 +1,6376 @@
+{
+  "declared_dependencies": [
+    "einops",
+    "imageio>=2.5.0,!=2.11.0,!=2.22.1",
+    "libigl",
+    "magicgui",
+    "morphosamplers",
+    "mrcfile",
+    "napari>=0.5.0",
+    "numpy",
+    "pandas",
+    "pooch",
+    "psygnal",
+    "pydantic",
+    "qtpy",
+    "scipy",
+    "superqt",
+    "vispy",
+    "zarr<3"
+  ],
+  "dynamic_imports": [],
+  "host": "napari_threedee",
+  "imports": [
+    {
+      "file": "docs/examples/library/camera_spline_library.py",
+      "level": 0,
+      "line": 8,
+      "module": "napari",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "docs/examples/library/camera_spline_library.py",
+      "level": 0,
+      "line": 9,
+      "module": "skimage",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "docs/examples/library/camera_spline_library.py",
+      "level": 0,
+      "line": 11,
+      "module": "napari_threedee.visualization._qt.qt_camera_spline",
+      "names": [
+        "QtCameraSpline"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "docs/examples/library/dipole_annotator_library.py",
+      "level": 0,
+      "line": 8,
+      "module": "napari",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "docs/examples/library/dipole_annotator_library.py",
+      "level": 0,
+      "line": 9,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "docs/examples/library/dipole_annotator_library.py",
+      "level": 0,
+      "line": 10,
+      "module": "skimage",
+      "names": [
+        "data"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "docs/examples/library/dipole_annotator_library.py",
+      "level": 0,
+      "line": 11,
+      "module": "scipy.stats",
+      "names": [
+        "special_ortho_group"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "docs/examples/library/dipole_annotator_library.py",
+      "level": 0,
+      "line": 13,
+      "module": "napari_threedee.annotators",
+      "names": [
+        "DipoleAnnotator"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "docs/examples/library/dipole_annotator_library.py",
+      "level": 0,
+      "line": 14,
+      "module": "napari_threedee.data_models",
+      "names": [
+        "N3dDipoles"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "docs/examples/library/layer_manipulator_library.py",
+      "level": 0,
+      "line": 8,
+      "module": "napari",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "docs/examples/library/layer_manipulator_library.py",
+      "level": 0,
+      "line": 9,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "docs/examples/library/layer_manipulator_library.py",
+      "level": 0,
+      "line": 11,
+      "module": "napari_threedee.manipulators._qt",
+      "names": [
+        "QtLayerManipulatorWidget"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "docs/examples/library/mesh_headlight_library.py",
+      "level": 0,
+      "line": 8,
+      "module": "napari",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "docs/examples/library/mesh_headlight_library.py",
+      "level": 0,
+      "line": 9,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "docs/examples/library/mesh_headlight_library.py",
+      "level": 0,
+      "line": 10,
+      "module": "vispy.io",
+      "names": [
+        "load_data_file",
+        "read_mesh"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "docs/examples/library/mesh_headlight_library.py",
+      "level": 0,
+      "line": 12,
+      "module": "napari_threedee.visualization._qt.qt_lighting_control",
+      "names": [
+        "QtLightingControlWidget"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "docs/examples/library/path_annotator_library.py",
+      "level": 0,
+      "line": 9,
+      "module": "napari",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "docs/examples/library/path_annotator_library.py",
+      "level": 0,
+      "line": 10,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "docs/examples/library/path_annotator_library.py",
+      "level": 0,
+      "line": 11,
+      "module": "skimage",
+      "names": [
+        "data"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "docs/examples/library/path_annotator_library.py",
+      "level": 0,
+      "line": 13,
+      "module": "napari_threedee.annotators",
+      "names": [
+        "PathAnnotator"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "docs/examples/library/path_annotator_library.py",
+      "level": 0,
+      "line": 14,
+      "module": "napari_threedee.data_models",
+      "names": [
+        "N3dPaths",
+        "N3dPath"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "docs/examples/library/point_annotator_library.py",
+      "level": 0,
+      "line": 8,
+      "module": "napari",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "docs/examples/library/point_annotator_library.py",
+      "level": 0,
+      "line": 9,
+      "module": "skimage",
+      "names": [
+        "data"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "docs/examples/library/point_annotator_library.py",
+      "level": 0,
+      "line": 11,
+      "module": "napari_threedee.annotators",
+      "names": [
+        "PointAnnotator"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "docs/examples/library/render_plane_manipulator_library.py",
+      "level": 0,
+      "line": 8,
+      "module": "napari_threedee.manipulators._qt",
+      "names": [
+        "QtRenderPlaneManipulatorWidget"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "docs/examples/library/render_plane_manipulator_library.py",
+      "level": 0,
+      "line": 10,
+      "module": "napari",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "docs/examples/library/render_plane_manipulator_library.py",
+      "level": 0,
+      "line": 11,
+      "module": "skimage",
+      "names": [
+        "data"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "docs/examples/library/sphere_annotator_library.py",
+      "level": 0,
+      "line": 8,
+      "module": "napari",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "docs/examples/library/sphere_annotator_library.py",
+      "level": 0,
+      "line": 9,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "docs/examples/library/sphere_annotator_library.py",
+      "level": 0,
+      "line": 10,
+      "module": "skimage",
+      "names": [
+        "data"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "docs/examples/library/sphere_annotator_library.py",
+      "level": 0,
+      "line": 12,
+      "module": "napari_threedee.data_models",
+      "names": [
+        "N3dSpheres"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "docs/examples/library/sphere_annotator_library.py",
+      "level": 0,
+      "line": 13,
+      "module": "napari_threedee.annotators.spheres",
+      "names": [
+        "SphereAnnotator"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "docs/examples/library/surface_annotator_library.py",
+      "level": 0,
+      "line": 8,
+      "module": "napari",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "docs/examples/library/surface_annotator_library.py",
+      "level": 0,
+      "line": 9,
+      "module": "skimage",
+      "names": [
+        "data"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "docs/examples/library/surface_annotator_library.py",
+      "level": 0,
+      "line": 11,
+      "module": "napari_threedee",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "docs/examples/plugin/ambient_occlusion_plugin.py",
+      "level": 0,
+      "line": 8,
+      "module": "napari",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "docs/examples/plugin/ambient_occlusion_plugin.py",
+      "level": 0,
+      "line": 9,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "docs/examples/plugin/ambient_occlusion_plugin.py",
+      "level": 0,
+      "line": 10,
+      "module": "vispy.io",
+      "names": [
+        "load_data_file",
+        "read_mesh"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "docs/examples/plugin/camera_spline_plugin.py",
+      "level": 0,
+      "line": 8,
+      "module": "napari",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "docs/examples/plugin/camera_spline_plugin.py",
+      "level": 0,
+      "line": 9,
+      "module": "skimage",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "docs/examples/plugin/label_annotator_plugin.py",
+      "level": 0,
+      "line": 8,
+      "module": "napari",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "docs/examples/plugin/label_annotator_plugin.py",
+      "level": 0,
+      "line": 9,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "docs/examples/plugin/label_annotator_plugin.py",
+      "level": 0,
+      "line": 10,
+      "module": "skimage",
+      "names": [
+        "data"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "docs/examples/plugin/layer_manipulator_plugin.py",
+      "level": 0,
+      "line": 8,
+      "module": "napari",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "docs/examples/plugin/layer_manipulator_plugin.py",
+      "level": 0,
+      "line": 11,
+      "module": "skimage.data",
+      "names": [
+        "binary_blobs"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "docs/examples/plugin/mesh_headlight_plugin.py",
+      "level": 0,
+      "line": 8,
+      "module": "napari",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "docs/examples/plugin/mesh_headlight_plugin.py",
+      "level": 0,
+      "line": 9,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "docs/examples/plugin/mesh_headlight_plugin.py",
+      "level": 0,
+      "line": 10,
+      "module": "vispy.io",
+      "names": [
+        "load_data_file",
+        "read_mesh"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "docs/examples/plugin/path_annotator_plugin.py",
+      "level": 0,
+      "line": 8,
+      "module": "napari",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "docs/examples/plugin/path_annotator_plugin.py",
+      "level": 0,
+      "line": 9,
+      "module": "skimage",
+      "names": [
+        "data"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "docs/examples/plugin/point_annotator_plugin.py",
+      "level": 0,
+      "line": 8,
+      "module": "napari",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "docs/examples/plugin/point_annotator_plugin.py",
+      "level": 0,
+      "line": 9,
+      "module": "skimage",
+      "names": [
+        "data"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "docs/examples/plugin/points_manipulator_plugin.py",
+      "level": 0,
+      "line": 14,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "docs/examples/plugin/points_manipulator_plugin.py",
+      "level": 0,
+      "line": 16,
+      "module": "napari",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "docs/examples/plugin/render_plane_manipulator_plugin.py",
+      "level": 0,
+      "line": 8,
+      "module": "napari",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "docs/examples/plugin/render_plane_manipulator_plugin.py",
+      "level": 0,
+      "line": 9,
+      "module": "skimage",
+      "names": [
+        "data"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "docs/examples/plugin/sphere_annotator_plugin.py",
+      "level": 0,
+      "line": 8,
+      "module": "napari",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "docs/examples/plugin/sphere_annotator_plugin.py",
+      "level": 0,
+      "line": 9,
+      "module": "skimage",
+      "names": [
+        "data"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "docs/examples/plugin/surface_annotator_plugin.py",
+      "level": 0,
+      "line": 8,
+      "module": "napari",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "docs/examples/plugin/surface_annotator_plugin.py",
+      "level": 0,
+      "line": 9,
+      "module": "skimage",
+      "names": [
+        "data"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "docs/gallery_conf.py",
+      "level": 0,
+      "line": 1,
+      "module": "pathlib",
+      "names": [
+        "Path"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "docs/gallery_conf.py",
+      "level": 0,
+      "line": 2,
+      "module": "warnings",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "docs/gallery_conf.py",
+      "level": 0,
+      "line": 4,
+      "module": "mkdocs_gallery.scrapers",
+      "names": [
+        "figure_md_or_html",
+        "matplotlib_scraper"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "docs/gallery_conf.py",
+      "level": 0,
+      "line": 5,
+      "module": "mkdocs_gallery.gen_data_model",
+      "names": [
+        "GalleryScript"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "docs/gallery_conf.py",
+      "level": 0,
+      "line": 6,
+      "module": "napari",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "docs/gallery_conf.py",
+      "level": 0,
+      "line": 7,
+      "module": "qtgallery",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/__init__.py",
+      "level": 1,
+      "line": 1,
+      "module": "",
+      "names": [
+        "data_models"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/__init__.py",
+      "level": 1,
+      "line": 2,
+      "module": "",
+      "names": [
+        "annotators"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/__init__.py",
+      "level": 1,
+      "line": 3,
+      "module": "",
+      "names": [
+        "manipulators"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/__init__.py",
+      "level": 1,
+      "line": 6,
+      "module": "_version",
+      "names": [
+        "version"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/__init__.py",
+      "level": 1,
+      "line": 1,
+      "module": "threedee_model",
+      "names": [
+        "N3dComponent"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/__init__.py",
+      "level": 1,
+      "line": 2,
+      "module": "threedee_widget_base",
+      "names": [
+        "QtThreeDeeWidgetBase"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/manipulator/_interface.py",
+      "level": 0,
+      "line": 1,
+      "module": "abc",
+      "names": [
+        "ABC",
+        "abstractmethod"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/manipulator/_interface.py",
+      "level": 0,
+      "line": 3,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/manipulator/_tests/test_axis_model.py",
+      "level": 0,
+      "line": 1,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/manipulator/_tests/test_axis_model.py",
+      "level": 0,
+      "line": 3,
+      "module": "napari_threedee._backend.manipulator.axis_model",
+      "names": [
+        "AxisModel",
+        "AxisSet"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/manipulator/_tests/test_central_axis.py",
+      "level": 0,
+      "line": 1,
+      "module": "napari_threedee._backend.manipulator.central_axis",
+      "names": [
+        "CentralAxis",
+        "CentralAxisSet"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/manipulator/_tests/test_drag_manager.py",
+      "level": 0,
+      "line": 1,
+      "module": "dataclasses",
+      "names": [
+        "dataclass"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/manipulator/_tests/test_drag_manager.py",
+      "level": 0,
+      "line": 2,
+      "module": "typing",
+      "names": [
+        "List"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/manipulator/_tests/test_drag_manager.py",
+      "level": 0,
+      "line": 4,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/manipulator/_tests/test_drag_manager.py",
+      "level": 0,
+      "line": 5,
+      "module": "napari.layers",
+      "names": [
+        "Image"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/manipulator/_tests/test_drag_manager.py",
+      "level": 0,
+      "line": 6,
+      "module": "pytest",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/manipulator/_tests/test_drag_manager.py",
+      "level": 0,
+      "line": 8,
+      "module": "napari_threedee._backend.manipulator.drag_managers",
+      "names": [
+        "RotatorDragManager",
+        "TranslatorDragManager"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/manipulator/_tests/test_manipulator.py",
+      "level": 0,
+      "line": 1,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/manipulator/_tests/test_manipulator.py",
+      "level": 0,
+      "line": 2,
+      "module": "pytest",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/manipulator/_tests/test_manipulator.py",
+      "level": 0,
+      "line": 3,
+      "module": "napari_threedee._backend.manipulator.manipulator_model",
+      "names": [
+        "ManipulatorModel"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/manipulator/_tests/test_manipulator.py",
+      "level": 0,
+      "line": 4,
+      "module": "napari_threedee.manipulators",
+      "names": [
+        "RenderPlaneManipulator"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/manipulator/_tests/test_manipulator_visual_data.py",
+      "level": 0,
+      "line": 1,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/manipulator/_tests/test_manipulator_visual_data.py",
+      "level": 0,
+      "line": 3,
+      "module": "napari_threedee._backend.manipulator.axis_model",
+      "names": [
+        "AxisModel"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/manipulator/_tests/test_manipulator_visual_data.py",
+      "level": 0,
+      "line": 4,
+      "module": "napari_threedee._backend.manipulator.central_axis",
+      "names": [
+        "CentralAxis",
+        "CentralAxisSet"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/manipulator/_tests/test_manipulator_visual_data.py",
+      "level": 0,
+      "line": 5,
+      "module": "napari_threedee._backend.manipulator.manipulator_model",
+      "names": [
+        "ManipulatorModel"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/manipulator/_tests/test_manipulator_visual_data.py",
+      "level": 0,
+      "line": 6,
+      "module": "napari_threedee._backend.manipulator.translator",
+      "names": [
+        "Translator",
+        "TranslatorSet"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/manipulator/_tests/test_manipulator_visual_data.py",
+      "level": 0,
+      "line": 7,
+      "module": "napari_threedee._backend.manipulator.rotator",
+      "names": [
+        "Rotator",
+        "RotatorSet"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/manipulator/_tests/test_manipulator_visual_data.py",
+      "level": 0,
+      "line": 8,
+      "module": "napari_threedee._backend.manipulator.vispy_visual_data",
+      "names": [
+        "ManipulatorLineData",
+        "ManipulatorHandleData",
+        "ManipulatorVisualData"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/manipulator/_tests/test_rotator.py",
+      "level": 0,
+      "line": 1,
+      "module": "napari_threedee._backend.manipulator.rotator",
+      "names": [
+        "RotatorSet",
+        "Rotator"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/manipulator/_tests/test_translator.py",
+      "level": 0,
+      "line": 1,
+      "module": "napari_threedee._backend.manipulator.translator",
+      "names": [
+        "TranslatorSet",
+        "Translator"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/manipulator/axis_model.py",
+      "level": 0,
+      "line": 1,
+      "module": "typing",
+      "names": [
+        "Tuple",
+        "List"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/manipulator/axis_model.py",
+      "level": 0,
+      "line": 3,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/manipulator/axis_model.py",
+      "level": 0,
+      "line": 4,
+      "module": "pydantic",
+      "names": [
+        "BaseModel",
+        "validator"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/manipulator/central_axis.py",
+      "level": 0,
+      "line": 1,
+      "module": "typing",
+      "names": [
+        "List"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/manipulator/central_axis.py",
+      "level": 0,
+      "line": 3,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/manipulator/central_axis.py",
+      "level": 0,
+      "line": 4,
+      "module": "pydantic",
+      "names": [
+        "BaseModel"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/manipulator/central_axis.py",
+      "level": 0,
+      "line": 6,
+      "module": "napari_threedee._backend.manipulator.axis_model",
+      "names": [
+        "AxisModel",
+        "AxisSet"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/manipulator/drag_managers.py",
+      "level": 0,
+      "line": 1,
+      "module": "napari",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/manipulator/drag_managers.py",
+      "level": 0,
+      "line": 2,
+      "module": "napari.layers.utils.interactivity_utils",
+      "names": [
+        "drag_data_to_projected_distance"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/manipulator/drag_managers.py",
+      "level": 0,
+      "line": 3,
+      "module": "napari.utils.geometry",
+      "names": [
+        "intersect_line_with_plane_3d"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/manipulator/drag_managers.py",
+      "level": 0,
+      "line": 4,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/manipulator/drag_managers.py",
+      "level": 3,
+      "line": 6,
+      "module": "utils.geometry",
+      "names": [
+        "signed_angle_between_vectors",
+        "rotation_matrix_around_vector_3d"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/manipulator/drag_managers.py",
+      "level": 3,
+      "line": 7,
+      "module": "utils.napari_utils",
+      "names": [
+        "get_mouse_position_in_displayed_layer_data_coordinates"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/manipulator/manipulator_model.py",
+      "level": 0,
+      "line": 1,
+      "module": "typing",
+      "names": [
+        "Tuple",
+        "Optional",
+        "Literal",
+        "Union",
+        "Any"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/manipulator/manipulator_model.py",
+      "level": 0,
+      "line": 3,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/manipulator/manipulator_model.py",
+      "level": 0,
+      "line": 4,
+      "module": "psygnal",
+      "names": [
+        "EventedModel"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/manipulator/manipulator_model.py",
+      "level": 0,
+      "line": 5,
+      "module": "pydantic",
+      "names": [
+        "validator",
+        "Field"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/manipulator/manipulator_model.py",
+      "level": 1,
+      "line": 7,
+      "module": "central_axis",
+      "names": [
+        "CentralAxisSet"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/manipulator/manipulator_model.py",
+      "level": 1,
+      "line": 8,
+      "module": "rotator",
+      "names": [
+        "RotatorSet",
+        "Rotator"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/manipulator/manipulator_model.py",
+      "level": 1,
+      "line": 9,
+      "module": "translator",
+      "names": [
+        "TranslatorSet",
+        "Translator"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/manipulator/napari_manipulator_backend.py",
+      "level": 0,
+      "line": 1,
+      "module": "typing",
+      "names": [
+        "Optional",
+        "Type",
+        "Union"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/manipulator/napari_manipulator_backend.py",
+      "level": 0,
+      "line": 3,
+      "module": "einops",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/manipulator/napari_manipulator_backend.py",
+      "level": 0,
+      "line": 4,
+      "module": "napari",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/manipulator/napari_manipulator_backend.py",
+      "level": 0,
+      "line": 5,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/manipulator/napari_manipulator_backend.py",
+      "level": 0,
+      "line": 6,
+      "module": "vispy.visuals.transforms",
+      "names": [
+        "MatrixTransform"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/manipulator/napari_manipulator_backend.py",
+      "level": 1,
+      "line": 8,
+      "module": "axis_model",
+      "names": [
+        "AxisModel"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/manipulator/napari_manipulator_backend.py",
+      "level": 1,
+      "line": 9,
+      "module": "manipulator_model",
+      "names": [
+        "ManipulatorModel"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/manipulator/napari_manipulator_backend.py",
+      "level": 1,
+      "line": 10,
+      "module": "vispy_visual_data",
+      "names": [
+        "ManipulatorVisualData"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/manipulator/napari_manipulator_backend.py",
+      "level": 1,
+      "line": 11,
+      "module": "vispy_manipulator_visual",
+      "names": [
+        "ManipulatorVisual"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/manipulator/napari_manipulator_backend.py",
+      "level": 0,
+      "line": 12,
+      "module": "napari_threedee._backend.manipulator.drag_managers",
+      "names": [
+        "RotatorDragManager",
+        "TranslatorDragManager"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/manipulator/napari_manipulator_backend.py",
+      "level": 3,
+      "line": 14,
+      "module": "utils.napari_utils",
+      "names": [
+        "get_vispy_root_node",
+        "get_mouse_position_in_displayed_layer_data_coordinates",
+        "add_mouse_callback_safe",
+        "remove_mouse_callback_safe"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/manipulator/napari_manipulator_backend.py",
+      "level": 3,
+      "line": 17,
+      "module": "utils.selection_utils",
+      "names": [
+        "select_sphere_from_click"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/manipulator/napari_manipulator_backend.py",
+      "level": 0,
+      "line": 18,
+      "module": "napari_threedee.utils.napari_utils",
+      "names": [
+        "clamp_point_to_layer_bounding_box"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/manipulator/rotator.py",
+      "level": 0,
+      "line": 1,
+      "module": "typing",
+      "names": [
+        "List"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/manipulator/rotator.py",
+      "level": 0,
+      "line": 3,
+      "module": "pydantic",
+      "names": [
+        "BaseModel"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/manipulator/rotator.py",
+      "level": 0,
+      "line": 4,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/manipulator/rotator.py",
+      "level": 1,
+      "line": 6,
+      "module": "_interface",
+      "names": [
+        "_Grabbable"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/manipulator/rotator.py",
+      "level": 1,
+      "line": 7,
+      "module": "axis_model",
+      "names": [
+        "AxisSet",
+        "AxisModel"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/manipulator/translator.py",
+      "level": 0,
+      "line": 1,
+      "module": "typing",
+      "names": [
+        "List"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/manipulator/translator.py",
+      "level": 0,
+      "line": 3,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/manipulator/translator.py",
+      "level": 0,
+      "line": 4,
+      "module": "pydantic",
+      "names": [
+        "BaseModel"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/manipulator/translator.py",
+      "level": 0,
+      "line": 6,
+      "module": "napari_threedee._backend.manipulator._interface",
+      "names": [
+        "_Grabbable"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/manipulator/translator.py",
+      "level": 0,
+      "line": 7,
+      "module": "napari_threedee._backend.manipulator.axis_model",
+      "names": [
+        "AxisSet",
+        "AxisModel"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/manipulator/utils.py",
+      "level": 0,
+      "line": 1,
+      "module": "inspect",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/manipulator/utils.py",
+      "level": 0,
+      "line": 2,
+      "module": "typing",
+      "names": [
+        "no_type_check"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/manipulator/utils.py",
+      "level": 0,
+      "line": 4,
+      "module": "pydantic",
+      "names": [
+        "BaseModel"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/manipulator/vispy_manipulator_visual.py",
+      "level": 1,
+      "line": 1,
+      "module": "manipulator_model",
+      "names": [
+        "ManipulatorModel"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/manipulator/vispy_manipulator_visual.py",
+      "level": 1,
+      "line": 2,
+      "module": "vispy_visual_data",
+      "names": [
+        "ManipulatorVisualData"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/manipulator/vispy_manipulator_visual.py",
+      "level": 0,
+      "line": 4,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/manipulator/vispy_manipulator_visual.py",
+      "level": 0,
+      "line": 6,
+      "module": "vispy.scene",
+      "names": [
+        "Line",
+        "Compound",
+        "Markers"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/manipulator/vispy_visual_data.py",
+      "level": 0,
+      "line": 1,
+      "module": "typing",
+      "names": [
+        "List",
+        "Optional"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/manipulator/vispy_visual_data.py",
+      "level": 0,
+      "line": 3,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/manipulator/vispy_visual_data.py",
+      "level": 0,
+      "line": 4,
+      "module": "napari.utils.geometry",
+      "names": [
+        "rotation_matrix_from_vectors_3d"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/manipulator/vispy_visual_data.py",
+      "level": 0,
+      "line": 5,
+      "module": "pydantic",
+      "names": [
+        "BaseModel"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/manipulator/vispy_visual_data.py",
+      "level": 1,
+      "line": 7,
+      "module": "central_axis",
+      "names": [
+        "CentralAxis",
+        "CentralAxisSet"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/manipulator/vispy_visual_data.py",
+      "level": 1,
+      "line": 8,
+      "module": "manipulator_model",
+      "names": [
+        "ManipulatorModel"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/manipulator/vispy_visual_data.py",
+      "level": 1,
+      "line": 9,
+      "module": "rotator",
+      "names": [
+        "Rotator",
+        "RotatorSet"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/manipulator/vispy_visual_data.py",
+      "level": 1,
+      "line": 10,
+      "module": "translator",
+      "names": [
+        "TranslatorSet",
+        "Translator"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/manipulator/vispy_visual_data.py",
+      "level": 1,
+      "line": 11,
+      "module": "utils",
+      "names": [
+        "ModelWithSettableProperties"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/threedee_model.py",
+      "level": 0,
+      "line": 1,
+      "module": "abc",
+      "names": [
+        "ABC",
+        "abstractmethod"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/threedee_widget_base.py",
+      "level": 0,
+      "line": 1,
+      "module": "typing",
+      "names": [
+        "Type"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/threedee_widget_base.py",
+      "level": 0,
+      "line": 3,
+      "module": "napari",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/threedee_widget_base.py",
+      "level": 0,
+      "line": 4,
+      "module": "qtpy.QtWidgets",
+      "names": [
+        "QWidget",
+        "QPushButton",
+        "QVBoxLayout"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/threedee_widget_base.py",
+      "level": 0,
+      "line": 5,
+      "module": "napari.utils.events",
+      "names": [
+        "Event"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/threedee_widget_base.py",
+      "level": 0,
+      "line": 6,
+      "module": "napari.utils.notifications",
+      "names": [
+        "show_info"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/threedee_widget_base.py",
+      "level": 0,
+      "line": 8,
+      "module": "napari_threedee._backend.threedee_model",
+      "names": [
+        "N3dComponent"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/threedee_widget_base.py",
+      "level": 2,
+      "line": 9,
+      "module": "utils.napari_utils",
+      "names": [
+        "generate_populated_layer_selection_widget"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_sample_data.py",
+      "level": 0,
+      "line": 1,
+      "module": "typing",
+      "names": [
+        "List"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_sample_data.py",
+      "level": 0,
+      "line": 3,
+      "module": "mrcfile",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_sample_data.py",
+      "level": 0,
+      "line": 4,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_sample_data.py",
+      "level": 0,
+      "line": 5,
+      "module": "napari.types",
+      "names": [
+        "LayerDataTuple"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_sample_data.py",
+      "level": 0,
+      "line": 6,
+      "module": "pooch",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_tests/test_dock_widget.py",
+      "level": 0,
+      "line": 1,
+      "module": "napari_threedee",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_tests/test_dock_widget.py",
+      "level": 0,
+      "line": 2,
+      "module": "pytest",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/__init__.py",
+      "level": 1,
+      "line": 1,
+      "module": "label",
+      "names": [
+        "PlaneLabeler"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/__init__.py",
+      "level": 1,
+      "line": 2,
+      "module": "points",
+      "names": [
+        "PointAnnotator"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/__init__.py",
+      "level": 1,
+      "line": 3,
+      "module": "paths",
+      "names": [
+        "PathAnnotator"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/__init__.py",
+      "level": 1,
+      "line": 4,
+      "module": "spheres",
+      "names": [
+        "SphereAnnotator"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/__init__.py",
+      "level": 1,
+      "line": 5,
+      "module": "surfaces",
+      "names": [
+        "SurfaceAnnotator"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/__init__.py",
+      "level": 1,
+      "line": 6,
+      "module": "dipoles",
+      "names": [
+        "DipoleAnnotator"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/_qt/__init__.py",
+      "level": 1,
+      "line": 1,
+      "module": "qt_label_annotator",
+      "names": [
+        "QtLabelAnnotatorWidget"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/_qt/__init__.py",
+      "level": 1,
+      "line": 2,
+      "module": "qt_point_annotator",
+      "names": [
+        "QtPointAnnotatorWidget"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/_qt/__init__.py",
+      "level": 1,
+      "line": 3,
+      "module": "qt_path_annotator",
+      "names": [
+        "QtPathAnnotatorWidget"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/_qt/__init__.py",
+      "level": 1,
+      "line": 4,
+      "module": "qt_sphere_annotator",
+      "names": [
+        "QtSphereAnnotatorWidget"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/_qt/__init__.py",
+      "level": 1,
+      "line": 5,
+      "module": "qt_surface_annotator",
+      "names": [
+        "QtSurfaceAnnotatorWidget"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/_qt/qt_label_annotator.py",
+      "level": 0,
+      "line": 1,
+      "module": "napari",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/_qt/qt_label_annotator.py",
+      "level": 0,
+      "line": 3,
+      "module": "napari_threedee._backend.threedee_widget_base",
+      "names": [
+        "QtThreeDeeWidgetBase"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/_qt/qt_label_annotator.py",
+      "level": 0,
+      "line": 4,
+      "module": "napari_threedee.annotators.label.annotator",
+      "names": [
+        "PlaneLabeler"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/_qt/qt_path_annotator.py",
+      "level": 0,
+      "line": 1,
+      "module": "napari",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/_qt/qt_path_annotator.py",
+      "level": 0,
+      "line": 2,
+      "module": "napari.utils.events",
+      "names": [
+        "Event"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/_qt/qt_path_annotator.py",
+      "level": 0,
+      "line": 3,
+      "module": "qtpy.QtWidgets",
+      "names": [
+        "QPushButton",
+        "QGroupBox",
+        "QVBoxLayout",
+        "QCheckBox",
+        "QSpinBox",
+        "QLabel",
+        "QHBoxLayout"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/_qt/qt_path_annotator.py",
+      "level": 0,
+      "line": 5,
+      "module": "napari_threedee._backend.threedee_widget_base",
+      "names": [
+        "QtThreeDeeWidgetBase"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/_qt/qt_path_annotator.py",
+      "level": 0,
+      "line": 7,
+      "module": "napari_threedee.annotators.paths",
+      "names": [
+        "PathAnnotator"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/_qt/qt_point_annotator.py",
+      "level": 0,
+      "line": 1,
+      "module": "napari",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/_qt/qt_point_annotator.py",
+      "level": 0,
+      "line": 3,
+      "module": "napari_threedee._backend.threedee_widget_base",
+      "names": [
+        "QtThreeDeeWidgetBase"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/_qt/qt_point_annotator.py",
+      "level": 0,
+      "line": 5,
+      "module": "napari_threedee.annotators.points",
+      "names": [
+        "PointAnnotator"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/_qt/qt_sphere_annotator.py",
+      "level": 0,
+      "line": 1,
+      "module": "napari",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/_qt/qt_sphere_annotator.py",
+      "level": 3,
+      "line": 3,
+      "module": "_backend",
+      "names": [
+        "QtThreeDeeWidgetBase"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/_qt/qt_sphere_annotator.py",
+      "level": 0,
+      "line": 5,
+      "module": "napari_threedee.annotators.spheres",
+      "names": [
+        "SphereAnnotator"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/_qt/qt_surface_annotator.py",
+      "level": 0,
+      "line": 1,
+      "module": "napari",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/_qt/qt_surface_annotator.py",
+      "level": 0,
+      "line": 2,
+      "module": "napari.utils.events",
+      "names": [
+        "Event"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/_qt/qt_surface_annotator.py",
+      "level": 0,
+      "line": 3,
+      "module": "qtpy.QtWidgets",
+      "names": [
+        "QPushButton",
+        "QGroupBox",
+        "QVBoxLayout",
+        "QSpinBox",
+        "QLabel",
+        "QHBoxLayout"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/_qt/qt_surface_annotator.py",
+      "level": 0,
+      "line": 5,
+      "module": "napari_threedee._backend.threedee_widget_base",
+      "names": [
+        "QtThreeDeeWidgetBase"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/_qt/qt_surface_annotator.py",
+      "level": 0,
+      "line": 7,
+      "module": "napari_threedee.annotators.surfaces.annotator",
+      "names": [
+        "SurfaceAnnotator"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/_tests/conftest.py",
+      "level": 0,
+      "line": 1,
+      "module": "pytest",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/_tests/conftest.py",
+      "level": 0,
+      "line": 3,
+      "module": "napari_threedee.annotators",
+      "names": [
+        "PointAnnotator",
+        "PathAnnotator",
+        "SphereAnnotator"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/_tests/test_path_annotator.py",
+      "level": 0,
+      "line": 1,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/_tests/test_path_annotator.py",
+      "level": 0,
+      "line": 2,
+      "module": "napari.layers",
+      "names": [
+        "Points"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/_tests/test_path_annotator.py",
+      "level": 0,
+      "line": 4,
+      "module": "napari_threedee.annotators.paths.constants",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/_tests/test_path_annotator.py",
+      "level": 0,
+      "line": 5,
+      "module": "napari_threedee.annotators.paths",
+      "names": [
+        "PathAnnotator"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/_tests/test_plane_labeler.py",
+      "level": 0,
+      "line": 1,
+      "module": "napari.layers.labels._labels_mouse_bindings",
+      "names": [
+        "draw"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/_tests/test_plane_labeler.py",
+      "level": 0,
+      "line": 3,
+      "module": "napari_threedee.annotators.label",
+      "names": [
+        "PlaneLabeler"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/_tests/test_point_annotator.py",
+      "level": 0,
+      "line": 1,
+      "module": "napari.layers",
+      "names": [
+        "Points"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/_tests/test_point_annotator.py",
+      "level": 0,
+      "line": 3,
+      "module": "napari_threedee.annotators.points",
+      "names": [
+        "PointAnnotator"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/_tests/test_sphere_annotator.py",
+      "level": 0,
+      "line": 1,
+      "module": "napari_threedee.annotators",
+      "names": [
+        "SphereAnnotator"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/_tests/test_sphere_annotator.py",
+      "level": 0,
+      "line": 2,
+      "module": "napari_threedee.annotators.spheres",
+      "names": [
+        "SphereAnnotatorMode",
+        "SPHERE_ID_FEATURES_KEY",
+        "SPHERE_RADIUS_FEATURES_KEY"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/base.py",
+      "level": 0,
+      "line": 1,
+      "module": "os",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/base.py",
+      "level": 0,
+      "line": 2,
+      "module": "abc",
+      "names": [
+        "abstractmethod"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/base.py",
+      "level": 0,
+      "line": 4,
+      "module": "napari",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/base.py",
+      "level": 0,
+      "line": 5,
+      "module": "pydantic",
+      "names": [
+        "BaseModel"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/dipoles/__init__.py",
+      "level": 1,
+      "line": 1,
+      "module": "annotator",
+      "names": [
+        "DipoleAnnotator"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/dipoles/annotator.py",
+      "level": 0,
+      "line": 1,
+      "module": "warnings",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/dipoles/annotator.py",
+      "level": 0,
+      "line": 2,
+      "module": "enum",
+      "names": [
+        "Enum",
+        "auto"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/dipoles/annotator.py",
+      "level": 0,
+      "line": 3,
+      "module": "typing",
+      "names": [
+        "Optional",
+        "Union"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/dipoles/annotator.py",
+      "level": 0,
+      "line": 5,
+      "module": "napari",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/dipoles/annotator.py",
+      "level": 0,
+      "line": 6,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/dipoles/annotator.py",
+      "level": 0,
+      "line": 7,
+      "module": "napari.layers",
+      "names": [
+        "Image",
+        "Points",
+        "Vectors"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/dipoles/annotator.py",
+      "level": 0,
+      "line": 8,
+      "module": "napari.utils.events",
+      "names": [
+        "EmitterGroup",
+        "Event"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/dipoles/annotator.py",
+      "level": 0,
+      "line": 9,
+      "module": "napari.layers.utils.layer_utils",
+      "names": [
+        "features_to_pandas_dataframe"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/dipoles/annotator.py",
+      "level": 0,
+      "line": 11,
+      "module": "napari_threedee._backend",
+      "names": [
+        "N3dComponent"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/dipoles/annotator.py",
+      "level": 0,
+      "line": 12,
+      "module": "napari_threedee.annotators.dipoles.constants",
+      "names": [
+        "DIPOLE_DIRECTION_X_FEATURES_KEY",
+        "DIPOLE_DIRECTION_Y_FEATURES_KEY",
+        "DIPOLE_DIRECTION_Z_FEATURES_KEY",
+        "N3D_METADATA_KEY",
+        "ANNOTATION_TYPE_KEY",
+        "DIPOLE_ANNOTATION_TYPE_KEY",
+        "DIPOLE_ID_FEATURES_KEY"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/dipoles/annotator.py",
+      "level": 0,
+      "line": 21,
+      "module": "napari_threedee.manipulators.constants",
+      "names": [
+        "ADD_POINT_KEY"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/dipoles/annotator.py",
+      "level": 0,
+      "line": 22,
+      "module": "napari_threedee.utils.mouse_callbacks",
+      "names": [
+        "on_mouse_alt_click_add_point_on_plane"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/dipoles/annotator.py",
+      "level": 0,
+      "line": 23,
+      "module": "napari_threedee.utils.napari_utils",
+      "names": [
+        "add_mouse_callback_safe",
+        "remove_mouse_callback_safe",
+        "add_point_on_plane"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/dipoles/annotator.py",
+      "level": 0,
+      "line": 25,
+      "module": "napari_threedee.annotators.constants",
+      "names": [
+        "N3D_METADATA_KEY"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/dipoles/annotator.py",
+      "level": 0,
+      "line": 200,
+      "module": "napari_threedee.data_models.dipoles",
+      "names": [
+        "N3dDipoles"
+      ],
+      "scope": "DipoleAnnotator._create_points_layer"
+    },
+    {
+      "file": "src/napari_threedee/annotators/dipoles/annotator.py",
+      "level": 0,
+      "line": 259,
+      "module": "napari_threedee.data_models",
+      "names": [
+        "N3dDipoles"
+      ],
+      "scope": "DipoleAnnotator._update_dipoles"
+    },
+    {
+      "file": "src/napari_threedee/annotators/dipoles/constants.py",
+      "level": 2,
+      "line": 1,
+      "module": "constants",
+      "names": [
+        "N3D_METADATA_KEY",
+        "ANNOTATION_TYPE_KEY"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/dipoles/validation.py",
+      "level": 0,
+      "line": 1,
+      "module": "napari",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/dipoles/validation.py",
+      "level": 0,
+      "line": 2,
+      "module": "zarr",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/dipoles/validation.py",
+      "level": 0,
+      "line": 4,
+      "module": "napari_threedee.annotators.dipoles.constants",
+      "names": [
+        "ANNOTATION_TYPE_KEY",
+        "DIPOLE_ANNOTATION_TYPE_KEY",
+        "DIPOLE_DIRECTION_X_FEATURES_KEY",
+        "DIPOLE_DIRECTION_Y_FEATURES_KEY",
+        "DIPOLE_DIRECTION_Z_FEATURES_KEY"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/label/__init__.py",
+      "level": 1,
+      "line": 1,
+      "module": "annotator",
+      "names": [
+        "PlaneLabeler"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/label/annotator.py",
+      "level": 0,
+      "line": 1,
+      "module": "typing",
+      "names": [
+        "Optional"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/label/annotator.py",
+      "level": 0,
+      "line": 3,
+      "module": "napari",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/label/annotator.py",
+      "level": 0,
+      "line": 4,
+      "module": "napari.layers.image._image_constants",
+      "names": [
+        "VolumeDepiction"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/label/annotator.py",
+      "level": 0,
+      "line": 5,
+      "module": "napari.layers.labels._labels_mouse_bindings",
+      "names": [
+        "draw"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/label/annotator.py",
+      "level": 0,
+      "line": 6,
+      "module": "napari.layers.labels._labels_utils",
+      "names": [
+        "interpolate_coordinates",
+        "first_nonzero_coordinate"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/label/annotator.py",
+      "level": 0,
+      "line": 7,
+      "module": "napari.layers.labels._labels_constants",
+      "names": [
+        "Mode"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/label/annotator.py",
+      "level": 0,
+      "line": 8,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/label/annotator.py",
+      "level": 0,
+      "line": 10,
+      "module": "napari_threedee._backend.threedee_model",
+      "names": [
+        "N3dComponent"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/label/annotator.py",
+      "level": 0,
+      "line": 11,
+      "module": "napari_threedee.utils.napari_utils",
+      "names": [
+        "add_mouse_callback_safe",
+        "remove_mouse_callback_safe"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/paths/__init__.py",
+      "level": 1,
+      "line": 1,
+      "module": "annotator",
+      "names": [
+        "PathAnnotator"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/paths/annotator.py",
+      "level": 0,
+      "line": 1,
+      "module": "napari",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/paths/annotator.py",
+      "level": 0,
+      "line": 2,
+      "module": "napari.layers",
+      "names": [
+        "Image",
+        "Points",
+        "Shapes"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/paths/annotator.py",
+      "level": 0,
+      "line": 3,
+      "module": "napari.layers.utils.layer_utils",
+      "names": [
+        "features_to_pandas_dataframe"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/paths/annotator.py",
+      "level": 0,
+      "line": 4,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/paths/annotator.py",
+      "level": 0,
+      "line": 5,
+      "module": "typing",
+      "names": [
+        "Optional",
+        "Dict"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/paths/annotator.py",
+      "level": 0,
+      "line": 7,
+      "module": "napari_threedee._backend.threedee_model",
+      "names": [
+        "N3dComponent"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/paths/annotator.py",
+      "level": 0,
+      "line": 8,
+      "module": "napari_threedee.annotators.paths.constants",
+      "names": [
+        "PATH_ID_FEATURES_KEY",
+        "PATH_COLOR_FEATURES_KEY_0",
+        "PATH_COLOR_FEATURES_KEY_1",
+        "PATH_COLOR_FEATURES_KEY_2",
+        "PATH_COLOR_FEATURES_KEY_3"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/paths/annotator.py",
+      "level": 0,
+      "line": 15,
+      "module": "napari_threedee.manipulators.constants",
+      "names": [
+        "ADD_POINT_KEY"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/paths/annotator.py",
+      "level": 0,
+      "line": 16,
+      "module": "napari_threedee.utils.mouse_callbacks",
+      "names": [
+        "on_mouse_alt_click_add_point_on_plane"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/paths/annotator.py",
+      "level": 0,
+      "line": 17,
+      "module": "napari_threedee.utils.napari_utils",
+      "names": [
+        "add_mouse_callback_safe",
+        "remove_mouse_callback_safe",
+        "add_point_on_plane"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/paths/annotator.py",
+      "level": 0,
+      "line": 77,
+      "module": "napari_threedee.data_models",
+      "names": [
+        "N3dPaths"
+      ],
+      "scope": "PathAnnotator._create_points_layer"
+    },
+    {
+      "file": "src/napari_threedee/annotators/paths/annotator.py",
+      "level": 0,
+      "line": 162,
+      "module": "napari_threedee.data_models",
+      "names": [
+        "N3dPaths"
+      ],
+      "scope": "PathAnnotator._draw_paths"
+    },
+    {
+      "file": "src/napari_threedee/annotators/paths/constants.py",
+      "level": 2,
+      "line": 1,
+      "module": "constants",
+      "names": [
+        "N3D_METADATA_KEY",
+        "ANNOTATION_TYPE_KEY"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/paths/validation.py",
+      "level": 0,
+      "line": 1,
+      "module": "napari",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/paths/validation.py",
+      "level": 0,
+      "line": 2,
+      "module": "zarr",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/paths/validation.py",
+      "level": 0,
+      "line": 4,
+      "module": "napari_threedee.annotators.paths.constants",
+      "names": [
+        "N3D_METADATA_KEY",
+        "ANNOTATION_TYPE_KEY",
+        "PATH_ANNOTATION_TYPE_KEY",
+        "PATH_ID_FEATURES_KEY"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/points/__init__.py",
+      "level": 1,
+      "line": 1,
+      "module": "annotator",
+      "names": [
+        "PointAnnotator"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/points/annotator.py",
+      "level": 0,
+      "line": 1,
+      "module": "typing",
+      "names": [
+        "Optional"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/points/annotator.py",
+      "level": 0,
+      "line": 3,
+      "module": "napari.layers",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/points/annotator.py",
+      "level": 0,
+      "line": 4,
+      "module": "napari.types",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/points/annotator.py",
+      "level": 0,
+      "line": 5,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/points/annotator.py",
+      "level": 0,
+      "line": 7,
+      "module": "napari_threedee._backend.threedee_model",
+      "names": [
+        "N3dComponent"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/points/annotator.py",
+      "level": 0,
+      "line": 8,
+      "module": "napari_threedee.manipulators.constants",
+      "names": [
+        "ADD_POINT_KEY"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/points/annotator.py",
+      "level": 0,
+      "line": 9,
+      "module": "napari_threedee.utils.mouse_callbacks",
+      "names": [
+        "on_mouse_alt_click_add_point_on_plane"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/points/annotator.py",
+      "level": 0,
+      "line": 10,
+      "module": "napari_threedee.utils.napari_utils",
+      "names": [
+        "add_mouse_callback_safe",
+        "remove_mouse_callback_safe",
+        "add_point_on_plane"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/points/annotator.py",
+      "level": 0,
+      "line": 49,
+      "module": "napari_threedee.data_models",
+      "names": [
+        "N3dPoints"
+      ],
+      "scope": "PointAnnotator._create_points_layer"
+    },
+    {
+      "file": "src/napari_threedee/annotators/points/constants.py",
+      "level": 2,
+      "line": 1,
+      "module": "constants",
+      "names": [
+        "N3D_METADATA_KEY",
+        "ANNOTATION_TYPE_KEY"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/points/validation.py",
+      "level": 0,
+      "line": 1,
+      "module": "napari.layers",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/points/validation.py",
+      "level": 0,
+      "line": 2,
+      "module": "zarr",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/points/validation.py",
+      "level": 0,
+      "line": 4,
+      "module": "napari_threedee.annotators.constants",
+      "names": [
+        "N3D_METADATA_KEY",
+        "ANNOTATION_TYPE_KEY"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/points/validation.py",
+      "level": 0,
+      "line": 5,
+      "module": "napari_threedee.annotators.points.constants",
+      "names": [
+        "POINT_ANNOTATION_TYPE_KEY"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/spheres/__init__.py",
+      "level": 1,
+      "line": 1,
+      "module": "annotator",
+      "names": [
+        "SphereAnnotator",
+        "SphereAnnotatorMode"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/spheres/__init__.py",
+      "level": 1,
+      "line": 2,
+      "module": "constants",
+      "names": [
+        "SPHERE_ID_FEATURES_KEY",
+        "SPHERE_RADIUS_FEATURES_KEY"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/spheres/_tests/test_data_model.py",
+      "level": 0,
+      "line": 1,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/spheres/_tests/test_data_model.py",
+      "level": 0,
+      "line": 2,
+      "module": "zarr",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/spheres/_tests/test_data_model.py",
+      "level": 0,
+      "line": 4,
+      "module": "napari_threedee.data_models",
+      "names": [
+        "N3dSpheres"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/spheres/_tests/test_data_model.py",
+      "level": 0,
+      "line": 5,
+      "module": "napari_threedee.annotators.spheres.validation",
+      "names": [
+        "validate_layer",
+        "validate_n3d_zarr"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/spheres/annotator.py",
+      "level": 0,
+      "line": 1,
+      "module": "warnings",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/spheres/annotator.py",
+      "level": 0,
+      "line": 2,
+      "module": "enum",
+      "names": [
+        "Enum",
+        "auto"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/spheres/annotator.py",
+      "level": 0,
+      "line": 3,
+      "module": "typing",
+      "names": [
+        "Optional",
+        "Union"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/spheres/annotator.py",
+      "level": 0,
+      "line": 5,
+      "module": "napari",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/spheres/annotator.py",
+      "level": 0,
+      "line": 6,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/spheres/annotator.py",
+      "level": 0,
+      "line": 7,
+      "module": "napari.layers",
+      "names": [
+        "Image",
+        "Points",
+        "Surface"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/spheres/annotator.py",
+      "level": 0,
+      "line": 8,
+      "module": "napari.utils.events",
+      "names": [
+        "EmitterGroup",
+        "Event"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/spheres/annotator.py",
+      "level": 0,
+      "line": 9,
+      "module": "napari.layers.utils.layer_utils",
+      "names": [
+        "features_to_pandas_dataframe"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/spheres/annotator.py",
+      "level": 0,
+      "line": 11,
+      "module": "napari_threedee._backend",
+      "names": [
+        "N3dComponent"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/spheres/annotator.py",
+      "level": 0,
+      "line": 12,
+      "module": "napari_threedee.annotators.spheres.constants",
+      "names": [
+        "SPHERE_ID_FEATURES_KEY",
+        "SPHERE_RADIUS_FEATURES_KEY",
+        "SPHERE_MESH_METADATA_KEY"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/spheres/annotator.py",
+      "level": 0,
+      "line": 14,
+      "module": "napari_threedee.manipulators.constants",
+      "names": [
+        "ADD_POINT_KEY"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/spheres/annotator.py",
+      "level": 0,
+      "line": 15,
+      "module": "napari_threedee.utils.mouse_callbacks",
+      "names": [
+        "on_mouse_alt_click_add_point_on_plane"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/spheres/annotator.py",
+      "level": 0,
+      "line": 16,
+      "module": "napari_threedee.utils.napari_utils",
+      "names": [
+        "add_mouse_callback_safe",
+        "remove_mouse_callback_safe",
+        "add_point_on_plane"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/spheres/annotator.py",
+      "level": 0,
+      "line": 18,
+      "module": "napari_threedee.annotators.constants",
+      "names": [
+        "N3D_METADATA_KEY"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/spheres/annotator.py",
+      "level": 0,
+      "line": 176,
+      "module": "napari_threedee.data_models.spheres",
+      "names": [
+        "N3dSpheres"
+      ],
+      "scope": "SphereAnnotator._create_points_layer"
+    },
+    {
+      "file": "src/napari_threedee/annotators/spheres/annotator.py",
+      "level": 0,
+      "line": 232,
+      "module": "napari_threedee.data_models",
+      "names": [
+        "N3dSpheres"
+      ],
+      "scope": "SphereAnnotator._update_spheres"
+    },
+    {
+      "file": "src/napari_threedee/annotators/spheres/constants.py",
+      "level": 2,
+      "line": 1,
+      "module": "constants",
+      "names": [
+        "N3D_METADATA_KEY",
+        "ANNOTATION_TYPE_KEY"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/spheres/validation.py",
+      "level": 0,
+      "line": 1,
+      "module": "napari",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/spheres/validation.py",
+      "level": 0,
+      "line": 2,
+      "module": "zarr",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/spheres/validation.py",
+      "level": 0,
+      "line": 4,
+      "module": "napari_threedee.annotators.constants",
+      "names": [
+        "ANNOTATION_TYPE_KEY"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/spheres/validation.py",
+      "level": 0,
+      "line": 5,
+      "module": "napari_threedee.annotators.spheres.constants",
+      "names": [
+        "SPHERE_ANNOTATION_TYPE_KEY",
+        "SPHERE_ID_FEATURES_KEY",
+        "SPHERE_RADIUS_FEATURES_KEY"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/surfaces/__init__.py",
+      "level": 1,
+      "line": 1,
+      "module": "annotator",
+      "names": [
+        "SurfaceAnnotator"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/surfaces/_tests/test_data_model.py",
+      "level": 0,
+      "line": 1,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/surfaces/_tests/test_data_model.py",
+      "level": 0,
+      "line": 2,
+      "module": "zarr",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/surfaces/_tests/test_data_model.py",
+      "level": 0,
+      "line": 4,
+      "module": "napari_threedee.data_models",
+      "names": [
+        "N3dSurface",
+        "N3dSurfaces"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/surfaces/_tests/test_data_model.py",
+      "level": 0,
+      "line": 5,
+      "module": "napari_threedee.annotators.surfaces.validation",
+      "names": [
+        "validate_layer",
+        "validate_n3d_zarr"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/surfaces/annotator.py",
+      "level": 0,
+      "line": 1,
+      "module": "einops",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/surfaces/annotator.py",
+      "level": 0,
+      "line": 3,
+      "module": "napari",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/surfaces/annotator.py",
+      "level": 0,
+      "line": 4,
+      "module": "napari.layers",
+      "names": [
+        "Image",
+        "Points",
+        "Shapes"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/surfaces/annotator.py",
+      "level": 0,
+      "line": 5,
+      "module": "napari.utils.events.event",
+      "names": [
+        "EmitterGroup",
+        "Event"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/surfaces/annotator.py",
+      "level": 0,
+      "line": 6,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/surfaces/annotator.py",
+      "level": 0,
+      "line": 7,
+      "module": "psygnal",
+      "names": [
+        "EventedModel"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/surfaces/annotator.py",
+      "level": 0,
+      "line": 8,
+      "module": "pydantic",
+      "names": [
+        "validator",
+        "PrivateAttr"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/surfaces/annotator.py",
+      "level": 0,
+      "line": 9,
+      "module": "scipy.interpolate",
+      "names": [
+        "splprep",
+        "splev"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/surfaces/annotator.py",
+      "level": 0,
+      "line": 10,
+      "module": "typing",
+      "names": [
+        "Tuple",
+        "Union",
+        "Optional",
+        "Dict"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/surfaces/annotator.py",
+      "level": 0,
+      "line": 12,
+      "module": "morphosamplers.surface_spline",
+      "names": [
+        "GriddedSplineSurface"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/surfaces/annotator.py",
+      "level": 0,
+      "line": 14,
+      "module": "napari_threedee._backend.threedee_model",
+      "names": [
+        "N3dComponent"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/surfaces/annotator.py",
+      "level": 0,
+      "line": 15,
+      "module": "napari_threedee.utils.mouse_callbacks",
+      "names": [
+        "on_mouse_alt_click_add_point_on_plane"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/surfaces/annotator.py",
+      "level": 0,
+      "line": 16,
+      "module": "napari_threedee.utils.napari_utils",
+      "names": [
+        "add_mouse_callback_safe",
+        "remove_mouse_callback_safe",
+        "add_point_on_plane"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/surfaces/annotator.py",
+      "level": 1,
+      "line": 18,
+      "module": "constants",
+      "names": [
+        "N3D_METADATA_KEY",
+        "ANNOTATION_TYPE_KEY",
+        "SURFACE_ANNOTATION_TYPE_KEY",
+        "SURFACE_ID_FEATURES_KEY",
+        "LEVEL_ID_FEATURES_KEY",
+        "SPLINES_METADATA_KEY",
+        "SPLINE_COLOR_FEATURES_KEY",
+        "COLOR_CYCLE"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/surfaces/annotator.py",
+      "level": 3,
+      "line": 28,
+      "module": "manipulators.constants",
+      "names": [
+        "ADD_POINT_KEY"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/surfaces/annotator.py",
+      "level": 0,
+      "line": 308,
+      "module": "napari_threedee.data_models",
+      "names": [
+        "N3dSurfaces",
+        "N3dPath"
+      ],
+      "scope": "SurfaceAnnotator._draw_splines"
+    },
+    {
+      "file": "src/napari_threedee/annotators/surfaces/constants.py",
+      "level": 2,
+      "line": 1,
+      "module": "constants",
+      "names": [
+        "N3D_METADATA_KEY",
+        "ANNOTATION_TYPE_KEY"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/surfaces/validation.py",
+      "level": 0,
+      "line": 1,
+      "module": "napari",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/surfaces/validation.py",
+      "level": 0,
+      "line": 2,
+      "module": "zarr",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/surfaces/validation.py",
+      "level": 0,
+      "line": 4,
+      "module": "napari_threedee.annotators.surfaces.constants",
+      "names": [
+        "N3D_METADATA_KEY",
+        "ANNOTATION_TYPE_KEY",
+        "SURFACE_ANNOTATION_TYPE_KEY",
+        "SURFACE_ID_FEATURES_KEY",
+        "LEVEL_ID_FEATURES_KEY"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/conftest.py",
+      "level": 0,
+      "line": 2,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/conftest.py",
+      "level": 0,
+      "line": 3,
+      "module": "pytest",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/conftest.py",
+      "level": 0,
+      "line": 4,
+      "module": "skimage",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/conftest.py",
+      "level": 0,
+      "line": 6,
+      "module": "napari.layers",
+      "names": [
+        "Image",
+        "Points"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/data_models/__init__.py",
+      "level": 1,
+      "line": 1,
+      "module": "points",
+      "names": [
+        "N3dPoints"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/data_models/__init__.py",
+      "level": 1,
+      "line": 2,
+      "module": "paths",
+      "names": [
+        "N3dPath",
+        "N3dPaths"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/data_models/__init__.py",
+      "level": 1,
+      "line": 3,
+      "module": "spheres",
+      "names": [
+        "N3dSpheres"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/data_models/__init__.py",
+      "level": 1,
+      "line": 4,
+      "module": "surfaces",
+      "names": [
+        "N3dSurface",
+        "N3dSurfaces"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/data_models/__init__.py",
+      "level": 1,
+      "line": 5,
+      "module": "dipoles",
+      "names": [
+        "N3dDipole",
+        "N3dDipoles"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/data_models/_tests/test_dipoles.py",
+      "level": 0,
+      "line": 1,
+      "module": "napari",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/data_models/_tests/test_dipoles.py",
+      "level": 0,
+      "line": 2,
+      "module": "zarr",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/data_models/_tests/test_dipoles.py",
+      "level": 0,
+      "line": 4,
+      "module": "napari_threedee.data_models.dipoles",
+      "names": [
+        "N3dDipole",
+        "N3dDipoles"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/data_models/_tests/test_dipoles.py",
+      "level": 0,
+      "line": 5,
+      "module": "napari_threedee.annotators.dipoles.validation",
+      "names": [
+        "validate_layer",
+        "validate_n3d_zarr"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/data_models/_tests/test_paths.py",
+      "level": 0,
+      "line": 1,
+      "module": "napari",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/data_models/_tests/test_paths.py",
+      "level": 0,
+      "line": 2,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/data_models/_tests/test_paths.py",
+      "level": 0,
+      "line": 3,
+      "module": "zarr",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/data_models/_tests/test_paths.py",
+      "level": 0,
+      "line": 5,
+      "module": "napari_threedee.data_models.paths",
+      "names": [
+        "N3dPath",
+        "N3dPaths"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/data_models/_tests/test_paths.py",
+      "level": 0,
+      "line": 6,
+      "module": "napari_threedee.annotators.paths.validation",
+      "names": [
+        "validate_layer",
+        "validate_n3d_zarr"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/data_models/_tests/test_points.py",
+      "level": 0,
+      "line": 1,
+      "module": "napari_threedee",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/data_models/_tests/test_points.py",
+      "level": 0,
+      "line": 2,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/data_models/_tests/test_points.py",
+      "level": 0,
+      "line": 3,
+      "module": "zarr",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/data_models/_tests/test_points.py",
+      "level": 0,
+      "line": 5,
+      "module": "napari_threedee.data_models",
+      "names": [
+        "N3dPoints"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/data_models/_tests/test_points.py",
+      "level": 0,
+      "line": 6,
+      "module": "napari_threedee.annotators.points.validation",
+      "names": [
+        "validate_layer",
+        "validate_n3d_zarr"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/data_models/_tests/test_spheres.py",
+      "level": 0,
+      "line": 1,
+      "module": "napari",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/data_models/_tests/test_spheres.py",
+      "level": 0,
+      "line": 2,
+      "module": "napari_threedee",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/data_models/dipoles.py",
+      "level": 0,
+      "line": 1,
+      "module": "os",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/data_models/dipoles.py",
+      "level": 0,
+      "line": 2,
+      "module": "typing",
+      "names": [
+        "List"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/data_models/dipoles.py",
+      "level": 0,
+      "line": 4,
+      "module": "napari",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/data_models/dipoles.py",
+      "level": 0,
+      "line": 5,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/data_models/dipoles.py",
+      "level": 0,
+      "line": 6,
+      "module": "zarr",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/data_models/dipoles.py",
+      "level": 0,
+      "line": 7,
+      "module": "pydantic",
+      "names": [
+        "BaseModel",
+        "validator"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/data_models/dipoles.py",
+      "level": 0,
+      "line": 9,
+      "module": "napari_threedee.annotators.base",
+      "names": [
+        "N3dDataModel"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/data_models/dipoles.py",
+      "level": 0,
+      "line": 10,
+      "module": "napari_threedee.annotators.constants",
+      "names": [
+        "N3D_METADATA_KEY",
+        "ANNOTATION_TYPE_KEY"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/data_models/dipoles.py",
+      "level": 0,
+      "line": 11,
+      "module": "napari_threedee.annotators.dipoles.validation",
+      "names": [
+        "validate_layer",
+        "validate_n3d_zarr"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/data_models/dipoles.py",
+      "level": 0,
+      "line": 13,
+      "module": "napari_threedee.annotators.dipoles.constants",
+      "names": [
+        "DIPOLE_ANNOTATION_TYPE_KEY",
+        "DIPOLE_ID_FEATURES_KEY",
+        "DIPOLE_DIRECTION_X_FEATURES_KEY",
+        "DIPOLE_DIRECTION_Y_FEATURES_KEY",
+        "DIPOLE_DIRECTION_Z_FEATURES_KEY"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/data_models/paths.py",
+      "level": 0,
+      "line": 1,
+      "module": "os",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/data_models/paths.py",
+      "level": 0,
+      "line": 2,
+      "module": "typing",
+      "names": [
+        "List"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/data_models/paths.py",
+      "level": 0,
+      "line": 4,
+      "module": "napari",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/data_models/paths.py",
+      "level": 0,
+      "line": 5,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/data_models/paths.py",
+      "level": 0,
+      "line": 6,
+      "module": "zarr",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/data_models/paths.py",
+      "level": 0,
+      "line": 7,
+      "module": "pydantic",
+      "names": [
+        "BaseModel",
+        "validator"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/data_models/paths.py",
+      "level": 0,
+      "line": 9,
+      "module": "napari_threedee.annotators.base",
+      "names": [
+        "N3dDataModel"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/data_models/paths.py",
+      "level": 0,
+      "line": 10,
+      "module": "napari_threedee.annotators.constants",
+      "names": [
+        "N3D_METADATA_KEY",
+        "ANNOTATION_TYPE_KEY"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/data_models/paths.py",
+      "level": 0,
+      "line": 11,
+      "module": "napari_threedee.data_models.spline_sampler",
+      "names": [
+        "SplineSampler"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/data_models/paths.py",
+      "level": 0,
+      "line": 12,
+      "module": "napari_threedee.annotators.paths.validation",
+      "names": [
+        "validate_layer",
+        "validate_n3d_zarr"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/data_models/paths.py",
+      "level": 0,
+      "line": 16,
+      "module": "napari_threedee.annotators.paths.constants",
+      "names": [
+        "PATH_ID_FEATURES_KEY",
+        "PATH_ANNOTATION_TYPE_KEY",
+        "COLOR_CYCLE"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/data_models/points.py",
+      "level": 0,
+      "line": 1,
+      "module": "os",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/data_models/points.py",
+      "level": 0,
+      "line": 3,
+      "module": "napari.layers",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/data_models/points.py",
+      "level": 0,
+      "line": 4,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/data_models/points.py",
+      "level": 0,
+      "line": 5,
+      "module": "zarr",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/data_models/points.py",
+      "level": 0,
+      "line": 6,
+      "module": "pydantic",
+      "names": [
+        "validator"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/data_models/points.py",
+      "level": 0,
+      "line": 8,
+      "module": "napari_threedee.annotators.base",
+      "names": [
+        "N3dDataModel"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/data_models/points.py",
+      "level": 0,
+      "line": 9,
+      "module": "napari_threedee.annotators.constants",
+      "names": [
+        "N3D_METADATA_KEY",
+        "ANNOTATION_TYPE_KEY"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/data_models/points.py",
+      "level": 0,
+      "line": 10,
+      "module": "napari_threedee.annotators.points.constants",
+      "names": [
+        "POINT_ANNOTATION_TYPE_KEY"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/data_models/points.py",
+      "level": 0,
+      "line": 11,
+      "module": "napari_threedee.annotators.points.validation",
+      "names": [
+        "validate_layer",
+        "validate_n3d_zarr"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/data_models/spheres.py",
+      "level": 0,
+      "line": 1,
+      "module": "os",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/data_models/spheres.py",
+      "level": 0,
+      "line": 2,
+      "module": "typing",
+      "names": [
+        "Tuple"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/data_models/spheres.py",
+      "level": 0,
+      "line": 4,
+      "module": "napari",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/data_models/spheres.py",
+      "level": 0,
+      "line": 5,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/data_models/spheres.py",
+      "level": 0,
+      "line": 6,
+      "module": "zarr",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/data_models/spheres.py",
+      "level": 0,
+      "line": 7,
+      "module": "pydantic",
+      "names": [
+        "validator"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/data_models/spheres.py",
+      "level": 0,
+      "line": 9,
+      "module": "napari_threedee.annotators.base",
+      "names": [
+        "N3dDataModel"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/data_models/spheres.py",
+      "level": 0,
+      "line": 10,
+      "module": "napari_threedee.annotators.spheres.validation",
+      "names": [
+        "validate_layer",
+        "validate_n3d_zarr"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/data_models/spheres.py",
+      "level": 0,
+      "line": 14,
+      "module": "napari_threedee.annotators.spheres.constants",
+      "names": [
+        "N3D_METADATA_KEY",
+        "ANNOTATION_TYPE_KEY",
+        "SPHERE_ANNOTATION_TYPE_KEY",
+        "SPHERE_RADIUS_FEATURES_KEY",
+        "SPHERE_ID_FEATURES_KEY",
+        "COLOR_CYCLE"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/data_models/spheres.py",
+      "level": 0,
+      "line": 88,
+      "module": "vispy.geometry",
+      "names": [
+        "create_sphere"
+      ],
+      "scope": "N3dSpheres.to_mesh"
+    },
+    {
+      "file": "src/napari_threedee/data_models/spline_sampler.py",
+      "level": 0,
+      "line": 1,
+      "module": "typing",
+      "names": [
+        "Tuple",
+        "Union"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/data_models/spline_sampler.py",
+      "level": 0,
+      "line": 3,
+      "module": "einops",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/data_models/spline_sampler.py",
+      "level": 0,
+      "line": 4,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/data_models/spline_sampler.py",
+      "level": 0,
+      "line": 5,
+      "module": "psygnal",
+      "names": [
+        "EventedModel"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/data_models/spline_sampler.py",
+      "level": 0,
+      "line": 6,
+      "module": "pydantic",
+      "names": [
+        "PrivateAttr",
+        "validator"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/data_models/spline_sampler.py",
+      "level": 0,
+      "line": 7,
+      "module": "scipy.interpolate",
+      "names": [
+        "splprep",
+        "splev"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/data_models/surfaces.py",
+      "level": 0,
+      "line": 1,
+      "module": "os",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/data_models/surfaces.py",
+      "level": 0,
+      "line": 2,
+      "module": "typing",
+      "names": [
+        "List"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/data_models/surfaces.py",
+      "level": 0,
+      "line": 4,
+      "module": "napari",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/data_models/surfaces.py",
+      "level": 0,
+      "line": 5,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/data_models/surfaces.py",
+      "level": 0,
+      "line": 6,
+      "module": "pandas",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/data_models/surfaces.py",
+      "level": 0,
+      "line": 7,
+      "module": "zarr",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/data_models/surfaces.py",
+      "level": 0,
+      "line": 8,
+      "module": "pydantic",
+      "names": [
+        "BaseModel",
+        "validator"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/data_models/surfaces.py",
+      "level": 0,
+      "line": 10,
+      "module": "napari_threedee.annotators.base",
+      "names": [
+        "N3dDataModel"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/data_models/surfaces.py",
+      "level": 0,
+      "line": 11,
+      "module": "napari_threedee.annotators.constants",
+      "names": [
+        "N3D_METADATA_KEY",
+        "ANNOTATION_TYPE_KEY"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/data_models/surfaces.py",
+      "level": 0,
+      "line": 12,
+      "module": "napari_threedee.annotators.surfaces.constants",
+      "names": [
+        "LEVEL_ID_FEATURES_KEY",
+        "SURFACE_ID_FEATURES_KEY",
+        "SURFACE_ANNOTATION_TYPE_KEY",
+        "COLOR_CYCLE"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/data_models/surfaces.py",
+      "level": 0,
+      "line": 14,
+      "module": "napari_threedee.annotators.surfaces.validation",
+      "names": [
+        "validate_layer",
+        "validate_n3d_zarr"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/dock_widgets.py",
+      "level": 1,
+      "line": 1,
+      "module": "manipulators._qt",
+      "names": [
+        "QtLayerManipulatorWidget",
+        "QtPointManipulatorWidget",
+        "QtRenderPlaneManipulatorWidget"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/dock_widgets.py",
+      "level": 1,
+      "line": 7,
+      "module": "annotators._qt",
+      "names": [
+        "QtLabelAnnotatorWidget",
+        "QtPointAnnotatorWidget",
+        "QtPathAnnotatorWidget",
+        "QtSphereAnnotatorWidget",
+        "QtSurfaceAnnotatorWidget"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/dock_widgets.py",
+      "level": 1,
+      "line": 15,
+      "module": "visualization._qt",
+      "names": [
+        "QtCameraSpline",
+        "QtLightingControlWidget",
+        "QtAmbientOcclusionWidget"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/manipulators/__init__.py",
+      "level": 1,
+      "line": 1,
+      "module": "layer_manipulator",
+      "names": [
+        "LayerManipulator"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/manipulators/__init__.py",
+      "level": 1,
+      "line": 2,
+      "module": "point_manipulator",
+      "names": [
+        "PointManipulator"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/manipulators/__init__.py",
+      "level": 1,
+      "line": 3,
+      "module": "render_plane_manipulator",
+      "names": [
+        "RenderPlaneManipulator"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/manipulators/_qt/__init__.py",
+      "level": 1,
+      "line": 1,
+      "module": "qt_layer_manipulator",
+      "names": [
+        "QtLayerManipulatorWidget"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/manipulators/_qt/__init__.py",
+      "level": 1,
+      "line": 2,
+      "module": "qt_point_manipulator",
+      "names": [
+        "QtPointManipulatorWidget"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/manipulators/_qt/__init__.py",
+      "level": 1,
+      "line": 3,
+      "module": "qt_render_plane_manipulator",
+      "names": [
+        "QtRenderPlaneManipulatorWidget"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/manipulators/_qt/qt_layer_manipulator.py",
+      "level": 0,
+      "line": 1,
+      "module": "napari",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/manipulators/_qt/qt_layer_manipulator.py",
+      "level": 2,
+      "line": 3,
+      "module": "layer_manipulator",
+      "names": [
+        "LayerManipulator"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/manipulators/_qt/qt_layer_manipulator.py",
+      "level": 3,
+      "line": 4,
+      "module": "_backend.threedee_widget_base",
+      "names": [
+        "QtThreeDeeWidgetBase"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/manipulators/_qt/qt_point_manipulator.py",
+      "level": 0,
+      "line": 1,
+      "module": "napari",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/manipulators/_qt/qt_point_manipulator.py",
+      "level": 2,
+      "line": 3,
+      "module": "point_manipulator",
+      "names": [
+        "PointManipulator"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/manipulators/_qt/qt_point_manipulator.py",
+      "level": 3,
+      "line": 4,
+      "module": "_backend.threedee_widget_base",
+      "names": [
+        "QtThreeDeeWidgetBase"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/manipulators/_qt/qt_render_plane_manipulator.py",
+      "level": 0,
+      "line": 1,
+      "module": "napari",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/manipulators/_qt/qt_render_plane_manipulator.py",
+      "level": 3,
+      "line": 3,
+      "module": "_backend.threedee_widget_base",
+      "names": [
+        "QtThreeDeeWidgetBase"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/manipulators/_qt/qt_render_plane_manipulator.py",
+      "level": 2,
+      "line": 4,
+      "module": "render_plane_manipulator",
+      "names": [
+        "RenderPlaneManipulator"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/manipulators/_tests/test_manipulator_utils.py",
+      "level": 0,
+      "line": 1,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/manipulators/_tests/test_manipulator_utils.py",
+      "level": 0,
+      "line": 3,
+      "module": "napari_threedee.manipulators.manipulator_utils",
+      "names": [
+        "make_rotator_arc",
+        "make_rotator_data"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/manipulators/base_manipulator.py",
+      "level": 0,
+      "line": 1,
+      "module": "abc",
+      "names": [
+        "ABC",
+        "abstractmethod"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/manipulators/base_manipulator.py",
+      "level": 0,
+      "line": 2,
+      "module": "typing",
+      "names": [
+        "Optional",
+        "Type"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/manipulators/base_manipulator.py",
+      "level": 0,
+      "line": 4,
+      "module": "napari",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/manipulators/base_manipulator.py",
+      "level": 0,
+      "line": 5,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/manipulators/base_manipulator.py",
+      "level": 0,
+      "line": 6,
+      "module": "napari.viewer",
+      "names": [
+        "Viewer"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/manipulators/base_manipulator.py",
+      "level": 0,
+      "line": 7,
+      "module": "napari.utils.notifications",
+      "names": [
+        "show_info"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/manipulators/base_manipulator.py",
+      "level": 0,
+      "line": 9,
+      "module": "napari_threedee._backend.threedee_model",
+      "names": [
+        "N3dComponent"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/manipulators/base_manipulator.py",
+      "level": 2,
+      "line": 10,
+      "module": "_backend.manipulator.axis_model",
+      "names": [
+        "AxisModel"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/manipulators/base_manipulator.py",
+      "level": 2,
+      "line": 11,
+      "module": "_backend.manipulator.napari_manipulator_backend",
+      "names": [
+        "NapariManipulatorBackend"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/manipulators/base_manipulator.py",
+      "level": 0,
+      "line": 13,
+      "module": "napari_threedee.utils.napari_utils",
+      "names": [
+        "add_mouse_callback_safe",
+        "remove_mouse_callback_safe"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/manipulators/layer_manipulator.py",
+      "level": 0,
+      "line": 1,
+      "module": "napari",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/manipulators/layer_manipulator.py",
+      "level": 0,
+      "line": 2,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/manipulators/layer_manipulator.py",
+      "level": 0,
+      "line": 4,
+      "module": "napari_threedee.manipulators.base_manipulator",
+      "names": [
+        "BaseManipulator"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/manipulators/layer_manipulator.py",
+      "level": 0,
+      "line": 5,
+      "module": "napari_threedee.utils.napari_utils",
+      "names": [
+        "get_dims_displayed"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/manipulators/manipulator_utils.py",
+      "level": 0,
+      "line": 1,
+      "module": "typing",
+      "names": [
+        "Tuple"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/manipulators/manipulator_utils.py",
+      "level": 0,
+      "line": 3,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/manipulators/manipulator_utils.py",
+      "level": 0,
+      "line": 4,
+      "module": "napari.utils.geometry",
+      "names": [
+        "project_points_onto_plane",
+        "rotate_points",
+        "rotation_matrix_from_vectors_3d"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/manipulators/manipulator_utils.py",
+      "level": 0,
+      "line": 5,
+      "module": "napari.utils.translations",
+      "names": [
+        "trans"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/manipulators/manipulator_utils.py",
+      "level": 0,
+      "line": 6,
+      "module": "vispy.util.transforms",
+      "names": [
+        "rotate"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/manipulators/manipulator_utils.py",
+      "level": 0,
+      "line": 8,
+      "module": "collections",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/manipulators/point_manipulator.py",
+      "level": 0,
+      "line": 1,
+      "module": "napari",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/manipulators/point_manipulator.py",
+      "level": 0,
+      "line": 2,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/manipulators/point_manipulator.py",
+      "level": 0,
+      "line": 3,
+      "module": "napari.layers.points._points_mouse_bindings",
+      "names": [
+        "select"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/manipulators/point_manipulator.py",
+      "level": 0,
+      "line": 4,
+      "module": "napari.layers.points._points_constants",
+      "names": [
+        "Mode"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/manipulators/point_manipulator.py",
+      "level": 1,
+      "line": 6,
+      "module": "base_manipulator",
+      "names": [
+        "BaseManipulator"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/manipulators/point_manipulator.py",
+      "level": 0,
+      "line": 7,
+      "module": "napari_threedee.utils.napari_utils",
+      "names": [
+        "remove_mouse_callback_safe",
+        "add_mouse_callback_safe"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/manipulators/render_plane_manipulator.py",
+      "level": 0,
+      "line": 1,
+      "module": "napari.layers",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/manipulators/render_plane_manipulator.py",
+      "level": 0,
+      "line": 2,
+      "module": "napari.utils.events.event",
+      "names": [
+        "EventBlocker"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/manipulators/render_plane_manipulator.py",
+      "level": 0,
+      "line": 3,
+      "module": "napari.utils.geometry",
+      "names": [
+        "rotation_matrix_from_vectors_3d"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/manipulators/render_plane_manipulator.py",
+      "level": 0,
+      "line": 4,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/manipulators/render_plane_manipulator.py",
+      "level": 0,
+      "line": 5,
+      "module": "napari_threedee.manipulators.base_manipulator",
+      "names": [
+        "BaseManipulator"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/manipulators/render_plane_manipulator.py",
+      "level": 0,
+      "line": 6,
+      "module": "napari_threedee.utils.napari_utils",
+      "names": [
+        "data_to_world_normal",
+        "world_to_data_normal"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/utils/_tests/test_geometry.py",
+      "level": 0,
+      "line": 1,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/utils/_tests/test_geometry.py",
+      "level": 0,
+      "line": 2,
+      "module": "pytest",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/utils/_tests/test_geometry.py",
+      "level": 0,
+      "line": 4,
+      "module": "napari_threedee.utils.geometry",
+      "names": [
+        "signed_angle_between_vectors",
+        "rotation_matrix_around_vector_3d",
+        "point_in_bounding_box"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/utils/_tests/test_mouse_callbacks.py",
+      "level": 0,
+      "line": 1,
+      "module": "dataclasses",
+      "names": [
+        "dataclass"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/utils/_tests/test_mouse_callbacks.py",
+      "level": 0,
+      "line": 2,
+      "module": "typing",
+      "names": [
+        "Tuple",
+        "List"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/utils/_tests/test_mouse_callbacks.py",
+      "level": 0,
+      "line": 4,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/utils/_tests/test_mouse_callbacks.py",
+      "level": 0,
+      "line": 6,
+      "module": "napari_threedee.utils.mouse_callbacks",
+      "names": [
+        "on_mouse_alt_click_add_point_on_plane"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/utils/geometry.py",
+      "level": 0,
+      "line": 1,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/utils/geometry.py",
+      "level": 0,
+      "line": 3,
+      "module": "napari_threedee.utils.napari_utils",
+      "names": [
+        "get_dims_displayed"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/utils/mouse_callbacks.py",
+      "level": 0,
+      "line": 1,
+      "module": "__future__",
+      "names": [
+        "annotations"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/utils/mouse_callbacks.py",
+      "level": 0,
+      "line": 3,
+      "module": "typing",
+      "names": [
+        "TYPE_CHECKING"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/utils/mouse_callbacks.py",
+      "level": 0,
+      "line": 4,
+      "module": "napari.layers.utils.interactivity_utils",
+      "names": [
+        "drag_data_to_projected_distance"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/utils/mouse_callbacks.py",
+      "level": 0,
+      "line": 6,
+      "module": "napari_threedee.utils.napari_utils",
+      "names": [
+        "add_point_on_plane"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/utils/mouse_callbacks.py",
+      "level": 0,
+      "line": 9,
+      "module": "napari",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/utils/mouse_callbacks.py",
+      "level": 0,
+      "line": 10,
+      "module": "napari.layers",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/utils/mouse_callbacks.py",
+      "level": 0,
+      "line": 11,
+      "module": "napari.utils.events",
+      "names": [
+        "Event"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/utils/napari_utils.py",
+      "level": 0,
+      "line": 1,
+      "module": "__future__",
+      "names": [
+        "annotations"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/utils/napari_utils.py",
+      "level": 0,
+      "line": 3,
+      "module": "inspect",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/utils/napari_utils.py",
+      "level": 0,
+      "line": 4,
+      "module": "functools",
+      "names": [
+        "partial"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/utils/napari_utils.py",
+      "level": 0,
+      "line": 5,
+      "module": "typing",
+      "names": [
+        "Optional",
+        "Tuple"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/utils/napari_utils.py",
+      "level": 0,
+      "line": 7,
+      "module": "magicgui",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/utils/napari_utils.py",
+      "level": 0,
+      "line": 8,
+      "module": "napari",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/utils/napari_utils.py",
+      "level": 0,
+      "line": 9,
+      "module": "napari.layers",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/utils/napari_utils.py",
+      "level": 0,
+      "line": 10,
+      "module": "napari.viewer",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/utils/napari_utils.py",
+      "level": 0,
+      "line": 11,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/utils/napari_utils.py",
+      "level": 0,
+      "line": 12,
+      "module": "magicgui.widgets",
+      "names": [
+        "FunctionGui"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/utils/napari_utils.py",
+      "level": 0,
+      "line": 13,
+      "module": "napari.layers",
+      "names": [
+        "Points",
+        "Image"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/utils/napari_utils.py",
+      "level": 0,
+      "line": 14,
+      "module": "napari.layers.utils.layer_utils",
+      "names": [
+        "dims_displayed_world_to_layer"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/utils/selection_utils.py",
+      "level": 0,
+      "line": 1,
+      "module": "typing",
+      "names": [
+        "Tuple",
+        "Optional"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/utils/selection_utils.py",
+      "level": 0,
+      "line": 3,
+      "module": "napari.utils.geometry",
+      "names": [
+        "inside_triangles",
+        "project_points_onto_plane",
+        "rotate_points",
+        "rotation_matrix_from_vectors_3d"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/utils/selection_utils.py",
+      "level": 0,
+      "line": 5,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/visualization/__init__.py",
+      "level": 1,
+      "line": 1,
+      "module": "_qt.qt_camera_spline",
+      "names": [
+        "QtCameraSpline"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/visualization/__init__.py",
+      "level": 1,
+      "line": 2,
+      "module": "_qt.qt_lighting_control",
+      "names": [
+        "QtLightingControlWidget",
+        "QtAmbientOcclusionWidget"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/visualization/_qt/__init__.py",
+      "level": 1,
+      "line": 1,
+      "module": "qt_camera_spline",
+      "names": [
+        "QtCameraSpline"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/visualization/_qt/__init__.py",
+      "level": 1,
+      "line": 2,
+      "module": "qt_lighting_control",
+      "names": [
+        "QtLightingControlWidget",
+        "QtAmbientOcclusionWidget"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/visualization/_qt/qt_camera_spline.py",
+      "level": 0,
+      "line": 1,
+      "module": "napari",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/visualization/_qt/qt_camera_spline.py",
+      "level": 0,
+      "line": 2,
+      "module": "napari.utils.events",
+      "names": [
+        "Event"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/visualization/_qt/qt_camera_spline.py",
+      "level": 0,
+      "line": 3,
+      "module": "qtpy.QtWidgets",
+      "names": [
+        "QPushButton",
+        "QVBoxLayout",
+        "QWidget",
+        "QHBoxLayout",
+        "QLabel",
+        "QGroupBox",
+        "QRadioButton"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/visualization/_qt/qt_camera_spline.py",
+      "level": 0,
+      "line": 4,
+      "module": "qtpy.QtCore",
+      "names": [
+        "Qt"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/visualization/_qt/qt_camera_spline.py",
+      "level": 0,
+      "line": 5,
+      "module": "superqt.sliders",
+      "names": [
+        "QLabeledDoubleSlider"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/visualization/_qt/qt_camera_spline.py",
+      "level": 3,
+      "line": 7,
+      "module": "_backend.threedee_widget_base",
+      "names": [
+        "QtThreeDeeWidgetBase"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/visualization/_qt/qt_camera_spline.py",
+      "level": 0,
+      "line": 8,
+      "module": "napari_threedee.visualization.camera_spline",
+      "names": [
+        "CameraSpline",
+        "CameraSplineMode"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/visualization/_qt/qt_lighting_control.py",
+      "level": 0,
+      "line": 2,
+      "module": "igl",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/visualization/_qt/qt_lighting_control.py",
+      "level": 0,
+      "line": 7,
+      "module": "typing",
+      "names": [
+        "List"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/visualization/_qt/qt_lighting_control.py",
+      "level": 0,
+      "line": 9,
+      "module": "napari",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/visualization/_qt/qt_lighting_control.py",
+      "level": 0,
+      "line": 10,
+      "module": "napari.qt.threading",
+      "names": [
+        "FunctionWorker",
+        "thread_worker"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/visualization/_qt/qt_lighting_control.py",
+      "level": 0,
+      "line": 11,
+      "module": "napari.utils",
+      "names": [
+        "progress"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/visualization/_qt/qt_lighting_control.py",
+      "level": 0,
+      "line": 12,
+      "module": "magicgui",
+      "names": [
+        "magicgui",
+        "widgets",
+        "magic_factory"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/visualization/_qt/qt_lighting_control.py",
+      "level": 0,
+      "line": 13,
+      "module": "qtpy.QtWidgets",
+      "names": [
+        "QPushButton",
+        "QWidget",
+        "QVBoxLayout",
+        "QLabel"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/visualization/_qt/qt_lighting_control.py",
+      "level": 0,
+      "line": 15,
+      "module": "napari_threedee.visualization.lighting_control",
+      "names": [
+        "LightingControl"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/visualization/_tests/test_camera_spline.py",
+      "level": 0,
+      "line": 1,
+      "module": "napari",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/visualization/_tests/test_camera_spline.py",
+      "level": 0,
+      "line": 2,
+      "module": "typing",
+      "names": [
+        "Tuple"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/visualization/_tests/test_camera_spline.py",
+      "level": 0,
+      "line": 4,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/visualization/_tests/test_camera_spline.py",
+      "level": 0,
+      "line": 6,
+      "module": "napari_threedee.annotators",
+      "names": [
+        "PathAnnotator"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/visualization/_tests/test_camera_spline.py",
+      "level": 0,
+      "line": 7,
+      "module": "napari_threedee.annotators.constants",
+      "names": [
+        "N3D_METADATA_KEY"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/visualization/_tests/test_camera_spline.py",
+      "level": 0,
+      "line": 8,
+      "module": "napari_threedee.data_models",
+      "names": [
+        "N3dPaths"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/visualization/_tests/test_camera_spline.py",
+      "level": 0,
+      "line": 9,
+      "module": "napari_threedee.visualization.camera_spline",
+      "names": [
+        "CameraSpline",
+        "CameraSplineMode"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/visualization/_tests/test_lighting_control.py",
+      "level": 0,
+      "line": 1,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/visualization/_tests/test_lighting_control.py",
+      "level": 0,
+      "line": 2,
+      "module": "pytest",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/visualization/_tests/test_lighting_control.py",
+      "level": 0,
+      "line": 4,
+      "module": "napari_threedee.visualization.lighting_control",
+      "names": [
+        "LightingControl"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/visualization/_tests/test_lighting_control.py",
+      "level": 0,
+      "line": 5,
+      "module": "napari_threedee.utils.napari_utils",
+      "names": [
+        "get_napari_visual"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/visualization/camera_spline.py",
+      "level": 0,
+      "line": 1,
+      "module": "enum",
+      "names": [
+        "Enum"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/visualization/camera_spline.py",
+      "level": 0,
+      "line": 2,
+      "module": "typing",
+      "names": [
+        "Optional",
+        "Tuple",
+        "Union"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/visualization/camera_spline.py",
+      "level": 0,
+      "line": 4,
+      "module": "napari",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/visualization/camera_spline.py",
+      "level": 0,
+      "line": 5,
+      "module": "napari.layers",
+      "names": [
+        "Image"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/visualization/camera_spline.py",
+      "level": 0,
+      "line": 6,
+      "module": "napari.utils.events.event",
+      "names": [
+        "EmitterGroup",
+        "Event"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/visualization/camera_spline.py",
+      "level": 0,
+      "line": 7,
+      "module": "napari.utils.geometry",
+      "names": [
+        "rotation_matrix_from_vectors_3d"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/visualization/camera_spline.py",
+      "level": 0,
+      "line": 8,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/visualization/camera_spline.py",
+      "level": 2,
+      "line": 10,
+      "module": "_backend.threedee_model",
+      "names": [
+        "N3dComponent"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/visualization/camera_spline.py",
+      "level": 2,
+      "line": 11,
+      "module": "annotators.paths",
+      "names": [
+        "PathAnnotator"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/visualization/camera_spline.py",
+      "level": 2,
+      "line": 12,
+      "module": "annotators.constants",
+      "names": [
+        "N3D_METADATA_KEY"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/visualization/camera_spline.py",
+      "level": 2,
+      "line": 13,
+      "module": "data_models",
+      "names": [
+        "N3dPaths"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/visualization/camera_spline.py",
+      "level": 2,
+      "line": 14,
+      "module": "data_models.spline_sampler",
+      "names": [
+        "SplineSampler"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/visualization/camera_spline.py",
+      "level": 0,
+      "line": 208,
+      "module": "napari_threedee.data_models",
+      "names": [
+        "N3dPaths"
+      ],
+      "scope": "CameraSpline._check_if_spline_valid"
+    },
+    {
+      "file": "src/napari_threedee/visualization/lighting_control.py",
+      "level": 0,
+      "line": 1,
+      "module": "typing",
+      "names": [
+        "List"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/visualization/lighting_control.py",
+      "level": 0,
+      "line": 3,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/visualization/lighting_control.py",
+      "level": 0,
+      "line": 4,
+      "module": "napari",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/visualization/lighting_control.py",
+      "level": 0,
+      "line": 6,
+      "module": "napari_threedee._backend.threedee_model",
+      "names": [
+        "N3dComponent"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/visualization/lighting_control.py",
+      "level": 0,
+      "line": 7,
+      "module": "napari_threedee.utils.napari_utils",
+      "names": [
+        "get_napari_visual",
+        "get_dims_displayed"
+      ],
+      "scope": ""
+    }
+  ],
+  "inventory_tool_sha256": "7dee7e661d7b9d66dffd34fecfdf7ddf044b94f38b5adbebfd3eeed916e87058",
+  "parse_diagnostics": [],
+  "pin": "7bd485085186ebe1907f8de931aa7a93e0d58a83",
+  "qt_imports": [
+    {
+      "file": "src/napari_threedee/_backend/threedee_widget_base.py",
+      "level": 0,
+      "line": 4,
+      "module": "qtpy.QtWidgets",
+      "names": [
+        "QWidget",
+        "QPushButton",
+        "QVBoxLayout"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/_qt/qt_path_annotator.py",
+      "level": 0,
+      "line": 3,
+      "module": "qtpy.QtWidgets",
+      "names": [
+        "QPushButton",
+        "QGroupBox",
+        "QVBoxLayout",
+        "QCheckBox",
+        "QSpinBox",
+        "QLabel",
+        "QHBoxLayout"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/annotators/_qt/qt_surface_annotator.py",
+      "level": 0,
+      "line": 3,
+      "module": "qtpy.QtWidgets",
+      "names": [
+        "QPushButton",
+        "QGroupBox",
+        "QVBoxLayout",
+        "QSpinBox",
+        "QLabel",
+        "QHBoxLayout"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/visualization/_qt/qt_camera_spline.py",
+      "level": 0,
+      "line": 3,
+      "module": "qtpy.QtWidgets",
+      "names": [
+        "QPushButton",
+        "QVBoxLayout",
+        "QWidget",
+        "QHBoxLayout",
+        "QLabel",
+        "QGroupBox",
+        "QRadioButton"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/visualization/_qt/qt_camera_spline.py",
+      "level": 0,
+      "line": 4,
+      "module": "qtpy.QtCore",
+      "names": [
+        "Qt"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/visualization/_qt/qt_lighting_control.py",
+      "level": 0,
+      "line": 13,
+      "module": "qtpy.QtWidgets",
+      "names": [
+        "QPushButton",
+        "QWidget",
+        "QVBoxLayout",
+        "QLabel"
+      ],
+      "scope": ""
+    }
+  ],
+  "qualification": "source_inventory_only",
+  "schema": 1,
+  "source": {
+    "algorithm": "sorted-relative-path-nul-file-bytes-sha256",
+    "files": [
+      {
+        "path": ".github/workflows/test_and_deploy.yml",
+        "sha256": "0f65e4b3c49c535c1c5df672a50cd3a0918672f96917356857ba787388a48aea",
+        "size": 4377
+      },
+      {
+        "path": ".gitignore",
+        "sha256": "bd137f2965824ea5f741e2416a7f2069746d16a23ed8157b30429198c1520a7a",
+        "size": 1010
+      },
+      {
+        "path": ".napari-hub/config.yml",
+        "sha256": "cad3b7fdcbe7b8ee7c6768bd2d264bf9fc16375a0905500a99ce8498d8017631",
+        "size": 19
+      },
+      {
+        "path": "LICENSE",
+        "sha256": "c6598a9a636c754eb36712efb26aa997ea2c28cc31a6a524e3acb206d8913b6c",
+        "size": 1485
+      },
+      {
+        "path": "MANIFEST.in",
+        "sha256": "0d4a59f2342111b8eec5c0f93f1bace96af1fa3b52a0c8c92a4a5713641ce8fa",
+        "size": 121
+      },
+      {
+        "path": "README.md",
+        "sha256": "28c99dbb5d151e70e1179f9794095542ea3894758d69ee58101396e1e5084e48",
+        "size": 4341
+      },
+      {
+        "path": "docs/API/geometry_utilities.md",
+        "sha256": "1b33c28f186199f9b8a629a46dd4932196fed3635660b6e29a8392d462623e31",
+        "size": 57
+      },
+      {
+        "path": "docs/API/napari_utilities.md",
+        "sha256": "87e9d74ef3114cd44e6a1ef5c3b5a94e636fc46b57c7a5a91804ec00ceb8d977",
+        "size": 58
+      },
+      {
+        "path": "docs/API/selection_utilities.md",
+        "sha256": "03cc9e6d98029a6103dfe467a74c021e87d6c276182dd099b0c8a33858249f2c",
+        "size": 64
+      },
+      {
+        "path": "docs/annotations/io.md",
+        "sha256": "dd56ab6a65598730ebfcda8e5d69ad1bc9bf0230a034df889ce092ab2ba4bc94",
+        "size": 941
+      },
+      {
+        "path": "docs/annotations/point_spec.md",
+        "sha256": "c03e3f460b40f7fdb40e6306f446739160f6736dc5e717fb945ed5834884bfa5",
+        "size": 705
+      },
+      {
+        "path": "docs/annotations/specifications.md",
+        "sha256": "927d6c35ee54db833bbf3467345aa839ca1d430fc024e8b96e31b9ab6ceb8eb1",
+        "size": 535
+      },
+      {
+        "path": "docs/annotations/sphere_spec.md",
+        "sha256": "03068de98a8a7bfca1407990be1b851841992c46e61a70134e45471d828f5f86",
+        "size": 1088
+      },
+      {
+        "path": "docs/annotations/spline_spec.md",
+        "sha256": "a41f5f9fa5ed7f181f377cbda0783025b3204b8ba827bb8bb1a3f5398ff9f5b4",
+        "size": 919
+      },
+      {
+        "path": "docs/dev_guides/core_concepts.md",
+        "sha256": "6871c14aa636d28715ca7a1c6bc30ad2c67c48c2a4b47179e34d6ed0faef0877",
+        "size": 2455
+      },
+      {
+        "path": "docs/dev_guides/manipulators.md",
+        "sha256": "b088643ccc4dc67250514d8d27019350bb0c48cfee2726e825815566962e19cc",
+        "size": 4153
+      },
+      {
+        "path": "docs/examples/README.md",
+        "sha256": "2d016346088a442849522b55ee114577bc174c9210fab4988d246e21d74d0cff",
+        "size": 79
+      },
+      {
+        "path": "docs/examples/library/README.md",
+        "sha256": "549960553a2805d812760baab33357e5a5092b8b086b83f8534169d12354b9f3",
+        "size": 73
+      },
+      {
+        "path": "docs/examples/library/camera_spline_library.py",
+        "sha256": "f687ebf67b570bab59471d87cd403513dff5e18d8ba03993a97e96dd40b5c504",
+        "size": 759
+      },
+      {
+        "path": "docs/examples/library/dipole_annotator_library.py",
+        "sha256": "547217b8debfce9b8b5c53c157fb6bb3d5b2d6f5da44700adeb16e786385f3cd",
+        "size": 1610
+      },
+      {
+        "path": "docs/examples/library/layer_manipulator_library.py",
+        "sha256": "8f157c303b6995f522bb46527539b0e50de7a634c29dd318b32aeaf48957296b",
+        "size": 487
+      },
+      {
+        "path": "docs/examples/library/mesh_headlight_library.py",
+        "sha256": "3c84762f7df6e163cf88c8d23fe93b874592830f04d091c6278eb7aea025238b",
+        "size": 924
+      },
+      {
+        "path": "docs/examples/library/path_annotator_library.py",
+        "sha256": "1b8ea72b3fe15170b10072c88e8916785f441ce36774f633a890bb9de58021b0",
+        "size": 1461
+      },
+      {
+        "path": "docs/examples/library/point_annotator_library.py",
+        "sha256": "086dff1b4d10424ea24c71a4da792a586e6798a9328f86bd8fbf8659d209737d",
+        "size": 1202
+      },
+      {
+        "path": "docs/examples/library/render_plane_manipulator_library.py",
+        "sha256": "fe9ec74e655b8beb1bf386241e04af19db5e6404d0869e3b3823014c61365d14",
+        "size": 935
+      },
+      {
+        "path": "docs/examples/library/sphere_annotator_library.py",
+        "sha256": "6b764bfa66c1d30f3167fd0835d9d52fb357f8a60e196b3d062d674153845f97",
+        "size": 1484
+      },
+      {
+        "path": "docs/examples/library/surface_annotator_library.py",
+        "sha256": "5602f8da794a7be18c578716ac82f6ac1e26c8b54b56c37de8db7e5f6dc97c6c",
+        "size": 1045
+      },
+      {
+        "path": "docs/examples/plugin/README.md",
+        "sha256": "41358846d89b8d62176953bbc7c69b52cfe8ec17c7b7f1b269b7d6325134cf8a",
+        "size": 78
+      },
+      {
+        "path": "docs/examples/plugin/ambient_occlusion_plugin.py",
+        "sha256": "4839163b3ec67740f78fbd7ed2fdc295aec0a273dbe684cccf7259b13a7fbf92",
+        "size": 868
+      },
+      {
+        "path": "docs/examples/plugin/camera_spline_plugin.py",
+        "sha256": "44b5522013c163e36081871c9a2355f6203b583a00c0c2c869d06c383eaaebcc",
+        "size": 1083
+      },
+      {
+        "path": "docs/examples/plugin/label_annotator_plugin.py",
+        "sha256": "b910c700e9f10bda7db7e8dc9108c88841644778b9d11b03523d5d464f40afb3",
+        "size": 864
+      },
+      {
+        "path": "docs/examples/plugin/layer_manipulator_plugin.py",
+        "sha256": "62ec001121d6f7f844dd9a830d173a5e87c9fcb61e3930027c712625c56a966f",
+        "size": 1027
+      },
+      {
+        "path": "docs/examples/plugin/mesh_headlight_plugin.py",
+        "sha256": "0b720be71c86862fd35e5454ccdbd692dd067719f87c160299ba8712452d7085",
+        "size": 840
+      },
+      {
+        "path": "docs/examples/plugin/path_annotator_plugin.py",
+        "sha256": "f78fcfa18af2c5c488519c547ff271da3739132d8bb0f1fdc7edf2afe29a5e7e",
+        "size": 1252
+      },
+      {
+        "path": "docs/examples/plugin/point_annotator_plugin.py",
+        "sha256": "c83240addd250e77f6ebe66a8bd0ecdd33d09d562cda1dba645c3c99190a4339",
+        "size": 1373
+      },
+      {
+        "path": "docs/examples/plugin/points_manipulator_plugin.py",
+        "sha256": "6af97f1e90ce7074871068463411ea3b172fd9a6a6e3560668c0c76634c05c80",
+        "size": 755
+      },
+      {
+        "path": "docs/examples/plugin/render_plane_manipulator_plugin.py",
+        "sha256": "ccbf7753536496b2532c6ceec8d0246591cc0abf8c3ddb5370c8dc56b1494a74",
+        "size": 1021
+      },
+      {
+        "path": "docs/examples/plugin/sphere_annotator_plugin.py",
+        "sha256": "dc4845a27dd818c74f33d42a6ea5539f58b4adabeed0939618c247aab8da7c84",
+        "size": 955
+      },
+      {
+        "path": "docs/examples/plugin/surface_annotator_plugin.py",
+        "sha256": "5375a55c6b645c8feff5b50f710b57604ece03ca7615975be2c2d940639d4c70",
+        "size": 968
+      },
+      {
+        "path": "docs/gallery_conf.py",
+        "sha256": "8d92e38412c9cc39ea36df9ea7c22542a6557f7aafeea8924f0af8d526aef7ee",
+        "size": 1585
+      },
+      {
+        "path": "docs/getting_started/developers.md",
+        "sha256": "5958740e4955ab7338c6fee152b55641dbf9d19cffca8defd97df6eb93f1922d",
+        "size": 442
+      },
+      {
+        "path": "docs/getting_started/users.md",
+        "sha256": "7828506e9285db8cede014e387a9c21ebafdb204d78d49d688c1c80ae9fa0064",
+        "size": 467
+      },
+      {
+        "path": "docs/how_to/ambient_occlusion.md",
+        "sha256": "fa367732391262018f379196a265aa619ee674466ea816b9f4436ec210fb70fe",
+        "size": 1725
+      },
+      {
+        "path": "docs/how_to/label_annotator.md",
+        "sha256": "c6049b29cad2e1306a118306efc48c9ca4e224814dbbb22a5c9ed89d1a02d692",
+        "size": 3082
+      },
+      {
+        "path": "docs/how_to/layer_manipulator.md",
+        "sha256": "f3e541c0331e84853c0935c7117a5ed402fd5aa70df915907f89d989a232dda6",
+        "size": 2491
+      },
+      {
+        "path": "docs/how_to/path_annotator.md",
+        "sha256": "d1a16d22c0bf83a4bc9671746bc9f268964aa4b8e9e15abef97a044a9937a98d",
+        "size": 3622
+      },
+      {
+        "path": "docs/how_to/point_annotator.md",
+        "sha256": "08f6d741738378a076b3ecf9105b76d16817d810ffc755ae8800402012fae96f",
+        "size": 2905
+      },
+      {
+        "path": "docs/how_to/point_manipulator.md",
+        "sha256": "97147a061d5ce4ebe863a0d0464d8aa3fab3eab7b155888ddd328e106a3993ed",
+        "size": 2553
+      },
+      {
+        "path": "docs/how_to/render_plane_manipulator.md",
+        "sha256": "1a21bb12c802277aa374a56a99871a130f12d133ecbff5d80a90f5750b6ce13c",
+        "size": 3984
+      },
+      {
+        "path": "docs/how_to/sphere_annotator.md",
+        "sha256": "f7e86d92fbc52ab727d54a0626766e20bb329fd27f59d91c97dbd53d6eb2cdc0",
+        "size": 3393
+      },
+      {
+        "path": "docs/index.md",
+        "sha256": "88a4df9d77e5668af2485ede6fe72f7017079d7ffb44297bc4eb2300fb0b6ac0",
+        "size": 1357
+      },
+      {
+        "path": "docs/stylesheets/extra.css",
+        "sha256": "ddf731bc9e496351d72379969563e7581dc830fcfdb2936ef0de72eb45a5ee01",
+        "size": 1621
+      },
+      {
+        "path": "docs/tutorials/segmentation_tutorial.md",
+        "sha256": "1593fc57c2b990c83e20eebf349a66fc1e4237fc6e623b8d96a98dba16debc07",
+        "size": 9007
+      },
+      {
+        "path": "docs/tutorials/tutorials.md",
+        "sha256": "58895c865f79560945322a8a7680edabc941af32880b185d90d08e3acb0cb078",
+        "size": 11
+      },
+      {
+        "path": "mkdocs.yml",
+        "sha256": "5b1ed28312debca09353aaefa7c39402c9d8e97e4987db280a5365d42edb6b5a",
+        "size": 4741
+      },
+      {
+        "path": "pyproject.toml",
+        "sha256": "ea68783542a5ab8c12e5ab720fca3b6a13266a9f6ae7ca165cef79471cbe17a1",
+        "size": 2207
+      },
+      {
+        "path": "resources/n3d_logo.png",
+        "sha256": "0cfa386d64b526092a1e6b0e2ec3c7159e03c035bb85d2fe0544fefc199f4d9b",
+        "size": 110312
+      },
+      {
+        "path": "src/__init__.py",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      },
+      {
+        "path": "src/napari_threedee/__init__.py",
+        "sha256": "48f54549a69cc301f47156d9c79d896a9f85228969eb10b9b7cd5c8183019811",
+        "size": 182
+      },
+      {
+        "path": "src/napari_threedee/_backend/__init__.py",
+        "sha256": "8b06d61b99beffe3196237b4f5517f71c01a341f531b9f9979ae8360f55d81bc",
+        "size": 96
+      },
+      {
+        "path": "src/napari_threedee/_backend/manipulator/__init__.py",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      },
+      {
+        "path": "src/napari_threedee/_backend/manipulator/_interface.py",
+        "sha256": "f651bdea4ab3ed862bf965feb3dab926623608ffe422d4d908938ecd6dad8935",
+        "size": 190
+      },
+      {
+        "path": "src/napari_threedee/_backend/manipulator/_tests/__init__.py",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      },
+      {
+        "path": "src/napari_threedee/_backend/manipulator/_tests/test_axis_model.py",
+        "sha256": "713c26695d6a8cfca0ad6d408a309bc0eb5c6ad8e874adfb1502a178735e44bc",
+        "size": 653
+      },
+      {
+        "path": "src/napari_threedee/_backend/manipulator/_tests/test_central_axis.py",
+        "sha256": "143c753f56f5608eb96d2299c68fc91ec5dd5fede2481b8388daf5911c81c2b9",
+        "size": 392
+      },
+      {
+        "path": "src/napari_threedee/_backend/manipulator/_tests/test_drag_manager.py",
+        "sha256": "e2eb3597f83d93e45f768ef8528ad5f95dbd8f8bbf0a55508fb58125c43b2d08",
+        "size": 4200
+      },
+      {
+        "path": "src/napari_threedee/_backend/manipulator/_tests/test_manipulator.py",
+        "sha256": "ef0e24391aaca0503ac33c77583ce6905bf639e2cadeb0a80be5b23f61c89aa8",
+        "size": 4320
+      },
+      {
+        "path": "src/napari_threedee/_backend/manipulator/_tests/test_manipulator_visual_data.py",
+        "sha256": "2831b91c18dace135be2648d33b4a3b39ce6feb83bdea7d30387f38556ea06ca",
+        "size": 4989
+      },
+      {
+        "path": "src/napari_threedee/_backend/manipulator/_tests/test_rotator.py",
+        "sha256": "b23e67a5810c50a84fc53756bd2613ed38c3c517a609833e8ade568d746b45d2",
+        "size": 350
+      },
+      {
+        "path": "src/napari_threedee/_backend/manipulator/_tests/test_translator.py",
+        "sha256": "ca0fdb2aeef7441e704ff6051abfe8e0c7cff399d6478211f261c382bcaf7cbb",
+        "size": 393
+      },
+      {
+        "path": "src/napari_threedee/_backend/manipulator/axis_model.py",
+        "sha256": "706f2ac6fbba0b6c5e493c91ff66ebecb9e32cd92e7a86853c3a8414e7af023e",
+        "size": 2156
+      },
+      {
+        "path": "src/napari_threedee/_backend/manipulator/central_axis.py",
+        "sha256": "d6214eda6cbeb5f435e370de39988d32d129479be7c9fe36bab05b839ace5190",
+        "size": 823
+      },
+      {
+        "path": "src/napari_threedee/_backend/manipulator/drag_managers.py",
+        "sha256": "b8e3f16ff7ec5dc3a01cb2f85e1e0fced343a2d46ae2e7270170d3fd641fa263",
+        "size": 4439
+      },
+      {
+        "path": "src/napari_threedee/_backend/manipulator/manipulator_model.py",
+        "sha256": "d039d71f7d473d870448f35135f6437ab9118661d5b98b0df135aa76e93f3ee1",
+        "size": 2857
+      },
+      {
+        "path": "src/napari_threedee/_backend/manipulator/napari_manipulator_backend.py",
+        "sha256": "591aa5c1d5a7c0ad7cb5baefb62e10f9ad98cbf1339967fc2aeeab9c6f5c8604",
+        "size": 9831
+      },
+      {
+        "path": "src/napari_threedee/_backend/manipulator/rotator.py",
+        "sha256": "c3dc194c046e4571d40273b8c1f0f845d138ea32473f478af1643c819b979039",
+        "size": 1055
+      },
+      {
+        "path": "src/napari_threedee/_backend/manipulator/translator.py",
+        "sha256": "d8e3cf0dd51bb8404069799973f105a9f6869b133fbcd0dc8d3d239f92dedc9a",
+        "size": 1630
+      },
+      {
+        "path": "src/napari_threedee/_backend/manipulator/utils.py",
+        "sha256": "43f383621c27d938393c07bec857f89f876e2ba35be0e5206218ccce3722ce6f",
+        "size": 733
+      },
+      {
+        "path": "src/napari_threedee/_backend/manipulator/vispy_manipulator_visual.py",
+        "sha256": "fa3ee6e2aa0538f9fc8b62abe68930cd4e7c6ca400cb5593cde839fac0887fe2",
+        "size": 4688
+      },
+      {
+        "path": "src/napari_threedee/_backend/manipulator/vispy_visual_data.py",
+        "sha256": "ef828c1943837b17f4d0981c6ba98869e8eaa2faf2716c29bb28256a2e84f0f1",
+        "size": 13233
+      },
+      {
+        "path": "src/napari_threedee/_backend/threedee_model.py",
+        "sha256": "fc571d705b9ad9431f154185fb522eceb72691896c533a74a095bc8090a5f44a",
+        "size": 1376
+      },
+      {
+        "path": "src/napari_threedee/_backend/threedee_widget_base.py",
+        "sha256": "1ec899a97fdfcaf90611e88379d55ab40cceb32e1b9fe3047fa1ce0eb467e182",
+        "size": 3452
+      },
+      {
+        "path": "src/napari_threedee/_sample_data.py",
+        "sha256": "2adf6972a85add7372f6b1ba65ab9f09b8fc6194cd66837d5c4522e5cc136bf1",
+        "size": 1163
+      },
+      {
+        "path": "src/napari_threedee/_tests/__init__.py",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      },
+      {
+        "path": "src/napari_threedee/_tests/test_dock_widget.py",
+        "sha256": "5f40581e52ff17f66c8f79c9801aa7a8e87d82541f13915a0bab87e6913fe7f1",
+        "size": 809
+      },
+      {
+        "path": "src/napari_threedee/annotators/__init__.py",
+        "sha256": "d7cd27bc34380fcfdadeeb6c65aa674faf7ec9c2f2b80a26062ef6e0697c552f",
+        "size": 213
+      },
+      {
+        "path": "src/napari_threedee/annotators/_qt/__init__.py",
+        "sha256": "9d21fcec961972fef49184b043caae9e44a5e6bdcd156cb9dd2f698a7379dc56",
+        "size": 279
+      },
+      {
+        "path": "src/napari_threedee/annotators/_qt/qt_label_annotator.py",
+        "sha256": "1eb34247fa0318eeefec2b948bc8a2f8d93aaa55e1ab5fdc6727cc56257e67d4",
+        "size": 329
+      },
+      {
+        "path": "src/napari_threedee/annotators/_qt/qt_path_annotator.py",
+        "sha256": "88371480a2ae1c6b25d4f128daf7e91f93a4e9903bd203b8203b969790b2b829",
+        "size": 2113
+      },
+      {
+        "path": "src/napari_threedee/annotators/_qt/qt_plane_point_annotator.py",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      },
+      {
+        "path": "src/napari_threedee/annotators/_qt/qt_point_annotator.py",
+        "sha256": "32ebe366a8c87f0b5b5592954f090abd9d1e6df00cd635973293e5717731d794",
+        "size": 325
+      },
+      {
+        "path": "src/napari_threedee/annotators/_qt/qt_sphere_annotator.py",
+        "sha256": "0715945dccbec5f9acb2172b93692c6365ef60eceb763faef5ae3690e78b26f0",
+        "size": 295
+      },
+      {
+        "path": "src/napari_threedee/annotators/_qt/qt_surface_annotator.py",
+        "sha256": "bad8db7d1f4cdeb3f427dfe8edd40b46702ebfe1a9697510f29c7c7698cac54e",
+        "size": 3433
+      },
+      {
+        "path": "src/napari_threedee/annotators/_tests/__init__.py",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      },
+      {
+        "path": "src/napari_threedee/annotators/_tests/conftest.py",
+        "sha256": "12add1cd60c1b04a22361a3f8ef91fd8197ae80264d21ffd925e5894992b640b",
+        "size": 998
+      },
+      {
+        "path": "src/napari_threedee/annotators/_tests/test_path_annotator.py",
+        "sha256": "56a2459640e6f8c55fac70e97211a5bd8aaca12c8bd003fc31504c20fe6cf362",
+        "size": 2939
+      },
+      {
+        "path": "src/napari_threedee/annotators/_tests/test_plane_labeler.py",
+        "sha256": "f68a320c81fc54d47101be726a64eec76e26b4c25cb0453112463cd59d709218",
+        "size": 1103
+      },
+      {
+        "path": "src/napari_threedee/annotators/_tests/test_point_annotator.py",
+        "sha256": "02ba15946b849c9931a3bc38d1fa7ad91bf2484ac8aeab63551a54a4efa2b1a9",
+        "size": 920
+      },
+      {
+        "path": "src/napari_threedee/annotators/_tests/test_sphere_annotator.py",
+        "sha256": "015f0d1a4946f81280a0b2dfc4b07eb3c5acb22d7db13ceca625f39333c3d6f9",
+        "size": 1964
+      },
+      {
+        "path": "src/napari_threedee/annotators/base.py",
+        "sha256": "43029668651d8006acd5da0b86be5b8542ef5ea60bb480aca4608f0e184c239c",
+        "size": 580
+      },
+      {
+        "path": "src/napari_threedee/annotators/constants.py",
+        "sha256": "8dbeaa93ca6f1cfcd0e8a57fe01f44926fd4759e973d7f68b78124efa4602a92",
+        "size": 74
+      },
+      {
+        "path": "src/napari_threedee/annotators/dipoles/__init__.py",
+        "sha256": "07e26ded0bf734ebe0f6ff09f5a7a5db19566bacb2ab90b8ab75cedf666a46c7",
+        "size": 38
+      },
+      {
+        "path": "src/napari_threedee/annotators/dipoles/annotator.py",
+        "sha256": "99348127e73613e50fed52450ada3356dd55d1750da53975e9925641fb55fba1",
+        "size": 11321
+      },
+      {
+        "path": "src/napari_threedee/annotators/dipoles/constants.py",
+        "sha256": "5715ba705d94eb2b2392a47c58d0e12a2ee49ef7b0fbcf6f8026523b9dbd21cf",
+        "size": 303
+      },
+      {
+        "path": "src/napari_threedee/annotators/dipoles/validation.py",
+        "sha256": "620984d6c7d423516bd28223f24cbda87b90d5aaaa8e7df0bb07690c6c70a6bf",
+        "size": 1051
+      },
+      {
+        "path": "src/napari_threedee/annotators/label/__init__.py",
+        "sha256": "3c72032c68b9f652c5fef2172b985cd077331f59772262f0534cc500d85e4c07",
+        "size": 35
+      },
+      {
+        "path": "src/napari_threedee/annotators/label/annotator.py",
+        "sha256": "b35bfb0447c58e88042f03b196981dfed6d662ca4ce8e727ae768f8d771bcff2",
+        "size": 8836
+      },
+      {
+        "path": "src/napari_threedee/annotators/paths/__init__.py",
+        "sha256": "f057979108187cab999e1453d62b6c440776848b3bbc7a896ad3ba8d863ebf8c",
+        "size": 36
+      },
+      {
+        "path": "src/napari_threedee/annotators/paths/annotator.py",
+        "sha256": "8b458a5d74b0fd657611dd2c129b183f76b2638fe02bce225302abbf0a3aa1b0",
+        "size": 6530
+      },
+      {
+        "path": "src/napari_threedee/annotators/paths/constants.py",
+        "sha256": "da1a943c53ee3bc6931f1e91a3f64bbdbf0f97f1cc9907a39b06209f72ba11e6",
+        "size": 477
+      },
+      {
+        "path": "src/napari_threedee/annotators/paths/validation.py",
+        "sha256": "483e5fbc5c1a333cac3916b4dcee8fff4174aa8c3b7f3a993ac8e283d511b8c6",
+        "size": 1265
+      },
+      {
+        "path": "src/napari_threedee/annotators/points/__init__.py",
+        "sha256": "fdfc6f4cfd1ba6e37baabd706ffcf51126a7e91f728f6550c75ab2658cd271e1",
+        "size": 37
+      },
+      {
+        "path": "src/napari_threedee/annotators/points/annotator.py",
+        "sha256": "81026a7054197f88b5c779f118305ae4a20259e32439426dd8bcec9c79d871ee",
+        "size": 2675
+      },
+      {
+        "path": "src/napari_threedee/annotators/points/constants.py",
+        "sha256": "f198fa7ca6d441a046b947113f8d951a14226107a402b08997d32d2c29665ccf",
+        "size": 100
+      },
+      {
+        "path": "src/napari_threedee/annotators/points/validation.py",
+        "sha256": "8ddaa272db0cc7590359d58906eb05ca72869706fad149b813b4f2bc1cda72c0",
+        "size": 970
+      },
+      {
+        "path": "src/napari_threedee/annotators/spheres/__init__.py",
+        "sha256": "1a8da0f14f7b1e5392b9534bbb36ec3abeba90d0659499242508da207a61c430",
+        "size": 134
+      },
+      {
+        "path": "src/napari_threedee/annotators/spheres/_tests/__init__.py",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      },
+      {
+        "path": "src/napari_threedee/annotators/spheres/_tests/test_data_model.py",
+        "sha256": "adcaa66c431808f4466fb9e5dc554c6629ec625cf519050a75e6999a299a562b",
+        "size": 1209
+      },
+      {
+        "path": "src/napari_threedee/annotators/spheres/annotator.py",
+        "sha256": "8ea8eb5e424857f5448b488746e3cd0e36a1b88e7792c721e120332477278663",
+        "size": 9993
+      },
+      {
+        "path": "src/napari_threedee/annotators/spheres/constants.py",
+        "sha256": "4325625166cb5443152cae56d5418ed24f37140bfb77cfb1e6297c90bb7bf377",
+        "size": 425
+      },
+      {
+        "path": "src/napari_threedee/annotators/spheres/validation.py",
+        "sha256": "5f3cc54e936bad2cca885c17f7c120685bf52d599aed233a256479481226ddc3",
+        "size": 888
+      },
+      {
+        "path": "src/napari_threedee/annotators/surfaces/__init__.py",
+        "sha256": "551718edc737c3aead253e615faa493ad03b8c857750cd21362a6fb8da7194e9",
+        "size": 39
+      },
+      {
+        "path": "src/napari_threedee/annotators/surfaces/_tests/__init__.py",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      },
+      {
+        "path": "src/napari_threedee/annotators/surfaces/_tests/test_data_model.py",
+        "sha256": "98bdc937291ef348b9fd4f2d2bf8fb4aff81ccba04a1e0661246a1230ba2731b",
+        "size": 1336
+      },
+      {
+        "path": "src/napari_threedee/annotators/surfaces/annotator.py",
+        "sha256": "ca90bf987bc846e806bbebb2a5fcf99025763d56cf98fad4089f03c57bb71074",
+        "size": 13042
+      },
+      {
+        "path": "src/napari_threedee/annotators/surfaces/constants.py",
+        "sha256": "36c156950db97c54f45648828a8b10c7bb8215d3cae205b28d4eaee2f6c6c1af",
+        "size": 435
+      },
+      {
+        "path": "src/napari_threedee/annotators/surfaces/validation.py",
+        "sha256": "b3031e77e279a3585dc785e766d50c0527aac8da244313d924e73af3fcf4c0e5",
+        "size": 1413
+      },
+      {
+        "path": "src/napari_threedee/conftest.py",
+        "sha256": "2d81a70f04cba748dc2d59bb5516180e5fd395e82e53b5475bcb12aa2c6dd9f1",
+        "size": 2245
+      },
+      {
+        "path": "src/napari_threedee/data_models/__init__.py",
+        "sha256": "5bdeb5db064eadcaf47c209578744991b9369071298e472a42dbd1ef08d0c7ea",
+        "size": 188
+      },
+      {
+        "path": "src/napari_threedee/data_models/_tests/__init__.py",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      },
+      {
+        "path": "src/napari_threedee/data_models/_tests/test_dipoles.py",
+        "sha256": "0f8bbaf07bea0f93f5c56981a65b393b572dbcc1b44aef8a83154edd27a83130",
+        "size": 1497
+      },
+      {
+        "path": "src/napari_threedee/data_models/_tests/test_paths.py",
+        "sha256": "f3359b8b5d01ae9a36e269fe0f3c60451c0ba19c630acf58338b209e2cbad808",
+        "size": 1605
+      },
+      {
+        "path": "src/napari_threedee/data_models/_tests/test_points.py",
+        "sha256": "3b60d30d3d9a33834222236491a8f7a1efd5cc2d93254649dc28e5ccbf2423d6",
+        "size": 1149
+      },
+      {
+        "path": "src/napari_threedee/data_models/_tests/test_spheres.py",
+        "sha256": "20c9f290145f219d5f85adb9ebd2325e8b35d9078fc535262b2a5f3db63a1e11",
+        "size": 484
+      },
+      {
+        "path": "src/napari_threedee/data_models/dipoles.py",
+        "sha256": "7305656ff70ad136aae344bcaa8867ebf0a5846d7a35e2a99521cf993a917d1c",
+        "size": 5374
+      },
+      {
+        "path": "src/napari_threedee/data_models/paths.py",
+        "sha256": "432482af9a01471cf652430fd939d95334751e9e168403d27492e27001e5e560",
+        "size": 4940
+      },
+      {
+        "path": "src/napari_threedee/data_models/points.py",
+        "sha256": "06e21a628bc3f5aa959ca05a84636522986a2f1d5c864fdcf8b87f516ecbc997",
+        "size": 1976
+      },
+      {
+        "path": "src/napari_threedee/data_models/spheres.py",
+        "sha256": "74285c6990e8a100f23abbc578ec0d06127e0fd9867a072e542202532bde11ff",
+        "size": 3654
+      },
+      {
+        "path": "src/napari_threedee/data_models/spline_sampler.py",
+        "sha256": "677c6def4e3edda88034c152e43ad3a17f6b1099323a38505c7069dc4f0bc9d4",
+        "size": 5044
+      },
+      {
+        "path": "src/napari_threedee/data_models/surfaces.py",
+        "sha256": "cdea1d4e4f344c737db9d3b8f4074eca973ef1d13d9770770c7350b3a3b158ac",
+        "size": 4957
+      },
+      {
+        "path": "src/napari_threedee/dock_widgets.py",
+        "sha256": "fdb726666db760b3693a216e177def4954dfe34156769cb325d5d3ba7b08a715",
+        "size": 418
+      },
+      {
+        "path": "src/napari_threedee/manipulators/__init__.py",
+        "sha256": "e6e9f76814aef4ce3589d3e0d9e9f425399e431a7c1db0b3f49581850f3c4442",
+        "size": 157
+      },
+      {
+        "path": "src/napari_threedee/manipulators/_qt/__init__.py",
+        "sha256": "c8b6a0e22edb5d5a7d046920b7dd338b4c53666118a2c8bbd89a37ba62155adb",
+        "size": 190
+      },
+      {
+        "path": "src/napari_threedee/manipulators/_qt/qt_layer_manipulator.py",
+        "sha256": "87356de15c583b0bc2c1d5e2e7f8cde412af720de3c31118400f3db3a7ec8fc2",
+        "size": 337
+      },
+      {
+        "path": "src/napari_threedee/manipulators/_qt/qt_point_manipulator.py",
+        "sha256": "00e27536a6d590eb4ef3c0a1af0e9054140ada403fc4001d28d2ea33d33b3161",
+        "size": 337
+      },
+      {
+        "path": "src/napari_threedee/manipulators/_qt/qt_render_plane_manipulator.py",
+        "sha256": "45242695399cd4b5c9d60ff1dbe0e9ac4e915df93b68d6626f92d107af0a86d4",
+        "size": 361
+      },
+      {
+        "path": "src/napari_threedee/manipulators/_tests/__init__.py",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      },
+      {
+        "path": "src/napari_threedee/manipulators/_tests/test_manipulator_utils.py",
+        "sha256": "d1b672e10458274384446840b215b213450b029e9ff8330e3ca9da9d83d22bef",
+        "size": 1895
+      },
+      {
+        "path": "src/napari_threedee/manipulators/base_manipulator.py",
+        "sha256": "10fb352f5c79621a461e4113f9ad0dbe420d9ad1254ca22e4219b9de2a45f70c",
+        "size": 10704
+      },
+      {
+        "path": "src/napari_threedee/manipulators/constants.py",
+        "sha256": "f32d3667b7a90f588c2da25e005cb6c78daaae1cfc2db554d3365878fdd0f33d",
+        "size": 19
+      },
+      {
+        "path": "src/napari_threedee/manipulators/layer_manipulator.py",
+        "sha256": "c5f792341e2b983b7840006037f06c12124430b03caaa4ee905a8805debd2c46",
+        "size": 962
+      },
+      {
+        "path": "src/napari_threedee/manipulators/manipulator_utils.py",
+        "sha256": "fd7729a677e635bceda00bb0c68eb47ebb18445d0cfbd8881f16e66bfcd9be9e",
+        "size": 14395
+      },
+      {
+        "path": "src/napari_threedee/manipulators/point_manipulator.py",
+        "sha256": "702b7722c72cba615cf8687744f3317ee96121ec3c9ccd283299d0e86850aa87",
+        "size": 5466
+      },
+      {
+        "path": "src/napari_threedee/manipulators/render_plane_manipulator.py",
+        "sha256": "f0f994bfee0a2889dbd189c0a22b1e1c38f5fbcad334836486ca331bf2bf50c5",
+        "size": 2944
+      },
+      {
+        "path": "src/napari_threedee/napari.yaml",
+        "sha256": "bf3416d61c4b739883fb1e014760b9ce75863086a21b994a659f1042e4a11bb0",
+        "size": 3994
+      },
+      {
+        "path": "src/napari_threedee/utils/__init__.py",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      },
+      {
+        "path": "src/napari_threedee/utils/_tests/__init__.py",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      },
+      {
+        "path": "src/napari_threedee/utils/_tests/test_geometry.py",
+        "sha256": "0cabd94736c9b83f9513b3673df69464e2a922ab5325c1dc216efa701bb5bf58",
+        "size": 1813
+      },
+      {
+        "path": "src/napari_threedee/utils/_tests/test_mouse_callbacks.py",
+        "sha256": "e79a4789c80da60cd5ef0ccdc7c219aca88f244c2bee7c54b1bf04229d6746de",
+        "size": 5883
+      },
+      {
+        "path": "src/napari_threedee/utils/geometry.py",
+        "sha256": "357ed4ba7b88eeed19cc0e622e8dcc8b34afa905c67d33d142f87b39836053cf",
+        "size": 2908
+      },
+      {
+        "path": "src/napari_threedee/utils/mouse_callbacks.py",
+        "sha256": "e8dfd6998e6ef07e7045420d96c8f144c3a097b71a01c54ab6f49a55ac2276b2",
+        "size": 825
+      },
+      {
+        "path": "src/napari_threedee/utils/napari_utils.py",
+        "sha256": "080c7b55c4f275eae2d648df6242ea2564d267bae1fc2a4dbdf4ac9353cb3f8d",
+        "size": 11969
+      },
+      {
+        "path": "src/napari_threedee/utils/selection_utils.py",
+        "sha256": "0b5388b4ee51e71758f3cc75a6ace702dfb4604a911713c98bff2a67741edff5",
+        "size": 6644
+      },
+      {
+        "path": "src/napari_threedee/vispy.py",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      },
+      {
+        "path": "src/napari_threedee/visualization/__init__.py",
+        "sha256": "c9b7a68c8c7910e47ee03b0e88df032617683357a4e96b814c15881c9330fed6",
+        "size": 136
+      },
+      {
+        "path": "src/napari_threedee/visualization/_qt/__init__.py",
+        "sha256": "68c9e5da927c24f41eca0c0314bc3aa69ce9920ce0f648cc5abea351b13ee6c8",
+        "size": 127
+      },
+      {
+        "path": "src/napari_threedee/visualization/_qt/qt_camera_spline.py",
+        "sha256": "4123f4645f892b13189af64894c4619543384f9925e05809c9e08190c280ba3c",
+        "size": 7235
+      },
+      {
+        "path": "src/napari_threedee/visualization/_qt/qt_lighting_control.py",
+        "sha256": "3f5d1421e2375e0ad6aef0587efaac9bb2dd5039994a26c227b2fea6708eba2d",
+        "size": 5764
+      },
+      {
+        "path": "src/napari_threedee/visualization/_tests/__init__.py",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      },
+      {
+        "path": "src/napari_threedee/visualization/_tests/test_camera_spline.py",
+        "sha256": "d1455217d1d0f6cffed99a2bfd8e43b3261c1c4c1ca3e59fa9c1cc071abfd8a0",
+        "size": 3767
+      },
+      {
+        "path": "src/napari_threedee/visualization/_tests/test_lighting_control.py",
+        "sha256": "a655869eb3210df260e38d322fab90b9fe79acc409edddeb9f68a0844189ef12",
+        "size": 2133
+      },
+      {
+        "path": "src/napari_threedee/visualization/camera_spline.py",
+        "sha256": "9c6abb0a589853ab51afb7e875b54c88b892ecd44692ced3f8d5f9bcd38c71a8",
+        "size": 11203
+      },
+      {
+        "path": "src/napari_threedee/visualization/lighting_control.py",
+        "sha256": "1db65d5c5b60d517f42b9785cc7fea856fff6d80daec538248f6bbf7bc40941a",
+        "size": 2176
+      },
+      {
+        "path": "tox.ini",
+        "sha256": "42ecbca3825a4ef2018b0892c20d2878492f009e9801193fcbfac9a77bef0718",
+        "size": 870
+      }
+    ],
+    "sha256": "efddd50707a9b17b3e17eeb0c57f942d474db66b51be73d666363d3ecb8975ae"
+  },
+  "vispy_imports": [
+    {
+      "file": "docs/examples/library/mesh_headlight_library.py",
+      "level": 0,
+      "line": 10,
+      "module": "vispy.io",
+      "names": [
+        "load_data_file",
+        "read_mesh"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "docs/examples/plugin/ambient_occlusion_plugin.py",
+      "level": 0,
+      "line": 10,
+      "module": "vispy.io",
+      "names": [
+        "load_data_file",
+        "read_mesh"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "docs/examples/plugin/mesh_headlight_plugin.py",
+      "level": 0,
+      "line": 10,
+      "module": "vispy.io",
+      "names": [
+        "load_data_file",
+        "read_mesh"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/manipulator/napari_manipulator_backend.py",
+      "level": 0,
+      "line": 6,
+      "module": "vispy.visuals.transforms",
+      "names": [
+        "MatrixTransform"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/_backend/manipulator/vispy_manipulator_visual.py",
+      "level": 0,
+      "line": 6,
+      "module": "vispy.scene",
+      "names": [
+        "Line",
+        "Compound",
+        "Markers"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "src/napari_threedee/data_models/spheres.py",
+      "level": 0,
+      "line": 88,
+      "module": "vispy.geometry",
+      "names": [
+        "create_sphere"
+      ],
+      "scope": "N3dSpheres.to_mesh"
+    },
+    {
+      "file": "src/napari_threedee/manipulators/manipulator_utils.py",
+      "level": 0,
+      "line": 6,
+      "module": "vispy.util.transforms",
+      "names": [
+        "rotate"
+      ],
+      "scope": ""
+    }
+  ]
+}

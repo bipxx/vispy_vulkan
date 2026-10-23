@@ -1,0 +1,187 @@
+{
+  "distributions": [
+    {
+      "name": "PyYAML",
+      "record_sha256": "6fef717920e6590ce79f8f922755690f9d1f3199508e9d79baeb382ea4813c9c",
+      "version": "6.0.3"
+    },
+    {
+      "name": "certifi",
+      "record_sha256": "cff9d243744c96445494c29abee3d592d0a6955d5504f4fbe034dce7aaf38490",
+      "version": "2026.7.22"
+    },
+    {
+      "name": "charset-normalizer",
+      "record_sha256": "14baf37749c9b14878b0dd76ca7629e03af352d7f883fe8e3c67750c218cb968",
+      "version": "3.5.2"
+    },
+    {
+      "name": "click",
+      "record_sha256": "924078ec3a47b97192425dbc0c3693085af7a7b863afcf6b4e110cf0bd97dea4",
+      "version": "8.5.0"
+    },
+    {
+      "name": "cloudpickle",
+      "record_sha256": "a24820e3d3ea3f0fb210f58b84abb5450a94cc649e573a9a0a69354afc6fa1de",
+      "version": "3.1.2"
+    },
+    {
+      "name": "colorama",
+      "record_sha256": "88413e126edc8a81419b409279ef89424081f27bccd4aeec0140d6f03f1ade7f",
+      "version": "0.4.6"
+    },
+    {
+      "name": "dask",
+      "record_sha256": "63e7bdf10a997f8e48e9c0092b538042d7b737108e0937259194b2cb4d31b889",
+      "version": "2026.8.0"
+    },
+    {
+      "name": "fsspec",
+      "record_sha256": "f7b3713c1750221155b0601147f3b68a24f11e342dca818b5fd551f5ef88a74b",
+      "version": "2026.9.0"
+    },
+    {
+      "name": "idna",
+      "record_sha256": "cb2f4c67b6b9bf6e52121a78ebf96364924f20fe48519c087b1a78fe26730105",
+      "version": "3.20"
+    },
+    {
+      "name": "joblib",
+      "record_sha256": "c1088eee5a30f2c8e5b1611ee43a7ccd8e8a9fcc53ebba0606692431d896a873",
+      "version": "1.6.0"
+    },
+    {
+      "name": "locket",
+      "record_sha256": "b74fc4678ecab0096f1917e70ca3434ff437a12261e4ff73ccbb1accfbaf9637",
+      "version": "1.0.0"
+    },
+    {
+      "name": "mtscomp",
+      "record_sha256": "8c0d4919a3761edbe44a1bd1e3f5f72e64efb364721c2bcf62a91fcbde15f843",
+      "version": "1.0.2"
+    },
+    {
+      "name": "numpy",
+      "record_sha256": "77666c0e402834c51cf498689fb5b1b2fe46813f1f707ffedc7db271a7150f1a",
+      "version": "2.5.3"
+    },
+    {
+      "name": "packaging",
+      "record_sha256": "1b8655965b0d83e9a067fd7f84b977bd1e117e0fb9f2874b2572781bdc9e2147",
+      "version": "26.3"
+    },
+    {
+      "name": "partd",
+      "record_sha256": "5c853745ab303595a07edf266ddb64a2b8a6d701a23e5ec89930823efbb03438",
+      "version": "1.4.2"
+    },
+    {
+      "name": "requests",
+      "record_sha256": "fc8c5216d0e865d815bd04cc240b5adc5d56f6c3dbe9aef3b4ea3b83d735bdfe",
+      "version": "2.34.2"
+    },
+    {
+      "name": "responses",
+      "record_sha256": "d76ed61ebe1b7bce311f2cead352430c6ee551b3a90ac03354ab5ae3c70d2881",
+      "version": "0.26.3"
+    },
+    {
+      "name": "scipy",
+      "record_sha256": "483f156162db81c9305e925f7af6edc03b6a603d219aa8e5affbb163d24fba11",
+      "version": "1.18.1"
+    },
+    {
+      "name": "toolz",
+      "record_sha256": "dfc571823a934e91b876f32cc474e345cb3d528c7842fe06a2d38cd0c73d9706",
+      "version": "1.2.0"
+    },
+    {
+      "name": "tqdm",
+      "record_sha256": "60342651b5607b646dc97cd191ef8c41b2b819520563f047262c0a696879ff6e",
+      "version": "4.70.1"
+    },
+    {
+      "name": "urllib3",
+      "record_sha256": "1753d325c8936a612ecdc947e686ade56b21f591fbb7518330cb0f2f7619c330",
+      "version": "2.8.0"
+    }
+  ],
+  "environment_lock": "compat/host-environments/phylib-windows-cpython312-cpu.txt",
+  "environment_lock_sha256": "bf146d64ab8af399adb1b571bc12aee432a7ef93c70c1577228667e699d6b053",
+  "errors": [],
+  "executable": "$ENV\\Scripts\\python.exe",
+  "host": "phylib",
+  "inventory_tool_sha256": "7dee7e661d7b9d66dffd34fecfdf7ddf044b94f38b5adbebfd3eeed916e87058",
+  "loaded_qt_modules": [],
+  "loaded_vispy_modules": [],
+  "modules": [
+    {
+      "name": "phylib",
+      "origin": "$ENV\\Lib\\site-packages\\phylib\\__init__.py",
+      "sha256": "79b41b62e94709fbd9634e534645f7af9dea0c8f13c0017171504cebc4ad3eb7",
+      "version": "2.7.1"
+    },
+    {
+      "name": "phylib.utils",
+      "origin": "$ENV\\Lib\\site-packages\\phylib\\utils\\__init__.py",
+      "sha256": "89d1a7bd172744f8f894d3990e5cd0217fde9a06f229ac651487a3793e65ad39"
+    },
+    {
+      "name": "phylib.utils._misc",
+      "origin": "$ENV\\Lib\\site-packages\\phylib\\utils\\_misc.py",
+      "sha256": "0d8ae879506259fb51dc265ce8201bd35925c3db525ddc4abe636193e97e77c6"
+    },
+    {
+      "name": "phylib.utils.geometry",
+      "origin": "$ENV\\Lib\\site-packages\\phylib\\utils\\geometry.py",
+      "sha256": "4b03e4334740fbcb12bc0e576b24da1bbb25ec189cc9ea82c94ef7287316e26d"
+    },
+    {
+      "name": "phylib.io",
+      "origin": "$ENV\\Lib\\site-packages\\phylib\\io\\__init__.py",
+      "sha256": "14f994d62c46ce73dd413432d71af5a8de594e6873516932beb389b5df648004"
+    },
+    {
+      "name": "phylib.io.model",
+      "origin": "$ENV\\Lib\\site-packages\\phylib\\io\\model.py",
+      "sha256": "45ea8e4144d123d687e92e393863e1f8255058c2f43ac40797a49a3d6d46ba3a"
+    },
+    {
+      "name": "phylib.io.traces",
+      "origin": "$ENV\\Lib\\site-packages\\phylib\\io\\traces.py",
+      "sha256": "f689fdc906ffb10055aa30a20eb536a7495e115005435e1a376ac6f9dcfbc8cb"
+    },
+    {
+      "name": "phylib.stats",
+      "origin": "$ENV\\Lib\\site-packages\\phylib\\stats\\__init__.py",
+      "sha256": "48c6cc1585df83cb35019b3007d6fe8cbc9ac8000b51b0d7cc31ab283cce1a1e"
+    },
+    {
+      "name": "phylib.stats.ccg",
+      "origin": "$ENV\\Lib\\site-packages\\phylib\\stats\\ccg.py",
+      "sha256": "1c1f0d15117e837a9b243a455931be18d0b335982094001de7da9ef358338a32"
+    },
+    {
+      "name": "phylib.stats.clusters",
+      "origin": "$ENV\\Lib\\site-packages\\phylib\\stats\\clusters.py",
+      "sha256": "9350004d25afc33b67ef653eae5fc66f654e205002f84545393b9fb74f8c23ab"
+    },
+    {
+      "name": "phylib.electrode",
+      "origin": "$ENV\\Lib\\site-packages\\phylib\\electrode\\__init__.py",
+      "sha256": "1e32b4119abf7f7e663b9c7078677f5d8939661422e8a1ee790f38a664affcba"
+    },
+    {
+      "name": "phylib.electrode.mea",
+      "origin": "$ENV\\Lib\\site-packages\\phylib\\electrode\\mea.py",
+      "sha256": "34c169e293d112a36a6e90e22a4a51934fa69fca090a285bc2f4440ac305293d"
+    }
+  ],
+  "origin_format": "Paths relative to the selected isolated environment, prefixed by $ENV.",
+  "package_tree_sha256": "3db4814e19aa3a6f9e477a7ae7a5472d1d86237b566088ecf521cbfb2e3c2a98",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "python": "3.12.8 (main, Dec 19 2024, 14:41:01) [MSC v.1942 64 bit (AMD64)]",
+  "qualification": "import_inventory_only",
+  "rendering_qualified": false,
+  "schema": 1
+}

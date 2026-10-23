@@ -1,0 +1,157 @@
+name: Linux software Vulkan wheel
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/linux-vulkan.yml'
+      - 'tools/audit_linux_wheel.py'
+      - 'tools/linux_wheel_smoke.py'
+      - 'tools/marker_wheel_smoke.py'
+      - 'tools/mesh_layout_process.py'
+      - 'CMakeLists.txt'
+      - 'cmake/**'
+      - 'cpp/**'
+      - 'src/**'
+      - 'third_party/**'
+      - 'pyproject.toml'
+      - 'uv.lock'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  software-vulkan:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    defaults:
+      run:
+        shell: bash
+    env:
+      EVIDENCE: build/linux-vulkan-evidence
+      NATIVE_BUILD: build/linux-vulkan-native
+      BUILD_ENV: build/linux-vulkan-env
+      CONSUMER_NAME: vispy-linux-vulkan-consumer-${{ github.run_id }}
+      UV_CACHE_NAME: vispy-linux-vulkan-cache-${{ github.run_id }}
+      UV_NO_CONFIG: '1'
+      PYTHONDONTWRITEBYTECODE: '1'
+      CMAKE_GENERATOR: Ninja
+      CMAKE_BUILD_PARALLEL_LEVEL: '3'
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+          submodules: false
+          sparse-checkout: .github
+      - name: Restore immutable vendor bytes
+        run: |
+          printf '%s\n' '* -text -eol -filter -ident' > .git/info/attributes
+          git config core.autocrlf false
+          git sparse-checkout disable
+      - uses: astral-sh/setup-uv@bec219d24cd3e171d82865faccec33120bb574f4 # v10.1.0
+        with:
+          version: '0.12.5'
+          enable-cache: false
+      - name: Prepare recorded software Vulkan and exact Python build tools
+        run: |
+          mkdir -p "$EVIDENCE"
+          sudo apt-get update
+          sudo apt-get install --no-install-recommends -y libx11-dev libx11-xcb-dev libvulkan1 mesa-vulkan-drivers ninja-build
+          dpkg-query -W libx11-dev libx11-xcb-dev libvulkan1 mesa-vulkan-drivers ninja-build > "$EVIDENCE/system-packages.txt"
+          python3 - <<'PY'
+          import hashlib, json, os, pathlib
+          candidates = sorted(pathlib.Path('/usr/share/vulkan/icd.d').glob('lvp_icd*.json'))
+          if len(candidates) != 1:
+              raise RuntimeError('Exactly one lavapipe software ICD is required')
+          path = candidates[0].resolve()
+          record = {'path': str(path), 'sha256': hashlib.sha256(path.read_bytes()).hexdigest(),
+                    'descriptor': json.loads(path.read_text()), 'scope': 'software Vulkan; no hardware admission'}
+          pathlib.Path(os.environ['EVIDENCE'], 'icd.json').write_text(json.dumps(record, indent=2))
+          with open(os.environ['GITHUB_ENV'], 'a') as env:
+              env.write('VK_DRIVER_FILES=' + str(path) + '\n')
+          PY
+          export UV_CACHE_DIR="$RUNNER_TEMP/$UV_CACHE_NAME"
+          echo "UV_CACHE_DIR=$UV_CACHE_DIR" >> "$GITHUB_ENV"
+          uv python install '3.12.8'
+          uv venv "$BUILD_ENV" --python '3.12.8' --managed-python
+          echo "BUILD_PYTHON=$GITHUB_WORKSPACE/$BUILD_ENV/bin/python" >> "$GITHUB_ENV"
+          echo "$GITHUB_WORKSPACE/$BUILD_ENV/bin" >> "$GITHUB_PATH"
+          uv export --locked --no-default-groups --group dev --group build --no-emit-project --output-file "$EVIDENCE/build-requirements.txt" > /dev/null
+          uv pip install --python "$BUILD_ENV" --require-hashes --only-binary :all: --requirements "$EVIDENCE/build-requirements.txt"
+          git rev-parse HEAD > "$EVIDENCE/source-revision.txt"
+          uv --version > "$EVIDENCE/uv-version.txt"
+          uname -a > "$EVIDENCE/kernel.txt"
+      - name: Build and audit actual Vulkan renderer wheel
+        run: |
+          "$BUILD_PYTHON" cmake/verify_dependencies.py
+          uv build --python "$BUILD_PYTHON" --no-build-isolation --wheel --out-dir "$EVIDENCE/wheels" \
+            --config-setting "build-dir=$NATIVE_BUILD" \
+            --config-setting cmake.define.VISPY_INPLACE=OFF \
+            --config-setting cmake.define.VISPY_CPU_CONTRACTS_ONLY=OFF \
+            --config-setting cmake.define.VISPY_BUILD_CONTRACT_TESTS=OFF \
+            --config-setting cmake.define.VISPY_VERIFY_DEPENDENCIES=ON \
+            2>&1 | tee "$EVIDENCE/wheel-build.log"
+          wheels=( "$EVIDENCE"/wheels/*.whl )
+          test "${#wheels[@]}" -eq 1
+          "$BUILD_PYTHON" -B tools/audit_linux_wheel.py --wheel "${wheels[0]}" \
+            --build-dir "$NATIVE_BUILD" --output "$EVIDENCE/archive.json"
+      - name: Exercise external installed wheel using software Vulkan
+        run: |
+          consumer="$RUNNER_TEMP/$CONSUMER_NAME"
+          uv venv "$consumer" --python "$BUILD_PYTHON"
+          uv export --locked --no-default-groups --no-emit-project --output-file "$EVIDENCE/runtime-requirements.txt" > /dev/null
+          uv pip install --python "$consumer/bin/python" --require-hashes --only-binary :all: \
+            --requirements "$EVIDENCE/runtime-requirements.txt" --requirements "$EVIDENCE/wheel-requirements.txt"
+          wheels=( "$EVIDENCE"/wheels/*.whl )
+          test "${#wheels[@]}" -eq 1
+          "$consumer/bin/python" -I -B tools/linux_wheel_smoke.py --tag cp312 \
+            --wheel "${wheels[0]}" --output "$EVIDENCE/rendering"
+          "$consumer/bin/python" -I -B tools/marker_wheel_smoke.py \
+            --wheel "${wheels[0]}" --output "$EVIDENCE/markers"
+      - name: Remove owned temporary environments, caches and objects
+        if: always()
+        run: |
+          python3 - <<'PY'
+          import json, os, pathlib, shutil
+          evidence = pathlib.Path(os.environ['EVIDENCE'])
+          evidence.mkdir(parents=True, exist_ok=True)
+          temporary = pathlib.Path(os.environ['RUNNER_TEMP']).resolve()
+          removed = []
+          for key in ('CONSUMER_NAME', 'UV_CACHE_NAME'):
+              path = temporary / os.environ[key]
+              if path.resolve() != path or path.parent != temporary or not path.name.startswith('vispy-linux-vulkan-'):
+                  raise RuntimeError('Unexpected owned temporary path')
+              if path.exists():
+                  shutil.rmtree(path)
+                  removed.append(str(path))
+          build = pathlib.Path(os.environ['NATIVE_BUILD']).resolve()
+          if build != pathlib.Path('build/linux-vulkan-native').resolve():
+              raise RuntimeError('Unexpected native build path')
+          objects = list(build.rglob('*.o')) if build.exists() else []
+          for path in objects:
+              if not path.resolve().is_relative_to(build) or path.is_symlink():
+                  raise RuntimeError('Unexpected object path')
+              path.unlink()
+          environment = pathlib.Path(os.environ['BUILD_ENV']).resolve()
+          if environment != pathlib.Path('build/linux-vulkan-env').resolve():
+              raise RuntimeError('Unexpected build environment path')
+          if environment.exists():
+              shutil.rmtree(environment)
+              removed.append(str(environment))
+          (evidence / 'cleanup.json').write_text(json.dumps({'objects_removed': len(objects), 'removed': removed}, indent=2))
+          PY
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        if: always()
+        with:
+          name: linux-software-vulkan-wheel-cp312
+          path: |
+            ${{ env.EVIDENCE }}
+            ${{ env.NATIVE_BUILD }}/CMakeCache.txt
+            ${{ env.NATIVE_BUILD }}/_dawn*.so
+            ${{ env.NATIVE_BUILD }}/_sdf_cpu*.so
+            ${{ env.NATIVE_BUILD }}/VkLayer_vispy_submit.so
+          if-no-files-found: error

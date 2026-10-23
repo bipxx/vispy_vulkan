@@ -35,6 +35,13 @@ struct FakeSurfaceOwner {
     ~FakeSurfaceOwner() { ++probe.wrappers; if (owns_display) ++probe.closes; probe.closed_early |= !probe.drained; }
 };
 void retirement_contract() {
+    require(native_surface_requires_retirement_drain(NativeSurfaceKind::Win32),
+            "Win32 close returned without deferred Surface retirement policy");
+    require(native_surface_requires_retirement_drain(NativeSurfaceKind::Xlib),
+            "Xlib deferred Surface retirement policy removed");
+    require(!native_surface_requires_retirement_drain(NativeSurfaceKind::Metal),
+            "Metal weak-view policy changed without its own qualification");
+
     // Actual production template: the old completed serial is insufficient;
     // releasing the last Surface enqueues destruction at the next serial.
     RetirementProbe probe;

@@ -134,6 +134,14 @@ jobs:
           fi
           "$CI_PYTHON" .github/workflows/qualification_gate.py pytest --output "$EVIDENCE/pytest.json" -- -q "${suites[@]}" -m gpu --junitxml="$EVIDENCE/pytest.xml"
           "$CI_PYTHON" .github/workflows/qualification_gate.py pytest --output "$EVIDENCE/wheel-consumer.json" -- -q tests/contract/test_installation.py -m wheel --junitxml="$EVIDENCE/wheel-consumer.xml"
+      - name: Prepare the admitted Glue original and candidate wheel pair
+        if: inputs.mode == 'host' && inputs.host == 'glue_vispy_viewers'
+        run: |
+          "$CI_PYTHON" tools/prepare_glue_host_cell.py --admission "$EVIDENCE/host-admission.json" --evidence "$EVIDENCE/glue-host" --github-env "$GITHUB_ENV"
+      - name: Prepare the admitted plugin original and candidate wheel pair
+        if: inputs.mode == 'host' && inputs.host == 'napari_threedee'
+        run: |
+          "$CI_PYTHON" tools/prepare_napari_plugin_host_cell.py --admission "$EVIDENCE/host-admission.json" --evidence "$EVIDENCE/napari-plugin-host" --github-env "$GITHUB_ENV"
       - name: Run every admitted host fixture; missing fixtures fail
         if: inputs.mode == 'host'
         run: |

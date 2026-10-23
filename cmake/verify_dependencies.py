@@ -8,16 +8,61 @@ and build products are excluded explicitly in the lock, never by Git state.
 from __future__ import annotations
 
 import argparse
+from datetime import datetime
 import hashlib
 import importlib.util
 from concurrent.futures import ThreadPoolExecutor
 import json
 from pathlib import Path
+import re
 import sys
 
 
 ROOT = Path(__file__).resolve().parents[1]
 LOCK = ROOT / "cmake" / "dependencies.lock.json"
+
+VISPY_ARCHIVE_METADATA = (
+    b"node: $Format:%H$\r\n"
+    b"node-date: $Format:%cI$\r\n"
+    b"describe-name: $Format:%(describe:tags=true,match=*[0-9]*)$\r\n"
+    b"ref-names: $Format:%D$"
+)
+
+
+def restore_archive_metadata(root: Path) -> bool:
+    """Restore Git export-subst metadata to its pinned bytes in source archives.
+
+    Checkouts and unrecognized edits remain untouched. The normal byte-for-byte
+    dependency verification still runs after restoration, with the same lock.
+    """
+    if (root / ".git").exists():
+        return False
+    path = root / "third_party/parity/vispy/.git_archival.txt"
+    if not path.is_file():
+        return False
+    data = path.read_bytes()
+    if data == VISPY_ARCHIVE_METADATA:
+        return False
+    try:
+        text = data.decode("utf-8")
+    except UnicodeDecodeError:
+        return False
+    lines = text.split("\r\n")
+    if any("\r" in line or "\n" in line for line in lines):
+        return False
+    if (len(lines) != 4 or not re.fullmatch(r"node: [0-9a-f]{40}", lines[0]) or
+            not lines[1].startswith("node-date: ") or
+            not lines[2].startswith("describe-name: ") or
+            not lines[3].startswith("ref-names: ")):
+        return False
+    try:
+        stamp = datetime.fromisoformat(lines[1][len("node-date: "):].replace("Z", "+00:00"))
+    except ValueError:
+        return False
+    if stamp.tzinfo is None:
+        return False
+    path.write_bytes(VISPY_ARCHIVE_METADATA)
+    return True
 
 
 def source_digest(path: Path, exclusions: list[str]) -> tuple[str, int]:
@@ -95,15 +140,21 @@ def main():
         parser.add_argument("--origin-" + name)
     parser.add_argument("--origin-preflight-only", action="store_true")
     parser.add_argument("--dependency-lock", type=Path)
+    parser.add_argument("--restore-archive-metadata", action="store_true",
+                        help="Restore recognized Git export-subst metadata in archives before checking the unchanged pins")
     args = parser.parse_args()
     values = [getattr(args, "origin_" + name.replace("-", "_")) for name in names]
     if any(value is not None for value in values) or args.origin_preflight_only:
+        if args.restore_archive_metadata:
+            parser.error("Archive metadata restoration cannot be used with explicit immutable origins")
         if not all(type(value) is str and value for value in values) or args.dependency_lock is None:
             parser.error("Explicit origin mode requires every origin argument and its bound dependency lock")
         verify_origins(args)
     else:
         if args.dependency_lock is not None:
             parser.error("A separate dependency lock requires explicit origin authority")
+        if args.restore_archive_metadata and restore_archive_metadata(ROOT):
+            print("Restored vendored VisPy archive metadata to its pinned placeholders")
         verify()
 
 

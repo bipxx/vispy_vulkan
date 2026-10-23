@@ -1,0 +1,40 @@
+{
+  "files": {
+    "asciitree-0.3.3-py3-none-any.whl": "d3c865c2cea5e56b52c090526c3ea87287356eaa7f8f4d78d4a872ca1c4cef10",
+    "asciitree-0.3.3.tar.gz": "4aa4b9b649f85e3fcb343363d97564aa1fb62e249677f2e18a96765145cc0f6e",
+    "asciitree-LICENSE.txt": "184d1ebb65da97ada36447f3c028f2fd4890b874f17b18c023ce200dd96639af",
+    "asciitree-build-source.txt": "9b7e010ba61df3076a5d7e44ad2ec0724898dc5f8fdc3a4bb97c309ab34f9024",
+    "asciitree-build.json": "0bc6baf52513bd45988d93b0bf6a5cb62ae49e4107aebfc98b43b92c894e440e",
+    "napari-threedee-LICENSE.txt": "c6598a9a636c754eb36712efb26aa997ea2c28cc31a6a524e3acb206d8913b6c",
+    "napari_threedee-0.0.29-py3-none-any.whl": "de115619e84a7967b0386651163c29ec12228d59e58000736067f066237ce91e"
+  },
+  "licenses": "Unchanged upstream notices inside wheels and attached as plain text; root implementation AGPL does not replace them",
+  "observed_saved_inspection_sha256": "c2badba32da687f0acc19e49f6b4e53cc4a01a774b8a0eee8f4681f5645fd5e9",
+  "observed_source_authoring_sha256": "0708ed44804dd34371409fd540c317373a38414face50fc5bd6d5540f52c9a32",
+  "release_qualified": false,
+  "rendering_qualified": false,
+  "schema": 1,
+  "scope": "Exact third-party test inputs from completed frozen plugin study; no renderer or release qualification",
+  "source_inputs": {
+    "asciitree-0.3.3-py3-none-any.whl": {
+      "path": "build/napari-plugin-asciitree-wheel-root-1/wheels/asciitree-0.3.3-py3-none-any.whl",
+      "sha256": "d3c865c2cea5e56b52c090526c3ea87287356eaa7f8f4d78d4a872ca1c4cef10"
+    },
+    "asciitree-0.3.3.tar.gz": {
+      "path": "build/napari-plugin-asciitree-wheel-root-1/asciitree-0.3.3.tar.gz",
+      "sha256": "4aa4b9b649f85e3fcb343363d97564aa1fb62e249677f2e18a96765145cc0f6e"
+    },
+    "asciitree-build-source.txt": {
+      "path": "build/napari-plugin-wheel-prep-root-1/build_asciitree1.py",
+      "sha256": "9b7e010ba61df3076a5d7e44ad2ec0724898dc5f8fdc3a4bb97c309ab34f9024"
+    },
+    "asciitree-build.json": {
+      "path": "build/napari-plugin-asciitree-wheel-root-1/result.json",
+      "sha256": "0bc6baf52513bd45988d93b0bf6a5cb62ae49e4107aebfc98b43b92c894e440e"
+    },
+    "napari_threedee-0.0.29-py3-none-any.whl": {
+      "path": "build/host-wheels/napari-threedee-v0.0.29-qualification-1/napari_threedee-0.0.29-py3-none-any.whl",
+      "sha256": "de115619e84a7967b0386651163c29ec12228d59e58000736067f066237ce91e"
+    }
+  }
+}

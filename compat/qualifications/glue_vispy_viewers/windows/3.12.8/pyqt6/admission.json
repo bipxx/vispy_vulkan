@@ -1,0 +1,37 @@
+{
+  "candidate_qualified": false,
+  "cell": {
+    "binding": "pyqt6",
+    "platform": "windows",
+    "python": "3.12.8"
+  },
+  "fixture_files": [
+    "tests/hosts/test_glue_wheel_parity.py"
+  ],
+  "fixture_sources_sha256": {
+    "tests/hosts/test_glue_wheel_parity.py": "1601dfe8410f5085154d6f15e5f2df5924663547fe4a1b503c5d87ab637b5883"
+  },
+  "host": "glue_vispy_viewers",
+  "reference_manifest": "tests/reference/glue-cache-update-opengl/manifest.json",
+  "reference_manifest_sha256": "f94a245c2f4607b2ad6b2c9962363ee4793174e95173472a8b0eb9e99e0c2405",
+  "release_qualified": false,
+  "rendering": true,
+  "requirements_file": "tools/oracle_glue_requirements.txt",
+  "requirements_sha256": "6dbfd71fd13b1a76dd33012027355cd482984b416f07b1b405a1fa4e3b7467ff",
+  "schema": 1,
+  "scope": "Upstream fixture/environment admission only; every candidate case remains mandatory",
+  "upstream_cases": [
+    "scatter",
+    "scatter_edit",
+    "scatter_axes",
+    "volume",
+    "volume_edit"
+  ],
+  "upstream_fixture_status": "passed",
+  "upstream_vispy_version": "0.17.0",
+  "upstream_wheel": {
+    "filename": "vispy-0.17.0-cp312-cp312-win_amd64.whl",
+    "sha256": "c4862155e735009b1af6aeda45ea94a72e1a375d6086c89273455d66238bb18e",
+    "url": "https://files.pythonhosted.org/packages/73/e7/4e79b8c7da4eebea966be0d79e42b12fd0651252c4bb383a74f5b25c4534/vispy-0.17.0-cp312-cp312-win_amd64.whl"
+  }
+}

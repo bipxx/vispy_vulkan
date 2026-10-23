@@ -1,0 +1,1353 @@
+{
+  "declared_dependencies": [
+    "pandas",
+    "vispy"
+  ],
+  "dynamic_imports": [
+    {
+      "call": "importlib.import_module('{}.QtCore'.format(qt))",
+      "file": "DIVE/_components/dive_manager.py",
+      "line": 15,
+      "scope": ""
+    },
+    {
+      "call": "importlib.import_module('{}.QtGui'.format(qt))",
+      "file": "DIVE/_components/dive_manager.py",
+      "line": 16,
+      "scope": ""
+    },
+    {
+      "call": "importlib.import_module('{}.QtWidgets'.format(qt))",
+      "file": "DIVE/_components/dive_manager.py",
+      "line": 17,
+      "scope": ""
+    },
+    {
+      "call": "importlib.import_module('{}.QtWidgets'.format(qt))",
+      "file": "DIVE/_gui/configure_widgets.py",
+      "line": 8,
+      "scope": ""
+    },
+    {
+      "call": "importlib.import_module('{}.QtCore'.format(qt))",
+      "file": "DIVE/_gui/custom_qt.py",
+      "line": 10,
+      "scope": ""
+    },
+    {
+      "call": "importlib.import_module('{}.QtGui'.format(qt))",
+      "file": "DIVE/_gui/custom_qt.py",
+      "line": 11,
+      "scope": ""
+    },
+    {
+      "call": "importlib.import_module('{}.QtWidgets'.format(qt))",
+      "file": "DIVE/_gui/custom_qt.py",
+      "line": 12,
+      "scope": ""
+    },
+    {
+      "call": "importlib.import_module('{}.QtCore'.format(qt))",
+      "file": "DIVE/_gui/dialogs.py",
+      "line": 11,
+      "scope": ""
+    },
+    {
+      "call": "importlib.import_module('{}.QtWidgets'.format(qt))",
+      "file": "DIVE/_gui/dialogs.py",
+      "line": 12,
+      "scope": ""
+    },
+    {
+      "call": "_importlib.import_module('{}.QtCore'.format(qt))",
+      "file": "DIVE/_widget.py",
+      "line": 6,
+      "scope": ""
+    },
+    {
+      "call": "_importlib.import_module('{}.QtWidgets'.format(qt))",
+      "file": "DIVE/_widget.py",
+      "line": 7,
+      "scope": ""
+    }
+  ],
+  "host": "dive",
+  "imports": [
+    {
+      "file": "DIVE/__init__.py",
+      "level": 1,
+      "line": 1,
+      "module": "_widget",
+      "names": [
+        "DIVEWidget"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_components/dive_axis.py",
+      "level": 2,
+      "line": 1,
+      "module": "_plotting",
+      "names": [
+        "artists"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_components/dive_axis.py",
+      "level": 2,
+      "line": 2,
+      "module": "_utilities",
+      "names": [
+        "helper_functions",
+        "validators"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_components/dive_axis.py",
+      "level": 0,
+      "line": 3,
+      "module": "copy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_components/dive_axis.py",
+      "level": 0,
+      "line": 4,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_components/dive_axis_group.py",
+      "level": 0,
+      "line": 1,
+      "module": "copy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_components/dive_axis_group.py",
+      "level": 0,
+      "line": 2,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_components/dive_axis_group.py",
+      "level": 0,
+      "line": 3,
+      "module": "pandas",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_components/dive_data.py",
+      "level": 2,
+      "line": 1,
+      "module": "_utilities",
+      "names": [
+        "helper_functions"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_components/dive_data.py",
+      "level": 0,
+      "line": 2,
+      "module": "copy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_components/dive_data.py",
+      "level": 0,
+      "line": 3,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_components/dive_data.py",
+      "level": 0,
+      "line": 4,
+      "module": "pandas",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_components/dive_filters.py",
+      "level": 2,
+      "line": 1,
+      "module": "_utilities",
+      "names": [
+        "helper_functions"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_components/dive_filters.py",
+      "level": 0,
+      "line": 2,
+      "module": "copy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_components/dive_filters.py",
+      "level": 0,
+      "line": 3,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_components/dive_filters.py",
+      "level": 0,
+      "line": 4,
+      "module": "pandas",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_components/dive_manager.py",
+      "level": 1,
+      "line": 1,
+      "module": "",
+      "names": [
+        "dive_axis",
+        "dive_axis_group",
+        "dive_data",
+        "dive_filters",
+        "dive_table_row"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_components/dive_manager.py",
+      "level": 2,
+      "line": 2,
+      "module": "_gui",
+      "names": [
+        "custom_qt",
+        "dialogs"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_components/dive_manager.py",
+      "level": 2,
+      "line": 3,
+      "module": "_plotting",
+      "names": [
+        "custom_vispy"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_components/dive_manager.py",
+      "level": 2,
+      "line": 4,
+      "module": "_utilities",
+      "names": [
+        "helper_functions"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_components/dive_manager.py",
+      "level": 0,
+      "line": 5,
+      "module": "importlib",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_components/dive_manager.py",
+      "level": 0,
+      "line": 6,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_components/dive_manager.py",
+      "level": 0,
+      "line": 7,
+      "module": "pandas",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_components/dive_manager.py",
+      "level": 0,
+      "line": 8,
+      "module": "pathlib",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_components/dive_manager.py",
+      "level": 0,
+      "line": 9,
+      "module": "pytz",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_components/dive_manager.py",
+      "level": 0,
+      "line": 10,
+      "module": "vispy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_components/dive_manager.py",
+      "level": 0,
+      "line": 11,
+      "module": "vispy.app",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_components/dive_manager.py",
+      "level": 0,
+      "line": 12,
+      "module": "vispy.color",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_components/dive_manager.py",
+      "level": 0,
+      "line": 22,
+      "module": "cv2",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_components/dive_manager.py",
+      "level": 0,
+      "line": 26,
+      "module": "pint",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_components/dive_manager.py",
+      "level": 0,
+      "line": 30,
+      "module": "qdarkstyle",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_components/dive_table_row.py",
+      "level": 2,
+      "line": 1,
+      "module": "_utilities",
+      "names": [
+        "helper_functions"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_components/dive_table_row.py",
+      "level": 0,
+      "line": 2,
+      "module": "copy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_components/dive_table_row.py",
+      "level": 0,
+      "line": 3,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_components/dive_table_row.py",
+      "level": 0,
+      "line": 4,
+      "module": "pandas",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_components/dive_table_row.py",
+      "level": 0,
+      "line": 5,
+      "module": "vispy.color",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_gui/configure_widgets.py",
+      "level": 1,
+      "line": 1,
+      "module": "",
+      "names": [
+        "custom_qt"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_gui/configure_widgets.py",
+      "level": 0,
+      "line": 2,
+      "module": "importlib",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_gui/configure_widgets.py",
+      "level": 0,
+      "line": 3,
+      "module": "vispy.app",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_gui/configure_widgets.py",
+      "level": 0,
+      "line": 4,
+      "module": "vispy.io",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_gui/configure_widgets.py",
+      "level": 0,
+      "line": 5,
+      "module": "vispy.visuals",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_gui/custom_qt.py",
+      "level": 2,
+      "line": 1,
+      "module": "_utilities",
+      "names": [
+        "helper_functions"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_gui/custom_qt.py",
+      "level": 0,
+      "line": 2,
+      "module": "importlib",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_gui/custom_qt.py",
+      "level": 0,
+      "line": 3,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_gui/custom_qt.py",
+      "level": 0,
+      "line": 4,
+      "module": "pandas",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_gui/custom_qt.py",
+      "level": 0,
+      "line": 5,
+      "module": "re",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_gui/custom_qt.py",
+      "level": 0,
+      "line": 6,
+      "module": "vispy.app",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_gui/custom_qt.py",
+      "level": 0,
+      "line": 7,
+      "module": "vispy.color",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_gui/custom_qt.py",
+      "level": 0,
+      "line": 17,
+      "module": "matplotlib.pyplot",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_gui/dialogs.py",
+      "level": 1,
+      "line": 1,
+      "module": "",
+      "names": [
+        "configure_widgets",
+        "custom_qt"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_gui/dialogs.py",
+      "level": 2,
+      "line": 2,
+      "module": "_components",
+      "names": [
+        "dive_axis",
+        "dive_axis_group",
+        "dive_filters",
+        "dive_table_row"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_gui/dialogs.py",
+      "level": 2,
+      "line": 3,
+      "module": "_utilities",
+      "names": [
+        "helper_functions"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_gui/dialogs.py",
+      "level": 0,
+      "line": 4,
+      "module": "importlib",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_gui/dialogs.py",
+      "level": 0,
+      "line": 5,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_gui/dialogs.py",
+      "level": 0,
+      "line": 6,
+      "module": "pandas",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_gui/dialogs.py",
+      "level": 0,
+      "line": 7,
+      "module": "pytz",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_gui/dialogs.py",
+      "level": 0,
+      "line": 8,
+      "module": "vispy.app",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_plotting/artists.py",
+      "level": 2,
+      "line": 1,
+      "module": "_utilities",
+      "names": [
+        "validators"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_plotting/artists.py",
+      "level": 0,
+      "line": 2,
+      "module": "copy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_plotting/artists.py",
+      "level": 0,
+      "line": 3,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_plotting/artists.py",
+      "level": 0,
+      "line": 4,
+      "module": "pandas",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_plotting/artists.py",
+      "level": 0,
+      "line": 5,
+      "module": "vispy.color",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_plotting/artists.py",
+      "level": 0,
+      "line": 6,
+      "module": "vispy.geometry",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_plotting/artists.py",
+      "level": 0,
+      "line": 7,
+      "module": "vispy.io",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_plotting/artists.py",
+      "level": 0,
+      "line": 8,
+      "module": "vispy.scene",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_plotting/artists.py",
+      "level": 0,
+      "line": 9,
+      "module": "vispy.visuals",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_plotting/axis_instance.py",
+      "level": 1,
+      "line": 1,
+      "module": "",
+      "names": [
+        "custom_vispy"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_plotting/axis_instance.py",
+      "level": 2,
+      "line": 2,
+      "module": "_utilities",
+      "names": [
+        "helper_functions"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_plotting/axis_instance.py",
+      "level": 0,
+      "line": 3,
+      "module": "dateutil",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_plotting/axis_instance.py",
+      "level": 0,
+      "line": 4,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_plotting/axis_instance.py",
+      "level": 0,
+      "line": 5,
+      "module": "pandas",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_plotting/axis_instance.py",
+      "level": 0,
+      "line": 6,
+      "module": "vispy.scene",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_plotting/custom_vispy.py",
+      "level": 1,
+      "line": 1,
+      "module": "",
+      "names": [
+        "axis_instance"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_plotting/custom_vispy.py",
+      "level": 2,
+      "line": 2,
+      "module": "_utilities",
+      "names": [
+        "helper_functions"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_plotting/custom_vispy.py",
+      "level": 0,
+      "line": 3,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_plotting/custom_vispy.py",
+      "level": 0,
+      "line": 4,
+      "module": "vispy.scene",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_plotting/custom_vispy.py",
+      "level": 0,
+      "line": 5,
+      "module": "vispy.util",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_utilities/helper_functions.py",
+      "level": 0,
+      "line": 1,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_utilities/helper_functions.py",
+      "level": 0,
+      "line": 2,
+      "module": "pandas",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_utilities/helper_functions.py",
+      "level": 0,
+      "line": 3,
+      "module": "re",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_utilities/helper_functions.py",
+      "level": 0,
+      "line": 4,
+      "module": "traceback",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_utilities/validators.py",
+      "level": 0,
+      "line": 1,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_utilities/validators.py",
+      "level": 0,
+      "line": 2,
+      "module": "pandas",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_utilities/validators.py",
+      "level": 0,
+      "line": 3,
+      "module": "vispy.color",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_widget.py",
+      "level": 1,
+      "line": 1,
+      "module": "_components.dive_manager",
+      "names": [
+        "DIVEManager"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_widget.py",
+      "level": 0,
+      "line": 2,
+      "module": "importlib",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_widget.py",
+      "level": 0,
+      "line": 3,
+      "module": "vispy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "dive_example.py",
+      "level": 0,
+      "line": 1,
+      "module": "DIVE",
+      "names": [
+        "DIVEWidget"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "dive_example.py",
+      "level": 0,
+      "line": 2,
+      "module": "PyQt5.QtWidgets",
+      "names": [
+        "QApplication"
+      ],
+      "scope": ""
+    },
+    {
+      "file": "dive_example.py",
+      "level": 0,
+      "line": 3,
+      "module": "numpy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "dive_example.py",
+      "level": 0,
+      "line": 4,
+      "module": "pandas",
+      "names": [],
+      "scope": ""
+    }
+  ],
+  "inventory_tool_sha256": "7dee7e661d7b9d66dffd34fecfdf7ddf044b94f38b5adbebfd3eeed916e87058",
+  "parse_diagnostics": [
+    {
+      "category": "SyntaxWarning",
+      "file": "DIVE/_utilities/helper_functions.py",
+      "line": 55,
+      "message": "invalid escape sequence '\\d'"
+    }
+  ],
+  "pin": "aa575e1c020f0c5e8227bfb234fa192fa2b12924",
+  "qt_imports": [
+    {
+      "file": "dive_example.py",
+      "level": 0,
+      "line": 2,
+      "module": "PyQt5.QtWidgets",
+      "names": [
+        "QApplication"
+      ],
+      "scope": ""
+    }
+  ],
+  "qualification": "source_inventory_only",
+  "schema": 1,
+  "source": {
+    "algorithm": "sorted-relative-path-nul-file-bytes-sha256",
+    "files": [
+      {
+        "path": "DIVE/__init__.py",
+        "sha256": "f63a96f83fb4ca608d5b5cf93c2cff94cc348e2b38d680505d2c9dc37b70dde3",
+        "size": 31
+      },
+      {
+        "path": "DIVE/_components/__init__.py",
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+        "size": 1
+      },
+      {
+        "path": "DIVE/_components/dive_axis.py",
+        "sha256": "79f20434a9ca07b996b8ee22643e1b416a7e6e05eb17ef0837f3b1a247aaa5ac",
+        "size": 5553
+      },
+      {
+        "path": "DIVE/_components/dive_axis_group.py",
+        "sha256": "4d886ae7e8163981a8400a45c156a9d0b0d64757405c9aed99ed141cd3b8b9aa",
+        "size": 4314
+      },
+      {
+        "path": "DIVE/_components/dive_data.py",
+        "sha256": "efa0815b9239e26a6d7f35000e6edba0e57bfd0a3e8289ad5570ea07c5152110",
+        "size": 8308
+      },
+      {
+        "path": "DIVE/_components/dive_filters.py",
+        "sha256": "e7007c1b864f07f452a4d358ca89181f57f7912e39085957e4ea52b90748fc2b",
+        "size": 25195
+      },
+      {
+        "path": "DIVE/_components/dive_manager.py",
+        "sha256": "b3ac51b6ad0adcb21a37768c6089e33ad5312a72771a797492e118967609f346",
+        "size": 75657
+      },
+      {
+        "path": "DIVE/_components/dive_table_row.py",
+        "sha256": "2bada262153502370881922e620e5890869ed6941aa2f2595bb9a6a129377187",
+        "size": 10349
+      },
+      {
+        "path": "DIVE/_gui/__init__.py",
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+        "size": 1
+      },
+      {
+        "path": "DIVE/_gui/configure_widgets.py",
+        "sha256": "6b2b14eab38c8897467698546d75480570368a49e7d6cbd0154afaf98be61b08",
+        "size": 67571
+      },
+      {
+        "path": "DIVE/_gui/custom_qt.py",
+        "sha256": "1fe7dd6c0f3306116c284eef3228d156d8902a6c5619bae4a69424f769ce13ff",
+        "size": 27901
+      },
+      {
+        "path": "DIVE/_gui/dialogs.py",
+        "sha256": "c85af5f47f36c78b06b736913b816a33ea62e3f4c0a56f4cd60eec4c285c336a",
+        "size": 83745
+      },
+      {
+        "path": "DIVE/_plotting/__init__.py",
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+        "size": 1
+      },
+      {
+        "path": "DIVE/_plotting/artists.py",
+        "sha256": "7b596c9980a15e971c4f437f5f850f48e7922f1b62b2b5ac6b400539c2048bd9",
+        "size": 109820
+      },
+      {
+        "path": "DIVE/_plotting/axis_instance.py",
+        "sha256": "91a62a693b6ea888fb45b36c63fbb779bf2f8766d2e864acfa9992a8b65846ca",
+        "size": 45973
+      },
+      {
+        "path": "DIVE/_plotting/custom_vispy.py",
+        "sha256": "92be526e65dd71105d4dced48d5bcbaa6963daa6e75529202451cb9090778f90",
+        "size": 25605
+      },
+      {
+        "path": "DIVE/_resources/__init__.py",
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+        "size": 1
+      },
+      {
+        "path": "DIVE/_resources/autoscale_dark.svg",
+        "sha256": "9034cbf2ce8d24fa4afdec4b820b1c2166f8c6de903f9911c03ee29b17bcbe7a",
+        "size": 406
+      },
+      {
+        "path": "DIVE/_resources/autoscale_light.svg",
+        "sha256": "c60740aa3098aa2e665567cef30356c3a700652a98fe1f6fe9779b9beb873a2f",
+        "size": 393
+      },
+      {
+        "path": "DIVE/_resources/axis_dark.svg",
+        "sha256": "e45c8db0fbc00743d809da9887fe8bca5f937fffff035b3d96567fb99d5c8fb3",
+        "size": 427
+      },
+      {
+        "path": "DIVE/_resources/axis_light.svg",
+        "sha256": "0046934639101021aec19e55aaef0e792c41a23ef41cadb61a8d169b9bece4ab",
+        "size": 375
+      },
+      {
+        "path": "DIVE/_resources/backward_dark.svg",
+        "sha256": "112ea0e47356eec7732c5414b1be3d3694cb6aff78263dc5b640cae4ed5c0a9d",
+        "size": 161
+      },
+      {
+        "path": "DIVE/_resources/backward_light.svg",
+        "sha256": "170ef966bd848d400ec04ad993ea9924728be6b9f5122fd2d575356129e1b3ef",
+        "size": 135
+      },
+      {
+        "path": "DIVE/_resources/configure_dark.svg",
+        "sha256": "425719359dde4e2bef8707f3d4151d6976b493ad279d42fac3de89e23998f4f7",
+        "size": 242
+      },
+      {
+        "path": "DIVE/_resources/configure_light.svg",
+        "sha256": "3722bb26d202005d1ea03042ffb0d17939ecb1ea619109989e44759d84241e58",
+        "size": 242
+      },
+      {
+        "path": "DIVE/_resources/data_inspect_dark.svg",
+        "sha256": "2d4ea82c35fdc2587fcf978de5cdac2e6cd3e76924ec60fd89e0af64b9cdbcbe",
+        "size": 612
+      },
+      {
+        "path": "DIVE/_resources/data_inspect_light.svg",
+        "sha256": "3076bcc62bc8a11c01f54138cdc40fc33e4869da6aa0d11999ff619762951eac",
+        "size": 612
+      },
+      {
+        "path": "DIVE/_resources/ellipse_select_dark.svg",
+        "sha256": "68cd5da2f87325a2cde29209dc76369fabf330c2dbf4990fc9a7769c6387b6cb",
+        "size": 125
+      },
+      {
+        "path": "DIVE/_resources/ellipse_select_light.svg",
+        "sha256": "918f727e8455cc3503d084a2d5411496216217cac2ee3819f5f69c730e09ef1a",
+        "size": 125
+      },
+      {
+        "path": "DIVE/_resources/filter_dark.svg",
+        "sha256": "dd29399d46460e07b189ba61d8d9b778dc930a789a9ec9fdf76888b1b97c36da",
+        "size": 127
+      },
+      {
+        "path": "DIVE/_resources/filter_light.svg",
+        "sha256": "8ae6dae238815de0f079de9d7c66e915a70285bd42cb7e3b91358f4e61213954",
+        "size": 127
+      },
+      {
+        "path": "DIVE/_resources/forward_dark.svg",
+        "sha256": "83c15cdbe62cc51fd45b21539d0098241ddb4e5630dad6f752edb7c69012315d",
+        "size": 160
+      },
+      {
+        "path": "DIVE/_resources/forward_light.svg",
+        "sha256": "25efe4a8818cfd25346cac8750fd19bab54f5d58fdc945b89b2f2d595d24bccb",
+        "size": 134
+      },
+      {
+        "path": "DIVE/_resources/lasso_select_dark.svg",
+        "sha256": "9db5b02738f721b2e8095861164ca03c1aec8c04437ff265da4b555a47f69042",
+        "size": 276
+      },
+      {
+        "path": "DIVE/_resources/lasso_select_light.svg",
+        "sha256": "12e0955f42119a31cc8e006b10a1a2ba4f5c30ff9cdd065cb60be2ea5d7b7e2c",
+        "size": 276
+      },
+      {
+        "path": "DIVE/_resources/pan_dark.svg",
+        "sha256": "ee932853789359992393c2974a4b5a32f5609d05017221dac9f4bc39ab8c5a58",
+        "size": 213
+      },
+      {
+        "path": "DIVE/_resources/pan_light.svg",
+        "sha256": "fc70d419be608090638ecaf38a9082c5999229f9797c1cb929778b6473052af6",
+        "size": 200
+      },
+      {
+        "path": "DIVE/_resources/pause_dark.svg",
+        "sha256": "fd9a04b00002edb382601b04ff2f2f21cc9e68420d245d17d3a06157708a3bf1",
+        "size": 169
+      },
+      {
+        "path": "DIVE/_resources/pause_light.svg",
+        "sha256": "532acba35f7551fea89f39f2bf167784f747eba4d0a234cf3d781d5ce824df39",
+        "size": 143
+      },
+      {
+        "path": "DIVE/_resources/play_dark.svg",
+        "sha256": "2e9cebc266a0d5244957c87eb7ccf12c83ba888ecd89c0d71b9df66b6254917a",
+        "size": 98
+      },
+      {
+        "path": "DIVE/_resources/play_light.svg",
+        "sha256": "abed3f2fc7608326ce4938a362399378adfd1cb66eb291a45f6c30b9367575a0",
+        "size": 85
+      },
+      {
+        "path": "DIVE/_resources/record_dark.svg",
+        "sha256": "6f38ef01436b3931babef50d4bc9ee16e37c307fa9f4d8e7f3a7017bdd028ec6",
+        "size": 170
+      },
+      {
+        "path": "DIVE/_resources/record_light.svg",
+        "sha256": "f2c4d3befcdab65004ef895e7a46c5ccf00aa4dded4fc2aef54fff67783d3b76",
+        "size": 144
+      },
+      {
+        "path": "DIVE/_resources/rect_select_dark.svg",
+        "sha256": "8a82ab81c23004ea4c7f0812f9e0a32d97914a21eae9d8832afaf1ef9b4ce546",
+        "size": 136
+      },
+      {
+        "path": "DIVE/_resources/rect_select_light.svg",
+        "sha256": "daa8c067cf1a57e0f940bafbffc7b82f6f384d73f511b2acf62fc52f47f3dca7",
+        "size": 136
+      },
+      {
+        "path": "DIVE/_resources/reset_dark.svg",
+        "sha256": "352ff8545d6d14eb57932141f21ccb12296f5f1c363fba52a97c3181c15b2b80",
+        "size": 239
+      },
+      {
+        "path": "DIVE/_resources/reset_light.svg",
+        "sha256": "0b411f04152862c2e8fed4bdde889fec98a973f6025a6777dd0767b33c4d6db6",
+        "size": 239
+      },
+      {
+        "path": "DIVE/_resources/screenshot_dark.svg",
+        "sha256": "72bcd4cf8f1d20ddf04ccbd03faa48614ec91051524ce6b47db325d0497f6d91",
+        "size": 261
+      },
+      {
+        "path": "DIVE/_resources/screenshot_light.svg",
+        "sha256": "36c71fdb38b8e66503856efac654f628336be52f4a18bb36575d29ada271f772",
+        "size": 222
+      },
+      {
+        "path": "DIVE/_resources/settings_dark.svg",
+        "sha256": "5e219e7dc137fe08448c4efc2462237b55443b03abf2caf1af20fe2d71f9da68",
+        "size": 886
+      },
+      {
+        "path": "DIVE/_resources/settings_light.svg",
+        "sha256": "b3eb617774661ecd5fd65596c119360c7ff2feddd4d785adc78eb867861a2c1e",
+        "size": 782
+      },
+      {
+        "path": "DIVE/_resources/zoom_dark.svg",
+        "sha256": "b6fd50361f1adb9647d8127923b38432b62d09d5af6098ed0e219d6812b60b27",
+        "size": 296
+      },
+      {
+        "path": "DIVE/_resources/zoom_light.svg",
+        "sha256": "f415b4619c653b2063035eb4500590f41119b5afe9dbeae4d98695496d294904",
+        "size": 257
+      },
+      {
+        "path": "DIVE/_utilities/__init__.py",
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+        "size": 1
+      },
+      {
+        "path": "DIVE/_utilities/helper_functions.py",
+        "sha256": "a8a76a33a6aef160bea486d42b66f99c5c4707714becfbbfed277016155bfc52",
+        "size": 5128
+      },
+      {
+        "path": "DIVE/_utilities/validators.py",
+        "sha256": "232c7edcfdc17eafa6d99cbbbb33a086865d19f8997dc50c39a9d45040136479",
+        "size": 2930
+      },
+      {
+        "path": "DIVE/_widget.py",
+        "sha256": "99327bb594a0729f3f12f984618d2fa79c39c763f8405c7d110ae67ee112e34e",
+        "size": 88790
+      },
+      {
+        "path": "LICENSE.txt",
+        "sha256": "9716ab3bc2755e56636eff5caa7903a485d28cd3c40dc09c0e9db66843cad178",
+        "size": 1529
+      },
+      {
+        "path": "README.md",
+        "sha256": "3853e087d6294616a19398c96364011145b3abf937ff91da701e7c2693bcbaed",
+        "size": 1773
+      },
+      {
+        "path": "dive_example.py",
+        "sha256": "0d521b2768e7fef01e0d631b69f19cc2296e8748d66505fdff50608fca9e796f",
+        "size": 5140
+      }
+    ],
+    "sha256": "fa15d4d94cd33548cba4a1c3f1fcf22547f30f07a4b60c23adee27da09ab7ce6"
+  },
+  "vispy_imports": [
+    {
+      "file": "DIVE/_components/dive_manager.py",
+      "level": 0,
+      "line": 10,
+      "module": "vispy",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_components/dive_manager.py",
+      "level": 0,
+      "line": 11,
+      "module": "vispy.app",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_components/dive_manager.py",
+      "level": 0,
+      "line": 12,
+      "module": "vispy.color",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_components/dive_table_row.py",
+      "level": 0,
+      "line": 5,
+      "module": "vispy.color",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_gui/configure_widgets.py",
+      "level": 0,
+      "line": 3,
+      "module": "vispy.app",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_gui/configure_widgets.py",
+      "level": 0,
+      "line": 4,
+      "module": "vispy.io",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_gui/configure_widgets.py",
+      "level": 0,
+      "line": 5,
+      "module": "vispy.visuals",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_gui/custom_qt.py",
+      "level": 0,
+      "line": 6,
+      "module": "vispy.app",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_gui/custom_qt.py",
+      "level": 0,
+      "line": 7,
+      "module": "vispy.color",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_gui/dialogs.py",
+      "level": 0,
+      "line": 8,
+      "module": "vispy.app",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_plotting/artists.py",
+      "level": 0,
+      "line": 5,
+      "module": "vispy.color",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_plotting/artists.py",
+      "level": 0,
+      "line": 6,
+      "module": "vispy.geometry",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_plotting/artists.py",
+      "level": 0,
+      "line": 7,
+      "module": "vispy.io",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_plotting/artists.py",
+      "level": 0,
+      "line": 8,
+      "module": "vispy.scene",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_plotting/artists.py",
+      "level": 0,
+      "line": 9,
+      "module": "vispy.visuals",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_plotting/axis_instance.py",
+      "level": 0,
+      "line": 6,
+      "module": "vispy.scene",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_plotting/custom_vispy.py",
+      "level": 0,
+      "line": 4,
+      "module": "vispy.scene",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_plotting/custom_vispy.py",
+      "level": 0,
+      "line": 5,
+      "module": "vispy.util",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_utilities/validators.py",
+      "level": 0,
+      "line": 3,
+      "module": "vispy.color",
+      "names": [],
+      "scope": ""
+    },
+    {
+      "file": "DIVE/_widget.py",
+      "level": 0,
+      "line": 3,
+      "module": "vispy",
+      "names": [],
+      "scope": ""
+    }
+  ]
+}

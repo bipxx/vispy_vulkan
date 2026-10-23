@@ -1,0 +1,285 @@
+{
+  "actual_canvas_size": [
+    2048,
+    2048
+  ],
+  "actual_inner_rect": [
+    1.0,
+    1.0,
+    2046.0,
+    2046.0
+  ],
+  "actual_physical_size": [
+    2048,
+    2048
+  ],
+  "actual_view_rect": [
+    0.0,
+    0.0,
+    2048.0,
+    2048.0
+  ],
+  "actual_volume_controls": {
+    "clim": [
+      0.0,
+      1.0
+    ],
+    "colormap_samples": [
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      [
+        0.25,
+        0.25,
+        0.25,
+        1.0
+      ],
+      [
+        0.5,
+        0.5,
+        0.5,
+        1.0
+      ],
+      [
+        0.75,
+        0.75,
+        0.75,
+        1.0
+      ],
+      [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    ],
+    "gamma": 1.0,
+    "interpolation": "linear",
+    "method": "mip",
+    "relative_step_size": 0.8,
+    "texture_format": "r32f",
+    "threshold": 0.5
+  },
+  "camera": {
+    "azimuth": 30,
+    "center": [
+      256.0,
+      256.0,
+      256.0
+    ],
+    "distance": 1280.0,
+    "elevation": 20,
+    "fov": 45
+  },
+  "canvas_to_framebuffer_corners": [
+    [
+      0.0,
+      2048.0,
+      0.0,
+      1.0
+    ],
+    [
+      2048.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "case": "volume-512-2048-mip-full",
+  "cmap": "grays",
+  "comparison": {
+    "criteria": "benchmark_frames.compare_quality defaults, unchanged",
+    "edge_mask": null,
+    "excluded_pixels": 0,
+    "full_rgba": true,
+    "max_abs_channel_error": 2
+  },
+  "data_sha256": "250132d71240ae9cff8846f31fe84f7e4f9a6cfeb3b15eb4cdb09c460cd1d5ab",
+  "exposed_methods": [
+    "additive",
+    "attenuated_mip",
+    "average",
+    "iso",
+    "minip",
+    "mip",
+    "translucent"
+  ],
+  "exposed_raycasting_modes": [
+    "plane",
+    "volume"
+  ],
+  "performance_qualified": false,
+  "probe_frames": [
+    null,
+    null,
+    7,
+    73
+  ],
+  "source_texture_shape": [
+    512,
+    512,
+    512,
+    1
+  ],
+  "stages": [
+    "initial",
+    "repeat",
+    "probe7",
+    "probe73"
+  ],
+  "stages_observed": {
+    "initial": {
+      "camera_state": {
+        "azimuth": 30.0,
+        "center": [
+          256.0,
+          256.0,
+          256.0
+        ],
+        "distance": 1280.0,
+        "elevation": 20.0,
+        "fov": 45.0,
+        "scale_factor": 1014.5106554157036,
+        "up": "+z"
+      },
+      "command_start": 0,
+      "command_stop": 84,
+      "counter_after": null,
+      "counter_before": null,
+      "counter_delta": null,
+      "framebuffer_id": 16,
+      "geometry_ids": [
+        9,
+        13
+      ],
+      "probe_frame": null,
+      "requested_update_bytes": 0,
+      "source_texture_id": 11,
+      "target_texture_id": 14
+    },
+    "probe7": {
+      "camera_state": {
+        "azimuth": 30.0,
+        "center": [
+          256.0,
+          256.0,
+          256.0
+        ],
+        "distance": 1280.0,
+        "elevation": 20.0,
+        "fov": 45.0,
+        "scale_factor": 1014.5106554157036,
+        "up": "+z"
+      },
+      "command_start": 99,
+      "command_stop": 119,
+      "counter_after": null,
+      "counter_before": null,
+      "counter_delta": null,
+      "framebuffer_id": 16,
+      "geometry_ids": [
+        9,
+        13
+      ],
+      "probe_frame": 7,
+      "requested_update_bytes": 536870912,
+      "source_texture_id": 11,
+      "target_texture_id": 14
+    },
+    "probe73": {
+      "camera_state": {
+        "azimuth": 30.0,
+        "center": [
+          256.0,
+          256.0,
+          256.0
+        ],
+        "distance": 1280.0,
+        "elevation": 20.0,
+        "fov": 45.0,
+        "scale_factor": 1014.5106554157036,
+        "up": "+z"
+      },
+      "command_start": 119,
+      "command_stop": 139,
+      "counter_after": null,
+      "counter_before": null,
+      "counter_delta": null,
+      "framebuffer_id": 16,
+      "geometry_ids": [
+        9,
+        13
+      ],
+      "probe_frame": 73,
+      "requested_update_bytes": 536870912,
+      "source_texture_id": 11,
+      "target_texture_id": 14
+    },
+    "repeat": {
+      "camera_state": {
+        "azimuth": 30.0,
+        "center": [
+          256.0,
+          256.0,
+          256.0
+        ],
+        "distance": 1280.0,
+        "elevation": 20.0,
+        "fov": 45.0,
+        "scale_factor": 1014.5106554157036,
+        "up": "+z"
+      },
+      "command_start": 84,
+      "command_stop": 99,
+      "counter_after": null,
+      "counter_before": null,
+      "counter_delta": null,
+      "framebuffer_id": 16,
+      "geometry_ids": [
+        9,
+        13
+      ],
+      "probe_frame": null,
+      "requested_update_bytes": 0,
+      "source_texture_id": 11,
+      "target_texture_id": 14
+    }
+  },
+  "texture_format": "r32f",
+  "workload": {
+    "antialias": 1.0,
+    "blend": "translucent",
+    "clim": [
+      0.0,
+      1.0
+    ],
+    "colormap": "grays",
+    "edge_width": 1.0,
+    "family": "volume",
+    "gamma": 1.0,
+    "interpolation": "linear",
+    "layers": 1,
+    "method": "mip",
+    "name": "volume-512-2048-mip-full",
+    "relative_step_size": 0.8,
+    "seed": 20261009,
+    "shape": [
+      512,
+      512,
+      512
+    ],
+    "size": 4.0,
+    "spherical": false,
+    "symbol": "disc",
+    "threshold": 0.5,
+    "update": "full",
+    "viewport": [
+      2048,
+      2048
+    ]
+  },
+  "workload_sha256": "23bbb97819378d3c0beb4eb26a472ddb22ef4d4b8678c9fbc0dba04e1c4be651"
+}

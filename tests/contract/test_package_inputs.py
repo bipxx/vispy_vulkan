@@ -6,6 +6,9 @@ from pathlib import Path
 import re
 from packaging.requirements import Requirement
 from packaging.specifiers import SpecifierSet
+from packaging.markers import Marker, default_environment
+from packaging.utils import parse_wheel_filename
+from urllib.parse import unquote, urlsplit
 try:
     import tomllib
 except ImportError:  # CPython 3.10 qualification
@@ -13,6 +16,27 @@ except ImportError:  # CPython 3.10 qualification
 
 
 ROOT = Path(__file__).resolve().parents[2]
+
+
+def test_locked_pyqt5_runtime_has_wheels_for_each_target_platform():
+    """A universal lock must not select Linux/macOS-only Qt for Windows."""
+    lock = tomllib.loads((ROOT / "uv.lock").read_text(encoding="utf-8"))
+    runtimes = [p for p in lock["package"] if p["name"] == "pyqt5-qt5"]
+    for version in ("3.10.19", "3.11.14", "3.12.8", "3.13.8", "3.14.0"):
+        for platform, wheel_platform in (("win32", "win_amd64"),
+                                         ("linux", "manylinux2014_x86_64"),
+                                         ("darwin", "macosx_10_13_x86_64")):
+            environment = dict(default_environment(), sys_platform=platform,
+                               python_full_version=version,
+                               python_version=".".join(version.split(".")[:2]))
+            selected = [p for p in runtimes if not p.get("resolution-markers") or any(
+                Marker(marker).evaluate(environment) for marker in p["resolution-markers"])]
+            assert len(selected) == 1, (version, platform, "one Qt runtime required")
+            runtime = selected[0]
+            tags = {tag for wheel in runtime.get("wheels", [])
+                    for tag in parse_wheel_filename(unquote(urlsplit(wheel["url"]).path.rsplit("/", 1)[1]))[3]}
+            assert any(tag.platform == wheel_platform for tag in tags), (version, platform, runtime["version"])
+            assert all(wheel["hash"].startswith("sha256:") for wheel in runtime["wheels"])
 
 
 def test_build_dependencies_and_host_lock():

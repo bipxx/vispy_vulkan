@@ -1,0 +1,536 @@
+[
+  [
+    "CURRENT",
+    0,
+    1
+  ],
+  [
+    "CREATE",
+    13,
+    "FrameBuffer"
+  ],
+  [
+    "CREATE",
+    11,
+    "RenderBuffer"
+  ],
+  [
+    "SIZE",
+    11,
+    [
+      160,
+      224
+    ],
+    "color"
+  ],
+  [
+    "ATTACH",
+    13,
+    "color",
+    11
+  ],
+  [
+    "CREATE",
+    12,
+    "RenderBuffer"
+  ],
+  [
+    "SIZE",
+    12,
+    [
+      160,
+      224
+    ],
+    "depth"
+  ],
+  [
+    "ATTACH",
+    13,
+    "depth",
+    12
+  ],
+  [
+    "FRAMEBUFFER",
+    13,
+    true
+  ],
+  [
+    "FUNC",
+    "glViewport",
+    0,
+    0,
+    224,
+    160
+  ],
+  [
+    "FUNC",
+    "glClearColor",
+    0.062745101749897,
+    0.0941176488995552,
+    0.125490203499794,
+    1.0
+  ],
+  [
+    "FUNC",
+    "glClear",
+    17664
+  ],
+  [
+    "FUNC",
+    "glDisable",
+    "cull_face"
+  ],
+  [
+    "FUNC",
+    "glEnable",
+    "depth_test"
+  ],
+  [
+    "FUNC",
+    "glEnable",
+    "blend"
+  ],
+  [
+    "FUNC",
+    "glBlendFuncSeparate",
+    "src_alpha",
+    "one_minus_src_alpha",
+    "zero",
+    "one"
+  ],
+  [
+    "FUNC",
+    "glBlendEquationSeparate",
+    "func_add",
+    "func_add"
+  ],
+  [
+    "CREATE",
+    9,
+    "Program"
+  ],
+  [
+    "CREATE",
+    16,
+    "VertexShader"
+  ],
+  [
+    "DATA",
+    16,
+    0,
+    "vec4 null_transform_map(vec4 pos) {return pos;}\n\nvec4 transform_map_chain(vec4 pos) {\n    vec4 result_1 = null_transform_map(pos);\n    return result_1;\n}\n\nvec4 transform_map_chain_1(vec4 pos) {\n    vec4 result_1 = transform_map_chain(pos);\n    return result_1;\n}\n\nuniform mat4 u_inv_matrix;\n\nvec4 affine_transform_imap(vec4 pos) {\n    return u_inv_matrix * pos;\n}\n\n\nvec4 transform_imap_chain(vec4 pos) {\n    vec4 result_1 = affine_transform_imap(pos);\n    return result_1;\n}\n\nuniform mat4 u_matrix;\n\nvec4 affine_transform_map(vec4 pos) {\n    return u_matrix * pos;\n}\n\n\nuniform vec4 u_scale;\nuniform vec4 u_translate;\n\nvec4 st_transform_map(vec4 pos) {\n    return vec4(pos.xyz * u_scale.xyz + u_translate.xyz * pos.w, pos.w);\n}\n\n\nvec4 transform_map_chain_2(vec4 pos) {\n    vec4 result_1 = transform_imap_chain(pos);\n    vec4 result_2 = affine_transform_map(result_1);\n    vec4 result_3 = st_transform_map(result_2);\n    return result_3;\n}\n\nuniform vec4 u_scale_1;\nuniform vec4 u_translate_1;\n\nvec4 st_transform_map_1(vec4 pos) {\n    return vec4(pos.xyz * u_scale_1.xyz + u_translate_1.xyz * pos.w, pos.w);\n}\n\n\nuniform vec4 u_scale_2;\nuniform vec4 u_translate_2;\n\nvec4 st_transform_map_2(vec4 pos) {\n    return vec4(pos.xyz * u_scale_2.xyz + u_translate_2.xyz * pos.w, pos.w);\n}\n\n\nvec4 transform_map_chain_3(vec4 pos) {\n    vec4 result_1 = transform_map_chain_2(pos);\n    vec4 result_2 = st_transform_map_1(result_1);\n    vec4 result_3 = st_transform_map_2(result_2);\n    return result_3;\n}\n\nvec4 transform_map_chain_4(vec4 pos) {\n    vec4 result_1 = transform_map_chain_3(pos);\n    return result_1;\n}\n\nvec4 null_transform_map_1(vec4 pos) {return pos;}\n\nvec4 transform_map_chain_5(vec4 pos) {\n    vec4 result_1 = null_transform_map_1(pos);\n    return result_1;\n}\n\nvec4 transform_map_chain_6(vec4 pos) {\n    vec4 result_1 = transform_map_chain_5(pos);\n    return result_1;\n}\n\nuniform vec4 u_scale_3;\nuniform vec4 u_translate_3;\n\nvec4 st_transform_map_3(vec4 pos) {\n    return vec4(pos.xyz * u_scale_3.xyz + u_translate_3.xyz * pos.w, pos.w);\n}\n\n\nuniform vec4 u_scale_4;\nuniform vec4 u_translate_4;\n\nvec4 st_transform_map_4(vec4 pos) {\n    return vec4(pos.xyz * u_scale_4.xyz + u_translate_4.xyz * pos.w, pos.w);\n}\n\n\nvec4 transform_map_chain_7(vec4 pos) {\n    vec4 result_1 = st_transform_map_3(pos);\n    vec4 result_2 = st_transform_map_4(result_1);\n    return result_2;\n}\n\nvec4 transform_map_chain_8(vec4 pos) {\n    vec4 result_1 = transform_map_chain_7(pos);\n    return result_1;\n}\n\nuniform vec4 u_scale_5;\nuniform vec4 u_translate_5;\n\nvec4 st_transform_map_5(vec4 pos) {\n    return vec4(pos.xyz * u_scale_5.xyz + u_translate_5.xyz * pos.w, pos.w);\n}\n\n\nvec4 transform_map_chain_9(vec4 pos) {\n    vec4 result_1 = st_transform_map_5(pos);\n    return result_1;\n}\n\nvec4 transform_map_chain_10(vec4 pos) {\n    vec4 result_1 = transform_map_chain_9(pos);\n    return result_1;\n}\n\nvec4 transform_map_chain_11(vec4 pos) {\n    vec4 result_1 = transform_map_chain_1(pos);\n    vec4 result_2 = transform_map_chain_4(result_1);\n    vec4 result_3 = transform_map_chain_6(result_2);\n    vec4 result_4 = transform_map_chain_8(result_3);\n    vec4 result_5 = transform_map_chain_10(result_4);\n    return result_5;\n}\n\n\nvec4 vec3to4(vec3 xyz) {\n    return vec4(xyz, 1.0);\n}\n\n\nvec4 pass(vec4 color) { return color; }\n\nattribute vec3 a_position;\nattribute vec4 a_base_color;\n\nvarying vec4 v_base_color;\n\nvoid main() {\n    v_base_color = pass(a_base_color);\n    gl_Position = transform_map_chain_11(vec3to4(a_position));\n}\n\n"
+  ],
+  [
+    "ATTACH",
+    9,
+    16
+  ],
+  [
+    "CREATE",
+    17,
+    "FragmentShader"
+  ],
+  [
+    "DATA",
+    17,
+    0,
+    "vec4 null_transform_map(vec4 pos) {return pos;}\n\nuniform vec4 u_view;\n\nvoid clip() {\n    vec4 pos = null_transform_map(gl_FragCoord);\n    if( pos.x < u_view.x || pos.x > u_view.y ||\n        pos.y < u_view.z || pos.y > u_view.w ) {\n        discard;\n    }\n}\n\n\nuniform float u_alpha;\n\nvoid apply_alpha() {\n    gl_FragColor.a = gl_FragColor.a * u_alpha;\n}\n\n\nuniform vec4 u_id_color;\nuniform int u_enabled;\n\nvoid picking_filter() {\n    if( u_enabled == 0 )\n        return;\n    if( gl_FragColor.a == 0.0 )\n        discard;\n    gl_FragColor = u_id_color;\n}\n\n\n\nvarying vec4 v_base_color;\nvoid main() {\n    clip();\n\n\n    gl_FragColor = v_base_color;\n\n    apply_alpha();\npicking_filter();\n\n}\n\n"
+  ],
+  [
+    "ATTACH",
+    9,
+    17
+  ],
+  [
+    "LINK",
+    9
+  ],
+  [
+    "DELETE",
+    16
+  ],
+  [
+    "DELETE",
+    17
+  ],
+  [
+    "CREATE",
+    15,
+    "VertexBuffer"
+  ],
+  [
+    "SIZE",
+    15,
+    96
+  ],
+  [
+    "DATA",
+    15,
+    0,
+    {
+      "array": {
+        "bytes": 96,
+        "dtype": "|V16",
+        "sha256": "7f667f5d94b7dbba89a2a2fd1ceaa05cdf0debaaa5c1aba6b931820870eafc98",
+        "shape": [
+          2,
+          3,
+          1
+        ]
+      }
+    }
+  ],
+  [
+    "ATTRIBUTE",
+    9,
+    "a_base_color",
+    "vec4",
+    [
+      15,
+      16,
+      0
+    ],
+    null
+  ],
+  [
+    "CREATE",
+    10,
+    "VertexBuffer"
+  ],
+  [
+    "SIZE",
+    10,
+    72
+  ],
+  [
+    "DATA",
+    10,
+    0,
+    {
+      "array": {
+        "bytes": 72,
+        "dtype": "|V12",
+        "sha256": "e5facb16c04efcd27bf8c28b6ac65fbe67647ab377eaa177577e0df400e25c1a",
+        "shape": [
+          2,
+          3,
+          1
+        ]
+      }
+    }
+  ],
+  [
+    "ATTRIBUTE",
+    9,
+    "a_position",
+    "vec3",
+    [
+      10,
+      12,
+      0
+    ],
+    null
+  ],
+  [
+    "UNIFORM",
+    9,
+    "u_alpha",
+    "float",
+    {
+      "array": {
+        "bytes": 4,
+        "dtype": "<f4",
+        "sha256": "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c",
+        "shape": [
+          1
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    9,
+    "u_enabled",
+    "int",
+    {
+      "array": {
+        "bytes": 4,
+        "dtype": "<i4",
+        "sha256": "df3f619804a92fdb4057192dc43dd748ea778adc52bc498ce80524c014b81119",
+        "shape": [
+          1
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    9,
+    "u_id_color",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "557396081ff5baef197a3c454203ad97bbd62aa256a483ee3a92688243f178d8",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    9,
+    "u_inv_matrix",
+    "mat4",
+    {
+      "array": {
+        "bytes": 64,
+        "dtype": "<f4",
+        "sha256": "9bbfebb0b84a6b692ab6486646a4ac3612fbc5c1e0875f00358d06a7aabb81dc",
+        "shape": [
+          16
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    9,
+    "u_matrix",
+    "mat4",
+    {
+      "array": {
+        "bytes": 64,
+        "dtype": "<f4",
+        "sha256": "946a2608ba777307caf07601180980f24e9b77ddd8b76cb7d78c08484cbf9b65",
+        "shape": [
+          16
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    9,
+    "u_scale",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "3c46e7cf91a1cd9a5fcceb663a7b94d810d5b23d11d896a24deb86018d1d52cd",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    9,
+    "u_scale_1",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "f6bb1294da2f78cd935b01c7656280df5eaa0439e9d97bc03775825a41a508e4",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    9,
+    "u_scale_2",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "f6bb1294da2f78cd935b01c7656280df5eaa0439e9d97bc03775825a41a508e4",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    9,
+    "u_scale_3",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "a416fff845c77f5467c037c96e18453dd9a307d0af8be8aa4d3aac93ee821b03",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    9,
+    "u_scale_4",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "f6bb1294da2f78cd935b01c7656280df5eaa0439e9d97bc03775825a41a508e4",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    9,
+    "u_scale_5",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "4ee5071c516142077caedf91496c8c3b5b299f8e88285c7ebf2986634773a87f",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    9,
+    "u_translate",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "c2fb7176c2fff09d364cf04ed9a29348aa6876a3b03bc4eb6cfe43727d8fefb6",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    9,
+    "u_translate_1",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "374708fff7719dd5979ec875d56cd2286f6d3cf7ec317a3b25632aab28ec37bb",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    9,
+    "u_translate_2",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "374708fff7719dd5979ec875d56cd2286f6d3cf7ec317a3b25632aab28ec37bb",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    9,
+    "u_translate_3",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "e8ae46c6498d49ad1bf97267426075789ec9e13d65bd258a0aaa844baa9f4cb6",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    9,
+    "u_translate_4",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "374708fff7719dd5979ec875d56cd2286f6d3cf7ec317a3b25632aab28ec37bb",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    9,
+    "u_translate_5",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "c4ed2338fa8bdfe87ba22b0b14e6f74e4bbf6d849f85310370833d9cc56510ac",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    9,
+    "u_view",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "51ac593ccef3a3a1686991a33069a84f271b0f6fbcac66994fca9de1a9c0071c",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "DRAW",
+    9,
+    "triangles",
+    [
+      0,
+      6
+    ],
+    1
+  ],
+  [
+    "FUNC",
+    "glFinish"
+  ]
+]

@@ -1,0 +1,164 @@
+{
+  "all_original_source_files_identical": true,
+  "build_environment": {
+    "executable": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\host-environments\\napari-threedee-package-build-cpython312\\Scripts\\python.exe",
+    "packages": [
+      {
+        "name": "hatchling",
+        "record_sha256": "5ed931ce2d58d7fdb2dfd2d60873ac60b9c7d94e2cd911375f00e4533c844441",
+        "version": "1.32.4"
+      },
+      {
+        "name": "hatch-vcs",
+        "record_sha256": "8d7101bf156be2d44e445fb9f207f5189f587bbcc92d0e6be3cc886dff752a86",
+        "version": "0.5.0"
+      },
+      {
+        "name": "packaging",
+        "record_sha256": "1b8655965b0d83e9a067fd7f84b977bd1e117e0fb9f2874b2572781bdc9e2147",
+        "version": "26.3"
+      },
+      {
+        "name": "pathspec",
+        "record_sha256": "f9531bc29d0c741f02f975537a1bcc4c0aa091c2b1a7d2cbf4bcb31a6316eaf4",
+        "version": "1.1.1"
+      },
+      {
+        "name": "pluggy",
+        "record_sha256": "a42a63bcba12ddb7e7db19158c8d05d8fc41d51f48686b411ad3a0213fbd7721",
+        "version": "1.6.0"
+      },
+      {
+        "name": "setuptools",
+        "record_sha256": "26b6656e2a9d04f4c1cc1e8580636454733af03d8dc2dac4b2d4636ff1ed6da8",
+        "version": "84.0.0"
+      },
+      {
+        "name": "setuptools-scm",
+        "record_sha256": "63f1aea36c43152981ca83a50729fa440ba9941f37656fde74bc6569f2d78d79",
+        "version": "10.3.4"
+      },
+      {
+        "name": "tomlkit",
+        "record_sha256": "54905d960cc7302beffa56e4abe15b094626b7b221b43a0ceb6e60bcbee1a341",
+        "version": "0.15.1"
+      },
+      {
+        "name": "trove-classifiers",
+        "record_sha256": "caca1e7c27da194b67789f7aa0a8ac1d522c17788be55d042dc6e45d198e38fb",
+        "version": "2026.9.21.13"
+      },
+      {
+        "name": "vcs-versioning",
+        "record_sha256": "23363cb2bec59a19e184d57cffe69c16a64d35b149e8022f7e46fa15a3c4b8a7",
+        "version": "2.6.0"
+      }
+    ],
+    "python": "3.12.8 (main, Dec 19 2024, 14:41:01) [MSC v.1942 64 bit (AMD64)]"
+  },
+  "commit": "7bd485085186ebe1907f8de931aa7a93e0d58a83",
+  "entry_point": {
+    "distribution": "napari-threedee",
+    "group": "napari.manifest",
+    "name": "napari-threedee",
+    "value": "napari_threedee:napari.yaml",
+    "version": "0.0.29"
+  },
+  "first_probe_failure": "compat/host-environments/napari-threedee-registration-probe-failure-1.json",
+  "first_probe_failure_sha256": "9764db580d81d9f84586dc33a12c1a0a180dc43ed6a5d9507f09ac47b3429c8c",
+  "first_probe_source": "build/host-wheels/napari-threedee-v0.0.29-qualification-1/registration-probe-failure-1.py",
+  "first_probe_source_sha256": "220206f32d10793480ff9ec22cc138f4d8af43dd54813256a6c5a3847d960f3c",
+  "generated_source_files": [
+    "src/napari_threedee/_version.py"
+  ],
+  "generated_version": "compat/host-environments/napari-threedee-generated-version.py",
+  "generated_version_sha256": "04444c98f216e0fffad1c65035836fd4a05e33fadcae1f47c8c764c7e6287ae5",
+  "graphics_qualification": "pending",
+  "original_import_only_environment_preserved": "build/host-environments/napari-threedee-cpython312-pyqt6",
+  "original_source_file_count": 174,
+  "package_build_requirements": "compat/host-environments/napari-threedee-package-build-windows-cpython312.txt",
+  "package_build_requirements_sha256": "4bd1ad2ae1a5236aafa1782fa2128d48e79425143584766cb11ca74061fb5468",
+  "prior_import_inventory": "compat/host-environments/napari_threedee.import-inventory.json",
+  "prior_import_inventory_sha256": "7f330d1fa9e7254714188a24971aa3e2d21f5d797bf7d4c40a6ee45058b1c42a",
+  "public_apis": [
+    "importlib.metadata.entry_points(group=\"napari.manifest\")",
+    "npe2.PluginManifest.from_distribution",
+    "npe2.plugin_manager.discover",
+    "npe2.plugin_manager.get_manifest",
+    "npe2.plugin_manager.iter_widgets",
+    "npe2.PluginManager.commands.get"
+  ],
+  "qualification": "installed_packaging_and_plugin_registration_cpu_only",
+  "registered_widget_count": 11,
+  "registration": "compat/host-environments/napari-threedee-registration.json",
+  "registration_command": "build/host-environments/napari-threedee-cpython312-pyqt6-packaged/Scripts/python.exe tools/plugin_registration.py --wheel build/host-wheels/napari-threedee-v0.0.29-qualification-1/napari_threedee-0.0.29-py3-none-any.whl --output compat/host-environments/napari-threedee-registration.json",
+  "registration_sha256": "b0c1cab1f747641f0100804d7ec4bf3a2988163ef31d680601b9f6c559594a1a",
+  "registration_tool": "tools/plugin_registration.py",
+  "registration_tool_sha256": "338853a969f2e3893e18674ad7837a41eb9398d971253641fc01e28071c14056",
+  "remaining_qualification": [
+    "Real public Viewer.window.add_plugin_dock_widget construction and controls",
+    "Unmodified upstream screenshot/interaction fixture and landmarks",
+    "Installed fork wheel candidate comparison",
+    "Plugin picking/dragging and callback lifecycle"
+  ],
+  "rendering_qualified": false,
+  "repeat_wheels_byte_identical": true,
+  "repository": "https://github.com/napari-threedee/napari-threedee.git",
+  "resolved_command_count": 12,
+  "runtime_build_requirements": "compat/host-environments/build-tools-windows-cpython312.txt",
+  "runtime_build_requirements_sha256": "431b0bca16553f49b37fb8d33a40bfdb11f5b4651e08f926c94b0183a5ad29a6",
+  "runtime_dependency_versions_unchanged": true,
+  "runtime_distribution_count": 118,
+  "runtime_environment": "build/host-environments/napari-threedee-cpython312-pyqt6-packaged",
+  "runtime_interpreter": "3.12.8",
+  "runtime_original_record_hash_differences": [
+    "imageio",
+    "pint",
+    "pyqt6",
+    "pygments",
+    "qtpy",
+    "build",
+    "charset-normalizer",
+    "dask",
+    "debugpy",
+    "idna",
+    "ipython",
+    "jsonschema",
+    "jupyter-client",
+    "jupyter-core",
+    "markdown-it-py",
+    "mrcfile",
+    "napari",
+    "npe2",
+    "numpy",
+    "python-dotenv",
+    "pywin32",
+    "qtconsole",
+    "tifffile",
+    "tqdm",
+    "typer",
+    "wheel"
+  ],
+  "runtime_requirements": "compat/host-environments/napari-threedee-windows-cpython312-pyqt6.txt",
+  "runtime_requirements_sha256": "a3bda7b33481d5d9ecbf856f05ff27bfd66ac46df6ad1f312d9fa8faa3e1e92c",
+  "source_after_generated_version_sha256": "31327d69acb7b51ac09e241e3117ce5f8fda8c40d5d94ba5b277be0bf1c7bd66",
+  "source_before_build_sha256": "efddd50707a9b17b3e17eeb0c57f942d474db66b51be73d666363d3ecb8975ae",
+  "source_date_epoch": "1751995272",
+  "source_inventory": "compat/host-environments/napari_threedee.source-inventory.json",
+  "source_inventory_sha256": "759f6a6d4c3b995ac4d9dbda2486a5bb6edc34d1f86a42b40eb42c27832eecfa",
+  "tag": "v0.0.29",
+  "tag_commit": "7bd485085186ebe1907f8de931aa7a93e0d58a83",
+  "tag_object": "42be31adce55bed767dd5f835c32d08c329f3e35",
+  "tag_object_content": "object 7bd485085186ebe1907f8de931aa7a93e0d58a83\ntype commit\ntag v0.0.29\ntagger CmnCreeper <43458028+CmnCreeper@users.noreply.github.com> 1751996696 -0500\n\nv0.0.29",
+  "tracked_source_changes": [],
+  "version": "0.0.29",
+  "version_override_environment": [],
+  "wheel": "build/host-wheels/napari-threedee-v0.0.29-qualification-1/napari_threedee-0.0.29-py3-none-any.whl",
+  "wheel_build_count": 2,
+  "wheel_content": "compat/host-environments/napari-threedee-wheel-content.json",
+  "wheel_content_sha256": "24e69fc36f43440ffa7aed6017c2dee4a37d782f51cf91b90326c940621fefd8",
+  "wheel_installation_requirements": "compat/host-environments/napari-threedee-package-wheel-windows-cpython312.txt",
+  "wheel_installation_requirements_sha256": "3606498218009eae99d4f1c84d5384528c3110d59a8264e2f8433a6aba9fa0aa",
+  "wheel_sha256": "de115619e84a7967b0386651163c29ec12228d59e58000736067f066237ce91e",
+  "wheel_size": 102083
+}

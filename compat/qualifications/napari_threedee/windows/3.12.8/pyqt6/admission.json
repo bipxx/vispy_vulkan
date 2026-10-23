@@ -1,0 +1,37 @@
+{
+  "candidate_qualified": false,
+  "cell": {
+    "binding": "pyqt6",
+    "platform": "windows",
+    "python": "3.12.8"
+  },
+  "fixture_files": [
+    "tests/hosts/test_napari_plugin_wheel_parity.py"
+  ],
+  "fixture_sources_sha256": {
+    "tests/hosts/test_napari_plugin_wheel_parity.py": "d8b26dd0f369be8501482557c1731c8ce50a56c62b7277c065f63f22b0fd8859"
+  },
+  "host": "napari_threedee",
+  "reference_manifest": "tests/reference/napari-threedee-overlay-opengl/admission-manifest.json",
+  "reference_manifest_sha256": "877c995ab163343d318f9ac39d9a295ff5455a4e1d79a068305516c2e3e58cd6",
+  "release_qualified": false,
+  "rendering": true,
+  "requirements_file": "compat/host-environments/napari-threedee-host-windows-cpython312-pyqt6.txt",
+  "requirements_sha256": "79ac7cb0c04d34b3cd371f0fa49bf2cef8f684f445dd941de3ab9fbaf2b81f28",
+  "schema": 1,
+  "scope": "Upstream five-case fixture/environment admission only; complete candidate suite still fails required smooth lines",
+  "upstream_cases": [
+    "handles",
+    "selection",
+    "translation",
+    "miss",
+    "retirement"
+  ],
+  "upstream_fixture_status": "passed",
+  "upstream_vispy_version": "0.17.0",
+  "upstream_wheel": {
+    "filename": "vispy-0.17.0-cp312-cp312-win_amd64.whl",
+    "sha256": "c4862155e735009b1af6aeda45ea94a72e1a375d6086c89273455d66238bb18e",
+    "url": "https://files.pythonhosted.org/packages/73/e7/4e79b8c7da4eebea966be0d79e42b12fd0651252c4bb383a74f5b25c4534/vispy-0.17.0-cp312-cp312-win_amd64.whl"
+  }
+}
