@@ -78,7 +78,13 @@ def test_actual_line_target_has_covered_samples_and_untouched_background(samples
             # line coverage, rather than the quad's edge, can produce these.
             assert np.any((red > 0) & (red < 255))
             if not smooth:
-                assert set(np.unique(red)).issubset({0, 64, 128, 191, 255})
+                # Resolve-to-UNORM rounding can choose adjacent integers at a
+                # half-way value (for example 127 versus 128). Require actual
+                # quarter-sample bins within one byte, not driver bit identity.
+                bins = np.array([0, 64, 128, 191, 255], np.int16)
+                values = np.unique(red).astype(np.int16)
+                distance = np.abs(values[:, None] - bins).min(axis=1)
+                assert np.all(distance <= 1), values.tolist()
 
 
 @pytest.mark.parametrize("qualifier,perspective", [("sample noperspective", False), ("centroid", True)])
