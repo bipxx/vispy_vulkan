@@ -1,3 +1,25 @@
+Current practical-completion checkpoint, 2026-10-23: the refreshed smooth-line
+implementation passes installed Windows wheel consumers on CPython 3.10-3.14.
+The CPython 3.12 wheel passes 53 functional host/scientific cases, including
+previously blocked axes/colorbar, Glue axes and napari-threedee overlays.
+Forty-two complete reference frames match exactly. Exact rasterizer parity and
+lab-grade latency measurements are outside the user's practical completion scope;
+historical strict results and failed attempts remain unchanged.
+
+A fresh Linux CPython 3.12 wheel builds with GCC 13/Ninja after disabling Dawn's
+unused C++ module interface. An isolated WSL software-Vulkan consumer passes clear,
+blended smooth-line, pipeline-reuse and compiled-text checks. Package/native-origin
+and AGPL/original-BSD license checks pass; all nine live gauges return to zero.
+Owned environments, caches and 960 build objects were removed; artifacts remain.
+Native Linux GPU, macOS Metal and manylinux portability remain unverified.
+
+The public host lock's eight missing source/import inventories and requirement
+files are restored byte-for-byte from their existing pins. The consistency test
+reproduces three missing-input failures before the fix and passes all four host
+rows afterward. CPU CI now runs that metadata test. This does not promote the
+historical import inventories to renderer qualification. Cybersecurity work stays
+out of scope. Earlier checkpoints below retain their recorded revision scopes.
+
 # VisPy Vulkan implementation completion plan
 
 Current source checkpoint, 2026-10-23: portable analytic smooth lines now use the

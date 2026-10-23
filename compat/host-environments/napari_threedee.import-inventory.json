@@ -1,0 +1,810 @@
+{
+  "build_requirements": "compat/host-environments/build-tools-windows-cpython312.txt",
+  "build_requirements_sha256": "431b0bca16553f49b37fb8d33a40bfdb11f5b4651e08f926c94b0183a5ad29a6",
+  "distributions": [
+    {
+      "name": "Deprecated",
+      "record_sha256": "1ba8e87ed75092ad56125165a1e987bf0247fa3a581ecc398b0a7a75cbc33099",
+      "version": "3.0.0"
+    },
+    {
+      "name": "HeapDict",
+      "record_sha256": "65a07eacf13d7082e87f6121909ca0ce861a83bef391c167236e98b392a90e7b",
+      "version": "1.0.1"
+    },
+    {
+      "name": "ImageIO",
+      "record_sha256": "b63f496cd1458b14c2a6096e77b8204b09d49a0003457b755a7a3a5c2b02e989",
+      "version": "2.38.1"
+    },
+    {
+      "name": "Pint",
+      "record_sha256": "1320aeaaac273e8b85494669aa9ce78e068a4c750946dac4c4c71266b10b6e00",
+      "version": "0.26.1"
+    },
+    {
+      "name": "PyOpenGL",
+      "record_sha256": "272d2da2b0e48fc99572459d394b1731c210dd956f3e39a934f3bc289f8794df",
+      "version": "3.1.10"
+    },
+    {
+      "name": "PyQt6",
+      "record_sha256": "acaca72a38045d83072d95fa51d0e151919f847ce85f24536e7ef552c58e7d23",
+      "version": "6.11.0"
+    },
+    {
+      "name": "PyQt6-Qt6",
+      "record_sha256": "dfa8309efaceb71f1f847a6866b0a5ebe604a4b2df16cb5d1024a1a680fc2e10",
+      "version": "6.11.2"
+    },
+    {
+      "name": "PyQt6_sip",
+      "record_sha256": "29fb7f7c13ef9f0f60e382e4e2b6febbc17cf42ca5d1fc81f46c87d7a82cc8ce",
+      "version": "13.13.0"
+    },
+    {
+      "name": "PyYAML",
+      "record_sha256": "6fef717920e6590ce79f8f922755690f9d1f3199508e9d79baeb382ea4813c9c",
+      "version": "6.0.3"
+    },
+    {
+      "name": "Pygments",
+      "record_sha256": "aa87eefdba9b26f2e44b793b83609fc46ad7a6d19f7475acbeb17dcab110bd31",
+      "version": "2.21.0"
+    },
+    {
+      "name": "QtPy",
+      "record_sha256": "f92946f5c54c1c17a3534b0520da4e0b6f1c556c31f9d0d5849a4ca4e0697816",
+      "version": "2.4.3"
+    },
+    {
+      "name": "annotated-doc",
+      "record_sha256": "eee5b3b5754ae1cb431e5aba650cdab050673d518473f0fb2b4ad9f48671e2e7",
+      "version": "0.0.5"
+    },
+    {
+      "name": "annotated-types",
+      "record_sha256": "8191d3aa1ac93480688819b4db2385606219a3f7a453b85e086646134ded4f96",
+      "version": "0.8.0"
+    },
+    {
+      "name": "app-model",
+      "record_sha256": "9e78d18ba4081a6694af3dd5dc2fcedb0a8539caf8d3f23e430aeda0b1e86707",
+      "version": "0.5.1"
+    },
+    {
+      "name": "asciitree",
+      "record_sha256": "ca9e9edfc666a854af67890784cdc9737b181b9774ed4306685c5bb5841d7c07",
+      "version": "0.3.3"
+    },
+    {
+      "name": "asttokens",
+      "record_sha256": "7f0b4dabfd410366c48fb66b1af7671f17ab499310c80c3103855a7893694314",
+      "version": "3.0.2"
+    },
+    {
+      "name": "attrs",
+      "record_sha256": "6b0b326d4b4ee0fac27909ac7cbb066fc4bdf8e93d87031e27e770db059e5a04",
+      "version": "26.1.0"
+    },
+    {
+      "name": "build",
+      "record_sha256": "0d58bdd5ba9eee831241d1ec445e610a37221ec87fa24ffff524a0c0a33b0b8c",
+      "version": "1.6.1"
+    },
+    {
+      "name": "cachey",
+      "record_sha256": "3f46350f59b6cf3d9793915b7efd406fc93632dd11f1939c4ed968f8ebc12688",
+      "version": "0.2.1"
+    },
+    {
+      "name": "certifi",
+      "record_sha256": "cff9d243744c96445494c29abee3d592d0a6955d5504f4fbe034dce7aaf38490",
+      "version": "2026.7.22"
+    },
+    {
+      "name": "charset-normalizer",
+      "record_sha256": "33a1dd1db932dfddaabfe52c8bfab317de285444fbc59d1088f1c0b44e95bc16",
+      "version": "3.5.2"
+    },
+    {
+      "name": "click",
+      "record_sha256": "924078ec3a47b97192425dbc0c3693085af7a7b863afcf6b4e110cf0bd97dea4",
+      "version": "8.5.0"
+    },
+    {
+      "name": "cloudpickle",
+      "record_sha256": "a24820e3d3ea3f0fb210f58b84abb5450a94cc649e573a9a0a69354afc6fa1de",
+      "version": "3.1.2"
+    },
+    {
+      "name": "colorama",
+      "record_sha256": "88413e126edc8a81419b409279ef89424081f27bccd4aeec0140d6f03f1ade7f",
+      "version": "0.4.6"
+    },
+    {
+      "name": "comm",
+      "record_sha256": "d4854a07c72d25313dfa1c7322a12a09455a57adbf66939d785aeb8f07b79ee5",
+      "version": "0.2.3"
+    },
+    {
+      "name": "dask",
+      "record_sha256": "a98d64bb834644f49b1867da7f8b3555648fae01d900f9786044a0068c2e920c",
+      "version": "2026.8.0"
+    },
+    {
+      "name": "debugpy",
+      "record_sha256": "db51bb37c0ba01ea4ff85cef1e86b4362532fa96de53020ab3adec6f88d7aa6b",
+      "version": "1.8.22"
+    },
+    {
+      "name": "docstring_parser",
+      "record_sha256": "ed0a3538437bb77b4efc7e9b93ed802ac99acf1dedd7b1c5b36d0b0ef0f11398",
+      "version": "0.18.0"
+    },
+    {
+      "name": "einops",
+      "record_sha256": "f5ab2503eead94b7dbb3c722415260439feee273c0b91019e1f0788f041400bc",
+      "version": "0.8.2"
+    },
+    {
+      "name": "executing",
+      "record_sha256": "483767c8f250006b2655250353b993e605b581fd6f5f41a5b7e2accb9bf3a414",
+      "version": "2.2.1"
+    },
+    {
+      "name": "fasteners",
+      "record_sha256": "149be2130b636d8993156f863954c95a0442dd880619654c41b5f60da50e3d65",
+      "version": "0.20"
+    },
+    {
+      "name": "flexcache",
+      "record_sha256": "36c96a9fe853ed423ab17dde2a30e66ab68fb2489a3f874f7806a3e11f45c8f7",
+      "version": "0.3"
+    },
+    {
+      "name": "flexparser",
+      "record_sha256": "118718b3baaef4f105c94e63bf33cb4d07f719927641e89cb6844cce6eb4c964",
+      "version": "0.4"
+    },
+    {
+      "name": "freetype-py",
+      "record_sha256": "b396657045f9e98eda5bef1ef54b1381b6b43acfbd7322c6d00d36697b0d2e1d",
+      "version": "2.5.1"
+    },
+    {
+      "name": "fsspec",
+      "record_sha256": "f7b3713c1750221155b0601147f3b68a24f11e342dca818b5fd551f5ef88a74b",
+      "version": "2026.9.0"
+    },
+    {
+      "name": "hsluv",
+      "record_sha256": "f50df1714241d29a5d98d11c3db7b0bab9c874d8d2b8c05f5d3dc84126980ef5",
+      "version": "5.0.4"
+    },
+    {
+      "name": "idna",
+      "record_sha256": "8c27bd898a778ecc39df9ee9828553990b58423efb1d31d6befe0737c5353592",
+      "version": "3.20"
+    },
+    {
+      "name": "in-n-out",
+      "record_sha256": "9e0e2883e7e67496cb7ec2f50833cc586efea9a7ddf7fb20ed5ccdbd0ce12600",
+      "version": "0.2.1"
+    },
+    {
+      "name": "ipykernel",
+      "record_sha256": "ea8c513c3fdc8d1850fd38cade81ea0fb1aeb05f57cb124e99c4eb6ffbd9ec19",
+      "version": "6.31.0"
+    },
+    {
+      "name": "ipython",
+      "record_sha256": "47c95aaeed145543a93c1cefa6a707672fa7576cc86b9249d28b6ff317c403c0",
+      "version": "9.17.1"
+    },
+    {
+      "name": "ipython_pygments_lexers",
+      "record_sha256": "a601c87e87a63f4e126ce5e320367930d30129be677cb4a4980332f61b8aff31",
+      "version": "1.1.1"
+    },
+    {
+      "name": "jedi",
+      "record_sha256": "8aee5a15141dd898d3356eca862cd70ad85f382c676ced7d51041f98d32e63d9",
+      "version": "0.20.0"
+    },
+    {
+      "name": "jsonschema",
+      "record_sha256": "3a7e35b2235d179c43b7b061079dc4bf89df9107cb5d8ba1601d04a6b1917e51",
+      "version": "4.26.0"
+    },
+    {
+      "name": "jsonschema-specifications",
+      "record_sha256": "0b1047ee6c7d5d7c242b642d689820f4572860ecf7886b2074f821ed85cbe7b6",
+      "version": "2025.9.1"
+    },
+    {
+      "name": "jupyter_client",
+      "record_sha256": "dba86a558899cf0f1eb9a7e1010af2793a26b1c143e876a0e65d03d17b33c80b",
+      "version": "8.10.0"
+    },
+    {
+      "name": "jupyter_core",
+      "record_sha256": "7ae84dd92c7f03289bf5ac30730f5e7148235218c98deb51765d605aa642642d",
+      "version": "5.9.1"
+    },
+    {
+      "name": "kiwisolver",
+      "record_sha256": "3116e4ed5a372aa5c2f7cc59b78006c82d14bd568d5e99d84327e524a87157c8",
+      "version": "1.5.1"
+    },
+    {
+      "name": "lazy-loader",
+      "record_sha256": "fe635a4b213c271fc498fecab243e34fc7f0a0c73326ff5a3accef2cf710aaf1",
+      "version": "0.6"
+    },
+    {
+      "name": "libigl",
+      "record_sha256": "619ea883cd1767fde7769d036a00855e8f28eab861e7e7175ed93b60e664f4ce",
+      "version": "2.6.3"
+    },
+    {
+      "name": "locket",
+      "record_sha256": "b74fc4678ecab0096f1917e70ca3434ff437a12261e4ff73ccbb1accfbaf9637",
+      "version": "1.0.0"
+    },
+    {
+      "name": "lxml",
+      "record_sha256": "623391421e06ff97cac25cac461820eb029600e1922238184d45e43405ad93e1",
+      "version": "6.1.3"
+    },
+    {
+      "name": "magicgui",
+      "record_sha256": "26eeac48777d238dee0ca8608a48ffd70373c6d2d3b54101bbf76a4ae9f1d584",
+      "version": "0.10.2"
+    },
+    {
+      "name": "markdown-it-py",
+      "record_sha256": "b1f09b880bc25b7a8fc052d7ec8e0d40ece1307df10eeb9f3b8f04ff032d7572",
+      "version": "4.2.0"
+    },
+    {
+      "name": "matplotlib-inline",
+      "record_sha256": "9e3fca031d79eb520bebf44c820c831d604ddb76157308c28e9f7813f71268fe",
+      "version": "0.2.2"
+    },
+    {
+      "name": "mdurl",
+      "record_sha256": "9a1b05128e711beabd7684e116fcf408ce8cff7ef10e7e8b359b248924fe529c",
+      "version": "0.1.2"
+    },
+    {
+      "name": "morphosamplers",
+      "record_sha256": "bc3f3793df859617cf68df35d2ee65067a7c9d8625d2c7041ddc690dc5e593a2",
+      "version": "0.0.16"
+    },
+    {
+      "name": "mrcfile",
+      "record_sha256": "197420a299fbd2b01d65cb2df09723866580adc8ca5e5e9f657e78a991eae074",
+      "version": "1.5.4"
+    },
+    {
+      "name": "napari",
+      "record_sha256": "05b6907eeff8564525d6be23b3dadbd4290b7dab842ae22924d067012f04f9d9",
+      "version": "0.9.2"
+    },
+    {
+      "name": "napari-console",
+      "record_sha256": "5664bde5de73ed386519d8782af4df88786d438e8bd575264430c234a921a1ac",
+      "version": "0.1.4"
+    },
+    {
+      "name": "napari-plugin-engine",
+      "record_sha256": "5eb395f50524dfb831ea874db439657ac670113e12859597e19f54ac62c7fa90",
+      "version": "0.2.1"
+    },
+    {
+      "name": "napari-resources",
+      "record_sha256": "7cb9b271daa7347ac68060d020ed6ad655fba023e3c25a54d82af77d880d0679",
+      "version": "1.0.1"
+    },
+    {
+      "name": "napari-svg",
+      "record_sha256": "6fc0f2a709d1e482a8fb283b029d48ced0d5b6bfad51bedaeb6480be858e2a7e",
+      "version": "0.2.1"
+    },
+    {
+      "name": "nest-asyncio",
+      "record_sha256": "97b48ddb4cbc4cb0f2add67e0cca4425900357d4e2576a9fc0914709e0a9aa83",
+      "version": "1.6.0"
+    },
+    {
+      "name": "networkx",
+      "record_sha256": "0403c7ac1516dc6dc03a4f0d8256c3b5d333c5721e6ab116c9f2b37fdeb6eb30",
+      "version": "3.7"
+    },
+    {
+      "name": "npe2",
+      "record_sha256": "3a805fb329353e77a5039bd06f687a18cf973076a8aca1e3d983394c9d0ab93e",
+      "version": "0.9.0"
+    },
+    {
+      "name": "numcodecs",
+      "record_sha256": "f12abbd63b267e665da0d0c5d72dc97bf4c6f2c118b5f3342f6dc586f9892d6d",
+      "version": "0.15.1"
+    },
+    {
+      "name": "numpy",
+      "record_sha256": "3d7840cb0b8b4bf524896dceca1a050a9feb330808b917fd597be258bc4b6d1a",
+      "version": "2.5.3"
+    },
+    {
+      "name": "packaging",
+      "record_sha256": "1b8655965b0d83e9a067fd7f84b977bd1e117e0fb9f2874b2572781bdc9e2147",
+      "version": "26.3"
+    },
+    {
+      "name": "pandas",
+      "record_sha256": "951adfdeb098d407847af0b05becb513c97add81ab7f97bfb836499c99056a4b",
+      "version": "3.0.6"
+    },
+    {
+      "name": "parso",
+      "record_sha256": "f12d7035431df6048bd4ed5e00a3ff1b3e5821c6201e269ac0ad7f1e643cd9b7",
+      "version": "0.8.7"
+    },
+    {
+      "name": "partd",
+      "record_sha256": "5c853745ab303595a07edf266ddb64a2b8a6d701a23e5ec89930823efbb03438",
+      "version": "1.4.2"
+    },
+    {
+      "name": "pillow",
+      "record_sha256": "85afc050a07e9e71f698a7481c9a89c525d08f73c14ed49248a521b34e9f38c4",
+      "version": "12.3.0"
+    },
+    {
+      "name": "platformdirs",
+      "record_sha256": "82d494ae5b99c3504a29e0aa8edadd65ee9aff03cc78c9f828d5adf2e2c855cd",
+      "version": "4.12.4"
+    },
+    {
+      "name": "pooch",
+      "record_sha256": "7baabed9c89c1bebdd4a629b1784759faa0937e96930cb8f4dcec2b5271a2f4d",
+      "version": "1.9.0"
+    },
+    {
+      "name": "prompt_toolkit",
+      "record_sha256": "a40bdf71ed62886d4459e1462979f862f83d6fde483551fb8e547c0a6764df1d",
+      "version": "3.0.53"
+    },
+    {
+      "name": "psutil",
+      "record_sha256": "0d4c336a396000d4cae7c9225ae020e4ec471be9873d2e3b92fb516fc9d6fff4",
+      "version": "7.2.2"
+    },
+    {
+      "name": "psygnal",
+      "record_sha256": "c6b4cddd55b4f9196a346ae77b4857857b8a912c35f3d2b4e7ebdfd5bd3903e8",
+      "version": "0.16.1"
+    },
+    {
+      "name": "pure_eval",
+      "record_sha256": "a7827467bcdf9877f51deaf911c479feca74b4123dd93953acdc5a155347b933",
+      "version": "0.2.4"
+    },
+    {
+      "name": "pyconify",
+      "record_sha256": "e7c7b998b303a889e3b32316c744506f90274d62996e0e184e114a2568581e6e",
+      "version": "0.2.1"
+    },
+    {
+      "name": "pydantic",
+      "record_sha256": "2d6d86bbcab2118c60d7fb459296f3b5a4d3c121516a2606c50c3b172e8fc5ce",
+      "version": "2.14.0"
+    },
+    {
+      "name": "pydantic-compat",
+      "record_sha256": "6d1b1fa5a570a4d793a68f9b1c624fda5ea87e9ab392857dde7fd9c75ef54f6e",
+      "version": "0.1.2"
+    },
+    {
+      "name": "pydantic-extra-types",
+      "record_sha256": "97cdd61dee1a5d20bd92f941aaf66a6b47c6509a411bd731d7e169198e072925",
+      "version": "2.11.1"
+    },
+    {
+      "name": "pydantic-settings",
+      "record_sha256": "5572a2e2cf981af8f9fc9e507dca3e957a2e398b5150cc01bfc0e673909d7aa3",
+      "version": "2.15.0"
+    },
+    {
+      "name": "pydantic_core",
+      "record_sha256": "b6a90a006a3cc4d462a7dfc810811bebbad1f5a6486f544370cde1b9967229c7",
+      "version": "2.50.0"
+    },
+    {
+      "name": "pyproject_hooks",
+      "record_sha256": "86adcee4c250c3b18b913f21545e2d735b780b382fbf67ac27816d04c908be8e",
+      "version": "1.3.3"
+    },
+    {
+      "name": "python-dateutil",
+      "record_sha256": "e15e868a50b9c4e71df17b31369843617780146ac5adb1bbfdcced0ebe501824",
+      "version": "2.9.0.post0"
+    },
+    {
+      "name": "python-dotenv",
+      "record_sha256": "97fff9cd33734ca5d53a4d4dc07b583a2a4778a1dd614d2340aff1275ad9a5c9",
+      "version": "1.2.4"
+    },
+    {
+      "name": "pywin32",
+      "record_sha256": "585e487b44565034d0d02313b8c2bdf563545140db2c9a99554264a295576f6d",
+      "version": "312"
+    },
+    {
+      "name": "pyzmq",
+      "record_sha256": "70b694ec582cc40919470abf5fec8c189d54a9e21bdec371862ea7fd3f40567e",
+      "version": "27.2.0"
+    },
+    {
+      "name": "qtconsole",
+      "record_sha256": "2874df5ae4dcd4ca85fe510634759316e60cfa9e07493ebaca9a23cf41972dc8",
+      "version": "5.7.2"
+    },
+    {
+      "name": "referencing",
+      "record_sha256": "d7ecf9906a4a4ea4837d16e324e344f9f00b328570cf695a96a8de46b8766982",
+      "version": "0.37.0"
+    },
+    {
+      "name": "requests",
+      "record_sha256": "fc8c5216d0e865d815bd04cc240b5adc5d56f6c3dbe9aef3b4ea3b83d735bdfe",
+      "version": "2.34.2"
+    },
+    {
+      "name": "rich",
+      "record_sha256": "1b725253b1bd316b53169a3a0b35d03d6c81bad9009ddae73d8645fb3cd3f292",
+      "version": "15.0.0"
+    },
+    {
+      "name": "rpds-py",
+      "record_sha256": "ea0b5ce57a17a2bbbe915c53b31abd57dcb70770bd67d049f69f95810533d63a",
+      "version": "2026.9.1"
+    },
+    {
+      "name": "scikit-image",
+      "record_sha256": "f7799a102b803e3ebc9ebb71506edda1f9123360c4620403eeed4f9bcbb6131d",
+      "version": "0.26.0"
+    },
+    {
+      "name": "scipy",
+      "record_sha256": "483f156162db81c9305e925f7af6edc03b6a603d219aa8e5affbb163d24fba11",
+      "version": "1.18.1"
+    },
+    {
+      "name": "setuptools",
+      "record_sha256": "d05f27232d4390e8dacd30244d75bc805e7e611710402e89e4962e7a9ed3dcfb",
+      "version": "80.9.0"
+    },
+    {
+      "name": "shellingham",
+      "record_sha256": "2a878ed08ec32adc6b08a9b6a83754cd7c30ffb8a67e26527292456da9ff2fee",
+      "version": "1.5.4"
+    },
+    {
+      "name": "six",
+      "record_sha256": "d16e50f347969b1e1919fb0c88bac4b9c644f5305bcfcfb00f72b646dbd4065d",
+      "version": "1.17.0"
+    },
+    {
+      "name": "stack-data",
+      "record_sha256": "522b69b3fb8bc2aba2e176a824f62b51cda7c3c30e78abbf9ebf90ce5e3cb615",
+      "version": "0.6.3"
+    },
+    {
+      "name": "superqt",
+      "record_sha256": "05ae762388735855023cd92a9c28a846ee42c92f7d17535289fbecbe17f6cd3a",
+      "version": "0.8.2"
+    },
+    {
+      "name": "tifffile",
+      "record_sha256": "afc6c3a3f1d0f93f3ae168e23273241116d41032dd4bf03248991272b280e781",
+      "version": "2026.9.20"
+    },
+    {
+      "name": "tomli_w",
+      "record_sha256": "6758ea1fa917909e7f6f8f313e168e3627f1d480167ff78174dea2d7e1b501d3",
+      "version": "1.2.0"
+    },
+    {
+      "name": "toolz",
+      "record_sha256": "dfc571823a934e91b876f32cc474e345cb3d528c7842fe06a2d38cd0c73d9706",
+      "version": "1.2.0"
+    },
+    {
+      "name": "tornado",
+      "record_sha256": "cd3ecea4cff71896db487a686ea3a279569606bc03a6b6dc2422aa65391dc6fd",
+      "version": "6.5.10"
+    },
+    {
+      "name": "tqdm",
+      "record_sha256": "34e4b2b74a5e79354f0af4aca7e269c89849081183f4f6bc7e52471c3f1cbf72",
+      "version": "4.70.1"
+    },
+    {
+      "name": "traitlets",
+      "record_sha256": "aff43c4596f0dbd321faaca9fe02b93fb1e62b8ff070763cd77ad26a97fc084f",
+      "version": "5.16.1"
+    },
+    {
+      "name": "typer",
+      "record_sha256": "13f7097cfa55929393bc48892e284b3c444d516ecbebdd8bc5b2ed694e688317",
+      "version": "0.27.3"
+    },
+    {
+      "name": "typing-inspection",
+      "record_sha256": "83fc23669db31500d06056b13ecebe4f088f56a81c1ea86e3b68f1de3b8c7d95",
+      "version": "0.4.4"
+    },
+    {
+      "name": "typing_extensions",
+      "record_sha256": "9e07fea845cac76293d927afa7157a14ecba39b318bc8af236b8de530b7656c1",
+      "version": "4.16.0"
+    },
+    {
+      "name": "tzdata",
+      "record_sha256": "bc03ea1afd3394eb010013e6112f91d884785445c8453b7d56ddb7ba0cc4939d",
+      "version": "2026.5"
+    },
+    {
+      "name": "urllib3",
+      "record_sha256": "1753d325c8936a612ecdc947e686ade56b21f591fbb7518330cb0f2f7619c330",
+      "version": "2.8.0"
+    },
+    {
+      "name": "vispy",
+      "record_sha256": "455e084c0cb78e19e41c79d08a57d533b07d52b3248c2ebd4b73e80584b067cc",
+      "version": "0.17.0"
+    },
+    {
+      "name": "wcwidth",
+      "record_sha256": "02e6bffe75b5bbfdb11d6c5d92e2c5a474f41895c4b19d6f786e300ca6d29ee9",
+      "version": "0.9.2"
+    },
+    {
+      "name": "wheel",
+      "record_sha256": "05c0884a946331800f61bbdf7f4e08daaeb5faeeb904fffbdfad26aacbb5a404",
+      "version": "0.45.1"
+    },
+    {
+      "name": "wrapt",
+      "record_sha256": "b03728c98b81c9efe67a9af438a66206077dc85fa20513023f22d2655d965e47",
+      "version": "2.5.0"
+    },
+    {
+      "name": "zarr",
+      "record_sha256": "b2f5bc3330d15d12a007e36fa02104f072b9c8502dd6a8fa8e66080634545f80",
+      "version": "2.18.7"
+    }
+  ],
+  "environment_lock": "compat/host-environments/napari-threedee-windows-cpython312-pyqt6.txt",
+  "environment_lock_sha256": "a3bda7b33481d5d9ecbf856f05ff27bfd66ac46df6ad1f312d9fa8faa3e1e92c",
+  "errors": [],
+  "executable": "$ENV\\Scripts\\python.exe",
+  "host": "napari_threedee",
+  "inventory_tool_sha256": "7dee7e661d7b9d66dffd34fecfdf7ddf044b94f38b5adbebfd3eeed916e87058",
+  "loaded_qt_modules": [
+    "PyQt6",
+    "PyQt6.QtCore",
+    "PyQt6.QtGui",
+    "PyQt6.QtOpenGL",
+    "PyQt6.QtOpenGLWidgets",
+    "PyQt6.QtTest",
+    "PyQt6.QtWidgets",
+    "PyQt6.sip"
+  ],
+  "loaded_vispy_modules": [
+    "vispy",
+    "vispy.app",
+    "vispy.app._default_app",
+    "vispy.app._detect_eventloop",
+    "vispy.app.application",
+    "vispy.app.backends",
+    "vispy.app.backends._pyqt6",
+    "vispy.app.backends._qt",
+    "vispy.app.base",
+    "vispy.app.canvas",
+    "vispy.app.timer",
+    "vispy.color",
+    "vispy.color._color_dict",
+    "vispy.color.color_array",
+    "vispy.color.color_space",
+    "vispy.color.colormap",
+    "vispy.ext",
+    "vispy.ext.cubehelix",
+    "vispy.ext.gdi32plus",
+    "vispy.geometry",
+    "vispy.geometry.calculations",
+    "vispy.geometry.generation",
+    "vispy.geometry.isocurve",
+    "vispy.geometry.isosurface",
+    "vispy.geometry.meshdata",
+    "vispy.geometry.polygon",
+    "vispy.geometry.rect",
+    "vispy.geometry.torusknot",
+    "vispy.geometry.triangulation",
+    "vispy.gloo",
+    "vispy.gloo.buffer",
+    "vispy.gloo.context",
+    "vispy.gloo.framebuffer",
+    "vispy.gloo.gl",
+    "vispy.gloo.gl._constants",
+    "vispy.gloo.gl._gl2",
+    "vispy.gloo.gl._proxy",
+    "vispy.gloo.gl.gl2",
+    "vispy.gloo.glir",
+    "vispy.gloo.globject",
+    "vispy.gloo.preprocessor",
+    "vispy.gloo.program",
+    "vispy.gloo.texture",
+    "vispy.gloo.util",
+    "vispy.gloo.wrappers",
+    "vispy.glsl",
+    "vispy.io",
+    "vispy.io.datasets",
+    "vispy.io.image",
+    "vispy.io.mesh",
+    "vispy.io.stl",
+    "vispy.io.wavefront",
+    "vispy.scene",
+    "vispy.scene.cameras",
+    "vispy.scene.cameras._base",
+    "vispy.scene.cameras.arcball",
+    "vispy.scene.cameras.base_camera",
+    "vispy.scene.cameras.fly",
+    "vispy.scene.cameras.magnify",
+    "vispy.scene.cameras.panzoom",
+    "vispy.scene.cameras.perspective",
+    "vispy.scene.cameras.turntable",
+    "vispy.scene.canvas",
+    "vispy.scene.events",
+    "vispy.scene.node",
+    "vispy.scene.subscene",
+    "vispy.scene.visuals",
+    "vispy.scene.widgets",
+    "vispy.scene.widgets.axis",
+    "vispy.scene.widgets.colorbar",
+    "vispy.scene.widgets.console",
+    "vispy.scene.widgets.grid",
+    "vispy.scene.widgets.label",
+    "vispy.scene.widgets.viewbox",
+    "vispy.scene.widgets.widget",
+    "vispy.util",
+    "vispy.util.bunch",
+    "vispy.util.check_environment",
+    "vispy.util.config",
+    "vispy.util.dpi",
+    "vispy.util.dpi._win32",
+    "vispy.util.eq",
+    "vispy.util.event",
+    "vispy.util.fetching",
+    "vispy.util.fonts",
+    "vispy.util.fonts._freetype",
+    "vispy.util.fonts._triage",
+    "vispy.util.fonts._vispy_fonts",
+    "vispy.util.fonts._win32",
+    "vispy.util.fourier",
+    "vispy.util.frozen",
+    "vispy.util.keys",
+    "vispy.util.logs",
+    "vispy.util.profiler",
+    "vispy.util.ptime",
+    "vispy.util.quaternion",
+    "vispy.util.transforms",
+    "vispy.util.wrappers",
+    "vispy.version",
+    "vispy.visuals",
+    "vispy.visuals._scalable_textures",
+    "vispy.visuals.axis",
+    "vispy.visuals.border",
+    "vispy.visuals.box",
+    "vispy.visuals.colorbar",
+    "vispy.visuals.cube",
+    "vispy.visuals.ellipse",
+    "vispy.visuals.filters",
+    "vispy.visuals.filters.base_filter",
+    "vispy.visuals.filters.clipper",
+    "vispy.visuals.filters.color",
+    "vispy.visuals.filters.markers",
+    "vispy.visuals.filters.mesh",
+    "vispy.visuals.filters.picking",
+    "vispy.visuals.graphs",
+    "vispy.visuals.graphs.graph",
+    "vispy.visuals.graphs.layouts",
+    "vispy.visuals.graphs.layouts.circular",
+    "vispy.visuals.graphs.layouts.force_directed",
+    "vispy.visuals.graphs.layouts.networkx_layout",
+    "vispy.visuals.graphs.layouts.random",
+    "vispy.visuals.graphs.util",
+    "vispy.visuals.gridlines",
+    "vispy.visuals.gridmesh",
+    "vispy.visuals.histogram",
+    "vispy.visuals.image",
+    "vispy.visuals.image_complex",
+    "vispy.visuals.infinite_line",
+    "vispy.visuals.instanced_mesh",
+    "vispy.visuals.isocurve",
+    "vispy.visuals.isoline",
+    "vispy.visuals.isosurface",
+    "vispy.visuals.line",
+    "vispy.visuals.line.arrow",
+    "vispy.visuals.line.dash_atlas",
+    "vispy.visuals.line.line",
+    "vispy.visuals.line_plot",
+    "vispy.visuals.linear_region",
+    "vispy.visuals.markers",
+    "vispy.visuals.mesh",
+    "vispy.visuals.mesh_normals",
+    "vispy.visuals.plane",
+    "vispy.visuals.polygon",
+    "vispy.visuals.rectangle",
+    "vispy.visuals.regular_polygon",
+    "vispy.visuals.scrolling_lines",
+    "vispy.visuals.shaders",
+    "vispy.visuals.shaders.compiler",
+    "vispy.visuals.shaders.expression",
+    "vispy.visuals.shaders.function",
+    "vispy.visuals.shaders.multiprogram",
+    "vispy.visuals.shaders.parsing",
+    "vispy.visuals.shaders.program",
+    "vispy.visuals.shaders.shader_object",
+    "vispy.visuals.shaders.variable",
+    "vispy.visuals.spectrogram",
+    "vispy.visuals.sphere",
+    "vispy.visuals.surface_plot",
+    "vispy.visuals.text",
+    "vispy.visuals.text._sdf_cpu",
+    "vispy.visuals.text._sdf_gpu",
+    "vispy.visuals.text.text",
+    "vispy.visuals.transforms",
+    "vispy.visuals.transforms._util",
+    "vispy.visuals.transforms.base_transform",
+    "vispy.visuals.transforms.chain",
+    "vispy.visuals.transforms.interactive",
+    "vispy.visuals.transforms.linear",
+    "vispy.visuals.transforms.nonlinear",
+    "vispy.visuals.transforms.transform_system",
+    "vispy.visuals.tube",
+    "vispy.visuals.visual",
+    "vispy.visuals.volume",
+    "vispy.visuals.windbarb",
+    "vispy.visuals.xyz_axis"
+  ],
+  "modules": [
+    {
+      "name": "napari_threedee",
+      "origin": "$ENV\\Lib\\site-packages\\napari_threedee\\__init__.py",
+      "sha256": "48f54549a69cc301f47156d9c79d896a9f85228969eb10b9b7cd5c8183019811",
+      "version": "unknown"
+    },
+    {
+      "name": "napari_threedee._backend.manipulator.vispy_manipulator_visual",
+      "origin": "$ENV\\Lib\\site-packages\\napari_threedee\\_backend\\manipulator\\vispy_manipulator_visual.py",
+      "sha256": "fa3ee6e2aa0538f9fc8b62abe68930cd4e7c6ca400cb5593cde839fac0887fe2"
+    },
+    {
+      "name": "napari_threedee._backend.manipulator.vispy_visual_data",
+      "origin": "$ENV\\Lib\\site-packages\\napari_threedee\\_backend\\manipulator\\vispy_visual_data.py",
+      "sha256": "ef828c1943837b17f4d0981c6ba98869e8eaa2faf2716c29bb28256a2e84f0f1"
+    }
+  ],
+  "origin_format": "Paths relative to the selected isolated environment, prefixed by $ENV.",
+  "package_tree_sha256": "464d2b686b4377d83c3af81d239d073c1e221afe376c3926f43c8ecbb8bd2438",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "python": "3.12.8 (main, Dec 19 2024, 14:41:01) [MSC v.1942 64 bit (AMD64)]",
+  "qualification": "import_inventory_only",
+  "rendering_qualified": false,
+  "schema": 1,
+  "source_build_exception": "asciitree==0.3.3; hashed sdist, preinstalled hashed setuptools80.9.0/wheel0.45.1, build isolation disabled"
+}

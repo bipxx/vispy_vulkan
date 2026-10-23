@@ -15,7 +15,16 @@ src/vispy/VkLayer_vispy_submit.dll
 /compat/cp312-candidate/
 /compat/cp313-candidate/
 /compat/cp314-candidate/
-/compat/host-environments/
+/compat/host-environments/*
+# The host lock requires these immutable inputs in source distributions.
+!/compat/host-environments/visbrain.source-inventory.json
+!/compat/host-environments/visbrain-windows-cpython311-pyqt5.txt
+!/compat/host-environments/visbrain.import-inventory.json
+!/compat/host-environments/dive.source-inventory.json
+!/compat/host-environments/dive-windows-cpython311-pyqt5.txt
+!/compat/host-environments/dive.import-inventory.json
+!/compat/host-environments/napari_threedee.source-inventory.json
+!/compat/host-environments/napari_threedee.import-inventory.json
 /compat/qt-environments/
 /compat/native-epochs/
 /compat/native-sdk/
