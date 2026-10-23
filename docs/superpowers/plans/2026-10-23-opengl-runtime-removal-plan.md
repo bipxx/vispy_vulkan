@@ -3,7 +3,47 @@
 Date: 2026-10-23. Status: execution plan; groundwork partially implemented,
 full installed-artifact qualification remains pending.
 Original inspected source: `390f901ced79d339f46d7f825f21c8e12596d434`.
-Integrated groundwork: `44db9bcf8` on `work/opengl-runtime-removal`.
+Integrated implementation checkpoint: `cc4a66c09` on
+`work/opengl-runtime-removal`. The final installed-artifact matrix is incomplete.
+
+## Resumption checkpoint
+
+Use this checkpoint to resume execution; the original phases below retain their
+requirements. Earlier "current groundwork" notes describe historical results.
+
+- Native N0/N1 functional tests pass 25/25 on Windows hardware Vulkan and WSL
+  software Vulkan. Linux PyQt6 QWidget and the three admitted hosts have scoped
+  all-three-gate evidence on the N1 artifact, not on the latest native source.
+- Integrated sampler-array test region correction, generated-line integer
+  sampling specialization, depth uploads, and actual sample-zero multisample
+  depth/stencil capture. The latest fixes still require fresh GPU qualification.
+  Preserve the earlier four endpoint failures until a matching new wheel passes.
+- Integrated selected Windows PyQt5/PySide6 packaging, the core-only TBB runtime
+  profile, and exact Linux host dependency/CPU runtime locks. Focused profile
+  tests pass 11/11; the integrated no-OpenGL CPU suite passes 60 with one
+  platform-specific skip. These checks do not qualify the final graphics matrix.
+- The N2/N3 Linux wheel build completed from source `531b19236`, SHA256
+  `39a725766dab08dc6e284af807d40c44202584d4972e5714f34691e6e4375c41`.
+  It predates the generated-line fix and depth changes; installation and GPU
+  qualification remain pending. Do not label it the final candidate.
+- Disk exhaustion paused the owned Linux Qt 6.12 build. Verify the recorded
+  process identities before resuming. Restore capacity before large writes;
+  inspect vendor directory integrity before source snapshots. Never retry a
+  cleanup rejected by automatic approval review, including through its parent.
+
+Exactly three execution owners continue in parallel:
+
+| Agent | Next packet | Exit evidence |
+| --- | --- | --- |
+| 1 — Native | Validate generated-line sampling, depth uploads and sample-zero capture in a fresh artifact; finish the paused Linux binding builds after capacity recovery. | Actual GPU pixels, mutation/recovery tests and zero resources; source/configuration/license handoff for Qt. |
+| 2 — Python/hosts | Qualify persistent Windows binding/host consumers, investigate the intermittent PyQt5 startup hang, and replay required host flows against the final renderer. | Real mapped-window interaction/capture/recovery/shutdown; failures remain visible until resolved. |
+| 3 — Packaging/proof | Finish binding/dependency profiles, reproducible artifacts, whole-process-tree observations and current matrix documentation. | Same-artifact proof of all three gates for every mandatory row; complete hashes and notices. |
+
+The coordinator integrates and tests completed packets without adding another
+execution agent. Sequence: recover capacity and verify sources; integrate ready
+changes; build a batched final native candidate; qualify each installed row;
+run required CI; publish and merge only after the release gates pass. Keep
+Windows hardware and WSL software results distinct. Metal remains experimental.
 
 ## Outcome and boundaries
 
