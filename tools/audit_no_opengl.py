@@ -23,7 +23,8 @@ def run_candidate(args):
     report_path = args.output.resolve()
     worker = report_path.with_suffix('.worker.json')
     assert not worker.exists(), 'Fresh worker report required'
-    command = [str(args.python.resolve(strict=True)), '-I', '-B', str(Path(__file__).resolve().parent / 'no_opengl/probe.py'),
+    args.python.resolve(strict=True)  # Validate target, but preserve a venv symlink launcher.
+    command = [str(args.python.absolute()), '-I', '-B', str(Path(__file__).resolve().parent / 'no_opengl/probe.py'),
                '--output', str(worker), '--scenario', args.scenario, '--policy', args.policy]
     for name in ('binding', 'source_root', 'wheel', 'script'):
         value = getattr(args, name)

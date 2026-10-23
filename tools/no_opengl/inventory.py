@@ -107,7 +107,8 @@ def main():
         value['status'] = 'PASS_INVENTORY' if not any(value[key] for key in ('gl_runtime_files', 'gl_requirements', 'errors')) and not system.get('gl_runtime_files') and not system.get('gl_packages') else 'FAIL_INVENTORY'
     except BaseException as error:
         import traceback
-        value = {'status': 'FAILED_INVENTORY', 'error': str(error), 'traceback': traceback.format_exc()}
+        value = {'status': 'FAILED_INVENTORY', 'error': str(error), 'traceback': traceback.format_exc(),
+                 'prefix': sys.prefix, 'base_prefix': sys.base_prefix, 'executable': sys.executable}
     args.output.write_text(json.dumps(value, indent=2) + '\n')
     return 0 if value['status'] == 'PASS_INVENTORY' else 1
 

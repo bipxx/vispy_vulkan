@@ -13,7 +13,8 @@ from .dependencies import dependency_closure
 
 def build(args):
     wheel = args.wheel.resolve(strict=True)
-    python = args.python.resolve(strict=True)
+    python = args.python.absolute()
+    python.resolve(strict=True)  # Validation only: launching its realpath loses Linux venv semantics.
     runtime_path = args.runtime_report.resolve(strict=True)
     runtime = json.loads(runtime_path.read_text())
     worker_path = Path(runtime['worker_report']).resolve(strict=True)
@@ -22,7 +23,7 @@ def build(args):
     admitted = (runtime.get('scenario') in ('headless', 'qt', 'script') and not runtime.get('source_mode')
                 and worker.get('status') == 'PASS_SCENARIO' and not worker.get('error') and not worker.get('cleanup_error')
                 and worker.get('wheel_sha256') == wheel_hash and worker.get('wheel_members_verified', 0) > 0
-                and Path(worker['executable']).resolve() == python
+                and Path(worker['executable']).resolve() == python.resolve()
                 and all(runtime.get('gates', {}).get(key) == 'PASS' for key in ('no_gl_execution', 'no_gl_loads')))
     inventory_path = args.output.resolve().with_suffix('.inventory.json')
     if inventory_path.exists():

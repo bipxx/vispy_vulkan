@@ -45,3 +45,11 @@ def test_inventory_cannot_pass_when_exact_wheel_is_missing(tmp_path):
     assert result.returncode != 0
     assert value['status'] == 'FAILED_INVENTORY'
     assert 'FileNotFoundError' in value['traceback']
+
+
+@pytest.mark.skipif(not sys.platform.startswith('linux'), reason='Linux symlink venv launcher regression')
+def test_runtime_and_receipt_preserve_real_symlink_venv(tmp_path):
+    from no_opengl.venv_launcher_control import run
+    proof = run(tmp_path / 'launcher')
+    assert proof['status'] == 'PASS_LAUNCHER_CONTROLS'
+    assert proof['venv_symlink']

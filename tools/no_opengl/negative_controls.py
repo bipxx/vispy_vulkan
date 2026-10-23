@@ -42,7 +42,8 @@ def main():
         cases['fork_call'] = prefix + 'import os;pid=os.fork();x.auditCallControl() if pid==0 else os.waitpid(pid,0)'
     reports = {}
     for name, code in cases.items():
-        command = [str(args.python.resolve(strict=True)), '-I', '-B', '-c', code]
+        args.python.resolve(strict=True)
+        command = [str(args.python.absolute()), '-I', '-B', '-c', code]
         if windows:
             from .windows import trace
             native = trace(command, environment=os.environ.copy(), cwd=root, log=root / (name + '.log'))
