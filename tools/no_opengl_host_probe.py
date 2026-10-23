@@ -321,7 +321,7 @@ def napari(evidence, application, dawn):
             cmap = DirectLabelColormap(color_dict={0: (0, 0, 0, 0),
                 7: (1, 0, 0, 1), 65537: (0, 1, 0, 1), 16777473: (0, 0, 1, 1),
                 None: (1, 1, 0, 1)})
-            layer = viewer.add_labels(labels, colormap=cmap)
+            layer = viewer.add_labels(labels, colormap=cmap, opacity=1)
             fit()
             initial = capture('napari_labels_initial')
             assert np.count_nonzero((initial[..., 0] > 220) & (initial[..., 1] < 20)) > 64
