@@ -13,6 +13,14 @@ namespace vispy::platform {
 
 enum class NativeSurfaceKind { Win32, Xlib, Metal };
 
+// Windows and X11 native windows may be destroyed immediately after the GUI
+// clear/close call. Drain Dawn's deferred Surface deletion before returning
+// ownership to the GUI. Metal keeps its separate weak-view detach policy.
+inline bool native_surface_requires_retirement_drain(NativeSurfaceKind kind) {
+    return kind == NativeSurfaceKind::Win32 || kind == NativeSurfaceKind::Xlib;
+}
+
+
 struct NativeSurfaceDescriptor {
     NativeSurfaceKind kind = NativeSurfaceKind::Win32;
     uint64_t window = 0;  // HWND, Xlib Window (never narrowed), or borrowed NSView.

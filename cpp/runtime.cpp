@@ -1819,9 +1819,9 @@ struct Engine {
     }
 
     void retire_surface(Canvas& canvas) {
-        const bool xlib = canvas.surface_owner &&
-            canvas.surface_owner->descriptor().kind == vispy::platform::NativeSurfaceKind::Xlib;
-        if (xlib) {
+        const bool drain_native_owner = canvas.surface_owner &&
+            vispy::platform::native_surface_requires_retirement_drain(canvas.surface_owner->descriptor().kind);
+        if (drain_native_owner) {
             // Ticket and callback captures pair every retained Surface with its
             // native owner. Retire them before dropping the final Surface; the
             // unique-owner precondition below also catches a hidden capture.
