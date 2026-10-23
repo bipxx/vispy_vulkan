@@ -199,8 +199,15 @@ def dependency_closure(roots: list[Path], search_dirs: list[Path]) -> dict:
     """
     directories = [Path(p).resolve(strict=True) for p in search_dirs]
     indexes, api_sets = {}, {}
-    def locate(name, parent, runpaths):
-        paths = [parent, *(Path(value.replace("$ORIGIN", str(parent))) for text in runpaths for value in text.split(":")), *directories]
+    def expand_origin(value, parent):
+        return value.replace('${ORIGIN}', str(parent)).replace('$ORIGIN', str(parent))
+    def locate(name, parent, runpaths, binary_format):
+        if binary_format == 'ELF' and '/' in name:
+            # DT_NEEDED can be an explicit loader path, not just a soname.
+            # Relative cwd-dependent paths cannot be inferred from the parent.
+            direct = Path(expand_origin(name, parent))
+            return direct.resolve() if direct.is_absolute() and direct.is_file() else None
+        paths = [parent, *(Path(expand_origin(value, parent)) for text in runpaths for value in text.split(":")), *directories]
         for directory in paths:
             if not directory.is_absolute() or not directory.is_dir():
                 continue
@@ -231,7 +238,7 @@ def dependency_closure(roots: list[Path], search_dirs: list[Path]) -> dict:
         if reason:
             violations.append({"kind": "library", "path": str(path), "reason": reason})
         for item in binary["imports"]:
-            target = locate(item["name"], path.parent, binary.get("runpaths", []))
+            target = locate(item["name"], path.parent, binary.get("runpaths", []), binary['format'])
             edge = {"parent": str(path), **item, "resolved": str(target) if target else None}
             edges.append(edge)
             reason = library_reason(item["name"])
