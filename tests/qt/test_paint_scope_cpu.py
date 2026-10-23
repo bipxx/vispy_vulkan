@@ -75,6 +75,80 @@ def test_scope_surrounds_intermediate_present_alpha_tail_and_final_present(monke
     assert errors == []
 
 
+def test_readback_presentation_remains_owned_until_qimage_is_painted(monkeypatch):
+    backend, _, events, errors, _ = paint_double(monkeypatch)
+    image = object()
+    backend._dawn_presentation = 'readback'
+    backend._dawn_last_image = None
+
+    def readback():
+        assert backend._dawn_paint_token == 19
+        events.append('readback')
+        return image
+
+    def paint(owned):
+        assert owned is image and backend._dawn_paint_token == 19
+        events.append('qimage-paint')
+
+    backend._read_dawn_framebuffer = readback
+    backend._paint_dawn_image = paint
+    QT.CanvasBackendDesktop.paintEvent(backend, None)
+    assert events == ['ready', 'begin', 'draw', 'present', 'alpha-tail',
+                      'present', 'pump', 'readback', 'qimage-paint', 'end']
+    assert backend._dawn_last_image is image and errors == []
+
+
+@pytest.mark.parametrize('failure', ['readback', 'qimage-paint'])
+def test_readback_or_qpainter_failure_aborts_original_paint_owner(monkeypatch, failure):
+    backend, _, events, errors, original = paint_double(monkeypatch)
+    backend._dawn_presentation = 'readback'
+    backend._dawn_last_image = None
+
+    def step(name, value=None):
+        events.append(name)
+        if name == failure:
+            raise original
+        return value
+
+    backend._read_dawn_framebuffer = lambda: step('readback', object())
+    backend._paint_dawn_image = lambda image: step('qimage-paint')
+    QT.CanvasBackendDesktop.paintEvent(backend, None)
+    assert events[-1] == 'abort' and 'end' not in events
+    assert backend._dawn_last_image is None
+    assert errors == [(original, 'paintEvent')]
+
+
+def test_readback_backpressure_uses_owned_previous_image_without_new_frame(monkeypatch):
+    backend, _, events, errors, _ = paint_double(monkeypatch, ready=False)
+    backend._dawn_presentation = 'readback'
+    backend._dawn_last_image = object()
+    backend._paint_dawn_image = lambda image: events.append('previous-image')
+    QT.CanvasBackendDesktop.paintEvent(backend, None)
+    assert events == ['ready', 'pump', 'previous-image'] and errors == []
+
+
+def test_readback_profile_never_requests_a_native_window_or_vulkan_surface(monkeypatch):
+    events = []
+    monkeypatch.setattr(vispy, '_dawn', SimpleNamespace(
+        clear_surface=lambda canvas_id: events.append(('clear', canvas_id)),
+        update_surface_scale=lambda canvas_id, ratio: events.append(('scale', canvas_id, ratio))),
+        raising=False)
+    backend = SimpleNamespace(_dawn_closed=False, _dawn_canvas_id=7,
+        _dawn_presentation='readback', _ratio=lambda: 1.5,
+        effectiveWinId=lambda: pytest.fail('readback requested a native window handle'))
+    QT.CanvasBackendDesktop._dawn_surface(backend)
+    assert events == [('clear', 7), ('scale', 7, 1.5)]
+
+
+def test_windows_presentation_is_explicit_and_defaults_to_readback():
+    assert QT._select_dawn_presentation('auto', 'win32') == 'readback'
+    assert QT._select_dawn_presentation('auto', 'linux') == 'native'
+    assert QT._select_dawn_presentation('native', 'win32') == 'native'
+    assert QT._select_dawn_presentation('readback', 'linux') == 'readback'
+    with pytest.raises(ValueError, match='auto, readback or native'):
+        QT._select_dawn_presentation('opengl', 'win32')
+
+
 def test_earlier_native_without_scope_api_keeps_existing_paint_sequence(monkeypatch):
     backend, _, events, errors, _ = paint_double(monkeypatch, scoped=False)
     QT.CanvasBackendDesktop.paintEvent(backend, None)

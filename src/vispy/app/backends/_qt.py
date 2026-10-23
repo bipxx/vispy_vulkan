@@ -6,6 +6,14 @@
 
 The binding wrappers select one toolkit per process. Resource sharing belongs
 to Dawn; this module does not import Qt's OpenGL context or widget classes.
+
+Windows defaults to Vulkan offscreen rendering with CPU readback into an owned
+QImage, painted by an ordinary QWidget. This deliberately pays a GPU completion
+wait and full-frame transfer to avoid Vulkan Win32 WSI drivers that resolve WGL
+entry points. ``config['qt_presentation']='native'`` (or the
+``VISPY_QT_PRESENTATION`` environment variable) explicitly opts into the native
+surface fast path, which is outside strict Windows no-OpenGL qualification.
+``auto`` selects readback on Windows and native presentation elsewhere.
 """
 
 from __future__ import division
@@ -234,6 +242,13 @@ capability = dict(  # things that can be set by the backend
 def _set_config(c):
     """Retain the requested Dawn configuration without constructing GL formats."""
     return dict(c)
+
+
+def _select_dawn_presentation(value, platform):
+    """Choose an explicit presentation route; never fall back to OpenGL."""
+    if value not in ('auto', 'readback', 'native'):
+        raise ValueError('Dawn Qt presentation must be auto, readback or native')
+    return ('readback' if platform == 'win32' else 'native') if value == 'auto' else value
 
 
 # ------------------------------------------------------------- application ---
@@ -691,12 +706,15 @@ class CanvasBackendDesktop(QtBaseCanvasBackend, QWidget):
         else:
             hint = qt_window_types.Widget
 
+        self._dawn_presentation = _select_dawn_presentation(
+            os.environ.get('VISPY_QT_PRESENTATION', config['qt_presentation']), sys.platform)
         QWidget.__init__(self, p.parent, hint)
         self._secondary_context = None
         self._surface = None
         self.setAutoFillBackground(False)
-        self.setAttribute(QtCore.Qt.WidgetAttribute.WA_NativeWindow if PYQT6_API else QtCore.Qt.WA_NativeWindow, True)
-        self.setAttribute(QtCore.Qt.WidgetAttribute.WA_PaintOnScreen if PYQT6_API else QtCore.Qt.WA_PaintOnScreen, True)
+        native_presentation = self._dawn_presentation == 'native'
+        self.setAttribute(QtCore.Qt.WidgetAttribute.WA_NativeWindow if PYQT6_API else QtCore.Qt.WA_NativeWindow, native_presentation)
+        self.setAttribute(QtCore.Qt.WidgetAttribute.WA_PaintOnScreen if PYQT6_API else QtCore.Qt.WA_PaintOnScreen, native_presentation)
         self.setMouseTracking(True)
         qt_focus_policies = QtCore.Qt.FocusPolicy if PYQT6_API else QtCore.Qt
         self.setFocusPolicy(qt_focus_policies.WheelFocus)
@@ -715,6 +733,7 @@ class CanvasBackendDesktop(QtBaseCanvasBackend, QWidget):
         self._dawn_paint_token = None
         self._dawn_callback_failed = False
         self._dawn_ratio_override = None
+        self._dawn_last_image = None
 
     def _ratio(self):
         if self._dawn_ratio_override is not None:
@@ -727,8 +746,13 @@ class CanvasBackendDesktop(QtBaseCanvasBackend, QWidget):
         if getattr(self, '_dawn_closed', False):
             return
         from vispy import _dawn
-        hwnd = int(self.effectiveWinId() or 0)
         canvas_id = int(self._dawn_canvas_id)
+        if self._dawn_presentation == 'readback':
+            # In particular, never enter Vulkan Win32 WSI for this profile.
+            _dawn.clear_surface(canvas_id)
+            _dawn.update_surface_scale(canvas_id, self._ratio())
+            return
+        hwnd = int(self.effectiveWinId() or 0)
         if not hwnd:
             _dawn.clear_surface(canvas_id)
             return
@@ -868,6 +892,9 @@ class CanvasBackendDesktop(QtBaseCanvasBackend, QWidget):
             if not _dawn.frame_ready(int(self._dawn_canvas_id)):
                 self._dawn_paint_deferred = True
                 self._start_dawn_pump()
+                if (getattr(self, '_dawn_presentation', 'native') == 'readback' and
+                        self._dawn_last_image is not None):
+                    self._paint_dawn_image(self._dawn_last_image)
                 return
             self._dawn_paint_deferred = False
             paint_api = tuple(getattr(_dawn, name, None) for name in
@@ -882,6 +909,12 @@ class CanvasBackendDesktop(QtBaseCanvasBackend, QWidget):
             self._draw_dawn_scene()
             _dawn.present(int(self._dawn_canvas_id))
             self._start_dawn_pump()
+            if getattr(self, '_dawn_presentation', 'native') == 'readback':
+                # Readback drains pending/deferred GPU work while the native
+                # Qt paint token still owns its submission and completion.
+                image = self._read_dawn_framebuffer()
+                self._paint_dawn_image(image)
+                self._dawn_last_image = image
             if paint_token is not None:
                 paint_api[1](int(self._dawn_canvas_id), paint_token)
                 paint_token = None
@@ -898,7 +931,21 @@ class CanvasBackendDesktop(QtBaseCanvasBackend, QWidget):
             self._dawn_paint_token = previous_paint_token
 
     def paintEngine(self):
+        if getattr(self, '_dawn_presentation', 'native') == 'readback':
+            return QWidget.paintEngine(self)
         return None
+
+    def _paint_dawn_image(self, image):
+        """Present through Qt's raster QWidget path, inside a paint event."""
+        painter = QtGui.QPainter(self)
+        try:
+            if not painter.isActive():
+                raise RuntimeError('Dawn Qt readback presentation could not begin QWidget painting')
+            modes = getattr(QtGui.QPainter, 'CompositionMode', QtGui.QPainter)
+            painter.setCompositionMode(modes.CompositionMode_Source)
+            painter.drawImage(self.rect(), image)
+        finally:
+            painter.end()
 
     def context(self):
         """Return the canvas context when its rendering device is available."""
@@ -924,6 +971,10 @@ class CanvasBackendDesktop(QtBaseCanvasBackend, QWidget):
         """Capture the current scene. Child overlays are not included."""
         # QOpenGLWidget::grabFramebuffer renders before reading its target.
         self._draw_dawn_scene()
+        return self._read_dawn_framebuffer()
+
+    def _read_dawn_framebuffer(self):
+        """Read an independently owned QImage without triggering another draw."""
         from ...gloo import read_pixels
         image = read_pixels(alpha=True)
         height, width, _channels = image.shape

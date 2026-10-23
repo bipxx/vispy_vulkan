@@ -47,8 +47,13 @@ def test_native_is_parentable_qwidget_not_qopenglwidget():
     trace = "\n".join(_dawn.debug_trace())
     print("hwnd surface configured", "hwnd surface configured" in trace)
     print("swapchain present", "swapchain present" in trace)
-    assert "hwnd surface configured" in trace
-    assert "swapchain present" in trace
+    readback = native._dawn_presentation == 'readback'
+    if readback:
+        assert not _dawn.benchmark_surface_info(int(native._dawn_canvas_id))['attached']
+        assert native.grab().width() > 0
+    else:
+        assert "hwnd surface configured" in trace
+        assert "swapchain present" in trace
     old_info = _dawn.device_info()
     before_loss = _dawn.probe()
     _dawn.lose_device()
@@ -72,14 +77,24 @@ def test_native_is_parentable_qwidget_not_qopenglwidget():
         program.draw("triangles")
 
     canvas.events.draw.connect(draw)
-    native.paintEvent(qt_backend.QtGui.QPaintEvent(native.rect()))
+    # QPainter presentation requires a genuine Qt paint dispatch, including
+    # Qt's backing-store redirection; do not call the virtual method directly.
+    native.update()
+    for _ in range(100):
+        application.process_events()
+        if _dawn.probe()['device_generation'] > before_loss['device_generation']:
+            break
     fresh = _dawn.debug_trace()[marked:]
     configured = any(line.startswith("hwnd surface configured") for line in fresh)
     presented = "swapchain present" in fresh
     print("hwnd surface configured after loss", configured)
     print("swapchain present after loss", presented)
-    assert configured
-    assert presented
+    if readback:
+        assert not configured and not presented
+        assert not _dawn.benchmark_surface_info(int(native._dawn_canvas_id))['attached']
+    else:
+        assert configured
+        assert presented
     recovered = _dawn.probe()
     assert recovered["device_generation"] > before_loss["device_generation"]
     recovered_info = _dawn.device_info()
@@ -103,12 +118,19 @@ def test_handle_detach_and_late_events_after_canvas_close(monkeypatch):
     application.process_events()
     try:
         original = native.effectiveWinId
-        monkeypatch.setattr(native, "effectiveWinId", lambda: None)
-        native._dawn_surface()
-        assert not _dawn.benchmark_surface_info(canvas_id)["attached"]
-        monkeypatch.setattr(native, "effectiveWinId", original)
-        native._dawn_surface()
-        assert _dawn.benchmark_surface_info(canvas_id)["attached"]
+        if native._dawn_presentation == 'readback':
+            def unexpected_handle_request():
+                raise AssertionError('readback profile requested a native window handle')
+            monkeypatch.setattr(native, 'effectiveWinId', unexpected_handle_request)
+            native._dawn_surface()
+            assert not _dawn.benchmark_surface_info(canvas_id)['attached']
+        else:
+            monkeypatch.setattr(native, "effectiveWinId", lambda: None)
+            native._dawn_surface()
+            assert not _dawn.benchmark_surface_info(canvas_id)["attached"]
+            monkeypatch.setattr(native, "effectiveWinId", original)
+            native._dawn_surface()
+            assert _dawn.benchmark_surface_info(canvas_id)["attached"]
         canvas.close()
         # Qt can deliver handle/resize events while destroying the QWidget.
         native._dawn_surface()
