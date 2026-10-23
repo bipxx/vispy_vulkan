@@ -17,6 +17,8 @@ import zipfile
 
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / 'cmake'))
+from runtime_package import source_package_hashes, wheel_package_hashes
 
 
 def require(condition, message):
@@ -54,9 +56,7 @@ def archive_audit(args):
         'CMAKE_OSX_ARCHITECTURES': args.arch, 'CMAKE_OSX_DEPLOYMENT_TARGET': '13.0',
     }.items():
         require(cache.get(key) == expected, key + ' differs from the native Metal build')
-    tracked = subprocess.check_output(['git', 'ls-files', '-z', 'src/vispy'], cwd=ROOT)
-    package = {name[4:]: digest((ROOT / name).read_bytes())
-               for name in tracked.decode().split('\0') if name}
+    package = source_package_hashes(ROOT)
     notices = {'vispy/_licenses/' + p.name: digest(p.read_bytes())
                for p in (ROOT / 'third_party/licenses').iterdir()
                if p.is_file() and p.suffix in ('.txt', '.md', '.json')}
@@ -64,7 +64,7 @@ def archive_audit(args):
                     for name in ('LICENSE', 'LICENSE-BSD', 'LICENSING.md')})
     suffix = sysconfig.get_config_var('EXT_SUFFIX')
     native = ['vispy/_dawn' + suffix, 'vispy/visuals/text/_sdf_cpu' + suffix]
-    hashes = wheel_hashes(wheel)
+    hashes = wheel_package_hashes(wheel, root=ROOT)
     require(set(hashes) == set(package) | set(notices) | set(native),
             'Wheel package contents differ from tracked sources, notices and two native extensions')
     for name, expected in {**package, **notices}.items():

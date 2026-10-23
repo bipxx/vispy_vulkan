@@ -22,6 +22,8 @@ from mesh_layout_process import (
 
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / 'cmake'))
+from runtime_package import wheel_package_hashes
 WARM_COUNTERS = (
     'shader_normalizations', 'shader_parse_calls', 'shader_link_calls',
     'shader_module_creations', 'render_pipeline_creations',
@@ -70,10 +72,7 @@ def main():
         package = Path(vispy.__file__).resolve().parent
         require(package.is_relative_to(Path(sys.prefix).resolve()) and
                 not package.is_relative_to(ROOT), 'An external installed wheel is required')
-        with zipfile.ZipFile(args.wheel) as archive:
-            hashes = {name: hashlib.sha256(archive.read(name)).hexdigest()
-                      for name in archive.namelist()
-                      if name.startswith('vispy/') and not name.endswith('/')}
+        hashes = wheel_package_hashes(args.wheel)
         for name, expected in hashes.items():
             path = package / Path(name).relative_to('vispy')
             require(hashlib.sha256(path.read_bytes()).hexdigest() == expected,
