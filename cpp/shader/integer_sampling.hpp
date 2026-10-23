@@ -47,9 +47,11 @@ IntegerSampleBindings integer_sample_bindings(const std::vector<uint32_t>& words
                                              uint32_t stage_mask = 0);
 
 // Semantic SPIR-V specialization only. Admits 32-bit signed/unsigned non-array,
-// non-depth 2D normalized-coordinate samples, direct resource loads, and LOD0
-// (or implicit LOD with an explicitly base-level-only policy). Finite float32
-// coordinates are required; non-finite sampling has no portable value promise.
+// non-depth 2D normalized-coordinate samples and direct resource loads. The
+// captured nearest, one-level allocation policy admits implicit/explicit LOD
+// and gradients, preserving operand evaluation while fetching mip zero.
+// Finite float32 coordinates/LOD/gradients are required; non-finite sampling
+// has no portable value promise. This does not admit multi-level mip storage.
 // Input is const and output is published only after full Vulkan validation.
 // Existing texelFetch and all floating sampling instructions are unchanged.
 IntegerSampleLowering lower_integer_nearest_2d(const std::vector<uint32_t>& words,

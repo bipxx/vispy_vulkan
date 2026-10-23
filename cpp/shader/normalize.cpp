@@ -783,12 +783,14 @@ std::string emit_body(const std::vector<Tok>& tokens, const std::vector<Decl>& d
                 text = "textureLod";
                 suffixes[close].push_back(", 0.0");
             }
-        } else if (options.base_level_sampling && tok.ident &&
+        } else if (tok.ident &&
                    (text == "textureLod" || text == "texture1DLod" || text == "texture2DLod" || text == "texture3DLod" ||
-                    text == "textureCubeLod" || text == "textureGrad" || text == "texture2DGradEXT")) {
-            error = std::string(vertex ? "vertex" : "fragment") + " line=" + std::to_string(tok.line) +
-                    ": explicit LOD/gradient sampling is outside base-level texture admission";
-            return {};
+                    text == "textureCubeLod")) {
+            // Retain the supplied expression. A single-level allocation does
+            // not authorize dropping LOD evaluation or min/mag selection.
+            text = "textureLod";
+        } else if (tok.ident && (text == "textureGrad" || text == "texture2DGradEXT")) {
+            text = "textureGrad";
         }
         if (auto found = sampler_uses.find(i); found != sampler_uses.end()) {
             const auto& sampler = found->second;

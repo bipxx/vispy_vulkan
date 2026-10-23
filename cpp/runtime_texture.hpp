@@ -619,7 +619,12 @@ inline wgpu::SamplerDescriptor prepare_sampler_descriptor(const TextureData& dat
     descriptor.minFilter = filter(data.min_filter);
     descriptor.magFilter = filter(data.mag_filter);
     descriptor.mipmapFilter = wgpu::MipmapFilterMode::Nearest;
-    descriptor.lodMinClamp = descriptor.lodMaxClamp = 0;
+    descriptor.lodMinClamp = 0;
+    // Vulkan's documented emulation of GL_NEAREST/GL_LINEAR uses maxLod=.25:
+    // it selects only mip zero while preserving min-vs-mag filter selection.
+    // maxLod=0 is sufficient only when both filters are equal. Integer nearest
+    // retains that exact zero clamp and its captured one-level policy.
+    descriptor.lodMaxClamp = descriptor.minFilter == descriptor.magFilter ? 0.f : .25f;
     if (description.integer && (descriptor.minFilter == wgpu::FilterMode::Linear || descriptor.magFilter == wgpu::FilterMode::Linear))
         throw error("integer textures require nearest interpolation");
     const auto& modes = data.wrapping;

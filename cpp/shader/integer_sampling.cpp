@@ -43,7 +43,7 @@ std::string integer_sample_policy_identity(const std::vector<IntegerSamplePolicy
     if (!policies_valid(policies)) return {};
     auto ordered = policies;
     std::sort(ordered.begin(), ordered.end(), [](const auto& a, const auto& b) { return a.texture_binding < b.texture_binding; });
-    std::string identity = "integer-nearest-2d=spirv-query-fetch-wrap-parity-v2;set=0;finite-f32;";
+    std::string identity = "integer-nearest-2d=spirv-query-fetch-wrap-parity-v3;set=0;finite-f32;single-level-lod-grad;";
     for (const auto& p : ordered) {
         identity += std::to_string(p.texture_binding) + ',' + std::to_string(p.sampler_binding) + ',' +
                     std::to_string(uint32_t(p.scalar)) + ',' + std::to_string(uint32_t(p.s)) + ',' +
@@ -154,9 +154,14 @@ static IntegerSampleLowering lower_impl(const Words& input, const std::vector<In
         if (inst.op == spv::Op::OpImageSampleImplicitLod) {
             if (a.size() != 4) return fail("implicit sample image operands are unsupported");
         } else {
-            if (a.size() != 6 || a[4] != uint32_t(spv::ImageOperandsMask::Lod)) return fail("only an exact base LOD operand is supported");
-            const auto* lod = definition(a[5]);
-            if (!lod || lod->op != spv::Op::OpConstant || lod->a.size() != 3 || lod->a[2] != 0) return fail("integer sample LOD must be literal zero");
+            const bool lod = a.size() == 6 && a[4] == uint32_t(spv::ImageOperandsMask::Lod);
+            const bool gradients = a.size() == 7 && a[4] == uint32_t(spv::ImageOperandsMask::Grad);
+            if (!lod && !gradients) return fail("only explicit LOD or gradients are admitted by the one-level nearest policy");
+            // The actual captured policy is mandatory for specialization and
+            // proves nearest filtering of a single available mip. That makes
+            // every finite requested LOD/gradient select mip zero. Preserve all
+            // original operand instructions: calls and private writes still
+            // execute, even though their returned level/gradient is not fetched.
         }
         if (inspection) {
             IntegerSampleBinding binding{texture_binding, sampler_binding,

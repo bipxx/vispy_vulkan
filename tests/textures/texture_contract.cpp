@@ -363,6 +363,13 @@ void sampler_contracts() {
     data.wrapping = {"repeat", "mirrored_repeat"};
     auto descriptor = prepare_sampler_descriptor(data);
     require(descriptor.minFilter == wgpu::FilterMode::Linear && descriptor.magFilter == wgpu::FilterMode::Nearest, "separate min/mag filters");
+    require(descriptor.lodMinClamp == 0 && descriptor.lodMaxClamp == .25f &&
+        descriptor.mipmapFilter == wgpu::MipmapFilterMode::Nearest,
+        "non-mip filtering preserves unequal min/mag selection without accessing mip one");
+    data.mag_filter = "linear";
+    auto equal_filters = prepare_sampler_descriptor(data);
+    require(equal_filters.lodMaxClamp == 0, "equal filters retain the exact zero LOD clamp");
+    data.mag_filter = "nearest";
     require(descriptor.addressModeU == wgpu::AddressMode::Repeat && descriptor.addressModeV == wgpu::AddressMode::MirrorRepeat, "2D wrapping contract");
     data.dimensions = 3; data.wrapping = {"clamp_to_edge", "repeat", "mirrored_repeat"};
     descriptor = prepare_sampler_descriptor(data);
