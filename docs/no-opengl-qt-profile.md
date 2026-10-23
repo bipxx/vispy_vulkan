@@ -1,9 +1,9 @@
 # Selected Qt runtime profiles
 
 The ordinary `vispy[pyqt6]` extra and `uv.lock` select upstream full Qt packages.
-They are not the strict runtime profile. The first selected profile targets
-Windows CPython 3.12 x64 and PyQt6 only; PyQt5, PySide6 and Linux have separate
-qualification rows and cannot inherit its results.
+They are not the strict runtime profile. Windows CPython 3.12 x64 selected
+profiles are available for PyQt6, PyQt5 and PySide6. Each binding and Linux
+profile has its own qualification row and cannot inherit another's results.
 
 `compat/qt/windows-pyqt6-no-opengl.json` lists every selected member from the exact
 upstream PyQt6 6.11.0 and Qt 6.11.2 wheels. It retains ten binding modules, the
@@ -43,6 +43,31 @@ installation, run functional/native traces and the exact environment inventory
 receipt. A successful package build reports `BUILT_PROFILE_UNQUALIFIED`; it does
 not qualify any application or binding by itself. Existing OpenGL reference
 environments and original licenses remain separate and unchanged.
+
+The analogous `windows-pyqt5-no-opengl.json` and
+`windows-pyside6-no-opengl.json` manifests use the same producer and offline
+installation command, substituting their binding name in both paths. They
+retain the original pinned PyQt5 5.15.11 / Qt 5.15.2 and PySide6 / Qt 6.12.0
+versions respectively. PyQt5 provides nine selected modules because Qt5
+combines the SVG widget API in QtSvg. PySide6 provides all ten modules through
+Essentials; its selected metadata explicitly omits the Addons, PDF and
+WebEngine dependencies, whose modules are outside this QWidget profile.
+Shiboken and SIP support wheels remain unchanged. Every original notice from
+each selected input wheel is retained, with preferred source URLs and hashes
+recorded in the manifest. Repackaging does not replace their original licenses.
+
+Each bundle was rebuilt twice with identical wheel hashes, installed offline
+into a fresh environment and checked against every selected installed byte.
+All selected modules imported and an actual shown QWidget produced the
+expected captured pixel. Repeat this smoke check using the target consumer:
+
+```text
+<consumer-python> -I -B tools/no_opengl/qt_profile_smoke.py --binding pyqt5 --manifest compat/qt/windows-pyqt5-no-opengl.json --bundle <bundle-directory> --output <new-report.json>
+```
+
+Use `pyside6` for the other profile. `PASS_PROFILE_SMOKE` covers these package
+and widget checks; complete VisPy lifecycle, native execution/load observation
+and installed dependency receipts remain separate requirements.
 
 The Linux source profile is separate. It targets the recorded Ubuntu 24.04
 x86_64 ABI with CPython 3.12; its wheels deliberately make no manylinux claim.

@@ -17,8 +17,9 @@ from no_opengl.policy import library_reason
 from no_opengl.qt_profile import build
 
 
-def test_selected_profile_pins_original_wheels_and_retains_required_native_paths():
-    manifest = json.loads((ROOT / 'compat/qt/windows-pyqt6-no-opengl.json').read_text())
+@pytest.mark.parametrize('binding,qt', [('pyqt6', 'Qt6'), ('pyqt5', 'Qt5'), ('pyside6', 'Qt6')])
+def test_selected_profile_pins_original_wheels_and_retains_required_native_paths(binding, qt):
+    manifest = json.loads((ROOT / ('compat/qt/windows-' + binding + '-no-opengl.json')).read_text())
     lock = tomllib.loads((ROOT / 'uv.lock').read_text())
     for item in manifest['wheels']:
         package = next(row for row in lock['package'] if row['name'] == item['name'])
@@ -27,12 +28,18 @@ def test_selected_profile_pins_original_wheels_and_retains_required_native_paths
         assert item['selected_members'] == sorted(set(item['selected_members']))
         assert set(item['original_notice_members']) <= set(item['selected_members'])
         assert not any(library_reason(name) for name in item['selected_members'] if name.endswith(('.dll', '.pyd')))
-    runtime = next(item for item in manifest['wheels'] if item['name'] == 'pyqt6-qt6')
-    assert {'PyQt6/Qt6/bin/Qt6Gui.dll', 'PyQt6/Qt6/plugins/platforms/qwindows.dll'} <= set(runtime['selected_members'])
-    requirements = (ROOT / 'compat/qt/windows-pyqt6-no-opengl-requirements.txt').read_text()
-    assert 'pyqt6==6.11.0+vispynogl.1 --hash=sha256:' in requirements
-    assert 'pyqt6-qt6==6.11.2+vispynogl.1 --hash=sha256:' in requirements
-    assert 'pyqt6-sip==13.13.0 --hash=sha256:' in requirements
+    runtime = next(item for item in manifest['wheels'] if item['name'] == manifest.get('runtime_distribution', 'pyqt6-qt6'))
+    prefix = 'PySide6/' if binding == 'pyside6' else ('PyQt5/Qt5/' if binding == 'pyqt5' else 'PyQt6/Qt6/')
+    assert {prefix + ('' if binding == 'pyside6' else 'bin/') + qt + 'Gui.dll',
+            prefix + 'plugins/platforms/qwindows.dll'} <= set(runtime['selected_members'])
+    requirements = (ROOT / ('compat/qt/windows-' + binding + '-no-opengl-requirements.txt')).read_text()
+    for item in manifest['wheels']:
+        assert item['name'] + '==' + item['output_version'] + ' --hash=sha256:' in requirements
+    assert manifest['preferred_sources'] and all(len(item['sha256']) == 64 for item in manifest['preferred_sources'])
+    if binding == 'pyside6':
+        meta = next(item for item in manifest['wheels'] if item['name'] == 'pyside6')
+        assert set(meta['drop_requires']) == {'PySide6_Addons', 'PySide6_PDF', 'PySide6_WebEngine'}
+        assert not any(item['name'] == 'pyside6-addons' for item in manifest['wheels'])
 
 
 def profile_fixture(tmp_path, *, missing_notice=False, wrong_hash=False):
