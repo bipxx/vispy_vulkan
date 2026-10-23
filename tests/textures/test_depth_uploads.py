@@ -143,3 +143,63 @@ def test_depth_upload_recovery_recreates_pipeline_and_actual_attachment_from_ret
         draw(p, .5, (0, 1, 0, 1))
         assert np.all(gloo.read_pixels()[..., 1] == 255)
         assert _dawn.probe()["device_generation"] > generation
+
+
+@pytest.mark.gpu
+@pytest.mark.parametrize("lose_device", [False, True])
+def test_canvas_activation_preserves_nested_depth_framebuffer_scopes(lose_device):
+    from vispy import _dawn
+    with scene(np.full((8, 12), .75, np.float32)) as (canvas, _, _program):
+        np.testing.assert_allclose(depth_pixels(), .75, atol=1e-6)
+        outer_id = _dawn.framebuffer_config(canvas._backend._dawn_canvas_id)["framebuffer_id"]
+        assert outer_id != 0
+        canvas.set_current();gloo.set_viewport(0, 0, *SIZE)
+        np.testing.assert_allclose(depth_pixels(), .75, atol=1e-6)
+        assert _dawn.framebuffer_config(canvas._backend._dawn_canvas_id)["framebuffer_id"] == outer_id
+        color = gloo.RenderBuffer((8, 12), format="color")
+        depth = gloo.Texture2D(np.full((8, 12), .25, np.float32), format="depth_component",
+                              internalformat="depth_component", interpolation="nearest")
+        inner = gloo.FrameBuffer(color=color, depth=depth)
+        try:
+            with inner:
+                np.testing.assert_allclose(depth_pixels(), .25, atol=1e-6)
+                inner_id = _dawn.framebuffer_config(canvas._backend._dawn_canvas_id)["framebuffer_id"]
+                assert inner_id not in (0, outer_id)
+                if lose_device:_dawn.lose_device()
+                canvas.set_current();gloo.set_viewport(0, 0, *SIZE)
+                np.testing.assert_allclose(depth_pixels(), .25, atol=1e-6)
+                assert _dawn.framebuffer_config(canvas._backend._dawn_canvas_id)["framebuffer_id"] == inner_id
+            # Popping the inner scope after CURRENT must restore the outer
+            # retained target, including when both allocations were recreated.
+            np.testing.assert_allclose(depth_pixels(), .75, atol=1e-6)
+            assert _dawn.framebuffer_config(canvas._backend._dawn_canvas_id)["framebuffer_id"] == outer_id
+        finally:
+            inner.delete();depth.delete();color.delete()
+
+
+@pytest.mark.gpu
+def test_context_switch_resize_and_peer_close_preserve_scoped_and_default_targets_per_canvas():
+    from vispy import _dawn
+    with scene(np.full((8, 12), .75, np.float32)) as (scoped, _, _program):
+        np.testing.assert_allclose(depth_pixels(), .75, atol=1e-6)
+        outer_id = _dawn.framebuffer_config(scoped._backend._dawn_canvas_id)["framebuffer_id"]
+        peer = app.Canvas(app="dawn_headless", size=SIZE, show=False)
+        try:
+            peer.set_current();gloo.set_viewport(0, 0, *SIZE)
+            gloo.set_clear_depth(.375);gloo.clear(color=True, depth=True, stencil=True)
+            np.testing.assert_allclose(depth_pixels(), .375, atol=1e-6)
+            assert _dawn.framebuffer_config(peer._backend._dawn_canvas_id)["framebuffer_id"] == 0
+            scoped.set_current();gloo.set_viewport(0, 0, *SIZE)
+            np.testing.assert_allclose(depth_pixels(), .75, atol=1e-6)
+            assert _dawn.framebuffer_config(scoped._backend._dawn_canvas_id)["framebuffer_id"] == outer_id
+            peer.set_current();peer.size = (14, 10);gloo.set_viewport(0, 0, 14, 10)
+            gloo.set_clear_depth(.625);gloo.clear(color=True, depth=True, stencil=True)
+            peer.set_current()
+            image = depth_pixels()
+            assert image.shape == (10, 14)
+            np.testing.assert_allclose(image, .625, atol=1e-6)
+            assert _dawn.framebuffer_config(peer._backend._dawn_canvas_id)["framebuffer_id"] == 0
+        finally:
+            peer.close();scoped.set_current();gloo.set_viewport(0, 0, *SIZE)
+        np.testing.assert_allclose(depth_pixels(), .75, atol=1e-6)
+        assert _dawn.framebuffer_config(scoped._backend._dawn_canvas_id)["framebuffer_id"] == outer_id

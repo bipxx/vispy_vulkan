@@ -6479,9 +6479,13 @@ static void execute_commands_impl(int canvas_id, const std::vector<Command>& com
         if (arity == arities.end()) throw std::runtime_error("unsupported operation");
         if (cmd.args.size() < arity->second) throw std::runtime_error("missing command arguments");
         if (cmd.op == "CURRENT") {
-            canvas.fbo = cmd.args.size() > 1 ? arg_id(cmd, 1) : 0;
-            canvas.framebuffer_stack.clear();
-            canvas.framebuffer_stack.push_back(canvas.fbo);
+            const int backend_default = cmd.args.size() > 1 ? arg_id(cmd, 1) : 0;
+            // Activating an existing canvas changes its backend default target,
+            // not an explicit FrameBuffer scope. Each canvas owns its stack;
+            // preserve nested bindings across activation, resize and recovery.
+            if (canvas.framebuffer_stack.empty()) canvas.framebuffer_stack.push_back(backend_default);
+            else canvas.framebuffer_stack.front() = backend_default;
+            canvas.fbo = canvas.framebuffer_stack.back();
             eng.log("CURRENT fbo=" + std::to_string(canvas.fbo));
             continue;
         }
