@@ -43,7 +43,8 @@ def run_candidate(args):
     native = {'events': [], 'coverage': {}, 'errors': []}
     if sys.platform == 'win32':
         from no_opengl.windows import trace
-        native = trace(command, environment=environment, cwd=report_path.parent, log=log, timeout=args.timeout)
+        native = trace(command, environment=environment, cwd=report_path.parent, log=log, timeout=args.timeout,
+                       handle_baseline=args.handle_baseline)
         code = native['process_exit']
     elif sys.platform.startswith('linux') and args.native_auditor:
         from no_opengl.linux import trace
@@ -131,6 +132,7 @@ def main():
     run.add_argument('--script', type=Path)
     run.add_argument('--native-auditor', type=Path)
     run.add_argument('--native-debugger', type=Path)
+    run.add_argument('--handle-baseline', type=Path, help='Passing independent Windows CloseHandle fidelity controls for these exact OS bytes')
     run.add_argument('--dependencies-report', type=Path)
     run.add_argument('--policy', choices=('observe', 'deny'), default='deny')
     run.add_argument('--gates', choices=('all', 'imports'), default='all')

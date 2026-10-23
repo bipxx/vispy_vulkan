@@ -14,12 +14,15 @@ from pathlib import Path
 import subprocess
 import sys
 import time
+import os
+import hashlib
+import json
 
 from .dependencies import inspect_binary
 from .policy import is_gl_entrypoint
 
 
-def trace(command, *, environment, cwd, log, timeout=120):
+def trace(command, *, environment, cwd, log, timeout=120, handle_baseline=None, _handle_control=False):
     if sys.platform != "win32":
         raise RuntimeError("Windows loader observation requires Windows")
     import ctypes as c
@@ -87,6 +90,24 @@ def trace(command, *, environment, cwd, log, timeout=120):
     nt.NtResumeThread.restype = c.c_long
     events, processes, modules, breakpoints, errors = [], {}, {}, {}, []
     threads, stepping, resolver_hooks, ordinal_names, image_sizes = {}, {}, {}, {}, {}
+    close_functions, exception_dispatchers, unwinder = {}, {}, None
+    handle_proof = None
+    if handle_baseline:
+        baseline_path = Path(handle_baseline).resolve(strict=True)
+        baseline = json.loads(baseline_path.read_text())
+        if baseline.get('schema') != 1 or baseline.get('status') != 'PASS_HANDLE_FIDELITY_CONTROLS' or not baseline.get('checks') or not all(baseline['checks'].values()):
+            raise ValueError('A passing native CloseHandle fidelity baseline is required')
+        required_os = {(Path(os.environ['SystemRoot']) / 'System32' / name).resolve() for name in ('ntdll.dll', 'KernelBase.dll')}
+        if {Path(path).resolve() for path in baseline['os_files']} != required_os:
+            raise ValueError('CloseHandle baseline does not bind both actual OS implementation files')
+        control_source = Path(__file__).with_name('handle_negative_probe_windows.c')
+        if baseline.get('control_source_sha256') != hashlib.sha256(control_source.read_bytes()).hexdigest():
+            raise ValueError('CloseHandle independent control source differs')
+        for path, expected in baseline['os_files'].items():
+            if hashlib.sha256(Path(path).read_bytes()).hexdigest() != expected:
+                raise ValueError('CloseHandle baseline OS bytes differ')
+        handle_proof = {'file': str(baseline_path), 'sha256': hashlib.sha256(baseline_path.read_bytes()).hexdigest(),
+                        'os_files': baseline['os_files']}
     observed_pids, exited_pids = set(), set()
     started = time.monotonic()
     killed = False
@@ -224,6 +245,14 @@ def trace(command, *, environment, cwd, log, timeout=120):
         try:
             image = inspect_binary(Path(path))
             image_sizes[(pid, base)] = image['image_size']
+            if Path(path).parent == (Path(os.environ['SystemRoot']) / 'System32') and Path(path).name.casefold() in ('ntdll.dll', 'kernelbase.dll', 'kernel32.dll'):
+                addresses = sorted({item['rva'] for item in image['exports'] if not item['forwarder']})
+                for export in image['exports']:
+                    if export['name'] in ('NtClose', 'ZwClose', 'CloseHandle') and not export['forwarder']:
+                        close_functions[(pid, base + export['rva'])] = {'path': path, 'name': export['name']}
+                    if export['name'] == 'KiRaiseUserExceptionDispatcher' and not export['forwarder']:
+                        end = next((value for value in addresses if value > export['rva']), image['image_size'])
+                        exception_dispatchers[pid] = {'begin': base + export['rva'], 'end': base + end, 'path': path}
             for export in image['exports']:
                 ordinal_names[(pid, base, export['ordinal'])] = export['name']
                 symbol_resolver = export['name'] in ('GetProcAddress', 'LdrGetProcedureAddress', 'LdrGetProcedureAddressEx')
@@ -338,9 +367,32 @@ def trace(command, *, environment, cwd, log, timeout=120):
                         elif info.record.code == 0x80000004 and pid in stepping and stepping[pid]['tid'] == event.tid:
                             resume_step(pid)
                         elif info.record.code not in (0x80000003, 0x40010006, 0x4001000a):
+                            stack, unwind_error = [], None
+                            if info.record.code in (0xc0000008, 0xc0000235) and info.first_chance:
+                                try:
+                                    if unwinder is None:
+                                        from .windows_stack import Unwinder
+                                        unwinder = Unwinder()
+                                    storage, registers = context(event.tid)
+                                    for frame in unwinder.frames(processes[pid], threads[event.tid][1], registers):
+                                        frame['module'] = module_at(pid, frame['address'])
+                                        frame['close_function'] = close_functions.get((pid, frame['function_begin']))
+                                        stack.append(frame)
+                                except Exception as error:
+                                    unwind_error = str(error)
                             emit('native_exception', pid=pid, tid=event.tid, code=hex(info.record.code),
-                                 first_chance=bool(info.first_chance), location=module_at(pid, address))
-                            status = 0x80010001  # DBG_EXCEPTION_NOT_HANDLED
+                                 first_chance=bool(info.first_chance), location=module_at(pid, address),
+                                 stack=stack, unwind_error=unwind_error)
+                            dispatcher = exception_dispatchers.get(pid, {})
+                            matching_close = [frame['close_function'] for frame in stack[:4] if frame['close_function']]
+                            if ((handle_proof or _handle_control) and info.first_chance and info.record.code in (0xc0000008, 0xc0000235)
+                                    and dispatcher.get('begin', 0) <= address < dispatcher.get('end', 0)
+                                    and matching_close and not unwind_error):
+                                emit('native_debugger_closehandle_return', pid=pid, code=hex(info.record.code),
+                                     source=matching_close, baseline=handle_proof or 'INDEPENDENT_CONTROL_ONLY',
+                                     semantics='Documented debugger-only exception; resume OS CloseHandle FALSE/ERROR_INVALID_HANDLE behavior')
+                            else:
+                                status = 0x80010001  # DBG_EXCEPTION_NOT_HANDLED
                     elif event.code == 5:  # EXIT_PROCESS_DEBUG_EVENT
                         emit('native_process_exit', pid=pid, exit_code=event.data.exit_process.code)
                         exited_pids.add(pid)
@@ -349,6 +401,8 @@ def trace(command, *, environment, cwd, log, timeout=120):
                             k.CloseHandle(threads.pop(tid)[1])
                         handle = processes.pop(pid, None)
                         if handle:
+                            if unwinder is not None:
+                                unwinder.close(handle)
                             k.CloseHandle(handle)
                 finally:
                     if not k.ContinueDebugEvent(pid, event.tid, status):
@@ -363,6 +417,8 @@ def trace(command, *, environment, cwd, log, timeout=120):
                 child.kill()
                 child.wait(timeout=10)
             for handle in processes.values():
+                if unwinder is not None:
+                    unwinder.close(handle)
                 k.CloseHandle(handle)
             for _, handle in threads.values():
                 k.CloseHandle(handle)
@@ -375,4 +431,5 @@ def trace(command, *, environment, cwd, log, timeout=120):
                          "process_tree": observed_pids == exited_pids,
                          "private_or_statically_linked_gl_implementations": False},
             "scope": "Windows x64 OS debugger loads, public GL export traps and GetProcAddress/LdrGetProcedureAddress[Ex] lookups; no claim about private driver implementation internals or manually parsed exports.",
+            "closehandle_fidelity_baseline": handle_proof,
             "errors": errors, "observed_pids": sorted(observed_pids), "exited_pids": sorted(exited_pids)}

@@ -93,3 +93,26 @@ worker recomputes the environment fingerprint and all recorded native hashes;
 the controller checks that every newly loaded file belongs to the audited graph.
 Different wheels, package changes, changed native bytes, unseen loaded files,
 failed scenarios and import-only runs cannot qualify the complete matrix.
+
+Windows can raise diagnostic bad-handle exceptions only because a process is
+being debugged, where ordinary CloseHandle returns FALSE/error 6. See the
+[Microsoft CloseHandle contract](https://learn.microsoft.com/en-us/windows/win32/api/handleapi/nf-handleapi-closehandle).
+The default observer forwards exceptions. An optional `--handle-baseline
+<controls.json>` enables a narrowly proved fidelity correction: only first-chance
+invalid/protected-handle exceptions at the actual OS exception dispatcher, with a
+real x64 unwind frame inside OS CloseHandle/NtClose, resume ordinary return
+behavior. The baseline binds both implementation DLL hashes and control source.
+Unrelated and second-chance exceptions and every GL load/lookup/call remain
+unchanged. No application monkeypatch or OS configuration change is involved.
+
+Build `handle_negative_probe_windows.c` without a CRT using the VS/SDK toolchain:
+
+```text
+cl /nologo /Od /GS- /Zl /Fohandle.obj /Fehandle.exe tools/no_opengl/handle_negative_probe_windows.c /link /NODEFAULTLIB /ENTRY:control_main /SUBSYSTEM:CONSOLE kernel32.lib
+python -B -m no_opengl.windows_handle_controls --control handle.exe --fixture negative_api.dll --output <new-directory>
+```
+
+The independent controls compare invalid/protected handles against undebugged
+native FALSE/error 6, prove unrelated exceptions still terminate, and perform GL
+lookup and direct calls after each bad handle to prove those traps still fire.
+Use only a resulting `PASS_HANDLE_FIDELITY_CONTROLS` report for the same OS bytes.
