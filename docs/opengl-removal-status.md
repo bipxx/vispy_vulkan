@@ -72,10 +72,16 @@ Recorded installed-artifact results are scoped to the exact tested bytes:
   `20c4436325eebbd1ade61779e49c7ca1344627bdeff0c5a95e336e002949eb64`:
   persistent selected PyQt6 Glue workflow passes all three gates with functional
   lifecycle and nine-zero shutdown (`no-opengl-persistent-native1/profile-glue-fixed-glue-allgates2.json`
-  in the Python worktree). Other recorded QWidget/host flows pass native
-  execution/load gates; final selected dependency closure and replay remain
-  per-environment requirements. The core-only pinned TBB profile addresses the
-  Windows Numba TBB runtime closure without shipping unused HWLOC plugins.
+  in the Python worktree). QWidget, napari and registered napari-threedee also
+  now pass all three gates, full functional lifecycle and nine-zero shutdown
+  after adding only the reviewed core TBB runtime to the existing selected
+  consumer. Every existing host/provider/renderer version and payload remains
+  unchanged, including NumPy 2.4.6. The napari trace observes the actual profile
+  `tbb12.dll` load. Exact scenario receipts and before/after environment proof
+  are in the Python worktree's `build/no-opengl-windows-tbb-hosts-1/summary1.json`
+  and `<scenario>-qualified2.json`. Historical receipts are retained. The
+  core-only profile excludes unused HWLOC plugins; these results do not qualify
+  a newer renderer artifact or other bindings.
 - Earlier Windows `6bef4403...` headless clear/lines/text/image/recovery, markers
   and ten framebuffer cases have scoped three-gate receipts. These remain
   historical evidence and do not qualify a newer renderer artifact.
@@ -86,25 +92,39 @@ Recorded installed-artifact results are scoped to the exact tested bytes:
   qualification on freshly built artifacts. No older result is transferred to
   these changed native bytes.
 
-At the 2026-10-23 execution checkpoint, Linux continuation is blocked by the
-WSL filesystem state. The resumed Qt 6.12 build reached 1480/1636 actions before
+The 2026-10-23 Linux continuation encountered a WSL filesystem failure. The
+resumed Qt 6.12 build reached 1480/1636 actions before
 terminating with `EROFS`; both the resume receipt and terminal build-results
 write failed with `OSError 30: Read-only file system`. All 15 recorded build
 processes subsequently exited. The filesystem reported an emergency read-only
 fallback, and even `/bin/lsblk` returned an I/O error. The retained Windows-side
 receipt is
 `vispy_vulkan-opengl-native/build/no-opengl-qt-build-1/qt612-resume-erofs1.json`.
-This is an infrastructure blocker, not a successful Qt/PySide build or a new
-runtime qualification result. No WSL builds or repair commands are running.
-An offline filesystem check/repair awaits explicit user approval because it
-changes filesystem metadata and there is insufficient space for a 135 GB
-backup. Historical Linux proofs above remain scoped to their earlier exact
-artifacts; filesystem recovery and fresh installed verification are required
-before relying on those environments for further qualification.
+This failed build is not a successful Qt/PySide artifact or a new runtime
+qualification result. The user subsequently authorized offline filesystem
+recovery. Safe journal/preen repair completed, the final forced read-only check
+passed all five passes with exit 0, and the remounted read/write root passed a
+fsynced write probe. The coordinator retained recovery logs and removed the
+temporary helper after verifying its exact registration path. The receipt is
+`build/opengl-removal-wsl-recovery-root-1/result1.json` in the canonical workspace.
+A full backup could not fit in the available space; this is recorded in that
+receipt. Qt 6.12 source/archive integrity checks precede restarting the failed
+build. Historical Linux proofs above remain scoped to their earlier exact
+artifacts; recovery itself earns no new package or runtime qualification.
 
-The separate Windows N3/N4/N5 SDK-backed build was still running at this
-checkpoint from source `99d110b6b` and frozen source snapshot `dc290a...`.
-Its actual 92 GPU cases remain pending. Current Windows CPU checks pass:
+The Windows N3/N4/N5 SDK-backed attempt from source `99d110b6b` and frozen source
+snapshot `dc290a...` terminated during configuration with `Snapshot origin
+identity differs`; no project native compilation occurred. The verifier
+correctly requires the admitted physical dependency paths, which are distinct
+from byte-equivalent Git vendor paths. New frozen `source3` copies exactly the
+623 pinned project files from unchanged `source2` and links only to the original
+approved Dawn and VisPy physical captures. Preparation rehashed the complete
+119,083-file captured graph and checked all ten origin inventories, the old N23
+snapshot and protected native bytes. Existing snapshots, failed results,
+locks, admission records and verifier are unchanged. Its receipt is
+`build/opengl-removal-n345-windows-root-1/source3.json`; the original full build
+verifier remains mandatory. The replacement native build and actual 92 GPU
+cases remain pending. Current Windows CPU checks pass:
 60 no-OpenGL contract tests with one platform skip, plus six canonical
 package/source-contract tests. Those checks do not replace the pending native
 build, installed GPU runs or three-gate receipts for the changed artifact.
