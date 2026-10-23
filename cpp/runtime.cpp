@@ -3001,11 +3001,11 @@ struct Engine {
                 sizeof(DrawSnap) + sizeof(LineWork) + sizeof(Record) * 4 + 128) > control_budget)
             throw std::length_error("lines: chunk input/control representation exceeds explicit budget");
         vispy::shader::LineConsumerPolicy policy;
-        policy.coverage = captured.selection.state.smooth ? vispy::shader::LineCoveragePolicy::SmoothReference :
+        policy.coverage = captured.selection.state.smooth ? vispy::shader::LineCoveragePolicy::SmoothAnalytic :
                                                           vispy::shader::LineCoveragePolicy::AliasedMajorAxis;
         policy.sample_count = static_cast<uint32_t>(snap.state.sample_count);
         policy.depth_output = bool(snap.depth_view) || bool(snap.depth_attachment);
-        policy.coverage_identity = captured.selection.state.smooth ? "smooth-reference-open" :
+        policy.coverage_identity = captured.selection.state.smooth ? vispy::shader::kSmoothLineCoverageIdentity :
             vispy::shader::kAliasedLineCoverageIdentity;
         const auto consumer = prepare_line_consumer(captured.original_artifact, policy);
         const auto consumer_device = prepare_line_consumer_modules(captured.original_artifact, consumer);
@@ -3164,11 +3164,11 @@ struct Engine {
         }
         vispy::lines::LineConsumerSelection selection(selected.primitive, selected.selection());
         vispy::shader::LineConsumerPolicy policy;
-        policy.coverage = selected.state.smooth ? vispy::shader::LineCoveragePolicy::SmoothReference :
+        policy.coverage = selected.state.smooth ? vispy::shader::LineCoveragePolicy::SmoothAnalytic :
                                                 vispy::shader::LineCoveragePolicy::AliasedMajorAxis;
         policy.sample_count = static_cast<uint32_t>(snap.state.sample_count);
         policy.depth_output = bool(snap.depth_view) || bool(snap.depth_attachment);
-        policy.coverage_identity = selected.state.smooth ? "smooth-reference-open" :
+        policy.coverage_identity = selected.state.smooth ? vispy::shader::kSmoothLineCoverageIdentity :
             vispy::shader::kAliasedLineCoverageIdentity;
         auto consumer = prepare_line_consumer(captured.original_artifact, policy);
         const auto draw = vispy::shader::plan_generated_line_consumer_draw(*consumer, selection,

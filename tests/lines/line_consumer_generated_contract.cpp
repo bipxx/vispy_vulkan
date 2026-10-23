@@ -1362,6 +1362,49 @@ void aliased_projection_and_clipped_terminal() {
     require(generated_line_consumer_policy_identity(*e, prior) != c->policy_identity,
             "old rounded-plane/clipped-terminal policy cannot reuse the repaired CPU cache entry");
 }
+void analytic_smooth_contract() {
+    namespace lines = vispy::lines;
+    auto e = evaluator();
+    auto p = policy(); p.coverage = LineCoveragePolicy::SmoothAnalytic;
+    p.coverage_identity = kSmoothLineCoverageIdentity;
+    auto c = build_generated_line_consumer(e, p, grants());
+    require(c->ok, "analytic smooth consumer compiles: " + c->error);
+    diagnostics("analytic-smooth", *c);
+    Trace trace(c->fragment_spv);
+    require(trace.id("vispy_line_consumer_smooth", true) != 0,
+            "real fragment SPIR-V contains analytic coverage");
+    require(c->fragment.find("vispy_out_color.a *= vispy_line_consumer_coverage;") >
+            c->fragment.find("    vispy_line_consumer_original_fragment();"),
+            "coverage modulates user alpha after the original fragment call");
+    require(c->policy_identity != generated_line_consumer_policy_identity(*e, policy()),
+            "smooth and aliased consumers cannot share a cache entry");
+    const lines::LineConsumerSelection selection(lines::Mode::Strip, lines::Selection{0, 3, 1});
+    for (double width : {0.25, 1.0, 1.5, 3.75}) {
+        auto draw = plan_generated_line_consumer_draw(*c, selection, {0, 2}, lines::state(width, true),
+            {0, 0, 32, 24}, 24, 0, 1, grants());
+        require(draw.parameters.raster[0] == width && draw.instance_count == 2,
+                "smooth widths remain fractional and use the existing topology");
+        auto chunk = plan_generated_line_consumer_chunk_draw(*c, 2, 3, 2, true, false, false, 5,
+            lines::state(width, true), {0, 0, 32, 24}, 24, 0, 1, grants());
+        require(chunk.parameters.raster[0] == width && chunk.parameters.ranges[1] == 5,
+                "smooth chunk preserves fractional width and original primitive identity");
+    }
+    refusal([&]{plan_generated_line_consumer_draw(*c, selection, {0, 2}, lines::state(1, false),
+        {0, 0, 32, 24}, 24, 0, 1, grants());}, "aliased draws cannot reuse smooth artifacts");
+    p.sample_count = 4;
+    require(!build_generated_line_consumer(e, p, grants())->ok, "analytic policy does not silently enable MSAA");
+    p.sample_count = 1; p.depth_output = false;
+    auto named = evaluator(basic_vertex,
+        "out vec4 result_color; void helper(out float x) { x = 0.5; } "
+        "void main() { float x; helper(x); result_color = vec4(1, 0, 0, x); }");
+    auto color_only = build_generated_line_consumer(named, p, grants());
+    require(color_only->ok, "named smooth color-only output compiles: " + color_only->error);
+    require(color_only->fragment.find("result_color.a *= vispy_line_consumer_coverage;") != std::string::npos,
+            "coverage finds the named global output instead of out function parameters");
+    auto rgb = evaluator(basic_vertex, "out vec3 result_color; void main() { result_color = vec3(1); }");
+    require(!build_generated_line_consumer(rgb, p, grants())->ok,
+            "output without alpha explicitly refuses smooth coverage");
+}
 } // namespace
 
 int main(int argc, char** argv) {
@@ -1372,6 +1415,7 @@ int main(int argc, char** argv) {
             if (!std::filesystem::create_directory(diagnostics_directory)) throw std::runtime_error("diagnostics directory must be fresh");
         }
         basic(); depth_attachment_specialization(); bounded_product_arithmetic(); viewport_coordinate_contract(); initializer_order(); typed_and_resources(); fragment_contexts(); dynamic_helper_queries(); plans_and_clip(); chunk_mapping_contract(); aliased_projection_and_clipped_terminal();
+        analytic_smooth_contract();
         std::cout << "line consumer generated compiler contract: " << checks << " checks\n";
         return 0;
     } catch (const std::exception& error) {

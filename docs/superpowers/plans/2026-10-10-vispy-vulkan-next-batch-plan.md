@@ -1,5 +1,26 @@
 # VisPy Vulkan implementation completion plan
 
+Current source checkpoint, 2026-10-23: portable analytic smooth lines now use the
+existing generated ABI2 consumer in both runtime paths. Width stays a uniform,
+including fractional/subpixel widths. Coverage modulates original fragment alpha.
+The user relaxed exact rasterizer parity and lab-grade display measurements as
+practical completion gates; historical strict results remain unchanged.
+
+An isolated current-source build verified ten immutable dependency origins and
+the 213-file SDK. The generated-consumer C++ contract passed 38343 checks. Fresh
+RTX4090 Vulkan rendering passed five whole-RGBA line checks against the declared
+analytic policy (maximum error1), plus clipping, perspective, depth occlusion and
+alpha blending checks. Width changes reused consumer/pipeline; nine checked live
+resource gauges were zero after shutdown. The previously blocked axes/colorbar
+fixture rendered and its saved image was visually inspected.
+
+This is bounded source-build validation, not refreshed wheel/host admission or
+exact OpenGL parity. Exact-reference smoothing and MSAA remain unsupported.
+See docs/smooth-lines.md. Installed Native58 and all historical evidence remain
+unchanged. AGPL and original BSD notices remain attached. Cybersecurity work
+remains out of scope.
+
+
 Current checkpoint, 2026-10-23: Native66 Qt presentation fix is ready for review
 on `work/qt-single-present`. Backend swaps inside a native paint scope now defer
 presentation until the alpha-clear tail is complete. Nested busy paints preserve

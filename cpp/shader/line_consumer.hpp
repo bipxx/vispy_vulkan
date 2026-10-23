@@ -14,7 +14,7 @@ namespace vispy::shader {
 
 inline constexpr uint32_t kLineConsumerAbi = 1;
 
-enum class LineCoveragePolicy { AliasedMajorAxis, SmoothReference };
+enum class LineCoveragePolicy { AliasedMajorAxis, SmoothReference, SmoothAnalytic };
 struct LineConsumerPolicy {
     LineCoveragePolicy coverage = LineCoveragePolicy::AliasedMajorAxis;
     uint32_t sample_count = 1;
@@ -334,6 +334,9 @@ namespace vispy::shader {
 inline constexpr uint32_t kGeneratedLineConsumerAbi = 2;
 inline constexpr const char* kAliasedLineCoverageIdentity =
     "gl46-14.5.1-14.5.2.2-symbolic-diamond-exit-affine-planes-clipped-terminal-major-axis-v2";
+// Portable single-sample approximation, not a driver-specific GL rasterizer.
+inline constexpr const char* kSmoothLineCoverageIdentity =
+    "analytic-butt-rectangle-separable-pixel-overlap-alpha-v1";
 
 // Complete CPU lookup identity, available before shader generation. Limits,
 // DRAW width/viewport, device generation and attachment formats do not change
@@ -343,7 +346,8 @@ inline std::string generated_line_consumer_policy_identity(
         const LineEvaluatorArtifact& evaluator, const LineConsumerPolicy& policy) {
     if (!evaluator.original) throw std::invalid_argument("line consumer policy requires an original");
     if (!policy.sample_count || policy.coverage_identity.empty() ||
-        (policy.coverage != LineCoveragePolicy::AliasedMajorAxis && policy.coverage != LineCoveragePolicy::SmoothReference))
+        (policy.coverage != LineCoveragePolicy::AliasedMajorAxis && policy.coverage != LineCoveragePolicy::SmoothReference &&
+         policy.coverage != LineCoveragePolicy::SmoothAnalytic))
         throw std::invalid_argument("line consumer policy identity is incomplete");
     const auto& original = *evaluator.original;
     std::string key = "vispy-generated-line-consumer-policy-v5;abi=2;typed-storage-both-stages;"

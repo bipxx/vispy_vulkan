@@ -101,7 +101,9 @@ Linux x86_64 wheels for CPython 3.10–3.14 pass the same bounded archive and co
 
 The [implementation plan](docs/superpowers/plans/2026-10-10-vispy-vulkan-next-batch-plan.md) records the wider scope. Its links to local `build/` evidence refer to retained qualification packets that are not distributed in this repository.
 
-The [installed-wheel mesh/layout regressions](docs/mesh-layout-wheel-regressions.md) retain thirteen required original OpenGL scenes. A bounded Windows CPython 3.12 run matches twelve complete frames byte-for-byte, including mesh/filter/layout and three text DPI cases. Axes/colorbar remains a required failure because smooth-line coverage is unsupported. This is not a complete scene-suite or release qualification.
+Current source adds [portable analytic smooth lines](docs/smooth-lines.md), including fractional widths. A fresh Windows Vulkan build passes line, clipping, perspective, depth and blending checks and renders the previously blocked axes/colorbar scene. Edge coverage approximates OpenGL smoothing; exact driver rasterizer parity is not a practical completion requirement. The installed-wheel and host results below predate this change and still require refreshed validation.
+
+The [installed-wheel mesh/layout regressions](docs/mesh-layout-wheel-regressions.md) retain thirteen original OpenGL scenes. The retained Windows CPython 3.12 wheel run matches twelve complete frames byte-for-byte, including mesh/filter/layout and three text DPI cases. Axes/colorbar failed in that run because smooth-line coverage was unsupported. This is not a complete scene-suite or release qualification.
 
 The [installed-wheel image/label regressions](docs/image-wheel-regressions.md) cover thirteen original workflows, including NaNs, signed labels, offset painting, multiscale revisions and slice changes. All thirteen passed with exact frames and semantic observations in a bounded Windows CPython 3.12 run. Wider platform, host, performance and release qualification remains open.
 
