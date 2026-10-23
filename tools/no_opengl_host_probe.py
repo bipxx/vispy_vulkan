@@ -226,12 +226,22 @@ def qwidget(evidence, application, dawn):
                 rgba_qimage(native.grabFramebuffer(), backend.QtGui))
             np.testing.assert_array_equal(without_overlay, updated)
             events = []
+            key_events = []
             canvas.events.mouse_press.connect(lambda event: events.append(tuple(int(value) for value in event.pos)))
+            canvas.events.key_press.connect(lambda event: key_events.append({
+                'key': event.key.name if event.key is not None else None,
+                'modifiers': [modifier.name for modifier in event.modifiers]}))
             buttons = getattr(backend.QtCore.Qt, 'MouseButton', backend.QtCore.Qt)
             backend.QtTest.QTest.mouseClick(native, buttons.LeftButton,
                                             pos=backend.QtCore.QPoint(40, 40))
             pump(application, lambda: bool(events))
             stage['mouse_presses'] = events
+            qt_keys = getattr(backend.QtCore.Qt, 'Key', backend.QtCore.Qt)
+            qt_modifiers = getattr(backend.QtCore.Qt, 'KeyboardModifier', backend.QtCore.Qt)
+            backend.QtTest.QTest.keyClick(native, qt_keys.Key_A, qt_modifiers.ControlModifier)
+            pump(application, lambda: any(event['key'] == 'A' for event in key_events))
+            assert any(event['key'] == 'A' and 'Control' in event['modifiers'] for event in key_events)
+            stage['key_presses'] = key_events
             native.hide()
             pump(application)
             native.show()
@@ -639,6 +649,8 @@ def main(argv=None):
             application = app.use_app(args.binding)
             application.native.setQuitOnLastWindowClosed(False)
             evidence.report['binding'] = args.binding
+            evidence.report['binding_info'] = application.backend_module.which
+            evidence.report['qt_runtime_version'] = application.backend_module.QtCore.qVersion()
             evidence.report['qt_platform'] = application.backend_module.QtGui.QGuiApplication.platformName()
         if args.scenario in HOST_PROFILES:
             with evidence.stage('exact_patched_host_artifacts'):
