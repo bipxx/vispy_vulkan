@@ -620,20 +620,21 @@ for name in dir(global_gloo_functions):
 def read_pixels(viewport=None, alpha=True, mode='color', out_type='unsigned_byte'):
     """Read pixels from the currently selected buffer.
 
-    Under most circumstances, this function reads from the front buffer.
-    Unlike all other functions in vispy.gloo, this function directly executes
-    an OpenGL command.
+    Dawn completes pending rendering before returning the selected target's
+    pixels. For a multisampled Canvas, depth and stencil reads select sample 0
+    at each pixel; color reads use resolved color. Single-sample Canvas and
+    framebuffer-object reads use their sole stored sample.
 
     Parameters
     ----------
     viewport : array-like | None
         4-element list of x, y, w, h parameters. If None (default),
-        the current GL viewport will be queried and used.
+        the current viewport will be queried and used.
     alpha : bool
         If True (default), the returned array has 4 elements (RGBA).
         If False, it has 3 (RGB). This only effects the color mode.
     mode : str
-        Type of buffer data to read. Can be one of 'colors', 'depth',
+        Type of buffer data to read. Can be one of 'color', 'depth',
         or 'stencil'. See returns for more information.
     out_type : str | dtype
         Can be 'unsigned_byte' or 'float'. Note that this does not
