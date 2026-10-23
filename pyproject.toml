@@ -25,7 +25,12 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-pyqt5 = ["PyQt5"]
+# Newer Qt5 runtime releases do not provide Windows wheels.
+pyqt5 = [
+    "PyQt5",
+    "PyQt5-Qt5==5.15.2; sys_platform == 'win32'",
+    "PyQt5-Qt5==5.15.19; sys_platform != 'win32'",
+]
 pyqt6 = ["PyQt6"]
 pyside6 = ["PySide6"]
 test = ["pytest", "pillow"]

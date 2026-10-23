@@ -34,6 +34,11 @@ worker's environment. `hosts` selects napari 0.9.2 and PyQt6 6.11.0. Run PyQt5
 and PySide6 admission in separate environments using their corresponding
 extras. No alternate host is admitted by an import alone.
 
+The `pyqt5` extra pins its Qt runtime by platform: Windows uses
+`PyQt5-Qt5==5.15.2`, which provides Windows wheels, while Linux/macOS retain
+`5.15.19`. The newer runtime has no Windows wheel. Export the project lock for
+the selected binding rather than combining Qt bindings in one environment.
+
 PEP 517 builds pin CMake, nanobind, Cython, and build NumPy. The compiled CPU
 SDF helper comes directly from the unchanged upstream `.pyx` file and includes
 the selected NumPy headers. Generated C and normal build outputs live under

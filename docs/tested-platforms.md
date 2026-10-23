@@ -18,6 +18,18 @@ its generated PKG-INFO. Its SHA256 is
 Implementation licensing is AGPL-3.0-only; original BSD and third-party license
 payloads remain attached unchanged.
 
+Follow-up Qt binding validation on the same Windows CPython 3.12 renderer wheel
+passes 21 lifecycle/capture cases across separate PyQt5, PyQt6 and PySide6
+installations. Parent/resize/minimize, device recovery, handle detach, late close
+events and five alpha/redraw/QImage ownership cases pass; nine live resource
+gauges return to zero per binding. The PyQt5 setup exposed an unsatisfiable
+Windows runtime in the project lock. The source now pins Qt 5.15.2 on Windows
+and retains Qt 5.15.19 on Linux/macOS; emitted package metadata and the lock's
+platform wheel availability are checked. Existing retained wheels keep their
+original metadata; this binding run used corrected exported requirements.
+The owned Qt download-cache deletion was rejected by automatic approval review;
+that cache remains, while all external test environments were removed.
+
 ## Retained artifact hashes
 
 These artifacts are retained locally with the validation reports. They have not
