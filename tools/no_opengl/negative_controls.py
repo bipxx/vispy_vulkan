@@ -17,6 +17,7 @@ def main():
     parser.add_argument('--fixture', type=Path, required=True)
     parser.add_argument('--native-auditor', type=Path)
     parser.add_argument('--native-debugger', type=Path)
+    parser.add_argument('--static-fixture', type=Path)
     parser.add_argument('--python', type=Path, default=Path(sys.executable))
     parser.add_argument('--output', type=Path, required=True)
     args = parser.parse_args()
@@ -40,6 +41,14 @@ def main():
                            + repr(prefix + 'assert x.auditCallControl()==17') + '],check=True)')
     if not windows:
         cases['fork_call'] = prefix + 'import os;pid=os.fork();x.auditCallControl() if pid==0 else os.waitpid(pid,0)'
+        cases['sanitized_child_call'] = ('import subprocess,sys;subprocess.run([sys.executable,"-I","-B","-c",'
+                                         + repr(prefix + 'assert x.auditCallControl()==17')
+                                         + '],env={"LC_ALL":"C","LANG":"C"},check=True)')
+        cases['ldconfig_helper'] = 'import subprocess;subprocess.run(["/sbin/ldconfig","-p"],env={"LC_ALL":"C","LANG":"C"},check=True)'
+        if args.static_fixture:
+            static = args.static_fixture.resolve(strict=True)
+            for mode in ('safe', 'resolve', 'call'):
+                cases['static_' + mode] = 'import subprocess;subprocess.run(' + repr([str(static), mode, str(fixture)]) + ',check=True)'
     reports = {}
     for name, code in cases.items():
         args.python.resolve(strict=True)
@@ -77,6 +86,14 @@ def main():
         checks['exec_child_native_call_detected'] = seen('child_call', 'native_gl_call')
         if not windows:
             checks['fork_child_inherited_native_call_detected'] = seen('fork_call', 'native_gl_call')
+            checks['sanitized_exec_native_call_detected'] = seen('sanitized_child_call', 'native_gl_call')
+            checks['ldconfig_helper_complete_tree'] = reports['ldconfig_helper']['coverage']['process_tree']
+            checks['ldconfig_helper_passes_without_gl'] = all(reports['ldconfig_helper']['gates'][key] == 'PASS'
+                                                            for key in ('no_gl_execution', 'no_gl_loads'))
+            if args.static_fixture:
+                checks['static_safe_control_exits_zero'] = reports['static_safe']['process_exit'] == 0
+                checks['static_native_lookup_detected'] = seen('static_resolve', 'native_gl_binding')
+                checks['static_native_direct_call_detected'] = seen('static_call', 'native_gl_call')
     else:
         # The local-call control is linked -Bsymbolic. Its successful undetected
         # invocation demonstrates why LD_AUDIT cannot pass the execution gate.

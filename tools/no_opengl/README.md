@@ -37,8 +37,15 @@ cooperating glibc collector stops on object open/close, before constructors or
 user code resume. It instruments ELF public GL exports with call breakpoints,
 including local -Bsymbolic calls, and records glibc bindings such as dlsym.
 Unknown ELF formats, missing symbol tables, GL IFUNC exports, collector errors,
-incomplete task lifecycles or execs without an auditor prevent PASS. Private
-implementations and manual export parsing remain outside its public API scope.
+incomplete task lifecycles or unobserved execs prevent PASS. Dynamic execs restore
+the collector variables in the initial stack before loader entry, including when
+an application launches a helper with a sanitized environment. Static execs are
+identified by actual ELF PT_INTERP absence; mapping syscalls observe executable
+images and instrument their GL symbols. Observable static dlsym/dlvsym resolvers
+are trapped too. A static process mapping a DSO without an observable resolver,
+or needing multithreaded resolver single-stepping, remains unsupported and fails
+closed. Private/non-exported stripped implementations and manual export parsing
+remain outside its public API scope.
 The auditor alone still produces UNVERIFIED aggregate execution/load gates.
 
 Build the independent synthetic native controls (they implement no graphics):
@@ -48,7 +55,8 @@ Build the independent synthetic native controls (they implement no graphics):
 cc -shared -fPIC -O2 -Wall -Wextra -Werror -o loader_audit.so tools/no_opengl/loader_audit_linux.c
 cc -O2 -Wall -Wextra -Werror -o debugger_linux tools/no_opengl/debugger_linux.c
 cc -shared -fPIC -O0 -Wall -Wextra -Werror -Wl,-Bsymbolic -o negative_api.so tools/no_opengl/negative_probe.c -ldl
-PYTHONPATH=tools python -B -m no_opengl.negative_controls --fixture negative_api.so --native-auditor loader_audit.so --native-debugger debugger_linux --output <new-directory>
+cc -static -O0 -Wall -Wextra -Werror -o static_negative_probe tools/no_opengl/static_negative_probe.c -ldl
+PYTHONPATH=tools python -B -m no_opengl.negative_controls --fixture negative_api.so --native-auditor loader_audit.so --native-debugger debugger_linux --static-fixture static_negative_probe --output <new-directory>
 
 # Windows: VS developer shell, explicit Windows SDK import library if needed
 cl /nologo /LD /GS- /Zl /Fonegative_probe.obj /Fenegative_api.dll tools/no_opengl/negative_probe.c /link /NODEFAULTLIB /NOENTRY kernel32.lib

@@ -18,6 +18,7 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <sys/user.h>
+#include <sys/syscall.h>
 #include <sys/wait.h>
 #include <unistd.h>
 
@@ -25,8 +26,8 @@
 #error This observer requires Linux x86-64
 #endif
 
-typedef struct { pid_t tid, owner; int live; } Task;
-typedef struct { pid_t owner; uintptr_t address, bias; unsigned char original; int live; char *name, *path; } Trap;
+typedef struct { pid_t tid, owner; int live, static_exec; uintptr_t stepping; } Task;
+typedef struct { pid_t owner; uintptr_t address, bias; unsigned char original; int live, resolver; char *name, *path; } Trap;
 typedef struct { pid_t owner; uintptr_t bias; int unload, done; char *path; } Image;
 static Task *tasks;
 static Trap *traps;
@@ -35,6 +36,7 @@ static size_t task_count, trap_count;
 static size_t image_count;
 static FILE *output, *loader;
 static int errors, terminated, root_code = 125;
+static const char *auditor_path, *loader_path;
 
 static void event(const char *kind, pid_t pid, const char *format, ...) {
     fprintf(output, "%s\t%d\t", kind, (int)pid);
@@ -69,7 +71,9 @@ static void add_task(pid_t tid, pid_t parent) {
     if (task(tid)) return;
     pid_t group = owner(tid);
     tasks = grow(tasks, task_count + 1, sizeof(*tasks));
-    tasks[task_count++] = (Task){tid, group, 1};
+    Task *parent_state = task(parent);
+    int static_exec = parent_state ? parent_state->static_exec : 0;
+    tasks[task_count++] = (Task){tid, group, 1, static_exec, 0};
     event("debug_task_start", group, "tid=%d parent_tid=%d", (int)tid, (int)parent);
     Task *parent_task = task(parent);
     if (parent_task && parent_task->owner != group) {
@@ -101,7 +105,7 @@ static int patch(pid_t tid, uintptr_t address, unsigned char byte, unsigned char
 static int range(size_t size, uint64_t offset, uint64_t length) {
     return offset <= size && length <= size - offset;
 }
-static void image(pid_t tid, pid_t group, uintptr_t bias, const char *requested, int unload) {
+static void image(pid_t tid, pid_t group, uintptr_t bias, const char *requested, int unload, int static_main) {
     char executable[80]; const char *path = requested;
     if (!*path) { snprintf(executable, sizeof(executable), "/proc/%d/exe", (int)tid); path = executable; }
     if (strcmp(path, "linux-vdso.so.1") == 0) return; /* Kernel supplied, no GL exports. */
@@ -127,7 +131,7 @@ static void image(pid_t tid, pid_t group, uintptr_t bias, const char *requested,
     }
     const Elf64_Shdr *sections = (const Elf64_Shdr *)(data + header->e_shoff);
     int tables = 0;
-    for (unsigned int i = 0; i < header->e_shnum; ++i) if (sections[i].sh_type == SHT_DYNSYM) {
+    for (unsigned int i = 0; i < header->e_shnum; ++i) if (sections[i].sh_type == SHT_DYNSYM || (static_main && sections[i].sh_type == SHT_SYMTAB)) {
         ++tables;
         const Elf64_Shdr *symbols = &sections[i];
         if (symbols->sh_entsize != sizeof(Elf64_Sym) || symbols->sh_link >= header->e_shnum ||
@@ -140,7 +144,8 @@ static void image(pid_t tid, pid_t group, uintptr_t bias, const char *requested,
             if (symbol->st_shndx == SHN_UNDEF || symbol->st_name >= strings->sh_size) continue;
             const char *name = (const char *)data + strings->sh_offset + symbol->st_name;
             if (!memchr(name, 0, strings->sh_size - symbol->st_name)) { ++errors; continue; }
-            if (!gl_symbol(name)) continue;
+            int resolver = static_main && (!strcmp(name, "dlsym") || !strcmp(name, "dlvsym") || !strcmp(name, "__dlsym") || !strcmp(name, "__dlvsym"));
+            if (!gl_symbol(name) && !resolver) continue;
             unsigned int type = ELF64_ST_TYPE(symbol->st_info);
             if (type != STT_FUNC) { ++errors; event("debug_error", group, "Unsupported GL export type: %s (%u)", name, type); continue; }
             uintptr_t address = bias + symbol->st_value;
@@ -151,11 +156,14 @@ static void image(pid_t tid, pid_t group, uintptr_t bias, const char *requested,
             if (!patch(tid, address, 0xcc, &original)) continue;
             if (original == 0xcc) { ++errors; event("debug_error", group, "GL export already contains trap: %s", name); continue; }
             traps = grow(traps, trap_count + 1, sizeof(*traps));
-            traps[trap_count++] = (Trap){group, address, bias, original, 1, strdup(name), strdup(path)};
+            traps[trap_count++] = (Trap){group, address, bias, original, 1, resolver, strdup(name), strdup(path)};
             event("debug_export_trap", group, "%s|%s", name, path);
         }
     }
-    if (!tables) { ++errors; event("debug_error", group, "No dynamic symbol table: %s", path); }
+    if (!tables) {
+        if (static_main) event("debug_static_no_public_exports", group, "%s", path);
+        else { ++errors; event("debug_error", group, "No dynamic symbol table: %s", path); }
+    }
     munmap((void *)data, size);
 }
 static void loader_events(pid_t tid, pid_t group) {
@@ -176,8 +184,143 @@ static void loader_events(pid_t tid, pid_t group) {
     }
     free(line);
     for (size_t i = 0; i < image_count; ++i) if (!images[i].done && images[i].owner == group) {
-        image(tid, group, images[i].bias, images[i].path, images[i].unload); images[i].done = 1;
+        image(tid, group, images[i].bias, images[i].path, images[i].unload, 0); images[i].done = 1;
     }
+}
+static int peek_word(pid_t tid, uintptr_t address, unsigned long *word) {
+    errno = 0; long value = ptrace(PTRACE_PEEKDATA, tid, (void *)address, NULL);
+    if (value == -1 && errno) { error(tid, "PTRACE_PEEKDATA stack"); return 0; }
+    *word = (unsigned long)value; return 1;
+}
+static int poke_bytes(pid_t tid, uintptr_t address, const void *data, size_t size) {
+    for (size_t offset = 0; offset < size; offset += sizeof(long)) {
+        unsigned long word = 0;
+        size_t length = size - offset < sizeof(long) ? size - offset : sizeof(long);
+        memcpy(&word, (const char *)data + offset, length);
+        if (ptrace(PTRACE_POKEDATA, tid, (void *)(address + offset), (void *)word)) { error(tid, "PTRACE_POKEDATA stack"); return 0; }
+    }
+    return 1;
+}
+static int read_remote_string(pid_t tid, uintptr_t address, char *text, size_t size) {
+    for (size_t offset = 0; offset < size; offset += sizeof(long)) {
+        unsigned long word;
+        if (!peek_word(tid, address + offset, &word)) return 0;
+        for (size_t n = 0; n < sizeof(long) && offset + n < size; ++n) {
+            text[offset + n] = (char)(word >> (8 * n));
+            if (!text[offset + n]) return 1;
+        }
+    }
+    ++errors; event("debug_error", tid, "Environment string exceeds limit"); return 0;
+}
+static void restore_auditor_environment(pid_t tid) {
+    struct user_regs_struct registers;
+    if (ptrace(PTRACE_GETREGS, tid, NULL, &registers)) { error(tid, "PTRACE_GETREGS exec stack"); return; }
+    unsigned long words[32768], rebuilt[32768]; size_t count = 0;
+    if (!peek_word(tid, registers.rsp, &words[0]) || words[0] > 16384) { ++errors; return; }
+    size_t env_start = (size_t)words[0] + 2, env_end = env_start;
+    for (size_t i = 1; i < env_start; ++i) if (!peek_word(tid, registers.rsp + i * 8, &words[i])) return;
+    for (;;) {
+        if (env_end >= 32000 || !peek_word(tid, registers.rsp + env_end * 8, &words[env_end])) { ++errors; return; }
+        if (!words[env_end++]) break;
+    }
+    count = env_end;
+    for (;;) {
+        if (count + 2 >= 32768 || !peek_word(tid, registers.rsp + count * 8, &words[count]) ||
+            !peek_word(tid, registers.rsp + (count + 1) * 8, &words[count + 1])) { ++errors; return; }
+        count += 2; if (words[count - 2] == AT_NULL) break;
+    }
+    if (count + 4 >= 32768) { ++errors; event("debug_error", tid, "Exec environment exceeds collector limit"); return; }
+    char *settings[4];
+    if (asprintf(&settings[0], "LD_AUDIT=%s", auditor_path) < 0 ||
+        asprintf(&settings[1], "VISPY_NO_GL_NATIVE_LOG=%s", loader_path) < 0) { ++errors; return; }
+    settings[2] = strdup("LD_BIND_NOW=1"); settings[3] = strdup("VISPY_NO_GL_PTRACE_HANDSHAKE=1");
+    uintptr_t string_top = registers.rsp - 64; unsigned long pointers[4];
+    for (size_t i = 0; i < 4; ++i) {
+        size_t length = strlen(settings[i]) + 1;
+        string_top = (string_top - length) & ~(uintptr_t)7;
+        pointers[i] = string_top;
+        if (!poke_bytes(tid, string_top, settings[i], length)) { for (size_t n = 0; n < 4; ++n) free(settings[n]); return; }
+    }
+    size_t used = env_start; memcpy(rebuilt, words, env_start * 8);
+    for (size_t i = env_start; i + 1 < env_end; ++i) {
+        char text[32768];
+        if (!read_remote_string(tid, words[i], text, sizeof(text))) return;
+        if (!strncmp(text, "LD_AUDIT=", 9) || !strncmp(text, "LD_BIND_NOW=", 12) ||
+            !strncmp(text, "VISPY_NO_GL_NATIVE_LOG=", 23) || !strncmp(text, "VISPY_NO_GL_PTRACE_HANDSHAKE=", 29)) continue;
+        rebuilt[used++] = words[i];
+    }
+    for (size_t i = 0; i < 4; ++i) { rebuilt[used++] = pointers[i]; free(settings[i]); }
+    rebuilt[used++] = 0;
+    memcpy(rebuilt + used, words + env_end, (count - env_end) * 8); used += count - env_end;
+    uintptr_t new_stack = (string_top - used * 8) & ~(uintptr_t)15;
+    if (!poke_bytes(tid, new_stack, rebuilt, used * 8)) return;
+    registers.rsp = new_stack;
+    if (ptrace(PTRACE_SETREGS, tid, NULL, &registers)) error(tid, "PTRACE_SETREGS exec stack");
+    else event("debug_auditor_environment_restored", tid, "initial stack collector variables; application environment preserved");
+}
+typedef struct { pid_t owner; uintptr_t bias; int live, seen; char *path; } Mapping;
+static Mapping *mapped;
+static size_t mapped_count;
+static void static_mappings(pid_t tid, pid_t group, const char *main_path) {
+    char proc[80], *line = NULL; size_t capacity = 0;
+    snprintf(proc, sizeof(proc), "/proc/%d/maps", (int)tid);
+    FILE *stream = fopen(proc, "r"); if (!stream) { error(group, "open static process maps"); return; }
+    for (size_t i = 0; i < mapped_count; ++i) if (mapped[i].owner == group) mapped[i].seen = 0;
+    while (getline(&line, &capacity, stream) >= 0) {
+        unsigned long start, end, offset; char permissions[8]; int consumed = 0;
+        if (sscanf(line, "%lx-%lx %7s %lx %*s %*s %n", &start, &end, permissions, &offset, &consumed) != 4) { ++errors; continue; }
+        if (!strchr(permissions, 'x')) continue;
+        char *path = line + consumed; while (*path == ' ') ++path; path[strcspn(path, "\r\n")] = 0;
+        if (*path != '/') continue; /* vdso/vsyscall are kernel supplied. */
+        uintptr_t bias = start - offset;
+        int found = 0;
+        for (size_t i = 0; i < mapped_count; ++i) if (mapped[i].live && mapped[i].owner == group && !strcmp(mapped[i].path, path)) {
+            mapped[i].seen = 1; found = 1; break;
+        }
+        if (found) continue;
+        int fd = open(path, O_RDONLY | O_CLOEXEC); Elf64_Ehdr header;
+        if (fd < 0 || read(fd, &header, sizeof(header)) != sizeof(header)) { if (fd >= 0) close(fd); error(group, "read static executable mapping"); continue; }
+        close(fd);
+        if (header.e_type == ET_EXEC) bias = 0;
+        if (strcmp(path, main_path)) {
+            int resolver = 0;
+            for (size_t i = 0; i < trap_count; ++i) if (traps[i].owner == group && traps[i].live && traps[i].resolver) resolver = 1;
+            if (!resolver) { ++errors; event("debug_error", group, "Static process mapped DSO without observable symbol resolver: %s", path); }
+        }
+        image(tid, group, bias, path, 0, !strcmp(path, main_path));
+        mapped = grow(mapped, mapped_count + 1, sizeof(*mapped));
+        mapped[mapped_count++] = (Mapping){group, bias, 1, 1, strdup(path)};
+        event("native_load", group, "%s", path);
+    }
+    free(line); fclose(stream);
+    for (size_t i = 0; i < mapped_count; ++i) if (mapped[i].live && mapped[i].owner == group && !mapped[i].seen) {
+        mapped[i].live = 0; event("native_unload", group, "%s", mapped[i].path);
+        for (size_t n = 0; n < trap_count; ++n) if (traps[n].owner == group && traps[n].bias == mapped[i].bias) traps[n].live = 0;
+    }
+}
+static int exec_image(pid_t tid, pid_t group) {
+    char proc[80], path[8192], interpreter[8192] = "";
+    snprintf(proc, sizeof(proc), "/proc/%d/exe", (int)tid);
+    ssize_t length = readlink(proc, path, sizeof(path) - 1);
+    if (length < 0) { error(group, "read exec image path"); return 0; } path[length] = 0;
+    int fd = open(proc, O_RDONLY | O_CLOEXEC); Elf64_Ehdr header;
+    if (fd < 0 || read(fd, &header, sizeof(header)) != sizeof(header)) { if (fd >= 0) close(fd); error(group, "read exec ELF"); return 0; }
+    if (memcmp(header.e_ident, ELFMAG, SELFMAG) || header.e_ident[EI_CLASS] != ELFCLASS64 || header.e_machine != EM_X86_64) {
+        close(fd); ++errors; event("debug_error", group, "Unsupported exec ELF: %s", path); return 0;
+    }
+    for (unsigned int i = 0; i < header.e_phnum; ++i) {
+        Elf64_Phdr program;
+        if (pread(fd, &program, sizeof(program), (off_t)(header.e_phoff + i * header.e_phentsize)) != sizeof(program)) { ++errors; break; }
+        if (program.p_type == PT_INTERP) {
+            if (program.p_filesz > sizeof(interpreter) || pread(fd, interpreter, program.p_filesz, (off_t)program.p_offset) != (ssize_t)program.p_filesz) ++errors;
+        }
+    }
+    close(fd);
+    event("debug_exec", group, "%s|%s", path, interpreter);
+    if (*interpreter) { restore_auditor_environment(tid); return 0; }
+    event("debug_static_exec", group, "%s", path);
+    static_mappings(tid, group, path);
+    return 1;
 }
 static void kill_tree(void) {
     terminated = 1;
@@ -188,6 +331,8 @@ int main(int argc, char **argv) {
     output = fopen(argv[1], "wx"); loader = fopen(argv[2], "a+");
     if (!output || !loader) { perror("fresh observer logs"); return 125; }
     rewind(loader);
+    auditor_path = getenv("VISPY_NO_GL_AUDITOR"); loader_path = getenv("VISPY_NO_GL_NATIVE_LOG");
+    if (!auditor_path || !loader_path) { fprintf(stderr, "Collector environment is required\n"); return 125; }
     pid_t root = fork();
     if (root < 0) { perror("fork"); return 125; }
     if (!root) {
@@ -200,7 +345,7 @@ int main(int argc, char **argv) {
     }
     int status; if (waitpid(root, &status, 0) != root || !WIFSTOPPED(status)) return 125;
     add_task(root, 0);
-    long options = PTRACE_O_TRACEFORK | PTRACE_O_TRACEVFORK | PTRACE_O_TRACECLONE | PTRACE_O_TRACEEXEC | PTRACE_O_TRACEEXIT | PTRACE_O_EXITKILL;
+    long options = PTRACE_O_TRACEFORK | PTRACE_O_TRACEVFORK | PTRACE_O_TRACECLONE | PTRACE_O_TRACEEXEC | PTRACE_O_TRACEEXIT | PTRACE_O_EXITKILL | PTRACE_O_TRACESYSGOOD;
     if (ptrace(PTRACE_SETOPTIONS, root, NULL, (void *)options)) { error(root, "PTRACE_SETOPTIONS"); kill_tree(); }
     ptrace(PTRACE_CONT, root, NULL, NULL);
     for (;;) {
@@ -225,7 +370,16 @@ int main(int argc, char **argv) {
                 else add_task((pid_t)child, tid);
             } else if (code == PTRACE_EVENT_EXEC) {
                 for (size_t i = 0; i < trap_count; ++i) if (traps[i].owner == group) traps[i].live = 0;
-                event("debug_exec", group, "tid=%d", (int)tid);
+                current->static_exec = exec_image(tid, group);
+            }
+        } else if (signal == (SIGTRAP | 0x80) && current->static_exec) {
+            struct user_regs_struct registers;
+            if (ptrace(PTRACE_GETREGS, tid, NULL, &registers)) error(group, "PTRACE_GETREGS static syscall");
+            else if ((long long)registers.rax >= 0 && (registers.orig_rax == SYS_mmap || registers.orig_rax == SYS_mprotect || registers.orig_rax == SYS_munmap)) {
+                char proc[80], path[8192]; snprintf(proc, sizeof(proc), "/proc/%d/exe", (int)tid);
+                ssize_t size = readlink(proc, path, sizeof(path) - 1);
+                if (size < 0) error(group, "read static main path");
+                else { path[size] = 0; static_mappings(tid, group, path); }
             }
         } else if (signal == SIGSTOP) {
             loader_events(tid, group);
@@ -234,20 +388,41 @@ int main(int argc, char **argv) {
             if (ptrace(PTRACE_GETREGS, tid, NULL, &registers)) error(group, "PTRACE_GETREGS");
             else {
                 int hit = 0;
-                for (size_t i = 0; i < trap_count; ++i) if (traps[i].live && traps[i].owner == group && traps[i].address == registers.rip - 1) {
-                    event("native_gl_call", group, "%s|%s", traps[i].name, traps[i].path); hit = 1; break;
+                if (current->stepping) {
+                    patch(tid, current->stepping, 0xcc, NULL); current->stepping = 0; hit = 1;
                 }
-                if (hit) kill_tree();
-                else { ++errors; event("debug_error", group, "Unrecognized SIGTRAP tid=%d", (int)tid); deliver = signal; }
+                for (size_t i = 0; !hit && i < trap_count; ++i) if (traps[i].live && traps[i].owner == group && traps[i].address == registers.rip - 1) {
+                    if (traps[i].resolver) {
+                        char symbol[8192];
+                        if (!read_remote_string(tid, registers.rsi, symbol, sizeof(symbol))) break;
+                        if (gl_symbol(symbol)) { event("native_gl_binding", group, "%s", symbol); kill_tree(); }
+                        else {
+                            size_t peers = 0;
+                            for (size_t n = 0; n < task_count; ++n) if (tasks[n].live && tasks[n].owner == group) ++peers;
+                            if (peers != 1) { ++errors; event("debug_error", group, "Multithreaded static symbol resolver single-step unsupported"); }
+                            else {
+                                patch(tid, traps[i].address, traps[i].original, NULL);
+                                registers.rip = traps[i].address;
+                                if (ptrace(PTRACE_SETREGS, tid, NULL, &registers)) error(group, "PTRACE_SETREGS resolver step");
+                                current->stepping = traps[i].address;
+                            }
+                        }
+                    } else { event("native_gl_call", group, "%s|%s", traps[i].name, traps[i].path); kill_tree(); }
+                    hit = 1; break;
+                }
+                if (!hit) { ++errors; event("debug_error", group, "Unrecognized SIGTRAP tid=%d", (int)tid); deliver = signal; }
             }
         } else deliver = signal;
         if (errors && !terminated) kill_tree();
-        if (ptrace(PTRACE_CONT, tid, NULL, (void *)(intptr_t)deliver) && errno != ESRCH) error(group, "PTRACE_CONT");
+        current = task(tid); /* A fork event can reallocate the task array. */
+        enum __ptrace_request request = current && current->stepping ? PTRACE_SINGLESTEP : (current && current->static_exec ? PTRACE_SYSCALL : PTRACE_CONT);
+        if (ptrace(request, tid, NULL, (void *)(intptr_t)deliver) && errno != ESRCH) error(group, "PTRACE_CONT/SYSCALL");
     }
     event("debug_complete", root, "root_code=%d errors=%d tasks=%zu", root_code, errors, task_count);
     fclose(output); fclose(loader);
     for (size_t i = 0; i < trap_count; ++i) { free(traps[i].name); free(traps[i].path); }
     for (size_t i = 0; i < image_count; ++i) free(images[i].path);
-    free(images); free(traps); free(tasks);
+    for (size_t i = 0; i < mapped_count; ++i) free(mapped[i].path);
+    free(mapped); free(images); free(traps); free(tasks);
     return errors ? 125 : root_code;
 }

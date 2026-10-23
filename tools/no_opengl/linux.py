@@ -44,7 +44,7 @@ def trace(command, *, auditor, environment, cwd, log, trace_path, timeout=120, d
             errors.append({'error': value, 'pid': int(pid)})
     starts = {row['pid'] for row in events if row['kind'] == 'audit_start'}
     exits = {row['pid'] for row in events if row['kind'] == 'audit_exit'}
-    if not starts or (not debugger and child.pid not in starts) or (code == 0 and not starts <= exits):
+    if not debugger and (not starts or child.pid not in starts or (code == 0 and not starts <= exits)):
         errors.append({'error': 'Missing glibc collector startup or normal shutdown',
                        'root_pid': child.pid, 'started_pids': sorted(starts), 'exited_pids': sorted(exits)})
     coverage = {'startup_and_transient_native_loads': False,
@@ -54,6 +54,7 @@ def trace(command, *, auditor, environment, cwd, log, trace_path, timeout=120, d
                 'native_entrypoint_resolution': False, 'process_tree': False}
     if debugger:
         begun, ended, execs, audit_starts, complete = set(), set(), {}, {}, False
+        static_execs = []
         for row in events:
             if row['kind'] == 'audit_start':
                 audit_starts[row['pid']] = audit_starts.get(row['pid'], 0) + 1
@@ -67,18 +68,26 @@ def trace(command, *, auditor, environment, cwd, log, trace_path, timeout=120, d
             row = {'kind': kind, 'pid': pid, 'detail': value}
             if kind == 'native_gl_call':
                 row['name'], _, row['path'] = value.partition('|')
+            elif kind == 'native_gl_binding':
+                row['name'] = value
+            elif kind in ('native_load', 'native_unload'):
+                row['path'] = value
             if kind == 'debug_error':
                 errors.append({'error': value, 'pid': pid})
             if kind in ('debug_task_start', 'debug_task_exit'):
                 tid = value.split()[0].removeprefix('tid=')
                 (begun if kind == 'debug_task_start' else ended).add((pid, tid))
             if kind == 'debug_exec':
-                execs[pid] = execs.get(pid, 0) + 1
+                row['path'], _, row['interpreter'] = value.partition('|')
+                if row['interpreter']:
+                    execs[pid] = execs.get(pid, 0) + 1
+                else:
+                    static_execs.append({'pid': pid, 'path': row['path']})
             if kind == 'debug_complete':
                 complete = 'errors=0 ' in value
             events.append(row)
         tree = bool(begun) and begun == ended and complete
-        collectors = bool(execs) and all(audit_starts.get(pid, 0) >= count for pid, count in execs.items())
+        collectors = bool(execs or static_execs) and all(audit_starts.get(pid, 0) >= count for pid, count in execs.items())
         if not tree or not collectors:
             errors.append({'error': 'Incomplete debugger tree or exec collector coverage',
                            'started_tasks': sorted(begun), 'exited_tasks': sorted(ended),
@@ -88,6 +97,7 @@ def trace(command, *, auditor, environment, cwd, log, trace_path, timeout=120, d
                         native_public_gl_export_breakpoints=full,
                         native_entrypoint_resolution=full, process_tree=tree,
                         ptrace_loader_handshake=full)
+        coverage['static_exec_executable_mappings_and_public_exports'] = full
     return {'events': events, 'errors': errors, 'process_exit': code, 'root_pid': child.pid,
             'auditor_sha256': hashlib.sha256(auditor.read_bytes()).hexdigest(),
             'trace_sha256': hashlib.sha256(trace_path.read_bytes()).hexdigest() if trace_path.exists() else None,
@@ -95,7 +105,9 @@ def trace(command, *, auditor, environment, cwd, log, trace_path, timeout=120, d
             'coverage': coverage,
             'scope': ('Linux x86-64 ptrace process tree, pre-constructor loader handshake, '
                       'ELF public GL-export call traps and glibc symbol bindings including dlsym; '
-                      'private implementations/manual export parsing excluded, non-glibc execs unverified.'
+                      'dynamic exec collector variables restored before loader entry; static execs use '
+                      'mapping syscall stops and ELF public-export inspection. Private/static non-exported '
+                      'implementations and manual export parsing excluded.'
                       if debugger else 'glibc dynamic-loader objects and symbol bindings including dlsym; '
                       'direct/local calls, private symbol resolution, non-glibc children '
                       'and complete fork/exec process-tree observation are not established.')}
