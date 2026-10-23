@@ -1,3 +1,12 @@
+Practical completion scope, 2026-10-23: prioritize functional rendering,
+correct clipping/depth, stable resource cleanup and usable packages. Small
+OpenGL edge-pixel differences are documented limitations rather than blockers.
+Existing strict comparison results remain historical evidence; no failed test
+is relabeled as passing. Additional exact-reference smoothing and multisample
+line coverage are deferred. The partial, untested MSAA patch was saved outside
+production sources and is not shipped. Keep remaining native platform checks
+explicitly pending until they run. Cybersecurity work remains excluded.
+
 Source-archive build checkpoint, 2026-10-23: CMake now restores recognized Git
 export-subst expansion of vendored VisPy archival metadata to the exact original
 CRLF/no-final-newline blob before ordinary dependency verification. The standalone

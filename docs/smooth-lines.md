@@ -52,3 +52,8 @@ origins, both license families and shutdown cleanup are verified. This raw
 Native Linux GPU and macOS Metal checks remain unavailable. Historical exact
 OpenGL comparison results and strict latency/memory benchmark gates remain
 unchanged; those lab measurements are outside practical completion scope.
+
+Practical completion prioritizes functional rendering and stable packages.
+Small rasterizer edge differences do not block that scope. Additional exact
+reference matching and MSAA line coverage are deferred; no partial MSAA
+implementation is included.
