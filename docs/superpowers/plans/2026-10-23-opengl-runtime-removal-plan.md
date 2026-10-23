@@ -28,10 +28,13 @@ requirements. Earlier "current groundwork" notes describe historical results.
   qualification remain pending. Do not label it the final candidate.
 - Disk exhaustion initially paused Linux Qt 6.12. After space recovery and exact
   process-identity verification, resumption exited at 1480/1636 with EROFS. WSL
-  now mounts read-only as a fallback and reports I/O errors; no Qt processes
-  remain. Do not restart Linux builds before filesystem recovery is authorized
-  and verified. Offline repair requires explicit approval because it changes
-  filesystem metadata and available space cannot hold a full disk backup.
+  mounted read-only as a fallback and reported I/O errors. The user subsequently
+  authorized offline repair: journal/preen repair returned 1 (corrected), the
+  final forced read-only check returned 0 after all five passes, and a normal
+  Ubuntu remount passed an fsynced read/write probe. The temporary recovery
+  distribution was removed after its exact owned registry path was checked.
+  Preserve `build/opengl-removal-wsl-recovery-root-1/result1.json` and the logs;
+  verify retained source inputs before restarting the now-terminal Qt build.
 - All 94,583 canonical vendor files match the Git blobs byte for byte. The empty
   publication vendor directories remain untouched after automatic review
   rejected their replacement. New frozen build snapshots link directly to the
