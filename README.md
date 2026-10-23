@@ -80,10 +80,11 @@ recompute the original image, analytic, residency and raw counter checks.
 These are quality checks; performance, opaque driver memory peaks, scanout and
 the remaining platform and host requirements remain open.
 
-Smooth-line coverage remains incomplete. A private native Vulkan experiment
+Historical smooth-line experiment (superseded by the portable analytic path described below): a private native Vulkan experiment
 matches the fixed horizontal OpenGL frame but fails the fixed diagonal frame
 at one color byte. The exact comparison and references are unchanged, and
-the experiment has not been promoted into the renderer.
+the experiment was not promoted into the renderer. These strict comparison
+results remain historical; current analytic smoothing is supported.
 
 Earlier bounded Windows CPython 3.12 validation independently admitted the tested clean-consumer lifecycle: compiled SDF, text and clear rendering, uninstall, absence verification, upstream restoration, and complete-array comparison. This does not qualify other Python ABIs or hosts.
 

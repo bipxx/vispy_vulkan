@@ -10,8 +10,8 @@ build-backend = "scikit_build_core.build"
 [project]
 name = "vispy"
 version = "0.17.0+vulkan.1"
-description = "VisPy 0.17.0 compatibility fork rendered with Dawn (Vulkan on Windows)"
-readme = { file = "third_party/parity/vispy/README.rst", content-type = "text/x-rst" }
+description = "VisPy 0.17.0 compatibility fork using Dawn for Vulkan on Windows/Linux and Metal on macOS"
+readme = { file = "README.md", content-type = "text/markdown" }
 requires-python = ">=3.10"
 license = "AGPL-3.0-only"
 license-files = ["LICENSE", "LICENSE-BSD", "LICENSING.md", "third_party/licenses/*.txt"]
