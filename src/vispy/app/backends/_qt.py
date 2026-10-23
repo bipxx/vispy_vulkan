@@ -946,6 +946,7 @@ class CanvasBackendDesktop(QtBaseCanvasBackend, QWidget):
         install_gl_queries()
         self._initialized = True
         self._dawn_closed = False
+        self._dawn_paint_deferred = False
         self._dawn_callback_failed = False
         self._dawn_ratio_override = None
 
@@ -981,6 +982,7 @@ class CanvasBackendDesktop(QtBaseCanvasBackend, QWidget):
         if getattr(self, '_dawn_closed', False):
             return
         self._dawn_closed = True
+        self._dawn_paint_deferred = False
         if getattr(self, '_dawn_poll_timer', None) is not None:
             self._dawn_poll_timer.stop()
         from vispy import _dawn
@@ -1012,7 +1014,12 @@ class CanvasBackendDesktop(QtBaseCanvasBackend, QWidget):
             return
         from vispy import _dawn
         try:
-            if not _dawn.process_events():
+            pending = _dawn.process_events()
+            if (getattr(self, '_dawn_paint_deferred', False) and
+                    _dawn.frame_ready(int(self._dawn_canvas_id))):
+                self._dawn_paint_deferred = False
+                self.update()
+            if not pending:
                 self._dawn_poll_timer.stop()
         except Exception as error:
             self._record_dawn_callback_error(error, 'completion timer')
@@ -1023,6 +1030,7 @@ class CanvasBackendDesktop(QtBaseCanvasBackend, QWidget):
         # process_events()/run() after leaving Qt. Native host loops receive
         # a diagnostic and a nonzero exit request as well.
         self._dawn_callback_failed = True
+        self._dawn_paint_deferred = False
         timer = getattr(self, '_dawn_poll_timer', None)
         if timer is not None:
             timer.stop()
@@ -1087,9 +1095,10 @@ class CanvasBackendDesktop(QtBaseCanvasBackend, QWidget):
         paint_api = None
         try:
             if not _dawn.frame_ready(int(self._dawn_canvas_id)):
+                self._dawn_paint_deferred = True
                 self._start_dawn_pump()
-                QtCore.QTimer.singleShot(1, self.update)
                 return
+            self._dawn_paint_deferred = False
             paint_api = tuple(getattr(_dawn, name, None) for name in
                               ('begin_canvas_paint', 'end_canvas_paint', 'abort_canvas_paint'))
             if any(function is not None for function in paint_api):
