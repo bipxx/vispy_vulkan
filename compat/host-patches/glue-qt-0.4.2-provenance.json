@@ -1,0 +1,32 @@
+{
+  "schema": 1,
+  "project": "glue-qt",
+  "version": "0.4.2",
+  "upstream_license": "BSD-3-Clause",
+  "upstream_license_file": "LICENSE",
+  "changes_license": "AGPL-3.0-only",
+  "source_url": "https://files.pythonhosted.org/packages/e9/de/8a883027969ad09afb1ec656e4041dde3862501a84753e0512c04b5dde90/glue_qt-0.4.2.tar.gz",
+  "source_sha256": "a50a2641c0cfc23081e1e76e0267c73fa6ba2eccc6151c9143bc5e603f4c5423",
+  "archive_root": "glue_qt-0.4.2",
+  "patch": "glue-qt-0.4.2-no-opengl.patch",
+  "patch_sha256": "58b8402c025fdea80031a4768b7b803de47c3f19b67f3772db2d9b38937f4b4b",
+  "files": {
+    "glue_qt/utils/app.py": {
+      "before_sha256": "f2b1db9c344b4f803b1db2fc7377b3f631013c3308272e3652b26688f6675576",
+      "after_sha256": "c08d16baf7db981d1ce35917cf27c261988e42911a75aa99d51e36766f6758b0"
+    },
+    "pyproject.toml": {
+      "before_sha256": "5a61239b67ef57d219b83d884ab8b148942bdd956111f0f170bc36b36aad5204",
+      "after_sha256": "ef62b3e5e1459c934b1c7d3940f76102f86338ac565233d16974a7754b2815fc"
+    },
+    "PKG-INFO": {
+      "before_sha256": "0045d8c02127813dac5e5a6bd96b4ad775786c69fd17076cf3a0f74eca51946f",
+      "after_sha256": "bee68563ac3fe68e44c0e70cbb8b76f586aaa60ce0ab66b537271743e7f17ce9"
+    },
+    "glue_qt.egg-info/PKG-INFO": {
+      "before_sha256": "0045d8c02127813dac5e5a6bd96b4ad775786c69fd17076cf3a0f74eca51946f",
+      "after_sha256": "bee68563ac3fe68e44c0e70cbb8b76f586aaa60ce0ab66b537271743e7f17ce9"
+    }
+  },
+  "qualification": "Dawn QWidget host profile. Removes unrelated global QtQuick OpenGL setup; optional QML/WebEngine plugins require independent qualification."
+}

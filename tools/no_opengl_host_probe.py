@@ -24,7 +24,7 @@ import zipfile
 SCENARIOS = ('qwidget', 'napari', 'glue', 'threedee')
 HOST_PROFILES = {
     'napari': {'napari': 'napari', 'qtpy': 'qtpy'},
-    'glue': {'glue-vispy-viewers': 'glue_vispy_viewers', 'qtpy': 'qtpy'},
+    'glue': {'glue-vispy-viewers': 'glue_vispy_viewers', 'glue-qt': 'glue_qt', 'qtpy': 'qtpy'},
     'threedee': {'napari': 'napari', 'qtpy': 'qtpy', 'napari-threedee': 'napari_threedee'},
 }
 

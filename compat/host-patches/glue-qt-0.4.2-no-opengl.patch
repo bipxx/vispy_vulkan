@@ -1,0 +1,98 @@
+--- a/glue_qt/utils/app.py
++++ b/glue_qt/utils/app.py
+@@ -1,6 +1,7 @@
++# Dawn integration changes: SPDX-License-Identifier: AGPL-3.0-only
+ import time
+ import platform
+-from qtpy import QtCore, QtGui, QtWidgets, QtQuick, QT6
++from qtpy import QtCore, QtGui, QtWidgets
+ 
+ from glue.config import settings
+ from glue._settings_helpers import save_settings
+@@ -47,11 +48,8 @@
+         # don't do it here and instead ask that the plugins do it in their
+         # main __init__.py (which should get executed before glue is launched).
+ 
+-        # NOTE: the following setting is needed to make sure we can use
+-        # WebEngine at the same time as the OpenGL widget, at least on MacOS X.
+-        # See https://bugreports.qt.io/browse/QTBUG-122886 for more details.
+-        if QT6:
+-            QtQuick.QQuickWindow.setGraphicsApi(QtQuick.QSGRendererInterface.GraphicsApi.OpenGL)
++        # Dawn QWidget workflows do not require Qt Quick or a global GL API.
++        # Optional QML/WebEngine plugins need their own qualified profile.
+ 
+         qapp = QtWidgets.QApplication([''])
+         qapp.setQuitOnLastWindowClosed(True)
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -1,5 +1,7 @@
+ [project]
+ name = "glue-qt"
++license = "AGPL-3.0-only"
++license-files = ["LICENSE", "LICENSE-AGPL", "DAWN-PATCH-LICENSING.txt"]
+ classifiers = [
+     "Intended Audience :: Science/Research",
+     "Operating System :: OS Independent",
+@@ -11,7 +13,6 @@
+     "Programming Language :: Python :: 3.13",
+     "Programming Language :: Python :: 3.14",
+     "Topic :: Scientific/Engineering :: Visualization",
+-    "License :: OSI Approved :: BSD License",
+ ]
+ 
+ description = "Multidimensional data visualization across files"
+@@ -78,7 +79,7 @@
+ 
+ [build-system]
+ requires = [
+-    "setuptools>=61.2",
++    "setuptools>=77.0.1",
+     "setuptools_scm",
+ ]
+ 
+--- a/PKG-INFO
++++ b/PKG-INFO
+@@ -1,6 +1,7 @@
+ Metadata-Version: 2.4
+ Name: glue-qt
+ Version: 0.4.2
++License-Expression: AGPL-3.0-only
+ Summary: Multidimensional data visualization across files
+ Author: Chris Beaumont
+ Author-email: Thomas Robitaille <glueviz@gmail.com>
+@@ -15,10 +16,11 @@
+ Classifier: Programming Language :: Python :: 3.13
+ Classifier: Programming Language :: Python :: 3.14
+ Classifier: Topic :: Scientific/Engineering :: Visualization
+-Classifier: License :: OSI Approved :: BSD License
+ Requires-Python: >=3.8
+ Description-Content-Type: text/x-rst
+ License-File: LICENSE
++License-File: LICENSE-AGPL
++License-File: DAWN-PATCH-LICENSING.txt
+ Requires-Dist: glue-core>=1.23.0
+ Requires-Dist: numpy>=1.17
+ Requires-Dist: matplotlib>=3.2
+--- a/glue_qt.egg-info/PKG-INFO
++++ b/glue_qt.egg-info/PKG-INFO
+@@ -1,6 +1,7 @@
+ Metadata-Version: 2.4
+ Name: glue-qt
+ Version: 0.4.2
++License-Expression: AGPL-3.0-only
+ Summary: Multidimensional data visualization across files
+ Author: Chris Beaumont
+ Author-email: Thomas Robitaille <glueviz@gmail.com>
+@@ -15,10 +16,11 @@
+ Classifier: Programming Language :: Python :: 3.13
+ Classifier: Programming Language :: Python :: 3.14
+ Classifier: Topic :: Scientific/Engineering :: Visualization
+-Classifier: License :: OSI Approved :: BSD License
+ Requires-Python: >=3.8
+ Description-Content-Type: text/x-rst
+ License-File: LICENSE
++License-File: LICENSE-AGPL
++License-File: DAWN-PATCH-LICENSING.txt
+ Requires-Dist: glue-core>=1.23.0
+ Requires-Dist: numpy>=1.17
+ Requires-Dist: matplotlib>=3.2
