@@ -62,8 +62,12 @@ elseif(NOT VISPY_DEPENDENCY_LOCK STREQUAL "")
     message(FATAL_ERROR "A separate dependency lock requires explicit immutable origin authority")
 endif()
 if(VISPY_VERIFY_DEPENDENCIES)
+    set(_vispy_verify_args ${_vispy_origin_args})
+    if(_vispy_origin_any STREQUAL "")
+        list(APPEND _vispy_verify_args --restore-archive-metadata)
+    endif()
     execute_process(
-        COMMAND "${Python_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/cmake/verify_dependencies.py" ${_vispy_origin_args}
+        COMMAND "${Python_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/cmake/verify_dependencies.py" ${_vispy_verify_args}
         WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
         COMMAND_ERROR_IS_FATAL ANY
     )

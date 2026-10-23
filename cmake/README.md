@@ -6,6 +6,19 @@ the vendored tree checksums; run the same check independently with:
 .venv/Scripts/python.exe cmake/verify_dependencies.py
 ```
 
+GitHub source archives expand the vendored VisPy `.git_archival.txt` placeholders.
+CMake restores recognized archive expansions to their original pinned bytes before
+checking dependencies. To prepare a downloaded archive before a direct checksum
+check or source-distribution build, run:
+
+```console
+python cmake/verify_dependencies.py --restore-archive-metadata
+```
+
+The default standalone checker remains read-only. Git checkouts and unrecognized
+metadata edits are not rewritten; every dependency still has to match the existing
+lock byte for byte. Explicit immutable-origin builds retain their separate checks.
+
 For a fresh Windows qualification environment, synchronize the lock with the
 primary host and build tools, then use the Visual Studio x64 preset:
 
