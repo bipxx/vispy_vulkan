@@ -16,7 +16,7 @@ import zipfile
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from no_opengl.dependencies import dependency_closure
-from no_opengl.policy import assess, import_reason, library_reason
+from no_opengl.policy import assess, import_reason, library_reason, LIVE_GAUGES
 
 
 def run_candidate(args):
@@ -70,6 +70,9 @@ def run_candidate(args):
                  and not child_report.get('error') and not child_report.get('cleanup_error'))
     if args.wheel:
         succeeded = succeeded and child_report.get('wheel_sha256') == hashlib.sha256(args.wheel.read_bytes()).hexdigest() and child_report.get('wheel_members_verified', 0) > 0
+        if args.scenario == 'script':
+            succeeded = (succeeded and child_report.get('native_cleanup_performed') is True
+                         and all(child_report.get('after_shutdown', {}).get(key) == 0 for key in LIVE_GAUGES))
     gates = assess(events, native_loads_complete=native['coverage'].get('startup_and_transient_native_loads', False),
                    native_api_complete=all(native['coverage'].get(name, False) for name in
                        ('native_public_gl_export_breakpoints', 'native_entrypoint_resolution', 'process_tree')),
@@ -94,7 +97,7 @@ def run_candidate(args):
         row['kind'] == 'python_import' for row in gates['violations'])
     if gates['violations'] or not succeeded:
         status = 'FAIL'
-    elif args.gates == 'imports':
+    elif args.gates == 'imports' or args.scenario == 'import':
         status = 'PASS_IMPORT_GATE_ONLY' if imports_pass else 'FAIL'
     elif not args.source_root and args.wheel and child_report.get('wheel_sha256') == hashlib.sha256(args.wheel.read_bytes()).hexdigest() and all(gates[name] == 'PASS' for name in ('no_gl_execution', 'no_gl_loads', 'no_gl_install_link_requirement')):
         status = 'PASS_ALL_NO_OPENGL_GATES'

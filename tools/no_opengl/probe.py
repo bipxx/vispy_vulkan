@@ -11,9 +11,10 @@ import sys
 import time
 import traceback
 import zipfile
+import importlib.machinery
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from no_opengl.policy import import_reason, is_gl_entrypoint, library_reason
+from no_opengl.policy import import_reason, is_gl_entrypoint, library_reason, LIVE_GAUGES
 
 
 def main():
@@ -130,6 +131,9 @@ def main():
             with zipfile.ZipFile(args.wheel) as archive:
                 for name in members:
                     assert (package / Path(name).relative_to('vispy')).read_bytes() == archive.read(name), name
+            if args.scenario != 'import':
+                native = _dawn
+                report['native_cleanup_owner'] = 'verified-installed-extension'
             report.update(wheel_sha256=hashlib.sha256(args.wheel.read_bytes()).hexdigest(),
                           wheel_members_verified=len(members), vispy_origin=str(Path(vispy.__file__).resolve()),
                           native_origin=str(Path(_dawn.__file__).resolve()))
@@ -150,6 +154,12 @@ def main():
         report.update(status='FAILED_SCENARIO', error=traceback.format_exc())
     finally:
         try:
+            if native is None and args.scenario != 'import':
+                loaded = sys.modules.get('vispy._dawn')
+                path = Path(loaded.__file__).resolve() if loaded is not None and getattr(loaded, '__file__', None) else None
+                if path is not None and path.is_relative_to(Path(sys.prefix).resolve()) and any(str(path).endswith(suffix) for suffix in importlib.machinery.EXTENSION_SUFFIXES):
+                    native = loaded
+                    report['native_cleanup_owner'] = 'actual-loaded-installed-extension-after-failure'
             if canvas is not None:
                 canvas.close()
             if native is not None:
@@ -158,11 +168,8 @@ def main():
                 native.process_events()
                 native.shutdown()
                 state = dict(native.probe())
-                gauges = ('pending_tickets', 'queued_frames', 'live_buffer_bytes', 'live_cpu_buffer_bytes',
-                          'live_texture_bytes', 'canvas_texture_bytes', 'transient_buffer_bytes',
-                          'line_resource_pool_busy_slots', 'line_resource_pool_bytes')
-                assert all(state[key] == 0 for key in gauges), state
-                report.update(after_shutdown=state, zero_live_gauges=list(gauges))
+                assert all(state[key] == 0 for key in LIVE_GAUGES), state
+                report.update(after_shutdown=state, zero_live_gauges=list(LIVE_GAUGES), native_cleanup_performed=True)
         except BaseException:
             report.update(status='FAILED_CLEANUP', cleanup_error=traceback.format_exc())
         report['forbidden_modules_present'] = [name for name in sys.modules if import_reason(name)]

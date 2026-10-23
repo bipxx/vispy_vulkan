@@ -14,6 +14,9 @@ _PYTHON = ("OpenGL", "PyQt5.QtOpenGL", "PyQt6.QtOpenGL", "PyQt6.QtOpenGLWidgets"
            "PySide6.QtOpenGL", "PySide6.QtOpenGLWidgets", "vispy.gloo.gl._pyopengl2",
            "vispy.gloo.gl.es2", "vispy.ext.egl", "vispy.ext.osmesa")
 _API = re.compile(r"^(?:gl[A-Z]|wgl[A-Z]|glX[A-Z]|egl[A-Z]|OSMesa[A-Z])")
+LIVE_GAUGES = ('pending_tickets', 'queued_frames', 'live_buffer_bytes', 'live_cpu_buffer_bytes',
+               'live_texture_bytes', 'canvas_texture_bytes', 'transient_buffer_bytes',
+               'line_resource_pool_busy_slots', 'line_resource_pool_bytes')
 
 
 def library_reason(path: str) -> str | None:
