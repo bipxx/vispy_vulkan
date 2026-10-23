@@ -81,6 +81,16 @@ Vulkan layer manifest is generated with the actual platform library suffix;
 Metal packages do not load a Vulkan layer. Linux/macOS rendering still requires
 qualification on the designated systems.
 
+The [Linux software-Vulkan workflow](../.github/workflows/linux-vulkan.yml)
+builds a real CPython 3.12 renderer wheel on Ubuntu, checks package/license bytes
+and controlled stripped native origins, then installs it outside the checkout.
+Its lavapipe consumer checks renderbuffer allocation/resize ownership, clear,
+fractional smooth lines/reuse, compiled text and million-marker rendering.
+Adapter details, ICD descriptor/hash, system package versions, raw frames,
+counters and logs are retained. The job fails on a missing software adapter or
+failed rendering check; it grants no native GPU or manylinux qualification.
+WSLg X11/Qt checks remain separate local validation.
+
 The [Metal wheel build workflow](../.github/workflows/metal-wheel.yml) provides
 separate hosted macOS arm64 and Intel CPython 3.12 jobs for the native renderer.
 It checks the macOS 13 wheel tag, Mach-O architecture, controlled stripped native
