@@ -89,7 +89,8 @@ def test_queued_array_texture_mutations_and_deletion_keep_each_draws_captured_re
         a.set_data(pixels([0, 0, 255, 255]));b.set_data(pixels([255, 255, 0, 255]))
         gloo.set_viewport(8, 0, 8, 8);p["weight"] = 1.;p.draw("triangles")
         b.delete();owned.remove(b)
-        image = gloo.read_pixels()
+        image = gloo.read_pixels((0, 0, 16, 8))
+        assert image.shape == (8, 16, 4), "snapshot checks require both viewport tiles"
         assert np.all(image[:, :8] == [255, 0, 0, 255]), "earlier array element observed a later revision"
         assert np.all(image[:, 8:] == [255, 255, 0, 255]), "captured array element did not survive deletion"
 
