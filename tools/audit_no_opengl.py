@@ -23,14 +23,14 @@ def run_candidate(args):
     report_path = args.output.resolve()
     worker = report_path.with_suffix('.worker.json')
     assert not worker.exists(), 'Fresh worker report required'
-    command = [str(args.python), '-I', '-B', str(Path(__file__).parent / 'no_opengl/probe.py'),
+    command = [str(args.python.resolve(strict=True)), '-I', '-B', str(Path(__file__).resolve().parent / 'no_opengl/probe.py'),
                '--output', str(worker), '--scenario', args.scenario, '--policy', args.policy]
     for name in ('binding', 'source_root', 'wheel', 'script'):
         value = getattr(args, name)
         if value is not None:
-            command.extend(['--' + name.replace('_', '-'), str(value)])
+            command.extend(['--' + name.replace('_', '-'), str(value.resolve(strict=True))])
     for path in args.dependency_path:
-        command.extend(['--dependency-path', str(path)])
+        command.extend(['--dependency-path', str(path.resolve(strict=True))])
     if args.arguments:
         command.extend(['--', *args.arguments])
     environment = os.environ.copy()
@@ -61,7 +61,10 @@ def run_candidate(args):
         for path in snapshot['paths']:
             if library_reason(path):
                 events.append({'kind': 'native_load', 'path': path, 'observation': 'module snapshot', 'phase': snapshot['phase']})
-    succeeded = code == 0 and child_report['status'] == 'PASS_SCENARIO'
+    succeeded = (code == 0 and child_report['status'] == 'PASS_SCENARIO'
+                 and not child_report.get('error') and not child_report.get('cleanup_error'))
+    if args.wheel:
+        succeeded = succeeded and child_report.get('wheel_sha256') == hashlib.sha256(args.wheel.read_bytes()).hexdigest() and child_report.get('wheel_members_verified', 0) > 0
     gates = assess(events, native_loads_complete=native['coverage'].get('startup_and_transient_native_loads', False),
                    native_api_complete=all(native['coverage'].get(name, False) for name in
                        ('native_public_gl_export_breakpoints', 'native_entrypoint_resolution', 'process_tree')),

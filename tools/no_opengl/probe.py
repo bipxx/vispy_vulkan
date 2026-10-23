@@ -114,20 +114,17 @@ def main():
                 canvas = None
                 if args.scenario == 'qt':
                     app.process_events()
-            report['status'] = 'PASS_SCENARIO'
-        if args.scenario == 'script':
-            report['status'] = 'PASS_SCENARIO'
         if args.wheel:
             # Apply the same installed-artifact check to host scripts. A host
             # which never imports the candidate cannot qualify its artifact.
+            sys.path.insert(0, str(Path(__file__).resolve().parents[2] / 'cmake'))
+            from runtime_package import wheel_package_hashes
+            members = wheel_package_hashes(args.wheel)
             import vispy
             from vispy import _dawn
             package = Path(vispy.__file__).resolve().parent
             assert package.is_relative_to(Path(sys.prefix).resolve())
             assert Path(_dawn.__file__).resolve().parent == package
-            sys.path.insert(0, str(Path(__file__).resolve().parents[2] / 'cmake'))
-            from runtime_package import wheel_package_hashes
-            members = wheel_package_hashes(args.wheel)
             with zipfile.ZipFile(args.wheel) as archive:
                 for name in members:
                     assert (package / Path(name).relative_to('vispy')).read_bytes() == archive.read(name), name
@@ -135,8 +132,9 @@ def main():
                           wheel_members_verified=len(members), vispy_origin=str(Path(vispy.__file__).resolve()),
                           native_origin=str(Path(_dawn.__file__).resolve()))
         snapshot('after_scenario')
+        report['status'] = 'PASS_SCENARIO'
     except BaseException:
-        report['error'] = traceback.format_exc()
+        report.update(status='FAILED_SCENARIO', error=traceback.format_exc())
     finally:
         try:
             if canvas is not None:
