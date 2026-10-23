@@ -188,7 +188,8 @@ def qwidget(evidence, application, dawn):
             stage['logical_size'] = list(canvas.size)
             stage['physical_size'] = list(canvas.physical_size)
             stage['surface'] = dawn.benchmark_surface_info(canvas_id)
-            assert stage['surface']['attached']
+            stage['presentation'] = native._dawn_presentation
+            assert stage['surface']['attached'] == (native._dawn_presentation == 'native')
         with evidence.stage('qwidget_capture_update_and_image_ownership'):
             owned = native.grabFramebuffer()
             initial = evidence.frame('qwidget_red', rgba_qimage(owned, backend.QtGui))
@@ -199,6 +200,11 @@ def qwidget(evidence, application, dawn):
             pump(application, lambda: len(draws) > before)
             updated = evidence.frame('qwidget_green', rgba_qimage(native.grabFramebuffer(), backend.QtGui))
             np.testing.assert_array_equal(updated[..., :3], np.broadcast_to([0, 255, 0], updated[..., :3].shape))
+            if native._dawn_presentation == 'readback':
+                presented = evidence.frame('qwidget_qpainter_visible', rgba_qimage(
+                    native.grab().toImage(), backend.QtGui))
+                np.testing.assert_array_equal(presented[..., :3],
+                    np.broadcast_to([0, 255, 0], presented[..., :3].shape))
             np.testing.assert_array_equal(rgba_qimage(owned, backend.QtGui), initial)
             assert owned.save(str(evidence.output / 'qwidget-owned.png'), 'PNG')
         with evidence.stage('qwidget_overlay_interaction_hide_restore') as stage:
