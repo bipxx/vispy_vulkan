@@ -182,3 +182,63 @@ def test_callback_error_cancels_deferred_redraw_and_preserves_first_error(monkey
     events.clear()
     QT.CanvasBackendDesktop._poll_dawn(backend)
     assert events == ['stop']
+
+
+def test_real_scoped_swap_defers_native_present_until_after_alpha_tail(monkeypatch):
+    backend, _, events, errors, _ = paint_double(monkeypatch)
+    def draw():
+        events.append('draw')
+        assert backend._dawn_paint_token == 19
+        QT.CanvasBackendDesktop._vispy_swap_buffers(backend)
+        events.append('alpha-tail')
+    backend._draw_dawn_scene = draw
+    QT.CanvasBackendDesktop.paintEvent(backend, None)
+    assert events == ['ready', 'begin', 'draw', 'alpha-tail', 'present', 'pump', 'end']
+    assert backend._dawn_paint_token is None and errors == []
+
+
+def test_real_legacy_swap_keeps_immediate_and_final_present(monkeypatch):
+    backend, _, events, errors, _ = paint_double(monkeypatch, scoped=False)
+    def draw():
+        events.append('draw')
+        QT.CanvasBackendDesktop._vispy_swap_buffers(backend)
+        events.append('alpha-tail')
+    backend._draw_dawn_scene = draw
+    QT.CanvasBackendDesktop.paintEvent(backend, None)
+    assert events == ['ready', 'draw', 'present', 'pump', 'alpha-tail', 'present', 'pump']
+    assert backend._dawn_paint_token is None and errors == []
+
+
+def test_deferred_swap_failure_clears_token_and_preserves_first_error(monkeypatch):
+    backend, _, events, errors, original = paint_double(monkeypatch)
+    def draw():
+        events.append('draw')
+        QT.CanvasBackendDesktop._vispy_swap_buffers(backend)
+        raise original
+    backend._draw_dawn_scene = draw
+    QT.CanvasBackendDesktop.paintEvent(backend, None)
+    assert events == ['ready', 'begin', 'draw', 'abort']
+    assert backend._dawn_paint_token is None and errors == [(original, 'paintEvent')]
+    QT.CanvasBackendDesktop._vispy_swap_buffers(backend)
+    assert events[-2:] == ['present', 'pump']
+
+
+def test_nested_backpressure_paint_preserves_outer_paint_token(monkeypatch):
+    backend, native, events, errors, _ = paint_double(monkeypatch)
+    original_ready = native.frame_ready
+    def busy(canvas_id):
+        events.append('nested-ready')
+        return False
+    def draw():
+        events.append('draw')
+        native.frame_ready = busy
+        QT.CanvasBackendDesktop.paintEvent(backend, None)
+        native.frame_ready = original_ready
+        assert backend._dawn_paint_token == 19
+        QT.CanvasBackendDesktop._vispy_swap_buffers(backend)
+        events.append('alpha-tail')
+    backend._draw_dawn_scene = draw
+    QT.CanvasBackendDesktop.paintEvent(backend, None)
+    assert errors == []
+    assert events == ['ready', 'begin', 'draw', 'nested-ready', 'pump', 'alpha-tail', 'present', 'pump', 'end']
+    assert backend._dawn_paint_token is None and backend._dawn_paint_deferred

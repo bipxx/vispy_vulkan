@@ -947,6 +947,7 @@ class CanvasBackendDesktop(QtBaseCanvasBackend, QWidget):
         self._initialized = True
         self._dawn_closed = False
         self._dawn_paint_deferred = False
+        self._dawn_paint_token = None
         self._dawn_callback_failed = False
         self._dawn_ratio_override = None
 
@@ -996,6 +997,10 @@ class CanvasBackendDesktop(QtBaseCanvasBackend, QWidget):
 
     def _vispy_swap_buffers(self):
         if self._vispy_canvas is None or self._dawn_closed:
+            return
+        if getattr(self, '_dawn_paint_token', None) is not None:
+            # Qt owns the whole paint, including its alpha-clear tail. Keep
+            # this swap callback, but present its final contents only once.
             return
         from vispy import _dawn
         _dawn.present(int(self._dawn_canvas_id))
@@ -1093,6 +1098,7 @@ class CanvasBackendDesktop(QtBaseCanvasBackend, QWidget):
         from vispy import _dawn
         paint_token = None
         paint_api = None
+        previous_paint_token = getattr(self, '_dawn_paint_token', None)
         try:
             if not _dawn.frame_ready(int(self._dawn_canvas_id)):
                 self._dawn_paint_deferred = True
@@ -1107,6 +1113,7 @@ class CanvasBackendDesktop(QtBaseCanvasBackend, QWidget):
                 paint_token = paint_api[0](int(self._dawn_canvas_id))
                 if type(paint_token) is not int or paint_token <= 0:
                     raise RuntimeError('Dawn native Qt paint scope returned an invalid token')
+                self._dawn_paint_token = paint_token
             self._draw_dawn_scene()
             _dawn.present(int(self._dawn_canvas_id))
             self._start_dawn_pump()
@@ -1122,6 +1129,8 @@ class CanvasBackendDesktop(QtBaseCanvasBackend, QWidget):
                     logger.error('Dawn Qt paint scope abort failed on canvas %s',
                                  self._dawn_canvas_id, exc_info=True)
             self._record_dawn_callback_error(error, 'paintEvent')
+        finally:
+            self._dawn_paint_token = previous_paint_token
 
     def paintEngine(self):
         return None

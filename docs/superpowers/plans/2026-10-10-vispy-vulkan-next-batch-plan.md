@@ -1,5 +1,45 @@
 # VisPy Vulkan implementation completion plan
 
+Current checkpoint, 2026-10-23: Native66 Qt presentation fix is ready for review
+on `work/qt-single-present`. Backend swaps inside a native paint scope now defer
+presentation until the alpha-clear tail is complete. Nested busy paints preserve
+the outer paint token; the earlier native API keeps its existing swap sequence.
+
+Validation on the fresh Windows CPython 3.12 wheel:
+
+- 22 Qt CPU regression cases passed, including a nested-paint regression that
+  reproduced the token-clearing error before the fix.
+- All 44 native targets built and all 47 CTests passed, followed by the terminal
+  source, compiler-policy and artifact audit.
+- All 75 Qt stress cases passed: 25 loss/recovery cycles and exact red readbacks
+  per PyQt5, PyQt6 and PySide6 binding.
+- All 17 scientific-volume controls matched exactly across 156,672 pixels.
+- All 24 large-volume controls passed across 96 complete frames and 251,658,240
+  pixels, with maximum channel error 1 within the unchanged limit of 2 and no
+  excluded pixels.
+
+The isolated wheel passed package, native-origin and license audits. Its SHA256
+is `ea48141c8bc1988d038eabd984f704e4a25d20fe1f38b432d0a91fb9a107cddd`.
+The implementation remains AGPL-3.0-only; original BSD licenses, copyright and
+third-party notices remain attached unchanged in source and the wheel.
+
+The first volume workload completed five alternating OpenGL/Vulkan pairs, each
+with 100 warm-up and 1,000 measured frames. All 10 workers and 15 paired full-frame
+comparisons verified, with no unattributed draw, parser or paint work. Each
+candidate measured 1,000 application/Dawn presents and 2,000 Vulkan submissions.
+Release performance remains **unproven**: input-to-visible scanout and complete
+driver/allocator peak accounting are still missing. These results do not qualify
+a speedup or all 24 timing workloads.
+
+The full implementation remains WIP. Marker and million-point parity, smooth-line
+parity, remaining host/platform/hardware coverage, scanout and allocator evidence
+remain open. WSL currently exposes only software Vulkan; macOS Metal hardware is
+unqualified. Current source is epoch 66, snapshot 52; installed Native58 stays
+unchanged. Removed 131 disposable object files (about 181 MiB) after terminal
+validation, retaining binaries, sources, logs and raw evidence.
+
+Historical checkpoints follow; each describes the state at its recorded revision.
+
 Continuation checkpoint139, 2026-10-22: ACTUAL final63 image13, large24 and
 large-image4 all passed their once-only serial runners, independent saved
 audits and final admissions. Together with prior core44/scientific17, this is
