@@ -1,7 +1,9 @@
 # OpenGL runtime removal: three-agent execution plan
 
-Date: 2026-10-23. Status: planned; implementation has not started.
-Inspected source: `390f901ced79d339f46d7f825f21c8e12596d434`.
+Date: 2026-10-23. Status: execution plan; groundwork partially implemented,
+full installed-artifact qualification remains pending.
+Original inspected source: `390f901ced79d339f46d7f825f21c8e12596d434`.
+Integrated groundwork: `44db9bcf8` on `work/opengl-runtime-removal`.
 
 ## Outcome and boundaries
 
@@ -215,7 +217,9 @@ python -B -m pytest tests/contract/test_package_inputs.py tests/contract/test_so
 <consumer-python> -I -B tools/marker_wheel_smoke.py --wheel <wheel> --output <fresh-output>
 ```
 
-Agent 3 will add these tools/tests; they do **not** exist yet:
+Agent 3 owns the following audit interface. Its implementation and native
+negative controls are in progress; verify the committed CLI before using these
+planned invocations:
 
 ```text
 python -B tools/audit_no_opengl.py dependencies --wheel <wheel> --qt-root <installed-qt> --output <report>
@@ -236,13 +240,55 @@ load/call events, actual process exits and cleanup results. Link the underlying
 frames/traces; a self-declared `no_opengl=true` field is not proof. Reuse a tested
 artifact for matching checks rather than rebuilding it for every report edit.
 
-## Dispatch order
+## Current groundwork and remaining execution
 
-Start all three agents on Phase 0. Then run the Python facade change, native
-contract work and audit harness in parallel. Integrate the headless slice first.
-Make the Qt binary feasibility decision before promising a GL-free GUI date.
-Proceed to Qt and required host slices, with native feature packets running in
-parallel as their contracts become clear. The principal uncertainties are Qt
-binary dependencies and independent host OpenGL usage, not the already-Dawn
-native renderer. Estimate the implementation after that inventory, rather than
-promising completion based only on removing a few imports.
+The following are partial results, not a completed OpenGL-removal claim:
+
+- Integrated native framebuffer query, Dawn Python facade, Qt import cleanup,
+  explicit backend selection and exact runtime-package manifest.
+- Focused integrated Python/package checks: 45 passed. Native CPU framebuffer
+  contract passed; new GPU framebuffer cases still need a matching fresh wheel.
+- A fresh Linux runtime rootfs without GL runtime libraries reproduced the old
+  wheel's GL import failure. It is ready for candidate qualification.
+- Stock Linux QtGui and XCB plugins require libGL/libEGL. Removing Python imports
+  alone cannot finish Linux GUI support; a no-GL Qt and binding build is required.
+- Pinned napari/QtPy source patches and focused host checks are prepared in the
+  Python agent's branch; integration and full mapped host runs remain pending.
+- Native load/call collectors and their negative controls are being developed.
+  Windows import-only checks do not qualify an installed GUI or host artifact.
+
+## Next three-agent execution wave
+
+Use the existing three agents/worktrees. Do not create additional execution
+agents. The coordinator integrates completed packets, resolves interfaces and
+reviews reports. Resume from the current groundwork instead of repeating Phase 0.
+
+| Agent | Next bounded packet | Handoff and completion check |
+| --- | --- | --- |
+| **1 — Native and no-GL Qt build** | Qualify the new framebuffer query against a fresh Vulkan wheel. Build pinned Qtbase/QtSvg and selected PyQt6 modules with OpenGL disabled inside the separate owned Linux build rootfs. Fix native defects demonstrated by required fixtures. | Give Agent 3 exact configure commands, source hashes, build outputs and original licenses. Qt source/build scripts stay in owned local build directories; Agent 3 retains project packaging/dependency ownership. A successful configure alone is insufficient. |
+| **2 — Python, Qt and hosts** | Integrate the pinned napari/QtPy patch packet, then run real QWidget and admitted host workflows against the fresh artifacts. Cover image/labels/volume, overlays, input, capture, recovery and close. | Provide versioned patches, source hashes and functional fixtures. Report unsupported required features to Agent 1; request packaging changes from Agent 3. Import-only host checks remain partial. |
+| **3 — Artifacts and proof** | Finish native dependency/load/API collectors with negative controls, resolve Windows dependency redirects, and build/audit fresh Windows and Linux wheels. Package Agent 1's Qt/binding output reproducibly. | Produce the mandatory application matrix and per-artifact evidence for all three gates. Keep fresh strict Linux consumer environments separate from the Qt build environment. |
+
+Execute these checkpoints in order, with the three packets running in parallel:
+
+1. **Headless first:** build and install the current source; pass clear, image,
+   markers, text, framebuffer, missing-Vulkan failure and recovery checks under
+   all three gates on Windows and the strict Linux rootfs.
+2. **Mapped Qt:** use the measured Windows Qt closure and the no-GL Linux Qt
+   build. Pass lifecycle, resize/DPI/input/capture and shutdown on the selected
+   binding. Other required bindings retain explicit pending rows until tested.
+3. **Hosts and feature gaps:** run the admitted pinned host/plugin matrix and
+   implement only native features required by those rows. Keep failures visible;
+   do not substitute an error stub for a completed required feature.
+4. **Release:** run relevant regressions and CI, publish exact artifact hashes
+   and the capability matrix, preserve AGPL/BSD/third-party notices, then merge
+   the tested implementation through the already-authorized normal workflow.
+
+Clean owned disposable build objects and caches after terminal results, retaining
+source inputs, wheels, binaries, frames and meaningful logs. Previously rejected
+cleanup paths and their parent worktrees remain untouched. Metal stays
+experimental; WSL software Vulkan does not establish native Linux GPU support.
+
+The critical path is the Linux no-GL Qt/binding artifact plus installed-artifact
+native tracing. Estimate completion after their first successful runs; do not
+infer completion from import cleanup or existing Vulkan rendering alone.
