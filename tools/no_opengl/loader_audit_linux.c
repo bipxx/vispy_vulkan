@@ -10,9 +10,13 @@
 #include <string.h>
 #include <unistd.h>
 #include <stdint.h>
+#include <signal.h>
 
 static int trace_fd = -1;
 static int trace_failed = 0;
+static int debugger_handshake = 0;
+
+static void emit_image(const char *kind, struct link_map *map);
 
 static void emit(const char *kind, const char *value) {
     char line[8192];
@@ -38,6 +42,8 @@ static void emit(const char *kind, const char *value) {
 
 unsigned int la_version(unsigned int version) {
     const char *path = getenv("VISPY_NO_GL_NATIVE_LOG");
+    const char *handshake = getenv("VISPY_NO_GL_PTRACE_HANDSHAKE");
+    debugger_handshake = handshake && strcmp(handshake, "1") == 0;
     if (path && *path) trace_fd = open(path, O_WRONLY | O_CREAT | O_APPEND | O_CLOEXEC, 0600);
     emit("audit_start", "glibc LD_AUDIT");
     return version < LAV_CURRENT ? version : LAV_CURRENT;
@@ -47,13 +53,37 @@ unsigned int la_objopen(struct link_map *map, Lmid_t namespace_id, uintptr_t *co
     (void)namespace_id;
     *cookie = (uintptr_t)map;
     emit("native_load", map->l_name);
+    if (debugger_handshake) {
+        emit_image("native_image", map);
+        if (kill(getpid(), SIGSTOP) != 0) trace_failed = 1;
+    }
     return LA_FLG_BINDTO | LA_FLG_BINDFROM;
 }
 
 unsigned int la_objclose(uintptr_t *cookie) {
     struct link_map *map = (struct link_map *)*cookie;
     emit("native_unload", map ? map->l_name : "");
+    if (debugger_handshake && map) {
+        emit_image("native_image_unload", map);
+        if (kill(getpid(), SIGSTOP) != 0) trace_failed = 1;
+    }
     return 0;
+}
+
+static void emit_image(const char *kind, struct link_map *map) {
+    char value[8192], reverse[2 * sizeof(uintptr_t)];
+    size_t used = 0, digits = 0;
+    uintptr_t address = (uintptr_t)map->l_addr;
+    do {
+        reverse[digits++] = "0123456789abcdef"[address & 15];
+        address >>= 4;
+    } while (address);
+    value[used++] = '0'; value[used++] = 'x';
+    while (digits) value[used++] = reverse[--digits];
+    value[used++] = '|';
+    for (const char *p = map->l_name; *p && used < sizeof(value) - 1; ++p) value[used++] = *p;
+    value[used] = 0;
+    emit(kind, value);
 }
 
 __attribute__((destructor)) static void finish(void) {

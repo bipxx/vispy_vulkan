@@ -46,7 +46,8 @@ def run_candidate(args):
         from no_opengl.linux import trace
         native = trace(command, auditor=args.native_auditor, environment=environment,
                        cwd=report_path.parent, log=log,
-                       trace_path=report_path.with_suffix('.loader.tsv'), timeout=args.timeout)
+                       trace_path=report_path.with_suffix('.loader.tsv'), timeout=args.timeout,
+                       debugger=args.native_debugger)
         code = native['process_exit']
     else:
         with log.open('wb') as stream:
@@ -113,6 +114,7 @@ def main():
     run.add_argument('--wheel', type=Path)
     run.add_argument('--script', type=Path)
     run.add_argument('--native-auditor', type=Path)
+    run.add_argument('--native-debugger', type=Path)
     run.add_argument('--dependencies-report', type=Path)
     run.add_argument('--policy', choices=('observe', 'deny'), default='deny')
     run.add_argument('--gates', choices=('all', 'imports'), default='all')

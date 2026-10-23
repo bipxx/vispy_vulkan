@@ -16,6 +16,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--fixture', type=Path, required=True)
     parser.add_argument('--native-auditor', type=Path)
+    parser.add_argument('--native-debugger', type=Path)
     parser.add_argument('--python', type=Path, default=Path(sys.executable))
     parser.add_argument('--output', type=Path, required=True)
     args = parser.parse_args()
@@ -35,6 +36,10 @@ def main():
         'transient': f'import ctypes,_ctypes;x=ctypes.CDLL({str(transient)!r});assert x.auditSafeControl()==23;'
                      + ('_ctypes.FreeLibrary(x._handle)' if windows else '_ctypes.dlclose(x._handle)'),
     }
+    cases['child_call'] = ('import subprocess,sys;subprocess.run([sys.executable,"-I","-B","-c",'
+                           + repr(prefix + 'assert x.auditCallControl()==17') + '],check=True)')
+    if not windows:
+        cases['fork_call'] = prefix + 'import os;pid=os.fork();x.auditCallControl() if pid==0 else os.waitpid(pid,0)'
     reports = {}
     for name, code in cases.items():
         command = [str(args.python.resolve(strict=True)), '-I', '-B', '-c', code]
@@ -44,7 +49,8 @@ def main():
         else:
             from .linux import trace
             native = trace(command, auditor=args.native_auditor, environment=os.environ.copy(), cwd=root,
-                           log=root / (name + '.log'), trace_path=root / (name + '.loader.tsv'))
+                           log=root / (name + '.log'), trace_path=root / (name + '.loader.tsv'),
+                           debugger=args.native_debugger)
         events = native['events']
         api_complete = all(native['coverage'].get(key, False) for key in
                            ('native_public_gl_export_breakpoints', 'native_entrypoint_resolution', 'process_tree'))
@@ -65,8 +71,11 @@ def main():
                                         for row in reports['transient']['events']),
         'no_collector_errors': not any(value['errors'] for value in reports.values()),
     }
-    if windows:
+    if windows or args.native_debugger:
         checks['native_direct_call_detected'] = seen('call', 'native_gl_call')
+        checks['exec_child_native_call_detected'] = seen('child_call', 'native_gl_call')
+        if not windows:
+            checks['fork_child_inherited_native_call_detected'] = seen('fork_call', 'native_gl_call')
     else:
         # The local-call control is linked -Bsymbolic. Its successful undetected
         # invocation demonstrates why LD_AUDIT cannot pass the execution gate.

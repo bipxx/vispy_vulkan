@@ -25,8 +25,12 @@ symbol lookup and public GL calls across the debuggee process tree. Independent
 C controls detect lookup without invocation, direct calls and load/unload of a
 forbidden runtime name; a safe control passes. The Linux glibc collector compiles
 with warnings as errors and detects loader events and native dlsym bindings.
-Its direct local-call control exposes missing API coverage, so Linux aggregate
-execution/load absence gates remain UNVERIFIED pending native debugger tracing.
+The cooperating ptrace debugger now follows the complete fork/exec task tree and
+stops at loader object boundaries to instrument public GL exports before user
+code resumes. Independent controls detect direct local -Bsymbolic calls as well
+as inherited fork and new exec child calls. Auditor-only mode remains explicitly
+UNVERIFIED for aggregate absence gates. Private implementations/manual export
+parsing are outside both platform observers' public API scope.
 
 Local evidence from this validation worktree is retained under
 `build/no-opengl/`: stock Qt dependency reports, Windows/Linux collector controls,
@@ -34,7 +38,7 @@ source import checks and 27 CPU package/observation contract tests. These are
 development evidence, not an installed-artifact release claim. The coordinator
 is building fresh Windows/Linux wheels and owns integrated runtime qualification.
 
-Remaining work includes Linux process/API observation, the no-GL Qt package and
+Remaining work includes installed-artifact Linux process/API runs, the no-GL Qt package and
 its complete runtime graph, fresh installed-artifact headless/Qt functional and
 recovery runs, and each required host/plugin workflow. Napari-threedee rendering
 admission is still pending; its prior source/import inventory is not rendering

@@ -31,20 +31,24 @@ Unknown image paths, forwarded GL exports, instrumentation errors and incomplete
 process termination prevent an absence PASS. Private implementations and manual
 export parsing are outside this public API observer's scope.
 
-Linux glibc currently uses `--native-auditor <loader_audit.so>`. It records actual
-startup/transient loader objects and bindings including dlsym. It does not observe
-direct local calls or prove the whole fork/exec tree. Accordingly the aggregate
-execution/load gates remain UNVERIFIED, including on successful graphics runs.
-The negative controls explicitly demonstrate this limitation. A native debugger
-collector is the remaining Linux instrumentation work.
+Linux x86-64 uses `--native-auditor <loader_audit.so> --native-debugger
+<debugger_linux>`. The ptrace collector follows fork/vfork/clone/exec/exit and the
+cooperating glibc collector stops on object open/close, before constructors or
+user code resume. It instruments ELF public GL exports with call breakpoints,
+including local -Bsymbolic calls, and records glibc bindings such as dlsym.
+Unknown ELF formats, missing symbol tables, GL IFUNC exports, collector errors,
+incomplete task lifecycles or execs without an auditor prevent PASS. Private
+implementations and manual export parsing remain outside its public API scope.
+The auditor alone still produces UNVERIFIED aggregate execution/load gates.
 
 Build the independent synthetic native controls (they implement no graphics):
 
 ```text
 # Linux, in an owned build directory
 cc -shared -fPIC -O2 -Wall -Wextra -Werror -o loader_audit.so tools/no_opengl/loader_audit_linux.c
+cc -O2 -Wall -Wextra -Werror -o debugger_linux tools/no_opengl/debugger_linux.c
 cc -shared -fPIC -O0 -Wall -Wextra -Werror -Wl,-Bsymbolic -o negative_api.so tools/no_opengl/negative_probe.c -ldl
-PYTHONPATH=tools python -B -m no_opengl.negative_controls --fixture negative_api.so --native-auditor loader_audit.so --output <new-directory>
+PYTHONPATH=tools python -B -m no_opengl.negative_controls --fixture negative_api.so --native-auditor loader_audit.so --native-debugger debugger_linux --output <new-directory>
 
 # Windows: VS developer shell, explicit Windows SDK import library if needed
 cl /nologo /LD /GS- /Zl /Fonegative_probe.obj /Fenegative_api.dll tools/no_opengl/negative_probe.c /link /NODEFAULTLIB /NOENTRY kernel32.lib
@@ -54,8 +58,9 @@ python -B -m no_opengl.negative_controls --fixture negative_api.dll --output <ne
 
 The controls run without Python audit hooks: safe export, native symbol lookup
 without a call, direct native call, and transient load/unload of the fixture
-under a forbidden loader name. Linux's -Bsymbolic direct call deliberately
-exposes the LD_AUDIT blind spot. PASS_CONTROLS describes the controls, never a
+under a forbidden loader name. Forked and exec'd child controls check inherited
+traps and new executables. Linux's -Bsymbolic call exposes the auditor-only blind
+spot and is caught with the debugger. PASS_CONTROLS describes the controls, never a
 candidate artifact. Keep failed traces as evidence.
 
 All three candidate gates also require a fresh GL-free installed environment
