@@ -1,0 +1,44 @@
+{
+  "schema": 1,
+  "project": "QtPy",
+  "version": "2.4.3",
+  "upstream_license": "MIT",
+  "upstream_license_file": "LICENSE.txt",
+  "changes_license": "AGPL-3.0-only",
+  "source_url": "https://files.pythonhosted.org/packages/70/01/392eba83c8e47b946b929d7c46e0f04b35e9671f8bb6fc36b6f7945b4de8/qtpy-2.4.3.tar.gz",
+  "source_sha256": "db744f7832e6d3da90568ba6ccbca3ee2b3b4a890c3d6fbbc63142f6e4cdf5bb",
+  "archive_root": "qtpy-2.4.3",
+  "patch": "qtpy-2.4.3-no-opengl.patch",
+  "patch_sha256": "d464555f52bc02e05479a3aa3462d559f90575a1d84ad50ce6c6c92cc64fbcc4",
+  "files": {
+    "qtpy/QtGui.py": {
+      "before_sha256": "8a07244de4b0092c5fae164a7d7fa0406992a5a8a847bd199f2d2592afef4e1f",
+      "after_sha256": "55ba2e710401d336fe9d817c1b377ae900c354ab0e66ef1d9362c4bf352bf410"
+    },
+    "qtpy/QtWidgets.py": {
+      "before_sha256": "7b29181cbdc1529848851dd001289c60ac12cab23ec1811ee1ef32b84519b0ae",
+      "after_sha256": "48e84c1c9094c2b61fa50e9192f39f0d7138cfebde1250aad567f7dcb32b0b70"
+    },
+    "qtpy/QtOpenGL.py": {
+      "before_sha256": "6e586403e42f8d6553d880def60e54d6952584057be1455a9f4e40a959fdb4c3",
+      "after_sha256": "b00f817cc5634dc00542e4caa3cddd727b661c3e77589c6b14e75b6cbe7dcc4a"
+    },
+    "qtpy/QtOpenGLWidgets.py": {
+      "before_sha256": "73b2a3ecc58bed22445d61f7f64774b9280bbd32d915b243cd7cef1c61223c46",
+      "after_sha256": "b00f817cc5634dc00542e4caa3cddd727b661c3e77589c6b14e75b6cbe7dcc4a"
+    },
+    "setup.cfg": {
+      "before_sha256": "282eb52f236ad860b10b67ee2ffea85321c8a989193d56eda5f1bcb85921e950",
+      "after_sha256": "c3e2e50ff89135cac9b4b2b0f942dc490f1b03f4a9c1c893eeb4b5d0c2851a20"
+    },
+    "PKG-INFO": {
+      "before_sha256": "b48d5d1919978639b69a020074ba36d4d96a157c674b3bdff781effb097371af",
+      "after_sha256": "40a533ded737f2807c762cf36b2bd81a7448b3fd37365be984c1b2a71445da6e"
+    },
+    "QtPy.egg-info/PKG-INFO": {
+      "before_sha256": "b48d5d1919978639b69a020074ba36d4d96a157c674b3bdff781effb097371af",
+      "after_sha256": "40a533ded737f2807c762cf36b2bd81a7448b3fd37365be984c1b2a71445da6e"
+    }
+  },
+  "qualification": "Source patch only; noGL native Qt/binding qualification required separately."
+}
