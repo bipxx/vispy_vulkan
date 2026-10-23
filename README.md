@@ -2,7 +2,7 @@
 
 A VisPy 0.17.0 compatibility fork using Dawn for Vulkan rendering on Windows and Linux, with a Metal path for macOS.
 
-This is an implementation in progress. Platform support in the source does not establish hardware qualification. The release plan still has open ABI, host, rendering, platform, and performance requirements.
+The current usable milestone targets Windows Vulkan and WSL Linux software Vulkan. macOS Metal is experimental. See the [tested platforms and artifact hashes](docs/tested-platforms.md) for current checks and limitations. Broader native hardware, host and performance qualification remains open.
 
 ## Build
 

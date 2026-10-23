@@ -1,3 +1,48 @@
+Verified milestone checkpoint, 2026-10-23: all five current Windows ABI wheels
+and their isolated consumers pass. The current CP312 wheel passes 23 functional
+host/layout and 30 original scientific/image cases, the latter exactly. A full
+Linux native wheel built directly from the corrected sdist passes isolated
+software-Vulkan consumers, million markers, native-origin/license checks and
+five WSLg X11 Qt framebuffer cases. All actual builders/consumers are terminal.
+Removed 120 Windows and 960 Linux object files, owned caches/environments and
+temporary Python runtimes; artifacts and failures remain. Denied first-attempt
+cache deletion was not retried. See docs/tested-platforms.md for artifact hashes,
+precise scope and limitations. Metal is experimental per the user's selection.
+Earlier in-progress checkpoints below retain their historical timestamp scope.
+
+Current practical checklist, 2026-10-23:
+
+The user selected verified Windows and WSL Linux for this first usable version,
+with macOS Metal explicitly experimental. Native Metal hardware validation is
+future work and does not block this milestone.
+
+- Complete: source packaging at 3f2012b38ae380a48c52a52c034425010ffd0ac0.
+  A real rebuilt sdist retains all 99,063 tracked files byte-for-byte, plus
+  generated PKG-INFO; fork Markdown metadata, AGPL and original licenses pass.
+  Removed the owned Linux extraction, build environment and cache (1.30 GB).
+- Complete at its recorded source scope: six audited CPU CI artifacts at
+  8aa45add4c27ad31deb43bf576e0ef8094a0780e cover Linux CPython 3.10-3.14
+  and Windows CPython 3.11. Each passes 1,028 Python tests and 42 native
+  contracts with no skips. These are CPU checks, not GPU qualification.
+- In progress: refresh all five Windows ABI wheels from the current frozen
+  619-input build snapshot. Each installed consumer checks two renderbuffer
+  formats, clear, blended smooth lines/reuse, compiled text, origins and cleanup.
+  The first setup failed at dependency location identity; its processes stopped
+  and logs remain. Attempt 2 uses the successful Native68 dependency locations.
+- Pending: finish those actual builders/consumers, audit their saved results,
+  then remove owned disposable objects, caches and temporary Python runtimes.
+- Experimental future work: Metal wheel jobs on arm64 and Intel remain queued. Native
+  Metal rendering and native Linux GPU validation have no hardware result;
+  WSL results remain explicitly software Vulkan. No platform pass is inferred.
+- Pending: record remaining platform/host/performance scope honestly before
+  declaring full completion. Existing historical acceptance results below are
+  preserved; this checklist does not grant full v1 release qualification.
+
+Automatic approval review rejected deletion of the four failed-attempt Native70
+wheel caches (blocked by policy). They remain, and that cleanup was not retried.
+Cybersecurity remains excluded; exact rasterizer edge parity is not a practical
+completion blocker. Earlier checkpoints retain their own artifact scopes.
+
 Practical completion scope, 2026-10-23: prioritize functional rendering,
 correct clipping/depth, stable resource cleanup and usable packages. Small
 OpenGL edge-pixel differences are documented limitations rather than blockers.
