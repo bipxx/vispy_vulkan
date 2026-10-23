@@ -56,7 +56,7 @@ def main() -> None:
     inputs: dict[str, str] = {}
     ignored = {"__pycache__", ".pytest_cache", ".git"}
     for relative in (
-        "CMakeLists.txt", "CMakePresets.json", "pyproject.toml", "uv.lock",
+        "CMakeLists.txt", "CMakePresets.json", "pyproject.toml", "uv.lock", "README.md",
         "LICENSE", "LICENSE-BSD", "LICENSING.md",
         "cmake", "cpp", "src", "third_party/licenses",
     ):
