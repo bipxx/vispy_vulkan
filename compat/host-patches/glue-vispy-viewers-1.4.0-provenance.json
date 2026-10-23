@@ -1,0 +1,36 @@
+{
+  "schema": 1,
+  "project": "glue-vispy-viewers",
+  "version": "1.4.0",
+  "upstream_license": "BSD-2-Clause",
+  "upstream_license_file": "LICENSE",
+  "changes_license": "AGPL-3.0-only",
+  "source_url": "https://files.pythonhosted.org/packages/e3/f4/465adb8216c8778c1499a696aaafc997431d1374849a32218ba755327d06/glue_vispy_viewers-1.4.0.tar.gz",
+  "source_sha256": "aa9bc2b11d851ac1c12d953d4637b48b6eff9449f54715c92e654c38407af54a",
+  "archive_root": "glue_vispy_viewers-1.4.0",
+  "patch": "glue-vispy-viewers-1.4.0-no-opengl.patch",
+  "patch_sha256": "4c1cf0b9e54ed8a1b34d9082ece90e92f78272966f84438d6f4430532d75dc73",
+  "files": {
+    "glue_vispy_viewers/__init__.py": {
+      "before_sha256": "4fe49e5ea2cf80a3a97894d3b952380fe6b6ca9db5cc4607ac9758df97d2acfb",
+      "after_sha256": "bcff8a3c3894b3756ded1462f617c606c67ed0e74714caef489828d4002cc302"
+    },
+    "glue_vispy_viewers/common/qt/data_viewer.py": {
+      "before_sha256": "733c98fc8a9b5194f0d0ef001ebb646cadc35bf876f2a529807f598706b9f9dc",
+      "after_sha256": "8b61117ca60692cd678c0c02594c58e003a789476c4d8f48ef6c8050a454fcb0"
+    },
+    "setup.cfg": {
+      "before_sha256": "6989d59fcce5dd2641e32809e9cf983850d5aafad767fe718e00f3d81c865932",
+      "after_sha256": "3920aed2415ebed87d6a66e75af51013d434a55eff6d4c607ff2a4bc67cc90d9"
+    },
+    "PKG-INFO": {
+      "before_sha256": "01dd596c7fe05c5cf1af3ffc3597ba897e8203285a58f5e00f2ea402435a7341",
+      "after_sha256": "94896965dadad64b1dbd8d759f939cac13f09ae764422c5a1bfde74ca5d256a5"
+    },
+    "glue_vispy_viewers.egg-info/PKG-INFO": {
+      "before_sha256": "01dd596c7fe05c5cf1af3ffc3597ba897e8203285a58f5e00f2ea402435a7341",
+      "after_sha256": "94896965dadad64b1dbd8d759f939cac13f09ae764422c5a1bfde74ca5d256a5"
+    }
+  },
+  "qualification": "Pinned source patch. QWidget/native functional and noGL gates must be qualified on installed artifacts."
+}
