@@ -28,9 +28,9 @@
       "application": "headless",
       "binding": null,
       "mandatory": true,
-      "status": "PENDING",
-      "artifact_sha256": null,
-      "environment_id": null,
+      "status": "QUALIFIED",
+      "artifact_sha256": "62df5e4c31bf9a1bb1bea47fd68d50e4198d6ec13d2551c991da1e7f30a2b38f",
+      "environment_id": "de241eb8d98d98127df10c47841447fb9d5dc1862b170e87e73d21a734bbae5a",
       "features": [
         "clear",
         "image",
@@ -46,11 +46,45 @@
         "shutdown-zero-resources"
       ],
       "gates": {
-        "no_gl_execution": "UNVERIFIED",
-        "no_gl_loads": "UNVERIFIED",
-        "no_gl_install_link_requirement": "UNVERIFIED"
+        "no_gl_execution": "PASS",
+        "no_gl_loads": "PASS",
+        "no_gl_install_link_requirement": "PASS"
       },
-      "evidence": []
+      "evidence": [
+        {
+          "path": "build/opengl-removal-final-headless-windows-root-1/result1.json",
+          "sha256": "2b325bc735af82fd3bb5e7949f40e18d66c3121f189b6d60189f34b3964c2486"
+        },
+        {
+          "path": "build/opengl-removal-final-headless-windows-root-1/qualified1.json",
+          "sha256": "f69c25d6a8086e68889fb5fb1028335b7c5d12e4e39bdb720da6fe9cf21f191b"
+        },
+        {
+          "path": "build/opengl-removal-final-headless-windows-root-1/qualified1.worker.json",
+          "sha256": "2f53a3337c4971c664a887c24635474cb6a3d47c198df4efc516d45eccd43517"
+        },
+        {
+          "path": "build/opengl-removal-final-headless-windows-root-1/receipt1.json",
+          "sha256": "577c3fbabfbe2850d247b393f86f1908cdbce66763e9fad7b303096a58397b75"
+        },
+        {
+          "path": "build/opengl-removal-final-headless-windows-root-1/qualified-features1/result1.json",
+          "sha256": "75ee1ba1378104cfef7fe905c52f65e3d63cf8f9cb9bbf3fc874f36d018b2abc"
+        },
+        {
+          "path": "build/opengl-removal-final-headless-windows-root-1/qualified-features1/gpu95/gpu1.xml",
+          "sha256": "bb2baaf99e4ab7c518cbc30ad0e421c0ebc638cb68a84b3191e2feb3c7ab9d5f"
+        },
+        {
+          "path": "build/opengl-removal-final-headless-windows-root-1/qualified-features1/science/result1.json",
+          "sha256": "f25917429bc839f33d683e9f4c6003cbf3eca7dd40fd0cf799a6955c9d0741ce"
+        },
+        {
+          "path": "build/opengl-removal-final-headless-windows-root-1/qualified-features1/markers/result.json",
+          "sha256": "d264230158d01df4899db91bbbe2f91361af1d738e0447e67d26b0922dd197c2"
+        }
+      ],
+      "qualification_scope": "Same-process native-observed95GPUcases plus rendering/text/images,4096points+instancedmarkers,and36categorical/scalar/color-volume authored-landmark cases; no full-frame OpenGL or performance parity claim"
     },
     {
       "id": "windows-vulkan-qwidget-pyqt5",

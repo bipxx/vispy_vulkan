@@ -110,7 +110,7 @@ def test_bad_binary_does_not_become_an_empty_closure():
         elf_image(b'not a binary')
 
 
-def test_mandatory_application_matrix_is_explicitly_unqualified():
+def test_mandatory_application_matrix_requires_bound_evidence_for_qualified_rows():
     matrix = json.loads((ROOT / 'compat/no-opengl-matrix.json').read_text())
     mandatory = [row for row in matrix['rows'] if row['mandatory']]
     assert len({row['id'] for row in matrix['rows']}) == len(matrix['rows'])
@@ -118,4 +118,13 @@ def test_mandatory_application_matrix_is_explicitly_unqualified():
         rows = [row for row in mandatory if row['platform'] == platform]
         assert {row['application'] for row in rows} == {'headless', 'qwidget', 'napari', 'glue-vispy-viewers', 'napari-threedee'}
         assert {row['binding'] for row in rows if row['application'] == 'qwidget'} == {'pyqt5', 'pyqt6', 'pyside6'}
-    assert all(row['status'] == 'PENDING' and not row['evidence'] for row in mandatory)
+    for row in mandatory:
+        if row['status'] == 'PENDING':
+            assert not row['evidence'] and row['artifact_sha256'] is None and row['environment_id'] is None
+            assert all(value == 'UNVERIFIED' for value in row['gates'].values())
+        else:
+            assert row['status'] == 'QUALIFIED'
+            assert len(row['artifact_sha256']) == len(row['environment_id']) == 64
+            assert all(value == 'PASS' for value in row['gates'].values())
+            assert row['evidence'] and row['qualification_scope']
+            assert all(len(evidence['sha256']) == 64 and evidence['path'].startswith('build/') for evidence in row['evidence'])
