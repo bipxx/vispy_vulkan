@@ -6,6 +6,7 @@
 #include <limits>
 #include <sstream>
 #include <unordered_map>
+#include <unordered_set>
 
 namespace {
 
@@ -309,6 +310,16 @@ class SourceWriter {
     bool started_ = false;
 };
 
+// GLIR keeps array element names (images[0]); generated resources need legal,
+// collision-free names separate from the existing scalar resource namespace.
+std::string sampler_texture_name(const NormSampler& sampler) {
+    return sampler.name.find('[') == std::string::npos ? "vispy_tex_" + sampler.name :
+        "vispy_array_tex_" + std::to_string(sampler.texture_binding);
+}
+std::string sampler_sampler_name(const NormSampler& sampler) {
+    return sampler.name.find('[') == std::string::npos ? "vispy_samp_" + sampler.name :
+        "vispy_array_samp_" + std::to_string(sampler.sampler_binding);
+}
 struct SamplerReference {
     std::string type, texture, sampler;
 };
@@ -344,11 +355,19 @@ std::vector<std::pair<size_t, size_t>> argument_ranges(const std::vector<Tok>& t
 }
 bool lower_sampler_functions(const std::vector<Tok>& tokens, const std::vector<NormSampler>& samplers,
                              std::vector<bool>& skip, std::unordered_map<size_t, std::string>& replacements,
-                             std::unordered_map<size_t, SamplerReference>& uses, std::string& error) {
+                             std::unordered_map<size_t, SamplerReference>& uses,
+                             const std::vector<bool>& array_references, std::string& error) {
     std::unordered_map<std::string, SamplerReference> globals;
+    std::unordered_map<std::string, uint32_t> array_sizes;
     for (const auto& sampler : samplers) {
         auto type = sampler_type(sampler);
-        globals[sampler.name] = {type, "vispy_tex_" + sampler.name, "vispy_samp_" + sampler.name};
+        globals[sampler.name] = {type, sampler_texture_name(sampler), sampler_sampler_name(sampler)};
+        const auto bracket = sampler.name.find('[');
+        if (bracket != std::string::npos) {
+            const auto index = static_cast<uint32_t>(std::stoul(sampler.name.substr(bracket + 1)));
+            auto& count = array_sizes[sampler.name.substr(0, bracket)];
+            count = std::max(count, index + 1);
+        }
     }
     std::vector<SamplerFunction> functions;
     std::vector<bool> signature_names(tokens.size(), false);
@@ -407,10 +426,38 @@ bool lower_sampler_functions(const std::vector<Tok>& tokens, const std::vector<N
         auto found = globals.find(name);
         return found == globals.end() ? nullptr : &found->second;
     };
+    // Resolve literal element syntax before sampler helper argument splitting.
+    // Local scalar sampler parameters still take precedence over global arrays.
+    auto resolve_at = [&](size_t position, size_t first, size_t& end) -> const SamplerReference* {
+        end = first + 1;
+        if (auto scalar = resolve(position, tokens[first].text)) return scalar;
+        auto array = array_sizes.find(tokens[first].text);
+        if (array == array_sizes.end() || !array_references[first]) return nullptr;
+        const auto fail = [&](const std::string& reason) -> const SamplerReference* {
+            error = "line=" + std::to_string(tokens[first].line) + " sampler array " + tokens[first].text + ": " + reason;
+            return nullptr;
+        };
+        if (first + 3 >= tokens.size() || tokens[first + 1].text != "[" || tokens[first + 3].text != "]" ||
+            tokens[first + 2].text.empty() || !std::all_of(tokens[first + 2].text.begin(), tokens[first + 2].text.end(),
+                [](unsigned char c) { return std::isdigit(c); }))
+            return fail("a literal nonnegative element index is required; dynamic indexing remains unsupported");
+        uint64_t index = UINT64_MAX;
+        try { index = std::stoull(tokens[first + 2].text); } catch (...) {}
+        if (index >= array->second) return fail("literal element index exceeds the declared length");
+        end = first + 4;
+        const auto key = tokens[first].text + '[' + std::to_string(index) + ']';
+        return &globals.at(key);
+    };
     for (size_t i = 0; i < tokens.size(); ++i) {
         if (!skip[i] && !replacements.contains(i) && tokens[i].ident &&
-            (i + 1 >= tokens.size() || tokens[i + 1].text != "("))
-            if (auto reference = resolve(i, tokens[i].text)) uses[i] = *reference;
+            (i + 1 >= tokens.size() || tokens[i + 1].text != "(")) {
+            size_t end;
+            if (auto reference = resolve_at(i, i, end)) {
+                uses[i] = *reference;
+                for (size_t part = i + 1; part < end; ++part) skip[part] = true;
+            }
+            if (!error.empty()) return false;
+        }
         if (signature_names[i] || !tokens[i].ident || i + 1 >= tokens.size() || tokens[i + 1].text != "(") continue;
         bool sampler_function = false, nonsampler_overload = false;
         for (const auto& function : functions) if (function.name == tokens[i].text) {
@@ -429,7 +476,10 @@ bool lower_sampler_functions(const std::vector<Tok>& tokens, const std::vector<N
             for (const auto& [index, parameter] : function.sampler_parameters) {
                 auto [first, last] = arguments[index];
                 while (first + 1 < last && tokens[first].text == "(" && tokens[last - 1].text == ")") { ++first; --last; }
-                auto reference = first + 1 == last ? resolve(i, tokens[first].text) : nullptr;
+                size_t end = first;
+                auto reference = first < last ? resolve_at(i, first, end) : nullptr;
+                if (!error.empty()) return false;
+                if (end != last) reference = nullptr;
                 if (!reference || reference->type != parameter.type) { matches = false; break; }
                 references[index] = reference;
             }
@@ -487,13 +537,13 @@ size_t boolean_statement_end(const std::vector<Tok>& tokens,
 // its initializer. This is a lexical pass over the existing tokenizer, not a
 // preprocessor or type checker. Conditional/macro directives retain the exact
 // legacy spelling-based behavior until a separately qualified preprocessing pass.
-std::vector<bool> boolean_uniform_references(
+std::vector<bool> global_uniform_references(
         const std::vector<Tok>& tokens, const std::vector<Decl>& decls,
-        const std::unordered_map<std::string, const NormUniform*>& bools) {
+        const std::unordered_set<std::string>& names, bool boolean_only) {
     const size_t count = tokens.size();
     std::vector<bool> references(count, false);
-    if (bools.empty()) return references;
-    for (size_t i = 0; i < count; ++i) references[i] = bools.contains(tokens[i].text);
+    if (names.empty()) return references;
+    for (size_t i = 0; i < count; ++i) references[i] = names.contains(tokens[i].text);
     for (const auto& token : tokens) if (!token.text.empty() && token.text[0] == '#') {
         size_t end = 1;
         while (end < token.text.size() && std::isspace(static_cast<unsigned char>(token.text[end]))) ++end;
@@ -506,7 +556,7 @@ std::vector<bool> boolean_uniform_references(
     // A merged program uniform need not be declared in both shader stages.
     std::unordered_map<std::string, bool> stage_uniforms;
     for (const auto& decl : decls)
-        if (decl.storage == "uniform" && boolean_type(decl.type)) stage_uniforms[decl.name] = true;
+        if (decl.storage == "uniform" && names.contains(decl.name) && (!boolean_only || boolean_type(decl.type))) stage_uniforms[decl.name] = true;
     if (stage_uniforms.empty()) return std::vector<bool>(count, false);
     for (size_t i = 0; i < count; ++i)
         references[i] = references[i] && stage_uniforms.contains(tokens[i].text);
@@ -575,7 +625,7 @@ std::vector<bool> boolean_uniform_references(
         auto structure = struct_end.find(i);
         if (structure != struct_end.end() && i + 1 < count && tokens[i + 1].ident) {
             auto [local, end] = scope_end(i);
-            if (local && bools.contains(tokens[i + 1].text)) {
+            if (local && names.contains(tokens[i + 1].text)) {
                 references[i + 1] = false;
                 shadows.push_back({tokens[i + 1].text, i + 2, end});
             }
@@ -599,7 +649,7 @@ std::vector<bool> boolean_uniform_references(
                 }
                 visible = name;
             }
-            if (bools.contains(tokens[declared].text)) {
+            if (names.contains(tokens[declared].text)) {
                 references[declared] = false;
                 shadows.push_back({tokens[declared].text, visible, end});
             }
@@ -630,10 +680,17 @@ std::string emit_body(const std::vector<Tok>& tokens, const std::vector<Decl>& d
         for (size_t i = decl.begin; i <= decl.end && i < skip.size(); ++i) skip[i] = true;
     std::unordered_map<std::string, const NormUniform*> bools;
     for (const auto& uniform : uniforms) if (boolean_type(uniform.type)) bools[uniform.name] = &uniform;
-    const auto boolean_references = boolean_uniform_references(tokens, decls, bools);
+    std::unordered_set<std::string> boolean_names, array_names;
+    for (const auto& [name, uniform] : bools) boolean_names.insert(name);
+    for (const auto& sampler : samplers) {
+        const auto bracket = sampler.name.find('[');
+        if (bracket != std::string::npos) array_names.insert(sampler.name.substr(0, bracket));
+    }
+    const auto boolean_references = global_uniform_references(tokens, decls, boolean_names, true);
+    const auto array_references = global_uniform_references(tokens, decls, array_names, false);
     std::unordered_map<size_t, std::string> sampler_replacements;
     std::unordered_map<size_t, SamplerReference> sampler_uses;
-    if (!lower_sampler_functions(tokens, samplers, skip, sampler_replacements, sampler_uses, error)) return {};
+    if (!lower_sampler_functions(tokens, samplers, skip, sampler_replacements, sampler_uses, array_references, error)) return {};
     std::unordered_map<size_t, std::vector<std::string>> suffixes;
     const bool user_isnan = custom_predicate(tokens, "isnan");
     const bool user_isinf = custom_predicate(tokens, "isinf");
@@ -889,26 +946,41 @@ NormalizedShader normalize_program(const std::string& vertex_src, const std::str
     auto frag_decls = find_decls(frag_toks, result.error, "fragment");
     if (!result.error.empty()) return result;
     uint32_t cursor = 0;
+    std::unordered_map<std::string, int> sampler_shapes;
     auto add_uniform = [&](const Decl& decl) {
         if (!result.error.empty()) return;
         if (is_sampler(decl.type)) {
-            if (decl.array_size > 0) {
-                result.error = "uniform " + decl.name + ": sampler arrays are unsupported";
+            if (decl.array_size > 0 && decl.type != "sampler2D") {
+                result.error = "uniform " + decl.name + ": sampler arrays currently require floating sampler2D";
                 return;
             }
-            for (const auto& existing : result.samplers) {
-                if (existing.name != decl.name) continue;
-                if (existing.dim != sampler_dim(decl.type) || existing.sample_scalar != sampler_scalar(decl.type))
-                    result.error = "uniform " + decl.name + ": stage sampler types differ";
+            auto [shape, inserted] = sampler_shapes.emplace(decl.name, decl.array_size);
+            if (!inserted && shape->second != decl.array_size) {
+                result.error = "uniform " + decl.name + ": stage sampler array lengths differ";
                 return;
             }
-            NormSampler sampler;
-            sampler.name = decl.name;
-            sampler.dim = sampler_dim(decl.type);
-            sampler.sample_scalar = sampler_scalar(decl.type);
-            sampler.texture_binding = 1 + static_cast<uint32_t>(result.samplers.size()) * 2;
-            sampler.sampler_binding = sampler.texture_binding + 1;
-            result.samplers.push_back(std::move(sampler));
+            const uint32_t count = decl.array_size > 0 ? static_cast<uint32_t>(decl.array_size) : 1;
+            if (count > (UINT32_MAX - 1u) / 2u - result.samplers.size()) {
+                result.error = "uniform " + decl.name + ": sampler binding extent overflows";
+                return;
+            }
+            for (uint32_t index = 0; index < count; ++index) {
+                const auto name = decl.array_size ? decl.name + '[' + std::to_string(index) + ']' : decl.name;
+                auto found = std::find_if(result.samplers.begin(), result.samplers.end(),
+                    [&](const auto& sampler) { return sampler.name == name; });
+                if (found != result.samplers.end()) {
+                    if (found->dim != sampler_dim(decl.type) || found->sample_scalar != sampler_scalar(decl.type))
+                        result.error = "uniform " + decl.name + ": stage sampler types differ";
+                    continue;
+                }
+                NormSampler sampler;
+                sampler.name = name;
+                sampler.dim = sampler_dim(decl.type);
+                sampler.sample_scalar = sampler_scalar(decl.type);
+                sampler.texture_binding = 1 + static_cast<uint32_t>(result.samplers.size()) * 2;
+                sampler.sampler_binding = sampler.texture_binding + 1;
+                result.samplers.push_back(std::move(sampler));
+            }
             return;
         }
         for (const auto& existing : result.uniforms) {
@@ -1065,9 +1137,9 @@ NormalizedShader normalize_program(const std::string& vertex_src, const std::str
     for (const auto& sampler : result.samplers) {
         const std::string texture = texture_type(sampler_type(sampler));
         header << "layout(set = 0, binding = " << sampler.texture_binding << ") uniform " << texture
-               << " vispy_tex_" << sampler.name << ";\n";
-        header << "layout(set = 0, binding = " << sampler.sampler_binding << ") uniform sampler vispy_samp_"
-               << sampler.name << ";\n";
+               << " " << sampler_texture_name(sampler) << ";\n";
+        header << "layout(set = 0, binding = " << sampler.sampler_binding << ") uniform sampler "
+               << sampler_sampler_name(sampler) << ";\n";
     }
     auto stage_header = [&](bool vertex) {
         std::ostringstream stage;
