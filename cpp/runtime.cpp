@@ -413,6 +413,7 @@ wgpu::ShaderStage resource_stages(uint32_t mask) {
 }
 
 struct TextureRev : TextureData {
+    bool renderbuffer = false;
     // Storage capability is independent of the source DATA scalar type.
     wgpu::TextureSampleType storage_sample_type = wgpu::TextureSampleType::Float;
     wgpu::Texture texture;
@@ -4558,6 +4559,26 @@ struct Engine {
             rev.gpu_revision = rev.revision;
             return;
         }
+        // Color renderbuffers have no CPU DATA payload. Dawn initializes new
+        // texture storage before a read/load; uploading a full zero image here
+        // adds a transfer to every SceneCanvas.render() readback target.
+        if (rev.renderbuffer && rev.dimensions == 2 && rev.format == "rgba" &&
+            (rev.internal_format.empty() || rev.internal_format == "rgba8") &&
+            rev.pixels.empty() && rev.updates.empty() && !rev.base) {
+            freeze_texture_allocation(rev);
+            wgpu::TextureDescriptor color;
+            color.size = {static_cast<uint32_t>(rev.width), static_cast<uint32_t>(rev.height), 1};
+            color.format = wgpu::TextureFormat::RGBA8Unorm;
+            color.usage = wgpu::TextureUsage::RenderAttachment | wgpu::TextureUsage::TextureBinding |
+                          wgpu::TextureUsage::CopySrc | wgpu::TextureUsage::CopyDst;
+            rev.texture = device.CreateTexture(&color);
+            rev.allocation_token = std::make_shared<int>(0);
+            ++probe.texture_allocations;
+            rev.view = rev.texture.CreateView();
+            rev.gpu_bytes = static_cast<size_t>(rev.width) * rev.height * 4;
+            rev.gpu_revision = rev.revision;
+            return;
+        }
         if (rev.base) {
             if (ticket) ticket->textures.push_back(rev.base);
             upload_texture(*rev.base, encoder, ticket);
@@ -6231,6 +6252,7 @@ static void execute_commands_impl(int canvas_id, const std::vector<Command>& com
                 }
             } else if (cmd.args.size() >= 2 && cmd.args[1].kind == Value::Kind::List && cmd.args[1].list.size() >= (obj.class_name == "Texture1D" ? 1u : 2u)) {
                 auto rev = std::make_shared<TextureRev>();
+                rev->renderbuffer = obj.class_name == "RenderBuffer";
                 if (obj.texture) {
                     rev->min_filter = obj.texture->min_filter;
                     rev->mag_filter = obj.texture->mag_filter;

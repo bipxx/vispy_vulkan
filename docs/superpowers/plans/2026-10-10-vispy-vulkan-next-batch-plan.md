@@ -1,3 +1,22 @@
+Current allocation checkpoint, 2026-10-23: empty RGBA8 color renderbuffers now
+allocate storage through Dawn rather than preparing/uploading a CPU zero image.
+Fresh Windows CPython 3.12 RTX4090 Vulkan and Linux CPython 3.12 WSL llvmpipe wheels
+pass archive, native-origin and AGPL/original-BSD license checks. Initial/cleared/
+resized renderbuffers and queued-clear-before-resize ownership pass for named
+color and desktop RGBA8 formats. Both million-marker 2D input paths pass updates
+and unchanged-frame reuse; all fourteen checked compiler/pipeline/conversion/
+upload counters have zero warm deltas. Nine live gauges return to zero. Four
+saved marker frames per backend match that backend's preceding wheel exactly.
+Clear, analytic smooth-line and compiled-SDF-text consumers also pass.
+
+Removed 24 Windows and 960 Linux disposable objects and owned caches/environments,
+retaining wheels, binaries, source inputs, raw frames, logs and failures. The
+Native67 Windows marker cache remains after an automatic-review deletion denial;
+no denied cleanup was retried. This is focused allocation/functional validation,
+not a renewed full host matrix, Metal admission or performance qualification.
+The preceding smooth-line CPU CI has twelve artifact-audited cells, each passing
+1018 pytest cases and 42 native contracts with no skips. Cybersecurity is excluded.
+
 Current practical-completion checkpoint, 2026-10-23: the refreshed smooth-line
 implementation passes installed Windows wheel consumers on CPython 3.10-3.14.
 The CPython 3.12 wheel passes 53 functional host/scientific cases, including

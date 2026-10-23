@@ -44,7 +44,7 @@ See [build instructions](cmake/README.md) for CPU contracts, wheels, isolated en
 
 ## Current qualification
 
-The current Native63 Windows CPython 3.12 build passes all 47 native CTests.
+The historical Native63 Windows CPython 3.12 build passes all 47 native CTests.
 A fresh wheel passes package, native-origin and license checks, followed by
 35 hardware Vulkan cases on an RTX 4090: eight rendering/transfer cases,
 eight queued-lifetime cases, seven device-recovery cases and twelve numeric
@@ -102,6 +102,8 @@ Linux x86_64 wheels for CPython 3.10–3.14 pass the same bounded archive and co
 The [implementation plan](docs/superpowers/plans/2026-10-10-vispy-vulkan-next-batch-plan.md) records the wider scope. Its links to local `build/` evidence refer to retained qualification packets that are not distributed in this repository.
 
 Current source adds [portable analytic smooth lines](docs/smooth-lines.md), including fractional widths. A fresh Windows Vulkan build passes line, clipping, perspective, depth and blending checks and renders the previously blocked axes/colorbar scene. Edge coverage approximates OpenGL smoothing; exact driver rasterizer parity is not a practical completion requirement. Refreshed Windows CPython 3.12 wheel validation passes 53 functional cases, including the previously blocked Glue axes and plugin overlays; 42 complete reference frames match exactly. Windows CPython 3.10-3.14 wheels and a fresh Linux CPython 3.12 wheel also pass isolated clear, smooth-line, pipeline-reuse and compiled-text checks. Linux uses WSL software Vulkan; native Linux GPU and Metal remain unverified. The detailed reports below preserve earlier results; the smooth-line notes describe the refreshed coverage.
+
+`SceneCanvas.render()` now allocates empty RGBA8 color renderbuffers through Dawn without uploading a CPU zero image. Fresh Windows CPython 3.12 Vulkan and Linux CPython 3.12 WSL software-Vulkan wheels pass [renderbuffer and marker checks](tools/marker_wheel_smoke.py): zero-initialized reads, clears, resize and queued-clear ownership, plus one-million-marker point and instanced 2D clouds with color updates. Fourteen checked compiler, pipeline, conversion and upload counters remain unchanged during resident draws, and nine live gauges return to zero on shutdown. Saved marker frames match the preceding wheel on each backend. These focused checks cover the allocation fix; the broader suites above and below retain their preceding artifact scopes. No speedup is claimed.
 
 The [installed-wheel mesh/layout regressions](docs/mesh-layout-wheel-regressions.md) retain thirteen original OpenGL scenes. The retained Windows CPython 3.12 wheel run matches twelve complete frames byte-for-byte, including mesh/filter/layout and three text DPI cases. Axes/colorbar failed in that run because smooth-line coverage was unsupported. This is not a complete scene-suite or release qualification.
 
