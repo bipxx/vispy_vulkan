@@ -86,6 +86,29 @@ Recorded installed-artifact results are scoped to the exact tested bytes:
   qualification on freshly built artifacts. No older result is transferred to
   these changed native bytes.
 
+At the 2026-10-23 execution checkpoint, Linux continuation is blocked by the
+WSL filesystem state. The resumed Qt 6.12 build reached 1480/1636 actions before
+terminating with `EROFS`; both the resume receipt and terminal build-results
+write failed with `OSError 30: Read-only file system`. All 15 recorded build
+processes subsequently exited. The filesystem reported an emergency read-only
+fallback, and even `/bin/lsblk` returned an I/O error. The retained Windows-side
+receipt is
+`vispy_vulkan-opengl-native/build/no-opengl-qt-build-1/qt612-resume-erofs1.json`.
+This is an infrastructure blocker, not a successful Qt/PySide build or a new
+runtime qualification result. No WSL builds or repair commands are running.
+An offline filesystem check/repair awaits explicit user approval because it
+changes filesystem metadata and there is insufficient space for a 135 GB
+backup. Historical Linux proofs above remain scoped to their earlier exact
+artifacts; filesystem recovery and fresh installed verification are required
+before relying on those environments for further qualification.
+
+The separate Windows N3/N4/N5 SDK-backed build was still running at this
+checkpoint from source `99d110b6b` and frozen source snapshot `dc290a...`.
+Its actual 92 GPU cases remain pending. Current Windows CPU checks pass:
+60 no-OpenGL contract tests with one platform skip, plus six canonical
+package/source-contract tests. Those checks do not replace the pending native
+build, installed GPU runs or three-gate receipts for the changed artifact.
+
 Remaining work includes final changed-native-artifact GPU/functional/native
 replays, all mandatory feature cases, Windows selected PyQt5/PySide6 complete
 receipts, Linux Qt5/PyQt5 and Qt6.12/PySide6 source packaging and actual runtime
