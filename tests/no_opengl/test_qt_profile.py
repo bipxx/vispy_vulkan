@@ -88,3 +88,31 @@ def test_source_profile_rejects_changed_input_and_path_escape(tmp_path):
         verified(root, 'file', '0' * 64)
     with pytest.raises(ValueError, match='Noncanonical'):
         verified(root, '../outside', '0' * 64)
+
+
+def test_multidistribution_profile_rewrites_only_selected_dependency_names(tmp_path):
+    inputs = tmp_path / 'inputs'
+    inputs.mkdir()
+    source = inputs / 'pyside6-6.12.0-cp310-abi3-win_amd64.whl'
+    header = 'pyside6-6.12.0.dist-info'
+    payload = {
+        header + '/LICENSE': b'original notice',
+        header + '/METADATA': b'Metadata-Version: 2.4\nName: PySide6\nVersion: 6.12.0\nRequires-Dist: PySide6_Essentials==6.12.0\nRequires-Dist: PySide6_Pdf==6.12.0.140\nRequires-Dist: PySide6_Pdf-Extra==1\n\n',
+        header + '/WHEEL': b'Wheel-Version: 1.0\nRoot-Is-Purelib: false\nTag: cp310-abi3-win_amd64\n',
+    }
+    with zipfile.ZipFile(source, 'w') as archive:
+        for name, data in payload.items():
+            archive.writestr(name, data)
+    item = dict(name='pyside6', input_filename=source.name, input_sha256=hashlib.sha256(source.read_bytes()).hexdigest(),
+                input_version='6.12.0', output_version='6.12.0+profile', selected_members=sorted(payload),
+                original_notice_members=[header + '/LICENSE'], profile_member='PySide6/_profile.json',
+                requires_overrides={'PySide6-Essentials': '==6.12.0+profile'}, drop_requires=['PySide6-Pdf'])
+    manifest = tmp_path / 'profile.json'
+    manifest.write_text(json.dumps(dict(schema=1, platform='win_amd64', profile='synthetic-selected', wheels=[item])))
+    result = build(manifest, inputs, tmp_path / 'output')
+    with zipfile.ZipFile(result['wheels'][0]['file']) as archive:
+        text = archive.read('pyside6-6.12.0+profile.dist-info/METADATA').decode()
+        assert 'Requires-Dist: PySide6-Essentials==6.12.0+profile' in text
+        assert 'Requires-Dist: PySide6_Pdf==' not in text
+        assert 'Requires-Dist: PySide6_Pdf-Extra==1' in text
+        assert archive.read('pyside6-6.12.0+profile.dist-info/LICENSE') == b'original notice'

@@ -26,6 +26,10 @@ def sha(data):
     return hashlib.sha256(data).hexdigest()
 
 
+def distribution_pattern(name):
+    return r'[-_.]+'.join(re.escape(part) for part in re.split(r'[-_.]+', name)) + r'(?=[\s(<>=!~;\[]|$)'
+
+
 def build(manifest_path, inputs, output):
     manifest_path, inputs, output = Path(manifest_path), Path(inputs), Path(output)
     manifest = json.loads(manifest_path.read_text())
@@ -36,8 +40,10 @@ def build(manifest_path, inputs, output):
               'manifest_sha256': sha(manifest_path.read_bytes()), 'wheels': [],
               'builder': {'python': sys.version, 'zlib': zlib.ZLIB_RUNTIME_VERSION},
               'scope': 'Exact selected native bytes/notices; functional/native/runtime dependency qualification still required.'}
-    runtime = next(item for item in manifest['wheels'] if item['name'] == 'pyqt6-qt6')
-    selected_qt_dlls = {PurePosixPath(name).name.casefold() for name in runtime['selected_members'] if '/bin/Qt6' in name}
+    qt_prefix = manifest.get('qt_dll_prefix', 'Qt6')
+    runtime = next((item for item in manifest['wheels'] if item['name'] == manifest.get('runtime_distribution', 'pyqt6-qt6')), None)
+    selected_qt_dlls = {PurePosixPath(name).name.casefold() for item in manifest['wheels'] for name in item['selected_members']
+                       if PurePosixPath(name).name.casefold().startswith(qt_prefix.casefold()) and name.endswith('.dll')}
     for item in manifest['wheels']:
         source = inputs / item['input_filename']
         if sha(source.read_bytes()) != item['input_sha256']:
@@ -67,12 +73,20 @@ def build(manifest_path, inputs, output):
                     text, count = re.subn(r'^Version: [^\n]*', 'Version: ' + item['output_version'], text, count=1, flags=re.MULTILINE)
                     if count != 1:
                         raise ValueError('Missing original Version metadata')
-                    if item['name'] == 'pyqt6':
-                        text, count = re.subn(r'^Requires-Dist: PyQt6-Qt6[^\n]*',
-                                             'Requires-Dist: PyQt6-Qt6==' + runtime['output_version'], text, count=1,
+                    overrides = item.get('requires_overrides', {'PyQt6-Qt6': '==' + runtime['output_version']} if item['name'] == 'pyqt6' else {})
+                    for dependency_name, specification in overrides.items():
+                        pattern = distribution_pattern(dependency_name)
+                        text, count = re.subn(r'^Requires-Dist: ' + pattern + r'[^\n]*',
+                                             'Requires-Dist: ' + dependency_name + specification, text, count=1,
                                              flags=re.MULTILINE | re.IGNORECASE)
                         if count != 1:
-                            raise ValueError('Missing original Qt runtime dependency')
+                            raise ValueError('Missing original selected profile dependency: ' + dependency_name)
+                    for dependency_name in item.get('drop_requires', []):
+                        pattern = distribution_pattern(dependency_name)
+                        text, count = re.subn(r'^Requires-Dist: ' + pattern + r'[^\n]*\n', '', text, count=1,
+                                             flags=re.MULTILINE | re.IGNORECASE)
+                        if count != 1:
+                            raise ValueError('Missing original unselected profile dependency: ' + dependency_name)
                     data = text.encode()
                 if name.endswith(('.dll', '.pyd')):
                     if library_reason(name):
@@ -81,13 +95,13 @@ def build(manifest_path, inputs, output):
                     for dependency in image['imports']:
                         if library_reason(dependency['name']) or any(is_gl_entrypoint(symbol) for symbol in dependency['symbols']):
                             raise ValueError('Selected member has GL-specific import: ' + name)
-                        if dependency['name'].casefold().startswith('qt6') and dependency['name'].casefold() not in selected_qt_dlls:
+                        if dependency['name'].casefold().startswith(qt_prefix.casefold()) and dependency['name'].casefold() not in selected_qt_dlls:
                             raise ValueError('Selected Qt native dependency omitted: ' + name + ' -> ' + dependency['name'])
                     natives.append({'source': name, 'member': destination, 'sha256': sha(data), 'unchanged': data == archive.read(name)})
                 if name in all_notices:
                     notices.append({'source': name, 'member': destination, 'sha256': sha(data)})
                 files[destination] = data
-            profile_member = 'PyQt6/_vispy_binding_profile.json' if item['name'] == 'pyqt6' else 'PyQt6/Qt6/_vispy_runtime_profile.json'
+            profile_member = item.get('profile_member', 'PyQt6/_vispy_binding_profile.json' if item['name'] == 'pyqt6' else 'PyQt6/Qt6/_vispy_runtime_profile.json')
             files[profile_member] = json.dumps(manifest, sort_keys=True, indent=2).encode() + b'\n'
             metadata = next(name for name in files if name.endswith('.dist-info/METADATA'))
             record = metadata.rsplit('/', 1)[0] + '/RECORD'
