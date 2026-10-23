@@ -3,7 +3,10 @@ import hashlib
 import json
 from pathlib import Path
 import sys
-import tomllib
+try:
+    import tomllib
+except ImportError:
+    import tomli as tomllib
 import zipfile
 
 import pytest
@@ -53,3 +56,35 @@ def test_profile_rejects_dropped_notice_changed_input_and_gl_native_payload(tmp_
     manifest, inputs = profile_fixture(tmp_path, missing_notice=missing_notice, wrong_hash=wrong_hash)
     with pytest.raises(ValueError, match=reason):
         build(manifest, inputs, tmp_path / 'output')
+
+
+def test_linux_source_profile_records_relocation_notices_and_real_feature_limits():
+    manifest = json.loads((ROOT / 'compat/qt/linux-pyqt6-no-opengl.json').read_text())
+    assert manifest['features']['opengl'] is manifest['features']['egl'] is False
+    assert manifest['features']['xcb'] and manifest['features']['vulkan']
+    assert not manifest['features']['qt_network_ssl'] and not manifest['features']['wayland']
+    assert manifest['notices'] and all(len(item['sha256']) == 64 for item in manifest['notices'])
+    for wheel in manifest['wheels']:
+        assert len({entry['member'] for entry in wheel['files']}) == len(wheel['files'])
+        assert not any(library_reason(entry['member']) for entry in wheel['files'])
+        assert all(len(entry['sha256']) == 64 for entry in wheel['files'])
+    binding = next(item for item in manifest['wheels'] if item['name'] == 'pyqt6')
+    native = [item for item in binding['files'] if item.get('native')]
+    assert {item['member'] for item in native} == {'PyQt6/Qt' + name + '.abi3.so' for name in manifest['modules']}
+    assert all(item['relocated'] and item['before_relocation_sha256'] != item['sha256'] for item in native)
+    runtime = next(item for item in manifest['wheels'] if item['name'] == 'pyqt6-qt6')
+    assert 'PyQt6/Qt6/lib/libQt6Gui.so.6' in {item['member'] for item in runtime['files']}
+    assert not any('.so.6.' in item['member'] for item in runtime['files'])
+    assert manifest['runtime_apt_versions']['status'] == 'PASS'
+    assert all('=' in pin for pin in manifest['runtime_apt_versions']['apt_install_pins'])
+
+
+def test_source_profile_rejects_changed_input_and_path_escape(tmp_path):
+    from no_opengl.qt_linux_profile import verified
+    root = tmp_path / 'bundle'
+    root.mkdir()
+    (root / 'file').write_bytes(b'changed')
+    with pytest.raises(ValueError, match='bytes differ'):
+        verified(root, 'file', '0' * 64)
+    with pytest.raises(ValueError, match='Noncanonical'):
+        verified(root, '../outside', '0' * 64)
