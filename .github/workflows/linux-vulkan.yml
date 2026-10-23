@@ -60,8 +60,8 @@ jobs:
         run: |
           mkdir -p "$EVIDENCE"
           sudo apt-get update
-          sudo apt-get install --no-install-recommends -y libx11-dev libvulkan1 mesa-vulkan-drivers ninja-build
-          dpkg-query -W libx11-dev libvulkan1 mesa-vulkan-drivers ninja-build > "$EVIDENCE/system-packages.txt"
+          sudo apt-get install --no-install-recommends -y libx11-dev libx11-xcb-dev libvulkan1 mesa-vulkan-drivers ninja-build
+          dpkg-query -W libx11-dev libx11-xcb-dev libvulkan1 mesa-vulkan-drivers ninja-build > "$EVIDENCE/system-packages.txt"
           python3 - <<'PY'
           import hashlib, json, os, pathlib
           candidates = sorted(pathlib.Path('/usr/share/vulkan/icd.d').glob('lvp_icd*.json'))
