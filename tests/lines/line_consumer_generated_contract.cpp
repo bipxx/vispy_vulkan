@@ -1465,6 +1465,41 @@ void multisample_contract() {
     }
 }
 
+void captured_integer_endpoint_sampling() {
+    for (const bool signed_texture : {false, true}) for (const bool gradients : {false, true}) {
+        const std::string sampler = signed_texture ? "isampler2D" : "usampler2D";
+        const std::string vector = signed_texture ? "ivec4" : "uvec4";
+        const std::string vertex = "attribute vec2 position;uniform " + sampler + " image;out vec2 sampled;"
+            "float counter=0.;float level(){counter+=1.;return 2.;}"
+            "vec2 dx(){counter+=2.;return vec2(2.,0.);}vec2 dy(){counter+=3.;return vec2(0.,2.);}"
+            "void main(){" + vector + " value=" + (gradients ? "textureGrad(image,vec2(.75,.25),dx(),dy())" :
+                "textureLod(image,vec2(.75,.25),level())") + ";sampled=vec2(float(value.r),counter);gl_Position=vec4(position,0,1);}";
+        auto original = build_portable_shader(vertex, "in vec2 sampled;void main(){gl_FragColor=vec4(sampled,0,1);}",
+            {}, "integer-endpoint-captured-policy-contract");
+        require(original->ok && original->integer_sample_uses.size() == 1, "compiled endpoint integer sample has semantic binding metadata");
+        require(!build_line_evaluator(original)->ok, "generated endpoint must not invent a default sampler policy");
+        const auto& use = original->integer_sample_uses.front();
+        IntegerSamplePolicy actual;
+        actual.texture_binding = use.texture_binding; actual.sampler_binding = use.sampler_binding; actual.scalar = use.scalar;
+        actual.s = IntegerWrap::Repeat; actual.t = IntegerWrap::MirroredRepeat;
+        const auto specialized = specialize_integer_sampled_shader(original, {actual});
+        require(specialized->ok, "captured original sampling policy specializes: " + specialized->error);
+        const auto endpoint = build_line_evaluator(specialized);
+        require(endpoint->ok, "generated compute receives actual sampling policy: " + endpoint->error);
+        require(endpoint->timings.integer_samples_lowered == 1 && endpoint->relocated_global_initializers >= 1,
+            "one endpoint sample lowered after private initializer relocation");
+        const auto remaining = integer_sample_bindings(endpoint->spv, 4);
+        require(remaining.ok && remaining.bindings.empty(), "actual generated compute contains no unresolved integer samples");
+        require(endpoint->samplers.size() == 1 && endpoint->samplers.front().texture_stage_mask == 4 &&
+            endpoint->samplers.front().sampler_stage_mask == 0, "generated bind layout reflects fetch texture but no dead sampler");
+        auto other = actual; other.s = IntegerWrap::ClampToEdge;
+        const auto other_endpoint = build_line_evaluator(specialize_integer_sampled_shader(original, {other}));
+        require(other_endpoint->ok && other_endpoint->identity != endpoint->identity,
+            "generated endpoint caches include captured wrap policy");
+        const auto consumer = build_generated_line_consumer(endpoint, policy(), grants());
+        require(consumer->ok, "specialized endpoint retains a compatible ordinary generated consumer: " + consumer->error);
+    }
+}
 } // namespace
 
 int main(int argc, char** argv) {
@@ -1475,7 +1510,7 @@ int main(int argc, char** argv) {
             if (!std::filesystem::create_directory(diagnostics_directory)) throw std::runtime_error("diagnostics directory must be fresh");
         }
         basic(); depth_attachment_specialization(); bounded_product_arithmetic(); viewport_coordinate_contract(); initializer_order(); typed_and_resources(); fragment_contexts(); dynamic_helper_queries(); plans_and_clip(); chunk_mapping_contract(); aliased_projection_and_clipped_terminal();
-        analytic_smooth_contract(); multisample_contract();
+        analytic_smooth_contract(); multisample_contract(); captured_integer_endpoint_sampling();
         std::cout << "line consumer generated compiler contract: " << checks << " checks\n";
         return 0;
     } catch (const std::exception& error) {

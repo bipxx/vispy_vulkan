@@ -116,3 +116,30 @@ def test_integer_nearest_actual_single_level_lod_gradient_preserves_operands_in_
         near_byte(image[..., 0], 255)
         near_byte(image[..., 1], 159 if gradients else 32)
         assert np.all(image[..., 2] == 0) and np.all(image[..., 3] == 255)
+
+
+@pytest.mark.parametrize("gradients", [False, True])
+def test_generated_integer_endpoint_captures_wrap_policy_and_rebuilds_after_recovery(gradients):
+    function = "textureGrad" if gradients else "textureLod"
+    args = "next_dx(),next_dy()" if gradients else "next_level()"
+    vertex = ("attribute vec2 position;uniform usampler2D image;out vec2 sampled;" + COMMON +
+              f"void main(){{uvec4 value={function}(image,vec2(-.25,.25),{args});" +
+              "sampled=vec2(float(value.r)/255.,counter/8.);gl_Position=vec4(position,0,1);}")
+    fragment = "in vec2 sampled;void main(){gl_FragColor=vec4(sampled,0,1);}"
+    texture = gloo.Texture2D(np.array([[17, 223], [31, 251]], np.uint32),
+                            internalformat="r32ui", interpolation="nearest", wrapping="repeat")
+    with scene(vertex, fragment, LINE, texture) as (canvas, p):
+        repeated = read(p, "lines")
+        covered = repeated[..., 1] > 0
+        assert np.any(covered)
+        near_byte(repeated[covered, 0], 223)
+        texture.wrapping = "clamp_to_edge"
+        clamped = read(p, "lines")
+        covered = clamped[..., 1] > 0
+        assert np.any(covered)
+        near_byte(clamped[covered, 0], 17)
+        generation = _dawn.probe()["device_generation"]
+        _dawn.lose_device();canvas.set_current();gloo.set_viewport(0, 0, 16, 8)
+        recovered = read(p, "lines")
+        np.testing.assert_array_equal(recovered, clamped)
+        assert _dawn.probe()["device_generation"] > generation

@@ -162,6 +162,27 @@ std::shared_ptr<const LineEvaluatorArtifact> build_line_evaluator(
         result->mapped_line = shader_composer_line(result->log, result->line_map);
         return fail(result->log);
     }
+    // Compute regenerated from source must receive the same actual one-level
+    // nearest/wrap policy as the captured vertex stage. Lowering the original
+    // render SPIR-V alone cannot change this newly compiled module.
+    const auto integer_uses = integer_sample_bindings(result->spv, 4);
+    if (!integer_uses.ok) return fail(integer_uses.error);
+    if (!integer_uses.bindings.empty()) {
+        if (result->original->integer_sampling_identity.empty())
+            return fail("integer endpoint sampling requires the actual retained DRAW policy");
+        const auto lowering_start = shader_host_ns();
+        auto lowered = lower_integer_nearest_2d(result->spv, result->original->integer_sampling_policies);
+        if (!lowered.ok) return fail(lowered.error);
+        auto finalized = finalize_sampled_stage(lowered.words, 4);
+        if (!finalized.ok) return fail(finalized.error);
+        result->spv = std::move(finalized.words);
+        compiled.resource_usage = std::move(finalized.resource_usage);
+        result->timings.integer_sampling_ns += shader_host_ns() - lowering_start;
+        result->timings.integer_sampling_builds++;
+        result->timings.integer_samples_lowered += lowered.samples_lowered;
+        result->identity += ";endpoint-integer-sampling=captured-compute-query-fetch-v1;";
+        result->cache_key = shader_identity_digest(result->identity);
+    }
     auto stage_mask = [&](uint32_t requested) {
         uint32_t mask = 0;
         for (const auto& usage : compiled.resource_usage) if (usage.binding == requested) mask |= usage.stage_mask;

@@ -2377,9 +2377,9 @@ struct Engine {
         snap.integer_sampling_policies = std::move(captured);
     }
 
-    void prepare_draw_sampling(DrawSnap& snap) {
+    void prepare_draw_sampling(DrawSnap& snap, bool ordinary_graphics = true) {
         if (snap.line_work && snap.line_work->consumer) return;
-        if (!snap.integer_sampling_policies.empty()) {
+        if (!snap.integer_sampling_policies.empty() && snap.artifact->portable->integer_sampling_identity.empty()) {
             const auto original = snap.artifact;
             bool hit = false;
             uint64_t lookup_ns = 0;
@@ -2420,6 +2420,7 @@ struct Engine {
             probe.portable_shader_bytes = shader_artifacts.portable_storage_bytes();
             update_work_peaks();
         }
+        if (!ordinary_graphics) return;
         std::string error;
         prepare_ordinary_artifact(snap.artifact, error);
         if (!error.empty()) throw std::runtime_error("DRAW ordinary graphics: " + error);
@@ -2630,7 +2631,8 @@ struct Engine {
         const std::shared_ptr<Artifact>& original) {
         if (!original || !original->portable || !original->portable->ok)
             throw std::runtime_error("lines: endpoint evaluator requires a validated captured original shader");
-        require_integer_sampling_route(*original->portable, 1, "generated line endpoint compute");
+        if (original->portable->integer_sampling_identity.empty())
+            require_integer_sampling_route(*original->portable, 1, "generated line endpoint compute");
         auto evaluator = original->evaluator;
         if (!evaluator) {
             auto cached = shader_artifacts.find_auxiliary(original->portable->identity);
@@ -6935,6 +6937,15 @@ static void execute_commands_impl(int canvas_id, const std::vector<Command>& com
                 }
                 eng.capture_integer_sampling(snap);
                 if (original_line) {
+                    // Endpoint GLSL is regenerated as compute. Carry the exact
+                    // retained sampler policy in its immutable original identity
+                    // before that generated stage is lowered, without preparing
+                    // an unused ordinary graphics pipeline for generated lines.
+                    if (!snap.integer_sampling_policies.empty()) {
+                        eng.prepare_draw_sampling(snap, false);
+                        original_line->original_artifact = snap.artifact;
+                        original_line->portable = snap.artifact->portable;
+                    }
                     original_line->vertices = snap.vertices;
                     original_line->bindings = snap.bindings;
                     original_line->uniforms = snap.uniforms;
