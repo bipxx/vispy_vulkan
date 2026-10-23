@@ -208,6 +208,28 @@ def trace(command, *, environment, cwd, log, timeout=120, handle_baseline=None, 
             emit('native_gl_binding', pid=pid, name=name, resolver=export['resolver'], path=export['path'],
                  direct_caller=caller(pid, registers))
             return True
+        if pid in stepping:
+            # Another thread can have queued its INT3 before the first resolver
+            # event stopped the process. It is already manually suspended by
+            # that step; replacing the owner here would suspend both owners and
+            # lose the original holds. Rewind this *unexecuted* instruction and
+            # leave the peer held. Once the owner single-steps, resume_step()
+            # restores the trap before releasing peers, so this lookup retraps.
+            active = stepping[pid]
+            if active['tid'] == tid:
+                raise RuntimeError('Resolver owner retrapped before its single-step completed')
+            if tid not in active['suspended']:
+                if not suspend(tid):
+                    raise RuntimeError('Queued resolver peer terminated before deferral')
+                active['suspended'].append(tid)
+            before_rip = reg(registers, 248)
+            c.c_uint64.from_address(registers + 248).value = address
+            if not k.SetThreadContext(threads[tid][1], registers):
+                raise c.WinError(c.get_last_error())
+            emit('native_resolver_step_deferred', pid=pid, tid=tid, active_tid=active['tid'],
+                 address=address, name=name, before_rip=before_rip, retry_rip=address,
+                 argument_module=reg(registers, 128), argument_name=reg(registers, 136))
+            return False
         # Execute the replaced instruction once. Suspend peer threads until the
         # trap is restored, so another thread cannot pass through an open hook.
         suspended = []
@@ -289,7 +311,8 @@ def trace(command, *, environment, cwd, log, timeout=120, handle_baseline=None, 
         try:
             while True:
                 if time.monotonic() - started > timeout and not killed:
-                    errors.append({"error": "Observer timeout"})
+                    errors.append({"error": "Observer timeout", "pending_steps":
+                                   {str(pid): dict(state) for pid, state in stepping.items()}})
                     for handle in list(processes.values()):
                         k.TerminateProcess(handle, 124)
                     child.kill()

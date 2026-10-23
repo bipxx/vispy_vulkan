@@ -116,3 +116,22 @@ The independent controls compare invalid/protected handles against undebugged
 native FALSE/error 6, prove unrelated exceptions still terminate, and perform GL
 lookup and direct calls after each bad handle to prove those traps still fire.
 Use only a resulting `PASS_HANDLE_FIDELITY_CONTROLS` report for the same OS bytes.
+
+Ordinary Windows symbol lookup is also exercised concurrently. A peer can have
+queued a resolver INT3 before the first debug event suspended the process. The
+observer keeps the original step owner and its peer holds, rewinds the queued
+peer's unexecuted instruction and retries it only after restoring the trap.
+Overwriting the owner would lose those holds and deadlock both threads. Timeout
+reports retain pending step state for diagnosis.
+
+```text
+cl /nologo /O2 /GS- /Zl /Foresolver.obj /Feresolver.exe tools/no_opengl/resolver_race_probe_windows.c /link /NODEFAULTLIB /ENTRY:control_main /SUBSYSTEM:CONSOLE /EXPORT:GetProcAddress=auditGetProcAddress kernel32.lib
+python -B -m no_opengl.windows_resolver_controls --control resolver.exe --output <new-directory>
+```
+
+The 32-thread native control performs 1024 real ordinary lookups and 1024
+counted intercepted entries. Its first entry instruction is an atomic increment;
+an exact count and argument/return checks prove entries were not executed twice
+or altered. All threads must finish. GL lookup and direct-call negative controls
+then prove observation remains active after queued peers are released. The
+runner verifies the compiled entry bytes and requires actual queued deferrals.
