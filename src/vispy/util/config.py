@@ -65,7 +65,7 @@ def _init():
     default_config_options = {
         'data_path': _data_path,
         'default_backend': '',
-        'gl_backend': 'gl2',
+        'gl_backend': 'dawn',
         'gl_debug': False,
         'glir_file': '',
         'include_path': [],

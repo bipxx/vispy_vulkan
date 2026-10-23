@@ -654,111 +654,13 @@ def read_pixels(viewport=None, alpha=True, mode='color', out_type='unsigned_byte
     from .dawn_parser import read_pixels_dawn
     return read_pixels_dawn(viewport, alpha, mode, out_type)
 
-    # Check whether the GL context is direct or remote
-    context = get_current_canvas().context
-    if context.shared.parser.is_remote():
-        raise RuntimeError('Cannot use read_pixels() with remote GLIR parser')
-
-    finish()  # noqa - finish first, also flushes GLIR commands
-    type_dict = {'unsigned_byte': gl.GL_UNSIGNED_BYTE,
-                 np.uint8: gl.GL_UNSIGNED_BYTE,
-                 'float': gl.GL_FLOAT,
-                 np.float32: gl.GL_FLOAT}
-    type_ = _check_conversion(out_type, type_dict)
-    if viewport is None:
-        viewport = gl.glGetParameter(gl.GL_VIEWPORT)
-    viewport = np.array(viewport, int)
-    if viewport.ndim != 1 or viewport.size != 4:
-        raise ValueError('viewport should be 1D 4-element array-like, not %s'
-                         % (viewport,))
-    x, y, w, h = viewport
-    gl.glPixelStorei(gl.GL_PACK_ALIGNMENT, 1)  # PACK, not UNPACK
-    if mode == 'depth':
-        fmt = gl.GL_DEPTH_COMPONENT
-        shape = (h, w, 1)
-    elif mode == 'stencil':
-        fmt = gl.GL_STENCIL_INDEX8
-        shape = (h, w, 1)
-    elif alpha:
-        fmt = gl.GL_RGBA
-        shape = (h, w, 4)
-    else:
-        fmt = gl.GL_RGB
-        shape = (h, w, 3)
-    im = gl.glReadPixels(x, y, w, h, fmt, type_)
-    gl.glPixelStorei(gl.GL_PACK_ALIGNMENT, 4)
-    # reshape, flip, and return
-    if not isinstance(im, np.ndarray):
-        np_dtype = np.uint8 if type_ == gl.GL_UNSIGNED_BYTE else np.float32
-        im = np.frombuffer(im, np_dtype)
-
-    im = im.reshape(shape)
-    im = im[::-1, ...]  # flip the image
-    return im
-
 
 def get_gl_configuration():
-    """Read the current gl configuration
+    """Return the active Dawn target's real framebuffer configuration.
 
-    This function uses constants that are not in the OpenGL ES 2.1
-    namespace, so only use this on desktop systems.
-
-    Returns
-    -------
-    config : dict
-        The currently active OpenGL configuration.
+    The legacy public name is retained. Opaque native depth precision remains
+    unknown (``depth_size=None``), with the backend's minimum/format details
+    available in the returned mapping; no native OpenGL calls are issued.
     """
-    # XXX eventually maybe we can ask `gl` whether or not we can access these
-    gl.check_error('pre-config check')
-    config = dict()
-    canvas = get_current_canvas()
-    fbo = 0 if canvas is None else canvas._backend._vispy_get_fb_bind_location()
-    gl.glBindFramebuffer(gl.GL_FRAMEBUFFER, fbo)
-    fb_param = gl.glGetFramebufferAttachmentParameter
-    # copied since they aren't in ES:
-    GL_FRONT_LEFT = 1024
-    GL_DEPTH = 6145
-    GL_STENCIL = 6146
-    GL_SRGB = 35904
-    GL_FRAMEBUFFER_ATTACHMENT_COLOR_ENCODING = 33296
-    GL_STEREO = 3123
-    GL_DOUBLEBUFFER = 3122
-    sizes = dict(red=(GL_FRONT_LEFT, 33298),
-                 green=(GL_FRONT_LEFT, 33299),
-                 blue=(GL_FRONT_LEFT, 33300),
-                 alpha=(GL_FRONT_LEFT, 33301),
-                 depth=(GL_DEPTH, 33302),
-                 stencil=(GL_STENCIL, 33303))
-    for key, val in sizes.items():
-        try:
-            param = fb_param(gl.GL_FRAMEBUFFER, val[0], val[1])
-            gl.check_error('post-config check')
-        except RuntimeError as exp:
-            logger.warning('Failed to get size %s: %s' % (key, exp))
-        else:
-            config[key + '_size'] = param
-
-    try:
-        val = fb_param(gl.GL_FRAMEBUFFER, GL_FRONT_LEFT,
-                       GL_FRAMEBUFFER_ATTACHMENT_COLOR_ENCODING)
-        gl.check_error('post-config check')
-    except RuntimeError as exp:
-        logger.warning('Failed to get sRGB: %s' % (exp,))
-    else:
-        if val not in (gl.GL_LINEAR, GL_SRGB):
-            logger.warning('unknown value for SRGB: %s' % val)
-        else:
-            config['srgb'] = (val == GL_SRGB)
-
-    for key, enum in (('stereo', GL_STEREO),
-                      ('double_buffer', GL_DOUBLEBUFFER)):
-        val = gl.glGetParameter(enum)
-        try:
-            gl.check_error('post-config check')
-        except RuntimeError as exp:
-            logger.warning('Failed to get %s: %s' % (key, exp))
-        else:
-            config[key] = bool(val)
-    config['samples'] = gl.glGetParameter(gl.GL_SAMPLES)
-    gl.check_error('post-config check')
-    return config
+    from .dawn_parser import get_framebuffer_configuration
+    return get_framebuffer_configuration()

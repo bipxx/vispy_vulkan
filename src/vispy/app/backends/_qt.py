@@ -2,21 +2,10 @@
 # Copyright (c) Vispy Development Team. All Rights Reserved.
 # Distributed under the (new) BSD License. See LICENSE.txt for more info.
 
-"""
-Base code for the Qt backends. Note that this is *not* (anymore) a
-backend by itself! One has to explicitly use either PySide, PyQt4 or
-PySide2, PyQt5 or PyQt6. Note that the automatic backend selection prefers
-a GUI toolkit that is already imported.
+"""Dawn QWidget support shared by PyQt5, PyQt6 and PySide6.
 
-The _pyside, _pyqt4, _pyside2, _pyqt5 and _pyside6 modules will
-import * from this module, and also keep a ref to the module object.
-Note that if two of the backends are used, this module is actually
-reloaded. This is a sorts of poor mans "subclassing" to get a working
-version for both backends using the same code.
-
-Note that it is strongly discouraged to use the
-PySide/PyQt4/PySide2/PyQt5/PySide6 backends simultaneously. It is
-known to cause unpredictable behavior and segfaults.
+The binding wrappers select one toolkit per process. Resource sharing belongs
+to Dawn; this module does not import Qt's OpenGL context or widget classes.
 """
 
 from __future__ import division
@@ -25,8 +14,6 @@ from time import sleep, time
 import math
 import os
 import sys
-import atexit
-import ctypes
 from packaging.version import Version
 
 from ...util import logger
@@ -36,7 +23,7 @@ from ...util import keys
 from ... import config
 from . import qt_lib
 
-USE_EGL = config['gl_backend'].lower().startswith('es')
+USE_EGL = False  # EGL/GL contexts are not a renderer path in this fork.
 
 # Get platform
 IS_LINUX = IS_OSX = IS_WIN = IS_RPI = False
@@ -77,74 +64,25 @@ def _get_event_xy(ev):
 
 # Get what qt lib to try. This tells us wheter this module is imported
 # via _pyside or _pyqt4 or _pyqt5
-QGLWidget = object
 QT5_NEW_API = False
 PYSIDE6_API = False
 PYQT6_API = False
-if qt_lib == 'pyqt4':
-    _check_imports('PyQt4')
-    if not USE_EGL:
-        from PyQt4.QtOpenGL import QGLWidget, QGLFormat
-    from PyQt4 import QtGui, QtCore, QtTest
-    QWidget, QApplication = QtGui.QWidget, QtGui.QApplication  # Compat
-elif qt_lib == 'pyqt5':
+if qt_lib == 'pyqt5':
     _check_imports('PyQt5')
-    if not USE_EGL:
-        from PyQt5.QtCore import QT_VERSION_STR
-        if Version(QT_VERSION_STR) >= Version('5.4.0'):
-            from PyQt5.QtWidgets import QOpenGLWidget as QGLWidget
-            from PyQt5.QtGui import QSurfaceFormat as QGLFormat
-            QT5_NEW_API = True
-        else:
-            from PyQt5.QtOpenGL import QGLWidget, QGLFormat
     from PyQt5 import QtGui, QtCore, QtWidgets, QtTest
-    QWidget, QApplication = QtWidgets.QWidget, QtWidgets.QApplication  # Compat
+    QT5_NEW_API = Version(QtCore.QT_VERSION_STR) >= Version('5.4.0')
 elif qt_lib == 'pyqt6':
     _check_imports('PyQt6')
-    if not USE_EGL:
-        from PyQt6.QtCore import QT_VERSION_STR
-        if Version(QT_VERSION_STR) >= Version('6.0.0'):
-            from PyQt6.QtOpenGLWidgets import QOpenGLWidget as QGLWidget
-            from PyQt6.QtGui import QSurfaceFormat as QGLFormat
-            PYQT6_API = True
-        else:
-            from PyQt6.QtOpenGL import QGLWidget, QGLFormat
     from PyQt6 import QtGui, QtCore, QtWidgets, QtTest
-    QWidget, QApplication = QtWidgets.QWidget, QtWidgets.QApplication  # Compat
+    PYQT6_API = True
 elif qt_lib == 'pyside6':
     _check_imports('PySide6')
-    if not USE_EGL:
-        from PySide6.QtCore import __version__ as QT_VERSION_STR
-        if Version(QT_VERSION_STR) >= Version('6.0.0'):
-            from PySide6.QtOpenGLWidgets import QOpenGLWidget as QGLWidget
-            from PySide6.QtGui import QSurfaceFormat as QGLFormat
-            PYSIDE6_API = True
-        else:
-            from PySide6.QtOpenGL import QGLWidget, QGLFormat
     from PySide6 import QtGui, QtCore, QtWidgets, QtTest
-    QWidget, QApplication = QtWidgets.QWidget, QtWidgets.QApplication  # Compat
-elif qt_lib == 'pyside2':
-    _check_imports('PySide2')
-    if not USE_EGL:
-        from PySide2.QtCore import __version__ as QT_VERSION_STR
-        if Version(QT_VERSION_STR) >= Version('5.4.0'):
-            from PySide2.QtWidgets import QOpenGLWidget as QGLWidget
-            from PySide2.QtGui import QSurfaceFormat as QGLFormat
-            QT5_NEW_API = True
-        else:
-            from PySide2.QtOpenGL import QGLWidget, QGLFormat
-    from PySide2 import QtGui, QtCore, QtWidgets, QtTest
-    QWidget, QApplication = QtWidgets.QWidget, QtWidgets.QApplication  # Compat
-elif qt_lib == 'pyside':
-    _check_imports('PySide')
-    if not USE_EGL:
-        from PySide.QtOpenGL import QGLWidget, QGLFormat
-    from PySide import QtGui, QtCore, QtTest
-    QWidget, QApplication = QtGui.QWidget, QtGui.QApplication  # Compat
-elif qt_lib:
-    raise RuntimeError("Invalid value for qt_lib %r." % qt_lib)
+    PYSIDE6_API = True
 else:
-    raise RuntimeError("Module backends._qt should not be imported directly.")
+    raise RuntimeError('The Dawn QWidget backend supports PyQt5, PyQt6 and '
+                       'PySide6; requested binding: %r' % qt_lib)
+QWidget, QApplication = QtWidgets.QWidget, QtWidgets.QApplication
 
 # todo: add support for distinguishing left and right shift/ctrl/alt keys.
 # Linux scan codes:  (left, right)
@@ -294,33 +232,8 @@ capability = dict(  # things that can be set by the backend
 
 # ------------------------------------------------------- set_configuration ---
 def _set_config(c):
-    """Set the OpenGL configuration"""
-    glformat = QGLFormat()
-    glformat.setRedBufferSize(c['red_size'])
-    glformat.setGreenBufferSize(c['green_size'])
-    glformat.setBlueBufferSize(c['blue_size'])
-    glformat.setAlphaBufferSize(c['alpha_size'])
-    if QT5_NEW_API:
-        # Qt5 >= 5.4.0 - below options automatically enabled if nonzero.
-        glformat.setSwapBehavior(glformat.DoubleBuffer if c['double_buffer']
-                                 else glformat.SingleBuffer)
-    elif PYQT6_API or PYSIDE6_API:
-        glformat.setSwapBehavior(glformat.SwapBehavior.DoubleBuffer if c['double_buffer']
-                                 else glformat.SwapBehavior.SingleBuffer)
-    else:
-        # Qt4 and Qt5 < 5.4.0 - buffers must be explicitly requested.
-        glformat.setAccum(False)
-        glformat.setRgba(True)
-        glformat.setDoubleBuffer(True if c['double_buffer'] else False)
-        glformat.setDepth(True if c['depth_size'] else False)
-        glformat.setStencil(True if c['stencil_size'] else False)
-        glformat.setSampleBuffers(True if c['samples'] else False)
-    glformat.setDepthBufferSize(c['depth_size'] if c['depth_size'] else 0)
-    glformat.setStencilBufferSize(c['stencil_size'] if c['stencil_size']
-                                  else 0)
-    glformat.setSamples(c['samples'] if c['samples'] else 0)
-    glformat.setStereo(c['stereo'])
-    return glformat
+    """Retain the requested Dawn configuration without constructing GL formats."""
+    return dict(c)
 
 
 # ------------------------------------------------------------- application ---
@@ -337,12 +250,7 @@ class ApplicationBackend(BaseApplicationBackend):
 
     def __init__(self):
         BaseApplicationBackend.__init__(self)
-        # sharing is currently buggy and causes segmentation faults for tests with PyQt 5.6
-        if (QT5_NEW_API or PYSIDE6_API) and use_shared_contexts():
-            # For Qt5 >= 5.4.0 - Enable sharing of context between windows.
-            QApplication.setAttribute(QtCore.Qt.AA_ShareOpenGLContexts, True)
-        elif PYQT6_API and use_shared_contexts():
-            QApplication.setAttribute(QtCore.Qt.ApplicationAttribute.AA_ShareOpenGLContexts, True)
+        # Dawn owns resource sharing. Do not request Qt GL context sharing.
 
     def _vispy_get_backend_name(self):
         name = QtCore.__name__.split('.')[0]
@@ -757,155 +665,12 @@ class QtBaseCanvasBackend(BaseCanvasBackend):
         return mod
 
 
-_EGL_DISPLAY = None
-egl = None
+class CanvasBackendEgl:
+    """Compatibility name that refuses the removed EGL context path."""
 
-# todo: Make work on Windows
-# todo: Make work without readpixels on Linux?
-# todo: Make work on OSX?
-# todo: Make work on Raspberry Pi!
-
-
-class CanvasBackendEgl(QtBaseCanvasBackend, QWidget):
-
-    def _init_specific(self, p, kwargs):
-
-        # Initialize egl. Note that we only import egl if needed.
-        global _EGL_DISPLAY
-        global egl
-        if egl is None:
-            from ...ext import egl as _egl
-            egl = _egl
-            # Use MESA driver on Linux
-            if IS_LINUX and not IS_RPI:
-                os.environ['EGL_SOFTWARE'] = 'true'
-            # Create and init display
-            _EGL_DISPLAY = egl.eglGetDisplay()
-            CanvasBackendEgl._EGL_VERSION = egl.eglInitialize(_EGL_DISPLAY)
-            atexit.register(egl.eglTerminate, _EGL_DISPLAY)
-
-        # Deal with context
-        p.context.shared.add_ref('qt-egl', self)
-        if p.context.shared.ref is self:
-            self._native_config = c = egl.eglChooseConfig(_EGL_DISPLAY)[0]
-            self._native_context = egl.eglCreateContext(_EGL_DISPLAY, c, None)
-        else:
-            self._native_config = p.context.shared.ref._native_config
-            self._native_context = p.context.shared.ref._native_context
-
-        # Init widget
-        qt_window_types = QtCore.Qt.WindowType if PYQT6_API else QtCore.Qt
-        if p.always_on_top or not p.decorate:
-            hint = 0
-            hint |= 0 if p.decorate else qt_window_types.FramelessWindowHint
-            hint |= qt_window_types.WindowStaysOnTopHint if p.always_on_top else 0
-        else:
-            hint = qt_window_types.Widget  # can also be a window type
-
-        QWidget.__init__(self, p.parent, hint)
-
-        qt_window_attributes = QtCore.Qt.WidgetAttribute if PYQT6_API else QtCore.Qt
-        if 0:  # IS_LINUX or IS_RPI:
-            self.setAutoFillBackground(False)
-            self.setAttribute(qt_window_attributes.WA_NoSystemBackground, True)
-            self.setAttribute(qt_window_attributes.WA_OpaquePaintEvent, True)
-        elif IS_WIN:
-            self.setAttribute(qt_window_attributes.WA_PaintOnScreen, True)
-            self.setAutoFillBackground(False)
-
-        # Init surface
-        w = self.get_window_id()
-        self._surface = egl.eglCreateWindowSurface(_EGL_DISPLAY, c, w)
-        self.initializeGL()
-        self._initialized = True
-
-    def get_window_id(self):
-        """Get the window id of a PySide Widget. Might also work for PyQt4."""
-        # Get Qt win id
-        winid = self.winId()
-
-        # On Linux this is it
-        if IS_RPI:
-            nw = (ctypes.c_int * 3)(winid, self.width(), self.height())
-            return ctypes.pointer(nw)
-        elif IS_LINUX:
-            return int(winid)  # Is int on PySide, but sip.voidptr on PyQt
-
-        # Get window id from stupid capsule thingy
-        # http://translate.google.com/translate?hl=en&sl=zh-CN&u=http://www.cnb
-        # logs.com/Shiren-Y/archive/2011/04/06/2007288.html&prev=/search%3Fq%3Dp
-        # yside%2Bdirectx%26client%3Dfirefox-a%26hs%3DIsJ%26rls%3Dorg.mozilla:n
-        # l:official%26channel%3Dfflb%26biw%3D1366%26bih%3D614
-        # Prepare
-        ctypes.pythonapi.PyCapsule_GetName.restype = ctypes.c_char_p
-        ctypes.pythonapi.PyCapsule_GetName.argtypes = [ctypes.py_object]
-        ctypes.pythonapi.PyCapsule_GetPointer.restype = ctypes.c_void_p
-        ctypes.pythonapi.PyCapsule_GetPointer.argtypes = [ctypes.py_object,
-                                                          ctypes.c_char_p]
-        # Extract handle from capsule thingy
-        name = ctypes.pythonapi.PyCapsule_GetName(winid)
-        handle = ctypes.pythonapi.PyCapsule_GetPointer(winid, name)
-        return handle
-
-    def _vispy_close(self):
-        # Destroy EGL surface
-        if self._surface is not None:
-            egl.eglDestroySurface(_EGL_DISPLAY, self._surface)
-            self._surface = None
-        # Force the window or widget to shut down
-        self.close()
-
-    def _vispy_set_current(self):
-        egl.eglMakeCurrent(_EGL_DISPLAY, self._surface,
-                           self._surface, self._native_context)
-
-    def _vispy_swap_buffers(self):
-        egl.eglSwapBuffers(_EGL_DISPLAY, self._surface)
-
-    def initializeGL(self):
-        self._vispy_canvas.set_current()
-        self._vispy_canvas.events.initialize()
-
-    def resizeEvent(self, event):
-        w, h = event.size().width(), event.size().height()
-        vispy_event = self._vispy_canvas.events.resize(size=(w, h))
-        # If vispy did not handle the event, clear the accept parameter of the qt event
-        if not vispy_event.handled:
-            event.ignore()
-
-    def paintEvent(self, event):
-        self._vispy_canvas.events.draw(region=None)
-
-        if IS_LINUX or IS_RPI:
-            # Arg, cannot get GL to draw to the widget, so we take a
-            # screenshot and draw that for now ...
-            # Further, QImage keeps a ref to the data that we pass, so
-            # we need to use a static buffer to prevent memory leakage
-            from ... import gloo
-            import numpy as np
-            if not hasattr(self, '_gl_buffer'):
-                self._gl_buffer = np.ones((3000 * 3000 * 4), np.uint8) * 255
-            # Take screenshot and turn into RGB QImage
-            im = gloo.read_pixels()
-            sze = im.shape[0] * im.shape[1]
-            self._gl_buffer[0:0+sze*4:4] = im[:, :, 2].ravel()
-            self._gl_buffer[1:0+sze*4:4] = im[:, :, 1].ravel()
-            self._gl_buffer[2:2+sze*4:4] = im[:, :, 0].ravel()
-            img = QtGui.QImage(self._gl_buffer, im.shape[1], im.shape[0],
-                               QtGui.QImage.Format_RGB32)
-            # Paint the image
-            painter = QtGui.QPainter()
-            painter.begin(self)
-            rect = QtCore.QRect(0, 0, self.width(), self.height())
-            painter.drawImage(rect, img)
-            painter.end()
-
-    def paintEngine(self):
-        if IS_LINUX and not IS_RPI:
-            # For now we are drawing a screenshot
-            return QWidget.paintEngine(self)
-        else:
-            return None  # Disable Qt's native drawing system
+    def __init__(self, *args, **kwargs):
+        raise RuntimeError('EGL canvases are unavailable in the Dawn renderer; '
+                           'use a supported Qt backend or dawn_headless.')
 
 
 _QtSignal = getattr(QtCore, "pyqtSignal", None) or QtCore.Signal
@@ -1174,10 +939,7 @@ class CanvasBackendDesktop(QtBaseCanvasBackend, QWidget):
 
 
 # Select CanvasBackend
-if USE_EGL:
-    CanvasBackend = CanvasBackendEgl
-else:
-    CanvasBackend = CanvasBackendDesktop
+CanvasBackend = CanvasBackendDesktop
 
 
 # ------------------------------------------------------------------- timer ---

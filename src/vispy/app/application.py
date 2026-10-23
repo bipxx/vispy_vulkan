@@ -11,7 +11,7 @@ import os
 import sys
 
 from . import backends
-from .backends import CORE_BACKENDS, BACKEND_NAMES, BACKENDMAP, TRIED_BACKENDS
+from .backends import CORE_BACKENDS, BACKEND_NAMES, BACKENDMAP, TRIED_BACKENDS, LEGACY_BACKEND_NAMES
 from .. import config
 from .base import BaseApplicationBackend as ApplicationBackend  # noqa
 from ._detect_eventloop import _get_running_interactive_framework
@@ -190,6 +190,11 @@ class Application(object):
         # with requires_application()
         test_name = os.getenv('_VISPY_TESTING_APP', None)
 
+        if backend_name is not None and backend_name.lower() in LEGACY_BACKEND_NAMES:
+            raise RuntimeError('Application backend %r requires an unported '
+                               'OpenGL context path. Use PyQt5, PyQt6, PySide6 '
+                               'or dawn_headless.' % backend_name)
+
         # Check whether the given name is valid
         if backend_name is not None:
             if backend_name.lower() == 'default':
@@ -222,6 +227,9 @@ class Application(object):
                     backends_to_try.append(name.lower())
             # See if a default is given
             default_backend = config['default_backend'].lower()
+            if default_backend in LEGACY_BACKEND_NAMES:
+                raise RuntimeError('Configured application backend %r requires '
+                                   'OpenGL and is unavailable in the Dawn fork.' % default_backend)
             if default_backend.lower() in BACKENDMAP.keys():
                 if default_backend not in backends_to_try:
                     backends_to_try.append(default_backend)

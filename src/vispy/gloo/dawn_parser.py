@@ -83,78 +83,89 @@ def _freeze_owned(value, arrays, capture, stats):
     return value
 
 
+def get_framebuffer_configuration():
+    """Describe the actual active target, preserving unknown native precision."""
+    from vispy.gloo.context import get_current_canvas
+    canvas = get_current_canvas()
+    backend = getattr(canvas, '_backend', None) if canvas is not None else None
+    canvas_id = int(getattr(backend, '_dawn_canvas_id', 0) or 0)
+    if not canvas_id:
+        raise RuntimeError('framebuffer configuration requires a current Dawn canvas')
+    from vispy import _dawn
+    query = getattr(_dawn, 'framebuffer_config', None)
+    if query is None:
+        raise RuntimeError('framebuffer configuration requires a matching native Dawn build')
+    canvas.context.flush_commands()
+    return dict(query(canvas_id))
+
+
+def get_gl_parameter(pname):
+    """Answer an admitted GL-shaped query from actual Dawn capabilities."""
+    from vispy import _dawn
+    from vispy.gloo.context import get_current_canvas
+
+    code = int(pname)
+    if code == 2978:  # GL_VIEWPORT
+        canvas = get_current_canvas()
+        if canvas is None:
+            raise RuntimeError("viewport query requires a current Dawn canvas")
+        canvas.context.flush_commands()
+        return tuple(_dawn.viewport(int(canvas._backend._dawn_canvas_id)))
+    if code in (32937, 3123, 3122):  # SAMPLES, STEREO, DOUBLEBUFFER
+        configuration = get_framebuffer_configuration()
+        field = {32937: 'samples', 3123: 'stereo', 3122: 'double_buffer'}[code]
+        return configuration[field]
+    info = _dawn.device_info()
+    if not info.get('ok', True):
+        raise RuntimeError('Dawn capability query failed: ' + str(info.get('error', 'device unavailable')))
+    limit = int(info["max_texture_dimension_2d"])
+    device = info.get("device") or "Dawn"
+    if isinstance(device, bytes):
+        device = device.decode("utf-8", "replace")
+    backend = info.get("backend") or "Dawn"
+    # Hosts compare these with Python str (`'texture_float' in extensions`).
+    # These are compatibility-profile labels for GL-shaped host probes, not
+    # evidence of an OpenGL context or arbitrary OpenGL operation support.
+    strings = {
+        7936: "Dawn",  # GL_VENDOR
+        7937: str(device),  # GL_RENDERER
+        7938: "4.5.0 Dawn " + backend,  # GL_VERSION
+        7939: "GL_ARB_texture_float GL_ARB_texture_non_power_of_two",  # GL_EXTENSIONS
+        35724: "4.50 Dawn " + backend + " GLSL",  # GL_SHADING_LANGUAGE_VERSION
+    }
+    if code in strings:
+        return strings[code]
+    budgets = {
+        3379: limit,  # GL_MAX_TEXTURE_SIZE
+        32883: int(info["max_texture_dimension_3d"]),
+        34024: limit,  # GL_MAX_RENDERBUFFER_SIZE
+        # Dawn grants these limits per shader stage, for both vertex and fragment.
+        34930: min(int(info["max_sampled_textures_per_shader_stage"]), int(info["max_samplers_per_shader_stage"])),  # GL_MAX_TEXTURE_IMAGE_UNITS
+        35660: min(int(info["max_sampled_textures_per_shader_stage"]), int(info["max_samplers_per_shader_stage"])),  # GL_MAX_VERTEX_TEXTURE_IMAGE_UNITS
+        35376: int(info["max_uniform_buffer_binding_size"]),  # GL_MAX_UNIFORM_BLOCK_SIZE, bytes
+        34921: int(info["max_vertex_attributes"]),
+    }
+    # These domains are not a per-stage sampler count or a byte binding size.
+    # Require a separately reported backend/renderer grant; do not invent one.
+    for query, field in (
+        (35071, "max_texture_array_layers"),  # GL_MAX_ARRAY_TEXTURE_LAYERS
+        (35661, "max_combined_texture_image_units"),  # GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS
+        (35379, "max_combined_fragment_uniform_components"),  # components, not bytes
+    ):
+        if field in info:
+            budgets[query] = int(info[field])
+    if code in budgets:
+        return budgets[code]
+    raise RuntimeError("unsupported GL query %s" % pname)
+
+
+get_gl_parameter._dawn_query = True
+
+
 def install_gl_queries():
-    """Answer the GL queries hosts issue before a context exists."""
+    """Keep the admitted compatibility query route across backend aliases."""
     import vispy.gloo.gl as glmod
-
-    if getattr(glmod.glGetParameter, "_dawn_query", False):
-        return
-
-    def gl_get_parameter(pname):
-        from vispy import _dawn
-        from vispy.gloo.context import get_current_canvas
-
-        info = _dawn.device_info()
-        code = int(pname)
-        limit = int(info["max_texture_dimension_2d"])
-        device = info.get("device") or "Dawn"
-        if isinstance(device, bytes):
-            device = device.decode("utf-8", "replace")
-        backend = info.get("backend") or "Dawn"
-        # Hosts compare these with Python str (`'texture_float' in extensions`).
-        # Desktop glGetString returns a decoded str, and the version token must
-        # parse as an OpenGL version (`GlirParser._gl_initialize`).
-        strings = {
-            7936: "Dawn",  # GL_VENDOR
-            7937: str(device),  # GL_RENDERER
-            7938: "4.5.0 Dawn " + backend,  # GL_VERSION
-            7939: "GL_ARB_texture_float GL_ARB_texture_non_power_of_two",  # GL_EXTENSIONS
-            35724: "4.50 Dawn " + backend + " GLSL",  # GL_SHADING_LANGUAGE_VERSION
-        }
-        if code in strings:
-            return strings[code]
-        budgets = {
-            3379: limit,  # GL_MAX_TEXTURE_SIZE
-            32883: int(info["max_texture_dimension_3d"]),
-            34024: limit,  # GL_MAX_RENDERBUFFER_SIZE
-            # Dawn grants these limits per shader stage, for both vertex and fragment.
-            34930: min(int(info["max_sampled_textures_per_shader_stage"]), int(info["max_samplers_per_shader_stage"])),  # GL_MAX_TEXTURE_IMAGE_UNITS
-            35660: min(int(info["max_sampled_textures_per_shader_stage"]), int(info["max_samplers_per_shader_stage"])),  # GL_MAX_VERTEX_TEXTURE_IMAGE_UNITS
-            35376: int(info["max_uniform_buffer_binding_size"]),  # GL_MAX_UNIFORM_BLOCK_SIZE, bytes
-            34921: int(info["max_vertex_attributes"]),
-        }
-        # These domains are not a per-stage sampler count or a byte binding size.
-        # Require a separately reported backend/renderer grant; do not invent one.
-        for query, field in (
-            (35071, "max_texture_array_layers"),  # GL_MAX_ARRAY_TEXTURE_LAYERS
-            (35661, "max_combined_texture_image_units"),  # GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS
-            (35379, "max_combined_fragment_uniform_components"),  # components, not bytes
-        ):
-            if field in info:
-                budgets[query] = int(info[field])
-        if code in budgets:
-            return budgets[code]
-        if code == 2978:  # GL_VIEWPORT
-            canvas = get_current_canvas()
-            if canvas is None:
-                return (0, 0, 1, 1)
-            canvas.context.flush_commands()
-            return tuple(_dawn.viewport(int(canvas._backend._dawn_canvas_id)))
-        # Capability bits hosts read while configuring a widget. These are not
-        # draw state; the real framebuffer is the Dawn surface.
-        if code == 32937:  # GL_SAMPLES
-            canvas = get_current_canvas()
-            samples = int(canvas.context.config.get("samples", 0) or 0) if canvas else 0
-            return samples if samples > 1 else 0
-        if code == 3123:  # GL_STEREO
-            return 0
-        if code == 3122:  # GL_DOUBLEBUFFER
-            canvas = get_current_canvas()
-            return int(canvas is not None and bool(canvas.context.config.get("double_buffer", True)))
-        raise RuntimeError("unsupported GL query %s" % pname)
-
-    gl_get_parameter._dawn_query = True
-    glmod.glGetParameter = gl_get_parameter
+    glmod.glGetParameter = get_gl_parameter
     glmod._dawn_queries = True
 
 

@@ -2,24 +2,11 @@
 # Copyright (c) Vispy Development Team. All Rights Reserved.
 # Distributed under the (new) BSD License. See LICENSE.txt for more info.
 
-"""This module provides a (functional) API to OpenGL ES 2.0.
+"""VisPy's GL-named compatibility interface, executed by Dawn.
 
-There are multiple backend implementations of this API, available as
-submodules of this module. One can use one of the backends directly,
-or call `gl.use_gl()` to select one. The backend system allow running
-visualizations using Angle, WebGL, or other forms of remote rendering.
-This is in part possible by the widespread availability of OpenGL ES 2.0.
-
-All functions that this API provides accept and return Python arguments
-(no ctypes is required); strings are real strings and you can pass
-data as numpy arrays. In general the input arguments are not checked
-(for performance reasons). Each function results in exactly one OpenGL
-API call, except when using the pyopengl backend.
-
-The functions do not have docstrings, but most IDE's should provide you
-with the function signature. For more documentation see
-http://www.khronos.org/opengles/sdk/docs/man/
-
+Constants and admitted capability queries remain available for existing VisPy
+callers. Drawing uses gloo's ordered GLIR stream; arbitrary immediate OpenGL
+calls are not translated and fail explicitly. No OpenGL loader is imported.
 """
 
 # NOTE: modules in this package that start with one underscore are
@@ -59,57 +46,30 @@ proxy = MainProxy()
 
 
 def use_gl(target=None):
-    """Let Vispy use the target OpenGL ES 2.0 implementation
+    """Select the Dawn compatibility facade without loading OpenGL.
 
-    Also see ``vispy.use()``.
-
-    Parameters
-    ----------
-    target : str
-        The target GL backend to use. Default gl2 or es2, depending on the platform.
-
-    Available backends:
-    * gl2 - Use ES 2.0 subset of desktop (i.e. normal) OpenGL
-    * gl+ - Use the desktop ES 2.0 subset plus all non-deprecated GL
-      functions on your system (requires PyOpenGL)
-    * es2 - Use the ES2 library (Angle/DirectX on Windows)
-    * pyopengl2 - Use ES 2.0 subset of pyopengl (for fallback and testing)
-    * dummy - Prevent usage of gloo.gl (for when rendering occurs elsewhere)
-
-    You can use vispy's config option "gl_debug" to check for errors
-    on each API call. Or, one can specify it as the target, e.g. "gl2
-    debug". (Debug does not apply to 'gl+', since PyOpenGL has its own
-    debug mechanism)
+    ``gl2`` and ``gl+`` are compatibility aliases used by existing hosts; they
+    do not enable native GL or arbitrary extensions. ``dummy`` retains the
+    explicit all-calls-disabled testing interface. Other GL implementations
+    are unavailable in this Vulkan/Metal fork.
     """
-    target = target or default_backend.__name__.split(".")[-1]
-    target = target.replace('+', 'plus')
-
-    # Get options
-    target, _, options = target.partition(' ')
-    debug = config['gl_debug'] or 'debug' in options
-
-    # Select modules to import names from
-    try:
-        mod = __import__(target, globals(), level=1)
-    except ImportError as err:
-        msg = 'Could not import gl target "%s":\n%s' % (target, str(err))
-        raise RuntimeError(msg)
-
-    # Apply
+    target = target or config['gl_backend']
+    if not isinstance(target, str):
+        raise TypeError('GL compatibility backend must be a string')
+    target, _, options = target.lower().replace('+', 'plus').partition(' ')
+    if target in ('dawn', 'gl2', 'glplus'):
+        mod = default_backend
+    elif target == 'dummy':
+        from . import dummy as mod
+    else:
+        raise RuntimeError('OpenGL backend %r is unavailable: use Dawn through '
+                           'gloo/GLIR, a supported Qt backend, or dawn_headless.' % target)
     global current_backend
     current_backend = mod
     _clear_namespace()
-    if 'plus' in target:
-        # Copy PyOpenGL funcs, extra funcs, constants, no debug
-        _copy_gl_functions(mod._pyopengl2, globals(), debug=debug)
-        _copy_gl_functions(mod, globals(), True, debug=debug)
-    else:
-        _copy_gl_functions(mod, globals(), debug=debug)
-
-    # Hosts such as napari select gl+ after a Dawn canvas already exists.
-    # Backend selection replaces the query function along with the GL names;
-    # restore the capability facade for this renderer after that replacement.
-    if globals().get('_dawn_queries', False):
+    _copy_gl_functions(mod, globals(), constants=True,
+                       debug=config['gl_debug'] or 'debug' in options)
+    if mod is default_backend and globals().get('_dawn_queries', False):
         from ..dawn_parser import install_gl_queries
         install_gl_queries()
 
@@ -211,31 +171,7 @@ def check_error(when='periodic check'):
         raise err
 
 
-def _fix_osmesa_gl_lib_if_testing():
-    """
-    This functions checks if we a running test with the osmesa backends and
-    fix the GL library if needed.
-
-    Since we have to fix the VISPY_GL_LIB *before* any import from the gl
-    module, we have to run this here.
-    Test discovery utilities (like pytest) will try to import modules
-    before running tests, so we have to modify the GL lib really early.
-    The other solution would be to setup pre-run hooks for the test utility,
-    but there doesn't seem to be a standard way to do that (e.g. conftest.py
-    for py.test)
-    """
-    test_name = os.getenv('_VISPY_TESTING_APP', None)
-    if test_name == 'osmesa':
-        from ...util.osmesa_gl import fix_osmesa_gl_lib
-        fix_osmesa_gl_lib()
-
-_fix_osmesa_gl_lib_if_testing()
-
-# Load default gl backend
-from . import gl2 as default_backend  # noqa
-if default_backend._lib is None:  # Probably Android or RPi
-    from . import es2 as default_backend  # noqa
-
-
-# Call use to start using our default backend
+# The default backend contains Python compatibility functions only. Importing
+# gloo must not locate or load a native OpenGL library.
+from . import dawn as default_backend  # noqa
 use_gl()

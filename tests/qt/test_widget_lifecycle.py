@@ -18,10 +18,10 @@ def test_native_is_parentable_qwidget_not_qopenglwidget():
     canvas = app.Canvas(app=qt_api, size=(40, 30), show=False, resizable=True)
     native = canvas.native
     qwidget = qt_backend.QWidget
-    qgl = qt_backend.QGLWidget
     print("QWidget rather than QOpenGLWidget", type(native).__name__, [cls.__name__ for cls in type(native).__mro__])
     assert isinstance(native, qwidget)
-    assert not isinstance(native, qgl)
+    assert not any(cls.__name__ in ("QGLWidget", "QOpenGLWidget")
+                   for cls in type(native).__mro__)
     parent = qwidget()
     native.setParent(parent)
     assert native.parent() is parent

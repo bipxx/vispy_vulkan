@@ -2,12 +2,12 @@
 Utils for offscreen rendering.
 """
 
-from .. import Application, Canvas
+from .. import Canvas
 from ... import gloo
 
 
 class OffscreenContext:
-    """ A helper class to provide an OpenGL context. This context is global
+    """ A helper class to provide a Dawn offscreen canvas. This canvas is global
     to the application.
     """
 
@@ -16,7 +16,7 @@ class OffscreenContext:
 
     @classmethod
     def get_global_instance(cls):
-        """ Get a global context. Note that any assumptions about OpenGL state
+        """ Get a global canvas. Note that assumptions about compatibility state
         being local will not hold.
         """
         if cls._global_instance is None:
@@ -29,33 +29,8 @@ class OffscreenContext:
 
         self._is_closed = False
 
-        # Glfw is probably the most lightweight approach, so let's try that.
-        # But there are two incompatible packages providing glfw :/
-        self.glfw = None
-        try:
-            import glfw
-        except ImportError:
-            pass
-        else:
-            need_from_glfw = ["create_window", "make_context_current"]
-            if all(hasattr(glfw, attr) for attr in need_from_glfw):
-                self.glfw = glfw
-
-        if self.glfw:
-            self.glfw.init()
-            self.glfw.window_hint(self.glfw.VISIBLE, 0)
-            self._canvas = self.glfw.create_window(1, 1, "dummy window", None, None)
-
-        else:
-            try:
-                _app = Application('default')
-            except Exception:
-                raise RuntimeError(
-                    "Cannot find a backend to create an OpenGL context. "
-                    "Install e.g. PyQt5, PySide2, or `pip install glfw`."
-                )
-            self._canvas = Canvas(app=_app)
-            self._canvas.show(False)
+        # A Dawn offscreen target has no GUI or native GL context dependency.
+        self._canvas = Canvas(app='dawn_headless', show=False)
 
     def make_current(self):
         """ Make this the currently active context.
@@ -63,10 +38,7 @@ class OffscreenContext:
         # If an application only used off-screen canvases this would technically
         # have to be called just once. But note that an application/session
         # could run both real canvases and off-screen ones.
-        if self.glfw:
-            self.glfw.make_context_current(self._canvas)
-        else:
-            self._canvas.set_current()
+        self._canvas.set_current()
         return self  # allow method chaining
 
     def close(self):
@@ -74,13 +46,9 @@ class OffscreenContext:
         # Cannot close the global instance
         if self is OffscreenContext._global_instance:
             return
-        elif not self._is_closed:
+        elif not getattr(self, '_is_closed', True):
             self._is_closed = True
-            if self.glfw:
-                self.glfw.destroy_window(self._canvas)
-                self.glfw.poll_events()
-            else:
-                self._canvas.close()
+            self._canvas.close()
 
     def __del__(self):
         self.close()
