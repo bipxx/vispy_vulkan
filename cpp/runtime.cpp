@@ -5974,6 +5974,99 @@ void configure_canvas(int canvas_id, int width, int height, int samples) {
     if (eng.device_ready) eng.ensure_target(canvas);
 }
 
+FramebufferConfiguration framebuffer_config(int canvas_id) {
+    auto& eng = engine();
+    std::lock_guard<std::mutex> lock(eng.mu);
+    auto& canvas = eng.canvas(canvas_id);
+    if (!eng.init_device())
+        throw std::runtime_error("framebuffer configuration: " + eng.info.error);
+    using vispy::framebuffer::ColorStorage;
+    using vispy::framebuffer::DepthStorage;
+    FramebufferConfiguration result;
+    if (canvas.fbo == 0) {
+        if (canvas.width <= 0 || canvas.height <= 0)
+            throw std::runtime_error("framebuffer configuration: empty canvas target");
+        eng.ensure_target(canvas);
+        const auto& color = canvas.samples > 1 ? canvas.multisampled_color : canvas.color;
+        if (!color || !canvas.depth || color.GetFormat() != wgpu::TextureFormat::RGBA8Unorm ||
+            canvas.depth.GetFormat() != wgpu::TextureFormat::Depth24PlusStencil8 ||
+            color.GetSampleCount() != canvas.depth.GetSampleCount())
+            throw std::runtime_error("framebuffer configuration: unexpected canvas attachment storage");
+        result = vispy::framebuffer::describe({4, 8, "rgba8unorm", false},
+            DepthStorage::Depth24PlusStencil8, true, true,
+            static_cast<int>(color.GetSampleCount()), bool(canvas.surface) && canvas.surface_configured);
+        result.width = static_cast<int>(color.GetWidth());
+        result.height = static_cast<int>(color.GetHeight());
+        result.configuration_source = "allocated_target";
+        return result;
+    }
+
+    auto framebuffer = eng.objects.find(canvas.fbo);
+    if (framebuffer == eng.objects.end() || framebuffer->second.class_name != "FrameBuffer")
+        throw std::runtime_error("framebuffer configuration: missing framebuffer object");
+    auto attachment = [&](int id, const char* kind) -> const TextureRev& {
+        const auto object = eng.objects.find(id);
+        if (id == 0 || object == eng.objects.end() || !object->second.texture)
+            throw std::runtime_error(std::string("framebuffer configuration: missing ") + kind + " attachment");
+        return *object->second.texture;
+    };
+    auto allocation = [](const TextureRev& revision) -> const TextureData& {
+        return revision.allocation_descriptor ? *revision.allocation_descriptor :
+            static_cast<const TextureData&>(revision);
+    };
+    const auto& color = attachment(framebuffer->second.fb_color, "color");
+    const auto& storage = allocation(color);
+    if (storage.dimensions != 2 || storage.width <= 0 || storage.height <= 0)
+        throw std::runtime_error("framebuffer configuration: invalid 2D color attachment");
+    const auto description = texture_detail::describe(storage);
+    const auto native_format = texture_detail::native_format(description);
+    if (color.texture && color.texture.GetFormat() != native_format)
+        throw std::runtime_error("framebuffer configuration: color storage differs from frozen descriptor");
+    const char* encoding = nullptr;
+    using S = texture_detail::Storage;
+    switch (description.storage) {
+    case S::Float16: case S::Float32: encoding = "float"; break;
+    case S::Unorm8: case S::Unorm16: encoding = "unorm"; break;
+    case S::Snorm8: encoding = "snorm"; break;
+    case S::Uint8: case S::Uint16: case S::Uint32: encoding = "uint"; break;
+    case S::Sint8: case S::Sint16: case S::Sint32: encoding = "sint"; break;
+    }
+    if (!encoding)
+        throw std::runtime_error("framebuffer configuration: unsupported color storage encoding");
+    ColorStorage color_storage;
+    color_storage.channels = description.channels;
+    color_storage.component_bits = static_cast<int>(description.component_bytes * 8);
+    color_storage.format = std::string(description.channels == 1 ? "r" : description.channels == 2 ? "rg" : "rgba") +
+        std::to_string(color_storage.component_bits) + encoding;
+    const bool depth_attached = framebuffer->second.fb_depth != 0;
+    const bool stencil_attached = framebuffer->second.fb_stencil != 0;
+    bool native_allocations = bool(color.texture);
+    for (const auto& [id, kind] : {std::pair{framebuffer->second.fb_depth, "depth"},
+                                  std::pair{framebuffer->second.fb_stencil, "stencil"}}) {
+        if (id == 0) continue;
+        const auto& depth = attachment(id, kind);
+        const auto& depth_storage = allocation(depth);
+        if ((depth_storage.format != "depth" && depth_storage.format != "stencil" &&
+             depth_storage.format != "depth_stencil") || depth_storage.width != storage.width ||
+            depth_storage.height != storage.height)
+            throw std::runtime_error("framebuffer configuration: invalid depth/stencil attachment");
+        if (depth.texture && depth.texture.GetFormat() != wgpu::TextureFormat::Depth24PlusStencil8)
+            throw std::runtime_error("framebuffer configuration: unexpected depth/stencil storage");
+        native_allocations = native_allocations && bool(depth.texture);
+    }
+    // FBO render targets currently have one sample, even on an MSAA canvas.
+    // Inspect retained allocation descriptors without uploading DATA, encoding
+    // queued draws, or waiting for GPU completion merely to answer a query.
+    result = vispy::framebuffer::describe(color_storage,
+        depth_attached || stencil_attached ? DepthStorage::Depth24PlusStencil8 : DepthStorage::None,
+        depth_attached, stencil_attached, 1, false);
+    result.framebuffer_id = canvas.fbo;
+    result.width = storage.width;
+    result.height = storage.height;
+    result.configuration_source = native_allocations ? "allocated_target" : "retained_attachment_descriptor";
+    return result;
+}
+
 void destroy_canvas(int canvas_id) {
     auto& eng = engine();
     std::lock_guard<std::mutex> lock(eng.mu);

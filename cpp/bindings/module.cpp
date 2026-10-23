@@ -406,6 +406,35 @@ NB_MODULE(_dawn, m) {
     m.def("register_canvas", &register_canvas, nb::arg("width"), nb::arg("height"),
           nb::arg("samples"), nb::arg("vsync") = false);
     m.def("configure_canvas", &configure_canvas);
+    m.def("framebuffer_config", [](int canvas_id) {
+        const auto config = framebuffer_config(canvas_id);
+        nb::dict out;
+        out["red_size"] = config.red_size;
+        out["green_size"] = config.green_size;
+        out["blue_size"] = config.blue_size;
+        out["alpha_size"] = config.alpha_size;
+        if (config.depth_size) out["depth_size"] = *config.depth_size;
+        else out["depth_size"] = nb::none();
+        out["depth_size_minimum"] = config.depth_size_minimum;
+        out["depth_size_exact"] = config.depth_size_exact;
+        out["stencil_size"] = config.stencil_size;
+        out["backing_depth_size_minimum"] = config.backing_depth_size_minimum;
+        out["backing_stencil_size"] = config.backing_stencil_size;
+        out["sample_count"] = config.sample_count;
+        out["samples"] = config.samples;
+        out["double_buffer"] = config.double_buffer;
+        out["stereo"] = config.stereo;
+        out["srgb"] = config.srgb;
+        out["has_depth_attachment"] = config.has_depth_attachment;
+        out["has_stencil_attachment"] = config.has_stencil_attachment;
+        out["framebuffer_id"] = config.framebuffer_id;
+        out["width"] = config.width;
+        out["height"] = config.height;
+        out["color_format"] = config.color_format;
+        out["depth_stencil_format"] = config.depth_stencil_format;
+        out["configuration_source"] = config.configuration_source;
+        return out;
+    }, nb::arg("canvas_id"));
     m.def("destroy_canvas", &destroy_canvas);
     m.def("set_surface", &set_surface);
     m.def("set_surface_win32", &set_surface);

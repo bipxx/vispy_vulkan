@@ -8,6 +8,7 @@
 #include "platform/vk_layer_telemetry.hpp"
 #include "runtime_line_ownership.hpp"
 #include "runtime_line_capture.hpp"
+#include "runtime_framebuffer_config.hpp"
 
 struct UploadCaptureStats {
     uint64_t captures = 0, bytes = 0, fallback_dtypes = 0, fallback_exports = 0;
@@ -270,6 +271,9 @@ Probe probe_counters();
 uint64_t layer_submit_count();
 int register_canvas(int width, int height, int samples, bool vsync);
 void configure_canvas(int canvas_id, int width, int height, int samples);
+// Query retained target configuration without GL calls, submission or readback.
+// The caller must first flush pending GLIR state into execute_commands().
+FramebufferConfiguration framebuffer_config(int canvas_id);
 void destroy_canvas(int canvas_id);
 void set_surface(int canvas_id, std::uintptr_t hwnd, std::uintptr_t hinstance);
 void set_surface_x11(int canvas_id, std::uintptr_t display, uint64_t window, bool owned_display);
