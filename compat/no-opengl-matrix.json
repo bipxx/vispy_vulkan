@@ -1,0 +1,400 @@
+{
+  "schema": 1,
+  "scope": "Mandatory initial qualification rows; pending entries are requirements, never claims of completed ports.",
+  "shipping_contract": "compat/runtime-package.json",
+  "host_pins": "compat/hosts.lock.toml",
+  "binding_pins": "uv.lock",
+  "same_artifact_required": true,
+  "metal_status": "EXPERIMENTAL_NOT_QUALIFIED",
+  "linux_hardware_status": "NOT_QUALIFIED_WSL_SOFTWARE_ONLY",
+  "feature_inventory": [
+    "clear",
+    "image",
+    "labels",
+    "volume",
+    "markers",
+    "mesh",
+    "compiled-text",
+    "depth-order",
+    "shader-arrays-attributes-lod",
+    "multisample-lines",
+    "recovery",
+    "shutdown-zero-resources"
+  ],
+  "rows": [
+    {
+      "id": "windows-vulkan-headless",
+      "platform": "windows-vulkan",
+      "application": "headless",
+      "binding": null,
+      "mandatory": true,
+      "status": "PENDING",
+      "artifact_sha256": null,
+      "environment_id": null,
+      "features": [
+        "clear",
+        "image",
+        "labels",
+        "volume",
+        "markers",
+        "mesh",
+        "compiled-text",
+        "depth-order",
+        "shader-arrays-attributes-lod",
+        "multisample-lines",
+        "recovery",
+        "shutdown-zero-resources"
+      ],
+      "gates": {
+        "no_gl_execution": "UNVERIFIED",
+        "no_gl_loads": "UNVERIFIED",
+        "no_gl_install_link_requirement": "UNVERIFIED"
+      },
+      "evidence": []
+    },
+    {
+      "id": "windows-vulkan-qwidget-pyqt5",
+      "platform": "windows-vulkan",
+      "application": "qwidget",
+      "binding": "pyqt5",
+      "mandatory": true,
+      "status": "PENDING",
+      "artifact_sha256": null,
+      "environment_id": null,
+      "features": [
+        "launch",
+        "initial-render",
+        "update",
+        "interaction",
+        "capture-export",
+        "recovery",
+        "close"
+      ],
+      "gates": {
+        "no_gl_execution": "UNVERIFIED",
+        "no_gl_loads": "UNVERIFIED",
+        "no_gl_install_link_requirement": "UNVERIFIED"
+      },
+      "evidence": []
+    },
+    {
+      "id": "windows-vulkan-qwidget-pyqt6",
+      "platform": "windows-vulkan",
+      "application": "qwidget",
+      "binding": "pyqt6",
+      "mandatory": true,
+      "status": "PENDING",
+      "artifact_sha256": null,
+      "environment_id": null,
+      "features": [
+        "launch",
+        "initial-render",
+        "update",
+        "interaction",
+        "capture-export",
+        "recovery",
+        "close"
+      ],
+      "gates": {
+        "no_gl_execution": "UNVERIFIED",
+        "no_gl_loads": "UNVERIFIED",
+        "no_gl_install_link_requirement": "UNVERIFIED"
+      },
+      "evidence": []
+    },
+    {
+      "id": "windows-vulkan-qwidget-pyside6",
+      "platform": "windows-vulkan",
+      "application": "qwidget",
+      "binding": "pyside6",
+      "mandatory": true,
+      "status": "PENDING",
+      "artifact_sha256": null,
+      "environment_id": null,
+      "features": [
+        "launch",
+        "initial-render",
+        "update",
+        "interaction",
+        "capture-export",
+        "recovery",
+        "close"
+      ],
+      "gates": {
+        "no_gl_execution": "UNVERIFIED",
+        "no_gl_loads": "UNVERIFIED",
+        "no_gl_install_link_requirement": "UNVERIFIED"
+      },
+      "evidence": []
+    },
+    {
+      "id": "windows-vulkan-napari-pyqt6",
+      "platform": "windows-vulkan",
+      "application": "napari",
+      "binding": "pyqt6",
+      "mandatory": true,
+      "status": "PENDING",
+      "artifact_sha256": null,
+      "environment_id": null,
+      "features": [
+        "launch",
+        "initial-render",
+        "update",
+        "interaction",
+        "capture-export",
+        "recovery",
+        "close"
+      ],
+      "gates": {
+        "no_gl_execution": "UNVERIFIED",
+        "no_gl_loads": "UNVERIFIED",
+        "no_gl_install_link_requirement": "UNVERIFIED"
+      },
+      "evidence": []
+    },
+    {
+      "id": "windows-vulkan-glue-vispy-viewers-pyqt6",
+      "platform": "windows-vulkan",
+      "application": "glue-vispy-viewers",
+      "binding": "pyqt6",
+      "mandatory": true,
+      "status": "PENDING",
+      "artifact_sha256": null,
+      "environment_id": null,
+      "features": [
+        "launch",
+        "initial-render",
+        "update",
+        "interaction",
+        "capture-export",
+        "recovery",
+        "close"
+      ],
+      "gates": {
+        "no_gl_execution": "UNVERIFIED",
+        "no_gl_loads": "UNVERIFIED",
+        "no_gl_install_link_requirement": "UNVERIFIED"
+      },
+      "evidence": []
+    },
+    {
+      "id": "windows-vulkan-napari-threedee-pyqt6",
+      "platform": "windows-vulkan",
+      "application": "napari-threedee",
+      "binding": "pyqt6",
+      "mandatory": true,
+      "status": "PENDING",
+      "artifact_sha256": null,
+      "environment_id": null,
+      "features": [
+        "launch",
+        "initial-render",
+        "update",
+        "interaction",
+        "capture-export",
+        "recovery",
+        "close"
+      ],
+      "gates": {
+        "no_gl_execution": "UNVERIFIED",
+        "no_gl_loads": "UNVERIFIED",
+        "no_gl_install_link_requirement": "UNVERIFIED"
+      },
+      "evidence": []
+    },
+    {
+      "id": "wsl-linux-lavapipe-x11-headless",
+      "platform": "wsl-linux-lavapipe-x11",
+      "application": "headless",
+      "binding": null,
+      "mandatory": true,
+      "status": "PENDING",
+      "artifact_sha256": null,
+      "environment_id": null,
+      "features": [
+        "clear",
+        "image",
+        "labels",
+        "volume",
+        "markers",
+        "mesh",
+        "compiled-text",
+        "depth-order",
+        "shader-arrays-attributes-lod",
+        "multisample-lines",
+        "recovery",
+        "shutdown-zero-resources"
+      ],
+      "gates": {
+        "no_gl_execution": "UNVERIFIED",
+        "no_gl_loads": "UNVERIFIED",
+        "no_gl_install_link_requirement": "UNVERIFIED"
+      },
+      "evidence": []
+    },
+    {
+      "id": "wsl-linux-lavapipe-x11-qwidget-pyqt5",
+      "platform": "wsl-linux-lavapipe-x11",
+      "application": "qwidget",
+      "binding": "pyqt5",
+      "mandatory": true,
+      "status": "PENDING",
+      "artifact_sha256": null,
+      "environment_id": null,
+      "features": [
+        "launch",
+        "initial-render",
+        "update",
+        "interaction",
+        "capture-export",
+        "recovery",
+        "close"
+      ],
+      "gates": {
+        "no_gl_execution": "UNVERIFIED",
+        "no_gl_loads": "UNVERIFIED",
+        "no_gl_install_link_requirement": "UNVERIFIED"
+      },
+      "evidence": []
+    },
+    {
+      "id": "wsl-linux-lavapipe-x11-qwidget-pyqt6",
+      "platform": "wsl-linux-lavapipe-x11",
+      "application": "qwidget",
+      "binding": "pyqt6",
+      "mandatory": true,
+      "status": "PENDING",
+      "artifact_sha256": null,
+      "environment_id": null,
+      "features": [
+        "launch",
+        "initial-render",
+        "update",
+        "interaction",
+        "capture-export",
+        "recovery",
+        "close"
+      ],
+      "gates": {
+        "no_gl_execution": "UNVERIFIED",
+        "no_gl_loads": "UNVERIFIED",
+        "no_gl_install_link_requirement": "UNVERIFIED"
+      },
+      "evidence": []
+    },
+    {
+      "id": "wsl-linux-lavapipe-x11-qwidget-pyside6",
+      "platform": "wsl-linux-lavapipe-x11",
+      "application": "qwidget",
+      "binding": "pyside6",
+      "mandatory": true,
+      "status": "PENDING",
+      "artifact_sha256": null,
+      "environment_id": null,
+      "features": [
+        "launch",
+        "initial-render",
+        "update",
+        "interaction",
+        "capture-export",
+        "recovery",
+        "close"
+      ],
+      "gates": {
+        "no_gl_execution": "UNVERIFIED",
+        "no_gl_loads": "UNVERIFIED",
+        "no_gl_install_link_requirement": "UNVERIFIED"
+      },
+      "evidence": []
+    },
+    {
+      "id": "wsl-linux-lavapipe-x11-napari-pyqt6",
+      "platform": "wsl-linux-lavapipe-x11",
+      "application": "napari",
+      "binding": "pyqt6",
+      "mandatory": true,
+      "status": "PENDING",
+      "artifact_sha256": null,
+      "environment_id": null,
+      "features": [
+        "launch",
+        "initial-render",
+        "update",
+        "interaction",
+        "capture-export",
+        "recovery",
+        "close"
+      ],
+      "gates": {
+        "no_gl_execution": "UNVERIFIED",
+        "no_gl_loads": "UNVERIFIED",
+        "no_gl_install_link_requirement": "UNVERIFIED"
+      },
+      "evidence": []
+    },
+    {
+      "id": "wsl-linux-lavapipe-x11-glue-vispy-viewers-pyqt6",
+      "platform": "wsl-linux-lavapipe-x11",
+      "application": "glue-vispy-viewers",
+      "binding": "pyqt6",
+      "mandatory": true,
+      "status": "PENDING",
+      "artifact_sha256": null,
+      "environment_id": null,
+      "features": [
+        "launch",
+        "initial-render",
+        "update",
+        "interaction",
+        "capture-export",
+        "recovery",
+        "close"
+      ],
+      "gates": {
+        "no_gl_execution": "UNVERIFIED",
+        "no_gl_loads": "UNVERIFIED",
+        "no_gl_install_link_requirement": "UNVERIFIED"
+      },
+      "evidence": []
+    },
+    {
+      "id": "wsl-linux-lavapipe-x11-napari-threedee-pyqt6",
+      "platform": "wsl-linux-lavapipe-x11",
+      "application": "napari-threedee",
+      "binding": "pyqt6",
+      "mandatory": true,
+      "status": "PENDING",
+      "artifact_sha256": null,
+      "environment_id": null,
+      "features": [
+        "launch",
+        "initial-render",
+        "update",
+        "interaction",
+        "capture-export",
+        "recovery",
+        "close"
+      ],
+      "gates": {
+        "no_gl_execution": "UNVERIFIED",
+        "no_gl_loads": "UNVERIFIED",
+        "no_gl_install_link_requirement": "UNVERIFIED"
+      },
+      "evidence": []
+    },
+    {
+      "id": "dive-admission",
+      "application": "dive",
+      "mandatory": false,
+      "status": "NOT_ADMITTED",
+      "reason": "Source/import inventory only in compat/hosts.lock.toml; no upstream rendering fixture admitted."
+    },
+    {
+      "id": "visbrain-admission",
+      "application": "visbrain",
+      "mandatory": false,
+      "status": "NOT_ADMITTED",
+      "reason": "Source/import inventory only in compat/hosts.lock.toml; no upstream rendering fixture admitted."
+    }
+  ]
+}

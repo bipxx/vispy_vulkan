@@ -1,0 +1,64 @@
+# OpenGL runtime observation
+
+These tools distinguish Python requests, native loader events, native entry-point
+resolution/calls, declared binary dependency closure and installed environment
+evidence. An import check is not graphics qualification. A final module snapshot
+cannot establish that a transient library was never loaded.
+
+`tools/audit_no_opengl.py dependencies --root <binary> --search-dir <directory>
+--output <new.json>` reads PE normal/delayed imports and ELF DT_NEEDED without
+executing the inspected file. `--qt-root` selects QtGui and its Windows/XCB
+platform plugin. Unknown imports remain unresolved; Windows API-set contracts
+are resolved by the actual OS loader in the audit process and recorded. A PASS
+here applies only to the declared closure, not the complete environment.
+
+`tools/audit_no_opengl.py run --python <fresh-consumer-python> --wheel <wheel>
+--scenario headless --output <new.json>` starts a fresh isolated process and
+checks exact installed package bytes against the wheel's shipping manifest.
+Use `--scenario qt --binding pyqt6` for the QWidget clear/capture scenario.
+`--scenario script --script <host-probe.py> -- <host arguments>` wraps a real host
+fixture; successful SystemExit(0) is supported. Each script must perform its own
+functional/recovery/shutdown assertions. Source checks are explicitly labelled:
+`--source-root <checkout> --dependency-path <site-packages> --gates imports`.
+Use base Python there, since an editable redirect finder can override sys.path.
+
+Windows x64 uses OS debugger process-tree events from before the first
+instruction. It records startup/transient DLL loads and unloads, traps public
+GL-shaped exports, and observes GetProcAddress and
+LdrGetProcedureAddress[Ex] named/ordinal lookups. Non-GL resolver instructions
+are single-stepped with peer threads suspended until the breakpoint is restored.
+Unknown image paths, forwarded GL exports, instrumentation errors and incomplete
+process termination prevent an absence PASS. Private implementations and manual
+export parsing are outside this public API observer's scope.
+
+Linux glibc currently uses `--native-auditor <loader_audit.so>`. It records actual
+startup/transient loader objects and bindings including dlsym. It does not observe
+direct local calls or prove the whole fork/exec tree. Accordingly the aggregate
+execution/load gates remain UNVERIFIED, including on successful graphics runs.
+The negative controls explicitly demonstrate this limitation. A native debugger
+collector is the remaining Linux instrumentation work.
+
+Build the independent synthetic native controls (they implement no graphics):
+
+```text
+# Linux, in an owned build directory
+cc -shared -fPIC -O2 -Wall -Wextra -Werror -o loader_audit.so tools/no_opengl/loader_audit_linux.c
+cc -shared -fPIC -O0 -Wall -Wextra -Werror -Wl,-Bsymbolic -o negative_api.so tools/no_opengl/negative_probe.c -ldl
+PYTHONPATH=tools python -B -m no_opengl.negative_controls --fixture negative_api.so --native-auditor loader_audit.so --output <new-directory>
+
+# Windows: VS developer shell, explicit Windows SDK import library if needed
+cl /nologo /LD /GS- /Zl /Fonegative_probe.obj /Fenegative_api.dll tools/no_opengl/negative_probe.c /link /NODEFAULTLIB /NOENTRY kernel32.lib
+$env:PYTHONPATH='tools'
+python -B -m no_opengl.negative_controls --fixture negative_api.dll --output <new-directory>
+```
+
+The controls run without Python audit hooks: safe export, native symbol lookup
+without a call, direct native call, and transient load/unload of the fixture
+under a forbidden loader name. Linux's -Bsymbolic direct call deliberately
+exposes the LD_AUDIT blind spot. PASS_CONTROLS describes the controls, never a
+candidate artifact. Keep failed traces as evidence.
+
+All three candidate gates also require a fresh GL-free installed environment
+bound to the exact wheel hash. A declared dependency report alone does not meet
+that requirement. Matrix requirements live in `compat/no-opengl-matrix.json`;
+pending rows remain pending until functional and same-artifact evidence exists.
