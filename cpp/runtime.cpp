@@ -1021,6 +1021,10 @@ struct Engine {
     bool present_ready = false;
     wgpu::RenderPipeline depth_upload_pipeline;
     wgpu::BindGroupLayout depth_upload_layout;
+    // Default MSAA Canvas read_pixels selects actual sample zero for both
+    // aspects (OpenGL4.6 section18.2.3 permits implementation-selected values).
+    std::array<wgpu::RenderPipeline, 2> sample_zero_capture_pipelines;
+    std::array<wgpu::BindGroupLayout, 2> sample_zero_capture_layouts;
     wgpu::RenderPipeline depth_capture_pipeline;
     wgpu::BindGroupLayout depth_capture_layout;
 
@@ -1694,6 +1698,8 @@ struct Engine {
         present_ready = false;
         depth_upload_pipeline = nullptr;
         depth_upload_layout = nullptr;
+        for (auto& pipeline : sample_zero_capture_pipelines) pipeline = nullptr;
+        for (auto& layout : sample_zero_capture_layouts) layout = nullptr;
         depth_capture_pipeline = nullptr;
         depth_capture_layout = nullptr;
         for (auto& texture : dummy_textures) texture.reset();
@@ -1759,6 +1765,8 @@ struct Engine {
         queue = nullptr;
         depth_upload_pipeline = nullptr;
         depth_upload_layout = nullptr;
+        for (auto& pipeline : sample_zero_capture_pipelines) pipeline = nullptr;
+        for (auto& layout : sample_zero_capture_layouts) layout = nullptr;
         depth_capture_pipeline = nullptr;
         depth_capture_layout = nullptr;
         if (device) device.Destroy();
@@ -4894,6 +4902,110 @@ struct Vertex { @builtin(position) position: vec4f, @location(0) uv: vec2f }
         return texture;
     }
 
+    wgpu::Texture encode_sample_zero_capture(const wgpu::Texture& source,
+                                             const wgpu::CommandEncoder& encoder, Ticket& ticket,
+                                             bool stencil) {
+        if (source.GetSampleCount() != 4)
+            throw std::runtime_error("sample-zero depth/stencil capture requires four samples");
+        const size_t slot = stencil ? 1 : 0;
+        const auto output_format = stencil ? wgpu::TextureFormat::R8Uint : wgpu::TextureFormat::R32Float;
+        auto& retained_pipeline = sample_zero_capture_pipelines[slot];
+        auto& retained_layout = sample_zero_capture_layouts[slot];
+        if (!retained_pipeline) {
+            // Capture an existing sample, never average depths/stencil indices.
+            // Samplezero is this backend's explicit default-framebuffer policy;
+            // it need not match another driver's chosen centermost sample.
+            const std::string shader = std::string("@group(0) @binding(0) var source: ") +
+                (stencil ? "texture_multisampled_2d<u32>;" : "texture_depth_multisampled_2d;") + R"(
+@vertex fn capture_vertex(@builtin(vertex_index) index: u32) -> @builtin(position) vec4f {
+    let position = vec2f(f32((index << 1u) & 2u), f32(index & 2u));
+    return vec4f(position * 2.0 - 1.0, 0.0, 1.0);
+}
+@fragment fn capture_fragment(@builtin(position) position: vec4f) -> @location(0) )" +
+                (stencil ? "u32 { return textureLoad(source, vec2i(position.xy), 0).r; }" :
+                           "f32 { return textureLoad(source, vec2i(position.xy), 0); }");
+            const std::string role = stencil ? "stencil sample-zero capture" : "depth sample-zero capture";
+            const auto generation = device_generation;
+            PipelineCreationScopes scopes(instance, device, role, current_backend_shader_log, generation);
+            scopes.begin();
+            wgpu::ShaderSourceWGSL wgsl;
+            wgsl.code = shader.c_str();
+            wgpu::ShaderModuleDescriptor module_descriptor;
+            module_descriptor.nextInChain = &wgsl;
+            module_descriptor.label = role.c_str();
+            auto module = device.CreateShaderModule(&module_descriptor);
+            ++probe.shader_module_creations;
+            wgpu::BindGroupLayoutEntry binding;
+            binding.binding = 0;
+            binding.visibility = wgpu::ShaderStage::Fragment;
+            binding.texture.sampleType = stencil ? wgpu::TextureSampleType::Uint : wgpu::TextureSampleType::Depth;
+            binding.texture.viewDimension = wgpu::TextureViewDimension::e2D;
+            binding.texture.multisampled = true;
+            wgpu::BindGroupLayoutDescriptor bind_descriptor;
+            bind_descriptor.entryCount = 1;
+            bind_descriptor.entries = &binding;
+            auto binding_layout = device.CreateBindGroupLayout(&bind_descriptor);
+            wgpu::PipelineLayoutDescriptor layout_descriptor;
+            layout_descriptor.bindGroupLayoutCount = 1;
+            layout_descriptor.bindGroupLayouts = &binding_layout;
+            auto layout = device.CreatePipelineLayout(&layout_descriptor);
+            wgpu::ColorTargetState color;
+            color.format = output_format;
+            wgpu::FragmentState fragment;
+            fragment.module = module;
+            fragment.entryPoint = "capture_fragment";
+            fragment.targetCount = 1;
+            fragment.targets = &color;
+            wgpu::RenderPipelineDescriptor pipeline_descriptor;
+            pipeline_descriptor.label = role.c_str();
+            pipeline_descriptor.layout = layout;
+            pipeline_descriptor.vertex.module = module;
+            pipeline_descriptor.vertex.entryPoint = "capture_vertex";
+            pipeline_descriptor.fragment = &fragment;
+            auto pipeline = device.CreateRenderPipeline(&pipeline_descriptor);
+            ++probe.render_pipeline_creations;
+            const auto error = finish_pipeline_creation(scopes, generation);
+            if (!module || !binding_layout || !layout || !pipeline || !error.empty())
+                throw std::runtime_error(role + ": " + (error.empty() ? "null resource" : error));
+            retained_layout = binding_layout;
+            retained_pipeline = pipeline;
+        }
+        wgpu::TextureDescriptor descriptor;
+        descriptor.size = {source.GetWidth(), source.GetHeight(), 1};
+        descriptor.format = output_format;
+        descriptor.usage = wgpu::TextureUsage::RenderAttachment | wgpu::TextureUsage::CopySrc;
+        auto output = device.CreateTexture(&descriptor);
+        ++probe.texture_allocations;
+        ticket.owned_textures.push_back(output);
+        ticket.owned_textures.push_back(source);
+        wgpu::TextureViewDescriptor view_descriptor;
+        view_descriptor.aspect = stencil ? wgpu::TextureAspect::StencilOnly : wgpu::TextureAspect::DepthOnly;
+        wgpu::BindGroupEntry entry;
+        entry.binding = 0;
+        entry.textureView = source.CreateView(&view_descriptor);
+        wgpu::BindGroupDescriptor bind_descriptor;
+        bind_descriptor.layout = retained_layout;
+        bind_descriptor.entryCount = 1;
+        bind_descriptor.entries = &entry;
+        auto group = device.CreateBindGroup(&bind_descriptor);
+        ++probe.bind_group_creations;
+        wgpu::RenderPassColorAttachment color;
+        color.view = output.CreateView();
+        color.loadOp = wgpu::LoadOp::Clear;
+        color.storeOp = wgpu::StoreOp::Store;
+        wgpu::RenderPassDescriptor pass_descriptor;
+        pass_descriptor.colorAttachmentCount = 1;
+        pass_descriptor.colorAttachments = &color;
+        auto pass = begin_timed_pass(encoder, pass_descriptor, &ticket,
+            stencil ? "stencil_sample_zero_capture" : "depth_sample_zero_capture");
+        pass.SetPipeline(retained_pipeline);
+        pass.SetBindGroup(0, group);
+        pass.Draw(3);
+        ++probe.native_draw_calls;
+        pass.End();
+        return output;
+    }
+
     wgpu::Texture encode_depth_capture(const wgpu::Texture& source,
                                       const wgpu::CommandEncoder& encoder, Ticket& ticket) {
         if (source.GetSampleCount() != 1)
@@ -7754,7 +7866,8 @@ Readback read_canvas(int canvas_id, int x, int y, int width, int height, bool al
         }
     }
     if (canvas.frame_mark && canvas.frame_mark->queries)
-        eng.attach_query_frame(canvas, *ticket, (mode == "depth" ? 1 : 0) + depth_upload_passes);
+        eng.attach_query_frame(canvas, *ticket,
+            ((mode == "depth" || (mode == "stencil" && canvas.fbo == 0 && canvas.samples > 1)) ? 1 : 0) + depth_upload_passes);
     wgpu::Texture source = mode == "color" ? canvas.color : canvas.depth;
     if (canvas.fbo != 0) {
         auto framebuffer = eng.objects.find(canvas.fbo);
@@ -7779,11 +7892,10 @@ Readback read_canvas(int canvas_id, int x, int y, int width, int height, bool al
         result.error = "read_pixels rectangle exceeds target bounds";
         return result;
     }
-    if (mode == "depth") source = eng.encode_depth_capture(source, encoder, *ticket);
-    if (mode == "stencil" && source.GetSampleCount() != 1) {
-        result.error = "read_pixels stencil: multisample attachments require a stencil resolve";
-        return result;
-    }
+    const bool sample_zero_stencil = mode == "stencil" && source.GetSampleCount() > 1;
+    if (mode != "color" && source.GetSampleCount() > 1)
+        source = eng.encode_sample_zero_capture(source, encoder, *ticket, mode == "stencil");
+    else if (mode == "depth") source = eng.encode_depth_capture(source, encoder, *ticket);
     const auto format = mode == "stencil" ? CaptureFormat{1, 1, 1, CaptureStorage::Unorm8, false} :
                                            capture_format(source.GetFormat());
     // WebGPU requires a whole depth/stencil subresource copy. Crop stencil
@@ -7808,7 +7920,7 @@ Readback read_canvas(int canvas_id, int x, int y, int width, int height, bool al
     ++eng.probe.buffer_allocations;
     wgpu::TexelCopyTextureInfo src;
     src.texture = source;
-    src.aspect = mode == "stencil" ? wgpu::TextureAspect::StencilOnly : wgpu::TextureAspect::All;
+    src.aspect = mode == "stencil" && !sample_zero_stencil ? wgpu::TextureAspect::StencilOnly : wgpu::TextureAspect::All;
     src.origin = {copy_x, copy_y, 0};
     wgpu::TexelCopyBufferInfo dest;
     dest.buffer = buffer;
