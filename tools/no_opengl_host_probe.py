@@ -21,7 +21,12 @@ import traceback
 import zipfile
 
 
-SCENARIOS = ('qwidget', 'napari')
+SCENARIOS = ('qwidget', 'napari', 'glue', 'threedee')
+HOST_PROFILES = {
+    'napari': {'napari': 'napari', 'qtpy': 'qtpy'},
+    'glue': {'glue-vispy-viewers': 'glue_vispy_viewers', 'qtpy': 'qtpy'},
+    'threedee': {'napari': 'napari', 'qtpy': 'qtpy', 'napari-threedee': 'napari_threedee'},
+}
 
 
 def file_sha256(path):
@@ -372,13 +377,245 @@ def napari(evidence, application, dawn):
             require_closed(native, canvas_id, dawn)
 
 
+def glue(evidence, application, dawn):
+    import numpy as np
+    from glue.config import settings
+    from glue.core import Data, DataCollection
+    from glue_qt.app.application import GlueApplication
+    from glue_vispy_viewers.scatter.qt.scatter_viewer import VispyScatterViewer
+    from glue_vispy_viewers.volume.qt.volume_viewer import VispyVolumeViewer
+    from glue.viewers.volume3d.viewer_state import VolumeViewerState3D
+    versions = {'glue-core': '1.27.0', 'glue-qt': '0.4.2', 'glue-vispy-viewers': '1.4.0'}
+    assert {name: metadata.version(name) for name in versions} == versions
+    evidence.report['host_versions'] = versions
+    backend = application.backend_module
+    dialogs = []
+    timer = backend.QtCore.QTimer(application.native)
+
+    def reject_error_dialogs():
+        # Observe/reject actual modal dialogs through Qt rather than replacing
+        # QMessageBox methods or suppressing a required host failure.
+        for widget in application.native.topLevelWidgets():
+            if isinstance(widget, backend.QtWidgets.QMessageBox) and widget.isVisible():
+                dialogs.append(widget.text())
+                widget.reject()
+
+    timer.timeout.connect(reject_error_dialogs)
+    timer.start(25)
+    previous_colors = settings.BACKGROUND_COLOR, settings.FOREGROUND_COLOR
+    settings.BACKGROUND_COLOR, settings.FOREGROUND_COLOR = 'black', 'white'
+    scatter_data = Data(label='Dawn scatter', x=np.array([.25, .75], np.float32),
+                        y=np.array([.5, .5], np.float32), z=np.array([.5, .5], np.float32))
+    volume_data = np.zeros((32, 32, 32), np.float32)
+    volume_data[8:24, 8:24, 8:24] = 1
+    volume = Data(label='Dawn volume', intensity=volume_data)
+    host = GlueApplication(DataCollection([scatter_data, volume]))
+    viewers = []
+
+    def capture(viewer, name):
+        pump(application)
+        assert not dialogs, dialogs
+        assert viewer._opengl_ok, 'host compatibility context check failed'
+        canvas = viewer._vispy_widget.canvas
+        image = evidence.frame(name, canvas.render(size=(128, 128), alpha=True))
+        assert np.count_nonzero(image[..., :3]) > 32
+        return image
+
+    def configure(viewer, data, color):
+        viewers.append(viewer)
+        assert viewer.add_data(data)
+        state = viewer.state
+        state.visible_axes, state.perspective_view = False, False
+        layer = state.layers[0]
+        layer.alpha, layer.color_mode, layer.color = 1, 'Fixed', color
+        canvas = viewer._vispy_widget.canvas
+        require_qwidget(canvas.native, backend)
+        canvas.native.setFixedSize(128, 128)
+        host.show()
+        viewer.show()
+        pump(application, lambda: viewer._opengl_ok is not None)
+        assert not dialogs, dialogs
+        canvas.size = (128, 128)
+        canvas.central_widget.size = (128, 128)
+        camera = viewer._vispy_widget.view.camera
+        camera.azimuth, camera.elevation = 0, 0
+        camera.center, camera.scale_factor = (0, 0, 0), 2.5
+        return state, layer
+
+    try:
+        with evidence.stage('glue_scatter_update_axes_capture'):
+            scatter = host.new_data_viewer(VispyScatterViewer)
+            state, layer = configure(scatter, scatter_data, '#ff0000')
+            state.x_att, state.y_att, state.z_att = (scatter_data.id[axis] for axis in 'xyz')
+            layer.size_mode, layer.size = 'Fixed', 14
+            state.set_limits(0, 1, 0, 1, 0, 1)
+            before = capture(scatter, 'glue_scatter_initial')
+            assert np.count_nonzero((before[..., 0] > 220) & (before[..., 1] < 20)) > 32
+            scatter_data.update_components({scatter_data.id['x']: np.array([.5, .75], np.float32)})
+            layer.color = '#0000ff'
+            updated = capture(scatter, 'glue_scatter_updated')
+            assert np.count_nonzero((updated[..., 2] > 220) & (updated[..., 0] < 20)) > 32
+            assert not np.array_equal(before, updated)
+            state.visible_axes = True
+            axes = capture(scatter, 'glue_scatter_axes')
+            assert not np.array_equal(updated, axes)
+        with evidence.stage('glue_volume_update_capture_export'):
+            viewer = host.new_data_viewer(VispyVolumeViewer,
+                state=VolumeViewerState3D(resolution=32, downsample=False))
+            state, layer = configure(viewer, volume, '#00ff00')
+            layer.attribute = volume.id['intensity']
+            layer.v_min, layer.v_max = 0, 1
+            state.set_limits(-.5, 31.5, -.5, 31.5, -.5, 31.5)
+            before = capture(viewer, 'glue_volume_initial')
+            updated_data = np.zeros_like(volume_data)
+            updated_data[10:22, 8:24, 18:26] = 1
+            volume.update_components({volume.id['intensity']: updated_data})
+            layer.color = '#0000ff'
+            stable = capture(viewer, 'glue_volume_updated')
+            assert not np.array_equal(before, stable)
+            image = viewer._vispy_widget.canvas.native.grabFramebuffer()
+            assert image.save(str(evidence.output / 'glue-volume-export.png'), 'PNG')
+        with evidence.stage('glue_device_loss_recovery') as stage:
+            previous = dawn.probe()['device_generation']
+            dawn.lose_device()
+            for current in viewers:
+                current._vispy_widget.canvas.update()
+            pump(application, lambda: dawn.probe()['device_generation'] > previous)
+            np.testing.assert_array_equal(capture(viewer, 'glue_volume_recovered'), stable)
+            stage['device_generation_before'] = previous
+            stage['device_generation_after'] = dawn.probe()['device_generation']
+    finally:
+        with evidence.stage('glue_close'):
+            handles = [(viewer._vispy_widget.canvas.native,
+                        int(viewer._vispy_widget.canvas.native._dawn_canvas_id)) for viewer in viewers]
+            for viewer in viewers:
+                viewer.close(warn=False)
+            host.close()
+            drain_close_events(application)
+            for native, canvas_id in handles:
+                require_closed(native, canvas_id, dawn)
+            assert not dialogs, dialogs
+        timer.stop()
+        settings.BACKGROUND_COLOR, settings.FOREGROUND_COLOR = previous_colors
+
+
+def threedee(evidence, application, dawn):
+    import numpy as np
+    import napari as host
+    assert metadata.version('napari-threedee') == '0.0.29'
+    evidence.report['host_versions'] = {name: metadata.version(name)
+        for name in ('napari', 'napari-threedee', 'QtPy', 'numpy')}
+    viewer = host.Viewer(ndisplay=2, show=True)
+    canvas = viewer.window._qt_viewer.canvas
+    scene, native = canvas._scene_canvas, canvas.native
+    canvas_id = int(native._dawn_canvas_id)
+    backend = application.backend_module
+    require_qwidget(native, backend)
+
+    def capture(name):
+        viewer._layer_slicer.wait_until_idle(timeout=15)
+        pump(application)
+        frame = evidence.frame(name, viewer.screenshot(canvas_only=True, flash=False))
+        assert np.count_nonzero(frame[..., :3]) > 32
+        return frame
+
+    def project(transform, world):
+        value = np.asarray(transform.map(np.asarray(world)[::-1]), float)
+        return value[:2] / value[3]
+
+    try:
+        with evidence.stage('threedee_registered_widget_activation') as stage:
+            data = np.zeros((12, 16, 20), np.float32)
+            data[2:5, 3:7, 4:9], data[6:10, 8:13, 11:17] = .25, 1
+            layer = viewer.add_image(data, contrast_limits=(0, 1), colormap='gray',
+                                     rendering='mip', interpolation3d='nearest', blending='opaque')
+            viewer.dims.ndisplay = 3
+            pump(application)
+            dock, widget = viewer.window.add_plugin_dock_widget('napari-threedee', 'layer manipulator')
+            assert type(widget).__name__ == 'QtLayerManipulatorWidget'
+            assert type(widget).__module__.startswith('napari_threedee.')
+            widget.model.set_layers(layer)
+            widget.activate_button.click()
+            assert widget.model.enabled and widget.activate_button.isChecked()
+            viewer.dims.ndisplay = 2
+            viewer.dims.ndisplay = 3
+            widget.model.radius, widget.model.handle_size = 8, 2
+            widget.model.origin = np.zeros(3)
+            native.setFixedSize(256, 192)
+            pump(application)
+            canvas.size = (192, 256)
+            scene.central_widget.size = (256, 192)
+            scene.bgcolor = (0, 0, 0, 1)
+            viewer.scene.camera.center = (4.5, 5.5, 7.5)
+            viewer.scene.camera.zoom = 6
+            viewer.scene.camera.angles = (20, 35, 0)
+            viewer.scene.camera.perspective = 0
+            initial = capture('threedee_handles_initial')
+            stage['widget_class'] = type(widget).__module__ + '.' + type(widget).__name__
+        with evidence.stage('threedee_real_qt_selection_translation') as stage:
+            transform = canvas.view.transform * canvas.view.scene.transform
+            start_pixel = np.rint(project(transform, (0, 0, 10))).astype(int)
+            end_pixel = np.rint(project(transform, (0, 0, 12))).astype(int)
+            direction = end_pixel - start_pixel
+            first_pixel = np.rint(start_pixel + direction / np.linalg.norm(direction) * 2).astype(int)
+            assert 3 <= start_pixel[0] < 253 and 3 <= start_pixel[1] < 189
+            points = [backend.QtCore.QPoint(*map(int, point))
+                      for point in (start_pixel, first_pixel, end_pixel)]
+            buttons = getattr(backend.QtCore.Qt, 'MouseButton', backend.QtCore.Qt)
+            backend.QtTest.QTest.mousePress(native, buttons.LeftButton, pos=points[0])
+            pump(application)
+            assert widget.model._backend.is_dragging
+            assert widget.model.selected_translator.id == 2
+            evidence.frame('threedee_selected', viewer.screenshot(canvas_only=True, flash=False))
+            backend.QtTest.QTest.mouseMove(native, points[1], 40)
+            pump(application)
+            backend.QtTest.QTest.mouseMove(native, points[2], 40)
+            pump(application)
+            backend.QtTest.QTest.mouseRelease(native, buttons.LeftButton, pos=points[2])
+            pump(application)
+            assert not widget.model._backend.is_dragging
+            assert widget.model.selected_translator is None
+            translation = np.asarray(layer.translate)
+            np.testing.assert_allclose(widget.model.origin, translation, atol=1e-6, rtol=0)
+            np.testing.assert_allclose(translation[:2], 0, atol=1e-6, rtol=0)
+            assert translation[2] > .25
+            stage['translation'] = translation.tolist()
+            moved = capture('threedee_translated')
+            assert not np.array_equal(initial, moved)
+        with evidence.stage('threedee_data_update_and_device_recovery') as stage:
+            layer.data = data[::-1].copy()
+            stable = capture('threedee_volume_updated')
+            assert not np.array_equal(stable, moved)
+            previous = dawn.probe()['device_generation']
+            dawn.lose_device()
+            scene.update()
+            pump(application, lambda: dawn.probe()['device_generation'] > previous)
+            np.testing.assert_array_equal(capture('threedee_recovered'), stable)
+            stage['device_generation_before'] = previous
+            stage['device_generation_after'] = dawn.probe()['device_generation']
+        with evidence.stage('threedee_callback_retirement'):
+            callbacks = (widget.model._backend._mouse_callback, widget.model._mouse_callback)
+            widget.activate_button.click()
+            assert not widget.model.enabled
+            viewer.dims.ndisplay = 2
+            pump(application)
+            assert not any(callback in layer.mouse_drag_callbacks for callback in callbacks)
+            capture('threedee_retired')
+            viewer.layers.remove(layer)
+    finally:
+        with evidence.stage('threedee_close'):
+            viewer.close()
+            drain_close_events(application)
+            require_closed(native, canvas_id, dawn)
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--scenario', choices=SCENARIOS, required=True)
     parser.add_argument('--binding', choices=('pyqt5', 'pyqt6', 'pyside6'), default='pyqt6')
     parser.add_argument('--wheel', type=Path, required=True)
     parser.add_argument('--host-wheel', type=Path, action='append', default=[],
-                        help='exact patched napari and QtPy wheels; required for napari scenario')
+                        help='exact host profile wheels; required for each host scenario')
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--allow-software', action='store_true')
     args = parser.parse_args(argv)
@@ -403,9 +640,10 @@ def main(argv=None):
             application.native.setQuitOnLastWindowClosed(False)
             evidence.report['binding'] = args.binding
             evidence.report['qt_platform'] = application.backend_module.QtGui.QGuiApplication.platformName()
-        if args.scenario == 'napari':
+        if args.scenario in HOST_PROFILES:
             with evidence.stage('exact_patched_host_artifacts'):
                 found = {}
+                required = HOST_PROFILES[args.scenario]
                 for host_wheel in args.host_wheel:
                     with zipfile.ZipFile(host_wheel) as bundle:
                         names = [name for name in bundle.namelist()
@@ -414,13 +652,14 @@ def main(argv=None):
                             raise RuntimeError('host wheel must contain exactly one METADATA')
                         from email.parser import BytesParser
                         project = BytesParser().parsebytes(bundle.read(names[0]))['Name'].lower()
-                    if project not in ('napari', 'qtpy') or project in found:
-                        raise RuntimeError('expected one patched napari wheel and one patched QtPy wheel')
+                    if project not in required or project in found:
+                        raise RuntimeError('unexpected or duplicate host wheel for ' + args.scenario)
                     distribution = metadata.distribution(project)
                     found[project] = verify_installed_payload(
-                        host_wheel, distribution.locate_file(project), project, require_native=False)
-                if set(found) != {'napari', 'qtpy'}:
-                    raise RuntimeError('napari scenario requires --host-wheel for patched napari and QtPy')
+                        host_wheel, distribution.locate_file(required[project]), required[project],
+                        require_native=False)
+                if set(found) != set(required):
+                    raise RuntimeError(args.scenario + ' requires --host-wheel for ' + ', '.join(required))
                 evidence.report['host_artifacts'] = found
         globals()[args.scenario](evidence, application, _dawn)
         evidence.report['status'] = 'passed'

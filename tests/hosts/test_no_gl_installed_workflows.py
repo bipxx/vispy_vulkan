@@ -15,19 +15,25 @@ ROOT = Path(__file__).resolve().parents[2]
 
 @pytest.mark.gpu
 @pytest.mark.wheel
-@pytest.mark.parametrize('scenario', ('qwidget', 'napari'))
+@pytest.mark.parametrize('scenario', ('qwidget', 'napari', 'glue', 'threedee'))
 def test_installed_artifact_host_lifecycle(scenario, tmp_path):
     # Missing wheel/environment is a failed qualification, not a skipped row.
     wheel = Path(os.environ['VISPY_HOST_PROBE_WHEEL']).resolve(strict=True)
     output = tmp_path / scenario
-    command = [os.environ.get('VISPY_HOST_PROBE_PYTHON', sys.executable), '-I', '-B',
+    prefix = 'VISPY_HOST_PROBE_' + scenario.upper()
+    python = os.environ.get(prefix + '_PYTHON',
+                            os.environ.get('VISPY_HOST_PROBE_PYTHON', sys.executable))
+    command = [python, '-I', '-B',
                str(ROOT / 'tools/no_opengl_host_probe.py'), '--scenario', scenario,
                '--binding', os.environ.get('QT_API', 'pyqt6'),
                '--wheel', str(wheel), '--output', str(output)]
     if os.environ.get('VISPY_HOST_PROBE_ALLOW_SOFTWARE') == '1':
         command.append('--allow-software')
-    if scenario == 'napari':
-        for host_wheel in os.environ['VISPY_HOST_PROBE_HOST_WHEELS'].split(os.pathsep):
+    if scenario != 'qwidget':
+        host_wheels = os.environ.get(prefix + '_HOST_WHEELS',
+                                    os.environ.get('VISPY_HOST_PROBE_HOST_WHEELS'))
+        assert host_wheels, 'Exact host wheels are required for ' + scenario
+        for host_wheel in host_wheels.split(os.pathsep):
             command.extend(['--host-wheel', str(Path(host_wheel).resolve(strict=True))])
     result = subprocess.run(command, capture_output=True, text=True, timeout=180)
     report_file = output / 'functional.json'
