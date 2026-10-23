@@ -257,15 +257,24 @@ python -B -m pytest tests/contract/test_package_inputs.py tests/contract/test_so
 <consumer-python> -I -B tools/marker_wheel_smoke.py --wheel <wheel> --output <fresh-output>
 ```
 
-Agent 3 owns the following audit interface. Its implementation and native
-negative controls are in progress; verify the committed CLI before using these
-planned invocations:
+Agent 3 owns the committed audit interface and its native negative controls.
+Use fresh output paths for each observation. A dependency-only report cannot
+qualify the installed environment; inventory binds successful runtime evidence
+to the exact wheel and consumer before the final replay:
 
 ```text
-python -B tools/audit_no_opengl.py dependencies --wheel <wheel> --qt-root <installed-qt> --output <report>
-python -B tools/audit_no_opengl.py run --python <external-consumer-python> --binding <binding> --output <report>
+python -B tools/audit_no_opengl.py dependencies --root <installed-native-extension> --qt-root <installed-qt> --output <closure.json>
+python -B tools/audit_no_opengl.py run --python <external-consumer-python> --wheel <wheel> --scenario qt --binding <binding> --output <runtime.json>
+python -B tools/audit_no_opengl.py inventory --python <external-consumer-python> --wheel <wheel> --runtime-report <runtime.json> --output <receipt.json>
+python -B tools/audit_no_opengl.py run --python <external-consumer-python> --wheel <wheel> --scenario qt --binding <binding> --dependencies-report <receipt.json> --output <qualified.json>
 python -B -m pytest tests/no_opengl -q
 ```
+
+On Linux, both runtime invocations also require `--native-auditor
+<loader_audit.so> --native-debugger <debugger_linux>`. Host rows use `--scenario
+script --script <host-probe.py> -- <host arguments>`; headless uses `--scenario
+headless`. A first runtime run without an installed-environment receipt remains
+UNVERIFIED for the aggregate three-gate claim even if execution and loads pass.
 
 The harness must observe the whole process tree from startup, not just the last
 module snapshot. Add independent negative controls proving that a forbidden
