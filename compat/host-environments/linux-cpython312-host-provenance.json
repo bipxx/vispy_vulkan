@@ -252,5 +252,6 @@
   "validation": {
     "dependency_check": "uv pip check passed in both fresh Linux consumers after exact host/provider/renderer installation",
     "functional_and_native": "See execution receipts; dependency locks alone do not qualify a host."
-  }
+  },
+  "cpu_runtime_closure": "linux-cpython312-host-cpu-runtimes.json"
 }
