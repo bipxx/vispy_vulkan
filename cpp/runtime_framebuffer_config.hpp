@@ -29,7 +29,7 @@ struct ColorStorage {
     bool srgb = false;
 };
 
-enum class DepthStorage { None, Depth24PlusStencil8 };
+enum class DepthStorage { None, Depth24PlusStencil8, Depth32Float };
 
 inline FramebufferConfiguration describe(const ColorStorage& color, DepthStorage depth,
                                          bool depth_attached, bool stencil_attached,
@@ -40,10 +40,12 @@ inline FramebufferConfiguration describe(const ColorStorage& color, DepthStorage
         throw std::runtime_error("framebuffer configuration: unsupported color storage");
     if (sample_count != 1 && sample_count != 4)
         throw std::runtime_error("framebuffer configuration: unsupported sample count");
-    if (depth != DepthStorage::None && depth != DepthStorage::Depth24PlusStencil8)
+    if (depth != DepthStorage::None && depth != DepthStorage::Depth24PlusStencil8 && depth != DepthStorage::Depth32Float)
         throw std::runtime_error("framebuffer configuration: unsupported depth/stencil storage");
     if (depth == DepthStorage::None && (depth_attached || stencil_attached))
         throw std::runtime_error("framebuffer configuration: missing depth/stencil storage");
+    if (depth == DepthStorage::Depth32Float && stencil_attached)
+        throw std::runtime_error("framebuffer configuration: Depth32Float has no stencil aspect");
     FramebufferConfiguration result;
     result.red_size = color.component_bits;
     if (color.channels >= 2) result.green_size = color.component_bits;
@@ -67,6 +69,11 @@ inline FramebufferConfiguration describe(const ColorStorage& color, DepthStorage
             result.depth_size_exact = false;
         }
         if (stencil_attached) result.stencil_size = 8;
+    }
+    if (depth == DepthStorage::Depth32Float) {
+        result.depth_stencil_format = "depth32float";
+        result.backing_depth_size_minimum = 32;
+        if (depth_attached) result.depth_size = result.depth_size_minimum = 32;
     }
     return result;
 }

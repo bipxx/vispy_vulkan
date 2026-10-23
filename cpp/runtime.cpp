@@ -450,7 +450,7 @@ wgpu::SamplerBindingType declared_sampler_type(const NormSampler& sampler) {
 void refresh_storage_sample_type(TextureRev& rev) {
     const auto& storage = rev.allocation_descriptor ? *rev.allocation_descriptor :
         static_cast<const TextureData&>(rev);
-    if (storage.format == "depth" || storage.format == "stencil" || storage.format == "depth_stencil") {
+    if (storage.format == "depth" || storage.format == "stencil" || storage.format == "depth_stencil" || storage.format == "depth_component") {
         rev.storage_sample_type = wgpu::TextureSampleType::Depth;
         return;
     }
@@ -1019,6 +1019,8 @@ struct Engine {
     wgpu::BindGroupLayout present_layout;
     wgpu::Sampler present_sampler;
     bool present_ready = false;
+    wgpu::RenderPipeline depth_upload_pipeline;
+    wgpu::BindGroupLayout depth_upload_layout;
     wgpu::RenderPipeline depth_capture_pipeline;
     wgpu::BindGroupLayout depth_capture_layout;
 
@@ -1690,6 +1692,8 @@ struct Engine {
         present_layout = nullptr;
         present_sampler = nullptr;
         present_ready = false;
+        depth_upload_pipeline = nullptr;
+        depth_upload_layout = nullptr;
         depth_capture_pipeline = nullptr;
         depth_capture_layout = nullptr;
         for (auto& texture : dummy_textures) texture.reset();
@@ -1753,6 +1757,8 @@ struct Engine {
         present_layout = nullptr;
         present_sampler = nullptr;
         queue = nullptr;
+        depth_upload_pipeline = nullptr;
+        depth_upload_layout = nullptr;
         depth_capture_pipeline = nullptr;
         depth_capture_layout = nullptr;
         if (device) device.Destroy();
@@ -2131,6 +2137,8 @@ struct Engine {
                 if (found == objects.end() || !found->second.texture)
                     throw std::runtime_error("FRAMEBUFFER missing depth/stencil allocation");
                 snap.depth_attachment = found->second.texture;
+                if (snap.depth_attachment->format == "depth_component" && fb->second.fb_stencil)
+                    throw std::runtime_error("FRAMEBUFFER separate stencil with depth_component is unsupported");
             }
         }
         std::memcpy(snap.viewport, canvas.viewport, sizeof(snap.viewport));
@@ -4332,7 +4340,10 @@ struct Engine {
     }
 
     wgpu::RenderPipeline draw_pipeline(DrawSnap& snap, const RenderState* selected_state = nullptr) {
-        const auto& render_state = selected_state ? *selected_state : snap.state;
+        auto render_state = selected_state ? *selected_state : snap.state;
+        // GL ignores stencil testing when the logical FBO has no stencil bits.
+        if (snap.depth_attachment && snap.depth_attachment->format == "depth_component")
+            render_state.stencil_test = false;
         if (!draw_render_ready(snap, device_generation))
             throw std::runtime_error("DRAW render state is stale or unprepared for the selected route");
         HostTimer lookup_timer(probe.pipeline_cache_lookup_ns);
@@ -4369,7 +4380,9 @@ struct Engine {
             pipeline_state.line_width = 1;
             pipeline_state.line_smooth = false;
         }
-        key << ':' << state_key(pipeline_state) << ":depth=" << (snap.depth_view ? "1" : "0");
+        const auto depth_format = snap.depth_attachment ? snap.depth_attachment->texture.GetFormat() :
+            snap.depth_texture ? snap.depth_texture.GetFormat() : wgpu::TextureFormat::Undefined;
+        key << ':' << state_key(pipeline_state) << ":depth=" << uint32_t(depth_format);
         for (const auto& stream : snap.vertex_streams)
             key << ":stream=" << stream.stride << ',' << stream.instance;
         for (size_t n = 0; n < snap.bindings.size(); ++n)
@@ -4434,7 +4447,7 @@ struct Engine {
             desc.primitive.stripIndexFormat = snap.index_type == "unsigned_int" ?
                 wgpu::IndexFormat::Uint32 : wgpu::IndexFormat::Uint16;
         wgpu::DepthStencilState depth;
-        if (snap.depth_view) depth.format = wgpu::TextureFormat::Depth24PlusStencil8;
+        if (snap.depth_view) depth.format = depth_format;
         wgpu::BlendState blend;
         fill_pipeline_state(render_state, desc, color, depth, blend);
         // The final vertex wrapper reflects clip Y. Compensate winding once
@@ -4529,12 +4542,165 @@ struct Engine {
         rev.sampler = create_sampler(device, descriptor);
     }
 
+    uint64_t pending_depth_upload_passes(const std::shared_ptr<TextureRev>& rev,
+                                        std::unordered_set<TextureRev*>& visited) const {
+        if (!rev || rev->format != "depth_component" || !visited.insert(rev.get()).second ||
+            (rev->texture && rev->gpu_revision == rev->revision)) return 0;
+        const bool partial = !rev->updates.empty() && (rev->texture || rev->base);
+        return pending_depth_upload_passes(rev->base, visited) + (partial ? rev->updates.size() : 1);
+    }
+
+    void encode_depth_upload(const wgpu::Texture& target, const PreparedTexture& payload,
+                             const texture_detail::TextureRegionLayout& region,
+                             const wgpu::CommandEncoder& encoder, Ticket& ticket) {
+        if (!depth_upload_pipeline) {
+            constexpr char shader[] = R"(
+@group(0) @binding(0) var source: texture_2d<f32>;
+struct Vertex { @builtin(position) position: vec4f, @location(0) uv: vec2f }
+@vertex fn upload_vertex(@builtin(vertex_index) index: u32) -> Vertex {
+    let p = vec2f(f32((index << 1u) & 2u), f32(index & 2u));
+    return Vertex(vec4f(p * 2.0 - 1.0, 0.0, 1.0), vec2f(p.x, 1.0 - p.y));
+}
+@fragment fn upload_fragment(input: Vertex) -> @builtin(frag_depth) f32 {
+    return textureLoad(source, vec2i(input.uv * vec2f(textureDimensions(source))), 0).r;
+}
+)";
+            const auto generation = device_generation;
+            PipelineCreationScopes scopes(instance, device, "depth upload graphics", current_backend_shader_log, generation);
+            scopes.begin();
+            wgpu::ShaderSourceWGSL wgsl;
+            wgsl.code = shader;
+            wgpu::ShaderModuleDescriptor module_descriptor;
+            module_descriptor.nextInChain = &wgsl;
+            auto module = device.CreateShaderModule(&module_descriptor);
+            ++probe.shader_module_creations;
+            wgpu::BindGroupLayoutEntry binding;
+            binding.binding = 0;
+            binding.visibility = wgpu::ShaderStage::Fragment;
+            binding.texture.sampleType = wgpu::TextureSampleType::UnfilterableFloat;
+            binding.texture.viewDimension = wgpu::TextureViewDimension::e2D;
+            wgpu::BindGroupLayoutDescriptor binding_descriptor;
+            binding_descriptor.entryCount = 1;
+            binding_descriptor.entries = &binding;
+            auto binding_layout = device.CreateBindGroupLayout(&binding_descriptor);
+            wgpu::PipelineLayoutDescriptor layout_descriptor;
+            layout_descriptor.bindGroupLayoutCount = 1;
+            layout_descriptor.bindGroupLayouts = &binding_layout;
+            auto layout = device.CreatePipelineLayout(&layout_descriptor);
+            wgpu::FragmentState fragment;
+            fragment.module = module;
+            fragment.entryPoint = "upload_fragment";
+            wgpu::DepthStencilState depth;
+            depth.format = wgpu::TextureFormat::Depth32Float;
+            depth.depthWriteEnabled = wgpu::OptionalBool::True;
+            depth.depthCompare = wgpu::CompareFunction::Always;
+            wgpu::RenderPipelineDescriptor pipeline_descriptor;
+            pipeline_descriptor.label = "depth upload graphics";
+            pipeline_descriptor.layout = layout;
+            pipeline_descriptor.vertex.module = module;
+            pipeline_descriptor.vertex.entryPoint = "upload_vertex";
+            pipeline_descriptor.fragment = &fragment;
+            pipeline_descriptor.depthStencil = &depth;
+            auto pipeline = device.CreateRenderPipeline(&pipeline_descriptor);
+            ++probe.render_pipeline_creations;
+            const auto error = finish_pipeline_creation(scopes, generation);
+            if (!module || !binding_layout || !layout || !pipeline || !error.empty())
+                throw std::runtime_error("depth upload pipeline: " + (error.empty() ? "null resource" : error));
+            depth_upload_layout = binding_layout;
+            depth_upload_pipeline = pipeline;
+        }
+        wgpu::TextureDescriptor descriptor;
+        descriptor.size = {uint32_t(region.width), uint32_t(region.height), 1};
+        descriptor.format = wgpu::TextureFormat::R32Float;
+        descriptor.usage = wgpu::TextureUsage::CopyDst | wgpu::TextureUsage::TextureBinding;
+        auto staging = device.CreateTexture(&descriptor);
+        ++probe.texture_allocations;
+        ticket.owned_textures.push_back(staging);
+        wgpu::TexelCopyTextureInfo destination;
+        destination.texture = staging;
+        wgpu::TexelCopyBufferLayout rows;
+        rows.bytesPerRow = uint32_t(region.width) * sizeof(float);
+        rows.rowsPerImage = uint32_t(region.height);
+        queue.WriteTexture(&destination, payload.bytes.data(), payload.bytes.size(), &rows, &descriptor.size);
+        wgpu::BindGroupEntry entry;
+        entry.binding = 0;
+        entry.textureView = staging.CreateView();
+        wgpu::BindGroupDescriptor group_descriptor;
+        group_descriptor.layout = depth_upload_layout;
+        group_descriptor.entryCount = 1;
+        group_descriptor.entries = &entry;
+        auto group = device.CreateBindGroup(&group_descriptor);
+        ++probe.bind_group_creations;
+        wgpu::RenderPassDepthStencilAttachment depth;
+        depth.view = target.CreateView();
+        depth.depthLoadOp = wgpu::LoadOp::Load;
+        depth.depthStoreOp = wgpu::StoreOp::Store;
+        wgpu::RenderPassDescriptor pass_descriptor;
+        pass_descriptor.depthStencilAttachment = &depth;
+        auto pass = begin_timed_pass(encoder, pass_descriptor, &ticket, "depth_upload");
+        pass.SetPipeline(depth_upload_pipeline);
+        pass.SetBindGroup(0, group);
+        pass.SetViewport(float(region.x), float(region.y), float(region.width), float(region.height), 0, 1);
+        pass.SetScissorRect(uint32_t(region.x), uint32_t(region.y), uint32_t(region.width), uint32_t(region.height));
+        pass.Draw(3);
+        ++probe.native_draw_calls;
+        pass.End();
+    }
+
+    void upload_depth_texture(TextureRev& rev, const wgpu::CommandEncoder& encoder, Ticket* ticket) {
+        if (!encoder || !ticket) throw std::runtime_error("depth_component DATA requires an ordered encoder");
+        freeze_texture_allocation(rev);
+        const bool partial = !rev.updates.empty() && (rev.texture || rev.base);
+        if (rev.base) {
+            upload_texture(*rev.base, encoder, ticket);
+            ticket->textures.push_back(rev.base);
+        }
+        if (!rev.texture) {
+            wgpu::TextureDescriptor descriptor;
+            descriptor.size = {uint32_t(rev.width), uint32_t(rev.height), 1};
+            descriptor.format = wgpu::TextureFormat::Depth32Float;
+            descriptor.usage = wgpu::TextureUsage::RenderAttachment | wgpu::TextureUsage::TextureBinding |
+                wgpu::TextureUsage::CopySrc | wgpu::TextureUsage::CopyDst;
+            rev.texture = device.CreateTexture(&descriptor);
+            rev.view = rev.texture.CreateView();
+            rev.allocation_token = std::make_shared<int>(0);
+            ++probe.texture_allocations;
+        }
+        rev.gpu_bytes = size_t(rev.width) * rev.height * sizeof(float);
+        uint64_t copied_bytes = 0, uploaded_bytes = 0;
+        if (partial && rev.base && rev.base->texture.Get() != rev.texture.Get()) {
+            wgpu::TexelCopyTextureInfo source, destination;
+            source.texture = rev.base->texture;
+            destination.texture = rev.texture;
+            wgpu::Extent3D extent{uint32_t(rev.width), uint32_t(rev.height), 1};
+            encoder.CopyTextureToTexture(&source, &destination, &extent);
+            copied_bytes = rev.gpu_bytes;
+        }
+        if (partial) {
+            for (const auto& update : rev.updates) {
+                const auto payload = prepare_region(*rev.allocation_descriptor, update.data);
+                const auto region = texture_detail::texture_region_layout(rev.dimensions, update.data.shape, update.offset);
+                encode_depth_upload(rev.texture, payload, region, encoder, *ticket);
+                uploaded_bytes += payload.bytes.size();
+            }
+        } else {
+            const auto payload = prepare_texture(rev, rev.allocation_descriptor.get());
+            texture_detail::TextureRegionLayout region;
+            region.width = rev.width;
+            region.height = rev.height;
+            encode_depth_upload(rev.texture, payload, region, encoder, *ticket);
+            uploaded_bytes = payload.bytes.size();
+        }
+        ticket->ordered_uploads.push_back({&rev, rev.revision, partial ? rev.updates.size() : 1,
+            uploaded_bytes, copied_bytes});
+    }
+
     void upload_texture(TextureRev& rev, const wgpu::CommandEncoder& encoder = {}, Ticket* ticket = nullptr) {
         if (ticket && std::any_of(ticket->ordered_uploads.begin(), ticket->ordered_uploads.end(),
                 [&](const Ticket::OrderedUpload& upload) { return upload.revision == &rev &&
                     upload.uploaded_revision == rev.revision; })) return;
         if (rev.texture && rev.gpu_revision == rev.revision) {
-            if (!rev.sampler && rev.format != "depth" && rev.format != "stencil" && rev.format != "depth_stencil")
+            if (!rev.sampler && rev.format != "depth" && rev.format != "stencil" && rev.format != "depth_stencil" && rev.format != "depth_component")
                 refresh_sampler(rev);
             return;
         }
@@ -4543,6 +4709,10 @@ struct Engine {
         if (static_cast<uint32_t>(rev.width) > limit || static_cast<uint32_t>(rev.height) > limit ||
             static_cast<uint32_t>(rev.depth) > limit)
             throw std::runtime_error("texture dimensions exceed granted device limit");
+        if (rev.format == "depth_component") {
+            upload_depth_texture(rev, encoder, ticket);
+            return;
+        }
         if (rev.format == "depth" || rev.format == "stencil" || rev.format == "depth_stencil") {
             if (!rev.updates.empty() || rev.base)
                 throw std::runtime_error("partial depth/stencil texture updates are unsupported");
@@ -5201,8 +5371,12 @@ void main() {
                 ticket->line_captures.push_back(snap.line_work->capture);
             if (snap.line_work->dispatch.workgroups_x) ++endpoint_passes;
         }
-        // This encoding error scope is collected asynchronously, adding no
-        // validation wait between preceding FBO writes and endpoint dispatch.
+        uint64_t depth_upload_passes = 0;
+        std::unordered_set<TextureRev*> depth_upload_revisions;
+        for (const auto& snap : draws)
+            depth_upload_passes += pending_depth_upload_passes(snap.depth_attachment, depth_upload_revisions);
+        // Collect asynchronous encoding validation for endpoint and depth-upload
+        // work without waiting between preceding FBO writes and later passes.
         struct EncodingScope {
             wgpu::Device device;
             std::shared_ptr<Ticket> ticket;
@@ -5226,8 +5400,8 @@ void main() {
                     });
             }
             ~EncodingScope() { close(); }
-        } encoding_scope(device, ticket, endpoint_passes != 0);
-        attach_frame(*ticket, owner, draws.size() + endpoint_passes + (present ? 2 : 0));
+        } encoding_scope(device, ticket, endpoint_passes != 0 || depth_upload_passes != 0);
+        attach_frame(*ticket, owner, draws.size() + endpoint_passes + depth_upload_passes + (present ? 2 : 0));
         size_t line_resource_index = 0;
         for (auto& snap : draws) {
             NativeLineSlot* line_slot = nullptr;
@@ -5291,9 +5465,12 @@ void main() {
                 depth.depthLoadOp = snap.clear_depth ? wgpu::LoadOp::Clear : wgpu::LoadOp::Load;
                 depth.depthStoreOp = wgpu::StoreOp::Store;
                 depth.depthClearValue = static_cast<float>(snap.state.clear_depth);
-                depth.stencilLoadOp = snap.clear_stencil ? wgpu::LoadOp::Clear : wgpu::LoadOp::Load;
-                depth.stencilStoreOp = wgpu::StoreOp::Store;
-                depth.stencilClearValue = snap.state.clear_stencil;
+                const bool has_stencil = !snap.depth_attachment || snap.depth_attachment->format != "depth_component";
+                if (has_stencil) {
+                    depth.stencilLoadOp = snap.clear_stencil ? wgpu::LoadOp::Clear : wgpu::LoadOp::Load;
+                    depth.stencilStoreOp = wgpu::StoreOp::Store;
+                    depth.stencilClearValue = snap.state.clear_stencil;
+                }
                 rp.depthStencilAttachment = &depth;
             }
             auto pass = begin_timed_pass(encoder, rp, ticket.get(),
@@ -6041,16 +6218,25 @@ FramebufferConfiguration framebuffer_config(int canvas_id) {
     const bool depth_attached = framebuffer->second.fb_depth != 0;
     const bool stencil_attached = framebuffer->second.fb_stencil != 0;
     bool native_allocations = bool(color.texture);
+    auto depth_kind = DepthStorage::None;
     for (const auto& [id, kind] : {std::pair{framebuffer->second.fb_depth, "depth"},
                                   std::pair{framebuffer->second.fb_stencil, "stencil"}}) {
         if (id == 0) continue;
         const auto& depth = attachment(id, kind);
         const auto& depth_storage = allocation(depth);
         if ((depth_storage.format != "depth" && depth_storage.format != "stencil" &&
-             depth_storage.format != "depth_stencil") || depth_storage.width != storage.width ||
+             depth_storage.format != "depth_stencil" && depth_storage.format != "depth_component") || depth_storage.width != storage.width ||
             depth_storage.height != storage.height)
             throw std::runtime_error("framebuffer configuration: invalid depth/stencil attachment");
-        if (depth.texture && depth.texture.GetFormat() != wgpu::TextureFormat::Depth24PlusStencil8)
+        const bool float_depth = depth_storage.format == "depth_component";
+        const auto current_kind = float_depth ? DepthStorage::Depth32Float : DepthStorage::Depth24PlusStencil8;
+        if (float_depth && (id != framebuffer->second.fb_depth || stencil_attached))
+            throw std::runtime_error("framebuffer configuration: depth_component has no stencil aspect");
+        if (depth_kind != DepthStorage::None && current_kind != depth_kind)
+            throw std::runtime_error("framebuffer configuration: incompatible depth/stencil attachments");
+        depth_kind = current_kind;
+        if (depth.texture && depth.texture.GetFormat() != (float_depth ? wgpu::TextureFormat::Depth32Float :
+                                                                         wgpu::TextureFormat::Depth24PlusStencil8))
             throw std::runtime_error("framebuffer configuration: unexpected depth/stencil storage");
         native_allocations = native_allocations && bool(depth.texture);
     }
@@ -6058,8 +6244,7 @@ FramebufferConfiguration framebuffer_config(int canvas_id) {
     // Inspect retained allocation descriptors without uploading DATA, encoding
     // queued draws, or waiting for GPU completion merely to answer a query.
     result = vispy::framebuffer::describe(color_storage,
-        depth_attached || stencil_attached ? DepthStorage::Depth24PlusStencil8 : DepthStorage::None,
-        depth_attached, stencil_attached, 1, false);
+        depth_kind, depth_attached, stencil_attached, 1, false);
     result.framebuffer_id = canvas.fbo;
     result.width = storage.width;
     result.height = storage.height;
@@ -6296,7 +6481,8 @@ static void execute_commands_impl(int canvas_id, const std::vector<Command>& com
                         // Validate inside the helper before inspecting shape metadata.
                         // Keep 1D and depth/stencil uploads on the canonical copy path.
                         const bool allow_transfer = (rev->dimensions == 2 || rev->dimensions == 3) &&
-                            rev->format != "depth" && rev->format != "stencil" && rev->format != "depth_stencil";
+                            rev->format != "depth" && rev->format != "stencil" && rev->format != "depth_stencil" &&
+                            rev->format != "depth_component";
                         transferred = vispy::textures::apply_owned_texture_data(*rev,
                             (*owned_commands)[command_index].args[2].blob, offset,
                             allow_transfer, rev->allocation_descriptor.get());
@@ -7544,8 +7730,20 @@ Readback read_canvas(int canvas_id, int x, int y, int width, int height, bool al
     ++eng.probe.command_encoders;
     auto ticket = std::make_shared<Ticket>();
     ticket->canvas_id = canvas_id;
+    uint64_t depth_upload_passes = 0;
+    if (canvas.fbo != 0) {
+        const auto framebuffer = eng.objects.find(canvas.fbo);
+        if (framebuffer != eng.objects.end()) {
+            const auto attachment = eng.objects.find(mode == "color" ? framebuffer->second.fb_color :
+                mode == "depth" ? framebuffer->second.fb_depth : framebuffer->second.fb_stencil);
+            if (attachment != eng.objects.end()) {
+                std::unordered_set<TextureRev*> visited;
+                depth_upload_passes = eng.pending_depth_upload_passes(attachment->second.texture, visited);
+            }
+        }
+    }
     if (canvas.frame_mark && canvas.frame_mark->queries)
-        eng.attach_query_frame(canvas, *ticket, mode == "depth" ? 1 : 0);
+        eng.attach_query_frame(canvas, *ticket, (mode == "depth" ? 1 : 0) + depth_upload_passes);
     wgpu::Texture source = mode == "color" ? canvas.color : canvas.depth;
     if (canvas.fbo != 0) {
         auto framebuffer = eng.objects.find(canvas.fbo);

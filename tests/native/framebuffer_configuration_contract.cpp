@@ -65,5 +65,12 @@ int main() {
             "unsupported sample count was accepted");
     rejects([&] { describe({4, 8, "rgba8unorm", false}, static_cast<DepthStorage>(99), false, false, 1, false); },
             "unknown depth backing was accepted");
+    const auto float_depth = describe({4, 8, "rgba8unorm", false}, DepthStorage::Depth32Float, true, false, 1, false);
+    require(float_depth.depth_size == 32 && float_depth.depth_size_exact &&
+            float_depth.depth_size_minimum == 32 && float_depth.backing_depth_size_minimum == 32 &&
+            float_depth.stencil_size == 0 && float_depth.backing_stencil_size == 0 &&
+            float_depth.depth_stencil_format == "depth32float", "Depth32Float precision and absent stencil must be exact");
+    rejects([&] { describe({4, 8, "rgba8unorm", false}, DepthStorage::Depth32Float, true, true, 1, false); },
+            "float depth must not invent a stencil aspect");
     std::cout << "framebuffer configuration contract passed\n";
 }
