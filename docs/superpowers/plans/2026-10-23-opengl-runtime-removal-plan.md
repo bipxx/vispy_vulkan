@@ -26,10 +26,17 @@ requirements. Earlier "current groundwork" notes describe historical results.
   `39a725766dab08dc6e284af807d40c44202584d4972e5714f34691e6e4375c41`.
   It predates the generated-line fix and depth changes; installation and GPU
   qualification remain pending. Do not label it the final candidate.
-- Disk exhaustion paused the owned Linux Qt 6.12 build. Verify the recorded
-  process identities before resuming. Restore capacity before large writes;
-  inspect vendor directory integrity before source snapshots. Never retry a
-  cleanup rejected by automatic approval review, including through its parent.
+- Disk exhaustion initially paused Linux Qt 6.12. After space recovery and exact
+  process-identity verification, resumption exited at 1480/1636 with EROFS. WSL
+  now mounts read-only as a fallback and reports I/O errors; no Qt processes
+  remain. Do not restart Linux builds before filesystem recovery is authorized
+  and verified. Offline repair requires explicit approval because it changes
+  filesystem metadata and available space cannot hold a full disk backup.
+- All 94,583 canonical vendor files match the Git blobs byte for byte. The empty
+  publication vendor directories remain untouched after automatic review
+  rejected their replacement. New frozen build snapshots link directly to the
+  verified canonical source. Never stage the vendor deletions, and never retry
+  a rejected cleanup or replacement through another command or its parent.
 
 Exactly three execution owners continue in parallel:
 
