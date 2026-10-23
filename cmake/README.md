@@ -68,6 +68,15 @@ Vulkan layer manifest is generated with the actual platform library suffix;
 Metal packages do not load a Vulkan layer. Linux/macOS rendering still requires
 qualification on the designated systems.
 
+The [Metal wheel build workflow](../.github/workflows/metal-wheel.yml) provides
+separate hosted macOS arm64 and Intel CPython 3.12 jobs for the native renderer.
+It checks the macOS 13 wheel tag, Mach-O architecture, controlled stripped native
+origins, system-library dependencies, source package bytes, license copies and
+the 100-MiB compressed-wheel budget. A fresh external consumer imports both
+compiled extensions and compares the CPU SDF helper with the retained upstream
+arrays. These jobs provide build/package evidence; graphics qualification still
+requires actual Metal rendering and lifecycle results.
+
 For a stable milestone while other agents continue source edits, run
 `python cmake/snapshot_wheel_sources.py <new-snapshot-directory>` and build that
 snapshot with a separate CMake cache and `VISPY_INPLACE=OFF`. The tool copies

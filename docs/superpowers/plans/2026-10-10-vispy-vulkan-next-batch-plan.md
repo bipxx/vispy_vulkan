@@ -1,3 +1,14 @@
+Metal producer preparation checkpoint, 2026-10-23: a separate hosted macOS
+arm64/Intel CPython 3.12 workflow now builds the actual Metal renderer wheel.
+The configured checks cover macOS 13 tags, Mach-O architecture, stripped native
+origins, package bytes, system-library dependencies, AGPL/original-BSD licenses,
+the compressed-wheel budget and isolated compiled-extension/CPU-SDF consumers.
+Local Python/YAML and six shell-body syntax checks pass. Actual native macOS
+execution remains pending; configuration is not a successful build or graphics
+qualification. The existing CPU matrix/job bodies are unchanged. Its push trigger
+now selects main, retaining PR/manual runs while avoiding duplicate work-branch
+push and PR matrices. Cybersecurity remains excluded.
+
 Current allocation checkpoint, 2026-10-23: empty RGBA8 color renderbuffers now
 allocate storage through Dawn rather than preparing/uploading a CPU zero image.
 Fresh Windows CPython 3.12 RTX4090 Vulkan and Linux CPython 3.12 WSL llvmpipe wheels
