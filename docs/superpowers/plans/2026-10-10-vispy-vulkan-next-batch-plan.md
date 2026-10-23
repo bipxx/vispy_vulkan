@@ -1,3 +1,20 @@
+Source-archive build checkpoint, 2026-10-23: CMake now restores recognized Git
+export-subst expansion of vendored VisPy archival metadata to the exact original
+CRLF/no-final-newline blob before ordinary dependency verification. The standalone
+checker stays read-only by default; checkouts, unrecognized edits and explicit
+immutable-origin authorities are not rewritten. Dependency pins and license bytes
+are unchanged. Nine focused regressions pass, including a genuine Git archive,
+other-source mismatch and explicit-origin controls.
+
+A complete real source archive at 727c5356640ff10c6325bee44c27049c2c75aa73 first
+reproduced the sole VisPy checksum failure. Fresh native Linux Release CMake
+configuration then restored the metadata automatically and verified all ten
+original dependency trees; subsequent read-only verification passed. Archive,
+lock and AGPL/original-BSD inputs remained unchanged. No renderer rebuild or GPU
+claim is made for this build-script change. Owned build environment/cache and
+both pytest temporary directories were removed; inputs, logs and failures remain.
+The hosted Metal wheel jobs are still queued.
+
 Metal producer preparation checkpoint, 2026-10-23: a separate hosted macOS
 arm64/Intel CPython 3.12 workflow now builds the actual Metal renderer wheel.
 The configured checks cover macOS 13 tags, Mach-O architecture, stripped native
