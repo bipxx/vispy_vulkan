@@ -337,6 +337,17 @@ inline constexpr const char* kAliasedLineCoverageIdentity =
 // Portable single-sample approximation, not a driver-specific GL rasterizer.
 inline constexpr const char* kSmoothLineCoverageIdentity =
     "analytic-butt-rectangle-separable-pixel-overlap-alpha-v1";
+// Functional multisampling uses the rasterizer's actual sample coordinates.
+// It deliberately has a different identity from the single-sample GL model.
+inline constexpr const char* kAliasedLineCoverage4Identity =
+    "functional-msaa4-sample-rate-symbolic-diamond-major-axis-v1";
+inline constexpr const char* kSmoothLineCoverage4Identity =
+    "functional-msaa4-sample-rate-analytic-pixel-overlap-alpha-v1";
+inline const char* line_coverage_identity(bool smooth, uint32_t samples) {
+    if (samples == 1) return smooth ? kSmoothLineCoverageIdentity : kAliasedLineCoverageIdentity;
+    if (samples == 4) return smooth ? kSmoothLineCoverage4Identity : kAliasedLineCoverage4Identity;
+    throw std::invalid_argument("line consumer: sample count must be one or four");
+}
 
 // Complete CPU lookup identity, available before shader generation. Limits,
 // DRAW width/viewport, device generation and attachment formats do not change

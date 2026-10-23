@@ -87,7 +87,9 @@ std::shared_ptr<const LineEvaluatorArtifact> build_line_evaluator(
     uint64_t cursor = 16;
     for (const auto& varying : normalized.varyings) {
         if (!varying.vertex_declared) return fail("varying " + varying.name + ": missing original vertex output");
-        if (varying.centroid || varying.sample) return fail("varying " + varying.name + ": centroid/sample interpolation is not yet admitted");
+        // Endpoint evaluation stores the original values without rasterizing.
+        // Preserve sample/centroid metadata for the consumer's explicit sample
+        // policy; only that render stage decides whether it can interpolate it.
         LineOutputField field; field.varying = varying; field.storage_type = physical_type(varying);
         const auto alignment = vector_alignment(varying.value_type.rows);
         uint64_t element = varying.value_type.rows * 4;

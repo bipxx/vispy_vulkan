@@ -3006,8 +3006,8 @@ struct Engine {
                                                           vispy::shader::LineCoveragePolicy::AliasedMajorAxis;
         policy.sample_count = static_cast<uint32_t>(snap.state.sample_count);
         policy.depth_output = bool(snap.depth_view) || bool(snap.depth_attachment);
-        policy.coverage_identity = captured.selection.state.smooth ? vispy::shader::kSmoothLineCoverageIdentity :
-            vispy::shader::kAliasedLineCoverageIdentity;
+        policy.coverage_identity = vispy::shader::line_coverage_identity(
+            captured.selection.state.smooth, policy.sample_count);
         const auto consumer = prepare_line_consumer(captured.original_artifact, policy);
         const auto consumer_device = prepare_line_consumer_modules(captured.original_artifact, consumer);
         std::shared_ptr<LineCapture> aggregate_capture;
@@ -3169,8 +3169,8 @@ struct Engine {
                                                 vispy::shader::LineCoveragePolicy::AliasedMajorAxis;
         policy.sample_count = static_cast<uint32_t>(snap.state.sample_count);
         policy.depth_output = bool(snap.depth_view) || bool(snap.depth_attachment);
-        policy.coverage_identity = selected.state.smooth ? vispy::shader::kSmoothLineCoverageIdentity :
-            vispy::shader::kAliasedLineCoverageIdentity;
+        policy.coverage_identity = vispy::shader::line_coverage_identity(
+            selected.state.smooth, policy.sample_count);
         auto consumer = prepare_line_consumer(captured.original_artifact, policy);
         const auto draw = vispy::shader::plan_generated_line_consumer_draw(*consumer, selection,
             {0, selection.segment_count()}, selected.state,

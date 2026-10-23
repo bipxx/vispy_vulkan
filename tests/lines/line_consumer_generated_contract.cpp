@@ -1405,6 +1405,66 @@ void analytic_smooth_contract() {
     require(!build_generated_line_consumer(rgb, p, grants())->ok,
             "output without alpha explicitly refuses smooth coverage");
 }
+// Positive multisample admission inspects emitted SPIR-V, not just policy flags.
+void multisample_contract() {
+    using namespace vispy::lines;
+    auto e = evaluator();
+    auto single = build_generated_line_consumer(e, policy(), grants());
+    require(single->ok, single->error);
+    for (bool smooth : {false, true}) {
+        auto p = policy(); p.sample_count = 4;
+        p.coverage = smooth ? LineCoveragePolicy::SmoothAnalytic : LineCoveragePolicy::AliasedMajorAxis;
+        p.coverage_identity = line_coverage_identity(smooth, 4);
+        auto c = build_generated_line_consumer(e, p, grants());
+        diagnostics(smooth ? "multisample_smooth" : "multisample_aliased", *c);
+        compiled_contract(*c, *e);
+        require(c->policy_identity != single->policy_identity && c->cache_key != single->cache_key,
+                "four-sample generated semantics have a distinct complete cache identity");
+        Trace fragment(c->fragment_spv);
+        const auto& call = fragment.entry_call(fragment.id("vispy_line_consumer_original_fragment", true));
+        size_t sample_reads = 0, sample_mask_stores = 0;
+        for (const auto& i : fragment.code) {
+            if (i.function != fragment.entry) continue;
+            if (i.op == spv::Op::OpLoad && fragment.loaded_from.contains(i.args[1])) {
+                const auto root = fragment.loaded_from.at(i.args[1]);
+                if (fragment.builtins.contains(root) && fragment.builtins.at(root) == spv::BuiltIn::SampleId) {
+                    ++sample_reads; require(fragment.dominates(i, call), "native SampleId read precedes user execution");
+                }
+            }
+            if (i.op == spv::Op::OpStore) {
+                const auto root = fragment.roots.contains(i.args[0]) ? fragment.roots.at(i.args[0]) : i.args[0];
+                if (fragment.builtins.contains(root) && fragment.builtins.at(root) == spv::BuiltIn::SampleMask) {
+                    ++sample_mask_stores;
+                    require(fragment.dominates(i, call), "native sample-mask initialization precedes user execution");
+                }
+            }
+        }
+        require(sample_reads > 0 && sample_mask_stores == 1,
+                "real fragment consumes SampleId and writes its per-sample coverage mask");
+        LineConsumerSelection selection(Mode::List, Selection{0, 2, 1});
+        const auto draw = plan_generated_line_consumer_draw(*c, selection, {0, 1},
+            state(3, smooth), {0, 0, 32, 24}, 24, 0, 1, grants());
+        require(draw.vertex_count == 6 && draw.instance_count == 1,
+                "four-sample draw planning positively retains one generated line quad");
+        p.depth_output = false;
+        auto color_only = build_generated_line_consumer(e, p, grants());
+        require(color_only->ok, "four-sample color-only consumer compiles: " + color_only->error);
+        Trace color_trace(color_only->fragment_spv);
+        for (const auto& [id, builtin] : color_trace.builtins)
+            require(builtin != spv::BuiltIn::FragDepth, "color-only multisampling has no actual depth output");
+    }
+    for (const std::string qualifier : {"sample", "centroid"}) {
+        auto qualified = evaluator(
+            "attribute vec4 position; " + qualifier + " out float value; void main(){gl_Position=position;value=float(gl_VertexID);}",
+            qualifier + " in float value; void main(){gl_FragColor=vec4(value,0,0,1);}");
+        auto p = policy(); p.sample_count = 4; p.coverage_identity = line_coverage_identity(false, 4);
+        auto c = build_generated_line_consumer(qualified, p, grants());
+        require(c->ok, "four-sample " + qualifier + " input compiles and reconstructs: " + c->error);
+        require(c->fragment_rows.row_stride == qualified->output_row_bytes,
+                "qualified multisample interpolation retains the exact typed endpoint layout");
+    }
+}
+
 } // namespace
 
 int main(int argc, char** argv) {
@@ -1415,7 +1475,7 @@ int main(int argc, char** argv) {
             if (!std::filesystem::create_directory(diagnostics_directory)) throw std::runtime_error("diagnostics directory must be fresh");
         }
         basic(); depth_attachment_specialization(); bounded_product_arithmetic(); viewport_coordinate_contract(); initializer_order(); typed_and_resources(); fragment_contexts(); dynamic_helper_queries(); plans_and_clip(); chunk_mapping_contract(); aliased_projection_and_clipped_terminal();
-        analytic_smooth_contract();
+        analytic_smooth_contract(); multisample_contract();
         std::cout << "line consumer generated compiler contract: " << checks << " checks\n";
         return 0;
     } catch (const std::exception& error) {
