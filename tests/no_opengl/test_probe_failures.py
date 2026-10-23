@@ -26,3 +26,16 @@ def test_post_scenario_invalid_wheel_fails_process_and_report(tmp_path, wheel_ex
     assert result.returncode != 0
     assert value['status'] == 'FAILED_SCENARIO'
     assert ('BadZipFile' if wheel_exists else 'FileNotFoundError') in value['error']
+
+
+def test_binding_option_is_an_enum_not_a_filesystem_path(tmp_path):
+    script = tmp_path / 'scenario.py'
+    script.write_text('pass\n')
+    report = tmp_path / 'report.json'
+    result = subprocess.run([sys.executable, '-B', str(ROOT / 'tools/audit_no_opengl.py'), 'run',
+                             '--python', sys.executable, '--scenario', 'script', '--script', str(script),
+                             '--binding', 'pyqt6', '--gates', 'imports', '--output', str(report)], capture_output=True, text=True)
+    assert result.returncode == 0, result.stdout + result.stderr
+    value = json.loads(report.read_text())
+    worker = json.loads(Path(value['worker_report']).read_text())
+    assert value['status'] == 'PASS_IMPORT_GATE_ONLY' and worker['binding'] == 'pyqt6'

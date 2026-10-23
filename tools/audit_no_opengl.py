@@ -29,7 +29,7 @@ def run_candidate(args):
     for name in ('binding', 'source_root', 'wheel', 'script'):
         value = getattr(args, name)
         if value is not None:
-            command.extend(['--' + name.replace('_', '-'), str(value.resolve(strict=True))])
+            command.extend(['--' + name.replace('_', '-'), str(value if name == 'binding' else value.resolve(strict=True))])
     for path in args.dependency_path:
         command.extend(['--dependency-path', str(path.resolve(strict=True))])
     if args.dependencies_report:
