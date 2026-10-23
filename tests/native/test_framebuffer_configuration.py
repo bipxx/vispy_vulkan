@@ -64,6 +64,7 @@ def test_fbo_configuration_uses_frozen_storage_and_does_not_upload(channels, for
         assert query(canvas)["framebuffer_id"] == 0
         fbo.delete()
         texture.delete()
+        canvas.context.flush_commands()
     finally:
         canvas.close()
 
@@ -82,11 +83,15 @@ def test_fbo_configuration_separates_logical_attachments_from_native_backing(kin
             assert config["backing_depth_size_minimum"] == 24 and config["backing_stencil_size"] == 8
             assert config["has_depth_attachment"] == (kind == "depth")
             assert config["has_stencil_attachment"] == (kind == "stencil")
-            assert config["depth_size"] is None if kind == "depth" else config["depth_size"] == 0
+            if kind == "depth":
+                assert config["depth_size"] is None
+            else:
+                assert config["depth_size"] == 0
             assert config["stencil_size"] == (8 if kind == "stencil" else 0)
         fbo.delete()
         color.delete()
         attachment.delete()
+        canvas.context.flush_commands()
     finally:
         canvas.close()
 
@@ -94,3 +99,18 @@ def test_fbo_configuration_separates_logical_attachments_from_native_backing(kin
 def test_missing_canvas_configuration_fails_instead_of_returning_defaults():
     with pytest.raises(RuntimeError, match="missing canvas"):
         _dawn.framebuffer_config(0)
+
+
+def test_configuration_query_recreates_lost_default_target_without_gl_fallback():
+    canvas = app.Canvas(app="dawn_headless", size=(7, 5), show=False, config={"samples": 4})
+    try:
+        canvas.set_current()
+        before = query(canvas)
+        generation = _dawn.probe()["device_generation"]
+        _dawn.lose_device()
+        assert _dawn.probe()["device_generation"] == generation
+        assert _dawn.framebuffer_config(int(canvas._backend._dawn_canvas_id)) == before
+        assert _dawn.probe()["device_generation"] > generation
+        assert _dawn.device_info()["backend"] == "Vulkan"
+    finally:
+        canvas.close()
