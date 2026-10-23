@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # Copyright (c) Vispy Development Team. All Rights Reserved.
-# Distributed under the (new) BSD License. See LICENSE.txt for more info.
+# Original proxy interface notices retained; see LICENSE-BSD.
+# Dawn implementation SPDX-License-Identifier: AGPL-3.0-only
 
 """OpenGL-free compatibility functions for the Dawn GLIR renderer."""
 
