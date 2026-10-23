@@ -138,6 +138,9 @@ set(TINT_BUILD_TESTS OFF CACHE BOOL "" FORCE)
 set(TINT_BUILD_CMD_TOOLS OFF CACHE BOOL "" FORCE)
 set(TINT_BUILD_FUZZERS OFF CACHE BOOL "" FORCE)
 set(DAWN_BUILD_PROTOBUF OFF CACHE BOOL "" FORCE)
+# The extension uses Dawn's headers, not its optional C++ module interface.
+# A successful module syntax probe does not imply Ninja dependency-scan support.
+set(DAWN_SUPPORTS_CXX_MODULES OFF CACHE BOOL "Header-based VisPy extension" FORCE)
 set(TINT_BUILD_IR_BINARY OFF CACHE BOOL "" FORCE)
 
 if(VISPY_NATIVE_SDK)

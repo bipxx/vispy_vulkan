@@ -34,6 +34,21 @@ and alpha blending. Width changes reused the consumer and pipeline, and nine
 live resource gauges returned to zero after shutdown. The public axes/colorbar
 fixture also rendered successfully and was visually inspected.
 
-These are source-build checks. Refreshed wheel consumers and host workflows,
-and GPU checks on other platforms, remain pending. Historical exact OpenGL
-comparison results and strict latency/memory benchmark gates remain unchanged.
+Fresh Windows wheels for CPython 3.10–3.14 also pass isolated installed-package
+checks for clear rendering, blended smooth lines, pipeline reuse and compiled
+SDF text. The CPython 3.12 wheel passes 53 retained functional cases across
+mesh/layout, Glue, napari-threedee, scalar/categorical volumes, images and labels.
+Forty-two complete frames match their original references exactly; axes/colorbar
+is checked for visible correctness, and the host overlays retain their original
+state and landmark checks rather than a claim of exact rasterizer parity.
+
+A fresh Linux CPython 3.12 wheel builds from the published sources with GCC 13
+and Ninja, with Dawn's unused C++ module interface disabled. An isolated WSL
+consumer passes clear rendering, both blended smooth widths, pipeline reuse and
+compiled SDF text using llvmpipe software Vulkan. Package bytes, native-library
+origins, both license families and shutdown cleanup are verified. This raw
+`linux_x86_64` wheel is not qualified for manylinux or other distributions.
+
+Native Linux GPU and macOS Metal checks remain unavailable. Historical exact
+OpenGL comparison results and strict latency/memory benchmark gates remain
+unchanged; those lab measurements are outside practical completion scope.
