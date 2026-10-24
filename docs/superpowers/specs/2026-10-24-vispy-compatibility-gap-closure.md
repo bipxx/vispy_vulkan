@@ -247,6 +247,16 @@ from a single-stage limit or invent precision. Preserve synchronous exceptions;
 Raw object creation, raw shader/program APIs and raw drawing need a separate
 inventory/design before expanding their surface.
 
+The [operation/value and query records](../../immediate-state-compatibility.md)
+now enumerate the 30 entry routes and their known legal exclusions. A source
+follow-up adds 74 cases (77 immediate cases total), rejects polygon-offset
+float overflow before committing state, requires integer query selectors and
+refuses target queries on closed canvases. Matching native candidates pass
+286 Windows/272 WSL affected source regressions, with 19 CPU/package contracts,
+a passing Windows C++ state contract and nine zero shutdown gauges per profile.
+These results do not implement every legal input, qualify the experimental
+Linux SDK provenance, or replace installed-wheel/profile and observer acceptance.
+
 ## 6. Shader extension contracts
 
 Keep compiler-backed GLSL/SPIR-V/Tint validation and existing refusal diagnostics.

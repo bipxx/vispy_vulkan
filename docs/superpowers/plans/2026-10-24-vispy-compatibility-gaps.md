@@ -126,6 +126,32 @@ Unicode vectors do not qualify physical devices, remapped layouts or macOS.
 Linux capture/toolkit/scissor blockers, backend capability/configuration review,
 remaining state-family coverage, G0 reconciliation and G2 gates stay open.
 
+## Immediate-state source checkpoint (STATE-1..5)
+
+The [operation/value contract](../../immediate-state-compatibility.md) now records
+all 30 admitted entry routes, defaults, types, scopes, limits, fixture mappings
+and legal exclusions. Seventy-four added cases bring the immediate-state suite
+to 77: real raw depth/blend/stencil/cull/offset/line/sample output, invalid-value
+recovery, granted queries and closed-target behavior. Four baseline overflow
+regressions expose state poisoned by narrowing finite doubles to infinite floats;
+the native parser now rejects that conversion before either offset field commits.
+Five prior selector failures expose float/string/bool query coercion; the Python
+route now requires integer selectors and live target owners.
+
+Matching first-party native leaves pass the 77 cases on Windows/WSL. Broader
+affected regressions pass 286 Windows and 272 WSL software cases; 19 CPU/package
+contracts and the Windows C++ state contract also pass. Both native profiles have
+nine zero shutdown gauges. Windows reuses its verified immutable SDK; Linux
+recompiles all nine first-party units against unchanged retained libraries and
+keeps its experimental provenance restriction. No inplace native origin changed.
+
+This advances state-family acceptance, not every legal value or G2. Reversed
+depth ranges, dither enable, multisample disable on multisample storage,
+fractional polygon offset units, mixed blend-constant domains, general state
+queries and remaining enum/format combinations stay visible required work.
+Exact wheels, independent implementation review and all absence gates still
+apply before promotion. Existing Linux scissor/toolkit blockers remain open.
+
 ## G0 ledger and promotion details
 
 Workflow checkpoint (review B1): an additive v2 `workflow` row mapping now binds

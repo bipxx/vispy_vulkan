@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 """GLIR parser that forwards filtered commands to the Dawn extension."""
 
+import operator
+
 import numpy as np
 
 from .glir import BaseGlirParser
@@ -89,7 +91,7 @@ def get_framebuffer_configuration():
     canvas = get_current_canvas()
     backend = getattr(canvas, '_backend', None) if canvas is not None else None
     canvas_id = int(getattr(backend, '_dawn_canvas_id', 0) or 0)
-    if not canvas_id:
+    if not canvas_id or getattr(canvas, '_closed', True):
         raise RuntimeError('framebuffer configuration requires a current Dawn canvas')
     from vispy import _dawn
     query = getattr(_dawn, 'framebuffer_config', None)
@@ -104,13 +106,20 @@ def get_gl_parameter(pname):
     from vispy import _dawn
     from vispy.gloo.context import get_current_canvas
 
-    code = int(pname)
+    if isinstance(pname, (bool, np.bool_)):
+        raise TypeError('glGetParameter requires an integer query enum')
+    try:
+        code = operator.index(pname)
+    except TypeError:
+        raise TypeError('glGetParameter requires an integer query enum') from None
     if code == 2978:  # GL_VIEWPORT
         canvas = get_current_canvas()
-        if canvas is None:
+        backend = getattr(canvas, '_backend', None)
+        canvas_id = int(getattr(backend, '_dawn_canvas_id', 0) or 0)
+        if not canvas_id or getattr(canvas, '_closed', True):
             raise RuntimeError("viewport query requires a current Dawn canvas")
         canvas.context.flush_commands()
-        return tuple(_dawn.viewport(int(canvas._backend._dawn_canvas_id)))
+        return tuple(_dawn.viewport(canvas_id))
     if code in (32937, 3123, 3122):  # SAMPLES, STEREO, DOUBLEBUFFER
         configuration = get_framebuffer_configuration()
         field = {32937: 'samples', 3123: 'stereo', 3122: 'double_buffer'}[code]

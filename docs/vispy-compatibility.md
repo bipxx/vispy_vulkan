@@ -136,6 +136,21 @@ replay consumed work or free owners early. Query-frame submission counts commit
 at the actual submit boundary before optional callback/map bookkeeping.
 Arbitrary immediate object IDs, shader creation and raw draws remain unsupported.
 
+The [immediate-state contract](immediate-state-compatibility.md) now records all
+30 entry routes, native defaults, accepted inputs, query domains, fixtures and
+legal-input gaps. Polygon-offset arguments outside the finite native-float range
+now fail before committing either field; the prior offset and following valid
+draw remain usable. Queries accept integer selectors, including NumPy integers,
+and refuse silent float/string/bool coercion. Target queries reject a closed
+canvas even when a failed release still retains its native owner.
+
+The expanded immediate suite passes 77 cases on both matching native candidates.
+Broader source regressions pass 286 Windows and 272 WSL software cases, plus 19
+CPU/package contracts and the C++ state contract. Nine native shutdown gauges
+are zero on both profiles. Vendor SDK/libraries were reused; no new wheel was
+qualified. Reversed depth ranges, enabled dither and other documented legal-value
+restrictions still require implementation; the allowlist is not full compatibility.
+
 The native submission packet has 168 passing Windows source cases, 146 passing
 WSL software cases, 67 CPU/source contracts and a passing C++ frame-lifecycle
 contract. Separate Linux scissor testing still passes seven cases and fails one,

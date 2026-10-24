@@ -86,6 +86,29 @@ void line_width_and_smooth_state() {
     require(!state.line_smooth && state_key(state) == defaults, "string smooth disable restores key");
 }
 
+void polygon_offset_float_range_is_atomic() {
+    RenderState state;
+    parse_render_state(func("glEnable", "polygon_offset_fill"), state);
+    parse_render_state(func("glPolygonOffset", 2.0, 3.0), state);
+    const auto original = state_key(state);
+    for (double invalid : {1e300, -1e300, std::numeric_limits<double>::infinity(),
+            std::numeric_limits<double>::quiet_NaN()}) {
+        rejects([&] { parse_render_state(func("glPolygonOffset", invalid, 0.0), state); }, "glPolygonOffset");
+        require(state_key(state) == original && state.polygon_offset_factor == 2 && state.polygon_offset_units == 3,
+                "invalid factor preserves the entire committed state");
+        rejects([&] { parse_render_state(func("glPolygonOffset", 0.0, invalid), state); }, "glPolygonOffset");
+        require(state_key(state) == original && state.polygon_offset_factor == 2 && state.polygon_offset_units == 3,
+                "invalid units do not commit a valid preceding factor");
+    }
+    const double maximum = std::numeric_limits<float>::max();
+    parse_render_state(func("glPolygonOffset", maximum, -maximum), state);
+    require(state.polygon_offset_factor == maximum && state.polygon_offset_units == -maximum,
+            "finite float range endpoints remain accepted at parse time");
+    parse_render_state(func("glPolygonOffset", 0.0, 1.0), state);
+    require(state.polygon_offset_factor == 0 && state.polygon_offset_units == 1,
+            "a valid operation succeeds after rejected overflow");
+}
+
 void multisample_descriptor_refusals() {
     RenderState state;
     wgpu::RenderPipelineDescriptor pipeline;
@@ -269,7 +292,7 @@ void cull_both_and_scissor() {
 int main() {
     try {
         defaults_and_parsing(); descriptors(); cache_dimensions(); line_width_and_smooth_state(); multisample_descriptor_refusals();
-        cull_both_and_scissor(); selected_stencil_faces();
+        cull_both_and_scissor(); selected_stencil_faces(); polygon_offset_float_range_is_atomic();
         std::cout << "render state parsing, defaults, descriptors, stencil faces, and pipeline keys passed\n";
         return 0;
     } catch (const std::exception& error) {
