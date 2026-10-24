@@ -290,7 +290,7 @@ inline bool parse_render_state(const Command& command, RenderState& state) {
     } else if (op == "glDepthRange" || op == "glDepthRangef") {
         count(2);
         result.depth_range = {static_cast<float>(std::clamp(numeric(0), 0.0, 1.0)), static_cast<float>(std::clamp(numeric(1), 0.0, 1.0))};
-        if (result.depth_range[0] > result.depth_range[1]) throw error(op, "reversed depth ranges require a shader conversion");
+
     } else if (op == "glDepthFunc") {
         count(1); result.depth_func = name(0); compare(result.depth_func);
     } else if (op == "glDepthMask") {

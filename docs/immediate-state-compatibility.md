@@ -41,7 +41,7 @@ can prove a subset of a row; untested values are not promoted by association.
 | `glDisable(capability)` | Disable the listed capabilities; disabling dither is accepted. Disabling multisample on a four-sample target has a draw-time restriction below. | Raw cull/depth/blend/stencil/coverage fixtures; invalid-parameter fixture |
 | `glColorMask(r,g,b,a)` | Numeric zero/nonzero flags; default all enabled. Applies to clears and draws. | `test_raw_color_mask_and_invalid_state_are_not_silently_ignored`; stencil masking and invalid-parameter fixtures |
 | `glDepthMask(flag)` | Numeric zero/nonzero flag; default enabled. Also controls depth clears. Depth writes require depth testing. | `test_raw_depth_write_mask_and_queued_draw_order`; invalid-parameter fixture |
-| `glDepthRange(near,far)` | Finite endpoints clamped [0,1]; default [0,1]. Reversed ranges remain unsupported. | `test_raw_depth_range_clamping_and_invalid_recovery` |
+| `glDepthRange(near,far)` | Finite endpoints clamped [0,1]; default [0,1]. Both endpoint orders and equal endpoints are accepted; the native clip/window-depth conversion is described below. | `test_raw_depth_range_clamping_and_invalid_recovery` |
 | `glDepthFunc(comparison)` | Never/less/equal/lequal/greater/notequal/gequal/always; default less. | `test_raw_depth_comparisons_at_exact_far_endpoint`; invalid/recovery fixture |
 | `glFrontFace(winding)` | CW/CCW; default CCW. | `test_raw_culling_and_front_face`; invalid-parameter fixture |
 | `glCullFace(face)` | Front/back/front-and-back; default back, culling disabled. Polygon culling does not suppress nonpolygon logical primitives. | `test_raw_culling_and_front_face`; existing native/C++ topology contracts; invalid-parameter fixture |
@@ -126,7 +126,7 @@ preserving unknown exact depth precision and reported minimums.
 
 ## Legal input gaps and promotion
 
-Required future work includes reversed depth ranges, enabled dither, disabled
+Required future work includes enabled dither, disabled
 multisample rasterization on multisample targets, fractional/out-of-int32 polygon
 offset units when polygon offset is active, mixed constant-color/constant-alpha
 RGB blend factors, remaining enum/value combinations and selectors outside the
@@ -157,3 +157,13 @@ query/selector boundary; the old native also reproduces the default-scissor clea
 failure. Native contract version 1 and the selected query behavior are
 source-functional; exact installed qualification and independent implementation
 review remain open. Linux provenance remains experimental.
+
+
+The [depth-range conversion](depth-range-compatibility.md) now admits independently
+clamped reversed/equal endpoints, preserves original clipping and captured draw
+orientation, and repairs explicit fragment depth clamping outside a partial
+viewport range. Thirty new depth cases pass within 421 Windows/407 WSL software
+affected regressions, plus 36 CPU/package cases and state/shader/artifact C++
+contracts. Both profiles report nine zero shutdown gauges. Source implementation
+and these scoped results do not provide full shader compatibility, independent
+implementation review or exact installed qualification.

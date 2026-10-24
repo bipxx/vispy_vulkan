@@ -43,6 +43,9 @@ void defaults_and_parsing() {
     require(state.scissor_enabled && state.scissor[3] == 4, "dynamic scissor");
     parse_render_state(func("glDepthRange", -2.0, 3.0), state);
     require(state.depth_range == std::array<float, 2>{0, 1}, "depth range clamps");
+    parse_render_state(func("glDepthRange", 2.0, -1.0), state);
+    require(state.depth_range == std::array<float, 2>{1, 0}, "reversed depth range clamps each endpoint independently");
+    parse_render_state(func("glDepthRange", 0.0, 1.0), state);
     const auto before = state_key(state);
     rejects([&] { parse_render_state(func("glEnable", "unknown_capability"), state); }, "glEnable");
     rejects([&] { parse_render_state(func("glLineWidth", 0.0), state); }, "finite and positive");

@@ -10,6 +10,30 @@
 
 namespace {
 
+const std::string fragment_coord_expression =
+    "vec4(gl_FragCoord.xy, mix(vispy_fragment_depth_range.x, vispy_fragment_depth_range.y, gl_FragCoord.z), gl_FragCoord.w)";
+
+std::string fragment_coord_define(std::string text) {
+    auto identifier = [](char value) { return std::isalnum(static_cast<unsigned char>(value)) || value == '_'; };
+    size_t body = text.find('#');
+    if (body == std::string::npos) return text;
+    ++body;
+    while (body < text.size() && std::isspace(static_cast<unsigned char>(text[body]))) ++body;
+    if (text.compare(body, 6, "define") || body + 6 >= text.size() || identifier(text[body + 6])) return text;
+    body += 6;
+    while (body < text.size() && std::isspace(static_cast<unsigned char>(text[body]))) ++body;
+    while (body < text.size() && identifier(text[body])) ++body;
+    const std::string name = "gl_FragCoord";
+    for (size_t at = body; (at = text.find(name, at)) != std::string::npos;) {
+        if ((at && identifier(text[at - 1])) || (at + name.size() < text.size() && identifier(text[at + name.size()]))) {
+            at += name.size(); continue;
+        }
+        text.replace(at, name.size(), fragment_coord_expression);
+        at += fragment_coord_expression.size();
+    }
+    return text;
+}
+
 struct Tok {
     std::string text;
     int line = 1;
@@ -713,7 +737,13 @@ std::string emit_body(const std::vector<Tok>& tokens, const std::vector<Decl>& d
             continue;
         }
         if (!text.empty() && text[0] == '#') {
-            if (text.rfind("#version", 0) != 0) writer.directive(tok);
+            if (text.rfind("#version", 0) != 0) {
+                auto directive = tok;
+                if (!vertex && std::any_of(uniforms.begin(), uniforms.end(), [](const NormUniform& uniform) {
+                        return uniform.name == "vispy_fragment_depth_range";
+                    })) directive.text = fragment_coord_define(directive.text);
+                writer.directive(directive);
+            }
             continue;
         }
         if (text == "precision") {
@@ -742,6 +772,10 @@ std::string emit_body(const std::vector<Tok>& tokens, const std::vector<Decl>& d
                 "int(vispy_batch_instance_origin.x + uint(gl_InstanceIndex))" : "gl_InstanceIndex";
         else if (text == "gl_FrontFacing" && options.point_sprites && !vertex) text = "true";
         else if (text == "gl_FragDepthEXT") text = "gl_FragDepth";
+        else if (!vertex && text == "gl_FragCoord" && std::any_of(uniforms.begin(), uniforms.end(),
+                     [](const NormUniform& uniform) { return uniform.name == "vispy_fragment_depth_range"; }))
+            text = fragment_coord_expression;
+
         else if (text == "gl_PointSize") text = "vispy_point_size";
         else if (text == "gl_PointCoord") {
             if (!options.point_sprites) {
@@ -890,6 +924,14 @@ NormalizedShader normalize_program(const std::string& vertex_src, const std::str
     }
     auto vert_toks = tokenize(vertex_src);
     auto frag_toks = tokenize(fragment_src);
+    result.has_fragment_depth = std::any_of(frag_toks.begin(), frag_toks.end(), [](const Tok& token) {
+        return token.text == "gl_FragDepth" || token.text == "gl_FragDepthEXT";
+    });
+    const bool fragment_depth_coordinates = std::any_of(frag_toks.begin(), frag_toks.end(), [](const Tok& token) {
+        return token.text == "gl_FragCoord" || (!token.text.empty() && token.text.front() == '#' &&
+                                              token.text.find("gl_FragCoord") != std::string::npos);
+    });
+
     if (batch_identity_policy(options.vertex_identity)) {
         for (const auto* tokens : {&vert_toks, &frag_toks}) for (const auto& token : *tokens) {
             // Directives are retained by the tokenizer. Reject macro aliases
@@ -1019,6 +1061,21 @@ NormalizedShader normalize_program(const std::string& vertex_src, const std::str
         viewport.type = "vec2";
         place_uniform(viewport, cursor);
         result.uniforms.push_back(std::move(viewport));
+    }
+    if (fragment_depth_coordinates) {
+        for (const auto* tokens : {&vert_toks, &frag_toks}) {
+            if (std::any_of(tokens->begin(), tokens->end(), [](const Tok& token) {
+                    return token.text == "vispy_fragment_depth_range";
+                })) {
+                result.error = "fragment depth: vispy_fragment_depth_range is a reserved runtime value";
+                return result;
+            }
+        }
+        NormUniform range;
+        range.name = "vispy_fragment_depth_range";
+        range.type = "vec2";
+        place_uniform(range, cursor);
+        result.uniforms.push_back(std::move(range));
     }
     result.uniform_bytes = align_up(cursor, 16);
     uint32_t location = 0;
@@ -1217,7 +1274,8 @@ NormalizedShader normalize_program(const std::string& vertex_src, const std::str
     }
     if (!options.line_evaluator)
         append_generated(vert, "void main() {\n    vispy_user_main();\n" + point_wrapper + "    gl_Position.y = -gl_Position.y;\n"
-                               "    gl_Position.z = (gl_Position.z + gl_Position.w) * 0.5;\n}\n", result.vertex_line_map);
+                               + (options.reverse_depth ? "    gl_Position.z = (gl_Position.w - gl_Position.z) * 0.5;\n}\n" :
+                                  "    gl_Position.z = (gl_Position.z + gl_Position.w) * 0.5;\n}\n"), result.vertex_line_map);
     result.vertex = vert.str();
     std::ostringstream frag;
     append_generated(frag, stage_header(false), result.fragment_line_map);

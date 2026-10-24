@@ -606,6 +606,24 @@ void scientific_predicates() {
         position += instruction >> 16;
     }
 }
+void depth_range_lowering() {
+    NormalizeOptions reverse;
+    reverse.reverse_depth = true;
+    auto normalized = normalize_program(vertex, "void main(){gl_FragColor=vec4(1);}", reverse);
+    compile_and_reflect(normalized);
+    require(normalized.vertex.find("gl_Position.w - gl_Position.z") != std::string::npos,
+        "reverse clip conversion runs in the final vertex wrapper");
+    auto depth = normalize_program(vertex,
+        "#define COORD gl_FragCoord\n#define DEPTH gl_FragDepth\n"
+        "void main(){DEPTH=.1;gl_FragColor=vec4(COORD.z);}");
+    compile_and_reflect(depth);
+    require(depth.fragment.find("mix(vispy_fragment_depth_range.x") != std::string::npos,
+        "fragment-coordinate alias retains the logical depth range");
+    auto invalid = normalize_program(vertex,
+        "uniform vec2 vispy_fragment_depth_range;void main(){gl_FragColor=gl_FragCoord;}");
+    require(invalid.error.find("reserved") != std::string::npos, "private depth control cannot alias a user uniform");
+}
+
 }  // namespace
 
 int main(int argc, char** argv) {
@@ -627,6 +645,7 @@ int main(int argc, char** argv) {
         opaque_helper_lowering();
         explicit_fragment_output();
         scientific_predicates();
+        depth_range_lowering();
         if (argc > 1) {
             const std::filesystem::path corpus(argv[1]);
             for (const auto& file : std::filesystem::directory_iterator(corpus)) {

@@ -2303,9 +2303,10 @@ struct Engine {
                                           bool point_sprites = false,
                                           VertexIdentityPolicy vertex_identity = VertexIdentityPolicy::Native,
                                           SpirvDerivativeMode derivative_mode = SpirvDerivativeMode::Strict,
-                                          bool require_ordinary_graphics = true) {
+                                          bool require_ordinary_graphics = true, bool reverse_depth = false) {
         NormalizeOptions options;
         options.base_level_sampling = base_level;
+        options.reverse_depth = reverse_depth;
         options.point_sprites = point_sprites;
         options.vertex_identity = vertex_identity;
         bool portable_hit = false;
@@ -2463,6 +2464,22 @@ struct Engine {
 
     void prepare_draw_sampling(DrawSnap& snap, bool ordinary_graphics = true) {
         if (snap.line_work && snap.line_work->consumer) return;
+        if (ordinary_graphics && snap.state.depth_range[0] > snap.state.depth_range[1] &&
+                !snap.artifact->portable->window_depth_output() && !snap.artifact->portable->options.reverse_depth) {
+            const auto original = snap.artifact;
+            std::string error;
+            auto reversed = make_artifact(original->portable->source_vertex, original->portable->source_fragment,
+                error, original->portable->options.base_level_sampling, original->default_has_depth,
+                original->portable->options.point_sprites, original->portable->options.vertex_identity,
+                original->portable->derivative_mode, false, true);
+            if (!error.empty()) throw std::runtime_error("DRAW reverse depth: " + error);
+            if (reversed->portable->uniform_bytes != original->portable->uniform_bytes ||
+                reversed->portable->attributes.size() != original->portable->attributes.size() ||
+                reversed->portable->samplers.size() != original->portable->samplers.size())
+                throw std::runtime_error("DRAW reverse depth: conversion changed the captured interface");
+            snap.artifact = std::move(reversed);
+        }
+
         if (!snap.integer_sampling_policies.empty() && snap.artifact->portable->integer_sampling_identity.empty()) {
             const auto original = snap.artifact;
             bool hit = false;
@@ -5676,7 +5693,10 @@ void main() {
                 const double viewport_y = double(snap.viewport[1]);
                 pass.SetViewport(static_cast<float>(snap.viewport[0]), static_cast<float>(viewport_y),
                                  static_cast<float>(vw), static_cast<float>(vh),
-                                 snap.state.depth_range[0], snap.state.depth_range[1]);
+                                 (consumer_render || snap.artifact->portable->window_depth_output()) ? 0.f :
+                                     std::min(snap.state.depth_range[0], snap.state.depth_range[1]),
+                                 (consumer_render || snap.artifact->portable->window_depth_output()) ? 1.f :
+                                     std::max(snap.state.depth_range[0], snap.state.depth_range[1]));
                 const auto scissor = effective_draw_scissor(snap.state, snap.logical_topology,
                     snap.origin == vispy::render::SnapshotOrigin::UserDraw, snap.scissor_enabled,
                     {snap.scissor[0], snap.scissor[1], snap.scissor[2], snap.scissor[3]},
@@ -7057,6 +7077,15 @@ static void execute_commands_impl(int canvas_id, const std::vector<Command>& com
                 }
                 snap.uniforms.assign(snap.artifact->portable->uniform_bytes, 0);
                 for (const auto& uni : snap.artifact->portable->uniforms) {
+                    if (uni.name == "vispy_fragment_depth_range") {
+                        // Generated consumers reconstruct logical FragCoord themselves.
+                        const float range[] = {(generated_line || !snap.artifact->portable->window_depth_output()) ? 0.f : snap.state.depth_range[0],
+                                               (generated_line || !snap.artifact->portable->window_depth_output()) ? 1.f : snap.state.depth_range[1]};
+                        std::string error;
+                        if (!pack_uniform_value(uni, range, sizeof(range), snap.uniforms.data(), snap.uniforms.size(), &error))
+                            throw std::runtime_error("fragment depth range: " + error);
+                        continue;
+                    }
                     if (uni.name == "vispy_point_viewport") {
                         const float viewport[] = {static_cast<float>(snap.viewport[2] < 0 ? snap.target_width : snap.viewport[2]),
                                                   static_cast<float>(snap.viewport[3] < 0 ? snap.target_height : snap.viewport[3])};

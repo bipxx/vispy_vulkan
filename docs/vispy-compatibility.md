@@ -205,3 +205,11 @@ cases pass within 328 Windows/314 WSL software affected cases, plus 47 CPU/sourc
 contracts and nine zero native shutdown gauges per profile. Native artifacts are
 reused. Installed qualification, full inventory/review and the listed platform,
 compositor and Tcl shutdown restrictions remain open.
+
+
+The [reversed depth-range packet](depth-range-compatibility.md) adds reverse/equal
+range handling, captured clip conversion and explicit fragment/window-depth
+correction. Its 30 cases pass within 421 Windows/407 WSL software affected cases,
+with 36 CPU/package cases, C++ state/shader/cache contracts and nine zero native
+shutdown gauges per profile. Other legal state/shader forms and independent
+installed qualification remain open; old profile receipts retain their identities.
