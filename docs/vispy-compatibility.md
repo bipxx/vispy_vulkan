@@ -32,9 +32,18 @@ gestures on focus loss. Source regressions now also cover explicit-parent
 NoDefaultRoot embedding, shared-interpreter application ownership, constructor
 unwind and public timer stop/restart state. One Application rejects simultaneous
 canvases on different Tcl interpreters; use a separate Application per interpreter.
-Callback/native-progress behavior under run/external-mainloop modes and broader
-lifecycle acceptance remain open. Fix and extend them before promoting Tk; passing the existing
-suite is not sufficient. See the [current specification](superpowers/specs/2026-10-24-vispy-compatibility-gap-closure.md).
+Callback/native-progress source regressions now exercise manual pumping,
+Application.run and externally owned mainloops. An escaping toolkit callback
+failure is re-raised with its traceback by manual/VisPy-owned drivers; a borrowed
+mainloop uses the user's existing report_callback_exception handler. The first
+error is preserved, later errors are logged, and a failed timer stops. The
+existing EventEmitter ignore policy is retained. A 5 ms interpreter progress
+callback services native work when there is no redraw; it stops retrying after a
+poll failure until explicit re-entry or redraw and is cancelled on release.
+KeyboardInterrupt/SystemExit propagate through manual/VisPy-owned drivers.
+Nested Application.run calls are rejected. These checks do not establish every
+teardown failure path or installed qualification. Broader lifecycle, coordinate
+and capture acceptance remains open; see the [current specification](superpowers/specs/2026-10-24-vispy-compatibility-gap-closure.md).
 
 Selected `gloo.gl` state calls now execute through the current canvas's ordered
 GLIR queue: viewport/scissor, clear color/depth/stencil and clear, masks,

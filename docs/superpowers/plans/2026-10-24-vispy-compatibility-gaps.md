@@ -91,6 +91,17 @@ on Windows and WSL software Vulkan, plus thirteen package/source contracts.
 R3 has source regression evidence for these cases, but full lifecycle/loop/error
 and installed-artifact acceptance remain open; do not close TK-1/4 wholesale.
 
+Loop follow-up: shared interpreter progress and callback delivery now distinguish
+manual pumping, Application.run and external mainloops without replacing the
+user's Tk handler. Source tests cover draw, readiness, native progress, resize,
+input, timer, presentation and image failures in all three modes; corrected
+failures recover on explicit redraw. Further cases cover idle polling, owned-loop
+interruptions, first-error preservation, independent-canvas recovery, device loss
+and timer restart generations. The combined Tk/state suite has 62 passing cases
+on Windows and WSL software Vulkan, with 13 package/source checks. This is source
+evidence for G1b, not full TK-1..4 or installed-profile qualification; teardown
+failure paths and G1c coordinate/capture acceptance still need work.
+
 1. Reproduce the missing pressed-button state using a real SceneCanvas camera.
    Add regression expectations before changing input dispatch; include release
    outside/focus loss and modifiers. Do not weaken camera code to hide bad events.

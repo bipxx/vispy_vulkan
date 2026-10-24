@@ -56,13 +56,59 @@ class _RootState:
         self.root = root
         self.owned = owned
         self.apps = weakref.WeakSet()
+        self.driver = None
+        self.progress_job = None
         self.binding = root.bind('<Destroy>', self._destroyed, add='+')
         _root_states[root] = self
+
+    def report_error(self, error_info):
+        if self.driver is not None:
+            if self.driver._pending_error is None:
+                self.driver._pending_error = error_info
+            else:
+                logger.error('Additional Tk callback error', exc_info=error_info)
+            if self.driver._running and _exists(self.root):
+                self.root.quit()
+        else:
+            # A borrowed mainloop keeps its user's error policy. Do not replace
+            # report_callback_exception globally or consume an exception here.
+            self.root.report_callback_exception(*error_info)
+
+    def poll(self):
+        from vispy import _dawn
+        try:
+            _dawn.process_events()
+            return True
+        except BaseException:
+            self.report_error(sys.exc_info())
+            return False
+
+    def ensure_progress(self):
+        if self.progress_job is None and self.apps and _exists(self.root):
+            self.progress_job = self.root.after(5, self._progress)
+
+    def _progress(self):
+        self.progress_job = None
+        if self.apps and self.poll():
+            self.ensure_progress()
+        # A failed poll needs explicit re-entry/redraw to retry, not an endless
+        # stream of error reports from a permanently broken device.
+
+    def cancel_progress(self):
+        if self.progress_job is not None:
+            try:
+                self.root.after_cancel(self.progress_job)
+            except tk.TclError:
+                if _exists(self.root):
+                    raise
+            finally:
+                self.progress_job = None
 
     def _destroyed(self, event):
         if event.widget is not self.root:
             return
         _root_states.pop(self.root, None)
+        self.cancel_progress()
         for application in list(self.apps):
             application._root = None
             application._root_state = None
@@ -75,6 +121,7 @@ class _RootState:
         self.apps.discard(application)
         if self.apps:
             return
+        self.cancel_progress()
         _root_states.pop(self.root, None)
         if _exists(self.root):
             self.root.unbind('<Destroy>', self.binding)
@@ -91,6 +138,7 @@ class ApplicationBackend(BaseApplicationBackend):
         self._owns_root = False
         self._root_state = None
         self._running = False
+        self._pending_error = None
         self._canvases = weakref.WeakSet()
         self._timers = weakref.WeakSet()
 
@@ -121,6 +169,7 @@ class ApplicationBackend(BaseApplicationBackend):
         self._root_state = state
         self._root = root
         self._owns_root = state.owned
+        state.ensure_progress()
 
     def _vispy_prepare_canvas(self, parent):
         if parent is not None:
@@ -129,28 +178,61 @@ class ApplicationBackend(BaseApplicationBackend):
             self._attach_root(parent._root())
 
     def _vispy_process_events(self):
-        from vispy import _dawn
-        _dawn.process_events()
-        if self._root is not None:
+        state = self._root_state
+        if state is None:
+            self._raise_pending_error()
+            return
+        previous_driver = state.driver
+        state.driver = self if previous_driver is None else previous_driver
+        try:
+            state.ensure_progress()
+            state.poll()
             # A draw handler may request another frame. Bound manual pumping
             # so an animation cannot keep update() inside Tcl indefinitely.
             deadline = time.monotonic() + .01
             for _ in range(100):
-                if not self._root.tk.dooneevent(tk._tkinter.DONT_WAIT):
+                if state.driver._pending_error is not None or not _exists(state.root):
+                    break
+                if not state.root.tk.dooneevent(tk._tkinter.DONT_WAIT):
                     break
                 if time.monotonic() >= deadline:
                     break
-        for canvas in list(self._canvases):
-            if canvas._callback_error is not None:
-                error, canvas._callback_error = canvas._callback_error, None
-                raise error
+        finally:
+            state.driver = previous_driver
+        if previous_driver is None:
+            self._raise_pending_error()
+
+    def _raise_pending_error(self):
+        if self._pending_error is not None:
+            _kind, error, traceback = self._pending_error
+            self._pending_error = None
+            raise error.with_traceback(traceback)
+
+    def _callback(self, callback):
+        state = self._root_state
+
+        def invoke(*args):
+            try:
+                return callback(*args)
+            except BaseException:
+                state.report_error(sys.exc_info())
+        return invoke
 
     def _vispy_run(self):
+        self._raise_pending_error()
+        root = self._vispy_get_native_app()
+        state = self._root_state
+        if state.driver is not None:
+            raise RuntimeError('Cannot nest a Tk Application.run event loop')
+        state.driver = self
         self._running = True
         try:
-            self._vispy_get_native_app().mainloop()
+            state.ensure_progress()
+            root.mainloop()
+            self._raise_pending_error()
         finally:
             self._running = False
+            state.driver = None
 
     def _vispy_quit(self):
         for timer in list(self._timers):
@@ -175,7 +257,6 @@ class CanvasBackend(BaseCanvasBackend):
         self._closed = False
         self._draw_job = None
         self._drawing = False
-        self._callback_error = None
         self._pressed_buttons = set()
         self._last_pointer = (0, 0)
         self._photo = None
@@ -195,23 +276,23 @@ class CanvasBackend(BaseCanvasBackend):
             self._widget = tk.Canvas(parent, width=self._size[0], height=self._size[1],
                                      highlightthickness=0, borderwidth=0, takefocus=True)
             self._image_item = self._widget.create_image(0, 0, anchor='nw')
-            self._widget.bind('<Destroy>', self._on_destroy, add='+')
-            self._widget.bind('<Configure>', self._on_resize, add='+')
-            self._widget.bind('<Expose>', lambda event: self._vispy_update(), add='+')
-            self._widget.bind('<Motion>', self._on_motion)
-            self._widget.bind('<ButtonPress>', self._on_press)
-            self._widget.bind('<ButtonRelease>', self._on_release)
-            self._widget.bind('<FocusOut>', self._on_focus_out)
-            self._widget.bind('<MouseWheel>', self._on_wheel)
-            self._widget.bind('<KeyPress>', lambda event: self._on_key(event, True))
-            self._widget.bind('<KeyRelease>', lambda event: self._on_key(event, False))
+            self._bind('<Destroy>', self._on_destroy, add='+')
+            self._bind('<Configure>', self._on_resize, add='+')
+            self._bind('<Expose>', lambda event: self._vispy_update(), add='+')
+            self._bind('<Motion>', self._on_motion)
+            self._bind('<ButtonPress>', self._on_press)
+            self._bind('<ButtonRelease>', self._on_release)
+            self._bind('<FocusOut>', self._on_focus_out)
+            self._bind('<MouseWheel>', self._on_wheel)
+            self._bind('<KeyPress>', lambda event: self._on_key(event, True))
+            self._bind('<KeyRelease>', lambda event: self._on_key(event, False))
             self._dawn_canvas_id = int(_dawn.register_canvas(*self._size, self._samples, False))
             p.context.shared.add_ref('dawn-tk', self)
             from ...gloo.dawn_parser import install_gl_queries
             install_gl_queries()
             self._application._canvases.add(self)
             if self._top is not None:
-                self._top.protocol('WM_DELETE_WINDOW', vispy_canvas.close)
+                self._top.protocol('WM_DELETE_WINDOW', self._application._callback(vispy_canvas.close))
                 self._top.resizable(p.resizable, p.resizable)
                 self._top.overrideredirect(not p.decorate)
                 self._top.attributes('-topmost', bool(p.always_on_top))
@@ -230,6 +311,9 @@ class CanvasBackend(BaseCanvasBackend):
             except Exception:
                 logger.error('Tk canvas construction cleanup failed', exc_info=True)
             raise
+
+    def _bind(self, sequence, callback, **kwargs):
+        self._widget.bind(sequence, self._application._callback(callback), **kwargs)
 
     def _vispy_set_current(self):
         pass  # Canvas.set_current selects the GLIR target; there is no GL context.
@@ -251,10 +335,11 @@ class CanvasBackend(BaseCanvasBackend):
 
     def _vispy_update(self):
         if not self._closed and self._draw_job is None:
+            self._application._root_state.ensure_progress()
             # Timer callbacks are dispatched in bounded generations. Replacing
             # this with after_idle lets a self-updating draw monopolize one
             # Tcl idle event and prevents process_events() from returning.
-            self._draw_job = self._widget.after(0, self._draw)
+            self._draw_job = self._widget.after(0, self._application._callback(self._draw))
 
     def _draw(self):
         self._draw_job = None
@@ -263,14 +348,12 @@ class CanvasBackend(BaseCanvasBackend):
         from vispy import _dawn
         _dawn.process_events()
         if not _dawn.frame_ready(self._dawn_canvas_id):
-            self._draw_job = self._widget.after(1, self._draw)
+            self._draw_job = self._widget.after(1, self._application._callback(self._draw))
             return
         self._drawing = True
         try:
             self._vispy_canvas.set_current()
             self._vispy_canvas.events.draw(region=None)
-        except Exception as error:
-            self._callback_error = error
         finally:
             self._drawing = False
 
@@ -426,7 +509,9 @@ class TimerBackend(BaseTimerBackend):
         self._schedule(self._generation)
 
     def _schedule(self, generation):
-        self._job = self._root.after(self._interval, lambda: self._timeout(generation))
+        self._application._root_state.ensure_progress()
+        self._job = self._root.after(self._interval,
+                                    self._application._callback(lambda: self._timeout(generation)))
 
     def _vispy_stop(self):
         self._generation += 1
@@ -441,6 +526,13 @@ class TimerBackend(BaseTimerBackend):
 
     def _timeout(self, generation):
         self._job = None
-        self._vispy_timer._timeout()
+        try:
+            self._vispy_timer._timeout()
+        except BaseException:
+            try:
+                self._vispy_timer.stop()
+            except BaseException:
+                logger.error('Tk timer stop after callback failure failed', exc_info=True)
+            raise
         if self._generation == generation:
             self._schedule(generation)

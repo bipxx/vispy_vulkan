@@ -430,3 +430,282 @@ def test_constructor_preserves_originating_error_when_cleanup_also_fails(applica
     with pytest.raises(ValueError, match='originating allocation error'):
         app.Canvas(app=application, size=(192, 128))
     assert set(root.winfo_children()) == before
+
+
+@pytest.mark.parametrize('mode', ['manual', 'run', 'external'])
+@pytest.mark.parametrize('failure', ['draw', 'readiness', 'progress', 'resize', 'input', 'timer',
+                                   'presentation', 'image'])
+def test_callback_errors_follow_driving_loop(application, monkeypatch, mode, failure):
+    from vispy import _dawn
+    canvas = app.Canvas(app=application, size=(192, 128), show=True)
+    paint(canvas)
+    wait(application, lambda: canvas.native.winfo_viewable() and canvas._backend._photo is not None)
+    root = application.native
+    received = []
+    original_handler = root.report_callback_exception
+    timer = None
+
+    def fail(*args, **kwargs):
+        raise ValueError('intentional ' + failure)
+
+    if failure in ('presentation', 'image'):
+        import tkinter as tk
+        canvas.events.draw.ignore_callback_errors = False
+        monkeypatch.setattr(_dawn if failure == 'presentation' else tk,
+                            'present' if failure == 'presentation' else 'PhotoImage', fail)
+        trigger = canvas.update
+    elif failure == 'draw':
+        canvas.events.draw.ignore_callback_errors = False
+        canvas.events.draw.connect(fail, position='first')
+        trigger = canvas.update
+    elif failure == 'readiness':
+        monkeypatch.setattr(_dawn, 'frame_ready', fail)
+        trigger = canvas.update
+    elif failure == 'progress':
+        monkeypatch.setattr(_dawn, 'process_events', fail)
+        trigger = lambda: None  # Idle native progress must work without a draw.
+    elif failure == 'resize':
+        monkeypatch.setattr(_dawn, 'configure_canvas', fail)
+        trigger = lambda: canvas.native.event_generate('<Configure>', width=200, height=130)
+    elif failure == 'input':
+        canvas.events.mouse_press.ignore_callback_errors = False
+        canvas.events.mouse_press.connect(fail)
+        trigger = lambda: canvas.native.event_generate('<ButtonPress-1>', x=10, y=10)
+    else:
+        timer = app.Timer(app=application, interval=.001, connect=fail)
+        timer.events.timeout.ignore_callback_errors = False
+        trigger = timer.start
+
+    watchdog_fired = []
+
+    def watchdog():
+        watchdog_fired.append(True)
+        root.quit()
+
+    watchdog_job = root.after(1000, watchdog)
+    trigger_job = root.after(0, trigger)
+    try:
+        if mode == 'external':
+            def report(kind, value, traceback):
+                received.append((kind, value, traceback))
+                root.quit()
+            monkeypatch.setattr(root, 'report_callback_exception', report)
+            root.mainloop()
+            assert len(received) == 1
+            assert received[0][0] is ValueError
+            assert str(received[0][1]) == 'intentional ' + failure
+            assert received[0][2] is not None
+            assert root.report_callback_exception is report
+        else:
+            with pytest.raises(ValueError, match='intentional ' + failure):
+                if mode == 'run':
+                    application.run(allow_interactive=False)
+                else:
+                    deadline = time.monotonic() + 2
+                    while time.monotonic() < deadline:
+                        application.process_events()
+                        time.sleep(.001)
+                    pytest.fail('manual loop did not propagate callback error')
+            assert root.report_callback_exception == original_handler
+        assert not watchdog_fired
+        if timer is not None:
+            assert not timer.running and timer._backend._job is None
+        # Correcting the failure and explicitly redrawing must recover, rather
+        # than retaining a stale error or a permanently failed scheduled job.
+        monkeypatch.undo()
+        if failure == 'draw':
+            canvas.events.draw.disconnect(fail)
+        elif failure == 'input':
+            canvas.events.mouse_press.disconnect(fail)
+        previous = canvas._backend._photo
+        canvas.update()
+        wait(application, lambda: canvas._backend._photo is not previous)
+    finally:
+        root.after_cancel(trigger_job)
+        root.after_cancel(watchdog_job)
+        if timer is not None:
+            timer.stop()
+        canvas.close()
+
+
+@pytest.mark.parametrize('mode', ['run', 'external'])
+def test_idle_mainloop_polls_native_progress(application, monkeypatch, mode):
+    from vispy import _dawn
+    root = application.native
+    calls = []
+    original = _dawn.process_events
+
+    def progress():
+        calls.append(True)
+        return original()
+
+    monkeypatch.setattr(_dawn, 'process_events', progress)
+    root.after(30, root.quit)
+    if mode == 'run':
+        application.run(allow_interactive=False)
+    else:
+        root.mainloop()
+    assert calls  # No draw, timer, or manual process_events drove the device.
+
+
+@pytest.mark.parametrize('mode', ['manual', 'run'])
+@pytest.mark.parametrize('error_kind', [KeyboardInterrupt, SystemExit])
+def test_base_exceptions_escape_owned_event_drivers(application, mode, error_kind):
+    canvas = app.Canvas(app=application, size=(192, 128), show=True)
+    wait(application, lambda: canvas.native.winfo_viewable())
+    canvas.events.draw.ignore_callback_errors = False
+
+    def fail(event):
+        raise error_kind('intentional base exception')
+
+    canvas.events.draw.connect(fail)
+    root = application.native
+    watchdog = root.after(1000, root.quit)
+    previous = canvas._backend._photo
+    canvas.update()
+    try:
+        with pytest.raises(error_kind, match='intentional base exception'):
+            if mode == 'run':
+                application.run(allow_interactive=False)
+            else:
+                wait(application, lambda: canvas._backend._photo is not previous)
+    finally:
+        root.after_cancel(watchdog)
+        canvas.close()
+
+
+@pytest.mark.parametrize('mode', ['run', 'external'])
+def test_mainloop_device_recovery_and_timer_progress(application, mode):
+    from vispy import _dawn
+    canvas = app.Canvas(app=application, size=(192, 128), show=True)
+    paint(canvas)
+    canvas.events.draw.ignore_callback_errors = False
+    canvas.update()
+    wait(application, lambda: canvas.native.winfo_viewable() and canvas._backend._photo is not None)
+    previous = canvas._backend._photo
+    generation = _dawn.probe()['device_generation']
+    root = application.native
+    ticks = []
+
+    def tick(event):
+        ticks.append(event.iteration)
+        if event.iteration == 0:
+            _dawn.lose_device()
+            canvas.update()
+        elif canvas._backend._photo is not previous:
+            root.quit()
+
+    timer = app.Timer(app=application, interval=.01, connect=tick, start=True)
+    watchdog_fired = []
+
+    def watchdog():
+        watchdog_fired.append(True)
+        root.quit()
+
+    job = root.after(1000, watchdog)
+    try:
+        if mode == 'run':
+            application.run(allow_interactive=False)
+        else:
+            root.mainloop()
+        assert not watchdog_fired
+        assert len(ticks) >= 2
+        assert _dawn.probe()['device_generation'] > generation
+        assert canvas._backend._photo is not previous
+    finally:
+        root.after_cancel(job)
+        timer.stop()
+        canvas.close()
+
+
+@pytest.mark.parametrize('mode', ['manual', 'run'])
+def test_first_callback_error_survives_later_error_and_other_canvas_recovers(application, mode):
+    one = app.Canvas(app=application, size=(192, 128), show=True)
+    two = app.Canvas(app=application, size=(192, 128), show=True)
+    paint(two)
+    wait(application, lambda: one.native.winfo_viewable() and two.native.winfo_viewable())
+    one.events.mouse_press.ignore_callback_errors = False
+    two.events.mouse_press.ignore_callback_errors = False
+
+    def first(event):
+        raise ValueError('first callback error')
+
+    def later(event):
+        raise RuntimeError('later callback error')
+
+    one.events.mouse_press.connect(first)
+    two.events.mouse_press.connect(later)
+    root = application.native
+
+    def batch():
+        one.native.event_generate('<ButtonPress-1>', x=10, y=10)
+        two.native.event_generate('<ButtonPress-1>', x=10, y=10)
+
+    job = root.after(0, batch)
+    watchdog = root.after(1000, root.quit)
+    try:
+        with pytest.raises(ValueError, match='first callback error'):
+            if mode == 'run':
+                application.run(allow_interactive=False)
+            else:
+                deadline = time.monotonic() + 2
+                while time.monotonic() < deadline:
+                    application.process_events()
+                pytest.fail('first error was lost')
+        two.events.mouse_press.disconnect(later)
+        previous = two._backend._photo
+        two.update()
+        wait(application, lambda: two._backend._photo is not previous)
+    finally:
+        root.after_cancel(job)
+        root.after_cancel(watchdog)
+        one.close()
+        two.close()
+
+
+def test_event_emitter_ignore_policy_is_not_overridden(application):
+    canvas = app.Canvas(app=application, size=(192, 128), show=True)
+    paint(canvas)
+
+    def fail(event):
+        raise ValueError('intentionally ignored by EventEmitter policy')
+
+    assert canvas.events.draw.ignore_callback_errors
+    canvas.events.draw.print_callback_errors = 'never'
+    canvas.events.draw.connect(fail, position='first')
+    canvas.update()
+    wait(application, lambda: canvas._backend._photo is not None)
+    assert application._backend._pending_error is None
+    canvas.close()
+
+
+def test_timer_restart_inside_callback_has_only_one_scheduled_generation(application):
+    root = application.native
+    ticks = []
+    timeout = []
+    timer = app.Timer(app=application, interval=0)
+
+    def tick(event):
+        ticks.append(True)
+        if len(ticks) == 1:
+            timer.stop()
+            timer.start(interval=.005)
+        elif len(ticks) == 3:
+            timer.stop()
+            root.after(20, root.quit)
+
+    timer.connect(tick)
+    timer.start()
+
+    def watchdog():
+        timeout.append(True)
+        root.quit()
+
+    job = root.after(1000, watchdog)
+    try:
+        application.run(allow_interactive=False)
+        assert len(ticks) == 3 and not timeout
+        assert not timer.running and timer._backend._job is None
+    finally:
+        root.after_cancel(job)
+        timer.stop()
