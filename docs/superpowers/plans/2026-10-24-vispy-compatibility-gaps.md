@@ -134,6 +134,24 @@ the first-failure receipt and controls are retained with the G1c run. Resolve
 the toolkit runtime/profile and add the MSAA clear fix to the next affected
 native packet before G2; no old qualified row is silently promoted or erased.
 
+Scissor isolation: a headless control reproduces the 477-pixel mismatch without
+Tk. Reversing the size order fails immediately at 301x177 and passes at 257x129,
+so "resize-only" is too narrow a diagnosis. An ordinary vertex-buffer draw using
+hardware scissor reproduces it; an otherwise comparable shader-discard rectangle
+has zero differences. This isolates a multisample scissor path, not a proven
+project-source or driver root cause. The producer runtime.cpp hash matches the
+current source. [Mesa's official 25.3.0 notes](https://docs.mesa3d.org/relnotes/25.3.0.html)
+list an llvmpipe scissor-plane fix;
+it is a candidate explanation, not verified by this investigation. Test a pinned
+isolated driver before introducing a shader workaround that could change user
+shader side effects. `tests/native/test_scissor_boundaries.py` retains the
+toolkit-free exact acceptance contract. Existing failed-driver evidence remains.
+
+The toolkit-free boundary suite now includes both zero and nonzero rectangle
+origins: eight Windows cases pass; Linux passes seven and fails the four-sample
+301x177 nonzero-origin case. The zero-origin rectangle alone passed and would
+have missed this defect. Retain that contrast when evaluating a driver change.
+
 1. Reproduce the missing pressed-button state using a real SceneCanvas camera.
    Add regression expectations before changing input dispatch; include release
    outside/focus loss and modifiers. Do not weaken camera code to hide bad events.
