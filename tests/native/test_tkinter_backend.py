@@ -234,6 +234,7 @@ def test_live_key_events_retain_native_widget_and_printable_text(application):
 
 
 def test_live_wheel_units_held_buttons_and_native_metadata(application):
+    import tkinter as tk
     from vispy.util import keys
     canvas = input_canvas(application)
     seen, presses = [], []
@@ -246,16 +247,23 @@ def test_live_wheel_units_held_buttons_and_native_metadata(application):
     assert all(event.buttons == [1] and tuple(event.pos) == (11, 13)
                and event.modifiers == (keys.SHIFT,)
                and event.native.widget is canvas.native for event in seen)
-    if sys.platform.startswith('linux'):
+    if sys.platform.startswith('linux') and tk.TkVersion < 8.7:
         for button in (4, 5):
             canvas.native.event_generate('<ButtonPress-%d>' % button, x=11, y=13)
             canvas.native.event_generate('<ButtonRelease-%d>' % button, x=11, y=13)
         assert [tuple(event.delta) for event in seen[2:]] == [(0, 1), (0, -1)]
         assert len(presses) == 1 and canvas._backend._pressed_buttons == {1}
     else:
-        # Physical extra buttons are not Linux wheel notifications on Windows.
+        if sys.platform.startswith('linux'):
+            for delta in (120, -120):
+                canvas.native.event_generate('<MouseWheel>', delta=delta, x=11, y=13)
+            assert [tuple(event.delta) for event in seen[2:]] == [(0, 1), (0, -1)]
+        # Tk9 script button4 is an extra button; pre-fix Tk9.0.3 reports its
+        # raw X11 number8. Public nonprimary buttons retain native metadata.
+        wheel_count = len(seen)
         canvas.native.event_generate('<ButtonPress-4>', x=11, y=13)
-        assert presses[-1].button == 4 and len(seen) == 2
+        expected = presses[-1].native.num if sys.platform.startswith('linux') else 4
+        assert presses[-1].button == expected and len(seen) == wheel_count
         canvas.native.event_generate('<ButtonRelease-4>', x=11, y=13)
     canvas.native.event_generate('<ButtonRelease-1>', x=11, y=13)
     assert not canvas._backend._pressed_buttons
@@ -1519,3 +1527,25 @@ def test_host_namespace_command_inventory_returns_plain_names(want_objects):
         root.tk.call('namespace', 'delete', '::host')
         root.update_idletasks()
         root.destroy()
+
+
+@pytest.mark.parametrize('button', [4, 5])
+def test_legacy_wheel_buttons_are_distinct_from_tk9_extra_buttons(application, button):
+    import tkinter as tk
+    canvas = input_canvas(application)
+    wheels, presses = [], []
+    canvas.events.mouse_wheel.connect(wheels.append)
+    canvas.events.mouse_press.connect(presses.append)
+    event = tk.Event()
+    event.num, event.x, event.y, event.state = button, 11, 13, 0
+    event.widget, event.delta = canvas.native, 0
+    canvas._backend._on_press(event)
+    if sys.platform.startswith('linux') and tk.TkVersion < 8.7:
+        assert not presses
+        assert [tuple(value.delta) for value in wheels] == [(0, 1 if button == 4 else -1)]
+    else:
+        assert not wheels
+        assert len(presses) == 1 and presses[0].button == button
+    canvas._backend._on_release(event)
+    assert not canvas._backend._pressed_buttons
+    canvas.close()

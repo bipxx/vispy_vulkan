@@ -111,6 +111,13 @@ def _tcl_commands(root):
     return commands
 
 
+def _legacy_wheel_button(event):
+    # TIP 474 uses MouseWheel on X11 from Tk 8.7 onward; script buttons4/5
+    # are then extra mouse buttons, not the old X11 wheel notifications.
+    return (sys.platform.startswith('linux') and tk.TkVersion < 8.7
+            and getattr(event, 'num', None) in (4, 5))
+
+
 class _Cleanup:
     """Finish independent release steps; preserve the first failure and trace."""
     def __init__(self):
@@ -587,7 +594,7 @@ class CanvasBackend(BaseCanvasBackend):
         self._vispy_mouse_move(**self._mouse(event))
 
     def _on_press(self, event):
-        if event.num in (4, 5) and sys.platform.startswith('linux'):
+        if _legacy_wheel_button(event):
             self._on_wheel(event)
             return
         self._widget.focus_set()
@@ -596,7 +603,7 @@ class CanvasBackend(BaseCanvasBackend):
         self._vispy_mouse_press(button=button, **self._mouse(event))
 
     def _on_release(self, event):
-        if event.num not in (4, 5) or not sys.platform.startswith('linux'):
+        if not _legacy_wheel_button(event):
             button = {1: 1, 2: 3, 3: 2}.get(event.num, event.num)
             self._pressed_buttons.discard(button)
             self._vispy_mouse_release(button=button, **self._mouse(event))
@@ -619,7 +626,7 @@ class CanvasBackend(BaseCanvasBackend):
 
     def _on_wheel(self, event):
         num = getattr(event, 'num', None)
-        delta = (1 if num == 4 else -1) if sys.platform.startswith('linux') and num in (4, 5) else event.delta / (
+        delta = (1 if num == 4 else -1) if _legacy_wheel_button(event) else event.delta / (
             1 if sys.platform == 'darwin' else 120)
         self._vispy_canvas.events.mouse_wheel(delta=(0, delta), **self._mouse(event))
 

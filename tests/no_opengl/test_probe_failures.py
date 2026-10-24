@@ -53,10 +53,20 @@ def test_binding_option_is_an_enum_not_a_filesystem_path(tmp_path):
                              '--binding', 'pyqt6', '--gates', 'imports', '--output', str(report),
                              '--workflow-id', 'tk-state', '--covered-feature', 'app.canvas', '--', '--literal', '--', 'value'],
                             capture_output=True, text=True)
-    assert result.returncode == 0, result.stdout + result.stderr + _failure_reports(report)
     value = json.loads(report.read_text())
     worker = json.loads(Path(value['worker_report']).read_text())
-    assert value['status'] == 'PASS_IMPORT_GATE_ONLY' and worker['binding'] == 'pyqt6'
+    assert worker['status'] == 'PASS_SCENARIO' and worker['binding'] == 'pyqt6', _failure_reports(report)
+    assert value['process_exit'] == 0 and not worker.get('error') and not worker.get('cleanup_error')
+    # This CPU test checks CLI binding/argument plumbing, not platform admission.
+    # A Python host can preload a GL framework before the script (macOS does).
+    # Preserve that native failure; never turn it into an import-only pass.
+    violations = value['gates']['violations']
+    if violations:
+        assert all(item['kind'] == 'native_load' for item in violations), _failure_reports(report)
+        assert value['gates']['no_gl_loads'] == 'FAIL'
+        assert value['status'] == 'FAIL' and result.returncode == 1, _failure_reports(report)
+    else:
+        assert value['status'] == 'PASS_IMPORT_GATE_ONLY' and result.returncode == 0, _failure_reports(report)
     assert value['workflow'] == worker['workflow']
     assert value['workflow']['id'] == 'tk-state' and value['workflow']['features'] == ['app.canvas']
     assert value['workflow']['arguments'] == ['--literal', '--', 'value']
