@@ -10,7 +10,7 @@ import time
 import traceback
 
 
-def run():
+def run(*, cleanup_report=None):
     import tkinter as tk
     import numpy as np
     from vispy import app, gloo, _dawn
@@ -123,8 +123,10 @@ def run():
         def cleanup(callback, *args):
             try:
                 callback(*args)
+                return True
             except BaseException:
                 errors.append(sys.exc_info())
+                return False
 
         if timer is not None:
             cleanup(timer.stop)
@@ -147,8 +149,7 @@ def run():
             root.event_generate('<<HostResourcePing>>')
             assert host_events == ['host']
 
-        if primary[0] is None and not errors:
-            cleanup(verify_host)
+        host_verified = not errors and cleanup(verify_host)
         if host_job is not None:
             cleanup(root.after_cancel, host_job)
         if host_binding is not None:
@@ -156,6 +157,10 @@ def run():
         # Explicit host teardown; never move this idle drain into VisPy quit.
         cleanup(root.update_idletasks)
         cleanup(root.destroy)
+        if cleanup_report is not None:
+            cleanup_report.update(host_survived=bool(host_verified), secondary_errors=len(errors),
+                                  timer_stopped=timer is not None and not timer.running
+                                  and timer._backend._job is None)
         if errors:
             for error in errors:
                 traceback.print_exception(*error)

@@ -953,7 +953,7 @@ def test_current_candidate_preparation_preserves_full_unqualified_scope():
     from tools.compatibility_candidate import DEFAULT, validate_candidate
     result = validate_candidate(inventory.read_json(DEFAULT))
     assert result['proposed_pairs'] == 30 and result['canonical_required_pairs_preserved'] == 142
-    assert result['workflows'] == 2
+    assert result['workflows'] == 3
     assert not result['reviewed'] and not result['qualified'] and not result['installable']
 
 
@@ -1062,3 +1062,27 @@ def test_candidate_scope_review_is_bound_and_never_promotes_qualification(exampl
     candidate['proposals'][0]['scope'] = 'Changed after review.'
     with pytest.raises(inventory.InventoryError, match='stale/wrong candidate review'):
         validate_candidate(seal(candidate), root)
+
+
+def test_composite_scenario_pins_all_sibling_inputs_and_shutdown_gauges():
+    from tools import tkinter_failure_scenario as scenario
+    assert scenario.LIVE_GAUGES == LIVE_GAUGES
+    assert set(scenario.SCENARIO_INPUTS) == {'tkinter_state_scenario', 'tkinter_resource_scenario'}
+    for name, expected in scenario.SCENARIO_INPUTS.items():
+        path = Path(scenario.__file__).with_name(name + '.py')
+        assert hashlib.sha256(path.read_bytes()).hexdigest() == expected
+
+
+@pytest.mark.parametrize('when', ['before', 'during'])
+def test_composite_scenario_rejects_changed_sibling_bytes(monkeypatch, tmp_path, when):
+    from tools import tkinter_failure_scenario as scenario
+    parent = tmp_path / 'composite.py'
+    sibling = tmp_path / 'child.py'
+    source = b"def run():\n    from pathlib import Path\n    Path(__file__).write_bytes(b'changed during execution')\n    return {'status': 'PASS'}\n"
+    sibling.write_bytes(source)
+    monkeypatch.setattr(scenario, '__file__', str(parent))
+    monkeypatch.setattr(scenario, 'SCENARIO_INPUTS', {'child': hashlib.sha256(source).hexdigest()})
+    if when == 'before':
+        sibling.write_bytes(b"def run(): return {'status': 'PASS'}")
+    with pytest.raises(AssertionError, match='changed scenario input'):
+        scenario._scenario('child')()

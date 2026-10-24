@@ -2,7 +2,7 @@
   "schema": 1,
   "phase": "development",
   "id": "tk-state-resource-1",
-  "manifest_sha256": "80a8634166a0ec36af46ddaa7a2c410c5000c5da5e2f03c4999252f985f05339",
+  "manifest_sha256": "34100c0aa53575c1d94d68a792c0a43a1af30534c43a9712c928c3562571f0e0",
   "product_source_commit": "c7e191ee8ee506d4ba6244eaa217efceb43d115c",
   "upstream_commit": "117b054598f4758b598f4b8f48feea48c11fe7b0",
   "ledger": {
@@ -811,7 +811,7 @@
           "expected": "Actual displayed categorical colors and full-target RGBA match independent expectations.",
           "source": {
             "path": "tests/native/test_tkinter_state_scenario.py",
-            "sha256": "8122a424d0544f7b9d7a99beb0f8acd5790a56bdc532833848772eec3e1afeea"
+            "sha256": "28b8b7b7216c1216bd5827304e76bf54696f2e45091b53dbbbe928ddd27de5e6"
           }
         },
         {
@@ -821,7 +821,7 @@
           "expected": "Both consumers observe the ordered color/resource update.",
           "source": {
             "path": "tests/native/test_tkinter_state_scenario.py",
-            "sha256": "8122a424d0544f7b9d7a99beb0f8acd5790a56bdc532833848772eec3e1afeea"
+            "sha256": "28b8b7b7216c1216bd5827304e76bf54696f2e45091b53dbbbe928ddd27de5e6"
           }
         },
         {
@@ -851,7 +851,7 @@
       "id": "tk-resource-timer",
       "script": {
         "path": "tools/tkinter_resource_scenario.py",
-        "sha256": "e6bc3903af4abc8f860b01b5ac810bb2bf74feeb892d8f1b48475d94d954c94e"
+        "sha256": "2e7cdcae06f62a58ec57a8de94ef2b72a532c124b41792d2d2cd194a8c3f155a"
       },
       "profiles": [
         "windows-gpu-tk86-cp312-development",
@@ -935,7 +935,7 @@
           "expected": "Actual displayed categorical colors and full-target RGBA match independent expectations.",
           "source": {
             "path": "tests/native/test_tkinter_state_scenario.py",
-            "sha256": "8122a424d0544f7b9d7a99beb0f8acd5790a56bdc532833848772eec3e1afeea"
+            "sha256": "28b8b7b7216c1216bd5827304e76bf54696f2e45091b53dbbbe928ddd27de5e6"
           }
         },
         {
@@ -945,7 +945,7 @@
           "expected": "Both consumers observe the ordered color/resource update.",
           "source": {
             "path": "tests/native/test_tkinter_state_scenario.py",
-            "sha256": "8122a424d0544f7b9d7a99beb0f8acd5790a56bdc532833848772eec3e1afeea"
+            "sha256": "28b8b7b7216c1216bd5827304e76bf54696f2e45091b53dbbbe928ddd27de5e6"
           }
         },
         {
@@ -955,7 +955,7 @@
           "expected": "Original timer upload error reaches caller; all scoped counters return exactly to their baseline. Outer worker separately enforces nine-zero process shutdown.",
           "source": {
             "path": "tests/native/test_tkinter_state_scenario.py",
-            "sha256": "8122a424d0544f7b9d7a99beb0f8acd5790a56bdc532833848772eec3e1afeea"
+            "sha256": "28b8b7b7216c1216bd5827304e76bf54696f2e45091b53dbbbe928ddd27de5e6"
           }
         },
         {
@@ -965,11 +965,141 @@
           "expected": "Surviving widget and shared resources render expected blue after native device recreation.",
           "source": {
             "path": "tests/native/test_tkinter_state_scenario.py",
-            "sha256": "8122a424d0544f7b9d7a99beb0f8acd5790a56bdc532833848772eec3e1afeea"
+            "sha256": "28b8b7b7216c1216bd5827304e76bf54696f2e45091b53dbbbe928ddd27de5e6"
           }
         }
       ],
       "expected": "Both targets red then green from one public timer tick; blue survivor after first close and device loss; host jobs/binding preserved."
+    },
+    {
+      "id": "tk-state-resource-failures",
+      "script": {
+        "path": "tools/tkinter_failure_scenario.py",
+        "sha256": "5e863fa46275e388ea229d6ea447a0052140b591adec8f4b2c70ccf61c47d765"
+      },
+      "profiles": [
+        "windows-gpu-tk86-cp312-development",
+        "wsl-software-tk86-cp312-development"
+      ],
+      "features": [
+        "tk.backend.raster",
+        "tk.application.manual",
+        "tk.canvas.basic",
+        "tk.context.current",
+        "tk.context.shared",
+        "tk.canvas.recovery",
+        "tk.timer.once",
+        "tk.gl.flush",
+        "tk.wrappers.submission",
+        "tk.wrappers.raster",
+        "tk.readback.rgba",
+        "tk.object.delete",
+        "tk.buffer.triangle",
+        "tk.texture.rgba8",
+        "tk.program.texture"
+      ],
+      "launch": [
+        "{consumer_python}",
+        "tools/tkinter_failure_scenario.py"
+      ],
+      "acceptance": [
+        {
+          "kind": "ordinary",
+          "nodeid": "tests/native/test_tkinter_state_scenario.py::test_composite_observed_failure_and_recovery_scenario",
+          "cases": 1,
+          "expected": "Both ordinary state and shared-resource GPU/Tk output, host ownership and actual submission assertions pass.",
+          "source": {
+            "path": "tests/native/test_tkinter_state_scenario.py",
+            "sha256": "28b8b7b7216c1216bd5827304e76bf54696f2e45091b53dbbbe928ddd27de5e6"
+          }
+        },
+        {
+          "kind": "mutation",
+          "nodeid": "tests/native/test_tkinter_state_scenario.py::test_composite_observed_failure_and_recovery_scenario",
+          "cases": 1,
+          "expected": "Public Timer uploads green once; survivor blue and host-owned work remain correct.",
+          "source": {
+            "path": "tests/native/test_tkinter_state_scenario.py",
+            "sha256": "28b8b7b7216c1216bd5827304e76bf54696f2e45091b53dbbbe928ddd27de5e6"
+          }
+        },
+        {
+          "kind": "failure",
+          "nodeid": "tests/native/test_tkinter_state_scenario.py::test_composite_observed_failure_and_recovery_scenario",
+          "cases": 1,
+          "expected": "Green upload fault and external-loop native progress faults in both ready callback orders are injected; original errors/tracebacks verified exactly once, failed Timer stopped, host work preserved and scoped gauges return to baseline.",
+          "source": {
+            "path": "tests/native/test_tkinter_state_scenario.py",
+            "sha256": "28b8b7b7216c1216bd5827304e76bf54696f2e45091b53dbbbe928ddd27de5e6"
+          }
+        },
+        {
+          "kind": "recovery",
+          "nodeid": "tests/native/test_tkinter_state_scenario.py::test_composite_observed_failure_and_recovery_scenario",
+          "cases": 1,
+          "expected": "Explicit fresh public resource workflow and redraw retry succeed; exact blue output and device recreation assertions pass after injections are removed.",
+          "source": {
+            "path": "tests/native/test_tkinter_state_scenario.py",
+            "sha256": "28b8b7b7216c1216bd5827304e76bf54696f2e45091b53dbbbe928ddd27de5e6"
+          }
+        }
+      ],
+      "expected": "All required ordinary/mutation/failure/recovery branches assert conjunctively in one pinned composite process. Unexpected or missing errors, failed cleanup/recovery or changed sibling script bytes fail; outer installed/member/absence gates still required.",
+      "observer": [
+        "{controller_python}",
+        "tools/audit_no_opengl.py",
+        "run",
+        "--python",
+        "{consumer_python}",
+        "--wheel",
+        "{wheel}",
+        "--scenario",
+        "script",
+        "--script",
+        "tools/tkinter_failure_scenario.py",
+        "--workflow-id",
+        "tk-state-resource-failures",
+        "--covered-feature",
+        "tk.backend.raster",
+        "--covered-feature",
+        "tk.application.manual",
+        "--covered-feature",
+        "tk.canvas.basic",
+        "--covered-feature",
+        "tk.context.current",
+        "--covered-feature",
+        "tk.context.shared",
+        "--covered-feature",
+        "tk.canvas.recovery",
+        "--covered-feature",
+        "tk.timer.once",
+        "--covered-feature",
+        "tk.gl.flush",
+        "--covered-feature",
+        "tk.wrappers.submission",
+        "--covered-feature",
+        "tk.wrappers.raster",
+        "--covered-feature",
+        "tk.readback.rgba",
+        "--covered-feature",
+        "tk.object.delete",
+        "--covered-feature",
+        "tk.buffer.triangle",
+        "--covered-feature",
+        "tk.texture.rgba8",
+        "--covered-feature",
+        "tk.program.texture",
+        "--dependencies-report",
+        "{dependency_report}",
+        "--policy",
+        "deny",
+        "--output",
+        "{evidence_dir}/tk-state-resource-failures.json"
+      ],
+      "modes": [
+        "standalone",
+        "embedded"
+      ]
     }
   ],
   "reviews": {
@@ -1010,7 +1140,7 @@
     },
     {
       "path": "docs/superpowers/specs/2026-10-24-vispy-compatibility-gap-closure.md",
-      "sha256": "682315f92500eb6f63976c11871fa17bd6f50348215b1fea6def50a7de68f5f3"
+      "sha256": "4e0cc0e9617cb450d14cf98b84b4927b98144dd07d0bd264f5287e670cd577b4"
     },
     {
       "path": "compat/vispy-candidate.schema.json",

@@ -1246,8 +1246,8 @@ v1 preparation cannot claim installability, qualification or release completion.
 Other legal-state/shader/backend/host requirements and experimental hardware
 scopes remain in force. Sources, meaningful failures and actual test exits/waits
 are retained in local `build/runs/candidate-workflow-24/`. Its terminal manifest
-and verified cleanup receipt are still pending; source totals do not close that
-retention task.
+and cleanup receipt now verify 131 retained files and removal of 6,063 scratch
+files (61,298,281 bytes); the separate source/qualification gates remain open.
 
 Final preparation/protocol checks pass 177 cases on Windows and WSL. The
 recovery watchdog retains its 1000 ms deadline; its owner now cancels it before
@@ -1417,3 +1417,29 @@ runtime source commit when runtime bytes are unchanged. Documentation-only work
 uses existing environments for reference/schema checks, with no native build,
 new environment or source snapshot. Never claim a terminal cleanup receipt
 before the manifest, exact plan/application and retained-hash verification exist.
+
+
+## Composite failure/recovery source checkpoint (P3, EV-3,4)
+
+The third candidate workflow, `tools/tkinter_failure_scenario.py`, now executes
+ordinary state/resource behavior, a controlled Timer upload fault and explicit
+resource/device recovery, plus both native-progress callback orders through an
+actual borrowed Tk mainloop. The harness checks original errors/tracebacks,
+exactly-once progress delivery, stopped public Timer/job, scoped gauge baseline,
+blue survivor/recovery output and unrelated host job/binding preservation.
+Expected errors pass only after all assertions; missing injections, wrong errors,
+failed recovery or secondary cleanup errors are rejected by four native controls.
+Two CPU tamper controls
+reject sibling script changes before/during execution; a third pins the full
+sibling set and nine gauge names to the original policy.
+
+All eight affected native cases pass on Windows and WSL software; direct script
+entry points also exit zero with nine zero shutdown gauges. No runtime package
+or native binary changed. Historical ordinary-script observations retain their
+original identities; the new composite pins exact sibling bytes and needs those source
+inputs alongside it for eventual isolated observation. Preparation now names
+three workflows with the same 15 proposals/30 pairs and all 142 original required
+pairs preserved. This does not implement the qualification index, canonical
+criterion/conservation mappings, independent reviews or installed absence gates.
+The new packet retains its sources, original failures and actual exits/waits in
+`build/runs/observed-failures-25/`; terminal cleanup must be verified separately.

@@ -3,7 +3,7 @@
 The concrete development declaration is
 [`candidate.json`](../compat/candidates/tk-state-resource-1/candidate.json).
 It records 15 proposed behavioral subsets and 30 proposed feature/profile pairs
-for Windows Vulkan GPU and WSL software Vulkan, with two executable workflows.
+for Windows Vulkan GPU and WSL software Vulkan, with three executable workflows.
 These are proposal counts, not a VisPy completeness denominator.
 
 All 142 original required pairs remain unchanged in the canonical v2 inventory.
@@ -20,6 +20,7 @@ their distinct existing status.
 | --- | --- |
 | `tools/tkinter_state_scenario.py` | Embedded red and standalone blue targets, real input/host binding, both flush routes, independent submission/completion/presentation counters, ordered green/blue readback, survivor redraw and host ownership. |
 | `tools/tkinter_resource_scenario.py` | Shared Program, VertexBuffer and RGBA8 Texture2D; exact red targets; one public Timer callback uploads green and stops itself; blue survivor after first-consumer close; same widget/resources recover after native device recreation; explicit resource retirement and preserved host jobs/binding. |
+| `tools/tkinter_failure_scenario.py` | Composite state/resource flow; a green-upload fault with original traceback and stopped public Timer, exact baseline cleanup, fresh resource/device recovery, and native-progress faults in both callback orders delivered once through a real external Tk loop, followed by explicit redraw recovery and preserved host work. |
 
 The resource flow waits for a displayed image matching the *current* physical
 extent and expected color. A PhotoImage from an earlier requested extent is not
@@ -73,7 +74,8 @@ observer scripts alone do not prove all failure/recovery branches.
 
 ## Evidence and next work
 
-The two workflow fixtures and failure control pass on both development profiles.
+The original ordinary workflows and failure control have historical source evidence
+on both development profiles; the composite checkpoint below adds observed-script-ready branches.
 Final affected suites pass 429 Windows and 415 WSL cases, including unchanged
 strict process-wide shutdown checks. Preparation controls reject identity and
 scope shortcuts, including changed fixtures/verifiers, missing build/native
@@ -90,8 +92,8 @@ remaining method/example/event inventory and canonical conservation mappings,
 then exact wheel/consumer/functional/observer/control/CI and final promotion
 evidence. Existing legal-state, shader, host and hardware requirements remain.
 Preferred sources and original failures are retained locally in
-`build/runs/candidate-workflow-24/`. Its terminal manifest and verified cleanup
-receipt remain pending.
+`build/runs/candidate-workflow-24/`. Its terminal manifest and cleanup receipt now
+verify 131 retained files and removal of 6,063 scratch files (61,298,281 bytes).
 
 The final native profiles run one at a time on this shared machine. Earlier
 concurrent runs hit the existing recovery watchdog. A real Tcl control showed
@@ -100,3 +102,29 @@ its watchdog on successful exit. Two before-failing loop-mode controls cover
 that correction. Its one-second deadline and rendering/generation assertions
 are unchanged. All original failures and launch/configuration errors remain
 retained. Final CPU preparation/protocol selections pass 177 cases per platform.
+
+## Composite failure/recovery source checkpoint
+
+The third script runs ordinary state output, a controlled Timer upload failure,
+resource/device recovery and both progress callback orders conjunctively. Its
+expected-error harness verifies the actual exception/traceback and public Timer
+stopped state. Native progress is delivered once through the borrowed root's
+actual mainloop, then retries explicitly and presents exact blue. Teardown
+preserves unrelated host jobs/bindings and attempts independent cleanup while
+preserving a primary error. All nine global gauges remain strict at shutdown.
+
+Sibling state/resource scripts are located relative to the composite file and
+hash-checked before and after execution. The composite does not import another
+checkout's tools package. Retain those exact sibling inputs alongside it for an
+isolated observer run; missing/changed inputs fail. CPU controls cover changed
+inputs before/during execution; native controls reject absent injection, a wrong
+exception, failed recovery and secondary cleanup errors. The canonical proposal/seed counts remain 15/30
+and 142; source/scope reviews and qualification remain false.
+
+Eight affected native cases pass per development platform. The composite also
+runs as an actual script entry point on Windows and WSL software with zero exits
+and all nine shutdown gauges zero. This is source evidence, not an installed
+wheel audit or the three absence gates. Exact installed origin, criterion-level
+canonical mappings, review and current-artifact proof remain open. The retained
+packet is `build/runs/observed-failures-25/`; terminal cleanup is reported there
+only after its exact plan has been applied and retained hashes verified.

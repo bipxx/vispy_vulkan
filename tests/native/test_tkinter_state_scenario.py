@@ -62,3 +62,43 @@ def test_resource_timer_failure_keeps_original_error_and_retires_resources(monke
     after = {key: state[key] for key in LIVE_GAUGES}
     assert after == baseline, {'before': baseline, 'after': after}
     print({'resource_cleanup_baseline': baseline, 'resource_cleanup_after': after})
+
+
+def test_composite_observed_failure_and_recovery_scenario():
+    from tools.tkinter_failure_scenario import run
+    result = run()
+    assert result['status'] == 'PASS'
+    import json
+    print(json.dumps(result, sort_keys=True))
+    resource = result['resource_failure_recovery']
+    assert resource['injections'] == ['green-upload']
+    assert resource['baseline'] == resource['after_failure']
+    assert resource['recovery']['host_survived']
+    progress = result['native_progress_failure_recovery']
+    assert [item['callback_order'] for item in progress] == ['poll', 'draw']
+    assert all(item['deliveries'] == item['injections'] == 1 for item in progress)
+
+
+@pytest.mark.parametrize('fault', ['missing-injection', 'wrong-exception', 'failed-recovery', 'secondary-cleanup'])
+def test_observed_failure_harness_rejects_incomplete_proof(monkeypatch, fault):
+    from tools import tkinter_failure_scenario as scenario
+    real = scenario._scenario('tkinter_resource_scenario')
+    calls = []
+
+    def substitute(**kwargs):
+        calls.append(True)
+        if fault == 'missing-injection':
+            return {'status': 'PASS'}
+        if fault == 'wrong-exception':
+            raise ValueError('unrelated callback failure')
+        if len(calls) == 1:
+            try:
+                return real(**kwargs)
+            finally:
+                if fault == 'secondary-cleanup':
+                    kwargs['cleanup_report']['secondary_errors'] = 1
+        return {'status': 'FAIL'}
+
+    monkeypatch.setattr(scenario, '_scenario', lambda name: substitute)
+    with pytest.raises(AssertionError):
+        scenario._resource_failure()
