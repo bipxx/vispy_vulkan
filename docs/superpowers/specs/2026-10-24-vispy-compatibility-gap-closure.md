@@ -1793,3 +1793,31 @@ H4 exact-artifact index/admission or P5 final review/current CI. No installed wh
 SDK, native renderer, environment or upstream source history is rebuilt. Retained
 source, actual commands/exits/waits and terminal cleanup disposition are in local
 `build/runs/execution-ledger-32/`; only its applied receipt proves cleanup.
+
+## Observed-child functional-result source checkpoint (H3, EV-2..4)
+
+The [functional-result contract](../../functional-results.md) now captures an
+explicit JSON export from the actual isolated worker's returning namespace.
+The worker binds its PID/workflow/mode and payload hash; the controller binds
+the complete envelope and original worker-report hash. The existing normalizer
+checks discovery and replay functional edges alongside every original absence,
+member/environment/control/shutdown requirement. No stdout/result-file fallback,
+new absence gate or success override is introduced. Later audit/cleanup failure
+still fails even when the earlier functional payload was good.
+
+The Tk contract enforces the exact ordinary/resource, two progress orders and
+four submission route/delay branches, including actual retirement, counter/color,
+error/traceback, explicit retry and cleanup/restoration records. Execution mappings
+now bind each selected criterion to its exact contract/branch IDs; substituting
+another existing branch is rejected after resealing. The same existing scope
+approval covers these fields through its execution-map digest. Complete collector
+Python/C sources and the native-image snapshot helper are frozen in preparation.
+
+CPU controls and real isolated source-wrapper runs exercise transport and actual
+Tk results using unchanged native artifacts. Source mode, wrapper identity and
+arguments remain explicit; these are not installed candidate workflow or native
+absence/control receipts. Independent cumulative source/scope review, exact
+artifact index and installed qualification, final CI/promotion and all original
+host/platform/full parity requirements remain open. No wheel, SDK, dependency
+source history or environment is rebuilt. Source/evidence/actual exits/waits and
+terminal cleanup disposition are retained in `build/runs/worker-results-33/`.

@@ -166,3 +166,12 @@ baseline or 142 required parents. Source/scope review and positive execution pro
 are pending. The map and existing scope approval have acyclic content bindings;
 no new auditor or qualification bypass is introduced. Validate it alongside the
 preparation/coverage declarations before the future installed-evidence handoff.
+
+## Observed functional transport
+
+The [functional-result contract](functional-results.md) now binds the returned
+scenario export to the actual isolated worker and controller report chain.
+Preparation freezes all collector Python/C sources and its snapshot helper;
+execution mappings bind criterion-specific branch IDs. Actual source-mode results
+do not qualify an installed wheel. Source/scope review and the exact-artifact
+index, original absence/control/shutdown/CI and promotion requirements stay open.

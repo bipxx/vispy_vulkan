@@ -16,9 +16,11 @@ import re
 try:
     from .compatibility_inventory import ROOT, GATES, check, file_ref, read_json
     from .no_opengl.policy import LIVE_GAUGES
+    from .no_opengl.functional import WORKFLOW as FUNCTIONAL_WORKFLOW, digest as functional_digest, validate_bound_result
 except ImportError:
     from compatibility_inventory import ROOT, GATES, check, file_ref, read_json
     from no_opengl.policy import LIVE_GAUGES
+    from no_opengl.functional import WORKFLOW as FUNCTIONAL_WORKFLOW, digest as functional_digest, validate_bound_result
 
 CORE_CONTROLS = ('safe_control_exits_zero', 'safe_control_has_no_gl_violation',
                  'native_lookup_without_call_detected', 'transient_forbidden_load_detected',
@@ -71,6 +73,18 @@ def normalize(root, row, references):
               'runtime process failed or was not waited')
         check(report.get('worker_report_sha256') == references[child_name]['sha256'], 'runtime binds a different worker report')
         check(child.get('status') == 'PASS_SCENARIO' and not child.get('error') and not child.get('cleanup_error'), 'worker scenario/cleanup failed')
+        if 'functional_result' in child or workflow['id'] == FUNCTIONAL_WORKFLOW:
+            try:
+                validate_bound_result(child, installed=True)
+            except (ValueError, TypeError, KeyError) as error:
+                check(False, str(error))
+            check(report.get('functional_result_sha256') == functional_digest(child['functional_result']),
+                  'controller binds a different functional result')
+            check({'tools/no_opengl/functional.py', 'tools/mesh_layout_process.py'}
+                  <= set(report.get('collector_identity', {}).get('sources', {})),
+                  'functional result lacks collector implementation identity')
+        else:
+            check(report.get('functional_result_sha256') is None, 'controller claims an absent functional result')
         check(child.get('wheel_sha256') == wheel and type(child.get('wheel_members_verified')) is int
               and child['wheel_members_verified'] > 0, 'worker lacks exact installed member audit')
         check(not child.get('forbidden_modules_present') and child.get('native_cleanup_performed') is True

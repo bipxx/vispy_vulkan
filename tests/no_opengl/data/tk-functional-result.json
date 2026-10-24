@@ -1,0 +1,414 @@
+{
+  "schema": 1,
+  "contract": "tk-state-resource-1",
+  "status": "PASS",
+  "scope": "Synthetic CPU contract fixture; never installed or hardware qualification.",
+  "ordinary_state": {
+    "scope": "Synthetic ordinary state.",
+    "submissions": [
+      {
+        "route": "gloo.flush",
+        "before": {
+          "dawn_queue_submits": 10,
+          "finish_calls": 1,
+          "completion_waits": 2,
+          "application_presents": 3
+        },
+        "after": {
+          "dawn_queue_submits": 11,
+          "finish_calls": 1,
+          "completion_waits": 2,
+          "application_presents": 3
+        },
+        "readback": [
+          0,
+          128,
+          0,
+          255
+        ]
+      },
+      {
+        "route": "glFlush",
+        "before": {
+          "dawn_queue_submits": 10,
+          "finish_calls": 1,
+          "completion_waits": 2,
+          "application_presents": 3
+        },
+        "after": {
+          "dawn_queue_submits": 11,
+          "finish_calls": 1,
+          "completion_waits": 2,
+          "application_presents": 3
+        },
+        "readback": [
+          0,
+          0,
+          255,
+          255
+        ]
+      }
+    ],
+    "status": "PASS",
+    "tcl_patchlevel": "synthetic",
+    "tk_patchlevel": "synthetic"
+  },
+  "resource_failure_recovery": {
+    "branch_id": "resource.upload-recovery",
+    "status": "PASS",
+    "injections": [
+      "green-upload"
+    ],
+    "expected_error": {
+      "type": "ValueError",
+      "message": "observed resource timer upload failure",
+      "traceback": "Traceback (most recent call last):\n  File \"synthetic.py\", line1, in tick\n  File \"synthetic.py\", line1, in upload\nValueError: observed resource timer upload failure\n"
+    },
+    "baseline": {
+      "pending_tickets": 0,
+      "queued_frames": 0,
+      "live_buffer_bytes": 0,
+      "live_cpu_buffer_bytes": 0,
+      "live_texture_bytes": 0,
+      "canvas_texture_bytes": 0,
+      "transient_buffer_bytes": 0,
+      "line_resource_pool_busy_slots": 0,
+      "line_resource_pool_bytes": 0
+    },
+    "after_failure": {
+      "pending_tickets": 0,
+      "queued_frames": 0,
+      "live_buffer_bytes": 0,
+      "live_cpu_buffer_bytes": 0,
+      "live_texture_bytes": 0,
+      "canvas_texture_bytes": 0,
+      "transient_buffer_bytes": 0,
+      "line_resource_pool_busy_slots": 0,
+      "line_resource_pool_bytes": 0
+    },
+    "cleanup": {
+      "host_survived": true,
+      "secondary_errors": 0,
+      "timer_stopped": true
+    },
+    "timer_stopped": true,
+    "recovery": {
+      "scope": "Synthetic recovery.",
+      "device_recovered": true,
+      "timer_ticks": 1,
+      "shared": true,
+      "survivor_color": [
+        0,
+        0,
+        255,
+        255
+      ],
+      "physical_sizes": [
+        [
+          96,
+          64
+        ],
+        [
+          96,
+          64
+        ]
+      ],
+      "status": "PASS",
+      "host_survived": true
+    }
+  },
+  "native_progress_failure_recovery": [
+    {
+      "branch_id": "progress.poll",
+      "status": "PASS",
+      "callback_order": "poll",
+      "loop": "external",
+      "injections": 1,
+      "deliveries": 1,
+      "expected_error": "Traceback (most recent call last):\n  File \"synthetic.py\", line1, in fail\nValueError: observed native progress failure\n",
+      "recovered_color": [
+        0,
+        0,
+        255
+      ],
+      "host_preserved": true,
+      "polling_stopped": true,
+      "recovered_progress_enabled": true,
+      "cleanup_errors": 0
+    },
+    {
+      "branch_id": "progress.draw",
+      "status": "PASS",
+      "callback_order": "draw",
+      "loop": "external",
+      "injections": 1,
+      "deliveries": 1,
+      "expected_error": "Traceback (most recent call last):\n  File \"synthetic.py\", line1, in fail\nValueError: observed native progress failure\n",
+      "recovered_color": [
+        0,
+        0,
+        255
+      ],
+      "host_preserved": true,
+      "polling_stopped": true,
+      "recovered_progress_enabled": true,
+      "cleanup_errors": 0
+    }
+  ],
+  "submission_failure_recovery": [
+    {
+      "branch_id": "submission.gloo.immediate",
+      "route": "gloo",
+      "delayed_progress": false,
+      "expected_error": {
+        "type": "RuntimeError",
+        "message": "glFlush submission capacity exhausted",
+        "traceback": "Traceback (most recent call last):\n  File \"synthetic.py\", line1, in flush\nRuntimeError: glFlush submission capacity exhausted\n"
+      },
+      "before": {
+        "dawn_queue_submits": 10,
+        "finish_calls": 1,
+        "completion_waits": 2,
+        "application_presents": 3,
+        "pending_tickets": 1,
+        "pending_draws": 0
+      },
+      "blocked": {
+        "dawn_queue_submits": 10,
+        "finish_calls": 1,
+        "completion_waits": 2,
+        "application_presents": 3,
+        "pending_tickets": 1,
+        "pending_draws": 1
+      },
+      "early_progress": null,
+      "retired": {
+        "dawn_queue_submits": 10,
+        "finish_calls": 1,
+        "completion_waits": 2,
+        "application_presents": 3,
+        "pending_tickets": 0,
+        "pending_draws": 1
+      },
+      "resumed": {
+        "dawn_queue_submits": 11,
+        "finish_calls": 1,
+        "completion_waits": 2,
+        "application_presents": 3,
+        "pending_tickets": 1,
+        "pending_draws": 0
+      },
+      "readback": [
+        0,
+        128,
+        0,
+        255
+      ],
+      "presented_rgb": [
+        0,
+        0,
+        255
+      ],
+      "saved_frame_slots": 3,
+      "configured_frame_slots": 1,
+      "restored_frame_slots": 3,
+      "status": "PASS",
+      "host_preserved": true,
+      "cleanup_errors": 0
+    },
+    {
+      "branch_id": "submission.gloo.delayed",
+      "route": "gloo",
+      "delayed_progress": true,
+      "expected_error": {
+        "type": "RuntimeError",
+        "message": "glFlush submission capacity exhausted",
+        "traceback": "Traceback (most recent call last):\n  File \"synthetic.py\", line1, in flush\nRuntimeError: glFlush submission capacity exhausted\n"
+      },
+      "before": {
+        "dawn_queue_submits": 10,
+        "finish_calls": 1,
+        "completion_waits": 2,
+        "application_presents": 3,
+        "pending_tickets": 1,
+        "pending_draws": 0
+      },
+      "blocked": {
+        "dawn_queue_submits": 10,
+        "finish_calls": 1,
+        "completion_waits": 2,
+        "application_presents": 3,
+        "pending_tickets": 1,
+        "pending_draws": 1
+      },
+      "early_progress": {
+        "dawn_queue_submits": 10,
+        "finish_calls": 1,
+        "completion_waits": 2,
+        "application_presents": 3,
+        "pending_tickets": 1,
+        "pending_draws": 1
+      },
+      "retired": {
+        "dawn_queue_submits": 10,
+        "finish_calls": 1,
+        "completion_waits": 2,
+        "application_presents": 3,
+        "pending_tickets": 0,
+        "pending_draws": 1
+      },
+      "resumed": {
+        "dawn_queue_submits": 11,
+        "finish_calls": 1,
+        "completion_waits": 2,
+        "application_presents": 3,
+        "pending_tickets": 1,
+        "pending_draws": 0
+      },
+      "readback": [
+        0,
+        128,
+        0,
+        255
+      ],
+      "presented_rgb": [
+        0,
+        0,
+        255
+      ],
+      "saved_frame_slots": 3,
+      "configured_frame_slots": 1,
+      "restored_frame_slots": 3,
+      "status": "PASS",
+      "host_preserved": true,
+      "cleanup_errors": 0
+    },
+    {
+      "branch_id": "submission.raw.immediate",
+      "route": "raw",
+      "delayed_progress": false,
+      "expected_error": {
+        "type": "RuntimeError",
+        "message": "glFlush submission capacity exhausted",
+        "traceback": "Traceback (most recent call last):\n  File \"synthetic.py\", line1, in flush\nRuntimeError: glFlush submission capacity exhausted\n"
+      },
+      "before": {
+        "dawn_queue_submits": 10,
+        "finish_calls": 1,
+        "completion_waits": 2,
+        "application_presents": 3,
+        "pending_tickets": 1,
+        "pending_draws": 0
+      },
+      "blocked": {
+        "dawn_queue_submits": 10,
+        "finish_calls": 1,
+        "completion_waits": 2,
+        "application_presents": 3,
+        "pending_tickets": 1,
+        "pending_draws": 1
+      },
+      "early_progress": null,
+      "retired": {
+        "dawn_queue_submits": 10,
+        "finish_calls": 1,
+        "completion_waits": 2,
+        "application_presents": 3,
+        "pending_tickets": 0,
+        "pending_draws": 1
+      },
+      "resumed": {
+        "dawn_queue_submits": 11,
+        "finish_calls": 1,
+        "completion_waits": 2,
+        "application_presents": 3,
+        "pending_tickets": 1,
+        "pending_draws": 0
+      },
+      "readback": [
+        0,
+        128,
+        0,
+        255
+      ],
+      "presented_rgb": [
+        0,
+        0,
+        255
+      ],
+      "saved_frame_slots": 3,
+      "configured_frame_slots": 1,
+      "restored_frame_slots": 3,
+      "status": "PASS",
+      "host_preserved": true,
+      "cleanup_errors": 0
+    },
+    {
+      "branch_id": "submission.raw.delayed",
+      "route": "raw",
+      "delayed_progress": true,
+      "expected_error": {
+        "type": "RuntimeError",
+        "message": "glFlush submission capacity exhausted",
+        "traceback": "Traceback (most recent call last):\n  File \"synthetic.py\", line1, in flush\nRuntimeError: glFlush submission capacity exhausted\n"
+      },
+      "before": {
+        "dawn_queue_submits": 10,
+        "finish_calls": 1,
+        "completion_waits": 2,
+        "application_presents": 3,
+        "pending_tickets": 1,
+        "pending_draws": 0
+      },
+      "blocked": {
+        "dawn_queue_submits": 10,
+        "finish_calls": 1,
+        "completion_waits": 2,
+        "application_presents": 3,
+        "pending_tickets": 1,
+        "pending_draws": 1
+      },
+      "early_progress": {
+        "dawn_queue_submits": 10,
+        "finish_calls": 1,
+        "completion_waits": 2,
+        "application_presents": 3,
+        "pending_tickets": 1,
+        "pending_draws": 1
+      },
+      "retired": {
+        "dawn_queue_submits": 10,
+        "finish_calls": 1,
+        "completion_waits": 2,
+        "application_presents": 3,
+        "pending_tickets": 0,
+        "pending_draws": 1
+      },
+      "resumed": {
+        "dawn_queue_submits": 11,
+        "finish_calls": 1,
+        "completion_waits": 2,
+        "application_presents": 3,
+        "pending_tickets": 1,
+        "pending_draws": 0
+      },
+      "readback": [
+        0,
+        128,
+        0,
+        255
+      ],
+      "presented_rgb": [
+        0,
+        0,
+        255
+      ],
+      "saved_frame_slots": 3,
+      "configured_frame_slots": 1,
+      "restored_frame_slots": 3,
+      "status": "PASS",
+      "host_preserved": true,
+      "cleanup_errors": 0
+    }
+  ]
+}

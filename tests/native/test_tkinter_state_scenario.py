@@ -68,6 +68,8 @@ def test_composite_observed_failure_and_recovery_scenario():
     from tools.tkinter_failure_scenario import run
     result = run()
     assert result['status'] == 'PASS'
+    from tools.no_opengl.functional import validate_tk_result
+    assert validate_tk_result(result)['status'] == 'PASS_FUNCTIONAL_RESULT'
     import json
     print(json.dumps(result, sort_keys=True))
     resource = result['resource_failure_recovery']

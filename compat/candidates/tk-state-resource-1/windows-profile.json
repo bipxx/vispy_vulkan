@@ -62,8 +62,8 @@
   "native_inputs_sha256": "96d316a41aee83a50a5049ff11448e3060925fdb73986e0aa09a4e76b0dd2a75",
   "loaded_library_identities": {},
   "source_observation": {
-    "location": "build/runs/observed-submission-30/windows-verified-result.json",
-    "sha256": "7f187db14762b78b8df32e7815e82d4702a092889bda9c2d8dfd60e9e1c33764",
+    "location": "build/runs/worker-results-33/windows-native-current-result.json",
+    "sha256": "612fa107a2949dd39410934230dad7275461ce671f55264b87016d0dd7369f9c",
     "functional_report_sha256": "03068e7edccdf2b896766512a2b037728525147ebcd4584f4eed3f63d607f2a9",
     "cases": 18,
     "shutdown_gauges": {
@@ -77,9 +77,8 @@
       "line_resource_pool_busy_slots": 0,
       "line_resource_pool_bytes": 0
     },
-    "scope": "Focused composite submission/failure/recovery source acceptance. Historical broader observations retained separately; not installed or observer qualification.",
-    "observed_runtime_source_commit": "0e7b5b11788e6f6a87e4ef70ac231fa3ac73501f",
-    "reuse_basis": "All production Python/native/build/lock/license bytes except the Apple-only surface_metal.mm are unchanged from the observed0e7b5b11 tree. The Metal change adds its missing CATransaction declaration header and is not compiled by Windows/WSL. The current complete cross-platform input set now includes that previously omitted Objective-C++ source. Original source report, observed identity, native producer and qualification limits remain unchanged."
+    "scope": "Current closed composite result/source acceptance, NOT installed observation or hardware qualification. Original source observations retained separately.",
+    "observed_runtime_source_commit": "6345ceef42df1a64a7401a83c2d1a30384903cd1"
   },
   "limitations": [
     "Development observation only; no wheel or installed/observer admission.",
@@ -145,6 +144,26 @@
       "scope": "Focused affected source acceptance; original broad/failing reports retained separately; not installed qualification.",
       "observed_runtime_source_commit": "53194f10e5e4ed096f484985f773b636eb1b5109",
       "reuse_basis": "Production Python/native source bytes match the observed53194f10 tree. Only2CPU-contract include lists changed in CMakeLists; original report bytes, artifact/provenance and observed identity remain unchanged."
+    },
+    {
+      "location": "build/runs/observed-submission-30/windows-verified-result.json",
+      "sha256": "7f187db14762b78b8df32e7815e82d4702a092889bda9c2d8dfd60e9e1c33764",
+      "functional_report_sha256": "03068e7edccdf2b896766512a2b037728525147ebcd4584f4eed3f63d607f2a9",
+      "cases": 18,
+      "shutdown_gauges": {
+        "pending_tickets": 0,
+        "queued_frames": 0,
+        "live_buffer_bytes": 0,
+        "live_cpu_buffer_bytes": 0,
+        "live_texture_bytes": 0,
+        "canvas_texture_bytes": 0,
+        "transient_buffer_bytes": 0,
+        "line_resource_pool_busy_slots": 0,
+        "line_resource_pool_bytes": 0
+      },
+      "scope": "Focused composite submission/failure/recovery source acceptance. Historical broader observations retained separately; not installed or observer qualification.",
+      "observed_runtime_source_commit": "0e7b5b11788e6f6a87e4ef70ac231fa3ac73501f",
+      "reuse_basis": "All production Python/native/build/lock/license bytes except the Apple-only surface_metal.mm are unchanged from the observed0e7b5b11 tree. The Metal change adds its missing CATransaction declaration header and is not compiled by Windows/WSL. The current complete cross-platform input set now includes that previously omitted Objective-C++ source. Original source report, observed identity, native producer and qualification limits remain unchanged."
     }
   ]
 }

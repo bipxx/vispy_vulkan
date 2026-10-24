@@ -1,14 +1,14 @@
 {
   "schema": 1,
   "phase": "execution-preparation",
-  "manifest_sha256": "2b218ee0e47dc1cd51361b7bc7c632acf23d43a6f9875642f9a91be1c8b96f10",
+  "manifest_sha256": "d15b6fc63a878883a134ba75bf0cb01db6c2f74cd0806b447a490999e11a287c",
   "candidate": {
     "path": "compat/candidates/tk-state-resource-1/candidate.json",
-    "scope_sha256": "58b057c3684ccb1951a32ade85ddda5b3b2a3ec9a3c0348268deacc1458821f7"
+    "scope_sha256": "eb4be1e321e59c5847eff6696fa8730670d2c47a520e2d1cb4afc798e6a478c9"
   },
   "coverage": {
     "path": "compat/candidates/tk-state-resource-1/coverage.json",
-    "sha256": "8789ce35a2d1acae7b1ed831b93ee4d1c26378f7be2e78abfba8cd36b1d59a9c"
+    "sha256": "555426f8cb25288b53e921e283330967365b2c8f8ca24c37382c672bd804e844"
   },
   "baseline": {
     "path": "compat/vispy-compatibility.json",
@@ -16,7 +16,7 @@
   },
   "execution": {
     "path": "compat/candidates/tk-state-resource-1/execution-ledger.json",
-    "scope_sha256": "db360f3bad62bbe7bf002b1a99ab4f2e4fc6d00b87e304b7dc20952ea2b3ca53"
+    "scope_sha256": "c28bdd5fa7ba78f990ec67bc86c7caaafe394dd27906cbfe3425e392f1adaff7"
   },
   "mappings": [
     {
@@ -27,7 +27,14 @@
         "profile": "windows-gpu-tk86-cp312-development",
         "criterion": "tk.application.manual.failure"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.application.manual.mutation",
@@ -37,7 +44,14 @@
         "profile": "windows-gpu-tk86-cp312-development",
         "criterion": "tk.application.manual.mutation"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.application.manual.ordinary",
@@ -47,7 +61,14 @@
         "profile": "windows-gpu-tk86-cp312-development",
         "criterion": "tk.application.manual.ordinary"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "ordinary.state"
+        ]
+      }
     },
     {
       "criterion": "tk.application.manual.recovery",
@@ -57,7 +78,14 @@
         "profile": "windows-gpu-tk86-cp312-development",
         "criterion": "tk.application.manual.recovery"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.application.manual.failure",
@@ -67,7 +95,14 @@
         "profile": "wsl-software-tk90-cp31213-development",
         "criterion": "tk.application.manual.failure"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.application.manual.mutation",
@@ -77,7 +112,14 @@
         "profile": "wsl-software-tk90-cp31213-development",
         "criterion": "tk.application.manual.mutation"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.application.manual.ordinary",
@@ -87,7 +129,14 @@
         "profile": "wsl-software-tk90-cp31213-development",
         "criterion": "tk.application.manual.ordinary"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "ordinary.state"
+        ]
+      }
     },
     {
       "criterion": "tk.application.manual.recovery",
@@ -97,7 +146,14 @@
         "profile": "wsl-software-tk90-cp31213-development",
         "criterion": "tk.application.manual.recovery"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.backend.raster.failure",
@@ -107,7 +163,14 @@
         "profile": "windows-gpu-tk86-cp312-development",
         "criterion": "tk.backend.raster.failure"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.backend.raster.mutation",
@@ -117,7 +180,14 @@
         "profile": "windows-gpu-tk86-cp312-development",
         "criterion": "tk.backend.raster.mutation"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.backend.raster.ordinary",
@@ -127,7 +197,14 @@
         "profile": "windows-gpu-tk86-cp312-development",
         "criterion": "tk.backend.raster.ordinary"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "ordinary.state"
+        ]
+      }
     },
     {
       "criterion": "tk.backend.raster.recovery",
@@ -137,7 +214,14 @@
         "profile": "windows-gpu-tk86-cp312-development",
         "criterion": "tk.backend.raster.recovery"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.backend.raster.failure",
@@ -147,7 +231,14 @@
         "profile": "wsl-software-tk90-cp31213-development",
         "criterion": "tk.backend.raster.failure"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.backend.raster.mutation",
@@ -157,7 +248,14 @@
         "profile": "wsl-software-tk90-cp31213-development",
         "criterion": "tk.backend.raster.mutation"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.backend.raster.ordinary",
@@ -167,7 +265,14 @@
         "profile": "wsl-software-tk90-cp31213-development",
         "criterion": "tk.backend.raster.ordinary"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "ordinary.state"
+        ]
+      }
     },
     {
       "criterion": "tk.backend.raster.recovery",
@@ -177,7 +282,14 @@
         "profile": "wsl-software-tk90-cp31213-development",
         "criterion": "tk.backend.raster.recovery"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.buffer.triangle.failure",
@@ -187,7 +299,14 @@
         "profile": "windows-gpu-tk86-cp312-development",
         "criterion": "tk.buffer.triangle.failure"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.buffer.triangle.mutation",
@@ -197,7 +316,14 @@
         "profile": "windows-gpu-tk86-cp312-development",
         "criterion": "tk.buffer.triangle.mutation"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.buffer.triangle.ordinary",
@@ -207,7 +333,14 @@
         "profile": "windows-gpu-tk86-cp312-development",
         "criterion": "tk.buffer.triangle.ordinary"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.buffer.triangle.recovery",
@@ -217,7 +350,14 @@
         "profile": "windows-gpu-tk86-cp312-development",
         "criterion": "tk.buffer.triangle.recovery"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.buffer.triangle.failure",
@@ -227,7 +367,14 @@
         "profile": "wsl-software-tk90-cp31213-development",
         "criterion": "tk.buffer.triangle.failure"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.buffer.triangle.mutation",
@@ -237,7 +384,14 @@
         "profile": "wsl-software-tk90-cp31213-development",
         "criterion": "tk.buffer.triangle.mutation"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.buffer.triangle.ordinary",
@@ -247,7 +401,14 @@
         "profile": "wsl-software-tk90-cp31213-development",
         "criterion": "tk.buffer.triangle.ordinary"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.buffer.triangle.recovery",
@@ -257,7 +418,14 @@
         "profile": "wsl-software-tk90-cp31213-development",
         "criterion": "tk.buffer.triangle.recovery"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.canvas.basic.failure",
@@ -267,7 +435,14 @@
         "profile": "windows-gpu-tk86-cp312-development",
         "criterion": "tk.canvas.basic.failure"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.canvas.basic.mutation",
@@ -277,7 +452,14 @@
         "profile": "windows-gpu-tk86-cp312-development",
         "criterion": "tk.canvas.basic.mutation"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.canvas.basic.ordinary",
@@ -287,7 +469,14 @@
         "profile": "windows-gpu-tk86-cp312-development",
         "criterion": "tk.canvas.basic.ordinary"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "ordinary.state"
+        ]
+      }
     },
     {
       "criterion": "tk.canvas.basic.recovery",
@@ -297,7 +486,14 @@
         "profile": "windows-gpu-tk86-cp312-development",
         "criterion": "tk.canvas.basic.recovery"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.canvas.basic.failure",
@@ -307,7 +503,14 @@
         "profile": "wsl-software-tk90-cp31213-development",
         "criterion": "tk.canvas.basic.failure"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.canvas.basic.mutation",
@@ -317,7 +520,14 @@
         "profile": "wsl-software-tk90-cp31213-development",
         "criterion": "tk.canvas.basic.mutation"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.canvas.basic.ordinary",
@@ -327,7 +537,14 @@
         "profile": "wsl-software-tk90-cp31213-development",
         "criterion": "tk.canvas.basic.ordinary"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "ordinary.state"
+        ]
+      }
     },
     {
       "criterion": "tk.canvas.basic.recovery",
@@ -337,7 +554,14 @@
         "profile": "wsl-software-tk90-cp31213-development",
         "criterion": "tk.canvas.basic.recovery"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.canvas.recovery.failure",
@@ -347,7 +571,14 @@
         "profile": "windows-gpu-tk86-cp312-development",
         "criterion": "tk.canvas.recovery.failure"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.canvas.recovery.mutation",
@@ -357,7 +588,14 @@
         "profile": "windows-gpu-tk86-cp312-development",
         "criterion": "tk.canvas.recovery.mutation"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.canvas.recovery.ordinary",
@@ -367,7 +605,14 @@
         "profile": "windows-gpu-tk86-cp312-development",
         "criterion": "tk.canvas.recovery.ordinary"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.canvas.recovery.recovery",
@@ -377,7 +622,14 @@
         "profile": "windows-gpu-tk86-cp312-development",
         "criterion": "tk.canvas.recovery.recovery"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.canvas.recovery.failure",
@@ -387,7 +639,14 @@
         "profile": "wsl-software-tk90-cp31213-development",
         "criterion": "tk.canvas.recovery.failure"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.canvas.recovery.mutation",
@@ -397,7 +656,14 @@
         "profile": "wsl-software-tk90-cp31213-development",
         "criterion": "tk.canvas.recovery.mutation"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.canvas.recovery.ordinary",
@@ -407,7 +673,14 @@
         "profile": "wsl-software-tk90-cp31213-development",
         "criterion": "tk.canvas.recovery.ordinary"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.canvas.recovery.recovery",
@@ -417,7 +690,14 @@
         "profile": "wsl-software-tk90-cp31213-development",
         "criterion": "tk.canvas.recovery.recovery"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.context.current.failure",
@@ -427,7 +707,14 @@
         "profile": "windows-gpu-tk86-cp312-development",
         "criterion": "tk.context.current.failure"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.context.current.mutation",
@@ -437,7 +724,14 @@
         "profile": "windows-gpu-tk86-cp312-development",
         "criterion": "tk.context.current.mutation"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "ordinary.state"
+        ]
+      }
     },
     {
       "criterion": "tk.context.current.ordinary",
@@ -447,7 +741,14 @@
         "profile": "windows-gpu-tk86-cp312-development",
         "criterion": "tk.context.current.ordinary"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "ordinary.state"
+        ]
+      }
     },
     {
       "criterion": "tk.context.current.recovery",
@@ -457,7 +758,14 @@
         "profile": "windows-gpu-tk86-cp312-development",
         "criterion": "tk.context.current.recovery"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.context.current.failure",
@@ -467,7 +775,14 @@
         "profile": "wsl-software-tk90-cp31213-development",
         "criterion": "tk.context.current.failure"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.context.current.mutation",
@@ -477,7 +792,14 @@
         "profile": "wsl-software-tk90-cp31213-development",
         "criterion": "tk.context.current.mutation"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "ordinary.state"
+        ]
+      }
     },
     {
       "criterion": "tk.context.current.ordinary",
@@ -487,7 +809,14 @@
         "profile": "wsl-software-tk90-cp31213-development",
         "criterion": "tk.context.current.ordinary"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "ordinary.state"
+        ]
+      }
     },
     {
       "criterion": "tk.context.current.recovery",
@@ -497,7 +826,14 @@
         "profile": "wsl-software-tk90-cp31213-development",
         "criterion": "tk.context.current.recovery"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.context.shared.failure",
@@ -507,7 +843,14 @@
         "profile": "windows-gpu-tk86-cp312-development",
         "criterion": "tk.context.shared.failure"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.context.shared.mutation",
@@ -517,7 +860,14 @@
         "profile": "windows-gpu-tk86-cp312-development",
         "criterion": "tk.context.shared.mutation"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.context.shared.ordinary",
@@ -527,7 +877,14 @@
         "profile": "windows-gpu-tk86-cp312-development",
         "criterion": "tk.context.shared.ordinary"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.context.shared.recovery",
@@ -537,7 +894,14 @@
         "profile": "windows-gpu-tk86-cp312-development",
         "criterion": "tk.context.shared.recovery"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.context.shared.failure",
@@ -547,7 +911,14 @@
         "profile": "wsl-software-tk90-cp31213-development",
         "criterion": "tk.context.shared.failure"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.context.shared.mutation",
@@ -557,7 +928,14 @@
         "profile": "wsl-software-tk90-cp31213-development",
         "criterion": "tk.context.shared.mutation"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.context.shared.ordinary",
@@ -567,7 +945,14 @@
         "profile": "wsl-software-tk90-cp31213-development",
         "criterion": "tk.context.shared.ordinary"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.context.shared.recovery",
@@ -577,7 +962,14 @@
         "profile": "wsl-software-tk90-cp31213-development",
         "criterion": "tk.context.shared.recovery"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.gl.flush.failure",
@@ -587,7 +979,15 @@
         "profile": "windows-gpu-tk86-cp312-development",
         "criterion": "tk.gl.flush.failure"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "submission.raw.immediate",
+          "submission.raw.delayed"
+        ]
+      }
     },
     {
       "criterion": "tk.gl.flush.mutation",
@@ -597,7 +997,14 @@
         "profile": "windows-gpu-tk86-cp312-development",
         "criterion": "tk.gl.flush.mutation"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "ordinary.state"
+        ]
+      }
     },
     {
       "criterion": "tk.gl.flush.ordinary",
@@ -607,7 +1014,14 @@
         "profile": "windows-gpu-tk86-cp312-development",
         "criterion": "tk.gl.flush.ordinary"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "ordinary.state"
+        ]
+      }
     },
     {
       "criterion": "tk.gl.flush.recovery",
@@ -617,7 +1031,15 @@
         "profile": "windows-gpu-tk86-cp312-development",
         "criterion": "tk.gl.flush.recovery"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "submission.raw.immediate",
+          "submission.raw.delayed"
+        ]
+      }
     },
     {
       "criterion": "tk.gl.flush.failure",
@@ -627,7 +1049,15 @@
         "profile": "wsl-software-tk90-cp31213-development",
         "criterion": "tk.gl.flush.failure"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "submission.raw.immediate",
+          "submission.raw.delayed"
+        ]
+      }
     },
     {
       "criterion": "tk.gl.flush.mutation",
@@ -637,7 +1067,14 @@
         "profile": "wsl-software-tk90-cp31213-development",
         "criterion": "tk.gl.flush.mutation"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "ordinary.state"
+        ]
+      }
     },
     {
       "criterion": "tk.gl.flush.ordinary",
@@ -647,7 +1084,14 @@
         "profile": "wsl-software-tk90-cp31213-development",
         "criterion": "tk.gl.flush.ordinary"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "ordinary.state"
+        ]
+      }
     },
     {
       "criterion": "tk.gl.flush.recovery",
@@ -657,7 +1101,15 @@
         "profile": "wsl-software-tk90-cp31213-development",
         "criterion": "tk.gl.flush.recovery"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "submission.raw.immediate",
+          "submission.raw.delayed"
+        ]
+      }
     },
     {
       "criterion": "tk.object.delete.failure",
@@ -667,7 +1119,14 @@
         "profile": "windows-gpu-tk86-cp312-development",
         "criterion": "tk.object.delete.failure"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.object.delete.mutation",
@@ -677,7 +1136,14 @@
         "profile": "windows-gpu-tk86-cp312-development",
         "criterion": "tk.object.delete.mutation"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.object.delete.ordinary",
@@ -687,7 +1153,14 @@
         "profile": "windows-gpu-tk86-cp312-development",
         "criterion": "tk.object.delete.ordinary"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.object.delete.recovery",
@@ -697,7 +1170,14 @@
         "profile": "windows-gpu-tk86-cp312-development",
         "criterion": "tk.object.delete.recovery"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.object.delete.failure",
@@ -707,7 +1187,14 @@
         "profile": "wsl-software-tk90-cp31213-development",
         "criterion": "tk.object.delete.failure"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.object.delete.mutation",
@@ -717,7 +1204,14 @@
         "profile": "wsl-software-tk90-cp31213-development",
         "criterion": "tk.object.delete.mutation"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.object.delete.ordinary",
@@ -727,7 +1221,14 @@
         "profile": "wsl-software-tk90-cp31213-development",
         "criterion": "tk.object.delete.ordinary"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.object.delete.recovery",
@@ -737,7 +1238,14 @@
         "profile": "wsl-software-tk90-cp31213-development",
         "criterion": "tk.object.delete.recovery"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.program.texture.failure",
@@ -747,7 +1255,14 @@
         "profile": "windows-gpu-tk86-cp312-development",
         "criterion": "tk.program.texture.failure"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.program.texture.mutation",
@@ -757,7 +1272,14 @@
         "profile": "windows-gpu-tk86-cp312-development",
         "criterion": "tk.program.texture.mutation"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.program.texture.ordinary",
@@ -767,7 +1289,14 @@
         "profile": "windows-gpu-tk86-cp312-development",
         "criterion": "tk.program.texture.ordinary"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.program.texture.recovery",
@@ -777,7 +1306,14 @@
         "profile": "windows-gpu-tk86-cp312-development",
         "criterion": "tk.program.texture.recovery"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.program.texture.failure",
@@ -787,7 +1323,14 @@
         "profile": "wsl-software-tk90-cp31213-development",
         "criterion": "tk.program.texture.failure"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.program.texture.mutation",
@@ -797,7 +1340,14 @@
         "profile": "wsl-software-tk90-cp31213-development",
         "criterion": "tk.program.texture.mutation"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.program.texture.ordinary",
@@ -807,7 +1357,14 @@
         "profile": "wsl-software-tk90-cp31213-development",
         "criterion": "tk.program.texture.ordinary"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.program.texture.recovery",
@@ -817,7 +1374,14 @@
         "profile": "wsl-software-tk90-cp31213-development",
         "criterion": "tk.program.texture.recovery"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.readback.rgba.failure",
@@ -827,7 +1391,14 @@
         "profile": "windows-gpu-tk86-cp312-development",
         "criterion": "tk.readback.rgba.failure"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.readback.rgba.mutation",
@@ -837,7 +1408,14 @@
         "profile": "windows-gpu-tk86-cp312-development",
         "criterion": "tk.readback.rgba.mutation"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.readback.rgba.ordinary",
@@ -847,7 +1425,14 @@
         "profile": "windows-gpu-tk86-cp312-development",
         "criterion": "tk.readback.rgba.ordinary"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.readback.rgba.recovery",
@@ -857,7 +1442,14 @@
         "profile": "windows-gpu-tk86-cp312-development",
         "criterion": "tk.readback.rgba.recovery"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.readback.rgba.failure",
@@ -867,7 +1459,14 @@
         "profile": "wsl-software-tk90-cp31213-development",
         "criterion": "tk.readback.rgba.failure"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.readback.rgba.mutation",
@@ -877,7 +1476,14 @@
         "profile": "wsl-software-tk90-cp31213-development",
         "criterion": "tk.readback.rgba.mutation"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.readback.rgba.ordinary",
@@ -887,7 +1493,14 @@
         "profile": "wsl-software-tk90-cp31213-development",
         "criterion": "tk.readback.rgba.ordinary"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.readback.rgba.recovery",
@@ -897,7 +1510,14 @@
         "profile": "wsl-software-tk90-cp31213-development",
         "criterion": "tk.readback.rgba.recovery"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.texture.rgba8.failure",
@@ -907,7 +1527,14 @@
         "profile": "windows-gpu-tk86-cp312-development",
         "criterion": "tk.texture.rgba8.failure"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.texture.rgba8.mutation",
@@ -917,7 +1544,14 @@
         "profile": "windows-gpu-tk86-cp312-development",
         "criterion": "tk.texture.rgba8.mutation"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.texture.rgba8.ordinary",
@@ -927,7 +1561,14 @@
         "profile": "windows-gpu-tk86-cp312-development",
         "criterion": "tk.texture.rgba8.ordinary"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.texture.rgba8.recovery",
@@ -937,7 +1578,14 @@
         "profile": "windows-gpu-tk86-cp312-development",
         "criterion": "tk.texture.rgba8.recovery"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.texture.rgba8.failure",
@@ -947,7 +1595,14 @@
         "profile": "wsl-software-tk90-cp31213-development",
         "criterion": "tk.texture.rgba8.failure"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.texture.rgba8.mutation",
@@ -957,7 +1612,14 @@
         "profile": "wsl-software-tk90-cp31213-development",
         "criterion": "tk.texture.rgba8.mutation"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.texture.rgba8.ordinary",
@@ -967,7 +1629,14 @@
         "profile": "wsl-software-tk90-cp31213-development",
         "criterion": "tk.texture.rgba8.ordinary"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.texture.rgba8.recovery",
@@ -977,7 +1646,14 @@
         "profile": "wsl-software-tk90-cp31213-development",
         "criterion": "tk.texture.rgba8.recovery"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.timer.once.failure",
@@ -987,7 +1663,14 @@
         "profile": "windows-gpu-tk86-cp312-development",
         "criterion": "tk.timer.once.failure"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.timer.once.mutation",
@@ -997,7 +1680,14 @@
         "profile": "windows-gpu-tk86-cp312-development",
         "criterion": "tk.timer.once.mutation"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.timer.once.ordinary",
@@ -1007,7 +1697,14 @@
         "profile": "windows-gpu-tk86-cp312-development",
         "criterion": "tk.timer.once.ordinary"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.timer.once.recovery",
@@ -1017,7 +1714,14 @@
         "profile": "windows-gpu-tk86-cp312-development",
         "criterion": "tk.timer.once.recovery"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.timer.once.failure",
@@ -1027,7 +1731,14 @@
         "profile": "wsl-software-tk90-cp31213-development",
         "criterion": "tk.timer.once.failure"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.timer.once.mutation",
@@ -1037,7 +1748,14 @@
         "profile": "wsl-software-tk90-cp31213-development",
         "criterion": "tk.timer.once.mutation"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.timer.once.ordinary",
@@ -1047,7 +1765,14 @@
         "profile": "wsl-software-tk90-cp31213-development",
         "criterion": "tk.timer.once.ordinary"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.timer.once.recovery",
@@ -1057,7 +1782,14 @@
         "profile": "wsl-software-tk90-cp31213-development",
         "criterion": "tk.timer.once.recovery"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.wrappers.raster.failure",
@@ -1067,7 +1799,14 @@
         "profile": "windows-gpu-tk86-cp312-development",
         "criterion": "tk.wrappers.raster.failure"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.wrappers.raster.mutation",
@@ -1077,7 +1816,14 @@
         "profile": "windows-gpu-tk86-cp312-development",
         "criterion": "tk.wrappers.raster.mutation"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.wrappers.raster.ordinary",
@@ -1087,7 +1833,14 @@
         "profile": "windows-gpu-tk86-cp312-development",
         "criterion": "tk.wrappers.raster.ordinary"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.wrappers.raster.recovery",
@@ -1097,7 +1850,14 @@
         "profile": "windows-gpu-tk86-cp312-development",
         "criterion": "tk.wrappers.raster.recovery"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.wrappers.raster.failure",
@@ -1107,7 +1867,14 @@
         "profile": "wsl-software-tk90-cp31213-development",
         "criterion": "tk.wrappers.raster.failure"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.wrappers.raster.mutation",
@@ -1117,7 +1884,14 @@
         "profile": "wsl-software-tk90-cp31213-development",
         "criterion": "tk.wrappers.raster.mutation"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.wrappers.raster.ordinary",
@@ -1127,7 +1901,14 @@
         "profile": "wsl-software-tk90-cp31213-development",
         "criterion": "tk.wrappers.raster.ordinary"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.wrappers.raster.recovery",
@@ -1137,7 +1918,14 @@
         "profile": "wsl-software-tk90-cp31213-development",
         "criterion": "tk.wrappers.raster.recovery"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
     },
     {
       "criterion": "tk.wrappers.submission.failure",
@@ -1147,7 +1935,15 @@
         "profile": "windows-gpu-tk86-cp312-development",
         "criterion": "tk.wrappers.submission.failure"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "submission.gloo.immediate",
+          "submission.gloo.delayed"
+        ]
+      }
     },
     {
       "criterion": "tk.wrappers.submission.mutation",
@@ -1157,7 +1953,14 @@
         "profile": "windows-gpu-tk86-cp312-development",
         "criterion": "tk.wrappers.submission.mutation"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "ordinary.state"
+        ]
+      }
     },
     {
       "criterion": "tk.wrappers.submission.ordinary",
@@ -1167,7 +1970,14 @@
         "profile": "windows-gpu-tk86-cp312-development",
         "criterion": "tk.wrappers.submission.ordinary"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "ordinary.state"
+        ]
+      }
     },
     {
       "criterion": "tk.wrappers.submission.recovery",
@@ -1177,7 +1987,15 @@
         "profile": "windows-gpu-tk86-cp312-development",
         "criterion": "tk.wrappers.submission.recovery"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "submission.gloo.immediate",
+          "submission.gloo.delayed"
+        ]
+      }
     },
     {
       "criterion": "tk.wrappers.submission.failure",
@@ -1187,7 +2005,15 @@
         "profile": "wsl-software-tk90-cp31213-development",
         "criterion": "tk.wrappers.submission.failure"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "submission.gloo.immediate",
+          "submission.gloo.delayed"
+        ]
+      }
     },
     {
       "criterion": "tk.wrappers.submission.mutation",
@@ -1197,7 +2023,14 @@
         "profile": "wsl-software-tk90-cp31213-development",
         "criterion": "tk.wrappers.submission.mutation"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "ordinary.state"
+        ]
+      }
     },
     {
       "criterion": "tk.wrappers.submission.ordinary",
@@ -1207,7 +2040,14 @@
         "profile": "wsl-software-tk90-cp31213-development",
         "criterion": "tk.wrappers.submission.ordinary"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "ordinary.state"
+        ]
+      }
     },
     {
       "criterion": "tk.wrappers.submission.recovery",
@@ -1217,7 +2057,15 @@
         "profile": "wsl-software-tk90-cp31213-development",
         "criterion": "tk.wrappers.submission.recovery"
       },
-      "workflow": "tk-state-resource-failures"
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "submission.gloo.immediate",
+          "submission.gloo.delayed"
+        ]
+      }
     }
   ]
 }

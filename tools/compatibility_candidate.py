@@ -32,7 +32,14 @@ PREPARATION_TOOLS = (
     'compat/vispy-candidate.schema.json', 'compat/vispy-compatibility.schema.json',
     'compat/vispy-compatibility-v3.schema.json', 'cmake/runtime_package.py',
     '.github/workflows/cpu-contract.yml',
+    'tools/audit_no_opengl.py',
+    'tools/mesh_layout_process.py',
 )
+# The collector records this same complete source set. Freeze it before source
+# review so an observer/result-transport edit invalidates affected approvals.
+PREPARATION_TOOLS += tuple(sorted(
+    path.relative_to(ROOT).as_posix() for path in (ROOT / 'tools/no_opengl').iterdir()
+    if path.suffix in ('.py', '.c') and path.relative_to(ROOT).as_posix() not in PREPARATION_TOOLS))
 
 
 def scope_digest(candidate):

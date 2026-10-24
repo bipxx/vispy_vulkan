@@ -15,7 +15,7 @@ import traceback
 from unittest.mock import patch
 
 
-SCENARIO_INPUTS = {'tkinter_state_scenario': '4758319932bfd87bc11cdd0a3597efb65d914d3e3b676cc37464d71ab27957af', 'tkinter_resource_scenario': '2e7cdcae06f62a58ec57a8de94ef2b72a532c124b41792d2d2cd194a8c3f155a'}
+SCENARIO_INPUTS = {'tkinter_state_scenario': 'c26d325c16aabfd82ccd10a04ab41700ac562abe44b1ab5cc00f1af2794d2ab8', 'tkinter_resource_scenario': '2e7cdcae06f62a58ec57a8de94ef2b72a532c124b41792d2d2cd194a8c3f155a'}
 LIVE_GAUGES = (
     'pending_tickets', 'queued_frames', 'live_buffer_bytes', 'live_cpu_buffer_bytes',
     'live_texture_bytes', 'canvas_texture_bytes', 'transient_buffer_bytes',
@@ -84,7 +84,7 @@ def _resource_failure():
     recovery = run()
     assert recovery['status'] == 'PASS' and recovery['device_recovered']
     assert recovery['host_survived'] and recovery['timer_ticks'] == 1
-    return {'status': 'PASS', 'injections': injected, 'expected_error': error_record,
+    return {'branch_id': 'resource.upload-recovery', 'status': 'PASS', 'injections': injected, 'expected_error': error_record,
             'baseline': baseline, 'after_failure': after, 'cleanup': cleanup_report, 'timer_stopped': True, 'recovery': recovery}
 
 
@@ -100,6 +100,7 @@ def _progress_failure(first):
     host_job = host_binding = watchdog = callback_job = None
     received, calls, host = [], [], []
     timed_out = []
+    result = None
 
     def wait(condition):
         deadline = time.monotonic() + 5
@@ -158,16 +159,18 @@ def _progress_failure(first):
         assert kind is ValueError and str(error) == 'observed native progress failure'
         assert trace is not None and traceback.extract_tb(trace)[-1].name == 'fail'
         assert not state.progress_enabled and state.progress_job is None
+        polling_stopped = not state.progress_enabled and state.progress_job is None
         assert host_job in root.tk.call('after', 'info')
         assert host_binding in root.bind('<<HostFailurePing>>')
         canvas.update()  # Explicit retry after injection is removed.
         wait(lambda: canvas._backend._photo is not previous)
         assert state.progress_enabled
         assert tuple(canvas._backend._photo.get(1, 1)) == (0, 0, 255)
-        return {'status': 'PASS', 'callback_order': first, 'loop': 'external',
+        result = {'branch_id': 'progress.' + first, 'status': 'PASS', 'callback_order': first, 'loop': 'external',
                 'injections': len(calls), 'deliveries': len(received),
                 'expected_error': ''.join(traceback.format_exception(kind, error, trace)),
-                'recovered_color': [0, 0, 255], 'host_preserved': True}
+                'recovered_color': list(canvas._backend._photo.get(1, 1)), 'host_preserved': True,
+                'polling_stopped': polling_stopped, 'recovered_progress_enabled': state.progress_enabled}
     finally:
         primary = sys.exc_info()
         errors = []
@@ -204,6 +207,8 @@ def _progress_failure(first):
             traceback.print_exception(*error)
         if errors and primary[0] is None:
             raise errors[0][1].with_traceback(errors[0][2])
+    result['cleanup_errors'] = len(errors)
+    return result
 
 
 def _submission_failure(route, delayed_progress):
@@ -263,6 +268,8 @@ def _submission_failure(route, delayed_progress):
         gloo.finish()  # Setup only; no completion operation is allowed inside measured flush/retry.
         saved_slots = int(_dawn.probe()['frame_slots'])
         _dawn.configure_frame_slots(1)
+        configured_slots = int(_dawn.probe()['frame_slots'])
+        assert configured_slots == 1
         _dawn.diagnostic_submission_controls(True, '')
         gloo.clear(color='red')
         flush()
@@ -294,16 +301,25 @@ def _submission_failure(route, delayed_progress):
             _dawn.process_events()
             assert time.monotonic() < deadline, 'released submission did not retire'
             time.sleep(.001)
+        retired = snapshot()
+        assert retired['pending_tickets'] == 0 and retired['pending_draws'] > 0
+        assert retired['dawn_queue_submits'] == before['dawn_queue_submits']
+        unchanged_completion(before, retired)
         flush()  # Explicit retry must submit retained green work exactly once.
         resumed = snapshot()
         assert resumed['dawn_queue_submits'] == before['dawn_queue_submits'] + 1
+        assert resumed['pending_draws'] == 0 and resumed['pending_tickets'] <= 1
         unchanged_completion(before, resumed)
         width, height = canvas.physical_size
-        assert np.all(gloo.read_pixels((0, 0, width, height), alpha=True) == [0, 128, 0, 255])
+        pixels = gloo.read_pixels((0, 0, width, height), alpha=True)
+        assert np.all(pixels == [0, 128, 0, 255])
         assert tuple(canvas._backend._photo.get(1, 1)) == (0, 0, 255)
-        result = {'route': route, 'delayed_progress': delayed_progress,
+        result = {'branch_id': 'submission.' + route + ('.delayed' if delayed_progress else '.immediate'),
+                  'route': route, 'delayed_progress': delayed_progress,
                   'expected_error': expected_error, 'before': before, 'blocked': blocked,
-                  'early_progress': early, 'resumed': resumed, 'readback': [0, 128, 0, 255]}
+                  'early_progress': early, 'retired': retired, 'resumed': resumed,
+                  'readback': pixels[0, 0].tolist(), 'presented_rgb': list(canvas._backend._photo.get(1, 1)),
+                  'saved_frame_slots': saved_slots, 'configured_frame_slots': configured_slots}
     finally:
         primary = sys.exc_info()
 
@@ -343,7 +359,7 @@ def _submission_failure(route, delayed_progress):
         if errors and primary[0] is None:
             raise errors[0][1].with_traceback(errors[0][2])
     assert _dawn.probe()['frame_slots'] == saved_slots
-    result.update(status='PASS', host_preserved=True, restored_frame_slots=saved_slots)
+    result.update(status='PASS', host_preserved=True, restored_frame_slots=saved_slots, cleanup_errors=len(errors))
     return result
 
 
@@ -354,10 +370,12 @@ def run():
     progress = [_progress_failure(order) for order in ('poll', 'draw')]
     submissions = [_submission_failure(route, delayed)
                    for route in ('gloo', 'raw') for delayed in (False, True)]
-    return {'status': 'PASS', 'scope': 'source workflow until exact installed gates pass',
+    return {'schema': 1, 'contract': 'tk-state-resource-1',
+            'status': 'PASS', 'scope': 'source workflow until exact installed gates pass',
             'ordinary_state': ordinary, 'resource_failure_recovery': resource,
             'native_progress_failure_recovery': progress, 'submission_failure_recovery': submissions}
 
 
 if __name__ == '__main__':
-    print(json.dumps(run(), indent=2))
+    VISPY_FUNCTIONAL_RESULT = run()
+    print(json.dumps(VISPY_FUNCTIONAL_RESULT, indent=2))

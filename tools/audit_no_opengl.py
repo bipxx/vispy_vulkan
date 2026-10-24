@@ -18,6 +18,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from no_opengl.dependencies import dependency_closure
 from no_opengl.policy import assess, import_reason, library_reason, LIVE_GAUGES
 from no_opengl.workflow import arguments, collector_identity, describe
+from no_opengl.functional import digest as functional_digest
 
 
 def run_candidate(args):
@@ -114,6 +115,8 @@ def run_candidate(args):
     return {'status': status, 'scenario': args.scenario, 'source_mode': bool(args.source_root), 'process_exit': code,
             'child_waited': True, 'workflow': workflow, 'collector_identity': collector,
             'worker_report_sha256': hashlib.sha256(worker.read_bytes()).hexdigest() if worker.exists() else None,
+            'functional_result_sha256': functional_digest(child_report['functional_result'])
+            if 'functional_result' in child_report else None,
             'dependencies_report_sha256': hashlib.sha256(args.dependencies_report.read_bytes()).hexdigest() if args.dependencies_report else None,
             'gates': gates, 'imports_gate_passed': imports_pass, 'native_observer': native,
             'worker_report': str(worker), 'worker_status': child_report['status'],

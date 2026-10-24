@@ -2,7 +2,7 @@
   "schema": 1,
   "phase": "development",
   "id": "tk-state-resource-1",
-  "manifest_sha256": "561ef4e4c208b1546624fd9dd39b005a5ef0c67cca93a8f5b39963e97354cb88",
+  "manifest_sha256": "e7ee27efb925aba388b1b9e90ec1de19668aaec2056eee5df7de614b7dda999c",
   "product_source_commit": "6345ceef42df1a64a7401a83c2d1a30384903cd1",
   "upstream_commit": "117b054598f4758b598f4b8f48feea48c11fe7b0",
   "ledger": {
@@ -39,7 +39,7 @@
       "required": true,
       "observation": {
         "path": "compat/candidates/tk-state-resource-1/windows-profile.json",
-        "sha256": "a7c14d81f77f5d764198d82550972f8b76792cc08baffbdf97150c6069a7be19"
+        "sha256": "6a2817880a67692c288d499b6d6fb5a66dd5e5d1a49ed4488caa39ef893dbf75"
       },
       "wheel": null,
       "previous_qualified_wheel_sha256": "62df5e4c31bf9a1bb1bea47fd68d50e4198d6ec13d2551c991da1e7f30a2b38f",
@@ -58,7 +58,7 @@
       "required": true,
       "observation": {
         "path": "compat/candidates/tk-state-resource-1/linux-tk90-profile.json",
-        "sha256": "49e67589ac16149f99d96189695383d0230ebf587e26952fb266425c3c496f16"
+        "sha256": "2e50ef39596f4d3b4b45ba627ebc8264b45dfb71aa02118fb294b214f3b4db5f"
       },
       "wheel": null,
       "previous_qualified_wheel_sha256": "374a74ea9787ccccc643e0ac7e45d9f704a41d046465828736158ac94398c4a3",
@@ -745,7 +745,7 @@
       "id": "tk-state-ownership",
       "script": {
         "path": "tools/tkinter_state_scenario.py",
-        "sha256": "4758319932bfd87bc11cdd0a3597efb65d914d3e3b676cc37464d71ab27957af"
+        "sha256": "c26d325c16aabfd82ccd10a04ab41700ac562abe44b1ab5cc00f1af2794d2ab8"
       },
       "profiles": [
         "windows-gpu-tk86-cp312-development",
@@ -811,7 +811,7 @@
           "expected": "Actual displayed categorical colors and full-target RGBA match independent expectations.",
           "source": {
             "path": "tests/native/test_tkinter_state_scenario.py",
-            "sha256": "1e48f836fce6ee5f67e452168b5a12ab6b88ac466bf8675b6730a44d92c4794e"
+            "sha256": "8baaf41769b5ef671fe9349ac5ed85236756224da3aaa9d814aa31e249ffd80e"
           }
         },
         {
@@ -821,7 +821,7 @@
           "expected": "Both consumers observe the ordered color/resource update.",
           "source": {
             "path": "tests/native/test_tkinter_state_scenario.py",
-            "sha256": "1e48f836fce6ee5f67e452168b5a12ab6b88ac466bf8675b6730a44d92c4794e"
+            "sha256": "8baaf41769b5ef671fe9349ac5ed85236756224da3aaa9d814aa31e249ffd80e"
           }
         },
         {
@@ -935,7 +935,7 @@
           "expected": "Actual displayed categorical colors and full-target RGBA match independent expectations.",
           "source": {
             "path": "tests/native/test_tkinter_state_scenario.py",
-            "sha256": "1e48f836fce6ee5f67e452168b5a12ab6b88ac466bf8675b6730a44d92c4794e"
+            "sha256": "8baaf41769b5ef671fe9349ac5ed85236756224da3aaa9d814aa31e249ffd80e"
           }
         },
         {
@@ -945,7 +945,7 @@
           "expected": "Both consumers observe the ordered color/resource update.",
           "source": {
             "path": "tests/native/test_tkinter_state_scenario.py",
-            "sha256": "1e48f836fce6ee5f67e452168b5a12ab6b88ac466bf8675b6730a44d92c4794e"
+            "sha256": "8baaf41769b5ef671fe9349ac5ed85236756224da3aaa9d814aa31e249ffd80e"
           }
         },
         {
@@ -955,7 +955,7 @@
           "expected": "Original timer upload error reaches caller; all scoped counters return exactly to their baseline. Outer worker separately enforces nine-zero process shutdown.",
           "source": {
             "path": "tests/native/test_tkinter_state_scenario.py",
-            "sha256": "1e48f836fce6ee5f67e452168b5a12ab6b88ac466bf8675b6730a44d92c4794e"
+            "sha256": "8baaf41769b5ef671fe9349ac5ed85236756224da3aaa9d814aa31e249ffd80e"
           }
         },
         {
@@ -965,7 +965,7 @@
           "expected": "Surviving widget and shared resources render expected blue after native device recreation.",
           "source": {
             "path": "tests/native/test_tkinter_state_scenario.py",
-            "sha256": "1e48f836fce6ee5f67e452168b5a12ab6b88ac466bf8675b6730a44d92c4794e"
+            "sha256": "8baaf41769b5ef671fe9349ac5ed85236756224da3aaa9d814aa31e249ffd80e"
           }
         }
       ],
@@ -975,7 +975,7 @@
       "id": "tk-state-resource-failures",
       "script": {
         "path": "tools/tkinter_failure_scenario.py",
-        "sha256": "e265b1eb68b153543189d056be517c80a2b50b5039f19b2f750306cf9dc35323"
+        "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
       },
       "profiles": [
         "windows-gpu-tk86-cp312-development",
@@ -1010,7 +1010,7 @@
           "expected": "Both ordinary state and shared-resource GPU/Tk output, host ownership and actual submission assertions pass.",
           "source": {
             "path": "tests/native/test_tkinter_state_scenario.py",
-            "sha256": "1e48f836fce6ee5f67e452168b5a12ab6b88ac466bf8675b6730a44d92c4794e"
+            "sha256": "8baaf41769b5ef671fe9349ac5ed85236756224da3aaa9d814aa31e249ffd80e"
           }
         },
         {
@@ -1020,7 +1020,7 @@
           "expected": "Public Timer uploads green once; survivor blue and host-owned work remain correct.",
           "source": {
             "path": "tests/native/test_tkinter_state_scenario.py",
-            "sha256": "1e48f836fce6ee5f67e452168b5a12ab6b88ac466bf8675b6730a44d92c4794e"
+            "sha256": "8baaf41769b5ef671fe9349ac5ed85236756224da3aaa9d814aa31e249ffd80e"
           }
         },
         {
@@ -1030,7 +1030,7 @@
           "expected": "Green upload fault and external-loop native progress faults in both ready callback orders are injected; original errors/tracebacks verified exactly once, failed Timer stopped, host work preserved and scoped gauges return to baseline. Raw/gloo single-slot held-completion capacity faults run with immediate and delayed-progress variants, preserving queued work and all submission/wait/presentation counters.",
           "source": {
             "path": "tests/native/test_tkinter_state_scenario.py",
-            "sha256": "1e48f836fce6ee5f67e452168b5a12ab6b88ac466bf8675b6730a44d92c4794e"
+            "sha256": "8baaf41769b5ef671fe9349ac5ed85236756224da3aaa9d814aa31e249ffd80e"
           }
         },
         {
@@ -1040,7 +1040,7 @@
           "expected": "Explicit fresh public resource workflow and redraw retry succeed; exact blue output and device recreation assertions pass after injections are removed. All four submission variants observe retirement, explicitly retry exactly once, read exact green while Tk remains blue, preserve host work and restore prior slots.",
           "source": {
             "path": "tests/native/test_tkinter_state_scenario.py",
-            "sha256": "1e48f836fce6ee5f67e452168b5a12ab6b88ac466bf8675b6730a44d92c4794e"
+            "sha256": "8baaf41769b5ef671fe9349ac5ed85236756224da3aaa9d814aa31e249ffd80e"
           }
         }
       ],
@@ -1117,13 +1117,14 @@
     "Install recipes presume separately pinned locked dependencies and Tcl/Tk in an isolated consumer, without producer/source path overlays.",
     "The selected alternative Linux source profile is CPython3.12.13/Tcl-Tk9.0.3. Original Tk8.6 profile remains blocked/historical; no old receipt is transferred.",
     "Separate four-sample scissor failure and experimental Linux native producer provenance remain blocking affected admission.",
-    "Mac baseline OpenGL.framework load is retained as FAIL; CPU CLI contract passing does not qualify that runtime or Metal."
+    "Mac baseline OpenGL.framework load is retained as FAIL; CPU CLI contract passing does not qualify that runtime or Metal.",
+    "Structured functional transport is source-tested; exact installed same-child branch receipts and the qualification index remain pending."
   ],
   "release_status": "NOT_QUALIFIED",
   "preparation_tools": [
     {
       "path": "tools/compatibility_candidate.py",
-      "sha256": "80677a3b87e2b59118a1532a7cb2975676769ae31e22762f1af02929851e18bf"
+      "sha256": "cf7baf486bd3766a9df1e5fd8af66bd6c373973672cf8ef85f8105fa55d98353"
     },
     {
       "path": "tools/compatibility_inventory.py",
@@ -1135,7 +1136,7 @@
     },
     {
       "path": "tools/compatibility_evidence.py",
-      "sha256": "7489064ec0b74be4e0b7faf835da25d469f832723b55c8d73eed3bbe346c5ed1"
+      "sha256": "f43f871e521cc425ff75d89fa00058b8875604eba97f667d1037239b6bdacea9"
     },
     {
       "path": "tools/compatibility_coverage.py",
@@ -1147,11 +1148,11 @@
     },
     {
       "path": "tools/compatibility_execution.py",
-      "sha256": "c3970b5401315e8fda59e9083a75f2274ede7e48a21693f18c08335976efa867"
+      "sha256": "f666ac4985ac505f9c764de47591c2f14a880f0939d6f0fc05b10d3aceb3df33"
     },
     {
       "path": "compat/vispy-execution.schema.json",
-      "sha256": "e2a6e2efbfadbd334edf2d6f85df65b6b4d5ed36352960163aa56d19f936a4dd"
+      "sha256": "d217f55cfdd36824093c44603f6a4d495812896dbac43a053a8af323a7060013"
     },
     {
       "path": "tools/no_opengl/policy.py",
@@ -1159,7 +1160,7 @@
     },
     {
       "path": "docs/superpowers/specs/2026-10-24-vispy-compatibility-gap-closure.md",
-      "sha256": "f9977a6f90c33d5b4fa5cfa3e038774a07f73c68d324210cfa3883332ee19f41"
+      "sha256": "e5f3cbb265619faca32fe9cc32afa41d5bb789eb1b40400a3212ba447e882c79"
     },
     {
       "path": "compat/vispy-candidate.schema.json",
@@ -1179,7 +1180,127 @@
     },
     {
       "path": ".github/workflows/cpu-contract.yml",
-      "sha256": "b3fa9e162c1ee0733adb94e7de91a82cb9ecb15204919f69eabcfb6dc610e8fa"
+      "sha256": "3ac4efc9416302dd60312db143978a8640378e8f7995919ad8a88e7ccf42b3a6"
+    },
+    {
+      "path": "tools/audit_no_opengl.py",
+      "sha256": "6740dfc384e829b2b644209bbf203516e26ae704e4460c1339cd9424f3c4e140"
+    },
+    {
+      "path": "tools/mesh_layout_process.py",
+      "sha256": "129628ca97afc62755c109db6219d987766b702265c4ca23c21105ad5bd2ae1b"
+    },
+    {
+      "path": "tools/no_opengl/__init__.py",
+      "sha256": "5a4759bf2aea12ef05b110531a61211f22fc81d433d77a45847abd4402968458"
+    },
+    {
+      "path": "tools/no_opengl/debugger_linux.c",
+      "sha256": "4410d68b2c1c4c2cebf735508b43c02c40f07e18888e2efc68123367c7fc41d4"
+    },
+    {
+      "path": "tools/no_opengl/dependencies.py",
+      "sha256": "af1a0446ddb678175c762c4f2eaadebd98dc89f29c596c0c55a51bdb8d2eac8a"
+    },
+    {
+      "path": "tools/no_opengl/functional.py",
+      "sha256": "6360260c56fc7395bdd7d3287687ed13e3f4ae8f7b165fc80f5689ce20e94a8d"
+    },
+    {
+      "path": "tools/no_opengl/handle_negative_probe_windows.c",
+      "sha256": "509e7b27d3daa078e1ff903d0032d19bd0d939ac7eb7e69ba7704ebc7ef7ae1f"
+    },
+    {
+      "path": "tools/no_opengl/inventory.py",
+      "sha256": "ec6b2978e2699e243c9b8ed43cd4b5a9a5ef924af31614b6d4fd6c27bcc3a043"
+    },
+    {
+      "path": "tools/no_opengl/linux.py",
+      "sha256": "e106dab04f4947b9007edd7833423bf40796aa2783dd9f4d3573d34431e3c775"
+    },
+    {
+      "path": "tools/no_opengl/loader_audit_linux.c",
+      "sha256": "ab045f08942d3b303f99506f4e0e2e0e75779f5a4b623e4781a63a515b82154e"
+    },
+    {
+      "path": "tools/no_opengl/native_surface_probe.py",
+      "sha256": "cf9533dc2ab57ab947406c8a2320923af3b71095a92da028f7f8b91499934f71"
+    },
+    {
+      "path": "tools/no_opengl/negative_controls.py",
+      "sha256": "c27b44f2e9dae0965820d3becaf6bfe0fdd91295d083deaf9f49a766e84cdb22"
+    },
+    {
+      "path": "tools/no_opengl/negative_probe.c",
+      "sha256": "0c607b2c127fe71bfa698954e3b54f63450f12b85ab9d4df2dc3df341a8a9264"
+    },
+    {
+      "path": "tools/no_opengl/probe.py",
+      "sha256": "ee5dc9acec5c1acdb05ba90e459de11e02d795fc0fd7d9cdbf80a843fe09b048"
+    },
+    {
+      "path": "tools/no_opengl/qt_linux_profile.py",
+      "sha256": "7e88a2f348b424ba593d418f2365d6d5310f3c58aaa760a8a8219e4dc46f7dc5"
+    },
+    {
+      "path": "tools/no_opengl/qt_profile.py",
+      "sha256": "e1fcca7604d0f9a74e29cfab57680dd424ce855f8271c7510287f956ed62e46c"
+    },
+    {
+      "path": "tools/no_opengl/qt_profile_smoke.py",
+      "sha256": "041c814e20cbc2ea6f5b0c772525948f5fd3e8a0a4429858a3e4a41d3e857a7a"
+    },
+    {
+      "path": "tools/no_opengl/receipt.py",
+      "sha256": "0745c1902334d0f14f163a85210d8f37481b023505bee776823d012ba6a8e2c9"
+    },
+    {
+      "path": "tools/no_opengl/resolver_race_probe_windows.c",
+      "sha256": "cb2fb35ac37528ac9d401075a1f62350c40f441c38a45ed80c451b829db129ae"
+    },
+    {
+      "path": "tools/no_opengl/script_cleanup_probe.py",
+      "sha256": "d9a165096cd0dbbb723db291e25b5efc702fd7e769afddb2d043fb189ced819c"
+    },
+    {
+      "path": "tools/no_opengl/static_negative_probe.c",
+      "sha256": "f09b3e942d8ec17cbb63fb9764d5ef405375bd6f644d303bc0fd8d1b2f38921e"
+    },
+    {
+      "path": "tools/no_opengl/tbb_profile.py",
+      "sha256": "86a46beed66299d9f8695af98d2204dec03d28a5a3c95a2fb104b3b7d0862d78"
+    },
+    {
+      "path": "tools/no_opengl/tbb_runtime_bootstrap.py",
+      "sha256": "e395dc678d5e2b49cdd10f5d9e6f64549662c6dcec77a5e9b84e0cb143a17e7d"
+    },
+    {
+      "path": "tools/no_opengl/venv_launcher_control.py",
+      "sha256": "266c04af246526ebb70108a4b06f5fc87fa165eb1655b61851b86d45aaae6999"
+    },
+    {
+      "path": "tools/no_opengl/windows.py",
+      "sha256": "c97829ac6007508941f8435bf864d2d0cc7b898f129acb355381981ca36bf84e"
+    },
+    {
+      "path": "tools/no_opengl/windows_contracts.py",
+      "sha256": "ef2e13fd767ab59f012f7a33cb83ce2dbf8adcef9f7c4e4abb7b717d7bf6d414"
+    },
+    {
+      "path": "tools/no_opengl/windows_handle_controls.py",
+      "sha256": "3ad4b8eccb8f11033b9d7f53a6ebc63f6992a207151f1b05f40fb97b3c9308ef"
+    },
+    {
+      "path": "tools/no_opengl/windows_resolver_controls.py",
+      "sha256": "7fc3ba79fbaf62f10d8582c8faac13024900d8c74e41a69370c4039141ff297e"
+    },
+    {
+      "path": "tools/no_opengl/windows_stack.py",
+      "sha256": "3d04eadbfc66d82c334ff40e3f5f9bc21f66f9586c979d0f11818228007b3e30"
+    },
+    {
+      "path": "tools/no_opengl/workflow.py",
+      "sha256": "8f18ec3f27007e1a4ffc6b333def2c93c5190958084e96b50f2377bacb205fe0"
     }
   ]
 }

@@ -23,7 +23,8 @@ def describe(args):
 
 def collector_identity(args):
     root = Path(__file__).resolve().parents[2]
-    sources = [root / 'tools/audit_no_opengl.py', root / 'cmake/runtime_package.py']
+    sources = [root / 'tools/audit_no_opengl.py', root / 'cmake/runtime_package.py',
+               root / 'tools/mesh_layout_process.py']
     sources.extend(path for path in (root / 'tools/no_opengl').iterdir() if path.suffix in ('.py', '.c'))
     native = [getattr(args, name, None) for name in ('native_auditor', 'native_debugger')]
     return {'sources': {path.relative_to(root).as_posix(): hashlib.sha256(path.read_bytes()).hexdigest()

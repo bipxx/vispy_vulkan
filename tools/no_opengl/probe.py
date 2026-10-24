@@ -16,6 +16,7 @@ import importlib.machinery
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from no_opengl.policy import import_reason, is_gl_entrypoint, library_reason, LIVE_GAUGES
 from no_opengl.workflow import arguments, describe
+from no_opengl.functional import capture
 
 
 def main():
@@ -81,13 +82,19 @@ def main():
             if args.script is None:
                 raise ValueError('--script is required for script scenario')
             sys.argv = [str(args.script), *arguments(args.arguments)]
+            namespace = None
             try:
-                runpy.run_path(str(args.script.resolve(strict=True)), run_name='__main__')
+                namespace = runpy.run_path(str(args.script.resolve(strict=True)), run_name='__main__')
             except SystemExit as exit_status:
                 if exit_status.code not in (None, 0):
                     raise
             if describe(args) != report['workflow']:
                 raise RuntimeError('Scenario script changed during execution')
+            # This is produced in this observed child, not parsed from stdout or
+            # accepted from an independently supplied functional-report file.
+            functional = capture(namespace, report['workflow'], bool(args.source_root))
+            if functional is not None:
+                report['functional_result'] = functional
         else:
             import vispy
             from vispy import gloo, scene

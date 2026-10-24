@@ -62,11 +62,14 @@ def run():
             after = _dawn.probe()
             assert after[fields[0]] > before[fields[0]]
             assert all(after[key] == before[key] for key in fields[1:])
-            result['submissions'].append({'route': name, 'before': {key: before[key] for key in fields},
-                                           'after': {key: after[key] for key in fields}})
+            submission = {'route': name, 'before': {key: before[key] for key in fields},
+                          'after': {key: after[key] for key in fields}}
+            result['submissions'].append(submission)
             gloo.finish()
             assert _dawn.probe()['application_presents'] == after['application_presents']
-            assert np.all(gloo.read_pixels((0, 0, *first.physical_size), alpha=True) == expected)
+            pixels = gloo.read_pixels((0, 0, *first.physical_size), alpha=True)
+            assert np.all(pixels == expected)
+            submission['readback'] = pixels[0, 0].tolist()
         first.close()
         previous = second._backend._photo
         second.update()

@@ -100,3 +100,11 @@ and workflow substitutions, unauthorized review/admission flags, unproved
 positive rows, stale approvals, read-only defaults and output overwrite refusal.
 Current real reviews remain null. No original host, scissor, platform or full
 parity obligation is retired by this preparation.
+
+## Functional branch assignments
+
+The [observed-child result contract](functional-results.md) adds the closed
+optional `functional_result` mapping field. Known Tk mappings require its exact
+contract/version and branch IDs; unknown or substituted assignments cannot pass
+by resealing. The existing scope approval binds the complete execution-map digest.
+Actual worker results and original gate receipts are still required for admission.

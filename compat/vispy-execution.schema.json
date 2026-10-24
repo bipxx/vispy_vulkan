@@ -127,6 +127,34 @@
         },
         "workflow": {
           "$ref": "#/$defs/id"
+        },
+        "functional_result": {
+          "$ref": "#/$defs/functional_binding"
+        }
+      }
+    },
+    "functional_binding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "contract",
+        "branch_ids"
+      ],
+      "properties": {
+        "schema": {
+          "const": 1
+        },
+        "contract": {
+          "const": "tk-state-resource-1"
+        },
+        "branch_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/id"
+          }
         }
       }
     }

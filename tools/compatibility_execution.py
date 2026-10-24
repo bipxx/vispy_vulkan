@@ -16,12 +16,14 @@ try:
     from .compatibility_candidate import DEFAULT as CANDIDATE, scope_digest, validate_candidate
     from .compatibility_conservation import digest, origins
     from .compatibility_coverage import DEFAULT as COVERAGE, validate_coverage
+    from .no_opengl.functional import WORKFLOW as FUNCTIONAL_WORKFLOW, criterion_binding
     from .compatibility_inventory import (ROOT, POSITIVE, InventoryError, check, file_ref,
                                           local_file, read_json, shape, unique_by, validate)
 except ImportError:
     from compatibility_candidate import DEFAULT as CANDIDATE, scope_digest, validate_candidate
     from compatibility_conservation import digest, origins
     from compatibility_coverage import DEFAULT as COVERAGE, validate_coverage
+    from no_opengl.functional import WORKFLOW as FUNCTIONAL_WORKFLOW, criterion_binding
     from compatibility_inventory import (ROOT, POSITIVE, InventoryError, check, file_ref,
                                          local_file, read_json, shape, unique_by, validate)
 
@@ -126,9 +128,12 @@ def template(candidate, coverage, baseline):
                 fixtures[fixture_key] = {'nodeid': source['nodeid'], 'kind': kind,
                                          'cases': source['cases'], 'expected': ''}
             fixtures[fixture_key]['expected'] += criterion['kind'] + ': ' + criterion['expected'] + '\n'
-            mappings.append({'criterion': criterion['id'], 'profile': key[1],
-                             'destination': {'feature': key[0], 'profile': key[1], 'criterion': criterion['id']},
-                             'workflow': workflow_id})
+            mapping = {'criterion': criterion['id'], 'profile': key[1],
+                       'destination': {'feature': key[0], 'profile': key[1], 'criterion': criterion['id']},
+                       'workflow': workflow_id}
+            if workflow_id == FUNCTIONAL_WORKFLOW:
+                mapping['functional_result'] = criterion_binding(key[0], criterion['kind'])
+            mappings.append(mapping)
         ledger['rows'].append({
             'feature': key[0], 'profile': key[1], 'state': 'implemented-untested', 'outcome': 'not-run',
             'workflow': {'id': workflow_id, 'scenario': 'script', 'binding': None,

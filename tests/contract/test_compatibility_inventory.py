@@ -87,7 +87,8 @@ def synthetic_gate_bundle(root, row):
     workflow = {key: value for key, value in row['workflow'].items() if key != 'script'}
     workflow.update(script_sha256=row['workflow']['script']['sha256'], features=[row['feature']])
     sources = {}
-    for name in ('tools/audit_no_opengl.py', 'tools/no_opengl/probe.py', 'tools/no_opengl/workflow.py', 'tools/no_opengl/policy.py'):
+    for name in ('tools/audit_no_opengl.py', 'tools/no_opengl/probe.py', 'tools/no_opengl/workflow.py',
+                 'tools/no_opengl/policy.py', 'tools/no_opengl/functional.py', 'tools/mesh_layout_process.py'):
         path = root / name
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text('# Synthetic observer identity fixture\n', encoding='utf-8')
@@ -1640,3 +1641,94 @@ def test_execution_keeps_existing_receipt_and_review_gates(example, fault, reaso
     write_json(root, record['execution']['path'], ledger)
     with pytest.raises(inventory.InventoryError, match=reason):
         validate_execution(record, root)
+
+
+@pytest.mark.parametrize('fault,reason', [
+    ('controller-hash', 'different functional result'),
+    ('wrong-child', 'another child'),
+    ('wrong-workflow', 'another workflow'),
+    ('source-result', 'source/installed mode differs'),
+    ('missing-result', 'worker envelope fields differ'),
+    ('duplicate-branch', 'duplicated or omitted'),
+    ('collector-source', 'collector implementation identity'),
+    ('wrong-wheel', 'exact installed member audit'),
+])
+def test_normalizer_joins_same_child_functional_results_after_rehash(example, fault, reason):
+    from tools.no_opengl.functional import RESULT_NAME, WORKFLOW, capture, digest
+    root, ledger = example
+    receipt = promote(root, ledger, state='qualified')
+    row = ledger['rows'][0]
+    row['workflow']['id'] = WORKFLOW
+    references = inventory.read_json(root / next(iter(receipt['gates'].values()))['path'])['raw_reports']
+    payload = inventory.read_json(ROOT / 'tests/no_opengl/data/tk-functional-result.json')
+    values = {name: inventory.read_json(root / ref['path']) for name, ref in references.items()
+              if name != 'control_reports'}
+    for report in ('discovery', 'runtime'):
+        values[report]['workflow']['id'] = WORKFLOW
+    values['dependencies']['discovery_workflow']['id'] = WORKFLOW
+    for name, pid in [('discovery_worker', 1001), ('worker', 1002)]:
+        child = values[name]
+        child['pid'] = pid
+        child['workflow']['id'] = WORKFLOW
+        child['functional_result'] = capture({RESULT_NAME: payload}, child['workflow'], False)
+        child['functional_result']['producer_pid'] = pid  # Synthetic unit identity, not an observed process.
+
+    def reseal_chain():
+        for report, name in [('discovery', 'discovery_worker'), ('runtime', 'worker')]:
+            child = values[name]
+            references[name] = write_json(root, references[name]['path'], child)
+            values[report]['worker_report_sha256'] = references[name]['sha256']
+            values[report]['functional_result_sha256'] = digest(child['functional_result']) if 'functional_result' in child else None
+        references['discovery'] = write_json(root, references['discovery']['path'], values['discovery'])
+        dependencies = values['dependencies']
+        dependencies['runtime_report_sha256'] = references['discovery']['sha256']
+        dependencies['worker_report_sha256'] = references['discovery_worker']['sha256']
+        references['dependencies'] = write_json(root, references['dependencies']['path'], dependencies)
+        values['runtime']['dependencies_report_sha256'] = references['dependencies']['sha256']
+        references['runtime'] = write_json(root, references['runtime']['path'], values['runtime'])
+
+    reseal_chain()
+    assert all(gate['status'] == 'PASS' for gate in normalize(root, row, references).values())
+    current = values['worker']
+    if fault == 'wrong-child': current['functional_result']['producer_pid'] = 9999
+    elif fault == 'wrong-workflow': current['functional_result']['workflow']['arguments'] = ['unexecuted']
+    elif fault == 'source-result': current['functional_result']['source_mode'] = True
+    elif fault == 'missing-result': del current['functional_result']
+    elif fault == 'duplicate-branch':
+        result = current['functional_result']['payload']
+        result['submission_failure_recovery'][1] = deepcopy(result['submission_failure_recovery'][0])
+        current['functional_result']['payload_sha256'] = digest(result)
+    elif fault == 'wrong-wheel': current['wheel_sha256'] = 'f' * 64
+    elif fault == 'collector-source': del values['runtime']['collector_identity']['sources']['tools/no_opengl/functional.py']
+    reseal_chain()
+    if fault == 'controller-hash':
+        values['runtime']['functional_result_sha256'] = '0' * 64
+        references['runtime'] = write_json(root, references['runtime']['path'], values['runtime'])
+    with pytest.raises(inventory.InventoryError, match=reason):
+        normalize(root, row, references)
+
+
+@pytest.mark.parametrize('path', ['tools/no_opengl/probe.py', 'tools/no_opengl/functional.py',
+                                  'tools/audit_no_opengl.py', 'tools/mesh_layout_process.py'])
+def test_preparation_freezes_functional_collector_sources(example, path):
+    from tools.compatibility_candidate import seal, validate_candidate
+    root, candidate = candidate_case(example)
+    reference = next(ref for ref in candidate['preparation_tools'] if ref['path'] == path)
+    (root / reference['path']).write_bytes((root / reference['path']).read_bytes() + b'\n# changed collector input\n')
+    seal(candidate)
+    with pytest.raises(inventory.InventoryError, match='changed evidence'):
+        validate_candidate(candidate, root)
+
+
+def test_execution_rejects_an_existing_but_wrong_functional_branch_assignment():
+    from tools.compatibility_execution import DEFAULT, seal, validate_execution
+    from tools.no_opengl.functional import criterion_binding
+    record = inventory.read_json(DEFAULT)
+    mapping = next(m for m in record['mappings'] if m['criterion'] == 'tk.gl.flush.failure')
+    assert mapping['functional_result'] == criterion_binding('tk.gl.flush', 'failure')
+    # These gloo branches really exist in the same result, but cannot substitute
+    # for the selected raw glFlush failure criterion even after resealing.
+    mapping['functional_result'] = criterion_binding('tk.wrappers.submission', 'failure')
+    seal(record)
+    with pytest.raises(inventory.InventoryError, match='criterion mapping'):
+        validate_execution(record)
