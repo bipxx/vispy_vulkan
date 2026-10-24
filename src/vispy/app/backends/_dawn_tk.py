@@ -5,6 +5,8 @@ No pyopengltk, OpenGL context or native Vulkan window surface is used. Tk owns
 the displayed RGB image; framebuffer capture retains the renderer's RGBA data.
 """
 import sys
+import threading
+from functools import wraps
 import time
 import weakref
 
@@ -37,6 +39,46 @@ _KEYS.update({'KP_' + name: _KEYS[name] for name in
               ('Left', 'Right', 'Up', 'Down', 'Home', 'End', 'Insert', 'Delete', 'Prior', 'Next')})
 _MODIFIER_KEYS = {name: key for name, key in _KEYS.items()
                   if key in (keys.SHIFT, keys.CONTROL, keys.ALT, keys.META)}
+
+
+def _ui_thread_only(method):
+    @wraps(method)
+    def checked(self, *args, **kwargs):
+        application = getattr(self, '_application', self)
+        application._check_thread()
+        return method(self, *args, **kwargs)
+    return checked
+
+
+def _validate_request(context, kwargs):
+    config = context.config
+    for key, maximum in (('red_size', 8), ('green_size', 8), ('blue_size', 8),
+                         ('alpha_size', 8), ('depth_size', 24), ('stencil_size', 8)):
+        value = config[key]
+        if isinstance(value, bool) or not isinstance(value, int) or not 0 <= value <= maximum:
+            raise RuntimeError('Tk raster configuration %s=%r is unsupported; guaranteed range is 0..%d'
+                               % (key, value, maximum))
+    samples = config['samples']
+    if isinstance(samples, bool) or not isinstance(samples, int) or samples not in (0, 1, 4):
+        raise RuntimeError('Tk raster configuration samples=%r is unsupported; use 0, 1 or 4' % samples)
+    if config['stereo']:
+        raise RuntimeError('Tk raster configuration stereo=True is unsupported')
+    # The upstream default is a legacy GL window hint. An explicit native
+    # double-buffer request cannot be satisfied by Tk image presentation.
+    if config['double_buffer'] and 'double_buffer' in context._requested_config:
+        raise RuntimeError('Tk raster configuration double_buffer=True is unsupported; use False')
+    if not isinstance(kwargs['fullscreen'], bool):
+        raise RuntimeError('Tk fullscreen supports bool only; monitor-index selection is unsupported')
+    if kwargs['vsync']:
+        raise RuntimeError('Tk raster vsync is unsupported')
+    if kwargs['parent'] is not None:
+        for key, requested in (('position', kwargs['position'] is not None),
+                               ('fullscreen', kwargs['fullscreen']),
+                               ('resizable', not kwargs['resizable']),
+                               ('decorate', not kwargs['decorate']),
+                               ('always_on_top', kwargs['always_on_top'])):
+            if requested:
+                raise RuntimeError('Tk embedded %s is controlled by the host window' % key)
 
 
 def _set_config(config):
@@ -93,6 +135,7 @@ class _RootState:
     """Ownership belongs to a Tcl interpreter, not its first VisPy app."""
     def __init__(self, root, owned):
         self.root = root
+        self.ui_thread = threading.get_ident()
         self.owned = owned
         self.apps = weakref.WeakSet()
         self.driver = None
@@ -207,6 +250,7 @@ class _RootState:
 
 class ApplicationBackend(BaseApplicationBackend):
     def __init__(self):
+        self._ui_thread = threading.get_ident()
         self._root = None
         self._owns_root = False
         self._root_state = None
@@ -217,9 +261,14 @@ class ApplicationBackend(BaseApplicationBackend):
         self._pending_closes = set()  # Failed native/job releases keep an owner.
         self._timers = weakref.WeakSet()
 
+    def _check_thread(self):
+        if threading.get_ident() != self._ui_thread:
+            raise RuntimeError('Tk operation requires its Application UI thread')
+
     def _vispy_get_backend_name(self):
         return 'Tkinter'
 
+    @_ui_thread_only
     def _vispy_get_native_app(self):
         if self._root is None:
             if self._quitting:
@@ -232,6 +281,7 @@ class ApplicationBackend(BaseApplicationBackend):
             self._attach_root(root, owned)
         return self._root
 
+    @_ui_thread_only
     def _attach_root(self, root, owned=False):
         if root is self._root:
             return
@@ -242,12 +292,19 @@ class ApplicationBackend(BaseApplicationBackend):
         state = _root_states.get(root)
         if state is None:
             state = _RootState(root, owned)
+        if state.ui_thread != self._ui_thread:
+            raise RuntimeError('Tk interpreter belongs to another UI thread')
         state.apps.add(self)
         self._root_state = state
         self._root = root
         self._owns_root = state.owned
         state.ensure_progress()
 
+    @_ui_thread_only
+    def _vispy_validate_canvas(self, kwargs):
+        _validate_request(kwargs['context'], kwargs)
+
+    @_ui_thread_only
     def _vispy_prepare_canvas(self, parent):
         if self._quitting:
             raise RuntimeError('Cannot create a Tk canvas while quitting')
@@ -262,6 +319,7 @@ class ApplicationBackend(BaseApplicationBackend):
             for application in self._root_state.apps:
                 application._owns_root = False
 
+    @_ui_thread_only
     def _vispy_process_events(self):
         state = self._root_state
         if state is None:
@@ -303,6 +361,7 @@ class ApplicationBackend(BaseApplicationBackend):
                 state.report_error(sys.exc_info())
         return invoke
 
+    @_ui_thread_only
     def _vispy_run(self):
         self._raise_pending_error()
         root = self._vispy_get_native_app()
@@ -319,6 +378,7 @@ class ApplicationBackend(BaseApplicationBackend):
             self._running = False
             state.driver = None
 
+    @_ui_thread_only
     def _vispy_quit(self):
         if self._quitting:
             return
@@ -348,6 +408,7 @@ class ApplicationBackend(BaseApplicationBackend):
 
 class CanvasBackend(BaseCanvasBackend):
     def __init__(self, vispy_canvas, **kwargs):
+        _validate_request(kwargs['context'], kwargs)
         super().__init__(vispy_canvas)
         p = self._process_backend_kwargs(kwargs)
         self._application = vispy_canvas.app._backend
@@ -362,10 +423,9 @@ class CanvasBackend(BaseCanvasBackend):
         self._pressed_keys = {}
         self._last_pointer = (0, 0)
         self._photo = None
+        self._hidden_layout = None
         self._size = tuple(map(int, p.size))
         self._position = (0, 0)
-        if not isinstance(p.fullscreen, bool):
-            raise RuntimeError('Tk fullscreen supports bool only; monitor-index selection is unsupported')
         self._fullscreen = p.fullscreen
         self._samples = int(p.context.config.get('samples', 0) or 0)
         self._top = None
@@ -419,9 +479,14 @@ class CanvasBackend(BaseCanvasBackend):
     def _bind(self, sequence, callback, **kwargs):
         self._widget.bind(sequence, self._application._callback(callback), **kwargs)
 
+    def _vispy_check_thread(self):
+        self._application._check_thread()
+
+    @_ui_thread_only
     def _vispy_set_current(self):
         pass  # Canvas.set_current selects the GLIR target; there is no GL context.
 
+    @_ui_thread_only
     def _vispy_swap_buffers(self):
         if self._closed:
             return
@@ -438,6 +503,7 @@ class CanvasBackend(BaseCanvasBackend):
         self._widget.itemconfigure(self._image_item, image=photo)
         self._photo = photo  # Keep the Tcl image alive until it is replaced.
 
+    @_ui_thread_only
     def _vispy_update(self):
         if not self._closed and self._draw_job is None:
             self._application._root_state.ensure_progress()
@@ -567,30 +633,38 @@ class CanvasBackend(BaseCanvasBackend):
         emitter = self._vispy_canvas.events.key_press if pressed else self._vispy_canvas.events.key_release
         emitter(key=key, text=text, modifiers=self._modifiers(event, None if pressed else modifier), native=event)
 
+    @_ui_thread_only
     def _vispy_set_title(self, title):
         if self._top is not None:
             self._top.title(title)
 
+    @_ui_thread_only
     def _vispy_set_size(self, width, height):
         if self._top is not None:
             self._top.geometry('%dx%d' % (width, height))
         else:
             self._widget.configure(width=width, height=height)
 
+    @_ui_thread_only
     def _vispy_get_size(self):
         return self._size
 
     _vispy_get_physical_size = _vispy_get_size
 
+    @_ui_thread_only
     def _vispy_set_position(self, x, y):
+        if self._top is None:
+            raise RuntimeError('Tk embedded position is controlled by the host window')
         self._position = (int(x), int(y))
         if self._top is not None:
             self._top.geometry('%+d%+d' % self._position)
 
+    @_ui_thread_only
     def _vispy_get_position(self):
         widget = self._top if self._top is not None else self._widget
         return widget.winfo_x(), widget.winfo_y()
 
+    @_ui_thread_only
     def _vispy_set_visible(self, visible):
         if self._top is not None:
             if visible:
@@ -598,19 +672,54 @@ class CanvasBackend(BaseCanvasBackend):
                 self._top.attributes('-fullscreen', self._fullscreen)
             else:
                 self._top.withdraw()
+        else:
+            self._set_embedded_visible(bool(visible))
         if visible:
             self._vispy_update()
 
+    def _set_embedded_visible(self, visible):
+        widget = self._widget
+        manager = widget.winfo_manager()
+        if visible:
+            if manager:
+                # The host has already placed/repositioned the widget.
+                self._hidden_layout = None
+            elif self._hidden_layout is not None:
+                manager, options, following = self._hidden_layout
+                options = dict(options)
+                if manager == 'pack' and _exists(following) and following.winfo_manager() == 'pack':
+                    options['before'] = following
+                getattr(widget, manager)(**options)
+                self._hidden_layout = None
+        elif manager:
+            if manager not in ('pack', 'grid', 'place'):
+                raise RuntimeError('Tk embedded visibility requires host control for manager %s' % manager)
+            options = getattr(widget, manager + '_info')()
+            following = None
+            if manager == 'pack':
+                siblings = options['in'].pack_slaves()
+                index = siblings.index(widget) + 1
+                following = siblings[index] if index < len(siblings) else None
+            getattr(widget, 'grid_remove' if manager == 'grid' else manager + '_forget')()
+            self._hidden_layout = (manager, options, following)
+
+    @_ui_thread_only
     def _vispy_set_fullscreen(self, fullscreen):
         if not isinstance(fullscreen, bool):
             raise RuntimeError('Tk fullscreen supports bool only; monitor-index selection is unsupported')
-        self._fullscreen = fullscreen
+        if self._top is None and fullscreen:
+            raise RuntimeError('Tk embedded fullscreen is controlled by the host window')
         if self._top is not None:
-            self._top.attributes('-fullscreen', self._fullscreen)
+            self._top.attributes('-fullscreen', fullscreen)
+        self._fullscreen = fullscreen
 
+    @_ui_thread_only
     def _vispy_get_fullscreen(self):
-        return self._fullscreen
+        if self._top is None:
+            return False
+        return self._top.tk.getboolean(self._top.attributes('-fullscreen'))
 
+    @_ui_thread_only
     def _vispy_get_native_canvas(self):
         return self._widget
 
@@ -618,11 +727,13 @@ class CanvasBackend(BaseCanvasBackend):
         if event.widget is self._widget and not self._closed:
             self._vispy_canvas.close()
 
+    @_ui_thread_only
     def _vispy_close(self):
         if self._closing or (self._closed and self not in self._application._pending_closes):
             return
         self._closing = True
         self._closed = True
+        self._hidden_layout = None
         self._pressed_buttons.clear()
         self._pressed_modifiers.clear()
         self._pressed_keys.clear()
@@ -675,6 +786,10 @@ class TimerBackend(BaseTimerBackend):
         self._job = None
         self._generation = 0
 
+    def _vispy_check_thread(self):
+        self._application._check_thread()
+
+    @_ui_thread_only
     def _vispy_start(self, interval):
         if self._application._quitting:
             raise RuntimeError('Cannot start a Tk timer while quitting')
@@ -688,6 +803,7 @@ class TimerBackend(BaseTimerBackend):
         self._job = self._root.after(self._interval,
                                     self._application._callback(lambda: self._timeout(generation)))
 
+    @_ui_thread_only
     def _vispy_stop(self):
         self._generation += 1
         if self._job is not None:

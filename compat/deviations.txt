@@ -41,3 +41,7 @@ gloo/gl/gl2.py
 gloo/gl/glplus.py
 util/config.py
 util/wrappers.py
+
+# Tk ownership, early UI-thread preconditions and consistent public lifecycle state.
+app/canvas.py
+app/timer.py

@@ -193,3 +193,15 @@ native profiles have nine zero shutdown gauges. See the
 source-functional candidates; Linux provenance is experimental, independent
 implementation review and exact installed gates remain open, and legal setter
 restrictions and unrelated Linux/host failures are not closed.
+
+
+The [Tk capability/configuration record](tkinter-capabilities.md) separates
+standalone and embedded behavior, minimum requests from actual grants, native
+resource sharing from GL context interoperation, and owner-thread use from
+unsupported worker calls. A new source packet fixes ignored configuration/window
+requests and embedded hide/show, preserves public Canvas/Timer state on thread
+rejection, and verifies shared updates after either consumer closes. Its 45 new
+cases pass within 328 Windows/314 WSL software affected cases, plus 47 CPU/source
+contracts and nine zero native shutdown gauges per profile. Native artifacts are
+reused. Installed qualification, full inventory/review and the listed platform,
+compositor and Tcl shutdown restrictions remain open.

@@ -109,6 +109,7 @@ class GLContext(BaseGlooFunctions):
         return "<GLContext at 0x%x>" % id(self)
 
     def _set_config(self, config):
+        self._requested_config = deepcopy(config or {})
         self._config = deepcopy(_default_dict)
         self._config.update(config or {})
         # Check the config dict

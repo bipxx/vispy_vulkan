@@ -231,6 +231,9 @@ class Canvas(object):
         """
         if self._backend is not None:
             return
+        validate = getattr(self._app._backend, '_vispy_validate_canvas', None)
+        if validate is not None:
+            validate(self._backend_kwargs)
         # Toolkits with explicit parent/interpreter ownership must see the
         # parent before creating a default native application.
         prepare = getattr(self._app._backend, '_vispy_prepare_canvas', None)
@@ -406,6 +409,9 @@ class Canvas(object):
 
     @title.setter
     def title(self, title):
+        check_thread = getattr(self._backend, '_vispy_check_thread', None)
+        if check_thread is not None:
+            check_thread()
         self._title = title
         self._backend._vispy_set_title(title)
 
@@ -471,6 +477,9 @@ class Canvas(object):
         To avoid having the widget destroyed (more like standard Qt
         behavior), consider making the widget a sub-widget.
         """
+        check_thread = getattr(self._backend, '_vispy_check_thread', None)
+        if check_thread is not None:
+            check_thread()
         try:
             if self._backend is not None and not self._closed:
                 logger.debug('Closing canvas %s' % (self,))

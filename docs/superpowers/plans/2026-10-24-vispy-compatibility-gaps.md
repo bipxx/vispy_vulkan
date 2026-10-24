@@ -485,3 +485,38 @@ setter gaps. Current CI execution remains separate from the local CI selection.
 The Linux scissor/toolkit and mandatory threedee blockers remain open. Retained
 commands, failures, source/artifact identities and managed cleanup are in the
 local `build/runs/state-query-15/` packet; no release profile was promoted.
+
+
+## Tk capability source checkpoint (B4, TK-1/5/6, BACKEND-2)
+
+The [mode-specific capability record](../../tkinter-capabilities.md) now maps
+window options/properties, requested/granted attachments, resource sharing and
+UI-thread ownership to concrete fixtures. Invalid framebuffer/window requests
+fail before interpreter adoption or widget/native registration, leaving a
+correctable Canvas request. Accepted minimum color/depth/stencil and sample
+requests are checked against actual storage. Explicit stereo/native double
+buffering and unrepresentable precision remain contextual unsupported requests;
+the inherited default double-buffer hint is not reported as an actual back buffer.
+
+Embedded hide/show now restores pack/grid/place layout and host bindings, preserves
+pack order and respects a new host placement. Embedded window-manager requests
+fail instead of silently changing a cached flag. Standalone fullscreen reports
+native acknowledgement. Shared texture updates reach both consumers and survive
+closing either first. UI-thread preconditions protect toolkit entry points and
+public Canvas/Timer state before rejected worker calls can mutate it.
+
+The initial Windows run reproduces 20 failures and four sharing passes. The final
+45 new capability cases pass within 328 Windows and 314 WSL software affected
+suites, with nine zero native shutdown gauges per profile; 47 CPU/source contracts
+also pass. Reused native binaries are unchanged. Canvas/Timer deviations are
+recorded and the existing source-preservation verifier passes. No new native
+build, wheel, environment or installed/hardware qualification was produced.
+
+This advances B4 source behavior and acceptance mapping. Full G0 reconciliation,
+independent implementation review, exact installed gates and remaining legal
+state/backend/host work remain open. The retained preexisting/intermittent Tcl
+ThemeChanged diagnostic for a destroyed interpreter still needs attribution for
+complete Tk shutdown qualification; source pass counts do not erase it. The
+existing Linux scissor/toolkit and threedee blockers remain distinct. Packet
+commands, source/native identities, failures and cleanup are retained locally in
+`build/runs/tk-capabilities-16/` under the unchanged hygiene policy.

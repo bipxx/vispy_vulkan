@@ -68,6 +68,11 @@ class Timer(object):
         if start:
             self.start()
 
+    def _check_backend_thread(self):
+        check = getattr(self._backend, '_vispy_check_thread', None)
+        if check is not None:
+            check()
+
     @property
     def app(self):
         """Timer is based on this vispy Application instance."""
@@ -79,6 +84,7 @@ class Timer(object):
 
     @interval.setter
     def interval(self, val):
+        self._check_backend_thread()
         self._interval = val
         if self.running:
             self.stop()
@@ -108,6 +114,7 @@ class Timer(object):
         changing the interval, number of iterations, or emitting a timer
         start event).
         """
+        self._check_backend_thread()
         if self.running:
             return  # don't do anything if already running
         self.iter_count = 0
@@ -123,6 +130,7 @@ class Timer(object):
 
     def stop(self):
         """Stop the timer."""
+        self._check_backend_thread()
         try:
             self._backend._vispy_stop()
         finally:
