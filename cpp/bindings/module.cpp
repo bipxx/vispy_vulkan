@@ -395,6 +395,7 @@ static nb::dict memory_window_dict(const VulkanMemoryWindow& window) {
 }
 
 NB_MODULE(_dawn, m) {
+    m.attr("submission_contract_version") = 1;
     m.def("_capture_upload", &vispy_binding::capture_upload);
     m.def("revision", &runtime_revision);
     m.def("device_info", []() { return info_dict(ensure_device()); });
@@ -471,6 +472,8 @@ NB_MODULE(_dawn, m) {
     m.def("frame_ready", &frame_ready);
     m.def("benchmark_frame_request_ready", &benchmark_frame_request_ready);
     m.def("configure_frame_slots", &configure_frame_slots);
+    m.def("diagnostic_submission_controls", &diagnostic_submission_controls,
+          nb::arg("hold_completions") = false, nb::arg("fail_once") = "");
     m.def("configure_shader_cache", &configure_shader_cache, nb::arg("entries"), nb::arg("bytes"));
     m.def("benchmark_begin_frame", &benchmark_begin_frame);
     m.def("benchmark_memory_window_begin", []() {

@@ -202,6 +202,16 @@ class DawnGlirParser(BaseGlirParser):
     def parse(self, commands):
         from vispy import _dawn
 
+        if getattr(_dawn, 'submission_contract_version', 0) < 1:
+            original_commands = commands
+            def guarded_commands():
+                for command in original_commands:
+                    if len(command) > 1 and command[0] == 'FUNC' and command[1] == 'glFlush':
+                        raise RuntimeError('glFlush requires a matching native submission-contract build; '
+                                           'the older native module does not submit this operation')
+                    yield command
+            commands = guarded_commands()
+
         if hasattr(_dawn, "_capture_upload") and hasattr(_dawn, "_execute_owned"):
             stats = dict(captures=0, bytes=0, fallback_dtypes=0, fallback_exports=0)
             packed, arrays = pack_commands(commands, native_capture=_dawn._capture_upload,

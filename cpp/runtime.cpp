@@ -860,6 +860,8 @@ struct Ticket {
     };
     uint64_t id = 0, generation = 0;
     std::atomic<bool> complete{false};
+    std::atomic<bool> callback_received{false};
+    bool completion_registered = false;
     bool ok = false;
     std::string error;
     int canvas_id = 0;
@@ -954,6 +956,10 @@ struct Engine {
     static constexpr uint64_t line_capture_byte_limit = 64ull * 1024 * 1024;
     std::deque<std::shared_ptr<Ticket>> tickets;
     size_t frame_slots = 3;
+    // Test controls affect completion delivery, never whether work reaches GPU.
+    std::shared_ptr<std::atomic<bool>> hold_submission_completions =
+        std::make_shared<std::atomic<bool>>(false);
+    std::string diagnostic_submit_failure;
     std::deque<std::shared_ptr<FrameMark::Queries>> query_frames;
     std::deque<std::shared_ptr<FrameMark::Queries>> frame_works;
     std::unordered_map<int, std::deque<BenchmarkCompletion>> completion_records;
@@ -1452,14 +1458,8 @@ struct Engine {
 
     void map_ticket_queries(Ticket& ticket) {
         if (!ticket.queries) return;
-        ++ticket.queries->submission_count;
         auto segment = ticket.query_segment;
         if (!segment) return;
-        segment->canvas_id = ticket.canvas_id;
-        segment->ticket_id = ticket.id;
-        segment->generation = ticket.generation;
-        segment->frame_id = ticket.queries->frame_id;
-        segment->paint_token = ticket.queries->work.paint_token;
         if (segment->kinds.empty()) { segment->status = vispy::timing::Status::Success; return; }
         query_segments.push_back(segment);
         const uint64_t bytes = segment->kinds.size() * 2 * sizeof(uint64_t);
@@ -1499,7 +1499,85 @@ struct Engine {
         segment->map_requested = true;
     }
 
+    void maybe_fail_submission(const char* stage) {
+        if (diagnostic_submit_failure != stage) return;
+        diagnostic_submit_failure.clear();
+        throw std::runtime_error(std::string("diagnostic submission failure: ") + stage);
+    }
+
+    void retain_submission_ticket(const std::shared_ptr<Ticket>& ticket) {
+        if (!ticket->id) {
+            ticket->id = next_ticket++;
+            ticket->generation = device_generation;
+        }
+        if (!ticket->submission_owner_retained) {
+            tickets.push_back(ticket); // Allocate ownership before Queue.Submit.
+            ticket->submission_owner_retained = true;
+        }
+    }
+
+    void register_submission_completion(const std::shared_ptr<Ticket>& ticket) {
+        if (ticket->completion_registered) return;
+        maybe_fail_submission("callback-registration");
+        queue.OnSubmittedWorkDone(wgpu::CallbackMode::AllowProcessEvents,
+            [ticket, hold = hold_submission_completions](wgpu::QueueWorkDoneStatus status, wgpu::StringView message) {
+                ticket->ok = status == wgpu::QueueWorkDoneStatus::Success;
+                ticket->error = view_to_string(message);
+                ticket->completion_ns = monotonic_ns();
+                ticket->callback_received.store(true);
+                if (!hold->load()) ticket->complete.store(true);
+            });
+        ticket->completion_registered = true;
+    }
+
+    void submit_ticket_commands(const std::shared_ptr<Ticket>& ticket, const wgpu::CommandBuffer& commands) {
+        retain_submission_ticket(ticket);
+        try {
+            if (ticket->queries)
+                ticket->queries->work.validate_submission(ticket->id, device_generation);
+            maybe_fail_submission("before-submit");
+            queue.Submit(1, &commands);
+        } catch (...) {
+            tickets.pop_back(); // The Engine mutex excludes other deque writers.
+            ticket->submission_owner_retained = false;
+            throw;
+        }
+        ++probe.dawn_queue_submits;
+        ticket->submit_ns = monotonic_ns();
+        if (ticket->queries) {
+            // Mandatory ownership/count commit precedes optional callback/map
+            // registration. A later failure still has one real outstanding
+            // Ticket to retire, not an unsubmitted-looking frame.
+            ticket->queries->work.submitted(ticket->id, ticket->submit_ns, device_generation);
+            ++ticket->queries->submission_count;
+            if (ticket->query_segment) {
+                auto& segment = *ticket->query_segment;
+                segment.canvas_id = ticket->canvas_id;
+                segment.ticket_id = ticket->id;
+                segment.generation = ticket->generation;
+                segment.frame_id = ticket->queries->frame_id;
+                segment.paint_token = ticket->queries->work.paint_token;
+            }
+        }
+    }
+
+    void fail_submission_metadata(Ticket& ticket, vispy::timing::Status status, const std::string& error) {
+        if (ticket.queries) {
+            ticket.queries->fail(status, error);
+            ticket.queries->work.fail("failed", error);
+        }
+        if (ticket.query_segment) {
+            std::lock_guard<std::mutex> lock(ticket.query_segment->mutex);
+            ticket.query_segment->status = status;
+            ticket.query_segment->error = error;
+        }
+    }
+
     void poll() {
+        // A failed post-submit callback registration never releases the owner
+        // or replays work. Explicit progress retries only completion delivery.
+        if (queue) for (const auto& ticket : tickets)
+            if (!ticket->completion_registered) register_submission_completion(ticket);
         if (instance) instance.ProcessEvents();
         if (callbacks->lost.exchange(false)) invalidate_device();
         while (!tickets.empty() && tickets.front()->complete.load()) {
@@ -1535,32 +1613,25 @@ struct Engine {
 
     void track_submission(std::shared_ptr<Ticket> ticket) {
         if (!ticket) ticket = std::make_shared<Ticket>();
-        ticket->id = next_ticket++;
-        ticket->generation = device_generation;
+        retain_submission_ticket(ticket);
         for (const auto& capture : ticket->line_captures) {
             capture->result.ticket_id = ticket->id;
             if (capture->result.status == "encoded") capture->result.status = "submitted";
         }
-        if (ticket->queries)
-            ticket->queries->work.submitted(ticket->id, ticket->submit_ns, device_generation);
-        if (!ticket->submission_owner_retained) tickets.push_back(ticket);
-        queue.OnSubmittedWorkDone(wgpu::CallbackMode::AllowProcessEvents,
-            [ticket](wgpu::QueueWorkDoneStatus status, wgpu::StringView message) {
-                ticket->ok = status == wgpu::QueueWorkDoneStatus::Success;
-                ticket->error = view_to_string(message);
-                ticket->completion_ns = monotonic_ns();
-                ticket->complete.store(true);
-            });
+        try {
+            register_submission_completion(ticket);
+        } catch (const std::exception& error) {
+            fail_submission_metadata(*ticket, vispy::timing::Status::SubmissionError, error.what());
+            throw;
+        }
         // Preserve the actual completion callback even if CPU query-map
         // admission fails after this Ticket was submitted.
-        try { map_ticket_queries(*ticket); }
+        try {
+            maybe_fail_submission("query-map");
+            map_ticket_queries(*ticket);
+        }
         catch (const std::exception& error) {
-            if (ticket->queries) ticket->queries->fail(vispy::timing::Status::MapError, error.what());
-            if (ticket->query_segment) {
-                std::lock_guard<std::mutex> lock(ticket->query_segment->mutex);
-                ticket->query_segment->status = vispy::timing::Status::MapError;
-                ticket->query_segment->error = error.what();
-            }
+            fail_submission_metadata(*ticket, vispy::timing::Status::MapError, error.what());
             throw;
         }
         update_work_peaks();
@@ -1718,6 +1789,10 @@ struct Engine {
     }
 
     void shutdown() {
+        hold_submission_completions->store(false);
+        for (const auto& ticket : tickets)
+            if (ticket->callback_received.load()) ticket->complete.store(true);
+        diagnostic_submit_failure.clear();
         // Cancel before explicit shutdown waits and destruction; those are not
         // measured allocation events. Never strand the layer's active token.
         if (memory_window_token) close_memory_window(true);
@@ -5351,12 +5426,10 @@ void main() {
         log("swapchain present");
         resolve_ticket_queries(encoder, *ticket);
         auto commands = encoder.Finish();
-        queue.Submit(1, &commands);
-        probe.dawn_queue_submits++;
-        probe.application_presents++;
         ticket->owned_textures.push_back(target.color);
         ticket->surface_owners.push_back(target.surface_owner);
-        ticket->submit_ns = monotonic_ns();
+        submit_ticket_commands(ticket, commands);
+        probe.application_presents++;
         track_submission(ticket);
         if (target.surface.Present() != wgpu::Status::Success) {
             target.surface_configured = false;
@@ -5455,7 +5528,7 @@ void main() {
         update_work_peaks();
         ensure_native_surface(target);
         ensure_target(target);
-        if (draws.empty() && !target.clear_pending) {
+        if (draws.empty() && !target.clear_pending && (!present || target.surface)) {
             submit_timer.finish();
             if (present && !target.surface)
                 unavailable_paint_surface(owner, target, "requested paint surface is detached or expired");
@@ -5803,26 +5876,18 @@ void main() {
         resolve_ticket_queries(encoder, *ticket);
         wgpu::CommandBuffer commands = encoder.Finish();
         encoding_scope.close();
-        if (ticket->line_resources) {
-            // Allocate the Engine's ownership before submitting. Later query
-            // map/receipt errors cannot lose the actual submitted lease.
-            tickets.push_back(ticket);
-            ticket->submission_owner_retained = true;
-        }
-        try { queue.Submit(1, &commands); }
-        catch (...) {
-            if (ticket->submission_owner_retained) {
-                tickets.pop_back();
-                ticket->submission_owner_retained = false;
-            }
-            throw;
-        }
-        if (ticket->line_resources) ticket->line_resources->mark_submitted();
-        commit_texture_uploads(*ticket);
-        probe.dawn_queue_submits++;
-        ticket->submit_ns = monotonic_ns();
+        submit_ticket_commands(ticket, commands);
+        // Submission cannot be rolled back. Clear the consumed batch before
+        // any later bookkeeping/map/receipt error can escape to a caller.
         draws.clear();
         target.clear_pending = false;
+        if (ticket->line_resources) ticket->line_resources->mark_submitted();
+        commit_texture_uploads(*ticket);
+        try { maybe_fail_submission("after-submit"); }
+        catch (const std::exception& error) {
+            fail_submission_metadata(*ticket, vispy::timing::Status::SubmissionError, error.what());
+            throw;
+        }
         track_submission(ticket);
         log("dawn Queue.Submit count=" + std::to_string(probe.dawn_queue_submits));
         if (target.present_swapchain && target.surface) {
@@ -6165,6 +6230,33 @@ void main() {
         probe.sampled_peak_live_buffer_bytes = std::max(probe.sampled_peak_live_buffer_bytes, probe.live_buffer_bytes);
         probe.sampled_peak_live_cpu_buffer_bytes = std::max(probe.sampled_peak_live_cpu_buffer_bytes, probe.live_cpu_buffer_bytes);
         probe.sampled_peak_live_texture_bytes = std::max(probe.sampled_peak_live_texture_bytes, probe.live_texture_bytes);
+    }
+
+    void flush_target(Canvas& target) {
+        poll();
+        if (target.width <= 0 || target.height <= 0 || !target.alive) {
+            cancel_canvas_frames(target, "cancelled", "zero drawable before flush submission");
+            target.pending.clear();
+            target.queued_frames.clear();
+            target.clear_pending = false;
+            target.deferred_present = false;
+            update_work_peaks();
+            return;
+        }
+        const size_t required = target.queued_frames.size() +
+            size_t(!target.pending.empty() || target.clear_pending);
+        if (!required) return;
+        if (tickets.size() + required > frame_slots)
+            throw std::runtime_error("glFlush submission capacity exhausted; process events and retry (no work discarded)");
+        bool queued_only = false;
+        do {
+            const auto submits = probe.dawn_queue_submits;
+            submit_canvas(target, false, queued_only);
+            queued_only = true;
+            if ((!target.queued_frames.empty() || !target.pending.empty() || target.clear_pending) &&
+                    probe.dawn_queue_submits == submits)
+                throw std::runtime_error("glFlush resource capacity deferred submission; process events and retry (work retained)");
+        } while (!target.queued_frames.empty() || !target.pending.empty() || target.clear_pending);
     }
 
     void finish_target(Canvas& target, bool present) {
@@ -6538,9 +6630,9 @@ static void execute_commands_impl(int canvas_id, const std::vector<Command>& com
                 canvas.swapchain_current = false;
             } else if (name == "glFinish") {
                 eng.probe.finish_calls++;
-                eng.finish_target(canvas, true);
+                eng.finish_target(canvas, false);
             } else if (name == "glFlush") {
-                eng.log("glFlush parsed without GPU wait");
+                eng.flush_target(canvas);
             } else {
                 parse_render_state(cmd, canvas.state);
                 std::copy(canvas.state.viewport.begin(), canvas.state.viewport.end(), canvas.viewport);
@@ -7224,7 +7316,7 @@ void finish_canvas(int canvas_id) {
     eng.probe.finish_calls++;
     auto it = eng.canvases.find(canvas_id);
     if (it == eng.canvases.end()) return;
-    eng.finish_target(it->second, true);
+    eng.finish_target(it->second, false);
 }
 
 vispy::lines::LineOwnershipSnapshot diagnostic_peek_line_ownership(int canvas_id) {
@@ -7635,6 +7727,19 @@ bool benchmark_frame_request_ready(int canvas_id) {
     return eng.frame_capacity(canvas).ready();
 }
 
+void diagnostic_submission_controls(bool hold_completions, const std::string& fail_once) {
+    if (!fail_once.empty() && fail_once != "before-submit" && fail_once != "after-submit" &&
+            fail_once != "callback-registration" && fail_once != "query-map")
+        throw std::runtime_error("unknown diagnostic submission failure stage");
+    auto& eng = engine();
+    std::lock_guard<std::mutex> lock(eng.mu);
+    eng.hold_submission_completions->store(hold_completions);
+    if (!hold_completions)
+        for (const auto& ticket : eng.tickets)
+            if (ticket->callback_received.load()) ticket->complete.store(true);
+    eng.diagnostic_submit_failure = fail_once;
+}
+
 void configure_frame_slots(int slots) {
     auto& eng = engine();
     std::lock_guard<std::mutex> lock(eng.mu);
@@ -7850,7 +7955,7 @@ Readback read_canvas(int canvas_id, int x, int y, int width, int height, bool al
         result.error = "missing canvas";
         return result;
     }
-    eng.finish_target(it->second, true);
+    eng.finish_target(it->second, false);
     auto& canvas = it->second;
     HostTimer submit_timer(eng.probe.native_submit_ns);
     auto encoder = eng.device.CreateCommandEncoder();
@@ -7934,12 +8039,10 @@ Readback read_canvas(int canvas_id, int x, int y, int width, int height, bool al
     encoder.CopyTextureToBuffer(&src, &dest, &extent);
     eng.resolve_ticket_queries(encoder, *ticket);
     auto commands = encoder.Finish();
-    eng.queue.Submit(1, &commands);
+    ticket->transient_buffers.push_back(buffer);
+    eng.submit_ticket_commands(ticket, commands);
     eng.commit_texture_uploads(*ticket);
-    eng.probe.dawn_queue_submits++;
-    ticket->submit_ns = monotonic_ns();
     eng.track_submission(ticket);
-    if (ticket->queries) ticket->transient_buffers.push_back(buffer);
     eng.freeze_submission_counters(*ticket, submit_timer);
     auto wait = std::make_shared<AsyncResult>();
     auto future = buffer.MapAsync(wgpu::MapMode::Read, 0, bd.size, wgpu::CallbackMode::WaitAnyOnly,
@@ -7995,12 +8098,11 @@ Readback read_presented(int canvas_id, int x, int y, int width, int height) {
         return result;
     }
     HostTimer submit_timer(eng.probe.native_submit_ns);
-    std::shared_ptr<Ticket> ticket;
+    auto ticket = std::make_shared<Ticket>();
+    ticket->canvas_id = canvas_id;
+    ticket->owned_textures.push_back(it->second.presented);
     if (it->second.frame_mark && it->second.frame_mark->queries) {
-        ticket = std::make_shared<Ticket>();
-        ticket->canvas_id = canvas_id;
         eng.attach_query_frame(it->second, *ticket, 0);
-        ticket->owned_textures.push_back(it->second.presented);
     }
     uint32_t bpr = (static_cast<uint32_t>(width) * 4u + 255u) & ~255u;
     wgpu::BufferDescriptor bd;
@@ -8021,14 +8123,10 @@ Readback read_presented(int canvas_id, int x, int y, int width, int height) {
     wgpu::Extent3D extent{static_cast<uint32_t>(width), static_cast<uint32_t>(height), 1};
     encoder.CopyTextureToBuffer(&src, &dest, &extent);
     auto commands = encoder.Finish();
-    eng.queue.Submit(1, &commands);
-    eng.probe.dawn_queue_submits++;
-    if (ticket) {
-        ticket->transient_buffers.push_back(buffer);
-        ticket->submit_ns = monotonic_ns();
-        eng.track_submission(ticket);
-        eng.freeze_submission_counters(*ticket, submit_timer);
-    } else submit_timer.finish();
+    ticket->transient_buffers.push_back(buffer);
+    eng.submit_ticket_commands(ticket, commands);
+    eng.track_submission(ticket);
+    eng.freeze_submission_counters(*ticket, submit_timer);
     auto wait = std::make_shared<AsyncResult>();
     auto future = buffer.MapAsync(wgpu::MapMode::Read, 0, bd.size, wgpu::CallbackMode::WaitAnyOnly,
         [wait](wgpu::MapAsyncStatus status, wgpu::StringView message) {

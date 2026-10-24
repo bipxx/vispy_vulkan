@@ -79,8 +79,8 @@ def test_raw_color_mask_and_invalid_state_are_not_silently_ignored():
         assert np.all(gloo.read_pixels((0, 0, 8, 8), alpha=True) == [255, 255, 0, 0])
         with pytest.raises(DawnCompatibilityError, match='glCreateProgram'):
             gl.glCreateProgram()
-        with pytest.raises(DawnCompatibilityError, match='glFlush'):
-            gl.glFlush()
+        with pytest.raises(DawnCompatibilityError, match='glDrawArrays'):
+            gl.glDrawArrays(gl.GL_TRIANGLES, 0, 3)
         with pytest.raises(DawnCompatibilityError, match='buffer mask'):
             gl.glClear(1)
     finally:

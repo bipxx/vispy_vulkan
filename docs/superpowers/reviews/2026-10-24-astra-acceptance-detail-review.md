@@ -44,3 +44,25 @@ and adopted-root re-entry have regression cases. Windows Tk/state/capture passes
 These results are not installed qualification. Existing Linux capture/runtime
 blockers and the other review findings remain open; no independent re-review of
 this implementation is implied by this coordinator update.
+
+## Implementation follow-up: A1/A2 and sample-count proof
+
+Matching Windows and experimental Linux native leaves now implement both public
+flush routes with real submission, explicit bounded backpressure and no added
+completion wait. Finish and readback no longer request presentation. Tickets are
+owned before submission; frame counts commit before optional callback/map work,
+and post-submit failure/retry never replays consumed commands. Thirty-one source
+submission cases exercise controlled completion delivery, both sides of Submit,
+callback/map errors, marked-frame retirement, resource mutation/deletion, loss,
+close, FBO/canvas state and later explicit presentation.
+
+The broader candidate suites pass 168 Windows and 146 WSL software cases; 67
+CPU/source cases and the C++ lifecycle contract also pass. These are source
+functional results, not exact-wheel or strict absence qualification. The source
+parser refuses the historical logging-only operation on an older native module.
+
+A6's scissor fixture now verifies allocated storage and requested/granted sample
+counts. Windows passes all eight boundary cases. Linux still fails one of eight
+with four samples actually granted, preserving the failure and actual loaded
+driver hashes. The plain-Tk runtime blocker remains open. G2, the other state/Tk
+requirements and independent review of the implementation are still required.

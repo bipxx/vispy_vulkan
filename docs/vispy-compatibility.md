@@ -89,14 +89,34 @@ enable/disable, depth range/function, front/cull face, line width, polygon offse
 blend and stencil state, sample coverage, and `glFinish`. Native validation still
 rejects unsupported values or configurations. Prior queued gloo work is processed
 before each raw state operation, preserving ordering and framebuffer selection.
-Viewport changes also update the Python context cache. `glFinish` waits through
-the native implementation. Arbitrary object IDs, shader creation, raw draw calls
-and `glFlush` remain unsupported; the existing GLIR flush operation alone would
-not satisfy immediate `glFlush` submission semantics.
+Viewport changes also update the Python context cache. Matching new native
+candidates implement both `gloo.flush()` and `gloo.gl.glFlush()` through real
+current-canvas submission without a deliberate completion wait. Empty/repeated
+flushes with no new work are no-ops. The bounded in-flight ring reports a
+contextual capacity error if it cannot submit the promised work; pending work is
+retained for `process_events()` followed by an explicit retry. A capacity error
+is not a successful flush, and no unlimited queueing contract is claimed.
+The parser rejects flush on older native modules lacking submission contract
+version 1, so their historical logging-only route cannot silently pass.
 
-The existing public `gloo.flush()` also reaches the logging-only native flush
-operation. Actual submit-without-completion-wait behavior for both APIs remains
-an implementation requirement; it cannot be closed by relabeling the wrapper.
+`gloo.finish()`/raw `glFinish` complete preceding work without requesting GUI
+drawing or presentation, preserving active framebuffer, viewport and scissor.
+Native readback no longer requests presentation either. Explicit presentation
+still copies a previously completed target when there are no new draws.
+Submitted owners are retained before Queue.Submit; post-submit failures cannot
+replay consumed work or free owners early. Query-frame submission counts commit
+at the actual submit boundary before optional callback/map bookkeeping.
+Arbitrary immediate object IDs, shader creation and raw draws remain unsupported.
+
+The native submission packet has 168 passing Windows source cases, 146 passing
+WSL software cases, 67 CPU/source contracts and a passing C++ frame-lifecycle
+contract. Separate Linux scissor testing still passes seven cases and fails one,
+now explicitly verifying that four samples were granted. These are functional
+candidate results, not installed-wheel/absence qualification. Windows reuses the
+verified vendor SDK; the experimental Linux leaf reuses retained libraries and
+recompiles all first-party units with the producer's GCC version, using portable
+headers from the existing pinned nanobind 3.1.0 environment. Exact wheel packaging,
+complete member/profile audits and all three observer gates remain pending.
 
 ## Remaining gaps
 

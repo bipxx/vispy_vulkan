@@ -40,7 +40,7 @@ _STATE_COMMANDS = frozenset((
     'glPolygonOffset', 'glBlendColor', 'glBlendFunc', 'glBlendFuncSeparate',
     'glBlendEquation', 'glBlendEquationSeparate', 'glStencilFunc',
     'glStencilFuncSeparate', 'glStencilMask', 'glStencilMaskSeparate',
-    'glStencilOp', 'glStencilOpSeparate', 'glSampleCoverage', 'glFinish',
+    'glStencilOp', 'glStencilOpSeparate', 'glSampleCoverage', 'glFinish', 'glFlush',
 ))
 
 
@@ -67,8 +67,9 @@ class DawnProxy(BaseGLProxy):
             context.glir.command('FUNC', funcname, *args)
             # Flush preceding gloo commands too, keeping raw state changes in
             # their original order with queued draws and framebuffer bindings.
-            # glFinish's native route waits for GPU completion. glFlush is not
-            # exposed here: the GLIR operation alone does not submit pending work.
+            # Native glFinish waits; glFlush submits without a completion wait
+            # and reports bounded-capacity backpressure rather than deferring
+            # silently. Neither operation requests presentation.
             context.flush_commands()
             if funcname == 'glViewport':
                 context._last_viewport = tuple(args)

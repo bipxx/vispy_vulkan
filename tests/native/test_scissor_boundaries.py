@@ -3,7 +3,7 @@
 import numpy as np
 import pytest
 
-from vispy import app, gloo
+from vispy import _dawn, app, gloo
 
 pytestmark = pytest.mark.gpu
 
@@ -25,6 +25,11 @@ def test_native_scissor_clear_has_no_partial_boundary_samples(samples, size, upp
         gloo.set_state(scissor_test=True)
         gloo.clear(color=(1, 0, 0, 1))
         actual = gloo.read_pixels((0, 0, width, height), alpha=True)
+        granted = _dawn.framebuffer_config(canvas._backend._dawn_canvas_id)
+        assert granted['configuration_source'] == 'allocated_target'
+        assert granted['samples'] == samples and granted['sample_count'] == max(1, samples)
+        print('scissor samples requested/granted:', samples, granted['sample_count'],
+              'size/origin:', size, rectangle, flush=True)
         expected = np.empty((height, width, 4), dtype=np.uint8)
         expected[:] = [0, 0, 255, 255]
         if upper_right:

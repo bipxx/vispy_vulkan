@@ -223,11 +223,22 @@ Verify submission/progress and ordering with native counters/control work;
 wall-clock latency alone cannot establish absence of a GPU wait.
 
 This requirement covers both immediate `gloo.gl.glFlush()` and the existing
-public `gloo.flush()`/context flush wrapper. The latter currently queues the
-same logging-only native operation; changing its documentation to unsupported
-does not fix the advertised functionality. Test submission before any readback,
+public `gloo.flush()`/context flush wrapper. At the first review both reached or
+refused the logging-only operation. New matching native candidates implement
+actual submission; changing documentation alone would not fix that behavior.
+Test submission before any readback,
 present or `glFinish` can mask the problem, and verify `finish_calls` does not
 increase. Both routes must use the same native submission/lifetime contract.
+
+The source implementation uses submission contract version 1 and a bounded
+in-flight ring. It accepts empty no-ops, submits nonempty accepted work and
+raises explicit capacity/resource backpressure if work remains unsubmitted.
+Pending/queued owners survive that failure for progress and retry; a failed call
+is never promoted as successful flush. GPU-completion delivery can be held by
+diagnostic controls to prove saturation. Both finish APIs and native readback
+complete without requesting presentation; explicit later presentation remains
+required. This is candidate behavior, not an installed-profile admission or an
+unlimited-queue guarantee. Remaining state-family and qualification gates apply.
 
 STATE-5: Queries report actual dimensions, formats and granted limits in the
 correct units and active target scope. Do not infer aggregate sampler budgets
@@ -307,7 +318,7 @@ directory. Verify native and relevant Python bytes against the supplied wheel.
 
 Promotion must reuse the existing exact installed-distribution/member auditor,
 including the declared runtime manifest and native/profile closure. The new
-state smoke's two member hashes are supplemental and cannot replace that audit.
+state smoke's selected member hashes are supplemental and cannot replace that audit.
 
 ART-2: The immediate-state wheel smoke in Linux CI checks a bounded 96-pixel
 result and nine native shutdown gauges. It does not cover the complete state

@@ -35,7 +35,8 @@ def main():
         origins = {}
         with zipfile.ZipFile(args.wheel) as archive:
             assert any(name.endswith('.dist-info/WHEEL') for name in archive.namelist()), 'not a wheel'
-            for name in (Path(native.__file__).name, 'gloo/gl/dawn.py'):
+            for name in (Path(native.__file__).name, 'gloo/gl/dawn.py',
+                         'gloo/dawn_parser.py', 'gloo/wrappers.py'):
                 path = package / name
                 expected = hashlib.sha256(archive.read('vispy/' + name)).hexdigest()
                 actual = hashlib.sha256(path.read_bytes()).hexdigest()
@@ -45,19 +46,38 @@ def main():
         canvas = app.Canvas(app='dawn_headless', size=(12, 8))
         canvas.set_current()
         gl.glViewport(0, 0, 12, 8)
-        gloo.clear(color='blue')
+        assert native.submission_contract_version >= 1
+        counter_names = ('dawn_queue_submits', 'finish_calls', 'completion_waits', 'application_presents')
+        def counters():
+            values = native.probe()
+            return {key: values[key] for key in counter_names}
+        synchronization = []
+        for route, synchronize in (('gloo.flush', gloo.flush), ('gl.glFlush', gl.glFlush)):
+            before = counters()
+            gloo.clear(color='blue')
+            synchronize()
+            after = counters()
+            assert after['dawn_queue_submits'] > before['dawn_queue_submits'], route
+            assert all(after[key] == before[key] for key in counter_names[1:]), route
+            synchronization.append(dict(route=route, before=before, after=after))
         gl.glScissor(0, 0, 6, 8)
         gl.glEnable(gl.GL_SCISSOR_TEST)
         gl.glClearColor(1, 0, 0, 1)
         gl.glClear(gl.GL_COLOR_BUFFER_BIT)
         gl.glDisable(gl.GL_SCISSOR_TEST)
+        before = counters()
         gl.glFinish()
+        after = counters()
+        assert after['finish_calls'] == before['finish_calls'] + 1
+        assert after['completion_waits'] > before['completion_waits']
+        assert after['application_presents'] == before['application_presents']
+        synchronization.append(dict(route='gl.glFinish', before=before, after=after))
         image = gloo.read_pixels((0, 0, 12, 8), alpha=True)
         assert np.all(image[:, :6] == [255, 0, 0, 255])
         assert np.all(image[:, 6:] == [0, 0, 255, 255])
         assert canvas.context.get_viewport() == (0, 0, 12, 8)
         result.update(status='PASS', verified_members=origins, checked_pixels=96,
-                      device=native.device_info())
+                      device=native.device_info(), synchronization=synchronization)
     except BaseException:
         result['error'] = traceback.format_exc()
     finally:

@@ -62,6 +62,41 @@ marked blocked-external does not prevent independent software work.
 | G6 — host breadth | HOST-2 / Python + proof | Capability inventory and matching backend/native features | Each new host/version has pinned dependencies and a complete real workflow; no import-only admission. |
 | G7 — hardware/performance | HW-1, PERF-1 / proof + native | Appropriate hardware and affected packet correctness | Separate native Linux GPU/Metal records; absent hardware stays blocked-external. Fixed workload median/tail and CPU/upload/GPU/readback/presentation breakdown, without unsupported speedup/scanout claims. |
 
+## Native submission source checkpoint (G1d)
+
+Native submission checkpoint (G1d): both flush APIs now enter one real
+submit-without-completion-wait path. Capacity is checked before moving pending
+work; a full ring raises contextual backpressure, preserving unsent work for
+explicit progress/retry. Resource deferral cannot return a false successful
+flush. Empty calls do not create submissions. Finish/readback no longer request
+presentation; a subsequent explicit present copies the completed target.
+
+Every submitted Ticket gets an Engine owner before Queue.Submit. Consumed draws
+are cleared after irreversible submission, so later failures cannot replay them.
+Frame ownership/counts commit at that boundary before optional completion/map
+registration; a registration error retries delivery through progress without
+resubmitting. Diagnostic controls hold completion delivery and inject one-shot
+pre/post-submit, callback-registration and query-map failures. They establish
+capacity/error branches without depending on a fast-loop timing accident.
+
+The final candidate checks pass 168 Windows source cases, 146 WSL software cases,
+67 CPU/source cases and the C++ frame-lifecycle contract. Thirty-one submission
+cases cover both routes, empty/saturated calls, FBO/canvas state, finish without
+presentation, mutation/deletion, loss/close and marked-query failures. The native
+leaf builds reuse the verified Windows SDK and retained Linux libraries; Linux
+recompiles all first-party units and remains an experimental build profile.
+Neither producer origins nor the existing inplace native artifacts were changed.
+Separate Linux scissor testing is still seven pass/one fail with granted sample
+counts and loaded driver hashes; the toolkit/capture blocker is not repaired.
+
+This advances STATE-2/4 and review A1/A2 source behavior. STATE-1/3/5 coverage,
+remaining Tk acceptance, exact installed artifacts, strict absence gates and
+independent implementation review still prevent G2 promotion. The installed
+state smoke now requires both flush submissions before synchronization, finish
+without presentation and four selected loaded-member hashes; its new behavior
+has not yet been executed against a final wheel and does not replace the full
+auditor or Tk/profile gates.
+
 ## G0 ledger and promotion details
 
 Implementation checkpoint: `compat/vispy-compatibility.json` is now the selected
@@ -236,9 +271,10 @@ The next bounded work must distinguish two independent Linux investigations:
 repair or select a pinned toolkit runtime using a plain-Tk control, and compare
 the headless multisample scissor reproducer under an isolated pinned driver.
 Neither result transfers to the other. Preserve existing failures, reference
-inputs by hash, and change one diagnostic variable at a time. Native flush
-design can proceed independently; its accepted design must resolve full-ticket
-behavior before implementation. G2 remains dependent on the affected G1 paths
+inputs by hash, and change one diagnostic variable at a time. The bounded native
+flush design now has source-functional candidate evidence above; its capacity
+error is an explicit failed call, never a successful deferred submission.
+G2 remains dependent on the affected G1 paths
 and an exact candidate artifact, rather than on a favorable source-only retry.
 
 Follow RET-1, LIC-1, root AGENTS.md and [build hygiene](../../build-hygiene.md): one 20 GiB
