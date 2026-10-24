@@ -144,9 +144,10 @@ MouseWheel handling need distinct controls. Parent applications retain their
 own bindings and layout. Unsupported capabilities, such as monitor-index
 fullscreen or compositor transparency, must be implemented or explicitly refused.
 
-The current adapter does not provide the pressed `buttons` list expected by
-VisPy camera handlers. This is a known functional defect, not merely missing
-test evidence. Track pressed buttons through press/move/release, including
+At the Astra review checkpoint the adapter omitted the pressed `buttons` list
+expected by VisPy camera handlers. Follow-up source changes repair that defect;
+the execution plan records the evidence and remaining input acceptance. Track
+pressed buttons through press/move/release, including
 release outside the widget and focus loss. Require real SceneCanvas PanZoom and
 3D camera drags that change camera state and rendered output; synthetic event
 emission without a camera response cannot close this requirement. Include META

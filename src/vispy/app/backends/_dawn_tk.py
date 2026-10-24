@@ -325,7 +325,9 @@ class CanvasBackend(BaseCanvasBackend):
         self._photo = None
         self._size = tuple(map(int, p.size))
         self._position = (0, 0)
-        self._fullscreen = bool(p.fullscreen)
+        if not isinstance(p.fullscreen, bool):
+            raise RuntimeError('Tk fullscreen supports bool only; monitor-index selection is unsupported')
+        self._fullscreen = p.fullscreen
         self._samples = int(p.context.config.get('samples', 0) or 0)
         self._top = None
         self._widget = None
@@ -518,7 +520,9 @@ class CanvasBackend(BaseCanvasBackend):
             self._vispy_update()
 
     def _vispy_set_fullscreen(self, fullscreen):
-        self._fullscreen = bool(fullscreen)
+        if not isinstance(fullscreen, bool):
+            raise RuntimeError('Tk fullscreen supports bool only; monitor-index selection is unsupported')
+        self._fullscreen = fullscreen
         if self._top is not None:
             self._top.attributes('-fullscreen', self._fullscreen)
 

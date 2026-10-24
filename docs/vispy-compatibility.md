@@ -52,6 +52,20 @@ automatic cleanup retry loop. Callbacks cannot create new Tk canvases/interprete
 or restart timers while that application is quitting. Broader lifecycle,
 coordinate and capture acceptance remains open; see the [current specification](superpowers/specs/2026-10-24-vispy-compatibility-gap-closure.md).
 
+Independent Windows capture tests now verify known corner colors across odd-size
+resize/device loss, single/four samples, fractional alpha, cropped float/byte
+readback, embedded capture and Tcl image replacement. Local Tk scaling settings
+preserve widget/event pixel coordinates without a second framebuffer scale;
+this does not qualify OS mixed-monitor DPI changes. Monitor-index fullscreen is
+explicitly unsupported; pass a bool for Tk fullscreen.
+
+The new Linux capture tests remain incomplete: an exact four-sample boundary
+after resize differs from its independent expectation, and Tk Label construction
+aborts with an Xlib/XCB sequence assertion in the current WSL runtime. The latter
+also reproduces in plain Tk without VisPy/Vulkan. Neither the toolkit failure
+nor the pixel mismatch is hidden by skips or relaxed expectations. Windows
+results and earlier Linux source tests do not qualify this expanded workflow.
+
 Selected `gloo.gl` state calls now execute through the current canvas's ordered
 GLIR queue: viewport/scissor, clear color/depth/stencil and clear, masks,
 enable/disable, depth range/function, front/cull face, line width, polygon offset,

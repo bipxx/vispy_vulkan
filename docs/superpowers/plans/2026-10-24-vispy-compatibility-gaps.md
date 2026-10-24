@@ -115,6 +115,25 @@ The final headless cleanup check uses the existing viewport API so it works with
 the reused Windows native binary. This expands TK-1..4 evidence but does not close
 all lifetime interleavings or installed qualification. G1c is the next packet.
 
+G1c progress: fourteen new independent capture/coordinate cases pass on Windows;
+the combined Windows suite has 86 passing cases plus thirteen package/source
+contracts. Authored quadrants test odd sizes, alpha, cropped byte/float capture,
+resize/loss, four samples, embedding, Tcl image retirement and local Tk scale
+settings. These local scale controls are not mixed-monitor DPI qualification.
+Monitor-index fullscreen requests are now explicitly refused rather than
+silently converted to bool; monitor selection remains unsupported.
+
+Linux G1c is incomplete. The existing final Linux renderer fails an exact
+four-sample clear boundary after odd-size resize; the isolated case reproduces
+it and retains actual/expected arrays. Do not change its categorical expectation
+or transfer the Windows pass. A separate Xlib/XCB abort occurs while creating a
+Tk Label; a plain Tk control without VisPy or Vulkan reproduces the same abort.
+The current WSL managed-Python toolkit environment is therefore not qualified
+for that workflow, and system Python has no Tk comparison available. Full logs,
+the first-failure receipt and controls are retained with the G1c run. Resolve
+the toolkit runtime/profile and add the MSAA clear fix to the next affected
+native packet before G2; no old qualified row is silently promoted or erased.
+
 1. Reproduce the missing pressed-button state using a real SceneCanvas camera.
    Add regression expectations before changing input dispatch; include release
    outside/focus loss and modifiers. Do not weaken camera code to hide bad events.
