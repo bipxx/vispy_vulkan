@@ -27,6 +27,14 @@ requirements plus input vectors, state/query records and shader decisions.
 The source checkpoints below implement B2 applicability and B1 workflow binding;
 remaining inventory, implementation-review and installed gates stay open.
 
+The [current-head Astra max review](../reviews/2026-10-24-astra-next-packet-review.md)
+adds three accepted refinements: query logical state before draw lowering,
+reject malformed/unsupported selectors before queue consumption, and separate
+source/fixture review from final promotion-evidence review.
+Specification section 12 and the detailed next-packet table define the next
+bounded implementation and its exit checks. This documentation review does not
+qualify source, artifacts or hardware.
+
 ## Baseline and review disposition
 
 - Earlier implementation PR #13 merged. The installed matrix still has one
@@ -194,9 +202,9 @@ this queue rather than restarting already completed source work:
 | --- | --- | --- |
 | 1 | Reconcile concrete G0 feature/profile rows for the current Tk/state work; map ordinary and mutation fixtures, known failures and candidate identities using the implemented v2 applicability mapping. | Schema validity alone is insufficient. V1 migration and missing-required, optional and blocked-hardware controls have source evidence above. Keep the full inventory unreviewed until method/example/event/host reconciliation is actually complete. |
 | 2 | TK-6 input translation now has the source checkpoint above; map those fixtures into concrete G0 rows and the installed Tk scenario. | Preserve the section 11 policy and remaining physical/layout restrictions. G2 still needs exact-wheel functional/observer proof; source passes do not admit an installed profile. |
-| 3 | Complete STATE-1/3/5 operation/query records and missing family fixtures. | Separate invalid inputs from legal unimplemented values. Preserve failures and list native changes genuinely required before packaging. |
+| 3 | Implement the bounded native mutable-state query packet in specification section 12, extending the existing operation/query records and fixtures. | Resolve native authority, old-module guard, return conversions, default rectangle/FBO scope and no-added-synchronization proof before promotion. Legal setter gaps remain separate packets. |
 | 4 | Diagnose the two Linux G1c blockers separately with pinned, bounded controls. | A toolkit repair cannot close scissor correctness; a driver comparison cannot close toolkit lifecycle. Preserve exact failing receipts and granted-sample proof. |
-| 5 | Freeze the scoped G1 source, obtain independent implementation review, then produce/reuse the appropriate final artifacts for G2. | Run full installed-member/profile audits, mapped workflow acceptance, three independent absence gates and controls, shutdown/ownership checks and required current-head CI. An old wheel receipt cannot acquire a new identity. |
+| 5 | Freeze scoped G1 source and obtain independent source/fixture review; produce/reuse exact G2 artifacts, collect qualification receipts, then obtain independent promotion-evidence review. | The first review checks the patch and fixture mapping; the second checks final artifact/auditor/observer/CI receipts. Both must pass. Run complete installed/profile/functional/absence/control/shutdown gates. An old wheel receipt cannot acquire a new identity. |
 | 6 | Select one G4/G5/G6 packet from the reviewed capability dependencies. | Retain the shader/backend design decision before expanding the surface; requalify dependent workflows against the changed artifact. |
 
 G3's bounded threedee diagnosis and available G0 reconciliation may proceed
@@ -362,6 +370,33 @@ Useful existing entry points are `_dawn_tk.py`, `gloo/gl/dawn.py`,
 shown in the specification. Extend current suites rather than creating copied
 harness/source histories. The installed state smoke covers one 96-pixel scene,
 not Tk or the entire state allowlist.
+
+## Detailed next-packet deliverables
+
+Use specification [section 12](../specs/2026-10-24-vispy-compatibility-gap-closure.md#12-next-packet-designs-and-exit-checks)
+for the next implementation boundary. The immediate-state source checkpoint
+above remains the baseline; do not rerun its native build merely for this plan.
+
+| Packet / responsibility | Concrete output | Exit / explicit remaining work |
+| --- | --- | --- |
+| Q1 / native + Python | Native committed-state query projection and versioned binding; guarded ordered Python route; per-selector type/scope/default records; CPU and native fixtures. Planned source areas: runtime state/query helper, runtime API/binding, dawn_parser, existing state and immediate-state suites. | Both queued and immediate setters agree with native query/output; old natives cannot consume work; default rectangle/FBO decisions are tested; observation adds no submit/wait/present. No setter-gap or installed-artifact promotion. |
+| I1 / coordinator + proof | Concrete Tk/state feature/profile/fixture mappings in the canonical v2 ledger, with original required scope and receipts preserved. | Reviewed selected slice, validated dependencies and honest unresolved scope; the full generated inventory remains unreviewed until its remaining families are reconciled. |
+| B4 / Python + proof | Standalone/embedded capability and configuration record, including resource sharing, requested/granted attachments and thread ownership. | Every selected advertised capability has observable behavior or contextual refusal, constructor/mutation/teardown fixtures and an affected-row mapping. |
+| L1..Ln / native | One design and distinguishing output packet for each legal state-value gap in section 12. | Guard removed only for the proven subset; failure retains its counterexample. Do not couple independent software work to unrelated hardware blockers. |
+| G2 / proof | Source freeze and independent source/fixture review; exact artifacts and complete installed/observer/CI receipts; independent promotion-evidence review of those final receipts. | Both review checkpoints must pass. Source passes and this plan review cannot substitute for implementation review, exact installed identity or any of the three absence gates. |
+
+Q1 can proceed while I1/B4 assessment and bounded Linux/host investigations
+continue independently. Its selected requirements and fixture mappings must be
+recorded first. L1..Ln are not all prerequisites for a scoped Tk/state G2 packet;
+every required criterion for the selected workflow/profile still must pass.
+A narrower demonstrated subset must be represented explicitly and cannot
+qualify a broader required row. Excluded required behavior remains an explicit
+full-closure blocker. No new backend/shader admission may infer support from a query implementation.
+The ownership labels assign responsibilities and do not request new agents.
+
+The historical numbered repair checklist above records the original sequence.
+The current queue and these deliverables govern remaining work; source-fixed
+input and flush behavior must not be treated as missing implementation again.
 
 ## Validation, storage and handoff
 

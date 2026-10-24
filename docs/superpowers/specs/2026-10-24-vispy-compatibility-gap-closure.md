@@ -752,9 +752,13 @@ A headless observation cannot qualify Tk presentation or input executed in a
 separate unobserved process. Keep the three gate outcomes and their controls
 independent; no new substitute auditor is authorized by this refinement.
 
-Before promotion, an independent implementation review checks the actual patch,
-requirement-to-fixture mapping, retained failures and final artifact receipts.
-The plan review itself is not that implementation review. Record finding IDs,
+Independent review has two checkpoints: source/fixture review before packaging
+checks the actual patch, requirement-to-fixture mapping and retained failures;
+promotion-evidence review after qualification checks the exact final artifacts,
+installed-member/auditor/observer receipts, controls and required current-head CI.
+Both checkpoints must pass before promotion. A source review cannot approve
+receipts not yet produced, and a later evidence review does not replace patch
+review. The plan review itself is neither implementation-review checkpoint. Record finding IDs,
 dispositions and remaining restrictions; unresolved required findings prevent
 promotion of their affected rows.
 
@@ -764,3 +768,102 @@ known baseline when their actual prerequisites hold, even while an unrelated
 Linux Tk profile fails. G2 qualification for a particular affected workflow
 still requires that workflow's G1 criteria and exact installed artifact. Such
 independence neither qualifies the failing profile nor closes full scope.
+
+## 12. Next-packet designs and exit checks
+
+These designs refine STATE-1..5, INV-1..3 and BACKEND-2. They are pending work,
+not additional source-test results. The next implementation must reference its
+selected rows in the existing ledger and operation table; the tables here are
+acceptance instructions, not a replacement inventory or promotion mechanism.
+
+### Mutable-state queries (STATE-2,5)
+
+The first query packet covers the state already represented by the renderer:
+blend enable/color, RGB and alpha factors/equations; depth enable, function,
+write mask, range and clear value; front/back stencil comparisons, references,
+read/write masks and operations; culling/winding; color clear/write masks;
+viewport/scissor; line width/smoothing; polygon offset; multisample,
+alpha-to-coverage and sample-coverage controls. Attachment/sample configuration
+and device-limit queries retain their distinct provenance and target scope.
+An unsupported state such as enabled dither does not acquire a fabricated query
+value merely because its enum exists. Record exact admitted selectors before
+coding; no arbitrary glGetParameter compatibility claim follows.
+
+| Decision / invariant | Required implementation and acceptance |
+| --- | --- |
+| Authority | Read the selected native canvas's committed logical RenderState before draw/pipeline lowering, including values belonging to disabled features. Effective pipeline descriptors and the last draw are not API state: MIN/MAX lowering can replace factors, depth-test disable can suppress effective depth writes, and converted draws can collapse front/back stencil. A Python cache or separate state mirror cannot be the sole query source. Return newly committed state even before a draw. Attachment/configuration queries alone consult actual target configuration. |
+| Native compatibility | Name an explicit state-query contract and check it together with the native entry point before draining queued work. An older retained module must fail contextually without consuming the queue. Submission contract version alone does not advertise the new query API. |
+| Selector validation | Validate selector type and membership in the admitted selector table before draining queued GLIR. Malformed or unsupported selectors leave pending state/draw commands untouched. Test this separately from a valid query that encounters a queued execution failure. |
+| Ordering | Execute preceding GLIR through the existing ordered route before reading state. Record the last successful command when a queued command fails; no stale-value success or whole-stream rollback claim. Queries must not replay failed or already submitted work. |
+| Observation effects | Native state projection adds no queue submission, completion wait, readback, presentation, GUI draw or target allocation. Separately account for effects explicitly requested by preceding queued commands; their execution is not an observational side effect. Inspect counter deltas before a later readback can mask an accidental submit/wait. |
+| Return conversion | Specify scalar versus tuple shape, integer versus floating return, enum identities, flag representation and precision per selector against the pinned upstream implementation. Resolve signed/high-bit stencil mask conversion explicitly, including 0xffffffff and 0x80000000; do not infer it from C++ storage type. |
+| Rectangles | Resolve the native target-sized sentinel versus explicit rectangle distinction before implementation. State belongs to a canvas; FBO binding changes attachments and effective target extent. Specify what default viewport/scissor queries return on creation, resize and nested FBO changes, and prove agreement with the actual raster path. Never expose an internal negative-size sentinel as a valid public rectangle. |
+| Target validity | No current Dawn canvas, a closed canvas, missing native owner and an unknown selector produce contextual synchronous failures. A failed close retaining a native ID does not make the public target live again. Do not manufacture a temporary canvas to answer a state query. |
+| Lifetime | Preserve state isolation across A/B/A canvas selection and nested FBO entry/exit. Specify retained/reset state across device loss from the actual recovery contract; demonstrate a known subsequent draw. Querying or closing one target cannot mutate another's state. |
+
+Extend the existing immediate-state/native and CPU contract suites. Include
+pristine defaults before a VisPy preset; every admitted field after mutation;
+independent front/back stencil values; depth write mask while depth testing is
+disabled; nondefault stored blend factors under MIN/MAX equations; clamping and
+float conversion boundaries;
+rejected-operation state preservation; invalid/unsupported-selector queue
+preservation versus valid-selector committed-prefix failure; queued versus
+immediate ordering; live,
+closed and absent targets; and the old-native guard. Separate a pure native
+projection test from actual Python/native integration and output tests. Record
+exact fixture node IDs before execution and selected/pass/fail/skip counts after.
+
+A query packet is source-complete only when every selected selector has a
+return/type/scope record, both public state-setting paths agree with native
+queries, and no added synchronization occurs. It does not close legal setter
+gaps, other selectors or exact-wheel G2 qualification. Update the existing
+[query records](../../immediate-state-compatibility.md#query-records) with actual
+implementation results rather than duplicating a second support table here.
+
+### Remaining legal state values (STATE-1,3)
+
+Each row below is a separate bounded design/output packet. A successful query
+packet cannot close these setter/rasterization gaps. Preserve contextual guards
+until the selected behavior and dependent pipeline/cache paths are tested.
+
+| Gap | Decision required | Distinguishing output / negative control |
+| --- | --- | --- |
+| Reversed depth range | Define depth mapping/clipping and comparison lowering when near exceeds far, including equal endpoints and clamped inputs. | Overlapping primitives with reversed near/far ordering; equal endpoints; disabled depth test; depth write mask; more than one comparison. |
+| Dither enable | Identify the pinned observable contract and admitted attachment formats; determine whether native raster behavior or an explicit lowering satisfies it. | A gradient/quantization fixture for the selected format and an enable/disable control. A fixed arbitrary noise pattern or unexamined no-op is not proof. |
+| Multisample disabled with multisample storage | Distinguish rasterization/sample shading semantics from attachment count and resolve behavior, coverage and depth/stencil interaction. | Assert actual four-sample storage, toggle enable state without reallocating the target, and compare edge/coverage and depth/stencil outcomes. Single-sample fallback is not acceptance. |
+| Fractional/out-of-int32 polygon offset units | Define representable bias and depth-format dependence; assess native integer bias limits without silently rounding or saturating accepted public values. | Positive/negative fractional units, factor interactions and boundary values that produce independently predicted visibility; rejected values preserve prior state. |
+| Mixed constant-color/constant-alpha blend domains | Determine a lowering preserving independent RGB/alpha factors and equations with correct resource/pipeline identity. | Unequal constant channels and alpha, unequal source/destination colors, separate equations, and constant changes after first use; avoid equal-channel fixtures that conceal substitution. |
+| Remaining stencil/enum/format combinations | Inventory exact untested values and attachment restrictions before expanding a claim. | Saturating versus wrapping stencil operations, distinct faces/masks and affected attachment-format cases; distinguish invalid values from legal unsupported ones. |
+
+If feasibility fails, retain the smallest counterexample and decision, keep the
+row unsupported or blocked with its next action, and proceed with independent
+packets. Do not promise a driver workaround or remove a guard on compilation
+success alone. GPU output, failure recovery, mutation/cache identity and affected
+profile reruns remain required by sections 5, 6 and 11.
+
+### Concrete inventory and backend outputs (INV-1..3, TK-1,5,6, BACKEND-2)
+
+For the next G0 pass, select actual Tk/state public entry points from the pinned
+source and map existing fixture node IDs, including mutation and failure cases.
+Replace the selected unassigned seed rows with explicit concrete profile and
+applicability decisions through the existing schema. Preserve all other required
+seed scope and original receipts. Record unresolved method, example, event,
+visual and host families separately; do not set global reviewed=true merely
+because the selected Tk/state slice has been mapped.
+
+A backend capability record has one row per option/property and mode, with:
+public API; standalone or supplied-parent mode; requested value; actual granted
+value; observable behavior or contextual refusal; owning interpreter/UI thread;
+constructor, mutation and teardown fixture; and unresolved restrictions.
+
+| Selected capability group | Minimum distinguishing cases |
+| --- | --- |
+| Geometry/window properties | Requested and Tk-acknowledged size/position; embedded geometry-manager authority; title/show/hide; decoration/resizability; fullscreen boolean and monitor-index requests. Check mutation as well as constructor handling. |
+| Framebuffer configuration | Color/alpha, depth, stencil and samples requested versus actual attachment formats/counts. Unsupported precision or modes need an explicit refusal or documented native minimum/unknown precision; a constructor dictionary alone proves nothing. |
+| Resource/context sharing | Two consumers of one resource, update visible under documented ordering, close either consumer first, survivor output and final retirement. Distinguish VisPy resource sharing from native OpenGL context interoperation. |
+| Ownership/threading | Supplied parent/interpreter, application-created windows and shared roots; UI-thread supported route or deterministic refusal. Check that the capability test does not disturb host jobs/bindings. |
+
+For this documentation packet, validate local links, requirement references and
+plan/spec consistency. No new native build, dependency installation, wheel,
+source snapshot or scratch allocation is needed. Implementation packets still
+follow RET-1 and the unchanged managed cleanup policy.
