@@ -115,8 +115,10 @@ Wheel vectors preserve fractional/negative Windows ticks, Linux button 4/5
 semantics and held mouse buttons. Host bindings and separate embedded-canvas
 routing have live-widget regressions. The specification's section 11 records the
 exact selected masks, key range, base double-click threshold and scope limits.
+Focus cancellation completes all releases and clears gesture state before
+surfacing a release callback failure, preserving the existing first-error policy.
 
-Twenty-nine new cases pass; final affected suites pass 129 Windows and 115 WSL
+Thirty new cases pass; final affected suites pass 130 Windows and 116 WSL
 software cases, including existing real camera drags. Both profiles report nine
 zero native shutdown gauges. Tests reuse the retained matching native leaves;
 there was no native rebuild or installed-wheel promotion. Synthetic modifier and

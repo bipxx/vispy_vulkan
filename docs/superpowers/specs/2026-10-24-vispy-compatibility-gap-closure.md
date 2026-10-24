@@ -612,10 +612,12 @@ retains its press identity/text across changed or missing release symbols; focus
 loss and close clear this cache. Unknown nonprinting symbols remain key=None with
 native provenance rather than acquiring invented printable text.
 
-Twenty-nine new cases cover these vectors, double-click boundary/position/button
-controls, real widget events and host/canvas routing. Final affected suites pass
-129 Windows and 115 WSL software cases with nine zero shutdown gauges. Existing
-real PanZoom/Turntable drags remain in those suites. This advances TK-6 source
+Thirty new cases cover these vectors, double-click boundary/position/button
+controls, real widget events and host/canvas routing. Focus-loss cancellation
+finishes every held-button release and clears gesture state before delivering
+the first callback failure; a regression proves the next move is not dragging.
+Final affected suites pass 130 Windows and 116 WSL software cases with nine zero
+shutdown gauges. Existing real PanZoom/Turntable drags remain in those suites. This advances TK-6 source
 acceptance, not exact installed qualification or unsupported physical profiles.
 
 ### Backend capabilities and configuration (TK-1,5,6, BACKEND-2)

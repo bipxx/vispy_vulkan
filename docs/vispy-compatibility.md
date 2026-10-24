@@ -82,8 +82,12 @@ remapped layouts, physical device delivery and macOS remain unqualified; synthet
 translation vectors are not hardware evidence. Two embedded canvases route input
 independently while preserving their host's bindings.
 
-This input packet adds 29 source cases. The final affected suites pass 129 cases
-on Windows and 115 on WSL software Vulkan, with all nine native shutdown gauges
+Focus-loss cancellation completes releases and clears gesture state even when
+a release callback raises, then delivers the first failure through the existing
+loop error route. Another held button cannot become a stuck drag after that error.
+
+This input packet adds 30 source cases. The final affected suites pass 130 cases
+on Windows and 116 on WSL software Vulkan, with all nine native shutdown gauges
 zero. These counts include prior lifecycle/camera tests; Windows also includes
 capture. The separately failing Linux capture workflows remain open. No native
 rebuild, new wheel, installed-profile promotion or hardware-input claim follows.

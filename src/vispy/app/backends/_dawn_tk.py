@@ -527,12 +527,15 @@ class CanvasBackend(BaseCanvasBackend):
         # cancel it explicitly so camera interactions never retain stale input.
         self._pressed_modifiers.clear()
         self._pressed_keys.clear()
+        cleanup = _Cleanup()
         for button in sorted(self._pressed_buttons):
             self._pressed_buttons.discard(button)
-            self._vispy_mouse_release(button=button, pos=self._last_pointer,
-                                      buttons=sorted(self._pressed_buttons), modifiers=(), native=event)
+            cleanup.run(lambda button=button: self._vispy_mouse_release(
+                button=button, pos=self._last_pointer, buttons=sorted(self._pressed_buttons),
+                modifiers=(), native=event))
         for name in self._vispy_mouse_data:
             self._vispy_mouse_data[name] = None
+        cleanup.raise_error()
 
     def _on_wheel(self, event):
         num = getattr(event, 'num', None)

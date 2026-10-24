@@ -97,6 +97,31 @@ def test_focus_loss_breaks_double_click_history(application, monkeypatch):
     canvas.close()
 
 
+def test_focus_loss_finishes_cancellation_after_release_callback_failure(application):
+    canvas = input_canvas(application)
+    seen = []
+    canvas.events.mouse_release.ignore_callback_errors = False
+
+    def release(event):
+        seen.append(event.button)
+        if event.button == 1:
+            raise ValueError('intentional focus cancellation callback failure')
+
+    canvas.events.mouse_release.connect(release)
+    canvas.native.event_generate('<ButtonPress-1>', x=17, y=23)
+    canvas.native.event_generate('<ButtonPress-3>', x=17, y=23)
+    canvas.native.after(0, lambda: canvas.native.event_generate('<FocusOut>'))
+    with pytest.raises(ValueError, match='intentional focus cancellation callback failure'):
+        wait(application, lambda: False)
+    assert seen == [1, 2]
+    moves = []
+    canvas.events.mouse_move.connect(moves.append)
+    time.sleep(.012)
+    canvas.native.event_generate('<Motion>', x=20, y=25)
+    assert moves[-1].buttons == [] and not moves[-1].is_dragging
+    canvas.close()
+
+
 @pytest.mark.parametrize('interval,position,button,expected', [
     (.3, (17, 23), 1, 1), (.3001, (17, 23), 1, 0),
     (.1, (18, 23), 1, 0), (.1, (17, 23), 3, 0),
