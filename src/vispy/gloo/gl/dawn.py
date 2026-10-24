@@ -5,6 +5,8 @@
 
 """OpenGL-free compatibility functions for the Dawn GLIR renderer."""
 
+import operator
+
 from . import BaseGLProxy, _copy_gl_functions
 from ._constants import *  # noqa
 
@@ -29,6 +31,19 @@ class DawnCompatibilityError(RuntimeError):
     """An immediate GL operation has no supported Dawn compatibility route."""
 
 
+# These operations already have validated native GLIR implementations. Object
+# IDs, shader compilation, bindings and raw draw calls are deliberately absent.
+_STATE_COMMANDS = frozenset((
+    'glViewport', 'glScissor', 'glClearColor', 'glClearDepth', 'glClearStencil',
+    'glClear', 'glEnable', 'glDisable', 'glColorMask', 'glDepthMask',
+    'glDepthRange', 'glDepthFunc', 'glFrontFace', 'glCullFace', 'glLineWidth',
+    'glPolygonOffset', 'glBlendColor', 'glBlendFunc', 'glBlendFuncSeparate',
+    'glBlendEquation', 'glBlendEquationSeparate', 'glStencilFunc',
+    'glStencilFuncSeparate', 'glStencilMask', 'glStencilMaskSeparate',
+    'glStencilOp', 'glStencilOpSeparate', 'glSampleCoverage', 'glFinish',
+))
+
+
 class DawnProxy(BaseGLProxy):
     def __call__(self, funcname, returns, *args):
         if funcname == 'glGetParameter':
@@ -38,6 +53,26 @@ class DawnProxy(BaseGLProxy):
             # Dawn failures are synchronous Python exceptions; this facade has
             # no deferred GL error queue. Never use this to discard an error.
             return int(GL_NO_ERROR)
+        if funcname in _STATE_COMMANDS:
+            from ..context import get_current_canvas
+            canvas = get_current_canvas()
+            backend = getattr(canvas, '_backend', None)
+            if not getattr(backend, '_dawn_canvas_id', 0) or canvas._closed:
+                raise DawnCompatibilityError('%s requires a current Dawn canvas' % funcname)
+            if funcname == 'glClear':
+                mask = operator.index(args[0])
+                if mask < 0 or mask & ~0x4500:
+                    raise DawnCompatibilityError('glClear has unsupported buffer mask %s' % mask)
+            context = canvas.context
+            context.glir.command('FUNC', funcname, *args)
+            # Flush preceding gloo commands too, keeping raw state changes in
+            # their original order with queued draws and framebuffer bindings.
+            # glFinish's native route waits for GPU completion. glFlush is not
+            # exposed here: the GLIR operation alone does not submit pending work.
+            context.flush_commands()
+            if funcname == 'glViewport':
+                context._last_viewport = tuple(args)
+            return
         raise DawnCompatibilityError(
             '%s is an immediate OpenGL operation and is not supported by the '
             'Dawn renderer. Use gloo objects/GLIR commands instead.' % funcname)
