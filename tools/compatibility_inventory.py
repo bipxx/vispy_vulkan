@@ -154,39 +154,57 @@ def passed_pytest(root, reference, fixtures):
 def validate(ledger, root=ROOT, require_complete=False):
     root = Path(root)
     schema = read_json(root / 'compat/vispy-compatibility.schema.json')
+    check(type(ledger.get('schema')) is int and ledger['schema'] == schema['properties']['schema']['const'],
+          'wrong constant: ledger schema 2 required; migrate v1 explicitly before validation')
     shape(ledger, schema, schema['$defs'])
     upstream = read_json(root / 'compat/upstream_manifest.json')
     check(ledger['upstream_commit'] == upstream['upstream_commit'], 'wrong upstream source pin')
     requirement_ids = set(re.findall(r'\b(?:EV|INV|TK|STATE|SH|BACKEND|HOST|ART|HW|PERF|RET|LIC)-\d+\b',
                                     local_file(root, SPEC).read_text(encoding='utf-8')))
     profiles = unique_by(ledger['profiles'], lambda p: p['id'], 'profile')
-    check(ledger['required_profiles'] and set(ledger['required_profiles']) <= set(profiles), 'missing or unknown required profiles')
     for profile in profiles.values():
         check(not profile['admitted'] or profile['environment_sha256'] is not None,
               'evidence-admitted profile lacks environment pin')
     features = unique_by(ledger['features'], lambda f: f['id'], 'feature')
     rows = unique_by(ledger['rows'], lambda r: (r['feature'], r['profile']), 'feature/profile key')
+    applicability = unique_by(ledger['applicability'], lambda a: (a['feature'], a['profile']), 'applicability key')
+    expected_pairs = {(feature, profile) for feature in features for profile in profiles}
+    check(set(applicability) <= expected_pairs, 'dangling applicability feature/profile')
+    check(set(applicability) == expected_pairs, 'missing explicit feature/profile applicability')
+    check(any(a['status'] == 'required' for a in applicability.values()), 'inventory has no required feature/profile pairs')
+    check(not ledger['reviewed'] or all(a['reviewed'] for a in applicability.values()),
+          'reviewed inventory has unreviewed applicability')
     for reference in ledger['related_inventories']:
         file_ref(root, reference)
     for feature in features.values():
         check(set(feature['requirements']) <= requirement_ids, f'unknown requirement in {feature["id"]}')
         check(set(feature['capabilities']) <= set(ledger['capabilities']), f'unknown capability in {feature["id"]}')
-        check(set(feature['dependencies']) <= set(features), f'dangling dependency in {feature["id"]}')
-        check(feature['id'] not in feature['dependencies'], 'self dependency')
         for source in feature['upstream_sources']:
             check(upstream['files'].get(source['path']) == source['sha256'], f'wrong upstream member pin: {source["path"]}')
+    for key, pair in applicability.items():
+        check(pair['rationale'].strip(), f'blank applicability rationale: {key}')
+        check(set(pair['dependencies']) <= set(features), f'dangling dependency in {key}')
+        check(pair['feature'] not in pair['dependencies'], 'self dependency')
+        if pair['status'] == 'not-applicable':
+            check(not pair['dependencies'], 'nonapplicable pair has dependencies')
+            check(key not in rows, 'nonapplicable pair cannot carry a workflow row; retain blockers as applicable work')
+        for dependency in pair['dependencies']:
+            required = applicability[(dependency, pair['profile'])]['status']
+            check(required != 'not-applicable', 'dependency is nonapplicable in the selected profile')
+            check(pair['status'] != 'required' or required == 'required',
+                  'required pair depends on an optional capability')
     visiting, visited = set(), set()
-    def visit(name):
-        check(name not in visiting, f'cyclic dependency: {name}')
-        if name in visited:
+    def visit(key):
+        check(key not in visiting, f'cyclic dependency: {key}')
+        if key in visited:
             return
-        visiting.add(name)
-        for dependency in features[name]['dependencies']:
-            visit(dependency)
-        visiting.remove(name)
-        visited.add(name)
-    for name in features:
-        visit(name)
+        visiting.add(key)
+        for dependency in applicability[key]['dependencies']:
+            visit((dependency, key[1]))
+        visiting.remove(key)
+        visited.add(key)
+    for key in applicability:
+        visit(key)
     incomplete = []
     for key, row in rows.items():
         feature_id, profile_id = key
@@ -221,7 +239,7 @@ def validate(ledger, root=ROOT, require_complete=False):
                     check(output.get('status') == 'PASS' and output.get('identity') == row['identity']
                           and output.get('controls_passed') is True and output.get('gate') == gate,
                           f'failed/stale/uncontrolled gate: {gate}')
-            for dependency in features[feature_id]['dependencies']:
+            for dependency in applicability[key]['dependencies']:
                 previous = rows.get((dependency, profile_id))
                 check(previous is not None and previous['state'] in POSITIVE, 'unproven same-profile capability dependency')
                 check(POSITIVE.index(previous['state']) >= POSITIVE.index(row['state']) and previous['identity'] == row['identity'],
@@ -229,18 +247,19 @@ def validate(ledger, root=ROOT, require_complete=False):
         else:
             check(row['identity'] is None and row['receipt'] is None, 'unproven state carries a current positive receipt')
             check(row['outcome'] != 'passed', 'unproven state claims passed')
-        if row['state'] != 'qualified' and features[feature_id]['required']:
-            incomplete.append('/'.join(key))
-    for name, feature in features.items():
-        if feature['required']:
-            for profile in ledger['required_profiles']:
-                check(profile in profiles, f'unknown required profile: {profile}')
-                if (name, profile) not in rows:
-                    incomplete.append(f'{name}/{profile} (missing)')
+    for key, pair in applicability.items():
+        if pair['status'] == 'required':
+            if key not in rows:
+                incomplete.append('/'.join(key) + ' (missing)')
+            elif rows[key]['state'] != 'qualified':
+                incomplete.append('/'.join(key))
     check(not require_complete or (ledger['reviewed'] and not incomplete),
           f'full closure unproven: reviewed={ledger["reviewed"]}, {len(incomplete)} incomplete required rows')
     return {'status': 'VALID_INCOMPLETE' if incomplete or not ledger['reviewed'] else 'VALID_COMPLETE',
             'features': len(features), 'rows': len(rows), 'incomplete_required_rows': len(incomplete),
+            'required_pairs': sum(a['status'] == 'required' for a in applicability.values()),
+            'optional_pairs': sum(a['status'] == 'optional' for a in applicability.values()),
+            'nonapplicable_pairs': sum(a['status'] == 'not-applicable' for a in applicability.values()),
             'reviewed': ledger['reviewed']}
 
 

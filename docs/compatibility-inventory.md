@@ -1,7 +1,7 @@
 # Compatibility workflow inventory
 
 `compat/vispy-compatibility.json` is the selected G0 feature/profile ledger.
-Its versioned shape is `compat/vispy-compatibility.schema.json`; the validator
+Its versioned shape is `compat/vispy-compatibility.schema.json` (ledger v2); the validator
 is `tools/compatibility_inventory.py`. It imports no VisPy, toolkit or native
 module. Run it with an existing Python environment:
 
@@ -35,8 +35,9 @@ complete and reviewed.
 
 Update the existing ledger as requirements and real fixtures are reviewed. Each
 feature has its pinned source member(s), public entry point, requirements,
-capabilities/dependencies, scope rationale, ordinary and mutation acceptance and
-owner. Each feature/profile row carries state, latest outcome, exact fixture
+capabilities, scope rationale, ordinary and mutation acceptance and owner.
+Applicability and dependencies are declared per feature/profile pair. Each
+feature/profile row carries state, latest outcome, exact fixture
 node IDs/case counts, current identity/receipt, blocker and next action. Pending
 fixtures remain empty explicitly; positive rows must name both ordinary and
 mutation coverage. A failed new attempt clears a current positive claim; retain
@@ -54,6 +55,46 @@ It reads existing preferred source and verifies each consumed member against
 `compat/upstream_manifest.json`. No clone or source snapshot is needed. Selecting
 a different inventory scope requires explicit rationale; removing a required
 entry is not an implementation fix.
+
+## Required applicability and migration
+
+Ledger v2 has an `applicability` entry for every declared feature/profile pair.
+Each entry names `feature`, `profile`, `status` (`required`, `optional` or
+`not-applicable`), a nonblank `rationale`, an explicit `reviewed` boolean and
+same-profile feature `dependencies`. Adding a feature or profile without all
+its applicability decisions fails validation. Duplicate/dangling pairs, cycles,
+dependencies on nonapplicable pairs and required dependencies marked optional
+also fail. Dependency direction may differ between profiles.
+
+Only required pairs determine incomplete-row counts. A required pair without a
+row, with a failure, or without qualified same-identity evidence stays incomplete.
+Optional pending/failed experiments do not block closure, but any positive
+optional claim must still pass every receipt check. Nonapplicable pairs cannot
+carry workflow rows or dependencies; preserve observed failures/blockers as
+applicable work. Missing hardware is a `blocked-external` row for a required
+applicable pair, never a rationale to silently exclude that pair. Nonapplicability
+is a reviewed scope decision, not a successful implementation outcome.
+
+A fully reviewed inventory requires every applicability decision to be reviewed.
+The validator cannot infer whether a human's scope rationale is true; review must
+check changes against the existing required contracts. The current seed preserves
+all 142 originally required pairs and remains unreviewed and incomplete. No
+feature/profile was excluded or promoted during migration.
+
+For another retained v1 ledger, use the explicit non-overwriting migration:
+
+```text
+python -B tools/migrate_compatibility_inventory.py --input <v1-ledger.json> --output <new-v2-ledger.json>
+```
+
+It preserves every workflow row/receipt and legacy required feature/profile pair,
+copies dependencies to each profile and marks other legacy pairs optional.
+It never infers nonapplicability. It resets both overall and pair-level review,
+validates the new ledger and refuses to overwrite an existing output. Required
+dependencies previously marked optional need explicit scope reconciliation;
+migration fails rather than silently broadening or dropping those requirements.
+The validator rejects v1 directly rather than guessing its scope. Bootstrap
+generation uses the same mapping and continues to refuse existing output paths.
 
 ## Evidence receipt contract
 

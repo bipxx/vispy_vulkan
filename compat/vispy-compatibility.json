@@ -1,5 +1,5 @@
 {
-  "schema": 1,
+  "schema": 2,
   "upstream_commit": "117b054598f4758b598f4b8f48feea48c11fe7b0",
   "reviewed": false,
   "scope": "Generated public namespace/registered-backend seed, not a complete reviewed upstream inventory. Wildcard scene aliases, method-level contracts, representative examples, events, host workflows and raw interoperation still require reconciliation. No support percentage or promotion follows from this seed.",
@@ -30,9 +30,6 @@
       "environment_sha256": null
     }
   ],
-  "required_profiles": [
-    "unassigned"
-  ],
   "features": [
     {
       "id": "app.application",
@@ -51,8 +48,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.app.Application end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -74,8 +69,6 @@
       "capabilities": [
         "backend-presentation"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.app.backend.egl end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -97,8 +90,6 @@
       "capabilities": [
         "backend-presentation"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.app.backend.glfw end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -120,8 +111,6 @@
       "capabilities": [
         "backend-presentation"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.app.backend.jupyter_rfb end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -143,8 +132,6 @@
       "capabilities": [
         "backend-presentation"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.app.backend.osmesa end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -166,8 +153,6 @@
       "capabilities": [
         "backend-presentation"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.app.backend.pyglet end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -189,8 +174,6 @@
       "capabilities": [
         "backend-presentation"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.app.backend.pyqt4 end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -212,8 +195,6 @@
       "capabilities": [
         "backend-presentation"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.app.backend.pyqt5 end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -235,8 +216,6 @@
       "capabilities": [
         "backend-presentation"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.app.backend.pyqt6 end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -258,8 +237,6 @@
       "capabilities": [
         "backend-presentation"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.app.backend.pyside end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -281,8 +258,6 @@
       "capabilities": [
         "backend-presentation"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.app.backend.pyside2 end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -304,8 +279,6 @@
       "capabilities": [
         "backend-presentation"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.app.backend.pyside6 end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -327,8 +300,6 @@
       "capabilities": [
         "backend-presentation"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.app.backend.sdl2 end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -350,8 +321,6 @@
       "capabilities": [
         "backend-presentation"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.app.backend.tkinter end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -373,8 +342,6 @@
       "capabilities": [
         "backend-presentation"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.app.backend.wx end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -397,8 +364,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.app.base end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -421,8 +386,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.app.Canvas end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -445,8 +408,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.app.create end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -469,8 +430,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.app.KeyEvent end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -493,8 +452,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.app.MouseEvent end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -517,8 +474,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.app.process_events end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -541,8 +496,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.app.quit end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -565,8 +518,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.app.run end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -589,8 +540,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.app.Timer end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -613,8 +562,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.app.use_app end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -636,8 +583,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.gloo.FrameBuffer end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -666,8 +611,6 @@
         "public-workflow",
         "state-submission"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.gloo.get_current_canvas end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -689,8 +632,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.gloo.get_default_config end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -713,8 +654,6 @@
       "capabilities": [
         "state-submission"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.gloo.get_gl_configuration end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -736,8 +675,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.gloo.gl end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -759,8 +696,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.gloo.GLContext end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -782,8 +717,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.gloo.GLObject end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -805,8 +738,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.gloo.IndexBuffer end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -828,8 +759,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.gloo.Program end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -852,8 +781,6 @@
       "capabilities": [
         "state-submission"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.gloo.read_pixels end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -875,8 +802,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.gloo.RenderBuffer end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -898,8 +823,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.gloo.Texture1D end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -921,8 +844,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.gloo.Texture2D end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -944,8 +865,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.gloo.Texture3D end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -967,8 +886,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.gloo.TextureAtlas end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -990,8 +907,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.gloo.TextureCube end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -1013,8 +928,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.gloo.TextureEmulated3D end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -1036,8 +949,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.gloo.util end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -1059,8 +970,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.gloo.VertexBuffer end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -1081,8 +990,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.scene.cameras end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -1104,8 +1011,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.scene.cameras.ArcballCamera end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -1127,8 +1032,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.scene.cameras.BaseCamera end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -1150,8 +1053,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.scene.cameras.FlyCamera end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -1173,8 +1074,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.scene.cameras.Magnify1DCamera end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -1196,8 +1095,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.scene.cameras.MagnifyCamera end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -1219,8 +1116,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.scene.cameras.make_camera end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -1242,8 +1137,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.scene.cameras.PanZoomCamera end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -1265,8 +1158,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.scene.cameras.TurntableCamera end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -1287,8 +1178,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.scene.filters end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -1309,8 +1198,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.scene.Node end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -1331,8 +1218,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.scene.SceneCanvas end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -1353,8 +1238,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.scene.transforms end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -1375,8 +1258,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.scene.visuals end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -1397,8 +1278,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.scene.widgets end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -1420,8 +1299,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.scene.widgets.AxisWidget end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -1443,8 +1320,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.scene.widgets.ColorBarWidget end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -1466,8 +1341,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.scene.widgets.Console end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -1489,8 +1362,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.scene.widgets.Grid end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -1512,8 +1383,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.scene.widgets.Label end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -1535,8 +1404,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.scene.widgets.ViewBox end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -1558,8 +1425,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.scene.widgets.Widget end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -1580,8 +1445,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.visuals.ArrowVisual end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -1602,8 +1465,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.visuals.AxisVisual end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -1624,8 +1485,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.visuals.BaseVisual end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -1646,8 +1505,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.visuals.BoxVisual end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -1668,8 +1525,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.visuals.ColorBarVisual end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -1690,8 +1545,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.visuals.ComplexImageVisual end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -1712,8 +1565,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.visuals.CompoundVisual end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -1734,8 +1585,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.visuals.CubeVisual end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -1756,8 +1605,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.visuals.EllipseVisual end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -1779,8 +1626,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.visuals.filters.Alpha end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -1802,8 +1647,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.visuals.filters.Clipper end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -1825,8 +1668,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.visuals.filters.ColorFilter end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -1848,8 +1689,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.visuals.filters.FacePickingFilter end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -1871,8 +1710,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.visuals.filters.Filter end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -1894,8 +1731,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.visuals.filters.InstancedShadingFilter end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -1917,8 +1752,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.visuals.filters.IsolineFilter end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -1940,8 +1773,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.visuals.filters.MarkerPickingFilter end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -1963,8 +1794,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.visuals.filters.PickingFilter end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -1986,8 +1815,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.visuals.filters.PrimitivePickingFilter end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -2009,8 +1836,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.visuals.filters.ShadingFilter end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -2032,8 +1857,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.visuals.filters.TextureFilter end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -2055,8 +1878,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.visuals.filters.WireframeFilter end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -2078,8 +1899,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.visuals.filters.ZColormapFilter end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -2100,8 +1919,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.visuals.GraphVisual end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -2122,8 +1939,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.visuals.GridLinesVisual end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -2144,8 +1959,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.visuals.GridMeshVisual end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -2166,8 +1979,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.visuals.HistogramVisual end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -2188,8 +1999,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.visuals.ImageVisual end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -2210,8 +2019,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.visuals.InfiniteLineVisual end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -2232,8 +2039,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.visuals.InstancedMeshVisual end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -2254,8 +2059,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.visuals.IsocurveVisual end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -2276,8 +2079,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.visuals.IsolineVisual end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -2298,8 +2099,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.visuals.IsosurfaceVisual end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -2320,8 +2119,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.visuals.LinearRegionVisual end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -2342,8 +2139,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.visuals.LinePlotVisual end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -2364,8 +2159,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.visuals.LineVisual end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -2386,8 +2179,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.visuals.MarkersVisual end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -2408,8 +2199,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.visuals.MeshNormalsVisual end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -2430,8 +2219,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.visuals.MeshVisual end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -2452,8 +2239,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.visuals.PlaneVisual end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -2474,8 +2259,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.visuals.PolygonVisual end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -2496,8 +2279,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.visuals.RectangleVisual end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -2518,8 +2299,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.visuals.RegularPolygonVisual end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -2540,8 +2319,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.visuals.ScrollingLinesVisual end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -2566,8 +2343,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.visuals.shaders.Compiler end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -2592,8 +2367,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.visuals.shaders.Function end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -2618,8 +2391,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.visuals.shaders.FunctionChain end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -2644,8 +2415,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.visuals.shaders.MainFunction end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -2670,8 +2439,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.visuals.shaders.ModularProgram end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -2696,8 +2463,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.visuals.shaders.MultiProgram end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -2722,8 +2487,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.visuals.shaders.StatementList end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -2748,8 +2511,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.visuals.shaders.Variable end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -2774,8 +2535,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.visuals.shaders.Varying end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -2796,8 +2555,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.visuals.SpectrogramVisual end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -2818,8 +2575,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.visuals.SphereVisual end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -2840,8 +2595,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.visuals.SurfacePlotVisual end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -2862,8 +2615,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.visuals.TextVisual end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -2884,8 +2635,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.visuals.transforms.arg_to_array end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -2906,8 +2655,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.visuals.transforms.arg_to_vec4 end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -2928,8 +2675,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.visuals.transforms.as_vec4 end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -2950,8 +2695,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.visuals.transforms.BaseTransform end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -2972,8 +2715,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.visuals.transforms.ChainTransform end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -2994,8 +2735,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.visuals.transforms.create_transform end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -3016,8 +2755,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.visuals.transforms.LogTransform end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -3038,8 +2775,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.visuals.transforms.MatrixTransform end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -3060,8 +2795,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.visuals.transforms.NullTransform end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -3082,8 +2815,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.visuals.transforms.PanZoomTransform end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -3104,8 +2835,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.visuals.transforms.PolarTransform end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -3126,8 +2855,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.visuals.transforms.STTransform end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -3148,8 +2875,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.visuals.transforms.TransformCache end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -3170,8 +2895,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.visuals.transforms.TransformSystem end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -3192,8 +2915,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.visuals.TubeVisual end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -3214,8 +2935,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.visuals.Visual end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -3236,8 +2955,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.visuals.VolumeVisual end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -3258,8 +2975,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.visuals.WindbarbVisual end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -3280,8 +2995,6 @@
       "capabilities": [
         "public-workflow"
       ],
-      "dependencies": [],
-      "required": true,
       "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
       "ordinary": "Exercise vispy.visuals.XYZAxisVisual end to end with independently expected public behavior.",
       "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
@@ -4850,6 +4563,1144 @@
       "receipt": null,
       "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
       "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    }
+  ],
+  "applicability": [
+    {
+      "feature": "app.application",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "app.backend.egl",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "app.backend.glfw",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "app.backend.jupyter-rfb",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "app.backend.osmesa",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "app.backend.pyglet",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "app.backend.pyqt4",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "app.backend.pyqt5",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "app.backend.pyqt6",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "app.backend.pyside",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "app.backend.pyside2",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "app.backend.pyside6",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "app.backend.sdl2",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "app.backend.tkinter",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "app.backend.wx",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "app.base",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "app.canvas",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "app.create",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "app.keyevent",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "app.mouseevent",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "app.process-events",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "app.quit",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "app.run",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "app.timer",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "app.use-app",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "gloo.framebuffer",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "gloo.get-current-canvas",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "gloo.get-default-config",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "gloo.get-gl-configuration",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "gloo.gl",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "gloo.glcontext",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "gloo.globject",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "gloo.indexbuffer",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "gloo.program",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "gloo.read-pixels",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "gloo.renderbuffer",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "gloo.texture1d",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "gloo.texture2d",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "gloo.texture3d",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "gloo.textureatlas",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "gloo.texturecube",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "gloo.textureemulated3d",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "gloo.util",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "gloo.vertexbuffer",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "scene.cameras",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "scene.cameras.arcballcamera",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "scene.cameras.basecamera",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "scene.cameras.flycamera",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "scene.cameras.magnify1dcamera",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "scene.cameras.magnifycamera",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "scene.cameras.make-camera",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "scene.cameras.panzoomcamera",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "scene.cameras.turntablecamera",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "scene.filters",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "scene.node",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "scene.scenecanvas",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "scene.transforms",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "scene.visuals",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "scene.widgets",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "scene.widgets.axiswidget",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "scene.widgets.colorbarwidget",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "scene.widgets.console",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "scene.widgets.grid",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "scene.widgets.label",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "scene.widgets.viewbox",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "scene.widgets.widget",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "visuals.arrowvisual",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "visuals.axisvisual",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "visuals.basevisual",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "visuals.boxvisual",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "visuals.colorbarvisual",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "visuals.compleximagevisual",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "visuals.compoundvisual",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "visuals.cubevisual",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "visuals.ellipsevisual",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "visuals.filters.alpha",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "visuals.filters.clipper",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "visuals.filters.colorfilter",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "visuals.filters.facepickingfilter",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "visuals.filters.filter",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "visuals.filters.instancedshadingfilter",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "visuals.filters.isolinefilter",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "visuals.filters.markerpickingfilter",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "visuals.filters.pickingfilter",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "visuals.filters.primitivepickingfilter",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "visuals.filters.shadingfilter",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "visuals.filters.texturefilter",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "visuals.filters.wireframefilter",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "visuals.filters.zcolormapfilter",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "visuals.graphvisual",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "visuals.gridlinesvisual",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "visuals.gridmeshvisual",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "visuals.histogramvisual",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "visuals.imagevisual",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "visuals.infinitelinevisual",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "visuals.instancedmeshvisual",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "visuals.isocurvevisual",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "visuals.isolinevisual",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "visuals.isosurfacevisual",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "visuals.linearregionvisual",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "visuals.lineplotvisual",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "visuals.linevisual",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "visuals.markersvisual",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "visuals.meshnormalsvisual",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "visuals.meshvisual",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "visuals.planevisual",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "visuals.polygonvisual",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "visuals.rectanglevisual",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "visuals.regularpolygonvisual",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "visuals.scrollinglinesvisual",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "visuals.shaders.compiler",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "visuals.shaders.function",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "visuals.shaders.functionchain",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "visuals.shaders.mainfunction",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "visuals.shaders.modularprogram",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "visuals.shaders.multiprogram",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "visuals.shaders.statementlist",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "visuals.shaders.variable",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "visuals.shaders.varying",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "visuals.spectrogramvisual",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "visuals.spherevisual",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "visuals.surfaceplotvisual",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "visuals.textvisual",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "visuals.transforms.arg-to-array",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "visuals.transforms.arg-to-vec4",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "visuals.transforms.as-vec4",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "visuals.transforms.basetransform",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "visuals.transforms.chaintransform",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "visuals.transforms.create-transform",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "visuals.transforms.logtransform",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "visuals.transforms.matrixtransform",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "visuals.transforms.nulltransform",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "visuals.transforms.panzoomtransform",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "visuals.transforms.polartransform",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "visuals.transforms.sttransform",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "visuals.transforms.transformcache",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "visuals.transforms.transformsystem",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "visuals.tubevisual",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "visuals.visual",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "visuals.volumevisual",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "visuals.windbarbvisual",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
+    },
+    {
+      "feature": "visuals.xyzaxisvisual",
+      "profile": "unassigned",
+      "status": "required",
+      "rationale": "Preserved v1 required feature/profile pair; concrete applicability still needs review.",
+      "reviewed": false,
+      "dependencies": []
     }
   ]
 }

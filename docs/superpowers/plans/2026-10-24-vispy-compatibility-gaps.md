@@ -19,6 +19,14 @@ Flush no-op/saturation and post-submit ownership, finish presentation effects,
 root adoption, concrete Tk coordinate policy, ledger validation and actual
 granted-sample proof remain implementation/acceptance obligations.
 
+The [workflow/specification Astra max review](../reviews/2026-10-24-astra-workflow-spec-review.md)
+adds four refinements: workflow-bound observer evidence, required applicability
+per feature/profile, profile-local dependencies and mode-specific backend
+capability/configuration acceptance. Specification section 11 details these
+requirements plus input vectors, state/query records and shader decisions.
+Ledger/adapter implementation changes remain pending; the review is not runtime
+or release qualification.
+
 ## Baseline and review disposition
 
 - Earlier implementation PR #13 merged. The installed matrix still has one
@@ -52,9 +60,9 @@ marked blocked-external does not prevent independent software work.
 | G1b — Tk event loops/errors | TK-2..4 / Python | G1a ownership decisions | Manual pump, Application.run and external mainloop progress/error tests; first failure retained, native readiness/presentation exceptions delivered, healthy canvas usable, bounded animation and cancelled generations. |
 | G1c — Tk coordinates/capture | TK-5,7,8 / Python + proof | G1a/b | Independently expected corner pixels and camera interaction; alpha/cropped/floating capture; odd sizes; 125/150/200% policy, minimize/restore, resize/loss/close and Tk image/job release. No claim based on candidate-vs-candidate comparisons. |
 | G1d — state and nonblocking flush | STATE-1..5 / native + Python | G0 state inventory; ownership contract reviewed | Enumerated state-family coverage and invalid-value isolation; glFlush and gloo.flush share actual native submission, checked before finish/readback/present; no added completion wait and resource owners retained. |
-| G2 — installed qualification | ART-1..2, EV-2..5 / proof | G1a..d pass; final source frozen for this packet | Exact Windows/Linux wheel identity, isolated consumer origin, actual Tk and state workflows, strict dependency/load/execution gates and original controls, shutdown plus Tcl ownership checks; CI on the new head. |
+| G2 — installed qualification | ART-1..2, EV-2..5 / proof | Applicable G1a..d criteria pass for the claimed workflow/profile; final source frozen for this packet | Exact Windows/Linux wheel identity, isolated consumer origin, actual Tk and state workflows, strict dependency/load/execution gates and original controls, shutdown plus Tcl ownership checks; CI on the new head. |
 | G3 — threedee root cause | HOST-1..2 / Python + native observer owner | Existing pinned environment; independent of G1 | Initial three diagnostic starts + one targeted confirmation; actual stalled thread/wait-chain and control comparison. A fix needs causal evidence, regression and final-artifact full host gates. Otherwise preserve unresolved row with next evidence-driven experiment. |
-| G4a — sampler indices | SH-1 / native | G0 relevant upstream fixtures; G2 stable artifact baseline | Feasibility/lowering decision, uniformity/derivative rules, resource/reflection/limit cases, compile/negative controls and actual GPU outputs; affected workload requalification. |
+| G4a — sampler indices | SH-1 / native | G0 relevant upstream fixtures; hash-identified known baseline for feasibility/source work; affected-profile G2 gates before qualification | Feasibility/lowering decision, uniformity/derivative rules, resource/reflection/limit cases, compile/negative controls and actual GPU outputs; affected workload requalification. |
 | G4b — arrays and attributes | SH-2..3 / native + Python | G0 feature-specific requirements; G4a compiler/interface lessons where applicable | Layout/indexing/location/divisor/stride and cache-key decisions; valid/invalid inputs, updates, boundaries and rendered outputs. Separate uniform arrays from buffer/attribute claims. |
 | G4c — geometry consumers | SH-4 / native | G0 named consumers; explicit design review | Supported expansion/rewrite subset and observable semantics; dispatch/draw/lifetime tests. Unsupported arbitrary geometry stages remain visible. |
 | G4d — generated-line effects | SH-5 / native | G0 actual evaluator requirements; explicit coverage/depth/order design | Storage/image/atomic/barrier and early-test side effects preserve execution counts and visibility; existing refusals remain until the selected subset has GPU proof. |
@@ -98,6 +106,44 @@ has not yet been executed against a final wheel and does not replace the full
 auditor or Tk/profile gates.
 
 ## G0 ledger and promotion details
+
+Applicability checkpoint (review B2): ledger schema v2 and the validator now
+use explicit required/optional/nonapplicable feature/profile decisions and
+profile-local dependencies. An optional experiment no longer blocks completion;
+missing required rows and hardware-blocked required work still do. Explicit v1
+migration preserves evidence and all original required pairs, resets review and
+refuses overwrite. Sixty-eight CPU cases pass, including the retained failing
+optional-profile reproducer before the fix. All 142 seed pairs remain required,
+unreviewed and incomplete. Full G0 inventory reconciliation and B1 gate-scenario
+binding are still pending; no installed or hardware claim was promoted.
+
+### Next bounded packets and review artifacts
+
+The detailed planning records in specification section 11 apply before the
+affected implementation. Preserve the historical checkpoints below, but use
+this queue rather than restarting already completed source work:
+
+| Order | Bounded deliverable | Review/acceptance stop condition |
+| --- | --- | --- |
+| 1 | Reconcile concrete G0 feature/profile rows for the current Tk/state work; map ordinary and mutation fixtures, known failures and candidate identities using the implemented v2 applicability mapping. | Schema validity alone is insufficient. V1 migration and missing-required, optional and blocked-hardware controls have source evidence above. Keep the full inventory unreviewed until method/example/event/host reconciliation is actually complete. |
+| 2 | Finish TK-6 input translation using the section 11 sequence table and retained matching native leaves. | Check modifiers/key aliases, wheel units, double-click metadata, focus cleanup and independent canvas/host routing; synthetic events do not establish hardware/layout support. No native rebuild for this Python-only packet. |
+| 3 | Complete STATE-1/3/5 operation/query records and missing family fixtures. | Separate invalid inputs from legal unimplemented values. Preserve failures and list native changes genuinely required before packaging. |
+| 4 | Diagnose the two Linux G1c blockers separately with pinned, bounded controls. | A toolkit repair cannot close scissor correctness; a driver comparison cannot close toolkit lifecycle. Preserve exact failing receipts and granted-sample proof. |
+| 5 | Freeze the scoped G1 source, obtain independent implementation review, then produce/reuse the appropriate final artifacts for G2. | Run full installed-member/profile audits, mapped workflow acceptance, three independent absence gates and controls, shutdown/ownership checks and required current-head CI. An old wheel receipt cannot acquire a new identity. |
+| 6 | Select one G4/G5/G6 packet from the reviewed capability dependencies. | Retain the shader/backend design decision before expanding the surface; requalify dependent workflows against the changed artifact. |
+
+G3's bounded threedee diagnosis and available G0 reconciliation may proceed
+independently; this table does not authorize additional agents. Native Linux GPU
+and Metal hardware records remain blocked-external while independent software
+work continues. G2 is a scoped baseline for later packets, not final full-feature
+closure: later implementation changes invalidate affected qualifications and
+must receive their own exact-artifact evidence.
+
+For each packet, record the affected ledger rows, planned files, fixture node IDs,
+independent expectations, dependency-based rerun set, reused inputs and storage
+estimate before execution. End with actual results, review dispositions and
+cleanup evidence. Plan/spec edits alone need bounded document/reference checks;
+they allocate no native build, environment or scratch history.
 
 Implementation checkpoint: `compat/vispy-compatibility.json` is now the selected
 draft ledger, with versioned JSON schema, source-only validator and bootstrap
@@ -260,7 +306,8 @@ not Tk or the entire state allowlist.
 | G1d submission design | Define flush inclusion/linearization and saturation behavior; controlled incomplete tickets, no-op versus submit outcomes and post-submit failure ownership. |
 | G1d finish regression | Verify both public finish routes complete work without presentation/GUI draw or target/state changes; retain independent counter proof. |
 | Linux G1c repair | Separate runtime/driver profiles; actual granted samples and loaded-driver identity; finite fresh-process toolkit controls and exact boundary expectations. |
-| G2 promotion | Final installed-wheel member/closure audit, mapped functional cases and all three observer gates with controls; no stale source-only promotion. |
+| G2 promotion | Final installed-wheel member/closure audit, mapped functional cases and all three observer gates with controls; bind gate scenarios to covered workflows and reject unrelated-workflow receipts. No stale source-only promotion. |
+| Backend capability acceptance | Standalone/embedded capability/options and requested/granted configuration table; sharing/update/consumer-close fixtures and explicit UI-thread policy. |
 
 The specification's [executable acceptance records](../specs/2026-10-24-vispy-compatibility-gap-closure.md#10-executable-acceptance-records)
 define the minimum G0 ledger fields, flush submission/saturation proof, separate

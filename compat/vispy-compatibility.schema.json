@@ -1,18 +1,18 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "VisPy compatibility ledger version 1",
+  "title": "VisPy compatibility ledger version 2",
   "type": "object",
   "additionalProperties": false,
-  "required": ["schema", "upstream_commit", "reviewed", "scope", "related_inventories", "capabilities", "profiles", "required_profiles", "features", "rows"],
+  "required": ["schema", "upstream_commit", "reviewed", "scope", "related_inventories", "capabilities", "profiles", "applicability", "features", "rows"],
   "properties": {
-    "schema": {"const": 1},
+    "schema": {"const": 2},
     "upstream_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
     "reviewed": {"type": "boolean"},
     "scope": {"type": "string", "minLength": 1},
     "related_inventories": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/file"}},
     "capabilities": {"$ref": "#/$defs/names"},
     "profiles": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/profile"}},
-    "required_profiles": {"$ref": "#/$defs/names"},
+    "applicability": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/applicability"}},
     "features": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/feature"}},
     "rows": {"type": "array", "items": {"$ref": "#/$defs/row"}}
   },
@@ -37,15 +37,24 @@
     },
     "feature": {
       "type": "object", "additionalProperties": false,
-      "required": ["id", "entry_point", "upstream_sources", "requirements", "capabilities", "dependencies", "required", "scope_reason", "ordinary", "mutation", "owner"],
+      "required": ["id", "entry_point", "upstream_sources", "requirements", "capabilities", "scope_reason", "ordinary", "mutation", "owner"],
       "properties": {
         "id": {"$ref": "#/$defs/id"}, "entry_point": {"$ref": "#/$defs/text"},
         "upstream_sources": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/file"}},
         "requirements": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"$ref": "#/$defs/text"}},
-        "capabilities": {"$ref": "#/$defs/names"}, "dependencies": {"$ref": "#/$defs/names"},
-        "required": {"type": "boolean"}, "scope_reason": {"$ref": "#/$defs/text"},
+        "capabilities": {"$ref": "#/$defs/names"}, "scope_reason": {"$ref": "#/$defs/text"},
         "ordinary": {"$ref": "#/$defs/text"}, "mutation": {"$ref": "#/$defs/text"},
         "owner": {"enum": ["coordinator", "python-hosts", "native", "packaging-proof"]}
+      }
+    },
+    "applicability": {
+      "type": "object", "additionalProperties": false,
+      "required": ["feature", "profile", "status", "rationale", "reviewed", "dependencies"],
+      "properties": {
+        "feature": {"$ref": "#/$defs/id"}, "profile": {"$ref": "#/$defs/id"},
+        "status": {"enum": ["required", "optional", "not-applicable"]},
+        "rationale": {"$ref": "#/$defs/text"}, "reviewed": {"type": "boolean"},
+        "dependencies": {"$ref": "#/$defs/names"}
       }
     },
     "identity": {

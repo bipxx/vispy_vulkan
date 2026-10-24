@@ -214,9 +214,9 @@ state affects output. Test integer enum inputs and negative/invalid values.
 Reuse native state tests but verify the new Python entry route reaches them.
 
 STATE-4: `glFinish` submits relevant preceding work and waits for the promised
-completion. Immediate `glFlush` remains unsupported until a real submit-without-
-completion-wait path exists. Logging/parsing a GLIR `glFlush`, substituting
-`glFinish`, or presenting a window does not implement that contract. The new
+completion. Both flush routes require a real submit-without-completion-wait
+path; a candidate implementing it is described below. Logging/parsing a GLIR
+`glFlush`, substituting `glFinish`, or presenting a window does not implement that contract. The new
 path must retain submitted resource owners through completion and work for
 offscreen/FBO targets, multiple canvases, repeated/empty flushes, loss and close.
 Verify submission/progress and ordering with native counters/control work;
@@ -532,8 +532,9 @@ adds these concrete refinements to the preceding acceptance records:
   GUI-draw observations separately from submission/completion. For nonempty
   flush, assert unchanged `completion_waits` as well as `finish_calls` before
   any synchronizing observation. Explicit later presentation must show the
-  correct completed frame. The current raw finish route's presentation request
-  remains an open review finding, not a tested fix.
+  correct completed frame. The raw finish route's former presentation request
+  has source-functional regression evidence in the native submission checkpoint;
+  exact installed-artifact qualification and independent review remain open.
 - **TK-5/7, STATE-5:** For default `Canvas(px_scale=1)` Tk raster presentation,
   the last positive Configure client dimensions determine both public size and
   physical size; backend scale is 1 and pointer coordinates remain widget-local
@@ -553,3 +554,149 @@ adds these concrete refinements to the preceding acceptance records:
   and deadlines, retaining every exit including abnormal termination. Plain Tk
   and VisPy controls must use the same pinned runtime/display closure. A passing
   replacement profile does not identify the old failure's cause.
+
+## 11. Implementation-ready contract details
+
+The records below refine existing requirement IDs. They are required planning
+outputs for the affected packet, not statements that the current fixtures or
+validator already enforce every rule. Keep them linked from the canonical
+ledger; do not create a second feature denominator.
+
+### Tk input acceptance vectors (TK-6)
+
+Before editing input dispatch, record expected public events for each sequence
+below, including `pos`, `button`, `buttons`, `modifiers`, `key`, `text` and native
+event provenance where applicable. Derive expectations from the pinned public
+event contract, not from the adapter's current output.
+
+| Sequence | Required observation |
+| --- | --- |
+| Press left, press right, move, release left, move, release right | Correct VisPy button mapping, ordered transitions and current held-button sets; drag linkage remains valid until its initiating press is released. |
+| Release outside the widget, then lose focus | No stuck drag. Document cancellation events; clear held state and click history so a later focus session cannot inherit a phantom double-click. |
+| Two clicks, then a different button/position or a delayed click | Document the selected native or fallback double-click policy and threshold. An accepted double-click retains the triggering position/button/modifiers and does not suppress ordinary press/release delivery or emit duplicates. Test threshold boundaries deterministically. |
+| Left/right variants of SHIFT, CONTROL, ALT and META | Name platform masks and key aliases, key-press/release transition semantics, and behavior when one of two held modifier keys is released. Focus loss clears tracked state. A platform/layout not observed remains unqualified. |
+| Printable, shifted printable, Unicode, navigation, keypad and function keys | Separate logical key identity from text. List admitted aliases/function-key range and unknown-key behavior; do not turn control characters into printable text. |
+| Windows fractional/negative wheel delta; Linux button 4/5 | Declare wheel units and direction. A wheel action cannot create a held mouse button; physical extra buttons on another platform cannot silently become wheel actions. |
+| Two canvases and an embedded canvas with host bindings | Only the intended canvas receives the action; unrelated host bindings run once and survive canvas closure. Include an actual camera response, not only emitted-event assertions. |
+
+Synthetic Tk events prove adapter translation, not keyboard layout, compositor
+delivery or physical device behavior. Record those evidence types separately.
+No system-wide input injection or global keyboard/DPI changes are required.
+
+### Backend capabilities and configuration (TK-1,5,6, BACKEND-2)
+
+Before admission, retain a capability table for standalone and embedded modes.
+List each advertised capability, constructor option and mutable property;
+requested versus granted color/depth/stencil/sample configuration; ownership and
+permitted UI thread; and the fixture proving observable behavior or contextual
+refusal. Include size/position, title, visibility, decoration, resizability,
+fullscreen, parenting, capture and context/resource sharing. Host-controlled
+embedding behavior must be explicit rather than silently ignoring requests.
+
+A sharing claim requires two canvases using shared resources, an update visible
+to each according to the documented ordering, closure of one consumer without
+invalidating the other, and final resource retirement. Do not infer sharing from
+an advertised boolean. An accepted configuration request must name the actual
+granted attachments/limits; unsupported requests cannot silently become another
+configuration. Cross-thread use must have a documented supported route or a
+clear refusal; no arbitrary cross-thread toolkit support is inferred.
+
+### Immediate operation records (STATE-1..5)
+
+For each allowlisted command and admitted query, retain a contract row with:
+signature and accepted numeric types; legal enum/value subsets; default and
+queried values; canvas/FBO scope; ordering relative to queued GLIR; success and
+failure effects on native state and Python caches; and ordinary, boundary,
+legal-but-unimplemented and invalid-input fixtures. Query rows additionally name
+return type/shape, units, actual-versus-requested semantics and limit provenance.
+An allowlist-name count is not a completed contract table.
+
+Map at least viewport/scissor/clear/masks, depth, blend, front/back stencil,
+culling/winding, line width, polygon offset, sample coverage and synchronization
+to their actual output fixtures. Distinguish attachment/sample-format restrictions
+from general API behavior. After a rejected operation, verify the last committed
+state and a subsequent valid draw; document any preceding queued work that was
+already committed. Do not promise whole-stream rollback unless implemented.
+
+### Shader decision records (SH-1..5)
+
+Before a native implementation, retain one small decision record per selected
+subset: named upstream consumer; accepted and refused shader forms; original
+shader and independently expected output; compiler/reflection representation;
+chosen lowering; resource/limit accounting; update and pipeline-cache identity;
+failure stage/diagnostic; and profile-specific acceptance fixtures.
+
+| Packet | Additional decision required before removing a guard |
+| --- | --- |
+| SH-1 | Distinguish constant, dynamically uniform and divergent indexing. Specify implicit-derivative versus explicit-LOD behavior and binding expansion cost at the actual stage/combined limits. |
+| SH-2 | Record dimension order, element/byte offsets, storage class and reflection/upload agreement for every admitted shape. Include an update that distinguishes swapped dimensions. |
+| SH-3 | Record each expanded location and matrix column, byte stride/offset and divisor. Include a non-symmetric transform and multiple instances to expose transposition and divisor errors. |
+| SH-4 | Name the actual geometry-stage consumer and its input/output topology. Document amplification limits, clipping/interpolation/provoking behavior and ownership between expansion and draw. |
+| SH-5 | State which logical invocations perform external effects, and how clipping, coverage, depth/stencil and ordering affect those counts. A matching color image alone cannot prove side-effect equivalence. |
+
+Every packet includes two independently varied resources or programs to detect
+cache aliasing, an update after first use, close/loss with work outstanding, and
+a contextual negative control. Compilation alone does not admit the subset.
+Feasibility failure retains the guard and the next bounded design question.
+
+### Change impact and evidence reuse (EV-1..5, ART-1..2)
+
+Before G0 review closes, represent required applicability at the feature/profile
+pair, with a rationale for each nonapplicable pair. A feature-wide `required`
+flag and a global profile list do not establish this mapping. The original v1
+ledger/validator required an explicit migration or equivalent validated mapping:
+required applicable pairs block full closure unless qualified; optional pairs
+do not block full closure merely because an experimental receipt exists.
+Missing hardware makes an applicable required pair `blocked-external`, not
+nonapplicable. Preserve existing required scope during migration and test all
+three cases, including absence of a required pair, before marking G0 reviewed.
+
+Source checkpoint: ledger v2 now declares all feature/profile applicability and
+same-profile dependencies explicitly. Its validator distinguishes required,
+optional and nonapplicable pairs, rejects missing decisions and scope/dependency
+inconsistencies, and retains required blockers. The explicit non-overwriting v1
+migration preserves rows/receipts and required scope while resetting review.
+Sixty-eight CPU cases pass, including the original optional-profile regression.
+All 142 seed pairs remain required/unreviewed; this closes the mapping defect at
+source level, not G0 reconciliation or artifact qualification. Human review of
+scope rationale and the B1 workflow-bound gate adapter remain necessary.
+
+Each implementation packet lists affected feature/profile rows before testing.
+Changes to lowering, bindings, layout, submission or resource lifetime include
+their dependent consumers; toolkit/driver/runtime changes include that profile's
+closure and observer gates. A narrowed rerun requires an explicit dependency
+rationale, not an assumption that previous unrelated green totals transfer.
+
+Retained native binaries may be reused for Python-only source tests after
+verifying their hashes and native contract version. A shipping wheel containing
+changed Python bytes is still a new exact artifact: audit its complete installed
+members and run its selected functional and independent absence gates. Historical
+receipts remain attached to their original identity. Reusing native inputs does
+not permit relabeling an old wheel receipt with a new wheel hash.
+
+Bind each normalized absence-gate record to the observed scenario/script hash,
+arguments, covered feature/workflow IDs, observer/control identity and raw report
+hashes, in addition to the existing artifact/profile identity. The validator and
+receipt adapters must reject evidence for an unrelated workflow even when its
+wheel/profile match. This coverage binding is pending implementation; current
+gate/status/control/identity checks alone do not establish it.
+
+Use the existing `tools/audit_no_opengl.py --scenario script` path for installed
+Tk/state workflows. Preserve its discovery run, environment inventory and fresh
+receipt-bound replay protocol described in [the observer guide](../../../tools/no_opengl/README.md).
+A headless observation cannot qualify Tk presentation or input executed in a
+separate unobserved process. Keep the three gate outcomes and their controls
+independent; no new substitute auditor is authorized by this refinement.
+
+Before promotion, an independent implementation review checks the actual patch,
+requirement-to-fixture mapping, retained failures and final artifact receipts.
+The plan review itself is not that implementation review. Record finding IDs,
+dispositions and remaining restrictions; unresolved required findings prevent
+promotion of their affected rows.
+
+Dependencies are evaluated per claimed feature/profile, not as an all-platform
+barrier. Shader feasibility and source work can start from a hash-identified
+known baseline when their actual prerequisites hold, even while an unrelated
+Linux Tk profile fails. G2 qualification for a particular affected workflow
+still requires that workflow's G1 criteria and exact installed artifact. Such
+independence neither qualifies the failing profile nor closes full scope.

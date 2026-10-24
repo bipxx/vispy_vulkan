@@ -14,8 +14,10 @@ from pathlib import Path
 
 try:
     from .compatibility_inventory import ROOT, read_json, check
+    from .migrate_compatibility_inventory import migrate_v1
 except ImportError:
     from compatibility_inventory import ROOT, read_json, check
+    from migrate_compatibility_inventory import migrate_v1
 
 NAMESPACES = {
     'app/__init__.py': ('python-hosts', ['TK-1', 'TK-2', 'TK-6']),
@@ -85,7 +87,9 @@ def generate(source, root=ROOT):
                 if name != '_test':
                     add('vispy.app.backend.' + name.lower(), relative, 'python-hosts', ['BACKEND-1', 'BACKEND-2'], 'backend-presentation')
     inventories = ('compat/upstream_manifest.json', 'tests/reference/inventory.json', 'compat/no-opengl-matrix.json')
-    return {
+    # Share the explicit v1-to-v2 mapping so bootstrap and migration preserve
+    # the same required scope. Neither path approves applicability review.
+    return migrate_v1({
         'schema': 1, 'upstream_commit': manifest['upstream_commit'], 'reviewed': False,
         'scope': 'Generated public namespace/registered-backend seed, not a complete reviewed upstream inventory. Wildcard scene aliases, method-level contracts, representative examples, events, host workflows and raw interoperation still require reconciliation. No support percentage or promotion follows from this seed.',
         'related_inventories': [{'path': name, 'sha256': hashlib.sha256((root / name).read_bytes()).hexdigest()} for name in inventories],
@@ -98,7 +102,7 @@ def generate(source, root=ROOT):
                   'blocker': 'Generated seed; real acceptance fixture/profile mapping has not been reviewed.',
                   'next_action': 'Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles.'}
                  for feature in sorted(features, key=lambda feature: feature['id'])],
-    }
+    })
 
 
 def main():
