@@ -1508,12 +1508,15 @@ remain unchanged. Source preparation is not release completion.
 
 This section refines sections 13-14 following the
 [current Astra max review](../reviews/2026-10-24-astra-executable-handoff-review.md).
-It specifies future implementation. No derived execution ledger, branch admission
-validator or exact-artifact qualification index is implemented by this text.
-Source/scope approvals remain pending. All 142 original required obligations and
-the original mandatory host matrix remain binding.
+These are acceptance contracts; the later H1/H3 checkpoints record the additive
+execution-ledger and observed-child result source implementations. The historical
+packet-30 freeze below describes that review's input, not today's pending work:
+packet 30 is now complete and cleaned, and all 120 bindings are script-ready.
+H2 independent source/scope approvals, H4 exact-artifact index and installed
+qualification, and H5 final promotion remain pending. Section 16 specifies H4.
+All 142 original required obligations and mandatory host rows remain binding.
 
-### Current unfinished packet and review freeze (EV-1,2, RET-1)
+### Historical packet-30 checkpoint and required review freeze (EV-1,2, RET-1)
 
 At this review checkpoint, `observed-submission-30` extends the composite script with raw/wrapper submission
 capacity and retry branches. Its retained Windows result records 18 source cases,
@@ -1821,3 +1824,183 @@ artifact index and installed qualification, final CI/promotion and all original
 host/platform/full parity requirements remain open. No wheel, SDK, dependency
 source history or environment is rebuilt. Source/evidence/actual exits/waits and
 terminal cleanup disposition are retained in `build/runs/worker-results-33/`.
+
+## 16. Qualification-index implementation contract (H4, EV-1..5, ART-1/2, RET-1)
+
+This section specifies the next source packet. It does not implement the index,
+approve the candidate, admit its producers or provide installed evidence. H1/H3
+source results remain useful inputs; H2 review and actual artifact gates remain
+prerequisites for admission. Use existing validators as the authority for their
+reports, with the following additional joins.
+
+### Owned outputs and read-only boundary
+
+H4 owns `tools/compatibility_qualification.py`, a closed versioned qualification
+schema, an authoritative versioned CI policy, focused CPU contracts and a small
+incomplete candidate index. Choose and document the final schema/policy paths
+before freezing reviews; include their bytes in preparation-tool identities.
+Keep declaration generation separate from read-only validation. Neither default
+validation nor strict admission may install packages, launch a graphics child,
+run CMake installation, rebuild a native leaf, change a ledger or apply cleanup.
+Missing proof produces a diagnostic, never a synthesized passing receipt.
+
+Use the existing strict JSON/reference helpers and supported schema subset.
+Reject duplicate keys/IDs, unknown fields, non-finite numbers, booleans used as
+integer counts, invalid hashes and references escaping the declared retained
+root. Every referenced file is checked against its SHA-256 before interpretation.
+Version changes are explicit; unknown future formats fail. Never discover a
+replacement receipt by searching for the newest or first passing filename.
+
+### Admission selection and acyclic identity graph
+
+Freeze a nonempty, unique, sorted set of `(feature, profile, criterion)` keys.
+Resolve each through the reviewed coverage/execution mapping. Version 1 expands
+any requested criterion to its entire mapped execution row and all four declared
+ordinary/mutation/failure/recovery criteria, then recursively expands every
+same-profile dependency row in the same way. Keep the original requested set
+separate from this effective closure. Existing v2 rows have one proof identity/
+receipt/state, so partial-row admission requires a separately reviewed row split;
+filtering a failed fixture or branch is insufficient. Preserve unresolved required
+dependencies as blockers. No cross-profile borrowing or
+implicit optionalization is permitted. Detect dependency cycles and report their
+members; cycles do not excuse missing evidence.
+
+Define these sealed objects in dependency order:
+
+1. **Admission selection:** candidate scope digest, execution-map semantic digest,
+   requested keys, computed closure and selection-contract version. Exclude all
+   artifact/proof fields and review references from this digest. The existing
+   semantic scope approval additionally names this admission-selection digest;
+   introducing that field requires its validator/schema and negative controls.
+2. **Immutable subject:** full hash references to the actual candidate, coverage,
+   baseline, execution map, complete execution ledger, source/scope approvals,
+   admission selection, product inputs, qualification tools, profiles, wheels,
+   provenance, original reports and retention proof. Its manifest digest excludes
+   only its own digest. Semantic scope projections cannot replace complete actual
+   evidence bytes here. Record product source revision/dirty patch separately
+   from qualification implementation revision/dirty patch and required CI head.
+3. **Promotion basis:** immutable digest over the subject digest, qualification
+   repository/head, exact required-CI policy and receipt bundle, and explicit
+   change-impact disposition. It contains neither final review nor envelope.
+   The independent final reviewer approves this basis, thereby considering both
+   the artifact subject and the specific CI/head decision.
+4. **Detached promotion envelope:** references to the subject, promotion basis,
+   bound final review and CI receipts. The subject never contains this envelope
+   or its future review hash. Envelope fields cannot override scope, artifact,
+   profile or policy fields in the subject/basis. Attaching the envelope does
+   not modify either reviewed object. A valid review at head A cannot accompany
+   another passing head B without a renewed impact decision and final review.
+
+Candidate source/scope approval references may therefore be included in the full
+subject without becoming part of their own admission-selection input. Final
+promotion review is a separate later disposition. A changed relevant tool,
+fixture, scope or product input invalidates its affected review; an unchanged
+product source pin alone cannot preserve approval of changed qualification code.
+Historical subjects resolve their own frozen inputs, not mutable current files
+with matching logical names. A retained source archive/patch and manifest must
+reconstruct those inputs without duplicating environments or build histories.
+
+### Exact artifact, installed origin and producer joins
+
+For each selected profile bind OS/architecture, Python ABI/interpreter, toolkit,
+display mode, adapter/ICD, dependency lock and immutable environment identity.
+Bind wheel filename and bytes, complete package member inventory/hash map and
+original archive/member-audit references. Reuse the pure membership checks in
+`cmake/runtime_package.py`; do not invoke mutating platform-auditor entry points.
+Verify package source members against frozen product inputs and native members
+against admitted producer outputs. Retain AGPL metadata and original notices/
+license bytes. A package-member count or a report labelled PASS cannot establish
+byte equality, correct source or complete provenance.
+
+Producer admission is an explicit independently reviewed prerequisite, separate
+from successful compilation, wheel wrapping and functional execution. Reference
+the admitted SDK/toolchain/configuration policy and existing verifier results,
+compiler/dependency/source hashes, native leaf build/test outputs and binary
+hashes. Check that the admitted producer actually generated the native bytes in
+the selected wheel. An SDK policy check before compilation is not leaf-build
+proof. Reuse existing read-only SDK/native-epoch verifiers where applicable;
+retain small raw proof needed after scratch removal rather than requiring an old
+live build cache or weakening its verifier. A profile cannot assert its own
+admission with `experimental: false`. The existing experimental Linux leaf stays
+inadmissible until an actual producer-admission decision and proof exist.
+
+For every requested/dependent criterion, join the original normalized functional
+and all three absence gates with the exact source/wheel/environment/workflow,
+scenario bytes/arguments, dependency inventory, independent controls and observed
+child exit/wait/shutdown identity. Call the existing inventory, execution,
+evidence normalizer and H3 functional validators. H3 payload PID/non-source mode
+alone is insufficient: installed-member origin and original gate/control reports
+must also pass. Require the full composite's eight branches even when the mapped
+criterion names a subset. Replaying a source wrapper or transplanting another
+worker's good payload cannot qualify an installed workflow.
+
+### Required CI policy and terminal retention
+
+Maintain a closed attempt index for the frozen selection/artifact/profile. Include
+terminal failures and cancellations as well as passes, actual exit/wait, failure
+reproducer/retention references and explicit supersession or unresolved finding.
+A newer relevant failure blocks admission until its cause and resolution are
+recorded; selecting an older complete pass cannot hide it. Bind the attempt index
+in the subject and promotion basis. Define authoritative CI rerun selection in
+project policy: no convenient older green attempt or mixing jobs from different
+attempts outside that explicit policy. This applies the existing section 10
+no-hidden-failure rule, rather than introducing another approval kind.
+
+Required CI checks come from a versioned project policy bound to workflow bytes,
+not a smaller list chosen by the candidate/envelope. The current matrix contains
+20 CPU checks (four OS/architecture targets times five CPython versions), Linux
+`software-vulkan` and two Metal wheel-build checks. Record exact workflow/job/
+matrix identities, repository, checked head, workflow revision, run ID, attempt,
+job ID, terminal status and conclusion. A job-name match is insufficient. Treat
+skipped, pending, failed, cancelled, duplicate/ambiguous or missing required jobs
+as incomplete. Path-filtered jobs require an applicable trigger or explicit
+required-head dispatch; never borrow an old green run. Specify PR source-head
+versus tested merge-head semantics explicitly and bind both when they differ.
+CI build/CPU success does not constitute graphics/hardware admission. Native
+Linux GPU remains separate and Metal experimental without real hardware.
+
+Retention proof binds each contributing run's source/evidence/license references,
+actual terminal exit and child wait, exact cleanup plan and applied result, and
+post-cleanup retained hashes. Check ownership/policy/registry identities recorded
+at cleanup, declared scratch target and its absence. Preserve failed controls and
+reconstruction references outside scratch. Do not call plan/apply again merely
+to validate old proof, require obsolete scratch to remain live, or infer a
+historical child's lifetime from a currently reused PID. A log saying cleanup
+was intended, an unawaited child or missing retained input cannot satisfy this
+join. An incomplete index can list missing cleanup without changing the registry
+or retrying a protected/blocked target.
+
+### Result semantics, controls and packet exit
+
+Expose structural checking and strict admission as separate explicit modes.
+Structural mode may exit zero for a well-formed incomplete index, but its result
+must say `admitted: false` and list missing/blocked proof. Strict mode exits
+nonzero unless every requested and closure criterion passes all joins. Report
+requested, closure, proved, blocked and missing sets by stable key, plus reasons
+and original receipt references. Keep candidate-wide, full-inventory and release
+completion false while any corresponding mandatory obligation remains open.
+Windows-only admission may succeed with required WSL work visibly incomplete;
+a two-profile request cannot drop Linux after a failure. A revised selection
+needs renewed review and preserves the superseded request and failed evidence.
+
+The real initial index remains incomplete: null review/artifact slots are
+explicit missing proof, never test approvals. CPU fixtures include one complete
+synthetic subject/envelope join marked test-only and the following semantic
+controls, recomputing outer seals so hash mismatch alone does not satisfy them:
+
+| Control family | Required rejection |
+| --- | --- |
+| Scope | Changed baseline/history, narrowed method/value scope, omitted selected criterion, ordinary-only partial-row admission, omitted dependency recovery, wrong dependency profile, removed failed profile or changed selection with old approval. |
+| Product/provenance | Wrong wheel/member/source/ABI, valid wheel paired with another leaf, pre-build-only SDK proof, missing compiler/dependency evidence or experimental producer relabelled admitted. |
+| Observed evidence | Missing/substituted branch, ordinary-only success, wrong child/profile/workflow/arguments, source mode, omitted independent control, late audit failure, nonzero shutdown or unawaited child. |
+| Reviews/CI | Old execution-map or selection approval, changed qualification tool with old review, wrong final subject/basis, valid head-A review transplanted to passing head B, wrong repository/head/workflow revision/attempt, missing/failed/skipped required job or candidate-supplied reduced policy, or older pass with a newer relevant failure omitted from the attempt index. |
+| Retention | Unapplied or different cleanup plan, missing source/license/failure reproducer, altered retained bytes, unresolved scratch or intended rather than actual child wait. |
+
+Exit H4 source development with passing focused controls, existing validators
+still enforcing their original gates, a deterministic incomplete real index and
+explicit remaining prerequisite list. Use existing CPU environments with cache/
+bytecode output disabled; this source/document packet needs no native rebuild.
+Before a later real qualification run, freeze its owned files, allocation budget,
+producer-admission decision, blocker applicability and exact commands. Retain
+actual failures and terminal cleanup under the existing hygiene policy. H4 source
+completion neither supplies H2 approvals nor authorizes final H5 promotion.

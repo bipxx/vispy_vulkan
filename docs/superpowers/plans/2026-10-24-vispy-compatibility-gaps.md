@@ -39,11 +39,13 @@ qualify source, artifacts or hardware.
 
 The [executable-handoff Astra max review](../reviews/2026-10-24-astra-executable-handoff-review.md)
 and [specification section 15](../specs/2026-10-24-vispy-compatibility-gap-closure.md#15-executable-handoff-from-proposals-to-scoped-qualification)
-refine the current queue. Complete the open source packet before freezing review
-inputs. Materialize selected rows in a separately derived execution ledger;
-keep the preparation's baseline unchanged. Add worker-bound branch results and
-define an immutable qualification subject with detached review/CI references.
-These are pending implementation contracts, not new approvals or qualified rows.
+refine the current queue. H0 is retained and cleaned; H1's additive execution
+ledger and H3's worker-bound functional results have source implementations.
+Their checkpoints below supersede the earlier pending instructions. Independent
+cumulative implementation/scope review (H2), the exact-artifact qualification
+index (H4), installed evidence and final promotion (H5) remain open. Section 16
+of the specification defines the next bounded H4 implementation contract.
+Source implementation supplies no approval or installed qualification.
 
 This section governs remaining execution. The packet tables and numbered repair
 lists below retain their design/history; a later source checkpoint supersedes
@@ -67,10 +69,10 @@ authorize spawning implementation agents.
 
 | Packet / role | Owned output and prerequisites | Required exit and stop condition |
 | --- | --- | --- |
-| H0 — workflow owner | Finish `observed-submission-30` using the existing source script/test files and retained native leaves. Both selected profiles now pass 18 source cases and direct entry points; all120bindings are script-ready. See the source checkpoint below and require the retained terminal cleanup receipt before handoff. | Verify both route/delay pairs on each selected development profile, strict counters/errors/recovery/host ownership and nine shutdown zeros. Retain the first failed controls. Update actual fixture/script hashes and the eight source-only bindings only after their branch checks pass, then retain/apply/verify terminal cleanup. No wheel/SDK build. |
-| H1 — inventory/coordinator | Freeze preparation/coverage and the cumulative source-review record. Design the mapping declaration and separate derived execution ledger against that frozen baseline; do not edit the baseline in place to add proposal IDs. | Reviewed selected operation/value/criterion map, exact proposal-to-row links and transitive same-profile dependencies. Negative controls reject changed/lost parents, duplicate/omitted mappings, optionalized dependencies and invented origins. All 142 original obligations persist; global closure stays incomplete. |
+| H0 — workflow owner | Source complete, retained and cleaned: `observed-submission-30` using the existing source script/test files and retained native leaves. Both selected profiles now pass 18 source cases and direct entry points; all120bindings are script-ready. See the source checkpoint below and require the retained terminal cleanup receipt before handoff. | Verify both route/delay pairs on each selected development profile, strict counters/errors/recovery/host ownership and nine shutdown zeros. Retain the first failed controls. Update actual fixture/script hashes and the eight source-only bindings only after their branch checks pass, then retain/apply/verify terminal cleanup. No wheel/SDK build. |
+| H1 — inventory/coordinator | Source materialization implemented; independent scope review remains pending. Freeze preparation/coverage and the cumulative source-review record. Design the mapping declaration and separate derived execution ledger against that frozen baseline; do not edit the baseline in place to add proposal IDs. | Reviewed selected operation/value/criterion map, exact proposal-to-row links and transitive same-profile dependencies. Negative controls reject changed/lost parents, duplicate/omitted mappings, optionalized dependencies and invented origins. All 142 original obligations persist; global closure stays incomplete. |
 | H2 — independent implementation reviewer | Review cumulative runtime, fixtures, observers and inventory/preparation/coverage tools from the last independently reviewed base, including H0 and retained failures. Review H1 scope separately using the existing source/scope review kinds. | Exact input hashes, findings/dispositions and affected pairs. Relevant later edits renew affected reviews. This Astra plan review supplies neither approval. If a reviewer is unavailable, retain the review blocker and continue independent source-only work. |
-| H3 — observer/proof owner | Specify and implement the closed branch-result transport in the existing script/worker/controller/normalizer chain. Use the exact four submission variants, two progress orders and resource failure/recovery contract in section 15. | Same-child result/hash/exit/wait bindings and semantic negative controls pass, including duplicate/missing/wrong branches, source/unrelated result substitution, missing output and wrong recovery/cleanup. Existing three absence gates and independent controls remain intact; changed observer code needs renewed source review. |
+| H3 — observer/proof owner | Source transport and controls implemented; independent review and installed evidence remain pending. Retain the closed branch-result transport in the existing script/worker/controller/normalizer chain. Use the exact four submission variants, two progress orders and resource failure/recovery contract in section 15. | Same-child result/hash/exit/wait bindings and semantic negative controls pass, including duplicate/missing/wrong branches, source/unrelated result substitution, missing output and wrong recovery/cleanup. Existing three absence gates and independent controls remain intact; changed observer code needs renewed source review. |
 | H4 — artifact/proof owner | Define the closed qualification index and read-only validator, immutable subject and detached review/CI envelope. Freeze a requested admission set and establish profile/blocker/producer applicability before packaging. H1/H2/H3 reviews and affected correctness are prerequisites for real qualification. | Synthetic complete join plus stale/missing/wrong-input controls pass. Reuse matching admitted native artifacts or build changed leaves once. Actual scoped admission requires exact wheel/member/closure, branch/functional/absence/control/shutdown receipts and required CI for the declared head. Experimental Linux producer provenance stops Linux admission; Windows can proceed independently. |
 | H5 — independent promotion reviewer/coordinator | Review the immutable real subject and every requested pair/dependency, required head CI and actual retention/cleanup. | Report explicit requested/proved/blocked/missing sets. Strict admission fails if any requested criterion fails; do not filter failed profiles afterward. Keep draft/merge and mandatory complete-removal gates in force. Scoped admission never asserts total candidate or full VisPy closure. |
 
@@ -938,3 +940,23 @@ artifact index and installed qualification, final CI/promotion and all original
 host/platform/full parity requirements remain open. No wheel, SDK, dependency
 source history or environment is rebuilt. Source/evidence/actual exits/waits and
 terminal cleanup disposition are retained in `build/runs/worker-results-33/`.
+
+## H4 implementation sequence after the latest Astra max review
+
+The [qualification-index review](../reviews/2026-10-24-astra-qualification-index-review.md)
+and [specification section 16](../specs/2026-10-24-vispy-compatibility-gap-closure.md#16-qualification-index-implementation-contract-h4-ev-15-art-12-ret-1)
+refine H4 without supplying H2 implementation/scope approval. H0/H1/H3 source
+work is complete; installed qualification and H5 promotion remain pending.
+
+| Step | Concrete output | Source-packet exit |
+| --- | --- | --- |
+| H4a - schema and selection | Closed subject, admission-selection, promotion-basis and envelope contracts; deterministic requested-set expansion to entire v2 rows/all four criteria and recursive same-profile dependency rows. | Reject partial-row success and missing dependency recovery. Cycles require complete proof. Preserve all original parents/history. |
+| H4b - read-only artifact/provenance join | Exact archive/source/native members, admitted producer/toolchain/configuration, original inventory/functional/three-gate/control/shutdown receipts and actual execution ledger bytes. | One complete synthetic join; resealed wrong-member/producer/child/profile/source-mode/late-failure controls. Real reviews/artifacts stay missing until available. |
+| H4c - CI, review and retention | Versioned authoritative required-job policy; exact head/run/attempt jobs; promotion basis binding subject plus CI/head/impact decision; exact terminal plan/apply/retained-hash joins. | Reject reduced check policy, old-head CI, valid review transplanted to another passing head, unapplied cleanup and missing retained input. No installation or cleanup mutation in validator. |
+| H4d - focused integration | Wire existing validators and CPU checks; refresh preparation hashes for changed tools/schema/spec; retain incomplete real index and remaining prerequisites. | Structural mode explicitly incomplete; strict admission nonzero. No wheel/SDK rebuild for this source packet. Actual independent source/scope review still required. |
+| Later installed qualification/H5 | Resolve applicable blockers and producer admission, freeze reviewed inputs, collect exact installed evidence, obtain current-head CI and independent promotion-basis review. | Every effective selected row/dependency passes conjunctively. Windows-first scope leaves required WSL/full-inventory/host obligations open. |
+
+Use one existing environment and bounded storage. Register managed scratch only
+if an actual experiment needs it, preserve failures and original licenses, and
+finish its retention/cleanup receipt before the next run. This plan/spec review
+allocates no scratch and initiates no native build or installed-artifact check.

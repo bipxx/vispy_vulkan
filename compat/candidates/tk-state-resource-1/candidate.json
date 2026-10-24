@@ -2,7 +2,7 @@
   "schema": 1,
   "phase": "development",
   "id": "tk-state-resource-1",
-  "manifest_sha256": "e7ee27efb925aba388b1b9e90ec1de19668aaec2056eee5df7de614b7dda999c",
+  "manifest_sha256": "3d1fbde9faf55f239a7a748034f9f64f40f447731426791d813db5df5a4b657e",
   "product_source_commit": "6345ceef42df1a64a7401a83c2d1a30384903cd1",
   "upstream_commit": "117b054598f4758b598f4b8f48feea48c11fe7b0",
   "ledger": {
@@ -1160,7 +1160,7 @@
     },
     {
       "path": "docs/superpowers/specs/2026-10-24-vispy-compatibility-gap-closure.md",
-      "sha256": "e5f3cbb265619faca32fe9cc32afa41d5bb789eb1b40400a3212ba447e882c79"
+      "sha256": "4e33e324d82667a8a7a8a9f9eb76bbb56c38bc0e04fbd53a82d849ba834af577"
     },
     {
       "path": "compat/vispy-candidate.schema.json",
