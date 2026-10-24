@@ -2,10 +2,10 @@
   "schema": 1,
   "phase": "proposal",
   "route": "add-required-scoped-retain-parents",
-  "manifest_sha256": "f4f8e043204f67e481f03a90d273c08ba818e3fbe7158396646b96c4e9ef877b",
+  "manifest_sha256": "61a4a9bb0e979a90fd1a9da7fa7c8256328997160d4ef1c82b28bc0322b0bebd",
   "candidate": {
     "path": "compat/candidates/tk-state-resource-1/candidate.json",
-    "scope_sha256": "8f36754a97c76c9b6c1b9b4f7bad606e1488a537ed5cbe709162ffd1b7fde45c"
+    "scope_sha256": "58b057c3684ccb1951a32ade85ddda5b3b2a3ec9a3c0348268deacc1458821f7"
   },
   "origin_dispositions": [
     {

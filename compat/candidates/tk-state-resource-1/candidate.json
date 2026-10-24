@@ -2,7 +2,7 @@
   "schema": 1,
   "phase": "development",
   "id": "tk-state-resource-1",
-  "manifest_sha256": "37c13e2d96e7e8da0fbd637eef8b3f0215860e70c124bddaa1a85826d641a335",
+  "manifest_sha256": "561ef4e4c208b1546624fd9dd39b005a5ef0c67cca93a8f5b39963e97354cb88",
   "product_source_commit": "6345ceef42df1a64a7401a83c2d1a30384903cd1",
   "upstream_commit": "117b054598f4758b598f4b8f48feea48c11fe7b0",
   "ledger": {
@@ -1123,7 +1123,7 @@
   "preparation_tools": [
     {
       "path": "tools/compatibility_candidate.py",
-      "sha256": "1c49fb55f0c103827e9960364da65030fbcc1ef50ed8655b120459ca8405c307"
+      "sha256": "80677a3b87e2b59118a1532a7cb2975676769ae31e22762f1af02929851e18bf"
     },
     {
       "path": "tools/compatibility_inventory.py",
@@ -1138,12 +1138,28 @@
       "sha256": "7489064ec0b74be4e0b7faf835da25d469f832723b55c8d73eed3bbe346c5ed1"
     },
     {
+      "path": "tools/compatibility_coverage.py",
+      "sha256": "b13d3f12661b010d092306e7b4584ec1964ded91dd3a7ea007bd7663cda73831"
+    },
+    {
+      "path": "compat/vispy-coverage.schema.json",
+      "sha256": "2195ab0d7102eda01ecf40bfbe9aa5b1b32f39483ce9fe00cd88b3aca2394d50"
+    },
+    {
+      "path": "tools/compatibility_execution.py",
+      "sha256": "c3970b5401315e8fda59e9083a75f2274ede7e48a21693f18c08335976efa867"
+    },
+    {
+      "path": "compat/vispy-execution.schema.json",
+      "sha256": "e2a6e2efbfadbd334edf2d6f85df65b6b4d5ed36352960163aa56d19f936a4dd"
+    },
+    {
       "path": "tools/no_opengl/policy.py",
       "sha256": "b2fbf966d92e62520d982c96eeb946a332fc00db454e6c5e8c8da0b34b0206d8"
     },
     {
       "path": "docs/superpowers/specs/2026-10-24-vispy-compatibility-gap-closure.md",
-      "sha256": "0c1eb99d27b56a584312f297766a4eeab9d0a02be3da85075d71dac755ac1730"
+      "sha256": "f9977a6f90c33d5b4fa5cfa3e038774a07f73c68d324210cfa3883332ee19f41"
     },
     {
       "path": "compat/vispy-candidate.schema.json",
@@ -1163,15 +1179,7 @@
     },
     {
       "path": ".github/workflows/cpu-contract.yml",
-      "sha256": "7e2011e3f7744f426c95617e43cad60e68c7f20db2922c00aa83ff522bcf915f"
-    },
-    {
-      "path": "tools/compatibility_coverage.py",
-      "sha256": "b13d3f12661b010d092306e7b4584ec1964ded91dd3a7ea007bd7663cda73831"
-    },
-    {
-      "path": "compat/vispy-coverage.schema.json",
-      "sha256": "2195ab0d7102eda01ecf40bfbe9aa5b1b32f39483ce9fe00cd88b3aca2394d50"
+      "sha256": "b3fa9e162c1ee0733adb94e7de91a82cb9ecb15204919f69eabcfb6dc610e8fa"
     }
   ]
 }

@@ -1321,3 +1321,322 @@ def test_coverage_rejects_changed_fixture_bytes(example):
     fixture.write_bytes(fixture.read_bytes() + b'\n# changed acceptance input\n')
     with pytest.raises(inventory.InventoryError, match='changed evidence'):
         validate_coverage(record, root)
+
+
+# Additive execution declarations never qualify products or retire seed parents.
+def execution_case(example):
+    from tools.compatibility_candidate import seal as candidate_seal
+    from tools.compatibility_execution import prepare
+    root, candidate, coverage = coverage_case(example)
+    candidate_seal(candidate)
+    write_json(root, 'candidate/candidate.json', candidate)
+    write_json(root, 'candidate/coverage.json', coverage)
+    ledger, record = prepare('candidate/candidate.json', 'candidate/coverage.json',
+                             'candidate/execution-ledger.json', root)
+    write_json(root, 'candidate/execution-ledger.json', ledger)
+    write_json(root, 'candidate/execution.json', record)
+    return root, candidate, coverage, ledger, record
+
+
+def execution_approvals(root, candidate, coverage, record):
+    from tools.compatibility_candidate import scope_digest, seal
+    for kind in ('source', 'scope'):
+        review = {'schema': 1, 'status': 'APPROVED', 'kind': kind, 'independent': True,
+                  'reviewer': 'Synthetic unit reviewer; not actual approval.',
+                  'candidate_scope_sha256': scope_digest(candidate)}
+        if kind == 'scope':
+            review.update(coverage_map_sha256=coverage['manifest_sha256'],
+                          execution_map_sha256=record['manifest_sha256'])
+        candidate['reviews'][kind] = write_json(root, 'reviews/execution-' + kind + '.json', review)
+    seal(candidate)
+    write_json(root, 'candidate/candidate.json', candidate)
+
+
+def test_execution_preserves_the_frozen_baseline_and_exposes_concrete_rows(example):
+    from tools.compatibility_execution import validate_execution
+    from tools.compatibility_evidence import expected_workflow
+    root, candidate, coverage, ledger, record = execution_case(example)
+    baseline = inventory.read_json(root / candidate['ledger']['path'])
+    for group, key in [('features', lambda r: r['id']), ('profiles', lambda r: r['id']),
+                       ('applicability', lambda r: (r['feature'], r['profile'])),
+                       ('rows', lambda r: (r['feature'], r['profile']))]:
+        actual = {key(r): r for r in ledger[group]}
+        assert all(actual[key(r)] == r for r in baseline[group])
+    result = validate_execution(record, root)
+    assert result['selected_pairs'] == 1 and result['criterion_bindings'] == 4
+    assert result['original_required_pairs_retained'] == 1 and result['originals_discharged'] == 0
+    assert not result['reviewed'] and not result['qualified'] and not result['installable']
+    row = next(r for r in ledger['rows'] if r['feature'] == 'canvas.scoped')
+    assert row['identity'] is row['receipt'] is None
+    assert expected_workflow(root, row)['id'] == 'synthetic-flow'
+    assert {m['criterion'] for m in record['mappings']} == {c['id'] for c in coverage['criteria']}
+    assert not ledger['reviewed']
+    with pytest.raises(inventory.InventoryError, match='full closure unproven'):
+        inventory.validate(ledger, root, require_complete=True)
+    with pytest.raises(inventory.InventoryError, match='review remains pending'):
+        validate_execution(record, root, require_reviewed=True)
+
+
+@pytest.mark.parametrize('fault,reason', [
+    ('parent-drop', 'execution scope changed'),
+    ('parent-scope', 'execution scope changed'),
+    ('parent-history', 'execution scope changed'),
+    ('parent-optional', 'execution scope changed'),
+    ('selected-scope', 'execution scope changed'),
+    ('selected-optional', 'execution scope changed'),
+    ('selected-fixture', 'execution scope changed'),
+    ('unselected-reviewed', 'execution scope changed'),
+    ('profile-description', 'execution scope changed'),
+    ('profile-admitted', 'flags lack bound'),
+    ('row-drop', 'execution scope changed'),
+    ('row-extra', 'execution scope changed'),
+    ('global-review', 'execution scope changed'),
+    ('mapping-drop', 'criterion mapping'),
+    ('mapping-duplicate', 'duplicate execution criterion'),
+    ('destination-duplicate', 'duplicate execution destination'),
+    ('destination-profile', 'criterion mapping'),
+    ('destination-criterion', 'criterion mapping'),
+    ('workflow', 'criterion mapping'),
+    ('baseline-swap', 'frozen preparation baseline'),
+    ('scope-hash', 'scope identity changed'),
+    ('review-flag', 'flags lack bound'),
+    ('positive-row', 'positive state lacks identity'),
+    ('unknown-field', 'unexpected fields'),
+])
+def test_execution_rejects_shortcuts_after_resealing(example, fault, reason):
+    from tools.compatibility_execution import execution_scope, seal, validate_execution
+    root, candidate, _, ledger, record = execution_case(example)
+    selected = next(a for a in ledger['applicability'] if a['feature'] == 'canvas.scoped' and a['status'] == 'required')
+    row = next(r for r in ledger['rows'] if r['feature'] == 'canvas.scoped')
+    if fault == 'parent-drop': ledger['features'].pop(0)
+    elif fault == 'parent-scope': ledger['features'][0]['scope_reason'] = 'Narrowed parent.'
+    elif fault == 'parent-history': ledger['rows'][0]['blocker'] = 'Changed original history.'
+    elif fault == 'parent-optional': ledger['applicability'][0]['status'] = 'optional'
+    elif fault == 'selected-scope': ledger['features'][-1]['entry_point'] = 'Canvas.update'
+    elif fault == 'selected-optional': selected['status'] = 'optional'
+    elif fault == 'selected-fixture': row['fixtures'].pop()
+    elif fault == 'unselected-reviewed':
+        next(a for a in ledger['applicability'] if a['feature'] == 'canvas.scoped' and a['status'] == 'optional')['reviewed'] = True
+    elif fault == 'profile-description': ledger['profiles'][-1]['description'] = 'Different platform.'
+    elif fault == 'profile-admitted': ledger['profiles'][-1].update(admitted=True, environment_sha256='a' * 64)
+    elif fault == 'row-drop': ledger['rows'].remove(row)
+    elif fault == 'row-extra': ledger['rows'].append(deepcopy(row))
+    elif fault == 'global-review': ledger['reviewed'] = True
+    elif fault == 'mapping-drop': record['mappings'].pop()
+    elif fault == 'mapping-duplicate': record['mappings'].append(deepcopy(record['mappings'][0]))
+    elif fault == 'destination-duplicate': record['mappings'][1]['destination'] = deepcopy(record['mappings'][0]['destination'])
+    elif fault == 'destination-profile': record['mappings'][0]['destination']['profile'] = 'unassigned'
+    elif fault == 'destination-criterion': record['mappings'][0]['destination']['criterion'] = 'canvas.scoped.other'
+    elif fault == 'workflow': record['mappings'][0]['workflow'] = 'ordinary-only'
+    elif fault == 'baseline-swap': record['baseline'] = write_json(root, 'candidate/not-the-baseline.json', ledger)
+    elif fault == 'scope-hash': record['execution']['scope_sha256'] = '0' * 64
+    elif fault == 'review-flag': selected['reviewed'] = True
+    elif fault == 'positive-row':
+        ledger['profiles'][-1].update(admitted=True, environment_sha256='a' * 64)
+        row.update(state='source-tested', outcome='passed')
+    elif fault == 'unknown-field': record['waive_parent'] = True
+    else: raise AssertionError(fault)
+    write_json(root, record['execution']['path'], ledger)
+    # Recompute the advertised scope as well: semantic conservation must reject
+    # a caller who supplies freshly sealed but narrowed declarations.
+    if fault != 'scope-hash': record['execution']['scope_sha256'] = execution_scope(ledger, candidate)
+    seal(record)
+    with pytest.raises(inventory.InventoryError, match=reason):
+        validate_execution(record, root)
+
+
+def test_execution_scope_review_is_acyclic_and_cannot_qualify_a_wheel(example):
+    from tools.compatibility_execution import execution_scope, main, validate_execution
+    from tools.compatibility_candidate import scope_digest
+    root, candidate, coverage, ledger, record = execution_case(example)
+    before = execution_scope(ledger, candidate)
+    candidate_scope = scope_digest(candidate)
+    baseline_bytes = (root / candidate['ledger']['path']).read_bytes()
+    map_bytes = (root / 'candidate/execution.json').read_bytes()
+    execution_approvals(root, candidate, coverage, record)
+    assert scope_digest(candidate) == candidate_scope
+    assert not validate_execution(record, root)['reviewed']  # Approval not applied to flags yet.
+    assert main(['--root', str(root), '--map', str(root / 'candidate/execution.json'),
+                 '--apply-reviewed', '--require-reviewed']) == 0
+    updated = inventory.read_json(root / record['execution']['path'])
+    assert execution_scope(updated, candidate) == before
+    assert (root / 'candidate/execution.json').read_bytes() == map_bytes
+    assert (root / candidate['ledger']['path']).read_bytes() == baseline_bytes
+    result = validate_execution(record, root, require_reviewed=True)
+    assert result['reviewed'] and not result['qualified'] and not result['full_inventory_complete']
+    assert not updated['reviewed']  # Scoped review cannot set global review.
+
+
+def test_execution_cannot_apply_a_missing_or_wrong_scope_approval(example):
+    from tools.compatibility_execution import main, validate_execution
+    from tools.compatibility_candidate import seal
+    root, candidate, coverage, _, record = execution_case(example)
+    path = root / record['execution']['path']
+    before = path.read_bytes()
+    args = ['--root', str(root), '--map', str(root / 'candidate/execution.json'), '--apply-reviewed']
+    assert main(args) == 1 and path.read_bytes() == before
+    execution_approvals(root, candidate, coverage, record)
+    reference = candidate['reviews']['scope']
+    review = inventory.read_json(root / reference['path'])
+    review['execution_map_sha256'] = '0' * 64
+    candidate['reviews']['scope'] = write_json(root, reference['path'], review)
+    seal(candidate)
+    write_json(root, 'candidate/candidate.json', candidate)
+    assert main(args) == 1 and path.read_bytes() == before
+    with pytest.raises(inventory.InventoryError, match='review remains pending'):
+        validate_execution(record, root, require_reviewed=True)
+
+
+def test_execution_materialization_is_explicit_nonoverwriting_and_read_only_by_default(example):
+    from tools.compatibility_execution import main
+    root, _, _, _, _ = execution_case(example)
+    source = root / 'candidate/execution.json'
+    before = {p.relative_to(root): p.read_bytes() for p in root.rglob('*') if p.is_file()}
+    assert main(['--root', str(root), '--map', str(source)]) == 0
+    assert before == {p.relative_to(root): p.read_bytes() for p in root.rglob('*') if p.is_file()}
+    args = ['--root', str(root), '--materialize', '--candidate', 'candidate/candidate.json',
+            '--coverage', 'candidate/coverage.json', '--output-ledger', 'fresh/ledger.json',
+            '--output-map', 'fresh/execution.json']
+    assert main(args + ['--require-reviewed']) == 1
+    assert not (root / 'fresh').exists()
+    assert main(args) == 0
+    assert main(args) == 1
+    assert main(args[:-4] + ['--output-ledger', '../outside.json', '--output-map', 'fresh/other.json']) == 1
+    assert not (root / 'fresh/other.json').exists()
+
+
+def test_current_execution_preparation_preserves_all_original_obligations():
+    from tools.compatibility_execution import DEFAULT, validate_execution
+    result = validate_execution(inventory.read_json(DEFAULT))
+    assert result['selected_pairs'] == 30 and result['criterion_bindings'] == 120
+    assert result['original_required_pairs_retained'] == 142 and result['originals_discharged'] == 0
+    assert not result['reviewed'] and not result['qualified'] and not result['installable']
+
+
+def test_execution_conserves_required_same_profile_dependencies(example):
+    from tools.compatibility_candidate import scope_digest, seal as candidate_seal
+    from tools.compatibility_coverage import seal as coverage_seal
+    from tools.compatibility_execution import prepare, execution_scope, seal, validate_execution
+    root, candidate, coverage = coverage_case(example)
+    helper = deepcopy(candidate['proposals'][0])
+    helper['id'] = 'canvas.helper'
+    candidate['proposals'].append(helper)
+    helper_pair = deepcopy(candidate['pairs'][0])
+    helper_pair['feature'] = helper['id']
+    candidate['pairs'].append(helper_pair)
+    candidate['pairs'][0]['dependencies'] = [helper['id']]
+    candidate['workflows'][0]['features'].append(helper['id'])
+    from tools.compatibility_candidate import observer_recipe
+    candidate['workflows'][0]['observer'] = observer_recipe(candidate['workflows'][0])
+    for original in list(coverage['criteria']):
+        criterion = deepcopy(original)
+        criterion.update(id=helper['id'] + '.' + original['kind'], feature=helper['id'])
+        coverage['criteria'].append(criterion)
+    for original in list(coverage['bindings']):
+        binding = deepcopy(original)
+        binding['criterion'] = binding['criterion'].replace('canvas.scoped.', 'canvas.helper.')
+        coverage['bindings'].append(binding)
+    for parent in coverage['origin_dispositions']:
+        parent['proposed_subsets'].append(helper['id'])
+    candidate_seal(candidate)
+    write_json(root, 'candidate/candidate.json', candidate)
+    coverage['candidate']['scope_sha256'] = scope_digest(candidate)
+    coverage_seal(coverage)
+    write_json(root, 'candidate/coverage.json', coverage)
+    ledger, record = prepare('candidate/candidate.json', 'candidate/coverage.json',
+                             'candidate/execution-ledger.json', root)
+    write_json(root, record['execution']['path'], ledger)
+    assert validate_execution(record, root)['selected_pairs'] == 2
+    required = next(a for a in ledger['applicability']
+                    if a['feature'] == 'canvas.scoped' and a['profile'] == 'windows-profile')
+    assert required['dependencies'] == ['canvas.helper']
+    required['dependencies'] = []
+    # This is structurally valid to the inventory, but loses declared semantics.
+    inventory.validate(ledger, root)
+    write_json(root, record['execution']['path'], ledger)
+    record['execution']['scope_sha256'] = execution_scope(ledger, candidate)
+    seal(record)
+    with pytest.raises(inventory.InventoryError, match='execution scope changed'):
+        validate_execution(record, root)
+
+
+def test_execution_does_not_collapse_multiple_required_workflows_to_one_row(example):
+    from tools.compatibility_candidate import scope_digest, seal as candidate_seal
+    from tools.compatibility_coverage import seal, validate_coverage
+    from tools.compatibility_execution import prepare
+    root, candidate, coverage = coverage_case(example)
+    twin = deepcopy(candidate['workflows'][0])
+    twin['id'] = 'second-required-flow'
+    from tools.compatibility_candidate import observer_recipe
+    twin['observer'] = observer_recipe(twin)
+    candidate['workflows'].append(twin)
+    coverage['bindings'][-1]['workflow'] = twin['id']
+    candidate_seal(candidate)
+    write_json(root, 'candidate/candidate.json', candidate)
+    coverage['candidate']['scope_sha256'] = scope_digest(candidate)
+    seal(coverage)
+    write_json(root, 'candidate/coverage.json', coverage)
+    assert validate_coverage(coverage, root, require_script_ready=True)['script_ready_bindings'] == 4
+    with pytest.raises(inventory.InventoryError, match='one composite workflow'):
+        prepare('candidate/candidate.json', 'candidate/coverage.json', 'candidate/execution-ledger.json', root)
+    assert not (root / 'candidate/execution-ledger.json').exists()
+
+
+def test_execution_ledger_cannot_be_fed_back_as_preparation_baseline(example):
+    from tools.compatibility_candidate import seal, validate_candidate
+    root, candidate, _, ledger, _ = execution_case(example)
+    candidate['ledger'] = write_json(root, 'candidate/derived-baseline.json', ledger)
+    seal(candidate)
+    with pytest.raises(inventory.InventoryError, match='overwrites an existing broad feature'):
+        validate_candidate(candidate, root)
+
+
+@pytest.mark.parametrize('fault,reason', [
+    ('other-profile', 'receipt belongs to another'),
+    ('missing-phase', 'incomplete collected test receipt'),
+    ('unwaited', 'missing child wait'),
+    ('wrong-source', 'execution product source changed'),
+    ('no-approval', 'proof precedes bound'),
+])
+def test_execution_keeps_existing_receipt_and_review_gates(example, fault, reason):
+    from tools.compatibility_execution import validate_execution
+    from tools.compatibility_candidate import seal
+    root, candidate, coverage, ledger, record = execution_case(example)
+    execution_approvals(root, candidate, coverage, record)
+    selected = next(a for a in ledger['applicability']
+                    if a['feature'] == 'canvas.scoped' and a['status'] == 'required')
+    selected['reviewed'] = True
+    ledger['profiles'][-1].update(admitted=True, environment_sha256='a' * 64)
+    row = next(r for r in ledger['rows'] if r['feature'] == 'canvas.scoped')
+    row.update(state='source-tested', outcome='passed', identity={
+        'source_commit': candidate['product_source_commit'], 'patch_sha256': 'b' * 64,
+        'profile_sha256': 'a' * 64, 'wheel_sha256': None})
+    nodes = sorted({f['nodeid'] for f in row['fixtures']})
+    functional = {'exit_code': 0, 'collected': nodes, 'reports': [
+        {'nodeid': node, 'when': phase, 'outcome': 'passed'}
+        for node in nodes for phase in ('setup', 'call', 'teardown')]}
+    receipt = {'schema': 1, 'feature': row['feature'], 'profile': row['profile'],
+               'identity': deepcopy(row['identity']), 'phase': 'source-tested',
+               'child_waited': True, 'exit_code': 0,
+               'requirements': candidate['proposals'][0]['requirements'],
+               'pytest': write_json(root, 'evidence/execution-functional.json', functional)}
+    row['receipt'] = write_json(root, 'evidence/execution-source.json', receipt)
+    write_json(root, record['execution']['path'], ledger)
+    valid = validate_execution(record, root, require_reviewed=True)
+    assert valid['reviewed'] and not valid['qualified'] and not valid['installable']
+    if fault == 'other-profile': receipt['profile'] = 'unassigned'
+    elif fault == 'missing-phase':
+        functional['reports'].pop()
+        receipt['pytest'] = write_json(root, 'evidence/execution-functional.json', functional)
+    elif fault == 'unwaited': receipt['child_waited'] = False
+    elif fault == 'wrong-source':
+        row['identity']['source_commit'] = 'f' * 40
+        receipt['identity'] = deepcopy(row['identity'])
+    elif fault == 'no-approval':
+        candidate['reviews'] = {'source': None, 'scope': None}
+        seal(candidate)
+        write_json(root, 'candidate/candidate.json', candidate)
+    row['receipt'] = write_json(root, 'evidence/execution-source.json', receipt)
+    write_json(root, record['execution']['path'], ledger)
+    with pytest.raises(inventory.InventoryError, match=reason):
+        validate_execution(record, root)

@@ -157,3 +157,12 @@ snapshot includes the Metal surface declaration fix; retained Windows/WSL source
 observations still identify the original tested runtime and explicitly record
 non-Apple byte-equivalence. Complete source identity is not producer, installed,
 CI, source/scope review or Metal qualification.
+
+## Derived execution rows
+
+The [additive execution ledger](execution-ledger.md) now materializes the selected
+scope as 30 concrete required rows without changing the preparation's original
+baseline or 142 required parents. Source/scope review and positive execution proof
+are pending. The map and existing scope approval have acyclic content bindings;
+no new auditor or qualification bypass is introduced. Validate it alongside the
+preparation/coverage declarations before the future installed-evidence handoff.

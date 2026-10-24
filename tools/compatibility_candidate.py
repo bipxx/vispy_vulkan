@@ -27,6 +27,7 @@ PREPARATION_TOOLS = (
     'tools/compatibility_candidate.py', 'tools/compatibility_inventory.py',
     'tools/compatibility_conservation.py', 'tools/compatibility_evidence.py',
     'tools/compatibility_coverage.py', 'compat/vispy-coverage.schema.json',
+    'tools/compatibility_execution.py', 'compat/vispy-execution.schema.json',
     'tools/no_opengl/policy.py', SPEC,
     'compat/vispy-candidate.schema.json', 'compat/vispy-compatibility.schema.json',
     'compat/vispy-compatibility-v3.schema.json', 'cmake/runtime_package.py',

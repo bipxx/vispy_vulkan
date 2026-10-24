@@ -1764,3 +1764,32 @@ relabelled, renderer/SDK rebuilt or independent review supplied. Source, failure
 commands, tiny retained contract artifacts and actual cleanup disposition are
 recorded in `build/runs/ci-contracts-31/`. Existing full-closure and scoped handoff
 gates remain unchanged.
+
+## Additive execution-ledger source checkpoint (H1, INV-1..3, EV-1/2)
+
+The [execution-ledger record](../../execution-ledger.md), closed mapping schema
+and read-only validator implement the additive materialization route. The draft
+contains 30 new required concrete pairs and 120 criterion bindings in a separate v2
+ledger, preserving every original feature/profile/applicability/row/receipt.
+All 142 original required parents remain unchanged and blocking. Unselected new
+cross-product pairs stay explicitly optional/unreviewed, not nonapplicable.
+No previous source report is transferred into a new positive row.
+
+A semantic scope digest binds the complete baseline, new feature/profile scope,
+applicability/dependencies, workflow and fixture mapping. Only selected proof and
+review/admission state is excluded; the future artifact subject must pin complete
+actual evidence bytes. The existing scope approval additionally binds the exact
+execution-map digest. Applying actual bound source/scope reviews changes only
+selected applicability flags without creating a hash cycle or global approval.
+Missing approvals, omitted/narrowed parents or selected scope, changed history,
+lost dependencies, wrong/duplicate destinations and multiple unaggregated
+workflows are rejected even with recomputed seals. Synthetic approvals are tests,
+not real review dispositions. Current real reviews remain null.
+
+Existing inventory/evidence validators consume the derived ledger; their actual
+member/profile/functional/absence/control requirements remain intact. This source
+packet does not supply H2 implementation/scope review, H3 same-child branch proof,
+H4 exact-artifact index/admission or P5 final review/current CI. No installed wheel,
+SDK, native renderer, environment or upstream source history is rebuilt. Retained
+source, actual commands/exits/waits and terminal cleanup disposition are in local
+`build/runs/execution-ledger-32/`; only its applied receipt proves cleanup.
