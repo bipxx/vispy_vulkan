@@ -8,6 +8,7 @@ import hashlib
 import importlib.util
 import json
 import os
+import stat
 from pathlib import Path
 import subprocess
 import sys
@@ -257,7 +258,7 @@ def test_no_force_override_can_bypass_blocked_history(workspace):
 
 
 @pytest.mark.parametrize("target", ["scratch-child", "scratch-root"])
-@pytest.mark.parametrize("link_kind", ["symlink", "junction"])
+@pytest.mark.parametrize("link_kind", ["junction"] if os.name == "nt" else ["symlink"])
 def test_reparse_links_are_not_followed_or_deleted(workspace, tmp_path, target, link_kind):
     ws = workspace
     outside = tmp_path / "outside"
@@ -271,18 +272,16 @@ def test_reparse_links_are_not_followed_or_deleted(workspace, tmp_path, target, 
         (ws.scratch / "nested").rmdir()
         ws.scratch.rmdir()
     if link_kind == "junction":
-        if os.name != "nt":
-            pytest.skip("Windows junction coverage")
         created = subprocess.run(["cmd.exe", "/d", "/c", "mklink", "/J", str(link), str(outside)],
                                  capture_output=True, text=True, timeout=10)
         assert created.returncode == 0, created.stdout + created.stderr
     else:
-        try:
-            link.symlink_to(outside, target_is_directory=True)
-        except OSError as exc:
-            pytest.skip(f"Platform does not permit directory symlinks: {exc}")
+        link.symlink_to(outside, target_is_directory=True)
     plan(ws, expected=2)
-    assert link.is_junction() if link_kind == "junction" else link.is_symlink()
+    if link_kind == "junction":
+        assert link.lstat().st_file_attributes & stat.FILE_ATTRIBUTE_REPARSE_POINT
+    else:
+        assert link.is_symlink()
     assert (outside / "precious.bin").read_bytes() == b"outside ownership"
 
 
