@@ -176,9 +176,11 @@ def source_observation(root, receipt, row):
 
 def validate(ledger, root=ROOT, require_complete=False):
     root = Path(root)
-    schema = read_json(root / 'compat/vispy-compatibility.schema.json')
-    check(type(ledger.get('schema')) is int and ledger['schema'] == schema['properties']['schema']['const'],
-          'wrong constant: ledger schema 2 required; migrate v1 explicitly before validation')
+    version = ledger.get('schema')
+    check(type(version) is int and version in (2, 3),
+          'wrong constant: ledger schema 2 or 3 required; migrate v1 explicitly before validation')
+    schema = read_json(root / ('compat/vispy-compatibility-v3.schema.json' if version == 3
+                               else 'compat/vispy-compatibility.schema.json'))
     shape(ledger, schema, schema['$defs'])
     upstream = read_json(root / 'compat/upstream_manifest.json')
     check(ledger['upstream_commit'] == upstream['upstream_commit'], 'wrong upstream source pin')
@@ -195,8 +197,7 @@ def validate(ledger, root=ROOT, require_complete=False):
     check(set(applicability) <= expected_pairs, 'dangling applicability feature/profile')
     check(set(applicability) == expected_pairs, 'missing explicit feature/profile applicability')
     check(any(a['status'] == 'required' for a in applicability.values()), 'inventory has no required feature/profile pairs')
-    check(not ledger['reviewed'] or all(a['reviewed'] for a in applicability.values()),
-          'reviewed inventory has unreviewed applicability')
+
     for reference in ledger['related_inventories']:
         file_ref(root, reference)
     for feature in features.values():
@@ -282,20 +283,33 @@ def validate(ledger, root=ROOT, require_complete=False):
         else:
             check(row['identity'] is None and row['receipt'] is None, 'unproven state carries a current positive receipt')
             check(row['outcome'] != 'passed', 'unproven state claims passed')
+    transferred, original_required = set(), None
+    if version == 3:
+        try:
+            from .compatibility_conservation import validate_conservation
+        except ImportError:
+            from compatibility_conservation import validate_conservation
+        transferred, original_required = validate_conservation(ledger, root, validate)
+    check(not ledger['reviewed'] or all(a['reviewed'] for key, a in applicability.items()
+                                       if key not in transferred),
+          'reviewed inventory has unreviewed applicability')
     for key, pair in applicability.items():
-        if pair['status'] == 'required':
+        if pair['status'] == 'required' and key not in transferred:
             if key not in rows:
                 incomplete.append('/'.join(key) + ' (missing)')
             elif rows[key]['state'] != 'qualified':
                 incomplete.append('/'.join(key))
     check(not require_complete or (ledger['reviewed'] and not incomplete),
           f'full closure unproven: reviewed={ledger["reviewed"]}, {len(incomplete)} incomplete required rows')
-    return {'status': 'VALID_INCOMPLETE' if incomplete or not ledger['reviewed'] else 'VALID_COMPLETE',
+    result = {'status': 'VALID_INCOMPLETE' if incomplete or not ledger['reviewed'] else 'VALID_COMPLETE',
             'features': len(features), 'rows': len(rows), 'incomplete_required_rows': len(incomplete),
             'required_pairs': sum(a['status'] == 'required' for a in applicability.values()),
             'optional_pairs': sum(a['status'] == 'optional' for a in applicability.values()),
             'nonapplicable_pairs': sum(a['status'] == 'not-applicable' for a in applicability.values()),
             'reviewed': ledger['reviewed']}
+    if version == 3:
+        result.update(original_required_pairs=original_required, transferred_required_pairs=len(transferred))
+    return result
 
 
 def main(argv=None):

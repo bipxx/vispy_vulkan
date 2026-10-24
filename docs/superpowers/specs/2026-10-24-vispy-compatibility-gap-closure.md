@@ -195,8 +195,9 @@ counts/types, native limitations and behavior without a current/live canvas.
 Unsupported calls and values fail contextually; no silent fallback or no-op.
 
 Distinguish invalid input from legal upstream input that is not implemented.
-For example, reversed depth ranges and enabling GL_DITHER currently have native
-refusals despite their function names being allowlisted. Give such legal
+For example, enabling GL_DITHER retains a native refusal despite its function
+name being allowlisted. Reversed depth ranges now have the L1 source checkpoint
+below and still await independent review and installed qualification. Give such legal
 exclusions inventory rows and future acceptance criteria; do not label them
 invalid arguments or treat the whole operation as fully compatible.
 
@@ -207,8 +208,9 @@ executed native state. Invalid values do not partially mutate that state/cache;
 the fate of earlier successfully executed queued work is documented separately
 from rollback. Test nested FBOs, A/B/A canvas selection and state after errors.
 
-STATE-3: The current three pixel cases establish selected clear/scissor/mask and
-ordering behavior. Add coverage by state family for depth, blending, front/back
+STATE-3: The initial three pixel cases established selected clear/scissor/mask
+and ordering behavior; later source checkpoints expand that evidence. Retain
+coverage by state family for depth, blending, front/back
 stencil, culling, line/sample state and limits, with real rendering where the
 state affects output. Test integer enum inputs and negative/invalid values.
 Reuse native state tests but verify the new Python entry route reaches them.
@@ -771,8 +773,10 @@ independence neither qualifies the failing profile nor closes full scope.
 
 ## 12. Next-packet designs and exit checks
 
-These designs refine STATE-1..5, INV-1..3 and BACKEND-2. They are pending work,
-not additional source-test results. The next implementation must reference its
+These designs refine STATE-1..5, INV-1..3 and BACKEND-2. Q1 queries, selected B4
+capabilities and L1 reversed depth now have source checkpoints below; their
+contracts are retained for independent review and installed qualification. Other
+selected rows remain future work. The next implementation must reference its
 selected rows in the existing ledger and operation table; the tables here are
 acceptance instructions, not a replacement inventory or promotion mechanism.
 
@@ -828,7 +832,7 @@ until the selected behavior and dependent pipeline/cache paths are tested.
 
 | Gap | Decision required | Distinguishing output / negative control |
 | --- | --- | --- |
-| Reversed depth range | Define depth mapping/clipping and comparison lowering when near exceeds far, including equal endpoints and clamped inputs. | Overlapping primitives with reversed near/far ordering; equal endpoints; disabled depth test; depth write mask; more than one comparison. |
+| Reversed depth range — L1 source-tested | Retain the depth conversion decision and source checkpoint below; independent source review and exact installed qualification remain. | Overlapping primitives with reversed near/far ordering; equal/clamped endpoints; masks/comparisons; fragment depth/coordinates; indexed instancing; queued orientation changes and loss. |
 | Dither enable | Identify the pinned observable contract and admitted attachment formats; determine whether native raster behavior or an explicit lowering satisfies it. | A gradient/quantization fixture for the selected format and an enable/disable control. A fixed arbitrary noise pattern or unexamined no-op is not proof. |
 | Multisample disabled with multisample storage | Distinguish rasterization/sample shading semantics from attachment count and resolve behavior, coverage and depth/stencil interaction. | Assert actual four-sample storage, toggle enable state without reallocating the target, and compare edge/coverage and depth/stencil outcomes. Single-sample fallback is not acceptance. |
 | Fractional/out-of-int32 polygon offset units | Define representable bias and depth-format dependence; assess native integer bias limits without silently rounding or saturating accepted public values. | Positive/negative fractional units, factor interactions and boundary values that produce independently predicted visibility; rejected values preserve prior state. |
@@ -845,9 +849,10 @@ profile reruns remain required by sections 5, 6 and 11.
 
 For the next G0 pass, select actual Tk/state public entry points from the pinned
 source and map existing fixture node IDs, including mutation and failure cases.
-Replace the selected unassigned seed rows with explicit concrete profile and
-applicability decisions through the existing schema. Preserve all other required
-seed scope and original receipts. Record unresolved method, example, event,
+Do not directly replace required unassigned rows through the existing v2 schema:
+it has no obligation-transfer contract, and current preservation tests forbid
+that replacement. Implement and review the conservation mechanism in section 13
+before changing those invariants. Preserve all seed scope and original receipts. Record unresolved method, example, event,
 visual and host families separately; do not set global reviewed=true merely
 because the selected Tk/state slice has been mapped.
 
@@ -967,3 +972,214 @@ and all previously retained runtime/platform restrictions remain open. See the
 `--require-complete` still fails with 142 incomplete required rows. Commands,
 source reconstruction and terminal cleanup are retained in the local
 `build/runs/inventory-map-17/` packet.
+
+
+## Depth-range source checkpoint (L1, STATE-1/2/3/5)
+
+The [depth-range decision and acceptance record](../../depth-range-compatibility.md)
+implements ascending Dawn viewports with a captured reverse clip-Z shader variant
+for reversed logical ranges. Equal endpoints and independent endpoint clamping
+are retained. Actual compiled fragment-depth/early-test metadata selects the
+window-depth route, preserving explicit depth outside a partial viewport range
+and logical fragment coordinates through a captured std140 control. Generated
+line reconstruction and existing early-test/side-effect guards remain separate.
+
+The baseline reproduces 17 failures/four passes, including the existing forward
+explicit-depth clamp defect. Thirty depth cases now cover ordinary/point/line,
+clipping, comparisons/masks, queued A/B/A, indexed instancing, aliases and loss.
+Final affected suites pass 421 Windows and 407 WSL software cases, 36 CPU/package
+cases and the Windows state, shader/corpus and artifact/cache C++ contracts.
+Both native profiles have nine zero shutdown gauges. The immutable Windows SDK
+and retained Linux libraries are reused; Linux keeps experimental provenance.
+
+This advances L1 source behavior, not arbitrary shader/attachment forms,
+performance parity, independent review or G2 qualification. Remaining legal
+state packets, full G0/required-profile review, exact installed/absence gates and
+all prior platform/host restrictions stay open. Older optional source observations
+keep their recorded product/native identities and are not relabelled with this
+candidate. Commands, preferred source/artifact identities, baseline failures and
+cleanup are retained in local `build/runs/reversed-depth-18/`.
+
+
+## 13. Current candidate and obligation-conservation contracts
+
+This section governs the next execution queue and refines INV-1..3, EV-1..5,
+ART-1..2 and RET-1. The I2 source checkpoint below records the subsequently
+implemented v3 tooling. Concrete profile transfers, candidate manifests and
+release qualification remain future deliverables.
+The source checkpoints above remain historical evidence with their original
+source/native identities. Q1, selected B4 and L1 depth behavior need review and
+installed qualification rather than another implementation from scratch.
+
+### Candidate manifest and release boundaries
+
+Before another qualification build, the coordinator and packaging/proof owner
+retain a small versioned candidate manifest. Validate it before allocating
+scratch. A development candidate, a qualified scoped workflow and full upstream
+closure are distinct outcomes. A development candidate may remain a draft with
+explicit blockers; calling it first usable does not bypass a mandatory gate.
+
+| Manifest field | Required content and rejection rule |
+| --- | --- |
+| Identity | Candidate ID, source commit/dirty patch hash, upstream pin, native/Python input hashes, wheel/member identities when produced, profile/lock hashes and the manifest's own hash. Missing wheel identity means source evidence only. |
+| Profiles | Each selected Windows Vulkan or WSL software Vulkan interpreter/ABI, toolkit, display path, adapter/driver and dependency pins. Each selected headless, standalone Tk, embedded Tk or Qt/host workflow has its own actual mode. A profile name alone establishes no runtime capability. Native Linux GPU stays unqualified; Metal stays experimental without a Mac. |
+| Acceptance selection | Explicit feature/profile obligations, required workflow IDs, exact ordinary/mutation/failure/recovery fixture node IDs and independently authored expected results. Record public options, granted attachments, shared-resource behavior, input/DPI and teardown boundaries. No broad feature can be qualified by one smoke fixture. |
+| Existing obligations | References to every original mandatory host row and applicable no-OpenGL gate; Windows napari-threedee stays required and unresolved until its existing acceptance passes. Separate broader full-compatibility obligations from the selected workflow without deleting them. |
+| Restrictions and blockers | Legal unsupported state/shader forms, backend/mode limitations, Linux toolkit/scissor failures, Tcl shutdown diagnostic, hardware gaps and next evidence-driven action/owner. Experimental or blocked work cannot acquire a qualified state from a scope label. |
+| Gate closure | Source/fixture review; full installed-member/closure audit; installed functional and shutdown results; dependency, transient-load and execution/API gates with their original controls; required current-head CI; final independent promotion review. Every receipt binds the same final artifact/profile and covered workflow. |
+| Reconstruction and retention | Installation recipe, installed-origin verification command, per-workflow launch command and independently expected visible/captured result; previous known-good artifact; existing source/artifact/toolchain references, original licenses and patches, command, actual exit/child wait, managed run owner/budget and terminal cleanup receipt. Reference retained inputs by hash rather than copying their histories. |
+
+An installable first usable candidate must identify its actual wheel and admitted
+workflows, with their full functional and all three absence gates passing against
+that artifact. Windows workflows may be selected first; this leaves WSL software
+and native Linux GPU obligations distinct and open. Preparing this candidate
+does not authorize publication of the existing draft release.
+
+A scoped workflow qualifies only when every selected required criterion and its
+same-artifact evidence passes. Publishing or merging the complete-removal
+release still requires the original mandatory matrix; a new manifest cannot
+waive it. Full VisPy compatibility additionally requires reviewed finite G0 and
+all required applicable feature/profile pairs. Optical display instrumentation
+and extreme driver pixel parity remain deferred as already agreed.
+
+### I2: lossless transition from seed obligations to concrete profiles
+
+The current v2 schema has no transfer/retirement object. Positive evidence cannot
+attach to the unadmitted `unassigned` profile. Current generator/source-observation
+tests deliberately preserve all 142 required seed pairs and literal seed records.
+Thus adding optional source profiles cannot complete G0, while directly deleting
+or relabelling seed pairs would defeat the preservation contract.
+
+Implement a versioned, non-overwriting migration and conservation validator
+before altering those invariants. The design record must specify the new schema
+version or separately pinned obligation index, deterministic transfer semantics,
+validator entry point and compatibility of existing receipt readers. Do not add
+unrecognized transfer fields to v2 and claim they are already validated.
+
+For each original obligation retain its stable origin feature/profile key,
+original upstream source/record hash, review rationale, reviewer and disposition.
+A transfer names concrete required successors, their public behavior boundaries,
+profile-local dependencies and the union of covered acceptance criteria. A split
+into methods/options must preserve every original behavior; a narrower successful
+subset cannot stand for the original whole. Retain unresolved residual criteria
+as blocking obligations. A merge retains every parent origin independently.
+A genuine scope exclusion needs explicit reviewed justification consistent with
+existing authorization; hardware absence or an unresolved failure is no reason
+to erase required scope. Broader release-scope changes still need authorization.
+
+A parent obligation is discharged only when the conservation validator proves
+complete reviewed coverage and every required terminal successor is qualified
+with appropriate evidence. Keep original records/receipts in immutable history;
+never rewrite their product identity, turn source receipts into wheel receipts,
+or count both a transferred parent and its successors as separate completed work.
+Before this mechanism is implemented, all current required seed obligations stay
+blocking, `reviewed=false`, and `--require-complete` continues to fail.
+
+| Conservation control | Required result |
+| --- | --- |
+| Missing origin, duplicate origin disposition or altered origin hash | Reject; an unaccounted original obligation must remain visible. |
+| Transfer cycle, dangling successor or uncovered split criterion | Reject; a chain must terminate in explicit applicable obligations with complete behavioral coverage. |
+| Optional/nonapplicable successor substituted for required work | Reject unless a separately valid authorized scope disposition explains it; a change of flag is insufficient. |
+| Missing/unreviewed destination profile, or hardware absence recast as nonapplicability | Reject; review concrete applicability and preserve externally blocked required obligations. |
+| Broader parent represented by a narrow smoke, or required dependency removed | Reject; preserve residual work and same-profile dependency closure. |
+| Stale source receipt, mismatched profile/artifact/workflow or forged qualification | Reject under unchanged evidence gates; transfer conveys scope only, never evidence status. |
+| Optional failed experiment alongside complete required obligations | Preserve its failure and original status without making it a new mandatory requirement. |
+| One ordinary/mutation-mapped concrete slice and untouched remaining seed | Structural validation succeeds; full closure still fails on remaining required work. |
+
+Replace literal-preservation regression assumptions only with stronger verified
+conservation assertions against the frozen seed. Preserve deterministic bootstrap,
+original pins and negative controls. The migration exits with a validated mapping,
+a before/after obligation report and an independent scope review; it does not
+itself qualify a feature or manufacture a completeness percentage.
+
+### Bounded execution, evidence reuse and stop conditions
+
+The next packet begins with named requirements, affected files/workflows, oracle,
+negative control, resource estimate and stop condition. Every legal-state or
+shader guard removal is limited to its demonstrated subset. Keep independent
+software work moving when hardware is unavailable; do not spend repeated build
+runs gathering equivalent source pass counts.
+
+Linux toolkit capture and MSAA scissor have different controls and causes. A
+plain Tk control must use the same pinned Python/Tcl/Tk/display environment as
+the affected workflow. Scissor proof must assert actual four-sample storage,
+nonzero-origin odd-sized boundaries, original expected pixels and loaded driver
+identity. A replacement-profile pass does not explain or qualify the old profile.
+Windows threedee uses the existing three diagnostic starts plus one targeted
+confirmation, with a declared watchdog, log cap and awaited owned children.
+No reproduction leaves that row unresolved; success-only retries cannot close it.
+
+A failed bounded trial retains its counterexample and next discriminating
+experiment. Stop new allocation on budget/reserve failure, unknown ownership,
+changed pinned inputs or an unbounded/hung child; preserve the actual exit/wait
+and use existing process ownership rules. Independent review unavailability keeps
+promotion pending while other source work proceeds. A documentation change alone
+requires local links/anchors, requirement/queue consistency and applicable schema
+checks, with no native rebuild, environment clone or release archive repack.
+
+
+### Cumulative implementation review and Tcl shutdown attribution
+
+The source-review input is a frozen cumulative patch and fixture mapping for Q1,
+selected B4 and L1, including their shared query/state/shader/Tk boundaries.
+Review both the original base and intervening changes; a latest-commit-only
+review cannot establish that the earlier packets are covered. Bind comments and
+disposition to reviewed source hashes. Check logical query authority and queue
+preservation, Canvas/Timer public-state interactions with other backends,
+constructor/thread/host ownership, reverse-depth cache identity,
+compiled fragment-depth/early-test classification, hidden uniform layout and
+resource limits, the forward explicit-depth correction, ordinary, point and generated-line
+boundaries, and loss/close. Source test totals and this plan review are supporting context,
+not implementation-review approval. A subsequent relevant code change invalidates
+the affected approval/receipts until reviewed and rerun as appropriate.
+
+Treat the intermittent Tcl `ThemeChanged` diagnostic after destroyed-interpreter
+teardown as an unresolved lifecycle observation distinct from the Linux plain-Tk
+abort. Before its next run declare three fresh-process diagnostic trials and at
+most one causal confirmation, 60 seconds per process, a 2 MiB per-trial log cap
+and 10 seconds to terminate/wait for an owned child on timeout. A need to revise
+these bounds is a new documented experiment, not an automatic retry.
+
+Record interpreter/root identities and ownership, construction/destruction order,
+VisPy and unrelated host jobs/bindings/images before and after close, thread ID,
+full diagnostic/traceback and exit status. Compare a minimal plain-Tk control and
+same-profile standalone and supplied-parent VisPy workflows, changing one
+variable per comparison. Retain all trials, including passes and abnormal exits. Confirm diagnostic collection with
+a deliberately failing owned callback; absence of captured stderr alone cannot
+prove correct teardown. Preserve unrelated host timers/bindings and use the nine
+native gauges plus Tk job/image/interpreter assertions for shutdown acceptance.
+
+Close the observation only with a causal fix and regression, or evidence that
+identifies an external toolkit cause and justifies the exact affected profile's
+scope. Do not silence callbacks/stderr, ignore unraisable exceptions, retry until
+a pass, or infer clean shutdown from native gauges alone. If not reproduced,
+retain unresolved status and next discriminating experiment; do not claim a
+newly qualified Tk lifecycle profile.
+
+
+## Obligation-conservation tooling source checkpoint (I2, INV-1..3, EV-1..5)
+
+The [v3 tooling contract](../../compatibility-inventory.md#conserved-obligation-transfers-v3-tooling)
+is implemented by the optional v3 schema and conservation validator. An explicit
+non-overwriting v2-to-v3 migration pins a frozen valid baseline and preserves
+existing records. Reviewed transfers cover every scope/ordinary/mutation,
+requirement/capability/dependency criterion, retain original scope and historical
+rows, require concrete required successors and reject cycles. Scope approvals
+bind exact baseline/transfer hashes. They declare reviewed coverage; the tool
+cannot infer the truth of a behavioral rationale or approve its own reviewer.
+
+Twenty-two new CPU cases cover the mechanism and shortcuts. The exact affected
+CI selection passes 149 Windows and 149 WSL cases without skips. Synthetic
+terminal qualification still requires all existing gates; source-only successor
+proof remains incomplete. v2 receipts/constraints remain unchanged. The first
+WSL launcher failed before collection because pytest was absent from its default
+search path; the corrected launcher reused the already retained package paths,
+with no installation or environment creation. Both outcomes are retained.
+
+Canonical v2 scope, original 142 required/unassigned pairs and historical optional
+source observations remain unchanged. No real obligation has transferred or
+qualified. Selected concrete profiles, behavioral scope review, candidate
+manifest, cumulative implementation review and exact G2 artifacts/receipts are
+still required. This source packet changes no hardware or mandatory host gate.
+Evidence, source reconstruction and managed terminal cleanup are retained in
+local `build/runs/inventory-conservation-19/`.

@@ -666,3 +666,207 @@ def test_v1_migration_cli_never_overwrites_and_v1_cannot_validate(example):
 def test_evidence_reference_cannot_escape_declared_workspace(tmp_path, path):
     with pytest.raises(inventory.InventoryError, match='invalid relative file'):
         inventory.local_file(tmp_path, path)
+
+
+# v3 conservation controls use synthetic receipts only, never product GPU proof.
+def conserved_case(example, state='source-tested'):
+    from tools.compatibility_conservation import criteria, digest, migrate_v2, origins
+    root, baseline = example
+    baseline = deepcopy(baseline)
+    shutil.copyfile(ROOT / 'compat/vispy-compatibility-v3.schema.json',
+                    root / 'compat/vispy-compatibility-v3.schema.json')
+    reference = write_json(root, 'history/baseline-v2.json', baseline)
+    target = deepcopy(baseline)
+    for group in ('profiles', 'rows', 'applicability'):
+        key = 'id' if group == 'profiles' else 'profile'
+        for record in target[group]:
+            record[key] = 'concrete-profile'
+    promote(root, target, state)
+    result = migrate_v2(baseline, reference)
+    for group in ('profiles', 'rows', 'applicability'):
+        result[group].extend(target[group])
+    key, origin = next(iter(origins(baseline).items()))
+    destination = {'feature': key[0], 'profile': 'concrete-profile'}
+    transfer = {'origin': {'feature': key[0], 'profile': key[1]},
+                'origin_sha256': digest(origin), 'rationale': 'Synthetic full-scope transfer control.',
+                'coverage': [{'criterion': name, 'rationale': 'Synthetic criterion reviewed.',
+                              'successors': [deepcopy(destination)]} for name in sorted(criteria(origin))]}
+    transfer['review'] = write_json(root, 'review/scope.json', {
+        'schema': 1, 'status': 'APPROVED_SCOPE', 'reviewer': 'Synthetic unit-test scope reviewer',
+        'baseline_sha256': reference['sha256'], 'transfer_sha256': digest(transfer)})
+    result['conservation']['transfers'] = [transfer]
+    return root, baseline, result
+
+
+def test_conservation_source_transfer_preserves_history_and_blocks_closure(example):
+    root, baseline, ledger = conserved_case(example)
+    result = inventory.validate(ledger, root)
+    assert result['original_required_pairs'] == result['transferred_required_pairs'] == 1
+    assert result['required_pairs'] == 2 and result['incomplete_required_rows'] == 1
+    assert ledger['rows'][0] == baseline['rows'][0]
+    with pytest.raises(inventory.InventoryError, match='full closure unproven'):
+        inventory.validate(ledger, root, True)
+
+
+def test_conservation_terminal_qualification_uses_all_existing_gates(example):
+    root, baseline, ledger = conserved_case(example, 'qualified')
+    ledger['reviewed'] = True
+    # A reviewed transfer replaces this review obligation without rewriting history.
+    ledger['applicability'][0]['reviewed'] = False
+    result = inventory.validate(ledger, root, True)
+    assert result['status'] == 'VALID_COMPLETE'
+    assert result['required_pairs'] == 2 and result['incomplete_required_rows'] == 0
+    assert result['transferred_required_pairs'] == 1
+    row = ledger['rows'][1]
+    receipt = inventory.read_json(root / row['receipt']['path'])
+    del receipt['gates']['execution-api']
+    row['receipt'] = write_json(root, row['receipt']['path'], receipt)
+    with pytest.raises(inventory.InventoryError, match='missing qualification gate'):
+        inventory.validate(ledger, root, True)
+
+
+@pytest.mark.parametrize('change,message', [
+    ('origin-hash', 'changed origin identity'),
+    ('origin-profile', 'original profile changed'),
+    ('unknown-origin', 'not an original required obligation'),
+    ('dangling', 'dangling successor'),
+    ('self', 'self transfer'),
+    ('baseline-bytes', 'changed evidence'),
+    ('duplicate-criterion', 'duplicate coverage criterion'),
+    ('origin-scope', 'original feature scope changed'),
+    ('origin-downgrade', 'original required obligation removed or downgraded'),
+    ('history', 'transferred historical row changed'),
+    ('duplicate', 'duplicate origin disposition'),
+    ('partial', 'incomplete or unknown origin coverage'),
+    ('optional', 'transferred to optional'),
+    ('unreviewed', 'successor applicability is not reviewed'),
+    ('review', 'missing/stale scope review'),
+    ('stale-profile', 'receipt belongs to another feature/profile'),
+])
+def test_conservation_rejects_scope_or_evidence_shortcuts(example, change, message):
+    root, _, ledger = conserved_case(example)
+    transfer = ledger['conservation']['transfers'][0]
+    if change == 'origin-profile':
+        ledger['profiles'][0]['description'] = 'Relabelled origin.'
+    elif change == 'unknown-origin':
+        transfer['origin']['feature'] = 'unknown.feature'
+    elif change == 'dangling':
+        transfer['coverage'][0]['successors'][0]['profile'] = 'unknown-profile'
+    elif change == 'self':
+        transfer['coverage'][0]['successors'][0] = deepcopy(transfer['origin'])
+    elif change == 'baseline-bytes':
+        p = root / ledger['conservation']['baseline']['path']
+        p.write_bytes(p.read_bytes() + b' ')
+    elif change == 'duplicate-criterion':
+        transfer['coverage'].append(deepcopy(transfer['coverage'][0]))
+    elif change == 'origin-hash':
+        transfer['origin_sha256'] = '0' * 64
+    elif change == 'origin-scope':
+        ledger['features'][0]['ordinary'] = 'Narrow smoke only.'
+    elif change == 'origin-downgrade':
+        ledger['applicability'][0]['status'] = 'optional'
+    elif change == 'history':
+        ledger['rows'][0]['next_action'] = 'Discard original blocker.'
+    elif change == 'duplicate':
+        ledger['conservation']['transfers'].append(deepcopy(transfer))
+    elif change == 'partial':
+        transfer['coverage'].pop()
+    elif change == 'optional':
+        ledger['applicability'][1]['status'] = 'optional'
+    elif change == 'unreviewed':
+        ledger['applicability'][1]['reviewed'] = False
+    elif change == 'review':
+        transfer['rationale'] = 'Changed after approval.'
+    elif change == 'stale-profile':
+        row = ledger['rows'][1]
+        receipt = inventory.read_json(root / row['receipt']['path'])
+        receipt['profile'] = 'unassigned'
+        row['receipt'] = write_json(root, row['receipt']['path'], receipt)
+    with pytest.raises(inventory.InventoryError, match=message):
+        inventory.validate(ledger, root)
+
+
+def test_conservation_migration_is_non_overwriting_and_preserves_receipts(example):
+    from tools.compatibility_conservation import main, migrate_v2
+    root, baseline, _ = conserved_case(example)
+    source = root / 'history/baseline-v2.json'
+    output = root / 'migrated.json'
+    args = ['--root', str(root), '--input', str(source), '--output', str(output)]
+    assert main(args) == 0
+    migrated = inventory.read_json(output)
+    assert migrated['schema'] == 3 and migrated['reviewed'] is False
+    assert migrated['rows'] == baseline['rows']
+    assert migrated['features'] == baseline['features']
+    assert migrated['applicability'] == baseline['applicability']
+    assert migrated['conservation']['transfers'] == []
+    assert inventory.validate(migrated, root)['incomplete_required_rows'] == 1
+    before = output.read_bytes()
+    with pytest.raises(FileExistsError):
+        main(args)
+    assert output.read_bytes() == before
+    with pytest.raises(inventory.InventoryError, match='requires a v2 ledger'):
+        migrate_v2(migrated, migrated['conservation']['baseline'])
+
+
+def test_conservation_schema_retains_all_v2_receipt_constraints():
+    v2 = inventory.read_json(ROOT / 'compat/vispy-compatibility.schema.json')
+    v3 = inventory.read_json(ROOT / 'compat/vispy-compatibility-v3.schema.json')
+    assert all(v3['$defs'][name] == definition for name, definition in v2['$defs'].items())
+    assert all(v3['properties'][name] == definition for name, definition in v2['properties'].items()
+               if name != 'schema')
+    assert set(v2['required']) <= set(v3['required'])
+
+
+
+def test_conservation_preserves_required_dependencies_even_for_split_scope(example):
+    root, baseline = example
+    dependency = deepcopy(baseline['features'][0])
+    dependency['id'] = 'dependency.feature'
+    baseline['features'].append(dependency)
+    dep_pair = deepcopy(baseline['applicability'][0])
+    dep_pair['feature'] = dependency['id']
+    baseline['applicability'].append(dep_pair)
+    baseline['applicability'][0]['dependencies'] = [dependency['id']]
+    dep_row = deepcopy(baseline['rows'][0])
+    dep_row['feature'] = dependency['id']
+    baseline['rows'].append(dep_row)
+    root, _, ledger = conserved_case((root, baseline))
+    # The dependent target is still required but the main target silently drops
+    # its dependency, concealing it from same-profile positive-state checks.
+    target = next(a for a in ledger['applicability']
+                  if a['feature'] == baseline['features'][0]['id'] and a['profile'] == 'concrete-profile')
+    target['dependencies'] = []
+    with pytest.raises(inventory.InventoryError, match='successor omitted original required dependency'):
+        inventory.validate(ledger, root)
+
+
+def test_conservation_rejects_cycles_even_with_reviewed_required_targets(example):
+    from tools.compatibility_conservation import criteria, digest, migrate_v2, origins
+    root, baseline = example
+    shutil.copyfile(ROOT / 'compat/vispy-compatibility-v3.schema.json',
+                    root / 'compat/vispy-compatibility-v3.schema.json')
+    baseline['profiles'][0].update(admitted=True, environment_sha256='a' * 64)
+    twin = deepcopy(baseline['profiles'][0])
+    twin['id'] = 'second-profile'
+    baseline['profiles'].append(twin)
+    for group in ('rows', 'applicability'):
+        record = deepcopy(baseline[group][0])
+        record['profile'] = twin['id']
+        baseline[group].append(record)
+    reference = write_json(root, 'history/two-origins.json', baseline)
+    ledger = migrate_v2(baseline, reference)
+    original = origins(baseline)
+    keys = list(original)
+    for index, key in enumerate(keys):
+        destination = keys[1 - index]
+        transfer = {'origin': {'feature': key[0], 'profile': key[1]},
+                    'origin_sha256': digest(original[key]), 'rationale': 'Synthetic cycle.',
+                    'coverage': [{'criterion': name, 'rationale': 'Synthetic scope claim.',
+                                  'successors': [{'feature': destination[0], 'profile': destination[1]}]}
+                                 for name in sorted(criteria(original[key]))]}
+        transfer['review'] = write_json(root, f'review/cycle-{index}.json', {
+            'schema': 1, 'status': 'APPROVED_SCOPE', 'reviewer': 'Synthetic reviewer',
+            'baseline_sha256': reference['sha256'], 'transfer_sha256': digest(transfer)})
+        ledger['conservation']['transfers'].append(transfer)
+    with pytest.raises(inventory.InventoryError, match='cyclic obligation transfer'):
+        inventory.validate(ledger, root)

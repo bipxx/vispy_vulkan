@@ -35,6 +35,27 @@ Specification section 12 and the detailed next-packet table define the next
 bounded implementation and its exit checks. This documentation review does not
 qualify source, artifacts or hardware.
 
+## Current execution queue after source checkpoints
+
+This section governs remaining execution. The packet tables and numbered repair
+lists below retain their design/history; a later source checkpoint supersedes
+an earlier instruction to implement the same packet. Source completion does not
+mean independently reviewed or installed-qualified completion.
+
+| Order | Current state and next concrete output | Exit before advancing the claim |
+| --- | --- | --- |
+| 1 — I2 / coordinator + proof | I1 added optional observations only; I2 transfer tooling now has the source checkpoint below. Define the concrete candidate profile/workflow manifest and independently reviewed conservation mappings for all 142 required seed obligations. | Every selected required workflow has an owner, ordinary/mutation fixtures, exclusions and exact dependencies. Unassigned obligations remain blocking until validated replacement obligations preserve their full scope. |
+| 2 — implementation review / coordinator | Q1 native queries, B4 selected Tk capabilities and L1 depth ranges have source checkpoints. Review their exact source/fixture changes and map unresolved findings. | Independent source/fixture review passes for the selected candidate. This Astra plan review does not satisfy that gate. Do not rebuild those packets merely to repeat their pass counts. |
+| 3 — bounded correctness / Python + native | Diagnose Linux toolkit capture and MSAA scissor separately; retain the required Windows threedee diagnostic packet. Select each remaining legal-state, input/DPI or lifecycle gap from concrete candidate dependencies. | Each required failure has causal evidence and a distinguishing regression, or remains a visible blocker. Hardware absence cannot excuse independent software failures. |
+| 4 — G2 / proof | Freeze the reviewed source, reuse matching artifacts or build each changed native leaf once, then audit exact installed workflows and all absence gates/controls. | Exact-member/closure audits, functional/shutdown receipts, current-head required CI and independent final promotion-evidence review pass for the same artifacts and profiles. Original mandatory host gates remain required. |
+| 5 — G4/G5/G6 and full G0 / assigned owner | Extend one named shader/backend/host subset at a time; reconcile the remaining methods, examples, events and visual families. | Reviewed finite full inventory and every applicable required pair qualified before full compatibility/complete-removal claims. No completion percentage from the seed count. |
+| 6 — G7 / proof | Measure fixed performance workloads after their correctness gates. Native Linux GPU and Metal retain separate hardware requirements. | WSL software is labelled separately; Metal stays experimental without a Mac. Optical/scanout instrumentation remains deferred. |
+
+The [Astra review and disposition](../reviews/2026-10-24-astra-candidate-conservation-review.md)
+and [specification section 13](../specs/2026-10-24-vispy-compatibility-gap-closure.md#13-current-candidate-and-obligation-conservation-contracts)
+define this queue's candidate, conservation and diagnostic deliverables. This queue changes no mandatory release
+requirement and authorizes no additional agents or dependency builds.
+
 ## Baseline and review disposition
 
 - Earlier implementation PR #13 merged. The installed matrix still has one
@@ -197,7 +218,7 @@ hardware claim was promoted.
 
 The detailed planning records in specification section 11 apply before the
 affected implementation. Preserve the historical checkpoints below, but use
-this queue rather than restarting already completed source work:
+the current execution queue near the top rather than restarting source-fixed work:
 
 | Order | Bounded deliverable | Review/acceptance stop condition |
 | --- | --- | --- |
@@ -372,7 +393,7 @@ shown in the specification. Extend current suites rather than creating copied
 harness/source histories. The installed state smoke covers one 96-pixel scene,
 not Tk or the entire state allowlist.
 
-## Detailed next-packet deliverables
+## Retained packet acceptance contracts (current state above)
 
 Use specification [section 12](../specs/2026-10-24-vispy-compatibility-gap-closure.md#12-next-packet-designs-and-exit-checks)
 for the next implementation boundary. The immediate-state source checkpoint
@@ -386,8 +407,9 @@ above remains the baseline; do not rerun its native build merely for this plan.
 | L1..Ln / native | One design and distinguishing output packet for each legal state-value gap in section 12. | Guard removed only for the proven subset; failure retains its counterexample. Do not couple independent software work to unrelated hardware blockers. |
 | G2 / proof | Source freeze and independent source/fixture review; exact artifacts and complete installed/observer/CI receipts; independent promotion-evidence review of those final receipts. | Both review checkpoints must pass. Source passes and this plan review cannot substitute for implementation review, exact installed identity or any of the three absence gates. |
 
-Q1 can proceed while I1/B4 assessment and bounded Linux/host investigations
-continue independently. Its selected requirements and fixture mappings must be
+Historical dependency note: Q1 could proceed alongside I1/B4 assessment.
+Q1/B4 now have source checkpoints; remaining mapping, review and bounded
+Linux/host investigations proceed from the current execution queue. Its selected requirements and fixture mappings must be
 recorded first. L1..Ln are not all prerequisites for a scoped Tk/state G2 packet;
 every required criterion for the selected workflow/profile still must pass.
 A narrower demonstrated subset must be represented explicitly and cannot
@@ -548,3 +570,58 @@ and all previously retained runtime/platform restrictions remain open. See the
 `--require-complete` still fails with 142 incomplete required rows. Commands,
 source reconstruction and terminal cleanup are retained in the local
 `build/runs/inventory-map-17/` packet.
+
+
+## Depth-range source checkpoint (L1, STATE-1/2/3/5)
+
+The [depth-range decision and acceptance record](../../depth-range-compatibility.md)
+implements ascending Dawn viewports with a captured reverse clip-Z shader variant
+for reversed logical ranges. Equal endpoints and independent endpoint clamping
+are retained. Actual compiled fragment-depth/early-test metadata selects the
+window-depth route, preserving explicit depth outside a partial viewport range
+and logical fragment coordinates through a captured std140 control. Generated
+line reconstruction and existing early-test/side-effect guards remain separate.
+
+The baseline reproduces 17 failures/four passes, including the existing forward
+explicit-depth clamp defect. Thirty depth cases now cover ordinary/point/line,
+clipping, comparisons/masks, queued A/B/A, indexed instancing, aliases and loss.
+Final affected suites pass 421 Windows and 407 WSL software cases, 36 CPU/package
+cases and the Windows state, shader/corpus and artifact/cache C++ contracts.
+Both native profiles have nine zero shutdown gauges. The immutable Windows SDK
+and retained Linux libraries are reused; Linux keeps experimental provenance.
+
+This advances L1 source behavior, not arbitrary shader/attachment forms,
+performance parity, independent review or G2 qualification. Remaining legal
+state packets, full G0/required-profile review, exact installed/absence gates and
+all prior platform/host restrictions stay open. Older optional source observations
+keep their recorded product/native identities and are not relabelled with this
+candidate. Commands, preferred source/artifact identities, baseline failures and
+cleanup are retained in local `build/runs/reversed-depth-18/`.
+
+
+## Obligation-conservation tooling source checkpoint (I2, INV-1..3, EV-1..5)
+
+The [v3 tooling contract](../../compatibility-inventory.md#conserved-obligation-transfers-v3-tooling)
+is implemented by the optional v3 schema and conservation validator. An explicit
+non-overwriting v2-to-v3 migration pins a frozen valid baseline and preserves
+existing records. Reviewed transfers cover every scope/ordinary/mutation,
+requirement/capability/dependency criterion, retain original scope and historical
+rows, require concrete required successors and reject cycles. Scope approvals
+bind exact baseline/transfer hashes. They declare reviewed coverage; the tool
+cannot infer the truth of a behavioral rationale or approve its own reviewer.
+
+Twenty-two new CPU cases cover the mechanism and shortcuts. The exact affected
+CI selection passes 149 Windows and 149 WSL cases without skips. Synthetic
+terminal qualification still requires all existing gates; source-only successor
+proof remains incomplete. v2 receipts/constraints remain unchanged. The first
+WSL launcher failed before collection because pytest was absent from its default
+search path; the corrected launcher reused the already retained package paths,
+with no installation or environment creation. Both outcomes are retained.
+
+Canonical v2 scope, original 142 required/unassigned pairs and historical optional
+source observations remain unchanged. No real obligation has transferred or
+qualified. Selected concrete profiles, behavioral scope review, candidate
+manifest, cumulative implementation review and exact G2 artifacts/receipts are
+still required. This source packet changes no hardware or mandatory host gate.
+Evidence, source reconstruction and managed terminal cleanup are retained in
+local `build/runs/inventory-conservation-19/`.

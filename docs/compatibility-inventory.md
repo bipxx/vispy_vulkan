@@ -240,3 +240,70 @@ curation, rather than requiring the evolving canonical ledger to remain forever
 byte-for-byte equal to a generated seed. Synthetic promotion controls explicitly
 isolate their single test profile and cannot accidentally inherit these real
 observations.
+
+
+## Conserved obligation transfers (v3 tooling)
+
+The validator also reads `compat/vispy-compatibility-v3.schema.json`. The
+canonical inventory remains v2, with its 142 original required obligations and
+optional development observations unchanged. v3 tooling is source-tested; no
+concrete required-profile transfer or installed qualification is claimed.
+
+A v3 ledger adds `conservation.baseline`, a path/SHA-256 reference to a frozen,
+valid v2 ledger, and `conservation.transfers`. The baseline stays inside the
+selected source root, outside managed scratch. Retain it once by hash. Prepare
+a separate output explicitly; the migration refuses to overwrite an existing
+file and resets global review without changing feature, row or receipt bytes:
+
+```text
+python -B tools/compatibility_conservation.py --input compat/history/<frozen-v2-ledger>.json --output compat/<new-v3-ledger>.json
+python -B tools/compatibility_inventory.py --ledger compat/<new-v3-ledger>.json
+```
+
+The baseline must remain available with its original referenced evidence. An
+input at the current mutable ledger path is not a durable frozen history copy.
+The command validates the result before writing; merely migrating leaves all
+required work incomplete. A v1 ledger still uses the existing explicit v1-to-v2
+migration first. Evidence receipts retain their existing format and gates.
+
+Each transfer contains an `origin` feature/profile pair; `origin_sha256` over
+its baseline feature, profile, applicability and row; a rationale; complete
+criterion coverage; and a hash-pinned scope review. `digest()` in
+`tools/compatibility_conservation.py` defines object identity: SHA-256 over UTF-8
+JSON with sorted keys, compact separators and ASCII escapes. The criterion set
+is `scope`, `ordinary`, `mutation`, plus `requirement:<id>`, `capability:<name>`
+and `dependency:<feature>` for every corresponding baseline item.
+
+Each criterion names required successor pairs and a rationale explaining full
+coverage. All successors need reviewed applicability, a concrete admitted/pinned
+profile and a workflow row. Their evidence may still be pending, which prevents
+completion. Original dependency names must remain required in each successor's
+profile. Covered requirements/capabilities and original upstream sources cannot
+be omitted. This conservative first mechanism permits no scope exclusions.
+An authorized exclusion needs its own future reviewed contract.
+
+The scope-review JSON contains `schema: 1`, `status: "APPROVED_SCOPE"`, a named
+`reviewer`, `baseline_sha256` and `transfer_sha256`. The latter hashes the exact
+transfer object excluding its `review` reference. This binds the review to its
+scope declaration; it does not authenticate a reviewer or prove the truth of a
+behavioral coverage rationale. Independent review must inspect those semantics,
+including every split method/value/event restriction. A narrow smoke cannot
+justify full-scope approval, and a scope approval is not source-code approval or
+artifact promotion.
+
+Original required pairs/features/profiles remain present. Transferred historical
+rows remain byte-equivalent JSON objects, preserving their original failures or
+receipts. Chains must be acyclic. Only reviewed, fully mapped parent obligations
+are removed from the *terminal* completion count; required terminal successors
+still need all ordinary functional/identity/observer gates and qualified status.
+`required_pairs` counts retained physical pairs, while v3 additionally reports
+`original_required_pairs` and `transferred_required_pairs`; neither count is a
+feature-completeness percentage. A transferred parent cannot double-count as a
+second completed workflow. Optional failures remain recorded and optional.
+
+The current CPU controls exercise missing/changed origins, partial coverage,
+optional replacement, missing dependencies, duplicate criteria/dispositions,
+cycles, stale scope approvals and relabelled evidence, plus migration overwrite
+refusal and synthetic terminal qualification through all existing gates. Real
+profile mappings, scope review, cumulative implementation review, a candidate
+manifest and installed G2 work remain pending.
