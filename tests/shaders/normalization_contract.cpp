@@ -331,7 +331,111 @@ void one_dimensional_sampling(){
     auto bias=normalize_program("attribute vec2 a_position; varying float v_uv; void main(){v_uv=(a_position.x+1.)*.5;gl_Position=vec4(a_position,0.,1.);}","uniform sampler1D u_source; varying float v_uv;void main(){gl_FragColor=texture1D(u_source,v_uv,1.);}",options);
     require(!bias.error.empty()&&bias.error.find("bias is unsupported")!=std::string::npos,"base-level 1D bias must reject");
     auto lod=normalize_program("attribute vec2 a_position; varying float v_uv; void main(){v_uv=(a_position.x+1.)*.5;gl_Position=vec4(a_position,0.,1.);}","uniform sampler1D u_source; varying float v_uv;void main(){gl_FragColor=texture1DLod(u_source,v_uv,0.);}",options);
-    require(!lod.error.empty()&&lod.error.find("explicit LOD")!=std::string::npos,"base-level legacy1D LOD must reject");
+    compile_and_reflect(lod);
+    require(lod.fragment.find("textureLod") != std::string::npos,
+        "single-level legacy1D explicit LOD retains an actual sampling instruction");
+}
+
+void literal_sampler_arrays() {
+    const std::string fragment = "uniform sampler2D images[2]; void main(){gl_FragColor="
+        "texture2D(images[0],vec2(.25))+texture2D(images[1],vec2(.75));}";
+    auto normalized = normalize_program(vertex, fragment);
+    compile_and_reflect(normalized);
+    require(normalized.samplers.size() == 2 && normalized.samplers[0].name == "images[0]" &&
+        normalized.samplers[1].name == "images[1]", "literal sampler array retains public GLIR element names");
+    require(normalized.samplers[0].texture_binding != normalized.samplers[1].texture_binding &&
+        normalized.samplers[0].sampler_binding != normalized.samplers[1].sampler_binding,
+        "literal sampler array has distinct native texture/sampler resource pairs");
+    auto compiled = compile_vulkan_glsl(normalized.vertex, normalized.fragment);
+    require(compiled.ok, compiled.log);
+    for (const auto& sampler : normalized.samplers) {
+        for (uint32_t binding : {sampler.texture_binding, sampler.sampler_binding})
+            require(std::any_of(compiled.resource_usage.begin(), compiled.resource_usage.end(),
+                [&](const auto& resource) { return resource.binding == binding && resource.stage_mask == 2; }),
+                "real SPIR-V fragment reflection uses each array element resource");
+    }
+    for (const std::string spelling : {"0x1", "01", "1u", "1U"}) {
+        auto integer_index = normalize_program(vertex,
+            "uniform sampler2D images[2];void main(){gl_FragColor=texture2D(images[" + spelling + "],vec2(.5));}");
+        compile_and_reflect(integer_index);
+    }
+    auto fractional_index = normalize_program(vertex,
+        "uniform sampler2D images[2];void main(){gl_FragColor=texture2D(images[1.0],vec2(.5));}");
+    require(fractional_index.error.find("integer index") != std::string::npos,
+        "floating numeric prefixes cannot masquerade as literal integer array indices");
+    auto helper = normalize_program(vertex,
+        "uniform sampler2D images[2]; vec4 fetch(sampler2D image,vec2 uv){return texture2D(image,uv);}"
+        "void main(){gl_FragColor=fetch((images[0]),vec2(.25))+fetch(images[1],vec2(.75));}");
+    compile_and_reflect(helper);
+    auto shadowed = normalize_program(vertex,
+        "uniform sampler2D images[2]; struct Cell{vec4 images;};float local(float images){return images;}"
+        "void main(){Cell c;c.images=vec4(0);{float images=local(0.0);c.images+=vec4(images);}"
+        "gl_FragColor=texture2D(images[0],vec2(.25))+texture2D(images[1],vec2(.75))+c.images;}");
+    compile_and_reflect(shadowed);
+    auto shadow_sampler = normalize_program(vertex,
+        "uniform sampler2D images[2];vec4 fetch(sampler2D images,vec2 uv){return texture2D(images,uv);}"
+        "void main(){gl_FragColor=fetch(images[1],vec2(.5));}");
+    compile_and_reflect(shadow_sampler);
+    auto both = normalize_program(
+        "attribute vec2 a_position;uniform sampler2D images[2];void main(){gl_Position=vec4(a_position+texture2D(images[1],vec2(.25)).xy*.01,0,1);}",
+        fragment);
+    compile_and_reflect(both);
+    require(both.samplers.size() == 2, "same array declared in both stages shares resource pairs");
+    auto mismatch = normalize_program("uniform sampler2D images[3];void main(){gl_Position=vec4(0);}", fragment);
+    require(mismatch.error.find("stage sampler array lengths differ") != std::string::npos,
+        "stage array shape disagreement cannot alias an admitted resource graph");
+    auto dynamic = normalize_program(vertex,
+        "uniform sampler2D images[2];uniform int index;void main(){gl_FragColor=texture2D(images[index],vec2(.5));}");
+    require(dynamic.error.find("literal") != std::string::npos, "dynamic array index remains an explicit pending policy");
+    auto outside = normalize_program(vertex,
+        "uniform sampler2D images[2];void main(){gl_FragColor=texture2D(images[2],vec2(.5));}");
+    require(outside.error.find("declared length") != std::string::npos, "out-of-bounds sampler index refuses before code generation");
+    auto typed = normalize_program(vertex,
+        "uniform usampler2D images[2];void main(){gl_FragColor=vec4(texture(images[0],vec2(.5)));}");
+    require(typed.error.find("sampler arrays") != std::string::npos,
+        "typed sampler arrays are not silently admitted by the bounded floating-2D packet");
+}
+
+void explicit_single_level_sampling() {
+    for (bool base : {false, true}) for (const std::string function :
+        {"textureLod", "texture2DLod", "textureGrad", "texture2DGradEXT"}) {
+        const bool gradients = function.find("Grad") != std::string::npos;
+        const auto expression = function + "(image,vec2(.5)," +
+            (gradients ? "next_dx(),next_dy()" : "next_level()") + ')';
+        auto n = normalize_program(vertex,
+            "uniform sampler2D image;uniform float level;uniform vec2 gx,gy;float counter=0.;"
+            "float next_level(){counter+=1.;return level;}vec2 next_dx(){counter+=2.;return gx;}"
+            "vec2 next_dy(){counter+=3.;return gy;}void main(){gl_FragColor=" + expression + "+vec4(0,counter*.01,0,0);}",
+            NormalizeOptions{base});
+        compile_and_reflect(n);
+        const auto compiled = compile_vulkan_glsl(n.vertex, n.fragment);
+        require(compiled.ok, compiled.log);
+        std::unordered_set<uint32_t> calls;
+        for (size_t at=5;at<compiled.fragment.words.size();) {
+            const auto count=compiled.fragment.words[at]>>16;
+            if (spv::Op(compiled.fragment.words[at]&0xffffu)==spv::Op::OpFunctionCall)
+                calls.insert(compiled.fragment.words[at+2]);
+            at+=count;
+        }
+        size_t actual_samples=0;
+        for (size_t at=5;at<compiled.fragment.words.size();) {
+            const auto count=compiled.fragment.words[at]>>16;
+            if (spv::Op(compiled.fragment.words[at]&0xffffu)==spv::Op::OpImageSampleExplicitLod) {
+                const auto* args=compiled.fragment.words.data()+at+1;
+                if (gradients) {
+                    require(count==8 && args[4]==uint32_t(spv::ImageOperandsMask::Grad) &&
+                        calls.contains(args[5]) && calls.contains(args[6]),
+                        "real gradient sample consumes both evaluated helper results");
+                } else {
+                    require(count==7 && args[4]==uint32_t(spv::ImageOperandsMask::Lod) && calls.contains(args[5]),
+                        "real explicit LOD sample consumes its evaluated helper result, not a replacement zero");
+                }
+                ++actual_samples;
+            }
+            at+=count;
+        }
+        require(actual_samples==1, "one supplied explicit sampling operation survives normalization");
+    }
 }
 
 void sampling_policy() {
@@ -516,7 +620,7 @@ int main(int argc, char** argv) {
         boolean_scope_lowering();
         coordinate_entry();
         one_dimensional_sampling();
-        sampling_policy();
+        sampling_policy(); literal_sampler_arrays(); explicit_single_level_sampling();
         composer_diagnostics();
         composed_parameter_qualifiers();
         composed_sampler_parameters();

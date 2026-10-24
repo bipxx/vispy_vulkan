@@ -19,7 +19,7 @@ an OpenGL context.
 from copy import deepcopy
 import weakref
 
-from .glir import GlirQueue, BaseGlirParser, GlirParser, glir_logger
+from .glir import GlirQueue, BaseGlirParser, glir_logger
 from .dawn_parser import DawnGlirParser
 from .wrappers import BaseGlooFunctions
 from .. import config
@@ -96,6 +96,8 @@ class GLContext(BaseGlooFunctions):
     """
 
     def __init__(self, config=None, shared=None):
+        from . import gl
+        gl.use_gl()  # Validate configured aliases; never activate a GL loader.
         self._set_config(config)
         self._shared = shared if (shared is not None) else GLShared()
         assert isinstance(self._shared, GLShared)

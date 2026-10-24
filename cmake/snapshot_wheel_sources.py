@@ -57,7 +57,7 @@ def main() -> None:
     ignored = {"__pycache__", ".pytest_cache", ".git"}
     for relative in (
         "CMakeLists.txt", "CMakePresets.json", "pyproject.toml", "uv.lock", "README.md",
-        "LICENSE", "LICENSE-BSD", "LICENSING.md",
+        "LICENSE", "LICENSE-BSD", "LICENSING.md", "compat/runtime-package.json",
         "cmake", "cpp", "src", "third_party/licenses",
     ):
         base = runtime if runtime is not None and relative in {"cpp", "src"} else ROOT

@@ -1,0 +1,6 @@
+{
+  "schema": 1,
+  "managed_root": "build/work",
+  "max_scratch_bytes": 21474836480,
+  "min_free_bytes": 10737418240
+}

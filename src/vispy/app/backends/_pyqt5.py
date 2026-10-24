@@ -7,14 +7,10 @@
 import sys
 from .. import backends
 from ...util import logger
-from ... import config
 
-USE_EGL = config['gl_backend'].lower().startswith('es')
 
 try:
-    # Try importing (QtOpenGL first to fail without import QtCore)
-    if not USE_EGL:
-        from PyQt5 import QtOpenGL  # noqa
+    # The Dawn QWidget backend does not require QtOpenGL modules.
     from PyQt5 import QtGui, QtCore  # noqa
 except Exception as exp:
     # Fail: this backend cannot be used

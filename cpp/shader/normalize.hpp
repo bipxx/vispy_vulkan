@@ -42,9 +42,10 @@ struct ShaderValueType {
 bool shader_value_type(const std::string& type, ShaderValueType& value);
 
 struct NormalizeOptions {
-    // Explicit admission for runtime textures with one mip level. GLSL's
-    // implicit derivatives otherwise remain intact. Bias/LOD requests are
-    // rejected under this policy rather than silently discarded.
+    // Explicit admission for runtime textures with one mip level. Implicit
+    // reads may use LOD0; explicit LOD/gradient expressions retain evaluation
+    // and the actual sampler's min/mag selection. Bias remains a separate
+    // unsupported operation under this admission, never silently discarded.
     bool base_level_sampling = false;
     bool point_sprites = false;
     VertexIdentityPolicy vertex_identity = VertexIdentityPolicy::Native;

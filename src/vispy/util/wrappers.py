@@ -21,73 +21,28 @@ from .config import _get_args
 
 
 def use(app=None, gl=None):
-    """Set the usage options for vispy
+    """Select a Dawn-compatible application or GL-named interface.
 
-    Specify what app backend and GL backend to use.
-
-    Parameters
-    ----------
-    app : str
-        The app backend to use (case insensitive). Standard backends:
-            * 'PyQt4': use Qt widget toolkit via PyQt4.
-            * 'PyQt5': use Qt widget toolkit via PyQt5.
-            * 'PyQt6': use Qt widget toolkit via PyQt6.
-            * 'PySide': use Qt widget toolkit via PySide.
-            * 'PySide2': use Qt widget toolkit via PySide2.
-            * 'PySide6': use Qt widget toolkit via PySide6.
-            * 'PyGlet': use Pyglet backend.
-            * 'Glfw': use Glfw backend (successor of Glut). Widely available
-              on Linux.
-            * 'SDL2': use SDL v2 backend.
-            * 'osmesa': Use OSMesa backend
-        Additional backends:
-            * 'jupyter_rfb': show vispy canvases in Jupyter lab/notebook
-              (depends on the jupyter_rfb library).
-
-    gl : str
-        The gl backend to use (case insensitive). Options are:
-            * 'gl2': use Vispy's desktop OpenGL API.
-            * 'pyopengl2': use PyOpenGL's desktop OpenGL API. Mostly for
-              testing.
-            * 'es2': (TO COME) use real OpenGL ES 2.0 on Windows via Angle.
-              Availability of ES 2.0 is larger for Windows, since it relies
-              on DirectX.
-            * 'gl+': use the full OpenGL functionality available on
-              your system (via PyOpenGL).
-
-    Notes
-    -----
-    If the app option is given, ``vispy.app.use_app()`` is called. If
-    the gl option is given, ``vispy.gloo.use_gl()`` is called.
-
-    If an app backend name is provided, and that backend could not be
-    loaded, an error is raised.
-
-    If no backend name is provided, Vispy will first check if the GUI
-    toolkit corresponding to each backend is already imported, and try
-    that backend first. If this is unsuccessful, it will try the
-    'default_backend' provided in the vispy config. If still not
-    succesful, it will try each backend in a predetermined order.
-
-    See Also
-    --------
-    vispy.app.use_app
-    vispy.gloo.gl.use_gl
+    ``app`` selects PyQt5, PyQt6, PySide6, dawn_headless, or the supported
+    image-transport notebook backend. ``gl`` selects ``dawn``; ``gl2`` and
+    ``gl+`` are compatibility aliases and do not enable native OpenGL or
+    arbitrary GL extensions. Legacy context-based application and GL backends
+    fail explicitly rather than activating an OpenGL fallback.
     """
     if app is None and gl is None:
         raise TypeError('Must specify at least one of "app" or "gl".')
 
-    if app == 'osmesa':
-        from ..util.osmesa_gl import fix_osmesa_gl_lib
-        fix_osmesa_gl_lib()
-        if gl is not None:
-            raise ValueError("Do not specify gl when using osmesa")
+    if app is not None:
+        from ..app.backends import LEGACY_BACKEND_NAMES
+        if app.lower() in LEGACY_BACKEND_NAMES:
+            raise RuntimeError('Application backend %r requires an unported '
+                               'OpenGL context path.' % app)
 
     # Apply now
     if gl:
         from .. import gloo, config
-        config['gl_backend'] = gl
         gloo.gl.use_gl(gl)
+        config['gl_backend'] = gl
     if app:
         from ..app import use_app
         use_app(app)

@@ -621,10 +621,10 @@ std::shared_ptr<const GeneratedLineConsumerArtifact> build_generated_line_consum
         result->original = result->evaluator->original;
         result->policy_identity = generated_line_consumer_policy_identity(*result->evaluator, policy);
         const bool smooth = policy.coverage == LineCoveragePolicy::SmoothAnalytic;
-        if (policy.sample_count != 1 ||
-            !(smooth ? policy.coverage_identity == kSmoothLineCoverageIdentity :
-              policy.coverage == LineCoveragePolicy::AliasedMajorAxis && policy.coverage_identity == kAliasedLineCoverageIdentity))
-            return fail("explicit single-sample aliased or analytic-smooth policy required; reference-exact smooth/MSAA remain open");
+        if ((policy.sample_count != 1 && policy.sample_count != 4) ||
+            (!smooth && policy.coverage != LineCoveragePolicy::AliasedMajorAxis) ||
+            policy.coverage_identity != line_coverage_identity(smooth, policy.sample_count))
+            return fail("explicit one- or four-sample aliased or analytic-smooth policy required");
         const auto& evaluator_ref = *result->evaluator; const auto& original = *result->original;
         if (original.point_sprites || original.options.line_evaluator) return fail("original line render snapshot required");
         if (const auto error = fragment_context_error(original.spv_frag); !error.empty()) return fail(error);
@@ -672,7 +672,8 @@ std::shared_ptr<const GeneratedLineConsumerArtifact> build_generated_line_consum
             canonical_map.erase(canonical_map.begin() + first_line, canonical_map.begin() + first_line + removed_lines);
         }
         for (const auto& field : evaluator_ref.outputs) {
-            if (field.varying.centroid || field.varying.sample) return fail("centroid/sample interpolation remains open");
+            if ((field.varying.centroid || field.varying.sample) && policy.sample_count != 4)
+                return fail("centroid/sample interpolation requires the explicit four-sample policy");
             replace_one(fragment, varying_declaration(field.varying), private_declaration(field.varying));
         }
         FragmentHelpers helpers;
@@ -688,6 +689,17 @@ std::shared_ptr<const GeneratedLineConsumerArtifact> build_generated_line_consum
             "bool vispy_line_consumer_query_helper() {\n"
             "    return vispy_line_consumer_helper_invocation || helperInvocationEXT();\n}\n";
         auto suffix = fragment_main(evaluator_ref, helpers, policy.depth_output);
+        if (policy.sample_count == 4) {
+            // SampleId makes this a sample-rate fragment. On Vulkan FragCoord.xy
+            // then identifies the actual raster sample; no sample pattern is
+            // assumed or synthesized. The output mask retains just that sample.
+            // Keep this before original code so an explicit user sample mask can
+            // still narrow coverage, and preserve the deferred kill/derivatives.
+            const std::string depth_assignment = policy.depth_output ?
+                "    gl_FragDepth = depth;" : "    vispy_line_consumer_fragment_depth = depth;";
+            replace_one(suffix, depth_assignment,
+                "    gl_SampleMask[0] = int(1u << uint(gl_SampleID));\n" + depth_assignment);
+        }
         if (smooth) {
             replace_one(suffix,
                 "    bool vispy_line_consumer_covered = vispy_line_consumer_aliased(a, b, pixel, interval.y == 1.0);",
@@ -769,8 +781,9 @@ GeneratedLineConsumerDraw plan_generated_line_consumer_draw(
     lines::validate_line_draw_slice(selection, slice); state = lines::state(state.width, state.smooth);
     const bool smooth = artifact.policy.coverage == LineCoveragePolicy::SmoothAnalytic;
     if (state.smooth != smooth || (!smooth && artifact.policy.coverage != LineCoveragePolicy::AliasedMajorAxis) ||
-        artifact.policy.sample_count != 1)
-        throw std::invalid_argument("line consumer: runtime smoothing must match the compiled single-sample policy");
+        (artifact.policy.sample_count != 1 && artifact.policy.sample_count != 4) ||
+        artifact.policy.coverage_identity != line_coverage_identity(smooth, artifact.policy.sample_count))
+        throw std::invalid_argument("line consumer: runtime smoothing/samples must match the compiled coverage policy");
     GeneratedLineConsumerDraw draw;
     draw.parameters.viewport = {representable(viewport.x, "viewport x"), representable(viewport.y, "viewport y"),
         representable(viewport.width, "viewport width", true), representable(viewport.height, "viewport height", true)};

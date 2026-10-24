@@ -29,3 +29,15 @@ visuals/tests/test_image.py
 visuals/tests/test_instanced_mesh.py
 visuals/tests/test_mesh.py
 visuals/tests/test_volume.py
+
+# OpenGL-free Dawn facade, Qt QWidget imports, and backend selection.
+app/application.py
+app/backends/_offscreen_util.py
+app/backends/_pyqt5.py
+app/backends/_pyqt6.py
+app/backends/_pyside6.py
+gloo/gl/dawn.py
+gloo/gl/gl2.py
+gloo/gl/glplus.py
+util/config.py
+util/wrappers.py

@@ -1,0 +1,139 @@
+# Selected Qt runtime profiles
+
+The ordinary `vispy[pyqt6]` extra and `uv.lock` select upstream full Qt packages.
+They are not the strict runtime profile. Windows CPython 3.12 x64 selected
+profiles are available for PyQt6, PyQt5 and PySide6. Each binding and Linux
+profile has its own qualification row and cannot inherit another's results.
+
+`compat/qt/windows-pyqt6-no-opengl.json` lists every selected member from the exact
+upstream PyQt6 6.11.0 and Qt 6.11.2 wheels. It retains ten binding modules, the
+Windows platform plugin, ordinary image/style/network plugins, original notices
+and preferred-source URLs/hashes. Native QtGui, qwindows and all other selected
+native bytes remain unchanged. Optional QtOpenGL, OpenGL software renderers,
+QtQuick/QML and other unselected modules are omitted. The package versions have
+the explicit `+vispynogl.1` suffix; PyQt6 depends on that exact selected runtime.
+The SIP support wheel is unchanged and hash pinned.
+
+This profile does not disable every OpenGL-capable method inside stock QtGui.
+Its admitted Windows path renders with Vulkan offscreen and displays through
+QImage/QPainter. Native Win32 Vulkan presentation on the tested NVIDIA driver
+loads opengl32 and resolves WGL entry points inside the ICD; a Qt-free control
+reproduces that failure. Trimming optional modules cannot fix the driver path.
+
+Reproduce the package bundle from the manifest's hash-verified original wheel
+inputs, using the recorded Python 3.12.8 builder and zlib version:
+
+```powershell
+$env:PYTHONPATH = 'tools'
+python -B -m no_opengl.qt_profile --manifest compat/qt/windows-pyqt6-no-opengl.json --inputs <original-wheel-directory> --output <new-bundle-directory>
+```
+
+The tool emits deterministic wheels, a per-member/native-byte/notice provenance
+report and `requirements.txt`. Two local rebuilds produced identical wheel
+hashes. The checked-in strict requirements contain those exact hashes. Install
+the profile into a fresh consumer with its other pinned VisPy/host dependencies:
+
+```text
+uv pip install --python <consumer-python> --no-index --find-links <bundle-directory> --require-hashes -r compat/qt/windows-pyqt6-no-opengl-requirements.txt
+```
+
+Missing or different artifacts fail installation instead of falling back to
+stock Qt. Do not delete DLLs from a running or shared installation. After
+installation, run functional/native traces and the exact environment inventory
+receipt. A successful package build reports `BUILT_PROFILE_UNQUALIFIED`; it does
+not qualify any application or binding by itself. Existing OpenGL reference
+environments and original licenses remain separate and unchanged.
+
+The analogous `windows-pyqt5-no-opengl.json` and
+`windows-pyside6-no-opengl.json` manifests use the same producer and offline
+installation command, substituting their binding name in both paths. They
+retain the original pinned PyQt5 5.15.11 / Qt 5.15.2 and PySide6 / Qt 6.12.0
+versions respectively. PyQt5 provides nine selected modules because Qt5
+combines the SVG widget API in QtSvg. PySide6 provides all ten modules through
+Essentials; its selected metadata explicitly omits the Addons, PDF and
+WebEngine dependencies, whose modules are outside this QWidget profile.
+Shiboken and SIP support wheels remain unchanged. Every original notice from
+each selected input wheel is retained, with preferred source URLs and hashes
+recorded in the manifest. Repackaging does not replace their original licenses.
+
+Each bundle was rebuilt twice with identical wheel hashes, installed offline
+into a fresh environment and checked against every selected installed byte.
+All selected modules imported and an actual shown QWidget produced the
+expected captured pixel. Repeat this smoke check using the target consumer:
+
+```text
+<consumer-python> -I -B tools/no_opengl/qt_profile_smoke.py --binding pyqt5 --manifest compat/qt/windows-pyqt5-no-opengl.json --bundle <bundle-directory> --output <new-report.json>
+```
+
+Use `pyside6` for the other profile. `PASS_PROFILE_SMOKE` covers these package
+and widget checks; complete VisPy lifecycle, native execution/load observation
+and installed dependency receipts remain separate requirements.
+
+The Linux source profile is separate. It targets the recorded Ubuntu 24.04
+x86_64 ABI with CPython 3.12; its wheels deliberately make no manylinux claim.
+`compat/qt/linux-pyqt6-no-opengl.json` freezes each selected source-built byte,
+preferred source archives/build commands, native before/after relocation hashes,
+all 127 original notices and the tested 48-package system runtime inventory.
+Qt was built with OpenGL/EGL disabled. Ten PyQt modules were rebuilt, then only
+their copied RUNPATHs were rebased to `$ORIGIN/Qt6/lib`. Original build artifacts
+remain unchanged. Qt SONAME files are regular wheel members; redundant SDK and
+full-version aliases are omitted.
+
+This build provides XCB and Vulkan. Wayland, QtNetwork SSL/DTLS, CUPS printing
+and the optional X11 AT-SPI bridge are absent; the manifest records those build
+choices. Do not infer arbitrary toolkit functionality from a module import.
+The package producer verifies the relocated bundle and source receipts:
+
+```text
+PYTHONPATH=tools python -B -m no_opengl.qt_linux_profile --manifest compat/qt/linux-pyqt6-no-opengl.json --bundle <portable-bundle> --receipts <source-build-receipt-directory> --inputs <original-SIP-wheel-directory> --output <new-bundle-directory>
+```
+
+The resulting bundle includes exact Python package requirements and tested
+system package version pins. Install its required system libraries into the
+fresh target, then install the wheels using `--no-index --find-links <bundle>
+--require-hashes -r compat/qt/linux-pyqt6-no-opengl-requirements.txt`. Missing
+artifacts or versions must fail instead of selecting upstream full Qt. The
+source-profile producer reports `BUILT_SOURCE_PROFILE_UNQUALIFIED` until the
+fresh installed X11/host environment passes its functional and native gates.
+
+`linux-pyside6-no-opengl.json` uses the same producer for exact Qt 6.12.0,
+PySide6 6.12.0 and source-built Shiboken. Its three local-version wheels are
+`pyside6`, `pyside6-qt6` and `shiboken6`; no upstream Essentials/Addons/PDF/
+WebEngine fallback is selected. The CPython 3.12 / Ubuntu 24.04 ABI restriction
+also applies here. Use its matching hash requirements with the offline install
+command above. `--inputs` may point to an existing empty directory because this
+profile has no unchanged support-wheel input. Its recorded package builder is
+Python 3.12.8 with zlib 1.3.1; two archive builds produced identical hashes.
+
+This payload contains 50 ELF files, 50 pinned system runtime packages, ten
+selected binding modules, and 136 original license/attribution notices.
+Thirteen copied DSOs have recorded relative RUNPATH changes; original compiled
+inputs remain unchanged. The source build uses the exact preferred archives
+plus the declared 1497-byte
+`patches/pyside612-disabled-feature-wrapper-lists.patch`. Applying it with
+`patch -p1` fixes two build-list entries for classes already absent from the
+chosen configuration. It changes no feature flags and invents no API classes.
+The original BSD-3-Clause header, original CMake file, patch and before/after
+hashes are retained. These three source-patch records accompany all original
+notices in the wheels; the AGPL package producer does not relabel upstream code.
+Qt OpenGL/EGL and QtNetwork SSL/DTLS are disabled, while XCB/Vulkan are enabled.
+Portable import, QWidget capture and SVG smoke results are source-build
+evidence; installed mapped VisPy/native-gate qualification remains separate.
+
+`linux-pyqt5-no-opengl.json` packages source-built Qt 5.15.19 and PyQt5 5.15.11
+with nine binding modules, 43 selected source-built ELF files, 93 original
+notices and the source bundle's attribution index. Its third wheel is the exact
+unchanged official PyQt5-sip 12.20.0 input, giving 44 native payloads in total.
+The SIP bytes match the recorded original module before portable relocation;
+the profile excludes that copy's unnecessary SIP RUNPATH edit. Raw and portable
+inputs remain unchanged and both hashes are retained in the manifest.
+
+Qt5 OpenGL/EGL, SSL, Wayland, the X11 AT-SPI bridge and Qt's own Vulkan support
+are disabled in this minimal build. VisPy still renders through its independent
+Dawn Vulkan backend; Qt toolkit Vulkan support is not required or claimed.
+No preferred-source patch is needed. The producer uses the same command above
+with the PyQt5 manifest/bundle/receipts and the exact SIP input directory.
+Its 47 install pins are derived only from the captured package, architecture
+and version records; the original receipt remains separately hash pinned.
+Use `linux-pyqt5-no-opengl-requirements.txt` for offline installation. The
+installed mapped QWidget and native three-gate replay remain required.

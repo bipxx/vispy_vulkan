@@ -1,0 +1,4 @@
+# Strict Windows CPython 3.12 x64 Qt profile; use --no-index --find-links <bundle> --require-hashes.
+pyqt6==6.11.0+vispynogl.1 --hash=sha256:4d35aa3105f7a7ec3756419aa98ef5493be86f85550544521656f7ea8fa85d20
+pyqt6-qt6==6.11.2+vispynogl.1 --hash=sha256:bd08a6c93c10655aa78a529b520b85682a39c6466b384f32c0589d3f35602716
+pyqt6-sip==13.13.0 --hash=sha256:c6b67d301ef64e13d313c728020616315c952473abb27029b2e5857b44a7b3e6

@@ -357,12 +357,46 @@ void interpreter_texture_dimensions() {
     require(prepare_region(allocation, patch).bytes == patch.bytes, "partial1D upload region bytes");
 }
 
+void depth_upload_conversion() {
+    TextureData data;
+    data.format = data.internal_format = "depth_component";
+    data.width = 4; data.height = 1; data.channels = 1;
+    apply_texture_data(data, blob<float>({-.5f, .25f, .75f, 2.f}, {1, 4, 1}, "f32"), {0, 0});
+    const auto prepared = prepare_texture(data);
+    require(prepared.format == wgpu::TextureFormat::R32Float && prepared.texel_size == 4,
+        "depth upload uses portable R32Float staging rather than forbidden buffer-to-depth copy");
+    for (int n = 0; n < 4; ++n) {
+        const float expected[] = {0, .25f, .75f, 1};
+        require(texture_detail::load<float>(prepared.bytes.data() + n * 4) == expected[n], "depth float transfer/clamp");
+    }
+    const auto allocation = data;
+    apply_texture_data(data, blob<uint8_t>({255, 0}, {1, 2, 1}, "u8"), {0, 1}, &allocation);
+    const auto mixed = prepare_texture(data, &allocation);
+    const float expected[] = {0, 1, 0, 1};
+    for (int n = 0; n < 4; ++n)
+        require(texture_detail::load<float>(mixed.bytes.data() + n * 4) == expected[n], "mixed partial depth shadow conversion");
+    const auto patch = prepare_region(allocation, blob<uint16_t>({0, 65535}, {1, 2, 1}, "u16"));
+    require(texture_detail::load<float>(patch.bytes.data()) == 0 &&
+            texture_detail::load<float>(patch.bytes.data() + 4) == 1, "depth region uint normalization");
+    data.internal_format = "r32f";
+    rejects([&] { prepare_texture(data); }, "depth cannot silently allocate color storage");
+    data.internal_format = "depth_component"; data.dimensions = 3;
+    rejects([&] { prepare_texture(data); }, "3D depth upload is outside this 2D contract");
+}
+
 void sampler_contracts() {
     TextureData data;
     data.min_filter = "linear"; data.mag_filter = "nearest";
     data.wrapping = {"repeat", "mirrored_repeat"};
     auto descriptor = prepare_sampler_descriptor(data);
     require(descriptor.minFilter == wgpu::FilterMode::Linear && descriptor.magFilter == wgpu::FilterMode::Nearest, "separate min/mag filters");
+    require(descriptor.lodMinClamp == 0 && descriptor.lodMaxClamp == .25f &&
+        descriptor.mipmapFilter == wgpu::MipmapFilterMode::Nearest,
+        "non-mip filtering preserves unequal min/mag selection without accessing mip one");
+    data.mag_filter = "linear";
+    auto equal_filters = prepare_sampler_descriptor(data);
+    require(equal_filters.lodMaxClamp == 0, "equal filters retain the exact zero LOD clamp");
+    data.mag_filter = "nearest";
     require(descriptor.addressModeU == wgpu::AddressMode::Repeat && descriptor.addressModeV == wgpu::AddressMode::MirrorRepeat, "2D wrapping contract");
     data.dimensions = 3; data.wrapping = {"clamp_to_edge", "repeat", "mirrored_repeat"};
     descriptor = prepare_sampler_descriptor(data);
@@ -377,7 +411,7 @@ void sampler_contracts() {
 int main() {
     try {
         interpreter_texture_dimensions();
-        unsized_storage(); partial_regions(); scientific_formats(); channel_semantics(); fixed_allocation_conversion(); region_conversion(); mixed_source_partial_shadow(); mixed_storage_roundtrip(); sampler_contracts();
+        unsized_storage(); partial_regions(); scientific_formats(); channel_semantics(); fixed_allocation_conversion(); region_conversion(); mixed_source_partial_shadow(); mixed_storage_roundtrip(); sampler_contracts(); depth_upload_conversion();
         vispy::texture_contracts::full_upload_equivalence_contract();
         std::cout << "texture allocation, partial upload, scientific format, channel, and sampler contracts passed\n";
         return 0;

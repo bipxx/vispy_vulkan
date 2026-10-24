@@ -1,0 +1,3773 @@
+{
+  "schema": 1,
+  "profile": "linux-pyqt5-source-no-opengl-v1",
+  "platform": "linux_x86_64",
+  "python_profile": "CPython 3.12 x86_64; Ubuntu 24.04 ABI; WSL software Vulkan/X11 initial target",
+  "scope": "Exact Qt5.15.19/PyQt5.15.11 source build plus unchanged official PyQt5-sip12.20.0; independent Dawn Vulkan rendering, no QtVulkan API claim; repeatable archive packaging from exact relocated source bytes.",
+  "features": {
+    "opengl": false,
+    "egl": false,
+    "xcb": true,
+    "vulkan": false,
+    "qt_network_ssl": false,
+    "qt_network_dtls": false,
+    "wayland": false,
+    "x11_at_spi_bridge": false,
+    "dawn_vulkan_renderer_independent": true
+  },
+  "generated_feature_headers": {
+    "QtGui": {
+      "relative": "include/QtGui/qtgui-config.h",
+      "sha256": "1b14190a395c5fd508c45a6426b67287711e74dcdfc0431a653fdc49008ffffa"
+    },
+    "QtGui-private": {
+      "relative": "include/QtGui/5.15.19/QtGui/private/qtgui-config_p.h",
+      "sha256": "8cb265ede9bd695de6c4cc32b6dafef3d90923d0965d3e2506eaaa881d18a522"
+    },
+    "QtNetwork": {
+      "relative": "include/QtNetwork/qtnetwork-config.h",
+      "sha256": "4ca7af1d868a56f4a309a746e73aec45bb2e1ea3a6dbfcb9b79ed80db3f2a0bd"
+    }
+  },
+  "modules": [
+    "Core",
+    "DBus",
+    "Gui",
+    "Network",
+    "PrintSupport",
+    "Svg",
+    "Test",
+    "Widgets",
+    "Xml"
+  ],
+  "preferred_sources": [
+    {
+      "url": "https://download.qt.io/archive/qt/5.15/5.15.19/submodules/qtbase-everywhere-opensource-src-5.15.19.tar.xz",
+      "sha256": "51e91c73abacab81e64efd01bf95794e79c0e605ad80947a024769f0dd620a32",
+      "expected_sha256": "51e91c73abacab81e64efd01bf95794e79c0e605ad80947a024769f0dd620a32",
+      "bytes": 51588440,
+      "path": "/home/heq/vispy-no-opengl-qt-build-1/additional-bindings-1/qtbase-everywhere-opensource-src-5.15.19.tar.xz",
+      "source": "/home/heq/vispy-no-opengl-qt-build-1/additional-bindings-1/qtbase-everywhere-src-5.15.19"
+    },
+    {
+      "url": "https://download.qt.io/archive/qt/5.15/5.15.19/submodules/qtsvg-everywhere-opensource-src-5.15.19.tar.xz",
+      "sha256": "cabc95fc12fa84c92e95f08660742a0ce297e6db3deadbefbe7fbec4769b8c13",
+      "expected_sha256": "cabc95fc12fa84c92e95f08660742a0ce297e6db3deadbefbe7fbec4769b8c13",
+      "bytes": 1867700,
+      "path": "/home/heq/vispy-no-opengl-qt-build-1/additional-bindings-1/qtsvg-everywhere-opensource-src-5.15.19.tar.xz",
+      "source": "/home/heq/vispy-no-opengl-qt-build-1/additional-bindings-1/qtsvg-everywhere-src-5.15.19"
+    },
+    {
+      "url": "https://files.pythonhosted.org/packages/0e/07/c9ed0bd428df6f87183fca565a79fee19fa7c88c7f00a7f011ab4379e77a/PyQt5-5.15.11.tar.gz",
+      "sha256": "fda45743ebb4a27b4b1a51c6d8ef455c4c1b5d610c90d2934c7802b5c1557c52",
+      "expected_sha256": "fda45743ebb4a27b4b1a51c6d8ef455c4c1b5d610c90d2934c7802b5c1557c52",
+      "bytes": 3216775,
+      "path": "/home/heq/vispy-no-opengl-qt-build-1/additional-bindings-1/PyQt5-5.15.11.tar.gz",
+      "source": "/home/heq/vispy-no-opengl-qt-build-1/additional-bindings-1/PyQt5-5.15.11"
+    },
+    {
+      "component": "PyQt5-sip",
+      "url": "https://files.pythonhosted.org/packages/cd/ab/835df8e6fb06a618a4b8664765c5598e933c8113e90448e294549c9447f7/pyqt5_sip-12.20.0.tar.gz",
+      "sha256": "93e0622791f8d22cd4a32a29edfdd2ef6d6680f4c47f59b03ebf1c5da3c3e896"
+    }
+  ],
+  "preferred_source_patches": [],
+  "source_receipts": [
+    {
+      "file": "pyqt515-portable-copy.json",
+      "sha256": "9ad2546f61f6b3efdd70c854231b49e55bfb0fcd4e188e21fa541369f48a7e57"
+    },
+    {
+      "file": "pyqt515-portable-relocation.json",
+      "sha256": "4b97a293b889a80230750dea7fdfa69b43bee9b49a746f8fe7ac6f72d46358f4"
+    },
+    {
+      "file": "pyqt515-portable-runtime-closure.json",
+      "sha256": "540b7ba46f6e43937df085da100add66d6dc50104fe02e27dbe3016a7f28c4a4"
+    },
+    {
+      "file": "pyqt515-portable-binding-smoke.json",
+      "sha256": "cfad34889898c2908b7251286a5902bfb8d98a4309fcaaf58eb8681a9572dccf"
+    },
+    {
+      "file": "pyqt515-runtime-apt-versions.json",
+      "sha256": "383ad965159befebe86bc9d772beaed12f2be06de93aac9fc84e55b09a153e49"
+    },
+    {
+      "file": "pyqt515-build-handoff.json",
+      "sha256": "d813549414786e69d2fce60b786af488ea90614f45d89e2743d4569a672ab29e"
+    },
+    {
+      "file": "qt5-attempt1-results.json",
+      "sha256": "397d549eb4f293e8d5d225dd72252ef48bc9554d3176b5b720599b8ce3b93509"
+    },
+    {
+      "file": "qt5-configure-command-2.json",
+      "sha256": "c0684c575e406f8213aa254d39820ea8ee2a4788233ac226efcd93b45b57d95b"
+    },
+    {
+      "file": "pyqt5-attempt1-results.json",
+      "sha256": "b87b3b908ef09a3e6a2f53019f7648a48190bccf386030e2bb86d539fa0cf828"
+    },
+    {
+      "file": "pyqt5-build-env-command.json",
+      "sha256": "dc72c63584a3ddc456d53f1fd73977946f106aabd936ad9185cefc7637fc30a1"
+    }
+  ],
+  "original_notice_count": 93,
+  "notices": [
+    {
+      "relative": "PyQt5-5.15.11/LICENSE",
+      "source": "licenses/PyQt5-5.15.11/LICENSE",
+      "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "pyqt5_sip-12.20.0.dist-info/METADATA",
+      "source": "licenses/pyqt5_sip-12.20.0.dist-info/METADATA",
+      "sha256": "fc74186cc2a02c9b6650a50e1de2e07f7bb2b35a16f8a21c870fbc168e0f3f7f",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "pyqt5_sip-12.20.0.dist-info/WHEEL",
+      "source": "licenses/pyqt5_sip-12.20.0.dist-info/WHEEL",
+      "sha256": "c4ded6d408f350ae853e48e461e85413733b55ff08ce8e0b1749b562200efc4e",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "pyqt5_sip-12.20.0.dist-info/licenses/LICENSE",
+      "source": "licenses/pyqt5_sip-12.20.0.dist-info/licenses/LICENSE",
+      "sha256": "3e6f5b427c36f94ecf86bc01698af7030a1ed6eb3748110d5dbb8d142d804611",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-5.15.19/LICENSE.FDL",
+      "source": "licenses/qtbase-everywhere-src-5.15.19/LICENSE.FDL",
+      "sha256": "ed8742a95cb9db653a09b050e27ccff5e67ba69c14aa2c3137f2a4e1892f6c0d",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-5.15.19/LICENSE.GPL2",
+      "source": "licenses/qtbase-everywhere-src-5.15.19/LICENSE.GPL2",
+      "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-5.15.19/LICENSE.GPL3",
+      "source": "licenses/qtbase-everywhere-src-5.15.19/LICENSE.GPL3",
+      "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-5.15.19/LICENSE.GPL3-EXCEPT",
+      "source": "licenses/qtbase-everywhere-src-5.15.19/LICENSE.GPL3-EXCEPT",
+      "sha256": "0dbe024961f6ab5c52689cbd036c977975d0d0f6a67ff97762d96cb819dd5652",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-5.15.19/LICENSE.LGPL3",
+      "source": "licenses/qtbase-everywhere-src-5.15.19/LICENSE.LGPL3",
+      "sha256": "da7eabb7bafdf7d3ae5e9f223aa5bdc1eece45ac569dc21b3b037520b4464768",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-5.15.19/LICENSE.LGPLv3",
+      "source": "licenses/qtbase-everywhere-src-5.15.19/LICENSE.LGPLv3",
+      "sha256": "88ec689407cf2df9b2eb5c45952564d51ce73c129a3bdffb15c0d2d161ad7558",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-5.15.19/LICENSE.QT-LICENSE-AGREEMENT",
+      "source": "licenses/qtbase-everywhere-src-5.15.19/LICENSE.QT-LICENSE-AGREEMENT",
+      "sha256": "cdedb2eb6e7c4ea8d41da6dc17120607cc88a40ab1f8a5a6c34497b703c90336",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-5.15.19/src/3rdparty/VulkanMemoryAllocator/LICENSE.txt",
+      "source": "licenses/qtbase-everywhere-src-5.15.19/src/3rdparty/VulkanMemoryAllocator/LICENSE.txt",
+      "sha256": "e21477eed484b07902a861a1b18d1e4ecd3e6f22fa81e2410f0770cfb67290e8",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-5.15.19/src/3rdparty/VulkanMemoryAllocator/qt_attribution.json",
+      "source": "licenses/qtbase-everywhere-src-5.15.19/src/3rdparty/VulkanMemoryAllocator/qt_attribution.json",
+      "sha256": "c53feebd09f9c62ddb1b333fa65e805589f5a888790b88c8e61bba483741999c",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-5.15.19/src/3rdparty/android/LICENSE",
+      "source": "licenses/qtbase-everywhere-src-5.15.19/src/3rdparty/android/LICENSE",
+      "sha256": "4a51cf7f724f51bedb5fa4f9583a2762f1db8d05e43a577e2487c7aab2fdce18",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-5.15.19/src/3rdparty/android/qt_attribution.json",
+      "source": "licenses/qtbase-everywhere-src-5.15.19/src/3rdparty/android/qt_attribution.json",
+      "sha256": "280ad3f07024dcaa1ae833aa945dd0c575861109f8b7bed49af0a452809c9800",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-5.15.19/src/3rdparty/angle/AUTHORS",
+      "source": "licenses/qtbase-everywhere-src-5.15.19/src/3rdparty/angle/AUTHORS",
+      "sha256": "b7d6f4998eca5eb7b754ac383d5584efa5e628419d805d6ab65181f61cc77682",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-5.15.19/src/3rdparty/angle/LICENSE",
+      "source": "licenses/qtbase-everywhere-src-5.15.19/src/3rdparty/angle/LICENSE",
+      "sha256": "77af9c9fc2710ee66b8282291a9392a9a61f1d5b3ad6e478d0b6c544de5f9aca",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-5.15.19/src/3rdparty/angle/qt_attribution.json",
+      "source": "licenses/qtbase-everywhere-src-5.15.19/src/3rdparty/angle/qt_attribution.json",
+      "sha256": "c04e5a710498ce5a8b370b9f75f16cdbbf9eed3dbbc9738a698d656850084595",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-5.15.19/src/3rdparty/angle/src/common/third_party/smhasher/LICENSE",
+      "source": "licenses/qtbase-everywhere-src-5.15.19/src/3rdparty/angle/src/common/third_party/smhasher/LICENSE",
+      "sha256": "3f6f1b520bc53e878ccbb698ad0bacef3752a5f4e4b50a26552bd70f60b40748",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-5.15.19/src/3rdparty/angle/src/third_party/compiler/LICENSE",
+      "source": "licenses/qtbase-everywhere-src-5.15.19/src/3rdparty/angle/src/third_party/compiler/LICENSE",
+      "sha256": "a08ba10adec47027ef8078848729837b1c5a42f140718d7afd65c23f1eeec392",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-5.15.19/src/3rdparty/angle/src/third_party/libXNVCtrl/LICENSE",
+      "source": "licenses/qtbase-everywhere-src-5.15.19/src/3rdparty/angle/src/third_party/libXNVCtrl/LICENSE",
+      "sha256": "31346421254a3e6e12687cf17f19f6357ee73a617fa7b3d3ccefdcbabe49bdd3",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-5.15.19/src/3rdparty/double-conversion/LICENSE",
+      "source": "licenses/qtbase-everywhere-src-5.15.19/src/3rdparty/double-conversion/LICENSE",
+      "sha256": "4af93c12062c58058378de2397dc1c92bbff9ddfb1d583a01c84127557ce97ca",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-5.15.19/src/3rdparty/double-conversion/qt_attribution.json",
+      "source": "licenses/qtbase-everywhere-src-5.15.19/src/3rdparty/double-conversion/qt_attribution.json",
+      "sha256": "fbf846074dc3fd6eb9e5d4fe75a268dcac3364c9d8db5ed715112c6da307d793",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-5.15.19/src/3rdparty/easing/LICENSE",
+      "source": "licenses/qtbase-everywhere-src-5.15.19/src/3rdparty/easing/LICENSE",
+      "sha256": "92fac99458f1754b73edf50f9c9983e0efaa06ad96e2afd5e538c79f45b4b191",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-5.15.19/src/3rdparty/easing/qt_attribution.json",
+      "source": "licenses/qtbase-everywhere-src-5.15.19/src/3rdparty/easing/qt_attribution.json",
+      "sha256": "a84396684cf6ac348fe953579cbaf3e72e87d43717ea4a9e00069d06afb61fa3",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-5.15.19/src/3rdparty/forkfd/LICENSE",
+      "source": "licenses/qtbase-everywhere-src-5.15.19/src/3rdparty/forkfd/LICENSE",
+      "sha256": "d0d683ae18e78fbef90eb41168fb781920da2d12bf80704490f0882915c18ae0",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-5.15.19/src/3rdparty/forkfd/qt_attribution.json",
+      "source": "licenses/qtbase-everywhere-src-5.15.19/src/3rdparty/forkfd/qt_attribution.json",
+      "sha256": "ef8712b7bcc60b99b7de14754e023053ab9820a053b3f3b5d24b0e80a971d87b",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-5.15.19/src/3rdparty/freebsd/LICENSE",
+      "source": "licenses/qtbase-everywhere-src-5.15.19/src/3rdparty/freebsd/LICENSE",
+      "sha256": "dc2caba29eb862f6c1720aecb18e16f4e19d61227ee408be37fb0e9c3d00994f",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-5.15.19/src/3rdparty/freebsd/qt_attribution.json",
+      "source": "licenses/qtbase-everywhere-src-5.15.19/src/3rdparty/freebsd/qt_attribution.json",
+      "sha256": "49ab2d008b0f1c9ce762611bd043c951f8b9499487d772c4ddc2e003bc9bfa3c",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-5.15.19/src/3rdparty/freetype/LICENSE.txt",
+      "source": "licenses/qtbase-everywhere-src-5.15.19/src/3rdparty/freetype/LICENSE.txt",
+      "sha256": "bf543cdda11864477b8d2ca2aa9afc2aaa8f9133461b4d962ed6ec73646256a1",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-5.15.19/src/3rdparty/freetype/qt_attribution.json",
+      "source": "licenses/qtbase-everywhere-src-5.15.19/src/3rdparty/freetype/qt_attribution.json",
+      "sha256": "fcfe62c1da38e7fad98ee203d9a45b8294706b51011bba02af151805d3c905c2",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-5.15.19/src/3rdparty/gradle/LICENSE",
+      "source": "licenses/qtbase-everywhere-src-5.15.19/src/3rdparty/gradle/LICENSE",
+      "sha256": "e5bfcf1132c8e12c3fce87d4dfbcb543cfb7202d8fa28ba85c07132e30836437",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-5.15.19/src/3rdparty/gradle/qt_attribution.json",
+      "source": "licenses/qtbase-everywhere-src-5.15.19/src/3rdparty/gradle/qt_attribution.json",
+      "sha256": "d78bfa22f58c63e9bc083570d7f7b9696f312f3e44a1f5d06de51af7a4827caa",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-5.15.19/src/3rdparty/harfbuzz/AUTHORS",
+      "source": "licenses/qtbase-everywhere-src-5.15.19/src/3rdparty/harfbuzz/AUTHORS",
+      "sha256": "a78bc97c61f5ee2a999136ea6b210e962ea235a7359d7603391952e702c38556",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-5.15.19/src/3rdparty/harfbuzz/COPYING",
+      "source": "licenses/qtbase-everywhere-src-5.15.19/src/3rdparty/harfbuzz/COPYING",
+      "sha256": "ed7c20569a8f7daa06d2032b21bf240c5b6d8a0acb572d775bc6e78e61811191",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-5.15.19/src/3rdparty/harfbuzz/qt_attribution.json",
+      "source": "licenses/qtbase-everywhere-src-5.15.19/src/3rdparty/harfbuzz/qt_attribution.json",
+      "sha256": "a5a14caf3f79ed780941d2de5a583b6d0e0052bb0ac754cc65b75f801d59bc9e",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-5.15.19/src/3rdparty/harfbuzz-ng/AUTHORS",
+      "source": "licenses/qtbase-everywhere-src-5.15.19/src/3rdparty/harfbuzz-ng/AUTHORS",
+      "sha256": "19bfe8f5ed100636cd24ab0c90a3f71c21d8b02d9ba00719447a0faab364d49f",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-5.15.19/src/3rdparty/harfbuzz-ng/COPYING",
+      "source": "licenses/qtbase-everywhere-src-5.15.19/src/3rdparty/harfbuzz-ng/COPYING",
+      "sha256": "ba8f810f2455c2f08e2d56bb49b72f37fcf68f1f4fade38977cfd7372050ad64",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-5.15.19/src/3rdparty/harfbuzz-ng/qt_attribution.json",
+      "source": "licenses/qtbase-everywhere-src-5.15.19/src/3rdparty/harfbuzz-ng/qt_attribution.json",
+      "sha256": "e2aadd276024fd63b529cef5826d84be78468d5ec2887d36f0d06af41000907c",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-5.15.19/src/3rdparty/iaccessible2/LICENSE",
+      "source": "licenses/qtbase-everywhere-src-5.15.19/src/3rdparty/iaccessible2/LICENSE",
+      "sha256": "603fb8e9a443c95cb56c0e458a0ad17fdcadfc5bbb7e580d2199ee0145882746",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-5.15.19/src/3rdparty/iaccessible2/qt_attribution.json",
+      "source": "licenses/qtbase-everywhere-src-5.15.19/src/3rdparty/iaccessible2/qt_attribution.json",
+      "sha256": "ec98fa966c4955a1fad114f9b27555d9d8763d1fa50a4cee9d6dd87510c53b7a",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-5.15.19/src/3rdparty/icc/LICENSE.txt",
+      "source": "licenses/qtbase-everywhere-src-5.15.19/src/3rdparty/icc/LICENSE.txt",
+      "sha256": "9e34ff47b3a44814e183342e7e198d127a6740e29d20e8381fba7688dafc79dd",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-5.15.19/src/3rdparty/icc/qt_attribution.json",
+      "source": "licenses/qtbase-everywhere-src-5.15.19/src/3rdparty/icc/qt_attribution.json",
+      "sha256": "3099ef5b1b1d0d24d7783e42a80a26721949fedc9d2353f3c04e3befc0e8e6c0",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-5.15.19/src/3rdparty/libjpeg/COPYRIGHT.txt",
+      "source": "licenses/qtbase-everywhere-src-5.15.19/src/3rdparty/libjpeg/COPYRIGHT.txt",
+      "sha256": "f26a2c0b6c1ab7e40444de31cc5b112a534cc589d6fd9b93620054e9692b81c6",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-5.15.19/src/3rdparty/libjpeg/LICENSE",
+      "source": "licenses/qtbase-everywhere-src-5.15.19/src/3rdparty/libjpeg/LICENSE",
+      "sha256": "96f5b328adbb78eeaaec6980d73fd558cb1e4d62560ed615646bc3cf5e532430",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-5.15.19/src/3rdparty/libjpeg/qt_attribution.json",
+      "source": "licenses/qtbase-everywhere-src-5.15.19/src/3rdparty/libjpeg/qt_attribution.json",
+      "sha256": "6a6c137f849fa6ba83749150c4834efe0fb7e1ba836bfe1509bd5a1ad9ad4ce5",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-5.15.19/src/3rdparty/libpng/LICENSE",
+      "source": "licenses/qtbase-everywhere-src-5.15.19/src/3rdparty/libpng/LICENSE",
+      "sha256": "16d9daaafbf63a31a5bdc91d4600972548fef5aaa1244202393288dbd079c49a",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-5.15.19/src/3rdparty/libpng/qt_attribution.json",
+      "source": "licenses/qtbase-everywhere-src-5.15.19/src/3rdparty/libpng/qt_attribution.json",
+      "sha256": "2970938574023e02b60b5b7c75d21e11b7e4476cdc2c1a5386b01ac5bc678943",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-5.15.19/src/3rdparty/md4/qt_attribution.json",
+      "source": "licenses/qtbase-everywhere-src-5.15.19/src/3rdparty/md4/qt_attribution.json",
+      "sha256": "f4f774b80cee07a56b8190831174e95e9431bc91fac7f7d0e5f0649253024d95",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-5.15.19/src/3rdparty/md4c/LICENSE.md",
+      "source": "licenses/qtbase-everywhere-src-5.15.19/src/3rdparty/md4c/LICENSE.md",
+      "sha256": "51cb6ce22ad3ab29ad12fe8586184e89cee5cc610513b8007b57b75f640333a1",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-5.15.19/src/3rdparty/md4c/qt_attribution.json",
+      "source": "licenses/qtbase-everywhere-src-5.15.19/src/3rdparty/md4c/qt_attribution.json",
+      "sha256": "c2aebbf47a4352652aac0869745129d8d9995fb96bf2566efb3ddda0ac33416e",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-5.15.19/src/3rdparty/md5/qt_attribution.json",
+      "source": "licenses/qtbase-everywhere-src-5.15.19/src/3rdparty/md5/qt_attribution.json",
+      "sha256": "99d59714bacbaa0cff17ed821ae65832a7ba9129420d9c49049d19d3594bf007",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-5.15.19/src/3rdparty/pcre2/AUTHORS.md",
+      "source": "licenses/qtbase-everywhere-src-5.15.19/src/3rdparty/pcre2/AUTHORS.md",
+      "sha256": "1bbf636fa9d7e863bd524af8a3d7229d0c8f88ad740b20f866f25cefaca98fb7",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-5.15.19/src/3rdparty/pcre2/LICENCE-SLJIT",
+      "source": "licenses/qtbase-everywhere-src-5.15.19/src/3rdparty/pcre2/LICENCE-SLJIT",
+      "sha256": "5f216505c0f6ea3273caec89e766eef93cdeb7bbb0c429f9360116d7c938feeb",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-5.15.19/src/3rdparty/pcre2/LICENCE.md",
+      "source": "licenses/qtbase-everywhere-src-5.15.19/src/3rdparty/pcre2/LICENCE.md",
+      "sha256": "9cf7ac6976099a1d856826d3ef1b093bd6b84489dc6100628ac79e740cf9885a",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-5.15.19/src/3rdparty/pcre2/qt_attribution.json",
+      "source": "licenses/qtbase-everywhere-src-5.15.19/src/3rdparty/pcre2/qt_attribution.json",
+      "sha256": "2a623fc27125fef80cbbce19caf02612366befe6feac5c8ad48efe77e0f791ba",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-5.15.19/src/3rdparty/pixman/LICENSE",
+      "source": "licenses/qtbase-everywhere-src-5.15.19/src/3rdparty/pixman/LICENSE",
+      "sha256": "942c4f2a80394d3f53599b8382e9f27349b95c45d92b69b84f26d404f4dd74a5",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-5.15.19/src/3rdparty/pixman/qt_attribution.json",
+      "source": "licenses/qtbase-everywhere-src-5.15.19/src/3rdparty/pixman/qt_attribution.json",
+      "sha256": "46f11c249deb2191fe949f260dde687715024ce9b2f4781bc18e0057e3bd1d87",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-5.15.19/src/3rdparty/rfc6234/LICENSE",
+      "source": "licenses/qtbase-everywhere-src-5.15.19/src/3rdparty/rfc6234/LICENSE",
+      "sha256": "7ccebd514aaabc86192f957d773cebf06577c12fe9f25ecd419c6cac5da7a14c",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-5.15.19/src/3rdparty/rfc6234/qt_attribution.json",
+      "source": "licenses/qtbase-everywhere-src-5.15.19/src/3rdparty/rfc6234/qt_attribution.json",
+      "sha256": "ff74cc750ac04dddc72e0e76cd5b9dca2ea1516ef102eff1c3990e992ef24452",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-5.15.19/src/3rdparty/sha1/qt_attribution.json",
+      "source": "licenses/qtbase-everywhere-src-5.15.19/src/3rdparty/sha1/qt_attribution.json",
+      "sha256": "6dac3a89f50e6680063d171dfed9bd65ca19f2230c93385ee2a6c7a8c82e8eac",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-5.15.19/src/3rdparty/sha3/qt_attribution.json",
+      "source": "licenses/qtbase-everywhere-src-5.15.19/src/3rdparty/sha3/qt_attribution.json",
+      "sha256": "06163014f337ea4fbdbbc6bdb1a7612a36abd1bec4030e53e737e095cd6883eb",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-5.15.19/src/3rdparty/sqlite/qt_attribution.json",
+      "source": "licenses/qtbase-everywhere-src-5.15.19/src/3rdparty/sqlite/qt_attribution.json",
+      "sha256": "1b952308f12bee914e978cb69bd6ec0df50af83fc4c03f1441625a536f23d248",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-5.15.19/src/3rdparty/tinycbor/LICENSE",
+      "source": "licenses/qtbase-everywhere-src-5.15.19/src/3rdparty/tinycbor/LICENSE",
+      "sha256": "3c6ba0b5bfa7830505301ffb336a17b0748e0d61c4d34216e9dc98f10e40395e",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-5.15.19/src/3rdparty/tinycbor/qt_attribution.json",
+      "source": "licenses/qtbase-everywhere-src-5.15.19/src/3rdparty/tinycbor/qt_attribution.json",
+      "sha256": "3cd7042c743868aa67d792b85cd1e113b02cfa5273ea727a5a40915c9163b377",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-5.15.19/src/3rdparty/wasm/qt_attribution.json",
+      "source": "licenses/qtbase-everywhere-src-5.15.19/src/3rdparty/wasm/qt_attribution.json",
+      "sha256": "394bd3a281a972ec417c9ecf6991d854cec61030ff4554d2e8d0552f2e9314ae",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-5.15.19/src/3rdparty/wintab/LICENSE.txt",
+      "source": "licenses/qtbase-everywhere-src-5.15.19/src/3rdparty/wintab/LICENSE.txt",
+      "sha256": "c10225ebbd5191bfdd761b0d7752c785f2453ab665d6c454473fb12d254668aa",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-5.15.19/src/3rdparty/wintab/qt_attribution.json",
+      "source": "licenses/qtbase-everywhere-src-5.15.19/src/3rdparty/wintab/qt_attribution.json",
+      "sha256": "51fcb2c1d69565c7bc764e4d0cb4df06dde5faca4d548d012582437bb00c687e",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-5.15.19/src/3rdparty/xcb/LICENSE",
+      "source": "licenses/qtbase-everywhere-src-5.15.19/src/3rdparty/xcb/LICENSE",
+      "sha256": "82775191bc05f85b40404d77bb69b1edeaeb4033f48387e9e5eab4dd67f5d6f1",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-5.15.19/src/3rdparty/xcb/qt_attribution.json",
+      "source": "licenses/qtbase-everywhere-src-5.15.19/src/3rdparty/xcb/qt_attribution.json",
+      "sha256": "d63656d5c61932c0fa4d7b4f92179a22572140eb5f706437d1e4a7e45cd06611",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-5.15.19/src/3rdparty/zlib/LICENSE",
+      "source": "licenses/qtbase-everywhere-src-5.15.19/src/3rdparty/zlib/LICENSE",
+      "sha256": "d7e3139972874dc8abdbbfce27ec1e6f942b28279dd7d27453630a8b4610e080",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-5.15.19/src/3rdparty/zlib/qt_attribution.json",
+      "source": "licenses/qtbase-everywhere-src-5.15.19/src/3rdparty/zlib/qt_attribution.json",
+      "sha256": "4dddbb62908a7752c0ccea9a908e1b71a4b97ff3924fea32a21684765df901c3",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-5.15.19/src/corelib/codecs/qt_attribution.json",
+      "source": "licenses/qtbase-everywhere-src-5.15.19/src/corelib/codecs/qt_attribution.json",
+      "sha256": "371bf15da433ca3df6efa3964d57a8a0dab0a5e6150f33984c39836a51aa2774",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-5.15.19/src/corelib/io/qt_attribution.json",
+      "source": "licenses/qtbase-everywhere-src-5.15.19/src/corelib/io/qt_attribution.json",
+      "sha256": "d1dc0b07b14b07b5c0af80c06141fc1d18407a585829bdd4da43e46bfd03f36d",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-5.15.19/src/corelib/kernel/qt_attribution.json",
+      "source": "licenses/qtbase-everywhere-src-5.15.19/src/corelib/kernel/qt_attribution.json",
+      "sha256": "fc637d71a87a8e99622fc018cc2fe8141b7e754a16df4f3de2a30b2d04e1f32b",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-5.15.19/src/corelib/mimetypes/3rdparty/qt_attribution.json",
+      "source": "licenses/qtbase-everywhere-src-5.15.19/src/corelib/mimetypes/3rdparty/qt_attribution.json",
+      "sha256": "67659a0c58d665921abaaa6ab6164d6ca793a4b4ea7f3be063119b7fa2b50f0f",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-5.15.19/src/corelib/text/qt_attribution.json",
+      "source": "licenses/qtbase-everywhere-src-5.15.19/src/corelib/text/qt_attribution.json",
+      "sha256": "f69041f78e6523ac2c4ce2463411a0b9ab668f79581e3c47738ca73ea7f87177",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-5.15.19/src/dbus/qt_attribution.json",
+      "source": "licenses/qtbase-everywhere-src-5.15.19/src/dbus/qt_attribution.json",
+      "sha256": "b558937668edfbde8d743e74142951d7ec160ecaa2344c65f3a0ffd568da3087",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-5.15.19/src/gui/opengl/qt_attribution.json",
+      "source": "licenses/qtbase-everywhere-src-5.15.19/src/gui/opengl/qt_attribution.json",
+      "sha256": "8f4f118938d9f00ed302322bb071347f724c344fa6e13495321740354e131461",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-5.15.19/src/gui/painting/qt_attribution.json",
+      "source": "licenses/qtbase-everywhere-src-5.15.19/src/gui/painting/qt_attribution.json",
+      "sha256": "bc7c5e2020d0d25d3be6578fcb53b61c602841200fec30a63d2b107046085d8e",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-5.15.19/src/gui/text/qt_attribution.json",
+      "source": "licenses/qtbase-everywhere-src-5.15.19/src/gui/text/qt_attribution.json",
+      "sha256": "9d3df4582935d37f822aa515a670c785fef75b88d4efe0ef5713eb86f1be8bd8",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-5.15.19/src/gui/vulkan/qt_attribution.json",
+      "source": "licenses/qtbase-everywhere-src-5.15.19/src/gui/vulkan/qt_attribution.json",
+      "sha256": "cf70a2b831086ebb91ad2d4bdd4db84917592a95bcb9da754e5bca3f8ea2df18",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-5.15.19/src/plugins/platforms/cocoa/qt_attribution.json",
+      "source": "licenses/qtbase-everywhere-src-5.15.19/src/plugins/platforms/cocoa/qt_attribution.json",
+      "sha256": "9c3b8f5619af1db1802026540f1225f24b718cfe7096bba82a4f23b39ce23ccd",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-5.15.19/src/testlib/3rdparty/qt_attribution.json",
+      "source": "licenses/qtbase-everywhere-src-5.15.19/src/testlib/3rdparty/qt_attribution.json",
+      "sha256": "237e6a902a6a595de110d54e210d97935719cc95c026266123b181fe84f2f08c",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtsvg-everywhere-src-5.15.19/LICENSE.FDL",
+      "source": "licenses/qtsvg-everywhere-src-5.15.19/LICENSE.FDL",
+      "sha256": "ed8742a95cb9db653a09b050e27ccff5e67ba69c14aa2c3137f2a4e1892f6c0d",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtsvg-everywhere-src-5.15.19/LICENSE.GPL2",
+      "source": "licenses/qtsvg-everywhere-src-5.15.19/LICENSE.GPL2",
+      "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtsvg-everywhere-src-5.15.19/LICENSE.GPL3",
+      "source": "licenses/qtsvg-everywhere-src-5.15.19/LICENSE.GPL3",
+      "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtsvg-everywhere-src-5.15.19/LICENSE.GPL3-EXCEPT",
+      "source": "licenses/qtsvg-everywhere-src-5.15.19/LICENSE.GPL3-EXCEPT",
+      "sha256": "0dbe024961f6ab5c52689cbd036c977975d0d0f6a67ff97762d96cb819dd5652",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtsvg-everywhere-src-5.15.19/LICENSE.GPLv3",
+      "source": "licenses/qtsvg-everywhere-src-5.15.19/LICENSE.GPLv3",
+      "sha256": "245248009fd0af1725d183248380e476c1283383909358a13686606352bf2a17",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtsvg-everywhere-src-5.15.19/LICENSE.LGPL3",
+      "source": "licenses/qtsvg-everywhere-src-5.15.19/LICENSE.LGPL3",
+      "sha256": "da7eabb7bafdf7d3ae5e9f223aa5bdc1eece45ac569dc21b3b037520b4464768",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtsvg-everywhere-src-5.15.19/LICENSE.LGPLv21",
+      "source": "licenses/qtsvg-everywhere-src-5.15.19/LICENSE.LGPLv21",
+      "sha256": "1996a36160b2158c2be264d2ddfa6148ebe0f1ececff55aca8d754a1ddcc7bb8",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtsvg-everywhere-src-5.15.19/LICENSE.LGPLv3",
+      "source": "licenses/qtsvg-everywhere-src-5.15.19/LICENSE.LGPLv3",
+      "sha256": "5ceb37d1c7c1d92878b82af3c0fd5558087f3d5a08a3a4d43850bad4ad265a52",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtsvg-everywhere-src-5.15.19/src/svg/qt_attribution.json",
+      "source": "licenses/qtsvg-everywhere-src-5.15.19/src/svg/qt_attribution.json",
+      "sha256": "411944a272ecf06fb91bfbff3e29f141da41f4e376eb57c9c01a1bcbaede1c86",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "UPSTREAM-NOTICES.txt",
+      "source": "UPSTREAM-NOTICES.txt",
+      "sha256": "0492d5e6398007b7ef4d7460327b71e9612de2e70f4adb4cb5d143cdcb35a1b9",
+      "kind": "source_bundle_attribution_index"
+    }
+  ],
+  "runtime_apt_versions": {
+    "status": "PASS",
+    "packages": [
+      {
+        "package": "libbrotli1",
+        "version": "1.1.0-2build2",
+        "architecture": "amd64"
+      },
+      {
+        "package": "libbsd0",
+        "version": "0.12.1-1build1.1",
+        "architecture": "amd64"
+      },
+      {
+        "package": "libbz2-1.0",
+        "version": "1.0.8-5.1ubuntu0.1",
+        "architecture": "amd64"
+      },
+      {
+        "package": "libc6",
+        "version": "2.39-0ubuntu8.9",
+        "architecture": "amd64"
+      },
+      {
+        "package": "libcap2",
+        "version": "1:2.66-5ubuntu2.4",
+        "architecture": "amd64"
+      },
+      {
+        "package": "libdbus-1-3",
+        "version": "1.14.10-4ubuntu4.1",
+        "architecture": "amd64"
+      },
+      {
+        "package": "libexpat1",
+        "version": "2.6.1-2ubuntu0.6",
+        "architecture": "amd64"
+      },
+      {
+        "package": "libfontconfig1",
+        "version": "2.15.0-1.1ubuntu2",
+        "architecture": "amd64"
+      },
+      {
+        "package": "libfreetype6",
+        "version": "2.13.2+dfsg-1ubuntu0.2",
+        "architecture": "amd64"
+      },
+      {
+        "package": "libgcc-s1",
+        "version": "14.2.0-4ubuntu2~24.04.1",
+        "architecture": "amd64"
+      },
+      {
+        "package": "libgcrypt20",
+        "version": "1.10.3-2ubuntu0.2",
+        "architecture": "amd64"
+      },
+      {
+        "package": "libglib2.0-0t64",
+        "version": "2.80.0-6ubuntu3.10",
+        "architecture": "amd64"
+      },
+      {
+        "package": "libgpg-error0",
+        "version": "1.47-3build2.1",
+        "architecture": "amd64"
+      },
+      {
+        "package": "libice6",
+        "version": "2:1.0.10-1build3",
+        "architecture": "amd64"
+      },
+      {
+        "package": "libicu74",
+        "version": "74.2-1ubuntu3.1",
+        "architecture": "amd64"
+      },
+      {
+        "package": "liblz4-1",
+        "version": "1.9.4-1build1.1",
+        "architecture": "amd64"
+      },
+      {
+        "package": "liblzma5",
+        "version": "5.6.1+really5.4.5-1ubuntu0.4",
+        "architecture": "amd64"
+      },
+      {
+        "package": "libmd0",
+        "version": "1.1.0-2build1.1",
+        "architecture": "amd64"
+      },
+      {
+        "package": "libpcre2-16-0",
+        "version": "10.42-4ubuntu2.1",
+        "architecture": "amd64"
+      },
+      {
+        "package": "libpcre2-8-0",
+        "version": "10.42-4ubuntu2.1",
+        "architecture": "amd64"
+      },
+      {
+        "package": "libpng16-16t64",
+        "version": "1.6.43-5ubuntu0.7",
+        "architecture": "amd64"
+      },
+      {
+        "package": "libsm6",
+        "version": "2:1.2.3-1build3",
+        "architecture": "amd64"
+      },
+      {
+        "package": "libstdc++6",
+        "version": "14.2.0-4ubuntu2~24.04.1",
+        "architecture": "amd64"
+      },
+      {
+        "package": "libsystemd0",
+        "version": "255.4-1ubuntu8.17",
+        "architecture": "amd64"
+      },
+      {
+        "package": "libuuid1",
+        "version": "2.39.3-9ubuntu6.6",
+        "architecture": "amd64"
+      },
+      {
+        "package": "libx11-6",
+        "version": "2:1.8.7-1ubuntu0.1",
+        "architecture": "amd64"
+      },
+      {
+        "package": "libx11-xcb1",
+        "version": "2:1.8.7-1ubuntu0.1",
+        "architecture": "amd64"
+      },
+      {
+        "package": "libxau6",
+        "version": "1:1.0.9-1build6",
+        "architecture": "amd64"
+      },
+      {
+        "package": "libxcb-icccm4",
+        "version": "0.4.1-1.1build3",
+        "architecture": "amd64"
+      },
+      {
+        "package": "libxcb-image0",
+        "version": "0.4.0-2build1",
+        "architecture": "amd64"
+      },
+      {
+        "package": "libxcb-keysyms1",
+        "version": "0.4.0-1build4",
+        "architecture": "amd64"
+      },
+      {
+        "package": "libxcb-randr0",
+        "version": "1.15-1ubuntu2",
+        "architecture": "amd64"
+      },
+      {
+        "package": "libxcb-render-util0",
+        "version": "0.3.9-1build4",
+        "architecture": "amd64"
+      },
+      {
+        "package": "libxcb-render0",
+        "version": "1.15-1ubuntu2",
+        "architecture": "amd64"
+      },
+      {
+        "package": "libxcb-shape0",
+        "version": "1.15-1ubuntu2",
+        "architecture": "amd64"
+      },
+      {
+        "package": "libxcb-shm0",
+        "version": "1.15-1ubuntu2",
+        "architecture": "amd64"
+      },
+      {
+        "package": "libxcb-sync1",
+        "version": "1.15-1ubuntu2",
+        "architecture": "amd64"
+      },
+      {
+        "package": "libxcb-util1",
+        "version": "0.4.0-1build3",
+        "architecture": "amd64"
+      },
+      {
+        "package": "libxcb-xfixes0",
+        "version": "1.15-1ubuntu2",
+        "architecture": "amd64"
+      },
+      {
+        "package": "libxcb-xinerama0",
+        "version": "1.15-1ubuntu2",
+        "architecture": "amd64"
+      },
+      {
+        "package": "libxcb-xkb1",
+        "version": "1.15-1ubuntu2",
+        "architecture": "amd64"
+      },
+      {
+        "package": "libxcb1",
+        "version": "1.15-1ubuntu2",
+        "architecture": "amd64"
+      },
+      {
+        "package": "libxdmcp6",
+        "version": "1:1.1.3-0ubuntu6",
+        "architecture": "amd64"
+      },
+      {
+        "package": "libxkbcommon-x11-0",
+        "version": "1.6.0-1build1",
+        "architecture": "amd64"
+      },
+      {
+        "package": "libxkbcommon0",
+        "version": "1.6.0-1build1",
+        "architecture": "amd64"
+      },
+      {
+        "package": "libzstd1",
+        "version": "1.5.5+dfsg2-2build1.1",
+        "architecture": "amd64"
+      },
+      {
+        "package": "zlib1g",
+        "version": "1:1.3.dfsg-3.1ubuntu2.3",
+        "architecture": "amd64"
+      }
+    ],
+    "apt_install_pins": [
+      "libbrotli1:amd64=1.1.0-2build2",
+      "libbsd0:amd64=0.12.1-1build1.1",
+      "libbz2-1.0:amd64=1.0.8-5.1ubuntu0.1",
+      "libc6:amd64=2.39-0ubuntu8.9",
+      "libcap2:amd64=1:2.66-5ubuntu2.4",
+      "libdbus-1-3:amd64=1.14.10-4ubuntu4.1",
+      "libexpat1:amd64=2.6.1-2ubuntu0.6",
+      "libfontconfig1:amd64=2.15.0-1.1ubuntu2",
+      "libfreetype6:amd64=2.13.2+dfsg-1ubuntu0.2",
+      "libgcc-s1:amd64=14.2.0-4ubuntu2~24.04.1",
+      "libgcrypt20:amd64=1.10.3-2ubuntu0.2",
+      "libglib2.0-0t64:amd64=2.80.0-6ubuntu3.10",
+      "libgpg-error0:amd64=1.47-3build2.1",
+      "libice6:amd64=2:1.0.10-1build3",
+      "libicu74:amd64=74.2-1ubuntu3.1",
+      "liblz4-1:amd64=1.9.4-1build1.1",
+      "liblzma5:amd64=5.6.1+really5.4.5-1ubuntu0.4",
+      "libmd0:amd64=1.1.0-2build1.1",
+      "libpcre2-16-0:amd64=10.42-4ubuntu2.1",
+      "libpcre2-8-0:amd64=10.42-4ubuntu2.1",
+      "libpng16-16t64:amd64=1.6.43-5ubuntu0.7",
+      "libsm6:amd64=2:1.2.3-1build3",
+      "libstdc++6:amd64=14.2.0-4ubuntu2~24.04.1",
+      "libsystemd0:amd64=255.4-1ubuntu8.17",
+      "libuuid1:amd64=2.39.3-9ubuntu6.6",
+      "libx11-6:amd64=2:1.8.7-1ubuntu0.1",
+      "libx11-xcb1:amd64=2:1.8.7-1ubuntu0.1",
+      "libxau6:amd64=1:1.0.9-1build6",
+      "libxcb-icccm4:amd64=0.4.1-1.1build3",
+      "libxcb-image0:amd64=0.4.0-2build1",
+      "libxcb-keysyms1:amd64=0.4.0-1build4",
+      "libxcb-randr0:amd64=1.15-1ubuntu2",
+      "libxcb-render-util0:amd64=0.3.9-1build4",
+      "libxcb-render0:amd64=1.15-1ubuntu2",
+      "libxcb-shape0:amd64=1.15-1ubuntu2",
+      "libxcb-shm0:amd64=1.15-1ubuntu2",
+      "libxcb-sync1:amd64=1.15-1ubuntu2",
+      "libxcb-util1:amd64=0.4.0-1build3",
+      "libxcb-xfixes0:amd64=1.15-1ubuntu2",
+      "libxcb-xinerama0:amd64=1.15-1ubuntu2",
+      "libxcb-xkb1:amd64=1.15-1ubuntu2",
+      "libxcb1:amd64=1.15-1ubuntu2",
+      "libxdmcp6:amd64=1:1.1.3-0ubuntu6",
+      "libxkbcommon-x11-0:amd64=1.6.0-1build1",
+      "libxkbcommon0:amd64=1.6.0-1build1",
+      "libzstd1:amd64=1.5.5+dfsg2-2build1.1",
+      "zlib1g:amd64=1:1.3.dfsg-3.1ubuntu2.3"
+    ],
+    "install_pins_derived_from_exact_package_version_architecture_records": true,
+    "source_receipt_sha256": "383ad965159befebe86bc9d772beaed12f2be06de93aac9fc84e55b09a153e49"
+  },
+  "runtime_closure_binding": {
+    "closure_sha256": "540b7ba46f6e43937df085da100add66d6dc50104fe02e27dbe3016a7f28c4a4",
+    "apt_versions_sha256": "383ad965159befebe86bc9d772beaed12f2be06de93aac9fc84e55b09a153e49"
+  },
+  "builder": {
+    "python": "3.12.8",
+    "zlib": "1.3.1"
+  },
+  "portable_sip_selection": {
+    "source": "PyQt5/sip.cpython-312-x86_64-linux-gnu.so",
+    "original_wheel_native_sha256": "3ec0af7b9efb78947626e87951d80e5998ea5d865288b14838c33d25f91a945c",
+    "portable_modified_native_sha256": "598a132df24af4bbaf6af38e46aebc0ab1e34b385e5fdcc02937144e9f2e7c61",
+    "portable_modified_sip_selected": false,
+    "reason": "SIP has no Qt dependency; preserve exact original official support wheel instead of unnecessary portable-copy RUNPATH modification."
+  },
+  "wheels": [
+    {
+      "name": "pyqt5",
+      "metadata_name": "PyQt5",
+      "version": "5.15.11+vispynogl.1",
+      "tag": "cp312-cp312-linux_x86_64",
+      "requires": [
+        "pyqt5-sip==12.20.0",
+        "pyqt5-qt5==5.15.19+vispynogl.1"
+      ],
+      "files": [
+        {
+          "member": "PyQt5/QtCore.abi3.so",
+          "source": "PyQt5/QtCore.abi3.so",
+          "sha256": "e8a4a6e1dbaaf09dd94401057a9abbde1575b316f4b899affdc08d9c22660f9c",
+          "native": true,
+          "before_relocation_sha256": "9bd02d0ad4a0427f14e8d3f20e92209e189407971fe2600622aa5a89c2205fbf",
+          "relocated": true
+        },
+        {
+          "member": "PyQt5/QtDBus.abi3.so",
+          "source": "PyQt5/QtDBus.abi3.so",
+          "sha256": "63d9079adfb5b3468e2467df621e6e18926bc84738276ed2267cbdbf300664a0",
+          "native": true,
+          "before_relocation_sha256": "0b608a944a30239ebe42c0967de186adff36eb6f9eca8a52342170751097f618",
+          "relocated": true
+        },
+        {
+          "member": "PyQt5/QtGui.abi3.so",
+          "source": "PyQt5/QtGui.abi3.so",
+          "sha256": "8e1b85fe320a89761e733628875b50224b9395f9200d2f70c34fe092fe7bfceb",
+          "native": true,
+          "before_relocation_sha256": "33426044d65b7aa46389891ce84cd3c4a092a7bc0c6d67ed65429e07bdbf05a8",
+          "relocated": true
+        },
+        {
+          "member": "PyQt5/QtNetwork.abi3.so",
+          "source": "PyQt5/QtNetwork.abi3.so",
+          "sha256": "c45d49370c73a3fa0b880650c33c2ae45e1ff3e5383cfa0b052efb85a10da694",
+          "native": true,
+          "before_relocation_sha256": "1dadb6e6576f446f508b1d63ed451abd2dadcbb5568380f783491ba77d9c4972",
+          "relocated": true
+        },
+        {
+          "member": "PyQt5/QtPrintSupport.abi3.so",
+          "source": "PyQt5/QtPrintSupport.abi3.so",
+          "sha256": "fa5deece9587a98bfe8977a49eb73bdccb174c7eded40706a63f5fe855d56a5f",
+          "native": true,
+          "before_relocation_sha256": "15d5560da22c79418ce925e3c76fab4a7f7e09af682dda454885f3b2b0567fec",
+          "relocated": true
+        },
+        {
+          "member": "PyQt5/QtSvg.abi3.so",
+          "source": "PyQt5/QtSvg.abi3.so",
+          "sha256": "51cf085433d03fa70c90cb95f55085df624b6e6d3d3654c7b89bf4db6afd146c",
+          "native": true,
+          "before_relocation_sha256": "4fdc16eaa3bce9003fb5a552b598ce9e94b67d397b207aec3b0ccd05414e3c94",
+          "relocated": true
+        },
+        {
+          "member": "PyQt5/QtTest.abi3.so",
+          "source": "PyQt5/QtTest.abi3.so",
+          "sha256": "5978dced9af354cff8e7e36df9c06e99086b269bc1aeb8c0c1e6d3910a3fba89",
+          "native": true,
+          "before_relocation_sha256": "58d0217c0c1effe9cc1f893a500e593b07c0d478bd186c035eaedb50277ef120",
+          "relocated": true
+        },
+        {
+          "member": "PyQt5/QtWidgets.abi3.so",
+          "source": "PyQt5/QtWidgets.abi3.so",
+          "sha256": "6c588c03543b439a058982f1007d8909ebf65372c5a94566778dc3c44fdd75bb",
+          "native": true,
+          "before_relocation_sha256": "06c9ce8d862d4f658526690b2363fe829343f2746ad1449f0208a01f7dbba2d8",
+          "relocated": true
+        },
+        {
+          "member": "PyQt5/QtXml.abi3.so",
+          "source": "PyQt5/QtXml.abi3.so",
+          "sha256": "bc2687e9931a5962d4d112046b622fd1a8480a36cee6906c2a1e904208f9609f",
+          "native": true,
+          "before_relocation_sha256": "9d7d94ee8d8e0e55b507a2b27d70b31a9e91aad648905f843a9fd2176d1c90a3",
+          "relocated": true
+        },
+        {
+          "member": "PyQt5/__init__.py",
+          "source": "PyQt5/__init__.py",
+          "sha256": "a09c3e9ab510b6b52d97ace7e235f3da094d46482f6fe85e0e737186137fb3b1"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/QtCore.toml",
+          "source": "PyQt5/bindings/QtCore/QtCore.toml",
+          "sha256": "98786f76eeaec34cb66e18bdeff030bd65c5bb5f49e1d9ab12673d4c2daa7c95"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/QtCoremod.sip",
+          "source": "PyQt5/bindings/QtCore/QtCoremod.sip",
+          "sha256": "488c76a7222683a6efbbe3aae50b317005498a100f37f8f539a9f95bb931e289"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/pyqt-gpl.sip5",
+          "source": "PyQt5/bindings/QtCore/pyqt-gpl.sip5",
+          "sha256": "930e92396cf9535c4f4d59579d6c05fd6c08e4560d5f06d17c00e6d3b2cc0d65"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qabstractanimation.sip",
+          "source": "PyQt5/bindings/QtCore/qabstractanimation.sip",
+          "sha256": "730c72e1cc400521856fe0c50ecdbbe15d1ea4662564c6822256c8c49d36ad16"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qabstracteventdispatcher.sip",
+          "source": "PyQt5/bindings/QtCore/qabstracteventdispatcher.sip",
+          "sha256": "eca96251e715cef356f7beabc23949bcb07603fdec5f3d68bb46bba91d22c7e8"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qabstractitemmodel.sip",
+          "source": "PyQt5/bindings/QtCore/qabstractitemmodel.sip",
+          "sha256": "ce43a701326d164e55857cf4ef8d746e74a779184f35a72dc0a555d6a838cf93"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qabstractnativeeventfilter.sip",
+          "source": "PyQt5/bindings/QtCore/qabstractnativeeventfilter.sip",
+          "sha256": "b08283aab068968e47c0ef8da42315695c37191521227741fa8c3abb2e8f0b02"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qabstractproxymodel.sip",
+          "source": "PyQt5/bindings/QtCore/qabstractproxymodel.sip",
+          "sha256": "9e125bfcb8617bb0e87fc0e515b6374b95889191515284eb82da872b6b683d1f"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qabstractstate.sip",
+          "source": "PyQt5/bindings/QtCore/qabstractstate.sip",
+          "sha256": "09fdb14ddfc9504fda29b1adf8ded6b0d1da8cecfba6495319003a09bfa958dc"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qabstracttransition.sip",
+          "source": "PyQt5/bindings/QtCore/qabstracttransition.sip",
+          "sha256": "dd5ca246e7064767c776f3b479cc28ffeb09811a5a99465de28c51e9cca562ca"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qanimationgroup.sip",
+          "source": "PyQt5/bindings/QtCore/qanimationgroup.sip",
+          "sha256": "81720bba40af3204278f2a0f803b12a2dd30c00fcd36d050dcfae831c419e754"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qbasictimer.sip",
+          "source": "PyQt5/bindings/QtCore/qbasictimer.sip",
+          "sha256": "18aa1b1e26ba953bdd76f262c496bdb336d46556304475cafde5b4c73d0a5db4"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qbitarray.sip",
+          "source": "PyQt5/bindings/QtCore/qbitarray.sip",
+          "sha256": "36e9503dc4fd0abb16502ba2a696119b4ff2ece2364d03aa2b95fa284d59cca2"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qbuffer.sip",
+          "source": "PyQt5/bindings/QtCore/qbuffer.sip",
+          "sha256": "41b7343481339f84cc79a127b25730d844a9e321b9eb4ff57f9f25f8d6d9aa75"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qbytearray.sip",
+          "source": "PyQt5/bindings/QtCore/qbytearray.sip",
+          "sha256": "2ddd02cf9f2dd172210514085f70d0be704ad2e1be4b37c042d8ee1e297333b4"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qbytearraymatcher.sip",
+          "source": "PyQt5/bindings/QtCore/qbytearraymatcher.sip",
+          "sha256": "8f3de6994297cf2c6cf2f60d8b336f0919b12660d35a4e6d64380d9a428833c5"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qcalendar.sip",
+          "source": "PyQt5/bindings/QtCore/qcalendar.sip",
+          "sha256": "924e53262768b451464091ee8312258f1909de8338a02233d6998a4e28ea3b1b"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qcborcommon.sip",
+          "source": "PyQt5/bindings/QtCore/qcborcommon.sip",
+          "sha256": "8e095343c638c962c6890bea6e9f669bd64c9e62a3019957c4ad7a6acc3ee471"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qcborstream.sip",
+          "source": "PyQt5/bindings/QtCore/qcborstream.sip",
+          "sha256": "7a6360e6796f628db07f7a588cb58c379668fb073dc376b348317813a1e0ab91"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qchar.sip",
+          "source": "PyQt5/bindings/QtCore/qchar.sip",
+          "sha256": "762b62d53fb8a00f7eb32dd2c9d923110616e0a1f8414b64aaa79dfd2ab5688c"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qcollator.sip",
+          "source": "PyQt5/bindings/QtCore/qcollator.sip",
+          "sha256": "a36dfa11a3035395bedc74b586e22c38c281571b8d5da37e9aa8bbaccf198ed4"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qcommandlineoption.sip",
+          "source": "PyQt5/bindings/QtCore/qcommandlineoption.sip",
+          "sha256": "dc3efea67a414772f70f47a838f51dc4c98700875a2da2bd401a70994e295901"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qcommandlineparser.sip",
+          "source": "PyQt5/bindings/QtCore/qcommandlineparser.sip",
+          "sha256": "c427598f4fc63b64f52e13dd094fef0d67fa4b107bea307de397848ef1d9dc7f"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qconcatenatetablesproxymodel.sip",
+          "source": "PyQt5/bindings/QtCore/qconcatenatetablesproxymodel.sip",
+          "sha256": "b50d0ac7911fc4aaa4610022a3659537b0f8c2f5c49a156a9bc0b1380ea46dc7"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qcoreapplication.sip",
+          "source": "PyQt5/bindings/QtCore/qcoreapplication.sip",
+          "sha256": "36efe18a286c4ad0b3e86e2ec0063bb3f788a970d0c4dec5e6030a1a01a74aef"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qcoreevent.sip",
+          "source": "PyQt5/bindings/QtCore/qcoreevent.sip",
+          "sha256": "98b62bb36bbc730930adfbda9b5638d1c22d38170e8f41ca94507a89b1e82371"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qcryptographichash.sip",
+          "source": "PyQt5/bindings/QtCore/qcryptographichash.sip",
+          "sha256": "bca2cd7d13f84cad6f57539de2f92dec64c470a619deeaa2e618323b20b5725d"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qdatastream.sip",
+          "source": "PyQt5/bindings/QtCore/qdatastream.sip",
+          "sha256": "062eac7637d2028073ef4ca40956d6c8f3d619a0bd64d497432b163a8bf85cc0"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qdatetime.sip",
+          "source": "PyQt5/bindings/QtCore/qdatetime.sip",
+          "sha256": "e59c830d003d020b7522a9db76cbdb5bf2e9df76b03e0db1f3f25983a70f1241"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qdeadlinetimer.sip",
+          "source": "PyQt5/bindings/QtCore/qdeadlinetimer.sip",
+          "sha256": "528bad0e600ea72e5f0548c12a5a55ff162324359f91fca1a1e35277fd5a2799"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qdir.sip",
+          "source": "PyQt5/bindings/QtCore/qdir.sip",
+          "sha256": "b424bd10d6cd36977529c3da59cd4f5549a24e5d81dd158ff760a8006480fd4a"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qdiriterator.sip",
+          "source": "PyQt5/bindings/QtCore/qdiriterator.sip",
+          "sha256": "426a7df0c239639e6418c14dfd4cd00dbad115deb73069f3782ad83802049361"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qeasingcurve.sip",
+          "source": "PyQt5/bindings/QtCore/qeasingcurve.sip",
+          "sha256": "352af94bb90ff369a8b47876768ccd9be3f1abdab5835a5309c3bebff7f47115"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qelapsedtimer.sip",
+          "source": "PyQt5/bindings/QtCore/qelapsedtimer.sip",
+          "sha256": "513934bbc35df62a5a95e0c5e80009335e6283ab0fc865e12fd51ac4928fc155"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qeventloop.sip",
+          "source": "PyQt5/bindings/QtCore/qeventloop.sip",
+          "sha256": "b8b28e4eb3723ee08df0fc431fbe43468be2fba24b6e74d9803ef03c289178c8"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qeventtransition.sip",
+          "source": "PyQt5/bindings/QtCore/qeventtransition.sip",
+          "sha256": "fd79559b229d53fdfc17c9c73d990e531929f492f184f6dffa654e041e97c4fd"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qfile.sip",
+          "source": "PyQt5/bindings/QtCore/qfile.sip",
+          "sha256": "a1361e78b7cd54fbfa2a9ba5b22b465b2c57fbfe2cd8e6f7f202ada20756d478"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qfiledevice.sip",
+          "source": "PyQt5/bindings/QtCore/qfiledevice.sip",
+          "sha256": "e393fd3c42597112d393aa72b94739c7847c41c06323557e91674b5d5cbc4d51"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qfileinfo.sip",
+          "source": "PyQt5/bindings/QtCore/qfileinfo.sip",
+          "sha256": "214b3649790d98bc833669e831ecb54f2441149d8863394e9807483263b432ff"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qfileselector.sip",
+          "source": "PyQt5/bindings/QtCore/qfileselector.sip",
+          "sha256": "0b0c22c18a0d36227a6748322ed44db9a8c86342367c39570196cb2e6106a2e3"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qfilesystemwatcher.sip",
+          "source": "PyQt5/bindings/QtCore/qfilesystemwatcher.sip",
+          "sha256": "071edb73e7be7b40877e08e05f60a29b7613f910d1c4b56a518d547dbb46d852"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qfinalstate.sip",
+          "source": "PyQt5/bindings/QtCore/qfinalstate.sip",
+          "sha256": "efdf4fff1fac3a236547523c2cbab90b9832a30d339c666ebb83d6af2b0b5e01"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qglobal.sip",
+          "source": "PyQt5/bindings/QtCore/qglobal.sip",
+          "sha256": "7789690964511a70438cec0e9206b54f799d00362a215bb3a0a9386f623913fd"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qhistorystate.sip",
+          "source": "PyQt5/bindings/QtCore/qhistorystate.sip",
+          "sha256": "b31a13f83b8008a543f390c7cb2fb7985a43bd0756674a34b9c1a753108d8a7a"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qidentityproxymodel.sip",
+          "source": "PyQt5/bindings/QtCore/qidentityproxymodel.sip",
+          "sha256": "3aa3ff9165ad22417f4b0584b3619ce0b2aa6d0be508227d41dec790c390c5f1"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qiodevice.sip",
+          "source": "PyQt5/bindings/QtCore/qiodevice.sip",
+          "sha256": "7e78a04e798240ec75b19981f77734375fc92e2c5747eefc7b98fa38176d3274"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qitemselectionmodel.sip",
+          "source": "PyQt5/bindings/QtCore/qitemselectionmodel.sip",
+          "sha256": "a52155e66c6df16545faf2078645c30dbfda244aca027f5cfb78d85284703238"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qjsonarray.sip",
+          "source": "PyQt5/bindings/QtCore/qjsonarray.sip",
+          "sha256": "e03423c09c88a225e300615fcf32af0e93b6a43bcc77a4e91b15bfc2a0b38cfc"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qjsondocument.sip",
+          "source": "PyQt5/bindings/QtCore/qjsondocument.sip",
+          "sha256": "e8a1f6888b42302bf4f932df1cca6d20f81e7aa5397a940b2b05afbed0b30b1e"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qjsonobject.sip",
+          "source": "PyQt5/bindings/QtCore/qjsonobject.sip",
+          "sha256": "ae65ca0781bf6cc756492601d107dbbb87e2a4b1044cb61162a695b5a0dd6889"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qjsonvalue.sip",
+          "source": "PyQt5/bindings/QtCore/qjsonvalue.sip",
+          "sha256": "c8412c17d6b4ca69cf98b90248ceaf76e06eb479b367363e511890b3788e22d1"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qlibrary.sip",
+          "source": "PyQt5/bindings/QtCore/qlibrary.sip",
+          "sha256": "af71ae5d8892ea62c857d58debe0fb1e88e0f6d954299dae5089e55d85c20969"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qlibraryinfo.sip",
+          "source": "PyQt5/bindings/QtCore/qlibraryinfo.sip",
+          "sha256": "96482506f4882ff3858b95c98677bbf2966ddb59d034a958ef7e277213da39f6"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qline.sip",
+          "source": "PyQt5/bindings/QtCore/qline.sip",
+          "sha256": "c71768ae4e2967aedf5ce3ee48363234670f28071cc2e662c35d23796169613a"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qlocale.sip",
+          "source": "PyQt5/bindings/QtCore/qlocale.sip",
+          "sha256": "efbbaf0552b850a465944e8395b201cb80e96eac88c2557f7f30897d04c739ee"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qlockfile.sip",
+          "source": "PyQt5/bindings/QtCore/qlockfile.sip",
+          "sha256": "944aac07b5092c331755d9793971f49aa4a18dd723ef6e0da09c3a384435a33d"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qlogging.sip",
+          "source": "PyQt5/bindings/QtCore/qlogging.sip",
+          "sha256": "75a3f8790e9a3b884a2b89ca21250d9d28df7fe5583ccc196a465f089447dade"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qloggingcategory.sip",
+          "source": "PyQt5/bindings/QtCore/qloggingcategory.sip",
+          "sha256": "e53394282e7b51bf2a11db4ec6f8f2b1990777e0513c7356244dfb7550496693"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qmargins.sip",
+          "source": "PyQt5/bindings/QtCore/qmargins.sip",
+          "sha256": "627f2d9baa018cc1da4ddabc054b42f35ae05d83df17350c8b3003db413b1f82"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qmessageauthenticationcode.sip",
+          "source": "PyQt5/bindings/QtCore/qmessageauthenticationcode.sip",
+          "sha256": "278eceeab95889600f8b9742291b494f9a4ad9279b6193f1a53e66d03092b568"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qmetaobject.sip",
+          "source": "PyQt5/bindings/QtCore/qmetaobject.sip",
+          "sha256": "95aaaca9e867edf8d6bcaaf313aeb3fc7edc925295f7eaab93e779763984f648"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qmetatype.sip",
+          "source": "PyQt5/bindings/QtCore/qmetatype.sip",
+          "sha256": "ecb7929e167d1d9bb46589069fb0029c684e2891c0a6f637d0f1ec6dd8c36687"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qmimedata.sip",
+          "source": "PyQt5/bindings/QtCore/qmimedata.sip",
+          "sha256": "8ce48637aae3228a7f6ac8584b0fd4ad95ba08f4e4ccb18925feca52ad83cf33"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qmimedatabase.sip",
+          "source": "PyQt5/bindings/QtCore/qmimedatabase.sip",
+          "sha256": "d2d7e060382c831466ae342733301fd218f715a1e26fd4c7182aa44941822e60"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qmimetype.sip",
+          "source": "PyQt5/bindings/QtCore/qmimetype.sip",
+          "sha256": "5129c3de264972f98ca73be159f2284e9770439353934d41a66fd803b1f179dc"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qmutex.sip",
+          "source": "PyQt5/bindings/QtCore/qmutex.sip",
+          "sha256": "1c506ef651205fcbdd2f2a37fd1a1e761c1cfbf955b9c5bea5f15a0be9faf2b4"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qnamespace.sip",
+          "source": "PyQt5/bindings/QtCore/qnamespace.sip",
+          "sha256": "2d77ae8f13f79f35956e96b6ed199d2433f4dab7bfa429c465fd08881309db1c"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qnumeric.sip",
+          "source": "PyQt5/bindings/QtCore/qnumeric.sip",
+          "sha256": "bedec3cd164c71204439e03b2bdec1d8b48cf1a3286c56f4c5ce5c2d6764f546"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qobject.sip",
+          "source": "PyQt5/bindings/QtCore/qobject.sip",
+          "sha256": "1cbfa61a16eb470b61370b49b224d546833272af58e7863150bdb3f43067a53a"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qobjectcleanuphandler.sip",
+          "source": "PyQt5/bindings/QtCore/qobjectcleanuphandler.sip",
+          "sha256": "46e45365de8f8cb48ced12eebc6e9fe8e913283cbd3f41554bd0d93d2329231f"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qobjectdefs.sip",
+          "source": "PyQt5/bindings/QtCore/qobjectdefs.sip",
+          "sha256": "61f6cd1a5626aca2a123c7220f018dd78678e5ee4ebafce08c3ee66f3ef671aa"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qoperatingsystemversion.sip",
+          "source": "PyQt5/bindings/QtCore/qoperatingsystemversion.sip",
+          "sha256": "bdce6e606e6991fdd36f9eed17c6a9c8f6fcca88ecb9dfe55b3c58b4caefce7f"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qparallelanimationgroup.sip",
+          "source": "PyQt5/bindings/QtCore/qparallelanimationgroup.sip",
+          "sha256": "d872e66511308fd4343137774784315bd2e6fd20992822fcfb127e2f3fb2169c"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qpauseanimation.sip",
+          "source": "PyQt5/bindings/QtCore/qpauseanimation.sip",
+          "sha256": "5d1e5d9ef0307f6b0a84eb7bef41733162e705ca7bc12adbf6ccb1f9b89bf346"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qpluginloader.sip",
+          "source": "PyQt5/bindings/QtCore/qpluginloader.sip",
+          "sha256": "03b4548918ef5f31d8440ef2bb8d8429d2d96bcadf32ebfb865077310260acfd"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qpoint.sip",
+          "source": "PyQt5/bindings/QtCore/qpoint.sip",
+          "sha256": "faff14e99c9d31b6d3d6b45750b1a1812db742a84e2dfd352c5772a02b40b358"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qprocess.sip",
+          "source": "PyQt5/bindings/QtCore/qprocess.sip",
+          "sha256": "b297ff8ecb9482099b627d0a75a05d8834cb20c66edd57ed32cfa3f1d1eba172"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qpropertyanimation.sip",
+          "source": "PyQt5/bindings/QtCore/qpropertyanimation.sip",
+          "sha256": "7d841cb71f217aaa26085e2c748cf9e0111c5bae04d930382182fc8644528e19"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qpycore_qhash.sip",
+          "source": "PyQt5/bindings/QtCore/qpycore_qhash.sip",
+          "sha256": "5be186025d6e18bb4927200bc00150857dc536bffb73ec970c37947aaeeb37f1"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qpycore_qlist.sip",
+          "source": "PyQt5/bindings/QtCore/qpycore_qlist.sip",
+          "sha256": "10e978d8ee6bf9ef08c792e1330f480bf8328ac48468b424001c02a5aa0dd3b2"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qpycore_qmap.sip",
+          "source": "PyQt5/bindings/QtCore/qpycore_qmap.sip",
+          "sha256": "13d5ac29b86fa2bdae3e3dcdcab348302da666cb12e05a86d3bbfa763e3c2e76"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qpycore_qpair.sip",
+          "source": "PyQt5/bindings/QtCore/qpycore_qpair.sip",
+          "sha256": "587cd89030499eca64a89c255e57d6f6e3af0818625b81ef4265d45a5ebcfb63"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qpycore_qset.sip",
+          "source": "PyQt5/bindings/QtCore/qpycore_qset.sip",
+          "sha256": "16f3185da1ef2a47f4f91f3ab3ec4bab12e830f50c3e21af3c39f43eea69c3e9"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qpycore_qvariantmap.sip",
+          "source": "PyQt5/bindings/QtCore/qpycore_qvariantmap.sip",
+          "sha256": "63b3aff7138cdd255095b737adbb658c7929b32a8a42967991eb15c338b7693c"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qpycore_qvector.sip",
+          "source": "PyQt5/bindings/QtCore/qpycore_qvector.sip",
+          "sha256": "d4485663b264c0fcb77186910dd1f5468931d2b10992fc8b7c018f70878a1f0e"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qpycore_virtual_error_handler.sip",
+          "source": "PyQt5/bindings/QtCore/qpycore_virtual_error_handler.sip",
+          "sha256": "448ec761974509de5cfb21b0d70fced1f68d60b4fa2f777b43d69ff72abb8674"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qrandom.sip",
+          "source": "PyQt5/bindings/QtCore/qrandom.sip",
+          "sha256": "cbc2da097512e88e841b1de733edd1ad20fb2b905aac28c917a49565a371d15f"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qreadwritelock.sip",
+          "source": "PyQt5/bindings/QtCore/qreadwritelock.sip",
+          "sha256": "4d3ae069d38a88a1956a8075af5b5e6dd8b61d80539ef0b2bb3855e30f125d73"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qrect.sip",
+          "source": "PyQt5/bindings/QtCore/qrect.sip",
+          "sha256": "c13645b7d1f3bcafae7c31b822b9c3c2f80e065f9bc70742e471977402d964b2"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qregexp.sip",
+          "source": "PyQt5/bindings/QtCore/qregexp.sip",
+          "sha256": "a7e244eda111c11a901a14849cb1b25262ca9cf7113803aa5ad6711ac61e2e62"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qregularexpression.sip",
+          "source": "PyQt5/bindings/QtCore/qregularexpression.sip",
+          "sha256": "72653ebfdd0bf790a09312905e3f9d43a9fea098af18e618eb2a896b75bd7016"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qresource.sip",
+          "source": "PyQt5/bindings/QtCore/qresource.sip",
+          "sha256": "88894f5eed9490494fab3d4fb7b52a7f0303381f074d53ea3c6d16e645751d2f"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qrunnable.sip",
+          "source": "PyQt5/bindings/QtCore/qrunnable.sip",
+          "sha256": "f3c5ff1d2b4747b4bc2efd673b6d83d73fe22c52ac8162eaed1393357bf2df58"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qsavefile.sip",
+          "source": "PyQt5/bindings/QtCore/qsavefile.sip",
+          "sha256": "7a7feadfd63dad8d8ff8bf72532c56506294a639bd8a360ff878cf34a177da15"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qsemaphore.sip",
+          "source": "PyQt5/bindings/QtCore/qsemaphore.sip",
+          "sha256": "c0a329be99fddccf437dadacdf3d4ee7ead5a8726cb75a0d1e17aa096d8a05b9"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qsequentialanimationgroup.sip",
+          "source": "PyQt5/bindings/QtCore/qsequentialanimationgroup.sip",
+          "sha256": "634b3058b689bad3c26c801c116bb0412bbdb39d6f21da7aad6a49e3801a991c"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qsettings.sip",
+          "source": "PyQt5/bindings/QtCore/qsettings.sip",
+          "sha256": "326705010c52285da17c50ff5158f89072700ba25e9f51e5e3f254b6a94e98d6"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qsharedmemory.sip",
+          "source": "PyQt5/bindings/QtCore/qsharedmemory.sip",
+          "sha256": "8658d2a75ce93f25839d527f1593f5647966036d02f01f0fbef2849d5d451c88"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qsignalmapper.sip",
+          "source": "PyQt5/bindings/QtCore/qsignalmapper.sip",
+          "sha256": "e26b0b4821f7a405fb9b61f0a2a7658633e8351cf37e64aac5f61105bf041edc"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qsignaltransition.sip",
+          "source": "PyQt5/bindings/QtCore/qsignaltransition.sip",
+          "sha256": "080b937a150a2f105f08e57069d8080ac5dd39eab8557cff91ccd8a279fa71de"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qsize.sip",
+          "source": "PyQt5/bindings/QtCore/qsize.sip",
+          "sha256": "6c9f646a1736931bd90806a4ce9fa4818b14e382ad408905ed9c75e9700ecbe8"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qsocketnotifier.sip",
+          "source": "PyQt5/bindings/QtCore/qsocketnotifier.sip",
+          "sha256": "a7bec09a819f4e869821cbf83736e3445aaf22ecdc7ef7e5e85a575174969e5e"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qsortfilterproxymodel.sip",
+          "source": "PyQt5/bindings/QtCore/qsortfilterproxymodel.sip",
+          "sha256": "b7cc49e53b3f55d05281cf99079e82b95b8a897be43a94f7f40be3b2693e7a69"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qstandardpaths.sip",
+          "source": "PyQt5/bindings/QtCore/qstandardpaths.sip",
+          "sha256": "7fbd8d5ae3626205d1dbd79f6f51749d282c8581ce97c132690362beaf622ecd"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qstate.sip",
+          "source": "PyQt5/bindings/QtCore/qstate.sip",
+          "sha256": "4794a76312fd4569a7ac4288e27f2617fa1c93d863e7585c9a4d00dc4dc5065f"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qstatemachine.sip",
+          "source": "PyQt5/bindings/QtCore/qstatemachine.sip",
+          "sha256": "ff87f524bc29fb5aa0fb4a6a47921ed3aa8efa8feefc093309a8c3d09ad96cbc"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qstorageinfo.sip",
+          "source": "PyQt5/bindings/QtCore/qstorageinfo.sip",
+          "sha256": "170615d4f62eb72c6e8b75eafef5ff2a247d8d82ecd2de188266d8cd0d53eb12"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qstring.sip",
+          "source": "PyQt5/bindings/QtCore/qstring.sip",
+          "sha256": "4ab1b2b701dfb0761263bdcad6b5fa700cf872d3bbce87464edb6109858f66e6"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qstringlist.sip",
+          "source": "PyQt5/bindings/QtCore/qstringlist.sip",
+          "sha256": "2ae8db62563bab41fa99c4159caf1b8742da59993006cc26cdaeb3d2d7ec021f"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qstringlistmodel.sip",
+          "source": "PyQt5/bindings/QtCore/qstringlistmodel.sip",
+          "sha256": "3a778d2aab69f8c56ed29f40e4ee76c477bf4d36017af4adf40d9bb1fb7d435f"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qsysinfo.sip",
+          "source": "PyQt5/bindings/QtCore/qsysinfo.sip",
+          "sha256": "a4e38e1bbe3f24699590cc03e1324ac12e63fbdd4c116070c30a86afb0bc6ce0"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qsystemsemaphore.sip",
+          "source": "PyQt5/bindings/QtCore/qsystemsemaphore.sip",
+          "sha256": "0e92ad75c0c6d9e3884842ae8956d0689c4df7247ac06a302b1af5e58faa8414"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qtemporarydir.sip",
+          "source": "PyQt5/bindings/QtCore/qtemporarydir.sip",
+          "sha256": "2ea9d30d171498bff1747c82de58e428c0de0b42ab6345ef8e252341744c9603"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qtemporaryfile.sip",
+          "source": "PyQt5/bindings/QtCore/qtemporaryfile.sip",
+          "sha256": "cbee98df473c846b4e2e4bf13ae8c31ca62f572205ea57bcd30986c0abbc3a2c"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qtextboundaryfinder.sip",
+          "source": "PyQt5/bindings/QtCore/qtextboundaryfinder.sip",
+          "sha256": "ec343862ebca4841942eea46187e94a48762436f1be14c9dacad625a1630dff5"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qtextcodec.sip",
+          "source": "PyQt5/bindings/QtCore/qtextcodec.sip",
+          "sha256": "80cc96faa1c1cc760f521c2c14c82e6496841f7d16bfcb11b647bedb9f079283"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qtextstream.sip",
+          "source": "PyQt5/bindings/QtCore/qtextstream.sip",
+          "sha256": "3dbbac4cd1ee08fbfc653e7baca23ec87321d3bae32636adaaee76eb162f1a21"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qthread.sip",
+          "source": "PyQt5/bindings/QtCore/qthread.sip",
+          "sha256": "8df57a3400b9fef5b4b0adabaa51cedb40e74f996b798640fabf2d945f0b4b45"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qthreadpool.sip",
+          "source": "PyQt5/bindings/QtCore/qthreadpool.sip",
+          "sha256": "0dfe7acbeb5b67814507225a2caa55074f9a28fcbe1904320e7d77e089893b40"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qtimeline.sip",
+          "source": "PyQt5/bindings/QtCore/qtimeline.sip",
+          "sha256": "590c329fe3eecd7414d1ec3eb8daed301027562bcf0dc354731c7edf13caf2ed"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qtimer.sip",
+          "source": "PyQt5/bindings/QtCore/qtimer.sip",
+          "sha256": "826d48338375e6f741bcecbbab89184a817386e3bd879db076b204c238a269e2"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qtimezone.sip",
+          "source": "PyQt5/bindings/QtCore/qtimezone.sip",
+          "sha256": "cf1441ee7c37ff6e3a1f7630b97832ef88ad17893e796db0fb72c7624c05e390"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qtranslator.sip",
+          "source": "PyQt5/bindings/QtCore/qtranslator.sip",
+          "sha256": "d3407afe777148fc90c3eb2ec9a531ab3195f5b6296ca0d324831e877cf90eb5"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qtransposeproxymodel.sip",
+          "source": "PyQt5/bindings/QtCore/qtransposeproxymodel.sip",
+          "sha256": "cc2a5032acd76c231e21dcde6276625be9d26d39c68b91356253d8f709cb1187"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qurl.sip",
+          "source": "PyQt5/bindings/QtCore/qurl.sip",
+          "sha256": "2e810250863c95e5dbf5fffe6138754a3d5ba0c77047c3b3480a04417264b716"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qurlquery.sip",
+          "source": "PyQt5/bindings/QtCore/qurlquery.sip",
+          "sha256": "3b0577d04b0a9c7b4a24bebf0e386e8085c1b0273a9fffce18a4882d8048bbb7"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/quuid.sip",
+          "source": "PyQt5/bindings/QtCore/quuid.sip",
+          "sha256": "819752a212481f503876902f2711fac4ce5d053a90f82f25d1f846fa5932cc6d"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qvariant.sip",
+          "source": "PyQt5/bindings/QtCore/qvariant.sip",
+          "sha256": "a93ac3c26a4b09a691d2f9cd010e425d77b145e7dbc6c6629d98b997cbb2503a"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qvariantanimation.sip",
+          "source": "PyQt5/bindings/QtCore/qvariantanimation.sip",
+          "sha256": "cee44b295d9588b190769fe36279b92bcde14b0f33aed0ed42dc44169f3c1a09"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qversionnumber.sip",
+          "source": "PyQt5/bindings/QtCore/qversionnumber.sip",
+          "sha256": "2d3f574d6b2de4c8069f767082c8fa7de67847725b980696de9dbfae641faadc"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qwaitcondition.sip",
+          "source": "PyQt5/bindings/QtCore/qwaitcondition.sip",
+          "sha256": "fedea2fc73ef2a98128263d37a44e5a47761e44963ef7219cca5f99e29b36acc"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qwineventnotifier.sip",
+          "source": "PyQt5/bindings/QtCore/qwineventnotifier.sip",
+          "sha256": "8612062c75791b3f9429cf9f8c77e87e7cf5eb474c789d6e6ba3c43a48b10a03"
+        },
+        {
+          "member": "PyQt5/bindings/QtCore/qxmlstream.sip",
+          "source": "PyQt5/bindings/QtCore/qxmlstream.sip",
+          "sha256": "d7ef9a80707d3c360027c41e194164743b9749991d8bd7842f308e03ee447a3d"
+        },
+        {
+          "member": "PyQt5/bindings/QtDBus/QtDBus.toml",
+          "source": "PyQt5/bindings/QtDBus/QtDBus.toml",
+          "sha256": "4a3e55060e5a87a9baff7ad4c885382bb9551c12fc8353ff33d67846b3f9d648"
+        },
+        {
+          "member": "PyQt5/bindings/QtDBus/QtDBusmod.sip",
+          "source": "PyQt5/bindings/QtDBus/QtDBusmod.sip",
+          "sha256": "58dbfd3145b6ac8bf08c0451f487ed4b1d7411bec1293f315ced075f84d480e5"
+        },
+        {
+          "member": "PyQt5/bindings/QtDBus/qdbusabstractadaptor.sip",
+          "source": "PyQt5/bindings/QtDBus/qdbusabstractadaptor.sip",
+          "sha256": "465db2146a6bcdcddb607bc2aebd5dd29009e9f81fa9b96d16dcd39590ac5340"
+        },
+        {
+          "member": "PyQt5/bindings/QtDBus/qdbusabstractinterface.sip",
+          "source": "PyQt5/bindings/QtDBus/qdbusabstractinterface.sip",
+          "sha256": "f94a31660c735b31ebb0e864ae703f2c2824a7bac286b672addc062541667ea9"
+        },
+        {
+          "member": "PyQt5/bindings/QtDBus/qdbusargument.sip",
+          "source": "PyQt5/bindings/QtDBus/qdbusargument.sip",
+          "sha256": "7d4eba2716b51a2a0d6ce2e7c8c7145bee8bc71bfa687747d849e1ee92d89ad8"
+        },
+        {
+          "member": "PyQt5/bindings/QtDBus/qdbusconnection.sip",
+          "source": "PyQt5/bindings/QtDBus/qdbusconnection.sip",
+          "sha256": "3165b7ad9276034c6ed8931d372d2581f6774ef0d3af6d5668f255ed0bf2813f"
+        },
+        {
+          "member": "PyQt5/bindings/QtDBus/qdbusconnectioninterface.sip",
+          "source": "PyQt5/bindings/QtDBus/qdbusconnectioninterface.sip",
+          "sha256": "e780b9d8f6761e4ebf80f8417a0a58c7b6f278b6066369330dde272abe766e68"
+        },
+        {
+          "member": "PyQt5/bindings/QtDBus/qdbuserror.sip",
+          "source": "PyQt5/bindings/QtDBus/qdbuserror.sip",
+          "sha256": "636a3db632da7bb7a5ba22198454ac62038b3aa9434428d7b6f1fafef61c9d3a"
+        },
+        {
+          "member": "PyQt5/bindings/QtDBus/qdbusextratypes.sip",
+          "source": "PyQt5/bindings/QtDBus/qdbusextratypes.sip",
+          "sha256": "4d1dec88f1f69a65068c8aabbadf984281dbca02a50ec948fc53d43cb5d685c9"
+        },
+        {
+          "member": "PyQt5/bindings/QtDBus/qdbusinterface.sip",
+          "source": "PyQt5/bindings/QtDBus/qdbusinterface.sip",
+          "sha256": "398c1a8b2c24b5af9fc968ea5f2864aa1d5d552013b6b5498bc57cbce0887f39"
+        },
+        {
+          "member": "PyQt5/bindings/QtDBus/qdbusmessage.sip",
+          "source": "PyQt5/bindings/QtDBus/qdbusmessage.sip",
+          "sha256": "8e2dbb3dae3aab12904ebdd09ee43b84aa8fd1af2341ad18003995fd3b6fc99c"
+        },
+        {
+          "member": "PyQt5/bindings/QtDBus/qdbuspendingcall.sip",
+          "source": "PyQt5/bindings/QtDBus/qdbuspendingcall.sip",
+          "sha256": "843a728eb2417edc8a2c6f654a5ec50f22824156cc21219c33fe87c4331a9f48"
+        },
+        {
+          "member": "PyQt5/bindings/QtDBus/qdbusservicewatcher.sip",
+          "source": "PyQt5/bindings/QtDBus/qdbusservicewatcher.sip",
+          "sha256": "6297a698ff324dd17ccb0396786a1e794d8bebb7643bcbf84bcd76cd8cac68f9"
+        },
+        {
+          "member": "PyQt5/bindings/QtDBus/qdbusunixfiledescriptor.sip",
+          "source": "PyQt5/bindings/QtDBus/qdbusunixfiledescriptor.sip",
+          "sha256": "4a74f7dd205a0dea9832f8840587f5c57b1af8059f1a53c0691e5060ba66db3a"
+        },
+        {
+          "member": "PyQt5/bindings/QtDBus/qpydbuspendingreply.sip",
+          "source": "PyQt5/bindings/QtDBus/qpydbuspendingreply.sip",
+          "sha256": "70ff7d3538775345657803197c2ba920b9c990eea52a6acb269a021838d477a4"
+        },
+        {
+          "member": "PyQt5/bindings/QtDBus/qpydbusreply.sip",
+          "source": "PyQt5/bindings/QtDBus/qpydbusreply.sip",
+          "sha256": "ec1c79c35a5ca6f3dc9cd2b429e4ce5b74380032c2a09b7eb8e22df9ff853cd1"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/QtGui.toml",
+          "source": "PyQt5/bindings/QtGui/QtGui.toml",
+          "sha256": "92b94b83956e468bbfed0a8c5966352f56bddf9ee695d6bfeb2e98290848fea4"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/QtGuimod.sip",
+          "source": "PyQt5/bindings/QtGui/QtGuimod.sip",
+          "sha256": "426408fd008841c6259c9df30ad2c94ab3295a02bcf49e275650f2097ea181d2"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/opengl_types.sip",
+          "source": "PyQt5/bindings/QtGui/opengl_types.sip",
+          "sha256": "fc1af7ce7d21285bbfef9e2efe32581e2255ef5c871106a171f991650f40015d"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qabstracttextdocumentlayout.sip",
+          "source": "PyQt5/bindings/QtGui/qabstracttextdocumentlayout.sip",
+          "sha256": "1ccd03e3cda05b56835890e1f9131c52f6dbe95604fce9d2c1c1ce4bcdda3393"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qbackingstore.sip",
+          "source": "PyQt5/bindings/QtGui/qbackingstore.sip",
+          "sha256": "a621cacb2b82c16c31ab230e1f3bb3d8e385bd899c636b6cb4e70e220a02236c"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qbitmap.sip",
+          "source": "PyQt5/bindings/QtGui/qbitmap.sip",
+          "sha256": "7ba5ee1300e026a2d8149c5e5e30212a0924333a526a268b5bec7e42faac5531"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qbrush.sip",
+          "source": "PyQt5/bindings/QtGui/qbrush.sip",
+          "sha256": "f13ba042a0c2073921bde05545164bb683b1413051a426b09e096a40a7def005"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qclipboard.sip",
+          "source": "PyQt5/bindings/QtGui/qclipboard.sip",
+          "sha256": "e1ca73c6216f9e4d5f1b67b1405ec0d074000071f58740e4046bc5946fd20e71"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qcolor.sip",
+          "source": "PyQt5/bindings/QtGui/qcolor.sip",
+          "sha256": "790623b3654ade699fb8e8d9d606b2cefd7e1aded0f02d29fb71cb5fe9debd10"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qcolorspace.sip",
+          "source": "PyQt5/bindings/QtGui/qcolorspace.sip",
+          "sha256": "3f643a2d6e32236cb7e75a09c6a4a64305d460bdc88043b795307eb3e0082942"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qcolortransform.sip",
+          "source": "PyQt5/bindings/QtGui/qcolortransform.sip",
+          "sha256": "d9da760ec9cfeb26b8a3cf6cd04bc5ec480a9d76741895e874fff0ccd31a103d"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qcursor.sip",
+          "source": "PyQt5/bindings/QtGui/qcursor.sip",
+          "sha256": "3bcf351531ff56e33f36149538b031342f9c8e08b57965d987bf493aad80410b"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qdesktopservices.sip",
+          "source": "PyQt5/bindings/QtGui/qdesktopservices.sip",
+          "sha256": "3b0d8bc30ed3a4ef859a869d7885f54a9f8e14341fed9c46332341b293d24e92"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qdrag.sip",
+          "source": "PyQt5/bindings/QtGui/qdrag.sip",
+          "sha256": "6b28ff2d01bf7f89bcbc611a9e9a85c4529727d4bbe70104bad2cf37ec73f20f"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qevent.sip",
+          "source": "PyQt5/bindings/QtGui/qevent.sip",
+          "sha256": "ff450b174ac7475a7192f6b885dd26c4f81fb17dec18dd156478209e49323526"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qfont.sip",
+          "source": "PyQt5/bindings/QtGui/qfont.sip",
+          "sha256": "d7d419b4eddbf6454b3a7cd5bed215409ae210f40eb5f9866cc4aa150b0f74d4"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qfontdatabase.sip",
+          "source": "PyQt5/bindings/QtGui/qfontdatabase.sip",
+          "sha256": "4938f49c51fc4321804878cc946c24b6008a9463fed9fd570f8e1f392c33be7d"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qfontinfo.sip",
+          "source": "PyQt5/bindings/QtGui/qfontinfo.sip",
+          "sha256": "bfa8a996de8b5c9f24b882ff23e24305c8bb714c37d8dbc622a746f897b4decc"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qfontmetrics.sip",
+          "source": "PyQt5/bindings/QtGui/qfontmetrics.sip",
+          "sha256": "ad24c81262309e96b372cfae11526e9b6550e4aec7dd528adddd5ef1b900fac8"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qgenericmatrix.sip",
+          "source": "PyQt5/bindings/QtGui/qgenericmatrix.sip",
+          "sha256": "8da0449e7fd8ed9cf1b1a067d787e0c1a54e76afe7895726a771e6850eb5709a"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qglyphrun.sip",
+          "source": "PyQt5/bindings/QtGui/qglyphrun.sip",
+          "sha256": "e7340ad8f11f466a424fe64ce6865fed4815f86ddd5e983635456d7dd8599893"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qguiapplication.sip",
+          "source": "PyQt5/bindings/QtGui/qguiapplication.sip",
+          "sha256": "8a965598b97c44478a156e28670f2b170e25f11feb90c9c70228f2ff0c86f9ab"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qicon.sip",
+          "source": "PyQt5/bindings/QtGui/qicon.sip",
+          "sha256": "903fd2a1f7e4965ec4ebbdc1c8872eea5bfa939e796e125c682643783d6c56c5"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qiconengine.sip",
+          "source": "PyQt5/bindings/QtGui/qiconengine.sip",
+          "sha256": "02bda4420ee8f21d6dbd1e5e0c98b3cd9f8d6451a6231dab78fa4442e95661e4"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qimage.sip",
+          "source": "PyQt5/bindings/QtGui/qimage.sip",
+          "sha256": "99c81f7e53805167d76ba2104adfdcf1d3b008842b4bcab65674e758f0c8562c"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qimageiohandler.sip",
+          "source": "PyQt5/bindings/QtGui/qimageiohandler.sip",
+          "sha256": "8a4c0bddd3d90e332d8fdfc1acc1ff6ca6a15876b73fcbf0eaa96cde3b9cc970"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qimagereader.sip",
+          "source": "PyQt5/bindings/QtGui/qimagereader.sip",
+          "sha256": "0c9593a88a1c568e53ae899172bdd8ac0c90646256c51f3c36c90e645d2db981"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qimagewriter.sip",
+          "source": "PyQt5/bindings/QtGui/qimagewriter.sip",
+          "sha256": "38e2d550b3e0f17bf2ff89449be0b013a1e3e2edc0b0c4bd74d3f0c2ec5ccb95"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qinputmethod.sip",
+          "source": "PyQt5/bindings/QtGui/qinputmethod.sip",
+          "sha256": "5f06eb420d66514efbb94e00f4cba916b6824088fdcec52b514fe363bc0df472"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qkeysequence.sip",
+          "source": "PyQt5/bindings/QtGui/qkeysequence.sip",
+          "sha256": "2284afa24faf26b694bf192d673013d382da3e33163fa0f8e8912c8413e4ed85"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qmatrix4x4.sip",
+          "source": "PyQt5/bindings/QtGui/qmatrix4x4.sip",
+          "sha256": "79e7dcfefa6640e4d7edb39b1a9588192af31e8fe31def84582ee8ca0e160a05"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qmovie.sip",
+          "source": "PyQt5/bindings/QtGui/qmovie.sip",
+          "sha256": "da54e6fdaf2d51e0d9feba692c64751de1cea8b662ba7cf12bd62055e3f52f2c"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qoffscreensurface.sip",
+          "source": "PyQt5/bindings/QtGui/qoffscreensurface.sip",
+          "sha256": "f5c495da8bebe974b20d424c270a291e1ba5805cd9c7f1182f6583b4b5b8b16e"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qopenglbuffer.sip",
+          "source": "PyQt5/bindings/QtGui/qopenglbuffer.sip",
+          "sha256": "21b6ed6c22ad7e0f970f703dff274450f84841feb8032b44b541e516f73cc7cb"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qopenglcontext.sip",
+          "source": "PyQt5/bindings/QtGui/qopenglcontext.sip",
+          "sha256": "8533b39a20c5e248d34e6eadd51c7a564b04fda42dab5f9c5f3a9481ae95c5f0"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qopengldebug.sip",
+          "source": "PyQt5/bindings/QtGui/qopengldebug.sip",
+          "sha256": "995213309c2dfbf63fabfa8a5637afc92ff4cf12afff6491a6b6bad3ec46370b"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qopenglframebufferobject.sip",
+          "source": "PyQt5/bindings/QtGui/qopenglframebufferobject.sip",
+          "sha256": "65b50ffc073d27b5341bc8401d83e0ae456f98963f74dcb8d829ab3b00ea4752"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qopenglpaintdevice.sip",
+          "source": "PyQt5/bindings/QtGui/qopenglpaintdevice.sip",
+          "sha256": "45d13a7bed558f2339ed6c87c563aad904da865825eacff89236af324facf90f"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qopenglpixeltransferoptions.sip",
+          "source": "PyQt5/bindings/QtGui/qopenglpixeltransferoptions.sip",
+          "sha256": "4de4cb123189a722ada6e18220da4cebaeb648c41ab2fcc5942b69c705a9797d"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qopenglshaderprogram.sip",
+          "source": "PyQt5/bindings/QtGui/qopenglshaderprogram.sip",
+          "sha256": "71acede504592dedad44c27933f7dcecd31e277ef2285fa7bb6383eb5c4c0ab2"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qopengltexture.sip",
+          "source": "PyQt5/bindings/QtGui/qopengltexture.sip",
+          "sha256": "547d5d281a4ccda59f0d79b63e3a4683216583ac57b96f769a4a36dca73c9087"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qopengltextureblitter.sip",
+          "source": "PyQt5/bindings/QtGui/qopengltextureblitter.sip",
+          "sha256": "4244780b89347bc2b416d4119d648c8dfbc0278d1690632449f3e433c16b8c9d"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qopengltimerquery.sip",
+          "source": "PyQt5/bindings/QtGui/qopengltimerquery.sip",
+          "sha256": "fd6108a72012ae6c3c0f5ecd426615e84f9e309541c6cc911fefaeca5eea82de"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qopenglversionfunctions.sip",
+          "source": "PyQt5/bindings/QtGui/qopenglversionfunctions.sip",
+          "sha256": "d795bea04139b1b8d340a83f3331d92360adf33206bf9df941fd6d214ad0fe81"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qopenglvertexarrayobject.sip",
+          "source": "PyQt5/bindings/QtGui/qopenglvertexarrayobject.sip",
+          "sha256": "33bac7b8dac65e74dce5b8629a737bcdbffef0b4562c03e5710398ceacee664a"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qopenglwindow.sip",
+          "source": "PyQt5/bindings/QtGui/qopenglwindow.sip",
+          "sha256": "ed62de60c0c7eae39ef9d926a9ecc8aa0a236c691a43d0f06606c606b399c8eb"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qpagedpaintdevice.sip",
+          "source": "PyQt5/bindings/QtGui/qpagedpaintdevice.sip",
+          "sha256": "78b6fbf2e324415de1522c47cb5d587717c4e4171e712e6bbc745f664c4dc0c6"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qpagelayout.sip",
+          "source": "PyQt5/bindings/QtGui/qpagelayout.sip",
+          "sha256": "146e6480ee7528a5ebbc336a655695a46bc40ac16ab4fd841f92d846401dd712"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qpagesize.sip",
+          "source": "PyQt5/bindings/QtGui/qpagesize.sip",
+          "sha256": "4029283499a256533bde425f4ee19b166299bcf4369a9992ba47e22697c55353"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qpaintdevice.sip",
+          "source": "PyQt5/bindings/QtGui/qpaintdevice.sip",
+          "sha256": "0f52b4a22c33280ba6c3830c469f486ffba9f91c818f0765dd845facd9871198"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qpaintdevicewindow.sip",
+          "source": "PyQt5/bindings/QtGui/qpaintdevicewindow.sip",
+          "sha256": "d8f100d06944e27595bed6c3124ed0ef2cb6b4b7d9ac01e089b85d6c1f751395"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qpaintengine.sip",
+          "source": "PyQt5/bindings/QtGui/qpaintengine.sip",
+          "sha256": "bc973d1dd1d43bc79e45ccb5b4d51b7e427e7445baea9e64d5f8f60652232a96"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qpainter.sip",
+          "source": "PyQt5/bindings/QtGui/qpainter.sip",
+          "sha256": "890e193e60b61c00540bf1b4729c79edf113ee56f328d84e0315bc8a30cda3b2"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qpainterpath.sip",
+          "source": "PyQt5/bindings/QtGui/qpainterpath.sip",
+          "sha256": "abb01daaf4ce3070bd65dcee3475b755aba2257ad7a2c2e79e1ff84a6bdac6cc"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qpalette.sip",
+          "source": "PyQt5/bindings/QtGui/qpalette.sip",
+          "sha256": "54ed9a5a57d451d5eeba6df6e183453f9fc22f6c12a37988fbbcdf1e6af91994"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qpdfwriter.sip",
+          "source": "PyQt5/bindings/QtGui/qpdfwriter.sip",
+          "sha256": "6ce4babacfc8540004c527d104968a5c9239f63e60d458873414e1c9d0429dc8"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qpen.sip",
+          "source": "PyQt5/bindings/QtGui/qpen.sip",
+          "sha256": "ede45947b9ed16410b27f01e4764d97723ee9149548582e98ac4cec008b64b42"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qpicture.sip",
+          "source": "PyQt5/bindings/QtGui/qpicture.sip",
+          "sha256": "1d01234f31d80b79de106bc8b766944e3407ebeb0dcd552277c60a9489bdc714"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qpixelformat.sip",
+          "source": "PyQt5/bindings/QtGui/qpixelformat.sip",
+          "sha256": "264c25a9866b0ceb5989f94bb4376009cf7f8ea513cbdfc9eb4628deb1089d2c"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qpixmap.sip",
+          "source": "PyQt5/bindings/QtGui/qpixmap.sip",
+          "sha256": "3f5c05999b6bd2582c04f016c82ab31023e9ef18629efc112d95f930dfe2ff6c"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qpixmapcache.sip",
+          "source": "PyQt5/bindings/QtGui/qpixmapcache.sip",
+          "sha256": "96466266d9094e04dd015719ccf45bc0b4950d3c55152e16bf5ea85ff2ea3a9d"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qpolygon.sip",
+          "source": "PyQt5/bindings/QtGui/qpolygon.sip",
+          "sha256": "5d764ea09d28f42910d70308c189bd1540e551b3897a7bc9f8d6994ba10eb117"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qpygui_qlist.sip",
+          "source": "PyQt5/bindings/QtGui/qpygui_qlist.sip",
+          "sha256": "74dd292ffefb9e2bfff4e7bc934157784d4ae547b715a8cd9343e255d3964b6f"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qpygui_qpair.sip",
+          "source": "PyQt5/bindings/QtGui/qpygui_qpair.sip",
+          "sha256": "3ffe89c1e5ab8b3cd5ca266027cec1290dbd666080efd18a763390b05816ecb4"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qpygui_qvector.sip",
+          "source": "PyQt5/bindings/QtGui/qpygui_qvector.sip",
+          "sha256": "d36b5413e68cfbc3793c13e8243141ce0e9c8bb7e06fe280611faa5bedfd5afa"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qquaternion.sip",
+          "source": "PyQt5/bindings/QtGui/qquaternion.sip",
+          "sha256": "b6221a4bf615f2278e28e58e8152cd930da420ae174884bfbe5e5812043c82b5"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qrasterwindow.sip",
+          "source": "PyQt5/bindings/QtGui/qrasterwindow.sip",
+          "sha256": "46feee9010879d36f44631325ab3dc5283bef4cb0a272249cb1d0a20b59ad2e5"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qrawfont.sip",
+          "source": "PyQt5/bindings/QtGui/qrawfont.sip",
+          "sha256": "37d0994ab87307a45e66bd4b1e5561ccd8fa68f674a221c69c18e386935005f2"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qregion.sip",
+          "source": "PyQt5/bindings/QtGui/qregion.sip",
+          "sha256": "715829c10c522bda5793a0f89ced7ff62e8dcb8a1c54718af2103c2b4505c187"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qrgb.sip",
+          "source": "PyQt5/bindings/QtGui/qrgb.sip",
+          "sha256": "a2398a7a503f89de3b7be8d3bb301a5f6d6bd9efb0cc01689bc231dd97069d2b"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qrgba64.sip",
+          "source": "PyQt5/bindings/QtGui/qrgba64.sip",
+          "sha256": "8d66b56892f07ac8c17dbcde1fb0a99ac6d444dc1c9b94fdc185d402797738a6"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qscreen.sip",
+          "source": "PyQt5/bindings/QtGui/qscreen.sip",
+          "sha256": "9ae802154a580f46fb7a2396ba32c09c1da54a01494e5133b7b6ff168dc24764"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qsessionmanager.sip",
+          "source": "PyQt5/bindings/QtGui/qsessionmanager.sip",
+          "sha256": "804fb087ab3163edd2f9af91b56bd635c2e087295b95b0c7602a28a3c3754392"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qstandarditemmodel.sip",
+          "source": "PyQt5/bindings/QtGui/qstandarditemmodel.sip",
+          "sha256": "8ec7407df385e2dbd88675b7c7eb19d3d838770cd25e3a616621c05bc8f55318"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qstatictext.sip",
+          "source": "PyQt5/bindings/QtGui/qstatictext.sip",
+          "sha256": "4fd4b7e989fc5696d0c90e80e82785f9451e07288bd98809bfd54d2cd648b643"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qstylehints.sip",
+          "source": "PyQt5/bindings/QtGui/qstylehints.sip",
+          "sha256": "383aac90357697fb244507e83285a61cf3b533095f08217cce332720072059cf"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qsurface.sip",
+          "source": "PyQt5/bindings/QtGui/qsurface.sip",
+          "sha256": "bbb3214c41825508488a8a0025a6a7549746881d5de34750eaffd24307e43659"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qsurfaceformat.sip",
+          "source": "PyQt5/bindings/QtGui/qsurfaceformat.sip",
+          "sha256": "2a8d659d57123e75569f73b568315d01332a99dc722aea56a2b5df4e932613e2"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qsyntaxhighlighter.sip",
+          "source": "PyQt5/bindings/QtGui/qsyntaxhighlighter.sip",
+          "sha256": "4a17e087229e01b47d52831f9f11efdd9ee11894537326b8332e15146009b46e"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qtextcursor.sip",
+          "source": "PyQt5/bindings/QtGui/qtextcursor.sip",
+          "sha256": "cefa89a4f63d0ff2d3d09b5685a3c83800c727fccbc1f70f0fce465ed95b9426"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qtextdocument.sip",
+          "source": "PyQt5/bindings/QtGui/qtextdocument.sip",
+          "sha256": "7c3c53360df4f90f70b26f8ceac7e8dba961c4666c0c7481b023b2da465d97bb"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qtextdocumentfragment.sip",
+          "source": "PyQt5/bindings/QtGui/qtextdocumentfragment.sip",
+          "sha256": "c238c404808d10c456a82286d1eb80d1900e63ebcc6c84942e9ef283b0ae1d5f"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qtextdocumentwriter.sip",
+          "source": "PyQt5/bindings/QtGui/qtextdocumentwriter.sip",
+          "sha256": "3838d35d113248cf4483bb5c868ebb1f1a263daa329ff49f752919305d18c688"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qtextformat.sip",
+          "source": "PyQt5/bindings/QtGui/qtextformat.sip",
+          "sha256": "67c0434b87ca5aae2da82fe4c9ee78d56205949d99cc2516aaf474736c09fe4b"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qtextlayout.sip",
+          "source": "PyQt5/bindings/QtGui/qtextlayout.sip",
+          "sha256": "13b594afe64d930876311fce5927f3e226f41e61906f1dac581c58aa025c3a82"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qtextlist.sip",
+          "source": "PyQt5/bindings/QtGui/qtextlist.sip",
+          "sha256": "90c12d315625fb4729ed1a852a1c9bba80ddf155b151aa61a151639557465b8a"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qtextobject.sip",
+          "source": "PyQt5/bindings/QtGui/qtextobject.sip",
+          "sha256": "89ce4c6f3e5636a895072db2bdca5410b6935a692910a10aa67e32c662bd0956"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qtextoption.sip",
+          "source": "PyQt5/bindings/QtGui/qtextoption.sip",
+          "sha256": "9afaa37c1da13a2dcca888c0deaa326dbe173644466760529a8f1dbdd60e805e"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qtexttable.sip",
+          "source": "PyQt5/bindings/QtGui/qtexttable.sip",
+          "sha256": "eae3fc720f2976b2005eca6ceb8ff2a14abae2ba6d0a30e8fa103d531281fe72"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qtouchdevice.sip",
+          "source": "PyQt5/bindings/QtGui/qtouchdevice.sip",
+          "sha256": "855f752d264318b5719e1e041c381d6e37c323cb0cf8237e0664ea14aaa4516d"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qtransform.sip",
+          "source": "PyQt5/bindings/QtGui/qtransform.sip",
+          "sha256": "d987bd6751469d2f4a4036a96cb0f50e0928bdce3b97f3c79bf595de0b02a2f9"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qvalidator.sip",
+          "source": "PyQt5/bindings/QtGui/qvalidator.sip",
+          "sha256": "76d3a082d9256429310f9441585e148118fc5e735f8f4e977db6f8610b927a97"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qvector2d.sip",
+          "source": "PyQt5/bindings/QtGui/qvector2d.sip",
+          "sha256": "8c205fe966205e5a9cfd87a42cfdb00d7355403b23e4156ce2d9680716fe9ada"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qvector3d.sip",
+          "source": "PyQt5/bindings/QtGui/qvector3d.sip",
+          "sha256": "d3d0b612c3b1b5aea13ba473bfa7c816b3b7b6594fba024aa6cae53de322a28e"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qvector4d.sip",
+          "source": "PyQt5/bindings/QtGui/qvector4d.sip",
+          "sha256": "af5eddbab72d0946be260a2d7e571d908a048b200f2dbd6da618545da22e48e2"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qwindow.sip",
+          "source": "PyQt5/bindings/QtGui/qwindow.sip",
+          "sha256": "09fee5491612c072fed7053c64a23fc41eb17014bffaeb6a69cb0165c8fc03ec"
+        },
+        {
+          "member": "PyQt5/bindings/QtGui/qwindowdefs.sip",
+          "source": "PyQt5/bindings/QtGui/qwindowdefs.sip",
+          "sha256": "be464f9843055748d29b89c71ec581b0d34e37b7993e1e12247274bb1bf4f4eb"
+        },
+        {
+          "member": "PyQt5/bindings/QtNetwork/QtNetwork.toml",
+          "source": "PyQt5/bindings/QtNetwork/QtNetwork.toml",
+          "sha256": "045509b662abf5a1eabc73fc5305d5f8a791e90e876d417fbc1fb762f0c9e8eb"
+        },
+        {
+          "member": "PyQt5/bindings/QtNetwork/QtNetworkmod.sip",
+          "source": "PyQt5/bindings/QtNetwork/QtNetworkmod.sip",
+          "sha256": "319a2735526f2916f20b972b81e40b6e8828beff23a6fcdfec51c19f35186c1f"
+        },
+        {
+          "member": "PyQt5/bindings/QtNetwork/qabstractnetworkcache.sip",
+          "source": "PyQt5/bindings/QtNetwork/qabstractnetworkcache.sip",
+          "sha256": "b6e2bab649b0796bbd2360303084be3b1518eec3621a9c240eeddd78916d5628"
+        },
+        {
+          "member": "PyQt5/bindings/QtNetwork/qabstractsocket.sip",
+          "source": "PyQt5/bindings/QtNetwork/qabstractsocket.sip",
+          "sha256": "1ae06cf9520c967a99152af248c29a2a5568e332ae2dfc51ca785475905b0aeb"
+        },
+        {
+          "member": "PyQt5/bindings/QtNetwork/qauthenticator.sip",
+          "source": "PyQt5/bindings/QtNetwork/qauthenticator.sip",
+          "sha256": "6d48ceeb494d70cc70284602f94e619fb0b789976d9940f96f7bb71b0d6ee810"
+        },
+        {
+          "member": "PyQt5/bindings/QtNetwork/qdnslookup.sip",
+          "source": "PyQt5/bindings/QtNetwork/qdnslookup.sip",
+          "sha256": "6f41cd62b88cb4ede123f906c6b5bc0320434102e6456ff8c24b16d73ca8ea78"
+        },
+        {
+          "member": "PyQt5/bindings/QtNetwork/qhostaddress.sip",
+          "source": "PyQt5/bindings/QtNetwork/qhostaddress.sip",
+          "sha256": "7efa666bc0dfa551aacc7e90219e435d31845b094e2a6b34112d3e2be072bf57"
+        },
+        {
+          "member": "PyQt5/bindings/QtNetwork/qhostinfo.sip",
+          "source": "PyQt5/bindings/QtNetwork/qhostinfo.sip",
+          "sha256": "e74911cd3c6dc37611a0d68188881234c2b4d85a04565841d880181443184f2c"
+        },
+        {
+          "member": "PyQt5/bindings/QtNetwork/qhstspolicy.sip",
+          "source": "PyQt5/bindings/QtNetwork/qhstspolicy.sip",
+          "sha256": "c22e4b28536df873ec9b87159a9d573b140b43d2a9790abaf0afa4900501e423"
+        },
+        {
+          "member": "PyQt5/bindings/QtNetwork/qhttp2configuration.sip",
+          "source": "PyQt5/bindings/QtNetwork/qhttp2configuration.sip",
+          "sha256": "660ff3ff0420208581bf17265e3dee3b66599eefea6227bf9ee890de960cf595"
+        },
+        {
+          "member": "PyQt5/bindings/QtNetwork/qhttpmultipart.sip",
+          "source": "PyQt5/bindings/QtNetwork/qhttpmultipart.sip",
+          "sha256": "c23aff4a4371dfd559677c633d55851fcb06c1a354dfee060edd953846a3f259"
+        },
+        {
+          "member": "PyQt5/bindings/QtNetwork/qlocalserver.sip",
+          "source": "PyQt5/bindings/QtNetwork/qlocalserver.sip",
+          "sha256": "fbe6a10e1cfce77884acdec07b9ce016f43c646cfd96fd83ed929fa48cb3ba7e"
+        },
+        {
+          "member": "PyQt5/bindings/QtNetwork/qlocalsocket.sip",
+          "source": "PyQt5/bindings/QtNetwork/qlocalsocket.sip",
+          "sha256": "b8f22a5644a309a45ade7cecdc6fe6152dc8b5bf5290ee1589652e5875340960"
+        },
+        {
+          "member": "PyQt5/bindings/QtNetwork/qnetworkaccessmanager.sip",
+          "source": "PyQt5/bindings/QtNetwork/qnetworkaccessmanager.sip",
+          "sha256": "3f7082fb7f9567e36cb08aeef65c14906419dc0e69bef301e00ffa18c888eb29"
+        },
+        {
+          "member": "PyQt5/bindings/QtNetwork/qnetworkconfigmanager.sip",
+          "source": "PyQt5/bindings/QtNetwork/qnetworkconfigmanager.sip",
+          "sha256": "884d4b5c6f2b41c29f8a3ddfcdd2ce2e41060792b2356c15e1663ed96f558f3c"
+        },
+        {
+          "member": "PyQt5/bindings/QtNetwork/qnetworkconfiguration.sip",
+          "source": "PyQt5/bindings/QtNetwork/qnetworkconfiguration.sip",
+          "sha256": "ee898ff04488413d42278c40f5adecf43b91e01d10855b2f618289bdd664ffa7"
+        },
+        {
+          "member": "PyQt5/bindings/QtNetwork/qnetworkcookie.sip",
+          "source": "PyQt5/bindings/QtNetwork/qnetworkcookie.sip",
+          "sha256": "d3b5e86cc01783d02c23ab4202449e1f5827d0a0b65daca51c6e0431dd36f7eb"
+        },
+        {
+          "member": "PyQt5/bindings/QtNetwork/qnetworkcookiejar.sip",
+          "source": "PyQt5/bindings/QtNetwork/qnetworkcookiejar.sip",
+          "sha256": "e07c0472c29d6044bb69f170502db4c56994b071bfc78528bcda1b071f45dd4b"
+        },
+        {
+          "member": "PyQt5/bindings/QtNetwork/qnetworkdatagram.sip",
+          "source": "PyQt5/bindings/QtNetwork/qnetworkdatagram.sip",
+          "sha256": "d3d28f037a990e8691308186427f5e51ea05be6474d0e287f325c7102db94176"
+        },
+        {
+          "member": "PyQt5/bindings/QtNetwork/qnetworkdiskcache.sip",
+          "source": "PyQt5/bindings/QtNetwork/qnetworkdiskcache.sip",
+          "sha256": "fca07323024a6799af44f7172a35ac50d564d55b20e16955d9698a6414338013"
+        },
+        {
+          "member": "PyQt5/bindings/QtNetwork/qnetworkinterface.sip",
+          "source": "PyQt5/bindings/QtNetwork/qnetworkinterface.sip",
+          "sha256": "9d5dce3e934cb4fe24732bcb64476024dd301ad4c18d81438e9ad6f8d6e2e745"
+        },
+        {
+          "member": "PyQt5/bindings/QtNetwork/qnetworkproxy.sip",
+          "source": "PyQt5/bindings/QtNetwork/qnetworkproxy.sip",
+          "sha256": "5f4c3eda7d59032ad5e1aaa8f5bd6bede2f0239c0a8c66f4d7ab141091ddaa36"
+        },
+        {
+          "member": "PyQt5/bindings/QtNetwork/qnetworkreply.sip",
+          "source": "PyQt5/bindings/QtNetwork/qnetworkreply.sip",
+          "sha256": "9f037e1599bcadb2941c08c24e0a3cd0485a797986e50e3abd6422a12c0a8733"
+        },
+        {
+          "member": "PyQt5/bindings/QtNetwork/qnetworkrequest.sip",
+          "source": "PyQt5/bindings/QtNetwork/qnetworkrequest.sip",
+          "sha256": "2b2447f7345adfb421abf3f0803573d1ffe31cbd192fdffc815948de18bc1f58"
+        },
+        {
+          "member": "PyQt5/bindings/QtNetwork/qnetworksession.sip",
+          "source": "PyQt5/bindings/QtNetwork/qnetworksession.sip",
+          "sha256": "0315780a0c7d58fcfc7f331e297396be7359c545c02e3773cd9e7eed156c9223"
+        },
+        {
+          "member": "PyQt5/bindings/QtNetwork/qocspresponse.sip",
+          "source": "PyQt5/bindings/QtNetwork/qocspresponse.sip",
+          "sha256": "159ad534bc91573c57afe35da48b12565fc31428e727c14da4b85b60f894e984"
+        },
+        {
+          "member": "PyQt5/bindings/QtNetwork/qpassworddigestor.sip",
+          "source": "PyQt5/bindings/QtNetwork/qpassworddigestor.sip",
+          "sha256": "f8a6c84c4dcdf2159cd208ea9cbe4d41ad2153e0ed7745039841ea872214b8c0"
+        },
+        {
+          "member": "PyQt5/bindings/QtNetwork/qpynetwork_qhash.sip",
+          "source": "PyQt5/bindings/QtNetwork/qpynetwork_qhash.sip",
+          "sha256": "257e3c81bd50c6dbce33bf82a48563bf6aeec6b4a46d80ed12efc039538f5381"
+        },
+        {
+          "member": "PyQt5/bindings/QtNetwork/qpynetwork_qmap.sip",
+          "source": "PyQt5/bindings/QtNetwork/qpynetwork_qmap.sip",
+          "sha256": "df721b098548efafc9d9fc674fafa3ba7fd1bfdbe6c88b01398a0031c5c958a5"
+        },
+        {
+          "member": "PyQt5/bindings/QtNetwork/qssl.sip",
+          "source": "PyQt5/bindings/QtNetwork/qssl.sip",
+          "sha256": "d8261c466b062308bb6f5499f632be16ab515d629003ff425935dce967a0d697"
+        },
+        {
+          "member": "PyQt5/bindings/QtNetwork/qsslcertificate.sip",
+          "source": "PyQt5/bindings/QtNetwork/qsslcertificate.sip",
+          "sha256": "e617c4d3523cc89589c3c55b7a8a22e02732137f87b6cd758e8acd4a759cd01b"
+        },
+        {
+          "member": "PyQt5/bindings/QtNetwork/qsslcertificateextension.sip",
+          "source": "PyQt5/bindings/QtNetwork/qsslcertificateextension.sip",
+          "sha256": "b4644e6d981f39306986db6a031f0d7364ba628202b3161dd36be3d36a2c2b4a"
+        },
+        {
+          "member": "PyQt5/bindings/QtNetwork/qsslcipher.sip",
+          "source": "PyQt5/bindings/QtNetwork/qsslcipher.sip",
+          "sha256": "289ca760c73f04d494db1c8bd09f85ba37e9eb5eb8369c2fd14761c60fb4bce4"
+        },
+        {
+          "member": "PyQt5/bindings/QtNetwork/qsslconfiguration.sip",
+          "source": "PyQt5/bindings/QtNetwork/qsslconfiguration.sip",
+          "sha256": "16112b13ad0698c3cb91d2979b8cd2d9e4d08baf6fb87d219c8c025a3ece198d"
+        },
+        {
+          "member": "PyQt5/bindings/QtNetwork/qssldiffiehellmanparameters.sip",
+          "source": "PyQt5/bindings/QtNetwork/qssldiffiehellmanparameters.sip",
+          "sha256": "ba8275cffb6f70bc3a4af65a6cf26e06b900c8602acd281e0bc6f818c0473f89"
+        },
+        {
+          "member": "PyQt5/bindings/QtNetwork/qsslellipticcurve.sip",
+          "source": "PyQt5/bindings/QtNetwork/qsslellipticcurve.sip",
+          "sha256": "3d8ae9ff900993b616408dbf07b62aa2307107325e921418ab8d436ef8092fd7"
+        },
+        {
+          "member": "PyQt5/bindings/QtNetwork/qsslerror.sip",
+          "source": "PyQt5/bindings/QtNetwork/qsslerror.sip",
+          "sha256": "06df3d4639953fb752923878826af2c0e2de59f047a5a26cc1cef76060c614c4"
+        },
+        {
+          "member": "PyQt5/bindings/QtNetwork/qsslkey.sip",
+          "source": "PyQt5/bindings/QtNetwork/qsslkey.sip",
+          "sha256": "158b2cc40f4b7a41164ded0659c63a9d9b90c91fba0909ff57017b0889a6ef78"
+        },
+        {
+          "member": "PyQt5/bindings/QtNetwork/qsslpresharedkeyauthenticator.sip",
+          "source": "PyQt5/bindings/QtNetwork/qsslpresharedkeyauthenticator.sip",
+          "sha256": "2636a83423fb5136a6d932833c5d09f92d72b88a46b0a42ba25d8394aefa267c"
+        },
+        {
+          "member": "PyQt5/bindings/QtNetwork/qsslsocket.sip",
+          "source": "PyQt5/bindings/QtNetwork/qsslsocket.sip",
+          "sha256": "66d4e128895a794c3a305224b80bc8fe2565336362ff9328ad38e8eaec94a946"
+        },
+        {
+          "member": "PyQt5/bindings/QtNetwork/qtcpserver.sip",
+          "source": "PyQt5/bindings/QtNetwork/qtcpserver.sip",
+          "sha256": "fc573604031eeba7ebfb1d6f7f0b9b71e6dde1cd80177ad07cea0346246adc1d"
+        },
+        {
+          "member": "PyQt5/bindings/QtNetwork/qtcpsocket.sip",
+          "source": "PyQt5/bindings/QtNetwork/qtcpsocket.sip",
+          "sha256": "dc07ea82af9c7a23cf36e006678f80b62efe594006304e4eeeb2877ebaab1cc9"
+        },
+        {
+          "member": "PyQt5/bindings/QtNetwork/qudpsocket.sip",
+          "source": "PyQt5/bindings/QtNetwork/qudpsocket.sip",
+          "sha256": "b4c2a038f7f686c83273c861d5c9b3bf6a4d5615ab170f5549f97e3a87f11a67"
+        },
+        {
+          "member": "PyQt5/bindings/QtPrintSupport/QtPrintSupport.toml",
+          "source": "PyQt5/bindings/QtPrintSupport/QtPrintSupport.toml",
+          "sha256": "babcbe05854f60a308e848b0cd60894f0fc18aa3a64e792bbf5718e18ae597dd"
+        },
+        {
+          "member": "PyQt5/bindings/QtPrintSupport/QtPrintSupportmod.sip",
+          "source": "PyQt5/bindings/QtPrintSupport/QtPrintSupportmod.sip",
+          "sha256": "617e7ad5207b94a4cf1279796df2ce9beae5791020c088fe98f7157ad8f61fbd"
+        },
+        {
+          "member": "PyQt5/bindings/QtPrintSupport/qabstractprintdialog.sip",
+          "source": "PyQt5/bindings/QtPrintSupport/qabstractprintdialog.sip",
+          "sha256": "4438908210117e51d27b69315abcab7e2db79cd15f65af589989509228d68ed5"
+        },
+        {
+          "member": "PyQt5/bindings/QtPrintSupport/qpagesetupdialog.sip",
+          "source": "PyQt5/bindings/QtPrintSupport/qpagesetupdialog.sip",
+          "sha256": "4bcfa05805403c809776c499a32702ac316a33828ab17bad4ffeb0ca4084df6b"
+        },
+        {
+          "member": "PyQt5/bindings/QtPrintSupport/qprintdialog.sip",
+          "source": "PyQt5/bindings/QtPrintSupport/qprintdialog.sip",
+          "sha256": "e8084ca408d6bdea065a30046830ae60780e11479629bec15672e07cd12f65d3"
+        },
+        {
+          "member": "PyQt5/bindings/QtPrintSupport/qprintengine.sip",
+          "source": "PyQt5/bindings/QtPrintSupport/qprintengine.sip",
+          "sha256": "ca79fbdeef8e4b1ee0098f0c01c737ffd97766ef95ffc5f2886522c6bc5a27a4"
+        },
+        {
+          "member": "PyQt5/bindings/QtPrintSupport/qprinter.sip",
+          "source": "PyQt5/bindings/QtPrintSupport/qprinter.sip",
+          "sha256": "0bc95d5ec82b0e7709ed2ce2565655689cced114639b2784ac15779ceaa0cdf1"
+        },
+        {
+          "member": "PyQt5/bindings/QtPrintSupport/qprinterinfo.sip",
+          "source": "PyQt5/bindings/QtPrintSupport/qprinterinfo.sip",
+          "sha256": "d69f449a711d5fb275139b25e1021fd90b076e364e9e388dc4d866fd7522ceb5"
+        },
+        {
+          "member": "PyQt5/bindings/QtPrintSupport/qprintpreviewdialog.sip",
+          "source": "PyQt5/bindings/QtPrintSupport/qprintpreviewdialog.sip",
+          "sha256": "7f5bbda39cfca113e5c71fe0bfbaf695039b7e80310fa287b028627530af5428"
+        },
+        {
+          "member": "PyQt5/bindings/QtPrintSupport/qprintpreviewwidget.sip",
+          "source": "PyQt5/bindings/QtPrintSupport/qprintpreviewwidget.sip",
+          "sha256": "567f3a83c052d6d9da67c5bf5575aa83c999896a3ddd735fc8a054cebc41c1fa"
+        },
+        {
+          "member": "PyQt5/bindings/QtPrintSupport/qpyprintsupport_qlist.sip",
+          "source": "PyQt5/bindings/QtPrintSupport/qpyprintsupport_qlist.sip",
+          "sha256": "c1cb11b404ca7cd70c5e2708df45f3a28bc53cd4fb7e5d64f3745b6681c5792d"
+        },
+        {
+          "member": "PyQt5/bindings/QtSvg/QtSvg.toml",
+          "source": "PyQt5/bindings/QtSvg/QtSvg.toml",
+          "sha256": "bdb8b227f8d8ac4be0fed706b1878e3dc7bb1cd2572eb6aba6d98d122e6ac04d"
+        },
+        {
+          "member": "PyQt5/bindings/QtSvg/QtSvgmod.sip",
+          "source": "PyQt5/bindings/QtSvg/QtSvgmod.sip",
+          "sha256": "b53a12f3c0028d78743e3ea5afd234db938baa022a7a0035998366b8422235be"
+        },
+        {
+          "member": "PyQt5/bindings/QtSvg/qgraphicssvgitem.sip",
+          "source": "PyQt5/bindings/QtSvg/qgraphicssvgitem.sip",
+          "sha256": "ba66e103873db831d3ae1ac2c2b17f90edb0b19c700412a0b73bcf081ecc9dd2"
+        },
+        {
+          "member": "PyQt5/bindings/QtSvg/qsvggenerator.sip",
+          "source": "PyQt5/bindings/QtSvg/qsvggenerator.sip",
+          "sha256": "d5d81eba71b71a42ff11ae314ea46e5582aca9c3b19144d6cdb7d0c74c1deb96"
+        },
+        {
+          "member": "PyQt5/bindings/QtSvg/qsvgrenderer.sip",
+          "source": "PyQt5/bindings/QtSvg/qsvgrenderer.sip",
+          "sha256": "1a700783731cf9e90ad84b9cea859f0b7506becdf4215614cc8a4895f3a592d0"
+        },
+        {
+          "member": "PyQt5/bindings/QtSvg/qsvgwidget.sip",
+          "source": "PyQt5/bindings/QtSvg/qsvgwidget.sip",
+          "sha256": "0ab200092d87e1faf1f468e8e7fa7b5a157b0bf88310e3095fb3ab1d298c73ba"
+        },
+        {
+          "member": "PyQt5/bindings/QtTest/QtTest.toml",
+          "source": "PyQt5/bindings/QtTest/QtTest.toml",
+          "sha256": "dd12acb1d99da65ffc143b3114629521dc3b0a5b08c416e3a187b654ba954dde"
+        },
+        {
+          "member": "PyQt5/bindings/QtTest/QtTestmod.sip",
+          "source": "PyQt5/bindings/QtTest/QtTestmod.sip",
+          "sha256": "7d424e0a49453b7f859d6b78f292affe09fb23578e57b36cd70a187a9fd2069f"
+        },
+        {
+          "member": "PyQt5/bindings/QtTest/qabstractitemmodeltester.sip",
+          "source": "PyQt5/bindings/QtTest/qabstractitemmodeltester.sip",
+          "sha256": "8def01a9c53b54d9135dbdc31c759e56243d1374d5dd891a86de1299c8eb0e37"
+        },
+        {
+          "member": "PyQt5/bindings/QtTest/qsignalspy.sip",
+          "source": "PyQt5/bindings/QtTest/qsignalspy.sip",
+          "sha256": "822c6ae839f9f7a83926f2df4a8e4aa9180f9e9acc79d38c684cd3656c659736"
+        },
+        {
+          "member": "PyQt5/bindings/QtTest/qtestcase.sip",
+          "source": "PyQt5/bindings/QtTest/qtestcase.sip",
+          "sha256": "3afd4d3811193921f0b96dee44d13510a7ee7771e94106d49e317ffcb5ca5290"
+        },
+        {
+          "member": "PyQt5/bindings/QtTest/qtestkeyboard.sip",
+          "source": "PyQt5/bindings/QtTest/qtestkeyboard.sip",
+          "sha256": "03c10efefd3457ad93478a21ace7b6af184ef94e7c8d8605901902715ccf890f"
+        },
+        {
+          "member": "PyQt5/bindings/QtTest/qtestmouse.sip",
+          "source": "PyQt5/bindings/QtTest/qtestmouse.sip",
+          "sha256": "da85db8719de220f4362a47a3d2643a4f359938421b071ddd2b9408bd72764c8"
+        },
+        {
+          "member": "PyQt5/bindings/QtTest/qtestsystem.sip",
+          "source": "PyQt5/bindings/QtTest/qtestsystem.sip",
+          "sha256": "040b3cfae085a2c1283b3df8337bebdc10afc53f983f27f5a0f8ae625a22d2da"
+        },
+        {
+          "member": "PyQt5/bindings/QtTest/qtesttouch.sip",
+          "source": "PyQt5/bindings/QtTest/qtesttouch.sip",
+          "sha256": "6b5523d746ce2bc384cb66e2acf4dcd55c91cda4a9a380db0b0b5f503a5a395a"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/QtWidgets.toml",
+          "source": "PyQt5/bindings/QtWidgets/QtWidgets.toml",
+          "sha256": "de0b02293a43645667e7d8e605c34aba55752acd2de6a549752bab0683b24907"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/QtWidgetsmod.sip",
+          "source": "PyQt5/bindings/QtWidgets/QtWidgetsmod.sip",
+          "sha256": "bdcdf40036f40f6d0b961ba61d448979e13c7106da2f4107224af5eb3d4e5625"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qabstractbutton.sip",
+          "source": "PyQt5/bindings/QtWidgets/qabstractbutton.sip",
+          "sha256": "e071b4e4dabaa26db7c66157f6771175e2b7f968b157f3e75f3283fe0b669f92"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qabstractitemdelegate.sip",
+          "source": "PyQt5/bindings/QtWidgets/qabstractitemdelegate.sip",
+          "sha256": "c2004773fbf902879b0eb1d5b9164584331bfcbe31542317cfdd8f96ac9904ea"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qabstractitemview.sip",
+          "source": "PyQt5/bindings/QtWidgets/qabstractitemview.sip",
+          "sha256": "074c6919c8f48f57a7730f63edc13fd17bd03026d6e30d98b62148cd4e090eaa"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qabstractscrollarea.sip",
+          "source": "PyQt5/bindings/QtWidgets/qabstractscrollarea.sip",
+          "sha256": "a976e63d7cf3646015f9768bbe30c04ceae2f3c5dff128f0b125e92c952c6d8e"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qabstractslider.sip",
+          "source": "PyQt5/bindings/QtWidgets/qabstractslider.sip",
+          "sha256": "aff2d3b6b0774834320ef8b3cd9df59480e9a698f0e51c350ecccc8d00d1464a"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qabstractspinbox.sip",
+          "source": "PyQt5/bindings/QtWidgets/qabstractspinbox.sip",
+          "sha256": "2470ca3ed18c98d63d4d55d9ebdc4f8cc6721b7e3c07099a6cbb66c4f818ecfe"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qaction.sip",
+          "source": "PyQt5/bindings/QtWidgets/qaction.sip",
+          "sha256": "eba31103a9f34db6c9fce1177ded6290134b462886304a3a08d5fbbb20a83781"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qactiongroup.sip",
+          "source": "PyQt5/bindings/QtWidgets/qactiongroup.sip",
+          "sha256": "6bd37c02196af976e4d132549c3dadfe1ce03122620a2bdbbb3120a3d88ed664"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qapplication.sip",
+          "source": "PyQt5/bindings/QtWidgets/qapplication.sip",
+          "sha256": "06e8e79d65fdc535ee10adb48ddff268bcffa78461a7c8b0b46157abe445af84"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qboxlayout.sip",
+          "source": "PyQt5/bindings/QtWidgets/qboxlayout.sip",
+          "sha256": "b730a011a0014e43a508ce33276ca7770845ff2ad8b151a8311b4ee08dace101"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qbuttongroup.sip",
+          "source": "PyQt5/bindings/QtWidgets/qbuttongroup.sip",
+          "sha256": "beadbe9d425a4c3b2e9848c304e4d9d09b05844c05660a1040c43a429525266d"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qcalendarwidget.sip",
+          "source": "PyQt5/bindings/QtWidgets/qcalendarwidget.sip",
+          "sha256": "3b75b9faf21902bf66adab69308f4005def58bf398417fb4b43db76228832963"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qcheckbox.sip",
+          "source": "PyQt5/bindings/QtWidgets/qcheckbox.sip",
+          "sha256": "82fe5c83aedd7be2f8c13287e4418a0cccefd1a11741506ac4fbb14019e5b90d"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qcolordialog.sip",
+          "source": "PyQt5/bindings/QtWidgets/qcolordialog.sip",
+          "sha256": "56b5935be99f21efd01d7d3fff81f88a23435b3f8d8a23cbcc2754259f2084a6"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qcolumnview.sip",
+          "source": "PyQt5/bindings/QtWidgets/qcolumnview.sip",
+          "sha256": "dc5724067f515472d6bdd6de07288141391611c399486f9bb94cceab4c01b5d1"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qcombobox.sip",
+          "source": "PyQt5/bindings/QtWidgets/qcombobox.sip",
+          "sha256": "58a5b20d87f4804e1d40de33a1ba4eb3a989e71e9183ca1490b13757070cbbb5"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qcommandlinkbutton.sip",
+          "source": "PyQt5/bindings/QtWidgets/qcommandlinkbutton.sip",
+          "sha256": "81d03411ab934f7fa016cfd92b453ecdb0aac0397fda81fad8b9ad7fd986d228"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qcommonstyle.sip",
+          "source": "PyQt5/bindings/QtWidgets/qcommonstyle.sip",
+          "sha256": "b3ed829bccc47efb3368ea8b196cb7ef682808cce11e3fe2e88f89547f23100e"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qcompleter.sip",
+          "source": "PyQt5/bindings/QtWidgets/qcompleter.sip",
+          "sha256": "afb269959bbc248ba82d735c4670209ac267593611a0b77fa5170da49d195350"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qdatawidgetmapper.sip",
+          "source": "PyQt5/bindings/QtWidgets/qdatawidgetmapper.sip",
+          "sha256": "0c7b4a7f6413fe6c56ca16d7f1e9a179152ec6ef4c31cf611da5e34d74f61c82"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qdatetimeedit.sip",
+          "source": "PyQt5/bindings/QtWidgets/qdatetimeedit.sip",
+          "sha256": "892850768b4ccb36bc06caea64b57cbeaf7366cfeae9a09632d0d5537f56be6f"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qdesktopwidget.sip",
+          "source": "PyQt5/bindings/QtWidgets/qdesktopwidget.sip",
+          "sha256": "b5315575361b6491d47c3771c9312ef165f664ae4f34a80c4a3aa45b9f51bd87"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qdial.sip",
+          "source": "PyQt5/bindings/QtWidgets/qdial.sip",
+          "sha256": "71370195f9908eb2c60e75447fab910e4bfe828a35a47046b84d9b13d2d51532"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qdialog.sip",
+          "source": "PyQt5/bindings/QtWidgets/qdialog.sip",
+          "sha256": "f8a54a4a2afca74ab1687a70a2e65284bb8912c828e2bef6b01952c0bdbc8525"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qdialogbuttonbox.sip",
+          "source": "PyQt5/bindings/QtWidgets/qdialogbuttonbox.sip",
+          "sha256": "846e583c658649e6b910c47ecdde9d174aa600d25d9f48fce1193d4b93007def"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qdirmodel.sip",
+          "source": "PyQt5/bindings/QtWidgets/qdirmodel.sip",
+          "sha256": "32387490b7319e7d992d50bc84c9418e42023cddb2eb27920ba294622b397a14"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qdockwidget.sip",
+          "source": "PyQt5/bindings/QtWidgets/qdockwidget.sip",
+          "sha256": "af6269af4dbfa75bb75f71536a366f643c80b38724d43a367944165cc3d6f19b"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qdrawutil.sip",
+          "source": "PyQt5/bindings/QtWidgets/qdrawutil.sip",
+          "sha256": "9d6745221de076f79d58c4941699e57ad989cb80508e7c2344eb2e4c47e2ab81"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qerrormessage.sip",
+          "source": "PyQt5/bindings/QtWidgets/qerrormessage.sip",
+          "sha256": "f28d7a30824eac29b613081b1c88d742525b67573acef7186a60c6b62ec27df0"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qfiledialog.sip",
+          "source": "PyQt5/bindings/QtWidgets/qfiledialog.sip",
+          "sha256": "f7f7eccc27a54538ba513d337d6e04ebc8ed767c749e89b098a98541464cd1aa"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qfileiconprovider.sip",
+          "source": "PyQt5/bindings/QtWidgets/qfileiconprovider.sip",
+          "sha256": "64faecabc5fa753f56608b31a8c07ba7958b935460443cdf75f2c79d3f4f358f"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qfilesystemmodel.sip",
+          "source": "PyQt5/bindings/QtWidgets/qfilesystemmodel.sip",
+          "sha256": "93b1f6daa3f9c9c40c07c7ce788ba1721ea3482691eeae774ced0663af4f024f"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qfocusframe.sip",
+          "source": "PyQt5/bindings/QtWidgets/qfocusframe.sip",
+          "sha256": "6a644ced0037a4ef5dde29e725537c61a2b13f62390a76587304d0ec284d8e60"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qfontcombobox.sip",
+          "source": "PyQt5/bindings/QtWidgets/qfontcombobox.sip",
+          "sha256": "d7e197dd808b7b3754ee536d29f3946cb321c6dc303b56806dd8b5cf0d4624b9"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qfontdialog.sip",
+          "source": "PyQt5/bindings/QtWidgets/qfontdialog.sip",
+          "sha256": "6ffd809e6494a148de061415ab58316306788715ba6f67e096da50a947e3e4b9"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qformlayout.sip",
+          "source": "PyQt5/bindings/QtWidgets/qformlayout.sip",
+          "sha256": "2953775944a9b4762b7122912368bdced5f3135a29ca0fec10a55126d7c87f80"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qframe.sip",
+          "source": "PyQt5/bindings/QtWidgets/qframe.sip",
+          "sha256": "8c0eff44a21fc7e32513e2341907e03a6d4588d21e04bc9b136c91220dbdfeb0"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qgesture.sip",
+          "source": "PyQt5/bindings/QtWidgets/qgesture.sip",
+          "sha256": "24d560e9c34c7974ab6ce15f8980e593d3e7e98052cfcddd053b6d27bf3db140"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qgesturerecognizer.sip",
+          "source": "PyQt5/bindings/QtWidgets/qgesturerecognizer.sip",
+          "sha256": "b2204193b0d41d1bf3220a9b1cd5c5bc4a8a8e5aa5835786b8046d3a5b878163"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qgraphicsanchorlayout.sip",
+          "source": "PyQt5/bindings/QtWidgets/qgraphicsanchorlayout.sip",
+          "sha256": "6c8cbee2ab2dea32f2d936452524de0d5059786acc004c2da9bb884efa965ded"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qgraphicseffect.sip",
+          "source": "PyQt5/bindings/QtWidgets/qgraphicseffect.sip",
+          "sha256": "a694d22b59a9d26a1bdecfd42a74f3114a75f0a1724fa49d94fbbed7129f3d27"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qgraphicsgridlayout.sip",
+          "source": "PyQt5/bindings/QtWidgets/qgraphicsgridlayout.sip",
+          "sha256": "d477e91d542f932f0fdff2ef553d633c0906e9bf2f9ef87868a6369472938f98"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qgraphicsitem.sip",
+          "source": "PyQt5/bindings/QtWidgets/qgraphicsitem.sip",
+          "sha256": "7ea0532ade201b18ae9e7845b6ad5a63bd3d3dba96704cb5e487b0b676fe1bd6"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qgraphicslayout.sip",
+          "source": "PyQt5/bindings/QtWidgets/qgraphicslayout.sip",
+          "sha256": "a47ca4d0c1bd7f7ec56bbe74fd166c3352d6c4043e6b34ec9273015f7bfb6fe0"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qgraphicslayoutitem.sip",
+          "source": "PyQt5/bindings/QtWidgets/qgraphicslayoutitem.sip",
+          "sha256": "718252bc25274d55232427fb170e3df6004a50e30138edbb0f4c78cedaa79409"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qgraphicslinearlayout.sip",
+          "source": "PyQt5/bindings/QtWidgets/qgraphicslinearlayout.sip",
+          "sha256": "67e8f3a52691417878e4e091f79521ae880075ed047b2b3ed29a6c2a794734eb"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qgraphicsproxywidget.sip",
+          "source": "PyQt5/bindings/QtWidgets/qgraphicsproxywidget.sip",
+          "sha256": "b46e23acbafe2f18aa1c1a88f3a4155c39e64a623d0a7a6c2fdaf4483efd0e92"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qgraphicsscene.sip",
+          "source": "PyQt5/bindings/QtWidgets/qgraphicsscene.sip",
+          "sha256": "1b5a6bdd1e87fe1f47d9d7bdf4e83ba72a3377c7bcfb42511e36538ff104fb5f"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qgraphicssceneevent.sip",
+          "source": "PyQt5/bindings/QtWidgets/qgraphicssceneevent.sip",
+          "sha256": "e10d866c6f6c5b7ca27f20f002f774bbf337e17b4afddd15ed90d914a5e39dad"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qgraphicstransform.sip",
+          "source": "PyQt5/bindings/QtWidgets/qgraphicstransform.sip",
+          "sha256": "6b4c4d7c5a6895015cdadc89af13d1d9258a26a5622c51cd349c08fa5c022d9e"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qgraphicsview.sip",
+          "source": "PyQt5/bindings/QtWidgets/qgraphicsview.sip",
+          "sha256": "4b7fe97bd177dc0a7cae48a94f847a96fe8c3dfa47fd166d4a40262071df3852"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qgraphicswidget.sip",
+          "source": "PyQt5/bindings/QtWidgets/qgraphicswidget.sip",
+          "sha256": "45d04e785181c6cf87ddad57c8b57f6b38a727f3448c463becd04fcdc50ec6e3"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qgridlayout.sip",
+          "source": "PyQt5/bindings/QtWidgets/qgridlayout.sip",
+          "sha256": "f1e023cbd95447bbefd93f9bc320e25fc777041860deb8ce5e8ab726c1474f2a"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qgroupbox.sip",
+          "source": "PyQt5/bindings/QtWidgets/qgroupbox.sip",
+          "sha256": "652f8503d98737cb3cd529f7dfe0e38a944cdba8260fac843fe7bd4e4ef56db7"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qheaderview.sip",
+          "source": "PyQt5/bindings/QtWidgets/qheaderview.sip",
+          "sha256": "a73386ace619254f1d3a239c73e5a8c217173affb31ee4b75ff48b31ccc367c3"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qinputdialog.sip",
+          "source": "PyQt5/bindings/QtWidgets/qinputdialog.sip",
+          "sha256": "ab925462f3f0df4641699145daad5c36bd078b0c91a273820f7579135cae171c"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qitemdelegate.sip",
+          "source": "PyQt5/bindings/QtWidgets/qitemdelegate.sip",
+          "sha256": "e0cece92a6a86db0d5baebb1b738c80ff5ae30d67a992e7194e8b5455033407a"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qitemeditorfactory.sip",
+          "source": "PyQt5/bindings/QtWidgets/qitemeditorfactory.sip",
+          "sha256": "9cdb180bedad815297b8e9cf3a627dcd645ef28e91166eeb25d1659f2a3b46ab"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qkeyeventtransition.sip",
+          "source": "PyQt5/bindings/QtWidgets/qkeyeventtransition.sip",
+          "sha256": "2d539fbd7191852ecbd986f839bb00d54b3972c9b337fafb7b94973dcc653296"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qkeysequenceedit.sip",
+          "source": "PyQt5/bindings/QtWidgets/qkeysequenceedit.sip",
+          "sha256": "2cecf2c2de1db934efaa7f3f2e324e621374a1bc8cd30e0dc8261b1652034169"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qlabel.sip",
+          "source": "PyQt5/bindings/QtWidgets/qlabel.sip",
+          "sha256": "8d37f89d46b5822dfa2c23d2073384c77028ebf25920f6d64506454a13650811"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qlayout.sip",
+          "source": "PyQt5/bindings/QtWidgets/qlayout.sip",
+          "sha256": "71dd62fc17458f5d16f3167f221fc6f562ffe9a2b1029a2876f8de5e2c6a0114"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qlayoutitem.sip",
+          "source": "PyQt5/bindings/QtWidgets/qlayoutitem.sip",
+          "sha256": "4d1a23197b5a8fe051c7321406b3a9f59c5db0d6b672b2f5d8c3438b0a08eff9"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qlcdnumber.sip",
+          "source": "PyQt5/bindings/QtWidgets/qlcdnumber.sip",
+          "sha256": "dc60264e70a75b9b7bb86cf479e7cae94864168df29e019d0b18654b0a7013d0"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qlineedit.sip",
+          "source": "PyQt5/bindings/QtWidgets/qlineedit.sip",
+          "sha256": "ef72e4b6cd33e6fa63dfdfd5c2a39a27b5bcae971af34c0ec9c953a2afe08faa"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qlistview.sip",
+          "source": "PyQt5/bindings/QtWidgets/qlistview.sip",
+          "sha256": "ff8947039b23fd1319ad93353d7c04bc2eb4a9edeff1c20ea7931effea93900f"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qlistwidget.sip",
+          "source": "PyQt5/bindings/QtWidgets/qlistwidget.sip",
+          "sha256": "5bb91147a02dc0f6174b68e0a6473ae9c8057dbb5eca98669f09028f8d339682"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qmaccocoaviewcontainer.sip",
+          "source": "PyQt5/bindings/QtWidgets/qmaccocoaviewcontainer.sip",
+          "sha256": "417f5591f66995c436c6474461bd70568b9a4cc591bbb1b5f8a354dcffea543a"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qmainwindow.sip",
+          "source": "PyQt5/bindings/QtWidgets/qmainwindow.sip",
+          "sha256": "b28d1fef7d2464853397db8e6a78762c587d6835d56fc762d1a5257b40da8fdf"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qmdiarea.sip",
+          "source": "PyQt5/bindings/QtWidgets/qmdiarea.sip",
+          "sha256": "836452d164465cf614abf8bf02c8111c904af230661bc027b2a246c260a86fca"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qmdisubwindow.sip",
+          "source": "PyQt5/bindings/QtWidgets/qmdisubwindow.sip",
+          "sha256": "68f31bcde2925eba535e8c35d4e7be70c1d045dc91784339be2732a8cdc3e488"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qmenu.sip",
+          "source": "PyQt5/bindings/QtWidgets/qmenu.sip",
+          "sha256": "736c0ea37b05822dfb72de3baf24c326ee19a7b3dcff5af5257f708198822dd1"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qmenubar.sip",
+          "source": "PyQt5/bindings/QtWidgets/qmenubar.sip",
+          "sha256": "476001cae1968934d0f0cd7dfe11f0419f7f18db7b5172d1b6a084af3c8cea53"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qmessagebox.sip",
+          "source": "PyQt5/bindings/QtWidgets/qmessagebox.sip",
+          "sha256": "4146f79a8df332d4150d4901443102feb4da04b534a28ee6b8116bdfd582f793"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qmouseeventtransition.sip",
+          "source": "PyQt5/bindings/QtWidgets/qmouseeventtransition.sip",
+          "sha256": "c30136d8fe640546b22c82d9eb5ecd76cf419df20b22a5094e69530be94b9433"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qopenglwidget.sip",
+          "source": "PyQt5/bindings/QtWidgets/qopenglwidget.sip",
+          "sha256": "6d05d950b51885942a716abaae3a14db34d410ece05542fe44ebe8b5d172507e"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qplaintextedit.sip",
+          "source": "PyQt5/bindings/QtWidgets/qplaintextedit.sip",
+          "sha256": "8d4f1bd1381e1867b9b6ee13ab7229b1e67beabd22231513ef8a96173ee71ea7"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qprogressbar.sip",
+          "source": "PyQt5/bindings/QtWidgets/qprogressbar.sip",
+          "sha256": "e48d2f1e279f26fef51429f587331f00463a90eddc7f21efc216312e266abcd6"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qprogressdialog.sip",
+          "source": "PyQt5/bindings/QtWidgets/qprogressdialog.sip",
+          "sha256": "c5af0e85c5cb8554f97ef21d10e20372cd0c965a0654547c900d250c52ac9eac"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qproxystyle.sip",
+          "source": "PyQt5/bindings/QtWidgets/qproxystyle.sip",
+          "sha256": "1181757fe4419eb2e1f42a11708709576ee2a399dd1b6bade946238067ad4d1c"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qpushbutton.sip",
+          "source": "PyQt5/bindings/QtWidgets/qpushbutton.sip",
+          "sha256": "34f70f7ef224c35dfdd5ae9b4652f2cae56514e9948fe1f6b969906634f9012b"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qpywidgets_qlist.sip",
+          "source": "PyQt5/bindings/QtWidgets/qpywidgets_qlist.sip",
+          "sha256": "5261b2f00a5dd4b0b174b981ac2772c8f041b166060fcd04b20ca0379d4bd124"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qradiobutton.sip",
+          "source": "PyQt5/bindings/QtWidgets/qradiobutton.sip",
+          "sha256": "3f60147dcee619d2aba9868e4c04c403ad384688b640872cad63c694c6772b34"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qrubberband.sip",
+          "source": "PyQt5/bindings/QtWidgets/qrubberband.sip",
+          "sha256": "39eb789d5e41062a9e6c0952de217b241efa4356b2b4ece916a58efc72b4b7e6"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qscrollarea.sip",
+          "source": "PyQt5/bindings/QtWidgets/qscrollarea.sip",
+          "sha256": "5662236a3bef2763b49a76856cb844ecaa67ecc4efe7bb6be73c91330d490dc5"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qscrollbar.sip",
+          "source": "PyQt5/bindings/QtWidgets/qscrollbar.sip",
+          "sha256": "ce081a6b34d01a017725a4001e138a163f954ef895418c38495e58c1628fe984"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qscroller.sip",
+          "source": "PyQt5/bindings/QtWidgets/qscroller.sip",
+          "sha256": "58b0788c0e3afe998e53894eb63f243bc396c141a274ecde24a89cc6e389928e"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qscrollerproperties.sip",
+          "source": "PyQt5/bindings/QtWidgets/qscrollerproperties.sip",
+          "sha256": "4faf5bb0985e95dc31003e8f4ee84fa899001d5dffcafc4e32fc92e8d362243a"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qshortcut.sip",
+          "source": "PyQt5/bindings/QtWidgets/qshortcut.sip",
+          "sha256": "8114e7f7464cd5467cb42ed1c162f6c66e40964e89162a02f212ed38b2c5196e"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qsizegrip.sip",
+          "source": "PyQt5/bindings/QtWidgets/qsizegrip.sip",
+          "sha256": "a627ee08a2578e2505260d8546af882c0c9f12b57b08a9bbf4c61e31a12ed2c1"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qsizepolicy.sip",
+          "source": "PyQt5/bindings/QtWidgets/qsizepolicy.sip",
+          "sha256": "37640cc32c2a6e27437a211d3554a2bf601f89f3f13b9e24e04ac9ffcd65db98"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qslider.sip",
+          "source": "PyQt5/bindings/QtWidgets/qslider.sip",
+          "sha256": "d35bb75a23180dd05e0d4e32c9f204e8b6852c8934effe514b7dd06ec0d32112"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qspinbox.sip",
+          "source": "PyQt5/bindings/QtWidgets/qspinbox.sip",
+          "sha256": "7866c6d80edba78411beb6f3fe9b3b6f60ca78cef15e85abfd6fbf09644370c6"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qsplashscreen.sip",
+          "source": "PyQt5/bindings/QtWidgets/qsplashscreen.sip",
+          "sha256": "525f0afddb891da229fef9e5d51497bf2915710f0efaaf95933539a6fd70f472"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qsplitter.sip",
+          "source": "PyQt5/bindings/QtWidgets/qsplitter.sip",
+          "sha256": "fdedd603c848bfc617390e42a112332e1fca50a179e8a466c601e2ba337c11d3"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qstackedlayout.sip",
+          "source": "PyQt5/bindings/QtWidgets/qstackedlayout.sip",
+          "sha256": "25f77b4ec75f0df9eb69e40af374d0dd95cc38e40706206ad2ce90d322462939"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qstackedwidget.sip",
+          "source": "PyQt5/bindings/QtWidgets/qstackedwidget.sip",
+          "sha256": "be53c5dcf80296934745ff3c5dc9f8c34332f9e9cd1dc2dfff77910550cd4b69"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qstatusbar.sip",
+          "source": "PyQt5/bindings/QtWidgets/qstatusbar.sip",
+          "sha256": "9346a3d96e53d4e6a2bedfbbaa8da4dfbdc2408bed5bd4ba22717246fbac6fee"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qstyle.sip",
+          "source": "PyQt5/bindings/QtWidgets/qstyle.sip",
+          "sha256": "445a1e40bb87191e427dfed4accdc189d901c3d19c000e24acc16daee5163ac4"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qstyleditemdelegate.sip",
+          "source": "PyQt5/bindings/QtWidgets/qstyleditemdelegate.sip",
+          "sha256": "04c6cd7029625f388d7ee1c8a06fe70ee6883a67a0bd5a2b97ebbcc6d57af205"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qstylefactory.sip",
+          "source": "PyQt5/bindings/QtWidgets/qstylefactory.sip",
+          "sha256": "2d3256d5fd20b608b32c30ace8cfe1857cc735a5a54e34a24111837c8b15d2f8"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qstyleoption.sip",
+          "source": "PyQt5/bindings/QtWidgets/qstyleoption.sip",
+          "sha256": "e878ddc5091cef848a94f49589a4ec58bfa51bcd400bb8159ab94753497cd149"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qstylepainter.sip",
+          "source": "PyQt5/bindings/QtWidgets/qstylepainter.sip",
+          "sha256": "c5a278558551fca65b5ceb80ede259f35d1baab30aad53c79722f5365f2423ac"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qsystemtrayicon.sip",
+          "source": "PyQt5/bindings/QtWidgets/qsystemtrayicon.sip",
+          "sha256": "ffee26679ea9eeb6280e611da4ba2048f78472d1c656b1a8feecc5e541557690"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qtabbar.sip",
+          "source": "PyQt5/bindings/QtWidgets/qtabbar.sip",
+          "sha256": "981da64ccbf60b389b7213dadd7d106217f132d1915b63d62144ff94bb42d919"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qtableview.sip",
+          "source": "PyQt5/bindings/QtWidgets/qtableview.sip",
+          "sha256": "0b6ac49ca681a5c595d23a11d24925c882a89456bd136c498866d0fcaa6a2616"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qtablewidget.sip",
+          "source": "PyQt5/bindings/QtWidgets/qtablewidget.sip",
+          "sha256": "a620b7b3a3c2205eb7b3e03f4ec1bb7f112c72cc688aa7f1078a18bceddaf846"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qtabwidget.sip",
+          "source": "PyQt5/bindings/QtWidgets/qtabwidget.sip",
+          "sha256": "c6981e4659e9c2e5e58cb67924b899a72a23bcbbfab0fd7d738f806c25d5a31f"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qtextbrowser.sip",
+          "source": "PyQt5/bindings/QtWidgets/qtextbrowser.sip",
+          "sha256": "715d5b02769f14e88983f92bf7951f0b6bc582c6eceff31297092541c60863a2"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qtextedit.sip",
+          "source": "PyQt5/bindings/QtWidgets/qtextedit.sip",
+          "sha256": "55a9b6c688265f9dba6bf78e22593f849537e32013eff4db80c255803c402484"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qtoolbar.sip",
+          "source": "PyQt5/bindings/QtWidgets/qtoolbar.sip",
+          "sha256": "c35c8ac4378e3f3764671317d1ae84d849065fa0ab79d1774e7ef3c8c1e0e9d4"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qtoolbox.sip",
+          "source": "PyQt5/bindings/QtWidgets/qtoolbox.sip",
+          "sha256": "737d808164d72f2665505c20d214dd5cfefa55a6eda91d7867b2b1c5c259d612"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qtoolbutton.sip",
+          "source": "PyQt5/bindings/QtWidgets/qtoolbutton.sip",
+          "sha256": "12c1cac62e02d8e2d37117b5fb8fd30b1e3cdca9e0b0354467ba49239df5e20b"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qtooltip.sip",
+          "source": "PyQt5/bindings/QtWidgets/qtooltip.sip",
+          "sha256": "d4ccbf0f9608937c477d27c0da1c6ddbd56f1bc26efabe48bcae63682eaa09ee"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qtreeview.sip",
+          "source": "PyQt5/bindings/QtWidgets/qtreeview.sip",
+          "sha256": "fac15a20ee39e88d67216f2a0e98f95f83453437632f9882d15ea3b77a7c0923"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qtreewidget.sip",
+          "source": "PyQt5/bindings/QtWidgets/qtreewidget.sip",
+          "sha256": "8a5fe765854e9086391a32b9d624796c1d4fc7750bc6be51afef4a8b9dda1fbb"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qtreewidgetitemiterator.sip",
+          "source": "PyQt5/bindings/QtWidgets/qtreewidgetitemiterator.sip",
+          "sha256": "433938d23d3a357ccd39dcd85b93d40249e22824a85ba5ccbc9490d1c8300ae3"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qundogroup.sip",
+          "source": "PyQt5/bindings/QtWidgets/qundogroup.sip",
+          "sha256": "b716a2b85f0d96105a74503204b88dc78d47f3cd3184a110a988fb264cc87aed"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qundostack.sip",
+          "source": "PyQt5/bindings/QtWidgets/qundostack.sip",
+          "sha256": "57e66c18f5480a552b36f89a50b81e1b9c0dc8856e95b0017739d7fcd8b2df75"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qundoview.sip",
+          "source": "PyQt5/bindings/QtWidgets/qundoview.sip",
+          "sha256": "f647b480a3238e4870bc266bdf17405aef34cd206a3ee382ad2ba29af919ccb5"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qwhatsthis.sip",
+          "source": "PyQt5/bindings/QtWidgets/qwhatsthis.sip",
+          "sha256": "273da3a397366d0abb804e19947a87c80084eeee4c5de7c21c209c24e0d7d4b8"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qwidget.sip",
+          "source": "PyQt5/bindings/QtWidgets/qwidget.sip",
+          "sha256": "35ef50039212304e70e3c5969af6a76eaf025e9107b40fa8116c77c5e7873179"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qwidgetaction.sip",
+          "source": "PyQt5/bindings/QtWidgets/qwidgetaction.sip",
+          "sha256": "dd451db85f1f9fd71d4c58855d82e59221be4cba85b1bee61771d7ba8262a208"
+        },
+        {
+          "member": "PyQt5/bindings/QtWidgets/qwizard.sip",
+          "source": "PyQt5/bindings/QtWidgets/qwizard.sip",
+          "sha256": "52d6331a4b06b1f8c3d1db8325f576df22d8139eb8b4cd298b40b77dec38722d"
+        },
+        {
+          "member": "PyQt5/bindings/QtXml/QtXml.toml",
+          "source": "PyQt5/bindings/QtXml/QtXml.toml",
+          "sha256": "e28bcef81da25c5072637fce1dca21d74f25468461bc14167dee2a514eb2826e"
+        },
+        {
+          "member": "PyQt5/bindings/QtXml/QtXmlmod.sip",
+          "source": "PyQt5/bindings/QtXml/QtXmlmod.sip",
+          "sha256": "ba348e7aabd6649e451b6bf4e81431dc225dddc1814fff99a310a050f361d28a"
+        },
+        {
+          "member": "PyQt5/bindings/QtXml/qdom.sip",
+          "source": "PyQt5/bindings/QtXml/qdom.sip",
+          "sha256": "c6bbef9af83dfd7c4bb8bddbb37e571475221df75d9ed1538d50f9ddfe030b7b"
+        },
+        {
+          "member": "PyQt5/bindings/QtXml/qxml.sip",
+          "source": "PyQt5/bindings/QtXml/qxml.sip",
+          "sha256": "9249e6eb209bd165917465159900d89e146b0209b5cff858316c6c314ac9b9f6"
+        },
+        {
+          "member": "PyQt5/uic/Compiler/__init__.py",
+          "source": "PyQt5/uic/Compiler/__init__.py",
+          "sha256": "93521158c1eec4bbf11d549c584872ded70f301579ee360827d1f698ca60f9e0"
+        },
+        {
+          "member": "PyQt5/uic/Compiler/compiler.py",
+          "source": "PyQt5/uic/Compiler/compiler.py",
+          "sha256": "4ee75732633369d4720477167ab99ac9dd517e2a99cb459db0c8ec3ad9784c5a"
+        },
+        {
+          "member": "PyQt5/uic/Compiler/indenter.py",
+          "source": "PyQt5/uic/Compiler/indenter.py",
+          "sha256": "030fadc9a1252e5bd3e4ef1583a70decbbe28451b75707fc80de2c29f479620e"
+        },
+        {
+          "member": "PyQt5/uic/Compiler/misc.py",
+          "source": "PyQt5/uic/Compiler/misc.py",
+          "sha256": "c56d8605cc833ed23c1eabd780902c534a4907a4f1939c8fe86790f95543b23c"
+        },
+        {
+          "member": "PyQt5/uic/Compiler/proxy_metaclass.py",
+          "source": "PyQt5/uic/Compiler/proxy_metaclass.py",
+          "sha256": "dd2b46cd940af717a031965be445ac94d92b4e98f7ade6e1c98a96fcf4f810a1"
+        },
+        {
+          "member": "PyQt5/uic/Compiler/qobjectcreator.py",
+          "source": "PyQt5/uic/Compiler/qobjectcreator.py",
+          "sha256": "0e0f9f598eebd2e12e19730b72bafe2ec580c96f55f969fc8a515fb5eb091fb9"
+        },
+        {
+          "member": "PyQt5/uic/Compiler/qtproxies.py",
+          "source": "PyQt5/uic/Compiler/qtproxies.py",
+          "sha256": "093839d632f581a3e858330c27fb9d1415530f32cb21943ca9a7dd1672b918b7"
+        },
+        {
+          "member": "PyQt5/uic/Loader/__init__.py",
+          "source": "PyQt5/uic/Loader/__init__.py",
+          "sha256": "93521158c1eec4bbf11d549c584872ded70f301579ee360827d1f698ca60f9e0"
+        },
+        {
+          "member": "PyQt5/uic/Loader/loader.py",
+          "source": "PyQt5/uic/Loader/loader.py",
+          "sha256": "7881888e2993a7a03e502b8fdb7a93dc1690790716c41c2a3a454daf0975294d"
+        },
+        {
+          "member": "PyQt5/uic/Loader/qobjectcreator.py",
+          "source": "PyQt5/uic/Loader/qobjectcreator.py",
+          "sha256": "04db1596e607c687d2ffae44cedfe6546693d0a48d1cdf1888acc38c052fcdb1"
+        },
+        {
+          "member": "PyQt5/uic/__init__.py",
+          "source": "PyQt5/uic/__init__.py",
+          "sha256": "9e6adf5e822491a800a9de964916300fecea78bd487bae6d87e3fad87f406219"
+        },
+        {
+          "member": "PyQt5/uic/driver.py",
+          "source": "PyQt5/uic/driver.py",
+          "sha256": "ffe54cabd22b56a8ed8482e8f03948a08340f6b7dba2973cf1ede2b2047b5a77"
+        },
+        {
+          "member": "PyQt5/uic/exceptions.py",
+          "source": "PyQt5/uic/exceptions.py",
+          "sha256": "a7b23ea80e279ae0a1a382c2cfa61cd075b2fc8e51b17f9b327eae6cfa599096"
+        },
+        {
+          "member": "PyQt5/uic/icon_cache.py",
+          "source": "PyQt5/uic/icon_cache.py",
+          "sha256": "64d2a5c73814c68cba52f3ba0c35f1908cb34e13b9a4146579049ebc88d75d3e"
+        },
+        {
+          "member": "PyQt5/uic/objcreator.py",
+          "source": "PyQt5/uic/objcreator.py",
+          "sha256": "4d01bd2e83ba37f36d93b099784412a45581d28d4ff37d39d241f3d40a65f9cb"
+        },
+        {
+          "member": "PyQt5/uic/port_v2/__init__.py",
+          "source": "PyQt5/uic/port_v2/__init__.py",
+          "sha256": "93521158c1eec4bbf11d549c584872ded70f301579ee360827d1f698ca60f9e0"
+        },
+        {
+          "member": "PyQt5/uic/port_v2/as_string.py",
+          "source": "PyQt5/uic/port_v2/as_string.py",
+          "sha256": "b8443d7022365f88f17934ac4c16f8ee0c184d9685d85949a36e3e5ad3aa8814"
+        },
+        {
+          "member": "PyQt5/uic/port_v2/ascii_upper.py",
+          "source": "PyQt5/uic/port_v2/ascii_upper.py",
+          "sha256": "2e26e0c17109e1b639ca1e48b1f10f24d6c009973c42799642860c299cf08c06"
+        },
+        {
+          "member": "PyQt5/uic/port_v2/proxy_base.py",
+          "source": "PyQt5/uic/port_v2/proxy_base.py",
+          "sha256": "61c5bd89dead7c7dcc79cac9a1158f0ca53a4a21ec95d178f7f84d08cdbf96dc"
+        },
+        {
+          "member": "PyQt5/uic/port_v2/string_io.py",
+          "source": "PyQt5/uic/port_v2/string_io.py",
+          "sha256": "00a162b74928bb1a4a6cf85659328a2b14c1ce80b409c8530e1e9ea05db17a52"
+        },
+        {
+          "member": "PyQt5/uic/port_v3/__init__.py",
+          "source": "PyQt5/uic/port_v3/__init__.py",
+          "sha256": "93521158c1eec4bbf11d549c584872ded70f301579ee360827d1f698ca60f9e0"
+        },
+        {
+          "member": "PyQt5/uic/port_v3/as_string.py",
+          "source": "PyQt5/uic/port_v3/as_string.py",
+          "sha256": "86eb1f09dea8d049235bb2bd7256d82d033b9b723b5f81e31f79e0f6e74a0327"
+        },
+        {
+          "member": "PyQt5/uic/port_v3/ascii_upper.py",
+          "source": "PyQt5/uic/port_v3/ascii_upper.py",
+          "sha256": "30f188a5335717eed84ed873845d3d2258f63c2fa1462e71c269a3622e78075e"
+        },
+        {
+          "member": "PyQt5/uic/port_v3/proxy_base.py",
+          "source": "PyQt5/uic/port_v3/proxy_base.py",
+          "sha256": "144930731f843615e7092e19f229423fc297df72eabd8630c31bee852f2bb6ff"
+        },
+        {
+          "member": "PyQt5/uic/port_v3/string_io.py",
+          "source": "PyQt5/uic/port_v3/string_io.py",
+          "sha256": "58d062454048d1243834040cdc849db0b752e4cfdb45e30f72b04b0d6ecead8c"
+        },
+        {
+          "member": "PyQt5/uic/properties.py",
+          "source": "PyQt5/uic/properties.py",
+          "sha256": "3096cd4bbf18267d307ff11717bb1948f5b3ccf7caf8bad54eee876984e345ab"
+        },
+        {
+          "member": "PyQt5/uic/pyuic.py",
+          "source": "PyQt5/uic/pyuic.py",
+          "sha256": "1300f7bf0b26f87fd2fe2b4c8f1472516e3c457e77768f492dc6030ec0feeebf"
+        },
+        {
+          "member": "PyQt5/uic/uiparser.py",
+          "source": "PyQt5/uic/uiparser.py",
+          "sha256": "3346e29feeebfabc44d25f1c6a1301948a45be486b9e9a1f877fde6cbbed6888"
+        },
+        {
+          "member": "PyQt5/uic/widget-plugins/qaxcontainer.py",
+          "source": "PyQt5/uic/widget-plugins/qaxcontainer.py",
+          "sha256": "e17ee60ce093091b050bbd808dc9df5d6c3328f20805bdf0ce8bd978f4307e21"
+        },
+        {
+          "member": "PyQt5/uic/widget-plugins/qscintilla.py",
+          "source": "PyQt5/uic/widget-plugins/qscintilla.py",
+          "sha256": "736058ac53f2934e7ff46e0345e49c3b9e079e3a43d30ca289a79444ec35aaf0"
+        },
+        {
+          "member": "PyQt5/uic/widget-plugins/qtcharts.py",
+          "source": "PyQt5/uic/widget-plugins/qtcharts.py",
+          "sha256": "abbc1989862257cae8fe2bd3b0994a217f67fc4bf836b3b171fdca05812d7e39"
+        },
+        {
+          "member": "PyQt5/uic/widget-plugins/qtprintsupport.py",
+          "source": "PyQt5/uic/widget-plugins/qtprintsupport.py",
+          "sha256": "c003405ed3af52bc0c6dfd72482ec4af978e37fd578f64a922e3491243e1d8c6"
+        },
+        {
+          "member": "PyQt5/uic/widget-plugins/qtquickwidgets.py",
+          "source": "PyQt5/uic/widget-plugins/qtquickwidgets.py",
+          "sha256": "b61e5768b681338e69378780bb9df220b2b8147f17a222e296cd1d38c39f73b5"
+        },
+        {
+          "member": "PyQt5/uic/widget-plugins/qtwebenginewidgets.py",
+          "source": "PyQt5/uic/widget-plugins/qtwebenginewidgets.py",
+          "sha256": "6e34c089ee20ab82076b2165d39955a9b9dcfb27fdbafe9f2e80157606806864"
+        },
+        {
+          "member": "PyQt5/uic/widget-plugins/qtwebkit.py",
+          "source": "PyQt5/uic/widget-plugins/qtwebkit.py",
+          "sha256": "2793db41f3446d31272f4dd5d13497ac7f9df6caeeb4f3fd3fc874d1276eecad"
+        }
+      ]
+    },
+    {
+      "name": "pyqt5-qt5",
+      "metadata_name": "PyQt5-Qt5",
+      "version": "5.15.19+vispynogl.1",
+      "tag": "py3-none-linux_x86_64",
+      "requires": [],
+      "files": [
+        {
+          "member": "PyQt5/Qt5/lib/libQt5Concurrent.so.5",
+          "source": "PyQt5/Qt5/lib/libQt5Concurrent.so.5",
+          "sha256": "521254c78990e98232afa6a0be5c26fde37f9bff25a64ff2b831b5398decb3ec",
+          "native": true,
+          "before_relocation_sha256": "521254c78990e98232afa6a0be5c26fde37f9bff25a64ff2b831b5398decb3ec",
+          "relocated": false
+        },
+        {
+          "member": "PyQt5/Qt5/lib/libQt5Core.so.5",
+          "source": "PyQt5/Qt5/lib/libQt5Core.so.5",
+          "sha256": "ca466815216d8855d5086bf66fcc18e0f5d69f0cbd6f5189b93a1aeb2008b1ac",
+          "native": true,
+          "before_relocation_sha256": "cca0b44d5b68847ed52fc0f6c04d3fef580d03719604146210d77f3288acbf77",
+          "relocated": true
+        },
+        {
+          "member": "PyQt5/Qt5/lib/libQt5DBus.so.5",
+          "source": "PyQt5/Qt5/lib/libQt5DBus.so.5",
+          "sha256": "82f9e3be2b9798157f28b09df0031001f1d55c8eb8a07954e30329b9cc95cc2c",
+          "native": true,
+          "before_relocation_sha256": "82f9e3be2b9798157f28b09df0031001f1d55c8eb8a07954e30329b9cc95cc2c",
+          "relocated": false
+        },
+        {
+          "member": "PyQt5/Qt5/lib/libQt5Gui.so.5",
+          "source": "PyQt5/Qt5/lib/libQt5Gui.so.5",
+          "sha256": "f288c3ccebe0dd4d18b455cc9bb5c89cffed9069a5ca38d3549b962e23d1d2d5",
+          "native": true,
+          "before_relocation_sha256": "f288c3ccebe0dd4d18b455cc9bb5c89cffed9069a5ca38d3549b962e23d1d2d5",
+          "relocated": false
+        },
+        {
+          "member": "PyQt5/Qt5/lib/libQt5Network.so.5",
+          "source": "PyQt5/Qt5/lib/libQt5Network.so.5",
+          "sha256": "4a586d9b0ed606b9e792a3929663871c7955abdb497ec6ddd0b105a390779e9a",
+          "native": true,
+          "before_relocation_sha256": "4a586d9b0ed606b9e792a3929663871c7955abdb497ec6ddd0b105a390779e9a",
+          "relocated": false
+        },
+        {
+          "member": "PyQt5/Qt5/lib/libQt5PrintSupport.so.5",
+          "source": "PyQt5/Qt5/lib/libQt5PrintSupport.so.5",
+          "sha256": "86bef7f98ae447b0a86ec8b534d376c5aa0a70a619d5ae73630a2fc8c261368c",
+          "native": true,
+          "before_relocation_sha256": "86bef7f98ae447b0a86ec8b534d376c5aa0a70a619d5ae73630a2fc8c261368c",
+          "relocated": false
+        },
+        {
+          "member": "PyQt5/Qt5/lib/libQt5Sql.so.5",
+          "source": "PyQt5/Qt5/lib/libQt5Sql.so.5",
+          "sha256": "f6f1b28984e778fb447a7c14705baf6b5d9581d0ab02790f135d2c792ea73603",
+          "native": true,
+          "before_relocation_sha256": "f6f1b28984e778fb447a7c14705baf6b5d9581d0ab02790f135d2c792ea73603",
+          "relocated": false
+        },
+        {
+          "member": "PyQt5/Qt5/lib/libQt5Svg.so.5",
+          "source": "PyQt5/Qt5/lib/libQt5Svg.so.5",
+          "sha256": "a1798b5254d2b4e8626b3a2aed486519be914fc2985ee0e6ce49e02fe95b90e8",
+          "native": true,
+          "before_relocation_sha256": "a1798b5254d2b4e8626b3a2aed486519be914fc2985ee0e6ce49e02fe95b90e8",
+          "relocated": false
+        },
+        {
+          "member": "PyQt5/Qt5/lib/libQt5Test.so.5",
+          "source": "PyQt5/Qt5/lib/libQt5Test.so.5",
+          "sha256": "6386d7640362cfe0e13b7cfa251cbde18ec5f31e1345fa29eec0f40c781318f9",
+          "native": true,
+          "before_relocation_sha256": "6386d7640362cfe0e13b7cfa251cbde18ec5f31e1345fa29eec0f40c781318f9",
+          "relocated": false
+        },
+        {
+          "member": "PyQt5/Qt5/lib/libQt5Widgets.so.5",
+          "source": "PyQt5/Qt5/lib/libQt5Widgets.so.5",
+          "sha256": "51b2bf841e5d1f0d20048c6585ba230e66da95f29cde9b0ff2d1c777f602c894",
+          "native": true,
+          "before_relocation_sha256": "51b2bf841e5d1f0d20048c6585ba230e66da95f29cde9b0ff2d1c777f602c894",
+          "relocated": false
+        },
+        {
+          "member": "PyQt5/Qt5/lib/libQt5XcbQpa.so.5",
+          "source": "PyQt5/Qt5/lib/libQt5XcbQpa.so.5",
+          "sha256": "00b7e672b490da50d810f652b12787ee5f2f32f62684d484820459fb51211c35",
+          "native": true,
+          "before_relocation_sha256": "00b7e672b490da50d810f652b12787ee5f2f32f62684d484820459fb51211c35",
+          "relocated": false
+        },
+        {
+          "member": "PyQt5/Qt5/lib/libQt5Xml.so.5",
+          "source": "PyQt5/Qt5/lib/libQt5Xml.so.5",
+          "sha256": "6995d9384f8e54f8fc733332cff3762a6787f843551fad1bc7035ebf7f2de35e",
+          "native": true,
+          "before_relocation_sha256": "6995d9384f8e54f8fc733332cff3762a6787f843551fad1bc7035ebf7f2de35e",
+          "relocated": false
+        },
+        {
+          "member": "PyQt5/Qt5/plugins/bearer/libqconnmanbearer.so",
+          "source": "PyQt5/Qt5/plugins/bearer/libqconnmanbearer.so",
+          "sha256": "595d74832505942da9dd037153d24443212d98096368e0b495ba8e71071bc59a",
+          "native": true,
+          "before_relocation_sha256": "595d74832505942da9dd037153d24443212d98096368e0b495ba8e71071bc59a",
+          "relocated": false
+        },
+        {
+          "member": "PyQt5/Qt5/plugins/bearer/libqgenericbearer.so",
+          "source": "PyQt5/Qt5/plugins/bearer/libqgenericbearer.so",
+          "sha256": "3d4568d6f41576812de75bc97e3cbce7d0700d4abde53a80c481700865d8927a",
+          "native": true,
+          "before_relocation_sha256": "3d4568d6f41576812de75bc97e3cbce7d0700d4abde53a80c481700865d8927a",
+          "relocated": false
+        },
+        {
+          "member": "PyQt5/Qt5/plugins/bearer/libqnmbearer.so",
+          "source": "PyQt5/Qt5/plugins/bearer/libqnmbearer.so",
+          "sha256": "9fbea26ef93046fa1bc03498003325459ecb6720129737959ceadb4a047ac818",
+          "native": true,
+          "before_relocation_sha256": "9fbea26ef93046fa1bc03498003325459ecb6720129737959ceadb4a047ac818",
+          "relocated": false
+        },
+        {
+          "member": "PyQt5/Qt5/plugins/generic/libqevdevkeyboardplugin.so",
+          "source": "PyQt5/Qt5/plugins/generic/libqevdevkeyboardplugin.so",
+          "sha256": "4b69464b07f48134d5c41659d6133ce6489694f90711b746c05410878c6ca7a4",
+          "native": true,
+          "before_relocation_sha256": "4b69464b07f48134d5c41659d6133ce6489694f90711b746c05410878c6ca7a4",
+          "relocated": false
+        },
+        {
+          "member": "PyQt5/Qt5/plugins/generic/libqevdevmouseplugin.so",
+          "source": "PyQt5/Qt5/plugins/generic/libqevdevmouseplugin.so",
+          "sha256": "49c66bd22f55dd68194d810ecd2b4d18aae63d331a3787ee7537fcceee8321c0",
+          "native": true,
+          "before_relocation_sha256": "49c66bd22f55dd68194d810ecd2b4d18aae63d331a3787ee7537fcceee8321c0",
+          "relocated": false
+        },
+        {
+          "member": "PyQt5/Qt5/plugins/generic/libqevdevtabletplugin.so",
+          "source": "PyQt5/Qt5/plugins/generic/libqevdevtabletplugin.so",
+          "sha256": "5e40c7f79ac331dae4131210dccd73488748ced44007745c1ae1a1859b45d399",
+          "native": true,
+          "before_relocation_sha256": "5e40c7f79ac331dae4131210dccd73488748ced44007745c1ae1a1859b45d399",
+          "relocated": false
+        },
+        {
+          "member": "PyQt5/Qt5/plugins/generic/libqevdevtouchplugin.so",
+          "source": "PyQt5/Qt5/plugins/generic/libqevdevtouchplugin.so",
+          "sha256": "89849f0a07863f1873d2fdde631ac40c76ff29f69a2907b24d86f1b8e49722bc",
+          "native": true,
+          "before_relocation_sha256": "89849f0a07863f1873d2fdde631ac40c76ff29f69a2907b24d86f1b8e49722bc",
+          "relocated": false
+        },
+        {
+          "member": "PyQt5/Qt5/plugins/generic/libqtuiotouchplugin.so",
+          "source": "PyQt5/Qt5/plugins/generic/libqtuiotouchplugin.so",
+          "sha256": "7b8d323986d5d4564b6cdc0b937bfe24315846ba17dfbf58bd95f8033fc03fea",
+          "native": true,
+          "before_relocation_sha256": "7b8d323986d5d4564b6cdc0b937bfe24315846ba17dfbf58bd95f8033fc03fea",
+          "relocated": false
+        },
+        {
+          "member": "PyQt5/Qt5/plugins/iconengines/libqsvgicon.so",
+          "source": "PyQt5/Qt5/plugins/iconengines/libqsvgicon.so",
+          "sha256": "d1aab7e4573a27f41c5018ee3fe6b0b87123f822b0bf52f5ed89f5deb5e87aad",
+          "native": true,
+          "before_relocation_sha256": "d1aab7e4573a27f41c5018ee3fe6b0b87123f822b0bf52f5ed89f5deb5e87aad",
+          "relocated": false
+        },
+        {
+          "member": "PyQt5/Qt5/plugins/imageformats/libqgif.so",
+          "source": "PyQt5/Qt5/plugins/imageformats/libqgif.so",
+          "sha256": "0aaa22b3bfc60e5e7160e14f2371a2b4a72409f98494fea543971aca415e5a10",
+          "native": true,
+          "before_relocation_sha256": "0aaa22b3bfc60e5e7160e14f2371a2b4a72409f98494fea543971aca415e5a10",
+          "relocated": false
+        },
+        {
+          "member": "PyQt5/Qt5/plugins/imageformats/libqico.so",
+          "source": "PyQt5/Qt5/plugins/imageformats/libqico.so",
+          "sha256": "dc38bba9ea69cb3a46f93fb619028f797ae2faed976d547216da7de67bdc5d7b",
+          "native": true,
+          "before_relocation_sha256": "dc38bba9ea69cb3a46f93fb619028f797ae2faed976d547216da7de67bdc5d7b",
+          "relocated": false
+        },
+        {
+          "member": "PyQt5/Qt5/plugins/imageformats/libqjpeg.so",
+          "source": "PyQt5/Qt5/plugins/imageformats/libqjpeg.so",
+          "sha256": "5cd7441f2f4ea6d97afc30a73e57b5a052743ea90ad1c49207c22e3fb963a3a5",
+          "native": true,
+          "before_relocation_sha256": "5cd7441f2f4ea6d97afc30a73e57b5a052743ea90ad1c49207c22e3fb963a3a5",
+          "relocated": false
+        },
+        {
+          "member": "PyQt5/Qt5/plugins/imageformats/libqsvg.so",
+          "source": "PyQt5/Qt5/plugins/imageformats/libqsvg.so",
+          "sha256": "6925dd59daba5c60015ac8b543d0ceb824afbe99207a282c5e6eae27c1e7dec9",
+          "native": true,
+          "before_relocation_sha256": "6925dd59daba5c60015ac8b543d0ceb824afbe99207a282c5e6eae27c1e7dec9",
+          "relocated": false
+        },
+        {
+          "member": "PyQt5/Qt5/plugins/platforminputcontexts/libcomposeplatforminputcontextplugin.so",
+          "source": "PyQt5/Qt5/plugins/platforminputcontexts/libcomposeplatforminputcontextplugin.so",
+          "sha256": "b4ff9ce3c7f672611f29f5b08799bc756165951fd31af6dd1c029026061ae93c",
+          "native": true,
+          "before_relocation_sha256": "b4ff9ce3c7f672611f29f5b08799bc756165951fd31af6dd1c029026061ae93c",
+          "relocated": false
+        },
+        {
+          "member": "PyQt5/Qt5/plugins/platforminputcontexts/libibusplatforminputcontextplugin.so",
+          "source": "PyQt5/Qt5/plugins/platforminputcontexts/libibusplatforminputcontextplugin.so",
+          "sha256": "bc26d8092fb16472eff15cbd03b27416bb93e813057e5575399a280d89802a3d",
+          "native": true,
+          "before_relocation_sha256": "bc26d8092fb16472eff15cbd03b27416bb93e813057e5575399a280d89802a3d",
+          "relocated": false
+        },
+        {
+          "member": "PyQt5/Qt5/plugins/platforms/libqlinuxfb.so",
+          "source": "PyQt5/Qt5/plugins/platforms/libqlinuxfb.so",
+          "sha256": "b42cfe72061482ac6e02bee49b7cc25ba075ef9fff02ffd1decd17831fe085de",
+          "native": true,
+          "before_relocation_sha256": "b42cfe72061482ac6e02bee49b7cc25ba075ef9fff02ffd1decd17831fe085de",
+          "relocated": false
+        },
+        {
+          "member": "PyQt5/Qt5/plugins/platforms/libqminimal.so",
+          "source": "PyQt5/Qt5/plugins/platforms/libqminimal.so",
+          "sha256": "8b177335349a326989bc9ed8ff67ee819b53313b8df03df8d6506f555dde7803",
+          "native": true,
+          "before_relocation_sha256": "8b177335349a326989bc9ed8ff67ee819b53313b8df03df8d6506f555dde7803",
+          "relocated": false
+        },
+        {
+          "member": "PyQt5/Qt5/plugins/platforms/libqoffscreen.so",
+          "source": "PyQt5/Qt5/plugins/platforms/libqoffscreen.so",
+          "sha256": "768f6187c326c6248ca07b374ee2e79f7c97e4204ced3ced0f12a45cce52a0a3",
+          "native": true,
+          "before_relocation_sha256": "768f6187c326c6248ca07b374ee2e79f7c97e4204ced3ced0f12a45cce52a0a3",
+          "relocated": false
+        },
+        {
+          "member": "PyQt5/Qt5/plugins/platforms/libqvnc.so",
+          "source": "PyQt5/Qt5/plugins/platforms/libqvnc.so",
+          "sha256": "db2f248f1ffc06e29715fd11ce025fd304fb4446ddb4943194cb1801b0ddc1e6",
+          "native": true,
+          "before_relocation_sha256": "db2f248f1ffc06e29715fd11ce025fd304fb4446ddb4943194cb1801b0ddc1e6",
+          "relocated": false
+        },
+        {
+          "member": "PyQt5/Qt5/plugins/platforms/libqxcb.so",
+          "source": "PyQt5/Qt5/plugins/platforms/libqxcb.so",
+          "sha256": "4fbf37e31846a69846b875accec8210b0511b59097e91c62243c3b294999fc1d",
+          "native": true,
+          "before_relocation_sha256": "4fbf37e31846a69846b875accec8210b0511b59097e91c62243c3b294999fc1d",
+          "relocated": false
+        },
+        {
+          "member": "PyQt5/Qt5/plugins/platformthemes/libqxdgdesktopportal.so",
+          "source": "PyQt5/Qt5/plugins/platformthemes/libqxdgdesktopportal.so",
+          "sha256": "63050b5e73f215964cda53432346509f340ff3b81a3930d679b1dd79b0b8f797",
+          "native": true,
+          "before_relocation_sha256": "63050b5e73f215964cda53432346509f340ff3b81a3930d679b1dd79b0b8f797",
+          "relocated": false
+        },
+        {
+          "member": "PyQt5/Qt5/plugins/sqldrivers/libqsqlite.so",
+          "source": "PyQt5/Qt5/plugins/sqldrivers/libqsqlite.so",
+          "sha256": "483aa461f9baab83a815c6f1e07c1e832f0a492db5295aa3a7436a6b0de072b8",
+          "native": true,
+          "before_relocation_sha256": "483aa461f9baab83a815c6f1e07c1e832f0a492db5295aa3a7436a6b0de072b8",
+          "relocated": false
+        }
+      ]
+    }
+  ],
+  "support_wheels": [
+    {
+      "name": "pyqt5-sip",
+      "version": "12.20.0",
+      "filename": "pyqt5_sip-12.20.0-cp312-cp312-manylinux_2_5_x86_64.manylinux1_x86_64.whl",
+      "url": "https://files.pythonhosted.org/packages/a0/7e/5807a64da9966d485df609acfe4b2596241dc3a11b3d9eea97a7c43b3ee8/pyqt5_sip-12.20.0-cp312-cp312-manylinux_2_5_x86_64.manylinux1_x86_64.whl",
+      "sha256": "17af170daf9cfc5d475df60bc1157c70fc8fdfc8068af5af32226ee2fc2642ce",
+      "native_member": "PyQt5/sip.cpython-312-x86_64-linux-gnu.so",
+      "native_sha256": "3ec0af7b9efb78947626e87951d80e5998ea5d865288b14838c33d25f91a945c"
+    }
+  ]
+}

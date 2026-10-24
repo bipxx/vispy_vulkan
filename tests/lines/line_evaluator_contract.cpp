@@ -245,6 +245,30 @@ void typed_arrays_matrix_interpolation_and_ids() {
     require(value->storage_bytes() >= sizeof(LineEvaluatorArtifact) + value->spv.size()*4, "evaluator CPU owned storage is accounted");
 }
 
+void qualified_interpolation_survives_endpoint_compilation() {
+    for (const std::string qualifier : {"centroid", "sample"}) {
+        const auto value = evaluator(
+            "attribute vec2 p;" + qualifier + " out vec4 color;"
+            "void main(){gl_Position=vec4(p,0,1);color=vec4(p,0,1);}",
+            qualifier + " in vec4 color;void main(){gl_FragColor=color;}");
+        require(value->outputs.size() == 1 && value->outputs[0].varying.name == "color",
+                "qualified original varying survives real render and endpoint compilation");
+        const auto& varying = value->outputs[0].varying;
+        require(varying.centroid == (qualifier == "centroid") && varying.sample == (qualifier == "sample") &&
+                varying.interpolation == "smooth",
+                "endpoint output retains the distinct interpolation location for the render consumer");
+        SpvStorageLayout layout; std::string error;
+        require(reflect_storage_rows(value->spv, "VispyLineOutputs", layout, error), error);
+        require(layout.members.size() == 2 && layout.row_stride == 32 &&
+                layout.members[1].offset == 16 && layout.members[1].size == 16 &&
+                layout.members[1].value_type.scalar == ShaderScalarType::Float &&
+                layout.members[1].value_type.rows == 4,
+                "compiled qualified endpoint emits the full floating-point varying in its storage row");
+        SpvTrace trace(value->spv);
+        require(trace.entry != 0, "qualified endpoint has an actual compute entry point");
+    }
+}
+
 void bool_uniforms_samplers_and_inactive_inputs() {
     NormalizeOptions options; options.base_level_sampling = true;
     auto render = original(
@@ -496,13 +520,6 @@ void contextual_unsupported_and_mapped_errors() {
     require(build_line_evaluator(changed)->error.find("shared storage/side effects")!=std::string::npos, "shared shader storage is not an isolated private invocation");
     changed=std::make_shared<PortableShaderArtifact>(*render);changed->point_sprites=true;
     require(build_line_evaluator(changed)->error.find("point-quad")!=std::string::npos, "original endpoint cannot be a previously expanded point vertex");
-    const auto sampled=normalize_program("sample out vec4 color;void main(){gl_Position=vec4(1);color=vec4(1);}",
-                                        "sample in vec4 color;void main(){gl_FragColor=color;}");
-    require(sampled.error.empty() && sampled.varyings[0].sample, "sample qualifier is retained rather than silently discarded");
-    changed=std::make_shared<PortableShaderArtifact>(*render);
-    changed->source_vertex="centroid out vec4 color;void main(){gl_Position=vec4(1);color=vec4(1);}";
-    changed->source_fragment="centroid in vec4 color;void main(){gl_FragColor=color;}";
-    require(build_line_evaluator(changed)->error.find("centroid/sample")!=std::string::npos, "unimplemented interpolation mode rejected explicitly");
     NormalizeOptions options;options.line_evaluator=true;
     require(!build_portable_shader(render->source_vertex,render->source_fragment,options,"pins")->ok,
             "compute evaluator body cannot accidentally become a render artifact");
@@ -990,6 +1007,7 @@ int main() {
         isolated_private_main_and_early_returns();
         original_global_initializers_follow_inputs();
         typed_arrays_matrix_interpolation_and_ids();
+        qualified_interpolation_survives_endpoint_compilation();
         bool_uniforms_samplers_and_inactive_inputs();
         dispatch_grants_and_failure_atomicity();
         captured_resource_remapping();

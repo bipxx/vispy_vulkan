@@ -101,7 +101,10 @@ void compute_and_failures() {
     auto l=lower_integer_nearest_2d(c.compute.words,{{1,2,ShaderScalarType::Uint,IntegerWrap::Repeat,IntegerWrap::ClampToEdge,true,true}});require(l.ok,l.error);
     auto f=finalize_sampled_stage(l.words,4);require(f.ok,f.error);require(live(f,1)&&!live(f,2)&&live(f,3),"compute query/fetch liveness excludes dead sampler");
     auto nonzero=compile_vulkan_compute(source("1.0"));require(nonzero.ok,nonzero.log);
-    require(!integer_sample_bindings(nonzero.compute.words,4).ok,"unsupported actual compute LOD refused without pretending generated-path support");
+    auto nonzero_uses=integer_sample_bindings(nonzero.compute.words,4);
+    require(nonzero_uses.ok&&nonzero_uses.bindings.size()==1,"compute nonzero LOD inspection retains the resource pair for actual-policy materialization");
+    auto nonzero_lowered=lower_integer_nearest_2d(nonzero.compute.words,{{1,2,ShaderScalarType::Uint,IntegerWrap::Repeat,IntegerWrap::ClampToEdge,true,true}});
+    require(nonzero_lowered.ok&&nonzero_lowered.samples_lowered==1,"captured one-level nearest policy specializes actual compute nonzero LOD");
     require(!integer_sample_bindings({1,2,3},1).ok,"invalid module rejected");
     require(!integer_sample_bindings(c.compute.words,3).ok,"combined query stage refused");
 }

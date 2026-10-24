@@ -7,10 +7,13 @@ import json
 from pathlib import Path
 import shutil
 import subprocess
+import sys
 import sysconfig
 import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / 'cmake'))
+from runtime_package import source_package_hashes, wheel_package_hashes
 
 
 def digest(data):
@@ -38,9 +41,7 @@ def main():
                        'DAWN_ENABLE_METAL': 'OFF', 'DAWN_ENABLE_NULL': 'OFF',
                        'TINT_BUILD_SPV_READER': 'ON', 'DAWN_ENABLE_SPIRV_VALIDATION': 'ON'}.items():
         assert cache.get(key) == value, key
-    tracked = subprocess.check_output(['git', 'ls-files', '-z', 'src/vispy'], cwd=ROOT)
-    package = {name[4:]: digest((ROOT / name).read_bytes())
-               for name in tracked.decode().split('\0') if name}
+    package = source_package_hashes(ROOT)
     notices = {'vispy/_licenses/' + p.name: digest(p.read_bytes())
                for p in (ROOT / 'third_party/licenses').iterdir()
                if p.is_file() and p.suffix in ('.txt', '.md', '.json')}
@@ -65,8 +66,7 @@ def main():
     with zipfile.ZipFile(wheel) as archive:
         names = archive.namelist()
         assert len(names) == len(set(names))
-        hashes = {name: digest(archive.read(name)) for name in names
-                  if name.startswith('vispy/') and not name.endswith('/')}
+        hashes = wheel_package_hashes(wheel, root=ROOT)
         assert set(hashes) == set(package) | set(notices) | set(native)
         for name, expected in {**package, **notices}.items():
             assert hashes[name] == expected, name

@@ -204,7 +204,32 @@ void compatibility_and_rejections() {
     auto compiled_lod = compile_vulkan_glsl(lod.vertex, lod.fragment);
     require(compiled_lod.ok, compiled_lod.log);
     r = lower_integer_nearest_2d(compiled_lod.fragment.words, {policy(lod, false, p.s, p.t)});
-    require(!r.ok && r.words.empty(), "nonzero explicit LOD rejected");
+    require(r.ok && r.samples_lowered == 1, "actual one-level nearest policy admits nonzero explicit LOD");
+    auto without_one_level = policy(lod, false, p.s, p.t); without_one_level.base_level_only = false;
+    auto refused_level = lower_integer_nearest_2d(compiled_lod.fragment.words, {without_one_level});
+    require(!refused_level.ok && refused_level.words.empty(), "nonzero LOD cannot bypass the actual one-level policy");
+    auto evaluated = normalize_program(vertex,
+        "in vec2 v_uv;uniform usampler2D words;float counter=0.;"
+        "float next_level(){counter+=1.;return 2.;}vec2 next_dx(){counter+=2.;return vec2(.25,0);}"
+        "vec2 next_dy(){counter+=3.;return vec2(0,.25);}void main(){"
+        "uvec4 a=textureLod(words,v_uv,next_level());uvec4 b=textureGrad(words,v_uv,next_dx(),next_dy());"
+        "gl_FragColor=vec4(float((a.r+b.r)&255u)/255.,counter*.125,0,1);}");
+    require(evaluated.error.empty(), evaluated.error);
+    auto evaluated_compiled=compile_vulkan_glsl(evaluated.vertex,evaluated.fragment);
+    require(evaluated_compiled.ok,evaluated_compiled.log);
+    auto lowered_evaluation=lower_integer_nearest_2d(evaluated_compiled.fragment.words,
+        {policy(evaluated,false,p.s,p.t)});
+    require(lowered_evaluation.ok && lowered_evaluation.samples_lowered==2,lowered_evaluation.error);
+    const auto before_code=decode(evaluated_compiled.fragment.words),after_code=decode(lowered_evaluation.words);
+    size_t calls=0;
+    for(const auto& instruction:before_code) {
+        if(instruction.op!=spv::Op::OpFunctionCall && instruction.op!=spv::Op::OpStore)continue;
+        calls+=instruction.op==spv::Op::OpFunctionCall;
+        require(std::any_of(after_code.begin(),after_code.end(),[&](const auto& actual){
+            return actual.op==instruction.op && actual.a==instruction.a;
+        }),"integer one-level lowering preserves actual operand calls and private stores");
+    }
+    require(calls>=3,"finite LOD/gradient side-effect fixture has real compiled helper calls");
     auto identity = integer_sample_policy_identity({p}); require(!identity.empty(), "explicit policy identity");
     bad = p; bad.t = IntegerWrap::MirroredRepeat;
     require(identity != integer_sample_policy_identity({bad}), "wrap specialization changes cache identity");

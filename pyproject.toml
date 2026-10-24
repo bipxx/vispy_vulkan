@@ -48,6 +48,16 @@ build-dir = "build/{wheel_tag}"
 editable.mode = "redirect"
 cmake.build-type = "Release"
 wheel.packages = ["src/vispy"]
+# The explicit shipping contract retains gl2/glplus as Dawn aliases while the
+# unported OpenGL loaders/backends remain source/reference-only.
+wheel.exclude = [
+    "vispy/gloo/gl/es2.py", "vispy/gloo/gl/_pyopengl2.py", "vispy/gloo/gl/pyopengl2.py",
+    "vispy/ext/egl.py", "vispy/ext/osmesa.py", "vispy/util/osmesa_gl.py",
+    "vispy/app/backends/_pyqt4.py", "vispy/app/backends/_pyside.py", "vispy/app/backends/_pyside2.py",
+    "vispy/app/backends/_pyglet.py", "vispy/app/backends/_glfw.py", "vispy/app/backends/_sdl2.py",
+    "vispy/app/backends/_wx.py", "vispy/app/backends/_egl.py", "vispy/app/backends/_osmesa.py",
+    "vispy/app/backends/_tk.py",
+]
 # Dawn's Git ignores describe fetched dependencies, which this fork vendors.
 # Explicit includes precede excludes in scikit-build-core, so keep generated
 # files outside the include selection as well as the exclusion selection.

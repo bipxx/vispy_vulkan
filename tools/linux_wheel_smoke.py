@@ -8,6 +8,8 @@ def require(condition, message):
     if not condition: raise RuntimeError(message)
 
 ROOT=pathlib.Path(__file__).resolve().parents[1]
+sys.path.insert(0,str(ROOT/'cmake'))
+from runtime_package import wheel_package_hashes
 sys.path.insert(0,str(ROOT/'tools'))
 from mesh_layout_process import process_stamp,native_modules,assert_wheel_module_origins
 parser=argparse.ArgumentParser()
@@ -23,14 +25,12 @@ try:
     import vispy
     package=pathlib.Path(vispy.__file__).resolve().parent
     assert package.is_relative_to(pathlib.Path(sys.prefix).resolve()) and not package.is_relative_to(ROOT)
-    with zipfile.ZipFile(args.wheel) as archive:
-        hashes={n:hashlib.sha256(archive.read(n)).hexdigest() for n in archive.namelist() if n.startswith('vispy/') and not n.endswith('/')}
-        for n,h in hashes.items():assert hashlib.sha256((package/pathlib.Path(n).relative_to('vispy')).read_bytes()).hexdigest()==h,n
-    assert len(hashes)==550
+    hashes=wheel_package_hashes(args.wheel)
+    for n,h in hashes.items():assert hashlib.sha256((package/pathlib.Path(n).relative_to('vispy')).read_bytes()).hexdigest()==h,n
     from vispy import _dawn as native,app,gloo,scene
     from vispy.visuals.text import _sdf_cpu
     assert any(str(_sdf_cpu.__file__).endswith(suffix) for suffix in importlib.machinery.EXTENSION_SUFFIXES)
-    result.update(package=str(package),installed_members_verified=550,numpy=np.__version__,device=dict(native.device_info()))
+    result.update(package=str(package),installed_members_verified=len(hashes),numpy=np.__version__,device=dict(native.device_info()))
     assert result['device']['backend']=='Vulkan' and result['device']['software']
     result['software_vulkan_only']=True
     canvas=app.Canvas(app='dawn_headless',size=(64,64),show=False,config={'samples':0})

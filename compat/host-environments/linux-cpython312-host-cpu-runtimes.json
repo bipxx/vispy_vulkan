@@ -1,0 +1,73 @@
+{
+  "schema": 1,
+  "platform": "Ubuntu24.04 amd64",
+  "purpose": "Complete native dependency closure for pinned Numba0.68 optional OpenMP/TBB pool libraries; no host/renderer/provider version changes.",
+  "apt_packages": {
+    "libgomp1": "14.2.0-4ubuntu2~24.04.1",
+    "libhwloc15": "2.10.0-1build1",
+    "libtbb12": "2021.11.0-2ubuntu2",
+    "libtbbbind-2-5": "2021.11.0-2ubuntu2",
+    "libtbbmalloc2": "2021.11.0-2ubuntu2"
+  },
+  "deb_sha256": {
+    "libgomp1_14.2.0-4ubuntu2~24.04.1_amd64.deb": "e8a95ec58125b4933597f30ff56c2ae10edf90f287262e366d4b6edea3019144",
+    "libtbb12_2021.11.0-2ubuntu2_amd64.deb": "78e2c79f5749fc5c55b32f9745e07d5c3480be574fd4d64bb0325cbec4206b06",
+    "libhwloc15_2.10.0-1build1_amd64.deb": "45acb4e6676f968d0f32ff1c5115cad0b61165931afa1a59282bda6f00d13c3b",
+    "libtbbmalloc2_2021.11.0-2ubuntu2_amd64.deb": "3de9b639d4abe5d8f0e0adbb7e26e32bf9de9473b19155d76a3a24c88b62cfea",
+    "libtbbbind-2-5_2021.11.0-2ubuntu2_amd64.deb": "09c4fa1f12983554b345c9c4d462c8cf14d707c3406a4bb35f81522edd492562"
+  },
+  "native_files": {
+    "/usr/lib/x86_64-linux-gnu/libgomp.so.1": {
+      "sha256": "135f3c8f006d2fe5e68e51281c7974cb991a03de3bfb3593d68d174dfcf854d1"
+    },
+    "/usr/lib/x86_64-linux-gnu/libgomp.so.1.0.0": {
+      "sha256": "135f3c8f006d2fe5e68e51281c7974cb991a03de3bfb3593d68d174dfcf854d1"
+    },
+    "/usr/lib/x86_64-linux-gnu/libhwloc.so.15": {
+      "sha256": "86dff44a023254d997cea910b9a51f35afefe6780f4b5530f974a2009ba47487"
+    },
+    "/usr/lib/x86_64-linux-gnu/libhwloc.so.15.7.0": {
+      "sha256": "86dff44a023254d997cea910b9a51f35afefe6780f4b5530f974a2009ba47487"
+    },
+    "/usr/lib/x86_64-linux-gnu/libtbb.so.12": {
+      "sha256": "1e2a936d4519f2a4f2e62411a9f680f967a4742525ecf5c2dcac57f1b82501e7"
+    },
+    "/usr/lib/x86_64-linux-gnu/libtbb.so.12.11": {
+      "sha256": "1e2a936d4519f2a4f2e62411a9f680f967a4742525ecf5c2dcac57f1b82501e7"
+    },
+    "/usr/lib/x86_64-linux-gnu/libtbbbind_2_5.so.3": {
+      "sha256": "4a323db30eebe87ec943f644b29b514293170f7f889419df5826fcd8cb850421"
+    },
+    "/usr/lib/x86_64-linux-gnu/libtbbbind_2_5.so.3.11": {
+      "sha256": "4a323db30eebe87ec943f644b29b514293170f7f889419df5826fcd8cb850421"
+    },
+    "/usr/lib/x86_64-linux-gnu/libtbbmalloc.so.2": {
+      "sha256": "5af2073ee206b88a82360bb692413cd24d9ab22107b4110442c560d4a2ac4b7c"
+    },
+    "/usr/lib/x86_64-linux-gnu/libtbbmalloc.so.2.11": {
+      "sha256": "5af2073ee206b88a82360bb692413cd24d9ab22107b4110442c560d4a2ac4b7c"
+    },
+    "/usr/lib/x86_64-linux-gnu/libtbbmalloc_proxy.so.2": {
+      "sha256": "34dccef81621c73b62f002e50b9637fd2d2988db17bb85c6728dd4cfb66a23a3"
+    },
+    "/usr/lib/x86_64-linux-gnu/libtbbmalloc_proxy.so.2.11": {
+      "sha256": "34dccef81621c73b62f002e50b9637fd2d2988db17bb85c6728dd4cfb66a23a3"
+    }
+  },
+  "install_options": [
+    "--no-install-recommends",
+    "--no-upgrade"
+  ],
+  "validation": {
+    "changed_existing_packages": {},
+    "new_packages": {
+      "libgomp1:amd64": "14.2.0-4ubuntu2~24.04.1",
+      "libhwloc15:amd64": "2.10.0-1build1",
+      "libtbb12:amd64": "2021.11.0-2ubuntu2",
+      "libtbbbind-2-5:amd64": "2021.11.0-2ubuntu2",
+      "libtbbmalloc2:amd64": "2021.11.0-2ubuntu2"
+    },
+    "consumer_no_gl_inventory": "Both napari/threedee and Glue PASS_INVENTORY before full host reruns"
+  },
+  "upstream_notices": "Unmodified Ubuntu package copyright/license files retained under /usr/share/doc for every added package."
+}

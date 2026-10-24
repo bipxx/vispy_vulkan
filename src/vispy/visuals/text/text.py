@@ -164,6 +164,30 @@ class FontManager(object):
         return self._fonts[key]
 
 
+def _font_kernel_texture(font, cache):
+    """Retain the established custom-font `_kernel` interface.
+
+    External font managers, including napari's Qt font renderer, need not
+    implement TextureFont's private texture-cache helper. Keep their cache on
+    the visual rather than modifying an external font object.
+    """
+    getter = getattr(font, '_get_kernel_texture', None)
+    if getter is not None:
+        return getter()
+    data = np.asarray(font._kernel)
+    previous = cache.get('data')
+    if (previous is None or data.shape != previous.shape or
+            data.dtype != previous.dtype or
+            not np.array_equal(np.ascontiguousarray(data).view(np.uint8),
+                               previous.view(np.uint8))):
+        if 'texture' not in cache:
+            cache['texture'] = Texture2D(data)
+        else:
+            cache['texture'].set_data(data)
+        cache['data'] = np.array(data, copy=True, order='C', subok=False)
+    return cache['texture']
+
+
 ##############################################################################
 # The visual
 
@@ -666,7 +690,7 @@ class TextVisual(Visual):
         self.shared_program['u_npix'] = n_pix
         self.shared_program['u_px_scale'] = px_scale
         self.shared_program['u_scaling'] = self._scaling
-        self.shared_program['u_kernel'] = self._font._get_kernel_texture()
+        self.shared_program['u_kernel'] = _font_kernel_texture(self._font, self._font_kernel_cache)
         self.shared_program['u_color'] = self._color.rgba
         self.shared_program['u_font_atlas'] = self._font._atlas
         self.shared_program['u_font_atlas_shape'] = self._font._atlas.shape[:2]
@@ -710,6 +734,7 @@ class TextVisual(Visual):
 
     def _update_font(self):
         self._font = self._font_manager.get_font(self._face, self._bold, self._italic)
+        self._font_kernel_cache = {}
         self.update()
 
     @property

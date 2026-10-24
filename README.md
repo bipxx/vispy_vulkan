@@ -2,7 +2,9 @@
 
 A VisPy 0.17.0 compatibility fork using Dawn for Vulkan rendering on Windows and Linux, with a Metal path for macOS.
 
-The current usable milestone targets Windows Vulkan and WSL Linux software Vulkan. macOS Metal is experimental. See the [tested platforms and artifact hashes](docs/tested-platforms.md) for current checks and limitations. Broader native hardware, host and performance qualification remains open.
+Use the [strict offline CPython 3.12 installation guide](docs/offline-install-cp312.md) for the selected no-OpenGL runtime profiles. The [current qualification matrix](compat/no-opengl-matrix.json) and [runtime-removal status](docs/opengl-removal-status.md) identify the exact tested artifacts and environments.
+
+Thirteen of fourteen mandatory rows are qualified, including every WSL Linux software Vulkan/X11 row. Windows napari-threedee startup remains open because of intermittent OLE window-registration hangs. CI and focused final-artifact checks are still running. macOS Metal remains experimental; native Linux hardware and broader performance qualification remain separate.
 
 ## Build
 
@@ -31,7 +33,7 @@ cd vispy_vulkan
 
 Keep dependency bytes unchanged; verification is part of configuration. Existing checkouts with modified line endings must be repaired from a fresh checkout before building.
 
-For the Windows development setup:
+The following Windows source-development setup installs upstream Qt and host packages; it is **not the strict no-OpenGL installation**. Use the [offline guide](docs/offline-install-cp312.md) for the hash-pinned selected profiles.
 
 ```powershell
 uv sync --locked --python 3.12.8 --extra pyqt6 --group dev --group build --group hosts
@@ -42,7 +44,7 @@ uv sync --locked --python 3.12.8 --extra pyqt6 --group dev --group build --group
 
 See [build instructions](cmake/README.md) for CPU contracts, wheels, isolated environments, and platform presets. Build products, development environments, local qualification packets, and generated binaries are excluded from this source repository.
 
-## Current qualification
+## Historical qualification
 
 The historical Native63 Windows CPython 3.12 build passes all 47 native CTests.
 A fresh wheel passes package, native-origin and license checks, followed by

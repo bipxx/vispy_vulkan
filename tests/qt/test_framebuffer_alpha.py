@@ -35,7 +35,9 @@ def test_alpha_reference_is_independent_and_preserves_fixed_semantics():
 def test_native_qt_alpha_redraw_and_owned_images_match_opengl(name):
     manifest = json.loads((REFERENCE / "manifest.json").read_text())
     record = manifest["fixtures"][name]
-    arrays, params, observed = render(name)
+    api = os.environ.get('QT_API', 'pyqt6')
+    arrays, params, observed = render(name, api=api)
+    observed['binding'] = api
     from vispy import _dawn
     device = _dawn.device_info()
     assert device["ok"] and device["backend"] == "Vulkan" and not device["software"]

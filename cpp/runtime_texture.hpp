@@ -152,7 +152,7 @@ inline size_t texels(const TextureData& data) {
 }
 
 inline int format_channels(const std::string& format) {
-    if (format == "red" || format == "r" || format == "luminance" || format == "alpha") return 1;
+    if (format == "red" || format == "r" || format == "luminance" || format == "alpha" || format == "depth_component") return 1;
     if (format == "rg" || format == "luminance_alpha") return 2;
     if (format == "rgb") return 3;
     if (format == "rgba") return 4;
@@ -175,6 +175,17 @@ inline Description describe(const TextureData& data) {
     if (format_channels(data.format) != data.channels) throw error("source format and channel count differ");
     result.semantic = data.format;
     const std::string& internal = data.internal_format;
+    // Depth uploads stage converted R32Float texels, then an ordered depth-only
+    // pass writes the actual Depth32Float attachment (linear-to-depth copies
+    // are forbidden for that format by pinned Dawn/WebGPU validation).
+    if (data.format == "depth_component") {
+        if (data.dimensions != 2 || (!internal.empty() && internal != "depth_component"))
+            throw error("depth_component requires 2D depth_component storage");
+        result.storage = Storage::Float32;
+        result.channels = 1;
+        result.component_bytes = 4;
+        return result;
+    }
     if (!internal.empty() && internal != "red" && internal != "luminance" && internal != "alpha" &&
         internal != "luminance_alpha" && internal != "rg" && internal != "rgb" && internal != "rgba") {
         std::string base;
@@ -342,6 +353,10 @@ inline double storage_value(const uint8_t* source, const std::string& dtype, con
 }
 
 inline void encode(uint8_t* destination, double value, const Description& description) {
+    if (description.semantic == "depth_component") {
+        if (std::isnan(value)) throw error("depth_component upload requires non-NaN values");
+        value = std::clamp(value, 0.0, 1.0);
+    }
     if (description.storage == Storage::Float32) { store(destination, static_cast<float>(value)); return; }
     if (description.storage == Storage::Float16) { store(destination, float_to_half(static_cast<float>(value))); return; }
     if (description.integer) {
@@ -468,7 +483,8 @@ inline bool texture_source_is_direct(const TextureData& data,const texture_detai
     const bool direct_u8 = data.dtype == "u8" && description.storage == Storage::Unorm8;
     const bool direct_integer = description.integer && data.dtype ==
         std::string(description.signed_integer ? "i" : "u") + std::to_string(description.component_bytes * 8);
-    return description.channels == data.channels && (direct_f32 || direct_u8 || direct_integer);
+    return description.semantic != "depth_component" && description.channels == data.channels &&
+        (direct_f32 || direct_u8 || direct_integer);
 }
 inline TexturePreparation describe_texture_preparation(const TextureData& data,const TextureData* allocation=nullptr) {
 
@@ -619,7 +635,12 @@ inline wgpu::SamplerDescriptor prepare_sampler_descriptor(const TextureData& dat
     descriptor.minFilter = filter(data.min_filter);
     descriptor.magFilter = filter(data.mag_filter);
     descriptor.mipmapFilter = wgpu::MipmapFilterMode::Nearest;
-    descriptor.lodMinClamp = descriptor.lodMaxClamp = 0;
+    descriptor.lodMinClamp = 0;
+    // Vulkan's documented emulation of GL_NEAREST/GL_LINEAR uses maxLod=.25:
+    // it selects only mip zero while preserving min-vs-mag filter selection.
+    // maxLod=0 is sufficient only when both filters are equal. Integer nearest
+    // retains that exact zero clamp and its captured one-level policy.
+    descriptor.lodMaxClamp = descriptor.minFilter == descriptor.magFilter ? 0.f : .25f;
     if (description.integer && (descriptor.minFilter == wgpu::FilterMode::Linear || descriptor.magFilter == wgpu::FilterMode::Linear))
         throw error("integer textures require nearest interpolation");
     const auto& modes = data.wrapping;

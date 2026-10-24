@@ -77,6 +77,7 @@ jobs:
           uv pip install --python "$UV_PROJECT_ENVIRONMENT" --require-hashes --only-binary :all: --requirements "$EVIDENCE/requirements.txt"
       - name: Execute native epoch and license snapshot regressions before compilation
         run: |
+          "$CI_PYTHON" .github/workflows/qualification_gate.py pytest --output "$EVIDENCE/build-hygiene.json" -- -q tests/contract/test_build_hygiene.py --junitxml="$EVIDENCE/build-hygiene.xml"
           "$CI_PYTHON" .github/workflows/qualification_gate.py pytest --output "$EVIDENCE/native-epoch-guards.json" -- -q tests/contract/test_native_epoch_guards.py --junitxml="$EVIDENCE/native-epoch-guards.xml"
       - name: Verify immutable scientific references and isolated consumer controls without graphics
         run: |
