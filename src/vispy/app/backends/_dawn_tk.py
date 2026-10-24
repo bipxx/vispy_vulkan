@@ -162,12 +162,22 @@ class _RootState:
             self.root.report_callback_exception(*error_info)
 
     def poll(self):
+        if not self.progress_enabled:
+            return False
         from vispy import _dawn
         try:
             _dawn.process_events()
             return True
         except BaseException:
-            self.report_error(sys.exc_info())
+            error = sys.exc_info()
+            # Timer and draw callbacks may already be ready in the same Tcl
+            # event. Stop both routes before reporting a native failure; only
+            # an explicit update/event-loop re-entry should retry progress.
+            try:
+                self.cancel_progress()
+            except BaseException:
+                logger.error('Additional Tk native progress cancellation error', exc_info=True)
+            self.report_error(error)
             return False
 
     def ensure_progress(self):
@@ -517,7 +527,9 @@ class CanvasBackend(BaseCanvasBackend):
         if self._closed or self._drawing:
             return
         from vispy import _dawn
-        _dawn.process_events()
+        state = self._application._root_state
+        if state is None or not state.poll():
+            return
         if not _dawn.frame_ready(self._dawn_canvas_id):
             self._draw_job = self._root.after(1, self._application._callback(self._draw))
             return

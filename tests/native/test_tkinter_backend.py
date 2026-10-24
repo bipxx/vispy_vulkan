@@ -681,6 +681,9 @@ def test_root_without_children_preserves_host_work_on_quit(resource):
             root.event_generate(sequence)
         elif resource == 'destroy-binding':
             assert binding in root.bind(sequence)
+            # The host now owns teardown. Drain its idle work before destroying
+            # the interpreter; VisPy quit must not dispatch host callbacks.
+            root.update_idletasks()
             root.destroy()
         elif resource == 'variable-trace':
             variable.set('after')
@@ -1387,3 +1390,81 @@ def test_shared_canvas_close_contract_also_cleans_headless_backend():
     with pytest.raises(RuntimeError, match='missing canvas'):
         _dawn.viewport(native_id)
     canvas.close()
+
+
+@pytest.mark.parametrize('first', ['poll', 'draw'])
+def test_native_progress_failure_stops_duplicate_polling_until_explicit_retry(application, monkeypatch, first):
+    from vispy import _dawn
+    canvas = app.Canvas(app=application, size=(192, 128), show=True)
+    paint(canvas)
+    wait(application, lambda: canvas._backend._photo is not None)
+    root = application.native
+    state = application._backend._root_state
+    assert canvas._backend._draw_job is None
+    calls, received = [], []
+    host_job = root.after(60000, lambda: None)
+
+    def fail():
+        calls.append('poll')
+        raise ValueError('single native progress failure')
+
+    def report(kind, value, traceback):
+        received.append((kind, value, traceback))
+
+    monkeypatch.setattr(_dawn, 'process_events', fail)
+    monkeypatch.setattr(root, 'report_callback_exception', report)
+    draw = application._backend._callback(canvas._backend._draw)
+    try:
+        # Simulate both ready callback orders without relying on wall-clock
+        # timer ordering. The second route must not poll a failed device again.
+        callbacks = [state.poll, draw, state.poll] if first == 'poll' else [draw, state.poll, draw]
+        for callback in callbacks:
+            callback()
+        assert len(received) == 1 and calls == ['poll']
+        assert received[0][0] is ValueError
+        assert str(received[0][1]) == 'single native progress failure'
+        assert received[0][2] is not None
+        assert not state.progress_enabled and state.progress_job is None
+        assert host_job in root.tk.call('after', 'info')
+    finally:
+        monkeypatch.undo()
+        root.after_cancel(host_job)
+    previous = canvas._backend._photo
+    canvas.update()  # Explicit redraw retries both progress and pending drawing.
+    wait(application, lambda: canvas._backend._photo is not previous)
+    assert state.progress_enabled
+
+
+
+def test_native_progress_failure_preserves_original_error_and_failed_cancel_owner(application, monkeypatch):
+    from vispy import _dawn
+    canvas = app.Canvas(app=application, size=(192, 128), show=True)
+    paint(canvas)
+    wait(application, lambda: canvas._backend._photo is not None)
+    state = application._backend._root_state
+    root = application.native
+    job = state.progress_job
+    assert job is not None
+    received = []
+
+    def fail_progress():
+        raise ValueError('original native progress failure')
+
+    def fail_cancel(handle):
+        assert handle == job
+        raise RuntimeError('secondary progress cancellation failure')
+
+    monkeypatch.setattr(_dawn, 'process_events', fail_progress)
+    monkeypatch.setattr(root, 'after_cancel', fail_cancel)
+    monkeypatch.setattr(root, 'report_callback_exception', lambda *error: received.append(error))
+    try:
+        assert not state.poll()
+        assert len(received) == 1 and received[0][0] is ValueError
+        assert str(received[0][1]) == 'original native progress failure'
+        assert received[0][2] is not None
+        assert not state.progress_enabled and state.progress_job == job
+        assert job in root.tk.call('after', 'info')
+    finally:
+        monkeypatch.undo()  # Owner can now retry the retained cancellation.
+    state.cancel_progress()
+    assert state.progress_job is None and job not in root.tk.call('after', 'info')

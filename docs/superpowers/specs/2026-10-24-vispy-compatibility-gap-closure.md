@@ -1183,3 +1183,37 @@ manifest, cumulative implementation review and exact G2 artifacts/receipts are
 still required. This source packet changes no hardware or mandatory host gate.
 Evidence, source reconstruction and managed terminal cleanup are retained in
 local `build/runs/inventory-conservation-19/`.
+
+
+## Tk shutdown and shared-progress source checkpoint (G1b, TK-2..4, EV-1..5)
+
+The [shutdown/progress record](../../tkinter-shutdown-compatibility.md) retains
+bounded minimal controls, a 421-case phase trace and the failing fresh-process
+Tcl stderr regression. The known ThemeChanged observation came from a test host
+that destroyed its adopted root without first draining its idle work. The host
+cleanup now drains idle work at its own explicit teardown; backend quit still
+preserves host callbacks and does not pump a borrowed interpreter.
+
+The broad isolated run exposed a separate native-progress duplicate report in an
+external event loop. Two callback-order controls fail before the correction.
+Draw and timer routes now share stopped-until-explicit-retry polling, delivering
+the original error once and preserving cancellation ownership if cleanup fails.
+Three new deterministic cases cover ordering, recovery, host jobs and secondary
+cancellation failure; the fresh-process stderr case adds a fourth regression.
+
+Final affected source suites pass 425 Windows/411 WSL cases, with all nine native
+shutdown gauges zero and no ThemeChanged diagnostic. Thirty-eight CPU/package/
+source-preservation contracts also pass. Existing native leaves, SDKs, locks and
+environments are reused. Original test fixture line endings were restored after
+the broad runs with retained tested copies and AST equality; runtime bytes are
+unchanged. Source evidence and exact installed qualification remain distinct.
+
+The known source diagnostic is attributed/covered, not a complete Tk shutdown
+qualification. Independent cumulative review must now include the shared poll
+failure/retry and host stderr controls. Required-profile mappings, candidate
+manifest, exact G2/observer/CI evidence and original host/platform gates remain
+open. The separate Linux toolkit/scissor failures and experimental native Linux/
+Metal scope are unchanged. No historical optional observation is relabelled.
+All actual failures and child waits, source reconstruction and managed cleanup
+are retained locally in `build/runs/tk-shutdown-20/`, `tk-theme-trace-21/`,
+`tk-shutdown-regression-22/` and `tk-progress-23/`.

@@ -95,3 +95,14 @@ destroyed interpreter, seen before this packet; its attribution and complete
 Tcl shutdown qualification remain open. Expected injected cleanup errors are
 retained separately in the lifecycle suites. No source-test total qualifies an
 installed Tk profile or eliminates a previously required compatibility row.
+
+
+## Later shutdown/progress source checkpoint
+
+The [shutdown and progress record](tkinter-shutdown-compatibility.md) attributes
+and regression-covers the retained ThemeChanged diagnostic to a test host's
+idle-before-destroy ordering. It also fixes duplicate native-progress error
+reporting across scheduled draw and timer routes. Full affected source suites
+pass 425 Windows/411 WSL cases with nine zero native gauges, plus 38 CPU/source
+contracts. This supersedes the specific unattributed source observation above;
+full Tcl lifecycle/installed qualification and all other restrictions stay open.
