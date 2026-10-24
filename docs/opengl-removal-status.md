@@ -3,11 +3,26 @@
 Thirteen of fourteen mandatory runtime rows are qualified, including every
 Linux software Vulkan/X11 binding and admitted host row. Windows
 napari-threedee remains unqualified because of intermittent OLE window-startup
-hangs. CI and focused final-artifact checks are still active. The
+hangs. Required CI remains active; focused final-artifact checks are complete. The
 [current matrix](../compat/no-opengl-matrix.json) binds each result to its exact
 artifact, environment and three gates. Follow the [strict offline CPython 3.12
 guide](offline-install-cp312.md) for installation. Metal remains experimental;
 native Linux hardware qualification remains separate from WSL software results.
+
+Final-artifact Qt regressions use Windows renderer `62df5e4c...` and Linux
+renderer `374a74ea...`. Windows passes all ten lifecycle, callback and alpha
+checks. Linux lifecycle and CPU alpha-reference checks pass. Both callback
+entries pass on both platforms after the test waits for an actual visible draw;
+the original exact green-pixel assertion is unchanged. The original Linux
+callback failures remain preserved. All five Linux software alpha semantic
+checks pass, while exact comparison with the NVIDIA hardware reference remains
+unqualified because of differences of at most one channel unit. No production
+code, reference image or comparison threshold changed for these checks.
+Receipts are in the Python worktree under
+`build/no-opengl-qt-regressions-final1/` and
+`build/no-opengl-qt-regressions-final2/`. Parent shutdown checks report all nine
+gauges at zero; the callback child checks canvas close rather than a separate
+global-gauge probe.
 
 The explicit shipping contract retains the Dawn `gl2`/`glplus` compatibility
 aliases and excludes 16 executable legacy OpenGL loaders/backends. Exact wheel
