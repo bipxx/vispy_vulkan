@@ -42,8 +42,15 @@ callback services native work when there is no redraw; it stops retrying after a
 poll failure until explicit re-entry or redraw and is cancelled on release.
 KeyboardInterrupt/SystemExit propagate through manual/VisPy-owned drivers.
 Nested Application.run calls are rejected. These checks do not establish every
-teardown failure path or installed qualification. Broader lifecycle, coordinate
-and capture acceptance remains open; see the [current specification](superpowers/specs/2026-10-24-vispy-compatibility-gap-closure.md).
+teardown failure path or installed qualification. Close now attempts backend
+cleanup even after an escaping close-event failure; Timer.stop marks its public
+state stopped after backend cancellation errors. Tk teardown attempts independent
+resources and retains the first failure. Native IDs and scheduled-job handles
+are cleared only after release or known interpreter destruction. Failed release
+owners remain retained for an explicit application.quit retry, without an
+automatic cleanup retry loop. Callbacks cannot create new Tk canvases/interpreters
+or restart timers while that application is quitting. Broader lifecycle,
+coordinate and capture acceptance remains open; see the [current specification](superpowers/specs/2026-10-24-vispy-compatibility-gap-closure.md).
 
 Selected `gloo.gl` state calls now execute through the current canvas's ordered
 GLIR queue: viewport/scissor, clear color/depth/stencil and clear, masks,

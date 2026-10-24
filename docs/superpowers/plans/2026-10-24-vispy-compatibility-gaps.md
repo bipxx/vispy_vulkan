@@ -102,6 +102,19 @@ on Windows and WSL software Vulkan, with 13 package/source checks. This is sourc
 evidence for G1b, not full TK-1..4 or installed-profile qualification; teardown
 failure paths and G1c coordinate/capture acceptance still need work.
 
+Teardown follow-up: an escaping Canvas close callback now still runs backend
+cleanup and forgets the current canvas. Timer.stop records stopped public state
+even if backend cancellation raises. Tk quit attempts independent resources,
+preserves the first error, logs secondary errors and prevents callback-driven
+resurrection while quitting. Unretired native IDs and uncancelled jobs keep their
+owners/handles for explicit quit retry; failed releases are not immediately
+retried inside the same operation. Root destruction finishes other timer/canvas
+cleanup before delivering a callback failure. Seventy-two combined source cases
+pass on Windows and WSL software Vulkan, plus thirteen package/source contracts.
+The final headless cleanup check uses the existing viewport API so it works with
+the reused Windows native binary. This expands TK-1..4 evidence but does not close
+all lifetime interleavings or installed qualification. G1c is the next packet.
+
 1. Reproduce the missing pressed-button state using a real SceneCanvas camera.
    Add regression expectations before changing input dispatch; include release
    outside/focus loss and modifiers. Do not weaken camera code to hide bad events.

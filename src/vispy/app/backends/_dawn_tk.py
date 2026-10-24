@@ -50,6 +50,28 @@ def _exists(widget):
 _root_states = {}
 
 
+class _Cleanup:
+    """Finish independent release steps; preserve the first failure and trace."""
+    def __init__(self):
+        self.error = None
+
+    def run(self, callback, *args):
+        try:
+            callback(*args)
+            return True
+        except BaseException:
+            if self.error is None:
+                self.error = sys.exc_info()
+            else:
+                logger.error('Additional Tk teardown error', exc_info=True)
+            return False
+
+    def raise_error(self):
+        if self.error is not None:
+            _kind, error, traceback = self.error
+            raise error.with_traceback(traceback)
+
+
 class _RootState:
     """Ownership belongs to a Tcl interpreter, not its first VisPy app."""
     def __init__(self, root, owned):
@@ -58,6 +80,7 @@ class _RootState:
         self.apps = weakref.WeakSet()
         self.driver = None
         self.progress_job = None
+        self.progress_enabled = False
         self.binding = root.bind('<Destroy>', self._destroyed, add='+')
         _root_states[root] = self
 
@@ -84,52 +107,71 @@ class _RootState:
             return False
 
     def ensure_progress(self):
-        if self.progress_job is None and self.apps and _exists(self.root):
+        self.progress_enabled = True
+        self._schedule_progress()
+
+    def _schedule_progress(self):
+        if self.progress_enabled and self.progress_job is None and self.apps and _exists(self.root):
             self.progress_job = self.root.after(5, self._progress)
 
     def _progress(self):
         self.progress_job = None
-        if self.apps and self.poll():
-            self.ensure_progress()
+        if self.progress_enabled and self.apps:
+            if self.poll():
+                self._schedule_progress()
+            else:
+                self.progress_enabled = False
         # A failed poll needs explicit re-entry/redraw to retry, not an endless
         # stream of error reports from a permanently broken device.
 
     def cancel_progress(self):
+        self.progress_enabled = False
         if self.progress_job is not None:
             try:
                 self.root.after_cancel(self.progress_job)
             except tk.TclError:
                 if _exists(self.root):
                     raise
-            finally:
-                self.progress_job = None
+            self.progress_job = None
 
     def _destroyed(self, event):
         if event.widget is not self.root:
             return
         _root_states.pop(self.root, None)
-        self.cancel_progress()
+        cleanup = _Cleanup()
+        cleanup.run(self.cancel_progress)
         for application in list(self.apps):
             application._root = None
             application._root_state = None
             application._owns_root = False
-            for timer in list(application._timers):
-                timer._vispy_timer.stop()
+            application._quitting = True
+            try:
+                for timer in list(application._timers):
+                    cleanup.run(timer._vispy_timer.stop)
+                for canvas in list(application._canvases):
+                    cleanup.run(canvas._vispy_canvas.close)
+            finally:
+                application._quitting = False
         self.apps.clear()
+        if cleanup.error is not None:
+            self.report_error(cleanup.error)
 
     def release(self, application):
-        self.apps.discard(application)
-        if self.apps:
+        if set(self.apps) - {application}:
+            self.apps.discard(application)
             return
         self.cancel_progress()
-        _root_states.pop(self.root, None)
         if _exists(self.root):
-            self.root.unbind('<Destroy>', self.binding)
+            if self.binding is not None:
+                self.root.unbind('<Destroy>', self.binding)
+                self.binding = None
             # A user may have added unrelated Tk windows to a VisPy-created
             # interpreter. Never destroy that work merely because we quit.
             if self.owned and not self.root.winfo_children():
                 self.root.update_idletasks()
                 self.root.destroy()
+        self.apps.discard(application)
+        _root_states.pop(self.root, None)
 
 
 class ApplicationBackend(BaseApplicationBackend):
@@ -138,8 +180,10 @@ class ApplicationBackend(BaseApplicationBackend):
         self._owns_root = False
         self._root_state = None
         self._running = False
+        self._quitting = False
         self._pending_error = None
         self._canvases = weakref.WeakSet()
+        self._pending_closes = set()  # Failed native/job releases keep an owner.
         self._timers = weakref.WeakSet()
 
     def _vispy_get_backend_name(self):
@@ -147,6 +191,8 @@ class ApplicationBackend(BaseApplicationBackend):
 
     def _vispy_get_native_app(self):
         if self._root is None:
+            if self._quitting:
+                raise RuntimeError('Cannot create a Tk interpreter while quitting')
             root = getattr(tk, '_default_root', None)
             owned = root is None
             if owned:
@@ -172,6 +218,8 @@ class ApplicationBackend(BaseApplicationBackend):
         state.ensure_progress()
 
     def _vispy_prepare_canvas(self, parent):
+        if self._quitting:
+            raise RuntimeError('Cannot create a Tk canvas while quitting')
         if parent is not None:
             if not _exists(parent):
                 raise RuntimeError('Tk canvas parent has been destroyed')
@@ -235,17 +283,30 @@ class ApplicationBackend(BaseApplicationBackend):
             state.driver = None
 
     def _vispy_quit(self):
-        for timer in list(self._timers):
-            timer._vispy_timer.stop()
-        for backend in list(self._canvases):
-            backend._vispy_canvas.close()
-        if self._running and _exists(self._root):
-            self._root.quit()
-        if self._root_state is not None:
-            self._root_state.release(self)
-        self._root_state = None
-        self._root = None
-        self._owns_root = False
+        if self._quitting:
+            return
+        self._quitting = True
+        cleanup = _Cleanup()
+        try:
+            for timer in list(self._timers):
+                cleanup.run(timer._vispy_timer.stop)
+            for backend in set(self._canvases) | self._pending_closes.copy():
+                cleanup.run(backend._vispy_close if backend._vispy_canvas._closed else
+                            backend._vispy_canvas.close)
+            if self._running and _exists(self._root):
+                cleanup.run(self._root.quit)
+            pending = self._pending_closes or any(timer._job is not None for timer in self._timers)
+            state = self._root_state
+            if not pending:
+                if state is None or cleanup.run(state.release, self):
+                    self._root_state = None
+                    self._root = None
+                    self._owns_root = False
+            elif state is not None and not (set(state.apps) - {self}):
+                cleanup.run(state.cancel_progress)
+        finally:
+            self._quitting = False
+        cleanup.raise_error()
 
 
 class CanvasBackend(BaseCanvasBackend):
@@ -254,7 +315,9 @@ class CanvasBackend(BaseCanvasBackend):
         p = self._process_backend_kwargs(kwargs)
         self._application = vispy_canvas.app._backend
         root = self._application._vispy_get_native_app()
+        self._root = root
         self._closed = False
+        self._closing = False
         self._draw_job = None
         self._drawing = False
         self._pressed_buttons = set()
@@ -339,7 +402,7 @@ class CanvasBackend(BaseCanvasBackend):
             # Timer callbacks are dispatched in bounded generations. Replacing
             # this with after_idle lets a self-updating draw monopolize one
             # Tcl idle event and prevents process_events() from returning.
-            self._draw_job = self._widget.after(0, self._application._callback(self._draw))
+            self._draw_job = self._root.after(0, self._application._callback(self._draw))
 
     def _draw(self):
         self._draw_job = None
@@ -348,7 +411,7 @@ class CanvasBackend(BaseCanvasBackend):
         from vispy import _dawn
         _dawn.process_events()
         if not _dawn.frame_ready(self._dawn_canvas_id):
-            self._draw_job = self._widget.after(1, self._application._callback(self._draw))
+            self._draw_job = self._root.after(1, self._application._callback(self._draw))
             return
         self._drawing = True
         try:
@@ -470,27 +533,47 @@ class CanvasBackend(BaseCanvasBackend):
             self._vispy_canvas.close()
 
     def _vispy_close(self):
-        if self._closed:
+        if self._closing or (self._closed and self not in self._application._pending_closes):
             return
+        self._closing = True
         self._closed = True
         self._pressed_buttons.clear()
-        if self._draw_job is not None:
-            self._widget.after_cancel(self._draw_job)
+        cleanup = _Cleanup()
+
+        def cancel_draw():
+            try:
+                self._root.after_cancel(self._draw_job)
+            except tk.TclError:
+                if _exists(self._root):
+                    raise
             self._draw_job = None
-        from vispy import _dawn
-        canvas_id = getattr(self, '_dawn_canvas_id', 0)
-        if canvas_id:
-            _dawn.destroy_canvas(canvas_id)
+
+        def retire_native():
+            from vispy import _dawn
+            _dawn.destroy_canvas(self._dawn_canvas_id)
             self._dawn_canvas_id = 0
-        self._photo = None
-        self._application._canvases.discard(self)
-        if _exists(self._widget):
-            self._widget.destroy()
-        if _exists(self._top):
-            self._top.destroy()
-        if (not self._application._canvases and self._application._running
-                and _exists(self._application._root)):
-            self._application._root.quit()
+
+        try:
+            if self._draw_job is not None:
+                cleanup.run(cancel_draw)
+            if self._dawn_canvas_id:
+                cleanup.run(retire_native)
+            self._photo = None
+            self._application._canvases.discard(self)
+            if _exists(self._widget):
+                cleanup.run(self._widget.destroy)
+            if _exists(self._top):
+                cleanup.run(self._top.destroy)
+            if self._dawn_canvas_id or self._draw_job is not None or _exists(self._widget) or _exists(self._top):
+                self._application._pending_closes.add(self)
+            else:
+                self._application._pending_closes.discard(self)
+            if (not self._application._canvases and self._application._running
+                    and _exists(self._application._root)):
+                cleanup.run(self._application._root.quit)
+        finally:
+            self._closing = False
+        cleanup.raise_error()
 
 
 class TimerBackend(BaseTimerBackend):
@@ -503,13 +586,15 @@ class TimerBackend(BaseTimerBackend):
         self._generation = 0
 
     def _vispy_start(self, interval):
+        if self._application._quitting:
+            raise RuntimeError('Cannot start a Tk timer while quitting')
         self._vispy_stop()
         self._root = self._application._vispy_get_native_app()
+        self._application._root_state.ensure_progress()
         self._interval = max(1, round(interval * 1000))
         self._schedule(self._generation)
 
     def _schedule(self, generation):
-        self._application._root_state.ensure_progress()
         self._job = self._root.after(self._interval,
                                     self._application._callback(lambda: self._timeout(generation)))
 
@@ -521,10 +606,11 @@ class TimerBackend(BaseTimerBackend):
             except tk.TclError:
                 if _exists(self._root):
                     raise
-            finally:
-                self._job = None
+            self._job = None
 
     def _timeout(self, generation):
+        if generation != self._generation:
+            return
         self._job = None
         try:
             self._vispy_timer._timeout()

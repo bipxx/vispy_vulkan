@@ -123,8 +123,10 @@ class Timer(object):
 
     def stop(self):
         """Stop the timer."""
-        self._backend._vispy_stop()
-        self._running = False
+        try:
+            self._backend._vispy_stop()
+        finally:
+            self._running = False
         self.events.stop(type='timer_stop')
 
     # use timer.app.run() and .quit() instead.

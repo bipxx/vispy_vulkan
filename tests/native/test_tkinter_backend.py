@@ -709,3 +709,231 @@ def test_timer_restart_inside_callback_has_only_one_scheduled_generation(applica
     finally:
         root.after_cancel(job)
         timer.stop()
+
+
+def test_close_callback_failure_still_releases_canvas(application):
+    from vispy.gloo.context import get_current_canvas
+    canvas = app.Canvas(app=application, size=(192, 128), show=True)
+    canvas.events.close.ignore_callback_errors = False
+
+    def fail(event):
+        raise ValueError('intentional close callback failure')
+
+    canvas.events.close.connect(fail)
+    with pytest.raises(ValueError, match='intentional close callback failure'):
+        canvas.close()
+    assert canvas._backend._dawn_canvas_id == 0
+    assert not canvas.native.winfo_exists()
+    assert get_current_canvas() is not canvas
+    canvas.close()
+
+
+def test_quit_drains_other_resources_after_stop_and_close_callback_failures():
+    application = app.Application('tkinter')
+    one = app.Canvas(app=application, size=(192, 128))
+    two = app.Canvas(app=application, size=(192, 128))
+    timer = app.Timer(app=application, interval=10, start=True)
+    timer.events.stop.ignore_callback_errors = False
+    one.events.close.ignore_callback_errors = False
+
+    def stop_failure(event):
+        raise ValueError('first timer stop failure')
+
+    def close_failure(event):
+        raise RuntimeError('secondary close failure')
+
+    timer.events.stop.connect(stop_failure)
+    one.events.close.connect(close_failure)
+    try:
+        with pytest.raises(ValueError, match='first timer stop failure'):
+            application.quit()
+        assert not timer.running and timer._backend._job is None
+        assert one._closed and two._closed
+        assert one._backend._dawn_canvas_id == two._backend._dawn_canvas_id == 0
+        assert application._backend._root is None
+    finally:
+        timer.events.stop.disconnect(stop_failure)
+        one.events.close.disconnect(close_failure)
+        application.quit()
+
+
+def test_native_close_failure_releases_widgets_and_remains_explicitly_retryable(application, monkeypatch):
+    from vispy import _dawn
+    canvas = app.Canvas(app=application, size=(192, 128), show=True)
+    native_id = canvas._backend._dawn_canvas_id
+    original = _dawn.destroy_canvas
+
+    def fail(canvas_id):
+        if canvas_id == native_id:
+            raise RuntimeError('intentional native retirement failure')
+        original(canvas_id)
+
+    monkeypatch.setattr(_dawn, 'destroy_canvas', fail)
+    with pytest.raises(RuntimeError, match='intentional native retirement failure'):
+        canvas.close()
+    assert not canvas.native.winfo_exists()
+    assert canvas._backend._dawn_canvas_id == native_id  # Never falsely report release.
+    monkeypatch.setattr(_dawn, 'destroy_canvas', original)
+    application.quit()  # Explicit re-entry retires the remaining native owner.
+    assert canvas._backend._dawn_canvas_id == 0
+
+
+def test_failed_draw_cancellation_keeps_handle_until_explicit_cleanup(application, monkeypatch):
+    canvas = app.Canvas(app=application, size=(192, 128))
+    canvas.update()
+    job = canvas._backend._draw_job
+    root = application.native
+    original = root.after_cancel
+
+    def fail(handle):
+        if handle == job:
+            raise RuntimeError('intentional draw cancellation failure')
+        return original(handle)
+
+    monkeypatch.setattr(root, 'after_cancel', fail)
+    with pytest.raises(RuntimeError, match='intentional draw cancellation failure'):
+        canvas.close()
+    assert canvas._backend._draw_job == job
+    assert canvas._backend._dawn_canvas_id == 0
+    assert not canvas.native.winfo_exists()
+    monkeypatch.setattr(root, 'after_cancel', original)
+    application.quit()
+    assert canvas._backend._draw_job is None
+
+
+def test_timer_cancellation_failure_has_stopped_public_state_and_can_retry(application, monkeypatch):
+    timer = app.Timer(app=application, interval=10, start=True)
+    job = timer._backend._job
+    root = application.native
+    original = root.after_cancel
+
+    def fail(handle):
+        if handle == job:
+            raise RuntimeError('intentional timer cancellation failure')
+        return original(handle)
+
+    monkeypatch.setattr(root, 'after_cancel', fail)
+    with pytest.raises(RuntimeError, match='intentional timer cancellation failure'):
+        timer.stop()
+    assert not timer.running
+    assert timer._backend._job == job
+    monkeypatch.setattr(root, 'after_cancel', original)
+    timer.stop()
+    assert timer._backend._job is None
+
+
+def test_progress_cancellation_failure_retains_interpreter_owner_for_retry(application, monkeypatch):
+    root = application.native
+    state = application._backend._root_state
+    job = state.progress_job
+    original = root.after_cancel
+    attempts = []
+
+    def fail(handle):
+        if handle == job:
+            attempts.append(handle)
+            raise RuntimeError('intentional progress cancellation failure')
+        return original(handle)
+
+    monkeypatch.setattr(root, 'after_cancel', fail)
+    with pytest.raises(RuntimeError, match='intentional progress cancellation failure'):
+        application.quit()
+    assert state.progress_job == job and not state.progress_enabled
+    assert attempts == [job]  # No automatic retry of the failed release step.
+    assert application._backend in state.apps
+    assert application._backend._root_state is state and root.winfo_exists()
+    monkeypatch.setattr(root, 'after_cancel', original)
+    application.quit()
+    assert application._backend._root is None and state.progress_job is None
+
+
+def test_external_destroy_finishes_teardown_before_reporting_stop_error(monkeypatch):
+    import tkinter as tk
+    root = tk.Tk()
+    application = app.Application('tkinter')
+    canvas = app.Canvas(app=application, parent=root, size=(192, 128))
+    one = app.Timer(app=application, interval=10, start=True)
+    two = app.Timer(app=application, interval=10, start=True)
+    one.events.stop.ignore_callback_errors = False
+    received = []
+
+    def fail(event):
+        raise ValueError('external destruction stop failure')
+
+    def report(kind, value, traceback):
+        received.append((kind, value))
+
+    monkeypatch.setattr(root, 'report_callback_exception', report)
+    one.events.stop.connect(fail)
+    root.update_idletasks()
+    root.destroy()
+    assert canvas._backend._dawn_canvas_id == 0
+    assert not one.running and not two.running
+    assert one._backend._job is None and two._backend._job is None
+    assert application._backend._root is None
+    assert len(received) == 1 and received[0][0] is ValueError
+    one.events.stop.disconnect(fail)
+    application.quit()
+
+
+def test_stop_callback_cannot_resurrect_timer_during_quit(application):
+    timer = app.Timer(app=application, interval=10, start=True)
+    timer.events.stop.ignore_callback_errors = False
+
+    def restart(event):
+        timer.start()
+
+    timer.events.stop.connect(restart)
+    try:
+        with pytest.raises(RuntimeError, match='Cannot start a Tk timer while quitting'):
+            application.quit()
+        assert not timer.running and timer._backend._job is None
+        assert application._backend._root is None
+    finally:
+        timer.events.stop.disconnect(restart)
+
+
+def test_close_callback_error_survives_native_cleanup_error(application, monkeypatch):
+    from vispy import _dawn
+    canvas = app.Canvas(app=application, size=(192, 128))
+    native_id = canvas._backend._dawn_canvas_id
+    original = _dawn.destroy_canvas
+    canvas.events.close.ignore_callback_errors = False
+
+    def callback_failure(event):
+        raise ValueError('originating close event error')
+
+    def native_failure(canvas_id):
+        if canvas_id == native_id:
+            raise RuntimeError('secondary native close error')
+        return original(canvas_id)
+
+    canvas.events.close.connect(callback_failure)
+    monkeypatch.setattr(_dawn, 'destroy_canvas', native_failure)
+    with pytest.raises(ValueError, match='originating close event error'):
+        canvas.close()
+    assert not canvas.native.winfo_exists()
+    assert canvas._backend._dawn_canvas_id == native_id
+    monkeypatch.setattr(_dawn, 'destroy_canvas', original)
+    application.quit()
+    assert canvas._backend._dawn_canvas_id == 0
+
+
+def test_shared_canvas_close_contract_also_cleans_headless_backend():
+    from vispy import _dawn
+    from vispy.gloo.context import get_current_canvas
+    canvas = app.Canvas(app='dawn_headless', size=(8, 8))
+    native_id = canvas._backend._dawn_canvas_id
+    canvas.events.close.ignore_callback_errors = False
+
+    def fail(event):
+        raise ValueError('headless close event failure')
+
+    canvas.events.close.connect(fail)
+    with pytest.raises(ValueError, match='headless close event failure'):
+        canvas.close()
+    assert canvas._backend._closed
+    assert get_current_canvas() is not canvas
+    with pytest.raises(RuntimeError, match='missing canvas'):
+        _dawn.viewport(native_id)
+    canvas.close()

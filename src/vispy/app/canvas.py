@@ -471,12 +471,22 @@ class Canvas(object):
         To avoid having the widget destroyed (more like standard Qt
         behavior), consider making the widget a sub-widget.
         """
-        if self._backend is not None and not self._closed:
-            logger.debug('Closing canvas %s' % (self,))
-            self._closed = True
-            self.events.close()
-            self._backend._vispy_close()
-        forget_canvas(self)
+        try:
+            if self._backend is not None and not self._closed:
+                logger.debug('Closing canvas %s' % (self,))
+                self._closed = True
+                try:
+                    self.events.close()
+                except BaseException:
+                    try:
+                        self._backend._vispy_close()
+                    except BaseException:
+                        logger.error('Canvas cleanup after close callback failure failed', exc_info=True)
+                    raise
+                else:
+                    self._backend._vispy_close()
+        finally:
+            forget_canvas(self)
 
     def _update_fps(self, event):
         """Update the fps after every window"""
