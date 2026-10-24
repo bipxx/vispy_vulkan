@@ -167,9 +167,16 @@ Qt/PySide 6.12 profile. All 761 provider-wheel members, 50 source ELF hashes,
 ten imports and loaded native origins were verified, followed by actual mapped
 X11 lifecycle/input/capture/recovery/close and nine-zero shutdown. Its Python
 worktree receipt is `build/no-opengl-linux-pyside6-finalrenderer1/summary1.json`.
-Twelve of fourteen mandatory rows are now qualified. Windows napari-threedee
-and the Linux PyQt5 installed row remain unqualified; packaged or portable
-toolkit smoke alone does not qualify them.
+The Linux PyQt5 row now also passes all three gates on this renderer, including
+actual mapped X11 lifecycle/input/capture/recovery/close and nine-zero shutdown.
+Its normative Qt 5.15.19 / PyQt5 5.15.11 profile verified all 743 provider members,
+43 source ELF files and the exact unchanged official SIP 12.20 module. All 47
+runtime pins matched; only the declared Xinerama package was added to its new
+rootfs, with no existing package upgrades. The proof is
+`build/no-opengl-linux-pyqt5-finalrenderer1/summary1.json` in the Python worktree.
+Thirteen of fourteen mandatory rows are now qualified, including every mandatory
+Linux binding and host row. Windows napari-threedee remains unqualified; a
+historical pass or another environment's receipt does not qualify that attempt.
 
 The 2026-10-23 Linux continuation encountered a WSL filesystem failure. The
 resumed Qt 6.12 build reached 1480/1636 actions before
@@ -190,8 +197,8 @@ A full backup could not fit in the available space; this is recorded in that
 receipt. After source/archive verification, Qt 6.12 runtime and SVG builds
 completed successfully. Selected PySide6/Shiboken compilation, normative
 packaging and installed mapped VisPy qualification are complete. Qt5/PyQt5
-source compilation and normative packaging are also complete, with actual
-installed qualification still pending. Historical Linux proofs above remain scoped to their earlier exact
+source compilation, normative packaging and actual installed qualification are
+also complete. Historical Linux proofs above remain scoped to their earlier exact
 artifacts; recovery itself earns no new package or runtime qualification.
 
 The Windows N3/N4/N5 SDK-backed attempt from source `99d110b6b` and frozen source
@@ -212,9 +219,8 @@ passes the expanded 95-case suite after its fix. Current Windows CPU checks pass
 package/source-contract tests. Those checks do not replace the pending native
 build, installed GPU runs or three-gate receipts for the changed artifact.
 
-Remaining work includes the final Windows napari-threedee timeout and Linux
-Qt5/PyQt5 actual installed runtime
-qualification, and the remaining required host/platform matrix. The initial
+Remaining work includes the final Windows napari-threedee timeout and its
+required successful same-artifact replay. The initial
 PyQt6 host results above are real rendering admission for those exact artifacts;
 the complete release matrix remains incomplete. DIVE and visbrain remain
 explicitly unadmitted inventory rows.

@@ -474,9 +474,9 @@
       "application": "qwidget",
       "binding": "pyqt5",
       "mandatory": true,
-      "status": "PENDING",
-      "artifact_sha256": null,
-      "environment_id": null,
+      "status": "QUALIFIED",
+      "artifact_sha256": "374a74ea9787ccccc643e0ac7e45d9f704a41d046465828736158ac94398c4a3",
+      "environment_id": "c7b4a54c33b75a27447dea8fa53b13b206e59d7889d1083fb7bf13bb5b3b70c3",
       "features": [
         "launch",
         "initial-render",
@@ -487,11 +487,47 @@
         "close"
       ],
       "gates": {
-        "no_gl_execution": "UNVERIFIED",
-        "no_gl_loads": "UNVERIFIED",
-        "no_gl_install_link_requirement": "UNVERIFIED"
+        "no_gl_execution": "PASS",
+        "no_gl_loads": "PASS",
+        "no_gl_install_link_requirement": "PASS"
       },
-      "evidence": []
+      "evidence": [
+        {
+          "workspace": "vispy_vulkan-opengl-python",
+          "path": "build/no-opengl-linux-pyqt5-finalrenderer1/summary1.json",
+          "sha256": "e503de845c9984190a68c2dc7e9bc4b8091816596d1d3f86b24304f8df41a687"
+        },
+        {
+          "workspace": "vispy_vulkan-opengl-python",
+          "path": "build/no-opengl-linux-pyqt5-finalrenderer1/qualified/qualified2.json",
+          "sha256": "7200d64fca69e0bc45f3511cf8cef60f466346df8282e24e5b6df2193ec5577b"
+        },
+        {
+          "workspace": "vispy_vulkan-opengl-python",
+          "path": "build/no-opengl-linux-pyqt5-finalrenderer1/qualified/qualified2.worker.json",
+          "sha256": "e5f7826761e2c0851af2bbe20fccb2d9ab7ea476420b157140b7919785a41ae8"
+        },
+        {
+          "workspace": "vispy_vulkan-opengl-python",
+          "path": "build/no-opengl-linux-pyqt5-finalrenderer1/qualified/receipt1.json",
+          "sha256": "b531d85285565919cdf3323b6f75fc1cb254d37e9efe1b4f622487f73548dd19"
+        },
+        {
+          "workspace": "vispy_vulkan-opengl-python",
+          "path": "build/no-opengl-linux-pyqt5-finalrenderer1/qualified/qualified2-functional/functional.json",
+          "sha256": "37b6fea54a7b6f46fbb0bab8c21c9e51d423846a66d096b7f2e441d8c6ca1088"
+        },
+        {
+          "workspace": "vispy_vulkan-opengl-python",
+          "path": "build/no-opengl-linux-pyqt5-finalrenderer1/provider-member1.json",
+          "sha256": "138152feaba639bfa194eed732b2ad7c2eb1d490294a67a9b0d22772a4732601"
+        }
+      ],
+      "qualification_scope": "New strict rootfs; source Qt5.15.19/PyQt5.15.11 plus original SIP12.20;743provider members/43sourceELFs+unchangedSIP; mappedX11 fullWidget lifecycle/input/capture/recovery/close; explicitLavapipe independent DawnVulkan;536renderer members and ninezero shutdown; no nativeLinuxhardwareclaim",
+      "provider_profile": {
+        "path": "compat/qt/linux-pyqt5-no-opengl.json",
+        "sha256": "5b574cbad9621af480a76a1805f6e8b8f999627ec3023e40ba8bbb5193bddb59"
+      }
     },
     {
       "id": "wsl-linux-lavapipe-x11-qwidget-pyqt6",
