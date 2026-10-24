@@ -38,15 +38,17 @@ def build(manifest_path, bundle, receipts, inputs, output):
     manifest_path, bundle, receipts, inputs, output = map(Path, (manifest_path, bundle, receipts, inputs, output))
     manifest_data = manifest_path.read_bytes()
     manifest = json.loads(manifest_data)
-    if manifest['schema'] != 1 or manifest['profile'] != 'linux-pyqt6-source-no-opengl-v1' or manifest['platform'] != 'linux_x86_64':
+    profiles = {'linux-pyqt6-source-no-opengl-v1', 'linux-pyqt5-source-no-opengl-v1',
+                'linux-pyside6-source-no-opengl-v1'}
+    if manifest['schema'] != 1 or manifest['profile'] not in profiles or manifest['platform'] != 'linux_x86_64':
         raise ValueError('Unknown Linux source-built Qt profile')
     output.mkdir(parents=True, exist_ok=False)
     proof = {'status': 'BUILT_SOURCE_PROFILE_UNQUALIFIED', 'manifest_sha256': sha(manifest_data), 'wheels': [],
              'builder': {'python': sys.version, 'zlib': zlib.ZLIB_RUNTIME_VERSION},
              'scope': 'Repeatable archive packaging of exact source-built/relocated bytes; native rebuild and runtime qualification are separate receipts.'}
     receipt_files = {item['file']: verified(receipts, item['file'], item['sha256']) for item in manifest['source_receipts']}
-    runtime = next(item for item in manifest['wheels'] if item['name'] == 'pyqt6-qt6')
-    qt_sonames = {PurePosixPath(item['member']).name for item in runtime['files'] if '/lib/' in item['member']}
+    qt_sonames = {PurePosixPath(entry['member']).name for item in manifest['wheels'] for entry in item['files']
+                  if PurePosixPath(entry['member']).name.startswith(('libQt5', 'libQt6'))}
     for item in manifest['wheels']:
         files, natives = {}, []
         members = [entry['member'] for entry in item['files']]
@@ -60,7 +62,7 @@ def build(manifest_path, bundle, receipts, inputs, output):
                 elf = elf_image(data)
                 if any(library_reason(edge['name']) or any(is_gl_entrypoint(name) for name in edge['symbols']) for edge in elf['imports']):
                     raise ValueError('GL-specific ELF dependency')
-                if any(edge['name'].startswith('libQt6') and edge['name'] not in qt_sonames for edge in elf['imports']):
+                if any(edge['name'].startswith(('libQt5', 'libQt6')) and edge['name'] not in qt_sonames for edge in elf['imports']):
                     raise ValueError('Selected Qt SONAME dependency omitted')
                 if any(path and not path.startswith(('$ORIGIN', '${ORIGIN}')) for text in elf['runpaths'] for path in text.split(':')):
                     raise ValueError('Nonrelocatable native runtime search path')
@@ -109,10 +111,10 @@ def build(manifest_path, bundle, receipts, inputs, output):
     for item in manifest['support_wheels']:
         source = inputs / item['filename']
         if sha(source.read_bytes()) != item['sha256']:
-            raise ValueError('Pinned SIP support wheel differs')
+            raise ValueError('Pinned unchanged support wheel differs')
         with zipfile.ZipFile(source) as archive:
             if sha(archive.read(item['native_member'])) != item['native_sha256']:
-                raise ValueError('SIP support native byte provenance differs')
+                raise ValueError('Unchanged support native byte provenance differs')
         target = output / source.name
         shutil.copyfile(source, target)
         proof['wheels'].append({'name': item['name'], 'version': item['version'], 'file': str(target.resolve()),

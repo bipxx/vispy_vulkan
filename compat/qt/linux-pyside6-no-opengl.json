@@ -1,0 +1,3002 @@
+{
+  "schema": 1,
+  "profile": "linux-pyside6-source-no-opengl-v1",
+  "platform": "linux_x86_64",
+  "python_profile": "CPython 3.12 x86_64; Ubuntu 24.04 ABI; WSL software Vulkan/X11 initial target",
+  "scope": "Exact source-built Qt6.12/PySide/Shiboken selected modules; repeated archive packaging of relocated inputs, native compilation/declared source patch/relocation/runtime qualification have separate receipts. No stock Qt fallback or arbitrary module claim.",
+  "features": {
+    "opengl": false,
+    "egl": false,
+    "xcb": true,
+    "vulkan": true,
+    "qt_network_ssl": false,
+    "qt_network_dtls": false,
+    "cups": false
+  },
+  "generated_feature_headers": {
+    "QtGui": {
+      "relative": "include/QtGui/qtgui-config.h",
+      "sha256": "5b029f0b095c46032cd7f8ef2a2a6783ae9f7de80869fb15a92b4324bd008366"
+    },
+    "QtNetwork": {
+      "relative": "include/QtNetwork/qtnetwork-config.h",
+      "sha256": "7ddaacf67b313f73008a99bcff43fd864424a240c168f5889f27a7ae2867179f"
+    }
+  },
+  "modules": [
+    "Core",
+    "DBus",
+    "Gui",
+    "Network",
+    "PrintSupport",
+    "Svg",
+    "SvgWidgets",
+    "Test",
+    "Widgets",
+    "Xml"
+  ],
+  "preferred_sources": [
+    {
+      "url": "https://download.qt.io/archive/qt/6.12/6.12.0/submodules/qtbase-everywhere-src-6.12.0.tar.xz",
+      "sha256": "a951bd163c7b80fc6b8c88d7668fb56abf91c152373e13c10666763238131307",
+      "expected_sha256": "a951bd163c7b80fc6b8c88d7668fb56abf91c152373e13c10666763238131307",
+      "bytes": 51220268,
+      "path": "/home/heq/vispy-no-opengl-qt-build-1/additional-bindings-1/qtbase-everywhere-src-6.12.0.tar.xz",
+      "source": "/home/heq/vispy-no-opengl-qt-build-1/additional-bindings-1/qtbase-everywhere-src-6.12.0"
+    },
+    {
+      "url": "https://download.qt.io/archive/qt/6.12/6.12.0/submodules/qtsvg-everywhere-src-6.12.0.tar.xz",
+      "sha256": "e4ab39534ec97987b1b9b60ef7f4d3253d5912a69f8c713a01753174a4029331",
+      "expected_sha256": "e4ab39534ec97987b1b9b60ef7f4d3253d5912a69f8c713a01753174a4029331",
+      "bytes": 2341876,
+      "path": "/home/heq/vispy-no-opengl-qt-build-1/additional-bindings-1/qtsvg-everywhere-src-6.12.0.tar.xz",
+      "source": "/home/heq/vispy-no-opengl-qt-build-1/additional-bindings-1/qtsvg-everywhere-src-6.12.0"
+    },
+    {
+      "url": "https://download.qt.io/official_releases/QtForPython/pyside6/PySide6-6.12.0-src/pyside-setup-everywhere-src-6.12.0.tar.xz",
+      "sha256": "099c1a597cf33c1b000e11cf68a0b82d216fb802bf81726efc720394f10c7751",
+      "expected_sha256": "099c1a597cf33c1b000e11cf68a0b82d216fb802bf81726efc720394f10c7751",
+      "bytes": 18211772,
+      "path": "/home/heq/vispy-no-opengl-qt-build-1/additional-bindings-1/pyside-setup-everywhere-src-6.12.0.tar.xz",
+      "source": "/home/heq/vispy-no-opengl-qt-build-1/additional-bindings-1/pyside-setup-everywhere-src-6.12.0"
+    }
+  ],
+  "preferred_source_patches": [
+    {
+      "status": "APPLIED_EXACT_DECLARED_SOURCE_PATCH",
+      "source_archive": "/home/heq/vispy-no-opengl-qt-build-1/additional-bindings-1/pyside-setup-everywhere-src-6.12.0.tar.xz",
+      "source_archive_sha256": "099c1a597cf33c1b000e11cf68a0b82d216fb802bf81726efc720394f10c7751",
+      "file": "/home/heq/vispy-no-opengl-qt-build-1/additional-bindings-1/pyside-setup-everywhere-src-6.12.0/sources/pyside6/PySide6/QtNetwork/CMakeLists.txt",
+      "relative_file": "sources/pyside6/PySide6/QtNetwork/CMakeLists.txt",
+      "before_sha256": "b8dded369d6cbee05580790e7fdeb13487e373c1b1a75103e1a9ce088491a1c6",
+      "after_sha256": "9397f8c9806973f4e9564cb5f469692d114946384bf7df2c3a9d8fd36b3f1570",
+      "patch": "/home/heq/vispy-no-opengl-qt-build-1/additional-bindings-1/preferred-source-patches/pyside612-disabled-feature-wrapper-lists.patch",
+      "patch_sha256": "5a473cc00ca28b57374d16bb34bf49fcb17c43e52824888d3b4d0e3fca911fcf",
+      "patch_bytes": 1497,
+      "original_header_retained": true,
+      "original_file_license": "BSD-3-Clause",
+      "ssl_feature": false,
+      "feature_flags_changed": false,
+      "missing_generated_file_proof": [
+        {
+          "expected_generated_file": "/home/heq/vispy-no-opengl-qt-build-1/additional-bindings-1/pyside-setup-everywhere-src-6.12.0/build/qfpa-py3.12-qt6.12.0-64bit-release/build/pyside6/PySide6/QtNetwork/PySide6/QtNetwork/qsslellipticcurve_wrapper.cpp",
+          "exists": false,
+          "unconditional_source_entry": true
+        },
+        {
+          "expected_generated_file": "/home/heq/vispy-no-opengl-qt-build-1/additional-bindings-1/pyside-setup-everywhere-src-6.12.0/build/qfpa-py3.12-qt6.12.0-64bit-release/build/pyside6/PySide6/QtNetwork/PySide6/QtNetwork/qsslkeyingmaterial_wrapper.cpp",
+          "exists": false,
+          "unconditional_source_entry": true
+        }
+      ],
+      "scope": "only build-list feature guards for two classes absent in already-selected Qt feature configuration; no fabricated classes or runtime API expansion",
+      "reproduction": [
+        "extract exact original PySide6.12.0 archive",
+        "patch -p1 < pyside612-disabled-feature-wrapper-lists.patch",
+        "run recorded selected-module build command with exact Qt6.12.0 noOpenGL/ssl=false runtime"
+      ],
+      "repository_patch": "compat/qt/patches/pyside612-disabled-feature-wrapper-lists.patch"
+    }
+  ],
+  "source_receipts": [
+    {
+      "file": "pyside612-portable-copy.json",
+      "sha256": "116d23aac7c663182df15b6904e310771c3b6cc87d453fe86b8cb8194844966a"
+    },
+    {
+      "file": "pyside612-portable-relocation.json",
+      "sha256": "3f07618ffdfc83e50c462d72f40fcb8f0785f07fc3d18d7f6add55170eda6902"
+    },
+    {
+      "file": "pyside612-portable-runtime-closure.json",
+      "sha256": "34bef439acf239dbe6cddcbd3520fa7b146452bdb1e15a7d298d1825133c7ee5"
+    },
+    {
+      "file": "pyside612-portable-binding-smoke.json",
+      "sha256": "4e143491b079ab4a8f4ae67db6efccf83efc7208c9296ee4a242ee79b77467e3"
+    },
+    {
+      "file": "pyside612-runtime-apt-versions.json",
+      "sha256": "6b3a5398932fc6a1d4dd2f3cccc5c1bf221222e246bd28563286b6a4133c2835"
+    },
+    {
+      "file": "pyside612-attempt7-results.json",
+      "sha256": "a78e4a296eaa22f442c13374fd5dff0849f2da679c99090c93c01213cd5a4c8e"
+    },
+    {
+      "file": "qt612-configure-command.json",
+      "sha256": "d22ffaa6e617fee3b33da76a4b08864963e452cf93c5d0ca0a529470421dd8c8"
+    },
+    {
+      "file": "qt612-attempt3-results.json",
+      "sha256": "b318ddace7d93e9ab64276737eeada3e09d9fa044b1acab48532ebe18884438f"
+    },
+    {
+      "file": "preferred-source-patches/manifest.json",
+      "sha256": "a5fa8f5870603aa25f91c53fc3da179bdb02e2bce5b24d0379aa13b346d36915"
+    },
+    {
+      "file": "preferred-source-patches/pyside612-disabled-feature-wrapper-lists.patch",
+      "sha256": "5a473cc00ca28b57374d16bb34bf49fcb17c43e52824888d3b4d0e3fca911fcf"
+    }
+  ],
+  "original_notice_count": 136,
+  "notices": [
+    {
+      "relative": "preferred-source-patches/QtNetwork-CMakeLists-before.txt",
+      "source": "notices/preferred-source-patches/QtNetwork-CMakeLists-before.txt",
+      "sha256": "b8dded369d6cbee05580790e7fdeb13487e373c1b1a75103e1a9ce088491a1c6",
+      "kind": "declared_preferred_source_patch_record"
+    },
+    {
+      "relative": "preferred-source-patches/manifest.json",
+      "source": "notices/preferred-source-patches/manifest.json",
+      "sha256": "a5fa8f5870603aa25f91c53fc3da179bdb02e2bce5b24d0379aa13b346d36915",
+      "kind": "declared_preferred_source_patch_record"
+    },
+    {
+      "relative": "preferred-source-patches/pyside612-disabled-feature-wrapper-lists.patch",
+      "source": "notices/preferred-source-patches/pyside612-disabled-feature-wrapper-lists.patch",
+      "sha256": "5a473cc00ca28b57374d16bb34bf49fcb17c43e52824888d3b4d0e3fca911fcf",
+      "kind": "declared_preferred_source_patch_record"
+    },
+    {
+      "relative": "pyside-setup-everywhere-src-6.12.0/examples/demos/colorpaletteclient/icons/qt_attribution.json",
+      "source": "notices/pyside-setup-everywhere-src-6.12.0/examples/demos/colorpaletteclient/icons/qt_attribution.json",
+      "sha256": "0fc8a47af683b437b267e999508080e8cb1ed6fe0ae82c450bc702387694079e",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "pyside-setup-everywhere-src-6.12.0/examples/webenginequick/nanobrowser/icons/3rdparty/COPYING",
+      "source": "notices/pyside-setup-everywhere-src-6.12.0/examples/webenginequick/nanobrowser/icons/3rdparty/COPYING",
+      "sha256": "4f740497cf8ad0e564de90d3416a06c3d6b1d69d6883fe539925e3353d68a466",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "pyside-setup-everywhere-src-6.12.0/examples/webenginewidgets/markdowneditor/resources/3rdparty/qt_attribution.json",
+      "source": "notices/pyside-setup-everywhere-src-6.12.0/examples/webenginewidgets/markdowneditor/resources/3rdparty/qt_attribution.json",
+      "sha256": "be9cc206afd6d7f1a77daa7bb169a8f4734158789ccc5eeaf4fe276bff81cfa4",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "pyside-setup-everywhere-src-6.12.0/examples/webenginewidgets/simplebrowser/data/3rdparty/COPYING",
+      "source": "notices/pyside-setup-everywhere-src-6.12.0/examples/webenginewidgets/simplebrowser/data/3rdparty/COPYING",
+      "sha256": "4f740497cf8ad0e564de90d3416a06c3d6b1d69d6883fe539925e3353d68a466",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "pyside-setup-everywhere-src-6.12.0/examples/webenginewidgets/simplebrowser/data/3rdparty/qt_attribution.json",
+      "source": "notices/pyside-setup-everywhere-src-6.12.0/examples/webenginewidgets/simplebrowser/data/3rdparty/qt_attribution.json",
+      "sha256": "0c8accf6a17da9b8eb3c046e836a197251e96fe56809d64a9116d5324978e8c1",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "pyside-setup-everywhere-src-6.12.0/sources/pyside6/COPYING",
+      "source": "notices/pyside-setup-everywhere-src-6.12.0/sources/pyside6/COPYING",
+      "sha256": "3700b1c56fae3813dfaaef1cba101b6ec108167f36b19f4b2cc8824cc829aa2b",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "pyside-setup-everywhere-src-6.12.0/sources/shiboken6/AUTHORS",
+      "source": "notices/pyside-setup-everywhere-src-6.12.0/sources/shiboken6/AUTHORS",
+      "sha256": "c8c34b3908d064357783424b12b818a6ac98fde49d556866335bc412ceb93931",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "pyside-setup-everywhere-src-6.12.0/sources/shiboken6/COPYING",
+      "source": "notices/pyside-setup-everywhere-src-6.12.0/sources/shiboken6/COPYING",
+      "sha256": "9bf82b3636570e28118ee558ddab479b8f183d3e20327b7685a7479df52d6493",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "pyside-setup-everywhere-src-6.12.0/sources/shiboken6/COPYING.libsample",
+      "source": "notices/pyside-setup-everywhere-src-6.12.0/sources/shiboken6/COPYING.libsample",
+      "sha256": "902847d35abac99283b01c6bdd6f358d361de6bb1473c931756af8d68b890b2b",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "pyside-setup-everywhere-src-6.12.0/sources/shiboken6/COPYING.libshiboken",
+      "source": "notices/pyside-setup-everywhere-src-6.12.0/sources/shiboken6/COPYING.libshiboken",
+      "sha256": "902847d35abac99283b01c6bdd6f358d361de6bb1473c931756af8d68b890b2b",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "pyside-setup-everywhere-src-6.12.0/sources/shiboken6/libshiboken/qt_attribution.json",
+      "source": "notices/pyside-setup-everywhere-src-6.12.0/sources/shiboken6/libshiboken/qt_attribution.json",
+      "sha256": "1b643e281a9ccb592cfb5df7fc457b9b466f35de6e91ccce76589e85e047573c",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "pyside-setup-everywhere-src-6.12.0/sources/shiboken6/shibokenmodule/files.dir/shibokensupport/signature/qt_attribution.json",
+      "source": "notices/pyside-setup-everywhere-src-6.12.0/sources/shiboken6/shibokenmodule/files.dir/shibokensupport/signature/qt_attribution.json",
+      "sha256": "6197e61575b0f1a65fc4a32647e48c6a4897aa104ad9e5e397cec8fecdcc2f59",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "pyside-setup-everywhere-src-6.12.0/sources/shiboken6_generator/ApiExtractor/AUTHORS",
+      "source": "notices/pyside-setup-everywhere-src-6.12.0/sources/shiboken6_generator/ApiExtractor/AUTHORS",
+      "sha256": "ba72ec4eb4d3339415a27092f83aff5403035e412d1ad7a98bc05a0e539e2261",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "pyside-setup-everywhere-src-6.12.0/sources/shiboken6_generator/ApiExtractor/COPYING",
+      "source": "notices/pyside-setup-everywhere-src-6.12.0/sources/shiboken6_generator/ApiExtractor/COPYING",
+      "sha256": "9bf82b3636570e28118ee558ddab479b8f183d3e20327b7685a7479df52d6493",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/cmake/3rdparty/extra-cmake-modules/COPYING-CMAKE-SCRIPTS",
+      "source": "notices/qtbase-everywhere-src-6.12.0/cmake/3rdparty/extra-cmake-modules/COPYING-CMAKE-SCRIPTS",
+      "sha256": "46cde7dc11e64c78d650b4851b88f6704b4665ff60f22a1caf68ceb15e217e5b",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/cmake/3rdparty/extra-cmake-modules/qt_attribution.json",
+      "source": "notices/qtbase-everywhere-src-6.12.0/cmake/3rdparty/extra-cmake-modules/qt_attribution.json",
+      "sha256": "f34f498d6c63a78a882b352fa38c9dd076a59b1696cd6a6f921151a61f2a02e0",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/cmake/3rdparty/kwin/COPYING-CMAKE-SCRIPTS",
+      "source": "notices/qtbase-everywhere-src-6.12.0/cmake/3rdparty/kwin/COPYING-CMAKE-SCRIPTS",
+      "sha256": "46cde7dc11e64c78d650b4851b88f6704b4665ff60f22a1caf68ceb15e217e5b",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/cmake/3rdparty/kwin/qt_attribution.json",
+      "source": "notices/qtbase-everywhere-src-6.12.0/cmake/3rdparty/kwin/qt_attribution.json",
+      "sha256": "bf3a3c09e99f1c9fab7553ebc4a7548b71dc23fcfdbe6e5df0fa0e7847c2efc3",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/3rdparty/D3D12MemoryAllocator/LICENSE.txt",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/3rdparty/D3D12MemoryAllocator/LICENSE.txt",
+      "sha256": "5478a2f36b736e13dd3250b9c71a4ab521bc327fb9d112a92c647bf3e69ddb68",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/3rdparty/D3D12MemoryAllocator/qt_attribution.json",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/3rdparty/D3D12MemoryAllocator/qt_attribution.json",
+      "sha256": "ad36f74f9d5bb4c2a5d7bce97507711452a2089c1f4f673473bf75d17851f381",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/3rdparty/VulkanMemoryAllocator/LICENSE.txt",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/3rdparty/VulkanMemoryAllocator/LICENSE.txt",
+      "sha256": "846d97c8b74ccaa92b9ad031140a04363b3b3985f318094552f297b8bda1c68e",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/3rdparty/VulkanMemoryAllocator/qt_attribution.json",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/3rdparty/VulkanMemoryAllocator/qt_attribution.json",
+      "sha256": "bdadb296dc4d3aadea5f9eb68f8f4abab2e6a9e135fec084d2914c030af5bab2",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/3rdparty/android/LICENSE",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/3rdparty/android/LICENSE",
+      "sha256": "4a51cf7f724f51bedb5fa4f9583a2762f1db8d05e43a577e2487c7aab2fdce18",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/3rdparty/android/qt_attribution.json",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/3rdparty/android/qt_attribution.json",
+      "sha256": "120710d661892ceb44a94556c56998795372334674c79710947282e8279ef415",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/3rdparty/blake2/COPYING",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/3rdparty/blake2/COPYING",
+      "sha256": "4103f471877ed0bae500752c5fcd7ecca409d4a4a8dc2ad40437daba60f1a2bc",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/3rdparty/blake2/qt_attribution.json",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/3rdparty/blake2/qt_attribution.json",
+      "sha256": "bab552307bdd03ed9a4cf7f8f1397c3d18d4dbee19ee576033284104785245be",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/3rdparty/double-conversion/LICENSE",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/3rdparty/double-conversion/LICENSE",
+      "sha256": "4af93c12062c58058378de2397dc1c92bbff9ddfb1d583a01c84127557ce97ca",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/3rdparty/double-conversion/qt_attribution.json",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/3rdparty/double-conversion/qt_attribution.json",
+      "sha256": "4d9c7505a7c12e4e6b57bbee63af926c861abb5515cdf802b8f3491e321146fe",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/3rdparty/easing/LICENSE",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/3rdparty/easing/LICENSE",
+      "sha256": "92fac99458f1754b73edf50f9c9983e0efaa06ad96e2afd5e538c79f45b4b191",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/3rdparty/easing/qt_attribution.json",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/3rdparty/easing/qt_attribution.json",
+      "sha256": "77d67a1db5882bb0b9a1278b014885bee45a4c059d1da9f835b6da5bc4b9c93d",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/3rdparty/emoji-segmenter/qt_attribution.json",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/3rdparty/emoji-segmenter/qt_attribution.json",
+      "sha256": "9a980fc0f9e478d2a7e9a571d4cd234c259aaf8e2ea3fb60a0a7cf02cc3c3700",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/3rdparty/forkfd/LICENSE",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/3rdparty/forkfd/LICENSE",
+      "sha256": "d0d683ae18e78fbef90eb41168fb781920da2d12bf80704490f0882915c18ae0",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/3rdparty/forkfd/qt_attribution.json",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/3rdparty/forkfd/qt_attribution.json",
+      "sha256": "525fd890017a3966f542da42a9ff0ca2a0d71bc45f80a4871de3e0bd0f612612",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/3rdparty/freetype/LICENSE.txt",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/3rdparty/freetype/LICENSE.txt",
+      "sha256": "bf543cdda11864477b8d2ca2aa9afc2aaa8f9133461b4d962ed6ec73646256a1",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/3rdparty/freetype/qt_attribution.json",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/3rdparty/freetype/qt_attribution.json",
+      "sha256": "628b68bf60eb3bc1616342bc3545b63be2392e78bbebbc4c19f49675dd2ac8a7",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/3rdparty/gradle/LICENSE",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/3rdparty/gradle/LICENSE",
+      "sha256": "cf234c4188d773406f640bf89be680d9288f40ff96901c70d643fcea96ad46df",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/3rdparty/gradle/qt_attribution.json",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/3rdparty/gradle/qt_attribution.json",
+      "sha256": "06ab470b6b136cbc3486068995ff3c6abf2b27a999031032121cd0f0602fc487",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/3rdparty/harfbuzz-ng/AUTHORS",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/3rdparty/harfbuzz-ng/AUTHORS",
+      "sha256": "19bfe8f5ed100636cd24ab0c90a3f71c21d8b02d9ba00719447a0faab364d49f",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/3rdparty/harfbuzz-ng/COPYING",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/3rdparty/harfbuzz-ng/COPYING",
+      "sha256": "ba8f810f2455c2f08e2d56bb49b72f37fcf68f1f4fade38977cfd7372050ad64",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/3rdparty/harfbuzz-ng/qt_attribution.json",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/3rdparty/harfbuzz-ng/qt_attribution.json",
+      "sha256": "b869a7f186e4cfc00cc979e7c4ffd369d823f7a0a94b951a6aedb9b3278c8419",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/3rdparty/icc/LICENSE.txt",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/3rdparty/icc/LICENSE.txt",
+      "sha256": "9e34ff47b3a44814e183342e7e198d127a6740e29d20e8381fba7688dafc79dd",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/3rdparty/icc/qt_attribution.json",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/3rdparty/icc/qt_attribution.json",
+      "sha256": "509da9bd2b3f769c730aa4627b1080d65f39b0ecd4130111c9e1122e13cd35b5",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/3rdparty/libjpeg/LICENSE",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/3rdparty/libjpeg/LICENSE",
+      "sha256": "ba6bceebcba0fdd35488477c2cca8c4632ce82c74dbfbc87d886ce6fc4433579",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/3rdparty/libjpeg/qt_attribution.json",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/3rdparty/libjpeg/qt_attribution.json",
+      "sha256": "ed7cb7abdd9124f664acd26cf552ba821c8cf236c4cd34a6737f202215bd41bc",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/3rdparty/libpng/LICENSE",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/3rdparty/libpng/LICENSE",
+      "sha256": "bdb0a645ea18c60507d0368379b1ac5474b92255fcc2d115e07486a7672ba526",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/3rdparty/libpng/qt_attribution.json",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/3rdparty/libpng/qt_attribution.json",
+      "sha256": "a43ff8e146c949f7cd14e00bd681f4957e27def06ecafec55ccc7231c451d3fa",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/3rdparty/libpsl/qt_attribution.json",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/3rdparty/libpsl/qt_attribution.json",
+      "sha256": "ae227b5f2cf40511fe1a84d4c752f4005917b7eeb44e7c4495b1403c27cc3647",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/3rdparty/libpsl/src/LICENSE.chromium",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/3rdparty/libpsl/src/LICENSE.chromium",
+      "sha256": "1d7f52747a9169751cdf2641a8299c0098e9ecdf9429296ffd55bdb14c9ed5b3",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/3rdparty/md4/qt_attribution.json",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/3rdparty/md4/qt_attribution.json",
+      "sha256": "34bda63a2fcc23c83f2e5364ccd394553b4baa505b1f79ded9cc2161c56a9b4c",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/3rdparty/md4c/LICENSE.md",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/3rdparty/md4c/LICENSE.md",
+      "sha256": "d30937367d5413e7eaa218b1640b8946ff76fd34d97152f6979fd96169d5d0fc",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/3rdparty/md4c/qt_attribution.json",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/3rdparty/md4c/qt_attribution.json",
+      "sha256": "7b2bc7be22e4be2a2984119ce3d0bfc210ddd0d8ef6193d66e8479d4c22af4ba",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/3rdparty/md5/qt_attribution.json",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/3rdparty/md5/qt_attribution.json",
+      "sha256": "20b0f1b17ccd1bd5e8d763b1cdca4b095b8f0c037644b5ee18154536b7d8425e",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/3rdparty/pcre2/AUTHORS.md",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/3rdparty/pcre2/AUTHORS.md",
+      "sha256": "412ace3355a4d6a4d835c350a7df172903811eafda7b13500dacf58429ee757e",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/3rdparty/pcre2/LICENSE-SLJIT",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/3rdparty/pcre2/LICENSE-SLJIT",
+      "sha256": "5f216505c0f6ea3273caec89e766eef93cdeb7bbb0c429f9360116d7c938feeb",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/3rdparty/pcre2/qt_attribution.json",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/3rdparty/pcre2/qt_attribution.json",
+      "sha256": "c65e311b057e3ecb8ee9aeddd681add5aa4484485e265d3a6a8e7967abc19948",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/3rdparty/pixman/LICENSE",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/3rdparty/pixman/LICENSE",
+      "sha256": "942c4f2a80394d3f53599b8382e9f27349b95c45d92b69b84f26d404f4dd74a5",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/3rdparty/pixman/qt_attribution.json",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/3rdparty/pixman/qt_attribution.json",
+      "sha256": "f1dc159b63bf84a4c9c367e8ff79aa748b63f5fc622d5080c0a7ddd98ddc7ac7",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/3rdparty/rfc6234/LICENSE",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/3rdparty/rfc6234/LICENSE",
+      "sha256": "7ccebd514aaabc86192f957d773cebf06577c12fe9f25ecd419c6cac5da7a14c",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/3rdparty/rfc6234/qt_attribution.json",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/3rdparty/rfc6234/qt_attribution.json",
+      "sha256": "fa24413bdc5015fc7fc84297fa17d4c8a598f8f7c76b9495a6e6b26a77b4a324",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/3rdparty/sha1/qt_attribution.json",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/3rdparty/sha1/qt_attribution.json",
+      "sha256": "53cab2c771f7f7ffbf6a58ff759e5846b746e91d98dfe467d5145edf8cd7d306",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/3rdparty/sha3/qt_attribution.json",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/3rdparty/sha3/qt_attribution.json",
+      "sha256": "d904a6c21c150d9cac693c0806a469480306cb4e5879cc13c994fbadba71a56e",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/3rdparty/siphash/qt_attribution.json",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/3rdparty/siphash/qt_attribution.json",
+      "sha256": "8614947dfc0ca1d21aad2f88b4400598262ab8c08aa87c4f7acc0c2de6e5619e",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/3rdparty/sqlite/qt_attribution.json",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/3rdparty/sqlite/qt_attribution.json",
+      "sha256": "fcba08e23508524b77ee22186a5ef2d35957979fe9e2a604d994c5e9604c8fb9",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/3rdparty/tinycbor/LICENSE",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/3rdparty/tinycbor/LICENSE",
+      "sha256": "3c6ba0b5bfa7830505301ffb336a17b0748e0d61c4d34216e9dc98f10e40395e",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/3rdparty/tinycbor/qt_attribution.json",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/3rdparty/tinycbor/qt_attribution.json",
+      "sha256": "788408509fb7967042640f24ba78b263712e816d886303ba1733f49753d33863",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/3rdparty/wasm/qt_attribution.json",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/3rdparty/wasm/qt_attribution.json",
+      "sha256": "2019d37665bfb2ce7d4931d0bdf7427ea178919399cf37c0fef14a229144936b",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/3rdparty/wayland/protocols/appmenu/qt_attribution.json",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/3rdparty/wayland/protocols/appmenu/qt_attribution.json",
+      "sha256": "b7200f7fdfd2223aaecbd9b2ec8e4145eebe4f0b376ffbcb3859154661fb1095",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/3rdparty/wayland/protocols/color-management/qt_attribution.json",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/3rdparty/wayland/protocols/color-management/qt_attribution.json",
+      "sha256": "6081490578a0a5ff17e450a3f9a05a36a3433de0832f1b2b497ca3c8ec1f9ba9",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/3rdparty/wayland/protocols/fractional-scale/qt_attribution.json",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/3rdparty/wayland/protocols/fractional-scale/qt_attribution.json",
+      "sha256": "bf87b7dc5bf42e91c9d98ad2a109d197141aaebffe563ab247dd771e0b9b07c8",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/3rdparty/wayland/protocols/fullscreen-shell/qt_attribution.json",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/3rdparty/wayland/protocols/fullscreen-shell/qt_attribution.json",
+      "sha256": "24ebba6014034dcf2c9a23a5b1085dc9708eaa81c021dfe51ba3f6b51ba788a7",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/3rdparty/wayland/protocols/linux-dmabuf/qt_attribution.json",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/3rdparty/wayland/protocols/linux-dmabuf/qt_attribution.json",
+      "sha256": "6dd0dbdb4e0fba8ac2a17700e462f1f2df53e4fe14a5ac6168ca4bc2c594cea5",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/3rdparty/wayland/protocols/pointer-gestures/qt_attribution.json",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/3rdparty/wayland/protocols/pointer-gestures/qt_attribution.json",
+      "sha256": "3c85ce329ccb30c469aa3f3c71596eb915c9cccd645ac1192d94a8fe548556b7",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/3rdparty/wayland/protocols/pointer-warp/qt_attribution.json",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/3rdparty/wayland/protocols/pointer-warp/qt_attribution.json",
+      "sha256": "3eb309adae44fe120dab08dca8c4df57a34ac347ecf1764cafdd7542cd0a0a11",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/3rdparty/wayland/protocols/presentation-time/qt_attribution.json",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/3rdparty/wayland/protocols/presentation-time/qt_attribution.json",
+      "sha256": "c3af7f51726c7584d5e8ad74a29813d66cac6a215a9675da7cfc9a42f15c2d0a",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/3rdparty/wayland/protocols/scaler/qt_attribution.json",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/3rdparty/wayland/protocols/scaler/qt_attribution.json",
+      "sha256": "8b7751412fc26d70f641d6bad9c6aadd406317cbf17359ffcc58651f58aa2fca",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/3rdparty/wayland/protocols/session-management/qt_attribution.json",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/3rdparty/wayland/protocols/session-management/qt_attribution.json",
+      "sha256": "23b07636c4bbaae01b94b11041d8664e8b7e21038a6a4860af0abed2ff2a4d8a",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/3rdparty/wayland/protocols/tablet/qt_attribution.json",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/3rdparty/wayland/protocols/tablet/qt_attribution.json",
+      "sha256": "a46626dbac8fc1f57d5b34eb077425fc402fc0767b75ec06578e1465502883b5",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/3rdparty/wayland/protocols/text-input/v1/qt_attribution.json",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/3rdparty/wayland/protocols/text-input/v1/qt_attribution.json",
+      "sha256": "882ac88020f0ecaea6d991f7e8d292542c9422592ede0396c4d217f040ef6a54",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/3rdparty/wayland/protocols/text-input/v2/qt_attribution.json",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/3rdparty/wayland/protocols/text-input/v2/qt_attribution.json",
+      "sha256": "197d9edcc6fb17d7bc2b230f7061ce0d2ef90fa4291c86e87ae2817e8f2809fe",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/3rdparty/wayland/protocols/text-input/v3/qt_attribution.json",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/3rdparty/wayland/protocols/text-input/v3/qt_attribution.json",
+      "sha256": "476225d10cb5789d993c38335c6cc442fdc19a8d91f1ceb7a3ddb50414a8e68a",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/3rdparty/wayland/protocols/viewporter/qt_attribution.json",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/3rdparty/wayland/protocols/viewporter/qt_attribution.json",
+      "sha256": "95139e441967bc289d174078f1ca0485363e8405bd8d06eb9946356c09c0a5e4",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/3rdparty/wayland/protocols/wayland/qt_attribution.json",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/3rdparty/wayland/protocols/wayland/qt_attribution.json",
+      "sha256": "d2b263d97853d72128987f55fb912fc197f488de003a8e4bbc53cae2549d0e6e",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/3rdparty/wayland/protocols/wl-eglstream/qt_attribution.json",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/3rdparty/wayland/protocols/wl-eglstream/qt_attribution.json",
+      "sha256": "2432510e17446887decd1fc58770aeeef060aff5331a8bfec7fb668555f3b347",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/3rdparty/wayland/protocols/wlr-data-control/qt_attribution.json",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/3rdparty/wayland/protocols/wlr-data-control/qt_attribution.json",
+      "sha256": "433a74149249d01d946d86aa0d88d30bc755523f1a978f640f6142e9c8fa1035",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/3rdparty/wayland/protocols/wp-primary-selection/qt_attribution.json",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/3rdparty/wayland/protocols/wp-primary-selection/qt_attribution.json",
+      "sha256": "14586c06e09439e9c2b7719766f68e219d0ff0231811e13e44f4587dabf52707",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/3rdparty/wayland/protocols/xdg-activation/qt_attribution.json",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/3rdparty/wayland/protocols/xdg-activation/qt_attribution.json",
+      "sha256": "8f13cfd4c78a2f116d3e674c329d3d211b647d80190e7a95493528cd6dedbd89",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/3rdparty/wayland/protocols/xdg-decoration/qt_attribution.json",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/3rdparty/wayland/protocols/xdg-decoration/qt_attribution.json",
+      "sha256": "b8d9102ff3c7eccd840f7d5332d072e41e95eb055a8a9f2e3719a83005879c86",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/3rdparty/wayland/protocols/xdg-dialog/qt_attribution.json",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/3rdparty/wayland/protocols/xdg-dialog/qt_attribution.json",
+      "sha256": "c7918fb63ad5be29e9a95db3464a7832224c7d904d21617ccfc689e6b0ab04c0",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/3rdparty/wayland/protocols/xdg-foreign/qt_attribution.json",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/3rdparty/wayland/protocols/xdg-foreign/qt_attribution.json",
+      "sha256": "0ed6fbddba411b647bbe895b6e7a842c2a884905206888c0b4df6b6cd3bb9f79",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/3rdparty/wayland/protocols/xdg-output/qt_attribution.json",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/3rdparty/wayland/protocols/xdg-output/qt_attribution.json",
+      "sha256": "c5e4f132de8d08a75af02682bba3a9349a00f49b773e23ef5543648209b76658",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/3rdparty/wayland/protocols/xdg-shell/qt_attribution.json",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/3rdparty/wayland/protocols/xdg-shell/qt_attribution.json",
+      "sha256": "e1367b44fe28fce2eee7656cda75203f4102662bb6aa370b3c9f3eb5a2cc3f82",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/3rdparty/wayland/protocols/xdg-system-bell/qt_attribution.json",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/3rdparty/wayland/protocols/xdg-system-bell/qt_attribution.json",
+      "sha256": "43a10e6b73a26d9c75e99447f5e731d170047ed2e709878e61eb83f6453cb3da",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/3rdparty/wayland/protocols/xdg-toplevel-icon/qt_attribution.json",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/3rdparty/wayland/protocols/xdg-toplevel-icon/qt_attribution.json",
+      "sha256": "2e022951f22a56051a099b9045f4fb0c569daa896a218d23f47b0dac3e905c04",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/3rdparty/wintab/qt_attribution.json",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/3rdparty/wintab/qt_attribution.json",
+      "sha256": "b879ea91b719531d45e1cfe33d2241d060a9260200bd91a09ada074b16063f9c",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/3rdparty/xcb/LICENSE",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/3rdparty/xcb/LICENSE",
+      "sha256": "82775191bc05f85b40404d77bb69b1edeaeb4033f48387e9e5eab4dd67f5d6f1",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/3rdparty/xcb/qt_attribution.json",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/3rdparty/xcb/qt_attribution.json",
+      "sha256": "8bae8861957bc0168d586d24da6e8e93edceb11796811c5f614d211f4674d437",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/3rdparty/zlib/LICENSE",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/3rdparty/zlib/LICENSE",
+      "sha256": "d7e3139972874dc8abdbbfce27ec1e6f942b28279dd7d27453630a8b4610e080",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/3rdparty/zlib/qt_attribution.json",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/3rdparty/zlib/qt_attribution.json",
+      "sha256": "0346805e9c4048316dbc7c58d560a20c12482ea0218de264282212e9619b6d64",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/corelib/global/qt_attribution.json",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/corelib/global/qt_attribution.json",
+      "sha256": "64698063a65a1502b986bd61163b5eb9c6bde87f93feb28e4eab43ff07a4f10a",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/corelib/kernel/LICENSE.QEVENTDISPATCHER_CF.txt",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/corelib/kernel/LICENSE.QEVENTDISPATCHER_CF.txt",
+      "sha256": "e9e5b9f66d21c0e88a4179525ab39cd8d7eac9af78a8404f322c32b0874783d5",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/corelib/kernel/qt_attribution.json",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/corelib/kernel/qt_attribution.json",
+      "sha256": "27bb1f28d336f1f8f6d44689f28cb650f0844cc82672e36ae168d0716783fad5",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/corelib/mimetypes/3rdparty/qt_attribution.json",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/corelib/mimetypes/3rdparty/qt_attribution.json",
+      "sha256": "329652c93e6b47663115543cfd746cb56b96a98d774d540d58e64614bd9739eb",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/corelib/text/qt_attribution.json",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/corelib/text/qt_attribution.json",
+      "sha256": "4e23736600be956e4214849ad8baaa955441656db7324713fab6353c1163b4f5",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/dbus/LICENSE.LIBDBUS-1.txt",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/dbus/LICENSE.LIBDBUS-1.txt",
+      "sha256": "ad90aa08bb1a9b7056aa51e2e215b36630855457cde5dffd36aa0faa7b169f24",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/dbus/qt_attribution.json",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/dbus/qt_attribution.json",
+      "sha256": "346532e1fb3bf653bc949408834c305646fc93f96650a2af9b2171d141c107ee",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/gui/opengl/LICENSE.KHRONOS.txt",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/gui/opengl/LICENSE.KHRONOS.txt",
+      "sha256": "2e484f3c26ff5008c704a3ca9dd809d43f24a004a1abb6c202660fbff0d19715",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/gui/opengl/qt_attribution.json",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/gui/opengl/qt_attribution.json",
+      "sha256": "d05626e02386f22186b385b3ce2cd5a6431b84e2fc552c68f7133e38da552fc1",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/gui/painting/LICENSE.QIMAGETRANSFORM.txt",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/gui/painting/LICENSE.QIMAGETRANSFORM.txt",
+      "sha256": "46b3cbfa2f2946b93291506351e9be1dd0a28d2a53260f5aa488abd36fbeca9d",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/gui/painting/LICENSE.XCONSORTIUM.txt",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/gui/painting/LICENSE.XCONSORTIUM.txt",
+      "sha256": "a216b01291eb38fc1af93cfccf1fc67b48d9923612e517c2a695e95b3f03c22c",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/gui/painting/qt_attribution.json",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/gui/painting/qt_attribution.json",
+      "sha256": "8cddd6c73a885f697261c4d6d60e5cd814a2544fcd407504b52a5eb9b7cc3600",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/gui/rhi/LICENSE.MiniEngine.txt",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/gui/rhi/LICENSE.MiniEngine.txt",
+      "sha256": "cf248820bf1178370bb4f1670a59f8748d46bc96d0f64080cd631511c6046409",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/gui/rhi/qt_attribution.json",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/gui/rhi/qt_attribution.json",
+      "sha256": "59df3efb041ed346aa797602a76ef8d284e84c3cc6ace30967d6704fc65dbb47",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/gui/text/LICENSE.AGLFN.txt",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/gui/text/LICENSE.AGLFN.txt",
+      "sha256": "40818155548ff41c67d3a40edf355e9658992b292c227f4c1147425cedc746c6",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/gui/text/qt_attribution.json",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/gui/text/qt_attribution.json",
+      "sha256": "7960234e4078c69003e4d9de24c1bf36c9370cfae8a1797ceb1501c4eec81e5d",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/gui/util/LICENSE.XSVG.txt",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/gui/util/LICENSE.XSVG.txt",
+      "sha256": "3a946598a9f674d44df764279ca0b85b5d6faba08f3bc75d8e0fcf6cd729a9bd",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/gui/util/qt_attribution.json",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/gui/util/qt_attribution.json",
+      "sha256": "95156a38085638f0e14785cdcf95ff06f009ecfddfd64699366ed94446f164cc",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/gui/vulkan/LICENSE.txt",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/gui/vulkan/LICENSE.txt",
+      "sha256": "5f618873b0cdd1e84c611c5529212c2524bfc887bdfd7d1f3b568bad3c649612",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/gui/vulkan/qt_attribution.json",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/gui/vulkan/qt_attribution.json",
+      "sha256": "b4beb6ac27b066a6a71408da116fea60131c06ac9799c9763fe9cef28a76e7b9",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/plugins/platforms/cocoa/LICENSE.COCOA.txt",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/plugins/platforms/cocoa/LICENSE.COCOA.txt",
+      "sha256": "e9e5b9f66d21c0e88a4179525ab39cd8d7eac9af78a8404f322c32b0874783d5",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/plugins/platforms/cocoa/qt_attribution.json",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/plugins/platforms/cocoa/qt_attribution.json",
+      "sha256": "27a435bfea96ca950f4a5ad6a82be7fe2a62bb4db0d8851e7a84fc5dce0c3ff3",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/testinternal/3rdparty/cmake/qt_attribution.json",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/testinternal/3rdparty/cmake/qt_attribution.json",
+      "sha256": "f194ea33cf9b0d44615a6fa9eb4d45e7796b50cb0a88cdadf5d9b15745bf52f0",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/testlib/3rdparty/catch2/LICENSE.txt",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/testlib/3rdparty/catch2/LICENSE.txt",
+      "sha256": "c9bff75738922193e67fa726fa225535870d2aa1059f91452c411736284ad566",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/testlib/3rdparty/catch2/qt_attribution.json",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/testlib/3rdparty/catch2/qt_attribution.json",
+      "sha256": "8149331a9f68c529955173cbfb12e3f0193c2e4db23ae4117bcd537ee1eacde0",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/testlib/3rdparty/cycle/LICENSE.txt",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/testlib/3rdparty/cycle/LICENSE.txt",
+      "sha256": "cb5aedb296c5246d1f22e9099f925a65146f9f0d6b4eebba97fd27a6cdbbab2d",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/testlib/3rdparty/cycle/qt_attribution.json",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/testlib/3rdparty/cycle/qt_attribution.json",
+      "sha256": "5b4c5fc477cd61b935983b93ec6d09b39a8f5644ea4fe5ac787c84583f521c7c",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/testlib/3rdparty/linux/LICENSE.txt",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/testlib/3rdparty/linux/LICENSE.txt",
+      "sha256": "ed71cfca021790f74094e9810f42e31288e7f43cf00c8d9ac8d6f904124bd815",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/testlib/3rdparty/linux/qt_attribution.json",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/testlib/3rdparty/linux/qt_attribution.json",
+      "sha256": "a69f1c5519995cb3e77d34a864d9a383b68d0d3304883ee28c6b14a7c4efbe50",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/testlib/3rdparty/valgrind/LICENSE.txt",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/testlib/3rdparty/valgrind/LICENSE.txt",
+      "sha256": "ec72eebd6326165156787da828caaa18386489387aefaa073c9bd40b8b2a400e",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/src/testlib/3rdparty/valgrind/qt_attribution.json",
+      "source": "notices/qtbase-everywhere-src-6.12.0/src/testlib/3rdparty/valgrind/qt_attribution.json",
+      "sha256": "202daf86588d8cded6c492d490cec190e5790796fff23ec5065b116b78e70fbc",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/tests/auto/cmake/RunCMake/Sbom/attributions/multi_entry/qt_attribution.json",
+      "source": "notices/qtbase-everywhere-src-6.12.0/tests/auto/cmake/RunCMake/Sbom/attributions/multi_entry/qt_attribution.json",
+      "sha256": "2aecfbea7527b27ffe8e402e83c5227ace022d9b343124a27c6f8220e9fbff66",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/tests/auto/corelib/serialization/qxmlstream/LICENSE.XML-Test-Suite.txt",
+      "source": "notices/qtbase-everywhere-src-6.12.0/tests/auto/corelib/serialization/qxmlstream/LICENSE.XML-Test-Suite.txt",
+      "sha256": "b2ace830c68a486d548834b9a93806d064a3eb041f603ec6368034d060fdf46a",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/tests/manual/rhi/shared/imgui/fonts/LICENSE.txt",
+      "source": "notices/qtbase-everywhere-src-6.12.0/tests/manual/rhi/shared/imgui/fonts/LICENSE.txt",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/tests/manual/rhi/shared/imgui/imgui/LICENSE.txt",
+      "source": "notices/qtbase-everywhere-src-6.12.0/tests/manual/rhi/shared/imgui/imgui/LICENSE.txt",
+      "sha256": "1b64b23b817e547982a86984685f5e9337695caa542753fb6f08d502d5208e38",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/util/gradientgen/LICENSE.WEBGRADIENTS.txt",
+      "source": "notices/qtbase-everywhere-src-6.12.0/util/gradientgen/LICENSE.WEBGRADIENTS.txt",
+      "sha256": "9be732e45b638c74f9c0e5248541dd54dc7e8e9a5545df96b5c4b7c9ac0c68ba",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtbase-everywhere-src-6.12.0/util/gradientgen/qt_attribution.json",
+      "source": "notices/qtbase-everywhere-src-6.12.0/util/gradientgen/qt_attribution.json",
+      "sha256": "6e87ac5d79ab92110e6e517b2c74e4f4fd15878540e93eea0300e529d3318572",
+      "kind": "original_upstream_notice"
+    },
+    {
+      "relative": "qtsvg-everywhere-src-6.12.0/tests/baseline/data/svg_12_testsuite/LICENSE.txt",
+      "source": "notices/qtsvg-everywhere-src-6.12.0/tests/baseline/data/svg_12_testsuite/LICENSE.txt",
+      "sha256": "635f33fbb460f1731dad45d79dbf2301255f63296d77a064c000f92e2cc79173",
+      "kind": "original_upstream_notice"
+    }
+  ],
+  "runtime_apt_versions": {
+    "status": "PASS",
+    "rootfs": "/home/heq/vispy-opengl-qt-build-rootfs-1/rootfs",
+    "portable_closure_sha256": "34bef439acf239dbe6cddcbd3520fa7b146452bdb1e15a7d298d1825133c7ee5",
+    "packages": [
+      {
+        "package": "libblkid1:amd64",
+        "version": "2.39.3-9ubuntu6.6",
+        "architecture": "amd64"
+      },
+      {
+        "package": "libbrotli1:amd64",
+        "version": "1.1.0-2build2",
+        "architecture": "amd64"
+      },
+      {
+        "package": "libbsd0:amd64",
+        "version": "0.12.1-1build1.1",
+        "architecture": "amd64"
+      },
+      {
+        "package": "libbz2-1.0:amd64",
+        "version": "1.0.8-5.1ubuntu0.1",
+        "architecture": "amd64"
+      },
+      {
+        "package": "libc6:amd64",
+        "version": "2.39-0ubuntu8.9",
+        "architecture": "amd64"
+      },
+      {
+        "package": "libcap2:amd64",
+        "version": "1:2.66-5ubuntu2.4",
+        "architecture": "amd64"
+      },
+      {
+        "package": "libdbus-1-3:amd64",
+        "version": "1.14.10-4ubuntu4.1",
+        "architecture": "amd64"
+      },
+      {
+        "package": "libexpat1:amd64",
+        "version": "2.6.1-2ubuntu0.6",
+        "architecture": "amd64"
+      },
+      {
+        "package": "libffi8:amd64",
+        "version": "3.4.6-1build1",
+        "architecture": "amd64"
+      },
+      {
+        "package": "libfontconfig1:amd64",
+        "version": "2.15.0-1.1ubuntu2",
+        "architecture": "amd64"
+      },
+      {
+        "package": "libfreetype6:amd64",
+        "version": "2.13.2+dfsg-1ubuntu0.2",
+        "architecture": "amd64"
+      },
+      {
+        "package": "libgcc-s1:amd64",
+        "version": "14.2.0-4ubuntu2~24.04.1",
+        "architecture": "amd64"
+      },
+      {
+        "package": "libgcrypt20:amd64",
+        "version": "1.10.3-2ubuntu0.2",
+        "architecture": "amd64"
+      },
+      {
+        "package": "libglib2.0-0t64:amd64",
+        "version": "2.80.0-6ubuntu3.10",
+        "architecture": "amd64"
+      },
+      {
+        "package": "libgpg-error0:amd64",
+        "version": "1.47-3build2.1",
+        "architecture": "amd64"
+      },
+      {
+        "package": "libice6:amd64",
+        "version": "2:1.0.10-1build3",
+        "architecture": "amd64"
+      },
+      {
+        "package": "liblz4-1:amd64",
+        "version": "1.9.4-1build1.1",
+        "architecture": "amd64"
+      },
+      {
+        "package": "liblzma5:amd64",
+        "version": "5.6.1+really5.4.5-1ubuntu0.4",
+        "architecture": "amd64"
+      },
+      {
+        "package": "libmd0:amd64",
+        "version": "1.1.0-2build1.1",
+        "architecture": "amd64"
+      },
+      {
+        "package": "libmount1:amd64",
+        "version": "2.39.3-9ubuntu6.6",
+        "architecture": "amd64"
+      },
+      {
+        "package": "libpcre2-16-0:amd64",
+        "version": "10.42-4ubuntu2.1",
+        "architecture": "amd64"
+      },
+      {
+        "package": "libpcre2-8-0:amd64",
+        "version": "10.42-4ubuntu2.1",
+        "architecture": "amd64"
+      },
+      {
+        "package": "libpng16-16t64:amd64",
+        "version": "1.6.43-5ubuntu0.7",
+        "architecture": "amd64"
+      },
+      {
+        "package": "libselinux1:amd64",
+        "version": "3.5-2ubuntu2.1",
+        "architecture": "amd64"
+      },
+      {
+        "package": "libsm6:amd64",
+        "version": "2:1.2.3-1build3",
+        "architecture": "amd64"
+      },
+      {
+        "package": "libstdc++6:amd64",
+        "version": "14.2.0-4ubuntu2~24.04.1",
+        "architecture": "amd64"
+      },
+      {
+        "package": "libsystemd0:amd64",
+        "version": "255.4-1ubuntu8.17",
+        "architecture": "amd64"
+      },
+      {
+        "package": "libuuid1:amd64",
+        "version": "2.39.3-9ubuntu6.6",
+        "architecture": "amd64"
+      },
+      {
+        "package": "libx11-6:amd64",
+        "version": "2:1.8.7-1ubuntu0.1",
+        "architecture": "amd64"
+      },
+      {
+        "package": "libx11-xcb1:amd64",
+        "version": "2:1.8.7-1ubuntu0.1",
+        "architecture": "amd64"
+      },
+      {
+        "package": "libxau6:amd64",
+        "version": "1:1.0.9-1build6",
+        "architecture": "amd64"
+      },
+      {
+        "package": "libxcb-cursor0:amd64",
+        "version": "0.1.4-1build1",
+        "architecture": "amd64"
+      },
+      {
+        "package": "libxcb-icccm4:amd64",
+        "version": "0.4.1-1.1build3",
+        "architecture": "amd64"
+      },
+      {
+        "package": "libxcb-image0:amd64",
+        "version": "0.4.0-2build1",
+        "architecture": "amd64"
+      },
+      {
+        "package": "libxcb-keysyms1:amd64",
+        "version": "0.4.0-1build4",
+        "architecture": "amd64"
+      },
+      {
+        "package": "libxcb-randr0:amd64",
+        "version": "1.15-1ubuntu2",
+        "architecture": "amd64"
+      },
+      {
+        "package": "libxcb-render-util0:amd64",
+        "version": "0.3.9-1build4",
+        "architecture": "amd64"
+      },
+      {
+        "package": "libxcb-render0:amd64",
+        "version": "1.15-1ubuntu2",
+        "architecture": "amd64"
+      },
+      {
+        "package": "libxcb-shape0:amd64",
+        "version": "1.15-1ubuntu2",
+        "architecture": "amd64"
+      },
+      {
+        "package": "libxcb-shm0:amd64",
+        "version": "1.15-1ubuntu2",
+        "architecture": "amd64"
+      },
+      {
+        "package": "libxcb-sync1:amd64",
+        "version": "1.15-1ubuntu2",
+        "architecture": "amd64"
+      },
+      {
+        "package": "libxcb-util1:amd64",
+        "version": "0.4.0-1build3",
+        "architecture": "amd64"
+      },
+      {
+        "package": "libxcb-xfixes0:amd64",
+        "version": "1.15-1ubuntu2",
+        "architecture": "amd64"
+      },
+      {
+        "package": "libxcb-xkb1:amd64",
+        "version": "1.15-1ubuntu2",
+        "architecture": "amd64"
+      },
+      {
+        "package": "libxcb1:amd64",
+        "version": "1.15-1ubuntu2",
+        "architecture": "amd64"
+      },
+      {
+        "package": "libxdmcp6:amd64",
+        "version": "1:1.1.3-0ubuntu6",
+        "architecture": "amd64"
+      },
+      {
+        "package": "libxkbcommon-x11-0:amd64",
+        "version": "1.6.0-1build1",
+        "architecture": "amd64"
+      },
+      {
+        "package": "libxkbcommon0:amd64",
+        "version": "1.6.0-1build1",
+        "architecture": "amd64"
+      },
+      {
+        "package": "libzstd1:amd64",
+        "version": "1.5.5+dfsg2-2build1.1",
+        "architecture": "amd64"
+      },
+      {
+        "package": "zlib1g:amd64",
+        "version": "1:1.3.dfsg-3.1ubuntu2.3",
+        "architecture": "amd64"
+      }
+    ],
+    "apt_install_pins": [
+      "libblkid1:amd64=2.39.3-9ubuntu6.6",
+      "libbrotli1:amd64=1.1.0-2build2",
+      "libbsd0:amd64=0.12.1-1build1.1",
+      "libbz2-1.0:amd64=1.0.8-5.1ubuntu0.1",
+      "libc6:amd64=2.39-0ubuntu8.9",
+      "libcap2:amd64=1:2.66-5ubuntu2.4",
+      "libdbus-1-3:amd64=1.14.10-4ubuntu4.1",
+      "libexpat1:amd64=2.6.1-2ubuntu0.6",
+      "libffi8:amd64=3.4.6-1build1",
+      "libfontconfig1:amd64=2.15.0-1.1ubuntu2",
+      "libfreetype6:amd64=2.13.2+dfsg-1ubuntu0.2",
+      "libgcc-s1:amd64=14.2.0-4ubuntu2~24.04.1",
+      "libgcrypt20:amd64=1.10.3-2ubuntu0.2",
+      "libglib2.0-0t64:amd64=2.80.0-6ubuntu3.10",
+      "libgpg-error0:amd64=1.47-3build2.1",
+      "libice6:amd64=2:1.0.10-1build3",
+      "liblz4-1:amd64=1.9.4-1build1.1",
+      "liblzma5:amd64=5.6.1+really5.4.5-1ubuntu0.4",
+      "libmd0:amd64=1.1.0-2build1.1",
+      "libmount1:amd64=2.39.3-9ubuntu6.6",
+      "libpcre2-16-0:amd64=10.42-4ubuntu2.1",
+      "libpcre2-8-0:amd64=10.42-4ubuntu2.1",
+      "libpng16-16t64:amd64=1.6.43-5ubuntu0.7",
+      "libselinux1:amd64=3.5-2ubuntu2.1",
+      "libsm6:amd64=2:1.2.3-1build3",
+      "libstdc++6:amd64=14.2.0-4ubuntu2~24.04.1",
+      "libsystemd0:amd64=255.4-1ubuntu8.17",
+      "libuuid1:amd64=2.39.3-9ubuntu6.6",
+      "libx11-6:amd64=2:1.8.7-1ubuntu0.1",
+      "libx11-xcb1:amd64=2:1.8.7-1ubuntu0.1",
+      "libxau6:amd64=1:1.0.9-1build6",
+      "libxcb-cursor0:amd64=0.1.4-1build1",
+      "libxcb-icccm4:amd64=0.4.1-1.1build3",
+      "libxcb-image0:amd64=0.4.0-2build1",
+      "libxcb-keysyms1:amd64=0.4.0-1build4",
+      "libxcb-randr0:amd64=1.15-1ubuntu2",
+      "libxcb-render-util0:amd64=0.3.9-1build4",
+      "libxcb-render0:amd64=1.15-1ubuntu2",
+      "libxcb-shape0:amd64=1.15-1ubuntu2",
+      "libxcb-shm0:amd64=1.15-1ubuntu2",
+      "libxcb-sync1:amd64=1.15-1ubuntu2",
+      "libxcb-util1:amd64=0.4.0-1build3",
+      "libxcb-xfixes0:amd64=1.15-1ubuntu2",
+      "libxcb-xkb1:amd64=1.15-1ubuntu2",
+      "libxcb1:amd64=1.15-1ubuntu2",
+      "libxdmcp6:amd64=1:1.1.3-0ubuntu6",
+      "libxkbcommon-x11-0:amd64=1.6.0-1build1",
+      "libxkbcommon0:amd64=1.6.0-1build1",
+      "libzstd1:amd64=1.5.5+dfsg2-2build1.1",
+      "zlib1g:amd64=1:1.3.dfsg-3.1ubuntu2.3"
+    ],
+    "note": "Queried actual owned build rootfs used by portable-binding-smoke; no packages installed or changed by this query."
+  },
+  "builder": {
+    "python": "3.12.8",
+    "zlib": "1.3.1"
+  },
+  "wheels": [
+    {
+      "name": "pyside6",
+      "metadata_name": "PySide6",
+      "version": "6.12.0+vispynogl.1",
+      "tag": "cp312-cp312-linux_x86_64",
+      "requires": [
+        "shiboken6==6.12.0+vispynogl.1",
+        "pyside6-qt6==6.12.0+vispynogl.1"
+      ],
+      "files": [
+        {
+          "member": "PySide6/QtAsyncio/__init__.py",
+          "source": "PySide6/QtAsyncio/__init__.py",
+          "sha256": "df2cfe4a9b1f31875feb64651ae80557c4ff64411ddb685b0ca80674fd8b23e0"
+        },
+        {
+          "member": "PySide6/QtAsyncio/events.py",
+          "source": "PySide6/QtAsyncio/events.py",
+          "sha256": "266fcadfccb3f0ca1aaf0647b263ebe179683c56403972006cc2ddfb8a7353bf"
+        },
+        {
+          "member": "PySide6/QtAsyncio/futures.py",
+          "source": "PySide6/QtAsyncio/futures.py",
+          "sha256": "a0d11bf6105cb69cdfc223032db11bfd8f06f1f2f7dbc25f58c644916d970ee5"
+        },
+        {
+          "member": "PySide6/QtAsyncio/tasks.py",
+          "source": "PySide6/QtAsyncio/tasks.py",
+          "sha256": "c0ef08e7414ac138a5c48e50999ab58be8f8d42c6223d6d4b8d327cb8c577852"
+        },
+        {
+          "member": "PySide6/QtCore.abi3.so",
+          "source": "PySide6/QtCore.abi3.so",
+          "sha256": "1bca0fbcc5d5451b7915f58c7376161b41fabca3d47f66062723c09726ea4eb7",
+          "native": true,
+          "before_relocation_sha256": "35fd0d7bfd6c7b834515d6bd93c7453b3a77f1156c7fb9f573b209ab9cb8997e",
+          "relocated": true
+        },
+        {
+          "member": "PySide6/QtCore.pyi",
+          "source": "PySide6/QtCore.pyi",
+          "sha256": "0a9b9e6d5f87ba9996ebe15bdd31d8d3a028fe9ed0cf18e59dba5390005310ff"
+        },
+        {
+          "member": "PySide6/QtDBus.abi3.so",
+          "source": "PySide6/QtDBus.abi3.so",
+          "sha256": "ac583b29ab485c9fbc737c9501ef77cc19807a7e12b54ee2850ef4b58679d984",
+          "native": true,
+          "before_relocation_sha256": "bcdda1890cc4cfd527564d7983d46fef27d0df12e53af2f3cabf86592de5c34f",
+          "relocated": true
+        },
+        {
+          "member": "PySide6/QtDBus.pyi",
+          "source": "PySide6/QtDBus.pyi",
+          "sha256": "0e0ec7a05fb1aff62d772b402758dff3a0c87ebe566666aa5c97424eb3eca308"
+        },
+        {
+          "member": "PySide6/QtGui.abi3.so",
+          "source": "PySide6/QtGui.abi3.so",
+          "sha256": "662be74fb2eafbb612b77c5e479bf2c48528c3c94495614b70994816a672e12f",
+          "native": true,
+          "before_relocation_sha256": "50bfaeb7646d5abad411521effb1c1b8c0a56a0cfb6b758f7458e786e5e8ed94",
+          "relocated": true
+        },
+        {
+          "member": "PySide6/QtGui.pyi",
+          "source": "PySide6/QtGui.pyi",
+          "sha256": "f874c803a56f2e7a394441bc059a9aa2e864de46f7b532da7b0d60ae30a909fd"
+        },
+        {
+          "member": "PySide6/QtNetwork.abi3.so",
+          "source": "PySide6/QtNetwork.abi3.so",
+          "sha256": "97388336f43768928b4e8363be6acc96ff6dfe4a351c653c7cabe84b80fc5918",
+          "native": true,
+          "before_relocation_sha256": "616670dd674f18c369aee7353e98a73768af5097b8004d75f8ec8e033437a456",
+          "relocated": true
+        },
+        {
+          "member": "PySide6/QtNetwork.pyi",
+          "source": "PySide6/QtNetwork.pyi",
+          "sha256": "450964ca482d437b61d63adcc32d9733187ce29599ac298d5f1bb79d71ff2a66"
+        },
+        {
+          "member": "PySide6/QtPrintSupport.abi3.so",
+          "source": "PySide6/QtPrintSupport.abi3.so",
+          "sha256": "cad48cc1d63231b559df6d22b99cac601abdd444abd3ab40e1ba5c43a206d88f",
+          "native": true,
+          "before_relocation_sha256": "d67032711201bee8d9e889174f605dd1595b606312464d64992edd03147479a5",
+          "relocated": true
+        },
+        {
+          "member": "PySide6/QtPrintSupport.pyi",
+          "source": "PySide6/QtPrintSupport.pyi",
+          "sha256": "2dc49ca3696062d56615e93f88c343d3c1dc7836e65cbdde29a5e4b45529c07f"
+        },
+        {
+          "member": "PySide6/QtSvg.abi3.so",
+          "source": "PySide6/QtSvg.abi3.so",
+          "sha256": "8c494218d28f043a3dace64c47b82210fb457749489fd59490b265a0f7ddc9c6",
+          "native": true,
+          "before_relocation_sha256": "af5547e6450d41b6a7ed2bce99836866f1599f5b094d459c62c2d55d3a0b8a7d",
+          "relocated": true
+        },
+        {
+          "member": "PySide6/QtSvg.pyi",
+          "source": "PySide6/QtSvg.pyi",
+          "sha256": "d242986c462d635e09d4b142eb09c22f0f62b638fa84f7400ebc8c9d3da96205"
+        },
+        {
+          "member": "PySide6/QtSvgWidgets.abi3.so",
+          "source": "PySide6/QtSvgWidgets.abi3.so",
+          "sha256": "f95787d22e8cd3f8f6e09a1104cd600feca6ddf6a12a5fb9b127c77d2083faee",
+          "native": true,
+          "before_relocation_sha256": "372f733f0cf4e49bd999a72182f07db8cc17feda674ddc7dd433f1d82eb009f0",
+          "relocated": true
+        },
+        {
+          "member": "PySide6/QtSvgWidgets.pyi",
+          "source": "PySide6/QtSvgWidgets.pyi",
+          "sha256": "0957199c245fc8732605f319a4a812893b783ea9acd13f2fb86df48e86914608"
+        },
+        {
+          "member": "PySide6/QtTest.abi3.so",
+          "source": "PySide6/QtTest.abi3.so",
+          "sha256": "18bbc97ad9e940abc2fb2e197e30a2b8a85dcbb7ac8cbee191ff0e340fc548a1",
+          "native": true,
+          "before_relocation_sha256": "07f1f83a122f0c9d5ea60ae3e6747dc2eb0dfc9618eb496616a13e243f087744",
+          "relocated": true
+        },
+        {
+          "member": "PySide6/QtTest.pyi",
+          "source": "PySide6/QtTest.pyi",
+          "sha256": "a26ab1dfae63610a7c95c85914b53163bff9e6e3948e4115c28af58f4d681db0"
+        },
+        {
+          "member": "PySide6/QtWidgets.abi3.so",
+          "source": "PySide6/QtWidgets.abi3.so",
+          "sha256": "c282218fdbe39820981e98a10db13e3a27cf3fc46a5553ade91dbbdb8f41b782",
+          "native": true,
+          "before_relocation_sha256": "56a2d33d6767a3e5517068a8dfc2f93d9fb493c7cc37826c481ccd328011c9bf",
+          "relocated": true
+        },
+        {
+          "member": "PySide6/QtWidgets.pyi",
+          "source": "PySide6/QtWidgets.pyi",
+          "sha256": "1216e4023718acfce04186cb7154f7a3234d8afd33b9f5bf17b268e0d7ed90c6"
+        },
+        {
+          "member": "PySide6/QtXml.abi3.so",
+          "source": "PySide6/QtXml.abi3.so",
+          "sha256": "e957396551060e617c38acbc0130ce75cd3215e1fcd3fa8306831e5024baa751",
+          "native": true,
+          "before_relocation_sha256": "ba0ac7bfb599a17bf4777be50a87a26bd1df6f0ae9998f1322ce2b96ceb537e1",
+          "relocated": true
+        },
+        {
+          "member": "PySide6/QtXml.pyi",
+          "source": "PySide6/QtXml.pyi",
+          "sha256": "77b1c204e7de95f8d510afdf97d18d3434036d6cda9204c7c174e5965109bad6"
+        },
+        {
+          "member": "PySide6/__feature__.pyi",
+          "source": "PySide6/__feature__.pyi",
+          "sha256": "3f3f79ca62c186e1c5d07b228a6db57809c184804449426bda4cd31f269072e5"
+        },
+        {
+          "member": "PySide6/__init__.py",
+          "source": "PySide6/__init__.py",
+          "sha256": "8755c4878f08159ddf253e4d1d068bd7424e1d557dd122bfb7413f0bafe00265"
+        },
+        {
+          "member": "PySide6/_config.py",
+          "source": "PySide6/_config.py",
+          "sha256": "675772bc13c2b2938e51f7910e36b517167127b2f7aa8d78e25c49fc6c024566"
+        },
+        {
+          "member": "PySide6/_git_pyside_version.py",
+          "source": "PySide6/_git_pyside_version.py",
+          "sha256": "fb1a71e6b3ddc2091bcb8d28bf5c7924c9b7fd9241c8797eecf6ace65e4cfbd0"
+        },
+        {
+          "member": "PySide6/doc/qtcore.rst",
+          "source": "PySide6/doc/qtcore.rst",
+          "sha256": "f70bc80b361be6187a7a7c42ed3613895afb0c631ede0e3de89785d1e03a0ab3"
+        },
+        {
+          "member": "PySide6/doc/qtgui.rst",
+          "source": "PySide6/doc/qtgui.rst",
+          "sha256": "51d07d1a64524877044c40708108729cd03c54c2f7ac431049c94fd3ed38ec72"
+        },
+        {
+          "member": "PySide6/glue/qtcore.cpp",
+          "source": "PySide6/glue/qtcore.cpp",
+          "sha256": "0a2487a9f87cec4d70d6d1e16077ed4b66adad792fb8a5c82ce2a44c0f4f5c7d"
+        },
+        {
+          "member": "PySide6/glue/qtgui.cpp",
+          "source": "PySide6/glue/qtgui.cpp",
+          "sha256": "499df17dce8bf58bebd832e842b5e6597d83dfcd94e7ce8e80c2c2a7fa5dc223"
+        },
+        {
+          "member": "PySide6/glue/qtnetwork.cpp",
+          "source": "PySide6/glue/qtnetwork.cpp",
+          "sha256": "9635d12ad4a36f034fd8ad63d2260bb954eb2318fa57c2846dac24ecbd5f0109"
+        },
+        {
+          "member": "PySide6/glue/qtprintsupport.cpp",
+          "source": "PySide6/glue/qtprintsupport.cpp",
+          "sha256": "571586bd54f503911c7cb40c423a2d56e01c4c63e6f6802c5e9d70392c0ed292"
+        },
+        {
+          "member": "PySide6/glue/qttest.cpp",
+          "source": "PySide6/glue/qttest.cpp",
+          "sha256": "5bf0abac2a9fc12285e03de95f848ee164796ca55caffbc2a4981b6fa8c1b837"
+        },
+        {
+          "member": "PySide6/glue/qtwidgets.cpp",
+          "source": "PySide6/glue/qtwidgets.cpp",
+          "sha256": "1644b72cd5235cd6c655b6cf40b6593b0c4cd21c9711516cdb20752bdef6411b"
+        },
+        {
+          "member": "PySide6/glue/qtxml.cpp",
+          "source": "PySide6/glue/qtxml.cpp",
+          "sha256": "210da5e0bc15840b8ce2129ce833e1c88bca119ee808a2dff2ad07b4f815ac24"
+        },
+        {
+          "member": "PySide6/include/PySide6/QtCore/pyside6_qtcore_python.h",
+          "source": "PySide6/include/PySide6/QtCore/pyside6_qtcore_python.h",
+          "sha256": "9fcd0f47c220ad9c6427da40be44f8bc12d9a5ae9a7ef459aab24aac5174277e"
+        },
+        {
+          "member": "PySide6/include/PySide6/QtCore/qiopipe.h",
+          "source": "PySide6/include/PySide6/QtCore/qiopipe.h",
+          "sha256": "99bac1f938d0a706c74d8da806bb95f933d41580a1360a878cc032bce4679042"
+        },
+        {
+          "member": "PySide6/include/PySide6/QtCore/qtcorehelper.h",
+          "source": "PySide6/include/PySide6/QtCore/qtcorehelper.h",
+          "sha256": "00b98fbb0107348bb3dca321777fcc8f3889460b69dc9e72c9ecbe77b17dec0c"
+        },
+        {
+          "member": "PySide6/include/PySide6/QtDBus/pyside6_qtdbus_python.h",
+          "source": "PySide6/include/PySide6/QtDBus/pyside6_qtdbus_python.h",
+          "sha256": "60ef35b3b8524a1cbe73f1e743371b2c9da798c6dcb5c84ee6851109c94b04d1"
+        },
+        {
+          "member": "PySide6/include/PySide6/QtDBus/qtdbushelper.h",
+          "source": "PySide6/include/PySide6/QtDBus/qtdbushelper.h",
+          "sha256": "b5468e8bec5332481be178870ab4e7933a0f6a4c6691c41bee9275100649f7cb"
+        },
+        {
+          "member": "PySide6/include/PySide6/QtGui/pyside6_qtgui_python.h",
+          "source": "PySide6/include/PySide6/QtGui/pyside6_qtgui_python.h",
+          "sha256": "6a2d5f106d87f7f9785a576469a2733e91a5c017023247752550d464e5e3cc09"
+        },
+        {
+          "member": "PySide6/include/PySide6/QtGui/qpytextobject.h",
+          "source": "PySide6/include/PySide6/QtGui/qpytextobject.h",
+          "sha256": "0de2e76b8e8b661bf9d6869d026278c5bfc57f30488d7f792c0f94fa2fd9481c"
+        },
+        {
+          "member": "PySide6/include/PySide6/QtGui/qtguihelper.h",
+          "source": "PySide6/include/PySide6/QtGui/qtguihelper.h",
+          "sha256": "2f2b5a48050ac0c775a6619f505c040dcd0f944da19a4ff4f6e8c4bde9fa2bd2"
+        },
+        {
+          "member": "PySide6/include/PySide6/QtNetwork/pyside6_qtnetwork_python.h",
+          "source": "PySide6/include/PySide6/QtNetwork/pyside6_qtnetwork_python.h",
+          "sha256": "afb8298c2946a6e904e60b9e0bb4afb04a37c1f111f1b4b9d58aa2d20e30ce75"
+        },
+        {
+          "member": "PySide6/include/PySide6/QtPrintSupport/pyside6_qtprintsupport_python.h",
+          "source": "PySide6/include/PySide6/QtPrintSupport/pyside6_qtprintsupport_python.h",
+          "sha256": "b01e7b35a2ce57b2c4d01717b0363254ab85f19e0602824f4add3ca73f2d98fe"
+        },
+        {
+          "member": "PySide6/include/PySide6/QtSvg/pyside6_qtsvg_python.h",
+          "source": "PySide6/include/PySide6/QtSvg/pyside6_qtsvg_python.h",
+          "sha256": "26cb5a7fa354bb33390f9df4990fe35ad6baed16f62468aaeab5002582651317"
+        },
+        {
+          "member": "PySide6/include/PySide6/QtSvgWidgets/pyside6_qtsvgwidgets_python.h",
+          "source": "PySide6/include/PySide6/QtSvgWidgets/pyside6_qtsvgwidgets_python.h",
+          "sha256": "8a006d9eb423a902a11ac035b9e5d002e706e61d1b4eb486419cc2b61c4cfab0"
+        },
+        {
+          "member": "PySide6/include/PySide6/QtTest/pyside6_qttest_python.h",
+          "source": "PySide6/include/PySide6/QtTest/pyside6_qttest_python.h",
+          "sha256": "083f9cdb042c61a3d1c420ef59a427b17d1e6dd58760be959465008db27bb0b0"
+        },
+        {
+          "member": "PySide6/include/PySide6/QtWidgets/pyside6_qtwidgets_python.h",
+          "source": "PySide6/include/PySide6/QtWidgets/pyside6_qtwidgets_python.h",
+          "sha256": "d3a84c910b4d09e289bbc938d2384036b8281189bca11c02367d6e7c69fb35a9"
+        },
+        {
+          "member": "PySide6/include/PySide6/QtXml/pyside6_qtxml_python.h",
+          "source": "PySide6/include/PySide6/QtXml/pyside6_qtxml_python.h",
+          "sha256": "6f9cd863ff021d20d0256184e219984d2311d6828b08a06f84ff53a8995847b6"
+        },
+        {
+          "member": "PySide6/include/PySide6/class_property.h",
+          "source": "PySide6/include/PySide6/class_property.h",
+          "sha256": "0ba742ad246b5e45e6bf24f8883fd56d83155f342b522931ccb210882176029a"
+        },
+        {
+          "member": "PySide6/include/PySide6/dynamicqmetaobject.h",
+          "source": "PySide6/include/PySide6/dynamicqmetaobject.h",
+          "sha256": "e57bc67682782a92b01ec6c677e35fdb2c92d6d99e5ff40ce49b2c062a05fb6d"
+        },
+        {
+          "member": "PySide6/include/PySide6/dynamicslot_p.h",
+          "source": "PySide6/include/PySide6/dynamicslot_p.h",
+          "sha256": "adc8e71f19cc448666ddc69aa998fc5425afa7c3d24a6dd886414958f3cf9b20"
+        },
+        {
+          "member": "PySide6/include/PySide6/feature_select.h",
+          "source": "PySide6/include/PySide6/feature_select.h",
+          "sha256": "a9406eafd267c667f127610f06970a9ca6641bf6a2cb9ab8e72deaa2cd716c5c"
+        },
+        {
+          "member": "PySide6/include/PySide6/pyobjectwrapper.h",
+          "source": "PySide6/include/PySide6/pyobjectwrapper.h",
+          "sha256": "5f727c5da9b0e435f85f7d5a3fcbc5cf90da7ab7a17fd48ff3c320109883a836"
+        },
+        {
+          "member": "PySide6/include/PySide6/pyside.h",
+          "source": "PySide6/include/PySide6/pyside.h",
+          "sha256": "d01b36b37492b773096576076e31e2c18e57ad197e00848b3c4a49446f02778a"
+        },
+        {
+          "member": "PySide6/include/PySide6/pyside6_global.h",
+          "source": "PySide6/include/PySide6/pyside6_global.h",
+          "sha256": "172c1d4c4ca1cf53dfa0fa4172992915b1500f9fb76b5ba196954c8ccdb95247"
+        },
+        {
+          "member": "PySide6/include/PySide6/pyside_numpy.h",
+          "source": "PySide6/include/PySide6/pyside_numpy.h",
+          "sha256": "494aab6347d5104bbb3d7722a29d922de2e7eb00c6be2eea4f39b60596c1f2ac"
+        },
+        {
+          "member": "PySide6/include/PySide6/pyside_p.h",
+          "source": "PySide6/include/PySide6/pyside_p.h",
+          "sha256": "9575604f871afb950419227bc19025e0193b395ccd3990c9153c6d6c9e72257a"
+        },
+        {
+          "member": "PySide6/include/PySide6/pysideclassdecorator_p.h",
+          "source": "PySide6/include/PySide6/pysideclassdecorator_p.h",
+          "sha256": "3bc6e7b6dde8570225e3cac219edbdb4646c64c011b6dd970e51e0b92a9e3318"
+        },
+        {
+          "member": "PySide6/include/PySide6/pysideclassinfo.h",
+          "source": "PySide6/include/PySide6/pysideclassinfo.h",
+          "sha256": "64ee9e80875aaf59f528bc65e5c0f844cc84c6f9428b64634d8ccd003b4da2d4"
+        },
+        {
+          "member": "PySide6/include/PySide6/pysideclassinfo_p.h",
+          "source": "PySide6/include/PySide6/pysideclassinfo_p.h",
+          "sha256": "3891e88758b4eb98fe9f26b6bfddfd5e7e8a688d8f48855a8b62bee7e4aa5c4b"
+        },
+        {
+          "member": "PySide6/include/PySide6/pysidecleanup.h",
+          "source": "PySide6/include/PySide6/pysidecleanup.h",
+          "sha256": "2a22eea3043261a03b00e28ee097eae495668437b268fea4a3e601a3aef59c2e"
+        },
+        {
+          "member": "PySide6/include/PySide6/pysideglobals_p.h",
+          "source": "PySide6/include/PySide6/pysideglobals_p.h",
+          "sha256": "f0f850f91b87a2bd0763c558f68f293b07e51c18948fb29fa76902873dc4f0b8"
+        },
+        {
+          "member": "PySide6/include/PySide6/pysideinit.h",
+          "source": "PySide6/include/PySide6/pysideinit.h",
+          "sha256": "252f3a3cb0eb0a602215151e4a17ea0f5ac356e58bcacc83a6215f9bcbb47d58"
+        },
+        {
+          "member": "PySide6/include/PySide6/pysidelogging_p.h",
+          "source": "PySide6/include/PySide6/pysidelogging_p.h",
+          "sha256": "27fe16e18b9c285cd7c4d81e82e517a3a3c4fea39980b453171ac955813b8658"
+        },
+        {
+          "member": "PySide6/include/PySide6/pysidemacros.h",
+          "source": "PySide6/include/PySide6/pysidemacros.h",
+          "sha256": "779c08c0d4848f3cdc0b26a567588fc1989e973571fe3407877e7548e33879c1"
+        },
+        {
+          "member": "PySide6/include/PySide6/pysidemetafunction.h",
+          "source": "PySide6/include/PySide6/pysidemetafunction.h",
+          "sha256": "53577d7fe0d59e5f1c3cbd96b8fd8aafa80426e425b3c167d7689948bd8da2d0"
+        },
+        {
+          "member": "PySide6/include/PySide6/pysidemetafunction_p.h",
+          "source": "PySide6/include/PySide6/pysidemetafunction_p.h",
+          "sha256": "20df313fec928b04160dfe8f472f003ab3193ae81ded05c044dcf2e8482d9b4d"
+        },
+        {
+          "member": "PySide6/include/PySide6/pysidemetatype.h",
+          "source": "PySide6/include/PySide6/pysidemetatype.h",
+          "sha256": "6faa33a84d99585c9f35280daa0099b02c9d0f05051f15f5a85be660cd9baad3"
+        },
+        {
+          "member": "PySide6/include/PySide6/pysideproperty.h",
+          "source": "PySide6/include/PySide6/pysideproperty.h",
+          "sha256": "b89a78da306a5401a6d9c2715e2efb0ff5fcd9a5017e162141bfbd500bfac0ea"
+        },
+        {
+          "member": "PySide6/include/PySide6/pysideproperty_p.h",
+          "source": "PySide6/include/PySide6/pysideproperty_p.h",
+          "sha256": "1385d8366cfd4db4a867635ea52d4c273f64c7e1a541019adbe9812507bb0aa8"
+        },
+        {
+          "member": "PySide6/include/PySide6/pysidepropertybase_p.h",
+          "source": "PySide6/include/PySide6/pysidepropertybase_p.h",
+          "sha256": "3d6cf718f492db51a2cf26da998c7c1963dd74cfc2596e9671de230babc96558"
+        },
+        {
+          "member": "PySide6/include/PySide6/pysideqapp.h",
+          "source": "PySide6/include/PySide6/pysideqapp.h",
+          "sha256": "db8e2a930211f544cf054962cf8401a33be85fe3124184c6e415a2fed24b41c9"
+        },
+        {
+          "member": "PySide6/include/PySide6/pysideqenum.h",
+          "source": "PySide6/include/PySide6/pysideqenum.h",
+          "sha256": "06e737d62a89ad506f4101a51a62529f3b06c952dc1aa8c57811d92f44f5c900"
+        },
+        {
+          "member": "PySide6/include/PySide6/pysideqhash.h",
+          "source": "PySide6/include/PySide6/pysideqhash.h",
+          "sha256": "db3da7fb0aabe173523f74e4fb40958dc0325dc0950ac26951873bc241c94cce"
+        },
+        {
+          "member": "PySide6/include/PySide6/pysideqobject.h",
+          "source": "PySide6/include/PySide6/pysideqobject.h",
+          "sha256": "a3ff5709a5b6844492efd60e511b379da3920859cc3f1bde61e304e6b02a6207"
+        },
+        {
+          "member": "PySide6/include/PySide6/pysideqobject_p.h",
+          "source": "PySide6/include/PySide6/pysideqobject_p.h",
+          "sha256": "e04a707315bf832b05323754c283a57788f115eeccca49dd527df81e33b03e1c"
+        },
+        {
+          "member": "PySide6/include/PySide6/pysideqslotobject_p.h",
+          "source": "PySide6/include/PySide6/pysideqslotobject_p.h",
+          "sha256": "4b82136988f216fe91d7d6223f52bdb004d26c73d40ef8aaa198e9c1fb71f2b0"
+        },
+        {
+          "member": "PySide6/include/PySide6/pysidesignal.h",
+          "source": "PySide6/include/PySide6/pysidesignal.h",
+          "sha256": "0527c6c9aa4b8bbc8dda7933f18c5d644aa2545a2361a646ceb763f46b9005f6"
+        },
+        {
+          "member": "PySide6/include/PySide6/pysidesignal_p.h",
+          "source": "PySide6/include/PySide6/pysidesignal_p.h",
+          "sha256": "50f862d42e4c73b97a067a65b9bb4d2cfc7e45bf86b3b5412d3cc04626596864"
+        },
+        {
+          "member": "PySide6/include/PySide6/pysideslot_p.h",
+          "source": "PySide6/include/PySide6/pysideslot_p.h",
+          "sha256": "73df2c2dbab9d64c92737278126f4272f267d95c80cc5f4db1526a12b127fbc6"
+        },
+        {
+          "member": "PySide6/include/PySide6/pysidestaticstrings.h",
+          "source": "PySide6/include/PySide6/pysidestaticstrings.h",
+          "sha256": "ab52a85e4d02fedcb94d220895779440f517ce56f4b5fddb1bf06fbb092c2c81"
+        },
+        {
+          "member": "PySide6/include/PySide6/pysideutils.h",
+          "source": "PySide6/include/PySide6/pysideutils.h",
+          "sha256": "448fcdceb0239c51274197a8a12ab5e8d308667791161d0387390d793d09515e"
+        },
+        {
+          "member": "PySide6/include/PySide6/pysidevariantutils.h",
+          "source": "PySide6/include/PySide6/pysidevariantutils.h",
+          "sha256": "acf7aba44e2f61961cad68d446c659ecbc3db6293aac6729880c98f7436831a4"
+        },
+        {
+          "member": "PySide6/include/PySide6/pysideweakref.h",
+          "source": "PySide6/include/PySide6/pysideweakref.h",
+          "sha256": "17d6c9495717d1f7fbb02c6f0d29c31992b3785c95a28bf629ff8a05702ce83a"
+        },
+        {
+          "member": "PySide6/include/PySide6/qobjectconnect.h",
+          "source": "PySide6/include/PySide6/qobjectconnect.h",
+          "sha256": "75339f64eba30ffc09c34e8fa4c6cbec79628d409441f942c472a960bb9c427c"
+        },
+        {
+          "member": "PySide6/include/PySide6/signalmanager.h",
+          "source": "PySide6/include/PySide6/signalmanager.h",
+          "sha256": "aea959d4b8984e7bf0df5581eac06b66b4b9f12401c4e371b49bb3458931e0ba"
+        },
+        {
+          "member": "PySide6/include/PySide6/signalmanager_p.h",
+          "source": "PySide6/include/PySide6/signalmanager_p.h",
+          "sha256": "6cac19c375bae75d90a054a1ad726ed7961735f81821e54bf2041005b28599b5"
+        },
+        {
+          "member": "PySide6/lib/cmake/PySide6/PySide6Config.abi3.cmake",
+          "source": "PySide6/lib/cmake/PySide6/PySide6Config.abi3.cmake",
+          "sha256": "1581ad390212a0a636c4956b714134d14cccbbdccad750667d0fa35f44f98410"
+        },
+        {
+          "member": "PySide6/lib/cmake/PySide6/PySide6Config.cmake",
+          "source": "PySide6/lib/cmake/PySide6/PySide6Config.cmake",
+          "sha256": "2660aae9fdda2b73bfc3c281a1c2ca24a6bdaa8bc17242fecc6f804fc4d7bfa7"
+        },
+        {
+          "member": "PySide6/lib/cmake/PySide6/PySide6ConfigVersion.cmake",
+          "source": "PySide6/lib/cmake/PySide6/PySide6ConfigVersion.cmake",
+          "sha256": "303c0e010d870df691edefc11f383700d536d5d9cb9f960b9add093b33e690cf"
+        },
+        {
+          "member": "PySide6/lib/cmake/PySide6/PySide6Targets-release.cmake",
+          "source": "PySide6/lib/cmake/PySide6/PySide6Targets-release.cmake",
+          "sha256": "63045d46bd8b2a980d558a8a83f3c3a136764cb1b55fccdb6cbde1a1cb4478f5"
+        },
+        {
+          "member": "PySide6/lib/cmake/PySide6/PySide6Targets.cmake",
+          "source": "PySide6/lib/cmake/PySide6/PySide6Targets.cmake",
+          "sha256": "50f1dfd86d3b8e17b0e71b8db5a4c728b8de938ed1cf655f88a8dca31f9c2919"
+        },
+        {
+          "member": "PySide6/libpyside6.abi3.so.6.12",
+          "source": "PySide6/libpyside6.abi3.so.6.12",
+          "sha256": "9ac2f49672f0fc8c94a274659c1760f70c3c2df9a14f61cc4029c171d9dd0372",
+          "native": true,
+          "before_relocation_sha256": "807cf289bb6b7fb82fd2313e28b59498fdd6e508cb3c4acc297f75f26ce00fb2",
+          "relocated": true
+        },
+        {
+          "member": "PySide6/py.typed",
+          "source": "PySide6/py.typed",
+          "sha256": "154d2b3a1255946ec4511a7952fdb07cfbe01a6ee9c7c6eae5dfabd460c833c1"
+        },
+        {
+          "member": "PySide6/scripts/__init__.py",
+          "source": "PySide6/scripts/__init__.py",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "member": "PySide6/scripts/android_deploy.py",
+          "source": "PySide6/scripts/android_deploy.py",
+          "sha256": "8716ee36559a76c67f73230e5f485b01c220cacae50c04fdffca7e5d5f554896"
+        },
+        {
+          "member": "PySide6/scripts/deploy.py",
+          "source": "PySide6/scripts/deploy.py",
+          "sha256": "e3ce958dbe901c98da9ca6bca28a1c5ec37f1b21fc84d5ed41d3d8775d2309dc"
+        },
+        {
+          "member": "PySide6/scripts/deploy_lib/__init__.py",
+          "source": "PySide6/scripts/deploy_lib/__init__.py",
+          "sha256": "ae48a42f44360cd798119a33009bc9b16f72bf45f203d16aa380c556bb5f5459"
+        },
+        {
+          "member": "PySide6/scripts/deploy_lib/android/__init__.py",
+          "source": "PySide6/scripts/deploy_lib/android/__init__.py",
+          "sha256": "61deb714ba2c43386b46ccf73b3b0d281a604f7820322db2471ae1c7d8e706a7"
+        },
+        {
+          "member": "PySide6/scripts/deploy_lib/android/android_config.py",
+          "source": "PySide6/scripts/deploy_lib/android/android_config.py",
+          "sha256": "6158d995f88dc420c01f7fbbef2f2d1117607f150d9d00ca9e85e7d3073105d6"
+        },
+        {
+          "member": "PySide6/scripts/deploy_lib/android/android_helper.py",
+          "source": "PySide6/scripts/deploy_lib/android/android_helper.py",
+          "sha256": "82dd025050be8b49e28332674db89264af534073cc83a565781d02abc77af48c"
+        },
+        {
+          "member": "PySide6/scripts/deploy_lib/android/android_utilities.py",
+          "source": "PySide6/scripts/deploy_lib/android/android_utilities.py",
+          "sha256": "207710ea381de32604b47ac6bf6ac9da43852e1187b6e86cf1a493ceb392380a"
+        },
+        {
+          "member": "PySide6/scripts/deploy_lib/android/buildozer.py",
+          "source": "PySide6/scripts/deploy_lib/android/buildozer.py",
+          "sha256": "b61f01f18a1310a2a8b18d4799627f528b484e5cde9c607e0794ceb5498f3d16"
+        },
+        {
+          "member": "PySide6/scripts/deploy_lib/android/recipes/PySide6/__init__.tmpl.py",
+          "source": "PySide6/scripts/deploy_lib/android/recipes/PySide6/__init__.tmpl.py",
+          "sha256": "936b79f2d1b04e46997800769c6bd331972cd7aea9410b93a336928c9ff420fd"
+        },
+        {
+          "member": "PySide6/scripts/deploy_lib/android/recipes/shiboken6/__init__.tmpl.py",
+          "source": "PySide6/scripts/deploy_lib/android/recipes/shiboken6/__init__.tmpl.py",
+          "sha256": "025b44d57cfbe91afa5cc5d52d9db4e6f22f2b1f49eab9f9770e9264aa979dff"
+        },
+        {
+          "member": "PySide6/scripts/deploy_lib/commands.py",
+          "source": "PySide6/scripts/deploy_lib/commands.py",
+          "sha256": "301a65ff08f638f51ac35fd2042e198c6d43d0b9ea821bd9dee21fc4bac9e401"
+        },
+        {
+          "member": "PySide6/scripts/deploy_lib/config.py",
+          "source": "PySide6/scripts/deploy_lib/config.py",
+          "sha256": "def325fac5a56e5ac05b07d639d556d5ad6121f8e3297a14ae720dbe1bb9e8f2"
+        },
+        {
+          "member": "PySide6/scripts/deploy_lib/default.spec",
+          "source": "PySide6/scripts/deploy_lib/default.spec",
+          "sha256": "4cb99987fa13991340b5b959a8b1c92f20bbbf348699cec66464036d9fb1e0e9"
+        },
+        {
+          "member": "PySide6/scripts/deploy_lib/dependency_util.py",
+          "source": "PySide6/scripts/deploy_lib/dependency_util.py",
+          "sha256": "02516ba90b522c6c617f5fb554650cc581ea21d031c8c4e5158892b1e0272a44"
+        },
+        {
+          "member": "PySide6/scripts/deploy_lib/deploy_util.py",
+          "source": "PySide6/scripts/deploy_lib/deploy_util.py",
+          "sha256": "b07ddcbddc6850aceb3ccbe41d9649c14af830d6cbf4be983e1498a9858492dd"
+        },
+        {
+          "member": "PySide6/scripts/deploy_lib/nuitka_helper.py",
+          "source": "PySide6/scripts/deploy_lib/nuitka_helper.py",
+          "sha256": "c8ccda665fbf8643309f26a59ac382649cdb6a8ba2f2600f6fe162b3e1d2d89f"
+        },
+        {
+          "member": "PySide6/scripts/deploy_lib/pyproject_toml_deploy.py",
+          "source": "PySide6/scripts/deploy_lib/pyproject_toml_deploy.py",
+          "sha256": "2be67d9b7240ef3f95123f517dacb72dc654b97fd103b0bfba79b95df2aa8dd1"
+        },
+        {
+          "member": "PySide6/scripts/deploy_lib/pyside_icon.icns",
+          "source": "PySide6/scripts/deploy_lib/pyside_icon.icns",
+          "sha256": "f78a57af88cbfea1b3b4f10836ffdbad882da0ce7c88fbb0d0bb6704047dd616"
+        },
+        {
+          "member": "PySide6/scripts/deploy_lib/pyside_icon.ico",
+          "source": "PySide6/scripts/deploy_lib/pyside_icon.ico",
+          "sha256": "13086f8c95852e903b5edaf7619a96b64279c152443a2a2f547270cd085aa18b"
+        },
+        {
+          "member": "PySide6/scripts/deploy_lib/pyside_icon.jpg",
+          "source": "PySide6/scripts/deploy_lib/pyside_icon.jpg",
+          "sha256": "22450b7fb937f873239488951953480656405f362a881b57eaf33737bd1385a0"
+        },
+        {
+          "member": "PySide6/scripts/deploy_lib/python_helper.py",
+          "source": "PySide6/scripts/deploy_lib/python_helper.py",
+          "sha256": "83f89a45f6acdafb4d728732ea8b0d615ab0f2c475746c6005b86ac2874f75e0"
+        },
+        {
+          "member": "PySide6/scripts/metaobjectdump.py",
+          "source": "PySide6/scripts/metaobjectdump.py",
+          "sha256": "dd006615a818fcfe37e0fa498934ed43f5065fda2ef289c24fae477ee3a34eae"
+        },
+        {
+          "member": "PySide6/scripts/project.py",
+          "source": "PySide6/scripts/project.py",
+          "sha256": "43e79db0b7ff5e53824477f889edbd7bd53e099b9e2fcce554d3252f6cd1050f"
+        },
+        {
+          "member": "PySide6/scripts/project_lib/__init__.py",
+          "source": "PySide6/scripts/project_lib/__init__.py",
+          "sha256": "b3217e88de52e5a6f333f47a67597b9d2fb9eba1e87bb47e2551480abffedd4a"
+        },
+        {
+          "member": "PySide6/scripts/project_lib/commands.py",
+          "source": "PySide6/scripts/project_lib/commands.py",
+          "sha256": "2b900542cbb503a4af64b826e290e060478640b0cc128315f9818ba5b9c3b282"
+        },
+        {
+          "member": "PySide6/scripts/project_lib/design_studio_project.py",
+          "source": "PySide6/scripts/project_lib/design_studio_project.py",
+          "sha256": "2445699dca68910ccd5d04d86743625af9f6993ae0c4ec99ab009b869f5cff6e"
+        },
+        {
+          "member": "PySide6/scripts/project_lib/newproject.py",
+          "source": "PySide6/scripts/project_lib/newproject.py",
+          "sha256": "1ed4ca0437ba1d7a40a895927cf69cd56958bb81c07d9fbd703381cca70602cd"
+        },
+        {
+          "member": "PySide6/scripts/project_lib/project_data.py",
+          "source": "PySide6/scripts/project_lib/project_data.py",
+          "sha256": "b4795a083c4afaff872a73e137b3e5e0ec1d539b4d896dc39af465dd0b024e94"
+        },
+        {
+          "member": "PySide6/scripts/project_lib/pyproject_json.py",
+          "source": "PySide6/scripts/project_lib/pyproject_json.py",
+          "sha256": "04a27eeac68e573e8e65bab16daaa61996033abad30be49a02f714fbe0b09aeb"
+        },
+        {
+          "member": "PySide6/scripts/project_lib/pyproject_parse_result.py",
+          "source": "PySide6/scripts/project_lib/pyproject_parse_result.py",
+          "sha256": "ecdd94c0a305052c52932807416153855d8e02fec3f177be0de6c3fa21ec31ed"
+        },
+        {
+          "member": "PySide6/scripts/project_lib/pyproject_toml.py",
+          "source": "PySide6/scripts/project_lib/pyproject_toml.py",
+          "sha256": "58c40c3d37c639b282f3b804f113040ee0c1ee5d42accb2c4bd047c985c79d60"
+        },
+        {
+          "member": "PySide6/scripts/project_lib/qrc.py",
+          "source": "PySide6/scripts/project_lib/qrc.py",
+          "sha256": "131f0c721b697ebfcccdbe7c310359374f5a8ce1f3a44ad737a682d06e7815b4"
+        },
+        {
+          "member": "PySide6/scripts/project_lib/utils.py",
+          "source": "PySide6/scripts/project_lib/utils.py",
+          "sha256": "50fafa833a6e2b66d6fa04bd091031ba214955c7889bf2ffd33f1a8ab270f0ff"
+        },
+        {
+          "member": "PySide6/scripts/pyside_tool.py",
+          "source": "PySide6/scripts/pyside_tool.py",
+          "sha256": "7ab4562ad575d485cd976741679d0f793b7371c56e32253cd2e96dfbae357b2c"
+        },
+        {
+          "member": "PySide6/scripts/qml.py",
+          "source": "PySide6/scripts/qml.py",
+          "sha256": "09c84bb998b00cf6e66cac6284c35f22272babee4009d5e0bcaa70e647bb32d3"
+        },
+        {
+          "member": "PySide6/scripts/qtpy2cpp.py",
+          "source": "PySide6/scripts/qtpy2cpp.py",
+          "sha256": "58fba7072824f2c2ef4ff5c32fc29d115e53e6f31d421d21b78faf8f3e010af3"
+        },
+        {
+          "member": "PySide6/scripts/qtpy2cpp_lib/astdump.py",
+          "source": "PySide6/scripts/qtpy2cpp_lib/astdump.py",
+          "sha256": "32d04741f2128c8cc1cdcb7b9264fcdc87fbf833d1343c25b2ec1a60fcd18b05"
+        },
+        {
+          "member": "PySide6/scripts/qtpy2cpp_lib/formatter.py",
+          "source": "PySide6/scripts/qtpy2cpp_lib/formatter.py",
+          "sha256": "a1f8ed4696de83cf007d9fae3c88f4fb32e851db26b5b21f09b9cf78d924a043"
+        },
+        {
+          "member": "PySide6/scripts/qtpy2cpp_lib/nodedump.py",
+          "source": "PySide6/scripts/qtpy2cpp_lib/nodedump.py",
+          "sha256": "4b14a75468af3279b6b83d6dc3220937a42f43ff8ae1057c693b1d68f7af5a9c"
+        },
+        {
+          "member": "PySide6/scripts/qtpy2cpp_lib/qt.py",
+          "source": "PySide6/scripts/qtpy2cpp_lib/qt.py",
+          "sha256": "071df9c1c83cf12768b4bc2a7840c60b1edd91c15fa9cd9e724e64b4f7fae549"
+        },
+        {
+          "member": "PySide6/scripts/qtpy2cpp_lib/tokenizer.py",
+          "source": "PySide6/scripts/qtpy2cpp_lib/tokenizer.py",
+          "sha256": "97363eb1be9eeee7d7aa8a333e281e54ebbd5d4a48bcce928baa6e6c2b7ba592"
+        },
+        {
+          "member": "PySide6/scripts/qtpy2cpp_lib/visitor.py",
+          "source": "PySide6/scripts/qtpy2cpp_lib/visitor.py",
+          "sha256": "f77a14c7b45386121aff37090fef5fb6ac1f1b29a802a5e4bdadb4bf3de0730e"
+        },
+        {
+          "member": "PySide6/scripts/requirements-android.txt",
+          "source": "PySide6/scripts/requirements-android.txt",
+          "sha256": "4595e166537fdcaca599f1fdea1518188bb9e39c91ba5ff34fcc72d1e84b2e8a"
+        },
+        {
+          "member": "PySide6/support/__init__.py",
+          "source": "PySide6/support/__init__.py",
+          "sha256": "544cd819bb55076c22ad952087d0dcef414dc64f6f09a4ac65ad1ee0216b5695"
+        },
+        {
+          "member": "PySide6/support/auto_property_helper.py",
+          "source": "PySide6/support/auto_property_helper.py",
+          "sha256": "ebed62b911b3f5bdad0e78cdc5a1ad54861974787fd831d648e2cc3f282603af"
+        },
+        {
+          "member": "PySide6/support/deprecated.py",
+          "source": "PySide6/support/deprecated.py",
+          "sha256": "95431e9fc9d51387f56f2b1a75f38be22794a4addcd7c416f09b515ac0c35506"
+        },
+        {
+          "member": "PySide6/support/generate_pyi.py",
+          "source": "PySide6/support/generate_pyi.py",
+          "sha256": "46a9f593f19fbe389cf3e3863f24665641f89b7dca2a6ef719285787ec3c945c"
+        },
+        {
+          "member": "PySide6/support/qml_component_helper.py",
+          "source": "PySide6/support/qml_component_helper.py",
+          "sha256": "2943a3133e9215e0052d1edd0b776585677b4c0b2686275a7d238c2c0777b559"
+        },
+        {
+          "member": "PySide6/typesystems/common.xml",
+          "source": "PySide6/typesystems/common.xml",
+          "sha256": "81b8a36caf7305c9ff818e4d9db0817d9f8db74fb709e4338430c8ac66f71116"
+        },
+        {
+          "member": "PySide6/typesystems/core_common.xml",
+          "source": "PySide6/typesystems/core_common.xml",
+          "sha256": "97d276911c8bca50aeb7bd75e5bb3641d3324ddf229cd8011aa79b9b04dec4bb"
+        },
+        {
+          "member": "PySide6/typesystems/datavisualization_common.xml",
+          "source": "PySide6/typesystems/datavisualization_common.xml",
+          "sha256": "46d28faf91b8c6921d6dd07e4e6c4d282b23cc070ee2e1833e9e879a5ccede1b"
+        },
+        {
+          "member": "PySide6/typesystems/glue/qeasingcurve_glue.cpp",
+          "source": "PySide6/typesystems/glue/qeasingcurve_glue.cpp",
+          "sha256": "05a63d0167881c811a33e8357644f9f0a2795164d840008380fc4191f1c66c07"
+        },
+        {
+          "member": "PySide6/typesystems/glue/qeasingcurve_glue.h",
+          "source": "PySide6/typesystems/glue/qeasingcurve_glue.h",
+          "sha256": "de6eeb26196448970c606135780e702350f66b995dd41286790d1e124eb60461"
+        },
+        {
+          "member": "PySide6/typesystems/gui_common.xml",
+          "source": "PySide6/typesystems/gui_common.xml",
+          "sha256": "b88debb2fba25a02bb5d40eedddc93976b130cd0cef09615158069547d6e9003"
+        },
+        {
+          "member": "PySide6/typesystems/typesystem_core.xml",
+          "source": "PySide6/typesystems/typesystem_core.xml",
+          "sha256": "e66c349dccbc855516ed97e805f721d18d64529006e0aaf9dd187a9903c56528"
+        },
+        {
+          "member": "PySide6/typesystems/typesystem_core_common.xml",
+          "source": "PySide6/typesystems/typesystem_core_common.xml",
+          "sha256": "1679bedbeada27c879fe4526c50ab05fd556621e51c093dd25326fd52fc2059e"
+        },
+        {
+          "member": "PySide6/typesystems/typesystem_core_win.xml",
+          "source": "PySide6/typesystems/typesystem_core_win.xml",
+          "sha256": "9bb22aeb33e2d359f1a0f9d82e8688247581e9d8061f05cd3ed4027c627960f6"
+        },
+        {
+          "member": "PySide6/typesystems/typesystem_dbus.xml",
+          "source": "PySide6/typesystems/typesystem_dbus.xml",
+          "sha256": "10dd2c446852336730182c44a0f2cebac4d3c6e60fac4c56c38af915646dc9f8"
+        },
+        {
+          "member": "PySide6/typesystems/typesystem_gui.xml",
+          "source": "PySide6/typesystems/typesystem_gui.xml",
+          "sha256": "7db197bc5c5db4a7795c2ebc57cb8cc5e50a07cc3447834f54f1defcaf7b250f"
+        },
+        {
+          "member": "PySide6/typesystems/typesystem_gui_common.xml",
+          "source": "PySide6/typesystems/typesystem_gui_common.xml",
+          "sha256": "ffcdc4ab77382cbb4090faa613dfb05fd51220cf7013f8a45d641ffd7407e620"
+        },
+        {
+          "member": "PySide6/typesystems/typesystem_gui_mac.xml",
+          "source": "PySide6/typesystems/typesystem_gui_mac.xml",
+          "sha256": "54afe14bf453f24e56d1973ed0b1c7e99a0acbc8064a8a03ff82957c13d0c554"
+        },
+        {
+          "member": "PySide6/typesystems/typesystem_gui_nativeinterface.xml",
+          "source": "PySide6/typesystems/typesystem_gui_nativeinterface.xml",
+          "sha256": "5cec0d2d2b1afcd6167b722732762369b94a453c55697da592f45f5599cc7994"
+        },
+        {
+          "member": "PySide6/typesystems/typesystem_gui_rhi.xml",
+          "source": "PySide6/typesystems/typesystem_gui_rhi.xml",
+          "sha256": "1460b4b7c3336b4ae07417dd46271728be9070e63eb9f800e8e47909cd29d0cb"
+        },
+        {
+          "member": "PySide6/typesystems/typesystem_gui_wayland.xml",
+          "source": "PySide6/typesystems/typesystem_gui_wayland.xml",
+          "sha256": "04a913acb953ea59f82a3f7af580999757c6f5206bc3638975c3446055639766"
+        },
+        {
+          "member": "PySide6/typesystems/typesystem_gui_win.xml",
+          "source": "PySide6/typesystems/typesystem_gui_win.xml",
+          "sha256": "07c82d17d59dc4b6a71ffa77e178390e8b94a7a5efca7f0265a2535d9c17b968"
+        },
+        {
+          "member": "PySide6/typesystems/typesystem_gui_x11.xml",
+          "source": "PySide6/typesystems/typesystem_gui_x11.xml",
+          "sha256": "2bb7a235942352d354383db70ed567663f7d6a415eb4a657d8f3a09c28da47dd"
+        },
+        {
+          "member": "PySide6/typesystems/typesystem_network.xml",
+          "source": "PySide6/typesystems/typesystem_network.xml",
+          "sha256": "a13b531b65141f5de4670eba2157d9bc381e722b8bce20e1f8c3f4e68a236792"
+        },
+        {
+          "member": "PySide6/typesystems/typesystem_printsupport.xml",
+          "source": "PySide6/typesystems/typesystem_printsupport.xml",
+          "sha256": "ef394a26c772ea0c970557a3bc11ecaed5621c43287fea623df9438eb0066cf0"
+        },
+        {
+          "member": "PySide6/typesystems/typesystem_printsupport_common.xml",
+          "source": "PySide6/typesystems/typesystem_printsupport_common.xml",
+          "sha256": "90be070dec6095f39589de006da775e5073b16b6a2610c5ac101bfa699e25c21"
+        },
+        {
+          "member": "PySide6/typesystems/typesystem_svg.xml",
+          "source": "PySide6/typesystems/typesystem_svg.xml",
+          "sha256": "13fafc8e21cdfc9b9b6054e41f8d966e1259982c5213020f484df5c36c64faa3"
+        },
+        {
+          "member": "PySide6/typesystems/typesystem_svgwidgets.xml",
+          "source": "PySide6/typesystems/typesystem_svgwidgets.xml",
+          "sha256": "c7cb53a031a36673db5170f51afadfcbc350297fdc597044f0d68fd6e84a3cb7"
+        },
+        {
+          "member": "PySide6/typesystems/typesystem_test.xml",
+          "source": "PySide6/typesystems/typesystem_test.xml",
+          "sha256": "221000d01c66752e7aa3efafec51aec07b2a0cfa3601364625ad6e749c963173"
+        },
+        {
+          "member": "PySide6/typesystems/typesystem_widgets.xml",
+          "source": "PySide6/typesystems/typesystem_widgets.xml",
+          "sha256": "816b8e11b8ffaca33a2861ad7735b444d3c6bb4e7cc1c3dd938686ec4921bc0f"
+        },
+        {
+          "member": "PySide6/typesystems/typesystem_widgets_common.xml",
+          "source": "PySide6/typesystems/typesystem_widgets_common.xml",
+          "sha256": "6baacf0a90b86f5bde622124e5dcd22d4a9998269545369d504765b4aa0ca12a"
+        },
+        {
+          "member": "PySide6/typesystems/typesystem_xml.xml",
+          "source": "PySide6/typesystems/typesystem_xml.xml",
+          "sha256": "06ad088918089f613f1f8c7cc6a98ae59a8f1ee78fa33d21bf68c24a45baa789"
+        },
+        {
+          "member": "PySide6/typesystems/widgets_common.xml",
+          "source": "PySide6/typesystems/widgets_common.xml",
+          "sha256": "d7e3f35beeec12a13101fd07b6f1849a1e77a06fbeffb8a4d0210617ffaa3748"
+        }
+      ]
+    },
+    {
+      "name": "pyside6-qt6",
+      "metadata_name": "PySide6-Qt6",
+      "version": "6.12.0+vispynogl.1",
+      "tag": "py3-none-linux_x86_64",
+      "requires": [],
+      "files": [
+        {
+          "member": "PySide6/Qt/lib/libQt6Concurrent.so.6",
+          "source": "PySide6/Qt/lib/libQt6Concurrent.so.6",
+          "sha256": "7d7aff926eb647509312eb30f298f6b387eb26167613ce3f00f10f3acdded528",
+          "native": true,
+          "before_relocation_sha256": "7d7aff926eb647509312eb30f298f6b387eb26167613ce3f00f10f3acdded528",
+          "relocated": false
+        },
+        {
+          "member": "PySide6/Qt/lib/libQt6Core.so.6",
+          "source": "PySide6/Qt/lib/libQt6Core.so.6",
+          "sha256": "eaa0a8e358e9b3c79fa261b7a69642b6829bb48dc4dba9e604f1069a81b2ebb0",
+          "native": true,
+          "before_relocation_sha256": "eaa0a8e358e9b3c79fa261b7a69642b6829bb48dc4dba9e604f1069a81b2ebb0",
+          "relocated": false
+        },
+        {
+          "member": "PySide6/Qt/lib/libQt6DBus.so.6",
+          "source": "PySide6/Qt/lib/libQt6DBus.so.6",
+          "sha256": "f871fe6368f901ee426fe56b94e799007ef0043c9f15c0f6e671794f221802ae",
+          "native": true,
+          "before_relocation_sha256": "f871fe6368f901ee426fe56b94e799007ef0043c9f15c0f6e671794f221802ae",
+          "relocated": false
+        },
+        {
+          "member": "PySide6/Qt/lib/libQt6Gui.so.6",
+          "source": "PySide6/Qt/lib/libQt6Gui.so.6",
+          "sha256": "1e08f4fe47693b22951c0ae55839d018a17e5e6df1a0734f6c68e1e408aa7c03",
+          "native": true,
+          "before_relocation_sha256": "1e08f4fe47693b22951c0ae55839d018a17e5e6df1a0734f6c68e1e408aa7c03",
+          "relocated": false
+        },
+        {
+          "member": "PySide6/Qt/lib/libQt6Network.so.6",
+          "source": "PySide6/Qt/lib/libQt6Network.so.6",
+          "sha256": "15429ec10e38194b90c795c0650469435cdb84db13cb521638dba52482221fea",
+          "native": true,
+          "before_relocation_sha256": "15429ec10e38194b90c795c0650469435cdb84db13cb521638dba52482221fea",
+          "relocated": false
+        },
+        {
+          "member": "PySide6/Qt/lib/libQt6PrintSupport.so.6",
+          "source": "PySide6/Qt/lib/libQt6PrintSupport.so.6",
+          "sha256": "2e3776fe66d993131a9ded25ccbc5815fc4b2fe725e1329a080c209ebde64ab7",
+          "native": true,
+          "before_relocation_sha256": "2e3776fe66d993131a9ded25ccbc5815fc4b2fe725e1329a080c209ebde64ab7",
+          "relocated": false
+        },
+        {
+          "member": "PySide6/Qt/lib/libQt6Sql.so.6",
+          "source": "PySide6/Qt/lib/libQt6Sql.so.6",
+          "sha256": "150934b49d9391ab71547b73e5ecc7120998f95d246acaecfdac4fa7909787ed",
+          "native": true,
+          "before_relocation_sha256": "150934b49d9391ab71547b73e5ecc7120998f95d246acaecfdac4fa7909787ed",
+          "relocated": false
+        },
+        {
+          "member": "PySide6/Qt/lib/libQt6Svg.so.6",
+          "source": "PySide6/Qt/lib/libQt6Svg.so.6",
+          "sha256": "73b1d390627af553ecb726f319cdc3f78d66153d4218e94c358fbc96d38c8f46",
+          "native": true,
+          "before_relocation_sha256": "73b1d390627af553ecb726f319cdc3f78d66153d4218e94c358fbc96d38c8f46",
+          "relocated": false
+        },
+        {
+          "member": "PySide6/Qt/lib/libQt6SvgWidgets.so.6",
+          "source": "PySide6/Qt/lib/libQt6SvgWidgets.so.6",
+          "sha256": "5767b34b0996bdae22422d1cce7cf6a9b9d4826ef295d9503bd592e13a6bba74",
+          "native": true,
+          "before_relocation_sha256": "5767b34b0996bdae22422d1cce7cf6a9b9d4826ef295d9503bd592e13a6bba74",
+          "relocated": false
+        },
+        {
+          "member": "PySide6/Qt/lib/libQt6Test.so.6",
+          "source": "PySide6/Qt/lib/libQt6Test.so.6",
+          "sha256": "411c4acb283052668c3042443ed02d5462238ade5a47743f7e467ee00537ce27",
+          "native": true,
+          "before_relocation_sha256": "411c4acb283052668c3042443ed02d5462238ade5a47743f7e467ee00537ce27",
+          "relocated": false
+        },
+        {
+          "member": "PySide6/Qt/lib/libQt6Widgets.so.6",
+          "source": "PySide6/Qt/lib/libQt6Widgets.so.6",
+          "sha256": "90cbd759def9368ee2f5e7cc080034f3d55f1964e360b2ea96a9240dda91c2ba",
+          "native": true,
+          "before_relocation_sha256": "90cbd759def9368ee2f5e7cc080034f3d55f1964e360b2ea96a9240dda91c2ba",
+          "relocated": false
+        },
+        {
+          "member": "PySide6/Qt/lib/libQt6XcbQpa.so.6",
+          "source": "PySide6/Qt/lib/libQt6XcbQpa.so.6",
+          "sha256": "c22b8e248318cb0478a2f3c7638bbcb89d5aba47349e4664d31a229e26f89398",
+          "native": true,
+          "before_relocation_sha256": "c22b8e248318cb0478a2f3c7638bbcb89d5aba47349e4664d31a229e26f89398",
+          "relocated": false
+        },
+        {
+          "member": "PySide6/Qt/lib/libQt6Xml.so.6",
+          "source": "PySide6/Qt/lib/libQt6Xml.so.6",
+          "sha256": "67a8212553a4cfa5b193b5dc9cf2a83f933985bae702f1dc5d585ffc184d8e6f",
+          "native": true,
+          "before_relocation_sha256": "67a8212553a4cfa5b193b5dc9cf2a83f933985bae702f1dc5d585ffc184d8e6f",
+          "relocated": false
+        },
+        {
+          "member": "PySide6/Qt/metatypes/qt6concurrent_metatypes.json",
+          "source": "PySide6/Qt/metatypes/qt6concurrent_metatypes.json",
+          "sha256": "3fbbd4c6d76130399b0c79cdf41758669224a91e05b7b216953f0c9728750865"
+        },
+        {
+          "member": "PySide6/Qt/metatypes/qt6core_metatypes.json",
+          "source": "PySide6/Qt/metatypes/qt6core_metatypes.json",
+          "sha256": "37650b31ec85b911dccdd139738234870837621132feeab01d5f9b2b02cb9eee"
+        },
+        {
+          "member": "PySide6/Qt/metatypes/qt6dbus_metatypes.json",
+          "source": "PySide6/Qt/metatypes/qt6dbus_metatypes.json",
+          "sha256": "d255bb89f0cea3b08c852c55985a172136599370b1d5224169787c0627b12076"
+        },
+        {
+          "member": "PySide6/Qt/metatypes/qt6devicediscoverysupportprivate_metatypes.json",
+          "source": "PySide6/Qt/metatypes/qt6devicediscoverysupportprivate_metatypes.json",
+          "sha256": "e448abe9319bc2bfc9152ab19df9d27db4ca75f839365dd575d63dcba4de705a"
+        },
+        {
+          "member": "PySide6/Qt/metatypes/qt6fbsupportprivate_metatypes.json",
+          "source": "PySide6/Qt/metatypes/qt6fbsupportprivate_metatypes.json",
+          "sha256": "ada32857be38a80dddd210997a5ed97e2bf61de3c596fcfb3ca492f8bbee362a"
+        },
+        {
+          "member": "PySide6/Qt/metatypes/qt6gui_metatypes.json",
+          "source": "PySide6/Qt/metatypes/qt6gui_metatypes.json",
+          "sha256": "397c9e4df5ffe8ffd98b63e003f95b34b1f89e24db1a7f691a86d7f630d46dc3"
+        },
+        {
+          "member": "PySide6/Qt/metatypes/qt6inputsupportprivate_metatypes.json",
+          "source": "PySide6/Qt/metatypes/qt6inputsupportprivate_metatypes.json",
+          "sha256": "0c2578cfa7de20d13f16b58e7c49b6809be8f459072444cf8af42fa026c7b9f5"
+        },
+        {
+          "member": "PySide6/Qt/metatypes/qt6network_metatypes.json",
+          "source": "PySide6/Qt/metatypes/qt6network_metatypes.json",
+          "sha256": "1fb76d212ae605d9e822f978ebe7338960e991e724210d1c1aa937366c54e048"
+        },
+        {
+          "member": "PySide6/Qt/metatypes/qt6printsupport_metatypes.json",
+          "source": "PySide6/Qt/metatypes/qt6printsupport_metatypes.json",
+          "sha256": "e10dd73251c278a08b0217321cb21c496b7773b084571231b05f56601371fee9"
+        },
+        {
+          "member": "PySide6/Qt/metatypes/qt6sql_metatypes.json",
+          "source": "PySide6/Qt/metatypes/qt6sql_metatypes.json",
+          "sha256": "f5c43f655db35c0239dc315e7f35c42460fde6077b854d8fe92587270a340644"
+        },
+        {
+          "member": "PySide6/Qt/metatypes/qt6svg_metatypes.json",
+          "source": "PySide6/Qt/metatypes/qt6svg_metatypes.json",
+          "sha256": "059835d4829da65a69a4aa59bd8e16249d15eec49f09008925c338d8adab19a6"
+        },
+        {
+          "member": "PySide6/Qt/metatypes/qt6svgwidgets_metatypes.json",
+          "source": "PySide6/Qt/metatypes/qt6svgwidgets_metatypes.json",
+          "sha256": "b9462880f2b6c8a55ce354f75005b5bba5e03337057140756fe1ef2b891ca3fa"
+        },
+        {
+          "member": "PySide6/Qt/metatypes/qt6test_metatypes.json",
+          "source": "PySide6/Qt/metatypes/qt6test_metatypes.json",
+          "sha256": "106990d47cc38183a9479370ebbfbe2196ab3e7b73b879742646c0f25e7312d8"
+        },
+        {
+          "member": "PySide6/Qt/metatypes/qt6widgets_metatypes.json",
+          "source": "PySide6/Qt/metatypes/qt6widgets_metatypes.json",
+          "sha256": "b34d41e9b39d99ff23a99fec58abf3affd9a908fa14d52692287459ee3e202c7"
+        },
+        {
+          "member": "PySide6/Qt/metatypes/qt6xcbqpaprivate_metatypes.json",
+          "source": "PySide6/Qt/metatypes/qt6xcbqpaprivate_metatypes.json",
+          "sha256": "34e1f3a7a38356cd8949defc99d3af6fd99876c6f7c40dababb03c4acc5f0cf6"
+        },
+        {
+          "member": "PySide6/Qt/metatypes/qt6xml_metatypes.json",
+          "source": "PySide6/Qt/metatypes/qt6xml_metatypes.json",
+          "sha256": "3fbbd4c6d76130399b0c79cdf41758669224a91e05b7b216953f0c9728750865"
+        },
+        {
+          "member": "PySide6/Qt/modules/Concurrent.json",
+          "source": "PySide6/Qt/modules/Concurrent.json",
+          "sha256": "2ac4bffd87998d66387a58c1714cb6a789169cbdaaaacfa636cbf1d838b45c62"
+        },
+        {
+          "member": "PySide6/Qt/modules/Core.json",
+          "source": "PySide6/Qt/modules/Core.json",
+          "sha256": "1367e8bbd67af19b46927d0fcbb4066912cd3605396bbbbd2f80463f2a70414d"
+        },
+        {
+          "member": "PySide6/Qt/modules/DBus.json",
+          "source": "PySide6/Qt/modules/DBus.json",
+          "sha256": "4ab9ed669b2e848729fea0546480ee7442d35fb6800bd8b27f4c12ff52860ea3"
+        },
+        {
+          "member": "PySide6/Qt/modules/DeviceDiscoverySupportPrivate.json",
+          "source": "PySide6/Qt/modules/DeviceDiscoverySupportPrivate.json",
+          "sha256": "3ea5f6af9f7ad2eeb175f7e150d0f308e07d613f6473aa5982dfd71541c80a9d"
+        },
+        {
+          "member": "PySide6/Qt/modules/FbSupportPrivate.json",
+          "source": "PySide6/Qt/modules/FbSupportPrivate.json",
+          "sha256": "2966d42965b21997c4990c3f898fef17df4ab29be510d64c20fd6a161270d967"
+        },
+        {
+          "member": "PySide6/Qt/modules/Gui.json",
+          "source": "PySide6/Qt/modules/Gui.json",
+          "sha256": "f18a2a9dce788bbd574714a8c602a6369622a17503fab6bd8430eece249cc42d"
+        },
+        {
+          "member": "PySide6/Qt/modules/HarfbuzzPrivate.json",
+          "source": "PySide6/Qt/modules/HarfbuzzPrivate.json",
+          "sha256": "635360df1946a3af0f4f9ef26c90d2192446c7c5f992ec979d4a4f49ef3edadf"
+        },
+        {
+          "member": "PySide6/Qt/modules/InputSupportPrivate.json",
+          "source": "PySide6/Qt/modules/InputSupportPrivate.json",
+          "sha256": "42b063cd1df12569f0510a1fa673bc3f3de3530e56475818cd09372237240893"
+        },
+        {
+          "member": "PySide6/Qt/modules/JpegPrivate.json",
+          "source": "PySide6/Qt/modules/JpegPrivate.json",
+          "sha256": "7f32c5b1d57761b8b81395453740bfba5ccb7ac6ecb37d87975bd5f333162939"
+        },
+        {
+          "member": "PySide6/Qt/modules/Network.json",
+          "source": "PySide6/Qt/modules/Network.json",
+          "sha256": "d99a5927ad5afdf446defd02f4879ff047cc4b6a633802b40b2aef50409999af"
+        },
+        {
+          "member": "PySide6/Qt/modules/PngPrivate.json",
+          "source": "PySide6/Qt/modules/PngPrivate.json",
+          "sha256": "f41073258ac3fe9f08a343fc4157dc11906c0c4a52f129be4353ba4406ccaa5d"
+        },
+        {
+          "member": "PySide6/Qt/modules/PrintSupport.json",
+          "source": "PySide6/Qt/modules/PrintSupport.json",
+          "sha256": "17e94fe03af4767d017145ff9d16c97bbd88018c0e22c5f21e0d9f5f5c3a1c27"
+        },
+        {
+          "member": "PySide6/Qt/modules/Sql.json",
+          "source": "PySide6/Qt/modules/Sql.json",
+          "sha256": "68e7c4d86264153fd9c948f3cf0e87f68305e2770bc5316648cc5bbb423c71e9"
+        },
+        {
+          "member": "PySide6/Qt/modules/Svg.json",
+          "source": "PySide6/Qt/modules/Svg.json",
+          "sha256": "4ea59c6b706bd0d6850289ae5e246e4227592567612b630f2efc421191981f66"
+        },
+        {
+          "member": "PySide6/Qt/modules/SvgWidgets.json",
+          "source": "PySide6/Qt/modules/SvgWidgets.json",
+          "sha256": "441f2462d301354e5fb75df61b0e5ff321be3d5fe7ff1c41c4e2b4dc0f75846a"
+        },
+        {
+          "member": "PySide6/Qt/modules/Test.json",
+          "source": "PySide6/Qt/modules/Test.json",
+          "sha256": "1126e8c7c5eecad477101502f95a9bcc4c2cf0b04fc11089bdb99100376165ac"
+        },
+        {
+          "member": "PySide6/Qt/modules/TestInternalsPrivate.json",
+          "source": "PySide6/Qt/modules/TestInternalsPrivate.json",
+          "sha256": "60fb37dbe545f3ac5dfa59bff6ab29f5901d1d96222cf4f5a5934a54ad48ddf8"
+        },
+        {
+          "member": "PySide6/Qt/modules/Widgets.json",
+          "source": "PySide6/Qt/modules/Widgets.json",
+          "sha256": "615ed48ea4e3cf7ee58b389a7cd30f327acd8c57f0845d7b98e53b930beca7a8"
+        },
+        {
+          "member": "PySide6/Qt/modules/XcbQpaPrivate.json",
+          "source": "PySide6/Qt/modules/XcbQpaPrivate.json",
+          "sha256": "034ebf9e502322fec15d1a586e6a5c7ef318da63296c4349e94601116b365ee6"
+        },
+        {
+          "member": "PySide6/Qt/modules/Xml.json",
+          "source": "PySide6/Qt/modules/Xml.json",
+          "sha256": "d49f21e4bd7fbc45a1eb6cc5a0329ea03477ae89d07d50c75a2f63b52aeb5218"
+        },
+        {
+          "member": "PySide6/Qt/plugins/generic/libqevdevkeyboardplugin.so",
+          "source": "PySide6/Qt/plugins/generic/libqevdevkeyboardplugin.so",
+          "sha256": "f3d393945edeb91647180d66fdcdbffb93f7f658247d0e302caad015665c02f2",
+          "native": true,
+          "before_relocation_sha256": "f3d393945edeb91647180d66fdcdbffb93f7f658247d0e302caad015665c02f2",
+          "relocated": false
+        },
+        {
+          "member": "PySide6/Qt/plugins/generic/libqevdevmouseplugin.so",
+          "source": "PySide6/Qt/plugins/generic/libqevdevmouseplugin.so",
+          "sha256": "8a8049e03f1a3a56278ed0443eca71c3607a5fe8e4f946212e25074e231e2452",
+          "native": true,
+          "before_relocation_sha256": "8a8049e03f1a3a56278ed0443eca71c3607a5fe8e4f946212e25074e231e2452",
+          "relocated": false
+        },
+        {
+          "member": "PySide6/Qt/plugins/generic/libqevdevtabletplugin.so",
+          "source": "PySide6/Qt/plugins/generic/libqevdevtabletplugin.so",
+          "sha256": "261f449f731ada172212f719fbd5da9848cc2b6ccd9e72008c01ce6b8fbb4b42",
+          "native": true,
+          "before_relocation_sha256": "261f449f731ada172212f719fbd5da9848cc2b6ccd9e72008c01ce6b8fbb4b42",
+          "relocated": false
+        },
+        {
+          "member": "PySide6/Qt/plugins/generic/libqevdevtouchplugin.so",
+          "source": "PySide6/Qt/plugins/generic/libqevdevtouchplugin.so",
+          "sha256": "d94f1f14860f46df9bc74d18da31565169ef0e9cc9d1138a675d380971be84b1",
+          "native": true,
+          "before_relocation_sha256": "d94f1f14860f46df9bc74d18da31565169ef0e9cc9d1138a675d380971be84b1",
+          "relocated": false
+        },
+        {
+          "member": "PySide6/Qt/plugins/generic/libqtuiotouchplugin.so",
+          "source": "PySide6/Qt/plugins/generic/libqtuiotouchplugin.so",
+          "sha256": "ea11ac55ad7eba4fc154ee747c5754c0e592e623f535cb4df5407250f91d7de4",
+          "native": true,
+          "before_relocation_sha256": "ea11ac55ad7eba4fc154ee747c5754c0e592e623f535cb4df5407250f91d7de4",
+          "relocated": false
+        },
+        {
+          "member": "PySide6/Qt/plugins/iconengines/libqsvgicon.so",
+          "source": "PySide6/Qt/plugins/iconengines/libqsvgicon.so",
+          "sha256": "e9b79bca890fb3517e1dc678ca101cbb11e06f964e79296d49c3f6ac4669f27b",
+          "native": true,
+          "before_relocation_sha256": "e9b79bca890fb3517e1dc678ca101cbb11e06f964e79296d49c3f6ac4669f27b",
+          "relocated": false
+        },
+        {
+          "member": "PySide6/Qt/plugins/imageformats/libqgif.so",
+          "source": "PySide6/Qt/plugins/imageformats/libqgif.so",
+          "sha256": "5472c57ad14f42d6379a0b3c9a07e9098a539a83a04045411f30ec9a06c94a66",
+          "native": true,
+          "before_relocation_sha256": "5472c57ad14f42d6379a0b3c9a07e9098a539a83a04045411f30ec9a06c94a66",
+          "relocated": false
+        },
+        {
+          "member": "PySide6/Qt/plugins/imageformats/libqico.so",
+          "source": "PySide6/Qt/plugins/imageformats/libqico.so",
+          "sha256": "b2d1e39cbd01c0d2825cd3aaa5b91129c8db10bfdf7b03b833c67934bf46d201",
+          "native": true,
+          "before_relocation_sha256": "b2d1e39cbd01c0d2825cd3aaa5b91129c8db10bfdf7b03b833c67934bf46d201",
+          "relocated": false
+        },
+        {
+          "member": "PySide6/Qt/plugins/imageformats/libqjpeg.so",
+          "source": "PySide6/Qt/plugins/imageformats/libqjpeg.so",
+          "sha256": "524e54913d3346332703f8820f3a7ef6fe42b071d831509cf0864dc2ec43eb09",
+          "native": true,
+          "before_relocation_sha256": "524e54913d3346332703f8820f3a7ef6fe42b071d831509cf0864dc2ec43eb09",
+          "relocated": false
+        },
+        {
+          "member": "PySide6/Qt/plugins/imageformats/libqsvg.so",
+          "source": "PySide6/Qt/plugins/imageformats/libqsvg.so",
+          "sha256": "511bb59151d248f4e2ce59ae9f7a5efd2f613783c7104b44b09040158cd76046",
+          "native": true,
+          "before_relocation_sha256": "511bb59151d248f4e2ce59ae9f7a5efd2f613783c7104b44b09040158cd76046",
+          "relocated": false
+        },
+        {
+          "member": "PySide6/Qt/plugins/networkinformation/libqconnman.so",
+          "source": "PySide6/Qt/plugins/networkinformation/libqconnman.so",
+          "sha256": "4f96f5629b2d9fdbf0184793365a103e357dc4be7a42f762c7da17cc1e9692fa",
+          "native": true,
+          "before_relocation_sha256": "4f96f5629b2d9fdbf0184793365a103e357dc4be7a42f762c7da17cc1e9692fa",
+          "relocated": false
+        },
+        {
+          "member": "PySide6/Qt/plugins/networkinformation/libqglib.so",
+          "source": "PySide6/Qt/plugins/networkinformation/libqglib.so",
+          "sha256": "f5596e1a8435efbf76f59389aab8a3b5dacbf802f3a8a35ce668844918f54574",
+          "native": true,
+          "before_relocation_sha256": "f5596e1a8435efbf76f59389aab8a3b5dacbf802f3a8a35ce668844918f54574",
+          "relocated": false
+        },
+        {
+          "member": "PySide6/Qt/plugins/networkinformation/libqnetworkmanager.so",
+          "source": "PySide6/Qt/plugins/networkinformation/libqnetworkmanager.so",
+          "sha256": "72917f0d055048d88c1411ed7a328e847fc8bfc2470c83a521b5f33b41c5da00",
+          "native": true,
+          "before_relocation_sha256": "72917f0d055048d88c1411ed7a328e847fc8bfc2470c83a521b5f33b41c5da00",
+          "relocated": false
+        },
+        {
+          "member": "PySide6/Qt/plugins/platforminputcontexts/libcomposeplatforminputcontextplugin.so",
+          "source": "PySide6/Qt/plugins/platforminputcontexts/libcomposeplatforminputcontextplugin.so",
+          "sha256": "fcd3cccdb9911d656116bed7db39457d17e7b8868525c10ff0ce63920fd392b6",
+          "native": true,
+          "before_relocation_sha256": "fcd3cccdb9911d656116bed7db39457d17e7b8868525c10ff0ce63920fd392b6",
+          "relocated": false
+        },
+        {
+          "member": "PySide6/Qt/plugins/platforminputcontexts/libibusplatforminputcontextplugin.so",
+          "source": "PySide6/Qt/plugins/platforminputcontexts/libibusplatforminputcontextplugin.so",
+          "sha256": "c84e5ebd64f3180c5af3f9c7eb6063a385f06ca8c6eaa3c1b23a69f41e33c75d",
+          "native": true,
+          "before_relocation_sha256": "c84e5ebd64f3180c5af3f9c7eb6063a385f06ca8c6eaa3c1b23a69f41e33c75d",
+          "relocated": false
+        },
+        {
+          "member": "PySide6/Qt/plugins/platforms/libqlinuxfb.so",
+          "source": "PySide6/Qt/plugins/platforms/libqlinuxfb.so",
+          "sha256": "df52622efbf672195f2a89cdd2b840438551a8e8ed4734f0ac092cae16a32e63",
+          "native": true,
+          "before_relocation_sha256": "df52622efbf672195f2a89cdd2b840438551a8e8ed4734f0ac092cae16a32e63",
+          "relocated": false
+        },
+        {
+          "member": "PySide6/Qt/plugins/platforms/libqminimal.so",
+          "source": "PySide6/Qt/plugins/platforms/libqminimal.so",
+          "sha256": "127c0489121467f9a6a116739d008737c75e66a0ac8fcbb2204484f31bf0f84b",
+          "native": true,
+          "before_relocation_sha256": "127c0489121467f9a6a116739d008737c75e66a0ac8fcbb2204484f31bf0f84b",
+          "relocated": false
+        },
+        {
+          "member": "PySide6/Qt/plugins/platforms/libqoffscreen.so",
+          "source": "PySide6/Qt/plugins/platforms/libqoffscreen.so",
+          "sha256": "7b3ef27cdf876f0d51763aa5ab15b2ae4de497e64632fb4061a97ab38ffd81aa",
+          "native": true,
+          "before_relocation_sha256": "7b3ef27cdf876f0d51763aa5ab15b2ae4de497e64632fb4061a97ab38ffd81aa",
+          "relocated": false
+        },
+        {
+          "member": "PySide6/Qt/plugins/platforms/libqvkkhrdisplay.so",
+          "source": "PySide6/Qt/plugins/platforms/libqvkkhrdisplay.so",
+          "sha256": "6514b6f320b134045ca511bb2b2739f0bee3f5f516d59d9b28d5201a106bfeee",
+          "native": true,
+          "before_relocation_sha256": "6514b6f320b134045ca511bb2b2739f0bee3f5f516d59d9b28d5201a106bfeee",
+          "relocated": false
+        },
+        {
+          "member": "PySide6/Qt/plugins/platforms/libqvnc.so",
+          "source": "PySide6/Qt/plugins/platforms/libqvnc.so",
+          "sha256": "0ac7d6c61b49dfd58b913e5f21363b44398d832188e232f75c9df806eaccaf15",
+          "native": true,
+          "before_relocation_sha256": "0ac7d6c61b49dfd58b913e5f21363b44398d832188e232f75c9df806eaccaf15",
+          "relocated": false
+        },
+        {
+          "member": "PySide6/Qt/plugins/platforms/libqxcb.so",
+          "source": "PySide6/Qt/plugins/platforms/libqxcb.so",
+          "sha256": "481b13b4c78383593a9c61f950d8c2ebc018c47abf029edfcb907bdc708ac129",
+          "native": true,
+          "before_relocation_sha256": "481b13b4c78383593a9c61f950d8c2ebc018c47abf029edfcb907bdc708ac129",
+          "relocated": false
+        },
+        {
+          "member": "PySide6/Qt/plugins/platformthemes/libqxdgdesktopportal.so",
+          "source": "PySide6/Qt/plugins/platformthemes/libqxdgdesktopportal.so",
+          "sha256": "e03de8d2f9ee4d7bf6e94f363ea4ca261f5eb6e325f223d996b294d0d83eebfb",
+          "native": true,
+          "before_relocation_sha256": "e03de8d2f9ee4d7bf6e94f363ea4ca261f5eb6e325f223d996b294d0d83eebfb",
+          "relocated": false
+        },
+        {
+          "member": "PySide6/Qt/plugins/sqldrivers/libqsqlite.so",
+          "source": "PySide6/Qt/plugins/sqldrivers/libqsqlite.so",
+          "sha256": "99cdc75b0e4d8d6fd2cf1559f7c9c44f2e73c2eac88a1c6fdfae40b6adcf254f",
+          "native": true,
+          "before_relocation_sha256": "99cdc75b0e4d8d6fd2cf1559f7c9c44f2e73c2eac88a1c6fdfae40b6adcf254f",
+          "relocated": false
+        },
+        {
+          "member": "PySide6/Qt/plugins/tls/libqcertonlybackend.so",
+          "source": "PySide6/Qt/plugins/tls/libqcertonlybackend.so",
+          "sha256": "d7d45ed5ee02880676389a02453c27db796169531cbfd850d88e4e26cefff6de",
+          "native": true,
+          "before_relocation_sha256": "d7d45ed5ee02880676389a02453c27db796169531cbfd850d88e4e26cefff6de",
+          "relocated": false
+        }
+      ]
+    },
+    {
+      "name": "shiboken6",
+      "metadata_name": "shiboken6",
+      "version": "6.12.0+vispynogl.1",
+      "tag": "cp312-cp312-linux_x86_64",
+      "requires": [],
+      "files": [
+        {
+          "member": "shiboken6/Shiboken.abi3.so",
+          "source": "shiboken6/Shiboken.abi3.so",
+          "sha256": "c7fd3902acca24f123d3d9879381c224cdd4c0d20c764241308df6137e59f47a",
+          "native": true,
+          "before_relocation_sha256": "43e39fe93174a27954b1fdd506e55e361ca5321c857f4f133f6e97acf8f1710b",
+          "relocated": true
+        },
+        {
+          "member": "shiboken6/Shiboken.pyi",
+          "source": "shiboken6/Shiboken.pyi",
+          "sha256": "1c3418dd786ca346cfd9b58cc797437f500efb0d27cd24ba300bdae86de3625c"
+        },
+        {
+          "member": "shiboken6/__init__.py",
+          "source": "shiboken6/__init__.py",
+          "sha256": "a81c702972bc1bb26d09573487069d060f3cf29657529163bc0dc1fa1f3dda68"
+        },
+        {
+          "member": "shiboken6/_config.py",
+          "source": "shiboken6/_config.py",
+          "sha256": "99c80bf13029558c9e0f64120a4c484032ef57e2d5da15feb75a1c96dcd17880"
+        },
+        {
+          "member": "shiboken6/_git_shiboken_module_version.py",
+          "source": "shiboken6/_git_shiboken_module_version.py",
+          "sha256": "ccc2af4c32f0a36443fd825ea20427001cf837a98ca12d215177272ddfce1898"
+        },
+        {
+          "member": "shiboken6/include/shiboken6/autodecref.h",
+          "source": "shiboken6/include/shiboken6/autodecref.h",
+          "sha256": "33334ec1eed1bee7b03c4a6d9fd28d9cc8c0b77cfac6c520701b8985e2b998a5"
+        },
+        {
+          "member": "shiboken6/include/shiboken6/basewrapper.h",
+          "source": "shiboken6/include/shiboken6/basewrapper.h",
+          "sha256": "e363e11643e0c790c835c852c7145335e2f4a0178e469d1bdddaadf9e96a954f"
+        },
+        {
+          "member": "shiboken6/include/shiboken6/basewrapper_p.h",
+          "source": "shiboken6/include/shiboken6/basewrapper_p.h",
+          "sha256": "1e4acc948ba7738c0947dac3c38ccde332b4012e4efb38c5ede1a445f83fede2"
+        },
+        {
+          "member": "shiboken6/include/shiboken6/bindingmanager.h",
+          "source": "shiboken6/include/shiboken6/bindingmanager.h",
+          "sha256": "8e5b59b2597e98f2bfb1088bef7b902ea500a4ec4b8d93609ec414d9f548314d"
+        },
+        {
+          "member": "shiboken6/include/shiboken6/bufferprocs_py37.h",
+          "source": "shiboken6/include/shiboken6/bufferprocs_py37.h",
+          "sha256": "7717a874ab6a950ca55f6144efb934a086d16a7c9935d137eeb46afe96bd03fd"
+        },
+        {
+          "member": "shiboken6/include/shiboken6/gilstate.h",
+          "source": "shiboken6/include/shiboken6/gilstate.h",
+          "sha256": "54b56f3f95811977a7b02a860cac61354381ce58fec4cc344ae4adbecc25abf3"
+        },
+        {
+          "member": "shiboken6/include/shiboken6/helper.h",
+          "source": "shiboken6/include/shiboken6/helper.h",
+          "sha256": "f9a50887c09b4962174a84c2e39c12a73638bb84bbd5463fa69fc582e14f222f"
+        },
+        {
+          "member": "shiboken6/include/shiboken6/pep384ext.h",
+          "source": "shiboken6/include/shiboken6/pep384ext.h",
+          "sha256": "1ad1e6b07b1c3dd31d14d5ffc6ac68211b35612684d24c1055db4db88f58959b"
+        },
+        {
+          "member": "shiboken6/include/shiboken6/pep384impl.h",
+          "source": "shiboken6/include/shiboken6/pep384impl.h",
+          "sha256": "7214f1e11309ca277b1690350c6f056a28857189538dd4b37e693466b79f0169"
+        },
+        {
+          "member": "shiboken6/include/shiboken6/pep384impl_p.h",
+          "source": "shiboken6/include/shiboken6/pep384impl_p.h",
+          "sha256": "49c99fc75f688718c171804f0cdd023d71605c65b036ef3b095201b895fa1907"
+        },
+        {
+          "member": "shiboken6/include/shiboken6/pyobjectholder.h",
+          "source": "shiboken6/include/shiboken6/pyobjectholder.h",
+          "sha256": "fe52d0358880d632969173e440fff542800ea2385847638d8cc85e9e4f8a2c08"
+        },
+        {
+          "member": "shiboken6/include/shiboken6/sbkarrayconverter.h",
+          "source": "shiboken6/include/shiboken6/sbkarrayconverter.h",
+          "sha256": "604517314f7d2c4e87b2aa4ed867628833e3532625bd6845cca716bb517386b0"
+        },
+        {
+          "member": "shiboken6/include/shiboken6/sbkarrayspan_p.h",
+          "source": "shiboken6/include/shiboken6/sbkarrayspan_p.h",
+          "sha256": "ed8d3f706d3962e9095bf0012b745246d11a7f37a2dff3266e2ad38e5191dd84"
+        },
+        {
+          "member": "shiboken6/include/shiboken6/sbkbindingutils.h",
+          "source": "shiboken6/include/shiboken6/sbkbindingutils.h",
+          "sha256": "41f8ce7a1e8ba777892b8cb804478eb878d9619dde608280b5d113bce59f6fe0"
+        },
+        {
+          "member": "shiboken6/include/shiboken6/sbkcontainer.h",
+          "source": "shiboken6/include/shiboken6/sbkcontainer.h",
+          "sha256": "a874cd737b893230be80a3d55c4fa1c9288ee77754a587f20a1c67a3756b83f1"
+        },
+        {
+          "member": "shiboken6/include/shiboken6/sbkconverter.h",
+          "source": "shiboken6/include/shiboken6/sbkconverter.h",
+          "sha256": "39f6362643022bfd4bf0b5221e88b41f89fe46eac41e9b788f070661dba581b7"
+        },
+        {
+          "member": "shiboken6/include/shiboken6/sbkcppstring.h",
+          "source": "shiboken6/include/shiboken6/sbkcppstring.h",
+          "sha256": "42b72105a7bdd67e3242658c5a30ca5119d3846c08e970e871f5394c5c5dc65f"
+        },
+        {
+          "member": "shiboken6/include/shiboken6/sbkcpptonumpy.h",
+          "source": "shiboken6/include/shiboken6/sbkcpptonumpy.h",
+          "sha256": "6fa1c097df231d6146671c0ea7767fc12545389d487e407a249a51116d4a73bd"
+        },
+        {
+          "member": "shiboken6/include/shiboken6/sbkdestructorentry.h",
+          "source": "shiboken6/include/shiboken6/sbkdestructorentry.h",
+          "sha256": "5518d31b5382ccb396a8caec749e68954ba36c4745826973132deb35ddfe4bdf"
+        },
+        {
+          "member": "shiboken6/include/shiboken6/sbkenum.h",
+          "source": "shiboken6/include/shiboken6/sbkenum.h",
+          "sha256": "af1c4f52b3611d8dc4a6e9c6ab8aa52d9b5efa0c10ee1e0e074c9365eefe6b6d"
+        },
+        {
+          "member": "shiboken6/include/shiboken6/sbkenum_p.h",
+          "source": "shiboken6/include/shiboken6/sbkenum_p.h",
+          "sha256": "e9504c0d3827630b0fa68dd8493a1976cb797eae45e94405001b4e76031a70c3"
+        },
+        {
+          "member": "shiboken6/include/shiboken6/sbkerrors.h",
+          "source": "shiboken6/include/shiboken6/sbkerrors.h",
+          "sha256": "70ac8388b8a78946b84e5b558e2c8f58cc3d4dec4fbcb67eafb074e334777fb8"
+        },
+        {
+          "member": "shiboken6/include/shiboken6/sbkfeature_base.h",
+          "source": "shiboken6/include/shiboken6/sbkfeature_base.h",
+          "sha256": "03c2b6c3206c559a09778fecf10e91433350882b8aaa41859886c7addf246b18"
+        },
+        {
+          "member": "shiboken6/include/shiboken6/sbkmodule.h",
+          "source": "shiboken6/include/shiboken6/sbkmodule.h",
+          "sha256": "5ebb3f0df9faffe538961e4c6e05e70a1282966290689c6ad2fa96986ee04aac"
+        },
+        {
+          "member": "shiboken6/include/shiboken6/sbkmodule_p.h",
+          "source": "shiboken6/include/shiboken6/sbkmodule_p.h",
+          "sha256": "80b797e5113b39d599ed5a6722ef07571b07c7a316712ac7df5891eca32e3f96"
+        },
+        {
+          "member": "shiboken6/include/shiboken6/sbknumpycheck.h",
+          "source": "shiboken6/include/shiboken6/sbknumpycheck.h",
+          "sha256": "b916f9b9e441defa4ac0c567a89a46868deb2be408664835aa3b2069cba30d67"
+        },
+        {
+          "member": "shiboken6/include/shiboken6/sbknumpyview.h",
+          "source": "shiboken6/include/shiboken6/sbknumpyview.h",
+          "sha256": "bd506d307db01e47c078a6d7428860c711b7b5ef1a432edd3b82c62a8be5acfe"
+        },
+        {
+          "member": "shiboken6/include/shiboken6/sbkpep.h",
+          "source": "shiboken6/include/shiboken6/sbkpep.h",
+          "sha256": "95efcf2bce8d44e3c2f060f6a6c62a116a597da134153efabca666cbfa372bd3"
+        },
+        {
+          "member": "shiboken6/include/shiboken6/sbkpepbuffer.h",
+          "source": "shiboken6/include/shiboken6/sbkpepbuffer.h",
+          "sha256": "1757eb67ba82e6dcb730f72b0d8b0eb9163b9d5648be8100eb21700bb196b4da"
+        },
+        {
+          "member": "shiboken6/include/shiboken6/sbkpython.h",
+          "source": "shiboken6/include/shiboken6/sbkpython.h",
+          "sha256": "0f0c81313ad5d590c2edf9904638399ee4b4969dba907c0d8af098a1bc6ada31"
+        },
+        {
+          "member": "shiboken6/include/shiboken6/sbksmartpointer.h",
+          "source": "shiboken6/include/shiboken6/sbksmartpointer.h",
+          "sha256": "82bd4afa941cf093c80cfe668c070dfb07a6ae8c965d32cbd4fd07540cf019d8"
+        },
+        {
+          "member": "shiboken6/include/shiboken6/sbkstaticstrings.h",
+          "source": "shiboken6/include/shiboken6/sbkstaticstrings.h",
+          "sha256": "8a2784c62771c30e52459826c8d31cb5e29e024ed54324122c17f0cb40a9f029"
+        },
+        {
+          "member": "shiboken6/include/shiboken6/sbkstring.h",
+          "source": "shiboken6/include/shiboken6/sbkstring.h",
+          "sha256": "da6d2f9acb2a273353933a9587c4ed9356718053ec30a3b9ba1478528e4db5cd"
+        },
+        {
+          "member": "shiboken6/include/shiboken6/sbktypefactory.h",
+          "source": "shiboken6/include/shiboken6/sbktypefactory.h",
+          "sha256": "b80da841d3b152ff89a2cd7c82d6c4086f60dbc439d61ed00a059a707af2370e"
+        },
+        {
+          "member": "shiboken6/include/shiboken6/sbkversion.h",
+          "source": "shiboken6/include/shiboken6/sbkversion.h",
+          "sha256": "c3cc7d939822c41088458bacfe3a811c4f791a6bb41e2f458f132ff214ed0064"
+        },
+        {
+          "member": "shiboken6/include/shiboken6/sbkwindows.h",
+          "source": "shiboken6/include/shiboken6/sbkwindows.h",
+          "sha256": "7a6cf0585b8665f40894c7af54b46841b892765a26e572aec8350bb694e6cd76"
+        },
+        {
+          "member": "shiboken6/include/shiboken6/shiboken.h",
+          "source": "shiboken6/include/shiboken6/shiboken.h",
+          "sha256": "d89447d3839b2179d3839f994965110f0889d95425c71540bc352e0836714c74"
+        },
+        {
+          "member": "shiboken6/include/shiboken6/shibokenbuffer.h",
+          "source": "shiboken6/include/shiboken6/shibokenbuffer.h",
+          "sha256": "bbf20bff20c649885e8ce5e69ceb5cf9de0a818e4e9cf3b27496775e001be561"
+        },
+        {
+          "member": "shiboken6/include/shiboken6/shibokenclasshelpermacros.h",
+          "source": "shiboken6/include/shiboken6/shibokenclasshelpermacros.h",
+          "sha256": "418d5b57ddefae804a6cd52c3f820429907f16ba4a15874448719d72e8def8d0"
+        },
+        {
+          "member": "shiboken6/include/shiboken6/shibokenmacros.h",
+          "source": "shiboken6/include/shiboken6/shibokenmacros.h",
+          "sha256": "77b48b8367f9f055fa44133ca5c34e95853a0d6a5c065571a7244dff67142c56"
+        },
+        {
+          "member": "shiboken6/include/shiboken6/signature.h",
+          "source": "shiboken6/include/shiboken6/signature.h",
+          "sha256": "00e1eae73f36b259f5e00147cd0dca91c3a8c3dd6355a7567df0dce99b032784"
+        },
+        {
+          "member": "shiboken6/include/shiboken6/signature_p.h",
+          "source": "shiboken6/include/shiboken6/signature_p.h",
+          "sha256": "405cbc610f03197739f198c612f64915b262d692d751a8ffb5a50f76344383a0"
+        },
+        {
+          "member": "shiboken6/include/shiboken6/threadstatesaver.h",
+          "source": "shiboken6/include/shiboken6/threadstatesaver.h",
+          "sha256": "3ad333e096a43e99a44ea226db5cab4cd70df64828c46d347c1e9146f0b55797"
+        },
+        {
+          "member": "shiboken6/include/shiboken6/voidptr.h",
+          "source": "shiboken6/include/shiboken6/voidptr.h",
+          "sha256": "aebffc152d966a90eeef694e8342dbe8638a3c7f67562a59f8ddec5d69808e3f"
+        },
+        {
+          "member": "shiboken6/lib/cmake/Shiboken6/Shiboken6Config.abi3.cmake",
+          "source": "shiboken6/lib/cmake/Shiboken6/Shiboken6Config.abi3.cmake",
+          "sha256": "5aaaa951a6b3933c9aef0141431222164f4bcd6beb86c19a34f6258e2746c3b4"
+        },
+        {
+          "member": "shiboken6/lib/cmake/Shiboken6/Shiboken6Config.cmake",
+          "source": "shiboken6/lib/cmake/Shiboken6/Shiboken6Config.cmake",
+          "sha256": "a1e4ebab305e996b4729ac643404e3e9513ebb2112144096b770d391a6d3ee18"
+        },
+        {
+          "member": "shiboken6/lib/cmake/Shiboken6/Shiboken6ConfigVersion.cmake",
+          "source": "shiboken6/lib/cmake/Shiboken6/Shiboken6ConfigVersion.cmake",
+          "sha256": "303c0e010d870df691edefc11f383700d536d5d9cb9f960b9add093b33e690cf"
+        },
+        {
+          "member": "shiboken6/lib/cmake/Shiboken6/Shiboken6Targets-release.cmake",
+          "source": "shiboken6/lib/cmake/Shiboken6/Shiboken6Targets-release.cmake",
+          "sha256": "78fbc5e06e2a7aa49d0d3520b69aa34f7424dfed40fe81651d2339d432bc3326"
+        },
+        {
+          "member": "shiboken6/lib/cmake/Shiboken6/Shiboken6Targets.cmake",
+          "source": "shiboken6/lib/cmake/Shiboken6/Shiboken6Targets.cmake",
+          "sha256": "9a82a527b9d80f4eb7b79059d99e4f055a1526c209ac3f0c494913be331eeefb"
+        },
+        {
+          "member": "shiboken6/lib/cmake/Shiboken6/ShibokenHelpers.cmake",
+          "source": "shiboken6/lib/cmake/Shiboken6/ShibokenHelpers.cmake",
+          "sha256": "10ff2488585a60434b5445fb4d6046377242636f4dc2dee1ebe5f19cd1174c9f"
+        },
+        {
+          "member": "shiboken6/libshiboken6.abi3.so.6.12",
+          "source": "shiboken6/libshiboken6.abi3.so.6.12",
+          "sha256": "78cfd958b24b544b576223be188aa7a01c9540433712bd656d2924bb313d0058",
+          "native": true,
+          "before_relocation_sha256": "3e0890d54389ba363f5979788b538eada5a1dabd68ac76b188f269746e93f61e",
+          "relocated": true
+        },
+        {
+          "member": "shiboken6/py.typed",
+          "source": "shiboken6/py.typed",
+          "sha256": "154d2b3a1255946ec4511a7952fdb07cfbe01a6ee9c7c6eae5dfabd460c833c1"
+        }
+      ]
+    }
+  ],
+  "support_wheels": []
+}

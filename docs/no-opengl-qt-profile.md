@@ -95,3 +95,27 @@ fresh target, then install the wheels using `--no-index --find-links <bundle>
 artifacts or versions must fail instead of selecting upstream full Qt. The
 source-profile producer reports `BUILT_SOURCE_PROFILE_UNQUALIFIED` until the
 fresh installed X11/host environment passes its functional and native gates.
+
+`linux-pyside6-no-opengl.json` uses the same producer for exact Qt 6.12.0,
+PySide6 6.12.0 and source-built Shiboken. Its three local-version wheels are
+`pyside6`, `pyside6-qt6` and `shiboken6`; no upstream Essentials/Addons/PDF/
+WebEngine fallback is selected. The CPython 3.12 / Ubuntu 24.04 ABI restriction
+also applies here. Use its matching hash requirements with the offline install
+command above. `--inputs` may point to an existing empty directory because this
+profile has no unchanged support-wheel input. Its recorded package builder is
+Python 3.12.8 with zlib 1.3.1; two archive builds produced identical hashes.
+
+This payload contains 50 ELF files, 50 pinned system runtime packages, ten
+selected binding modules, and 136 original license/attribution notices.
+Thirteen copied DSOs have recorded relative RUNPATH changes; original compiled
+inputs remain unchanged. The source build uses the exact preferred archives
+plus the declared 1497-byte
+`patches/pyside612-disabled-feature-wrapper-lists.patch`. Applying it with
+`patch -p1` fixes two build-list entries for classes already absent from the
+chosen configuration. It changes no feature flags and invents no API classes.
+The original BSD-3-Clause header, original CMake file, patch and before/after
+hashes are retained. These three source-patch records accompany all original
+notices in the wheels; the AGPL package producer does not relabel upstream code.
+Qt OpenGL/EGL and QtNetwork SSL/DTLS are disabled, while XCB/Vulkan are enabled.
+Portable import, QWidget capture and SVG smoke results are source-build
+evidence; installed mapped VisPy/native-gate qualification remains separate.

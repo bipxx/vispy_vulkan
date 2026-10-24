@@ -86,6 +86,25 @@ def test_linux_source_profile_records_relocation_notices_and_real_feature_limits
     assert all('=' in pin for pin in manifest['runtime_apt_versions']['apt_install_pins'])
 
 
+def test_linux_pyside_source_profile_binds_real_relocation_and_declared_build_patch():
+    manifest = json.loads((ROOT / 'compat/qt/linux-pyside6-no-opengl.json').read_text())
+    assert manifest['profile'] == 'linux-pyside6-source-no-opengl-v1'
+    assert not manifest['features']['opengl'] and not manifest['features']['egl']
+    assert not manifest['features']['qt_network_ssl']
+    native = [entry for wheel in manifest['wheels'] for entry in wheel['files'] if entry.get('native')]
+    assert len(native) == 50 and sum(entry['relocated'] for entry in native) == 13
+    assert manifest['original_notice_count'] == 136
+    assert len(manifest['notices']) == 139  # Includes the exact declared patch, manifest and original file.
+    assert len(manifest['runtime_apt_versions']['apt_install_pins']) == 50
+    patch = manifest['preferred_source_patches'][0]
+    assert patch['original_header_retained'] and patch['original_file_license'] == 'BSD-3-Clause'
+    assert not patch['feature_flags_changed'] and not patch['ssl_feature']
+    assert hashlib.sha256((ROOT / patch['repository_patch']).read_bytes()).hexdigest() == patch['patch_sha256']
+    binding = next(wheel for wheel in manifest['wheels'] if wheel['name'] == 'pyside6')
+    assert set(binding['requires']) == {'shiboken6==6.12.0+vispynogl.1', 'pyside6-qt6==6.12.0+vispynogl.1'}
+    assert not manifest['support_wheels']  # Shiboken is source-built, not replaced by a stock wheel.
+
+
 def test_source_profile_rejects_changed_input_and_path_escape(tmp_path):
     from no_opengl.qt_linux_profile import verified
     root = tmp_path / 'bundle'
