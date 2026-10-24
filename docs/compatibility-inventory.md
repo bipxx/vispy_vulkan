@@ -127,11 +127,61 @@ identity, `status: PASS` and `controls_passed: true`.
 
 Those records are integration summaries produced only after the existing full
 member auditor and observer/control protocols succeed. They do not replace,
-reimplement or relax those verifiers. Retain their raw inputs/outputs and tool
-identity in the packet report. Adapters from current auditor/observer outputs to
-this normalized receipt format remain pending; the seed admits no installed or
-qualified claims. The validator checks identity and evidence integrity, not
-whether an arbitrary author actually performed a claimed experiment.
+reimplement or relax those verifiers. The adapter and validator now bind the
+original reports to the actual workflow as described below. The seed still
+admits no installed or qualified claims. Evidence integrity does not establish
+whether an arbitrary author honestly performed a claimed experiment; retain
+the originals and review the scenario's assertions and coverage.
+
+## Workflow-bound qualification
+
+A qualified row must have a `workflow` mapping with `id`, `scenario` (`script`,
+`headless` or `qt`), `binding`, `script` and `arguments`. Script scenarios name a
+local `{path, sha256}` reference; builtins require `script: null` and no ignored
+script arguments. Qt requires an explicit binding. Pending/source/wheel-tested
+rows may omit this additive v2 field; qualified claims cannot.
+
+The existing observer accepts `--workflow-id <id>` and repeated
+`--covered-feature <feature-id>` options. Controller and worker independently
+record the scenario, script hash, binding and actual argument list. A script
+changing during execution fails. Only the initial CLI boundary is consumed;
+literal `--` and empty arguments inside the script's argument list are preserved.
+Feature declarations require review against the script; they do not automatically
+establish broad API coverage or satisfy unrelated inventory rows.
+
+Use the original discovery → installed inventory → fresh receipt-bound replay
+protocol, with matching workflow metadata on both runs. Prepare a JSON bundle
+with these hash references: `runtime`, `worker`, `dependencies`, `inventory`,
+`discovery`, `discovery_worker` and `controls`. Its `control_reports` member maps
+every independent control case name to its own hash reference. Keep reports
+outside scratch from the start, or retain their exact bytes and use portable
+references; normalization checks hash edges rather than rewriting original paths.
+
+```text
+python -B tools/compatibility_evidence.py --ledger <ledger.json> --feature <feature-id> --profile <profile-id> --raw-reports <bundle.json> --output <new-index.json>
+```
+
+This writes three separate gate records plus an index of their file references,
+refusing existing outputs. It checks original member-audit results, worker
+completion/shutdown, same-wheel/environment/interpreter identity, observer
+coverage and independent controls. Collector implementation/native-tool identity
+and control report hashes must agree. The dependency receipt must bind the
+discovery flow; the fresh replay must bind that exact receipt. Source/import-only
+reports and unverified/failed replay gates cannot qualify a workflow.
+
+Put the resulting gate references into the feature receipt. The inventory
+validator recomputes normalization from the raw bundle; a handwritten green
+label or same-wheel headless report cannot replace an observed Tk script.
+Legacy gate summaries without this binding remain historical and cannot promote
+new qualified rows. The separate full distribution audit and functional pytest
+receipt are still required. `PASS_NORMALIZED` is not full inventory completion.
+
+`tools/tkinter_state_scenario.py` supplies a bounded real Tk/state flow for the
+script observer: two displayed targets, embedded input/host binding, both actual
+flush routes before synchronization, independent color expectations, finish
+without presentation and host-root survival. Source checks pass with retained
+Windows/WSL native candidates. It is not the complete Tk/state acceptance matrix
+and has not yet qualified a final installed wheel.
 
 Follow [build hygiene](build-hygiene.md) for experiments. Keep durable receipts
 outside scratch and reference stable artifacts by hash. A new validator/schema

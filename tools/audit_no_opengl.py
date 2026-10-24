@@ -17,9 +17,12 @@ import zipfile
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from no_opengl.dependencies import dependency_closure
 from no_opengl.policy import assess, import_reason, library_reason, LIVE_GAUGES
+from no_opengl.workflow import arguments, collector_identity, describe
 
 
 def run_candidate(args):
+    workflow = describe(args)
+    collector = collector_identity(args)
     report_path = args.output.resolve()
     worker = report_path.with_suffix('.worker.json')
     assert not worker.exists(), 'Fresh worker report required'
@@ -34,8 +37,12 @@ def run_candidate(args):
         command.extend(['--dependency-path', str(path.resolve(strict=True))])
     if args.dependencies_report:
         command.extend(['--environment-receipt', str(args.dependencies_report.resolve(strict=True))])
+    if getattr(args, 'workflow_id', None):
+        command.extend(['--workflow-id', args.workflow_id])
+    for feature in getattr(args, 'covered_feature', []):
+        command.extend(['--covered-feature', feature])
     if args.arguments:
-        command.extend(['--', *args.arguments])
+        command.extend(['--', *arguments(args.arguments)])
     environment = os.environ.copy()
     for key in ('PYTHONPATH', 'PYTHONHOME', 'PYTHONOPTIMIZE'):
         environment.pop(key, None)
@@ -67,7 +74,8 @@ def run_candidate(args):
             if library_reason(path):
                 events.append({'kind': 'native_load', 'path': path, 'observation': 'module snapshot', 'phase': snapshot['phase']})
     succeeded = (code == 0 and child_report['status'] == 'PASS_SCENARIO'
-                 and not child_report.get('error') and not child_report.get('cleanup_error'))
+                 and not child_report.get('error') and not child_report.get('cleanup_error')
+                 and child_report.get('workflow') == workflow)
     if args.wheel:
         succeeded = succeeded and child_report.get('wheel_sha256') == hashlib.sha256(args.wheel.read_bytes()).hexdigest() and child_report.get('wheel_members_verified', 0) > 0
         if args.scenario == 'script':
@@ -104,6 +112,9 @@ def run_candidate(args):
     else:
         status = 'UNVERIFIED'
     return {'status': status, 'scenario': args.scenario, 'source_mode': bool(args.source_root), 'process_exit': code,
+            'child_waited': True, 'workflow': workflow, 'collector_identity': collector,
+            'worker_report_sha256': hashlib.sha256(worker.read_bytes()).hexdigest() if worker.exists() else None,
+            'dependencies_report_sha256': hashlib.sha256(args.dependencies_report.read_bytes()).hexdigest() if args.dependencies_report else None,
             'gates': gates, 'imports_gate_passed': imports_pass, 'native_observer': native,
             'worker_report': str(worker), 'worker_status': child_report['status'],
             'scope': 'All three gates require same-artifact installed runtime and environment evidence; source probes never establish artifact qualification.'}
@@ -133,6 +144,8 @@ def main():
     run.add_argument('--dependency-path', type=Path, action='append', default=[])
     run.add_argument('--wheel', type=Path)
     run.add_argument('--script', type=Path)
+    run.add_argument('--workflow-id', help='Reviewed workflow identifier for qualification receipt binding')
+    run.add_argument('--covered-feature', action='append', default=[], help='Feature exercised by the reviewed scenario; repeatable')
     run.add_argument('--native-auditor', type=Path)
     run.add_argument('--native-debugger', type=Path)
     run.add_argument('--handle-baseline', type=Path, help='Passing independent Windows CloseHandle fidelity controls for these exact OS bytes')

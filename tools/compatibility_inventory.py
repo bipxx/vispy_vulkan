@@ -234,11 +234,21 @@ def validate(ledger, root=ROOT, require_complete=False):
                 check(audit.get('status') == 'PASS' and audit.get('identity') == row['identity'], 'missing matching distribution audit')
             if row['state'] == 'qualified':
                 check(set(receipt.get('gates', {})) == set(GATES), 'missing qualification gate')
+                try:
+                    from .compatibility_evidence import normalize
+                except ImportError:
+                    from compatibility_evidence import normalize
+                normalized, raw_reports = None, None
                 for gate in GATES:
                     output = read_json(file_ref(root, receipt['gates'][gate]))
                     check(output.get('status') == 'PASS' and output.get('identity') == row['identity']
                           and output.get('controls_passed') is True and output.get('gate') == gate,
                           f'failed/stale/uncontrolled gate: {gate}')
+                    if normalized is None:
+                        raw_reports = output.get('raw_reports', {})
+                        normalized = normalize(root, row, raw_reports)
+                    check(output.get('raw_reports') == raw_reports and output == normalized[gate],
+                          f'gate does not match raw workflow-bound evidence: {gate}')
             for dependency in applicability[key]['dependencies']:
                 previous = rows.get((dependency, profile_id))
                 check(previous is not None and previous['state'] in POSITIVE, 'unproven same-profile capability dependency')

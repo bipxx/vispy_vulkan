@@ -696,7 +696,8 @@ migration preserves rows/receipts and required scope while resetting review.
 Sixty-eight CPU cases pass, including the original optional-profile regression.
 All 142 seed pairs remain required/unreviewed; this closes the mapping defect at
 source level, not G0 reconciliation or artifact qualification. Human review of
-scope rationale and the B1 workflow-bound gate adapter remain necessary.
+scope rationale and affected-profile application of the B1 workflow-bound gate
+adapter remain necessary.
 
 Each implementation packet lists affected feature/profile rows before testing.
 Changes to lowering, bindings, layout, submission or resource lifetime include
@@ -715,8 +716,24 @@ Bind each normalized absence-gate record to the observed scenario/script hash,
 arguments, covered feature/workflow IDs, observer/control identity and raw report
 hashes, in addition to the existing artifact/profile identity. The validator and
 receipt adapters must reject evidence for an unrelated workflow even when its
-wheel/profile match. This coverage binding is pending implementation; current
-gate/status/control/identity checks alone do not establish it.
+wheel/profile match. Gate/status/control/identity checks alone do not establish it.
+
+Source checkpoint B1: qualified rows now require a workflow mapping. Controller
+and worker record the actual script hash/arguments and coverage IDs; the worker
+rejects a script changed during execution. The normalization adapter validates
+the original discovery, inventory, dependency receipt, fresh replay and control
+reports, including hash edges, collector identity, process completion, installed
+members and shutdown. The ledger validator recomputes those records rather than
+accepting unrelated or manually labelled green gates. Existing full auditors and
+independent controls remain mandatory. See the [receipt protocol](../../compatibility-inventory.md#workflow-bound-qualification).
+
+Selected CPU/protocol suites pass 141 cases on Windows and 141 on Linux, with
+one existing symlink-venv regression explicitly deselected in both selections;
+it is not counted as covered by this packet. An earlier broad Windows selection
+failed the strict gate on that platform skip and is retained as a failed attempt.
+The real bounded Tk/state script passes separately on both retained native
+candidates with nine zero shutdown gauges. These source/adapter results do not
+qualify an installed wheel, re-run native controls or close the complete G2 matrix.
 
 Use the existing `tools/audit_no_opengl.py --scenario script` path for installed
 Tk/state workflows. Preserve its discovery run, environment inventory and fresh

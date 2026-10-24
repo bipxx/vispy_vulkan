@@ -22,6 +22,22 @@ functional/recovery/shutdown assertions. Source checks are explicitly labelled:
 `--source-root <checkout> --dependency-path <site-packages> --gates imports`.
 Use base Python there, since an editable redirect finder can override sys.path.
 
+For compatibility-ledger qualification, also supply `--workflow-id <id>` and
+repeated `--covered-feature <feature-id>` options before the argument boundary.
+The controller and worker record matching script hashes and actual arguments;
+literal `--` arguments within a script command are preserved. The worker fails
+if the script changes during execution. Collector source/native-tool identities
+and independent control report hashes are retained for the normalization adapter.
+Unlabelled historical runs remain readable but cannot promote a new ledger row.
+
+`--scenario script --script tools/tkinter_state_scenario.py --workflow-id
+tk-state-smoke --covered-feature app.canvas --covered-feature gloo.flush` selects
+the bounded real Tk/state flow. Run it through the same discovery, inventory and
+fresh replay sequence below. It does not substitute for the full Tk/state suite.
+The [workflow inventory guide](../../docs/compatibility-inventory.md#workflow-bound-qualification)
+describes raw report bundles and `tools/compatibility_evidence.py`; the adapter
+does not run or relax the collectors or full installed-distribution auditor.
+
 Windows x64 uses OS debugger process-tree events from before the first
 instruction. It records startup/transient DLL loads and unloads, traps public
 GL-shaped exports, and observes GetProcAddress and

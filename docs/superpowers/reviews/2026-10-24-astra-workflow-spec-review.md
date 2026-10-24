@@ -44,3 +44,18 @@ pass. Controls cover absent required rows, hardware blockers, optional work,
 nonapplicability, pair completeness, local dependency cycles and migration.
 This is coordinator-recorded source evidence, not an independent implementation
 re-review, reviewed inventory or artifact qualification. B1 remains open.
+
+## Implementation follow-up: B1 workflow evidence
+
+A later source packet adds reviewed row workflow mappings, independently
+recorded controller/worker scenario hashes and arguments, covered feature IDs,
+collector identity and control report hashes. The adapter consumes original
+discovery/inventory/dependency/replay/control reports; the ledger validator
+recomputes normalized gates and rejects the original unrelated-headless regression.
+A bounded real Tk/state script is available through the existing script scenario.
+Selected protocol suites pass 141 Windows and 141 Linux cases, with the existing
+symlink-venv case explicitly deselected. The new functional script passes on both
+retained native candidates with nine zero shutdown gauges. No new installed wheel
+or actual native control run was qualified. Independent implementation review,
+complete workflow mapping and G2 artifact gates remain required; this is a
+coordinator source checkpoint rather than an independent closure of B1.

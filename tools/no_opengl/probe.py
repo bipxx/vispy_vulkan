@@ -15,6 +15,7 @@ import importlib.machinery
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from no_opengl.policy import import_reason, is_gl_entrypoint, library_reason, LIVE_GAUGES
+from no_opengl.workflow import arguments, describe
 
 
 def main():
@@ -28,11 +29,14 @@ def main():
     parser.add_argument('--wheel', type=Path)
     parser.add_argument('--environment-receipt', type=Path)
     parser.add_argument('--script', type=Path)
+    parser.add_argument('--workflow-id')
+    parser.add_argument('--covered-feature', action='append', default=[])
     parser.add_argument('arguments', nargs=argparse.REMAINDER)
     args = parser.parse_args()
     report = {'status': 'FAILED', 'pid': os.getpid(), 'parent_pid': os.getppid(), 'scenario': args.scenario,
               'binding': args.binding, 'policy': args.policy, 'python': sys.version, 'executable': sys.executable,
               'prefix': sys.prefix, 'base_prefix': sys.base_prefix,
+              'executable_resolved': str(Path(sys.executable).resolve()),
               'events': [], 'snapshots': [], 'source_mode': bool(args.source_root)}
     native = canvas = None
     began = time.monotonic()
@@ -57,6 +61,7 @@ def main():
         if reason and args.policy == 'deny':
             raise RuntimeError('No-OpenGL policy blocked: ' + reason)
     try:
+        report['workflow'] = describe(args)
         assert sys.flags.isolated and sys.flags.dont_write_bytecode and not sys.flags.optimize
         if args.source_root:
             # Source probes must not accidentally import the editable installation.
@@ -75,12 +80,14 @@ def main():
         if args.scenario == 'script':
             if args.script is None:
                 raise ValueError('--script is required for script scenario')
-            sys.argv = [str(args.script), *([x for x in args.arguments if x != '--'])]
+            sys.argv = [str(args.script), *arguments(args.arguments)]
             try:
                 runpy.run_path(str(args.script.resolve(strict=True)), run_name='__main__')
             except SystemExit as exit_status:
                 if exit_status.code not in (None, 0):
                     raise
+            if describe(args) != report['workflow']:
+                raise RuntimeError('Scenario script changed during execution')
         else:
             import vispy
             from vispy import gloo, scene

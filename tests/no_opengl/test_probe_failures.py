@@ -1,5 +1,6 @@
 """A successful scenario cannot mask a later installed-artifact failure."""
 import json
+import hashlib
 from pathlib import Path
 import subprocess
 import sys
@@ -34,8 +35,42 @@ def test_binding_option_is_an_enum_not_a_filesystem_path(tmp_path):
     report = tmp_path / 'report.json'
     result = subprocess.run([sys.executable, '-B', str(ROOT / 'tools/audit_no_opengl.py'), 'run',
                              '--python', sys.executable, '--scenario', 'script', '--script', str(script),
-                             '--binding', 'pyqt6', '--gates', 'imports', '--output', str(report)], capture_output=True, text=True)
+                             '--binding', 'pyqt6', '--gates', 'imports', '--output', str(report),
+                             '--workflow-id', 'tk-state', '--covered-feature', 'app.canvas', '--', '--literal', '--', 'value'],
+                            capture_output=True, text=True)
     assert result.returncode == 0, result.stdout + result.stderr
     value = json.loads(report.read_text())
     worker = json.loads(Path(value['worker_report']).read_text())
     assert value['status'] == 'PASS_IMPORT_GATE_ONLY' and worker['binding'] == 'pyqt6'
+    assert value['workflow'] == worker['workflow']
+    assert value['workflow']['id'] == 'tk-state' and value['workflow']['features'] == ['app.canvas']
+    assert value['workflow']['arguments'] == ['--literal', '--', 'value']
+    assert value['workflow']['script_sha256'] == hashlib.sha256(script.read_bytes()).hexdigest()
+    assert value['worker_report_sha256'] == hashlib.sha256(Path(value['worker_report']).read_bytes()).hexdigest()
+
+
+def test_probe_records_actual_script_arguments_without_dropping_literal_boundaries(tmp_path):
+    marker = tmp_path / 'argv.json'
+    script = tmp_path / 'scenario.py'
+    script.write_text('import sys, json\nfrom pathlib import Path\nPath(sys.argv[1]).write_text(json.dumps(sys.argv[2:]))\n')
+    report = tmp_path / 'worker.json'
+    result = subprocess.run([sys.executable, '-I', '-B', str(ROOT / 'tools/no_opengl/probe.py'),
+                             '--scenario', 'script', '--script', str(script), '--workflow-id', 'tk-state',
+                             '--covered-feature', 'app.canvas', '--output', str(report), '--', str(marker), '--', '--literal', ''],
+                            capture_output=True, text=True)
+    assert result.returncode == 0, result.stdout + result.stderr
+    assert json.loads(marker.read_text()) == ['--', '--literal', '']
+    worker = json.loads(report.read_text())
+    assert worker['workflow']['arguments'] == [str(marker), '--', '--literal', '']
+
+
+def test_probe_cannot_pass_when_the_observed_script_changes_during_execution(tmp_path):
+    script = tmp_path / 'scenario.py'
+    script.write_text('from pathlib import Path\nPath(__file__).write_text("# Changed during scenario\\n")\n')
+    report = tmp_path / 'worker.json'
+    result = subprocess.run([sys.executable, '-I', '-B', str(ROOT / 'tools/no_opengl/probe.py'),
+                             '--scenario', 'script', '--script', str(script), '--output', str(report)],
+                            capture_output=True, text=True)
+    assert result.returncode == 1
+    worker = json.loads(report.read_text())
+    assert worker['status'] == 'FAILED_SCENARIO' and 'script changed during execution' in worker['error']

@@ -11,6 +11,8 @@ import pytest
 from tools import compatibility_inventory as inventory
 from tools.generate_compatibility_catalog import exports, generate
 from tools.migrate_compatibility_inventory import main as migrate_main, migrate_v1
+from tools.compatibility_evidence import CORE_CONTROLS, normalize
+from tools.no_opengl.policy import LIVE_GAUGES
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -66,11 +68,66 @@ def promote(root, ledger, state='source-tested'):
         receipt['distribution_audit'] = write_json(root, 'evidence/distribution.json',
                                                    {'status': 'PASS', 'identity': row['identity']})
     if state == 'qualified':
-        receipt['gates'] = {gate: write_json(root, f'evidence/{gate}.json',
-                                           {'status': 'PASS', 'gate': gate, 'identity': row['identity'], 'controls_passed': True})
-                            for gate in inventory.GATES}
+        references = synthetic_gate_bundle(root, row)
+        receipt['gates'] = {gate: write_json(root, f'evidence/{gate}.json', output)
+                            for gate, output in normalize(root, row, references).items()}
     row['receipt'] = write_json(root, 'evidence/receipt.json', receipt)
     return receipt
+
+
+def synthetic_gate_bundle(root, row):
+    """Minimal raw protocol records, deliberately synthetic; never GPU proof."""
+    script = root / 'tests/scenario.py'
+    script.write_text('# Synthetic qualification parser fixture only.\n', encoding='utf-8')
+    row['workflow'] = {'id': 'tk-state', 'scenario': 'script', 'binding': None,
+                       'script': {'path': 'tests/scenario.py', 'sha256': hashlib.sha256(script.read_bytes()).hexdigest()},
+                       'arguments': ['--ordinary', '--', 'mutation']}
+    workflow = {key: value for key, value in row['workflow'].items() if key != 'script'}
+    workflow.update(script_sha256=row['workflow']['script']['sha256'], features=[row['feature']])
+    sources = {}
+    for name in ('tools/audit_no_opengl.py', 'tools/no_opengl/probe.py', 'tools/no_opengl/workflow.py', 'tools/no_opengl/policy.py'):
+        path = root / name
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text('# Synthetic observer identity fixture\n', encoding='utf-8')
+        sources[name] = hashlib.sha256(path.read_bytes()).hexdigest()
+    collector = {'sources': sources, 'native_tools': {}}
+    refs = {'control_reports': {name: write_json(root, 'evidence/control-' + name + '.json', {'synthetic': name})
+                                for name in ('safe', 'resolve', 'call', 'transient', 'child_call')}}
+    refs['controls'] = write_json(root, 'evidence/controls.json', {
+        'status': 'PASS_CONTROLS', 'collector_identity': collector,
+        'checks': {name: True for name in CORE_CONTROLS},
+        'reports': {name: ref['path'] for name, ref in refs['control_reports'].items()},
+        'reports_sha256': {name: ref['sha256'] for name, ref in refs['control_reports'].items()}})
+    child = {'status': 'PASS_SCENARIO', 'workflow': workflow, 'scenario': 'script', 'source_mode': False,
+             'wheel_sha256': row['identity']['wheel_sha256'], 'wheel_members_verified': 1,
+             'native_cleanup_performed': True, 'after_shutdown': {key: 0 for key in LIVE_GAUGES},
+             'forbidden_modules_present': [], 'executable_resolved': '/synthetic/consumer/python'}
+    refs['discovery_worker'] = write_json(root, 'evidence/discovery-worker.json', child)
+    observed = {'status': 'UNVERIFIED', 'scenario': 'script', 'source_mode': False, 'workflow': workflow,
+                'process_exit': 0, 'child_waited': True, 'worker_report_sha256': refs['discovery_worker']['sha256'],
+                'collector_identity': collector, 'native_observer': {'process_exit': 0, 'errors': [],
+                 'coverage': {key: True for key in ('startup_and_transient_native_loads', 'native_public_gl_export_breakpoints',
+                                                  'native_entrypoint_resolution', 'process_tree')}},
+                'gates': {'no_gl_execution': 'PASS', 'no_gl_loads': 'PASS', 'no_gl_install_link_requirement': 'UNVERIFIED', 'violations': []}}
+    refs['discovery'] = write_json(root, 'evidence/discovery.json', observed)
+    refs['inventory'] = write_json(root, 'evidence/installed-inventory.json', {
+        'status': 'PASS_INVENTORY', 'wheel_sha256': row['identity']['wheel_sha256'], 'wheel_members_verified': 1,
+        'environment_id': 'e' * 64, 'executable': '/synthetic/consumer/python',
+        'errors': [], 'gl_runtime_files': [], 'gl_requirements': []})
+    refs['dependencies'] = write_json(root, 'evidence/dependencies.json', {
+        'status': 'PASS', 'gate': 'PASS', 'admitted_runtime_evidence': True, 'collector_identity': collector,
+        'wheel_sha256': row['identity']['wheel_sha256'], 'environment_id': 'e' * 64,
+        'consumer_executable': '/synthetic/consumer/python', 'discovery_workflow': workflow,
+        'runtime_report_sha256': refs['discovery']['sha256'], 'worker_report_sha256': refs['discovery_worker']['sha256'],
+        'inventory_sha256': refs['inventory']['sha256'], 'blocking_unresolved': [], 'raw_declared_closure': {'violations': []},
+        'coverage': {key: True for key in ('environment_without_gl_packages', 'exact_installed_wheel_bytes', 'selected_candidate_requirements')}})
+    refs['worker'] = write_json(root, 'evidence/replay-worker.json', dict(child, environment_id='e' * 64))
+    replay = deepcopy(observed)
+    replay.update(status='PASS_ALL_NO_OPENGL_GATES', worker_report_sha256=refs['worker']['sha256'],
+                  dependencies_report_sha256=refs['dependencies']['sha256'])
+    replay['gates']['no_gl_install_link_requirement'] = 'PASS'
+    refs['runtime'] = write_json(root, 'evidence/replay.json', replay)
+    return refs
 
 
 def test_current_seed_is_valid_but_cannot_close_full_goal():
@@ -81,6 +138,99 @@ def test_current_seed_is_valid_but_cannot_close_full_goal():
     assert result['incomplete_required_rows'] > 0
     with pytest.raises(inventory.InventoryError, match='full closure unproven'):
         inventory.validate(ledger, require_complete=True)
+
+
+def test_qualified_gate_cannot_borrow_headless_for_tk(example):
+    root, ledger = example
+    receipt = promote(root, ledger, 'qualified')
+    gate = inventory.GATES[1]
+    output = inventory.read_json(root / receipt['gates'][gate]['path'])
+    output['workflow'] = {'id': 'unrelated-headless', 'scenario': 'headless'}
+    receipt['gates'][gate] = write_json(root, f'evidence/{gate}.json', output)
+    ledger['rows'][0]['receipt'] = write_json(root, 'evidence/receipt.json', receipt)
+    with pytest.raises(inventory.InventoryError):
+        inventory.validate(ledger, root)
+
+
+@pytest.mark.parametrize('part,change', [
+    ('runtime', lambda r: r['workflow'].update(id='other')),
+    ('runtime', lambda r: r['workflow'].update(arguments=['different'])),
+    ('runtime', lambda r: r['workflow'].update(script_sha256='0' * 64)),
+    ('runtime', lambda r: r['workflow'].update(features=['other-feature'])),
+    ('worker', lambda r: r['workflow'].update(scenario='headless')),
+    ('runtime', lambda r: r.update(child_waited=False)),
+    ('runtime', lambda r: r.update(process_exit=False)),
+    ('runtime', lambda r: r.update(status='UNVERIFIED')),
+    ('runtime', lambda r: r['native_observer']['coverage'].update(process_tree=False)),
+    ('worker', lambda r: r.update(wheel_members_verified=0)),
+    ('worker', lambda r: r.update(native_cleanup_performed=False)),
+    ('worker', lambda r: r['after_shutdown'].update(pending_tickets=1)),
+    ('worker', lambda r: r.update(environment_id='f' * 64)),
+    ('dependencies', lambda r: r.update(discovery_workflow={})),
+    ('dependencies', lambda r: r.update(status='UNVERIFIED')),
+    ('dependencies', lambda r: r['coverage'].update(selected_candidate_requirements=False)),
+    ('inventory', lambda r: r.update(executable='/another/python')),
+    ('inventory', lambda r: r.update(system_inventory={'gl_packages': ['libgl1']})),
+    ('controls', lambda r: r['checks'].update(native_direct_call_detected=False)),
+    ('controls', lambda r: r['checks'].pop('exec_child_native_call_detected')),
+    ('controls', lambda r: r['collector_identity']['sources'].update({'tools/no_opengl/probe.py': '0' * 64})),
+])
+def test_raw_workflow_gate_bundle_rejects_inconsistent_evidence_even_after_rehash(example, part, change):
+    root, ledger = example
+    receipt = promote(root, ledger, 'qualified')
+    gate = inventory.read_json(root / receipt['gates'][inventory.GATES[0]]['path'])
+    refs = gate['raw_reports']
+    value = inventory.read_json(root / refs[part]['path'])
+    change(value)
+    refs[part] = write_json(root, refs[part]['path'], value)
+    # Rebind parent hashes, so failure demonstrates semantic/coverage mismatch,
+    # rather than merely noticing stale content hashes.
+    discovery = inventory.read_json(root / refs['discovery']['path'])
+    discovery['worker_report_sha256'] = refs['discovery_worker']['sha256']
+    refs['discovery'] = write_json(root, refs['discovery']['path'], discovery)
+    dependencies = inventory.read_json(root / refs['dependencies']['path'])
+    dependencies.update(runtime_report_sha256=refs['discovery']['sha256'],
+                        worker_report_sha256=refs['discovery_worker']['sha256'], inventory_sha256=refs['inventory']['sha256'])
+    refs['dependencies'] = write_json(root, refs['dependencies']['path'], dependencies)
+    runtime = inventory.read_json(root / refs['runtime']['path'])
+    runtime.update(worker_report_sha256=refs['worker']['sha256'], dependencies_report_sha256=refs['dependencies']['sha256'])
+    refs['runtime'] = write_json(root, refs['runtime']['path'], runtime)
+    with pytest.raises(inventory.InventoryError):
+        normalize(root, ledger['rows'][0], refs)
+
+
+def test_workflow_scripts_and_raw_control_reports_remain_hash_bound(example):
+    root, ledger = example
+    receipt = promote(root, ledger, 'qualified')
+    output = inventory.read_json(root / receipt['gates'][inventory.GATES[0]]['path'])
+    refs = output['raw_reports']
+    (root / refs['control_reports']['safe']['path']).write_text('{}', encoding='utf-8')
+    with pytest.raises(inventory.InventoryError, match='changed evidence'):
+        normalize(root, ledger['rows'][0], refs)
+    (root / 'tests/scenario.py').write_text('# Changed scenario', encoding='utf-8')
+    with pytest.raises(inventory.InventoryError, match='changed evidence'):
+        normalize(root, ledger['rows'][0], refs)
+
+
+def test_gate_normalization_cli_writes_separate_records_and_never_overwrites(example):
+    from tools.compatibility_evidence import main
+    root, ledger = example
+    receipt = promote(root, ledger, 'qualified')
+    output = inventory.read_json(root / receipt['gates'][inventory.GATES[0]]['path'])
+    write_json(root, 'ledger.json', ledger)
+    write_json(root, 'raw.json', output['raw_reports'])
+    args = ['--root', str(root), '--ledger', str(root / 'ledger.json'), '--feature', ledger['rows'][0]['feature'],
+            '--profile', ledger['rows'][0]['profile'], '--raw-reports', str(root / 'raw.json'), '--output', str(root / 'normalized.json')]
+    assert main(args) == 0
+    index = inventory.read_json(root / 'normalized.json')
+    receipt['gates'] = index['gates']
+    ledger['rows'][0]['receipt'] = write_json(root, 'evidence/receipt.json', receipt)
+    ledger['reviewed'] = True
+    assert inventory.validate(ledger, root, True)['status'] == 'VALID_COMPLETE'
+    before = (root / 'normalized.json').read_bytes()
+    with pytest.raises(inventory.InventoryError, match='fresh normalization'):
+        main(args)
+    assert (root / 'normalized.json').read_bytes() == before
 
 
 @pytest.mark.parametrize('change, message', [

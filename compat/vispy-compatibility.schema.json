@@ -57,6 +57,20 @@
         "dependencies": {"$ref": "#/$defs/names"}
       }
     },
+    "workflow": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "scenario", "binding", "script", "arguments"],
+      "properties": {
+        "id": {"$ref": "#/$defs/id"}, "scenario": {"enum": ["headless", "qt", "script"]},
+        "binding": {"enum": [null, "pyqt5", "pyqt6", "pyside6"]},
+        "script": {
+          "type": ["object", "null"], "additionalProperties": false,
+          "required": ["path", "sha256"],
+          "properties": {"path": {"$ref": "#/$defs/text"}, "sha256": {"$ref": "#/$defs/hash"}}
+        },
+        "arguments": {"type": "array", "items": {"type": "string"}}
+      }
+    },
     "identity": {
       "type": ["object", "null"], "additionalProperties": false,
       "required": ["source_commit", "patch_sha256", "profile_sha256", "wheel_sha256"],
@@ -79,6 +93,7 @@
       "required": ["feature", "profile", "state", "outcome", "fixtures", "identity", "receipt", "blocker", "next_action"],
       "properties": {
         "feature": {"$ref": "#/$defs/id"}, "profile": {"$ref": "#/$defs/id"},
+        "workflow": {"$ref": "#/$defs/workflow"},
         "state": {"enum": ["not-inventoried", "unsupported", "implemented-untested", "source-tested", "wheel-tested", "qualified", "blocked-external"]},
         "outcome": {"enum": ["not-run", "passed", "failed", "blocked"]},
         "fixtures": {"type": "array", "items": {"$ref": "#/$defs/fixture"}},

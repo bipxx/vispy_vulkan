@@ -24,8 +24,8 @@ adds four refinements: workflow-bound observer evidence, required applicability
 per feature/profile, profile-local dependencies and mode-specific backend
 capability/configuration acceptance. Specification section 11 details these
 requirements plus input vectors, state/query records and shader decisions.
-Ledger/adapter implementation changes remain pending; the review is not runtime
-or release qualification.
+The source checkpoints below implement B2 applicability and B1 workflow binding;
+remaining inventory, implementation-review and installed gates stay open.
 
 ## Baseline and review disposition
 
@@ -128,6 +128,25 @@ remaining state-family coverage, G0 reconciliation and G2 gates stay open.
 
 ## G0 ledger and promotion details
 
+Workflow checkpoint (review B1): an additive v2 `workflow` row mapping now binds
+qualified gates to the actual observed scenario, script bytes, arguments and
+covered feature IDs. Controller/worker metadata, original dependency/discovery/
+inventory/replay reports, independent controls and collector identity are
+checked by `tools/compatibility_evidence.py` and recomputed by the ledger validator.
+The original full auditors/controls are not replaced. Literal script argument
+boundaries are preserved and mid-run script changes fail. A bounded real Tk/state
+observer script exercises both flush routes and embedded/displayed behavior.
+
+The selected CPU/protocol suites pass 141 cases each on Windows and Linux; one
+existing symlink-venv case is explicitly outside this selection. The earlier
+skipped Windows attempt failed its strict gate and remains retained. The new real
+Tk/state flow passes separately on Windows and WSL software native candidates,
+with nine zero shutdown gauges. No final wheel, actual new native-control packet
+or G2 profile was qualified. Full inventory reconciliation, affected acceptance,
+independent implementation review and exact installed-artifact work remain.
+CPU CI now includes the real worker-metadata regressions in its inventory gate;
+that exact 104-case selection passes locally. Current-head remote CI is separate.
+
 Applicability checkpoint (review B2): ledger schema v2 and the validator now
 use explicit required/optional/nonapplicable feature/profile decisions and
 profile-local dependencies. An optional experiment no longer blocks completion;
@@ -135,8 +154,9 @@ missing required rows and hardware-blocked required work still do. Explicit v1
 migration preserves evidence and all original required pairs, resets review and
 refuses overwrite. Sixty-eight CPU cases pass, including the retained failing
 optional-profile reproducer before the fix. All 142 seed pairs remain required,
-unreviewed and incomplete. Full G0 inventory reconciliation and B1 gate-scenario
-binding are still pending; no installed or hardware claim was promoted.
+unreviewed and incomplete. Full G0 inventory reconciliation remains pending;
+the B1 source checkpoint above supplies gate-scenario binding. No installed or
+hardware claim was promoted.
 
 ### Next bounded packets and review artifacts
 
@@ -177,8 +197,8 @@ negative cases. CPU CI now checks this gate before native compilation.
 This is partial G0 implementation: all seed rows are `not-inventoried` in an
 unassigned profile, `reviewed` is false, and the full-completion command fails.
 Examples, method-level contracts, scene wildcard aliases, events, host mappings,
-concrete required profiles and adapters from existing auditor/observer outputs
-remain to be reconciled. No host receipt was promoted and no support percentage
+concrete required profiles and application of the adapter to actual retained
+auditor/observer outputs remain to be reconciled. No host receipt was promoted and no support percentage
 follows from 142 seed entries. The [inventory guide](../../compatibility-inventory.md)
 documents the schema, receipt protocol and remaining integration work.
 
