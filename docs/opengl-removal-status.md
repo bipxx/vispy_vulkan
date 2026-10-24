@@ -235,8 +235,9 @@ verifier remains mandatory. That replacement exposed the retained-depth
 recovery defect in the 92-case run; the later current Windows artifact above
 passes the expanded 95-case suite after its fix. Current Windows CPU checks pass:
 60 no-OpenGL contract tests with one platform skip, plus six canonical
-package/source-contract tests. Those checks do not replace the pending native
-build, installed GPU runs or three-gate receipts for the changed artifact.
+package/source-contract tests. These earlier CPU checks alone did not qualify
+the changed native artifact; its completed installed GPU runs and three-gate
+receipts are recorded above.
 
 Remaining work includes the final Windows napari-threedee timeout and its
 required successful same-artifact replay. The initial
