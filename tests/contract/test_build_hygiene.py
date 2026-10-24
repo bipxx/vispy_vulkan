@@ -66,10 +66,12 @@ def workspace(tmp_path):
     return obj
 
 
-def invoke(ws, *args, expected=0):
-    result = subprocess.run([sys.executable, "-I", "-B", str(TOOL),
-                             "--workspace", str(ws.root), "--policy", str(ws.policy),
-                             "--registry", str(ws.registry), *map(str, args)],
+def invoke(ws, *args, expected=0, registry=True):
+    command = [sys.executable, "-I", "-B", str(TOOL),
+               "--workspace", str(ws.root), "--policy", str(ws.policy)]
+    if registry:
+        command.extend(["--registry", str(ws.registry)])
+    result = subprocess.run([*command, *map(str, args)],
                             capture_output=True, text=True, timeout=15)
     assert result.returncode == expected, result.stdout + result.stderr
     return result
@@ -356,3 +358,43 @@ def test_registration_marker_cannot_exceed_positive_scratch_budget(workspace):
     invoke(ws, "preflight", "--run-id", "tiny-run", "--owner", "contract-test",
            "--expected-peak-bytes", "1", "--register", expected=2)
     assert not (isolated / "build/work/tiny-run").exists()
+
+
+@pytest.mark.parametrize("metadata", ["retained-source", "terminal-manifest", "plan-output", "plan-input"])
+def test_permanent_metadata_in_sibling_scratch_cannot_authorize_cleanup(workspace, metadata):
+    ws = workspace
+    sibling = ws.scratch.parent / "sibling-run"
+    sibling.mkdir()
+    if metadata == "retained-source":
+        original = ws.root / ws.manifest["retained"][0]["path"]
+        retained = sibling / "source.txt"
+        retained.write_bytes(original.read_bytes())
+        ws.manifest["retained"][0]["path"] = retained.relative_to(ws.root).as_posix()
+    elif metadata == "terminal-manifest":
+        ws.manifest_path = sibling / "manifest.json"
+    elif metadata == "plan-output":
+        ws.plan = sibling / "plan.json"
+    else:
+        plan(ws)
+        copied = sibling / "copied-plan.json"
+        copied.write_bytes(ws.plan.read_bytes())
+        invoke(ws, "apply", "--plan", copied, expected=2)
+    if metadata != "plan-input":
+        plan(ws, expected=2)
+    assert (ws.scratch / "object.bin").read_bytes() == b"disposable object"
+    assert (ws.scratch / "nested/result.tmp").read_bytes() == b"disposable output"
+    assert (ws.root / "retained/evidence.txt").read_bytes() == b"evidence must survive"
+    assert sibling.is_dir()
+
+
+def test_omitted_registry_honors_default_blocked_cleanup_history(workspace):
+    ws = workspace
+    default = ws.root / "build/.hygiene/registry.json"
+    write_json(default, {"schema": 1, "protected_roots": [],
+                         "blocked_roots": ["build/work/run-1"], "legacy_roots": ["build/.hygiene"]})
+    result = invoke(ws, "plan", "--manifest", ws.manifest_path, "--output", ws.plan,
+                    expected=2, registry=False)
+    assert "blocked" in result.stdout.lower()
+    assert (ws.scratch / "object.bin").read_bytes() == b"disposable object"
+    assert (ws.scratch / "nested/result.tmp").exists()
+    assert not ws.plan.exists()
