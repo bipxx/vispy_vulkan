@@ -1,7 +1,8 @@
 # OpenGL runtime removal: three-agent execution plan
 
-Date: 2026-10-23. Status: execution plan; groundwork partially implemented,
-full installed-artifact qualification remains pending.
+Date: 2026-10-23; updated 2026-10-24. Status: thirteen of fourteen mandatory
+rows qualified; Windows napari-threedee remains unresolved. Build-hygiene
+policy, lifecycle tooling and the verified duplicate-retirement pass are complete.
 Original inspected source: `390f901ced79d339f46d7f825f21c8e12596d434`.
 Integrated implementation checkpoint: `cc4a66c09` on
 `work/opengl-runtime-removal`. The final installed-artifact matrix is incomplete.
@@ -16,7 +17,8 @@ requirements. Earlier groundwork and candidate results remain historical.
   and final Linux renderer SHA256
   `374a74ea9787ccccc643e0ac7e45d9f704a41d046465828736158ac94398c4a3`
   have same-artifact headless/native feature evidence, including the bounded
-  95-case GPU suite and nine-zero shutdown. These are scoped fixture results,
+  95-case functional suite (93 GPU cases and two public-authoring cases) and
+  nine-zero shutdown. These are scoped fixture results,
   not claims of arbitrary shader-family or driver parity.
 - `compat/no-opengl-matrix.json` records thirteen qualified mandatory rows out of
   fourteen. All Linux software Vulkan/X11 binding and admitted host rows pass.
@@ -31,22 +33,96 @@ requirements. Earlier groundwork and candidate results remain historical.
   runtime closure retain their source hashes and original licenses. Use
   `docs/offline-install-cp312.md`; ordinary upstream extras are development
   dependencies and do not select the strict runtime profile.
-- CI and focused final-artifact Qt regression checks are active following a
-  test-only stale-assertion correction. Keep their actual pass/fail and
-  hardware-versus-software scopes; do not transfer earlier artifacts' results
-  or change immutable references to obtain a pass.
-- Preserve earlier failed candidates, source-input verification, WSL recovery
-  records and rejected-cleanup records. Shared vendor junctions remain read-only.
+- All eleven required Windows/Linux CI checks passed on `d81d7fcee`. Focused
+  final-artifact Qt checks are complete: Windows ten of ten pass; Linux lifecycle
+  and callback recovery pass after a test-only visible-draw wait. Linux software
+  alpha semantics pass, while exact NVIDIA-reference pixels remain unqualified
+  with differences of at most one channel unit. Hygiene changes need their own
+  focused tests and CI; no earlier CI result is transferred to changed code.
+- Preserve meaningful failed candidates, source-input verification, WSL recovery
+  records and rejected-cleanup records. Superseded successful histories need
+  retained reports and reconstruction references, not every expanded copy.
+  Shared vendor junctions remain read-only.
   Never stage vendor deletions or retry a rejected target through another
   command, shell or parent directory.
 
-Exactly three execution owners continue in parallel:
+## Hygiene remediation checkpoint
+
+The former retention practice kept repeated source trees, environments, SDKs,
+datasets and compiler caches. Logical folder totals also counted shared files
+multiple times. The audit measured about 164.8 GiB logical versus 87.5 GiB of
+unique compressed file data in the main build folder (filesystem overhead
+excluded), after earlier cleanup. These measurements are a baseline, not a
+reason to preserve everything that remains.
+
+Apply [build hygiene](../../build-hygiene.md) and the root `AGENTS.md` throughout
+the remaining work. `compat/build-hygiene.json` defines the default 20 GiB
+aggregate scratch budget and 10 GiB free-space reserve. Use
+`tools/build_hygiene.py` to register ownership, check peak capacity, plan terminal
+cleanup and apply only an unchanged bounded plan. WSL preflight must also check
+the backing Windows volume through explicit registry `capacity_roots`.
+
+Exactly the three existing execution owners are reused for this bounded pass:
 
 | Agent | Next packet | Exit evidence |
 | --- | --- | --- |
-| 1 — Native | Complete bounded causal review of the Windows OLE startup intermittency; change production behavior only for a demonstrated defect. | Preserve all failing and diagnostic attempts, native thread ownership and current feature-test evidence. |
-| 2 — Python/hosts | Finish focused final-artifact Qt regression checks and accurate installation/status signposting. | Exact installed renderer/profile identity, unchanged references, explicit hardware/software scope and honest remaining host gaps. |
-| 3 — Packaging/proof | Finish the strict offline CPython 3.12 bundle, CI and release assembly. | Hash-pinned providers and hosts, licenses/preferred sources, immutable per-row receipts and required CI results. |
+| 1 — Native | Trace the current builder/verifier read set and identify redundant successful histories and SDK copies. | Exact keep set, retired-path reconstruction map, actual source/hash verification and a bounded cleanup list; no new builds or verifier weakening. |
+| 2 — Python/hosts | Test filesystem lifecycle outcomes of the hygiene tool. | Real removal only of terminal owned scratch; refusal for live/unawaited work, changed plans, missing retained content, aliases and overlapping protected/blocked paths. |
+| 3 — Packaging/proof | Implement preflight, audit, plan and apply; add the focused check to existing CPU CI. | Default audit-only behavior, versioned budgets, ownership marker, retained hashes, explicit host/guest capacity checks and tested cleanup refusals. |
+
+The coordinator owns policy documentation, integration and actual legacy
+retirement. Execute these acceptance steps before resuming release work:
+
+1. Register the actual current artifact/evidence/source keep set and prior
+   rejected targets. Preserve physical source identities required by the admitted
+   Windows SDK. Historical report references alone do not keep entire obsolete
+   directories alive; distinguish executed verifier reads from unused code.
+2. Validate every legacy removal against retained byte-identical content or a
+   complete retained preferred-source/reconstruction path. Preserve small
+   reports, original licenses, meaningful failure data and a retirement index.
+   Retire duplicate successful-run datasets and sealed packets, obsolete
+   transport archives and disposable compiler caches. Do not merely move all
+   former scratch into an unbounded archive.
+3. Run focused lifecycle tests and one real managed terminal-cleanup exercise.
+   Rehash all current qualification/failure references and final assets after
+   legacy pruning. Record actual reclaimed allocation, accounting for existing
+   compression and hardlinks, rather than attributing unrelated disk changes.
+4. Require cleanup success or a concrete recorded refusal before the next run
+   or handoff. New runs may not recursively capture older run directories or
+   create unregistered top-level build roots. Reuse unchanged qualified runtime
+   artifacts for documentation, report and hygiene-tool changes.
+
+Hygiene completion does not resolve the Windows OLE limitation. The bounded
+native capture follow-up produced two diagnostic successes without a stall and
+one preserved disk-aborted attempt; no cause or remedy was established. Retain
+that distinction and the mandatory row's unqualified status. After this pass,
+resume the original native/Python/packaging ownership below only for remaining
+release requirements; do not rerun already-proven feature rows without a change
+or unresolved concern that justifies it.
+
+Completed hygiene acceptance on 2026-10-24:
+
+- Integrated the versioned policy, root agent instructions, guarded lifecycle
+  tool and focused CPU CI check. Windows lifecycle tests: 54 passed, two
+  privilege-dependent symlink cases skipped; actual junction cases passed.
+  WSL smoke passed ordinary cleanup, symlink refusals and backing-volume checks.
+  A real owned terminal scratch run cleaned successfully with retained hashes.
+- Audited 120,667 current verifier inputs; retained pinned origins and SDK inputs.
+  Retired 74,755 verified duplicate successful-history files and 14,509 empty
+  directories. Removed 30,042,918,070 logical bytes; inode/compression-aware
+  estimated reclaimed file allocation is 7,246,797,402 bytes (6.75 GiB), excluding
+  filesystem overhead. This is an estimate, not a free-space-delta measurement.
+- Post-cleanup verification passed: every selected file/directory absent,
+  3,970 retained content hashes, all 69 unique matrix references (including
+  failures) and nine final asset hashes intact. Local receipts and the exact
+  restoration map are under `build/opengl-removal-execution-root-1`, notably
+  `legacy-retirement68-result.json` and `hygiene70-integrity.json`.
+- A separate 12,134-file compiler-cache candidate set remains untouched: no
+  terminal cleanup receipt was available and all candidates remain present.
+  Do not count its estimated savings or blindly repeat the uncertain attempt.
+- Final-head required CI remains a release gate after the hygiene changes are
+  pushed. Earlier green CI does not qualify the new head. No wheel or native
+  rebuild was needed for this pass.
 
 The coordinator integrates and reviews these packets without adding another
 execution agent. Publishing and merging remain subject to the release gates;
@@ -298,7 +374,7 @@ load/call events, actual process exits and cleanup results. Link the underlying
 frames/traces; a self-declared `no_opengl=true` field is not proof. Reuse a tested
 artifact for matching checks rather than rebuilding it for every report edit.
 
-## Current groundwork and remaining execution
+## Historical groundwork (superseded by the checkpoint above)
 
 The following are partial results, not a completed OpenGL-removal claim:
 
@@ -315,7 +391,7 @@ The following are partial results, not a completed OpenGL-removal claim:
 - Native load/call collectors and their negative controls are being developed.
   Windows import-only checks do not qualify an installed GUI or host artifact.
 
-## Next three-agent execution wave
+## Original three-agent execution wave (requirements retained)
 
 Use the existing three agents/worktrees. Do not create additional execution
 agents. The coordinator integrates completed packets, resolves interfaces and
@@ -347,6 +423,8 @@ source inputs, wheels, binaries, frames and meaningful logs. Previously rejected
 cleanup paths and their parent worktrees remain untouched. Metal stays
 experimental; WSL software Vulkan does not establish native Linux GPU support.
 
-The critical path is the Linux no-GL Qt/binding artifact plus installed-artifact
-native tracing. Estimate completion after their first successful runs; do not
-infer completion from import cleanup or existing Vulkan rendering alone.
+The original Linux Qt/binding and tracing prerequisites are now complete for
+the admitted software/X11 scope. Remaining release work is the unresolved
+Windows startup row, hygiene acceptance, final-head checks and publication/merge.
+Do not infer completion from import cleanup, a diagnostic retry or an older
+artifact's evidence.
