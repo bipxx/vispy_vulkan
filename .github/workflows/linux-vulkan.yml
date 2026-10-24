@@ -7,6 +7,7 @@ on:
       - 'tools/audit_linux_wheel.py'
       - 'tools/linux_wheel_smoke.py'
       - 'tools/marker_wheel_smoke.py'
+      - 'tools/immediate_state_wheel_smoke.py'
       - 'tools/mesh_layout_process.py'
       - 'CMakeLists.txt'
       - 'cmake/**'
@@ -112,6 +113,8 @@ jobs:
             --wheel "${wheels[0]}" --output "$EVIDENCE/rendering"
           "$consumer/bin/python" -I -B tools/marker_wheel_smoke.py \
             --wheel "${wheels[0]}" --output "$EVIDENCE/markers"
+          "$consumer/bin/python" -I -B tools/immediate_state_wheel_smoke.py \
+            --wheel "${wheels[0]}" --output "$EVIDENCE/immediate-state.json"
       - name: Remove owned temporary environments, caches and objects
         if: always()
         run: |

@@ -52,6 +52,8 @@ struct NormalizeOptions {
     // Internal endpoint evaluator body: typed private globals, original GL
     // clip coordinates and identities; compute entry is generated separately.
     bool line_evaluator = false;
+    // Reverse normalized clip Z without changing original clip-plane inclusion.
+    bool reverse_depth = false;
 };
 
 struct NormSampler {

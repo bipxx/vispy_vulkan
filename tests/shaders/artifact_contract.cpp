@@ -27,6 +27,9 @@ void identity_and_provenance() {
     auto second = portable_shader_identity("a", "bc", options, pins);
     require(first != second, "vertex/fragment boundary must not alias");
     require(first != portable_shader_identity("ab", "c", options, pins + "-changed"), "compiler pin identity participates");
+    auto reversed = options;
+    reversed.reverse_depth = true;
+    require(first != portable_shader_identity("ab", "c", reversed, pins), "depth orientation participates");
     auto base = options;
     base.base_level_sampling = true;
     require(first != portable_shader_identity("ab", "c", base, pins), "sampling policy participates");

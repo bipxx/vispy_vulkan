@@ -1,0 +1,400 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "phase",
+    "id",
+    "manifest_sha256",
+    "product_source_commit",
+    "upstream_commit",
+    "ledger",
+    "matrix",
+    "required_host_rows",
+    "runtime_inputs",
+    "profiles",
+    "proposals",
+    "pairs",
+    "workflows",
+    "reviews",
+    "blockers",
+    "release_status",
+    "preparation_tools"
+  ],
+  "properties": {
+    "schema": {
+      "const": 1
+    },
+    "phase": {
+      "const": "development"
+    },
+    "id": {
+      "$ref": "#/$defs/id"
+    },
+    "manifest_sha256": {
+      "$ref": "#/$defs/hash"
+    },
+    "product_source_commit": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "upstream_commit": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "ledger": {
+      "$ref": "#/$defs/file"
+    },
+    "matrix": {
+      "$ref": "#/$defs/file"
+    },
+    "required_host_rows": {
+      "$ref": "#/$defs/names"
+    },
+    "runtime_inputs": {
+      "$ref": "#/$defs/file"
+    },
+    "profiles": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/profile"
+      }
+    },
+    "proposals": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/proposal"
+      }
+    },
+    "pairs": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/pair"
+      }
+    },
+    "workflows": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/workflow"
+      }
+    },
+    "reviews": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source",
+        "scope"
+      ],
+      "properties": {
+        "source": {
+          "$ref": "#/$defs/nullable_file"
+        },
+        "scope": {
+          "$ref": "#/$defs/nullable_file"
+        }
+      }
+    },
+    "blockers": {
+      "$ref": "#/$defs/names"
+    },
+    "release_status": {
+      "const": "NOT_QUALIFIED"
+    },
+    "preparation_tools": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/file"
+      }
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Development candidate preparation, version 1 (never release qualification)",
+  "$defs": {
+    "text": {
+      "type": "string",
+      "minLength": 1
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9._-]*$"
+    },
+    "hash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "file": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "$ref": "#/$defs/text"
+        },
+        "sha256": {
+          "$ref": "#/$defs/hash"
+        }
+      }
+    },
+    "names": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/text"
+      }
+    },
+    "nullable_file": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "$ref": "#/$defs/text"
+        },
+        "sha256": {
+          "$ref": "#/$defs/hash"
+        }
+      }
+    },
+    "origin": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "feature",
+        "profile"
+      ],
+      "properties": {
+        "feature": {
+          "$ref": "#/$defs/id"
+        },
+        "profile": {
+          "$ref": "#/$defs/id"
+        }
+      }
+    },
+    "acceptance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "nodeid",
+        "kind",
+        "cases",
+        "expected",
+        "source"
+      ],
+      "properties": {
+        "nodeid": {
+          "$ref": "#/$defs/text"
+        },
+        "kind": {
+          "enum": [
+            "ordinary",
+            "mutation",
+            "failure",
+            "recovery"
+          ]
+        },
+        "cases": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "expected": {
+          "$ref": "#/$defs/text"
+        },
+        "source": {
+          "$ref": "#/$defs/file"
+        }
+      }
+    },
+    "proposal": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "entry_points",
+        "origins",
+        "upstream_sources",
+        "requirements",
+        "scope",
+        "excluded",
+        "owner"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "entry_points": {
+          "$ref": "#/$defs/names"
+        },
+        "origins": {
+          "type": "array",
+          "minItems": 0,
+          "items": {
+            "$ref": "#/$defs/origin"
+          }
+        },
+        "upstream_sources": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/file"
+          }
+        },
+        "requirements": {
+          "$ref": "#/$defs/names"
+        },
+        "scope": {
+          "$ref": "#/$defs/text"
+        },
+        "excluded": {
+          "$ref": "#/$defs/names"
+        },
+        "owner": {
+          "enum": [
+            "coordinator",
+            "python-hosts",
+            "native",
+            "packaging-proof"
+          ]
+        }
+      }
+    },
+    "pair": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "feature",
+        "profile",
+        "dependencies",
+        "applied_to_ledger"
+      ],
+      "properties": {
+        "feature": {
+          "$ref": "#/$defs/id"
+        },
+        "profile": {
+          "$ref": "#/$defs/id"
+        },
+        "dependencies": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/id"
+          }
+        },
+        "applied_to_ledger": {
+          "const": false
+        }
+      }
+    },
+    "workflow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "script",
+        "profiles",
+        "features",
+        "modes",
+        "launch",
+        "observer",
+        "acceptance",
+        "expected"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "script": {
+          "$ref": "#/$defs/file"
+        },
+        "profiles": {
+          "$ref": "#/$defs/names"
+        },
+        "features": {
+          "$ref": "#/$defs/names"
+        },
+        "modes": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "standalone",
+              "embedded"
+            ]
+          }
+        },
+        "launch": {
+          "$ref": "#/$defs/command"
+        },
+        "observer": {
+          "$ref": "#/$defs/command"
+        },
+        "acceptance": {
+          "type": "array",
+          "minItems": 4,
+          "items": {
+            "$ref": "#/$defs/acceptance"
+          }
+        },
+        "expected": {
+          "$ref": "#/$defs/text"
+        }
+      }
+    },
+    "profile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "required",
+        "observation",
+        "wheel",
+        "previous_qualified_wheel_sha256",
+        "install"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "required": {
+          "const": true
+        },
+        "observation": {
+          "$ref": "#/$defs/file"
+        },
+        "wheel": {
+          "type": "null"
+        },
+        "previous_qualified_wheel_sha256": {
+          "$ref": "#/$defs/hash"
+        },
+        "install": {
+          "$ref": "#/$defs/command"
+        }
+      }
+    },
+    "command": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/text"
+      }
+    }
+  }
+}

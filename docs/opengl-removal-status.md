@@ -9,6 +9,14 @@ artifact, environment and three gates. Follow the [strict offline CPython 3.12
 guide](offline-install-cp312.md) for installation. Metal remains experimental;
 native Linux hardware qualification remains separate from WSL software results.
 
+The follow-up [VisPy compatibility work](vispy-compatibility.md) adds source-level
+Tkinter raster presentation and selected GL-shaped state operations through
+GLIR. Twelve integration cases pass on Windows and WSL Linux using existing
+native binaries, plus thirteen package/source contracts. These changes need a
+new installed artifact and separate absence qualification before expanding this
+matrix. The earlier implementation PR merged with all required checks passing;
+that result does not qualify the follow-up source or resolve the threedee row.
+
 Final-artifact Qt regressions use Windows renderer `62df5e4c...` and Linux
 renderer `374a74ea...`. Windows passes all ten lifecycle, callback and alpha
 checks. Linux lifecycle and CPU alpha-reference checks pass. Both callback

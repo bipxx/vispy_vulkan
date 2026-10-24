@@ -1,0 +1,1166 @@
+{
+  "schema": 1,
+  "phase": "development",
+  "id": "tk-state-resource-1",
+  "manifest_sha256": "34100c0aa53575c1d94d68a792c0a43a1af30534c43a9712c928c3562571f0e0",
+  "product_source_commit": "c7e191ee8ee506d4ba6244eaa217efceb43d115c",
+  "upstream_commit": "117b054598f4758b598f4b8f48feea48c11fe7b0",
+  "ledger": {
+    "path": "compat/vispy-compatibility.json",
+    "sha256": "875c1be945f27398577ef140450b6998fe22713836a9defea2ec57b24fae538d"
+  },
+  "matrix": {
+    "path": "compat/no-opengl-matrix.json",
+    "sha256": "9477ee4a888fbe59d85ee09d0fe779de376f73982cdab7aea2447c11b046f410"
+  },
+  "required_host_rows": [
+    "windows-vulkan-headless",
+    "windows-vulkan-qwidget-pyqt5",
+    "windows-vulkan-qwidget-pyqt6",
+    "windows-vulkan-qwidget-pyside6",
+    "windows-vulkan-napari-pyqt6",
+    "windows-vulkan-glue-vispy-viewers-pyqt6",
+    "windows-vulkan-napari-threedee-pyqt6",
+    "wsl-linux-lavapipe-x11-headless",
+    "wsl-linux-lavapipe-x11-qwidget-pyqt5",
+    "wsl-linux-lavapipe-x11-qwidget-pyqt6",
+    "wsl-linux-lavapipe-x11-qwidget-pyside6",
+    "wsl-linux-lavapipe-x11-napari-pyqt6",
+    "wsl-linux-lavapipe-x11-glue-vispy-viewers-pyqt6",
+    "wsl-linux-lavapipe-x11-napari-threedee-pyqt6"
+  ],
+  "runtime_inputs": {
+    "path": "compat/candidates/tk-state-resource-1/runtime-inputs.json",
+    "sha256": "4a60ee4dc426552ce68d92ea612b43682d67fabcef1ca30f3cb0675eb910e49b"
+  },
+  "profiles": [
+    {
+      "id": "windows-gpu-tk86-cp312-development",
+      "required": true,
+      "observation": {
+        "path": "compat/candidates/tk-state-resource-1/windows-profile.json",
+        "sha256": "4393773cbbcfbac3d42835a012901c28855ca5ac3192718be17d9619b2960bd2"
+      },
+      "wheel": null,
+      "previous_qualified_wheel_sha256": "62df5e4c31bf9a1bb1bea47fd68d50e4198d6ec13d2551c991da1e7f30a2b38f",
+      "install": [
+        "uv",
+        "pip",
+        "install",
+        "--python",
+        "{consumer_python}",
+        "--no-deps",
+        "{wheel}"
+      ]
+    },
+    {
+      "id": "wsl-software-tk86-cp312-development",
+      "required": true,
+      "observation": {
+        "path": "compat/candidates/tk-state-resource-1/linux-profile.json",
+        "sha256": "12de32e1995f72bf60589cac1c0af20ee46c160c57fd7db5494340b4266adf50"
+      },
+      "wheel": null,
+      "previous_qualified_wheel_sha256": "374a74ea9787ccccc643e0ac7e45d9f704a41d046465828736158ac94398c4a3",
+      "install": [
+        "uv",
+        "pip",
+        "install",
+        "--python",
+        "{consumer_python}",
+        "--no-deps",
+        "{wheel}"
+      ]
+    }
+  ],
+  "proposals": [
+    {
+      "id": "tk.backend.raster",
+      "entry_points": [
+        "vispy.app.Application(tkinter)"
+      ],
+      "origins": [
+        {
+          "feature": "app.backend.tkinter",
+          "profile": "unassigned"
+        }
+      ],
+      "upstream_sources": [
+        {
+          "path": "app/backends/__init__.py",
+          "sha256": "bd64d8ad3c6617b71c129de8be84442bef94b813275c1f52e84bfe92607481c2"
+        }
+      ],
+      "requirements": [
+        "BACKEND-1",
+        "BACKEND-2",
+        "TK-1"
+      ],
+      "scope": "Raster Tk standalone and supplied-parent targets under manual pumping.",
+      "excluded": [
+        "Other registered backends; native GL context interoperation; physical DPI/scanout parity."
+      ],
+      "owner": "python-hosts"
+    },
+    {
+      "id": "tk.application.manual",
+      "entry_points": [
+        "Application.process_events",
+        "Application.quit"
+      ],
+      "origins": [
+        {
+          "feature": "app.application",
+          "profile": "unassigned"
+        }
+      ],
+      "upstream_sources": [
+        {
+          "path": "app/__init__.py",
+          "sha256": "34386f5653e94549b9ce47ece0bd55c1b744d47860edd184908dbc4581f62933"
+        }
+      ],
+      "requirements": [
+        "TK-1",
+        "TK-2",
+        "TK-4"
+      ],
+      "scope": "Manual event progress and quit preserving the supplied host interpreter.",
+      "excluded": [
+        "Application.run and external mainloop admission remain separate workflows."
+      ],
+      "owner": "python-hosts"
+    },
+    {
+      "id": "tk.canvas.basic",
+      "entry_points": [
+        "Canvas",
+        "Canvas.update",
+        "Canvas.close",
+        "Canvas.set_current"
+      ],
+      "origins": [
+        {
+          "feature": "app.canvas",
+          "profile": "unassigned"
+        }
+      ],
+      "upstream_sources": [
+        {
+          "path": "app/__init__.py",
+          "sha256": "34386f5653e94549b9ce47ece0bd55c1b744d47860edd184908dbc4581f62933"
+        }
+      ],
+      "requirements": [
+        "TK-1",
+        "TK-5",
+        "TK-8"
+      ],
+      "scope": "One embedded and one standalone canvas, actual configured extent, RGB presentation and close order.",
+      "excluded": [
+        "Nondefault px_scale; arbitrary WM options; complete Canvas methods."
+      ],
+      "owner": "python-hosts"
+    },
+    {
+      "id": "tk.context.current",
+      "entry_points": [
+        "GLContext.flush_commands",
+        "Canvas.context"
+      ],
+      "origins": [
+        {
+          "feature": "gloo.glcontext",
+          "profile": "unassigned"
+        }
+      ],
+      "upstream_sources": [
+        {
+          "path": "gloo/__init__.py",
+          "sha256": "ccaf150dd63f776b170cb7b6a6909191b5f3aa3f45aef2acbb25344956bd38e5"
+        }
+      ],
+      "requirements": [
+        "STATE-2",
+        "STATE-4"
+      ],
+      "scope": "Current-target ordering and GLIR command delivery between two Tk canvases.",
+      "excluded": [
+        "Native GL contexts; arbitrary framebuffer formats and attachment combinations."
+      ],
+      "owner": "native"
+    },
+    {
+      "id": "tk.context.shared",
+      "entry_points": [
+        "Canvas(shared=first)",
+        "GLContext.shared"
+      ],
+      "origins": [
+        {
+          "feature": "gloo.glcontext",
+          "profile": "unassigned"
+        }
+      ],
+      "upstream_sources": [
+        {
+          "path": "gloo/__init__.py",
+          "sha256": "ccaf150dd63f776b170cb7b6a6909191b5f3aa3f45aef2acbb25344956bd38e5"
+        }
+      ],
+      "requirements": [
+        "TK-1",
+        "STATE-2"
+      ],
+      "scope": "Shared Program/Texture/VertexBuffer resources survive first-consumer close.",
+      "excluded": [
+        "Other sharing orders, cross-interpreter resources and other backends require separate admission."
+      ],
+      "owner": "native"
+    },
+    {
+      "id": "tk.canvas.recovery",
+      "entry_points": [
+        "Canvas.update after device recreation"
+      ],
+      "origins": [
+        {
+          "feature": "app.canvas",
+          "profile": "unassigned"
+        }
+      ],
+      "upstream_sources": [
+        {
+          "path": "app/__init__.py",
+          "sha256": "34386f5653e94549b9ce47ece0bd55c1b744d47860edd184908dbc4581f62933"
+        }
+      ],
+      "requirements": [
+        "TK-8",
+        "EV-4"
+      ],
+      "scope": "Same live widget and resources render blue after explicit native device-loss injection.",
+      "excluded": [
+        "Physical driver removal/hang and unrelated recovery forms."
+      ],
+      "owner": "python-hosts"
+    },
+    {
+      "id": "tk.timer.once",
+      "entry_points": [
+        "Timer.start",
+        "Timer.stop",
+        "Timer.events.timeout"
+      ],
+      "origins": [
+        {
+          "feature": "app.timer",
+          "profile": "unassigned"
+        }
+      ],
+      "upstream_sources": [
+        {
+          "path": "app/__init__.py",
+          "sha256": "34386f5653e94549b9ce47ece0bd55c1b744d47860edd184908dbc4581f62933"
+        }
+      ],
+      "requirements": [
+        "TK-2",
+        "TK-4"
+      ],
+      "scope": "One public Timer callback uploads green pixels and stops its own generation.",
+      "excluded": [
+        "Realtime timing, all Timer interval/restart modes and every loop driver."
+      ],
+      "owner": "python-hosts"
+    },
+    {
+      "id": "tk.gl.flush",
+      "entry_points": [
+        "gl.glFlush"
+      ],
+      "origins": [
+        {
+          "feature": "gloo.gl",
+          "profile": "unassigned"
+        }
+      ],
+      "upstream_sources": [
+        {
+          "path": "gloo/__init__.py",
+          "sha256": "ccaf150dd63f776b170cb7b6a6909191b5f3aa3f45aef2acbb25344956bd38e5"
+        }
+      ],
+      "requirements": [
+        "STATE-2",
+        "STATE-4"
+      ],
+      "scope": "Raw glFlush submits prior clear work without completion/presentation.",
+      "excluded": [
+        "Other raw selectors/setters and all remaining legal state-value gaps."
+      ],
+      "owner": "native"
+    },
+    {
+      "id": "tk.wrappers.submission",
+      "entry_points": [
+        "gloo.clear",
+        "gloo.flush",
+        "gloo.finish"
+      ],
+      "origins": [],
+      "upstream_sources": [
+        {
+          "path": "gloo/wrappers.py",
+          "sha256": "73dbb5eb8ca78b2822266d272ffb14db9fcadd7a56512843209187714c9e8dcc"
+        }
+      ],
+      "requirements": [
+        "STATE-2",
+        "STATE-4"
+      ],
+      "scope": "Ordered clear/flush/finish with known RGBA pixels and independent submission counters.",
+      "excluded": [
+        "Wrappers are not fully represented by the seed; remaining wrapper/method inventory stays required."
+      ],
+      "owner": "native"
+    },
+    {
+      "id": "tk.wrappers.raster",
+      "entry_points": [
+        "gloo.set_viewport",
+        "gloo.set_state",
+        "gloo.finish"
+      ],
+      "origins": [],
+      "upstream_sources": [
+        {
+          "path": "gloo/wrappers.py",
+          "sha256": "73dbb5eb8ca78b2822266d272ffb14db9fcadd7a56512843209187714c9e8dcc"
+        }
+      ],
+      "requirements": [
+        "STATE-1",
+        "STATE-4"
+      ],
+      "scope": "Viewport and disabled blend/depth/scissor state for a full-screen textured triangle, then explicit finish.",
+      "excluded": [
+        "Other preset/state values and synchronization failure forms."
+      ],
+      "owner": "native"
+    },
+    {
+      "id": "tk.readback.rgba",
+      "entry_points": [
+        "gloo.read_pixels"
+      ],
+      "origins": [
+        {
+          "feature": "gloo.read-pixels",
+          "profile": "unassigned"
+        }
+      ],
+      "upstream_sources": [
+        {
+          "path": "gloo/wrappers.py",
+          "sha256": "73dbb5eb8ca78b2822266d272ffb14db9fcadd7a56512843209187714c9e8dcc"
+        }
+      ],
+      "requirements": [
+        "TK-7",
+        "STATE-3"
+      ],
+      "scope": "Full actual client target RGBA8 readback equals independent red/green/blue values.",
+      "excluded": [
+        "Crops, float readback, multisample capture and the separate Linux capture blocker."
+      ],
+      "owner": "native"
+    },
+    {
+      "id": "tk.object.delete",
+      "entry_points": [
+        "GLObject.delete"
+      ],
+      "origins": [
+        {
+          "feature": "gloo.globject",
+          "profile": "unassigned"
+        }
+      ],
+      "upstream_sources": [
+        {
+          "path": "gloo/__init__.py",
+          "sha256": "ccaf150dd63f776b170cb7b6a6909191b5f3aa3f45aef2acbb25344956bd38e5"
+        }
+      ],
+      "requirements": [
+        "STATE-2",
+        "TK-4"
+      ],
+      "scope": "Explicit Program/Texture/VertexBuffer deletion and queued retirement on the surviving context.",
+      "excluded": [
+        "All GLObject types and arbitrary deletion/failure concurrency."
+      ],
+      "owner": "native"
+    },
+    {
+      "id": "tk.buffer.triangle",
+      "entry_points": [
+        "VertexBuffer"
+      ],
+      "origins": [
+        {
+          "feature": "gloo.vertexbuffer",
+          "profile": "unassigned"
+        }
+      ],
+      "upstream_sources": [
+        {
+          "path": "gloo/__init__.py",
+          "sha256": "ccaf150dd63f776b170cb7b6a6909191b5f3aa3f45aef2acbb25344956bd38e5"
+        }
+      ],
+      "requirements": [
+        "STATE-2"
+      ],
+      "scope": "Three float32 vec2 vertices describe an oversized full-screen triangle.",
+      "excluded": [
+        "Indices, instancing, attributes/strides/matrix forms outside this input."
+      ],
+      "owner": "native"
+    },
+    {
+      "id": "tk.texture.rgba8",
+      "entry_points": [
+        "Texture2D",
+        "Texture2D.set_data"
+      ],
+      "origins": [
+        {
+          "feature": "gloo.texture2d",
+          "profile": "unassigned"
+        }
+      ],
+      "upstream_sources": [
+        {
+          "path": "gloo/__init__.py",
+          "sha256": "ccaf150dd63f776b170cb7b6a6909191b5f3aa3f45aef2acbb25344956bd38e5"
+        }
+      ],
+      "requirements": [
+        "STATE-2",
+        "TK-8"
+      ],
+      "scope": "One uint8 RGBA texel updates red/green/blue and remains usable across consumer close and device loss.",
+      "excluded": [
+        "Other shapes/formats/partial uploads and all texture methods."
+      ],
+      "owner": "native"
+    },
+    {
+      "id": "tk.program.texture",
+      "entry_points": [
+        "Program",
+        "Program.draw"
+      ],
+      "origins": [
+        {
+          "feature": "gloo.program",
+          "profile": "unassigned"
+        }
+      ],
+      "upstream_sources": [
+        {
+          "path": "gloo/__init__.py",
+          "sha256": "ccaf150dd63f776b170cb7b6a6909191b5f3aa3f45aef2acbb25344956bd38e5"
+        }
+      ],
+      "requirements": [
+        "STATE-2",
+        "EV-4"
+      ],
+      "scope": "One vec2 vertex attribute and one sampler2D render a full-screen textured triangle.",
+      "excluded": [
+        "Dynamic samplers, geometry stages, matrix/array attributes and arbitrary shader programs."
+      ],
+      "owner": "native"
+    }
+  ],
+  "pairs": [
+    {
+      "feature": "tk.backend.raster",
+      "profile": "windows-gpu-tk86-cp312-development",
+      "dependencies": [],
+      "applied_to_ledger": false
+    },
+    {
+      "feature": "tk.backend.raster",
+      "profile": "wsl-software-tk86-cp312-development",
+      "dependencies": [],
+      "applied_to_ledger": false
+    },
+    {
+      "feature": "tk.application.manual",
+      "profile": "windows-gpu-tk86-cp312-development",
+      "dependencies": [
+        "tk.backend.raster"
+      ],
+      "applied_to_ledger": false
+    },
+    {
+      "feature": "tk.application.manual",
+      "profile": "wsl-software-tk86-cp312-development",
+      "dependencies": [
+        "tk.backend.raster"
+      ],
+      "applied_to_ledger": false
+    },
+    {
+      "feature": "tk.canvas.basic",
+      "profile": "windows-gpu-tk86-cp312-development",
+      "dependencies": [
+        "tk.application.manual"
+      ],
+      "applied_to_ledger": false
+    },
+    {
+      "feature": "tk.canvas.basic",
+      "profile": "wsl-software-tk86-cp312-development",
+      "dependencies": [
+        "tk.application.manual"
+      ],
+      "applied_to_ledger": false
+    },
+    {
+      "feature": "tk.context.current",
+      "profile": "windows-gpu-tk86-cp312-development",
+      "dependencies": [
+        "tk.canvas.basic"
+      ],
+      "applied_to_ledger": false
+    },
+    {
+      "feature": "tk.context.current",
+      "profile": "wsl-software-tk86-cp312-development",
+      "dependencies": [
+        "tk.canvas.basic"
+      ],
+      "applied_to_ledger": false
+    },
+    {
+      "feature": "tk.context.shared",
+      "profile": "windows-gpu-tk86-cp312-development",
+      "dependencies": [
+        "tk.context.current"
+      ],
+      "applied_to_ledger": false
+    },
+    {
+      "feature": "tk.context.shared",
+      "profile": "wsl-software-tk86-cp312-development",
+      "dependencies": [
+        "tk.context.current"
+      ],
+      "applied_to_ledger": false
+    },
+    {
+      "feature": "tk.canvas.recovery",
+      "profile": "windows-gpu-tk86-cp312-development",
+      "dependencies": [
+        "tk.canvas.basic",
+        "tk.context.current"
+      ],
+      "applied_to_ledger": false
+    },
+    {
+      "feature": "tk.canvas.recovery",
+      "profile": "wsl-software-tk86-cp312-development",
+      "dependencies": [
+        "tk.canvas.basic",
+        "tk.context.current"
+      ],
+      "applied_to_ledger": false
+    },
+    {
+      "feature": "tk.timer.once",
+      "profile": "windows-gpu-tk86-cp312-development",
+      "dependencies": [
+        "tk.application.manual"
+      ],
+      "applied_to_ledger": false
+    },
+    {
+      "feature": "tk.timer.once",
+      "profile": "wsl-software-tk86-cp312-development",
+      "dependencies": [
+        "tk.application.manual"
+      ],
+      "applied_to_ledger": false
+    },
+    {
+      "feature": "tk.gl.flush",
+      "profile": "windows-gpu-tk86-cp312-development",
+      "dependencies": [
+        "tk.context.current"
+      ],
+      "applied_to_ledger": false
+    },
+    {
+      "feature": "tk.gl.flush",
+      "profile": "wsl-software-tk86-cp312-development",
+      "dependencies": [
+        "tk.context.current"
+      ],
+      "applied_to_ledger": false
+    },
+    {
+      "feature": "tk.wrappers.submission",
+      "profile": "windows-gpu-tk86-cp312-development",
+      "dependencies": [
+        "tk.gl.flush",
+        "tk.context.current"
+      ],
+      "applied_to_ledger": false
+    },
+    {
+      "feature": "tk.wrappers.submission",
+      "profile": "wsl-software-tk86-cp312-development",
+      "dependencies": [
+        "tk.gl.flush",
+        "tk.context.current"
+      ],
+      "applied_to_ledger": false
+    },
+    {
+      "feature": "tk.wrappers.raster",
+      "profile": "windows-gpu-tk86-cp312-development",
+      "dependencies": [
+        "tk.context.current"
+      ],
+      "applied_to_ledger": false
+    },
+    {
+      "feature": "tk.wrappers.raster",
+      "profile": "wsl-software-tk86-cp312-development",
+      "dependencies": [
+        "tk.context.current"
+      ],
+      "applied_to_ledger": false
+    },
+    {
+      "feature": "tk.readback.rgba",
+      "profile": "windows-gpu-tk86-cp312-development",
+      "dependencies": [
+        "tk.context.current"
+      ],
+      "applied_to_ledger": false
+    },
+    {
+      "feature": "tk.readback.rgba",
+      "profile": "wsl-software-tk86-cp312-development",
+      "dependencies": [
+        "tk.context.current"
+      ],
+      "applied_to_ledger": false
+    },
+    {
+      "feature": "tk.object.delete",
+      "profile": "windows-gpu-tk86-cp312-development",
+      "dependencies": [
+        "tk.context.current"
+      ],
+      "applied_to_ledger": false
+    },
+    {
+      "feature": "tk.object.delete",
+      "profile": "wsl-software-tk86-cp312-development",
+      "dependencies": [
+        "tk.context.current"
+      ],
+      "applied_to_ledger": false
+    },
+    {
+      "feature": "tk.buffer.triangle",
+      "profile": "windows-gpu-tk86-cp312-development",
+      "dependencies": [
+        "tk.context.shared",
+        "tk.object.delete"
+      ],
+      "applied_to_ledger": false
+    },
+    {
+      "feature": "tk.buffer.triangle",
+      "profile": "wsl-software-tk86-cp312-development",
+      "dependencies": [
+        "tk.context.shared",
+        "tk.object.delete"
+      ],
+      "applied_to_ledger": false
+    },
+    {
+      "feature": "tk.texture.rgba8",
+      "profile": "windows-gpu-tk86-cp312-development",
+      "dependencies": [
+        "tk.context.shared",
+        "tk.object.delete",
+        "tk.canvas.recovery"
+      ],
+      "applied_to_ledger": false
+    },
+    {
+      "feature": "tk.texture.rgba8",
+      "profile": "wsl-software-tk86-cp312-development",
+      "dependencies": [
+        "tk.context.shared",
+        "tk.object.delete",
+        "tk.canvas.recovery"
+      ],
+      "applied_to_ledger": false
+    },
+    {
+      "feature": "tk.program.texture",
+      "profile": "windows-gpu-tk86-cp312-development",
+      "dependencies": [
+        "tk.context.shared",
+        "tk.buffer.triangle",
+        "tk.texture.rgba8",
+        "tk.object.delete"
+      ],
+      "applied_to_ledger": false
+    },
+    {
+      "feature": "tk.program.texture",
+      "profile": "wsl-software-tk86-cp312-development",
+      "dependencies": [
+        "tk.context.shared",
+        "tk.buffer.triangle",
+        "tk.texture.rgba8",
+        "tk.object.delete"
+      ],
+      "applied_to_ledger": false
+    }
+  ],
+  "workflows": [
+    {
+      "id": "tk-state-ownership",
+      "script": {
+        "path": "tools/tkinter_state_scenario.py",
+        "sha256": "4758319932bfd87bc11cdd0a3597efb65d914d3e3b676cc37464d71ab27957af"
+      },
+      "profiles": [
+        "windows-gpu-tk86-cp312-development",
+        "wsl-software-tk86-cp312-development"
+      ],
+      "features": [
+        "tk.backend.raster",
+        "tk.application.manual",
+        "tk.canvas.basic",
+        "tk.context.current",
+        "tk.gl.flush",
+        "tk.wrappers.submission",
+        "tk.readback.rgba"
+      ],
+      "modes": [
+        "standalone",
+        "embedded"
+      ],
+      "launch": [
+        "{consumer_python}",
+        "tools/tkinter_state_scenario.py"
+      ],
+      "observer": [
+        "{controller_python}",
+        "tools/audit_no_opengl.py",
+        "run",
+        "--python",
+        "{consumer_python}",
+        "--wheel",
+        "{wheel}",
+        "--scenario",
+        "script",
+        "--script",
+        "tools/tkinter_state_scenario.py",
+        "--workflow-id",
+        "tk-state-ownership",
+        "--covered-feature",
+        "tk.backend.raster",
+        "--covered-feature",
+        "tk.application.manual",
+        "--covered-feature",
+        "tk.canvas.basic",
+        "--covered-feature",
+        "tk.context.current",
+        "--covered-feature",
+        "tk.gl.flush",
+        "--covered-feature",
+        "tk.wrappers.submission",
+        "--covered-feature",
+        "tk.readback.rgba",
+        "--dependencies-report",
+        "{dependency_report}",
+        "--policy",
+        "deny",
+        "--output",
+        "{evidence_dir}/tk-state-ownership.json"
+      ],
+      "acceptance": [
+        {
+          "nodeid": "tests/native/test_tkinter_state_scenario.py::test_real_tk_state_observer_scenario",
+          "kind": "ordinary",
+          "cases": 1,
+          "expected": "Actual displayed categorical colors and full-target RGBA match independent expectations.",
+          "source": {
+            "path": "tests/native/test_tkinter_state_scenario.py",
+            "sha256": "28b8b7b7216c1216bd5827304e76bf54696f2e45091b53dbbbe928ddd27de5e6"
+          }
+        },
+        {
+          "nodeid": "tests/native/test_tkinter_state_scenario.py::test_real_tk_state_observer_scenario",
+          "kind": "mutation",
+          "cases": 1,
+          "expected": "Both consumers observe the ordered color/resource update.",
+          "source": {
+            "path": "tests/native/test_tkinter_state_scenario.py",
+            "sha256": "28b8b7b7216c1216bd5827304e76bf54696f2e45091b53dbbbe928ddd27de5e6"
+          }
+        },
+        {
+          "nodeid": "tests/native/test_tkinter_backend.py::test_native_progress_failure_stops_duplicate_polling_until_explicit_retry",
+          "kind": "failure",
+          "cases": 2,
+          "expected": "One original progress error and retained host jobs, then explicit redraw retries successfully.",
+          "source": {
+            "path": "tests/native/test_tkinter_backend.py",
+            "sha256": "afae95c1869525f60cbfd1c1ba66990519f8a7b8e6a57833b9e44650a8cf2cb3"
+          }
+        },
+        {
+          "nodeid": "tests/native/test_tkinter_backend.py::test_draw_failure_is_reported_and_next_frame_can_recover",
+          "kind": "recovery",
+          "cases": 1,
+          "expected": "An explicit corrected draw produces the next known frame; no stale pending error remains.",
+          "source": {
+            "path": "tests/native/test_tkinter_backend.py",
+            "sha256": "afae95c1869525f60cbfd1c1ba66990519f8a7b8e6a57833b9e44650a8cf2cb3"
+          }
+        }
+      ],
+      "expected": "Red/blue embedded/standalone clear targets; ordered green/blue flush outputs; host binding survives quit."
+    },
+    {
+      "id": "tk-resource-timer",
+      "script": {
+        "path": "tools/tkinter_resource_scenario.py",
+        "sha256": "2e7cdcae06f62a58ec57a8de94ef2b72a532c124b41792d2d2cd194a8c3f155a"
+      },
+      "profiles": [
+        "windows-gpu-tk86-cp312-development",
+        "wsl-software-tk86-cp312-development"
+      ],
+      "features": [
+        "tk.backend.raster",
+        "tk.application.manual",
+        "tk.canvas.basic",
+        "tk.context.current",
+        "tk.context.shared",
+        "tk.canvas.recovery",
+        "tk.timer.once",
+        "tk.wrappers.raster",
+        "tk.readback.rgba",
+        "tk.object.delete",
+        "tk.buffer.triangle",
+        "tk.texture.rgba8",
+        "tk.program.texture"
+      ],
+      "modes": [
+        "standalone",
+        "embedded"
+      ],
+      "launch": [
+        "{consumer_python}",
+        "tools/tkinter_resource_scenario.py"
+      ],
+      "observer": [
+        "{controller_python}",
+        "tools/audit_no_opengl.py",
+        "run",
+        "--python",
+        "{consumer_python}",
+        "--wheel",
+        "{wheel}",
+        "--scenario",
+        "script",
+        "--script",
+        "tools/tkinter_resource_scenario.py",
+        "--workflow-id",
+        "tk-resource-timer",
+        "--covered-feature",
+        "tk.backend.raster",
+        "--covered-feature",
+        "tk.application.manual",
+        "--covered-feature",
+        "tk.canvas.basic",
+        "--covered-feature",
+        "tk.context.current",
+        "--covered-feature",
+        "tk.context.shared",
+        "--covered-feature",
+        "tk.canvas.recovery",
+        "--covered-feature",
+        "tk.timer.once",
+        "--covered-feature",
+        "tk.wrappers.raster",
+        "--covered-feature",
+        "tk.readback.rgba",
+        "--covered-feature",
+        "tk.object.delete",
+        "--covered-feature",
+        "tk.buffer.triangle",
+        "--covered-feature",
+        "tk.texture.rgba8",
+        "--covered-feature",
+        "tk.program.texture",
+        "--dependencies-report",
+        "{dependency_report}",
+        "--policy",
+        "deny",
+        "--output",
+        "{evidence_dir}/tk-resource-timer.json"
+      ],
+      "acceptance": [
+        {
+          "nodeid": "tests/native/test_tkinter_state_scenario.py::test_real_tk_resource_timer_observer_scenario",
+          "kind": "ordinary",
+          "cases": 1,
+          "expected": "Actual displayed categorical colors and full-target RGBA match independent expectations.",
+          "source": {
+            "path": "tests/native/test_tkinter_state_scenario.py",
+            "sha256": "28b8b7b7216c1216bd5827304e76bf54696f2e45091b53dbbbe928ddd27de5e6"
+          }
+        },
+        {
+          "nodeid": "tests/native/test_tkinter_state_scenario.py::test_real_tk_resource_timer_observer_scenario",
+          "kind": "mutation",
+          "cases": 1,
+          "expected": "Both consumers observe the ordered color/resource update.",
+          "source": {
+            "path": "tests/native/test_tkinter_state_scenario.py",
+            "sha256": "28b8b7b7216c1216bd5827304e76bf54696f2e45091b53dbbbe928ddd27de5e6"
+          }
+        },
+        {
+          "nodeid": "tests/native/test_tkinter_state_scenario.py::test_resource_timer_failure_keeps_original_error_and_retires_resources",
+          "kind": "failure",
+          "cases": 1,
+          "expected": "Original timer upload error reaches caller; all scoped counters return exactly to their baseline. Outer worker separately enforces nine-zero process shutdown.",
+          "source": {
+            "path": "tests/native/test_tkinter_state_scenario.py",
+            "sha256": "28b8b7b7216c1216bd5827304e76bf54696f2e45091b53dbbbe928ddd27de5e6"
+          }
+        },
+        {
+          "nodeid": "tests/native/test_tkinter_state_scenario.py::test_real_tk_resource_timer_observer_scenario",
+          "kind": "recovery",
+          "cases": 1,
+          "expected": "Surviving widget and shared resources render expected blue after native device recreation.",
+          "source": {
+            "path": "tests/native/test_tkinter_state_scenario.py",
+            "sha256": "28b8b7b7216c1216bd5827304e76bf54696f2e45091b53dbbbe928ddd27de5e6"
+          }
+        }
+      ],
+      "expected": "Both targets red then green from one public timer tick; blue survivor after first close and device loss; host jobs/binding preserved."
+    },
+    {
+      "id": "tk-state-resource-failures",
+      "script": {
+        "path": "tools/tkinter_failure_scenario.py",
+        "sha256": "5e863fa46275e388ea229d6ea447a0052140b591adec8f4b2c70ccf61c47d765"
+      },
+      "profiles": [
+        "windows-gpu-tk86-cp312-development",
+        "wsl-software-tk86-cp312-development"
+      ],
+      "features": [
+        "tk.backend.raster",
+        "tk.application.manual",
+        "tk.canvas.basic",
+        "tk.context.current",
+        "tk.context.shared",
+        "tk.canvas.recovery",
+        "tk.timer.once",
+        "tk.gl.flush",
+        "tk.wrappers.submission",
+        "tk.wrappers.raster",
+        "tk.readback.rgba",
+        "tk.object.delete",
+        "tk.buffer.triangle",
+        "tk.texture.rgba8",
+        "tk.program.texture"
+      ],
+      "launch": [
+        "{consumer_python}",
+        "tools/tkinter_failure_scenario.py"
+      ],
+      "acceptance": [
+        {
+          "kind": "ordinary",
+          "nodeid": "tests/native/test_tkinter_state_scenario.py::test_composite_observed_failure_and_recovery_scenario",
+          "cases": 1,
+          "expected": "Both ordinary state and shared-resource GPU/Tk output, host ownership and actual submission assertions pass.",
+          "source": {
+            "path": "tests/native/test_tkinter_state_scenario.py",
+            "sha256": "28b8b7b7216c1216bd5827304e76bf54696f2e45091b53dbbbe928ddd27de5e6"
+          }
+        },
+        {
+          "kind": "mutation",
+          "nodeid": "tests/native/test_tkinter_state_scenario.py::test_composite_observed_failure_and_recovery_scenario",
+          "cases": 1,
+          "expected": "Public Timer uploads green once; survivor blue and host-owned work remain correct.",
+          "source": {
+            "path": "tests/native/test_tkinter_state_scenario.py",
+            "sha256": "28b8b7b7216c1216bd5827304e76bf54696f2e45091b53dbbbe928ddd27de5e6"
+          }
+        },
+        {
+          "kind": "failure",
+          "nodeid": "tests/native/test_tkinter_state_scenario.py::test_composite_observed_failure_and_recovery_scenario",
+          "cases": 1,
+          "expected": "Green upload fault and external-loop native progress faults in both ready callback orders are injected; original errors/tracebacks verified exactly once, failed Timer stopped, host work preserved and scoped gauges return to baseline.",
+          "source": {
+            "path": "tests/native/test_tkinter_state_scenario.py",
+            "sha256": "28b8b7b7216c1216bd5827304e76bf54696f2e45091b53dbbbe928ddd27de5e6"
+          }
+        },
+        {
+          "kind": "recovery",
+          "nodeid": "tests/native/test_tkinter_state_scenario.py::test_composite_observed_failure_and_recovery_scenario",
+          "cases": 1,
+          "expected": "Explicit fresh public resource workflow and redraw retry succeed; exact blue output and device recreation assertions pass after injections are removed.",
+          "source": {
+            "path": "tests/native/test_tkinter_state_scenario.py",
+            "sha256": "28b8b7b7216c1216bd5827304e76bf54696f2e45091b53dbbbe928ddd27de5e6"
+          }
+        }
+      ],
+      "expected": "All required ordinary/mutation/failure/recovery branches assert conjunctively in one pinned composite process. Unexpected or missing errors, failed cleanup/recovery or changed sibling script bytes fail; outer installed/member/absence gates still required.",
+      "observer": [
+        "{controller_python}",
+        "tools/audit_no_opengl.py",
+        "run",
+        "--python",
+        "{consumer_python}",
+        "--wheel",
+        "{wheel}",
+        "--scenario",
+        "script",
+        "--script",
+        "tools/tkinter_failure_scenario.py",
+        "--workflow-id",
+        "tk-state-resource-failures",
+        "--covered-feature",
+        "tk.backend.raster",
+        "--covered-feature",
+        "tk.application.manual",
+        "--covered-feature",
+        "tk.canvas.basic",
+        "--covered-feature",
+        "tk.context.current",
+        "--covered-feature",
+        "tk.context.shared",
+        "--covered-feature",
+        "tk.canvas.recovery",
+        "--covered-feature",
+        "tk.timer.once",
+        "--covered-feature",
+        "tk.gl.flush",
+        "--covered-feature",
+        "tk.wrappers.submission",
+        "--covered-feature",
+        "tk.wrappers.raster",
+        "--covered-feature",
+        "tk.readback.rgba",
+        "--covered-feature",
+        "tk.object.delete",
+        "--covered-feature",
+        "tk.buffer.triangle",
+        "--covered-feature",
+        "tk.texture.rgba8",
+        "--covered-feature",
+        "tk.program.texture",
+        "--dependencies-report",
+        "{dependency_report}",
+        "--policy",
+        "deny",
+        "--output",
+        "{evidence_dir}/tk-state-resource-failures.json"
+      ],
+      "modes": [
+        "standalone",
+        "embedded"
+      ]
+    }
+  ],
+  "reviews": {
+    "source": null,
+    "scope": null
+  },
+  "blockers": [
+    "All proposals are unreviewed and unapplied; all 142 original required pairs remain in the canonical ledger.",
+    "No exact candidate wheel or clean installed consumer is prepared. Previous qualified wheels keep their historical scope only.",
+    "Independent cumulative source/fixture and proposed-scope reviews are required before a new qualification build; plan reviews cannot approve implementation.",
+    "All three same-artifact absence gates, controls, installed functional/member/shutdown receipts and final promotion review pending.",
+    "Bind required failure/recovery branches to actual observed workflows before any promotion; ordinary scripts alone cannot cover every branch.",
+    "Full method/example/event/visual inventory and wrapper reconciliation pending; these subsets do not discharge their broader origins.",
+    "Original mandatory Windows threedee row, separate Linux toolkit/scissor blockers, native Linux GPU and Metal hardware scope remain unchanged.",
+    "Install recipes presume separately pinned locked dependencies and Tcl/Tk in an isolated consumer, without producer/source path overlays."
+  ],
+  "release_status": "NOT_QUALIFIED",
+  "preparation_tools": [
+    {
+      "path": "tools/compatibility_candidate.py",
+      "sha256": "46467773e605e25df52aec6dd01428d8fdb54d73b1297588e0b6a98083c0bcbd"
+    },
+    {
+      "path": "tools/compatibility_inventory.py",
+      "sha256": "3a8d4cc83f3c59a8e75578977f3cfd85b6b4d1714c2f898cb2d2844e4759346d"
+    },
+    {
+      "path": "tools/compatibility_conservation.py",
+      "sha256": "def99e8cb4053ee3d3c3b635ae5191abc4f1b1769d7de4eac61f738921f308b7"
+    },
+    {
+      "path": "tools/compatibility_evidence.py",
+      "sha256": "7489064ec0b74be4e0b7faf835da25d469f832723b55c8d73eed3bbe346c5ed1"
+    },
+    {
+      "path": "tools/no_opengl/policy.py",
+      "sha256": "b2fbf966d92e62520d982c96eeb946a332fc00db454e6c5e8c8da0b34b0206d8"
+    },
+    {
+      "path": "docs/superpowers/specs/2026-10-24-vispy-compatibility-gap-closure.md",
+      "sha256": "4e0cc0e9617cb450d14cf98b84b4927b98144dd07d0bd264f5287e670cd577b4"
+    },
+    {
+      "path": "compat/vispy-candidate.schema.json",
+      "sha256": "06e7dba560b6b1545edb0e0eb2d46fa6eedfe9eca8dfbb414c9ab4b97a56197e"
+    },
+    {
+      "path": "compat/vispy-compatibility.schema.json",
+      "sha256": "0f4ca09ce598e9e763245fd48b9d0ab46bc2080947220cb9c211fc8f5a132b26"
+    },
+    {
+      "path": "compat/vispy-compatibility-v3.schema.json",
+      "sha256": "56f3fa5ed0a4aae83f4643b2c8ddd44f241688d55529887ff7f4854dd692abdc"
+    },
+    {
+      "path": "cmake/runtime_package.py",
+      "sha256": "b232799722f56f833c130e8110d97ab1d6459e841c884a9bc588837bb38d5f39"
+    },
+    {
+      "path": ".github/workflows/cpu-contract.yml",
+      "sha256": "8ba01ae3b40378294e9dcba9486deef7cfe5d49e531c098724c64012c547f215"
+    }
+  ]
+}

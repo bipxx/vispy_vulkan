@@ -1,4 +1,5 @@
 #include "runtime_state.hpp"
+#include "runtime_state_query.hpp"
 
 #include <iostream>
 #include <stdexcept>
@@ -42,6 +43,9 @@ void defaults_and_parsing() {
     require(state.scissor_enabled && state.scissor[3] == 4, "dynamic scissor");
     parse_render_state(func("glDepthRange", -2.0, 3.0), state);
     require(state.depth_range == std::array<float, 2>{0, 1}, "depth range clamps");
+    parse_render_state(func("glDepthRange", 2.0, -1.0), state);
+    require(state.depth_range == std::array<float, 2>{1, 0}, "reversed depth range clamps each endpoint independently");
+    parse_render_state(func("glDepthRange", 0.0, 1.0), state);
     const auto before = state_key(state);
     rejects([&] { parse_render_state(func("glEnable", "unknown_capability"), state); }, "glEnable");
     rejects([&] { parse_render_state(func("glLineWidth", 0.0), state); }, "finite and positive");
@@ -84,6 +88,29 @@ void line_width_and_smooth_state() {
     require(state.line_smooth && state_key(state) != defaults, "numeric smooth enable changes key");
     parse_render_state(func("glDisable", "line_smooth"), state);
     require(!state.line_smooth && state_key(state) == defaults, "string smooth disable restores key");
+}
+
+void polygon_offset_float_range_is_atomic() {
+    RenderState state;
+    parse_render_state(func("glEnable", "polygon_offset_fill"), state);
+    parse_render_state(func("glPolygonOffset", 2.0, 3.0), state);
+    const auto original = state_key(state);
+    for (double invalid : {1e300, -1e300, std::numeric_limits<double>::infinity(),
+            std::numeric_limits<double>::quiet_NaN()}) {
+        rejects([&] { parse_render_state(func("glPolygonOffset", invalid, 0.0), state); }, "glPolygonOffset");
+        require(state_key(state) == original && state.polygon_offset_factor == 2 && state.polygon_offset_units == 3,
+                "invalid factor preserves the entire committed state");
+        rejects([&] { parse_render_state(func("glPolygonOffset", 0.0, invalid), state); }, "glPolygonOffset");
+        require(state_key(state) == original && state.polygon_offset_factor == 2 && state.polygon_offset_units == 3,
+                "invalid units do not commit a valid preceding factor");
+    }
+    const double maximum = std::numeric_limits<float>::max();
+    parse_render_state(func("glPolygonOffset", maximum, -maximum), state);
+    require(state.polygon_offset_factor == maximum && state.polygon_offset_units == -maximum,
+            "finite float range endpoints remain accepted at parse time");
+    parse_render_state(func("glPolygonOffset", 0.0, 1.0), state);
+    require(state.polygon_offset_factor == 0 && state.polygon_offset_units == 1,
+            "a valid operation succeeds after rejected overflow");
 }
 
 void multisample_descriptor_refusals() {
@@ -264,12 +291,31 @@ void cull_both_and_scissor() {
     }
 }
 
+void logical_state_queries() {
+    RenderState s;
+    s.depth_test = false; s.depth_mask = true;
+    s.blend_equation_rgb = "min"; s.blend_src_rgb = "src_alpha";
+    s.stencil_front.write_mask = 0x80000000u; s.stencil_back.write_mask = 0x12345;
+    const auto before = state_key(s);
+    const auto query = [&](int code) { return render_state_query::parameter(s, code, 17, 13); };
+    require(query(0x0b72).i == 1 && query(0x0b71).i == 0, "disabled depth retains logical write mask");
+    require(query(0x80c9).i == 0x0302 && query(0x8009).i == 0x8007, "MIN retains logical factor");
+    require(query(0x0b98).i == -2147483648ll && query(0x8ca5).i == 0x12345, "separate face signed masks");
+    require(render_state_query::mask(0xffffffffu).i == -1, "full mask signed representation");
+    const auto rectangle = query(0x0c10);
+    require(rectangle.list.size() == 4 && rectangle.list[2].i == 17 && rectangle.list[3].i == 13, "default query rectangle resolution");
+    require(effective_draw_scissor(s, LogicalDrawTopology::Polygon, true, true, s.scissor, 17, 13) ==
+        std::array<uint32_t, 4>{0, 0, 17, 13}, "default enabled scissor matches query");
+    rejects([&] { query(0x0bd0); }, "unsupported selector");
+    require(state_key(s) == before, "query projection cannot mutate committed state");
+}
+
 }  // namespace
 
 int main() {
     try {
         defaults_and_parsing(); descriptors(); cache_dimensions(); line_width_and_smooth_state(); multisample_descriptor_refusals();
-        cull_both_and_scissor(); selected_stencil_faces();
+        cull_both_and_scissor(); selected_stencil_faces(); polygon_offset_float_range_is_atomic(); logical_state_queries();
         std::cout << "render state parsing, defaults, descriptors, stencil faces, and pipeline keys passed\n";
         return 0;
     } catch (const std::exception& error) {

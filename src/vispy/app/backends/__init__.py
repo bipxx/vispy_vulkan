@@ -17,12 +17,13 @@ CORE_BACKENDS = [
     ('PyQt6', '_pyqt6', 'PyQt6'),
     ('PySide6', '_pyside6', 'PySide6'),
     ('dawn_headless', '_dawn_headless', None),
+    ('Tkinter', '_dawn_tk', 'tkinter'),
 ]
 
 # Retain names for useful diagnostics without importing their native GL paths.
 LEGACY_BACKEND_NAMES = frozenset((
     'pyqt4', 'pyside', 'pyside2', 'pyglet', 'glfw', 'sdl2', 'wx', 'egl',
-    'osmesa', 'tkinter',
+    'osmesa',
 ))
 
 # Whereas core backends really represents libraries that can create a

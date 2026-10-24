@@ -1,0 +1,72 @@
+{
+  "schema": 1,
+  "id": "windows-gpu-tk86-cp312-development",
+  "phase": "source-functional",
+  "product_runtime_source_commit": "c7e191ee8ee506d4ba6244eaa217efceb43d115c",
+  "kind": "windows-gpu",
+  "architecture": "x86_64",
+  "python_abi": "cp312",
+  "python_version": "3.12.8 (main, Dec 19 2024, 14:41:01) [MSC v.1942 64 bit (AMD64)]",
+  "interpreter": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\.venv\\Scripts\\python.exe",
+  "toolkit": {
+    "tk_version": 8.6,
+    "tcl_version": 8.6,
+    "binding_origin": "C:\\Users\\HEQ\\AppData\\Roaming\\uv\\python\\cpython-3.12.8-windows-x86_64-none\\DLLs\\_tkinter.pyd",
+    "binding_hash_scope": "module",
+    "binding_sha256": "38453f6aff3f3a3ef0017c00bfee2f403ca0aeaf92b8b5c56d05460fd6dbbdf9"
+  },
+  "display_mode": "tk-raster",
+  "device": {
+    "backend": "Vulkan",
+    "adapter_type": "discrete",
+    "vendor": "nvidia",
+    "device": "NVIDIA GeForce RTX 4090",
+    "driver": "NVIDIA: 610.88 610.88.0.0",
+    "vendor_id": 4318,
+    "device_id": 9860,
+    "software": false
+  },
+  "native_sha256": "d4148a6ce99f341e33e83ac372a543d7a7f50de19eb4f1381939f58601c1cb4c",
+  "native_inputs_sha256": "6035565341a645c521b243651819a367838fbfd187052d6ac6b8563a5ad82448",
+  "loaded_library_identities": {},
+  "source_observation": {
+    "location": "build/runs/candidate-workflow-24/windows-release-check-result.json",
+    "sha256": "26882037aee9bd5d7bd108f50c8ea2d741d53f23f020847331bfb4f70739171a",
+    "functional_report_sha256": "0ca461af733cf52052baa8e7ad04f255e60552c7938501c7bda25db76d98e881",
+    "cases": 429,
+    "shutdown_gauges": {
+      "pending_tickets": 0,
+      "queued_frames": 0,
+      "live_buffer_bytes": 0,
+      "live_cpu_buffer_bytes": 0,
+      "live_texture_bytes": 0,
+      "canvas_texture_bytes": 0,
+      "transient_buffer_bytes": 0,
+      "line_resource_pool_busy_slots": 0,
+      "line_resource_pool_bytes": 0
+    }
+  },
+  "limitations": [
+    "Development observation only; no wheel or installed/observer admission.",
+    "Windows toolkit DLL closure still needs installed-profile pins."
+  ],
+  "interpreter_sha256": "4025e2a6d8fc90d053a8405e81f008cbd8ee45b582e2d77480341501f4aeda73",
+  "base_interpreter": {
+    "path": "C:\\Users\\HEQ\\AppData\\Roaming\\uv\\python\\cpython-3.12.8-windows-x86_64-none\\python.exe",
+    "sha256": "71b986e874ae1382c434f95852f5670e6d87576db2861cd03737dd4bce9d69ed"
+  },
+  "os_identity": "Windows-11-10.0.26200-SP0",
+  "native_producer": {
+    "artifact_manifest_sha256": "2f7702e2f79237372da4e8376a5eddb24401d449093d216475e7667777fd7e19",
+    "build_report": "build/runs/reversed-depth-18/windows-build-report.json",
+    "build_report_sha256": "27c6b173e36f11f16094cbb1dcee5f233c5d6c4551a898b280fd4e26ae97a50e",
+    "source_base": "368fcb7417cc75cb6a977d33a89d8843eb146466",
+    "scope": "Source-functional leaf only; no installed/SDK qualification",
+    "preferred_source_overlay": {
+      "location": "build/runs/reversed-depth-18/source.patch",
+      "sha256": "d7cbae4c8160fb8c7b44d692e8d8a405919327b074cfdaff60a58ec11d23ff45"
+    },
+    "limitations": "Source-functional native leaf only. Linux producer remains experimental; no new SDK or installed qualification."
+  },
+  "validation_schedule": "One native profile at a time on the shared host; original concurrent failures retained."
+}

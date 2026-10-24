@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 """GLIR parser that forwards filtered commands to the Dawn extension."""
 
+import operator
+
 import numpy as np
 
 from .glir import BaseGlirParser
@@ -89,7 +91,7 @@ def get_framebuffer_configuration():
     canvas = get_current_canvas()
     backend = getattr(canvas, '_backend', None) if canvas is not None else None
     canvas_id = int(getattr(backend, '_dawn_canvas_id', 0) or 0)
-    if not canvas_id:
+    if not canvas_id or getattr(canvas, '_closed', True):
         raise RuntimeError('framebuffer configuration requires a current Dawn canvas')
     from vispy import _dawn
     query = getattr(_dawn, 'framebuffer_config', None)
@@ -99,22 +101,62 @@ def get_framebuffer_configuration():
     return dict(query(canvas_id))
 
 
+# Logical native state, before pipeline lowering. Keep the selector boundary
+# explicit so unsupported queries cannot consume preceding GLIR or start a device.
+_STATE_QUERY_PARAMETERS = frozenset((
+    0xbe2, 0x8005, 0x80c9, 0x80c8, 0x80cb, 0x80ca,
+    0x8009, 0x883d, 0xb71, 0xb72, 0xb74, 0xb70,
+    0xb73, 0xb90, 0xb91, 0xb92, 0xb93, 0xb94,
+    0xb95, 0xb96, 0xb97, 0xb98, 0x8800, 0x8801,
+    0x8802, 0x8803, 0x8ca3, 0x8ca4, 0x8ca5, 0xb44,
+    0xb45, 0xb46, 0xc22, 0xc23, 0xc11, 0xc10,
+    0xb21, 0xb20, 0x8037, 0x8038, 0x2a00, 0x809d,
+    0x809e, 0x80a0, 0x80aa, 0x80ab,
+))
+_DEVICE_QUERY_PARAMETERS = frozenset((
+    7936, 7937, 7938, 7939, 35724, 3379, 32883, 34024,
+    34930, 35660, 35376, 34921, 35071, 35661, 35379,
+))
+
+
 def get_gl_parameter(pname):
     """Answer an admitted GL-shaped query from actual Dawn capabilities."""
     from vispy import _dawn
     from vispy.gloo.context import get_current_canvas
 
-    code = int(pname)
+    if isinstance(pname, (bool, np.bool_)):
+        raise TypeError('glGetParameter requires an integer query enum')
+    try:
+        code = operator.index(pname)
+    except TypeError:
+        raise TypeError('glGetParameter requires an integer query enum') from None
+    if code in _STATE_QUERY_PARAMETERS:
+        canvas = get_current_canvas()
+        backend = getattr(canvas, '_backend', None)
+        canvas_id = int(getattr(backend, '_dawn_canvas_id', 0) or 0)
+        if not canvas_id or getattr(canvas, '_closed', True):
+            raise RuntimeError('state query requires a current Dawn canvas')
+        query = getattr(_dawn, 'state_parameter', None)
+        if getattr(_dawn, 'state_query_contract_version', None) != 1 or not callable(query):
+            raise RuntimeError('state query requires a matching native state-query build')
+        canvas.context.flush_commands()
+        return query(canvas_id, code)
     if code == 2978:  # GL_VIEWPORT
         canvas = get_current_canvas()
-        if canvas is None:
+        backend = getattr(canvas, '_backend', None)
+        canvas_id = int(getattr(backend, '_dawn_canvas_id', 0) or 0)
+        if not canvas_id or getattr(canvas, '_closed', True):
             raise RuntimeError("viewport query requires a current Dawn canvas")
         canvas.context.flush_commands()
-        return tuple(_dawn.viewport(int(canvas._backend._dawn_canvas_id)))
-    if code in (32937, 3123, 3122):  # SAMPLES, STEREO, DOUBLEBUFFER
+        return tuple(_dawn.viewport(canvas_id))
+    if code in (32936, 32937, 3123, 3122):  # SAMPLE_BUFFERS, SAMPLES, STEREO, DOUBLEBUFFER
         configuration = get_framebuffer_configuration()
+        if code == 32936:
+            return int(configuration['sample_count'] > 1)
         field = {32937: 'samples', 3123: 'stereo', 3122: 'double_buffer'}[code]
         return configuration[field]
+    if code not in _DEVICE_QUERY_PARAMETERS:
+        raise RuntimeError("unsupported GL query %s" % pname)
     info = _dawn.device_info()
     if not info.get('ok', True):
         raise RuntimeError('Dawn capability query failed: ' + str(info.get('error', 'device unavailable')))
@@ -201,6 +243,16 @@ class DawnGlirParser(BaseGlirParser):
 
     def parse(self, commands):
         from vispy import _dawn
+
+        if getattr(_dawn, 'submission_contract_version', 0) < 1:
+            original_commands = commands
+            def guarded_commands():
+                for command in original_commands:
+                    if len(command) > 1 and command[0] == 'FUNC' and command[1] == 'glFlush':
+                        raise RuntimeError('glFlush requires a matching native submission-contract build; '
+                                           'the older native module does not submit this operation')
+                    yield command
+            commands = guarded_commands()
 
         if hasattr(_dawn, "_capture_upload") and hasattr(_dawn, "_execute_owned"):
             stats = dict(captures=0, bytes=0, fallback_dtypes=0, fallback_exports=0)

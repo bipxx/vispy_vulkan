@@ -3,6 +3,7 @@
 #include "shader/glslang_spv.hpp"
 #include "shader/normalize.hpp"
 #include "shader/integer_sampling.hpp"
+#include <SPIRV/spirv.hpp11>
 
 #include <algorithm>
 #include <chrono>
@@ -51,6 +52,8 @@ inline std::string portable_shader_identity(const std::string& vertex, const std
                                            SpirvDerivativeMode derivative_mode = SpirvDerivativeMode::Strict) {
     std::string identity = "vispy-portable-shader-v1;opaque=merge-return,inline-opaque,dead-functions;resources=linked-live-all-block-separate-buffer-stage-reflection;sample-scalars=float-sint-uint-v1;inputs=live-vs-compact;";
     identity += options.base_level_sampling ? "base=1;" : "base=0;";
+    identity += options.reverse_depth ? "depth=reverse-clip-v1;" : "depth=forward-clip-v1;";
+    identity += "fragment-depth=window-coordinate-v1;";
     identity += options.point_sprites ? "points=1;point-id=std430-uint32x2-instance-major;" : "points=0;";
     identity += "vertex-id=" + std::to_string(static_cast<uint32_t>(options.vertex_identity)) + ";std430-uint32;";
     if (batch_identity_policy(options.vertex_identity)) {
@@ -105,6 +108,8 @@ struct PortableShaderArtifact {
     SpirvDerivativeMode derivative_mode = SpirvDerivativeMode::Strict;
     bool point_sprites = false;
     bool has_fragment_depth = false;
+    bool early_fragment_tests = false;
+    bool window_depth_output() const { return has_fragment_depth && !early_fragment_tests; }
     bool has_flat_varyings = false;
     bool ok = false;
     // cache_key is a short display label, never the identity used for lookup.
@@ -294,6 +299,22 @@ inline std::shared_ptr<const PortableShaderArtifact> build_portable_shader(
                            ((!integer_cleanup || (artifact->uniform_stage_mask & 2)) ? reflect_uniform_layout(artifact->spv_frag, artifact->uniforms, artifact->uniform_bytes, artifact->error) : true);
     artifact->timings.reflect_ns += shader_host_ns() - stage_start;
     if (!reflected) return artifact;
+    // Inspect actual compiled modes/builtins, including preprocessor aliases
+    // and dead helper removal. Early tests use raster depth, not shader writes.
+    artifact->has_fragment_depth = false;
+    for (size_t at = 5; at < artifact->spv_frag.size();) {
+        const uint32_t words = artifact->spv_frag[at] >> 16;
+        const auto opcode = static_cast<spv::Op>(artifact->spv_frag[at] & 0xffffu);
+        if (!words || words > artifact->spv_frag.size() - at) break;
+        if (opcode == spv::Op::OpExecutionMode && words >= 3 &&
+                artifact->spv_frag[at + 2] == static_cast<uint32_t>(spv::ExecutionMode::EarlyFragmentTests))
+            artifact->early_fragment_tests = true;
+        if (opcode == spv::Op::OpDecorate && words >= 4 &&
+                artifact->spv_frag[at + 2] == static_cast<uint32_t>(spv::Decoration::BuiltIn) &&
+                artifact->spv_frag[at + 3] == static_cast<uint32_t>(spv::BuiltIn::FragDepth))
+            artifact->has_fragment_depth = true;
+        at += words;
+    }
     artifact->ok = true;
     return artifact;
 }

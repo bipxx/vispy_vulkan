@@ -75,6 +75,13 @@ int main() {
         available.slots = UINT64_MAX; available.owners = UINT64_MAX; available.terminal_limit = UINT64_MAX;
         available.completions = 1;
         require(!available.ready(true), "admission subtraction does not overflow near uint64 limits");
+        Lifecycle checked; checked.generation = 4;
+        checked.validate_submission(1, 4);
+        require(checked.submissions == 0 && checked.outstanding == 0 && checked.last_ticket == 0,
+                "pre-submit validation does not publish a GPU submission");
+        rejected([&] { checked.validate_submission(1, 5); }, "generation mismatch rejected before Queue.Submit");
+        require(checked.submissions == 0 && checked.outstanding == 0,
+                "failed validation leaves ownership/counts unchanged");
         Lifecycle frame; frame.begin_ns = 10; frame.generation = 4; frame.bind_paint(9);
         frame.enqueue(3); frame.begin_batch(); frame.submitted(3, 20, 4); frame.presented(); frame.finish_batch();
         frame.retired(25);

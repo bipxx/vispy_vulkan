@@ -81,8 +81,8 @@ inline std::array<uint32_t, 4> effective_draw_scissor(const RenderState& state,
     const int x = std::clamp(scissor[0], 0, width);
     const int y = std::clamp(scissor[1], 0, height);
     return {static_cast<uint32_t>(x), static_cast<uint32_t>(y),
-        static_cast<uint32_t>(std::clamp(scissor[2], 0, width - x)),
-        static_cast<uint32_t>(std::clamp(scissor[3], 0, height - y))};
+        static_cast<uint32_t>(std::clamp(scissor[2] < 0 ? width : scissor[2], 0, width - x)),
+        static_cast<uint32_t>(std::clamp(scissor[3] < 0 ? height : scissor[3], 0, height - y))};
 }
 
 // Selected face projection is explicit; the shared-mask descriptor refusal
@@ -133,6 +133,13 @@ inline int integer(const Value& value, const std::string& operation) {
     if (std::trunc(result) != result || result < std::numeric_limits<int>::min() || result > std::numeric_limits<int>::max())
         throw error(operation, "expected representable integer argument");
     return static_cast<int>(result);
+}
+inline float finite_float(const Value& value, const std::string& operation) {
+    const double result = number(value, operation);
+    const double maximum = std::numeric_limits<float>::max();
+    if (result < -maximum || result > maximum)
+        throw error(operation, "argument must fit the finite native float range");
+    return static_cast<float>(result);
 }
 inline uint32_t mask(const Value& value, const std::string& operation) {
     if (value.kind != Value::Kind::Int || value.i < std::numeric_limits<int32_t>::min() || value.i > std::numeric_limits<uint32_t>::max())
@@ -283,7 +290,7 @@ inline bool parse_render_state(const Command& command, RenderState& state) {
     } else if (op == "glDepthRange" || op == "glDepthRangef") {
         count(2);
         result.depth_range = {static_cast<float>(std::clamp(numeric(0), 0.0, 1.0)), static_cast<float>(std::clamp(numeric(1), 0.0, 1.0))};
-        if (result.depth_range[0] > result.depth_range[1]) throw error(op, "reversed depth ranges require a shader conversion");
+
     } else if (op == "glDepthFunc") {
         count(1); result.depth_func = name(0); compare(result.depth_func);
     } else if (op == "glDepthMask") {
@@ -301,7 +308,9 @@ inline bool parse_render_state(const Command& command, RenderState& state) {
         if (!std::isfinite(result.line_width) || result.line_width <= 0)
             throw error(op, "line width must be finite and positive");
     } else if (op == "glPolygonOffset") {
-        count(2); result.polygon_offset_factor = static_cast<float>(numeric(0)); result.polygon_offset_units = static_cast<float>(numeric(1));
+        count(2);
+        result.polygon_offset_factor = finite_float(command.args[1], op);
+        result.polygon_offset_units = finite_float(command.args[2], op);
     } else if (op == "glBlendFuncSeparate" || op == "glBlendFunc") {
         count(op == "glBlendFunc" ? 2 : 4);
         result.blend_src_rgb = name(0); result.blend_dst_rgb = name(1);

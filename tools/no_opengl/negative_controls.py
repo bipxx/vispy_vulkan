@@ -10,6 +10,7 @@ import shutil
 import sys
 
 from .policy import assess
+from .workflow import collector_identity
 
 
 def main():
@@ -21,6 +22,7 @@ def main():
     parser.add_argument('--python', type=Path, default=Path(sys.executable))
     parser.add_argument('--output', type=Path, required=True)
     args = parser.parse_args()
+    collector = collector_identity(args)
     args.output.mkdir(parents=True, exist_ok=False)
     root = args.output.resolve()
     fixture = args.fixture.resolve(strict=True)
@@ -99,10 +101,14 @@ def main():
         # invocation demonstrates why LD_AUDIT cannot pass the execution gate.
         checks['local_call_coverage_gap_exposed'] = reports['call']['process_exit'] == 0 and not seen('call', 'native_gl_call')
         checks['local_call_never_claimed_as_pass'] = reports['call']['gates']['no_gl_execution'] == 'UNVERIFIED'
+    checks['collector_identity_stable'] = collector == collector_identity(args)
     report = {'status': 'PASS_CONTROLS' if all(checks.values()) else 'FAIL_CONTROLS',
+              'collector_identity': collector,
               'checks': checks, 'fixture_sha256': hashlib.sha256(fixture.read_bytes()).hexdigest(),
               'scope': 'Collector controls only, never candidate artifact qualification.',
               'reports': {name: str(root / (name + '.json')) for name in reports}}
+    report['reports_sha256'] = {name: hashlib.sha256((root / (name + '.json')).read_bytes()).hexdigest()
+                               for name in reports}
     (root / 'controls.json').write_text(json.dumps(report, indent=2) + '\n')
     print(report['status'], root / 'controls.json')
     return 0 if all(checks.values()) else 1

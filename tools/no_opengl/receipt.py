@@ -24,6 +24,9 @@ def build(args):
                 and worker.get('status') == 'PASS_SCENARIO' and not worker.get('error') and not worker.get('cleanup_error')
                 and worker.get('wheel_sha256') == wheel_hash and worker.get('wheel_members_verified', 0) > 0
                 and Path(worker['executable']).resolve() == python.resolve()
+                and runtime.get('workflow') is not None and runtime['workflow'] == worker.get('workflow')
+                and runtime.get('child_waited') is True
+                and runtime.get('worker_report_sha256') == hashlib.sha256(worker_path.read_bytes()).hexdigest()
                 and all(runtime.get('gates', {}).get(key) == 'PASS' for key in ('no_gl_execution', 'no_gl_loads')))
     inventory_path = args.output.resolve().with_suffix('.inventory.json')
     if inventory_path.exists():
@@ -60,6 +63,7 @@ def build(args):
         (optional if evidence else blocking).append(evidence or edge)
     gate = 'FAIL' if closure['violations'] else ('PASS' if admitted and not blocking else 'UNVERIFIED')
     return {'schema': 1, 'status': gate, 'gate': gate, 'wheel_sha256': wheel_hash,
+            'discovery_workflow': runtime.get('workflow'), 'collector_identity': runtime.get('collector_identity'),
             'environment_id': inventory['environment_id'], 'consumer_executable': inventory['executable'],
             'inventory': str(inventory_path), 'inventory_sha256': hashlib.sha256(inventory_path.read_bytes()).hexdigest(),
             'runtime_report': str(runtime_path), 'runtime_report_sha256': hashlib.sha256(runtime_path.read_bytes()).hexdigest(),
