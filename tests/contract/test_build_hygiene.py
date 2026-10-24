@@ -25,6 +25,14 @@ def write_json(path, value):
     path.write_text(json.dumps(value), encoding="utf-8")
 
 
+def load_tool():
+    spec = importlib.util.spec_from_file_location("build_hygiene_contract", TOOL)
+    module = importlib.util.module_from_spec(spec)
+    sys.modules[spec.name] = module
+    spec.loader.exec_module(module)
+    return module
+
+
 @pytest.fixture
 def workspace(tmp_path):
     root = tmp_path / "workspace"
@@ -278,10 +286,7 @@ def test_reparse_links_are_not_followed_or_deleted(workspace, tmp_path, target, 
 
 def test_disk_reserve_refuses_preflight_without_large_allocation(workspace, monkeypatch, capsys):
     ws = workspace
-    spec = importlib.util.spec_from_file_location("build_hygiene_contract", TOOL)
-    module = importlib.util.module_from_spec(spec)
-    sys.modules[spec.name] = module
-    spec.loader.exec_module(module)
+    module = load_tool()
     write_json(ws.policy, {"schema": 1, "max_scratch_bytes": 20 * 1024**3,
                            "min_free_bytes": 10 * 1024**3})
     monkeypatch.setattr(module.shutil, "disk_usage", lambda path: SimpleNamespace(
@@ -298,3 +303,56 @@ def test_preflight_rejects_peak_over_policy_budget(workspace):
     invoke(ws, "preflight", "--run-id", "run-1", "--owner", "contract-test",
            "--expected-peak-bytes", str(20 * 1024**3 + 1), expected=2)
     assert ws.scratch.exists()
+
+
+@pytest.mark.parametrize("secondary_free,expected", [(149, 2), (1000, 0)],
+                         ids=["secondary-reserve-refusal", "all-capacity-roots-pass"])
+def test_preflight_checks_other_capacity_roots_before_registration(
+        workspace, tmp_path, monkeypatch, capsys, secondary_free, expected):
+    ws = workspace
+    secondary = tmp_path / "separate-capacity-root"
+    secondary.mkdir()
+    write_json(ws.registry, {"schema": 1, "protected_roots": [], "blocked_roots": [],
+                              "legacy_roots": [], "capacity_roots": [str(secondary)]})
+    write_json(ws.policy, {"schema": 1, "max_scratch_bytes": 20 * 1024**3,
+                           "min_free_bytes": 100})
+    module = load_tool()
+    checked = []
+
+    def capacity(path):
+        path = Path(path).resolve()
+        checked.append(path)
+        free = secondary_free if path == secondary.resolve() else 1000
+        return SimpleNamespace(total=2000, used=2000 - free, free=free)
+
+    monkeypatch.setattr(module.shutil, "disk_usage", capacity)
+    assert module.main(["--workspace", str(ws.root), "--policy", str(ws.policy),
+                        "--registry", str(ws.registry), "preflight", "--run-id", "new-run",
+                        "--owner", "contract-test", "--expected-peak-bytes", "50",
+                        "--register"]) == expected
+    result = json.loads(capsys.readouterr().out)
+    assert ws.root.resolve() in checked and secondary.resolve() in checked
+    reports = {Path(row["path"]).resolve(): row for row in result["capacity_checks"]}
+    assert reports[ws.root.resolve()]["free_bytes"] == 1000
+    assert reports[secondary.resolve()]["free_bytes"] == secondary_free
+    assert reports[secondary.resolve()]["min_free_bytes"] == 100
+    assert reports[secondary.resolve()]["expected_peak_bytes"] == 50
+    new_scratch = ws.scratch.parent / "new-run"
+    if expected:
+        assert not new_scratch.exists(), "Capacity refusal must precede registration writes"
+    else:
+        assert (new_scratch / ".build-hygiene-owner.json").is_file()
+    assert (ws.scratch / "object.bin").read_bytes() == b"disposable object"
+
+
+def test_registration_marker_cannot_exceed_positive_scratch_budget(workspace):
+    ws = workspace
+    # A separate empty managed area makes the one-byte limit a marker-overhead
+    # boundary, rather than a refusal caused by a previously populated run.
+    isolated = ws.root / "isolated"
+    isolated.mkdir()
+    ws.root = isolated
+    write_json(ws.policy, {"schema": 1, "max_scratch_bytes": 1, "min_free_bytes": 0})
+    invoke(ws, "preflight", "--run-id", "tiny-run", "--owner", "contract-test",
+           "--expected-peak-bytes", "1", "--register", expected=2)
+    assert not (isolated / "build/work/tiny-run").exists()
