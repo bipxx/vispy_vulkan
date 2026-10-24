@@ -13,6 +13,12 @@ The [Astra max review and finding disposition](../reviews/2026-10-24-astra-compa
 records ten accepted findings; specification changes do not mark the associated
 implementation or qualification work complete.
 
+The [second Astra max review](../reviews/2026-10-24-astra-acceptance-detail-review.md)
+adds six acceptance refinements, incorporated in specification section 10.
+Flush no-op/saturation and post-submit ownership, finish presentation effects,
+root adoption, concrete Tk coordinate policy, ledger validation and actual
+granted-sample proof remain implementation/acceptance obligations.
+
 ## Baseline and review disposition
 
 - Earlier implementation PR #13 merged. The installed matrix still has one
@@ -57,6 +63,22 @@ marked blocked-external does not prevent independent software work.
 | G7 — hardware/performance | HW-1, PERF-1 / proof + native | Appropriate hardware and affected packet correctness | Separate native Linux GPU/Metal records; absent hardware stays blocked-external. Fixed workload median/tail and CPU/upload/GPU/readback/presentation breakdown, without unsupported speedup/scanout claims. |
 
 ## G0 ledger and promotion details
+
+Implementation checkpoint: `compat/vispy-compatibility.json` is now the selected
+draft ledger, with versioned JSON schema, source-only validator and bootstrap
+generator. It contains 142 entries from hash-verified pinned public namespace
+exports and backend registration; duplicate gloo exports retain both source
+references. Forty-eight CPU regression cases pass, including stale receipt,
+missing wait, collection/skip, dependency, installed-audit and observer-control
+negative cases. CPU CI now checks this gate before native compilation.
+
+This is partial G0 implementation: all seed rows are `not-inventoried` in an
+unassigned profile, `reviewed` is false, and the full-completion command fails.
+Examples, method-level contracts, scene wildcard aliases, events, host mappings,
+concrete required profiles and adapters from existing auditor/observer outputs
+remain to be reconciled. No host receipt was promoted and no support percentage
+follows from 142 seed entries. The [inventory guide](../../compatibility-inventory.md)
+documents the schema, receipt protocol and remaining integration work.
 
 Before new porting work, record each selected upstream feature with a stable ID,
 source path/API and upstream pin, selected ordinary and mutation/failure fixture,
@@ -183,6 +205,30 @@ harness/source histories. The installed state smoke covers one 96-pixel scene,
 not Tk or the entire state allowlist.
 
 ## Validation, storage and handoff
+
+| Decision/check before implementation or promotion | Required deliverable |
+| --- | --- |
+| G0 ledger integrity | Select canonical ledger, versioned schema and validator; reconcile existing inventories, validate references and same-artifact promotion. |
+| G1a adopted-root ownership | Define adoption/exclusive destruction policy; retain no-child user timers, idle work and bindings through VisPy teardown. |
+| G1c coordinate policy | Default Tk client/framebuffer 1:1 contract, positive Configure authority and zero-size behavior; test nondefault public px_scale separately. |
+| G1d submission design | Define flush inclusion/linearization and saturation behavior; controlled incomplete tickets, no-op versus submit outcomes and post-submit failure ownership. |
+| G1d finish regression | Verify both public finish routes complete work without presentation/GUI draw or target/state changes; retain independent counter proof. |
+| Linux G1c repair | Separate runtime/driver profiles; actual granted samples and loaded-driver identity; finite fresh-process toolkit controls and exact boundary expectations. |
+| G2 promotion | Final installed-wheel member/closure audit, mapped functional cases and all three observer gates with controls; no stale source-only promotion. |
+
+The specification's [executable acceptance records](../specs/2026-10-24-vispy-compatibility-gap-closure.md#10-executable-acceptance-records)
+define the minimum G0 ledger fields, flush submission/saturation proof, separate
+Linux blocker records and packet receipts. Apply those criteria before promoting
+an implementation; documentation detail alone closes no runtime finding.
+
+The next bounded work must distinguish two independent Linux investigations:
+repair or select a pinned toolkit runtime using a plain-Tk control, and compare
+the headless multisample scissor reproducer under an isolated pinned driver.
+Neither result transfers to the other. Preserve existing failures, reference
+inputs by hash, and change one diagnostic variable at a time. Native flush
+design can proceed independently; its accepted design must resolve full-ticket
+behavior before implementation. G2 remains dependent on the affected G1 paths
+and an exact candidate artifact, rather than on a favorable source-only retry.
 
 Follow RET-1, LIC-1, root AGENTS.md and [build hygiene](../../build-hygiene.md): one 20 GiB
 scratch budget and 10 GiB free reserve across workers, preflight before scratch,

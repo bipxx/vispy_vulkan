@@ -20,10 +20,17 @@ Remote merge/CI state must be recorded at handoff rather than inferred from this
 dated checkpoint.
 
 The first follow-up packet implements Tk raster presentation and 29 selected
-GL-shaped state entry points. Local evidence comprises nine Tk integration cases
+GL-shaped state entry points. Its initial local evidence comprised nine Tk integration cases
 and three immediate-state cases on Windows Vulkan and WSL software Vulkan, plus
 13 package/source contracts. These do not cover every entry point, Tk event-loop
 mode, dependency closure or upstream visual. No new local native wheel was built.
+
+Subsequent source checkpoints expanded the combined Windows suite to 86 passing
+cases; the earlier 72-case Linux suite passed before the new capture workflows
+exposed the two independent blockers described in section 10. The separate
+headless scissor suite passes eight Windows cases and seven of eight Linux cases.
+These are historical scoped observations, not a current-head CI result or a new
+installed-wheel qualification. The execution plan retains the progression.
 
 The goal is broader, measurable VisPy compatibility through the existing
 gloo/GLIR boundary. Each supported public workflow must work end to end; importing
@@ -350,3 +357,172 @@ blocked required rows keep full closure incomplete even when their reasons are
 well explained. The matching qualified artifacts must be retained.
 Merging code or preparing a draft release must not
 silently change that definition or erase the unresolved mandatory host row.
+
+## 10. Executable acceptance records
+
+This section refines the existing requirement IDs. It does not introduce a new
+completion denominator or promote any current implementation.
+
+### Inventory and evidence records (INV-1..3, EV-1..5)
+
+The G0 deliverable must select and name its canonical machine-readable ledger.
+The selected draft is `compat/vispy-compatibility.json`, with schema and validator
+described in the [inventory guide](../../compatibility-inventory.md). Its generated
+seed is unreviewed; selection and structural validation alone do not close G0.
+Reconcile `compat/upstream_manifest.json`, `compat/no-opengl-matrix.json`,
+`tests/reference/inventory.json` and host inventories before adding rows; they
+describe different scopes and must not be merged by counting their entries.
+Link them by stable identifiers rather than copying their evidence payloads.
+
+Each feature/profile row must record:
+
+- Stable feature ID and requirement IDs; pinned upstream source path and public
+  entry point; whether the workflow is required or an explicitly excluded
+  interoperation contract, with the exclusion rationale.
+- Ordinary and mutation/failure test node IDs, expected observable behavior,
+  required native/shader/backend capabilities and dependencies on other rows.
+- Platform/profile ID, implementation state, latest attempt outcome, source
+  commit/dirty-patch hash, artifact identity when tested, evidence references,
+  open failure/blocker, owner and next bounded action.
+
+A new failed attempt must remain visible alongside any historical pass. A row
+cannot retain an unqualified current-success claim after a relevant failure or
+source/artifact/profile change. Historical receipts remain valid only for their
+recorded scope. Missing receipts, skipped selected cases, unexpected collection
+counts or unawaited child processes fail the packet gate.
+
+### Flush submission proof (STATE-2,4, G1d)
+
+Before implementation, record the flush linearization point: which preceding
+GLIR operations and active target are included, and when native ownership moves
+from queued to submitted work. Define behavior when the in-flight ticket budget
+is exhausted. A queue-full path must not silently leave the promised work
+unsubmitted or fall back to a completion wait. If the supported bounded policy
+cannot meet that contract, retain the explicit unsupported status until the
+design is resolved. Document how an application observes submission failures.
+
+The acceptance table must exercise both public routes independently and together:
+empty/repeated flush, offscreen target, nested FBO selection, A/B/A canvases,
+upload/draw followed by resource mutation/deletion, full in-flight budget,
+device loss before/after submission and close with submitted work. Take native
+counter snapshots before any readback, presentation or finish. Observe an actual
+submission and unchanged completion-wait/finish counters at that point; use a
+later explicit synchronization only to validate output and retirement. Retain
+counter definitions and a negative control that detects the logging-only route.
+An asynchronous submission need not have completed when flush returns.
+
+Empty or repeated flushes with no new work may be genuine no-ops; they must not
+be required to increment submission counters. Prove the saturated case using
+controlled incomplete tickets and a recorded precondition, not a fast loop that
+may finish between calls. Distinguish successful submission, permitted empty
+no-op and documented failure in the expected result for every case.
+
+Treat queue submission as an irreversible ownership boundary. If later
+bookkeeping, readback mapping or completion-callback registration fails, keep
+submitted owners alive until completion or a documented device-loss retirement
+path. Inject failures on both sides of that boundary; verify no duplicate GPU
+submission, early release, lost ticket or permanently leaked owner. A retry must
+not replay work whose submission already succeeded.
+
+### Tk root adoption and unrelated work (TK-1..4)
+
+An empty `winfo_children()` result does not prove exclusive ownership of a Tcl
+interpreter. A root can still own user `after`/`after_idle` jobs, variable traces,
+bindings and commands. Before changing teardown, record the policy for a root
+created by VisPy that is subsequently exposed to or adopted by the host. Define
+the ownership transition and permitted explicit shutdown action; inference from
+child widgets alone is insufficient. Preserve unrelated user work when a canvas
+closes or an application releases its share of an adopted interpreter.
+
+Acceptance includes an exposed application-created root with no child widgets
+but an unrelated timer, idle callback and root binding. Close/quit the VisPy
+consumer, then demonstrate the documented survival or explicit host-owned
+shutdown behavior. Also exercise two applications sharing the interpreter,
+external parent destruction and a failed release followed by explicit retry.
+Assert widget, image, Tcl job and native ownership independently; zero native
+resource counters do not establish interpreter cleanup.
+
+### Coordinate and input policy record (TK-5..7)
+
+Before G1c closes, retain a per-platform policy table naming units and conversion
+for requested size, actual client size, public `Canvas.size`, `physical_size`,
+resize-event fields, mouse positions, native allocation and capture rectangles.
+State the rounding rule and behavior at zero size. If Tk client coordinates and
+framebuffer pixels intentionally have a 1:1 mapping, document why the selected
+profile guarantees it; changing `tk scaling` alone does not prove a physical
+monitor transition. Record requested versus actual scale in each fixture.
+
+Input acceptance must specify platform modifier masks including META, button
+number mapping, press/release ordering, wheel units, printable text versus key
+identity and double-click delivery. Fixtures compare the emitted sequence with
+the pinned upstream public event contract and verify a real camera response.
+For explicit-parent embedding, verify that user bindings still fire once and
+that two canvases route input independently. Unsupported platform capabilities
+remain explicit inventory gaps until implemented and tested.
+
+### Linux blocker separation (TK-7,8, STATE-3, ART-1,2)
+
+The current Linux failures require separate rows and reproducers:
+
+| Blocker | Isolation evidence | Acceptance before affected profile promotion |
+| --- | --- | --- |
+| Tk Xlib/XCB abort | A plain Tk Label/window lifecycle without VisPy or Vulkan also aborts in the current managed-Python runtime. | Pin the selected Python, Tcl/Tk, display and runtime-library closure; run the plain toolkit control and actual VisPy embedding/lifecycle suite in that same profile. A replacement runtime is a new profile and needs its own receipts. |
+| Multisample scissor boundary | Headless clear and ordinary draw reproduce the error without Tk; direct creation at the failing size also fails. Shader-discard control passes but does not establish a safe replacement. | Preserve exact independently authored boundary expectations. Run zero/nonzero origins, samples 0/4, both 257x129 and 301x177, direct creation and resize, plus ordinary draw as well as clear. Record actual driver/ICD identity and compare only one intended variable per diagnostic trial. |
+
+`tests/native/test_scissor_boundaries.py` is the initial eight-case clear
+regression, not the entire expanded acceptance table. Preserve the failing
+driver receipts. A driver release note is a hypothesis, not causal proof or a
+qualified repair. Driver/runtime changes require closure and absence gates for
+the changed profile. Shader-based workarounds additionally require review of
+depth/stencil, sample coverage, early tests and user-visible shader side effects
+under SH-5; passing the boundary fixture alone cannot justify them.
+
+### Packet handoff and promotion (ART-1,2, RET-1)
+
+Every packet report names the source/artifact/profile tuple, selected requirement
+IDs and tests, collected/pass/fail/skip counts, actual child exit/wait, unresolved
+restrictions, retained evidence hashes and terminal cleanup receipt. The G2
+report maps every selected workflow to the exact installed wheel and separately
+lists dependency, startup/transient-load and execution/API observer outcomes
+with their controls. Never combine those gates into an unexplained green label.
+An environment repair or source-only pass permits the next scoped experiment;
+it does not qualify another profile or replace final installed-artifact proof.
+
+### Additional Astra review gates
+
+The [second Astra max review](../reviews/2026-10-24-astra-acceptance-detail-review.md)
+adds these concrete refinements to the preceding acceptance records:
+
+- **INV-1/2, EV-1/2:** G0 supplies a versioned schema and validator for its selected
+  ledger. Reject duplicate feature/profile keys, unknown requirement IDs,
+  dangling capability/dependency/fixture references, missing required acceptance
+  mappings and qualified rows backed only by source or stale artifact receipts.
+  Required capabilities and workflow acceptance must match the same claimed
+  profile/artifact; exclusions cannot silently drop previously required work.
+- **STATE-4:** Public `gloo.finish()`/`gloo.gl.glFinish()` and both flush routes
+  must not request a swap/window presentation, emit another GUI draw or change
+  selected canvas, FBO, viewport or scissor. Assert `application_presents` and
+  GUI-draw observations separately from submission/completion. For nonempty
+  flush, assert unchanged `completion_waits` as well as `finish_calls` before
+  any synchronizing observation. Explicit later presentation must show the
+  correct completed frame. The current raw finish route's presentation request
+  remains an open review finding, not a tested fix.
+- **TK-5/7, STATE-5:** For default `Canvas(px_scale=1)` Tk raster presentation,
+  the last positive Configure client dimensions determine both public size and
+  physical size; backend scale is 1 and pointer coordinates remain widget-local
+  Tk pixels. Requested geometry is provisional until Tk acknowledges it. Local
+  toolkit scaling must not independently multiply the native allocation. Zero
+  Configure sizes retain the last valid allocation until a positive resize.
+  Full-frame raster output has top-left row order; framebuffer crop rectangles
+  use the documented lower-left origin. Preserve the separate existing public
+  `px_scale` option: `Canvas.size` divides backend dimensions by that integer,
+  so do not generalize default-size equality to every Canvas configuration.
+  Add an explicit nondefault-px_scale fixture and camera/input mapping check.
+- **STATE-3/5, TK-7/8, ART-2:** Boundary receipts name requested and granted sample
+  counts, actual adapter/ICD and loaded driver-library identity. A four-sample
+  acceptance case fails when four samples were not actually granted; silent
+  single-sample fallback cannot close the scissor row. Before toolkit control
+  execution, declare a finite fresh-process create/pump/destroy trial budget
+  and deadlines, retaining every exit including abnormal termination. Plain Tk
+  and VisPy controls must use the same pinned runtime/display closure. A passing
+  replacement profile does not identify the old failure's cause.

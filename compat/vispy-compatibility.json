@@ -1,0 +1,4855 @@
+{
+  "schema": 1,
+  "upstream_commit": "117b054598f4758b598f4b8f48feea48c11fe7b0",
+  "reviewed": false,
+  "scope": "Generated public namespace/registered-backend seed, not a complete reviewed upstream inventory. Wildcard scene aliases, method-level contracts, representative examples, events, host workflows and raw interoperation still require reconciliation. No support percentage or promotion follows from this seed.",
+  "related_inventories": [
+    {
+      "path": "compat/upstream_manifest.json",
+      "sha256": "baa417c0cf5df87140fc5f689ca86e9241b4481cbb7e26a0dc8f3377f30eebf6"
+    },
+    {
+      "path": "tests/reference/inventory.json",
+      "sha256": "67706ecd4f91c267297c31c3c1506143f35f2f8eaa825e4fbcec566afd93f12d"
+    },
+    {
+      "path": "compat/no-opengl-matrix.json",
+      "sha256": "9477ee4a888fbe59d85ee09d0fe779de376f73982cdab7aea2447c11b046f410"
+    }
+  ],
+  "capabilities": [
+    "public-workflow",
+    "state-submission",
+    "backend-presentation"
+  ],
+  "profiles": [
+    {
+      "id": "unassigned",
+      "description": "No concrete environment/artifact admitted; review and split into actual profile rows.",
+      "admitted": false,
+      "environment_sha256": null
+    }
+  ],
+  "required_profiles": [
+    "unassigned"
+  ],
+  "features": [
+    {
+      "id": "app.application",
+      "entry_point": "vispy.app.Application",
+      "upstream_sources": [
+        {
+          "path": "app/__init__.py",
+          "sha256": "34386f5653e94549b9ce47ece0bd55c1b744d47860edd184908dbc4581f62933"
+        }
+      ],
+      "requirements": [
+        "TK-1",
+        "TK-2",
+        "TK-6"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.app.Application end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "python-hosts"
+    },
+    {
+      "id": "app.backend.egl",
+      "entry_point": "vispy.app.backend.egl",
+      "upstream_sources": [
+        {
+          "path": "app/backends/__init__.py",
+          "sha256": "bd64d8ad3c6617b71c129de8be84442bef94b813275c1f52e84bfe92607481c2"
+        }
+      ],
+      "requirements": [
+        "BACKEND-1",
+        "BACKEND-2"
+      ],
+      "capabilities": [
+        "backend-presentation"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.app.backend.egl end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "python-hosts"
+    },
+    {
+      "id": "app.backend.glfw",
+      "entry_point": "vispy.app.backend.glfw",
+      "upstream_sources": [
+        {
+          "path": "app/backends/__init__.py",
+          "sha256": "bd64d8ad3c6617b71c129de8be84442bef94b813275c1f52e84bfe92607481c2"
+        }
+      ],
+      "requirements": [
+        "BACKEND-1",
+        "BACKEND-2"
+      ],
+      "capabilities": [
+        "backend-presentation"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.app.backend.glfw end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "python-hosts"
+    },
+    {
+      "id": "app.backend.jupyter-rfb",
+      "entry_point": "vispy.app.backend.jupyter_rfb",
+      "upstream_sources": [
+        {
+          "path": "app/backends/__init__.py",
+          "sha256": "bd64d8ad3c6617b71c129de8be84442bef94b813275c1f52e84bfe92607481c2"
+        }
+      ],
+      "requirements": [
+        "BACKEND-1",
+        "BACKEND-2"
+      ],
+      "capabilities": [
+        "backend-presentation"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.app.backend.jupyter_rfb end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "python-hosts"
+    },
+    {
+      "id": "app.backend.osmesa",
+      "entry_point": "vispy.app.backend.osmesa",
+      "upstream_sources": [
+        {
+          "path": "app/backends/__init__.py",
+          "sha256": "bd64d8ad3c6617b71c129de8be84442bef94b813275c1f52e84bfe92607481c2"
+        }
+      ],
+      "requirements": [
+        "BACKEND-1",
+        "BACKEND-2"
+      ],
+      "capabilities": [
+        "backend-presentation"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.app.backend.osmesa end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "python-hosts"
+    },
+    {
+      "id": "app.backend.pyglet",
+      "entry_point": "vispy.app.backend.pyglet",
+      "upstream_sources": [
+        {
+          "path": "app/backends/__init__.py",
+          "sha256": "bd64d8ad3c6617b71c129de8be84442bef94b813275c1f52e84bfe92607481c2"
+        }
+      ],
+      "requirements": [
+        "BACKEND-1",
+        "BACKEND-2"
+      ],
+      "capabilities": [
+        "backend-presentation"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.app.backend.pyglet end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "python-hosts"
+    },
+    {
+      "id": "app.backend.pyqt4",
+      "entry_point": "vispy.app.backend.pyqt4",
+      "upstream_sources": [
+        {
+          "path": "app/backends/__init__.py",
+          "sha256": "bd64d8ad3c6617b71c129de8be84442bef94b813275c1f52e84bfe92607481c2"
+        }
+      ],
+      "requirements": [
+        "BACKEND-1",
+        "BACKEND-2"
+      ],
+      "capabilities": [
+        "backend-presentation"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.app.backend.pyqt4 end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "python-hosts"
+    },
+    {
+      "id": "app.backend.pyqt5",
+      "entry_point": "vispy.app.backend.pyqt5",
+      "upstream_sources": [
+        {
+          "path": "app/backends/__init__.py",
+          "sha256": "bd64d8ad3c6617b71c129de8be84442bef94b813275c1f52e84bfe92607481c2"
+        }
+      ],
+      "requirements": [
+        "BACKEND-1",
+        "BACKEND-2"
+      ],
+      "capabilities": [
+        "backend-presentation"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.app.backend.pyqt5 end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "python-hosts"
+    },
+    {
+      "id": "app.backend.pyqt6",
+      "entry_point": "vispy.app.backend.pyqt6",
+      "upstream_sources": [
+        {
+          "path": "app/backends/__init__.py",
+          "sha256": "bd64d8ad3c6617b71c129de8be84442bef94b813275c1f52e84bfe92607481c2"
+        }
+      ],
+      "requirements": [
+        "BACKEND-1",
+        "BACKEND-2"
+      ],
+      "capabilities": [
+        "backend-presentation"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.app.backend.pyqt6 end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "python-hosts"
+    },
+    {
+      "id": "app.backend.pyside",
+      "entry_point": "vispy.app.backend.pyside",
+      "upstream_sources": [
+        {
+          "path": "app/backends/__init__.py",
+          "sha256": "bd64d8ad3c6617b71c129de8be84442bef94b813275c1f52e84bfe92607481c2"
+        }
+      ],
+      "requirements": [
+        "BACKEND-1",
+        "BACKEND-2"
+      ],
+      "capabilities": [
+        "backend-presentation"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.app.backend.pyside end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "python-hosts"
+    },
+    {
+      "id": "app.backend.pyside2",
+      "entry_point": "vispy.app.backend.pyside2",
+      "upstream_sources": [
+        {
+          "path": "app/backends/__init__.py",
+          "sha256": "bd64d8ad3c6617b71c129de8be84442bef94b813275c1f52e84bfe92607481c2"
+        }
+      ],
+      "requirements": [
+        "BACKEND-1",
+        "BACKEND-2"
+      ],
+      "capabilities": [
+        "backend-presentation"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.app.backend.pyside2 end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "python-hosts"
+    },
+    {
+      "id": "app.backend.pyside6",
+      "entry_point": "vispy.app.backend.pyside6",
+      "upstream_sources": [
+        {
+          "path": "app/backends/__init__.py",
+          "sha256": "bd64d8ad3c6617b71c129de8be84442bef94b813275c1f52e84bfe92607481c2"
+        }
+      ],
+      "requirements": [
+        "BACKEND-1",
+        "BACKEND-2"
+      ],
+      "capabilities": [
+        "backend-presentation"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.app.backend.pyside6 end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "python-hosts"
+    },
+    {
+      "id": "app.backend.sdl2",
+      "entry_point": "vispy.app.backend.sdl2",
+      "upstream_sources": [
+        {
+          "path": "app/backends/__init__.py",
+          "sha256": "bd64d8ad3c6617b71c129de8be84442bef94b813275c1f52e84bfe92607481c2"
+        }
+      ],
+      "requirements": [
+        "BACKEND-1",
+        "BACKEND-2"
+      ],
+      "capabilities": [
+        "backend-presentation"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.app.backend.sdl2 end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "python-hosts"
+    },
+    {
+      "id": "app.backend.tkinter",
+      "entry_point": "vispy.app.backend.tkinter",
+      "upstream_sources": [
+        {
+          "path": "app/backends/__init__.py",
+          "sha256": "bd64d8ad3c6617b71c129de8be84442bef94b813275c1f52e84bfe92607481c2"
+        }
+      ],
+      "requirements": [
+        "BACKEND-1",
+        "BACKEND-2"
+      ],
+      "capabilities": [
+        "backend-presentation"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.app.backend.tkinter end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "python-hosts"
+    },
+    {
+      "id": "app.backend.wx",
+      "entry_point": "vispy.app.backend.wx",
+      "upstream_sources": [
+        {
+          "path": "app/backends/__init__.py",
+          "sha256": "bd64d8ad3c6617b71c129de8be84442bef94b813275c1f52e84bfe92607481c2"
+        }
+      ],
+      "requirements": [
+        "BACKEND-1",
+        "BACKEND-2"
+      ],
+      "capabilities": [
+        "backend-presentation"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.app.backend.wx end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "python-hosts"
+    },
+    {
+      "id": "app.base",
+      "entry_point": "vispy.app.base",
+      "upstream_sources": [
+        {
+          "path": "app/__init__.py",
+          "sha256": "34386f5653e94549b9ce47ece0bd55c1b744d47860edd184908dbc4581f62933"
+        }
+      ],
+      "requirements": [
+        "TK-1",
+        "TK-2",
+        "TK-6"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.app.base end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "python-hosts"
+    },
+    {
+      "id": "app.canvas",
+      "entry_point": "vispy.app.Canvas",
+      "upstream_sources": [
+        {
+          "path": "app/__init__.py",
+          "sha256": "34386f5653e94549b9ce47ece0bd55c1b744d47860edd184908dbc4581f62933"
+        }
+      ],
+      "requirements": [
+        "TK-1",
+        "TK-2",
+        "TK-6"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.app.Canvas end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "python-hosts"
+    },
+    {
+      "id": "app.create",
+      "entry_point": "vispy.app.create",
+      "upstream_sources": [
+        {
+          "path": "app/__init__.py",
+          "sha256": "34386f5653e94549b9ce47ece0bd55c1b744d47860edd184908dbc4581f62933"
+        }
+      ],
+      "requirements": [
+        "TK-1",
+        "TK-2",
+        "TK-6"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.app.create end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "python-hosts"
+    },
+    {
+      "id": "app.keyevent",
+      "entry_point": "vispy.app.KeyEvent",
+      "upstream_sources": [
+        {
+          "path": "app/__init__.py",
+          "sha256": "34386f5653e94549b9ce47ece0bd55c1b744d47860edd184908dbc4581f62933"
+        }
+      ],
+      "requirements": [
+        "TK-1",
+        "TK-2",
+        "TK-6"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.app.KeyEvent end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "python-hosts"
+    },
+    {
+      "id": "app.mouseevent",
+      "entry_point": "vispy.app.MouseEvent",
+      "upstream_sources": [
+        {
+          "path": "app/__init__.py",
+          "sha256": "34386f5653e94549b9ce47ece0bd55c1b744d47860edd184908dbc4581f62933"
+        }
+      ],
+      "requirements": [
+        "TK-1",
+        "TK-2",
+        "TK-6"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.app.MouseEvent end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "python-hosts"
+    },
+    {
+      "id": "app.process-events",
+      "entry_point": "vispy.app.process_events",
+      "upstream_sources": [
+        {
+          "path": "app/__init__.py",
+          "sha256": "34386f5653e94549b9ce47ece0bd55c1b744d47860edd184908dbc4581f62933"
+        }
+      ],
+      "requirements": [
+        "TK-1",
+        "TK-2",
+        "TK-6"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.app.process_events end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "python-hosts"
+    },
+    {
+      "id": "app.quit",
+      "entry_point": "vispy.app.quit",
+      "upstream_sources": [
+        {
+          "path": "app/__init__.py",
+          "sha256": "34386f5653e94549b9ce47ece0bd55c1b744d47860edd184908dbc4581f62933"
+        }
+      ],
+      "requirements": [
+        "TK-1",
+        "TK-2",
+        "TK-6"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.app.quit end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "python-hosts"
+    },
+    {
+      "id": "app.run",
+      "entry_point": "vispy.app.run",
+      "upstream_sources": [
+        {
+          "path": "app/__init__.py",
+          "sha256": "34386f5653e94549b9ce47ece0bd55c1b744d47860edd184908dbc4581f62933"
+        }
+      ],
+      "requirements": [
+        "TK-1",
+        "TK-2",
+        "TK-6"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.app.run end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "python-hosts"
+    },
+    {
+      "id": "app.timer",
+      "entry_point": "vispy.app.Timer",
+      "upstream_sources": [
+        {
+          "path": "app/__init__.py",
+          "sha256": "34386f5653e94549b9ce47ece0bd55c1b744d47860edd184908dbc4581f62933"
+        }
+      ],
+      "requirements": [
+        "TK-1",
+        "TK-2",
+        "TK-6"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.app.Timer end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "python-hosts"
+    },
+    {
+      "id": "app.use-app",
+      "entry_point": "vispy.app.use_app",
+      "upstream_sources": [
+        {
+          "path": "app/__init__.py",
+          "sha256": "34386f5653e94549b9ce47ece0bd55c1b744d47860edd184908dbc4581f62933"
+        }
+      ],
+      "requirements": [
+        "TK-1",
+        "TK-2",
+        "TK-6"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.app.use_app end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "python-hosts"
+    },
+    {
+      "id": "gloo.framebuffer",
+      "entry_point": "vispy.gloo.FrameBuffer",
+      "upstream_sources": [
+        {
+          "path": "gloo/__init__.py",
+          "sha256": "ccaf150dd63f776b170cb7b6a6909191b5f3aa3f45aef2acbb25344956bd38e5"
+        }
+      ],
+      "requirements": [
+        "INV-3",
+        "STATE-2"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.gloo.FrameBuffer end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "native"
+    },
+    {
+      "id": "gloo.get-current-canvas",
+      "entry_point": "vispy.gloo.get_current_canvas",
+      "upstream_sources": [
+        {
+          "path": "gloo/__init__.py",
+          "sha256": "ccaf150dd63f776b170cb7b6a6909191b5f3aa3f45aef2acbb25344956bd38e5"
+        },
+        {
+          "path": "gloo/wrappers.py",
+          "sha256": "73dbb5eb8ca78b2822266d272ffb14db9fcadd7a56512843209187714c9e8dcc"
+        }
+      ],
+      "requirements": [
+        "INV-3",
+        "STATE-1",
+        "STATE-2",
+        "STATE-4"
+      ],
+      "capabilities": [
+        "public-workflow",
+        "state-submission"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.gloo.get_current_canvas end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "native"
+    },
+    {
+      "id": "gloo.get-default-config",
+      "entry_point": "vispy.gloo.get_default_config",
+      "upstream_sources": [
+        {
+          "path": "gloo/__init__.py",
+          "sha256": "ccaf150dd63f776b170cb7b6a6909191b5f3aa3f45aef2acbb25344956bd38e5"
+        }
+      ],
+      "requirements": [
+        "INV-3",
+        "STATE-2"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.gloo.get_default_config end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "native"
+    },
+    {
+      "id": "gloo.get-gl-configuration",
+      "entry_point": "vispy.gloo.get_gl_configuration",
+      "upstream_sources": [
+        {
+          "path": "gloo/wrappers.py",
+          "sha256": "73dbb5eb8ca78b2822266d272ffb14db9fcadd7a56512843209187714c9e8dcc"
+        }
+      ],
+      "requirements": [
+        "STATE-1",
+        "STATE-2",
+        "STATE-4"
+      ],
+      "capabilities": [
+        "state-submission"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.gloo.get_gl_configuration end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "native"
+    },
+    {
+      "id": "gloo.gl",
+      "entry_point": "vispy.gloo.gl",
+      "upstream_sources": [
+        {
+          "path": "gloo/__init__.py",
+          "sha256": "ccaf150dd63f776b170cb7b6a6909191b5f3aa3f45aef2acbb25344956bd38e5"
+        }
+      ],
+      "requirements": [
+        "INV-3",
+        "STATE-2"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.gloo.gl end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "native"
+    },
+    {
+      "id": "gloo.glcontext",
+      "entry_point": "vispy.gloo.GLContext",
+      "upstream_sources": [
+        {
+          "path": "gloo/__init__.py",
+          "sha256": "ccaf150dd63f776b170cb7b6a6909191b5f3aa3f45aef2acbb25344956bd38e5"
+        }
+      ],
+      "requirements": [
+        "INV-3",
+        "STATE-2"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.gloo.GLContext end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "native"
+    },
+    {
+      "id": "gloo.globject",
+      "entry_point": "vispy.gloo.GLObject",
+      "upstream_sources": [
+        {
+          "path": "gloo/__init__.py",
+          "sha256": "ccaf150dd63f776b170cb7b6a6909191b5f3aa3f45aef2acbb25344956bd38e5"
+        }
+      ],
+      "requirements": [
+        "INV-3",
+        "STATE-2"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.gloo.GLObject end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "native"
+    },
+    {
+      "id": "gloo.indexbuffer",
+      "entry_point": "vispy.gloo.IndexBuffer",
+      "upstream_sources": [
+        {
+          "path": "gloo/__init__.py",
+          "sha256": "ccaf150dd63f776b170cb7b6a6909191b5f3aa3f45aef2acbb25344956bd38e5"
+        }
+      ],
+      "requirements": [
+        "INV-3",
+        "STATE-2"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.gloo.IndexBuffer end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "native"
+    },
+    {
+      "id": "gloo.program",
+      "entry_point": "vispy.gloo.Program",
+      "upstream_sources": [
+        {
+          "path": "gloo/__init__.py",
+          "sha256": "ccaf150dd63f776b170cb7b6a6909191b5f3aa3f45aef2acbb25344956bd38e5"
+        }
+      ],
+      "requirements": [
+        "INV-3",
+        "STATE-2"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.gloo.Program end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "native"
+    },
+    {
+      "id": "gloo.read-pixels",
+      "entry_point": "vispy.gloo.read_pixels",
+      "upstream_sources": [
+        {
+          "path": "gloo/wrappers.py",
+          "sha256": "73dbb5eb8ca78b2822266d272ffb14db9fcadd7a56512843209187714c9e8dcc"
+        }
+      ],
+      "requirements": [
+        "STATE-1",
+        "STATE-2",
+        "STATE-4"
+      ],
+      "capabilities": [
+        "state-submission"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.gloo.read_pixels end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "native"
+    },
+    {
+      "id": "gloo.renderbuffer",
+      "entry_point": "vispy.gloo.RenderBuffer",
+      "upstream_sources": [
+        {
+          "path": "gloo/__init__.py",
+          "sha256": "ccaf150dd63f776b170cb7b6a6909191b5f3aa3f45aef2acbb25344956bd38e5"
+        }
+      ],
+      "requirements": [
+        "INV-3",
+        "STATE-2"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.gloo.RenderBuffer end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "native"
+    },
+    {
+      "id": "gloo.texture1d",
+      "entry_point": "vispy.gloo.Texture1D",
+      "upstream_sources": [
+        {
+          "path": "gloo/__init__.py",
+          "sha256": "ccaf150dd63f776b170cb7b6a6909191b5f3aa3f45aef2acbb25344956bd38e5"
+        }
+      ],
+      "requirements": [
+        "INV-3",
+        "STATE-2"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.gloo.Texture1D end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "native"
+    },
+    {
+      "id": "gloo.texture2d",
+      "entry_point": "vispy.gloo.Texture2D",
+      "upstream_sources": [
+        {
+          "path": "gloo/__init__.py",
+          "sha256": "ccaf150dd63f776b170cb7b6a6909191b5f3aa3f45aef2acbb25344956bd38e5"
+        }
+      ],
+      "requirements": [
+        "INV-3",
+        "STATE-2"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.gloo.Texture2D end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "native"
+    },
+    {
+      "id": "gloo.texture3d",
+      "entry_point": "vispy.gloo.Texture3D",
+      "upstream_sources": [
+        {
+          "path": "gloo/__init__.py",
+          "sha256": "ccaf150dd63f776b170cb7b6a6909191b5f3aa3f45aef2acbb25344956bd38e5"
+        }
+      ],
+      "requirements": [
+        "INV-3",
+        "STATE-2"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.gloo.Texture3D end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "native"
+    },
+    {
+      "id": "gloo.textureatlas",
+      "entry_point": "vispy.gloo.TextureAtlas",
+      "upstream_sources": [
+        {
+          "path": "gloo/__init__.py",
+          "sha256": "ccaf150dd63f776b170cb7b6a6909191b5f3aa3f45aef2acbb25344956bd38e5"
+        }
+      ],
+      "requirements": [
+        "INV-3",
+        "STATE-2"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.gloo.TextureAtlas end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "native"
+    },
+    {
+      "id": "gloo.texturecube",
+      "entry_point": "vispy.gloo.TextureCube",
+      "upstream_sources": [
+        {
+          "path": "gloo/__init__.py",
+          "sha256": "ccaf150dd63f776b170cb7b6a6909191b5f3aa3f45aef2acbb25344956bd38e5"
+        }
+      ],
+      "requirements": [
+        "INV-3",
+        "STATE-2"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.gloo.TextureCube end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "native"
+    },
+    {
+      "id": "gloo.textureemulated3d",
+      "entry_point": "vispy.gloo.TextureEmulated3D",
+      "upstream_sources": [
+        {
+          "path": "gloo/__init__.py",
+          "sha256": "ccaf150dd63f776b170cb7b6a6909191b5f3aa3f45aef2acbb25344956bd38e5"
+        }
+      ],
+      "requirements": [
+        "INV-3",
+        "STATE-2"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.gloo.TextureEmulated3D end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "native"
+    },
+    {
+      "id": "gloo.util",
+      "entry_point": "vispy.gloo.util",
+      "upstream_sources": [
+        {
+          "path": "gloo/__init__.py",
+          "sha256": "ccaf150dd63f776b170cb7b6a6909191b5f3aa3f45aef2acbb25344956bd38e5"
+        }
+      ],
+      "requirements": [
+        "INV-3",
+        "STATE-2"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.gloo.util end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "native"
+    },
+    {
+      "id": "gloo.vertexbuffer",
+      "entry_point": "vispy.gloo.VertexBuffer",
+      "upstream_sources": [
+        {
+          "path": "gloo/__init__.py",
+          "sha256": "ccaf150dd63f776b170cb7b6a6909191b5f3aa3f45aef2acbb25344956bd38e5"
+        }
+      ],
+      "requirements": [
+        "INV-3",
+        "STATE-2"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.gloo.VertexBuffer end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "native"
+    },
+    {
+      "id": "scene.cameras",
+      "entry_point": "vispy.scene.cameras",
+      "upstream_sources": [
+        {
+          "path": "scene/__init__.py",
+          "sha256": "c7cc5175ecca22dd072afaa311b30691ca59e591ac17f6ad86d1c6d1deda3ab4"
+        }
+      ],
+      "requirements": [
+        "INV-3"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.scene.cameras end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "python-hosts"
+    },
+    {
+      "id": "scene.cameras.arcballcamera",
+      "entry_point": "vispy.scene.cameras.ArcballCamera",
+      "upstream_sources": [
+        {
+          "path": "scene/cameras/__init__.py",
+          "sha256": "61e6e7ca779af96a14ceb83bd92eacf51561d8e91763716560ec48ebf115d9b9"
+        }
+      ],
+      "requirements": [
+        "INV-3",
+        "TK-6"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.scene.cameras.ArcballCamera end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "python-hosts"
+    },
+    {
+      "id": "scene.cameras.basecamera",
+      "entry_point": "vispy.scene.cameras.BaseCamera",
+      "upstream_sources": [
+        {
+          "path": "scene/cameras/__init__.py",
+          "sha256": "61e6e7ca779af96a14ceb83bd92eacf51561d8e91763716560ec48ebf115d9b9"
+        }
+      ],
+      "requirements": [
+        "INV-3",
+        "TK-6"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.scene.cameras.BaseCamera end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "python-hosts"
+    },
+    {
+      "id": "scene.cameras.flycamera",
+      "entry_point": "vispy.scene.cameras.FlyCamera",
+      "upstream_sources": [
+        {
+          "path": "scene/cameras/__init__.py",
+          "sha256": "61e6e7ca779af96a14ceb83bd92eacf51561d8e91763716560ec48ebf115d9b9"
+        }
+      ],
+      "requirements": [
+        "INV-3",
+        "TK-6"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.scene.cameras.FlyCamera end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "python-hosts"
+    },
+    {
+      "id": "scene.cameras.magnify1dcamera",
+      "entry_point": "vispy.scene.cameras.Magnify1DCamera",
+      "upstream_sources": [
+        {
+          "path": "scene/cameras/__init__.py",
+          "sha256": "61e6e7ca779af96a14ceb83bd92eacf51561d8e91763716560ec48ebf115d9b9"
+        }
+      ],
+      "requirements": [
+        "INV-3",
+        "TK-6"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.scene.cameras.Magnify1DCamera end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "python-hosts"
+    },
+    {
+      "id": "scene.cameras.magnifycamera",
+      "entry_point": "vispy.scene.cameras.MagnifyCamera",
+      "upstream_sources": [
+        {
+          "path": "scene/cameras/__init__.py",
+          "sha256": "61e6e7ca779af96a14ceb83bd92eacf51561d8e91763716560ec48ebf115d9b9"
+        }
+      ],
+      "requirements": [
+        "INV-3",
+        "TK-6"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.scene.cameras.MagnifyCamera end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "python-hosts"
+    },
+    {
+      "id": "scene.cameras.make-camera",
+      "entry_point": "vispy.scene.cameras.make_camera",
+      "upstream_sources": [
+        {
+          "path": "scene/cameras/__init__.py",
+          "sha256": "61e6e7ca779af96a14ceb83bd92eacf51561d8e91763716560ec48ebf115d9b9"
+        }
+      ],
+      "requirements": [
+        "INV-3",
+        "TK-6"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.scene.cameras.make_camera end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "python-hosts"
+    },
+    {
+      "id": "scene.cameras.panzoomcamera",
+      "entry_point": "vispy.scene.cameras.PanZoomCamera",
+      "upstream_sources": [
+        {
+          "path": "scene/cameras/__init__.py",
+          "sha256": "61e6e7ca779af96a14ceb83bd92eacf51561d8e91763716560ec48ebf115d9b9"
+        }
+      ],
+      "requirements": [
+        "INV-3",
+        "TK-6"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.scene.cameras.PanZoomCamera end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "python-hosts"
+    },
+    {
+      "id": "scene.cameras.turntablecamera",
+      "entry_point": "vispy.scene.cameras.TurntableCamera",
+      "upstream_sources": [
+        {
+          "path": "scene/cameras/__init__.py",
+          "sha256": "61e6e7ca779af96a14ceb83bd92eacf51561d8e91763716560ec48ebf115d9b9"
+        }
+      ],
+      "requirements": [
+        "INV-3",
+        "TK-6"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.scene.cameras.TurntableCamera end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "python-hosts"
+    },
+    {
+      "id": "scene.filters",
+      "entry_point": "vispy.scene.filters",
+      "upstream_sources": [
+        {
+          "path": "scene/__init__.py",
+          "sha256": "c7cc5175ecca22dd072afaa311b30691ca59e591ac17f6ad86d1c6d1deda3ab4"
+        }
+      ],
+      "requirements": [
+        "INV-3"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.scene.filters end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "python-hosts"
+    },
+    {
+      "id": "scene.node",
+      "entry_point": "vispy.scene.Node",
+      "upstream_sources": [
+        {
+          "path": "scene/__init__.py",
+          "sha256": "c7cc5175ecca22dd072afaa311b30691ca59e591ac17f6ad86d1c6d1deda3ab4"
+        }
+      ],
+      "requirements": [
+        "INV-3"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.scene.Node end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "python-hosts"
+    },
+    {
+      "id": "scene.scenecanvas",
+      "entry_point": "vispy.scene.SceneCanvas",
+      "upstream_sources": [
+        {
+          "path": "scene/__init__.py",
+          "sha256": "c7cc5175ecca22dd072afaa311b30691ca59e591ac17f6ad86d1c6d1deda3ab4"
+        }
+      ],
+      "requirements": [
+        "INV-3"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.scene.SceneCanvas end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "python-hosts"
+    },
+    {
+      "id": "scene.transforms",
+      "entry_point": "vispy.scene.transforms",
+      "upstream_sources": [
+        {
+          "path": "scene/__init__.py",
+          "sha256": "c7cc5175ecca22dd072afaa311b30691ca59e591ac17f6ad86d1c6d1deda3ab4"
+        }
+      ],
+      "requirements": [
+        "INV-3"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.scene.transforms end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "python-hosts"
+    },
+    {
+      "id": "scene.visuals",
+      "entry_point": "vispy.scene.visuals",
+      "upstream_sources": [
+        {
+          "path": "scene/__init__.py",
+          "sha256": "c7cc5175ecca22dd072afaa311b30691ca59e591ac17f6ad86d1c6d1deda3ab4"
+        }
+      ],
+      "requirements": [
+        "INV-3"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.scene.visuals end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "python-hosts"
+    },
+    {
+      "id": "scene.widgets",
+      "entry_point": "vispy.scene.widgets",
+      "upstream_sources": [
+        {
+          "path": "scene/__init__.py",
+          "sha256": "c7cc5175ecca22dd072afaa311b30691ca59e591ac17f6ad86d1c6d1deda3ab4"
+        }
+      ],
+      "requirements": [
+        "INV-3"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.scene.widgets end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "python-hosts"
+    },
+    {
+      "id": "scene.widgets.axiswidget",
+      "entry_point": "vispy.scene.widgets.AxisWidget",
+      "upstream_sources": [
+        {
+          "path": "scene/widgets/__init__.py",
+          "sha256": "ffa6ea8e8616ff9c52646563b69af7afacf64f52da0ce4d92188be3967b5e67b"
+        }
+      ],
+      "requirements": [
+        "INV-3",
+        "TK-7"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.scene.widgets.AxisWidget end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "python-hosts"
+    },
+    {
+      "id": "scene.widgets.colorbarwidget",
+      "entry_point": "vispy.scene.widgets.ColorBarWidget",
+      "upstream_sources": [
+        {
+          "path": "scene/widgets/__init__.py",
+          "sha256": "ffa6ea8e8616ff9c52646563b69af7afacf64f52da0ce4d92188be3967b5e67b"
+        }
+      ],
+      "requirements": [
+        "INV-3",
+        "TK-7"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.scene.widgets.ColorBarWidget end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "python-hosts"
+    },
+    {
+      "id": "scene.widgets.console",
+      "entry_point": "vispy.scene.widgets.Console",
+      "upstream_sources": [
+        {
+          "path": "scene/widgets/__init__.py",
+          "sha256": "ffa6ea8e8616ff9c52646563b69af7afacf64f52da0ce4d92188be3967b5e67b"
+        }
+      ],
+      "requirements": [
+        "INV-3",
+        "TK-7"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.scene.widgets.Console end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "python-hosts"
+    },
+    {
+      "id": "scene.widgets.grid",
+      "entry_point": "vispy.scene.widgets.Grid",
+      "upstream_sources": [
+        {
+          "path": "scene/widgets/__init__.py",
+          "sha256": "ffa6ea8e8616ff9c52646563b69af7afacf64f52da0ce4d92188be3967b5e67b"
+        }
+      ],
+      "requirements": [
+        "INV-3",
+        "TK-7"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.scene.widgets.Grid end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "python-hosts"
+    },
+    {
+      "id": "scene.widgets.label",
+      "entry_point": "vispy.scene.widgets.Label",
+      "upstream_sources": [
+        {
+          "path": "scene/widgets/__init__.py",
+          "sha256": "ffa6ea8e8616ff9c52646563b69af7afacf64f52da0ce4d92188be3967b5e67b"
+        }
+      ],
+      "requirements": [
+        "INV-3",
+        "TK-7"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.scene.widgets.Label end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "python-hosts"
+    },
+    {
+      "id": "scene.widgets.viewbox",
+      "entry_point": "vispy.scene.widgets.ViewBox",
+      "upstream_sources": [
+        {
+          "path": "scene/widgets/__init__.py",
+          "sha256": "ffa6ea8e8616ff9c52646563b69af7afacf64f52da0ce4d92188be3967b5e67b"
+        }
+      ],
+      "requirements": [
+        "INV-3",
+        "TK-7"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.scene.widgets.ViewBox end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "python-hosts"
+    },
+    {
+      "id": "scene.widgets.widget",
+      "entry_point": "vispy.scene.widgets.Widget",
+      "upstream_sources": [
+        {
+          "path": "scene/widgets/__init__.py",
+          "sha256": "ffa6ea8e8616ff9c52646563b69af7afacf64f52da0ce4d92188be3967b5e67b"
+        }
+      ],
+      "requirements": [
+        "INV-3",
+        "TK-7"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.scene.widgets.Widget end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "python-hosts"
+    },
+    {
+      "id": "visuals.arrowvisual",
+      "entry_point": "vispy.visuals.ArrowVisual",
+      "upstream_sources": [
+        {
+          "path": "visuals/__init__.py",
+          "sha256": "882b68823b13a5554677d18d15ba4b1c005eb47a0611e4c024d3f632f5e7f89c"
+        }
+      ],
+      "requirements": [
+        "INV-3"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.visuals.ArrowVisual end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "native"
+    },
+    {
+      "id": "visuals.axisvisual",
+      "entry_point": "vispy.visuals.AxisVisual",
+      "upstream_sources": [
+        {
+          "path": "visuals/__init__.py",
+          "sha256": "882b68823b13a5554677d18d15ba4b1c005eb47a0611e4c024d3f632f5e7f89c"
+        }
+      ],
+      "requirements": [
+        "INV-3"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.visuals.AxisVisual end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "native"
+    },
+    {
+      "id": "visuals.basevisual",
+      "entry_point": "vispy.visuals.BaseVisual",
+      "upstream_sources": [
+        {
+          "path": "visuals/__init__.py",
+          "sha256": "882b68823b13a5554677d18d15ba4b1c005eb47a0611e4c024d3f632f5e7f89c"
+        }
+      ],
+      "requirements": [
+        "INV-3"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.visuals.BaseVisual end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "native"
+    },
+    {
+      "id": "visuals.boxvisual",
+      "entry_point": "vispy.visuals.BoxVisual",
+      "upstream_sources": [
+        {
+          "path": "visuals/__init__.py",
+          "sha256": "882b68823b13a5554677d18d15ba4b1c005eb47a0611e4c024d3f632f5e7f89c"
+        }
+      ],
+      "requirements": [
+        "INV-3"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.visuals.BoxVisual end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "native"
+    },
+    {
+      "id": "visuals.colorbarvisual",
+      "entry_point": "vispy.visuals.ColorBarVisual",
+      "upstream_sources": [
+        {
+          "path": "visuals/__init__.py",
+          "sha256": "882b68823b13a5554677d18d15ba4b1c005eb47a0611e4c024d3f632f5e7f89c"
+        }
+      ],
+      "requirements": [
+        "INV-3"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.visuals.ColorBarVisual end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "native"
+    },
+    {
+      "id": "visuals.compleximagevisual",
+      "entry_point": "vispy.visuals.ComplexImageVisual",
+      "upstream_sources": [
+        {
+          "path": "visuals/__init__.py",
+          "sha256": "882b68823b13a5554677d18d15ba4b1c005eb47a0611e4c024d3f632f5e7f89c"
+        }
+      ],
+      "requirements": [
+        "INV-3"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.visuals.ComplexImageVisual end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "native"
+    },
+    {
+      "id": "visuals.compoundvisual",
+      "entry_point": "vispy.visuals.CompoundVisual",
+      "upstream_sources": [
+        {
+          "path": "visuals/__init__.py",
+          "sha256": "882b68823b13a5554677d18d15ba4b1c005eb47a0611e4c024d3f632f5e7f89c"
+        }
+      ],
+      "requirements": [
+        "INV-3"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.visuals.CompoundVisual end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "native"
+    },
+    {
+      "id": "visuals.cubevisual",
+      "entry_point": "vispy.visuals.CubeVisual",
+      "upstream_sources": [
+        {
+          "path": "visuals/__init__.py",
+          "sha256": "882b68823b13a5554677d18d15ba4b1c005eb47a0611e4c024d3f632f5e7f89c"
+        }
+      ],
+      "requirements": [
+        "INV-3"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.visuals.CubeVisual end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "native"
+    },
+    {
+      "id": "visuals.ellipsevisual",
+      "entry_point": "vispy.visuals.EllipseVisual",
+      "upstream_sources": [
+        {
+          "path": "visuals/__init__.py",
+          "sha256": "882b68823b13a5554677d18d15ba4b1c005eb47a0611e4c024d3f632f5e7f89c"
+        }
+      ],
+      "requirements": [
+        "INV-3"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.visuals.EllipseVisual end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "native"
+    },
+    {
+      "id": "visuals.filters.alpha",
+      "entry_point": "vispy.visuals.filters.Alpha",
+      "upstream_sources": [
+        {
+          "path": "visuals/filters/__init__.py",
+          "sha256": "0666cb97cc3d64e11d454f1f872707427ed31f953e62f2464ad77e1d4ba4ed25"
+        }
+      ],
+      "requirements": [
+        "INV-3",
+        "SH-4"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.visuals.filters.Alpha end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "native"
+    },
+    {
+      "id": "visuals.filters.clipper",
+      "entry_point": "vispy.visuals.filters.Clipper",
+      "upstream_sources": [
+        {
+          "path": "visuals/filters/__init__.py",
+          "sha256": "0666cb97cc3d64e11d454f1f872707427ed31f953e62f2464ad77e1d4ba4ed25"
+        }
+      ],
+      "requirements": [
+        "INV-3",
+        "SH-4"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.visuals.filters.Clipper end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "native"
+    },
+    {
+      "id": "visuals.filters.colorfilter",
+      "entry_point": "vispy.visuals.filters.ColorFilter",
+      "upstream_sources": [
+        {
+          "path": "visuals/filters/__init__.py",
+          "sha256": "0666cb97cc3d64e11d454f1f872707427ed31f953e62f2464ad77e1d4ba4ed25"
+        }
+      ],
+      "requirements": [
+        "INV-3",
+        "SH-4"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.visuals.filters.ColorFilter end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "native"
+    },
+    {
+      "id": "visuals.filters.facepickingfilter",
+      "entry_point": "vispy.visuals.filters.FacePickingFilter",
+      "upstream_sources": [
+        {
+          "path": "visuals/filters/__init__.py",
+          "sha256": "0666cb97cc3d64e11d454f1f872707427ed31f953e62f2464ad77e1d4ba4ed25"
+        }
+      ],
+      "requirements": [
+        "INV-3",
+        "SH-4"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.visuals.filters.FacePickingFilter end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "native"
+    },
+    {
+      "id": "visuals.filters.filter",
+      "entry_point": "vispy.visuals.filters.Filter",
+      "upstream_sources": [
+        {
+          "path": "visuals/filters/__init__.py",
+          "sha256": "0666cb97cc3d64e11d454f1f872707427ed31f953e62f2464ad77e1d4ba4ed25"
+        }
+      ],
+      "requirements": [
+        "INV-3",
+        "SH-4"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.visuals.filters.Filter end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "native"
+    },
+    {
+      "id": "visuals.filters.instancedshadingfilter",
+      "entry_point": "vispy.visuals.filters.InstancedShadingFilter",
+      "upstream_sources": [
+        {
+          "path": "visuals/filters/__init__.py",
+          "sha256": "0666cb97cc3d64e11d454f1f872707427ed31f953e62f2464ad77e1d4ba4ed25"
+        }
+      ],
+      "requirements": [
+        "INV-3",
+        "SH-4"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.visuals.filters.InstancedShadingFilter end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "native"
+    },
+    {
+      "id": "visuals.filters.isolinefilter",
+      "entry_point": "vispy.visuals.filters.IsolineFilter",
+      "upstream_sources": [
+        {
+          "path": "visuals/filters/__init__.py",
+          "sha256": "0666cb97cc3d64e11d454f1f872707427ed31f953e62f2464ad77e1d4ba4ed25"
+        }
+      ],
+      "requirements": [
+        "INV-3",
+        "SH-4"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.visuals.filters.IsolineFilter end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "native"
+    },
+    {
+      "id": "visuals.filters.markerpickingfilter",
+      "entry_point": "vispy.visuals.filters.MarkerPickingFilter",
+      "upstream_sources": [
+        {
+          "path": "visuals/filters/__init__.py",
+          "sha256": "0666cb97cc3d64e11d454f1f872707427ed31f953e62f2464ad77e1d4ba4ed25"
+        }
+      ],
+      "requirements": [
+        "INV-3",
+        "SH-4"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.visuals.filters.MarkerPickingFilter end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "native"
+    },
+    {
+      "id": "visuals.filters.pickingfilter",
+      "entry_point": "vispy.visuals.filters.PickingFilter",
+      "upstream_sources": [
+        {
+          "path": "visuals/filters/__init__.py",
+          "sha256": "0666cb97cc3d64e11d454f1f872707427ed31f953e62f2464ad77e1d4ba4ed25"
+        }
+      ],
+      "requirements": [
+        "INV-3",
+        "SH-4"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.visuals.filters.PickingFilter end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "native"
+    },
+    {
+      "id": "visuals.filters.primitivepickingfilter",
+      "entry_point": "vispy.visuals.filters.PrimitivePickingFilter",
+      "upstream_sources": [
+        {
+          "path": "visuals/filters/__init__.py",
+          "sha256": "0666cb97cc3d64e11d454f1f872707427ed31f953e62f2464ad77e1d4ba4ed25"
+        }
+      ],
+      "requirements": [
+        "INV-3",
+        "SH-4"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.visuals.filters.PrimitivePickingFilter end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "native"
+    },
+    {
+      "id": "visuals.filters.shadingfilter",
+      "entry_point": "vispy.visuals.filters.ShadingFilter",
+      "upstream_sources": [
+        {
+          "path": "visuals/filters/__init__.py",
+          "sha256": "0666cb97cc3d64e11d454f1f872707427ed31f953e62f2464ad77e1d4ba4ed25"
+        }
+      ],
+      "requirements": [
+        "INV-3",
+        "SH-4"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.visuals.filters.ShadingFilter end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "native"
+    },
+    {
+      "id": "visuals.filters.texturefilter",
+      "entry_point": "vispy.visuals.filters.TextureFilter",
+      "upstream_sources": [
+        {
+          "path": "visuals/filters/__init__.py",
+          "sha256": "0666cb97cc3d64e11d454f1f872707427ed31f953e62f2464ad77e1d4ba4ed25"
+        }
+      ],
+      "requirements": [
+        "INV-3",
+        "SH-4"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.visuals.filters.TextureFilter end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "native"
+    },
+    {
+      "id": "visuals.filters.wireframefilter",
+      "entry_point": "vispy.visuals.filters.WireframeFilter",
+      "upstream_sources": [
+        {
+          "path": "visuals/filters/__init__.py",
+          "sha256": "0666cb97cc3d64e11d454f1f872707427ed31f953e62f2464ad77e1d4ba4ed25"
+        }
+      ],
+      "requirements": [
+        "INV-3",
+        "SH-4"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.visuals.filters.WireframeFilter end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "native"
+    },
+    {
+      "id": "visuals.filters.zcolormapfilter",
+      "entry_point": "vispy.visuals.filters.ZColormapFilter",
+      "upstream_sources": [
+        {
+          "path": "visuals/filters/__init__.py",
+          "sha256": "0666cb97cc3d64e11d454f1f872707427ed31f953e62f2464ad77e1d4ba4ed25"
+        }
+      ],
+      "requirements": [
+        "INV-3",
+        "SH-4"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.visuals.filters.ZColormapFilter end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "native"
+    },
+    {
+      "id": "visuals.graphvisual",
+      "entry_point": "vispy.visuals.GraphVisual",
+      "upstream_sources": [
+        {
+          "path": "visuals/__init__.py",
+          "sha256": "882b68823b13a5554677d18d15ba4b1c005eb47a0611e4c024d3f632f5e7f89c"
+        }
+      ],
+      "requirements": [
+        "INV-3"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.visuals.GraphVisual end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "native"
+    },
+    {
+      "id": "visuals.gridlinesvisual",
+      "entry_point": "vispy.visuals.GridLinesVisual",
+      "upstream_sources": [
+        {
+          "path": "visuals/__init__.py",
+          "sha256": "882b68823b13a5554677d18d15ba4b1c005eb47a0611e4c024d3f632f5e7f89c"
+        }
+      ],
+      "requirements": [
+        "INV-3"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.visuals.GridLinesVisual end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "native"
+    },
+    {
+      "id": "visuals.gridmeshvisual",
+      "entry_point": "vispy.visuals.GridMeshVisual",
+      "upstream_sources": [
+        {
+          "path": "visuals/__init__.py",
+          "sha256": "882b68823b13a5554677d18d15ba4b1c005eb47a0611e4c024d3f632f5e7f89c"
+        }
+      ],
+      "requirements": [
+        "INV-3"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.visuals.GridMeshVisual end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "native"
+    },
+    {
+      "id": "visuals.histogramvisual",
+      "entry_point": "vispy.visuals.HistogramVisual",
+      "upstream_sources": [
+        {
+          "path": "visuals/__init__.py",
+          "sha256": "882b68823b13a5554677d18d15ba4b1c005eb47a0611e4c024d3f632f5e7f89c"
+        }
+      ],
+      "requirements": [
+        "INV-3"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.visuals.HistogramVisual end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "native"
+    },
+    {
+      "id": "visuals.imagevisual",
+      "entry_point": "vispy.visuals.ImageVisual",
+      "upstream_sources": [
+        {
+          "path": "visuals/__init__.py",
+          "sha256": "882b68823b13a5554677d18d15ba4b1c005eb47a0611e4c024d3f632f5e7f89c"
+        }
+      ],
+      "requirements": [
+        "INV-3"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.visuals.ImageVisual end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "native"
+    },
+    {
+      "id": "visuals.infinitelinevisual",
+      "entry_point": "vispy.visuals.InfiniteLineVisual",
+      "upstream_sources": [
+        {
+          "path": "visuals/__init__.py",
+          "sha256": "882b68823b13a5554677d18d15ba4b1c005eb47a0611e4c024d3f632f5e7f89c"
+        }
+      ],
+      "requirements": [
+        "INV-3"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.visuals.InfiniteLineVisual end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "native"
+    },
+    {
+      "id": "visuals.instancedmeshvisual",
+      "entry_point": "vispy.visuals.InstancedMeshVisual",
+      "upstream_sources": [
+        {
+          "path": "visuals/__init__.py",
+          "sha256": "882b68823b13a5554677d18d15ba4b1c005eb47a0611e4c024d3f632f5e7f89c"
+        }
+      ],
+      "requirements": [
+        "INV-3"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.visuals.InstancedMeshVisual end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "native"
+    },
+    {
+      "id": "visuals.isocurvevisual",
+      "entry_point": "vispy.visuals.IsocurveVisual",
+      "upstream_sources": [
+        {
+          "path": "visuals/__init__.py",
+          "sha256": "882b68823b13a5554677d18d15ba4b1c005eb47a0611e4c024d3f632f5e7f89c"
+        }
+      ],
+      "requirements": [
+        "INV-3"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.visuals.IsocurveVisual end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "native"
+    },
+    {
+      "id": "visuals.isolinevisual",
+      "entry_point": "vispy.visuals.IsolineVisual",
+      "upstream_sources": [
+        {
+          "path": "visuals/__init__.py",
+          "sha256": "882b68823b13a5554677d18d15ba4b1c005eb47a0611e4c024d3f632f5e7f89c"
+        }
+      ],
+      "requirements": [
+        "INV-3"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.visuals.IsolineVisual end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "native"
+    },
+    {
+      "id": "visuals.isosurfacevisual",
+      "entry_point": "vispy.visuals.IsosurfaceVisual",
+      "upstream_sources": [
+        {
+          "path": "visuals/__init__.py",
+          "sha256": "882b68823b13a5554677d18d15ba4b1c005eb47a0611e4c024d3f632f5e7f89c"
+        }
+      ],
+      "requirements": [
+        "INV-3"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.visuals.IsosurfaceVisual end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "native"
+    },
+    {
+      "id": "visuals.linearregionvisual",
+      "entry_point": "vispy.visuals.LinearRegionVisual",
+      "upstream_sources": [
+        {
+          "path": "visuals/__init__.py",
+          "sha256": "882b68823b13a5554677d18d15ba4b1c005eb47a0611e4c024d3f632f5e7f89c"
+        }
+      ],
+      "requirements": [
+        "INV-3"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.visuals.LinearRegionVisual end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "native"
+    },
+    {
+      "id": "visuals.lineplotvisual",
+      "entry_point": "vispy.visuals.LinePlotVisual",
+      "upstream_sources": [
+        {
+          "path": "visuals/__init__.py",
+          "sha256": "882b68823b13a5554677d18d15ba4b1c005eb47a0611e4c024d3f632f5e7f89c"
+        }
+      ],
+      "requirements": [
+        "INV-3"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.visuals.LinePlotVisual end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "native"
+    },
+    {
+      "id": "visuals.linevisual",
+      "entry_point": "vispy.visuals.LineVisual",
+      "upstream_sources": [
+        {
+          "path": "visuals/__init__.py",
+          "sha256": "882b68823b13a5554677d18d15ba4b1c005eb47a0611e4c024d3f632f5e7f89c"
+        }
+      ],
+      "requirements": [
+        "INV-3"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.visuals.LineVisual end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "native"
+    },
+    {
+      "id": "visuals.markersvisual",
+      "entry_point": "vispy.visuals.MarkersVisual",
+      "upstream_sources": [
+        {
+          "path": "visuals/__init__.py",
+          "sha256": "882b68823b13a5554677d18d15ba4b1c005eb47a0611e4c024d3f632f5e7f89c"
+        }
+      ],
+      "requirements": [
+        "INV-3"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.visuals.MarkersVisual end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "native"
+    },
+    {
+      "id": "visuals.meshnormalsvisual",
+      "entry_point": "vispy.visuals.MeshNormalsVisual",
+      "upstream_sources": [
+        {
+          "path": "visuals/__init__.py",
+          "sha256": "882b68823b13a5554677d18d15ba4b1c005eb47a0611e4c024d3f632f5e7f89c"
+        }
+      ],
+      "requirements": [
+        "INV-3"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.visuals.MeshNormalsVisual end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "native"
+    },
+    {
+      "id": "visuals.meshvisual",
+      "entry_point": "vispy.visuals.MeshVisual",
+      "upstream_sources": [
+        {
+          "path": "visuals/__init__.py",
+          "sha256": "882b68823b13a5554677d18d15ba4b1c005eb47a0611e4c024d3f632f5e7f89c"
+        }
+      ],
+      "requirements": [
+        "INV-3"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.visuals.MeshVisual end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "native"
+    },
+    {
+      "id": "visuals.planevisual",
+      "entry_point": "vispy.visuals.PlaneVisual",
+      "upstream_sources": [
+        {
+          "path": "visuals/__init__.py",
+          "sha256": "882b68823b13a5554677d18d15ba4b1c005eb47a0611e4c024d3f632f5e7f89c"
+        }
+      ],
+      "requirements": [
+        "INV-3"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.visuals.PlaneVisual end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "native"
+    },
+    {
+      "id": "visuals.polygonvisual",
+      "entry_point": "vispy.visuals.PolygonVisual",
+      "upstream_sources": [
+        {
+          "path": "visuals/__init__.py",
+          "sha256": "882b68823b13a5554677d18d15ba4b1c005eb47a0611e4c024d3f632f5e7f89c"
+        }
+      ],
+      "requirements": [
+        "INV-3"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.visuals.PolygonVisual end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "native"
+    },
+    {
+      "id": "visuals.rectanglevisual",
+      "entry_point": "vispy.visuals.RectangleVisual",
+      "upstream_sources": [
+        {
+          "path": "visuals/__init__.py",
+          "sha256": "882b68823b13a5554677d18d15ba4b1c005eb47a0611e4c024d3f632f5e7f89c"
+        }
+      ],
+      "requirements": [
+        "INV-3"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.visuals.RectangleVisual end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "native"
+    },
+    {
+      "id": "visuals.regularpolygonvisual",
+      "entry_point": "vispy.visuals.RegularPolygonVisual",
+      "upstream_sources": [
+        {
+          "path": "visuals/__init__.py",
+          "sha256": "882b68823b13a5554677d18d15ba4b1c005eb47a0611e4c024d3f632f5e7f89c"
+        }
+      ],
+      "requirements": [
+        "INV-3"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.visuals.RegularPolygonVisual end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "native"
+    },
+    {
+      "id": "visuals.scrollinglinesvisual",
+      "entry_point": "vispy.visuals.ScrollingLinesVisual",
+      "upstream_sources": [
+        {
+          "path": "visuals/__init__.py",
+          "sha256": "882b68823b13a5554677d18d15ba4b1c005eb47a0611e4c024d3f632f5e7f89c"
+        }
+      ],
+      "requirements": [
+        "INV-3"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.visuals.ScrollingLinesVisual end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "native"
+    },
+    {
+      "id": "visuals.shaders.compiler",
+      "entry_point": "vispy.visuals.shaders.Compiler",
+      "upstream_sources": [
+        {
+          "path": "visuals/shaders/__init__.py",
+          "sha256": "8f67ae47333e39f6580b72f9cbcf0ff21e5e06b071625356f66f10972961a70d"
+        }
+      ],
+      "requirements": [
+        "INV-3",
+        "SH-1",
+        "SH-2",
+        "SH-3",
+        "SH-5"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.visuals.shaders.Compiler end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "native"
+    },
+    {
+      "id": "visuals.shaders.function",
+      "entry_point": "vispy.visuals.shaders.Function",
+      "upstream_sources": [
+        {
+          "path": "visuals/shaders/__init__.py",
+          "sha256": "8f67ae47333e39f6580b72f9cbcf0ff21e5e06b071625356f66f10972961a70d"
+        }
+      ],
+      "requirements": [
+        "INV-3",
+        "SH-1",
+        "SH-2",
+        "SH-3",
+        "SH-5"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.visuals.shaders.Function end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "native"
+    },
+    {
+      "id": "visuals.shaders.functionchain",
+      "entry_point": "vispy.visuals.shaders.FunctionChain",
+      "upstream_sources": [
+        {
+          "path": "visuals/shaders/__init__.py",
+          "sha256": "8f67ae47333e39f6580b72f9cbcf0ff21e5e06b071625356f66f10972961a70d"
+        }
+      ],
+      "requirements": [
+        "INV-3",
+        "SH-1",
+        "SH-2",
+        "SH-3",
+        "SH-5"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.visuals.shaders.FunctionChain end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "native"
+    },
+    {
+      "id": "visuals.shaders.mainfunction",
+      "entry_point": "vispy.visuals.shaders.MainFunction",
+      "upstream_sources": [
+        {
+          "path": "visuals/shaders/__init__.py",
+          "sha256": "8f67ae47333e39f6580b72f9cbcf0ff21e5e06b071625356f66f10972961a70d"
+        }
+      ],
+      "requirements": [
+        "INV-3",
+        "SH-1",
+        "SH-2",
+        "SH-3",
+        "SH-5"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.visuals.shaders.MainFunction end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "native"
+    },
+    {
+      "id": "visuals.shaders.modularprogram",
+      "entry_point": "vispy.visuals.shaders.ModularProgram",
+      "upstream_sources": [
+        {
+          "path": "visuals/shaders/__init__.py",
+          "sha256": "8f67ae47333e39f6580b72f9cbcf0ff21e5e06b071625356f66f10972961a70d"
+        }
+      ],
+      "requirements": [
+        "INV-3",
+        "SH-1",
+        "SH-2",
+        "SH-3",
+        "SH-5"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.visuals.shaders.ModularProgram end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "native"
+    },
+    {
+      "id": "visuals.shaders.multiprogram",
+      "entry_point": "vispy.visuals.shaders.MultiProgram",
+      "upstream_sources": [
+        {
+          "path": "visuals/shaders/__init__.py",
+          "sha256": "8f67ae47333e39f6580b72f9cbcf0ff21e5e06b071625356f66f10972961a70d"
+        }
+      ],
+      "requirements": [
+        "INV-3",
+        "SH-1",
+        "SH-2",
+        "SH-3",
+        "SH-5"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.visuals.shaders.MultiProgram end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "native"
+    },
+    {
+      "id": "visuals.shaders.statementlist",
+      "entry_point": "vispy.visuals.shaders.StatementList",
+      "upstream_sources": [
+        {
+          "path": "visuals/shaders/__init__.py",
+          "sha256": "8f67ae47333e39f6580b72f9cbcf0ff21e5e06b071625356f66f10972961a70d"
+        }
+      ],
+      "requirements": [
+        "INV-3",
+        "SH-1",
+        "SH-2",
+        "SH-3",
+        "SH-5"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.visuals.shaders.StatementList end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "native"
+    },
+    {
+      "id": "visuals.shaders.variable",
+      "entry_point": "vispy.visuals.shaders.Variable",
+      "upstream_sources": [
+        {
+          "path": "visuals/shaders/__init__.py",
+          "sha256": "8f67ae47333e39f6580b72f9cbcf0ff21e5e06b071625356f66f10972961a70d"
+        }
+      ],
+      "requirements": [
+        "INV-3",
+        "SH-1",
+        "SH-2",
+        "SH-3",
+        "SH-5"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.visuals.shaders.Variable end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "native"
+    },
+    {
+      "id": "visuals.shaders.varying",
+      "entry_point": "vispy.visuals.shaders.Varying",
+      "upstream_sources": [
+        {
+          "path": "visuals/shaders/__init__.py",
+          "sha256": "8f67ae47333e39f6580b72f9cbcf0ff21e5e06b071625356f66f10972961a70d"
+        }
+      ],
+      "requirements": [
+        "INV-3",
+        "SH-1",
+        "SH-2",
+        "SH-3",
+        "SH-5"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.visuals.shaders.Varying end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "native"
+    },
+    {
+      "id": "visuals.spectrogramvisual",
+      "entry_point": "vispy.visuals.SpectrogramVisual",
+      "upstream_sources": [
+        {
+          "path": "visuals/__init__.py",
+          "sha256": "882b68823b13a5554677d18d15ba4b1c005eb47a0611e4c024d3f632f5e7f89c"
+        }
+      ],
+      "requirements": [
+        "INV-3"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.visuals.SpectrogramVisual end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "native"
+    },
+    {
+      "id": "visuals.spherevisual",
+      "entry_point": "vispy.visuals.SphereVisual",
+      "upstream_sources": [
+        {
+          "path": "visuals/__init__.py",
+          "sha256": "882b68823b13a5554677d18d15ba4b1c005eb47a0611e4c024d3f632f5e7f89c"
+        }
+      ],
+      "requirements": [
+        "INV-3"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.visuals.SphereVisual end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "native"
+    },
+    {
+      "id": "visuals.surfaceplotvisual",
+      "entry_point": "vispy.visuals.SurfacePlotVisual",
+      "upstream_sources": [
+        {
+          "path": "visuals/__init__.py",
+          "sha256": "882b68823b13a5554677d18d15ba4b1c005eb47a0611e4c024d3f632f5e7f89c"
+        }
+      ],
+      "requirements": [
+        "INV-3"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.visuals.SurfacePlotVisual end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "native"
+    },
+    {
+      "id": "visuals.textvisual",
+      "entry_point": "vispy.visuals.TextVisual",
+      "upstream_sources": [
+        {
+          "path": "visuals/__init__.py",
+          "sha256": "882b68823b13a5554677d18d15ba4b1c005eb47a0611e4c024d3f632f5e7f89c"
+        }
+      ],
+      "requirements": [
+        "INV-3"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.visuals.TextVisual end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "native"
+    },
+    {
+      "id": "visuals.transforms.arg-to-array",
+      "entry_point": "vispy.visuals.transforms.arg_to_array",
+      "upstream_sources": [
+        {
+          "path": "visuals/transforms/__init__.py",
+          "sha256": "04d6d53b41960684194a18af63f443ad11dc7b2fb33a6428175038ee15e0b9ae"
+        }
+      ],
+      "requirements": [
+        "INV-3"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.visuals.transforms.arg_to_array end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "python-hosts"
+    },
+    {
+      "id": "visuals.transforms.arg-to-vec4",
+      "entry_point": "vispy.visuals.transforms.arg_to_vec4",
+      "upstream_sources": [
+        {
+          "path": "visuals/transforms/__init__.py",
+          "sha256": "04d6d53b41960684194a18af63f443ad11dc7b2fb33a6428175038ee15e0b9ae"
+        }
+      ],
+      "requirements": [
+        "INV-3"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.visuals.transforms.arg_to_vec4 end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "python-hosts"
+    },
+    {
+      "id": "visuals.transforms.as-vec4",
+      "entry_point": "vispy.visuals.transforms.as_vec4",
+      "upstream_sources": [
+        {
+          "path": "visuals/transforms/__init__.py",
+          "sha256": "04d6d53b41960684194a18af63f443ad11dc7b2fb33a6428175038ee15e0b9ae"
+        }
+      ],
+      "requirements": [
+        "INV-3"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.visuals.transforms.as_vec4 end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "python-hosts"
+    },
+    {
+      "id": "visuals.transforms.basetransform",
+      "entry_point": "vispy.visuals.transforms.BaseTransform",
+      "upstream_sources": [
+        {
+          "path": "visuals/transforms/__init__.py",
+          "sha256": "04d6d53b41960684194a18af63f443ad11dc7b2fb33a6428175038ee15e0b9ae"
+        }
+      ],
+      "requirements": [
+        "INV-3"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.visuals.transforms.BaseTransform end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "python-hosts"
+    },
+    {
+      "id": "visuals.transforms.chaintransform",
+      "entry_point": "vispy.visuals.transforms.ChainTransform",
+      "upstream_sources": [
+        {
+          "path": "visuals/transforms/__init__.py",
+          "sha256": "04d6d53b41960684194a18af63f443ad11dc7b2fb33a6428175038ee15e0b9ae"
+        }
+      ],
+      "requirements": [
+        "INV-3"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.visuals.transforms.ChainTransform end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "python-hosts"
+    },
+    {
+      "id": "visuals.transforms.create-transform",
+      "entry_point": "vispy.visuals.transforms.create_transform",
+      "upstream_sources": [
+        {
+          "path": "visuals/transforms/__init__.py",
+          "sha256": "04d6d53b41960684194a18af63f443ad11dc7b2fb33a6428175038ee15e0b9ae"
+        }
+      ],
+      "requirements": [
+        "INV-3"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.visuals.transforms.create_transform end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "python-hosts"
+    },
+    {
+      "id": "visuals.transforms.logtransform",
+      "entry_point": "vispy.visuals.transforms.LogTransform",
+      "upstream_sources": [
+        {
+          "path": "visuals/transforms/__init__.py",
+          "sha256": "04d6d53b41960684194a18af63f443ad11dc7b2fb33a6428175038ee15e0b9ae"
+        }
+      ],
+      "requirements": [
+        "INV-3"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.visuals.transforms.LogTransform end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "python-hosts"
+    },
+    {
+      "id": "visuals.transforms.matrixtransform",
+      "entry_point": "vispy.visuals.transforms.MatrixTransform",
+      "upstream_sources": [
+        {
+          "path": "visuals/transforms/__init__.py",
+          "sha256": "04d6d53b41960684194a18af63f443ad11dc7b2fb33a6428175038ee15e0b9ae"
+        }
+      ],
+      "requirements": [
+        "INV-3"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.visuals.transforms.MatrixTransform end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "python-hosts"
+    },
+    {
+      "id": "visuals.transforms.nulltransform",
+      "entry_point": "vispy.visuals.transforms.NullTransform",
+      "upstream_sources": [
+        {
+          "path": "visuals/transforms/__init__.py",
+          "sha256": "04d6d53b41960684194a18af63f443ad11dc7b2fb33a6428175038ee15e0b9ae"
+        }
+      ],
+      "requirements": [
+        "INV-3"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.visuals.transforms.NullTransform end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "python-hosts"
+    },
+    {
+      "id": "visuals.transforms.panzoomtransform",
+      "entry_point": "vispy.visuals.transforms.PanZoomTransform",
+      "upstream_sources": [
+        {
+          "path": "visuals/transforms/__init__.py",
+          "sha256": "04d6d53b41960684194a18af63f443ad11dc7b2fb33a6428175038ee15e0b9ae"
+        }
+      ],
+      "requirements": [
+        "INV-3"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.visuals.transforms.PanZoomTransform end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "python-hosts"
+    },
+    {
+      "id": "visuals.transforms.polartransform",
+      "entry_point": "vispy.visuals.transforms.PolarTransform",
+      "upstream_sources": [
+        {
+          "path": "visuals/transforms/__init__.py",
+          "sha256": "04d6d53b41960684194a18af63f443ad11dc7b2fb33a6428175038ee15e0b9ae"
+        }
+      ],
+      "requirements": [
+        "INV-3"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.visuals.transforms.PolarTransform end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "python-hosts"
+    },
+    {
+      "id": "visuals.transforms.sttransform",
+      "entry_point": "vispy.visuals.transforms.STTransform",
+      "upstream_sources": [
+        {
+          "path": "visuals/transforms/__init__.py",
+          "sha256": "04d6d53b41960684194a18af63f443ad11dc7b2fb33a6428175038ee15e0b9ae"
+        }
+      ],
+      "requirements": [
+        "INV-3"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.visuals.transforms.STTransform end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "python-hosts"
+    },
+    {
+      "id": "visuals.transforms.transformcache",
+      "entry_point": "vispy.visuals.transforms.TransformCache",
+      "upstream_sources": [
+        {
+          "path": "visuals/transforms/__init__.py",
+          "sha256": "04d6d53b41960684194a18af63f443ad11dc7b2fb33a6428175038ee15e0b9ae"
+        }
+      ],
+      "requirements": [
+        "INV-3"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.visuals.transforms.TransformCache end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "python-hosts"
+    },
+    {
+      "id": "visuals.transforms.transformsystem",
+      "entry_point": "vispy.visuals.transforms.TransformSystem",
+      "upstream_sources": [
+        {
+          "path": "visuals/transforms/__init__.py",
+          "sha256": "04d6d53b41960684194a18af63f443ad11dc7b2fb33a6428175038ee15e0b9ae"
+        }
+      ],
+      "requirements": [
+        "INV-3"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.visuals.transforms.TransformSystem end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "python-hosts"
+    },
+    {
+      "id": "visuals.tubevisual",
+      "entry_point": "vispy.visuals.TubeVisual",
+      "upstream_sources": [
+        {
+          "path": "visuals/__init__.py",
+          "sha256": "882b68823b13a5554677d18d15ba4b1c005eb47a0611e4c024d3f632f5e7f89c"
+        }
+      ],
+      "requirements": [
+        "INV-3"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.visuals.TubeVisual end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "native"
+    },
+    {
+      "id": "visuals.visual",
+      "entry_point": "vispy.visuals.Visual",
+      "upstream_sources": [
+        {
+          "path": "visuals/__init__.py",
+          "sha256": "882b68823b13a5554677d18d15ba4b1c005eb47a0611e4c024d3f632f5e7f89c"
+        }
+      ],
+      "requirements": [
+        "INV-3"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.visuals.Visual end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "native"
+    },
+    {
+      "id": "visuals.volumevisual",
+      "entry_point": "vispy.visuals.VolumeVisual",
+      "upstream_sources": [
+        {
+          "path": "visuals/__init__.py",
+          "sha256": "882b68823b13a5554677d18d15ba4b1c005eb47a0611e4c024d3f632f5e7f89c"
+        }
+      ],
+      "requirements": [
+        "INV-3"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.visuals.VolumeVisual end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "native"
+    },
+    {
+      "id": "visuals.windbarbvisual",
+      "entry_point": "vispy.visuals.WindbarbVisual",
+      "upstream_sources": [
+        {
+          "path": "visuals/__init__.py",
+          "sha256": "882b68823b13a5554677d18d15ba4b1c005eb47a0611e4c024d3f632f5e7f89c"
+        }
+      ],
+      "requirements": [
+        "INV-3"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.visuals.WindbarbVisual end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "native"
+    },
+    {
+      "id": "visuals.xyzaxisvisual",
+      "entry_point": "vispy.visuals.XYZAxisVisual",
+      "upstream_sources": [
+        {
+          "path": "visuals/__init__.py",
+          "sha256": "882b68823b13a5554677d18d15ba4b1c005eb47a0611e4c024d3f632f5e7f89c"
+        }
+      ],
+      "requirements": [
+        "INV-3"
+      ],
+      "capabilities": [
+        "public-workflow"
+      ],
+      "dependencies": [],
+      "required": true,
+      "scope_reason": "Pinned public export/workflow; acceptance and required profiles need review.",
+      "ordinary": "Exercise vispy.visuals.XYZAxisVisual end to end with independently expected public behavior.",
+      "mutation": "Verify an important update/input or failure/recovery lifecycle without losing output/ownership.",
+      "owner": "native"
+    }
+  ],
+  "rows": [
+    {
+      "feature": "app.application",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "app.backend.egl",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "app.backend.glfw",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "app.backend.jupyter-rfb",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "app.backend.osmesa",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "app.backend.pyglet",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "app.backend.pyqt4",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "app.backend.pyqt5",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "app.backend.pyqt6",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "app.backend.pyside",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "app.backend.pyside2",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "app.backend.pyside6",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "app.backend.sdl2",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "app.backend.tkinter",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "app.backend.wx",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "app.base",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "app.canvas",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "app.create",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "app.keyevent",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "app.mouseevent",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "app.process-events",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "app.quit",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "app.run",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "app.timer",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "app.use-app",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "gloo.framebuffer",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "gloo.get-current-canvas",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "gloo.get-default-config",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "gloo.get-gl-configuration",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "gloo.gl",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "gloo.glcontext",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "gloo.globject",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "gloo.indexbuffer",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "gloo.program",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "gloo.read-pixels",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "gloo.renderbuffer",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "gloo.texture1d",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "gloo.texture2d",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "gloo.texture3d",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "gloo.textureatlas",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "gloo.texturecube",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "gloo.textureemulated3d",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "gloo.util",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "gloo.vertexbuffer",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "scene.cameras",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "scene.cameras.arcballcamera",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "scene.cameras.basecamera",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "scene.cameras.flycamera",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "scene.cameras.magnify1dcamera",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "scene.cameras.magnifycamera",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "scene.cameras.make-camera",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "scene.cameras.panzoomcamera",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "scene.cameras.turntablecamera",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "scene.filters",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "scene.node",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "scene.scenecanvas",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "scene.transforms",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "scene.visuals",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "scene.widgets",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "scene.widgets.axiswidget",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "scene.widgets.colorbarwidget",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "scene.widgets.console",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "scene.widgets.grid",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "scene.widgets.label",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "scene.widgets.viewbox",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "scene.widgets.widget",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "visuals.arrowvisual",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "visuals.axisvisual",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "visuals.basevisual",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "visuals.boxvisual",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "visuals.colorbarvisual",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "visuals.compleximagevisual",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "visuals.compoundvisual",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "visuals.cubevisual",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "visuals.ellipsevisual",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "visuals.filters.alpha",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "visuals.filters.clipper",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "visuals.filters.colorfilter",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "visuals.filters.facepickingfilter",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "visuals.filters.filter",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "visuals.filters.instancedshadingfilter",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "visuals.filters.isolinefilter",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "visuals.filters.markerpickingfilter",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "visuals.filters.pickingfilter",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "visuals.filters.primitivepickingfilter",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "visuals.filters.shadingfilter",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "visuals.filters.texturefilter",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "visuals.filters.wireframefilter",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "visuals.filters.zcolormapfilter",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "visuals.graphvisual",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "visuals.gridlinesvisual",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "visuals.gridmeshvisual",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "visuals.histogramvisual",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "visuals.imagevisual",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "visuals.infinitelinevisual",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "visuals.instancedmeshvisual",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "visuals.isocurvevisual",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "visuals.isolinevisual",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "visuals.isosurfacevisual",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "visuals.linearregionvisual",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "visuals.lineplotvisual",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "visuals.linevisual",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "visuals.markersvisual",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "visuals.meshnormalsvisual",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "visuals.meshvisual",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "visuals.planevisual",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "visuals.polygonvisual",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "visuals.rectanglevisual",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "visuals.regularpolygonvisual",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "visuals.scrollinglinesvisual",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "visuals.shaders.compiler",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "visuals.shaders.function",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "visuals.shaders.functionchain",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "visuals.shaders.mainfunction",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "visuals.shaders.modularprogram",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "visuals.shaders.multiprogram",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "visuals.shaders.statementlist",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "visuals.shaders.variable",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "visuals.shaders.varying",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "visuals.spectrogramvisual",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "visuals.spherevisual",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "visuals.surfaceplotvisual",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "visuals.textvisual",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "visuals.transforms.arg-to-array",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "visuals.transforms.arg-to-vec4",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "visuals.transforms.as-vec4",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "visuals.transforms.basetransform",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "visuals.transforms.chaintransform",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "visuals.transforms.create-transform",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "visuals.transforms.logtransform",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "visuals.transforms.matrixtransform",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "visuals.transforms.nulltransform",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "visuals.transforms.panzoomtransform",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "visuals.transforms.polartransform",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "visuals.transforms.sttransform",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "visuals.transforms.transformcache",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "visuals.transforms.transformsystem",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "visuals.tubevisual",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "visuals.visual",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "visuals.volumevisual",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "visuals.windbarbvisual",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    },
+    {
+      "feature": "visuals.xyzaxisvisual",
+      "profile": "unassigned",
+      "state": "not-inventoried",
+      "outcome": "not-run",
+      "fixtures": [],
+      "identity": null,
+      "receipt": null,
+      "blocker": "Generated seed; real acceptance fixture/profile mapping has not been reviewed.",
+      "next_action": "Reconcile existing fixtures and host evidence; select ordinary/mutation cases and concrete required profiles."
+    }
+  ]
+}
