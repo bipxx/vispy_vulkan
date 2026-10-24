@@ -14,9 +14,12 @@ Select exactly one of `windows-pyqt5`, `windows-pyqt6`, `windows-pyside6`, `linu
 
 Windows requires a working Vulkan driver and the OS/runtime DLLs described in the qualification receipt. The tested machine used an NVIDIA RTX 4090. Linux requires the Vulkan loader, a supported Vulkan ICD, X11 for mapped widgets, fonts, and the system libraries in the selected profile's `apt-install-pins.txt`. Those files contain the exact Ubuntu package versions used for qualification; package archives are not bundled. Provision them from an appropriate pinned OS repository or your own offline OS package store. The evidence inventories additionally record the core Vulkan and system package versions. Avoid substituting an arbitrary stock distribution and assuming its installed GL packages pass the no-GL inventory.
 
-From the extracted install directory, a Windows PyQt6 installation is:
+After extraction, change into the archive's `install/` directory. All wheel and
+requirement paths below are relative to that directory. A Windows PyQt6
+installation is:
 
 ```powershell
+cd install
 py -3.12 -m venv C:\vispy-no-gl
 C:\vispy-no-gl\Scripts\python.exe -m pip install --no-index --require-hashes --find-links core/windows --find-links profiles/windows-pyqt6 -r core/windows/requirements-core.txt -r profiles/windows-pyqt6/requirements.txt
 C:\vispy-no-gl\Scripts\python.exe -c "import vispy; vispy.use(app='pyqt6', gl='gl+'); from vispy import _dawn; print(_dawn.device_info()); _dawn.shutdown()"
@@ -27,6 +30,7 @@ For PyQt5 or PySide6, replace both profile directory occurrences and select `app
 The equivalent Linux PyQt6 installation, after OS provisioning, is:
 
 ```sh
+cd install
 /path/to/python3.12 -m venv /path/to/vispy-no-gl
 /path/to/vispy-no-gl/bin/python -m pip install --no-index --require-hashes --find-links core/linux --find-links profiles/linux-pyqt6 -r core/linux/requirements-core.txt -r profiles/linux-pyqt6/requirements.txt
 /path/to/vispy-no-gl/bin/python -c "import vispy; vispy.use(app='pyqt6', gl='gl+'); from vispy import _dawn; print(_dawn.device_info()); _dawn.shutdown()"
@@ -38,13 +42,13 @@ The core wheelhouse pins NumPy 2.5.3 and the other dependencies used in the qual
 
 ## Hosts and the optional TBB profile
 
-The bundle does **not** contain complete napari, Glue, or threedee dependency wheelhouses. Their actual qualification reports are included, while their pinned preparations and locks are in `sources/project/compat/host-environments`, `sources/project/compat/host-patches`, and the included `prepare_*no_opengl.py` tools. Prepare the complete locked host wheelhouse separately before an offline host installation. Patched host licenses and provenance must accompany those wheels.
+The bundle does **not** contain complete napari, Glue, or threedee dependency wheelhouses. Their actual qualification reports and projected locks/patches are included under `sources/project/compat/host-environments` and `sources/project/compat/host-patches`. Extract the full current implementation source archive to obtain the `tools/prepare_*no_opengl.py` scripts; the projected `sources/project/tools` directory is not a complete source checkout. Prepare the complete locked host wheelhouse separately before an offline host installation. Patched host licenses and provenance must accompany those wheels.
 
 Windows Numba 0.68 hosts require the reviewed CPU TBB runtime to resolve their declared native backend closure. Its small wheel and requirements are included under `tbb/`; install it with `--no-index --require-hashes --find-links tbb -r tbb/windows-numba-tbb-requirements.txt` after preparing the exact host closure. Preserve the original Intel Simplified Software License. This is not an Apache-licensed replacement. Linux host CPU runtime package pins are recorded in the host environment locks and evidence.
 
 ## Source and evidence
 
-The implementation is AGPL-3.0, with the original BSD license and all third-party notices retained. Individual Qt, PyQt, PySide, SIP, TBB, and other dependency licenses remain their original licenses. Notices are retained inside the wheels and copied under `notices/` in the install archive. The companion archive includes original custom-toolkit source archives, the declared PySide disabled-SSL build-list patch, actual build recipes, source and relocation receipts, selected-profile manifests, package producer source, and the implementation source archive.
+The implementation is AGPL-3.0-only, with the original BSD license and all third-party notices retained. Individual Qt, PyQt, PySide, SIP, TBB, and other dependency licenses remain their original licenses. Notices are retained inside the wheels and copied under `notices/` in the install archive. The companion archive includes original custom-toolkit source archives, the declared PySide disabled-SSL build-list patch, actual build recipes, source and relocation receipts, selected-profile manifests, package producer source, and the implementation source archive.
 
 The current implementation source archive is Git commit `db157fd75`, including the Linux profile producers, manifests, declared source patch, and corrected compiler contract tests. The original qualification archive at `c781deb92412584d080890b90a07a9a804e6109a` is retained separately; its shipping runtime tree matches Windows source commit `7734055f8bcd16c277f2dcc1c03004fadf452e10`. This guide is separately hashed. Repository: <https://github.com/bipxx/vispy_vulkan>. Build recipes retain the original build paths for provenance and require adapting their owned build roots on a new machine; they are not an interactive installer. Pinned source URLs/hashes, configuration arguments, declared patches, native before/after hashes, original notices, and runtime package versions identify the actual custom inputs. Rebuilding native toolkit sources can depend on the recorded compiler and OS toolchain; the ZIP reproducibility check verifies repeated assembly of these exact frozen assets.
 
