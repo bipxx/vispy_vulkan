@@ -2,7 +2,7 @@
   "schema": 1,
   "id": "wsl-software-tk90-cp31213-development",
   "phase": "source-functional",
-  "product_runtime_source_commit": "0e7b5b11788e6f6a87e4ef70ac231fa3ac73501f",
+  "product_runtime_source_commit": "6345ceef42df1a64a7401a83c2d1a30384903cd1",
   "kind": "wsl-software",
   "architecture": "x86_64",
   "python_abi": "cp312",
@@ -59,7 +59,7 @@
     "revision": "117b054598f4758b598f4b8f48feea48c11fe7b0+dawn-499e5c6ff9b37d5de70c6493fb74c251e0d35c1c"
   },
   "native_sha256": "4f502d48a453a9776ffad3d8226252f2334e7142f68b6ef26e9658868a393ba6",
-  "native_inputs_sha256": "6035565341a645c521b243651819a367838fbfd187052d6ac6b8563a5ad82448",
+  "native_inputs_sha256": "96d316a41aee83a50a5049ff11448e3060925fdb73986e0aa09a4e76b0dd2a75",
   "loaded_library_identities": {
     "/mnt/c/Users/HEQ/Projects/vispy_vulkan/build/artifacts/4f502d48a453a9776ffad3d8226252f2334e7142f68b6ef26e9658868a393ba6/_dawn.cpython-312-x86_64-linux-gnu.so": "4f502d48a453a9776ffad3d8226252f2334e7142f68b6ef26e9658868a393ba6",
     "/usr/lib/x86_64-linux-gnu/libvulkan_virtio.so": "231059d904e345291c36a3ac0bfb5f3937a77f8bbfa360ee7876b6e6148adc5b",
@@ -103,14 +103,16 @@
       "line_resource_pool_bytes": 0
     },
     "scope": "Focused composite submission/failure/recovery source acceptance. Historical broader observations retained separately; not installed or observer qualification.",
-    "observed_runtime_source_commit": "0e7b5b11788e6f6a87e4ef70ac231fa3ac73501f"
+    "observed_runtime_source_commit": "0e7b5b11788e6f6a87e4ef70ac231fa3ac73501f",
+    "reuse_basis": "All production Python/native/build/lock/license bytes except the Apple-only surface_metal.mm are unchanged from the observed0e7b5b11 tree. The Metal change adds its missing CATransaction declaration header and is not compiled by Windows/WSL. The current complete cross-platform input set now includes that previously omitted Objective-C++ source. Original source report, observed identity, native producer and qualification limits remain unchanged."
   },
   "limitations": [
     "Development observation only; no wheel or installed/observer admission.",
     "WSL software, not native Linux GPU; native producer provenance remains experimental.",
     "Original CPython3.12.8/Tk8.6 profile remains blocked by Label abort; its receipts are not relabelled.",
     "Odd301x177 four-sample scissor defect retains a failed capture receipt and still blocks affected scope.",
-    "External CPython/Tcl/Tk preferred-source, original-notice and complete installed-closure admission remains pending."
+    "External CPython/Tcl/Tk preferred-source, original-notice and complete installed-closure admission remains pending.",
+    "Complete current cross-platform native-input snapshot includes Metal.mm; the retained Windows/WSL producer is unchanged, not a rebuild or a Mac qualification."
   ],
   "interpreter_sha256": "339de109f072e52523066d97a2b3372e358a10cc00c6a9df62c28a6618061900",
   "base_interpreter": {

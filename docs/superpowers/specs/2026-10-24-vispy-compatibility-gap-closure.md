@@ -1745,3 +1745,22 @@ reconstruction references are retained in local
 receipt determine the final retention/cleanup outcome; earlier in-progress review
 wording does not override that actual evidence. No new environment, SDK or wheel
 is needed for this source/script packet.
+
+## Generated-line and Metal source checkpoint (ART-1/2, EV-1/2)
+
+The [CI correction record](../../ci-contract-corrections.md) separates the missing
+Metal CATransaction declaration from the stale generated-line empty-UBO assertion.
+The original generated-line failure reproduces locally; exact runtime depth-range
+metadata and a separate truly empty shader now pass 46,055 compiler checks on
+Windows and Linux using existing inputs. Metal imports its declaring header;
+actual Mac compilation and hardware qualification remain separate pending gates.
+
+Preparation now inventories Objective-C++ native source as well as C++/headers.
+Missing/changed platform-source controls are rejected with otherwise resealed
+metadata; an intact set remains development-only. Current source/profile pins
+include the previously omitted Apple source and preserve original Windows/WSL
+observed identities with explicit non-Apple byte-equivalence. No old report is
+relabelled, renderer/SDK rebuilt or independent review supplied. Source, failures,
+commands, tiny retained contract artifacts and actual cleanup disposition are
+recorded in `build/runs/ci-contracts-31/`. Existing full-closure and scoped handoff
+gates remain unchanged.

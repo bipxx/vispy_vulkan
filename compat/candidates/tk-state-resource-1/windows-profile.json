@@ -2,7 +2,7 @@
   "schema": 1,
   "id": "windows-gpu-tk86-cp312-development",
   "phase": "source-functional",
-  "product_runtime_source_commit": "0e7b5b11788e6f6a87e4ef70ac231fa3ac73501f",
+  "product_runtime_source_commit": "6345ceef42df1a64a7401a83c2d1a30384903cd1",
   "kind": "windows-gpu",
   "architecture": "x86_64",
   "python_abi": "cp312",
@@ -59,7 +59,7 @@
     "revision": "117b054598f4758b598f4b8f48feea48c11fe7b0+dawn-499e5c6ff9b37d5de70c6493fb74c251e0d35c1c"
   },
   "native_sha256": "d4148a6ce99f341e33e83ac372a543d7a7f50de19eb4f1381939f58601c1cb4c",
-  "native_inputs_sha256": "6035565341a645c521b243651819a367838fbfd187052d6ac6b8563a5ad82448",
+  "native_inputs_sha256": "96d316a41aee83a50a5049ff11448e3060925fdb73986e0aa09a4e76b0dd2a75",
   "loaded_library_identities": {},
   "source_observation": {
     "location": "build/runs/observed-submission-30/windows-verified-result.json",
@@ -78,11 +78,13 @@
       "line_resource_pool_bytes": 0
     },
     "scope": "Focused composite submission/failure/recovery source acceptance. Historical broader observations retained separately; not installed or observer qualification.",
-    "observed_runtime_source_commit": "0e7b5b11788e6f6a87e4ef70ac231fa3ac73501f"
+    "observed_runtime_source_commit": "0e7b5b11788e6f6a87e4ef70ac231fa3ac73501f",
+    "reuse_basis": "All production Python/native/build/lock/license bytes except the Apple-only surface_metal.mm are unchanged from the observed0e7b5b11 tree. The Metal change adds its missing CATransaction declaration header and is not compiled by Windows/WSL. The current complete cross-platform input set now includes that previously omitted Objective-C++ source. Original source report, observed identity, native producer and qualification limits remain unchanged."
   },
   "limitations": [
     "Development observation only; no wheel or installed/observer admission.",
-    "Windows toolkit DLL closure still needs installed-profile pins."
+    "Windows toolkit DLL closure still needs installed-profile pins.",
+    "Complete current cross-platform native-input snapshot includes Metal.mm; the retained Windows/WSL producer is unchanged, not a rebuild or a Mac qualification."
   ],
   "interpreter_sha256": "4025e2a6d8fc90d053a8405e81f008cbd8ee45b582e2d77480341501f4aeda73",
   "base_interpreter": {

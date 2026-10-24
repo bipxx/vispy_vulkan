@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "source_commit": "0e7b5b11788e6f6a87e4ef70ac231fa3ac73501f",
+  "source_commit": "6345ceef42df1a64a7401a83c2d1a30384903cd1",
   "python": [
     {
       "member": "vispy/__init__.py",
@@ -3601,6 +3601,10 @@
     {
       "path": "cpp/platform/native_surface.hpp",
       "sha256": "9f74ac5df137cb4cdede05837e9105971c003d836ed05e7a1f7e330e7572cc0d"
+    },
+    {
+      "path": "cpp/platform/surface_metal.mm",
+      "sha256": "a9614d0e8373e9449a3aeccd03d9f5696c6e8e07510aba303e2c4f611b5de134"
     },
     {
       "path": "cpp/platform/surface_win32.cpp",

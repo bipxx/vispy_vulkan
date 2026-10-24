@@ -148,3 +148,12 @@ source/scope review and installed-child evidence gates remain incomplete.
 Run its validator alongside candidate validation. The future exact-artifact
 index must join both declarations and the original evidence, not just a green
 preparation status. No source/scope approval or qualification is added here.
+
+## Cross-platform source completeness correction
+
+The [CI correction record](ci-contract-corrections.md) documents the added `.mm`
+native-source inventory and its missing/changed/intact controls. The current
+snapshot includes the Metal surface declaration fix; retained Windows/WSL source
+observations still identify the original tested runtime and explicitly record
+non-Apple byte-equivalence. Complete source identity is not producer, installed,
+CI, source/scope review or Metal qualification.

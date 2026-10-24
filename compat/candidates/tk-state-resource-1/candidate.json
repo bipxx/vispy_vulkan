@@ -2,8 +2,8 @@
   "schema": 1,
   "phase": "development",
   "id": "tk-state-resource-1",
-  "manifest_sha256": "e8539ebdd2ccbed500b436034fa2dc085b4c7376018a1358e2b0cfecb5acedad",
-  "product_source_commit": "0e7b5b11788e6f6a87e4ef70ac231fa3ac73501f",
+  "manifest_sha256": "37c13e2d96e7e8da0fbd637eef8b3f0215860e70c124bddaa1a85826d641a335",
+  "product_source_commit": "6345ceef42df1a64a7401a83c2d1a30384903cd1",
   "upstream_commit": "117b054598f4758b598f4b8f48feea48c11fe7b0",
   "ledger": {
     "path": "compat/vispy-compatibility.json",
@@ -31,7 +31,7 @@
   ],
   "runtime_inputs": {
     "path": "compat/candidates/tk-state-resource-1/runtime-inputs.json",
-    "sha256": "7af5b66383b5c91fedfa07cd438eb26355d85b8430d234484d4b791eea89c1ab"
+    "sha256": "87f2f2b75c24456679994825eab169a4df879679089c6196b76a23e6bda548ad"
   },
   "profiles": [
     {
@@ -39,7 +39,7 @@
       "required": true,
       "observation": {
         "path": "compat/candidates/tk-state-resource-1/windows-profile.json",
-        "sha256": "65d90c9232522588483d12c7ebeb093c966be779424572d657dc7d0f9f4f453e"
+        "sha256": "a7c14d81f77f5d764198d82550972f8b76792cc08baffbdf97150c6069a7be19"
       },
       "wheel": null,
       "previous_qualified_wheel_sha256": "62df5e4c31bf9a1bb1bea47fd68d50e4198d6ec13d2551c991da1e7f30a2b38f",
@@ -58,7 +58,7 @@
       "required": true,
       "observation": {
         "path": "compat/candidates/tk-state-resource-1/linux-tk90-profile.json",
-        "sha256": "f2f0ecf8218cdde58cbffbee3f10c10c18fec8e8498419155dd086ca66aca393"
+        "sha256": "49e67589ac16149f99d96189695383d0230ebf587e26952fb266425c3c496f16"
       },
       "wheel": null,
       "previous_qualified_wheel_sha256": "374a74ea9787ccccc643e0ac7e45d9f704a41d046465828736158ac94398c4a3",
@@ -1123,7 +1123,7 @@
   "preparation_tools": [
     {
       "path": "tools/compatibility_candidate.py",
-      "sha256": "2597bf411c81f941fa6a4a293beb383cba95f5219f182af1f79b514834878121"
+      "sha256": "1c49fb55f0c103827e9960364da65030fbcc1ef50ed8655b120459ca8405c307"
     },
     {
       "path": "tools/compatibility_inventory.py",
@@ -1143,7 +1143,7 @@
     },
     {
       "path": "docs/superpowers/specs/2026-10-24-vispy-compatibility-gap-closure.md",
-      "sha256": "c90c068593e2058b81b28cbb3f8ad77a8ceb512f0d719e19ef888cc1afafd253"
+      "sha256": "0c1eb99d27b56a584312f297766a4eeab9d0a02be3da85075d71dac755ac1730"
     },
     {
       "path": "compat/vispy-candidate.schema.json",
