@@ -85,7 +85,38 @@ a device limit; target queries first execute queued GLIR state in order.
 | MAX_TEXTURE_SIZE, MAX_RENDERBUFFER_SIZE, MAX_3D_TEXTURE_SIZE, MAX_VERTEX_ATTRIBS, MAX_UNIFORM_BLOCK_SIZE | Integer granted native limits; texture dimensions are pixels and uniform-block size is bytes. |
 | MAX_TEXTURE_IMAGE_UNITS, MAX_VERTEX_TEXTURE_IMAGE_UNITS | Minimum of granted per-stage sampled-texture and sampler budgets, for their respective stages. |
 | MAX_ARRAY_TEXTURE_LAYERS, MAX_COMBINED_TEXTURE_IMAGE_UNITS, MAX_COMBINED_FRAGMENT_UNIFORM_COMPONENTS | Accepted only if the native renderer reports that separate domain explicitly. A per-stage count or byte count is not substituted. |
-| Other selectors, including general mutable-state queries | Contextual unsupported-query error; they need a native-state snapshot design and additional fixtures. |
+| BLEND, DEPTH_TEST/WRITEMASK/FUNC, STENCIL_TEST and front/back comparison/reference/masks/ops, CULL_FACE/MODE, FRONT_FACE | Integer flags/enums/references from committed native canvas state, including disabled features; masks preserve signed 32-bit bit patterns. |
+| BLEND_COLOR, DEPTH_RANGE/CLEAR_VALUE, COLOR_CLEAR_VALUE, LINE_WIDTH, POLYGON_OFFSET_FACTOR/UNITS, SAMPLE_COVERAGE_VALUE | GLfloat-converted scalar/tuple values, not effective pipeline descriptors or last-draw state. |
+| COLOR_WRITEMASK, SCISSOR_TEST/BOX, LINE_SMOOTH, POLYGON_OFFSET_FILL, MULTISAMPLE, SAMPLE_ALPHA_TO_COVERAGE, SAMPLE_COVERAGE/INVERT | Integer flags/tuples; target-sized default scissor resolves to the selected target until explicitly set. Explicit rectangles remain canvas state across FBO switches. |
+| SAMPLE_BUFFERS | Integer 0/1 from actual allocated target sample count, independently of the requested configuration. |
+| Other selectors, including DITHER | Contextual unsupported-query error before device probing or GLIR draining. |
+
+Mutable-state queries require native state-query contract version 1 and a callable
+`state_parameter` entry point before draining GLIR; the submission contract alone
+is insufficient. Older modules preserve pending work and fail contextually.
+Selector type/membership validation also precedes draining. A valid query that
+encounters an earlier queued-command failure propagates that failure; already
+committed commands are not rolled back. The native projection performs no
+allocation, submission, polling, completion wait, readback or presentation.
+Explicit preceding commands retain their own effects.
+
+Projection reads logical RenderState before pipeline lowering: MIN/MAX does not
+replace queried factors, disabled depth testing does not replace the write mask,
+and converted draws do not merge queried stencil faces. Query float conversion
+matches the pinned upstream `_gl2.glGetParameter` float-selector route; bitmask
+conversion follows [OpenGL 4.6 section 2.2.2](https://registry.khronos.org/OpenGL/specs/gl/glspec46.core.pdf),
+preserving the signed 32-bit representation rather than clamping high bits.
+The pinned upstream integer helper filters its INT32_MIN sentinel out of results;
+this implementation deliberately returns the real -2147483648 mask value. That
+boundary uses the primary GL conversion rule and an independent expected value,
+not the upstream helper as an oracle.
+
+Default viewport/scissor rectangles resolve internal target-sized extents against
+the current canvas or bound FBO color extent without allocating attachments.
+Explicit values survive target switches and resize. The enabled default scissor
+now uses that same full-target extent in rasterization; the prior native candidate
+reproduces an all-discarded clear. This is the renderer's documented target-sized
+default policy, not a claim of arbitrary OpenGL context interoperability.
 
 `glGetError()` returns integer NO_ERROR because errors use synchronous exceptions.
 It carries no deferred error state and does not establish success for refused
@@ -98,7 +129,8 @@ preserving unknown exact depth precision and reported minimums.
 Required future work includes reversed depth ranges, enabled dither, disabled
 multisample rasterization on multisample targets, fractional/out-of-int32 polygon
 offset units when polygon offset is active, mixed constant-color/constant-alpha
-RGB blend factors, remaining enum/value combinations and general state queries.
+RGB blend factors, remaining enum/value combinations and selectors outside the
+admitted query table.
 These are legal-input compatibility gaps, not all invalid arguments. Keep their
 current contextual refusals until the matching implementation has output proof.
 Finite scalar values outside a native representation's admitted range also fail
@@ -115,3 +147,13 @@ under its retained-library/toolchain provenance limits; it is not an admitted SD
 Exact installed members, complete workflow mapping, independent implementation
 review, all three observer gates and platform-specific failures remain separate
 qualification obligations. No support percentage follows from this table.
+
+
+The subsequent query packet passes 37 new native query cases within final
+323 Windows and 309 WSL software affected suites, 36 focused CPU/package cases,
+a 121-case CPU CI selection and the C++ state contract. Both native profiles
+report nine zero shutdown gauges. Protocol controls reproduce the prior missing
+query/selector boundary; the old native also reproduces the default-scissor clear
+failure. Native contract version 1 and the selected query behavior are
+source-functional; exact installed qualification and independent implementation
+review remain open. Linux provenance remains experimental.

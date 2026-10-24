@@ -164,7 +164,7 @@ jobs:
           "build/ci-oracle-${{ github.run_id }}-${{ inputs.cell }}/bin/python" tools/oracle_capture.py --kind upstream --output "$EVIDENCE/upstream"
           "$CI_PYTHON" tools/oracle_capture.py --kind candidate --output "$EVIDENCE/candidate"
           "$CI_PYTHON" .github/workflows/qualification_gate.py compare-pair --reference "$EVIDENCE/upstream" --candidate "$EVIDENCE/candidate" --output "$EVIDENCE/parity.json"
-          "$CI_PYTHON" .github/workflows/qualification_gate.py pytest --output "$EVIDENCE/pytest.json" -- -q tests/shaders tests/gloo tests/textures tests/state tests/native/test_dawn_immediate_state.py tests/native/test_public_submission.py tests/native/test_framebuffer_configuration.py tests/native/test_submission_lifetime.py -m gpu --junitxml="$EVIDENCE/pytest.xml"
+          "$CI_PYTHON" .github/workflows/qualification_gate.py pytest --output "$EVIDENCE/pytest.json" -- -q tests/shaders tests/gloo tests/textures tests/state tests/native/test_dawn_immediate_state.py tests/native/test_dawn_state_queries.py tests/native/test_public_submission.py tests/native/test_framebuffer_configuration.py tests/native/test_submission_lifetime.py -m gpu --junitxml="$EVIDENCE/pytest.xml"
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         if: always()
         with:

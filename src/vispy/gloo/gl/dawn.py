@@ -13,6 +13,8 @@ from ._constants import *  # noqa
 # Additional enum names used by admitted desktop-GL-shaped host queries.
 # Defining an enum does not advertise arbitrary immediate GL functionality.
 _QUERY_ENUMS = {
+    'GL_LINE_SMOOTH': 0x0B20,
+    'GL_MULTISAMPLE': 0x809D,
     'GL_DOUBLEBUFFER': 3122,
     'GL_STEREO': 3123,
     'GL_MAX_3D_TEXTURE_SIZE': 32883,

@@ -179,3 +179,17 @@ complete member/profile audits and all three observer gates remain pending.
 
 Follow the [gap-closure plan](superpowers/plans/2026-10-24-vispy-compatibility-gaps.md)
 and [build hygiene policy](build-hygiene.md) for subsequent implementation.
+
+
+The subsequent native state-query packet adds 46 mutable-state selectors and
+actual SAMPLE_BUFFERS reporting. Queries read committed logical state, including
+disabled depth-write masks, MIN/MAX factors and distinct stencil faces; malformed
+selectors and mismatched native versions preserve queued work. It also repairs
+enabled default scissoring discarding the full target. Thirty-seven query cases
+pass within 323 Windows and 309 WSL software affected regressions, plus 36 focused
+CPU/package cases, a 121-case CPU CI selection and the C++ state contract. Both
+native profiles have nine zero shutdown gauges. See the
+[query contract](immediate-state-compatibility.md#query-records). These remain
+source-functional candidates; Linux provenance is experimental, independent
+implementation review and exact installed gates remain open, and legal setter
+restrictions and unrelated Linux/host failures are not closed.

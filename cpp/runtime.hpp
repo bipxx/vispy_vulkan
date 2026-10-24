@@ -289,6 +289,7 @@ void execute_owned_commands(int canvas_id, std::vector<Command>&& commands,
 void finish_canvas(int canvas_id);
 void present_canvas(int canvas_id);
 bool process_events();
+Value canvas_state_parameter(int canvas_id, int pname);
 std::vector<int> canvas_viewport(int canvas_id);
 bool frame_ready(int canvas_id);
 bool benchmark_frame_request_ready(int canvas_id);

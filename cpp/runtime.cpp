@@ -7,6 +7,7 @@
 #include "runtime_owned_texture.hpp"
 #include "runtime_readback.hpp"
 #include "runtime_state.hpp"
+#include "runtime_state_query.hpp"
 #include "runtime_point.hpp"
 #include "runtime_point_batch_owner.hpp"
 #include "runtime_batch_owner.hpp"
@@ -7689,15 +7690,31 @@ bool process_events() {
         std::any_of(eng.canvases.begin(), eng.canvases.end(), [](const auto& item) { return item.second.deferred_present; });
 }
 
-std::vector<int> canvas_viewport(int canvas_id) {
+Value canvas_state_parameter(int canvas_id, int pname) {
     auto& eng = engine();
     std::lock_guard<std::mutex> lock(eng.mu);
     auto found = eng.canvases.find(canvas_id);
-    if (found == eng.canvases.end()) throw std::runtime_error("viewport: missing canvas");
+    if (found == eng.canvases.end() || !found->second.alive)
+        throw std::runtime_error("state query: missing canvas or closed owner");
     const auto& canvas = found->second;
-    return {canvas.viewport[0], canvas.viewport[1],
-            canvas.viewport[2] < 0 ? canvas.width : canvas.viewport[2],
-            canvas.viewport[3] < 0 ? canvas.height : canvas.viewport[3]};
+    int width = canvas.width, height = canvas.height;
+    if ((pname == 0x0ba2 || pname == 0x0c10) && canvas.fbo) {
+        const auto fb = eng.objects.find(canvas.fbo);
+        if (fb == eng.objects.end()) throw std::runtime_error("state query: missing framebuffer");
+        const auto color = eng.objects.find(fb->second.fb_color);
+        if (color == eng.objects.end() || !color->second.texture)
+            throw std::runtime_error("state query: missing framebuffer color attachment");
+        width = color->second.texture->width;
+        height = color->second.texture->height;
+    }
+    return render_state_query::parameter(canvas.state, pname, width, height);
+}
+
+std::vector<int> canvas_viewport(int canvas_id) {
+    const auto value = canvas_state_parameter(canvas_id, 0x0ba2);
+    std::vector<int> out;
+    for (const auto& item : value.list) out.push_back(static_cast<int>(item.i));
+    return out;
 }
 
 bool frame_ready(int canvas_id) {

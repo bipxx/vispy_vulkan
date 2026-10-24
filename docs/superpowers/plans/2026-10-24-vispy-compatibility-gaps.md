@@ -155,8 +155,9 @@ keeps its experimental provenance restriction. No inplace native origin changed.
 
 This advances state-family acceptance, not every legal value or G2. Reversed
 depth ranges, dither enable, multisample disable on multisample storage,
-fractional polygon offset units, mixed blend-constant domains, general state
-queries and remaining enum/format combinations stay visible required work.
+fractional polygon offset units, mixed blend-constant domains and remaining
+enum/format combinations stay visible required work. The later Q1 checkpoint
+adds the selected mutable-state queries; other selectors remain unimplemented.
 Exact wheels, independent implementation review and all absence gates still
 apply before promotion. Existing Linux scissor/toolkit blockers remain open.
 
@@ -447,3 +448,40 @@ Do not publish the draft release, hide failed mandatory rows or advertise full
 parity while their existing gates remain unmet. Native Linux GPU and Metal can
 only leave blocked-external with actual suitable hardware evidence. The user has
 deferred photodiode/LDAT and extreme pixel/scanout parity work.
+
+
+## Native state-query source checkpoint (Q1, STATE-2/5)
+
+Native state-query contract version 1 now projects 46 mutable-state selectors
+from committed canvas RenderState before pipeline lowering. The existing viewport
+route uses the same native projection; SAMPLE_BUFFERS uses actual target sample
+configuration. Flags/enums/masks are integers, floating selectors use the pinned
+GLfloat conversion and high stencil-mask bits retain signed 32-bit patterns.
+Python rejects malformed/unsupported selectors and mismatched native contracts
+before consuming queued GLIR. A valid query executes the ordered prefix and
+propagates native failure; committed work is not rolled back or replayed.
+
+Default viewport/scissor extents follow the selected target until explicitly set;
+explicit rectangles survive target switches and resize. A baseline GPU regression
+exposed an enabled-default-scissor clear that discarded every pixel; rasterization
+now resolves that internal sentinel to the same full-target extent as the query.
+A first broader run caught a changed missing-canvas diagnostic; the candidate
+preserves the existing diagnostic contract rather than weakening its regression.
+
+Thirty-seven new query cases cover typed defaults, all selected families,
+disabled-state/MIN/MAX/front-back distinctions, queue preservation versus committed
+prefix failure, actual output, A/B/A ownership, resize, loss and sample storage.
+Final affected suites pass 323 Windows and 309 WSL software cases; 36 focused
+CPU/package cases, the expanded 121-case CPU CI selection and the Windows C++
+state contract pass. Both profiles report nine zero shutdown gauges. The native
+projection adds no allocation/submit/wait/readback/presentation; explicitly queued
+commands retain their own effects. All 224 Windows SDK members rehash unchanged,
+and the original inplace module remains unchanged. Linux still uses retained
+libraries and recompiles all first-party units under experimental provenance.
+
+This is source-functional Q1 evidence, not independent implementation review,
+full G0 reconciliation, exact installed-wheel qualification or closure of legal
+setter gaps. Current CI execution remains separate from the local CI selection.
+The Linux scissor/toolkit and mandatory threedee blockers remain open. Retained
+commands, failures, source/artifact identities and managed cleanup are in the
+local `build/runs/state-query-15/` packet; no release profile was promoted.

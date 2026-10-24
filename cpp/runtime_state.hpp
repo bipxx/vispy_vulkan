@@ -81,8 +81,8 @@ inline std::array<uint32_t, 4> effective_draw_scissor(const RenderState& state,
     const int x = std::clamp(scissor[0], 0, width);
     const int y = std::clamp(scissor[1], 0, height);
     return {static_cast<uint32_t>(x), static_cast<uint32_t>(y),
-        static_cast<uint32_t>(std::clamp(scissor[2], 0, width - x)),
-        static_cast<uint32_t>(std::clamp(scissor[3], 0, height - y))};
+        static_cast<uint32_t>(std::clamp(scissor[2] < 0 ? width : scissor[2], 0, width - x)),
+        static_cast<uint32_t>(std::clamp(scissor[3] < 0 ? height : scissor[3], 0, height - y))};
 }
 
 // Selected face projection is explicit; the shared-mask descriptor refusal

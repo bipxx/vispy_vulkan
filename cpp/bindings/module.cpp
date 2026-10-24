@@ -17,6 +17,17 @@ namespace nb = nanobind;
 namespace {
 using vispy_binding::decode;
 
+nb::object state_query_value(const Value& value) {
+    if (value.kind == Value::Kind::Int) return nb::int_(value.i);
+    if (value.kind == Value::Kind::Float) return nb::float_(value.f);
+    if (value.kind == Value::Kind::List) {
+        nb::list items;
+        for (const auto& item : value.list) items.append(state_query_value(item));
+        return nb::tuple(items);
+    }
+    throw std::runtime_error("state query: unsupported native return type");
+}
+
 nb::dict info_dict(const DeviceInfo& info) {
     nb::dict out;
     out["backend"] = info.backend;
@@ -396,6 +407,7 @@ static nb::dict memory_window_dict(const VulkanMemoryWindow& window) {
 
 NB_MODULE(_dawn, m) {
     m.attr("submission_contract_version") = 1;
+    m.attr("state_query_contract_version") = 1;
     m.def("_capture_upload", &vispy_binding::capture_upload);
     m.def("revision", &runtime_revision);
     m.def("device_info", []() { return info_dict(ensure_device()); });
@@ -469,6 +481,9 @@ NB_MODULE(_dawn, m) {
     m.def("present", &present_canvas);
     m.def("process_events", &process_events);
     m.def("viewport", &canvas_viewport);
+    m.def("state_parameter", [](int canvas_id, int pname) {
+        return state_query_value(canvas_state_parameter(canvas_id, pname));
+    }, nb::arg("canvas_id"), nb::arg("pname"));
     m.def("frame_ready", &frame_ready);
     m.def("benchmark_frame_request_ready", &benchmark_frame_request_ready);
     m.def("configure_frame_slots", &configure_frame_slots);
