@@ -2,6 +2,7 @@
 """Real Tk/raster/Vulkan integration; requires a display and Tk, no pyopengltk."""
 import sys
 import time
+from types import SimpleNamespace
 
 import numpy as np
 import pytest
@@ -51,6 +52,207 @@ def paint(canvas):
         gloo.set_state(scissor_test=True)
         gloo.clear(color=(1, 0, 0, 1))
         gloo.set_state(scissor_test=False)
+
+
+def input_canvas(application):
+    canvas = app.Canvas(app=application, size=(80, 60), show=True)
+    wait(application, lambda: canvas.native.winfo_viewable())
+    canvas.native.focus_force()
+    application.process_events()
+    return canvas
+
+
+def test_double_click_keeps_trigger_metadata_and_ordinary_clicks(application, monkeypatch):
+    from vispy.app import canvas as canvas_module
+    from vispy.util import keys
+    canvas = input_canvas(application)
+    seen = []
+    for name in ('mouse_press', 'mouse_release', 'mouse_double_click'):
+        getattr(canvas.events, name).connect(seen.append)
+    clock = [10.0]
+    monkeypatch.setattr(canvas_module, 'time', lambda: clock[0])
+    for timestamp in (10.0, 10.25):
+        clock[0] = timestamp
+        canvas.native.event_generate('<ButtonPress-1>', x=17, y=23, state=1)
+        canvas.native.event_generate('<ButtonRelease-1>', x=17, y=23, state=1)
+    assert [event.type for event in seen] == [
+        'mouse_press', 'mouse_release', 'mouse_press', 'mouse_double_click', 'mouse_release']
+    double = seen[3]
+    assert tuple(double.pos) == (17, 23) and double.button == 1
+    assert double.buttons == [1] and double.modifiers == (keys.SHIFT,)
+    assert double.native is seen[2].native and double.native.widget is canvas.native
+    canvas.close()
+
+
+def test_focus_loss_breaks_double_click_history(application, monkeypatch):
+    from vispy.app import canvas as canvas_module
+    canvas = input_canvas(application)
+    doubles = []
+    canvas.events.mouse_double_click.connect(doubles.append)
+    monkeypatch.setattr(canvas_module, 'time', lambda: 10.0)
+    for sequence in ('<ButtonPress-1>', '<ButtonRelease-1>', '<FocusOut>',
+                     '<ButtonPress-1>', '<ButtonRelease-1>'):
+        canvas.native.event_generate(sequence, **({} if sequence == '<FocusOut>' else dict(x=17, y=23)))
+    assert doubles == []
+    canvas.close()
+
+
+@pytest.mark.parametrize('interval,position,button,expected', [
+    (.3, (17, 23), 1, 1), (.3001, (17, 23), 1, 0),
+    (.1, (18, 23), 1, 0), (.1, (17, 23), 3, 0),
+])
+def test_double_click_threshold_position_and_button(application, monkeypatch, interval, position, button, expected):
+    from vispy.app import canvas as canvas_module
+    canvas = input_canvas(application)
+    doubles = []
+    canvas.events.mouse_double_click.connect(doubles.append)
+    clock = [0.0]
+    monkeypatch.setattr(canvas_module, 'time', lambda: clock[0])
+    canvas.native.event_generate('<ButtonPress-1>', x=17, y=23)
+    canvas.native.event_generate('<ButtonRelease-1>', x=17, y=23)
+    clock[0] = interval
+    canvas.native.event_generate('<ButtonPress-%d>' % button, x=position[0], y=position[1])
+    canvas.native.event_generate('<ButtonRelease-%d>' % button, x=position[0], y=position[1])
+    assert len(doubles) == expected
+    canvas.close()
+
+
+def test_modifier_aliases_dual_keys_release_state_and_native_provenance(application):
+    """Synthetic adapter vectors; not a claim about physical keyboard delivery."""
+    from vispy.util import keys
+    canvas = input_canvas(application)
+    seen = []
+    wheels = []
+    canvas.events.key_press.connect(seen.append)
+    canvas.events.key_release.connect(seen.append)
+    canvas.events.mouse_wheel.connect(wheels.append)
+    vectors = [
+        ('Shift_L', 1, True, 0, (keys.SHIFT,)),
+        ('Shift_R', 2, True, 1, (keys.SHIFT,)),
+        ('Shift_L', 1, False, 1, (keys.SHIFT,)),
+        ('Win_L', 3, True, 1, (keys.SHIFT, keys.META)),
+        ('Shift_R', 2, False, 1, (keys.META,)),
+        ('Win_L', 3, False, 0, ()),
+    ]
+    for symbol, code, pressed, state, expected in vectors:
+        native = SimpleNamespace(keysym=symbol, keycode=code, char='', state=state)
+        canvas._backend._on_key(native, pressed)
+        event = seen[-1]
+        assert event.key == (keys.META if symbol.startswith('Win') else keys.SHIFT)
+        assert event.modifiers == expected and event.native is native and event.text == ''
+        pointer = SimpleNamespace(x=11, y=13, state=0, delta=120, num='??')
+        canvas._backend._on_wheel(pointer)
+        assert wheels[-1].modifiers == expected and wheels[-1].native is pointer
+    # Focus loss cancels both sides and printable key-release caches.
+    canvas._backend._on_key(SimpleNamespace(keysym='Super_R', keycode=4, char='', state=0), True)
+    canvas.native.event_generate('<FocusOut>')
+    canvas._backend._on_key(SimpleNamespace(keysym='a', keycode=5, char='a', state=0), True)
+    assert seen[-1].modifiers == ()
+    canvas.close()
+
+
+@pytest.mark.parametrize('platform,state,expected', [
+    ('win32', 8, ()), ('win32', 0x20000, ('Alt',)), ('win32', 0x10005, ('Shift', 'Control', 'Meta')),
+    ('linux', 8, ('Alt',)), ('linux', 64, ('Meta',)), ('linux', 128, ()),
+    ('linux', 0x30000, ('Alt', 'Meta')), ('darwin', 8, ('Meta',)), ('darwin', 16, ('Alt',)),
+])
+def test_synthetic_platform_modifier_masks(application, monkeypatch, platform, state, expected):
+    """Translation only: Darwin and remapped X11 layouts remain unqualified."""
+    from vispy.app.backends import _dawn_tk
+    canvas = input_canvas(application)
+    with monkeypatch.context() as patch:
+        patch.setattr(_dawn_tk, 'sys', SimpleNamespace(platform=platform))
+        modifiers = canvas._backend._modifiers(SimpleNamespace(state=state))
+    assert tuple(key.name for key in modifiers) == expected
+    canvas.close()
+
+
+@pytest.mark.parametrize('symbol,text,expected_key,expected_text', [
+    ('exclam', '!', '!', '!'), ('U03bb', '\u03bb', '\u03bb', '\u03bb'),
+    ('KP_7', '7', '7', '7'), ('KP_Left', '', 'Left', ''),
+    ('ISO_Left_Tab', '\t', 'Tab', ''), ('F12', '', 'F12', ''),
+    ('UnmappedSymbol', '', None, ''), ('a', '\x01', 'A', ''),
+    ('Return', '\r', 'Enter', ''), ('space', ' ', 'Space', ' '),
+])
+def test_synthetic_key_identity_text_and_release_after_modifier_change(
+        application, symbol, text, expected_key, expected_text):
+    canvas = input_canvas(application)
+    seen = []
+    canvas.events.key_press.connect(seen.append)
+    canvas.events.key_release.connect(seen.append)
+    native = SimpleNamespace(keysym=symbol, keycode=42, char=text, state=0)
+    canvas._backend._on_key(native, True)
+    release = SimpleNamespace(keysym='UnmappedOnRelease', keycode=42, char='', state=0)
+    canvas._backend._on_key(release, False)
+    assert len(seen) == 2
+    for event, origin in zip(seen, (native, release)):
+        assert event.key == expected_key and event.text == expected_text and event.native is origin
+    canvas.close()
+
+
+def test_live_key_events_retain_native_widget_and_printable_text(application):
+    canvas = input_canvas(application)
+    seen = []
+    canvas.events.key_press.connect(seen.append)
+    canvas.events.key_release.connect(seen.append)
+    canvas.native.event_generate('<KeyPress-a>')
+    canvas.native.event_generate('<KeyRelease-a>')
+    assert [event.type for event in seen] == ['key_press', 'key_release']
+    assert all(event.key == 'A' and event.text == 'a' and event.native.widget is canvas.native for event in seen)
+    canvas.close()
+
+
+def test_live_wheel_units_held_buttons_and_native_metadata(application):
+    from vispy.util import keys
+    canvas = input_canvas(application)
+    seen, presses = [], []
+    canvas.events.mouse_wheel.connect(seen.append)
+    canvas.events.mouse_press.connect(presses.append)
+    canvas.native.event_generate('<ButtonPress-1>', x=11, y=13)
+    for delta in (60, -240):
+        canvas.native.event_generate('<MouseWheel>', delta=delta, x=11, y=13, state=1)
+    assert [tuple(event.delta) for event in seen] == [(0, .5), (0, -2)]
+    assert all(event.buttons == [1] and tuple(event.pos) == (11, 13)
+               and event.modifiers == (keys.SHIFT,)
+               and event.native.widget is canvas.native for event in seen)
+    if sys.platform.startswith('linux'):
+        for button in (4, 5):
+            canvas.native.event_generate('<ButtonPress-%d>' % button, x=11, y=13)
+            canvas.native.event_generate('<ButtonRelease-%d>' % button, x=11, y=13)
+        assert [tuple(event.delta) for event in seen[2:]] == [(0, 1), (0, -1)]
+        assert len(presses) == 1 and canvas._backend._pressed_buttons == {1}
+    else:
+        # Physical extra buttons are not Linux wheel notifications on Windows.
+        canvas.native.event_generate('<ButtonPress-4>', x=11, y=13)
+        assert presses[-1].button == 4 and len(seen) == 2
+        canvas.native.event_generate('<ButtonRelease-4>', x=11, y=13)
+    canvas.native.event_generate('<ButtonRelease-1>', x=11, y=13)
+    assert not canvas._backend._pressed_buttons
+    canvas.close()
+
+
+def test_embedded_input_routes_once_and_preserves_host_binding(application):
+    import tkinter as tk
+    parent = tk.Toplevel(application.native)
+    canvases = [app.Canvas(app=application, parent=parent, size=(80, 60)) for _ in range(2)]
+    deliveries = [[], []]
+    host = []
+    parent.bind('<ButtonPress-1>', lambda event: host.append(event.widget), add='+')
+    for canvas, seen in zip(canvases, deliveries):
+        canvas.native.pack(side='left')
+        canvas.events.mouse_press.connect(seen.append)
+    wait(application, lambda: all(canvas.native.winfo_viewable() for canvas in canvases))
+    for canvas in canvases:
+        canvas.native.event_generate('<ButtonPress-1>', x=11, y=13)
+        canvas.native.event_generate('<ButtonRelease-1>', x=11, y=13)
+    assert [len(seen) for seen in deliveries] == [1, 1]
+    assert host == [canvas.native for canvas in canvases]
+    canvases[0].close()
+    canvases[1].native.event_generate('<ButtonPress-1>', x=11, y=13)
+    canvases[1].native.event_generate('<ButtonRelease-1>', x=11, y=13)
+    assert [len(seen) for seen in deliveries] == [1, 2] and len(host) == 3
+    assert host[-1] is canvases[1].native and parent.winfo_exists()
+    parent.destroy()
 
 
 def test_real_frame_presentation_and_resize(application):

@@ -31,7 +31,12 @@ _KEYS.update(Return=keys.ENTER, KP_Enter=keys.ENTER, Prior=keys.PAGEUP,
              Control_L=keys.CONTROL, Control_R=keys.CONTROL,
              Alt_L=keys.ALT, Alt_R=keys.ALT, Meta_L=keys.META, Meta_R=keys.META)
 _KEYS.update({('F%d' % n): getattr(keys, 'F%d' % n) for n in range(1, 13)})
-_KEYS.update(space=keys.SPACE, Super_L=keys.META, Super_R=keys.META)
+_KEYS.update(space=keys.SPACE, ISO_Left_Tab=keys.TAB, Super_L=keys.META,
+             Super_R=keys.META, Win_L=keys.META, Win_R=keys.META)
+_KEYS.update({'KP_' + name: _KEYS[name] for name in
+              ('Left', 'Right', 'Up', 'Down', 'Home', 'End', 'Insert', 'Delete', 'Prior', 'Next')})
+_MODIFIER_KEYS = {name: key for name, key in _KEYS.items()
+                  if key in (keys.SHIFT, keys.CONTROL, keys.ALT, keys.META)}
 
 
 def _set_config(config):
@@ -353,6 +358,8 @@ class CanvasBackend(BaseCanvasBackend):
         self._draw_job = None
         self._drawing = False
         self._pressed_buttons = set()
+        self._pressed_modifiers = set()
+        self._pressed_keys = {}
         self._last_pointer = (0, 0)
         self._photo = None
         self._size = tuple(map(int, p.size))
@@ -466,15 +473,35 @@ class CanvasBackend(BaseCanvasBackend):
             self._vispy_canvas.events.resize(size=size, physical_size=size)
             self._vispy_update()
 
-    @staticmethod
-    def _modifiers(event):
+    def _modifiers(self, event, released=None):
+        # Tk's floating Meta/Alt bits are distinct from platform Mod1..5.
+        # Windows Mod1 is NumLock, not Alt. X11 uses the default Mod1 Alt /
+        # Mod4 Super layout here; arbitrary remappings need their own profile.
+        alt, meta = 0x20000, 0x10000
+        if sys.platform == 'darwin':
+            alt |= 16  # Option
+            meta |= 8  # Command
+        elif sys.platform.startswith('linux'):
+            alt |= 8
+            meta |= 64
+        held = {_MODIFIER_KEYS[name] for name in self._pressed_modifiers}
+        state = getattr(event, 'state', 0)
         return tuple(key for mask, key in ((1, keys.SHIFT), (4, keys.CONTROL),
-                     (0x20000 if sys.platform == 'win32' else 8, keys.ALT)) if event.state & mask)
+                                          (alt, keys.ALT), (meta, keys.META))
+                     if (key in held or state & mask) and (key != released or key in held))
 
     def _mouse(self, event):
         self._last_pointer = (event.x, event.y)
         return dict(pos=self._last_pointer, modifiers=self._modifiers(event),
-                    buttons=sorted(self._pressed_buttons))
+                    buttons=sorted(self._pressed_buttons), native=event)
+
+    def _vispy_detect_double_click(self, event):
+        # Retain the pinned base detector's 0.3-second / exact-position policy.
+        # Base invokes this with only the press event; forward its metadata so
+        # the derived event does not acquire default position/button values.
+        super()._vispy_detect_double_click(
+            event, pos=event.pos, button=event.button, buttons=event.buttons,
+            modifiers=event.modifiers, native=event.native)
 
     def _on_motion(self, event):
         self._vispy_mouse_move(**self._mouse(event))
@@ -498,25 +525,44 @@ class CanvasBackend(BaseCanvasBackend):
         # Tk's implicit pointer grab handles physical releases outside the
         # widget. Losing focus can instead leave the gesture without a release;
         # cancel it explicitly so camera interactions never retain stale input.
+        self._pressed_modifiers.clear()
+        self._pressed_keys.clear()
         for button in sorted(self._pressed_buttons):
             self._pressed_buttons.discard(button)
             self._vispy_mouse_release(button=button, pos=self._last_pointer,
-                                      buttons=sorted(self._pressed_buttons), modifiers=())
-        self._vispy_mouse_data['press_event'] = None
-        self._vispy_mouse_data['last_event'] = None
+                                      buttons=sorted(self._pressed_buttons), modifiers=(), native=event)
+        for name in self._vispy_mouse_data:
+            self._vispy_mouse_data[name] = None
 
     def _on_wheel(self, event):
         num = getattr(event, 'num', None)
-        delta = (1 if num == 4 else -1) if num in (4, 5) else event.delta / (
+        delta = (1 if num == 4 else -1) if sys.platform.startswith('linux') and num in (4, 5) else event.delta / (
             1 if sys.platform == 'darwin' else 120)
         self._vispy_canvas.events.mouse_wheel(delta=(0, delta), **self._mouse(event))
 
     def _on_key(self, event, pressed):
+        modifier = _MODIFIER_KEYS.get(event.keysym)
+        if modifier is not None:
+            if pressed:
+                self._pressed_modifiers.add(event.keysym)
+            else:
+                self._pressed_modifiers.discard(event.keysym)
         key = _KEYS.get(event.keysym)
+        text = event.char if event.char and event.char.isprintable() else ''
         if key is None and len(event.keysym) == 1:
             key = keys.Key(event.keysym)
+        if key is None and text:
+            key = keys.Key(text)
+        if key is not None and key != keys.SPACE and event.keysym in _KEYS:
+            text = ''  # Navigation/modifier/function keys carry no printable text.
+        code = getattr(event, 'keycode', None)
+        if code is not None:
+            if pressed:
+                self._pressed_keys[code] = (key, text)
+            else:
+                key, text = self._pressed_keys.pop(code, (key, text))
         emitter = self._vispy_canvas.events.key_press if pressed else self._vispy_canvas.events.key_release
-        emitter(key=key, text=event.char, modifiers=self._modifiers(event))
+        emitter(key=key, text=text, modifiers=self._modifiers(event, None if pressed else modifier), native=event)
 
     def _vispy_set_title(self, title):
         if self._top is not None:
@@ -575,6 +621,10 @@ class CanvasBackend(BaseCanvasBackend):
         self._closing = True
         self._closed = True
         self._pressed_buttons.clear()
+        self._pressed_modifiers.clear()
+        self._pressed_keys.clear()
+        for name in self._vispy_mouse_data:
+            self._vispy_mouse_data[name] = None
         cleanup = _Cleanup()
 
         def cancel_draw():

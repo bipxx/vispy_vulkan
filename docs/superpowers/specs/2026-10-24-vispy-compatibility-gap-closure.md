@@ -583,6 +583,41 @@ Synthetic Tk events prove adapter translation, not keyboard layout, compositor
 delivery or physical device behavior. Record those evidence types separately.
 No system-wide input injection or global keyboard/DPI changes are required.
 
+Current source input policy and acceptance checkpoint:
+
+| Profile | Modifier/wheel policy | Evidence boundary |
+| --- | --- | --- |
+| Windows Tk | SHIFT=1, CONTROL=4, floating ALT=0x20000, META=0x10000 plus tracked Win/Meta/Super key aliases. Mod1=8 is not Alt. MouseWheel delta/120 preserves fractional and negative ticks; extra physical buttons remain buttons. | Live widget event generation and synthetic modifier/key vectors on Windows Vulkan; physical keyboard/device delivery remains unqualified. |
+| Linux Tk/X11 default layout | SHIFT=1, CONTROL=4, ALT includes Mod1=8, META includes Mod4=64, plus floating Alt/Meta bits and tracked aliases. Buttons 4/5 are vertical wheel ticks with no held-button mutation. | WSL software Vulkan source tests; remapped modifier layouts, native Linux GPU and the separate capture runtime remain unqualified. |
+| macOS Tk | Proposed Command Mod1/Option Mod2 translation plus floating bits; native wheel units retained. | Synthetic translation vectors only; no Mac or hardware admission. |
+
+The [Tk 8.6 Windows modifier implementation](https://raw.githubusercontent.com/tcltk/tk/core-8-6-14/win/tkWinPointer.c)
+distinguishes NumLock/Mod1 from Alt; its
+[key table](https://raw.githubusercontent.com/tcltk/tk/core-8-6-14/win/tkWinKey.c)
+names Win_L/Win_R. These references inform adapter policy, not a claim that every
+test environment has that exact toolkit patch release.
+
+The source uses the pinned base double-click detector (same button and exact
+position, consecutive press interval <=0.3 seconds), forwarding the triggering
+event's metadata and retaining every ordinary press/release. Focus loss clears
+the detector and cancels held gestures. Modifiers are updated before key delivery;
+a release removes that logical modifier unless its other alias remains held,
+even when native state describes the pre-release transition. Pointer/wheel events
+combine native masks with tracked keys, including Windows META.
+
+Named navigation/keypad aliases and F1–F12 emit public key identities; printable
+characters (including Unicode and keypad digits) retain text separately. Control
+characters and nonprinting special keys have empty text. A keycode's release
+retains its press identity/text across changed or missing release symbols; focus
+loss and close clear this cache. Unknown nonprinting symbols remain key=None with
+native provenance rather than acquiring invented printable text.
+
+Twenty-nine new cases cover these vectors, double-click boundary/position/button
+controls, real widget events and host/canvas routing. Final affected suites pass
+129 Windows and 115 WSL software cases with nine zero shutdown gauges. Existing
+real PanZoom/Turntable drags remain in those suites. This advances TK-6 source
+acceptance, not exact installed qualification or unsupported physical profiles.
+
 ### Backend capabilities and configuration (TK-1,5,6, BACKEND-2)
 
 Before admission, retain a capability table for standalone and embedded modes.

@@ -105,6 +105,25 @@ without presentation and four selected loaded-member hashes; its new behavior
 has not yet been executed against a final wheel and does not replace the full
 auditor or Tk/profile gates.
 
+## Tk input source checkpoint (G1a, TK-6)
+
+The remaining input packet now preserves native provenance and double-click
+metadata, clears click/key/modifier state on focus loss, tracks both sides of a
+modifier independently, adds META/Windows/Super and keypad aliases, distinguishes
+printable text from control/navigation keys and retains press identity on release.
+Wheel vectors preserve fractional/negative Windows ticks, Linux button 4/5
+semantics and held mouse buttons. Host bindings and separate embedded-canvas
+routing have live-widget regressions. The specification's section 11 records the
+exact selected masks, key range, base double-click threshold and scope limits.
+
+Twenty-nine new cases pass; final affected suites pass 129 Windows and 115 WSL
+software cases, including existing real camera drags. Both profiles report nine
+zero native shutdown gauges. Tests reuse the retained matching native leaves;
+there was no native rebuild or installed-wheel promotion. Synthetic modifier and
+Unicode vectors do not qualify physical devices, remapped layouts or macOS.
+Linux capture/toolkit/scissor blockers, backend capability/configuration review,
+remaining state-family coverage, G0 reconciliation and G2 gates stay open.
+
 ## G0 ledger and promotion details
 
 Applicability checkpoint (review B2): ledger schema v2 and the validator now
@@ -126,7 +145,7 @@ this queue rather than restarting already completed source work:
 | Order | Bounded deliverable | Review/acceptance stop condition |
 | --- | --- | --- |
 | 1 | Reconcile concrete G0 feature/profile rows for the current Tk/state work; map ordinary and mutation fixtures, known failures and candidate identities using the implemented v2 applicability mapping. | Schema validity alone is insufficient. V1 migration and missing-required, optional and blocked-hardware controls have source evidence above. Keep the full inventory unreviewed until method/example/event/host reconciliation is actually complete. |
-| 2 | Finish TK-6 input translation using the section 11 sequence table and retained matching native leaves. | Check modifiers/key aliases, wheel units, double-click metadata, focus cleanup and independent canvas/host routing; synthetic events do not establish hardware/layout support. No native rebuild for this Python-only packet. |
+| 2 | TK-6 input translation now has the source checkpoint above; map those fixtures into concrete G0 rows and the installed Tk scenario. | Preserve the section 11 policy and remaining physical/layout restrictions. G2 still needs exact-wheel functional/observer proof; source passes do not admit an installed profile. |
 | 3 | Complete STATE-1/3/5 operation/query records and missing family fixtures. | Separate invalid inputs from legal unimplemented values. Preserve failures and list native changes genuinely required before packaging. |
 | 4 | Diagnose the two Linux G1c blockers separately with pinned, bounded controls. | A toolkit repair cannot close scissor correctness; a driver comparison cannot close toolkit lifecycle. Preserve exact failing receipts and granted-sample proof. |
 | 5 | Freeze the scoped G1 source, obtain independent implementation review, then produce/reuse the appropriate final artifacts for G2. | Run full installed-member/profile audits, mapped workflow acceptance, three independent absence gates and controls, shutdown/ownership checks and required current-head CI. An old wheel receipt cannot acquire a new identity. |

@@ -64,6 +64,30 @@ work. Old VisPy image wrappers do not accidentally retain an otherwise exclusive
 root. Use an explicit parent for opaque Tcl state whose ownership cannot be
 inferred from those remaining resources.
 
+Tk input now preserves native event objects and double-click position, button,
+held buttons and modifiers. It uses the pinned base detector: consecutive
+presses of the same button at the same widget position within 0.3 seconds emit
+a double-click in addition to ordinary presses/releases. Focus loss clears
+gesture/click history and held modifier/key state. Left/right modifier aliases
+are tracked independently; Windows-key and Super aliases map to META. Printable
+Unicode/keypad text is distinct from navigation/control keys, and releases retain
+the corresponding press identity/text when Tk supplies no usable release text.
+The admitted named function-key range is F1–F12; other unknown symbols without
+printable text emit an unknown key with empty text and retain their native event.
+
+Windows MouseWheel deltas retain fractional ticks in units of 120; Linux button
+4/5 events produce vertical wheel ticks without creating held mouse buttons.
+X11 mask translation assumes the default Mod1 Alt/Mod4 Super layout. Arbitrary
+remapped layouts, physical device delivery and macOS remain unqualified; synthetic
+translation vectors are not hardware evidence. Two embedded canvases route input
+independently while preserving their host's bindings.
+
+This input packet adds 29 source cases. The final affected suites pass 129 cases
+on Windows and 115 on WSL software Vulkan, with all nine native shutdown gauges
+zero. These counts include prior lifecycle/camera tests; Windows also includes
+capture. The separately failing Linux capture workflows remain open. No native
+rebuild, new wheel, installed-profile promotion or hardware-input claim follows.
+
 This ownership packet has 100 passing Windows Tk/state/capture source cases and
 86 passing WSL Tk/state cases, plus 12 packaging/source contracts. The WSL count
 excludes the separately failing expanded capture workflows below. These results
