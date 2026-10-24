@@ -753,3 +753,35 @@ pairs preserved. This does not implement the qualification index, canonical
 criterion/conservation mappings, independent reviews or installed absence gates.
 The new packet retains its sources, original failures and actual exits/waits in
 `build/runs/observed-failures-25/`; terminal cleanup must be verified separately.
+
+
+## Alternate toolkit and input source checkpoint (B4, TK-6..8, P2/P3)
+
+The [runtime profile record](../../tkinter-runtime-profiles.md) attributes the
+old managed-Python Label abort before teardown and retains three failed controls
+plus cleanup in `build/runs/linux-toolkit-cause-27/`. The identical control passes
+12 lifecycles on the already-installed CPython3.12.13/Tcl-Tk9.0.3 runtime. This
+is a distinct development profile; old toolkit/receipt identities remain blocked
+or historical, and the independent MSAA scissor defect is not repaired.
+
+Source fixes normalize typed Tcl command/namespace names and distinguish legacy
+X11 Button4/5 wheel notifications from Tk9 extra buttons/MouseWheel. Focused
+before-failing controls and both toolkit families retain exact input/state,
+host ownership and pixel assertions. Plain-Tk controls also isolate a Windows
+worker-GC finalization hazard; the thread fixture retires prior test garbage on
+its UI owner and releases checked error cycles without changing production GC.
+Mac CPU CLI proof now preserves the observed baseline native-GL failure while
+checking successful argument/workflow plumbing; aggregate gates are unchanged.
+
+Sources, actual failures/exits/waits, profile identities and affected results
+are retained in local `build/runs/linux-toolkit-profile-28/`. This checkpoint
+adds no installed-wheel, hardware, source/scope review or shipping qualification.
+Experimental Linux native provenance and all remaining required obligations
+stay visible. Terminal cleanup is proved only by that packet's applied receipt.
+
+Final affected source acceptance passes 69 Windows/68 alternate-profile Linux
+cases with nine zero gauges, including mixed Label/Vulkan host workflows and
+controlled delayed completion progress. Original broad failures and the known
+four-sample scissor failure remain retained. Direct script and legacy-toolkit
+controls are recorded separately. The completion fixture now waits for observed
+retirement before explicit retry; no runtime wait/presentation behavior changed.

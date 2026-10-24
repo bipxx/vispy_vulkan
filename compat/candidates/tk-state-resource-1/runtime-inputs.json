@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "source_commit": "c7e191ee8ee506d4ba6244eaa217efceb43d115c",
+  "source_commit": "53194f10e5e4ed096f484985f773b636eb1b5109",
   "python": [
     {
       "member": "vispy/__init__.py",
@@ -55,7 +55,7 @@
       "member": "vispy/app/backends/_dawn_tk.py",
       "file": {
         "path": "src/vispy/app/backends/_dawn_tk.py",
-        "sha256": "beb1e27d82248ca29fd2ab5de250adeb2dcaf6f455e8136eae791ff8f0464726"
+        "sha256": "6a4bd1f0bb786235e255d257a733b6acde42a096fa059d9b73ae60e0f4d4c554"
       }
     },
     {

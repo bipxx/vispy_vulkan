@@ -128,3 +128,13 @@ wheel audit or the three absence gates. Exact installed origin, criterion-level
 canonical mappings, review and current-artifact proof remain open. The retained
 packet is `build/runs/observed-failures-25/`; terminal cleanup is reported there
 only after its exact plan has been applied and retained hashes verified.
+
+## Selected source runtime refresh
+
+The selected Linux preparation profile now uses CPython3.12.13 and Tcl/Tk9.0.3;
+see the [runtime profile record](tkinter-runtime-profiles.md). The original
+Tk8.6/CPython3.12.8 profile and receipts remain historical/blocked. The candidate
+still has 15 proposals/30 pairs/three workflows, null wheels and pending reviews.
+A changed runtime source pin and newly generated observations do not relabel an
+old receipt. The alternative toolkit does not repair the MSAA boundary defect
+or upgrade experimental native producer provenance into shipping qualification.

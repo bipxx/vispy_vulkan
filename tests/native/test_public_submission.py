@@ -95,8 +95,28 @@ def test_empty_repeated_flush_is_a_noop(canvas, route):
     assert_no_wait_or_present(before, after)
 
 
+@pytest.mark.parametrize('delayed_progress', [False, True])
 @pytest.mark.parametrize('route', ['gloo', 'raw'])
-def test_saturated_flush_reports_backpressure_and_retains_unsubmitted_work(canvas, route):
+def test_saturated_flush_reports_backpressure_and_retains_unsubmitted_work(canvas, route, delayed_progress, monkeypatch):
+    progress_calls = []
+    if delayed_progress:
+        controls, progress = _dawn.diagnostic_submission_controls, _dawn.process_events
+        requested = []
+
+        def release(hold, stage):
+            if not hold and not requested:
+                requested.append(True)  # First progress opportunity is too early.
+                return
+            return controls(hold, stage)
+
+        def advance():
+            progress_calls.append(True)
+            if len(progress_calls) > 1:
+                controls(False, '')
+                progress()
+
+        monkeypatch.setattr(_dawn, 'diagnostic_submission_controls', release)
+        monkeypatch.setattr(_dawn, 'process_events', advance)
     _dawn.configure_frame_slots(1)
     _dawn.diagnostic_submission_controls(True, '')
     gloo.clear(color='red')
@@ -111,10 +131,17 @@ def test_saturated_flush_reports_backpressure_and_retains_unsubmitted_work(canva
     assert blocked['dawn_queue_submits'] == before['dawn_queue_submits']
     assert_no_wait_or_present(before, blocked)
     _dawn.diagnostic_submission_controls(False, '')
-    _dawn.process_events()
+    # Progress is nonblocking: one pump does not promise GPU completion.
+    deadline = time.monotonic() + 5
+    while _dawn.probe()['pending_tickets']:
+        _dawn.process_events()
+        assert time.monotonic() < deadline, 'released submission did not retire'
+        time.sleep(.001)
     flush(route)
     resumed = _dawn.probe()
     assert resumed['dawn_queue_submits'] == before['dawn_queue_submits'] + 1
+    if delayed_progress:
+        assert len(progress_calls) >= 2
     assert_no_wait_or_present(before, resumed)
     image = gloo.read_pixels((0, 0, 8, 8), alpha=True)
     assert np.all(image == [0, 128, 0, 255])

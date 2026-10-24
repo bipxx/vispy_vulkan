@@ -275,6 +275,11 @@ def test_non_owner_thread_rejection_preserves_public_state_and_jobs(application,
         except BaseException as error:
             errors.append(error)
     thread = threading.Thread(target=worker)
+    # Retire prior test-owned interpreter cycles on their UI owner before a
+    # worker can trigger Python GC (Tcl_AsyncDelete is thread-affine).
+    # Current canvas/timer remain live; all rejection assertions stay intact.
+    import gc
+    gc.collect()
     thread.start()
     thread.join(2)
     try:
@@ -285,6 +290,7 @@ def test_non_owner_thread_rejection_preserves_public_state_and_jobs(application,
     finally:
         timer.stop()
         canvas.close()
+    errors.clear()  # Release worker traceback cycles on the UI thread after assertions.
 
 
 def test_fullscreen_property_reports_native_acknowledgement(application):
@@ -340,3 +346,51 @@ def test_invalid_request_does_not_allocate_an_interpreter_and_can_be_corrected(c
     finally:
         canvas.close()
         application.quit()
+
+
+@pytest.mark.parametrize('label_first', [True, False])
+def test_label_host_and_vulkan_canvas_share_runtime_without_host_loss(application, label_first):
+    import tkinter as tk
+    root = application.native
+    root.geometry('160x100')
+    root.deiconify()
+    label = canvas = None
+    host_job = root.after(60000, lambda: None)
+    try:
+        if label_first:
+            label = tk.Label(root, text='Tk label host', bg='magenta')
+            label.pack()
+        canvas = app.Canvas(app=application, parent=root, size=(96, 64), show=True)
+        canvas.native.pack(fill='both', expand=True)
+        if label is None:
+            label = tk.Label(root, text='Tk label host', bg='magenta')
+            label.pack()
+
+        def draw(event):
+            gloo.set_viewport(0, 0, *canvas.physical_size)
+            gloo.set_state(scissor_test=False)
+            gloo.clear(color=(0, 1, 0, 1))
+
+        canvas.events.draw.connect(draw)
+        canvas.update()
+        wait(application, lambda: canvas._backend._photo is not None
+             and (canvas._backend._photo.width(), canvas._backend._photo.height())
+             == tuple(canvas.physical_size)
+             and tuple(canvas._backend._photo.get(1, 1)) == (0, 255, 0))
+        canvas.set_current()
+        assert np.all(gloo.read_pixels((0, 0, *canvas.physical_size), alpha=True)
+                      == [0, 255, 0, 255])
+        label.configure(text='host label after Vulkan')
+        root.update_idletasks()
+        application.quit()
+        assert root.winfo_exists() and label.winfo_exists()
+        assert label.cget('text') == 'host label after Vulkan'
+        assert host_job in root.tk.call('after', 'info')
+    finally:
+        if canvas is not None:
+            canvas.close()
+        application.quit()
+        if root.winfo_exists():
+            root.after_cancel(host_job)
+            root.update_idletasks()
+            root.destroy()
