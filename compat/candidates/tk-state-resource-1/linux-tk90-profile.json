@@ -2,7 +2,7 @@
   "schema": 1,
   "id": "wsl-software-tk90-cp31213-development",
   "phase": "source-functional",
-  "product_runtime_source_commit": "53194f10e5e4ed096f484985f773b636eb1b5109",
+  "product_runtime_source_commit": "0e7b5b11788e6f6a87e4ef70ac231fa3ac73501f",
   "kind": "wsl-software",
   "architecture": "x86_64",
   "python_abi": "cp312",
@@ -102,7 +102,9 @@
       "line_resource_pool_busy_slots": 0,
       "line_resource_pool_bytes": 0
     },
-    "scope": "Focused affected source acceptance; original broad/failing reports retained separately; not installed qualification."
+    "scope": "Focused affected source acceptance; original broad/failing reports retained separately; not installed qualification.",
+    "observed_runtime_source_commit": "53194f10e5e4ed096f484985f773b636eb1b5109",
+    "reuse_basis": "Production Python/native source bytes match the observed53194f10 tree. Only2CPU-contract include lists changed in CMakeLists; original report bytes, artifact/provenance and observed identity remain unchanged."
   },
   "limitations": [
     "Development observation only; no wheel or installed/observer admission.",

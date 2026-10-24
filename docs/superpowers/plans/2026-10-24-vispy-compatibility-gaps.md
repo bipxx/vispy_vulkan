@@ -44,7 +44,7 @@ mean independently reviewed or installed-qualified completion.
 
 | Order | Current state and next concrete output | Exit before advancing the claim |
 | --- | --- | --- |
-| 1 — I2 / coordinator + proof | The development manifest now contains 15 proposals, 30 Windows/WSL pairs and two executable workflows. Review its exact scope and reconcile methods/examples/events/wrappers into proposed conservation mappings, retaining residual required criteria. | Preparation validation passes without claiming qualification; independent scope review covers every proposed origin/successor criterion. Untouched and residual seed obligations remain blocking full closure; selected scoped work need not wait for all 142 mappings. |
+| 1 — I2 / coordinator + proof | The development manifest now contains 15 proposals, 30 Windows/WSL pairs and three executable workflows. Review its exact scope and reconcile methods/examples/events/wrappers into proposed conservation mappings, retaining residual required criteria. | Preparation validation passes without claiming qualification; independent scope review covers every proposed origin/successor criterion. Untouched and residual seed obligations remain blocking full closure; selected scoped work need not wait for all 142 mappings. |
 | 2 — implementation review / coordinator | Freeze and review the cumulative Q1/B4/L1, conservation/candidate tooling, shared-progress/shutdown and resource-workflow source/fixture changes, including their auditor bindings. Map unresolved findings to affected pairs. | Independent source/fixture review passes for the selected candidate. This Astra plan review does not satisfy that gate. Do not rebuild those packets merely to repeat their pass counts. |
 | 3 — bounded correctness / Python + native | Diagnose Linux toolkit capture and MSAA scissor separately; retain the required Windows threedee diagnostic packet. Select each remaining legal-state, input/DPI or lifecycle gap from concrete candidate dependencies. | Each required failure has causal evidence and a distinguishing regression, or remains a visible blocker. Hardware absence cannot excuse independent software failures. |
 | 4 — G2 / proof | Freeze the reviewed source, reuse matching artifacts or build each changed native leaf once, then audit exact installed workflows and all absence gates/controls. | Exact-member/closure audits, functional/shutdown receipts, current-head required CI and independent final promotion-evidence review pass for the same artifacts and profiles. Original mandatory host gates remain required. |
@@ -785,3 +785,28 @@ controlled delayed completion progress. Original broad failures and the known
 four-sample scissor failure remain retained. Direct script and legacy-toolkit
 controls are recorded separately. The completion fixture now waits for observed
 retirement before explicit retry; no runtime wait/presentation behavior changed.
+
+
+## Criterion coverage proposal checkpoint (P1, INV-1..3, EV-1..5)
+
+The [criterion coverage contract](../../criterion-coverage.md) and closed schema
+join 60 selected criteria to 120 profile bindings. Each criterion pins public methods,
+finite values, expected behavior, fixture bytes/counts and partial origin links.
+All 142 original parents retain every criterion and identity; this additive proposal
+applies/transfers/discharges nothing. Unseeded wrappers remain new requirements.
+The validator accepts 112 script-ready bindings and exposes 8 source-only flush
+capacity/retry bindings. Its strict readiness/review commands remain failing.
+An ordinary or unrelated successful fixture cannot satisfy an unexecuted branch.
+The existing scope review must bind both candidate scope and coverage hashes;
+no extra review type or qualification bypass is introduced. Semantic coverage
+and independent implementation review remain pending.
+
+The same packet corrects missing glslang header propagation for 2 compiler-free
+CPU contract targets, reproduced in current-head Linux/macOS CI. Both compile/run
+on Windows and Linux with existing inputs. No renderer or SDK was rebuilt.
+Current runtime Python/native bytes still match `53194f10`; only the contract build
+recipe changes its source pin. Original functional/qualification identities are
+retained with an explicit reuse basis. Source, failures, commands, retained small
+native artifacts and cleanup are in local `build/runs/criterion-coverage-29/`.
+All original installed, observer/control, host, hardware and full parity gates
+remain unchanged. Source preparation is not release completion.

@@ -1475,3 +1475,28 @@ controlled delayed completion progress. Original broad failures and the known
 four-sample scissor failure remain retained. Direct script and legacy-toolkit
 controls are recorded separately. The completion fixture now waits for observed
 retirement before explicit retry; no runtime wait/presentation behavior changed.
+
+
+## Criterion coverage proposal checkpoint (P1, INV-1..3, EV-1..5)
+
+The [criterion coverage contract](../../criterion-coverage.md) and closed schema
+join 60 selected criteria to 120 profile bindings. Each criterion pins public methods,
+finite values, expected behavior, fixture bytes/counts and partial origin links.
+All 142 original parents retain every criterion and identity; this additive proposal
+applies/transfers/discharges nothing. Unseeded wrappers remain new requirements.
+The validator accepts 112 script-ready bindings and exposes 8 source-only flush
+capacity/retry bindings. Its strict readiness/review commands remain failing.
+An ordinary or unrelated successful fixture cannot satisfy an unexecuted branch.
+The existing scope review must bind both candidate scope and coverage hashes;
+no extra review type or qualification bypass is introduced. Semantic coverage
+and independent implementation review remain pending.
+
+The same packet corrects missing glslang header propagation for 2 compiler-free
+CPU contract targets, reproduced in current-head Linux/macOS CI. Both compile/run
+on Windows and Linux with existing inputs. No renderer or SDK was rebuilt.
+Current runtime Python/native bytes still match `53194f10`; only the contract build
+recipe changes its source pin. Original functional/qualification identities are
+retained with an explicit reuse basis. Source, failures, commands, retained small
+native artifacts and cleanup are in local `build/runs/criterion-coverage-29/`.
+All original installed, observer/control, host, hardware and full parity gates
+remain unchanged. Source preparation is not release completion.

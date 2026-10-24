@@ -138,3 +138,12 @@ still has 15 proposals/30 pairs/three workflows, null wheels and pending reviews
 A changed runtime source pin and newly generated observations do not relabel an
 old receipt. The alternative toolkit does not repair the MSAA boundary defect
 or upgrade experimental native producer provenance into shipping qualification.
+
+## Criterion map
+
+The [criterion coverage proposal](criterion-coverage.md) preserves all required
+parent scope and maps60criteria/120profile bindings. Eight flush capacity/retry
+bindings remain source-only; script readiness and review gates fail explicitly.
+Run its validator alongside candidate validation. The future exact-artifact
+index must join both declarations and the original evidence, not just a green
+preparation status. No source/scope approval or qualification is added here.

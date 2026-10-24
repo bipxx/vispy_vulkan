@@ -83,6 +83,7 @@ jobs:
         run: |
           "$CI_PYTHON" -B tools/compatibility_inventory.py
           "$CI_PYTHON" -B tools/compatibility_candidate.py
+          "$CI_PYTHON" -B tools/compatibility_coverage.py
           "$CI_PYTHON" -B .github/workflows/qualification_gate.py pytest --output "$EVIDENCE/compatibility-inventory.json" -- -q -p no:cacheprovider tests/contract/test_compatibility_inventory.py tests/contract/test_dawn_submission_contract.py tests/contract/test_dawn_state_query_contract.py tests/no_opengl/test_probe_failures.py --junitxml="$EVIDENCE/compatibility-inventory.xml"
       - name: Verify immutable scientific references and isolated consumer controls without graphics
         run: |

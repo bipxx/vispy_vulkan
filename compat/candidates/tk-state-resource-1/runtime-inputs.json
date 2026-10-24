@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "source_commit": "53194f10e5e4ed096f484985f773b636eb1b5109",
+  "source_commit": "0e7b5b11788e6f6a87e4ef70ac231fa3ac73501f",
   "python": [
     {
       "member": "vispy/__init__.py",
@@ -3946,7 +3946,7 @@
     },
     {
       "path": "CMakeLists.txt",
-      "sha256": "f19a8d357670b5f72854adf5e8784f97fe7ef28f2cb60b179665a77cd68f0dea"
+      "sha256": "c0c7a2953260eb29536dedd81ccf67a7d4a20044c5db84fab1ef7bc08555b220"
     },
     {
       "path": "pyproject.toml",

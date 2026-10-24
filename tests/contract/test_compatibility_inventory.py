@@ -1086,3 +1086,208 @@ def test_composite_scenario_rejects_changed_sibling_bytes(monkeypatch, tmp_path,
         sibling.write_bytes(b"def run(): return {'status': 'PASS'}")
     with pytest.raises(AssertionError, match='changed scenario input'):
         scenario._scenario('child')()
+
+
+# Coverage proposals bind criteria to scenarios; none of these fixtures qualifies a GPU.
+def coverage_case(example):
+    from tools.compatibility_candidate import scope_digest, seal as candidate_seal
+    from tools.compatibility_conservation import criteria, digest, origins, pair
+    from tools.compatibility_coverage import MODES, seal
+    root, candidate = candidate_case(example)
+    fixture_path = root / 'tests/test_workflow.py'
+    fixture_path.write_bytes(fixture_path.read_bytes()
+                             + b'\ndef test_failure(): pass\ndef test_recovery(): pass\n')
+    fixture_hash = hashlib.sha256(fixture_path.read_bytes()).hexdigest()
+    workflow = candidate['workflows'][0]
+    for acceptance in workflow['acceptance']:
+        acceptance['nodeid'] = 'tests/test_workflow.py::test_' + acceptance['kind']
+        acceptance['source']['sha256'] = fixture_hash
+    candidate['proposals'][0]['entry_points'].append('Canvas.close')
+    candidate_seal(candidate)
+    write_json(root, 'candidate/candidate.json', candidate)
+    original = origins(inventory.read_json(root / candidate['ledger']['path']))
+    proposal = candidate['proposals'][0]
+    record = {'schema': 1, 'phase': 'proposal', 'route': 'add-required-scoped-retain-parents',
+              'manifest_sha256': '0' * 64,
+              'candidate': {'path': 'candidate/candidate.json', 'scope_sha256': scope_digest(candidate)},
+              'origin_dispositions': [{'feature': key[0], 'profile': key[1],
+                                       'origin_sha256': digest(origin), 'disposition': 'retained-required',
+                                       'criteria': sorted(criteria(origin)),
+                                       'proposed_subsets': [proposal['id']]}
+                                      for key, origin in original.items()],
+              'criteria': [], 'bindings': []}
+    for mode in MODES:
+        acceptance = next(a for a in workflow['acceptance'] if a['kind'] == mode)
+        criterion = {'id': proposal['id'] + '.' + mode, 'feature': proposal['id'], 'kind': mode,
+                     'operations': proposal['entry_points'].copy(), 'values': 'Synthetic finite values.',
+                     'requirements': proposal['requirements'].copy(), 'expected': 'Synthetic independent oracle.',
+                     'fixture': {k: deepcopy(acceptance[k]) for k in ['nodeid', 'cases', 'source']},
+                     'origin_links': [dict(origin, criterion='ordinary' if mode == 'ordinary' else 'mutation')
+                                      for origin in proposal['origins']], 'new_requirement': False}
+        record['criteria'].append(criterion)
+        record['bindings'].append({'criterion': criterion['id'], 'profile': 'windows-profile',
+                                   'status': 'script-ready', 'workflow': workflow['id'],
+                                   'scenario': {'script': deepcopy(workflow['script']), 'arguments': [],
+                                                'injection': 'Synthetic named injection.'},
+                                   'rationale': 'Synthetic criterion mapping; no GPU observation.'})
+    return root, candidate, seal(record)
+
+
+def test_coverage_proposal_preserves_required_parents_without_qualification(example):
+    from tools.compatibility_coverage import validate_coverage
+    root, candidate, record = coverage_case(example)
+    result = validate_coverage(record, root, require_script_ready=True)
+    assert result['criteria'] == result['profile_bindings'] == result['script_ready_bindings'] == 4
+    assert result['original_required_pairs_retained'] == 1 and result['originals_discharged'] == 0
+    assert not result['reviewed'] and not result['qualified'] and not result['installable']
+    with pytest.raises(inventory.InventoryError, match='scope review remains pending'):
+        validate_coverage(record, root, require_reviewed=True)
+
+
+@pytest.mark.parametrize('fault,reason', [
+    ('parent-drop', 'required original obligation'),
+    ('parent-hash', 'origin identity'),
+    ('parent-criterion', 'original criteria'),
+    ('subset-loss', 'subset reconciliation'),
+    ('mode-drop', 'feature acceptance criterion'),
+    ('mode-duplicate', 'duplicate feature acceptance mode'),
+    ('criterion-identity', 'unstable selected criterion'),
+    ('operation-unknown', 'unselected public operation'),
+    ('operation-omitted', 'public operation omitted'),
+    ('requirement-omitted', 'selected requirement omitted'),
+    ('new-requirement', 'new requirement'),
+    ('origin-link', 'origin link'),
+    ('binding-drop', 'criterion/profile binding'),
+    ('binding-profile', 'criterion/profile binding'),
+    ('workflow-missing', 'missing workflow'),
+    ('script-mismatch', 'scenario identity'),
+    ('argument-boundary', 'literal arguments'),
+    ('wrong-mode-fixture', 'required branch'),
+    ('fixture-source', 'fixture source differs'),
+    ('source-only-scenario', 'source-only criterion'),
+])
+def test_coverage_map_rejects_scope_and_branch_shortcuts(example, fault, reason):
+    from tools.compatibility_coverage import seal, validate_coverage
+    root, candidate, record = coverage_case(example)
+    criterion, binding = record['criteria'][0], record['bindings'][0]
+    if fault == 'parent-drop': record['origin_dispositions'][0]['feature'] = 'missing-parent'
+    elif fault == 'parent-hash': record['origin_dispositions'][0]['origin_sha256'] = 'f' * 64
+    elif fault == 'parent-criterion': record['origin_dispositions'][0]['criteria'].pop()
+    elif fault == 'subset-loss': record['origin_dispositions'][0]['proposed_subsets'].clear()
+    elif fault == 'mode-drop': record['criteria'].pop()
+    elif fault == 'mode-duplicate':
+        twin = deepcopy(criterion)
+        twin['id'] += '.duplicate'
+        record['criteria'].append(twin)
+    elif fault == 'criterion-identity': criterion['id'] += '.renamed'
+    elif fault == 'operation-unknown': criterion['operations'].append('Canvas.unselected')
+    elif fault == 'operation-omitted':
+        for c in record['criteria']: c['operations'].remove('Canvas.close')
+    elif fault == 'requirement-omitted':
+        for c in record['criteria']: c['requirements'] = ['TK-1']
+    elif fault == 'new-requirement': criterion['new_requirement'] = True
+    elif fault == 'origin-link': criterion['origin_links'].clear()
+    elif fault == 'binding-drop': record['bindings'].pop()
+    elif fault == 'binding-profile': binding['profile'] = 'other-profile'
+    elif fault == 'workflow-missing': binding['workflow'] = 'missing-workflow'
+    elif fault == 'script-mismatch': binding['scenario']['script']['sha256'] = 'f' * 64
+    elif fault == 'argument-boundary': binding['scenario']['arguments'] = ['--', '--literal']
+    elif fault == 'wrong-mode-fixture':
+        record['criteria'][2]['fixture'] = deepcopy(criterion['fixture'])
+    elif fault == 'fixture-source': criterion['fixture']['source']['path'] = 'tests/else.py'
+    elif fault == 'source-only-scenario': binding['status'] = 'source-only'
+    seal(record)
+    with pytest.raises(inventory.InventoryError, match=reason):
+        validate_coverage(record, root)
+
+
+def test_source_only_criterion_stays_visible_and_cannot_pass_readiness_gate(example):
+    from tools.compatibility_coverage import seal, validate_coverage
+    root, candidate, record = coverage_case(example)
+    record['bindings'][2].update(status='source-only', workflow=None, scenario=None,
+                                rationale='Failure fixture is not invoked by an observer scenario.')
+    seal(record)
+    result = validate_coverage(record, root)
+    assert result['script_ready_bindings'] == 3
+    assert len(result['unmapped_observation_bindings']) == 1
+    assert not result['qualified']
+    with pytest.raises(inventory.InventoryError, match='lacks executable observer mapping'):
+        validate_coverage(record, root, require_script_ready=True)
+
+
+@pytest.mark.parametrize('changed', ['map', 'candidate'])
+def test_coverage_candidate_inputs_and_map_are_content_bound(example, changed):
+    from tools.compatibility_candidate import seal as candidate_seal
+    from tools.compatibility_coverage import validate_coverage
+    root, candidate, record = coverage_case(example)
+    if changed == 'map':
+        record['criteria'][0]['expected'] = 'Changed assertion.'
+        reason = 'map identity changed'
+    else:
+        candidate['blockers'].append('Changed scoped proposal inputs.')
+        candidate_seal(candidate)
+        write_json(root, 'candidate/candidate.json', candidate)
+        reason = 'candidate scope changed'
+    with pytest.raises(inventory.InventoryError, match=reason):
+        validate_coverage(record, root)
+
+
+def test_scope_review_binds_candidate_and_coverage_without_hash_cycle(example):
+    from tools.compatibility_candidate import scope_digest, seal as candidate_seal
+    from tools.compatibility_coverage import validate_coverage
+    root, candidate, record = coverage_case(example)
+    for kind in ['source', 'scope']:
+        review = {'schema': 1, 'status': 'APPROVED', 'kind': kind, 'independent': True,
+                  'reviewer': 'Synthetic unit reviewer; not an actual approval.',
+                  'candidate_scope_sha256': scope_digest(candidate)}
+        if kind == 'scope': review['coverage_map_sha256'] = record['manifest_sha256']
+        candidate['reviews'][kind] = write_json(root, 'reviews/' + kind + '.json', review)
+    candidate_seal(candidate)
+    write_json(root, 'candidate/candidate.json', candidate)
+    result = validate_coverage(record, root, require_reviewed=True)
+    assert result['reviewed'] and not result['qualified'] and result['originals_discharged'] == 0
+    review['coverage_map_sha256'] = 'f' * 64
+    candidate['reviews']['scope'] = write_json(root, 'reviews/scope.json', review)
+    candidate_seal(candidate)
+    write_json(root, 'candidate/candidate.json', candidate)
+    with pytest.raises(inventory.InventoryError, match='pending or stale'):
+        validate_coverage(record, root, require_reviewed=True)
+
+
+def test_current_coverage_proposal_exposes_unexecuted_flush_branches():
+    from tools.compatibility_coverage import DEFAULT, validate_coverage
+    record = inventory.read_json(DEFAULT)
+    result = validate_coverage(record)
+    assert result['criteria'] == 60 and result['profile_bindings'] == 120
+    assert result['script_ready_bindings'] == 112 and len(result['unmapped_observation_bindings']) == 8
+    assert result['original_required_pairs_retained'] == 142 and result['originals_discharged'] == 0
+    assert not result['reviewed'] and not result['qualified']
+
+
+def test_unseeded_methods_stay_new_requirements_without_inventing_origins(example):
+    from tools.compatibility_candidate import scope_digest, seal as candidate_seal
+    from tools.compatibility_coverage import seal, validate_coverage
+    root, candidate, record = coverage_case(example)
+    candidate['proposals'][0]['origins'] = []
+    candidate_seal(candidate)
+    write_json(root, 'candidate/candidate.json', candidate)
+    record['candidate']['scope_sha256'] = scope_digest(candidate)
+    record['origin_dispositions'][0]['proposed_subsets'] = []
+    for criterion in record['criteria']:
+        criterion.update(origin_links=[], new_requirement=True)
+    seal(record)
+    result = validate_coverage(record, root)
+    assert result['original_required_pairs_retained'] == 1 and result['originals_discharged'] == 0
+    record['criteria'][0]['new_requirement'] = False
+    seal(record)
+    with pytest.raises(inventory.InventoryError, match='new requirement'):
+        validate_coverage(record, root)
+
+
+def test_coverage_rejects_changed_fixture_bytes(example):
+    from tools.compatibility_coverage import validate_coverage
+    root, candidate, record = coverage_case(example)
+    fixture = root / record['criteria'][0]['fixture']['source']['path']
+    fixture.write_bytes(fixture.read_bytes() + b'\n# changed acceptance input\n')
+    with pytest.raises(inventory.InventoryError, match='changed evidence'):
+        validate_coverage(record, root)
