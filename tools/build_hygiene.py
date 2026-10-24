@@ -4,6 +4,7 @@ All commands are read-only unless --register, plan --output, or apply is explici
 expected-peak-bytes means additional worst-case allocation, across the managed
 scratch budget. This tool never adopts or cleans legacy build directories.
 Registry capacity_roots checks explicitly listed backing storage too.
+An existing build/.hygiene/registry.json is loaded when --registry is omitted.
 Concurrent writers are unsupported: child completion and one owner are required.
 """
 from __future__ import annotations
@@ -137,8 +138,10 @@ class Context:
         require(self.policy.get('managed_root', 'build/work') == 'build/work', 'Managed root must be build/work')
         self.limit = integer(self.policy.get('max_scratch_bytes'), 'max_scratch_bytes', 1)
         self.reserve = integer(self.policy.get('min_free_bytes'), 'min_free_bytes')
-        self.registry_path = no_alias(absolute(registry, self.workspace)) if registry else None
-        self.registry = read_json(self.registry_path) if registry else {}
+        default_registry = no_alias(self.build / '.hygiene/registry.json') if not registry else None
+        self.registry_path = (no_alias(absolute(registry, self.workspace)) if registry else
+                              default_registry if default_registry.exists() else None)
+        self.registry = read_json(self.registry_path) if self.registry_path else {}
         self.blocked = self.paths('blocked_roots')
         self.protected = self.paths('protected_roots')
         self.protected += [self.workspace / name for name in (
@@ -161,7 +164,7 @@ class Context:
             return []
         admitted = {p.relative_to(self.build).parts[0] for p in self.legacy
                     if inside(p, self.build) and p != self.build}
-        return sorted(str(p) for p in self.build.iterdir() if p.name != 'work' and p.name not in admitted)
+        return sorted(str(p) for p in self.build.iterdir() if p.name not in ('work', '.hygiene') and p.name not in admitted)
 
     def admitted(self):
         unknown = self.unknown()
@@ -258,10 +261,10 @@ class Context:
     def make_plan(self, manifest_path):
         self.admitted()
         manifest_path = no_alias(absolute(manifest_path, self.workspace))
+        require(not inside(manifest_path, self.work), 'Retention manifest must be outside entire build/work')
         manifest = read_json(manifest_path)
         run_id, owner = manifest.get('run_id'), manifest.get('owner')
         scratch = self.scratch(run_id)
-        require(not inside(manifest_path, scratch), 'Retention manifest must be outside scratch')
         require(absolute(manifest.get('scratch_root'), self.workspace) == scratch,
                 'scratch_root must be exactly build/work/run_id')
         self.marker(scratch, run_id, owner)
@@ -278,7 +281,7 @@ class Context:
         for item in retained:
             require(isinstance(item, dict), 'Each retained item must be an object')
             path = no_alias(absolute(item.get('path'), self.workspace))
-            require(not inside(path, scratch), 'Retained file must be outside scratch')
+            require(not inside(path, self.work), 'Retained file must be outside entire build/work')
             require(path not in seen, 'Duplicate retained path; combine roles in one record')
             seen.add(path)
             require(path.is_file(), 'Retained content must exist: ' + str(path))
@@ -305,10 +308,11 @@ class Context:
         plan = self.make_plan(args.manifest)
         output = absolute(args.output, self.workspace)
         self.clean_target(output)
-        require(not inside(output, Path(plan['scratch_root'])), 'Plan must be outside scratch')
+        require(not inside(output, self.work), 'Plan must be outside entire build/work')
         if 'legacy_roots' in self.registry and inside(output, self.build):
             top = self.build / output.relative_to(self.build).parts[0]
-            require(top != self.work and any(inside(p, top) for p in self.legacy),
+            require(top == self.build / '.hygiene' or
+                    top != self.work and any(inside(p, top) for p in self.legacy),
                     'Plan output would create an unregistered top-level build root')
         require(output.parent.is_dir(), 'Plan output parent must exist')
         with output.open('x', encoding='utf-8') as stream:
@@ -319,11 +323,11 @@ class Context:
 
     def apply(self, args):
         plan_path = no_alias(absolute(args.plan, self.workspace))
+        require(not inside(plan_path, self.work), 'Plan must be outside entire build/work')
         plan = read_json(plan_path)
         require(plan.get('kind') == 'build-hygiene-cleanup-plan', 'Not a cleanup plan')
         require(plan == self.make_plan(plan.get('manifest')), 'Plan, scratch, retained content, policy or registry changed')
         scratch = Path(plan['scratch_root'])
-        require(not inside(plan_path, scratch), 'Plan must be outside scratch')
         deleted = 0
         for file in plan['snapshot']['files']:
             path = no_alias(scratch / file['path'])
