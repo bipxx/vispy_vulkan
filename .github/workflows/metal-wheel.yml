@@ -77,6 +77,7 @@ jobs:
           ninja --version > "$EVIDENCE/ninja-version.txt"
           xcodebuild -version > "$EVIDENCE/xcode-version.txt"
           git rev-parse HEAD > "$EVIDENCE/source-revision.txt"
+          "$BUILD_ENV/bin/python" -B tools/qualification_ci.py --capture --workflow .github/workflows/metal-wheel.yml --job-name "Metal wheel ${{ matrix.arch }} CPython 3.12.8" --output "$EVIDENCE/ci-identity.json"
       - name: Build native Metal renderer wheel
         run: |
           "$BUILD_PYTHON" cmake/verify_dependencies.py

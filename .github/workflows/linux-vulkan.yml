@@ -84,6 +84,7 @@ jobs:
           uv export --locked --no-default-groups --group dev --group build --no-emit-project --output-file "$EVIDENCE/build-requirements.txt" > /dev/null
           uv pip install --python "$BUILD_ENV" --require-hashes --only-binary :all: --requirements "$EVIDENCE/build-requirements.txt"
           git rev-parse HEAD > "$EVIDENCE/source-revision.txt"
+          "$BUILD_ENV/bin/python" -B tools/qualification_ci.py --capture --workflow .github/workflows/linux-vulkan.yml --job-name "software-vulkan" --output "$EVIDENCE/ci-identity.json"
           uv --version > "$EVIDENCE/uv-version.txt"
           uname -a > "$EVIDENCE/kernel.txt"
       - name: Build and audit actual Vulkan renderer wheel

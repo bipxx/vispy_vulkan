@@ -2030,3 +2030,30 @@ Focused controls use synthetic graphs and resealed real declarations without
 launching native code. No wheel, SDK, environment, source snapshot or managed
 scratch is created by this source packet; no build assets need cleanup. Original
 142 parents, full inventory, mandatory hosts and hardware gates remain unchanged.
+
+## Required-CI source checkpoint (H4c, EV-2, ART-1/2)
+
+`tools/qualification_ci.py`, its closed versioned schema and authoritative
+`compat/qualification-ci.json` now validate the project's full 23-job CI policy.
+All three workflows retain exact job checkout identities, including source head,
+actual tested commit, raw commit parents (also for shallow checkouts), workflow
+bytes, collector bytes, repository, run ID and attempt. This distinguishes a PR
+source head from its tested merge head. Existing evidence uploads retain the
+identity reports; no successful check name substitutes for those reports.
+
+The read-only CI join consumes hash-checked original API run-history, per-attempt
+run and complete job exports plus original checkout reports. It requires all
+visible runs/attempts for the frozen head, chooses the newest run/attempt per
+required workflow and requires its entire successful matrix without mixing jobs
+from other attempts. Omitted newer failures/reruns, pending/skipped/cancelled jobs,
+partial pagination, reduced policies and wrong checkout/head/workflow identities
+reject. Older failures remain inputs; CI success alone cannot resolve a product
+failure or provide artifact admission. Complete attempt discovery and original
+API exports remain external collected inputs subject to promotion review.
+
+CPU controls use explicitly synthetic API/report data and isolated output-stream
+capture; these are not real CI receipts or approvals. No wheel, SDK, installed
+check, environment or managed scratch is created. Product source, all original
+142 parents and required host/platform obligations remain unchanged. H4's exact
+artifact/provenance/retention joins and promotion basis/envelope are still pending,
+as are actual implementation/scope review, installed evidence and H5 promotion.
