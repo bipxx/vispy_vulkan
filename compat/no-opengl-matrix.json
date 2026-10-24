@@ -92,9 +92,9 @@
       "application": "qwidget",
       "binding": "pyqt5",
       "mandatory": true,
-      "status": "PENDING",
-      "artifact_sha256": null,
-      "environment_id": null,
+      "status": "QUALIFIED",
+      "artifact_sha256": "62df5e4c31bf9a1bb1bea47fd68d50e4198d6ec13d2551c991da1e7f30a2b38f",
+      "environment_id": "ad6f64c7dd98eaec085d8cdf4483434c1a66115592085d678df7d76d2e14d1ea",
       "features": [
         "launch",
         "initial-render",
@@ -105,11 +105,38 @@
         "close"
       ],
       "gates": {
-        "no_gl_execution": "UNVERIFIED",
-        "no_gl_loads": "UNVERIFIED",
-        "no_gl_install_link_requirement": "UNVERIFIED"
+        "no_gl_execution": "PASS",
+        "no_gl_loads": "PASS",
+        "no_gl_install_link_requirement": "PASS"
       },
-      "evidence": []
+      "evidence": [
+        {
+          "workspace": "vispy_vulkan-opengl-python",
+          "path": "build/no-opengl-windows-finalrenderer1/summary1.json",
+          "sha256": "44eb93c486d03407e3e01db9795339defc86e4c6276e7dc5d5311bb0c8f9df8c"
+        },
+        {
+          "workspace": "vispy_vulkan-opengl-python",
+          "path": "build/no-opengl-windows-finalrenderer1/pyqt5/qwidget-qualified2.json",
+          "sha256": "67eb3bfc25852cbd1785dfd89853c084a87dd8875f08f0421f6433df3eea21c0"
+        },
+        {
+          "workspace": "vispy_vulkan-opengl-python",
+          "path": "build/no-opengl-windows-finalrenderer1/pyqt5/qwidget-qualified2.worker.json",
+          "sha256": "d1e56ad773c5fc4b43e7bfdde4a045d4a4f6082f3b89948f624424f8b6d0b3ce"
+        },
+        {
+          "workspace": "vispy_vulkan-opengl-python",
+          "path": "build/no-opengl-windows-finalrenderer1/pyqt5/receipt1.json",
+          "sha256": "56a238bd669c74ca714fe9719a68f7606aab098d19bfb3b00464bbf3cac2056e"
+        },
+        {
+          "workspace": "vispy_vulkan-opengl-python",
+          "path": "build/no-opengl-windows-finalrenderer1/pyqt5/qwidget-qualified2-functional/functional.json",
+          "sha256": "bb95548de65942cda2670704d5d4b19c473d7dcf1c5de0d2737dac93f8b52432"
+        }
+      ],
+      "qualification_scope": "Selected pyqt5 profile; exact installed536memberartifact and pinned host bytes; complete observed fixture lifecycle/interaction/capture/recovery/close; global ninezero shutdown; scoped to this same-artifact environment"
     },
     {
       "id": "windows-vulkan-qwidget-pyqt6",
@@ -117,9 +144,9 @@
       "application": "qwidget",
       "binding": "pyqt6",
       "mandatory": true,
-      "status": "PENDING",
-      "artifact_sha256": null,
-      "environment_id": null,
+      "status": "QUALIFIED",
+      "artifact_sha256": "62df5e4c31bf9a1bb1bea47fd68d50e4198d6ec13d2551c991da1e7f30a2b38f",
+      "environment_id": "405ab8e5a25f63e8edf1a1f9dcb16563b576d5c105c657a76d8f4ccd14c3015a",
       "features": [
         "launch",
         "initial-render",
@@ -130,11 +157,38 @@
         "close"
       ],
       "gates": {
-        "no_gl_execution": "UNVERIFIED",
-        "no_gl_loads": "UNVERIFIED",
-        "no_gl_install_link_requirement": "UNVERIFIED"
+        "no_gl_execution": "PASS",
+        "no_gl_loads": "PASS",
+        "no_gl_install_link_requirement": "PASS"
       },
-      "evidence": []
+      "evidence": [
+        {
+          "workspace": "vispy_vulkan-opengl-python",
+          "path": "build/no-opengl-windows-finalrenderer1/summary1.json",
+          "sha256": "44eb93c486d03407e3e01db9795339defc86e4c6276e7dc5d5311bb0c8f9df8c"
+        },
+        {
+          "workspace": "vispy_vulkan-opengl-python",
+          "path": "build/no-opengl-windows-finalrenderer1/pyqt6-hosts/qwidget-qualified2.json",
+          "sha256": "35a5f7ce69a21f4ed073286139d54a5d2321255176ce3920aac3a9da0cd35455"
+        },
+        {
+          "workspace": "vispy_vulkan-opengl-python",
+          "path": "build/no-opengl-windows-finalrenderer1/pyqt6-hosts/qwidget-qualified2.worker.json",
+          "sha256": "c1caab5cd30e3d6bde593656ae651ec075211ee298793d99469cb693a9b8f8ca"
+        },
+        {
+          "workspace": "vispy_vulkan-opengl-python",
+          "path": "build/no-opengl-windows-finalrenderer1/pyqt6-hosts/receipt1.json",
+          "sha256": "f7ee81270787296f13ceee6405169ff4cff619b8bb3633e7346bd368af4d53e3"
+        },
+        {
+          "workspace": "vispy_vulkan-opengl-python",
+          "path": "build/no-opengl-windows-finalrenderer1/pyqt6-hosts/qwidget-qualified2-functional/functional.json",
+          "sha256": "310c25631e0783a9a41c6afa28b4f0b1bb96d2061b355ca60c9aeec786b9185f"
+        }
+      ],
+      "qualification_scope": "Selected pyqt6 profile; exact installed536memberartifact and pinned host bytes; complete observed fixture lifecycle/interaction/capture/recovery/close; global ninezero shutdown; scoped to this same-artifact environment"
     },
     {
       "id": "windows-vulkan-qwidget-pyside6",
@@ -142,9 +196,9 @@
       "application": "qwidget",
       "binding": "pyside6",
       "mandatory": true,
-      "status": "PENDING",
-      "artifact_sha256": null,
-      "environment_id": null,
+      "status": "QUALIFIED",
+      "artifact_sha256": "62df5e4c31bf9a1bb1bea47fd68d50e4198d6ec13d2551c991da1e7f30a2b38f",
+      "environment_id": "96b8042b9f314c67cdec4e2ed885063f07e1ffff9556d94c82c77318ef1a06d1",
       "features": [
         "launch",
         "initial-render",
@@ -155,11 +209,38 @@
         "close"
       ],
       "gates": {
-        "no_gl_execution": "UNVERIFIED",
-        "no_gl_loads": "UNVERIFIED",
-        "no_gl_install_link_requirement": "UNVERIFIED"
+        "no_gl_execution": "PASS",
+        "no_gl_loads": "PASS",
+        "no_gl_install_link_requirement": "PASS"
       },
-      "evidence": []
+      "evidence": [
+        {
+          "workspace": "vispy_vulkan-opengl-python",
+          "path": "build/no-opengl-windows-finalrenderer1/summary1.json",
+          "sha256": "44eb93c486d03407e3e01db9795339defc86e4c6276e7dc5d5311bb0c8f9df8c"
+        },
+        {
+          "workspace": "vispy_vulkan-opengl-python",
+          "path": "build/no-opengl-windows-finalrenderer1/pyside6/qwidget-qualified2.json",
+          "sha256": "7a916b4c9c75d00be99e1bcf0380650f63355438f1487c3f975a488f4015fd49"
+        },
+        {
+          "workspace": "vispy_vulkan-opengl-python",
+          "path": "build/no-opengl-windows-finalrenderer1/pyside6/qwidget-qualified2.worker.json",
+          "sha256": "bffa41bea0620bc3e551f59c031b3bac376495f85fe342c91e8ba3cb410476a3"
+        },
+        {
+          "workspace": "vispy_vulkan-opengl-python",
+          "path": "build/no-opengl-windows-finalrenderer1/pyside6/receipt1.json",
+          "sha256": "5741b6387e28528446ab30d53fc135e406ceddf87b256d54898ad702cfc0700b"
+        },
+        {
+          "workspace": "vispy_vulkan-opengl-python",
+          "path": "build/no-opengl-windows-finalrenderer1/pyside6/qwidget-qualified2-functional/functional.json",
+          "sha256": "853db6b53e7739813222b4532bda4488650787a7b206d15cf5f8e95d2d24300b"
+        }
+      ],
+      "qualification_scope": "Selected pyside6 profile; exact installed536memberartifact and pinned host bytes; complete observed fixture lifecycle/interaction/capture/recovery/close; global ninezero shutdown; scoped to this same-artifact environment"
     },
     {
       "id": "windows-vulkan-napari-pyqt6",
@@ -167,9 +248,9 @@
       "application": "napari",
       "binding": "pyqt6",
       "mandatory": true,
-      "status": "PENDING",
-      "artifact_sha256": null,
-      "environment_id": null,
+      "status": "QUALIFIED",
+      "artifact_sha256": "62df5e4c31bf9a1bb1bea47fd68d50e4198d6ec13d2551c991da1e7f30a2b38f",
+      "environment_id": "405ab8e5a25f63e8edf1a1f9dcb16563b576d5c105c657a76d8f4ccd14c3015a",
       "features": [
         "launch",
         "initial-render",
@@ -180,11 +261,38 @@
         "close"
       ],
       "gates": {
-        "no_gl_execution": "UNVERIFIED",
-        "no_gl_loads": "UNVERIFIED",
-        "no_gl_install_link_requirement": "UNVERIFIED"
+        "no_gl_execution": "PASS",
+        "no_gl_loads": "PASS",
+        "no_gl_install_link_requirement": "PASS"
       },
-      "evidence": []
+      "evidence": [
+        {
+          "workspace": "vispy_vulkan-opengl-python",
+          "path": "build/no-opengl-windows-finalrenderer1/summary1.json",
+          "sha256": "44eb93c486d03407e3e01db9795339defc86e4c6276e7dc5d5311bb0c8f9df8c"
+        },
+        {
+          "workspace": "vispy_vulkan-opengl-python",
+          "path": "build/no-opengl-windows-finalrenderer1/pyqt6-hosts/napari-qualified2.json",
+          "sha256": "221b454fc1b1a74c2c5ede33cb0f39a167d0e4a7110d803e8ddb77d125943fac"
+        },
+        {
+          "workspace": "vispy_vulkan-opengl-python",
+          "path": "build/no-opengl-windows-finalrenderer1/pyqt6-hosts/napari-qualified2.worker.json",
+          "sha256": "cc0dd5fa260989625739fae37ff8890cc1f7d60ab3a0865c86ae161eb3d4f5aa"
+        },
+        {
+          "workspace": "vispy_vulkan-opengl-python",
+          "path": "build/no-opengl-windows-finalrenderer1/pyqt6-hosts/receipt1.json",
+          "sha256": "f7ee81270787296f13ceee6405169ff4cff619b8bb3633e7346bd368af4d53e3"
+        },
+        {
+          "workspace": "vispy_vulkan-opengl-python",
+          "path": "build/no-opengl-windows-finalrenderer1/pyqt6-hosts/napari-qualified2-functional/functional.json",
+          "sha256": "748234214c9575fcca0498b0f1af373e6ede4f531f253988b20f345ceae0ddf5"
+        }
+      ],
+      "qualification_scope": "Selected pyqt6 profile; exact installed536memberartifact and pinned host bytes; complete observed fixture lifecycle/interaction/capture/recovery/close; global ninezero shutdown; scoped to this same-artifact environment"
     },
     {
       "id": "windows-vulkan-glue-vispy-viewers-pyqt6",
@@ -192,9 +300,9 @@
       "application": "glue-vispy-viewers",
       "binding": "pyqt6",
       "mandatory": true,
-      "status": "PENDING",
-      "artifact_sha256": null,
-      "environment_id": null,
+      "status": "QUALIFIED",
+      "artifact_sha256": "62df5e4c31bf9a1bb1bea47fd68d50e4198d6ec13d2551c991da1e7f30a2b38f",
+      "environment_id": "8c73fcfde8c30508e0acddf6b8c65ab281546a28decfa2cb9c9201ef270b9c97",
       "features": [
         "launch",
         "initial-render",
@@ -205,11 +313,38 @@
         "close"
       ],
       "gates": {
-        "no_gl_execution": "UNVERIFIED",
-        "no_gl_loads": "UNVERIFIED",
-        "no_gl_install_link_requirement": "UNVERIFIED"
+        "no_gl_execution": "PASS",
+        "no_gl_loads": "PASS",
+        "no_gl_install_link_requirement": "PASS"
       },
-      "evidence": []
+      "evidence": [
+        {
+          "workspace": "vispy_vulkan-opengl-python",
+          "path": "build/no-opengl-windows-finalrenderer1/summary1.json",
+          "sha256": "44eb93c486d03407e3e01db9795339defc86e4c6276e7dc5d5311bb0c8f9df8c"
+        },
+        {
+          "workspace": "vispy_vulkan-opengl-python",
+          "path": "build/no-opengl-windows-finalrenderer1/pyqt6-glue/glue-qualified2.json",
+          "sha256": "c9ebd4d81334b13e4e159d50a023582547780d6b5ea1d6846cffb542c7ed3f08"
+        },
+        {
+          "workspace": "vispy_vulkan-opengl-python",
+          "path": "build/no-opengl-windows-finalrenderer1/pyqt6-glue/glue-qualified2.worker.json",
+          "sha256": "1eee664b2117c510dd45005d5c41058fba82a1e2facb6d6f37c8ac7a55e16b9b"
+        },
+        {
+          "workspace": "vispy_vulkan-opengl-python",
+          "path": "build/no-opengl-windows-finalrenderer1/pyqt6-glue/receipt1.json",
+          "sha256": "1e96751f1f19cc890e3117f20bc2d69c955b365b1b986e471352a3bcd85ef317"
+        },
+        {
+          "workspace": "vispy_vulkan-opengl-python",
+          "path": "build/no-opengl-windows-finalrenderer1/pyqt6-glue/glue-qualified2-functional/functional.json",
+          "sha256": "0c843511889d85d08e6f747d78ba4ba12eca4a56cf2edb7b9fef0e6b94999fe5"
+        }
+      ],
+      "qualification_scope": "Selected pyqt6 profile; exact installed536memberartifact and pinned host bytes; complete observed fixture lifecycle/interaction/capture/recovery/close; global ninezero shutdown; scoped to this same-artifact environment"
     },
     {
       "id": "windows-vulkan-napari-threedee-pyqt6",
@@ -234,7 +369,36 @@
         "no_gl_loads": "UNVERIFIED",
         "no_gl_install_link_requirement": "UNVERIFIED"
       },
-      "evidence": []
+      "evidence": [],
+      "latest_attempt": {
+        "status": "FAILED_TIMEOUT_PRESERVED",
+        "artifact_sha256": "62df5e4c31bf9a1bb1bea47fd68d50e4198d6ec13d2551c991da1e7f30a2b38f",
+        "functional_status": "running",
+        "gates": {
+          "no_gl_execution": "UNVERIFIED",
+          "no_gl_loads": "UNVERIFIED",
+          "no_gl_install_link_requirement": "UNVERIFIED"
+        },
+        "observer_pending_steps": {},
+        "observed_stall": "Viewer.show QWidget/QWindow creation through OLE RegisterDragDrop/RPC; distinct from proven resolver race; no generic retry or behavior workaround",
+        "evidence": [
+          {
+            "workspace": "vispy_vulkan-opengl-python",
+            "path": "build/no-opengl-windows-finalrenderer1/pyqt6-hosts/threedee-qualified2.json",
+            "sha256": "464034445ae4774885fb258da4466b8a83721e1da087fa15c2ec1c0380732dd1"
+          },
+          {
+            "workspace": "vispy_vulkan-opengl-python",
+            "path": "build/no-opengl-windows-finalrenderer1/pyqt6-hosts/threedee-qualified2-stall-stack.log",
+            "sha256": "a5520506ee57e8954c56bd09d2a704c17f751ffc214659e82e65ee8d7049e4b1"
+          },
+          {
+            "workspace": "vispy_vulkan-opengl-python",
+            "path": "build/no-opengl-windows-finalrenderer1/pyqt6-hosts/threedee-qualified2-functional/functional.json",
+            "sha256": "cd5a3d70d54143e2fb42657edbcfbc92dc340285603f4ab64f1eebc4a023f7c9"
+          }
+        ]
+      }
     },
     {
       "id": "wsl-linux-lavapipe-x11-headless",

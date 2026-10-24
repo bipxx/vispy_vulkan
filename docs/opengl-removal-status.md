@@ -125,11 +125,34 @@ Recorded installed-artifact results are scoped to the exact tested bytes:
   includes the target-reset fix from source `7734055f8`, source tree
   `e536b975...`. All 95 installed GPU cases pass, with unchanged test-source
   hashes and nine-zero global shutdown. Evidence is
-  `build/opengl-removal-n345c-stable-consumer-root-1/result1.json`. Same-artifact
-  binding/host/native observer and inventory replays remain required; earlier
-  `20c443...` receipts are not transferred to it. A separate fresh full-source
-  Linux build from `c781deb92` has the identical 623 shipping input pins and is
-  in progress under `build/opengl-removal-n345c-linux-wheel-root-1`.
+  `build/opengl-removal-n345c-stable-consumer-root-1/result1.json`. Subsequent
+  same-artifact qualification results are recorded below; earlier `20c443...`
+  receipts are not transferred to it. The separate fresh full-source Linux
+  build from `c781deb92` completed with identical 623 shipping input pins under
+  `build/opengl-removal-n345c-linux-wheel-root-1`.
+
+The latest same-artifact matrix now qualifies both headless rows. Windows
+`62df5e4c...` and WSL Linux
+`374a74ea9787ccccc643e0ac7e45d9f704a41d046465828736158ac94398c4a3`
+each pass all three gates for the same-process 95-case GPU suite, rendering and
+compiled text, 4096-marker point/instanced paths, and 36 authored categorical,
+scalar-volume and color-volume cases. Exact installed 536-member bytes and all
+nine shutdown gauges are verified. The Linux receipt is
+`build/opengl-removal-n345c-linux-wheel-root-1/qualification1/observer1/result1.json`;
+its software-only scope remains explicit. Matrix rows retain receipt hashes and
+environment identities rather than transferring earlier artifacts' results.
+
+Five final Windows GUI/host rows also pass all three gates on `62df5e4c...`:
+selected PyQt5/PyQt6/PySide6 QWidget, napari and Glue. Their complete lifecycle,
+interaction, capture, recovery, close and nine-zero shutdown evidence is in the
+Python worktree's `build/no-opengl-windows-finalrenderer1/summary1.json` and the
+matrix's individual evidence references. Final Windows napari-threedee remains
+mandatory and unqualified: its run timed out while creating the viewer window
+through OLE/RegisterDragDrop/RPC, with no pending resolver step. This differs
+from the independently proved and corrected resolver ownership race. The failed
+attempt, stack and incomplete functional report remain attached as
+`latest_attempt`; neither another host's receipt nor a historical threedee pass
+qualifies this row. No generic retry or COM behavior workaround is claimed.
 
 The 2026-10-23 Linux continuation encountered a WSL filesystem failure. The
 resumed Qt 6.12 build reached 1480/1636 actions before
@@ -148,9 +171,10 @@ temporary helper after verifying its exact registration path. The receipt is
 `build/opengl-removal-wsl-recovery-root-1/result1.json` in the canonical workspace.
 A full backup could not fit in the available space; this is recorded in that
 receipt. After source/archive verification, Qt 6.12 runtime and SVG builds
-completed successfully. Selected PySide6/Shiboken source compilation is running;
-module smoke, relocation, closure and normative packaging remain pending. Qt5
-is a separate subsequent build. Historical Linux proofs above remain scoped to their earlier exact
+completed successfully. Selected PySide6/Shiboken source compilation, module
+smoke, relocation and the 50-ELF closure are complete; normative wheel packaging
+and actual installed VisPy qualification remain pending. Qt5 is a separate
+subsequent build. Historical Linux proofs above remain scoped to their earlier exact
 artifacts; recovery itself earns no new package or runtime qualification.
 
 The Windows N3/N4/N5 SDK-backed attempt from source `99d110b6b` and frozen source
@@ -171,9 +195,9 @@ passes the expanded 95-case suite after its fix. Current Windows CPU checks pass
 package/source-contract tests. Those checks do not replace the pending native
 build, installed GPU runs or three-gate receipts for the changed artifact.
 
-Remaining work includes final changed-native-artifact GPU/functional/native
-replays, all mandatory feature cases, current-artifact Windows binding/host
-receipts, Linux Qt5/PyQt5 and Qt6.12/PySide6 source packaging and actual runtime
+Remaining work includes the final Windows napari-threedee timeout, Linux
+current-artifact GUI/host receipts, Linux Qt5/PyQt5 and Qt6.12/PySide6 source
+packaging and actual runtime
 qualification, and the remaining required host/platform matrix. The initial
 PyQt6 host results above are real rendering admission for those exact artifacts;
 the complete release matrix remains incomplete. DIVE and visbrain remain
