@@ -62,10 +62,10 @@
   "native_inputs_sha256": "6035565341a645c521b243651819a367838fbfd187052d6ac6b8563a5ad82448",
   "loaded_library_identities": {},
   "source_observation": {
-    "location": "build/runs/linux-toolkit-profile-28/windows-profile-verified-result.json",
-    "sha256": "c468f86630e8911776561b03fadb8496363adf8d330f2719cca7d2373b17d82d",
-    "functional_report_sha256": "3c51297e688ad5ef11cb3723714f5a5135b1fce40005b4a87fb9acc87afaa79f",
-    "cases": 69,
+    "location": "build/runs/observed-submission-30/windows-verified-result.json",
+    "sha256": "7f187db14762b78b8df32e7815e82d4702a092889bda9c2d8dfd60e9e1c33764",
+    "functional_report_sha256": "03068e7edccdf2b896766512a2b037728525147ebcd4584f4eed3f63d607f2a9",
+    "cases": 18,
     "shutdown_gauges": {
       "pending_tickets": 0,
       "queued_frames": 0,
@@ -77,9 +77,8 @@
       "line_resource_pool_busy_slots": 0,
       "line_resource_pool_bytes": 0
     },
-    "scope": "Focused affected source acceptance; original broad/failing reports retained separately; not installed qualification.",
-    "observed_runtime_source_commit": "53194f10e5e4ed096f484985f773b636eb1b5109",
-    "reuse_basis": "Production Python/native source bytes match the observed53194f10 tree. Only2CPU-contract include lists changed in CMakeLists; original report bytes, artifact/provenance and observed identity remain unchanged."
+    "scope": "Focused composite submission/failure/recovery source acceptance. Historical broader observations retained separately; not installed or observer qualification.",
+    "observed_runtime_source_commit": "0e7b5b11788e6f6a87e4ef70ac231fa3ac73501f"
   },
   "limitations": [
     "Development observation only; no wheel or installed/observer admission.",
@@ -123,5 +122,27 @@
         "line_resource_pool_bytes": 0
       }
     }
-  }
+  },
+  "historical_source_observations": [
+    {
+      "location": "build/runs/linux-toolkit-profile-28/windows-profile-verified-result.json",
+      "sha256": "c468f86630e8911776561b03fadb8496363adf8d330f2719cca7d2373b17d82d",
+      "functional_report_sha256": "3c51297e688ad5ef11cb3723714f5a5135b1fce40005b4a87fb9acc87afaa79f",
+      "cases": 69,
+      "shutdown_gauges": {
+        "pending_tickets": 0,
+        "queued_frames": 0,
+        "live_buffer_bytes": 0,
+        "live_cpu_buffer_bytes": 0,
+        "live_texture_bytes": 0,
+        "canvas_texture_bytes": 0,
+        "transient_buffer_bytes": 0,
+        "line_resource_pool_busy_slots": 0,
+        "line_resource_pool_bytes": 0
+      },
+      "scope": "Focused affected source acceptance; original broad/failing reports retained separately; not installed qualification.",
+      "observed_runtime_source_commit": "53194f10e5e4ed096f484985f773b636eb1b5109",
+      "reuse_basis": "Production Python/native source bytes match the observed53194f10 tree. Only2CPU-contract include lists changed in CMakeLists; original report bytes, artifact/provenance and observed identity remain unchanged."
+    }
+  ]
 }

@@ -1254,12 +1254,12 @@ def test_scope_review_binds_candidate_and_coverage_without_hash_cycle(example):
         validate_coverage(record, root, require_reviewed=True)
 
 
-def test_current_coverage_proposal_exposes_unexecuted_flush_branches():
+def test_current_coverage_proposal_maps_all_composite_branches_without_qualification():
     from tools.compatibility_coverage import DEFAULT, validate_coverage
     record = inventory.read_json(DEFAULT)
-    result = validate_coverage(record)
+    result = validate_coverage(record, require_script_ready=True)
     assert result['criteria'] == 60 and result['profile_bindings'] == 120
-    assert result['script_ready_bindings'] == 112 and len(result['unmapped_observation_bindings']) == 8
+    assert result['script_ready_bindings'] == 120 and not result['unmapped_observation_bindings']
     assert result['original_required_pairs_retained'] == 142 and result['originals_discharged'] == 0
     assert not result['reviewed'] and not result['qualified']
 

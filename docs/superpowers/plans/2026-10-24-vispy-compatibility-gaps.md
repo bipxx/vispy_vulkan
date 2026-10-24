@@ -37,6 +37,14 @@ qualify source, artifacts or hardware.
 
 ## Current execution queue after source checkpoints
 
+The [executable-handoff Astra max review](../reviews/2026-10-24-astra-executable-handoff-review.md)
+and [specification section 15](../specs/2026-10-24-vispy-compatibility-gap-closure.md#15-executable-handoff-from-proposals-to-scoped-qualification)
+refine the current queue. Complete the open source packet before freezing review
+inputs. Materialize selected rows in a separately derived execution ledger;
+keep the preparation's baseline unchanged. Add worker-bound branch results and
+define an immutable qualification subject with detached review/CI references.
+These are pending implementation contracts, not new approvals or qualified rows.
+
 This section governs remaining execution. The packet tables and numbered repair
 lists below retain their design/history; a later source checkpoint supersedes
 an earlier instruction to implement the same packet. Source completion does not
@@ -46,10 +54,32 @@ mean independently reviewed or installed-qualified completion.
 | --- | --- | --- |
 | 1 — I2 / coordinator + proof | The development manifest now contains 15 proposals, 30 Windows/WSL pairs and three executable workflows. Review its exact scope and reconcile methods/examples/events/wrappers into proposed conservation mappings, retaining residual required criteria. | Preparation validation passes without claiming qualification; independent scope review covers every proposed origin/successor criterion. Untouched and residual seed obligations remain blocking full closure; selected scoped work need not wait for all 142 mappings. |
 | 2 — implementation review / coordinator | Freeze and review the cumulative Q1/B4/L1, conservation/candidate tooling, shared-progress/shutdown and resource-workflow source/fixture changes, including their auditor bindings. Map unresolved findings to affected pairs. | Independent source/fixture review passes for the selected candidate. This Astra plan review does not satisfy that gate. Do not rebuild those packets merely to repeat their pass counts. |
-| 3 — bounded correctness / Python + native | Diagnose Linux toolkit capture and MSAA scissor separately; retain the required Windows threedee diagnostic packet. Select each remaining legal-state, input/DPI or lifecycle gap from concrete candidate dependencies. | Each required failure has causal evidence and a distinguishing regression, or remains a visible blocker. Hardware absence cannot excuse independent software failures. |
+| 3 — bounded correctness / Python + native | Keep the original Tk8.6 profile blocked; verify the selected Tk9 profile independently and diagnose MSAA scissor separately. Retain the required Windows threedee diagnostic packet. Select each remaining legal-state, input/DPI or lifecycle gap from concrete candidate dependencies. | Each required failure has causal evidence and a distinguishing regression, or remains a visible blocker. Hardware absence cannot excuse independent software failures. |
 | 4 — G2 / proof | Freeze the reviewed source, reuse matching artifacts or build each changed native leaf once, then audit exact installed workflows and all absence gates/controls. | Exact-member/closure audits, functional/shutdown receipts, current-head required CI and independent final promotion-evidence review pass for the same artifacts and profiles. Original mandatory host gates remain required. |
 | 5 — G4/G5/G6 and full G0 / assigned owner | Extend one named shader/backend/host subset at a time; reconcile the remaining methods, examples, events and visual families. | Reviewed finite full inventory and every applicable required pair qualified before full compatibility/complete-removal claims. No completion percentage from the seed count. |
 | 6 — G7 / proof | Measure fixed performance workloads after their correctness gates. Native Linux GPU and Metal retain separate hardware requirements. | WSL software is labelled separately; Metal stays experimental without a Mac. Optical/scanout instrumentation remains deferred. |
+
+### Concrete next packets after this review
+
+This table refines the queue above and supersedes stale pending wording in its
+historical checkpoints. Roles preserve existing ownership; the table does not
+authorize spawning implementation agents.
+
+| Packet / role | Owned output and prerequisites | Required exit and stop condition |
+| --- | --- | --- |
+| H0 — workflow owner | Finish `observed-submission-30` using the existing source script/test files and retained native leaves. Both selected profiles now pass 18 source cases and direct entry points; all120bindings are script-ready. See the source checkpoint below and require the retained terminal cleanup receipt before handoff. | Verify both route/delay pairs on each selected development profile, strict counters/errors/recovery/host ownership and nine shutdown zeros. Retain the first failed controls. Update actual fixture/script hashes and the eight source-only bindings only after their branch checks pass, then retain/apply/verify terminal cleanup. No wheel/SDK build. |
+| H1 — inventory/coordinator | Freeze preparation/coverage and the cumulative source-review record. Design the mapping declaration and separate derived execution ledger against that frozen baseline; do not edit the baseline in place to add proposal IDs. | Reviewed selected operation/value/criterion map, exact proposal-to-row links and transitive same-profile dependencies. Negative controls reject changed/lost parents, duplicate/omitted mappings, optionalized dependencies and invented origins. All 142 original obligations persist; global closure stays incomplete. |
+| H2 — independent implementation reviewer | Review cumulative runtime, fixtures, observers and inventory/preparation/coverage tools from the last independently reviewed base, including H0 and retained failures. Review H1 scope separately using the existing source/scope review kinds. | Exact input hashes, findings/dispositions and affected pairs. Relevant later edits renew affected reviews. This Astra plan review supplies neither approval. If a reviewer is unavailable, retain the review blocker and continue independent source-only work. |
+| H3 — observer/proof owner | Specify and implement the closed branch-result transport in the existing script/worker/controller/normalizer chain. Use the exact four submission variants, two progress orders and resource failure/recovery contract in section 15. | Same-child result/hash/exit/wait bindings and semantic negative controls pass, including duplicate/missing/wrong branches, source/unrelated result substitution, missing output and wrong recovery/cleanup. Existing three absence gates and independent controls remain intact; changed observer code needs renewed source review. |
+| H4 — artifact/proof owner | Define the closed qualification index and read-only validator, immutable subject and detached review/CI envelope. Freeze a requested admission set and establish profile/blocker/producer applicability before packaging. H1/H2/H3 reviews and affected correctness are prerequisites for real qualification. | Synthetic complete join plus stale/missing/wrong-input controls pass. Reuse matching admitted native artifacts or build changed leaves once. Actual scoped admission requires exact wheel/member/closure, branch/functional/absence/control/shutdown receipts and required CI for the declared head. Experimental Linux producer provenance stops Linux admission; Windows can proceed independently. |
+| H5 — independent promotion reviewer/coordinator | Review the immutable real subject and every requested pair/dependency, required head CI and actual retention/cleanup. | Report explicit requested/proved/blocked/missing sets. Strict admission fails if any requested criterion fails; do not filter failed profiles afterward. Keep draft/merge and mandatory complete-removal gates in force. Scoped admission never asserts total candidate or full VisPy closure. |
+
+H1/H3/H4 schema and source-only design work may proceed while reviews are pending;
+real qualification cannot advance past affected prerequisites. Do not make
+hardware availability or all-parent reconciliation a prerequisite for unrelated
+bounded source work. Keep the independent Linux scissor and Windows threedee
+diagnostics, remaining legal state/shaders/backends/hosts and full G0 reconciliation
+as required work, rather than replacing them with this selected handoff.
 
 The [Astra review and disposition](../reviews/2026-10-24-astra-candidate-conservation-review.md)
 and [specification section 13](../specs/2026-10-24-vispy-compatibility-gap-closure.md#13-current-candidate-and-obligation-conservation-contracts)
@@ -810,3 +840,25 @@ retained with an explicit reuse basis. Source, failures, commands, retained smal
 native artifacts and cleanup are in local `build/runs/criterion-coverage-29/`.
 All original installed, observer/control, host, hardware and full parity gates
 remain unchanged. Source preparation is not release completion.
+
+## Observed submission branches source checkpoint (P3, STATE-2/4)
+
+The four actual raw/gloo immediate/delayed capacity/retry branches now pass in the
+composite on both selected development profiles. Eighteen affected native cases
+and the actual direct entry point pass per profile, each with nine zero shutdown
+gauges. Missing/wrong errors and missing retries are rejected; first failed raw
+negative controls and the corrected post-setup injection ordering remain retained.
+
+The four selected failure/recovery criteria and eight bindings now reference the
+real composite fixture. All120bindings are script-ready, not installed observed
+or qualified. The production CPU contract checks strict readiness while retaining
+142 original obligations, zero discharge and pending review. No runtime source,
+native artifact, environment or SDK changes. Existing historical observations
+remain attached to their original inputs; current focused source profiles carry
+18cases rather than relabelling the previous69/68results.
+
+Retain and verify `build/runs/observed-submission-30/` terminal cleanup before H1
+handoff. Next freeze the reviewed baseline and design the separately derived
+execution ledger/mapping, while H2 source/scope approval and H3 worker-bound
+results remain required before real P4 qualification. The original scissor,
+threedee, legal-state/shader/backend/host and full inventory gaps remain open.

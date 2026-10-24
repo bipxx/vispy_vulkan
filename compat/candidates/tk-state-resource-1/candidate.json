@@ -2,7 +2,7 @@
   "schema": 1,
   "phase": "development",
   "id": "tk-state-resource-1",
-  "manifest_sha256": "d1a052e41064eda10bfa2a09322ac5c08067a8f6cfe51295d228debd6ada54b8",
+  "manifest_sha256": "e8539ebdd2ccbed500b436034fa2dc085b4c7376018a1358e2b0cfecb5acedad",
   "product_source_commit": "0e7b5b11788e6f6a87e4ef70ac231fa3ac73501f",
   "upstream_commit": "117b054598f4758b598f4b8f48feea48c11fe7b0",
   "ledger": {
@@ -39,7 +39,7 @@
       "required": true,
       "observation": {
         "path": "compat/candidates/tk-state-resource-1/windows-profile.json",
-        "sha256": "52b8d71056085073fdedf7f075350e32dcda05d63f71129c2db3bf22920424b8"
+        "sha256": "65d90c9232522588483d12c7ebeb093c966be779424572d657dc7d0f9f4f453e"
       },
       "wheel": null,
       "previous_qualified_wheel_sha256": "62df5e4c31bf9a1bb1bea47fd68d50e4198d6ec13d2551c991da1e7f30a2b38f",
@@ -58,7 +58,7 @@
       "required": true,
       "observation": {
         "path": "compat/candidates/tk-state-resource-1/linux-tk90-profile.json",
-        "sha256": "d59946742818b0ffa8d8fdc17e10ba3e9746fa6a5caa30c16d7894c3efa057de"
+        "sha256": "f2f0ecf8218cdde58cbffbee3f10c10c18fec8e8498419155dd086ca66aca393"
       },
       "wheel": null,
       "previous_qualified_wheel_sha256": "374a74ea9787ccccc643e0ac7e45d9f704a41d046465828736158ac94398c4a3",
@@ -811,7 +811,7 @@
           "expected": "Actual displayed categorical colors and full-target RGBA match independent expectations.",
           "source": {
             "path": "tests/native/test_tkinter_state_scenario.py",
-            "sha256": "28b8b7b7216c1216bd5827304e76bf54696f2e45091b53dbbbe928ddd27de5e6"
+            "sha256": "1e48f836fce6ee5f67e452168b5a12ab6b88ac466bf8675b6730a44d92c4794e"
           }
         },
         {
@@ -821,7 +821,7 @@
           "expected": "Both consumers observe the ordered color/resource update.",
           "source": {
             "path": "tests/native/test_tkinter_state_scenario.py",
-            "sha256": "28b8b7b7216c1216bd5827304e76bf54696f2e45091b53dbbbe928ddd27de5e6"
+            "sha256": "1e48f836fce6ee5f67e452168b5a12ab6b88ac466bf8675b6730a44d92c4794e"
           }
         },
         {
@@ -935,7 +935,7 @@
           "expected": "Actual displayed categorical colors and full-target RGBA match independent expectations.",
           "source": {
             "path": "tests/native/test_tkinter_state_scenario.py",
-            "sha256": "28b8b7b7216c1216bd5827304e76bf54696f2e45091b53dbbbe928ddd27de5e6"
+            "sha256": "1e48f836fce6ee5f67e452168b5a12ab6b88ac466bf8675b6730a44d92c4794e"
           }
         },
         {
@@ -945,7 +945,7 @@
           "expected": "Both consumers observe the ordered color/resource update.",
           "source": {
             "path": "tests/native/test_tkinter_state_scenario.py",
-            "sha256": "28b8b7b7216c1216bd5827304e76bf54696f2e45091b53dbbbe928ddd27de5e6"
+            "sha256": "1e48f836fce6ee5f67e452168b5a12ab6b88ac466bf8675b6730a44d92c4794e"
           }
         },
         {
@@ -955,7 +955,7 @@
           "expected": "Original timer upload error reaches caller; all scoped counters return exactly to their baseline. Outer worker separately enforces nine-zero process shutdown.",
           "source": {
             "path": "tests/native/test_tkinter_state_scenario.py",
-            "sha256": "28b8b7b7216c1216bd5827304e76bf54696f2e45091b53dbbbe928ddd27de5e6"
+            "sha256": "1e48f836fce6ee5f67e452168b5a12ab6b88ac466bf8675b6730a44d92c4794e"
           }
         },
         {
@@ -965,7 +965,7 @@
           "expected": "Surviving widget and shared resources render expected blue after native device recreation.",
           "source": {
             "path": "tests/native/test_tkinter_state_scenario.py",
-            "sha256": "28b8b7b7216c1216bd5827304e76bf54696f2e45091b53dbbbe928ddd27de5e6"
+            "sha256": "1e48f836fce6ee5f67e452168b5a12ab6b88ac466bf8675b6730a44d92c4794e"
           }
         }
       ],
@@ -975,7 +975,7 @@
       "id": "tk-state-resource-failures",
       "script": {
         "path": "tools/tkinter_failure_scenario.py",
-        "sha256": "5e863fa46275e388ea229d6ea447a0052140b591adec8f4b2c70ccf61c47d765"
+        "sha256": "e265b1eb68b153543189d056be517c80a2b50b5039f19b2f750306cf9dc35323"
       },
       "profiles": [
         "windows-gpu-tk86-cp312-development",
@@ -1010,7 +1010,7 @@
           "expected": "Both ordinary state and shared-resource GPU/Tk output, host ownership and actual submission assertions pass.",
           "source": {
             "path": "tests/native/test_tkinter_state_scenario.py",
-            "sha256": "28b8b7b7216c1216bd5827304e76bf54696f2e45091b53dbbbe928ddd27de5e6"
+            "sha256": "1e48f836fce6ee5f67e452168b5a12ab6b88ac466bf8675b6730a44d92c4794e"
           }
         },
         {
@@ -1020,27 +1020,27 @@
           "expected": "Public Timer uploads green once; survivor blue and host-owned work remain correct.",
           "source": {
             "path": "tests/native/test_tkinter_state_scenario.py",
-            "sha256": "28b8b7b7216c1216bd5827304e76bf54696f2e45091b53dbbbe928ddd27de5e6"
+            "sha256": "1e48f836fce6ee5f67e452168b5a12ab6b88ac466bf8675b6730a44d92c4794e"
           }
         },
         {
           "kind": "failure",
           "nodeid": "tests/native/test_tkinter_state_scenario.py::test_composite_observed_failure_and_recovery_scenario",
           "cases": 1,
-          "expected": "Green upload fault and external-loop native progress faults in both ready callback orders are injected; original errors/tracebacks verified exactly once, failed Timer stopped, host work preserved and scoped gauges return to baseline.",
+          "expected": "Green upload fault and external-loop native progress faults in both ready callback orders are injected; original errors/tracebacks verified exactly once, failed Timer stopped, host work preserved and scoped gauges return to baseline. Raw/gloo single-slot held-completion capacity faults run with immediate and delayed-progress variants, preserving queued work and all submission/wait/presentation counters.",
           "source": {
             "path": "tests/native/test_tkinter_state_scenario.py",
-            "sha256": "28b8b7b7216c1216bd5827304e76bf54696f2e45091b53dbbbe928ddd27de5e6"
+            "sha256": "1e48f836fce6ee5f67e452168b5a12ab6b88ac466bf8675b6730a44d92c4794e"
           }
         },
         {
           "kind": "recovery",
           "nodeid": "tests/native/test_tkinter_state_scenario.py::test_composite_observed_failure_and_recovery_scenario",
           "cases": 1,
-          "expected": "Explicit fresh public resource workflow and redraw retry succeed; exact blue output and device recreation assertions pass after injections are removed.",
+          "expected": "Explicit fresh public resource workflow and redraw retry succeed; exact blue output and device recreation assertions pass after injections are removed. All four submission variants observe retirement, explicitly retry exactly once, read exact green while Tk remains blue, preserve host work and restore prior slots.",
           "source": {
             "path": "tests/native/test_tkinter_state_scenario.py",
-            "sha256": "28b8b7b7216c1216bd5827304e76bf54696f2e45091b53dbbbe928ddd27de5e6"
+            "sha256": "1e48f836fce6ee5f67e452168b5a12ab6b88ac466bf8675b6730a44d92c4794e"
           }
         }
       ],
@@ -1143,7 +1143,7 @@
     },
     {
       "path": "docs/superpowers/specs/2026-10-24-vispy-compatibility-gap-closure.md",
-      "sha256": "e4912af14b08818a2f5bfb47877e473e5e25c9b95e78d5aeea9265acf2196418"
+      "sha256": "c90c068593e2058b81b28cbb3f8ad77a8ceb512f0d719e19ef888cc1afafd253"
     },
     {
       "path": "compat/vispy-candidate.schema.json",

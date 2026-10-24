@@ -142,8 +142,9 @@ or upgrade experimental native producer provenance into shipping qualification.
 ## Criterion map
 
 The [criterion coverage proposal](criterion-coverage.md) preserves all required
-parent scope and maps60criteria/120profile bindings. Eight flush capacity/retry
-bindings remain source-only; script readiness and review gates fail explicitly.
+parent scope and maps 60 criteria/120 profile bindings. All 120 are now script-ready
+after both development profiles pass the actual four-variant submission extension;
+source/scope review and installed-child evidence gates remain incomplete.
 Run its validator alongside candidate validation. The future exact-artifact
 index must join both declarations and the original evidence, not just a green
 preparation status. No source/scope approval or qualification is added here.

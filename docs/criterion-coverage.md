@@ -36,14 +36,22 @@ closure/absence/control and shutdown proof still belong to their original tools.
 Semantic truth of expected behavior and injection participation requires source
 and scope review; schema checks do not establish that truth.
 
-There are currently 112 script-ready bindings and 8 source-only bindings. The latter
-are failure/recovery for raw glFlush and wrapper submission, on both profiles.
-Their 4-case saturation/delayed-progress fixture is source-tested, but the current
-composite script never invokes it. Default validation preserves these gaps;
-require-script-ready correctly fails. Next, add the bounded saturation/retry
-branch to the observed composite or a separately admitted scenario, preserve
-its counters/queued data, then update the exact criterion bindings. Do not
-replace that fixture with the ordinary composite fixture merely to pass readiness.
+All 120 bindings are now script-ready. Packet `observed-submission-30` adds
+actual capacity/retry branches for raw glFlush and wrapper submission, each with
+immediate and deliberately delayed completion progress. Eighteen source cases
+and the direct composite entry point pass on each development profile, with all
+nine shutdown gauges zero. The four failure/recovery criteria now bind the actual
+composite fixture, which executes all four variants, rather than an ordinary-only
+substitute. Strict script readiness passes; independent review and installed-child
+result/absence qualification remain pending. Source and scope reviews are null.
+The original112ready/8source-only declaration is retained in the parent commit;
+no historical source report is upgraded into installed proof.
+
+The [executable handoff specification](superpowers/specs/2026-10-24-vispy-compatibility-gap-closure.md#15-executable-handoff-from-proposals-to-scoped-qualification)
+requires a separately derived execution ledger, keeping this proposal's baseline
+unchanged. It also requires worker-bound structured branch results before actual
+installed admission. Script readiness alone proves neither branch execution nor
+the installed functional/absence gates.
 
 ## Review and identity
 
@@ -83,6 +91,6 @@ CPU controls cover parent/scope loss, wrong branches/profiles/arguments, changed
 fixtures, unseeded origins, stale maps/candidates and review content binding.
 Commands, original CI failures, the native refusal, source patches, native test
 artifacts and terminal cleanup are retained locally in
-`build/runs/criterion-coverage-29/`. Required scope/source reviews, executable
-flush fault mapping, exact installed qualification, remaining parity and platform
+`build/runs/criterion-coverage-29/`. Required scope/source reviews, installed-child branch result binding,
+exact installed qualification, remaining parity and platform
 work remain pending.

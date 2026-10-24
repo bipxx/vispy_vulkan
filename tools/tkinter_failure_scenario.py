@@ -206,14 +206,157 @@ def _progress_failure(first):
             raise errors[0][1].with_traceback(errors[0][2])
 
 
+def _submission_failure(route, delayed_progress):
+    """Exercise real public backpressure/retry in a Tk target, without GUI pumping."""
+    import tkinter as tk
+    import numpy as np
+    from vispy import app, gloo, _dawn
+    from vispy.gloo import gl
+
+    assert route in ('gloo', 'raw') and type(delayed_progress) is bool
+    assert _dawn.submission_contract_version == 1
+    application = app.Application('tkinter')
+    root = tk.Tk()
+    root.geometry('96x64')
+    canvas = None
+    host_job = host_binding = None
+    host, errors = [], []
+    saved_slots = None
+    result = None
+    fields = ('dawn_queue_submits', 'finish_calls', 'completion_waits',
+              'application_presents', 'pending_tickets', 'pending_draws')
+
+    def snapshot():
+        state = _dawn.probe()
+        return {key: state[key] for key in fields}
+
+    def unchanged_completion(before, after):
+        assert all(after[key] == before[key] for key in
+                   ('finish_calls', 'completion_waits', 'application_presents')), (before, after)
+
+    def flush():
+        (gloo.flush if route == 'gloo' else gl.glFlush)()
+
+    try:
+        host_job = root.after(60000, lambda: host.append('unexpected-timer'))
+        host_binding = root.bind('<<HostSubmissionPing>>', lambda event: host.append('host'), add='+')
+        canvas = app.Canvas(app=application, parent=root, size=(96, 64), show=True)
+        canvas.native.pack(fill='both', expand=True)
+
+        def paint(event):
+            gloo.set_viewport(0, 0, *canvas.physical_size)
+            gloo.set_state(scissor_test=False, depth_test=False, blend=False)
+            gloo.clear(color='blue')
+
+        canvas.events.draw.ignore_callback_errors = False
+        canvas.events.draw.connect(paint)
+        canvas.update()
+        deadline = time.monotonic() + 5
+        while (canvas._backend._photo is None
+               or (canvas._backend._photo.width(), canvas._backend._photo.height())
+               != tuple(canvas.physical_size)
+               or tuple(canvas._backend._photo.get(1, 1)) != (0, 0, 255)):
+            application.process_events()
+            assert time.monotonic() < deadline, 'submission setup did not present'
+            time.sleep(.005)
+        canvas.set_current()
+        gloo.finish()  # Setup only; no completion operation is allowed inside measured flush/retry.
+        saved_slots = int(_dawn.probe()['frame_slots'])
+        _dawn.configure_frame_slots(1)
+        _dawn.diagnostic_submission_controls(True, '')
+        gloo.clear(color='red')
+        flush()
+        before = snapshot()
+        assert before['pending_tickets'] == 1
+        gloo.clear(color='green')
+        try:
+            flush()
+        except RuntimeError as error:
+            assert 'glFlush' in str(error) and 'capacity' in str(error), str(error)
+            expected_error = {'type': type(error).__name__, 'message': str(error),
+                              'traceback': traceback.format_exc()}
+        else:
+            raise AssertionError('required flush capacity failure did not occur')
+        blocked = snapshot()
+        assert blocked['pending_tickets'] == 1 and blocked['pending_draws'] > 0
+        assert blocked['dawn_queue_submits'] == before['dawn_queue_submits']
+        unchanged_completion(before, blocked)
+        early = None
+        if delayed_progress:
+            _dawn.process_events()  # Real early pump while completion delivery remains held.
+            early = snapshot()
+            assert early['pending_tickets'] == 1 and early['pending_draws'] > 0
+            assert early['dawn_queue_submits'] == before['dawn_queue_submits']
+            unchanged_completion(before, early)
+        _dawn.diagnostic_submission_controls(False, '')
+        deadline = time.monotonic() + 5
+        while _dawn.probe()['pending_tickets']:
+            _dawn.process_events()
+            assert time.monotonic() < deadline, 'released submission did not retire'
+            time.sleep(.001)
+        flush()  # Explicit retry must submit retained green work exactly once.
+        resumed = snapshot()
+        assert resumed['dawn_queue_submits'] == before['dawn_queue_submits'] + 1
+        unchanged_completion(before, resumed)
+        width, height = canvas.physical_size
+        assert np.all(gloo.read_pixels((0, 0, width, height), alpha=True) == [0, 128, 0, 255])
+        assert tuple(canvas._backend._photo.get(1, 1)) == (0, 0, 255)
+        result = {'route': route, 'delayed_progress': delayed_progress,
+                  'expected_error': expected_error, 'before': before, 'blocked': blocked,
+                  'early_progress': early, 'resumed': resumed, 'readback': [0, 128, 0, 255]}
+    finally:
+        primary = sys.exc_info()
+
+        def cleanup(callback, *args):
+            try:
+                callback(*args)
+            except BaseException:
+                errors.append(sys.exc_info())
+
+        def verify_host():
+            assert root.winfo_exists() and not root.winfo_children()
+            assert host_job in root.tk.call('after', 'info')
+            assert host_binding in root.bind('<<HostSubmissionPing>>')
+            assert not host
+            root.event_generate('<<HostSubmissionPing>>')
+            assert host == ['host']
+
+        cleanup(_dawn.diagnostic_submission_controls, False, '')
+        if canvas is not None:
+            cleanup(canvas.set_current)
+            cleanup(canvas.context.flush_commands)
+            cleanup(gloo.finish)
+            cleanup(canvas.close)
+        cleanup(application.quit)
+        if saved_slots is not None:
+            cleanup(_dawn.configure_frame_slots, saved_slots)
+        if host_job is not None and host_binding is not None:
+            cleanup(verify_host)
+        if host_job is not None:
+            cleanup(root.after_cancel, host_job)
+        if host_binding is not None:
+            cleanup(root.unbind, '<<HostSubmissionPing>>', host_binding)
+        cleanup(root.update_idletasks)
+        cleanup(root.destroy)
+        for error in errors:
+            traceback.print_exception(*error)
+        if errors and primary[0] is None:
+            raise errors[0][1].with_traceback(errors[0][2])
+    assert _dawn.probe()['frame_slots'] == saved_slots
+    result.update(status='PASS', host_preserved=True, restored_frame_slots=saved_slots)
+    return result
+
+
 def run():
     ordinary = _scenario('tkinter_state_scenario')()
     assert ordinary['status'] == 'PASS'
     resource = _resource_failure()
     progress = [_progress_failure(order) for order in ('poll', 'draw')]
+    submissions = [_submission_failure(route, delayed)
+                   for route in ('gloo', 'raw') for delayed in (False, True)]
     return {'status': 'PASS', 'scope': 'source workflow until exact installed gates pass',
             'ordinary_state': ordinary, 'resource_failure_recovery': resource,
-            'native_progress_failure_recovery': progress}
+            'native_progress_failure_recovery': progress, 'submission_failure_recovery': submissions}
 
 
 if __name__ == '__main__':
