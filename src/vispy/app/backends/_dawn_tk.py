@@ -104,8 +104,10 @@ def _tcl_commands(root):
     while pending:
         namespace = pending.pop()
         pattern = '::*' if namespace == '::' else namespace + '::*'
-        commands.update(root.tk.call('info', 'commands', pattern))
-        pending.extend(root.tk.call('namespace', 'children', namespace))
+        commands.update(str(name) for name in root.tk.splitlist(
+            root.tk.call('info', 'commands', pattern)))
+        pending.extend(str(name) for name in root.tk.splitlist(
+            root.tk.call('namespace', 'children', namespace)))
     return commands
 
 

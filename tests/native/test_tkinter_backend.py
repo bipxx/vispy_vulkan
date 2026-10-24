@@ -1500,3 +1500,22 @@ def test_successful_loop_exit_retires_already_ready_watchdog(application, mode):
     finally:
         root.after_cancel(success_job)
         root.after_cancel(watchdog_job)
+
+
+@pytest.mark.parametrize('want_objects', [True, False])
+def test_host_namespace_command_inventory_returns_plain_names(want_objects):
+    import tkinter as tk
+    from vispy.app.backends import _dawn_tk
+    root = tk.Tk()
+    root.withdraw()
+    try:
+        root.tk.eval('namespace eval ::host::nested {proc ping {} {return alive}}')
+        root.tk.wantobjects(want_objects)
+        commands = _dawn_tk._tcl_commands(root)
+        assert all(type(name) is str for name in commands)
+        assert '::host::nested::ping' in commands
+        assert root.tk.call('::host::nested::ping') == 'alive'
+    finally:
+        root.tk.call('namespace', 'delete', '::host')
+        root.update_idletasks()
+        root.destroy()
