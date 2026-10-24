@@ -72,6 +72,14 @@ feasibility failures produce a small decision record, not repeated full builds.
 
 ## First implementation packet after review
 
+Progress: pressed-button tracking is implemented with focus-loss cancellation
+and outside-coordinate releases. Three new regression cases verify button-state
+sequences and real PanZoom/Turntable drags with changed camera state and pixels.
+All twelve Tk cases pass on Windows; WSL software Vulkan passes those twelve
+plus three immediate-state cases. This is source evidence using reused native
+binaries, not installed qualification. Remaining TK-6 modifier/double-click and
+ownership/event-loop work stays open; R1 is partially addressed, not closed.
+
 1. Reproduce the missing pressed-button state using a real SceneCanvas camera.
    Add regression expectations before changing input dispatch; include release
    outside/focus loss and modifiers. Do not weaken camera code to hide bad events.

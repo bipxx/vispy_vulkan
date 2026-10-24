@@ -208,3 +208,58 @@ def test_failed_registration_destroys_owned_widgets(application, monkeypatch):
         app.Canvas(app=application, size=(192, 128), show=True)
     assert set(root.winfo_children()) == children
     assert not application._backend._canvases
+
+
+def test_drag_button_state_and_focus_loss(application):
+    canvas = app.Canvas(app=application, size=(192, 128), show=True)
+    seen = []
+    for name in ('mouse_press', 'mouse_move', 'mouse_release'):
+        getattr(canvas.events, name).connect(
+            lambda event: seen.append((event.type, event.button, tuple(event.buttons))))
+    wait(application, lambda: canvas.native.winfo_viewable())
+    widget = canvas.native
+    widget.event_generate('<ButtonPress-1>', x=20, y=20)
+    widget.event_generate('<ButtonPress-3>', x=20, y=20, state=0x100)
+    widget.event_generate('<Motion>', x=50, y=40, state=0x500)
+    assert seen[:3] == [('mouse_press', 1, (1,)), ('mouse_press', 2, (1, 2)),
+                       ('mouse_move', 1, (1, 2))]
+    # Tk's implicit pointer grab delivers a physical release outside the widget
+    # to this handler as well; negative widget coordinates must not discard it.
+    widget.event_generate('<ButtonRelease-1>', x=-5, y=-5, state=0x500)
+    assert seen[-1] == ('mouse_release', 1, (2,))
+    widget.event_generate('<FocusOut>')
+    assert seen[-1] == ('mouse_release', 2, ())
+    time.sleep(.012)  # Base backend coalesces motion within 10 ms.
+    widget.event_generate('<Motion>', x=30, y=30)
+    assert seen[-1] == ('mouse_move', None, ())
+    canvas.close()
+
+
+@pytest.mark.parametrize('camera_kind', ['panzoom', 'turntable'])
+def test_scene_camera_drag_changes_view_and_render(application, camera_kind):
+    from vispy import scene
+    canvas = scene.SceneCanvas(app=application, size=(240, 180), show=True,
+                               bgcolor='black')
+    view = canvas.central_widget.add_view()
+    view.bgcolor = '#101010'
+    view.camera = camera_kind
+    scene.visuals.Markers(pos=np.array([[0, 0, 0], [1, .25, .5], [-.5, .75, -.25]],
+                                      dtype=np.float32),
+                          size=20, face_color='red', parent=view.scene)
+    view.camera.set_range(x=(-1, 1.5), y=(-1, 1.5), z=(-1, 1))
+    canvas.update()
+    wait(application, lambda: canvas._backend._photo is not None and canvas.native.winfo_viewable())
+    before_pixels = canvas.render(alpha=True)
+    assert canvas.visual_at((90, 70)) is not None, 'Scene picking must route the drag to a view'
+    before = (view.camera.rect.pos + view.camera.rect.size if camera_kind == 'panzoom' else
+              (view.camera.azimuth, view.camera.elevation))
+    canvas.native.event_generate('<ButtonPress-1>', x=90, y=70)
+    time.sleep(.012)
+    canvas.native.event_generate('<Motion>', x=140, y=100, state=0x100)
+    canvas.native.event_generate('<ButtonRelease-1>', x=140, y=100, state=0x100)
+    after = (view.camera.rect.pos + view.camera.rect.size if camera_kind == 'panzoom' else
+             (view.camera.azimuth, view.camera.elevation))
+    assert before != after
+    after_pixels = canvas.render(alpha=True)
+    assert not np.array_equal(before_pixels, after_pixels)
+    canvas.close()

@@ -99,6 +99,8 @@ class CanvasBackend(BaseCanvasBackend):
         self._draw_job = None
         self._drawing = False
         self._callback_error = None
+        self._pressed_buttons = set()
+        self._last_pointer = (0, 0)
         self._photo = None
         self._size = tuple(map(int, p.size))
         self._position = (0, 0)
@@ -117,6 +119,7 @@ class CanvasBackend(BaseCanvasBackend):
         self._widget.bind('<Motion>', self._on_motion)
         self._widget.bind('<ButtonPress>', self._on_press)
         self._widget.bind('<ButtonRelease>', self._on_release)
+        self._widget.bind('<FocusOut>', self._on_focus_out)
         self._widget.bind('<MouseWheel>', self._on_wheel)
         self._widget.bind('<KeyPress>', lambda event: self._on_key(event, True))
         self._widget.bind('<KeyRelease>', lambda event: self._on_key(event, False))
@@ -205,7 +208,9 @@ class CanvasBackend(BaseCanvasBackend):
                      (0x20000 if sys.platform == 'win32' else 8, keys.ALT)) if event.state & mask)
 
     def _mouse(self, event):
-        return dict(pos=(event.x, event.y), modifiers=self._modifiers(event))
+        self._last_pointer = (event.x, event.y)
+        return dict(pos=self._last_pointer, modifiers=self._modifiers(event),
+                    buttons=sorted(self._pressed_buttons))
 
     def _on_motion(self, event):
         self._vispy_mouse_move(**self._mouse(event))
@@ -215,13 +220,26 @@ class CanvasBackend(BaseCanvasBackend):
             self._on_wheel(event)
             return
         self._widget.focus_set()
-        self._vispy_mouse_press(button={1: 1, 2: 3, 3: 2}.get(event.num, event.num),
-                                **self._mouse(event))
+        button = {1: 1, 2: 3, 3: 2}.get(event.num, event.num)
+        self._pressed_buttons.add(button)
+        self._vispy_mouse_press(button=button, **self._mouse(event))
 
     def _on_release(self, event):
         if event.num not in (4, 5) or not sys.platform.startswith('linux'):
-            self._vispy_mouse_release(button={1: 1, 2: 3, 3: 2}.get(event.num, event.num),
-                                      **self._mouse(event))
+            button = {1: 1, 2: 3, 3: 2}.get(event.num, event.num)
+            self._pressed_buttons.discard(button)
+            self._vispy_mouse_release(button=button, **self._mouse(event))
+
+    def _on_focus_out(self, event):
+        # Tk's implicit pointer grab handles physical releases outside the
+        # widget. Losing focus can instead leave the gesture without a release;
+        # cancel it explicitly so camera interactions never retain stale input.
+        for button in sorted(self._pressed_buttons):
+            self._pressed_buttons.discard(button)
+            self._vispy_mouse_release(button=button, pos=self._last_pointer,
+                                      buttons=sorted(self._pressed_buttons), modifiers=())
+        self._vispy_mouse_data['press_event'] = None
+        self._vispy_mouse_data['last_event'] = None
 
     def _on_wheel(self, event):
         num = getattr(event, 'num', None)
@@ -289,6 +307,7 @@ class CanvasBackend(BaseCanvasBackend):
         if self._closed:
             return
         self._closed = True
+        self._pressed_buttons.clear()
         if self._draw_job is not None:
             self._widget.after_cancel(self._draw_job)
             self._draw_job = None

@@ -26,10 +26,11 @@ matrix row. Run `tests/native/test_tkinter_backend.py` with pytest `-s` to avoid
 the observed interaction between Windows Tcl initialization and descriptor
 capture; do not treat the earlier captured failures as a product fix.
 
-The subsequent Astra review found open Tk correctness gaps: pressed-button
-state needed by scene-camera dragging, explicit-parent/NoDefaultRoot and shared
+The subsequent Astra review found Tk correctness gaps. Pressed-button tracking
+now supports real PanZoom/Turntable camera drags in source tests and cancels
+gestures on focus loss. Explicit-parent/NoDefaultRoot and shared
 interpreter ownership, public timer state on quit, and callback/native-progress
-behavior under run/external-mainloop modes. The current tests do not establish
+behavior under run/external-mainloop modes remain open. The current tests do not establish
 these contracts. Fix and extend them before promoting Tk; passing the existing
 suite is not sufficient. See the [current specification](superpowers/specs/2026-10-24-vispy-compatibility-gap-closure.md).
 
