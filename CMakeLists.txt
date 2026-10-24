@@ -305,8 +305,10 @@ if(VISPY_BUILD_CONTRACT_TESTS)
     target_include_directories(timestamp_contract PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/cpp")
     target_include_directories(frame_lifecycle_contract PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/cpp")
     target_include_directories(line_contract PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/cpp")
-    target_include_directories(line_consumer_resource_contract PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/cpp")
-    target_include_directories(artifact_consumer_contract PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/cpp")
+    target_include_directories(line_consumer_resource_contract PRIVATE
+        "${CMAKE_CURRENT_SOURCE_DIR}/cpp" "${VISPY_SHADER_INCLUDE_ROOT}")
+    target_include_directories(artifact_consumer_contract PRIVATE
+        "${CMAKE_CURRENT_SOURCE_DIR}/cpp" "${VISPY_SHADER_INCLUDE_ROOT}")
     target_include_directories(runtime_line_consumer_policy_contract PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/cpp")
     target_include_directories(runtime_line_variants_contract PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/cpp")
     target_include_directories(runtime_line_consumer_accounting_contract PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/cpp")
