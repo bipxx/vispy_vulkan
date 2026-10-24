@@ -3,6 +3,7 @@
 All commands are read-only unless --register, plan --output, or apply is explicit.
 expected-peak-bytes means additional worst-case allocation, across the managed
 scratch budget. This tool never adopts or cleans legacy build directories.
+Registry capacity_roots checks explicitly listed backing storage too.
 Concurrent writers are unsupported: child completion and one owner are required.
 """
 from __future__ import annotations
@@ -126,6 +127,7 @@ def live_pid(pid):
 class Context:
     def __init__(self, workspace, policy, registry):
         self.deleted = 0
+        self.capacity_checks = []
         self.workspace = no_alias(absolute(workspace, Path.cwd()))
         require(self.workspace.is_dir(), 'Workspace must exist')
         self.build = self.workspace / 'build'
@@ -144,6 +146,7 @@ class Context:
             'third_party', 'licenses', 'LICENSE', 'LICENSE-BSD', 'LICENSING.md')]
         self.protected += [self.policy_path] + ([self.registry_path] if self.registry_path else [])
         self.legacy = self.paths('legacy_roots')
+        self.capacity = self.paths('capacity_roots')
         no_alias(self.work)
 
     def paths(self, name):
@@ -211,6 +214,19 @@ class Context:
             return 0
         return sum(x['bytes'] for x in self.snapshot(self.work, False)['files'])
 
+    def check_capacity(self, extra, registration_bytes):
+        roots = list(dict.fromkeys([self.workspace, *self.capacity]))
+        self.capacity_checks = []
+        for root in roots:
+            no_alias(root)
+            require(root.is_dir(), 'Capacity root must be an existing directory: ' + str(root))
+            self.capacity_checks.append({'path': str(root), 'free_bytes': shutil.disk_usage(root).free,
+                                         'min_free_bytes': self.reserve, 'expected_peak_bytes': extra,
+                                         'registration_bytes': registration_bytes})
+        for check in self.capacity_checks:
+            require(check['free_bytes'] - extra - registration_bytes >= self.reserve,
+                    'Expected peak would cross minimum disk reserve at ' + check['path'])
+
     def preflight(self, args):
         self.admitted()
         scratch = self.scratch(args.run_id)
@@ -218,21 +234,26 @@ class Context:
                 'A nonempty owner of at most 200 characters is required')
         extra = integer(args.expected_peak_bytes, 'expected_peak_bytes')
         total = self.total()
-        require(total + extra <= self.limit, 'Expected peak exceeds managed scratch budget')
-        free = shutil.disk_usage(self.workspace).free
-        require(free - extra >= self.reserve, 'Expected peak would cross minimum disk reserve')
+        marker_bytes = json.dumps({'schema': 1, 'run_id': args.run_id, 'owner': args.owner}).encode('utf-8')
+        registration_bytes = len(marker_bytes) if args.register and not scratch.exists() else 0
+        require(total + extra + registration_bytes <= self.limit, 'Expected peak exceeds managed scratch budget')
+        self.check_capacity(extra, registration_bytes)
         if scratch.exists():
             self.marker(scratch, args.run_id, args.owner)
         elif args.register:
             # This is the sole registration mutation; no legacy adoption or force flag.
             no_alias(scratch.parent)
             scratch.mkdir(parents=True, exist_ok=False)
-            with (scratch / MARKER).open('x', encoding='utf-8') as stream:
-                json.dump({'schema': 1, 'run_id': args.run_id, 'owner': args.owner}, stream)
+            with (scratch / MARKER).open('xb') as stream:
+                stream.write(marker_bytes)
             self.marker(scratch, args.run_id, args.owner)
+            # Account for actual directory/file allocation before permitting the build.
+            self.check_capacity(extra, 0)
         return {'status': 'PASS_PREFLIGHT', 'scratch_root': str(scratch), 'registered': scratch.exists(),
-                'owner': args.owner, 'managed_bytes': total, 'expected_peak_bytes': extra,
-                'free_bytes': free, 'min_free_bytes': self.reserve, 'max_scratch_bytes': self.limit}
+                'owner': args.owner, 'managed_bytes': total + registration_bytes, 'expected_peak_bytes': extra,
+                'free_bytes': self.capacity_checks[0]['free_bytes'], 'min_free_bytes': self.reserve,
+                'max_scratch_bytes': self.limit, 'registration_bytes': registration_bytes,
+                'capacity_checks': self.capacity_checks}
 
     def make_plan(self, manifest_path):
         self.admitted()
@@ -367,7 +388,8 @@ def main(argv=None):
         return 0 if result['status'].startswith('PASS_') else 2
     except (Refusal, OSError, ValueError, TypeError, KeyError) as error:
         print(json.dumps({'status': 'REFUSED', 'error': str(error),
-                          'deleted': context.deleted if 'context' in locals() else 0}))
+                          'deleted': context.deleted if 'context' in locals() else 0,
+                          'capacity_checks': context.capacity_checks if 'context' in locals() else []}))
         return 2
 
 
