@@ -462,9 +462,24 @@ void basic() {
         for (const auto& i : trace.code) require(i.op != spv::Op::OpIsHelperInvocationEXT && i.op != spv::Op::OpDemoteToHelperInvocationEXT,
                 "ordinary original introduces no helper-query or demote extension opcode");
     }
-    require(e->original->uniforms.empty() && e->original->uniform_bytes == 16 &&
-            c->parameters_offset == 16 && c->uniform_bytes == 80,
-            "empty semantic UBO retains original reserved16 plus mandatory actual render params64");
+    require(e->original->uniforms.size() == 1 && e->original->uniform_bytes == 16,
+            "FragCoord original retains exactly one runtime depth-range uniform in a16-byte UBO");
+    const auto& depth_range = e->original->uniforms.front();
+    require(depth_range.name == "vispy_fragment_depth_range" && depth_range.type == "vec2" &&
+            depth_range.storage_type == "vec2" && depth_range.offset == 0 && depth_range.size == 8 &&
+            depth_range.array_size == 0 && depth_range.component_count == 2,
+            "runtime depth-range uniform has exact reflected vec2 std140 metadata");
+    require(c->uniforms.size() == 5 && c->uniforms.front().name == depth_range.name &&
+            c->uniforms.front().type == depth_range.type && c->uniforms.front().offset == 0 &&
+            c->uniforms.front().size == 8 && c->parameters_offset == 16 && c->uniform_bytes == 80,
+            "generated consumer preserves runtime depth-range metadata before appended render params64");
+    auto empty = evaluator(basic_vertex, "varying vec4 color; void main() { gl_FragColor = color; }");
+    auto empty_consumer = build_generated_line_consumer(empty, policy(), grants());
+    require(empty_consumer->ok, "actually empty semantic UBO consumer compiles: " + empty_consumer->error);
+    require(empty->original->uniforms.empty() && empty->original->uniform_bytes == 16 &&
+            empty_consumer->parameters_offset == 16 && empty_consumer->uniform_bytes == 80 &&
+            empty_consumer->uniforms.size() == 4,
+            "original empty-UBO case still retains reserved16 plus mandatory actual render params64");
     auto limits = grants(); limits.max_storage_buffers_per_stage = 0;
     auto rejected = build_generated_line_consumer(e, policy(), limits);
     require(!rejected->ok && rejected->timings.parse_calls == 0, "missing storage grant refuses before compiler");

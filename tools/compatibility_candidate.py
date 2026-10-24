@@ -93,7 +93,7 @@ def validate_candidate(candidate, root=ROOT, require_reviewed=False):
         file_ref(root, record['file'])
     native = unique_by(inputs['native'], lambda r: r['path'], 'native input')
     expected_native = {p.relative_to(root).as_posix() for p in (root / 'cpp').rglob('*')
-                       if p.is_file() and p.suffix in ('.cpp', '.hpp', '.h')}
+                       if p.is_file() and p.suffix in ('.cpp', '.hpp', '.h', '.mm')}
     check(set(native) == expected_native and expected_native, 'incomplete native source/header inputs')
     for reference in [*native.values(), *inputs['locks']]:
         file_ref(root, reference)

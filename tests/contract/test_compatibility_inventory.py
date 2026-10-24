@@ -949,6 +949,36 @@ def candidate_case(example):
     return root, seal(candidate)
 
 
+
+@pytest.mark.parametrize('change', ['missing', 'changed', 'present'])
+def test_candidate_pins_objective_cpp_surface_inputs(example, change):
+    from tools.compatibility_candidate import seal, validate_candidate
+    from tools.compatibility_conservation import digest
+    root, candidate = candidate_case(example)
+    surface = root / 'cpp/platform/surface_metal.mm'
+    surface.parent.mkdir(parents=True)
+    surface.write_text('// Synthetic Objective-C++ surface input.\n', encoding='utf-8')
+    inputs = inventory.read_json(root / candidate['runtime_inputs']['path'])
+    if change != 'missing':
+        inputs['native'].append({'path': 'cpp/platform/surface_metal.mm',
+                                 'sha256': hashlib.sha256(surface.read_bytes()).hexdigest()})
+    if change == 'changed':
+        surface.write_text('// Changed platform implementation.\n', encoding='utf-8')
+    candidate['runtime_inputs'] = write_json(root, 'candidate/inputs.json', inputs)
+    profile_path = candidate['profiles'][0]['observation']['path']
+    profile = inventory.read_json(root / profile_path)
+    profile['native_inputs_sha256'] = digest(inputs['native'])
+    candidate['profiles'][0]['observation'] = write_json(root, profile_path, profile)
+    seal(candidate)
+    if change == 'present':
+        result = validate_candidate(candidate, root)
+        assert not result['qualified'] and not result['installable']
+        return
+    message = 'native source/header inputs' if change == 'missing' else 'changed evidence'
+    with pytest.raises(inventory.InventoryError, match=message):
+        validate_candidate(candidate, root)
+
+
 def test_current_candidate_preparation_preserves_full_unqualified_scope():
     from tools.compatibility_candidate import DEFAULT, validate_candidate
     result = validate_candidate(inventory.read_json(DEFAULT))
