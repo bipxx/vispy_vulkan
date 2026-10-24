@@ -105,6 +105,30 @@ def test_linux_pyside_source_profile_binds_real_relocation_and_declared_build_pa
     assert not manifest['support_wheels']  # Shiboken is source-built, not replaced by a stock wheel.
 
 
+def test_linux_pyqt5_keeps_official_sip_and_distinguishes_qt_from_dawn_vulkan():
+    manifest = json.loads((ROOT / 'compat/qt/linux-pyqt5-no-opengl.json').read_text())
+    assert not manifest['features']['opengl'] and not manifest['features']['egl']
+    assert not manifest['features']['vulkan'] and manifest['features']['dawn_vulkan_renderer_independent']
+    native = [entry for wheel in manifest['wheels'] for entry in wheel['files'] if entry.get('native')]
+    assert len(native) == 43 and sum(entry['relocated'] for entry in native) == 10
+    assert manifest['original_notice_count'] == 93 and len(manifest['notices']) == 94
+    assert not manifest['preferred_source_patches']
+    sip = manifest['support_wheels'][0]
+    lock = tomllib.loads((ROOT / 'uv.lock').read_text())
+    package = next(row for row in lock['package'] if row['name'] == 'pyqt5-sip')
+    original = next(row for row in package['wheels'] if row['url'] == sip['url'])
+    assert original['hash'] == 'sha256:' + sip['sha256']
+    selection = manifest['portable_sip_selection']
+    assert not selection['portable_modified_sip_selected']
+    assert sip['native_sha256'] == selection['original_wheel_native_sha256']
+    assert sip['native_sha256'] != selection['portable_modified_native_sha256']
+    versions = manifest['runtime_apt_versions']
+    assert len(versions['apt_install_pins']) == 47
+    expected = {row['package'] + (':' + row['architecture'] if ':' not in row['package'] else '') + '=' + row['version']
+                for row in versions['packages']}
+    assert set(versions['apt_install_pins']) == expected
+
+
 def test_source_profile_rejects_changed_input_and_path_escape(tmp_path):
     from no_opengl.qt_linux_profile import verified
     root = tmp_path / 'bundle'

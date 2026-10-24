@@ -119,3 +119,21 @@ notices in the wheels; the AGPL package producer does not relabel upstream code.
 Qt OpenGL/EGL and QtNetwork SSL/DTLS are disabled, while XCB/Vulkan are enabled.
 Portable import, QWidget capture and SVG smoke results are source-build
 evidence; installed mapped VisPy/native-gate qualification remains separate.
+
+`linux-pyqt5-no-opengl.json` packages source-built Qt 5.15.19 and PyQt5 5.15.11
+with nine binding modules, 43 selected source-built ELF files, 93 original
+notices and the source bundle's attribution index. Its third wheel is the exact
+unchanged official PyQt5-sip 12.20.0 input, giving 44 native payloads in total.
+The SIP bytes match the recorded original module before portable relocation;
+the profile excludes that copy's unnecessary SIP RUNPATH edit. Raw and portable
+inputs remain unchanged and both hashes are retained in the manifest.
+
+Qt5 OpenGL/EGL, SSL, Wayland, the X11 AT-SPI bridge and Qt's own Vulkan support
+are disabled in this minimal build. VisPy still renders through its independent
+Dawn Vulkan backend; Qt toolkit Vulkan support is not required or claimed.
+No preferred-source patch is needed. The producer uses the same command above
+with the PyQt5 manifest/bundle/receipts and the exact SIP input directory.
+Its 47 install pins are derived only from the captured package, architecture
+and version records; the original receipt remains separately hash pinned.
+Use `linux-pyqt5-no-opengl-requirements.txt` for offline installation. The
+installed mapped QWidget and native three-gate replay remain required.
