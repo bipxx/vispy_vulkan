@@ -1,10 +1,13 @@
 # OpenGL runtime removal status
 
-The runtime-removal implementation is in progress. No complete release matrix
-is qualified yet. `compat/no-opengl-matrix.json` records the mandatory Windows
-Vulkan and WSL software Vulkan/X11 rows, their binding/host pins, features and
-three independent gates. Metal remains experimental. Native Linux hardware
-qualification remains separate from WSL software results.
+Thirteen of fourteen mandatory runtime rows are qualified, including every
+Linux software Vulkan/X11 binding and admitted host row. Windows
+napari-threedee remains unqualified because of intermittent OLE window-startup
+hangs. CI and focused final-artifact checks are still active. The
+[current matrix](../compat/no-opengl-matrix.json) binds each result to its exact
+artifact, environment and three gates. Follow the [strict offline CPython 3.12
+guide](offline-install-cp312.md) for installation. Metal remains experimental;
+native Linux hardware qualification remains separate from WSL software results.
 
 The explicit shipping contract retains the Dawn `gl2`/`glplus` compatibility
 aliases and excludes 16 executable legacy OpenGL loaders/backends. Exact wheel
@@ -14,10 +17,11 @@ AGPL implementation license. Framebuffer configuration has a CPU contract target
 
 Stock Qt feasibility is platform-specific. Linux stock QtGui/qxcb require GL
 or EGL, and stock PyQt5/PySide6 bindings contain unresolved QOpenGL references.
-The Linux PyQt6 profile has therefore been built from preferred Qt/PyQt source
-with OpenGL/EGL disabled. Its relocated 48-ELF payload, original notices and
-exact system runtime pins are packaged reproducibly. Linux Qt5/PyQt5 and
-Qt6.12/PySide6 source builds and their qualification remain separate work.
+The Linux PyQt6, PyQt5 and PySide6 profiles were therefore built from preferred
+Qt/binding sources with OpenGL/EGL disabled. Their selected native bytes,
+original notices and exact system runtime pins are packaged reproducibly. All
+three installed binding rows now pass the mapped QWidget lifecycle and all
+three gates on the final Linux artifact; their detailed receipts appear below.
 
 Windows selected PyQt6, PyQt5 and PySide6 profiles now have explicit manifests,
 offline hash-pinned requirements and preserved native bytes/original notices.

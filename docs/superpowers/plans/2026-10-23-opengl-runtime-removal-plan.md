@@ -9,51 +9,50 @@ Integrated implementation checkpoint: `cc4a66c09` on
 ## Resumption checkpoint
 
 Use this checkpoint to resume execution; the original phases below retain their
-requirements. Earlier "current groundwork" notes describe historical results.
+requirements. Earlier groundwork and candidate results remain historical.
 
-- Native N0/N1 functional tests pass 25/25 on Windows hardware Vulkan and WSL
-  software Vulkan. Linux PyQt6 QWidget and the three admitted hosts have scoped
-  all-three-gate evidence on the N1 artifact, not on the latest native source.
-- Integrated sampler-array test region correction, generated-line integer
-  sampling specialization, depth uploads, and actual sample-zero multisample
-  depth/stencil capture. The latest fixes still require fresh GPU qualification.
-  Preserve the earlier four endpoint failures until a matching new wheel passes.
-- Integrated selected Windows PyQt5/PySide6 packaging, the core-only TBB runtime
-  profile, and exact Linux host dependency/CPU runtime locks. Focused profile
-  tests pass 11/11; the integrated no-OpenGL CPU suite passes 60 with one
-  platform-specific skip. These checks do not qualify the final graphics matrix.
-- The N2/N3 Linux wheel build completed from source `531b19236`, SHA256
-  `39a725766dab08dc6e284af807d40c44202584d4972e5714f34691e6e4375c41`.
-  It predates the generated-line fix and depth changes; installation and GPU
-  qualification remain pending. Do not label it the final candidate.
-- Disk exhaustion initially paused Linux Qt 6.12. After space recovery and exact
-  process-identity verification, resumption exited at 1480/1636 with EROFS. WSL
-  mounted read-only as a fallback and reported I/O errors. The user subsequently
-  authorized offline repair: journal/preen repair returned 1 (corrected), the
-  final forced read-only check returned 0 after all five passes, and a normal
-  Ubuntu remount passed an fsynced read/write probe. The temporary recovery
-  distribution was removed after its exact owned registry path was checked.
-  Preserve `build/opengl-removal-wsl-recovery-root-1/result1.json` and the logs;
-  verify retained source inputs before restarting the now-terminal Qt build.
-- All 94,583 canonical vendor files match the Git blobs byte for byte. The empty
-  publication vendor directories remain untouched after automatic review
-  rejected their replacement. New frozen build snapshots link directly to the
-  verified canonical source. Never stage the vendor deletions, and never retry
-  a rejected cleanup or replacement through another command or its parent.
+- Final Windows renderer SHA256
+  `62df5e4c31bf9a1bb1bea47fd68d50e4198d6ec13d2551c991da1e7f30a2b38f`
+  and final Linux renderer SHA256
+  `374a74ea9787ccccc643e0ac7e45d9f704a41d046465828736158ac94398c4a3`
+  have same-artifact headless/native feature evidence, including the bounded
+  95-case GPU suite and nine-zero shutdown. These are scoped fixture results,
+  not claims of arbitrary shader-family or driver parity.
+- `compat/no-opengl-matrix.json` records thirteen qualified mandatory rows out of
+  fourteen. All Linux software Vulkan/X11 binding and admitted host rows pass.
+  Windows PyQt5/PyQt6/PySide6 QWidget, napari and Glue pass on the final Windows
+  artifact. Windows napari-threedee remains mandatory and unqualified after an
+  OLE/RegisterDragDrop/RPC viewer-startup timeout. The observer had no pending
+  resolver step; a later diagnostic pass did not establish a cause or close the
+  failed qualification row. Preserve the failure, stacks and diagnostic scope.
+- Reviewed Windows selected profiles and source-built Linux PyQt6/PyQt5/PySide6
+  profiles have exact hash-pinned wheels, system runtime pins, native origins
+  and original notices. The patched napari/QtPy/Glue/GlueQt wheels and CPU TBB
+  runtime closure retain their source hashes and original licenses. Use
+  `docs/offline-install-cp312.md`; ordinary upstream extras are development
+  dependencies and do not select the strict runtime profile.
+- CI and focused final-artifact Qt regression checks are active following a
+  test-only stale-assertion correction. Keep their actual pass/fail and
+  hardware-versus-software scopes; do not transfer earlier artifacts' results
+  or change immutable references to obtain a pass.
+- Preserve earlier failed candidates, source-input verification, WSL recovery
+  records and rejected-cleanup records. Shared vendor junctions remain read-only.
+  Never stage vendor deletions or retry a rejected target through another
+  command, shell or parent directory.
 
 Exactly three execution owners continue in parallel:
 
 | Agent | Next packet | Exit evidence |
 | --- | --- | --- |
-| 1 — Native | Validate generated-line sampling, depth uploads and sample-zero capture in a fresh artifact; finish the paused Linux binding builds after capacity recovery. | Actual GPU pixels, mutation/recovery tests and zero resources; source/configuration/license handoff for Qt. |
-| 2 — Python/hosts | Qualify persistent Windows binding/host consumers, investigate the intermittent PyQt5 startup hang, and replay required host flows against the final renderer. | Real mapped-window interaction/capture/recovery/shutdown; failures remain visible until resolved. |
-| 3 — Packaging/proof | Finish binding/dependency profiles, reproducible artifacts, whole-process-tree observations and current matrix documentation. | Same-artifact proof of all three gates for every mandatory row; complete hashes and notices. |
+| 1 — Native | Complete bounded causal review of the Windows OLE startup intermittency; change production behavior only for a demonstrated defect. | Preserve all failing and diagnostic attempts, native thread ownership and current feature-test evidence. |
+| 2 — Python/hosts | Finish focused final-artifact Qt regression checks and accurate installation/status signposting. | Exact installed renderer/profile identity, unchanged references, explicit hardware/software scope and honest remaining host gaps. |
+| 3 — Packaging/proof | Finish the strict offline CPython 3.12 bundle, CI and release assembly. | Hash-pinned providers and hosts, licenses/preferred sources, immutable per-row receipts and required CI results. |
 
-The coordinator integrates and tests completed packets without adding another
-execution agent. Sequence: recover capacity and verify sources; integrate ready
-changes; build a batched final native candidate; qualify each installed row;
-run required CI; publish and merge only after the release gates pass. Keep
-Windows hardware and WSL software results distinct. Metal remains experimental.
+The coordinator integrates and reviews these packets without adding another
+execution agent. Publishing and merging remain subject to the release gates;
+no diagnostic retry, old receipt or stock-Qt setup substitutes for the remaining
+mandatory row. Windows hardware and WSL software results stay distinct. Metal
+remains experimental.
 
 ## Outcome and boundaries
 
