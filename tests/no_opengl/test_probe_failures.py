@@ -10,6 +10,21 @@ import pytest
 ROOT = Path(__file__).resolve().parents[2]
 
 
+def _failure_reports(report):
+    """Keep the actual controller/worker cause in CI's retained pytest report."""
+    details = {}
+    keys = ('status', 'process_exit', 'worker_status', 'error', 'cleanup_error',
+            'workflow', 'gates', 'forbidden_modules_present')
+    for path in (report, report.with_suffix('.worker.json')):
+        if path.is_file():
+            value = json.loads(path.read_text())
+            details[path.name] = {key: value[key] for key in keys if key in value}
+    log = report.with_suffix('.process.log')
+    if log.is_file():
+        details['process_log_tail'] = log.read_bytes()[-8192:].decode('utf-8', errors='replace')
+    return json.dumps(details, indent=2)
+
+
 @pytest.mark.parametrize('wheel_exists', [False, True])
 def test_post_scenario_invalid_wheel_fails_process_and_report(tmp_path, wheel_exists):
     marker = tmp_path / 'scenario-finished.txt'
@@ -38,7 +53,7 @@ def test_binding_option_is_an_enum_not_a_filesystem_path(tmp_path):
                              '--binding', 'pyqt6', '--gates', 'imports', '--output', str(report),
                              '--workflow-id', 'tk-state', '--covered-feature', 'app.canvas', '--', '--literal', '--', 'value'],
                             capture_output=True, text=True)
-    assert result.returncode == 0, result.stdout + result.stderr
+    assert result.returncode == 0, result.stdout + result.stderr + _failure_reports(report)
     value = json.loads(report.read_text())
     worker = json.loads(Path(value['worker_report']).read_text())
     assert value['status'] == 'PASS_IMPORT_GATE_ONLY' and worker['binding'] == 'pyqt6'
