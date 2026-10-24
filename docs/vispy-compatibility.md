@@ -28,10 +28,12 @@ capture; do not treat the earlier captured failures as a product fix.
 
 The subsequent Astra review found Tk correctness gaps. Pressed-button tracking
 now supports real PanZoom/Turntable camera drags in source tests and cancels
-gestures on focus loss. Explicit-parent/NoDefaultRoot and shared
-interpreter ownership, public timer state on quit, and callback/native-progress
-behavior under run/external-mainloop modes remain open. The current tests do not establish
-these contracts. Fix and extend them before promoting Tk; passing the existing
+gestures on focus loss. Source regressions now also cover explicit-parent
+NoDefaultRoot embedding, shared-interpreter application ownership, constructor
+unwind and public timer stop/restart state. One Application rejects simultaneous
+canvases on different Tcl interpreters; use a separate Application per interpreter.
+Callback/native-progress behavior under run/external-mainloop modes and broader
+lifecycle acceptance remain open. Fix and extend them before promoting Tk; passing the existing
 suite is not sufficient. See the [current specification](superpowers/specs/2026-10-24-vispy-compatibility-gap-closure.md).
 
 Selected `gloo.gl` state calls now execute through the current canvas's ordered

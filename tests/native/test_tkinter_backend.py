@@ -263,3 +263,170 @@ def test_scene_camera_drag_changes_view_and_render(application, camera_kind):
     after_pixels = canvas.render(alpha=True)
     assert not np.array_equal(before_pixels, after_pixels)
     canvas.close()
+
+
+def test_explicit_parent_without_default_root(monkeypatch):
+    import tkinter as tk
+    monkeypatch.setattr(tk, '_support_default_root', False)
+    monkeypatch.delattr(tk, '_default_root', raising=False)
+    root = tk.Tk()
+    application = app.Application('tkinter')
+    try:
+        canvas = app.Canvas(app=application, parent=root, size=(192, 128))
+        assert application.native is root
+        canvas.native.pack()
+        paint(canvas)
+        canvas.update()
+        wait(application, lambda: canvas._backend._photo is not None)
+        application.quit()
+        assert root.winfo_exists()
+        assert not root.winfo_children()
+    finally:
+        application.quit()
+        root.update_idletasks()
+        root.destroy()
+
+
+def test_shared_root_survives_first_application_quit():
+    first = app.Application('tkinter')
+    second = app.Application('tkinter')
+    root = first.native
+    one = app.Canvas(app=first, size=(192, 128))
+    two = app.Canvas(app=second, size=(192, 128), show=True)
+    try:
+        assert second.native is root
+        paint(two)
+        first.quit()
+        assert one._closed and not two._closed
+        assert root.winfo_exists()
+        two.update()
+        wait(second, lambda: two._backend._photo is not None)
+    finally:
+        first.quit()
+        second.quit()
+
+
+def test_quit_updates_timer_state_and_restart_rebinds_root():
+    application = app.Application('tkinter')
+    ticks = []
+    timer = app.Timer(app=application, interval=.001,
+                      connect=lambda event: ticks.append(event.iteration), start=True)
+    old_root = application.native
+    application.quit()
+    assert not timer.running and timer._backend._job is None
+    try:
+        timer.start(iterations=1)
+        assert application.native is not old_root
+        wait(application, lambda: len(ticks) == 1 and not timer.running)
+    finally:
+        application.quit()
+
+
+def test_external_root_destruction_stops_native_canvas_and_timer():
+    import tkinter as tk
+    root = tk.Tk()
+    application = app.Application('tkinter')
+    canvas = app.Canvas(app=application, parent=root, size=(192, 128))
+    timer = app.Timer(app=application, interval=10, start=True)
+    root.update_idletasks()
+    root.destroy()
+    assert canvas._closed and canvas._backend._dawn_canvas_id == 0
+    assert not timer.running and timer._backend._job is None
+    application.quit()  # Idempotent after externally initiated destruction.
+
+
+@pytest.mark.parametrize('stage', ['widget', 'image', 'binding'])
+def test_early_widget_construction_failure_unwinds(application, monkeypatch, stage):
+    import tkinter as tk
+    root = application.native
+    before = set(root.winfo_children())
+
+    def fail(*args, **kwargs):
+        raise ValueError('intentional early ' + stage)
+
+    if stage == 'widget':
+        monkeypatch.setattr(tk, 'Canvas', fail)
+    elif stage == 'image':
+        monkeypatch.setattr(tk.Canvas, 'create_image', fail)
+    else:
+        monkeypatch.setattr(tk.Canvas, 'bind', fail)
+    with pytest.raises(ValueError, match='intentional early ' + stage):
+        app.Canvas(app=application, size=(192, 128))
+    assert set(root.winfo_children()) == before
+    assert not application._backend._canvases
+
+
+def test_unrelated_tk_window_survives_owning_application_quit():
+    import tkinter as tk
+    application = app.Application('tkinter')
+    root = application.native
+    unrelated = tk.Toplevel(root)
+    canvas = app.Canvas(app=application, size=(192, 128))
+    application.quit()
+    try:
+        assert canvas._closed
+        assert root.winfo_exists() and unrelated.winfo_exists()
+        assert application._backend._root is None
+        root.update()
+    finally:
+        root.update_idletasks()
+        root.destroy()
+
+
+def test_live_application_refuses_second_interpreter_without_touching_it():
+    import tkinter as tk
+    first = tk.Tk()
+    second = tk.Tk()
+    application = app.Application('tkinter')
+    try:
+        canvas = app.Canvas(app=application, parent=first, size=(192, 128))
+        with pytest.raises(RuntimeError, match='multiple live Tcl interpreters'):
+            app.Canvas(app=application, parent=second, size=(192, 128))
+        assert application.native is first
+        assert not second.winfo_children()
+        assert not canvas._closed
+    finally:
+        application.quit()
+        first.update_idletasks()
+        first.destroy()
+        second.update_idletasks()
+        second.destroy()
+
+
+def test_root_recreated_after_external_destruction():
+    import tkinter as tk
+    root = tk.Tk()
+    application = app.Application('tkinter')
+    canvas = app.Canvas(app=application, parent=root, size=(192, 128))
+    root.update_idletasks()
+    root.destroy()
+    try:
+        next_canvas = app.Canvas(app=application, size=(192, 128), show=True)
+        assert next_canvas._backend._dawn_canvas_id and canvas._closed
+        assert application.native is not root
+        paint(next_canvas)
+        next_canvas.update()
+        wait(application, lambda: next_canvas._backend._photo is not None)
+    finally:
+        application.quit()
+
+
+def test_constructor_preserves_originating_error_when_cleanup_also_fails(application, monkeypatch):
+    from vispy import _dawn
+    from vispy.app.backends import _dawn_tk
+    root = application.native
+    before = set(root.winfo_children())
+    original = _dawn_tk.CanvasBackend._vispy_close
+
+    def register_failure(*args):
+        raise ValueError('originating allocation error')
+
+    def cleanup_failure(self):
+        original(self)
+        raise RuntimeError('secondary cleanup error')
+
+    monkeypatch.setattr(_dawn, 'register_canvas', register_failure)
+    monkeypatch.setattr(_dawn_tk.CanvasBackend, '_vispy_close', cleanup_failure)
+    with pytest.raises(ValueError, match='originating allocation error'):
+        app.Canvas(app=application, size=(192, 128))
+    assert set(root.winfo_children()) == before

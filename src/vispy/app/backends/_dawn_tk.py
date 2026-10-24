@@ -9,7 +9,7 @@ import time
 import weakref
 
 from ..base import BaseApplicationBackend, BaseCanvasBackend, BaseTimerBackend
-from ...util import keys
+from ...util import keys, logger
 
 try:
     import tkinter as tk
@@ -38,10 +38,59 @@ def _set_config(config):
     return config
 
 
+def _exists(widget):
+    if widget is None:
+        return False
+    try:
+        return bool(widget.winfo_exists())
+    except tk.TclError:
+        return False
+
+
+_root_states = {}
+
+
+class _RootState:
+    """Ownership belongs to a Tcl interpreter, not its first VisPy app."""
+    def __init__(self, root, owned):
+        self.root = root
+        self.owned = owned
+        self.apps = weakref.WeakSet()
+        self.binding = root.bind('<Destroy>', self._destroyed, add='+')
+        _root_states[root] = self
+
+    def _destroyed(self, event):
+        if event.widget is not self.root:
+            return
+        _root_states.pop(self.root, None)
+        for application in list(self.apps):
+            application._root = None
+            application._root_state = None
+            application._owns_root = False
+            for timer in list(application._timers):
+                timer._vispy_timer.stop()
+        self.apps.clear()
+
+    def release(self, application):
+        self.apps.discard(application)
+        if self.apps:
+            return
+        _root_states.pop(self.root, None)
+        if _exists(self.root):
+            self.root.unbind('<Destroy>', self.binding)
+            # A user may have added unrelated Tk windows to a VisPy-created
+            # interpreter. Never destroy that work merely because we quit.
+            if self.owned and not self.root.winfo_children():
+                self.root.update_idletasks()
+                self.root.destroy()
+
+
 class ApplicationBackend(BaseApplicationBackend):
     def __init__(self):
         self._root = None
         self._owns_root = False
+        self._root_state = None
+        self._running = False
         self._canvases = weakref.WeakSet()
         self._timers = weakref.WeakSet()
 
@@ -50,12 +99,34 @@ class ApplicationBackend(BaseApplicationBackend):
 
     def _vispy_get_native_app(self):
         if self._root is None:
-            self._root = tk._default_root
-            if self._root is None:
-                self._root = tk.Tk()
-                self._root.withdraw()
-                self._owns_root = True
+            root = getattr(tk, '_default_root', None)
+            owned = root is None
+            if owned:
+                root = tk.Tk()
+                root.withdraw()
+            self._attach_root(root, owned)
         return self._root
+
+    def _attach_root(self, root, owned=False):
+        if root is self._root:
+            return
+        if self._root_state is not None:
+            if self._canvases or any(timer._job is not None for timer in self._timers):
+                raise RuntimeError('One Tk Application cannot use multiple live Tcl interpreters')
+            self._root_state.release(self)
+        state = _root_states.get(root)
+        if state is None:
+            state = _RootState(root, owned)
+        state.apps.add(self)
+        self._root_state = state
+        self._root = root
+        self._owns_root = state.owned
+
+    def _vispy_prepare_canvas(self, parent):
+        if parent is not None:
+            if not _exists(parent):
+                raise RuntimeError('Tk canvas parent has been destroyed')
+            self._attach_root(parent._root())
 
     def _vispy_process_events(self):
         from vispy import _dawn
@@ -75,18 +146,24 @@ class ApplicationBackend(BaseApplicationBackend):
                 raise error
 
     def _vispy_run(self):
-        self._vispy_get_native_app().mainloop()
+        self._running = True
+        try:
+            self._vispy_get_native_app().mainloop()
+        finally:
+            self._running = False
 
     def _vispy_quit(self):
         for timer in list(self._timers):
-            timer._vispy_stop()
+            timer._vispy_timer.stop()
         for backend in list(self._canvases):
             backend._vispy_canvas.close()
-        if self._root is not None and self._owns_root:
-            self._root.update_idletasks()
-            self._root.destroy()
-            self._root = None
-            self._owns_root = False
+        if self._running and _exists(self._root):
+            self._root.quit()
+        if self._root_state is not None:
+            self._root_state.release(self)
+        self._root_state = None
+        self._root = None
+        self._owns_root = False
 
 
 class CanvasBackend(BaseCanvasBackend):
@@ -106,25 +183,28 @@ class CanvasBackend(BaseCanvasBackend):
         self._position = (0, 0)
         self._fullscreen = bool(p.fullscreen)
         self._samples = int(p.context.config.get('samples', 0) or 0)
-        self._top = tk.Toplevel(root) if p.parent is None else None
-        if self._top is not None:
-            self._top.withdraw()
-        parent = self._top if self._top is not None else p.parent
-        self._widget = tk.Canvas(parent, width=self._size[0], height=self._size[1],
-                                 highlightthickness=0, borderwidth=0, takefocus=True)
-        self._image_item = self._widget.create_image(0, 0, anchor='nw')
-        self._widget.bind('<Destroy>', self._on_destroy, add='+')
-        self._widget.bind('<Configure>', self._on_resize, add='+')
-        self._widget.bind('<Expose>', lambda event: self._vispy_update(), add='+')
-        self._widget.bind('<Motion>', self._on_motion)
-        self._widget.bind('<ButtonPress>', self._on_press)
-        self._widget.bind('<ButtonRelease>', self._on_release)
-        self._widget.bind('<FocusOut>', self._on_focus_out)
-        self._widget.bind('<MouseWheel>', self._on_wheel)
-        self._widget.bind('<KeyPress>', lambda event: self._on_key(event, True))
-        self._widget.bind('<KeyRelease>', lambda event: self._on_key(event, False))
+        self._top = None
+        self._widget = None
+        self._dawn_canvas_id = 0
         from vispy import _dawn
         try:
+            self._top = tk.Toplevel(root) if p.parent is None else None
+            if self._top is not None:
+                self._top.withdraw()
+            parent = self._top if self._top is not None else p.parent
+            self._widget = tk.Canvas(parent, width=self._size[0], height=self._size[1],
+                                     highlightthickness=0, borderwidth=0, takefocus=True)
+            self._image_item = self._widget.create_image(0, 0, anchor='nw')
+            self._widget.bind('<Destroy>', self._on_destroy, add='+')
+            self._widget.bind('<Configure>', self._on_resize, add='+')
+            self._widget.bind('<Expose>', lambda event: self._vispy_update(), add='+')
+            self._widget.bind('<Motion>', self._on_motion)
+            self._widget.bind('<ButtonPress>', self._on_press)
+            self._widget.bind('<ButtonRelease>', self._on_release)
+            self._widget.bind('<FocusOut>', self._on_focus_out)
+            self._widget.bind('<MouseWheel>', self._on_wheel)
+            self._widget.bind('<KeyPress>', lambda event: self._on_key(event, True))
+            self._widget.bind('<KeyRelease>', lambda event: self._on_key(event, False))
             self._dawn_canvas_id = int(_dawn.register_canvas(*self._size, self._samples, False))
             p.context.shared.add_ref('dawn-tk', self)
             from ...gloo.dawn_parser import install_gl_queries
@@ -145,7 +225,10 @@ class CanvasBackend(BaseCanvasBackend):
             vispy_canvas.events.resize(size=self._size, physical_size=self._size)
             self._vispy_set_visible(p.show)
         except BaseException:
-            self._vispy_close()
+            try:
+                self._vispy_close()
+            except Exception:
+                logger.error('Tk canvas construction cleanup failed', exc_info=True)
             raise
 
     def _vispy_set_current(self):
@@ -318,11 +401,12 @@ class CanvasBackend(BaseCanvasBackend):
             self._dawn_canvas_id = 0
         self._photo = None
         self._application._canvases.discard(self)
-        if self._widget.winfo_exists():
+        if _exists(self._widget):
             self._widget.destroy()
-        if self._top is not None and self._top.winfo_exists():
+        if _exists(self._top):
             self._top.destroy()
-        if not self._application._canvases and self._application._owns_root:
+        if (not self._application._canvases and self._application._running
+                and _exists(self._application._root)):
             self._application._root.quit()
 
 
@@ -337,6 +421,7 @@ class TimerBackend(BaseTimerBackend):
 
     def _vispy_start(self, interval):
         self._vispy_stop()
+        self._root = self._application._vispy_get_native_app()
         self._interval = max(1, round(interval * 1000))
         self._schedule(self._generation)
 
@@ -346,8 +431,13 @@ class TimerBackend(BaseTimerBackend):
     def _vispy_stop(self):
         self._generation += 1
         if self._job is not None:
-            self._root.after_cancel(self._job)
-            self._job = None
+            try:
+                self._root.after_cancel(self._job)
+            except tk.TclError:
+                if _exists(self._root):
+                    raise
+            finally:
+                self._job = None
 
     def _timeout(self, generation):
         self._job = None

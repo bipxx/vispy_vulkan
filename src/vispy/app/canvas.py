@@ -231,6 +231,11 @@ class Canvas(object):
         """
         if self._backend is not None:
             return
+        # Toolkits with explicit parent/interpreter ownership must see the
+        # parent before creating a default native application.
+        prepare = getattr(self._app._backend, '_vispy_prepare_canvas', None)
+        if prepare is not None:
+            prepare(self._backend_kwargs.get('parent'))
         # Make sure that the app is active
         assert self._app.native
         # Instantiate the backend with the right class

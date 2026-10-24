@@ -80,6 +80,17 @@ plus three immediate-state cases. This is source evidence using reused native
 binaries, not installed qualification. Remaining TK-6 modifier/double-click and
 ownership/event-loop work stays open; R1 is partially addressed, not closed.
 
+Ownership follow-up: interpreter-level application tracking now preserves live
+canvases across another application's quit and retains unrelated Tk windows.
+Canvas preparation selects an explicit parent's interpreter before default-app
+creation, including NoDefaultRoot embedding. Early widget/image/binding failure
+unwinds owned allocations while preserving the originating exception. Quit
+updates public timer state; restarting binds a recreated root. External root
+destruction and re-entry are covered. Twenty-six combined Tk/state cases pass
+on Windows and WSL software Vulkan, plus thirteen package/source contracts.
+R3 has source regression evidence for these cases, but full lifecycle/loop/error
+and installed-artifact acceptance remain open; do not close TK-1/4 wholesale.
+
 1. Reproduce the missing pressed-button state using a real SceneCanvas camera.
    Add regression expectations before changing input dispatch; include release
    outside/focus loss and modifiers. Do not weaken camera code to hide bad events.
