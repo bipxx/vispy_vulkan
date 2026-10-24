@@ -30,6 +30,8 @@ PREPARATION_TOOLS = (
     'tools/compatibility_execution.py', 'compat/vispy-execution.schema.json',
     'tools/compatibility_qualification.py', 'compat/vispy-admission-selection.schema.json',
     'tools/qualification_ci.py', 'compat/qualification-ci.schema.json', 'compat/qualification-ci.json',
+    'tools/qualification_artifact.py', 'compat/qualification-artifact.schema.json',
+    'compat/qualification-producers.json', 'cmake/native_sdk.py',
     '.github/workflows/linux-vulkan.yml', '.github/workflows/metal-wheel.yml',
     'tools/no_opengl/policy.py', SPEC,
     'compat/vispy-candidate.schema.json', 'compat/vispy-compatibility.schema.json',

@@ -2057,3 +2057,29 @@ check, environment or managed scratch is created. Product source, all original
 142 parents and required host/platform obligations remain unchanged. H4's exact
 artifact/provenance/retention joins and promotion basis/envelope are still pending,
 as are actual implementation/scope review, installed evidence and H5 promotion.
+
+## Archive and vendor-SDK source checkpoint (H4b, EV-1/2, ART-1/2)
+
+`tools/qualification_artifact.py` and its closed schema implement read-only
+archive prerequisites. They reuse the existing runtime package membership and
+PE/ELF parsers, compare every shipped source/notice/license and native output
+byte, check distribution membership, unique AGPL/name/version/ABI metadata and
+complete RECORD hashes/sizes. Wrong x86-64 architecture rejects even with a
+matching supplied native hash. Source-native inputs and wheel references must
+be retained outside managed scratch. An archive pass does not establish native
+producer admission, installed origin, functional behavior or absence gates.
+
+The versioned producer-prerequisite policy permits only the existing immutable
+Windows vendor SDK digest/compiler for vendor reuse. The SDK bridge calls the
+existing full native_sdk verifier, checks its policy-verifier identity and still
+reports native-leaf/artifact admission false. Linux's experimental producer stays
+blocked and Metal experimental. A policy boolean or source-pass count cannot
+upgrade either. No new SDK, wheel, native build, environment or scratch is created.
+Tests use tiny in-memory synthetic archives and explicit synthetic SDK delegation,
+plus actual original notice sources; they supply no actual producer approval.
+
+The complete leaf build/source/compiler/ABI provenance and original installed
+functional/absence/control/shutdown joins remain H4 prerequisites. Immutable
+subject, full attempt/disposition index, retention, promotion basis/envelope,
+independent H2 source/scope approval and real H5 admission remain open. Every
+original parent and mandatory host/platform obligation is preserved.

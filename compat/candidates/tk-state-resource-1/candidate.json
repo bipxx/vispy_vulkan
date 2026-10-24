@@ -2,7 +2,7 @@
   "schema": 1,
   "phase": "development",
   "id": "tk-state-resource-1",
-  "manifest_sha256": "5e34825e953f925e3fe73537bd7d291195c5487d52a93d2349394cc11f66f01d",
+  "manifest_sha256": "88ed2ecd01f5d21508994631e957f82d2c90ed3b11d734c3521cf843c20e3de3",
   "product_source_commit": "6345ceef42df1a64a7401a83c2d1a30384903cd1",
   "upstream_commit": "117b054598f4758b598f4b8f48feea48c11fe7b0",
   "ledger": {
@@ -1124,7 +1124,7 @@
   "preparation_tools": [
     {
       "path": "tools/compatibility_candidate.py",
-      "sha256": "128f69ffd5b432e3ea3e6e2e59e5bef26cdf922c6442501467fc0ec22a970ebe"
+      "sha256": "eb57402892cdd8774187ded0b0c146c6b75dd8563f896ff6d9c0304093e8435f"
     },
     {
       "path": "tools/compatibility_inventory.py",
@@ -1172,7 +1172,23 @@
     },
     {
       "path": "compat/qualification-ci.json",
-      "sha256": "8f740e3ffa5d42a852b3c83b3d04390e7904dd07b4a82c5145145763c612eb5e"
+      "sha256": "03f64931fe60f58260e4bb1bcae1ab0f9f2399348c914c29c716a5056c5ca8d9"
+    },
+    {
+      "path": "tools/qualification_artifact.py",
+      "sha256": "62aa56667ac9e9f3bdac9bdcb87f14a4e9e442eef25b7abc744dc029cf12e04c"
+    },
+    {
+      "path": "compat/qualification-artifact.schema.json",
+      "sha256": "d34cc3ccee84b9418e1160eae57d71dbe214d8c0b08f76b5c8c4ab30d786b003"
+    },
+    {
+      "path": "compat/qualification-producers.json",
+      "sha256": "43592fe7da44753dd29bcb11804e93d4d755b43157e2c6a972429e184d046c16"
+    },
+    {
+      "path": "cmake/native_sdk.py",
+      "sha256": "b86fece76b81c2e9429fd49f9468a0d735dfaff8ffe00f821635c90a69019601"
     },
     {
       "path": ".github/workflows/linux-vulkan.yml",
@@ -1188,7 +1204,7 @@
     },
     {
       "path": "docs/superpowers/specs/2026-10-24-vispy-compatibility-gap-closure.md",
-      "sha256": "a68e857e3e7ee9e59bfa6d8bfd3771659970e87383bd0c7c5855566bfbcdfdbc"
+      "sha256": "abcb847f185e0c5d6c988d6d429cb3625a29a55c3b2a9a41990824ecfdd036bc"
     },
     {
       "path": "compat/vispy-candidate.schema.json",
@@ -1208,7 +1224,7 @@
     },
     {
       "path": ".github/workflows/cpu-contract.yml",
-      "sha256": "21951ed7259720e458df4960f58dd37c7db995249f83242deec7fae0773238d2"
+      "sha256": "e43c3e443cef811894008e1c2e608d68ce47d80f14856529ae5478ec23a63738"
     },
     {
       "path": "tools/audit_no_opengl.py",
