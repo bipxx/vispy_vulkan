@@ -161,10 +161,15 @@ software allowance and nine-zero shutdown. Only VisPy was reinstalled; host and
 provider metadata/RECORD bytes and the system package inventory stayed unchanged.
 The Python worktree's `build/no-opengl-linux-finalrenderer1/summary1.json` and
 individual matrix evidence references preserve these results separately from
-the earlier `2e709...` artifacts. Eleven of fourteen mandatory rows are now
-qualified. Windows napari-threedee and the Linux PyQt5/PySide6 installed rows
-remain unqualified; packaged or portable toolkit smoke alone does not qualify
-them.
+the earlier `2e709...` artifacts. The Linux PySide6 QWidget row also now passes
+all three gates in a new strict rootfs on the same renderer, with the normative
+Qt/PySide 6.12 profile. All 761 provider-wheel members, 50 source ELF hashes,
+ten imports and loaded native origins were verified, followed by actual mapped
+X11 lifecycle/input/capture/recovery/close and nine-zero shutdown. Its Python
+worktree receipt is `build/no-opengl-linux-pyside6-finalrenderer1/summary1.json`.
+Twelve of fourteen mandatory rows are now qualified. Windows napari-threedee
+and the Linux PyQt5 installed row remain unqualified; packaged or portable
+toolkit smoke alone does not qualify them.
 
 The 2026-10-23 Linux continuation encountered a WSL filesystem failure. The
 resumed Qt 6.12 build reached 1480/1636 actions before
@@ -183,10 +188,10 @@ temporary helper after verifying its exact registration path. The receipt is
 `build/opengl-removal-wsl-recovery-root-1/result1.json` in the canonical workspace.
 A full backup could not fit in the available space; this is recorded in that
 receipt. After source/archive verification, Qt 6.12 runtime and SVG builds
-completed successfully. Selected PySide6/Shiboken source compilation, module
-smoke, relocation and the 50-ELF closure are complete; normative wheel packaging
-and actual installed VisPy qualification remain pending. Qt5 is a separate
-subsequent build. Historical Linux proofs above remain scoped to their earlier exact
+completed successfully. Selected PySide6/Shiboken compilation, normative
+packaging and installed mapped VisPy qualification are complete. Qt5/PyQt5
+source compilation and normative packaging are also complete, with actual
+installed qualification still pending. Historical Linux proofs above remain scoped to their earlier exact
 artifacts; recovery itself earns no new package or runtime qualification.
 
 The Windows N3/N4/N5 SDK-backed attempt from source `99d110b6b` and frozen source
@@ -208,7 +213,7 @@ package/source-contract tests. Those checks do not replace the pending native
 build, installed GPU runs or three-gate receipts for the changed artifact.
 
 Remaining work includes the final Windows napari-threedee timeout and Linux
-Qt5/PyQt5 and Qt6.12/PySide6 source packaging and actual installed runtime
+Qt5/PyQt5 actual installed runtime
 qualification, and the remaining required host/platform matrix. The initial
 PyQt6 host results above are real rendering admission for those exact artifacts;
 the complete release matrix remains incomplete. DIVE and visbrain remain

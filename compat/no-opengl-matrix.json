@@ -551,9 +551,9 @@
       "application": "qwidget",
       "binding": "pyside6",
       "mandatory": true,
-      "status": "PENDING",
-      "artifact_sha256": null,
-      "environment_id": null,
+      "status": "QUALIFIED",
+      "artifact_sha256": "374a74ea9787ccccc643e0ac7e45d9f704a41d046465828736158ac94398c4a3",
+      "environment_id": "373f37c73cf7f58e07789c7e22fd06ee015e19b53ac4dc03bd423f8e80a513e3",
       "features": [
         "launch",
         "initial-render",
@@ -564,11 +564,47 @@
         "close"
       ],
       "gates": {
-        "no_gl_execution": "UNVERIFIED",
-        "no_gl_loads": "UNVERIFIED",
-        "no_gl_install_link_requirement": "UNVERIFIED"
+        "no_gl_execution": "PASS",
+        "no_gl_loads": "PASS",
+        "no_gl_install_link_requirement": "PASS"
       },
-      "evidence": []
+      "evidence": [
+        {
+          "workspace": "vispy_vulkan-opengl-python",
+          "path": "build/no-opengl-linux-pyside6-finalrenderer1/summary1.json",
+          "sha256": "07d87ed37e3100946489c40b8a05daf9c4dc6dd42fcab1630e4b7e6c7d24f0aa"
+        },
+        {
+          "workspace": "vispy_vulkan-opengl-python",
+          "path": "build/no-opengl-linux-pyside6-finalrenderer1/qualified/qualified2.json",
+          "sha256": "afde899c22ccc15395f8e457c0ee8d064de4e5c70afcf59244bb31ab307e9077"
+        },
+        {
+          "workspace": "vispy_vulkan-opengl-python",
+          "path": "build/no-opengl-linux-pyside6-finalrenderer1/qualified/qualified2.worker.json",
+          "sha256": "5dc98bcaeb11cee93f68ec748317037237fa53af4605fdec44fd8893da603bf7"
+        },
+        {
+          "workspace": "vispy_vulkan-opengl-python",
+          "path": "build/no-opengl-linux-pyside6-finalrenderer1/qualified/receipt1.json",
+          "sha256": "09807b3725e634ca90473bd24b10c6f1d0ce7693d376a9210428066ffb2b53f2"
+        },
+        {
+          "workspace": "vispy_vulkan-opengl-python",
+          "path": "build/no-opengl-linux-pyside6-finalrenderer1/qualified/qualified2-functional/functional.json",
+          "sha256": "dd76725b83040b915815ab3a66d23c7dab09d259b3b8cd19d48008769ba32dcc"
+        },
+        {
+          "workspace": "vispy_vulkan-opengl-python",
+          "path": "build/no-opengl-linux-pyside6-finalrenderer1/provider-member1.json",
+          "sha256": "ab1a4c88668022d8507653c8ef51ab4b0e1006a027be39630ca858584fb81034"
+        }
+      ],
+      "qualification_scope": "New strict rootfs; source-built Qt/PySide6.12 normative profile761provider members/all50ELFs; mappedX11 QWidget full lifecycle/input/capture/recovery/close; explicitLavapipe software; exact536renderer members and ninezero globalshutdown; no nativeLinuxhardwareclaim",
+      "provider_profile": {
+        "path": "compat/qt/linux-pyside6-no-opengl.json",
+        "sha256": "ce209059472f57221b03c13a44fb09331ff926edfa42e9b196b9eb659fb8a454"
+      }
     },
     {
       "id": "wsl-linux-lavapipe-x11-napari-pyqt6",
