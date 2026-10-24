@@ -186,3 +186,57 @@ and has not yet qualified a final installed wheel.
 Follow [build hygiene](build-hygiene.md) for experiments. Keep durable receipts
 outside scratch and reference stable artifacts by hash. A new validator/schema
 or inventory edit requires CPU checks, not a native wheel or environment clone.
+
+
+## Recorded Tk/state source observations
+
+The canonical ledger now appends two **optional development profiles**:
+`source-windows-vulkan-tk86-cp312` and
+`source-wsl-software-vulkan-tk86-cp312`. They record selected observed behavior,
+not final required-platform applicability or shipping admission. All 142 original
+required feature/unassigned pairs, their unresolved rows and source-export pins
+remain unchanged. No required work became optional or nonapplicable; the new
+optional pairs belong only to these additional development profiles. The full
+inventory remains unreviewed and `--require-complete` still fails with 142
+incomplete required rows.
+
+Each profile has source-tested observations for Application, the Tk backend,
+Canvas, Timer, GLContext, Program, Texture2D and the selected GL-shaped query
+route. Row fixture node IDs, parameter counts and independent expected outcomes
+name the actual ordinary/mutation subset. Profile-local dependencies bind those
+observations to the same recorded runtime source and profile. A composite
+sharing fixture proves both initial output and later updates; using it in two
+acceptance roles does not count it as two executed cases.
+
+Original reports and receipts live under
+[`compat/receipts/tk-state-source-17`](../compat/receipts/tk-state-source-17/README.md).
+The 14 selected fixture functions collect 37 cases on each platform. The raw
+qualification reports include successful setup/call/teardown, and each original
+observation contains interpreter/base executable hashes, dependency lock hash,
+native contract/manifest identity, toolkit identity, source-member hashes,
+adapter/software status and all nine zero native shutdown gauges. The WSL
+observation also retains loaded-library identities. These are observed-source
+profiles, not complete installed dependency-closure audits.
+
+`environment_sha256` pins that profile's exact observation JSON. The optional
+source receipt `observation` file reference must have that same hash, a matching
+profile ID, successful exit/status and complete zero shutdown gauges. The
+validator rejects failed, borrowed, mismatched or incomplete observations. That
+field is source-only and cannot back an installed claim. Existing synthetic or
+legacy receipts without that field retain their existing validation contract;
+installed/qualified rows still require every original wheel/member/observer gate.
+
+Runtime source identity remains the exact product commit exercised by these
+observations; the later inventory metadata commit does not relabel it. Native
+binaries and their producer manifests are reused unchanged. All source rows
+retain blockers for broader method/enum/format coverage, required-profile
+reconciliation, independent implementation review and exact installed gates.
+The Linux toolkit/scissor failures, mandatory threedee row and Tcl shutdown
+attribution remain open. No feature-completeness percentage follows.
+
+The bootstrap generator still refuses overwrite. Its regression now verifies
+that every original feature, profile, required pair and seed row survives
+curation, rather than requiring the evolving canonical ledger to remain forever
+byte-for-byte equal to a generated seed. Synthetic promotion controls explicitly
+isolate their single test profile and cannot accidentally inherit these real
+observations.

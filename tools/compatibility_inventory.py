@@ -151,6 +151,29 @@ def passed_pytest(root, reference, fixtures):
                   f'incomplete functional receipt: {node}')
 
 
+def source_observation(root, receipt, row):
+    """Bind optional development evidence without promoting it to installed proof."""
+    try:
+        from .no_opengl.policy import LIVE_GAUGES
+    except ImportError:
+        from no_opengl.policy import LIVE_GAUGES
+    check(row['state'] == 'source-tested', 'source observation cannot back an installed claim')
+    reference = receipt['observation']
+    observation = read_json(file_ref(root, reference))
+    check(reference['sha256'] == row['identity']['profile_sha256'],
+          'source observation does not match the pinned profile')
+    check(isinstance(observation, dict) and observation.get('status') == 'PASS'
+          and type(observation.get('exit_code')) is int and observation['exit_code'] == 0,
+          'source observation failed or did not exit successfully')
+    profile = observation.get('source_profile', {})
+    check(isinstance(profile, dict) and profile.get('id') == row['profile'],
+          'source observation belongs to another profile')
+    gauges = observation.get('shutdown_gauges', {})
+    check(isinstance(gauges, dict) and all(type(gauges.get(key)) is int and gauges[key] == 0
+                                        for key in LIVE_GAUGES),
+          'source observation lacks complete zero shutdown gauges')
+
+
 def validate(ledger, root=ROOT, require_complete=False):
     root = Path(root)
     schema = read_json(root / 'compat/vispy-compatibility.schema.json')
@@ -226,6 +249,8 @@ def validate(ledger, root=ROOT, require_complete=False):
                   'receipt has missing child wait or failed exit')
             check(receipt.get('phase') == row['state'], 'receipt does not prove claimed phase')
             check(set(features[feature_id]['requirements']) <= set(receipt.get('requirements', [])), 'receipt lacks required contract mapping')
+            if 'observation' in receipt:
+                source_observation(root, receipt, row)
             passed_pytest(root, receipt['pytest'], row['fixtures'])
             if row['state'] in ('wheel-tested', 'qualified'):
                 check(row['identity']['wheel_sha256'] is not None, 'installed claim lacks wheel identity')

@@ -939,3 +939,31 @@ complete Tk shutdown qualification; source pass counts do not erase it. The
 existing Linux scissor/toolkit and threedee blockers remain distinct. Packet
 commands, source/native identities, failures and cleanup are retained locally in
 `build/runs/tk-capabilities-16/` under the unchanged hygiene policy.
+
+
+## Inventory source-observation checkpoint (I1, INV-1/2, EV-1/2)
+
+The canonical v2 ledger now retains concrete optional Windows/WSL development
+observations for eight Tk/state/resource features, with ordinary/mutation node
+IDs, exact case counts, profile-local dependencies, runtime source identity and
+original reports. Fourteen fixture functions collect 37 cases per platform; both
+runs pass with nine zero shutdown gauges. Interpreter/toolkit/native/lock and
+source identities are retained in the pinned observation JSON. No native build,
+wheel, environment or dependency history was created.
+
+All 142 original required seed pairs and rows remain unchanged and unreviewed;
+the new observations add no shipping support or full-feature claim. Six new
+controls cover real optional observations preserving required scope and failed,
+wrong-profile, live-resource, missing-gauge and wrong-pin evidence. The final
+127-case CPU CI selection passes. The bootstrap regression preserves original
+scope while permitting additive curation; the production qualification gates
+remain intact. The source-observation validator additionally checks its hash,
+profile, exit/status and all shutdown gauges before accepting the new evidence.
+
+This is partial I1 progress. Full methods/examples/events/hosts reconciliation,
+required shipping profiles, independent review, exact installed/observer gates
+and all previously retained runtime/platform restrictions remain open. See the
+[inventory guide](../../compatibility-inventory.md#recorded-tkstate-source-observations).
+`--require-complete` still fails with 142 incomplete required rows. Commands,
+source reconstruction and terminal cleanup are retained in the local
+`build/runs/inventory-map-17/` packet.

@@ -31,7 +31,9 @@ def example(tmp_path):
     feature = deepcopy(next(f for f in ledger['features'] if f['id'] == 'app.canvas'))
     row = deepcopy(next(r for r in ledger['rows'] if r['feature'] == feature['id']))
     ledger['features'], ledger['rows'] = [feature], [row]
-    ledger['applicability'] = [deepcopy(a) for a in ledger['applicability'] if a['feature'] == feature['id']]
+    ledger['profiles'] = [p for p in ledger['profiles'] if p['id'] == row['profile']]
+    ledger['applicability'] = [deepcopy(a) for a in ledger['applicability']
+                               if a['feature'] == feature['id'] and a['profile'] == row['profile']]
     ledger['applicability'][0]['reviewed'] = True  # Synthetic scope reviewed by this fixture only.
     # Tiny synthetic receipt fixtures test the auditor; they are not GPU proof.
     for name in ('compat/vispy-compatibility.schema.json', 'compat/upstream_manifest.json', inventory.SPEC):
@@ -138,6 +140,54 @@ def test_current_seed_is_valid_but_cannot_close_full_goal():
     assert result['incomplete_required_rows'] > 0
     with pytest.raises(inventory.InventoryError, match='full closure unproven'):
         inventory.validate(ledger, require_complete=True)
+
+
+def test_current_source_observations_preserve_required_scope_and_real_reports():
+    ledger = inventory.read_json(inventory.LEDGER)
+    required = [p for p in ledger['applicability'] if p['status'] == 'required']
+    assert len(required) == 142 and all(p['profile'] == 'unassigned' for p in required)
+    selected = [r for r in ledger['rows'] if r['state'] == 'source-tested']
+    assert len(selected) == 16
+    profiles = {p['id']: p for p in ledger['profiles']}
+    pairs = {(p['feature'], p['profile']): p for p in ledger['applicability']}
+    for row in selected:
+        assert pairs[row['feature'], row['profile']]['status'] == 'optional'
+        receipt = inventory.read_json(inventory.file_ref(ROOT, row['receipt']))
+        observation = inventory.read_json(inventory.file_ref(ROOT, receipt['observation']))
+        assert receipt['observation']['sha256'] == profiles[row['profile']]['environment_sha256']
+        assert observation['source_profile']['id'] == row['profile']
+        assert observation['status'] == 'PASS' and observation['exit_code'] == 0
+        assert not any(observation['shutdown_gauges'].values())
+        assert row['identity']['wheel_sha256'] is None
+        assert receipt['installed_origin_verified'] is False and 'gates' not in receipt
+        inventory.passed_pytest(ROOT, receipt['pytest'], row['fixtures'])
+    result = inventory.validate(ledger)
+    assert result['incomplete_required_rows'] == 142 and not result['reviewed']
+
+
+@pytest.mark.parametrize('change', ['failed', 'wrong-profile', 'live-resource', 'missing-gauge', 'wrong-pin'])
+def test_source_observation_cannot_borrow_an_unrelated_or_failed_environment(example, change):
+    root, ledger = example
+    receipt = promote(root, ledger)
+    observation = {'status': 'PASS', 'exit_code': 0,
+                   'source_profile': {'id': ledger['profiles'][0]['id']},
+                   'shutdown_gauges': {key: 0 for key in LIVE_GAUGES}}
+    if change == 'failed':
+        observation['status'] = 'FAIL'
+    elif change == 'wrong-profile':
+        observation['source_profile']['id'] = 'another-profile'
+    elif change == 'live-resource':
+        observation['shutdown_gauges'][next(iter(LIVE_GAUGES))] = 1
+    elif change == 'missing-gauge':
+        observation['shutdown_gauges'].pop(next(iter(LIVE_GAUGES)))
+    receipt['observation'] = write_json(root, 'evidence/observation.json', observation)
+    pin = 'f' * 64 if change == 'wrong-pin' else receipt['observation']['sha256']
+    ledger['profiles'][0]['environment_sha256'] = pin
+    ledger['rows'][0]['identity']['profile_sha256'] = pin
+    receipt['identity']['profile_sha256'] = pin
+    ledger['rows'][0]['receipt'] = write_json(root, 'evidence/receipt.json', receipt)
+    with pytest.raises(inventory.InventoryError, match='source observation'):
+        inventory.validate(ledger, root)
 
 
 def test_qualified_gate_cannot_borrow_headless_for_tk(example):
@@ -393,7 +443,14 @@ def test_export_discovery_skips_star_and_private_and_retains_aliases():
 def test_catalog_uses_pinned_bytes_and_merges_duplicate_public_exports():
     source = ROOT / 'third_party/parity/vispy/vispy'
     generated = generate(source)
-    assert generated == inventory.read_json(inventory.LEDGER)
+    curated = inventory.read_json(inventory.LEDGER)
+    # Bootstrap remains deterministic; curation may append observed profiles
+    # and rows, but cannot erase the original exports or required scope.
+    assert all(feature in curated['features'] for feature in generated['features'])
+    for field in ('upstream_commit', 'capabilities', 'related_inventories'):
+        assert generated[field] == curated[field]
+    for field in ('profiles', 'rows', 'applicability'):
+        assert all(entry in curated[field] for entry in generated[field])
     names = [feature['entry_point'] for feature in generated['features']]
     assert names.count('vispy.gloo.get_current_canvas') == 1
     assert 'vispy.visuals.VolumeVisual' in names
