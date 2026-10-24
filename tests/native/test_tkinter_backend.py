@@ -21,9 +21,23 @@ def wait(application, condition):
 
 @pytest.fixture
 def application():
+    import tkinter as tk
+    initial_root = getattr(tk, '_default_root', None)
     application = app.Application('tkinter')
     yield application
+    root = application._backend._root
     application.quit()
+    # An embedding test is the host of its explicitly adopted root. Release
+    # that test-owned interpreter after assertions, without touching a root
+    # supplied by an outer fixture or hiding a failed VisPy quit.
+    if root is not None and root is not initial_root:
+        try:
+            alive = root.winfo_exists()
+        except tk.TclError:
+            alive = False
+        if alive:
+            root.update_idletasks()
+            root.destroy()
 
 
 def paint(canvas):
@@ -369,6 +383,215 @@ def test_unrelated_tk_window_survives_owning_application_quit():
         assert application._backend._root is None
         root.update()
     finally:
+        root.update_idletasks()
+        root.destroy()
+
+
+@pytest.mark.parametrize('resource', ['timer', 'idle', 'binding', 'destroy-binding',
+                                    'command', 'variable-trace', 'tcl-command',
+                                    'namespaced-command', 'image'])
+def test_root_without_children_preserves_host_work_on_quit(resource):
+    import tkinter as tk
+    from vispy.app.backends import _dawn_tk
+    application = app.Application('tkinter')
+    root = application.native
+    state = application._backend._root_state
+    assert state.owned
+    canvas = app.Canvas(app=application, size=(192, 128), show=True)
+    paint(canvas)
+    wait(application, lambda: canvas._backend._photo is not None)
+    canvas.close()
+    assert not root.winfo_children()
+    assert canvas._backend._photo is None and canvas._backend._dawn_canvas_id == 0
+    timer = app.Timer(app=application, interval=60, start=True)
+    seen = []
+    host_job = None
+    sequence = None
+    binding = None
+    command = None
+    variable = None
+    image = None
+    if resource == 'timer':
+        host_job = root.after(60000, lambda: seen.append('host'))
+    elif resource == 'idle':
+        host_job = root.after_idle(lambda: seen.append('host'))
+    elif resource in ('binding', 'destroy-binding'):
+        sequence = '<<HostRootPing>>' if resource == 'binding' else '<Destroy>'
+        binding = root.bind(sequence, lambda event: seen.append('host'), add='+')
+    elif resource == 'command':
+        command = root.register(lambda: seen.append('host'))
+    elif resource == 'variable-trace':
+        variable = tk.StringVar(master=root, value='before')
+        variable.trace_add('write', lambda *args: seen.append('host'))
+    elif resource == 'image':
+        image = tk.PhotoImage(master=root, width=1, height=1)
+        image.put('#ff0000', to=(0, 0, 1, 1))
+    elif resource == 'namespaced-command':
+        command = 'host::owned_command'
+        root.tk.eval('namespace eval host {proc owned_command {} {return host}}')
+    else:
+        command = 'host_owned_command'
+        root.tk.eval('proc host_owned_command {} {return host}')
+    try:
+        application.quit()
+        assert root.winfo_exists(), 'VisPy destroyed host work with no child windows'
+        assert application._backend._root is None
+        assert not state.owned
+        assert root not in _dawn_tk._root_states and state.progress_job is None
+        assert not timer.running and timer._backend._job is None
+        assert not seen, 'quit must not dispatch unrelated host callbacks'
+        pending = set(root.tk.call('after', 'info'))
+        assert pending == ({host_job} if host_job else set())
+        if resource == 'timer':
+            script = root.tk.call('after', 'info', host_job)[0]
+            root.tk.eval(script)
+            root.after_cancel(host_job)
+        elif resource == 'idle':
+            root.update_idletasks()
+        elif resource == 'binding':
+            root.deiconify()
+            root.update()
+            root.event_generate(sequence)
+        elif resource == 'destroy-binding':
+            assert binding in root.bind(sequence)
+            root.destroy()
+        elif resource == 'variable-trace':
+            variable.set('after')
+        elif resource == 'image':
+            assert image.get(0, 0) == (255, 0, 0)
+            seen.append('host')
+        elif resource in ('tcl-command', 'namespaced-command'):
+            seen.append(root.tk.call(command))
+        else:
+            root.tk.call(command)
+        assert seen == ['host']
+    finally:
+        application.quit()
+        try:
+            if root.winfo_exists():
+                root.update_idletasks()
+                root.destroy()  # Host explicitly releases its adopted root.
+        except tk.TclError:
+            pass
+
+
+def test_owned_root_still_retires_when_old_vispy_image_has_an_external_reference():
+    from vispy.app.backends import _dawn_tk
+    application = app.Application('tkinter')
+    root = application.native
+    state = application._backend._root_state
+    canvas = app.Canvas(app=application, size=(192, 128), show=True)
+    paint(canvas)
+    wait(application, lambda: canvas._backend._photo is not None)
+    held_image = canvas._backend._photo
+    try:
+        canvas.close()
+        application.quit()
+        assert state.owned and not _dawn_tk._exists(root)
+        assert application._backend._root is None and state.progress_job is None
+        assert held_image is not None  # A traceback/local may retain this wrapper.
+        assert application.native is not root
+    finally:
+        application.quit()
+
+
+def test_root_adoption_query_failure_preserves_owner_until_explicit_retry(monkeypatch):
+    from vispy.app.backends import _dawn_tk
+    application = app.Application('tkinter')
+    root = application.native
+    state = application._backend._root_state
+    job = root.after(60000, lambda: None)
+    original = _dawn_tk._tcl_commands
+    attempts = []
+
+    def fail(target):
+        attempts.append(target)
+        raise RuntimeError('intentional ownership query failure')
+
+    monkeypatch.setattr(_dawn_tk, '_tcl_commands', fail)
+    try:
+        with pytest.raises(RuntimeError, match='intentional ownership query failure'):
+            application.quit()
+        assert attempts == [root]
+        assert application._backend._root_state is state
+        assert application._backend in state.apps and state.progress_job is None
+        assert set(root.tk.call('after', 'info')) == {job}
+        monkeypatch.setattr(_dawn_tk, '_tcl_commands', original)
+        application.quit()
+        assert root.winfo_exists() and application._backend._root is None
+        assert set(root.tk.call('after', 'info')) == {job}
+    finally:
+        monkeypatch.setattr(_dawn_tk, '_tcl_commands', original)
+        application.quit()
+        root.after_cancel(job)
+        root.update_idletasks()
+        root.destroy()
+
+
+def test_adopted_root_reentry_retires_only_vispy_jobs():
+    from vispy.app.backends import _dawn_tk
+    application = app.Application('tkinter')
+    root = application.native
+    host_job = root.after(60000, lambda: None)
+    try:
+        application.quit()
+        assert root.winfo_exists() and root not in _dawn_tk._root_states
+        canvas = app.Canvas(app=application, size=(192, 128))
+        state = application._backend._root_state
+        assert application.native is root and not state.owned
+        assert state.progress_job is not None
+        application.quit()
+        assert canvas._closed and canvas._backend._dawn_canvas_id == 0
+        assert root not in _dawn_tk._root_states and state.progress_job is None
+        assert set(root.tk.call('after', 'info')) == {host_job}
+    finally:
+        application.quit()
+        root.after_cancel(host_job)
+        root.update_idletasks()
+        root.destroy()
+
+
+def test_explicit_parent_adopts_created_root_with_opaque_tcl_state():
+    from vispy.app.backends import _dawn_tk
+    application = app.Application('tkinter')
+    root = application.native
+    state = application._backend._root_state
+    assert state.owned
+    root.tk.call('set', 'host_state_without_a_callback', 'preserved')
+    try:
+        canvas = app.Canvas(app=application, parent=root, size=(192, 128))
+        assert not state.owned and not application._backend._owns_root
+        application.quit()
+        assert canvas._closed and canvas._backend._dawn_canvas_id == 0
+        assert root.winfo_exists() and not root.winfo_children()
+        assert root.tk.call('set', 'host_state_without_a_callback') == 'preserved'
+        assert root not in _dawn_tk._root_states
+    finally:
+        application.quit()
+        root.update_idletasks()
+        root.destroy()
+
+
+def test_shared_root_final_release_preserves_host_work_without_children():
+    from vispy.app.backends import _dawn_tk
+    first, second = app.Application('tkinter'), app.Application('tkinter')
+    root = first.native
+    state = first._backend._root_state
+    assert second.native is root
+    host_job = root.after(60000, lambda: None)
+    try:
+        assert not root.winfo_children()
+        first.quit()
+        assert root.winfo_exists() and second._backend in state.apps
+        assert state.progress_job is not None
+        second.quit()
+        assert root.winfo_exists() and root not in _dawn_tk._root_states
+        assert first._backend._root is second._backend._root is None
+        assert set(root.tk.call('after', 'info')) == {host_job}
+    finally:
+        first.quit()
+        second.quit()
+        root.after_cancel(host_job)
         root.update_idletasks()
         root.destroy()
 

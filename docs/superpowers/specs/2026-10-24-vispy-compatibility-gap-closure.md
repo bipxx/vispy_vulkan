@@ -442,6 +442,22 @@ external parent destruction and a failed release followed by explicit retry.
 Assert widget, image, Tcl job and native ownership independently; zero native
 resource counters do not establish interpreter cleanup.
 
+Current source policy: an explicit `parent` declares host ownership of its Tcl
+interpreter, including a root created earlier by VisPy; this declaration applies
+to all applications sharing that root. Without an explicit parent, final release
+preserves a root with remaining unrelated widgets, after jobs, instance bindings
+or Tcl commands added since interpreter attachment, including child namespaces
+and variable-trace callbacks. VisPy-owned image commands are tracked weakly and
+excluded from that adoption decision, so a retained old image wrapper cannot
+prevent exclusive-root destruction. Reading `Application.native` alone is not
+an adoption declaration. Opaque Tcl state must use the explicit-parent contract.
+
+The host explicitly destroys an adopted root after its work is done. VisPy quit
+must not drain host idle callbacks to decide whether to destroy it. An ownership
+query failure retains the application/interpreter association for explicit retry;
+it must not falsely report release. Test re-entry on an adopted root and shared
+applications' final release, as well as the individual host resource kinds.
+
 ### Coordinate and input policy record (TK-5..7)
 
 Before G1c closes, retain a per-platform policy table naming units and conversion

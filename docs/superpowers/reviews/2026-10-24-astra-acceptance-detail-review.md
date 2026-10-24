@@ -32,3 +32,15 @@ The Linux scissor failure, independent plain-Tk abort, real nonblocking flush,
 new finish-side-effect finding, remaining inventory/shader/backend/host work and
 same-artifact qualification remain open. Metal remains experimental without Mac
 hardware. This pass creates documentation only and changes no runtime behavior.
+
+## Implementation follow-up: A3 ownership
+
+A later source packet implements explicit-parent adoption and preserves host
+jobs, bindings, commands, namespaces, variable traces and images on final release
+with no child widgets. A retained old VisPy image is tracked weakly and does not
+accidentally adopt an exclusive root. Query-failure retry, shared final release
+and adopted-root re-entry have regression cases. Windows Tk/state/capture passes
+100 source cases; WSL Tk/state passes 86, plus 12 packaging/source contracts.
+These results are not installed qualification. Existing Linux capture/runtime
+blockers and the other review findings remain open; no independent re-review of
+this implementation is implied by this coordinator update.

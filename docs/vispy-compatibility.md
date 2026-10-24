@@ -52,6 +52,23 @@ automatic cleanup retry loop. Callbacks cannot create new Tk canvases/interprete
 or restart timers while that application is quitting. Broader lifecycle,
 coordinate and capture acceptance remains open; see the [current specification](superpowers/specs/2026-10-24-vispy-compatibility-gap-closure.md).
 
+Tk root ownership now has an explicit adoption rule: passing `parent=<tk widget>`
+makes that interpreter host-owned, even when VisPy originally created it. The
+host releases it with `root.destroy()` after its own work finishes. Reading
+`application.native` alone does not transfer ownership. At final application
+release, an otherwise managed root is also preserved if it still contains
+unrelated child widgets, scheduled callbacks, root bindings or new Tcl commands
+(including namespaced commands and variable-trace callbacks). VisPy removes its
+own callbacks, binding, images and native resources without dispatching host idle
+work. Old VisPy image wrappers do not accidentally retain an otherwise exclusive
+root. Use an explicit parent for opaque Tcl state whose ownership cannot be
+inferred from those remaining resources.
+
+This ownership packet has 100 passing Windows Tk/state/capture source cases and
+86 passing WSL Tk/state cases, plus 12 packaging/source contracts. The WSL count
+excludes the separately failing expanded capture workflows below. These results
+reuse existing native artifacts and do not qualify a new installed wheel.
+
 Independent Windows capture tests now verify known corner colors across odd-size
 resize/device loss, single/four samples, fractional alpha, cropped float/byte
 readback, embedded capture and Tcl image replacement. Local Tk scaling settings

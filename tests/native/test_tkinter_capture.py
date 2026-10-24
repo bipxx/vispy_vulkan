@@ -24,9 +24,20 @@ def wait(application, condition):
 
 @pytest.fixture
 def application():
+    import tkinter as tk
+    initial_root = getattr(tk, '_default_root', None)
     value = app.Application('tkinter')
     yield value
+    root = value._backend._root
     value.quit()
+    if root is not None and root is not initial_root:
+        try:
+            alive = root.winfo_exists()
+        except tk.TclError:
+            alive = False
+        if alive:
+            root.update_idletasks()
+            root.destroy()
 
 
 def expected_frame(width, height):

@@ -137,6 +137,17 @@ The final headless cleanup check uses the existing viewport API so it works with
 the reused Windows native binary. This expands TK-1..4 evidence but does not close
 all lifetime interleavings or installed qualification. G1c is the next packet.
 
+Second-review ownership follow-up: explicit-parent embedding now adopts the
+interpreter for the host, including a previously VisPy-created root. Final release
+also preserves unrelated pending jobs, bindings, Tcl commands/namespaces and
+variable-trace callbacks when no child window remains. Weak ownership of VisPy
+images avoids mistaking a retained old image for host work. New source cases
+cover each resource kind, host image, explicit opaque-state adoption, query
+failure/explicit retry, shared final release and adopted-root re-entry. The final
+Windows Tk/state/capture suite passes 100 cases; WSL Tk/state passes 86, with 12
+packaging/source cases. Linux capture failures remain separate and open. This
+advances TK-1..4/A3 source acceptance without promoting an installed profile.
+
 G1c progress: fourteen new independent capture/coordinate cases pass on Windows;
 the combined Windows suite has 86 passing cases plus thirteen package/source
 contracts. Authored quadrants test odd sizes, alpha, cropped byte/float capture,

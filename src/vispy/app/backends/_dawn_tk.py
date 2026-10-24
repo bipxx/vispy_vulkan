@@ -50,6 +50,18 @@ def _exists(widget):
 _root_states = {}
 
 
+def _tcl_commands(root):
+    """Include host commands in child namespaces, not only global commands."""
+    pending = ['::']
+    commands = set()
+    while pending:
+        namespace = pending.pop()
+        pattern = '::*' if namespace == '::' else namespace + '::*'
+        commands.update(root.tk.call('info', 'commands', pattern))
+        pending.extend(root.tk.call('namespace', 'children', namespace))
+    return commands
+
+
 class _Cleanup:
     """Finish independent release steps; preserve the first failure and trace."""
     def __init__(self):
@@ -81,6 +93,10 @@ class _RootState:
         self.driver = None
         self.progress_job = None
         self.progress_enabled = False
+        # Later Tcl commands can belong to the host, including StringVar
+        # trace callbacks that are not tracked by root._tclCommands.
+        self._initial_commands = frozenset(_tcl_commands(root))
+        self._owned_images = weakref.WeakSet()
         self.binding = root.bind('<Destroy>', self._destroyed, add='+')
         _root_states[root] = self
 
@@ -165,11 +181,21 @@ class _RootState:
             if self.binding is not None:
                 self.root.unbind('<Destroy>', self.binding)
                 self.binding = None
-            # A user may have added unrelated Tk windows to a VisPy-created
-            # interpreter. Never destroy that work merely because we quit.
-            if self.owned and not self.root.winfo_children():
-                self.root.update_idletasks()
-                self.root.destroy()
+            if self.owned:
+                # Owned jobs and our binding have already retired. Remaining
+                # widgets, after jobs, instance bindings or new Tcl
+                # commands make this a host-adopted root. Do not pump its idle
+                # callbacks as part of deciding ownership or shutting down.
+                commands = _tcl_commands(self.root)
+                owned_images = {'::' + str(image).lstrip(':') for image in self._owned_images}
+                external = (self.root.winfo_children() or
+                            self.root.tk.call('after', 'info') or
+                            self.root.bind() or commands - self._initial_commands - owned_images)
+                if external:
+                    self.owned = False
+                else:
+                    self.root.update_idletasks()
+                    self.root.destroy()
         self.apps.discard(application)
         _root_states.pop(self.root, None)
 
@@ -224,6 +250,12 @@ class ApplicationBackend(BaseApplicationBackend):
             if not _exists(parent):
                 raise RuntimeError('Tk canvas parent has been destroyed')
             self._attach_root(parent._root())
+            # Supplying an explicit parent is the host's ownership declaration,
+            # even if this interpreter was originally created by VisPy. Unlike
+            # observation at release, this also covers opaque Tcl state.
+            self._root_state.owned = False
+            for application in self._root_state.apps:
+                application._owns_root = False
 
     def _vispy_process_events(self):
         state = self._root_state
@@ -395,6 +427,7 @@ class CanvasBackend(BaseCanvasBackend):
         height, width, _ = image.shape
         data = ('P6\n%d %d\n255\n' % (width, height)).encode('ascii') + image.tobytes()
         photo = tk.PhotoImage(master=self._widget, data=data, format='PPM')
+        self._application._root_state._owned_images.add(photo)
         self._widget.itemconfigure(self._image_item, image=photo)
         self._photo = photo  # Keep the Tcl image alive until it is replaced.
 
