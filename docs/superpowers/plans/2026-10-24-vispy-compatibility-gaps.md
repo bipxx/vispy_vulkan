@@ -960,3 +960,29 @@ Use one existing environment and bounded storage. Register managed scratch only
 if an actual experiment needs it, preserve failures and original licenses, and
 finish its retention/cleanup receipt before the next run. This plan/spec review
 allocates no scratch and initiates no native build or installed-artifact check.
+
+## Admission-selection source checkpoint (H4a, EV-1/2)
+
+The closed `compat/vispy-admission-selection.schema.json` and read-only
+`tools/compatibility_qualification.py` implement the first H4a selection contract.
+The initial declaration requests all 120 mapped criteria across both development
+profiles; it drops no WSL or Windows requirement. Any narrower future request
+needs a newly bound scope review. Each request expands to its complete execution
+row and all four criteria, recursively through required same-profile dependencies.
+Missing/optional dependencies, partial rows, duplicate destinations and cycles
+are rejected. The declaration binds candidate scope and execution-map semantic
+identity, excluding proof/review references to avoid an approval cycle.
+
+Strict review additionally requires the existing scope approval to name the exact
+`admission_scope_sha256`, alongside existing source/coverage/execution-map review
+checks. Actual approvals remain null. Default validation is read-only; explicit
+materialization requires separate request input and a new output path. The result
+always reports admitted/qualified/full-inventory false and names missing artifact,
+producer/installed, CI, promotion and retention proof. This is selection preparation,
+not the complete H4 index. Subject/basis/envelope, attempt index, producer/archive/
+original-gate joins and installed qualification remain required next work.
+
+Focused controls use synthetic graphs and resealed real declarations without
+launching native code. No wheel, SDK, environment, source snapshot or managed
+scratch is created by this source packet; no build assets need cleanup. Original
+142 parents, full inventory, mandatory hosts and hardware gates remain unchanged.

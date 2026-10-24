@@ -2,7 +2,7 @@
   "schema": 1,
   "phase": "development",
   "id": "tk-state-resource-1",
-  "manifest_sha256": "3d1fbde9faf55f239a7a748034f9f64f40f447731426791d813db5df5a4b657e",
+  "manifest_sha256": "d711e2777f4b1ad14cadb823b1cf4e324458a8e0d14af38a0b7162c2cfcf2dab",
   "product_source_commit": "6345ceef42df1a64a7401a83c2d1a30384903cd1",
   "upstream_commit": "117b054598f4758b598f4b8f48feea48c11fe7b0",
   "ledger": {
@@ -1124,7 +1124,7 @@
   "preparation_tools": [
     {
       "path": "tools/compatibility_candidate.py",
-      "sha256": "cf7baf486bd3766a9df1e5fd8af66bd6c373973672cf8ef85f8105fa55d98353"
+      "sha256": "afbf32912a12b4f1a0d041ae2412ad56d146fa7af1a6857d851be6a24ebd4710"
     },
     {
       "path": "tools/compatibility_inventory.py",
@@ -1155,12 +1155,20 @@
       "sha256": "d217f55cfdd36824093c44603f6a4d495812896dbac43a053a8af323a7060013"
     },
     {
+      "path": "tools/compatibility_qualification.py",
+      "sha256": "9782bbbe35ba26700001c66c5c030f6d6e90652dfeb894cf1f515cbf3a87aa6d"
+    },
+    {
+      "path": "compat/vispy-admission-selection.schema.json",
+      "sha256": "fba1dc14d08c20c40159636ca10cf524d3a0ffd32725c16c4f389569c08645cf"
+    },
+    {
       "path": "tools/no_opengl/policy.py",
       "sha256": "b2fbf966d92e62520d982c96eeb946a332fc00db454e6c5e8c8da0b34b0206d8"
     },
     {
       "path": "docs/superpowers/specs/2026-10-24-vispy-compatibility-gap-closure.md",
-      "sha256": "4e33e324d82667a8a7a8a9f9eb76bbb56c38bc0e04fbd53a82d849ba834af577"
+      "sha256": "641d8b80710541963995097f9ef65765009426e8c9f1366ce38948aa9fa6f0f9"
     },
     {
       "path": "compat/vispy-candidate.schema.json",
@@ -1180,7 +1188,7 @@
     },
     {
       "path": ".github/workflows/cpu-contract.yml",
-      "sha256": "3ac4efc9416302dd60312db143978a8640378e8f7995919ad8a88e7ccf42b3a6"
+      "sha256": "4d6e0258c8aff7cf5e8e753fc29223b500a112c589521de4b33321c66eef536d"
     },
     {
       "path": "tools/audit_no_opengl.py",
