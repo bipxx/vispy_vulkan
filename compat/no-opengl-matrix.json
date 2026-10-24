@@ -499,9 +499,9 @@
       "application": "qwidget",
       "binding": "pyqt6",
       "mandatory": true,
-      "status": "PENDING",
-      "artifact_sha256": null,
-      "environment_id": null,
+      "status": "QUALIFIED",
+      "artifact_sha256": "374a74ea9787ccccc643e0ac7e45d9f704a41d046465828736158ac94398c4a3",
+      "environment_id": "1977c5a7c1b9ad7170f5ce8dba38f56d786b7be2c4fbc5b29a8f0bca4bf9b2cd",
       "features": [
         "launch",
         "initial-render",
@@ -512,11 +512,38 @@
         "close"
       ],
       "gates": {
-        "no_gl_execution": "UNVERIFIED",
-        "no_gl_loads": "UNVERIFIED",
-        "no_gl_install_link_requirement": "UNVERIFIED"
+        "no_gl_execution": "PASS",
+        "no_gl_loads": "PASS",
+        "no_gl_install_link_requirement": "PASS"
       },
-      "evidence": []
+      "evidence": [
+        {
+          "workspace": "vispy_vulkan-opengl-python",
+          "path": "build/no-opengl-linux-finalrenderer1/summary1.json",
+          "sha256": "6c1a22f285be9b2aa590669fb8b74f12270beb29e69040fbed69f6dfdeb444a8"
+        },
+        {
+          "workspace": "vispy_vulkan-opengl-python",
+          "path": "build/no-opengl-linux-finalrenderer1/napari-threedee/qwidget-qualified2.json",
+          "sha256": "5d66cf60d6cc6c8c85f98e5a2dccbb3b8eb78f4439ad901f3932c317784bc286"
+        },
+        {
+          "workspace": "vispy_vulkan-opengl-python",
+          "path": "build/no-opengl-linux-finalrenderer1/napari-threedee/qwidget-qualified2.worker.json",
+          "sha256": "760ffb28f3dd72930b6334bb25599dc92acb35cd15337252fc9b7fb244078b3e"
+        },
+        {
+          "workspace": "vispy_vulkan-opengl-python",
+          "path": "build/no-opengl-linux-finalrenderer1/napari-threedee/receipt1.json",
+          "sha256": "15673b34ce03618571a98cd17969247ce845b6c33a2d44638360ae256551029e"
+        },
+        {
+          "workspace": "vispy_vulkan-opengl-python",
+          "path": "build/no-opengl-linux-finalrenderer1/napari-threedee/qwidget-qualified2-functional/functional.json",
+          "sha256": "678697a57187fbf3012dd6e6114440b7eb9aeede68671ee986c4f0f27b726783"
+        }
+      ],
+      "qualification_scope": "Mapped X11 source-built PyQt6; explicit Lavapipe software; exact536installedmembers and pinned host payload; full observed lifecycle/interaction/capture/recovery/close and ninezero shutdown; no nativeLinuxhardwareclaim"
     },
     {
       "id": "wsl-linux-lavapipe-x11-qwidget-pyside6",
@@ -549,9 +576,9 @@
       "application": "napari",
       "binding": "pyqt6",
       "mandatory": true,
-      "status": "PENDING",
-      "artifact_sha256": null,
-      "environment_id": null,
+      "status": "QUALIFIED",
+      "artifact_sha256": "374a74ea9787ccccc643e0ac7e45d9f704a41d046465828736158ac94398c4a3",
+      "environment_id": "1977c5a7c1b9ad7170f5ce8dba38f56d786b7be2c4fbc5b29a8f0bca4bf9b2cd",
       "features": [
         "launch",
         "initial-render",
@@ -562,11 +589,38 @@
         "close"
       ],
       "gates": {
-        "no_gl_execution": "UNVERIFIED",
-        "no_gl_loads": "UNVERIFIED",
-        "no_gl_install_link_requirement": "UNVERIFIED"
+        "no_gl_execution": "PASS",
+        "no_gl_loads": "PASS",
+        "no_gl_install_link_requirement": "PASS"
       },
-      "evidence": []
+      "evidence": [
+        {
+          "workspace": "vispy_vulkan-opengl-python",
+          "path": "build/no-opengl-linux-finalrenderer1/summary1.json",
+          "sha256": "6c1a22f285be9b2aa590669fb8b74f12270beb29e69040fbed69f6dfdeb444a8"
+        },
+        {
+          "workspace": "vispy_vulkan-opengl-python",
+          "path": "build/no-opengl-linux-finalrenderer1/napari-threedee/napari-qualified2.json",
+          "sha256": "ffa8dfbb7a464ccd1dc8cbf932e2cbaeda9a64ca4db610a3ca2ef994e422ae0b"
+        },
+        {
+          "workspace": "vispy_vulkan-opengl-python",
+          "path": "build/no-opengl-linux-finalrenderer1/napari-threedee/napari-qualified2.worker.json",
+          "sha256": "d35d30eb635bd7e54b22514a836404742952deacfdeafe1ce45669239581ca2d"
+        },
+        {
+          "workspace": "vispy_vulkan-opengl-python",
+          "path": "build/no-opengl-linux-finalrenderer1/napari-threedee/receipt1.json",
+          "sha256": "15673b34ce03618571a98cd17969247ce845b6c33a2d44638360ae256551029e"
+        },
+        {
+          "workspace": "vispy_vulkan-opengl-python",
+          "path": "build/no-opengl-linux-finalrenderer1/napari-threedee/napari-qualified2-functional/functional.json",
+          "sha256": "c70e16f548aa80c6ed4c8dbdb2478ca29e9af132111dea424801d98138b05410"
+        }
+      ],
+      "qualification_scope": "Mapped X11 source-built PyQt6; explicit Lavapipe software; exact536installedmembers and pinned host payload; full observed lifecycle/interaction/capture/recovery/close and ninezero shutdown; no nativeLinuxhardwareclaim"
     },
     {
       "id": "wsl-linux-lavapipe-x11-glue-vispy-viewers-pyqt6",
@@ -574,9 +628,9 @@
       "application": "glue-vispy-viewers",
       "binding": "pyqt6",
       "mandatory": true,
-      "status": "PENDING",
-      "artifact_sha256": null,
-      "environment_id": null,
+      "status": "QUALIFIED",
+      "artifact_sha256": "374a74ea9787ccccc643e0ac7e45d9f704a41d046465828736158ac94398c4a3",
+      "environment_id": "9f324bae6cd38d6a5739947fa7dc209fe9eacb5c1463f2e2ad31147fb7056988",
       "features": [
         "launch",
         "initial-render",
@@ -587,11 +641,38 @@
         "close"
       ],
       "gates": {
-        "no_gl_execution": "UNVERIFIED",
-        "no_gl_loads": "UNVERIFIED",
-        "no_gl_install_link_requirement": "UNVERIFIED"
+        "no_gl_execution": "PASS",
+        "no_gl_loads": "PASS",
+        "no_gl_install_link_requirement": "PASS"
       },
-      "evidence": []
+      "evidence": [
+        {
+          "workspace": "vispy_vulkan-opengl-python",
+          "path": "build/no-opengl-linux-finalrenderer1/summary1.json",
+          "sha256": "6c1a22f285be9b2aa590669fb8b74f12270beb29e69040fbed69f6dfdeb444a8"
+        },
+        {
+          "workspace": "vispy_vulkan-opengl-python",
+          "path": "build/no-opengl-linux-finalrenderer1/glue/glue-qualified2.json",
+          "sha256": "3cce0da57d1f61dc3a8d996470fad95b6c62552f0b5f25d59be86cb40f11fef3"
+        },
+        {
+          "workspace": "vispy_vulkan-opengl-python",
+          "path": "build/no-opengl-linux-finalrenderer1/glue/glue-qualified2.worker.json",
+          "sha256": "5fa3c17f3aed9337d3bc18f55ef88787e85411e5a180e6b5ddf399971d87fb76"
+        },
+        {
+          "workspace": "vispy_vulkan-opengl-python",
+          "path": "build/no-opengl-linux-finalrenderer1/glue/receipt1.json",
+          "sha256": "ddd7fff4214f2dc9a4c9ad82a8750477ccc0e73847c6b79bf91fb726aa69ba8c"
+        },
+        {
+          "workspace": "vispy_vulkan-opengl-python",
+          "path": "build/no-opengl-linux-finalrenderer1/glue/glue-qualified2-functional/functional.json",
+          "sha256": "9c66e239b2649f8dbbef046321aca7d54a9edc937ef60c5d9b67a78af3239661"
+        }
+      ],
+      "qualification_scope": "Mapped X11 source-built PyQt6; explicit Lavapipe software; exact536installedmembers and pinned host payload; full observed lifecycle/interaction/capture/recovery/close and ninezero shutdown; no nativeLinuxhardwareclaim"
     },
     {
       "id": "wsl-linux-lavapipe-x11-napari-threedee-pyqt6",
@@ -599,9 +680,9 @@
       "application": "napari-threedee",
       "binding": "pyqt6",
       "mandatory": true,
-      "status": "PENDING",
-      "artifact_sha256": null,
-      "environment_id": null,
+      "status": "QUALIFIED",
+      "artifact_sha256": "374a74ea9787ccccc643e0ac7e45d9f704a41d046465828736158ac94398c4a3",
+      "environment_id": "1977c5a7c1b9ad7170f5ce8dba38f56d786b7be2c4fbc5b29a8f0bca4bf9b2cd",
       "features": [
         "launch",
         "initial-render",
@@ -612,11 +693,38 @@
         "close"
       ],
       "gates": {
-        "no_gl_execution": "UNVERIFIED",
-        "no_gl_loads": "UNVERIFIED",
-        "no_gl_install_link_requirement": "UNVERIFIED"
+        "no_gl_execution": "PASS",
+        "no_gl_loads": "PASS",
+        "no_gl_install_link_requirement": "PASS"
       },
-      "evidence": []
+      "evidence": [
+        {
+          "workspace": "vispy_vulkan-opengl-python",
+          "path": "build/no-opengl-linux-finalrenderer1/summary1.json",
+          "sha256": "6c1a22f285be9b2aa590669fb8b74f12270beb29e69040fbed69f6dfdeb444a8"
+        },
+        {
+          "workspace": "vispy_vulkan-opengl-python",
+          "path": "build/no-opengl-linux-finalrenderer1/napari-threedee/threedee-qualified2.json",
+          "sha256": "f4a97d6166f661631973ae2069f2863d81cfc8898f6b5eaed771503fbe24021c"
+        },
+        {
+          "workspace": "vispy_vulkan-opengl-python",
+          "path": "build/no-opengl-linux-finalrenderer1/napari-threedee/threedee-qualified2.worker.json",
+          "sha256": "64c1f8cae9f9b5dd982890b9354207d179405784bd4b569a2f7dba8baffa2933"
+        },
+        {
+          "workspace": "vispy_vulkan-opengl-python",
+          "path": "build/no-opengl-linux-finalrenderer1/napari-threedee/receipt1.json",
+          "sha256": "15673b34ce03618571a98cd17969247ce845b6c33a2d44638360ae256551029e"
+        },
+        {
+          "workspace": "vispy_vulkan-opengl-python",
+          "path": "build/no-opengl-linux-finalrenderer1/napari-threedee/threedee-qualified2-functional/functional.json",
+          "sha256": "85d630cfe84df863ad5473d1de15ce8abe261fbe14c39801bb6f69cd33b07b91"
+        }
+      ],
+      "qualification_scope": "Mapped X11 source-built PyQt6; explicit Lavapipe software; exact536installedmembers and pinned host payload; full observed lifecycle/interaction/capture/recovery/close and ninezero shutdown; no nativeLinuxhardwareclaim"
     },
     {
       "id": "dive-admission",

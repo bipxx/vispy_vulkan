@@ -154,6 +154,18 @@ attempt, stack and incomplete functional report remain attached as
 `latest_attempt`; neither another host's receipt nor a historical threedee pass
 qualifies this row. No generic retry or COM behavior workaround is claimed.
 
+The final WSL Linux `374a74ea...` artifact now also qualifies the four mapped
+PyQt6 QWidget/napari/napari-threedee/Glue rows. Each complete observed fixture
+passes all three gates with exact 536-member verification, explicit Lavapipe
+software allowance and nine-zero shutdown. Only VisPy was reinstalled; host and
+provider metadata/RECORD bytes and the system package inventory stayed unchanged.
+The Python worktree's `build/no-opengl-linux-finalrenderer1/summary1.json` and
+individual matrix evidence references preserve these results separately from
+the earlier `2e709...` artifacts. Eleven of fourteen mandatory rows are now
+qualified. Windows napari-threedee and the Linux PyQt5/PySide6 installed rows
+remain unqualified; packaged or portable toolkit smoke alone does not qualify
+them.
+
 The 2026-10-23 Linux continuation encountered a WSL filesystem failure. The
 resumed Qt 6.12 build reached 1480/1636 actions before
 terminating with `EROFS`; both the resume receipt and terminal build-results
@@ -195,9 +207,8 @@ passes the expanded 95-case suite after its fix. Current Windows CPU checks pass
 package/source-contract tests. Those checks do not replace the pending native
 build, installed GPU runs or three-gate receipts for the changed artifact.
 
-Remaining work includes the final Windows napari-threedee timeout, Linux
-current-artifact GUI/host receipts, Linux Qt5/PyQt5 and Qt6.12/PySide6 source
-packaging and actual runtime
+Remaining work includes the final Windows napari-threedee timeout and Linux
+Qt5/PyQt5 and Qt6.12/PySide6 source packaging and actual installed runtime
 qualification, and the remaining required host/platform matrix. The initial
 PyQt6 host results above are real rendering admission for those exact artifacts;
 the complete release matrix remains incomplete. DIVE and visbrain remain
