@@ -36,14 +36,24 @@ except RuntimeError as error:
     seen = str(error)
 assert seen is not None and 'glLineWidth' in seen, seen
 canvas.close()
+good_draws = []
 good = app.Canvas(app=api, size=(24, 24), show=False)
 def good_draw(event):
+    good_draws.append(True)
     gloo.set_clear_color((0, 1, 0, 1))
     gloo.clear()
 good.events.draw.connect(good_draw)
 good.show()
-for _ in range(10):
+# X11 mapping and the first paint arrive asynchronously. Require a real draw
+# before checking its unchanged exact pixel result.
+import time
+deadline = time.monotonic() + 3.0
+while time.monotonic() < deadline:
     application.process_events()
+    if good_draws and good.native.isVisible():
+        break
+    time.sleep(0.005)
+assert good_draws and good.native.isVisible(), 'new canvas received no visible draw'
 pixels = _dawn.read_pixels(int(good.native._dawn_canvas_id), 0, 0, 4, 4, True)
 assert pixels.shape == (4, 4, 4) and (pixels[..., 1] == 255).all(), pixels
 good.close()
