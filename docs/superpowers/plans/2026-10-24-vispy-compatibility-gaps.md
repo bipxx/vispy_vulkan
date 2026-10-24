@@ -9,7 +9,9 @@ First packet implemented in source: Tkinter raster presentation and selected
 immediate state calls through existing native GLIR. Nine real Tk integration
 cases pass on Windows and WSL Linux; three immediate-state pixel/ordering/error
 cases also pass on both. Device loss recreates rendering without replacing the
-Tk widget. Source/package checks are required before handoff. No new native
+Tk widget. Thirteen package/source contracts pass. Linux wheel CI now exercises
+the new state route against installed wheel bytes and refuses source imports;
+its first run remains pending. No new native
 wheel, environment or recursive source snapshot was created. Installed-wheel
 qualification and the other rows below remain open. See
 `docs/vispy-compatibility.md` for API boundaries and the captured Tcl test issue.
