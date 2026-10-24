@@ -44,8 +44,8 @@ mean independently reviewed or installed-qualified completion.
 
 | Order | Current state and next concrete output | Exit before advancing the claim |
 | --- | --- | --- |
-| 1 — I2 / coordinator + proof | I1 added optional observations only; I2 transfer tooling now has the source checkpoint below. Define the concrete candidate profile/workflow manifest and independently reviewed conservation mappings for all 142 required seed obligations. | Every selected required workflow has an owner, ordinary/mutation fixtures, exclusions and exact dependencies. Unassigned obligations remain blocking until validated replacement obligations preserve their full scope. |
-| 2 — implementation review / coordinator | Q1 native queries, B4 selected Tk capabilities and L1 depth ranges have source checkpoints. Review their exact source/fixture changes and map unresolved findings. | Independent source/fixture review passes for the selected candidate. This Astra plan review does not satisfy that gate. Do not rebuild those packets merely to repeat their pass counts. |
+| 1 — I2 / coordinator + proof | The development manifest now contains 15 proposals, 30 Windows/WSL pairs and two executable workflows. Review its exact scope and reconcile methods/examples/events/wrappers into proposed conservation mappings, retaining residual required criteria. | Preparation validation passes without claiming qualification; independent scope review covers every proposed origin/successor criterion. Untouched and residual seed obligations remain blocking full closure; selected scoped work need not wait for all 142 mappings. |
+| 2 — implementation review / coordinator | Freeze and review the cumulative Q1/B4/L1, conservation/candidate tooling, shared-progress/shutdown and resource-workflow source/fixture changes, including their auditor bindings. Map unresolved findings to affected pairs. | Independent source/fixture review passes for the selected candidate. This Astra plan review does not satisfy that gate. Do not rebuild those packets merely to repeat their pass counts. |
 | 3 — bounded correctness / Python + native | Diagnose Linux toolkit capture and MSAA scissor separately; retain the required Windows threedee diagnostic packet. Select each remaining legal-state, input/DPI or lifecycle gap from concrete candidate dependencies. | Each required failure has causal evidence and a distinguishing regression, or remains a visible blocker. Hardware absence cannot excuse independent software failures. |
 | 4 — G2 / proof | Freeze the reviewed source, reuse matching artifacts or build each changed native leaf once, then audit exact installed workflows and all absence gates/controls. | Exact-member/closure audits, functional/shutdown receipts, current-head required CI and independent final promotion-evidence review pass for the same artifacts and profiles. Original mandatory host gates remain required. |
 | 5 — G4/G5/G6 and full G0 / assigned owner | Extend one named shader/backend/host subset at a time; reconcile the remaining methods, examples, events and visual families. | Reviewed finite full inventory and every applicable required pair qualified before full compatibility/complete-removal claims. No completion percentage from the seed count. |
@@ -659,3 +659,71 @@ Metal scope are unchanged. No historical optional observation is relabelled.
 All actual failures and child waits, source reconstruction and managed cleanup
 are retained locally in `build/runs/tk-shutdown-20/`, `tk-theme-trace-21/`,
 `tk-shutdown-regression-22/` and `tk-progress-23/`.
+
+
+## Concrete candidate preparation source checkpoint (I2, INV-1..3, EV-1..5)
+
+The [candidate preparation record](../../candidate-preparation.md) and versioned
+declaration now name 15 scoped proposals, 30 proposed Windows/WSL pairs and two
+real observer scripts. The new resource workflow exercises public Program,
+VertexBuffer, Texture2D and Timer operations, shared consumer close, native
+device-loss recovery and host-preserving teardown. Exact categorical GPU/Tk
+expectations wait for the actual configured target extent, not a stale image.
+An injected timer-upload error preserves the original failure and returns all
+scoped resource counters exactly to baseline; global worker shutdown still
+requires all nine zero. Final affected source suites pass 429 Windows/415 WSL.
+
+Preparation validation pins complete runtime/native/build/lock/license inputs,
+fixture/script/verifier bytes, local dependency closure and every original
+mandatory host row. It rejects changed or missing inputs, stale reviews and
+source/installed or software/hardware relabelling. The source snapshot's 603
+runtime/build/license blobs match declared commit c7e191ee8ee506d4ba6244eaa217efceb43d115c.
+These checks neither run builds/installs nor replace any installed auditor/gate.
+
+All proposals are unapplied and unreviewed. The original 142 required pairs and
+historical observations remain unchanged; narrower subsets discharge no parent.
+Source/scope review, missing method/wrapper reconciliation and conservation
+mappings, exact candidate wheels and G2 evidence remain pending. Even reviewed
+v1 preparation cannot claim installability, qualification or release completion.
+Other legal-state/shader/backend/host requirements and experimental hardware
+scopes remain in force. Sources, meaningful failures and actual test exits/waits
+are retained in local `build/runs/candidate-workflow-24/`. Its terminal manifest
+and verified cleanup receipt are still pending; source totals do not close that
+retention task.
+
+Final preparation/protocol checks pass 177 cases on Windows and WSL. The
+recovery watchdog retains its 1000 ms deadline; its owner now cancels it before
+a successful quit, because Tcl may otherwise service another already-ready
+timer. Two deterministic controls fail before that test-harness correction.
+Final native validation runs profiles serially on the shared machine and keeps
+the original concurrent failures. No runtime deadline or pixel criterion was
+relaxed. All nine process-wide shutdown gauges remain zero.
+
+
+## Current preparation handoff and Astra review
+
+The [latest Astra max review](../reviews/2026-10-24-astra-preparation-handoff-review.md)
+and [specification section 14](../specs/2026-10-24-vispy-compatibility-gap-closure.md#14-current-delivery-contracts-after-candidate-preparation)
+govern the next handoff. P1 reviews the existing candidate's selected criterion
+map and residuals; P2 reviews the frozen cumulative implementation and fixtures;
+P3 makes each required failure/recovery branch executable under observation;
+P4 joins exact artifacts to the existing qualification evidence; P5 independently
+reviews promotion. Independent source work may proceed while a review is pending.
+
+The preparation v1 format remains development-only. A separate versioned
+qualification index must join its frozen identity to canonical/v3 obligations,
+exact installed members and existing workflow-bound receipts. Do not mutate the
+preparation into an admission format or let the new index replace an auditor.
+The ordinary state/resource observer scripts do not prove every failure branch
+currently listed as a source fixture. Resolve that criterion-to-scenario mapping
+before attempting installed qualification, with negative controls for wrong or
+unexecuted branches, conjunctive required-variant coverage and harness-verified
+expected errors that preserve actual process outcomes.
+
+The selected mapping can proceed before all 142 origins have concrete successors;
+untouched parents and uncovered residuals still prevent full closure. Retain the
+original mandatory threedee row, separate Windows/WSL identities and experimental
+native Linux GPU/Metal status. Run final native GUI profiles serially on this
+shared machine, preserve deadlines/pixel thresholds, and report terminal cleanup
+only after its exact receipt exists. No agents, builds or release-scope changes
+are authorized by this execution table itself.

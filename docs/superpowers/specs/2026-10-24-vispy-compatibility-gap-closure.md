@@ -1217,3 +1217,203 @@ Metal scope are unchanged. No historical optional observation is relabelled.
 All actual failures and child waits, source reconstruction and managed cleanup
 are retained locally in `build/runs/tk-shutdown-20/`, `tk-theme-trace-21/`,
 `tk-shutdown-regression-22/` and `tk-progress-23/`.
+
+
+## Concrete candidate preparation source checkpoint (I2, INV-1..3, EV-1..5)
+
+The [candidate preparation record](../../candidate-preparation.md) and versioned
+declaration now name 15 scoped proposals, 30 proposed Windows/WSL pairs and two
+real observer scripts. The new resource workflow exercises public Program,
+VertexBuffer, Texture2D and Timer operations, shared consumer close, native
+device-loss recovery and host-preserving teardown. Exact categorical GPU/Tk
+expectations wait for the actual configured target extent, not a stale image.
+An injected timer-upload error preserves the original failure and returns all
+scoped resource counters exactly to baseline; global worker shutdown still
+requires all nine zero. Final affected source suites pass 429 Windows/415 WSL.
+
+Preparation validation pins complete runtime/native/build/lock/license inputs,
+fixture/script/verifier bytes, local dependency closure and every original
+mandatory host row. It rejects changed or missing inputs, stale reviews and
+source/installed or software/hardware relabelling. The source snapshot's 603
+runtime/build/license blobs match declared commit c7e191ee8ee506d4ba6244eaa217efceb43d115c.
+These checks neither run builds/installs nor replace any installed auditor/gate.
+
+All proposals are unapplied and unreviewed. The original 142 required pairs and
+historical observations remain unchanged; narrower subsets discharge no parent.
+Source/scope review, missing method/wrapper reconciliation and conservation
+mappings, exact candidate wheels and G2 evidence remain pending. Even reviewed
+v1 preparation cannot claim installability, qualification or release completion.
+Other legal-state/shader/backend/host requirements and experimental hardware
+scopes remain in force. Sources, meaningful failures and actual test exits/waits
+are retained in local `build/runs/candidate-workflow-24/`. Its terminal manifest
+and verified cleanup receipt are still pending; source totals do not close that
+retention task.
+
+Final preparation/protocol checks pass 177 cases on Windows and WSL. The
+recovery watchdog retains its 1000 ms deadline; its owner now cancels it before
+a successful quit, because Tcl may otherwise service another already-ready
+timer. Two deterministic controls fail before that test-harness correction.
+Final native validation runs profiles serially on the shared machine and keeps
+the original concurrent failures. No runtime deadline or pixel criterion was
+relaxed. All nine process-wide shutdown gauges remain zero.
+
+
+## 14. Current delivery contracts after candidate preparation
+
+This section governs the next work after the concrete candidate checkpoint.
+Earlier packet designs retain their acceptance requirements; their historical
+pending wording does not instruct rebuilding source-tested packets. The
+[Astra review disposition](../reviews/2026-10-24-astra-preparation-handoff-review.md)
+records the planning findings behind these refinements. These are requirements
+for future implementation, not approval of the current implementation.
+
+### Selected scope and residual obligations (INV-1..3)
+
+Start from the frozen `tk-state-resource-1` preparation: 15 proposed subsets,
+30 feature/profile pairs and two executable ordinary workflows. Validate its
+current bytes before scheduling work. Do not create a replacement manifest merely
+because its proposals are not yet reviewed. The canonical inventory remains the
+source of required obligations; proposal counts are never a completion denominator.
+
+For each selected pair, write a criterion-level mapping containing the origin
+feature/profile and criterion ID, proposed concrete successor, exact public
+methods/options/values, required dependencies, expected behavior, acceptance
+mode, fixture and observer scenario, exclusions and unresolved residuals. Include
+unseeded wrapper methods in reconciliation rather than inventing an origin or
+hiding them within a successful exported parent. Scope review checks behavioral
+coverage against the pinned upstream source, not just schema validity.
+
+There are two curation routes: add explicit required scoped rows while broad
+parents remain unchanged and blocking, or use the implemented v3 conservation
+mechanism for selected transfers with complete successor/residual coverage.
+Neither route sets global inventory review to true. Preserve the frozen v2
+baseline and original receipts. A partial split keeps uncovered
+criteria explicitly required and prevents parent discharge. An untouched seed
+remains blocking without needing a speculative successor. Selected scope review
+and scoped artifact work may proceed before all 142 parents have concrete
+successors; full inventory closure still requires complete reviewed conservation
+and qualified terminal coverage of every applicable required criterion.
+
+### Preparation-to-artifact handoff (EV-1..5, ART-1..2)
+
+The v1 preparation deliberately cannot represent a wheel or shipping admission.
+Do not add a wheel, flip its phase or reinterpret `VALID_PREPARATION` as a
+qualified result. Freeze its hash and use a separate exact-artifact qualification
+index that references the existing canonical/v3 obligations, workflow-bound
+receipt protocol and mandatory host matrix. This index is a join over existing
+proof, not another auditor or alternative completion denominator.
+
+Before implementing that index, define its versioned schema and read-only
+validation entry point. Its required joins are:
+
+| Identity or join | Required content and rejection |
+| --- | --- |
+| Reviewed source | Preparation hash, cumulative base/patch or commit, exact source/fixture review scope and disposition. Relevant changes invalidate affected approvals. |
+| Obligations | Proposed pair to canonical/v3 feature/profile/criterion IDs, dependency closure, residual required obligations and scope-review digest. Reject dangling, optionalized or incompletely covered required criteria. |
+| Exact product | Wheel filename/SHA-256/tags, complete installed-member audit, native producer/member identities, lock/toolkit/driver closure and actual consumer interpreter/profile. Reject a source checkout or old wheel receipt substituted for changed Python bytes. |
+| Workflows | Exact scenario script/arguments/injection identity and covered criterion IDs; receipt references for each required acceptance mode, with actual exit, child wait and shutdown. |
+| Independent gates | Existing dependency, transient-load and execution/API reports, their independent controls and hash edges, plus required current-head CI and final promotion review. Reject mismatched product/profile/workflow or missing original reports. |
+| Retention | Reconstructable preferred source/patches/recipes, original licenses, previous known-good artifact references, run owner/budget and verified terminal cleanup result. |
+
+A structurally valid index with missing/failed gates is incomplete, not qualified.
+Require controls for stale preparation, wrong wheel/member, wrong profile,
+missing dependency, wrong branch receipt, missing control, live child, nonzero
+shutdown, stale review and stale CI before using the index for admission. Reuse
+the current evidence validators; do not weaken them to accept the new join.
+No exact-artifact index or admission mechanism is implemented by this section.
+
+### Acceptance branches must execute under observation (EV-3,4)
+
+A workflow-level list containing ordinary, mutation, failure and recovery kinds
+is insufficient to prove each feature's behavior. Before installed execution,
+map each selected required feature/profile/mode criterion to its actual fixture,
+expected result, observed script or scenario variant, literal arguments, fault
+injection and gate receipts. Several criteria may share a run only when the
+observed run actually exercises and identifies every claimed branch.
+
+The native-progress failure/recovery fixtures currently listed in the candidate
+are not automatically executed by its ordinary state script. The resource
+upload failure currently uses a pytest monkeypatch; the ordinary resource script
+does not inject it. Preserve these as source evidence until equivalent bounded,
+installed-origin scenarios execute under the original observation protocol.
+Record the injection route and expected original exception/traceback, exactly-once
+delivery, stopped polling/timer state, permitted explicit retry, survivor output
+and host-owned work after cleanup, as applicable to the criterion. An unexpected
+callback error or cleanup failure cannot be normalized into a successful run.
+
+For an expected-error branch, the scenario harness catches and verifies the
+intended exception and traceback, cleanup and explicit recovery postconditions,
+then exits successfully only when all assertions and observer completion pass.
+Record the actual error and injection in its evidence. An unexpected failure,
+missing injection/branch, wrong exception, duplicate delivery, failed recovery or
+missing observer completion remains a failed gate with its actual child exit.
+Do not rewrite a failed exit, suppress diagnostics or introduce a permissive
+observer success type to admit a failed process.
+
+Current v2/v3 rows carry one workflow; preparation may list overlapping workflows
+and additional fixtures. Required coverage is conjunctive. Either use one
+hash-pinned composite observed scenario asserting every required branch, or
+split scoped rows/workflows with an explicitly validated all-required aggregation
+and complete conservation mapping. One successful workflow receipt cannot stand
+for several required variants. Test ordinary-only proof, a missing variant and
+one failed variant as rejected claims before using this aggregation.
+
+### Profile blocker applicability before packaging (EV-5, ART-1,2)
+
+For every selected pair, link the original failing fixture, artifact/profile,
+execution path and shared dependencies; record whether the proposed workflow
+intersects those dependencies and why. The Linux plain-Tk abort involves a
+shared toolkit/lifecycle path. Excluding a capture fixture alone does not prove
+that an embedded or standalone candidate is unaffected. Either show the affected
+path is outside the claimed dependency closure with evidence, reproduce/fix it
+in the exact candidate profile, or retain its blocking status. Apply the same
+analysis separately to four-sample scissor; one cause cannot explain the other.
+
+A replacement toolkit/driver/runtime establishes a new profile identity and
+needs its own closure and affected-workflow gates; it does not qualify the
+original failing profile. The retained Linux native leaf has experimental
+producer provenance. Putting it in a wheel cannot upgrade that provenance.
+Before any qualification claim, satisfy the original producer/source/toolchain
+requirements for the claimed profile or explicitly keep it experimental and
+unqualified. Windows scoped progress can continue independently. Native Linux
+GPU and Metal hardware admission still require their separate real evidence.
+
+### Bounded execution and invalidation
+
+| Packet / responsible role | Inputs and concrete output | Exit and next dependency |
+| --- | --- | --- |
+| P1 / coordinator and inventory owner | Existing preparation, pinned upstream and canonical baseline; selected criterion map, residuals and reviewed transfer proposal. | Scope review accepted for selected pairs; unresolved parent scope remains visible. Full G0 reconciliation can continue independently. |
+| P2 / independent source reviewer | Frozen cumulative runtime, Tk/state, conservation/candidate/auditor tools and fixtures, including retained meaningful failures. | Findings disposed by exact hashes; fixes get affected regressions and renewed review. This Astra plan review is not P2. |
+| P3 / workflow owner | Reviewed criterion map and existing observer protocol; bounded installed failure/recovery scenario variants with independent expected outcomes. | Per-branch identity/exit/cleanup controls pass; no claim from a branch executed only outside observation. Source-only development may proceed while review is pending. |
+| P4 / artifact and proof owner | Reviewed source and admitted P1/P3 scope; reuse matching native inputs and package changed Python bytes once. | Separate exact-artifact index plus full installed-member/closure, functional/branch, original absence/control/shutdown receipts for each selected profile. Missing evidence leaves that profile incomplete. |
+| P5 / independent promotion reviewer | P4 receipts and required CI for the frozen head; unchanged original mandatory matrix. | Scoped admission only for fully proved criteria. Complete-removal release still requires all original mandatory rows; full VisPy compatibility additionally requires full G0 closure. |
+
+P2 starts from the last independently reviewed baseline, not merely the latest
+commit or the Q1/B4/L1 subset. Its frozen inputs include submission ownership and
+post-submit failures; shared native progress, error delivery and retry; root/job
+ownership and shutdown; resource/Timer flows; readiness and watchdog harness
+corrections; workflow evidence binding and affected observers; and inventory,
+conservation and preparation validators. Retain exact hashes, finding IDs and
+dispositions. Any later relevant edit invalidates the affected approval.
+
+Do not wait for unrelated hardware or full G0 reconciliation before independent
+source packets; do not advance an affected qualification past its dependencies.
+Select remaining legal-state, shader and backend work from explicit consumer
+requirements in sections 5-7 and 12. Each packet names planned files, oracle,
+negative control, affected dependency reruns and a retained feasibility decision
+before guard removal. Existing Linux toolkit/scissor and Windows threedee
+investigations retain their separate bounds and unresolved status.
+
+Final GUI/native profiles run serially on this shared machine unless a documented
+resource-isolation arrangement justifies concurrency. Preserve the one-second
+recovery watchdog and exact pixel criteria; cancel an owned watchdog on success
+before quitting its loop. Host-owned jobs remain outside that cancellation.
+Record actual collection, cases/skips, exits/waits, native gauges and relevant
+Tk jobs/images independently; a pass total does not establish all of them.
+
+A spec/verifier/script/fixture edit refreshes the affected preparation hashes and
+self digest and invalidates affected review bindings. It does not change the
+runtime source commit when runtime bytes are unchanged. Documentation-only work
+uses existing environments for reference/schema checks, with no native build,
+new environment or source snapshot. Never claim a terminal cleanup receipt
+before the manifest, exact plan/application and retained-hash verification exist.

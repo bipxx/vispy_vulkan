@@ -870,3 +870,195 @@ def test_conservation_rejects_cycles_even_with_reviewed_required_targets(example
         ledger['conservation']['transfers'].append(transfer)
     with pytest.raises(inventory.InventoryError, match='cyclic obligation transfer'):
         inventory.validate(ledger, root)
+
+
+# Candidate-preparation fixtures are synthetic metadata, never GPU qualification.
+def candidate_case(example):
+    from tools.compatibility_candidate import PREPARATION_TOOLS, observer_recipe, seal
+    from tools.compatibility_conservation import digest
+    root, ledger = example
+    preparation_tools = []
+    for name in PREPARATION_TOOLS:
+        target = root / name
+        target.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(ROOT / name, target)
+        preparation_tools.append({'path': name, 'sha256': hashlib.sha256(target.read_bytes()).hexdigest()})
+    matrix_ref = write_json(root, 'compat/no-opengl-matrix.json', {'rows': [
+        {'id': 'windows-vulkan-headless', 'mandatory': True, 'status': 'QUALIFIED', 'artifact_sha256': 'a' * 64},
+        {'id': 'windows-vulkan-napari-threedee-pyqt6', 'mandatory': True, 'status': 'UNQUALIFIED'},
+    ]})
+    ledger['related_inventories'].append(matrix_ref)
+    ledger_ref = write_json(root, 'compat/vispy-compatibility.json', ledger)
+    contract = {'schema': 1, 'profile': 'dawn-no-opengl-runtime',
+                'files': ['gloo/gl/dawn.py', 'gloo/gl/gl2.py', 'gloo/gl/glplus.py'],
+                'excluded_files': {'gloo/gl/es2.py': 'legacy'},
+                'compatibility_aliases': ['gloo/gl/gl2.py', 'gloo/gl/glplus.py'],
+                'notice_files': ['LICENSE', 'LICENSE-BSD', 'LICENSING.md'],
+                'generated_manifest_member': 'vispy/_runtime_package.json'}
+    contract_ref = write_json(root, 'compat/runtime-package.json', contract)
+    python = [{'member': 'vispy/_runtime_package.json', 'file': contract_ref}]
+    for name in contract['files']:
+        python.append({'member': 'vispy/' + name,
+                       'file': write_json(root, 'src/vispy/' + name, {'synthetic': name})})
+    native = [write_json(root, 'cpp/input.cpp', {'synthetic': 'native input'})]
+    locks = [write_json(root, name, {'synthetic': 'lock'}) for name in ['uv.lock', 'cmake/dependencies.lock.json']]
+    licenses = [write_json(root, name, {'synthetic': 'license'}) for name in contract['notice_files']]
+    build = [write_json(root, name, {'synthetic': 'build input'}) for name in ['CMakeLists.txt', 'pyproject.toml']]
+    build.extend({'path': f.relative_to(root).as_posix(), 'sha256': hashlib.sha256(f.read_bytes()).hexdigest()}
+                 for f in (root / 'cmake').rglob('*') if f.is_file() and f.suffix in ('.py', '.cmake', '.in'))
+    inputs = {'schema': 1, 'source_commit': '1' * 40, 'python': python, 'native': native,
+              'locks': locks, 'licenses': licenses, 'build': build}
+    observation = {'id': 'windows-profile', 'phase': 'source-functional',
+                   'product_runtime_source_commit': '1' * 40, 'native_inputs_sha256': digest(native),
+                   'python_version': '3.12.8 synthetic', 'interpreter_sha256': 'c' * 64,
+                   'native_sha256': 'd' * 64, 'os_identity': 'Synthetic Windows unit profile',
+                   'source_observation': {'cases': 1, 'shutdown_gauges': {k: 0 for k in LIVE_GAUGES}},
+                   'python_abi': 'cp312', 'architecture': 'x86_64', 'kind': 'windows-gpu',
+                   'device': {'backend': 'Vulkan', 'software': False}, 'display_mode': 'tk-raster'}
+    feature = ledger['features'][0]
+    proposal = {'id': 'canvas.scoped', 'entry_points': ['Canvas.update'],
+                'origins': [{'feature': feature['id'], 'profile': 'unassigned'}],
+                'upstream_sources': feature['upstream_sources'], 'requirements': feature['requirements'],
+                'scope': 'Synthetic bounded Canvas scope.', 'excluded': ['Remaining Canvas methods.'],
+                'owner': 'python-hosts'}
+    workflow = {'id': 'synthetic-flow', 'script': write_json(root, 'tools/scenario.py', {'synthetic': 'script'}),
+                'profiles': ['windows-profile'], 'features': [proposal['id']], 'modes': ['standalone'],
+                'launch': ['{consumer_python}', 'tools/scenario.py'], 'observer': [],
+                'acceptance': [{'nodeid': 'tests/test_workflow.py::test_' + ('mutation' if kind == 'mutation' else 'ordinary'),
+                                'kind': kind, 'cases': 1, 'expected': 'Synthetic independently specified case.'}
+                               for kind in ['ordinary', 'mutation', 'failure', 'recovery']],
+                'expected': 'Synthetic workflow output.'}
+    for acceptance in workflow['acceptance']:
+        acceptance['source'] = {'path': 'tests/test_workflow.py',
+                                'sha256': hashlib.sha256((root / 'tests/test_workflow.py').read_bytes()).hexdigest()}
+    workflow['observer'] = observer_recipe(workflow)
+    candidate = {'schema': 1, 'phase': 'development', 'id': 'synthetic-candidate',
+                 'manifest_sha256': '0' * 64, 'product_source_commit': '1' * 40,
+                 'upstream_commit': ledger['upstream_commit'], 'ledger': ledger_ref, 'matrix': matrix_ref,
+                 'required_host_rows': ['windows-vulkan-headless', 'windows-vulkan-napari-threedee-pyqt6'],
+                 'runtime_inputs': write_json(root, 'candidate/inputs.json', inputs),
+                 'preparation_tools': preparation_tools,
+                 'profiles': [{'id': 'windows-profile', 'required': True,
+                               'observation': write_json(root, 'candidate/profile.json', observation),
+                               'wheel': None, 'previous_qualified_wheel_sha256': 'a' * 64,
+                               'install': ['uv', 'pip', 'install', '--python', '{consumer_python}', '--no-deps', '{wheel}']}],
+                 'proposals': [proposal], 'pairs': [{'feature': proposal['id'], 'profile': 'windows-profile',
+                                                   'dependencies': [], 'applied_to_ledger': False}],
+                 'workflows': [workflow], 'reviews': {'source': None, 'scope': None},
+                 'blockers': ['Synthetic unreviewed proposal and no candidate wheel.'], 'release_status': 'NOT_QUALIFIED'}
+    return root, seal(candidate)
+
+
+def test_current_candidate_preparation_preserves_full_unqualified_scope():
+    from tools.compatibility_candidate import DEFAULT, validate_candidate
+    result = validate_candidate(inventory.read_json(DEFAULT))
+    assert result['proposed_pairs'] == 30 and result['canonical_required_pairs_preserved'] == 142
+    assert result['workflows'] == 2
+    assert not result['reviewed'] and not result['qualified'] and not result['installable']
+
+
+@pytest.mark.parametrize('change,message', [
+    ('host-drop', 'mandatory host obligation'),
+    ('runtime-member', 'runtime source members'),
+    ('build-input', 'build recipe/native extension source'),
+    ('preparation-tool', 'preparation verifier/tool identities'),
+    ('fixture-bytes', 'changed evidence'),
+    ('tool-bytes', 'changed evidence'),
+    ('native-input', 'native source/header inputs'),
+    ('license', 'shipping license inputs'),
+    ('software', 'software/hardware profile'),
+    ('abi', 'ABI/architecture'),
+    ('profile-inputs', 'profile native inputs'),
+    ('profile-version', 'concrete interpreter/native/OS'),
+    ('profile-hash', 'concrete interpreter/native/OS'),
+    ('profile-gauge', 'zero-gauge functional observation'),
+    ('previous-wheel', 'previous wheel is not qualified'),
+    ('missing-pair', 'missing concrete required'),
+    ('dependency', 'candidate dependency'),
+    ('origin', 'missing/nonrequired origin'),
+    ('broad-overwrite', 'overwrites an existing broad'),
+    ('script-pin', 'changed evidence'),
+    ('observer', 'observer recipe differs'),
+    ('launch', 'launch command differs'),
+    ('acceptance', 'ordinary/mutation/failure/recovery'),
+    ('phase', 'wrong constant'),
+    ('wheel', 'expected'),
+    ('source-bytes', 'runtime source member identity'),
+])
+def test_candidate_preparation_rejects_scope_and_identity_shortcuts(example, change, message):
+    from tools.compatibility_candidate import seal, validate_candidate
+    root, candidate = candidate_case(example)
+    profile = candidate['profiles'][0]
+    if change == 'host-drop':
+        candidate['required_host_rows'].pop()
+    elif change in ('runtime-member', 'native-input', 'license', 'build-input'):
+        field = {'runtime-member': 'python', 'native-input': 'native', 'license': 'licenses', 'build-input': 'build'}[change]
+        data = inventory.read_json(root / candidate['runtime_inputs']['path'])
+        data[field].pop()
+        candidate['runtime_inputs'] = write_json(root, candidate['runtime_inputs']['path'], data)
+    elif change in ('software', 'abi', 'profile-inputs', 'profile-version', 'profile-hash', 'profile-gauge'):
+        data = inventory.read_json(root / profile['observation']['path'])
+        if change == 'software':
+            data['device']['software'] = True
+        elif change == 'abi':
+            data['python_abi'] = 'cp310'
+        elif change == 'profile-version':
+            data['python_version'] = '3.10.19 contradicting cp312'
+        elif change == 'profile-hash':
+            data['interpreter_sha256'] = 'missing'
+        elif change == 'profile-gauge':
+            data['source_observation']['shutdown_gauges']['pending_tickets'] = 1
+        else:
+            data['native_inputs_sha256'] = '0' * 64
+        profile['observation'] = write_json(root, profile['observation']['path'], data)
+    elif change == 'previous-wheel':
+        profile['previous_qualified_wheel_sha256'] = 'b' * 64
+    elif change == 'missing-pair':
+        candidate['profiles'].append({**deepcopy(profile), 'id': 'second-profile'})
+        observation = inventory.read_json(root / profile['observation']['path'])
+        observation['id'] = 'second-profile'
+        candidate['profiles'][-1]['observation'] = write_json(root, 'candidate/second.json', observation)
+    elif change == 'dependency':
+        candidate['pairs'][0]['dependencies'] = ['missing.feature']
+    elif change == 'origin':
+        candidate['proposals'][0]['origins'][0]['feature'] = 'missing.feature'
+    elif change == 'broad-overwrite':
+        candidate['proposals'][0]['id'] = 'app.canvas'
+    elif change == 'preparation-tool':
+        candidate['preparation_tools'].pop()
+    elif change == 'fixture-bytes':
+        (root / 'tests/test_workflow.py').write_text('def test_ordinary(): pass\ndef test_mutation(): assert False\n')
+    elif change == 'tool-bytes':
+        (root / 'tools/compatibility_candidate.py').write_text('changed synthetic verifier')
+    elif change == 'script-pin':
+        candidate['workflows'][0]['script']['sha256'] = '0' * 64
+    elif change == 'observer':
+        candidate['workflows'][0]['observer'].append('--source-root=unqualified-checkout')
+    elif change == 'launch':
+        candidate['workflows'][0]['launch'][-1] = 'other-script.py'
+    elif change == 'acceptance':
+        candidate['workflows'][0]['acceptance'][-1]['kind'] = 'ordinary'
+    elif change == 'phase':
+        candidate['phase'] = 'qualified'
+    elif change == 'wheel':
+        profile['wheel'] = 'a' * 64
+    elif change == 'source-bytes':
+        (root / 'src/vispy/gloo/gl/dawn.py').write_text('changed synthetic source')
+    with pytest.raises(inventory.InventoryError, match=message):
+        validate_candidate(seal(candidate), root)
+
+
+def test_candidate_scope_review_is_bound_and_never_promotes_qualification(example):
+    from tools.compatibility_candidate import scope_digest, seal, validate_candidate
+    root, candidate = candidate_case(example)
+    with pytest.raises(inventory.InventoryError, match='review remain pending'):
+        validate_candidate(candidate, root, True)
+    for kind in ['source', 'scope']:
+        candidate['reviews'][kind] = write_json(root, f'reviews/{kind}.json', {
+            'schema': 1, 'status': 'APPROVED', 'kind': kind, 'independent': True,
+            'reviewer': 'Synthetic unit-test reviewer only', 'candidate_scope_sha256': scope_digest(candidate)})
+    result = validate_candidate(seal(candidate), root, True)
+    assert result['reviewed'] and not result['qualified'] and not result['installable']
+    candidate['proposals'][0]['scope'] = 'Changed after review.'
+    with pytest.raises(inventory.InventoryError, match='stale/wrong candidate review'):
+        validate_candidate(seal(candidate), root)

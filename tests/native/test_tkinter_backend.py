@@ -20,6 +20,12 @@ def wait(application, condition):
         time.sleep(.005)
 
 
+def _quit_before_watchdog(root, job):
+    # Tcl may service more than one ready timer before mainloop sees quit.
+    root.after_cancel(job)
+    root.quit()
+
+
 @pytest.fixture
 def application():
     import tkinter as tk
@@ -1046,7 +1052,7 @@ def test_mainloop_device_recovery_and_timer_progress(application, mode):
             _dawn.lose_device()
             canvas.update()
         elif canvas._backend._photo is not previous:
-            root.quit()
+            _quit_before_watchdog(root, job)
 
     timer = app.Timer(app=application, interval=.01, connect=tick, start=True)
     watchdog_fired = []
@@ -1468,3 +1474,29 @@ def test_native_progress_failure_preserves_original_error_and_failed_cancel_owne
         monkeypatch.undo()  # Owner can now retry the retained cancellation.
     state.cancel_progress()
     assert state.progress_job is None and job not in root.tk.call('after', 'info')
+
+
+@pytest.mark.parametrize('mode', ['run', 'external'])
+def test_successful_loop_exit_retires_already_ready_watchdog(application, mode):
+    root = application.native
+    seen = []
+
+    def success():
+        seen.append('success')
+        _quit_before_watchdog(root, watchdog_job)
+
+    def watchdog():
+        seen.append('watchdog')
+        root.quit()
+
+    success_job = root.after(0, success)
+    watchdog_job = root.after(0, watchdog)
+    try:
+        if mode == 'run':
+            application.run(allow_interactive=False)
+        else:
+            root.mainloop()
+        assert seen == ['success']
+    finally:
+        root.after_cancel(success_job)
+        root.after_cancel(watchdog_job)
