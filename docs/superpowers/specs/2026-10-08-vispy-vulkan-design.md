@@ -1,6 +1,13 @@
 # VisPy replacement using Dawn
 
-Date: 2026-10-08. Status: implementation plan; no implementation exists yet.
+Date: 2026-10-08. Status: historical architecture/design baseline; its original
+findings and proposed slices describe the pre-implementation review.
+
+Implementation now exists. Use the [current gap-closure specification](2026-10-24-vispy-compatibility-gap-closure.md)
+and [execution plan](../plans/2026-10-24-vispy-compatibility-gaps.md) for remaining
+work and acceptance status. The current root AGENTS.md and build-hygiene policy
+govern command/environment reuse; commands below are historical recipes.
+Existing mandatory qualification gates are not waived by this status correction.
 
 Keep a compatibility fork of VisPy's Python package and put a batched C++ renderer behind its gloo/GLIR boundary, using Dawn with Vulkan on Windows/Linux and Metal on macOS. Replace the handwritten GLSL-to-WGSL compiler with a compiler-assisted GLSL-to-SPIR-V path that Tint still consumes, and make installation, ordered GLIR snapshots, host capture, shader validation on both backends, and measured speed release gates: this can replace VisPy for an explicit application matrix, but cannot promise arbitrary OpenGL programs or switch applications that import a vendored copy.
 

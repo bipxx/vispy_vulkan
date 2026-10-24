@@ -26,6 +26,13 @@ matrix row. Run `tests/native/test_tkinter_backend.py` with pytest `-s` to avoid
 the observed interaction between Windows Tcl initialization and descriptor
 capture; do not treat the earlier captured failures as a product fix.
 
+The subsequent Astra review found open Tk correctness gaps: pressed-button
+state needed by scene-camera dragging, explicit-parent/NoDefaultRoot and shared
+interpreter ownership, public timer state on quit, and callback/native-progress
+behavior under run/external-mainloop modes. The current tests do not establish
+these contracts. Fix and extend them before promoting Tk; passing the existing
+suite is not sufficient. See the [current specification](superpowers/specs/2026-10-24-vispy-compatibility-gap-closure.md).
+
 Selected `gloo.gl` state calls now execute through the current canvas's ordered
 GLIR queue: viewport/scissor, clear color/depth/stencil and clear, masks,
 enable/disable, depth range/function, front/cull face, line width, polygon offset,
@@ -36,6 +43,10 @@ Viewport changes also update the Python context cache. `glFinish` waits through
 the native implementation. Arbitrary object IDs, shader creation, raw draw calls
 and `glFlush` remain unsupported; the existing GLIR flush operation alone would
 not satisfy immediate `glFlush` submission semantics.
+
+The existing public `gloo.flush()` also reaches the logging-only native flush
+operation. Actual submit-without-completion-wait behavior for both APIs remains
+an implementation requirement; it cannot be closed by relabeling the wrapper.
 
 ## Remaining gaps
 
