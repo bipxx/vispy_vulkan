@@ -242,9 +242,9 @@
       "application": "headless",
       "binding": null,
       "mandatory": true,
-      "status": "PENDING",
-      "artifact_sha256": null,
-      "environment_id": null,
+      "status": "QUALIFIED",
+      "artifact_sha256": "374a74ea9787ccccc643e0ac7e45d9f704a41d046465828736158ac94398c4a3",
+      "environment_id": "b1a56c6320bcc69fb8f3bf59ca2d38663dd1604d53fe4cae8bb9145cd4984168",
       "features": [
         "clear",
         "image",
@@ -260,11 +260,49 @@
         "shutdown-zero-resources"
       ],
       "gates": {
-        "no_gl_execution": "UNVERIFIED",
-        "no_gl_loads": "UNVERIFIED",
-        "no_gl_install_link_requirement": "UNVERIFIED"
+        "no_gl_execution": "PASS",
+        "no_gl_loads": "PASS",
+        "no_gl_install_link_requirement": "PASS"
       },
-      "evidence": []
+      "evidence": [
+        {
+          "path": "build/opengl-removal-n345c-linux-wheel-root-1/qualification1/observer1/result1.json",
+          "sha256": "6d8acceca9de889b50d002131c0a4715ad9f5acf31229a56eef2e931585a9840"
+        },
+        {
+          "path": "build/opengl-removal-n345c-linux-wheel-root-1/qualification1/observer1/outputs/qualified.json",
+          "sha256": "a3e7c3b110a65094adc9b8f23b10e20ea5e11a02054e37ab4ec58931df66780f"
+        },
+        {
+          "path": "build/opengl-removal-n345c-linux-wheel-root-1/qualification1/observer1/outputs/qualified.worker.json",
+          "sha256": "44a429793b00122cb799bd4f8a4422147edd52dae6e21ca6191e1c2681ec6dad"
+        },
+        {
+          "path": "build/opengl-removal-n345c-linux-wheel-root-1/qualification1/observer1/outputs/receipt.json",
+          "sha256": "45965a2a43120b5c7fa742fbcc225e83b7f590e1fd9ae529badfe49183207aca"
+        },
+        {
+          "path": "build/opengl-removal-n345c-linux-wheel-root-1/qualification1/observer1/outputs/qualified-features/result1.json",
+          "sha256": "a625cfcd39b47abbf893fdb57dd4f0ebf9c0024a1c27187a6a2205110e8ee832"
+        },
+        {
+          "path": "build/opengl-removal-n345c-linux-wheel-root-1/qualification1/observer1/outputs/qualified-features/gpu95/gpu.xml",
+          "sha256": "cfa368502087a2070fa32789b73e30811d8b4638a0a2075b68f0577213f062bc"
+        },
+        {
+          "path": "build/opengl-removal-n345c-linux-wheel-root-1/qualification1/observer1/outputs/qualified-features/science/result1.json",
+          "sha256": "c5b8f407d51359b5c81a604ce7b8cc07a32bbade7fedbdae62d40de64543e428"
+        },
+        {
+          "path": "build/opengl-removal-n345c-linux-wheel-root-1/qualification1/observer1/outputs/qualified-features/markers/result.json",
+          "sha256": "545132d5898cb31760c8692fe2023ee16915db1c47689be9ddf660d03b2ce0c2"
+        },
+        {
+          "path": "build/opengl-removal-n345c-linux-wheel-root-1/qualification1/observer1/controls-build1.json",
+          "sha256": "2228fe9cc037a218ba2043b1cd80b8929819894e32536fa768560704d3f5aeaf"
+        }
+      ],
+      "qualification_scope": "WSL Lavapipe CPU software explicitly admitted; same observedprocess95GPUcases,unchangedLinuxrendering/compiledtext and4096bothmarkerpaths plus36categorical/scalar/color-volume landmarks; notnativeLinuxhardware orfullframeOpenGL/performanceparity"
     },
     {
       "id": "wsl-linux-lavapipe-x11-qwidget-pyqt5",
