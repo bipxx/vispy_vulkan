@@ -82,6 +82,15 @@ installation. Its exact environment passes four direct controls and all eight
 existing composite branches; 14 preparation controls pass and scratch is cleaned.
 The old profile is unchanged and these diagnostics do not supply admission.
 
+The [Windows threedee diagnostic packet](../../threedee-startup-diagnosis.md)
+has completed its three allowed starts: plain, worker-wrapped and fully observed
+launches all pass the exact installed host fixture. The observed trial passes
+all three absence gates and nine shutdown zeros; all six frames match across
+trials. No historical OLE/RPC cause was established, so its mandatory causal/final-
+artifact obligations stay open and the confirmation slot is unused. Do not retry
+startup again without new evidence; capture the live owner/server wait chain
+before timeout on a genuine recurrence. All packet scratch has been cleaned.
+
 ### Prevent unchanged-native rebuilds
 
 Use a candidate-independent native producer identity: preferred native/build/

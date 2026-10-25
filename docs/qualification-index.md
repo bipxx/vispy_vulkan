@@ -91,7 +91,9 @@ original controls, full retained attempt history, current-head CI and independen
 promotion review. The [Linux scissor investigation](msaa-scissor-isolation.md)
 now has a tested compatible driver and an offline preparation command; adopting
 that exact configuration still requires renewed profile/installed evidence.
-Windows threedee, full API breadth and distinct Linux GPU/Metal hardware obligations
-remain required. Source controls cannot close them. Source, test results and meaningful failures are retained locally
+The [Windows threedee packet](threedee-startup-diagnosis.md) now passes the old
+exact installed host workflow and all three absence gates, but did not establish
+the historical stall's cause; causal/final-artifact obligations remain open.
+Full API breadth and distinct Linux GPU/Metal hardware obligations remain required. Source controls cannot close them. Source, test results and meaningful failures are retained locally
 under `build/runs/integrated-h4-38/`; actual managed scratch, if used by fixture
 checks, requires its own applied cleanup receipt before handoff.
