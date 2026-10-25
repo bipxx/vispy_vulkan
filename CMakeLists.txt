@@ -293,6 +293,9 @@ if(VISPY_BUILD_CONTRACT_TESTS)
         "${VISPY_CONTRACT_TESTS_ROOT}/lines/line_consumer_resource_contract.cpp")
     add_executable(artifact_consumer_contract cpp/shader/normalize.cpp
         "${VISPY_CONTRACT_TESTS_ROOT}/shaders/artifact_consumer_policy_contract.cpp")
+    add_executable(uniform_updates_contract
+        "${VISPY_CONTRACT_TESTS_ROOT}/shaders/uniform_updates_contract.cpp")
+    target_include_directories(uniform_updates_contract PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/cpp")
     vispy_shader_contract(runtime_line_consumer_policy_contract
         "${VISPY_CONTRACT_TESTS_ROOT}/shaders/runtime_line_consumer_policy_contract.cpp")
     add_executable(runtime_line_variants_contract
@@ -344,6 +347,7 @@ if(VISPY_BUILD_CONTRACT_TESTS)
         add_test(NAME input_batch_${kind}_contract COMMAND input_batch_${kind}_contract)
     endforeach()
     add_test(NAME artifact_consumer_contract COMMAND artifact_consumer_contract)
+    add_test(NAME uniform_updates_contract COMMAND uniform_updates_contract)
     add_test(NAME runtime_line_consumer_policy_contract COMMAND runtime_line_consumer_policy_contract)
     add_test(NAME runtime_line_variants_contract COMMAND runtime_line_variants_contract)
     add_test(NAME runtime_line_consumer_accounting_contract COMMAND runtime_line_consumer_accounting_contract)

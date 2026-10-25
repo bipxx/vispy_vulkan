@@ -8,6 +8,7 @@
 #include "runtime_readback.hpp"
 #include "runtime_state.hpp"
 #include "runtime_state_query.hpp"
+#include "runtime_uniform_updates.hpp"
 #include "runtime_point.hpp"
 #include "runtime_point_batch_owner.hpp"
 #include "runtime_batch_owner.hpp"
@@ -6884,8 +6885,8 @@ static void execute_commands_impl(int canvas_id, const std::vector<Command>& com
                 }
             }
             if (gtype == "int" || gtype == "bool" || gtype.find("ivec") == 0 || gtype.find("bvec") == 0)
-                obj.i_uniforms[cmd.args[1].s] = ints;
-            else obj.f_uniforms[cmd.args[1].s] = floats;
+                vispy::uniforms::replace(obj.i_uniforms, obj.f_uniforms, cmd.args[1].s, std::move(ints));
+            else vispy::uniforms::replace(obj.f_uniforms, obj.i_uniforms, cmd.args[1].s, std::move(floats));
         } else if (cmd.op == "TEXTURE" && cmd.args.size() >= 3) {
             obj.textures[cmd.args[1].s] = arg_id(cmd, 2);
         } else if (cmd.op == "ATTRIBUTE" && cmd.args.size() >= 4) {
