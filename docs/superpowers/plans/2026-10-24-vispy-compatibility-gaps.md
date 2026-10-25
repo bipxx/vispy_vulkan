@@ -1261,3 +1261,27 @@ absence/control/shutdown, retention and hardware admission. Real reviewed recipe
 and collection of their actual managed build evidence, full qualification subject,
 producer/attempt/disposition and promotion-basis/envelope remain required. H2
 approval and actual H5 admission are still pending; original scope is preserved.
+
+
+## Aggregate vertex-input compaction prerequisite (SH-3)
+
+The direct compiler/Dawn probe isolated a location-compaction defect: matrix,
+vector-array and matrix-array declarations reached pipeline creation with cleanup
+disabled, but cleanup moved the following variable into their occupied locations.
+Compaction now reflects full scalar/vector, matrix-column and nested-array spans,
+bounded by the compiler resource limit, and preserves original GLSL declarations.
+All 16 pipeline cases pass, including attribute-dependent global initializers;
+18 compiler contracts cover sparse locations, dead inputs, nested arrays, integer
+inputs and 64-bit vector/matrix spans. These checks do not draw or admit public
+aggregate attributes. Normalizer reflection, physical binding views, constants,
+updates, divisors, granted device limits and generated point/line consumers remain
+required. Prefer preserving aggregate GLSL and sharing one physical-location map
+across these consumers; introduce reconstruction only where an actual consumer
+requires it, preserving initialization order.
+
+The qualified SDK was reused without a wheel/dependency rebuild. Original setup
+failures and before/after compiler outcomes are retained under
+`build/runs/matrix-interface-probe-75/`; managed cleanup removed 93 files
+(20,672,536 logical bytes), and all 40 retained records were rehashed. This source
+prerequisite does not renew candidate profiles, discharge criteria or grant
+producer/installed admission.

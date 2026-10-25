@@ -1,6 +1,7 @@
 // CPU compiler/layout contract; run independently of Dawn device creation.
 #include "shader/normalize.hpp"
 #include "shader/glslang_spv.hpp"
+#include "vertex_input_span_contract.hpp"
 #include <glslang/Public/ResourceLimits.h>
 #include <glslang/Public/ShaderLang.h>
 #include <SPIRV/spirv.hpp11>
@@ -761,6 +762,7 @@ int main(int argc, char** argv) {
             boolean_scope_original_baseline(argv[2]);
             return 0;
         }
+        vertex_input_span_contract();
         uniform_layouts();
         multidimensional_uniforms();
         boolean_lowering();
