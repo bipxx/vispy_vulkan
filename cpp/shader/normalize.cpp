@@ -258,7 +258,7 @@ std::vector<Decl> find_decls(const std::vector<Tok>& tokens, std::string& error,
                 decl.array_size = (decl.array_size ? decl.array_size : 1) * dimension;
                 j += 3;
                 if (j < tokens.size() && tokens[j].text == "[" &&
-                        (word != "uniform" || is_sampler(type))) {
+                        word != "uniform") {
                     error = stage + " line=" + std::to_string(decl.line) + " interface " + decl.name +
                             ": multidimensional arrays are unsupported";
                     return {};
@@ -395,15 +395,13 @@ bool lower_sampler_functions(const std::vector<Tok>& tokens, const std::vector<N
                              std::unordered_map<size_t, SamplerReference>& uses,
                              const std::vector<bool>& array_references, std::string& error) {
     std::unordered_map<std::string, SamplerReference> globals;
-    std::unordered_map<std::string, uint32_t> array_sizes;
+    std::unordered_map<std::string, std::vector<uint32_t>> array_shapes;
     for (const auto& sampler : samplers) {
         auto type = sampler_type(sampler);
         globals[sampler.name] = {type, sampler_texture_name(sampler), sampler_sampler_name(sampler)};
         const auto bracket = sampler.name.find('[');
         if (bracket != std::string::npos) {
-            const auto index = static_cast<uint32_t>(std::stoul(sampler.name.substr(bracket + 1)));
-            auto& count = array_sizes[sampler.name.substr(0, bracket)];
-            count = std::max(count, index + 1);
+            array_shapes[sampler.name.substr(0, bracket)] = sampler.array_dimensions;
         }
     }
     std::vector<SamplerFunction> functions;
@@ -468,28 +466,32 @@ bool lower_sampler_functions(const std::vector<Tok>& tokens, const std::vector<N
     auto resolve_at = [&](size_t position, size_t first, size_t& end) -> const SamplerReference* {
         end = first + 1;
         if (auto scalar = resolve(position, tokens[first].text)) return scalar;
-        auto array = array_sizes.find(tokens[first].text);
-        if (array == array_sizes.end() || !array_references[first]) return nullptr;
+        auto array = array_shapes.find(tokens[first].text);
+        if (array == array_shapes.end() || !array_references[first]) return nullptr;
         const auto fail = [&](const std::string& reason) -> const SamplerReference* {
             error = "line=" + std::to_string(tokens[first].line) + " sampler array " + tokens[first].text + ": " + reason;
             return nullptr;
         };
-        if (first + 3 >= tokens.size() || tokens[first + 1].text != "[" || tokens[first + 3].text != "]")
-            return fail("a literal nonnegative element index is required; dynamic indexing remains unsupported");
-        uint64_t index = UINT64_MAX;
-        size_t consumed = 0;
-        const auto& literal = tokens[first + 2].text;
-        // GLSL integer literals include decimal, octal and hexadecimal forms,
-        // optionally with an unsigned suffix. Never reinterpret a leading-zero
-        // index as decimal or accept a numeric prefix of a float/expression.
-        try { index = std::stoull(literal, &consumed, 0); } catch (...) {}
-        if (!consumed || (consumed != literal.size() &&
-            !(consumed + 1 == literal.size() && (literal.back() == 'u' || literal.back() == 'U'))))
-            return fail("a literal nonnegative integer index is required; dynamic indexing remains unsupported");
-        if (index >= array->second) return fail("literal element index exceeds the declared length");
-        end = first + 4;
-        const auto key = tokens[first].text + '[' + std::to_string(index) + ']';
-        return &globals.at(key);
+        std::string key = tokens[first].text;
+        for (size_t dimension = 0; dimension < array->second.size(); ++dimension) {
+            if (end + 2 >= tokens.size() || tokens[end].text != "[" || tokens[end + 2].text != "]")
+                return fail("a literal nonnegative element index is required for every dimension; dynamic indexing remains unsupported");
+            uint64_t index = UINT64_MAX;
+            size_t consumed = 0;
+            const auto& literal = tokens[end + 1].text;
+            // Honor GLSL decimal/octal/hex integer spellings and unsigned suffixes.
+            try { index = std::stoull(literal, &consumed, 0); } catch (...) {}
+            if (!consumed || (consumed != literal.size() &&
+                !(consumed + 1 == literal.size() && (literal.back() == 'u' || literal.back() == 'U'))))
+                return fail("a literal nonnegative integer index is required; dynamic indexing remains unsupported");
+            if (index >= array->second[dimension]) return fail("literal element index exceeds the declared length");
+            key += '[' + std::to_string(index) + ']';
+            end += 3;
+        }
+        if (end < tokens.size() && tokens[end].text == "[") return fail("too many sampler array indices");
+        const auto found = globals.find(key);
+        if (found == globals.end()) return fail("sampler array element is missing from the resource graph");
+        return &found->second;
     };
     for (size_t i = 0; i < tokens.size(); ++i) {
         if (!skip[i] && !replacements.contains(i) && tokens[i].ident &&
@@ -1016,17 +1018,13 @@ NormalizedShader normalize_program(const std::string& vertex_src, const std::str
     auto frag_decls = find_decls(frag_toks, result.error, "fragment");
     if (!result.error.empty()) return result;
     uint32_t cursor = 0;
-    std::unordered_map<std::string, int> sampler_shapes;
+    std::unordered_map<std::string, std::vector<uint32_t>> sampler_shapes;
     auto add_uniform = [&](const Decl& decl) {
         if (!result.error.empty()) return;
         if (is_sampler(decl.type)) {
-            if (decl.array_size > 0 && decl.type != "sampler2D") {
-                result.error = "uniform " + decl.name + ": sampler arrays currently require floating sampler2D";
-                return;
-            }
-            auto [shape, inserted] = sampler_shapes.emplace(decl.name, decl.array_size);
-            if (!inserted && shape->second != decl.array_size) {
-                result.error = "uniform " + decl.name + ": stage sampler array lengths differ";
+            auto [shape, inserted] = sampler_shapes.emplace(decl.name, decl.array_dimensions);
+            if (!inserted && shape->second != decl.array_dimensions) {
+                result.error = "uniform " + decl.name + ": stage sampler array shapes differ";
                 return;
             }
             const uint32_t count = decl.array_size > 0 ? static_cast<uint32_t>(decl.array_size) : 1;
@@ -1035,7 +1033,14 @@ NormalizedShader normalize_program(const std::string& vertex_src, const std::str
                 return;
             }
             for (uint32_t index = 0; index < count; ++index) {
-                const auto name = decl.array_size ? decl.name + '[' + std::to_string(index) + ']' : decl.name;
+                std::string name = decl.name;
+                std::vector<uint32_t> indices(decl.array_dimensions.size());
+                uint32_t remainder = index;
+                for (size_t dimension = indices.size(); dimension-- > 0;) {
+                    indices[dimension] = remainder % decl.array_dimensions[dimension];
+                    remainder /= decl.array_dimensions[dimension];
+                }
+                for (uint32_t element : indices) name += '[' + std::to_string(element) + ']';
                 auto found = std::find_if(result.samplers.begin(), result.samplers.end(),
                     [&](const auto& sampler) { return sampler.name == name; });
                 if (found != result.samplers.end()) {
@@ -1045,6 +1050,7 @@ NormalizedShader normalize_program(const std::string& vertex_src, const std::str
                 }
                 NormSampler sampler;
                 sampler.name = name;
+                sampler.array_dimensions = decl.array_dimensions;
                 sampler.dim = sampler_dim(decl.type);
                 sampler.sample_scalar = sampler_scalar(decl.type);
                 sampler.texture_binding = 1 + static_cast<uint32_t>(result.samplers.size()) * 2;

@@ -781,8 +781,22 @@ void auxiliary_eviction_lifetime_and_mutable_device_guard() {
 }
 }  // namespace
 
+void dimension_metadata_counts_toward_storage() {
+    PortableShaderArtifact artifact;
+    artifact.uniforms.resize(1);
+    artifact.samplers.resize(1);
+    const size_t before = artifact.storage_bytes();
+    artifact.uniforms[0].array_dimensions.reserve(7);
+    artifact.samplers[0].array_dimensions.reserve(11);
+    const size_t reserved = artifact.uniforms[0].array_dimensions.capacity() +
+                            artifact.samplers[0].array_dimensions.capacity();
+    require(artifact.storage_bytes() == before + reserved * sizeof(uint32_t),
+        "uniform and sampler dimension metadata must count toward cache storage");
+}
+
 int main() {
     try {
+        dimension_metadata_counts_toward_storage();
         identity_and_provenance();
         device_loss_preserves_portable();
         bounded_ownership_and_failures();

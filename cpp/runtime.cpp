@@ -464,10 +464,17 @@ void refresh_storage_sample_type(TextureRev& rev) {
         wgpu::TextureSampleType::UnfilterableFloat : wgpu::TextureSampleType::Float;
 }
 
+wgpu::TextureViewDimension sampler_view_dimension(const NormSampler& sampler) {
+    return sampler.dim == "cube" ? wgpu::TextureViewDimension::Cube :
+           sampler.dim == "1d" ? wgpu::TextureViewDimension::e1D :
+           sampler.dim == "3d" ? wgpu::TextureViewDimension::e3D : wgpu::TextureViewDimension::e2D;
+}
+
 void validate_sampler_storage(const NormSampler& sampler, TextureRev& rev) {
     if ((sampler.dim == "1d" && rev.dimensions != 1) ||
         (sampler.dim == "2d" && rev.dimensions != 2) ||
-        (sampler.dim == "3d" && rev.dimensions != 3))
+        (sampler.dim == "3d" && rev.dimensions != 3) ||
+        ((sampler.dim == "cube") != rev.cube))
         throw std::runtime_error("TEXTURE " + sampler.name + ": shader texture dimension differs from retained allocation");
     refresh_storage_sample_type(rev);
     const auto declared = declared_sample_type(sampler);
@@ -1022,7 +1029,7 @@ struct Engine {
         last_memory_window = record;
         return record;
     }
-    std::array<std::shared_ptr<TextureRev>, 3> dummy_textures;
+    std::array<std::shared_ptr<TextureRev>, 4> dummy_textures;
     wgpu::RenderPipeline present_pipeline;
     wgpu::BindGroupLayout present_layout;
     wgpu::Sampler present_sampler;
@@ -2634,9 +2641,7 @@ struct Engine {
             tex.binding = sampler.texture_binding;
             tex.visibility = resource_stages(sampler.texture_stage_mask);
             tex.texture.sampleType = declared_sample_type(sampler);
-            tex.texture.viewDimension = sampler.dim == "1d" ? wgpu::TextureViewDimension::e1D :
-                sampler.dim == "3d" ? wgpu::TextureViewDimension::e3D
-                                                             : wgpu::TextureViewDimension::e2D;
+            tex.texture.viewDimension = sampler_view_dimension(sampler);
             if (sampler.texture_stage_mask) entries.push_back(tex);
             wgpu::BindGroupLayoutEntry samp;
             samp.binding = sampler.sampler_binding;
@@ -2872,9 +2877,7 @@ struct Engine {
                 entry.binding = sampler.texture_binding;
                 entry.visibility = wgpu::ShaderStage::Compute;
                 entry.texture.sampleType = declared_sample_type(sampler);
-                entry.texture.viewDimension = sampler.dim == "1d" ? wgpu::TextureViewDimension::e1D :
-                sampler.dim == "3d" ? wgpu::TextureViewDimension::e3D :
-                                                                    wgpu::TextureViewDimension::e2D;
+                entry.texture.viewDimension = sampler_view_dimension(sampler);
                 entries.push_back(entry);
             }
             if (sampler.sampler_stage_mask) {
@@ -2942,9 +2945,7 @@ struct Engine {
                 entry.binding = sampler.texture_binding;
                 entry.visibility = resource_stages(sampler.texture_stage_mask);
                 entry.texture.sampleType = declared_sample_type(sampler);
-                entry.texture.viewDimension = sampler.dim == "1d" ? wgpu::TextureViewDimension::e1D :
-                sampler.dim == "3d" ? wgpu::TextureViewDimension::e3D :
-                                                                    wgpu::TextureViewDimension::e2D;
+                entry.texture.viewDimension = sampler_view_dimension(sampler);
                 entries.push_back(entry);
             }
             if (sampler.sampler_stage_mask) {
@@ -4638,6 +4639,7 @@ struct Engine {
         descriptor->format = rev.format;
         descriptor->internal_format = rev.internal_format;
         descriptor->dimensions = rev.dimensions;
+        descriptor->cube = rev.cube;
         rev.allocation_descriptor = std::move(descriptor);
     }
 
@@ -4808,7 +4810,7 @@ struct Vertex { @builtin(position) position: vec4f, @location(0) uv: vec2f }
                 refresh_sampler(rev);
             return;
         }
-        const uint32_t limit = rev.dimensions == 1 ? info.max_texture_1d :
+        const uint32_t limit = rev.cube ? info.max_texture_2d : rev.dimensions == 1 ? info.max_texture_1d :
             rev.dimensions == 3 ? info.max_texture_3d : info.max_texture_2d;
         if (static_cast<uint32_t>(rev.width) > limit || static_cast<uint32_t>(rev.height) > limit ||
             static_cast<uint32_t>(rev.depth) > limit)
@@ -4885,7 +4887,13 @@ struct Vertex { @builtin(position) position: vec4f, @location(0) uv: vec2f }
             rev.texture = device.CreateTexture(&td);
             rev.allocation_token = std::make_shared<int>(0);
             ++probe.texture_allocations;
-            rev.view = rev.texture.CreateView();
+            if (rev.cube) {
+                wgpu::TextureViewDescriptor view;
+                view.dimension = wgpu::TextureViewDimension::Cube;
+                view.arrayLayerCount = 6;
+                view.mipLevelCount = 1;
+                rev.view = rev.texture.CreateView(&view);
+            } else rev.view = rev.texture.CreateView();
         }
         // Validate sampling against stable storage rather than DATA's dtype.
         if (!rev.sampler) refresh_sampler(rev);
@@ -4983,15 +4991,18 @@ struct Vertex { @builtin(position) position: vec4f, @location(0) uv: vec2f }
     }
 
     std::shared_ptr<TextureRev> placeholder_texture(const NormSampler& sampler) {
-        const int dimensions = sampler.dim == "1d" ? 1 : sampler.dim == "3d" ? 3 : 2;
-        auto& texture = dummy_textures[dimensions - 1];
+        const bool cube = sampler.dim == "cube";
+        const int dimensions = sampler.dim == "1d" ? 1 : sampler.dim == "3d" || cube ? 3 : 2;
+        auto& texture = dummy_textures[cube ? 3 : dimensions - 1];
         if (texture && texture->texture) return texture;
         texture = std::make_shared<TextureRev>();
         texture->dimensions = dimensions;
+        texture->cube = cube;
         texture->width = texture->height = texture->depth = 1;
         texture->channels = 4;
         texture->dtype = "u8";
-        texture->pixels = {255, 255, 255, 255};
+        texture->depth = cube ? 6 : 1;
+        texture->pixels.assign(cube ? 24 : 4, 255);
         upload_texture(*texture);
         return texture;
     }
@@ -6772,6 +6783,7 @@ static void execute_commands_impl(int canvas_id, const std::vector<Command>& com
                 }
                 const auto& shape = cmd.args[1].list;
                 rev->dimensions = texture_detail::texture_dimensions_for_class(obj.class_name);
+                rev->cube = obj.class_name == "TextureCube";
                 std::vector<int64_t> shape_values;
                 shape_values.reserve(shape.size());
                 for (const auto& value : shape) {
@@ -6784,6 +6796,8 @@ static void execute_commands_impl(int canvas_id, const std::vector<Command>& com
                 rev->height = layout.height;
                 rev->depth = layout.depth;
                 rev->channels = layout.channels;
+                if (rev->cube && (rev->depth != 6 || rev->width != rev->height))
+                    throw std::runtime_error("SIZE cube texture requires six square faces");
                 rev->format = cmd.args.size() > 2 && !cmd.args[2].s.empty() ? lower_token(cmd.args[2].s) : "rgba";
                 if (rev->format == "color") rev->format = "rgba";
                 rev->internal_format = cmd.args.size() > 3 ? lower_token(cmd.args[3].s) : "";
@@ -6811,6 +6825,7 @@ static void execute_commands_impl(int canvas_id, const std::vector<Command>& com
                 obj.height = rev->height;
                 if (obj.texture && obj.texture->width == rev->width && obj.texture->height == rev->height &&
                     obj.texture->depth == rev->depth && obj.texture->dimensions == rev->dimensions &&
+                    obj.texture->cube == rev->cube &&
                     obj.texture->channels == rev->channels && obj.texture->format == rev->format &&
                     obj.texture->internal_format == rev->internal_format) continue;
                 obj.texture = std::move(rev);

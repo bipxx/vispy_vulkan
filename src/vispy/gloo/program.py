@@ -284,7 +284,10 @@ class Program(GLObject):
                 if any(dimension <= 0 for dimension in shape):
                     raise ValueError('Array dimensions must be positive for %r'
                                      % m.group('name'))
-                if len(shape) > 1 and (kind != 'uniform' or 'sampler' in gtype):
+                sampler_types = ('sampler1D', 'sampler2D', 'sampler3D', 'samplerCube',
+                                 'isampler2D', 'usampler2D')
+                if len(shape) > 1 and (kind != 'uniform' or
+                        ('sampler' in gtype and gtype not in sampler_types)):
                     raise ValueError('Multidimensional %s %r is unsupported'
                                      % (kind, m.group('name')))
                 name = m.group('name')

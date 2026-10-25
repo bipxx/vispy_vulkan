@@ -232,6 +232,129 @@ def composed_uniform_array_checks(gloo, np):
     return results
 
 
+def _static_sampler_array_case(app, gloo, np, sampler, shape):
+    canvas = app.Canvas(app='dawn_headless', size=(8, 8), show=False, config={'samples': 0})
+    owned = []
+    try:
+        canvas.set_current()
+        indices = list(np.ndindex(shape))
+        integer = sampler in ('isampler2D', 'usampler2D')
+        unsigned = sampler == 'usampler2D'
+        coord = '.5' if sampler == 'sampler1D' else ('vec3(1,0,0)' if sampler == 'samplerCube'
+                    else 'vec3(.5)' if sampler == 'sampler3D' else 'vec2(.5)')
+        result_type = 'uvec4' if unsigned else 'ivec4' if integer else 'vec4'
+        sample = 'texelFetch(image,ivec2(0),0)' if integer else 'texture(image,' + coord + ')'
+        helper = result_type + ' fetch(' + sampler + ' image){return ' + sample + ';}'
+        checks = []
+        names = []
+        for slot, index in enumerate(indices):
+            name = 'images' + ''.join('[%d]' % i for i in index)
+            names.append(name)
+            # Include hexadecimal/unsigned spellings in nested helper arguments.
+            expression = 'images' + ''.join('[0x1u]' if i == 1 else '[0]' for i in index)
+            actual = 'fetch((' + expression + '))'
+            if integer:
+                expected = ('uint(expected[%d])' if unsigned else 'expected[%d]') % slot
+                checks.append(actual + '.r==' + expected)
+            else:
+                checks.append('all(lessThan(abs(' + actual + '-expected[%d]),vec4(.00001)))' % slot)
+        fragment = ('uniform ' + sampler + ' images' + ''.join('[%d]' % d for d in shape) + ';'
+            'uniform ' + ('int' if integer else 'vec4') + ' expected[%d];' % len(indices) + helper +
+            'void main(){gl_FragColor=(' + '&&'.join(checks) + ')?vec4(0,1,0,1):vec4(1,0,0,1);}')
+        program = gloo.Program('attribute vec2 position;void main(){gl_Position=vec4(position,0,1);}', fragment)
+        positions = gloo.VertexBuffer(np.array([[-1,-1],[3,-1],[-1,3]], np.float32))
+        owned.extend([program, positions]);program['position'] = positions
+        expected = []
+
+        def texture(slot):
+            if integer:
+                value = 0xf0000003 + slot * 17 if unsigned else -2147483601 + slot * 13
+                data = np.full((2, 2), value, np.uint32 if unsigned else np.int32)
+                tex = gloo.Texture2D(data, internalformat='r32ui' if unsigned else 'r32i', interpolation='nearest')
+                wanted = [value - 2**32 if unsigned else value]
+            else:
+                color = np.array([7 + slot * 13, 5 + slot * 17, 3 + slot * 9, 255], np.uint8)
+                dims = {'sampler1D': (3, 4), 'sampler2D': (2, 2, 4), 'sampler3D': (2, 2, 2, 4), 'samplerCube': (6, 2, 2, 4)}[sampler]
+                data = np.broadcast_to(color, dims).copy()
+                cls = {'sampler1D': gloo.Texture1D, 'sampler2D': gloo.Texture2D, 'sampler3D': gloo.Texture3D, 'samplerCube': gloo.TextureCube}[sampler]
+                tex = cls(data, interpolation='nearest')
+                wanted = color.astype(np.float32) / 255
+            owned.append(tex)
+            return tex, wanted
+
+        for slot, name in enumerate(names):
+            tex, wanted = texture(slot);program[name] = tex;expected.append(wanted)
+        gloo.set_viewport(0, 0, 8, 8)
+        gloo.set_state(blend=False, depth_test=False, scissor_test=False)
+
+        def check():
+            program['expected'] = np.asarray(expected, np.int32 if integer else np.float32)
+            gloo.clear(color=(1, 0, 1, 1))
+            program.draw('triangles')
+            np.testing.assert_array_equal(gloo.read_pixels((0,0,8,8), alpha=True),
+                np.broadcast_to(np.array([0,255,0,255], np.uint8), (8,8,4)))
+
+        check()
+        replacement, expected[0] = texture(len(indices) + 1)
+        program[names[0]] = replacement
+        check()
+    finally:
+        canvas.set_current()
+        for item in reversed(owned):
+            item.delete()
+        canvas.context.flush_commands()
+        canvas.close()
+
+
+def _cube_face_update_case(app, gloo, np):
+    canvas = app.Canvas(app='dawn_headless', size=(8, 8), show=False, config={'samples': 0})
+    program = positions = cube = None
+    try:
+        canvas.set_current()
+        colors = np.array([[231,17,43,255], [29,213,51,255], [37,61,227,255],
+                           [197,173,23,255], [179,31,193,255], [41,181,199,255]], np.uint8)
+        cube = gloo.TextureCube(np.broadcast_to(colors[:,None,None,:], (6,2,2,4)).copy(), interpolation='nearest')
+        positions = gloo.VertexBuffer(np.array([[-1,-1], [3,-1], [-1,3]], np.float32))
+        program = gloo.Program('attribute vec2 position;void main(){gl_Position=vec4(position,0,1);}',
+            'uniform samplerCube image;uniform vec3 direction;uniform vec4 expected;'
+            'void main(){gl_FragColor=all(lessThan(abs(textureCube(image,direction)-expected),vec4(.00001)))'
+            '?vec4(0,1,0,1):vec4(1,0,0,1);}')
+        program['position'], program['image'] = positions, cube
+        gloo.set_viewport(0,0,8,8)
+        gloo.set_state(blend=False, depth_test=False, scissor_test=False)
+        directions = [(1,0,0),(-1,0,0),(0,1,0),(0,-1,0),(0,0,1),(0,0,-1)]
+
+        def check_all_faces():
+            for face, direction in enumerate(directions):
+                program['direction'], program['expected'] = direction, colors[face].astype(np.float32)/255
+                gloo.clear(color=(1,0,1,1))
+                program.draw('triangles')
+                np.testing.assert_array_equal(gloo.read_pixels((0,0,8,8), alpha=True),
+                    np.broadcast_to(np.array([0,255,0,255], np.uint8), (8,8,4)))
+
+        check_all_faces()
+        colors[3] = [83,127,211,255]
+        cube.set_data(np.broadcast_to(colors[3], (1,2,2,4)).copy(), offset=(3,0,0))
+        check_all_faces()
+    finally:
+        canvas.set_current()
+        for item in (program, positions, cube):
+            if item is not None:
+                item.delete()
+        canvas.context.flush_commands()
+        canvas.close()
+
+
+def static_sampler_array_checks(app, gloo, np):
+    cases = []
+    for shape in ((2,), (2, 2), (2, 2, 2)):
+        for sampler in ("sampler1D", "sampler2D", "sampler3D", "samplerCube", "isampler2D", "usampler2D"):
+            _static_sampler_array_case(app, gloo, np, sampler, shape)
+            cases.append(dict(sampler=sampler, shape=list(shape), rebinding=True))
+    _cube_face_update_case(app, gloo, np)
+    return dict(array_cases=cases, cube_faces=6, partial_face_update=True)
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--wheel', required=True, type=Path)
@@ -304,6 +427,7 @@ def main():
         result['uniform_array_updates'] = uniform_array_update_checks(gloo, np, 12, 8)
         result['multidimensional_uniforms'] = multidimensional_uniform_checks(gloo, np)
         result['composed_uniform_arrays'] = composed_uniform_array_checks(gloo, np)
+        result['static_sampler_arrays'] = static_sampler_array_checks(app, gloo, np)
         result.update(status='PASS', verified_members=origins, checked_pixels=96,
                       device=native.device_info(), synchronization=synchronization)
     except BaseException:

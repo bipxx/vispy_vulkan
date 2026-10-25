@@ -296,11 +296,11 @@ void mixed_storage_roundtrip() {
 void interpreter_texture_dimensions() {
     using namespace texture_detail;
     for (const std::string name : {"Program", "VertexShader", "FragmentShader", "GeometryShader",
-            "VertexBuffer", "IndexBuffer", "Texture1D", "Texture2D", "Texture3D", "RenderBuffer", "FrameBuffer"})
+            "VertexBuffer", "IndexBuffer", "Texture1D", "Texture2D", "Texture3D", "TextureCube", "RenderBuffer", "FrameBuffer"})
         require(supported_glir_object_class(name), "CREATE supported class " + name);
     require(!supported_glir_object_class("Texture4D"), "CREATE unknown class must reject");
     require(texture_dimensions_for_class("Texture1D") == 1 && texture_dimensions_for_class("Texture2D") == 2 &&
-        texture_dimensions_for_class("Texture3D") == 3 && texture_dimensions_for_class("RenderBuffer") == 2,
+        texture_dimensions_for_class("Texture3D") == 3 && texture_dimensions_for_class("TextureCube") == 3 && texture_dimensions_for_class("RenderBuffer") == 2,
         "actual SIZE class rank dispatch");
     rejects([] { texture_dimensions_for_class("Program"); }, "SIZE nontexture class must reject");
     for (int dimensions : {1, 2, 3}) {
@@ -408,8 +408,31 @@ void sampler_contracts() {
 }
 }  // namespace
 
+void cube_allocation_contract() {
+    TextureData cube;
+    cube.dimensions = 3; cube.cube = true;
+    cube.width = cube.height = 2; cube.depth = 6;
+    cube.pixels.assign(6 * 2 * 2 * 4, 127);
+    auto prepared = prepare_texture(cube);
+    require(prepared.dimension == wgpu::TextureDimension::e2D &&
+            prepared.view_dimension == wgpu::TextureViewDimension::Cube,
+            "cube allocation is a 2D six-layer texture with a cube view");
+    require(sampler_texture_descriptor(cube).cube, "retained sampler descriptor keeps cube allocation kind");
+    auto full = vispy::textures::prepare_full_upload(cube);
+    require(full.prepared().view_dimension == wgpu::TextureViewDimension::Cube && full.size() == 96,
+        "borrowed full uploads keep cube allocation metadata");
+    ByteBlob patch = blob(std::vector<uint8_t>(16, 42), {1, 2, 2, 4}, "u8");
+    require(prepare_region(cube, patch).view_dimension == wgpu::TextureViewDimension::Cube,
+        "partial face conversion retains the cube allocation view");
+    cube.depth = 5; cube.pixels.assign(5 * 2 * 2 * 4, 127);
+    rejects([&] { prepare_texture(cube); }, "cube must retain all six faces");
+    cube.depth = 6; cube.width = 3; cube.pixels.assign(6 * 3 * 2 * 4, 127);
+    rejects([&] { prepare_texture(cube); }, "cube faces must be square");
+}
+
 int main() {
     try {
+        cube_allocation_contract();
         interpreter_texture_dimensions();
         unsized_storage(); partial_regions(); scientific_formats(); channel_semantics(); fixed_allocation_conversion(); region_conversion(); mixed_source_partial_shadow(); mixed_storage_roundtrip(); sampler_contracts(); depth_upload_conversion();
         vispy::texture_contracts::full_upload_equivalence_contract();

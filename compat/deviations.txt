@@ -45,3 +45,6 @@ util/wrappers.py
 # Tk ownership, early UI-thread preconditions and consistent public lifecycle state.
 app/canvas.py
 app/timer.py
+
+# Explicit uniform-array declarations and shape/order-preserving shader replay.
+visuals/shaders/variable.py

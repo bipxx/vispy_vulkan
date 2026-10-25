@@ -158,8 +158,11 @@ struct PortableShaderArtifact {
                  attributes.capacity() * sizeof(NormAttribute);
         bytes += varyings.capacity() * sizeof(NormVarying);
         for (const auto& uniform : uniforms)
-            bytes += uniform.name.capacity() + uniform.type.capacity() + uniform.storage_type.capacity() + 3;
-        for (const auto& sampler : samplers) bytes += sampler.name.capacity() + sampler.dim.capacity() + 2;
+            bytes += uniform.name.capacity() + uniform.type.capacity() + uniform.storage_type.capacity() + 3 +
+                     uniform.array_dimensions.capacity() * sizeof(uint32_t);
+        for (const auto& sampler : samplers)
+            bytes += sampler.name.capacity() + sampler.dim.capacity() + 2 +
+                     sampler.array_dimensions.capacity() * sizeof(uint32_t);
         for (const auto& attribute : attributes) bytes += attribute.name.capacity() + attribute.type.capacity() + 2;
         for (const auto& varying : varyings)
             bytes += varying.name.capacity() + varying.type.capacity() + varying.interpolation.capacity() + 3;

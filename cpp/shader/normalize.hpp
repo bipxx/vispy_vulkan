@@ -71,6 +71,7 @@ struct NormSampler {
     // Sampled texel scalar, independent of filtering and resource liveness.
     // Integer sampled words never use float textures or float carriers.
     ShaderScalarType sample_scalar = ShaderScalarType::Float;
+    std::vector<uint32_t> array_dimensions;
 };
 
 struct NormAttribute {

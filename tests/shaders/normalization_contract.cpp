@@ -396,6 +396,50 @@ void one_dimensional_sampling(){
         "single-level legacy1D explicit LOD retains an actual sampling instruction");
 }
 
+void multidimensional_sampler_arrays() {
+    for (const std::string type : {"sampler1D", "sampler2D", "sampler3D", "samplerCube", "isampler2D", "usampler2D"}) {
+        const std::string coord = type == "sampler1D" ? ".5" :
+            type == "sampler3D" || type == "samplerCube" ? "vec3(.5)" : "vec2(.5)";
+        std::string reads;
+        for (int row = 0; row < 2; ++row) for (int col = 0; col < 3; ++col) {
+            if (!reads.empty()) reads += '+';
+            reads += "vec4(texture(images[" + std::to_string(row) + "][" + std::to_string(col) + "]," + coord + "))";
+        }
+        auto normalized = normalize_program(vertex, "uniform " + type + " images[2][3];"
+            "void main(){gl_FragColor=" + reads + ";}");
+        compile_and_reflect(normalized);
+        require(normalized.samplers.size() == 6, "all nested sampler leaves retain independent resources");
+        for (size_t i = 0; i < normalized.samplers.size(); ++i) {
+            auto& sampler = normalized.samplers[i];
+            require(sampler.name == "images[" + std::to_string(i / 3) + "][" + std::to_string(i % 3) + "]" &&
+                sampler.array_dimensions == std::vector<uint32_t>({2, 3}), "ordered sampler shape/public names");
+            require(sampler.texture_binding == 1 + i * 2 && sampler.sampler_binding == 2 + i * 2,
+                "sampler array has one static texture/sampler pair per leaf");
+            sampler.texture_stage_mask = sampler.sampler_stage_mask = 2;
+        }
+        auto compiled = compile_vulkan_glsl(normalized.vertex, normalized.fragment);
+        std::string error;
+        require(compiled.ok && reflect_sampler_types(compiled.fragment.words, normalized.samplers, 2, error),
+            "typed nested sampler reflection: " + error);
+    }
+    auto helper = normalize_program(vertex,
+        "uniform sampler2D images[2][3];vec4 fetch(sampler2D image,vec2 uv){return texture(image,uv);}"
+        "void main(){gl_FragColor=fetch((images[1][0x2u]),vec2(.5));}");
+    compile_and_reflect(helper);
+    auto cube = normalize_program(vertex,
+        "uniform sampler2D images[2][2][2];void main(){gl_FragColor=texture(images[1][0][1],vec2(.5));}");
+    compile_and_reflect(cube);
+    require(cube.samplers.size() == 8, "three-dimensional sampler declarations retain every leaf");
+    auto mismatch = normalize_program("uniform sampler2D images[3][2];void main(){gl_Position=vec4(0);}",
+        "uniform sampler2D images[2][3];void main(){gl_FragColor=texture(images[1][2],vec2(.5));}");
+    require(mismatch.error.find("array shapes differ") != std::string::npos, "equal products cannot alias sampler shapes");
+    for (const std::string index : {"[2][0]", "[1][3]", "[1]", "[1][2][0]", "[1][1.0]", "[1][which]"}) {
+        auto rejected = normalize_program(vertex, "uniform int which;uniform sampler2D images[2][3];"
+            "void main(){gl_FragColor=texture(images" + index + ",vec2(.5));}");
+        require(!rejected.error.empty(), "partial/out-of-bounds/nonliteral sampler index must fail explicitly");
+    }
+}
+
 void literal_sampler_arrays() {
     const std::string fragment = "uniform sampler2D images[2]; void main(){gl_FragColor="
         "texture2D(images[0],vec2(.25))+texture2D(images[1],vec2(.75));}";
@@ -442,7 +486,7 @@ void literal_sampler_arrays() {
     compile_and_reflect(both);
     require(both.samplers.size() == 2, "same array declared in both stages shares resource pairs");
     auto mismatch = normalize_program("uniform sampler2D images[3];void main(){gl_Position=vec4(0);}", fragment);
-    require(mismatch.error.find("stage sampler array lengths differ") != std::string::npos,
+    require(mismatch.error.find("stage sampler array shapes differ") != std::string::npos,
         "stage array shape disagreement cannot alias an admitted resource graph");
     auto dynamic = normalize_program(vertex,
         "uniform sampler2D images[2];uniform int index;void main(){gl_FragColor=texture2D(images[index],vec2(.5));}");
@@ -452,8 +496,9 @@ void literal_sampler_arrays() {
     require(outside.error.find("declared length") != std::string::npos, "out-of-bounds sampler index refuses before code generation");
     auto typed = normalize_program(vertex,
         "uniform usampler2D images[2];void main(){gl_FragColor=vec4(texture(images[0],vec2(.5)));}");
-    require(typed.error.find("sampler arrays") != std::string::npos,
-        "typed sampler arrays are not silently admitted by the bounded floating-2D packet");
+    compile_and_reflect(typed);
+    require(typed.samplers[0].sample_scalar == ShaderScalarType::Uint,
+        "typed sampler arrays preserve integer sampled words");
 }
 
 void explicit_single_level_sampling() {
@@ -699,7 +744,7 @@ int main(int argc, char** argv) {
         boolean_scope_lowering();
         coordinate_entry();
         one_dimensional_sampling();
-        sampling_policy(); literal_sampler_arrays(); explicit_single_level_sampling();
+        sampling_policy(); literal_sampler_arrays(); multidimensional_sampler_arrays(); explicit_single_level_sampling();
         composer_diagnostics();
         composed_parameter_qualifiers();
         composed_sampler_parameters();

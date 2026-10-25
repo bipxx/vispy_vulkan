@@ -72,7 +72,7 @@ def test_one_dimensional_scalar_contract_is_preserved():
 @pytest.mark.parametrize('declaration', [
     'uniform float grid[0][3];', 'uniform float grid[2][0];',
     'attribute vec2 grid[2][3];', 'varying vec2 grid[2][3];',
-    'uniform sampler2D grid[2][3];',
+    'uniform sampler2DArray grid[2][3];',
 ])
 def test_invalid_or_separately_unsupported_declarations(declaration):
     with pytest.raises(ValueError):
@@ -123,3 +123,15 @@ def test_shader_replacement_restores_shapes_in_last_write_order(writes, replay):
         np.testing.assert_array_equal(command[4], cached[command[2]])
     for name, value in cached.items():
         np.testing.assert_array_equal(program[name], value)
+
+
+@pytest.mark.parametrize('gtype', ['sampler1D', 'sampler2D', 'sampler3D', 'samplerCube',
+                                 'isampler2D', 'usampler2D'])
+def test_nested_sampler_leaf_names_are_public_uniforms(gtype):
+    program = Program('uniform %s images[2][3];' % gtype, 'void main(){}')
+    assert program._array_shapes['images'] == (2, 3)
+    for row in range(2):
+        for column in range(3):
+            name = 'images[%d][%d]' % (row, column)
+            assert ('uniform', gtype, name) in program.variables
+    assert len(program.variables) == 9
