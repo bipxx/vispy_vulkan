@@ -112,6 +112,14 @@ requested scope or discharging any parent. All 475 affected source checks and
 both 56-case installed-smoke helper controls pass. Actual installed CI and
 independent qualification remain pending; other SH-2 storage/interface classes
 and the broader shader/API obligations remain open.
+The subsequent Python composition/replay packet is frozen locally at `c188878efa752b3ba36897860a4070dcf4a98fd1`:
+explicit Variable arrays and shader-rebuild upload shape/order pass 129 focused
+checks per platform and both complete 104-case source smoke controls. It reuses
+the unchanged native modules. Fresh complete Tk observations and preparation
+references now preserve that native reuse and all original scope. Publication,
+new-head installed CI and independent admission remain pending; see the uniform
+report for exact proof and the preserved failing controls.
+
 
 ### Prevent unchanged-native rebuilds
 

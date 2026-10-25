@@ -2,8 +2,8 @@
   "schema": 1,
   "phase": "development",
   "id": "tk-state-resource-1",
-  "manifest_sha256": "8c060d5589962a8f764bafac084ecaf1c13ca55f5595c1f98d06d96280ef284d",
-  "product_source_commit": "0a0e8ec55e7e59b1f63a8142f9add6fed72a00e1",
+  "manifest_sha256": "f16ff14d83751ec46c3ee3968bbae7bf9fda1d320fda7e2bb3c7fbaa75c79882",
+  "product_source_commit": "c188878efa752b3ba36897860a4070dcf4a98fd1",
   "upstream_commit": "117b054598f4758b598f4b8f48feea48c11fe7b0",
   "ledger": {
     "path": "compat/vispy-compatibility.json",
@@ -31,15 +31,15 @@
   ],
   "runtime_inputs": {
     "path": "compat/candidates/tk-state-resource-1/runtime-inputs.json",
-    "sha256": "7f8886bc9cabd52ec82530ae04449525aeefb136ff4f6e2170979d76e6b9115f"
+    "sha256": "2acce3e4bc932401fe8d9cc4a02e63493defe24f6e44b854d30e8e0863511726"
   },
   "profiles": [
     {
       "id": "windows-gpu-tk86-cp312-development",
       "required": true,
       "observation": {
-        "path": "compat/candidates/tk-state-resource-1/windows-multidimensional-profile.json",
-        "sha256": "b6419c1cec26fd6305f074afe1663f745acf1b01ca36dd19005d81c2dcd06010"
+        "path": "compat/candidates/tk-state-resource-1/windows-composed-array-profile.json",
+        "sha256": "1ee76a27c10a6c5a8787b8ca2703a9f71cd240343d01d94c76d21840cd07d3ed"
       },
       "wheel": null,
       "previous_qualified_wheel_sha256": "62df5e4c31bf9a1bb1bea47fd68d50e4198d6ec13d2551c991da1e7f30a2b38f",
@@ -57,8 +57,8 @@
       "id": "wsl-software-tk90-cp31213-development",
       "required": true,
       "observation": {
-        "path": "compat/candidates/tk-state-resource-1/linux-mesa2618-multidimensional-profile.json",
-        "sha256": "eb8770b04b136bae9b60814fa8361dcef8c867abb5dd43671d488bd69fba27ed"
+        "path": "compat/candidates/tk-state-resource-1/linux-mesa2618-composed-array-profile.json",
+        "sha256": "03e1fdd89ffbe2624f90cfb56dd9b9d62292770ce39a2ec4d2d0846513c39c8c"
       },
       "wheel": null,
       "previous_qualified_wheel_sha256": "374a74ea9787ccccc643e0ac7e45d9f704a41d046465828736158ac94398c4a3",
@@ -1172,7 +1172,7 @@
     },
     {
       "path": "compat/qualification-ci.json",
-      "sha256": "979825bb0ee93cbf227c35f626ae09eeef82a0f35b4632b5b8e7874b6acad0b2"
+      "sha256": "bd9616022142aa19c7cfa59c137bd288319d80869a81f24ebc3755fc6506f72c"
     },
     {
       "path": "tools/qualification_artifact.py",
@@ -1252,7 +1252,7 @@
     },
     {
       "path": ".github/workflows/cpu-contract.yml",
-      "sha256": "8c4f974109c90b64477a8c77d88e6f720d82c4b2c70923118e0e73aedefa3cfe"
+      "sha256": "3ff20a7ccbdc1567e294e562d58ff636df6517a7a514eec51b230ec4b8468c61"
     },
     {
       "path": "tools/audit_no_opengl.py",

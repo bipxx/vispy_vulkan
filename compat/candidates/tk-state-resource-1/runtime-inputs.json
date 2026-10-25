@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "source_commit": "0a0e8ec55e7e59b1f63a8142f9add6fed72a00e1",
+  "source_commit": "c188878efa752b3ba36897860a4070dcf4a98fd1",
   "python": [
     {
       "member": "vispy/__init__.py",
@@ -608,7 +608,7 @@
       "member": "vispy/gloo/program.py",
       "file": {
         "path": "src/vispy/gloo/program.py",
-        "sha256": "689275e40887b27e7fe1e316dacb07a09c17c3ff1a266d178a2c38ed05adc00e"
+        "sha256": "bedcb9c1a651f0dc3a97b877ad2676c3bbd557812b49e947e10e8b8ad2a1391a"
       }
     },
     {
@@ -3198,7 +3198,7 @@
       "member": "vispy/visuals/shaders/variable.py",
       "file": {
         "path": "src/vispy/visuals/shaders/variable.py",
-        "sha256": "beab5b4cf6fc6d87f92fb4b339250a3fa071e699b225938bbaa9b544c0dbce95"
+        "sha256": "7ea9a9d5e0dae24cb82e3949335b6b3092222674eef50408cda0bda22db05013"
       }
     },
     {

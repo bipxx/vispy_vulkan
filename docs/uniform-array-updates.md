@@ -143,3 +143,81 @@ inventory and CI reference controls pass on the final bytes. This follows the
 475-check source run and requires no native rebuild or repeated rendering.
 The helper/declaration check run reclaimed 119,409,907 bytes and verified all
 43 retained records; its scratch is absent.
+
+
+## Composed arrays and shader-rebuild replay: source follow-up
+
+Local product source `c188878efa752b3ba36897860a4070dcf4a98fd1` extends explicit typed `Variable` declarations
+such as `uniform vec3 grid[2][3]`. Declaration dimensions are separate from the
+compiler-assigned base name, remain intact through collisions/renaming, and are
+exposed as the immutable `array_shape` tuple. Values use the same component-axis
+contract as Program; rejected assignments preserve both the old value and cache
+identity. `ModularProgram` uploads changes without unnecessary source rebuilds.
+
+A rename/recompile regression exposed a second existing bug: Program cached
+flattened array data, then replayed it as a new shaped upload after replacing
+shaders. It also retained first-insertion order, which could revive an indexed
+write superseded by a later whole-array write. Replay now restores the original
+shape and uses last-write cache order. Public cached getter values remain packed.
+
+Both Windows and WSL pass 129 focused checks: 36 Variable contracts, 27 Program
+shape/replay contracts, ten existing shader-function contracts, 48 composed-array
+pixel cases, and eight existing uniform-order cases extended through recompile.
+Pixels cover one, two and three dimensions; scalar/int/bool/vector/boolean-vector
+and matrix values; shared vertex/fragment uniforms; colliding names; live value
+updates; rename-triggered recompilation; triangles and generated wide lines.
+Both platforms also pass the complete 104-case smoke helper in one canvas, with
+all nine shutdown gauges at zero. The installed entry point additionally verifies
+its three actual loaded shader-composition modules against wheel members.
+
+The first declaration/value failure and all 48 rename/recompile failures are
+retained with their source and reproducer. The new pixel oracle is shared by
+pytest and the installed smoke to prevent separate copies from drifting. Native
+source/header hashes and binaries are unchanged: the retained modules from the
+previous packet were reused without SDK work or new environments.
+
+Evidence: `build/runs/variable-array-composition-58/`. This is local source proof;
+preparation references now bind fresh source observations for this Python change;
+final-head installed CI and independent approvals remain pending. Native producer status, independent review requirements, original
+parents and other SH-2 storage/interface obligations are unchanged.
+
+
+Managed cleanup reclaimed 17,241,753 bytes from this Python-only packet. All
+105 retained source/evidence/artifact/license records were rehashed, scratch is
+absent and shared managed work is empty. No native build or environment install
+was needed. The published head's CI continues separately; this local product
+commit awaits one coherent preparation/publication update rather than cancelling
+that active run for each small source checkpoint.
+
+
+## Qualification follow-up for the composed-array source
+
+Fresh complete eight-branch source Tk composites pass on Windows and WSL after
+the Python replay change, with all nine shutdown gauges at zero. Both changed
+Python modules are hash-bound in these observations. New composed-array profile
+files retain the previous multidimensional profiles and explicitly reuse the
+same native leaves; native production inputs are byte-identical. Preparation
+keeps the requested selection, dependency closure, execution ledger, both
+profiles and all 142 original required parents intact. No producer admission or
+independent approval is created by this renewal.
+
+The earlier published head `a1a0f789bee6aff926ff79b12c9119459318a913` now has an
+actual successful Linux CI installed-wheel receipt: eight uniform-order plus 48
+multidimensional cases, six exact wheel-member checks and zero shutdown gauges.
+The original PR merge-checkout identity and all five checked Python members were
+verified against that source head. Its wheel is retained once by hash, together
+with original small receipts; expanded native-origin copies were not extracted.
+This belongs to the Linux CI profile and the earlier product, not the WSL Tk
+profile or the newer 104-case composed-array helper. The latter still needs its
+own full installed entry point on the new declared head. Metal's CI pass is build
+proof only. Neither result changes the real subject's missing admission evidence.
+
+Follow-up source and receipt evidence: `build/runs/variable-array-qualification-59/`.
+
+
+All 514 affected native/epoch/index/inventory/CI/artifact/preparation and public
+array contracts pass on the renewed source declarations. The real subject still
+has 120 requested/closure/missing criteria, zero proved criteria and admission
+false. The immutable original compatibility ledger hash is unchanged. These
+checks validate the preparation and rejection gates; they do not approve source,
+producer reuse, installed candidate workflows or release promotion.
