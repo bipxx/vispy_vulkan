@@ -152,3 +152,31 @@ CI must be collected after publication; old-head success does not transfer.
 
 Local reconstruction records are in `build/runs/varying-driver-preparation-67/`;
 these are development preparation evidence, not a portable approval packet.
+
+
+## External driver origin and matrix-record preparation checkpoint
+
+Product runtime source `95748384f` includes Python matrix vertex-record packing
+and direct buffer updates. Source tests cover record counts, column words,
+reassignment, partial-update offsets, interleaved views and invalid updates;
+native matrix/array shader input lowering remains open. Both Windows and WSL
+have fresh complete eight-branch source Tk observations with zero shutdown
+counts, reusing byte-checked native inputs without a renderer rebuild.
+
+The previous Linux installed CI build reached rendering but correctly rejected
+the repaired Mesa library under the repository artifact store. The verifier is
+unchanged. The revised workflow builds/retains its driver in an owned external
+workspace and uploads both necessary libraries with their original source and
+notices. A controlled check with the exact failed CI wheel/driver rejects the
+repository path and accepts identical driver bytes externally; all other native
+images, expected pixels and shutdown gauges agree. That wheel projection is a
+source-functional origin control, not a new installed qualification result.
+
+New source-functional profiles preserve previous observations, requested criteria,
+same-profile closure and the execution ledger. The real subject still reports
+120 requested/closure/missing bindings, zero proved and admission false. All
+142 original parent obligations remain undischarged. Renewed-head installed CI,
+actual independent reviews, complete renderer producer routes, both selected
+installed protocols and final promotion remain required. Local reconstruction
+records are in `build/runs/driver-origin-preparation-72/` and the linked original
+failure/control runs; none supplies missing approval or release admission.

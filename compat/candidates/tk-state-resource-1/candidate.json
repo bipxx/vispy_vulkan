@@ -2,8 +2,8 @@
   "schema": 1,
   "phase": "development",
   "id": "tk-state-resource-1",
-  "manifest_sha256": "803cd26187a878668d691ac24f1b81c25c852fb796cb582eb459286a70e17718",
-  "product_source_commit": "1d77811f66e4148ab5f70822a54ab249b99ebbee",
+  "manifest_sha256": "1cfed2748905931e14c70ad9557e0df648625ad5d17cd95a47cfcff67432ca31",
+  "product_source_commit": "95748384f1a1e9230e80eb9ddb5059ff95926259",
   "upstream_commit": "117b054598f4758b598f4b8f48feea48c11fe7b0",
   "ledger": {
     "path": "compat/vispy-compatibility.json",
@@ -31,15 +31,15 @@
   ],
   "runtime_inputs": {
     "path": "compat/candidates/tk-state-resource-1/runtime-inputs.json",
-    "sha256": "e4e5efd6ce909d687e2ab5543c2fcb5ad5c0b18bfeea8deda24f3cdb86e399f4"
+    "sha256": "a92955e5a00659ccd8dcb0abcc52209ee7d1c61515ccaebde149f60611699c93"
   },
   "profiles": [
     {
       "id": "windows-gpu-tk86-cp312-development",
       "required": true,
       "observation": {
-        "path": "compat/candidates/tk-state-resource-1/windows-varying-array-profile.json",
-        "sha256": "3eac91180668b9b2e2d6eb97ac8a4ef5e2b408af956b0d6245a0385f792d0b2e"
+        "path": "compat/candidates/tk-state-resource-1/windows-matrix-packing-profile.json",
+        "sha256": "99b6ccdd76003d957e8cc97aaa6541bed56c5d33d56a20598e4cdf2bcb00ecb5"
       },
       "wheel": null,
       "previous_qualified_wheel_sha256": "62df5e4c31bf9a1bb1bea47fd68d50e4198d6ec13d2551c991da1e7f30a2b38f",
@@ -57,8 +57,8 @@
       "id": "wsl-software-tk90-cp31213-development",
       "required": true,
       "observation": {
-        "path": "compat/candidates/tk-state-resource-1/linux-mesa2618-clip-repair-varying-profile.json",
-        "sha256": "6788d106419150105f741a36dee5b244d9e13ca8077fcb5737021bc7dd4a9eaa"
+        "path": "compat/candidates/tk-state-resource-1/linux-mesa2618-external-driver-profile.json",
+        "sha256": "9fefbccdbab1d1528eae06a43ea014fee033d77b9831977df13f29acb07ab358"
       },
       "wheel": null,
       "previous_qualified_wheel_sha256": "374a74ea9787ccccc643e0ac7e45d9f704a41d046465828736158ac94398c4a3",
@@ -1172,7 +1172,7 @@
     },
     {
       "path": "compat/qualification-ci.json",
-      "sha256": "a8ad49441dceee2578250603a6cd99946c8c621e9b42e1b39b0914df2612cb38"
+      "sha256": "6545e0dad2c0292094b9d48096ec55012507e8a98d14d676da6a741e6f35068d"
     },
     {
       "path": "tools/qualification_artifact.py",
@@ -1220,7 +1220,7 @@
     },
     {
       "path": ".github/workflows/linux-vulkan.yml",
-      "sha256": "1416070a22e58136334399807f2cc28cd6885d1f9b6a0af01c9e7d83d3267376"
+      "sha256": "32353bf0dbb68947ef6c8e84c2456f4a88e71c1b2da57f572762b7e306ed63b6"
     },
     {
       "path": ".github/workflows/metal-wheel.yml",
@@ -1252,7 +1252,7 @@
     },
     {
       "path": ".github/workflows/cpu-contract.yml",
-      "sha256": "edb3c55d9fceb317c6bc0f4348df465578e7fe291b4bd43577ff68de6251c8ee"
+      "sha256": "939155c2dba8d50d3b3325ef49ae8e1d903f59ca090f9eea5dd5404a62b1e488"
     },
     {
       "path": "tools/audit_no_opengl.py",
@@ -1264,7 +1264,7 @@
     },
     {
       "path": "tools/build_software_vulkan.py",
-      "sha256": "c978eca8f2472eb95f4faf5858ae9d7647c379e905f2551c7d2251ebbd8e9013"
+      "sha256": "61bec9d3e5a07e9ffb7e714b8874405cd79965f1a9d99df3f17f7bab52483bef"
     },
     {
       "path": "tools/prepare_software_vulkan.py",

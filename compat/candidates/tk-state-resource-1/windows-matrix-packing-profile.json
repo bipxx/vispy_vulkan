@@ -1,0 +1,116 @@
+{
+  "schema": 1,
+  "id": "windows-gpu-tk86-cp312-development",
+  "phase": "source-functional",
+  "product_runtime_source_commit": "95748384f1a1e9230e80eb9ddb5059ff95926259",
+  "kind": "windows-gpu",
+  "architecture": "x86_64",
+  "python_abi": "cp312",
+  "python_version": "3.12.8 (main, Dec 19 2024, 14:41:01) [MSC v.1942 64 bit (AMD64)]",
+  "interpreter": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\.venv\\Scripts\\python.exe",
+  "interpreter_sha256": "4025e2a6d8fc90d053a8405e81f008cbd8ee45b582e2d77480341501f4aeda73",
+  "base_interpreter": {
+    "path": "C:\\Users\\HEQ\\AppData\\Roaming\\uv\\python\\cpython-3.12.8-windows-x86_64-none\\python.exe",
+    "sha256": "71b986e874ae1382c434f95852f5670e6d87576db2861cd03737dd4bce9d69ed"
+  },
+  "os_identity": "Windows-11-10.0.26200-SP0",
+  "toolkit": {
+    "tk_version": 8.6,
+    "tcl_version": 8.6,
+    "binding_origin": "C:\\Users\\HEQ\\AppData\\Roaming\\uv\\python\\cpython-3.12.8-windows-x86_64-none\\DLLs\\_tkinter.pyd",
+    "binding_hash_scope": "module",
+    "binding_sha256": "38453f6aff3f3a3ef0017c00bfee2f403ca0aeaf92b8b5c56d05460fd6dbbdf9"
+  },
+  "display_mode": "tk-raster",
+  "device": {
+    "backend": "Vulkan",
+    "adapter_type": "discrete",
+    "vendor": "nvidia",
+    "device": "NVIDIA GeForce RTX 4090",
+    "driver": "NVIDIA: 610.88 610.88.0.0",
+    "vendor_id": 4318,
+    "device_id": 9860,
+    "max_texture_dimension_1d": 32768,
+    "max_texture_dimension_2d": 32768,
+    "max_texture_dimension_3d": 16384,
+    "max_vertex_attributes": 30,
+    "max_vertex_buffers": 8,
+    "max_vertex_buffer_array_stride": 2048,
+    "max_storage_buffers_per_shader_stage": 16,
+    "max_uniform_buffers_per_shader_stage": 12,
+    "max_inter_stage_shader_variables": 30,
+    "max_storage_buffer_binding_size": 2147483644,
+    "max_bindings_per_bind_group": 1000,
+    "max_compute_invocations_per_workgroup": 1024,
+    "max_compute_workgroup_size_x": 1024,
+    "max_compute_workgroups_per_dimension": 65535,
+    "max_point_vertex_attributes": 30,
+    "core_features_and_limits": true,
+    "point_input_limit_scope": "all active user point inputs share one vertex buffer; exact vertex/instance identities use read-only vertex storage without reserving a user attribute; actual granted attribute/stride/storage/allocation limits apply",
+    "max_samplers_per_shader_stage": 16,
+    "max_sampled_textures_per_shader_stage": 48,
+    "max_buffer_size": 1099511627776,
+    "max_uniform_buffer_binding_size": 65536,
+    "software": false,
+    "float32_filterable": true,
+    "unorm16_texture_formats": true,
+    "bresenham_lines": true,
+    "last_vertex_provoking": true,
+    "timestamp_query": true,
+    "timestamp_quantization_ns": 65536,
+    "depth_stencil_storage": "depth24_unorm_stencil8",
+    "ok": true,
+    "error": "",
+    "loss_count": 0,
+    "revision": "117b054598f4758b598f4b8f48feea48c11fe7b0+dawn-499e5c6ff9b37d5de70c6493fb74c251e0d35c1c"
+  },
+  "native_sha256": "cd25f4510436d6b60f582111674120b5aba110d272b45962e44d7f177ae5c256",
+  "native_inputs_sha256": "ab004a80cf5998578c9b0b978baa212fc6c017f12fbeb3fb9e351e8870fa5340",
+  "loaded_library_identities": {
+    "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\artifacts\\cd25f4510436d6b60f582111674120b5aba110d272b45962e44d7f177ae5c256\\_dawn.cp312-win_amd64.pyd": "cd25f4510436d6b60f582111674120b5aba110d272b45962e44d7f177ae5c256"
+  },
+  "source_observation": {
+    "cases": 8,
+    "case_unit": "Required branches in one complete source composite",
+    "report": {
+      "path": "build/runs/driver-origin-preparation-72/windows-composite-source-bound-result.json",
+      "sha256": "7aa3ffb4cf0449cc7fe9058a1727596b12465d64927ca78ab2424b2f845c182e"
+    },
+    "shutdown_gauges": {
+      "pending_tickets": 0,
+      "queued_frames": 0,
+      "live_buffer_bytes": 0,
+      "live_cpu_buffer_bytes": 0,
+      "live_texture_bytes": 0,
+      "canvas_texture_bytes": 0,
+      "transient_buffer_bytes": 0,
+      "line_resource_pool_busy_slots": 0,
+      "line_resource_pool_bytes": 0
+    },
+    "scope": "Source functional only; not original installed observer proof"
+  },
+  "previous_source_observation": {
+    "path": "compat/candidates/tk-state-resource-1/windows-varying-array-profile.json",
+    "sha256": "3eac91180668b9b2e2d6eb97ac8a4ef5e2b408af956b0d6245a0385f792d0b2e"
+  },
+  "limitations": [
+    "Source-only preparation, independent source/scope review remains pending.",
+    "No candidate wheel, installed original absence/control receipts or final promotion approval.",
+    "No native Linux GPU or Metal hardware claim."
+  ],
+  "native_producer": {
+    "status": "SOURCE_FUNCTIONAL_LEAF_NOT_ADMITTED",
+    "artifact_manifest": {
+      "path": "build/artifacts/cd25f4510436d6b60f582111674120b5aba110d272b45962e44d7f177ae5c256/artifact.json",
+      "sha256": "e5c77305a26a6ed3c37f88e67da830b59a242f95f57ccaeb7ff9bf6e6bb483f0"
+    },
+    "scope": "Retained varying-array leaf with byte-checked runtime inputs; source-functional only, no producer admission."
+  },
+  "native_reuse": {
+    "basis": {
+      "path": "build/runs/driver-origin-preparation-72/runtime-source-reuse.json",
+      "sha256": "53967e577166e009f20d614b7865b0115fec14e22544e148d3d48a57dfbb8a4c"
+    },
+    "scope": "Unchanged native inputs, fresh Python source composite; no installed qualification or independent approval"
+  }
+}
