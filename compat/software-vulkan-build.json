@@ -1,0 +1,50 @@
+{
+  "schema": 1,
+  "name": "mesa-clip-axis-source-build",
+  "source": {
+    "name": "mesa_26.1.8~kisak1~n.tar.xz",
+    "url": "https://ppa.launchpadcontent.net/kisak/turtle/ubuntu/pool/main/m/mesa/mesa_26.1.8~kisak1~n.tar.xz",
+    "sha256": "81143147557058caa89f7a49475a66246a52983b109ac2a19b3066a4d55e6c53",
+    "size": 79447536,
+    "roles": [
+      "source",
+      "licenses"
+    ]
+  },
+  "patch": {
+    "path": "compat/patches/mesa-26.1.8-noperspective-axis.patch",
+    "sha256": "3cfc4b5411f17afcdb66cbb0f410c62c1434b193be345e0ce979711b59caea11",
+    "file": "src/gallium/auxiliary/draw/draw_pipe_clip.c",
+    "before_sha256": "5d5a506df9f5d9f568753d2b30bb53bf877348ce7618f529aad67f1df3d6498d"
+  },
+  "flags": [
+    "--buildtype=release",
+    "--wrap-mode=nofallback",
+    "-Dgallium-drivers=[]",
+    "-Dvulkan-drivers=swrast",
+    "-Dplatforms=[]",
+    "-Dopengl=false",
+    "-Dgles1=disabled",
+    "-Dgles2=disabled",
+    "-Degl=disabled",
+    "-Dglx=disabled",
+    "-Dgbm=disabled",
+    "-Dbuild-tests=false",
+    "-Dvulkan-layers=[]",
+    "-Dtools=[]",
+    "-Dllvm=enabled",
+    "-Dshared-llvm=enabled",
+    "-Dgallium-va=disabled",
+    "-Dzstd=disabled",
+    "-Dlibunwind=disabled",
+    "-Dlmsensors=disabled",
+    "-Dvalgrind=disabled",
+    "-Dglvnd=disabled",
+    "-Dvideo-codecs=[]",
+    "-Db_ndebug=true"
+  ],
+  "expected_peak_bytes": 6442450944,
+  "parallel_jobs": 4,
+  "disk_guard_seconds": 30,
+  "scope": "Headless software Vulkan; no hardware/window-system or producer admission"
+}

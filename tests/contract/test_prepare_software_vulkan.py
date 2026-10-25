@@ -5,6 +5,7 @@ import hashlib
 import json
 import tarfile
 from types import SimpleNamespace
+from pathlib import Path
 
 import pytest
 
@@ -96,3 +97,71 @@ def test_registered_owner_and_durable_record_required(tmp_path, monkeypatch, cas
     with pytest.raises(ValueError, match='ownership|outside all scratch'):
         driver.prepare('example', 'root', output)
     assert not (scratch / 'software-vulkan').exists()
+
+
+def raw_fixture(tmp_path, monkeypatch):
+    """Synthetic bytes test projection only, never an ELF/device claim."""
+    monkeypatch.setattr(driver, 'ROOT', tmp_path)
+    monkeypatch.setattr(driver, 'sys', SimpleNamespace(platform='linux'))
+    scratch = tmp_path / 'build/work/raw'
+    scratch.mkdir(parents=True)
+    (scratch / '.build-hygiene-owner.json').write_text(json.dumps(
+        {'schema': 1, 'run_id': 'raw', 'owner': 'root'}))
+    inputs = []
+    for name, data, roles in [('libvulkan_lvp.so', b'synthetic library', ['evidence']),
+                              ('notice.txt', b'original notice', ['licenses']),
+                              ('source.tar', b'preferred source', ['source'])]:
+        sha = hashlib.sha256(data).hexdigest()
+        path = tmp_path / 'artifacts' / sha / name
+        path.parent.mkdir(parents=True)
+        path.write_bytes(data)
+        inputs.append(dict(name=name, sha256=sha, size=len(data), roles=roles))
+    pin = {'inputs': inputs, 'libraries': [dict(kind='retained-file',
+        input='libvulkan_lvp.so', notice_input='notice.txt',
+        filename='libvulkan_lvp.so', sha256=inputs[0]['sha256'])]}
+    path = tmp_path / 'pin.json'
+    path.write_text(json.dumps(pin))
+    return pin, path, scratch
+
+
+def test_retained_native_projection_preserves_bytes_notices_and_scope(tmp_path, monkeypatch):
+    pin, path, scratch = raw_fixture(tmp_path, monkeypatch)
+    output = tmp_path / 'observation.json'
+    record = driver.prepare('raw', 'root', output, tmp_path / 'artifacts', pin_path=path)
+    assert (scratch / 'software-vulkan/libvulkan_lvp.so').read_bytes() == b'synthetic library'
+    assert record['libraries'][0]['sha256'] == pin['inputs'][0]['sha256']
+    assert Path(record['notices'][0]['path']).read_bytes() == b'original notice'
+    assert record['qualified'] is False and record['commands'] == []
+    assert json.loads(output.read_bytes()) == record
+
+
+@pytest.mark.parametrize('change', ['library-hash', 'notice-bytes', 'source-missing', 'kind'])
+def test_retained_projection_requires_all_inputs_and_expected_output(tmp_path, monkeypatch, change):
+    pin, path, _ = raw_fixture(tmp_path, monkeypatch)
+    if change == 'library-hash':
+        pin['libraries'][0]['sha256'] = '0' * 64
+    elif change == 'kind':
+        pin['libraries'][0]['kind'] = 'unknown'
+    else:
+        item = pin['inputs'][1 if change == 'notice-bytes' else 2]
+        file = tmp_path / 'artifacts' / item['sha256'] / item['name']
+        if change == 'notice-bytes':
+            file.write_bytes(b'changed notice')
+        else:
+            file.unlink()
+    path.write_text(json.dumps(pin))
+    with pytest.raises((ValueError, FileNotFoundError)):
+        driver.prepare('raw', 'root', tmp_path / 'observation.json',
+                       tmp_path / 'artifacts', pin_path=path)
+
+
+def test_explicit_workspace_still_requires_matching_owned_marker(tmp_path, monkeypatch):
+    _, path, _ = raw_fixture(tmp_path, monkeypatch)
+    workspace = tmp_path / 'guest'
+    scratch = workspace / 'build/work/raw'
+    scratch.mkdir(parents=True)
+    (scratch / '.build-hygiene-owner.json').write_text(json.dumps(
+        {'schema': 1, 'run_id': 'raw', 'owner': 'another'}))
+    with pytest.raises(ValueError, match='ownership'):
+        driver.prepare('raw', 'root', tmp_path / 'observation.json',
+                       tmp_path / 'artifacts', pin_path=path, workspace=workspace)

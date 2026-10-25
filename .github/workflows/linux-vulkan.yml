@@ -8,6 +8,10 @@ on:
       - 'tools/linux_wheel_smoke.py'
       - 'tools/marker_wheel_smoke.py'
       - 'tools/immediate_state_wheel_smoke.py'
+      - 'tools/build_software_vulkan.py'
+      - 'compat/software-vulkan-build.json'
+      - 'compat/mesa-build-requirements.txt'
+      - 'compat/patches/mesa-*'
       - 'tools/mesh_layout_process.py'
       - 'CMakeLists.txt'
       - 'cmake/**'
@@ -61,8 +65,8 @@ jobs:
         run: |
           mkdir -p "$EVIDENCE"
           sudo apt-get update
-          sudo apt-get install --no-install-recommends -y libx11-dev libx11-xcb-dev libvulkan1 mesa-vulkan-drivers ninja-build
-          dpkg-query -W libx11-dev libx11-xcb-dev libvulkan1 mesa-vulkan-drivers ninja-build > "$EVIDENCE/system-packages.txt"
+          sudo apt-get install --no-install-recommends -y libx11-dev libx11-xcb-dev libvulkan1 mesa-vulkan-drivers ninja-build llvm-18-dev libdrm-dev glslang-tools
+          dpkg-query -W libx11-dev libx11-xcb-dev libvulkan1 mesa-vulkan-drivers ninja-build llvm-18-dev libdrm-dev glslang-tools > "$EVIDENCE/system-packages.txt"
           python3 - <<'PY'
           import hashlib, json, os, pathlib
           candidates = sorted(pathlib.Path('/usr/share/vulkan/icd.d').glob('lvp_icd*.json'))
@@ -87,6 +91,26 @@ jobs:
           "$BUILD_ENV/bin/python" -B tools/qualification_ci.py --capture --workflow .github/workflows/linux-vulkan.yml --job-name "software-vulkan" --output "$EVIDENCE/ci-identity.json"
           uv --version > "$EVIDENCE/uv-version.txt"
           uname -a > "$EVIDENCE/kernel.txt"
+      - name: Build and verify pinned software Vulkan clipping repair
+        run: |
+          uv pip install --python "$BUILD_ENV" --require-hashes --only-binary :all: --requirements compat/mesa-build-requirements.txt
+          driver_run="mesa-ci-${{ github.run_id }}-${{ github.run_attempt }}"
+          "$BUILD_PYTHON" -B tools/build_hygiene.py preflight --run-id "$driver_run" --owner ci --expected-peak-bytes 6442450944 --register
+          driver_exit=0
+          "$BUILD_PYTHON" -B tools/build_software_vulkan.py --run-id "$driver_run" --owner ci \
+            --fetch --output "$EVIDENCE/software-driver.json" || driver_exit=$?
+          "$BUILD_PYTHON" -B tools/build_software_vulkan.py --run-id "$driver_run" --owner ci \
+            --output "$EVIDENCE/software-driver.json" --cleanup-exit "$driver_exit"
+          test "$driver_exit" -eq 0
+          "$BUILD_PYTHON" -B - <<'PY'
+          import json, os, pathlib
+          record = json.loads(pathlib.Path(os.environ['EVIDENCE'], 'software-driver.json').read_bytes())
+          if record['status'] != 'SOURCE_FUNCTIONAL_NOT_ADMITTED':
+              raise RuntimeError('Software driver has no passing source controls')
+          with open(os.environ['GITHUB_ENV'], 'a') as environment:
+              for key, value in record['environment'].items():
+                  environment.write(key + '=' + value + '\n')
+          PY
       - name: Build and audit actual Vulkan renderer wheel
         run: |
           "$BUILD_PYTHON" cmake/verify_dependencies.py
@@ -154,6 +178,7 @@ jobs:
           name: linux-software-vulkan-wheel-cp312
           path: |
             ${{ env.EVIDENCE }}
+            build/artifacts/
             ${{ env.NATIVE_BUILD }}/CMakeCache.txt
             ${{ env.NATIVE_BUILD }}/_dawn*.so
             ${{ env.NATIVE_BUILD }}/_sdf_cpu*.so

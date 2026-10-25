@@ -114,3 +114,29 @@ integration settles; the repaired local observation is not installed proof.
 The wider storage/interface inventory, runtime sampler indices, matrix/array
 attributes, other shader/API/host obligations, independent review, producers and
 installed qualification remain open. Metal stays experimental.
+
+
+## Maintained build and preparation integration
+
+`tools/prepare_software_vulkan.py` can project a finite retained-file pin into an
+owned workspace without modifying the original packaged-driver pin. The repaired
+library's new preparation route passes the six original failing cases with the
+expected loaded hash and all nine shutdown gauges at zero. The 29 focused
+preparation/build-tool controls also pass; these cover source/input identity,
+configuration, control completeness and terminal managed cleanup.
+
+`tools/build_software_vulkan.py` and `compat/software-vulkan-build.json` now carry
+the bounded source recipe used by the Linux software Vulkan workflow. Actual
+local execution in `build/runs/portable-driver-build-66/` reproduces the baseline
+clipping failure and passes all four independent controls after the patch. The
+maintained builder's produced library then passes 218 source regressions and
+171 shared smoke controls on the unchanged retained renderer. Its loaded library
+hash is `051f2413fdfad2baed9f9ba42f20d7fb7501adddf925cb304f91cf1fb1115f66`;
+all nine shutdown gauges are zero. Original release/patch/notices, source inputs,
+commands, exits/waits and both necessary libraries remain retained.
+
+This verifies the maintained local build path and its tested source consumers.
+The changed workflow has not yet run in CI. Renewing candidate/profile identities,
+publishing the coherent packet, collecting current-head installed CI and actual
+independent implementation/scope and producer qualification remain necessary.
+The previously retained driver observations keep their original identities.

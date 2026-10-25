@@ -175,3 +175,30 @@ complete window-system or hardware support. Retain original/patched necessary
 libraries, sources, patch and notices, actual exits/waits and failing controls;
 then plan/apply guest cleanup and rehash the retained files. No unpatched input,
 system driver, SDK, existing environment or pinned origin is modified.
+
+
+## Maintained Mesa source-build profile
+
+`compat/software-vulkan-build.json` carries the same bounded headless repair
+recipe for `tools/build_software_vulkan.py`: 6 GiB additional peak, four jobs,
+30-second capacity guards and no automatic dependency fallback. Register a run
+with the selected workspace before invoking it. A guest workspace must retain
+its inherited protected/blocked registry and Windows backing-volume capacity
+entry; the other coordinator scratch root must remain empty. The builder checks
+read-only filesystems as well as free capacity throughout command execution.
+
+The builder verifies the exact release and patch, records the original failing
+control, applies the patch and requires all four independent Vulkan controls to
+pass. `--fetch` permits only the pinned Mesa source archive if absent; compilers,
+LLVM and Python build tools must already be supplied by the existing environment
+or an explicitly retained projection. It creates no environment and installs no
+system packages. The ephemeral Linux CI setup supplies its declared packages
+and hashed Python tools before calling this same builder.
+
+Retain the resulting source-input archive, original release, both necessary
+libraries, full original notices, commands and actual exit. Only after waiting
+for that invocation, invoke `--cleanup-exit <actual-exit>` with the same run,
+owner, output and workspace. Cleanup validates retained identities and generates
+and applies an exact managed plan. A failing or interrupted build remains a
+failure with its reproducer; source controls do not establish producer admission,
+installed artifact qualification or native Linux hardware support.
