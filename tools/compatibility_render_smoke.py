@@ -3,6 +3,7 @@
 
 
 def compatibility_render_checks(app, gloo, scene, np, native, root, evidence, result=None):
+    app.use_app('dawn_headless')
     from aggregate_attribute_smoke import (
         aggregate_attribute_checks, aggregate_indexed_checks,
         composed_attribute_checks, aggregate_batch_checks,
