@@ -216,6 +216,15 @@ package install or new environment was needed. Cleanup removed 12 files /
 17,241,956 bytes; all 43 retained source/evidence/input/license records were
 rehashed, and scratch is absent. This remains source-functional evidence.
 
+The preparation controls are included in the existing CPU CI matrix. Run
+`build/runs/software-driver-ci-48/` passes all 90 affected preparation/CI/index
+checks after renewing the exact workflow/policy references. The initial stale-
+reference rejection is retained. Requested criteria and dependency closure,
+original obligations, old driver observations and missing reviews/artifact proof
+are preserved. Its 25 retained records were rehashed after cleanup; scratch is
+absent. These declaration changes require current-head CI and renew affected
+review; an earlier head's green result cannot be transferred.
+
 Next: make the driver decision explicit in the reviewed qualification profile
 and bind the exact configuration to the installed workflow/absence/control and
 shutdown evidence. Do not replace the original 25.2.8 profile observation or

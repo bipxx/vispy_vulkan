@@ -2,7 +2,7 @@
   "schema": 1,
   "phase": "development",
   "id": "tk-state-resource-1",
-  "manifest_sha256": "1a9abfdab2b133755b4260dc12f5ede52cb0323186906a4cd71d53b6155dc12d",
+  "manifest_sha256": "ef2cf5e107d022d35eaa4fa470768df682d02d70caefe952428102046d00e426",
   "product_source_commit": "6345ceef42df1a64a7401a83c2d1a30384903cd1",
   "upstream_commit": "117b054598f4758b598f4b8f48feea48c11fe7b0",
   "ledger": {
@@ -1172,7 +1172,7 @@
     },
     {
       "path": "compat/qualification-ci.json",
-      "sha256": "4146bd874841e144c7b830ad80bc7bcf6744a6eebe1d6788c8bb41cacb7ff48d"
+      "sha256": "753a9943cefdc40e12036550db9842b373c47b438b77ff1e28619a8202c2dc11"
     },
     {
       "path": "tools/qualification_artifact.py",
@@ -1252,7 +1252,7 @@
     },
     {
       "path": ".github/workflows/cpu-contract.yml",
-      "sha256": "bc05dd9b2be034d24517a70a6fde6acec3ef25ef6d3d204e8bf4684a44544d3c"
+      "sha256": "c2afd4366d6ba43389138793a643d165531c73cea8b8a2b903c717a902b2b73a"
     },
     {
       "path": "tools/audit_no_opengl.py",
