@@ -165,7 +165,8 @@ struct PortableShaderArtifact {
                      sampler.array_dimensions.capacity() * sizeof(uint32_t);
         for (const auto& attribute : attributes) bytes += attribute.name.capacity() + attribute.type.capacity() + 2;
         for (const auto& varying : varyings)
-            bytes += varying.name.capacity() + varying.type.capacity() + varying.interpolation.capacity() + 3;
+            bytes += varying.name.capacity() + varying.type.capacity() + varying.interpolation.capacity() + 3 +
+                     varying.array_dimensions.capacity() * sizeof(uint32_t);
         return bytes;
     }
 };

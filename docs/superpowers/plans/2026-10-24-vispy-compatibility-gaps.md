@@ -136,6 +136,17 @@ the previous composition observations and unchanged requested closure/ledger.
 Publication and current-head installed CI remain next; these development modules
 provide no producer admission or parent discharge.
 
+The next local SH-2 stage-varying packet retains ordered shapes through ordinary
+and generated-line consumers, stage-aware Python discovery and input aliases.
+Windows passes 218 combined regressions and 171 shared smoke controls. Linux
+passes 212 and fails six clipped noperspective cases; an independent scalar
+Vulkan control reproduces a driver-path failure. The retained Mesa source has
+an axis-selection zero-denominator candidate and a CPU-checked proposed patch,
+but no patched driver has been built or GPU-verified. See the
+[interface-array diagnostic](../../multidimensional-varyings.md). Preserve every
+failure and keep this WIP separate from the published sampler checkpoint. Settle
+the bounded driver repair before renewing profiles or restarting required CI.
+
 
 
 ### Prevent unchanged-native rebuilds

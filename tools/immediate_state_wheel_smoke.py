@@ -355,6 +355,93 @@ def static_sampler_array_checks(app, gloo, np):
     return dict(array_cases=cases, cube_faces=6, partial_face_update=True)
 
 
+def _multidimensional_varying_case(app, gloo, np, gtype, interpolation, shape, topology):
+    canvas = app.Canvas(app='dawn_headless', size=(16, 16), show=False, config={'samples': 0})
+    owned = []
+    try:
+        canvas.set_current()
+        integer = gtype in ('int', 'ivec2', 'uvec3')
+        unsigned = gtype == 'uvec3'
+        components = {'float': 1, 'vec3': 3, 'mat2x3': 6, 'int': 1, 'ivec2': 2, 'uvec3': 3}[gtype]
+        declaration = interpolation + ' varying ' + gtype + ' values' + ''.join('[%d]' % n for n in shape) + ';'
+        last = 2 if topology == 'triangles' else 1
+        if interpolation == 'flat':
+            expected_base = str(last) + '.0'
+        elif topology == 'triangles':
+            x, y = '(gl_FragCoord.x/32.0)', '(gl_FragCoord.y/32.0)'
+            expected_base = ('(' + x + '+' + y + ')' if interpolation == 'noperspective' else
+                             '(' + x + '/2.0+' + y + '/2.0)/(1.0-' + x + '-' + y + '+' + x + '/2.0+' + y + '/4.0)')
+            if interpolation == 'noperspective':
+                expected_base = '(' + x + '+2.0*' + y + ')'
+        else:
+            t = '((gl_FragCoord.x-2.0)/12.0)'
+            expected_base = t if interpolation == 'noperspective' else t + '/(2.0-' + t + ')'
+
+        def value(leaf, component, base):
+            if unsigned:
+                return '(0xf0000003u+uint(%s)*13u+uint(%s)*31u+%du)' % (leaf, base, component * 7)
+            if integer:
+                return '(-2147483601+int(%s)*13+int(%s)*31+%d)' % (leaf, base, component * 7)
+            return '((%s)+float(%s)*0.015625+%s+%s)' % (base, leaf, component * .00390625, 'shift')
+
+        assignments, checks = [], []
+        for leaf, indices in enumerate(np.ndindex(shape)):
+            name = 'values' + ''.join('[%d]' % i for i in indices)
+            components_source = [value(str(leaf), c, 'seed') for c in range(components)]
+            assignments.append(name + '=' + gtype + '(' + ','.join(components_source) + ');')
+            for c in range(components):
+                suffix = '[%d][%d]' % (c // 3, c % 3) if gtype == 'mat2x3' else '[%d]' % c if components > 1 else ''
+                actual, expected = name + suffix, value(str(leaf), c, expected_base)
+                checks.append(actual + '==' + expected if integer else 'abs(' + actual + '-(' + expected + '))<0.0002')
+        dynamic = 'values[selector/2]' + ('[0]' if len(shape) == 3 else '') + '[selector%2]'
+        if components > 1:
+            dynamic += '[0][0]' if gtype == 'mat2x3' else '[0]'
+        wanted = value('selector', 0, expected_base)
+        checks.append(dynamic + '==' + wanted if integer else 'abs(' + dynamic + '-(' + wanted + '))<0.0002')
+        vertex_declaration = declaration if len(shape) == 2 else declaration.replace('varying', 'out')
+        fragment_declaration = declaration if len(shape) == 2 else declaration.replace('varying', 'in')
+        vertex = ('attribute vec4 position;attribute float seed;uniform float shift;' + vertex_declaration +
+                  'void main(){gl_Position=position;' + ''.join(assignments) + '}')
+        fragment = ('uniform float shift;uniform int selector;' + fragment_declaration +
+                    'void main(){gl_FragColor=(' + '&&'.join(checks) + ')?vec4(0,1,0,1):vec4(1,0,0,1);}')
+        program = gloo.Program(vertex, fragment)
+        if topology == 'triangles':
+            positions = np.array([[-1,-1,0,1],[6,-2,0,2],[-4,12,0,4]], np.float32)
+        else:
+            positions = np.array([[-.75,0,0,1],[1.5,0,0,2]], np.float32)
+        position = gloo.VertexBuffer(positions)
+        seeds = gloo.VertexBuffer(np.arange(len(positions), dtype=np.float32))
+        owned.extend([program, position, seeds])
+        program['position'], program['seed'] = position, seeds
+        gloo.set_viewport(0,0,16,16)
+        gloo.set_state(blend=False,depth_test=False,scissor_test=False,line_width=4)
+        for selected, shift in ((0,0.), (3,.125)):
+            program['selector'], program['shift'] = selected, shift
+            gloo.clear(color=(1,0,1,1))
+            program.draw(topology)
+            image = gloo.read_pixels((0,0,16,16),alpha=True)
+            interior = image if topology == 'triangles' else image[7:9,3:13]
+            np.testing.assert_array_equal(interior, np.broadcast_to(np.array([0,255,0,255],np.uint8), interior.shape))
+    finally:
+        canvas.set_current()
+        for item in reversed(owned):
+            item.delete()
+        canvas.context.flush_commands()
+        canvas.close()
+
+
+def multidimensional_varying_checks(app, gloo, np):
+    cases = []
+    types = [(t, mode) for t in ('float','vec3','mat2x3') for mode in ('smooth','noperspective','flat')]
+    types += [(t,'flat') for t in ('int','ivec2','uvec3')]
+    for shape in ((2,2),(2,1,2)):
+        for topology in ('triangles','lines'):
+            for gtype, mode in types:
+                _multidimensional_varying_case(app,gloo,np,gtype,mode,shape,topology)
+                cases.append(dict(type=gtype,interpolation=mode,shape=list(shape),topology=topology))
+    return cases
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--wheel', required=True, type=Path)
@@ -428,6 +515,7 @@ def main():
         result['multidimensional_uniforms'] = multidimensional_uniform_checks(gloo, np)
         result['composed_uniform_arrays'] = composed_uniform_array_checks(gloo, np)
         result['static_sampler_arrays'] = static_sampler_array_checks(app, gloo, np)
+        result['multidimensional_varyings'] = multidimensional_varying_checks(app, gloo, np)
         result.update(status='PASS', verified_members=origins, checked_pixels=96,
                       device=native.device_info(), synchronization=synchronization)
     except BaseException:

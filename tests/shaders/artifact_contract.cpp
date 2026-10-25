@@ -785,13 +785,15 @@ void dimension_metadata_counts_toward_storage() {
     PortableShaderArtifact artifact;
     artifact.uniforms.resize(1);
     artifact.samplers.resize(1);
+    artifact.varyings.resize(1);
     const size_t before = artifact.storage_bytes();
     artifact.uniforms[0].array_dimensions.reserve(7);
     artifact.samplers[0].array_dimensions.reserve(11);
+    artifact.varyings[0].array_dimensions.reserve(13);
     const size_t reserved = artifact.uniforms[0].array_dimensions.capacity() +
-                            artifact.samplers[0].array_dimensions.capacity();
+                            artifact.samplers[0].array_dimensions.capacity() + artifact.varyings[0].array_dimensions.capacity();
     require(artifact.storage_bytes() == before + reserved * sizeof(uint32_t),
-        "uniform and sampler dimension metadata must count toward cache storage");
+        "uniform, sampler and varying dimension metadata must count toward cache storage");
 }
 
 int main() {

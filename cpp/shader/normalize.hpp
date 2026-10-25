@@ -88,7 +88,12 @@ struct NormVarying {
     int source_line = 0;
     bool centroid = false, sample = false;
     bool vertex_declared = false, fragment_declared = false;
+    // Logical stage shape. Generated line storage remains a flat leaf array.
+    std::vector<uint32_t> array_dimensions;
 };
+
+std::string varying_array_suffix(const NormVarying& varying);
+std::string varying_element_suffix(const NormVarying& varying, const std::string& flat_index);
 
 struct NormalizedShader {
     std::string vertex;

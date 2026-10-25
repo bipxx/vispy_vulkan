@@ -396,6 +396,29 @@ void one_dimensional_sampling(){
         "single-level legacy1D explicit LOD retains an actual sampling instruction");
 }
 
+void multidimensional_varyings() {
+    for (const auto& type : {std::string("float"), std::string("vec3"), std::string("mat2x3"), std::string("int"), std::string("uvec2")}) {
+        const bool integer = type == "int" || type == "uvec2";
+        const std::string qualifier = integer ? "flat " : "";
+        const auto declaration = qualifier + "varying " + type + " values[2][3];";
+        const auto value = type + "(1)";
+        auto result = normalize_program("attribute vec2 position;" + declaration +
+            "void main(){for(int i=0;i<2;++i)for(int j=0;j<3;++j)values[i][j]=" + value +
+            ";gl_Position=vec4(position,0,1);}", declaration +
+            "void main(){gl_FragColor=vec4(float(values[1][2]" +
+            (type == "vec3" || type == "uvec2" ? ".x" : type == "mat2x3" ? "[1][2]" : "") + "));}");
+        compile_and_reflect(result);
+        require(result.varyings.size() == 1 && result.varyings[0].array_dimensions == std::vector<uint32_t>({2,3}) &&
+            result.varyings[0].array_size == 6, "ordered varying shape survives normalization");
+        require(result.vertex.find("values[2][3]") != std::string::npos &&
+            result.fragment.find("values[2][3]") != std::string::npos, "both interfaces retain logical dimensions");
+    }
+    auto mismatch = normalize_program("varying vec2 values[2][3];void main(){gl_Position=vec4(0);}",
+        "varying vec2 values[3][2];void main(){gl_FragColor=vec4(1);}");
+    require(mismatch.error.find("stage interfaces differ") != std::string::npos,
+        "equal-product stage shapes cannot alias");
+}
+
 void multidimensional_sampler_arrays() {
     for (const std::string type : {"sampler1D", "sampler2D", "sampler3D", "samplerCube", "isampler2D", "usampler2D"}) {
         const std::string coord = type == "sampler1D" ? ".5" :
@@ -744,7 +767,7 @@ int main(int argc, char** argv) {
         boolean_scope_lowering();
         coordinate_entry();
         one_dimensional_sampling();
-        sampling_policy(); literal_sampler_arrays(); multidimensional_sampler_arrays(); explicit_single_level_sampling();
+        multidimensional_varyings(); sampling_policy(); literal_sampler_arrays(); multidimensional_sampler_arrays(); explicit_single_level_sampling();
         composer_diagnostics();
         composed_parameter_qualifiers();
         composed_sampler_parameters();

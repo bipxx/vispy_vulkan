@@ -88,3 +88,15 @@ def test_same_base_names_keep_independent_shapes_after_compiler_renaming():
     program.update_variables()
     np.testing.assert_array_equal(program[a], np.zeros(6))
     np.testing.assert_array_equal(program[b], np.ones(6))
+
+
+@pytest.mark.parametrize('version,keyword', [((120,''),'varying'), ((330,''),'in')])
+def test_varying_input_preserves_source_shape_and_compiler_name(version, keyword):
+    from vispy.visuals.shaders import Varying
+    source = Varying('values[2][3]', dtype='vec3')
+    incoming = source.invar()
+    assert incoming.array_shape == (2, 3)
+    assert incoming.definition({source:'renamed'}, version, 'fragment') == keyword + ' vec3 renamed[2][3];'
+    assert incoming.expression({source:'renamed'}) == 'renamed'
+    if version[0] > 120:
+        assert source.invar(array=True).definition({source:'renamed'}, version, 'geometry') == 'in vec3 renamed[][2][3];'

@@ -6,6 +6,7 @@
 #include <cstring>
 #include <limits>
 #include <sstream>
+#include <stdexcept>
 #include <unordered_map>
 #include <unordered_set>
 
@@ -257,12 +258,6 @@ std::vector<Decl> find_decls(const std::vector<Tok>& tokens, std::string& error,
                 decl.array_dimensions.push_back(static_cast<uint32_t>(dimension));
                 decl.array_size = (decl.array_size ? decl.array_size : 1) * dimension;
                 j += 3;
-                if (j < tokens.size() && tokens[j].text == "[" &&
-                        word != "uniform") {
-                    error = stage + " line=" + std::to_string(decl.line) + " interface " + decl.name +
-                            ": multidimensional arrays are unsupported";
-                    return {};
-                }
             }
             declaration.push_back(decl);
             if (j >= tokens.size() || tokens[j].text != ",") break;
@@ -898,6 +893,34 @@ void append_generated(std::ostringstream& output, const std::string& source, std
 
 }  // namespace
 
+std::string varying_array_suffix(const NormVarying& varying) {
+    if (varying.array_dimensions.empty())
+        return varying.array_size ? "[" + std::to_string(varying.array_size) + "]" : "";
+    std::string suffix;
+    for (uint32_t dimension : varying.array_dimensions) suffix += "[" + std::to_string(dimension) + "]";
+    return suffix;
+}
+
+std::string varying_element_suffix(const NormVarying& varying, const std::string& flat_index) {
+    if (!varying.array_size) return "";
+    if (varying.array_dimensions.size() <= 1) return "[" + flat_index + "]";
+    uint64_t stride = 1;
+    for (uint32_t dimension : varying.array_dimensions) {
+        if (!dimension || stride > UINT32_MAX / dimension)
+            throw std::invalid_argument("varying array shape overflow");
+        stride *= dimension;
+    }
+    if (stride != static_cast<uint32_t>(varying.array_size))
+        throw std::invalid_argument("varying array shape differs from leaf count");
+    std::string suffix;
+    for (uint32_t dimension : varying.array_dimensions) {
+        stride /= dimension;
+        suffix += "[(" + flat_index + (stride > 1 ? " / " + std::to_string(stride) + "u" : "") +
+                  ") % " + std::to_string(dimension) + "u]";
+    }
+    return suffix;
+}
+
 bool shader_value_type(const std::string& type, ShaderValueType& value) {
     value = {};
     if (type == "float") return true;
@@ -1141,7 +1164,7 @@ NormalizedShader normalize_program(const std::string& vertex_src, const std::str
         for (const auto& existing : varyings) {
             if (existing.name != decl.name) continue;
             found = true;
-            if (existing.type != decl.type || existing.array_size != decl.array_size ||
+            if (existing.type != decl.type || existing.array_dimensions != decl.array_dimensions ||
                 existing.interpolation != decl.interpolation || existing.centroid != decl.centroid ||
                 existing.sample != decl.sample) result.error = "varying " + decl.name + ": stage interfaces differ";
         }
@@ -1152,7 +1175,7 @@ NormalizedShader normalize_program(const std::string& vertex_src, const std::str
     for (const auto& varying : varyings) {
         NormVarying value;
         value.name = varying.name; value.type = varying.type; value.interpolation = varying.interpolation.empty() ? "smooth" : varying.interpolation;
-        value.array_size = varying.array_size; value.source_line = varying.line;
+        value.array_size = varying.array_size; value.array_dimensions = varying.array_dimensions; value.source_line = varying.line;
         value.centroid = varying.centroid; value.sample = varying.sample;
         if (!shader_value_type(value.type, value.value_type)) {
             result.error = "varying " + value.name + ": unsupported typed interface";
@@ -1278,7 +1301,7 @@ NormalizedShader normalize_program(const std::string& vertex_src, const std::str
             }
             var_location = varying.location + varying.value_type.columns * (varying.array_size ? varying.array_size : 1);
             stage << varying.type << " " << varying.name;
-            if (varying.array_size > 0) stage << "[" << varying.array_size << "]";
+            stage << varying_array_suffix(varying);
             stage << ";\n";
         }
         if (options.point_sprites)

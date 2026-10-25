@@ -1,0 +1,17 @@
+--- a/src/gallium/auxiliary/draw/draw_pipe_clip.c
++++ b/src/gallium/auxiliary/draw/draw_pipe_clip.c
+@@ -193,10 +193,10 @@
+       float t_nopersp = t;
+       /* find either in.x != out.x or in.y != out.y */
+       for (int k = 0; k < 2; k++) {
+-         if (in->clip_pos[k] != out->clip_pos[k]) {
+-            /* do divide by W, then compute linear interpolation factor */
+-            float in_coord = in->clip_pos[k] / in->clip_pos[3];
+-            float out_coord = out->clip_pos[k] / out->clip_pos[3];
++         /* Select an axis that differs after perspective division. */
++         float in_coord = in->clip_pos[k] / in->clip_pos[3];
++         float out_coord = out->clip_pos[k] / out->clip_pos[3];
++         if (in_coord != out_coord) {
+             float dst_coord = dst->clip_pos[k] / dst->clip_pos[3];
+             t_nopersp = (dst_coord - out_coord) / (in_coord - out_coord);
+             break;

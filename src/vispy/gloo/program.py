@@ -260,58 +260,58 @@ class Program(GLObject):
 
     def _parse_variables_from_code(self, update_variables=True):
         """Parse uniforms, attributes and varyings from the source code."""
-        # Get one string of code with comments removed
-        code = '\n\n'.join([sh.code for sh in self._shaders])
-        code = re.sub(r'(.*)(//.*)', r'\1', code, flags=re.M)
-
-        # Parse uniforms, attributes and varyings
+        # Keep stage identity: vertex inputs are attributes, fragment inputs
+        # are varyings. Joining source strings loses that distinction.
         self._code_variables = {}
         self._array_shapes = {}
-        for kind in ('uniform', 'attribute', 'varying', 'const', 'in', 'out'):
+        declarations = []
+        sources = [(shader, re.sub(r'(.*)(//.*)', r'\1', shader.code, flags=re.M))
+                   for shader in self._shaders]
+        for declared_kind in ('uniform', 'attribute', 'varying', 'const', 'in', 'out'):
+            for shader, code in sources:
+                kind = declared_kind
+                if declared_kind == 'in':
+                    kind = 'attribute' if isinstance(shader, VertexShader) else 'varying'
+                elif declared_kind == 'out':
+                    kind = 'varying'
+                declarations.extend((kind, match) for match in
+                                    re.finditer(REGEX_VAR[declared_kind], code))
 
-            # pick regex for the correct kind of var
-            reg = REGEX_VAR[kind]
-
-            # treat *in* like attribute, *out* like varying
-            if kind == 'in':
-                kind = 'attribute'
-            elif kind == 'out':
-                kind = 'varying'
-
-            for m in re.finditer(reg, code):
-                gtype = m.group('type')
-                shape = tuple(map(int, re.findall(r'\d+', m.group('dimensions'))))
-                if any(dimension <= 0 for dimension in shape):
-                    raise ValueError('Array dimensions must be positive for %r'
-                                     % m.group('name'))
-                sampler_types = ('sampler1D', 'sampler2D', 'sampler3D', 'samplerCube',
-                                 'isampler2D', 'usampler2D')
-                if len(shape) > 1 and (kind != 'uniform' or
-                        ('sampler' in gtype and gtype not in sampler_types)):
-                    raise ValueError('Multidimensional %s %r is unsupported'
-                                     % (kind, m.group('name')))
-                name = m.group('name')
-                previous = self._code_variables.get(name)
-                if (previous is not None and kind == 'uniform' and
-                        (self._array_shapes.get(name, ()) != shape or previous[1] != gtype)):
-                    raise ValueError('Uniform %r has conflicting shapes or types' % name)
-                if shape:
-                    # Keep the existing four-field variable records. Ordered
-                    # shapes are separate: equal flattened sizes are not equal
-                    # declarations. Every prefix is independently assignable.
-                    for depth in range(1, len(shape) + 1):
-                        remaining = shape[depth:]
-                        for indices in product(*(range(d) for d in shape[:depth])):
-                            indexed = name + ''.join('[%d]' % i for i in indices)
-                            self._code_variables[indexed] = (
-                                'uniform_array' if remaining else kind, gtype,
-                                indexed, prod(remaining) if remaining else -1)
-                            if remaining:
-                                self._array_shapes[indexed] = remaining
-                    self._array_shapes[name] = shape
-                self._code_variables[name] = (
-                    'uniform_array' if shape else kind, gtype, name,
-                    prod(shape) if shape else -1)
+        for kind, m in declarations:
+            gtype = m.group('type')
+            shape = tuple(map(int, re.findall(r'\d+', m.group('dimensions'))))
+            if any(dimension <= 0 for dimension in shape):
+                raise ValueError('Array dimensions must be positive for %r'
+                                 % m.group('name'))
+            sampler_types = ('sampler1D', 'sampler2D', 'sampler3D', 'samplerCube',
+                             'isampler2D', 'usampler2D')
+            if len(shape) > 1 and (kind not in ('uniform', 'varying') or
+                    ('sampler' in gtype and gtype not in sampler_types)):
+                raise ValueError('Multidimensional %s %r is unsupported'
+                                 % (kind, m.group('name')))
+            name = m.group('name')
+            previous = self._code_variables.get(name)
+            if (previous is not None and kind in ('uniform', 'varying') and
+                    (self._array_shapes.get(name, ()) != shape or previous[1] != gtype)):
+                raise ValueError('%s %r has conflicting shapes or types'
+                                 % (kind.capitalize(), name))
+            if shape:
+                # Keep the existing four-field variable records. Ordered
+                # shapes are separate: equal flattened sizes are not equal
+                # declarations. Every prefix is independently assignable.
+                for depth in range(1, len(shape) + 1):
+                    remaining = shape[depth:]
+                    for indices in product(*(range(d) for d in shape[:depth])):
+                        indexed = name + ''.join('[%d]' % i for i in indices)
+                        self._code_variables[indexed] = (
+                            'uniform_array' if kind == 'uniform' and remaining else kind, gtype,
+                            indexed, prod(remaining) if remaining else -1)
+                        if remaining:
+                            self._array_shapes[indexed] = remaining
+                self._array_shapes[name] = shape
+            self._code_variables[name] = (
+                'uniform_array' if kind == 'uniform' and shape else kind, gtype, name,
+                prod(shape) if shape else -1)
 
         # Now that our code variables are up-to date, we can process
         # the variables that were set but yet unknown.

@@ -71,7 +71,7 @@ def test_one_dimensional_scalar_contract_is_preserved():
 
 @pytest.mark.parametrize('declaration', [
     'uniform float grid[0][3];', 'uniform float grid[2][0];',
-    'attribute vec2 grid[2][3];', 'varying vec2 grid[2][3];',
+    'attribute vec2 grid[2][3];',
     'uniform sampler2DArray grid[2][3];',
 ])
 def test_invalid_or_separately_unsupported_declarations(declaration):
@@ -135,3 +135,31 @@ def test_nested_sampler_leaf_names_are_public_uniforms(gtype):
             name = 'images[%d][%d]' % (row, column)
             assert ('uniform', gtype, name) in program.variables
     assert len(program.variables) == 9
+
+
+@pytest.mark.parametrize('keyword', ['varying', 'out'])
+def test_nested_varyings_are_interfaces_not_assignable_uniforms(keyword):
+    program = Program(keyword + ' vec3 grid[2][3];void main(){}',
+                      'varying vec3 grid[2][3];void main(){}')
+    assert program._array_shapes['grid'] == (2, 3)
+    assert program._array_shapes['grid[1]'] == (3,)
+    assert ('varying', 'vec3', 'grid') in program.variables
+    assert ('varying', 'vec3', 'grid[1][2]') in program.variables
+    with pytest.raises(KeyError, match='Cannot set data for a varying'):
+        program['grid'] = np.zeros((2, 3, 3))
+
+
+def test_equal_product_varying_shapes_conflict():
+    with pytest.raises(ValueError, match='conflicting shapes or types'):
+        Program('varying vec2 grid[2][3];', 'varying vec2 grid[3][2];')
+
+
+
+def test_modern_stage_input_keeps_varying_shape():
+    program = Program('in vec2 position;out vec3 values[2][3];void main(){}',
+                      'in vec3 values[2][3];out vec4 color;void main(){}')
+    assert ('attribute', 'vec2', 'position') in program.variables
+    assert ('varying', 'vec3', 'values[1][2]') in program.variables
+    assert program._array_shapes['values'] == (2, 3)
+    with pytest.raises(KeyError, match='Cannot set data for a varying'):
+        program['values[0][0]'] = (1, 2, 3)

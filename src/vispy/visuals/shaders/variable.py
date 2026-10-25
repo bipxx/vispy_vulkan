@@ -296,18 +296,23 @@ class InVar(Variable):
     def dtype(self):
         return self._var.dtype
 
+    @property
+    def array_shape(self):
+        return self._var.array_shape
+
     def definition(self, names, version, shader):
         # inherit name from source variable
         name = names[self._var]
         dtype = self._var.dtype
+        shape = ''.join('[%d]' % dimension for dimension in self.array_shape)
 
         if version[0] <= 120:
-            return "varying %s %s;" % (dtype, name)
+            return "varying %s %s%s;" % (dtype, name, shape)
         else:
             if self._array:
-                return "in %s %s[];" % (dtype, name)
+                return "in %s %s[]%s;" % (dtype, name, shape)
             else:
-                return "in %s %s;" % (dtype, name)
+                return "in %s %s%s;" % (dtype, name, shape)
 
     def expression(self, names):
         return names[self._var]
