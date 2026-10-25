@@ -40,7 +40,6 @@ jobs:
       EVIDENCE: build/linux-vulkan-evidence
       NATIVE_BUILD: build/linux-vulkan-native
       BUILD_ENV: build/linux-vulkan-env
-      DRIVER_WORKSPACE: ${{ runner.temp }}/vispy-linux-vulkan-driver-${{ github.run_id }}-${{ github.run_attempt }}
       CONSUMER_NAME: vispy-linux-vulkan-consumer-${{ github.run_id }}
       UV_CACHE_NAME: vispy-linux-vulkan-cache-${{ github.run_id }}
       UV_NO_CONFIG: '1'
@@ -65,6 +64,7 @@ jobs:
       - name: Prepare recorded software Vulkan and exact Python build tools
         run: |
           mkdir -p "$EVIDENCE"
+          echo "DRIVER_WORKSPACE=$RUNNER_TEMP/vispy-linux-vulkan-driver-${{ github.run_id }}-${{ github.run_attempt }}" >> "$GITHUB_ENV"
           sudo apt-get update
           sudo apt-get install --no-install-recommends -y libx11-dev libx11-xcb-dev libvulkan1 mesa-vulkan-drivers ninja-build llvm-18-dev libdrm-dev glslang-tools
           dpkg-query -W libx11-dev libx11-xcb-dev libvulkan1 mesa-vulkan-drivers ninja-build llvm-18-dev libdrm-dev glslang-tools > "$EVIDENCE/system-packages.txt"

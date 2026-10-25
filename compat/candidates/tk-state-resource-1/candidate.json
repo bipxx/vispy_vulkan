@@ -2,7 +2,7 @@
   "schema": 1,
   "phase": "development",
   "id": "tk-state-resource-1",
-  "manifest_sha256": "1cfed2748905931e14c70ad9557e0df648625ad5d17cd95a47cfcff67432ca31",
+  "manifest_sha256": "2e89d676f54450c5c7b23f176828a597811aa1d8d02998e3639d255e4de1ea9e",
   "product_source_commit": "95748384f1a1e9230e80eb9ddb5059ff95926259",
   "upstream_commit": "117b054598f4758b598f4b8f48feea48c11fe7b0",
   "ledger": {
@@ -1172,7 +1172,7 @@
     },
     {
       "path": "compat/qualification-ci.json",
-      "sha256": "6545e0dad2c0292094b9d48096ec55012507e8a98d14d676da6a741e6f35068d"
+      "sha256": "fc02c8ec1139ef60d06a00344cec26664e5fc7ebb1ab8bc24f10935e5470fabc"
     },
     {
       "path": "tools/qualification_artifact.py",
@@ -1220,7 +1220,7 @@
     },
     {
       "path": ".github/workflows/linux-vulkan.yml",
-      "sha256": "32353bf0dbb68947ef6c8e84c2456f4a88e71c1b2da57f572762b7e306ed63b6"
+      "sha256": "db304dd96d93cedf2b5d78aad26e01a0ffb1a51c7f27cf1e652ed73479eb80fb"
     },
     {
       "path": ".github/workflows/metal-wheel.yml",

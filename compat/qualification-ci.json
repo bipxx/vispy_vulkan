@@ -34,7 +34,7 @@
     },
     {
       "path": ".github/workflows/linux-vulkan.yml",
-      "sha256": "32353bf0dbb68947ef6c8e84c2456f4a88e71c1b2da57f572762b7e306ed63b6",
+      "sha256": "db304dd96d93cedf2b5d78aad26e01a0ffb1a51c7f27cf1e652ed73479eb80fb",
       "job_key": "software-vulkan",
       "jobs": [
         "software-vulkan"
