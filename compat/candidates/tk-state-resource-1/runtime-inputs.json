@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "source_commit": "6345ceef42df1a64a7401a83c2d1a30384903cd1",
+  "source_commit": "794f03f3827b8c5a30e8e44cf20f34dda6ab636f",
   "python": [
     {
       "member": "vispy/__init__.py",
@@ -3624,7 +3624,7 @@
     },
     {
       "path": "cpp/runtime.cpp",
-      "sha256": "6e7adb9b1120f1db2a32e384dffc1625ccd3431ec6e271cc27423bbc84088d2b"
+      "sha256": "5f250154400eaa4ba10d631633b80167fd29451f73a9a43dcbb72e6dd56404ff"
     },
     {
       "path": "cpp/runtime.hpp",
@@ -3745,6 +3745,10 @@
     {
       "path": "cpp/runtime_texture.hpp",
       "sha256": "55489b116b97cdea0fedc18267ceca1751f01c9d19a33c9fc95094a3c5b50fd9"
+    },
+    {
+      "path": "cpp/runtime_uniform_updates.hpp",
+      "sha256": "15302bc25aec806465449ef72b7fba3f5d042f2a9d69abe7a705bb4a2caa8377"
     },
     {
       "path": "cpp/shader/artifact.hpp",
@@ -3950,7 +3954,7 @@
     },
     {
       "path": "CMakeLists.txt",
-      "sha256": "c0c7a2953260eb29536dedd81ccf67a7d4a20044c5db84fab1ef7bc08555b220"
+      "sha256": "6fcbcc1e5d3cc891cb7d30dfb7cc3ca038809a9486e09e24c4a282e27d0216b2"
     },
     {
       "path": "pyproject.toml",

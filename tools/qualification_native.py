@@ -31,8 +31,8 @@ SCHEMA = 'compat/qualification-native.schema.json'
 PHASES = ('dependency-before', 'configure', 'build', 'ctest', 'dependency-after')
 NATIVE_TARGETS = {'_dawn', '_sdf_cpu', 'VkLayer_vispy_submit'}
 DEPENDENCY_TARGETS = {'native_library_fixture', 'nanobind-static'}
-MIN_TARGETS = native_epoch.REQUIRED_TARGETS | DEPENDENCY_TARGETS
-MIN_TESTS = native_epoch.REQUIRED_TARGETS - NATIVE_TARGETS
+MIN_TARGETS = native_epoch.REQUIRED_TARGETS | DEPENDENCY_TARGETS | {'uniform_updates_contract'}
+MIN_TESTS = (native_epoch.REQUIRED_TARGETS - NATIVE_TARGETS) | {'uniform_updates_contract'}
 ROLES = {'python', 'base-python', 'cmake', 'ctest', 'compiler'}
 ENVIRONMENT = {name: '' for name in ('CL', '_CL_', 'CFLAGS', 'CXXFLAGS', 'CMAKE_TOOLCHAIN_FILE',
                                     'PYTHONPATH', 'PYTHONHOME')}

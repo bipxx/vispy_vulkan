@@ -2,8 +2,8 @@
   "schema": 1,
   "phase": "development",
   "id": "tk-state-resource-1",
-  "manifest_sha256": "ef2cf5e107d022d35eaa4fa470768df682d02d70caefe952428102046d00e426",
-  "product_source_commit": "6345ceef42df1a64a7401a83c2d1a30384903cd1",
+  "manifest_sha256": "d5c624a4e8482036bf80b2a3851b148a6ab341f93c4dcd91bcf16702630406ce",
+  "product_source_commit": "794f03f3827b8c5a30e8e44cf20f34dda6ab636f",
   "upstream_commit": "117b054598f4758b598f4b8f48feea48c11fe7b0",
   "ledger": {
     "path": "compat/vispy-compatibility.json",
@@ -31,15 +31,15 @@
   ],
   "runtime_inputs": {
     "path": "compat/candidates/tk-state-resource-1/runtime-inputs.json",
-    "sha256": "87f2f2b75c24456679994825eab169a4df879679089c6196b76a23e6bda548ad"
+    "sha256": "80b265b7bc909eaa0b9664602b8bddf3c1fa7be42d47fb09564d12bf132840fa"
   },
   "profiles": [
     {
       "id": "windows-gpu-tk86-cp312-development",
       "required": true,
       "observation": {
-        "path": "compat/candidates/tk-state-resource-1/windows-profile.json",
-        "sha256": "6a2817880a67692c288d499b6d6fb5a66dd5e5d1a49ed4488caa39ef893dbf75"
+        "path": "compat/candidates/tk-state-resource-1/windows-uniform-order-profile.json",
+        "sha256": "dff4d5740e9b30cb30b2e027467bb714a0493c6b09e0a697760823e4446d28d0"
       },
       "wheel": null,
       "previous_qualified_wheel_sha256": "62df5e4c31bf9a1bb1bea47fd68d50e4198d6ec13d2551c991da1e7f30a2b38f",
@@ -57,8 +57,8 @@
       "id": "wsl-software-tk90-cp31213-development",
       "required": true,
       "observation": {
-        "path": "compat/candidates/tk-state-resource-1/linux-tk90-profile.json",
-        "sha256": "2e50ef39596f4d3b4b45ba627ebc8264b45dfb71aa02118fb294b214f3b4db5f"
+        "path": "compat/candidates/tk-state-resource-1/linux-mesa2618-uniform-order-profile.json",
+        "sha256": "c355332851f72019c884dadef57f9a8ce7c8853b7dbb83e2e098e55b7b60b14c"
       },
       "wheel": null,
       "previous_qualified_wheel_sha256": "374a74ea9787ccccc643e0ac7e45d9f704a41d046465828736158ac94398c4a3",
@@ -1192,7 +1192,7 @@
     },
     {
       "path": "tools/qualification_native.py",
-      "sha256": "3a1befb5609be77dff98dfa2d0b3a66a3b5112a7f109de0175a946eb5faa3695"
+      "sha256": "e6c083df508f1f380407243048a764ca627c88361a6afac8b93b16a42d04e8f2"
     },
     {
       "path": "compat/qualification-native.schema.json",

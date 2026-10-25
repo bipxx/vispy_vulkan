@@ -91,6 +91,18 @@ artifact obligations stay open and the confirmation slot is unused. Do not retry
 startup again without new evidence; capture the live owner/server wait chain
 before timeout on a genuine recurrence. All packet scratch has been cleaned.
 
+The [uniform array ordering fix](../../uniform-array-updates.md) is implemented
+in product source `794f03f3827b8c5a30e8e44cf20f34dda6ab636f`. Four old-module
+pixel failures now pass with ordered parent/indexed writes, including updates
+queued before a draw. Fresh Windows/WSL modules each pass 82 relevant rendering
+checks, the full eight-branch composite and zero-resource shutdown; 337 affected
+qualification/inventory checks pass. Preparation pins new source observations
+and preserves older profiles, while all independent review/producer/installed
+admission gates remain open. The new CPU contract is mandatory for new native
+recipes, and the existing installed-wheel CI smoke includes the array oracle.
+This fixes existing one-dimensional arrays; SH-2 dimension/reflection/layout and
+other storage/interface classes remain required, together with SH-1/SH-3..5.
+
 ### Prevent unchanged-native rebuilds
 
 Use a candidate-independent native producer identity: preferred native/build/

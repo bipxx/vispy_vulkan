@@ -85,6 +85,13 @@ inventory tests exercise their original report gates. These tests never establis
 that a real wheel passed the complete protocol. The real subject remains missing
 all required proof.
 
+The [uniform write-order packet](uniform-array-updates.md) updates preparation
+to product source `794f03f3827b8c5a30e8e44cf20f34dda6ab636f`, with fresh source-
+functional native/profile observations. Original profile records are preserved;
+no old receipt or review is transferred. New native recipes also require the
+registered uniform update CPU contract. The real subject still has no admitted
+producer/wheel/installed attempts or review envelope.
+
 Next requirements are actual cumulative source/fixture and semantic scope review,
 producer-admissibility/blocker decisions, exact installed candidate evidence with
 original controls, full retained attempt history, current-head CI and independent
