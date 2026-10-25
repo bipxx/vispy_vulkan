@@ -88,12 +88,13 @@ older incompatible collector bytes cannot silently supply successful proof.
 
 A complete synthetic capture exercises this join and rejection controls without
 running a native build. Its explicitly synthetic process records and ELF headers
-are test fixtures, not producer evidence. The actual producer policy remains
-`blocked-experimental-producer`; dispatch refuses real Linux reuse before reading
-an unapproved candidate. The schema's reviewed full-source mode is only a future
-route: exact independent source/scope reuse approvals, original successful native
-capture, reviewed ABI facts and all installed qualification/promotion gates are
-still required. See `build/runs/linux-native-semantic-85/` for local verification;
+are test fixtures, not producer evidence. The producer policy now requires
+`reviewed-full-source-native-proof-required`; this names required evidence,
+not an approval. Dispatch refuses an unreviewed real candidate before reading
+its capture. The legacy experimental mode remains rejected. Exact independent
+source/scope reuse approvals, original successful native capture, reviewed ABI
+facts and all installed qualification/promotion gates are still required.
+See `build/runs/linux-native-semantic-85/` for the initial local verification;
 this source work does not admit an artifact or hardware profile.
 
 Local verification passes 571 affected Windows regressions and 87 WSL
@@ -108,8 +109,9 @@ the 16 new reuse checks in WSL (`build/runs/linux-native-reuse-86/`). They test
 distinct build Python 3.12.8 and consumer Python 3.12.13 facts, exact independent
 review links, selected profile, production digest and refusal of unreviewed
 candidates. The outer candidate-validation seam and all approval-like records
-are explicitly synthetic. The existing real-policy refusal remains in the
-suite; no actual approval, producer-policy change or native rebuild is supplied.
+are explicitly synthetic. The suite retains legacy-policy refusal and now tests
+the actual unreviewed-candidate guard; that test-only checkpoint supplied no actual approval, producer-policy
+change or native rebuild.
 
 CI run `40231008361` completed native compilation, then passed 43 of 44 native
 contracts. `shader_contract` failed because its full-source Tint-reader branch
@@ -124,3 +126,25 @@ Windows SDK shader contract also passes; that SDK mode does not enable the Tint
 reader branch. Original CI reports and cleanup remain retained in
 `build/runs/linux-ci-failure-87/`. A successful new full-source CI result is still
 required; these local controls do not turn the failed producer into admission.
+
+Run `40235407061` subsequently passed native compilation, all 44 contracts,
+archive audit and the installed-wheel smoke. The native validator now accepts
+that original capture, with production identity
+`6e21a4bbed7849a564bf5c425d1519ca7794327e61602aabdb5a4b8c0c59726f`.
+It separately validates the measured CTest Python console launcher, its copied
+interpreter and CMake's packaged ELF backend. The launcher digest is checked
+against the known entry-point bytes with the original interpreter path; it is
+not equated with the different ELF digest. Original process/PID/exit/wait records
+remain unchanged. Recorded-format and changed-identity controls cover this join.
+
+The original artifact upload omitted one byte: `wheels/.gitignore`. An existing
+identical `*` byte matches the original terminal SHA-256; its hash-addressed
+recovery and provenance are retained without changing any original record.
+Future uploads explicitly include hidden files. Both exact known workflow
+revisions are supported; unknown collector revisions still fail. CPU CI exposed
+an incidental PyYAML dependency in the synthetic fixture. Standard-library
+literal-block extraction removes that dependency, with YAML-blocked coverage.
+See `build/runs/linux-ctest-launcher-89/` for original records and controls.
+This establishes a native production prerequisite. Source/scope/reuse approval,
+both selected installed qualification protocols, complete current-head CI and
+promotion review remain open; the real subject is still unadmitted.

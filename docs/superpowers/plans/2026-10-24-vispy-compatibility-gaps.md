@@ -60,16 +60,24 @@ The Linux native/index source checkpoint now consumes the original managed CI
 capture through the existing dispatcher, with complete synthetic success and
 semantic rejection coverage and retention of all raw capture inputs. Local
 verification passes 571 Windows regressions and 87 WSL adapter/index controls
-(`build/runs/linux-native-semantic-85/`). The real producer policy stays blocked.
+(`build/runs/linux-native-semantic-85/`). The producer route requires actual
+reviewed full-source/native-reuse proof; no candidate approval is implied.
 The repaired CI head `258df51f9` passed preparation, Mesa controls and native
 compilation, then failed one of the 44 native contracts. The shader contract's
 full-source reader check omitted the existing production integer-sampling
 specialization. A focused real-reader control reproduces that failure and passes
 after correcting the test pipeline, retaining its original GLSL and assertions;
 the Windows SDK contract also passes. See `build/runs/linux-ci-failure-87/`.
-Successful new full-source CI, the installed result, the original-capture join
-and actual independent approvals remain required before Linux producer admission;
-another synthetic pass is not that exit condition.
+Run `40235407061` then passed all 44 native contracts, archive audit and installed
+smoke. Its original native capture now validates, including distinct CTest
+launcher/backend identities and an exact-digest recovery of one omitted marker
+byte. Future artifact uploads include hidden files. CPU CI failed on the synthetic
+fixture's undeclared YAML dependency; the fixture now uses the standard library
+and is being checked with YAML blocked. Original failures remain retained in
+`build/runs/linux-ctest-launcher-89/`. Freeze the corrected source/policy for actual
+independent review, then bind exact reuse approvals and both selected installed
+qualification protocols. Complete final-head CI and promotion remain mandatory;
+native build verification alone is not artifact or profile admission.
 
 | Priority / stage | Shortest faithful action | Exit / evidence that changes the next action |
 | --- | --- | --- |

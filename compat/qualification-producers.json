@@ -4,6 +4,6 @@
   "windows_sdk_sha256": "7ace20d9c52d2e8eaaf40cb4138637e3b3a1f56bcec89ffef64b604a3b9875c2",
   "windows_compiler_sha256": "824f0234b667847befd7e3ff258822bfe557b540959ff042caaec6844b709a11",
   "windows_scope": "vendor-sdk-reuse-only-native-leaf-admission-pending",
-  "linux_scope": "blocked-experimental-producer",
+  "linux_scope": "reviewed-full-source-native-proof-required",
   "metal_scope": "experimental-no-hardware-admission"
 }

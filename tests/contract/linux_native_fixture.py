@@ -8,6 +8,7 @@ import io
 import json
 from pathlib import Path, PurePosixPath
 import struct
+import textwrap
 import zipfile
 
 from tools import qualification_linux_native as native
@@ -59,8 +60,9 @@ class Capture:
             DAWN_ENABLE_SPIRV_VALIDATION='ON', CMAKE_HOME_DIRECTORY=str(self.source),
             CMAKE_CACHEFILE_DIR=str(self.native), CMAKE_BUILD_TYPE='Release', VISPY_NATIVE_SDK='',
             Python_EXECUTABLE=self.python, CMAKE_C_COMPILER='/synthetic/tools/cc',
-            CMAKE_CXX_COMPILER='/synthetic/tools/c++', CMAKE_COMMAND='/synthetic/tools/cmake',
-            CMAKE_CTEST_COMMAND=str(self.scratch/'env/bin/ctest'),
+            CMAKE_CXX_COMPILER='/synthetic/tools/c++',
+            CMAKE_COMMAND=str(self.scratch/'env/lib/python3.12/site-packages/cmake/data/bin/cmake'),
+            CMAKE_CTEST_COMMAND=str(self.scratch/'env/lib/python3.12/site-packages/cmake/data/bin/ctest'),
             CMAKE_MAKE_PROGRAM='/synthetic/tools/ninja')
         cache = ''.join(f'{key}:STRING={value}\n' for key,value in settings.items()).encode()
         graph = {'CMakeCache.txt': cache, 'build.ninja': b'# synthetic graph',
@@ -100,7 +102,7 @@ class Capture:
             producer_admitted=False,artifact_admitted=False,hardware_qualified=False,tests=names,
             files={name:native.sha(self.data[str(self.evidence/'native-contracts'/name)])
                    for name in ('discovery.json','discovery.log','ctest.xml','ctest.log')},
-            ctest=dict(origin=ctest,sha256='a'*64),commands=[
+            ctest=dict(origin=ctest,sha256=native.sha(native.ctest_launcher_bytes(str(self.scratch/'env/bin/python3')))),commands=[
                 dict(argv=[ctest,'--test-dir',str(self.native),'--show-only=json-v1'],exit_code=0,child_waited=True,child_pid=301),
                 dict(argv=[ctest,'--test-dir',str(self.native),'--output-on-failure','--no-tests=error','--output-junit',contract_dir+'/ctest.xml'],
                      exit_code=0,child_waited=True,child_pid=302)])
@@ -117,10 +119,14 @@ class Capture:
         self.put('ci-identity.json',dict(repository='bipxx/vispy_vulkan',checked_head='a'*40,run_id=123,attempt=1,
             workflow=dict(path='.github/workflows/linux-vulkan.yml',sha256=native.PROTOCOL['.github/workflows/linux-vulkan.yml'])))
         self.put('native-environment.json',dict(python_executable=self.python,machine='x86_64',python='3.12.8 synthetic',
-            python_executable_sha256='b'*64,base_python_executable_sha256='d'*64,
+            python_executable_sha256='b'*64,base_python_executable_sha256='b'*64,
+            base_python_executable='/synthetic/base/bin/python',
             packages={**native.BUILD_PACKAGES,'numpy':'2.3.5'},
             input_sha256={name:source_map[name] for name in ('uv.lock','pyproject.toml','cmake/dependencies.lock.json')},
             commands=dict(git=dict(stdout='a'*40))))
+        self.put('prepare-environment-aliases.json',dict(actions=[dict(
+            link=str(self.scratch/'env/bin/python3'),target='/synthetic/base/bin/python3.12',
+            action='copy-interpreter',sha256='b'*64)]))
         argv = {
             'native-environment':[self.python,'.github/workflows/qualification_gate.py','capture','--without-package','--output',str(self.evidence/'native-environment.json')],
             'dependency-before':[self.python,'cmake/verify_dependencies.py'],
@@ -132,12 +138,20 @@ class Capture:
             'native-contracts':[self.python,'-B','tools/run_linux_native_contracts.py','--build-dir',str(self.native),'--ctest',ctest,'--output',contract_dir],
             'archive':[self.python,'-B','tools/audit_linux_wheel.py','--wheel',wheel,'--build-dir',str(self.native),
                 '--contracts',contract_dir,'--output',str(self.evidence/'archive.json')]}
-        # Independent YAML extraction checks the adapter's original-script parser.
-        import yaml
-        workflow = yaml.safe_load(inputs['.github/workflows/linux-vulkan.yml'])
+        # Independently dedent this pinned workflow's literal run blocks. This
+        # fixture needs neither an optional YAML package nor a general parser.
+        lines = inputs['.github/workflows/linux-vulkan.yml'].decode().splitlines(keepends=True)
+        blocks = []
+        for index, line in enumerate(lines):
+            if line.strip() != 'run: |': continue
+            indentation = len(line)-len(line.lstrip())
+            block = []
+            for following in lines[index+1:]:
+                if following.strip() and len(following)-len(following.lstrip()) <= indentation: break
+                block.append(following)
+            blocks.append(textwrap.dedent(''.join(block)))
         for phase in ('prepare','driver'):
-            body = next(step['run'] for job in workflow['jobs'].values() for step in job['steps']
-                        if 'run' in step and 'run --phase '+phase+' --script-stdin' in step['run'])
+            body = next(block for block in blocks if 'run --phase '+phase+' --script-stdin' in block)
             script = body.split("<<'PHASE'\n",1)[1].rsplit('PHASE\n',1)[0]
             script = script.replace('${{ github.run_id }}','123').replace('${{ github.run_attempt }}','1')
             self.put(phase+'.sh',script.encode())

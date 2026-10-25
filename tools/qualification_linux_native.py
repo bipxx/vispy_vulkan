@@ -31,8 +31,13 @@ PROTOCOL = {
     'tools/run_linux_native_contracts.py': 'e07e6aede2b8f35b0c75533606f59f0669783c1b9822c59534d62d6ffee5caca',
     'tools/audit_linux_wheel.py': '3106c09f756ed53ac14d0190355c49a79ddc114271b06bbccd530999300457df',
     '.github/workflows/qualification_gate.py': '26969e912f921cc57200f66d62a6b17194541006a11b9d5b0bda95c63ac51e92',
-    '.github/workflows/linux-vulkan.yml': 'd1af4af2d0171452ef5519e9bb5893e64b206fa35c6ad07a18e8aeaa67201860',
+    '.github/workflows/linux-vulkan.yml': 'eb395914dd60322ac25ac8b5b84bfa9c131feaf9d9ef80a727331ee33e718857',
 }
+WORKFLOW_PATH = '.github/workflows/linux-vulkan.yml'
+# Original successful collector omitted hidden files during transport. Keep its
+# exact original authority; the current upload-only correction changes no build
+# or contract commands. Unknown workflow revisions still require review.
+LEGACY_WORKFLOW_SHA256 = 'd1af4af2d0171452ef5519e9bb5893e64b206fa35c6ad07a18e8aeaa67201860'
 MEMBERS = {
     'vispy/_dawn.cpython-312-x86_64-linux-gnu.so': '_dawn.cpython-312-x86_64-linux-gnu.so',
     'vispy/visuals/text/_sdf_cpu.cpython-312-x86_64-linux-gnu.so': '_sdf_cpu.cpython-312-x86_64-linux-gnu.so',
@@ -73,6 +78,54 @@ def absolute(name):
     check(path.is_absolute() and '..' not in path.parts and str(path) == name,
           'noncanonical original Linux path')
     return path
+
+
+def ctest_launcher_bytes(python):
+    """Expected console entry point, never a replacement original executable.
+
+    uv's generated CMake entry point calls the locked package's ctest function.
+    Its digest includes the owned interpreter path, so another launcher/interpreter
+    cannot borrow the measured ELF backend's identity.
+    """
+    return (f'#!{python}\n'
+            '# -*- coding: utf-8 -*-\n'
+            'import sys\n'
+            'from cmake import ctest\n'
+            'if __name__ == "__main__":\n'
+            '    if sys.argv[0].endswith("-script.pyw"):\n'
+            '        sys.argv[0] = sys.argv[0][:-11]\n'
+            '    elif sys.argv[0].endswith(".exe"):\n'
+            '        sys.argv[0] = sys.argv[0][:-4]\n'
+            '    sys.exit(ctest())\n').encode()
+
+
+def validate_ctest_tool(contract, tools, settings, environment, scratch, aliases):
+    """Join the measured Python launcher and packaged CTest ELF separately."""
+    scratch = absolute(str(scratch))
+    package_bin = scratch/'env/lib/python3.12/site-packages/cmake/data/bin'
+    backend = str(package_bin/'ctest')
+    check(settings['CMAKE_CTEST_COMMAND'] == backend
+          and settings['CMAKE_COMMAND'] == str(package_bin/'cmake')
+          and tools['CMAKE_CTEST_COMMAND']['origin'] == backend
+          and tools['CMAKE_CTEST_COMMAND']['resolved'] == backend,
+          'Linux configured CTest backend differs from locked package')
+    check(re.fullmatch('[0-9a-f]{64}', tools['CMAKE_CTEST_COMMAND']['sha256']) is not None,
+          'Linux CTest backend hash missing')
+    packages = {key.lower().replace('_', '-'): value for key, value in environment['packages'].items()}
+    check(packages.get('cmake') == BUILD_PACKAGES['cmake'], 'Linux CTest package differs')
+    interpreter = str(scratch/'env/bin/python3')
+    copies = [row for row in aliases['actions'] if row['link'] == interpreter]
+    check(len(copies) == 1 and copies[0]['action'] == 'copy-interpreter'
+          and copies[0]['sha256'] == environment['python_executable_sha256']
+          == environment['base_python_executable_sha256']
+          and absolute(copies[0]['target']).parent == absolute(environment['base_python_executable']).parent
+          and absolute(copies[0]['target']).name in ('python', 'python3', 'python3.12'),
+          'Linux CTest launcher interpreter differs from prepared copy')
+    check(contract['ctest'] == dict(origin=str(scratch/'env/bin/ctest'),
+                                   sha256=sha(ctest_launcher_bytes(interpreter))),
+          'Linux CTest tool differs from recorded console launcher')
+    check(tools['CMAKE_CTEST_COMMAND']['sha256'] != contract['ctest']['sha256'],
+          'Linux CTest backend and console identities were conflated')
 
 
 def capture_from_inventory(inventory, root=ROOT):
@@ -171,7 +224,8 @@ def validate_capture(capture, expected_production, root=ROOT):
                   'noncanonical Linux source member')
             check(sha(archive.read(name)) == before[name], 'Linux preferred source bytes differ: '+name)
         for name, checksum in PROTOCOL.items():
-            check(before.get(name) == checksum, 'unsupported original Linux capture protocol: '+name)
+            accepted = {checksum, LEGACY_WORKFLOW_SHA256} if name == WORKFLOW_PATH else {checksum}
+            check(before.get(name) in accepted, 'unsupported original Linux capture protocol: '+name)
         policy_bytes = archive.read('compat/build-hygiene.json')
         workflow = archive.read('.github/workflows/linux-vulkan.yml').decode()
     check(state['policy_sha256'] == sha(policy_bytes), 'original Linux policy changed')
@@ -277,7 +331,7 @@ def validate_capture(capture, expected_production, root=ROOT):
           and identity['checked_head'] == revision == archive['source_revision']
           == environment['commands']['git']['stdout'].strip()
           and identity['workflow'] == dict(path='.github/workflows/linux-vulkan.yml',
-                                          sha256=PROTOCOL['.github/workflows/linux-vulkan.yml']),
+                                          sha256=before[WORKFLOW_PATH]),
           'Linux original checkout/CI/workflow identity differs')
     check(type(identity['run_id']) is int and type(identity['attempt']) is int
           and state['run_id'] == 'native-ci-'+str(identity['run_id'])+'-'+str(identity['attempt']),
@@ -366,8 +420,8 @@ def validate_capture(capture, expected_production, root=ROOT):
           and type(c['child_pid']) is int and c['child_pid'] > 0 for c in contract['commands']),
           'Linux CTest child failed/unawaited')
     ctest = str(scratch/'env/bin/ctest')
-    check(contract['ctest'] == dict(origin=ctest, sha256=tools['CMAKE_CTEST_COMMAND']['sha256'])
-          and settings['CMAKE_CTEST_COMMAND'] == ctest, 'Linux CTest tool differs from observed build toolchain')
+    validate_ctest_tool(contract, tools, settings, environment, scratch,
+                        document(evidence/'prepare-environment-aliases.json'))
     check(contract['ctest']['origin'] == ctest and contract['commands'][0]['argv'] ==
           [ctest, '--test-dir', build, '--show-only=json-v1'] and contract['commands'][1]['argv'] ==
           [ctest, '--test-dir', build, '--output-on-failure', '--no-tests=error', '--output-junit',

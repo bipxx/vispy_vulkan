@@ -122,6 +122,16 @@ def test_complete_synthetic_native_join(full_capture):
     assert set(result['native_output_hashes']) == set(native.MEMBERS)
 
 
+def test_complete_native_fixture_needs_no_optional_yaml(tmp_path,monkeypatch):
+    import sys
+    monkeypatch.setitem(sys.modules,'yaml',None)
+    project = Path(__file__).resolve().parents[2]
+    definitions = json.loads((project/native.SCHEMA).read_bytes())['$defs']
+    fixture = Capture(tmp_path,project,definitions)
+    result,_ = native.validate_capture(fixture.finish(),fixture.production,fixture.root)
+    assert result['status']=='PASS_ORIGINAL_LINUX_NATIVE_JOIN'
+
+
 @pytest.mark.parametrize('mutation,match', [
     ('active', 'active or relabelled'),
     ('owner', 'active or relabelled'),
@@ -203,8 +213,15 @@ def test_semantic_native_join_rejects_rebound_changes(full_capture, mutation, ma
         native.validate_capture(fixture.finish(),expected,fixture.root)
 
 
-def test_native_dispatch_keeps_real_linux_policy_blocked():
+def test_native_dispatch_keeps_legacy_linux_policy_blocked(tmp_path):
     from tools.qualification_native import validate_record
+    project=Path(__file__).resolve().parents[2]
+    (tmp_path/'compat').mkdir()
+    for name in ('qualification-native.schema.json','qualification-artifact.schema.json'):
+        (tmp_path/'compat'/name).write_bytes((project/'compat'/name).read_bytes())
+    policy=json.loads((project/'compat/qualification-producers.json').read_bytes())
+    policy['linux_scope']='blocked-experimental-producer'
+    (tmp_path/'compat/qualification-producers.json').write_text(json.dumps(policy))
     ref = dict(path='not-an-approved-candidate.json',sha256='0'*64)
     record = dict(schema=1,kind='original-linux-ci-native-reuse',candidate=ref,capture=ref,
         reuse=dict(profile='not-selected',candidate_scope_sha256='0'*64,capture_sha256='0'*64,
@@ -212,6 +229,22 @@ def test_native_dispatch_keeps_real_linux_policy_blocked():
             abi=dict(tag='cp312',build_version='3.12.8',build_python_sha256='0'*64,
                      consumer_version='3.12.13',consumer_python_sha256='0'*64)))
     with pytest.raises(ValueError,match='Linux producer policy is still blocked'):
+        validate_record(record,tmp_path)
+
+
+def test_real_native_route_requires_actual_review_before_capture(monkeypatch):
+    from tools.qualification_native import validate_record
+    project=Path(__file__).resolve().parents[2]
+    path='compat/candidates/tk-state-resource-1/candidate.json'
+    candidate=dict(path=path,sha256=native.sha((project/path).read_bytes()))
+    capture=dict(path='must-not-read-an-unapproved-capture.json',sha256='0'*64)
+    record=dict(schema=1,kind='original-linux-ci-native-reuse',candidate=candidate,capture=capture,
+        reuse=dict(profile='not-selected',candidate_scope_sha256='0'*64,capture_sha256='0'*64,
+            production_sha256='0'*64,impact='Actual unreviewed candidate refusal control',
+            abi=dict(tag='cp312',build_version='3.12.8',build_python_sha256='0'*64,
+                     consumer_version='3.12.13',consumer_python_sha256='0'*64)))
+    monkeypatch.setattr(native,'validate_capture',lambda *a,**kw:pytest.fail('unreviewed candidate reached capture'))
+    with pytest.raises(ValueError,match='candidate source and scope review remain pending'):
         validate_record(record)
 
 
@@ -322,3 +355,66 @@ def test_reuse_requires_exact_review_and_abi_links(synthetic_reuse,monkeypatch,m
             candidate['reviews'][kind]=put(kind+'.json',dict(native_reuse_links=[native.digest(reuse)]))
         record['candidate']=put('candidate.json',candidate)
     with pytest.raises(ValueError,match=match):native.validate_record(record,fixture.root)
+
+
+@pytest.fixture
+def recorded_ctest_tools():
+    """Actual tool-format excerpt, CI 40231008361/artifact 12613888894.
+
+    The complete original run failed shader_contract. These observations only
+    test its launcher/backend representation; they do not approve that run.
+    """
+    scratch='/home/runner/work/_temp/vispy-linux-vulkan-40231008361-1/build/work/native-ci-40231008361-1'
+    package=scratch+'/env/lib/python3.12/site-packages/cmake/data/bin/'
+    base='/home/runner/work/_temp/uv-python-dir/cpython-3.12.8-linux-x86_64-gnu/bin/'
+    python_sha='0dc3a692fa85fcdb7f1a5877d2adf179809ac417a07ffde2373c832863800a15'
+    contract=dict(ctest=dict(origin=scratch+'/env/bin/ctest',
+        sha256='83e1e1363a2f3d4c78f5a37964030154f8722e2a564a8d16212be49cf7ea14fa'))
+    tools=dict(CMAKE_CTEST_COMMAND=dict(origin=package+'ctest',resolved=package+'ctest',
+        sha256='5dc0f9c7dd3905390cc684708867c0597d4b99a09a93e74950f868af41b73b97'))
+    settings=dict(CMAKE_CTEST_COMMAND=package+'ctest',CMAKE_COMMAND=package+'cmake')
+    environment=dict(packages=dict(cmake='4.4.4'),python_executable_sha256=python_sha,
+                     base_python_executable_sha256=python_sha,base_python_executable=base+'python')
+    aliases=dict(actions=[dict(link=scratch+'/env/bin/python3',raw='python',target=base+'python3.12',
+                              action='copy-interpreter',sha256=python_sha)])
+    return contract,tools,settings,environment,scratch,aliases
+
+
+def test_recorded_ctest_launcher_and_packaged_elf_have_distinct_hashes(recorded_ctest_tools):
+    contract,tools,settings,environment,scratch,aliases=recorded_ctest_tools
+    assert contract['ctest']['sha256']!=tools['CMAKE_CTEST_COMMAND']['sha256']
+    native.validate_ctest_tool(contract,tools,settings,environment,scratch,aliases)
+
+
+@pytest.mark.parametrize('mutation,match', [
+    ('launcher-hash','tool differs'),('launcher-origin','tool differs'),
+    ('launcher-python','tool differs'),('backend-origin','backend differs'),
+    ('backend-resolved','backend differs'),('backend-hash','backend hash missing'),
+    ('cmake-origin','backend differs'),('package-version','package differs'),
+    ('missing-copy','interpreter differs'),('duplicate-copy','interpreter differs'),
+    ('copy-hash','interpreter differs'),('copy-action','interpreter differs'),
+    ('copy-parent','interpreter differs'),('copy-name','interpreter differs'),
+    ('base-hash','interpreter differs'),('base-parent','interpreter differs'),
+    ('conflated-hashes','identities were conflated'),
+])
+def test_recorded_launcher_toolchain_rejects_changed_identity(recorded_ctest_tools,mutation,match):
+    contract,tools,settings,environment,scratch,aliases=recorded_ctest_tools
+    if mutation=='launcher-hash':contract['ctest']['sha256']='0'*64
+    elif mutation=='launcher-origin':contract['ctest']['origin']=settings['CMAKE_CTEST_COMMAND']
+    elif mutation=='launcher-python':contract['ctest']['sha256']=native.sha(native.ctest_launcher_bytes(scratch+'/env/bin/python'))
+    elif mutation=='backend-origin':tools['CMAKE_CTEST_COMMAND']['origin']=scratch+'/env/bin/ctest'
+    elif mutation=='backend-resolved':tools['CMAKE_CTEST_COMMAND']['resolved']='/other/bin/ctest'
+    elif mutation=='backend-hash':tools['CMAKE_CTEST_COMMAND']['sha256']='not-a-sha256'
+    elif mutation=='cmake-origin':settings['CMAKE_COMMAND']='/other/bin/cmake'
+    elif mutation=='package-version':environment['packages']['cmake']='4.0.0'
+    elif mutation=='missing-copy':aliases['actions'].clear()
+    elif mutation=='duplicate-copy':aliases['actions'].append(copy.deepcopy(aliases['actions'][0]))
+    elif mutation=='copy-hash':aliases['actions'][0]['sha256']='0'*64
+    elif mutation=='copy-action':aliases['actions'][0]['action']='unverified-symlink'
+    elif mutation=='copy-parent':aliases['actions'][0]['target']='/other/bin/python3.12'
+    elif mutation=='copy-name':aliases['actions'][0]['target']=aliases['actions'][0]['target'].replace('python3.12','other')
+    elif mutation=='base-hash':environment['base_python_executable_sha256']='0'*64
+    elif mutation=='base-parent':environment['base_python_executable']='/other/bin/python'
+    else:tools['CMAKE_CTEST_COMMAND']['sha256']=contract['ctest']['sha256']
+    with pytest.raises(ValueError,match=match):
+        native.validate_ctest_tool(contract,tools,settings,environment,scratch,aliases)

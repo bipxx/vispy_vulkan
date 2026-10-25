@@ -170,6 +170,7 @@ jobs:
         if: always()
         with:
           name: linux-software-vulkan-wheel-cp312
+          include-hidden-files: true
           path: |
             ${{ env.EVIDENCE }}
             ${{ env.DRIVER_WORKSPACE }}/build/artifacts/
