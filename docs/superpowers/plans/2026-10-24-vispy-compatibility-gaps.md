@@ -147,6 +147,17 @@ but no patched driver has been built or GPU-verified. See the
 failure and keep this WIP separate from the published sampler checkpoint. Settle
 the bounded driver repair before renewing profiles or restarting required CI.
 
+The bounded repair is now source-verified in `mesa-lvp-repair-64`: identical
+headless Mesa/LLVM18 builds differ only by the clip-axis patch; the baseline
+reproduces the independent Vulkan error and all six VisPy failures, while the
+patch passes four direct interpolation controls, all 218 regressions and 171
+shared smoke controls. Renderer/source/other-library identity joins pass. Both
+fresh full Tk composites, the original 58 scissor/Tk regressions and four direct
+scissor controls pass with zero shutdown gauges. Original package/profile and
+failures remain intact; this supplies no window-system/hardware or installed
+admission. Next integrate the exact repaired configuration into preparation and
+installed CI, then renew/publish once. No renderer rebuild was needed for repair.
+
 
 
 ### Prevent unchanged-native rebuilds

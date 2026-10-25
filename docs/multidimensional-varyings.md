@@ -61,13 +61,43 @@ block yields NaN for a vertical unequal-W edge. The proposed
 the same CPU case then yields the independently expected 0.8. An ordinary-axis
 control remains 0.8.
 
-The patched driver has **not** been built or GPU-verified. The CPU result does
-not prove that the patch resolves all six rendering failures. System packages,
-the original driver and immutable dependency origins are unchanged. A driver
-repair needs a bounded isolated build/profile, retained original source/notices,
-the direct Vulkan controls, then the complete original failing/regression set.
-Do not replace the tests with unclipped geometry, an xfail or a different
-interpolation formula. No renderer workaround has been introduced.
+That initial CPU proposal is now separately GPU-verified in the bounded source
+repair below. System packages, the original driver and immutable dependency
+origins are unchanged. The original failing observations remain retained. No
+test was changed to use unclipped geometry, an xfail or a different interpolation
+formula, and no renderer workaround was introduced.
+
+## Verified isolated source repair
+
+Run `build/runs/mesa-lvp-repair-64/` uses the named build-hygiene profile with a
+6 GiB declared peak under the unchanged aggregate 20 GiB cap. It projects the
+same retained release archive into an owned Linux workspace, reuses existing
+GCC/LLVM 18/Python and the system DRM runtime, and supplies small isolated build
+tools/headers without installing packages or creating an environment. The
+headless Vulkan-only configuration disables OpenGL/EGL/GLX and unrelated drivers.
+
+The unpatched build reproduces the direct Vulkan failure on LLVM 18. Applying
+only the recorded clip-axis patch rebuilds the affected object/archive/library
+in 1.07 seconds; all four direct controls then pass. The initial driver build
+takes 69.55 seconds. This isolates the source change within one configuration,
+rather than attributing a result to switching from the original LLVM 20 driver.
+
+The original six VisPy cases fail against the retained unpatched LLVM 18
+library and pass within the complete 218-case patched run. The join verifies
+identical renderer bytes, observed source and other loaded libraries. The
+patched run also passes all 171 shared smoke controls, the original 58 scissor/
+Tk resize/device-loss regressions and all four independent scissor controls.
+Both complete eight-branch source Tk composites pass on their retained Windows
+and Linux renderer modules. All nine shutdown gauges are zero.
+
+This proves the source repair for the tested headless software configuration.
+It does not establish complete window-system or native Linux GPU support, an
+installed VisPy artifact, producer admission or aggregate release readiness.
+The original LLVM 20 package/profile remains unchanged. The repaired driver,
+exact patch/configuration, preferred sources, original notices and actual build/
+control records are retained by hash; expanded sources, objects and caches are
+disposable. Next: make this driver reproducible in the preparation/installed-CI
+path, then renew affected profiles and publish the coherent source packet.
 
 ## Reconstruction and remaining work
 
@@ -78,10 +108,9 @@ CPU reproducer, source delta, native artifacts and terminal cleanup receipts.
 An initial Linux launcher used an obsolete script filename and exited before
 rendering; its original command is retained separately from the six GPU failures.
 
-This source packet is not ready for publication as a passing Linux feature.
 The published sampler/cube checkpoint and its CI remain separate. Candidate
-preparation stays bound to that earlier source until this implementation and
-driver decision settle; its seals must not be renewed to hide the failure.
+preparation stays bound to that earlier source until driver preparation/CI
+integration settles; the repaired local observation is not installed proof.
 The wider storage/interface inventory, runtime sampler indices, matrix/array
 attributes, other shader/API/host obligations, independent review, producers and
 installed qualification remain open. Metal stays experimental.

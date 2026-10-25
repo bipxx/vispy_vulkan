@@ -153,3 +153,25 @@ Measure both logical size and unique compressed file data, with hardlinks counte
 once. Branch references and shared environments can look large in naive totals
 while offering almost no reclaimable disk space. Do not create another large
 backup of already-retained data merely to report cleanup.
+
+## Mesa clipping-repair diagnostic profile
+
+The versioned [mesa-lvp-repair profile](../compat/build-profiles/mesa-lvp-repair.json)
+permits one bounded baseline/patch comparison using the retained Mesa release
+archive and existing LLVM 18/GCC/Python. Its additional peak is 6 GiB; the shared
+20 GiB scratch cap and 10 GiB free reserve are unchanged. It permits no system
+package installation or automatic source/dependency fallback.
+
+For this packet the coordinator selects `/home/heq/vispy-vulkan-managed` as the
+single scratch workspace, avoiding repeated compiler reads across the Windows
+mount. Windows managed scratch must be empty. The guest registry inherits all
+current protected/blocked paths and protects existing dependency origins; both
+guest and Windows backing capacity are checked. Periodic guards account for both
+managed roots against the one aggregate budget. Stable inputs/artifacts/evidence
+remain in the existing Windows store, referenced by hash rather than cloned.
+
+The headless configuration isolates the arithmetic defect. It does not establish
+complete window-system or hardware support. Retain original/patched necessary
+libraries, sources, patch and notices, actual exits/waits and failing controls;
+then plan/apply guest cleanup and rehash the retained files. No unpatched input,
+system driver, SDK, existing environment or pinned origin is modified.
