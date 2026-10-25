@@ -76,7 +76,7 @@ def execute(argv, evidence, label, *, stdout=None, env=None):
     return log
 
 
-def download(pin, scratch, evidence):
+def download(pin, scratch, evidence, *, workflow_path='.github/workflows/linux-vulkan.yml'):
     prefix='repos/'+pin['repository']+'/actions/'
     metadata=execute(['gh','api',prefix+'artifacts/'+str(pin['artifact_id'])],evidence,'original-artifact-api')
     run=execute(['gh','api',prefix+'runs/'+str(pin['run_id'])],evidence,'original-run-api')
@@ -88,7 +88,7 @@ def download(pin, scratch, evidence):
         or artifact['workflow_run']['head_sha'] != pin['source_head']
         or job['head_sha'] != pin['source_head'] or job['run_attempt'] != pin['attempt']
         or job['status'] != 'completed' or job['conclusion'] != 'success'
-        or job['path'] != '.github/workflows/linux-vulkan.yml'):
+        or job['path'] != workflow_path):
         raise ValueError('Original CI/artifact is unavailable or has another identity')
     return execute(['gh','api',prefix+'artifacts/'+str(pin['artifact_id'])+'/zip'],
                    evidence,'original-artifact-download',stdout=scratch/'original-native.zip')
@@ -270,7 +270,7 @@ def wheel_requirement(wheel, evidence):
     return path
 
 
-def transport_retention(inventory, workspace, evidence):
+def transport_retention(inventory, workspace, evidence, *, kind='original-linux-ci-reuse-inputs'):
     # Record original inputs before candidate validation can reject reuse.
     retained = []
     for row in inventory['members']:
@@ -281,7 +281,7 @@ def transport_retention(inventory, workspace, evidence):
         if path.suffix == '.zip': roles += ['source', 'licenses']
         retained.append(dict(path=str(path), sha256=row['sha256'], roles=roles))
     write(evidence/'reuse-transport-inputs.json', dict(schema=1,
-          kind='original-linux-ci-reuse-inputs', artifact_admitted=False,
+          kind=kind, artifact_admitted=False,
           original_run=inventory['run_id'], retained=retained))
     return retained
 

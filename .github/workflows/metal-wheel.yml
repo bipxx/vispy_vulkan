@@ -5,6 +5,11 @@ on:
     paths:
       - '.github/workflows/metal-wheel.yml'
       - 'tools/audit_metal_wheel.py'
+      - 'tools/reuse_metal_ci.py'
+      - 'tools/reuse_linux_ci.py'
+      - 'tools/linux_ci_lifecycle.py'
+      - 'compat/metal-ci-reuse.json'
+      - 'compat/build-profiles/metal-ci-native.json'
       - 'CMakeLists.txt'
       - 'CMakePresets.json'
       - 'cmake/**'
@@ -14,9 +19,17 @@ on:
       - 'pyproject.toml'
       - 'uv.lock'
   workflow_dispatch:
+    inputs:
+      native_mode:
+        description: 'Reuse verified build-only inputs; fresh requires a changed-input or missing-proof decision'
+        type: choice
+        required: true
+        default: reuse
+        options: [reuse, fresh]
 
 permissions:
   contents: read
+  actions: read
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -37,16 +50,12 @@ jobs:
       run:
         shell: bash
     env:
-      EVIDENCE: build/metal-evidence-${{ matrix.arch }}
-      NATIVE_BUILD: build/metal-native-${{ matrix.arch }}
-      BUILD_ENV: build/metal-env-${{ matrix.arch }}
-      CONSUMER_NAME: vispy-metal-consumer-${{ github.run_id }}-${{ matrix.arch }}
-      UV_CACHE_NAME: vispy-metal-cache-${{ github.run_id }}-${{ matrix.arch }}
       UV_NO_CONFIG: '1'
       PYTHONDONTWRITEBYTECODE: '1'
       CMAKE_BUILD_PARALLEL_LEVEL: '3'
       CMAKE_GENERATOR: Ninja
       MACOSX_DEPLOYMENT_TARGET: '13.0'
+      NATIVE_MODE: ${{ github.event.inputs.native_mode || 'reuse' }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
@@ -62,87 +71,86 @@ jobs:
         with:
           version: '0.12.5'
           enable-cache: false
-      - name: Prepare exact build tools
+      - name: Register the external managed Metal workspace
         run: |
-          mkdir -p "$EVIDENCE"
-          export UV_CACHE_DIR="$RUNNER_TEMP/$UV_CACHE_NAME"
-          echo "UV_CACHE_DIR=$UV_CACHE_DIR" >> "$GITHUB_ENV"
+          python3 -c 'import sys; assert sys.version_info >= (3, 10)'
+          native_run="metal-ci-${{ github.run_id }}-${{ github.run_attempt }}-${{ matrix.arch }}"
+          workspace="$RUNNER_TEMP/vispy-metal-${{ github.run_id }}-${{ github.run_attempt }}-${{ matrix.arch }}"
+          case "$NATIVE_MODE" in reuse) peak=1073741824 ;; fresh) peak=6442450944 ;; *) exit 1 ;; esac
+          echo "NATIVE_RUN=$native_run" >> "$GITHUB_ENV"
+          echo "CI_STATE=$workspace/build/runs/$native_run/state.json" >> "$GITHUB_ENV"
+          python3 -B tools/linux_ci_lifecycle.py init --workspace "$workspace" \
+            --run-id "$native_run" --expected-peak-bytes "$peak"
+      - name: Prepare exact Python and record current CI identity
+        run: |
+          python3 -B tools/linux_ci_lifecycle.py --state "$CI_STATE" run --phase prepare --script-stdin <<'PHASE'
           uv python install '3.12.8'
           uv venv "$BUILD_ENV" --python '3.12.8' --managed-python
-          echo "BUILD_PYTHON=$GITHUB_WORKSPACE/$BUILD_ENV/bin/python" >> "$GITHUB_ENV"
+          echo "$BUILD_ENV/bin" >> "$GITHUB_PATH"
+          uv --version > "$EVIDENCE/uv-version.txt"
+          git rev-parse HEAD > "$EVIDENCE/source-revision.txt"
+          "$BUILD_PYTHON" -B tools/qualification_ci.py --capture --workflow .github/workflows/metal-wheel.yml --job-name "Metal wheel ${{ matrix.arch }} CPython 3.12.8" --output "$EVIDENCE/ci-identity.json"
+          PHASE
+      - name: Verify current pinned dependency bytes
+        run: |
+          python3 -B tools/linux_ci_lifecycle.py --state "$CI_STATE" run --phase dependency-before -- "$BUILD_PYTHON" -B cmake/verify_dependencies.py
+      - name: Verify and reuse original Metal build-only artifact
+        if: env.NATIVE_MODE == 'reuse'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python3 -B tools/linux_ci_lifecycle.py --state "$CI_STATE" run --phase reuse -- \
+            "$BUILD_PYTHON" -B tools/reuse_metal_ci.py --workspace "$DRIVER_WORKSPACE" \
+            --run-id "$NATIVE_RUN" --owner ci --arch '${{ matrix.arch }}'
+      - name: Prepare explicit fresh native build tools
+        if: env.NATIVE_MODE == 'fresh'
+        run: |
+          python3 -B tools/linux_ci_lifecycle.py --state "$CI_STATE" run --phase build-tools --script-stdin <<'PHASE'
           uv export --locked --no-default-groups --group dev --group build --no-emit-project --output-file "$EVIDENCE/build-requirements.txt" > /dev/null
           uv pip install --python "$BUILD_ENV" --require-hashes --only-binary :all: --requirements "$EVIDENCE/build-requirements.txt"
-          echo "$GITHUB_WORKSPACE/$BUILD_ENV/bin" >> "$GITHUB_PATH"
-          uv --version > "$EVIDENCE/uv-version.txt"
           ninja --version > "$EVIDENCE/ninja-version.txt"
           xcodebuild -version > "$EVIDENCE/xcode-version.txt"
-          git rev-parse HEAD > "$EVIDENCE/source-revision.txt"
-          "$BUILD_ENV/bin/python" -B tools/qualification_ci.py --capture --workflow .github/workflows/metal-wheel.yml --job-name "Metal wheel ${{ matrix.arch }} CPython 3.12.8" --output "$EVIDENCE/ci-identity.json"
-      - name: Build native Metal renderer wheel
+          PHASE
+      - name: Build and audit explicit fresh Metal wheel
+        if: env.NATIVE_MODE == 'fresh'
         run: |
-          "$BUILD_PYTHON" cmake/verify_dependencies.py
-          uv build --python "$BUILD_PYTHON" --no-build-isolation --wheel --out-dir "$EVIDENCE/wheels" \
+          python3 -B tools/linux_ci_lifecycle.py --state "$CI_STATE" run --phase wheel-build -- uv build --python "$BUILD_PYTHON" --no-build-isolation --wheel --out-dir "$EVIDENCE/wheels" \
             --config-setting "build-dir=$NATIVE_BUILD" \
             --config-setting cmake.define.VISPY_INPLACE=OFF \
             --config-setting cmake.define.VISPY_CPU_CONTRACTS_ONLY=OFF \
             --config-setting cmake.define.VISPY_BUILD_CONTRACT_TESTS=OFF \
             --config-setting cmake.define.VISPY_VERIFY_DEPENDENCIES=ON \
-            --config-setting 'cmake.define.CMAKE_OSX_ARCHITECTURES=${{ matrix.arch }}' \
-            2>&1 | tee "$EVIDENCE/wheel-build.log"
-      - name: Audit architecture, native origins, package and licenses
-        run: |
+            --config-setting 'cmake.define.CMAKE_OSX_ARCHITECTURES=${{ matrix.arch }}'
           wheels=( "$EVIDENCE"/wheels/*.whl )
           test "${#wheels[@]}" -eq 1
-          "$BUILD_PYTHON" -B tools/audit_metal_wheel.py archive --arch '${{ matrix.arch }}' \
+          python3 -B tools/linux_ci_lifecycle.py --state "$CI_STATE" run --phase archive -- "$BUILD_PYTHON" -B tools/audit_metal_wheel.py archive --arch '${{ matrix.arch }}' \
             --wheel "${wheels[0]}" --build-dir "$NATIVE_BUILD" --output "$EVIDENCE/archive.json"
-      - name: Install isolated consumer and check compiled CPU extensions
+          echo "ARCHIVE_REPORT=$EVIDENCE/archive.json" >> "$GITHUB_ENV"
+      - name: Install isolated consumer and rerun compiled CPU controls
         run: |
-          consumer="$RUNNER_TEMP/$CONSUMER_NAME"
-          uv venv "$consumer" --python "$BUILD_PYTHON"
+          python3 -B tools/linux_ci_lifecycle.py --state "$CI_STATE" run --phase consumer --script-stdin <<'PHASE'
+          uv venv "$CONSUMER_PATH" --python "$BUILD_PYTHON"
           uv export --locked --no-default-groups --no-emit-project --output-file "$EVIDENCE/runtime-requirements.txt" > /dev/null
-          uv pip install --python "$consumer/bin/python" --require-hashes --only-binary :all: \
+          uv pip install --python "$CONSUMER_PATH/bin/python" --require-hashes --only-binary :all: \
             --requirements "$EVIDENCE/runtime-requirements.txt" --requirements "$EVIDENCE/wheel-requirements.txt"
-          "$consumer/bin/python" -I -B tools/audit_metal_wheel.py consumer --arch '${{ matrix.arch }}' \
-            --archive-report "$EVIDENCE/archive.json" --output "$EVIDENCE/consumer.json"
-      - name: Remove owned temporary environments, caches and objects
+          "$CONSUMER_PATH/bin/python" -I -B tools/audit_metal_wheel.py consumer --arch '${{ matrix.arch }}' \
+            --archive-report "$ARCHIVE_REPORT" --output "$EVIDENCE/consumer.json"
+          PHASE
+      - name: Verify current dependency bytes after consumer controls
+        run: |
+          python3 -B tools/linux_ci_lifecycle.py --state "$CI_STATE" run --phase dependency-after -- "$BUILD_PYTHON" -B cmake/verify_dependencies.py
+      - name: Retain source, originals and results; clean registered scratch
         if: always()
         run: |
-          python3 - <<'PY'
-          import json, os, pathlib, shutil
-          evidence = pathlib.Path(os.environ['EVIDENCE'])
-          evidence.mkdir(parents=True, exist_ok=True)
-          temporary = pathlib.Path(os.environ['RUNNER_TEMP']).resolve()
-          removed = []
-          for key in ('CONSUMER_NAME', 'UV_CACHE_NAME'):
-              path = (temporary / os.environ[key]).resolve()
-              if path.parent != temporary or not path.name.startswith('vispy-metal-'):
-                  raise RuntimeError('Unexpected owned temporary path')
-              if path.exists():
-                  shutil.rmtree(path)
-                  removed.append(str(path))
-          build = pathlib.Path(os.environ['NATIVE_BUILD']).resolve()
-          if build.parent != pathlib.Path('build').resolve() or not build.name.startswith('metal-native-'):
-              raise RuntimeError('Unexpected native build path')
-          objects = list(build.rglob('*.o')) if build.exists() else []
-          for path in objects:
-              if not path.resolve().is_relative_to(build) or path.is_symlink():
-                  raise RuntimeError('Unexpected object path')
-              path.unlink()
-          environment = pathlib.Path(os.environ['BUILD_ENV']).resolve()
-          if environment.parent != pathlib.Path('build').resolve() or not environment.name.startswith('metal-env-'):
-              raise RuntimeError('Unexpected build environment path')
-          if environment.exists():
-              shutil.rmtree(environment)
-              removed.append(str(environment))
-          (evidence / 'cleanup.json').write_text(json.dumps({'objects_removed': len(objects), 'removed': removed}, indent=2))
-          PY
+          if [[ -n "${CI_STATE:-}" && -f "$CI_STATE" ]]; then
+            python3 -B tools/linux_ci_lifecycle.py --state "$CI_STATE" finish
+          fi
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         if: always()
         with:
           name: metal-wheel-${{ matrix.arch }}-cp312
+          include-hidden-files: true
           path: |
             ${{ env.EVIDENCE }}
-            ${{ env.NATIVE_BUILD }}/CMakeCache.txt
-            ${{ env.NATIVE_BUILD }}/_dawn*.so
-            ${{ env.NATIVE_BUILD }}/_sdf_cpu*.so
+            ${{ env.DRIVER_WORKSPACE }}/build/artifacts/
           if-no-files-found: error

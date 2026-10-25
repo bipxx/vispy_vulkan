@@ -36,6 +36,7 @@ PREPARATION_TOOLS = (
     'compat/qualification-native.schema.json', 'tools/native_epoch.py',
     'tools/run_linux_native_contracts.py', 'tools/audit_linux_wheel.py',
     'tools/linux_ci_lifecycle.py', 'tools/reuse_linux_ci.py', 'compat/linux-ci-reuse.json',
+    'tools/reuse_metal_ci.py', 'compat/metal-ci-reuse.json', 'compat/build-profiles/metal-ci-native.json',
     'tools/qualification_epoch.py', 'compat/qualification-epoch.schema.json',
     'tools/qualification_index.py', 'compat/qualification-index.schema.json',
     '.github/workflows/linux-vulkan.yml', '.github/workflows/metal-wheel.yml',

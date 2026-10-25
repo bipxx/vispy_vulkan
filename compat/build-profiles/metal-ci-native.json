@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "name": "metal-ci-native",
+  "owner": "ci",
+  "purpose": "Explicit fresh experimental Metal wheel build when exact original reuse is unavailable or inputs changed",
+  "storage_workspace": "$RUNNER_TEMP/vispy-metal-<run-id>-<attempt>-<arch>",
+  "expected_peak_bytes": 6442450944,
+  "aggregate_max_scratch_bytes": 21474836480,
+  "min_free_bytes": 10737418240,
+  "parallel_jobs": 3,
+  "disk_guard_seconds": 30,
+  "reuse": "Default to pinned original build-only wheel with unchanged full first-party production/package input set, current dependency verification and fresh installed CPU imports/SDF controls",
+  "fresh": "Explicit workflow_dispatch native_mode=fresh; never an automatic fallback",
+  "retention": "Retain current source/license snapshot, original archive/build/consumer records and required native leaves; reuse immutable artifacts by SHA256",
+  "terminal_cleanup": "Use registered lifecycle finish after actual child exit/wait; apply registry-bound cleanup and preserve failures/reproducer",
+  "scope": "Experimental Metal build and installed CPU controls only; no graphics/hardware qualification or artifact admission"
+}

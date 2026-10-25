@@ -233,3 +233,12 @@ the existing registry-aware cleanup planner and verifier. A still-active or
 unawaited child prevents cleanup. Source changes are retained as a delta and
 remain failures even after scratch is cleaned. These are development/CI
 receipts, not producer or installed-artifact admission.
+
+
+Experimental Metal CI uses the same registered external POSIX lifecycle. Its
+default is exact original build-only reuse with fresh installed CPU controls;
+`compat/build-profiles/metal-ci-native.json` documents the explicit 6 GiB fresh
+mode. Reuse reserves 1 GiB, and both modes preserve the shared 20 GiB scratch and
+10 GiB reserve limits. A PR path filter sees cumulative changes, so it does not
+replace an input comparison inside the job. Metadata-only changes must not
+silently trigger a native rebuild. Metal graphics qualification remains open.

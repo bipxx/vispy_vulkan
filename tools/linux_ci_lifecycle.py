@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: AGPL-3.0-only
-"""Managed Linux wheel CI lifecycle; captured evidence is not admission."""
+"""Managed POSIX wheel CI lifecycle; captured evidence is not admission."""
 import argparse
 import hashlib
 import json
@@ -41,7 +41,8 @@ def source_inventory(source):
         'compat/software-vulkan-build.json', 'compat/software-vulkan-driver-clip-repair.json',
         'compat/mesa-build-requirements.txt', 'compat/qualification-ci.json',
         'compat/qualification-ci.schema.json', 'compat/linux-ci-reuse.json',
-        'compat/qualification-native.schema.json')]
+        'compat/qualification-native.schema.json', 'compat/metal-ci-reuse.json',
+        'compat/build-profiles/metal-ci-native.json')]
     inputs += list((source/'compat/patches').glob('mesa-*'))
     for path in inputs:
         if path.is_file():
@@ -161,18 +162,19 @@ def normalize_environments(state, context, label):
             home = Path(values['home']).resolve(strict=True)
             # python-build-standalone uses a DT_NEEDED path relative to the
             # executable. A copied executable needs this same library beside it.
-            library = home.parent/'lib/libpython3.12.so.1.0'
-            target = environment/'lib/libpython3.12.so.1.0'
-            if library.is_file():
-                no_alias(target.parent)
-                checked_link(context, target)
-                if target.is_symlink() or not target.exists():
-                    if target.is_symlink() and target.resolve(strict=True) != library.resolve(strict=True):
-                        raise ValueError('Unexpected uv libpython alias')
-                    actions.append(dict(link=str(target), raw=os.readlink(target) if target.is_symlink() else None,
-                                        target=str(library.resolve(strict=True)), action='copy-libpython', sha256=digest(library)))
-                elif not target.is_file() or digest(target) != digest(library):
-                    raise ValueError('Existing environment libpython differs from its base')
+            for library_name in ('libpython3.12.so.1.0', 'libpython3.12.dylib'):
+                library = home.parent/'lib'/library_name
+                target = environment/'lib'/library_name
+                if library.is_file():
+                    no_alias(target.parent)
+                    checked_link(context, target)
+                    if target.is_symlink() or not target.exists():
+                        if target.is_symlink() and target.resolve(strict=True) != library.resolve(strict=True):
+                            raise ValueError('Unexpected uv libpython alias')
+                        actions.append(dict(link=str(target), raw=os.readlink(target) if target.is_symlink() else None,
+                                            target=str(library.resolve(strict=True)), action='copy-libpython', sha256=digest(library)))
+                    elif not target.is_file() or digest(target) != digest(library):
+                        raise ValueError('Existing environment libpython differs from its base')
         candidates = [environment/'lib64'] + [environment/'bin'/n for n in ('python', 'python3', 'python3.12')]
         for link in candidates:
             if not link.is_symlink():
@@ -375,7 +377,7 @@ def finish(state_path):
         reuse = evidence/name
         if reuse.exists():
             record = json.loads(reuse.read_bytes())
-            if (record.get('schema') != 1 or record.get('kind') != 'original-linux-ci-reuse-inputs'
+            if (record.get('schema') != 1 or record.get('kind') not in ('original-linux-ci-reuse-inputs', 'original-metal-ci-reuse-inputs')
                     or record.get('artifact_admitted') is not False):
                 raise ValueError('Unknown original-input retention protocol')
             for item in record['retained']:
@@ -416,7 +418,7 @@ def main():
     run.add_argument('argv', nargs=argparse.REMAINDER)
     sub.add_parser('finish')
     args = parser.parse_args()
-    if sys.platform != 'linux': parser.error('CI lifecycle execution requires Linux')
+    if sys.platform not in ('linux', 'darwin'): parser.error('CI lifecycle execution requires Linux or macOS')
     try:
         if args.command == 'init':
             initialize(ROOT, args.workspace, args.run_id, args.owner, args.expected_peak_bytes, os.getenv('GITHUB_ENV'))

@@ -26,7 +26,7 @@ except ImportError:
 
 SCHEMA = 'compat/qualification-native.schema.json'
 PROTOCOL = {
-    'tools/linux_ci_lifecycle.py': 'd5f917b24003c082de7f10dbdb8694da602d7a9b82223eec5d9c4ec0f2a71f35',
+    'tools/linux_ci_lifecycle.py': 'c5cc6aac71160ca1d3f784cb6988a95c2ce6313ea25079163380f1b99875c53f',
     'tools/build_hygiene.py': '0a4f8cbc161afa39dfaf25e840bb0c788fda4f709b84f7440bd52102f847fa84',
     'tools/run_linux_native_contracts.py': 'e07e6aede2b8f35b0c75533606f59f0669783c1b9822c59534d62d6ffee5caca',
     'tools/audit_linux_wheel.py': '3106c09f756ed53ac14d0190355c49a79ddc114271b06bbccd530999300457df',

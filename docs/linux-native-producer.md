@@ -173,3 +173,26 @@ This route proves a production prerequisite, not artifact admission. Cumulative
 implementation/scope review, exact native reuse approval, selected installed
 qualification, current-head required CI and promotion remain separate gates.
 Helper results alone do not establish end-to-end workflow verification.
+
+
+### Experimental Metal reuse follows the same bounded lifecycle
+
+The Metal workflow defaults to the pinned original successful arm64/x86_64
+build-only artifacts in `compat/metal-ci-reuse.json`. The original Linux source
+inventory and Metal CI records share the same exact checked merge revision;
+the reference freezes the complete first-party production/package source set,
+auditor and runtime package manifest from that inventory. Verification checks
+current input equality, dependency bytes, original CI identity/configuration,
+raw/stripped/native package hashes, Mach-O architecture and original CPU results.
+Original records remain unchanged; a separate archive projection relocates the
+retained wheel for fresh installed CPU import/SDF checks.
+
+Both architectures retain `GPU_qualified=false` and `artifact_admitted=false`.
+Neither source verification on Windows nor original Metal success proves new
+macOS execution: the rewritten workflow still needs actual runner results.
+Changed or unavailable proof fails explicitly; `workflow_dispatch` fresh mode
+uses the documented 6 GiB Metal native profile. Default reuse reserves 1 GiB.
+Both modes register before environment allocation and retain source, licenses,
+actual process exits/waits and original inputs before managed cleanup. The
+POSIX lifecycle preserves standalone Python's Linux `.so` or macOS `.dylib`
+when materializing interpreter aliases. No current-head CI gate is waived.

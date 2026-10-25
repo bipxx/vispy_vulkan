@@ -167,18 +167,19 @@ if os.name == 'posix':
         plan = json.loads((prepared.parent/'native-alias-cleanup.json').read_bytes())
         assert len(plan['links']) == 2
 
-    def test_standalone_runtime_is_copied_with_the_interpreter(prepared, tmp_path):
+    @pytest.mark.parametrize('library_name', ['libpython3.12.so.1.0', 'libpython3.12.dylib'])
+    def test_standalone_runtime_is_copied_with_the_interpreter(prepared, tmp_path, library_name):
         state, context = lifecycle.load(prepared)
         env = Path(state['scratch'])/'env'; (env/'bin').mkdir(parents=True)
         (env/'lib').mkdir()
         base = tmp_path/'standalone'; (base/'bin').mkdir(parents=True)
         (base/'lib').mkdir()
         interpreter = base/'bin/python3.12'; interpreter.write_bytes(b'synthetic executable')
-        library = base/'lib/libpython3.12.so.1.0'; library.write_bytes(b'synthetic shared runtime')
+        library = base/'lib'/library_name; library.write_bytes(b'synthetic shared runtime')
         (env/'pyvenv.cfg').write_text('home = '+str(base/'bin')+'\n')
         (env/'bin/python').symlink_to(interpreter)
         command(prepared)
-        assert (env/'lib/libpython3.12.so.1.0').read_bytes() == library.read_bytes()
+        assert (env/'lib'/library_name).read_bytes() == library.read_bytes()
         assert not (env/'bin/python').is_symlink()
         lifecycle.finish(prepared)
         assert library.read_bytes() == b'synthetic shared runtime'
@@ -210,9 +211,10 @@ if os.name == 'posix':
             lifecycle.finish(prepared)
 
 
+@pytest.mark.parametrize('kind', ['original-linux-ci-reuse-inputs', 'original-metal-ci-reuse-inputs'])
 @pytest.mark.parametrize('receipt_name', ['reuse-inputs.json', 'reuse-transport-inputs.json'])
 @pytest.mark.parametrize('mutation', [None, 'scratch', 'coordinator-scratch', 'changed', 'role'])
-def test_reuse_retention_preserves_original_inputs_and_rejects_bad_refs(prepared, mutation, monkeypatch, receipt_name):
+def test_reuse_retention_preserves_original_inputs_and_rejects_bad_refs(prepared, mutation, monkeypatch, receipt_name, kind):
     command(prepared)
     state = json.loads(prepared.read_bytes())
     # Isolate the synthetic coordinator from the outer test runner's scratch.
@@ -231,7 +233,7 @@ def test_reuse_retention_preserves_original_inputs_and_rejects_bad_refs(prepared
     elif mutation == 'changed': item['sha256'] = '0'*64
     elif mutation == 'role': item['roles'] = ['unknown']
     lifecycle.write(prepared.parent/receipt_name, dict(schema=1,
-        kind='original-linux-ci-reuse-inputs', artifact_admitted=False, retained=[item]))
+        kind=kind, artifact_admitted=False, retained=[item]))
     if mutation:
         with pytest.raises(ValueError, match='Reused input'): lifecycle.finish(prepared)
         assert Path(state['scratch']).exists()

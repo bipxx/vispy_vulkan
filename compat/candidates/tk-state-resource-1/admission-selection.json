@@ -1,14 +1,14 @@
 {
   "schema": 1,
   "phase": "admission-selection",
-  "manifest_sha256": "26a84bf31b859fd1b904829dd41ac285d92fbaa775bdb6554797065e6fef9bfb",
+  "manifest_sha256": "af535d3a2614e614f07c987fbf10688905f8ae5180c7bdf5b838adcb7a3708f9",
   "candidate": {
     "path": "compat/candidates/tk-state-resource-1/candidate.json",
-    "scope_sha256": "ca8d97c15419923bc461d4fd3d8af52bd6b79ae70600c025a0cc247423f02572"
+    "scope_sha256": "fac4484af384fc0fda5d34a2381e6b37349b1edefcc13b10a114a0f607b7c3f6"
   },
   "execution_map": {
     "path": "compat/candidates/tk-state-resource-1/execution.json",
-    "scope_sha256": "e141b8040612dbbd26d29dfca6e7d5f90fb1d68e7a08d7076a51d73878b42d2c"
+    "scope_sha256": "e4a02fd95b80e8da907b041c6ece454c6b1dfca22696830973ed9ef9eb383ab6"
   },
   "requested": [
     {
