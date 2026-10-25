@@ -167,6 +167,34 @@ if os.name == 'posix':
         plan = json.loads((prepared.parent/'native-alias-cleanup.json').read_bytes())
         assert len(plan['links']) == 2
 
+    def test_standalone_runtime_is_copied_with_the_interpreter(prepared, tmp_path):
+        state, context = lifecycle.load(prepared)
+        env = Path(state['scratch'])/'env'; (env/'bin').mkdir(parents=True)
+        (env/'lib').mkdir()
+        base = tmp_path/'standalone'; (base/'bin').mkdir(parents=True)
+        (base/'lib').mkdir()
+        interpreter = base/'bin/python3.12'; interpreter.write_bytes(b'synthetic executable')
+        library = base/'lib/libpython3.12.so.1.0'; library.write_bytes(b'synthetic shared runtime')
+        (env/'pyvenv.cfg').write_text('home = '+str(base/'bin')+'\n')
+        (env/'bin/python').symlink_to(interpreter)
+        command(prepared)
+        assert (env/'lib/libpython3.12.so.1.0').read_bytes() == library.read_bytes()
+        assert not (env/'bin/python').is_symlink()
+        lifecycle.finish(prepared)
+        assert library.read_bytes() == b'synthetic shared runtime'
+
+    def test_existing_runtime_is_not_replaced(prepared, tmp_path):
+        state, context = lifecycle.load(prepared)
+        env = Path(state['scratch'])/'env'; (env/'lib').mkdir(parents=True)
+        base = tmp_path/'standalone'; (base/'bin').mkdir(parents=True)
+        (base/'lib').mkdir()
+        (base/'lib/libpython3.12.so.1.0').write_bytes(b'base runtime')
+        target = env/'lib/libpython3.12.so.1.0'; target.write_bytes(b'different existing runtime')
+        (env/'pyvenv.cfg').write_text('home = '+str(base/'bin')+'\n')
+        with pytest.raises(ValueError, match='Existing environment libpython differs'):
+            lifecycle.normalize_environments(state, context, 'mismatch')
+        assert target.read_bytes() == b'different existing runtime'
+
     if sys.platform == 'linux':
         def test_actual_cli_preserves_stdin_script_bytes(prepared):
             body = b"printf 'synthetic CLI transport\\n'\n"

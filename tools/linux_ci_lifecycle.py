@@ -145,7 +145,7 @@ def checked_link(context, link):
 
 
 def normalize_environments(state, context, label):
-    """Materialize uv interpreter aliases; remove only its redundant lib64 alias."""
+    """Materialize uv aliases, preserving standalone Python's relative runtime."""
     actions = []
     scratch = Path(state['scratch'])
     for name in ('env', 'consumer'):
@@ -157,6 +157,21 @@ def normalize_environments(state, context, label):
         if config.exists():
             values = dict(line.split(' = ', 1) for line in config.read_text().splitlines()
                           if ' = ' in line)
+            home = Path(values['home']).resolve(strict=True)
+            # python-build-standalone uses a DT_NEEDED path relative to the
+            # executable. A copied executable needs this same library beside it.
+            library = home.parent/'lib/libpython3.12.so.1.0'
+            target = environment/'lib/libpython3.12.so.1.0'
+            if library.is_file():
+                no_alias(target.parent)
+                checked_link(context, target)
+                if target.is_symlink() or not target.exists():
+                    if target.is_symlink() and target.resolve(strict=True) != library.resolve(strict=True):
+                        raise ValueError('Unexpected uv libpython alias')
+                    actions.append(dict(link=str(target), raw=os.readlink(target) if target.is_symlink() else None,
+                                        target=str(library.resolve(strict=True)), action='copy-libpython', sha256=digest(library)))
+                elif not target.is_file() or digest(target) != digest(library):
+                    raise ValueError('Existing environment libpython differs from its base')
         candidates = [environment/'lib64'] + [environment/'bin'/n for n in ('python', 'python3', 'python3.12')]
         for link in candidates:
             if not link.is_symlink():
@@ -178,14 +193,16 @@ def normalize_environments(state, context, label):
     write(output, dict(actions=actions, registry_sha256=digest(context.registry_path) if context.registry_path else None))
     for item in actions:
         link, target = Path(item['link']), Path(item['target'])
-        if not link.is_symlink() or os.readlink(link) != item['raw']:
+        if item['raw'] is None:
+            if link.exists() or link.is_symlink(): raise ValueError('Runtime copy target appeared after audit')
+        elif not link.is_symlink() or os.readlink(link) != item['raw']:
             raise ValueError('Producer alias changed after audit')
-        if item['action'] == 'copy-interpreter':
+        if item['action'] in ('copy-interpreter', 'copy-libpython'):
             data = target.read_bytes()
             if hashlib.sha256(data).hexdigest() != item['sha256']:
                 raise ValueError('Interpreter changed after audit')
             mode = stat.S_IMODE(target.stat().st_mode)
-            link.unlink()
+            if link.is_symlink(): link.unlink()
             with link.open('xb') as stream:
                 stream.write(data)
             link.chmod(mode)

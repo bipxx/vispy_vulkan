@@ -50,8 +50,8 @@ use one registered external native lease alongside Mesa's registered run in the
 same workspace. Direct native commands retain actual argv/PID/exit/wait receipts;
 setup scripts retain their original bytes. Source/license inputs and before/after
 maps, raw CMake/Ninja/compile configuration, observed compiler/Python/tool hashes
-and shipping outputs are retained before registry-aware cleanup. uv uses copies
-and its own per-run cache clean operation. Owned aliases are audited without
+and shipping outputs are retained before registry-aware cleanup. uv uses package
+cache copy mode and its own per-run cache clean operation. Owned aliases are audited without
 changing original targets, and source mutation remains a failed run after its
 reproducer is saved and scratch removed. See
 `build/runs/linux-ci-lifecycle-82/` for 517 Windows regression checks, 47 WSL
@@ -63,3 +63,15 @@ join must consume these original records through the existing native/index
 route, check the complete dependency/build/strip-output chain and bind actual
 independent reviews. Do not turn the unchanged experimental producer policy into
 an approval or rebuild unchanged native inputs solely to fit a new report shape.
+
+The first managed CI attempt (`40225865740`) failed during preparation, before
+native compilation: `uv venv` does not accept the stdlib venv `--copies` option.
+The workflow now uses supported uv arguments. Interpreter aliases are separately
+materialized by the lifecycle tool, including the private relative libpython
+required by standalone CPython. Existing conflicting runtime bytes are refused;
+the base interpreter and library are never changed. A real existing CPython
+3.12.8 control reproduces the missing-library failure before this repair and
+successful execution afterward, without installing packages or rebuilding the
+renderer. Run `build/runs/linux-native-join-83/` retains that before/after control,
+the original failed CI evidence, 517 Windows checks and 49 WSL controls. These
+checks do not establish successful producer CI or Linux admission.

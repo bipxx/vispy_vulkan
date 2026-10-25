@@ -90,7 +90,7 @@ jobs:
               env.write('VK_DRIVER_FILES=' + str(path) + '\n')
           PY
           uv python install '3.12.8'
-          uv venv --copies "$BUILD_ENV" --python '3.12.8' --managed-python
+          uv venv "$BUILD_ENV" --python '3.12.8' --managed-python
           echo "$BUILD_ENV/bin" >> "$GITHUB_PATH"
           uv export --locked --no-default-groups --group dev --group build --no-emit-project --output-file "$EVIDENCE/build-requirements.txt" > /dev/null
           uv pip install --python "$BUILD_ENV" --require-hashes --only-binary :all: --requirements "$EVIDENCE/build-requirements.txt"
@@ -147,7 +147,7 @@ jobs:
         run: |
           /usr/bin/python3 -B tools/linux_ci_lifecycle.py --state "$CI_STATE" run --phase consumer --script-stdin <<'PHASE'
           consumer="$CONSUMER_PATH"
-          uv venv --copies "$consumer" --python "$BUILD_PYTHON"
+          uv venv "$consumer" --python "$BUILD_PYTHON"
           uv export --locked --no-default-groups --extra test --no-emit-project --output-file "$EVIDENCE/consumer-test-requirements.txt" > /dev/null
           uv pip install --python "$consumer/bin/python" --require-hashes --only-binary :all: \
             --requirements "$EVIDENCE/consumer-test-requirements.txt" --requirements "$EVIDENCE/wheel-requirements.txt"

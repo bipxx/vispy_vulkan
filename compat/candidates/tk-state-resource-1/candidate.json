@@ -2,7 +2,7 @@
   "schema": 1,
   "phase": "development",
   "id": "tk-state-resource-1",
-  "manifest_sha256": "fa0f2b823f6bc04a5869c4929d5e15593cee61c3be256ad2572bd49c8e8481ac",
+  "manifest_sha256": "c74eb5dc21a526dfa15bf08cf2c06927d5cc3513bf44826695d2582ec93109c4",
   "product_source_commit": "9ef9765552c41c84d82d69b44756d5925b4d3cd3",
   "upstream_commit": "117b054598f4758b598f4b8f48feea48c11fe7b0",
   "ledger": {
@@ -1172,7 +1172,7 @@
     },
     {
       "path": "compat/qualification-ci.json",
-      "sha256": "aab7069b2b01370294e06b479d7ec4e9b1939d59f39fc836cbf225f960002ecd"
+      "sha256": "a9a42b99c2c681217406a9adfac69ea94a7dd89099682eeedcd0b8eb50df9413"
     },
     {
       "path": "tools/qualification_artifact.py",
@@ -1212,7 +1212,7 @@
     },
     {
       "path": "tools/linux_ci_lifecycle.py",
-      "sha256": "7345ffc29b681e1ca457303834eb0ca8b6fdf00d0f2ed58f890202f29d4d19a8"
+      "sha256": "3d5bc8eb9f5fdcc52a390d57a29fc26107b73679253545504587efe3648480cc"
     },
     {
       "path": "tools/qualification_epoch.py",
@@ -1232,7 +1232,7 @@
     },
     {
       "path": ".github/workflows/linux-vulkan.yml",
-      "sha256": "d6ba73ab5685951d4fdf53e26384af1b506994e7cd4b6cc54c0829c811a7e52b"
+      "sha256": "d1af4af2d0171452ef5519e9bb5893e64b206fa35c6ad07a18e8aeaa67201860"
     },
     {
       "path": ".github/workflows/metal-wheel.yml",
