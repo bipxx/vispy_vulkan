@@ -213,3 +213,112 @@ def test_native_dispatch_keeps_real_linux_policy_blocked():
                      consumer_version='3.12.13',consumer_python_sha256='0'*64)))
     with pytest.raises(ValueError,match='Linux producer policy is still blocked'):
         validate_record(record)
+
+
+@pytest.fixture
+def synthetic_reuse(full_capture, monkeypatch):
+    """Exercise outer joins with a candidate-validation seam, never real approval."""
+    fixture = full_capture
+    project = Path(__file__).resolve().parents[2]
+    capture = fixture.finish()
+    result, _ = native.validate_capture(capture, fixture.production, fixture.root)
+    objects = {}
+
+    def put(name, value):
+        objects[name] = value
+        raw = json.dumps(value, sort_keys=True).encode()
+        path = fixture.root/'outer'/name
+        path.parent.mkdir(exist_ok=True)
+        path.write_bytes(raw)
+        return dict(path=path.relative_to(fixture.root).as_posix(),sha256=native.sha(raw))
+
+    schema = fixture.root/'compat/qualification-artifact.schema.json'
+    schema.write_bytes((project/'compat/qualification-artifact.schema.json').read_bytes())
+    policy = json.loads((project/'compat/qualification-producers.json').read_bytes())
+    policy['linux_scope'] = 'reviewed-full-source-native-proof-required'
+    (fixture.root/'compat/qualification-producers.json').write_text(json.dumps(policy))
+    profile = dict(kind='wsl-software',architecture='x86_64',python_abi='cp312',
+                   python_version='3.12.13 synthetic consumer',interpreter_sha256='e'*64)
+    observation = put('profile.json',profile)
+    runtime = put('runtime.json',dict(native=[dict(path=path,sha256=sha) for path,sha in fixture.production.items()],
+                                    build=[],locks=[]))
+    candidate = dict(id='synthetic-reuse-only',profiles=[dict(id='synthetic-profile',observation=observation)],
+                     runtime_inputs=runtime,reviews={})
+    capture_ref = put('capture.json',capture)
+    reuse = dict(profile='synthetic-profile',candidate_scope_sha256=native.scope_digest(candidate),
+        capture_sha256=capture_ref['sha256'],production_sha256=result['production_sha256'],
+        impact='Synthetic fixture: unchanged production inputs; no real review or admission',
+        abi=dict(tag='cp312',build_version='3.12.8',build_python_sha256='b'*64,
+                 consumer_version='3.12.13',consumer_python_sha256='e'*64))
+    for kind in ('source','scope'):
+        candidate['reviews'][kind] = put(kind+'.json',dict(native_reuse_links=[native.digest(reuse)]))
+    candidate_ref = put('candidate.json',candidate)
+    record = dict(schema=1,kind='original-linux-ci-native-reuse',candidate=candidate_ref,capture=capture_ref,reuse=reuse)
+
+    def reviewed(candidate, root, require_reviewed=False):
+        assert candidate['id']=='synthetic-reuse-only'
+        assert root==fixture.root and require_reviewed is True
+    monkeypatch.setattr(native,'validate_candidate',reviewed)
+    return fixture,record,objects,put
+
+
+def test_synthetic_reuse_preserves_distinct_build_and_consumer_python(synthetic_reuse):
+    fixture,record,_,_ = synthetic_reuse
+    result = native.validate_record(record,fixture.root)
+    assert result['status']=='PASS_ORIGINAL_LINUX_NATIVE_JOIN'
+    assert result['artifact_admitted'] is result['hardware_qualified'] is False
+    assert record['reuse']['abi']['build_version']=='3.12.8'
+    assert record['reuse']['abi']['consumer_version']=='3.12.13'
+
+
+@pytest.mark.parametrize('mutation,match', [
+    ('scope-hash','reuse scope/capture changed'),
+    ('capture-hash','reuse scope/capture changed'),
+    ('unselected-profile','reuse profile is not selected'),
+    ('source-review','lacks exact independent review'),
+    ('scope-review','lacks exact independent review'),
+    ('string-review','lacks exact independent review'),
+    ('build-version','ABI facts differ'),
+    ('build-python','ABI facts differ'),
+    ('consumer-version','ABI facts differ'),
+    ('consumer-python','ABI facts differ'),
+    ('production','production identity changed'),
+    ('other-platform','cannot admit another platform/ABI'),
+    ('other-architecture','cannot admit another platform/ABI'),
+    ('other-abi','cannot admit another platform/ABI'),
+    ('unreviewed-candidate','synthetic candidate review refusal'),
+])
+def test_reuse_requires_exact_review_and_abi_links(synthetic_reuse,monkeypatch,mutation,match):
+    fixture,record,objects,put = synthetic_reuse
+    reuse = record['reuse']
+    candidate = objects['candidate.json']
+    if mutation in ('scope-hash','capture-hash'):
+        reuse['candidate_scope_sha256' if mutation=='scope-hash' else 'capture_sha256']='0'*64
+    elif mutation=='unselected-profile':reuse['profile']='not-selected'
+    elif mutation.endswith('-review'):
+        kind='source' if mutation!='scope-review' else 'scope'
+        candidate['reviews'][kind]=put(kind+'.json',dict(native_reuse_links=
+            native.digest(reuse) if mutation=='string-review' else ['0'*64]))
+        record['candidate']=put('candidate.json',candidate)
+    elif mutation=='unreviewed-candidate':
+        def reject(*args,**kwargs):raise ValueError('synthetic candidate review refusal')
+        monkeypatch.setattr(native,'validate_candidate',reject)
+    else:
+        if mutation=='production':reuse['production_sha256']='0'*64
+        elif mutation in ('build-version','build-python','consumer-version','consumer-python'):
+            key={'build-version':'build_version','build-python':'build_python_sha256',
+                 'consumer-version':'consumer_version','consumer-python':'consumer_python_sha256'}[mutation]
+            reuse['abi'][key]='3.12.0' if key.endswith('version') else '0'*64
+        else:
+            profile=objects['profile.json']
+            key,value={'other-platform':('kind','linux-gpu'),'other-architecture':('architecture','aarch64'),
+                       'other-abi':('python_abi','cp313')}[mutation]
+            profile[key]=value
+            candidate['profiles'][0]['observation']=put('profile.json',profile)
+        # Keep every unrelated outer edge valid so rejection reaches the changed
+        # ABI/production/profile field rather than an earlier checksum mismatch.
+        reuse['candidate_scope_sha256']=native.scope_digest(candidate)
+        for kind in ('source','scope'):
+            candidate['reviews'][kind]=put(kind+'.json',dict(native_reuse_links=[native.digest(reuse)]))
+        record['candidate']=put('candidate.json',candidate)
+    with pytest.raises(ValueError,match=match):native.validate_record(record,fixture.root)

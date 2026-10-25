@@ -102,3 +102,11 @@ native-adapter/index controls. These include a successful synthetic native join,
 producer policy and six outer-index raw-retention controls. Original failed
 attempts remain retained. New CPU CI selects the maintained adapter tests; the
 real subject still has 120 missing criteria and no admission.
+
+The follow-up reuse-record controls pass all 64 adapter checks on Windows and
+the 16 new reuse checks in WSL (`build/runs/linux-native-reuse-86/`). They test
+distinct build Python 3.12.8 and consumer Python 3.12.13 facts, exact independent
+review links, selected profile, production digest and refusal of unreviewed
+candidates. The outer candidate-validation seam and all approval-like records
+are explicitly synthetic. The existing real-policy refusal remains in the
+suite; no actual approval, producer-policy change or native rebuild is supplied.
