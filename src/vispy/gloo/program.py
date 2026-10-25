@@ -33,7 +33,7 @@ from math import prod
 import numpy as np
 
 from .globject import GLObject
-from .buffer import VertexBuffer, IndexBuffer, DataBuffer
+from .buffer import VertexBuffer, IndexBuffer, DataBuffer, _matrix_vertex_records
 from .texture import BaseTexture, Texture2D, Texture3D, Texture1D, TextureCube
 from ..util import logger
 from .util import check_enum
@@ -481,20 +481,7 @@ class Program(GLObject):
                         # would otherwise split an (N, columns, rows) array.
                         columns = int(type_[3])
                         rows = int(type_[5]) if len(type_) > 4 else columns
-                        if not ((data.ndim == 2 and
-                                 data.shape[1] == columns * rows) or
-                                (data.ndim == 3 and
-                                 data.shape[1:] == (columns, rows))):
-                            raise ValueError('Matrix attribute %r needs shape '
-                                             '(N, %i) or (N, %i, %i).'
-                                             % (name, columns * rows,
-                                                columns, rows))
-                        if data.dtype != np.dtype(np.float32):
-                            raise TypeError('Matrix attribute %r needs native '
-                                            'float32 data.' % name)
-                        packed = np.ascontiguousarray(data)
-                        data = packed.reshape(-1).view(
-                            dtype=[('f0', np.float32, (columns, rows))])
+                        data = _matrix_vertex_records(data, columns, rows, name)
                     # VBO data; overwrite or update
                     vbo = self._user_variables.get(name, None)
                     if isinstance(data, DataBuffer):

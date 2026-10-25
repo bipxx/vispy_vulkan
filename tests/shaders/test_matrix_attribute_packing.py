@@ -101,3 +101,54 @@ def test_flat_constant_matrix_stays_a_constant(gtype, columns, rows):
     commands = shader.glir.clear()
     binding = [command for command in commands if command[0] == 'ATTRIBUTE'][-1]
     assert binding[2:5] == ('transform', gtype, (0, *values))
+
+
+@pytest.mark.parametrize('gtype,columns,rows', MATRICES)
+@pytest.mark.parametrize('form', ['flat', 'columns'])
+def test_direct_buffer_replacement_preserves_matrix_records(gtype, columns, rows, form):
+    records = np.zeros(5, dtype=[('transform', np.float32, (columns, rows))])
+    buffer = VertexBuffer(records)
+    buffer.glir.clear()
+    words = np.arange(3 * columns * rows, dtype=np.float32).reshape(3, columns, rows)
+    buffer.set_data(words.reshape(3, -1) if form == 'flat' else words)
+    assert buffer.dtype == records.dtype
+    assert buffer.size == 3 and buffer.stride == records.dtype.itemsize
+    np.testing.assert_array_equal(uploaded(buffer, buffer.glir.clear())['transform'], words)
+
+
+@pytest.mark.parametrize('gtype,columns,rows', MATRICES)
+def test_direct_matrix_subupdate_uses_vertex_record_offsets(gtype, columns, rows):
+    shader = program(gtype)
+    shader['transform'] = np.zeros((5, columns, rows), dtype=np.float32)
+    buffer = shader['transform']
+    original_dtype = buffer.dtype
+    shader.glir.clear()
+    words = np.arange(2 * columns * rows, dtype=np.float32).reshape(2, columns, rows)
+    buffer.set_subdata(words, offset=2)
+    commands = shader.glir.clear()
+    data = [c for c in commands if c[0] == 'DATA' and c[1] == buffer.id]
+    assert len(data) == 1 and data[0][2] == 2 * columns * rows * 4
+    assert data[0][3].dtype == original_dtype
+    np.testing.assert_array_equal(data[0][3]['f0'], words)
+    assert buffer.size == 5 and buffer.dtype == original_dtype
+    with pytest.raises(ValueError, match='does not fit'):
+        buffer.set_subdata(words, offset=4)
+    assert shader.glir.clear() == []
+
+
+@pytest.mark.parametrize('method', ['set_data', 'set_subdata'])
+@pytest.mark.parametrize('values,error', [
+    (np.zeros((2, 3, 2), np.float32), ValueError),
+    (np.zeros((2, 2, 3), np.float64), TypeError),
+    (np.zeros((2, 2, 3), dtype='>f4'), TypeError),
+])
+def test_invalid_direct_update_preserves_matrix_storage(method, values, error):
+    shader = program('mat2x3')
+    shader['transform'] = np.zeros((5, 2, 3), dtype=np.float32)
+    buffer = shader['transform']
+    original_dtype = buffer.dtype
+    shader.glir.clear()
+    with pytest.raises(error):
+        getattr(buffer, method)(values)
+    assert buffer.dtype == original_dtype and buffer.size == 5
+    assert shader.glir.clear() == []

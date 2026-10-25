@@ -48,3 +48,6 @@ app/timer.py
 
 # Explicit uniform-array declarations and shape/order-preserving shader replay.
 visuals/shaders/variable.py
+
+# Matrix vertex records preserve column layout through direct buffer updates.
+gloo/buffer.py
