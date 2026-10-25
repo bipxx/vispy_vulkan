@@ -101,3 +101,25 @@ def test_whitespace_and_repeated_matching_declarations():
     program = Program('uniform vec2 grid [ 2 ] [ 3 ];', 'uniform vec2 grid[2][3];')
     program['grid'] = np.zeros((2, 3, 2))
     assert len(program.variables) == 9
+
+
+@pytest.mark.parametrize('writes,replay', [
+    (['grid', 'grid[1][2]', 'grid'], ['grid[1][2]', 'grid']),
+    (['grid', 'grid[1]', 'grid[1][2]', 'grid[1]'], ['grid', 'grid[1][2]', 'grid[1]']),
+    (['grid', 'grid[1]', 'grid[1][2]', 'grid', 'grid[1][2]'], ['grid[1]', 'grid', 'grid[1][2]']),
+])
+def test_shader_replacement_restores_shapes_in_last_write_order(writes, replay):
+    vertex, fragment = 'uniform float grid[2][3];', 'void main(){}'
+    program = Program(vertex, fragment)
+    for step, name in enumerate(writes):
+        shape = {'grid': (2, 3, 1), 'grid[1]': (3, 1), 'grid[1][2]': (1,)}[name]
+        program[name] = np.full(shape, step, dtype=np.float32)
+    cached = {name: program[name].copy() for name in set(writes)}
+    program._glir.clear()
+    program.set_shaders(vertex, fragment)
+    uploads = [c for c in program._glir.clear() if c[0] == 'UNIFORM']
+    assert [c[2] for c in uploads] == replay
+    for command in uploads:
+        np.testing.assert_array_equal(command[4], cached[command[2]])
+    for name, value in cached.items():
+        np.testing.assert_array_equal(program[name], value)

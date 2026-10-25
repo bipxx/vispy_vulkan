@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 # Copyright (c) Vispy Development Team. All Rights Reserved.
 # Distributed under the (new) BSD License. See LICENSE.txt for more info.
+import re
+
 import numpy as np
 from .shader_object import ShaderObject
 
@@ -14,7 +16,10 @@ class Variable(ShaderObject):
     ----------
     name : str
         the name of the variable. This string can also contain the full
-        definition of the variable, e.g. 'uniform vec2 foo'.
+        definition of the variable, e.g. 'uniform vec2 foo'. Explicit arrays
+        use literal dimensions, e.g. 'uniform vec3 samples[2][3]'. Array
+        values have shape (2, 3, 3), with packed components on the last axis.
+        Multidimensional scalar arrays may omit a final singleton component axis.
     value : {float, int, tuple, GLObject}
         If given, vtype and dtype are determined automatically. If a
         float/int/tuple is given, the variable is a uniform. If a gloo
@@ -46,6 +51,16 @@ class Variable(ShaderObject):
 
         if not (isinstance(name, str) or name is None):
             raise TypeError("Variable name must be string or None.")
+
+        self._array_shape = ()
+        if name is not None and '[' in name:
+            declaration = re.fullmatch(r'([A-Za-z_]\w*)\s*((?:\[\s*\d+\s*\]\s*)+)', name)
+            if declaration is None:
+                raise ValueError('Array name must contain positive literal dimensions.')
+            self._array_shape = tuple(map(int, re.findall(r'\d+', declaration.group(2))))
+            if not all(dimension > 0 for dimension in self._array_shape):
+                raise ValueError('Array dimensions must be positive.')
+            name = declaration.group(1)
 
         self._state_counter = 0
         self._name = name
@@ -90,12 +105,38 @@ class Variable(ShaderObject):
         return self._dtype
 
     @property
+    def array_shape(self):
+        """Ordered array dimensions from the declaration, excluding components."""
+        return self._array_shape
+
+    @property
     def value(self):
         """The value associated with this variable."""
         return self._value
 
     @value.setter
     def value(self, value):
+        if self._array_shape:
+            # An explicit declaration disambiguates arrays from the legacy
+            # vector/matrix inference. Match Program's public upload contract.
+            from ...gloo.program import Program
+            if self.vtype != 'uniform' or not self._type_locked or 'sampler' in self.dtype:
+                raise TypeError('Array values require an explicit non-sampler uniform type.')
+            if self.dtype not in Program._gtypes:
+                raise TypeError('Unsupported uniform array type %r.' % self.dtype)
+            dtype, components = Program._gtypes[self.dtype]
+            data = np.asarray(value, dtype=dtype)
+            expected = self._array_shape + (components,)
+            if (len(self._array_shape) > 1 and components == 1 and
+                    data.shape == self._array_shape):
+                data = data.reshape(expected)
+            if data.shape != expected:
+                raise ValueError('Uniform array %r needs shape %s not %s.'
+                                 % (self.name, expected, data.shape))
+            # Rejection must leave both the old value and cache identity intact.
+            self._value = data
+            self._state_counter += 1
+            return
         if isinstance(value, (tuple, list)) and 1 < len(value) < 5:
             vtype = 'uniform'
             dtype = 'vec%d' % len(value)
@@ -175,7 +216,7 @@ class Variable(ShaderObject):
         if self.dtype is None:
             raise RuntimeError("Variable has no dtype: %r" % self)
 
-        name = names[self]
+        name = names[self] + ''.join('[%d]' % size for size in self._array_shape)
         vtype = self._vtype_for_version(version)
         if vtype == 'const':
             return '%s %s %s = %s;' % (vtype, self.dtype, name, self.value)

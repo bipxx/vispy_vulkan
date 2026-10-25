@@ -45,7 +45,12 @@ def test_later_whole_array_replaces_earlier_element_write(
             check(first)
         program['u_values'] = replacement
         check(second)
+        # Recompiling must not revive an older cached indexed override.
+        program.set_shaders(*(shader.code for shader in program.shaders))
+        check(second)
         program['u_values[0]'] = indexed
+        check(first)
+        program.set_shaders(*(shader.code for shader in program.shaders))
         check(first)
     finally:
         canvas.set_current()

@@ -223,6 +223,14 @@ class Program(GLObject):
 
         # All current variables become pending variables again
         for key, val in self._user_variables.items():
+            # Public getters cache packed components. Replay the original
+            # dimensional shape rather than treating that flat cache as a new
+            # user upload. Its last-write order preserves overlapping arrays.
+            shape = self._array_shapes.get(key)
+            if shape is not None and isinstance(val, np.ndarray):
+                components = self._gtypes[self._code_variables[key][1]][1]
+                val = val.reshape(shape + (components,))
+            self._pending_variables.pop(key, None)
             self._pending_variables[key] = val
         self._user_variables = {}
         # Parse code (and process pending variables)
@@ -421,6 +429,8 @@ class Program(GLObject):
                         raise ValueError('Uniform %r needs %i elements, '
                                          'not %i.' % (name, numel, data.size))
                     # Store and send GLIR command
+                    # Cache insertion order is also shader-rebuild replay order.
+                    self._user_variables.pop(name, None)
                     self._user_variables[name] = data
                     self._glir.command('UNIFORM', self._id, name, type_, data)
 
@@ -442,6 +452,8 @@ class Program(GLObject):
                                      % (name, need_shape, data.shape))
                 data = data.ravel()
                 # Store and send GLIR command
+                # Cache insertion order is also shader-rebuild replay order.
+                self._user_variables.pop(name, None)
                 self._user_variables[name] = data
                 self._glir.command('UNIFORM', self._id, name, type_, data)
 

@@ -141,6 +141,97 @@ def multidimensional_uniform_checks(gloo, np):
     return results
 
 
+def _composed_uniform_array_case(gloo, np, Variable, ModularProgram,
+                                 gtype, components, shape, topology):
+    """Independent pixels for names, shared stages, live values and recompiles."""
+    program = positions = None
+    try:
+        other_shape = shape[::-1]
+        a = np.arange(np.prod(shape) * components).reshape(shape + (components,)).astype(np.float32)
+        b = np.arange(np.prod(other_shape) * components).reshape(other_shape + (components,)).astype(np.float32) + 17
+        if gtype in ('bool', 'bvec3'):
+            a, b = a % 2, b % 2
+        suffix = lambda dimensions: ''.join('[%d]' % d for d in dimensions)
+        first = Variable('uniform %s grid%s' % (gtype, suffix(shape)),
+                         a[..., 0] if components == 1 and len(shape) > 1 else a)
+        second = Variable('uniform %s grid%s' % (gtype, suffix(other_shape)), b)
+
+        def expression(name, indices, component):
+            result = '$' + name + suffix(indices)
+            if gtype in ('vec3', 'bvec3'):
+                result += '[%d]' % component
+            elif gtype.startswith('mat'):
+                rows = int(gtype[-1])
+                result += '[%d][%d]' % (component // rows, component % rows)
+            return 'float(%s)' % result
+
+        checks = ['abs(v_array-expected[0])<0.00001']
+        offset = 0
+        for name, dimensions in (('a', shape), ('b', other_shape)):
+            for indices in np.ndindex(dimensions):
+                for component in range(components):
+                    checks.append('abs(%s-expected[%d])<0.00001' %
+                                  (expression(name, indices, component), offset))
+                    offset += 1
+        program = ModularProgram(
+            'attribute vec2 position;varying float v_array;void main(){v_array=' +
+            expression('a', (0,) * len(shape), 0) + ';gl_Position=vec4(position,0,1);}',
+            'varying float v_array;uniform float expected[%d];void main(){gl_FragColor=(' % offset +
+            '&&'.join(checks) + ')?vec4(0,1,0,1):vec4(1,0,0,1);}')
+        program.vert['a'] = first
+        program.frag['a'], program.frag['b'] = first, second
+        program.build_if_needed()
+        assert program.compiler[first] != program.compiler[second]
+        vertices = [[-1, -1], [3, -1], [-1, 3]] if topology == 'triangles' else [[-.8, 0], [.8, 0]]
+        positions = gloo.VertexBuffer(np.array(vertices, np.float32))
+        program['position'] = positions
+        gloo.set_viewport(0, 0, 8, 8)
+        gloo.set_state(blend=False, depth_test=False, scissor_test=False, line_width=4)
+
+        def check():
+            program['expected'] = np.concatenate([a.ravel(), b.ravel()]).reshape(-1, 1)
+            gloo.clear(color=(1, 0, 0, 1))
+            program.draw(topology)
+            image = gloo.read_pixels((0, 0, 8, 8), alpha=True)
+            if topology == 'lines':
+                image = image[3:5, 3:5]
+            np.testing.assert_array_equal(image, np.broadcast_to(np.array([0, 255, 0, 255], np.uint8), image.shape))
+
+        check()
+        a[:] = 1 if gtype in ('bool', 'bvec3') else -3
+        first.value = a.copy()
+        assert not program._need_build
+        check()
+        b[:] = 0 if gtype in ('bool', 'bvec3') else 7
+        second.value = b.copy()
+        check()
+        second.name = 'renamed_grid'
+        assert program._need_build
+        check()
+        assert program._array_shapes[program.compiler[second]] == other_shape
+    finally:
+        for value in (program, positions):
+            if value is not None:
+                value.delete()
+        gloo.flush()
+
+
+def composed_uniform_array_checks(gloo, np):
+    """Exercise typed array composition in the actual installed shader modules."""
+    from vispy.visuals.shaders import Variable, ModularProgram
+    results = []
+    cases = [('float', 1), ('int', 1), ('bool', 1), ('vec3', 3), ('bvec3', 3),
+             ('mat2', 4), ('mat2x3', 6), ('mat4x2', 8)]
+    for gtype, components in cases:
+        for shape in ((3,), (2, 3), (2, 2, 3)):
+            for topology in ('triangles', 'lines'):
+                _composed_uniform_array_case(gloo, np, Variable, ModularProgram,
+                                             gtype, components, shape, topology)
+                results.append({'type': gtype, 'shape': list(shape),
+                                'topology': topology, 'status': 'PASS'})
+    return results
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--wheel', required=True, type=Path)
@@ -164,13 +255,18 @@ def main():
             assert any(name.endswith('.dist-info/WHEEL') for name in archive.namelist()), 'not a wheel'
             for name in (Path(native.__file__).name, 'gloo/gl/dawn.py',
                          'gloo/dawn_parser.py', 'gloo/wrappers.py',
-                         'gloo/program.py', 'gloo/glir.py'):
+                         'gloo/program.py', 'gloo/glir.py',
+                         'visuals/shaders/variable.py', 'visuals/shaders/program.py',
+                         'visuals/shaders/compiler.py'):
                 path = package / name
                 expected = hashlib.sha256(archive.read('vispy/' + name)).hexdigest()
                 actual = hashlib.sha256(path.read_bytes()).hexdigest()
                 assert actual == expected, 'loaded wheel member differs: ' + name
                 origins[name] = actual
         assert Path(dawn.__file__).resolve() == package / 'gloo/gl/dawn.py'
+        from vispy.visuals.shaders import variable, program, compiler
+        for module in (variable, program, compiler):
+            assert Path(module.__file__).resolve() == package / ('visuals/shaders/' + module.__name__.rsplit('.', 1)[1] + '.py')
         result['verified_members'] = origins
         canvas = app.Canvas(app='dawn_headless', size=(12, 8))
         canvas.set_current()
@@ -207,6 +303,7 @@ def main():
         assert canvas.context.get_viewport() == (0, 0, 12, 8)
         result['uniform_array_updates'] = uniform_array_update_checks(gloo, np, 12, 8)
         result['multidimensional_uniforms'] = multidimensional_uniform_checks(gloo, np)
+        result['composed_uniform_arrays'] = composed_uniform_array_checks(gloo, np)
         result.update(status='PASS', verified_members=origins, checked_pixels=96,
                       device=native.device_info(), synchronization=synchronization)
     except BaseException:
