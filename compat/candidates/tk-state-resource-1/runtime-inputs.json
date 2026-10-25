@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "source_commit": "efa3ced2ceef44896fd1357a466e6d8ea0eb4f0f",
+  "source_commit": "1d77811f66e4148ab5f70822a54ab249b99ebbee",
   "python": [
     {
       "member": "vispy/__init__.py",
@@ -608,7 +608,7 @@
       "member": "vispy/gloo/program.py",
       "file": {
         "path": "src/vispy/gloo/program.py",
-        "sha256": "0770dda8df800ca941cce9057c417df45b6dd7f3713dcb145f96a84d585c9421"
+        "sha256": "cfebf2297ba435a9d9ec6b2377eb9ef5f47e5407b4bccd9e47708f95b00a841e"
       }
     },
     {
@@ -3198,7 +3198,7 @@
       "member": "vispy/visuals/shaders/variable.py",
       "file": {
         "path": "src/vispy/visuals/shaders/variable.py",
-        "sha256": "7ea9a9d5e0dae24cb82e3949335b6b3092222674eef50408cda0bda22db05013"
+        "sha256": "050261abea59f5fde72110e4a39b69c96de9d9075a97161bd3b4821df4936c4c"
       }
     },
     {
@@ -3752,7 +3752,7 @@
     },
     {
       "path": "cpp/shader/artifact.hpp",
-      "sha256": "2eeab57e9affdeb897c2b530aeefd6f8d96411e6fb9bde85300101f2bc2d8339"
+      "sha256": "10af0b141beb85a17796fd6bd5ebbc94102ed13952826507f456136dcbaf57ae"
     },
     {
       "path": "cpp/shader/glslang_spv.cpp",
@@ -3772,15 +3772,15 @@
     },
     {
       "path": "cpp/shader/line_consumer.cpp",
-      "sha256": "436ecb550d7194dc4b943174c17f7a41ac19587ac0233831d8c18a373eee9490"
+      "sha256": "3c279501f041654b0707452a5fce8c50578b31f21c065cb081b27d76b96649d3"
     },
     {
       "path": "cpp/shader/line_consumer.hpp",
-      "sha256": "d6974256af79ed1ea82bdbfdce20985ba34dfdd21c493c148ae6a360995cc73d"
+      "sha256": "ec9cf3f755aa4fe378b453d5ca3e1dc0f267a494c7f1c86a4ba2e1b51eced4ee"
     },
     {
       "path": "cpp/shader/line_evaluator.cpp",
-      "sha256": "9ff0d5db41442bb9416762d66ac7134947b472d9b844ae77159203143b4b82c1"
+      "sha256": "aab5cd161ea8506a66aeee847da4c0ee15328438ade29e902aec402e92423ae5"
     },
     {
       "path": "cpp/shader/line_evaluator.hpp",
@@ -3788,11 +3788,11 @@
     },
     {
       "path": "cpp/shader/normalize.cpp",
-      "sha256": "c8fc1b6f8a2cf17319530c010580e265975279bd9630c40196887fc3017be32d"
+      "sha256": "f884ce4010425b106e57c82562f716b9fd65abd03461ea0cd630291e51a683c8"
     },
     {
       "path": "cpp/shader/normalize.hpp",
-      "sha256": "95b5f68c8fcd29989ae2da5b0de9ed326b4ede925f3744a4d16be757227fdd79"
+      "sha256": "2b952bf45b854c4a8c5b789fd708f65ef3a014d254a68e0e0df2ac93fac77b07"
     }
   ],
   "locks": [

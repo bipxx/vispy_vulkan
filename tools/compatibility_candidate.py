@@ -42,6 +42,12 @@ PREPARATION_TOOLS = (
     '.github/workflows/cpu-contract.yml',
     'tools/audit_no_opengl.py',
     'tools/mesh_layout_process.py',
+    'tools/build_software_vulkan.py', 'tools/prepare_software_vulkan.py',
+    'tools/build_hygiene.py', 'compat/build-hygiene.json',
+    'compat/software-vulkan-build.json', 'compat/software-vulkan-driver-clip-repair.json',
+    'compat/mesa-build-requirements.txt',
+    'compat/patches/mesa-26.1.8-noperspective-axis.patch',
+    'compat/patches/mesa-draw-clip-LICENSE.txt',
 )
 # The collector records this same complete source set. Freeze it before source
 # review so an observer/result-transport edit invalidates affected approvals.

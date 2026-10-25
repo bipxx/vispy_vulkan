@@ -128,3 +128,27 @@ Audit and base-identity reproducer/results are retained under
 `build/runs/base-interpreter-identity-60/`. No new native build or environment was
 needed for this repair. Native inputs, original requirements, candidate selection
 and the real subject's missing proof remain unchanged.
+
+
+## Varying arrays and clipping-repair preparation checkpoint
+
+The development candidate now binds product runtime source `1d77811f6`, retained
+varying-array renderer leaves and new Windows/WSL source-functional observations.
+Previous profiles and their failures remain unchanged. The WSL profile names the
+headless Mesa/LLVM18 clip-axis repair and its exact retained-file preparation.
+A local byte comparison joins the tested runtime sources, native headers and
+original composite reports to this product checkpoint; build-tool/documentation
+changes require no renderer rebuild or replacement of the original reports.
+The preparation tool set also binds the maintained driver builder, finite recipe,
+source/patch/license inputs and hygiene policy used by the changed CI route.
+
+Requested criteria, same-profile closure and execution ledger are unchanged:
+120 requested/closure bindings remain missing installed qualification, with zero
+proved. All 142 original parent obligations remain preserved and undischarged.
+The headless driver repair and source controls do not provide the missing Linux
+renderer producer route, cumulative independent implementation/scope reviews,
+both selected installed workflow protocols or final promotion review. New-head
+CI must be collected after publication; old-head success does not transfer.
+
+Local reconstruction records are in `build/runs/varying-driver-preparation-67/`;
+these are development preparation evidence, not a portable approval packet.
