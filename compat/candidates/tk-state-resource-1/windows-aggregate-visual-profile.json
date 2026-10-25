@@ -1,0 +1,116 @@
+{
+  "schema": 1,
+  "id": "windows-gpu-tk86-cp312-development",
+  "phase": "source-functional",
+  "product_runtime_source_commit": "9ef9765552c41c84d82d69b44756d5925b4d3cd3",
+  "kind": "windows-gpu",
+  "architecture": "x86_64",
+  "python_abi": "cp312",
+  "python_version": "3.12.8 (main, Dec 19 2024, 14:41:01) [MSC v.1942 64 bit (AMD64)]",
+  "interpreter": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\.venv\\Scripts\\python.exe",
+  "interpreter_sha256": "4025e2a6d8fc90d053a8405e81f008cbd8ee45b582e2d77480341501f4aeda73",
+  "base_interpreter": {
+    "path": "C:\\Users\\HEQ\\AppData\\Roaming\\uv\\python\\cpython-3.12.8-windows-x86_64-none\\python.exe",
+    "sha256": "71b986e874ae1382c434f95852f5670e6d87576db2861cd03737dd4bce9d69ed"
+  },
+  "os_identity": "Windows-11-10.0.26200-SP0",
+  "toolkit": {
+    "tk_version": 8.6,
+    "tcl_version": 8.6,
+    "binding_origin": "C:\\Users\\HEQ\\AppData\\Roaming\\uv\\python\\cpython-3.12.8-windows-x86_64-none\\DLLs\\_tkinter.pyd",
+    "binding_hash_scope": "module",
+    "binding_sha256": "38453f6aff3f3a3ef0017c00bfee2f403ca0aeaf92b8b5c56d05460fd6dbbdf9"
+  },
+  "display_mode": "tk-raster",
+  "device": {
+    "backend": "Vulkan",
+    "adapter_type": "discrete",
+    "vendor": "nvidia",
+    "device": "NVIDIA GeForce RTX 4090",
+    "driver": "NVIDIA: 610.88 610.88.0.0",
+    "vendor_id": 4318,
+    "device_id": 9860,
+    "max_texture_dimension_1d": 32768,
+    "max_texture_dimension_2d": 32768,
+    "max_texture_dimension_3d": 16384,
+    "max_vertex_attributes": 30,
+    "max_vertex_buffers": 8,
+    "max_vertex_buffer_array_stride": 2048,
+    "max_storage_buffers_per_shader_stage": 16,
+    "max_uniform_buffers_per_shader_stage": 12,
+    "max_inter_stage_shader_variables": 30,
+    "max_storage_buffer_binding_size": 2147483644,
+    "max_bindings_per_bind_group": 1000,
+    "max_compute_invocations_per_workgroup": 1024,
+    "max_compute_workgroup_size_x": 1024,
+    "max_compute_workgroups_per_dimension": 65535,
+    "max_point_vertex_attributes": 30,
+    "core_features_and_limits": true,
+    "point_input_limit_scope": "all active user point inputs share one vertex buffer; exact vertex/instance identities use read-only vertex storage without reserving a user attribute; actual granted attribute/stride/storage/allocation limits apply",
+    "max_samplers_per_shader_stage": 16,
+    "max_sampled_textures_per_shader_stage": 48,
+    "max_buffer_size": 1099511627776,
+    "max_uniform_buffer_binding_size": 65536,
+    "software": false,
+    "float32_filterable": true,
+    "unorm16_texture_formats": true,
+    "bresenham_lines": true,
+    "last_vertex_provoking": true,
+    "timestamp_query": true,
+    "timestamp_quantization_ns": 65536,
+    "depth_stencil_storage": "depth24_unorm_stencil8",
+    "ok": true,
+    "error": "",
+    "loss_count": 0,
+    "revision": "117b054598f4758b598f4b8f48feea48c11fe7b0+dawn-499e5c6ff9b37d5de70c6493fb74c251e0d35c1c"
+  },
+  "native_sha256": "715022fbbcfa319cd504b8b9f91a53c983db1cba23a464f98525aff63c1158bf",
+  "native_inputs_sha256": "24d83e8fc94f009c1e105bb1b7b934a4880ce30c2fa47bc6a4a4d93c3893fa83",
+  "loaded_library_identities": {
+    "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\artifacts\\715022fbbcfa319cd504b8b9f91a53c983db1cba23a464f98525aff63c1158bf\\_dawn.cp312-win_amd64.pyd": "715022fbbcfa319cd504b8b9f91a53c983db1cba23a464f98525aff63c1158bf"
+  },
+  "source_observation": {
+    "cases": 8,
+    "case_unit": "Required branches in one complete source composite",
+    "report": {
+      "path": "build/runs/compatibility-ci-80/windows-composite-source-bound-result.json",
+      "sha256": "e8d3f38ed2f3b7fb5f5de774b597b235a936497db238c3e6acb9d98b2bdb0a62"
+    },
+    "shutdown_gauges": {
+      "pending_tickets": 0,
+      "queued_frames": 0,
+      "live_buffer_bytes": 0,
+      "live_cpu_buffer_bytes": 0,
+      "live_texture_bytes": 0,
+      "canvas_texture_bytes": 0,
+      "transient_buffer_bytes": 0,
+      "line_resource_pool_busy_slots": 0,
+      "line_resource_pool_bytes": 0
+    },
+    "scope": "Source functional only; not original installed observer proof"
+  },
+  "previous_source_observation": {
+    "path": "compat/candidates/tk-state-resource-1/windows-matrix-packing-profile.json",
+    "sha256": "99b6ccdd76003d957e8cc97aaa6541bed56c5d33d56a20598e4cdf2bcb00ecb5"
+  },
+  "limitations": [
+    "Source-only preparation, independent source/scope review remains pending.",
+    "No candidate wheel, installed original absence/control receipts or final promotion approval.",
+    "No native Linux GPU or Metal hardware claim."
+  ],
+  "native_producer": {
+    "status": "SOURCE_FUNCTIONAL_LEAF_NOT_ADMITTED",
+    "artifact_manifest": {
+      "path": "build/runs/aggregate-attribute-bindings-76/native-artifact.json",
+      "sha256": "e54def2dfcc3043372b6d4ca1560a8d02b6ab9c5677f353b1cfd226c4edfa52b"
+    },
+    "scope": "Retained aggregate-attribute leaf with byte-checked runtime inputs; source-functional only, no producer admission."
+  },
+  "native_reuse": {
+    "basis": {
+      "path": "build/runs/compatibility-ci-80/runtime-source-reuse.json",
+      "sha256": "85b18a1a195fa7cc90b4624b62f0ee852aaf03df93005d750308737817107e4c"
+    },
+    "scope": "Unchanged native inputs, fresh Python source composite; no installed qualification or independent approval"
+  }
+}

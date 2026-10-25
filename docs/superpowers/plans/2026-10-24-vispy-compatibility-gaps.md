@@ -1417,3 +1417,12 @@ Native C++ inputs/modules remain unchanged. Evidence/reproducers, including the
 original wrong-shading images and late-overlay failure, are retained in
 `build/runs/instanced-shading-79/`. Remaining shader/API/host, independent review,
 producer/installed and release admission requirements remain open.
+
+
+### Maintained compatibility CI checkpoint — 2026-10-25
+
+The aggregate/composed/visual regressions now share `tools/compatibility_render_smoke.py`, called by the external Linux installed-wheel runner. Both source executions pass all 385 pixel/control cases and three original test bodies; all 416 affected Python checks and eight Tk composite branches pass per platform, with nine shutdown gauges zero. The 199 newly selected CPU cases also pass with renderer imports blocked. The CPU matrix selects those tests, and Linux path filters include every shared helper. No native/dependency/environment rebuild was needed.
+
+Fresh source profiles bind product `9ef9765552c41c84d82d69b44756d5925b4d3cd3` and the current retained Windows/WSL aggregate leaves; old profiles remain retained. CI policy/candidate/coverage/execution/selection/subject references are renewed in dependency order. Requested scope, closure and the execution ledger remain unchanged; source preparation does not supply installed evidence or review/producer approval. Next: cumulative implementation/scope review and the admissible Linux producer route, then frozen installed qualification and current-head required CI. See `build/runs/compatibility-ci-80/` and the qualification index.
+
+The renewed checkpoint also passes all 473 affected qualification regression checks; these include synthetic rejection controls and do not grant real admission.

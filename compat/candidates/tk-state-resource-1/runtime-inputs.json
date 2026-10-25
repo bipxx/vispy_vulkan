@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "source_commit": "95748384f1a1e9230e80eb9ddb5059ff95926259",
+  "source_commit": "9ef9765552c41c84d82d69b44756d5925b4d3cd3",
   "python": [
     {
       "member": "vispy/__init__.py",
@@ -461,14 +461,14 @@
       "member": "vispy/gloo/buffer.py",
       "file": {
         "path": "src/vispy/gloo/buffer.py",
-        "sha256": "1de39a877b714c1205e5fb9e7c494fb5d29f4b6eda5cc0798c1d8f8b7569257a"
+        "sha256": "653c1ccbbd73dc8a0b70e70934b2bc6188cb10d048c07d34a5a237aa15b5d92d"
       }
     },
     {
       "member": "vispy/gloo/context.py",
       "file": {
         "path": "src/vispy/gloo/context.py",
-        "sha256": "4033e963a6babf9156f484634ffb418a12b6ff4f6fc28a1d84add0c5603f5aba"
+        "sha256": "2b228c50da13c32e5fe29216866307148de4e6542f5726c8e140e49fe4f6f2ab"
       }
     },
     {
@@ -608,7 +608,7 @@
       "member": "vispy/gloo/program.py",
       "file": {
         "path": "src/vispy/gloo/program.py",
-        "sha256": "5468fb83b2aaa89177acc1d0e699f4708cd2b16b4f16b835245624220f20f207"
+        "sha256": "9e3fe2db42b395eddcfa2bd9a148022a8d5442f46f0d4157d7a512d2fbed6118"
       }
     },
     {
@@ -2806,7 +2806,7 @@
       "member": "vispy/visuals/filters/mesh.py",
       "file": {
         "path": "src/vispy/visuals/filters/mesh.py",
-        "sha256": "ac83daedb7acbbbeecdf723a38ff972e986e175a788598d120b6efab42aac1f9"
+        "sha256": "5bf7815ad1bffa381fdbbc549a7a7441fd6a312ec110a9589bac26a264121ac1"
       }
     },
     {
@@ -2988,7 +2988,7 @@
       "member": "vispy/visuals/instanced_mesh.py",
       "file": {
         "path": "src/vispy/visuals/instanced_mesh.py",
-        "sha256": "17e51cba9ca1edb4cb2fad71bf3008f7247eb1b6a227fffd082b19e55ded2d71"
+        "sha256": "3e53887d5e8a2fb8e9ebf01d347a211c7a67f93ad40e202c738c18e28d202e30"
       }
     },
     {
@@ -3065,7 +3065,7 @@
       "member": "vispy/visuals/mesh.py",
       "file": {
         "path": "src/vispy/visuals/mesh.py",
-        "sha256": "16e82e78990c4cbbb7d5bcf2f0650b02988d6fb1d3961850197a69fbbb2f597f"
+        "sha256": "920cdf5a3780f5bce5f93114bed83abbdbf605e33cc9f1cb8010227b845c1f7d"
       }
     },
     {
@@ -3198,7 +3198,7 @@
       "member": "vispy/visuals/shaders/variable.py",
       "file": {
         "path": "src/vispy/visuals/shaders/variable.py",
-        "sha256": "050261abea59f5fde72110e4a39b69c96de9d9075a97161bd3b4821df4936c4c"
+        "sha256": "968ea731a1672fbf7624780fa2cde15f922db5808debdb8b8a5a57a247a6da3e"
       }
     },
     {
@@ -3624,7 +3624,7 @@
     },
     {
       "path": "cpp/runtime.cpp",
-      "sha256": "29c5f984c7b2095436da0bbee29e2b5b52e0718b69d47c8038ef7f4e519aa5f4"
+      "sha256": "4be87ec8cf7242cea570be16dbb04a28b156ddcfce86617ebbf83da631cc01ac"
     },
     {
       "path": "cpp/runtime.hpp",
@@ -3752,15 +3752,15 @@
     },
     {
       "path": "cpp/shader/artifact.hpp",
-      "sha256": "10af0b141beb85a17796fd6bd5ebbc94102ed13952826507f456136dcbaf57ae"
+      "sha256": "044b8d2b8ad9db28295af298e27ef3c1a91b85c14a5f079682070d611eca027a"
     },
     {
       "path": "cpp/shader/glslang_spv.cpp",
-      "sha256": "96b4510784388cac92dad7bb1e9d2eb8bd63228f767c5c206f83a632f0e2924a"
+      "sha256": "8fcea6182c5e76ba70b81ae3558d0a21c34b23d01222c9b4e0fd69cccd8de082"
     },
     {
       "path": "cpp/shader/glslang_spv.hpp",
-      "sha256": "aa57f2b2786a3b660a9dfed085896fe2b529bc06daaacedff1e373b0b218682c"
+      "sha256": "7445354eb363b2fd605ebde5a0b952c0114e4dba922c04185048871817ef57ac"
     },
     {
       "path": "cpp/shader/integer_sampling.cpp",
@@ -3780,7 +3780,7 @@
     },
     {
       "path": "cpp/shader/line_evaluator.cpp",
-      "sha256": "aab5cd161ea8506a66aeee847da4c0ee15328438ade29e902aec402e92423ae5"
+      "sha256": "e0ba87a8367f447214bbd29e72a16d90f0ada73d0a43fe796e0e6c7c43dd85a4"
     },
     {
       "path": "cpp/shader/line_evaluator.hpp",
@@ -3788,11 +3788,11 @@
     },
     {
       "path": "cpp/shader/normalize.cpp",
-      "sha256": "f884ce4010425b106e57c82562f716b9fd65abd03461ea0cd630291e51a683c8"
+      "sha256": "c51342bdb142c6c3868959719ee528b6b2d9c592d0ee5576ca55d0dd1aaac2d2"
     },
     {
       "path": "cpp/shader/normalize.hpp",
-      "sha256": "2b952bf45b854c4a8c5b789fd708f65ef3a014d254a68e0e0df2ac93fac77b07"
+      "sha256": "fde90410fb3f5fd3bafe04ee232034c2d0a96a8dba075c53bb8d65a32871f5df"
     }
   ],
   "locks": [

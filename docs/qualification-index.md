@@ -244,3 +244,21 @@ transformation/rebinding and late wireframe initialization are repaired; style
 changes reuse barycentric data. See the plan for original-body replay scope and
 remaining point/line capacity, shader/API/host and qualification obligations.
 No native module, dependency or environment was rebuilt for this packet.
+
+The compatibility CI checkpoint now runs the aggregate, indexed, composed,
+ordered-batch, instanced-visual and original-body replay helpers through one
+maintained entry point in the external Linux installed-wheel smoke. Its source
+execution passes on Windows and WSL: 149 aggregate, 3 indexed, 207 composed,
+12 batch and 14 visual cases plus 3 original bodies, with nine zero shutdown
+gauges. All 416 affected Python checks pass on each platform; the 199 newly
+selected CPU cases also pass with renderer imports deliberately unavailable.
+Both fresh eight-branch Tk composites pass. New source profiles bind product
+`9ef9765552c41c84d82d69b44756d5925b4d3cd3` and retained aggregate native leaves;
+previous profiles remain intact. The CPU matrix now selects the new tests and
+the Linux workflow watches every shared helper. This is CI integration and
+source preparation, not a fresh installed run or qualification: the original
+requested scope/closure and execution ledger are unchanged, admission is false,
+and producer, independent review and installed/promotion gates remain open.
+Evidence: `build/runs/compatibility-ci-80/`.
+
+The renewed checkpoint also passes all 473 affected qualification regression checks; these include synthetic rejection controls and do not grant real admission.
