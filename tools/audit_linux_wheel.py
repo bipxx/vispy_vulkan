@@ -14,6 +14,8 @@ import zipfile
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'cmake'))
 from runtime_package import source_package_hashes, wheel_package_hashes
+sys.path.insert(0, str(ROOT / 'tools'))
+from run_linux_native_contracts import validate_retained
 
 
 def digest(data):
@@ -24,6 +26,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--wheel', type=Path, required=True)
     parser.add_argument('--build-dir', type=Path, required=True)
+    parser.add_argument('--contracts', type=Path, required=True)
     parser.add_argument('--output', type=Path, required=True)
     args = parser.parse_args()
     wheel = args.wheel.resolve(strict=True)
@@ -31,6 +34,7 @@ def main():
     args.output.parent.mkdir(parents=True, exist_ok=True)
     assert wheel.name == 'vispy-0.17.0+vulkan.1-cp312-cp312-linux_x86_64.whl'
     assert wheel.stat().st_size <= 100 * 1024 ** 2
+    contracts = validate_retained(args.contracts, build, (build / 'CMakeCache.txt').read_bytes())
     cache = {}
     for line in (build / 'CMakeCache.txt').read_text().splitlines():
         if line and not line.startswith(('#', '//')) and ':' in line and '=' in line:
@@ -89,6 +93,9 @@ def main():
         'wheel_sha256': wheel_sha, 'source_revision': subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip(),
         'package_members': len(package), 'notice_members': len(notices), 'native_members': len(native),
         'native_origin': {name: {'raw_sha256': raw_hashes[name], 'wheel_stripped_sha256': hashes[name]} for name in native},
+        'native_contracts': {'report': str((args.contracts / 'result.json').resolve()),
+                             'sha256': digest((args.contracts / 'result.json').read_bytes()),
+                             'tests': contracts['tests'], 'producer_admitted': False},
         'hardware_qualified': False, 'manylinux_qualified': False}, indent=2) + '\n')
     print('PASS_LINUX_RENDERER_WHEEL_ARCHIVE', wheel_sha, flush=True)
 

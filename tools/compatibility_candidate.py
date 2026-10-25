@@ -33,6 +33,7 @@ PREPARATION_TOOLS = (
     'tools/qualification_artifact.py', 'compat/qualification-artifact.schema.json',
     'compat/qualification-producers.json', 'cmake/native_sdk.py',
     'tools/qualification_native.py', 'compat/qualification-native.schema.json', 'tools/native_epoch.py',
+    'tools/run_linux_native_contracts.py', 'tools/audit_linux_wheel.py',
     'tools/qualification_epoch.py', 'compat/qualification-epoch.schema.json',
     'tools/qualification_index.py', 'compat/qualification-index.schema.json',
     '.github/workflows/linux-vulkan.yml', '.github/workflows/metal-wheel.yml',

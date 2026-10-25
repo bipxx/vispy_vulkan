@@ -5,6 +5,7 @@ on:
     paths:
       - '.github/workflows/linux-vulkan.yml'
       - 'tools/audit_linux_wheel.py'
+      - 'tools/run_linux_native_contracts.py'
       - 'tools/linux_wheel_smoke.py'
       - 'tools/compatibility_render_smoke.py'
       - 'tools/aggregate_attribute_smoke.py'
@@ -125,20 +126,24 @@ jobs:
             --config-setting "build-dir=$NATIVE_BUILD" \
             --config-setting cmake.define.VISPY_INPLACE=OFF \
             --config-setting cmake.define.VISPY_CPU_CONTRACTS_ONLY=OFF \
-            --config-setting cmake.define.VISPY_BUILD_CONTRACT_TESTS=OFF \
+            --config-setting cmake.define.VISPY_BUILD_CONTRACT_TESTS=ON \
             --config-setting cmake.define.VISPY_VERIFY_DEPENDENCIES=ON \
             2>&1 | tee "$EVIDENCE/wheel-build.log"
           wheels=( "$EVIDENCE"/wheels/*.whl )
           test "${#wheels[@]}" -eq 1
+          "$BUILD_PYTHON" -B tools/run_linux_native_contracts.py \
+            --build-dir "$NATIVE_BUILD" --ctest "$BUILD_ENV/bin/ctest" \
+            --output "$EVIDENCE/native-contracts"
           "$BUILD_PYTHON" -B tools/audit_linux_wheel.py --wheel "${wheels[0]}" \
-            --build-dir "$NATIVE_BUILD" --output "$EVIDENCE/archive.json"
+            --build-dir "$NATIVE_BUILD" --contracts "$EVIDENCE/native-contracts" \
+            --output "$EVIDENCE/archive.json"
       - name: Exercise external installed wheel using software Vulkan
         run: |
           consumer="$RUNNER_TEMP/$CONSUMER_NAME"
           uv venv "$consumer" --python "$BUILD_PYTHON"
-          uv export --locked --no-default-groups --no-emit-project --output-file "$EVIDENCE/runtime-requirements.txt" > /dev/null
+          uv export --locked --no-default-groups --extra test --no-emit-project --output-file "$EVIDENCE/consumer-test-requirements.txt" > /dev/null
           uv pip install --python "$consumer/bin/python" --require-hashes --only-binary :all: \
-            --requirements "$EVIDENCE/runtime-requirements.txt" --requirements "$EVIDENCE/wheel-requirements.txt"
+            --requirements "$EVIDENCE/consumer-test-requirements.txt" --requirements "$EVIDENCE/wheel-requirements.txt"
           wheels=( "$EVIDENCE"/wheels/*.whl )
           test "${#wheels[@]}" -eq 1
           "$consumer/bin/python" -I -B tools/linux_wheel_smoke.py --tag cp312 \

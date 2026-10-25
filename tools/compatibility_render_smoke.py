@@ -2,7 +2,7 @@
 """Shared source/installed compatibility regressions; no admission claim."""
 
 
-def compatibility_render_checks(app, gloo, scene, np, native, root, evidence):
+def compatibility_render_checks(app, gloo, scene, np, native, root, evidence, result=None):
     from aggregate_attribute_smoke import (
         aggregate_attribute_checks, aggregate_indexed_checks,
         composed_attribute_checks, aggregate_batch_checks,
@@ -10,7 +10,7 @@ def compatibility_render_checks(app, gloo, scene, np, native, root, evidence):
     from instanced_mesh_smoke import instanced_mesh_checks
     from original_instanced_mesh_replay import original_instanced_mesh_checks
 
-    result = {}
+    result = {} if result is None else result
     canvas = app.Canvas(app='dawn_headless', size=(8, 8), show=False,
                         config={'samples': 0})
     try:

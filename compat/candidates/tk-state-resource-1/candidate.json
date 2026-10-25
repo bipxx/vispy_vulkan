@@ -2,7 +2,7 @@
   "schema": 1,
   "phase": "development",
   "id": "tk-state-resource-1",
-  "manifest_sha256": "af6b56bab8f519af993ff8f15b594e6b223adc7036f09b261fa67aa9849eaa70",
+  "manifest_sha256": "aa346aa7586da3a53ffc3afb971471625e0c9061e2e9e6a37129110c3cca6c4c",
   "product_source_commit": "9ef9765552c41c84d82d69b44756d5925b4d3cd3",
   "upstream_commit": "117b054598f4758b598f4b8f48feea48c11fe7b0",
   "ledger": {
@@ -1124,7 +1124,7 @@
   "preparation_tools": [
     {
       "path": "tools/compatibility_candidate.py",
-      "sha256": "697ce6be3c07813910e601fa97a4a0dab2adb9d0f66a6cf0372754c78ac8f32c"
+      "sha256": "7e36f63909683f7a5014b01880c1557b5ae5b3a413d364f42739039c5283e4d4"
     },
     {
       "path": "tools/compatibility_inventory.py",
@@ -1172,7 +1172,7 @@
     },
     {
       "path": "compat/qualification-ci.json",
-      "sha256": "99e7229e10889e0e8eb991b2b0fb74e18ebf008eda6b696d829ccc0deb1229ce"
+      "sha256": "3728d32dad34a75e7fbb87886832b79141b9a1faa7b196cba881ed951d2b85ad"
     },
     {
       "path": "tools/qualification_artifact.py",
@@ -1203,6 +1203,14 @@
       "sha256": "5fe67d61d6dd7d13ec60e7a45eca204c99d6e89201c9868520e925db1c04e3dd"
     },
     {
+      "path": "tools/run_linux_native_contracts.py",
+      "sha256": "e07e6aede2b8f35b0c75533606f59f0669783c1b9822c59534d62d6ffee5caca"
+    },
+    {
+      "path": "tools/audit_linux_wheel.py",
+      "sha256": "3106c09f756ed53ac14d0190355c49a79ddc114271b06bbccd530999300457df"
+    },
+    {
       "path": "tools/qualification_epoch.py",
       "sha256": "e6816d4d333c2496f3d40ef2edfebfccc1eb5c8a10e7f590e141221d7b1aee14"
     },
@@ -1220,7 +1228,7 @@
     },
     {
       "path": ".github/workflows/linux-vulkan.yml",
-      "sha256": "c3cdfc32c25cb010d71558e1270dafad01fa939cd6c8f5c1d5255d8789cb827e"
+      "sha256": "140af1b82b49479d8d6fb164530339d1ec433ecf9e9310b1c8edc861c2930ae5"
     },
     {
       "path": ".github/workflows/metal-wheel.yml",
@@ -1252,7 +1260,7 @@
     },
     {
       "path": ".github/workflows/cpu-contract.yml",
-      "sha256": "0f252803932d18475b6ddb5603a936331d7fbdaf38b0e299c566baff89d74883"
+      "sha256": "e48b3806469a2f7eb1cd92099d05c8686e94b1dfc2c4f5e9123f581e7dc7c7d8"
     },
     {
       "path": "tools/audit_no_opengl.py",

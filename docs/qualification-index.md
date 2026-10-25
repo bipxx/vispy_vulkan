@@ -262,3 +262,10 @@ and producer, independent review and installed/promotion gates remain open.
 Evidence: `build/runs/compatibility-ci-80/`.
 
 The renewed checkpoint also passes all 473 affected qualification regression checks; these include synthetic rejection controls and do not grant real admission.
+
+
+### Linux producer contract collection and installed harness repair — 2026-10-25
+
+The retained-input decision and [Linux producer integration route](linux-native-producer.md) keep development leaf/vendor reuse distinct from admission. The existing full-source wheel CI build now enables native contracts and captures the complete discovered inventory, with all 44 current non-dataset renderer contracts as a mandatory floor. Archive audit requires unchanged cache, original discovery/JUnit/log hashes, actual child exits/waits and exact commands. No separate SDK, environment or renderer build is introduced. All 507 affected regression checks pass; all 34 contract-capture controls also pass in WSL using actual CTest processes with explicitly synthetic Python cases, not renderer C++ execution.
+
+Current-head Linux run `40216949863` built its wheel, then reached original-body replay and failed because the runtime-only consumer lacked `pytest`, imported by `vispy.testing`. Its original failed wheel/reports and reconstruction references are retained. The consumer now installs the existing hash-locked `test` extra, and the shared runner preserves completed groups if a later group fails. Installed rerun remains pending. Runtime source profiles and requested scope/closure/ledger are unchanged; real admission remains false with 120 missing criteria. Complete Linux source/toolchain/dependency/build/strip-output provenance, cumulative independent review and installed/promotion gates remain open. Evidence: `build/runs/linux-producer-contracts-81/`.
