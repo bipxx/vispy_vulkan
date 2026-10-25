@@ -4,7 +4,6 @@
 #include <cstdint>
 #include <iostream>
 #include <stdexcept>
-#include <unordered_map>
 #include <vector>
 
 void require(bool value, const char* message) {
@@ -12,8 +11,8 @@ void require(bool value, const char* message) {
 }
 
 int main() {
-    std::unordered_map<std::string, std::vector<float>> floating;
-    std::unordered_map<std::string, std::vector<int32_t>> integer;
+    std::map<std::string, std::vector<float>> floating;
+    std::map<std::string, std::vector<int32_t>> integer;
     floating["values[0]"] = {1};
     floating["values_extra[0]"] = {2};
     floating["values2[0]"] = {3};

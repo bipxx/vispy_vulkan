@@ -508,8 +508,8 @@ struct GpuObject {
     std::shared_ptr<Artifact> affine_artifact;
     std::shared_ptr<Artifact> indexed_artifact;
     std::shared_ptr<Artifact> batch_affine_artifact, batch_indexed_artifact;
-    std::unordered_map<std::string, std::vector<float>> f_uniforms;
-    std::unordered_map<std::string, std::vector<int32_t>> i_uniforms;
+    std::map<std::string, std::vector<float>> f_uniforms;
+    std::map<std::string, std::vector<int32_t>> i_uniforms;
     std::unordered_map<std::string, AttrBinding> attributes;
     std::unordered_map<std::string, int> textures;
     std::shared_ptr<BufferRev> buffer;

@@ -1,9 +1,8 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 #pragma once
 
-#include <algorithm>
+#include <map>
 #include <string>
-#include <unordered_map>
 #include <utility>
 
 namespace vispy::uniforms {
@@ -17,9 +16,13 @@ void replace(Map& destination, OtherMap& other_type, const std::string& name, Va
     // Allocate the replacement first. Allocation failure must not erase prior
     // values before the replacement can be stored.
     destination.insert_or_assign(name, std::move(values));
-    const auto superseded = [&](const auto& item) { return item.first.starts_with(descendant); };
-    std::erase_if(destination, superseded);
-    std::erase_if(other_type, superseded);
+    const auto retire = [&](auto& values) {
+        auto item = values.lower_bound(descendant);
+        while (item != values.end() && item->first.starts_with(descendant))
+            item = values.erase(item);
+    };
+    retire(destination);
+    retire(other_type);
     other_type.erase(name);
 }
 
