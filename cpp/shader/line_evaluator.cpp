@@ -43,7 +43,7 @@ size_t LineEvaluatorArtifact::storage_bytes() const {
         inputs.capacity() * sizeof(LineInputField) + outputs.capacity() * sizeof(LineOutputField) +
         uniforms.capacity() * sizeof(NormUniform) + samplers.capacity() * sizeof(NormSampler);
     for (const auto* text : {&identity, &cache_key, &compute, &log, &error}) bytes += text->capacity() + 1;
-    for (const auto& field : inputs) bytes += field.attribute.name.capacity() + field.attribute.type.capacity() + 2;
+    for (const auto& field : inputs) bytes += attribute_storage_bytes(field.attribute);
     for (const auto& field : outputs) bytes += field.varying.name.capacity() + field.varying.type.capacity() +
         field.varying.interpolation.capacity() + field.storage_type.capacity() + 4 +
         field.varying.array_dimensions.capacity() * sizeof(uint32_t);

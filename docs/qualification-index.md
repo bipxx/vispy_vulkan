@@ -204,3 +204,16 @@ failures and before/after compiler outcomes are retained under
 (20,672,536 logical bytes), and all 40 retained records were rehashed. This source
 prerequisite does not renew candidate profiles, discharge criteria or grant
 producer/installed admission.
+
+
+## Aggregate input Windows source checkpoint
+
+The shared logical-to-physical matrix/array binding implementation now passes
+44 native contracts, 297 Python checks, 149 new pixel cases and 171 existing
+shared rendering controls on Windows. Pixel and shared runs report nine zero
+shutdown gauges. See the aggregate binding checkpoint in the compatibility plan
+for exact scope, binary identity and remaining Linux, indexed/batched, composed
+and visual consumers. These are development source results; no candidate profile,
+ledger criterion, producer approval or installed admission is renewed by them.
+The unchanged original invalid-shader assertion also passes after canvas parser
+activation and source-context diagnostics were repaired.

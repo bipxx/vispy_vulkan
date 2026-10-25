@@ -1285,3 +1285,41 @@ failures and before/after compiler outcomes are retained under
 (20,672,536 logical bytes), and all 40 retained records were rehashed. This source
 prerequisite does not renew candidate profiles, discharge criteria or grant
 producer/installed admission.
+
+
+## Aggregate attribute binding: Windows source checkpoint (SH-3)
+
+Logical matrix/array declarations now survive normalization unchanged, including
+square aliases. After live SPIR-V span validation, one shared layout expands
+physical scalar/vector fields. Each field records its column/element expression
+and deepest-first binding views: column, matrix leaf, subarray, parent. Explicit
+leaf views override enclosing assignments independently of command order. Packed
+word offsets are relative to the selected view; public byte stride, base offset
+and divisor remain intact. Shape validation is lazy and checked before expansion.
+Endpoint compute assigns the same physical expressions before original global
+initializers; triangles, point expansion and generated wide lines reuse the map.
+Metadata accounting includes the binding views.
+
+Python supports nested declarations and parent/subarray/leaf packed records,
+direct buffer updates and constant replay across shader rebuilds. Interleaved
+views inherit the base divisor and can override it. Defaults remain generic
+per-column values, including W=1 for four-component columns. The same packet
+fixes parser canvas identity at activation and preserves original failing shader
+source lines; original assertions remain intact.
+
+Windows source verification: 44/44 native contracts, 297 Python checks, 149 new
+aggregate pixel cases and 171 existing shared rendering controls. The new shared
+oracle is `tools/aggregate_attribute_smoke.py`. It includes all nine matrix shapes,
+constants, interleaved buffers, signed integer arrays, nested arrays, dynamic
+indexing, updates, divisor 2, defaults and shader rebuilds. A 33-location input is
+correctly refused against this device's actual grant of 30. Final renderer SHA-256
+is `715022fbbcfa319cd504b8b9f91a53c983db1cba23a464f98525aff63c1158bf`.
+All nine shutdown gauges are zero in the pixel and shared-control runs.
+
+Next reuse the existing Linux SDK for the changed first-party renderer and the
+same decisive oracles. Explicit indexed/batched consumers, composed/visual API
+consumers and host observations still need their corresponding checks. These
+Windows results do not close SH-3 or the original API/platform obligations.
+Installed checks, reviewed producers, independent approvals, candidate renewal
+and promotion remain separate. Local reproducer/evidence and cleanup records are
+under `build/runs/aggregate-attribute-bindings-76/`.

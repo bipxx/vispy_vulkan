@@ -127,7 +127,7 @@ bool is_type(const std::string& text) {
     static const char* types[] = {
         "float", "int", "uint", "bool", "vec2", "vec3", "vec4", "ivec2", "ivec3", "ivec4",
         "uvec2", "uvec3", "uvec4", "bvec2", "bvec3", "bvec4", "mat2", "mat3", "mat4",
-        "mat2x3", "mat2x4", "mat3x2", "mat3x4", "mat4x2", "mat4x3",
+        "mat2x2", "mat2x3", "mat2x4", "mat3x2", "mat3x3", "mat3x4", "mat4x2", "mat4x3", "mat4x4",
         "sampler1D", "sampler2D", "sampler3D", "samplerCube", "usampler2D", "isampler2D", "void"};
     for (const char* type : types) if (text == type) return true;
     return false;
@@ -948,6 +948,61 @@ bool shader_value_type(const std::string& type, ShaderValueType& value) {
     return false;
 }
 
+bool attribute_layout(const NormAttribute& declaration, AttributeLayout& layout, std::string& error) {
+    AttributeLayout next;
+    next.name = declaration.name; next.type = declaration.type;
+    next.location = declaration.location; next.dimensions = declaration.array_dimensions;
+    auto fail = [&](const std::string& reason) {
+        error = "vertex attribute " + declaration.name + ": " + reason; return false;
+    };
+    if (!shader_value_type(next.type, next.value_type) || next.value_type.scalar == ShaderScalarType::Bool)
+        return fail("unsupported input type " + next.type);
+    for (uint32_t dimension : next.dimensions) {
+        if (!dimension || next.elements > UINT32_MAX / dimension) return fail("array extent overflows");
+        next.elements *= dimension;
+    }
+    const uint64_t words = uint64_t(next.elements) * next.value_type.components();
+    const uint64_t slots = uint64_t(next.elements) * next.value_type.columns;
+    if (words > UINT32_MAX / 4 || slots > UINT32_MAX ||
+        uint64_t(next.location) + slots > UINT32_MAX) return fail("binding extent overflows");
+    next.record_words = static_cast<uint32_t>(words); next.locations = static_cast<uint32_t>(slots);
+    layout = std::move(next); return true;
+}
+
+NormAttribute attribute_location(const AttributeLayout& layout, uint32_t index) {
+    if (index >= layout.locations) throw std::out_of_range("vertex attribute physical location");
+    const auto& value = layout.value_type;
+    const uint32_t leaf = index / value.columns, column = index % value.columns;
+    std::vector<uint32_t> strides(layout.dimensions.size() + 1, 1);
+    for (size_t n = layout.dimensions.size(); n-- > 0;) strides[n] = strides[n+1] * layout.dimensions[n];
+    std::vector<std::string> names{layout.name};
+    for (size_t n=0; n<layout.dimensions.size(); ++n)
+        names.push_back(names.back() + "[" + std::to_string((leaf / strides[n+1]) % layout.dimensions[n]) + "]");
+    NormAttribute field;
+    field.name = names.back(); field.location = layout.location + index;
+    field.type = value.columns > 1 ? "vec" + std::to_string(value.rows) : layout.type;
+    if (value.columns > 1) {
+        field.name += "[" + std::to_string(column) + "]";
+        field.binding_views.push_back({field.name, field.type, 0, value.rows});
+    }
+    // A leaf or subarray binding overrides its enclosing parent independent of
+    // command order. Offsets describe tightly packed words within that view;
+    // the public descriptor retains its own stride, base offset and divisor.
+    for (size_t depth=names.size(); depth-- > 0;)
+        field.binding_views.push_back({names[depth], layout.type,
+            (leaf % strides[depth]) * value.components() + column * value.rows,
+            strides[depth] * value.components()});
+    return field;
+}
+
+size_t attribute_storage_bytes(const NormAttribute& attribute) {
+    size_t bytes = attribute.name.capacity() + attribute.type.capacity() + 2 +
+        attribute.array_dimensions.capacity() * sizeof(uint32_t) +
+        attribute.binding_views.capacity() * sizeof(AttributeBindingView);
+    for (const auto& view : attribute.binding_views) bytes += view.name.capacity() + view.type.capacity() + 2;
+    return bytes;
+}
+
 NormalizedShader normalize_program(const std::string& vertex, const std::string& fragment) {
     return normalize_program(vertex, fragment, NormalizeOptions{});
 }
@@ -1141,11 +1196,12 @@ NormalizedShader normalize_program(const std::string& vertex_src, const std::str
     for (const auto& decl : vert_decls) {
         if (decl.storage != "attribute" && decl.storage != "in") continue;
         if (is_sampler(decl.type) || decl.type == "void") continue;
-        if (decl.array_size > 0 || decl.type.rfind("mat", 0) == 0 || boolean_type(decl.type)) {
-            result.error = "vertex attribute " + decl.name + ": matrix, array, and boolean attributes are unsupported";
-            return result;
-        }
-        result.attributes.push_back({decl.name, decl.type, location++});
+        NormAttribute attribute{decl.name, decl.type, location};
+        attribute.array_dimensions = decl.array_dimensions;
+        AttributeLayout layout;
+        if (!attribute_layout(attribute, layout, result.error)) return result;
+        location += layout.locations;
+        result.attributes.push_back(std::move(attribute));
     }
     if (options.point_sprites)
         result.point_identity_binding = 1 + static_cast<uint32_t>(result.samplers.size()) * 2;
@@ -1269,9 +1325,12 @@ NormalizedShader normalize_program(const std::string& vertex_src, const std::str
         std::ostringstream stage;
         stage << header.str();
         if (vertex) {
-            for (const auto& attr : result.attributes)
-                if (options.line_evaluator) stage << attr.type << " " << attr.name << ";\n";
-                else stage << "layout(location = " << attr.location << ") in " << attr.type << " " << attr.name << ";\n";
+            for (const auto& attr : result.attributes) {
+                if (!options.line_evaluator) stage << "layout(location = " << attr.location << ") in ";
+                stage << attr.type << " " << attr.name;
+                for (uint32_t dimension : attr.array_dimensions) stage << "[" << dimension << "]";
+                stage << ";\n";
+            }
             if (options.line_evaluator) stage << "vec4 vispy_line_clip_position;\nuint vispy_line_vertex_id, vispy_line_instance_id;\n";
             if (options.point_sprites)
                 stage << "layout(std430, set = 0, binding = " << result.point_identity_binding

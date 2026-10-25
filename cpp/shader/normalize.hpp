@@ -74,11 +74,33 @@ struct NormSampler {
     std::vector<uint32_t> array_dimensions;
 };
 
+struct AttributeBindingView {
+    std::string name, type;
+    uint32_t word_offset = 0, record_words = 0;
+};
+
 struct NormAttribute {
     std::string name;
     std::string type;
     uint32_t location = 0;
+    // Normalization retains logical declarations. Only compiled active inputs
+    // expand into physical scalar/vector fields with deepest-first bindings.
+    std::vector<uint32_t> array_dimensions;
+    std::vector<AttributeBindingView> binding_views;
 };
+
+struct AttributeLayout {
+    std::string name, type;
+    ShaderValueType value_type;
+    std::vector<uint32_t> dimensions;
+    uint32_t location = 0, elements = 1, locations = 1, record_words = 1;
+};
+
+// Shape validation does not expand arrays; expansion follows compiler liveness
+// and span validation. Outputs remain unchanged on failure.
+bool attribute_layout(const NormAttribute& declaration, AttributeLayout& layout, std::string& error);
+NormAttribute attribute_location(const AttributeLayout& layout, uint32_t index);
+size_t attribute_storage_bytes(const NormAttribute& attribute);
 
 struct NormVarying {
     std::string name, type, interpolation;

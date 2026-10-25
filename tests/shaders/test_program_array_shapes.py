@@ -71,7 +71,6 @@ def test_one_dimensional_scalar_contract_is_preserved():
 
 @pytest.mark.parametrize('declaration', [
     'uniform float grid[0][3];', 'uniform float grid[2][0];',
-    'attribute vec2 grid[2][3];',
     'uniform sampler2DArray grid[2][3];',
 ])
 def test_invalid_or_separately_unsupported_declarations(declaration):

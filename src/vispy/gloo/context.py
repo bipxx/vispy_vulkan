@@ -63,7 +63,11 @@ def get_current_canvas():
 
 def set_current_canvas(canvas):
     """Make a canvas active. Used primarily by the canvas itself."""
-    # Notify glir 
+    # Direct queue flushes use this parser too; bind it when the canvas
+    # becomes current, before the first ordinary context flush.
+    backend = getattr(canvas, '_backend', None)
+    canvas.context.shared.parser.canvas_id = int(getattr(backend, '_dawn_canvas_id', 0) or 0)
+    # Notify glir
     canvas.context._do_CURRENT_command = True
     # Try to be quick
     if canvasses and canvasses[-1]() is canvas:

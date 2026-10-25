@@ -1,0 +1,130 @@
+# SPDX-License-Identifier: AGPL-3.0-only
+"""Shared source/installed aggregate-input pixel oracles on an active 8x8 canvas."""
+
+def aggregate_attribute_checks(gloo, np, max_vertex_attributes):
+    report = {'cases': []}
+    positions = {'triangles': [[-1, -1], [3, -1], [-1, 3]], 'points': [[0, 0]], 'lines': [[-1, 0], [1, 0]]}
+    fragment = 'varying vec4 color;void main(){gl_FragColor=color;}'
+
+    def draw(p, mode, expected, label):
+        gloo.set_viewport(0, 0, 8, 8)
+        gloo.set_state(blend=False, depth_test=False, cull_face=False)
+        gloo.set_line_width(5)
+        gloo.clear(color='black')
+        p.draw(mode)
+        pixel = gloo.read_pixels(alpha=True)[4, 4].astype(int)
+        want = np.rint(np.array(expected) * 255).astype(int)
+        assert np.max(np.abs(pixel - want)) <= 1, (label, pixel.tolist(), want.tolist())
+        report['cases'].append(dict(case=label, pixel=pixel.tolist(), expected=want.tolist()))
+    for c in (2, 3, 4):
+        for rows in (2, 3, 4):
+            typ = 'mat%d' % c if c == rows else 'mat%dx%d' % (c, rows)
+            source = 'attribute vec2 p;attribute %s a;varying vec4 color;vec4 seed=vec4(a[%d][%d],a[0][0],a[0][%d],1);void main(){gl_Position=vec4(p,0,1);gl_PointSize=5.;color=seed;}' % (typ, c - 1, rows - 1, rows - 1)
+            words = np.arange(1, c * rows + 1, dtype=np.float32).reshape(c, rows) / (c * rows)
+            expected = [1, 1 / (c * rows), 1 / c, 1]
+            for mode in positions:
+                for form in ('constant', 'buffer', 'interleaved'):
+                    p = gloo.Program(source, fragment)
+                    p['p'] = np.array(positions[mode], np.float32)
+                    n = len(positions[mode])
+                    if form == 'constant':
+                        p['a'] = tuple(words.ravel().tolist())
+                    elif form == 'buffer':
+                        p['a'] = np.broadcast_to(words, (n, c, rows)).copy()
+                    else:
+                        data = np.zeros(n, dtype=[('prefix', np.float32, 3), ('a', np.float32, (c, rows)), ('suffix', np.float32, 2)])
+                        data['a'] = words
+                        vbo = gloo.VertexBuffer(data)
+                        p['a'] = vbo['a']
+                    draw(p, mode, expected, '%s-%s-%s' % (typ, mode, form))
+                    if form == 'constant':
+                        p.set_shaders(source, fragment)
+                        draw(p, mode, expected, '%s-%s-constant-rebuild' % (typ, mode))
+    for mode in positions:
+        source = 'attribute vec2 p;attribute vec2 a[2][2];varying vec4 color;vec4 seed=vec4(a[1][1],a[0][0].x,1);void main(){gl_Position=vec4(p,0,1);gl_PointSize=5.;color=seed;}'
+        n = len(positions[mode])
+        p = gloo.Program(source, fragment)
+        p['p'] = np.array(positions[mode], np.float32)
+        values = np.array([[[0.125, 0.25], [0.375, 0.5]], [[0.625, 0.75], [0.875, 1]]], np.float32)
+        p['a'] = np.broadcast_to(values, (n, 2, 2, 2)).copy()
+        draw(p, mode, [0.875, 1, 0.125, 1], 'nested-array-%s-parent-buffer' % mode)
+        p['a'].set_subdata(np.broadcast_to(values * 0.5, (n, 2, 2, 2)).copy(), offset=0)
+        draw(p, mode, [0.4375, 0.5, 0.0625, 1], 'nested-array-%s-buffer-update' % mode)
+        p['a[1]'] = (0.1, 0.2, 0.3, 0.4)
+        draw(p, mode, [0.3, 0.4, 0.0625, 1], 'nested-array-%s-subarray-constant' % mode)
+        p['a[1][1]'] = (0.7, 0.8)
+        p['a'] = tuple(values.ravel().tolist())
+        draw(p, mode, [0.7, 0.8, 0.125, 1], 'nested-array-%s-leaf-over-parent' % mode)
+        p.set_shaders(source, fragment)
+        draw(p, mode, [0.7, 0.8, 0.125, 1], 'nested-array-%s-rebuild' % mode)
+    for mode in positions:
+        n = len(positions[mode])
+        source = 'attribute vec2 p;attribute mat2x3 a[2][2];varying vec4 color;vec4 seed=vec4(a[1][1][1][2],a[0][0][0][0],a[1][0][0][1],1);void main(){gl_Position=vec4(p,0,1);gl_PointSize=5.;color=seed;}'
+        values = np.arange(1, 25, dtype=np.float32).reshape(2, 2, 2, 3) / 24
+        for form in ('constant', 'buffer'):
+            p = gloo.Program(source, fragment)
+            p['p'] = np.array(positions[mode], np.float32)
+            p['a'] = tuple(values.ravel().tolist()) if form == 'constant' else np.broadcast_to(values, (n, 2, 2, 2, 3)).copy()
+            draw(p, mode, [1, 1 / 24, 14 / 24, 1], 'nested-matrix-array-%s-%s' % (mode, form))
+        source = 'attribute vec2 p;attribute mat2x3 a;varying vec4 color;void main(){gl_Position=vec4(p,0,1);gl_PointSize=5.;color=vec4(a[1][2],a[0][0],a[0][1],1);}'
+        data = np.zeros(2, dtype=[('prefix', np.float32, 2), ('a', np.float32, (2, 3))])
+        data['a'][0] = 0.25
+        data['a'][1] = 0.75
+        vbo = gloo.VertexBuffer(data, divisor=2)
+        p = gloo.Program(source, fragment)
+        p['p'] = np.array(positions[mode], np.float32)
+        p['a'] = vbo['a']
+        draw(p, mode, [0.75, 0.75, 0.75, 1], 'matrix-%s-interleaved-divisor2' % mode)
+        source = 'attribute vec2 p;attribute mat4 a;varying vec4 color;void main(){gl_Position=vec4(p,0,1);gl_PointSize=5.;color=vec4(a[0][3],a[1][3],a[2][3],1);}'
+        p = gloo.Program(source, fragment)
+        p['p'] = np.array(positions[mode], np.float32)
+        draw(p, mode, [1, 1, 1, 1], 'matrix-%s-generic-column-defaults' % mode)
+        data = np.zeros((4, 4), np.float32)
+        data[:3, 3] = [0.25, 0.5, 0.75]
+        p['a'] = tuple(data.ravel().tolist())
+        draw(p, mode, [0.25, 0.5, 0.75, 1], 'matrix-%s-assignment-after-defaults' % mode)
+        source = 'attribute vec2 p;attribute vec2 a[2];uniform int index;varying vec4 color;void main(){gl_Position=vec4(p,0,1);gl_PointSize=5.;color=vec4(a[index],a[0].x,1);}'
+        p = gloo.Program(source, fragment)
+        p['p'] = np.array(positions[mode], np.float32)
+        p['a'] = (0.25, 0.5, 0.75, 1.0)
+        p['index'] = 1
+        draw(p, mode, [0.75, 1, 0.25, 1], 'array-%s-dynamic-index' % mode)
+    p = gloo.Program('attribute vec2 p;attribute mat2x3 a;varying vec4 color;void main(){gl_Position=vec4(p,0,1);color=vec4(a[1][2],a[0][0],a[0][1],1);}', fragment)
+    p['p'] = np.array(positions['triangles'], np.float32)
+    p['a'] = np.ones((3, 2, 3), np.float32)
+    patch = np.ones((1, 2, 3), np.float32)
+    patch[0, 1, 2] = 0
+    p['a'].set_subdata(patch, offset=0)
+    # Vulkan clip-Y conversion puts this readback sample at a 1/2 weight.
+    # Compare the matrix subupdate with an independent ordinary vector input.
+    control = gloo.Program('attribute vec2 p;attribute vec3 a;varying vec4 color;void main(){gl_Position=vec4(p,0,1);color=vec4(a,1);}', fragment)
+    control['p'] = np.array(positions['triangles'], np.float32)
+    control['a'] = np.array([[0, 1, 1], [1, 1, 1], [1, 1, 1]], np.float32)
+    draw(control, 'triangles', [0.5, 1, 1, 1], 'partial-update-vector-control')
+    draw(p, 'triangles', [0.5, 1, 1, 1], 'matrix-partial-vertex-update')
+    for mode in positions:
+        count = len(positions[mode])
+        source = ('attribute vec2 p;attribute ivec2 a[2][2];varying vec4 color;'
+                  'void main(){gl_Position=vec4(p,0,1);gl_PointSize=5.;'
+                  'color=vec4(vec2(a[1][1])/4.,float(a[0][0].x)/4.,1);}')
+        values = np.array([[[1, 2], [2, 3]], [[3, 4], [4, 2]]], np.int32)
+        for form in ('constant', 'buffer'):
+            p = gloo.Program(source, fragment)
+            p['p'] = np.array(positions[mode], np.float32)
+            p['a'] = (tuple(values.ravel().tolist()) if form == 'constant' else
+                      np.broadcast_to(values, (count, 2, 2, 2)).copy())
+            draw(p, mode, [1, .5, .25, 1], 'integer-array-%s-%s' % (mode, form))
+    limit = max_vertex_attributes
+    count = limit // 4 + 1
+    p = gloo.Program('attribute vec2 p;attribute mat4 a[%d];void main(){gl_Position=vec4(p+a[%d][3].xy,0,1);}' % (count, count - 1), 'void main(){gl_FragColor=vec4(1);}')
+    p['p'] = np.array(positions['triangles'], np.float32)
+    p['a'] = tuple([0.0] * (count * 16))
+    try:
+        p.draw('triangles')
+    except RuntimeError as error:
+        assert 'exceed granted attribute limit' in str(error), str(error)
+        report['expected_limit_refusal'] = str(error)
+    else:
+        raise AssertionError('Aggregate locations bypassed granted attribute limit')
+    report['passed'] = len(report['cases'])
+    return report

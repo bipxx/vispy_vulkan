@@ -1004,6 +1004,12 @@ void evaluator_derivative_policy_is_independent() {
 
 int main() {
     try {
+        const auto aggregate = evaluator("attribute mat2x3 matrix[2][2];attribute vec2 p;varying vec4 color;"
+            "vec3 seed=matrix[1][1][1];void main(){gl_Position=vec4(p,0,1);color=vec4(seed,1);}");
+        require(aggregate->inputs.size()==9 && aggregate->relocated_global_initializers>0,
+            "aggregate endpoint columns reconstruct before original global initializers");
+        require(aggregate->compute.find("matrix[1][1][1] = ")!=std::string::npos,
+            "aggregate endpoint assigns physical column expressions");
         isolated_private_main_and_early_returns();
         original_global_initializers_follow_inputs();
         typed_arrays_matrix_interpolation_and_ids();

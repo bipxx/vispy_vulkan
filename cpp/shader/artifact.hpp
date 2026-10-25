@@ -163,7 +163,7 @@ struct PortableShaderArtifact {
         for (const auto& sampler : samplers)
             bytes += sampler.name.capacity() + sampler.dim.capacity() + 2 +
                      sampler.array_dimensions.capacity() * sizeof(uint32_t);
-        for (const auto& attribute : attributes) bytes += attribute.name.capacity() + attribute.type.capacity() + 2;
+        for (const auto& attribute : attributes) bytes += attribute_storage_bytes(attribute);
         for (const auto& varying : varyings)
             bytes += varying.name.capacity() + varying.type.capacity() + varying.interpolation.capacity() + 3 +
                      varying.array_dimensions.capacity() * sizeof(uint32_t);
@@ -229,6 +229,24 @@ inline std::shared_ptr<const PortableShaderArtifact> build_portable_shader(
         artifact->error = compiled.log.empty() ? artifact->vertex_log + artifact->fragment_log : std::move(compiled.log);
         artifact->mapped_line = shader_composer_line(artifact->fragment_log, artifact->frag_map);
         if (!artifact->mapped_line) artifact->mapped_line = shader_composer_line(artifact->vertex_log, artifact->vert_map);
+        // glslang identifies the offending token, but callers also need the
+        // original source line (including when both stages fail together).
+        auto context = [&](const char* stage, const std::string& log,
+                           const std::vector<int>& map, const std::string& source) {
+            const int line = shader_composer_line(log, map);
+            if (line <= 0) return;
+            size_t begin = 0;
+            for (int n=1; n<line; ++n) {
+                const size_t end = source.find('\n', begin);
+                if (end == std::string::npos) return;
+                begin = end + 1;
+            }
+            const size_t end = source.find('\n', begin);
+            artifact->error += "\n" + std::string(stage) + " source line=" + std::to_string(line) + ": " +
+                source.substr(begin, end == std::string::npos ? end : end - begin);
+        };
+        context("vertex", artifact->vertex_log, artifact->vert_map, artifact->source_vertex);
+        context("fragment", artifact->fragment_log, artifact->frag_map, artifact->source_fragment);
         return artifact;
     }
     // Cleanup only programs containing integer normalized samples. This lets
@@ -267,13 +285,27 @@ inline std::shared_ptr<const PortableShaderArtifact> build_portable_shader(
         if (found == artifact->integer_sample_uses.end()) artifact->integer_sample_uses.push_back(use);
         else found->stage_mask |= use.stage_mask;
     }
-    std::erase_if(artifact->attributes, [&](const NormAttribute& attribute) {
-        return !std::binary_search(compiled.vertex_input_locations.begin(),
-                                  compiled.vertex_input_locations.end(), attribute.location);
-    });
-    for (auto& attribute : artifact->attributes)
-        attribute.location = static_cast<uint32_t>(std::lower_bound(compiled.vertex_input_locations.begin(),
-            compiled.vertex_input_locations.end(), attribute.location) - compiled.vertex_input_locations.begin());
+    std::vector<NormAttribute> physical_attributes;
+    for (const auto& declaration : artifact->attributes) {
+        if (!std::binary_search(compiled.vertex_input_locations.begin(),
+                               compiled.vertex_input_locations.end(), declaration.location)) continue;
+        AttributeLayout layout;
+        if (!attribute_layout(declaration, layout, artifact->error)) return artifact;
+        if (layout.locations > compiled.vertex_input_locations.size()) {
+            artifact->error = "vertex attribute physical span exceeds compiled active locations"; return artifact;
+        }
+        for (uint32_t index=0; index<layout.locations; ++index) {
+            auto field = attribute_location(layout, index);
+            const auto found = std::lower_bound(compiled.vertex_input_locations.begin(),
+                compiled.vertex_input_locations.end(), field.location);
+            if (found == compiled.vertex_input_locations.end() || *found != field.location) {
+                artifact->error = "vertex attribute physical span differs from compiled active locations"; return artifact;
+            }
+            field.location = static_cast<uint32_t>(found - compiled.vertex_input_locations.begin());
+            physical_attributes.push_back(std::move(field));
+        }
+    }
+    artifact->attributes = std::move(physical_attributes);
     auto binding_stages = [&](uint32_t binding) {
         uint32_t stages = 0;
         for (const auto& usage : compiled.resource_usage) if (usage.binding == binding) stages |= usage.stage_mask;

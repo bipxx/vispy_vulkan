@@ -6921,7 +6921,10 @@ static void execute_commands_impl(int canvas_id, const std::vector<Command>& com
                     if (component.kind != Value::Kind::Int && component.kind != Value::Kind::Bool &&
                         component.kind != Value::Kind::Float)
                         throw std::runtime_error("ATTRIBUTE constant requires a numeric component");
-                    binding.constant_words.push_back(vispy::lines::endpoint_constant_word(binding.type,
+                    ShaderValueType constant_type;
+                    const std::string carrier_type = shader_value_type(binding.type, constant_type) && constant_type.columns > 1
+                        ? "float" : binding.type;
+                    binding.constant_words.push_back(vispy::lines::endpoint_constant_word(carrier_type,
                         component.kind != Value::Kind::Float,
                         component.kind == Value::Kind::Bool ? int64_t(component.b) : component.i, component.f));
                 }
@@ -7149,41 +7152,58 @@ static void execute_commands_impl(int canvas_id, const std::vector<Command>& com
                     }
                 }
                 for (const auto& attr : snap.artifact->portable->attributes) {
-                    auto bit = obj.attributes.find(attr.name);
+                    const uint32_t components = attribute_components(attr.type);
+                    const AttributeBindingView fallback{attr.name, attr.type, 0, components};
+                    const AttributeBindingView* view = &fallback;
+                    auto bit = obj.attributes.end();
+                    for (const auto& candidate : attr.binding_views) {
+                        bit = obj.attributes.find(candidate.name);
+                        if (bit != obj.attributes.end()) { view = &candidate; break; }
+                    }
+                    if (attr.binding_views.empty()) bit = obj.attributes.find(attr.name);
                     if (bit == obj.attributes.end()) {
+                        // Cache defaults at the logical root: a later parent
+                        // assignment must not be shadowed by synthetic columns.
+                        if (!attr.binding_views.empty()) view = &attr.binding_views.back();
                         AttrBinding default_value;
-                        default_value.type = attr.type;
+                        default_value.type = view->type;
                         default_value.constant = true;
-                        int components = attribute_components(attr.type);
-                        default_value.constant_words.assign(components, 0);
-                        if (components == 4) default_value.constant_words[3] =
-                            vispy::lines::endpoint_constant_word(attr.type, true, 1, 1.0);
-                        bit = obj.attributes.emplace(attr.name, std::move(default_value)).first;
+                        default_value.constant_words.assign(view->record_words, 0);
+                        if (components == 4)
+                            for (size_t word=3; word<default_value.constant_words.size(); word+=4)
+                                default_value.constant_words[word] =
+                                    vispy::lines::endpoint_constant_word(attr.type, true, 1, 1.0);
+                        bit = obj.attributes.emplace(view->name, std::move(default_value)).first;
                     }
                     AttrBinding binding = bit->second;
+                    if (binding.type != view->type)
+                        throw std::runtime_error("ATTRIBUTE " + view->name + ": binding type differs from reflected input");
                     if (binding.stride < 0 || binding.offset < 0 || binding.divisor < 0)
-                        throw std::runtime_error("ATTRIBUTE " + attr.name + ": negative stride/offset/divisor");
-                    const int components = attribute_components(attr.type);
-                    const int element_bytes = components * 4;
-                    if (bit->second.constant) {
+                        throw std::runtime_error("ATTRIBUTE " + view->name + ": negative stride/offset/divisor");
+                    const uint64_t view_offset = uint64_t(view->word_offset) * 4;
+                    if (view_offset + uint64_t(binding.offset) > INT32_MAX || uint64_t(view->record_words) * 4 > INT32_MAX)
+                        throw std::runtime_error("ATTRIBUTE " + view->name + ": physical binding offset/stride overflows");
+                    binding.type = attr.type;
+                    if (binding.constant) {
                         if (!bit->second.constant_buffer) {
                             auto rev = std::make_shared<BufferRev>();
                             rev->owner = id;
-                            rev->cpu.resize(element_bytes, 0);
+                            rev->cpu.resize(size_t(view->record_words) * 4, 0);
                             std::memcpy(rev->cpu.data(), bit->second.constant_words.data(),
                                 std::min(rev->cpu.size(), bit->second.constant_words.size() * 4));
                             bit->second.constant_buffer = std::move(rev);
                         }
                         binding.stride = 0;
-                        binding.offset = 0;
+                        binding.offset = static_cast<int>(view_offset);
                         binding.divisor = 0;
                         snap.vertices.push_back(bit->second.constant_buffer);
-                    } else if (eng.objects.count(bit->second.buffer_id)) {
-                        auto rev = eng.objects[bit->second.buffer_id].buffer;
-                        if (!rev) throw std::runtime_error("ATTRIBUTE " + attr.name + ": missing buffer allocation");
-                        if (binding.stride == 0) binding.stride = element_bytes;
+                    } else if (eng.objects.count(binding.buffer_id)) {
+                        auto rev = eng.objects[binding.buffer_id].buffer;
+                        if (!rev) throw std::runtime_error("ATTRIBUTE " + view->name + ": missing buffer allocation");
+                        if (binding.stride == 0) binding.stride = static_cast<int>(view->record_words * 4);
+                        binding.offset += static_cast<int>(view_offset);
                         snap.vertices.push_back(rev);
-                    } else throw std::runtime_error("ATTRIBUTE " + attr.name + ": missing buffer");
+                    } else throw std::runtime_error("ATTRIBUTE " + view->name + ": missing buffer");
                     snap.bindings.push_back(std::move(binding));
                 }
                 for (const auto& sampler : snap.artifact->portable->samplers) {
