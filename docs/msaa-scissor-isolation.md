@@ -178,6 +178,44 @@ rehashed and scratch is absent. The additional retained inputs are approximately
 107 MB of packages/source archives plus the two necessary libraries, not a new
 compiler, environment, SDK or native build tree.
 
+### Offline preparation for subsequent workflow runs
+
+[`compat/software-vulkan-driver.json`](../compat/software-vulkan-driver.json)
+pins the seven retained binary/source inputs and the two extracted library
+hashes. [`tools/prepare_software_vulkan.py`](../tools/prepare_software_vulkan.py)
+checks every input, projects only the needed regular library members and their
+original copyright notices, and writes a driver descriptor plus an environment
+record. The dependency is materialized under its SONAME as a regular file;
+there are no package symlinks, network fetches, apt configuration or installation.
+
+After the coordinator registers a run under the existing hygiene policy and
+creates its durable evidence directory, run with Linux Python from the workspace:
+
+```text
+python3 -B tools/prepare_software_vulkan.py --run-id <registered-run-id> \
+  --owner <registered-owner> --output build/runs/<registered-run-id>/driver.json
+```
+
+Input archives must already exist at `build/artifacts/<sha256>/<name>`. Missing
+or changed source inputs stop preparation even when the binary package matches.
+The output must be new and outside all managed scratch. Use the returned
+`environment` values for the actual workflow child, retaining its original
+environment, loaded dependencies, commands, outcomes and terminal cleanup.
+Preparation is explicitly `qualified: false`; it neither updates a candidate
+profile nor transfers the old profile's observations. Its record describes
+transient staging; after cleanup, reconstruct it in a new registered run.
+
+Run `build/runs/software-driver-preparation-47/` verified the command against the
+actual retained packages. Four direct Vulkan cases and all eight branches of the
+existing Tk state/resource/failure composite pass using its emitted environment.
+Observed mapped library hashes match the preparation record, and all nine shutdown
+gauges are zero. Fourteen contract controls cover selected-member projection,
+missing/duplicate/nonregular/truncated members, retained-input bytes/size/missing
+sources, owner mismatch and a scratch-resident record. No renderer rebuild,
+package install or new environment was needed. Cleanup removed 12 files /
+17,241,956 bytes; all 43 retained source/evidence/input/license records were
+rehashed, and scratch is absent. This remains source-functional evidence.
+
 Next: make the driver decision explicit in the reviewed qualification profile
 and bind the exact configuration to the installed workflow/absence/control and
 shutdown evidence. Do not replace the original 25.2.8 profile observation or

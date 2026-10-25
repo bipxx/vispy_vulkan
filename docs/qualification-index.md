@@ -88,8 +88,10 @@ all required proof.
 Next requirements are actual cumulative source/fixture and semantic scope review,
 producer-admissibility/blocker decisions, exact installed candidate evidence with
 original controls, full retained attempt history, current-head CI and independent
-promotion review. The unresolved Linux scissor, Windows threedee, full API breadth
-and distinct Linux GPU/Metal hardware obligations remain required. Source controls
-cannot close them. Source, test results and meaningful failures are retained locally
+promotion review. The [Linux scissor investigation](msaa-scissor-isolation.md)
+now has a tested compatible driver and an offline preparation command; adopting
+that exact configuration still requires renewed profile/installed evidence.
+Windows threedee, full API breadth and distinct Linux GPU/Metal hardware obligations
+remain required. Source controls cannot close them. Source, test results and meaningful failures are retained locally
 under `build/runs/integrated-h4-38/`; actual managed scratch, if used by fixture
 checks, requires its own applied cleanup receipt before handoff.

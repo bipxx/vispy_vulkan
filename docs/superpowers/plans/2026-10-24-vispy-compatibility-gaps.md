@@ -75,8 +75,12 @@ now passes all four direct controls and all 58 original/extended scissor and Tk
 resize/device-loss regressions. The same full 58-case set also passes on Windows;
 both children report nine zero shutdown gauges. Its source and
 licenses are retained and expanded scratch cleaned. Adopt the exact working
-driver configuration through reviewed profile/installed evidence next; the old
-profile is unchanged and these diagnostics do not supply admission.
+driver configuration through reviewed profile/installed evidence next. The offline
+`tools/prepare_software_vulkan.py` command now projects only two libraries from
+seven hash-checked retained binary/source inputs, with original notices and no
+installation. Its exact environment passes four direct controls and all eight
+existing composite branches; 14 preparation controls pass and scratch is cleaned.
+The old profile is unchanged and these diagnostics do not supply admission.
 
 ### Prevent unchanged-native rebuilds
 
