@@ -473,6 +473,28 @@ class Program(GLObject):
                     is_constant = all([isscalar(e) for e in data])
 
                 if not is_constant:
+                    if (type_.startswith('mat') and
+                            name not in self._array_shapes and
+                            isinstance(data, np.ndarray) and data.dtype.fields is None):
+                        # One record per vertex. A GLSL matrix stores columns,
+                        # then rows; VertexBuffer's ordinary vector conversion
+                        # would otherwise split an (N, columns, rows) array.
+                        columns = int(type_[3])
+                        rows = int(type_[5]) if len(type_) > 4 else columns
+                        if not ((data.ndim == 2 and
+                                 data.shape[1] == columns * rows) or
+                                (data.ndim == 3 and
+                                 data.shape[1:] == (columns, rows))):
+                            raise ValueError('Matrix attribute %r needs shape '
+                                             '(N, %i) or (N, %i, %i).'
+                                             % (name, columns * rows,
+                                                columns, rows))
+                        if data.dtype != np.dtype(np.float32):
+                            raise TypeError('Matrix attribute %r needs native '
+                                            'float32 data.' % name)
+                        packed = np.ascontiguousarray(data)
+                        data = packed.reshape(-1).view(
+                            dtype=[('f0', np.float32, (columns, rows))])
                     # VBO data; overwrite or update
                     vbo = self._user_variables.get(name, None)
                     if isinstance(data, DataBuffer):
