@@ -40,6 +40,7 @@ jobs:
       EVIDENCE: build/linux-vulkan-evidence
       NATIVE_BUILD: build/linux-vulkan-native
       BUILD_ENV: build/linux-vulkan-env
+      DRIVER_WORKSPACE: ${{ runner.temp }}/vispy-linux-vulkan-driver-${{ github.run_id }}-${{ github.run_attempt }}
       CONSUMER_NAME: vispy-linux-vulkan-consumer-${{ github.run_id }}
       UV_CACHE_NAME: vispy-linux-vulkan-cache-${{ github.run_id }}
       UV_NO_CONFIG: '1'
@@ -95,12 +96,14 @@ jobs:
         run: |
           uv pip install --python "$BUILD_ENV" --require-hashes --only-binary :all: --requirements compat/mesa-build-requirements.txt
           driver_run="mesa-ci-${{ github.run_id }}-${{ github.run_attempt }}"
-          "$BUILD_PYTHON" -B tools/build_hygiene.py preflight --run-id "$driver_run" --owner ci --expected-peak-bytes 6442450944 --register
+          mkdir -p "$DRIVER_WORKSPACE"
+          "$BUILD_PYTHON" -B tools/build_hygiene.py --workspace "$DRIVER_WORKSPACE" preflight --run-id "$driver_run" --owner ci --expected-peak-bytes 6442450944 --register
           driver_exit=0
           "$BUILD_PYTHON" -B tools/build_software_vulkan.py --run-id "$driver_run" --owner ci \
+            --workspace "$DRIVER_WORKSPACE" --library-store "$DRIVER_WORKSPACE/build/artifacts" \
             --fetch --output "$EVIDENCE/software-driver.json" || driver_exit=$?
           "$BUILD_PYTHON" -B tools/build_software_vulkan.py --run-id "$driver_run" --owner ci \
-            --output "$EVIDENCE/software-driver.json" --cleanup-exit "$driver_exit"
+            --workspace "$DRIVER_WORKSPACE" --output "$EVIDENCE/software-driver.json" --cleanup-exit "$driver_exit"
           test "$driver_exit" -eq 0
           "$BUILD_PYTHON" -B - <<'PY'
           import json, os, pathlib
@@ -179,6 +182,7 @@ jobs:
           path: |
             ${{ env.EVIDENCE }}
             build/artifacts/
+            ${{ env.DRIVER_WORKSPACE }}/build/artifacts/
             ${{ env.NATIVE_BUILD }}/CMakeCache.txt
             ${{ env.NATIVE_BUILD }}/_dawn*.so
             ${{ env.NATIVE_BUILD }}/_sdf_cpu*.so

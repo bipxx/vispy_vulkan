@@ -106,3 +106,34 @@ def test_completed_producer_cleanup_keeps_evidence_and_refuses_unawaited_work(tm
         assert result['status'] == 'PASS_APPLY'
         assert source.read_bytes() == b'synthetic source and license, not native proof'
         assert not scratch.exists() or not list(scratch.iterdir())
+
+
+def test_driver_store_can_be_external_without_relaxing_scratch_boundaries(tmp_path, monkeypatch):
+    source = tmp_path / 'source'
+    workspace = tmp_path / 'external'
+    source.mkdir()
+    workspace.mkdir()
+    monkeypatch.setattr(driver, 'ROOT', source)
+    assert driver.library_store_path(workspace) == source / 'build/artifacts'
+    assert driver.library_store_path(workspace, workspace / 'build/artifacts') == workspace / 'build/artifacts'
+    with pytest.raises(ValueError, match='outside scratch'):
+        driver.library_store_path(workspace, workspace / 'build/work/driver')
+    nested = source / 'build/work/nested'
+    with pytest.raises(ValueError, match='outside scratch'):
+        driver.library_store_path(nested, nested / 'build/artifacts')
+    with pytest.raises(ValueError, match='selected workspace'):
+        driver.library_store_path(workspace, tmp_path / 'unowned')
+
+
+def test_relocated_library_is_byte_identical_and_conflicting_origin_is_preserved(tmp_path):
+    library = tmp_path / 'libvulkan_lvp.so'
+    library.write_bytes(b'synthetic library bytes, not an ELF or functional proof')
+    store = tmp_path / 'external/build/artifacts'
+    retained = driver.retain_library_file(library, store)
+    assert retained == store / driver.digest(library) / library.name
+    assert retained.read_bytes() == library.read_bytes()
+    assert driver.retain_library_file(library, store) == retained
+    retained.write_bytes(b'conflicting retained origin')
+    with pytest.raises(ValueError, match='retained library differs'):
+        driver.retain_library_file(library, store)
+    assert retained.read_bytes() == b'conflicting retained origin'

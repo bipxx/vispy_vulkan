@@ -106,12 +106,36 @@ def control_cases(text, baseline):
     return cases
 
 
-def build(run_id, owner, output, *, workspace=ROOT, fetch=False):
+def library_store_path(workspace, requested=None):
+    """Select this producer's output store without adopting another origin."""
+    store = no_alias(Path(requested).absolute()) if requested is not None else ROOT / 'build/artifacts'
+    allowed = (ROOT / 'build/artifacts', Path(workspace).absolute() / 'build/artifacts')
+    if store not in allowed or any(store.is_relative_to(base / 'build/work') for base in (ROOT, Path(workspace).absolute())):
+        raise ValueError('driver library store must be the source or selected workspace artifact store, outside scratch')
+    return store
+
+
+def retain_library_file(library, store):
+    library = Path(library)
+    checksum = digest(library)
+    directory = Path(store) / checksum
+    directory.mkdir(parents=True, exist_ok=True)
+    retained = directory / library.name
+    if not retained.exists():
+        with retained.open('xb') as target, library.open('rb') as source:
+            shutil.copyfileobj(source, target)
+    if digest(retained) != checksum:
+        raise ValueError('retained library differs')
+    return retained
+
+
+def build(run_id, owner, output, *, workspace=ROOT, fetch=False, library_store=None):
     if sys.platform != 'linux':
         raise ValueError('software Vulkan source production requires Linux')
     context = Context(workspace, ROOT / 'compat/build-hygiene.json', None)
     scratch = context.scratch(run_id)
     context.marker(scratch, run_id, owner)
+    library_store = library_store_path(context.workspace, library_store)
     pin = json.loads(PIN.read_bytes())
     validate_recipe(pin)
     if pin['schema'] != 1 or pin['expected_peak_bytes'] > context.limit:
@@ -249,15 +273,8 @@ def build(run_id, owner, output, *, workspace=ROOT, fetch=False):
             '-I' + str(ROOT / 'third_party/dawn/third_party/spirv-headers/src/include'),
             str(ROOT / 'tools/vulkan_interpolation_control.cpp'), '-l:libvulkan.so.1', '-o', str(control)])
 
-        def retain_library(label):
-            directory = ROOT / 'build/artifacts' / digest(library)
-            directory.mkdir(exist_ok=True)
-            retained = directory / library.name
-            if not retained.exists():
-                shutil.copyfile(library, retained)
-            if digest(retained) != digest(library):
-                raise ValueError('retained library differs')
-            return keep(retained, ['evidence', 'repro'])
+        def retain_library():
+            return keep(retain_library_file(library, library_store), ['evidence', 'repro'])
 
         def controls(label, baseline):
             icd = scratch / (label + '-icd.json')
@@ -266,13 +283,13 @@ def build(run_id, owner, output, *, workspace=ROOT, fetch=False):
                                 extra={'VK_DRIVER_FILES': str(icd), 'VK_ICD_FILENAMES': str(icd)})
             return control_cases(log.read_text(), baseline)
 
-        record['baseline_library'] = retain_library('baseline')
+        record['baseline_library'] = retain_library()
         record['baseline_cases'] = controls('baseline', True)
         command('patch-dry-run', ['/usr/bin/patch', '--dry-run', '--batch', '-p1', '-i', str(patch)], cwd=source)
         command('patch', ['/usr/bin/patch', '--batch', '-p1', '-i', str(patch)], cwd=source)
         record['patched_source_sha256'] = digest(clip)
         command('patched-build', ninja)
-        record['library'] = retain_library('patched')
+        record['library'] = retain_library()
         if record['library']['sha256'] == record['baseline_library']['sha256']:
             raise ValueError('patch did not change the produced library')
         record['patched_cases'] = controls('patched', False)
@@ -343,6 +360,8 @@ def main():
     parser.add_argument('--owner', required=True)
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--workspace', type=Path, default=ROOT)
+    parser.add_argument('--library-store', type=Path,
+                        help='Retain libraries in the source or selected workspace build/artifacts store')
     parser.add_argument('--fetch', action='store_true')
     parser.add_argument('--cleanup-exit', type=int,
                         help='Actual awaited producer exit; retain and clean instead of building')
@@ -355,7 +374,8 @@ def main():
             print(json.dumps(cleanup_record(args.run_id, args.owner, args.output,
                                            args.cleanup_exit, workspace=args.workspace)))
         else:
-            build(args.run_id, args.owner, args.output, workspace=args.workspace, fetch=args.fetch)
+            build(args.run_id, args.owner, args.output, workspace=args.workspace,
+                  fetch=args.fetch, library_store=args.library_store)
     finally:
         signal.signal(signal.SIGTERM, previous_handler)
 

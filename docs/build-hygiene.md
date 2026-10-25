@@ -202,3 +202,15 @@ owner, output and workspace. Cleanup validates retained identities and generates
 and applies an exact managed plan. A failing or interrupted build remains a
 failure with its reproducer; source controls do not establish producer admission,
 installed artifact qualification or native Linux hardware support.
+
+
+For isolated installed-wheel checks, retain/load the produced driver outside the
+source and publication checkouts. Linux CI selects an owned workspace under
+`RUNNER_TEMP`, registers its `build/work/<run>` and passes `--library-store`
+pointing to that workspace's `build/artifacts`. The builder accepts only its
+source or selected workspace artifact store, never scratch or an arbitrary
+origin. Source archives remain shared immutable inputs; both necessary driver
+libraries and their original notices are retained/uploaded with the evidence.
+The ordinary installed native-module inventory still rejects every repository
+native image. Do not exempt the driver or weaken that verifier to accommodate a
+repository-local ICD. Default local library retention is unchanged.
