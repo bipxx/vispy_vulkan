@@ -1,6 +1,7 @@
 // CPU compiler/layout contract; run independently of Dawn device creation.
 #include "shader/normalize.hpp"
 #include "shader/glslang_spv.hpp"
+#include "shader/integer_sampling.hpp"
 #include "vertex_input_span_contract.hpp"
 #include <glslang/Public/ResourceLimits.h>
 #include <glslang/Public/ShaderLang.h>
@@ -33,7 +34,7 @@ std::string read(const std::filesystem::path& file) {
     return std::string(std::istreambuf_iterator<char>(input), {});
 }
 
-void compile_and_reflect(NormalizedShader& normalized) {
+uint32_t compile_and_reflect(NormalizedShader& normalized) {
     require(normalized.error.empty(), normalized.error);
     require(static_cast<size_t>(std::count(normalized.vertex.begin(), normalized.vertex.end(), '\n')) == normalized.vertex_line_map.size(),
             "vertex source map length");
@@ -41,18 +42,40 @@ void compile_and_reflect(NormalizedShader& normalized) {
             "fragment source map length");
     auto compiled = compile_vulkan_glsl(normalized.vertex, normalized.fragment);
     require(compiled.ok, compiled.log + "\n" + normalized.fragment);
-#ifdef VISPY_TEST_TINT_READER
-    // Exercise the same pinned reader as native CreateShaderModule without
-    // constructing an instance, device or surface. SPIR-V validation alone
-    // does not catch reader transform crashes.
+    uint32_t integer_samples_lowered = 0;
     for (const auto* stage : {&compiled.vertex, &compiled.fragment}) {
-        auto ir = tint::spirv::reader::ReadIR(stage->words);
+        using namespace vispy::shader;
+        const uint32_t stage_mask = stage == &compiled.vertex ? 1u : 2u;
+        auto uses = integer_sample_bindings(stage->words, stage_mask);
+        require(uses.ok, uses.error);
+        std::vector<IntegerSamplePolicy> policies;
+        for (const auto& use : uses.bindings) {
+            // Explicit contract fixture: nearest, one-level, clamp-to-edge.
+            // Production captures the actual sampler state before performing
+            // this same specialization; GLSL alone does not supply that state.
+            IntegerSamplePolicy policy;
+            policy.texture_binding = use.texture_binding;
+            policy.sampler_binding = use.sampler_binding;
+            policy.scalar = use.scalar;
+            policies.push_back(policy);
+        }
+        auto lowered = lower_integer_nearest_2d(stage->words, policies);
+        require(lowered.ok, lowered.error);
+        integer_samples_lowered += lowered.samples_lowered;
+        auto finalized = finalize_sampled_stage(lowered.words, stage_mask);
+        require(finalized.ok, finalized.error);
+#ifdef VISPY_TEST_TINT_READER
+        // Feed the pinned reader the same post-specialization stage used by
+        // CreateShaderModule. Raw integer sampling SPIR-V is valid Vulkan but
+        // requires the existing production lowering before Tint accepts it.
+        auto ir = tint::spirv::reader::ReadIR(finalized.words);
         require(ir == tint::Success, ir == tint::Success ? "" : ir.Failure().reason);
-    }
 #endif
+    }
     std::string error;
     require(reflect_uniform_layout(compiled.vertex.words, normalized.uniforms, normalized.uniform_bytes, error), error);
     require(reflect_uniform_layout(compiled.fragment.words, normalized.uniforms, normalized.uniform_bytes, error), error);
+    return integer_samples_lowered;
 }
 
 float read_float(const std::vector<uint8_t>& buffer, size_t offset) {
@@ -520,7 +543,8 @@ void literal_sampler_arrays() {
     require(outside.error.find("declared length") != std::string::npos, "out-of-bounds sampler index refuses before code generation");
     auto typed = normalize_program(vertex,
         "uniform usampler2D images[2];void main(){gl_FragColor=vec4(texture(images[0],vec2(.5)));}");
-    compile_and_reflect(typed);
+    require(compile_and_reflect(typed) == 1,
+        "typed array sample reaches production integer specialization before the reader");
     require(typed.samplers[0].sample_scalar == ShaderScalarType::Uint,
         "typed sampler arrays preserve integer sampled words");
 }

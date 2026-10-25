@@ -110,3 +110,17 @@ review links, selected profile, production digest and refusal of unreviewed
 candidates. The outer candidate-validation seam and all approval-like records
 are explicitly synthetic. The existing real-policy refusal remains in the
 suite; no actual approval, producer-policy change or native rebuild is supplied.
+
+CI run `40231008361` completed native compilation, then passed 43 of 44 native
+contracts. `shader_contract` failed because its full-source Tint-reader branch
+passed raw integer sampling SPIR-V directly to Tint, while production first
+specializes captured nearest/one-level sampler policies and finalizes the stage.
+The corrected contract keeps the original integer-array GLSL and reader
+assertion, calls those existing production transforms, and requires the typed
+array sample to actually be lowered. It does not remove a test or change renderer
+code. A focused Linux build with the real retained Tint reader reproduces the
+original failure and passes the full shader corpus after the correction. The
+Windows SDK shader contract also passes; that SDK mode does not enable the Tint
+reader branch. Original CI reports and cleanup remain retained in
+`build/runs/linux-ci-failure-87/`. A successful new full-source CI result is still
+required; these local controls do not turn the failed producer into admission.

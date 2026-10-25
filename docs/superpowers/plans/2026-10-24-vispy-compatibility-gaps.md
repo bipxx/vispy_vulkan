@@ -61,10 +61,15 @@ capture through the existing dispatcher, with complete synthetic success and
 semantic rejection coverage and retention of all raw capture inputs. Local
 verification passes 571 Windows regressions and 87 WSL adapter/index controls
 (`build/runs/linux-native-semantic-85/`). The real producer policy stays blocked.
-The repaired CI head `258df51f9` has passed preparation and Mesa source controls;
-its actual renderer build/capture and installed result remain pending. Finish
-that original-capture join and actual independent approvals before claiming
-Linux producer admission; another synthetic pass is not that exit condition.
+The repaired CI head `258df51f9` passed preparation, Mesa controls and native
+compilation, then failed one of the 44 native contracts. The shader contract's
+full-source reader check omitted the existing production integer-sampling
+specialization. A focused real-reader control reproduces that failure and passes
+after correcting the test pipeline, retaining its original GLSL and assertions;
+the Windows SDK contract also passes. See `build/runs/linux-ci-failure-87/`.
+Successful new full-source CI, the installed result, the original-capture join
+and actual independent approvals remain required before Linux producer admission;
+another synthetic pass is not that exit condition.
 
 | Priority / stage | Shortest faithful action | Exit / evidence that changes the next action |
 | --- | --- | --- |
