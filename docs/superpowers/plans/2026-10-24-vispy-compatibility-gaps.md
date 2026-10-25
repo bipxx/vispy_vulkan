@@ -102,6 +102,16 @@ admission gates remain open. The new CPU contract is mandatory for new native
 recipes, and the existing installed-wheel CI smoke includes the array oracle.
 This fixes existing one-dimensional arrays; SH-2 dimension/reflection/layout and
 other storage/interface classes remain required, together with SH-1/SH-3..5.
+The next SH-2 uniform implementation is source-verified in local product commit
+`0a0e8ec55e7e59b1f63a8142f9add6fed72a00e1`: native ordered shapes, checked layout,
+nested reflection/boolean indices, subviews and generated line UBOs now pass
+compiler contracts and 154 focused checks on each platform. Both full source Tk
+composites pass with zero-resource shutdown. See the same report for exact scope
+and retained failures. Preparation declarations are renewed without changing
+requested scope or discharging any parent. All 475 affected source checks and
+both 56-case installed-smoke helper controls pass. Actual installed CI and
+independent qualification remain pending; other SH-2 storage/interface classes
+and the broader shader/API obligations remain open.
 
 ### Prevent unchanged-native rebuilds
 
