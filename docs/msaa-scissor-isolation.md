@@ -8,7 +8,10 @@ The independent regression is `tests/native/test_scissor_boundaries.py`:
 48 cases cover single/four-sample storage, 256x128 / 257x129 / 301x177 targets,
 clear versus ordinary draw, and left/right/upper/inset rectangles. It asserts
 actual granted sample count and exact RGBA pixels against a separately authored
-rectangle. There is no Tk dependency, shader-discard workaround, single-sample
+rectangle. The original eight blue-background/granted-allocation cases are
+also retained unchanged, so the module now collects 56 cases. This packet
+executed the 48-case extension before restoring those original cases; its exact
+source remains in each run record. There is no Tk dependency, shader-discard workaround, single-sample
 substitution, tolerance increase or xfail hiding the result.
 
 | Profile/control | Result | Evidence scope |
