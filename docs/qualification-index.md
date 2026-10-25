@@ -225,3 +225,12 @@ using the repaired software Vulkan driver. Shutdown gauges are zero. Windows has
 not yet run the three new indexed controls. The retained composition diagnostic
 still rejects explicit matrix/array attributes and is an unmet requirement;
 these results renew no admission bindings. See the Linux checkpoint in the plan.
+
+
+Explicit composed matrix/array attributes now pass 406 Python checks and 207
+pixel checks on each of Windows and WSL. Both platforms also pass the 149
+aggregate controls and three indexed/vector comparisons, with zero shutdown
+gauges. The previous explicit composition rejections are fixed, including
+rejection without cache mutation. Native modules are reused unchanged. These
+are source observations; remaining visual/filter, batching, shader/host and
+actual qualification obligations are not discharged by this checkpoint.

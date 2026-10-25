@@ -1350,3 +1350,32 @@ rendering/rebuilds with the retained Windows/Linux modules; this Python fix need
 no new native wheel or dependency build. The new indexed oracle still needs its
 Windows observation. Actual visual/filter, indexed/batched and host/qualification
 obligations remain open. Evidence: `build/runs/aggregate-linux-77/`.
+
+
+## Explicit composed attributes: Python source checkpoint
+
+Explicit `Variable` attributes now validate their declared type and packed record
+shape before committing values or cache identity. Program and composition share
+one side-effect-free matrix/array record conversion; ordinary uniform inference
+is retained. Typed matrix/array buffers, interleaved views, constants, raw arrays
+and nested lists reach the same public Program uploads. Legacy locked-type
+rejections also leave the prior value and state unchanged.
+
+Both Windows and WSL pass 406 Python checks and 207 composed pixel checks spanning
+all nine matrix shapes, nested matrices/vectors, interleaved divisor views, value
+updates and shader rebuilds on triangles, points and generated wide lines. The
+149 aggregate controls and three independent indexed/vector comparisons also
+pass on both platforms. All nine shutdown gauges are zero. The retained native
+modules are unchanged; this Python/test packet needs no native or dependency
+build. Original setup and validation failures remain in
+`build/runs/composed-attributes-78/` with their source/reproducers. Linux pytest
+uses Python-level capture because FD capture failed on the shared filesystem;
+no assertion or backend verifier was weakened.
+
+The three earlier explicit composition failures are repaired. This does not
+establish every automatic type-inference combination, every visual/filter or
+host, forced batching, the remaining shader packets, real producer/review/
+installed qualification or release admission. Continue with actual named
+visual/filter consumers and remaining API mechanisms; renew qualification only
+at a coherent source boundary. Native C++ source remains the verified `4fa4dde40`
+input set; the new runtime changes are Python only.

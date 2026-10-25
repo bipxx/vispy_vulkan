@@ -84,6 +84,37 @@ class GeometryShader(Shader):
 
 
 # ----------------------------------------------------------- Program class ---
+def _attribute_record_data(data, type_, array_shape, name):
+    """Validate/pack one record per aggregate vertex without mutating objects."""
+    if (array_shape or type_.startswith('mat')) and isinstance(data, (tuple, list)):
+        data = np.asarray(data, dtype=Program._gtypes[type_][0])
+    if array_shape and isinstance(data, np.ndarray) and data.dtype.fields is None:
+        dtype, numel = Program._gtypes[type_]
+        if type_.startswith('mat'):
+            columns = int(type_[3])
+            rows = int(type_[5]) if len(type_) > 4 else columns
+            record_shape = array_shape + (columns, rows)
+            if data.ndim == len(array_shape) + 2 and data.shape[1:] == array_shape + (numel,):
+                data = data.reshape((data.shape[0],) + record_shape)
+        else:
+            record_shape = array_shape + (numel,)
+            if numel == 1 and data.shape[1:] == array_shape:
+                data = data.reshape((data.shape[0],) + record_shape)
+        if data.dtype != np.dtype(dtype):
+            raise TypeError('Attribute array %r needs native %s data.' % (name, dtype))
+        data = _attribute_vertex_records(data, record_shape, name)
+    elif (type_.startswith('mat') and
+            not array_shape and
+            isinstance(data, np.ndarray) and data.dtype.fields is None):
+        # One record per vertex. A GLSL matrix stores columns,
+        # then rows; VertexBuffer's ordinary vector conversion
+        # would otherwise split an (N, columns, rows) array.
+        columns = int(type_[3])
+        rows = int(type_[5]) if len(type_) > 4 else columns
+        data = _matrix_vertex_records(data, columns, rows, name)
+    return data
+
+
 class Program(GLObject):
     """Shader program object
 
@@ -491,30 +522,7 @@ class Program(GLObject):
 
                 array_shape = self._array_shapes.get(name, ())
                 if not is_constant:
-                    if array_shape and isinstance(data, np.ndarray) and data.dtype.fields is None:
-                        dtype, numel = self._gtypes[type_]
-                        if type_.startswith('mat'):
-                            columns = int(type_[3])
-                            rows = int(type_[5]) if len(type_) > 4 else columns
-                            record_shape = array_shape + (columns, rows)
-                            if data.ndim == len(array_shape) + 2 and data.shape[1:] == array_shape + (numel,):
-                                data = data.reshape((data.shape[0],) + record_shape)
-                        else:
-                            record_shape = array_shape + (numel,)
-                            if numel == 1 and data.shape[1:] == array_shape:
-                                data = data.reshape((data.shape[0],) + record_shape)
-                        if data.dtype != np.dtype(dtype):
-                            raise TypeError('Attribute array %r needs native %s data.' % (name, dtype))
-                        data = _attribute_vertex_records(data, record_shape, name)
-                    elif (type_.startswith('mat') and
-                            name not in self._array_shapes and
-                            isinstance(data, np.ndarray) and data.dtype.fields is None):
-                        # One record per vertex. A GLSL matrix stores columns,
-                        # then rows; VertexBuffer's ordinary vector conversion
-                        # would otherwise split an (N, columns, rows) array.
-                        columns = int(type_[3])
-                        rows = int(type_[5]) if len(type_) > 4 else columns
-                        data = _matrix_vertex_records(data, columns, rows, name)
+                    data = _attribute_record_data(data, type_, array_shape, name)
                     # VBO data; overwrite or update
                     vbo = self._user_variables.get(name, None)
                     if isinstance(data, DataBuffer):

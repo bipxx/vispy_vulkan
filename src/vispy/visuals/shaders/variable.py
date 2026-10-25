@@ -2,6 +2,7 @@
 # Copyright (c) Vispy Development Team. All Rights Reserved.
 # Distributed under the (new) BSD License. See LICENSE.txt for more info.
 import re
+from math import prod
 
 import numpy as np
 from .shader_object import ShaderObject
@@ -116,6 +117,55 @@ class Variable(ShaderObject):
 
     @value.setter
     def value(self, value):
+        if self._type_locked and self.vtype == 'attribute':
+            from ...gloo.program import Program, _attribute_record_data
+            from ...gloo.buffer import DataBuffer
+            if self.dtype not in Program._gtypes:
+                raise TypeError('Unsupported attribute type %r.' % self.dtype)
+            scalar, components = Program._gtypes[self.dtype]
+            required = components * prod(self._array_shape)
+            constant = isinstance(value, (float, int)) or (
+                isinstance(value, (tuple, list)) and
+                all(isinstance(word, (float, int)) for word in value))
+            if constant:
+                words = np.asarray(value, dtype=scalar).reshape(-1)
+                if words.size != required:
+                    raise ValueError('Attribute %r needs %i elements, not %i.' %
+                                     (self.name, required, words.size))
+                prepared = tuple(words.tolist())
+            elif isinstance(value, DataBuffer):
+                prepared = value
+                dtype = value.dtype
+                if dtype is not None:
+                    field = dtype[dtype.names[0]] if dtype.names else dtype
+                    packed = int(np.prod(field.shape)) if field.shape else 1
+                    # Legacy vector buffers keep their inference behavior.
+                    # Explicit aggregate and integer declarations need their
+                    # actual typed words, not the first matrix dimension.
+                    aggregate = self._array_shape or self.dtype.startswith('mat')
+                    typed = field.base == np.dtype(scalar) and packed == required
+                    if not typed and (aggregate or value.glsl_type != ('attribute', self.dtype)):
+                        raise TypeError('Attribute %r has incompatible buffer type or record shape.' % self.name)
+            else:
+                if isinstance(value, (tuple, list)):
+                    value = np.asarray(value, dtype=scalar)
+                prepared = _attribute_record_data(value, self.dtype, self._array_shape, self.name)
+                if not isinstance(prepared, np.ndarray):
+                    raise TypeError('Attribute %r requires numeric constants or vertex data.' % self.name)
+                if prepared.dtype.names:
+                    field = prepared.dtype[prepared.dtype.names[0]]
+                    packed = int(np.prod(field.shape)) if field.shape else 1
+                    valid = field.base == np.dtype(scalar) and packed == required
+                else:
+                    packed = prepared.shape[-1] if prepared.ndim > 1 else 1
+                    valid = prepared.ndim > 0 and prepared.dtype == np.dtype(scalar) and packed == required
+                if not valid:
+                    raise ValueError('Attribute %r has incompatible dtype or record shape.' % self.name)
+            # Publish only after all type/shape checks. A rejected assignment
+            # must not invalidate ModularProgram's cached upload identity.
+            self._value = prepared
+            self._state_counter += 1
+            return
         if self._array_shape:
             # An explicit declaration disambiguates arrays from the legacy
             # vector/matrix inference. Match Program's public upload contract.
@@ -166,13 +216,12 @@ class Variable(ShaderObject):
             raise TypeError("Unknown data type %r for variable %r" %
                             (type(value), self))
 
+        if self._type_locked and (dtype != self._dtype or vtype != self._vtype):
+            raise TypeError('Variable is type "%s"; cannot assign value '
+                            '%r.' % (self.dtype, value))
         self._value = value
         self._state_counter += 1
-
         if self._type_locked:
-            if dtype != self._dtype or vtype != self._vtype:
-                raise TypeError('Variable is type "%s"; cannot assign value '
-                                '%r.' % (self.dtype, value))
             return
 
         # update vtype/dtype and emit changed event if necessary

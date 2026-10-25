@@ -44,8 +44,7 @@ def test_invalid_dimensions_fail_explicitly(name):
         Variable(name, vtype='uniform', dtype='float')
 
 
-@pytest.mark.parametrize('declaration', ['grid[2]', 'uniform sampler2D grid[2]',
-                                      'attribute float grid[2]'])
+@pytest.mark.parametrize('declaration', ['grid[2]', 'uniform sampler2D grid[2]'])
 def test_array_values_need_an_explicit_numeric_uniform(declaration):
     with pytest.raises(TypeError, match='explicit non-sampler uniform type'):
         Variable(declaration, np.zeros((2, 1)))

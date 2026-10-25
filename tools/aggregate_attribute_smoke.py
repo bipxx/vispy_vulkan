@@ -179,3 +179,66 @@ def aggregate_indexed_checks(gloo, np):
         cases.append(dict(mode=mode, indices=indices, index_dtype='uint16',
                           center=pixel.tolist(), expected=wanted.tolist(), max_delta=delta))
     return cases
+
+
+def composed_attribute_checks(gloo, np):
+    """Explicit composed inputs retain values through updates and rebuilds."""
+    from vispy.visuals.shaders import Variable, ModularProgram
+    positions = {'triangles': [[-1,-1],[3,-1],[-1,3]],
+                 'points': [[0,0]], 'lines': [[-1,0],[1,0]]}
+    configs = [(('mat%d' % c if c == r else 'mat%dx%d' % (c,r)), c,r,(),form)
+               for c in (2,3,4) for r in (2,3,4) for form in ('constant','raw')]
+    configs += [('mat2x3',2,3,(2,2),form) for form in ('constant','raw')]
+    configs += [('vec2',1,2,(2,2),form) for form in ('constant','raw')]
+    configs += [('mat2x3',2,3,(),'interleaved')]
+    cases = []
+    fragment = 'varying vec4 color;void main(){gl_FragColor=color;}'
+    for gtype,columns,rows,shape,form in configs:
+        suffix = ''.join('[%d]' % d for d in shape)
+        first = ''.join('[0]' for d in shape)
+        last = ''.join('[%d]' % (d-1) for d in shape)
+        leaf = (columns,rows) if columns > 1 else (rows,)
+        record_shape = shape + leaf
+        words = np.arange(1,int(np.prod(record_shape))+1,dtype=np.float32).reshape(record_shape)
+        words /= words.size
+        if columns > 1:
+            expression = 'vec4($data%s[%d][%d],$data%s[0][0],$data%s[0][%d],1)' % (last,columns-1,rows-1,first,first,rows-1)
+        else:
+            expression = 'vec4($data%s[%d],$data%s[0],$data%s[%d],1)' % (last,rows-1,first,first,rows-1)
+        vertex = ('varying vec4 color;vec4 seed=%s;void main(){'
+                  'gl_Position=vec4($position,0,1);gl_PointSize=5.;color=seed;}') % expression
+        for mode in positions:
+            count = len(positions[mode])
+            def value(data):
+                if form == 'constant':
+                    return tuple(data.ravel().tolist())
+                if form == 'interleaved':
+                    records = np.zeros(1,dtype=[('padding',np.float32,3),('data',np.float32,record_shape)])
+                    records['data'] = data
+                    return gloo.VertexBuffer(records,divisor=2)['data']
+                return np.broadcast_to(data,(count,)+record_shape).copy()
+            variable = Variable('attribute %s data%s' % (gtype,suffix),value(words))
+            program = ModularProgram(vertex,fragment)
+            program.vert['data'] = variable
+            program.vert['position'] = gloo.VertexBuffer(np.array(positions[mode],np.float32))
+            changed = words.copy()
+            changed.reshape(-1)[-1] = .5
+            for phase,data in [('initial',words),('update',changed),('rebuild',changed)]:
+                if phase == 'update':
+                    variable.value = value(data)
+                    assert not program._need_build
+                elif phase == 'rebuild':
+                    program.frag = fragment + '\n'
+                gloo.set_viewport(0,0,8,8)
+                gloo.set_state(blend=False,depth_test=False,cull_face=False)
+                gloo.set_line_width(5)
+                gloo.clear(color='black')
+                program.draw(mode)
+                pixel = gloo.read_pixels(alpha=True)[4,4].astype(int)
+                expected = [float(data.reshape(-1)[-1]),float(data.reshape(-1)[0]),
+                            float(data.reshape(-1)[rows-1]),1]
+                wanted = np.rint(np.array(expected)*255).astype(int)
+                assert np.max(np.abs(pixel-wanted)) <= 1,(gtype,shape,form,mode,phase,pixel.tolist(),wanted.tolist())
+                cases.append(dict(type=gtype,shape=shape,form=form,mode=mode,phase=phase,
+                                  pixel=pixel.tolist(),expected=wanted.tolist()))
+    return cases
