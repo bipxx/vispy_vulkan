@@ -30,6 +30,15 @@ contracts also pass. The 84 Python declaration/composition/function tests pass.
 The retained earlier module reproduces the original unsupported-interface error.
 These results are source-functional and supply no installed/producer admission.
 
+The published sampler checkpoint's CPU matrix also exposed an old assertion in
+`typed_sampling_contract.cpp` that still expected typed arrays to be rejected.
+It now verifies live signed/unsigned literal leaves and retains a separate
+dynamic-index refusal. All 44 registered native CPU contracts pass on Windows;
+the corrected typed compiler contract passes on Linux (1,695 assertions). No
+native wheel or dependency was rebuilt for that assertion correction. This fix
+will be published with the settled source packet, avoiding another CI restart
+while the driver failure remains unresolved.
+
 ## Independent driver isolation
 
 Scalar and nested controls produce byte-identical images. Both fail with clipped
