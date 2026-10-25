@@ -2083,3 +2083,35 @@ functional/absence/control/shutdown joins remain H4 prerequisites. Immutable
 subject, full attempt/disposition index, retention, promotion basis/envelope,
 independent H2 source/scope approval and real H5 admission remain open. Every
 original parent and mandatory host/platform obligation is preserved.
+
+## Native leaf provenance source checkpoint (H4b, EV-1/2, ART-1/2)
+
+The closed native recipe/result/retained-record schema and read-only
+`tools/qualification_native.py` now join actual native build inputs and outputs.
+Each Windows CP312/x64 recipe binds candidate scope, the native/build/lock and
+C++ harness/shader-corpus inputs, toolchain identities, existing locked build
+preparation, SDK consumer identity, explicit targets and exact CTest inventory.
+Both existing source and scope approvals must name its `native_leaf_recipes`
+digest. Missing approvals stop before SDK or build proof can be accepted.
+
+Five ordered dependency/configure/build/CTest/dependency commands require exact
+reviewed arguments, terminal exit zero, actual child PID/wait and retained logs.
+Before/after source maps, raw cache bytes and generated project bytes must agree.
+The existing mutex/project verifier checks all requested targets, including
+nanobind-static and the native library fixture; C-only SDF is retained and hashed
+without inventing a C++ count. The original CTest verifier rejects missing/skipped
+or failed cases. Raw result edges bind every source/configuration/project/CTest
+and all four shipping native output hashes. Ambient compiler/Python flags and
+reusable MSBuild nodes are rejected. Build paths use a single managed scratch run;
+permanent evidence stays outside scratch.
+
+Synthetic in-memory results exercise these joins and the original XML verifiers;
+no real native build/producer receipt or approval is created. The original partial
+Windows development report remains development-only. Locked preparation and SDK
+checks reuse existing verifiers and original origins, without changing their
+rules. This source packet creates no SDK, wheel, environment or managed scratch.
+A positive native-build join remains separate from archive, installed functional/
+absence/control/shutdown, retention and hardware admission. Real reviewed recipes
+and collection of their actual managed build evidence, full qualification subject,
+producer/attempt/disposition and promotion-basis/envelope remain required. H2
+approval and actual H5 admission are still pending; original scope is preserved.

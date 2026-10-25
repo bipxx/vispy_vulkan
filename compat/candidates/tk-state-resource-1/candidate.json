@@ -2,7 +2,7 @@
   "schema": 1,
   "phase": "development",
   "id": "tk-state-resource-1",
-  "manifest_sha256": "88ed2ecd01f5d21508994631e957f82d2c90ed3b11d734c3521cf843c20e3de3",
+  "manifest_sha256": "1a9abfdab2b133755b4260dc12f5ede52cb0323186906a4cd71d53b6155dc12d",
   "product_source_commit": "6345ceef42df1a64a7401a83c2d1a30384903cd1",
   "upstream_commit": "117b054598f4758b598f4b8f48feea48c11fe7b0",
   "ledger": {
@@ -1124,7 +1124,7 @@
   "preparation_tools": [
     {
       "path": "tools/compatibility_candidate.py",
-      "sha256": "eb57402892cdd8774187ded0b0c146c6b75dd8563f896ff6d9c0304093e8435f"
+      "sha256": "449c3d8721b03eb5a67d1745459b7df3fb70879f22d6219356aec29d193a26e8"
     },
     {
       "path": "tools/compatibility_inventory.py",
@@ -1172,7 +1172,7 @@
     },
     {
       "path": "compat/qualification-ci.json",
-      "sha256": "03f64931fe60f58260e4bb1bcae1ab0f9f2399348c914c29c716a5056c5ca8d9"
+      "sha256": "4146bd874841e144c7b830ad80bc7bcf6744a6eebe1d6788c8bb41cacb7ff48d"
     },
     {
       "path": "tools/qualification_artifact.py",
@@ -1191,6 +1191,34 @@
       "sha256": "b86fece76b81c2e9429fd49f9468a0d735dfaff8ffe00f821635c90a69019601"
     },
     {
+      "path": "tools/qualification_native.py",
+      "sha256": "3a1befb5609be77dff98dfa2d0b3a66a3b5112a7f109de0175a946eb5faa3695"
+    },
+    {
+      "path": "compat/qualification-native.schema.json",
+      "sha256": "906e4d86a8a68ac551954077d456b0ebea598c4ada6b90de609eeec10a16a8b4"
+    },
+    {
+      "path": "tools/native_epoch.py",
+      "sha256": "5fe67d61d6dd7d13ec60e7a45eca204c99d6e89201c9868520e925db1c04e3dd"
+    },
+    {
+      "path": "tools/qualification_epoch.py",
+      "sha256": "e6816d4d333c2496f3d40ef2edfebfccc1eb5c8a10e7f590e141221d7b1aee14"
+    },
+    {
+      "path": "compat/qualification-epoch.schema.json",
+      "sha256": "e6c58e2241622f0090c19ae4fe883d44e6f59b5663aaec925a17e41dea4e50de"
+    },
+    {
+      "path": "tools/qualification_index.py",
+      "sha256": "9ac5ba6ec3db9958ca555b889d61a7d759ca1d4629370b300a38ef6d610842da"
+    },
+    {
+      "path": "compat/qualification-index.schema.json",
+      "sha256": "242662b23c5deb157b530d27061688a989ae367764faaecd36f2fae25d86e7b0"
+    },
+    {
       "path": ".github/workflows/linux-vulkan.yml",
       "sha256": "4aed136587558894b3ca4b734b5ae8ed03691924b30e5c1151b7c6388ffb64e9"
     },
@@ -1204,7 +1232,7 @@
     },
     {
       "path": "docs/superpowers/specs/2026-10-24-vispy-compatibility-gap-closure.md",
-      "sha256": "abcb847f185e0c5d6c988d6d429cb3625a29a55c3b2a9a41990824ecfdd036bc"
+      "sha256": "492ed1ed0ef73e8e08a2e8cc3a3acbe3a4e00c755a36938895800bcec5b9cfba"
     },
     {
       "path": "compat/vispy-candidate.schema.json",
@@ -1224,7 +1252,7 @@
     },
     {
       "path": ".github/workflows/cpu-contract.yml",
-      "sha256": "e43c3e443cef811894008e1c2e608d68ce47d80f14856529ae5478ec23a63738"
+      "sha256": "bc05dd9b2be034d24517a70a6fde6acec3ef25ef6d3d204e8bf4684a44544d3c"
     },
     {
       "path": "tools/audit_no_opengl.py",

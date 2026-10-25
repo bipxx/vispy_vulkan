@@ -48,9 +48,13 @@ support claim. Original requirements, licenses and all required gates remain.
 
 The main bottleneck is now the missing integrated installed qualification and
 independent cumulative review, rather than another isolated proof helper. H1/H3,
-selection, CI and archive/SDK prerequisites exist. Native leaf provenance remains
-unfinalized local WIP; its candidate-coupling/reuse issue below must be resolved
-before adopting it as an admission requirement. No plan review approves that code.
+selection, CI and archive/SDK prerequisites exist. The integrated H4 source now
+includes separate native production/reuse identities, an original-epoch adapter,
+and subject/attempt/retention/promotion joins; see the
+[integration record](../../qualification-index.md). Its real subject remains
+incomplete with all 120 selected criteria missing proof. Actual implementation/
+scope review, producer/blocker decisions and installed qualification remain next;
+no plan review or synthetic validator fixture approves an artifact.
 
 | Priority / stage | Shortest faithful action | Exit / evidence that changes the next action |
 | --- | --- | --- |
