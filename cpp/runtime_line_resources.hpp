@@ -119,7 +119,8 @@ inline std::vector<uint8_t> repack_endpoint_uniforms(
         const auto found = std::find_if(original.begin(), original.end(), [&](const auto& value) {
             return value.name == field.name;
         });
-        if (found == original.end() || found->type != field.type || found->array_size != field.array_size)
+        if (found == original.end() || found->type != field.type || found->array_size != field.array_size ||
+            found->array_dimensions != field.array_dimensions)
             throw std::runtime_error("lines: captured uniform " + field.name + ": missing or incompatible type/array");
         if (std::find_if(found + 1, original.end(), [&](const auto& value) {
                 return value.name == field.name;

@@ -98,7 +98,9 @@ std::string uniform_block(const std::vector<NormUniform>& uniforms) {
     for (const auto& uniform : uniforms) {
         out << "    layout(offset = " << uniform.offset << ") "
             << (uniform.storage_type.empty() ? uniform.type : uniform.storage_type) << ' ' << uniform_member_name(uniform);
-        if (uniform.array_size) out << '[' << uniform.array_size << ']';
+        if (uniform.array_dimensions.empty() && uniform.array_size)
+            out << '[' << uniform.array_size << ']';
+        else for (uint32_t dimension : uniform.array_dimensions) out << '[' << dimension << ']';
         out << ";\n";
     }
     out << "};\n"; return out.str();

@@ -13,6 +13,7 @@
 #include <cstring>
 #include <mutex>
 #include <map>
+#include <limits>
 #include <set>
 #include <unordered_map>
 #include <unordered_set>
@@ -779,15 +780,35 @@ bool reflect_uniform_layout(const std::vector<uint32_t>& words,
         if (!types.count(type_id)) return fail("unknown type for " + uniform.name);
         uint32_t array_stride = 0;
         uint32_t array_size = 0;
-        if (types[type_id].opcode == spv::Op::OpTypeArray) {
+        std::vector<uint32_t> dimensions, strides;
+        uint64_t leaves = 1;
+        while (types.count(type_id) && types[type_id].opcode == spv::Op::OpTypeArray) {
             const auto& array = types[type_id].operands;
             if (array.size() != 2 || !constants.count(array[1]) || !array_strides.count(type_id))
                 return fail("array size/stride missing for " + uniform.name);
-            array_size = constants[array[1]];
-            array_stride = array_strides[type_id];
+            const uint32_t dimension = constants[array[1]];
+            if (!dimension || leaves > uint64_t(std::numeric_limits<int>::max()) / dimension)
+                return fail("array dimensions overflow for " + uniform.name);
+            leaves *= dimension;
+            dimensions.push_back(dimension);
+            strides.push_back(array_strides[type_id]);
             type_id = array[0];
         }
-        if (array_size != static_cast<uint32_t>(uniform.array_size)) return fail("array length differs for " + uniform.name);
+        if (!dimensions.empty()) {
+            array_size = static_cast<uint32_t>(leaves);
+            array_stride = strides.back();
+            uint64_t extent = array_stride;
+            for (size_t depth = dimensions.size(); depth-- > 0;) {
+                if (!extent || extent != strides[depth])
+                    return fail("nested array stride differs for " + uniform.name);
+                extent *= dimensions[depth];
+                if (extent > std::numeric_limits<uint32_t>::max())
+                    return fail("array layout overflow for " + uniform.name);
+            }
+        }
+        if (array_size != static_cast<uint32_t>(uniform.array_size) ||
+                dimensions != uniform.array_dimensions)
+            return fail("array shape differs for " + uniform.name);
         uint32_t columns = 1;
         uint32_t rows = 1;
         uint32_t components = 1;

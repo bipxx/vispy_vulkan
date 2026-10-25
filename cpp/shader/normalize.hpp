@@ -19,6 +19,9 @@ struct NormUniform {
     uint32_t matrix_stride = 0;
     uint32_t array_stride = 0;
     bool row_major = false;
+    // Ordered GLSL shape; array_size is the flattened leaf count and
+    // array_stride is the innermost std140 leaf stride.
+    std::vector<uint32_t> array_dimensions;
 };
 
 enum class VertexIdentityPolicy : uint32_t { Native, Affine, Indexed, BatchAffine, BatchIndexed };
@@ -118,3 +121,8 @@ NormalizedShader normalize_program(const std::string& vertex, const std::string&
 bool pack_uniform_value(const NormUniform& uniform, const void* source, size_t source_bytes,
                         void* destination, size_t destination_bytes,
                         std::string* error = nullptr);
+
+// Resolve a fully or partially indexed name to its contiguous std140 subview.
+// Reject malformed, out-of-range or excess indices without modifying the result.
+bool uniform_indexed_view(const NormUniform& uniform, const std::string& name,
+                          NormUniform& result, std::string* error = nullptr);

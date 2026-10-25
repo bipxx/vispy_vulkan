@@ -99,6 +99,66 @@ void uniform_layouts() {
     require(vec3_scalar.uniforms[1].offset == 12, "std140 scalar may use vec3 tail");
 }
 
+void multidimensional_uniforms() {
+    for (const std::string type : {"float", "int", "bool", "vec3", "bvec2", "mat2", "mat2x3"}) {
+        const std::string expression = type == "bool" ? "float(grid[1][2])" :
+            type == "bvec2" ? "float(grid[1][2].x)" :
+            type.find("mat") == 0 ? "grid[1][2][0][1]" :
+            type == "vec3" ? "grid[1][2].x" : "float(grid[1][2])";
+        auto normalized = normalize_program(vertex, "uniform " + type + " grid[2][3];"
+            "void main(){gl_FragColor=vec4(" + expression + ");}");
+        compile_and_reflect(normalized);
+        const auto& uniform = normalized.uniforms.at(0);
+        require(uniform.array_dimensions == std::vector<uint32_t>({2, 3}) && uniform.array_size == 6,
+            "ordered shape and flattened count survive reflection");
+        NormUniform row, leaf;
+        std::string error;
+        require(uniform_indexed_view(uniform, "grid[1]", row, &error), error);
+        require(row.array_dimensions == std::vector<uint32_t>({3}) && row.array_size == 3 &&
+            row.offset == uniform.offset + 3 * uniform.array_stride, "row subview layout");
+        require(uniform_indexed_view(uniform, "grid[1][2]", leaf, &error), error);
+        require(leaf.array_dimensions.empty() && !leaf.array_size && !leaf.array_stride &&
+            leaf.offset == uniform.offset + 5 * uniform.array_stride, "leaf subview layout");
+        std::vector<uint8_t> bytes(normalized.uniform_bytes, 0xCD);
+        std::vector<float> values(6 * uniform.component_count, 0.25f);
+        require(pack_uniform_value(uniform, values.data(), values.size() * 4,
+            bytes.data(), bytes.size(), &error), error);
+        auto before = bytes;
+        require(!pack_uniform_value(row, values.data(), values.size() * 4,
+            bytes.data(), bytes.size(), &error) && bytes == before, "wrong subarray size is atomic");
+        for (const std::string name : {"grid[2]", "grid[1][3]", "grid[-1]", "grid[]", "grid[1]x",
+                "grid[1][2][0]", "grid[4294967296]", "other[1]"}) {
+            NormUniform rejected; rejected.name = "unchanged";
+            require(!uniform_indexed_view(uniform, name, rejected, &error) && rejected.name == "unchanged",
+                "invalid index rejected before mutation: " + name);
+        }
+        auto mismatched = normalized.uniforms;
+        mismatched[0].array_dimensions = {3, 2};
+        auto compiled = compile_vulkan_glsl(normalized.vertex, normalized.fragment);
+        require(compiled.ok, compiled.log);
+        uint32_t block_bytes = normalized.uniform_bytes;
+        require(!reflect_uniform_layout(compiled.fragment.words, mismatched, block_bytes, error),
+            "reflection rejects equal-product different-shape metadata");
+    }
+    auto mismatch = normalize_program("uniform float grid[2][3];" + vertex,
+        "uniform float grid[3][2];void main(){gl_FragColor=vec4(grid[0][0]);}");
+    require(mismatch.error.find("array shapes differ") != std::string::npos, "cross-stage shape mismatch");
+    for (const std::string declaration : {"uniform float grid[2147483647][2];",
+            "uniform mat4 grid[67108864];", "uniform float grid[0][2];"}) {
+        auto overflow = normalize_program(vertex, declaration + "void main(){gl_FragColor=vec4(1);}");
+        require(!overflow.error.empty(), "array overflow/invalid dimension rejected");
+    }
+    auto nested_bool = normalize_program(vertex,
+        "uniform bool flags[2][3];void main(){gl_FragColor=vec4(float(flags[int(flags[0][1])][2]));}");
+    compile_and_reflect(nested_bool);
+    auto cube = normalize_program(vertex,
+        "uniform float grid[2][3][4];void main(){gl_FragColor=vec4(grid[1][2][3]);}");
+    compile_and_reflect(cube);
+    NormUniform leaf;
+    require(uniform_indexed_view(cube.uniforms[0], "grid[1][2][3]", leaf) && leaf.offset == 23 * 16,
+        "three-dimensional row-major subview offset");
+}
+
 void boolean_lowering() {
     auto normalized = normalize_program(vertex,
         "uniform bool u_flag; uniform bool u_flags[2]; uniform bvec3 u_channels;\n"
@@ -634,6 +694,7 @@ int main(int argc, char** argv) {
             return 0;
         }
         uniform_layouts();
+        multidimensional_uniforms();
         boolean_lowering();
         boolean_scope_lowering();
         coordinate_entry();

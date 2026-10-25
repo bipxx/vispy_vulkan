@@ -28,6 +28,8 @@ Done by GLIR:
 """
 
 import re
+from itertools import product
+from math import prod
 import numpy as np
 
 from .globject import GLObject
@@ -45,11 +47,11 @@ for kind in ('uniform', 'attribute', 'varying', 'const', 'in', 'out'):
                                  r"((highp|mediump|lowp)\s+)?"  # Precision (optional)
                                  r"(?P<type>\w+)\s+"  # type
                                  r"(?P<name>\w+)\s*"  # name
-                                 r"(\[(?P<size>\d+)\])?"  # size (optional)
+                                 r"(?P<dimensions>(?:\[\s*\d+\s*\]\s*)*)"  # array shape
                                  r"(\s*\=\s*[0-9.]+)?"  # default value (optional)
                                  r"\s*;",  # end
                                  flags=re.MULTILINE)
-    
+
 
 # ------------------------------------------------------------ Shader class ---
 class Shader(GLObject):
@@ -125,8 +127,14 @@ class Program(GLObject):
         'bvec3': (bool, 3),
         'bvec4': (bool, 4),
         'mat2': (np.float32, 4),
-        'mat3': (np.float32, 9), 
+        'mat3': (np.float32, 9),
         'mat4': (np.float32, 16),
+        'mat2x3': (np.float32, 6),
+        'mat2x4': (np.float32, 8),
+        'mat3x2': (np.float32, 6),
+        'mat3x4': (np.float32, 12),
+        'mat4x2': (np.float32, 8),
+        'mat4x3': (np.float32, 12),
         'sampler1D': (np.uint32, 1),
         'sampler2D': (np.uint32, 1),
         'sampler3D': (np.uint32, 1),
@@ -142,6 +150,7 @@ class Program(GLObject):
 
         # Init description of variables obtained from source code
         self._code_variables = {}  # name -> (kind, type_, name)
+        self._array_shapes = {}  # array or subarray name -> ordered dimensions
         # Init user-defined data for attributes and uniforms
         self._user_variables = {}  # name -> data / buffer / texture
         # Init pending user-defined data
@@ -249,6 +258,7 @@ class Program(GLObject):
 
         # Parse uniforms, attributes and varyings
         self._code_variables = {}
+        self._array_shapes = {}
         for kind in ('uniform', 'attribute', 'varying', 'const', 'in', 'out'):
 
             # pick regex for the correct kind of var
@@ -262,16 +272,35 @@ class Program(GLObject):
 
             for m in re.finditer(reg, code):
                 gtype = m.group('type')
-                size = int(m.group('size')) if m.group('size') else -1
-                this_kind = kind
-                if size >= 1:
-                    # uniform arrays get added both as individuals and full
-                    for i in range(size):
-                        name = '%s[%d]' % (m.group('name'), i)
-                        self._code_variables[name] = kind, gtype, name, -1
-                    this_kind = 'uniform_array'
+                shape = tuple(map(int, re.findall(r'\d+', m.group('dimensions'))))
+                if any(dimension <= 0 for dimension in shape):
+                    raise ValueError('Array dimensions must be positive for %r'
+                                     % m.group('name'))
+                if len(shape) > 1 and (kind != 'uniform' or 'sampler' in gtype):
+                    raise ValueError('Multidimensional %s %r is unsupported'
+                                     % (kind, m.group('name')))
                 name = m.group('name')
-                self._code_variables[name] = this_kind, gtype, name, size
+                previous = self._code_variables.get(name)
+                if (previous is not None and kind == 'uniform' and
+                        (self._array_shapes.get(name, ()) != shape or previous[1] != gtype)):
+                    raise ValueError('Uniform %r has conflicting shapes or types' % name)
+                if shape:
+                    # Keep the existing four-field variable records. Ordered
+                    # shapes are separate: equal flattened sizes are not equal
+                    # declarations. Every prefix is independently assignable.
+                    for depth in range(1, len(shape) + 1):
+                        remaining = shape[depth:]
+                        for indices in product(*(range(d) for d in shape[:depth])):
+                            indexed = name + ''.join('[%d]' % i for i in indices)
+                            self._code_variables[indexed] = (
+                                'uniform_array' if remaining else kind, gtype,
+                                indexed, prod(remaining) if remaining else -1)
+                            if remaining:
+                                self._array_shapes[indexed] = remaining
+                    self._array_shapes[name] = shape
+                self._code_variables[name] = (
+                    'uniform_array' if shape else kind, gtype, name,
+                    prod(shape) if shape else -1)
 
         # Now that our code variables are up-to date, we can process
         # the variables that were set but yet unknown.
@@ -398,8 +427,16 @@ class Program(GLObject):
             elif kind == 'uniform_array':
                 # Normal uniform; convert to np array and check size
                 dtype, numel = self._gtypes[type_]
-                data = np.atleast_2d(data).astype(dtype)
-                need_shape = (size, numel)
+                shape = self._array_shapes[name]
+                # Preserve the original one-dimensional (N, components)
+                # contract. Higher-rank scalars also accept their natural shape;
+                # vectors/matrices retain a final packed-component dimension.
+                data = np.asarray(data, dtype=dtype)
+                need_shape = shape + (numel,)
+                if len(shape) == 1:
+                    data = np.atleast_2d(data)
+                elif numel == 1 and data.shape == shape:
+                    data = data.reshape(need_shape)
                 if data.shape != need_shape:
                     raise ValueError('Uniform array %r needs shape %s not %s'
                                      % (name, need_shape, data.shape))

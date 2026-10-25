@@ -2,6 +2,7 @@
 
 #include <algorithm>
 #include <cctype>
+#include <charconv>
 #include <cstring>
 #include <limits>
 #include <sstream>
@@ -169,6 +170,7 @@ struct Decl {
     std::string interpolation;
     bool centroid = false, sample = false;
     int array_size = 0;
+    std::vector<uint32_t> array_dimensions;
     int line = 1;
     size_t begin = 0;
     size_t end = 0;
@@ -234,7 +236,7 @@ std::vector<Decl> find_decls(const std::vector<Tok>& tokens, std::string& error,
             decl.name = tokens[j++].text;
             decl.interpolation = interpolation;
             decl.centroid = centroid; decl.sample = sample;
-            if (j < tokens.size() && tokens[j].text == "[") {
+            while (j < tokens.size() && tokens[j].text == "[") {
                 if (j + 2 >= tokens.size() || tokens[j + 2].text != "]" ||
                     tokens[j + 1].text.empty() ||
                     !std::all_of(tokens[j + 1].text.begin(), tokens[j + 1].text.end(),
@@ -243,15 +245,20 @@ std::vector<Decl> find_decls(const std::vector<Tok>& tokens, std::string& error,
                             decl.name + ": array length must be a positive literal";
                     return {};
                 }
-                try { decl.array_size = std::stoi(tokens[j + 1].text); }
-                catch (...) { decl.array_size = 0; }
-                if (decl.array_size <= 0) {
+                int dimension = 0;
+                try { dimension = std::stoi(tokens[j + 1].text); }
+                catch (...) {}
+                if (dimension <= 0 || (decl.array_size > 0 &&
+                        decl.array_size > std::numeric_limits<int>::max() / dimension)) {
                     error = stage + " line=" + std::to_string(decl.line) + " uniform/interface " +
                             decl.name + ": invalid array length";
                     return {};
                 }
+                decl.array_dimensions.push_back(static_cast<uint32_t>(dimension));
+                decl.array_size = (decl.array_size ? decl.array_size : 1) * dimension;
                 j += 3;
-                if (j < tokens.size() && tokens[j].text == "[") {
+                if (j < tokens.size() && tokens[j].text == "[" &&
+                        (word != "uniform" || is_sampler(type))) {
                     error = stage + " line=" + std::to_string(decl.line) + " interface " + decl.name +
                             ": multidimensional arrays are unsupported";
                     return {};
@@ -271,7 +278,7 @@ std::vector<Decl> find_decls(const std::vector<Tok>& tokens, std::string& error,
     return decls;
 }
 
-void place_uniform(NormUniform& uni, uint32_t& cursor) {
+bool place_uniform(NormUniform& uni, uint32_t& cursor) {
     uni.storage_type = storage_type(uni.type);
     uint32_t alignment = 4;
     uint32_t element_size = 4;
@@ -290,12 +297,18 @@ void place_uniform(NormUniform& uni, uint32_t& cursor) {
     if (uni.array_size > 0) {
         alignment = std::max(16u, alignment);
         uni.array_stride = align_up(element_size, 16);
+        if (static_cast<uint32_t>(uni.array_size) >
+                std::numeric_limits<uint32_t>::max() / uni.array_stride) return false;
         element_size = uni.array_stride * static_cast<uint32_t>(uni.array_size);
     }
-    cursor = align_up(cursor, alignment);
+    const uint64_t start = (uint64_t(cursor) + alignment - 1) / alignment * alignment;
+    // Leave enough headroom for the final block alignment as well.
+    if (start + element_size > std::numeric_limits<uint32_t>::max() - 15u) return false;
+    cursor = static_cast<uint32_t>(start);
     uni.offset = cursor;
     uni.size = element_size;
     cursor += element_size;
+    return true;
 }
 
 std::string bool_storage_name(const NormUniform& uniform) {
@@ -841,15 +854,22 @@ std::string emit_body(const std::vector<Tok>& tokens, const std::vector<Decl>& d
                             " uniform " + uniform.name + ": whole boolean arrays are unsupported; index the uniform";
                     return {};
                 }
-                size_t close = i + 2;
-                int brackets = 1;
-                for (; close < tokens.size(); ++close) {
-                    if (tokens[close].text == "[") ++brackets;
-                    if (tokens[close].text == "]" && --brackets == 0) break;
-                }
-                if (close == tokens.size()) {
-                    error = "unterminated boolean uniform index at line=" + std::to_string(tok.line);
-                    return {};
+                size_t close = i;
+                for (size_t dimension = 0; dimension < uniform.array_dimensions.size(); ++dimension) {
+                    if (close + 1 >= tokens.size() || tokens[close + 1].text != "[") {
+                        error = "boolean uniform " + uniform.name + ": index every array dimension";
+                        return {};
+                    }
+                    close += 2;
+                    int brackets = 1;
+                    for (; close < tokens.size(); ++close) {
+                        if (tokens[close].text == "[") ++brackets;
+                        if (tokens[close].text == "]" && --brackets == 0) break;
+                    }
+                    if (close == tokens.size()) {
+                        error = "unterminated boolean uniform index at line=" + std::to_string(tok.line);
+                        return {};
+                    }
                 }
                 suffixes[close].push_back(suffix);
             } else text += suffix;
@@ -1035,15 +1055,19 @@ NormalizedShader normalize_program(const std::string& vertex_src, const std::str
         }
         for (const auto& existing : result.uniforms) {
             if (existing.name != decl.name) continue;
-            if (existing.type != decl.type || existing.array_size != decl.array_size)
-                result.error = "uniform " + decl.name + ": stage types or array lengths differ";
+            if (existing.type != decl.type || existing.array_dimensions != decl.array_dimensions)
+                result.error = "uniform " + decl.name + ": stage types or array shapes differ";
             return;
         }
         NormUniform uniform;
         uniform.name = decl.name;
         uniform.type = decl.type;
         uniform.array_size = decl.array_size;
-        place_uniform(uniform, cursor);
+        uniform.array_dimensions = decl.array_dimensions;
+        if (!place_uniform(uniform, cursor)) {
+            result.error = "uniform " + decl.name + ": std140 layout exceeds addressable size";
+            return;
+        }
         result.uniforms.push_back(std::move(uniform));
     };
     for (const auto& decl : vert_decls) if (decl.storage == "uniform") add_uniform(decl);
@@ -1059,7 +1083,10 @@ NormalizedShader normalize_program(const std::string& vertex_src, const std::str
         NormUniform viewport;
         viewport.name = "vispy_point_viewport";
         viewport.type = "vec2";
-        place_uniform(viewport, cursor);
+        if (!place_uniform(viewport, cursor)) {
+            result.error = "generated uniform: std140 layout exceeds addressable size";
+            return result;
+        }
         result.uniforms.push_back(std::move(viewport));
     }
     if (fragment_depth_coordinates) {
@@ -1074,7 +1101,10 @@ NormalizedShader normalize_program(const std::string& vertex_src, const std::str
         NormUniform range;
         range.name = "vispy_fragment_depth_range";
         range.type = "vec2";
-        place_uniform(range, cursor);
+        if (!place_uniform(range, cursor)) {
+            result.error = "generated uniform: std140 layout exceeds addressable size";
+            return result;
+        }
         result.uniforms.push_back(std::move(range));
     }
     result.uniform_bytes = align_up(cursor, 16);
@@ -1194,7 +1224,7 @@ NormalizedShader normalize_program(const std::string& vertex_src, const std::str
         for (const auto& uniform : result.uniforms) {
             header << "    layout(offset = " << uniform.offset << ") " << uniform.storage_type << " "
                    << (boolean_type(uniform.type) ? bool_storage_name(uniform) : uniform.name);
-            if (uniform.array_size > 0) header << "[" << uniform.array_size << "]";
+            for (uint32_t dimension : uniform.array_dimensions) header << "[" << dimension << "]";
             header << ";\n";
         }
         header << "};\n";
@@ -1333,5 +1363,56 @@ bool pack_uniform_value(const NormUniform& uniform, const void* source, size_t s
         } else std::memcpy(output + offsets[component], input + component * 4, 4);
     }
     if (error) error->clear();
+    return true;
+}
+
+bool uniform_indexed_view(const NormUniform& uniform, const std::string& name,
+                          NormUniform& result, std::string* error) {
+    const auto fail = [&](const char* reason) {
+        if (error) *error = reason;
+        return false;
+    };
+    const std::string prefix = uniform.name + '[';
+    if (!name.starts_with(prefix) || uniform.array_size <= 0 || !uniform.array_stride)
+        return fail("not an indexed array uniform");
+    auto dimensions = uniform.array_dimensions;
+    if (dimensions.empty()) dimensions.push_back(static_cast<uint32_t>(uniform.array_size));
+    uint64_t count = 1;
+    for (uint32_t dimension : dimensions) {
+        if (!dimension || count > uint64_t(std::numeric_limits<int>::max()) / dimension)
+            return fail("invalid array dimensions");
+        count *= dimension;
+    }
+    if (count != static_cast<uint32_t>(uniform.array_size)) return fail("inconsistent array dimensions");
+    size_t cursor = uniform.name.size(), depth = 0;
+    uint64_t first = 0;
+    while (cursor < name.size()) {
+        if (depth >= dimensions.size() || name[cursor++] != '[')
+            return fail("excess or malformed array index");
+        const size_t begin = cursor;
+        while (cursor < name.size() && name[cursor] >= '0' && name[cursor] <= '9') ++cursor;
+        if (begin == cursor || cursor == name.size() || name[cursor] != ']')
+            return fail("array index must be a nonnegative integer");
+        uint32_t index = 0;
+        const auto parsed = std::from_chars(name.data() + begin, name.data() + cursor, index);
+        if (parsed.ec != std::errc{} || index >= dimensions[depth])
+            return fail("array index is out of bounds");
+        count /= dimensions[depth++];
+        first += uint64_t(index) * count;
+        ++cursor;
+    }
+    const uint64_t offset = uint64_t(uniform.offset) + first * uniform.array_stride;
+    const uint64_t size = count * uniform.array_stride;
+    if (offset > std::numeric_limits<uint32_t>::max() || size > std::numeric_limits<uint32_t>::max() ||
+            offset + size > uint64_t(uniform.offset) + uniform.size)
+        return fail("indexed view exceeds array layout");
+    NormUniform view = uniform;
+    view.name = name;
+    view.offset = static_cast<uint32_t>(offset);
+    view.size = static_cast<uint32_t>(size);
+    view.array_dimensions.assign(dimensions.begin() + depth, dimensions.end());
+    view.array_size = view.array_dimensions.empty() ? 0 : static_cast<int>(count);
+    if (!view.array_size) view.array_stride = 0;
+    result = std::move(view);
     return true;
 }

@@ -7106,21 +7106,31 @@ static void execute_commands_impl(int canvas_id, const std::vector<Command>& com
                             snap.uniforms.data(), snap.uniforms.size(), &error)) {
                         throw std::runtime_error("UNIFORM " + uni.name + ": " + error);
                     }
-                    for (int n = 0; n < uni.array_size; ++n) {
-                        NormUniform element = uni;
-                        element.offset += n * uni.array_stride;
-                        element.array_size = 0;
-                        element.size = uni.array_stride;
-                        element.array_stride = 0;
-                        std::string name = uni.name + "[" + std::to_string(n) + "]";
-                        auto floats = obj.f_uniforms.find(name);
-                        auto ints = obj.i_uniforms.find(name);
-                        if (floats != obj.f_uniforms.end() && !pack_uniform_value(element, floats->second.data(),
-                            floats->second.size() * 4, snap.uniforms.data(), snap.uniforms.size(), &error))
-                            throw std::runtime_error("UNIFORM " + name + ": " + error);
-                        if (ints != obj.i_uniforms.end() && !pack_uniform_value(element, ints->second.data(),
-                            ints->second.size() * 4, snap.uniforms.data(), snap.uniforms.size(), &error))
-                            throw std::runtime_error("UNIFORM " + name + ": " + error);
+                    if (uni.array_size > 0) {
+                        // Merge typed stores by name so every indexed parent
+                        // precedes its descendants, even across value types.
+                        // Visit actual writes, not every possible array leaf.
+                        const std::string prefix = uni.name + '[';
+                        auto floats = obj.f_uniforms.lower_bound(prefix);
+                        auto ints = obj.i_uniforms.lower_bound(prefix);
+                        const auto active = [&](const auto& item, const auto& values) {
+                            return item != values.end() && item->first.starts_with(prefix);
+                        };
+                        const auto apply = [&](const auto& item) {
+                            NormUniform view;
+                            if (!uniform_indexed_view(uni, item->first, view, &error) ||
+                                !pack_uniform_value(view, item->second.data(), item->second.size() * 4,
+                                    snap.uniforms.data(), snap.uniforms.size(), &error))
+                                throw std::runtime_error("UNIFORM " + item->first + ": " + error);
+                        };
+                        while (active(floats, obj.f_uniforms) || active(ints, obj.i_uniforms)) {
+                            if (active(floats, obj.f_uniforms) &&
+                                (!active(ints, obj.i_uniforms) || floats->first < ints->first)) {
+                                apply(floats++);
+                            } else {
+                                apply(ints++);
+                            }
+                        }
                     }
                 }
                 for (const auto& attr : snap.artifact->portable->attributes) {
