@@ -2,7 +2,7 @@
   "schema": 1,
   "phase": "development",
   "id": "tk-state-resource-1",
-  "manifest_sha256": "aa346aa7586da3a53ffc3afb971471625e0c9061e2e9e6a37129110c3cca6c4c",
+  "manifest_sha256": "fa0f2b823f6bc04a5869c4929d5e15593cee61c3be256ad2572bd49c8e8481ac",
   "product_source_commit": "9ef9765552c41c84d82d69b44756d5925b4d3cd3",
   "upstream_commit": "117b054598f4758b598f4b8f48feea48c11fe7b0",
   "ledger": {
@@ -1124,7 +1124,7 @@
   "preparation_tools": [
     {
       "path": "tools/compatibility_candidate.py",
-      "sha256": "7e36f63909683f7a5014b01880c1557b5ae5b3a413d364f42739039c5283e4d4"
+      "sha256": "ad3c7168d450326e2ab952431777c9f104cddb7c9d873918929c5e243b959864"
     },
     {
       "path": "tools/compatibility_inventory.py",
@@ -1172,7 +1172,7 @@
     },
     {
       "path": "compat/qualification-ci.json",
-      "sha256": "3728d32dad34a75e7fbb87886832b79141b9a1faa7b196cba881ed951d2b85ad"
+      "sha256": "aab7069b2b01370294e06b479d7ec4e9b1939d59f39fc836cbf225f960002ecd"
     },
     {
       "path": "tools/qualification_artifact.py",
@@ -1211,6 +1211,10 @@
       "sha256": "3106c09f756ed53ac14d0190355c49a79ddc114271b06bbccd530999300457df"
     },
     {
+      "path": "tools/linux_ci_lifecycle.py",
+      "sha256": "7345ffc29b681e1ca457303834eb0ca8b6fdf00d0f2ed58f890202f29d4d19a8"
+    },
+    {
       "path": "tools/qualification_epoch.py",
       "sha256": "e6816d4d333c2496f3d40ef2edfebfccc1eb5c8a10e7f590e141221d7b1aee14"
     },
@@ -1228,7 +1232,7 @@
     },
     {
       "path": ".github/workflows/linux-vulkan.yml",
-      "sha256": "140af1b82b49479d8d6fb164530339d1ec433ecf9e9310b1c8edc861c2930ae5"
+      "sha256": "d6ba73ab5685951d4fdf53e26384af1b506994e7cd4b6cc54c0829c811a7e52b"
     },
     {
       "path": ".github/workflows/metal-wheel.yml",
@@ -1260,7 +1264,7 @@
     },
     {
       "path": ".github/workflows/cpu-contract.yml",
-      "sha256": "e48b3806469a2f7eb1cd92099d05c8686e94b1dfc2c4f5e9123f581e7dc7c7d8"
+      "sha256": "457cf83105897d9c3d14dd761f264a9e661772fcf6391defa9c7c4ff93d8c623"
     },
     {
       "path": "tools/audit_no_opengl.py",

@@ -43,3 +43,23 @@ Evidence and the finite retained-input decision are in
 `build/runs/linux-producer-contracts-81/`. A source-only control uses real CTest
 processes with explicitly synthetic Python test cases; it is transport and
 rejection coverage, not execution of the renderer's C++ contracts.
+
+The managed CI collection path is now implemented by
+`tools/linux_ci_lifecycle.py`. The existing wheel build, environments and consumer
+use one registered external native lease alongside Mesa's registered run in the
+same workspace. Direct native commands retain actual argv/PID/exit/wait receipts;
+setup scripts retain their original bytes. Source/license inputs and before/after
+maps, raw CMake/Ninja/compile configuration, observed compiler/Python/tool hashes
+and shipping outputs are retained before registry-aware cleanup. uv uses copies
+and its own per-run cache clean operation. Owned aliases are audited without
+changing original targets, and source mutation remains a failed run after its
+reproducer is saved and scratch removed. See
+`build/runs/linux-ci-lifecycle-82/` for 517 Windows regression checks, 47 WSL
+source controls and seven parsed/Bash-checked workflow bodies. The WSL controls
+exercise actual processes and aliases with explicitly synthetic inputs.
+
+This completes managed collection, not the Linux admission validator. The next
+join must consume these original records through the existing native/index
+route, check the complete dependency/build/strip-output chain and bind actual
+independent reviews. Do not turn the unchanged experimental producer policy into
+an approval or rebuild unchanged native inputs solely to fit a new report shape.

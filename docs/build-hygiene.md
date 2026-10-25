@@ -214,3 +214,22 @@ libraries and their original notices are retained/uploaded with the evidence.
 The ordinary installed native-module inventory still rejects every repository
 native image. Do not exempt the driver or weaken that verifier to accommodate a
 repository-local ICD. Default local library retention is unchanged.
+
+The Linux wheel workflow now uses `tools/linux_ci_lifecycle.py` to register one
+external native lease before installing its build tools. Its environment,
+consumer, temporary files and native build share that lease; Mesa uses another
+registered run in the same workspace and budget. The per-run uv artifact cache
+lives in the selected workspace and is cleared with uv's own clean command.
+`UV_LINK_MODE=copy` and copied interpreters avoid hardlinked scratch. Audited uv
+interpreter aliases are materialized without changing their original targets;
+only its redundant `lib64` alias is removed. Unknown aliases still reject.
+
+Each phase retains its real argv, PID, exit, wait, log and selected input
+environment. Native commands run directly through the recorder; shell setup
+scripts retain their original bytes. Source inputs/licenses, before/after source
+maps, generated build configuration, observed toolchain hashes and shipping
+outputs survive outside scratch. Every successful or failed terminal run uses
+the existing registry-aware cleanup planner and verifier. A still-active or
+unawaited child prevents cleanup. Source changes are retained as a delta and
+remain failures even after scratch is cleaned. These are development/CI
+receipts, not producer or installed-artifact admission.
