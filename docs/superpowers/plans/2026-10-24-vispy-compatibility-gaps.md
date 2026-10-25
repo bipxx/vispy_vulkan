@@ -124,6 +124,18 @@ identities and adds early rejection controls (519 affected checks pass). CPU-onl
 CI is not renderer production; the Linux producer route remains unimplemented.
 See the [concrete producer audit](../../qualification-index.md#producer-readiness-audit-after-composed-array-preparation) before choosing reuse versus a new build.
 
+The next SH-2 source packet adds ordered static sampler-array shapes for the six
+existing sampler types and the missing six-face cube allocation/upload path.
+Windows Vulkan and WSL software Vulkan each pass 165 focused tests plus the
+shared installed-smoke helpers, with nine shutdown zeros. See the
+[sampler/cube report](../../static-sampler-arrays.md) for the retained initial
+three cube failures, corrected controls and explicit residual scope. Product is
+frozen locally at `efa3ced2ceef44896fd1357a466e6d8ea0eb4f0f`; both fresh full Tk
+composites and 527 affected source/preparation checks pass. New profiles retain
+the previous composition observations and unchanged requested closure/ledger.
+Publication and current-head installed CI remain next; these development modules
+provide no producer admission or parent discharge.
+
 
 
 ### Prevent unchanged-native rebuilds

@@ -1,20 +1,20 @@
 {
   "schema": 1,
   "kind": "qualification-subject",
-  "manifest_sha256": "3ebf0eb974b4006c96a11a4c2a76c4091bea9ee71496badc7b7403381c7f0f2e",
-  "product_source_commit": "c188878efa752b3ba36897860a4070dcf4a98fd1",
+  "manifest_sha256": "87630bedb7c6ef766edf8c3346d6614c699f8f0ab6fa7546b971862094194783",
+  "product_source_commit": "efa3ced2ceef44896fd1357a466e6d8ea0eb4f0f",
   "qualification_head": null,
   "candidate": {
     "path": "compat/candidates/tk-state-resource-1/candidate.json",
-    "sha256": "eee40ad61f816878e8f063079dc74f38ce496b8db2528e0d98c658f666567cec"
+    "sha256": "2bf54c0752dfa9e213921f1335af46e0d8101593b6af0d3594a034defef2e194"
   },
   "selection": {
     "path": "compat/candidates/tk-state-resource-1/admission-selection.json",
-    "sha256": "b9d99099309fc6b7d3a9576d5f71f2c6302d2bddd4dd7a699bf6ed7718f0fe0e"
+    "sha256": "10df5f70453def34e7f187522a43299bbd9fe17b8402782820603e890437a1a1"
   },
   "execution": {
     "path": "compat/candidates/tk-state-resource-1/execution.json",
-    "sha256": "4d799024a8a996b9ffb8bddf5e0c36ef84fca8d42ee82c857a866d606d64e20e"
+    "sha256": "96afd3c515cb733453324f2c946de1397ceda58a936ab3a428029bfc425a9f79"
   },
   "ledger": {
     "path": "compat/candidates/tk-state-resource-1/execution-ledger.json",

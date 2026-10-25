@@ -2,8 +2,8 @@
   "schema": 1,
   "phase": "development",
   "id": "tk-state-resource-1",
-  "manifest_sha256": "ff984afd18b20d0fb3c240c7222083546b2ba91b1e04f8782756a32f3c4def95",
-  "product_source_commit": "c188878efa752b3ba36897860a4070dcf4a98fd1",
+  "manifest_sha256": "b85a671f4cc2c4150cb406452da6dcb054eb18aaaa76e329524989afa4f11a9e",
+  "product_source_commit": "efa3ced2ceef44896fd1357a466e6d8ea0eb4f0f",
   "upstream_commit": "117b054598f4758b598f4b8f48feea48c11fe7b0",
   "ledger": {
     "path": "compat/vispy-compatibility.json",
@@ -31,15 +31,15 @@
   ],
   "runtime_inputs": {
     "path": "compat/candidates/tk-state-resource-1/runtime-inputs.json",
-    "sha256": "2acce3e4bc932401fe8d9cc4a02e63493defe24f6e44b854d30e8e0863511726"
+    "sha256": "e98e5c8f0832b5d66e1a35292755a2f6c4fe507a0aef2110e7c267a47850233f"
   },
   "profiles": [
     {
       "id": "windows-gpu-tk86-cp312-development",
       "required": true,
       "observation": {
-        "path": "compat/candidates/tk-state-resource-1/windows-composed-array-profile.json",
-        "sha256": "093c3666f5c957fcf25f7a1c226f5197fc3804e6f9163877722dc76756932012"
+        "path": "compat/candidates/tk-state-resource-1/windows-static-sampler-profile.json",
+        "sha256": "cbef5c19332957ee09d292d78620d432e157961e4323d78f6b9fa9dfd9b81aba"
       },
       "wheel": null,
       "previous_qualified_wheel_sha256": "62df5e4c31bf9a1bb1bea47fd68d50e4198d6ec13d2551c991da1e7f30a2b38f",
@@ -57,8 +57,8 @@
       "id": "wsl-software-tk90-cp31213-development",
       "required": true,
       "observation": {
-        "path": "compat/candidates/tk-state-resource-1/linux-mesa2618-composed-array-profile.json",
-        "sha256": "7d48a1bb62aaeafab076de4e3e0d67efdfd740296085090833d5637fe0622e05"
+        "path": "compat/candidates/tk-state-resource-1/linux-mesa2618-static-sampler-profile.json",
+        "sha256": "37d266882b8eb889b47f08249e875652ab7eefb9e06957f01bb0d6f7befd28fe"
       },
       "wheel": null,
       "previous_qualified_wheel_sha256": "374a74ea9787ccccc643e0ac7e45d9f704a41d046465828736158ac94398c4a3",
