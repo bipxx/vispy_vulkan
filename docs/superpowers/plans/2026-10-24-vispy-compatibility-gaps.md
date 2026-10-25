@@ -66,6 +66,10 @@ no plan review or synthetic validator fixture approves an artifact.
 | Alongside 1-5 - real blockers | Run the bounded Windows threedee diagnosis and independent Linux scissor causal packet without waiting for generic H4 work. Resolve selected-profile lifecycle/toolkit applicability and producer admission. | A causal fix/regression or retained unresolved blocker/next experiment, not retries or metadata-only passes. These remain mandatory for their original release scope. |
 | Next breadth waves | Follow the route map: common state/resource primitives, composed visuals/scene, named shader interfaces and additional backend adapters. Reconcile methods/values/events/examples and residual parents as each family advances. | Each parent needs its full reviewed scope and required profile proof; 15 selected subsets cannot discharge their broader parents. Native Linux GPU and Metal hardware stay separate. |
 
+The [Linux MSAA scissor isolation](../../msaa-scissor-isolation.md) now retains a
+48-case regression and clear/draw plus existing-driver controls. The defect
+remains open; these source diagnostics do not supply a fix or admission.
+
 ### Prevent unchanged-native rebuilds
 
 Use a candidate-independent native producer identity: preferred native/build/
