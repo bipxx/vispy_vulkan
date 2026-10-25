@@ -148,3 +148,28 @@ See `build/runs/linux-ctest-launcher-89/` for original records and controls.
 This establishes a native production prerequisite. Source/scope/reuse approval,
 both selected installed qualification protocols, complete current-head CI and
 promotion review remain open; the real subject is still unadmitted.
+
+
+### Bounded original CI reuse checkpoint
+
+Observer, fixture, report and artifact-upload changes do not justify rebuilding
+unchanged Dawn, Mesa or native wheel inputs. The Linux workflow defaults to
+`reuse`: `compat/linux-ci-reuse.json` pins one successful original run, attempt,
+artifact and production identity. `tools/reuse_linux_ci.py` verifies that proof,
+current native and C++ harness inputs, complete wheel package contents and driver
+recipe before selecting the retained wheel. It reruns the small Vulkan driver
+controls and the current external installed smoke. Original producer records
+remain immutable; new consumer/control receipts are separate.
+
+Changed inputs or unavailable/expired proof stop reuse explicitly. A maintainer
+can select `native_mode=fresh` through workflow dispatch after an explicit
+changed-input or missing-proof decision; no automatic dependency build fallback
+exists. Reuse reserves 1 GiB additional peak, while fresh production retains its
+existing 6 GiB profile and the shared scratch/free-space limits. Source archives,
+patches, licenses and original evidence are retained once by hash, outside
+scratch. The terminal lifecycle includes those original references.
+
+This route proves a production prerequisite, not artifact admission. Cumulative
+implementation/scope review, exact native reuse approval, selected installed
+qualification, current-head required CI and promotion remain separate gates.
+Helper results alone do not establish end-to-end workflow verification.

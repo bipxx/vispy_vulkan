@@ -40,7 +40,8 @@ def source_inventory(source):
         'README.md', 'compat/runtime-package.json', 'compat/build-hygiene.json',
         'compat/software-vulkan-build.json', 'compat/software-vulkan-driver-clip-repair.json',
         'compat/mesa-build-requirements.txt', 'compat/qualification-ci.json',
-        'compat/qualification-ci.schema.json')]
+        'compat/qualification-ci.schema.json', 'compat/linux-ci-reuse.json',
+        'compat/qualification-native.schema.json')]
     inputs += list((source/'compat/patches').glob('mesa-*'))
     for path in inputs:
         if path.is_file():
@@ -370,6 +371,20 @@ def finish(state_path):
     for report in evidence.glob('*-build-inputs-outputs.json'):
         for item in json.loads(report.read_bytes()).values():
             retained.append(dict(**item, roles=['evidence', 'repro']))
+    for name in ('reuse-transport-inputs.json', 'reuse-inputs.json'):
+        reuse = evidence/name
+        if reuse.exists():
+            record = json.loads(reuse.read_bytes())
+            if (record.get('schema') != 1 or record.get('kind') != 'original-linux-ci-reuse-inputs'
+                    or record.get('artifact_admitted') is not False):
+                raise ValueError('Unknown original-input retention protocol')
+            for item in record['retained']:
+                path = no_alias(Path(item['path']).absolute())
+                if (path.is_relative_to(context.work) or path.is_relative_to(ROOT/'build/work')
+                        or digest(path) != item['sha256']
+                        or not item['roles'] or set(item['roles']) - {'source','licenses','evidence','repro'}):
+                    raise ValueError('Reused input is scratch, changed or has unknown roles')
+                retained.append(item)
     retained = list({item['path']: item for item in retained}.values())
     manifest = evidence/'terminal.json'
     write(manifest, dict(schema=1, run_id=state['run_id'], owner=state['owner'],

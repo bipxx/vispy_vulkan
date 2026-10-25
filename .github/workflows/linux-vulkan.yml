@@ -7,6 +7,12 @@ on:
       - 'tools/audit_linux_wheel.py'
       - 'tools/run_linux_native_contracts.py'
       - 'tools/linux_ci_lifecycle.py'
+      - 'tools/reuse_linux_ci.py'
+      - 'tools/qualification_linux_native.py'
+      - 'tools/qualification_native.py'
+      - 'compat/linux-ci-reuse.json'
+      - 'compat/qualification-native.schema.json'
+      - 'compat/candidates/**'
       - 'tools/linux_wheel_smoke.py'
       - 'tools/compatibility_render_smoke.py'
       - 'tools/aggregate_attribute_smoke.py'
@@ -27,9 +33,17 @@ on:
       - 'pyproject.toml'
       - 'uv.lock'
   workflow_dispatch:
+    inputs:
+      native_mode:
+        description: 'Reuse verified inputs; fresh requires an explicit changed-input or missing-proof decision'
+        type: choice
+        required: true
+        default: reuse
+        options: [reuse, fresh]
 
 permissions:
   contents: read
+  actions: read
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -47,6 +61,7 @@ jobs:
       PYTHONDONTWRITEBYTECODE: '1'
       CMAKE_GENERATOR: Ninja
       CMAKE_BUILD_PARALLEL_LEVEL: '3'
+      NATIVE_MODE: ${{ github.event.inputs.native_mode || 'reuse' }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
@@ -66,9 +81,11 @@ jobs:
         run: |
           workspace="$RUNNER_TEMP/vispy-linux-vulkan-${{ github.run_id }}-${{ github.run_attempt }}"
           native_run="native-ci-${{ github.run_id }}-${{ github.run_attempt }}"
+          case "$NATIVE_MODE" in reuse) peak=1073741824 ;; fresh) peak=6442450944 ;; *) exit 1 ;; esac
+          echo "NATIVE_RUN=$native_run" >> "$GITHUB_ENV"
           echo "CI_STATE=$workspace/build/runs/$native_run/state.json" >> "$GITHUB_ENV"
           /usr/bin/python3 -B tools/linux_ci_lifecycle.py init --workspace "$workspace" \
-            --run-id "$native_run" --expected-peak-bytes 6442450944
+            --run-id "$native_run" --expected-peak-bytes "$peak"
       - name: Prepare recorded software Vulkan and exact Python build tools
         run: |
           /usr/bin/python3 -B tools/linux_ci_lifecycle.py --state "$CI_STATE" run --phase prepare --script-stdin <<'PHASE'
@@ -99,7 +116,16 @@ jobs:
           uv --version > "$EVIDENCE/uv-version.txt"
           uname -a > "$EVIDENCE/kernel.txt"
           PHASE
+      - name: Verify and reuse original native production with fresh driver controls
+        if: env.NATIVE_MODE == 'reuse'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          /usr/bin/python3 -B tools/linux_ci_lifecycle.py --state "$CI_STATE" run --phase reuse -- \
+            "$BUILD_PYTHON" -B tools/reuse_linux_ci.py --workspace "$DRIVER_WORKSPACE" \
+            --run-id "$NATIVE_RUN" --owner ci
       - name: Build and verify pinned software Vulkan clipping repair
+        if: env.NATIVE_MODE == 'fresh'
         run: |
           /usr/bin/python3 -B tools/linux_ci_lifecycle.py --state "$CI_STATE" run --phase driver --script-stdin <<'PHASE'
           uv pip install --python "$BUILD_ENV" --require-hashes --only-binary :all: --requirements compat/mesa-build-requirements.txt
@@ -124,6 +150,7 @@ jobs:
           PY
           PHASE
       - name: Build and audit actual Vulkan renderer wheel
+        if: env.NATIVE_MODE == 'fresh'
         run: |
           /usr/bin/python3 -B tools/linux_ci_lifecycle.py --state "$CI_STATE" run --phase native-environment -- "$BUILD_PYTHON" .github/workflows/qualification_gate.py capture --without-package --output "$EVIDENCE/native-environment.json"
           /usr/bin/python3 -B tools/linux_ci_lifecycle.py --state "$CI_STATE" run --phase dependency-before -- "$BUILD_PYTHON" cmake/verify_dependencies.py
@@ -151,14 +178,19 @@ jobs:
           uv export --locked --no-default-groups --extra test --no-emit-project --output-file "$EVIDENCE/consumer-test-requirements.txt" > /dev/null
           uv pip install --python "$consumer/bin/python" --require-hashes --only-binary :all: \
             --requirements "$EVIDENCE/consumer-test-requirements.txt" --requirements "$EVIDENCE/wheel-requirements.txt"
-          wheels=( "$EVIDENCE"/wheels/*.whl )
-          test "${#wheels[@]}" -eq 1
+          if [[ -n "${WHEEL_PATH:-}" ]]; then
+            wheel="$WHEEL_PATH"
+          else
+            wheels=( "$EVIDENCE"/wheels/*.whl )
+            test "${#wheels[@]}" -eq 1
+            wheel="${wheels[0]}"
+          fi
           "$consumer/bin/python" -I -B tools/linux_wheel_smoke.py --tag cp312 \
-            --wheel "${wheels[0]}" --output "$EVIDENCE/rendering"
+            --wheel "$wheel" --output "$EVIDENCE/rendering"
           "$consumer/bin/python" -I -B tools/marker_wheel_smoke.py \
-            --wheel "${wheels[0]}" --output "$EVIDENCE/markers"
+            --wheel "$wheel" --output "$EVIDENCE/markers"
           "$consumer/bin/python" -I -B tools/immediate_state_wheel_smoke.py \
-            --wheel "${wheels[0]}" --output "$EVIDENCE/immediate-state.json"
+            --wheel "$wheel" --output "$EVIDENCE/immediate-state.json"
           PHASE
       - name: Retain source, results and artifacts; clean the registered native lease
         if: always()

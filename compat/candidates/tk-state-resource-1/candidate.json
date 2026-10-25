@@ -2,7 +2,7 @@
   "schema": 1,
   "phase": "development",
   "id": "tk-state-resource-1",
-  "manifest_sha256": "22219e70a634730b3f1fc682303ec4679412eb9701f3345b0bc3ece4462538e2",
+  "manifest_sha256": "82401ad875e297ba4492e7de068579b2c21088eb40fe0ce328b1653ff470ac44",
   "product_source_commit": "9ef9765552c41c84d82d69b44756d5925b4d3cd3",
   "upstream_commit": "117b054598f4758b598f4b8f48feea48c11fe7b0",
   "ledger": {
@@ -1124,7 +1124,7 @@
   "preparation_tools": [
     {
       "path": "tools/compatibility_candidate.py",
-      "sha256": "2bf922c90e066a48fd98f38291f6b1b782f401079c89c285b6ce9c08426e1168"
+      "sha256": "8e22d23e733a5f045957afe979dbc23ec410e07ea8524bac2f74f2e10a978bdd"
     },
     {
       "path": "tools/compatibility_inventory.py",
@@ -1172,7 +1172,7 @@
     },
     {
       "path": "compat/qualification-ci.json",
-      "sha256": "a937981bdb2aaf26dfcdb4c38449c5eb0bec059b059121bba173378146b56450"
+      "sha256": "4c57c903a820fae026a98bf45688da1492c5f7738ca33eb5b6e605089de25628"
     },
     {
       "path": "tools/qualification_artifact.py",
@@ -1196,7 +1196,7 @@
     },
     {
       "path": "tools/qualification_linux_native.py",
-      "sha256": "fc90e45fc4378f42c8749e191d35bfa8d466530b617458f1b36762ed0c95a835"
+      "sha256": "66d186e00af9c1175bcd07847d547536881dac499c30a9ff434665eb8dac3f71"
     },
     {
       "path": "compat/qualification-native.schema.json",
@@ -1216,7 +1216,15 @@
     },
     {
       "path": "tools/linux_ci_lifecycle.py",
-      "sha256": "3d5bc8eb9f5fdcc52a390d57a29fc26107b73679253545504587efe3648480cc"
+      "sha256": "d5f917b24003c082de7f10dbdb8694da602d7a9b82223eec5d9c4ec0f2a71f35"
+    },
+    {
+      "path": "tools/reuse_linux_ci.py",
+      "sha256": "38cbd1f3b92bfbb500fe59205cb6f28971f0dfbe5a9d2a972fb84ec05d4aaf94"
+    },
+    {
+      "path": "compat/linux-ci-reuse.json",
+      "sha256": "06eb14feac7b52b6a42ff2fb30064044b9cf06423f870a9c694384e5a95bce40"
     },
     {
       "path": "tools/qualification_epoch.py",
@@ -1236,7 +1244,7 @@
     },
     {
       "path": ".github/workflows/linux-vulkan.yml",
-      "sha256": "eb395914dd60322ac25ac8b5b84bfa9c131feaf9d9ef80a727331ee33e718857"
+      "sha256": "9237e98216a69e9245a9bc9771492e3c07669c0127ad6f9529c17b8570dc7864"
     },
     {
       "path": ".github/workflows/metal-wheel.yml",
@@ -1268,7 +1276,7 @@
     },
     {
       "path": ".github/workflows/cpu-contract.yml",
-      "sha256": "bce3aa1698367c05e4b2440c92dfc750cfbcec71da3bd0a0a879d72f6a478a4d"
+      "sha256": "215efd62e3a8e01f08a63c1245f2ed2bf41c3847d478f67a71f8bec80b0b1115"
     },
     {
       "path": "tools/audit_no_opengl.py",

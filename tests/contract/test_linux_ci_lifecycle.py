@@ -208,3 +208,35 @@ if os.name == 'posix':
             assert (prepared.parent/'cli-control.sh').read_bytes() == body
             assert (prepared.parent/'cli-control.log').read_bytes() == b'synthetic CLI transport\n'
             lifecycle.finish(prepared)
+
+
+@pytest.mark.parametrize('receipt_name', ['reuse-inputs.json', 'reuse-transport-inputs.json'])
+@pytest.mark.parametrize('mutation', [None, 'scratch', 'coordinator-scratch', 'changed', 'role'])
+def test_reuse_retention_preserves_original_inputs_and_rejects_bad_refs(prepared, mutation, monkeypatch, receipt_name):
+    command(prepared)
+    state = json.loads(prepared.read_bytes())
+    # Isolate the synthetic coordinator from the outer test runner's scratch.
+    monkeypatch.setattr(lifecycle, 'ROOT', Path(state['source']))
+    original = Path(state['workspace'])/'build/artifacts/original.log'
+    original.parent.mkdir(parents=True, exist_ok=True)
+    original.write_bytes(b'original retained producer evidence')
+    item = dict(path=str(original), sha256=digest(original), roles=['evidence', 'repro'])
+    if mutation == 'scratch':
+        item['path'] = str(Path(state['scratch'])/'payload')
+        Path(item['path']).write_bytes(original.read_bytes())
+    elif mutation == 'coordinator-scratch':
+        path = lifecycle.ROOT/'build/work/foreign/payload'
+        path.parent.mkdir(parents=True); path.write_bytes(original.read_bytes())
+        item['path'] = str(path)
+    elif mutation == 'changed': item['sha256'] = '0'*64
+    elif mutation == 'role': item['roles'] = ['unknown']
+    lifecycle.write(prepared.parent/receipt_name, dict(schema=1,
+        kind='original-linux-ci-reuse-inputs', artifact_admitted=False, retained=[item]))
+    if mutation:
+        with pytest.raises(ValueError, match='Reused input'): lifecycle.finish(prepared)
+        assert Path(state['scratch']).exists()
+    else:
+        lifecycle.finish(prepared)
+        manifest = json.loads((prepared.parent/'terminal.json').read_bytes())
+        assert item in manifest['retained']
+        assert original.read_bytes() == b'original retained producer evidence'

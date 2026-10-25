@@ -1463,3 +1463,28 @@ Current-head Linux run `40216949863` built its wheel, then reached original-body
 `tools/linux_ci_lifecycle.py` now registers the existing native build, build/consumer environments and temporary files in one external workspace alongside the Mesa lease. Actual native commands and retained shell scripts have original PID/exit/wait/log receipts and periodic disk guards. Source/license inputs, before/after maps, generated build configuration, observed toolchain hashes and shipping outputs survive cleanup. uv copies and audited producer-specific alias handling preserve original targets; registry-aware cleanup and source-mutation failure controls remain strict. The locked test-extra repair from the preceding checkpoint is included for the pending installed rerun.
 
 All 517 affected Windows regression checks and 47 WSL source controls pass; seven workflow bodies parse and pass Bash syntax checks. No local native build, SDK or environment installation was needed. Inputs to these unit controls are explicitly synthetic; they do not supply renderer C++ execution or independent approval. Runtime profiles, requested scope/closure/ledger and producer trust policy are unchanged; admission remains false with 120 missing criteria. Next: collect the current-head CI results, implement the Linux native/index admission join using the original records, and obtain cumulative implementation/scope review before installed candidate admission and promotion. Evidence: `build/runs/linux-ci-lifecycle-82/`.
+
+
+### Bounded original CI reuse checkpoint
+
+Observer, fixture, report and artifact-upload changes do not justify rebuilding
+unchanged Dawn, Mesa or native wheel inputs. The Linux workflow defaults to
+`reuse`: `compat/linux-ci-reuse.json` pins one successful original run, attempt,
+artifact and production identity. `tools/reuse_linux_ci.py` verifies that proof,
+current native and C++ harness inputs, complete wheel package contents and driver
+recipe before selecting the retained wheel. It reruns the small Vulkan driver
+controls and the current external installed smoke. Original producer records
+remain immutable; new consumer/control receipts are separate.
+
+Changed inputs or unavailable/expired proof stop reuse explicitly. A maintainer
+can select `native_mode=fresh` through workflow dispatch after an explicit
+changed-input or missing-proof decision; no automatic dependency build fallback
+exists. Reuse reserves 1 GiB additional peak, while fresh production retains its
+existing 6 GiB profile and the shared scratch/free-space limits. Source archives,
+patches, licenses and original evidence are retained once by hash, outside
+scratch. The terminal lifecycle includes those original references.
+
+This route proves a production prerequisite, not artifact admission. Cumulative
+implementation/scope review, exact native reuse approval, selected installed
+qualification, current-head required CI and promotion remain separate gates.
+Helper results alone do not establish end-to-end workflow verification.

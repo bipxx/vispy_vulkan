@@ -26,17 +26,18 @@ except ImportError:
 
 SCHEMA = 'compat/qualification-native.schema.json'
 PROTOCOL = {
-    'tools/linux_ci_lifecycle.py': '3d5bc8eb9f5fdcc52a390d57a29fc26107b73679253545504587efe3648480cc',
+    'tools/linux_ci_lifecycle.py': 'd5f917b24003c082de7f10dbdb8694da602d7a9b82223eec5d9c4ec0f2a71f35',
     'tools/build_hygiene.py': '0a4f8cbc161afa39dfaf25e840bb0c788fda4f709b84f7440bd52102f847fa84',
     'tools/run_linux_native_contracts.py': 'e07e6aede2b8f35b0c75533606f59f0669783c1b9822c59534d62d6ffee5caca',
     'tools/audit_linux_wheel.py': '3106c09f756ed53ac14d0190355c49a79ddc114271b06bbccd530999300457df',
     '.github/workflows/qualification_gate.py': '26969e912f921cc57200f66d62a6b17194541006a11b9d5b0bda95c63ac51e92',
-    '.github/workflows/linux-vulkan.yml': 'eb395914dd60322ac25ac8b5b84bfa9c131feaf9d9ef80a727331ee33e718857',
+    '.github/workflows/linux-vulkan.yml': '9237e98216a69e9245a9bc9771492e3c07669c0127ad6f9529c17b8570dc7864',
 }
 WORKFLOW_PATH = '.github/workflows/linux-vulkan.yml'
-# Original successful collector omitted hidden files during transport. Keep its
-# exact original authority; the current upload-only correction changes no build
-# or contract commands. Unknown workflow revisions still require review.
+# Keep the exact successful full-build collector authority. The current collector
+# adds bounded reuse; original build records are never rewritten as reuse runs.
+# Unknown collector revisions remain unsupported.
+LEGACY_COLLECTOR_SHA256 = '3d5bc8eb9f5fdcc52a390d57a29fc26107b73679253545504587efe3648480cc'
 LEGACY_WORKFLOW_SHA256 = 'd1af4af2d0171452ef5519e9bb5893e64b206fa35c6ad07a18e8aeaa67201860'
 MEMBERS = {
     'vispy/_dawn.cpython-312-x86_64-linux-gnu.so': '_dawn.cpython-312-x86_64-linux-gnu.so',
@@ -224,7 +225,9 @@ def validate_capture(capture, expected_production, root=ROOT):
                   'noncanonical Linux source member')
             check(sha(archive.read(name)) == before[name], 'Linux preferred source bytes differ: '+name)
         for name, checksum in PROTOCOL.items():
-            accepted = {checksum, LEGACY_WORKFLOW_SHA256} if name == WORKFLOW_PATH else {checksum}
+            accepted = {checksum}
+            if name == WORKFLOW_PATH: accepted.add(LEGACY_WORKFLOW_SHA256)
+            if name == 'tools/linux_ci_lifecycle.py': accepted.add(LEGACY_COLLECTOR_SHA256)
             check(before.get(name) in accepted, 'unsupported original Linux capture protocol: '+name)
         policy_bytes = archive.read('compat/build-hygiene.json')
         workflow = archive.read('.github/workflows/linux-vulkan.yml').decode()
