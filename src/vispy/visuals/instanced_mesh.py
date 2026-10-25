@@ -89,6 +89,8 @@ class InstancedMeshVisual(MeshVisual):
         self.instance_positions = instance_positions
         self.instance_transforms = instance_transforms
         self.instance_colors = instance_colors
+        # MeshVisual stores the requested mode while instance inputs initialize.
+        self.shading = self.shading
 
     @property
     def instance_positions(self):
@@ -139,6 +141,12 @@ class InstancedMeshVisual(MeshVisual):
         self._instance_colors = colors
         self._request_mesh_update()
 
+    def _create_shading_filter(self, shading):
+        if (self._instance_transforms_vbos is None or self.mesh_data is None or
+                self.mesh_data.get_vertices(indexed='faces') is None):
+            return None
+        return super()._create_shading_filter(shading)
+
     def _update_data(self):
         # set instance buffers
         self.shared_program.vert['instance_color'] = self._instance_colors_vbo
@@ -147,7 +155,10 @@ class InstancedMeshVisual(MeshVisual):
         self.shared_program['transform_z'] = self._instance_transforms_vbos[2]
         self.shared_program['shift'] = self._instance_positions_vbo
 
-        return super()._update_data()
+        result = super()._update_data()
+        if result is not False and self.shading_filter is None and self.shading is not None:
+            self.shading = self.shading
+        return result
 
     def _prepare_draw(self, view):
         # Empty divisor streams describe no instances, not an ordinary draw.

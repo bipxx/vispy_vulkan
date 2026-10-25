@@ -234,3 +234,13 @@ gauges. The previous explicit composition rejections are fixed, including
 rejection without cache mutation. Native modules are reused unchanged. These
 are source observations; remaining visual/filter, batching, shader/host and
 actual qualification obligations are not discharged by this checkpoint.
+
+
+The instanced visual/filter source packet passes 416 Python checks, 14 actual
+visual/CPU-geometry image comparisons, 12 real ordered-batch controls and three
+frozen original InstancedMesh test bodies per platform. All visual/control
+images match exactly; shutdown gauges are zero. Filter dispatch, normal
+transformation/rebinding and late wireframe initialization are repaired; style
+changes reuse barycentric data. See the plan for original-body replay scope and
+remaining point/line capacity, shader/API/host and qualification obligations.
+No native module, dependency or environment was rebuilt for this packet.

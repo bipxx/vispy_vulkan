@@ -597,7 +597,13 @@ class ShadingFilter(Filter):
 
 instanced_shading_vertex_template = shading_vertex_template.replace(
     "$normal",
-    "mat3($instance_transform_x, $instance_transform_y, $instance_transform_z) * $normal"
+    # Cofactor columns transform oriented mesh normals just like the cross
+    # product of transformed edges. This agrees with inverse-transpose for
+    # positive determinants after normalization, preserves reflected winding,
+    # and handles rank-two transforms that still leave a visible triangle.
+    "mat3(cross($instance_transform_y, $instance_transform_z), "
+    "cross($instance_transform_z, $instance_transform_x), "
+    "cross($instance_transform_x, $instance_transform_y)) * $normal"
 )
 
 
@@ -611,11 +617,16 @@ class InstancedShadingFilter(ShadingFilter):
         'fragment': ShadingFilter._shaders['fragment'],
     }
 
-    def _attach(self, visual):
-        super()._attach(visual)
-        self.vshader['instance_transform_x'] = visual._instance_transforms_vbos[0]
-        self.vshader['instance_transform_y'] = visual._instance_transforms_vbos[1]
-        self.vshader['instance_transform_z'] = visual._instance_transforms_vbos[2]
+    def _update_data(self):
+        super()._update_data()
+        if not self._attached:
+            return
+        current = self._visual._instance_transforms_vbos
+        if current is None or getattr(self, '_bound_instance_transforms', None) is current:
+            return
+        for axis, buffer in zip('xyz', current):
+            self.vshader['instance_transform_' + axis] = buffer
+        self._bound_instance_transforms = current
 
 
 wireframe_vertex_template = """
@@ -699,6 +710,7 @@ class WireframeFilter(Filter):
         ffunc = Function(wireframe_fragment_template)
 
         self._bc = VertexBuffer(np.zeros((0, 3), dtype=np.float32))
+        self._bc_face_count = 0
         vfunc['bc'] = self._bc
 
         super().__init__(vcode=vfunc, fcode=ffunc)
@@ -771,9 +783,12 @@ class WireframeFilter(Filter):
             n_faces = 0
         else:
             n_faces = len(self._visual.mesh_data.get_faces())
+        if n_faces == self._bc_face_count:
+            return  # style/transform updates do not change barycentric words
         bc = np.array([[1, 0, 0], [0, 1, 0], [0, 0, 1]], dtype='float')
         bc = np.tile(bc[None, ...], (n_faces, 1, 1))
         self._bc.set_data(bc, convert=True)
+        self._bc_face_count = n_faces
 
     def on_data_updated(self, event):
         self._update_data()
@@ -781,6 +796,9 @@ class WireframeFilter(Filter):
     def _attach(self, visual):
         super()._attach(visual)
         visual.events.data_updated.connect(self.on_data_updated)
+        # Late attachment must populate barycentric inputs even when the mesh
+        # already completed its data update before this filter existed.
+        self._update_data()
 
     def _detach(self, visual):
         visual.events.data_updated.disconnect(self.on_data_updated)

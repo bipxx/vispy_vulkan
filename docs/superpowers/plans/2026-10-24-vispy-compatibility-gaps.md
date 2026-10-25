@@ -1379,3 +1379,41 @@ installed qualification or release admission. Continue with actual named
 visual/filter consumers and remaining API mechanisms; renew qualification only
 at a coherent source boundary. Native C++ source remains the verified `4fa4dde40`
 input set; the new runtime changes are Python only.
+
+
+## Instanced visual/filter and ordered-batch source checkpoint
+
+The actual visual path exposed missing filter dispatch: MeshVisual ignored the
+InstancedMesh filter class. Filter construction now respects the class and waits
+for instance/template inputs, including deferred geometry. Instance transform
+replacement refreshes the shading inputs; lighting-only updates keep their
+binding identities. Cofactor columns transform area-weighted oriented normals
+like transformed-edge cross products. This handles nonuniform scale, shear,
+reflection and rank-two transforms without a matrix inverse.
+
+Late WireframeFilter attachment now initializes barycentric data immediately.
+That data is reused while face count is unchanged, so style or instance-transform
+changes do not rebuild a geometry payload. Face-count replacement refreshes it.
+Both platforms pass 416 Python checks and 14 actual visual comparisons against
+CPU-expanded geometry. All 14 complete RGBA images match exactly on each
+platform, including parameter updates, flat/smooth modes, overlay attach/detach,
+empty/repopulated instances and shading reattachment.
+
+The new ordinary batching control uses real separate front/back stencil state,
+not reduced grants or large datasets. Twelve cases per platform cover triangle
+lists, strips and fans, matrix/nested-array fields, uint16 indexed and affine
+selections, divisor 2, original vertex/instance identities and global initializers.
+Ordinary controls encode one native draw; ordered cases encode eight or sixteen.
+All output images match their controls exactly. This proves those ordered batch
+consumers; capacity-limited point/line batching still has its own obligations.
+
+Three frozen original InstancedMesh test bodies also pass per platform. Their
+assertions are unchanged; the replay permits omission only of the exact two
+legacy GL/application availability decorators and uses the actual Dawn app.
+It records body/source hashes and asserts no Python OpenGL module is imported.
+This is a source replay, not an unchanged upstream test-collection or installed
+qualification claim. Every final process reports nine zero shutdown gauges.
+Native C++ inputs/modules remain unchanged. Evidence/reproducers, including the
+original wrong-shading images and late-overlay failure, are retained in
+`build/runs/instanced-shading-79/`. Remaining shader/API/host, independent review,
+producer/installed and release admission requirements remain open.

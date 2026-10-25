@@ -242,3 +242,76 @@ def composed_attribute_checks(gloo, np):
                 cases.append(dict(type=gtype,shape=shape,form=form,mode=mode,phase=phase,
                                   pixel=pixel.tolist(),expected=wanted.tolist()))
     return cases
+
+
+def aggregate_batch_checks(app, gloo, np, native, records=None):
+    """Exercise real ordered batches through separate front/back stencil state."""
+    canvas = app.Canvas(app='dawn_headless',size=(8,8),show=False,
+                        config={'samples':0,'stencil_size':8})
+    cases = [] if records is None else records
+    try:
+        canvas.set_current()
+        for array in (False, True):
+            for indexed in (False, True):
+                for topology in ('triangles','triangle_strip','triangle_fan'):
+                    shape = (2,2,2,3) if array else (2,3)
+                    suffix = '[2][2]' if array else ''
+                    read = '[1][1]' if array else ''
+                    source = ('attribute vec2 p;attribute mat2x3 a%s;varying vec4 color;'
+                              'vec3 seed=vec3(a%s[1][2],a%s[0][0],a%s[0][2]);'
+                              'void main(){gl_Position=vec4(p,0,1);'
+                              'color=vec4(seed.x*(float(gl_InstanceID)+1.)/4.,'
+                              '(float(gl_VertexID)+1.)/3.,seed.z,1);}') % (suffix,read,read,read)
+                    positions={'triangles':[[-1,-1],[3,-1],[-1,3]],
+                               'triangle_strip':[[-1,-1],[1,-1],[-1,1],[1,1]],
+                               'triangle_fan':[[-1,-1],[1,-1],[1,1],[-1,1]]}
+                    if topology!='triangles':
+                        source=source.replace('/3.,seed.z','/4.,seed.z')
+                    program=gloo.Program(source,'varying vec4 color;void main(){gl_FragColor=color;}')
+                    program['p'] = np.array(positions[topology],np.float32)
+                    payload = np.empty(2,dtype=[('a',np.float32,shape)])
+                    payload['a'][0] = .25
+                    payload['a'][1] = .75
+                    program['a'] = gloo.VertexBuffer(payload,divisor=2)
+                    orders={'triangles':[2,0,1],'triangle_strip':[3,2,1,0],'triangle_fan':[0,3,2,1]}
+                    selection = gloo.IndexBuffer(np.array(orders[topology],np.uint16)) if indexed else None
+                    images = []
+                    observations = []
+                    for split in (False,True):
+                        gloo.set_viewport(0,0,8,8)
+                        gloo.set_state(blend=False,depth_test=False,cull_face=False,stencil_test=False)
+                        gloo.set_stencil_mask(255)
+                        gloo.set_stencil_func('always',0,255)
+                        gloo.set_stencil_op('keep','keep','keep')
+                        gloo.clear(color='black',depth=True,stencil=0)
+                        gloo.finish()
+                        if split:
+                            gloo.set_state(stencil_test=True)
+                            gloo.set_stencil_func('always',1,255,face='front')
+                            gloo.set_stencil_func('always',2,255,face='back')
+                            gloo.set_stencil_mask(15,face='front')
+                            gloo.set_stencil_mask(240,face='back')
+                            gloo.set_stencil_op('keep','keep','replace')
+                        before = native.probe()
+                        program.draw(topology,selection)
+                        image = gloo.read_pixels(alpha=True)
+                        after = native.probe()
+                        images.append(image)
+                        observations.append(dict(split=split,
+                            native_draws=after['native_draw_calls']-before['native_draw_calls'],
+                            conversions=after['vertex_input_conversion_builds']-before['vertex_input_conversion_builds']))
+                    delta = int(np.max(np.abs(images[0].astype(int)-images[1].astype(int))))
+                    green={'triangles':.5729166666666666,'triangle_strip':.609375,'triangle_fan':.5}
+                    expected = np.rint(np.array([.75,green[topology],.75,1])*255).astype(int)
+                    pixel = images[1][4,4].astype(int)
+                    assert delta <= 1 and np.max(np.abs(pixel-expected)) <= 1,(array,indexed,topology,delta,pixel.tolist(),expected.tolist())
+                    assert observations[0]['native_draws']==1 and observations[1]['native_draws']==(8 if topology=='triangles' else 16),observations
+                    cases.append(dict(array=array,indexed=indexed,topology=topology,divisor=2,instances=4,
+                                      max_delta=delta,pixel=pixel.tolist(),expected=expected.tolist(),
+                                      observations=observations))
+        return cases
+    finally:
+        gloo.set_state(stencil_test=False)
+        gloo.set_stencil_mask(255)
+        gloo.finish()
+        canvas.close()
