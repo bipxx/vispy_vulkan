@@ -1,8 +1,9 @@
 # Multisample scissor boundary isolation
 
-Date: 2026-10-25. Status: reproduced and narrowed; **not fixed**. This is
-source-functional evidence from retained native leaves, not installed/profile
-qualification or proof that Mesa alone is responsible.
+Date: 2026-10-25. Status: **a working driver configuration is verified at source
+level**; the original Mesa 25.2.8 configuration still fails. This is source-
+functional evidence from retained native leaves, not installed/profile
+qualification. Profile adoption and producer review remain pending.
 
 The independent regression is `tests/native/test_scissor_boundaries.py`:
 48 cases cover single/four-sample storage, 256x128 / 257x129 / 301x177 targets,
@@ -120,7 +121,60 @@ input references, source, binary and licenses are retained in run 44. Cleanup
 removed four files / 1,348,316 bytes; all 16 retained records were rehashed and
 scratch is absent. No renderer/wheel/SDK rebuild or dependency install occurred.
 
-Next: identify a compatible driver fix or discriminating driver-state control
-using this minimal reproducer, then rerun the full scissor regression and original
-Tk resize/device-loss capture test on affected profiles. The original Linux
-producer, host, review, installed-artifact and hardware gates remain open.
+## Verified compatible driver configuration
+
+An upstream [Mesa scissor-plane correction](https://gitlab.freedesktop.org/mesa/mesa/-/commit/92550b106c70408cd9f5c25a50c311e68af06d6b)
+describes excess coverage of nearly half a pixel at the lower scissor edges.
+That matches the observed failure. The corrected construction is absent from the
+25.2.8 upstream source and present in the retained preferred source for the tested
+26.1.8 package. This correspondence supports the diagnosis, but this experiment
+upgrades a complete driver rather than isolating that one commit by backport.
+
+Run `build/runs/mesa-scissor-fix-45/` tests the Noble amd64 package
+`mesa-vulkan-drivers_26.1.8~kisak1~n_amd64.deb` from kisak/turtle. It was extracted
+into registered scratch with one small Ubuntu `libdisplay-info1` dependency;
+no PPA was added and no system package, native renderer, SDK or wheel was changed.
+The existing LLVM shared library is reused. The full package was extracted for
+this initial control; future runs can reconstruct just the necessary libraries
+from the retained package instead of unpacking unrelated GPU drivers.
+
+| Actual verification using that configuration | Result |
+| --- | --- |
+| Identical retained direct-Vulkan executable, both render modes and rectangles | All four cases match exact pixels. |
+| Current complete scissor module, including the original allocation/pixel checks | All 56 cases pass. |
+| Original independent Tk odd quadrants after resize and device loss | Both single/four-sample variants pass. |
+| Renderer shutdown after all 58 Python tests | All nine gauges are zero. |
+
+The 58-case pytest run has no skipped tests, failures or errors. Its source,
+JUnit, exact commands/actual exits/child waits, loaded library hashes and upstream
+fix metadata/diff are retained with the first failing configurations. The loaded
+LLVM file is unchanged (`4b93481bd1c9d42c0951275dd275d4a9d30db78c309ae2cc0405669bc6dbbf8a`).
+The adapter's LLVM version string reflects driver build metadata; it is not
+used as a substitute for that actual loaded-library identity.
+
+Exact reconstruction inputs, with their original sources/notices retained once:
+
+| Input | SHA-256 |
+| --- | --- |
+| Mesa 26.1.8 Noble amd64 package | `e2eb85a032563d83abe2bc91ff356f31666e19dc60d7450633056a6a9e6382e3` |
+| Mesa preferred source `mesa_26.1.8~kisak1~n.tar.xz` | `81143147557058caa89f7a49475a66246a52983b109ac2a19b3066a4d55e6c53` |
+| Actually loaded `libvulkan_lvp.so` | `686501fd1abfc925221a5a4da3aa6502b4d315b6f8c1728e603c20927711fb81` |
+| Ubuntu `libdisplay-info1_0.1.1-2build1_amd64.deb` | `a3bfce18d53aa9d635d899f1f555e84bbbf2c859d80cef3b4eb1c36b2c772026` |
+| Actually loaded `libdisplay-info.so.0.1.1` | `2b42e2620667c9f693561c80d647669d03fd6531c49dbed7bb163c4190abbca6` |
+
+The package URLs, source descriptors/checksums and source archives are retained
+under the run's `downloads.json` and `display-info-downloads.json`. Two used
+libraries are retained by hash; the full expanded package is removed. The sole
+producer-created dependency symlink was removed through an exact, nonrecursive
+recorded action after preserving its target and checking the registry. Managed
+cleanup then removed 50 files / 296,905,486 bytes. All 41 retained records were
+rehashed and scratch is absent. The additional retained inputs are approximately
+107 MB of packages/source archives plus the two necessary libraries, not a new
+compiler, environment, SDK or native build tree.
+
+Next: make the driver decision explicit in the reviewed qualification profile
+and bind the exact configuration to the installed workflow/absence/control and
+shutdown evidence. Do not replace the original 25.2.8 profile observation or
+transfer its earlier results to 26.1.8. The selected-profile evidence must be
+renewed for the actual driver configuration. Native producer, independent review,
+other mandatory host, installed-artifact and hardware gates remain open.

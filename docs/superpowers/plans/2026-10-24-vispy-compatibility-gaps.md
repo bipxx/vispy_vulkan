@@ -69,10 +69,13 @@ no plan review or synthetic validator fixture approves an artifact.
 The [Linux MSAA scissor isolation](../../msaa-scissor-isolation.md) now retains a
 48-case regression, clear/draw and existing-driver controls, and a pass-through
 Vulkan trace confirming the submitted scissor/viewport/render-area bounds. The
-independent direct-Vulkan control now reproduces the same outside-column error
-without VisPy/Dawn in both render-pass and dynamic-rendering modes. The defect
-remains open in this driver configuration; find a compatible causal fix, then
-rerun the original regressions. These diagnostics do not supply admission.
+independent direct-Vulkan control reproduces the same outside-column error
+without VisPy/Dawn under Mesa 25.2.8. An isolated compatible Mesa 26.1.8 package
+now passes all four direct controls and all 58 original/extended scissor and Tk
+resize/device-loss regressions, with nine zero shutdown gauges. Its source and
+licenses are retained and expanded scratch cleaned. Adopt the exact working
+driver configuration through reviewed profile/installed evidence next; the old
+profile is unchanged and these diagnostics do not supply admission.
 
 ### Prevent unchanged-native rebuilds
 
