@@ -104,3 +104,27 @@ the historical stall's cause; causal/final-artifact obligations remain open.
 Full API breadth and distinct Linux GPU/Metal hardware obligations remain required. Source controls cannot close them. Source, test results and meaningful failures are retained locally
 under `build/runs/integrated-h4-38/`; actual managed scratch, if used by fixture
 checks, requires its own applied cleanup receipt before handoff.
+
+
+## Producer readiness audit after composed-array preparation
+
+The current source observations retain `base_interpreter` as the original
+`{path, sha256}` record. A preparation regression had replaced it with a string,
+which would crash the later native join after independent approval. The hashes
+were recaptured using the actual Windows and WSL interpreters, checked against
+the original observed binaries, and restored. Candidate preparation now rejects
+missing, path-only and malformed base identities before review/materialization;
+519 affected source checks pass. Historical observation files remain available.
+
+The producer decision is still substantive:
+
+| Evidence | What it establishes | Remaining action |
+| --- | --- | --- |
+| Pinned Windows vendor SDK and source-functional leaf | Exact retained vendor inputs and observed renderer behavior; no leaf admission | Review the original proof inventory. The development build omitted ten targets from the current complete producer recipe, including SDF/layer and additional contracts; do not invent their execution. Use a sufficient original-authority route or one complete managed first-party build after review, reusing the SDK. |
+| CPU CI with `VISPY_CPU_CONTRACTS_ONLY=ON` | Null-backend CPU/compiler contracts | It cannot produce an installable renderer wheel and cannot satisfy renderer production. |
+| Successful Linux software-Vulkan wheel CI | Original installed functional pixels/member hashes for its declared source/profile | It does not create the missing Linux producer route. Current native validators admit Windows only and Linux producer policy remains blocked/experimental; implement and independently review an explicit Linux route with actual source/toolchain/build/test evidence. A policy flag alone is insufficient. |
+
+Audit and base-identity reproducer/results are retained under
+`build/runs/base-interpreter-identity-60/`. No new native build or environment was
+needed for this repair. Native inputs, original requirements, candidate selection
+and the real subject's missing proof remain unchanged.

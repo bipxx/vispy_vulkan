@@ -119,6 +119,11 @@ the unchanged native modules. Fresh complete Tk observations and preparation
 references now preserve that native reuse and all original scope. Publication,
 new-head installed CI and independent admission remain pending; see the uniform
 report for exact proof and the preserved failing controls.
+The subsequent producer-readiness audit restores hash-bound base interpreter
+identities and adds early rejection controls (519 affected checks pass). CPU-only
+CI is not renderer production; the Linux producer route remains unimplemented.
+See the [concrete producer audit](../../qualification-index.md#producer-readiness-audit-after-composed-array-preparation) before choosing reuse versus a new build.
+
 
 
 ### Prevent unchanged-native rebuilds

@@ -9,7 +9,10 @@
   "python_version": "3.12.8 (main, Dec 19 2024, 14:41:01) [MSC v.1942 64 bit (AMD64)]",
   "interpreter": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\.venv\\Scripts\\python.exe",
   "interpreter_sha256": "4025e2a6d8fc90d053a8405e81f008cbd8ee45b582e2d77480341501f4aeda73",
-  "base_interpreter": "C:\\Users\\HEQ\\AppData\\Roaming\\uv\\python\\cpython-3.12.8-windows-x86_64-none\\python.exe",
+  "base_interpreter": {
+    "path": "C:\\Users\\HEQ\\AppData\\Roaming\\uv\\python\\cpython-3.12.8-windows-x86_64-none\\python.exe",
+    "sha256": "71b986e874ae1382c434f95852f5670e6d87576db2861cd03737dd4bce9d69ed"
+  },
   "os_identity": "Windows-11-10.0.26200-SP0",
   "toolkit": {
     "tk_version": 8.6,

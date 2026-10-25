@@ -2,7 +2,7 @@
   "schema": 1,
   "phase": "development",
   "id": "tk-state-resource-1",
-  "manifest_sha256": "f16ff14d83751ec46c3ee3968bbae7bf9fda1d320fda7e2bb3c7fbaa75c79882",
+  "manifest_sha256": "ff984afd18b20d0fb3c240c7222083546b2ba91b1e04f8782756a32f3c4def95",
   "product_source_commit": "c188878efa752b3ba36897860a4070dcf4a98fd1",
   "upstream_commit": "117b054598f4758b598f4b8f48feea48c11fe7b0",
   "ledger": {
@@ -39,7 +39,7 @@
       "required": true,
       "observation": {
         "path": "compat/candidates/tk-state-resource-1/windows-composed-array-profile.json",
-        "sha256": "1ee76a27c10a6c5a8787b8ca2703a9f71cd240343d01d94c76d21840cd07d3ed"
+        "sha256": "093c3666f5c957fcf25f7a1c226f5197fc3804e6f9163877722dc76756932012"
       },
       "wheel": null,
       "previous_qualified_wheel_sha256": "62df5e4c31bf9a1bb1bea47fd68d50e4198d6ec13d2551c991da1e7f30a2b38f",
@@ -58,7 +58,7 @@
       "required": true,
       "observation": {
         "path": "compat/candidates/tk-state-resource-1/linux-mesa2618-composed-array-profile.json",
-        "sha256": "03e1fdd89ffbe2624f90cfb56dd9b9d62292770ce39a2ec4d2d0846513c39c8c"
+        "sha256": "7d48a1bb62aaeafab076de4e3e0d67efdfd740296085090833d5637fe0622e05"
       },
       "wheel": null,
       "previous_qualified_wheel_sha256": "374a74ea9787ccccc643e0ac7e45d9f704a41d046465828736158ac94398c4a3",
@@ -1124,7 +1124,7 @@
   "preparation_tools": [
     {
       "path": "tools/compatibility_candidate.py",
-      "sha256": "449c3d8721b03eb5a67d1745459b7df3fb70879f22d6219356aec29d193a26e8"
+      "sha256": "7b1cc56655e2ed1b019247d688a423ac56b4a18b3054c95626c43247458af54f"
     },
     {
       "path": "tools/compatibility_inventory.py",

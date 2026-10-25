@@ -1,14 +1,14 @@
 {
   "schema": 1,
   "phase": "execution-preparation",
-  "manifest_sha256": "1e8a0f4d10f9b4f559c46180ee90e27eb361508bb86e3c9f30978ed48381a8bf",
+  "manifest_sha256": "063e3b5bb75e71955033f95f0098d1b3e22c5e947236333d28ba0dc73724ff29",
   "candidate": {
     "path": "compat/candidates/tk-state-resource-1/candidate.json",
-    "scope_sha256": "c9d46c894092bb61c4e78b548ee15c14b5513327ba6bd612e63e50374e818c76"
+    "scope_sha256": "9f807816ef84eafa20ccb60425b5eb3d611ccdbf42a6a558fbcb25f94d15af17"
   },
   "coverage": {
     "path": "compat/candidates/tk-state-resource-1/coverage.json",
-    "sha256": "7ae412d1434e63e3d75f87778a937d9d184902bd10d6e928bf7259694fd9c183"
+    "sha256": "69f66df68796b48bc36a32fa5d3fadf578fcf097ed70f003ca5a9217f75c9341"
   },
   "baseline": {
     "path": "compat/vispy-compatibility.json",

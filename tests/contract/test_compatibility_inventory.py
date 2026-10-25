@@ -912,6 +912,7 @@ def candidate_case(example):
     observation = {'id': 'windows-profile', 'phase': 'source-functional',
                    'product_runtime_source_commit': '1' * 40, 'native_inputs_sha256': digest(native),
                    'python_version': '3.12.8 synthetic', 'interpreter_sha256': 'c' * 64,
+                   'base_interpreter': {'path': 'C:/python/python.exe', 'sha256': 'e' * 64},
                    'native_sha256': 'd' * 64, 'os_identity': 'Synthetic Windows unit profile',
                    'source_observation': {'cases': 1, 'shutdown_gauges': {k: 0 for k in LIVE_GAUGES}},
                    'python_abi': 'cp312', 'architecture': 'x86_64', 'kind': 'windows-gpu',
@@ -1732,3 +1733,21 @@ def test_execution_rejects_an_existing_but_wrong_functional_branch_assignment():
     seal(record)
     with pytest.raises(inventory.InventoryError, match='criterion mapping'):
         validate_execution(record)
+
+
+@pytest.mark.parametrize('base', [None, 'C:/python/python.exe',
+    {'path': 'C:/python/python.exe'}, {'path': '', 'sha256': 'e' * 64},
+    {'path': 'C:/python/python.exe', 'sha256': 'missing'}])
+def test_candidate_requires_hash_bound_base_interpreter(example, base):
+    from tools.compatibility_candidate import seal, validate_candidate
+    root, candidate = candidate_case(example)
+    profile = candidate['profiles'][0]
+    observation = inventory.read_json(root / profile['observation']['path'])
+    if base is None:
+        observation.pop('base_interpreter')
+    else:
+        observation['base_interpreter'] = base
+    profile['observation'] = write_json(root, profile['observation']['path'], observation)
+    seal(candidate)
+    with pytest.raises(inventory.InventoryError, match='hash-bound base interpreter identity'):
+        validate_candidate(candidate, root)

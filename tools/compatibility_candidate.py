@@ -152,6 +152,11 @@ def validate_candidate(candidate, root=ROOT, require_reviewed=False):
               and re.fullmatch('[0-9a-f]{64}', observation['native_sha256'])
               and isinstance(observation.get('os_identity'), str) and observation['os_identity'].strip(),
               'profile lacks concrete interpreter/native/OS identities')
+        base = observation.get('base_interpreter')
+        check(isinstance(base, dict) and set(base) == {'path', 'sha256'}
+              and isinstance(base['path'], str) and base['path'].strip()
+              and isinstance(base['sha256'], str) and re.fullmatch('[0-9a-f]{64}', base['sha256']),
+              'profile lacks hash-bound base interpreter identity')
         check(observation.get('python_abi') == 'cp312' and observation.get('architecture') == 'x86_64',
               'profile ABI/architecture not the observed candidate')
         try:
