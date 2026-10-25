@@ -67,8 +67,12 @@ no plan review or synthetic validator fixture approves an artifact.
 | Next breadth waves | Follow the route map: common state/resource primitives, composed visuals/scene, named shader interfaces and additional backend adapters. Reconcile methods/values/events/examples and residual parents as each family advances. | Each parent needs its full reviewed scope and required profile proof; 15 selected subsets cannot discharge their broader parents. Native Linux GPU and Metal hardware stay separate. |
 
 The [Linux MSAA scissor isolation](../../msaa-scissor-isolation.md) now retains a
-48-case regression and clear/draw plus existing-driver controls. The defect
-remains open; these source diagnostics do not supply a fix or admission.
+48-case regression, clear/draw and existing-driver controls, and a pass-through
+Vulkan trace confirming the submitted scissor/viewport/render-area bounds. The
+independent direct-Vulkan control now reproduces the same outside-column error
+without VisPy/Dawn in both render-pass and dynamic-rendering modes. The defect
+remains open in this driver configuration; find a compatible causal fix, then
+rerun the original regressions. These diagnostics do not supply admission.
 
 ### Prevent unchanged-native rebuilds
 

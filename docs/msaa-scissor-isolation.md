@@ -62,8 +62,65 @@ cleanup receipt. Across these four runs, 45 retained records were verified and
 root is absent. No native compiler, SDK/wheel build, package installation or new
 environment was used. Existing dependency/driver origins were not moved.
 
-Next: trace the actual Vulkan dynamic scissor/viewport/render-area values or run
-an independent direct-Vulkan raster control with the same sample geometry. Keep
-this regression as a failing requirement until a causal fix passes it and the
-original Tk resize/device-loss capture test on affected profiles. The original
-Linux producer, host, review, installed-artifact and hardware gates remain open.
+The follow-up `build/runs/scissor-command-trace-43/` compiles only a separate,
+small pass-through diagnostic Vulkan layer using the existing compiler and
+headers. The retained renderer, its original submit layer and driver are unchanged.
+A first four-case attempt observed viewport/scissor/pipeline state but omitted
+Dawn's dynamic-rendering entry point; its records are preserved. A second
+four-case attempt adds that interception and records actual loaded library hashes.
+Both attempts produce two matching left-rectangle cases and two failing
+right-rectangle cases, with identical output hashes and nine zero shutdown gauges.
+
+The second trace observes scissor `[150,0,151,177]`, viewport `[0,177,301,-177]`,
+dynamic render area `[0,0,301,177]`, and four-sample pipelines. Thus the submitted
+rectangle matches the independent expected bounds while outside column 149 still
+contains `[128,0,0,255]`. No missing dispatch was logged. This eliminates wrong
+submitted scissor/viewport/render-area values as the explanation in these cases;
+it does not isolate driver rasterization from resolve or other pipeline state.
+The loaded diagnostic library and system llvmpipe hashes are retained. Both
+small diagnostic binaries, their sources, original licenses, commands and actual
+exits/waits are retained outside scratch. Managed cleanup removed six files /
+1,464,698 bytes; all 32 retained records were rehashed and scratch is absent.
+
+The independent control in `build/runs/direct-vulkan-scissor-44/` now reproduces
+that same outside column without linking VisPy or Dawn. Its versioned source is
+[`tools/vulkan_scissor_control.cpp`](../tools/vulkan_scissor_control.cpp).
+It creates four-sample RGBA8 storage and a single-sample average-resolve target,
+uses explicit minimal vertex/constant-red fragment SPIR-V, and independently
+checks exact black/red pixels after a synchronized host readback. The same
+negative-height viewport and full-target render area are used. Four cases compare
+left/right rectangles under conventional render passes and dynamic rendering.
+
+Both left cases match; both right cases contain 177 incorrect pixels at column
+149, starting with `[128,0,0,255]`. The executable reports an awaited device and
+destroys its objects before exit 1. Loader diagnostics identify the system
+llvmpipe library; its SHA-256 matches the previous source-run driver. Therefore
+this failure exists below VisPy/Dawn in the tested Vulkan implementation and is
+not specific to Dawn's dynamic-rendering path. This is not proof of a fixed Mesa
+version, nor a waiver for the selected Linux profile. No validation-layer pass
+or additional GPU support is claimed.
+
+The reproducer needs only the existing C++ compiler, Vulkan loader and retained
+Vulkan/SPIR-V headers. In a registered hygiene run, its compile command is:
+
+```text
+g++ -std=c++20 -O1 \
+  -Ithird_party/dawn/third_party/vulkan-headers/src/include \
+  -Ithird_party/dawn/third_party/spirv-headers/src/include \
+  tools/vulkan_scissor_control.cpp -Wl,-l:libvulkan.so.1 \
+  -o build/work/<registered-run-id>/control
+```
+
+Run with an explicitly selected ICD, owned cache directory and 120-second child
+deadline. Exit 0 means the four pixel comparisons match, 1 means a reproduced
+pixel mismatch, and 2 means setup/execution failed. Keep the actual terminal
+record; a setup failure is not a passing graphics result. The exact successful
+compile and failing execution commands, compiler/loader/driver hashes, header
+input references, source, binary and licenses are retained in run 44. Cleanup
+removed four files / 1,348,316 bytes; all 16 retained records were rehashed and
+scratch is absent. No renderer/wheel/SDK rebuild or dependency install occurred.
+
+Next: identify a compatible driver fix or discriminating driver-state control
+using this minimal reproducer, then rerun the full scissor regression and original
+Tk resize/device-loss capture test on affected profiles. The original Linux
+producer, host, review, installed-artifact and hardware gates remain open.
