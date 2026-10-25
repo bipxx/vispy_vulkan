@@ -35,6 +35,98 @@ Specification section 12 and the detailed next-packet table define the next
 bounded implementation and its exit checks. This documentation review does not
 qualify source, artifacts or hardware.
 
+## Active efficiency revision - 2026-10-25
+
+This revision governs the next execution order. The packet tables/checkpoints
+below retain acceptance and history; they are not instructions to restart
+completed source work. See the [Astra max efficiency review](../reviews/2026-10-25-astra-plan-efficiency-review.md)
+and the [per-API implementation route map](../../api-implementation-routes.md).
+The map supplies a preferred first route and distinguishing vector for all 142
+canonical feature keys and 15 additive candidate keys, plus shared state/shader/
+backend/host blockers. It is an execution aid, not a replacement inventory or
+support claim. Original requirements, licenses and all required gates remain.
+
+The main bottleneck is now the missing integrated installed qualification and
+independent cumulative review, rather than another isolated proof helper. H1/H3,
+selection, CI and archive/SDK prerequisites exist. Native leaf provenance remains
+unfinalized local WIP; its candidate-coupling/reuse issue below must be resolved
+before adopting it as an admission requirement. No plan review approves that code.
+
+| Priority / stage | Shortest faithful action | Exit / evidence that changes the next action |
+| --- | --- | --- |
+| 1 - input/producer decision | Inventory the exact retained leaf/provenance read set. Decide per platform whether original proof is sufficient for reuse; document Linux experimental blocker before packaging. Resolve native WIP identity coupling as specified below. | One retained-original versus new-build decision per distinct source/toolchain/ABI/configuration. Missing proof stays missing; do not fabricate newer commands or call an old leaf newly qualified. |
+| 2 - integrated H4 | Finish existing selection/archive/SDK/native/CI components with the subject, original functional/absence/control/shutdown joins, attempt/disposition, terminal retention and detached promotion basis/envelope in one bounded integration. Start with a complete synthetic end-to-end subject, then the real incomplete subject. | A single validator traverses all required edges and rejects semantic tampering. Strict real admission still fails on actual missing proof. No new per-API proof formats or extra generic policy frameworks. |
+| 3 - actual H2 review/fixes | Freeze the cumulative implementation/fixtures/observer and finite selected scope; obtain independent source and semantic scope review of exact inputs, including H4 integration. Resolve findings with directly affected controls. | Actual review records and finding dispositions, or an explicit reviewer blocker. Another plan review cannot substitute. Independent runtime diagnosis continues while review is pending. |
+| 4 - first installed candidate | Freeze the selected reviewed source. Reuse admitted unchanged native inputs; build each genuinely changed or insufficiently proved leaf once, package once and run the existing composite observer protocol per exact wheel/profile/workflow identity. | Exact installed/member/profile functional plus all three absence gates/controls and shutdown pass. Current selection retains both profiles; Windows-first needs an explicit reviewed selection change with WSL obligations/failures retained. No silent failed-profile filtering. |
+| 5 - CI and promotion | Collect required 23-job CI for the frozen declared head and all attempt history, then review the immutable promotion basis including that CI/head decision. | Final review bound to subject/head/policy/CI/impact; keep PR draft until actual applicable gates pass. Later relevant edits renew affected checks/review. |
+| Alongside 1-5 - real blockers | Run the bounded Windows threedee diagnosis and independent Linux scissor causal packet without waiting for generic H4 work. Resolve selected-profile lifecycle/toolkit applicability and producer admission. | A causal fix/regression or retained unresolved blocker/next experiment, not retries or metadata-only passes. These remain mandatory for their original release scope. |
+| Next breadth waves | Follow the route map: common state/resource primitives, composed visuals/scene, named shader interfaces and additional backend adapters. Reconcile methods/values/events/examples and residual parents as each family advances. | Each parent needs its full reviewed scope and required profile proof; 15 selected subsets cannot discharge their broader parents. Native Linux GPU and Metal hardware stay separate. |
+
+### Prevent unchanged-native rebuilds
+
+Use a candidate-independent native producer identity: preferred native/build/
+lock/generated-input source hashes, compiler/tool versions, Python ABI/build
+requirements, configuration and native output hashes. Keep harness/test identities
+explicit in their own original proof. Put candidate scope, current workflow/tool
+hashes and the reviewed change-impact/reuse decision in a separate candidate-to-
+producer link. A spec, report, observer or CI edit can invalidate its affected
+review without pretending to change how an unchanged binary was built.
+
+Support two provenance routes through existing authority:
+
+- **Retained original producer:** validate immutable original build/CTest/SDK/
+  toolchain proof under its frozen producer protocol, require exact native output
+  and relevant source/ABI/configuration match, then review its reuse link. Accept
+  original argv, process identities and test evidence as original facts. A new
+  wrapper must not demand newly invented command/PID/wait records or re-execution
+  solely because argument ordering/report shape differs.
+- **New producer:** use the reviewed current managed build recipe when native
+  inputs changed or original provenance is actually insufficient. Collect full
+  actual exits/waits/logs/outputs and affected tests once. The current development
+  leaf's partial proof may require this route; the plan does not presume reuse.
+
+New or changed test coverage runs against the matching retained leaf when it can
+meaningfully exercise it. A changed native test executable can be rebuilt without
+rebuilding unrelated renderer/SDK inputs. Never weaken an existing verifier,
+relabel historical receipts or move identity-pinned dependency origins for reuse.
+The pending native WIP's exact-five-phase/current-recipe shape is not the sole
+allowed historical provenance format; implement and test the reviewed reuse
+adapter before treating old-format mismatch as evidence that a rebuild is needed.
+
+### Reduce repeated validation and CI churn
+
+Use the 120 bindings as joins, not 120 separate native/observer launches. All
+currently map to the complete `tk-state-resource-failures` composite: execute the
+existing full discovery/fresh-replay/control protocol once per exact artifact,
+profile and workflow identity, retaining all eight branches, then reference that
+original result for every reviewed criterion it actually proves. Run helper
+scenarios separately only for independent controls or additional scope. GUI
+profiles remain serial; shared evidence cannot cross profile or wheel identity.
+
+Validate native provenance and the full SDK inventory once per immutable input
+set within one validation invocation, sharing the checked result across rows.
+Do not persist a stale PASS cache: recheck changed bytes and reference hashes.
+Run focused source controls after a coherent change, then affected integration
+checks once after freeze. Repeat broader checks only for a new failure/change or
+explicit unresolved coverage. WSL files on the Windows mount were slow in prior
+runs; pure Python control tests may run in Windows for iteration, but required
+WSL source/profile and installed evidence must still run once on frozen inputs.
+Do not copy environments/source histories to optimize a slow validation scan.
+
+Batch related code/schema/fixture edits before pushing expensive CI. Keep the
+final required 23-job policy unchanged. Do not repeatedly dispatch full native
+wheel jobs for documentation-only local drafting; collect their required final-
+head result when the coherent source is ready. A new head never inherits an old
+head's green CI, and failures/cancellations remain visible in attempt history.
+
+Keep live status here and in actual declarations; add historical checkpoints only
+for meaningful contract/evidence changes. Put prose route guidance in this plan/
+appendix rather than repeatedly editing hash-pinned normative specs just to log
+routine progress. Requirements changes still update the spec and renew affected
+review. Source-only documentation work does not justify a wheel/SDK/native build.
+The shared 20 GiB scratch budget, 10 GiB reserve, unique managed owner/run,
+retained source/evidence/licenses/reproducer and exact cleanup requirements remain.
+
 ## Current execution queue after source checkpoints
 
 The [executable-handoff Astra max review](../reviews/2026-10-24-astra-executable-handoff-review.md)
@@ -47,7 +139,7 @@ index (H4), installed evidence and final promotion (H5) remain open. Section 16
 of the specification defines the next bounded H4 implementation contract.
 Source implementation supplies no approval or installed qualification.
 
-This section governs remaining execution. The packet tables and numbered repair
+The efficiency revision above governs execution order. These packet tables and numbered repair
 lists below retain their design/history; a later source checkpoint supersedes
 an earlier instruction to implement the same packet. Source completion does not
 mean independently reviewed or installed-qualified completion.
@@ -1039,3 +1131,35 @@ functional/absence/control/shutdown joins remain H4 prerequisites. Immutable
 subject, full attempt/disposition index, retention, promotion basis/envelope,
 independent H2 source/scope approval and real H5 admission remain open. Every
 original parent and mandatory host/platform obligation is preserved.
+
+## Native leaf provenance source checkpoint (H4b, EV-1/2, ART-1/2)
+
+The closed native recipe/result/retained-record schema and read-only
+`tools/qualification_native.py` now join actual native build inputs and outputs.
+Each Windows CP312/x64 recipe binds candidate scope, the native/build/lock and
+C++ harness/shader-corpus inputs, toolchain identities, existing locked build
+preparation, SDK consumer identity, explicit targets and exact CTest inventory.
+Both existing source and scope approvals must name its `native_leaf_recipes`
+digest. Missing approvals stop before SDK or build proof can be accepted.
+
+Five ordered dependency/configure/build/CTest/dependency commands require exact
+reviewed arguments, terminal exit zero, actual child PID/wait and retained logs.
+Before/after source maps, raw cache bytes and generated project bytes must agree.
+The existing mutex/project verifier checks all requested targets, including
+nanobind-static and the native library fixture; C-only SDF is retained and hashed
+without inventing a C++ count. The original CTest verifier rejects missing/skipped
+or failed cases. Raw result edges bind every source/configuration/project/CTest
+and all four shipping native output hashes. Ambient compiler/Python flags and
+reusable MSBuild nodes are rejected. Build paths use a single managed scratch run;
+permanent evidence stays outside scratch.
+
+Synthetic in-memory results exercise these joins and the original XML verifiers;
+no real native build/producer receipt or approval is created. The original partial
+Windows development report remains development-only. Locked preparation and SDK
+checks reuse existing verifiers and original origins, without changing their
+rules. This source packet creates no SDK, wheel, environment or managed scratch.
+A positive native-build join remains separate from archive, installed functional/
+absence/control/shutdown, retention and hardware admission. Real reviewed recipes
+and collection of their actual managed build evidence, full qualification subject,
+producer/attempt/disposition and promotion-basis/envelope remain required. H2
+approval and actual H5 admission are still pending; original scope is preserved.
