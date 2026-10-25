@@ -145,7 +145,13 @@ from the retained package instead of unpacking unrelated GPU drivers.
 | Original independent Tk odd quadrants after resize and device loss | Both single/four-sample variants pass. |
 | Renderer shutdown after all 58 Python tests | All nine gauges are zero. |
 
-The 58-case pytest run has no skipped tests, failures or errors. Its source,
+A matching Windows check in `build/runs/scissor-windows-complete-46/` now also
+passes the complete 58-case set against the retained NVIDIA native leaf, with
+nine zero shutdown gauges. This replaces the earlier 48-case execution gap for
+current source verification; it does not rewrite the earlier run. Its 11 retained
+records were rehashed after managed cleanup, and its scratch root is absent.
+
+The Linux 58-case pytest run has no skipped tests, failures or errors. Its source,
 JUnit, exact commands/actual exits/child waits, loaded library hashes and upstream
 fix metadata/diff are retained with the first failing configurations. The loaded
 LLVM file is unchanged (`4b93481bd1c9d42c0951275dd275d4a9d30db78c309ae2cc0405669bc6dbbf8a`).

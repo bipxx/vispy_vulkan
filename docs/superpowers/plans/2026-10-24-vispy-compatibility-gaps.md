@@ -72,7 +72,8 @@ Vulkan trace confirming the submitted scissor/viewport/render-area bounds. The
 independent direct-Vulkan control reproduces the same outside-column error
 without VisPy/Dawn under Mesa 25.2.8. An isolated compatible Mesa 26.1.8 package
 now passes all four direct controls and all 58 original/extended scissor and Tk
-resize/device-loss regressions, with nine zero shutdown gauges. Its source and
+resize/device-loss regressions. The same full 58-case set also passes on Windows;
+both children report nine zero shutdown gauges. Its source and
 licenses are retained and expanded scratch cleaned. Adopt the exact working
 driver configuration through reviewed profile/installed evidence next; the old
 profile is unchanged and these diagnostics do not supply admission.
