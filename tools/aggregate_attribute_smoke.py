@@ -128,3 +128,54 @@ def aggregate_attribute_checks(gloo, np, max_vertex_attributes):
         raise AssertionError('Aggregate locations bypassed granted attribute limit')
     report['passed'] = len(report['cases'])
     return report
+
+
+def aggregate_indexed_checks(gloo, np):
+    """Compare indexed matrix inputs with independent ordinary vector inputs."""
+    cases = []
+    fragment = 'varying vec4 color;void main(){gl_FragColor=color;}'
+    for mode in ('triangles', 'points', 'lines'):
+        if mode == 'triangles':
+            positions = [[3, -1], [8, 8], [-1, 3], [-1, -1]]
+            colors = [[0, 0, 1], [1, 1, 1], [0, 1, 0], [1, 0, 0]]
+            indices = [3, 0, 2]
+            expected = [.5, .21875, .28125, 1]
+        elif mode == 'points':
+            positions = [[-4, -4], [4, 4], [0, 0]]
+            colors = [[1, 0, 0], [0, 0, 1], [0, 1, 0]]
+            indices = [2]
+            expected = [0, 1, 0, 1]
+        else:
+            positions = [[-1, 0], [0, 4], [1, 0]]
+            colors = [[0, 1, 0], [1, 0, 0], [0, 1, 0]]
+            indices = [2, 0]
+            expected = [0, 1, 0, 1]
+        positions = np.array(positions, np.float32)
+        colors = np.array(colors, np.float32)
+        records = np.zeros((len(positions), 2, 2), np.float32)
+        records.reshape(len(positions), 4)[:, :3] = colors
+        selection = gloo.IndexBuffer(np.array(indices, np.uint16))
+        images = []
+        for matrix in (False, True):
+            declaration = 'mat2' if matrix else 'vec3'
+            expression = 'vec3(a[0][0],a[0][1],a[1][0])' if matrix else 'a'
+            vertex = ('attribute vec2 p;attribute %s a;varying vec4 color;'
+                      'void main(){gl_Position=vec4(p,0,1);gl_PointSize=5.;'
+                      'color=vec4(%s,1);}') % (declaration, expression)
+            program = gloo.Program(vertex, fragment)
+            program['p'] = positions
+            program['a'] = records if matrix else colors
+            gloo.set_viewport(0, 0, 8, 8)
+            gloo.set_state(blend=False, depth_test=False, cull_face=False)
+            gloo.set_line_width(5)
+            gloo.clear(color='black')
+            program.draw(mode, selection)
+            images.append(gloo.read_pixels(alpha=True))
+        delta = int(np.max(np.abs(images[0].astype(int) - images[1].astype(int))))
+        assert delta <= 1, (mode, delta)
+        pixel = images[1][4, 4].astype(int)
+        wanted = np.rint(np.array(expected) * 255).astype(int)
+        assert np.max(np.abs(pixel - wanted)) <= 1, (mode, pixel.tolist(), wanted.tolist())
+        cases.append(dict(mode=mode, indices=indices, index_dtype='uint16',
+                          center=pixel.tolist(), expected=wanted.tolist(), max_delta=delta))
+    return cases

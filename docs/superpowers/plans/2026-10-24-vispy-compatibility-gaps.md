@@ -1323,3 +1323,30 @@ Windows results do not close SH-3 or the original API/platform obligations.
 Installed checks, reviewed producers, independent approvals, candidate renewal
 and promotion remain separate. Local reproducer/evidence and cleanup records are
 under `build/runs/aggregate-attribute-bindings-76/`.
+
+
+## Aggregate input Linux source checkpoint and composed gap
+
+The changed Linux first-party module builds against the existing development
+archives without rebuilding dependencies or creating an environment. Compiler,
+archive and finite first-party source hashes are recorded before/after; four
+focused shader/artifact/endpoint/consumer contracts pass. Their common compiler
+objects are reused instead of rebuilding three translation units for each test.
+
+WSL software Vulkan passes the same 149 aggregate pixel checks and 171 existing
+shared rendering controls as Windows. Three additional uint16 indexed triangle,
+point and generated-line cases match independent vector-input images exactly,
+including nonuniform triangle colors and selection that omits unused vertices.
+All nine shutdown gauges are zero. This is software/source verification, not
+native Linux GPU, SDK producer, installed or release admission.
+
+The next composed-interface fix has a concrete CPU reproducer: ordinary vector
+`Variable` attributes work, but explicit matrix buffers/constants are rejected
+by legacy uniform inference and mutate cache identity before rejection. Explicit
+nested attribute arrays enter a uniform-only validation branch. Respect explicit
+attribute declarations first, share Program's record validation, and commit
+value/cache changes only after successful validation. Verify ModularProgram
+rendering/rebuilds with the retained Windows/Linux modules; this Python fix needs
+no new native wheel or dependency build. The new indexed oracle still needs its
+Windows observation. Actual visual/filter, indexed/batched and host/qualification
+obligations remain open. Evidence: `build/runs/aggregate-linux-77/`.

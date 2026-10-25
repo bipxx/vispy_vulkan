@@ -217,3 +217,11 @@ and visual consumers. These are development source results; no candidate profile
 ledger criterion, producer approval or installed admission is renewed by them.
 The unchanged original invalid-shader assertion also passes after canvas parser
 activation and source-context diagnostics were repaired.
+
+
+The aggregate Linux source checkpoint passes four focused native contracts,
+149 aggregate pixels, three indexed/vector comparisons and 171 shared controls
+using the repaired software Vulkan driver. Shutdown gauges are zero. Windows has
+not yet run the three new indexed controls. The retained composition diagnostic
+still rejects explicit matrix/array attributes and is an unmet requirement;
+these results renew no admission bindings. See the Linux checkpoint in the plan.
