@@ -203,6 +203,12 @@ def validate_proofs(recipe, raw, expected_sources, before, after, cache_before, 
 
 def validate_record(record, root=ROOT):
     root = Path(root)
+    if record.get('kind') == 'original-linux-ci-native-reuse':
+        try:
+            from .qualification_linux_native import validate_record as validate_linux
+        except ImportError:
+            from qualification_linux_native import validate_record as validate_linux
+        return validate_linux(record, root)
     validate_shape(record, 'record', root)
     candidate = read_json(retained_file(root, record['candidate']))
     validate_candidate(candidate, root, require_reviewed=True)

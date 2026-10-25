@@ -75,3 +75,30 @@ successful execution afterward, without installing packages or rebuilding the
 renderer. Run `build/runs/linux-native-join-83/` retains that before/after control,
 the original failed CI evidence, 517 Windows checks and 49 WSL controls. These
 checks do not establish successful producer CI or Linux admission.
+
+The native/index source now adds `tools/qualification_linux_native.py` to the
+existing native dispatcher and qualification index. It reads the original CI
+state, preferred source archive, process receipts, build graph/toolchain,
+unfiltered CTest discovery and execution, raw/stripped/wheel outputs and original
+in-process cleanup records. Portable transport references preserve original
+absolute origins and bytes. The index also requires terminal retention of every
+raw capture input, including the original cleanup records, rather than retaining
+only the transport wrapper. The observer protocol pins the preparation repair;
+older incompatible collector bytes cannot silently supply successful proof.
+
+A complete synthetic capture exercises this join and rejection controls without
+running a native build. Its explicitly synthetic process records and ELF headers
+are test fixtures, not producer evidence. The actual producer policy remains
+`blocked-experimental-producer`; dispatch refuses real Linux reuse before reading
+an unapproved candidate. The schema's reviewed full-source mode is only a future
+route: exact independent source/scope reuse approvals, original successful native
+capture, reviewed ABI facts and all installed qualification/promotion gates are
+still required. See `build/runs/linux-native-semantic-85/` for local verification;
+this source work does not admit an artifact or hardware profile.
+
+Local verification passes 571 affected Windows regressions and 87 WSL
+native-adapter/index controls. These include a successful synthetic native join,
+31 rebound semantic rejection cases, portable transport checks, blocked real
+producer policy and six outer-index raw-retention controls. Original failed
+attempts remain retained. New CPU CI selects the maintained adapter tests; the
+real subject still has 120 missing criteria and no admission.

@@ -2,7 +2,7 @@
   "schema": 1,
   "phase": "development",
   "id": "tk-state-resource-1",
-  "manifest_sha256": "c74eb5dc21a526dfa15bf08cf2c06927d5cc3513bf44826695d2582ec93109c4",
+  "manifest_sha256": "900bc1c0db2e945492ad27d4631ef1d68a2826cd0592e0b9efc53cb1501e62a0",
   "product_source_commit": "9ef9765552c41c84d82d69b44756d5925b4d3cd3",
   "upstream_commit": "117b054598f4758b598f4b8f48feea48c11fe7b0",
   "ledger": {
@@ -1124,7 +1124,7 @@
   "preparation_tools": [
     {
       "path": "tools/compatibility_candidate.py",
-      "sha256": "ad3c7168d450326e2ab952431777c9f104cddb7c9d873918929c5e243b959864"
+      "sha256": "2bf922c90e066a48fd98f38291f6b1b782f401079c89c285b6ce9c08426e1168"
     },
     {
       "path": "tools/compatibility_inventory.py",
@@ -1172,7 +1172,7 @@
     },
     {
       "path": "compat/qualification-ci.json",
-      "sha256": "a9a42b99c2c681217406a9adfac69ea94a7dd89099682eeedcd0b8eb50df9413"
+      "sha256": "0ac92df87deaacd3a67eddc0c3835a78947805e4e4f8da0868f48c28baf05841"
     },
     {
       "path": "tools/qualification_artifact.py",
@@ -1180,7 +1180,7 @@
     },
     {
       "path": "compat/qualification-artifact.schema.json",
-      "sha256": "d34cc3ccee84b9418e1160eae57d71dbe214d8c0b08f76b5c8c4ab30d786b003"
+      "sha256": "a9165827a59101fcf5762d69c5ba9b84ecb9534b386712ec224793d882d6c6e5"
     },
     {
       "path": "compat/qualification-producers.json",
@@ -1192,11 +1192,15 @@
     },
     {
       "path": "tools/qualification_native.py",
-      "sha256": "e6c083df508f1f380407243048a764ca627c88361a6afac8b93b16a42d04e8f2"
+      "sha256": "a77333c4e4015f7f5f0e9b88e49fdeb7accf32313c39c29cfd1b340f995fe162"
+    },
+    {
+      "path": "tools/qualification_linux_native.py",
+      "sha256": "2b6223eb43c7f9e086f413d01834d4b3e4cfadf446914ec1ed7662c5febe9d63"
     },
     {
       "path": "compat/qualification-native.schema.json",
-      "sha256": "906e4d86a8a68ac551954077d456b0ebea598c4ada6b90de609eeec10a16a8b4"
+      "sha256": "594f65049c3bdd2ac8fed8be53daceddeab42fa721047913646ecfb14dcad676"
     },
     {
       "path": "tools/native_epoch.py",
@@ -1224,7 +1228,7 @@
     },
     {
       "path": "tools/qualification_index.py",
-      "sha256": "9ac5ba6ec3db9958ca555b889d61a7d759ca1d4629370b300a38ef6d610842da"
+      "sha256": "512b3e7dc49dcd927e39b42c78bbc65df4ab91927edad45c4c2be1a58a673c5b"
     },
     {
       "path": "compat/qualification-index.schema.json",
@@ -1264,7 +1268,7 @@
     },
     {
       "path": ".github/workflows/cpu-contract.yml",
-      "sha256": "457cf83105897d9c3d14dd761f264a9e661772fcf6391defa9c7c4ff93d8c623"
+      "sha256": "bce3aa1698367c05e4b2440c92dfc750cfbcec71da3bd0a0a879d72f6a478a4d"
     },
     {
       "path": "tools/audit_no_opengl.py",

@@ -31,7 +31,10 @@
           "const": "vendor-sdk-reuse-only-native-leaf-admission-pending"
         },
         "linux_scope": {
-          "const": "blocked-experimental-producer"
+          "enum": [
+            "blocked-experimental-producer",
+            "reviewed-full-source-native-proof-required"
+          ]
         },
         "metal_scope": {
           "const": "experimental-no-hardware-admission"

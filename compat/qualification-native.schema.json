@@ -693,6 +693,169 @@
           }
         }
       }
+    },
+    "linux-file": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    },
+    "linux-capture": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "kind",
+        "state",
+        "terminal",
+        "plan",
+        "cleanup",
+        "files"
+      ],
+      "properties": {
+        "schema": {
+          "const": 1
+        },
+        "kind": {
+          "const": "original-linux-ci-capture-v1"
+        },
+        "state": {
+          "$ref": "#/$defs/linux-file"
+        },
+        "terminal": {
+          "$ref": "#/$defs/linux-file"
+        },
+        "plan": {
+          "$ref": "#/$defs/linux-file"
+        },
+        "cleanup": {
+          "$ref": "#/$defs/linux-file"
+        },
+        "files": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "origin",
+              "file"
+            ],
+            "properties": {
+              "origin": {
+                "type": "string",
+                "minLength": 1
+              },
+              "file": {
+                "$ref": "#/$defs/linux-file"
+              }
+            }
+          }
+        }
+      }
+    },
+    "linux-record": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "kind",
+        "candidate",
+        "capture",
+        "reuse"
+      ],
+      "properties": {
+        "schema": {
+          "const": 1
+        },
+        "kind": {
+          "const": "original-linux-ci-native-reuse"
+        },
+        "candidate": {
+          "$ref": "#/$defs/linux-file"
+        },
+        "capture": {
+          "$ref": "#/$defs/linux-file"
+        },
+        "reuse": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "profile",
+            "candidate_scope_sha256",
+            "capture_sha256",
+            "production_sha256",
+            "impact",
+            "abi"
+          ],
+          "properties": {
+            "profile": {
+              "type": "string",
+              "minLength": 1
+            },
+            "candidate_scope_sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "capture_sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "production_sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "impact": {
+              "type": "string",
+              "minLength": 1
+            },
+            "abi": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "tag",
+                "build_version",
+                "build_python_sha256",
+                "consumer_version",
+                "consumer_python_sha256"
+              ],
+              "properties": {
+                "tag": {
+                  "const": "cp312"
+                },
+                "build_version": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "build_python_sha256": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$"
+                },
+                "consumer_version": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "consumer_python_sha256": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
 }

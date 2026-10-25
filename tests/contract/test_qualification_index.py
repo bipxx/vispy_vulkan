@@ -155,6 +155,28 @@ def test_complete_synthetic_outer_join_never_claims_global_completion(monkeypatc
     assert not any(result[k] for k in ('admitted', 'candidate_complete', 'full_inventory_complete', 'release_complete'))
 
 
+@pytest.mark.parametrize('missing', [None, 'capture', 'state', 'plan', 'cleanup', 'raw'])
+def test_linux_capture_raw_inputs_must_survive_contributing_run(monkeypatch, missing):
+    put, subject = synthetic_subject(monkeypatch)
+    covered = qi.validate_retention({})
+    raw = {name: put('unit/linux-'+name+'.json', {'synthetic': name})
+           for name in ('state', 'plan', 'cleanup', 'raw')}
+    capture = put('unit/linux-capture.json', {'state': raw['state'], 'plan': raw['plan'],
+        'cleanup': raw['cleanup'], 'files': [{'origin': '/synthetic/raw', 'file': raw['raw']}]})
+    producer = put('unit/linux-producer.json', {'kind': 'original-linux-ci-native-reuse',
+        'candidate': subject['candidate'], 'reuse': {'profile': 'unit-profile'}, 'capture': capture})
+    subject['profiles'][0]['producer'] = producer
+    for name, ref in {'capture': capture, 'producer': producer, **raw}.items():
+        if name != missing: covered.add((ref['path'], ref['sha256']))
+    qi.seal(subject)
+    if missing:
+        with pytest.raises(qi.InventoryError, match='artifact/native proof has unretained inputs'):
+            qi.validate_subject(subject)
+    else:
+        result = qi.validate_subject(subject)
+        assert result['subject_proved'] and not result['admitted']
+
+
 @pytest.mark.parametrize('bad', ['native', 'missing-profile', 'unretained'])
 def test_resealed_subject_semantic_controls(monkeypatch, bad):
     _, subject = synthetic_subject(monkeypatch, bad)

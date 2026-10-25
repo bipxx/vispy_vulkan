@@ -247,6 +247,10 @@ def validate_subject(subject, root=ROOT):
                       'producer proof not retained by cleanup')
         if archive and producer and attempt and not reasons:
             required = set(references(archive_record)) | set(references(producer_record))
+            if producer_record['kind'] == 'original-linux-ci-native-reuse':
+                # The wrapper points into an original, immutable CI capture.
+                # Retain every raw input, not only that wrapper's JSON bytes.
+                required.update(references(read(producer_record['capture'])))
             # Current frozen declarations are retained by the subject itself;
             # artifacts and raw proof must survive their contributing run.
             declarations = set(references({k: subject[k] for k in ('candidate', 'selection', 'execution', 'ledger')}))

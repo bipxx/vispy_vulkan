@@ -56,6 +56,16 @@ incomplete with all 120 selected criteria missing proof. Actual implementation/
 scope review, producer/blocker decisions and installed qualification remain next;
 no plan review or synthetic validator fixture approves an artifact.
 
+The Linux native/index source checkpoint now consumes the original managed CI
+capture through the existing dispatcher, with complete synthetic success and
+semantic rejection coverage and retention of all raw capture inputs. Local
+verification passes 571 Windows regressions and 87 WSL adapter/index controls
+(`build/runs/linux-native-semantic-85/`). The real producer policy stays blocked.
+The repaired CI head `258df51f9` has passed preparation and Mesa source controls;
+its actual renderer build/capture and installed result remain pending. Finish
+that original-capture join and actual independent approvals before claiming
+Linux producer admission; another synthetic pass is not that exit condition.
+
 | Priority / stage | Shortest faithful action | Exit / evidence that changes the next action |
 | --- | --- | --- |
 | 1 - input/producer decision | Inventory the exact retained leaf/provenance read set. Decide per platform whether original proof is sufficient for reuse; document Linux experimental blocker before packaging. Resolve native WIP identity coupling as specified below. | One retained-original versus new-build decision per distinct source/toolchain/ABI/configuration. Missing proof stays missing; do not fabricate newer commands or call an old leaf newly qualified. |
