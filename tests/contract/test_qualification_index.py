@@ -256,3 +256,36 @@ def test_attempt_terminal_and_resolution_proof(monkeypatch, change):
             'status': 'APPROVED', 'independent': True, 'reviewer': 'synthetic-unit-only',
             'attempt_sha256': '0' * 64, 'profile': 'unit', 'wheel_sha256': '1' * 64, 'disposition': 'unit test'})
     with pytest.raises(qi.InventoryError): qi.validate_attempts([attempt], None, qi.ROOT, profile='unit', wheel='1' * 64)
+
+
+
+@pytest.mark.parametrize('windows_separators', [False, True])
+def test_original_absolute_terminal_paths_join_without_rewriting_records(monkeypatch, windows_separators):
+    put = virtual(monkeypatch)
+    record, source = retention_fixture(put)
+    terminal = qi.read_json(qi.retained_file(qi.ROOT, record['terminal']))
+    plan = qi.read_json(qi.retained_file(qi.ROOT, record['plan']))
+    name = plan['workspace']+'/'+source['path']
+    terminal['retained'][0]['path'] = name.replace('/', chr(92)) if windows_separators else name
+    record['terminal'] = put('unit/terminal.json', terminal)
+    plan['manifest_sha256'] = record['terminal']['sha256']
+    record['plan'] = put('unit/plan.json', plan)
+    before = deepcopy(terminal)
+    assert qi.validate_retention(record) == {(source['path'], source['sha256'])}
+    assert qi.read_json(qi.retained_file(qi.ROOT, record['terminal'])) == before
+
+
+@pytest.mark.parametrize('name', ['C:/outside/source.json',
+                                 'C:/original-workspace/../source.json',
+                                 'D:/original-workspace/unit/source.json'])
+def test_absolute_terminal_paths_cannot_escape_original_workspace(monkeypatch, name):
+    put = virtual(monkeypatch)
+    record, _ = retention_fixture(put)
+    terminal = qi.read_json(qi.retained_file(qi.ROOT, record['terminal']))
+    plan = qi.read_json(qi.retained_file(qi.ROOT, record['plan']))
+    terminal['retained'][0]['path'] = name
+    record['terminal'] = put('unit/terminal.json', terminal)
+    plan['manifest_sha256'] = record['terminal']['sha256']
+    record['plan'] = put('unit/plan.json', plan)
+    with pytest.raises(qi.InventoryError, match='leaves original workspace'):
+        qi.validate_retention(record)

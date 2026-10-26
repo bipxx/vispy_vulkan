@@ -1555,3 +1555,15 @@ platform reuse proposals still require actual independent review; installed
 qualification and promotion remain open. See docs/qualification-index.md and
 build/runs/windows-cache-proof-95/. This advances the bounded practical scope,
 not full upstream parity.
+
+
+### Original cleanup integration checkpoint
+
+The original Windows terminal exposed an absolute-path versus relative-reference
+join missing from the synthetic index fixture. Run 97 corrects only that path
+projection through the recorded workspace, retaining every original hash, role,
+policy/registry, terminal/exit/wait and applied-plan check. Windows proof/index
+controls pass 183 checks; all 377 actual retained files and 239 producer raw
+references join. No renderer or SDK rebuild was needed. Renew affected source
+review bindings; this correction does not approve a candidate or complete its
+120 selected criteria. Actual platform verification is retained in run 97.

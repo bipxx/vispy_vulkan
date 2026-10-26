@@ -119,12 +119,20 @@ def validate_retention(record, root=ROOT):
     roles = set()
     covered = set()
     for name, ref in original.items():
-        file = retained_file(root, {'path': name, 'sha256': ref['sha256']})
+        # Managed terminals may retain original absolute paths. Project those
+        # through the recorded workspace before applying the ordinary relative
+        # evidence verifier; never rewrite the original cleanup records.
+        if PureWindowsPath(name).is_absolute() or PurePosixPath(name).is_absolute():
+            projected = original_path(root, plan['workspace'], name)
+            relative = projected.relative_to(root.resolve()).as_posix()
+        else:
+            relative = name
+        file = retained_file(root, {'path': relative, 'sha256': ref['sha256']})
         expected = planned.get(str(file))
         check(expected and expected['sha256'] == ref['sha256'] and expected['roles'] == ref['roles'],
               'cleanup retained roles/bytes changed')
         roles.update(ref['roles'])
-        covered.add((name, ref['sha256']))
+        covered.add((relative, ref['sha256']))
     check({'source', 'evidence', 'licenses'} | ({'repro'} if terminal['state'] != 'succeeded' else set()) <= roles,
           'retained source/evidence/license/reproducer role missing')
     return covered

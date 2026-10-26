@@ -301,3 +301,20 @@ production proof does not supply exact installed workflow qualification, current
 head CI, promotion review or a hardware qualification claim. The finite practical
 compatibility milestone preserves all 120 selected criteria and the broader
 historical obligations as separate status.
+
+
+### Real cleanup path join
+
+Actual managed terminals retain absolute Windows file paths. The index now
+projects those paths through the original recorded workspace before applying
+the existing relative evidence/hash verifier. Relative terminal paths remain
+supported; other drives, outside-workspace and parent-component paths still
+reject. The returned coverage uses canonical relative references, matching the
+producer record without rewriting terminal, plan or apply receipts.
+
+The original run-95 cleanup joins all 377 retained files and covers all 239 raw
+Windows producer references (`build/runs/retention-paths-97/`). The corrected
+source passes 183 focused proof/index controls on Windows. This is a retention
+prerequisite only; source/scope/native reuse review, installed qualification,
+required CI and promotion remain separate. The earlier synthetic fixture used
+relative paths and did not exercise the original terminal format.
