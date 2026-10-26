@@ -26,6 +26,8 @@ CORE_CONTROLS = ('safe_control_exits_zero', 'safe_control_has_no_gl_violation',
                  'native_lookup_without_call_detected', 'transient_forbidden_load_detected',
                  'transient_unload_observed', 'no_collector_errors',
                  'native_direct_call_detected', 'exec_child_native_call_detected')
+FRAMING_CONTROLS = ('fragmented_safe_passes_without_gl', 'fragmented_lookup_detected',
+                    'fragmented_call_detected', 'fragmented_records_deferred')
 COVERAGE = ('startup_and_transient_native_loads', 'native_public_gl_export_breakpoints',
             'native_entrypoint_resolution', 'process_tree')
 
@@ -134,9 +136,14 @@ def normalize(root, row, references):
           and isinstance(digest, str) and re.fullmatch('[0-9a-f]{64}', digest)
           for path, digest in collector['native_tools'].items()), 'invalid native observer tool identity')
     checks = controls.get('checks', {})
-    check(controls.get('status') == 'PASS_CONTROLS' and set(CORE_CONTROLS) <= set(checks)
+    required_controls = set(CORE_CONTROLS)
+    required_reports = {'safe', 'resolve', 'call', 'transient', 'child_call'}
+    if runtime.get('native_observer', {}).get('coverage', {}).get('ptrace_loader_handshake') is True:
+        required_controls.update(FRAMING_CONTROLS)
+        required_reports.update(('fragmented_safe', 'fragmented_resolve', 'fragmented_call'))
+    check(controls.get('status') == 'PASS_CONTROLS' and required_controls <= set(checks)
           and all(value is True for value in checks.values()), 'independent collector controls failed or incomplete')
-    check({'safe', 'resolve', 'call', 'transient', 'child_call'} <= set(references['control_reports'])
+    check(required_reports <= set(references['control_reports'])
           and set(references['control_reports']) == set(controls.get('reports', {}))
           == set(controls.get('reports_sha256', {})) and references['control_reports'], 'missing raw collector control reports')
     for name, ref in references['control_reports'].items():

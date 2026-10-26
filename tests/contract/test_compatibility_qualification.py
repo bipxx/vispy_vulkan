@@ -80,9 +80,16 @@ def test_current_selection_is_incomplete_and_preserves_both_profiles():
     result = q.validate_selection(record)
     assert len(result['requested']) == len(result['closure']) == 120
     assert len({key['profile'] for key in result['closure']}) == 2
-    assert result['reviewed']
+    execution = q.read_json(q.ROOT / record['execution_map']['path'])
+    candidate, _, _ = q.load_inputs(execution, q.ROOT)
+    expected_review = all(candidate['reviews'].values())
+    assert result['reviewed'] is expected_review
     assert not any(result[key] for key in ('admitted', 'qualified', 'full_inventory_complete'))
-    assert q.validate_selection(record, require_reviewed=True) == result
+    if expected_review:
+        assert q.validate_selection(record, require_reviewed=True) == result
+    else:
+        with pytest.raises(q.InventoryError, match='review remains pending'):
+            q.validate_selection(record, require_reviewed=True)
 
 
 @pytest.mark.parametrize('change', ['omit-recovery', 'wrong-profile', 'stale-map', 'unknown-field'])
@@ -103,10 +110,14 @@ def test_resealed_real_selection_rejects_scope_changes(change):
 
 def test_default_cli_does_not_write_and_strict_review_validates_actual_approvals(capsys):
     before = q.DEFAULT.read_bytes()
+    record = q.read_json(q.DEFAULT)
+    execution = q.read_json(q.ROOT / record['execution_map']['path'])
+    candidate, _, _ = q.load_inputs(execution, q.ROOT)
+    expected_review = all(candidate['reviews'].values())
     assert q.main([]) == 0
-    assert q.main(['--require-reviewed']) == 0
+    assert q.main(['--require-reviewed']) == (0 if expected_review else 1)
     assert q.DEFAULT.read_bytes() == before
-    assert '"reviewed": true' in capsys.readouterr().out
+    assert ('"reviewed": true' if expected_review else 'review remains pending') in capsys.readouterr().out
 
 
 @pytest.mark.parametrize('binding', ['exact', 'wrong', 'absent'])

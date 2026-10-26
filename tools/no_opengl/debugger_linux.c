@@ -166,25 +166,50 @@ static void image(pid_t tid, pid_t group, uintptr_t bias, const char *requested,
     }
     munmap((void *)data, size);
 }
-static void loader_events(pid_t tid, pid_t group) {
+static int loader_events(pid_t tid, pid_t group) {
     /* Queue interleaved process records; each address space is instrumented
      * only while a task in that address space is at its loader stop. */
     char *line = NULL; size_t capacity = 0;
+    int complete = 1;
     clearerr(loader);
-    while (getline(&line, &capacity, loader) >= 0) {
-        char *kind = line, *pid = strchr(line, '\t'); if (!pid) { ++errors; continue; } *pid++ = 0;
-        char *value = strchr(pid, '\t'); if (!value) { ++errors; continue; } *value++ = 0;
+    for (;;) {
+        off_t start = ftello(loader);
+        if (start < 0) { error(group, "tell loader record"); break; }
+        ssize_t length = getline(&line, &capacity, loader);
+        if (length < 0) {
+            if (ferror(loader)) error(group, "read loader record");
+            break;
+        }
+        /* Another address space can still be appending this record. getline
+         * returns an unterminated prefix at temporary EOF; retain every byte
+         * until a complete line is available at a later loader stop. */
+        if (!length || line[length - 1] != '\n') {
+            complete = 0;
+            if (fseeko(loader, start, SEEK_SET)) error(group, "rewind incomplete loader record");
+            event("debug_loader_record_deferred", group, "offset=%lld bytes=%zd", (long long)start, length);
+            break;
+        }
+        char *kind = line, *pid = strchr(line, '\t');
+        if (!pid) { ++errors; event("debug_error", group, "Loader record lacks PID at offset=%lld", (long long)start); continue; } *pid++ = 0;
+        char *value = strchr(pid, '\t');
+        if (!value) { ++errors; event("debug_error", group, "Loader record lacks value at offset=%lld", (long long)start); continue; } *value++ = 0;
         value[strcspn(value, "\r\n")] = 0;
         if (strcmp(kind, "native_image") && strcmp(kind, "native_image_unload")) continue;
         pid_t source = (pid_t)strtol(pid, NULL, 10);
         char *end; uintptr_t bias = (uintptr_t)strtoull(value, &end, 16);
-        if (*end != '|') { ++errors; continue; }
+        if (*end != '|') { ++errors; event("debug_error", group, "Loader image lacks separator at offset=%lld", (long long)start); continue; }
         images = grow(images, image_count + 1, sizeof(*images));
         images[image_count++] = (Image){source, bias, strcmp(kind, "native_image_unload") == 0, 0, strdup(end + 1)};
     }
     free(line);
     for (size_t i = 0; i < image_count; ++i) if (!images[i].done && images[i].owner == group) {
         image(tid, group, images[i].bias, images[i].path, images[i].unload, 0); images[i].done = 1;
+    }
+    return complete;
+}
+static void finish_loader_events(pid_t root) {
+    if (!loader_events(root, root)) {
+        ++errors; event("debug_error", root, "Unterminated loader record after process tree exit");
     }
 }
 static int peek_word(pid_t tid, uintptr_t address, unsigned long *word) {
@@ -418,6 +443,7 @@ int main(int argc, char **argv) {
         enum __ptrace_request request = current && current->stepping ? PTRACE_SINGLESTEP : (current && current->static_exec ? PTRACE_SYSCALL : PTRACE_CONT);
         if (ptrace(request, tid, NULL, (void *)(intptr_t)deliver) && errno != ESRCH) error(group, "PTRACE_CONT/SYSCALL");
     }
+    if (!errors && !terminated) finish_loader_events(root);
     event("debug_complete", root, "root_code=%d errors=%d tasks=%zu", root_code, errors, task_count);
     fclose(output); fclose(loader);
     for (size_t i = 0; i < trap_count; ++i) { free(traps[i].name); free(traps[i].path); }

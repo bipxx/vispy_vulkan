@@ -41,6 +41,16 @@ def main():
     }
     cases['child_call'] = ('import subprocess,sys;subprocess.run([sys.executable,"-I","-B","-c",'
                            + repr(prefix + 'assert x.auditCallControl()==17') + '],check=True)')
+    if not windows and args.native_debugger:
+        # Force temporary EOF in the real loader log, then prove that completing
+        # its record does not suppress subsequent native lookup/call detection.
+        fragment = ('import os,signal;fd=os.open(os.environ["VISPY_NO_GL_NATIVE_LOG"],os.O_WRONLY|os.O_APPEND);'
+                    'line=("native_image\\t%d\\t0x0|linux-vdso.so.1\\n"%os.getpid()).encode();'
+                    'cut=line.index(b"|");os.write(fd,line[:cut]);os.kill(os.getpid(),signal.SIGSTOP);'
+                    'os.write(fd,line[cut:]);os.close(fd);os.kill(os.getpid(),signal.SIGSTOP);')
+        cases['fragmented_safe'] = fragment + prefix + 'assert x.auditSafeControl()==23'
+        cases['fragmented_resolve'] = fragment + prefix + 'x.auditResolveControl.argtypes=[ctypes.c_void_p];assert x.auditResolveControl(x._handle)==1'
+        cases['fragmented_call'] = fragment + prefix + 'assert x.auditCallControl()==17'
     if not windows:
         cases['fork_call'] = prefix + 'import os;pid=os.fork();x.auditCallControl() if pid==0 else os.waitpid(pid,0)'
         cases['sanitized_child_call'] = ('import subprocess,sys;subprocess.run([sys.executable,"-I","-B","-c",'
@@ -87,6 +97,10 @@ def main():
         checks['native_direct_call_detected'] = seen('call', 'native_gl_call')
         checks['exec_child_native_call_detected'] = seen('child_call', 'native_gl_call')
         if not windows:
+            checks['fragmented_safe_passes_without_gl'] = reports['fragmented_safe']['process_exit'] == 0 and not reports['fragmented_safe']['gates']['violations']
+            checks['fragmented_lookup_detected'] = seen('fragmented_resolve', 'native_gl_binding')
+            checks['fragmented_call_detected'] = seen('fragmented_call', 'native_gl_call')
+            checks['fragmented_records_deferred'] = all(seen(name, 'debug_loader_record_deferred') for name in ('fragmented_safe', 'fragmented_resolve', 'fragmented_call'))
             checks['fork_child_inherited_native_call_detected'] = seen('fork_call', 'native_gl_call')
             checks['sanitized_exec_native_call_detected'] = seen('sanitized_child_call', 'native_gl_call')
             checks['ldconfig_helper_complete_tree'] = reports['ldconfig_helper']['coverage']['process_tree']

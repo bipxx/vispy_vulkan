@@ -2,7 +2,7 @@
   "schema": 1,
   "phase": "development",
   "id": "tk-state-resource-1",
-  "manifest_sha256": "b70445d54b380a19428573daf0bb092a896d2e396594b78fe92bcbfdf944988d",
+  "manifest_sha256": "30d616e9a706d7ca8d5ce9d10b6bd00f598d618cdfae17c9a5cb2ff17ab01054",
   "product_source_commit": "9ef9765552c41c84d82d69b44756d5925b4d3cd3",
   "upstream_commit": "117b054598f4758b598f4b8f48feea48c11fe7b0",
   "ledger": {
@@ -1163,14 +1163,8 @@
     }
   ],
   "reviews": {
-    "source": {
-      "path": "compat/candidates/tk-state-resource-1/reviews/source-7347aa2-astra.json",
-      "sha256": "97bdee5ea82283de1786bfe66807156153f46fc8bf93400b0790e90d70ca3f7c"
-    },
-    "scope": {
-      "path": "compat/candidates/tk-state-resource-1/reviews/scope-7347aa2-astra.json",
-      "sha256": "02d97a4ecbf33c8b35b2dbbdc0ba464adfe7dc532c4bf80f62d9bac13fffea8d"
-    }
+    "source": null,
+    "scope": null
   },
   "blockers": [
     "All proposals are unreviewed and unapplied; all 142 original required pairs remain in the canonical ledger.",
@@ -1202,7 +1196,7 @@
     },
     {
       "path": "tools/compatibility_evidence.py",
-      "sha256": "f43f871e521cc425ff75d89fa00058b8875604eba97f667d1037239b6bdacea9"
+      "sha256": "c89b4dc434b344597d7a559aeb9b383243740176b51fd28e3cbd5f459f0eec28"
     },
     {
       "path": "tools/compatibility_coverage.py",
@@ -1410,7 +1404,7 @@
     },
     {
       "path": "tools/no_opengl/debugger_linux.c",
-      "sha256": "4410d68b2c1c4c2cebf735508b43c02c40f07e18888e2efc68123367c7fc41d4"
+      "sha256": "3de2b562eb75c254a4034c278cdec752588cec44cc725fc1100ff3c33791c857"
     },
     {
       "path": "tools/no_opengl/dependencies.py",
@@ -1438,7 +1432,7 @@
     },
     {
       "path": "tools/no_opengl/negative_controls.py",
-      "sha256": "c27b44f2e9dae0965820d3becaf6bfe0fdd91295d083deaf9f49a766e84cdb22"
+      "sha256": "90fce090dd1b39fa78b8d212b490fc96b536c3132d48e5de889c16ea3935acb4"
     },
     {
       "path": "tools/no_opengl/negative_probe.c",

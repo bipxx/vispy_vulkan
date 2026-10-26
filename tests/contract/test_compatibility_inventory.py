@@ -203,6 +203,39 @@ def test_qualified_gate_cannot_borrow_headless_for_tk(example):
         inventory.validate(ledger, root)
 
 
+@pytest.mark.parametrize('kind,name', [(None, None)] +
+    [('flag', name) for name in ('fragmented_safe_passes_without_gl', 'fragmented_lookup_detected',
+                                'fragmented_call_detected', 'fragmented_records_deferred')] +
+    [('report', name) for name in ('fragmented_safe', 'fragmented_resolve', 'fragmented_call')])
+def test_linux_gate_requires_post_fragment_controls_and_their_raw_reports(example, kind, name):
+    from tools.compatibility_evidence import FRAMING_CONTROLS
+    root, ledger = example
+    promote(root, ledger, 'wheel-tested')
+    row = ledger['rows'][0]
+    references = synthetic_gate_bundle(root, row)
+    runtime = inventory.read_json(root / references['runtime']['path'])
+    runtime['native_observer']['coverage']['ptrace_loader_handshake'] = True
+    references['runtime'] = write_json(root, references['runtime']['path'], runtime)
+    controls = inventory.read_json(root / references['controls']['path'])
+    controls['checks'].update({flag: True for flag in FRAMING_CONTROLS})
+    for control in ('fragmented_safe', 'fragmented_resolve', 'fragmented_call'):
+        reference = write_json(root, 'evidence/' + control + '.json', {'synthetic': control})
+        references['control_reports'][control] = reference
+        controls['reports'][control] = reference['path']
+        controls['reports_sha256'][control] = reference['sha256']
+    if kind == 'flag': controls['checks'].pop(name)
+    elif kind == 'report':
+        references['control_reports'].pop(name)
+        controls['reports'].pop(name)
+        controls['reports_sha256'].pop(name)
+    references['controls'] = write_json(root, references['controls']['path'], controls)
+    if kind is None:
+        assert set(normalize(root, row, references)) == set(inventory.GATES)
+    else:
+        with pytest.raises(inventory.InventoryError, match='collector controls|raw collector control reports'):
+            normalize(root, row, references)
+
+
 @pytest.mark.parametrize('part,change', [
     ('runtime', lambda r: r['workflow'].update(id='other')),
     ('runtime', lambda r: r['workflow'].update(arguments=['different'])),
@@ -983,10 +1016,12 @@ def test_candidate_pins_objective_cpp_surface_inputs(example, change):
 
 def test_current_candidate_preparation_preserves_full_unqualified_scope():
     from tools.compatibility_candidate import DEFAULT, validate_candidate
-    result = validate_candidate(inventory.read_json(DEFAULT))
+    candidate = inventory.read_json(DEFAULT)
+    result = validate_candidate(candidate)
     assert result['proposed_pairs'] == 30 and result['canonical_required_pairs_preserved'] == 142
     assert result['workflows'] == 3
-    assert result['reviewed'] and not result['qualified'] and not result['installable']
+    assert result['reviewed'] is all(candidate['reviews'].values())
+    assert not result['qualified'] and not result['installable']
 
 
 @pytest.mark.parametrize('change,message', [
@@ -1293,7 +1328,9 @@ def test_current_coverage_proposal_maps_all_composite_branches_without_qualifica
     assert result['criteria'] == 60 and result['profile_bindings'] == 120
     assert result['script_ready_bindings'] == 120 and not result['unmapped_observation_bindings']
     assert result['original_required_pairs_retained'] == 142 and result['originals_discharged'] == 0
-    assert result['reviewed'] and not result['qualified']
+    candidate = inventory.read_json(ROOT / record['candidate']['path'])
+    assert result['reviewed'] is all(candidate['reviews'].values())
+    assert not result['qualified']
 
 
 def test_unseeded_methods_stay_new_requirements_without_inventing_origins(example):
@@ -1509,10 +1546,13 @@ def test_execution_materialization_is_explicit_nonoverwriting_and_read_only_by_d
 
 def test_current_execution_preparation_preserves_all_original_obligations():
     from tools.compatibility_execution import DEFAULT, validate_execution
-    result = validate_execution(inventory.read_json(DEFAULT))
+    record = inventory.read_json(DEFAULT)
+    result = validate_execution(record)
     assert result['selected_pairs'] == 30 and result['criterion_bindings'] == 120
     assert result['original_required_pairs_retained'] == 142 and result['originals_discharged'] == 0
-    assert result['reviewed'] and not result['qualified'] and not result['installable']
+    candidate = inventory.read_json(ROOT / record['candidate']['path'])
+    assert result['reviewed'] is all(candidate['reviews'].values())
+    assert not result['qualified'] and not result['installable']
 
 
 def test_execution_conserves_required_same_profile_dependencies(example):
