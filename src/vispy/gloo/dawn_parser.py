@@ -280,12 +280,17 @@ def read_pixels_dawn(viewport, alpha, mode, out_type="unsigned_byte"):
         raise RuntimeError("read_pixels requires a current canvas")
     if out_type not in ("unsigned_byte", "float", np.uint8, np.float32):
         raise ValueError("out_type must be unsigned_byte or float")
-    canvas.context.finish()
-    if viewport is None:
+    use_current_viewport = viewport is None
+    if use_current_viewport:
+        # Apply queued viewport updates before resolving the default region.
+        canvas.context.finish()
         viewport = _dawn.viewport(int(canvas._backend._dawn_canvas_id))
     viewport = np.asarray(viewport, dtype=int)
     if viewport.ndim != 1 or viewport.size != 4:
         raise ValueError("viewport should be a 1D four-element array")
+    if not use_current_viewport:
+        # Explicit viewport coercion/shape errors must precede submission.
+        canvas.context.finish()
     x, y, width, height = viewport
     canvas_id = int(getattr(canvas._backend, "_dawn_canvas_id", 0) or 0)
     image = _dawn.read_pixels(canvas_id, x, y, width, height, bool(alpha),
