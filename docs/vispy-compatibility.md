@@ -1,5 +1,20 @@
 # Compatibility with upstream VisPy
 
+## Project direction
+
+See the [practical compatibility release scope](practical-compatibility-release.md) for the bounded
+first milestone and its required evidence.
+
+The project targets a usable Vulkan-based evolution of VisPy, with practical
+compatibility for supported workflows. Familiar public APIs, array conventions,
+events and rendering behavior are preserved where claimed. Intentional changes
+need documentation, migration guidance where needed, and distinguishing tests. Complete upstream
+parity is not a release requirement; deliberate improvements and documented API
+or behavior changes are acceptable. Support claims remain specific to tested
+features and platforms. Remaining upstream coverage is tracked as backlog, and
+experimental or unsupported paths remain labeled accordingly.
+
+
 The Vulkan implementation is not a complete upstream replacement. The
 [installed matrix](../compat/no-opengl-matrix.json) describes selected application
 profiles, not a percentage of supported VisPy features. Existing release wheels

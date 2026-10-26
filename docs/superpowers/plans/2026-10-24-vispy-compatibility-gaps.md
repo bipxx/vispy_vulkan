@@ -1,5 +1,35 @@
 # VisPy compatibility gap-closure execution plan
 
+## User-directed release scope revision
+
+See the [practical compatibility release scope](../../practical-compatibility-release.md) for the bounded
+first milestone and its required evidence.
+
+The user explicitly accepts improvements beyond VisPy and does not require
+complete upstream parity. Practical compatibility is still required for the
+supported workflows: preserve familiar public entry points, data conventions,
+events and rendering semantics unless a specific improvement or intentional
+difference is documented and tested. This direction supersedes older wording that makes complete
+upstream inventory closure a prerequisite for the next usable release.
+
+Target a usable Vulkan-based implementation with an explicit supported feature
+and platform set. Intentional API changes and improved behavior are acceptable
+when documented and tested. Upstream is a reference and migration aid, rather
+than a requirement to reproduce every API, backend, historical limitation or
+OpenGL-specific behavior. Remaining inventory entries stay visible as backlog;
+they are not automatically release blockers and must not be relabeled as passed.
+
+Next steps: freeze the supported release scope, classify outstanding items as
+supported-feature defects, intentional differences or deferred breadth, and
+verify the supported workflows on Windows and WSL. Keep Metal experimental.
+Correctness, resource lifetime, recovery, installation, no-OpenGL claims and
+original-license/AGPL requirements still apply to the scope we ship. Preserve
+existing failed evidence. Update reviewed selection and release criteria
+explicitly before promotion; do not weaken verifiers or silently mark the old
+120-criterion request or broader host matrix complete. Independent review and
+current artifact/CI evidence apply to the revised supported scope.
+
+
 Date: 2026-10-24. Status: source implementation exists; Astra review found
 functional and acceptance gaps. The follow-up is not ready for qualification.
 

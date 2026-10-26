@@ -1,5 +1,29 @@
 # VisPy compatibility gap-closure specification
 
+## User-directed scope precedence
+
+See the [practical compatibility release scope](../../practical-compatibility-release.md) for the bounded
+first milestone and its required evidence.
+
+Full upstream VisPy parity is not required for the next usable release.
+Practical compatibility is required within the declared supported scope. Use
+existing VisPy programs and upstream-derived distinguishing cases to verify
+familiar API, data, event and rendering behavior; document intentional changes
+and migration steps. An unexpected supported-workflow regression is a defect,
+not an improvement merely because the Vulkan implementation differs. The user
+accepts deliberate improvements, API changes and documented behavioral
+differences. This instruction supersedes earlier full-closure release language
+in this specification. The pinned upstream remains the comparison baseline;
+its complete API/backend inventory is a roadmap, not a universal release gate.
+
+Release claims must identify the supported features/platforms and intentional
+differences. Correctness and qualification requirements for those claims remain;
+unsupported or deferred items cannot be counted as passing. Explicitly revise
+selection and review bindings before promotion, preserving historical failures,
+licenses and the original inventory. This scope change alone does not approve
+an artifact or discharge the existing qualification ledger.
+
+
 Date: 2026-10-24. Status: reviewed requirements for continued implementation;
 requirements below are not claims that the implementation already satisfies them.
 Target: the pinned VisPy 0.17.0 source/API, commit
