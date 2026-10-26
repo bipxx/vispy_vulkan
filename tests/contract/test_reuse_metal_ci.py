@@ -1,6 +1,7 @@
 # SPDX-License-Identifier: AGPL-3.0-only
 """Synthetic Metal build-only reuse joins; no native commands or GPU execution."""
 import hashlib
+import io
 import json
 from pathlib import Path
 import struct
@@ -116,3 +117,126 @@ def test_semantic_mutations_cannot_rebind_outer_transport_hashes(original, monke
             def change(value):value['compiled_modules']['vispy._dawn']['sha256']='0'*64
         rewrite(root, inventory, prefix+member, change)
     with pytest.raises(ValueError, match=match):metal.validate_inputs(inventory, pin, arch, source, root)
+
+
+@pytest.fixture
+def python_original(original, monkeypatch):
+    from tools import qualification_artifact as qa
+    from test_qualification_artifact import sample, wheel_bytes
+    root, source, pin, arch, inventory, docs = original
+    # Restore actual inventory/package readers: this fixture now supplies their
+    # complete synthetic inputs rather than the older isolated native stubs.
+    monkeypatch.undo()
+    entries, inputs = sample('darwin', arch)
+    prefix = 'metal-evidence-' + arch + '/'
+    def replace(member, payload):
+        row = next(row for row in inventory['members'] if row['member'] == member)
+        (root / row['path']).write_bytes(payload)
+        row['sha256'] = hashlib.sha256(payload).hexdigest()
+    for name, payload in entries.items():
+        if name == qa.runtime_package.MEMBER:
+            relative = 'compat/runtime-package.json'
+        elif name in inputs['pure_hashes']:
+            relative = 'src/' + name
+        elif name in inputs['notices']:
+            base = name.removeprefix('vispy/_licenses/')
+            relative = base if base in ('LICENSE', 'LICENSE-BSD', 'LICENSING.md') else 'third_party/licenses/' + base
+        else:
+            continue
+        path = source / relative
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_bytes(payload)
+    for name, payload in {'CMakeLists.txt': b'synthetic', 'CMakePresets.json': b'{}',
+                          'uv.lock': b'synthetic', 'README.md': b'Original README\n',
+                          'cpp/render.cpp': b'original native',
+                          'tools/audit_metal_wheel.py': b'synthetic auditor',
+                          'pyproject.toml': b'license-files = ["LICENSE", "LICENSE-BSD", "LICENSING.md"]\n'}.items():
+        path = source / name
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_bytes(payload)
+    pin['source_inputs'] = metal.source_inputs(source)
+    pin['package_metadata_inputs'] = {'README.md': metal.transport.digest(source / 'README.md')}
+    wheel = wheel_bytes(entries)
+    wheel_name = Path(docs['archive.json']['wheel']).name
+    replace(prefix + 'wheels/' + wheel_name, wheel)
+    native = {}
+    for name in inputs['native_hashes']:
+        payload = entries[name]
+        raw = payload + b'raw'
+        replace('metal-native-' + arch + '/' + Path(name).name, raw)
+        replace(prefix + 'native-origin/' + name, payload)
+        native[name] = dict(docs['archive.json']['native'][name],
+                            raw_sha256=qa.sha(raw), wheel_sha256=qa.sha(payload),
+                            controlled_stripped_sha256=qa.sha(payload))
+    hashes = {name: qa.sha(payload) for name, payload in entries.items() if name.startswith('vispy/')}
+    rewrite(root, inventory, prefix + 'archive.json', lambda value: value.update(
+        wheel_sha256=qa.sha(wheel), package_hashes=hashes, native=native))
+    rewrite(root, inventory, prefix + 'consumer.json', lambda value: value.update(
+        wheel_sha256=qa.sha(wheel), installed_members_verified=len(hashes), compiled_modules={
+            'vispy._dawn': {'sha256': hashes['vispy/_dawn.cpython-312-darwin.so']},
+            'vispy.visuals.text._sdf_cpu': {'sha256': hashes['vispy/visuals/text/_sdf_cpu.cpython-312-darwin.so']}}))
+    return root, source, pin, arch, inventory
+
+
+def test_explicit_metal_python_change_preserves_original_native_and_history(python_original):
+    root, source, pin, arch, inventory = python_original
+    snapshot = {row['member']: (root / row['path']).read_bytes() for row in inventory['members']}
+    (source / 'src/vispy/__init__.py').write_bytes(b'# Updated Python\n')
+    with pytest.raises(ValueError, match='Changed Metal production/package'):
+        metal.validate_inputs(inventory, pin, arch, source, root)
+    checked = metal.validate_inputs(inventory, pin, arch, source, root, package_current_python=True)
+    assert checked['package_report']['changed_members'] == ['vispy/__init__.py']
+    assert checked['archive']['GPU_qualified'] is False and checked['package_report']['artifact_admitted'] is False
+    assert checked['archive']['source_revision'] == pin['checked_head']
+    assert snapshot == {row['member']: (root / row['path']).read_bytes() for row in inventory['members']}
+    with zipfile.ZipFile(io.BytesIO(checked['package_bytes'])) as archive:
+        assert archive.read('vispy/__init__.py') == b'# Updated Python\n'
+
+
+@pytest.mark.parametrize('name', ['cpp/render.cpp', 'tools/audit_metal_wheel.py', 'LICENSE-BSD',
+                                 'compat/runtime-package.json', 'README.md'])
+def test_explicit_metal_python_path_keeps_native_auditor_notice_manifest_and_metadata_guards(python_original, name):
+    root, source, pin, arch, inventory = python_original
+    path = source / name
+    path.write_bytes(path.read_bytes() + b' ')
+    with pytest.raises(ValueError):
+        metal.validate_inputs(inventory, pin, arch, source, root, package_current_python=True)
+
+
+def test_metal_cli_installs_and_retains_current_wheel_without_relabelling_original(python_original, monkeypatch):
+    root, source, pin, arch, inventory = python_original
+    pin['schema'] = 1
+    pin['architectures'] = {arch: {}}
+    reference = root / 'pin.json'
+    reference.write_text(json.dumps(pin))
+    inventory = dict(inventory, run_id=pin['run_id'])
+    (source / 'src/vispy/__init__.py').write_bytes(b'# CLI Python update\n')
+    class Context:
+        def __init__(self, *args): pass
+        def scratch(self, run): return root / 'build/work' / run
+        def marker(self, *args): pass
+        def check_capacity(self, *args): pass
+    monkeypatch.setattr(metal.transport, 'Context', Context)
+    monkeypatch.setattr(metal.transport, 'import_archive', lambda *args: inventory)
+    monkeypatch.setattr(metal, 'ROOT', source)
+    monkeypatch.setattr(metal, 'REFERENCE', reference)
+    monkeypatch.delenv('GITHUB_ENV', raising=False)
+    monkeypatch.setattr(sys, 'argv', ['metal-reuse', '--workspace', str(root), '--run-id', 'unit',
+                                    '--archive', 'synthetic-transport', '--arch', arch, '--package-current-python'])
+    metal.main()
+    evidence = root / 'build/runs/unit'
+    original = json.loads((evidence / 'reuse-original-archive.json').read_bytes())
+    current = json.loads((evidence / 'reuse-archive.json').read_bytes())
+    assert original['source_revision'] == pin['checked_head']
+    assert 'source_revision' not in current
+    assert current['original_native_source_revision'] == pin['checked_head']
+    assert current['GPU_qualified'] is False
+    wheel = Path(current['wheel'])
+    assert current['wheel_sha256'] == metal.transport.digest(wheel) != original['wheel_sha256']
+    requirement = (evidence / 'wheel-requirements.txt').read_text()
+    assert wheel.as_uri() in requirement and current['wheel_sha256'] in requirement
+    retained = json.loads((evidence / 'reuse-inputs.json').read_bytes())['retained']
+    assert retained == [dict(path=str(wheel), sha256=current['wheel_sha256'],
+                             roles=['source', 'evidence', 'licenses', 'repro'])]
+    with zipfile.ZipFile(wheel) as archive:
+        assert archive.read('vispy/__init__.py') == b'# CLI Python update\n'

@@ -135,7 +135,7 @@ def import_archive(archive_path, pin, workspace, *, available=()):
     return dict(run_id=pin['run_id'],artifact_id=pin['artifact_id'],members=rows)
 
 
-def validate_inputs(inventory, pin, source, workspace):
+def validate_inputs(inventory, pin, source, workspace, *, package_current_python=False):
     """Current source/package plus unchanged original native and harness proof."""
     try:
         from .qualification_native import source_inputs
@@ -158,8 +158,9 @@ def validate_inputs(inventory, pin, source, workspace):
     candidate=read(source/'compat/candidates/tk-state-resource-1/candidate.json')
     runtime=read(source/candidate['runtime_inputs']['path'])
     required=source_inputs(runtime,source)
-    for row in runtime['python']:
-        required[row['file']['path']]=row['file']['sha256']
+    if not package_current_python:
+        for row in runtime['python']:
+            required[row['file']['path']]=row['file']['sha256']
     for row in runtime['licenses']:
         required[row['path']]=row['sha256']
     for name, checksum in required.items():
@@ -169,9 +170,24 @@ def validate_inputs(inventory, pin, source, workspace):
     if result['production_sha256']!=pin['production_sha256']:
         raise ValueError('Original native production identity differs')
     audit=read(original('archive.json'));wheel=objects[audit['wheel']]
-    wheel_package_hashes(wheel,root=source,suffix='.cpython-312-x86_64-linux-gnu.so',platform='linux')
-    return dict(capture=capture,native=result,environment=environment,wheel=wheel,
-                original=original,objects=objects,schema=schema,required=required)
+    checked=dict(capture=capture,native=result,environment=environment,wheel=wheel,
+                 original=original,objects=objects,schema=schema,required=required)
+    if package_current_python:
+        try:
+            from .repackage_python_wheel import repackage_from_source
+        except ImportError:
+            from repackage_python_wheel import repackage_from_source
+        from runtime_package import source_package_hashes
+        expected={row['member']:row['file']['sha256'] for row in runtime['python']}
+        if expected != source_package_hashes(source):
+            raise ValueError('Current runtime input binding differs from source package')
+        output,package=repackage_from_source(wheel.read_bytes(),source,before,
+            result['native_output_hashes'],platform='linux',
+            suffix='.cpython-312-x86_64-linux-gnu.so',tag='cp312-cp312-linux_x86_64')
+        checked.update(package_bytes=output,package_report=package)
+    else:
+        wheel_package_hashes(wheel,root=source,suffix='.cpython-312-x86_64-linux-gnu.so',platform='linux')
+    return checked
 
 
 def driver_inputs(checked, inventory, pin, source, workspace):
@@ -295,6 +311,8 @@ def main():
     parser.add_argument('--archive',type=Path)
     parser.add_argument('--available-index',type=Path)
     parser.add_argument('--metadata-only',action='store_true')
+    parser.add_argument('--package-current-python',action='store_true',
+                        help='Audit and assemble current pure sources around unchanged proved native outputs')
     args=parser.parse_args()
     workspace=no_alias(args.workspace.absolute())
     context=Context(workspace,ROOT/'compat/build-hygiene.json',None)
@@ -307,7 +325,24 @@ def main():
     inventory=import_archive(archive,pin,workspace,available=available)
     write(evidence/'reuse-original-inventory.json',inventory)
     original_inputs=transport_retention(inventory,workspace,evidence)
-    checked=validate_inputs(inventory,pin,ROOT,workspace)
+    if args.package_current_python:
+        checked=validate_inputs(inventory,pin,ROOT,workspace,package_current_python=True)
+        original_wheel=checked['wheel']
+        if checked['package_report']['changed_members']:
+            output=checked['package_bytes'];checksum=hashlib.sha256(output).hexdigest()
+            target=no_alias(workspace/'build/artifacts'/checksum/original_wheel.name)
+            target.parent.mkdir(parents=True,exist_ok=True)
+            if target.exists():
+                if digest(target)!=checksum:raise ValueError('Existing assembled wheel changed')
+            else:
+                with target.open('xb') as stream:stream.write(output)
+            checked['wheel']=target
+        write(evidence/'reuse-python-package.json',dict(checked['package_report'],
+              original_wheel=dict(path=str(original_wheel),sha256=digest(original_wheel)),
+              assembled_wheel=dict(path=str(checked['wheel']),sha256=digest(checked['wheel'])),
+              production_sha256=checked['native']['production_sha256']))
+    else:
+        checked=validate_inputs(inventory,pin,ROOT,workspace)
     write(evidence/'reuse-original-capture.json',checked['capture'])
     write(evidence/'reuse-native-result.json',checked['native'])
     wheel_requirement(checked['wheel'],evidence)
@@ -318,6 +353,9 @@ def main():
                 for key,value in {**driver['environment'],'WHEEL_PATH':str(checked['wheel'])}.items():
                     stream.write(key+'='+value+'\n')
     retained={item['path']:item for item in original_inputs}
+    if args.package_current_python:
+        retained[str(checked['wheel'])]=dict(path=str(checked['wheel']),sha256=digest(checked['wheel']),
+                                             roles=['source','evidence','licenses','repro'])
     retained[str(checked['schema'])]=dict(path=str(checked['schema']),sha256=digest(checked['schema']),roles=['source','evidence'])
     if not args.metadata_only:
         item=driver['source'];retained[item['path']]=dict(**item,roles=['source','licenses','repro'])

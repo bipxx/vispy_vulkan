@@ -654,5 +654,8 @@
       "max_expanded_bytes": 100663296,
       "recovered_members": []
     }
+  },
+  "package_metadata_inputs": {
+    "README.md": "fd50334e817812bf55e8b5e0429bda817cefbc45134ef130adb006356217f1c2"
   }
 }

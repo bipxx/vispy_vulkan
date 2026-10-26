@@ -1,5 +1,48 @@
 # VisPy compatibility gap-closure execution plan
 
+## Current execution checkpoint - 2026-10-26
+
+The finite practical milestone is merged in PR #14: main
+`b9599ca88062103fd57b2d37a24c24a268603011` has the same complete tree as the
+qualified head `c2499093d5ee9b2653e6db15078de65ee14f0b82`. Exact installed
+Windows/WSL artifacts, independent promotion review, all 120 selected criteria
+and all 23 required CI jobs passed. Start with
+`build/runs/final-admission-112/milestone-handoff.md` for retained evidence.
+The dated checkpoints below preserve history; their outstanding first-milestone
+instructions are superseded by this result, not instructions to rebuild it.
+The 142 parent obligations and broader host/application gates are not complete.
+
+The active follow-up fixes explicit readback input validation before queue
+consumption (G1c/G1d). Seven Python ordering tests and 56 native state/Tk capture
+cases per Windows/WSL profile pass. Four real-queue controls fail on the original
+function; default queued viewport resolution still passes. Temporary native
+projections were cleaned and original failures retained in runs 114-116. Runs117
+and118 now assemble two Python-only successor wheels, audit their complete
+archives and verify all 537 installed package members, 56 runtime cases and the
+eight-branch composite per Windows/WSL target. All nine final resource gauges
+are zero. Existing interpreters/dependencies were reused; no native build or new
+environment was needed. The assembly helper has independent bounded source
+approval. Managed installed targets/caches are cleaned. Run119 renews candidate
+source/profile/CI-input bindings without carrying forward old wheel admission.
+The prior milestone remains qualified; these successor wheels are not admitted.
+
+Runs120-122 now wire explicit Python-only renewal into Linux and experimental
+Metal CI reuse, preserving default unchanged-wheel behavior and all native
+production/metadata guards. The final 125 controls pass. Actual retained Linux
+proof reproduces the tested successor; both original Metal architectures also
+pass native-history and archive joins with two Python replacements. No Mac code
+was executed. Windows/Linux archives still reproduce byte-for-byte under the
+current auditor. Both adapters have independent bounded source approval, and
+managed scratch is cleaned. Tool/policy bindings are refreshed without changing
+runtime/profile inputs, requested scope, ledger or prior milestone evidence.
+
+Next: obtain renewed exact candidate/source/scope/native-reuse approvals and
+complete applicable original installed observation/control, current-head CI and
+promotion checks before pushing and merging the follow-up.
+Continue supported-feature fixes and named route-map families in bounded
+packets. Require a practical VisPy compatibility baseline and documented,
+tested differences; complete upstream parity is not the release target.
+
 ## User-directed release scope revision
 
 See the [practical compatibility release scope](../../practical-compatibility-release.md) for the bounded

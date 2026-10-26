@@ -1551,7 +1551,11 @@ def test_current_execution_preparation_preserves_all_original_obligations():
     assert result['selected_pairs'] == 30 and result['criterion_bindings'] == 120
     assert result['original_required_pairs_retained'] == 142 and result['originals_discharged'] == 0
     candidate = inventory.read_json(ROOT / record['candidate']['path'])
-    assert result['reviewed'] is all(candidate['reviews'].values())
+    ledger = inventory.read_json(ROOT / record['execution']['path'])
+    selected = {(pair['feature'], pair['profile']) for pair in candidate['pairs']}
+    applied = all(pair['reviewed'] for pair in ledger['applicability']
+                  if (pair['feature'], pair['profile']) in selected)
+    assert result['reviewed'] is (all(candidate['reviews'].values()) and applied)
     assert not result['qualified'] and not result['installable']
 
 

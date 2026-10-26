@@ -1,0 +1,209 @@
+name: Linux software Vulkan wheel
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/linux-vulkan.yml'
+      - 'tools/audit_linux_wheel.py'
+      - 'tools/run_linux_native_contracts.py'
+      - 'tools/linux_ci_lifecycle.py'
+      - 'tools/reuse_linux_ci.py'
+      - 'tools/qualification_linux_native.py'
+      - 'tools/qualification_native.py'
+      - 'compat/linux-ci-reuse.json'
+      - 'compat/qualification-native.schema.json'
+      - 'compat/candidates/**'
+      - 'tools/linux_wheel_smoke.py'
+      - 'tools/compatibility_render_smoke.py'
+      - 'tools/aggregate_attribute_smoke.py'
+      - 'tools/instanced_mesh_smoke.py'
+      - 'tools/original_instanced_mesh_replay.py'
+      - 'tools/marker_wheel_smoke.py'
+      - 'tools/immediate_state_wheel_smoke.py'
+      - 'tools/build_software_vulkan.py'
+      - 'compat/software-vulkan-build.json'
+      - 'compat/mesa-build-requirements.txt'
+      - 'compat/patches/mesa-*'
+      - 'tools/mesh_layout_process.py'
+      - 'CMakeLists.txt'
+      - 'cmake/**'
+      - 'cpp/**'
+      - 'src/**'
+      - 'third_party/**'
+      - 'pyproject.toml'
+      - 'uv.lock'
+  workflow_dispatch:
+    inputs:
+      native_mode:
+        description: 'Reuse verified inputs; fresh requires an explicit changed-input or missing-proof decision'
+        type: choice
+        required: true
+        default: reuse
+        options: [reuse, fresh]
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  software-vulkan:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    defaults:
+      run:
+        shell: bash
+    env:
+      UV_NO_CONFIG: '1'
+      PYTHONDONTWRITEBYTECODE: '1'
+      CMAKE_GENERATOR: Ninja
+      CMAKE_BUILD_PARALLEL_LEVEL: '3'
+      NATIVE_MODE: ${{ github.event.inputs.native_mode || 'reuse' }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+          submodules: false
+          sparse-checkout: .github
+      - name: Restore immutable vendor bytes
+        run: |
+          printf '%s\n' '* -text -eol -filter -ident' > .git/info/attributes
+          git config core.autocrlf false
+          git sparse-checkout disable
+      - uses: astral-sh/setup-uv@bec219d24cd3e171d82865faccec33120bb574f4 # v10.1.0
+        with:
+          version: '0.12.5'
+          enable-cache: false
+      - name: Register the shared external native workspace
+        run: |
+          workspace="$RUNNER_TEMP/vispy-linux-vulkan-${{ github.run_id }}-${{ github.run_attempt }}"
+          native_run="native-ci-${{ github.run_id }}-${{ github.run_attempt }}"
+          case "$NATIVE_MODE" in reuse) peak=1073741824 ;; fresh) peak=6442450944 ;; *) exit 1 ;; esac
+          echo "NATIVE_RUN=$native_run" >> "$GITHUB_ENV"
+          echo "CI_STATE=$workspace/build/runs/$native_run/state.json" >> "$GITHUB_ENV"
+          /usr/bin/python3 -B tools/linux_ci_lifecycle.py init --workspace "$workspace" \
+            --run-id "$native_run" --expected-peak-bytes "$peak"
+      - name: Prepare recorded software Vulkan and exact Python build tools
+        run: |
+          /usr/bin/python3 -B tools/linux_ci_lifecycle.py --state "$CI_STATE" run --phase prepare --script-stdin <<'PHASE'
+          mkdir -p "$EVIDENCE"
+          sudo apt-get update
+          sudo apt-get install --no-install-recommends -y libx11-dev libx11-xcb-dev libvulkan1 mesa-vulkan-drivers ninja-build llvm-18-dev libdrm-dev glslang-tools
+          dpkg-query -W libx11-dev libx11-xcb-dev libvulkan1 mesa-vulkan-drivers ninja-build llvm-18-dev libdrm-dev glslang-tools > "$EVIDENCE/system-packages.txt"
+          dpkg-query -W > "$EVIDENCE/system-package-inventory.txt"
+          python3 - <<'PY'
+          import hashlib, json, os, pathlib
+          candidates = sorted(pathlib.Path('/usr/share/vulkan/icd.d').glob('lvp_icd*.json'))
+          if len(candidates) != 1:
+              raise RuntimeError('Exactly one lavapipe software ICD is required')
+          path = candidates[0].resolve()
+          record = {'path': str(path), 'sha256': hashlib.sha256(path.read_bytes()).hexdigest(),
+                    'descriptor': json.loads(path.read_text()), 'scope': 'software Vulkan; no hardware admission'}
+          pathlib.Path(os.environ['EVIDENCE'], 'icd.json').write_text(json.dumps(record, indent=2))
+          with open(os.environ['GITHUB_ENV'], 'a') as env:
+              env.write('VK_DRIVER_FILES=' + str(path) + '\n')
+          PY
+          uv python install '3.12.8'
+          uv venv "$BUILD_ENV" --python '3.12.8' --managed-python
+          echo "$BUILD_ENV/bin" >> "$GITHUB_PATH"
+          uv export --locked --no-default-groups --group dev --group build --no-emit-project --output-file "$EVIDENCE/build-requirements.txt" > /dev/null
+          uv pip install --python "$BUILD_ENV" --require-hashes --only-binary :all: --requirements "$EVIDENCE/build-requirements.txt"
+          git rev-parse HEAD > "$EVIDENCE/source-revision.txt"
+          "$BUILD_ENV/bin/python" -B tools/qualification_ci.py --capture --workflow .github/workflows/linux-vulkan.yml --job-name "software-vulkan" --output "$EVIDENCE/ci-identity.json"
+          uv --version > "$EVIDENCE/uv-version.txt"
+          uname -a > "$EVIDENCE/kernel.txt"
+          PHASE
+      - name: Verify and reuse original native production with fresh driver controls
+        if: env.NATIVE_MODE == 'reuse'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          /usr/bin/python3 -B tools/linux_ci_lifecycle.py --state "$CI_STATE" run --phase reuse -- \
+            "$BUILD_PYTHON" -B tools/reuse_linux_ci.py --workspace "$DRIVER_WORKSPACE" \
+            --run-id "$NATIVE_RUN" --owner ci
+      - name: Build and verify pinned software Vulkan clipping repair
+        if: env.NATIVE_MODE == 'fresh'
+        run: |
+          /usr/bin/python3 -B tools/linux_ci_lifecycle.py --state "$CI_STATE" run --phase driver --script-stdin <<'PHASE'
+          uv pip install --python "$BUILD_ENV" --require-hashes --only-binary :all: --requirements compat/mesa-build-requirements.txt
+          driver_run="mesa-ci-${{ github.run_id }}-${{ github.run_attempt }}"
+          mkdir -p "$DRIVER_WORKSPACE"
+          "$BUILD_PYTHON" -B tools/build_hygiene.py --workspace "$DRIVER_WORKSPACE" preflight --run-id "$driver_run" --owner ci --expected-peak-bytes 6442450944 --register
+          driver_exit=0
+          "$BUILD_PYTHON" -B tools/build_software_vulkan.py --run-id "$driver_run" --owner ci \
+            --workspace "$DRIVER_WORKSPACE" --library-store "$DRIVER_WORKSPACE/build/artifacts" \
+            --fetch --output "$EVIDENCE/software-driver.json" || driver_exit=$?
+          "$BUILD_PYTHON" -B tools/build_software_vulkan.py --run-id "$driver_run" --owner ci \
+            --workspace "$DRIVER_WORKSPACE" --output "$EVIDENCE/software-driver.json" --cleanup-exit "$driver_exit"
+          test "$driver_exit" -eq 0
+          "$BUILD_PYTHON" -B - <<'PY'
+          import json, os, pathlib
+          record = json.loads(pathlib.Path(os.environ['EVIDENCE'], 'software-driver.json').read_bytes())
+          if record['status'] != 'SOURCE_FUNCTIONAL_NOT_ADMITTED':
+              raise RuntimeError('Software driver has no passing source controls')
+          with open(os.environ['GITHUB_ENV'], 'a') as environment:
+              for key, value in record['environment'].items():
+                  environment.write(key + '=' + value + '\n')
+          PY
+          PHASE
+      - name: Build and audit actual Vulkan renderer wheel
+        if: env.NATIVE_MODE == 'fresh'
+        run: |
+          /usr/bin/python3 -B tools/linux_ci_lifecycle.py --state "$CI_STATE" run --phase native-environment -- "$BUILD_PYTHON" .github/workflows/qualification_gate.py capture --without-package --output "$EVIDENCE/native-environment.json"
+          /usr/bin/python3 -B tools/linux_ci_lifecycle.py --state "$CI_STATE" run --phase dependency-before -- "$BUILD_PYTHON" cmake/verify_dependencies.py
+          /usr/bin/python3 -B tools/linux_ci_lifecycle.py --state "$CI_STATE" run --phase wheel-build -- uv build --python "$BUILD_PYTHON" --no-build-isolation --wheel --out-dir "$EVIDENCE/wheels" \
+            --config-setting "build-dir=$NATIVE_BUILD" \
+            --config-setting cmake.define.VISPY_INPLACE=OFF \
+            --config-setting cmake.define.VISPY_CPU_CONTRACTS_ONLY=OFF \
+            --config-setting cmake.define.VISPY_BUILD_CONTRACT_TESTS=ON \
+            --config-setting cmake.define.VISPY_VERIFY_DEPENDENCIES=ON \
+            --config-setting cmake.define.CMAKE_EXPORT_COMPILE_COMMANDS=ON
+          wheels=( "$EVIDENCE"/wheels/*.whl )
+          test "${#wheels[@]}" -eq 1
+          /usr/bin/python3 -B tools/linux_ci_lifecycle.py --state "$CI_STATE" run --phase native-contracts -- "$BUILD_PYTHON" -B tools/run_linux_native_contracts.py \
+            --build-dir "$NATIVE_BUILD" --ctest "$BUILD_ENV/bin/ctest" \
+            --output "$EVIDENCE/native-contracts"
+          /usr/bin/python3 -B tools/linux_ci_lifecycle.py --state "$CI_STATE" run --phase archive -- "$BUILD_PYTHON" -B tools/audit_linux_wheel.py --wheel "${wheels[0]}" \
+            --build-dir "$NATIVE_BUILD" --contracts "$EVIDENCE/native-contracts" \
+            --output "$EVIDENCE/archive.json"
+          /usr/bin/python3 -B tools/linux_ci_lifecycle.py --state "$CI_STATE" run --phase dependency-after -- "$BUILD_PYTHON" cmake/verify_dependencies.py
+      - name: Exercise external installed wheel using software Vulkan
+        run: |
+          /usr/bin/python3 -B tools/linux_ci_lifecycle.py --state "$CI_STATE" run --phase consumer --script-stdin <<'PHASE'
+          consumer="$CONSUMER_PATH"
+          uv venv "$consumer" --python "$BUILD_PYTHON"
+          uv export --locked --no-default-groups --extra test --no-emit-project --output-file "$EVIDENCE/consumer-test-requirements.txt" > /dev/null
+          uv pip install --python "$consumer/bin/python" --require-hashes --only-binary :all: \
+            --requirements "$EVIDENCE/consumer-test-requirements.txt" --requirements "$EVIDENCE/wheel-requirements.txt"
+          if [[ -n "${WHEEL_PATH:-}" ]]; then
+            wheel="$WHEEL_PATH"
+          else
+            wheels=( "$EVIDENCE"/wheels/*.whl )
+            test "${#wheels[@]}" -eq 1
+            wheel="${wheels[0]}"
+          fi
+          "$consumer/bin/python" -I -B tools/linux_wheel_smoke.py --tag cp312 \
+            --wheel "$wheel" --output "$EVIDENCE/rendering"
+          "$consumer/bin/python" -I -B tools/marker_wheel_smoke.py \
+            --wheel "$wheel" --output "$EVIDENCE/markers"
+          "$consumer/bin/python" -I -B tools/immediate_state_wheel_smoke.py \
+            --wheel "$wheel" --output "$EVIDENCE/immediate-state.json"
+          PHASE
+      - name: Retain source, results and artifacts; clean the registered native lease
+        if: always()
+        run: |
+          if [[ -n "${CI_STATE:-}" && -f "$CI_STATE" ]]; then
+            /usr/bin/python3 -B tools/linux_ci_lifecycle.py --state "$CI_STATE" finish
+          fi
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        if: always()
+        with:
+          name: linux-software-vulkan-wheel-cp312
+          include-hidden-files: true
+          path: |
+            ${{ env.EVIDENCE }}
+            ${{ env.DRIVER_WORKSPACE }}/build/artifacts/
+          if-no-files-found: error

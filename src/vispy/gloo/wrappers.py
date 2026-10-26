@@ -650,6 +650,12 @@ def read_pixels(viewport=None, alpha=True, mode='color', out_type='unsigned_byte
         with the top-left corner of the framebuffer at index [0, 0] in the
         returned array. If 'mode' is depth or stencil then the last dimension
         is 1.
+
+    Notes
+    -----
+    Explicit viewport shape and integer conversion are validated before
+    pending rendering is completed. The default viewport is queried after
+    queued state updates have been applied.
     """
     _check_valid('mode', mode, ['color', 'depth', 'stencil'])
     from .dawn_parser import read_pixels_dawn

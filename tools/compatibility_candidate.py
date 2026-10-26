@@ -30,7 +30,7 @@ PREPARATION_TOOLS = (
     'tools/compatibility_execution.py', 'compat/vispy-execution.schema.json',
     'tools/compatibility_qualification.py', 'compat/vispy-admission-selection.schema.json',
     'tools/qualification_ci.py', 'compat/qualification-ci.schema.json', 'compat/qualification-ci.json',
-    'tools/qualification_artifact.py', 'compat/qualification-artifact.schema.json',
+    'tools/qualification_artifact.py', 'tools/repackage_python_wheel.py', 'compat/qualification-artifact.schema.json',
     'compat/qualification-producers.json', 'cmake/native_sdk.py',
     'tools/qualification_native.py', 'tools/qualification_linux_native.py',
     'compat/qualification-native.schema.json', 'tools/native_epoch.py',

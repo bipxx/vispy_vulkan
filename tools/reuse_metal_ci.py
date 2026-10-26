@@ -33,10 +33,21 @@ def source_inputs(source):
     return result
 
 
-def validate_inputs(inventory, pin, arch, source, workspace):
+def validate_inputs(inventory, pin, arch, source, workspace, *, package_current_python=False):
     require(arch in ('arm64', 'x86_64'), 'Unknown Metal architecture')
-    require(source_inputs(source) == pin['source_inputs'],
-            'Changed Metal production/package/auditor inputs; explicit fresh decision required')
+    current=source_inputs(source)
+    if package_current_python:
+        sys.path.insert(0,str(source/'cmake'))
+        from runtime_package import source_package_hashes
+        pure=source_package_hashes(source)
+        allowed={'src/'+member for member in pure if member!='vispy/_runtime_package.json'}
+        require(set(current)==set(pin['source_inputs']), 'Changed Metal source membership; explicit fresh decision required')
+        require({k:v for k,v in current.items() if k not in allowed}
+                == {k:v for k,v in pin['source_inputs'].items() if k not in allowed},
+                'Changed Metal production/auditor inputs; explicit fresh decision required')
+    else:
+        require(current == pin['source_inputs'],
+                'Changed Metal production/package/auditor inputs; explicit fresh decision required')
     members = {row['member']: row for row in inventory['members']}
     require(len(members) == len(inventory['members']), 'Duplicate original Metal member')
     def retained(name):
@@ -75,7 +86,8 @@ def validate_inputs(inventory, pin, arch, source, workspace):
         require(cache.get(key) == value, 'Original Metal configuration differs: '+key)
     sys.path.insert(0, str(source/'cmake'))
     from runtime_package import wheel_package_hashes
-    hashes = wheel_package_hashes(wheel, root=source, suffix='.cpython-312-darwin.so', platform='darwin')
+    hashes = wheel_package_hashes(wheel, root=None if package_current_python else source,
+                                  suffix='.cpython-312-darwin.so', platform='darwin')
     require(hashes == archive['package_hashes'], 'Original Metal package audit differs')
     native = {'vispy/_dawn.cpython-312-darwin.so', 'vispy/visuals/text/_sdf_cpu.cpython-312-darwin.so'}
     require(set(archive['native']) == native, 'Original Metal native inventory differs')
@@ -103,7 +115,19 @@ def validate_inputs(inventory, pin, arch, source, workspace):
     # explicitly separate from the original archive.json, whose bytes stay intact.
     projection = dict(archive, wheel=str(wheel), original_archive_sha256=transport.digest(retained(prefix+'archive.json')),
                       reused_original_run=pin['run_id'], artifact_admitted=False)
-    return dict(wheel=wheel, archive=projection, original_archive=retained(prefix+'archive.json'))
+    checked=dict(wheel=wheel, archive=projection, original_archive=retained(prefix+'archive.json'))
+    if package_current_python:
+        try:
+            from .repackage_python_wheel import repackage_from_source
+        except ImportError:
+            from repackage_python_wheel import repackage_from_source
+        metadata=pin.get('package_metadata_inputs',{})
+        require(set(metadata)=={'README.md'}, 'Missing original Metal package metadata binding')
+        output,package=repackage_from_source(wheel.read_bytes(),source,
+            dict(pin['source_inputs'],**metadata),{name:hashes[name] for name in native},
+            platform='darwin',suffix='.cpython-312-darwin.so',tag='cp312-cp312-macosx_13_0_'+arch)
+        checked.update(package_bytes=output,package_report=package)
+    return checked
 
 
 def main():
@@ -113,6 +137,8 @@ def main():
     parser.add_argument('--owner', default='ci')
     parser.add_argument('--arch', choices=('arm64', 'x86_64'), required=True)
     parser.add_argument('--archive', type=Path)
+    parser.add_argument('--package-current-python', action='store_true',
+                        help='Audit current pure members while preserving original Metal native production')
     args = parser.parse_args()
     workspace = transport.no_alias(args.workspace.absolute())
     context = transport.Context(workspace, ROOT/'compat/build-hygiene.json', None)
@@ -127,7 +153,36 @@ def main():
     inventory = transport.import_archive(path, selected, workspace)
     transport.write(evidence/'reuse-original-inventory.json', inventory)
     transport.transport_retention(inventory, workspace, evidence, kind='original-metal-ci-reuse-inputs')
-    checked = validate_inputs(inventory, pin, args.arch, ROOT, workspace)
+    if args.package_current_python:
+        checked=validate_inputs(inventory,pin,args.arch,ROOT,workspace,package_current_python=True)
+        transport.write(evidence/'reuse-original-archive.json',checked['archive'])
+        original_wheel=checked['wheel']
+        if checked['package_report']['changed_members']:
+            output=checked['package_bytes'];checksum=transport.hashlib.sha256(output).hexdigest()
+            target=transport.no_alias(workspace/'build/artifacts'/checksum/original_wheel.name)
+            target.parent.mkdir(parents=True,exist_ok=True)
+            if target.exists():
+                require(transport.digest(target)==checksum,'Existing assembled Metal wheel changed')
+            else:
+                with target.open('xb') as stream:stream.write(output)
+            checked['wheel']=target
+        transport.write(evidence/'reuse-inputs.json',dict(schema=1,
+            kind='original-metal-ci-reuse-inputs',artifact_admitted=False,original_run=pin['run_id'],
+            retained=[dict(path=str(checked['wheel']),sha256=transport.digest(checked['wheel']),
+                           roles=['source','evidence','licenses','repro'])]))
+        transport.write(evidence/'reuse-python-package.json',dict(checked['package_report'],
+            original_wheel=dict(path=str(original_wheel),sha256=transport.digest(original_wheel)),
+            assembled_wheel=dict(path=str(checked['wheel']),sha256=transport.digest(checked['wheel'])),
+            original_native_source_revision=pin['checked_head'],GPU_qualified=False))
+        projection=dict(checked['archive'])
+        original_revision=projection.pop('source_revision')
+        projection.update(wheel=str(checked['wheel']),wheel_sha256=transport.digest(checked['wheel']),
+            package_hashes=checked['package_report']['audit']['package_hashes'],
+            original_native_source_revision=original_revision,
+            current_python_source_hashes=checked['package_report']['current_source_hashes'])
+        checked['archive']=projection
+    else:
+        checked = validate_inputs(inventory, pin, args.arch, ROOT, workspace)
     transport.write(evidence/'reuse-archive.json', checked['archive'])
     transport.wheel_requirement(checked['wheel'], evidence)
     transport.write(evidence/'reuse-result.json', dict(status='VERIFIED_ORIGINAL_METAL_BUILD_ONLY',

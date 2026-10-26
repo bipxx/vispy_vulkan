@@ -116,7 +116,13 @@ def audit_archive(data, *, manifest_data, pure_hashes, notices, distribution_lic
     installed receipts. Native hash equality alone does not prove a build.
     """
     manifest = runtime_package.validate_manifest(json.loads(manifest_data))
-    check(platform in ('win32', 'linux'), 'archive architecture policy is not implemented for this platform')
+    check(platform in ('win32', 'linux', 'darwin'), 'archive architecture policy is not implemented for this platform')
+    if platform == 'darwin':
+        target = re.fullmatch(r'cp312-cp312-macosx_13_0_(arm64|x86_64)', tag)
+        check(target is not None, 'unsupported Metal build-only archive tag')
+        machine = {'arm64': 0x0100000c, 'x86_64': 0x01000007}[target.group(1)]
+    else:
+        machine = 0x8664 if platform == 'win32' else 62
     expected_pure = {'vispy/' + name for name in manifest['files']} | {runtime_package.MEMBER}
     check(set(pure_hashes) == expected_pure and pure_hashes[runtime_package.MEMBER] == sha(manifest_data),
           'incomplete frozen source member hashes')
@@ -147,10 +153,17 @@ def audit_archive(data, *, manifest_data, pure_hashes, notices, distribution_lic
             if name.endswith('.json'):
                 continue
             try:
-                image = pe_image(archive.read(name)) if platform == 'win32' else elf_image(archive.read(name))
+                payload = archive.read(name)
+                if platform == 'darwin':
+                    check(len(payload) >= 32, 'invalid native archive image: ' + name)
+                    magic, cpu = struct.unpack_from('<II', payload)
+                    check(magic == 0xfeedfacf, 'invalid native archive image: ' + name)
+                    image = dict(pointer_bytes=8, machine=cpu)
+                else:
+                    image = pe_image(payload) if platform == 'win32' else elf_image(payload)
             except (ValueError, struct.error, IndexError) as error:
                 raise InventoryError('invalid native archive image: ' + name) from error
-            check(image['pointer_bytes'] == 8 and image['machine'] == (0x8664 if platform == 'win32' else 62),
+            check(image['pointer_bytes'] == 8 and image['machine'] == machine,
                   'native archive architecture differs from profile: ' + name)
         for name, expected_bytes in {**notices, **distribution_licenses}.items():
             check(archive.read(name) == expected_bytes, 'original license/notice bytes differ: ' + name)

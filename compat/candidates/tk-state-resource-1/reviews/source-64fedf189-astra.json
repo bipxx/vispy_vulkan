@@ -1,0 +1,38 @@
+{
+  "schema": 1,
+  "kind": "source",
+  "status": "APPROVED",
+  "independent": true,
+  "reviewer": "/root/astra_current_plan_max_review",
+  "candidate_scope_sha256": "26ea3c7f54223b6c52e699ce34acd2ecad12213f6a8246041e06652bac3cdf06",
+  "publication_head": "64fedf189388cee250442239c2d12ba0fd6bf79c",
+  "product_source_commit": "5c7d1273bc3471136d87f730482e07a679e0e00e",
+  "source_manifest": {
+    "path": "build/runs/readback-reviews-123/source-manifest.json",
+    "sha256": "56d98f1ce07c63f2c6b54b990b12f3e910f32b7c54d3b93b879ffad189a2a428"
+  },
+  "baseline_approval": {
+    "path": "compat/candidates/tk-state-resource-1/reviews/source-106756f3-astra.json",
+    "sha256": "239a17fa6244db162d28a45772b381e60712abc8077fbccb79d3dc16f6afb477"
+  },
+  "review_report": {
+    "path": "build/runs/readback-reviews-123/source-review-astra.json",
+    "sha256": "d1339bb275f19ec589911ee04393834c016f1981cd57363df2b34f49fa8e7d9c"
+  },
+  "native_reuse_links": [
+    "be4d2666b614c7a2180b9cd3fe8c981f0fdfb9e8d58299812e6dc9c186b8177b",
+    "8b198c19a6919a0a6b3549441dc614eb064baf8798854bbb39189ab4dd12901c"
+  ],
+  "approval_scope": "Independent cumulative SOURCE renewal for frozen publication 64fedf189388cee250442239c2d12ba0fd6bf79c and product 5c7d1273, incorporating the retained canonical implementation baseline and five genuine bounded implementation reviews. Covers the readback validation fix, its tests, Python-only archive assembly and explicit Linux/experimental Metal reuse integration, exact preparation/profile/commit bindings, and the SOURCE-review side of both exact native reuse objects. The detailed report and complete 29-path source manifest define this decision.",
+  "limitations": [
+    "No semantic scope approval is given. The same 120 finite selected criteria and 142 separate parent obligations are preserved; broader compatibility work remains.",
+    "Native reuse links approve source-side applicability only. Current native validation still requires separately bound source/scope approvals and the unchanged original proof validators. No native build, SDK/compiler, artifact or installed qualification approval is supplied here.",
+    "Run118 installed-target functional results and prior source controls are supporting evidence, not completion of the original installed observer/control/profile protocol. Full current installed gates remain pending.",
+    "No current-head CI, final subject/head change-impact, promotion, release or merge approval is given. Prior C249/b959 milestone admission is not transferred to new wheels or heads.",
+    "Metal remains experimental/build-only in this packet; no Mac code execution or GPU, native Linux GPU, optical parity or complete upstream parity claim is made.",
+    "Original meaningful failures and producer history remain unchanged, including Windows run94 outer failure with run95 revalidation, Linux run89 original production, the run118 editable-finder rejection and packaging fixture failures."
+  ],
+  "artifact_admitted": false,
+  "ci_approved": false,
+  "promotion_approved": false
+}

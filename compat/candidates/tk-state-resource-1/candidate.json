@@ -2,8 +2,8 @@
   "schema": 1,
   "phase": "development",
   "id": "tk-state-resource-1",
-  "manifest_sha256": "d42b947a2820d44f2a74dea49191b3c93d2f980f14e78a9c7f2d407ab0af2a62",
-  "product_source_commit": "9ef9765552c41c84d82d69b44756d5925b4d3cd3",
+  "manifest_sha256": "befc54b8f510dd83f6c64cc437a7cc2ca7d37000ea3462df56a7f70e4b1f3357",
+  "product_source_commit": "5c7d1273bc3471136d87f730482e07a679e0e00e",
   "upstream_commit": "117b054598f4758b598f4b8f48feea48c11fe7b0",
   "ledger": {
     "path": "compat/vispy-compatibility.json",
@@ -31,15 +31,15 @@
   ],
   "runtime_inputs": {
     "path": "compat/candidates/tk-state-resource-1/runtime-inputs.json",
-    "sha256": "0dba28f46c56c5a5ab25bc3b9e8c0f7845645343af626f3968dce327e3a0c100"
+    "sha256": "5287eb42b9c77886e7a73bbe446e157eb3a58f35ce2b07aeea483000e01d0444"
   },
   "profiles": [
     {
       "id": "windows-gpu-tk86-cp312-development",
       "required": true,
       "observation": {
-        "path": "compat/candidates/tk-state-resource-1/windows-integrated-oracle-profile.json",
-        "sha256": "cae8002c11a2b823b7889bb1dab72bbcdfce4179663bf973377a9bf3f133ce07"
+        "path": "compat/candidates/tk-state-resource-1/windows-readback-profile.json",
+        "sha256": "795f39794a8c9f2e53db949535810ab911ac4bfdb5b4cfa0c32d1c85c3ef9b59"
       },
       "wheel": null,
       "previous_qualified_wheel_sha256": "62df5e4c31bf9a1bb1bea47fd68d50e4198d6ec13d2551c991da1e7f30a2b38f",
@@ -57,8 +57,8 @@
       "id": "wsl-software-tk90-cp31213-development",
       "required": true,
       "observation": {
-        "path": "compat/candidates/tk-state-resource-1/linux-integrated-oracle-profile.json",
-        "sha256": "2d1569835b25923e1a7dd26e80ca147b6ed68233c0ef4c9c7a2138be9a21ef17"
+        "path": "compat/candidates/tk-state-resource-1/linux-readback-profile.json",
+        "sha256": "e66fbb4d620812fdd07010ffb04c2974e5946924ee45abe5b1c0681bb382a82e"
       },
       "wheel": null,
       "previous_qualified_wheel_sha256": "374a74ea9787ccccc643e0ac7e45d9f704a41d046465828736158ac94398c4a3",
@@ -1164,12 +1164,12 @@
   ],
   "reviews": {
     "source": {
-      "path": "compat/candidates/tk-state-resource-1/reviews/source-106756f3-astra.json",
-      "sha256": "239a17fa6244db162d28a45772b381e60712abc8077fbccb79d3dc16f6afb477"
+      "path": "compat/candidates/tk-state-resource-1/reviews/source-64fedf189-astra.json",
+      "sha256": "314c9e6ae21f832a4008378a65a88a7e054b2af46946903d356e643189eef9b1"
     },
     "scope": {
-      "path": "compat/candidates/tk-state-resource-1/reviews/scope-7c561424-astra.json",
-      "sha256": "22e7e14538745c206f02dfc377e09762abdf9bb3fac59cd1b5a7a8eb9e76c69f"
+      "path": "compat/candidates/tk-state-resource-1/reviews/scope-64fedf189-astra.json",
+      "sha256": "c3c0ac37285e5c2a384d47d91e148fada40ec5989c8f15dea0724b9691cc83ac"
     }
   },
   "blockers": [
@@ -1190,7 +1190,7 @@
   "preparation_tools": [
     {
       "path": "tools/compatibility_candidate.py",
-      "sha256": "952902947712bc64edc7487153656a614dd2ad2cfa8ebe7889685257623e35a2"
+      "sha256": "4720d832e863b2cce517b5e32b149e640e472355a5ce8a0600250bcdd57143d5"
     },
     {
       "path": "tools/compatibility_inventory.py",
@@ -1238,11 +1238,15 @@
     },
     {
       "path": "compat/qualification-ci.json",
-      "sha256": "4592be12cd4cf1a1b5b1108a3410e2a0497dad2bd52bdf0790a98d5ebdfd7d2c"
+      "sha256": "9a1c9ea7c9d9adf2f9180fee5ef3ada08b092f68c64445c08d840365d0a8b3e9"
     },
     {
       "path": "tools/qualification_artifact.py",
-      "sha256": "62aa56667ac9e9f3bdac9bdcb87f14a4e9e442eef25b7abc744dc029cf12e04c"
+      "sha256": "65ae2431ac46c49a27c94f6be1b5d2e5240a87bae8038f20e38452c6c5f17909"
+    },
+    {
+      "path": "tools/repackage_python_wheel.py",
+      "sha256": "6d9adce9b277d14ce93dd6409f5db87497c9024a596f3621d3f0225144980fa7"
     },
     {
       "path": "compat/qualification-artifact.schema.json",
@@ -1286,7 +1290,7 @@
     },
     {
       "path": "tools/reuse_linux_ci.py",
-      "sha256": "3817cfeb5bd8f08f4e5c2a3093c9d7c5dd0ac36c2a184dfc8d32fea7c3a6c41c"
+      "sha256": "9054832051e3fe29331d328a52395ccbfa56a46eb08749497cb47bdbe1dc4ec8"
     },
     {
       "path": "compat/linux-ci-reuse.json",
@@ -1294,11 +1298,11 @@
     },
     {
       "path": "tools/reuse_metal_ci.py",
-      "sha256": "647fe837a30a9b81c3fc6dcace15312e01cc0458f8dc6d1e020f93635c80fef4"
+      "sha256": "4c5f7366cd75a81f658e72511e0ef406ee873bcf4c177db79fc8f6dca30e2776"
     },
     {
       "path": "compat/metal-ci-reuse.json",
-      "sha256": "7ff9d332b81b6dabacf2a131141228f071f8d9f85649e03b3e17b5971afb6bb5"
+      "sha256": "b5a7ecca237dbf4bdd9b144fc46428811b66e5738bd02a42ac4188edb098e761"
     },
     {
       "path": "compat/build-profiles/metal-ci-native.json",
@@ -1322,11 +1326,11 @@
     },
     {
       "path": ".github/workflows/linux-vulkan.yml",
-      "sha256": "9237e98216a69e9245a9bc9771492e3c07669c0127ad6f9529c17b8570dc7864"
+      "sha256": "af2724d951e3f202417feb01a4e210654349537ac2bb41f5d60cdfdb7376f43c"
     },
     {
       "path": ".github/workflows/metal-wheel.yml",
-      "sha256": "e9da4ffcb0ff93d3e9323a34fad57126964076a4c3b5b1d8526f5394ff012b16"
+      "sha256": "92e21ec0a4940ec36d60eba55a0dd9443ce608ab3c34bd49b88a92aef222de9d"
     },
     {
       "path": "tools/no_opengl/policy.py",
@@ -1358,7 +1362,7 @@
     },
     {
       "path": ".github/workflows/cpu-contract.yml",
-      "sha256": "a386023e1cffbd4a0c6be3bd9883ea67522cec27cf0d30688fee301539338321"
+      "sha256": "368e0d55e70b1ca533225ff0d1567f3bf5dbb6bdff4687345de9321ba8d05ab6"
     },
     {
       "path": "tools/audit_no_opengl.py",

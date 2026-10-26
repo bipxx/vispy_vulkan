@@ -34,6 +34,8 @@ class Capture:
         schema.parent.mkdir(parents=True)
         schema.write_bytes(encoded({'$defs': definitions}))
         inputs = {name: (project/name).read_bytes() for name in native.PROTOCOL}
+        # This models the pinned original producer, not today's reuse workflow.
+        inputs[native.WORKFLOW_PATH] = (project/'tests/contract/data/linux-native-production-workflow.yml').read_bytes()
         assert all(native.sha(inputs[name]) == checksum for name, checksum in native.PROTOCOL.items())
         inputs.update({'compat/build-hygiene.json': (project/'compat/build-hygiene.json').read_bytes(),
                        'uv.lock': b'synthetic lock', 'pyproject.toml': b'synthetic project',
