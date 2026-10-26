@@ -20,7 +20,17 @@ def run(*, cleanup_report=None):
     root.geometry('96x64')
     canvases, resources, ticks, host_events = [], [], [], []
     timer = host_job = host_binding = None
+    retirement_baseline = None
     result = {'scope': 'Bounded Tk resource/timer flow; outer installed/observer gates required'}
+
+    def resource_gauges():
+        probe = _dawn.probe()
+        values = {key: probe[key] for key in (
+            'live_cpu_buffer_bytes', 'live_buffer_bytes', 'pending_tickets',
+            'queued_frames', 'pending_draws', 'vertex_input_current_entries',
+            'vertex_input_current_bytes', 'vertex_input_cache_entries', 'vertex_input_cache_bytes')}
+        values['resource_texture_bytes'] = probe['live_texture_bytes'] - probe['canvas_texture_bytes']
+        return values, probe['canvas_texture_bytes']
 
     def wait(condition):
         deadline = time.monotonic() + 5
@@ -59,16 +69,21 @@ def run(*, cleanup_report=None):
         canvases.append(second)
         assert first.context.shared is second.context.shared
         first.set_current()
+        retirement_baseline, _ = resource_gauges()
         source = gloo.VertexBuffer(np.array([[-1, -1], [3, -1], [-1, 3]], np.float32))
         resources.append(source)
         texture = gloo.Texture2D(np.array([[[255, 0, 0, 255]]], np.uint8))
         resources.append(texture)
         program = gloo.Program(
-            'attribute vec2 position; void main(){gl_Position=vec4(position,0,1);}',
-            'uniform sampler2D image; void main(){gl_FragColor=texture2D(image,vec2(.5));}',
+            'attribute vec2 position; attribute vec4 tint; varying vec4 color; '
+            'void main(){color=tint;gl_Position=vec4(position,0,1);}',
+            'uniform sampler2D image; varying vec4 color; '
+            'void main(){gl_FragColor=color*texture2D(image,vec2(.5));}',
         )
         resources.append(program)
         program['position'], program['image'] = source, texture
+        # A neutral constant attribute gives Program its own retained GPU buffer.
+        program['tint'] = (1., 1., 1., 1.)
 
         def paint(event):
             canvas = event.source
@@ -133,10 +148,28 @@ def run(*, cleanup_report=None):
         survivor = next((c for c in reversed(canvases) if not c._closed), None)
         if survivor is not None:
             cleanup(survivor.set_current)
+            before_delete, canvas_bytes = resource_gauges()
             for resource in reversed(resources):
                 cleanup(resource.delete)
             cleanup(survivor.context.flush_commands)
             cleanup(gloo.finish)
+
+            def verify_retirement():
+                after_delete, after_canvas_bytes = resource_gauges()
+                assert not survivor._closed and survivor.native.winfo_exists(), 'retirement requires live survivor'
+                assert canvas_bytes > 0 and after_canvas_bytes == canvas_bytes, 'retirement must preserve canvas allocation'
+                assert retirement_baseline is not None and len(resources) == 3
+                for key in ('live_cpu_buffer_bytes', 'live_buffer_bytes', 'resource_texture_bytes'):
+                    assert before_delete[key] > retirement_baseline[key], ('non-vacuous resource retirement', key)
+                assert after_delete == retirement_baseline, {
+                    'oracle': 'resource retirement before survivor close', 'baseline': retirement_baseline,
+                    'before_delete': before_delete, 'after_delete': after_delete}
+                result['retirement'] = dict(baseline=retirement_baseline, before_delete=before_delete,
+                    after_delete=after_delete, canvas_bytes=canvas_bytes, survivor_alive=True,
+                    python_references_alive=len(resources))
+
+            if len(resources) == 3 and retirement_baseline is not None:
+                cleanup(verify_retirement)
         for canvas in canvases:
             cleanup(canvas.close)
         cleanup(application.quit)

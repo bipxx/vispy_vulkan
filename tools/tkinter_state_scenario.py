@@ -65,11 +65,25 @@ def run():
             submission = {'route': name, 'before': {key: before[key] for key in fields},
                           'after': {key: after[key] for key in fields}}
             result['submissions'].append(submission)
+            finish_fields = fields + ('pending_tickets', 'queued_frames', 'pending_draws', 'retired_tickets')
+            finish_before = _dawn.probe()
             gloo.finish()
-            assert _dawn.probe()['application_presents'] == after['application_presents']
+            finished = _dawn.probe()  # Snapshot before readback or an event pump can wait.
+            assert finished['finish_calls'] == finish_before['finish_calls'] + 1, 'finish before readback'
+            assert finished['completion_waits'] > finish_before['completion_waits'], 'finish completion before readback'
+            assert finished['application_presents'] == after['application_presents']
+            assert all(finished[key] == 0 for key in ('pending_tickets', 'queued_frames', 'pending_draws'))
+            submission['finish_before'] = {key: finish_before[key] for key in finish_fields}
+            submission['finish_after'] = {key: finished[key] for key in finish_fields}
             pixels = gloo.read_pixels((0, 0, *first.physical_size), alpha=True)
             assert np.all(pixels == expected)
             submission['readback'] = pixels[0, 0].tolist()
+            # Inspect the actual untouched target before update can repaint it.
+            second.set_current()
+            untouched = gloo.read_pixels((0, 0, *second.physical_size), alpha=True)
+            assert np.all(untouched == [0, 0, 255, 255]), 'untouched second target before repaint'
+            submission['untouched_second_rgba'] = untouched[0, 0].tolist()
+            first.set_current()
         first.close()
         previous = second._backend._photo
         second.update()

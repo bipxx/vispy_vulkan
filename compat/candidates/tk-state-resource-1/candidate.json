@@ -2,7 +2,7 @@
   "schema": 1,
   "phase": "development",
   "id": "tk-state-resource-1",
-  "manifest_sha256": "1e68f8b96b9187e53046ed7a092443ce25cda4cdd3590e1301fef104e9a29362",
+  "manifest_sha256": "7196f88a6ad2631997d6ff24f484ef40aeeaedc3a832d2653af2c20f8e035723",
   "product_source_commit": "9ef9765552c41c84d82d69b44756d5925b4d3cd3",
   "upstream_commit": "117b054598f4758b598f4b8f48feea48c11fe7b0",
   "ledger": {
@@ -38,8 +38,8 @@
       "id": "windows-gpu-tk86-cp312-development",
       "required": true,
       "observation": {
-        "path": "compat/candidates/tk-state-resource-1/windows-aggregate-visual-profile.json",
-        "sha256": "777360a8238a54cd31c09e124ac082fbf550b777fc868160e081aa9c9d0b98f3"
+        "path": "compat/candidates/tk-state-resource-1/windows-oracle-profile.json",
+        "sha256": "38269123ae6ab65dbae8d56792b806aacf4a8c71082aa304f69325bce5582b80"
       },
       "wheel": null,
       "previous_qualified_wheel_sha256": "62df5e4c31bf9a1bb1bea47fd68d50e4198d6ec13d2551c991da1e7f30a2b38f",
@@ -57,8 +57,8 @@
       "id": "wsl-software-tk90-cp31213-development",
       "required": true,
       "observation": {
-        "path": "compat/candidates/tk-state-resource-1/linux-mesa2618-aggregate-visual-profile.json",
-        "sha256": "326b9fede71a4ac97adf1050dbbc41dfced01dfd080bca8c246aae72971f99dd"
+        "path": "compat/candidates/tk-state-resource-1/linux-oracle-profile.json",
+        "sha256": "af51930974ce8e13c2fc0b8118fe2bd2d0357e893a218aa5d6898087b158beba"
       },
       "wheel": null,
       "previous_qualified_wheel_sha256": "374a74ea9787ccccc643e0ac7e45d9f704a41d046465828736158ac94398c4a3",
@@ -745,7 +745,7 @@
       "id": "tk-state-ownership",
       "script": {
         "path": "tools/tkinter_state_scenario.py",
-        "sha256": "c26d325c16aabfd82ccd10a04ab41700ac562abe44b1ab5cc00f1af2794d2ab8"
+        "sha256": "31932928dae83902fa88d10e1e5afd9920e7d0496c6f0b5c7d9478d48d448310"
       },
       "profiles": [
         "windows-gpu-tk86-cp312-development",
@@ -843,6 +843,26 @@
             "path": "tests/native/test_tkinter_backend.py",
             "sha256": "0d1755165e00b45b23d42f525f0ef976a777bbb5eaffd7672c025c90b432c47a"
           }
+        },
+        {
+          "nodeid": "tests/native/test_tkinter_scenario_oracles.py::test_noop_finish_fails_before_readback",
+          "kind": "failure",
+          "cases": 1,
+          "expected": "A suppressed finish is rejected before readback can supply completion.",
+          "source": {
+            "path": "tests/native/test_tkinter_scenario_oracles.py",
+            "sha256": "d97ad63f99e0e59653bb03bc39f679ccbfda654a5c5a00783fb6a94b59588c70"
+          }
+        },
+        {
+          "nodeid": "tests/native/test_tkinter_scenario_oracles.py::test_cross_target_corruption_fails_before_repaint",
+          "kind": "failure",
+          "cases": 1,
+          "expected": "Real corruption of the second target is rejected before any repaint can hide it.",
+          "source": {
+            "path": "tests/native/test_tkinter_scenario_oracles.py",
+            "sha256": "d97ad63f99e0e59653bb03bc39f679ccbfda654a5c5a00783fb6a94b59588c70"
+          }
         }
       ],
       "expected": "Red/blue embedded/standalone clear targets; ordered green/blue flush outputs; host binding survives quit."
@@ -851,7 +871,7 @@
       "id": "tk-resource-timer",
       "script": {
         "path": "tools/tkinter_resource_scenario.py",
-        "sha256": "2e7cdcae06f62a58ec57a8de94ef2b72a532c124b41792d2d2cd194a8c3f155a"
+        "sha256": "e7a9f4be5322c72cb83e382547ab23db831142141f10dbf01643d82aecf715be"
       },
       "profiles": [
         "windows-gpu-tk86-cp312-development",
@@ -967,6 +987,16 @@
             "path": "tests/native/test_tkinter_state_scenario.py",
             "sha256": "8baaf41769b5ef671fe9349ac5ed85236756224da3aaa9d814aa31e249ffd80e"
           }
+        },
+        {
+          "nodeid": "tests/native/test_tkinter_scenario_oracles.py::test_suppressed_delete_fails_before_survivor_close",
+          "kind": "failure",
+          "cases": 3,
+          "expected": "Each suppressed Program, Texture2D and VertexBuffer deletion is rejected while the survivor and Python references remain alive.",
+          "source": {
+            "path": "tests/native/test_tkinter_scenario_oracles.py",
+            "sha256": "d97ad63f99e0e59653bb03bc39f679ccbfda654a5c5a00783fb6a94b59588c70"
+          }
         }
       ],
       "expected": "Both targets red then green from one public timer tick; blue survivor after first close and device loss; host jobs/binding preserved."
@@ -975,7 +1005,7 @@
       "id": "tk-state-resource-failures",
       "script": {
         "path": "tools/tkinter_failure_scenario.py",
-        "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+        "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
       },
       "profiles": [
         "windows-gpu-tk86-cp312-development",
@@ -1041,6 +1071,36 @@
           "source": {
             "path": "tests/native/test_tkinter_state_scenario.py",
             "sha256": "8baaf41769b5ef671fe9349ac5ed85236756224da3aaa9d814aa31e249ffd80e"
+          }
+        },
+        {
+          "nodeid": "tests/native/test_tkinter_scenario_oracles.py::test_noop_finish_fails_before_readback",
+          "kind": "failure",
+          "cases": 1,
+          "expected": "A suppressed finish is rejected before readback can supply completion.",
+          "source": {
+            "path": "tests/native/test_tkinter_scenario_oracles.py",
+            "sha256": "d97ad63f99e0e59653bb03bc39f679ccbfda654a5c5a00783fb6a94b59588c70"
+          }
+        },
+        {
+          "nodeid": "tests/native/test_tkinter_scenario_oracles.py::test_suppressed_delete_fails_before_survivor_close",
+          "kind": "failure",
+          "cases": 3,
+          "expected": "Each suppressed Program, Texture2D and VertexBuffer deletion is rejected while the survivor and Python references remain alive.",
+          "source": {
+            "path": "tests/native/test_tkinter_scenario_oracles.py",
+            "sha256": "d97ad63f99e0e59653bb03bc39f679ccbfda654a5c5a00783fb6a94b59588c70"
+          }
+        },
+        {
+          "nodeid": "tests/native/test_tkinter_scenario_oracles.py::test_cross_target_corruption_fails_before_repaint",
+          "kind": "failure",
+          "cases": 1,
+          "expected": "Real corruption of the second target is rejected before any repaint can hide it.",
+          "source": {
+            "path": "tests/native/test_tkinter_scenario_oracles.py",
+            "sha256": "d97ad63f99e0e59653bb03bc39f679ccbfda654a5c5a00783fb6a94b59588c70"
           }
         }
       ],

@@ -6,6 +6,13 @@ parity. This is a release scope proposal, not a support or qualification claim.
 
 ## Compatibility baseline
 
+Some parity is a requirement: existing VisPy code using a claimed workflow
+should keep working with familiar inputs and observable behavior, except for
+explicitly documented and tested differences. An improvement does not by itself
+justify breaking that baseline. Full API, backend and pixel-for-pixel parity
+across upstream VisPy is not required. Assess progress against this supported
+baseline and release readiness, rather than a percentage of all upstream APIs.
+
 Preserve public call signatures and ordinary array, resource, event and rendering
 semantics for each claimed workflow. Start with existing VisPy programs and
 upstream-derived test bodies, plus independently expected pixels/counters.

@@ -15,7 +15,7 @@ import traceback
 from unittest.mock import patch
 
 
-SCENARIO_INPUTS = {'tkinter_state_scenario': 'c26d325c16aabfd82ccd10a04ab41700ac562abe44b1ab5cc00f1af2794d2ab8', 'tkinter_resource_scenario': '2e7cdcae06f62a58ec57a8de94ef2b72a532c124b41792d2d2cd194a8c3f155a'}
+SCENARIO_INPUTS = {'tkinter_state_scenario': '31932928dae83902fa88d10e1e5afd9920e7d0496c6f0b5c7d9478d48d448310', 'tkinter_resource_scenario': 'e7a9f4be5322c72cb83e382547ab23db831142141f10dbf01643d82aecf715be'}
 LIVE_GAUGES = (
     'pending_tickets', 'queued_frames', 'live_buffer_bytes', 'live_cpu_buffer_bytes',
     'live_texture_bytes', 'canvas_texture_bytes', 'transient_buffer_bytes',

@@ -33,6 +33,22 @@ current artifact/CI evidence apply to the revised supported scope.
 Date: 2026-10-24. Status: source implementation exists; Astra review found
 functional and acceptance gaps. The follow-up is not ready for qualification.
 
+October 25 follow-up: independent implementation and scope reviews of local
+checkpoint `2730369` requested three stronger distinguishing oracles. Source
+checks now measure finish completion before readback, reject corruption of the
+untouched second target before repaint, and prove each Program/Texture/VertexBuffer
+retirement while the survivor and Python references remain alive. A neutral
+constant tint attribute makes Program-owned buffer retirement observable; this
+fixture does not expand the selected shader support claim. The complete
+eight-branch composite and five actual native negative controls pass on Windows
+GPU and WSL software Vulkan, with all nine final resource gauges zero.
+The candidate now pins these sources and fresh profiles; the 120 selected
+criteria and original 142 obligations remain intact. Source observations do not
+admit an installed artifact. Renew independent review, assemble the Windows
+wheel from retained native outputs, reuse the matching Linux wheel, and complete
+installed qualification and current-head CI before promotion. Preserve the
+original failed macOS/Python 3.14 CPU build as unresolved toolchain I/O evidence.
+
 Requirements and acceptance are defined in the
 [gap-closure specification](../specs/2026-10-24-vispy-compatibility-gap-closure.md).
 The [original runtime-removal plan](2026-10-23-opengl-runtime-removal-plan.md)

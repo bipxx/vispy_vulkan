@@ -2,10 +2,10 @@
   "schema": 1,
   "phase": "proposal",
   "route": "add-required-scoped-retain-parents",
-  "manifest_sha256": "430785d86bdbffe6f90015f27933f492950ef20476e4ba75b96a8a8b44aa4105",
+  "manifest_sha256": "704b7b56272d88815021382c638ded15a9c25f2d944b1eef6a1b40a225f76a06",
   "candidate": {
     "path": "compat/candidates/tk-state-resource-1/candidate.json",
-    "scope_sha256": "2207168046dfe19b2350b6322aa2821a1866b819797561352a9dccf747907cec"
+    "scope_sha256": "7f27bacfc02d05e7f9f6a4e5e3b9d44a0d1df4968cbaa530b207bc108b4aa9d2"
   },
   "origin_dispositions": [
     {
@@ -3973,7 +3973,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "none; public scoped operations only"
@@ -3988,7 +3988,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "none; public scoped operations only"
@@ -4003,7 +4003,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "none; public scoped operations only"
@@ -4018,7 +4018,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "none; public scoped operations only"
@@ -4033,7 +4033,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "green Texture2D upload ValueError plus native progress ValueError in poll-first/draw-first external loops"
@@ -4048,7 +4048,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "green Texture2D upload ValueError plus native progress ValueError in poll-first/draw-first external loops"
@@ -4063,7 +4063,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "remove controlled faults; explicit redraw/fresh resource workflow and native device loss"
@@ -4078,7 +4078,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "remove controlled faults; explicit redraw/fresh resource workflow and native device loss"
@@ -4093,7 +4093,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "none; public scoped operations only"
@@ -4108,7 +4108,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "none; public scoped operations only"
@@ -4123,7 +4123,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "none; public scoped operations only"
@@ -4138,7 +4138,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "none; public scoped operations only"
@@ -4153,7 +4153,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "green Texture2D upload ValueError plus native progress ValueError in poll-first/draw-first external loops"
@@ -4168,7 +4168,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "green Texture2D upload ValueError plus native progress ValueError in poll-first/draw-first external loops"
@@ -4183,7 +4183,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "remove controlled faults; explicit redraw/fresh resource workflow and native device loss"
@@ -4198,7 +4198,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "remove controlled faults; explicit redraw/fresh resource workflow and native device loss"
@@ -4213,7 +4213,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "none; public scoped operations only"
@@ -4228,7 +4228,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "none; public scoped operations only"
@@ -4243,7 +4243,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "none; public scoped operations only"
@@ -4258,7 +4258,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "none; public scoped operations only"
@@ -4273,7 +4273,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "green Texture2D upload ValueError plus native progress ValueError in poll-first/draw-first external loops"
@@ -4288,7 +4288,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "green Texture2D upload ValueError plus native progress ValueError in poll-first/draw-first external loops"
@@ -4303,7 +4303,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "remove controlled faults; explicit redraw/fresh resource workflow and native device loss"
@@ -4318,7 +4318,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "remove controlled faults; explicit redraw/fresh resource workflow and native device loss"
@@ -4333,7 +4333,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "none; public scoped operations only"
@@ -4348,7 +4348,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "none; public scoped operations only"
@@ -4363,7 +4363,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "none; public scoped operations only"
@@ -4378,7 +4378,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "none; public scoped operations only"
@@ -4393,7 +4393,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "green Texture2D upload ValueError plus native progress ValueError in poll-first/draw-first external loops"
@@ -4408,7 +4408,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "green Texture2D upload ValueError plus native progress ValueError in poll-first/draw-first external loops"
@@ -4423,7 +4423,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "remove controlled faults; explicit redraw/fresh resource workflow and native device loss"
@@ -4438,7 +4438,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "remove controlled faults; explicit redraw/fresh resource workflow and native device loss"
@@ -4453,7 +4453,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "none; public scoped operations only"
@@ -4468,7 +4468,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "none; public scoped operations only"
@@ -4483,7 +4483,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "none; public scoped operations only"
@@ -4498,7 +4498,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "none; public scoped operations only"
@@ -4513,7 +4513,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "green Texture2D upload ValueError plus native progress ValueError in poll-first/draw-first external loops"
@@ -4528,7 +4528,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "green Texture2D upload ValueError plus native progress ValueError in poll-first/draw-first external loops"
@@ -4543,7 +4543,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "remove controlled faults; explicit redraw/fresh resource workflow and native device loss"
@@ -4558,7 +4558,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "remove controlled faults; explicit redraw/fresh resource workflow and native device loss"
@@ -4573,7 +4573,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "none; public scoped operations only"
@@ -4588,7 +4588,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "none; public scoped operations only"
@@ -4603,7 +4603,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "none; public scoped operations only"
@@ -4618,7 +4618,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "none; public scoped operations only"
@@ -4633,7 +4633,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "green Texture2D upload ValueError plus native progress ValueError in poll-first/draw-first external loops"
@@ -4648,7 +4648,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "green Texture2D upload ValueError plus native progress ValueError in poll-first/draw-first external loops"
@@ -4663,7 +4663,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "remove controlled faults; explicit redraw/fresh resource workflow and native device loss"
@@ -4678,7 +4678,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "remove controlled faults; explicit redraw/fresh resource workflow and native device loss"
@@ -4693,7 +4693,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "none; public scoped operations only"
@@ -4708,7 +4708,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "none; public scoped operations only"
@@ -4723,7 +4723,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "none; public scoped operations only"
@@ -4738,7 +4738,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "none; public scoped operations only"
@@ -4753,7 +4753,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "green Texture2D upload ValueError plus native progress ValueError in poll-first/draw-first external loops"
@@ -4768,7 +4768,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "green Texture2D upload ValueError plus native progress ValueError in poll-first/draw-first external loops"
@@ -4783,7 +4783,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "remove controlled faults; explicit redraw/fresh resource workflow and native device loss"
@@ -4798,7 +4798,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "remove controlled faults; explicit redraw/fresh resource workflow and native device loss"
@@ -4813,7 +4813,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "none; public scoped operations only"
@@ -4828,7 +4828,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "none; public scoped operations only"
@@ -4843,7 +4843,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "none; public scoped operations only"
@@ -4858,7 +4858,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "none; public scoped operations only"
@@ -4873,7 +4873,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "Actual native frame_slots=1 with completion delivery held; raw/gloo routes each use immediate/delayed early progress, capacity rejection, completion release/observed retirement and explicit retry."
@@ -4888,7 +4888,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "Actual native frame_slots=1 with completion delivery held; raw/gloo routes each use immediate/delayed early progress, capacity rejection, completion release/observed retirement and explicit retry."
@@ -4903,7 +4903,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "Actual native frame_slots=1 with completion delivery held; raw/gloo routes each use immediate/delayed early progress, capacity rejection, completion release/observed retirement and explicit retry."
@@ -4918,7 +4918,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "Actual native frame_slots=1 with completion delivery held; raw/gloo routes each use immediate/delayed early progress, capacity rejection, completion release/observed retirement and explicit retry."
@@ -4933,7 +4933,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "none; public scoped operations only"
@@ -4948,7 +4948,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "none; public scoped operations only"
@@ -4963,7 +4963,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "none; public scoped operations only"
@@ -4978,7 +4978,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "none; public scoped operations only"
@@ -4993,7 +4993,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "Actual native frame_slots=1 with completion delivery held; raw/gloo routes each use immediate/delayed early progress, capacity rejection, completion release/observed retirement and explicit retry."
@@ -5008,7 +5008,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "Actual native frame_slots=1 with completion delivery held; raw/gloo routes each use immediate/delayed early progress, capacity rejection, completion release/observed retirement and explicit retry."
@@ -5023,7 +5023,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "Actual native frame_slots=1 with completion delivery held; raw/gloo routes each use immediate/delayed early progress, capacity rejection, completion release/observed retirement and explicit retry."
@@ -5038,7 +5038,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "Actual native frame_slots=1 with completion delivery held; raw/gloo routes each use immediate/delayed early progress, capacity rejection, completion release/observed retirement and explicit retry."
@@ -5053,7 +5053,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "none; public scoped operations only"
@@ -5068,7 +5068,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "none; public scoped operations only"
@@ -5083,7 +5083,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "none; public scoped operations only"
@@ -5098,7 +5098,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "none; public scoped operations only"
@@ -5113,7 +5113,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "green Texture2D upload ValueError plus native progress ValueError in poll-first/draw-first external loops"
@@ -5128,7 +5128,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "green Texture2D upload ValueError plus native progress ValueError in poll-first/draw-first external loops"
@@ -5143,7 +5143,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "remove controlled faults; explicit redraw/fresh resource workflow and native device loss"
@@ -5158,7 +5158,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "remove controlled faults; explicit redraw/fresh resource workflow and native device loss"
@@ -5173,7 +5173,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "none; public scoped operations only"
@@ -5188,7 +5188,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "none; public scoped operations only"
@@ -5203,7 +5203,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "none; public scoped operations only"
@@ -5218,7 +5218,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "none; public scoped operations only"
@@ -5233,7 +5233,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "green Texture2D upload ValueError plus native progress ValueError in poll-first/draw-first external loops"
@@ -5248,7 +5248,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "green Texture2D upload ValueError plus native progress ValueError in poll-first/draw-first external loops"
@@ -5263,7 +5263,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "remove controlled faults; explicit redraw/fresh resource workflow and native device loss"
@@ -5278,7 +5278,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "remove controlled faults; explicit redraw/fresh resource workflow and native device loss"
@@ -5293,7 +5293,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "none; public scoped operations only"
@@ -5308,7 +5308,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "none; public scoped operations only"
@@ -5323,7 +5323,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "none; public scoped operations only"
@@ -5338,7 +5338,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "none; public scoped operations only"
@@ -5353,7 +5353,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "green Texture2D upload ValueError plus native progress ValueError in poll-first/draw-first external loops"
@@ -5368,7 +5368,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "green Texture2D upload ValueError plus native progress ValueError in poll-first/draw-first external loops"
@@ -5383,7 +5383,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "remove controlled faults; explicit redraw/fresh resource workflow and native device loss"
@@ -5398,7 +5398,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "remove controlled faults; explicit redraw/fresh resource workflow and native device loss"
@@ -5413,7 +5413,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "none; public scoped operations only"
@@ -5428,7 +5428,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "none; public scoped operations only"
@@ -5443,7 +5443,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "none; public scoped operations only"
@@ -5458,7 +5458,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "none; public scoped operations only"
@@ -5473,7 +5473,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "green Texture2D upload ValueError plus native progress ValueError in poll-first/draw-first external loops"
@@ -5488,7 +5488,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "green Texture2D upload ValueError plus native progress ValueError in poll-first/draw-first external loops"
@@ -5503,7 +5503,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "remove controlled faults; explicit redraw/fresh resource workflow and native device loss"
@@ -5518,7 +5518,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "remove controlled faults; explicit redraw/fresh resource workflow and native device loss"
@@ -5533,7 +5533,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "none; public scoped operations only"
@@ -5548,7 +5548,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "none; public scoped operations only"
@@ -5563,7 +5563,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "none; public scoped operations only"
@@ -5578,7 +5578,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "none; public scoped operations only"
@@ -5593,7 +5593,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "green Texture2D upload ValueError plus native progress ValueError in poll-first/draw-first external loops"
@@ -5608,7 +5608,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "green Texture2D upload ValueError plus native progress ValueError in poll-first/draw-first external loops"
@@ -5623,7 +5623,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "remove controlled faults; explicit redraw/fresh resource workflow and native device loss"
@@ -5638,7 +5638,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "remove controlled faults; explicit redraw/fresh resource workflow and native device loss"
@@ -5653,7 +5653,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "none; public scoped operations only"
@@ -5668,7 +5668,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "none; public scoped operations only"
@@ -5683,7 +5683,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "none; public scoped operations only"
@@ -5698,7 +5698,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "none; public scoped operations only"
@@ -5713,7 +5713,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "green Texture2D upload ValueError plus native progress ValueError in poll-first/draw-first external loops"
@@ -5728,7 +5728,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "green Texture2D upload ValueError plus native progress ValueError in poll-first/draw-first external loops"
@@ -5743,7 +5743,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "remove controlled faults; explicit redraw/fresh resource workflow and native device loss"
@@ -5758,7 +5758,7 @@
       "scenario": {
         "script": {
           "path": "tools/tkinter_failure_scenario.py",
-          "sha256": "5229bb25a657d42782ebbf8fc820d083e2bbe7d54fc822475d3724c8fc556b49"
+          "sha256": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21"
         },
         "arguments": [],
         "injection": "remove controlled faults; explicit redraw/fresh resource workflow and native device loss"
