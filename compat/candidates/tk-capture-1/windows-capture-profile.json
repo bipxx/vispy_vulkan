@@ -1,0 +1,147 @@
+{
+  "schema": 1,
+  "id": "windows-gpu-tk86-cp312-development",
+  "phase": "source-functional",
+  "product_runtime_source_commit": "5c7d1273bc3471136d87f730482e07a679e0e00e",
+  "kind": "windows-gpu",
+  "architecture": "x86_64",
+  "python_abi": "cp312",
+  "python_version": "3.12.8 (main, Dec 19 2024, 14:41:01) [MSC v.1942 64 bit (AMD64)]",
+  "interpreter": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\.venv\\Scripts\\python.exe",
+  "interpreter_sha256": "4025e2a6d8fc90d053a8405e81f008cbd8ee45b582e2d77480341501f4aeda73",
+  "base_interpreter": {
+    "path": "C:\\Users\\HEQ\\AppData\\Roaming\\uv\\python\\cpython-3.12.8-windows-x86_64-none\\python.exe",
+    "sha256": "71b986e874ae1382c434f95852f5670e6d87576db2861cd03737dd4bce9d69ed"
+  },
+  "os_identity": "Windows-11-10.0.26200-SP0",
+  "toolkit": {
+    "tk_version": 8.6,
+    "tcl_version": 8.6,
+    "binding_origin": "C:\\Users\\HEQ\\AppData\\Roaming\\uv\\python\\cpython-3.12.8-windows-x86_64-none\\DLLs\\_tkinter.pyd",
+    "binding_hash_scope": "module",
+    "binding_sha256": "38453f6aff3f3a3ef0017c00bfee2f403ca0aeaf92b8b5c56d05460fd6dbbdf9"
+  },
+  "display_mode": "tk-raster",
+  "device": {
+    "backend": "Vulkan",
+    "adapter_type": "discrete",
+    "vendor": "nvidia",
+    "device": "NVIDIA GeForce RTX 4090",
+    "driver": "NVIDIA: 610.88 610.88.0.0",
+    "vendor_id": 4318,
+    "device_id": 9860,
+    "max_texture_dimension_1d": 32768,
+    "max_texture_dimension_2d": 32768,
+    "max_texture_dimension_3d": 16384,
+    "max_vertex_attributes": 30,
+    "max_vertex_buffers": 8,
+    "max_vertex_buffer_array_stride": 2048,
+    "max_storage_buffers_per_shader_stage": 16,
+    "max_uniform_buffers_per_shader_stage": 12,
+    "max_inter_stage_shader_variables": 30,
+    "max_storage_buffer_binding_size": 2147483644,
+    "max_bindings_per_bind_group": 1000,
+    "max_compute_invocations_per_workgroup": 1024,
+    "max_compute_workgroup_size_x": 1024,
+    "max_compute_workgroups_per_dimension": 65535,
+    "max_point_vertex_attributes": 30,
+    "core_features_and_limits": true,
+    "point_input_limit_scope": "all active user point inputs share one vertex buffer; exact vertex/instance identities use read-only vertex storage without reserving a user attribute; actual granted attribute/stride/storage/allocation limits apply",
+    "max_samplers_per_shader_stage": 16,
+    "max_sampled_textures_per_shader_stage": 48,
+    "max_buffer_size": 1099511627776,
+    "max_uniform_buffer_binding_size": 65536,
+    "software": false,
+    "float32_filterable": true,
+    "unorm16_texture_formats": true,
+    "bresenham_lines": true,
+    "last_vertex_provoking": true,
+    "timestamp_query": true,
+    "timestamp_quantization_ns": 65536,
+    "depth_stencil_storage": "depth24_unorm_stencil8",
+    "ok": true,
+    "error": "",
+    "loss_count": 0,
+    "revision": "117b054598f4758b598f4b8f48feea48c11fe7b0+dawn-499e5c6ff9b37d5de70c6493fb74c251e0d35c1c"
+  },
+  "native_sha256": "3806c42b3f269cc88f0954e0478111f2c6b547646840a1dff6269fd2e737c830",
+  "native_inputs_sha256": "24d83e8fc94f009c1e105bb1b7b934a4880ce30c2fa47bc6a4a4d93c3893fa83",
+  "loaded_library_identities": {
+    "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\work\\capture-native-143\\native\\_dawn.cp312-win_amd64.pyd": "3806c42b3f269cc88f0954e0478111f2c6b547646840a1dff6269fd2e737c830"
+  },
+  "source_observation": {
+    "cases": 1,
+    "case_unit": "One real composite invocation with four asserted modes; five separately executed active controls",
+    "report": {
+      "path": "build/runs/capture-native-143/positive-result.json",
+      "sha256": "7c563a0664ab88d077e5aca4eedc79c7be94e4a23091877f38093848d7dff47e"
+    },
+    "shutdown_gauges": {
+      "pending_tickets": 0,
+      "queued_frames": 0,
+      "live_buffer_bytes": 0,
+      "live_cpu_buffer_bytes": 0,
+      "live_texture_bytes": 0,
+      "canvas_texture_bytes": 0,
+      "transient_buffer_bytes": 0,
+      "line_resource_pool_busy_slots": 0,
+      "line_resource_pool_bytes": 0
+    },
+    "source_script": {
+      "path": "tools/tkinter_capture_scenario.py",
+      "sha256": "bcce154942b072eaf4d192687ae3afd43c973b3cfd535ab22310cee58ddc7888"
+    },
+    "controls": [
+      {
+        "path": "build/runs/capture-native-143/row-flip-result.json",
+        "sha256": "90f115ddb8be66247af8b788e8890c175e367dc9b150fb25be6e72a4a9dcbfc2"
+      },
+      {
+        "path": "build/runs/capture-native-143/resize-row-flip-result.json",
+        "sha256": "78f21e65b9aec0e9a6380e3776d2224a6ed573db6b9de3c6294f27f524667f36"
+      },
+      {
+        "path": "build/runs/capture-native-143/alpha-result.json",
+        "sha256": "ac4c016c2f4ae0016221f1fadb431f4dac182a034cde82ef229f80d6c448fe7a"
+      },
+      {
+        "path": "build/runs/capture-native-143/float-scale-result.json",
+        "sha256": "4e9735b15aa3290fc532310e08b9fdd0f1509785cb78e30daf06803ad6a21c1a"
+      },
+      {
+        "path": "build/runs/capture-native-143/consume-queue-result.json",
+        "sha256": "66fe83cb1c5ea64c2e8e147f211f4c1e6e22679772d84ac843901b0ddf6632de"
+      }
+    ],
+    "decoder_revalidation": {
+      "path": "build/runs/capture-source-142/decoder-revalidation.json",
+      "sha256": "bd07300dba18b9dec5d37ade099880df0aa9d3f4d9463ed8d57a741aefe302b5"
+    },
+    "scope": "Source/native observation only. Platform identity separately rechecked in145; not a new installed or collector observation."
+  },
+  "previous_source_observation": {
+    "path": "compat/candidates/tk-state-resource-1/windows-readback-profile.json",
+    "sha256": "795f39794a8c9f2e53db949535810ab911ac4bfdb5b4cfa0c32d1c85c3ef9b59"
+  },
+  "limitations": [
+    "Finite single-sample cropped byte/normalized-float32 RGBA8 workflow only.",
+    "Separate candidate/native-reuse/scope reviews and fresh installed observer/control/shutdown proof remain pending.",
+    "Previous installed capture results118 remain wheel-tested evidence; no combined current128-criterion proof.",
+    "No Metal graphics, native Linux GPU, multisampling or device-loss recovery claim."
+  ],
+  "native_producer": {
+    "status": "CURRENT_NATIVE_REUSE_REVIEW_PENDING",
+    "artifact_manifest": {
+      "path": "build/runs/ci-platform-selection-111/reviewed-native-record.json",
+      "sha256": "e2eeba8ae96815ca03e84bd44f670d81ad7b0a4ffc2d15e5f85fc8ec166166ab"
+    },
+    "scope": "Original milestone producer record retained unchanged; current reuse and installed promotion require renewed review"
+  },
+  "native_reuse": {
+    "basis": {
+      "path": "build/runs/python-wheel-assembly-117/windows-assembly.json",
+      "sha256": "743026c95ef18d5b14050b53be0692ae1db1f1094ab840766481823156da824b"
+    },
+    "scope": "Byte-checked unchanged native production and two Python member replacements; archive audit is not candidate approval"
+  }
+}

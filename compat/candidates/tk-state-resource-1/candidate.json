@@ -2,7 +2,7 @@
   "schema": 1,
   "phase": "development",
   "id": "tk-state-resource-1",
-  "manifest_sha256": "47bd168b4eec8d35daf3600c6a33b62c81b49ddd5d6bc046b994a6ddaeb4bb5b",
+  "manifest_sha256": "aefd17811144d1dae166d2f4377f4d0e47e091e8c3e0c403f5e6d41c276e7e9c",
   "product_source_commit": "5c7d1273bc3471136d87f730482e07a679e0e00e",
   "upstream_commit": "117b054598f4758b598f4b8f48feea48c11fe7b0",
   "ledger": {
@@ -1196,7 +1196,7 @@
     },
     {
       "path": "tools/compatibility_evidence.py",
-      "sha256": "c89b4dc434b344597d7a559aeb9b383243740176b51fd28e3cbd5f459f0eec28"
+      "sha256": "6d8257afdbaec44432a179878dd5f1eb0957b19f7ea7ef49717c0f8c25a80481"
     },
     {
       "path": "tools/compatibility_coverage.py",
@@ -1208,11 +1208,11 @@
     },
     {
       "path": "tools/compatibility_execution.py",
-      "sha256": "f666ac4985ac505f9c764de47591c2f14a880f0939d6f0fc05b10d3aceb3df33"
+      "sha256": "4b90a052b21a41db375cbaa550a790bfea370e9219bfc8078a91381c8e429bb9"
     },
     {
       "path": "compat/vispy-execution.schema.json",
-      "sha256": "d217f55cfdd36824093c44603f6a4d495812896dbac43a053a8af323a7060013"
+      "sha256": "c4b20847c483a530b37c76aeec4e4ab057b5336e33cbfd15bdb0b17e4b0fd17b"
     },
     {
       "path": "tools/compatibility_qualification.py",
@@ -1232,7 +1232,7 @@
     },
     {
       "path": "compat/qualification-ci.json",
-      "sha256": "3fb9855c63f7aedac4a2dc2ab49243eb4e389493674b992f88e37573b9a486b4"
+      "sha256": "d1d1309ba9417e1d15cd3b90ee5437fd40cc67d35727bf06ad79771e2212a5ec"
     },
     {
       "path": "tools/qualification_artifact.py",
@@ -1332,7 +1332,7 @@
     },
     {
       "path": "tools/no_opengl/functional.py",
-      "sha256": "987207ffb7c774cbb38437ce753bba131b5e9ebb464df6a2bbdf8d383fe7e9b0"
+      "sha256": "a85df7954fbf9e84cec523d3cee8d095b7e0ebbf1c0c93dc8e5d3313ad9702c2"
     },
     {
       "path": "docs/superpowers/specs/2026-10-24-vispy-compatibility-gap-closure.md",
@@ -1356,7 +1356,7 @@
     },
     {
       "path": ".github/workflows/cpu-contract.yml",
-      "sha256": "368e0d55e70b1ca533225ff0d1567f3bf5dbb6bdff4687345de9321ba8d05ab6"
+      "sha256": "e3c1f227e628de4b6bfc9dfaf5e46240e79b9e138fb693d5a8919cd4aee875b1"
     },
     {
       "path": "tools/audit_no_opengl.py",

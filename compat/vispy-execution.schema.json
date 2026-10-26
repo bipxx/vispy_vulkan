@@ -146,7 +146,7 @@
           "const": 1
         },
         "contract": {
-          "const": "tk-state-resource-1"
+          "enum": ["tk-state-resource-1", "tk-capture-1"]
         },
         "branch_ids": {
           "type": "array",

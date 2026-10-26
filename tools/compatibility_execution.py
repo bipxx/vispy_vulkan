@@ -16,14 +16,14 @@ try:
     from .compatibility_candidate import DEFAULT as CANDIDATE, scope_digest, validate_candidate
     from .compatibility_conservation import digest, origins
     from .compatibility_coverage import DEFAULT as COVERAGE, validate_coverage
-    from .no_opengl.functional import WORKFLOW as FUNCTIONAL_WORKFLOW, criterion_binding
+    from .no_opengl.functional import WORKFLOW as FUNCTIONAL_WORKFLOW, CAPTURE_WORKFLOW, criterion_binding
     from .compatibility_inventory import (ROOT, POSITIVE, InventoryError, check, file_ref,
                                           local_file, read_json, shape, unique_by, validate)
 except ImportError:
     from compatibility_candidate import DEFAULT as CANDIDATE, scope_digest, validate_candidate
     from compatibility_conservation import digest, origins
     from compatibility_coverage import DEFAULT as COVERAGE, validate_coverage
-    from no_opengl.functional import WORKFLOW as FUNCTIONAL_WORKFLOW, criterion_binding
+    from no_opengl.functional import WORKFLOW as FUNCTIONAL_WORKFLOW, CAPTURE_WORKFLOW, criterion_binding
     from compatibility_inventory import (ROOT, POSITIVE, InventoryError, check, file_ref,
                                          local_file, read_json, shape, unique_by, validate)
 
@@ -131,7 +131,7 @@ def template(candidate, coverage, baseline):
             mapping = {'criterion': criterion['id'], 'profile': key[1],
                        'destination': {'feature': key[0], 'profile': key[1], 'criterion': criterion['id']},
                        'workflow': workflow_id}
-            if workflow_id == FUNCTIONAL_WORKFLOW:
+            if workflow_id in (FUNCTIONAL_WORKFLOW, CAPTURE_WORKFLOW):
                 mapping['functional_result'] = criterion_binding(key[0], criterion['kind'])
             mappings.append(mapping)
         ledger['rows'].append({
