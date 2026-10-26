@@ -47,7 +47,7 @@ head `98694c6b7c9ed9befbfaf73e2f377d1516fca4c0`. Start with
 observations and all 142 parent obligations remain preserved. No local SDK or
 renderer rebuild was needed, and all managed qualification scratch was cleaned.
 
-The next source-only packet verifies the existing separate-face stencil
+The source-only packet merged in PR #16 verifies the existing separate-face stencil
 operations. Runs134/137 pass 196 cases each on Windows hardware Vulkan and WSL
 software Vulkan, with two active mutations failing both selected route cases.
 The finite table covers eight operations, saturation/wrap boundaries, selected
@@ -57,11 +57,75 @@ Independent review138 bounds the source evidence; it does not extend artifact
 admission or certify the full raw-state parent. Original setup/control/oracle
 failures remain retained. The renderer and native inputs did not change.
 
-The reviewed tests and status corrections form one source packet. For further
+The direct `glStencilOp` follow-up now passes 97 source cases on each Windows
+hardware Vulkan and WSL software Vulkan profile. It independently observes both
+faces after a single public update, with finite shared/split write-mask vectors,
+invalid-third-enum preservation/recovery and reached single-face controls for
+masked inversion and both wrap boundaries. Review158 approves the corrected
+source; original weaker tests, their actual passes and review finding155 remain
+preserved. Runs156/157 retained the actual results and cleaned managed scratch.
+This is source coverage, with no new installed stencil or full-parent claim.
+
+The capture follow-up's exact Windows146/WSL149 installed observations and
+retained attempt histories now prove all eight selected criteria through the
+unchanged strict subject validator in run151. Independent source/scope,
+native-reuse, installed-evidence and head-impact reviews passed. All 23 jobs
+on the frozen head, final promotion and strict separate eight-criterion admission
+passed. PR #17 merged as `48df4b47b5ab5d4428e1207d0597363257d03f7a`, with the exact tested tree
+of `27242b51f76eae5d96cc7163ee1af105f46f22ba`; the historical 120-criterion admission
+stays bound to its original source. No native or wheel rebuild was needed.
+
+For further
 work, choose a named workflow from the route map. Existing cropped/float/alpha capture source cases
 already pass; broader installed claims need explicit selection and evidence,
 not a rewrite of working readback. Keep other comparisons, mask/reference
 combinations, formats and multi-primitive state behavior as separate claims.
+The practical integration packet now passes on Windows160 and WSL161:
+the Tk SceneCanvas/PanZoom fixture checks independently expected camera
+rectangles, landmark patches and actual presentation points through dragging,
+resize, focus-loss cancellation, recovery and outside release. Both reached
+controls fail their intended first-drag assertions. Independent review162
+approves the exact source, and both runs retained their evidence and cleaned
+scratch. The initial helper-parse failure159 remains preserved separately; it
+occurred before any native allocation or graphics work. This is generated-input,
+manual-pump source coverage, not installed camera, whole-frame or mixed-DPI
+qualification. Existing camera code and binaries did not change.
+
+The companion wheel case passes on Windows163 and WSL164. It normalizes the
+generated public wheel event, checks off-center cursor anchoring and expected
+landmark coordinates at half scale, then verifies inverse restoration. Two
+reached controls reject ignored anchoring and reversed scale. Independent
+review165 approves this exact custom-sensitivity, manual-pump source evidence;
+default scroll rate, physical input and installed camera claims remain separate.
+Both runs retained their actual outcomes and cleaned scratch, without changing
+camera, backend, native or wheel bytes.
+
+The remaining old Turntable change-only assertion now has a companion on
+Windows167 and WSL168: the same public Tk event route produces the literal
+-90-degree yaw and landmark positions for a quarter-turn of an orthographic
++Z-up view, then preserves cancellation and restores the initial pose on a
+fresh opposite gesture. Both reached controls fail their intended first pose
+assertions. Review169 approves this bounded source; perspective, pitch/roll,
+arbitrary poses and installed camera claims remain separate. Both native
+projections were cleaned and the original camera implementation is unchanged.
+
+Finish capture CI/promotion and publish the coherent source-test/status packet
+before expanding another installed claim. Reconcile prior visual/shader evidence
+when choosing the next named consumer; do not repeat completed implementations
+or turn the full upstream inventory into a new release requirement.
+
+The independent CI efficiency audit in run162 identifies a separate follow-up:
+try bounded compiler-output caching for the existing Mac/Linux CPU jobs while
+retaining fresh configure/build/CTest, current Python assertions, checkout
+identity and all required contexts. The retained prior native steps total about
+403 runner-minutes; runner queue time is a separate cost. Original CPU artifacts
+contain evidence and cache text, not reusable executables or ABI modules, so
+they cannot support a binary-reuse claim. Start with one measured cold/warm
+profile, retain hit/miss statistics and exact compiler/source/toolchain/config
+identities, and enforce an explicit cache budget without cloning old build or
+SDK trees. Windows Visual Studio integration needs its own validated route;
+ordinary CMake compiler-launcher flags do not provide it. Keep this optimization
+separate from the frozen capture head and its unchanged 23-job admission policy.
 Continue supported-feature fixes and named route-map families in bounded
 packets. Require a practical VisPy compatibility baseline and documented,
 tested differences; complete upstream parity is not the release target.

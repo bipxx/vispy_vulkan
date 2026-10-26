@@ -3,7 +3,7 @@
 Date: 2026-10-25. This is an execution aid for the active compatibility plan.
 “API key” means the stable feature identifier used by the inventory. These
 routes are proposed engineering choices, not support or qualification claims.
-They cover every current canonical feature key plus all 15 additive candidate
+They cover every current canonical feature key plus the first 15 additive candidate
 keys. The inventory remains the authority for requirements and applicability;
 this document creates no new completeness denominator and discharges no parent.
 
@@ -23,13 +23,18 @@ Full-parent coverage needs method/value/event/example reconciliation beyond a
 class import or constructor. Source success still needs exact installed-origin,
 functional/absence/control/shutdown and artifact review before admission.
 
-## Current candidate: 15 API keys
+## First admitted milestone: 15 API keys
 
-Source implementations and composite scripts already exist. The fastest next
-step is review, applicable-blocker resolution and installed qualification, not
-rewriting these APIs. Use the three existing scenarios in `tools/tkinter_*_scenario.py`
-and their current coverage mappings. The failure composite retains all eight
-required branches. Each row below keeps its explicit exclusions in candidate.json.
+These implementations and composite scripts have retained source/scope,
+producer, installed-observation and promotion evidence: the readback successor
+passed all 120 selected criteria and merged in PR #15. Reuse that evidence under
+its exact source/artifact identities instead of treating this table as a new
+review, build or qualification queue. The failure composite retains all eight
+required branches. Each row keeps its explicit exclusions in
+`compat/candidates/tk-state-resource-1/candidate.json`. The separate
+`tk.readback.crop-formats` extension uses its own finite scope in
+[cropped capture](cropped-capture-compatibility.md); it is not additional proof
+for every method of these fifteen entries.
 
 | API key | Public entry points | Lowest-change route | Decisive acceptance | Prerequisite |
 | --- | --- | --- | --- | --- |
@@ -121,8 +126,8 @@ evidence instead. A failed vector selects the shared mechanism to repair.
 | `scene.cameras.magnify1dcamera` | Keep the existing Python camera; repair event translation or transform binding once in shared layers. | One-axis magnification and cursor mapping; unaffected orthogonal axis stays unchanged. |
 | `scene.cameras.magnifycamera` | Keep the existing Python camera; repair event translation or transform binding once in shared layers. | Lens position/radius/magnification mutation; independent transformed sample positions. |
 | `scene.cameras.make-camera` | Keep the existing Python camera; repair event translation or transform binding once in shared layers. | Each supported factory selector and parameters produces the correct concrete type/behavior; invalid selector fails. |
-| `scene.cameras.panzoomcamera` | Keep the existing Python camera; repair event translation or transform binding once in shared layers. | Pan/zoom/aspect/range/invert with actual drag/wheel; check coordinates and visible image. |
-| `scene.cameras.turntablecamera` | Keep the existing Python camera; repair event translation or transform binding once in shared layers. | Azimuth/elevation/distance/fov/center and actual drag; independent matrix/output. |
+| `scene.cameras.panzoomcamera` | Keep the existing Python camera; reuse the reviewed Tk coordinate/wheel fixtures before changing event/transform code. | Literal rect/landmark drag, resize, cancellation/recovery and custom-sensitivity cursor-anchored wheel zoom now pass Windows/WSL source checks. Default wheel rate, other aspect/invert values and installed observation remain separate bounded claims. |
+| `scene.cameras.turntablecamera` | Keep the existing Python camera; reuse the reviewed cardinal-yaw Tk fixture before changing event/transform code. | Orthographic +Z-up quarter-turn pose, literal landmarks and cancellation/restoration now pass Windows/WSL source checks. Perspective, pitch/roll, arbitrary poses and installed observation remain separate. |
 | `scene.filters` | Resolve namespace aliases to concrete visual filter implementations; share their shader-hook tests. | All exports retain identity plus actual attached filter behavior; no duplicate renderer port for an alias. |
 | `scene.node` | Keep Python scene graph and transform propagation; test it over an admitted SceneCanvas. | Parent/reparent/order/visibility/clipping changes and event propagation affect intended draws. |
 | `scene.scenecanvas` | Reuse current Canvas plus scene traversal and target-stack machinery. | Multiple views, transforms/clips, render/capture, camera input, resize and cleanup. |

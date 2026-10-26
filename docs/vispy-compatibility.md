@@ -35,11 +35,39 @@ window presentation.
 Real Windows GPU and WSL software Vulkan integration tests cover drawing,
 presentation orientation, resize, input, embedded/native widget destruction,
 multiple canvases, timers, animation, callback recovery and device-loss recovery.
-These source tests reuse existing native binaries. A new installed wheel and all
-three no-OpenGL qualification gates are still required before adding a shipping
-matrix row. Run `tests/native/test_tkinter_backend.py` with pytest `-s` to avoid
+These source tests reuse existing native binaries. Exact installed-wheel evidence
+and all three no-OpenGL qualification gates are required before expanding a
+shipping claim; unchanged matching wheels can be reused. Run
+`tests/native/test_tkinter_backend.py` with pytest `-s` to avoid
 the observed interaction between Windows Tcl initialization and descriptor
 capture; do not treat the earlier captured failures as a product fix.
+
+`tests/native/test_tkinter_panzoom_coordinates.py` adds independently expected
+PanZoom coordinates on Windows Vulkan and WSL software Vulkan. A fixed world
+rectangle and two landmarks check drag direction, resize, focus-loss
+cancellation, fresh-gesture recovery and outside release. Rendered 3-by-3 RGBA
+patches and actual Tk RGB presentation points match literal coordinates at
+240-by-180 and 360-by-240 sizes. Disabled-pan and reversed-vertical-pan controls
+fail the first drag assertion. This is generated-input, manual-pump source
+evidence for those landmarks, not whole-image parity, physical input, mixed-DPI
+behavior or a newly admitted installed camera workflow.
+
+The companion `test_tkinter_panzoom_wheel.py` verifies normalized wheel direction
+and zoom about an off-center cursor. With an explicit test sensitivity, wheel
+up halves the visible world rectangle about world(-0.5,0.5), and wheel down
+restores it. Literal camera rectangles, rendered landmark patches and Tk RGB
+points agree on both profiles. Controls that ignore the cursor anchor or
+reverse the zoom factor fail. This covers generated MouseWheel input and that
+custom sensitivity; default wheel rate, physical scrolling and the unexecuted
+Darwin input branch remain separate.
+
+`test_tkinter_turntable_coordinates.py` adds a finite 3D camera check on both
+profiles. With +Z up, orthographic height two and a 240-by-180 view, a rightward
+180-pixel drag gives -90-degree yaw and independently expected landmark
+positions. Focus cancellation, outside release and an opposite restoring drag
+preserve the expected pose and presentation. Missing-rotation and reversed-yaw
+controls fail. Perspective, pitch/roll changes, arbitrary poses and physical
+input remain outside this cardinal-yaw source test.
 
 The subsequent Astra review found Tk correctness gaps. Pressed-button tracking
 now supports real PanZoom/Turntable camera drags in source tests and cancels
