@@ -7,6 +7,15 @@ import pytest
 from tools import compatibility_qualification as q
 
 
+def current_review_applied(execution, candidate):
+    """A bound approval alone does not apply scoped ledger review flags."""
+    ledger = q.read_json(q.ROOT / execution['execution']['path'])
+    selected = {(pair['feature'], pair['profile']) for pair in candidate['pairs']}
+    return all(candidate['reviews'].values()) and all(
+        pair['reviewed'] for pair in ledger['applicability']
+        if (pair['feature'], pair['profile']) in selected)
+
+
 def graph():
     mappings, rows, apps = [], [], []
     for feature, dependencies in [('view', ['device']), ('device', [])]:
@@ -82,7 +91,7 @@ def test_current_selection_is_incomplete_and_preserves_both_profiles():
     assert len({key['profile'] for key in result['closure']}) == 2
     execution = q.read_json(q.ROOT / record['execution_map']['path'])
     candidate, _, _ = q.load_inputs(execution, q.ROOT)
-    expected_review = all(candidate['reviews'].values())
+    expected_review = current_review_applied(execution, candidate)
     assert result['reviewed'] is expected_review
     assert not any(result[key] for key in ('admitted', 'qualified', 'full_inventory_complete'))
     if expected_review:
@@ -113,7 +122,7 @@ def test_default_cli_does_not_write_and_strict_review_validates_actual_approvals
     record = q.read_json(q.DEFAULT)
     execution = q.read_json(q.ROOT / record['execution_map']['path'])
     candidate, _, _ = q.load_inputs(execution, q.ROOT)
-    expected_review = all(candidate['reviews'].values())
+    expected_review = current_review_applied(execution, candidate)
     assert q.main([]) == 0
     assert q.main(['--require-reviewed']) == (0 if expected_review else 1)
     assert q.DEFAULT.read_bytes() == before
