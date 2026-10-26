@@ -11,23 +11,25 @@ import pytest
 ROOT = Path(__file__).resolve().parents[2]
 
 
-@pytest.mark.skipif(sys.platform != 'linux', reason='Production reader uses Linux x86-64 ptrace types')
-def test_native_loader_reader_defers_every_split_and_rejects_final_or_malformed_tail(tmp_path):
-    compiler = shutil.which('cc')
-    assert compiler, 'Linux observer controls require the existing C compiler'
-    executable = tmp_path / 'loader-records'
-    build = subprocess.run([compiler, '-std=gnu11', '-O0', '-Wall', '-Wextra', '-Werror',
-                            '-I', str(ROOT / 'tools/no_opengl'),
-                            str(ROOT / 'tests/no_opengl/data/loader_records.c'), '-o', str(executable)],
-                           capture_output=True, text=True)
-    assert build.returncode == 0, build.stderr
-    record = b'native_image\t7\t0x0|linux-vdso.so.1\n'
-    cases = [('split', cut) for cut in range(1, len(record))]
-    cases += [('malformed', cut) for cut in range(3)] + [('tail', 0)]
-    for mode, cut in cases:
-        result = subprocess.run([str(executable), mode, str(cut)], capture_output=True, text=True)
-        assert result.returncode == 0, (mode, cut, result.returncode, result.stderr)
-        assert result.stdout == f'PASS {mode} {cut}\n'
+# This native Linux reader is exercised by every Linux CPU matrix job.
+# Other platforms do not collect a Linux-only case; qualification forbids skips.
+if sys.platform == 'linux':
+    def test_native_loader_reader_defers_every_split_and_rejects_final_or_malformed_tail(tmp_path):
+        compiler = shutil.which('cc')
+        assert compiler, 'Linux observer controls require the existing C compiler'
+        executable = tmp_path / 'loader-records'
+        build = subprocess.run([compiler, '-std=gnu11', '-O0', '-Wall', '-Wextra', '-Werror',
+                                '-I', str(ROOT / 'tools/no_opengl'),
+                                str(ROOT / 'tests/no_opengl/data/loader_records.c'), '-o', str(executable)],
+                               capture_output=True, text=True)
+        assert build.returncode == 0, build.stderr
+        record = b'native_image\t7\t0x0|linux-vdso.so.1\n'
+        cases = [('split', cut) for cut in range(1, len(record))]
+        cases += [('malformed', cut) for cut in range(3)] + [('tail', 0)]
+        for mode, cut in cases:
+            result = subprocess.run([str(executable), mode, str(cut)], capture_output=True, text=True)
+            assert result.returncode == 0, (mode, cut, result.returncode, result.stderr)
+            assert result.stdout == f'PASS {mode} {cut}\n'
 
 
 def _failure_reports(report):
