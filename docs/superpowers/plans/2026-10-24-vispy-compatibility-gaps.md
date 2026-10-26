@@ -24,7 +24,8 @@ are zero. Existing interpreters/dependencies were reused; no native build or new
 environment was needed. The assembly helper has independent bounded source
 approval. Managed installed targets/caches are cleaned. Run119 renews candidate
 source/profile/CI-input bindings without carrying forward old wheel admission.
-The prior milestone remains qualified; these successor wheels are not admitted.
+These were preparation checkpoints; final successor-wheel admission follows in
+runs123-129 below. The prior milestone remains preserved with its original scope.
 
 Runs120-122 now wire explicit Python-only renewal into Linux and experimental
 Metal CI reuse, preserving default unchanged-wheel behavior and all native
@@ -36,9 +37,31 @@ current auditor. Both adapters have independent bounded source approval, and
 managed scratch is cleaned. Tool/policy bindings are refreshed without changing
 runtime/profile inputs, requested scope, ledger or prior milestone evidence.
 
-Next: obtain renewed exact candidate/source/scope/native-reuse approvals and
-complete applicable original installed observation/control, current-head CI and
-promotion checks before pushing and merging the follow-up.
+Runs123-129 completed renewed source/scope/native-reuse approvals, exact archive
+joins, full Windows/WSL installed observation/control/profile protocols, all 120
+selected criteria, all 23 required current-head CI jobs, independent promotion
+review and strict scoped admission. PR #15 merged as
+`c80de037a44377d7e617f57c17d32edbe78e7df1`; its complete tree matches qualified
+head `98694c6b7c9ed9befbfaf73e2f377d1516fca4c0`. Start with
+`build/runs/readback-promotion-129/milestone-handoff.md`. Original failed
+observations and all 142 parent obligations remain preserved. No local SDK or
+renderer rebuild was needed, and all managed qualification scratch was cleaned.
+
+The next source-only packet verifies the existing separate-face stencil
+operations. Runs134/137 pass 196 cases each on Windows hardware Vulkan and WSL
+software Vulkan, with two active mutations failing both selected route cases.
+The finite table covers eight operations, saturation/wrap boundaries, selected
+write masks, three outcomes and both faces, on shared and write-mask-split
+routes. Invalid-state recovery and the original stencil regressions remain.
+Independent review138 bounds the source evidence; it does not extend artifact
+admission or certify the full raw-state parent. Original setup/control/oracle
+failures remain retained. The renderer and native inputs did not change.
+
+The reviewed tests and status corrections form one source packet. For further
+work, choose a named workflow from the route map. Existing cropped/float/alpha capture source cases
+already pass; broader installed claims need explicit selection and evidence,
+not a rewrite of working readback. Keep other comparisons, mask/reference
+combinations, formats and multi-primitive state behavior as separate claims.
 Continue supported-feature fixes and named route-map families in bounded
 packets. Require a practical VisPy compatibility baseline and documented,
 tested differences; complete upstream parity is not the release target.
@@ -346,7 +369,11 @@ review. Source-only documentation work does not justify a wheel/SDK/native build
 The shared 20 GiB scratch budget, 10 GiB reserve, unique managed owner/run,
 retained source/evidence/licenses/reproducer and exact cleanup requirements remain.
 
-## Current execution queue after source checkpoints
+## Historical execution queue after source checkpoints
+
+The current checkpoint above supersedes this queue's pending H2/H4/H5 wording
+for the selected milestone and readback follow-up. Retain the contracts and
+broader backlog; do not repeat implementation or qualification already proved.
 
 The [executable-handoff Astra max review](../reviews/2026-10-24-astra-executable-handoff-review.md)
 and [specification section 15](../specs/2026-10-24-vispy-compatibility-gap-closure.md#15-executable-handoff-from-proposals-to-scoped-qualification)

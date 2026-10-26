@@ -57,10 +57,40 @@ can prove a subset of a row; untested values are not promoted by association.
 | `glStencilMask(mask)` | Integer write mask for both faces; default full mask. | Masked replacement/clear fixture; invalid-parameter fixture |
 | `glStencilMaskSeparate(face,mask)` | Independent front/back masks with native face conversion. | Distinct-face fixture; invalid-parameter fixture |
 | `glStencilOp(fail,depthFail,pass)` | Keep/zero/replace/increment/decrement/invert and wrap variants; default keep/keep/keep for both faces. | Masked replacement/clear fixture; invalid-parameter fixture; remaining operation-value coverage stays open |
-| `glStencilOpSeparate(face,fail,depthFail,pass)` | Same operations applied to the selected face(s). | Distinct-face fixture; invalid-parameter fixture; remaining operation-value coverage stays open |
+| `glStencilOpSeparate(face,fail,depthFail,pass)` | Same operations applied to the selected face(s). | Distinct-face fixture; invalid-parameter fixture; finite shared/split operation vectors below |
 | `glSampleCoverage(value,invert)` | Finite clamped [0,1], numeric inversion flag; default 1/false, disabled. Native sample mask is derived from granted sample count. | `test_raw_sample_coverage_endpoints`; invalid-parameter fixture |
 | `glFinish()` | Submit preceding selected-canvas work and wait for completion; no GUI draw/presentation request or target/state change. | `test_finish_waits_without_presentation_gui_draw_or_state_change` in the submission suite |
 | `glFlush()` | Shared real submission path with `gloo.flush()`, without a deliberate completion wait. Empty calls may be no-ops; explicit capacity failure preserves unsent work. | Submission suite's nonempty/empty/saturated/owner-failure/loss/close fixtures |
+
+### Finite stencil source vectors
+
+The separate-face operation table now passes 196 source cases on Windows hardware
+Vulkan and WSL software Vulkan: 192 operation vectors, two invalid-state/recovery
+cases and the two existing stencil regressions. Sixteen literal vectors cover
+all eight operations, interior values, saturation/wrap boundaries and selected
+low-four-bit write masks. Each runs through stencil-fail, depth-fail and pass,
+on front and back geometry, with shared masks and a split caused by unequal
+write masks. Reference and read mask remain equal across faces in this table;
+native reference/read/write queries verify the intended route domain.
+
+Stored values are observed through equality-gated full-frame color probes. The
+expected reference paints green; its complement must not overwrite it with red.
+The probe clears color only: the default `gloo.clear` also clears stencil, whose
+clear mask comes from the front face. Both mutation controls actually execute
+after Canvas setup and fail their selected shared/split cases: forcing KEEP,
+and exchanging depth-fail/pass operations. Invalid enum rejection preserves a
+prior operation, followed by a valid mutation on the same resources.
+
+This is source evidence for single-sample `depth24plus-stencil8`, eight stencil
+bits, fixed 16-by-12 triangle geometry and CCW front-face convention. It is not
+new artifact admission or whole-parent coverage. Other comparison values,
+unequal read-mask/reference combinations, mixed-face multi-primitive ordering,
+other formats and multisampling remain separate; the existing distinct-reference
+regression is retained. Direct both-face operation-value expansion also remains
+separate from this `glStencilOpSeparate` table. No renderer or native build was
+changed. Local evidence is retained in runs `stencil-values-134`,
+`stencil-values-137` and independent review `stencil-review-138`; earlier setup
+and oracle failures retain their original records and reproducer sources.
 
 The invalid-parameter fixture establishes contextual rejection, unchanged viewport
 cache and a usable following draw. It does not independently prove every hidden

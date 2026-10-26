@@ -204,6 +204,110 @@ def test_raw_distinct_front_back_stencil_state(raw_scene):
     assert np.all(image[:, 8:] == [0, 0, 255, 255])
 
 
+STENCIL_VALUES = [
+    pytest.param(gl.GL_KEEP, 0x35, 0xa6, 0xff, 0x35, id='keep'),
+    pytest.param(gl.GL_ZERO, 0x35, 0xa6, 0xff, 0x00, id='zero'),
+    pytest.param(gl.GL_REPLACE, 0x35, 0xa6, 0xff, 0xa6, id='replace'),
+    pytest.param(gl.GL_INVERT, 0x35, 0xa6, 0xff, 0xca, id='invert'),
+    pytest.param(gl.GL_INCR, 0x35, 0xa6, 0xff, 0x36, id='increment'),
+    pytest.param(gl.GL_INCR, 0xff, 0xa6, 0xff, 0xff, id='increment-saturates'),
+    pytest.param(gl.GL_DECR, 0x35, 0xa6, 0xff, 0x34, id='decrement'),
+    pytest.param(gl.GL_DECR, 0x00, 0xa6, 0xff, 0x00, id='decrement-saturates'),
+    pytest.param(gl.GL_INCR_WRAP, 0xff, 0xa6, 0xff, 0x00, id='increment-wraps'),
+    pytest.param(gl.GL_INCR_WRAP, 0x35, 0xa6, 0xff, 0x36, id='increment-wrap-interior'),
+    pytest.param(gl.GL_DECR_WRAP, 0x00, 0xa6, 0xff, 0xff, id='decrement-wraps'),
+    pytest.param(gl.GL_DECR_WRAP, 0x35, 0xa6, 0xff, 0x34, id='decrement-wrap-interior'),
+    pytest.param(gl.GL_INVERT, 0xa5, 0xa6, 0x0f, 0xaa, id='masked-invert'),
+    pytest.param(gl.GL_INCR, 0xaf, 0xa6, 0x0f, 0xa0, id='increment-before-mask'),
+    pytest.param(gl.GL_DECR, 0xa0, 0xa6, 0x0f, 0xaf, id='decrement-before-mask'),
+    pytest.param(gl.GL_REPLACE, 0xa5, 0x3c, 0x0f, 0xac, id='masked-replace'),
+]
+
+
+def assert_stencil_value(program, face, expected):
+    """Observe stored stencil through independently expected color visibility."""
+    gl.glDisable(gl.GL_DEPTH_TEST)
+    gl.glColorMask(True, True, True, True)
+    gl.glStencilMaskSeparate(face, 0)
+    gl.glStencilOpSeparate(face, gl.GL_KEEP, gl.GL_KEEP, gl.GL_KEEP)
+    gloo.clear(color=(0, 0, 0, 1), depth=False, stencil=False)
+    for reference, color in ((expected, (0, 1, 0, 1)),
+                             (expected ^ 0xff, (1, 0, 0, 1))):
+        gl.glStencilFuncSeparate(face, gl.GL_EQUAL, reference, 0xff)
+        program['u_color'] = color
+        program.draw('triangles')
+        # The complementary reference must not overwrite the successful probe.
+        np.testing.assert_array_equal(pixels(), np.broadcast_to([0, 255, 0, 255], (12, 16, 4)))
+
+
+@pytest.mark.parametrize('routing', ['shared', 'split'])
+@pytest.mark.parametrize('operation,seed,reference,mask,expected', STENCIL_VALUES)
+@pytest.mark.parametrize('branch', ['stencil-fail', 'depth-fail', 'pass'])
+@pytest.mark.parametrize('face', [gl.GL_FRONT, gl.GL_BACK], ids=['front', 'back'])
+def test_raw_stencil_operation_values_and_boundaries(raw_scene, face, branch, routing,
+                                                     operation, seed, reference, mask, expected):
+    canvas, program, source = raw_scene
+    config = _dawn.framebuffer_config(canvas._backend._dawn_canvas_id)
+    assert config['stencil_size'] == 8 and config['depth_stencil_format'] == 'depth24plus-stencil8'
+    gl.glDisable(gl.GL_CULL_FACE)
+    gl.glFrontFace(gl.GL_CCW)
+    source.set_data(FULL if face == gl.GL_FRONT else FULL[::-1])
+    gl.glStencilMask(0xff)
+    gl.glClearStencil(seed)
+    gl.glClear(gl.GL_STENCIL_BUFFER_BIT)
+    gl.glEnable(gl.GL_STENCIL_TEST)
+    other = gl.GL_BACK if face == gl.GL_FRONT else gl.GL_FRONT
+    gl.glStencilFuncSeparate(other, gl.GL_NEVER, reference, 0xff)
+    gl.glStencilMaskSeparate(other, mask if routing == 'shared' else 0)
+    gl.glStencilOpSeparate(other, gl.GL_KEEP, gl.GL_KEEP, gl.GL_KEEP)
+    gl.glStencilFuncSeparate(face, gl.GL_NEVER if branch == 'stencil-fail' else gl.GL_ALWAYS,
+                            reference, 0xff)
+    gl.glStencilMaskSeparate(face, mask)
+    operations = [gl.GL_KEEP, gl.GL_KEEP, gl.GL_KEEP]
+    operations[['stencil-fail', 'depth-fail', 'pass'].index(branch)] = operation
+    gl.glStencilOpSeparate(face, *operations)
+    gl.glEnable(gl.GL_DEPTH_TEST)
+    # Both comparisons fail in the first branch, proving stencil-fail priority.
+    gl.glDepthFunc(gl.GL_ALWAYS if branch == 'pass' else gl.GL_NEVER)
+    gl.glDepthMask(False)
+    gl.glColorMask(False, False, False, False)
+    # These exact native fields select one pipeline or ordered face projection.
+    cid = canvas._backend._dawn_canvas_id
+    front = tuple(_dawn.state_parameter(cid, int(selector)) for selector in
+                  (gl.GL_STENCIL_REF, gl.GL_STENCIL_VALUE_MASK, gl.GL_STENCIL_WRITEMASK))
+    back = tuple(_dawn.state_parameter(cid, int(selector)) for selector in
+                 (gl.GL_STENCIL_BACK_REF, gl.GL_STENCIL_BACK_VALUE_MASK, gl.GL_STENCIL_BACK_WRITEMASK))
+    assert (front == back) is (routing == 'shared')
+    program.draw('triangles')
+    assert_stencil_value(program, face, expected)
+
+
+@pytest.mark.parametrize('face', [gl.GL_FRONT, gl.GL_BACK], ids=['front', 'back'])
+def test_invalid_stencil_operation_preserves_prior_state_and_recovers(raw_scene, face):
+    _, program, source = raw_scene
+    source.set_data(FULL if face == gl.GL_FRONT else FULL[::-1])
+    gl.glFrontFace(gl.GL_CCW)
+    gl.glDisable(gl.GL_CULL_FACE)
+    gl.glStencilMask(0xff)
+    gl.glClearStencil(0x30)
+    gl.glClear(gl.GL_STENCIL_BUFFER_BIT)
+    gl.glEnable(gl.GL_STENCIL_TEST)
+    gl.glStencilFuncSeparate(face, gl.GL_NEVER, 0, 0xff)
+    gl.glStencilOpSeparate(face, gl.GL_INCR, gl.GL_KEEP, gl.GL_KEEP)
+    with pytest.raises(RuntimeError, match='glStencilOpSeparate'):
+        gl.glStencilOpSeparate(face, gl.GL_ZERO, gl.GL_KEEP, 123456)
+    gl.glColorMask(False, False, False, False)
+    program.draw('triangles')
+    assert_stencil_value(program, face, 0x31)
+    # A valid mutation must work on the same resources after the rejection.
+    gl.glStencilMaskSeparate(face, 0xff)
+    gl.glStencilFuncSeparate(face, gl.GL_ALWAYS, 0, 0xff)
+    gl.glStencilOpSeparate(face, gl.GL_KEEP, gl.GL_KEEP, gl.GL_INVERT)
+    gl.glColorMask(False, False, False, False)
+    program.draw('triangles')
+    assert_stencil_value(program, face, 0xce)
+
+
 @pytest.mark.parametrize('units,expected', [(1., [255, 0, 0, 255]), (-1., [0, 0, 255, 255])])
 def test_raw_polygon_offset_changes_depth_visibility(raw_scene, units, expected):
     _, program, _ = raw_scene
