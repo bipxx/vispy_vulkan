@@ -7,11 +7,19 @@ from __future__ import annotations
 
 import hashlib
 import json
+import math
 import os
+import struct
 
 RESULT_NAME = 'VISPY_FUNCTIONAL_RESULT'
 CONTRACT = 'tk-state-resource-1'
 WORKFLOW = 'tk-state-resource-failures'
+CAPTURE_CONTRACT = 'tk-capture-1'
+CAPTURE_WORKFLOW = 'tk-capture-formats'
+CAPTURE_FEATURE = 'tk.readback.crop-formats'
+CAPTURE_SCOPE = 'Single-sample RGBA8 Tk crops: byte/normalized-float32 alpha, resize, argument rejection/retry'
+CAPTURE_BRANCHES = dict(ordinary='capture.ordinary', mutation='capture.resize',
+                        failure='capture.invalid-viewport', recovery='capture.retry')
 COUNTERS = ('dawn_queue_submits', 'finish_calls', 'completion_waits', 'application_presents')
 GAUGES = ('pending_tickets', 'queued_frames', 'live_buffer_bytes', 'live_cpu_buffer_bytes',
           'live_texture_bytes', 'canvas_texture_bytes', 'transient_buffer_bytes',
@@ -83,15 +91,14 @@ def expected_error(value, kind, message):
 def capture(namespace, workflow, source_mode):
     """Freeze the actual returned namespace; never read stdout or a result file."""
     if namespace is None or RESULT_NAME not in namespace:
-        require(workflow.get('id') != WORKFLOW, 'required scenario export is missing')
+        require(workflow.get('id') not in (WORKFLOW, CAPTURE_WORKFLOW), 'required scenario export is missing')
         return None
     payload = namespace[RESULT_NAME]
     require(type(payload) is dict and bool(payload), 'export must be a nonempty JSON object')
     # Round-trip rejects unsupported values/NaN and detaches subsequent mutation.
     encoded = canonical(payload)
     payload = json.loads(encoded)
-    if workflow.get('id') == WORKFLOW or payload.get('contract') == CONTRACT:
-        validate_tk_result(payload)
+    _validate_workflow_payload(payload, workflow)
     return {'schema': 1, 'producer_pid': os.getpid(), 'workflow': json.loads(canonical(workflow)),
             'source_mode': source_mode, 'payload': payload, 'payload_sha256': hashlib.sha256(encoded).hexdigest()}
 
@@ -115,14 +122,24 @@ def bound_payload(worker, *, installed=False):
 
 def validate_bound_result(worker, *, installed=False):
     payload = bound_payload(worker, installed=installed)
-    workflow = worker['workflow']
+    return _validate_workflow_payload(payload, worker['workflow'])
+
+
+def _validate_workflow_payload(payload, workflow):
+    # A known workflow selects its contract before any legacy payload fallback.
+    if workflow.get('id') == CAPTURE_WORKFLOW:
+        return validate_capture_result(payload)
     if workflow.get('id') == WORKFLOW or payload.get('contract') == CONTRACT:
         return validate_tk_result(payload)
+    require(payload.get('contract') != CAPTURE_CONTRACT, 'capture result belongs to another workflow')
     return {'schema': 1, 'status': 'PASS_FUNCTIONAL_TRANSPORT', 'qualified': False}
 
 
 def criterion_binding(feature, kind):
     """Finite current proposal mapping, not inferred from a passing result."""
+    if feature == CAPTURE_FEATURE:
+        require(kind in CAPTURE_BRANCHES, 'capture criterion has no declared branch mapping')
+        return dict(schema=1, contract=CAPTURE_CONTRACT, branch_ids=[CAPTURE_BRANCHES[kind]])
     require(feature in TK_FEATURES and kind in ('ordinary', 'mutation', 'failure', 'recovery'),
             'Tk criterion has no declared branch mapping')
     if kind in ('failure', 'recovery'):
@@ -150,6 +167,107 @@ def validate_for_criterion(worker, binding, *, installed=True):
             and len(set(branches)) == len(branches), 'criterion branch IDs are missing or duplicated')
     require(set(branches) <= set(verdict.get('branch_ids', [])), 'criterion branch was not executed')
     return {'status': 'PASS_CRITERION_RESULT', 'branch_ids': list(branches), 'qualified': False}
+
+
+def _capture_pixels(size, viewport, solid=None):
+    width, height = size
+    x, y, crop_width, crop_height = viewport
+    image = bytearray()
+    colors = ([255, 0, 0, 64], [0, 255, 0, 128],
+              [0, 0, 255, 192], [255, 255, 0, 255])
+    for row in range(height-y-crop_height, height-y):
+        for column in range(x, x+crop_width):
+            color = solid if solid is not None else colors[
+                (2 if row < height-height//2 else 0) + (column >= width//2)]
+            image.extend(color)
+    return bytes(image)
+
+
+def _validate_capture_image(record, size, viewport, solid=None):
+    keys = ('viewport shape byte_dtype float_dtype rgba_sha256 float_rgba_sha256 '
+            'float_runs float_max_abs_error target_size')
+    closed(record, keys + (' after' if solid is not None else ''), 'capture image')
+    require(record['target_size'] == list(size) and record['viewport'] == list(viewport)
+            and record['shape'] == [viewport[3], viewport[2], 4], 'capture target/crop/shape differs')
+    require(record['byte_dtype'] == 'uint8' and record['float_dtype'] == 'float32',
+            'capture dtype differs')
+    expected = _capture_pixels(size, viewport, solid)
+    checksum = hashlib.sha256(expected).hexdigest()
+    require(record['rgba_sha256'] == checksum, 'capture byte pixels differ')
+    runs = record['float_runs']
+    count = len(expected)//4
+    require(type(runs) is list and 0 < len(runs) <= count, 'capture float runs missing/excessive')
+    offset = 0
+    quantized = bytearray()
+    maximum_error = 0.0
+    for run in runs:
+        require(type(run) is list and len(run) == 2, 'invalid capture float run')
+        length, values = run
+        require(integer(length, 1) and length <= count-offset, 'capture float run exceeds image')
+        require(type(values) is list and len(values) == 4
+                and all(type(value) is float and math.isfinite(value) and 0 <= value <= 1
+                        for value in values), 'capture float values are invalid')
+        require(all(struct.unpack('<f', struct.pack('<f', value))[0] == value for value in values),
+                'capture values are not lossless float32')
+        for pixel in range(offset, offset+length):
+            for channel, value in enumerate(values):
+                error = abs(value-expected[pixel*4+channel]/255)
+                maximum_error = max(maximum_error, error)
+                require(error <= 1e-6, 'capture normalized float pixels differ')
+        quantized.extend(bytes(round(value*255) for value in values)*length)
+        offset += length
+    require(offset == count, 'capture float runs omit pixels')
+    require(record['float_rgba_sha256'] == hashlib.sha256(quantized).hexdigest() == checksum,
+            'capture float positions/quantized pixels differ')
+    reported = record['float_max_abs_error']
+    require(type(reported) is float and math.isfinite(reported) and 0 <= reported <= 1e-6
+            and abs(reported-maximum_error) <= 1e-12, 'capture float error differs')
+
+
+def validate_capture_result(payload):
+    """Decode only the finite crop/format workflow; never infer artifact admission."""
+    closed(payload, 'schema contract status scope setup ordinary mutation failure recovery samples '
+           'tcl_patchlevel tk_patchlevel cleanup_errors', 'capture composite')
+    require(type(payload['schema']) is int and payload['schema'] == 1
+            and payload['contract'] == CAPTURE_CONTRACT and payload['status'] == 'PASS'
+            and payload['scope'] == CAPTURE_SCOPE,
+            'unknown/failed capture contract')
+    require(type(payload['samples']) is int and payload['samples'] == 0
+            and type(payload['cleanup_errors']) is int and payload['cleanup_errors'] == 0
+            and text(payload['tcl_patchlevel']) and text(payload['tk_patchlevel']),
+            'capture attachment/toolkit/cleanup differs')
+    setup = payload['setup']
+    closed(setup, 'canvas_id sample_count framebuffer_id width height rgba_bits', 'capture setup')
+    require(integer(setup['canvas_id'], 1)
+            and all(type(setup[key]) is int and setup[key] == expected for key, expected in
+                    (('sample_count', 1), ('framebuffer_id', 0), ('width', 257), ('height', 129)))
+            and color(setup['rgba_bits'], [8, 8, 8, 8]), 'capture actual target configuration differs')
+    _validate_capture_image(payload['ordinary'], (257, 129), (3, 4, 131, 69))
+    _validate_capture_image(payload['mutation'], (301, 177), (5, 7, 157, 97))
+    failure = payload['failure']
+    closed(failure, 'type message traceback attempted_viewport before after', 'capture failure')
+    require(failure['type'] == 'ValueError'
+            and failure['message'] == 'viewport should be a 1D four-element array',
+            'capture validation did not fail as expected')
+    require(failure['attempted_viewport'] == [0, 0, 1], 'capture failure input differs')
+    expected_error({key: failure[key] for key in ('type', 'message', 'traceback')},
+                   'ValueError', 'viewport should be a 1D four-element array')
+    _validate_capture_image(payload['recovery'], (301, 177), (5, 7, 157, 97), [0, 255, 255, 96])
+    fields = ('pending_draws',) + COUNTERS
+    for state in (failure['before'], failure['after'], payload['recovery']['after']):
+        closed(state, ' '.join(fields), 'capture counters')
+        require(all(integer(value) for value in state.values()), 'invalid capture counter')
+    before, after = failure['before'], failure['after']
+    require(before['pending_draws'] > 0 and after == before, 'invalid capture consumed queued work')
+    recovered = payload['recovery']['after']
+    require(recovered['pending_draws'] == 0
+            and recovered['dawn_queue_submits'] > before['dawn_queue_submits']
+            and recovered['finish_calls'] > before['finish_calls']
+            and recovered['completion_waits'] > before['completion_waits']
+            and recovered['application_presents'] == before['application_presents'],
+            'capture retry did not consume retained work without presentation')
+    return dict(schema=1, contract=CAPTURE_CONTRACT, status='PASS_FUNCTIONAL_RESULT',
+                branch_ids=sorted(CAPTURE_BRANCHES.values()), qualified=False)
 
 
 def validate_tk_result(payload):

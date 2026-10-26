@@ -1,0 +1,43 @@
+{
+  "schema": 1,
+  "kind": "qualification-subject",
+  "manifest_sha256": "e5f5fcb4f0da8506092acdc49b34875b8da7a5a229d394763c6525491400bce0",
+  "product_source_commit": "5c7d1273bc3471136d87f730482e07a679e0e00e",
+  "qualification_head": null,
+  "candidate": {
+    "path": "compat/candidates/tk-capture-1/candidate.json",
+    "sha256": "d8ffc2658cc5d8385ab830330b7f91a9e0fc540ac93d137ed5efd36022fc7731"
+  },
+  "selection": {
+    "path": "compat/candidates/tk-capture-1/admission-selection.json",
+    "sha256": "135caf4c58f6cae892d618286d60620a0655d6549459be8e42cab186424d3301"
+  },
+  "execution": {
+    "path": "compat/candidates/tk-capture-1/execution.json",
+    "sha256": "e2753423d2437601afdcd7a574f7f76f6730d7a97d7ef0dbfab0ce8681f8078d"
+  },
+  "ledger": {
+    "path": "compat/candidates/tk-capture-1/execution-ledger.json",
+    "sha256": "bb79d6bdb481750e59a2fced19900698b85a74287ba6d696480da83f2299d444"
+  },
+  "profiles": [
+    {
+      "profile": "windows-gpu-tk86-cp312-development",
+      "archive": null,
+      "producer": null,
+      "producer_retention": null,
+      "attempts": [],
+      "selected_attempt": null,
+      "attempt_history": null
+    },
+    {
+      "profile": "wsl-software-tk90-cp31213-development",
+      "archive": null,
+      "producer": null,
+      "producer_retention": null,
+      "attempts": [],
+      "selected_attempt": null,
+      "attempt_history": null
+    }
+  ]
+}
