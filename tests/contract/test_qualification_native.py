@@ -190,7 +190,8 @@ def record_stub(candidate):
             'source_inputs': [{'path':'cpp/unit.cpp','file':ref}]}
 
 
-def test_real_candidate_cannot_reach_sdk_or_proofs_without_review(monkeypatch):
+def test_real_candidate_cannot_reach_sdk_or_proofs_without_review(monkeypatch, without_current_reviews):
+    without_current_reviews(qn)
     path = qn.ROOT / 'compat/candidates/tk-state-resource-1/candidate.json'
     ref = {'path': path.relative_to(qn.ROOT).as_posix(), 'sha256': qn.sha(path.read_bytes())}
     monkeypatch.setattr(qn, 'validate_sdk', lambda *args: pytest.fail('unreviewed producer reached SDK verifier'))

@@ -1,0 +1,33 @@
+{
+  "schema": 1,
+  "kind": "source",
+  "status": "APPROVED",
+  "independent": true,
+  "reviewer": "/root/astra_current_plan_max_review",
+  "candidate_scope_sha256": "d1b823b38b9638a2b037639fc06e9471895782a81e9734fce3e300808348e1ea",
+  "publication_head": "7347aa2a1df4e9c5a816a667dd5a537a5df01c68",
+  "product_source_commit": "9ef9765552c41c84d82d69b44756d5925b4d3cd3",
+  "source_manifest": {
+    "path": "build/runs/scenario-oracles-99/review-integrated/review-inputs.json",
+    "sha256": "1b6027c3fc11d7189686581607b1b31bb51d5d78af0b2643e9770d5d258028ee"
+  },
+  "review_report": {
+    "path": "build/runs/scenario-oracles-99/review-integrated/implementation-review-astra.json",
+    "sha256": "7368c9fa3b2af689e600f7e35743026d61ed7c6e0870a408b16017717c48ec0e"
+  },
+  "native_reuse_links": [
+    "55d0740a980eb5300ff76675032191dc200dbc2196baf31013b5866077302c1c",
+    "6d814a03053152f8708cd8e4ad6bfa92cf8db27f474096709568db1c2274ef96"
+  ],
+  "approval_scope": "Independent source implementation approval for the exact frozen practical-compatibility candidate, including the source-review side of the two exact integrated native reuse requests. Cumulative runtime/API/native-proof inspection and focused scenario/collector renewals are documented in the referenced report. All four previously recorded source-review blockers are resolved.",
+  "limitations": [
+    "This is a source approval only; independent semantic-scope approval is separate.",
+    "The selected 120 criteria remain required; the original 142 parent obligations are not discharged.",
+    "The Windows link covers the original run94 producer proof, preserving outer exit1 and run95 revalidation. The Linux link covers the original run89 full-source capture and exact cp312 ABI relation. Older development leaves used for source-functional controls are not admitted by these links.",
+    "No installed artifact, current-head CI, final promotion, full upstream parity, optical parity, native Linux GPU or Metal hardware approval is given.",
+    "Changes to relevant frozen source, observer or scope inputs require impact review and renewed identity bindings."
+  ],
+  "artifact_admitted": false,
+  "ci_approved": false,
+  "promotion_approved": false
+}

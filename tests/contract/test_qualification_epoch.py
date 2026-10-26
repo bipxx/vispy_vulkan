@@ -88,8 +88,9 @@ def test_original_provenance_semantic_rejections(change):
         qe.validate_join(ownership, checksum, frozen, status, terminal, commands, ctest, outputs, binaries)
 
 
-def test_original_record_needs_review_before_any_old_origin_is_consumed(monkeypatch):
-    # Exercise the real current candidate review gate without writing proof files.
+def test_original_record_needs_review_before_any_old_origin_is_consumed(monkeypatch, without_current_reviews):
+    # Exercise the real gate with reviews removed only from its in-memory input.
+    without_current_reviews(qe)
     ref = {'path': 'unit-only-unused.json', 'sha256': '0' * 64}
     candidate = qe.ROOT / 'compat/candidates/tk-state-resource-1/candidate.json'
     record = {'schema': 1, 'kind': 'original-native-epoch-reuse',

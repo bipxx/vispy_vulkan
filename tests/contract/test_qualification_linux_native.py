@@ -232,7 +232,8 @@ def test_native_dispatch_keeps_legacy_linux_policy_blocked(tmp_path):
         validate_record(record,tmp_path)
 
 
-def test_real_native_route_requires_actual_review_before_capture(monkeypatch):
+def test_real_native_route_requires_actual_review_before_capture(monkeypatch, without_current_reviews):
+    without_current_reviews(native)
     from tools.qualification_native import validate_record
     project=Path(__file__).resolve().parents[2]
     path='compat/candidates/tk-state-resource-1/candidate.json'

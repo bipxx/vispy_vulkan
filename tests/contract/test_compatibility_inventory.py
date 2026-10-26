@@ -986,7 +986,7 @@ def test_current_candidate_preparation_preserves_full_unqualified_scope():
     result = validate_candidate(inventory.read_json(DEFAULT))
     assert result['proposed_pairs'] == 30 and result['canonical_required_pairs_preserved'] == 142
     assert result['workflows'] == 3
-    assert not result['reviewed'] and not result['qualified'] and not result['installable']
+    assert result['reviewed'] and not result['qualified'] and not result['installable']
 
 
 @pytest.mark.parametrize('change,message', [
@@ -1293,7 +1293,7 @@ def test_current_coverage_proposal_maps_all_composite_branches_without_qualifica
     assert result['criteria'] == 60 and result['profile_bindings'] == 120
     assert result['script_ready_bindings'] == 120 and not result['unmapped_observation_bindings']
     assert result['original_required_pairs_retained'] == 142 and result['originals_discharged'] == 0
-    assert not result['reviewed'] and not result['qualified']
+    assert result['reviewed'] and not result['qualified']
 
 
 def test_unseeded_methods_stay_new_requirements_without_inventing_origins(example):
@@ -1512,7 +1512,7 @@ def test_current_execution_preparation_preserves_all_original_obligations():
     result = validate_execution(inventory.read_json(DEFAULT))
     assert result['selected_pairs'] == 30 and result['criterion_bindings'] == 120
     assert result['original_required_pairs_retained'] == 142 and result['originals_discharged'] == 0
-    assert not result['reviewed'] and not result['qualified'] and not result['installable']
+    assert result['reviewed'] and not result['qualified'] and not result['installable']
 
 
 def test_execution_conserves_required_same_profile_dependencies(example):
