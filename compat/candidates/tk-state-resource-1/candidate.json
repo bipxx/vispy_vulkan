@@ -2,7 +2,7 @@
   "schema": 1,
   "phase": "development",
   "id": "tk-state-resource-1",
-  "manifest_sha256": "fa84cf3f6e18bf748251444b4ea4e1ca8acf38d3abfbb882b0831d60a581dd8a",
+  "manifest_sha256": "befc54b8f510dd83f6c64cc437a7cc2ca7d37000ea3462df56a7f70e4b1f3357",
   "product_source_commit": "5c7d1273bc3471136d87f730482e07a679e0e00e",
   "upstream_commit": "117b054598f4758b598f4b8f48feea48c11fe7b0",
   "ledger": {
@@ -1163,8 +1163,14 @@
     }
   ],
   "reviews": {
-    "source": null,
-    "scope": null
+    "source": {
+      "path": "compat/candidates/tk-state-resource-1/reviews/source-64fedf189-astra.json",
+      "sha256": "314c9e6ae21f832a4008378a65a88a7e054b2af46946903d356e643189eef9b1"
+    },
+    "scope": {
+      "path": "compat/candidates/tk-state-resource-1/reviews/scope-64fedf189-astra.json",
+      "sha256": "c3c0ac37285e5c2a384d47d91e148fada40ec5989c8f15dea0724b9691cc83ac"
+    }
   },
   "blockers": [
     "All proposals are unreviewed and unapplied; all 142 original required pairs remain in the canonical ledger.",

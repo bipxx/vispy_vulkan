@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "kind": "scope",
+  "status": "APPROVED",
+  "independent": true,
+  "reviewer": "Astra max independent scope/native reviewer (/root/astra_qualification_plan_review)",
+  "candidate_scope_sha256": "26ea3c7f54223b6c52e699ce34acd2ecad12213f6a8246041e06652bac3cdf06",
+  "coverage_map_sha256": "6428a6682c5498b424fc7dee609039845cc89b905ba19490c8c3c321f888f956",
+  "execution_map_sha256": "f7394038f134f5e04b1f74cab6557540a48d14a6b1ea35d48fff7b92e1a2b93e",
+  "admission_scope_sha256": "82716503f82ab35c8db2f7692fe0061f6361bddcee3884c3405644759611eda5",
+  "native_reuse_links": [
+    "be4d2666b614c7a2180b9cd3fe8c981f0fdfb9e8d58299812e6dc9c186b8177b",
+    "8b198c19a6919a0a6b3549441dc614eb064baf8798854bbb39189ab4dd12901c"
+  ],
+  "publication_head": "64fedf189388cee250442239c2d12ba0fd6bf79c",
+  "review_report": {
+    "path": "build/runs/readback-reviews-123/scope-review-astra.json",
+    "sha256": "6d223558c52c825a2a09bcf1c7d7386ec9721efbe937452a4621da08ba5cbc2b"
+  },
+  "scope": "Exact current15-subset/two-profile scope; all120 requested ordinary/mutation/failure/recovery criteria and same-profile whole-row dependency closure, unchanged fixtures/branches/oracles,142 historical parents preserved. Exact Windows and Linux original native reuse applicability only.",
+  "limitations": [
+    "This approves only current finite scope, coverage/execution/selection mapping and the exact two native reuse applicability objects. The separate source reviewer must provide its own independent implementation decision.",
+    "No installed-artifact, original observer/control/profile, current-head CI, promotion, new GPU or whole-candidate/release approval. No approval of all142 parents, native Linux GPU support, Metal graphics, optical/full pixel parity or the broader14-host matrix.",
+    "Read-only source/hash/original-validator inspection only. No native or graphics execution, build, install, new environment, scratch, download or source/candidate mutation was performed by this reviewer.",
+    "Run118 installed targets are already cleaned. Their original exact-member/origin audit implementation, process records, XML and retained raw reports were inspected; their now-removed filesystem was not inspected anew.",
+    "Original Windows SDK/toolchain provenance was carried from the previously inspected unchanged producer records; this review repeated the applicable original source/cache/project/CTest/output join, not a native rebuild or a new SDK audit.",
+    "Metal source guards, bounded prior review, actual control XML/processes and archive-only evidence were inspected; no Mac code was executed or newly qualified by this reviewer.",
+    "Current source/preparation metadata changes invalidate prior candidate approvals and admission as intended. Attach only independently authored current reviews and reseal the metadata through the normal tools; do not transfer old positive proof state.",
+    "Practical compatibility for the supported workflows allows this documented and tested invalid-input improvement; it does not waive correctness, failures, recovery, exact provenance or the existing admission gates."
+  ]
+}
