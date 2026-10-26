@@ -39,6 +39,77 @@ def test_closed_result_has_all_exact_variants_without_claiming_qualification():
     assert validate_bound_result(worker(), installed=True) == result
 
 
+ORACLE_FAULTS = [
+    ('missing-finish', 'closed ordinary submission'),
+    ('finish-chain', 'finish snapshot does not follow flush'),
+    ('finish-no-call', 'finish did not complete'),
+    ('finish-no-wait', 'finish did not complete'),
+    ('finish-present', 'finish presented'),
+    ('finish-submit-regressed', 'counters regressed'),
+    ('finish-retirement-regressed', 'counters regressed'),
+    ('second-corrupted', 'untouched second target'),
+    ('second-bool', 'untouched second target'),
+    ('missing-retirement', 'closed resource recovery'),
+    ('closed-survivor', 'live survivor or Python references'),
+    ('lost-references', 'live survivor or Python references'),
+    ('bool-references', 'live survivor or Python references'),
+    ('no-canvas', 'live survivor or Python references'),
+    ('missing-gauge', 'closed retirement gauges'),
+    ('negative-gauge', 'invalid retirement gauge'),
+    ('bool-gauge', 'invalid retirement gauge'),
+] + [('finish-pending-' + key, 'finish retained work') for key in
+     ('pending_tickets', 'queued_frames', 'pending_draws')]
+ORACLE_FAULTS += [('vacuous-' + key, 'resource retirement is vacuous') for key in
+                 ('live_cpu_buffer_bytes', 'live_buffer_bytes', 'resource_texture_bytes')]
+ORACLE_FAULTS += [('leaked-' + key, 'baseline before close') for key in
+                 ('live_cpu_buffer_bytes', 'live_buffer_bytes', 'pending_tickets',
+                  'queued_frames', 'pending_draws', 'vertex_input_current_entries',
+                  'vertex_input_current_bytes', 'vertex_input_cache_entries',
+                  'vertex_input_cache_bytes', 'resource_texture_bytes')]
+
+
+def assert_oracle_rejected(original, fault, reason):
+    """Exercise capture and the actual bound decoder, including resealed negatives."""
+    identity = workflow()
+    current = dict(pid=os.getpid(), workflow=identity, source_mode=True, status='PASS_SCENARIO',
+                   functional_result=capture({RESULT_NAME: original}, identity, True))
+    assert validate_bound_result(current)['status'] == 'PASS_FUNCTIONAL_RESULT'
+    payload = current['functional_result']['payload']
+    item = payload['ordinary_state']['submissions'][0]
+    retirement = payload['resource_failure_recovery']['recovery']['retirement']
+    if fault == 'missing-finish': del item['finish_before']
+    elif fault == 'finish-chain': item['finish_before']['completion_waits'] += 1
+    elif fault == 'finish-no-call': item['finish_after']['finish_calls'] = item['finish_before']['finish_calls']
+    elif fault == 'finish-no-wait': item['finish_after']['completion_waits'] = item['finish_before']['completion_waits']
+    elif fault == 'finish-present': item['finish_after']['application_presents'] += 1
+    elif fault == 'finish-submit-regressed': item['finish_after']['dawn_queue_submits'] = 0
+    elif fault == 'finish-retirement-regressed':
+        item['finish_before']['retired_tickets'] = item['finish_after']['retired_tickets'] + 1
+    elif fault.startswith('finish-pending-'): item['finish_after'][fault.removeprefix('finish-pending-')] = 1
+    elif fault == 'second-corrupted': item['untouched_second_rgba'] = [255, 255, 0, 255]
+    elif fault == 'second-bool': item['untouched_second_rgba'][0] = False
+    elif fault == 'missing-retirement': del payload['resource_failure_recovery']['recovery']['retirement']
+    elif fault == 'closed-survivor': retirement['survivor_alive'] = False
+    elif fault == 'lost-references': retirement['python_references_alive'] = 0
+    elif fault == 'bool-references': retirement['python_references_alive'] = True
+    elif fault == 'no-canvas': retirement['canvas_bytes'] = 0
+    elif fault == 'missing-gauge': del retirement['after_delete']['resource_texture_bytes']
+    elif fault == 'negative-gauge': retirement['after_delete']['resource_texture_bytes'] = -1
+    elif fault == 'bool-gauge': retirement['after_delete']['resource_texture_bytes'] = False
+    elif fault.startswith('vacuous-'):
+        key = fault.removeprefix('vacuous-'); retirement['before_delete'][key] = retirement['baseline'][key]
+    elif fault.startswith('leaked-'): retirement['after_delete'][fault.removeprefix('leaked-')] += 1
+    else: raise AssertionError(fault)
+    current['functional_result']['payload_sha256'] = digest(payload)
+    with pytest.raises(ValueError, match=reason):
+        validate_bound_result(current)
+
+
+@pytest.mark.parametrize('fault,reason', ORACLE_FAULTS)
+def test_distinguishing_observations_are_validated_after_transport(fault, reason):
+    assert_oracle_rejected(example_result(), fault, reason)
+
+
 @pytest.mark.parametrize('fault,reason', [
     ('missing-branch', 'missing submission branch'),
     ('duplicate-branch', 'duplicated or omitted'),

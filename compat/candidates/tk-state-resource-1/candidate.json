@@ -2,7 +2,7 @@
   "schema": 1,
   "phase": "development",
   "id": "tk-state-resource-1",
-  "manifest_sha256": "7196f88a6ad2631997d6ff24f484ef40aeeaedc3a832d2653af2c20f8e035723",
+  "manifest_sha256": "7bde5451e2986d25a523d8f85c6de882b4288245dbc20f237e3aa7fd0c21223d",
   "product_source_commit": "9ef9765552c41c84d82d69b44756d5925b4d3cd3",
   "upstream_commit": "117b054598f4758b598f4b8f48feea48c11fe7b0",
   "ledger": {
@@ -38,8 +38,8 @@
       "id": "windows-gpu-tk86-cp312-development",
       "required": true,
       "observation": {
-        "path": "compat/candidates/tk-state-resource-1/windows-oracle-profile.json",
-        "sha256": "38269123ae6ab65dbae8d56792b806aacf4a8c71082aa304f69325bce5582b80"
+        "path": "compat/candidates/tk-state-resource-1/windows-integrated-oracle-profile.json",
+        "sha256": "cae8002c11a2b823b7889bb1dab72bbcdfce4179663bf973377a9bf3f133ce07"
       },
       "wheel": null,
       "previous_qualified_wheel_sha256": "62df5e4c31bf9a1bb1bea47fd68d50e4198d6ec13d2551c991da1e7f30a2b38f",
@@ -57,8 +57,8 @@
       "id": "wsl-software-tk90-cp31213-development",
       "required": true,
       "observation": {
-        "path": "compat/candidates/tk-state-resource-1/linux-oracle-profile.json",
-        "sha256": "af51930974ce8e13c2fc0b8118fe2bd2d0357e893a218aa5d6898087b158beba"
+        "path": "compat/candidates/tk-state-resource-1/linux-integrated-oracle-profile.json",
+        "sha256": "2d1569835b25923e1a7dd26e80ca147b6ed68233c0ef4c9c7a2138be9a21ef17"
       },
       "wheel": null,
       "previous_qualified_wheel_sha256": "374a74ea9787ccccc643e0ac7e45d9f704a41d046465828736158ac94398c4a3",
@@ -1184,7 +1184,7 @@
   "preparation_tools": [
     {
       "path": "tools/compatibility_candidate.py",
-      "sha256": "6b3b9ca39be5b0da0f97b9652a4ea96cf22138d87754e4033a5ff2fcbe87ce66"
+      "sha256": "952902947712bc64edc7487153656a614dd2ad2cfa8ebe7889685257623e35a2"
     },
     {
       "path": "tools/compatibility_inventory.py",
@@ -1327,6 +1327,10 @@
       "sha256": "b2fbf966d92e62520d982c96eeb946a332fc00db454e6c5e8c8da0b34b0206d8"
     },
     {
+      "path": "tools/no_opengl/functional.py",
+      "sha256": "987207ffb7c774cbb38437ce753bba131b5e9ebb464df6a2bbdf8d383fe7e9b0"
+    },
+    {
       "path": "docs/superpowers/specs/2026-10-24-vispy-compatibility-gap-closure.md",
       "sha256": "0eed6c6d80ac0be9ad92ce6072134f9a215f392abc589879302a2759c3b5fe75"
     },
@@ -1405,10 +1409,6 @@
     {
       "path": "tools/no_opengl/dependencies.py",
       "sha256": "af1a0446ddb678175c762c4f2eaadebd98dc89f29c596c0c55a51bdb8d2eac8a"
-    },
-    {
-      "path": "tools/no_opengl/functional.py",
-      "sha256": "6360260c56fc7395bdd7d3287687ed13e3f4ae8f7b165fc80f5689ce20e94a8d"
     },
     {
       "path": "tools/no_opengl/handle_negative_probe_windows.c",

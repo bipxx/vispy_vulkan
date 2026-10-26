@@ -40,7 +40,7 @@ PREPARATION_TOOLS = (
     'tools/qualification_epoch.py', 'compat/qualification-epoch.schema.json',
     'tools/qualification_index.py', 'compat/qualification-index.schema.json',
     '.github/workflows/linux-vulkan.yml', '.github/workflows/metal-wheel.yml',
-    'tools/no_opengl/policy.py', SPEC,
+    'tools/no_opengl/policy.py', 'tools/no_opengl/functional.py', SPEC,
     'compat/vispy-candidate.schema.json', 'compat/vispy-compatibility.schema.json',
     'compat/vispy-compatibility-v3.schema.json', 'cmake/runtime_package.py',
     '.github/workflows/cpu-contract.yml',

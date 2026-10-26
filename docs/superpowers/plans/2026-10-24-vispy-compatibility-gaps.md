@@ -49,6 +49,15 @@ wheel from retained native outputs, reuse the matching Linux wheel, and complete
 installed qualification and current-head CI before promotion. Preserve the
 original failed macOS/Python 3.14 CPU build as unresolved toolchain I/O evidence.
 
+The focused renewal also found that the installed collector's closed decoder
+rejected the new observation fields. The decoder now checks finish snapshot
+ordering/completion, untouched-target color and non-vacuous live-survivor
+retirement. Both fresh source composites pass the actual same-child collector;
+33 resealed corruptions of each platform's real payload are rejected. The
+decoder is now pinned among candidate preparation inputs. Preserve the failed
+renewal and stale-binding test evidence; these source results still do not
+establish installed artifact admission.
+
 Requirements and acceptance are defined in the
 [gap-closure specification](../specs/2026-10-24-vispy-compatibility-gap-closure.md).
 The [original runtime-removal plan](2026-10-23-opengl-runtime-removal-plan.md)

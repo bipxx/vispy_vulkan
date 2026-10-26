@@ -16,6 +16,10 @@ COUNTERS = ('dawn_queue_submits', 'finish_calls', 'completion_waits', 'applicati
 GAUGES = ('pending_tickets', 'queued_frames', 'live_buffer_bytes', 'live_cpu_buffer_bytes',
           'live_texture_bytes', 'canvas_texture_bytes', 'transient_buffer_bytes',
           'line_resource_pool_busy_slots', 'line_resource_pool_bytes')
+RETIREMENT_GAUGES = ('live_cpu_buffer_bytes', 'live_buffer_bytes', 'pending_tickets',
+                     'queued_frames', 'pending_draws', 'vertex_input_current_entries',
+                     'vertex_input_current_bytes', 'vertex_input_cache_entries',
+                     'vertex_input_cache_bytes', 'resource_texture_bytes')
 TK_FEATURES = {
     'tk.backend.raster', 'tk.application.manual', 'tk.canvas.basic', 'tk.context.current',
     'tk.context.shared', 'tk.canvas.recovery', 'tk.timer.once', 'tk.gl.flush',
@@ -163,13 +167,25 @@ def validate_tk_result(payload):
     ordinary_routes = []
     colors = {'gloo.flush': [0, 128, 0, 255], 'glFlush': [0, 0, 255, 255]}
     for item in submits:
-        closed(item, 'route before after readback', 'ordinary submission')
+        closed(item, 'route before after finish_before finish_after readback untouched_second_rgba', 'ordinary submission')
         require(type(item['route']) is str and item['route'] in colors, 'unknown ordinary submission route')
         ordinary_routes.append(item['route'])
         counters(item['before']); counters(item['after'])
         require(item['after']['dawn_queue_submits'] > item['before']['dawn_queue_submits'], 'ordinary flush did not submit')
         require(all(item['before'][k] == item['after'][k] for k in COUNTERS[1:]), 'ordinary flush waited or presented')
+        first, last = item['finish_before'], item['finish_after']
+        for snapshot in (first, last):
+            counters(snapshot, ('pending_tickets', 'queued_frames', 'pending_draws', 'retired_tickets'))
+        require(all(first[k] == item['after'][k] for k in COUNTERS), 'finish snapshot does not follow flush')
+        require(last['finish_calls'] == first['finish_calls'] + 1
+                and last['completion_waits'] > first['completion_waits'], 'finish did not complete before readback')
+        require(last['application_presents'] == first['application_presents'], 'finish presented')
+        require(last['dawn_queue_submits'] >= first['dawn_queue_submits']
+                and last['retired_tickets'] >= first['retired_tickets']
+                and all(last[k] == 0 for k in ('pending_tickets', 'queued_frames', 'pending_draws')),
+                'finish retained work or counters regressed')
         require(color(item['readback'], colors[item['route']]), 'ordinary readback differs')
+        require(color(item['untouched_second_rgba'], [0, 0, 255, 255]), 'untouched second target differs before repaint')
     require(set(ordinary_routes) == set(colors), 'ordinary routes duplicated or omitted')
     resource = payload['resource_failure_recovery']
     closed(resource, 'branch_id status injections expected_error baseline after_failure cleanup timer_stopped recovery', 'resource branch')
@@ -187,7 +203,7 @@ def validate_tk_result(payload):
             and type(resource['cleanup']['secondary_errors']) is int and resource['cleanup']['secondary_errors'] == 0,
             'resource cleanup failed')
     recovery = resource['recovery']
-    closed(recovery, 'scope device_recovered timer_ticks shared survivor_color physical_sizes status host_survived', 'resource recovery')
+    closed(recovery, 'scope device_recovered timer_ticks shared survivor_color physical_sizes status host_survived retirement', 'resource recovery')
     require(recovery['status'] == 'PASS' and text(recovery['scope']) and recovery['device_recovered'] is True
             and recovery['shared'] is True and recovery['host_survived'] is True
             and type(recovery['timer_ticks']) is int and recovery['timer_ticks'] == 1
@@ -195,6 +211,18 @@ def validate_tk_result(payload):
     sizes = recovery['physical_sizes']
     require(type(sizes) is list and len(sizes) == 2 and all(type(size) is list and len(size) == 2
             and all(integer(v, 3) for v in size) for size in sizes), 'resource recovery lacks actual extents')
+    retirement = recovery['retirement']
+    closed(retirement, 'baseline before_delete after_delete canvas_bytes survivor_alive python_references_alive', 'resource retirement')
+    require(retirement['survivor_alive'] is True and integer(retirement['canvas_bytes'], 1)
+            and type(retirement['python_references_alive']) is int and retirement['python_references_alive'] == 3,
+            'retirement lost live survivor or Python references')
+    for name in ('baseline', 'before_delete', 'after_delete'):
+        closed(retirement[name], ' '.join(RETIREMENT_GAUGES), 'retirement gauges')
+        require(all(integer(v) for v in retirement[name].values()), 'invalid retirement gauge')
+    require(all(retirement['before_delete'][k] > retirement['baseline'][k]
+                for k in ('live_cpu_buffer_bytes', 'live_buffer_bytes', 'resource_texture_bytes')),
+            'resource retirement is vacuous')
+    require(retirement['after_delete'] == retirement['baseline'], 'resource retirement did not return to baseline before close')
     progress = payload['native_progress_failure_recovery']
     require(type(progress) is list and len(progress) == 2, 'missing progress callback order')
     orders = []

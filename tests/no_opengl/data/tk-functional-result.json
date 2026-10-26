@@ -25,6 +25,32 @@
           128,
           0,
           255
+        ],
+        "finish_before": {
+          "dawn_queue_submits": 11,
+          "finish_calls": 1,
+          "completion_waits": 2,
+          "application_presents": 3,
+          "pending_tickets": 1,
+          "queued_frames": 0,
+          "pending_draws": 0,
+          "retired_tickets": 4
+        },
+        "finish_after": {
+          "dawn_queue_submits": 11,
+          "finish_calls": 2,
+          "completion_waits": 3,
+          "application_presents": 3,
+          "pending_tickets": 0,
+          "queued_frames": 0,
+          "pending_draws": 0,
+          "retired_tickets": 5
+        },
+        "untouched_second_rgba": [
+          0,
+          0,
+          255,
+          255
         ]
       },
       {
@@ -42,6 +68,32 @@
           "application_presents": 3
         },
         "readback": [
+          0,
+          0,
+          255,
+          255
+        ],
+        "finish_before": {
+          "dawn_queue_submits": 11,
+          "finish_calls": 1,
+          "completion_waits": 2,
+          "application_presents": 3,
+          "pending_tickets": 0,
+          "queued_frames": 0,
+          "pending_draws": 0,
+          "retired_tickets": 8
+        },
+        "finish_after": {
+          "dawn_queue_submits": 11,
+          "finish_calls": 2,
+          "completion_waits": 3,
+          "application_presents": 3,
+          "pending_tickets": 0,
+          "queued_frames": 0,
+          "pending_draws": 0,
+          "retired_tickets": 8
+        },
+        "untouched_second_rgba": [
           0,
           0,
           255,
@@ -114,7 +166,48 @@
         ]
       ],
       "status": "PASS",
-      "host_survived": true
+      "host_survived": true,
+      "retirement": {
+        "baseline": {
+          "live_cpu_buffer_bytes": 0,
+          "live_buffer_bytes": 0,
+          "pending_tickets": 0,
+          "queued_frames": 0,
+          "pending_draws": 0,
+          "vertex_input_current_entries": 0,
+          "vertex_input_current_bytes": 0,
+          "vertex_input_cache_entries": 0,
+          "vertex_input_cache_bytes": 0,
+          "resource_texture_bytes": 0
+        },
+        "before_delete": {
+          "live_cpu_buffer_bytes": 40,
+          "live_buffer_bytes": 40,
+          "pending_tickets": 0,
+          "queued_frames": 0,
+          "pending_draws": 0,
+          "vertex_input_current_entries": 0,
+          "vertex_input_current_bytes": 0,
+          "vertex_input_cache_entries": 0,
+          "vertex_input_cache_bytes": 0,
+          "resource_texture_bytes": 4
+        },
+        "after_delete": {
+          "live_cpu_buffer_bytes": 0,
+          "live_buffer_bytes": 0,
+          "pending_tickets": 0,
+          "queued_frames": 0,
+          "pending_draws": 0,
+          "vertex_input_current_entries": 0,
+          "vertex_input_current_bytes": 0,
+          "vertex_input_cache_entries": 0,
+          "vertex_input_cache_bytes": 0,
+          "resource_texture_bytes": 0
+        },
+        "canvas_bytes": 92160,
+        "survivor_alive": true,
+        "python_references_alive": 3
+      }
     }
   },
   "native_progress_failure_recovery": [

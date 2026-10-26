@@ -1,0 +1,153 @@
+{
+  "schema": 1,
+  "id": "wsl-software-tk90-cp31213-development",
+  "phase": "source-functional",
+  "product_runtime_source_commit": "9ef9765552c41c84d82d69b44756d5925b4d3cd3",
+  "kind": "wsl-software",
+  "architecture": "x86_64",
+  "python_abi": "cp312",
+  "python_version": "3.12.13 (main, Apr 14 2026, 14:29:00) [Clang 22.1.3 ]",
+  "interpreter": "/home/heq/.local/share/uv/python/cpython-3.12.13-linux-x86_64-gnu/bin/python3.12",
+  "interpreter_sha256": "339de109f072e52523066d97a2b3372e358a10cc00c6a9df62c28a6618061900",
+  "base_interpreter": {
+    "path": "/home/heq/.local/share/uv/python/cpython-3.12.13-linux-x86_64-gnu/bin/python3.12",
+    "sha256": "339de109f072e52523066d97a2b3372e358a10cc00c6a9df62c28a6618061900"
+  },
+  "os_identity": "Linux-6.18.54.1-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "toolkit": {
+    "tk_version": 9.0,
+    "tcl_version": 9.0,
+    "binding_origin": "/home/heq/.local/share/uv/python/cpython-3.12.13-linux-x86_64-gnu/lib/python3.12/lib-dynload/_tkinter.cpython-312-x86_64-linux-gnu.so",
+    "binding_hash_scope": "module",
+    "binding_sha256": "0240658571f1531461f4a7178c454795c55fe0f5723eebeda0b5de2f4aeee303"
+  },
+  "display_mode": "tk-raster",
+  "device": {
+    "backend": "Vulkan",
+    "adapter_type": "cpu",
+    "vendor": "mesa",
+    "device": "llvmpipe (LLVM 18.1.3, 256 bits)",
+    "driver": "llvmpipe: Mesa 26.1.8 (LLVM 18.1.3)",
+    "vendor_id": 65541,
+    "device_id": 0,
+    "max_texture_dimension_1d": 16384,
+    "max_texture_dimension_2d": 16384,
+    "max_texture_dimension_3d": 4096,
+    "max_vertex_attributes": 30,
+    "max_vertex_buffers": 8,
+    "max_vertex_buffer_array_stride": 2048,
+    "max_storage_buffers_per_shader_stage": 16,
+    "max_uniform_buffers_per_shader_stage": 12,
+    "max_inter_stage_shader_variables": 30,
+    "max_storage_buffer_binding_size": 134217728,
+    "max_bindings_per_bind_group": 1000,
+    "max_compute_invocations_per_workgroup": 1024,
+    "max_compute_workgroup_size_x": 1024,
+    "max_compute_workgroups_per_dimension": 65535,
+    "max_point_vertex_attributes": 30,
+    "core_features_and_limits": true,
+    "point_input_limit_scope": "all active user point inputs share one vertex buffer; exact vertex/instance identities use read-only vertex storage without reserving a user attribute; actual granted attribute/stride/storage/allocation limits apply",
+    "max_samplers_per_shader_stage": 16,
+    "max_sampled_textures_per_shader_stage": 48,
+    "max_buffer_size": 4294967295,
+    "max_uniform_buffer_binding_size": 65536,
+    "software": true,
+    "float32_filterable": true,
+    "unorm16_texture_formats": true,
+    "bresenham_lines": true,
+    "last_vertex_provoking": true,
+    "timestamp_query": true,
+    "timestamp_quantization_ns": 65536,
+    "depth_stencil_storage": "depth24_unorm_stencil8",
+    "ok": true,
+    "error": "",
+    "loss_count": 0,
+    "revision": "117b054598f4758b598f4b8f48feea48c11fe7b0+dawn-499e5c6ff9b37d5de70c6493fb74c251e0d35c1c"
+  },
+  "native_sha256": "bde985b44e07f554a3ec653856e73d0e4c07518375ca614f9be9a5bf97eb5337",
+  "native_inputs_sha256": "24d83e8fc94f009c1e105bb1b7b934a4880ce30c2fa47bc6a4a4d93c3893fa83",
+  "loaded_library_identities": {
+    "/usr/lib/llvm-18/lib/libLLVM.so.1": "5c3a63957e28c15cdf1503892074f032d29b72e36a9824a77dfa87e48a0dafb0",
+    "/usr/lib/x86_64-linux-gnu/libxcb-dri3.so.0.1.0": "a919146693e71897484c2996beb837273a7a278d1a2afe477bc072f10681f3b0",
+    "/usr/lib/x86_64-linux-gnu/libX11.so.6.4.0": "edd2ddf6e00a81c40b8645f7dbb6d6603c6a0a78d583bdbe7491d8a84de6e3b6",
+    "/mnt/c/Users/HEQ/Projects/vispy_vulkan/build/artifacts/bde985b44e07f554a3ec653856e73d0e4c07518375ca614f9be9a5bf97eb5337/_dawn.cpython-312-x86_64-linux-gnu.so": "bde985b44e07f554a3ec653856e73d0e4c07518375ca614f9be9a5bf97eb5337",
+    "/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33": "1fd75fe70354a416d75aef22bcae68c47bd25d20e2d0568c30b1a9838cf62f11",
+    "/home/heq/.local/share/uv/python/cpython-3.12.13-linux-x86_64-gnu/lib/libtcl9tk9.0.so": "59a2958123b86d7622bed460d099f06ce36b6f6eaec936f9681567189cd8c415",
+    "/home/heq/vispy-vulkan-managed/build/artifacts/9c5c41b3a7b9d759b0960c868f10375281798ad084150716d6d122c8789b9e12/libvulkan_lvp.so": "9c5c41b3a7b9d759b0960c868f10375281798ad084150716d6d122c8789b9e12",
+    "/usr/lib/x86_64-linux-gnu/libvulkan.so.1.3.275": "e833b010f814b72c6aca0300c8b5f19b6106ffa06c24ddc95a293970c7d6058e",
+    "/mnt/c/Users/HEQ/Projects/vispy_vulkan/build/artifacts/bde985b44e07f554a3ec653856e73d0e4c07518375ca614f9be9a5bf97eb5337/VkLayer_vispy_submit.so": "95907606472ffe51bec021d4b28e4717472e40f2cef34cd2590d172575c113d4",
+    "/home/heq/.local/share/uv/python/cpython-3.12.13-linux-x86_64-gnu/lib/libtcl9.0.so": "cdbf818b9dc5c19cc965968593de43641a75e580990672a68459e33f733ea8c8",
+    "/usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0": "7958a0136b121bdc4c708968569ad152a9ed208ab026e2537b1005dde64ca440"
+  },
+  "source_observation": {
+    "cases": 8,
+    "case_unit": "Required branches in one complete source composite",
+    "report": {
+      "path": "build/runs/scenario-oracles-99/linux-integrated-composite-source-bound-result.json",
+      "sha256": "5873b3122a9a3b7ee651abe2644579329a2773c0f8d5a8271de1f7f0355d5d54"
+    },
+    "shutdown_gauges": {
+      "pending_tickets": 0,
+      "queued_frames": 0,
+      "live_buffer_bytes": 0,
+      "live_cpu_buffer_bytes": 0,
+      "live_texture_bytes": 0,
+      "canvas_texture_bytes": 0,
+      "transient_buffer_bytes": 0,
+      "line_resource_pool_busy_slots": 0,
+      "line_resource_pool_bytes": 0
+    },
+    "scope": "Source functional only; not original installed observer proof"
+  },
+  "previous_source_observation": {
+    "path": "compat/candidates/tk-state-resource-1/linux-oracle-profile.json",
+    "sha256": "af51930974ce8e13c2fc0b8118fe2bd2d0357e893a218aa5d6898087b158beba"
+  },
+  "limitations": [
+    "Source-only preparation, independent source/scope review remains pending.",
+    "No candidate wheel, installed original absence/control receipts or final promotion approval.",
+    "No native Linux GPU or Metal hardware claim."
+  ],
+  "native_producer": {
+    "status": "EXPERIMENTAL_LINUX_LEAF_SOURCE_FUNCTIONAL_ONLY",
+    "artifact_manifest": {
+      "path": "build/artifacts/bde985b44e07f554a3ec653856e73d0e4c07518375ca614f9be9a5bf97eb5337/artifact.json",
+      "sha256": "4e1154b9b49e85f214b4a4f8cf2b433040e247394d22a4e3c33b34806c792472"
+    },
+    "scope": "Retained aggregate-attribute leaf with byte-checked runtime inputs; source-functional only, no producer admission."
+  },
+  "driver_preparation": {
+    "pin": {
+      "path": "compat/software-vulkan-build.json",
+      "sha256": "46c952cbdeb4de964b6ca127d2b5d7c71b9a566d98e225984059cb123d4c9980"
+    },
+    "source_record": {
+      "path": "build/artifacts/0575e8fffc9e12cad4624e6a83f187d5821ebc7b7380d9a83283472ddfc456e8/software-driver.json",
+      "sha256": "0575e8fffc9e12cad4624e6a83f187d5821ebc7b7380d9a83283472ddfc456e8"
+    },
+    "relocation": {
+      "path": "build/runs/external-driver-origin-71/projection.json",
+      "sha256": "c70afaf69c5eaf5e09a32ebdbc5031bbef001b6746f8ff09e4e7dba3f75be379"
+    },
+    "scope": "Observed exact CI-built headless LLVM18 repair in external immutable artifact store; source-functional only, not installed admission."
+  },
+  "native_reuse": {
+    "basis": {
+      "path": "build/runs/compatibility-ci-80/runtime-source-reuse.json",
+      "sha256": "85b18a1a195fa7cc90b4624b62f0ee852aaf03df93005d750308737817107e4c"
+    },
+    "scope": "Unchanged native inputs, fresh Python source composite; no installed qualification or independent approval"
+  },
+  "oracle_controls": {
+    "report": {
+      "path": "build/runs/scenario-oracles-99/linux-owned-oracle-controls-result.json",
+      "sha256": "b20fc40ae320f5e67de31a731a7d9279103645fba1fdec17dbcfe3380085d374"
+    },
+    "cases": 5,
+    "scope": "Actual native source negative controls; not installed qualification."
+  },
+  "collector_controls": {
+    "path": "build/runs/scenario-oracles-99/actual-decoder-result.json",
+    "sha256": "88ccab66f3f1716babb0a97a7a5cdf86da2a351af3c2dbc0a6ec1aeb6301933a"
+  }
+}
