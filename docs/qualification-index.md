@@ -276,3 +276,28 @@ Current-head Linux run `40216949863` built its wheel, then reached original-body
 `tools/linux_ci_lifecycle.py` now registers the existing native build, build/consumer environments and temporary files in one external workspace alongside the Mesa lease. Actual native commands and retained shell scripts have original PID/exit/wait/log receipts and periodic disk guards. Source/license inputs, before/after maps, generated build configuration, observed toolchain hashes and shipping outputs survive cleanup. uv copies and audited producer-specific alias handling preserve original targets; registry-aware cleanup and source-mutation failure controls remain strict. The locked test-extra repair from the preceding checkpoint is included for the pending installed rerun.
 
 All 517 affected Windows regression checks and 47 WSL source controls pass; seven workflow bodies parse and pass Bash syntax checks. No local native build, SDK or environment installation was needed. Inputs to these unit controls are explicitly synthetic; they do not supply renderer C++ execution or independent approval. Runtime profiles, requested scope/closure/ledger and producer trust policy are unchanged; admission remains false with 120 missing criteria. Next: collect the current-head CI results, implement the Linux native/index admission join using the original records, and obtain cumulative implementation/scope review before installed candidate admission and promotion. Evidence: `build/runs/linux-ci-lifecycle-82/`.
+
+
+### Windows retained-native proof checkpoint
+
+The first-party Windows SDK-linked producer in `build/runs/windows-native-proof-94/`
+built the shipping leaves and passed all 44 native contracts using the existing
+locked CPython environment and vendor SDK. Its original wrapper exit remains 1:
+the final verifier compared CMake's lowercase drive letter in the INTERNAL
+`CMAKE_CACHEFILE_DIR` with an uppercase command path. All original build phases
+exited 0 and their source/cache/project/toolchain/CTest/output records survive.
+
+`build/runs/windows-cache-proof-95/` revalidates those original bytes after a
+bounded drive-letter comparison correction, with 139 passing proof controls.
+Alternate drives/directories/parent paths still reject. The original 211 retained
+records are rehashed unchanged; neither the SDK nor native leaves were rebuilt
+for this observer fix. The preceding test-name/build-target mapping failure is
+retained separately in run 93. Both failed wrapper attempts and their actual
+cleanup/disposition remain visible; a later pass must not hide them.
+
+The real Windows and Linux native reuse proposals bind the current candidate
+and still reject because independent source/scope approval is absent. Native
+production proof does not supply exact installed workflow qualification, current
+head CI, promotion review or a hardware qualification claim. The finite practical
+compatibility milestone preserves all 120 selected criteria and the broader
+historical obligations as separate status.

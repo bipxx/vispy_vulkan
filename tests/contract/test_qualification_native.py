@@ -221,3 +221,44 @@ def test_both_existing_review_kinds_must_bind_the_exact_native_recipe(monkeypatc
         record = record_stub(ref('candidate.json'))
         record['reuse'].update(candidate_scope_sha256=reuse_scope, recipe_sha256=checksum)
         qn.validate_record(record)
+
+
+
+def test_owned_upload_helper_is_a_required_build_target_not_a_ctest_name():
+    recipe, raw, *rest = sample()
+    assert 'owned_upload_contract' in recipe['targets']
+    assert 'owned_upload_contract' not in recipe['ctest_names']
+    assert 'owned_upload_decoder_contract' not in recipe['targets']
+    assert qn.validate_proofs(recipe, raw, *rest)['native_build_verified']
+    recipe['targets'].remove('owned_upload_contract')
+    with pytest.raises(qn.InventoryError, match='omitted'):
+        qn.validate_recipe(recipe)
+
+
+def test_unrecognized_underscore_helper_is_not_admitted():
+    recipe = sample()[0]
+    recipe['targets'] = sorted(recipe['targets']+['_unreviewed_helper'])
+    with pytest.raises(qn.InventoryError, match='vendor/unrecognized'):
+        qn.validate_recipe(recipe)
+
+
+
+@pytest.mark.parametrize('directory,passes', [
+    ('c:/source/build/work/unit-only/native', True),
+    ('c:/source/build/work/other/native', False),
+    ('d:/source/build/work/unit-only/native', False),
+    ('c:/source/build/work/unit-only/../native', False),
+    ('c:/SOURCE/build/work/unit-only/native', False),
+])
+def test_cmake_internal_cache_drive_letter_preserves_exact_directory(directory, passes):
+    recipe, raw, expected, before, after, cb, ca, consumer, projects, ctest, outputs = sample()
+    old = b'CMAKE_CACHEFILE_DIR:STRING=C:/source/build/work/unit-only/native'
+    assert old in cb
+    cb = ca = cb.replace(old, ('CMAKE_CACHEFILE_DIR:STRING='+directory).encode())
+    raw['cache_before_sha256'] = raw['cache_after_sha256'] = qn.sha(cb)
+    args = (recipe,raw,expected,before,after,cb,ca,consumer,projects,ctest,outputs)
+    if passes:
+        assert qn.validate_proofs(*args)['native_build_verified']
+    else:
+        with pytest.raises(qn.InventoryError, match='CMAKE_CACHEFILE_DIR'):
+            qn.validate_proofs(*args)

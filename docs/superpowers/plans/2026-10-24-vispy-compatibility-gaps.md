@@ -1541,3 +1541,17 @@ Both modes register before environment allocation and retain source, licenses,
 actual process exits/waits and original inputs before managed cleanup. The
 POSIX lifecycle preserves standalone Python's Linux `.so` or macOS `.dylib`
 when materializing interpreter aliases. No current-head CI gate is waived.
+
+
+### Windows producer evidence checkpoint
+
+The missing Windows native provenance is now captured by one SDK-linked build,
+with all 44 native contracts passing. Run 93 preserves the test-name versus
+build-target mapping failure; run 94 preserves complete original build records
+and the final cache-drive-case observer rejection. Run 95 validates those retained
+bytes after the bounded observer correction, with 139 proof controls passing and
+no repeat native build. Original nonzero wrapper exits remain nonzero. Both
+platform reuse proposals still require actual independent review; installed
+qualification and promotion remain open. See docs/qualification-index.md and
+build/runs/windows-cache-proof-95/. This advances the bounded practical scope,
+not full upstream parity.

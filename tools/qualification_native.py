@@ -30,7 +30,8 @@ except ImportError:
 SCHEMA = 'compat/qualification-native.schema.json'
 PHASES = ('dependency-before', 'configure', 'build', 'ctest', 'dependency-after')
 NATIVE_TARGETS = {'_dawn', '_sdf_cpu', 'VkLayer_vispy_submit'}
-DEPENDENCY_TARGETS = {'native_library_fixture', 'nanobind-static'}
+# Both owned-upload CTest entries execute the same compiled Python helper.
+DEPENDENCY_TARGETS = {'native_library_fixture', 'nanobind-static', 'owned_upload_contract'}
 MIN_TARGETS = native_epoch.REQUIRED_TARGETS | DEPENDENCY_TARGETS | {'uniform_updates_contract'}
 MIN_TESTS = (native_epoch.REQUIRED_TARGETS - NATIVE_TARGETS) | {'uniform_updates_contract'}
 ROLES = {'python', 'base-python', 'cmake', 'ctest', 'compiler'}
@@ -170,7 +171,16 @@ def validate_proofs(recipe, raw, expected_sources, before, after, cache_before, 
     policy = cache_policy(recipe, consumer, raw['locations'])
     cache = parse_cache(cache_after.decode('utf-8-sig'))
     for name, value in policy.items():
-        check(cache.get(name) == value, 'native cache differs from reviewed recipe: ' + name)
+        observed = cache.get(name)
+        # CMake lowercases the Windows drive letter of this INTERNAL entry.
+        # Preserve every remaining path byte; no alternate directory or alias
+        # is accepted, and the original cache/command records stay unchanged.
+        if name == 'CMAKE_CACHEFILE_DIR' and isinstance(observed, str):
+            matches = (len(observed) == len(value) and observed[1:] == value[1:]
+                       and observed[:1].lower() == value[:1].lower())
+        else:
+            matches = observed == value
+        check(matches, 'native cache differs from reviewed recipe: ' + name)
     expected_commands = commands(recipe, consumer, raw['locations'])
     check(tuple(command['phase'] for command in raw['commands']) == PHASES, 'native phases missing/duplicated/reordered')
     for command in raw['commands']:

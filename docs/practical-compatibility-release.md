@@ -74,6 +74,6 @@ the first milestone; a later scope change must explicitly update reviewed
 selection and dependent evidence rather than filter failures out of a report.
 
 Known next actions: complete CPU CI, obtain cumulative implementation/scope and
-native reuse review, resolve the Windows native producer proof gap, run exact
+native reuse review, review the new Windows native producer proof, run exact
 installed Windows/WSL composite qualification, then review promotion. Full
 upstream parity is outside this release exit.

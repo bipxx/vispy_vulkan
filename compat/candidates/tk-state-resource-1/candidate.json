@@ -2,7 +2,7 @@
   "schema": 1,
   "phase": "development",
   "id": "tk-state-resource-1",
-  "manifest_sha256": "fadbfb0dc5ab991beb9407b0299aa877e53306a601378a6c8a33081a6a4564cb",
+  "manifest_sha256": "bf435a08fb13044549c7dbe8fd2f87a9285201ca6e3a942147ef3bee0c1ec9d6",
   "product_source_commit": "9ef9765552c41c84d82d69b44756d5925b4d3cd3",
   "upstream_commit": "117b054598f4758b598f4b8f48feea48c11fe7b0",
   "ledger": {
@@ -1192,7 +1192,7 @@
     },
     {
       "path": "tools/qualification_native.py",
-      "sha256": "a77333c4e4015f7f5f0e9b88e49fdeb7accf32313c39c29cfd1b340f995fe162"
+      "sha256": "7844f8eabd508c08daec6ba5e6fc914492884b77d1550062ea4f7d2de634b2cd"
     },
     {
       "path": "tools/qualification_linux_native.py",
