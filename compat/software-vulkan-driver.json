@@ -1,0 +1,93 @@
+{
+  "description": "Tested isolated Noble amd64 software Vulkan inputs; preparation is not qualification",
+  "driver_version": "26.1.8~kisak1~n",
+  "upstream_fix": "92550b106c70408cd9f5c25a50c311e68af06d6b",
+  "inputs": [
+    {
+      "name": "mesa-vulkan-drivers_26.1.8~kisak1~n_amd64.deb",
+      "url": "https://ppa.launchpadcontent.net/kisak/turtle/ubuntu/pool/main/m/mesa/mesa-vulkan-drivers_26.1.8~kisak1~n_amd64.deb",
+      "sha256": "e2eb85a032563d83abe2bc91ff356f31666e19dc60d7450633056a6a9e6382e3",
+      "size": 26890440,
+      "roles": [
+        "evidence",
+        "repro"
+      ]
+    },
+    {
+      "name": "mesa_26.1.8~kisak1~n.tar.xz",
+      "url": "https://ppa.launchpadcontent.net/kisak/turtle/ubuntu/pool/main/m/mesa/mesa_26.1.8~kisak1~n.tar.xz",
+      "sha256": "81143147557058caa89f7a49475a66246a52983b109ac2a19b3066a4d55e6c53",
+      "size": 79447536,
+      "roles": [
+        "source",
+        "licenses"
+      ]
+    },
+    {
+      "name": "mesa_26.1.8~kisak1~n.dsc",
+      "url": "https://ppa.launchpadcontent.net/kisak/turtle/ubuntu/pool/main/m/mesa/mesa_26.1.8~kisak1~n.dsc",
+      "sha256": "4ba5297ce56c6c1186eaa486fc115534c997421640721c382e1261fba48e0608",
+      "size": 5255,
+      "roles": [
+        "source",
+        "licenses"
+      ]
+    },
+    {
+      "name": "libdisplay-info1_0.1.1-2build1_amd64.deb",
+      "url": "https://archive.ubuntu.com/ubuntu/pool/universe/libd/libdisplay-info/libdisplay-info1_0.1.1-2build1_amd64.deb",
+      "sha256": "a3bfce18d53aa9d635d899f1f555e84bbbf2c859d80cef3b4eb1c36b2c772026",
+      "size": 77258,
+      "roles": [
+        "evidence",
+        "repro"
+      ]
+    },
+    {
+      "name": "libdisplay-info_0.1.1.orig.tar.gz",
+      "url": "https://archive.ubuntu.com/ubuntu/pool/universe/libd/libdisplay-info/libdisplay-info_0.1.1.orig.tar.gz",
+      "sha256": "a5aeef57817916286526292ec816a5338c4d3c0094ce91e584fc82b57070a44f",
+      "size": 99518,
+      "roles": [
+        "source",
+        "licenses"
+      ]
+    },
+    {
+      "name": "libdisplay-info_0.1.1-2build1.debian.tar.xz",
+      "url": "https://archive.ubuntu.com/ubuntu/pool/universe/libd/libdisplay-info/libdisplay-info_0.1.1-2build1.debian.tar.xz",
+      "sha256": "00cae4bbb01fbf4b33b137ec5355da87ce413ccb9a16316faefa2020a27a3c87",
+      "size": 8804,
+      "roles": [
+        "source",
+        "licenses"
+      ]
+    },
+    {
+      "name": "libdisplay-info_0.1.1-2build1.dsc",
+      "url": "https://archive.ubuntu.com/ubuntu/pool/universe/libd/libdisplay-info/libdisplay-info_0.1.1-2build1.dsc",
+      "sha256": "c84a41a755b452e50297f98a173e1998f4da5b2dbbdb2db15b2fdc848554bac1",
+      "size": 2225,
+      "roles": [
+        "source",
+        "licenses"
+      ]
+    }
+  ],
+  "libraries": [
+    {
+      "package": "mesa-vulkan-drivers_26.1.8~kisak1~n_amd64.deb",
+      "member": "./usr/lib/x86_64-linux-gnu/libvulkan_lvp.so",
+      "filename": "libvulkan_lvp.so",
+      "sha256": "686501fd1abfc925221a5a4da3aa6502b4d315b6f8c1728e603c20927711fb81",
+      "notice": "./usr/share/doc/mesa-vulkan-drivers/copyright"
+    },
+    {
+      "package": "libdisplay-info1_0.1.1-2build1_amd64.deb",
+      "member": "./usr/lib/x86_64-linux-gnu/libdisplay-info.so.0.1.1",
+      "filename": "libdisplay-info.so.1",
+      "sha256": "2b42e2620667c9f693561c80d647669d03fd6531c49dbed7bb163c4190abbca6",
+      "notice": "./usr/share/doc/libdisplay-info1/copyright"
+    }
+  ]
+}

@@ -1,0 +1,219 @@
+{
+  "schema": 1,
+  "kind": "semantic-scope-native-reuse-review",
+  "status": "APPROVED",
+  "independent": true,
+  "reviewer": "Astra max independent scope/native reviewer (/root/astra_qualification_plan_review)",
+  "authored_at": "2026-10-26T02:08:40.772506+00:00",
+  "publication_head": "7347aa2a1df4e9c5a816a667dd5a537a5df01c68",
+  "product_source_commit": "9ef9765552c41c84d82d69b44756d5925b4d3cd3",
+  "candidate_scope_sha256": "d1b823b38b9638a2b037639fc06e9471895782a81e9734fce3e300808348e1ea",
+  "coverage_map_sha256": "8d9937fc420a39880c7ad62c03e0e4a6331a52294732650f1f9400a4be15ae91",
+  "execution_map_sha256": "0ba701e3763da57ca3ec641e4fc1d903b8ff0633a13e019f656033b346cbb845",
+  "admission_scope_sha256": "4105283fadbb3984e0837163fadb61688af978a65077e3e62db6efc8774f4e6b",
+  "review_inputs": {
+    "path": "build/runs/scenario-oracles-99/review-integrated/review-inputs.json",
+    "sha256": "1b6027c3fc11d7189686581607b1b31bb51d5d78af0b2643e9770d5d258028ee"
+  },
+  "prior_reviews": [
+    {
+      "path": "build/runs/retention-paths-97/review/scope-native-review-astra.json",
+      "sha256": "6483acb1776c1f19407789d6f2c4d274ec81e4fbe58cdc2f76d53146f46e2fb7"
+    },
+    {
+      "path": "build/runs/scenario-oracles-99/review/scope-native-review-astra.json",
+      "sha256": "5a1db254747461ce6d3d5b3453a715ef35a26826a95f2dfce0775e6a4554537d"
+    }
+  ],
+  "decision": "Approve the exact finite candidate scope, its coverage/execution mapping and 120-criterion same-profile closure, and applicability of the two exact native reuse requests listed below. SNR-1 through SNR-4 are resolved for this frozen input. This is not implementation-source, installed-artifact, current-head CI, hardware or promotion approval.",
+  "findings": [],
+  "resolved_findings": [
+    {
+      "id": "SNR-1",
+      "status": "RESOLVED",
+      "anchors": [
+        "tools/tkinter_resource_scenario.py:27",
+        "tools/tkinter_resource_scenario.py:148",
+        "tests/native/test_tkinter_scenario_oracles.py:45",
+        "tools/no_opengl/functional.py:214"
+      ],
+      "reason": "The resource scenario observes positive CPU/GPU buffer and resource-texture deltas, then equality with the resource baseline before survivor close or reference release. The same survivor/widget and canvas allocation remain live, and all three Python resource references remain in the list. The canonical decoder now requires the complete retirement object, all ten gauges with strict nonnegative integer types, positive pre-delete deltas, equal post-delete/baseline states, live survivor, positive canvas allocation and exactly three references. Separate actual Program, Texture2D and VertexBuffer suppressed-delete controls fail at this pre-close oracle on both profiles.",
+      "neutral_tint_assessment": "The constant all-ones tint is bounded observer instrumentation for the already selected Program operation. It creates a real 16-byte Program-owned constant attribute buffer while preserving the independently expected red/green/blue pixels; together with the existing 24-byte position buffer this gives the observed 40-byte ownership delta. It makes the Program-specific suppression distinguishable without relying on vacuous input-cache gauges. It introduces no selection/API key or criterion and grants no broader shader capability claim."
+    },
+    {
+      "id": "SNR-2",
+      "status": "RESOLVED",
+      "anchors": [
+        "tools/tkinter_state_scenario.py:68",
+        "tools/no_opengl/functional.py:177",
+        "tests/native/test_tkinter_scenario_oracles.py:29"
+      ],
+      "reason": "Both flush routes now record immediate pre/post-finish snapshots before readback/event processing. The decoder joins pre-finish counters to the just-observed flush snapshot, requires exactly one finish call, increased completion waits, unchanged presentation, monotonic submission/retirement counts and drained pending state. The actual no-op finish control fails before later readback can supply completion."
+    },
+    {
+      "id": "SNR-3",
+      "status": "RESOLVED",
+      "anchors": [
+        "tools/tkinter_state_scenario.py:81",
+        "tools/no_opengl/functional.py:188",
+        "tests/native/test_tkinter_scenario_oracles.py:57"
+      ],
+      "reason": "Actual full-extent second-target RGBA is checked before second.update/repaint and then first-target selection is restored. The canonical decoder requires the observed blue RGBA and rejects boolean-as-color substitution. The retained actual corruption control writes yellow to the second native target while retaining its cached PhotoImage and is rejected before repaint on both profiles."
+    },
+    {
+      "id": "SNR-4",
+      "status": "RESOLVED",
+      "anchors": [
+        "tools/no_opengl/functional.py:170",
+        "tools/no_opengl/functional.py:206",
+        "tools/compatibility_candidate.py:43",
+        "tests/no_opengl/test_functional_results.py:42",
+        "build/runs/scenario-oracles-99/run-composite.py:82"
+      ],
+      "reason": "The canonical closed decoder now requires and validates every new finish, untouched-target and retirement field. It is pinned by the candidate preparation tools. Fresh real source composites call capture and the bound decoder in the interpreter that ran the scenario. Independent replay accepts both exact real payloads, returns all eight required branches, rejects all 33 resealed new-field corruptions per payload and accepts all 60 source criterion bindings per profile."
+    }
+  ],
+  "approved_scope": {
+    "finite_subsets": [
+      "tk.backend.raster",
+      "tk.application.manual",
+      "tk.canvas.basic",
+      "tk.context.current",
+      "tk.context.shared",
+      "tk.canvas.recovery",
+      "tk.timer.once",
+      "tk.gl.flush",
+      "tk.wrappers.submission",
+      "tk.wrappers.raster",
+      "tk.readback.rgba",
+      "tk.object.delete",
+      "tk.buffer.triangle",
+      "tk.texture.rgba8",
+      "tk.program.texture"
+    ],
+    "profiles": [
+      "windows-gpu-tk86-cp312-development",
+      "wsl-software-tk90-cp31213-development"
+    ],
+    "feature_profile_pairs": 30,
+    "distinct_criteria": 60,
+    "requested_profile_criteria": 120,
+    "effective_profile_criteria": 120,
+    "dependency_closure": "Whole execution row/all four criteria plus recursive same-profile dependencies. Independently recomputed validate_selection result agrees with the exact requested and closure arrays; both arrays are unchanged from the original reviewed 120-key proposal.",
+    "mapping": "All 120 execution mappings are exact and unchanged from the previous renewal. Coverage criterion definitions, workflow bindings and all parent dispositions are unchanged; only hash-bound candidate/configuration/profile identities were renewed. The full conjunctive composite decoder is used for every criterion; no failed branch can be filtered away.",
+    "historical_obligations": {
+      "required_parents_retained": 142,
+      "originals_discharged": 0,
+      "canonical_ledger_reference_unchanged": true
+    },
+    "claim_limits": [
+      "Practical compatibility for the documented finite supported workflows; full upstream API/backend/pixel parity is not required.",
+      "Manual Tk event pumping with CPU RGB PhotoImage presentation and separate RGBA8 readback; no native-window/vsync/transparency expansion.",
+      "Failure criteria explicitly select finite workflow fault participation and the stated capacity/progress controls, not every invalid API input.",
+      "No native Linux GPU or Metal hardware qualification inferred."
+    ]
+  },
+  "native_reuse": {
+    "status": "APPROVED_EXACT_APPLICABILITY",
+    "native_reuse_links": [
+      "55d0740a980eb5300ff76675032191dc200dbc2196baf31013b5866077302c1c",
+      "6d814a03053152f8708cd8e4ad6bfa92cf8db27f474096709568db1c2274ef96"
+    ],
+    "windows_request": {
+      "status": "PROPOSED_NOT_APPROVED",
+      "proposal": {
+        "path": "build/runs/scenario-oracles-99/integrated-native-reuse-proposal.json",
+        "sha256": "c1ffdea4fb6f2e791450215e3cf8d982634e5a1d14f49c82ef7531017c183325"
+      },
+      "candidate_scope_sha256": "d1b823b38b9638a2b037639fc06e9471895782a81e9734fce3e300808348e1ea",
+      "reuse_sha256": "55d0740a980eb5300ff76675032191dc200dbc2196baf31013b5866077302c1c",
+      "guard_refusal": "candidate source and scope review remain pending",
+      "artifact_admitted": false
+    },
+    "linux_request": {
+      "status": "PROPOSED_NOT_APPROVED",
+      "proposal": {
+        "path": "build/runs/scenario-oracles-99/integrated-linux-native-reuse-proposal.json",
+        "sha256": "33de5db81403f203b63f8dcbe1fb9acd48a058c7fd88df07df00151b983cd6d8"
+      },
+      "candidate_scope_sha256": "d1b823b38b9638a2b037639fc06e9471895782a81e9734fce3e300808348e1ea",
+      "reuse_sha256": "6d814a03053152f8708cd8e4ad6bfa92cf8db27f474096709568db1c2274ef96",
+      "guard_refusal": "candidate source and scope review remain pending",
+      "artifact_admitted": false
+    },
+    "basis": "Prior independent read-only producer audits in the run97 report remain applicable. This renewal compares every producer-bearing proposal field and all reuse ABI/production/profile fields against those already audited originals. Only candidate scope and impact prose changed; exact proposal/candidate hashes and both reuse digests were independently recomputed.",
+    "windows": "Original run94 source/recipe/toolchain/SDK/cache/project/CTest/four-output identities remain unchanged. All five native phases passed and 44 contracts passed. Wrapper exit 1 remains an original failure record; run95 read-only revalidation is separate and does not relabel it. Original run97 retention revalidation covered all 239 raw references in 377 retained files.",
+    "linux": "Original successful full-source CI 40235407061 attempt 1, capture and four shipping outputs remain unchanged. The previously audited complete source-matching wheel archive prerequisite still identifies wheel 1bedf6f8af121bd9dbd94d9acbf7eec155f25a485d807338ccd55ee4ebcf50b4. Build CPython 3.12.8 and selected WSL consumer 3.12.13 remain the exact declared standard cp312 x86-64 observations. This approves applicability of those exact native producer bytes, not current installed loading/behavior.",
+    "source_observation_distinction": "The retained source-functional profiles use their separately declared development leaves. Their fresh source scenario results are not relabelled as installed tests of the production outputs being reused.",
+    "guards": "Before any review attachment, both unchanged outer native validators were independently confirmed to reject with candidate source and scope review remain pending. This report/approval supplies only the independent scope side of those gates."
+  },
+  "verification": {
+    "frozen_files_rehashed": 1425,
+    "source_hash_mismatches": 0,
+    "manifest_evidence_hashes_rechecked": 39,
+    "pure_structural_checks": [
+      "VALID_PREPARATION: 30 selected feature/profile pairs",
+      "VALID_COVERAGE_PROPOSAL: 120 bindings, 142 parents retained",
+      "VALID_EXECUTION_PREPARATION: 120 exact criterion mappings",
+      "VALID_ADMISSION_SELECTION: 120 requested and 120 effective closure keys"
+    ],
+    "independent_payload_replay": [
+      {
+        "profile": "windows-gpu-tk86-cp312-development",
+        "input": {
+          "path": "build/runs/scenario-oracles-99/windows-integrated-composite-source-bound-result.json",
+          "sha256": "460e297a7f28cb61633b771b3bab84d310e40633f2f79089b325f5a800b549e9"
+        },
+        "branches_accepted": 8,
+        "resealed_negative_controls_rejected": 33,
+        "source_criterion_bindings_accepted": 60
+      },
+      {
+        "profile": "wsl-software-tk90-cp31213-development",
+        "input": {
+          "path": "build/runs/scenario-oracles-99/linux-integrated-composite-source-bound-result.json",
+          "sha256": "5873b3122a9a3b7ee651abe2644579329a2773c0f8d5a8271de1f7f0355d5d54"
+        },
+        "branches_accepted": 8,
+        "resealed_negative_controls_rejected": 33,
+        "source_criterion_bindings_accepted": 60
+      }
+    ],
+    "negative_coverage": "Missing fields, disconnected finish chain, absent finish call/wait, presentation, counter regression, each pending-work gauge, contaminated/boolean untouched color, missing retirement, closed survivor, missing/boolean references, zero canvas allocation, missing/negative/boolean gauge, each vacuous allocation delta and each leaked retirement gauge are independently replayed through the real bound decoder after payload resealing.",
+    "retained_native_controls": "The five actual source controls previously inspected are unchanged and remain bound by current source hashes; both Windows and WSL JUnit records show five passed and zero skipped/errors. Fresh integrated source composites and controls each retain nine zero terminal gauges. No native scenarios were rerun by this reviewer.",
+    "cpu_results": "The integrated local invocation retained 793 passes and 13 stale-preparation-binding failures. All 13 exact failed testcase identities were verified present and passing in the 106-case rebound run, which also reran the 93 functional cases. This covers 806 distinct current cases across runs, not one 806-case passing invocation. Original failed records remain retained.",
+    "process_identity_note": "The Windows virtual-environment executable is a redirector: a read-only subprocess check independently demonstrated different launcher and interpreter PIDs with the interpreter parent equal to the recorded launcher. Linux host wsl launcher and guest interpreter PIDs are also distinct namespaces. No unsupported assertion that these IDs must be equal is used. The source runner performs scenario capture and bound decoding inside the same interpreter body.",
+    "supplementary_post_freeze_reports": [
+      {
+        "path": "build/runs/scenario-oracles-99/verification-summary.json",
+        "sha256": "7826958619fb96186a93e1831de4871b5b0186d31b8384aeb93bbdd104a6f3fd"
+      },
+      {
+        "path": "build/runs/scenario-oracles-99/cleanup-verification.json",
+        "sha256": "f5cb8d01a170a4ccd20740afc80a29ced6417caf3934d31a08f709c9e084119a"
+      }
+    ],
+    "cleanup_note": "Inspected run99 cleanup report says scratch absent and 91 retained files rehashed. This renewal does not substitute that summary for a future installed-artifact terminal-retention admission."
+  },
+  "inspection_limits": [
+    "Focused renewal plus retained prior independent scope/native review; no full implementation-source or plan re-review.",
+    "No native build/install/clone/scratch or actual native scenario rerun. Read-only execution used existing Python for hashes, structural validators, payload replay/negative controls and one interpreter/launcher identity check.",
+    "No current remote/head CI validation or installed artifact/original absence-gate execution was performed.",
+    "Scope approval is exact to the digests above and both exact native reuse links. Further semantic/input changes require the existing review invalidation rules.",
+    "Only this new review report and its separate canonical scope approval are written. Other files and all meaningful failures remain unchanged."
+  ],
+  "approvals_issued": {
+    "scope": true,
+    "coverage_mapping": true,
+    "execution_mapping": true,
+    "admission_selection_scope": true,
+    "native_reuse_applicability": true,
+    "implementation_source": false,
+    "native_leaf_admission": false,
+    "installed_artifact": false,
+    "current_head_ci": false,
+    "hardware": false,
+    "promotion": false
+  },
+  "canonical_approval_path": "build/runs/scenario-oracles-99/review-integrated/scope-approval-astra.json"
+}

@@ -1,0 +1,29 @@
+{
+  "schema": 1,
+  "kind": "scope",
+  "status": "APPROVED",
+  "independent": true,
+  "reviewer": "Astra max independent scope/native reviewer (/root/astra_qualification_plan_review)",
+  "candidate_scope_sha256": "180a3d4e1579347e835ac3a98818a34a32932cd3af0fca7005987fa300d32e4d",
+  "coverage_map_sha256": "d10be7bc9aa19b3fe8e20844743bab9ce550e3d35658e67a1ee4a3c03e0f9079",
+  "execution_map_sha256": "afc3a8c9299fb7c5b977f427abbf356313caa980cbc64cb058c61c7643de4c20",
+  "admission_scope_sha256": "ed21d0e29b909b360ec8e5c259b0f6f783ddf6bbf53c071a15dbcabe3ed78053",
+  "native_reuse_links": [
+    "ac4c636b356d088ca4f7aa35fea238b3bc253c8e573f74742c66b6f9a3b2825b",
+    "71e6667bf1ecb06020354a59231f45aa7d3ad3303d914c5f94b25a0a3c888be6"
+  ],
+  "publication_head": "7c5614241c0a05fd46a44a1016e1ec3b93802d86",
+  "review_report": {
+    "path": "build/runs/loader-framing-105/review/scope-review-astra.json",
+    "sha256": "b6d7e4c5ccbc9600fdf3f859dfc63f124da3973b8d92e14ec7cf4b7e71a7135b"
+  },
+  "scope": "Exact current finite 15-subset/two-profile scope; all 120 ordinary/mutation/failure/recovery profile criteria, unchanged fixture/branch/oracle mappings and same-profile whole-row dependency closure; 142 historical parents preserved. Exact Windows and Linux original native producer reuse applicability only.",
+  "limitations": [
+    "No implementation-source approval by this scope reviewer; the separate source reviewer must provide its own decision.",
+    "No new current-collector installed qualification was performed or approved on either profile. Historical Windows102 and failed Linux104 records remain immutable and cannot substitute for fresh required evidence.",
+    "No native producer/artifact/subject/envelope/CI/hardware/promotion approval. Existing validators, required checks and complete attempt/retention history remain mandatory.",
+    "Run105 terminal retention and cleanup are pending these review outputs. No review is contingent on inventing cleanup success; retain originals, source, control artifacts, failures and this report before cleanup/admission.",
+    "The exact historical Linux104 silent increment site is unproven. This correction and its controls establish a specific framing defect and bounded observation behavior only.",
+    "Read-only inspection and pure validator/hash calls only, apart from these two requested new review files; no native execution, builds, installation, scratch, code/gate/record edits, security work or additional agents."
+  ]
+}

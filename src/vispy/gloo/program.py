@@ -28,10 +28,12 @@ Done by GLIR:
 """
 
 import re
+from itertools import product
+from math import prod
 import numpy as np
 
 from .globject import GLObject
-from .buffer import VertexBuffer, IndexBuffer, DataBuffer
+from .buffer import VertexBuffer, IndexBuffer, DataBuffer, _matrix_vertex_records, _attribute_vertex_records
 from .texture import BaseTexture, Texture2D, Texture3D, Texture1D, TextureCube
 from ..util import logger
 from .util import check_enum
@@ -45,11 +47,11 @@ for kind in ('uniform', 'attribute', 'varying', 'const', 'in', 'out'):
                                  r"((highp|mediump|lowp)\s+)?"  # Precision (optional)
                                  r"(?P<type>\w+)\s+"  # type
                                  r"(?P<name>\w+)\s*"  # name
-                                 r"(\[(?P<size>\d+)\])?"  # size (optional)
+                                 r"(?P<dimensions>(?:\[\s*\d+\s*\]\s*)*)"  # array shape
                                  r"(\s*\=\s*[0-9.]+)?"  # default value (optional)
                                  r"\s*;",  # end
                                  flags=re.MULTILINE)
-    
+
 
 # ------------------------------------------------------------ Shader class ---
 class Shader(GLObject):
@@ -82,6 +84,37 @@ class GeometryShader(Shader):
 
 
 # ----------------------------------------------------------- Program class ---
+def _attribute_record_data(data, type_, array_shape, name):
+    """Validate/pack one record per aggregate vertex without mutating objects."""
+    if (array_shape or type_.startswith('mat')) and isinstance(data, (tuple, list)):
+        data = np.asarray(data, dtype=Program._gtypes[type_][0])
+    if array_shape and isinstance(data, np.ndarray) and data.dtype.fields is None:
+        dtype, numel = Program._gtypes[type_]
+        if type_.startswith('mat'):
+            columns = int(type_[3])
+            rows = int(type_[5]) if len(type_) > 4 else columns
+            record_shape = array_shape + (columns, rows)
+            if data.ndim == len(array_shape) + 2 and data.shape[1:] == array_shape + (numel,):
+                data = data.reshape((data.shape[0],) + record_shape)
+        else:
+            record_shape = array_shape + (numel,)
+            if numel == 1 and data.shape[1:] == array_shape:
+                data = data.reshape((data.shape[0],) + record_shape)
+        if data.dtype != np.dtype(dtype):
+            raise TypeError('Attribute array %r needs native %s data.' % (name, dtype))
+        data = _attribute_vertex_records(data, record_shape, name)
+    elif (type_.startswith('mat') and
+            not array_shape and
+            isinstance(data, np.ndarray) and data.dtype.fields is None):
+        # One record per vertex. A GLSL matrix stores columns,
+        # then rows; VertexBuffer's ordinary vector conversion
+        # would otherwise split an (N, columns, rows) array.
+        columns = int(type_[3])
+        rows = int(type_[5]) if len(type_) > 4 else columns
+        data = _matrix_vertex_records(data, columns, rows, name)
+    return data
+
+
 class Program(GLObject):
     """Shader program object
 
@@ -125,8 +158,17 @@ class Program(GLObject):
         'bvec3': (bool, 3),
         'bvec4': (bool, 4),
         'mat2': (np.float32, 4),
-        'mat3': (np.float32, 9), 
+        'mat2x2': (np.float32, 4),
+        'mat3x3': (np.float32, 9),
+        'mat4x4': (np.float32, 16),
+        'mat3': (np.float32, 9),
         'mat4': (np.float32, 16),
+        'mat2x3': (np.float32, 6),
+        'mat2x4': (np.float32, 8),
+        'mat3x2': (np.float32, 6),
+        'mat3x4': (np.float32, 12),
+        'mat4x2': (np.float32, 8),
+        'mat4x3': (np.float32, 12),
         'sampler1D': (np.uint32, 1),
         'sampler2D': (np.uint32, 1),
         'sampler3D': (np.uint32, 1),
@@ -142,8 +184,10 @@ class Program(GLObject):
 
         # Init description of variables obtained from source code
         self._code_variables = {}  # name -> (kind, type_, name)
+        self._array_shapes = {}  # array or subarray name -> ordered dimensions
         # Init user-defined data for attributes and uniforms
         self._user_variables = {}  # name -> data / buffer / texture
+        self._constant_attributes = set()
         # Init pending user-defined data
         self._pending_variables = {}  # name -> data
 
@@ -168,8 +212,17 @@ class Program(GLObject):
             dtype = []
             for kind, type_, name, size in self._code_variables.values():
                 if kind == 'attribute':
+                    if '[' in name:
+                        continue  # one stored root record, not duplicate leaf fields
                     dt, numel = self._gtypes[type_]
-                    dtype.append((name, dt, numel) if numel != 1 else (name, dt))
+                    shape = self._array_shapes.get(name, ())
+                    if type_.startswith('mat'):
+                        columns = int(type_[3])
+                        rows = int(type_[5]) if len(type_) > 4 else columns
+                        shape += (columns, rows)
+                    else:
+                        shape += (numel,) if numel != 1 else ()
+                    dtype.append((name, dt, shape) if shape else (name, dt))
             self._buffer = np.zeros(self._count, dtype=dtype)
             self.bind(VertexBuffer(self._buffer))
 
@@ -214,8 +267,19 @@ class Program(GLObject):
 
         # All current variables become pending variables again
         for key, val in self._user_variables.items():
+            # Public getters cache packed components. Replay the original
+            # dimensional shape rather than treating that flat cache as a new
+            # user upload. Its last-write order preserves overlapping arrays.
+            shape = self._array_shapes.get(key)
+            if key in self._constant_attributes:
+                val = tuple(val.ravel().tolist())
+            elif shape is not None and isinstance(val, np.ndarray):
+                components = self._gtypes[self._code_variables[key][1]][1]
+                val = val.reshape(shape + (components,))
+            self._pending_variables.pop(key, None)
             self._pending_variables[key] = val
         self._user_variables = {}
+        self._constant_attributes.clear()
         # Parse code (and process pending variables)
         self._parse_variables_from_code(update_variables=update_variables)
 
@@ -243,35 +307,58 @@ class Program(GLObject):
 
     def _parse_variables_from_code(self, update_variables=True):
         """Parse uniforms, attributes and varyings from the source code."""
-        # Get one string of code with comments removed
-        code = '\n\n'.join([sh.code for sh in self._shaders])
-        code = re.sub(r'(.*)(//.*)', r'\1', code, flags=re.M)
-
-        # Parse uniforms, attributes and varyings
+        # Keep stage identity: vertex inputs are attributes, fragment inputs
+        # are varyings. Joining source strings loses that distinction.
         self._code_variables = {}
-        for kind in ('uniform', 'attribute', 'varying', 'const', 'in', 'out'):
+        self._array_shapes = {}
+        declarations = []
+        sources = [(shader, re.sub(r'(.*)(//.*)', r'\1', shader.code, flags=re.M))
+                   for shader in self._shaders]
+        for declared_kind in ('uniform', 'attribute', 'varying', 'const', 'in', 'out'):
+            for shader, code in sources:
+                kind = declared_kind
+                if declared_kind == 'in':
+                    kind = 'attribute' if isinstance(shader, VertexShader) else 'varying'
+                elif declared_kind == 'out':
+                    kind = 'varying'
+                declarations.extend((kind, match) for match in
+                                    re.finditer(REGEX_VAR[declared_kind], code))
 
-            # pick regex for the correct kind of var
-            reg = REGEX_VAR[kind]
-
-            # treat *in* like attribute, *out* like varying
-            if kind == 'in':
-                kind = 'attribute'
-            elif kind == 'out':
-                kind = 'varying'
-
-            for m in re.finditer(reg, code):
-                gtype = m.group('type')
-                size = int(m.group('size')) if m.group('size') else -1
-                this_kind = kind
-                if size >= 1:
-                    # uniform arrays get added both as individuals and full
-                    for i in range(size):
-                        name = '%s[%d]' % (m.group('name'), i)
-                        self._code_variables[name] = kind, gtype, name, -1
-                    this_kind = 'uniform_array'
-                name = m.group('name')
-                self._code_variables[name] = this_kind, gtype, name, size
+        for kind, m in declarations:
+            gtype = m.group('type')
+            shape = tuple(map(int, re.findall(r'\d+', m.group('dimensions'))))
+            if any(dimension <= 0 for dimension in shape):
+                raise ValueError('Array dimensions must be positive for %r'
+                                 % m.group('name'))
+            sampler_types = ('sampler1D', 'sampler2D', 'sampler3D', 'samplerCube',
+                             'isampler2D', 'usampler2D')
+            if len(shape) > 1 and (kind not in ('uniform', 'varying', 'attribute') or
+                    ('sampler' in gtype and gtype not in sampler_types)):
+                raise ValueError('Multidimensional %s %r is unsupported'
+                                 % (kind, m.group('name')))
+            name = m.group('name')
+            previous = self._code_variables.get(name)
+            if (previous is not None and kind in ('uniform', 'varying') and
+                    (self._array_shapes.get(name, ()) != shape or previous[1] != gtype)):
+                raise ValueError('%s %r has conflicting shapes or types'
+                                 % (kind.capitalize(), name))
+            if shape:
+                # Keep the existing four-field variable records. Ordered
+                # shapes are separate: equal flattened sizes are not equal
+                # declarations. Every prefix is independently assignable.
+                for depth in range(1, len(shape) + 1):
+                    remaining = shape[depth:]
+                    for indices in product(*(range(d) for d in shape[:depth])):
+                        indexed = name + ''.join('[%d]' % i for i in indices)
+                        self._code_variables[indexed] = (
+                            'uniform_array' if kind == 'uniform' and remaining else kind, gtype,
+                            indexed, prod(remaining) if remaining else -1)
+                        if remaining:
+                            self._array_shapes[indexed] = remaining
+                self._array_shapes[name] = shape
+            self._code_variables[name] = (
+                'uniform_array' if kind == 'uniform' and shape else kind, gtype, name,
+                prod(shape) if shape else -1)
 
         # Now that our code variables are up-to date, we can process
         # the variables that were set but yet unknown.
@@ -355,6 +442,7 @@ class Program(GLObject):
         # Delete?
         if data is None:
             self._user_variables.pop(name, None)
+            self._constant_attributes.discard(name)
             return
 
         if name in self._code_variables:
@@ -392,19 +480,31 @@ class Program(GLObject):
                         raise ValueError('Uniform %r needs %i elements, '
                                          'not %i.' % (name, numel, data.size))
                     # Store and send GLIR command
+                    # Cache insertion order is also shader-rebuild replay order.
+                    self._user_variables.pop(name, None)
                     self._user_variables[name] = data
                     self._glir.command('UNIFORM', self._id, name, type_, data)
 
             elif kind == 'uniform_array':
                 # Normal uniform; convert to np array and check size
                 dtype, numel = self._gtypes[type_]
-                data = np.atleast_2d(data).astype(dtype)
-                need_shape = (size, numel)
+                shape = self._array_shapes[name]
+                # Preserve the original one-dimensional (N, components)
+                # contract. Higher-rank scalars also accept their natural shape;
+                # vectors/matrices retain a final packed-component dimension.
+                data = np.asarray(data, dtype=dtype)
+                need_shape = shape + (numel,)
+                if len(shape) == 1:
+                    data = np.atleast_2d(data)
+                elif numel == 1 and data.shape == shape:
+                    data = data.reshape(need_shape)
                 if data.shape != need_shape:
                     raise ValueError('Uniform array %r needs shape %s not %s'
                                      % (name, need_shape, data.shape))
                 data = data.ravel()
                 # Store and send GLIR command
+                # Cache insertion order is also shader-rebuild replay order.
+                self._user_variables.pop(name, None)
                 self._user_variables[name] = data
                 self._glir.command('UNIFORM', self._id, name, type_, data)
 
@@ -420,7 +520,9 @@ class Program(GLObject):
                 elif isinstance(data, (tuple, list)):
                     is_constant = all([isscalar(e) for e in data])
 
+                array_shape = self._array_shapes.get(name, ())
                 if not is_constant:
+                    data = _attribute_record_data(data, type_, array_shape, name)
                     # VBO data; overwrite or update
                     vbo = self._user_variables.get(name, None)
                     if isinstance(data, DataBuffer):
@@ -432,13 +534,14 @@ class Program(GLObject):
                         data = VertexBuffer(data)
                     # Store and send GLIR command
                     if data.dtype is not None:
-                        numel = self._gtypes[type_][1]
+                        numel = self._gtypes[type_][1] * (prod(array_shape) if array_shape else 1)
                         if data._last_dim and data._last_dim != numel:
                             raise ValueError('data.shape[-1] must be %s '
                                              'not %s for %s'
                                              % (numel, data._last_dim, name))
                     divisor = getattr(data, 'divisor', None)
                     self._user_variables[name] = data
+                    self._constant_attributes.discard(name)
                     value = (data.id, data.stride, data.offset)
                     self.glir.associate(data.glir)
                     self._glir.command('ATTRIBUTE', self._id,
@@ -446,6 +549,7 @@ class Program(GLObject):
                 else:
                     # Single-value attribute; convert to array and check size
                     dtype, numel = self._gtypes[type_]
+                    numel *= prod(array_shape) if array_shape else 1
                     data = np.array(data, dtype=dtype)
                     if data.ndim == 0:
                         data = data.reshape(data.size)
@@ -455,6 +559,7 @@ class Program(GLObject):
                     divisor = getattr(data, 'divisor', None)
                     # Store and send GLIR command
                     self._user_variables[name] = data
+                    self._constant_attributes.add(name)
                     value = tuple([0] + [i for i in data])
                     self._glir.command('ATTRIBUTE', self._id,
                                        name, type_, value, divisor)

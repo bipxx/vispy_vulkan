@@ -31,7 +31,8 @@ struct SpvCompile {
     uint64_t parse_calls = 0;
     uint64_t link_calls = 0;
     uint64_t spirv_stages = 0;
-    // Populated when cleanup is requested: original active input locations.
+    // Populated when cleanup is requested: original occupied active input locations,
+    // including every matrix column and array element location.
     // Their positions in this sorted vector are the final compact locations.
     std::vector<uint32_t> vertex_input_locations;
     std::vector<SpvResourceUsage> resource_usage;

@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "name": "mesa-lvp-repair",
+  "owner": "root",
+  "purpose": "Bounded unpatched/patched Lavapipe diagnostic for retained noperspective clipping failures",
+  "storage_workspace": "/home/heq/vispy-vulkan-managed",
+  "run_id": "mesa-lvp-repair-64",
+  "expected_peak_bytes": 6442450944,
+  "aggregate_max_scratch_bytes": 21474836480,
+  "min_free_bytes": 10737418240,
+  "parallel_jobs": 4,
+  "disk_guard_seconds": 30,
+  "source_archive_sha256": "81143147557058caa89f7a49475a66246a52983b109ac2a19b3066a4d55e6c53",
+  "patch": "compat/patches/mesa-26.1.8-noperspective-axis.patch",
+  "reuse": ["existing GCC and LLVM 18 development/runtime", "existing system Python", "retained Mesa release archive"],
+  "configuration": "Diagnostic headless Lavapipe only; OpenGL/EGL/GLX and unrelated drivers disabled; no automatic dependency fallback",
+  "system_package_installation": false,
+  "controls": ["same-configuration unpatched driver", "patched direct Vulkan interpolation", "all original six failures and 218 regressions", "all shared source smoke controls"],
+  "retention": "Hash-address baseline/patched necessary libraries, exact inputs and notices once in the existing Windows artifact store; keep small command/failure/source reports",
+  "terminal_cleanup": "Wait all owned children, retain failures and reproducer, inspect and apply managed guest cleanup using inherited protected/blocked registry, rehash retained files",
+  "scope": "Diagnostic driver configuration only; no native Linux hardware, complete window-system, installed qualification or producer admission claim"
+}

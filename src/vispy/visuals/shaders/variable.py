@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
 # Copyright (c) Vispy Development Team. All Rights Reserved.
 # Distributed under the (new) BSD License. See LICENSE.txt for more info.
+import re
+from math import prod
+
 import numpy as np
 from .shader_object import ShaderObject
 
@@ -14,7 +17,10 @@ class Variable(ShaderObject):
     ----------
     name : str
         the name of the variable. This string can also contain the full
-        definition of the variable, e.g. 'uniform vec2 foo'.
+        definition of the variable, e.g. 'uniform vec2 foo'. Explicit arrays
+        use literal dimensions, e.g. 'uniform vec3 samples[2][3]'. Array
+        values have shape (2, 3, 3), with packed components on the last axis.
+        Multidimensional scalar arrays may omit a final singleton component axis.
     value : {float, int, tuple, GLObject}
         If given, vtype and dtype are determined automatically. If a
         float/int/tuple is given, the variable is a uniform. If a gloo
@@ -46,6 +52,16 @@ class Variable(ShaderObject):
 
         if not (isinstance(name, str) or name is None):
             raise TypeError("Variable name must be string or None.")
+
+        self._array_shape = ()
+        if name is not None and '[' in name:
+            declaration = re.fullmatch(r'([A-Za-z_]\w*)\s*((?:\[\s*\d+\s*\]\s*)+)', name)
+            if declaration is None:
+                raise ValueError('Array name must contain positive literal dimensions.')
+            self._array_shape = tuple(map(int, re.findall(r'\d+', declaration.group(2))))
+            if not all(dimension > 0 for dimension in self._array_shape):
+                raise ValueError('Array dimensions must be positive.')
+            name = declaration.group(1)
 
         self._state_counter = 0
         self._name = name
@@ -90,12 +106,87 @@ class Variable(ShaderObject):
         return self._dtype
 
     @property
+    def array_shape(self):
+        """Ordered array dimensions from the declaration, excluding components."""
+        return self._array_shape
+
+    @property
     def value(self):
         """The value associated with this variable."""
         return self._value
 
     @value.setter
     def value(self, value):
+        if self._type_locked and self.vtype == 'attribute':
+            from ...gloo.program import Program, _attribute_record_data
+            from ...gloo.buffer import DataBuffer
+            if self.dtype not in Program._gtypes:
+                raise TypeError('Unsupported attribute type %r.' % self.dtype)
+            scalar, components = Program._gtypes[self.dtype]
+            required = components * prod(self._array_shape)
+            constant = isinstance(value, (float, int)) or (
+                isinstance(value, (tuple, list)) and
+                all(isinstance(word, (float, int)) for word in value))
+            if constant:
+                words = np.asarray(value, dtype=scalar).reshape(-1)
+                if words.size != required:
+                    raise ValueError('Attribute %r needs %i elements, not %i.' %
+                                     (self.name, required, words.size))
+                prepared = tuple(words.tolist())
+            elif isinstance(value, DataBuffer):
+                prepared = value
+                dtype = value.dtype
+                if dtype is not None:
+                    field = dtype[dtype.names[0]] if dtype.names else dtype
+                    packed = int(np.prod(field.shape)) if field.shape else 1
+                    # Legacy vector buffers keep their inference behavior.
+                    # Explicit aggregate and integer declarations need their
+                    # actual typed words, not the first matrix dimension.
+                    aggregate = self._array_shape or self.dtype.startswith('mat')
+                    typed = field.base == np.dtype(scalar) and packed == required
+                    if not typed and (aggregate or value.glsl_type != ('attribute', self.dtype)):
+                        raise TypeError('Attribute %r has incompatible buffer type or record shape.' % self.name)
+            else:
+                if isinstance(value, (tuple, list)):
+                    value = np.asarray(value, dtype=scalar)
+                prepared = _attribute_record_data(value, self.dtype, self._array_shape, self.name)
+                if not isinstance(prepared, np.ndarray):
+                    raise TypeError('Attribute %r requires numeric constants or vertex data.' % self.name)
+                if prepared.dtype.names:
+                    field = prepared.dtype[prepared.dtype.names[0]]
+                    packed = int(np.prod(field.shape)) if field.shape else 1
+                    valid = field.base == np.dtype(scalar) and packed == required
+                else:
+                    packed = prepared.shape[-1] if prepared.ndim > 1 else 1
+                    valid = prepared.ndim > 0 and prepared.dtype == np.dtype(scalar) and packed == required
+                if not valid:
+                    raise ValueError('Attribute %r has incompatible dtype or record shape.' % self.name)
+            # Publish only after all type/shape checks. A rejected assignment
+            # must not invalidate ModularProgram's cached upload identity.
+            self._value = prepared
+            self._state_counter += 1
+            return
+        if self._array_shape:
+            # An explicit declaration disambiguates arrays from the legacy
+            # vector/matrix inference. Match Program's public upload contract.
+            from ...gloo.program import Program
+            if self.vtype != 'uniform' or not self._type_locked or 'sampler' in self.dtype:
+                raise TypeError('Array values require an explicit non-sampler uniform type.')
+            if self.dtype not in Program._gtypes:
+                raise TypeError('Unsupported uniform array type %r.' % self.dtype)
+            dtype, components = Program._gtypes[self.dtype]
+            data = np.asarray(value, dtype=dtype)
+            expected = self._array_shape + (components,)
+            if (len(self._array_shape) > 1 and components == 1 and
+                    data.shape == self._array_shape):
+                data = data.reshape(expected)
+            if data.shape != expected:
+                raise ValueError('Uniform array %r needs shape %s not %s.'
+                                 % (self.name, expected, data.shape))
+            # Rejection must leave both the old value and cache identity intact.
+            self._value = data
+            self._state_counter += 1
+            return
         if isinstance(value, (tuple, list)) and 1 < len(value) < 5:
             vtype = 'uniform'
             dtype = 'vec%d' % len(value)
@@ -125,13 +216,12 @@ class Variable(ShaderObject):
             raise TypeError("Unknown data type %r for variable %r" %
                             (type(value), self))
 
+        if self._type_locked and (dtype != self._dtype or vtype != self._vtype):
+            raise TypeError('Variable is type "%s"; cannot assign value '
+                            '%r.' % (self.dtype, value))
         self._value = value
         self._state_counter += 1
-
         if self._type_locked:
-            if dtype != self._dtype or vtype != self._vtype:
-                raise TypeError('Variable is type "%s"; cannot assign value '
-                                '%r.' % (self.dtype, value))
             return
 
         # update vtype/dtype and emit changed event if necessary
@@ -175,7 +265,7 @@ class Variable(ShaderObject):
         if self.dtype is None:
             raise RuntimeError("Variable has no dtype: %r" % self)
 
-        name = names[self]
+        name = names[self] + ''.join('[%d]' % size for size in self._array_shape)
         vtype = self._vtype_for_version(version)
         if vtype == 'const':
             return '%s %s %s = %s;' % (vtype, self.dtype, name, self.value)
@@ -255,18 +345,23 @@ class InVar(Variable):
     def dtype(self):
         return self._var.dtype
 
+    @property
+    def array_shape(self):
+        return self._var.array_shape
+
     def definition(self, names, version, shader):
         # inherit name from source variable
         name = names[self._var]
         dtype = self._var.dtype
+        shape = ''.join('[%d]' % dimension for dimension in self.array_shape)
 
         if version[0] <= 120:
-            return "varying %s %s;" % (dtype, name)
+            return "varying %s %s%s;" % (dtype, name, shape)
         else:
             if self._array:
-                return "in %s %s[];" % (dtype, name)
+                return "in %s %s[]%s;" % (dtype, name, shape)
             else:
-                return "in %s %s;" % (dtype, name)
+                return "in %s %s%s;" % (dtype, name, shape)
 
     def expression(self, names):
         return names[self._var]

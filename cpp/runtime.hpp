@@ -289,10 +289,12 @@ void execute_owned_commands(int canvas_id, std::vector<Command>&& commands,
 void finish_canvas(int canvas_id);
 void present_canvas(int canvas_id);
 bool process_events();
+Value canvas_state_parameter(int canvas_id, int pname);
 std::vector<int> canvas_viewport(int canvas_id);
 bool frame_ready(int canvas_id);
 bool benchmark_frame_request_ready(int canvas_id);
 void configure_frame_slots(int slots);
+void diagnostic_submission_controls(bool hold_completions, const std::string& fail_once);
 void configure_shader_cache(int entries, uint64_t bytes);
 void benchmark_begin_frame(int canvas_id, uint64_t frame_id);
 VulkanMemoryWindow benchmark_memory_window_begin();

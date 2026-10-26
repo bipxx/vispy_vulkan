@@ -10,6 +10,7 @@
     "app/application.py",
     "app/backends/__init__.py",
     "app/backends/_dawn_headless.py",
+    "app/backends/_dawn_tk.py",
     "app/backends/_jupyter_rfb.py",
     "app/backends/_offscreen_util.py",
     "app/backends/_pyqt5.py",

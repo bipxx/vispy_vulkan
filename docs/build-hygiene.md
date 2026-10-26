@@ -153,3 +153,92 @@ Measure both logical size and unique compressed file data, with hardlinks counte
 once. Branch references and shared environments can look large in naive totals
 while offering almost no reclaimable disk space. Do not create another large
 backup of already-retained data merely to report cleanup.
+
+## Mesa clipping-repair diagnostic profile
+
+The versioned [mesa-lvp-repair profile](../compat/build-profiles/mesa-lvp-repair.json)
+permits one bounded baseline/patch comparison using the retained Mesa release
+archive and existing LLVM 18/GCC/Python. Its additional peak is 6 GiB; the shared
+20 GiB scratch cap and 10 GiB free reserve are unchanged. It permits no system
+package installation or automatic source/dependency fallback.
+
+For this packet the coordinator selects `/home/heq/vispy-vulkan-managed` as the
+single scratch workspace, avoiding repeated compiler reads across the Windows
+mount. Windows managed scratch must be empty. The guest registry inherits all
+current protected/blocked paths and protects existing dependency origins; both
+guest and Windows backing capacity are checked. Periodic guards account for both
+managed roots against the one aggregate budget. Stable inputs/artifacts/evidence
+remain in the existing Windows store, referenced by hash rather than cloned.
+
+The headless configuration isolates the arithmetic defect. It does not establish
+complete window-system or hardware support. Retain original/patched necessary
+libraries, sources, patch and notices, actual exits/waits and failing controls;
+then plan/apply guest cleanup and rehash the retained files. No unpatched input,
+system driver, SDK, existing environment or pinned origin is modified.
+
+
+## Maintained Mesa source-build profile
+
+`compat/software-vulkan-build.json` carries the same bounded headless repair
+recipe for `tools/build_software_vulkan.py`: 6 GiB additional peak, four jobs,
+30-second capacity guards and no automatic dependency fallback. Register a run
+with the selected workspace before invoking it. A guest workspace must retain
+its inherited protected/blocked registry and Windows backing-volume capacity
+entry; the other coordinator scratch root must remain empty. The builder checks
+read-only filesystems as well as free capacity throughout command execution.
+
+The builder verifies the exact release and patch, records the original failing
+control, applies the patch and requires all four independent Vulkan controls to
+pass. `--fetch` permits only the pinned Mesa source archive if absent; compilers,
+LLVM and Python build tools must already be supplied by the existing environment
+or an explicitly retained projection. It creates no environment and installs no
+system packages. The ephemeral Linux CI setup supplies its declared packages
+and hashed Python tools before calling this same builder.
+
+Retain the resulting source-input archive, original release, both necessary
+libraries, full original notices, commands and actual exit. Only after waiting
+for that invocation, invoke `--cleanup-exit <actual-exit>` with the same run,
+owner, output and workspace. Cleanup validates retained identities and generates
+and applies an exact managed plan. A failing or interrupted build remains a
+failure with its reproducer; source controls do not establish producer admission,
+installed artifact qualification or native Linux hardware support.
+
+
+For isolated installed-wheel checks, retain/load the produced driver outside the
+source and publication checkouts. Linux CI selects an owned workspace under
+`RUNNER_TEMP`, registers its `build/work/<run>` and passes `--library-store`
+pointing to that workspace's `build/artifacts`. The builder accepts only its
+source or selected workspace artifact store, never scratch or an arbitrary
+origin. Source archives remain shared immutable inputs; both necessary driver
+libraries and their original notices are retained/uploaded with the evidence.
+The ordinary installed native-module inventory still rejects every repository
+native image. Do not exempt the driver or weaken that verifier to accommodate a
+repository-local ICD. Default local library retention is unchanged.
+
+The Linux wheel workflow now uses `tools/linux_ci_lifecycle.py` to register one
+external native lease before installing its build tools. Its environment,
+consumer, temporary files and native build share that lease; Mesa uses another
+registered run in the same workspace and budget. The per-run uv artifact cache
+lives in the selected workspace and is cleared with uv's own clean command.
+`UV_LINK_MODE=copy` and copied interpreters avoid hardlinked scratch. Audited uv
+interpreter aliases are materialized without changing their original targets;
+only its redundant `lib64` alias is removed. Unknown aliases still reject.
+
+Each phase retains its real argv, PID, exit, wait, log and selected input
+environment. Native commands run directly through the recorder; shell setup
+scripts retain their original bytes. Source inputs/licenses, before/after source
+maps, generated build configuration, observed toolchain hashes and shipping
+outputs survive outside scratch. Every successful or failed terminal run uses
+the existing registry-aware cleanup planner and verifier. A still-active or
+unawaited child prevents cleanup. Source changes are retained as a delta and
+remain failures even after scratch is cleaned. These are development/CI
+receipts, not producer or installed-artifact admission.
+
+
+Experimental Metal CI uses the same registered external POSIX lifecycle. Its
+default is exact original build-only reuse with fresh installed CPU controls;
+`compat/build-profiles/metal-ci-native.json` documents the explicit 6 GiB fresh
+mode. Reuse reserves 1 GiB, and both modes preserve the shared 20 GiB scratch and
+10 GiB reserve limits. A PR path filter sees cumulative changes, so it does not
+replace an input comparison inside the job. Metadata-only changes must not
+silently trigger a native rebuild. Metal graphics qualification remains open.

@@ -1,0 +1,3968 @@
+{
+  "schema": 1,
+  "source_commit": "9ef9765552c41c84d82d69b44756d5925b4d3cd3",
+  "python": [
+    {
+      "member": "vispy/__init__.py",
+      "file": {
+        "path": "src/vispy/__init__.py",
+        "sha256": "43e1025ff84261a2b43749c769551033a6cd4d47f8037b864f119c9e56361455"
+      }
+    },
+    {
+      "member": "vispy/app/__init__.py",
+      "file": {
+        "path": "src/vispy/app/__init__.py",
+        "sha256": "34386f5653e94549b9ce47ece0bd55c1b744d47860edd184908dbc4581f62933"
+      }
+    },
+    {
+      "member": "vispy/app/_default_app.py",
+      "file": {
+        "path": "src/vispy/app/_default_app.py",
+        "sha256": "00295d6507caee7976cc6227b8906c0a6d6c7c529913e50506049e6af1bc815a"
+      }
+    },
+    {
+      "member": "vispy/app/_detect_eventloop.py",
+      "file": {
+        "path": "src/vispy/app/_detect_eventloop.py",
+        "sha256": "87b20cb12657b88033f4cddb7b307f801d8142a71f88f71da68e6f027f1c77b6"
+      }
+    },
+    {
+      "member": "vispy/app/application.py",
+      "file": {
+        "path": "src/vispy/app/application.py",
+        "sha256": "9e97d71d40b3b5a0332f8f89f9fdf528cf417ffabf2c77470f22e47e5949b71c"
+      }
+    },
+    {
+      "member": "vispy/app/backends/__init__.py",
+      "file": {
+        "path": "src/vispy/app/backends/__init__.py",
+        "sha256": "b40767f4912a2c4440edf4c4047286a57412fd6d99f20fab78a58a2168654cbd"
+      }
+    },
+    {
+      "member": "vispy/app/backends/_dawn_headless.py",
+      "file": {
+        "path": "src/vispy/app/backends/_dawn_headless.py",
+        "sha256": "e6c0857d9435886ac19ce5c5af137811f79c5da440b29c1e6e0bc63c8a4c1d5d"
+      }
+    },
+    {
+      "member": "vispy/app/backends/_dawn_tk.py",
+      "file": {
+        "path": "src/vispy/app/backends/_dawn_tk.py",
+        "sha256": "6a4bd1f0bb786235e255d257a733b6acde42a096fa059d9b73ae60e0f4d4c554"
+      }
+    },
+    {
+      "member": "vispy/app/backends/_jupyter_rfb.py",
+      "file": {
+        "path": "src/vispy/app/backends/_jupyter_rfb.py",
+        "sha256": "ec3259360b540a37c51099ee99ba32b4348f73ef16a6faaae24a16aeec9d5c41"
+      }
+    },
+    {
+      "member": "vispy/app/backends/_offscreen_util.py",
+      "file": {
+        "path": "src/vispy/app/backends/_offscreen_util.py",
+        "sha256": "052ccbf699551554191d15e5848ed6c9483caf8e860b7f2ffc874bed2ef97226"
+      }
+    },
+    {
+      "member": "vispy/app/backends/_pyqt5.py",
+      "file": {
+        "path": "src/vispy/app/backends/_pyqt5.py",
+        "sha256": "748abadfa2606daa04b68475ec15e92c02dab3644d0b7f51dde64a52de6f016b"
+      }
+    },
+    {
+      "member": "vispy/app/backends/_pyqt6.py",
+      "file": {
+        "path": "src/vispy/app/backends/_pyqt6.py",
+        "sha256": "7bd04d76bdd54f670ea124beb8bf2dad78d92dfeb53e9dc26ae2b14776863f6a"
+      }
+    },
+    {
+      "member": "vispy/app/backends/_pyside6.py",
+      "file": {
+        "path": "src/vispy/app/backends/_pyside6.py",
+        "sha256": "e8d567c49bac585682400aac92aa591897f1d4905e9ea15815b54c8c536ecce9"
+      }
+    },
+    {
+      "member": "vispy/app/backends/_qt.py",
+      "file": {
+        "path": "src/vispy/app/backends/_qt.py",
+        "sha256": "a2e7c45beb48606bd75e515c792228c8804dfb99bf4dce90faaa19e434a4869d"
+      }
+    },
+    {
+      "member": "vispy/app/backends/_template.py",
+      "file": {
+        "path": "src/vispy/app/backends/_template.py",
+        "sha256": "cc5cf273be181f23af20bdbacf3da76f5e4cdbb389fe2bac4d54e4505ffcdf90"
+      }
+    },
+    {
+      "member": "vispy/app/backends/_test.py",
+      "file": {
+        "path": "src/vispy/app/backends/_test.py",
+        "sha256": "243cd95be6aafb578e335ebbce97f969659e227da5c3a17e93845c0e5ef03361"
+      }
+    },
+    {
+      "member": "vispy/app/backends/tests/__init__.py",
+      "file": {
+        "path": "src/vispy/app/backends/tests/__init__.py",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "member": "vispy/app/backends/tests/test_offscreen_util.py",
+      "file": {
+        "path": "src/vispy/app/backends/tests/test_offscreen_util.py",
+        "sha256": "f9a86873faa34228f5732247af6753a4d72aaffd68409348afceaca8db557e1d"
+      }
+    },
+    {
+      "member": "vispy/app/backends/tests/test_rfb.py",
+      "file": {
+        "path": "src/vispy/app/backends/tests/test_rfb.py",
+        "sha256": "b3339db1d2ac272eff7459c9780a6ed4075ce0c424d2290d1ab2cec1462e4d7d"
+      }
+    },
+    {
+      "member": "vispy/app/base.py",
+      "file": {
+        "path": "src/vispy/app/base.py",
+        "sha256": "30fc071772ca917548a28ebced100baeddf0566c264e6c8fac4043217123f6b7"
+      }
+    },
+    {
+      "member": "vispy/app/canvas.py",
+      "file": {
+        "path": "src/vispy/app/canvas.py",
+        "sha256": "00a98debb5519d344c9c9e9ee0f838eb9bfae784cd7c36eb86581076fcec310f"
+      }
+    },
+    {
+      "member": "vispy/app/qt.py",
+      "file": {
+        "path": "src/vispy/app/qt.py",
+        "sha256": "ef2a2cd63783c2cfd2a9475d2f339f1f890ab5a52462a0ae340ee04be741881f"
+      }
+    },
+    {
+      "member": "vispy/app/tests/__init__.py",
+      "file": {
+        "path": "src/vispy/app/tests/__init__.py",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "member": "vispy/app/tests/qt-designer.ui",
+      "file": {
+        "path": "src/vispy/app/tests/qt-designer.ui",
+        "sha256": "15ec134209db6e4bc534e05b468833de1b173cbd87f68a2ef7f1893495a128bf"
+      }
+    },
+    {
+      "member": "vispy/app/tests/test_app.py",
+      "file": {
+        "path": "src/vispy/app/tests/test_app.py",
+        "sha256": "3f25930f3bf5fbdefadb3b6a06161141e2049731f9a36db68b5a0aad58e89037"
+      }
+    },
+    {
+      "member": "vispy/app/tests/test_backends.py",
+      "file": {
+        "path": "src/vispy/app/tests/test_backends.py",
+        "sha256": "898ac1ae19cbe895cd366c51810bb60f014f05af7b0c3d0f44135faa23ae550a"
+      }
+    },
+    {
+      "member": "vispy/app/tests/test_canvas.py",
+      "file": {
+        "path": "src/vispy/app/tests/test_canvas.py",
+        "sha256": "4947c4a5346e1b656ef3e3ec42d7ddc3068d9c13bfca010b27dce75b7d8d5e1c"
+      }
+    },
+    {
+      "member": "vispy/app/tests/test_context.py",
+      "file": {
+        "path": "src/vispy/app/tests/test_context.py",
+        "sha256": "8f2b73ce23490dd0ac34ce2db38b018f3e809bf041ae3403f845a184de2ed311"
+      }
+    },
+    {
+      "member": "vispy/app/tests/test_qt.py",
+      "file": {
+        "path": "src/vispy/app/tests/test_qt.py",
+        "sha256": "5ec4c3ee81c680971053ed39c9c52bc6f619ade4522db2288dcdce8457b40f3e"
+      }
+    },
+    {
+      "member": "vispy/app/tests/test_qt_mouse_buttons.py",
+      "file": {
+        "path": "src/vispy/app/tests/test_qt_mouse_buttons.py",
+        "sha256": "c4ab6ba477a1b94ba76472f031297b4301f36950714d28bcf2e8e00ca05a883e"
+      }
+    },
+    {
+      "member": "vispy/app/tests/test_simultaneous.py",
+      "file": {
+        "path": "src/vispy/app/tests/test_simultaneous.py",
+        "sha256": "4b490a1e1000b563aa8c2b5a3fe835006e903b2e4de6f35a1896d8092440e264"
+      }
+    },
+    {
+      "member": "vispy/app/timer.py",
+      "file": {
+        "path": "src/vispy/app/timer.py",
+        "sha256": "41129507f231e2deed48570557572fcc3fe60cb10d4d46e13dee8b94f5dfec75"
+      }
+    },
+    {
+      "member": "vispy/color/__init__.py",
+      "file": {
+        "path": "src/vispy/color/__init__.py",
+        "sha256": "dc83cf3d3ba215619f56684505293940270da7ef3fa5a8fc1cfacb9a091214f6"
+      }
+    },
+    {
+      "member": "vispy/color/_color_dict.py",
+      "file": {
+        "path": "src/vispy/color/_color_dict.py",
+        "sha256": "4ea959a1669e3b775d5b09b9ecc686aaaa220d4e6ad0e981071a73840733fa23"
+      }
+    },
+    {
+      "member": "vispy/color/color_array.py",
+      "file": {
+        "path": "src/vispy/color/color_array.py",
+        "sha256": "282395c6bfeabcd7e065023a9491dec885677b731e600131eadd15dc38458c06"
+      }
+    },
+    {
+      "member": "vispy/color/color_space.py",
+      "file": {
+        "path": "src/vispy/color/color_space.py",
+        "sha256": "8749ed0db4f83d361a0987f66c41916d5288fc78dbc90db3b854b001eb7d1100"
+      }
+    },
+    {
+      "member": "vispy/color/colormap.py",
+      "file": {
+        "path": "src/vispy/color/colormap.py",
+        "sha256": "c03b6ff337d19533f21f7576e4f91b40f576e46fa1a7d727d3892e821739db7d"
+      }
+    },
+    {
+      "member": "vispy/color/tests/__init__.py",
+      "file": {
+        "path": "src/vispy/color/tests/__init__.py",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "member": "vispy/color/tests/test_color.py",
+      "file": {
+        "path": "src/vispy/color/tests/test_color.py",
+        "sha256": "87332ba6d9a54398debb577ec4852967b64e32b427d223a4d6a47a7f1c1e3330"
+      }
+    },
+    {
+      "member": "vispy/conftest.py",
+      "file": {
+        "path": "src/vispy/conftest.py",
+        "sha256": "49434852c9fba3e7106b4983300871a32794fc43598ea3b907fc53252362fb24"
+      }
+    },
+    {
+      "member": "vispy/ext/__init__.py",
+      "file": {
+        "path": "src/vispy/ext/__init__.py",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "member": "vispy/ext/cocoapy.py",
+      "file": {
+        "path": "src/vispy/ext/cocoapy.py",
+        "sha256": "7c96d0e2914100c548f75baa9d39b48f92605ebf12a9369d971d8ce621745459"
+      }
+    },
+    {
+      "member": "vispy/ext/cubehelix.py",
+      "file": {
+        "path": "src/vispy/ext/cubehelix.py",
+        "sha256": "b9b0c4a04a1cd3898ab94f2ca846628ec8cf6b27d98d88a2207602ca248c77d7"
+      }
+    },
+    {
+      "member": "vispy/ext/fontconfig.py",
+      "file": {
+        "path": "src/vispy/ext/fontconfig.py",
+        "sha256": "0c0181bc0d66374464290fd0211635ad688fb13ec70b0c698269f8c6d82f8324"
+      }
+    },
+    {
+      "member": "vispy/ext/gdi32plus.py",
+      "file": {
+        "path": "src/vispy/ext/gdi32plus.py",
+        "sha256": "542c1aad3b9ec9dacf5c212a426a492c9729e9a7d4525a4a26d36555430605d1"
+      }
+    },
+    {
+      "member": "vispy/geometry/__init__.py",
+      "file": {
+        "path": "src/vispy/geometry/__init__.py",
+        "sha256": "8607bfff00f296f810b39e288cf719b90e20086f17e76aa5414ddce2159abdfb"
+      }
+    },
+    {
+      "member": "vispy/geometry/_triangulation_debugger.py",
+      "file": {
+        "path": "src/vispy/geometry/_triangulation_debugger.py",
+        "sha256": "98e82733a946547d8f77055f94fca1ef035200174007010c0c593566cef2d009"
+      }
+    },
+    {
+      "member": "vispy/geometry/calculations.py",
+      "file": {
+        "path": "src/vispy/geometry/calculations.py",
+        "sha256": "192c10cc43b496dd81bc3b7408253b77e9b529dacfaf95018a39867e5f7a77d4"
+      }
+    },
+    {
+      "member": "vispy/geometry/curves.py",
+      "file": {
+        "path": "src/vispy/geometry/curves.py",
+        "sha256": "69ab4197c02b375cff46e98f1d2e199424d73d43ce87c98627e8de289e8ba575"
+      }
+    },
+    {
+      "member": "vispy/geometry/generation.py",
+      "file": {
+        "path": "src/vispy/geometry/generation.py",
+        "sha256": "782273645241cfc746c2c3e237e67376aeafb8fe494455219653d76b296330a8"
+      }
+    },
+    {
+      "member": "vispy/geometry/isocurve.py",
+      "file": {
+        "path": "src/vispy/geometry/isocurve.py",
+        "sha256": "2cd1f20a92839adcc84cfd64bca410be1983fff3dbdb95580e7d1f5dbb49413b"
+      }
+    },
+    {
+      "member": "vispy/geometry/isosurface.py",
+      "file": {
+        "path": "src/vispy/geometry/isosurface.py",
+        "sha256": "357598d14444650a1361ee1150fb145839f9a9d99d3c74cf869282891d47cab9"
+      }
+    },
+    {
+      "member": "vispy/geometry/meshdata.py",
+      "file": {
+        "path": "src/vispy/geometry/meshdata.py",
+        "sha256": "73238e4bc7fcfbbccfef352170c5255271fbd963a9c542f3735fc1ac2ed1b622"
+      }
+    },
+    {
+      "member": "vispy/geometry/normals.py",
+      "file": {
+        "path": "src/vispy/geometry/normals.py",
+        "sha256": "1352c5e60d4f7fef5876f78aff7f397892e660216312fb21acb552777b348e57"
+      }
+    },
+    {
+      "member": "vispy/geometry/parametric.py",
+      "file": {
+        "path": "src/vispy/geometry/parametric.py",
+        "sha256": "d4ad8ca01c0925b58be3a8aa13754cd8bae006a8b4f015bcaf6aac3289a5aeee"
+      }
+    },
+    {
+      "member": "vispy/geometry/polygon.py",
+      "file": {
+        "path": "src/vispy/geometry/polygon.py",
+        "sha256": "54082c12be0dee2d6384252aeca0659b58ee8ae79ab8dce1e9af52f56852bb11"
+      }
+    },
+    {
+      "member": "vispy/geometry/rect.py",
+      "file": {
+        "path": "src/vispy/geometry/rect.py",
+        "sha256": "9b8ac39d74fde27c6080e1a0768be01b56b0aa3ce7b5aa0c1e5b1aff12ee5537"
+      }
+    },
+    {
+      "member": "vispy/geometry/tests/__init__.py",
+      "file": {
+        "path": "src/vispy/geometry/tests/__init__.py",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "member": "vispy/geometry/tests/test_calculations.py",
+      "file": {
+        "path": "src/vispy/geometry/tests/test_calculations.py",
+        "sha256": "bc8b246c39be2c990d13ba50d4883c76ad506234b891aea682c9ee18d7653d90"
+      }
+    },
+    {
+      "member": "vispy/geometry/tests/test_generation.py",
+      "file": {
+        "path": "src/vispy/geometry/tests/test_generation.py",
+        "sha256": "197644dd4f56edf67bc28c378f645770d18357d172b51bdbeb244f12b285df07"
+      }
+    },
+    {
+      "member": "vispy/geometry/tests/test_meshdata.py",
+      "file": {
+        "path": "src/vispy/geometry/tests/test_meshdata.py",
+        "sha256": "6b0018d55983f351c75c8a31f9b1af48f46cef59c20a1386219094c1393ea518"
+      }
+    },
+    {
+      "member": "vispy/geometry/tests/test_triangulation.py",
+      "file": {
+        "path": "src/vispy/geometry/tests/test_triangulation.py",
+        "sha256": "44b8fc8952f809ee2c387ae0c534d8d584523d493313f307e1fe5386ccb001df"
+      }
+    },
+    {
+      "member": "vispy/geometry/torusknot.py",
+      "file": {
+        "path": "src/vispy/geometry/torusknot.py",
+        "sha256": "88841e21d9315731093ecea5c7a6b7dc2f9396ee5e170a33800e855db06fcc0e"
+      }
+    },
+    {
+      "member": "vispy/geometry/triangulation.py",
+      "file": {
+        "path": "src/vispy/geometry/triangulation.py",
+        "sha256": "222251d449ac1812a6a32cbe4fe2a0f400c86995df881670847f77bd54762b18"
+      }
+    },
+    {
+      "member": "vispy/gloo/__init__.py",
+      "file": {
+        "path": "src/vispy/gloo/__init__.py",
+        "sha256": "ccaf150dd63f776b170cb7b6a6909191b5f3aa3f45aef2acbb25344956bd38e5"
+      }
+    },
+    {
+      "member": "vispy/gloo/buffer.py",
+      "file": {
+        "path": "src/vispy/gloo/buffer.py",
+        "sha256": "653c1ccbbd73dc8a0b70e70934b2bc6188cb10d048c07d34a5a237aa15b5d92d"
+      }
+    },
+    {
+      "member": "vispy/gloo/context.py",
+      "file": {
+        "path": "src/vispy/gloo/context.py",
+        "sha256": "2b228c50da13c32e5fe29216866307148de4e6542f5726c8e140e49fe4f6f2ab"
+      }
+    },
+    {
+      "member": "vispy/gloo/dawn_parser.py",
+      "file": {
+        "path": "src/vispy/gloo/dawn_parser.py",
+        "sha256": "70c566e1b4a548827d9ee287a26aa545f8e003457b8fbd13b071f406ff43d6c4"
+      }
+    },
+    {
+      "member": "vispy/gloo/framebuffer.py",
+      "file": {
+        "path": "src/vispy/gloo/framebuffer.py",
+        "sha256": "ac6d1f70cd8d9040fd8c517e185934bc10d97eaae23fadd6f15483af481c5673"
+      }
+    },
+    {
+      "member": "vispy/gloo/gl/__init__.py",
+      "file": {
+        "path": "src/vispy/gloo/gl/__init__.py",
+        "sha256": "61071119c2d595f75362f58261b63f2b9472ba8c6036a9cdb99c6e20845422d6"
+      }
+    },
+    {
+      "member": "vispy/gloo/gl/_constants.py",
+      "file": {
+        "path": "src/vispy/gloo/gl/_constants.py",
+        "sha256": "bcfbe5d767ffb392a1ae7d0309728daa858193c6df3f5c8949a1fd565235e68b"
+      }
+    },
+    {
+      "member": "vispy/gloo/gl/_es2.py",
+      "file": {
+        "path": "src/vispy/gloo/gl/_es2.py",
+        "sha256": "40347200124c08c4073d27c899f9d44e7abffb0847afa732366de6649bfc7d34"
+      }
+    },
+    {
+      "member": "vispy/gloo/gl/_gl2.py",
+      "file": {
+        "path": "src/vispy/gloo/gl/_gl2.py",
+        "sha256": "8d9fd8dd6550bec4ac4a226c8135b34a10954d482aae291bb96b2a942b655693"
+      }
+    },
+    {
+      "member": "vispy/gloo/gl/_proxy.py",
+      "file": {
+        "path": "src/vispy/gloo/gl/_proxy.py",
+        "sha256": "29e96154282b5f333c0590d14cd6948164ff46e3e2da76ac698429488de5c5e4"
+      }
+    },
+    {
+      "member": "vispy/gloo/gl/dawn.py",
+      "file": {
+        "path": "src/vispy/gloo/gl/dawn.py",
+        "sha256": "73c88fe98b0da67eb42cb4d4ae76f6350c7e5256125b04ff3abb2c6069110b17"
+      }
+    },
+    {
+      "member": "vispy/gloo/gl/dummy.py",
+      "file": {
+        "path": "src/vispy/gloo/gl/dummy.py",
+        "sha256": "5078ee3d8b9549404842c7bb34b8f9b3d4fa60903b6ce90a945d8e20e502578a"
+      }
+    },
+    {
+      "member": "vispy/gloo/gl/gl2.py",
+      "file": {
+        "path": "src/vispy/gloo/gl/gl2.py",
+        "sha256": "97a5d4ea0a4a37344e74cec0653202c72d7a30b15ebf97b82b5b747daeac6997"
+      }
+    },
+    {
+      "member": "vispy/gloo/gl/glplus.py",
+      "file": {
+        "path": "src/vispy/gloo/gl/glplus.py",
+        "sha256": "97a5d4ea0a4a37344e74cec0653202c72d7a30b15ebf97b82b5b747daeac6997"
+      }
+    },
+    {
+      "member": "vispy/gloo/gl/tests/__init__.py",
+      "file": {
+        "path": "src/vispy/gloo/gl/tests/__init__.py",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "member": "vispy/gloo/gl/tests/test_basics.py",
+      "file": {
+        "path": "src/vispy/gloo/gl/tests/test_basics.py",
+        "sha256": "42132169eb1688e733a55a15f13dcf3b3b25b6bdd6ecc8b09c83045747af1fb7"
+      }
+    },
+    {
+      "member": "vispy/gloo/gl/tests/test_functionality.py",
+      "file": {
+        "path": "src/vispy/gloo/gl/tests/test_functionality.py",
+        "sha256": "d742b53b80b87b33c42d9d08cdcd99032b07b053f313a0a5e858be75c2f6838a"
+      }
+    },
+    {
+      "member": "vispy/gloo/gl/tests/test_names.py",
+      "file": {
+        "path": "src/vispy/gloo/gl/tests/test_names.py",
+        "sha256": "6fd673783b23f5994754828df2798d8ba193b545d117d6cffd0b9dfee3978179"
+      }
+    },
+    {
+      "member": "vispy/gloo/gl/tests/test_use.py",
+      "file": {
+        "path": "src/vispy/gloo/gl/tests/test_use.py",
+        "sha256": "90c8d6a2fd9c809b4ccb0cb7563b60173ea430d4340fef9392902c371dec1627"
+      }
+    },
+    {
+      "member": "vispy/gloo/glir.py",
+      "file": {
+        "path": "src/vispy/gloo/glir.py",
+        "sha256": "a3bb8a75b33f47420e9c100b8a6d81037a2f03c905e6c9f7d8399f4fb2eb8f7c"
+      }
+    },
+    {
+      "member": "vispy/gloo/globject.py",
+      "file": {
+        "path": "src/vispy/gloo/globject.py",
+        "sha256": "78c929159aea258487c7c0398f5947fae733a9993e217d9961befb13e6f50ce3"
+      }
+    },
+    {
+      "member": "vispy/gloo/preprocessor.py",
+      "file": {
+        "path": "src/vispy/gloo/preprocessor.py",
+        "sha256": "94ca763b10b26436f98322d460adea2cc852b6b99bc888275589e69e25abfb01"
+      }
+    },
+    {
+      "member": "vispy/gloo/program.py",
+      "file": {
+        "path": "src/vispy/gloo/program.py",
+        "sha256": "9e3fe2db42b395eddcfa2bd9a148022a8d5442f46f0d4157d7a512d2fbed6118"
+      }
+    },
+    {
+      "member": "vispy/gloo/tests/__init__.py",
+      "file": {
+        "path": "src/vispy/gloo/tests/__init__.py",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "member": "vispy/gloo/tests/test_buffer.py",
+      "file": {
+        "path": "src/vispy/gloo/tests/test_buffer.py",
+        "sha256": "b002a0f953507952afc7b9629138137d212892bb30ac7163e6bde5cb7b9ad811"
+      }
+    },
+    {
+      "member": "vispy/gloo/tests/test_context.py",
+      "file": {
+        "path": "src/vispy/gloo/tests/test_context.py",
+        "sha256": "c3539510c2eed6ccd7c8b2bb53c7fb8191485c59619e0b77548aed496497030e"
+      }
+    },
+    {
+      "member": "vispy/gloo/tests/test_framebuffer.py",
+      "file": {
+        "path": "src/vispy/gloo/tests/test_framebuffer.py",
+        "sha256": "5aca11e337081311addcaa7e440f640a442a71605914cfc53b7035380ae130b2"
+      }
+    },
+    {
+      "member": "vispy/gloo/tests/test_glir.py",
+      "file": {
+        "path": "src/vispy/gloo/tests/test_glir.py",
+        "sha256": "7dffb80c89957c216ae05b3fc81e7916069dc76a7f045c1fa2739f1d3a90c096"
+      }
+    },
+    {
+      "member": "vispy/gloo/tests/test_globject.py",
+      "file": {
+        "path": "src/vispy/gloo/tests/test_globject.py",
+        "sha256": "bb543f13287b2d7be8f45dfb9cbcf6e4738cc3d451377bcb74225a0bbb43a1e9"
+      }
+    },
+    {
+      "member": "vispy/gloo/tests/test_program.py",
+      "file": {
+        "path": "src/vispy/gloo/tests/test_program.py",
+        "sha256": "76ebc476af4ccc9c7731c4f312b8b8638f62364b574540a0953be0c708e5b958"
+      }
+    },
+    {
+      "member": "vispy/gloo/tests/test_texture.py",
+      "file": {
+        "path": "src/vispy/gloo/tests/test_texture.py",
+        "sha256": "d162ef9c5f7579a18fb2f4d49dbbf0867a06262527f54f7a12b98a1b71eb43e7"
+      }
+    },
+    {
+      "member": "vispy/gloo/tests/test_use_gloo.py",
+      "file": {
+        "path": "src/vispy/gloo/tests/test_use_gloo.py",
+        "sha256": "acc80d8b31a01d2329642097c09036b0b2f86f2c69368699c42e5b7e1d030df3"
+      }
+    },
+    {
+      "member": "vispy/gloo/tests/test_util.py",
+      "file": {
+        "path": "src/vispy/gloo/tests/test_util.py",
+        "sha256": "a357ae3de2139e8c468dc78e5557768c40a6cd07bfe95b1747d646a11806b673"
+      }
+    },
+    {
+      "member": "vispy/gloo/tests/test_wrappers.py",
+      "file": {
+        "path": "src/vispy/gloo/tests/test_wrappers.py",
+        "sha256": "c4419b191b60b6dcd8a727bbd692e2cf5d39ce6a4c202f3e0622b3fec9eebefd"
+      }
+    },
+    {
+      "member": "vispy/gloo/texture.py",
+      "file": {
+        "path": "src/vispy/gloo/texture.py",
+        "sha256": "6d78a96ebdc214f2b338e121c780a8f6ad4e6ed496de992c443d93b277a738d8"
+      }
+    },
+    {
+      "member": "vispy/gloo/util.py",
+      "file": {
+        "path": "src/vispy/gloo/util.py",
+        "sha256": "b02d4e33e2f4898df2989214e1e34e93ff61cc329954d88a2873814ffea6e74d"
+      }
+    },
+    {
+      "member": "vispy/gloo/wrappers.py",
+      "file": {
+        "path": "src/vispy/gloo/wrappers.py",
+        "sha256": "17d9fbaa51c6afb04b009f7df3709c1248dedeb46b6deae940bd510357cc15e2"
+      }
+    },
+    {
+      "member": "vispy/glsl/__init__.py",
+      "file": {
+        "path": "src/vispy/glsl/__init__.py",
+        "sha256": "d1a5eb03bef4854feb08ab75a6c9398125248788d418985b592208b79a3189ad"
+      }
+    },
+    {
+      "member": "vispy/glsl/antialias/antialias.glsl",
+      "file": {
+        "path": "src/vispy/glsl/antialias/antialias.glsl",
+        "sha256": "52bdd6320ff49108c906b7c2ff75ef5ee03c3168c0c52c8e06f396082a803b71"
+      }
+    },
+    {
+      "member": "vispy/glsl/antialias/cap-butt.glsl",
+      "file": {
+        "path": "src/vispy/glsl/antialias/cap-butt.glsl",
+        "sha256": "f25cbb28f8424dcd21d4c369bf68a8d3b93a7806aebd2ab4cf31740425cdec28"
+      }
+    },
+    {
+      "member": "vispy/glsl/antialias/cap-round.glsl",
+      "file": {
+        "path": "src/vispy/glsl/antialias/cap-round.glsl",
+        "sha256": "780c7932b83a80da2d6b8546a6dea4de8eb16979c94a0930d1ac36a86166ecea"
+      }
+    },
+    {
+      "member": "vispy/glsl/antialias/cap-square.glsl",
+      "file": {
+        "path": "src/vispy/glsl/antialias/cap-square.glsl",
+        "sha256": "8bc561a02dbaca54d34df07d86426901ff6aa78b3d2cd0315e7df160690f5ca8"
+      }
+    },
+    {
+      "member": "vispy/glsl/antialias/cap-triangle-in.glsl",
+      "file": {
+        "path": "src/vispy/glsl/antialias/cap-triangle-in.glsl",
+        "sha256": "18c8e0916257aef7cd7958df344f6291e0813d77961d9d9a989ad45b8dede32f"
+      }
+    },
+    {
+      "member": "vispy/glsl/antialias/cap-triangle-out.glsl",
+      "file": {
+        "path": "src/vispy/glsl/antialias/cap-triangle-out.glsl",
+        "sha256": "0fe9f2205dff9a1a517edc9d01d1053152f5927a10b7cb035d25cff15661b282"
+      }
+    },
+    {
+      "member": "vispy/glsl/antialias/cap.glsl",
+      "file": {
+        "path": "src/vispy/glsl/antialias/cap.glsl",
+        "sha256": "573088574440212455d045e98a77de485edbcacbb1f139f018da8b26030d330d"
+      }
+    },
+    {
+      "member": "vispy/glsl/antialias/caps.glsl",
+      "file": {
+        "path": "src/vispy/glsl/antialias/caps.glsl",
+        "sha256": "573088574440212455d045e98a77de485edbcacbb1f139f018da8b26030d330d"
+      }
+    },
+    {
+      "member": "vispy/glsl/antialias/filled.glsl",
+      "file": {
+        "path": "src/vispy/glsl/antialias/filled.glsl",
+        "sha256": "3756afa19199675661bcc530835173f5f87eabf60f21fb203108c80e86436220"
+      }
+    },
+    {
+      "member": "vispy/glsl/antialias/outline.glsl",
+      "file": {
+        "path": "src/vispy/glsl/antialias/outline.glsl",
+        "sha256": "62d9f7a7954e81ff93fff6b2ce36b0bc5b24cdb0bc7f79253f6cc574eeb13136"
+      }
+    },
+    {
+      "member": "vispy/glsl/antialias/stroke.glsl",
+      "file": {
+        "path": "src/vispy/glsl/antialias/stroke.glsl",
+        "sha256": "84a59a636fe08b89939caa97d5a5c4fd1bac8d112346ca9f9f553a326f55dbc2"
+      }
+    },
+    {
+      "member": "vispy/glsl/arrowheads/angle.glsl",
+      "file": {
+        "path": "src/vispy/glsl/arrowheads/angle.glsl",
+        "sha256": "e1674cd7d0e85907b503265eff2f48b608324a70837f1c8b72ac0f0a2bfa5a76"
+      }
+    },
+    {
+      "member": "vispy/glsl/arrowheads/arrowheads.frag",
+      "file": {
+        "path": "src/vispy/glsl/arrowheads/arrowheads.frag",
+        "sha256": "7e039c7f9a0c137f8d43f18c9c3dbeb21dc941c2ddeb3efcd5c46f0dbdc2c055"
+      }
+    },
+    {
+      "member": "vispy/glsl/arrowheads/arrowheads.glsl",
+      "file": {
+        "path": "src/vispy/glsl/arrowheads/arrowheads.glsl",
+        "sha256": "884055ab6af972c429cf2fd0abbf870b2ddb541f94c10950f64bd74532f0f5c9"
+      }
+    },
+    {
+      "member": "vispy/glsl/arrowheads/arrowheads.vert",
+      "file": {
+        "path": "src/vispy/glsl/arrowheads/arrowheads.vert",
+        "sha256": "fb9596f5d6091fa1f17a475c694d2c9ae5ca69606f60561b3daf16e355ed5267"
+      }
+    },
+    {
+      "member": "vispy/glsl/arrowheads/curved.glsl",
+      "file": {
+        "path": "src/vispy/glsl/arrowheads/curved.glsl",
+        "sha256": "08f624d20e2fc400be59e6039b9260ae39ca5bde4eb4d7e50bd612fce266c96e"
+      }
+    },
+    {
+      "member": "vispy/glsl/arrowheads/inhibitor.glsl",
+      "file": {
+        "path": "src/vispy/glsl/arrowheads/inhibitor.glsl",
+        "sha256": "809740cf90887b86489842215ab433f9426ad674a319565cb0a5c4c92eda54c2"
+      }
+    },
+    {
+      "member": "vispy/glsl/arrowheads/stealth.glsl",
+      "file": {
+        "path": "src/vispy/glsl/arrowheads/stealth.glsl",
+        "sha256": "bd101a5cf04b47a36c905080d90a5c122e5bde0fa0b5bce5e4591f0fe264f521"
+      }
+    },
+    {
+      "member": "vispy/glsl/arrowheads/triangle.glsl",
+      "file": {
+        "path": "src/vispy/glsl/arrowheads/triangle.glsl",
+        "sha256": "3b8fc28ac5d448c4b382c4b9ddf63e14f835b2d8e950c49eb20084e3da18d939"
+      }
+    },
+    {
+      "member": "vispy/glsl/arrowheads/util.glsl",
+      "file": {
+        "path": "src/vispy/glsl/arrowheads/util.glsl",
+        "sha256": "79d21a736d970c216e6e9e63fdb443d552b836e617923fbf6dcb1a3732eb7bec"
+      }
+    },
+    {
+      "member": "vispy/glsl/arrows/angle-30.glsl",
+      "file": {
+        "path": "src/vispy/glsl/arrows/angle-30.glsl",
+        "sha256": "1e3d32bdf3539e9a55d600c95ba15789d8c1fbaea21e275fc6df08de84102030"
+      }
+    },
+    {
+      "member": "vispy/glsl/arrows/angle-60.glsl",
+      "file": {
+        "path": "src/vispy/glsl/arrows/angle-60.glsl",
+        "sha256": "82664e5481803093af90e8ec34df86430ea32591df50ffa79cd1e6012be64d25"
+      }
+    },
+    {
+      "member": "vispy/glsl/arrows/angle-90.glsl",
+      "file": {
+        "path": "src/vispy/glsl/arrows/angle-90.glsl",
+        "sha256": "3f5bfdfd098a74e47b3ef85c622d6e799cd0db99ef0a7600a2b4a3732a33bde7"
+      }
+    },
+    {
+      "member": "vispy/glsl/arrows/arrow.frag",
+      "file": {
+        "path": "src/vispy/glsl/arrows/arrow.frag",
+        "sha256": "f57195c2321ddcc4323564c3d4be3f03e48e12f310589fecf7fafff835027b76"
+      }
+    },
+    {
+      "member": "vispy/glsl/arrows/arrow.vert",
+      "file": {
+        "path": "src/vispy/glsl/arrows/arrow.vert",
+        "sha256": "c4652b47d81611d402726d9ca7b9bfdc1d89ef25c4263d5ce96860a1a2b89f25"
+      }
+    },
+    {
+      "member": "vispy/glsl/arrows/arrows.glsl",
+      "file": {
+        "path": "src/vispy/glsl/arrows/arrows.glsl",
+        "sha256": "4e1325bdee3ed970b6f25144e8b3c194b0cb44f504c1e34dd5ff9fe4067665f9"
+      }
+    },
+    {
+      "member": "vispy/glsl/arrows/common.glsl",
+      "file": {
+        "path": "src/vispy/glsl/arrows/common.glsl",
+        "sha256": "a984f363e5332d7634d2d8d752480d261d4d21462d654e18a13122ec80f2db10"
+      }
+    },
+    {
+      "member": "vispy/glsl/arrows/curved.glsl",
+      "file": {
+        "path": "src/vispy/glsl/arrows/curved.glsl",
+        "sha256": "d42e5b3713a84193181c30bd362cd33b120fa951925b2c12ab190492f4ab7239"
+      }
+    },
+    {
+      "member": "vispy/glsl/arrows/stealth.glsl",
+      "file": {
+        "path": "src/vispy/glsl/arrows/stealth.glsl",
+        "sha256": "8b4962cc7ea32ec0a1883e086e67fdfc10698f03eb37d1b86342c58b90c074ed"
+      }
+    },
+    {
+      "member": "vispy/glsl/arrows/triangle-30.glsl",
+      "file": {
+        "path": "src/vispy/glsl/arrows/triangle-30.glsl",
+        "sha256": "3a8630edb633d277a8b39425637a67da678d82845da99c8748ea8f00d585aef8"
+      }
+    },
+    {
+      "member": "vispy/glsl/arrows/triangle-60.glsl",
+      "file": {
+        "path": "src/vispy/glsl/arrows/triangle-60.glsl",
+        "sha256": "ce59635880d9d006fb1439245ffe88a49275984371112b9257f7346cd5f3c8ae"
+      }
+    },
+    {
+      "member": "vispy/glsl/arrows/triangle-90.glsl",
+      "file": {
+        "path": "src/vispy/glsl/arrows/triangle-90.glsl",
+        "sha256": "64a9e101a7725ea5b09e8dd95fc76696add54793dab7032e1efbe91616d92fce"
+      }
+    },
+    {
+      "member": "vispy/glsl/arrows/util.glsl",
+      "file": {
+        "path": "src/vispy/glsl/arrows/util.glsl",
+        "sha256": "5cc1076d4cbd8f8d29e85735aa04f32c3a35436b9f8ecbd035755de81d736167"
+      }
+    },
+    {
+      "member": "vispy/glsl/build_spatial_filters.py",
+      "file": {
+        "path": "src/vispy/glsl/build_spatial_filters.py",
+        "sha256": "3de5955540bbdb5f6e65f4854974c9955ab9e025fd972c7c871378158b87a7db"
+      }
+    },
+    {
+      "member": "vispy/glsl/collections/agg-fast-path.frag",
+      "file": {
+        "path": "src/vispy/glsl/collections/agg-fast-path.frag",
+        "sha256": "60594f09cb6c2da226c0048a8611e5005584eae33bb8086d13ccaad62579a0d8"
+      }
+    },
+    {
+      "member": "vispy/glsl/collections/agg-fast-path.vert",
+      "file": {
+        "path": "src/vispy/glsl/collections/agg-fast-path.vert",
+        "sha256": "b2b3121de4ca221c6fa8956bfd7b08ef7e6080b27c997b0129c0fa4aebdc5940"
+      }
+    },
+    {
+      "member": "vispy/glsl/collections/agg-glyph.frag",
+      "file": {
+        "path": "src/vispy/glsl/collections/agg-glyph.frag",
+        "sha256": "430598a78b97c4bff28ef913846f11d9ef1434ea535ee13ee7be817eecbb7d7d"
+      }
+    },
+    {
+      "member": "vispy/glsl/collections/agg-glyph.vert",
+      "file": {
+        "path": "src/vispy/glsl/collections/agg-glyph.vert",
+        "sha256": "a9a1086d3091ee0b54dcf47edae96b1ef3d0446f128cfd6314f40fcb9a51adf0"
+      }
+    },
+    {
+      "member": "vispy/glsl/collections/agg-marker.frag",
+      "file": {
+        "path": "src/vispy/glsl/collections/agg-marker.frag",
+        "sha256": "5e77507cf61a19c7cb995f05633c097bf87f9bc540ee3b682857e5f60f9abda4"
+      }
+    },
+    {
+      "member": "vispy/glsl/collections/agg-marker.vert",
+      "file": {
+        "path": "src/vispy/glsl/collections/agg-marker.vert",
+        "sha256": "7cd59b6812f0908ec95f59df6d8852d2d5d53c623b68904d79c0965b70b12bf6"
+      }
+    },
+    {
+      "member": "vispy/glsl/collections/agg-path.frag",
+      "file": {
+        "path": "src/vispy/glsl/collections/agg-path.frag",
+        "sha256": "9ee43e6d5269fb656c68948c6a54261758697e00690f6491999e571d1e59d1ac"
+      }
+    },
+    {
+      "member": "vispy/glsl/collections/agg-path.vert",
+      "file": {
+        "path": "src/vispy/glsl/collections/agg-path.vert",
+        "sha256": "f264dd2d918402c184ef56583b10e9417ecb051c45cfe4d4ca04aee25912eec5"
+      }
+    },
+    {
+      "member": "vispy/glsl/collections/agg-point.frag",
+      "file": {
+        "path": "src/vispy/glsl/collections/agg-point.frag",
+        "sha256": "afe8712810cf646e3847ec055371e7673f1e62abb2a79d110a8255d585912719"
+      }
+    },
+    {
+      "member": "vispy/glsl/collections/agg-point.vert",
+      "file": {
+        "path": "src/vispy/glsl/collections/agg-point.vert",
+        "sha256": "fd60d8a3f4ff5d1c7ba1e6d1fffeb6a51cd20b24af59160b5445605488d9917f"
+      }
+    },
+    {
+      "member": "vispy/glsl/collections/agg-segment.frag",
+      "file": {
+        "path": "src/vispy/glsl/collections/agg-segment.frag",
+        "sha256": "cde2577700410481079d26cc063bc7d82f2abcba6527d4d4a813895751d7d06a"
+      }
+    },
+    {
+      "member": "vispy/glsl/collections/agg-segment.vert",
+      "file": {
+        "path": "src/vispy/glsl/collections/agg-segment.vert",
+        "sha256": "d7dfb454d47044fbc7955f25d7edc6d41fca672b7578e14205681f715eb450b5"
+      }
+    },
+    {
+      "member": "vispy/glsl/collections/marker.frag",
+      "file": {
+        "path": "src/vispy/glsl/collections/marker.frag",
+        "sha256": "5d33a9d669aad33c19b3e1816eb44101591c3b0f9f83fe9a45ef83bfb8307424"
+      }
+    },
+    {
+      "member": "vispy/glsl/collections/marker.vert",
+      "file": {
+        "path": "src/vispy/glsl/collections/marker.vert",
+        "sha256": "3517d3eb1a488b9b6d4f7accc8aa744e1ca5cc1221b9a63c3182be9cd3f7e6ab"
+      }
+    },
+    {
+      "member": "vispy/glsl/collections/raw-path.frag",
+      "file": {
+        "path": "src/vispy/glsl/collections/raw-path.frag",
+        "sha256": "803488e9b72e5981ec3b800dc96e14beb2b52d71e6178769c8b20a2239b58e2e"
+      }
+    },
+    {
+      "member": "vispy/glsl/collections/raw-path.vert",
+      "file": {
+        "path": "src/vispy/glsl/collections/raw-path.vert",
+        "sha256": "e8f9ed930ed8d7e33bf04b37db2989d7b25f99f9ebf36948d2eab7fc8ca0c806"
+      }
+    },
+    {
+      "member": "vispy/glsl/collections/raw-point.frag",
+      "file": {
+        "path": "src/vispy/glsl/collections/raw-point.frag",
+        "sha256": "79c12b7620fbcec5c684454b0baa3950ee27318b4bd6f8ca168d106373c67acf"
+      }
+    },
+    {
+      "member": "vispy/glsl/collections/raw-point.vert",
+      "file": {
+        "path": "src/vispy/glsl/collections/raw-point.vert",
+        "sha256": "073060b498fd6a5bc25cf38105bbdeaa4c6ae7f0c88df079e061970e8aebf2ba"
+      }
+    },
+    {
+      "member": "vispy/glsl/collections/raw-segment.frag",
+      "file": {
+        "path": "src/vispy/glsl/collections/raw-segment.frag",
+        "sha256": "a2a00e90d01ad2c0d20d1191ea3bedb86d28fb84ef24111ea591a8e2c171c6a3"
+      }
+    },
+    {
+      "member": "vispy/glsl/collections/raw-segment.vert",
+      "file": {
+        "path": "src/vispy/glsl/collections/raw-segment.vert",
+        "sha256": "01020c01debe9c4f3f5d8484f11f54046bea08d2f87bf8665e60881a60fff638"
+      }
+    },
+    {
+      "member": "vispy/glsl/collections/raw-triangle.frag",
+      "file": {
+        "path": "src/vispy/glsl/collections/raw-triangle.frag",
+        "sha256": "9b35f7efc26cd54fc9698640b8efbb0a5d2586df2dcbadfeac0dee8fc2367f5c"
+      }
+    },
+    {
+      "member": "vispy/glsl/collections/raw-triangle.vert",
+      "file": {
+        "path": "src/vispy/glsl/collections/raw-triangle.vert",
+        "sha256": "ca831df65ca89deb6cbf32708ba956ea92c27692e416102d77b8e239d00fbed1"
+      }
+    },
+    {
+      "member": "vispy/glsl/collections/sdf-glyph-ticks.vert",
+      "file": {
+        "path": "src/vispy/glsl/collections/sdf-glyph-ticks.vert",
+        "sha256": "721213f219f63abb4a5febd452ef347e7ffd5af05ee7ee24384b31ec194e99e9"
+      }
+    },
+    {
+      "member": "vispy/glsl/collections/sdf-glyph.frag",
+      "file": {
+        "path": "src/vispy/glsl/collections/sdf-glyph.frag",
+        "sha256": "b6024e4cadc11f40546c75f518cb96d507f39406683c410a5439a243a02a97e5"
+      }
+    },
+    {
+      "member": "vispy/glsl/collections/sdf-glyph.vert",
+      "file": {
+        "path": "src/vispy/glsl/collections/sdf-glyph.vert",
+        "sha256": "a59b085f6087e46081a1b11a7c3e7314504703b83a42b41cf639222442c74d7f"
+      }
+    },
+    {
+      "member": "vispy/glsl/collections/tick-labels.vert",
+      "file": {
+        "path": "src/vispy/glsl/collections/tick-labels.vert",
+        "sha256": "bc54593ade8dc4b84a51181e8d9c6430556150b438555a2f021a4ce33cf26958"
+      }
+    },
+    {
+      "member": "vispy/glsl/colormaps/autumn.glsl",
+      "file": {
+        "path": "src/vispy/glsl/colormaps/autumn.glsl",
+        "sha256": "82baa3b8a373212bd75c11dde8a9a377c75601b69ab2386469981e296860ec49"
+      }
+    },
+    {
+      "member": "vispy/glsl/colormaps/blues.glsl",
+      "file": {
+        "path": "src/vispy/glsl/colormaps/blues.glsl",
+        "sha256": "e0b51a70f08c9169110328d2e84c5692d4fdfc6a5cff5b73c62cbdccdb581a79"
+      }
+    },
+    {
+      "member": "vispy/glsl/colormaps/color-space.glsl",
+      "file": {
+        "path": "src/vispy/glsl/colormaps/color-space.glsl",
+        "sha256": "bf511e9bfd19352c4173eb163f802abdebce533f3db29e86bc0a25ed056451dd"
+      }
+    },
+    {
+      "member": "vispy/glsl/colormaps/colormaps.glsl",
+      "file": {
+        "path": "src/vispy/glsl/colormaps/colormaps.glsl",
+        "sha256": "50e45c936a768bb3beac867a6fed2415505bc20cb37e2362ba670f129aa0bb20"
+      }
+    },
+    {
+      "member": "vispy/glsl/colormaps/cool.glsl",
+      "file": {
+        "path": "src/vispy/glsl/colormaps/cool.glsl",
+        "sha256": "56bdb125121fb7750032a9f777d5b4289326a31893a5c1468afe0e9919149db6"
+      }
+    },
+    {
+      "member": "vispy/glsl/colormaps/fire.glsl",
+      "file": {
+        "path": "src/vispy/glsl/colormaps/fire.glsl",
+        "sha256": "48d99fab182c53da9d8c361526ce70f6625a29fc4aa4f43884e33e80068b7039"
+      }
+    },
+    {
+      "member": "vispy/glsl/colormaps/gray.glsl",
+      "file": {
+        "path": "src/vispy/glsl/colormaps/gray.glsl",
+        "sha256": "915e2dd653b486ea6f330105cecbb629cd43e370d13930ba9db107a2d7e1e473"
+      }
+    },
+    {
+      "member": "vispy/glsl/colormaps/greens.glsl",
+      "file": {
+        "path": "src/vispy/glsl/colormaps/greens.glsl",
+        "sha256": "e94f64adb481e1ad2d0e507ba84294bc03b0f3fc534e0588ef5ead8c92edcf69"
+      }
+    },
+    {
+      "member": "vispy/glsl/colormaps/hot.glsl",
+      "file": {
+        "path": "src/vispy/glsl/colormaps/hot.glsl",
+        "sha256": "036b49b0b5071fc856e0bf80faef4b097cedf77219bdd9a42630d79b7d5ad71d"
+      }
+    },
+    {
+      "member": "vispy/glsl/colormaps/ice.glsl",
+      "file": {
+        "path": "src/vispy/glsl/colormaps/ice.glsl",
+        "sha256": "9d0b8c863f18666dcc0ee00bdd7a12705236fb8adb15a76e138632269556b11c"
+      }
+    },
+    {
+      "member": "vispy/glsl/colormaps/icefire.glsl",
+      "file": {
+        "path": "src/vispy/glsl/colormaps/icefire.glsl",
+        "sha256": "60163ce3b4ecef354eb02b6ae4fa1a561bb24e21f8eea01257a146d57a5d2ff1"
+      }
+    },
+    {
+      "member": "vispy/glsl/colormaps/parse.py",
+      "file": {
+        "path": "src/vispy/glsl/colormaps/parse.py",
+        "sha256": "d77505f229f6da6f6717dd7a1489ff8b38066e5d367fc346d86bb6a51c9c111b"
+      }
+    },
+    {
+      "member": "vispy/glsl/colormaps/reds.glsl",
+      "file": {
+        "path": "src/vispy/glsl/colormaps/reds.glsl",
+        "sha256": "25db422d731b4330581ed281daec5e3990d03bc0d5f9713d401ab00ca35780a3"
+      }
+    },
+    {
+      "member": "vispy/glsl/colormaps/spring.glsl",
+      "file": {
+        "path": "src/vispy/glsl/colormaps/spring.glsl",
+        "sha256": "65b3ea125cdde7709037a046c908c088d8b01d0d2cd08beebb98d65316e3549c"
+      }
+    },
+    {
+      "member": "vispy/glsl/colormaps/summer.glsl",
+      "file": {
+        "path": "src/vispy/glsl/colormaps/summer.glsl",
+        "sha256": "0ebaf99f94c3f4d3fc40f156940c4a93bf14d35fc99f5c6f6576b5ba80571dc0"
+      }
+    },
+    {
+      "member": "vispy/glsl/colormaps/user.glsl",
+      "file": {
+        "path": "src/vispy/glsl/colormaps/user.glsl",
+        "sha256": "725e136f064713935587482046cd1854bfbf9e59b9802ede157ba1be1166acd7"
+      }
+    },
+    {
+      "member": "vispy/glsl/colormaps/util.glsl",
+      "file": {
+        "path": "src/vispy/glsl/colormaps/util.glsl",
+        "sha256": "7c5d6c1f7ba4f7ceeafa1b3e9f955e5dcf96cdaee514588e115bebd6872daa31"
+      }
+    },
+    {
+      "member": "vispy/glsl/colormaps/wheel.glsl",
+      "file": {
+        "path": "src/vispy/glsl/colormaps/wheel.glsl",
+        "sha256": "4a197d31af6cef35e24f64ce571c40bd7557f784e55bf5d01e5cd26d3a6ceb6c"
+      }
+    },
+    {
+      "member": "vispy/glsl/colormaps/winter.glsl",
+      "file": {
+        "path": "src/vispy/glsl/colormaps/winter.glsl",
+        "sha256": "33642cbb076f2171bcfde298d2a3317b528d75033498d8bc754cbd65a813e4e5"
+      }
+    },
+    {
+      "member": "vispy/glsl/lines/agg.frag",
+      "file": {
+        "path": "src/vispy/glsl/lines/agg.frag",
+        "sha256": "a046a6eec2f7b6277524e73b01719b0d8109268799ddd51466e512ccaf6ad9a7"
+      }
+    },
+    {
+      "member": "vispy/glsl/lines/agg.vert",
+      "file": {
+        "path": "src/vispy/glsl/lines/agg.vert",
+        "sha256": "ca598aedee20e02569b566b4dc59697fe0eef499bf3bf2113e430c2f8a719a61"
+      }
+    },
+    {
+      "member": "vispy/glsl/markers/arrow.glsl",
+      "file": {
+        "path": "src/vispy/glsl/markers/arrow.glsl",
+        "sha256": "f197cf01bc1f72938d1a434b88255a9c9372302b13638b84eca3f693e96ef30e"
+      }
+    },
+    {
+      "member": "vispy/glsl/markers/asterisk.glsl",
+      "file": {
+        "path": "src/vispy/glsl/markers/asterisk.glsl",
+        "sha256": "3ffa452e38e2248118f3618555516eff829c82ab0ee14f825e7b35668f3f2b58"
+      }
+    },
+    {
+      "member": "vispy/glsl/markers/chevron.glsl",
+      "file": {
+        "path": "src/vispy/glsl/markers/chevron.glsl",
+        "sha256": "633759cd92cdad908922ad4cd598a1e4cfa4c33ea2e4a8a5ac392b5a0fc67c62"
+      }
+    },
+    {
+      "member": "vispy/glsl/markers/clover.glsl",
+      "file": {
+        "path": "src/vispy/glsl/markers/clover.glsl",
+        "sha256": "0b69d11214eb630b6db670a697141b9032758d61116fb79462b8e2753cc36d64"
+      }
+    },
+    {
+      "member": "vispy/glsl/markers/club.glsl",
+      "file": {
+        "path": "src/vispy/glsl/markers/club.glsl",
+        "sha256": "55beb3a7fcccdc60e8f55c56476d741272baa3d4c4ea7aeafe6ce5ba96d629ba"
+      }
+    },
+    {
+      "member": "vispy/glsl/markers/cross.glsl",
+      "file": {
+        "path": "src/vispy/glsl/markers/cross.glsl",
+        "sha256": "ef279f222d55a92752bf99766e4cf58bab80cd31fab880619ce3991630c7c2bd"
+      }
+    },
+    {
+      "member": "vispy/glsl/markers/diamond.glsl",
+      "file": {
+        "path": "src/vispy/glsl/markers/diamond.glsl",
+        "sha256": "2646c092250d09d1259310aafb919b1109d57c6ad7ac16948f579eeb7261eec2"
+      }
+    },
+    {
+      "member": "vispy/glsl/markers/disc.glsl",
+      "file": {
+        "path": "src/vispy/glsl/markers/disc.glsl",
+        "sha256": "2ebf81d82ab2af20d8ee9cf519228a099bea2af8ec88d6358d2c50e9329f73d3"
+      }
+    },
+    {
+      "member": "vispy/glsl/markers/ellipse.glsl",
+      "file": {
+        "path": "src/vispy/glsl/markers/ellipse.glsl",
+        "sha256": "ce5fe24884c2c3fea7655b4b538196b168f38bfdb110a8ba92835d402791a383"
+      }
+    },
+    {
+      "member": "vispy/glsl/markers/hbar.glsl",
+      "file": {
+        "path": "src/vispy/glsl/markers/hbar.glsl",
+        "sha256": "e2ed93bb8c4af69c73dff7f74b7555d0f23c7b14edc08904d7fefa2ddd0616a1"
+      }
+    },
+    {
+      "member": "vispy/glsl/markers/heart.glsl",
+      "file": {
+        "path": "src/vispy/glsl/markers/heart.glsl",
+        "sha256": "3739ca774ce1c4c30836fbe101c6c31527d458ae8ed62f5ccd1b0d93deb9c1a9"
+      }
+    },
+    {
+      "member": "vispy/glsl/markers/infinity.glsl",
+      "file": {
+        "path": "src/vispy/glsl/markers/infinity.glsl",
+        "sha256": "b086665542d6b76f36828ea34824518721ae98417f32d45b321da01e457c46ab"
+      }
+    },
+    {
+      "member": "vispy/glsl/markers/marker-sdf.frag",
+      "file": {
+        "path": "src/vispy/glsl/markers/marker-sdf.frag",
+        "sha256": "ce6178c0ae34988632d2a82b5d895c3e68b92b805b59d995175a28fdcc3a109b"
+      }
+    },
+    {
+      "member": "vispy/glsl/markers/marker-sdf.vert",
+      "file": {
+        "path": "src/vispy/glsl/markers/marker-sdf.vert",
+        "sha256": "807a4684e2ea9b0be6e0f632e3d5f8fa65de2a1dcfd73ef9be52eef9e7fbf2a6"
+      }
+    },
+    {
+      "member": "vispy/glsl/markers/marker.frag",
+      "file": {
+        "path": "src/vispy/glsl/markers/marker.frag",
+        "sha256": "dcb2ca269fae0ae4fe578419160bfc62067195b0288bec6c8f9a5c5c1ff6f647"
+      }
+    },
+    {
+      "member": "vispy/glsl/markers/marker.vert",
+      "file": {
+        "path": "src/vispy/glsl/markers/marker.vert",
+        "sha256": "1030168d7bbf84aaa888aae00e519936ed75e207695a1681d7985c117971b1dc"
+      }
+    },
+    {
+      "member": "vispy/glsl/markers/markers.glsl",
+      "file": {
+        "path": "src/vispy/glsl/markers/markers.glsl",
+        "sha256": "47dfe9d507a87f732eb91f310d3b8bf6764cfe0858a67d278457e67048e24e2d"
+      }
+    },
+    {
+      "member": "vispy/glsl/markers/pin.glsl",
+      "file": {
+        "path": "src/vispy/glsl/markers/pin.glsl",
+        "sha256": "2d59390bcd343cea80e17dccd0aaabdf7b07968064e4cae29dd583ccaace3b81"
+      }
+    },
+    {
+      "member": "vispy/glsl/markers/ring.glsl",
+      "file": {
+        "path": "src/vispy/glsl/markers/ring.glsl",
+        "sha256": "15e8702449b603504efa9120db87082bc3ef822503b1184a32db7b1efc1dbe16"
+      }
+    },
+    {
+      "member": "vispy/glsl/markers/spade.glsl",
+      "file": {
+        "path": "src/vispy/glsl/markers/spade.glsl",
+        "sha256": "155cb347f3dcaeb9e4fd52f6508cdd3d4f8e28c49471863479e9eeaccdb324fe"
+      }
+    },
+    {
+      "member": "vispy/glsl/markers/square.glsl",
+      "file": {
+        "path": "src/vispy/glsl/markers/square.glsl",
+        "sha256": "8e1a973f2b6414103d9f97eb194652f7f83d9d4f9f4c5ea7804b266388beb361"
+      }
+    },
+    {
+      "member": "vispy/glsl/markers/tag.glsl",
+      "file": {
+        "path": "src/vispy/glsl/markers/tag.glsl",
+        "sha256": "f71e4cbfd7885c376d2cc182249d9b5fee9dc711dc6e12eee050b48f6e16c018"
+      }
+    },
+    {
+      "member": "vispy/glsl/markers/triangle.glsl",
+      "file": {
+        "path": "src/vispy/glsl/markers/triangle.glsl",
+        "sha256": "c09fe18803543795858c2d5c28d33e839d22919b6971b4ba00d4fad493d988f8"
+      }
+    },
+    {
+      "member": "vispy/glsl/markers/vbar.glsl",
+      "file": {
+        "path": "src/vispy/glsl/markers/vbar.glsl",
+        "sha256": "e882e807fa7b360afaf281baa79d4f496e3a3d6584720935e8118616600351b5"
+      }
+    },
+    {
+      "member": "vispy/glsl/math/circle-through-2-points.glsl",
+      "file": {
+        "path": "src/vispy/glsl/math/circle-through-2-points.glsl",
+        "sha256": "87aded53ba617f4fe2692c78c28d4011e7ebe1ba85b5bb2c556d32e5630d5959"
+      }
+    },
+    {
+      "member": "vispy/glsl/math/constants.glsl",
+      "file": {
+        "path": "src/vispy/glsl/math/constants.glsl",
+        "sha256": "7466774e9f8ae3cc1c3b0c87383e647bcc1180e187326377304ec2aefec5b552"
+      }
+    },
+    {
+      "member": "vispy/glsl/math/double.glsl",
+      "file": {
+        "path": "src/vispy/glsl/math/double.glsl",
+        "sha256": "434796f32ab422b31cf337d3a8134ad6d55650e6911891db03a7ad15da52e627"
+      }
+    },
+    {
+      "member": "vispy/glsl/math/functions.glsl",
+      "file": {
+        "path": "src/vispy/glsl/math/functions.glsl",
+        "sha256": "73a4f6e0a55b608749252aac5aff911bef2c4bcfb3c86f5ec0e79295e766a0f5"
+      }
+    },
+    {
+      "member": "vispy/glsl/math/point-to-line-distance.glsl",
+      "file": {
+        "path": "src/vispy/glsl/math/point-to-line-distance.glsl",
+        "sha256": "c7ceeb96b924aaebf5948559576618132fc07038800d6ded0f329633b9baf6b2"
+      }
+    },
+    {
+      "member": "vispy/glsl/math/point-to-line-projection.glsl",
+      "file": {
+        "path": "src/vispy/glsl/math/point-to-line-projection.glsl",
+        "sha256": "423b5621c450309822f5d4dbcf9bf7855700e9a5c75d5abd8584b303f45b2e03"
+      }
+    },
+    {
+      "member": "vispy/glsl/math/signed-line-distance.glsl",
+      "file": {
+        "path": "src/vispy/glsl/math/signed-line-distance.glsl",
+        "sha256": "56b870fbcff3e91805ceafe1e24f7bf8dbe8bf653390ab7eac56c4433fe01657"
+      }
+    },
+    {
+      "member": "vispy/glsl/math/signed-segment-distance.glsl",
+      "file": {
+        "path": "src/vispy/glsl/math/signed-segment-distance.glsl",
+        "sha256": "07d23cc0f51792c9d78c7584707dc1aa3d86b9b919d3c4353115d38bd9735c76"
+      }
+    },
+    {
+      "member": "vispy/glsl/misc/regular-grid.frag",
+      "file": {
+        "path": "src/vispy/glsl/misc/regular-grid.frag",
+        "sha256": "643e6c400f54b42f4595e617f858d537987676091147ff238f7490a3cd1464d9"
+      }
+    },
+    {
+      "member": "vispy/glsl/misc/spatial-filters.frag",
+      "file": {
+        "path": "src/vispy/glsl/misc/spatial-filters.frag",
+        "sha256": "f0f4efced224fe99d21771d2cc0c7029ffcf03ba48b9c538e0b55d22f6db6467"
+      }
+    },
+    {
+      "member": "vispy/glsl/misc/viewport-NDC.glsl",
+      "file": {
+        "path": "src/vispy/glsl/misc/viewport-NDC.glsl",
+        "sha256": "54aef8cce5a433a4bc76978db6be1292c7e81a6088e59e105fe7fe177b74dcf2"
+      }
+    },
+    {
+      "member": "vispy/glsl/transforms/azimuthal-equal-area.glsl",
+      "file": {
+        "path": "src/vispy/glsl/transforms/azimuthal-equal-area.glsl",
+        "sha256": "2e53a0e1d5cd6e3e897c3b9ec969ec99c632f7c7c03005f7d3ba408eea0d292d"
+      }
+    },
+    {
+      "member": "vispy/glsl/transforms/azimuthal-equidistant.glsl",
+      "file": {
+        "path": "src/vispy/glsl/transforms/azimuthal-equidistant.glsl",
+        "sha256": "95a190468e73f7bd284640b2b71d3b0d9ac855afd27bb4388b6d028681c0f148"
+      }
+    },
+    {
+      "member": "vispy/glsl/transforms/hammer.glsl",
+      "file": {
+        "path": "src/vispy/glsl/transforms/hammer.glsl",
+        "sha256": "848bb7c16b7351e7f15829345ba166f48ffd5a77a08eafe710ba26c525ee867f"
+      }
+    },
+    {
+      "member": "vispy/glsl/transforms/identity.glsl",
+      "file": {
+        "path": "src/vispy/glsl/transforms/identity.glsl",
+        "sha256": "f367534d5370fdba99879f9a23807482106bee77304681c28ad7015f24cbed73"
+      }
+    },
+    {
+      "member": "vispy/glsl/transforms/identity_forward.glsl",
+      "file": {
+        "path": "src/vispy/glsl/transforms/identity_forward.glsl",
+        "sha256": "d289b9881d1666cb12dcd341b1e620910e35917f274a64f65a93a62c6d7692a2"
+      }
+    },
+    {
+      "member": "vispy/glsl/transforms/identity_inverse.glsl",
+      "file": {
+        "path": "src/vispy/glsl/transforms/identity_inverse.glsl",
+        "sha256": "28ed2ed6862cb431be29360eafe57b41f4fe065189e22a6e1d9ad4e4d57372fd"
+      }
+    },
+    {
+      "member": "vispy/glsl/transforms/linear-scale.glsl",
+      "file": {
+        "path": "src/vispy/glsl/transforms/linear-scale.glsl",
+        "sha256": "1c66be9ce1122bcc8a475d781c884fc787546c6ff998151da02de5d925d0388b"
+      }
+    },
+    {
+      "member": "vispy/glsl/transforms/log-scale.glsl",
+      "file": {
+        "path": "src/vispy/glsl/transforms/log-scale.glsl",
+        "sha256": "69856b9c69567d388095ee407967f84c9c3c695a6a0b45b746f0ca09c45c0f5e"
+      }
+    },
+    {
+      "member": "vispy/glsl/transforms/mercator-transverse-forward.glsl",
+      "file": {
+        "path": "src/vispy/glsl/transforms/mercator-transverse-forward.glsl",
+        "sha256": "ca5ad8facc6344744b1dc8c0f46d71bdee9b45f6e0549608d8a0b47f4228214f"
+      }
+    },
+    {
+      "member": "vispy/glsl/transforms/mercator-transverse-inverse.glsl",
+      "file": {
+        "path": "src/vispy/glsl/transforms/mercator-transverse-inverse.glsl",
+        "sha256": "5468cf98edcdf7f02c60c2552273ccaa8b5bf0393933717554fe0511dd440c22"
+      }
+    },
+    {
+      "member": "vispy/glsl/transforms/panzoom.glsl",
+      "file": {
+        "path": "src/vispy/glsl/transforms/panzoom.glsl",
+        "sha256": "446c062c9683854ef7fbaa1e7d42c58886d86aa26970f84f91d16e76d877f133"
+      }
+    },
+    {
+      "member": "vispy/glsl/transforms/polar.glsl",
+      "file": {
+        "path": "src/vispy/glsl/transforms/polar.glsl",
+        "sha256": "66ef8a8fdce38e9ed67af5b9a99696fbf662934aa61b803f92099499300e587d"
+      }
+    },
+    {
+      "member": "vispy/glsl/transforms/position.glsl",
+      "file": {
+        "path": "src/vispy/glsl/transforms/position.glsl",
+        "sha256": "82243fec8eb006783bcce4263d65b9eda4548e7566339610e4991609cea23090"
+      }
+    },
+    {
+      "member": "vispy/glsl/transforms/power-scale.glsl",
+      "file": {
+        "path": "src/vispy/glsl/transforms/power-scale.glsl",
+        "sha256": "6c07da14c65751022659e3f454007f24b6b56b8d8f05e95ccdf296185b54540a"
+      }
+    },
+    {
+      "member": "vispy/glsl/transforms/projection.glsl",
+      "file": {
+        "path": "src/vispy/glsl/transforms/projection.glsl",
+        "sha256": "b4f0b31af086c07938df1b7c64c964ce7a3057a2877d8a98d1471a1adde40a37"
+      }
+    },
+    {
+      "member": "vispy/glsl/transforms/pvm.glsl",
+      "file": {
+        "path": "src/vispy/glsl/transforms/pvm.glsl",
+        "sha256": "25285858acb685df29e8c62cb8408acec0a6ed189badad789f3628b9634d4636"
+      }
+    },
+    {
+      "member": "vispy/glsl/transforms/rotate.glsl",
+      "file": {
+        "path": "src/vispy/glsl/transforms/rotate.glsl",
+        "sha256": "e880b9741682eac988afbab81fd705bd637710e2be23f1214745890f60371f2d"
+      }
+    },
+    {
+      "member": "vispy/glsl/transforms/trackball.glsl",
+      "file": {
+        "path": "src/vispy/glsl/transforms/trackball.glsl",
+        "sha256": "3e6c3c26f21a8f94950b24fe5067c9c2488948e321e10e1b685d8d527b1c87cf"
+      }
+    },
+    {
+      "member": "vispy/glsl/transforms/translate.glsl",
+      "file": {
+        "path": "src/vispy/glsl/transforms/translate.glsl",
+        "sha256": "b4219f3f5008de9383e028758aeb617f4a90f8dc7f2d9b4dd99169ea56cc5068"
+      }
+    },
+    {
+      "member": "vispy/glsl/transforms/transverse_mercator.glsl",
+      "file": {
+        "path": "src/vispy/glsl/transforms/transverse_mercator.glsl",
+        "sha256": "82546833107a2701b90a43f0865184c928312c169248429f86f7f94ae186d97a"
+      }
+    },
+    {
+      "member": "vispy/glsl/transforms/viewport-clipping.glsl",
+      "file": {
+        "path": "src/vispy/glsl/transforms/viewport-clipping.glsl",
+        "sha256": "bd27cd3fb318b3c8232959d846d9d1403abc41172827221499a8f5a9d475aae4"
+      }
+    },
+    {
+      "member": "vispy/glsl/transforms/viewport-transform.glsl",
+      "file": {
+        "path": "src/vispy/glsl/transforms/viewport-transform.glsl",
+        "sha256": "94049120a95c5dd11908f75840e07c0a0dfa3840fb652d1d3d24fcd898541eac"
+      }
+    },
+    {
+      "member": "vispy/glsl/transforms/viewport.glsl",
+      "file": {
+        "path": "src/vispy/glsl/transforms/viewport.glsl",
+        "sha256": "8ea69e1ae46787ee8dc63cb9ef8f474031ff868ac196b7c8f68a5306beb66442"
+      }
+    },
+    {
+      "member": "vispy/glsl/transforms/x.glsl",
+      "file": {
+        "path": "src/vispy/glsl/transforms/x.glsl",
+        "sha256": "227e716841e4b780100d0c0895e4dacc99ed854205e7432540c5c8ef1e365ee3"
+      }
+    },
+    {
+      "member": "vispy/glsl/transforms/y.glsl",
+      "file": {
+        "path": "src/vispy/glsl/transforms/y.glsl",
+        "sha256": "d3992521d7bc3cd7feaa1ea7a1c0f77c0a856c26f4b54c9299b5957fd259c0a6"
+      }
+    },
+    {
+      "member": "vispy/glsl/transforms/z.glsl",
+      "file": {
+        "path": "src/vispy/glsl/transforms/z.glsl",
+        "sha256": "59a14c46356f0b73bf1853611fa1bb0283e466c70871a99a37e1edbd35cbd9f8"
+      }
+    },
+    {
+      "member": "vispy/io/__init__.py",
+      "file": {
+        "path": "src/vispy/io/__init__.py",
+        "sha256": "b01e4d1499ef0ff8e9138b4e9fef9ee495d5c15fdd706ff0a8c7b3d7136f01a6"
+      }
+    },
+    {
+      "member": "vispy/io/_data/spatial-filters.npy",
+      "file": {
+        "path": "src/vispy/io/_data/spatial-filters.npy",
+        "sha256": "fbdb2395275ce1c5e2e6f7856d78fa8ba78f902ba9c71893f86e5eb03eae124e"
+      }
+    },
+    {
+      "member": "vispy/io/datasets.py",
+      "file": {
+        "path": "src/vispy/io/datasets.py",
+        "sha256": "2d05b3b11de425f95ff37c3b00868db3908214797f89cbc74f1022cd55d75eac"
+      }
+    },
+    {
+      "member": "vispy/io/image.py",
+      "file": {
+        "path": "src/vispy/io/image.py",
+        "sha256": "25e2363ac937eb71e6bac90a3363e7a8ebd5dbd08352e25c0ea5d54e6e778630"
+      }
+    },
+    {
+      "member": "vispy/io/mesh.py",
+      "file": {
+        "path": "src/vispy/io/mesh.py",
+        "sha256": "edef4a7adea6159fc02af43f7bfe8a7bc7ac9859281693bd3dd5b119c73a5058"
+      }
+    },
+    {
+      "member": "vispy/io/stl.py",
+      "file": {
+        "path": "src/vispy/io/stl.py",
+        "sha256": "b3c0316e77d8e4a5603d8b4056481d7ec5641084a9c5027b5080d2cf5de2e606"
+      }
+    },
+    {
+      "member": "vispy/io/tests/__init__.py",
+      "file": {
+        "path": "src/vispy/io/tests/__init__.py",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "member": "vispy/io/tests/test_image.py",
+      "file": {
+        "path": "src/vispy/io/tests/test_image.py",
+        "sha256": "6b7b6b69c4a73a25f908d7f478b5ba5e9ba1f83d3167fb73fd85f476173aaf43"
+      }
+    },
+    {
+      "member": "vispy/io/tests/test_io.py",
+      "file": {
+        "path": "src/vispy/io/tests/test_io.py",
+        "sha256": "3e50140fd1265782711b8fc3aaeee1edfda9a2832824e314f397ecc69962f6be"
+      }
+    },
+    {
+      "member": "vispy/io/wavefront.py",
+      "file": {
+        "path": "src/vispy/io/wavefront.py",
+        "sha256": "1ef4593a91807aa9eb610a2292067d924374d8a19b8c79d631bd69903b651faf"
+      }
+    },
+    {
+      "member": "vispy/plot/__init__.py",
+      "file": {
+        "path": "src/vispy/plot/__init__.py",
+        "sha256": "ef6af035e77264bade0708411b5da2df78b99f3befbe725b306bfb6d5665de05"
+      }
+    },
+    {
+      "member": "vispy/plot/fig.py",
+      "file": {
+        "path": "src/vispy/plot/fig.py",
+        "sha256": "32beed6b73dc783ef04461abe454b56ed8aec533e3f0bec447f11c0edfed9542"
+      }
+    },
+    {
+      "member": "vispy/plot/plotwidget.py",
+      "file": {
+        "path": "src/vispy/plot/plotwidget.py",
+        "sha256": "c818ef811442d865dbfc8c2162bd538f4bb5c9a450683ffbd14efb7bf59dc670"
+      }
+    },
+    {
+      "member": "vispy/plot/tests/__init__.py",
+      "file": {
+        "path": "src/vispy/plot/tests/__init__.py",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "member": "vispy/plot/tests/test_plot.py",
+      "file": {
+        "path": "src/vispy/plot/tests/test_plot.py",
+        "sha256": "29960f4110bd772afa98979b0d2984b56fe6cd3e6074bba16461e9bf507d8f76"
+      }
+    },
+    {
+      "member": "vispy/scene/__init__.py",
+      "file": {
+        "path": "src/vispy/scene/__init__.py",
+        "sha256": "c7cc5175ecca22dd072afaa311b30691ca59e591ac17f6ad86d1c6d1deda3ab4"
+      }
+    },
+    {
+      "member": "vispy/scene/cameras/__init__.py",
+      "file": {
+        "path": "src/vispy/scene/cameras/__init__.py",
+        "sha256": "61e6e7ca779af96a14ceb83bd92eacf51561d8e91763716560ec48ebf115d9b9"
+      }
+    },
+    {
+      "member": "vispy/scene/cameras/_base.py",
+      "file": {
+        "path": "src/vispy/scene/cameras/_base.py",
+        "sha256": "08a46c428ec1b544e442729c4a02f6a9b212e45b6c1b33ba64d156011ae1e006"
+      }
+    },
+    {
+      "member": "vispy/scene/cameras/arcball.py",
+      "file": {
+        "path": "src/vispy/scene/cameras/arcball.py",
+        "sha256": "db82228916ff2acd33179197fb284075a102e44afbef4b28dab1daa24b1be3b6"
+      }
+    },
+    {
+      "member": "vispy/scene/cameras/base_camera.py",
+      "file": {
+        "path": "src/vispy/scene/cameras/base_camera.py",
+        "sha256": "fa93697ff791b24c657c78420365e6460cd1b73efa57b43562a12900e2a84b93"
+      }
+    },
+    {
+      "member": "vispy/scene/cameras/fly.py",
+      "file": {
+        "path": "src/vispy/scene/cameras/fly.py",
+        "sha256": "6a555a8dd6c69772ea0650bbfa3e7878ebb92379ac5d8bd4b6c6677dc55ff185"
+      }
+    },
+    {
+      "member": "vispy/scene/cameras/magnify.py",
+      "file": {
+        "path": "src/vispy/scene/cameras/magnify.py",
+        "sha256": "d52c165b7c80e8e5e7bbe16372e3d8fe4f365eab9a5c8e0f57cfd775c9c276fb"
+      }
+    },
+    {
+      "member": "vispy/scene/cameras/panzoom.py",
+      "file": {
+        "path": "src/vispy/scene/cameras/panzoom.py",
+        "sha256": "6cb92f82e5075a8a374122ebed6c9910ba77590b9ee9a0efd4f02db8c51853c2"
+      }
+    },
+    {
+      "member": "vispy/scene/cameras/perspective.py",
+      "file": {
+        "path": "src/vispy/scene/cameras/perspective.py",
+        "sha256": "dd43cc06fd520ba535bb50cf5d3d84bbffe4d96c5cac6adc68665e65507ee54b"
+      }
+    },
+    {
+      "member": "vispy/scene/cameras/tests/__init__.py",
+      "file": {
+        "path": "src/vispy/scene/cameras/tests/__init__.py",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "member": "vispy/scene/cameras/tests/test_cameras.py",
+      "file": {
+        "path": "src/vispy/scene/cameras/tests/test_cameras.py",
+        "sha256": "2093549209a62d2b200e4e3c869d4c39ebe77abfde40db3bb2ddf6e09b028cde"
+      }
+    },
+    {
+      "member": "vispy/scene/cameras/tests/test_link.py",
+      "file": {
+        "path": "src/vispy/scene/cameras/tests/test_link.py",
+        "sha256": "1cb41a04fca30abc97948243eb784a912040fae6c4ce88db99ab50a871818bd2"
+      }
+    },
+    {
+      "member": "vispy/scene/cameras/tests/test_perspective.py",
+      "file": {
+        "path": "src/vispy/scene/cameras/tests/test_perspective.py",
+        "sha256": "0335e859577473ced1c64d65ed824d3fdc8e176a7a111a7b13e1005bb7819450"
+      }
+    },
+    {
+      "member": "vispy/scene/cameras/turntable.py",
+      "file": {
+        "path": "src/vispy/scene/cameras/turntable.py",
+        "sha256": "91abdb5eb523c52a85e378655c9fde58304ea4631151095b53ff1bc7bb204785"
+      }
+    },
+    {
+      "member": "vispy/scene/canvas.py",
+      "file": {
+        "path": "src/vispy/scene/canvas.py",
+        "sha256": "d404365a8183d4fe6ee4a10212ee75d7417a4273d9ce441e46930d6dc1490b6e"
+      }
+    },
+    {
+      "member": "vispy/scene/events.py",
+      "file": {
+        "path": "src/vispy/scene/events.py",
+        "sha256": "5d8362f30b2ec799e6ec8f5194c3010b39be4bb1e3867169c8ce1c8717965fa1"
+      }
+    },
+    {
+      "member": "vispy/scene/node.py",
+      "file": {
+        "path": "src/vispy/scene/node.py",
+        "sha256": "534a393b3940ab2c7da3e4670cba108a320d7e59c1c58c997667afe3850010cc"
+      }
+    },
+    {
+      "member": "vispy/scene/subscene.py",
+      "file": {
+        "path": "src/vispy/scene/subscene.py",
+        "sha256": "b883da2ea5691f178ad18c9c396c6b75c352ad8e2ddca918aa3e81724092f0ed"
+      }
+    },
+    {
+      "member": "vispy/scene/tests/__init__.py",
+      "file": {
+        "path": "src/vispy/scene/tests/__init__.py",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "member": "vispy/scene/tests/test_canvas.py",
+      "file": {
+        "path": "src/vispy/scene/tests/test_canvas.py",
+        "sha256": "aaca4145bca11111d1e47e008f179aa061c6676b87d0a5701bbd558fedc36ffa"
+      }
+    },
+    {
+      "member": "vispy/scene/tests/test_node.py",
+      "file": {
+        "path": "src/vispy/scene/tests/test_node.py",
+        "sha256": "76b2d970c40dad2f1e86c9b99d527fc865781c02713b367e3fcf7ee2c8844f03"
+      }
+    },
+    {
+      "member": "vispy/scene/tests/test_viewbox.py",
+      "file": {
+        "path": "src/vispy/scene/tests/test_viewbox.py",
+        "sha256": "f526a8cf06e521ae759980914dd7b7dabb75ca4d2de10ae6de65dca9f6cc073e"
+      }
+    },
+    {
+      "member": "vispy/scene/tests/test_visuals.py",
+      "file": {
+        "path": "src/vispy/scene/tests/test_visuals.py",
+        "sha256": "b7606086fda77de7ed9e9754d4da83361bf1e6da426d046f79d559469d42654d"
+      }
+    },
+    {
+      "member": "vispy/scene/visuals.py",
+      "file": {
+        "path": "src/vispy/scene/visuals.py",
+        "sha256": "fac65fa79c5d981d2d4bcbfc64424668fe8a63514847869ef25fbece7ce533d3"
+      }
+    },
+    {
+      "member": "vispy/scene/widgets/__init__.py",
+      "file": {
+        "path": "src/vispy/scene/widgets/__init__.py",
+        "sha256": "ffa6ea8e8616ff9c52646563b69af7afacf64f52da0ce4d92188be3967b5e67b"
+      }
+    },
+    {
+      "member": "vispy/scene/widgets/anchor.py",
+      "file": {
+        "path": "src/vispy/scene/widgets/anchor.py",
+        "sha256": "107b8c51c751ec76583657e0330b91ccff1b0fae445c4945f00557c69b6c8bba"
+      }
+    },
+    {
+      "member": "vispy/scene/widgets/axis.py",
+      "file": {
+        "path": "src/vispy/scene/widgets/axis.py",
+        "sha256": "aefd84826d45ba4c9b9b4f26fbe183ab1b08964f7eaa45073d25ad00948cdc3a"
+      }
+    },
+    {
+      "member": "vispy/scene/widgets/colorbar.py",
+      "file": {
+        "path": "src/vispy/scene/widgets/colorbar.py",
+        "sha256": "90680dbf8830ccb7d7a633aef2864d4b5917a331f4d8bef299e1d6ca6ec4aa61"
+      }
+    },
+    {
+      "member": "vispy/scene/widgets/console.py",
+      "file": {
+        "path": "src/vispy/scene/widgets/console.py",
+        "sha256": "36a33fe64f7ba3065f1a282d9d3464a297f2f4fcccd3aed25b46341cc6e61c62"
+      }
+    },
+    {
+      "member": "vispy/scene/widgets/grid.py",
+      "file": {
+        "path": "src/vispy/scene/widgets/grid.py",
+        "sha256": "a90e092fea28a7f9e46bc9a023478808d91105cee4a4b853c5acfdef39c1a051"
+      }
+    },
+    {
+      "member": "vispy/scene/widgets/label.py",
+      "file": {
+        "path": "src/vispy/scene/widgets/label.py",
+        "sha256": "b7f52e1e8a9ecc025903b1d91df73344867462ed9b8ef40b7bd002b1fc9f9afb"
+      }
+    },
+    {
+      "member": "vispy/scene/widgets/tests/__init__.py",
+      "file": {
+        "path": "src/vispy/scene/widgets/tests/__init__.py",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "member": "vispy/scene/widgets/tests/test_colorbar.py",
+      "file": {
+        "path": "src/vispy/scene/widgets/tests/test_colorbar.py",
+        "sha256": "7f515eb8e457ea034096938cf14c134e36cfd568f84fd717dd6deaeb539690ec"
+      }
+    },
+    {
+      "member": "vispy/scene/widgets/viewbox.py",
+      "file": {
+        "path": "src/vispy/scene/widgets/viewbox.py",
+        "sha256": "d2c9e41b5473c8d7c64fc156dcc13df38d63741e4d804473bc55a3a0187f71dd"
+      }
+    },
+    {
+      "member": "vispy/scene/widgets/widget.py",
+      "file": {
+        "path": "src/vispy/scene/widgets/widget.py",
+        "sha256": "c2888d20a9e806080a51002f5c52ce955a6c9c190a977e85696ef6a2bbd91ad1"
+      }
+    },
+    {
+      "member": "vispy/testing/__init__.py",
+      "file": {
+        "path": "src/vispy/testing/__init__.py",
+        "sha256": "bb40ae1be5ed186b0e530cc280c7faa3b88ba3e0d5463a831857a4d411953b77"
+      }
+    },
+    {
+      "member": "vispy/testing/_runners.py",
+      "file": {
+        "path": "src/vispy/testing/_runners.py",
+        "sha256": "47ad08b5381866d2816a50a27cdd931897c157f30f7edb7a3f078458431d103f"
+      }
+    },
+    {
+      "member": "vispy/testing/_testing.py",
+      "file": {
+        "path": "src/vispy/testing/_testing.py",
+        "sha256": "3428a1fcfc612cfc6c524678a824aab4fb288775898fafe24dc6afc75e488b35"
+      }
+    },
+    {
+      "member": "vispy/testing/image_tester.py",
+      "file": {
+        "path": "src/vispy/testing/image_tester.py",
+        "sha256": "07bd05d3398ecf70a62b4fb105e8235beacebe81eb2ea088c240ae15ce207da0"
+      }
+    },
+    {
+      "member": "vispy/testing/rendered_array_tester.py",
+      "file": {
+        "path": "src/vispy/testing/rendered_array_tester.py",
+        "sha256": "c000bb5cdfa6387ae00da41fa6262217b90d0331d4345ec081a540c9f77d053d"
+      }
+    },
+    {
+      "member": "vispy/testing/tests/__init__.py",
+      "file": {
+        "path": "src/vispy/testing/tests/__init__.py",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "member": "vispy/testing/tests/test_testing.py",
+      "file": {
+        "path": "src/vispy/testing/tests/test_testing.py",
+        "sha256": "47660658abe3d272bbad6583b29e41523d7c937787d8599680eeea7a35a7b361"
+      }
+    },
+    {
+      "member": "vispy/util/__init__.py",
+      "file": {
+        "path": "src/vispy/util/__init__.py",
+        "sha256": "87c66b58882addc55b33cac259c176491589374453c2e0b7bc26bccb86a07be2"
+      }
+    },
+    {
+      "member": "vispy/util/bunch.py",
+      "file": {
+        "path": "src/vispy/util/bunch.py",
+        "sha256": "d4ab5a405292d8b5b1cdaeb4bb4594db244caac23b4cb8879e84b59a79ce2197"
+      }
+    },
+    {
+      "member": "vispy/util/check_environment.py",
+      "file": {
+        "path": "src/vispy/util/check_environment.py",
+        "sha256": "4a3861d3e93766317915e4f3a44321d58c6383e4353961d2ab4501d0390d70e3"
+      }
+    },
+    {
+      "member": "vispy/util/config.py",
+      "file": {
+        "path": "src/vispy/util/config.py",
+        "sha256": "91bd1f03e053a7a4f9f23ab96b417a8f0b0f70d126b6c6ed73846533160e8c71"
+      }
+    },
+    {
+      "member": "vispy/util/dpi/__init__.py",
+      "file": {
+        "path": "src/vispy/util/dpi/__init__.py",
+        "sha256": "45aa2632746e822d7cf153a7aa98ebb7c9d0831d2198856acc59322116810ab4"
+      }
+    },
+    {
+      "member": "vispy/util/dpi/_linux.py",
+      "file": {
+        "path": "src/vispy/util/dpi/_linux.py",
+        "sha256": "f21efdadff4ede7ba6d921f305ea97b1661ff41c4d8fef1689f2c2b39c138665"
+      }
+    },
+    {
+      "member": "vispy/util/dpi/_quartz.py",
+      "file": {
+        "path": "src/vispy/util/dpi/_quartz.py",
+        "sha256": "479ddc1ab6ec160110a7479467387687c3a622e3e5b78c4d13315df2fca44c6f"
+      }
+    },
+    {
+      "member": "vispy/util/dpi/_win32.py",
+      "file": {
+        "path": "src/vispy/util/dpi/_win32.py",
+        "sha256": "1cb1adccc6fe6c16e11883b316da04444fbd1f87d1ce213f42de3da23a2bac47"
+      }
+    },
+    {
+      "member": "vispy/util/dpi/tests/__init__.py",
+      "file": {
+        "path": "src/vispy/util/dpi/tests/__init__.py",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "member": "vispy/util/dpi/tests/test_dpi.py",
+      "file": {
+        "path": "src/vispy/util/dpi/tests/test_dpi.py",
+        "sha256": "30295fdd52044718cf1c868adfadb271698470ba0d02ff5873d32558198beab5"
+      }
+    },
+    {
+      "member": "vispy/util/eq.py",
+      "file": {
+        "path": "src/vispy/util/eq.py",
+        "sha256": "7b82e6d21c7aa146a3898f201a14de15640d7402a922ce04cf28da2d62802538"
+      }
+    },
+    {
+      "member": "vispy/util/event.py",
+      "file": {
+        "path": "src/vispy/util/event.py",
+        "sha256": "eecbc1379d85036481762cabc1ac4320a7b340bf7644e3f78ee693a018f252ff"
+      }
+    },
+    {
+      "member": "vispy/util/fetching.py",
+      "file": {
+        "path": "src/vispy/util/fetching.py",
+        "sha256": "de58bb164692c2d8b126d051fa485d3b3d66fcd9fa8a1157ac6cd976d9accaad"
+      }
+    },
+    {
+      "member": "vispy/util/filter.py",
+      "file": {
+        "path": "src/vispy/util/filter.py",
+        "sha256": "c4de8d60a405b222eb68a649f5d25ee9c6f27671dda8dfc5e699e294cb108cc2"
+      }
+    },
+    {
+      "member": "vispy/util/fonts/__init__.py",
+      "file": {
+        "path": "src/vispy/util/fonts/__init__.py",
+        "sha256": "461b1648f8c88a4cff1c1f2d97488da464863bb512737ac30d9a175862223b20"
+      }
+    },
+    {
+      "member": "vispy/util/fonts/_freetype.py",
+      "file": {
+        "path": "src/vispy/util/fonts/_freetype.py",
+        "sha256": "cb27216ae8d3456172d3c093eee851acb49615fc2e0fbfe70953a7eb4edf6538"
+      }
+    },
+    {
+      "member": "vispy/util/fonts/_quartz.py",
+      "file": {
+        "path": "src/vispy/util/fonts/_quartz.py",
+        "sha256": "ec2eda0bb13a043988a2674e9c54b385b45db52ea4f10b78e517377befecefa2"
+      }
+    },
+    {
+      "member": "vispy/util/fonts/_triage.py",
+      "file": {
+        "path": "src/vispy/util/fonts/_triage.py",
+        "sha256": "6912f9943fac154c34b143339fb184e482f79e582534bc90e9ee742b059fb3b9"
+      }
+    },
+    {
+      "member": "vispy/util/fonts/_vispy_fonts.py",
+      "file": {
+        "path": "src/vispy/util/fonts/_vispy_fonts.py",
+        "sha256": "c5a5ea3f050a6b712b56d124db99fc879095d8c7628c001b33cec4b804974cbe"
+      }
+    },
+    {
+      "member": "vispy/util/fonts/_win32.py",
+      "file": {
+        "path": "src/vispy/util/fonts/_win32.py",
+        "sha256": "331302547d7bed63ccf6f08085764e616c71dfb6c210b4d78738b75e05fcb423"
+      }
+    },
+    {
+      "member": "vispy/util/fonts/data/OpenSans-Bold.ttf",
+      "file": {
+        "path": "src/vispy/util/fonts/data/OpenSans-Bold.ttf",
+        "sha256": "5894a3649b213cf5b2d673b6e7a871815fd1d120fa68a463592f27db14eae323"
+      }
+    },
+    {
+      "member": "vispy/util/fonts/data/OpenSans-BoldItalic.ttf",
+      "file": {
+        "path": "src/vispy/util/fonts/data/OpenSans-BoldItalic.ttf",
+        "sha256": "3ca680f2444cc9e50447d057c006464566e92f2e77b0b6e26491e5bd757ed4e7"
+      }
+    },
+    {
+      "member": "vispy/util/fonts/data/OpenSans-Italic.ttf",
+      "file": {
+        "path": "src/vispy/util/fonts/data/OpenSans-Italic.ttf",
+        "sha256": "a54dc8488f8193bf30c3820cf6f261f911f9d328d699e1a1b8042641554cec70"
+      }
+    },
+    {
+      "member": "vispy/util/fonts/data/OpenSans-Regular.ttf",
+      "file": {
+        "path": "src/vispy/util/fonts/data/OpenSans-Regular.ttf",
+        "sha256": "e64e508b2aa2880f907e470c4550980ec4c0694d103a43f36150ac3f93189bee"
+      }
+    },
+    {
+      "member": "vispy/util/fonts/tests/__init__.py",
+      "file": {
+        "path": "src/vispy/util/fonts/tests/__init__.py",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "member": "vispy/util/fonts/tests/test_font.py",
+      "file": {
+        "path": "src/vispy/util/fonts/tests/test_font.py",
+        "sha256": "d67ad3529825aad3277e0311a08a6038d3c1d88d27752a2cd734a69d13c58e0f"
+      }
+    },
+    {
+      "member": "vispy/util/fourier.py",
+      "file": {
+        "path": "src/vispy/util/fourier.py",
+        "sha256": "f286b0ff99d7637a0480d58c42eaf164289709f26bbeae7ee1f6ebd318ae3587"
+      }
+    },
+    {
+      "member": "vispy/util/frozen.py",
+      "file": {
+        "path": "src/vispy/util/frozen.py",
+        "sha256": "0dc827dbc5180c06149a40e06fba5c3244133b7503eed72e2c194fcdbfe94ed6"
+      }
+    },
+    {
+      "member": "vispy/util/gallery_scraper.py",
+      "file": {
+        "path": "src/vispy/util/gallery_scraper.py",
+        "sha256": "1a7284881f81cc467ff1baccd42526788409ee62e525e1b87488cadd2ca5f4bd"
+      }
+    },
+    {
+      "member": "vispy/util/keys.py",
+      "file": {
+        "path": "src/vispy/util/keys.py",
+        "sha256": "b1f44e7f6cdc9fbbfc65adb0efa586d585644c14c1b5742b9703cdfcb1d8e52b"
+      }
+    },
+    {
+      "member": "vispy/util/logs.py",
+      "file": {
+        "path": "src/vispy/util/logs.py",
+        "sha256": "f0b90719b609c09268c81156c965e516582c7c35c35d4226d0a6134e0fcbebe0"
+      }
+    },
+    {
+      "member": "vispy/util/profiler.py",
+      "file": {
+        "path": "src/vispy/util/profiler.py",
+        "sha256": "493d701fc32a455d1cea3d6668b5dcb422ba5d19c512080a52785eaa44d5f508"
+      }
+    },
+    {
+      "member": "vispy/util/ptime.py",
+      "file": {
+        "path": "src/vispy/util/ptime.py",
+        "sha256": "649d22a6b2205fc93e5a2f33c0f82d4eb126ccc423a9d51bf3d88af924d4bd5d"
+      }
+    },
+    {
+      "member": "vispy/util/quaternion.py",
+      "file": {
+        "path": "src/vispy/util/quaternion.py",
+        "sha256": "b5da0ead1cd20311b20cccecb9d955ae947b08f21bca598ca1661ec89ae522f4"
+      }
+    },
+    {
+      "member": "vispy/util/svg/__init__.py",
+      "file": {
+        "path": "src/vispy/util/svg/__init__.py",
+        "sha256": "249de581768f1cc2a21bf5ae65d13bf5d85064fcf4319e8e2a2a6a86ad3e29bd"
+      }
+    },
+    {
+      "member": "vispy/util/svg/base.py",
+      "file": {
+        "path": "src/vispy/util/svg/base.py",
+        "sha256": "cd6a88465d323066e0f8ec57463346d1db9e93e7dbe7c266aad8ab0d6b7e2642"
+      }
+    },
+    {
+      "member": "vispy/util/svg/color.py",
+      "file": {
+        "path": "src/vispy/util/svg/color.py",
+        "sha256": "8d81cf6ee8b3ceb7b6bdc7380bd221de916dc0b9473b88f6e4181d9a55cc0383"
+      }
+    },
+    {
+      "member": "vispy/util/svg/element.py",
+      "file": {
+        "path": "src/vispy/util/svg/element.py",
+        "sha256": "f1dd45806a54f411f643928a3903c55df00ba4dc3c3b80adf50204c599a1a6c0"
+      }
+    },
+    {
+      "member": "vispy/util/svg/geometry.py",
+      "file": {
+        "path": "src/vispy/util/svg/geometry.py",
+        "sha256": "5c677168dafafac9d744d40beaca97bbe8044658cee6767c3354517032dee180"
+      }
+    },
+    {
+      "member": "vispy/util/svg/group.py",
+      "file": {
+        "path": "src/vispy/util/svg/group.py",
+        "sha256": "ab9f9f22e40ac2e06283dd9c12e1ab6cd2f8514d8569bc9d7a4ed06a275604b5"
+      }
+    },
+    {
+      "member": "vispy/util/svg/length.py",
+      "file": {
+        "path": "src/vispy/util/svg/length.py",
+        "sha256": "1ad9ee36bdff8fa0d8770389cc692594e3230b143f4b32a8b8dfd491d700d6db"
+      }
+    },
+    {
+      "member": "vispy/util/svg/number.py",
+      "file": {
+        "path": "src/vispy/util/svg/number.py",
+        "sha256": "048c9c608f26a217e0e5aa21d15d00c8d76e83736ba91940c0a4dee6c07e5e07"
+      }
+    },
+    {
+      "member": "vispy/util/svg/path.py",
+      "file": {
+        "path": "src/vispy/util/svg/path.py",
+        "sha256": "f6c2208c9f5e73c1dfac9be04d5903159cbe583d292858ff8e022976416282e8"
+      }
+    },
+    {
+      "member": "vispy/util/svg/shapes.py",
+      "file": {
+        "path": "src/vispy/util/svg/shapes.py",
+        "sha256": "aed42cb1e5a0903d379004251bf83c5bef6538c6dc0b650a866739558182500e"
+      }
+    },
+    {
+      "member": "vispy/util/svg/style.py",
+      "file": {
+        "path": "src/vispy/util/svg/style.py",
+        "sha256": "5d690ee4df09b54481d5fee566f776affaf52e39f434de32caf0596f63193995"
+      }
+    },
+    {
+      "member": "vispy/util/svg/svg.py",
+      "file": {
+        "path": "src/vispy/util/svg/svg.py",
+        "sha256": "df1e56b2e3b11581d46f9fda411af1f7b9149a45caf7f1d517e5ac8169b21b10"
+      }
+    },
+    {
+      "member": "vispy/util/svg/transform.py",
+      "file": {
+        "path": "src/vispy/util/svg/transform.py",
+        "sha256": "d895963838b0ae79d4fd3b7e09f424e1a2c95dacf30d2407f6ce99e4fc04d2ba"
+      }
+    },
+    {
+      "member": "vispy/util/svg/transformable.py",
+      "file": {
+        "path": "src/vispy/util/svg/transformable.py",
+        "sha256": "2d6939237987da835df030a35c550a2f6a80aa55a0fe6636190245583af67ec4"
+      }
+    },
+    {
+      "member": "vispy/util/svg/viewport.py",
+      "file": {
+        "path": "src/vispy/util/svg/viewport.py",
+        "sha256": "0d2c404aee702d45bedd069b5c35888be13345efc649cefa15bcaa3e2166cea8"
+      }
+    },
+    {
+      "member": "vispy/util/tests/__init__.py",
+      "file": {
+        "path": "src/vispy/util/tests/__init__.py",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "member": "vispy/util/tests/test_config.py",
+      "file": {
+        "path": "src/vispy/util/tests/test_config.py",
+        "sha256": "5345e387c5067e322bceea0c3e419c7d7efdfba3f90a1082b50e130cbd79c857"
+      }
+    },
+    {
+      "member": "vispy/util/tests/test_docstring_parameters.py",
+      "file": {
+        "path": "src/vispy/util/tests/test_docstring_parameters.py",
+        "sha256": "fbae78df93db2b242e02cedc8427f59aebca1a9b0c448c27d34a17734959b993"
+      }
+    },
+    {
+      "member": "vispy/util/tests/test_emitter_group.py",
+      "file": {
+        "path": "src/vispy/util/tests/test_emitter_group.py",
+        "sha256": "345d3dba8cf5179c8f5c9b14850de9b0dd95c9228771577947ce65e814c0c719"
+      }
+    },
+    {
+      "member": "vispy/util/tests/test_event_emitter.py",
+      "file": {
+        "path": "src/vispy/util/tests/test_event_emitter.py",
+        "sha256": "c8823936bbfaf9fac6c15e2f018fe5bec298d6a84d1d05177238a1b189a708bc"
+      }
+    },
+    {
+      "member": "vispy/util/tests/test_fourier.py",
+      "file": {
+        "path": "src/vispy/util/tests/test_fourier.py",
+        "sha256": "c846be5715a515891b3ad5401e4dcc52de606e2f596ae2d70afe7849908a41d4"
+      }
+    },
+    {
+      "member": "vispy/util/tests/test_gallery_scraper.py",
+      "file": {
+        "path": "src/vispy/util/tests/test_gallery_scraper.py",
+        "sha256": "467eb5169a619e703c28204b8feb7d78fca995c44f0217f50d65e70dc38f490e"
+      }
+    },
+    {
+      "member": "vispy/util/tests/test_import.py",
+      "file": {
+        "path": "src/vispy/util/tests/test_import.py",
+        "sha256": "646f49f4ef9d80aed675d384f1225d991b34b84812af3d56327e56d0634b92f6"
+      }
+    },
+    {
+      "member": "vispy/util/tests/test_key.py",
+      "file": {
+        "path": "src/vispy/util/tests/test_key.py",
+        "sha256": "c98b7735e4bec1ad53eade7db1f38702ceb8b742907ffa0d75e07cf5d1800d6d"
+      }
+    },
+    {
+      "member": "vispy/util/tests/test_logging.py",
+      "file": {
+        "path": "src/vispy/util/tests/test_logging.py",
+        "sha256": "f838a19fea85975d92c9f1b847a7c6ce50c49786d0f6b5ca6f96deae43c09ecc"
+      }
+    },
+    {
+      "member": "vispy/util/tests/test_run.py",
+      "file": {
+        "path": "src/vispy/util/tests/test_run.py",
+        "sha256": "9b830efc7ca017f9a4fda14ae73329fb91036b145c10225e45673fc7c06fd629"
+      }
+    },
+    {
+      "member": "vispy/util/tests/test_transforms.py",
+      "file": {
+        "path": "src/vispy/util/tests/test_transforms.py",
+        "sha256": "2cf5fc02007ae4b54efac6362b1801383cddfc698b0ccc01a58e1c8e4b35ec60"
+      }
+    },
+    {
+      "member": "vispy/util/tests/test_vispy.py",
+      "file": {
+        "path": "src/vispy/util/tests/test_vispy.py",
+        "sha256": "6a508f9b83dcd291f284b2eb95f9619925595873418d9f0b571f1080e4d691be"
+      }
+    },
+    {
+      "member": "vispy/util/transforms.py",
+      "file": {
+        "path": "src/vispy/util/transforms.py",
+        "sha256": "2c02206b3611c68e6b9707cf9e187b86686adc44519ce09b46bcd96972d04de1"
+      }
+    },
+    {
+      "member": "vispy/util/wrappers.py",
+      "file": {
+        "path": "src/vispy/util/wrappers.py",
+        "sha256": "42cdf8ed8de7018a480977fa720ec46733cd8d2554ac43f17c0aa65a6f5341bc"
+      }
+    },
+    {
+      "member": "vispy/version.py",
+      "file": {
+        "path": "src/vispy/version.py",
+        "sha256": "4fb085672ab0b426cb36c5496f78b927da94591217cd7d1b65137b7739b22b9c"
+      }
+    },
+    {
+      "member": "vispy/visuals/__init__.py",
+      "file": {
+        "path": "src/vispy/visuals/__init__.py",
+        "sha256": "882b68823b13a5554677d18d15ba4b1c005eb47a0611e4c024d3f632f5e7f89c"
+      }
+    },
+    {
+      "member": "vispy/visuals/_scalable_textures.py",
+      "file": {
+        "path": "src/vispy/visuals/_scalable_textures.py",
+        "sha256": "0ac2389093cfa551dd1cdc35fc84a025819dfaa25403710230fa95586ed6540e"
+      }
+    },
+    {
+      "member": "vispy/visuals/axis.py",
+      "file": {
+        "path": "src/vispy/visuals/axis.py",
+        "sha256": "0ff91d658279b735f534eaf2c119f9ee232288e2c92db0b9f4d5be75a6c5837d"
+      }
+    },
+    {
+      "member": "vispy/visuals/border.py",
+      "file": {
+        "path": "src/vispy/visuals/border.py",
+        "sha256": "a1ff7dea5bdafad35afa445be78e085a4ceb70ff9856d1c61193cc8f182cda52"
+      }
+    },
+    {
+      "member": "vispy/visuals/box.py",
+      "file": {
+        "path": "src/vispy/visuals/box.py",
+        "sha256": "da7a10597c2308f96ecb460bcebba0a1e57ebca7d239245a6ec00aac9555fd3e"
+      }
+    },
+    {
+      "member": "vispy/visuals/collections/__init__.py",
+      "file": {
+        "path": "src/vispy/visuals/collections/__init__.py",
+        "sha256": "b6e6a758c0033ed5178a35dd07b30d84759b9df70a01c7ed7476aa5fb3d47e73"
+      }
+    },
+    {
+      "member": "vispy/visuals/collections/agg_fast_path_collection.py",
+      "file": {
+        "path": "src/vispy/visuals/collections/agg_fast_path_collection.py",
+        "sha256": "6f5fdbf720ce31d23f4baca51b8337a016d3227fe69785b7b1b50724181aec22"
+      }
+    },
+    {
+      "member": "vispy/visuals/collections/agg_path_collection.py",
+      "file": {
+        "path": "src/vispy/visuals/collections/agg_path_collection.py",
+        "sha256": "1aad8c0ec1412f9717afa6c215ed64b8005dd4bee3cd56e1d8e95674e02b2eb8"
+      }
+    },
+    {
+      "member": "vispy/visuals/collections/agg_point_collection.py",
+      "file": {
+        "path": "src/vispy/visuals/collections/agg_point_collection.py",
+        "sha256": "9fc0272b145eb113176238cded41d55cbf2f17f055417806d7e8704a0efc8e8e"
+      }
+    },
+    {
+      "member": "vispy/visuals/collections/agg_segment_collection.py",
+      "file": {
+        "path": "src/vispy/visuals/collections/agg_segment_collection.py",
+        "sha256": "4bb036c82953b0c53b1b0ce9f28166fde8141b485cb6442c2399133f7ef2b9d3"
+      }
+    },
+    {
+      "member": "vispy/visuals/collections/array_list.py",
+      "file": {
+        "path": "src/vispy/visuals/collections/array_list.py",
+        "sha256": "814579f4ea4b0a4fcac8c9173918865175f9c5a920d7e87d56fa71e5d17d6c4c"
+      }
+    },
+    {
+      "member": "vispy/visuals/collections/base_collection.py",
+      "file": {
+        "path": "src/vispy/visuals/collections/base_collection.py",
+        "sha256": "2d8bfcca3c9c8a4ed2a339c5e0e4f7039431da575707e14b99d825938e85a2c5"
+      }
+    },
+    {
+      "member": "vispy/visuals/collections/collection.py",
+      "file": {
+        "path": "src/vispy/visuals/collections/collection.py",
+        "sha256": "f8fb5a96f7aae6316791d2ca415bde41d1015acd0150b58c2aa45db0752da735"
+      }
+    },
+    {
+      "member": "vispy/visuals/collections/path_collection.py",
+      "file": {
+        "path": "src/vispy/visuals/collections/path_collection.py",
+        "sha256": "f028507bc713b9c5ecae8386a504065b35645ebcf5ff0ac8db8f89f534410efd"
+      }
+    },
+    {
+      "member": "vispy/visuals/collections/point_collection.py",
+      "file": {
+        "path": "src/vispy/visuals/collections/point_collection.py",
+        "sha256": "b7e1dfb14893503dbfe3ed9207f12dbbc0131a8e33ba86ef5fdac59b031ee791"
+      }
+    },
+    {
+      "member": "vispy/visuals/collections/polygon_collection.py",
+      "file": {
+        "path": "src/vispy/visuals/collections/polygon_collection.py",
+        "sha256": "9442796783112325a5c2ae36ab867ba632339b504576f969987ee92a100f2915"
+      }
+    },
+    {
+      "member": "vispy/visuals/collections/raw_path_collection.py",
+      "file": {
+        "path": "src/vispy/visuals/collections/raw_path_collection.py",
+        "sha256": "79958a3b16c75d003442dad1e46cefced97988bccf7cd46774c089a38b73fee9"
+      }
+    },
+    {
+      "member": "vispy/visuals/collections/raw_point_collection.py",
+      "file": {
+        "path": "src/vispy/visuals/collections/raw_point_collection.py",
+        "sha256": "c41421e6ea4b0e54d2f09f580d213d27087f1b1b77fab7c9272f306747cd2372"
+      }
+    },
+    {
+      "member": "vispy/visuals/collections/raw_polygon_collection.py",
+      "file": {
+        "path": "src/vispy/visuals/collections/raw_polygon_collection.py",
+        "sha256": "5fb9ba086c545903ae4fb28605b8a6d814e37e2c55b7b5069d1384dba6855e5c"
+      }
+    },
+    {
+      "member": "vispy/visuals/collections/raw_segment_collection.py",
+      "file": {
+        "path": "src/vispy/visuals/collections/raw_segment_collection.py",
+        "sha256": "f529f7f16ba374717cefd7ad51e10485d10df063ff3c2d64d5302872854f1e27"
+      }
+    },
+    {
+      "member": "vispy/visuals/collections/raw_triangle_collection.py",
+      "file": {
+        "path": "src/vispy/visuals/collections/raw_triangle_collection.py",
+        "sha256": "2e6c5e70598c54de0f6fc4103364e8299bdd6129c3592726bb31556911f8ab21"
+      }
+    },
+    {
+      "member": "vispy/visuals/collections/segment_collection.py",
+      "file": {
+        "path": "src/vispy/visuals/collections/segment_collection.py",
+        "sha256": "f457aed731604e69ec9ec3081d225e098f26133f3ae270fd741922fc6953a31b"
+      }
+    },
+    {
+      "member": "vispy/visuals/collections/triangle_collection.py",
+      "file": {
+        "path": "src/vispy/visuals/collections/triangle_collection.py",
+        "sha256": "8671150e1f1f99db9379db5dc2a02fe81d7330b40c02444d080639281023e613"
+      }
+    },
+    {
+      "member": "vispy/visuals/collections/util.py",
+      "file": {
+        "path": "src/vispy/visuals/collections/util.py",
+        "sha256": "6b55485c270b428fac8113896919927bb25a72756822b9050ffa805a0fc99337"
+      }
+    },
+    {
+      "member": "vispy/visuals/colorbar.py",
+      "file": {
+        "path": "src/vispy/visuals/colorbar.py",
+        "sha256": "fb5b1a50321e3fc8e31bc2e0900ba06285a8c87bc8d26d74ff1358e3971e6a98"
+      }
+    },
+    {
+      "member": "vispy/visuals/conftest.py",
+      "file": {
+        "path": "src/vispy/visuals/conftest.py",
+        "sha256": "f1f2416beb6409513fc46df96d4183f9910b506ccfff580f3671dd8a65a090db"
+      }
+    },
+    {
+      "member": "vispy/visuals/cube.py",
+      "file": {
+        "path": "src/vispy/visuals/cube.py",
+        "sha256": "73f620373e04ba1296e73fc7e58976cc83a99b074953ae07dfbf11664b960d20"
+      }
+    },
+    {
+      "member": "vispy/visuals/ellipse.py",
+      "file": {
+        "path": "src/vispy/visuals/ellipse.py",
+        "sha256": "baab12c542fbe22d9a8b05c61f3bb06c66dd9e32de2809616a0792a6373499dc"
+      }
+    },
+    {
+      "member": "vispy/visuals/filters/__init__.py",
+      "file": {
+        "path": "src/vispy/visuals/filters/__init__.py",
+        "sha256": "0666cb97cc3d64e11d454f1f872707427ed31f953e62f2464ad77e1d4ba4ed25"
+      }
+    },
+    {
+      "member": "vispy/visuals/filters/base_filter.py",
+      "file": {
+        "path": "src/vispy/visuals/filters/base_filter.py",
+        "sha256": "c241f9412cebf44721147f4610c0cd833e49db0383d3d28fd0277f1d7db97106"
+      }
+    },
+    {
+      "member": "vispy/visuals/filters/clipper.py",
+      "file": {
+        "path": "src/vispy/visuals/filters/clipper.py",
+        "sha256": "4b83bc0c4d16d8cae7d3bd116bccbdc1e17262b7e48feacc4c39f12870a75c3e"
+      }
+    },
+    {
+      "member": "vispy/visuals/filters/clipping_planes.py",
+      "file": {
+        "path": "src/vispy/visuals/filters/clipping_planes.py",
+        "sha256": "c72668a63db383abcad48871c0644af8fcb106556214bca30261f6c78d412dcd"
+      }
+    },
+    {
+      "member": "vispy/visuals/filters/color.py",
+      "file": {
+        "path": "src/vispy/visuals/filters/color.py",
+        "sha256": "33f685f93342b700e37efa5bb631fad93a1508dadf30a103301fe4831477ea4b"
+      }
+    },
+    {
+      "member": "vispy/visuals/filters/markers.py",
+      "file": {
+        "path": "src/vispy/visuals/filters/markers.py",
+        "sha256": "1011423557481aacf902bcc354ff7a6b691534236ccf4b168081802610165a08"
+      }
+    },
+    {
+      "member": "vispy/visuals/filters/mesh.py",
+      "file": {
+        "path": "src/vispy/visuals/filters/mesh.py",
+        "sha256": "5bf7815ad1bffa381fdbbc549a7a7441fd6a312ec110a9589bac26a264121ac1"
+      }
+    },
+    {
+      "member": "vispy/visuals/filters/picking.py",
+      "file": {
+        "path": "src/vispy/visuals/filters/picking.py",
+        "sha256": "e38f580cd658475e23b7a28c873b38d70cf596c8a4ec5d29d9868c667c85647a"
+      }
+    },
+    {
+      "member": "vispy/visuals/filters/tests/__init__.py",
+      "file": {
+        "path": "src/vispy/visuals/filters/tests/__init__.py",
+        "sha256": "ca10dec745c39f44887aa469f107b324f277ba817a5c4e138c8222e6cbb2554d"
+      }
+    },
+    {
+      "member": "vispy/visuals/filters/tests/test_primitive_picking_filters.py",
+      "file": {
+        "path": "src/vispy/visuals/filters/tests/test_primitive_picking_filters.py",
+        "sha256": "3baa2b700ef147a341b034611b1868a46fb42c8327a2142a0c5e42b3599e00f6"
+      }
+    },
+    {
+      "member": "vispy/visuals/filters/tests/test_texture_filter.py",
+      "file": {
+        "path": "src/vispy/visuals/filters/tests/test_texture_filter.py",
+        "sha256": "d9ddcf4c34b1e6d89fc07b8aa10d66fdc68d65c487f499f3aad3445d0f1920f8"
+      }
+    },
+    {
+      "member": "vispy/visuals/filters/tests/test_wireframe_filter.py",
+      "file": {
+        "path": "src/vispy/visuals/filters/tests/test_wireframe_filter.py",
+        "sha256": "369637d9947b690188263e4d1554c3d8e0b6abecce65de1ed126458b07fb3263"
+      }
+    },
+    {
+      "member": "vispy/visuals/glsl/__init__.py",
+      "file": {
+        "path": "src/vispy/visuals/glsl/__init__.py",
+        "sha256": "5c745a5892c4f277b007b27f0c619e8579fad9e63b9511feec9e60ab1ba5b936"
+      }
+    },
+    {
+      "member": "vispy/visuals/glsl/antialiasing.py",
+      "file": {
+        "path": "src/vispy/visuals/glsl/antialiasing.py",
+        "sha256": "6883fe2a2933482c2a4686e089218bfc69e37ca9a86e2cd2b07183f9e7760aa8"
+      }
+    },
+    {
+      "member": "vispy/visuals/glsl/color.py",
+      "file": {
+        "path": "src/vispy/visuals/glsl/color.py",
+        "sha256": "b4c7757bdcbe24cca44ccfc4b8ac7f3cba64df32a68d4908c6ba0d12f018c93d"
+      }
+    },
+    {
+      "member": "vispy/visuals/graphs/__init__.py",
+      "file": {
+        "path": "src/vispy/visuals/graphs/__init__.py",
+        "sha256": "3ea6386c4a4d745533b5f77643293d5d895f1fe3c87addd110f06e0e2ae56dd5"
+      }
+    },
+    {
+      "member": "vispy/visuals/graphs/graph.py",
+      "file": {
+        "path": "src/vispy/visuals/graphs/graph.py",
+        "sha256": "b33f7bf74ca7cba727ef5c9b6c8fa328fc806ec49a825f30609c8fcd4524e10c"
+      }
+    },
+    {
+      "member": "vispy/visuals/graphs/layouts/__init__.py",
+      "file": {
+        "path": "src/vispy/visuals/graphs/layouts/__init__.py",
+        "sha256": "52716509af3c467f35de7cb172c3adcbdd502781d0a18a9dba9ef030f9afe356"
+      }
+    },
+    {
+      "member": "vispy/visuals/graphs/layouts/circular.py",
+      "file": {
+        "path": "src/vispy/visuals/graphs/layouts/circular.py",
+        "sha256": "668544c2cc9a2b4b6e8324fbee82e97cb836e952a1825260197ad0071d4bc52f"
+      }
+    },
+    {
+      "member": "vispy/visuals/graphs/layouts/force_directed.py",
+      "file": {
+        "path": "src/vispy/visuals/graphs/layouts/force_directed.py",
+        "sha256": "f0ef7e90d5cb043a9f23ae06a4582fea382aacd1a979abe4b8513772ddb20790"
+      }
+    },
+    {
+      "member": "vispy/visuals/graphs/layouts/networkx_layout.py",
+      "file": {
+        "path": "src/vispy/visuals/graphs/layouts/networkx_layout.py",
+        "sha256": "fa1eb70edc4675bb94faddef187f2b238347a34f7ec0623e42b4bfcfb600ed04"
+      }
+    },
+    {
+      "member": "vispy/visuals/graphs/layouts/random.py",
+      "file": {
+        "path": "src/vispy/visuals/graphs/layouts/random.py",
+        "sha256": "f2a7d12635918e23d150e749fc915a2286e5d4d4afd4fb17376425a33b6924d8"
+      }
+    },
+    {
+      "member": "vispy/visuals/graphs/tests/__init__.py",
+      "file": {
+        "path": "src/vispy/visuals/graphs/tests/__init__.py",
+        "sha256": "587a4ae3485c83da37961397ec32406811ec5863974f2f73044628b244e64289"
+      }
+    },
+    {
+      "member": "vispy/visuals/graphs/tests/test_layouts.py",
+      "file": {
+        "path": "src/vispy/visuals/graphs/tests/test_layouts.py",
+        "sha256": "01f78e0f4237346f1c20d30f88bcbea00fc05e14e8eda8f03e482edf1739fee8"
+      }
+    },
+    {
+      "member": "vispy/visuals/graphs/tests/test_networkx_layout.py",
+      "file": {
+        "path": "src/vispy/visuals/graphs/tests/test_networkx_layout.py",
+        "sha256": "da6f6f87d166908e1d8464bf2f2d325342ba563ef06c712ffdfe4865e00ab103"
+      }
+    },
+    {
+      "member": "vispy/visuals/graphs/util.py",
+      "file": {
+        "path": "src/vispy/visuals/graphs/util.py",
+        "sha256": "bf75d20f0b9c7a0865113c4a7211f5e4b436aa96040aa8d3a3e4a858ef5babf8"
+      }
+    },
+    {
+      "member": "vispy/visuals/gridlines.py",
+      "file": {
+        "path": "src/vispy/visuals/gridlines.py",
+        "sha256": "24d294babd3918429d6554eb1cd0ade9c4ec47619433e3dbecc8dd45eb3d980a"
+      }
+    },
+    {
+      "member": "vispy/visuals/gridmesh.py",
+      "file": {
+        "path": "src/vispy/visuals/gridmesh.py",
+        "sha256": "33d08182e527165f7b17e90db5c85d9215d2b6e28f2307c94f589dba0c55f57a"
+      }
+    },
+    {
+      "member": "vispy/visuals/histogram.py",
+      "file": {
+        "path": "src/vispy/visuals/histogram.py",
+        "sha256": "2da4c0494323d57247c5320bf6d4804ee14f2148ad231c940caa9fa5066a56dd"
+      }
+    },
+    {
+      "member": "vispy/visuals/image.py",
+      "file": {
+        "path": "src/vispy/visuals/image.py",
+        "sha256": "e37a5fdedd3c51c290c96774c36b7cd80f52e86d6fa504af088eadeab045a3d0"
+      }
+    },
+    {
+      "member": "vispy/visuals/image_complex.py",
+      "file": {
+        "path": "src/vispy/visuals/image_complex.py",
+        "sha256": "18fce50b9ef33fa5230155d0bd6f2450501f5b6ec0a862c0ce63e7326e374ba9"
+      }
+    },
+    {
+      "member": "vispy/visuals/infinite_line.py",
+      "file": {
+        "path": "src/vispy/visuals/infinite_line.py",
+        "sha256": "bce2ac6f07b4028cad287ca707808cf51b4713b85696176c7b48f42b39415fba"
+      }
+    },
+    {
+      "member": "vispy/visuals/instanced_mesh.py",
+      "file": {
+        "path": "src/vispy/visuals/instanced_mesh.py",
+        "sha256": "3e53887d5e8a2fb8e9ebf01d347a211c7a67f93ad40e202c738c18e28d202e30"
+      }
+    },
+    {
+      "member": "vispy/visuals/isocurve.py",
+      "file": {
+        "path": "src/vispy/visuals/isocurve.py",
+        "sha256": "e6c4d3a8af37c37ac16775c6ee89704884595c71e358da53dd2c44847365c691"
+      }
+    },
+    {
+      "member": "vispy/visuals/isoline.py",
+      "file": {
+        "path": "src/vispy/visuals/isoline.py",
+        "sha256": "43acb9db8c6e1546875d35d7855c79d813c4795698b16d117b46538e535ed480"
+      }
+    },
+    {
+      "member": "vispy/visuals/isosurface.py",
+      "file": {
+        "path": "src/vispy/visuals/isosurface.py",
+        "sha256": "071710470f67d297729ef8a707f5aaa45089cde5470bc46719ee0225b824894c"
+      }
+    },
+    {
+      "member": "vispy/visuals/line/__init__.py",
+      "file": {
+        "path": "src/vispy/visuals/line/__init__.py",
+        "sha256": "293b4f4f84f189d2041c9d8d23ea80cc8f0945e0e00d5722bc9d34af04ddfa0d"
+      }
+    },
+    {
+      "member": "vispy/visuals/line/arrow.py",
+      "file": {
+        "path": "src/vispy/visuals/line/arrow.py",
+        "sha256": "ed3c77bb9e15a3630ef04f3f51b6138f45d51e345b7d7bd51fff740469c63140"
+      }
+    },
+    {
+      "member": "vispy/visuals/line/dash_atlas.py",
+      "file": {
+        "path": "src/vispy/visuals/line/dash_atlas.py",
+        "sha256": "16042c7096af6fa98057db7cb9cc9fc234be1762eb7811dcaf84c9d4dd1e1b90"
+      }
+    },
+    {
+      "member": "vispy/visuals/line/line.py",
+      "file": {
+        "path": "src/vispy/visuals/line/line.py",
+        "sha256": "027dde892f0590da192168481d227f8654a40e199c05b89ba0615f79edcaeec6"
+      }
+    },
+    {
+      "member": "vispy/visuals/line_plot.py",
+      "file": {
+        "path": "src/vispy/visuals/line_plot.py",
+        "sha256": "5bdc194c035f574ff41036da0a1e2b083339c4e9fd54688b1aa53a8ee7affa45"
+      }
+    },
+    {
+      "member": "vispy/visuals/linear_region.py",
+      "file": {
+        "path": "src/vispy/visuals/linear_region.py",
+        "sha256": "e4245de3736457f86fdab503420ba61f24fbbe0a5685b2b9c114796a66a04e4d"
+      }
+    },
+    {
+      "member": "vispy/visuals/markers.py",
+      "file": {
+        "path": "src/vispy/visuals/markers.py",
+        "sha256": "84990f7b14ff92a4acfcccf39bcc8c788b7c9df76e75e85fc8c4e4e102b119c3"
+      }
+    },
+    {
+      "member": "vispy/visuals/mesh.py",
+      "file": {
+        "path": "src/vispy/visuals/mesh.py",
+        "sha256": "920cdf5a3780f5bce5f93114bed83abbdbf605e33cc9f1cb8010227b845c1f7d"
+      }
+    },
+    {
+      "member": "vispy/visuals/mesh_normals.py",
+      "file": {
+        "path": "src/vispy/visuals/mesh_normals.py",
+        "sha256": "98b65decea6cd7d33646a0b34531dade8eb5ce1bf0bb6ba613bb9de20aaf91ac"
+      }
+    },
+    {
+      "member": "vispy/visuals/plane.py",
+      "file": {
+        "path": "src/vispy/visuals/plane.py",
+        "sha256": "53f148f32e417a3b634e7ae819e29890e4ce7503d250bd4894ed5955775f6fe2"
+      }
+    },
+    {
+      "member": "vispy/visuals/polygon.py",
+      "file": {
+        "path": "src/vispy/visuals/polygon.py",
+        "sha256": "9d015cc84c68cbf412d0417d5e8c39351c172d8b6a0bab5977f29565f06d160c"
+      }
+    },
+    {
+      "member": "vispy/visuals/rectangle.py",
+      "file": {
+        "path": "src/vispy/visuals/rectangle.py",
+        "sha256": "076f697be5521e6737a2086590e61a1780c76eb7c18703ef1acbf0343515aad8"
+      }
+    },
+    {
+      "member": "vispy/visuals/regular_polygon.py",
+      "file": {
+        "path": "src/vispy/visuals/regular_polygon.py",
+        "sha256": "ddc928507b798f58eb16b7a53377b743f89e115e7c99879885bc7439045ed8d9"
+      }
+    },
+    {
+      "member": "vispy/visuals/scrolling_lines.py",
+      "file": {
+        "path": "src/vispy/visuals/scrolling_lines.py",
+        "sha256": "3e4c69f09b87ff815b77db4c72d64dd56e413642383582920ac1987bfc843d89"
+      }
+    },
+    {
+      "member": "vispy/visuals/shaders/__init__.py",
+      "file": {
+        "path": "src/vispy/visuals/shaders/__init__.py",
+        "sha256": "8f67ae47333e39f6580b72f9cbcf0ff21e5e06b071625356f66f10972961a70d"
+      }
+    },
+    {
+      "member": "vispy/visuals/shaders/compiler.py",
+      "file": {
+        "path": "src/vispy/visuals/shaders/compiler.py",
+        "sha256": "106f50bfecd92cdec27f3512c3f9b27128f17dfc4aa3dbf39c69f4a862598461"
+      }
+    },
+    {
+      "member": "vispy/visuals/shaders/expression.py",
+      "file": {
+        "path": "src/vispy/visuals/shaders/expression.py",
+        "sha256": "4db064b670293e1c50f8d5befd589599e4da057a83c059d1528dabcb54da9064"
+      }
+    },
+    {
+      "member": "vispy/visuals/shaders/function.py",
+      "file": {
+        "path": "src/vispy/visuals/shaders/function.py",
+        "sha256": "54ab8f13df5c1360648e42697dbb24fe6e551b38590fb0a1d1ce4085ba6b4150"
+      }
+    },
+    {
+      "member": "vispy/visuals/shaders/multiprogram.py",
+      "file": {
+        "path": "src/vispy/visuals/shaders/multiprogram.py",
+        "sha256": "1d47904f95eb33fe978c79d14a300a76f848ff0d52f5ec797be64fd8cecf5409"
+      }
+    },
+    {
+      "member": "vispy/visuals/shaders/parsing.py",
+      "file": {
+        "path": "src/vispy/visuals/shaders/parsing.py",
+        "sha256": "eb24a61c7066b94fd78d9443f3ead6fd624f31c212d8b63e2e44d52a6d6329e9"
+      }
+    },
+    {
+      "member": "vispy/visuals/shaders/program.py",
+      "file": {
+        "path": "src/vispy/visuals/shaders/program.py",
+        "sha256": "892052764618b4f8550643d320dd880dafed7dde4398428f84f1e7dd6247443e"
+      }
+    },
+    {
+      "member": "vispy/visuals/shaders/shader_object.py",
+      "file": {
+        "path": "src/vispy/visuals/shaders/shader_object.py",
+        "sha256": "937c273146ba5a38d2f7dd6f05a532fbe8b19ca35c35014aedb73f73def3f716"
+      }
+    },
+    {
+      "member": "vispy/visuals/shaders/tests/__init__.py",
+      "file": {
+        "path": "src/vispy/visuals/shaders/tests/__init__.py",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "member": "vispy/visuals/shaders/tests/test_function.py",
+      "file": {
+        "path": "src/vispy/visuals/shaders/tests/test_function.py",
+        "sha256": "d1b10a12788abc7ebc7a050cc30526ea8ec2e252b723da0fd53f3b26af950943"
+      }
+    },
+    {
+      "member": "vispy/visuals/shaders/tests/test_multiprogram.py",
+      "file": {
+        "path": "src/vispy/visuals/shaders/tests/test_multiprogram.py",
+        "sha256": "95ff7344f0a65a14351de2d5cf855f8b9a8111f1665d1e8655ad39033262e9a9"
+      }
+    },
+    {
+      "member": "vispy/visuals/shaders/tests/test_parsing.py",
+      "file": {
+        "path": "src/vispy/visuals/shaders/tests/test_parsing.py",
+        "sha256": "281100ab2cbb387f3b0e7c9f84b20c076ece338741c0a8d3c8a034064596ccce"
+      }
+    },
+    {
+      "member": "vispy/visuals/shaders/variable.py",
+      "file": {
+        "path": "src/vispy/visuals/shaders/variable.py",
+        "sha256": "968ea731a1672fbf7624780fa2cde15f922db5808debdb8b8a5a57a247a6da3e"
+      }
+    },
+    {
+      "member": "vispy/visuals/spectrogram.py",
+      "file": {
+        "path": "src/vispy/visuals/spectrogram.py",
+        "sha256": "0e1a3cfe63b1bf14fc43375421b52a38635d48986d7f821e663c95369d59b593"
+      }
+    },
+    {
+      "member": "vispy/visuals/sphere.py",
+      "file": {
+        "path": "src/vispy/visuals/sphere.py",
+        "sha256": "d8932c9a8ca342f3ba17b1be5b5060db0014423cb27a84cf5823d342cd380755"
+      }
+    },
+    {
+      "member": "vispy/visuals/surface_plot.py",
+      "file": {
+        "path": "src/vispy/visuals/surface_plot.py",
+        "sha256": "920fdef544401b11ff8a9a56cabc46cca5e20af94a4adad633e37e335b35a962"
+      }
+    },
+    {
+      "member": "vispy/visuals/tests/__init__.py",
+      "file": {
+        "path": "src/vispy/visuals/tests/__init__.py",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "member": "vispy/visuals/tests/test_arrows.py",
+      "file": {
+        "path": "src/vispy/visuals/tests/test_arrows.py",
+        "sha256": "1d0b40a6d9432dd56becac9c84185c3c5213ec1480d26aa78caf2896b0cb256f"
+      }
+    },
+    {
+      "member": "vispy/visuals/tests/test_axis.py",
+      "file": {
+        "path": "src/vispy/visuals/tests/test_axis.py",
+        "sha256": "af9af085751e03748144c80745c013d78090d46ea1ac0914d2ce38ba1d7ed694"
+      }
+    },
+    {
+      "member": "vispy/visuals/tests/test_collections.py",
+      "file": {
+        "path": "src/vispy/visuals/tests/test_collections.py",
+        "sha256": "8d5ef40646dc6d213f3f7b73b0d68ab53405e543977883062599b95c58fa1a06"
+      }
+    },
+    {
+      "member": "vispy/visuals/tests/test_colorbar.py",
+      "file": {
+        "path": "src/vispy/visuals/tests/test_colorbar.py",
+        "sha256": "68adf200ca912b1c061a48df42b07d1d9200f4ffbe2f3ea09c2790e87868712c"
+      }
+    },
+    {
+      "member": "vispy/visuals/tests/test_colormap.py",
+      "file": {
+        "path": "src/vispy/visuals/tests/test_colormap.py",
+        "sha256": "9931eeaee1cf027995043f03fbcd75161688ed23146dd061eae634af8f9d80b9"
+      }
+    },
+    {
+      "member": "vispy/visuals/tests/test_ellipse.py",
+      "file": {
+        "path": "src/vispy/visuals/tests/test_ellipse.py",
+        "sha256": "fefbf7c2757a93fa53e5c0d004ac24fb8a8aa9d7629b6345794e362ba14b318c"
+      }
+    },
+    {
+      "member": "vispy/visuals/tests/test_gridlines.py",
+      "file": {
+        "path": "src/vispy/visuals/tests/test_gridlines.py",
+        "sha256": "debf6e19eb75bead0472942f1ef0acffdd52beda292c21ee58883c7d85d57f29"
+      }
+    },
+    {
+      "member": "vispy/visuals/tests/test_histogram.py",
+      "file": {
+        "path": "src/vispy/visuals/tests/test_histogram.py",
+        "sha256": "c7c92eaf278440fcbcc993c418748f520c279ed9f8959439e7a45a8f2f4d9714"
+      }
+    },
+    {
+      "member": "vispy/visuals/tests/test_image.py",
+      "file": {
+        "path": "src/vispy/visuals/tests/test_image.py",
+        "sha256": "33debe1c407ba82dd66580a21d92260fa3849b3a2144619a4006f5c01cb5a134"
+      }
+    },
+    {
+      "member": "vispy/visuals/tests/test_image_complex.py",
+      "file": {
+        "path": "src/vispy/visuals/tests/test_image_complex.py",
+        "sha256": "f31a02ef55b2f6dd726f9068b74d821073209902451873cb085af9237667c2d1"
+      }
+    },
+    {
+      "member": "vispy/visuals/tests/test_infinite_line.py",
+      "file": {
+        "path": "src/vispy/visuals/tests/test_infinite_line.py",
+        "sha256": "3e7c8127d74a985c0f9689f6adf136dce49e2e2387eb99a664a80376559581ce"
+      }
+    },
+    {
+      "member": "vispy/visuals/tests/test_instanced_mesh.py",
+      "file": {
+        "path": "src/vispy/visuals/tests/test_instanced_mesh.py",
+        "sha256": "789c4da45c73fcf127e512d69d75d557830364249ad7ae9d4d7911974e1d2d0c"
+      }
+    },
+    {
+      "member": "vispy/visuals/tests/test_isocurve.py",
+      "file": {
+        "path": "src/vispy/visuals/tests/test_isocurve.py",
+        "sha256": "c4ab09b56dbc8943539206711f724876fa76162ef1521c95545d51c4bd728b9a"
+      }
+    },
+    {
+      "member": "vispy/visuals/tests/test_isosurface.py",
+      "file": {
+        "path": "src/vispy/visuals/tests/test_isosurface.py",
+        "sha256": "dad7cf756c73878664d3d0e6c4b8c63b954a1b68080b337973eb8bcacdc963f6"
+      }
+    },
+    {
+      "member": "vispy/visuals/tests/test_linear_region.py",
+      "file": {
+        "path": "src/vispy/visuals/tests/test_linear_region.py",
+        "sha256": "aa1fdab94511c773d51d2d0f4c5db867560a6d5405b9cef7bc73de8ceba30017"
+      }
+    },
+    {
+      "member": "vispy/visuals/tests/test_markers.py",
+      "file": {
+        "path": "src/vispy/visuals/tests/test_markers.py",
+        "sha256": "c9961970b7bcf6b1d3b27ffe55432def925a3ae116380b71ead06203b679d5d3"
+      }
+    },
+    {
+      "member": "vispy/visuals/tests/test_mesh.py",
+      "file": {
+        "path": "src/vispy/visuals/tests/test_mesh.py",
+        "sha256": "5fbff14281364c36809120c5168b6f066676cbd04359d2c29227587e96563244"
+      }
+    },
+    {
+      "member": "vispy/visuals/tests/test_mesh_normals.py",
+      "file": {
+        "path": "src/vispy/visuals/tests/test_mesh_normals.py",
+        "sha256": "e8bdbc3094939f752ad1f0e728ff7dfd06ba7174e03f9bf17ffa763996da4afa"
+      }
+    },
+    {
+      "member": "vispy/visuals/tests/test_polygon.py",
+      "file": {
+        "path": "src/vispy/visuals/tests/test_polygon.py",
+        "sha256": "0bfb60ff0aa1386ca97da47f3a02864a8bdb3757bddaebc0afcb748bc96b2b75"
+      }
+    },
+    {
+      "member": "vispy/visuals/tests/test_rectangle.py",
+      "file": {
+        "path": "src/vispy/visuals/tests/test_rectangle.py",
+        "sha256": "237bca9e36860de4e8103a1c2cf83c6569b6453d8b68c89db54b1913b7e96221"
+      }
+    },
+    {
+      "member": "vispy/visuals/tests/test_regular_polygon.py",
+      "file": {
+        "path": "src/vispy/visuals/tests/test_regular_polygon.py",
+        "sha256": "a5036405e5c5a8f720a6e3c831dc4665075ec396e7c9ab1f7b05f042792e217a"
+      }
+    },
+    {
+      "member": "vispy/visuals/tests/test_scalable_textures.py",
+      "file": {
+        "path": "src/vispy/visuals/tests/test_scalable_textures.py",
+        "sha256": "c3069774c1f875ec53a14f77d5192e0f1cb1c5b02a52979ea5d46fffe37de128"
+      }
+    },
+    {
+      "member": "vispy/visuals/tests/test_sdf.py",
+      "file": {
+        "path": "src/vispy/visuals/tests/test_sdf.py",
+        "sha256": "3169418ba51fb56471d1319cbe7aed2dc518d59692ced47981303d180f245868"
+      }
+    },
+    {
+      "member": "vispy/visuals/tests/test_spectrogram.py",
+      "file": {
+        "path": "src/vispy/visuals/tests/test_spectrogram.py",
+        "sha256": "a1d2be9f59d833ec01cb61f767d7f9624878c819b14fd1d007b13e0b9ddccd2c"
+      }
+    },
+    {
+      "member": "vispy/visuals/tests/test_surface_plot.py",
+      "file": {
+        "path": "src/vispy/visuals/tests/test_surface_plot.py",
+        "sha256": "c5dd01ac6872b080f3b751292ccddfeb6248844d40c3f25f5de0b7069d4bcdb7"
+      }
+    },
+    {
+      "member": "vispy/visuals/tests/test_text.py",
+      "file": {
+        "path": "src/vispy/visuals/tests/test_text.py",
+        "sha256": "c1e6df5ad25c4a05248f7401b59e24820aece4e76419919bd1bc987389adada3"
+      }
+    },
+    {
+      "member": "vispy/visuals/tests/test_volume.py",
+      "file": {
+        "path": "src/vispy/visuals/tests/test_volume.py",
+        "sha256": "fef6b88080a1339768cda3c22465f9bbb9ef08a88031693c3c416ebc61261515"
+      }
+    },
+    {
+      "member": "vispy/visuals/tests/test_windbarb.py",
+      "file": {
+        "path": "src/vispy/visuals/tests/test_windbarb.py",
+        "sha256": "72a1047009cf31fdbd665a0bd9f589a36374e25ac98264270fe2adf265d61100"
+      }
+    },
+    {
+      "member": "vispy/visuals/text/__init__.py",
+      "file": {
+        "path": "src/vispy/visuals/text/__init__.py",
+        "sha256": "a968060ca47e7b31f8673cc629fb3bd92ff339ab950e7e6c9c9e6e1e762fe8b1"
+      }
+    },
+    {
+      "member": "vispy/visuals/text/_sdf_cpu.py",
+      "file": {
+        "path": "src/vispy/visuals/text/_sdf_cpu.py",
+        "sha256": "3907450d9e0721e0eeebe0d6f006b640e2698381b19031f01864ba6a5eb0219f"
+      }
+    },
+    {
+      "member": "vispy/visuals/text/_sdf_cpu.pyx",
+      "file": {
+        "path": "src/vispy/visuals/text/_sdf_cpu.pyx",
+        "sha256": "ca63c4ae088737d8e1045ba3fc65e70a10334de0db18cf8c51097794897310d1"
+      }
+    },
+    {
+      "member": "vispy/visuals/text/_sdf_gpu.py",
+      "file": {
+        "path": "src/vispy/visuals/text/_sdf_gpu.py",
+        "sha256": "5d6e672a2be6bd4c7bb40f0b79b0bbbbb377ed041f05c31252b74fbe41bd254f"
+      }
+    },
+    {
+      "member": "vispy/visuals/text/text.py",
+      "file": {
+        "path": "src/vispy/visuals/text/text.py",
+        "sha256": "fe5c158542148db82add500c6e436e6822f377c468419e842fc0b64bb73070e4"
+      }
+    },
+    {
+      "member": "vispy/visuals/transforms/__init__.py",
+      "file": {
+        "path": "src/vispy/visuals/transforms/__init__.py",
+        "sha256": "04d6d53b41960684194a18af63f443ad11dc7b2fb33a6428175038ee15e0b9ae"
+      }
+    },
+    {
+      "member": "vispy/visuals/transforms/_util.py",
+      "file": {
+        "path": "src/vispy/visuals/transforms/_util.py",
+        "sha256": "b4ad020e013022c5a621a26e34dd79f0817dc0d94e01cbbd6ae1daf06432acc7"
+      }
+    },
+    {
+      "member": "vispy/visuals/transforms/base_transform.py",
+      "file": {
+        "path": "src/vispy/visuals/transforms/base_transform.py",
+        "sha256": "3921c5deefc832bea7691787138aeb64520374ea7ebcdda61debf69eb66d1612"
+      }
+    },
+    {
+      "member": "vispy/visuals/transforms/chain.py",
+      "file": {
+        "path": "src/vispy/visuals/transforms/chain.py",
+        "sha256": "1fd4c4dce12f64ba2d9cf9adb16e5f8ff24b628ad55adb72cdd8b01de4dba45f"
+      }
+    },
+    {
+      "member": "vispy/visuals/transforms/interactive.py",
+      "file": {
+        "path": "src/vispy/visuals/transforms/interactive.py",
+        "sha256": "20d56dac30d81138aa3f619552fb18115f4bfcfaf3d8e95aaab4572f43bc4d5e"
+      }
+    },
+    {
+      "member": "vispy/visuals/transforms/linear.py",
+      "file": {
+        "path": "src/vispy/visuals/transforms/linear.py",
+        "sha256": "ea098d54ea8fb4968a1876bf5b07d30623008abe3792693bd1d183c6e071452d"
+      }
+    },
+    {
+      "member": "vispy/visuals/transforms/nonlinear.py",
+      "file": {
+        "path": "src/vispy/visuals/transforms/nonlinear.py",
+        "sha256": "a221c386aa0cf44e2b046326a99b5548956ca6dd458193918a0e93a799cf3bbc"
+      }
+    },
+    {
+      "member": "vispy/visuals/transforms/tests/__init__.py",
+      "file": {
+        "path": "src/vispy/visuals/transforms/tests/__init__.py",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "member": "vispy/visuals/transforms/tests/test_transforms.py",
+      "file": {
+        "path": "src/vispy/visuals/transforms/tests/test_transforms.py",
+        "sha256": "41b028d08de0e5591a433cec674df392d3fe81ed8989741e0f6aea57afcb2bba"
+      }
+    },
+    {
+      "member": "vispy/visuals/transforms/transform_system.py",
+      "file": {
+        "path": "src/vispy/visuals/transforms/transform_system.py",
+        "sha256": "74a44c89dd469b46e187d2bfbf54620bec716e6405eb5387cffd14afc19d3265"
+      }
+    },
+    {
+      "member": "vispy/visuals/tube.py",
+      "file": {
+        "path": "src/vispy/visuals/tube.py",
+        "sha256": "02db679f70edb9ed214e638d6f77434f4039e93000907a15ba648c9b6e93c8df"
+      }
+    },
+    {
+      "member": "vispy/visuals/visual.py",
+      "file": {
+        "path": "src/vispy/visuals/visual.py",
+        "sha256": "00bcf1087d6120f948768e4f467c109bf42ec46aac31c3eaff3c8d904f79aec4"
+      }
+    },
+    {
+      "member": "vispy/visuals/volume.py",
+      "file": {
+        "path": "src/vispy/visuals/volume.py",
+        "sha256": "e7967043adaa6919564543c0600178100e357a92039bb1eca51c90bd6e697cf4"
+      }
+    },
+    {
+      "member": "vispy/visuals/windbarb.py",
+      "file": {
+        "path": "src/vispy/visuals/windbarb.py",
+        "sha256": "f26808313973b29db412763cfd98d7fe3500c9c8aed44ad763e4dad84736149a"
+      }
+    },
+    {
+      "member": "vispy/visuals/xyz_axis.py",
+      "file": {
+        "path": "src/vispy/visuals/xyz_axis.py",
+        "sha256": "d77362dd03bc35842c0795334174d963b985fd3810b24cce6533cb2ac1d9203c"
+      }
+    },
+    {
+      "member": "vispy/_runtime_package.json",
+      "file": {
+        "path": "compat/runtime-package.json",
+        "sha256": "0d650208cd1e5fcb3419fe8ba35dcef6b7a08ee2719d34785aa434023a23a005"
+      }
+    }
+  ],
+  "native": [
+    {
+      "path": "cpp/bindings/command_decode.hpp",
+      "sha256": "7f82c832030952a78bf9266e1b62f7188e884f349310a406f3fac4cdc31cf50f"
+    },
+    {
+      "path": "cpp/bindings/module.cpp",
+      "sha256": "32c255f277336ede8455b2061d6de00eb5b2bd93892a7f5bf673afe391674257"
+    },
+    {
+      "path": "cpp/bindings/owned_payload.hpp",
+      "sha256": "6182949711dbccfaaf2e19cbb3dbc801a862ab12ddb112fd28b3197f5ff18782"
+    },
+    {
+      "path": "cpp/bindings/python_buffer_capture.hpp",
+      "sha256": "90b05f928ae27f151cbe3093dd90ba7d694e65eaf332c71df88a22772f4be105"
+    },
+    {
+      "path": "cpp/platform/native_library.cpp",
+      "sha256": "956262ccb0bcd0eba8707ae5ea1cfc5ed2f23fdfcaee87094483a15bda1f6e01"
+    },
+    {
+      "path": "cpp/platform/native_library.hpp",
+      "sha256": "85e1a657df842f9df98a5b677b842031c6255002f35c07584e2640f12e7b6210"
+    },
+    {
+      "path": "cpp/platform/native_surface.hpp",
+      "sha256": "9f74ac5df137cb4cdede05837e9105971c003d836ed05e7a1f7e330e7572cc0d"
+    },
+    {
+      "path": "cpp/platform/surface_metal.mm",
+      "sha256": "a9614d0e8373e9449a3aeccd03d9f5696c6e8e07510aba303e2c4f611b5de134"
+    },
+    {
+      "path": "cpp/platform/surface_win32.cpp",
+      "sha256": "095b2281d4ac1044a87d08093996c87d4b2a75b236e20e1c9eacb8c158b8208f"
+    },
+    {
+      "path": "cpp/platform/surface_x11.cpp",
+      "sha256": "ad8c6e72e95cc02b1ec65751de8c1e40b89a6eaad78a68b84523d4439788f66a"
+    },
+    {
+      "path": "cpp/platform/vk_layer.cpp",
+      "sha256": "9ce7f3ae573f9367bd54d51c49bf2d71a0e7458431d631f242906b9d65622061"
+    },
+    {
+      "path": "cpp/platform/vk_layer_telemetry.hpp",
+      "sha256": "5aa439452b8317b58822c1a9202969782706c927d748c98146cd6b3f008ad018"
+    },
+    {
+      "path": "cpp/runtime.cpp",
+      "sha256": "4be87ec8cf7242cea570be16dbb04a28b156ddcfce86617ebbf83da631cc01ac"
+    },
+    {
+      "path": "cpp/runtime.hpp",
+      "sha256": "e06d09836b1dba55114cedac9f99c1b599876e67a366fa87bb7ee5c7a8111bf4"
+    },
+    {
+      "path": "cpp/runtime_batch_cache.hpp",
+      "sha256": "936cf5d94d5b6d86ad5c0b4544385d8e47efeea61a925bcbfe6f56a4c874dcae"
+    },
+    {
+      "path": "cpp/runtime_batch_capacity.hpp",
+      "sha256": "2428de457e084701d66e408caa517f640b774526bfb5853c2438dec69734174c"
+    },
+    {
+      "path": "cpp/runtime_batch_owner.hpp",
+      "sha256": "f7fd01d5b1d67c0432ad384388f558f2c5847de322f16d451059a1c3a63e7a20"
+    },
+    {
+      "path": "cpp/runtime_batch_plan.hpp",
+      "sha256": "bd33bcd12f37ef81e349f6350b490e45951ef119b9534d2f46ce869fda1ee897"
+    },
+    {
+      "path": "cpp/runtime_batch_strip.hpp",
+      "sha256": "a444e95bb7d2135bfdf2104e116813837b0542e89064b618c87cae224ef6ccda"
+    },
+    {
+      "path": "cpp/runtime_batch_topology.hpp",
+      "sha256": "4ed18090fb6ce3067c89d10f5a005939531a9b7bf08c5d9111c45f0da574e604"
+    },
+    {
+      "path": "cpp/runtime_frame_lifecycle.hpp",
+      "sha256": "730ec494aa2e31a2bddd9cf49ab2f9a0b78822565d87592b6afcf4d8b429b88e"
+    },
+    {
+      "path": "cpp/runtime_framebuffer_config.hpp",
+      "sha256": "27e43caf92009cb40331b6a88317e5b67d5d10ecdfb47a17c550ee50c93f2cd3"
+    },
+    {
+      "path": "cpp/runtime_line.hpp",
+      "sha256": "5449158c7ba567a49047016a24a2d831ff68902cb4fa989711becf86030911e7"
+    },
+    {
+      "path": "cpp/runtime_line_batch.hpp",
+      "sha256": "c4a61a7312c3f9260716688833f574dd6778f63f34a88f9be4d31caa12af547e"
+    },
+    {
+      "path": "cpp/runtime_line_cache.hpp",
+      "sha256": "87e0c12fa64b26db7dc7d9f7c81278b329dc1d2d12981958ec3b2c7abb243446"
+    },
+    {
+      "path": "cpp/runtime_line_capture.hpp",
+      "sha256": "2f29366a24fbff96037e9f9d12c1336e2e1952b2b49d9aaf2e15e963d288228e"
+    },
+    {
+      "path": "cpp/runtime_line_consumer.hpp",
+      "sha256": "d28e9e1322db45393ef45da4d043944c31c1e1318a48d5a4baa6142552f2bb51"
+    },
+    {
+      "path": "cpp/runtime_line_consumer_accounting.hpp",
+      "sha256": "67bdd2a2fa851cbbabf613a1da5becd4d358430a59a6cca9ae5829ff04eb100a"
+    },
+    {
+      "path": "cpp/runtime_line_ownership.hpp",
+      "sha256": "e8c3461f1390b8a92b3e95ba364cdb131dda9e727ba067e035e6753044d9fa02"
+    },
+    {
+      "path": "cpp/runtime_line_pool.hpp",
+      "sha256": "c6b23d76a766f0077543db1e676c96ea5e0d6c8a6e25a91caab00dc911c73c7c"
+    },
+    {
+      "path": "cpp/runtime_line_resources.hpp",
+      "sha256": "0554c89c8c2314bb580155eee85b9788d8ec1770ae36ef1ea1af492832d5fa23"
+    },
+    {
+      "path": "cpp/runtime_line_variants.hpp",
+      "sha256": "0b2126073a527d262f8d93d92c75475695054ef3fb069703512a676ff095a791"
+    },
+    {
+      "path": "cpp/runtime_owned_texture.hpp",
+      "sha256": "db00f7b51f7d63236db9d0bd0455a3fca4e377a39dab995a8a350157cd4e4065"
+    },
+    {
+      "path": "cpp/runtime_point.hpp",
+      "sha256": "8e13a39989913be6cde5e383ac8b68dd44458246a50fb2bed10addca0cf19ef5"
+    },
+    {
+      "path": "cpp/runtime_point_batch.hpp",
+      "sha256": "ea761895fa7ceaacda83f9bb60cbc666e6f824e750b0555eb981b780c31a2b2a"
+    },
+    {
+      "path": "cpp/runtime_point_batch_owner.hpp",
+      "sha256": "77edeb88358cbfbf6bc73d97444a9d814c0e9d34e22fc1ff742f950482f24412"
+    },
+    {
+      "path": "cpp/runtime_point_partition.hpp",
+      "sha256": "62894aca73e83ea980762d86c01d70fe80bae1df345761b003bcbf31956465ce"
+    },
+    {
+      "path": "cpp/runtime_query_timing.hpp",
+      "sha256": "424e47e17127902cf9e88fc432929f41d526da9d352a23999cc9e666a0c94191"
+    },
+    {
+      "path": "cpp/runtime_readback.hpp",
+      "sha256": "4fef704e180d079ebde36b644b09222a700439adb3a10543fd6a22ccf5c46e86"
+    },
+    {
+      "path": "cpp/runtime_render_semantics.hpp",
+      "sha256": "ca556739f3a95ac19f92e5ea699969891efe607c9d822fee07466d8fe2c72999"
+    },
+    {
+      "path": "cpp/runtime_state.hpp",
+      "sha256": "5616b4d7843ecc4cd0fd345d4e4eca725832570325742f169cd53ce2c9a480b2"
+    },
+    {
+      "path": "cpp/runtime_state_query.hpp",
+      "sha256": "982b5afb1636b010f13738a386f5b11bf4eaef9b262d73ca92d94c867d9e75c2"
+    },
+    {
+      "path": "cpp/runtime_texture.hpp",
+      "sha256": "fdd573ca262805824895dfe7e60d3c3389f49be39fa75aaad65667e597ca1c55"
+    },
+    {
+      "path": "cpp/runtime_uniform_updates.hpp",
+      "sha256": "15302bc25aec806465449ef72b7fba3f5d042f2a9d69abe7a705bb4a2caa8377"
+    },
+    {
+      "path": "cpp/shader/artifact.hpp",
+      "sha256": "044b8d2b8ad9db28295af298e27ef3c1a91b85c14a5f079682070d611eca027a"
+    },
+    {
+      "path": "cpp/shader/glslang_spv.cpp",
+      "sha256": "8fcea6182c5e76ba70b81ae3558d0a21c34b23d01222c9b4e0fd69cccd8de082"
+    },
+    {
+      "path": "cpp/shader/glslang_spv.hpp",
+      "sha256": "7445354eb363b2fd605ebde5a0b952c0114e4dba922c04185048871817ef57ac"
+    },
+    {
+      "path": "cpp/shader/integer_sampling.cpp",
+      "sha256": "b41d167a8eb8afb58e6fb55d8271a46dc88774a5782d34bcade70803762cc649"
+    },
+    {
+      "path": "cpp/shader/integer_sampling.hpp",
+      "sha256": "ae356ab0af99249448a2169c2261b32cfd85aaa38b34fef76baf2e9525386053"
+    },
+    {
+      "path": "cpp/shader/line_consumer.cpp",
+      "sha256": "3c279501f041654b0707452a5fce8c50578b31f21c065cb081b27d76b96649d3"
+    },
+    {
+      "path": "cpp/shader/line_consumer.hpp",
+      "sha256": "ec9cf3f755aa4fe378b453d5ca3e1dc0f267a494c7f1c86a4ba2e1b51eced4ee"
+    },
+    {
+      "path": "cpp/shader/line_evaluator.cpp",
+      "sha256": "e0ba87a8367f447214bbd29e72a16d90f0ada73d0a43fe796e0e6c7c43dd85a4"
+    },
+    {
+      "path": "cpp/shader/line_evaluator.hpp",
+      "sha256": "b90cf8e25a5be737e9ff115ce7eca154532fba40ac2160ed589516443637ed52"
+    },
+    {
+      "path": "cpp/shader/normalize.cpp",
+      "sha256": "c51342bdb142c6c3868959719ee528b6b2d9c592d0ee5576ca55d0dd1aaac2d2"
+    },
+    {
+      "path": "cpp/shader/normalize.hpp",
+      "sha256": "fde90410fb3f5fd3bafe04ee232034c2d0a96a8dba075c53bb8d65a32871f5df"
+    }
+  ],
+  "locks": [
+    {
+      "path": "uv.lock",
+      "sha256": "31f1430802913f01908d01832ccd879bd110b7aef1d4cce4ffe060857fe26a47"
+    },
+    {
+      "path": "cmake/dependencies.lock.json",
+      "sha256": "67e06976a2612e554990775ae1a88848e6621e1831b40931dcc53c3c34b74cea"
+    }
+  ],
+  "licenses": [
+    {
+      "path": "LICENSE",
+      "sha256": "0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0"
+    },
+    {
+      "path": "LICENSE-BSD",
+      "sha256": "a28bb857d763513c810ca843558c12cf97f64b990b855c1ce7f5e291e52fc25c"
+    },
+    {
+      "path": "LICENSING.md",
+      "sha256": "e8a28d2d2c78d86fa2b6f83284e8f1a32237f87bfd417fd1cdfc84c8f3ce37f5"
+    },
+    {
+      "path": "third_party/licenses/OpenSans-Apache-2.0.txt",
+      "sha256": "f54fff0b905df5b3464527c652a30e903b172d6dcab4d89b5e6f105d5e4a4603"
+    },
+    {
+      "path": "third_party/licenses/THIRD-PARTY-NOTICES.txt",
+      "sha256": "5d0535f3b27d7fbe0326ef150f705a8c2e71c39e2ebea87fd0bf949859279333"
+    },
+    {
+      "path": "third_party/licenses/abseil-LICENSE.txt",
+      "sha256": "f54fff0b905df5b3464527c652a30e903b172d6dcab4d89b5e6f105d5e4a4603"
+    },
+    {
+      "path": "third_party/licenses/dawn-LICENSE.txt",
+      "sha256": "0493f897193af1796d5054659f45ec7d4c5af648fa67a99f01d30e55cc805abc"
+    },
+    {
+      "path": "third_party/licenses/glslang-LICENSE.txt",
+      "sha256": "7d4c1655be3a4d99e8a4859335e28c8950f2e7f72dcf3eed3379846120f5bf47"
+    },
+    {
+      "path": "third_party/licenses/manifest.json",
+      "sha256": "6aca7efb598d33d28f5258db3825796db5ee199959610bd570734439a16de149"
+    },
+    {
+      "path": "third_party/licenses/nanobind-LICENSE.txt",
+      "sha256": "f305091a4e57805870b217a28ea4b1f16610eece8457d2370f822a9696b75836"
+    },
+    {
+      "path": "third_party/licenses/robin-map-LICENSE.txt",
+      "sha256": "1b69097c95e2fa5b011cd3754fa35e10f5ce68172877bc59b89523bcb1b9f951"
+    },
+    {
+      "path": "third_party/licenses/spirv-headers-LICENSE.txt",
+      "sha256": "841a6e68e16bfc98db8eca98d7002d4f2b508c56ce865fd6f1726be30ed489eb"
+    },
+    {
+      "path": "third_party/licenses/spirv-headers-MIT.txt",
+      "sha256": "e841940147d59e33874ee623a6a3ca0574364de359297fbc427b5824cde30957"
+    },
+    {
+      "path": "third_party/licenses/spirv-tools-LICENSE.txt",
+      "sha256": "3ddf9be5c28fe27dad143a5dc76eea25222ad1dd68934a047064e56ed2fa40c5"
+    },
+    {
+      "path": "third_party/licenses/vispy-LICENSE.txt",
+      "sha256": "a28bb857d763513c810ca843558c12cf97f64b990b855c1ce7f5e291e52fc25c"
+    },
+    {
+      "path": "third_party/licenses/vulkan-headers-Apache-2.0.txt",
+      "sha256": "3ddf9be5c28fe27dad143a5dc76eea25222ad1dd68934a047064e56ed2fa40c5"
+    },
+    {
+      "path": "third_party/licenses/vulkan-headers-LICENSE.txt",
+      "sha256": "a2d4407962c909f84807774cbfe9fad05a1ebe972472c08ed5ad43d482afd288"
+    },
+    {
+      "path": "third_party/licenses/vulkan-headers-MIT.txt",
+      "sha256": "051daae2dae99c2b0fc9d8363cf704b9456ae0e3c89589ac755d506a0b2c10c3"
+    },
+    {
+      "path": "third_party/licenses/vulkan-loader-LICENSE.txt",
+      "sha256": "557bd2cc07eff373f3f26c8d5726fefe8e7fc4add97796c2fbf24f74a200214a"
+    },
+    {
+      "path": "third_party/licenses/vulkan-utility-libraries-Apache-2.0.txt",
+      "sha256": "3ddf9be5c28fe27dad143a5dc76eea25222ad1dd68934a047064e56ed2fa40c5"
+    },
+    {
+      "path": "third_party/licenses/vulkan-utility-libraries-CC-BY-4.0.txt",
+      "sha256": "4500200b91acb1324538d8e8f9665d5f4142d3f1c5cd9730564cf1895b6170f7"
+    },
+    {
+      "path": "third_party/licenses/vulkan-utility-libraries-LICENSE.txt",
+      "sha256": "fb0245cd3d866045abba509dc85905a7c2cd1f6642d679d9857e85deb82bfcd5"
+    },
+    {
+      "path": "third_party/licenses/webgpu-headers-LICENSE.txt",
+      "sha256": "55fdaed683a2d7330a4102faf61f45ec12a0526aada329c4f89f7df0a523116a"
+    }
+  ],
+  "build": [
+    {
+      "path": "cmake/dependency_origins.py",
+      "sha256": "923772347aa1e658a2d64180bdbfbbfe42075ae8af0d32fbc9a2e709b56e0541"
+    },
+    {
+      "path": "cmake/native_sdk.py",
+      "sha256": "b86fece76b81c2e9429fd49f9468a0d735dfaff8ffe00f821635c90a69019601"
+    },
+    {
+      "path": "cmake/NativeSDK.cmake",
+      "sha256": "8774893d8c1aebf2226e725d0797ecac1f8e33078dd47cbc0d5856df2bf416ea"
+    },
+    {
+      "path": "cmake/prepare_cp310_candidate.py",
+      "sha256": "5acc36d23c3aac1fa09e913c20cb28a6b5481224fd57f01c8c59b1786d1ce784"
+    },
+    {
+      "path": "cmake/prepare_cp311_candidate.py",
+      "sha256": "b7092e05446f4cdb47f5861f457979a4c360a7a6f9f5160bee8d91a208d5f16b"
+    },
+    {
+      "path": "cmake/prepare_cpython312_candidate.py",
+      "sha256": "760634fecb662d7e6c0dda9b20c2fbb944ffa6881cc9205c0ad390df189ce6ef"
+    },
+    {
+      "path": "cmake/prepare_newer_candidates.py",
+      "sha256": "a515166dcc220cc2a7ed06ea8c8bff663db61565560388e882966cc2001960e4"
+    },
+    {
+      "path": "cmake/RefreshNativeSDKPackage.cmake",
+      "sha256": "12b0a76d303b795620bfb550540be0087bc7af3696c212a8245aaab7fa03f534"
+    },
+    {
+      "path": "cmake/runtime_package.py",
+      "sha256": "b232799722f56f833c130e8110d97ab1d6459e841c884a9bc588837bb38d5f39"
+    },
+    {
+      "path": "cmake/snapshot_wheel_sources.py",
+      "sha256": "1d341e1ade7b2d7eed44636ceff6ad3f1e4c163f65e470e0d390c9fdfb5e780d"
+    },
+    {
+      "path": "cmake/verify_dependencies.py",
+      "sha256": "40b95837957d65e3a45d867a3bb5524929b5ca13f58d3c3bc38203fdb9d19e9d"
+    },
+    {
+      "path": "cmake/VispyNativeSDKConfig.cmake.in",
+      "sha256": "f0f77f0e89c144089fd3f6c4566dd3359b0d48a0a824c2dfaeb67265591d1f26"
+    },
+    {
+      "path": "cmake/WindowsCompilerPolicy.cmake",
+      "sha256": "fa97a81716b2c19a08f3d6cf810890a4246940220f0907e8ee75d125ff998aad"
+    },
+    {
+      "path": "CMakeLists.txt",
+      "sha256": "6fcbcc1e5d3cc891cb7d30dfb7cc3ca038809a9486e09e24c4a282e27d0216b2"
+    },
+    {
+      "path": "pyproject.toml",
+      "sha256": "7b86ee1e6a6978c2a6368a34051cf88f347832eb1d60b70a29fd40d7d76ba5a0"
+    },
+    {
+      "path": "src/vispy/visuals/text/_sdf_cpu.pyx",
+      "sha256": "ca63c4ae088737d8e1045ba3fc65e70a10334de0db18cf8c51097794897310d1"
+    }
+  ]
+}

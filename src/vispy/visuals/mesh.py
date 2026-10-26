@@ -96,6 +96,8 @@ class MeshVisual(Visual):
         'fragment': _FRAGMENT_SHADER,
     }
 
+    _shading_filter_class = None
+
     def __init__(self, vertices=None, faces=None, vertex_colors=None,
                  face_colors=None, color=(0.5, 0.5, 1, 1), vertex_values=None,
                  meshdata=None, shading=None, mode='triangles', **kwargs):
@@ -146,11 +148,18 @@ class MeshVisual(Visual):
             # Delay creation of filter until necessary.
             return
         if self.shading_filter is None:
-            from vispy.visuals.filters import ShadingFilter
-            self.shading_filter = ShadingFilter(shading=shading)
-            self.attach(self.shading_filter)
+            shading_filter = self._create_shading_filter(shading)
+            if shading_filter is None:
+                return  # subclass inputs are not ready yet
+            self.shading_filter = shading_filter
+            self.attach(shading_filter)
         else:
             self.shading_filter.shading = shading
+
+    def _create_shading_filter(self, shading):
+        from vispy.visuals.filters import ShadingFilter
+        factory = self._shading_filter_class or ShadingFilter
+        return factory(shading=shading)
 
     def set_data(self, vertices=None, faces=None, vertex_colors=None,
                  face_colors=None, color=None, vertex_values=None,

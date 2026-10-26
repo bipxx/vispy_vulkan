@@ -462,9 +462,24 @@ void basic() {
         for (const auto& i : trace.code) require(i.op != spv::Op::OpIsHelperInvocationEXT && i.op != spv::Op::OpDemoteToHelperInvocationEXT,
                 "ordinary original introduces no helper-query or demote extension opcode");
     }
-    require(e->original->uniforms.empty() && e->original->uniform_bytes == 16 &&
-            c->parameters_offset == 16 && c->uniform_bytes == 80,
-            "empty semantic UBO retains original reserved16 plus mandatory actual render params64");
+    require(e->original->uniforms.size() == 1 && e->original->uniform_bytes == 16,
+            "FragCoord original retains exactly one runtime depth-range uniform in a16-byte UBO");
+    const auto& depth_range = e->original->uniforms.front();
+    require(depth_range.name == "vispy_fragment_depth_range" && depth_range.type == "vec2" &&
+            depth_range.storage_type == "vec2" && depth_range.offset == 0 && depth_range.size == 8 &&
+            depth_range.array_size == 0 && depth_range.component_count == 2,
+            "runtime depth-range uniform has exact reflected vec2 std140 metadata");
+    require(c->uniforms.size() == 5 && c->uniforms.front().name == depth_range.name &&
+            c->uniforms.front().type == depth_range.type && c->uniforms.front().offset == 0 &&
+            c->uniforms.front().size == 8 && c->parameters_offset == 16 && c->uniform_bytes == 80,
+            "generated consumer preserves runtime depth-range metadata before appended render params64");
+    auto empty = evaluator(basic_vertex, "varying vec4 color; void main() { gl_FragColor = color; }");
+    auto empty_consumer = build_generated_line_consumer(empty, policy(), grants());
+    require(empty_consumer->ok, "actually empty semantic UBO consumer compiles: " + empty_consumer->error);
+    require(empty->original->uniforms.empty() && empty->original->uniform_bytes == 16 &&
+            empty_consumer->parameters_offset == 16 && empty_consumer->uniform_bytes == 80 &&
+            empty_consumer->uniforms.size() == 4,
+            "original empty-UBO case still retains reserved16 plus mandatory actual render params64");
     auto limits = grants(); limits.max_storage_buffers_per_stage = 0;
     auto rejected = build_generated_line_consumer(e, policy(), limits);
     require(!rejected->ok && rejected->timings.parse_calls == 0, "missing storage grant refuses before compiler");
@@ -908,6 +923,29 @@ void main() {
     require(!default_trace.dominates(default_trace.entry_store(default_trace.id("color")),
             default_trace.entry_store(default_trace.id("private_seed"))),
             "counterfactual default initializer order is genuinely distinguished");
+}
+
+void multidimensional_varying_storage() {
+    const std::string declarations = "varying mat2x3 matrices[2][2];flat varying int labels[2][2];";
+    const std::string vertex = "attribute vec4 position;" + declarations +
+        "void main(){gl_Position=position;for(int i=0;i<2;++i)for(int j=0;j<2;++j){"
+        "matrices[i][j]=mat2x3(float(i*2+j));labels[i][j]=i*2+j+gl_VertexID;}}";
+    const std::string fragment = declarations +
+        "void main(){gl_FragColor=vec4(matrices[1][0][1][2]+float(labels[0][1]));}";
+    auto e = evaluator(vertex,fragment); auto c = build_generated_line_consumer(e,policy(),grants());
+    require(c->ok,c->error);
+    require(e->outputs.size()==2 && e->outputs[0].varying.array_dimensions==std::vector<uint32_t>({2,2}),
+        "endpoint retains logical multidimensional interface shape");
+    require(c->fragment_rows.members[1].array_size==4 && c->fragment_rows.members[1].array_stride==32,
+        "generated storage is four reflected matrix leaves, independent of logical rank");
+    require(e->compute.find("matrices[(vispy_line_element / 2u) % 2u][(vispy_line_element) % 2u]")!=std::string::npos,
+        "endpoint serializes every logical nested element into its flat storage leaf");
+    require(c->fragment.find("matrices[(2 / 2u) % 2u][(2) % 2u]")!=std::string::npos,
+        "fragment reconstructs nested private values before original code");
+    auto broken=e->outputs;broken[0].varying.array_dimensions={3,2};
+    bool rejected=false;
+    try { validate_line_output_layout(e->output_row_bytes,broken); } catch(const std::exception&) { rejected=true; }
+    require(rejected,"line layout rejects shape metadata that differs from reflected leaf count");
 }
 
 void typed_and_resources() {
@@ -1509,7 +1547,7 @@ int main(int argc, char** argv) {
             diagnostics_directory = argv[1];
             if (!std::filesystem::create_directory(diagnostics_directory)) throw std::runtime_error("diagnostics directory must be fresh");
         }
-        basic(); depth_attachment_specialization(); bounded_product_arithmetic(); viewport_coordinate_contract(); initializer_order(); typed_and_resources(); fragment_contexts(); dynamic_helper_queries(); plans_and_clip(); chunk_mapping_contract(); aliased_projection_and_clipped_terminal();
+        basic(); depth_attachment_specialization(); bounded_product_arithmetic(); viewport_coordinate_contract(); initializer_order(); multidimensional_varying_storage(); typed_and_resources(); fragment_contexts(); dynamic_helper_queries(); plans_and_clip(); chunk_mapping_contract(); aliased_projection_and_clipped_terminal();
         analytic_smooth_contract(); multisample_contract(); captured_integer_endpoint_sampling();
         std::cout << "line consumer generated compiler contract: " << checks << " checks\n";
         return 0;

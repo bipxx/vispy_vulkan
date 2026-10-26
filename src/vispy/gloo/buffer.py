@@ -13,6 +13,34 @@ from . globject import GLObject
 from ..util import logger, np_copy_if_needed
 
 
+def _attribute_vertex_records(data, record_shape, label, dtype=None):
+    """Pack an aggregate input into one typed record per vertex."""
+    words = int(np.prod(record_shape))
+    if not ((data.ndim == 2 and data.shape[1] == words) or
+            (data.ndim == len(record_shape) + 1 and data.shape[1:] == tuple(record_shape))):
+        raise ValueError('Attribute array %r needs one vertex dimension followed '
+                         'by %s, or %i packed words.' % (label, record_shape, words))
+    scalar = data.dtype if dtype is None else dtype.fields[dtype.names[0]][0].base
+    if scalar not in (np.dtype(np.float32), np.dtype(np.int32), np.dtype(np.uint32)) or data.dtype != scalar:
+        raise TypeError('Attribute array %r needs matching native 32-bit data.' % label)
+    if dtype is None:
+        dtype = np.dtype([('f0', scalar, tuple(record_shape))])
+    return np.ascontiguousarray(data).reshape(-1).view(dtype)
+
+
+def _matrix_vertex_records(data, columns, rows, label, dtype=None):
+    """Keep packed GLSL column words in one structured record per vertex."""
+    if not ((data.ndim == 2 and data.shape[1] == columns * rows) or
+            (data.ndim == 3 and data.shape[1:] == (columns, rows))):
+        raise ValueError('Matrix attribute %r needs shape (N, %i) or '
+                         '(N, %i, %i).' % (label, columns * rows, columns, rows))
+    if data.dtype != np.dtype(np.float32):
+        raise TypeError('Matrix attribute %r needs native float32 data.' % label)
+    if dtype is None:
+        dtype = np.dtype([('f0', np.float32, (columns, rows))])
+    return np.ascontiguousarray(data).reshape(-1).view(dtype)
+
+
 # ------------------------------------------------------------ Buffer class ---
 class Buffer(GLObject):
     """Generic GPU buffer.
@@ -386,6 +414,14 @@ class DataBufferView(DataBuffer):
         return self._offset
 
     @property
+    def divisor(self):
+        return getattr(self, '_divisor_override', getattr(self._base, 'divisor', None))
+
+    @divisor.setter
+    def divisor(self, value):
+        self._divisor_override = max(1, int(value)) if value else None
+
+    @property
     def base(self):
         """Buffer base if this buffer is a view on another buffer."""
         return self._base
@@ -428,6 +464,23 @@ class VertexBuffer(DataBuffer):
             data = np.array(data, dtype=np.float32)
         if not isinstance(data, np.ndarray):
             raise ValueError('Data must be a ndarray (got %s)' % type(data))
+        # A packed matrix buffer already has an unambiguous record shape.
+        # Preserve that dtype for raw replacement/subupdates instead of letting
+        # the vector path split columns into independent vertex records.
+        dtype = self.dtype
+        if (data.dtype.fields is None and dtype is not None and
+                dtype.names is not None and len(dtype.names) == 1):
+            name = dtype.names[0]
+            field, offset = dtype.fields[name][:2]
+            if (len(field.shape) >= 2 and field.base in
+                    (np.dtype(np.float32), np.dtype(np.int32), np.dtype(np.uint32)) and
+                    offset == 0 and dtype.itemsize == field.itemsize):
+                if convert is True:
+                    data = data.astype(field.base)
+                if (len(field.shape) == 2 and all(2 <= size <= 4 for size in field.shape)
+                        and field.base == np.dtype(np.float32)):
+                    return _matrix_vertex_records(data, *field.shape, name, dtype)
+                return _attribute_vertex_records(data, field.shape, name, dtype)
         if data.dtype.isbuiltin:
             if convert is True:
                 data = data.astype(np.float32)

@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "kind": "scope",
+  "status": "APPROVED",
+  "independent": true,
+  "reviewer": "Astra max independent scope/native reviewer (/root/astra_qualification_plan_review)",
+  "candidate_scope_sha256": "d1b823b38b9638a2b037639fc06e9471895782a81e9734fce3e300808348e1ea",
+  "coverage_map_sha256": "8d9937fc420a39880c7ad62c03e0e4a6331a52294732650f1f9400a4be15ae91",
+  "execution_map_sha256": "0ba701e3763da57ca3ec641e4fc1d903b8ff0633a13e019f656033b346cbb845",
+  "admission_scope_sha256": "4105283fadbb3984e0837163fadb61688af978a65077e3e62db6efc8774f4e6b",
+  "native_reuse_links": [
+    "55d0740a980eb5300ff76675032191dc200dbc2196baf31013b5866077302c1c",
+    "6d814a03053152f8708cd8e4ad6bfa92cf8db27f474096709568db1c2274ef96"
+  ],
+  "publication_head": "7347aa2a1df4e9c5a816a667dd5a537a5df01c68",
+  "review_report": {
+    "path": "build/runs/scenario-oracles-99/review-integrated/scope-native-review-astra.json",
+    "sha256": "7519f5444b9e7e1ada4e97347761abf81bd89395add7f407abf9b082e98bab51"
+  },
+  "scope": "Exact finite 15-subset/two-profile proposal, all 120 requested/effective criteria and same-profile dependency closure, with 142 historical parents preserved; exact native reuse applicability only.",
+  "limitations": [
+    "No implementation-source approval by this scope reviewer.",
+    "No native leaf/artifact admission, installed functional/absence evidence, current-head CI, hardware qualification or promotion approval."
+  ]
+}

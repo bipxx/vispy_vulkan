@@ -1,0 +1,37 @@
+{
+  "schema": 1,
+  "kind": "source",
+  "status": "APPROVED",
+  "independent": true,
+  "reviewer": "/root/astra_current_plan_max_review",
+  "candidate_scope_sha256": "180a3d4e1579347e835ac3a98818a34a32932cd3af0fca7005987fa300d32e4d",
+  "publication_head": "106756f3c1c52c233ffc64fc89cb0c684493593b",
+  "product_source_commit": "9ef9765552c41c84d82d69b44756d5925b4d3cd3",
+  "source_manifest": {
+    "path": "build/runs/ci-platform-selection-111/test-source-freeze.json",
+    "sha256": "16bee93673411e8d0a5841182051d747c76b3b6a0601a2b60b01e18126097122"
+  },
+  "baseline_approval": {
+    "path": "build/runs/loader-framing-105/review/source-approval-astra.json",
+    "sha256": "6b124e38a28e002368bfe6125d1567f4a483f6f3d0227ab97ed112b865a8accd"
+  },
+  "review_report": {
+    "path": "build/runs/ci-platform-selection-111/source-review-astra.json",
+    "sha256": "63c2ecd7d78c4e350e62383d8e5d63eefb199e8f3a47aa42ae9f88ec97836360"
+  },
+  "native_reuse_links": [
+    "ac4c636b356d088ca4f7aa35fea238b3bc253c8e573f74742c66b6f9a3b2825b",
+    "71e6667bf1ecb06020354a59231f45aa7d3ad3303d914c5f94b25a0a3c888be6"
+  ],
+  "approval_scope": "Independent source renewal for the frozen test-only Linux collection fix at 106756f3. It incorporates the cumulative run105 source implementation approval for the unchanged practical candidate scope and the source-review side of both exact unchanged native reuse requests. The Linux production-reader body and strict no-skip gate remain intact.",
+  "limitations": [
+    "This is a focused independent source renewal incorporating the retained cumulative source review, not a new full implementation audit or semantic scope approval.",
+    "The local Windows full compatibility selection and focused Linux production-reader run do not establish a current-head hosted CI pass or a completed macOS/Linux matrix. Original failed 948b CI observations remain failures.",
+    "No artifact admission, installed qualification renewal, final subject/head impact approval, promotion or release approval is given. Candidate binding, run111 terminal retention/cleanup and the final subject/head are coordinator obligations reviewed separately.",
+    "The 120 practical criteria and 142 separate parent obligations remain unchanged. This grants no full upstream parity, optical parity, native Linux GPU or Metal hardware approval.",
+    "Native reuse retains the original Windows run94 outer exit 1 with run95 revalidation, the original Linux run89 production/capture and its exact cp312 ABI relation. No original producer outcome is rewritten."
+  ],
+  "artifact_admitted": false,
+  "ci_approved": false,
+  "promotion_approved": false
+}

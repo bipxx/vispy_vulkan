@@ -1,4 +1,5 @@
 #include "shader/artifact.hpp"
+#include "attribute_binding_contract.hpp"
 
 #include <SPIRV/spirv.hpp11>
 
@@ -27,6 +28,9 @@ void identity_and_provenance() {
     auto second = portable_shader_identity("a", "bc", options, pins);
     require(first != second, "vertex/fragment boundary must not alias");
     require(first != portable_shader_identity("ab", "c", options, pins + "-changed"), "compiler pin identity participates");
+    auto reversed = options;
+    reversed.reverse_depth = true;
+    require(first != portable_shader_identity("ab", "c", reversed, pins), "depth orientation participates");
     auto base = options;
     base.base_level_sampling = true;
     require(first != portable_shader_identity("ab", "c", base, pins), "sampling policy participates");
@@ -123,6 +127,8 @@ void bounded_ownership_and_failures() {
     const std::string invalid = "void main(){\n gl_FragColor=vec4(1);\n missing_name;\n}\n";
     auto failed = failures.get_or_build(vertex, invalid, NormalizeOptions{}, pins, &hit);
     require(!hit && !failed->ok && !failed->error.empty() && failed->mapped_line == 3, "compiler failure retains original diagnostic line");
+    require(failed->error.find("fragment source line=3:  missing_name;") != std::string::npos,
+            "compiler failure includes original source context");
     auto same_failure = failures.get_or_build(vertex, invalid, NormalizeOptions{}, pins, &hit);
     require(hit && failed == same_failure && same_failure->source_fragment == invalid, "deterministic CPU failures retain diagnostics across device changes");
     auto vertex_failure = failures.get_or_build("void main(){\n gl_Position=vec4(0);\n missing_vertex;\n}\n",
@@ -130,6 +136,11 @@ void bounded_ownership_and_failures() {
     require(!vertex_failure->ok && vertex_failure->mapped_line == 3 && !vertex_failure->vertex_log.empty(),
             "vertex error uses its original source map despite a different fragment header shift");
 
+    const auto both = build_portable_shader("void main(){\n error on this line\n}",
+        "void main(){ glFragColor = vec4(1); }", {}, pins);
+    require(!both->ok && both->error.find("vertex source line=2:  error on this line") != std::string::npos &&
+        both->error.find("fragment source line=1: void main(){ glFragColor = vec4(1); }") != std::string::npos,
+        "simultaneous stage failures retain each original source line");
     auto normalized_failure = failures.get_or_build(vertex,
         "uniform sampler2D image; void main(){ gl_FragColor=texture2D(image,vec2(.5),1.0); }",
         NormalizeOptions{true}, pins);
@@ -778,8 +789,25 @@ void auxiliary_eviction_lifetime_and_mutable_device_guard() {
 }
 }  // namespace
 
+void dimension_metadata_counts_toward_storage() {
+    PortableShaderArtifact artifact;
+    artifact.uniforms.resize(1);
+    artifact.samplers.resize(1);
+    artifact.varyings.resize(1);
+    const size_t before = artifact.storage_bytes();
+    artifact.uniforms[0].array_dimensions.reserve(7);
+    artifact.samplers[0].array_dimensions.reserve(11);
+    artifact.varyings[0].array_dimensions.reserve(13);
+    const size_t reserved = artifact.uniforms[0].array_dimensions.capacity() +
+                            artifact.samplers[0].array_dimensions.capacity() + artifact.varyings[0].array_dimensions.capacity();
+    require(artifact.storage_bytes() == before + reserved * sizeof(uint32_t),
+        "uniform, sampler and varying dimension metadata must count toward cache storage");
+}
+
 int main() {
     try {
+        attribute_binding_contract();
+        dimension_metadata_counts_toward_storage();
         identity_and_provenance();
         device_loss_preserves_portable();
         bounded_ownership_and_failures();

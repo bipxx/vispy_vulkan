@@ -98,7 +98,9 @@ std::string uniform_block(const std::vector<NormUniform>& uniforms) {
     for (const auto& uniform : uniforms) {
         out << "    layout(offset = " << uniform.offset << ") "
             << (uniform.storage_type.empty() ? uniform.type : uniform.storage_type) << ' ' << uniform_member_name(uniform);
-        if (uniform.array_size) out << '[' << uniform.array_size << ']';
+        if (uniform.array_dimensions.empty() && uniform.array_size)
+            out << '[' << uniform.array_size << ']';
+        else for (uint32_t dimension : uniform.array_dimensions) out << '[' << dimension << ']';
         out << ";\n";
     }
     out << "};\n"; return out.str();
@@ -356,13 +358,13 @@ std::string varying_declaration(const NormVarying& varying) {
     if (varying.centroid) out += "centroid "; if (varying.sample) out += "sample ";
     if (varying.interpolation == "flat" || varying.interpolation == "noperspective") out += varying.interpolation + ' ';
     out += "in " + varying.type + ' ' + varying.name;
-    if (varying.array_size) out += '[' + std::to_string(varying.array_size) + ']';
+    out += varying_array_suffix(varying);
     return out + ";\n";
 }
 
 std::string private_declaration(const NormVarying& varying) {
     std::string out = varying.type + ' ' + varying.name;
-    if (varying.array_size) out += '[' + std::to_string(varying.array_size) + ']';
+    out += varying_array_suffix(varying);
     return out + ";\n";
 }
 
@@ -451,7 +453,7 @@ void main() {
         const auto count = field.varying.array_size ? field.varying.array_size : 1;
         for (int i = 0; i < count; ++i) {
             const auto index = field.varying.array_size ? '[' + std::to_string(i) + ']' : "";
-            out += "    " + field.varying.name + index + " = " + value_expression(field, n, index) + ";\n";
+            out += "    " + field.varying.name + varying_element_suffix(field.varying, std::to_string(i)) + " = " + value_expression(field, n, index) + ";\n";
         }
     }
     out += "    vispy_line_consumer_initialize_globals();\n    vispy_line_consumer_original_fragment();\n"

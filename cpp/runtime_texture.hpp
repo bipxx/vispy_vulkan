@@ -27,6 +27,7 @@ struct TextureData {
     std::string format = "rgba";
     std::string internal_format;
     int dimensions = 2;
+    bool cube = false;
     std::string min_filter = "nearest";
     std::string mag_filter = "nearest";
     std::vector<std::string> wrapping;
@@ -47,6 +48,7 @@ inline TextureData sampler_texture_descriptor(const TextureData& data,
     result.format = storage.format;
     result.internal_format = storage.internal_format;
     result.dimensions = storage.dimensions;
+    result.cube = storage.cube;
     result.min_filter = data.min_filter;
     result.mag_filter = data.mag_filter;
     result.wrapping = data.wrapping;
@@ -76,13 +78,13 @@ inline std::runtime_error error(const std::string& message) {
 inline bool supported_glir_object_class(const std::string& name) {
     return name == "Program" || name == "VertexShader" || name == "FragmentShader" ||
         name == "GeometryShader" || name == "VertexBuffer" || name == "IndexBuffer" ||
-        name == "Texture1D" || name == "Texture2D" || name == "Texture3D" ||
+        name == "Texture1D" || name == "Texture2D" || name == "Texture3D" || name == "TextureCube" ||
         name == "RenderBuffer" || name == "FrameBuffer";
 }
 inline int texture_dimensions_for_class(const std::string& name) {
     if (name == "Texture1D") return 1;
     if (name == "Texture2D" || name == "RenderBuffer") return 2;
-    if (name == "Texture3D") return 3;
+    if (name == "Texture3D" || name == "TextureCube") return 3;
     throw error("SIZE object is not a texture or renderbuffer");
 }
 struct TextureShapeLayout { int width = 1, height = 1, depth = 1, channels = 4; };
@@ -504,6 +506,12 @@ inline TexturePreparation describe_texture_preparation(const TextureData& data,c
     result.format = native_format(description);
     result.dimension = data.dimensions == 1 ? wgpu::TextureDimension::e1D : data.dimensions == 3 ? wgpu::TextureDimension::e3D : wgpu::TextureDimension::e2D;
     result.view_dimension = data.dimensions == 1 ? wgpu::TextureViewDimension::e1D : data.dimensions == 3 ? wgpu::TextureViewDimension::e3D : wgpu::TextureViewDimension::e2D;
+    if (storage.cube) {
+        if (storage.dimensions != 3 || storage.depth != 6 || storage.width != storage.height)
+            throw error("cube storage requires six square faces");
+        result.dimension = wgpu::TextureDimension::e2D;
+        result.view_dimension = wgpu::TextureViewDimension::Cube;
+    }
     result.channels = description.channels;
     result.texel_size = description.channels * description.component_bytes;
     result.sample_type = description.integer ? (description.signed_integer ? wgpu::TextureSampleType::Sint : wgpu::TextureSampleType::Uint) :

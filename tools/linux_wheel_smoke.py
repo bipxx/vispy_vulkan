@@ -121,6 +121,10 @@ try:
     np.save(output/'text.npy',text)
     text_canvas.close();text_canvas=None
     result['cases'].append({'name':'compiled-sdf-text','nonzero_rgb_components':int(np.count_nonzero(text[:,:,:3]))})
+    from compatibility_render_smoke import compatibility_render_checks
+    result['compatibility'] = {}
+    compatibility_render_checks(app, gloo, scene, np, native, ROOT,
+                                output/'instanced-images', result=result['compatibility'])
     records=native_modules([ROOT,ROOT.parent/'vispy_vulkan-publication'])
     assert_wheel_module_origins(records,package,hashes,[native.__file__,_sdf_cpu.__file__,package/'VkLayer_vispy_submit.so'])
     result['native_modules']=records;result['native_origins_verified']=True

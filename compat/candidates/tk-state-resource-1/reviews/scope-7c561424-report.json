@@ -1,0 +1,570 @@
+{
+  "schema": 1,
+  "review_type": "independent focused scope and native reuse renewal",
+  "independent": true,
+  "reviewer": "Astra max independent scope/native reviewer (/root/astra_qualification_plan_review)",
+  "publication_head": "7c5614241c0a05fd46a44a1016e1ec3b93802d86",
+  "previous_publication_head": "f1a4eb32e9e9c13d70b45ffe75fc3fcd3f2897ee",
+  "candidate_scope_sha256": "180a3d4e1579347e835ac3a98818a34a32932cd3af0fca7005987fa300d32e4d",
+  "coverage_map_sha256": "d10be7bc9aa19b3fe8e20844743bab9ce550e3d35658e67a1ee4a3c03e0f9079",
+  "execution_map_sha256": "afc3a8c9299fb7c5b977f427abbf356313caa980cbc64cb058c61c7643de4c20",
+  "admission_scope_sha256": "ed21d0e29b909b360ec8e5c259b0f6f783ddf6bbf53c071a15dbcabe3ed78053",
+  "conclusion": "No blocking discrepancy found in this focused semantic/scope renewal. Approve the exact unchanged finite compatibility scope, current coverage/execution/whole-row selection bindings and the two exact native reuse applicability links below. This is separate from implementation-source review and grants no installed artifact, producer admission, CI or promotion approval.",
+  "findings": [],
+  "native_reuse_links": [
+    "ac4c636b356d088ca4f7aa35fea238b3bc253c8e573f74742c66b6f9a3b2825b",
+    "71e6667bf1ecb06020354a59231f45aa7d3ad3303d914c5f94b25a0a3c888be6"
+  ],
+  "inspection": [
+    {
+      "area": "Frozen source and affected scope",
+      "result": "Independently rehashed all 1431 manifest source files and 24 manifest evidence references. Inspected the complete seven-code/test plus six-metadata diff from f1a4eb32 to the frozen publication. Canonical changed-file bytes match the frozen commit. Only three preparation-tool hashes changed: compatibility_evidence.py, debugger_linux.c and negative_controls.py. Runtime/product inputs, profiles, public workflows, proposal boundaries, API claims and native outputs remain unchanged."
+    },
+    {
+      "area": "Incremental parser semantics",
+      "anchors": [
+        "tools/no_opengl/debugger_linux.c:169",
+        "tools/no_opengl/debugger_linux.c:208",
+        "tools/no_opengl/debugger_linux.c:446"
+      ],
+      "result": "The production parser records the logical ftello position, requires final LF before parsing, seeks back with checked fseeko and records deferral at temporary EOF. Fully formed records retain their prior PID/image queue and address-space-specific processing. Tell/read/rewind errors still increment observer errors. Complete malformed records receive explicit diagnostics. Normal successful process-tree termination performs strict final-tail validation; an incomplete terminal record fails. Existing intentional GL-denial termination remains a positive violation and does not need to be relabeled as an incomplete-tail collector error. This is a framing correction, not broader native observation or runtime API coverage."
+    },
+    {
+      "area": "Historical failure and causal limits",
+      "result": "Read the independent run104 diagnosis, original replay record and retained failed-source archive. Recomputed the actual 147 started/exited task identity sets and retained final root_code=137/errors=1 observer failure; the original observer result remains FAIL/125. The source archive contains the exact original f1a4eb32 debugger bytes. The actual libc/production-C evidence establishes the partial-record defect. It does not establish the exact unlogged historical error site, and this review does not override that failure or infer a successful installed replay."
+    },
+    {
+      "area": "Production-parser regression controls",
+      "anchors": [
+        "tests/no_opengl/data/loader_records.c:15",
+        "tests/no_opengl/test_probe_failures.py:15"
+      ],
+      "result": "Read the C harness which includes the production debugger source and uses actual anonymous libc file streams. Its loop covers all 34 byte splits, three complete malformed lines and one permanently incomplete final tail. Before completion it requires no error/image and the original stream position; after completion exactly one processed image is required. Malformed/final-tail cases require an error. The retained legacy control compiles the exact original reader and returns the expected 41 at split 18. Current Linux focused XML records nine passing tests with actual child exit 0 and wait, including this production-reader control and eight normalizer cases. No compiler or test was rerun by this reviewer."
+    },
+    {
+      "area": "Actual native controls and mandatory evidence",
+      "anchors": [
+        "tools/no_opengl/negative_controls.py:44",
+        "tools/compatibility_evidence.py:138",
+        "tests/contract/test_compatibility_inventory.py:207"
+      ],
+      "result": "Independently reconstructed all fourteen control event lists from the original loader/debugger TSV files and matched the JSON exactly. Rehashed collector source/native-tool identities, current debugger artifact/compiler binding and raw report/trace identities; independently reclassified policy gate outcomes. Every task set terminates and debugger completion reports errors=0. Fragmented safe execution passes without GL; completed fake VDSO records follow actual deferred-record events; lookup and direct call after completion remain detected. Lookup ordering is supported by its loader stream and generated case source, not an invented global ordering between merged streams. The real control bundle contains twenty true checks. Ptrace normalization additionally requires all four framing flags and all three hash-bound fragmented raw reports. Eight retained normalizer tests cover the positive bundle and each separately omitted flag/report."
+    },
+    {
+      "area": "Phase-neutral tests and strict admission",
+      "anchors": [
+        "tests/contract/test_compatibility_inventory.py:1018",
+        "tests/contract/test_compatibility_qualification.py:77",
+        "tools/compatibility_qualification.py:93"
+      ],
+      "result": "Changed assertions derive expected review state from actual current metadata and still explicitly check strict refusal when reviews are absent, qualification false and read-only CLI behavior. The global production review verifier is unchanged. Independently ran the original candidate, coverage, execution and admission-selection validators: all produce valid unreviewed preparation and all four require_reviewed calls reject the current unreviewed scope. Both actual native proposal validators likewise reject pending source/scope review. Retained current CPU XML/log/process record has 814 passed, one expected Linux-only skip and one expected duplicate-ZIP warning; Windows focused controls have eight passes and Linux focused controls nine, with actual exit 0 and child wait."
+    },
+    {
+      "area": "Coverage, execution and whole-row conservation",
+      "result": "Compared current proposal/profile/workflow semantics against f1a4eb32 and the previously approved scope. Coverage mappings, source/fixture/oracle bindings, execution destinations and requested/effective selection entries are unchanged except renewed identity edges. Re-ran original structural validators and confirmed 15 subsets, 30 selected feature/profile pairs, 60 distinct criteria and all 120 requested/effective profile bindings. Whole-row four-mode expansion and recursive same-profile dependencies remain exact. Execution-scope projection is identical to the old ledger despite explicit review-flag reset. All 142 historical parent features and every original baseline row remain exact; no original obligation is discharged."
+    },
+    {
+      "area": "Native reuse applicability",
+      "result": "Compared both proposals against the independently inspected run100 reviewed original records. Only current candidate reference, candidate-scope digest and explanatory impact text changed. All original recipe, production, SDK, preparation, CTest, source/cache/project, output and Linux capture references remain identical and were rehashed through the proposals. Windows production ff464bddddbc93aa050723d3ba890fb729fa7dfa1ec777cb644d2ec88b55df05 and Linux production 6e21a4bbed7849a564bf5c425d1519ca7794327e61602aabdb5a4b8c0c59726f are unchanged. The Linux CP312 x86-64 build3.12.8/selected-consumer3.12.13 ABI facts and selected profile hashes remain the same previously reviewed applicability. Exact request reuse digests recompute successfully. Rehashed retained Windows wheel147b48be4a94f7bd981ecd0c954deecc33e620ce8cba8042772c5e794089d69f and Linux wheel1bedf6f8af121bd9dbd94d9acbf7eec155f25a485d807338ccd55ee4ebcf50b4. This collector-only change supplies no reason to rebuild renderer/SDK/wheels and no waiver of fresh installed qualification."
+    },
+    {
+      "area": "Historical installed evidence cannot silently advance",
+      "result": "Independently passed a historical run102 qualified row and raw bundle to the current original normalizer. It rejects changed collector evidence at tools/no_opengl/debugger_linux.c. Thus the old Windows pass remains historical; renewed scope approval cannot turn it into a current-collector installed pass. Failed Linux104 replay remains unqualified."
+    }
+  ],
+  "approved_scope": "Exact current finite 15-subset/two-profile scope; all 120 ordinary/mutation/failure/recovery profile criteria, unchanged fixture/branch/oracle mappings and same-profile whole-row dependency closure; 142 historical parents preserved. Exact Windows and Linux original native producer reuse applicability only.",
+  "limits": [
+    "No implementation-source approval by this scope reviewer; the separate source reviewer must provide its own decision.",
+    "No new current-collector installed qualification was performed or approved on either profile. Historical Windows102 and failed Linux104 records remain immutable and cannot substitute for fresh required evidence.",
+    "No native producer/artifact/subject/envelope/CI/hardware/promotion approval. Existing validators, required checks and complete attempt/retention history remain mandatory.",
+    "Run105 terminal retention and cleanup are pending these review outputs. No review is contingent on inventing cleanup success; retain originals, source, control artifacts, failures and this report before cleanup/admission.",
+    "The exact historical Linux104 silent increment site is unproven. This correction and its controls establish a specific framing defect and bounded observation behavior only.",
+    "Read-only inspection and pure validator/hash calls only, apart from these two requested new review files; no native execution, builds, installation, scratch, code/gate/record edits, security work or additional agents."
+  ],
+  "input_hashes": [
+    {
+      "path": "build/runs/linux-installed-104/cleanup-verification.json",
+      "sha256": "fb115ed6786e9e2abd6ec841d997fa23224b11beda110c18785aa0c06a42aaf9"
+    },
+    {
+      "path": "build/runs/linux-installed-104/discovery.json",
+      "sha256": "2540e6c1b049bdaface9338c3f282e152c6c4bf6b04aae3fb34a0ed71d3843ed"
+    },
+    {
+      "path": "build/runs/linux-installed-104/discovery.worker.json",
+      "sha256": "44d2137186f69a88712c12a127db32760b29bae77414cbc301cb60abab2394a3"
+    },
+    {
+      "path": "build/runs/linux-installed-104/failed-source.zip",
+      "sha256": "ba7cd2abb9b127d16066351d3849b9f550f48187893fd6df60976e1fb6355550"
+    },
+    {
+      "path": "build/runs/linux-installed-104/namespace-prepared-result.json",
+      "sha256": "7b223cef4933199b650ff042a114e81c70ae1e3c46975abecd6887e08ca5d4fe"
+    },
+    {
+      "path": "build/runs/linux-installed-104/observer-diagnosis.json",
+      "sha256": "830c5e3253cfda490b45886ddbcb43a054ca7fe9035f7bbb39fe66ed63ac5d67"
+    },
+    {
+      "path": "build/runs/linux-installed-104/replay.json",
+      "sha256": "801d09f56679cd3a51d5e30402c34fb721a97dc92783cf005520c851d2c5ddae"
+    },
+    {
+      "path": "build/runs/loader-framing-105/cpu-current-process.json",
+      "sha256": "d986c4e47b98916b688a8ff51ffc9f5b5c05da78faaba30ffbf148c88f65a50b"
+    },
+    {
+      "path": "build/runs/loader-framing-105/cpu-current.log",
+      "sha256": "485c82411357a5cab793dc666a58f69703775718b34beb2e2907b6794a79439b"
+    },
+    {
+      "path": "build/runs/loader-framing-105/cpu-current.xml",
+      "sha256": "5ec149742969e4b228ca6612c5b66992004661b1cbf964c2744dc3f762e4571c"
+    },
+    {
+      "path": "build/runs/loader-framing-105/debugger-artifact.json",
+      "sha256": "2c2f0743f3b6999e79884feff11b9cc168b2e2bc0c2b78e01675616fe8efce72"
+    },
+    {
+      "path": "build/runs/loader-framing-105/debugger-build-process.json",
+      "sha256": "6dd4a1eebd053f492a0a1f6cee89e85f6c9004097ce9f2b287c2800140781c63"
+    },
+    {
+      "path": "build/runs/loader-framing-105/debugger-build.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "build/runs/loader-framing-105/legacy-control-result.json",
+      "sha256": "6eb35d30b396edc084dc2732066847817b95e25eab76a3a4c8593590b8f02b1d"
+    },
+    {
+      "path": "build/runs/loader-framing-105/legacy_control.py",
+      "sha256": "f1c8c401bf8114ba9f9aac8d36838cdf0ef4300bea2117506fb0c93f58e194dd"
+    },
+    {
+      "path": "build/runs/loader-framing-105/linux-native-reuse-proposal.json",
+      "sha256": "0f24be893d3c7badad8884fa0c3ba1b9d4f075e23b0d62cafcbadf836084b7bb"
+    },
+    {
+      "path": "build/runs/loader-framing-105/linux-native-reuse-request.json",
+      "sha256": "19ac80b62790d7cef4be74f475d11d6861df491af46f7c95409da03eda58c94b"
+    },
+    {
+      "path": "build/runs/loader-framing-105/linux-process.json",
+      "sha256": "c2fed9a6c1e0a3e6f023b1ca49ae01c285b995b5cd1aa538cac2837c14fa030c"
+    },
+    {
+      "path": "build/runs/loader-framing-105/linux.log",
+      "sha256": "ec24a1e9a4f3dc728b250c41bf5dbcb43eb3e343c4cb20cd57a4b160f750aa81"
+    },
+    {
+      "path": "build/runs/loader-framing-105/linux.xml",
+      "sha256": "27d61a9e64c249c05b8ca16fdb911ab5464ff0145d57a4b7eab538b2c4e64e8a"
+    },
+    {
+      "path": "build/runs/loader-framing-105/native-controls-process.json",
+      "sha256": "2c7934a393ccfe05d8926a4152200ca438faaa476a1f3fc1b1f445768d873fab"
+    },
+    {
+      "path": "build/runs/loader-framing-105/native-controls-summary.json",
+      "sha256": "d46cf447b01370c077594bb9ea5271b8e467fcb80ca349ed3d304c74b12e0f45"
+    },
+    {
+      "path": "build/runs/loader-framing-105/native-controls.log",
+      "sha256": "8990988268b18df1af453b831a886522a17186167e925db879be54b0eb0bb282"
+    },
+    {
+      "path": "build/runs/loader-framing-105/native-controls/call.json",
+      "sha256": "3668632c135e7a738e2e99d48d9b75316e499dc38d43e149b4088a1ee2afd1e8"
+    },
+    {
+      "path": "build/runs/loader-framing-105/native-controls/call.loader.debugger.tsv",
+      "sha256": "32c24a6fbcfb55f91da416131239273bb9f5c78603126297e811e2352b815958"
+    },
+    {
+      "path": "build/runs/loader-framing-105/native-controls/call.loader.tsv",
+      "sha256": "a71e59d8c257fab292abcfdf6f11fd797cb5eecfdc11bc7d2a2fa8d836e374e7"
+    },
+    {
+      "path": "build/runs/loader-framing-105/native-controls/call.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "build/runs/loader-framing-105/native-controls/child_call.json",
+      "sha256": "985562a04d9703b1a87b3df3d75cf62cfd8c191a03a7dd445243513fa546887a"
+    },
+    {
+      "path": "build/runs/loader-framing-105/native-controls/child_call.loader.debugger.tsv",
+      "sha256": "61f4c9d52fe0265de9dc2446bac0ea3e560accd99a816f695b0d83abf7d63129"
+    },
+    {
+      "path": "build/runs/loader-framing-105/native-controls/child_call.loader.tsv",
+      "sha256": "964d81356f34dd9468f8b66620f7b63d8777bfefdda7fb926524d8df536bb29e"
+    },
+    {
+      "path": "build/runs/loader-framing-105/native-controls/child_call.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "build/runs/loader-framing-105/native-controls/controls.json",
+      "sha256": "ab176e1f335bb656eeea570e62cead657c4d24b53ecf371b597acfcfd1b268d1"
+    },
+    {
+      "path": "build/runs/loader-framing-105/native-controls/fork_call.json",
+      "sha256": "f56feed5f95c111191d5601c7d0f6b209d2324778782fd75c6c60301053ae5d9"
+    },
+    {
+      "path": "build/runs/loader-framing-105/native-controls/fork_call.loader.debugger.tsv",
+      "sha256": "5967a519f3cc47ee32b1603701015dd3026eee4c0520137e307628b26e58cee6"
+    },
+    {
+      "path": "build/runs/loader-framing-105/native-controls/fork_call.loader.tsv",
+      "sha256": "b7da8a522fd9e7ba9c35efa979be0ab35d1d5c2a061832310c540ace7d09f860"
+    },
+    {
+      "path": "build/runs/loader-framing-105/native-controls/fork_call.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "build/runs/loader-framing-105/native-controls/fragmented_call.json",
+      "sha256": "154281d17cf2a68ae745fe1bccdcf6ef83e2d253eb72050fab2ea3b04c4d006e"
+    },
+    {
+      "path": "build/runs/loader-framing-105/native-controls/fragmented_call.loader.debugger.tsv",
+      "sha256": "3631be0a1ae41eccbf3f6072c6e5fcb1e4ad5b310fbc41aefe12cc51c6596112"
+    },
+    {
+      "path": "build/runs/loader-framing-105/native-controls/fragmented_call.loader.tsv",
+      "sha256": "25ca6a0bec1fc0161bf8f06af07a57ccb47d8c20cbdc0b37f85ceafea5f0d6e2"
+    },
+    {
+      "path": "build/runs/loader-framing-105/native-controls/fragmented_call.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "build/runs/loader-framing-105/native-controls/fragmented_resolve.json",
+      "sha256": "1d7e88f29b84b142fda4bc127687db2690018d87df3b713d22442e3451125d63"
+    },
+    {
+      "path": "build/runs/loader-framing-105/native-controls/fragmented_resolve.loader.debugger.tsv",
+      "sha256": "18a03a3f6e0ef7ab86d5ffd4f5ff7a04597431bb7d53bdb20473b1129be86042"
+    },
+    {
+      "path": "build/runs/loader-framing-105/native-controls/fragmented_resolve.loader.tsv",
+      "sha256": "3d9104c77445a2f13ee096c292c45436b02e7104763417c6213f56ce4ae453f4"
+    },
+    {
+      "path": "build/runs/loader-framing-105/native-controls/fragmented_resolve.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "build/runs/loader-framing-105/native-controls/fragmented_safe.json",
+      "sha256": "3071224b81fd9f09b1d301f61336e92745530f89e3ac763855841da43f0e2b90"
+    },
+    {
+      "path": "build/runs/loader-framing-105/native-controls/fragmented_safe.loader.debugger.tsv",
+      "sha256": "4039c44796efc76d85e8aaac2a2356b706c109510d73646724540f21c3594f83"
+    },
+    {
+      "path": "build/runs/loader-framing-105/native-controls/fragmented_safe.loader.tsv",
+      "sha256": "c35b7bb5d7c9daae4bbad40afdcfd84e2dd5458da529e9a090ad62b063640982"
+    },
+    {
+      "path": "build/runs/loader-framing-105/native-controls/fragmented_safe.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "build/runs/loader-framing-105/native-controls/ldconfig_helper.json",
+      "sha256": "402c8101a38ab4dfb48991373ad144af71088f59d9ead71af5e789070a0c1dfd"
+    },
+    {
+      "path": "build/runs/loader-framing-105/native-controls/ldconfig_helper.loader.debugger.tsv",
+      "sha256": "c19a5f84854777a750cdaf6a6f631faf3599894bf3a6f99e35a4060090180d25"
+    },
+    {
+      "path": "build/runs/loader-framing-105/native-controls/ldconfig_helper.loader.tsv",
+      "sha256": "0bfdc6be152f0bb0bf4d866d9f2d5655401c82b8a958ecf16172260b5f2be73d"
+    },
+    {
+      "path": "build/runs/loader-framing-105/native-controls/ldconfig_helper.log",
+      "sha256": "6221698a0107c83e2da8ad1dcb36bf00c49e78228539bd855b7a84bb3a900058"
+    },
+    {
+      "path": "build/runs/loader-framing-105/native-controls/libGL.so.1",
+      "sha256": "787520c093c9583dc995321a2d6ad1b550cae994d4a85b9946643106369acdbe"
+    },
+    {
+      "path": "build/runs/loader-framing-105/native-controls/resolve.json",
+      "sha256": "c0167cd4aab0c13e47f81f87d86de8540f367ba458eea2bc99dad2173139b7f5"
+    },
+    {
+      "path": "build/runs/loader-framing-105/native-controls/resolve.loader.debugger.tsv",
+      "sha256": "2ae3ca4dae33d744b464093150ab92f568bdd4a7c73df24eeda4580a0e91fb79"
+    },
+    {
+      "path": "build/runs/loader-framing-105/native-controls/resolve.loader.tsv",
+      "sha256": "5dc42ef9b4fbdb4279755b4dca4cb30cfb79a86153c28aee3dc08bceb2d7fe6a"
+    },
+    {
+      "path": "build/runs/loader-framing-105/native-controls/resolve.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "build/runs/loader-framing-105/native-controls/safe.json",
+      "sha256": "f2996ffb68e9b6fd98a63f21979d9d19bf6767aacf2c4fd0b6d8206fa82d9f13"
+    },
+    {
+      "path": "build/runs/loader-framing-105/native-controls/safe.loader.debugger.tsv",
+      "sha256": "53cfb2eda8cee307c7923b10478188a0a658c87fe172a6d6122f083d8c9e7d7e"
+    },
+    {
+      "path": "build/runs/loader-framing-105/native-controls/safe.loader.tsv",
+      "sha256": "6d654c80018a16ee95d4e010f80a7f33a493b1c0601e1666d00634a915520366"
+    },
+    {
+      "path": "build/runs/loader-framing-105/native-controls/safe.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "build/runs/loader-framing-105/native-controls/sanitized_child_call.json",
+      "sha256": "adfe17f8819472da2b272503b634281cd9efed03c3a71585c9dcb48b4b95ec49"
+    },
+    {
+      "path": "build/runs/loader-framing-105/native-controls/sanitized_child_call.loader.debugger.tsv",
+      "sha256": "86449a36a88d107f255c2c552c1fee788beaeaae563ed2bb6f55f64b8f9eac61"
+    },
+    {
+      "path": "build/runs/loader-framing-105/native-controls/sanitized_child_call.loader.tsv",
+      "sha256": "8f5c2f034164e7f6130d610747fecc957178651023bd5885d7245ccdcc72153c"
+    },
+    {
+      "path": "build/runs/loader-framing-105/native-controls/sanitized_child_call.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "build/runs/loader-framing-105/native-controls/static_call.json",
+      "sha256": "fc0384e5a4c099bff2a76216e3c1713ac509bb79653af6dd502b43deddf4c82a"
+    },
+    {
+      "path": "build/runs/loader-framing-105/native-controls/static_call.loader.debugger.tsv",
+      "sha256": "d652bc4e4267292e3a3130d0dbd1b393addbe8bedbf245f8e9926f204a01ce36"
+    },
+    {
+      "path": "build/runs/loader-framing-105/native-controls/static_call.loader.tsv",
+      "sha256": "1686a1668f8d3176eae36e6aeb54680d98883660a91d00958d8ad16452d9ec28"
+    },
+    {
+      "path": "build/runs/loader-framing-105/native-controls/static_call.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "build/runs/loader-framing-105/native-controls/static_resolve.json",
+      "sha256": "79a2540f11019086ac6ca191ea9d19f6e0c6daa94a4bb605359a0abe9ae9f16d"
+    },
+    {
+      "path": "build/runs/loader-framing-105/native-controls/static_resolve.loader.debugger.tsv",
+      "sha256": "16e3c3c7fde4916350ccd647254b39d6d34c492ba5dfa6a4b8fd2e111283b00a"
+    },
+    {
+      "path": "build/runs/loader-framing-105/native-controls/static_resolve.loader.tsv",
+      "sha256": "3263b6abc5fdb550f9bc937c981995ac37a2dac37cc07b8fb9166b5ddad3f33b"
+    },
+    {
+      "path": "build/runs/loader-framing-105/native-controls/static_resolve.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "build/runs/loader-framing-105/native-controls/static_safe.json",
+      "sha256": "88ee0809682eca0c03f0c17b24f83847e4b466ee3e22952e670527698b9d55fa"
+    },
+    {
+      "path": "build/runs/loader-framing-105/native-controls/static_safe.loader.debugger.tsv",
+      "sha256": "cb88e6dd05eb2b2b6c29764da8a91064fe2ec0965cdfaf1bab566518e7760cf8"
+    },
+    {
+      "path": "build/runs/loader-framing-105/native-controls/static_safe.loader.tsv",
+      "sha256": "9e7c83ce6d3a40f5c7d60481ee77536b2055928a4b2b4ecc2f42fee24cf17e7d"
+    },
+    {
+      "path": "build/runs/loader-framing-105/native-controls/static_safe.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "build/runs/loader-framing-105/native-controls/transient.json",
+      "sha256": "4fb8a490fdf6c364f6af924456ebe6456838d5b13043988ebbc6717507ee6939"
+    },
+    {
+      "path": "build/runs/loader-framing-105/native-controls/transient.loader.debugger.tsv",
+      "sha256": "ba3189387b274684c9d10e96910d879bb3eff90259f23ba7e3c2e63a38846e3f"
+    },
+    {
+      "path": "build/runs/loader-framing-105/native-controls/transient.loader.tsv",
+      "sha256": "c9b1fd7748d6ab00fd94883dcb9fc0074648188f9aaff484d6ccab1a4ecaf7b3"
+    },
+    {
+      "path": "build/runs/loader-framing-105/native-controls/transient.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "build/runs/loader-framing-105/native-reuse-proposal.json",
+      "sha256": "ed409c6dbf0cb43b415af4b3492e188df8839b54c72991c4a59d3203c17b4556"
+    },
+    {
+      "path": "build/runs/loader-framing-105/native-reuse-request.json",
+      "sha256": "43b276cb1b2f9d33b02c5420947dcf039002b2252b9dbedcdc2b13a8686c16f8"
+    },
+    {
+      "path": "build/runs/loader-framing-105/native_controls.py",
+      "sha256": "5e77a3615feaa6f221e9a13db406eb161f49df754fc1cac411be3eac80df8ec0"
+    },
+    {
+      "path": "build/runs/loader-framing-105/preparation-renewal.json",
+      "sha256": "229d71962a73a0eed983bb5fa2cb58b614c519b7f740b731602329ff22a74d5a"
+    },
+    {
+      "path": "build/runs/loader-framing-105/rebind_native.py",
+      "sha256": "67db6ca79319fdd0d7189ae52b138f578183b892f66e568acd56453a03fd9da7"
+    },
+    {
+      "path": "build/runs/loader-framing-105/review/review-inputs.json",
+      "sha256": "831f913e1c2542997713d937b0e37eb67a8d5133e701588b1da0d0c727b9ff3d"
+    },
+    {
+      "path": "build/runs/loader-framing-105/verify.py",
+      "sha256": "c674a2f8dab3a97cbdf005fb0d703f21bac8ba5abc41d535098d63a5a2e86c4b"
+    },
+    {
+      "path": "build/runs/loader-framing-105/verify_cpu.py",
+      "sha256": "bdba4b2de022d7658e4894dd3fd158b7bfa82d8b5fd1b437a85164688a5fe80d"
+    },
+    {
+      "path": "build/runs/loader-framing-105/windows-process.json",
+      "sha256": "6ce4640fbeb754bf377f763b3370ff3bb71fbd50374e444ad7052350b6ec5d9c"
+    },
+    {
+      "path": "build/runs/loader-framing-105/windows.log",
+      "sha256": "71bdb13ddf4e48785e8621bd4f0bf60c1cd15b26a11b817319d1f0d7c4ab068f"
+    },
+    {
+      "path": "build/runs/loader-framing-105/windows.xml",
+      "sha256": "96d60743bd3cab1b50aae7bc258974d02945ae83ec99bc2e5bcd43acaa01d23f"
+    },
+    {
+      "path": "build/runs/review-admission-100/linux-reviewed-native-record.json",
+      "sha256": "0ecf59bfda2d2dcf008dcaf0c24da173d49f08eb490f62265f7a6fac207636ce"
+    },
+    {
+      "path": "build/runs/review-admission-100/reviewed-native-record.json",
+      "sha256": "89f26aa3721735898f9e52d9e8a1bf9d02d01fc790c74b0e2e4af9f56dd23fa7"
+    },
+    {
+      "path": "build/runs/scenario-oracles-99/review-integrated/scope-approval-astra.json",
+      "sha256": "02d97a4ecbf33c8b35b2dbbdc0ba464adfe7dc532c4bf80f62d9bac13fffea8d"
+    },
+    {
+      "path": "build/runs/scenario-oracles-99/review-integrated/scope-native-review-astra.json",
+      "sha256": "7519f5444b9e7e1ada4e97347761abf81bd89395add7f407abf9b082e98bab51"
+    },
+    {
+      "path": "build/runs/windows-installed-102/qualified-ledger.json",
+      "sha256": "7d06cec17b54894ff72058202a87d45212be203fd7f921f685d6a260e9a6d8bc"
+    },
+    {
+      "path": "build/runs/windows-installed-102/raw-reports.json",
+      "sha256": "8adfc1f9f23e5b24f11ee463067af104ad16e969187e2d4f98ae6edb6a0fb45f"
+    },
+    {
+      "path": "build/runs/windows-installed-102/windows-installed-review-astra.json",
+      "sha256": "3480291f3a3415f61d56116078c452fc425284cb7d6ead277fdf93cf383734c4"
+    },
+    {
+      "path": "compat/candidates/tk-state-resource-1/admission-selection.json",
+      "sha256": "288d3e345f8e23d33d3d3e129e093d9ec4f291917052c541010ed12578e3ce8f"
+    },
+    {
+      "path": "compat/candidates/tk-state-resource-1/candidate.json",
+      "sha256": "bea10f3a9bce013d402e6bd7f5b33bcf9d6e2f36f57c2304503c1741b17521a9"
+    },
+    {
+      "path": "compat/candidates/tk-state-resource-1/coverage.json",
+      "sha256": "7ccc0dfa6aa9becbe61e0df75acd9fa47a87031f2007fb94211b1a377110d75c"
+    },
+    {
+      "path": "compat/candidates/tk-state-resource-1/execution-ledger.json",
+      "sha256": "bd23fec80ad64217bd928683c0b91e602af0ba0c76f68f7575de4aab9fd9d580"
+    },
+    {
+      "path": "compat/candidates/tk-state-resource-1/execution.json",
+      "sha256": "4b701bfbed8d8d744833f36908233e0770ef9fb25cd7cb05acbcf37c5306f6c4"
+    },
+    {
+      "path": "compat/candidates/tk-state-resource-1/qualification-subject.json",
+      "sha256": "10125fe1577584d1b5bc278f92a75646bc77a40d344557667486b9eede003c6a"
+    },
+    {
+      "path": "compat/candidates/tk-state-resource-1/runtime-inputs.json",
+      "sha256": "0dba28f46c56c5a5ab25bc3b9e8c0f7845645343af626f3968dce327e3a0c100"
+    },
+    {
+      "path": "tests/contract/test_compatibility_inventory.py",
+      "sha256": "f8470184ebfa972f3c137e1842eb8a373deb741b3a2fa6d397f32036a59a03fc"
+    },
+    {
+      "path": "tests/contract/test_compatibility_qualification.py",
+      "sha256": "e0e412c9ff5e72a72328a753aa63c6f13f8afd0dcfd97a0765e2c158ef6e4451"
+    },
+    {
+      "path": "tests/no_opengl/data/loader_records.c",
+      "sha256": "b218f2b59b6d9d8049e138287e777b86a5b587c2fcbf31ca219505a34ba4fd3d"
+    },
+    {
+      "path": "tests/no_opengl/test_probe_failures.py",
+      "sha256": "87db589f62edb5ce162e9fd8e5ff42adccea0912578e67e99f0d7ea7e29a9acd"
+    },
+    {
+      "path": "tools/compatibility_candidate.py",
+      "sha256": "952902947712bc64edc7487153656a614dd2ad2cfa8ebe7889685257623e35a2"
+    },
+    {
+      "path": "tools/compatibility_coverage.py",
+      "sha256": "b13d3f12661b010d092306e7b4584ec1964ded91dd3a7ea007bd7663cda73831"
+    },
+    {
+      "path": "tools/compatibility_evidence.py",
+      "sha256": "c89b4dc434b344597d7a559aeb9b383243740176b51fd28e3cbd5f459f0eec28"
+    },
+    {
+      "path": "tools/compatibility_execution.py",
+      "sha256": "f666ac4985ac505f9c764de47591c2f14a880f0939d6f0fc05b10d3aceb3df33"
+    },
+    {
+      "path": "tools/compatibility_qualification.py",
+      "sha256": "9782bbbe35ba26700001c66c5c030f6d6e90652dfeb894cf1f515cbf3a87aa6d"
+    },
+    {
+      "path": "tools/no_opengl/debugger_linux.c",
+      "sha256": "3de2b562eb75c254a4034c278cdec752588cec44cc725fc1100ff3c33791c857"
+    },
+    {
+      "path": "tools/no_opengl/linux.py",
+      "sha256": "e106dab04f4947b9007edd7833423bf40796aa2783dd9f4d3573d34431e3c775"
+    },
+    {
+      "path": "tools/no_opengl/loader_audit_linux.c",
+      "sha256": "ab045f08942d3b303f99506f4e0e2e0e75779f5a4b623e4781a63a515b82154e"
+    },
+    {
+      "path": "tools/no_opengl/negative_controls.py",
+      "sha256": "90fce090dd1b39fa78b8d212b490fc96b536c3132d48e5de889c16ea3935acb4"
+    },
+    {
+      "path": "tools/qualification_linux_native.py",
+      "sha256": "f730be50b29a9cd0f234a5c02f968908572238365d71c52a5f06e14b43e95577"
+    },
+    {
+      "path": "tools/qualification_native.py",
+      "sha256": "7844f8eabd508c08daec6ba5e6fc914492884b77d1550062ea4f7d2de634b2cd"
+    }
+  ]
+}

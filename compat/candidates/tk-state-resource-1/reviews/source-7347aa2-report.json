@@ -1,0 +1,147 @@
+{
+  "schema": 1,
+  "kind": "independent-source-implementation-renewal",
+  "status": "APPROVED",
+  "independent": true,
+  "reviewer": "/root/astra_current_plan_max_review",
+  "publication_head": "7347aa2a1df4e9c5a816a667dd5a537a5df01c68",
+  "product_source_commit": "9ef9765552c41c84d82d69b44756d5925b4d3cd3",
+  "candidate_scope_sha256": "d1b823b38b9638a2b037639fc06e9471895782a81e9734fce3e300808348e1ea",
+  "manifest": {
+    "path": "build/runs/scenario-oracles-99/review-integrated/review-inputs.json",
+    "sha256": "1b6027c3fc11d7189686581607b1b31bb51d5d78af0b2643e9770d5d258028ee"
+  },
+  "candidate": {
+    "path": "compat/candidates/tk-state-resource-1/candidate.json",
+    "sha256": "3f75944c7cace5b910ee6b56ca257e3b8a650164946d5030afa6aa11bf7f2031"
+  },
+  "baseline_reviews": [
+    {
+      "path": "build/runs/retention-paths-97/review/implementation-review-astra.json",
+      "sha256": "fc077705e3e5aaeeb4987252fbf2d12d8a29b7efac21d79ebc14acd16ab0762b"
+    },
+    {
+      "path": "build/runs/scenario-oracles-99/review/implementation-review-astra.json",
+      "sha256": "85d2d0d2bc3f62b1a25ee5610168af9c5781c9dacf0a1b51990487fe17cd1eb5"
+    }
+  ],
+  "decision": "Approve the frozen source implementation and source-review side of the two exact native reuse inputs for this finite practical-compatibility candidate. The cumulative implementation inspection and focused renewals support this decision; prior planning reviews and passing totals alone do not. No unresolved blocking source finding remains in the reviewed scope.",
+  "scope": "The 15 selected feature subsets across the exact Windows and WSL profiles, preserving all 120 criteria. Historical 142 parent obligations, broader host coverage and unclaimed APIs remain separate. This source approval is not semantic-scope, installed-artifact, current-head CI or promotion approval.",
+  "findings": [],
+  "dispositions": [
+    {
+      "id": "source-renewal-collector-schema-drift",
+      "status": "RESOLVED",
+      "locations": [
+        "tools/no_opengl/functional.py:167-227",
+        "tests/no_opengl/test_functional_results.py:42-110",
+        "tools/compatibility_candidate.py:43"
+      ],
+      "reason": "The closed decoder now accepts and semantically checks the new finish snapshots, untouched-target color and live-survivor retirement. Finish snapshots are chained to flush counters, require exactly one finish and additional completion wait, prohibit presentation, reject regressing counters and require no retained work. Retirement requires typed nonnegative gauges, positive canvas allocation, live survivor, three retained Python references, non-vacuous resource ownership before deletion and exact return to baseline. Closed field validation and source/installed mode rejection remain intact. The candidate preparation identity now includes the decoder."
+    },
+    {
+      "id": "implementation-crossref-finish-before-readback",
+      "status": "RESOLVED",
+      "reason": "The unchanged run99 scenario fix observes finish before readback; its actual no-op-finish native control fails before readback can supply completion. The decoder now checks the exported snapshots. Both fresh platform composites pass the actual same-child capture/bound decoder."
+    },
+    {
+      "id": "implementation-crossref-current-target-isolation",
+      "status": "RESOLVED",
+      "reason": "The unchanged run99 scenario checks second's actual blue target before its redraw. The actual yellow cross-target corruption control is distinguishable, and the decoder now rejects a wrong or Boolean-valued untouched color."
+    },
+    {
+      "id": "implementation-crossref-resource-retirement",
+      "status": "RESOLVED",
+      "reason": "The unchanged run99 scenario asserts retirement before survivor close while all three Python resource references remain alive and the canvas allocation is unchanged. The neutral constant tint attribute gives Program its own retained buffer. All three actual suppressed-delete controls fail at the intended oracle. The decoder now requires the corresponding non-vacuous live-survivor retirement record."
+    }
+  ],
+  "focused_inspection": {
+    "diff": "46100c346c9576eda2ec778f9e5f763562a22502..7347aa2a1df4e9c5a816a667dd5a537a5df01c68",
+    "paths": [
+      "tools/no_opengl/functional.py",
+      "tools/compatibility_candidate.py",
+      "tests/no_opengl/test_functional_results.py",
+      "tests/no_opengl/data/tk-functional-result.json",
+      "compat/candidates/tk-state-resource-1/candidate.json",
+      "compat/candidates/tk-state-resource-1/coverage.json",
+      "compat/candidates/tk-state-resource-1/admission-selection.json",
+      "compat/candidates/tk-state-resource-1/execution.json",
+      "compat/candidates/tk-state-resource-1/windows-integrated-oracle-profile.json",
+      "compat/candidates/tk-state-resource-1/linux-integrated-oracle-profile.json"
+    ],
+    "retained_drivers_inspected": [
+      "build/runs/scenario-oracles-99/run-composite.py",
+      "build/runs/scenario-oracles-99/verify_actual_decoder.py",
+      "build/runs/scenario-oracles-99/verify_rebound.py"
+    ],
+    "assessment": "The fresh driver calls capture on the actual returned runpy namespace in the same child, then validate_bound_result. The subsequent actual-payload control helper validates that retained envelope and applies all 33 corruption variants to each platform payload, recomputing its digest before checking rejection. These are semantic rejection controls, not merely checksum failures. They do not supply installed absence-gate proof."
+  },
+  "verification": {
+    "source_files_rehashed": 1425,
+    "source_mismatches": [],
+    "manifest_evidence_files_rehashed": 39,
+    "evidence_mismatches": [],
+    "fresh_source_composites": "Windows and WSL each report eight exact branches through the actual same-child collector, with launch actual_exit0/child_waited true and all nine shutdown gauges zero.",
+    "actual_decoder_controls": {
+      "result": {
+        "path": "build/runs/scenario-oracles-99/actual-decoder-result.json",
+        "sha256": "88ccab66f3f1716babb0a97a7a5cdf86da2a351af3c2dbc0a6ec1aeb6301933a"
+      },
+      "controls_per_platform": 33,
+      "actual_exit": 0,
+      "child_waited": true
+    },
+    "native_suppression_controls": "The five actual native controls on each platform remain applicable: all three scenario helper hashes and the control test hash are unchanged from the prior inspected run99 fixes.",
+    "cpu_selection": "The retained initial XML has 806 cases: 793 passed and 13 failed at stale candidate preparation evidence. The failed case identities are all present in the subsequent 106-case successful rerun, which includes the full functional-result suite. The rerun XML has zero failures/errors/skips, and its process receipt records actual_exit0/child_waited true. This is local source validation, not current-head CI.",
+    "historical_failures_preserved": "Prior review failures, the two meaningful native control failures/source ZIPs, and the stale-binding CPU failure remain retained.",
+    "reviewer_ran_tests_or_builds": false,
+    "reviewer_created_scratch": false,
+    "reviewer_modified_product_code": false
+  },
+  "native_reuse": {
+    "decision": "Approve these exact native reuse digests on the source-review side only. The original proofs were independently inspected in the cumulative review. For this renewal, every original proof binding outside the candidate/reuse envelope was compared with that reviewed baseline and remained identical; production identities and ABI facts are unchanged. Observer/test/profile changes do not require a native rebuild.",
+    "windows": {
+      "request": {
+        "path": "build/runs/scenario-oracles-99/integrated-native-reuse-request.json",
+        "sha256": "dd3290a654cfc4c9deda640b4d6e385b9320d783e5e20bcf192e7a8b5477fb14"
+      },
+      "proposal": {
+        "path": "build/runs/scenario-oracles-99/integrated-native-reuse-proposal.json",
+        "sha256": "c1ffdea4fb6f2e791450215e3cf8d982634e5a1d14f49c82ef7531017c183325"
+      },
+      "reuse_sha256": "55d0740a980eb5300ff76675032191dc200dbc2196baf31013b5866077302c1c",
+      "production_sha256": "ff464bddddbc93aa050723d3ba890fb729fa7dfa1ec777cb644d2ec88b55df05",
+      "recipe_sha256": "b044cc84689d7bd503c3853ed28159f8962aacfded15d02429ff915c9dda118f",
+      "limits": "Run94's native phases/44 contracts succeeded; original outer exit1 from the cache-case observer rejection is preserved with run95 revalidation and original cleanup/history. This approves the exact retained producer proof, not the older source-functional leaf or an assembled wheel."
+    },
+    "linux": {
+      "request": {
+        "path": "build/runs/scenario-oracles-99/integrated-linux-native-reuse-request.json",
+        "sha256": "935baa95b464cfa6a774399fa6aa88e753c492cccb22a8322959f44e6a4e3a00"
+      },
+      "proposal": {
+        "path": "build/runs/scenario-oracles-99/integrated-linux-native-reuse-proposal.json",
+        "sha256": "33de5db81403f203b63f8dcbe1fb9acd48a058c7fd88df07df00151b983cd6d8"
+      },
+      "reuse_sha256": "6d814a03053152f8708cd8e4ad6bfa92cf8db27f474096709568db1c2274ef96",
+      "production_sha256": "6e21a4bbed7849a564bf5c425d1519ca7794327e61602aabdb5a4b8c0c59726f",
+      "capture_sha256": "1853f74fafac1719d8b8cdaef82a0cba13adcf68e346913f46963886181bb047",
+      "abi": "Exact cp312 build on CPython 3.12.8 to the recorded CPython 3.12.13 WSL consumer, with unchanged interpreter hashes.",
+      "limits": "This approves the original run89 full-source producer proof and exact reuse relation. It does not approve a legacy development archive, installed behavior, manylinux distribution or native Linux GPU hardware."
+    }
+  },
+  "limits": [
+    "Approval is limited to the frozen manifest and exact candidate scope; relevant source or observer changes require impact review and renewed identity bindings.",
+    "Independent semantic-scope approval remains separate; this report does not discharge historical parents or claim full upstream parity.",
+    "Source development leaves used for positive/negative controls are distinct from the approved original native producer reuse inputs.",
+    "Installed selected protocols, original absence gates/controls, exact archive/member joins, terminal retention, current-head CI and detached final promotion review remain required by their existing gates.",
+    "No installed artifact, release promotion, optical parity, Metal hardware or native Linux GPU approval is given.",
+    "Manifest hash verification is not a claim of line-by-line review of every file; cumulative and focused inspection coverage is recorded in this report and its unchanged baseline reports."
+  ],
+  "source_approved": true,
+  "scope_approved": false,
+  "native_reuse_source_review_approved": true,
+  "artifact_admitted": false,
+  "ci_approved": false,
+  "promotion_approved": false
+}

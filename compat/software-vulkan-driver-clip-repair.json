@@ -1,0 +1,61 @@
+{
+  "description": "Locally verified headless Mesa26.1.8 clip-axis repair using LLVM18; source preparation only, no admission",
+  "driver_version": "26.1.8+vispy-clip-axis-1-llvm18-headless",
+  "scope": "Headless software Vulkan; original packaged driver/profile unchanged",
+  "inputs": [
+    {
+      "name": "libvulkan_lvp.so",
+      "sha256": "95605637fe96ac7bcaf59ec085d855fb9da6d9aa7eee014efab38b0bfc4d8a93",
+      "size": 16979784,
+      "roles": [
+        "evidence",
+        "repro"
+      ]
+    },
+    {
+      "name": "mesa-clip-repair-NOTICES.txt",
+      "sha256": "0c795cce6bc4f62326b14fcb8526a7c623200ca07876562278d891ec8aefa79e",
+      "size": 71960,
+      "roles": [
+        "licenses"
+      ]
+    },
+    {
+      "name": "mesa_26.1.8~kisak1~n.tar.xz",
+      "url": "https://ppa.launchpadcontent.net/kisak/turtle/ubuntu/pool/main/m/mesa/mesa_26.1.8~kisak1~n.tar.xz",
+      "sha256": "81143147557058caa89f7a49475a66246a52983b109ac2a19b3066a4d55e6c53",
+      "size": 79447536,
+      "roles": [
+        "source",
+        "licenses"
+      ]
+    },
+    {
+      "name": "mesa-26.1.8-noperspective-axis.patch",
+      "sha256": "3cfc4b5411f17afcdb66cbb0f410c62c1434b193be345e0ce979711b59caea11",
+      "size": 906,
+      "roles": [
+        "source",
+        "repro"
+      ]
+    },
+    {
+      "name": "mesa-driver-artifact.json",
+      "sha256": "af9bc200038adfbe3af62b5665709baf130f8afcfc1a55553b3ca8ed6a12a247",
+      "size": 1946,
+      "roles": [
+        "evidence",
+        "repro"
+      ]
+    }
+  ],
+  "libraries": [
+    {
+      "kind": "retained-file",
+      "input": "libvulkan_lvp.so",
+      "notice_input": "mesa-clip-repair-NOTICES.txt",
+      "filename": "libvulkan_lvp.so",
+      "sha256": "95605637fe96ac7bcaf59ec085d855fb9da6d9aa7eee014efab38b0bfc4d8a93"
+    }
+  ]
+}

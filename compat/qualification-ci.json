@@ -1,0 +1,53 @@
+{
+  "schema": 1,
+  "kind": "required-ci-policy",
+  "repository": "bipxx/vispy_vulkan",
+  "reruns": "latest-complete-attempt-per-workflow-no-mixing",
+  "collector_sha256": "d16bc66a51e8381296e77e2c3bea6e63a2ffa186bb38fd2f7f51c80e41437cc0",
+  "workflows": [
+    {
+      "path": ".github/workflows/cpu-contract.yml",
+      "sha256": "a386023e1cffbd4a0c6be3bd9883ea67522cec27cf0d30688fee301539338321",
+      "job_key": "cpu",
+      "jobs": [
+        "CPU linux-x86_64 CPython 3.10.19",
+        "CPU linux-x86_64 CPython 3.11.14",
+        "CPU linux-x86_64 CPython 3.12.8",
+        "CPU linux-x86_64 CPython 3.13.8",
+        "CPU linux-x86_64 CPython 3.14.0",
+        "CPU macos-arm64 CPython 3.10.19",
+        "CPU macos-arm64 CPython 3.11.14",
+        "CPU macos-arm64 CPython 3.12.8",
+        "CPU macos-arm64 CPython 3.13.8",
+        "CPU macos-arm64 CPython 3.14.0",
+        "CPU macos-x86_64 CPython 3.10.19",
+        "CPU macos-x86_64 CPython 3.11.14",
+        "CPU macos-x86_64 CPython 3.12.8",
+        "CPU macos-x86_64 CPython 3.13.8",
+        "CPU macos-x86_64 CPython 3.14.0",
+        "CPU windows-x86_64 CPython 3.10.19",
+        "CPU windows-x86_64 CPython 3.11.14",
+        "CPU windows-x86_64 CPython 3.12.8",
+        "CPU windows-x86_64 CPython 3.13.8",
+        "CPU windows-x86_64 CPython 3.14.0"
+      ]
+    },
+    {
+      "path": ".github/workflows/linux-vulkan.yml",
+      "sha256": "9237e98216a69e9245a9bc9771492e3c07669c0127ad6f9529c17b8570dc7864",
+      "job_key": "software-vulkan",
+      "jobs": [
+        "software-vulkan"
+      ]
+    },
+    {
+      "path": ".github/workflows/metal-wheel.yml",
+      "sha256": "e9da4ffcb0ff93d3e9323a34fad57126964076a4c3b5b1d8526f5394ff012b16",
+      "job_key": "build",
+      "jobs": [
+        "Metal wheel arm64 CPython 3.12.8",
+        "Metal wheel x86_64 CPython 3.12.8"
+      ]
+    }
+  ]
+}

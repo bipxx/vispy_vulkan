@@ -78,11 +78,14 @@ struct Lifecycle {
         if (!encoding_batches) throw std::runtime_error("frame batch was not encoding");
         --encoding_batches;
     }
-    void submitted(uint64_t ticket, uint64_t timestamp, uint64_t device_generation) {
+    void validate_submission(uint64_t ticket, uint64_t device_generation) const {
         if (device_generation != generation) throw std::runtime_error("frame submissions span device generations");
         if (closed && !encoding_batches) throw std::runtime_error("submission was not admitted before frame closure");
         if (!ticket || ticket <= last_ticket || submissions == UINT64_MAX || outstanding == UINT64_MAX)
             throw std::runtime_error("frame submission identity/count overflow");
+    }
+    void submitted(uint64_t ticket, uint64_t timestamp, uint64_t device_generation) {
+        validate_submission(ticket, device_generation);
         last_ticket = ticket; last_submit_ns = timestamp; ++submissions; ++outstanding;
     }
     void presented() {

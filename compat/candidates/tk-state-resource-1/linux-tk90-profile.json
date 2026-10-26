@@ -1,0 +1,207 @@
+{
+  "schema": 1,
+  "id": "wsl-software-tk90-cp31213-development",
+  "phase": "source-functional",
+  "product_runtime_source_commit": "6345ceef42df1a64a7401a83c2d1a30384903cd1",
+  "kind": "wsl-software",
+  "architecture": "x86_64",
+  "python_abi": "cp312",
+  "python_version": "3.12.13 (main, Apr 14 2026, 14:29:00) [Clang 22.1.3 ]",
+  "interpreter": "/home/heq/.local/share/uv/python/cpython-3.12.13-linux-x86_64-gnu/bin/python3.12",
+  "toolkit": {
+    "tk_version": 9.0,
+    "tcl_version": 9.0,
+    "binding_origin": "/home/heq/.local/share/uv/python/cpython-3.12.13-linux-x86_64-gnu/lib/python3.12/lib-dynload/_tkinter.cpython-312-x86_64-linux-gnu.so",
+    "binding_hash_scope": "module",
+    "binding_sha256": "0240658571f1531461f4a7178c454795c55fe0f5723eebeda0b5de2f4aeee303"
+  },
+  "display_mode": "tk-raster",
+  "device": {
+    "backend": "Vulkan",
+    "adapter_type": "cpu",
+    "vendor": "mesa",
+    "device": "llvmpipe (LLVM 20.1.2, 256 bits)",
+    "driver": "llvmpipe: Mesa 25.2.8-0ubuntu0.24.04.2 (LLVM 20.1.2)",
+    "vendor_id": 65541,
+    "device_id": 0,
+    "max_texture_dimension_1d": 16384,
+    "max_texture_dimension_2d": 16384,
+    "max_texture_dimension_3d": 4096,
+    "max_vertex_attributes": 30,
+    "max_vertex_buffers": 8,
+    "max_vertex_buffer_array_stride": 2048,
+    "max_storage_buffers_per_shader_stage": 16,
+    "max_uniform_buffers_per_shader_stage": 12,
+    "max_inter_stage_shader_variables": 30,
+    "max_storage_buffer_binding_size": 134217728,
+    "max_bindings_per_bind_group": 1000,
+    "max_compute_invocations_per_workgroup": 1024,
+    "max_compute_workgroup_size_x": 1024,
+    "max_compute_workgroups_per_dimension": 65535,
+    "max_point_vertex_attributes": 30,
+    "core_features_and_limits": true,
+    "point_input_limit_scope": "all active user point inputs share one vertex buffer; exact vertex/instance identities use read-only vertex storage without reserving a user attribute; actual granted attribute/stride/storage/allocation limits apply",
+    "max_samplers_per_shader_stage": 16,
+    "max_sampled_textures_per_shader_stage": 48,
+    "max_buffer_size": 4294967295,
+    "max_uniform_buffer_binding_size": 65536,
+    "software": true,
+    "float32_filterable": true,
+    "unorm16_texture_formats": true,
+    "bresenham_lines": true,
+    "last_vertex_provoking": true,
+    "timestamp_query": true,
+    "timestamp_quantization_ns": 65536,
+    "depth_stencil_storage": "depth24_unorm_stencil8",
+    "ok": true,
+    "error": "",
+    "loss_count": 0,
+    "revision": "117b054598f4758b598f4b8f48feea48c11fe7b0+dawn-499e5c6ff9b37d5de70c6493fb74c251e0d35c1c"
+  },
+  "native_sha256": "4f502d48a453a9776ffad3d8226252f2334e7142f68b6ef26e9658868a393ba6",
+  "native_inputs_sha256": "96d316a41aee83a50a5049ff11448e3060925fdb73986e0aa09a4e76b0dd2a75",
+  "loaded_library_identities": {
+    "/mnt/c/Users/HEQ/Projects/vispy_vulkan/build/artifacts/4f502d48a453a9776ffad3d8226252f2334e7142f68b6ef26e9658868a393ba6/_dawn.cpython-312-x86_64-linux-gnu.so": "4f502d48a453a9776ffad3d8226252f2334e7142f68b6ef26e9658868a393ba6",
+    "/usr/lib/x86_64-linux-gnu/libvulkan_virtio.so": "231059d904e345291c36a3ac0bfb5f3937a77f8bbfa360ee7876b6e6148adc5b",
+    "/usr/lib/x86_64-linux-gnu/libxcb-shm.so.0.0.0": "ad78a7b22409685ca82e54346c2b9465d697f303e69e74a9c1693bb206e319df",
+    "/usr/lib/x86_64-linux-gnu/libxcb-sync.so.1.0.0": "27c2d6dddde34146904c3c64cfcc885a14a351636d6611877368a48e29355c39",
+    "/usr/lib/x86_64-linux-gnu/libxcb-dri3.so.0.1.0": "a919146693e71897484c2996beb837273a7a278d1a2afe477bc072f10681f3b0",
+    "/usr/lib/x86_64-linux-gnu/libLLVM.so.20.1": "4b93481bd1c9d42c0951275dd275d4a9d30db78c309ae2cc0405669bc6dbbf8a",
+    "/home/heq/.local/share/uv/python/cpython-3.12.13-linux-x86_64-gnu/lib/libtcl9tk9.0.so": "59a2958123b86d7622bed460d099f06ce36b6f6eaec936f9681567189cd8c415",
+    "/usr/lib/x86_64-linux-gnu/libX11.so.6.4.0": "edd2ddf6e00a81c40b8645f7dbb6d6603c6a0a78d583bdbe7491d8a84de6e3b6",
+    "/usr/lib/x86_64-linux-gnu/libvulkan_nouveau.so": "0f0dbae2b1e22fc5f6cec2da5d0b4890825b1134378211efcb4d7b71f44696ca",
+    "/usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0": "7958a0136b121bdc4c708968569ad152a9ed208ab026e2537b1005dde64ca440",
+    "/usr/lib/x86_64-linux-gnu/libvulkan.so.1.3.275": "e833b010f814b72c6aca0300c8b5f19b6106ffa06c24ddc95a293970c7d6058e",
+    "/usr/lib/x86_64-linux-gnu/libX11-xcb.so.1.0.0": "941ab0ca78131e168817049d4c9935bb0e29b584cf05b58c47e3071f1fa81cf8",
+    "/usr/lib/x86_64-linux-gnu/libvulkan_gfxstream.so": "89d350ae4b586fb608cc71d01d338ee6c2275a4736dc51b0492c62949142109b",
+    "/usr/lib/x86_64-linux-gnu/libvulkan_intel.so": "9ecefd82942c76e227075e01a6dc78318cbb210e7fd86d2bde145501539422e4",
+    "/usr/lib/x86_64-linux-gnu/libxcb-present.so.0.0.0": "d06d982abe6e9202aecd22322166be8ba49e68e05889fb6c6faec0daa88530a4",
+    "/home/heq/.local/share/uv/python/cpython-3.12.13-linux-x86_64-gnu/lib/libtcl9.0.so": "cdbf818b9dc5c19cc965968593de43641a75e580990672a68459e33f733ea8c8",
+    "/usr/lib/x86_64-linux-gnu/libvulkan_lvp.so": "9d69cae2004b16572acca424741109be37c4ffc759c2461af69d75f7d1c6c139",
+    "/usr/lib/x86_64-linux-gnu/libvulkan_intel_hasvk.so": "112ba9b9f3281ff2220f87a746b629a36032dbd8b25e2ccb53790c02aa39dc13",
+    "/usr/lib/x86_64-linux-gnu/libvulkan_radeon.so": "f12922c854f6e014c635a81f67d7b448ff300fbd5b647c0734ecb3e0d6cd0001",
+    "/usr/lib/x86_64-linux-gnu/libxcb-randr.so.0.1.0": "9fa6b0ec4af163a86bc9a9ded3309a5979155fb5ef2d311fdda7fff0e9eee01a",
+    "/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33": "1fd75fe70354a416d75aef22bcae68c47bd25d20e2d0568c30b1a9838cf62f11",
+    "/mnt/c/Users/HEQ/Projects/vispy_vulkan/build/artifacts/4f502d48a453a9776ffad3d8226252f2334e7142f68b6ef26e9658868a393ba6/VkLayer_vispy_submit.so": "95907606472ffe51bec021d4b28e4717472e40f2cef34cd2590d172575c113d4",
+    "/usr/lib/x86_64-linux-gnu/libvulkan_asahi.so": "abd4044f2697abe07cc8df95b05dfa72ec6b2ce428103a0c72f108b6bb925a97",
+    "/usr/lib/x86_64-linux-gnu/libxcb-xfixes.so.0.0.0": "e59ef497333a6ede2096a0bd9eeb6ec4023374c16d3a8d7511d1251fb7f9b9df"
+  },
+  "source_observation": {
+    "location": "build/runs/worker-results-33/linux-native-current-result.json",
+    "sha256": "2efa903763c2c13a4ff8a496652567e0276a2d7be53a6f0286294175fe42357d",
+    "functional_report_sha256": "8f3975fe233afc93012ffb7682f71e42864de4afafa9d8ac066d0dc9231aa7da",
+    "cases": 18,
+    "shutdown_gauges": {
+      "pending_tickets": 0,
+      "queued_frames": 0,
+      "live_buffer_bytes": 0,
+      "live_cpu_buffer_bytes": 0,
+      "live_texture_bytes": 0,
+      "canvas_texture_bytes": 0,
+      "transient_buffer_bytes": 0,
+      "line_resource_pool_busy_slots": 0,
+      "line_resource_pool_bytes": 0
+    },
+    "scope": "Current closed composite result/source acceptance, NOT installed observation or hardware qualification. Original source observations retained separately.",
+    "observed_runtime_source_commit": "6345ceef42df1a64a7401a83c2d1a30384903cd1"
+  },
+  "limitations": [
+    "Development observation only; no wheel or installed/observer admission.",
+    "WSL software, not native Linux GPU; native producer provenance remains experimental.",
+    "Original CPython3.12.8/Tk8.6 profile remains blocked by Label abort; its receipts are not relabelled.",
+    "Odd301x177 four-sample scissor defect retains a failed capture receipt and still blocks affected scope.",
+    "External CPython/Tcl/Tk preferred-source, original-notice and complete installed-closure admission remains pending.",
+    "Complete current cross-platform native-input snapshot includes Metal.mm; the retained Windows/WSL producer is unchanged, not a rebuild or a Mac qualification."
+  ],
+  "interpreter_sha256": "339de109f072e52523066d97a2b3372e358a10cc00c6a9df62c28a6618061900",
+  "base_interpreter": {
+    "path": "/home/heq/.local/share/uv/python/cpython-3.12.13-linux-x86_64-gnu/bin/python3.12",
+    "sha256": "339de109f072e52523066d97a2b3372e358a10cc00c6a9df62c28a6618061900"
+  },
+  "os_identity": "Linux 6.18.54.1-microsoft-standard-WSL2 x86_64 GNU/Linux",
+  "native_producer": {
+    "artifact_manifest_sha256": "899feffedc04c8f10b4951ca416d59d6486ca03872399e68b28ad3f2f11f803e",
+    "build_report": "build/runs/reversed-depth-18/linux-build-report.json",
+    "build_report_sha256": "b901e1f2f2f79a42d058330014de33b0eb9cc93ecf4a70c2035f7337f4fffeaa",
+    "source_base": "368fcb7417cc75cb6a977d33a89d8843eb146466",
+    "scope": "Source-functional leaf only; no installed/SDK qualification",
+    "preferred_source_overlay": {
+      "location": "build/runs/reversed-depth-18/source.patch",
+      "sha256": "d7cbae4c8160fb8c7b44d692e8d8a405919327b074cfdaff60a58ec11d23ff45"
+    },
+    "limitations": "Source-functional native leaf only. Linux producer remains experimental; no new SDK or installed qualification."
+  },
+  "validation_schedule": "One native profile at a time on the shared host; original concurrent failures retained.",
+  "previous_source_observation": {
+    "product_runtime_source_commit": "c7e191ee8ee506d4ba6244eaa217efceb43d115c",
+    "observation": {
+      "location": "build/runs/candidate-workflow-24/linux-release-verified-result.json",
+      "sha256": "c963a9b9f075e5c180e3aa992095dc884f21f64ca05f6b68b0cace7b72dc9d75",
+      "functional_report_sha256": "9833b39d7c65da2a184bc83f751a32e2796ede2ec64a75ad5f6fbaec563343e6",
+      "cases": 415,
+      "shutdown_gauges": {
+        "pending_tickets": 0,
+        "queued_frames": 0,
+        "live_buffer_bytes": 0,
+        "live_cpu_buffer_bytes": 0,
+        "live_texture_bytes": 0,
+        "canvas_texture_bytes": 0,
+        "transient_buffer_bytes": 0,
+        "line_resource_pool_busy_slots": 0,
+        "line_resource_pool_bytes": 0
+      }
+    }
+  },
+  "original_blocked_profile": {
+    "path": "compat/candidates/tk-state-resource-1/linux-profile.json",
+    "sha256": "12de32e1995f72bf60589cac1c0af20ee46c160c57fd7db5494340b4266adf50"
+  },
+  "plain_toolkit_control": {
+    "location": "build/runs/linux-toolkit-profile-28/baseline.log",
+    "sha256": "a5e876c55e0561823288fa39716f340e1aa00ae1b8bd8ff12826f1324e200332",
+    "result": "12 Label lifecycles pass; distinct CPython3.12.13/Tcl-Tk9.0.3 profile."
+  },
+  "dependency_paths_scope": "Reused retained locked package paths for source inspection; no new environment or complete installed closure admission.",
+  "historical_source_observations": [
+    {
+      "location": "build/runs/linux-toolkit-profile-28/linux-profile-verified-result.json",
+      "sha256": "205e5fec1776636ddf40ed233ca6dec691bd83fc6ef79a697c8435325d33dcc4",
+      "functional_report_sha256": "d8fe28c321067fac35896c080385b0c1e8d53504255d37b0f607e32afd49b1f4",
+      "cases": 68,
+      "shutdown_gauges": {
+        "pending_tickets": 0,
+        "queued_frames": 0,
+        "live_buffer_bytes": 0,
+        "live_cpu_buffer_bytes": 0,
+        "live_texture_bytes": 0,
+        "canvas_texture_bytes": 0,
+        "transient_buffer_bytes": 0,
+        "line_resource_pool_busy_slots": 0,
+        "line_resource_pool_bytes": 0
+      },
+      "scope": "Focused affected source acceptance; original broad/failing reports retained separately; not installed qualification.",
+      "observed_runtime_source_commit": "53194f10e5e4ed096f484985f773b636eb1b5109",
+      "reuse_basis": "Production Python/native source bytes match the observed53194f10 tree. Only2CPU-contract include lists changed in CMakeLists; original report bytes, artifact/provenance and observed identity remain unchanged."
+    },
+    {
+      "location": "build/runs/observed-submission-30/linux-verified-result.json",
+      "sha256": "02641209d2164f3a0f79d131b28014e98587b66e9f5dfd36977b53ae35cca042",
+      "functional_report_sha256": "8f3975fe233afc93012ffb7682f71e42864de4afafa9d8ac066d0dc9231aa7da",
+      "cases": 18,
+      "shutdown_gauges": {
+        "pending_tickets": 0,
+        "queued_frames": 0,
+        "live_buffer_bytes": 0,
+        "live_cpu_buffer_bytes": 0,
+        "live_texture_bytes": 0,
+        "canvas_texture_bytes": 0,
+        "transient_buffer_bytes": 0,
+        "line_resource_pool_busy_slots": 0,
+        "line_resource_pool_bytes": 0
+      },
+      "scope": "Focused composite submission/failure/recovery source acceptance. Historical broader observations retained separately; not installed or observer qualification.",
+      "observed_runtime_source_commit": "0e7b5b11788e6f6a87e4ef70ac231fa3ac73501f",
+      "reuse_basis": "All production Python/native/build/lock/license bytes except the Apple-only surface_metal.mm are unchanged from the observed0e7b5b11 tree. The Metal change adds its missing CATransaction declaration header and is not compiled by Windows/WSL. The current complete cross-platform input set now includes that previously omitted Objective-C++ source. Original source report, observed identity, native producer and qualification limits remain unchanged."
+    }
+  ]
+}

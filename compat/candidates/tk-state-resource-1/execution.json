@@ -1,0 +1,2071 @@
+{
+  "schema": 1,
+  "phase": "execution-preparation",
+  "manifest_sha256": "afc3a8c9299fb7c5b977f427abbf356313caa980cbc64cb058c61c7643de4c20",
+  "candidate": {
+    "path": "compat/candidates/tk-state-resource-1/candidate.json",
+    "scope_sha256": "180a3d4e1579347e835ac3a98818a34a32932cd3af0fca7005987fa300d32e4d"
+  },
+  "coverage": {
+    "path": "compat/candidates/tk-state-resource-1/coverage.json",
+    "sha256": "7ccc0dfa6aa9becbe61e0df75acd9fa47a87031f2007fb94211b1a377110d75c"
+  },
+  "baseline": {
+    "path": "compat/vispy-compatibility.json",
+    "sha256": "875c1be945f27398577ef140450b6998fe22713836a9defea2ec57b24fae538d"
+  },
+  "execution": {
+    "path": "compat/candidates/tk-state-resource-1/execution-ledger.json",
+    "scope_sha256": "9ca9058a4d348bdafb6cef2197a9dcaedf7541c462680da205e58515682f2022"
+  },
+  "mappings": [
+    {
+      "criterion": "tk.application.manual.failure",
+      "profile": "windows-gpu-tk86-cp312-development",
+      "destination": {
+        "feature": "tk.application.manual",
+        "profile": "windows-gpu-tk86-cp312-development",
+        "criterion": "tk.application.manual.failure"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.application.manual.mutation",
+      "profile": "windows-gpu-tk86-cp312-development",
+      "destination": {
+        "feature": "tk.application.manual",
+        "profile": "windows-gpu-tk86-cp312-development",
+        "criterion": "tk.application.manual.mutation"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.application.manual.ordinary",
+      "profile": "windows-gpu-tk86-cp312-development",
+      "destination": {
+        "feature": "tk.application.manual",
+        "profile": "windows-gpu-tk86-cp312-development",
+        "criterion": "tk.application.manual.ordinary"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "ordinary.state"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.application.manual.recovery",
+      "profile": "windows-gpu-tk86-cp312-development",
+      "destination": {
+        "feature": "tk.application.manual",
+        "profile": "windows-gpu-tk86-cp312-development",
+        "criterion": "tk.application.manual.recovery"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.application.manual.failure",
+      "profile": "wsl-software-tk90-cp31213-development",
+      "destination": {
+        "feature": "tk.application.manual",
+        "profile": "wsl-software-tk90-cp31213-development",
+        "criterion": "tk.application.manual.failure"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.application.manual.mutation",
+      "profile": "wsl-software-tk90-cp31213-development",
+      "destination": {
+        "feature": "tk.application.manual",
+        "profile": "wsl-software-tk90-cp31213-development",
+        "criterion": "tk.application.manual.mutation"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.application.manual.ordinary",
+      "profile": "wsl-software-tk90-cp31213-development",
+      "destination": {
+        "feature": "tk.application.manual",
+        "profile": "wsl-software-tk90-cp31213-development",
+        "criterion": "tk.application.manual.ordinary"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "ordinary.state"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.application.manual.recovery",
+      "profile": "wsl-software-tk90-cp31213-development",
+      "destination": {
+        "feature": "tk.application.manual",
+        "profile": "wsl-software-tk90-cp31213-development",
+        "criterion": "tk.application.manual.recovery"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.backend.raster.failure",
+      "profile": "windows-gpu-tk86-cp312-development",
+      "destination": {
+        "feature": "tk.backend.raster",
+        "profile": "windows-gpu-tk86-cp312-development",
+        "criterion": "tk.backend.raster.failure"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.backend.raster.mutation",
+      "profile": "windows-gpu-tk86-cp312-development",
+      "destination": {
+        "feature": "tk.backend.raster",
+        "profile": "windows-gpu-tk86-cp312-development",
+        "criterion": "tk.backend.raster.mutation"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.backend.raster.ordinary",
+      "profile": "windows-gpu-tk86-cp312-development",
+      "destination": {
+        "feature": "tk.backend.raster",
+        "profile": "windows-gpu-tk86-cp312-development",
+        "criterion": "tk.backend.raster.ordinary"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "ordinary.state"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.backend.raster.recovery",
+      "profile": "windows-gpu-tk86-cp312-development",
+      "destination": {
+        "feature": "tk.backend.raster",
+        "profile": "windows-gpu-tk86-cp312-development",
+        "criterion": "tk.backend.raster.recovery"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.backend.raster.failure",
+      "profile": "wsl-software-tk90-cp31213-development",
+      "destination": {
+        "feature": "tk.backend.raster",
+        "profile": "wsl-software-tk90-cp31213-development",
+        "criterion": "tk.backend.raster.failure"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.backend.raster.mutation",
+      "profile": "wsl-software-tk90-cp31213-development",
+      "destination": {
+        "feature": "tk.backend.raster",
+        "profile": "wsl-software-tk90-cp31213-development",
+        "criterion": "tk.backend.raster.mutation"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.backend.raster.ordinary",
+      "profile": "wsl-software-tk90-cp31213-development",
+      "destination": {
+        "feature": "tk.backend.raster",
+        "profile": "wsl-software-tk90-cp31213-development",
+        "criterion": "tk.backend.raster.ordinary"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "ordinary.state"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.backend.raster.recovery",
+      "profile": "wsl-software-tk90-cp31213-development",
+      "destination": {
+        "feature": "tk.backend.raster",
+        "profile": "wsl-software-tk90-cp31213-development",
+        "criterion": "tk.backend.raster.recovery"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.buffer.triangle.failure",
+      "profile": "windows-gpu-tk86-cp312-development",
+      "destination": {
+        "feature": "tk.buffer.triangle",
+        "profile": "windows-gpu-tk86-cp312-development",
+        "criterion": "tk.buffer.triangle.failure"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.buffer.triangle.mutation",
+      "profile": "windows-gpu-tk86-cp312-development",
+      "destination": {
+        "feature": "tk.buffer.triangle",
+        "profile": "windows-gpu-tk86-cp312-development",
+        "criterion": "tk.buffer.triangle.mutation"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.buffer.triangle.ordinary",
+      "profile": "windows-gpu-tk86-cp312-development",
+      "destination": {
+        "feature": "tk.buffer.triangle",
+        "profile": "windows-gpu-tk86-cp312-development",
+        "criterion": "tk.buffer.triangle.ordinary"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.buffer.triangle.recovery",
+      "profile": "windows-gpu-tk86-cp312-development",
+      "destination": {
+        "feature": "tk.buffer.triangle",
+        "profile": "windows-gpu-tk86-cp312-development",
+        "criterion": "tk.buffer.triangle.recovery"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.buffer.triangle.failure",
+      "profile": "wsl-software-tk90-cp31213-development",
+      "destination": {
+        "feature": "tk.buffer.triangle",
+        "profile": "wsl-software-tk90-cp31213-development",
+        "criterion": "tk.buffer.triangle.failure"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.buffer.triangle.mutation",
+      "profile": "wsl-software-tk90-cp31213-development",
+      "destination": {
+        "feature": "tk.buffer.triangle",
+        "profile": "wsl-software-tk90-cp31213-development",
+        "criterion": "tk.buffer.triangle.mutation"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.buffer.triangle.ordinary",
+      "profile": "wsl-software-tk90-cp31213-development",
+      "destination": {
+        "feature": "tk.buffer.triangle",
+        "profile": "wsl-software-tk90-cp31213-development",
+        "criterion": "tk.buffer.triangle.ordinary"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.buffer.triangle.recovery",
+      "profile": "wsl-software-tk90-cp31213-development",
+      "destination": {
+        "feature": "tk.buffer.triangle",
+        "profile": "wsl-software-tk90-cp31213-development",
+        "criterion": "tk.buffer.triangle.recovery"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.canvas.basic.failure",
+      "profile": "windows-gpu-tk86-cp312-development",
+      "destination": {
+        "feature": "tk.canvas.basic",
+        "profile": "windows-gpu-tk86-cp312-development",
+        "criterion": "tk.canvas.basic.failure"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.canvas.basic.mutation",
+      "profile": "windows-gpu-tk86-cp312-development",
+      "destination": {
+        "feature": "tk.canvas.basic",
+        "profile": "windows-gpu-tk86-cp312-development",
+        "criterion": "tk.canvas.basic.mutation"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.canvas.basic.ordinary",
+      "profile": "windows-gpu-tk86-cp312-development",
+      "destination": {
+        "feature": "tk.canvas.basic",
+        "profile": "windows-gpu-tk86-cp312-development",
+        "criterion": "tk.canvas.basic.ordinary"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "ordinary.state"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.canvas.basic.recovery",
+      "profile": "windows-gpu-tk86-cp312-development",
+      "destination": {
+        "feature": "tk.canvas.basic",
+        "profile": "windows-gpu-tk86-cp312-development",
+        "criterion": "tk.canvas.basic.recovery"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.canvas.basic.failure",
+      "profile": "wsl-software-tk90-cp31213-development",
+      "destination": {
+        "feature": "tk.canvas.basic",
+        "profile": "wsl-software-tk90-cp31213-development",
+        "criterion": "tk.canvas.basic.failure"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.canvas.basic.mutation",
+      "profile": "wsl-software-tk90-cp31213-development",
+      "destination": {
+        "feature": "tk.canvas.basic",
+        "profile": "wsl-software-tk90-cp31213-development",
+        "criterion": "tk.canvas.basic.mutation"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.canvas.basic.ordinary",
+      "profile": "wsl-software-tk90-cp31213-development",
+      "destination": {
+        "feature": "tk.canvas.basic",
+        "profile": "wsl-software-tk90-cp31213-development",
+        "criterion": "tk.canvas.basic.ordinary"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "ordinary.state"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.canvas.basic.recovery",
+      "profile": "wsl-software-tk90-cp31213-development",
+      "destination": {
+        "feature": "tk.canvas.basic",
+        "profile": "wsl-software-tk90-cp31213-development",
+        "criterion": "tk.canvas.basic.recovery"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.canvas.recovery.failure",
+      "profile": "windows-gpu-tk86-cp312-development",
+      "destination": {
+        "feature": "tk.canvas.recovery",
+        "profile": "windows-gpu-tk86-cp312-development",
+        "criterion": "tk.canvas.recovery.failure"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.canvas.recovery.mutation",
+      "profile": "windows-gpu-tk86-cp312-development",
+      "destination": {
+        "feature": "tk.canvas.recovery",
+        "profile": "windows-gpu-tk86-cp312-development",
+        "criterion": "tk.canvas.recovery.mutation"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.canvas.recovery.ordinary",
+      "profile": "windows-gpu-tk86-cp312-development",
+      "destination": {
+        "feature": "tk.canvas.recovery",
+        "profile": "windows-gpu-tk86-cp312-development",
+        "criterion": "tk.canvas.recovery.ordinary"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.canvas.recovery.recovery",
+      "profile": "windows-gpu-tk86-cp312-development",
+      "destination": {
+        "feature": "tk.canvas.recovery",
+        "profile": "windows-gpu-tk86-cp312-development",
+        "criterion": "tk.canvas.recovery.recovery"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.canvas.recovery.failure",
+      "profile": "wsl-software-tk90-cp31213-development",
+      "destination": {
+        "feature": "tk.canvas.recovery",
+        "profile": "wsl-software-tk90-cp31213-development",
+        "criterion": "tk.canvas.recovery.failure"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.canvas.recovery.mutation",
+      "profile": "wsl-software-tk90-cp31213-development",
+      "destination": {
+        "feature": "tk.canvas.recovery",
+        "profile": "wsl-software-tk90-cp31213-development",
+        "criterion": "tk.canvas.recovery.mutation"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.canvas.recovery.ordinary",
+      "profile": "wsl-software-tk90-cp31213-development",
+      "destination": {
+        "feature": "tk.canvas.recovery",
+        "profile": "wsl-software-tk90-cp31213-development",
+        "criterion": "tk.canvas.recovery.ordinary"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.canvas.recovery.recovery",
+      "profile": "wsl-software-tk90-cp31213-development",
+      "destination": {
+        "feature": "tk.canvas.recovery",
+        "profile": "wsl-software-tk90-cp31213-development",
+        "criterion": "tk.canvas.recovery.recovery"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.context.current.failure",
+      "profile": "windows-gpu-tk86-cp312-development",
+      "destination": {
+        "feature": "tk.context.current",
+        "profile": "windows-gpu-tk86-cp312-development",
+        "criterion": "tk.context.current.failure"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.context.current.mutation",
+      "profile": "windows-gpu-tk86-cp312-development",
+      "destination": {
+        "feature": "tk.context.current",
+        "profile": "windows-gpu-tk86-cp312-development",
+        "criterion": "tk.context.current.mutation"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "ordinary.state"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.context.current.ordinary",
+      "profile": "windows-gpu-tk86-cp312-development",
+      "destination": {
+        "feature": "tk.context.current",
+        "profile": "windows-gpu-tk86-cp312-development",
+        "criterion": "tk.context.current.ordinary"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "ordinary.state"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.context.current.recovery",
+      "profile": "windows-gpu-tk86-cp312-development",
+      "destination": {
+        "feature": "tk.context.current",
+        "profile": "windows-gpu-tk86-cp312-development",
+        "criterion": "tk.context.current.recovery"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.context.current.failure",
+      "profile": "wsl-software-tk90-cp31213-development",
+      "destination": {
+        "feature": "tk.context.current",
+        "profile": "wsl-software-tk90-cp31213-development",
+        "criterion": "tk.context.current.failure"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.context.current.mutation",
+      "profile": "wsl-software-tk90-cp31213-development",
+      "destination": {
+        "feature": "tk.context.current",
+        "profile": "wsl-software-tk90-cp31213-development",
+        "criterion": "tk.context.current.mutation"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "ordinary.state"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.context.current.ordinary",
+      "profile": "wsl-software-tk90-cp31213-development",
+      "destination": {
+        "feature": "tk.context.current",
+        "profile": "wsl-software-tk90-cp31213-development",
+        "criterion": "tk.context.current.ordinary"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "ordinary.state"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.context.current.recovery",
+      "profile": "wsl-software-tk90-cp31213-development",
+      "destination": {
+        "feature": "tk.context.current",
+        "profile": "wsl-software-tk90-cp31213-development",
+        "criterion": "tk.context.current.recovery"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.context.shared.failure",
+      "profile": "windows-gpu-tk86-cp312-development",
+      "destination": {
+        "feature": "tk.context.shared",
+        "profile": "windows-gpu-tk86-cp312-development",
+        "criterion": "tk.context.shared.failure"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.context.shared.mutation",
+      "profile": "windows-gpu-tk86-cp312-development",
+      "destination": {
+        "feature": "tk.context.shared",
+        "profile": "windows-gpu-tk86-cp312-development",
+        "criterion": "tk.context.shared.mutation"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.context.shared.ordinary",
+      "profile": "windows-gpu-tk86-cp312-development",
+      "destination": {
+        "feature": "tk.context.shared",
+        "profile": "windows-gpu-tk86-cp312-development",
+        "criterion": "tk.context.shared.ordinary"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.context.shared.recovery",
+      "profile": "windows-gpu-tk86-cp312-development",
+      "destination": {
+        "feature": "tk.context.shared",
+        "profile": "windows-gpu-tk86-cp312-development",
+        "criterion": "tk.context.shared.recovery"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.context.shared.failure",
+      "profile": "wsl-software-tk90-cp31213-development",
+      "destination": {
+        "feature": "tk.context.shared",
+        "profile": "wsl-software-tk90-cp31213-development",
+        "criterion": "tk.context.shared.failure"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.context.shared.mutation",
+      "profile": "wsl-software-tk90-cp31213-development",
+      "destination": {
+        "feature": "tk.context.shared",
+        "profile": "wsl-software-tk90-cp31213-development",
+        "criterion": "tk.context.shared.mutation"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.context.shared.ordinary",
+      "profile": "wsl-software-tk90-cp31213-development",
+      "destination": {
+        "feature": "tk.context.shared",
+        "profile": "wsl-software-tk90-cp31213-development",
+        "criterion": "tk.context.shared.ordinary"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.context.shared.recovery",
+      "profile": "wsl-software-tk90-cp31213-development",
+      "destination": {
+        "feature": "tk.context.shared",
+        "profile": "wsl-software-tk90-cp31213-development",
+        "criterion": "tk.context.shared.recovery"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.gl.flush.failure",
+      "profile": "windows-gpu-tk86-cp312-development",
+      "destination": {
+        "feature": "tk.gl.flush",
+        "profile": "windows-gpu-tk86-cp312-development",
+        "criterion": "tk.gl.flush.failure"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "submission.raw.immediate",
+          "submission.raw.delayed"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.gl.flush.mutation",
+      "profile": "windows-gpu-tk86-cp312-development",
+      "destination": {
+        "feature": "tk.gl.flush",
+        "profile": "windows-gpu-tk86-cp312-development",
+        "criterion": "tk.gl.flush.mutation"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "ordinary.state"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.gl.flush.ordinary",
+      "profile": "windows-gpu-tk86-cp312-development",
+      "destination": {
+        "feature": "tk.gl.flush",
+        "profile": "windows-gpu-tk86-cp312-development",
+        "criterion": "tk.gl.flush.ordinary"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "ordinary.state"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.gl.flush.recovery",
+      "profile": "windows-gpu-tk86-cp312-development",
+      "destination": {
+        "feature": "tk.gl.flush",
+        "profile": "windows-gpu-tk86-cp312-development",
+        "criterion": "tk.gl.flush.recovery"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "submission.raw.immediate",
+          "submission.raw.delayed"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.gl.flush.failure",
+      "profile": "wsl-software-tk90-cp31213-development",
+      "destination": {
+        "feature": "tk.gl.flush",
+        "profile": "wsl-software-tk90-cp31213-development",
+        "criterion": "tk.gl.flush.failure"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "submission.raw.immediate",
+          "submission.raw.delayed"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.gl.flush.mutation",
+      "profile": "wsl-software-tk90-cp31213-development",
+      "destination": {
+        "feature": "tk.gl.flush",
+        "profile": "wsl-software-tk90-cp31213-development",
+        "criterion": "tk.gl.flush.mutation"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "ordinary.state"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.gl.flush.ordinary",
+      "profile": "wsl-software-tk90-cp31213-development",
+      "destination": {
+        "feature": "tk.gl.flush",
+        "profile": "wsl-software-tk90-cp31213-development",
+        "criterion": "tk.gl.flush.ordinary"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "ordinary.state"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.gl.flush.recovery",
+      "profile": "wsl-software-tk90-cp31213-development",
+      "destination": {
+        "feature": "tk.gl.flush",
+        "profile": "wsl-software-tk90-cp31213-development",
+        "criterion": "tk.gl.flush.recovery"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "submission.raw.immediate",
+          "submission.raw.delayed"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.object.delete.failure",
+      "profile": "windows-gpu-tk86-cp312-development",
+      "destination": {
+        "feature": "tk.object.delete",
+        "profile": "windows-gpu-tk86-cp312-development",
+        "criterion": "tk.object.delete.failure"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.object.delete.mutation",
+      "profile": "windows-gpu-tk86-cp312-development",
+      "destination": {
+        "feature": "tk.object.delete",
+        "profile": "windows-gpu-tk86-cp312-development",
+        "criterion": "tk.object.delete.mutation"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.object.delete.ordinary",
+      "profile": "windows-gpu-tk86-cp312-development",
+      "destination": {
+        "feature": "tk.object.delete",
+        "profile": "windows-gpu-tk86-cp312-development",
+        "criterion": "tk.object.delete.ordinary"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.object.delete.recovery",
+      "profile": "windows-gpu-tk86-cp312-development",
+      "destination": {
+        "feature": "tk.object.delete",
+        "profile": "windows-gpu-tk86-cp312-development",
+        "criterion": "tk.object.delete.recovery"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.object.delete.failure",
+      "profile": "wsl-software-tk90-cp31213-development",
+      "destination": {
+        "feature": "tk.object.delete",
+        "profile": "wsl-software-tk90-cp31213-development",
+        "criterion": "tk.object.delete.failure"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.object.delete.mutation",
+      "profile": "wsl-software-tk90-cp31213-development",
+      "destination": {
+        "feature": "tk.object.delete",
+        "profile": "wsl-software-tk90-cp31213-development",
+        "criterion": "tk.object.delete.mutation"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.object.delete.ordinary",
+      "profile": "wsl-software-tk90-cp31213-development",
+      "destination": {
+        "feature": "tk.object.delete",
+        "profile": "wsl-software-tk90-cp31213-development",
+        "criterion": "tk.object.delete.ordinary"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.object.delete.recovery",
+      "profile": "wsl-software-tk90-cp31213-development",
+      "destination": {
+        "feature": "tk.object.delete",
+        "profile": "wsl-software-tk90-cp31213-development",
+        "criterion": "tk.object.delete.recovery"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.program.texture.failure",
+      "profile": "windows-gpu-tk86-cp312-development",
+      "destination": {
+        "feature": "tk.program.texture",
+        "profile": "windows-gpu-tk86-cp312-development",
+        "criterion": "tk.program.texture.failure"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.program.texture.mutation",
+      "profile": "windows-gpu-tk86-cp312-development",
+      "destination": {
+        "feature": "tk.program.texture",
+        "profile": "windows-gpu-tk86-cp312-development",
+        "criterion": "tk.program.texture.mutation"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.program.texture.ordinary",
+      "profile": "windows-gpu-tk86-cp312-development",
+      "destination": {
+        "feature": "tk.program.texture",
+        "profile": "windows-gpu-tk86-cp312-development",
+        "criterion": "tk.program.texture.ordinary"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.program.texture.recovery",
+      "profile": "windows-gpu-tk86-cp312-development",
+      "destination": {
+        "feature": "tk.program.texture",
+        "profile": "windows-gpu-tk86-cp312-development",
+        "criterion": "tk.program.texture.recovery"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.program.texture.failure",
+      "profile": "wsl-software-tk90-cp31213-development",
+      "destination": {
+        "feature": "tk.program.texture",
+        "profile": "wsl-software-tk90-cp31213-development",
+        "criterion": "tk.program.texture.failure"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.program.texture.mutation",
+      "profile": "wsl-software-tk90-cp31213-development",
+      "destination": {
+        "feature": "tk.program.texture",
+        "profile": "wsl-software-tk90-cp31213-development",
+        "criterion": "tk.program.texture.mutation"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.program.texture.ordinary",
+      "profile": "wsl-software-tk90-cp31213-development",
+      "destination": {
+        "feature": "tk.program.texture",
+        "profile": "wsl-software-tk90-cp31213-development",
+        "criterion": "tk.program.texture.ordinary"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.program.texture.recovery",
+      "profile": "wsl-software-tk90-cp31213-development",
+      "destination": {
+        "feature": "tk.program.texture",
+        "profile": "wsl-software-tk90-cp31213-development",
+        "criterion": "tk.program.texture.recovery"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.readback.rgba.failure",
+      "profile": "windows-gpu-tk86-cp312-development",
+      "destination": {
+        "feature": "tk.readback.rgba",
+        "profile": "windows-gpu-tk86-cp312-development",
+        "criterion": "tk.readback.rgba.failure"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.readback.rgba.mutation",
+      "profile": "windows-gpu-tk86-cp312-development",
+      "destination": {
+        "feature": "tk.readback.rgba",
+        "profile": "windows-gpu-tk86-cp312-development",
+        "criterion": "tk.readback.rgba.mutation"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.readback.rgba.ordinary",
+      "profile": "windows-gpu-tk86-cp312-development",
+      "destination": {
+        "feature": "tk.readback.rgba",
+        "profile": "windows-gpu-tk86-cp312-development",
+        "criterion": "tk.readback.rgba.ordinary"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.readback.rgba.recovery",
+      "profile": "windows-gpu-tk86-cp312-development",
+      "destination": {
+        "feature": "tk.readback.rgba",
+        "profile": "windows-gpu-tk86-cp312-development",
+        "criterion": "tk.readback.rgba.recovery"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.readback.rgba.failure",
+      "profile": "wsl-software-tk90-cp31213-development",
+      "destination": {
+        "feature": "tk.readback.rgba",
+        "profile": "wsl-software-tk90-cp31213-development",
+        "criterion": "tk.readback.rgba.failure"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.readback.rgba.mutation",
+      "profile": "wsl-software-tk90-cp31213-development",
+      "destination": {
+        "feature": "tk.readback.rgba",
+        "profile": "wsl-software-tk90-cp31213-development",
+        "criterion": "tk.readback.rgba.mutation"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.readback.rgba.ordinary",
+      "profile": "wsl-software-tk90-cp31213-development",
+      "destination": {
+        "feature": "tk.readback.rgba",
+        "profile": "wsl-software-tk90-cp31213-development",
+        "criterion": "tk.readback.rgba.ordinary"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.readback.rgba.recovery",
+      "profile": "wsl-software-tk90-cp31213-development",
+      "destination": {
+        "feature": "tk.readback.rgba",
+        "profile": "wsl-software-tk90-cp31213-development",
+        "criterion": "tk.readback.rgba.recovery"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.texture.rgba8.failure",
+      "profile": "windows-gpu-tk86-cp312-development",
+      "destination": {
+        "feature": "tk.texture.rgba8",
+        "profile": "windows-gpu-tk86-cp312-development",
+        "criterion": "tk.texture.rgba8.failure"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.texture.rgba8.mutation",
+      "profile": "windows-gpu-tk86-cp312-development",
+      "destination": {
+        "feature": "tk.texture.rgba8",
+        "profile": "windows-gpu-tk86-cp312-development",
+        "criterion": "tk.texture.rgba8.mutation"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.texture.rgba8.ordinary",
+      "profile": "windows-gpu-tk86-cp312-development",
+      "destination": {
+        "feature": "tk.texture.rgba8",
+        "profile": "windows-gpu-tk86-cp312-development",
+        "criterion": "tk.texture.rgba8.ordinary"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.texture.rgba8.recovery",
+      "profile": "windows-gpu-tk86-cp312-development",
+      "destination": {
+        "feature": "tk.texture.rgba8",
+        "profile": "windows-gpu-tk86-cp312-development",
+        "criterion": "tk.texture.rgba8.recovery"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.texture.rgba8.failure",
+      "profile": "wsl-software-tk90-cp31213-development",
+      "destination": {
+        "feature": "tk.texture.rgba8",
+        "profile": "wsl-software-tk90-cp31213-development",
+        "criterion": "tk.texture.rgba8.failure"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.texture.rgba8.mutation",
+      "profile": "wsl-software-tk90-cp31213-development",
+      "destination": {
+        "feature": "tk.texture.rgba8",
+        "profile": "wsl-software-tk90-cp31213-development",
+        "criterion": "tk.texture.rgba8.mutation"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.texture.rgba8.ordinary",
+      "profile": "wsl-software-tk90-cp31213-development",
+      "destination": {
+        "feature": "tk.texture.rgba8",
+        "profile": "wsl-software-tk90-cp31213-development",
+        "criterion": "tk.texture.rgba8.ordinary"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.texture.rgba8.recovery",
+      "profile": "wsl-software-tk90-cp31213-development",
+      "destination": {
+        "feature": "tk.texture.rgba8",
+        "profile": "wsl-software-tk90-cp31213-development",
+        "criterion": "tk.texture.rgba8.recovery"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.timer.once.failure",
+      "profile": "windows-gpu-tk86-cp312-development",
+      "destination": {
+        "feature": "tk.timer.once",
+        "profile": "windows-gpu-tk86-cp312-development",
+        "criterion": "tk.timer.once.failure"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.timer.once.mutation",
+      "profile": "windows-gpu-tk86-cp312-development",
+      "destination": {
+        "feature": "tk.timer.once",
+        "profile": "windows-gpu-tk86-cp312-development",
+        "criterion": "tk.timer.once.mutation"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.timer.once.ordinary",
+      "profile": "windows-gpu-tk86-cp312-development",
+      "destination": {
+        "feature": "tk.timer.once",
+        "profile": "windows-gpu-tk86-cp312-development",
+        "criterion": "tk.timer.once.ordinary"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.timer.once.recovery",
+      "profile": "windows-gpu-tk86-cp312-development",
+      "destination": {
+        "feature": "tk.timer.once",
+        "profile": "windows-gpu-tk86-cp312-development",
+        "criterion": "tk.timer.once.recovery"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.timer.once.failure",
+      "profile": "wsl-software-tk90-cp31213-development",
+      "destination": {
+        "feature": "tk.timer.once",
+        "profile": "wsl-software-tk90-cp31213-development",
+        "criterion": "tk.timer.once.failure"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.timer.once.mutation",
+      "profile": "wsl-software-tk90-cp31213-development",
+      "destination": {
+        "feature": "tk.timer.once",
+        "profile": "wsl-software-tk90-cp31213-development",
+        "criterion": "tk.timer.once.mutation"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.timer.once.ordinary",
+      "profile": "wsl-software-tk90-cp31213-development",
+      "destination": {
+        "feature": "tk.timer.once",
+        "profile": "wsl-software-tk90-cp31213-development",
+        "criterion": "tk.timer.once.ordinary"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.timer.once.recovery",
+      "profile": "wsl-software-tk90-cp31213-development",
+      "destination": {
+        "feature": "tk.timer.once",
+        "profile": "wsl-software-tk90-cp31213-development",
+        "criterion": "tk.timer.once.recovery"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.wrappers.raster.failure",
+      "profile": "windows-gpu-tk86-cp312-development",
+      "destination": {
+        "feature": "tk.wrappers.raster",
+        "profile": "windows-gpu-tk86-cp312-development",
+        "criterion": "tk.wrappers.raster.failure"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.wrappers.raster.mutation",
+      "profile": "windows-gpu-tk86-cp312-development",
+      "destination": {
+        "feature": "tk.wrappers.raster",
+        "profile": "windows-gpu-tk86-cp312-development",
+        "criterion": "tk.wrappers.raster.mutation"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.wrappers.raster.ordinary",
+      "profile": "windows-gpu-tk86-cp312-development",
+      "destination": {
+        "feature": "tk.wrappers.raster",
+        "profile": "windows-gpu-tk86-cp312-development",
+        "criterion": "tk.wrappers.raster.ordinary"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.wrappers.raster.recovery",
+      "profile": "windows-gpu-tk86-cp312-development",
+      "destination": {
+        "feature": "tk.wrappers.raster",
+        "profile": "windows-gpu-tk86-cp312-development",
+        "criterion": "tk.wrappers.raster.recovery"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.wrappers.raster.failure",
+      "profile": "wsl-software-tk90-cp31213-development",
+      "destination": {
+        "feature": "tk.wrappers.raster",
+        "profile": "wsl-software-tk90-cp31213-development",
+        "criterion": "tk.wrappers.raster.failure"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.wrappers.raster.mutation",
+      "profile": "wsl-software-tk90-cp31213-development",
+      "destination": {
+        "feature": "tk.wrappers.raster",
+        "profile": "wsl-software-tk90-cp31213-development",
+        "criterion": "tk.wrappers.raster.mutation"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.wrappers.raster.ordinary",
+      "profile": "wsl-software-tk90-cp31213-development",
+      "destination": {
+        "feature": "tk.wrappers.raster",
+        "profile": "wsl-software-tk90-cp31213-development",
+        "criterion": "tk.wrappers.raster.ordinary"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.wrappers.raster.recovery",
+      "profile": "wsl-software-tk90-cp31213-development",
+      "destination": {
+        "feature": "tk.wrappers.raster",
+        "profile": "wsl-software-tk90-cp31213-development",
+        "criterion": "tk.wrappers.raster.recovery"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "resource.upload-recovery"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.wrappers.submission.failure",
+      "profile": "windows-gpu-tk86-cp312-development",
+      "destination": {
+        "feature": "tk.wrappers.submission",
+        "profile": "windows-gpu-tk86-cp312-development",
+        "criterion": "tk.wrappers.submission.failure"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "submission.gloo.immediate",
+          "submission.gloo.delayed"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.wrappers.submission.mutation",
+      "profile": "windows-gpu-tk86-cp312-development",
+      "destination": {
+        "feature": "tk.wrappers.submission",
+        "profile": "windows-gpu-tk86-cp312-development",
+        "criterion": "tk.wrappers.submission.mutation"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "ordinary.state"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.wrappers.submission.ordinary",
+      "profile": "windows-gpu-tk86-cp312-development",
+      "destination": {
+        "feature": "tk.wrappers.submission",
+        "profile": "windows-gpu-tk86-cp312-development",
+        "criterion": "tk.wrappers.submission.ordinary"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "ordinary.state"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.wrappers.submission.recovery",
+      "profile": "windows-gpu-tk86-cp312-development",
+      "destination": {
+        "feature": "tk.wrappers.submission",
+        "profile": "windows-gpu-tk86-cp312-development",
+        "criterion": "tk.wrappers.submission.recovery"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "submission.gloo.immediate",
+          "submission.gloo.delayed"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.wrappers.submission.failure",
+      "profile": "wsl-software-tk90-cp31213-development",
+      "destination": {
+        "feature": "tk.wrappers.submission",
+        "profile": "wsl-software-tk90-cp31213-development",
+        "criterion": "tk.wrappers.submission.failure"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "submission.gloo.immediate",
+          "submission.gloo.delayed"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.wrappers.submission.mutation",
+      "profile": "wsl-software-tk90-cp31213-development",
+      "destination": {
+        "feature": "tk.wrappers.submission",
+        "profile": "wsl-software-tk90-cp31213-development",
+        "criterion": "tk.wrappers.submission.mutation"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "ordinary.state"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.wrappers.submission.ordinary",
+      "profile": "wsl-software-tk90-cp31213-development",
+      "destination": {
+        "feature": "tk.wrappers.submission",
+        "profile": "wsl-software-tk90-cp31213-development",
+        "criterion": "tk.wrappers.submission.ordinary"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "ordinary.state"
+        ]
+      }
+    },
+    {
+      "criterion": "tk.wrappers.submission.recovery",
+      "profile": "wsl-software-tk90-cp31213-development",
+      "destination": {
+        "feature": "tk.wrappers.submission",
+        "profile": "wsl-software-tk90-cp31213-development",
+        "criterion": "tk.wrappers.submission.recovery"
+      },
+      "workflow": "tk-state-resource-failures",
+      "functional_result": {
+        "schema": 1,
+        "contract": "tk-state-resource-1",
+        "branch_ids": [
+          "submission.gloo.immediate",
+          "submission.gloo.delayed"
+        ]
+      }
+    }
+  ]
+}

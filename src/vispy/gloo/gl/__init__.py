@@ -4,9 +4,10 @@
 
 """VisPy's GL-named compatibility interface, executed by Dawn.
 
-Constants and admitted capability queries remain available for existing VisPy
-callers. Drawing uses gloo's ordered GLIR stream; arbitrary immediate OpenGL
-calls are not translated and fail explicitly. No OpenGL loader is imported.
+Constants, admitted capability queries and selected immediate state operations
+remain available for existing VisPy callers. Drawing uses gloo's ordered GLIR
+stream; arbitrary OpenGL object/draw calls fail explicitly. No OpenGL loader is
+imported.
 """
 
 # NOTE: modules in this package that start with one underscore are

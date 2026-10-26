@@ -91,6 +91,15 @@ inline LineOutputLayoutSummary validate_line_output_layout(
         const auto& varying = field.varying;
         if (varying.name.empty() || !varying.vertex_declared || varying.array_size < 0)
             throw std::invalid_argument("line consumer: invalid original varying metadata");
+        if (!varying.array_dimensions.empty()) {
+            uint64_t leaves = 1;
+            for (uint32_t dimension : varying.array_dimensions) {
+                if (!dimension) throw std::invalid_argument("line consumer: zero varying array dimension");
+                leaves = multiply(leaves, dimension, "line consumer: varying array shape overflow");
+            }
+            if (leaves != static_cast<uint32_t>(varying.array_size))
+                throw std::invalid_argument("line consumer: varying array shape differs from leaf count");
+        }
         for (size_t previous = 0; previous < i; ++previous)
             if (fields[previous].varying.name == varying.name)
                 throw std::invalid_argument("line consumer: duplicate original varying name");

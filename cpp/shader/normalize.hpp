@@ -19,6 +19,9 @@ struct NormUniform {
     uint32_t matrix_stride = 0;
     uint32_t array_stride = 0;
     bool row_major = false;
+    // Ordered GLSL shape; array_size is the flattened leaf count and
+    // array_stride is the innermost std140 leaf stride.
+    std::vector<uint32_t> array_dimensions;
 };
 
 enum class VertexIdentityPolicy : uint32_t { Native, Affine, Indexed, BatchAffine, BatchIndexed };
@@ -52,6 +55,8 @@ struct NormalizeOptions {
     // Internal endpoint evaluator body: typed private globals, original GL
     // clip coordinates and identities; compute entry is generated separately.
     bool line_evaluator = false;
+    // Reverse normalized clip Z without changing original clip-plane inclusion.
+    bool reverse_depth = false;
 };
 
 struct NormSampler {
@@ -66,13 +71,36 @@ struct NormSampler {
     // Sampled texel scalar, independent of filtering and resource liveness.
     // Integer sampled words never use float textures or float carriers.
     ShaderScalarType sample_scalar = ShaderScalarType::Float;
+    std::vector<uint32_t> array_dimensions;
+};
+
+struct AttributeBindingView {
+    std::string name, type;
+    uint32_t word_offset = 0, record_words = 0;
 };
 
 struct NormAttribute {
     std::string name;
     std::string type;
     uint32_t location = 0;
+    // Normalization retains logical declarations. Only compiled active inputs
+    // expand into physical scalar/vector fields with deepest-first bindings.
+    std::vector<uint32_t> array_dimensions;
+    std::vector<AttributeBindingView> binding_views;
 };
+
+struct AttributeLayout {
+    std::string name, type;
+    ShaderValueType value_type;
+    std::vector<uint32_t> dimensions;
+    uint32_t location = 0, elements = 1, locations = 1, record_words = 1;
+};
+
+// Shape validation does not expand arrays; expansion follows compiler liveness
+// and span validation. Outputs remain unchanged on failure.
+bool attribute_layout(const NormAttribute& declaration, AttributeLayout& layout, std::string& error);
+NormAttribute attribute_location(const AttributeLayout& layout, uint32_t index);
+size_t attribute_storage_bytes(const NormAttribute& attribute);
 
 struct NormVarying {
     std::string name, type, interpolation;
@@ -82,7 +110,12 @@ struct NormVarying {
     int source_line = 0;
     bool centroid = false, sample = false;
     bool vertex_declared = false, fragment_declared = false;
+    // Logical stage shape. Generated line storage remains a flat leaf array.
+    std::vector<uint32_t> array_dimensions;
 };
+
+std::string varying_array_suffix(const NormVarying& varying);
+std::string varying_element_suffix(const NormVarying& varying, const std::string& flat_index);
 
 struct NormalizedShader {
     std::string vertex;
@@ -116,3 +149,8 @@ NormalizedShader normalize_program(const std::string& vertex, const std::string&
 bool pack_uniform_value(const NormUniform& uniform, const void* source, size_t source_bytes,
                         void* destination, size_t destination_bytes,
                         std::string* error = nullptr);
+
+// Resolve a fully or partially indexed name to its contiguous std140 subview.
+// Reject malformed, out-of-range or excess indices without modifying the result.
+bool uniform_indexed_view(const NormUniform& uniform, const std::string& name,
+                          NormUniform& result, std::string* error = nullptr);

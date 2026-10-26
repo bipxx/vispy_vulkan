@@ -143,8 +143,22 @@ void stage_and_type_controls() {
         require(rejected.error.find("stage sampler types differ") != std::string::npos,
                 "uniform scalar mismatches across stages are contextual normalization failures");
     }
-    auto arrays = normalize_program(vertex, "uniform usampler2D words[2];void main(){gl_FragColor=vec4(1);}");
-    require(arrays.error.find("sampler arrays") != std::string::npos, "unsupported typed sampler arrays retain explicit refusal");
+    for (const auto& type : {std::string("isampler2D"), std::string("usampler2D")}) {
+        const auto arrays = vispy::shader::build_portable_shader(vertex,
+            "uniform " + type + " words[2];void main(){uint b=(uint(texelFetch(words[0],ivec2(0),0).r)&255u)"
+            "+(uint(texelFetch(words[1],ivec2(0),0).r)&255u);gl_FragColor=vec4(float(b)/510.0);}",
+            {}, "typed-literal-array-controls");
+        require(arrays->ok, arrays->error);
+        require(arrays->samplers.size()==2 && arrays->samplers[0].name=="words[0]" &&
+                arrays->samplers[1].name=="words[1]", "both literal typed array leaves remain live reflected resources");
+        for (const auto& sampler : arrays->samplers)
+            require(sampler.sample_scalar==(type=="usampler2D" ? ShaderScalarType::Uint : ShaderScalarType::Sint) &&
+                    sampler.texture_stage_mask==2, "typed array leaves preserve their integer scalar domain and fragment liveness");
+    }
+    const auto dynamic = normalize_program(vertex,
+        "uniform usampler2D words[2];uniform int index;void main(){gl_FragColor=vec4(texelFetch(words[index],ivec2(0),0));}");
+    require(dynamic.error.find("literal nonnegative")!=std::string::npos,
+        "dynamic typed sampler indexing remains an explicit separate refusal");
     auto output = normalize_program(vertex,
         "uniform isampler2D words;void bad(out isampler2D image){}void main(){bad(words);gl_FragColor=vec4(1);}");
     require(output.error.find("named scalar input") != std::string::npos, "typed opaque output parameters are rejected before compilation");

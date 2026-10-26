@@ -3,6 +3,7 @@
 #include "shader/glslang_spv.hpp"
 #include "shader/normalize.hpp"
 #include "shader/integer_sampling.hpp"
+#include <SPIRV/spirv.hpp11>
 
 #include <algorithm>
 #include <chrono>
@@ -51,6 +52,8 @@ inline std::string portable_shader_identity(const std::string& vertex, const std
                                            SpirvDerivativeMode derivative_mode = SpirvDerivativeMode::Strict) {
     std::string identity = "vispy-portable-shader-v1;opaque=merge-return,inline-opaque,dead-functions;resources=linked-live-all-block-separate-buffer-stage-reflection;sample-scalars=float-sint-uint-v1;inputs=live-vs-compact;";
     identity += options.base_level_sampling ? "base=1;" : "base=0;";
+    identity += options.reverse_depth ? "depth=reverse-clip-v1;" : "depth=forward-clip-v1;";
+    identity += "fragment-depth=window-coordinate-v1;";
     identity += options.point_sprites ? "points=1;point-id=std430-uint32x2-instance-major;" : "points=0;";
     identity += "vertex-id=" + std::to_string(static_cast<uint32_t>(options.vertex_identity)) + ";std430-uint32;";
     if (batch_identity_policy(options.vertex_identity)) {
@@ -105,6 +108,8 @@ struct PortableShaderArtifact {
     SpirvDerivativeMode derivative_mode = SpirvDerivativeMode::Strict;
     bool point_sprites = false;
     bool has_fragment_depth = false;
+    bool early_fragment_tests = false;
+    bool window_depth_output() const { return has_fragment_depth && !early_fragment_tests; }
     bool has_flat_varyings = false;
     bool ok = false;
     // cache_key is a short display label, never the identity used for lookup.
@@ -153,11 +158,15 @@ struct PortableShaderArtifact {
                  attributes.capacity() * sizeof(NormAttribute);
         bytes += varyings.capacity() * sizeof(NormVarying);
         for (const auto& uniform : uniforms)
-            bytes += uniform.name.capacity() + uniform.type.capacity() + uniform.storage_type.capacity() + 3;
-        for (const auto& sampler : samplers) bytes += sampler.name.capacity() + sampler.dim.capacity() + 2;
-        for (const auto& attribute : attributes) bytes += attribute.name.capacity() + attribute.type.capacity() + 2;
+            bytes += uniform.name.capacity() + uniform.type.capacity() + uniform.storage_type.capacity() + 3 +
+                     uniform.array_dimensions.capacity() * sizeof(uint32_t);
+        for (const auto& sampler : samplers)
+            bytes += sampler.name.capacity() + sampler.dim.capacity() + 2 +
+                     sampler.array_dimensions.capacity() * sizeof(uint32_t);
+        for (const auto& attribute : attributes) bytes += attribute_storage_bytes(attribute);
         for (const auto& varying : varyings)
-            bytes += varying.name.capacity() + varying.type.capacity() + varying.interpolation.capacity() + 3;
+            bytes += varying.name.capacity() + varying.type.capacity() + varying.interpolation.capacity() + 3 +
+                     varying.array_dimensions.capacity() * sizeof(uint32_t);
         return bytes;
     }
 };
@@ -220,6 +229,24 @@ inline std::shared_ptr<const PortableShaderArtifact> build_portable_shader(
         artifact->error = compiled.log.empty() ? artifact->vertex_log + artifact->fragment_log : std::move(compiled.log);
         artifact->mapped_line = shader_composer_line(artifact->fragment_log, artifact->frag_map);
         if (!artifact->mapped_line) artifact->mapped_line = shader_composer_line(artifact->vertex_log, artifact->vert_map);
+        // glslang identifies the offending token, but callers also need the
+        // original source line (including when both stages fail together).
+        auto context = [&](const char* stage, const std::string& log,
+                           const std::vector<int>& map, const std::string& source) {
+            const int line = shader_composer_line(log, map);
+            if (line <= 0) return;
+            size_t begin = 0;
+            for (int n=1; n<line; ++n) {
+                const size_t end = source.find('\n', begin);
+                if (end == std::string::npos) return;
+                begin = end + 1;
+            }
+            const size_t end = source.find('\n', begin);
+            artifact->error += "\n" + std::string(stage) + " source line=" + std::to_string(line) + ": " +
+                source.substr(begin, end == std::string::npos ? end : end - begin);
+        };
+        context("vertex", artifact->vertex_log, artifact->vert_map, artifact->source_vertex);
+        context("fragment", artifact->fragment_log, artifact->frag_map, artifact->source_fragment);
         return artifact;
     }
     // Cleanup only programs containing integer normalized samples. This lets
@@ -258,13 +285,27 @@ inline std::shared_ptr<const PortableShaderArtifact> build_portable_shader(
         if (found == artifact->integer_sample_uses.end()) artifact->integer_sample_uses.push_back(use);
         else found->stage_mask |= use.stage_mask;
     }
-    std::erase_if(artifact->attributes, [&](const NormAttribute& attribute) {
-        return !std::binary_search(compiled.vertex_input_locations.begin(),
-                                  compiled.vertex_input_locations.end(), attribute.location);
-    });
-    for (auto& attribute : artifact->attributes)
-        attribute.location = static_cast<uint32_t>(std::lower_bound(compiled.vertex_input_locations.begin(),
-            compiled.vertex_input_locations.end(), attribute.location) - compiled.vertex_input_locations.begin());
+    std::vector<NormAttribute> physical_attributes;
+    for (const auto& declaration : artifact->attributes) {
+        if (!std::binary_search(compiled.vertex_input_locations.begin(),
+                               compiled.vertex_input_locations.end(), declaration.location)) continue;
+        AttributeLayout layout;
+        if (!attribute_layout(declaration, layout, artifact->error)) return artifact;
+        if (layout.locations > compiled.vertex_input_locations.size()) {
+            artifact->error = "vertex attribute physical span exceeds compiled active locations"; return artifact;
+        }
+        for (uint32_t index=0; index<layout.locations; ++index) {
+            auto field = attribute_location(layout, index);
+            const auto found = std::lower_bound(compiled.vertex_input_locations.begin(),
+                compiled.vertex_input_locations.end(), field.location);
+            if (found == compiled.vertex_input_locations.end() || *found != field.location) {
+                artifact->error = "vertex attribute physical span differs from compiled active locations"; return artifact;
+            }
+            field.location = static_cast<uint32_t>(found - compiled.vertex_input_locations.begin());
+            physical_attributes.push_back(std::move(field));
+        }
+    }
+    artifact->attributes = std::move(physical_attributes);
     auto binding_stages = [&](uint32_t binding) {
         uint32_t stages = 0;
         for (const auto& usage : compiled.resource_usage) if (usage.binding == binding) stages |= usage.stage_mask;
@@ -294,6 +335,22 @@ inline std::shared_ptr<const PortableShaderArtifact> build_portable_shader(
                            ((!integer_cleanup || (artifact->uniform_stage_mask & 2)) ? reflect_uniform_layout(artifact->spv_frag, artifact->uniforms, artifact->uniform_bytes, artifact->error) : true);
     artifact->timings.reflect_ns += shader_host_ns() - stage_start;
     if (!reflected) return artifact;
+    // Inspect actual compiled modes/builtins, including preprocessor aliases
+    // and dead helper removal. Early tests use raster depth, not shader writes.
+    artifact->has_fragment_depth = false;
+    for (size_t at = 5; at < artifact->spv_frag.size();) {
+        const uint32_t words = artifact->spv_frag[at] >> 16;
+        const auto opcode = static_cast<spv::Op>(artifact->spv_frag[at] & 0xffffu);
+        if (!words || words > artifact->spv_frag.size() - at) break;
+        if (opcode == spv::Op::OpExecutionMode && words >= 3 &&
+                artifact->spv_frag[at + 2] == static_cast<uint32_t>(spv::ExecutionMode::EarlyFragmentTests))
+            artifact->early_fragment_tests = true;
+        if (opcode == spv::Op::OpDecorate && words >= 4 &&
+                artifact->spv_frag[at + 2] == static_cast<uint32_t>(spv::Decoration::BuiltIn) &&
+                artifact->spv_frag[at + 3] == static_cast<uint32_t>(spv::BuiltIn::FragDepth))
+            artifact->has_fragment_depth = true;
+        at += words;
+    }
     artifact->ok = true;
     return artifact;
 }

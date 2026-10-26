@@ -1,6 +1,8 @@
 // CPU compiler/layout contract; run independently of Dawn device creation.
 #include "shader/normalize.hpp"
 #include "shader/glslang_spv.hpp"
+#include "shader/integer_sampling.hpp"
+#include "vertex_input_span_contract.hpp"
 #include <glslang/Public/ResourceLimits.h>
 #include <glslang/Public/ShaderLang.h>
 #include <SPIRV/spirv.hpp11>
@@ -32,7 +34,7 @@ std::string read(const std::filesystem::path& file) {
     return std::string(std::istreambuf_iterator<char>(input), {});
 }
 
-void compile_and_reflect(NormalizedShader& normalized) {
+uint32_t compile_and_reflect(NormalizedShader& normalized) {
     require(normalized.error.empty(), normalized.error);
     require(static_cast<size_t>(std::count(normalized.vertex.begin(), normalized.vertex.end(), '\n')) == normalized.vertex_line_map.size(),
             "vertex source map length");
@@ -40,18 +42,40 @@ void compile_and_reflect(NormalizedShader& normalized) {
             "fragment source map length");
     auto compiled = compile_vulkan_glsl(normalized.vertex, normalized.fragment);
     require(compiled.ok, compiled.log + "\n" + normalized.fragment);
-#ifdef VISPY_TEST_TINT_READER
-    // Exercise the same pinned reader as native CreateShaderModule without
-    // constructing an instance, device or surface. SPIR-V validation alone
-    // does not catch reader transform crashes.
+    uint32_t integer_samples_lowered = 0;
     for (const auto* stage : {&compiled.vertex, &compiled.fragment}) {
-        auto ir = tint::spirv::reader::ReadIR(stage->words);
+        using namespace vispy::shader;
+        const uint32_t stage_mask = stage == &compiled.vertex ? 1u : 2u;
+        auto uses = integer_sample_bindings(stage->words, stage_mask);
+        require(uses.ok, uses.error);
+        std::vector<IntegerSamplePolicy> policies;
+        for (const auto& use : uses.bindings) {
+            // Explicit contract fixture: nearest, one-level, clamp-to-edge.
+            // Production captures the actual sampler state before performing
+            // this same specialization; GLSL alone does not supply that state.
+            IntegerSamplePolicy policy;
+            policy.texture_binding = use.texture_binding;
+            policy.sampler_binding = use.sampler_binding;
+            policy.scalar = use.scalar;
+            policies.push_back(policy);
+        }
+        auto lowered = lower_integer_nearest_2d(stage->words, policies);
+        require(lowered.ok, lowered.error);
+        integer_samples_lowered += lowered.samples_lowered;
+        auto finalized = finalize_sampled_stage(lowered.words, stage_mask);
+        require(finalized.ok, finalized.error);
+#ifdef VISPY_TEST_TINT_READER
+        // Feed the pinned reader the same post-specialization stage used by
+        // CreateShaderModule. Raw integer sampling SPIR-V is valid Vulkan but
+        // requires the existing production lowering before Tint accepts it.
+        auto ir = tint::spirv::reader::ReadIR(finalized.words);
         require(ir == tint::Success, ir == tint::Success ? "" : ir.Failure().reason);
-    }
 #endif
+    }
     std::string error;
     require(reflect_uniform_layout(compiled.vertex.words, normalized.uniforms, normalized.uniform_bytes, error), error);
     require(reflect_uniform_layout(compiled.fragment.words, normalized.uniforms, normalized.uniform_bytes, error), error);
+    return integer_samples_lowered;
 }
 
 float read_float(const std::vector<uint8_t>& buffer, size_t offset) {
@@ -97,6 +121,66 @@ void uniform_layouts() {
     auto vec3_scalar = normalize_program(vertex, "uniform vec3 u_three; uniform float u_scalar; void main(){ gl_FragColor=vec4(u_three,u_scalar); }");
     compile_and_reflect(vec3_scalar);
     require(vec3_scalar.uniforms[1].offset == 12, "std140 scalar may use vec3 tail");
+}
+
+void multidimensional_uniforms() {
+    for (const std::string type : {"float", "int", "bool", "vec3", "bvec2", "mat2", "mat2x3"}) {
+        const std::string expression = type == "bool" ? "float(grid[1][2])" :
+            type == "bvec2" ? "float(grid[1][2].x)" :
+            type.find("mat") == 0 ? "grid[1][2][0][1]" :
+            type == "vec3" ? "grid[1][2].x" : "float(grid[1][2])";
+        auto normalized = normalize_program(vertex, "uniform " + type + " grid[2][3];"
+            "void main(){gl_FragColor=vec4(" + expression + ");}");
+        compile_and_reflect(normalized);
+        const auto& uniform = normalized.uniforms.at(0);
+        require(uniform.array_dimensions == std::vector<uint32_t>({2, 3}) && uniform.array_size == 6,
+            "ordered shape and flattened count survive reflection");
+        NormUniform row, leaf;
+        std::string error;
+        require(uniform_indexed_view(uniform, "grid[1]", row, &error), error);
+        require(row.array_dimensions == std::vector<uint32_t>({3}) && row.array_size == 3 &&
+            row.offset == uniform.offset + 3 * uniform.array_stride, "row subview layout");
+        require(uniform_indexed_view(uniform, "grid[1][2]", leaf, &error), error);
+        require(leaf.array_dimensions.empty() && !leaf.array_size && !leaf.array_stride &&
+            leaf.offset == uniform.offset + 5 * uniform.array_stride, "leaf subview layout");
+        std::vector<uint8_t> bytes(normalized.uniform_bytes, 0xCD);
+        std::vector<float> values(6 * uniform.component_count, 0.25f);
+        require(pack_uniform_value(uniform, values.data(), values.size() * 4,
+            bytes.data(), bytes.size(), &error), error);
+        auto before = bytes;
+        require(!pack_uniform_value(row, values.data(), values.size() * 4,
+            bytes.data(), bytes.size(), &error) && bytes == before, "wrong subarray size is atomic");
+        for (const std::string name : {"grid[2]", "grid[1][3]", "grid[-1]", "grid[]", "grid[1]x",
+                "grid[1][2][0]", "grid[4294967296]", "other[1]"}) {
+            NormUniform rejected; rejected.name = "unchanged";
+            require(!uniform_indexed_view(uniform, name, rejected, &error) && rejected.name == "unchanged",
+                "invalid index rejected before mutation: " + name);
+        }
+        auto mismatched = normalized.uniforms;
+        mismatched[0].array_dimensions = {3, 2};
+        auto compiled = compile_vulkan_glsl(normalized.vertex, normalized.fragment);
+        require(compiled.ok, compiled.log);
+        uint32_t block_bytes = normalized.uniform_bytes;
+        require(!reflect_uniform_layout(compiled.fragment.words, mismatched, block_bytes, error),
+            "reflection rejects equal-product different-shape metadata");
+    }
+    auto mismatch = normalize_program("uniform float grid[2][3];" + vertex,
+        "uniform float grid[3][2];void main(){gl_FragColor=vec4(grid[0][0]);}");
+    require(mismatch.error.find("array shapes differ") != std::string::npos, "cross-stage shape mismatch");
+    for (const std::string declaration : {"uniform float grid[2147483647][2];",
+            "uniform mat4 grid[67108864];", "uniform float grid[0][2];"}) {
+        auto overflow = normalize_program(vertex, declaration + "void main(){gl_FragColor=vec4(1);}");
+        require(!overflow.error.empty(), "array overflow/invalid dimension rejected");
+    }
+    auto nested_bool = normalize_program(vertex,
+        "uniform bool flags[2][3];void main(){gl_FragColor=vec4(float(flags[int(flags[0][1])][2]));}");
+    compile_and_reflect(nested_bool);
+    auto cube = normalize_program(vertex,
+        "uniform float grid[2][3][4];void main(){gl_FragColor=vec4(grid[1][2][3]);}");
+    compile_and_reflect(cube);
+    NormUniform leaf;
+    require(uniform_indexed_view(cube.uniforms[0], "grid[1][2][3]", leaf) && leaf.offset == 23 * 16,
+        "three-dimensional row-major subview offset");
 }
 
 void boolean_lowering() {
@@ -336,6 +420,73 @@ void one_dimensional_sampling(){
         "single-level legacy1D explicit LOD retains an actual sampling instruction");
 }
 
+void multidimensional_varyings() {
+    for (const auto& type : {std::string("float"), std::string("vec3"), std::string("mat2x3"), std::string("int"), std::string("uvec2")}) {
+        const bool integer = type == "int" || type == "uvec2";
+        const std::string qualifier = integer ? "flat " : "";
+        const auto declaration = qualifier + "varying " + type + " values[2][3];";
+        const auto value = type + "(1)";
+        auto result = normalize_program("attribute vec2 position;" + declaration +
+            "void main(){for(int i=0;i<2;++i)for(int j=0;j<3;++j)values[i][j]=" + value +
+            ";gl_Position=vec4(position,0,1);}", declaration +
+            "void main(){gl_FragColor=vec4(float(values[1][2]" +
+            (type == "vec3" || type == "uvec2" ? ".x" : type == "mat2x3" ? "[1][2]" : "") + "));}");
+        compile_and_reflect(result);
+        require(result.varyings.size() == 1 && result.varyings[0].array_dimensions == std::vector<uint32_t>({2,3}) &&
+            result.varyings[0].array_size == 6, "ordered varying shape survives normalization");
+        require(result.vertex.find("values[2][3]") != std::string::npos &&
+            result.fragment.find("values[2][3]") != std::string::npos, "both interfaces retain logical dimensions");
+    }
+    auto mismatch = normalize_program("varying vec2 values[2][3];void main(){gl_Position=vec4(0);}",
+        "varying vec2 values[3][2];void main(){gl_FragColor=vec4(1);}");
+    require(mismatch.error.find("stage interfaces differ") != std::string::npos,
+        "equal-product stage shapes cannot alias");
+}
+
+void multidimensional_sampler_arrays() {
+    for (const std::string type : {"sampler1D", "sampler2D", "sampler3D", "samplerCube", "isampler2D", "usampler2D"}) {
+        const std::string coord = type == "sampler1D" ? ".5" :
+            type == "sampler3D" || type == "samplerCube" ? "vec3(.5)" : "vec2(.5)";
+        std::string reads;
+        for (int row = 0; row < 2; ++row) for (int col = 0; col < 3; ++col) {
+            if (!reads.empty()) reads += '+';
+            reads += "vec4(texture(images[" + std::to_string(row) + "][" + std::to_string(col) + "]," + coord + "))";
+        }
+        auto normalized = normalize_program(vertex, "uniform " + type + " images[2][3];"
+            "void main(){gl_FragColor=" + reads + ";}");
+        compile_and_reflect(normalized);
+        require(normalized.samplers.size() == 6, "all nested sampler leaves retain independent resources");
+        for (size_t i = 0; i < normalized.samplers.size(); ++i) {
+            auto& sampler = normalized.samplers[i];
+            require(sampler.name == "images[" + std::to_string(i / 3) + "][" + std::to_string(i % 3) + "]" &&
+                sampler.array_dimensions == std::vector<uint32_t>({2, 3}), "ordered sampler shape/public names");
+            require(sampler.texture_binding == 1 + i * 2 && sampler.sampler_binding == 2 + i * 2,
+                "sampler array has one static texture/sampler pair per leaf");
+            sampler.texture_stage_mask = sampler.sampler_stage_mask = 2;
+        }
+        auto compiled = compile_vulkan_glsl(normalized.vertex, normalized.fragment);
+        std::string error;
+        require(compiled.ok && reflect_sampler_types(compiled.fragment.words, normalized.samplers, 2, error),
+            "typed nested sampler reflection: " + error);
+    }
+    auto helper = normalize_program(vertex,
+        "uniform sampler2D images[2][3];vec4 fetch(sampler2D image,vec2 uv){return texture(image,uv);}"
+        "void main(){gl_FragColor=fetch((images[1][0x2u]),vec2(.5));}");
+    compile_and_reflect(helper);
+    auto cube = normalize_program(vertex,
+        "uniform sampler2D images[2][2][2];void main(){gl_FragColor=texture(images[1][0][1],vec2(.5));}");
+    compile_and_reflect(cube);
+    require(cube.samplers.size() == 8, "three-dimensional sampler declarations retain every leaf");
+    auto mismatch = normalize_program("uniform sampler2D images[3][2];void main(){gl_Position=vec4(0);}",
+        "uniform sampler2D images[2][3];void main(){gl_FragColor=texture(images[1][2],vec2(.5));}");
+    require(mismatch.error.find("array shapes differ") != std::string::npos, "equal products cannot alias sampler shapes");
+    for (const std::string index : {"[2][0]", "[1][3]", "[1]", "[1][2][0]", "[1][1.0]", "[1][which]"}) {
+        auto rejected = normalize_program(vertex, "uniform int which;uniform sampler2D images[2][3];"
+            "void main(){gl_FragColor=texture(images" + index + ",vec2(.5));}");
+        require(!rejected.error.empty(), "partial/out-of-bounds/nonliteral sampler index must fail explicitly");
+    }
+}
+
 void literal_sampler_arrays() {
     const std::string fragment = "uniform sampler2D images[2]; void main(){gl_FragColor="
         "texture2D(images[0],vec2(.25))+texture2D(images[1],vec2(.75));}";
@@ -382,7 +533,7 @@ void literal_sampler_arrays() {
     compile_and_reflect(both);
     require(both.samplers.size() == 2, "same array declared in both stages shares resource pairs");
     auto mismatch = normalize_program("uniform sampler2D images[3];void main(){gl_Position=vec4(0);}", fragment);
-    require(mismatch.error.find("stage sampler array lengths differ") != std::string::npos,
+    require(mismatch.error.find("stage sampler array shapes differ") != std::string::npos,
         "stage array shape disagreement cannot alias an admitted resource graph");
     auto dynamic = normalize_program(vertex,
         "uniform sampler2D images[2];uniform int index;void main(){gl_FragColor=texture2D(images[index],vec2(.5));}");
@@ -392,8 +543,10 @@ void literal_sampler_arrays() {
     require(outside.error.find("declared length") != std::string::npos, "out-of-bounds sampler index refuses before code generation");
     auto typed = normalize_program(vertex,
         "uniform usampler2D images[2];void main(){gl_FragColor=vec4(texture(images[0],vec2(.5)));}");
-    require(typed.error.find("sampler arrays") != std::string::npos,
-        "typed sampler arrays are not silently admitted by the bounded floating-2D packet");
+    require(compile_and_reflect(typed) == 1,
+        "typed array sample reaches production integer specialization before the reader");
+    require(typed.samplers[0].sample_scalar == ShaderScalarType::Uint,
+        "typed sampler arrays preserve integer sampled words");
 }
 
 void explicit_single_level_sampling() {
@@ -606,6 +759,24 @@ void scientific_predicates() {
         position += instruction >> 16;
     }
 }
+void depth_range_lowering() {
+    NormalizeOptions reverse;
+    reverse.reverse_depth = true;
+    auto normalized = normalize_program(vertex, "void main(){gl_FragColor=vec4(1);}", reverse);
+    compile_and_reflect(normalized);
+    require(normalized.vertex.find("gl_Position.w - gl_Position.z") != std::string::npos,
+        "reverse clip conversion runs in the final vertex wrapper");
+    auto depth = normalize_program(vertex,
+        "#define COORD gl_FragCoord\n#define DEPTH gl_FragDepth\n"
+        "void main(){DEPTH=.1;gl_FragColor=vec4(COORD.z);}");
+    compile_and_reflect(depth);
+    require(depth.fragment.find("mix(vispy_fragment_depth_range.x") != std::string::npos,
+        "fragment-coordinate alias retains the logical depth range");
+    auto invalid = normalize_program(vertex,
+        "uniform vec2 vispy_fragment_depth_range;void main(){gl_FragColor=gl_FragCoord;}");
+    require(invalid.error.find("reserved") != std::string::npos, "private depth control cannot alias a user uniform");
+}
+
 }  // namespace
 
 int main(int argc, char** argv) {
@@ -615,18 +786,21 @@ int main(int argc, char** argv) {
             boolean_scope_original_baseline(argv[2]);
             return 0;
         }
+        vertex_input_span_contract();
         uniform_layouts();
+        multidimensional_uniforms();
         boolean_lowering();
         boolean_scope_lowering();
         coordinate_entry();
         one_dimensional_sampling();
-        sampling_policy(); literal_sampler_arrays(); explicit_single_level_sampling();
+        multidimensional_varyings(); sampling_policy(); literal_sampler_arrays(); multidimensional_sampler_arrays(); explicit_single_level_sampling();
         composer_diagnostics();
         composed_parameter_qualifiers();
         composed_sampler_parameters();
         opaque_helper_lowering();
         explicit_fragment_output();
         scientific_predicates();
+        depth_range_lowering();
         if (argc > 1) {
             const std::filesystem::path corpus(argv[1]);
             for (const auto& file : std::filesystem::directory_iterator(corpus)) {

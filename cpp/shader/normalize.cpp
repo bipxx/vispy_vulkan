@@ -2,13 +2,39 @@
 
 #include <algorithm>
 #include <cctype>
+#include <charconv>
 #include <cstring>
 #include <limits>
 #include <sstream>
+#include <stdexcept>
 #include <unordered_map>
 #include <unordered_set>
 
 namespace {
+
+const std::string fragment_coord_expression =
+    "vec4(gl_FragCoord.xy, mix(vispy_fragment_depth_range.x, vispy_fragment_depth_range.y, gl_FragCoord.z), gl_FragCoord.w)";
+
+std::string fragment_coord_define(std::string text) {
+    auto identifier = [](char value) { return std::isalnum(static_cast<unsigned char>(value)) || value == '_'; };
+    size_t body = text.find('#');
+    if (body == std::string::npos) return text;
+    ++body;
+    while (body < text.size() && std::isspace(static_cast<unsigned char>(text[body]))) ++body;
+    if (text.compare(body, 6, "define") || body + 6 >= text.size() || identifier(text[body + 6])) return text;
+    body += 6;
+    while (body < text.size() && std::isspace(static_cast<unsigned char>(text[body]))) ++body;
+    while (body < text.size() && identifier(text[body])) ++body;
+    const std::string name = "gl_FragCoord";
+    for (size_t at = body; (at = text.find(name, at)) != std::string::npos;) {
+        if ((at && identifier(text[at - 1])) || (at + name.size() < text.size() && identifier(text[at + name.size()]))) {
+            at += name.size(); continue;
+        }
+        text.replace(at, name.size(), fragment_coord_expression);
+        at += fragment_coord_expression.size();
+    }
+    return text;
+}
 
 struct Tok {
     std::string text;
@@ -101,7 +127,7 @@ bool is_type(const std::string& text) {
     static const char* types[] = {
         "float", "int", "uint", "bool", "vec2", "vec3", "vec4", "ivec2", "ivec3", "ivec4",
         "uvec2", "uvec3", "uvec4", "bvec2", "bvec3", "bvec4", "mat2", "mat3", "mat4",
-        "mat2x3", "mat2x4", "mat3x2", "mat3x4", "mat4x2", "mat4x3",
+        "mat2x2", "mat2x3", "mat2x4", "mat3x2", "mat3x3", "mat3x4", "mat4x2", "mat4x3", "mat4x4",
         "sampler1D", "sampler2D", "sampler3D", "samplerCube", "usampler2D", "isampler2D", "void"};
     for (const char* type : types) if (text == type) return true;
     return false;
@@ -145,6 +171,7 @@ struct Decl {
     std::string interpolation;
     bool centroid = false, sample = false;
     int array_size = 0;
+    std::vector<uint32_t> array_dimensions;
     int line = 1;
     size_t begin = 0;
     size_t end = 0;
@@ -210,7 +237,7 @@ std::vector<Decl> find_decls(const std::vector<Tok>& tokens, std::string& error,
             decl.name = tokens[j++].text;
             decl.interpolation = interpolation;
             decl.centroid = centroid; decl.sample = sample;
-            if (j < tokens.size() && tokens[j].text == "[") {
+            while (j < tokens.size() && tokens[j].text == "[") {
                 if (j + 2 >= tokens.size() || tokens[j + 2].text != "]" ||
                     tokens[j + 1].text.empty() ||
                     !std::all_of(tokens[j + 1].text.begin(), tokens[j + 1].text.end(),
@@ -219,19 +246,18 @@ std::vector<Decl> find_decls(const std::vector<Tok>& tokens, std::string& error,
                             decl.name + ": array length must be a positive literal";
                     return {};
                 }
-                try { decl.array_size = std::stoi(tokens[j + 1].text); }
-                catch (...) { decl.array_size = 0; }
-                if (decl.array_size <= 0) {
+                int dimension = 0;
+                try { dimension = std::stoi(tokens[j + 1].text); }
+                catch (...) {}
+                if (dimension <= 0 || (decl.array_size > 0 &&
+                        decl.array_size > std::numeric_limits<int>::max() / dimension)) {
                     error = stage + " line=" + std::to_string(decl.line) + " uniform/interface " +
                             decl.name + ": invalid array length";
                     return {};
                 }
+                decl.array_dimensions.push_back(static_cast<uint32_t>(dimension));
+                decl.array_size = (decl.array_size ? decl.array_size : 1) * dimension;
                 j += 3;
-                if (j < tokens.size() && tokens[j].text == "[") {
-                    error = stage + " line=" + std::to_string(decl.line) + " interface " + decl.name +
-                            ": multidimensional arrays are unsupported";
-                    return {};
-                }
             }
             declaration.push_back(decl);
             if (j >= tokens.size() || tokens[j].text != ",") break;
@@ -247,7 +273,7 @@ std::vector<Decl> find_decls(const std::vector<Tok>& tokens, std::string& error,
     return decls;
 }
 
-void place_uniform(NormUniform& uni, uint32_t& cursor) {
+bool place_uniform(NormUniform& uni, uint32_t& cursor) {
     uni.storage_type = storage_type(uni.type);
     uint32_t alignment = 4;
     uint32_t element_size = 4;
@@ -266,12 +292,18 @@ void place_uniform(NormUniform& uni, uint32_t& cursor) {
     if (uni.array_size > 0) {
         alignment = std::max(16u, alignment);
         uni.array_stride = align_up(element_size, 16);
+        if (static_cast<uint32_t>(uni.array_size) >
+                std::numeric_limits<uint32_t>::max() / uni.array_stride) return false;
         element_size = uni.array_stride * static_cast<uint32_t>(uni.array_size);
     }
-    cursor = align_up(cursor, alignment);
+    const uint64_t start = (uint64_t(cursor) + alignment - 1) / alignment * alignment;
+    // Leave enough headroom for the final block alignment as well.
+    if (start + element_size > std::numeric_limits<uint32_t>::max() - 15u) return false;
+    cursor = static_cast<uint32_t>(start);
     uni.offset = cursor;
     uni.size = element_size;
     cursor += element_size;
+    return true;
 }
 
 std::string bool_storage_name(const NormUniform& uniform) {
@@ -358,15 +390,13 @@ bool lower_sampler_functions(const std::vector<Tok>& tokens, const std::vector<N
                              std::unordered_map<size_t, SamplerReference>& uses,
                              const std::vector<bool>& array_references, std::string& error) {
     std::unordered_map<std::string, SamplerReference> globals;
-    std::unordered_map<std::string, uint32_t> array_sizes;
+    std::unordered_map<std::string, std::vector<uint32_t>> array_shapes;
     for (const auto& sampler : samplers) {
         auto type = sampler_type(sampler);
         globals[sampler.name] = {type, sampler_texture_name(sampler), sampler_sampler_name(sampler)};
         const auto bracket = sampler.name.find('[');
         if (bracket != std::string::npos) {
-            const auto index = static_cast<uint32_t>(std::stoul(sampler.name.substr(bracket + 1)));
-            auto& count = array_sizes[sampler.name.substr(0, bracket)];
-            count = std::max(count, index + 1);
+            array_shapes[sampler.name.substr(0, bracket)] = sampler.array_dimensions;
         }
     }
     std::vector<SamplerFunction> functions;
@@ -431,28 +461,32 @@ bool lower_sampler_functions(const std::vector<Tok>& tokens, const std::vector<N
     auto resolve_at = [&](size_t position, size_t first, size_t& end) -> const SamplerReference* {
         end = first + 1;
         if (auto scalar = resolve(position, tokens[first].text)) return scalar;
-        auto array = array_sizes.find(tokens[first].text);
-        if (array == array_sizes.end() || !array_references[first]) return nullptr;
+        auto array = array_shapes.find(tokens[first].text);
+        if (array == array_shapes.end() || !array_references[first]) return nullptr;
         const auto fail = [&](const std::string& reason) -> const SamplerReference* {
             error = "line=" + std::to_string(tokens[first].line) + " sampler array " + tokens[first].text + ": " + reason;
             return nullptr;
         };
-        if (first + 3 >= tokens.size() || tokens[first + 1].text != "[" || tokens[first + 3].text != "]")
-            return fail("a literal nonnegative element index is required; dynamic indexing remains unsupported");
-        uint64_t index = UINT64_MAX;
-        size_t consumed = 0;
-        const auto& literal = tokens[first + 2].text;
-        // GLSL integer literals include decimal, octal and hexadecimal forms,
-        // optionally with an unsigned suffix. Never reinterpret a leading-zero
-        // index as decimal or accept a numeric prefix of a float/expression.
-        try { index = std::stoull(literal, &consumed, 0); } catch (...) {}
-        if (!consumed || (consumed != literal.size() &&
-            !(consumed + 1 == literal.size() && (literal.back() == 'u' || literal.back() == 'U'))))
-            return fail("a literal nonnegative integer index is required; dynamic indexing remains unsupported");
-        if (index >= array->second) return fail("literal element index exceeds the declared length");
-        end = first + 4;
-        const auto key = tokens[first].text + '[' + std::to_string(index) + ']';
-        return &globals.at(key);
+        std::string key = tokens[first].text;
+        for (size_t dimension = 0; dimension < array->second.size(); ++dimension) {
+            if (end + 2 >= tokens.size() || tokens[end].text != "[" || tokens[end + 2].text != "]")
+                return fail("a literal nonnegative element index is required for every dimension; dynamic indexing remains unsupported");
+            uint64_t index = UINT64_MAX;
+            size_t consumed = 0;
+            const auto& literal = tokens[end + 1].text;
+            // Honor GLSL decimal/octal/hex integer spellings and unsigned suffixes.
+            try { index = std::stoull(literal, &consumed, 0); } catch (...) {}
+            if (!consumed || (consumed != literal.size() &&
+                !(consumed + 1 == literal.size() && (literal.back() == 'u' || literal.back() == 'U'))))
+                return fail("a literal nonnegative integer index is required; dynamic indexing remains unsupported");
+            if (index >= array->second[dimension]) return fail("literal element index exceeds the declared length");
+            key += '[' + std::to_string(index) + ']';
+            end += 3;
+        }
+        if (end < tokens.size() && tokens[end].text == "[") return fail("too many sampler array indices");
+        const auto found = globals.find(key);
+        if (found == globals.end()) return fail("sampler array element is missing from the resource graph");
+        return &found->second;
     };
     for (size_t i = 0; i < tokens.size(); ++i) {
         if (!skip[i] && !replacements.contains(i) && tokens[i].ident &&
@@ -713,7 +747,13 @@ std::string emit_body(const std::vector<Tok>& tokens, const std::vector<Decl>& d
             continue;
         }
         if (!text.empty() && text[0] == '#') {
-            if (text.rfind("#version", 0) != 0) writer.directive(tok);
+            if (text.rfind("#version", 0) != 0) {
+                auto directive = tok;
+                if (!vertex && std::any_of(uniforms.begin(), uniforms.end(), [](const NormUniform& uniform) {
+                        return uniform.name == "vispy_fragment_depth_range";
+                    })) directive.text = fragment_coord_define(directive.text);
+                writer.directive(directive);
+            }
             continue;
         }
         if (text == "precision") {
@@ -742,6 +782,10 @@ std::string emit_body(const std::vector<Tok>& tokens, const std::vector<Decl>& d
                 "int(vispy_batch_instance_origin.x + uint(gl_InstanceIndex))" : "gl_InstanceIndex";
         else if (text == "gl_FrontFacing" && options.point_sprites && !vertex) text = "true";
         else if (text == "gl_FragDepthEXT") text = "gl_FragDepth";
+        else if (!vertex && text == "gl_FragCoord" && std::any_of(uniforms.begin(), uniforms.end(),
+                     [](const NormUniform& uniform) { return uniform.name == "vispy_fragment_depth_range"; }))
+            text = fragment_coord_expression;
+
         else if (text == "gl_PointSize") text = "vispy_point_size";
         else if (text == "gl_PointCoord") {
             if (!options.point_sprites) {
@@ -807,15 +851,22 @@ std::string emit_body(const std::vector<Tok>& tokens, const std::vector<Decl>& d
                             " uniform " + uniform.name + ": whole boolean arrays are unsupported; index the uniform";
                     return {};
                 }
-                size_t close = i + 2;
-                int brackets = 1;
-                for (; close < tokens.size(); ++close) {
-                    if (tokens[close].text == "[") ++brackets;
-                    if (tokens[close].text == "]" && --brackets == 0) break;
-                }
-                if (close == tokens.size()) {
-                    error = "unterminated boolean uniform index at line=" + std::to_string(tok.line);
-                    return {};
+                size_t close = i;
+                for (size_t dimension = 0; dimension < uniform.array_dimensions.size(); ++dimension) {
+                    if (close + 1 >= tokens.size() || tokens[close + 1].text != "[") {
+                        error = "boolean uniform " + uniform.name + ": index every array dimension";
+                        return {};
+                    }
+                    close += 2;
+                    int brackets = 1;
+                    for (; close < tokens.size(); ++close) {
+                        if (tokens[close].text == "[") ++brackets;
+                        if (tokens[close].text == "]" && --brackets == 0) break;
+                    }
+                    if (close == tokens.size()) {
+                        error = "unterminated boolean uniform index at line=" + std::to_string(tok.line);
+                        return {};
+                    }
                 }
                 suffixes[close].push_back(suffix);
             } else text += suffix;
@@ -841,6 +892,34 @@ void append_generated(std::ostringstream& output, const std::string& source, std
 }
 
 }  // namespace
+
+std::string varying_array_suffix(const NormVarying& varying) {
+    if (varying.array_dimensions.empty())
+        return varying.array_size ? "[" + std::to_string(varying.array_size) + "]" : "";
+    std::string suffix;
+    for (uint32_t dimension : varying.array_dimensions) suffix += "[" + std::to_string(dimension) + "]";
+    return suffix;
+}
+
+std::string varying_element_suffix(const NormVarying& varying, const std::string& flat_index) {
+    if (!varying.array_size) return "";
+    if (varying.array_dimensions.size() <= 1) return "[" + flat_index + "]";
+    uint64_t stride = 1;
+    for (uint32_t dimension : varying.array_dimensions) {
+        if (!dimension || stride > UINT32_MAX / dimension)
+            throw std::invalid_argument("varying array shape overflow");
+        stride *= dimension;
+    }
+    if (stride != static_cast<uint32_t>(varying.array_size))
+        throw std::invalid_argument("varying array shape differs from leaf count");
+    std::string suffix;
+    for (uint32_t dimension : varying.array_dimensions) {
+        stride /= dimension;
+        suffix += "[(" + flat_index + (stride > 1 ? " / " + std::to_string(stride) + "u" : "") +
+                  ") % " + std::to_string(dimension) + "u]";
+    }
+    return suffix;
+}
 
 bool shader_value_type(const std::string& type, ShaderValueType& value) {
     value = {};
@@ -869,6 +948,61 @@ bool shader_value_type(const std::string& type, ShaderValueType& value) {
     return false;
 }
 
+bool attribute_layout(const NormAttribute& declaration, AttributeLayout& layout, std::string& error) {
+    AttributeLayout next;
+    next.name = declaration.name; next.type = declaration.type;
+    next.location = declaration.location; next.dimensions = declaration.array_dimensions;
+    auto fail = [&](const std::string& reason) {
+        error = "vertex attribute " + declaration.name + ": " + reason; return false;
+    };
+    if (!shader_value_type(next.type, next.value_type) || next.value_type.scalar == ShaderScalarType::Bool)
+        return fail("unsupported input type " + next.type);
+    for (uint32_t dimension : next.dimensions) {
+        if (!dimension || next.elements > UINT32_MAX / dimension) return fail("array extent overflows");
+        next.elements *= dimension;
+    }
+    const uint64_t words = uint64_t(next.elements) * next.value_type.components();
+    const uint64_t slots = uint64_t(next.elements) * next.value_type.columns;
+    if (words > UINT32_MAX / 4 || slots > UINT32_MAX ||
+        uint64_t(next.location) + slots > UINT32_MAX) return fail("binding extent overflows");
+    next.record_words = static_cast<uint32_t>(words); next.locations = static_cast<uint32_t>(slots);
+    layout = std::move(next); return true;
+}
+
+NormAttribute attribute_location(const AttributeLayout& layout, uint32_t index) {
+    if (index >= layout.locations) throw std::out_of_range("vertex attribute physical location");
+    const auto& value = layout.value_type;
+    const uint32_t leaf = index / value.columns, column = index % value.columns;
+    std::vector<uint32_t> strides(layout.dimensions.size() + 1, 1);
+    for (size_t n = layout.dimensions.size(); n-- > 0;) strides[n] = strides[n+1] * layout.dimensions[n];
+    std::vector<std::string> names{layout.name};
+    for (size_t n=0; n<layout.dimensions.size(); ++n)
+        names.push_back(names.back() + "[" + std::to_string((leaf / strides[n+1]) % layout.dimensions[n]) + "]");
+    NormAttribute field;
+    field.name = names.back(); field.location = layout.location + index;
+    field.type = value.columns > 1 ? "vec" + std::to_string(value.rows) : layout.type;
+    if (value.columns > 1) {
+        field.name += "[" + std::to_string(column) + "]";
+        field.binding_views.push_back({field.name, field.type, 0, value.rows});
+    }
+    // A leaf or subarray binding overrides its enclosing parent independent of
+    // command order. Offsets describe tightly packed words within that view;
+    // the public descriptor retains its own stride, base offset and divisor.
+    for (size_t depth=names.size(); depth-- > 0;)
+        field.binding_views.push_back({names[depth], layout.type,
+            (leaf % strides[depth]) * value.components() + column * value.rows,
+            strides[depth] * value.components()});
+    return field;
+}
+
+size_t attribute_storage_bytes(const NormAttribute& attribute) {
+    size_t bytes = attribute.name.capacity() + attribute.type.capacity() + 2 +
+        attribute.array_dimensions.capacity() * sizeof(uint32_t) +
+        attribute.binding_views.capacity() * sizeof(AttributeBindingView);
+    for (const auto& view : attribute.binding_views) bytes += view.name.capacity() + view.type.capacity() + 2;
+    return bytes;
+}
+
 NormalizedShader normalize_program(const std::string& vertex, const std::string& fragment) {
     return normalize_program(vertex, fragment, NormalizeOptions{});
 }
@@ -890,6 +1024,14 @@ NormalizedShader normalize_program(const std::string& vertex_src, const std::str
     }
     auto vert_toks = tokenize(vertex_src);
     auto frag_toks = tokenize(fragment_src);
+    result.has_fragment_depth = std::any_of(frag_toks.begin(), frag_toks.end(), [](const Tok& token) {
+        return token.text == "gl_FragDepth" || token.text == "gl_FragDepthEXT";
+    });
+    const bool fragment_depth_coordinates = std::any_of(frag_toks.begin(), frag_toks.end(), [](const Tok& token) {
+        return token.text == "gl_FragCoord" || (!token.text.empty() && token.text.front() == '#' &&
+                                              token.text.find("gl_FragCoord") != std::string::npos);
+    });
+
     if (batch_identity_policy(options.vertex_identity)) {
         for (const auto* tokens : {&vert_toks, &frag_toks}) for (const auto& token : *tokens) {
             // Directives are retained by the tokenizer. Reject macro aliases
@@ -954,17 +1096,13 @@ NormalizedShader normalize_program(const std::string& vertex_src, const std::str
     auto frag_decls = find_decls(frag_toks, result.error, "fragment");
     if (!result.error.empty()) return result;
     uint32_t cursor = 0;
-    std::unordered_map<std::string, int> sampler_shapes;
+    std::unordered_map<std::string, std::vector<uint32_t>> sampler_shapes;
     auto add_uniform = [&](const Decl& decl) {
         if (!result.error.empty()) return;
         if (is_sampler(decl.type)) {
-            if (decl.array_size > 0 && decl.type != "sampler2D") {
-                result.error = "uniform " + decl.name + ": sampler arrays currently require floating sampler2D";
-                return;
-            }
-            auto [shape, inserted] = sampler_shapes.emplace(decl.name, decl.array_size);
-            if (!inserted && shape->second != decl.array_size) {
-                result.error = "uniform " + decl.name + ": stage sampler array lengths differ";
+            auto [shape, inserted] = sampler_shapes.emplace(decl.name, decl.array_dimensions);
+            if (!inserted && shape->second != decl.array_dimensions) {
+                result.error = "uniform " + decl.name + ": stage sampler array shapes differ";
                 return;
             }
             const uint32_t count = decl.array_size > 0 ? static_cast<uint32_t>(decl.array_size) : 1;
@@ -973,7 +1111,14 @@ NormalizedShader normalize_program(const std::string& vertex_src, const std::str
                 return;
             }
             for (uint32_t index = 0; index < count; ++index) {
-                const auto name = decl.array_size ? decl.name + '[' + std::to_string(index) + ']' : decl.name;
+                std::string name = decl.name;
+                std::vector<uint32_t> indices(decl.array_dimensions.size());
+                uint32_t remainder = index;
+                for (size_t dimension = indices.size(); dimension-- > 0;) {
+                    indices[dimension] = remainder % decl.array_dimensions[dimension];
+                    remainder /= decl.array_dimensions[dimension];
+                }
+                for (uint32_t element : indices) name += '[' + std::to_string(element) + ']';
                 auto found = std::find_if(result.samplers.begin(), result.samplers.end(),
                     [&](const auto& sampler) { return sampler.name == name; });
                 if (found != result.samplers.end()) {
@@ -983,6 +1128,7 @@ NormalizedShader normalize_program(const std::string& vertex_src, const std::str
                 }
                 NormSampler sampler;
                 sampler.name = name;
+                sampler.array_dimensions = decl.array_dimensions;
                 sampler.dim = sampler_dim(decl.type);
                 sampler.sample_scalar = sampler_scalar(decl.type);
                 sampler.texture_binding = 1 + static_cast<uint32_t>(result.samplers.size()) * 2;
@@ -993,15 +1139,19 @@ NormalizedShader normalize_program(const std::string& vertex_src, const std::str
         }
         for (const auto& existing : result.uniforms) {
             if (existing.name != decl.name) continue;
-            if (existing.type != decl.type || existing.array_size != decl.array_size)
-                result.error = "uniform " + decl.name + ": stage types or array lengths differ";
+            if (existing.type != decl.type || existing.array_dimensions != decl.array_dimensions)
+                result.error = "uniform " + decl.name + ": stage types or array shapes differ";
             return;
         }
         NormUniform uniform;
         uniform.name = decl.name;
         uniform.type = decl.type;
         uniform.array_size = decl.array_size;
-        place_uniform(uniform, cursor);
+        uniform.array_dimensions = decl.array_dimensions;
+        if (!place_uniform(uniform, cursor)) {
+            result.error = "uniform " + decl.name + ": std140 layout exceeds addressable size";
+            return;
+        }
         result.uniforms.push_back(std::move(uniform));
     };
     for (const auto& decl : vert_decls) if (decl.storage == "uniform") add_uniform(decl);
@@ -1017,19 +1167,41 @@ NormalizedShader normalize_program(const std::string& vertex_src, const std::str
         NormUniform viewport;
         viewport.name = "vispy_point_viewport";
         viewport.type = "vec2";
-        place_uniform(viewport, cursor);
+        if (!place_uniform(viewport, cursor)) {
+            result.error = "generated uniform: std140 layout exceeds addressable size";
+            return result;
+        }
         result.uniforms.push_back(std::move(viewport));
+    }
+    if (fragment_depth_coordinates) {
+        for (const auto* tokens : {&vert_toks, &frag_toks}) {
+            if (std::any_of(tokens->begin(), tokens->end(), [](const Tok& token) {
+                    return token.text == "vispy_fragment_depth_range";
+                })) {
+                result.error = "fragment depth: vispy_fragment_depth_range is a reserved runtime value";
+                return result;
+            }
+        }
+        NormUniform range;
+        range.name = "vispy_fragment_depth_range";
+        range.type = "vec2";
+        if (!place_uniform(range, cursor)) {
+            result.error = "generated uniform: std140 layout exceeds addressable size";
+            return result;
+        }
+        result.uniforms.push_back(std::move(range));
     }
     result.uniform_bytes = align_up(cursor, 16);
     uint32_t location = 0;
     for (const auto& decl : vert_decls) {
         if (decl.storage != "attribute" && decl.storage != "in") continue;
         if (is_sampler(decl.type) || decl.type == "void") continue;
-        if (decl.array_size > 0 || decl.type.rfind("mat", 0) == 0 || boolean_type(decl.type)) {
-            result.error = "vertex attribute " + decl.name + ": matrix, array, and boolean attributes are unsupported";
-            return result;
-        }
-        result.attributes.push_back({decl.name, decl.type, location++});
+        NormAttribute attribute{decl.name, decl.type, location};
+        attribute.array_dimensions = decl.array_dimensions;
+        AttributeLayout layout;
+        if (!attribute_layout(attribute, layout, result.error)) return result;
+        location += layout.locations;
+        result.attributes.push_back(std::move(attribute));
     }
     if (options.point_sprites)
         result.point_identity_binding = 1 + static_cast<uint32_t>(result.samplers.size()) * 2;
@@ -1048,7 +1220,7 @@ NormalizedShader normalize_program(const std::string& vertex_src, const std::str
         for (const auto& existing : varyings) {
             if (existing.name != decl.name) continue;
             found = true;
-            if (existing.type != decl.type || existing.array_size != decl.array_size ||
+            if (existing.type != decl.type || existing.array_dimensions != decl.array_dimensions ||
                 existing.interpolation != decl.interpolation || existing.centroid != decl.centroid ||
                 existing.sample != decl.sample) result.error = "varying " + decl.name + ": stage interfaces differ";
         }
@@ -1059,7 +1231,7 @@ NormalizedShader normalize_program(const std::string& vertex_src, const std::str
     for (const auto& varying : varyings) {
         NormVarying value;
         value.name = varying.name; value.type = varying.type; value.interpolation = varying.interpolation.empty() ? "smooth" : varying.interpolation;
-        value.array_size = varying.array_size; value.source_line = varying.line;
+        value.array_size = varying.array_size; value.array_dimensions = varying.array_dimensions; value.source_line = varying.line;
         value.centroid = varying.centroid; value.sample = varying.sample;
         if (!shader_value_type(value.type, value.value_type)) {
             result.error = "varying " + value.name + ": unsupported typed interface";
@@ -1137,7 +1309,7 @@ NormalizedShader normalize_program(const std::string& vertex_src, const std::str
         for (const auto& uniform : result.uniforms) {
             header << "    layout(offset = " << uniform.offset << ") " << uniform.storage_type << " "
                    << (boolean_type(uniform.type) ? bool_storage_name(uniform) : uniform.name);
-            if (uniform.array_size > 0) header << "[" << uniform.array_size << "]";
+            for (uint32_t dimension : uniform.array_dimensions) header << "[" << dimension << "]";
             header << ";\n";
         }
         header << "};\n";
@@ -1153,9 +1325,12 @@ NormalizedShader normalize_program(const std::string& vertex_src, const std::str
         std::ostringstream stage;
         stage << header.str();
         if (vertex) {
-            for (const auto& attr : result.attributes)
-                if (options.line_evaluator) stage << attr.type << " " << attr.name << ";\n";
-                else stage << "layout(location = " << attr.location << ") in " << attr.type << " " << attr.name << ";\n";
+            for (const auto& attr : result.attributes) {
+                if (!options.line_evaluator) stage << "layout(location = " << attr.location << ") in ";
+                stage << attr.type << " " << attr.name;
+                for (uint32_t dimension : attr.array_dimensions) stage << "[" << dimension << "]";
+                stage << ";\n";
+            }
             if (options.line_evaluator) stage << "vec4 vispy_line_clip_position;\nuint vispy_line_vertex_id, vispy_line_instance_id;\n";
             if (options.point_sprites)
                 stage << "layout(std430, set = 0, binding = " << result.point_identity_binding
@@ -1185,7 +1360,7 @@ NormalizedShader normalize_program(const std::string& vertex_src, const std::str
             }
             var_location = varying.location + varying.value_type.columns * (varying.array_size ? varying.array_size : 1);
             stage << varying.type << " " << varying.name;
-            if (varying.array_size > 0) stage << "[" << varying.array_size << "]";
+            stage << varying_array_suffix(varying);
             stage << ";\n";
         }
         if (options.point_sprites)
@@ -1217,7 +1392,8 @@ NormalizedShader normalize_program(const std::string& vertex_src, const std::str
     }
     if (!options.line_evaluator)
         append_generated(vert, "void main() {\n    vispy_user_main();\n" + point_wrapper + "    gl_Position.y = -gl_Position.y;\n"
-                               "    gl_Position.z = (gl_Position.z + gl_Position.w) * 0.5;\n}\n", result.vertex_line_map);
+                               + (options.reverse_depth ? "    gl_Position.z = (gl_Position.w - gl_Position.z) * 0.5;\n}\n" :
+                                  "    gl_Position.z = (gl_Position.z + gl_Position.w) * 0.5;\n}\n"), result.vertex_line_map);
     result.vertex = vert.str();
     std::ostringstream frag;
     append_generated(frag, stage_header(false), result.fragment_line_map);
@@ -1275,5 +1451,56 @@ bool pack_uniform_value(const NormUniform& uniform, const void* source, size_t s
         } else std::memcpy(output + offsets[component], input + component * 4, 4);
     }
     if (error) error->clear();
+    return true;
+}
+
+bool uniform_indexed_view(const NormUniform& uniform, const std::string& name,
+                          NormUniform& result, std::string* error) {
+    const auto fail = [&](const char* reason) {
+        if (error) *error = reason;
+        return false;
+    };
+    const std::string prefix = uniform.name + '[';
+    if (!name.starts_with(prefix) || uniform.array_size <= 0 || !uniform.array_stride)
+        return fail("not an indexed array uniform");
+    auto dimensions = uniform.array_dimensions;
+    if (dimensions.empty()) dimensions.push_back(static_cast<uint32_t>(uniform.array_size));
+    uint64_t count = 1;
+    for (uint32_t dimension : dimensions) {
+        if (!dimension || count > uint64_t(std::numeric_limits<int>::max()) / dimension)
+            return fail("invalid array dimensions");
+        count *= dimension;
+    }
+    if (count != static_cast<uint32_t>(uniform.array_size)) return fail("inconsistent array dimensions");
+    size_t cursor = uniform.name.size(), depth = 0;
+    uint64_t first = 0;
+    while (cursor < name.size()) {
+        if (depth >= dimensions.size() || name[cursor++] != '[')
+            return fail("excess or malformed array index");
+        const size_t begin = cursor;
+        while (cursor < name.size() && name[cursor] >= '0' && name[cursor] <= '9') ++cursor;
+        if (begin == cursor || cursor == name.size() || name[cursor] != ']')
+            return fail("array index must be a nonnegative integer");
+        uint32_t index = 0;
+        const auto parsed = std::from_chars(name.data() + begin, name.data() + cursor, index);
+        if (parsed.ec != std::errc{} || index >= dimensions[depth])
+            return fail("array index is out of bounds");
+        count /= dimensions[depth++];
+        first += uint64_t(index) * count;
+        ++cursor;
+    }
+    const uint64_t offset = uint64_t(uniform.offset) + first * uniform.array_stride;
+    const uint64_t size = count * uniform.array_stride;
+    if (offset > std::numeric_limits<uint32_t>::max() || size > std::numeric_limits<uint32_t>::max() ||
+            offset + size > uint64_t(uniform.offset) + uniform.size)
+        return fail("indexed view exceeds array layout");
+    NormUniform view = uniform;
+    view.name = name;
+    view.offset = static_cast<uint32_t>(offset);
+    view.size = static_cast<uint32_t>(size);
+    view.array_dimensions.assign(dimensions.begin() + depth, dimensions.end());
+    view.array_size = view.array_dimensions.empty() ? 0 : static_cast<int>(count);
+    if (!view.array_size) view.array_stride = 0;
+    result = std::move(view);
     return true;
 }

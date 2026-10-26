@@ -231,6 +231,14 @@ class Canvas(object):
         """
         if self._backend is not None:
             return
+        validate = getattr(self._app._backend, '_vispy_validate_canvas', None)
+        if validate is not None:
+            validate(self._backend_kwargs)
+        # Toolkits with explicit parent/interpreter ownership must see the
+        # parent before creating a default native application.
+        prepare = getattr(self._app._backend, '_vispy_prepare_canvas', None)
+        if prepare is not None:
+            prepare(self._backend_kwargs.get('parent'))
         # Make sure that the app is active
         assert self._app.native
         # Instantiate the backend with the right class
@@ -401,6 +409,9 @@ class Canvas(object):
 
     @title.setter
     def title(self, title):
+        check_thread = getattr(self._backend, '_vispy_check_thread', None)
+        if check_thread is not None:
+            check_thread()
         self._title = title
         self._backend._vispy_set_title(title)
 
@@ -466,12 +477,25 @@ class Canvas(object):
         To avoid having the widget destroyed (more like standard Qt
         behavior), consider making the widget a sub-widget.
         """
-        if self._backend is not None and not self._closed:
-            logger.debug('Closing canvas %s' % (self,))
-            self._closed = True
-            self.events.close()
-            self._backend._vispy_close()
-        forget_canvas(self)
+        check_thread = getattr(self._backend, '_vispy_check_thread', None)
+        if check_thread is not None:
+            check_thread()
+        try:
+            if self._backend is not None and not self._closed:
+                logger.debug('Closing canvas %s' % (self,))
+                self._closed = True
+                try:
+                    self.events.close()
+                except BaseException:
+                    try:
+                        self._backend._vispy_close()
+                    except BaseException:
+                        logger.error('Canvas cleanup after close callback failure failed', exc_info=True)
+                    raise
+                else:
+                    self._backend._vispy_close()
+        finally:
+            forget_canvas(self)
 
     def _update_fps(self, event):
         """Update the fps after every window"""

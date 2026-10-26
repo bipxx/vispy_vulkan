@@ -1,0 +1,599 @@
+{
+  "collected": [
+    "tests/native/test_dawn_immediate_state.py::test_raw_depth_comparisons_at_exact_far_endpoint[GL_NEVER-False]",
+    "tests/native/test_dawn_immediate_state.py::test_raw_depth_comparisons_at_exact_far_endpoint[GL_LESS-False]",
+    "tests/native/test_dawn_immediate_state.py::test_raw_depth_comparisons_at_exact_far_endpoint[GL_EQUAL-True]",
+    "tests/native/test_dawn_immediate_state.py::test_raw_depth_comparisons_at_exact_far_endpoint[GL_LEQUAL-True]",
+    "tests/native/test_dawn_immediate_state.py::test_raw_depth_comparisons_at_exact_far_endpoint[GL_GREATER-False]",
+    "tests/native/test_dawn_immediate_state.py::test_raw_depth_comparisons_at_exact_far_endpoint[GL_NOTEQUAL-False]",
+    "tests/native/test_dawn_immediate_state.py::test_raw_depth_comparisons_at_exact_far_endpoint[GL_GEQUAL-True]",
+    "tests/native/test_dawn_immediate_state.py::test_raw_depth_comparisons_at_exact_far_endpoint[GL_ALWAYS-True]",
+    "tests/native/test_dawn_immediate_state.py::test_raw_depth_write_mask_and_queued_draw_order[True-expected0]",
+    "tests/native/test_dawn_immediate_state.py::test_raw_depth_write_mask_and_queued_draw_order[False-expected1]",
+    "tests/native/test_dawn_state_queries.py::test_native_pristine_state_has_complete_typed_defaults_without_allocating",
+    "tests/native/test_dawn_state_queries.py::test_valid_query_propagates_native_queued_failure_and_preserves_committed_prefix",
+    "tests/native/test_tkinter_backend.py::test_first_callback_error_survives_later_error_and_other_canvas_recovers[manual]",
+    "tests/native/test_tkinter_backend.py::test_first_callback_error_survives_later_error_and_other_canvas_recovers[run]",
+    "tests/native/test_tkinter_backend.py::test_idle_mainloop_polls_native_progress[run]",
+    "tests/native/test_tkinter_backend.py::test_idle_mainloop_polls_native_progress[external]",
+    "tests/native/test_tkinter_backend.py::test_real_frame_presentation_and_resize",
+    "tests/native/test_tkinter_backend.py::test_real_tk_input_and_stopped_timer",
+    "tests/native/test_tkinter_backend.py::test_timer_restart_inside_callback_has_only_one_scheduled_generation",
+    "tests/native/test_tkinter_capabilities.py::test_configuration_records_requested_minimums_and_actual_storage[config0]",
+    "tests/native/test_tkinter_capabilities.py::test_configuration_records_requested_minimums_and_actual_storage[config1]",
+    "tests/native/test_tkinter_capabilities.py::test_configuration_records_requested_minimums_and_actual_storage[config2]",
+    "tests/native/test_tkinter_capabilities.py::test_configuration_records_requested_minimums_and_actual_storage[config3]",
+    "tests/native/test_tkinter_capabilities.py::test_configuration_records_requested_minimums_and_actual_storage[config4]",
+    "tests/native/test_tkinter_capabilities.py::test_configuration_records_requested_minimums_and_actual_storage[config5]",
+    "tests/native/test_tkinter_capabilities.py::test_embedded_hide_show_restores_host_layout_and_binding[pack]",
+    "tests/native/test_tkinter_capabilities.py::test_embedded_hide_show_restores_host_layout_and_binding[grid]",
+    "tests/native/test_tkinter_capabilities.py::test_embedded_hide_show_restores_host_layout_and_binding[place]",
+    "tests/native/test_tkinter_capabilities.py::test_invalid_request_does_not_allocate_an_interpreter_and_can_be_corrected[config0]",
+    "tests/native/test_tkinter_capabilities.py::test_invalid_request_does_not_allocate_an_interpreter_and_can_be_corrected[config1]",
+    "tests/native/test_tkinter_capabilities.py::test_invalid_request_does_not_allocate_an_interpreter_and_can_be_corrected[config2]",
+    "tests/native/test_tkinter_capabilities.py::test_invalid_request_does_not_allocate_an_interpreter_and_can_be_corrected[config3]",
+    "tests/native/test_tkinter_capabilities.py::test_shared_texture_updates_reach_both_consumers_and_survive_either_close[0-standalone]",
+    "tests/native/test_tkinter_capabilities.py::test_shared_texture_updates_reach_both_consumers_and_survive_either_close[0-embedded]",
+    "tests/native/test_tkinter_capabilities.py::test_shared_texture_updates_reach_both_consumers_and_survive_either_close[1-standalone]",
+    "tests/native/test_tkinter_capabilities.py::test_shared_texture_updates_reach_both_consumers_and_survive_either_close[1-embedded]",
+    "tests/native/test_tkinter_capabilities.py::test_standalone_window_options_and_mutations_reach_native_widget"
+  ],
+  "exit_code": 0,
+  "reports": [
+    {
+      "nodeid": "tests/native/test_dawn_immediate_state.py::test_raw_depth_comparisons_at_exact_far_endpoint[GL_NEVER-False]",
+      "outcome": "passed",
+      "when": "setup"
+    },
+    {
+      "nodeid": "tests/native/test_dawn_immediate_state.py::test_raw_depth_comparisons_at_exact_far_endpoint[GL_NEVER-False]",
+      "outcome": "passed",
+      "when": "call"
+    },
+    {
+      "nodeid": "tests/native/test_dawn_immediate_state.py::test_raw_depth_comparisons_at_exact_far_endpoint[GL_NEVER-False]",
+      "outcome": "passed",
+      "when": "teardown"
+    },
+    {
+      "nodeid": "tests/native/test_dawn_immediate_state.py::test_raw_depth_comparisons_at_exact_far_endpoint[GL_LESS-False]",
+      "outcome": "passed",
+      "when": "setup"
+    },
+    {
+      "nodeid": "tests/native/test_dawn_immediate_state.py::test_raw_depth_comparisons_at_exact_far_endpoint[GL_LESS-False]",
+      "outcome": "passed",
+      "when": "call"
+    },
+    {
+      "nodeid": "tests/native/test_dawn_immediate_state.py::test_raw_depth_comparisons_at_exact_far_endpoint[GL_LESS-False]",
+      "outcome": "passed",
+      "when": "teardown"
+    },
+    {
+      "nodeid": "tests/native/test_dawn_immediate_state.py::test_raw_depth_comparisons_at_exact_far_endpoint[GL_EQUAL-True]",
+      "outcome": "passed",
+      "when": "setup"
+    },
+    {
+      "nodeid": "tests/native/test_dawn_immediate_state.py::test_raw_depth_comparisons_at_exact_far_endpoint[GL_EQUAL-True]",
+      "outcome": "passed",
+      "when": "call"
+    },
+    {
+      "nodeid": "tests/native/test_dawn_immediate_state.py::test_raw_depth_comparisons_at_exact_far_endpoint[GL_EQUAL-True]",
+      "outcome": "passed",
+      "when": "teardown"
+    },
+    {
+      "nodeid": "tests/native/test_dawn_immediate_state.py::test_raw_depth_comparisons_at_exact_far_endpoint[GL_LEQUAL-True]",
+      "outcome": "passed",
+      "when": "setup"
+    },
+    {
+      "nodeid": "tests/native/test_dawn_immediate_state.py::test_raw_depth_comparisons_at_exact_far_endpoint[GL_LEQUAL-True]",
+      "outcome": "passed",
+      "when": "call"
+    },
+    {
+      "nodeid": "tests/native/test_dawn_immediate_state.py::test_raw_depth_comparisons_at_exact_far_endpoint[GL_LEQUAL-True]",
+      "outcome": "passed",
+      "when": "teardown"
+    },
+    {
+      "nodeid": "tests/native/test_dawn_immediate_state.py::test_raw_depth_comparisons_at_exact_far_endpoint[GL_GREATER-False]",
+      "outcome": "passed",
+      "when": "setup"
+    },
+    {
+      "nodeid": "tests/native/test_dawn_immediate_state.py::test_raw_depth_comparisons_at_exact_far_endpoint[GL_GREATER-False]",
+      "outcome": "passed",
+      "when": "call"
+    },
+    {
+      "nodeid": "tests/native/test_dawn_immediate_state.py::test_raw_depth_comparisons_at_exact_far_endpoint[GL_GREATER-False]",
+      "outcome": "passed",
+      "when": "teardown"
+    },
+    {
+      "nodeid": "tests/native/test_dawn_immediate_state.py::test_raw_depth_comparisons_at_exact_far_endpoint[GL_NOTEQUAL-False]",
+      "outcome": "passed",
+      "when": "setup"
+    },
+    {
+      "nodeid": "tests/native/test_dawn_immediate_state.py::test_raw_depth_comparisons_at_exact_far_endpoint[GL_NOTEQUAL-False]",
+      "outcome": "passed",
+      "when": "call"
+    },
+    {
+      "nodeid": "tests/native/test_dawn_immediate_state.py::test_raw_depth_comparisons_at_exact_far_endpoint[GL_NOTEQUAL-False]",
+      "outcome": "passed",
+      "when": "teardown"
+    },
+    {
+      "nodeid": "tests/native/test_dawn_immediate_state.py::test_raw_depth_comparisons_at_exact_far_endpoint[GL_GEQUAL-True]",
+      "outcome": "passed",
+      "when": "setup"
+    },
+    {
+      "nodeid": "tests/native/test_dawn_immediate_state.py::test_raw_depth_comparisons_at_exact_far_endpoint[GL_GEQUAL-True]",
+      "outcome": "passed",
+      "when": "call"
+    },
+    {
+      "nodeid": "tests/native/test_dawn_immediate_state.py::test_raw_depth_comparisons_at_exact_far_endpoint[GL_GEQUAL-True]",
+      "outcome": "passed",
+      "when": "teardown"
+    },
+    {
+      "nodeid": "tests/native/test_dawn_immediate_state.py::test_raw_depth_comparisons_at_exact_far_endpoint[GL_ALWAYS-True]",
+      "outcome": "passed",
+      "when": "setup"
+    },
+    {
+      "nodeid": "tests/native/test_dawn_immediate_state.py::test_raw_depth_comparisons_at_exact_far_endpoint[GL_ALWAYS-True]",
+      "outcome": "passed",
+      "when": "call"
+    },
+    {
+      "nodeid": "tests/native/test_dawn_immediate_state.py::test_raw_depth_comparisons_at_exact_far_endpoint[GL_ALWAYS-True]",
+      "outcome": "passed",
+      "when": "teardown"
+    },
+    {
+      "nodeid": "tests/native/test_dawn_immediate_state.py::test_raw_depth_write_mask_and_queued_draw_order[True-expected0]",
+      "outcome": "passed",
+      "when": "setup"
+    },
+    {
+      "nodeid": "tests/native/test_dawn_immediate_state.py::test_raw_depth_write_mask_and_queued_draw_order[True-expected0]",
+      "outcome": "passed",
+      "when": "call"
+    },
+    {
+      "nodeid": "tests/native/test_dawn_immediate_state.py::test_raw_depth_write_mask_and_queued_draw_order[True-expected0]",
+      "outcome": "passed",
+      "when": "teardown"
+    },
+    {
+      "nodeid": "tests/native/test_dawn_immediate_state.py::test_raw_depth_write_mask_and_queued_draw_order[False-expected1]",
+      "outcome": "passed",
+      "when": "setup"
+    },
+    {
+      "nodeid": "tests/native/test_dawn_immediate_state.py::test_raw_depth_write_mask_and_queued_draw_order[False-expected1]",
+      "outcome": "passed",
+      "when": "call"
+    },
+    {
+      "nodeid": "tests/native/test_dawn_immediate_state.py::test_raw_depth_write_mask_and_queued_draw_order[False-expected1]",
+      "outcome": "passed",
+      "when": "teardown"
+    },
+    {
+      "nodeid": "tests/native/test_dawn_state_queries.py::test_native_pristine_state_has_complete_typed_defaults_without_allocating",
+      "outcome": "passed",
+      "when": "setup"
+    },
+    {
+      "nodeid": "tests/native/test_dawn_state_queries.py::test_native_pristine_state_has_complete_typed_defaults_without_allocating",
+      "outcome": "passed",
+      "when": "call"
+    },
+    {
+      "nodeid": "tests/native/test_dawn_state_queries.py::test_native_pristine_state_has_complete_typed_defaults_without_allocating",
+      "outcome": "passed",
+      "when": "teardown"
+    },
+    {
+      "nodeid": "tests/native/test_dawn_state_queries.py::test_valid_query_propagates_native_queued_failure_and_preserves_committed_prefix",
+      "outcome": "passed",
+      "when": "setup"
+    },
+    {
+      "nodeid": "tests/native/test_dawn_state_queries.py::test_valid_query_propagates_native_queued_failure_and_preserves_committed_prefix",
+      "outcome": "passed",
+      "when": "call"
+    },
+    {
+      "nodeid": "tests/native/test_dawn_state_queries.py::test_valid_query_propagates_native_queued_failure_and_preserves_committed_prefix",
+      "outcome": "passed",
+      "when": "teardown"
+    },
+    {
+      "nodeid": "tests/native/test_tkinter_backend.py::test_first_callback_error_survives_later_error_and_other_canvas_recovers[manual]",
+      "outcome": "passed",
+      "when": "setup"
+    },
+    {
+      "nodeid": "tests/native/test_tkinter_backend.py::test_first_callback_error_survives_later_error_and_other_canvas_recovers[manual]",
+      "outcome": "passed",
+      "when": "call"
+    },
+    {
+      "nodeid": "tests/native/test_tkinter_backend.py::test_first_callback_error_survives_later_error_and_other_canvas_recovers[manual]",
+      "outcome": "passed",
+      "when": "teardown"
+    },
+    {
+      "nodeid": "tests/native/test_tkinter_backend.py::test_first_callback_error_survives_later_error_and_other_canvas_recovers[run]",
+      "outcome": "passed",
+      "when": "setup"
+    },
+    {
+      "nodeid": "tests/native/test_tkinter_backend.py::test_first_callback_error_survives_later_error_and_other_canvas_recovers[run]",
+      "outcome": "passed",
+      "when": "call"
+    },
+    {
+      "nodeid": "tests/native/test_tkinter_backend.py::test_first_callback_error_survives_later_error_and_other_canvas_recovers[run]",
+      "outcome": "passed",
+      "when": "teardown"
+    },
+    {
+      "nodeid": "tests/native/test_tkinter_backend.py::test_idle_mainloop_polls_native_progress[run]",
+      "outcome": "passed",
+      "when": "setup"
+    },
+    {
+      "nodeid": "tests/native/test_tkinter_backend.py::test_idle_mainloop_polls_native_progress[run]",
+      "outcome": "passed",
+      "when": "call"
+    },
+    {
+      "nodeid": "tests/native/test_tkinter_backend.py::test_idle_mainloop_polls_native_progress[run]",
+      "outcome": "passed",
+      "when": "teardown"
+    },
+    {
+      "nodeid": "tests/native/test_tkinter_backend.py::test_idle_mainloop_polls_native_progress[external]",
+      "outcome": "passed",
+      "when": "setup"
+    },
+    {
+      "nodeid": "tests/native/test_tkinter_backend.py::test_idle_mainloop_polls_native_progress[external]",
+      "outcome": "passed",
+      "when": "call"
+    },
+    {
+      "nodeid": "tests/native/test_tkinter_backend.py::test_idle_mainloop_polls_native_progress[external]",
+      "outcome": "passed",
+      "when": "teardown"
+    },
+    {
+      "nodeid": "tests/native/test_tkinter_backend.py::test_real_frame_presentation_and_resize",
+      "outcome": "passed",
+      "when": "setup"
+    },
+    {
+      "nodeid": "tests/native/test_tkinter_backend.py::test_real_frame_presentation_and_resize",
+      "outcome": "passed",
+      "when": "call"
+    },
+    {
+      "nodeid": "tests/native/test_tkinter_backend.py::test_real_frame_presentation_and_resize",
+      "outcome": "passed",
+      "when": "teardown"
+    },
+    {
+      "nodeid": "tests/native/test_tkinter_backend.py::test_real_tk_input_and_stopped_timer",
+      "outcome": "passed",
+      "when": "setup"
+    },
+    {
+      "nodeid": "tests/native/test_tkinter_backend.py::test_real_tk_input_and_stopped_timer",
+      "outcome": "passed",
+      "when": "call"
+    },
+    {
+      "nodeid": "tests/native/test_tkinter_backend.py::test_real_tk_input_and_stopped_timer",
+      "outcome": "passed",
+      "when": "teardown"
+    },
+    {
+      "nodeid": "tests/native/test_tkinter_backend.py::test_timer_restart_inside_callback_has_only_one_scheduled_generation",
+      "outcome": "passed",
+      "when": "setup"
+    },
+    {
+      "nodeid": "tests/native/test_tkinter_backend.py::test_timer_restart_inside_callback_has_only_one_scheduled_generation",
+      "outcome": "passed",
+      "when": "call"
+    },
+    {
+      "nodeid": "tests/native/test_tkinter_backend.py::test_timer_restart_inside_callback_has_only_one_scheduled_generation",
+      "outcome": "passed",
+      "when": "teardown"
+    },
+    {
+      "nodeid": "tests/native/test_tkinter_capabilities.py::test_configuration_records_requested_minimums_and_actual_storage[config0]",
+      "outcome": "passed",
+      "when": "setup"
+    },
+    {
+      "nodeid": "tests/native/test_tkinter_capabilities.py::test_configuration_records_requested_minimums_and_actual_storage[config0]",
+      "outcome": "passed",
+      "when": "call"
+    },
+    {
+      "nodeid": "tests/native/test_tkinter_capabilities.py::test_configuration_records_requested_minimums_and_actual_storage[config0]",
+      "outcome": "passed",
+      "when": "teardown"
+    },
+    {
+      "nodeid": "tests/native/test_tkinter_capabilities.py::test_configuration_records_requested_minimums_and_actual_storage[config1]",
+      "outcome": "passed",
+      "when": "setup"
+    },
+    {
+      "nodeid": "tests/native/test_tkinter_capabilities.py::test_configuration_records_requested_minimums_and_actual_storage[config1]",
+      "outcome": "passed",
+      "when": "call"
+    },
+    {
+      "nodeid": "tests/native/test_tkinter_capabilities.py::test_configuration_records_requested_minimums_and_actual_storage[config1]",
+      "outcome": "passed",
+      "when": "teardown"
+    },
+    {
+      "nodeid": "tests/native/test_tkinter_capabilities.py::test_configuration_records_requested_minimums_and_actual_storage[config2]",
+      "outcome": "passed",
+      "when": "setup"
+    },
+    {
+      "nodeid": "tests/native/test_tkinter_capabilities.py::test_configuration_records_requested_minimums_and_actual_storage[config2]",
+      "outcome": "passed",
+      "when": "call"
+    },
+    {
+      "nodeid": "tests/native/test_tkinter_capabilities.py::test_configuration_records_requested_minimums_and_actual_storage[config2]",
+      "outcome": "passed",
+      "when": "teardown"
+    },
+    {
+      "nodeid": "tests/native/test_tkinter_capabilities.py::test_configuration_records_requested_minimums_and_actual_storage[config3]",
+      "outcome": "passed",
+      "when": "setup"
+    },
+    {
+      "nodeid": "tests/native/test_tkinter_capabilities.py::test_configuration_records_requested_minimums_and_actual_storage[config3]",
+      "outcome": "passed",
+      "when": "call"
+    },
+    {
+      "nodeid": "tests/native/test_tkinter_capabilities.py::test_configuration_records_requested_minimums_and_actual_storage[config3]",
+      "outcome": "passed",
+      "when": "teardown"
+    },
+    {
+      "nodeid": "tests/native/test_tkinter_capabilities.py::test_configuration_records_requested_minimums_and_actual_storage[config4]",
+      "outcome": "passed",
+      "when": "setup"
+    },
+    {
+      "nodeid": "tests/native/test_tkinter_capabilities.py::test_configuration_records_requested_minimums_and_actual_storage[config4]",
+      "outcome": "passed",
+      "when": "call"
+    },
+    {
+      "nodeid": "tests/native/test_tkinter_capabilities.py::test_configuration_records_requested_minimums_and_actual_storage[config4]",
+      "outcome": "passed",
+      "when": "teardown"
+    },
+    {
+      "nodeid": "tests/native/test_tkinter_capabilities.py::test_configuration_records_requested_minimums_and_actual_storage[config5]",
+      "outcome": "passed",
+      "when": "setup"
+    },
+    {
+      "nodeid": "tests/native/test_tkinter_capabilities.py::test_configuration_records_requested_minimums_and_actual_storage[config5]",
+      "outcome": "passed",
+      "when": "call"
+    },
+    {
+      "nodeid": "tests/native/test_tkinter_capabilities.py::test_configuration_records_requested_minimums_and_actual_storage[config5]",
+      "outcome": "passed",
+      "when": "teardown"
+    },
+    {
+      "nodeid": "tests/native/test_tkinter_capabilities.py::test_embedded_hide_show_restores_host_layout_and_binding[pack]",
+      "outcome": "passed",
+      "when": "setup"
+    },
+    {
+      "nodeid": "tests/native/test_tkinter_capabilities.py::test_embedded_hide_show_restores_host_layout_and_binding[pack]",
+      "outcome": "passed",
+      "when": "call"
+    },
+    {
+      "nodeid": "tests/native/test_tkinter_capabilities.py::test_embedded_hide_show_restores_host_layout_and_binding[pack]",
+      "outcome": "passed",
+      "when": "teardown"
+    },
+    {
+      "nodeid": "tests/native/test_tkinter_capabilities.py::test_embedded_hide_show_restores_host_layout_and_binding[grid]",
+      "outcome": "passed",
+      "when": "setup"
+    },
+    {
+      "nodeid": "tests/native/test_tkinter_capabilities.py::test_embedded_hide_show_restores_host_layout_and_binding[grid]",
+      "outcome": "passed",
+      "when": "call"
+    },
+    {
+      "nodeid": "tests/native/test_tkinter_capabilities.py::test_embedded_hide_show_restores_host_layout_and_binding[grid]",
+      "outcome": "passed",
+      "when": "teardown"
+    },
+    {
+      "nodeid": "tests/native/test_tkinter_capabilities.py::test_embedded_hide_show_restores_host_layout_and_binding[place]",
+      "outcome": "passed",
+      "when": "setup"
+    },
+    {
+      "nodeid": "tests/native/test_tkinter_capabilities.py::test_embedded_hide_show_restores_host_layout_and_binding[place]",
+      "outcome": "passed",
+      "when": "call"
+    },
+    {
+      "nodeid": "tests/native/test_tkinter_capabilities.py::test_embedded_hide_show_restores_host_layout_and_binding[place]",
+      "outcome": "passed",
+      "when": "teardown"
+    },
+    {
+      "nodeid": "tests/native/test_tkinter_capabilities.py::test_invalid_request_does_not_allocate_an_interpreter_and_can_be_corrected[config0]",
+      "outcome": "passed",
+      "when": "setup"
+    },
+    {
+      "nodeid": "tests/native/test_tkinter_capabilities.py::test_invalid_request_does_not_allocate_an_interpreter_and_can_be_corrected[config0]",
+      "outcome": "passed",
+      "when": "call"
+    },
+    {
+      "nodeid": "tests/native/test_tkinter_capabilities.py::test_invalid_request_does_not_allocate_an_interpreter_and_can_be_corrected[config0]",
+      "outcome": "passed",
+      "when": "teardown"
+    },
+    {
+      "nodeid": "tests/native/test_tkinter_capabilities.py::test_invalid_request_does_not_allocate_an_interpreter_and_can_be_corrected[config1]",
+      "outcome": "passed",
+      "when": "setup"
+    },
+    {
+      "nodeid": "tests/native/test_tkinter_capabilities.py::test_invalid_request_does_not_allocate_an_interpreter_and_can_be_corrected[config1]",
+      "outcome": "passed",
+      "when": "call"
+    },
+    {
+      "nodeid": "tests/native/test_tkinter_capabilities.py::test_invalid_request_does_not_allocate_an_interpreter_and_can_be_corrected[config1]",
+      "outcome": "passed",
+      "when": "teardown"
+    },
+    {
+      "nodeid": "tests/native/test_tkinter_capabilities.py::test_invalid_request_does_not_allocate_an_interpreter_and_can_be_corrected[config2]",
+      "outcome": "passed",
+      "when": "setup"
+    },
+    {
+      "nodeid": "tests/native/test_tkinter_capabilities.py::test_invalid_request_does_not_allocate_an_interpreter_and_can_be_corrected[config2]",
+      "outcome": "passed",
+      "when": "call"
+    },
+    {
+      "nodeid": "tests/native/test_tkinter_capabilities.py::test_invalid_request_does_not_allocate_an_interpreter_and_can_be_corrected[config2]",
+      "outcome": "passed",
+      "when": "teardown"
+    },
+    {
+      "nodeid": "tests/native/test_tkinter_capabilities.py::test_invalid_request_does_not_allocate_an_interpreter_and_can_be_corrected[config3]",
+      "outcome": "passed",
+      "when": "setup"
+    },
+    {
+      "nodeid": "tests/native/test_tkinter_capabilities.py::test_invalid_request_does_not_allocate_an_interpreter_and_can_be_corrected[config3]",
+      "outcome": "passed",
+      "when": "call"
+    },
+    {
+      "nodeid": "tests/native/test_tkinter_capabilities.py::test_invalid_request_does_not_allocate_an_interpreter_and_can_be_corrected[config3]",
+      "outcome": "passed",
+      "when": "teardown"
+    },
+    {
+      "nodeid": "tests/native/test_tkinter_capabilities.py::test_shared_texture_updates_reach_both_consumers_and_survive_either_close[0-standalone]",
+      "outcome": "passed",
+      "when": "setup"
+    },
+    {
+      "nodeid": "tests/native/test_tkinter_capabilities.py::test_shared_texture_updates_reach_both_consumers_and_survive_either_close[0-standalone]",
+      "outcome": "passed",
+      "when": "call"
+    },
+    {
+      "nodeid": "tests/native/test_tkinter_capabilities.py::test_shared_texture_updates_reach_both_consumers_and_survive_either_close[0-standalone]",
+      "outcome": "passed",
+      "when": "teardown"
+    },
+    {
+      "nodeid": "tests/native/test_tkinter_capabilities.py::test_shared_texture_updates_reach_both_consumers_and_survive_either_close[0-embedded]",
+      "outcome": "passed",
+      "when": "setup"
+    },
+    {
+      "nodeid": "tests/native/test_tkinter_capabilities.py::test_shared_texture_updates_reach_both_consumers_and_survive_either_close[0-embedded]",
+      "outcome": "passed",
+      "when": "call"
+    },
+    {
+      "nodeid": "tests/native/test_tkinter_capabilities.py::test_shared_texture_updates_reach_both_consumers_and_survive_either_close[0-embedded]",
+      "outcome": "passed",
+      "when": "teardown"
+    },
+    {
+      "nodeid": "tests/native/test_tkinter_capabilities.py::test_shared_texture_updates_reach_both_consumers_and_survive_either_close[1-standalone]",
+      "outcome": "passed",
+      "when": "setup"
+    },
+    {
+      "nodeid": "tests/native/test_tkinter_capabilities.py::test_shared_texture_updates_reach_both_consumers_and_survive_either_close[1-standalone]",
+      "outcome": "passed",
+      "when": "call"
+    },
+    {
+      "nodeid": "tests/native/test_tkinter_capabilities.py::test_shared_texture_updates_reach_both_consumers_and_survive_either_close[1-standalone]",
+      "outcome": "passed",
+      "when": "teardown"
+    },
+    {
+      "nodeid": "tests/native/test_tkinter_capabilities.py::test_shared_texture_updates_reach_both_consumers_and_survive_either_close[1-embedded]",
+      "outcome": "passed",
+      "when": "setup"
+    },
+    {
+      "nodeid": "tests/native/test_tkinter_capabilities.py::test_shared_texture_updates_reach_both_consumers_and_survive_either_close[1-embedded]",
+      "outcome": "passed",
+      "when": "call"
+    },
+    {
+      "nodeid": "tests/native/test_tkinter_capabilities.py::test_shared_texture_updates_reach_both_consumers_and_survive_either_close[1-embedded]",
+      "outcome": "passed",
+      "when": "teardown"
+    },
+    {
+      "nodeid": "tests/native/test_tkinter_capabilities.py::test_standalone_window_options_and_mutations_reach_native_widget",
+      "outcome": "passed",
+      "when": "setup"
+    },
+    {
+      "nodeid": "tests/native/test_tkinter_capabilities.py::test_standalone_window_options_and_mutations_reach_native_widget",
+      "outcome": "passed",
+      "when": "call"
+    },
+    {
+      "nodeid": "tests/native/test_tkinter_capabilities.py::test_standalone_window_options_and_mutations_reach_native_widget",
+      "outcome": "passed",
+      "when": "teardown"
+    }
+  ]
+}

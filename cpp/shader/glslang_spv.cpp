@@ -11,8 +11,10 @@
 #include <algorithm>
 #include <chrono>
 #include <cstring>
+#include <functional>
 #include <mutex>
 #include <map>
+#include <limits>
 #include <set>
 #include <unordered_map>
 #include <unordered_set>
@@ -654,7 +656,9 @@ SpvCompile compile_vulkan_glsl(const std::string& vertex, const std::string& fra
         if (result.vertex.ok) {
             result.vertex.words = std::move(cleaned);
             std::unordered_set<uint32_t> interfaces, inputs;
-            std::unordered_map<uint32_t, uint32_t> locations;
+            std::unordered_map<uint32_t, uint32_t> locations, input_types, constants;
+            struct InputType { spv::Op op; std::vector<uint32_t> args; };
+            std::unordered_map<uint32_t, InputType> types;
             const auto& words = result.vertex.words;
             for (size_t position = 5; position < words.size();) {
                 const size_t count = words[position] >> 16;
@@ -667,13 +671,51 @@ SpvCompile compile_vulkan_glsl(const std::string& vertex, const std::string& fra
                            !std::memchr(words.data() + position + name_end, 0, sizeof(uint32_t))) ++name_end;
                     for (size_t n = name_end + 1; n < count; ++n) interfaces.insert(words[position + n]);
                 } else if (op == spv::Op::OpVariable && count >= 4 &&
-                           args[2] == static_cast<uint32_t>(spv::StorageClass::Input)) inputs.insert(args[1]);
+                           args[2] == static_cast<uint32_t>(spv::StorageClass::Input)) {
+                    inputs.insert(args[1]); input_types[args[1]] = args[0];
+                } else if (op == spv::Op::OpTypePointer || op == spv::Op::OpTypeMatrix ||
+                           op == spv::Op::OpTypeArray || op == spv::Op::OpTypeVector ||
+                           op == spv::Op::OpTypeFloat || op == spv::Op::OpTypeInt) {
+                    types.emplace(args[0], InputType{op, {args + 1, args + count - 1}});
+                } else if (op == spv::Op::OpConstant && count == 4) constants[args[1]] = args[2];
                 else if (op == spv::Op::OpDecorate && count >= 4 &&
                          args[1] == static_cast<uint32_t>(spv::Decoration::Location)) locations[args[0]] = args[2];
                 position += count;
             }
-            for (auto id : interfaces) if (inputs.contains(id) && locations.contains(id))
-                result.vertex_input_locations.push_back(locations.at(id));
+            // A matrix column (and each array element's complete span) occupies
+            // locations even though only the variable's base is decorated.
+            // Bound expansion by the same resource limit used by the parser,
+            // independently of the eventual device's granted binding limits.
+            const uint32_t limit = static_cast<uint32_t>(GetDefaultResources()->maxVertexAttribs);
+            std::unordered_map<uint32_t, uint32_t> spans;
+            std::function<uint32_t(uint32_t)> span = [&](uint32_t id) -> uint32_t {
+                if (spans.contains(id)) return spans.at(id);
+                if (!types.contains(id)) return 0;
+                const auto& t = types.at(id); const auto& a = t.args;
+                uint64_t n = 0;
+                if (t.op == spv::Op::OpTypePointer) n = span(a[1]);
+                else if (t.op == spv::Op::OpTypeFloat || t.op == spv::Op::OpTypeInt)
+                    n = a[0] <= 128 ? 1 : 0;
+                else if (t.op == spv::Op::OpTypeVector && types.contains(a[0])) {
+                    const auto& scalar = types.at(a[0]);
+                    if (scalar.op == spv::Op::OpTypeFloat || scalar.op == spv::Op::OpTypeInt)
+                        n = (uint64_t(scalar.args[0]) * a[1] + 127) / 128;
+                } else if (t.op == spv::Op::OpTypeMatrix) n = uint64_t(span(a[0])) * a[1];
+                else if (t.op == spv::Op::OpTypeArray && constants.contains(a[1]))
+                    n = uint64_t(span(a[0])) * constants.at(a[1]);
+                const uint32_t bounded = n <= limit ? static_cast<uint32_t>(n) : 0;
+                spans.emplace(id, bounded); return bounded;
+            };
+            for (auto id : interfaces) if (inputs.contains(id) && locations.contains(id)) {
+                const uint32_t base = locations.at(id), width = span(input_types.at(id));
+                if (!width || base > UINT32_MAX - (width - 1) ||
+                    result.vertex_input_locations.size() + width > limit) {
+                    result.vertex.ok = false;
+                    result.vertex.log += "SPIR-V active vertex input cleanup: unsupported or excessive location span\n";
+                    break;
+                }
+                for (uint32_t n = 0; n < width; ++n) result.vertex_input_locations.push_back(base + n);
+            }
             std::sort(result.vertex_input_locations.begin(), result.vertex_input_locations.end());
             // Only vertex Input decorations are relocated. Paired varying
             // locations remain identical to the fragment stage and preserve
@@ -690,7 +732,7 @@ SpvCompile compile_vulkan_glsl(const std::string& vertex, const std::string& fra
                 }
                 position += count;
             }
-            result.vertex.ok = validate_spv(result.vertex.words, result.vertex.log);
+            result.vertex.ok = result.vertex.ok && validate_spv(result.vertex.words, result.vertex.log);
         } else result.vertex.log += "SPIR-V active vertex input cleanup failed\n";
     }
     result.spirv_ns = host_ns() - started;
@@ -779,15 +821,35 @@ bool reflect_uniform_layout(const std::vector<uint32_t>& words,
         if (!types.count(type_id)) return fail("unknown type for " + uniform.name);
         uint32_t array_stride = 0;
         uint32_t array_size = 0;
-        if (types[type_id].opcode == spv::Op::OpTypeArray) {
+        std::vector<uint32_t> dimensions, strides;
+        uint64_t leaves = 1;
+        while (types.count(type_id) && types[type_id].opcode == spv::Op::OpTypeArray) {
             const auto& array = types[type_id].operands;
             if (array.size() != 2 || !constants.count(array[1]) || !array_strides.count(type_id))
                 return fail("array size/stride missing for " + uniform.name);
-            array_size = constants[array[1]];
-            array_stride = array_strides[type_id];
+            const uint32_t dimension = constants[array[1]];
+            if (!dimension || leaves > uint64_t(std::numeric_limits<int>::max()) / dimension)
+                return fail("array dimensions overflow for " + uniform.name);
+            leaves *= dimension;
+            dimensions.push_back(dimension);
+            strides.push_back(array_strides[type_id]);
             type_id = array[0];
         }
-        if (array_size != static_cast<uint32_t>(uniform.array_size)) return fail("array length differs for " + uniform.name);
+        if (!dimensions.empty()) {
+            array_size = static_cast<uint32_t>(leaves);
+            array_stride = strides.back();
+            uint64_t extent = array_stride;
+            for (size_t depth = dimensions.size(); depth-- > 0;) {
+                if (!extent || extent != strides[depth])
+                    return fail("nested array stride differs for " + uniform.name);
+                extent *= dimensions[depth];
+                if (extent > std::numeric_limits<uint32_t>::max())
+                    return fail("array layout overflow for " + uniform.name);
+            }
+        }
+        if (array_size != static_cast<uint32_t>(uniform.array_size) ||
+                dimensions != uniform.array_dimensions)
+            return fail("array shape differs for " + uniform.name);
         uint32_t columns = 1;
         uint32_t rows = 1;
         uint32_t components = 1;

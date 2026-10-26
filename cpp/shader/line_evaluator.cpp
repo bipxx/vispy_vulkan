@@ -43,11 +43,12 @@ size_t LineEvaluatorArtifact::storage_bytes() const {
         inputs.capacity() * sizeof(LineInputField) + outputs.capacity() * sizeof(LineOutputField) +
         uniforms.capacity() * sizeof(NormUniform) + samplers.capacity() * sizeof(NormSampler);
     for (const auto* text : {&identity, &cache_key, &compute, &log, &error}) bytes += text->capacity() + 1;
-    for (const auto& field : inputs) bytes += field.attribute.name.capacity() + field.attribute.type.capacity() + 2;
+    for (const auto& field : inputs) bytes += attribute_storage_bytes(field.attribute);
     for (const auto& field : outputs) bytes += field.varying.name.capacity() + field.varying.type.capacity() +
-        field.varying.interpolation.capacity() + field.storage_type.capacity() + 4;
-    for (const auto& value : uniforms) bytes += value.name.capacity() + value.type.capacity() + value.storage_type.capacity() + 3;
-    for (const auto& value : samplers) bytes += value.name.capacity() + value.dim.capacity() + 2;
+        field.varying.interpolation.capacity() + field.storage_type.capacity() + 4 +
+        field.varying.array_dimensions.capacity() * sizeof(uint32_t);
+    for (const auto& value : uniforms) bytes += value.name.capacity() + value.type.capacity() + value.storage_type.capacity() + 3 + value.array_dimensions.capacity() * sizeof(uint32_t);
+    for (const auto& value : samplers) bytes += value.name.capacity() + value.dim.capacity() + 2 + value.array_dimensions.capacity() * sizeof(uint32_t);
     return bytes;
 }
 
@@ -146,7 +147,7 @@ std::shared_ptr<const LineEvaluatorArtifact> build_line_evaluator(
     storage << "    vispy_line_initialize_globals();\n    vispy_user_main();\n    vispy_line_outputs[vispy_line_row].clip_position = vispy_line_clip_position;\n";
     for (size_t n = 0; n < result->outputs.size(); ++n) {
         const auto& field = result->outputs[n];
-        const auto expression = field.varying.name + (field.varying.array_size ? "[vispy_line_element]" : "");
+        const auto expression = field.varying.name + varying_element_suffix(field.varying, "vispy_line_element");
         const auto converted = field.varying.value_type.scalar == ShaderScalarType::Bool ? field.storage_type + "(" + expression + ")" : expression;
         if (field.varying.array_size) storage << "    for (uint vispy_line_element = 0u; vispy_line_element < " << field.varying.array_size << "u; ++vispy_line_element)\n";
         storage << "    vispy_line_outputs[vispy_line_row].varying_" << n << (field.varying.array_size ? "[vispy_line_element]" : "") << " = " << converted << ";\n";
