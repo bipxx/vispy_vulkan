@@ -2,7 +2,7 @@
 
 The release targets familiar VisPy workflows over Vulkan, with useful
 improvements and documented differences. It does not promise full upstream
-parity. This is a release scope proposal, not a support or qualification claim.
+parity. Qualification below applies only to the exact selected artifacts and profiles.
 
 ## Compatibility baseline
 
@@ -80,7 +80,23 @@ because of this scope clarification. Preserve that selection while completing
 the first milestone; a later scope change must explicitly update reviewed
 selection and dependent evidence rather than filter failures out of a report.
 
-Known next actions: complete CPU CI, obtain cumulative implementation/scope and
-native reuse review, review the new Windows native producer proof, run exact
-installed Windows/WSL composite qualification, then review promotion. Full
-upstream parity is outside this release exit.
+Current checkpoint (2026-10-26): PR #14 merged as
+`b9599ca88062103fd57b2d37a24c24a268603011`; its complete tree matches the
+qualified implementation head `c2499093d5ee9b2653e6db15078de65ee14f0b82`.
+The exact Windows and WSL wheels passed all 120 selected criteria, independent
+promotion review and all 23 required CI jobs. The local reconstruction/evidence
+entry point is `build/runs/final-admission-112/milestone-handoff.md`.
+This closes the bounded first milestone, not the 142 parent obligations or the
+broader host matrix. Full upstream parity remains outside the release exit.
+
+A subsequent local readback fix validates malformed explicit viewport inputs
+before consuming queued rendering. Its seven Python ordering tests and 56
+state/capture cases on each of Windows Vulkan and WSL software Vulkan pass;
+the original function fails the four new actual-queue rejection cases. This
+follow-up is source-tested only, not pushed or covered by the prior wheels'
+admission. Evidence is retained in `build/runs/readback-validation-114/`,
+`build/runs/readback-native-115/` and `build/runs/readback-wsl-116/`.
+Renew affected candidate bindings, exact Python wheel/member checks and
+installed/CI/review evidence before promoting it; reuse unchanged native
+production outputs. Continue breadth through the per-API route map, fixing
+supported-workflow defects first and documenting intentional differences.

@@ -1,5 +1,31 @@
 # VisPy compatibility gap-closure execution plan
 
+## Current execution checkpoint - 2026-10-26
+
+The finite practical milestone is merged in PR #14: main
+`b9599ca88062103fd57b2d37a24c24a268603011` has the same complete tree as the
+qualified head `c2499093d5ee9b2653e6db15078de65ee14f0b82`. Exact installed
+Windows/WSL artifacts, independent promotion review, all 120 selected criteria
+and all 23 required CI jobs passed. Start with
+`build/runs/final-admission-112/milestone-handoff.md` for retained evidence.
+The dated checkpoints below preserve history; their outstanding first-milestone
+instructions are superseded by this result, not instructions to rebuild it.
+The 142 parent obligations and broader host/application gates are not complete.
+
+The active follow-up fixes explicit readback input validation before queue
+consumption (G1c/G1d). Seven Python ordering tests and 56 native state/Tk capture
+cases per Windows/WSL profile pass. Four real-queue controls fail on the original
+function; default queued viewport resolution still passes. Temporary native
+projections were cleaned and original failures retained in runs 114-116. No
+native rebuild or environment installation was needed. This patch is local and
+source-tested; the prior milestone's wheel admission does not cover it.
+
+Next: renew affected source/candidate bindings and the Python artifacts, then
+perform applicable installed/CI/review checks using existing native outputs.
+Continue supported-feature fixes and named route-map families in bounded
+packets. Require a practical VisPy compatibility baseline and documented,
+tested differences; complete upstream parity is not the release target.
+
 ## User-directed release scope revision
 
 See the [practical compatibility release scope](../../practical-compatibility-release.md) for the bounded

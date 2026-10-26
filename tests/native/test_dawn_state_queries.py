@@ -224,3 +224,32 @@ def test_sample_buffers_query_uses_actual_configuration(samples, expected):
         assert _dawn.framebuffer_config(c._backend._dawn_canvas_id)['sample_count'] == max(1, samples)
     finally:
         c.close()
+
+
+@pytest.mark.parametrize('viewport', [
+    (0, 0, 3), (0, 0, 3, 4, 5), [[0, 0, 3, 4]], ('invalid', 0, 3, 4),
+])
+def test_invalid_readback_viewport_preserves_native_queue(canvas, viewport):
+    gloo.set_viewport(0, 0, 16, 12)
+    gloo.clear(color=(1, 0, 0, 1))
+    pending = canvas.context.glir._shared._commands
+    snapshot = list(pending)
+    assert snapshot
+    with pytest.raises(ValueError):
+        gloo.read_pixels(viewport=viewport)
+    assert canvas.context.glir._shared._commands is pending
+    assert pending == snapshot
+    actual = gloo.read_pixels((0, 0, 16, 12), alpha=True)
+    assert actual.shape == (12, 16, 4)
+    np.testing.assert_array_equal(actual, np.full((12, 16, 4), [255, 0, 0, 255], np.uint8))
+
+
+def test_default_readback_resolves_native_queued_viewport(canvas):
+    gloo.set_viewport(0, 0, 16, 12)
+    gloo.clear(color=(0, 0, 1, 1))
+    gloo.finish()
+    gloo.set_viewport(1, 2, 7, 5)
+    gloo.clear(color=(0, 1, 0, 1))
+    actual = gloo.read_pixels(alpha=True)
+    assert actual.shape == (5, 7, 4)
+    np.testing.assert_array_equal(actual, np.full((5, 7, 4), [0, 255, 0, 255], np.uint8))
