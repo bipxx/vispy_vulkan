@@ -1,0 +1,41 @@
+{
+  "schema": 1,
+  "kind": "source",
+  "status": "APPROVED",
+  "independent": true,
+  "reviewer": "/root/astra_current_plan_max_review",
+  "candidate_scope_sha256": "0682a55c006f9a5adb49595062d2fb903b60a6d442c684ed833ae520baf4fa70",
+  "publication_head": "00f95ec267adfec03eebc47b024b619b8364cc3b",
+  "product_source_commit": "5c7d1273bc3471136d87f730482e07a679e0e00e",
+  "source_manifest": {
+    "path": "build/runs/capture-preparation-145/source-manifest.json",
+    "sha256": "8e2e731389a751acf953d20a55b89fbef30bbeda55d9fa6af53af4e0e7cfd6d3"
+  },
+  "baseline_approval": {
+    "path": "build/runs/readback-reviews-123/source-approval-astra.json",
+    "sha256": "314c9e6ae21f832a4008378a65a88a7e054b2af46946903d356e643189eef9b1"
+  },
+  "bounded_source_review": {
+    "path": "build/runs/capture-source-142/source-renewal-astra.json",
+    "sha256": "1bfe23d8ef566f5f619bc6fa60a335169c895f0ab1b82be6f4066376aacadb63"
+  },
+  "review_report": {
+    "path": "build/runs/capture-preparation-145/source-review-astra.json",
+    "sha256": "253e415b2d641821cee78798433e88bdd07a190e0a8832083a80f34bbab76f76"
+  },
+  "native_reuse_links": [
+    "1302b8881fae151d641b45b2ca83d54d87444264e032b79ba2ec6415dc513a9d",
+    "4e844f1519d4e38db3886e9d60097dc0e591ef068906cc749b75cacd8f97aed5"
+  ],
+  "approval_scope": "Independent canonical SOURCE renewal for frozen publication00f95ec267adfec03eebc47b024b619b8364cc3b, unchanged shipping product5c7d1273, and exact tk-capture-1 scope0682a55c. Covers the previously reviewed capture scenario/closed decoder and dispatch repair, new semantic mapping controls and GPU fixture, finite schema extension, CPU selection/policy pin, preparation/profile/documentation bindings, and SOURCE-side applicability of both exact native reuse objects. The complete23-path manifest and detailed review define this decision.",
+  "limitations": [
+    "No semantic scope approval. The separate reviewer must approve the self-contained eight-binding dependency boundary; all142 original parents and the distinct old120 scope remain preserved.",
+    "Native reuse links approve source-side applicability only. The original native validators still require both independent reviews and exact original proof joins. No SDK/compiler/native production record or outcome is replaced.",
+    "Original143/144 source executions and current decoder revalidation support implementation. They are not new current-collector installed observations. Fresh exact-artifact/member/dependency/absence/control/shutdown proof remains required.",
+    "No archive, installed, current-head CI, final subject/head impact, promotion, release or merge approval. No combined current128-criterion claim or transfer of old admission receipts.",
+    "Metal remains experimental; WSL software does not qualify native Linux GPU. Broader capture, lifecycle, optical or full upstream parity is not claimed."
+  ],
+  "artifact_admitted": false,
+  "ci_approved": false,
+  "promotion_approved": false
+}

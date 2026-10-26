@@ -2,7 +2,7 @@
   "schema": 1,
   "phase": "development",
   "id": "tk-capture-1",
-  "manifest_sha256": "41432d988f774fa79a0fc6e58bd8de59393d0f4ce1b6a5565ab0aa9534a09f90",
+  "manifest_sha256": "dcc81590d9121231246a500d1fe8eb241e05c3adbb8f4586ac6cd2575b21aa6c",
   "product_source_commit": "5c7d1273bc3471136d87f730482e07a679e0e00e",
   "upstream_commit": "117b054598f4758b598f4b8f48feea48c11fe7b0",
   "ledger": {
@@ -208,8 +208,14 @@
     }
   ],
   "reviews": {
-    "source": null,
-    "scope": null
+    "source": {
+      "path": "compat/candidates/tk-capture-1/reviews/source-00f95ec-astra.json",
+      "sha256": "75788b3a810b17202199b6716db5fa2e04c60040cfa5191119386dcae0933a23"
+    },
+    "scope": {
+      "path": "compat/candidates/tk-capture-1/reviews/scope-00f95ec-astra.json",
+      "sha256": "43f598560e2081489e1a7b33b93a10a5375ed59c12da2491ebbe49bda2156ca0"
+    }
   },
   "blockers": [
     "Source implementation is reviewed; candidate-bound source/scope/native-reuse approval remains pending.",

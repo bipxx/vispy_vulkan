@@ -1,0 +1,29 @@
+{
+  "schema": 1,
+  "kind": "scope",
+  "status": "APPROVED",
+  "independent": true,
+  "reviewer": "Astra max independent scope/native reviewer (/root/astra_qualification_plan_review)",
+  "candidate_scope_sha256": "0682a55c006f9a5adb49595062d2fb903b60a6d442c684ed833ae520baf4fa70",
+  "coverage_map_sha256": "00f2688c26293ea0c044b43deac068067e3a35544ed18cad4349beb852009522",
+  "execution_map_sha256": "07e778849898df5eff1a8d6dcd0bd8a4f32c4b28cbc95a848f64f4735133e022",
+  "admission_scope_sha256": "10e55ef1d7e128624b5ab8f12af99df1cc3b39f5f6116569438e7d845f4ff347",
+  "native_reuse_links": [
+    "1302b8881fae151d641b45b2ca83d54d87444264e032b79ba2ec6415dc513a9d",
+    "4e844f1519d4e38db3886e9d60097dc0e591ef068906cc749b75cacd8f97aed5"
+  ],
+  "publication_head": "00f95ec267adfec03eebc47b024b619b8364cc3b",
+  "review_report": {
+    "path": "build/runs/capture-preparation-145/scope-review-astra.json",
+    "sha256": "3f3c3e17ababcc1d9b7c4eb0b78837e4cd1768489255608fdd9a7a3e6ef394ec"
+  },
+  "scope": "Separate tk-capture-1: one finite public cropped RGBA8 byte/normalized-float32 workflow, all four ordinary/mutation/failure/retry modes on both declared Windows hardware and WSL software profiles, exactly8 requested and whole-row closure bindings. dependencies=[] is accepted only because setup/current-target/format/draw/resize/queued-failure/retry/cleanup is part of this self-contained workflow; no external feature proof or old120 receipt is imported.",
+  "limitations": [
+    "Approves only this exact scope, coverage/execution/selection mapping and the two exact native reuse applicability objects. Independent implementation/source approval remains the other reviewer's responsibility.",
+    "No future installed-member/license, same-child functional/observer/control/profile/shutdown, current-head CI, artifact or promotion approval.",
+    "Old120 selected obligations and142 historical parents remain preserved; no combined current128 proof, full-parent or full-release completion is claimed. The original14-host matrix, including Windows threedee, is not discharged.",
+    "Recovery is the selected malformed-viewport retry of retained queued work. Other crops/dimensions/formats, RGB-only, multisampling, device loss, OS scaling, arbitrary root/host ownership and other backends are outside scope.",
+    "WSL software results do not qualify native Linux GPU. Metal graphics and optical/scanout/full upstream parity are not approved.",
+    "Original producer proof is reused under unchanged production/ABI identities. This review neither rebuilds native outputs nor reclassifies historical wrapper failures as success."
+  ]
+}
