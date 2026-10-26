@@ -89,22 +89,32 @@ entry point is `build/runs/final-admission-112/milestone-handoff.md`.
 This closes the bounded first milestone, not the 142 parent obligations or the
 broader host matrix. Full upstream parity remains outside the release exit.
 
-A subsequent local readback fix validates malformed explicit viewport inputs
-before consuming queued rendering. Its seven Python ordering tests and 56
-state/capture cases on each of Windows Vulkan and WSL software Vulkan pass;
-the original function fails the four new actual-queue rejection cases. This
-follow-up remains unpushed and outside the prior wheels' admission. Runs117-119
-add independently reviewed Python-only assembly, full archive audits, exact
-537-member installed checks, the 56 runtime cases and eight composite branches
-per Windows/WSL target, plus fresh candidate bindings. All nine shutdown gauges
-are zero. Installed-target functional results do not replace the original full
-observer/control/profile protocol or promotion. Runs120-122 wire the explicit
-assembly route into Linux and experimental Metal CI reuse, with independent
-bounded source approval, 125 passing controls and real original-native/archive
-joins. Metal remains archive/build-only here; no Mac code was executed. Renew
-exact candidate/native-reuse approvals and complete the original installed,
-current-head CI and promotion gates before shipping these successor wheels.
-Unchanged native outputs and historical evidence are retained; all managed
-scratch is cleaned. Earlier source evidence remains in runs114-116. Continue
-breadth through the per-API route map, fixing supported-workflow defects first
-and documenting intentional differences.
+The readback follow-up is merged in PR #15 as
+`c80de037a44377d7e617f57c17d32edbe78e7df1`, with the exact complete tree of
+qualified head `98694c6b7c9ed9befbfaf73e2f377d1516fca4c0`. Invalid explicit
+viewport shapes and integer-conversion failures are rejected before finishing
+queued rendering; default viewport resolution still finishes first. Seven
+ordering tests and 56 state/capture cases per Windows/WSL profile pass, including
+the four actual-queue cases that fail on the original function.
+
+Runs117-123 established Python-only archive renewal, exact native/archive joins
+and renewed source/scope approvals. Runs124-129 completed the full installed
+observation/control/profile protocols on the successor Windows and WSL wheels,
+all 120 selected criteria, all 23 current-head required CI jobs, independent
+promotion review and strict scoped admission. The exact wheel hashes are
+`444402459f79465fb1cb42b0dea55fb7e66ce73c22df9e96017f437786ce0d56`
+(Windows) and `bd89a9944c71fb3b40260a3197c8f436e7a29021e485ff5f4a561fed907f844a`
+(Linux). Use `build/runs/readback-promotion-129/milestone-handoff.md` for the
+local reconstruction/evidence entry point. Native outputs, metadata and original
+licenses remain unchanged. Failed attempts are preserved and scratch is cleaned.
+The Mac CPU/build checks passed; Metal graphics remain experimental.
+
+The next source-only stencil packet adds 196 cases per Windows hardware Vulkan
+and WSL software Vulkan profile, with active operation/branch mutation controls.
+It checks eight separate-face operations and finite boundaries/write masks on
+shared and split routes. See the limits in
+[immediate-state compatibility](immediate-state-compatibility.md).
+This extends source regression evidence without changing the renderer, selected
+120-criterion admission or original 142 parent obligations. Continue broader
+work through the per-API route map, preserving documented differences and
+distinguishing source-tested behavior from newly admitted artifact claims.
