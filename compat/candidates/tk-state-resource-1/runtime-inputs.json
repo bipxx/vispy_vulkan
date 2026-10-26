@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "source_commit": "9ef9765552c41c84d82d69b44756d5925b4d3cd3",
+  "source_commit": "5c7d1273bc3471136d87f730482e07a679e0e00e",
   "python": [
     {
       "member": "vispy/__init__.py",
@@ -475,7 +475,7 @@
       "member": "vispy/gloo/dawn_parser.py",
       "file": {
         "path": "src/vispy/gloo/dawn_parser.py",
-        "sha256": "70c566e1b4a548827d9ee287a26aa545f8e003457b8fbd13b071f406ff43d6c4"
+        "sha256": "8dcbf7c6afc26404d647c5901e0bf15e43dfd6983e08eb1ebf483da9b9960ad8"
       }
     },
     {
@@ -706,7 +706,7 @@
       "member": "vispy/gloo/wrappers.py",
       "file": {
         "path": "src/vispy/gloo/wrappers.py",
-        "sha256": "17d9fbaa51c6afb04b009f7df3709c1248dedeb46b6deae940bd510357cc15e2"
+        "sha256": "b32d9c2fa85f0de707dd88739f8f3e7c6ee0fcbb127ca4fb103ad9b1521496d6"
       }
     },
     {

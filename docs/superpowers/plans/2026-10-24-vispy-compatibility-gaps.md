@@ -16,12 +16,19 @@ The active follow-up fixes explicit readback input validation before queue
 consumption (G1c/G1d). Seven Python ordering tests and 56 native state/Tk capture
 cases per Windows/WSL profile pass. Four real-queue controls fail on the original
 function; default queued viewport resolution still passes. Temporary native
-projections were cleaned and original failures retained in runs 114-116. No
-native rebuild or environment installation was needed. This patch is local and
-source-tested; the prior milestone's wheel admission does not cover it.
+projections were cleaned and original failures retained in runs 114-116. Runs117
+and118 now assemble two Python-only successor wheels, audit their complete
+archives and verify all 537 installed package members, 56 runtime cases and the
+eight-branch composite per Windows/WSL target. All nine final resource gauges
+are zero. Existing interpreters/dependencies were reused; no native build or new
+environment was needed. The assembly helper has independent bounded source
+approval. Managed installed targets/caches are cleaned. Run119 renews candidate
+source/profile/CI-input bindings without carrying forward old wheel admission.
+The prior milestone remains qualified; these successor wheels are not admitted.
 
-Next: renew affected source/candidate bindings and the Python artifacts, then
-perform applicable installed/CI/review checks using existing native outputs.
+Next: wire the explicit Python-only packaging route into CI reuse entry points,
+obtain renewed candidate/native-reuse reviews, and complete applicable original
+installed observation/control, current-head CI and promotion checks.
 Continue supported-feature fixes and named route-map families in bounded
 packets. Require a practical VisPy compatibility baseline and documented,
 tested differences; complete upstream parity is not the release target.

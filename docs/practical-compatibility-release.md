@@ -93,10 +93,13 @@ A subsequent local readback fix validates malformed explicit viewport inputs
 before consuming queued rendering. Its seven Python ordering tests and 56
 state/capture cases on each of Windows Vulkan and WSL software Vulkan pass;
 the original function fails the four new actual-queue rejection cases. This
-follow-up is source-tested only, not pushed or covered by the prior wheels'
-admission. Evidence is retained in `build/runs/readback-validation-114/`,
-`build/runs/readback-native-115/` and `build/runs/readback-wsl-116/`.
-Renew affected candidate bindings, exact Python wheel/member checks and
-installed/CI/review evidence before promoting it; reuse unchanged native
-production outputs. Continue breadth through the per-API route map, fixing
+follow-up remains unpushed and outside the prior wheels' admission. Runs117-119
+add independently reviewed Python-only assembly, full archive audits, exact
+537-member installed checks, the 56 runtime cases and eight composite branches
+per Windows/WSL target, plus fresh candidate bindings. All nine shutdown gauges
+are zero. Installed-target functional results do not replace the original full
+observer/control/profile protocol or promotion. Wire the explicit assembly
+route into CI reuse, renew applicable reviews and complete the remaining
+installed/CI/promotion evidence before shipping these successor wheels; retain
+unchanged native production outputs. Earlier source evidence remains in runs114-116. Continue breadth through the per-API route map, fixing
 supported-workflow defects first and documenting intentional differences.
