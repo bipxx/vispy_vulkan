@@ -1,0 +1,33 @@
+{
+  "schema": 1,
+  "kind": "source",
+  "status": "APPROVED",
+  "independent": true,
+  "reviewer": "/root/astra_current_plan_max_review",
+  "candidate_scope_sha256": "180a3d4e1579347e835ac3a98818a34a32932cd3af0fca7005987fa300d32e4d",
+  "publication_head": "7c5614241c0a05fd46a44a1016e1ec3b93802d86",
+  "product_source_commit": "9ef9765552c41c84d82d69b44756d5925b4d3cd3",
+  "source_manifest": {
+    "path": "build/runs/loader-framing-105/review/review-inputs.json",
+    "sha256": "831f913e1c2542997713d937b0e37eb67a8d5133e701588b1da0d0c727b9ff3d"
+  },
+  "review_report": {
+    "path": "build/runs/loader-framing-105/review/source-review-astra.json",
+    "sha256": "e5e270ff2dab14b90fcbeb30b9b43de8b90a4461dd0330d290120a0c80e7885c"
+  },
+  "native_reuse_links": [
+    "ac4c636b356d088ca4f7aa35fea238b3bc253c8e573f74742c66b6f9a3b2825b",
+    "71e6667bf1ecb06020354a59231f45aa7d3ad3303d914c5f94b25a0a3c888be6"
+  ],
+  "approval_scope": "Independent source implementation renewal for the exact frozen practical-compatibility candidate: the incremental Linux loader framing repair, its actual production C and native deferral controls, mandatory control-evidence joins, review-phase-neutral test adaptations and corresponding metadata renewal. This incorporates the retained cumulative implementation review and approves the source-review side of both exact run105 native reuse requests, whose original producer payloads are unchanged.",
+  "limitations": [
+    "Source approval only. Independent semantic-scope approval is separate; no artifact admission, installed qualification, current-head CI pass, promotion or release approval is given.",
+    "Fresh installed Windows and WSL qualification with the current collector remains required. The old-parser control proves the parser defect, not the exact unlogged cause of the historical run104 failure; that failure is not reclassified as passing.",
+    "The 120 selected criteria and 142 separate parent obligations are preserved. No full upstream parity, optical parity, native Linux GPU or Metal hardware approval is given.",
+    "The Windows reuse link preserves the original run94 outer exit 1 and run95 revalidation; the Linux link preserves the original run89 capture and exact cp312 ABI relation. Neither link grants installed artifact approval.",
+    "Run105 terminal cleanup is a separate coordinator obligation and is not certified here. Relevant source, collector, scope or reuse-input changes require impact review and renewed bindings."
+  ],
+  "artifact_admitted": false,
+  "ci_approved": false,
+  "promotion_approved": false
+}

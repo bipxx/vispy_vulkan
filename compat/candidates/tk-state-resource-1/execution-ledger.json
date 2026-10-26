@@ -12176,7 +12176,7 @@
       "profile": "windows-gpu-tk86-cp312-development",
       "status": "required",
       "rationale": "Selected additive scope; original parents remain required.",
-      "reviewed": false,
+      "reviewed": true,
       "dependencies": [
         "tk.backend.raster"
       ]
@@ -12186,7 +12186,7 @@
       "profile": "wsl-software-tk90-cp31213-development",
       "status": "required",
       "rationale": "Selected additive scope; original parents remain required.",
-      "reviewed": false,
+      "reviewed": true,
       "dependencies": [
         "tk.backend.raster"
       ]
@@ -12220,7 +12220,7 @@
       "profile": "windows-gpu-tk86-cp312-development",
       "status": "required",
       "rationale": "Selected additive scope; original parents remain required.",
-      "reviewed": false,
+      "reviewed": true,
       "dependencies": []
     },
     {
@@ -12228,7 +12228,7 @@
       "profile": "wsl-software-tk90-cp31213-development",
       "status": "required",
       "rationale": "Selected additive scope; original parents remain required.",
-      "reviewed": false,
+      "reviewed": true,
       "dependencies": []
     },
     {
@@ -12260,7 +12260,7 @@
       "profile": "windows-gpu-tk86-cp312-development",
       "status": "required",
       "rationale": "Selected additive scope; original parents remain required.",
-      "reviewed": false,
+      "reviewed": true,
       "dependencies": [
         "tk.context.shared",
         "tk.object.delete"
@@ -12271,7 +12271,7 @@
       "profile": "wsl-software-tk90-cp31213-development",
       "status": "required",
       "rationale": "Selected additive scope; original parents remain required.",
-      "reviewed": false,
+      "reviewed": true,
       "dependencies": [
         "tk.context.shared",
         "tk.object.delete"
@@ -12306,7 +12306,7 @@
       "profile": "windows-gpu-tk86-cp312-development",
       "status": "required",
       "rationale": "Selected additive scope; original parents remain required.",
-      "reviewed": false,
+      "reviewed": true,
       "dependencies": [
         "tk.application.manual"
       ]
@@ -12316,7 +12316,7 @@
       "profile": "wsl-software-tk90-cp31213-development",
       "status": "required",
       "rationale": "Selected additive scope; original parents remain required.",
-      "reviewed": false,
+      "reviewed": true,
       "dependencies": [
         "tk.application.manual"
       ]
@@ -12350,7 +12350,7 @@
       "profile": "windows-gpu-tk86-cp312-development",
       "status": "required",
       "rationale": "Selected additive scope; original parents remain required.",
-      "reviewed": false,
+      "reviewed": true,
       "dependencies": [
         "tk.canvas.basic",
         "tk.context.current"
@@ -12361,7 +12361,7 @@
       "profile": "wsl-software-tk90-cp31213-development",
       "status": "required",
       "rationale": "Selected additive scope; original parents remain required.",
-      "reviewed": false,
+      "reviewed": true,
       "dependencies": [
         "tk.canvas.basic",
         "tk.context.current"
@@ -12396,7 +12396,7 @@
       "profile": "windows-gpu-tk86-cp312-development",
       "status": "required",
       "rationale": "Selected additive scope; original parents remain required.",
-      "reviewed": false,
+      "reviewed": true,
       "dependencies": [
         "tk.canvas.basic"
       ]
@@ -12406,7 +12406,7 @@
       "profile": "wsl-software-tk90-cp31213-development",
       "status": "required",
       "rationale": "Selected additive scope; original parents remain required.",
-      "reviewed": false,
+      "reviewed": true,
       "dependencies": [
         "tk.canvas.basic"
       ]
@@ -12440,7 +12440,7 @@
       "profile": "windows-gpu-tk86-cp312-development",
       "status": "required",
       "rationale": "Selected additive scope; original parents remain required.",
-      "reviewed": false,
+      "reviewed": true,
       "dependencies": [
         "tk.context.current"
       ]
@@ -12450,7 +12450,7 @@
       "profile": "wsl-software-tk90-cp31213-development",
       "status": "required",
       "rationale": "Selected additive scope; original parents remain required.",
-      "reviewed": false,
+      "reviewed": true,
       "dependencies": [
         "tk.context.current"
       ]
@@ -12484,7 +12484,7 @@
       "profile": "windows-gpu-tk86-cp312-development",
       "status": "required",
       "rationale": "Selected additive scope; original parents remain required.",
-      "reviewed": false,
+      "reviewed": true,
       "dependencies": [
         "tk.context.current"
       ]
@@ -12494,7 +12494,7 @@
       "profile": "wsl-software-tk90-cp31213-development",
       "status": "required",
       "rationale": "Selected additive scope; original parents remain required.",
-      "reviewed": false,
+      "reviewed": true,
       "dependencies": [
         "tk.context.current"
       ]
@@ -12528,7 +12528,7 @@
       "profile": "windows-gpu-tk86-cp312-development",
       "status": "required",
       "rationale": "Selected additive scope; original parents remain required.",
-      "reviewed": false,
+      "reviewed": true,
       "dependencies": [
         "tk.context.current"
       ]
@@ -12538,7 +12538,7 @@
       "profile": "wsl-software-tk90-cp31213-development",
       "status": "required",
       "rationale": "Selected additive scope; original parents remain required.",
-      "reviewed": false,
+      "reviewed": true,
       "dependencies": [
         "tk.context.current"
       ]
@@ -12572,7 +12572,7 @@
       "profile": "windows-gpu-tk86-cp312-development",
       "status": "required",
       "rationale": "Selected additive scope; original parents remain required.",
-      "reviewed": false,
+      "reviewed": true,
       "dependencies": [
         "tk.context.shared",
         "tk.buffer.triangle",
@@ -12585,7 +12585,7 @@
       "profile": "wsl-software-tk90-cp31213-development",
       "status": "required",
       "rationale": "Selected additive scope; original parents remain required.",
-      "reviewed": false,
+      "reviewed": true,
       "dependencies": [
         "tk.context.shared",
         "tk.buffer.triangle",
@@ -12622,7 +12622,7 @@
       "profile": "windows-gpu-tk86-cp312-development",
       "status": "required",
       "rationale": "Selected additive scope; original parents remain required.",
-      "reviewed": false,
+      "reviewed": true,
       "dependencies": [
         "tk.context.current"
       ]
@@ -12632,7 +12632,7 @@
       "profile": "wsl-software-tk90-cp31213-development",
       "status": "required",
       "rationale": "Selected additive scope; original parents remain required.",
-      "reviewed": false,
+      "reviewed": true,
       "dependencies": [
         "tk.context.current"
       ]
@@ -12666,7 +12666,7 @@
       "profile": "windows-gpu-tk86-cp312-development",
       "status": "required",
       "rationale": "Selected additive scope; original parents remain required.",
-      "reviewed": false,
+      "reviewed": true,
       "dependencies": [
         "tk.context.shared",
         "tk.object.delete",
@@ -12678,7 +12678,7 @@
       "profile": "wsl-software-tk90-cp31213-development",
       "status": "required",
       "rationale": "Selected additive scope; original parents remain required.",
-      "reviewed": false,
+      "reviewed": true,
       "dependencies": [
         "tk.context.shared",
         "tk.object.delete",
@@ -12714,7 +12714,7 @@
       "profile": "windows-gpu-tk86-cp312-development",
       "status": "required",
       "rationale": "Selected additive scope; original parents remain required.",
-      "reviewed": false,
+      "reviewed": true,
       "dependencies": [
         "tk.application.manual"
       ]
@@ -12724,7 +12724,7 @@
       "profile": "wsl-software-tk90-cp31213-development",
       "status": "required",
       "rationale": "Selected additive scope; original parents remain required.",
-      "reviewed": false,
+      "reviewed": true,
       "dependencies": [
         "tk.application.manual"
       ]
@@ -12758,7 +12758,7 @@
       "profile": "windows-gpu-tk86-cp312-development",
       "status": "required",
       "rationale": "Selected additive scope; original parents remain required.",
-      "reviewed": false,
+      "reviewed": true,
       "dependencies": [
         "tk.context.current"
       ]
@@ -12768,7 +12768,7 @@
       "profile": "wsl-software-tk90-cp31213-development",
       "status": "required",
       "rationale": "Selected additive scope; original parents remain required.",
-      "reviewed": false,
+      "reviewed": true,
       "dependencies": [
         "tk.context.current"
       ]
@@ -12802,7 +12802,7 @@
       "profile": "windows-gpu-tk86-cp312-development",
       "status": "required",
       "rationale": "Selected additive scope; original parents remain required.",
-      "reviewed": false,
+      "reviewed": true,
       "dependencies": [
         "tk.gl.flush",
         "tk.context.current"
@@ -12813,7 +12813,7 @@
       "profile": "wsl-software-tk90-cp31213-development",
       "status": "required",
       "rationale": "Selected additive scope; original parents remain required.",
-      "reviewed": false,
+      "reviewed": true,
       "dependencies": [
         "tk.gl.flush",
         "tk.context.current"

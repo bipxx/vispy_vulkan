@@ -1,0 +1,114 @@
+{
+  "schema": 1,
+  "kind": "source-implementation-review",
+  "status": "APPROVED",
+  "independent": true,
+  "reviewer": "/root/astra_current_plan_max_review",
+  "publication_head": "7c5614241c0a05fd46a44a1016e1ec3b93802d86",
+  "diff_base": "f1a4eb32e9e9c13d70b45ffe75fc3fcd3f2897ee",
+  "product_source_commit": "9ef9765552c41c84d82d69b44756d5925b4d3cd3",
+  "candidate_scope_sha256": "180a3d4e1579347e835ac3a98818a34a32932cd3af0fca7005987fa300d32e4d",
+  "source_manifest": {
+    "path": "build/runs/loader-framing-105/review/review-inputs.json",
+    "sha256": "831f913e1c2542997713d937b0e37eb67a8d5133e701588b1da0d0c727b9ff3d"
+  },
+  "basis": [
+    {
+      "path": "build/runs/scenario-oracles-99/review-integrated/implementation-review-astra.json",
+      "sha256": "7368c9fa3b2af689e600f7e35743026d61ed7c6e0870a408b16017717c48ec0e"
+    },
+    {
+      "path": "build/runs/scenario-oracles-99/review-integrated/source-approval-astra.json",
+      "sha256": "97bdee5ea82283de1786bfe66807156153f46fc8bf93400b0790e90d70ca3f7c"
+    },
+    {
+      "path": "build/runs/review-admission-100/source-integration-review-astra.json",
+      "sha256": "0ed857a6206fb63c426aaa1e6b5fbea79397b48ecee881f82486814d6f8d9dd3"
+    }
+  ],
+  "review_scope": "Independent focused renewal of the cumulative source implementation review. Inspected the seven changed code/test paths, six candidate metadata paths, production loader writer/reader handshakes, native-control collection and normalization, retained actual results, frozen identities and exact native reuse requests. The diff base has the same tracked tree as the independently reviewed 23a3aaa integration. No unrelated native SDK rebuild or repeat full producer audit was performed.",
+  "findings": [],
+  "assessment": [
+    {
+      "path": "tools/no_opengl/debugger_linux.c",
+      "line": 169,
+      "functions": ["loader_events", "finish_loader_events", "main"],
+      "conclusion": "Temporary EOF no longer commits an unterminated record prefix. The reader obtains a checked stream offset before getline, rewinds an incomplete line and emits a deferral diagnostic. Only complete lines enter the existing per-process image queue. Seek/read errors and complete malformed PID/value/separator structures remain failures. The final normal tree drain rejects a permanent unterminated tail before debug_complete can claim zero errors. The existing one-write-before-SIGSTOP production writer and per-address-space instrumentation dispatch are unchanged. No blocking framing or failure-propagation regression found."
+    },
+    {
+      "path": "tests/no_opengl/data/loader_records.c",
+      "line": 13,
+      "functions": ["main"],
+      "conclusion": "The harness includes the actual production C reader and uses real libc streams. Every nonempty split of the representative image record must leave the first read error-free at the original offset and later yield exactly one completed image. Three complete malformed records must fail, and a permanent final tail must fail at finalization. The historical original-reader comparison exits 41 at split 18, so the regression control distinguishes the old implementation. This establishes the parser defect and repair, not the exact unlogged historical replay error site."
+    },
+    {
+      "path": "tools/no_opengl/negative_controls.py",
+      "line": 44,
+      "functions": ["main"],
+      "conclusion": "The new controls create partial EOF in the actual native collector log, force a stop while the line is incomplete, append its suffix and stop again before exercising the native fixture. Raw reports show the deferral in all three cases, a successful safe control, a GL binding violation in the lookup control, and a trapped GL call with complete task reaping in the call control. The harmless VDSO fragment does not substitute for the subsequent native fixture trap. Existing collector-error, identity, fork, sanitized-exec, static-exec and transient controls remain active."
+    },
+    {
+      "path": "tools/compatibility_evidence.py",
+      "line": 138,
+      "functions": ["normalize"],
+      "conclusion": "Ptrace-handshake evidence now additionally requires all four framing-control flags and all three corresponding raw reports. Existing all-true checks, exact report-key equality, raw hashes and collector-identity joins remain in force. The eight contract cases exercise acceptance and individual removal of each flag/report; these synthetic unit fixtures are not treated as native execution proof."
+    },
+    {
+      "path": "tests/contract/test_compatibility_qualification.py",
+      "line": 78,
+      "conclusion": "Phase-neutral smoke assertions derive the expected review phase from the current candidate but still call the maintained real validators. Pending review must be refused by require_reviewed and its CLI. Explicit negative fixtures are unchanged. The six metadata changes renew hashes for the changed observer inputs, clear both review pointers and reset only the 30 selected applicability review flags; no criterion, runtime input, profile or original parent obligation is removed."
+    }
+  ],
+  "verification": {
+    "reviewer_activity": "Read-only source/evidence inspection and hash/object comparisons; no tests, builds, installations, source clones or scratch allocation by this reviewer. Only this report and its separate approval are new reviewer-authored files.",
+    "manifest_source_files": 1431,
+    "manifest_evidence_references": 24,
+    "source_or_evidence_hash_mismatches": 0,
+    "frozen_git_blob_mismatches": 0,
+    "git_blob_comparison_required_line_ending_normalization": false,
+    "candidate_seal_and_scope_recomputed": true,
+    "raw_control_reports_hash_checked": 14,
+    "raw_control_report_hash_mismatches": 0,
+    "native_control_checks_true": 20,
+    "native_controls_process": {"actual_exit": 0, "child_waited": true},
+    "standalone_observer_binary_sha256": "956582c9884330c72dbe165617cdc6105fe6cb63b2e2b9b23495f2bf7b0e8b35",
+    "standalone_observer_binary_hash_verified": true,
+    "retained_test_results": [
+      {"path": "build/runs/loader-framing-105/windows.xml", "passed": 8, "failed": 0, "skipped": 0, "process_actual_exit": 0, "child_waited": true},
+      {"path": "build/runs/loader-framing-105/linux.xml", "passed": 9, "failed": 0, "skipped": 0, "process_actual_exit": 0, "child_waited": true},
+      {"path": "build/runs/loader-framing-105/cpu-current.xml", "passed": 814, "failed": 0, "skipped": 1, "skip": "Linux-only production C parser test", "process_actual_exit": 0, "child_waited": true}
+    ]
+  },
+  "native_reuse_review": [
+    {
+      "profile": "windows-gpu-tk86-cp312-development",
+      "request": "build/runs/loader-framing-105/native-reuse-request.json",
+      "request_sha256": "43b276cb1b2f9d33b02c5420947dcf039002b2252b9dbedcdc2b13a8686c16f8",
+      "proposal_sha256": "ed409c6dbf0cb43b415af4b3492e188df8839b54c72991c4a59d3203c17b4556",
+      "reuse_sha256": "ac4c636b356d088ca4f7aa35fea238b3bc253c8e573f74742c66b6f9a3b2825b",
+      "production_sha256": "ff464bddddbc93aa050723d3ba890fb729fa7dfa1ec777cb644d2ec88b55df05",
+      "disposition": "Approve the source-review side of this exact reuse request. Canonical reuse digest recomputed. All proposal content outside candidate/reuse equals the independently reviewed run99 integrated proposal. The original run94 native phases/44 contracts and preserved outer exit 1/cache-case rejection plus run95 revalidation remain the basis; no original record is rewritten as a new successful run."
+    },
+    {
+      "profile": "wsl-software-tk90-cp31213-development",
+      "request": "build/runs/loader-framing-105/linux-native-reuse-request.json",
+      "request_sha256": "19ac80b62790d7cef4be74f475d11d6861df491af46f7c95409da03eda58c94b",
+      "proposal_sha256": "0f24be893d3c7badad8884fa0c3ba1b9d4f075e23b0d62cafcbadf836084b7bb",
+      "reuse_sha256": "71e6667bf1ecb06020354a59231f45aa7d3ad3303d914c5f94b25a0a3c888be6",
+      "production_sha256": "6e21a4bbed7849a564bf5c425d1519ca7794327e61602aabdb5a4b8c0c59726f",
+      "disposition": "Approve the source-review side of this exact reuse request. Canonical reuse digest recomputed. The original run89 capture reference and all proposal content outside candidate/reuse equal the independently reviewed run99 integrated proposal. The original full-source 44-contract proof and exact cp312 build/consumer ABI facts are unchanged."
+    }
+  ],
+  "limitations": [
+    "This is a focused source approval supported by the retained cumulative implementation reviews; independent semantic-scope approval is separate.",
+    "The deterministic original C failure and repaired controls prove a real incremental-reader defect. They do not prove that defect caused the single silent error in historical installed run104. The fully valid final trace cannot recover its earlier concurrent read boundary; that failed run must remain failed.",
+    "These parser and native controls do not replace a fresh installed workload using the current collector. Current Windows and WSL installed qualification remains required.",
+    "The 120 selected criteria remain required and the original 142 parent obligations remain separate and undischargeable by this review. No full upstream or optical parity, native Linux GPU or Metal hardware claim is approved.",
+    "No artifact admission, current-head CI pass, promotion or release approval is given. Native reuse links approve only the reviewed source impact and exact original producer bindings.",
+    "Run105 terminal retention/cleanup was pending at review handoff and is the coordinator's separate obligation; this source review does not certify cleanup.",
+    "Relevant source, collector, scope or reuse-input changes require impact review and renewed bindings."
+  ],
+  "artifact_admitted": false,
+  "ci_approved": false,
+  "promotion_approved": false
+}
