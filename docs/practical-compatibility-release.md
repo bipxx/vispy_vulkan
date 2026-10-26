@@ -98,8 +98,13 @@ add independently reviewed Python-only assembly, full archive audits, exact
 537-member installed checks, the 56 runtime cases and eight composite branches
 per Windows/WSL target, plus fresh candidate bindings. All nine shutdown gauges
 are zero. Installed-target functional results do not replace the original full
-observer/control/profile protocol or promotion. Wire the explicit assembly
-route into CI reuse, renew applicable reviews and complete the remaining
-installed/CI/promotion evidence before shipping these successor wheels; retain
-unchanged native production outputs. Earlier source evidence remains in runs114-116. Continue breadth through the per-API route map, fixing
-supported-workflow defects first and documenting intentional differences.
+observer/control/profile protocol or promotion. Runs120-122 wire the explicit
+assembly route into Linux and experimental Metal CI reuse, with independent
+bounded source approval, 125 passing controls and real original-native/archive
+joins. Metal remains archive/build-only here; no Mac code was executed. Renew
+exact candidate/native-reuse approvals and complete the original installed,
+current-head CI and promotion gates before shipping these successor wheels.
+Unchanged native outputs and historical evidence are retained; all managed
+scratch is cleaned. Earlier source evidence remains in runs114-116. Continue
+breadth through the per-API route map, fixing supported-workflow defects first
+and documenting intentional differences.

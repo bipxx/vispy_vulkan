@@ -7,6 +7,8 @@ on:
       - 'tools/audit_metal_wheel.py'
       - 'tools/reuse_metal_ci.py'
       - 'tools/reuse_linux_ci.py'
+      - 'tools/repackage_python_wheel.py'
+      - 'tools/qualification_artifact.py'
       - 'tools/linux_ci_lifecycle.py'
       - 'compat/metal-ci-reuse.json'
       - 'compat/build-profiles/metal-ci-native.json'
@@ -101,7 +103,7 @@ jobs:
         run: |
           python3 -B tools/linux_ci_lifecycle.py --state "$CI_STATE" run --phase reuse -- \
             "$BUILD_PYTHON" -B tools/reuse_metal_ci.py --workspace "$DRIVER_WORKSPACE" \
-            --run-id "$NATIVE_RUN" --owner ci --arch '${{ matrix.arch }}'
+            --run-id "$NATIVE_RUN" --owner ci --arch '${{ matrix.arch }}' --package-current-python
       - name: Prepare explicit fresh native build tools
         if: env.NATIVE_MODE == 'fresh'
         run: |

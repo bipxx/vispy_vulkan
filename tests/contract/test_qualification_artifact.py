@@ -14,7 +14,7 @@ import pytest
 from tools import qualification_artifact as qa
 
 
-def sample(platform='win32'):
+def sample(platform='win32', arch='arm64'):
     manifest = {'schema': 1, 'profile': 'dawn-no-opengl-runtime', 'files': ['__init__.py'],
                 'excluded_files': [], 'compatibility_aliases': [],
                 'notice_files': ['LICENSE', 'LICENSE-BSD', 'LICENSING.md', 'vispy-LICENSE.txt'],
@@ -24,7 +24,8 @@ def sample(platform='win32'):
     notices = {'vispy/_licenses/' + name: ('original ' + name).encode() for name in manifest['notice_files']}
     licenses = {qa.DIST + '/licenses/' + name: notices['vispy/_licenses/' + name]
                 for name in ('LICENSE', 'LICENSE-BSD', 'LICENSING.md')}
-    suffix = '.cp312-win_amd64.pyd' if platform == 'win32' else '.cpython-312-x86_64-linux-gnu.so'
+    suffix = ('.cp312-win_amd64.pyd' if platform == 'win32' else
+              '.cpython-312-darwin.so' if platform == 'darwin' else '.cpython-312-x86_64-linux-gnu.so')
     names = qa.runtime_package.expected_members(manifest, suffix=suffix, platform=platform) - set(pure) - set(notices)
     binary = bytearray(512)
     if platform == 'win32':
@@ -33,11 +34,14 @@ def sample(platform='win32'):
         binary[64:68] = b'PE\0\0'
         struct.pack_into('<HHIIIHH', binary, 68, 0x8664, 0, 0, 0, 0, 240, 0)
         struct.pack_into('<H', binary, 88, 0x20b)
+    elif platform == 'darwin':
+        struct.pack_into('<II', binary, 0, 0xfeedfacf, {'arm64': 0x0100000c, 'x86_64': 0x01000007}[arch])
     else:
         binary[:6] = b'\x7fELF\x02\x01'
         struct.pack_into('<H', binary, 18, 62)
     native = {name: b'{}' if name.endswith('.json') else bytes(binary) for name in names}
-    tag = 'cp312-cp312-' + ('win_amd64' if platform == 'win32' else 'linux_x86_64')
+    tag = 'cp312-cp312-' + ('win_amd64' if platform == 'win32' else
+                           'macosx_13_0_' + arch if platform == 'darwin' else 'linux_x86_64')
     entries = {**pure, **notices, **licenses, **native,
                qa.DIST + '/METADATA': b'Name: vispy\nVersion: 0.17.0+vulkan.1\nLicense-Expression: AGPL-3.0-only\nDescription-Content-Type: text/markdown\n\n',
                qa.DIST + '/WHEEL': ('Wheel-Version: 1.0\nRoot-Is-Purelib: false\nTag: ' + tag + '\n\n').encode()}
@@ -46,6 +50,33 @@ def sample(platform='win32'):
               'native_hashes': {n: qa.sha(d) for n, d in native.items()},
               'suffix': suffix, 'platform': platform, 'tag': tag}
     return entries, inputs
+
+
+@pytest.mark.parametrize('arch', ['arm64', 'x86_64'])
+def test_metal_archive_byte_check_is_not_graphics_qualification(arch):
+    entries, inputs = sample('darwin', arch)
+    result = qa.audit_archive(wheel_bytes(entries), **inputs)
+    assert result['artifact_admitted'] is False and result['producer_admitted'] is False
+    name = next(iter(inputs['native_hashes']))
+    payload = bytearray(entries[name])
+    struct.pack_into('<I', payload, 4, 0x01000007 if arch == 'arm64' else 0x0100000c)
+    entries[name] = bytes(payload)
+    inputs['native_hashes'][name] = qa.sha(entries[name])
+    with pytest.raises(ValueError, match='architecture differs'):
+        qa.audit_archive(wheel_bytes(entries), **inputs)
+
+
+@pytest.mark.parametrize('mutation', ['tag', 'magic', 'truncated'])
+def test_metal_archive_rejects_incompatible_tag_or_macho_header(mutation):
+    entries, inputs = sample('darwin')
+    if mutation == 'tag':
+        inputs['tag'] = 'cp312-cp312-macosx_12_0_arm64'
+    else:
+        name = next(iter(inputs['native_hashes']))
+        entries[name] = b'wrong' if mutation == 'truncated' else b'nope' + entries[name][4:]
+        inputs['native_hashes'][name] = qa.sha(entries[name])
+    with pytest.raises(ValueError):
+        qa.audit_archive(wheel_bytes(entries), **inputs)
 
 
 def wheel_bytes(entries, change_record=None):

@@ -26,9 +26,19 @@ approval. Managed installed targets/caches are cleaned. Run119 renews candidate
 source/profile/CI-input bindings without carrying forward old wheel admission.
 The prior milestone remains qualified; these successor wheels are not admitted.
 
-Next: wire the explicit Python-only packaging route into CI reuse entry points,
-obtain renewed candidate/native-reuse reviews, and complete applicable original
-installed observation/control, current-head CI and promotion checks.
+Runs120-122 now wire explicit Python-only renewal into Linux and experimental
+Metal CI reuse, preserving default unchanged-wheel behavior and all native
+production/metadata guards. The final 125 controls pass. Actual retained Linux
+proof reproduces the tested successor; both original Metal architectures also
+pass native-history and archive joins with two Python replacements. No Mac code
+was executed. Windows/Linux archives still reproduce byte-for-byte under the
+current auditor. Both adapters have independent bounded source approval, and
+managed scratch is cleaned. Tool/policy bindings are refreshed without changing
+runtime/profile inputs, requested scope, ledger or prior milestone evidence.
+
+Next: obtain renewed exact candidate/source/scope/native-reuse approvals and
+complete applicable original installed observation/control, current-head CI and
+promotion checks before pushing and merging the follow-up.
 Continue supported-feature fixes and named route-map families in bounded
 packets. Require a practical VisPy compatibility baseline and documented,
 tested differences; complete upstream parity is not the release target.

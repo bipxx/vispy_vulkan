@@ -2,7 +2,7 @@
   "schema": 1,
   "phase": "development",
   "id": "tk-state-resource-1",
-  "manifest_sha256": "ab4f6412579dc6b0a695458921836c7596bcf3631ff15b0a07c5fa9230dc51bc",
+  "manifest_sha256": "fa84cf3f6e18bf748251444b4ea4e1ca8acf38d3abfbb882b0831d60a581dd8a",
   "product_source_commit": "5c7d1273bc3471136d87f730482e07a679e0e00e",
   "upstream_commit": "117b054598f4758b598f4b8f48feea48c11fe7b0",
   "ledger": {
@@ -1232,15 +1232,15 @@
     },
     {
       "path": "compat/qualification-ci.json",
-      "sha256": "991b650f37ffd71852fc378b5c553c3776fdbdf7884a4e06be2ed9b17a1561ff"
+      "sha256": "9a1c9ea7c9d9adf2f9180fee5ef3ada08b092f68c64445c08d840365d0a8b3e9"
     },
     {
       "path": "tools/qualification_artifact.py",
-      "sha256": "62aa56667ac9e9f3bdac9bdcb87f14a4e9e442eef25b7abc744dc029cf12e04c"
+      "sha256": "65ae2431ac46c49a27c94f6be1b5d2e5240a87bae8038f20e38452c6c5f17909"
     },
     {
       "path": "tools/repackage_python_wheel.py",
-      "sha256": "ca5db394dd4a3fb54b0f5d28758aa4fbe48785a7d0c299ce2beabd83dfc4b266"
+      "sha256": "6d9adce9b277d14ce93dd6409f5db87497c9024a596f3621d3f0225144980fa7"
     },
     {
       "path": "compat/qualification-artifact.schema.json",
@@ -1284,7 +1284,7 @@
     },
     {
       "path": "tools/reuse_linux_ci.py",
-      "sha256": "3817cfeb5bd8f08f4e5c2a3093c9d7c5dd0ac36c2a184dfc8d32fea7c3a6c41c"
+      "sha256": "9054832051e3fe29331d328a52395ccbfa56a46eb08749497cb47bdbe1dc4ec8"
     },
     {
       "path": "compat/linux-ci-reuse.json",
@@ -1292,11 +1292,11 @@
     },
     {
       "path": "tools/reuse_metal_ci.py",
-      "sha256": "647fe837a30a9b81c3fc6dcace15312e01cc0458f8dc6d1e020f93635c80fef4"
+      "sha256": "4c5f7366cd75a81f658e72511e0ef406ee873bcf4c177db79fc8f6dca30e2776"
     },
     {
       "path": "compat/metal-ci-reuse.json",
-      "sha256": "7ff9d332b81b6dabacf2a131141228f071f8d9f85649e03b3e17b5971afb6bb5"
+      "sha256": "b5a7ecca237dbf4bdd9b144fc46428811b66e5738bd02a42ac4188edb098e761"
     },
     {
       "path": "compat/build-profiles/metal-ci-native.json",
@@ -1320,11 +1320,11 @@
     },
     {
       "path": ".github/workflows/linux-vulkan.yml",
-      "sha256": "9237e98216a69e9245a9bc9771492e3c07669c0127ad6f9529c17b8570dc7864"
+      "sha256": "af2724d951e3f202417feb01a4e210654349537ac2bb41f5d60cdfdb7376f43c"
     },
     {
       "path": ".github/workflows/metal-wheel.yml",
-      "sha256": "e9da4ffcb0ff93d3e9323a34fad57126964076a4c3b5b1d8526f5394ff012b16"
+      "sha256": "92e21ec0a4940ec36d60eba55a0dd9443ce608ab3c34bd49b88a92aef222de9d"
     },
     {
       "path": "tools/no_opengl/policy.py",

@@ -96,6 +96,43 @@ def test_reuse_reports_are_immutable(tmp_path):
     with pytest.raises(ValueError, match='differs'): reuse.write(path, {'admitted': True})
 
 
+@pytest.mark.parametrize('mutation', ['native', 'harness', 'license'])
+def test_native_or_notice_changes_still_reject_explicit_python_packaging(tmp_path, monkeypatch, mutation):
+    from tools import qualification_native
+    monkeypatch.syspath_prepend(str(reuse.ROOT / 'cmake'))
+    source = tmp_path / 'source'
+    workspace = tmp_path / 'workspace'
+    workspace.mkdir()
+    paths = {'native': 'cpp/render.cpp', 'harness': 'tests/contract.cpp', 'license': 'LICENSE'}
+    for name in paths.values():
+        path = source / name
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_bytes(b'original')
+    def save(path, value):
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(json.dumps(value))
+    schema = source / reuse.native.SCHEMA
+    schema.parent.mkdir(parents=True, exist_ok=True)
+    schema.write_bytes(b'{}')
+    before = {name: reuse.digest(source / name) for name in paths.values()}
+    save(source / 'compat/candidates/tk-state-resource-1/candidate.json', {'runtime_inputs': {'path': 'runtime.json'}})
+    save(source / 'runtime.json', {'python': [], 'licenses': [{'path': 'LICENSE', 'sha256': before['LICENSE']}]})
+    save(workspace / 'state.json', {'evidence': '/original'})
+    save(workspace / 'before.json', before)
+    capture = {'state': {'path': 'state.json'}, 'files': [
+        {'origin': '/original/source-before.json', 'file': {'path': 'before.json'}}]}
+    monkeypatch.setattr(reuse.native, 'capture_from_inventory', lambda *args: capture)
+    monkeypatch.setattr(qualification_native, 'source_inputs', lambda *args: {
+        name: before[name] for name in ('cpp/render.cpp', 'tests/contract.cpp')})
+    def unexpected_native(*args):
+        pytest.fail('Changed input reached native validation/package assembly')
+    monkeypatch.setattr(reuse.native, 'validate_capture', unexpected_native)
+    (source / paths[mutation]).write_bytes(b'changed')
+    with pytest.raises(ValueError, match='Changed native/harness/package input'):
+        reuse.validate_inputs({}, {'production_sha256': 'a' * 64}, source, workspace,
+                              package_current_python=True)
+
+
 @pytest.mark.parametrize('mutation', [None, 'native', 'harness', 'python', 'license', 'wheel'])
 def test_current_input_changes_stop_reuse_before_consumer_install(tmp_path, monkeypatch, mutation):
     # This isolates input selection. Full provenance semantics are independently

@@ -1,12 +1,13 @@
 # SPDX-License-Identifier: AGPL-3.0-only
 """Real archive/RECORD joins with synthetic native images; no build admission."""
 import io
+import json
 import zipfile
 
 import pytest
 
 from tools import qualification_artifact as qa
-from tools.repackage_python_wheel import repackage
+from tools.repackage_python_wheel import repackage, repackage_from_source
 from test_qualification_artifact import sample, wheel_bytes
 
 
@@ -73,3 +74,59 @@ def test_replacement_must_be_frozen_bytes():
     entries, inputs = sample()
     with pytest.raises(ValueError, match='must be bytes'):
         repackage(wheel_bytes(entries), {'vispy/__init__.py': bytearray(b'changed')}, **inputs)
+
+
+@pytest.fixture
+def source_case(tmp_path):
+    entries, inputs = sample('linux')
+    source = tmp_path / 'source'
+    source.mkdir()
+    for name, payload in entries.items():
+        if name == qa.runtime_package.MEMBER:
+            relative = 'compat/runtime-package.json'
+        elif name in inputs['pure_hashes']:
+            relative = 'src/' + name
+        elif name in inputs['notices']:
+            base = name.removeprefix('vispy/_licenses/')
+            relative = base if base in ('LICENSE', 'LICENSE-BSD', 'LICENSING.md') else 'third_party/licenses/' + base
+        else:
+            continue
+        path = source / relative
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_bytes(payload)
+    (source / 'README.md').write_bytes(b'Synthetic original README\n')
+    (source / 'pyproject.toml').write_bytes(b'license-files = ["LICENSE", "LICENSE-BSD", "LICENSING.md"]\n')
+    before = {p.relative_to(source).as_posix(): qa.sha(p.read_bytes()) for p in source.rglob('*') if p.is_file()}
+    return source, entries, inputs, before
+
+
+def test_source_package_route_changes_python_with_frozen_metadata_and_notices(source_case):
+    source, entries, inputs, before = source_case
+    (source / 'src/vispy/__init__.py').write_bytes(b'# Fixed Python\n')
+    output, report = repackage_from_source(wheel_bytes(entries), source, before, inputs['native_hashes'],
+        platform='linux', suffix=inputs['suffix'], tag=inputs['tag'])
+    assert report['changed_members'] == ['vispy/__init__.py']
+    assert report['original_source_hashes'] == inputs['pure_hashes']
+    assert report['current_source_hashes'] == qa.runtime_package.source_package_hashes(source)
+    assert report['unchanged_metadata_inputs']['README.md'] == before['README.md']
+    with zipfile.ZipFile(io.BytesIO(output)) as archive:
+        assert archive.read('vispy/__init__.py') == b'# Fixed Python\n'
+
+
+@pytest.mark.parametrize('name', ['README.md', 'pyproject.toml', 'compat/runtime-package.json',
+                                 'LICENSE-BSD', 'third_party/licenses/vispy-LICENSE.txt'])
+def test_source_package_route_rejects_changed_metadata_or_notices(source_case, name):
+    source, entries, inputs, before = source_case
+    path = source / name
+    path.write_bytes(path.read_bytes() + b' ')
+    with pytest.raises(ValueError, match='Changed or missing original package metadata/notice'):
+        repackage_from_source(wheel_bytes(entries), source, before, inputs['native_hashes'],
+            platform='linux', suffix=inputs['suffix'], tag=inputs['tag'])
+
+
+def test_source_package_route_requires_original_pure_source_map(source_case):
+    source, entries, inputs, before = source_case
+    del before['src/vispy/__init__.py']
+    with pytest.raises(ValueError, match='source map lacks'):
+        repackage_from_source(wheel_bytes(entries), source, before, inputs['native_hashes'],
+            platform='linux', suffix=inputs['suffix'], tag=inputs['tag'])

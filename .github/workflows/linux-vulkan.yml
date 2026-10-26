@@ -8,6 +8,8 @@ on:
       - 'tools/run_linux_native_contracts.py'
       - 'tools/linux_ci_lifecycle.py'
       - 'tools/reuse_linux_ci.py'
+      - 'tools/repackage_python_wheel.py'
+      - 'tools/qualification_artifact.py'
       - 'tools/qualification_linux_native.py'
       - 'tools/qualification_native.py'
       - 'compat/linux-ci-reuse.json'
@@ -123,7 +125,7 @@ jobs:
         run: |
           /usr/bin/python3 -B tools/linux_ci_lifecycle.py --state "$CI_STATE" run --phase reuse -- \
             "$BUILD_PYTHON" -B tools/reuse_linux_ci.py --workspace "$DRIVER_WORKSPACE" \
-            --run-id "$NATIVE_RUN" --owner ci
+            --run-id "$NATIVE_RUN" --owner ci --package-current-python
       - name: Build and verify pinned software Vulkan clipping repair
         if: env.NATIVE_MODE == 'fresh'
         run: |

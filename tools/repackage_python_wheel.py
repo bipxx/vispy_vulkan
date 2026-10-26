@@ -11,6 +11,7 @@ import base64
 import csv
 import hashlib
 import io
+from pathlib import Path
 import zipfile
 
 try:
@@ -68,3 +69,38 @@ def repackage(data, replacements, **original_inputs):
                         changed_members=sorted(changed), original_sha256=archive_audit.sha(data),
                         wheel_sha256=archive_audit.sha(output), artifact_admitted=False,
                         native_rebuilt=False, audit=audited)
+
+
+def repackage_from_source(data, source, original_sources, native_hashes, *, platform, suffix, tag):
+    """Keep original metadata/manifest/notices while updating declared sources.
+
+    Native production validation belongs to the caller. These checks do not
+    replace it: they join an original source map to an exact original archive
+    and the current pure sources before assembling a successor.
+    """
+    source = Path(source)
+    manifest = archive_audit.runtime_package.load_manifest(source)
+    current = archive_audit.runtime_package.source_package_hashes(source)
+    origins = {member: ('compat/runtime-package.json' if member == archive_audit.runtime_package.MEMBER
+                        else 'src/' + member) for member in current}
+    metadata = {'README.md', 'pyproject.toml', 'compat/runtime-package.json'}
+    metadata.update(name if name in ('LICENSE', 'LICENSE-BSD', 'LICENSING.md')
+                    else 'third_party/licenses/' + name for name in manifest['notice_files'])
+    for name in sorted(metadata):
+        if original_sources.get(name) != archive_audit.sha((source / name).read_bytes()):
+            raise ValueError('Changed or missing original package metadata/notice input: ' + name)
+    if any(name not in original_sources for name in origins.values()):
+        raise ValueError('Original source map lacks a declared package member')
+    original = {member: original_sources[name] for member, name in origins.items()}
+    replacements = {member: (source / origins[member]).read_bytes() for member in current
+                    if current[member] != original[member]}
+    result, report = repackage(data, replacements,
+        manifest_data=(source / 'compat/runtime-package.json').read_bytes(), pure_hashes=original,
+        notices=archive_audit.source_notices(source),
+        distribution_licenses=archive_audit.source_distribution_licenses(source),
+        native_hashes=native_hashes, platform=platform, suffix=suffix, tag=tag)
+    if archive_audit.runtime_package.source_package_hashes(source) != current:
+        raise ValueError('Source package changed during archive assembly')
+    report.update(current_source_hashes=current, original_source_hashes=original,
+                  unchanged_metadata_inputs={name: original_sources[name] for name in sorted(metadata)})
+    return result, report
