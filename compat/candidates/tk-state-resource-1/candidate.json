@@ -2,7 +2,7 @@
   "schema": 1,
   "phase": "development",
   "id": "tk-state-resource-1",
-  "manifest_sha256": "6884549eee35028d6130e1ef3502f898b31f856f3677c19aab8d519b609eba52",
+  "manifest_sha256": "d42b947a2820d44f2a74dea49191b3c93d2f980f14e78a9c7f2d407ab0af2a62",
   "product_source_commit": "9ef9765552c41c84d82d69b44756d5925b4d3cd3",
   "upstream_commit": "117b054598f4758b598f4b8f48feea48c11fe7b0",
   "ledger": {
@@ -1164,8 +1164,8 @@
   ],
   "reviews": {
     "source": {
-      "path": "compat/candidates/tk-state-resource-1/reviews/source-7c561424-astra.json",
-      "sha256": "6b124e38a28e002368bfe6125d1567f4a483f6f3d0227ab97ed112b865a8accd"
+      "path": "compat/candidates/tk-state-resource-1/reviews/source-106756f3-astra.json",
+      "sha256": "239a17fa6244db162d28a45772b381e60712abc8077fbccb79d3dc16f6afb477"
     },
     "scope": {
       "path": "compat/candidates/tk-state-resource-1/reviews/scope-7c561424-astra.json",

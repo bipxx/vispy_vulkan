@@ -1,0 +1,156 @@
+{
+  "schema": 1,
+  "kind": "independent-source-renewal-report",
+  "status": "APPROVED_BOUNDED_SOURCE_RENEWAL",
+  "independent": true,
+  "reviewer": "/root/astra_current_plan_max_review",
+  "publication_head": "106756f3c1c52c233ffc64fc89cb0c684493593b",
+  "baseline_publication_head": "948b0d15d03977ec3837cc549dd61ed6fad027d5",
+  "candidate_scope_sha256": "180a3d4e1579347e835ac3a98818a34a32932cd3af0fca7005987fa300d32e4d",
+  "product_source_commit": "9ef9765552c41c84d82d69b44756d5925b4d3cd3",
+  "baseline_review": {
+    "path": "build/runs/loader-framing-105/review/source-review-astra.json",
+    "sha256": "e5e270ff2dab14b90fcbeb30b9b43de8b90a4461dd0330d290120a0c80e7885c"
+  },
+  "baseline_approval": {
+    "path": "build/runs/loader-framing-105/review/source-approval-astra.json",
+    "sha256": "6b124e38a28e002368bfe6125d1567f4a483f6f3d0227ab97ed112b865a8accd"
+  },
+  "source_freeze": {
+    "path": "build/runs/ci-platform-selection-111/test-source-freeze.json",
+    "sha256": "16bee93673411e8d0a5841182051d747c76b3b6a0601a2b60b01e18126097122"
+  },
+  "findings": [],
+  "inspection": [
+    "Independently inspected git diff 948b0d15..106756f3: exactly one changed path, tests/no_opengl/test_probe_failures.py. Its canonical and publication bytes match the frozen Git blob and test-source-freeze SHA256 5c7edcc6a7234f44fcc513e029024a5b79aa3e86a4c944add3b142c888ed2c9c.",
+    "The Linux-native function is defined only when sys.platform == linux. Its skip decorator is removed; AST comparison confirms its full function body, actual C compiler invocation, every-byte-split cases, three malformed cases, final-tail case and all assertions are unchanged. This is applicability at collection, not successful credit for an unexecuted Linux case.",
+    "Inspected unchanged cpu-contract.yml: all five Linux x86_64 CPython matrix variants select the containing module unconditionally. Windows and macOS lack this platform-specific test definition. Compiler absence or a failed production C harness still fails on Linux.",
+    "Inspected original qualification_gate.py and run111 verify.py. The runner invokes the original gate via runpy, does not patch its evidence hooks, and Windows extracts the exact compatibility-inventory test-module selection from the workflow. The gate still requires a nonempty collection, pytest exit zero, no skipped report and a passing call for every collected node.",
+    "Inspected original Windows gate report, process receipt, log and XML: 814 unique collected cases; exactly 814 passed setup, call and teardown records; zero skipped/failing records; XML 814/0/0/0; actual exit 0 and child_waited true. Linux focused evidence executes the actual production C test: one collected case, three passed phases, XML 1/0/0/0, actual exit 0 and child_waited true.",
+    "Recomputed current candidate scope as 180a3d4e1579347e835ac3a98818a34a32932cd3af0fca7005987fa300d32e4d. Checked exact unchanged run105 native reuse proposal files against their request hashes and recomputed both canonical reuse digests; the earlier independent native producer audit remains applicable.",
+    "The one-file Git diff changes no shipping Python/native source, renderer, compiler, SDK, ABI, collector, workflow, qualification validator, candidate selection or installed scenario fixture. The current Windows107 and WSL108 installed evidence therefore needs no graphics rerun for this change; its final subject binding and impact review remain separate."
+  ],
+  "validation": {
+    "windows": {
+      "collected": 814,
+      "passed_call": 814,
+      "passed_phases": 2442,
+      "skipped": 0,
+      "actual_exit": 0,
+      "child_waited": true
+    },
+    "linux_focused": {
+      "collected": 1,
+      "passed_call": 1,
+      "passed_phases": 3,
+      "skipped": 0,
+      "actual_exit": 0,
+      "child_waited": true
+    },
+    "tests_rerun_by_reviewer": false
+  },
+  "native_reuse_links": [
+    "ac4c636b356d088ca4f7aa35fea238b3bc253c8e573f74742c66b6f9a3b2825b",
+    "71e6667bf1ecb06020354a59231f45aa7d3ad3303d914c5f94b25a0a3c888be6"
+  ],
+  "limitations": [
+    "This is a focused independent source renewal incorporating the retained cumulative source review, not a new full implementation audit or semantic scope approval.",
+    "The local Windows full compatibility selection and focused Linux production-reader run do not establish a current-head hosted CI pass or a completed macOS/Linux matrix. Original failed 948b CI observations remain failures.",
+    "No artifact admission, installed qualification renewal, final subject/head impact approval, promotion or release approval is given. Candidate binding, run111 terminal retention/cleanup and the final subject/head are coordinator obligations reviewed separately.",
+    "The 120 practical criteria and 142 separate parent obligations remain unchanged. This grants no full upstream parity, optical parity, native Linux GPU or Metal hardware approval.",
+    "Native reuse retains the original Windows run94 outer exit 1 with run95 revalidation, the original Linux run89 production/capture and its exact cp312 ABI relation. No original producer outcome is rewritten."
+  ],
+  "inputs": [
+    {
+      "path": "build/runs/loader-framing-105/review/source-review-astra.json",
+      "sha256": "e5e270ff2dab14b90fcbeb30b9b43de8b90a4461dd0330d290120a0c80e7885c"
+    },
+    {
+      "path": "build/runs/loader-framing-105/review/source-approval-astra.json",
+      "sha256": "6b124e38a28e002368bfe6125d1567f4a483f6f3d0227ab97ed112b865a8accd"
+    },
+    {
+      "path": "build/runs/ci-platform-selection-111/test-source-freeze.json",
+      "sha256": "16bee93673411e8d0a5841182051d747c76b3b6a0601a2b60b01e18126097122"
+    },
+    {
+      "path": "build/runs/loader-framing-105/native-reuse-request.json",
+      "sha256": "43b276cb1b2f9d33b02c5420947dcf039002b2252b9dbedcdc2b13a8686c16f8"
+    },
+    {
+      "path": "build/runs/loader-framing-105/native-reuse-proposal.json",
+      "sha256": "ed409c6dbf0cb43b415af4b3492e188df8839b54c72991c4a59d3203c17b4556"
+    },
+    {
+      "path": "build/runs/loader-framing-105/linux-native-reuse-request.json",
+      "sha256": "19ac80b62790d7cef4be74f475d11d6861df491af46f7c95409da03eda58c94b"
+    },
+    {
+      "path": "build/runs/loader-framing-105/linux-native-reuse-proposal.json",
+      "sha256": "0f24be893d3c7badad8884fa0c3ba1b9d4f075e23b0d62cafcbadf836084b7bb"
+    },
+    {
+      "path": "tests/no_opengl/test_probe_failures.py",
+      "sha256": "5c7edcc6a7234f44fcc513e029024a5b79aa3e86a4c944add3b142c888ed2c9c"
+    },
+    {
+      "path": "tests/no_opengl/data/loader_records.c",
+      "sha256": "b218f2b59b6d9d8049e138287e777b86a5b587c2fcbf31ca219505a34ba4fd3d"
+    },
+    {
+      "path": ".github/workflows/cpu-contract.yml",
+      "sha256": "a386023e1cffbd4a0c6be3bd9883ea67522cec27cf0d30688fee301539338321"
+    },
+    {
+      "path": ".github/workflows/qualification_gate.py",
+      "sha256": "26969e912f921cc57200f66d62a6b17194541006a11b9d5b0bda95c63ac51e92"
+    },
+    {
+      "path": "tools/compatibility_evidence.py",
+      "sha256": "c89b4dc434b344597d7a559aeb9b383243740176b51fd28e3cbd5f459f0eec28"
+    },
+    {
+      "path": "tools/no_opengl/negative_controls.py",
+      "sha256": "90fce090dd1b39fa78b8d212b490fc96b536c3132d48e5de889c16ea3935acb4"
+    },
+    {
+      "path": "build/runs/ci-platform-selection-111/verify.py",
+      "sha256": "57139c78e331e1871a79ac32f328b3c15b96428d1d306cb8037a1e509c2f3d54"
+    },
+    {
+      "path": "build/runs/ci-platform-selection-111/windows-gate.json",
+      "sha256": "677d7802126e590c1e0a1cb21a0ef85d61abc2894808327a6f333d69d0fee4ca"
+    },
+    {
+      "path": "build/runs/ci-platform-selection-111/windows-process.json",
+      "sha256": "36f6ad8068e13380977d4cc318b5ef54184573873fbc8a60c1952acc9ba033d4"
+    },
+    {
+      "path": "build/runs/ci-platform-selection-111/windows.xml",
+      "sha256": "95ab2c5d6c6350deaa38e65ebcfbcf2f79979a5f36a8f272fb48952012f0a87b"
+    },
+    {
+      "path": "build/runs/ci-platform-selection-111/windows.log",
+      "sha256": "1bc7b00bb31fd356a2fe3a65b88610bfde7def451d37e07a11d87edda76cec0b"
+    },
+    {
+      "path": "build/runs/ci-platform-selection-111/linux-gate.json",
+      "sha256": "c7e44f970d009c27cda6fbf188302e48f4977244c13a029200a15d9fccbc4731"
+    },
+    {
+      "path": "build/runs/ci-platform-selection-111/linux-process.json",
+      "sha256": "ae96fdda3bd7bb52b6f02a70744942436a55a2ce399adc5c077683f09466e6d3"
+    },
+    {
+      "path": "build/runs/ci-platform-selection-111/linux.xml",
+      "sha256": "a83037826f6ade6d94ad336e00fe098292cd39dbdfb85ed8bf488c409ecc7105"
+    },
+    {
+      "path": "build/runs/ci-platform-selection-111/linux.log",
+      "sha256": "8964ec0c2d96a99a0012763cb299d0385e0125f9a98c492b18fdae2e013f728a"
+    }
+  ],
+  "artifact_admitted": false,
+  "ci_approved": false,
+  "promotion_approved": false
+}
