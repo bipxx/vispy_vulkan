@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "id": "tk-cp312-1",
+  "status": "ASSEMBLED_NOT_PUBLISHED",
+  "archive_filename": "vispy-vulkan-tk-cp312-wheelhouse-1.zip",
+  "archive_sha256": "d0b801a09c831a901ae4a03dcd1447c348efbfa5da5cedc6048e412de66cbfc5",
+  "archive_bytes": 50224956,
+  "download_url": null,
+  "distribution_manifest_sha256": "5f9a04f005e48399c21ee855321f4e0a01f8909b99297df383d1ef67ca750897",
+  "unique_wheels": 10,
+  "payload_files": 18,
+  "checks": {
+    "two_assemblies_byte_identical": true,
+    "all_payload_members_verified": true,
+    "offline_windows_plan_packages": 6,
+    "offline_linux_glibc239_plan_packages": 6,
+    "installation_or_rendering_rerun": false
+  },
+  "scope": "Wheels only; supply Python/Tcl/Tk, Vulkan loader/driver and OS/display prerequisites separately. Installation does not qualify a new runtime profile.",
+  "source_tests_pr": "https://github.com/bipxx/vispy_vulkan/pull/18"
+}

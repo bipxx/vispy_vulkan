@@ -2,9 +2,9 @@
 
 A VisPy 0.17.0 compatibility fork using Dawn for Vulkan rendering on Windows and Linux, with a Metal path for macOS.
 
-Use the [strict offline CPython 3.12 installation guide](docs/offline-install-cp312.md) for the selected no-OpenGL runtime profiles. The [current qualification matrix](compat/no-opengl-matrix.json) and [runtime-removal status](docs/opengl-removal-status.md) identify the exact tested artifacts and environments.
+Start with the [qualified Tk compatibility baseline](docs/qualified-tk-baseline.md) for the current Windows GPU and WSL software Vulkan milestones, their exact wheel identities and delivery limits. Supported workflows retain familiar VisPy behavior; tested improvements and documented differences are accepted. Full upstream parity is not the release target.
 
-Thirteen of fourteen mandatory rows are qualified, including every WSL Linux software Vulkan/X11 row. Windows napari-threedee startup remains open because of intermittent OLE window-registration hangs. CI and focused final-artifact checks are still running. macOS Metal remains experimental; native Linux hardware and broader performance qualification remain separate.
+The [offline CPython 3.12 installation guide](docs/offline-install-cp312.md) describes a separate, older Qt bundle. Its [qualification matrix](compat/no-opengl-matrix.json) records thirteen qualified rows out of fourteen; Windows napari-threedee startup remains unresolved. Those results do not qualify the newer Tk wheels for every Qt or host workflow. macOS Metal remains experimental; native Linux hardware and broader performance qualification remain separate.
 
 ## Build
 

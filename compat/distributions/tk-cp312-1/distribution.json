@@ -1,0 +1,317 @@
+{
+  "schema": 1,
+  "id": "tk-cp312-1",
+  "status": "PREPARED_NOT_DISTRIBUTED",
+  "kind": "wheelhouse-only",
+  "profiles": [
+    {
+      "id": "windows-gpu-tk86-cp312-development",
+      "platform": "windows",
+      "architecture": "x86_64",
+      "python_abi": "cp312",
+      "tested_python": "3.12.8",
+      "tested_tk": "8.6",
+      "tested_device": "NVIDIA RTX 4090 Vulkan",
+      "requirements": "windows-requirements.txt",
+      "vispy": {
+        "filename": "vispy-0.17.0+vulkan.1-cp312-cp312-win_amd64.whl",
+        "sha256": "444402459f79465fb1cb42b0dea55fb7e66ce73c22df9e96017f437786ce0d56",
+        "bytes": 6787452,
+        "native_member": "vispy/_dawn.cp312-win_amd64.pyd",
+        "native_sha256": "3806c42b3f269cc88f0954e0478111f2c6b547646840a1dff6269fd2e737c830",
+        "original_license_members": {
+          "vispy/_licenses/abseil-LICENSE.txt": "f54fff0b905df5b3464527c652a30e903b172d6dcab4d89b5e6f105d5e4a4603",
+          "vispy/_licenses/dawn-LICENSE.txt": "0493f897193af1796d5054659f45ec7d4c5af648fa67a99f01d30e55cc805abc",
+          "vispy/_licenses/glslang-LICENSE.txt": "7d4c1655be3a4d99e8a4859335e28c8950f2e7f72dcf3eed3379846120f5bf47",
+          "vispy/_licenses/LICENSE": "0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0",
+          "vispy/_licenses/LICENSE-BSD": "a28bb857d763513c810ca843558c12cf97f64b990b855c1ce7f5e291e52fc25c",
+          "vispy/_licenses/LICENSING.md": "e8a28d2d2c78d86fa2b6f83284e8f1a32237f87bfd417fd1cdfc84c8f3ce37f5",
+          "vispy/_licenses/manifest.json": "6aca7efb598d33d28f5258db3825796db5ee199959610bd570734439a16de149",
+          "vispy/_licenses/nanobind-LICENSE.txt": "f305091a4e57805870b217a28ea4b1f16610eece8457d2370f822a9696b75836",
+          "vispy/_licenses/OpenSans-Apache-2.0.txt": "f54fff0b905df5b3464527c652a30e903b172d6dcab4d89b5e6f105d5e4a4603",
+          "vispy/_licenses/robin-map-LICENSE.txt": "1b69097c95e2fa5b011cd3754fa35e10f5ce68172877bc59b89523bcb1b9f951",
+          "vispy/_licenses/spirv-headers-LICENSE.txt": "841a6e68e16bfc98db8eca98d7002d4f2b508c56ce865fd6f1726be30ed489eb",
+          "vispy/_licenses/spirv-headers-MIT.txt": "e841940147d59e33874ee623a6a3ca0574364de359297fbc427b5824cde30957",
+          "vispy/_licenses/spirv-tools-LICENSE.txt": "3ddf9be5c28fe27dad143a5dc76eea25222ad1dd68934a047064e56ed2fa40c5",
+          "vispy/_licenses/THIRD-PARTY-NOTICES.txt": "5d0535f3b27d7fbe0326ef150f705a8c2e71c39e2ebea87fd0bf949859279333",
+          "vispy/_licenses/vispy-LICENSE.txt": "a28bb857d763513c810ca843558c12cf97f64b990b855c1ce7f5e291e52fc25c",
+          "vispy/_licenses/vulkan-headers-Apache-2.0.txt": "3ddf9be5c28fe27dad143a5dc76eea25222ad1dd68934a047064e56ed2fa40c5",
+          "vispy/_licenses/vulkan-headers-LICENSE.txt": "a2d4407962c909f84807774cbfe9fad05a1ebe972472c08ed5ad43d482afd288",
+          "vispy/_licenses/vulkan-headers-MIT.txt": "051daae2dae99c2b0fc9d8363cf704b9456ae0e3c89589ac755d506a0b2c10c3",
+          "vispy/_licenses/vulkan-loader-LICENSE.txt": "557bd2cc07eff373f3f26c8d5726fefe8e7fc4add97796c2fbf24f74a200214a",
+          "vispy/_licenses/vulkan-utility-libraries-Apache-2.0.txt": "3ddf9be5c28fe27dad143a5dc76eea25222ad1dd68934a047064e56ed2fa40c5",
+          "vispy/_licenses/vulkan-utility-libraries-CC-BY-4.0.txt": "4500200b91acb1324538d8e8f9665d5f4142d3f1c5cd9730564cf1895b6170f7",
+          "vispy/_licenses/vulkan-utility-libraries-LICENSE.txt": "fb0245cd3d866045abba509dc85905a7c2cd1f6642d679d9857e85deb82bfcd5",
+          "vispy/_licenses/webgpu-headers-LICENSE.txt": "55fdaed683a2d7330a4102faf61f45ec12a0526aada329c4f89f7df0a523116a",
+          "vispy-0.17.0+vulkan.1.dist-info/licenses/LICENSE": "0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0",
+          "vispy-0.17.0+vulkan.1.dist-info/licenses/LICENSE-BSD": "a28bb857d763513c810ca843558c12cf97f64b990b855c1ce7f5e291e52fc25c",
+          "vispy-0.17.0+vulkan.1.dist-info/licenses/LICENSING.md": "e8a28d2d2c78d86fa2b6f83284e8f1a32237f87bfd417fd1cdfc84c8f3ce37f5",
+          "vispy-0.17.0+vulkan.1.dist-info/licenses/third_party/licenses/abseil-LICENSE.txt": "f54fff0b905df5b3464527c652a30e903b172d6dcab4d89b5e6f105d5e4a4603",
+          "vispy-0.17.0+vulkan.1.dist-info/licenses/third_party/licenses/dawn-LICENSE.txt": "0493f897193af1796d5054659f45ec7d4c5af648fa67a99f01d30e55cc805abc",
+          "vispy-0.17.0+vulkan.1.dist-info/licenses/third_party/licenses/glslang-LICENSE.txt": "7d4c1655be3a4d99e8a4859335e28c8950f2e7f72dcf3eed3379846120f5bf47",
+          "vispy-0.17.0+vulkan.1.dist-info/licenses/third_party/licenses/nanobind-LICENSE.txt": "f305091a4e57805870b217a28ea4b1f16610eece8457d2370f822a9696b75836",
+          "vispy-0.17.0+vulkan.1.dist-info/licenses/third_party/licenses/OpenSans-Apache-2.0.txt": "f54fff0b905df5b3464527c652a30e903b172d6dcab4d89b5e6f105d5e4a4603",
+          "vispy-0.17.0+vulkan.1.dist-info/licenses/third_party/licenses/robin-map-LICENSE.txt": "1b69097c95e2fa5b011cd3754fa35e10f5ce68172877bc59b89523bcb1b9f951",
+          "vispy-0.17.0+vulkan.1.dist-info/licenses/third_party/licenses/spirv-headers-LICENSE.txt": "841a6e68e16bfc98db8eca98d7002d4f2b508c56ce865fd6f1726be30ed489eb",
+          "vispy-0.17.0+vulkan.1.dist-info/licenses/third_party/licenses/spirv-headers-MIT.txt": "e841940147d59e33874ee623a6a3ca0574364de359297fbc427b5824cde30957",
+          "vispy-0.17.0+vulkan.1.dist-info/licenses/third_party/licenses/spirv-tools-LICENSE.txt": "3ddf9be5c28fe27dad143a5dc76eea25222ad1dd68934a047064e56ed2fa40c5",
+          "vispy-0.17.0+vulkan.1.dist-info/licenses/third_party/licenses/THIRD-PARTY-NOTICES.txt": "5d0535f3b27d7fbe0326ef150f705a8c2e71c39e2ebea87fd0bf949859279333",
+          "vispy-0.17.0+vulkan.1.dist-info/licenses/third_party/licenses/vispy-LICENSE.txt": "a28bb857d763513c810ca843558c12cf97f64b990b855c1ce7f5e291e52fc25c",
+          "vispy-0.17.0+vulkan.1.dist-info/licenses/third_party/licenses/vulkan-headers-Apache-2.0.txt": "3ddf9be5c28fe27dad143a5dc76eea25222ad1dd68934a047064e56ed2fa40c5",
+          "vispy-0.17.0+vulkan.1.dist-info/licenses/third_party/licenses/vulkan-headers-LICENSE.txt": "a2d4407962c909f84807774cbfe9fad05a1ebe972472c08ed5ad43d482afd288",
+          "vispy-0.17.0+vulkan.1.dist-info/licenses/third_party/licenses/vulkan-headers-MIT.txt": "051daae2dae99c2b0fc9d8363cf704b9456ae0e3c89589ac755d506a0b2c10c3",
+          "vispy-0.17.0+vulkan.1.dist-info/licenses/third_party/licenses/vulkan-loader-LICENSE.txt": "557bd2cc07eff373f3f26c8d5726fefe8e7fc4add97796c2fbf24f74a200214a",
+          "vispy-0.17.0+vulkan.1.dist-info/licenses/third_party/licenses/vulkan-utility-libraries-Apache-2.0.txt": "3ddf9be5c28fe27dad143a5dc76eea25222ad1dd68934a047064e56ed2fa40c5",
+          "vispy-0.17.0+vulkan.1.dist-info/licenses/third_party/licenses/vulkan-utility-libraries-CC-BY-4.0.txt": "4500200b91acb1324538d8e8f9665d5f4142d3f1c5cd9730564cf1895b6170f7",
+          "vispy-0.17.0+vulkan.1.dist-info/licenses/third_party/licenses/vulkan-utility-libraries-LICENSE.txt": "fb0245cd3d866045abba509dc85905a7c2cd1f6642d679d9857e85deb82bfcd5",
+          "vispy-0.17.0+vulkan.1.dist-info/licenses/third_party/licenses/webgpu-headers-LICENSE.txt": "55fdaed683a2d7330a4102faf61f45ec12a0526aada329c4f89f7df0a523116a"
+        }
+      },
+      "dependencies": [
+        {
+          "name": "freetype-py",
+          "version": "2.5.1",
+          "filename": "freetype_py-2.5.1-py3-none-win_amd64.whl",
+          "sha256": "0b7f8e0342779f65ca13ef8bc103938366fecade23e6bb37cb671c2b8ad7f124",
+          "bytes": 814608,
+          "url": "https://files.pythonhosted.org/packages/93/6e/bd7fbfacca077bc6f34f1a1109800a2c41ab50f4704d3a0507ba41009915/freetype_py-2.5.1-py3-none-win_amd64.whl",
+          "source": {
+            "url": "https://files.pythonhosted.org/packages/d0/9c/61ba17f846b922c2d6d101cc886b0e8fb597c109cedfcb39b8c5d2304b54/freetype-py-2.5.1.zip",
+            "hash": "sha256:cfe2686a174d0dd3d71a9d8ee9bf6a2c23f5872385cf8ce9f24af83d076e2fbd",
+            "size": 851738,
+            "upload-time": "2024-08-29T18:32:26.37Z"
+          }
+        },
+        {
+          "name": "hsluv",
+          "version": "5.0.4",
+          "filename": "hsluv-5.0.4-py2.py3-none-any.whl",
+          "sha256": "0138bd10038e2ee1b13eecae9a7d49d4ec8c320b1d7eb4f860832c792e3e4567",
+          "bytes": 5252,
+          "url": "https://files.pythonhosted.org/packages/96/36/5bddefea3d7adf22a64f9aa9701492f8a9fe6948223f5cf2602c22ec9be7/hsluv-5.0.4-py2.py3-none-any.whl",
+          "source": {
+            "url": "https://files.pythonhosted.org/packages/ac/81/af16607fa045724e515579d312577261b436f36f419e7c677e7e88fcc943/hsluv-5.0.4.tar.gz",
+            "hash": "sha256:2281f946427a882010042844a38c7bbe9e0d0aaf9d46babe46366ed6f169b72e",
+            "size": 543090,
+            "upload-time": "2023-09-11T21:46:52.022Z"
+          }
+        },
+        {
+          "name": "kiwisolver",
+          "version": "1.5.1",
+          "filename": "kiwisolver-1.5.1-cp312-cp312-win_amd64.whl",
+          "sha256": "06a6917674de9e0fe3f66f5430787f59a9f2ddb64af9b714eaec547e29ef5c19",
+          "bytes": 70748,
+          "url": "https://files.pythonhosted.org/packages/6e/7c/7b210498f9f92e1cd7855f260fa69ef056881087b199ee20c208f0e4189a/kiwisolver-1.5.1-cp312-cp312-win_amd64.whl",
+          "source": {
+            "url": "https://files.pythonhosted.org/packages/ba/07/bd78e6a8fae171ea041ef5bba3ed21a003522fa088834b069b1909981f30/kiwisolver-1.5.1.tar.gz",
+            "hash": "sha256:f1303ef2eec81262a4b708c3e858afe58d7c75ad91c1c05266eda7673369859a",
+            "size": 104395,
+            "upload-time": "2026-08-28T10:28:27.153Z"
+          }
+        },
+        {
+          "name": "numpy",
+          "version": "2.5.3",
+          "filename": "numpy-2.5.3-cp312-cp312-win_amd64.whl",
+          "sha256": "0a59a421a32580a009e8a1751345bf829631b990dc1794b80514ab722b435def",
+          "bytes": 12567828,
+          "url": "https://files.pythonhosted.org/packages/3c/a1/accf6d4f0c80c5d9ba9735d6b1550e444180599f34dec69ca01360f717ad/numpy-2.5.3-cp312-cp312-win_amd64.whl",
+          "source": {
+            "url": "https://files.pythonhosted.org/packages/13/01/11703282db468b85f6f7b8c7f22d058de5970d5c7e60a3a8aaa313c3de36/numpy-2.5.3.tar.gz",
+            "hash": "sha256:df2d5874ff183595a4ba404edd04f6bd9b5505c1d7708573f6a6c17489a67563",
+            "size": 20791231,
+            "upload-time": "2026-09-06T16:27:47.073Z"
+          }
+        },
+        {
+          "name": "packaging",
+          "version": "26.3",
+          "filename": "packaging-26.3-py3-none-any.whl",
+          "sha256": "d7193f7c8e4e93f444fde0262bf90af30e16fa0ad0ad44cb553c87339b23cd1c",
+          "bytes": 129956,
+          "url": "https://files.pythonhosted.org/packages/63/34/ba1c580383c9eada3711951fef0795c80b829a078d72188184bcab9dd527/packaging-26.3-py3-none-any.whl",
+          "source": {
+            "url": "https://files.pythonhosted.org/packages/7d/fa/3944b40b07da9ce895c0e6303a5ab7d53da063554f534556b134a54d6093/packaging-26.3.tar.gz",
+            "hash": "sha256:94edc256424af38762eb31306eed28beb9f0efc50a8837492c9d6fd6004aed79",
+            "size": 313412,
+            "upload-time": "2026-08-04T18:15:28.737Z"
+          }
+        }
+      ]
+    },
+    {
+      "id": "wsl-software-tk90-cp31213-development",
+      "platform": "linux",
+      "architecture": "x86_64",
+      "python_abi": "cp312",
+      "tested_python": "3.12.13",
+      "tested_tk": "9.0.3",
+      "tested_device": "WSL Ubuntu 24.04 X11, Mesa 26.1.8 software Vulkan",
+      "requirements": "linux-requirements.txt",
+      "vispy": {
+        "filename": "vispy-0.17.0+vulkan.1-cp312-cp312-linux_x86_64.whl",
+        "sha256": "bd89a9944c71fb3b40260a3197c8f436e7a29021e485ff5f4a561fed907f844a",
+        "bytes": 10537555,
+        "native_member": "vispy/_dawn.cpython-312-x86_64-linux-gnu.so",
+        "native_sha256": "6a8d7287da71017a3a6368c79aa4df4de5f2e2216498859f577b68f8c929e13d",
+        "original_license_members": {
+          "vispy/_licenses/LICENSE": "0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0",
+          "vispy/_licenses/LICENSE-BSD": "a28bb857d763513c810ca843558c12cf97f64b990b855c1ce7f5e291e52fc25c",
+          "vispy/_licenses/LICENSING.md": "e8a28d2d2c78d86fa2b6f83284e8f1a32237f87bfd417fd1cdfc84c8f3ce37f5",
+          "vispy/_licenses/OpenSans-Apache-2.0.txt": "f54fff0b905df5b3464527c652a30e903b172d6dcab4d89b5e6f105d5e4a4603",
+          "vispy/_licenses/THIRD-PARTY-NOTICES.txt": "5d0535f3b27d7fbe0326ef150f705a8c2e71c39e2ebea87fd0bf949859279333",
+          "vispy/_licenses/abseil-LICENSE.txt": "f54fff0b905df5b3464527c652a30e903b172d6dcab4d89b5e6f105d5e4a4603",
+          "vispy/_licenses/dawn-LICENSE.txt": "0493f897193af1796d5054659f45ec7d4c5af648fa67a99f01d30e55cc805abc",
+          "vispy/_licenses/glslang-LICENSE.txt": "7d4c1655be3a4d99e8a4859335e28c8950f2e7f72dcf3eed3379846120f5bf47",
+          "vispy/_licenses/manifest.json": "6aca7efb598d33d28f5258db3825796db5ee199959610bd570734439a16de149",
+          "vispy/_licenses/nanobind-LICENSE.txt": "f305091a4e57805870b217a28ea4b1f16610eece8457d2370f822a9696b75836",
+          "vispy/_licenses/robin-map-LICENSE.txt": "1b69097c95e2fa5b011cd3754fa35e10f5ce68172877bc59b89523bcb1b9f951",
+          "vispy/_licenses/spirv-headers-LICENSE.txt": "841a6e68e16bfc98db8eca98d7002d4f2b508c56ce865fd6f1726be30ed489eb",
+          "vispy/_licenses/spirv-headers-MIT.txt": "e841940147d59e33874ee623a6a3ca0574364de359297fbc427b5824cde30957",
+          "vispy/_licenses/spirv-tools-LICENSE.txt": "3ddf9be5c28fe27dad143a5dc76eea25222ad1dd68934a047064e56ed2fa40c5",
+          "vispy/_licenses/vispy-LICENSE.txt": "a28bb857d763513c810ca843558c12cf97f64b990b855c1ce7f5e291e52fc25c",
+          "vispy/_licenses/vulkan-headers-Apache-2.0.txt": "3ddf9be5c28fe27dad143a5dc76eea25222ad1dd68934a047064e56ed2fa40c5",
+          "vispy/_licenses/vulkan-headers-LICENSE.txt": "a2d4407962c909f84807774cbfe9fad05a1ebe972472c08ed5ad43d482afd288",
+          "vispy/_licenses/vulkan-headers-MIT.txt": "051daae2dae99c2b0fc9d8363cf704b9456ae0e3c89589ac755d506a0b2c10c3",
+          "vispy/_licenses/vulkan-loader-LICENSE.txt": "557bd2cc07eff373f3f26c8d5726fefe8e7fc4add97796c2fbf24f74a200214a",
+          "vispy/_licenses/vulkan-utility-libraries-Apache-2.0.txt": "3ddf9be5c28fe27dad143a5dc76eea25222ad1dd68934a047064e56ed2fa40c5",
+          "vispy/_licenses/vulkan-utility-libraries-CC-BY-4.0.txt": "4500200b91acb1324538d8e8f9665d5f4142d3f1c5cd9730564cf1895b6170f7",
+          "vispy/_licenses/vulkan-utility-libraries-LICENSE.txt": "fb0245cd3d866045abba509dc85905a7c2cd1f6642d679d9857e85deb82bfcd5",
+          "vispy/_licenses/webgpu-headers-LICENSE.txt": "55fdaed683a2d7330a4102faf61f45ec12a0526aada329c4f89f7df0a523116a",
+          "vispy-0.17.0+vulkan.1.dist-info/licenses/LICENSING.md": "e8a28d2d2c78d86fa2b6f83284e8f1a32237f87bfd417fd1cdfc84c8f3ce37f5",
+          "vispy-0.17.0+vulkan.1.dist-info/licenses/LICENSE": "0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0",
+          "vispy-0.17.0+vulkan.1.dist-info/licenses/LICENSE-BSD": "a28bb857d763513c810ca843558c12cf97f64b990b855c1ce7f5e291e52fc25c",
+          "vispy-0.17.0+vulkan.1.dist-info/licenses/third_party/licenses/spirv-headers-MIT.txt": "e841940147d59e33874ee623a6a3ca0574364de359297fbc427b5824cde30957",
+          "vispy-0.17.0+vulkan.1.dist-info/licenses/third_party/licenses/vulkan-headers-LICENSE.txt": "a2d4407962c909f84807774cbfe9fad05a1ebe972472c08ed5ad43d482afd288",
+          "vispy-0.17.0+vulkan.1.dist-info/licenses/third_party/licenses/webgpu-headers-LICENSE.txt": "55fdaed683a2d7330a4102faf61f45ec12a0526aada329c4f89f7df0a523116a",
+          "vispy-0.17.0+vulkan.1.dist-info/licenses/third_party/licenses/dawn-LICENSE.txt": "0493f897193af1796d5054659f45ec7d4c5af648fa67a99f01d30e55cc805abc",
+          "vispy-0.17.0+vulkan.1.dist-info/licenses/third_party/licenses/spirv-headers-LICENSE.txt": "841a6e68e16bfc98db8eca98d7002d4f2b508c56ce865fd6f1726be30ed489eb",
+          "vispy-0.17.0+vulkan.1.dist-info/licenses/third_party/licenses/robin-map-LICENSE.txt": "1b69097c95e2fa5b011cd3754fa35e10f5ce68172877bc59b89523bcb1b9f951",
+          "vispy-0.17.0+vulkan.1.dist-info/licenses/third_party/licenses/THIRD-PARTY-NOTICES.txt": "5d0535f3b27d7fbe0326ef150f705a8c2e71c39e2ebea87fd0bf949859279333",
+          "vispy-0.17.0+vulkan.1.dist-info/licenses/third_party/licenses/nanobind-LICENSE.txt": "f305091a4e57805870b217a28ea4b1f16610eece8457d2370f822a9696b75836",
+          "vispy-0.17.0+vulkan.1.dist-info/licenses/third_party/licenses/OpenSans-Apache-2.0.txt": "f54fff0b905df5b3464527c652a30e903b172d6dcab4d89b5e6f105d5e4a4603",
+          "vispy-0.17.0+vulkan.1.dist-info/licenses/third_party/licenses/vulkan-headers-Apache-2.0.txt": "3ddf9be5c28fe27dad143a5dc76eea25222ad1dd68934a047064e56ed2fa40c5",
+          "vispy-0.17.0+vulkan.1.dist-info/licenses/third_party/licenses/vulkan-loader-LICENSE.txt": "557bd2cc07eff373f3f26c8d5726fefe8e7fc4add97796c2fbf24f74a200214a",
+          "vispy-0.17.0+vulkan.1.dist-info/licenses/third_party/licenses/glslang-LICENSE.txt": "7d4c1655be3a4d99e8a4859335e28c8950f2e7f72dcf3eed3379846120f5bf47",
+          "vispy-0.17.0+vulkan.1.dist-info/licenses/third_party/licenses/vulkan-utility-libraries-Apache-2.0.txt": "3ddf9be5c28fe27dad143a5dc76eea25222ad1dd68934a047064e56ed2fa40c5",
+          "vispy-0.17.0+vulkan.1.dist-info/licenses/third_party/licenses/abseil-LICENSE.txt": "f54fff0b905df5b3464527c652a30e903b172d6dcab4d89b5e6f105d5e4a4603",
+          "vispy-0.17.0+vulkan.1.dist-info/licenses/third_party/licenses/vulkan-utility-libraries-LICENSE.txt": "fb0245cd3d866045abba509dc85905a7c2cd1f6642d679d9857e85deb82bfcd5",
+          "vispy-0.17.0+vulkan.1.dist-info/licenses/third_party/licenses/vulkan-headers-MIT.txt": "051daae2dae99c2b0fc9d8363cf704b9456ae0e3c89589ac755d506a0b2c10c3",
+          "vispy-0.17.0+vulkan.1.dist-info/licenses/third_party/licenses/spirv-tools-LICENSE.txt": "3ddf9be5c28fe27dad143a5dc76eea25222ad1dd68934a047064e56ed2fa40c5",
+          "vispy-0.17.0+vulkan.1.dist-info/licenses/third_party/licenses/vispy-LICENSE.txt": "a28bb857d763513c810ca843558c12cf97f64b990b855c1ce7f5e291e52fc25c",
+          "vispy-0.17.0+vulkan.1.dist-info/licenses/third_party/licenses/vulkan-utility-libraries-CC-BY-4.0.txt": "4500200b91acb1324538d8e8f9665d5f4142d3f1c5cd9730564cf1895b6170f7"
+        }
+      },
+      "dependencies": [
+        {
+          "name": "freetype-py",
+          "version": "2.5.1",
+          "filename": "freetype_py-2.5.1-py3-none-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl",
+          "sha256": "289b443547e03a4f85302e3ac91376838e0d11636050166662a4f75e3087ed0b",
+          "bytes": 1043856,
+          "url": "https://files.pythonhosted.org/packages/b6/36/853cad240ec63e21a37a512ee19c896b655ce1772d803a3dd80fccfe63fe/freetype_py-2.5.1-py3-none-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl",
+          "source": {
+            "url": "https://files.pythonhosted.org/packages/d0/9c/61ba17f846b922c2d6d101cc886b0e8fb597c109cedfcb39b8c5d2304b54/freetype-py-2.5.1.zip",
+            "hash": "sha256:cfe2686a174d0dd3d71a9d8ee9bf6a2c23f5872385cf8ce9f24af83d076e2fbd",
+            "size": 851738,
+            "upload-time": "2024-08-29T18:32:26.37Z"
+          }
+        },
+        {
+          "name": "hsluv",
+          "version": "5.0.4",
+          "filename": "hsluv-5.0.4-py2.py3-none-any.whl",
+          "sha256": "0138bd10038e2ee1b13eecae9a7d49d4ec8c320b1d7eb4f860832c792e3e4567",
+          "bytes": 5252,
+          "url": "https://files.pythonhosted.org/packages/96/36/5bddefea3d7adf22a64f9aa9701492f8a9fe6948223f5cf2602c22ec9be7/hsluv-5.0.4-py2.py3-none-any.whl",
+          "source": {
+            "url": "https://files.pythonhosted.org/packages/ac/81/af16607fa045724e515579d312577261b436f36f419e7c677e7e88fcc943/hsluv-5.0.4.tar.gz",
+            "hash": "sha256:2281f946427a882010042844a38c7bbe9e0d0aaf9d46babe46366ed6f169b72e",
+            "size": 543090,
+            "upload-time": "2023-09-11T21:46:52.022Z"
+          }
+        },
+        {
+          "name": "kiwisolver",
+          "version": "1.5.1",
+          "filename": "kiwisolver-1.5.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+          "sha256": "34633ecf50d16187ab8e5528b7a2530f2feb4e23f300db4672538b51cfc5cd38",
+          "bytes": 1477929,
+          "url": "https://files.pythonhosted.org/packages/fc/f4/dadfec469313c7f428efa7e84b4aba9732f813c13ea7131a24b7b008ef57/kiwisolver-1.5.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+          "source": {
+            "url": "https://files.pythonhosted.org/packages/ba/07/bd78e6a8fae171ea041ef5bba3ed21a003522fa088834b069b1909981f30/kiwisolver-1.5.1.tar.gz",
+            "hash": "sha256:f1303ef2eec81262a4b708c3e858afe58d7c75ad91c1c05266eda7673369859a",
+            "size": 104395,
+            "upload-time": "2026-08-28T10:28:27.153Z"
+          }
+        },
+        {
+          "name": "numpy",
+          "version": "2.5.3",
+          "filename": "numpy-2.5.3-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+          "sha256": "b7e18c623bb5c95acb3b3328861272816ba199fb531921c5d6d0b675f1fde9e3",
+          "bytes": 16717410,
+          "url": "https://files.pythonhosted.org/packages/65/af/aa78d1a88805456e212b65461354cd943197fb9acecc4c90fd12295123a3/numpy-2.5.3-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+          "source": {
+            "url": "https://files.pythonhosted.org/packages/13/01/11703282db468b85f6f7b8c7f22d058de5970d5c7e60a3a8aaa313c3de36/numpy-2.5.3.tar.gz",
+            "hash": "sha256:df2d5874ff183595a4ba404edd04f6bd9b5505c1d7708573f6a6c17489a67563",
+            "size": 20791231,
+            "upload-time": "2026-09-06T16:27:47.073Z"
+          }
+        },
+        {
+          "name": "packaging",
+          "version": "26.3",
+          "filename": "packaging-26.3-py3-none-any.whl",
+          "sha256": "d7193f7c8e4e93f444fde0262bf90af30e16fa0ad0ad44cb553c87339b23cd1c",
+          "bytes": 129956,
+          "url": "https://files.pythonhosted.org/packages/63/34/ba1c580383c9eada3711951fef0795c80b829a078d72188184bcab9dd527/packaging-26.3-py3-none-any.whl",
+          "source": {
+            "url": "https://files.pythonhosted.org/packages/7d/fa/3944b40b07da9ce895c0e6303a5ab7d53da063554f534556b134a54d6093/packaging-26.3.tar.gz",
+            "hash": "sha256:94edc256424af38762eb31306eed28beb9f0efc50a8837492c9d6fd6004aed79",
+            "size": 313412,
+            "upload-time": "2026-08-04T18:15:28.737Z"
+          }
+        }
+      ]
+    }
+  ],
+  "historical_admissions": [
+    {
+      "pr": "https://github.com/bipxx/vispy_vulkan/pull/15",
+      "qualification_head": "98694c6b7c9ed9befbfaf73e2f377d1516fca4c0",
+      "merge_commit": "c80de037a44377d7e617f57c17d32edbe78e7df1",
+      "selected_criteria": 120,
+      "required_ci_jobs": 23
+    },
+    {
+      "pr": "https://github.com/bipxx/vispy_vulkan/pull/17",
+      "qualification_head": "27242b51f76eae5d96cc7163ee1af105f46f22ba",
+      "merge_commit": "48df4b47b5ab5d4428e1207d0597363257d03f7a",
+      "selected_criteria": 8,
+      "required_ci_jobs": 23
+    }
+  ],
+  "combined_current_admission": false,
+  "source": {
+    "repository": "https://github.com/bipxx/vispy_vulkan",
+    "commit": "27242b51f76eae5d96cc7163ee1af105f46f22ba",
+    "url": "https://github.com/bipxx/vispy_vulkan/tree/27242b51f76eae5d96cc7163ee1af105f46f22ba",
+    "implementation_license": "AGPL-3.0-only",
+    "original_vispy_license": "BSD-3-Clause"
+  },
+  "not_bundled": [
+    "Python/Tcl/Tk runtime",
+    "Vulkan loader and ICD",
+    "Linux X11 and system packages",
+    "SDKs, compilers, build trees and local evidence directories"
+  ],
+  "limitations": [
+    "Installing these files alone grants no new profile qualification.",
+    "The older Qt bundle and host matrix have different artifact identities.",
+    "WSL software proof does not qualify native Linux GPU hardware.",
+    "Metal graphics remain experimental; no macOS wheel is selected.",
+    "Generated camera/stencil source tests create no installed camera/stencil admission."
+  ]
+}

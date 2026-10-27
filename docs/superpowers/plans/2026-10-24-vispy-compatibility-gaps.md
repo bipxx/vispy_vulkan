@@ -109,8 +109,15 @@ assertions. Review169 approves this bounded source; perspective, pitch/roll,
 arbitrary poses and installed camera claims remain separate. Both native
 projections were cleaned and the original camera implementation is unchanged.
 
-Finish capture CI/promotion and publish the coherent source-test/status packet
-before expanding another installed claim. Reconcile prior visual/shader evidence
+Capture CI/promotion and PR #17 are complete. The coherent stencil/camera
+source-test packet merged in PR #18 as
+`a8378722dec6651760fb0e205f66e47421f371bf`; its complete tree matches tested
+head `056a9063b2e0bc66a9f09315e658a232efacd3f8`, with all eleven required
+source-merge checks passed. It creates no installed camera/stencil admission.
+The [Tk delivery descriptor](../../../compat/distributions/tk-cp312-1/distribution.json)
+now separates the admitted Tk wheels from the older Qt bundle; archive checks
+and public distribution remain distinct from rendering qualification.
+Reconcile prior visual/shader evidence
 when choosing the next named consumer; do not repeat completed implementations
 or turn the full upstream inventory into a new release requirement.
 
