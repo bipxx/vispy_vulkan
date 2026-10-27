@@ -109,6 +109,18 @@ assertions. Review169 approves this bounded source; perspective, pitch/roll,
 arbitrary poses and installed camera claims remain separate. Both native
 projections were cleaned and the original camera implementation is unchanged.
 
+The next practical G4 composition now has a [runnable image/line example](../../tk-image-overlay.md)
+and a regression that executes its actual scene factory. Windows187 and WSL188
+pass independent image/AGG-overlay RGBA patches and Tk RGB points through both
+visual updates, complex-image rejection/preserved output/valid recovery,
+resize and downward-positive camera panning. Three reached stale-image,
+stale-line and ignored-pan controls each fail once on both profiles; all worker
+resource gauges return to zero. Current pure package sources match the admitted
+wheels, and native projections/caches were cleaned. This adds useful finite
+source coverage without a renderer build or new installed Image/Line claim.
+Other formats, line forms, default wheel-rate and whole-frame/physical-DPI
+behavior remain separate scopes.
+
 Capture CI/promotion and PR #17 are complete. The coherent stencil/camera
 source-test packet merged in PR #18 as
 `a8378722dec6651760fb0e205f66e47421f371bf`; its complete tree matches tested
