@@ -71,9 +71,13 @@ def repackage(data, replacements, **original_inputs):
                         native_rebuilt=False, audit=audited)
 
 
-def repackage_from_source(data, source, original_sources, native_hashes, *, platform, suffix, tag):
+def repackage_from_source(data, source, original_sources, native_hashes, *, platform, suffix, tag,
+                          keep_original_description=False):
     """Keep original metadata/manifest/notices while updating declared sources.
 
+    The explicit description option keeps the original archive's metadata when
+    the repository README changes; it does not package that new README. Other
+    metadata and notices must still match their original source bindings.
     Native production validation belongs to the caller. These checks do not
     replace it: they join an original source map to an exact original archive
     and the current pure sources before assembling a successor.
@@ -86,8 +90,31 @@ def repackage_from_source(data, source, original_sources, native_hashes, *, plat
     metadata = {'README.md', 'pyproject.toml', 'compat/runtime-package.json'}
     metadata.update(name if name in ('LICENSE', 'LICENSE-BSD', 'LICENSING.md')
                     else 'third_party/licenses/' + name for name in manifest['notice_files'])
+    description = None
     for name in sorted(metadata):
-        if original_sources.get(name) != archive_audit.sha((source / name).read_bytes()):
+        current_hash = archive_audit.sha((source / name).read_bytes())
+        if name == 'README.md' and keep_original_description:
+            original_hash = original_sources.get(name)
+            if (not isinstance(original_hash, str) or len(original_hash) != 64
+                    or any(c not in '0123456789abcdef' for c in original_hash)):
+                raise ValueError('Missing original README description source binding')
+            with zipfile.ZipFile(io.BytesIO(data)) as archive:
+                metadata_bytes = archive.read(archive_audit.DIST + '/METADATA')
+            boundaries = [(metadata_bytes.find(separator), separator)
+                          for separator in (b'\n\n', b'\r\n\r\n') if separator in metadata_bytes]
+            if not boundaries:
+                raise ValueError('Original wheel lacks an archived README description')
+            offset, separator = min(boundaries, key=lambda item: item[0])
+            description_hash = archive_audit.sha(metadata_bytes[offset + len(separator):])
+            if description_hash != original_hash:
+                raise ValueError('Original README source binding differs from archived description')
+            metadata_hash = archive_audit.sha(metadata_bytes)
+            description = dict(original_readme_source_sha256=original_hash,
+                               archived_description_sha256=description_hash,
+                               repository_readme_sha256=current_hash,
+                               preserved_metadata_sha256=metadata_hash,
+                               repository_readme_packaged=False)
+        elif original_sources.get(name) != current_hash:
             raise ValueError('Changed or missing original package metadata/notice input: ' + name)
     if any(name not in original_sources for name in origins.values()):
         raise ValueError('Original source map lacks a declared package member')
@@ -102,5 +129,8 @@ def repackage_from_source(data, source, original_sources, native_hashes, *, plat
     if archive_audit.runtime_package.source_package_hashes(source) != current:
         raise ValueError('Source package changed during archive assembly')
     report.update(current_source_hashes=current, original_source_hashes=original,
-                  unchanged_metadata_inputs={name: original_sources[name] for name in sorted(metadata)})
+                  unchanged_metadata_inputs={name: original_sources[name] for name in sorted(metadata)
+                      if description is None or name != 'README.md'})
+    if description is not None:
+        report['preserved_original_description'] = description
     return result, report

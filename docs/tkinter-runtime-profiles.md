@@ -1,5 +1,11 @@
 # Tk runtime profiles and source compatibility
 
+The sections below retain the earlier toolkit diagnosis and source checkpoint.
+Their pending admission statements describe that historical checkpoint. The
+later [qualified Tk baseline](qualified-tk-baseline.md) records the admitted
+Windows/Tk 8.6 and WSL/Tk 9 milestones on their exact artifacts. The original
+failed interpreter and graphics profiles remain separate evidence.
+
 The alternate Linux development profile uses the already-installed standalone
 CPython 3.12.13 and Tcl/Tk 9.0.3. It is a new profile, not qualification of the
 older CPython 3.12.8/Tk 8.6 profile. Native leaves, SDKs and locked package paths

@@ -33,7 +33,10 @@ def source_inputs(source):
     return result
 
 
-def validate_inputs(inventory, pin, arch, source, workspace, *, package_current_python=False):
+def validate_inputs(inventory, pin, arch, source, workspace, *, package_current_python=False,
+                    keep_original_description=False):
+    require(not keep_original_description or package_current_python,
+            'Original description selection requires current Python packaging')
     require(arch in ('arm64', 'x86_64'), 'Unknown Metal architecture')
     current=source_inputs(source)
     if package_current_python:
@@ -125,7 +128,8 @@ def validate_inputs(inventory, pin, arch, source, workspace, *, package_current_
         require(set(metadata)=={'README.md'}, 'Missing original Metal package metadata binding')
         output,package=repackage_from_source(wheel.read_bytes(),source,
             dict(pin['source_inputs'],**metadata),{name:hashes[name] for name in native},
-            platform='darwin',suffix='.cpython-312-darwin.so',tag='cp312-cp312-macosx_13_0_'+arch)
+            platform='darwin',suffix='.cpython-312-darwin.so',tag='cp312-cp312-macosx_13_0_'+arch,
+            keep_original_description=keep_original_description)
         checked.update(package_bytes=output,package_report=package)
     return checked
 
@@ -139,7 +143,11 @@ def main():
     parser.add_argument('--archive', type=Path)
     parser.add_argument('--package-current-python', action='store_true',
                         help='Audit current pure members while preserving original Metal native production')
+    parser.add_argument('--keep-original-description', action='store_true',
+                        help='Keep the original wheel description when only the repository README differs')
     args = parser.parse_args()
+    if args.keep_original_description and not args.package_current_python:
+        parser.error('--keep-original-description requires --package-current-python')
     workspace = transport.no_alias(args.workspace.absolute())
     context = transport.Context(workspace, ROOT/'compat/build-hygiene.json', None)
     scratch = context.scratch(args.run_id); context.marker(scratch, args.run_id, args.owner)
@@ -154,7 +162,8 @@ def main():
     transport.write(evidence/'reuse-original-inventory.json', inventory)
     transport.transport_retention(inventory, workspace, evidence, kind='original-metal-ci-reuse-inputs')
     if args.package_current_python:
-        checked=validate_inputs(inventory,pin,args.arch,ROOT,workspace,package_current_python=True)
+        checked=validate_inputs(inventory,pin,args.arch,ROOT,workspace,package_current_python=True,
+                                keep_original_description=args.keep_original_description)
         transport.write(evidence/'reuse-original-archive.json',checked['archive'])
         original_wheel=checked['wheel']
         if checked['package_report']['changed_members']:

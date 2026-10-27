@@ -1,5 +1,10 @@
 # Offline CPython 3.12 installation bundle
 
+This guide applies to the older Qt candidate described below. For the newer Tk
+milestones, see the [qualified Tk baseline](qualified-tk-baseline.md). Its wheel
+identities and profile evidence are separate; the Qt archive is not an installer
+for those newer wheels.
+
 This candidate bundle contains the final Windows x86-64 renderer (`62df5e4c…`) and Linux x86-64 renderer (`374a74ea…`), six selected Qt profiles, their original notices, and the Windows core-only TBB runtime. It is a local release candidate; publication and the remaining Windows threedee limitation are separate decisions.
 
 Use an already installed **CPython 3.12.8, 64 bit**, with `venv` and `pip` available. The bundle does not contain Python, Windows components, a Linux distribution, device drivers, or OS package archives. Install those prerequisites before disconnecting the machine. The qualified Linux environment was Ubuntu 24.04 under WSL2 with Lavapipe software Vulkan; native Linux hardware remains unqualified. macOS Metal remains experimental.

@@ -2,7 +2,7 @@
   "schema": 1,
   "phase": "development",
   "id": "tk-capture-1",
-  "manifest_sha256": "dcc81590d9121231246a500d1fe8eb241e05c3adbb8f4586ac6cd2575b21aa6c",
+  "manifest_sha256": "682f229e82c379167f9338a81973ca2c1ed8a05cb7e04946fa3b3b21ea1e113b",
   "product_source_commit": "5c7d1273bc3471136d87f730482e07a679e0e00e",
   "upstream_commit": "117b054598f4758b598f4b8f48feea48c11fe7b0",
   "ledger": {
@@ -208,14 +208,8 @@
     }
   ],
   "reviews": {
-    "source": {
-      "path": "compat/candidates/tk-capture-1/reviews/source-00f95ec-astra.json",
-      "sha256": "75788b3a810b17202199b6716db5fa2e04c60040cfa5191119386dcae0933a23"
-    },
-    "scope": {
-      "path": "compat/candidates/tk-capture-1/reviews/scope-00f95ec-astra.json",
-      "sha256": "43f598560e2081489e1a7b33b93a10a5375ed59c12da2491ebbe49bda2156ca0"
-    }
+    "source": null,
+    "scope": null
   },
   "blockers": [
     "Source implementation is reviewed; candidate-bound source/scope/native-reuse approval remains pending.",
@@ -276,7 +270,7 @@
     },
     {
       "path": "compat/qualification-ci.json",
-      "sha256": "d1d1309ba9417e1d15cd3b90ee5437fd40cc67d35727bf06ad79771e2212a5ec"
+      "sha256": "5ea2f0d91d035d5aa09a0b9c7728a775b8eab093d07e3ceee429bdb0a527af90"
     },
     {
       "path": "tools/qualification_artifact.py",
@@ -284,7 +278,7 @@
     },
     {
       "path": "tools/repackage_python_wheel.py",
-      "sha256": "6d9adce9b277d14ce93dd6409f5db87497c9024a596f3621d3f0225144980fa7"
+      "sha256": "098c43527a5ff5d667f19fabbb93269ddcac535f429bec943bf84576f5968eba"
     },
     {
       "path": "compat/qualification-artifact.schema.json",
@@ -328,7 +322,7 @@
     },
     {
       "path": "tools/reuse_linux_ci.py",
-      "sha256": "9054832051e3fe29331d328a52395ccbfa56a46eb08749497cb47bdbe1dc4ec8"
+      "sha256": "d1d7ec7a2b95f9b9b506f5bc509d26091c4e2bb27aca378e053b464291de704e"
     },
     {
       "path": "compat/linux-ci-reuse.json",
@@ -336,7 +330,7 @@
     },
     {
       "path": "tools/reuse_metal_ci.py",
-      "sha256": "4c5f7366cd75a81f658e72511e0ef406ee873bcf4c177db79fc8f6dca30e2776"
+      "sha256": "673a11aeaed9c16db46bb58187a76011c6a38676c9ada2916b92f1f031afa019"
     },
     {
       "path": "compat/metal-ci-reuse.json",
@@ -364,11 +358,11 @@
     },
     {
       "path": ".github/workflows/linux-vulkan.yml",
-      "sha256": "6d331767b1099a5ea9ce59a9d46a1e3cec957ed1e64809cde0b7af512ae9470d"
+      "sha256": "844ddd2c232f699f198751074a59abccec1c6a0a0c58460c77be9be6d75ac038"
     },
     {
       "path": ".github/workflows/metal-wheel.yml",
-      "sha256": "92e21ec0a4940ec36d60eba55a0dd9443ce608ab3c34bd49b88a92aef222de9d"
+      "sha256": "714f1f8b90d0aad61bd68e5f8373266c5f673c23415ea810924bbb576c5436db"
     },
     {
       "path": "tools/no_opengl/policy.py",

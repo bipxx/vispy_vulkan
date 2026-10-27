@@ -103,7 +103,7 @@ jobs:
         run: |
           python3 -B tools/linux_ci_lifecycle.py --state "$CI_STATE" run --phase reuse -- \
             "$BUILD_PYTHON" -B tools/reuse_metal_ci.py --workspace "$DRIVER_WORKSPACE" \
-            --run-id "$NATIVE_RUN" --owner ci --arch '${{ matrix.arch }}' --package-current-python
+              --run-id "$NATIVE_RUN" --owner ci --arch '${{ matrix.arch }}' --package-current-python --keep-original-description
       - name: Prepare explicit fresh native build tools
         if: env.NATIVE_MODE == 'fresh'
         run: |
