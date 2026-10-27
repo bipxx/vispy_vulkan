@@ -109,12 +109,39 @@ local reconstruction/evidence entry point. Native outputs, metadata and original
 licenses remain unchanged. Failed attempts are preserved and scratch is cleaned.
 The Mac CPU/build checks passed; Metal graphics remain experimental.
 
-The next source-only stencil packet adds 196 cases per Windows hardware Vulkan
-and WSL software Vulkan profile, with active operation/branch mutation controls.
-It checks eight separate-face operations and finite boundaries/write masks on
-shared and split routes. See the limits in
+PR #16 merged the source-only stencil packet as
+`2ed257abc45f775ae490afe432ec5374f2f087a8`. Its 196 cases per Windows hardware
+Vulkan and WSL software Vulkan profile check eight separate-face operations,
+finite boundaries/write masks and shared/split routes, with active operation
+and branch controls. A further reviewed source packet adds 97 direct both-face
+operation cases per profile, including invalid-input recovery and reached
+single-face controls that distinguish masked inversion and wrapping. See the limits in
 [immediate-state compatibility](immediate-state-compatibility.md).
 This extends source regression evidence without changing the renderer, selected
 120-criterion admission or original 142 parent obligations. Continue broader
 work through the per-API route map, preserving documented differences and
 distinguishing source-tested behavior from newly admitted artifact claims.
+
+The cropped byte/float capture follow-up separately proves eight criteria on
+the exact Windows and WSL wheels under the unchanged strict subject validator.
+Source/scope/native-reuse and installed-evidence reviews, all 23 current-head
+CI jobs, final promotion and strict separate eight-criterion admission passed.
+PR #17 merged as `48df4b47b5ab5d4428e1207d0597363257d03f7a`, with the exact tested tree of
+`27242b51f76eae5d96cc7163ee1af105f46f22ba`. This is not a combined current
+128-criterion admission. A separate PanZoom source packet now verifies literal
+camera rectangles, rendered landmark patches and actual Tk presentation points
+through drag, resize, focus-loss cancellation and gesture recovery on both
+profiles. Independent review162 approved the finite source evidence and its
+reached disabled-pan/reversed-vertical-pan controls. It does not admit an
+installed camera workflow, whole-image parity or physical/mixed-DPI input.
+A companion source test, independently reviewed in165, verifies cursor-anchored
+wheel zoom and its inverse with a custom sensitivity. Expected rectangles and
+landmark/presentation coordinates pass on both profiles; reached center-only
+and reversed-zoom controls fail. Default scroll-rate and installed camera
+qualification remain separate.
+
+The Turntable companion also passes on both profiles and has independent
+review169. Its explicit orthographic, +Z-up quarter-turn checks literal pose,
+rendered landmark patches, actual Tk points, cancellation and restoration.
+Reached missing-rotation/reversed-yaw controls fail; this source result does
+not admit perspective, arbitrary poses or an installed 3D camera workflow.

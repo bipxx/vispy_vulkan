@@ -26,7 +26,8 @@ Named Python signatures enforce argument counts before command submission.
 
 Defaults below are native context defaults, before any VisPy state preset.
 The fixture names are in `tests/native/test_dawn_immediate_state.py`, except
-synchronization fixtures in `tests/native/test_public_submission.py`. A fixture
+both-face operation fixtures in `tests/native/test_dawn_stencil_both_faces.py`
+and synchronization fixtures in `tests/native/test_public_submission.py`. A fixture
 can prove a subset of a row; untested values are not promoted by association.
 
 | Entry point / arguments | Accepted behavior and default | Ordinary/mutation or failure fixture |
@@ -56,7 +57,7 @@ can prove a subset of a row; untested values are not promoted by association.
 | `glStencilFuncSeparate(face,compare,ref,mask)` | Front/back/both projection of the same contract. | `test_raw_distinct_front_back_stencil_state`; invalid-parameter fixture |
 | `glStencilMask(mask)` | Integer write mask for both faces; default full mask. | Masked replacement/clear fixture; invalid-parameter fixture |
 | `glStencilMaskSeparate(face,mask)` | Independent front/back masks with native face conversion. | Distinct-face fixture; invalid-parameter fixture |
-| `glStencilOp(fail,depthFail,pass)` | Keep/zero/replace/increment/decrement/invert and wrap variants; default keep/keep/keep for both faces. | Masked replacement/clear fixture; invalid-parameter fixture; remaining operation-value coverage stays open |
+| `glStencilOp(fail,depthFail,pass)` | Keep/zero/replace/increment/decrement/invert and wrap variants; default keep/keep/keep for both faces. | `test_public_stencil_op_updates_both_faces`; `test_public_stencil_op_rejection_preserves_both_faces_and_recovers`; finite both-face vectors below |
 | `glStencilOpSeparate(face,fail,depthFail,pass)` | Same operations applied to the selected face(s). | Distinct-face fixture; invalid-parameter fixture; finite shared/split operation vectors below |
 | `glSampleCoverage(value,invert)` | Finite clamped [0,1], numeric inversion flag; default 1/false, disabled. Native sample mask is derived from granted sample count. | `test_raw_sample_coverage_endpoints`; invalid-parameter fixture |
 | `glFinish()` | Submit preceding selected-canvas work and wait for completion; no GUI draw/presentation request or target/state change. | `test_finish_waits_without_presentation_gui_draw_or_state_change` in the submission suite |
@@ -86,11 +87,40 @@ bits, fixed 16-by-12 triangle geometry and CCW front-face convention. It is not
 new artifact admission or whole-parent coverage. Other comparison values,
 unequal read-mask/reference combinations, mixed-face multi-primitive ordering,
 other formats and multisampling remain separate; the existing distinct-reference
-regression is retained. Direct both-face operation-value expansion also remains
-separate from this `glStencilOpSeparate` table. No renderer or native build was
+regression is retained. Direct both-face operation vectors are recorded below;
+they remain distinct from this `glStencilOpSeparate` table. No renderer or native build was
 changed. Local evidence is retained in runs `stencil-values-134`,
 `stencil-values-137` and independent review `stencil-review-138`; earlier setup
 and oracle failures retain their original records and reproducer sources.
+
+### Both-face operation source vectors
+
+The public `glStencilOp` route passes 97 additional source cases on Windows
+hardware Vulkan and WSL software Vulkan: sixteen literal front/back value
+vectors across three outcomes and two write-mask routes, plus one invalid-input
+and recovery case. A single call must replace both faces' prior operations.
+Front and back geometry occupy separate scissored halves of the same 16-by-12
+target. Equality-gated color probes independently check both stored bytes and
+reject their complementary references.
+
+The vectors cover all eight operations, saturation/wrap boundaries and selected
+write masks. Shared reference/read/write queries agree on the shared route;
+nonzero unequal write masks select the split route. Each face's prior selected
+operation must produce a different byte from the literal expectation, including
+wrap cases. Reached controls that update only one face fail all six selected
+masked-invert/wrap cases each on both platforms. Rejecting an invalid third
+operation preserves the effective stencil-fail operation on both faces, then a
+valid update succeeds on the same resources. This does not independently check
+every invalid argument position or hidden state field.
+
+This remains single-sample, eight-bit `depth24plus-stencil8` source evidence,
+with the same finite geometry/front-face limits. It does not qualify an installed
+stencil workflow or close the broader state parent. Other comparisons, unequal
+read masks/references, formats and multisample behavior remain separate. The
+renderer, native binaries and wheels are unchanged. Actual runs and independent
+review are retained in `stencil-both-faces-156`, `stencil-both-faces-157` and
+`stencil-both-review-158`; prior weaker tests and their review finding remain
+preserved separately.
 
 The invalid-parameter fixture establishes contextual rejection, unchanged viewport
 cache and a usable following draw. It does not independently prove every hidden
