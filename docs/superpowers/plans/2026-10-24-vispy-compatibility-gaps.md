@@ -1,5 +1,24 @@
 # VisPy compatibility gap-closure execution plan
 
+## Active practical workflow follow-up - 2026-10-27
+
+Practical parity remains required for claimed workflows; full upstream parity
+is not the release target. Improvements and intentional differences need tests
+and documentation. PR #20 merged the runnable Image/Line example as
+`0852a6889fc64416856482e411e4a954d49f3985`, matching its tested complete tree
+with all eleven required source checks passed. This adds source workflow
+coverage without extending installed admission.
+
+The next source packet adds a [runnable Tk mesh example](../../tk-mesh.md).
+Windows run192 and WSL run193 verify actual example output, geometry/color updates and a
+generated quarter-turn drag, with reached stale-update/no-rotation controls
+and nine zero shutdown gauges per worker. The invalid broad control from191
+and the original192 receipt-parser failure remain preserved. Existing native
+artifacts were reused, and managed scratch was cleaned. Independent source review and source
+publication remain pending; historical mesh/volume results are not current
+admission for this example. Finish those bounded checks before choosing more
+API breadth. Preserve the older checkpoints below as historical evidence.
+
 ## Current execution checkpoint - 2026-10-26
 
 The finite practical milestone is merged in PR #14: main
