@@ -1,14 +1,14 @@
 {
   "schema": 1,
   "phase": "execution-preparation",
-  "manifest_sha256": "07e778849898df5eff1a8d6dcd0bd8a4f32c4b28cbc95a848f64f4735133e022",
+  "manifest_sha256": "d407e979c238a7ffe64d0bcb2b6e4a3573da286d0c8e3e400b034941b9d82a98",
   "candidate": {
     "path": "compat/candidates/tk-capture-1/candidate.json",
-    "scope_sha256": "0682a55c006f9a5adb49595062d2fb903b60a6d442c684ed833ae520baf4fa70"
+    "scope_sha256": "6a5c2d6285a538fb5f4cec6396f12c888fc32555a38dbb251175d0da29250e34"
   },
   "coverage": {
     "path": "compat/candidates/tk-capture-1/coverage.json",
-    "sha256": "7c9b5f49b93b405cba3ea8045fd6fb151449f2341e688d7866a82dca3e8f6e6a"
+    "sha256": "90149ff9dcbc0ac52e0203ce65e6523494736b8751a9f98912b836d9358f3552"
   },
   "baseline": {
     "path": "compat/vispy-compatibility.json",

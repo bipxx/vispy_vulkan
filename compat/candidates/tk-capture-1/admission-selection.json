@@ -1,14 +1,14 @@
 {
   "schema": 1,
   "phase": "admission-selection",
-  "manifest_sha256": "10e55ef1d7e128624b5ab8f12af99df1cc3b39f5f6116569438e7d845f4ff347",
+  "manifest_sha256": "5651b8c8f551b3d2c4f378ddff253d63a7b3ea016b9909fee08b62b4715febe6",
   "candidate": {
     "path": "compat/candidates/tk-capture-1/candidate.json",
-    "scope_sha256": "0682a55c006f9a5adb49595062d2fb903b60a6d442c684ed833ae520baf4fa70"
+    "scope_sha256": "6a5c2d6285a538fb5f4cec6396f12c888fc32555a38dbb251175d0da29250e34"
   },
   "execution_map": {
     "path": "compat/candidates/tk-capture-1/execution.json",
-    "scope_sha256": "07e778849898df5eff1a8d6dcd0bd8a4f32c4b28cbc95a848f64f4735133e022"
+    "scope_sha256": "d407e979c238a7ffe64d0bcb2b6e4a3573da286d0c8e3e400b034941b9d82a98"
   },
   "requested": [
     {

@@ -79,6 +79,7 @@ def test_replacement_must_be_frozen_bytes():
 @pytest.fixture
 def source_case(tmp_path):
     entries, inputs = sample('linux')
+    entries[qa.DIST + '/METADATA'] += b'Synthetic original README\n'
     source = tmp_path / 'source'
     source.mkdir()
     for name, payload in entries.items():
@@ -124,9 +125,110 @@ def test_source_package_route_rejects_changed_metadata_or_notices(source_case, n
             platform='linux', suffix=inputs['suffix'], tag=inputs['tag'])
 
 
-def test_source_package_route_requires_original_pure_source_map(source_case):
+@pytest.mark.parametrize('keep_description', [False, True])
+def test_source_package_route_requires_original_pure_source_map(source_case, keep_description):
     source, entries, inputs, before = source_case
     del before['src/vispy/__init__.py']
     with pytest.raises(ValueError, match='source map lacks'):
         repackage_from_source(wheel_bytes(entries), source, before, inputs['native_hashes'],
-            platform='linux', suffix=inputs['suffix'], tag=inputs['tag'])
+            platform='linux', suffix=inputs['suffix'], tag=inputs['tag'],
+            keep_original_description=keep_description)
+
+
+@pytest.mark.parametrize('python_changed', [False, True])
+def test_explicit_original_description_keeps_archived_metadata_notices_and_native(source_case, python_changed):
+    source, entries, inputs, before = source_case
+    original = wheel_bytes(entries)
+    (source / 'README.md').write_bytes(b'Updated repository landing page, not wheel description\n')
+    if python_changed:
+        (source / 'src/vispy/__init__.py').write_bytes(b'# Updated runtime source\n')
+    output, report = repackage_from_source(original, source, before, inputs['native_hashes'],
+        platform='linux', suffix=inputs['suffix'], tag=inputs['tag'], keep_original_description=True)
+    decision = report['preserved_original_description']
+    assert decision['original_readme_source_sha256'] == before['README.md']
+    assert decision['repository_readme_sha256'] == qa.sha((source / 'README.md').read_bytes())
+    assert decision['repository_readme_packaged'] is False
+    assert 'README.md' not in report['unchanged_metadata_inputs']
+    with zipfile.ZipFile(io.BytesIO(original)) as old, zipfile.ZipFile(io.BytesIO(output)) as new:
+        assert set(old.namelist()) == set(new.namelist())
+        assert decision['preserved_metadata_sha256'] == qa.sha(old.read(qa.DIST + '/METADATA'))
+        changed = {name for name in old.namelist() if old.read(name) != new.read(name)}
+        assert changed == ({'vispy/__init__.py', qa.DIST + '/RECORD'} if python_changed else set())
+        qa.check_record(new, set(new.namelist()))
+    assert report['artifact_admitted'] is False
+    if not python_changed:
+        assert output is original
+
+
+@pytest.mark.parametrize('name', ['pyproject.toml', 'compat/runtime-package.json',
+                                 'LICENSE-BSD', 'third_party/licenses/vispy-LICENSE.txt'])
+def test_original_description_option_cannot_waive_other_package_guards(source_case, name):
+    source, entries, inputs, before = source_case
+    path = source / name
+    path.write_bytes(path.read_bytes() + b' ')
+    with pytest.raises(ValueError, match='Changed or missing original package metadata/notice'):
+        repackage_from_source(wheel_bytes(entries), source, before, inputs['native_hashes'],
+            platform='linux', suffix=inputs['suffix'], tag=inputs['tag'], keep_original_description=True)
+
+
+@pytest.mark.parametrize('original_hash', [None, '', 'x' * 64, '0' * 63])
+def test_original_description_requires_original_readme_binding(source_case, original_hash):
+    source, entries, inputs, before = source_case
+    before['README.md'] = original_hash
+    with pytest.raises(ValueError, match='Missing original README description source binding'):
+        repackage_from_source(wheel_bytes(entries), source, before, inputs['native_hashes'],
+            platform='linux', suffix=inputs['suffix'], tag=inputs['tag'], keep_original_description=True)
+
+
+def test_original_description_rejects_well_formed_but_wrong_original_pin(source_case):
+    source, entries, inputs, before = source_case
+    before['README.md'] = '0' * 64
+    with pytest.raises(ValueError, match='binding differs from archived description'):
+        repackage_from_source(wheel_bytes(entries), source, before, inputs['native_hashes'],
+            platform='linux', suffix=inputs['suffix'], tag=inputs['tag'], keep_original_description=True)
+
+
+def test_original_description_rejects_changed_archived_text_with_valid_record(source_case):
+    source, entries, inputs, before = source_case
+    entries[qa.DIST + '/METADATA'] += b'Changed archived description\n'
+    with pytest.raises(ValueError, match='binding differs from archived description'):
+        repackage_from_source(wheel_bytes(entries), source, before, inputs['native_hashes'],
+            platform='linux', suffix=inputs['suffix'], tag=inputs['tag'], keep_original_description=True)
+
+
+def test_original_description_requires_a_metadata_body_separator(source_case):
+    source, entries, inputs, before = source_case
+    entries[qa.DIST + '/METADATA'] = entries[qa.DIST + '/METADATA'].replace(b'\n\n', b'\n', 1)
+    with pytest.raises(ValueError, match='lacks an archived README description'):
+        repackage_from_source(wheel_bytes(entries), source, before, inputs['native_hashes'],
+            platform='linux', suffix=inputs['suffix'], tag=inputs['tag'], keep_original_description=True)
+
+
+@pytest.mark.parametrize('line_ending', [b'\n', b'\r\n'])
+def test_original_description_checks_raw_body_without_newline_normalization(source_case, line_ending):
+    source, entries, inputs, before = source_case
+    header = entries[qa.DIST + '/METADATA'].split(b'\n\n', 1)[0]
+    body = b'Original README' + line_ending + b'Second line' + line_ending
+    entries[qa.DIST + '/METADATA'] = header + line_ending * 2 + body
+    before['README.md'] = qa.sha(body)
+    output, report = repackage_from_source(wheel_bytes(entries), source, before, inputs['native_hashes'],
+        platform='linux', suffix=inputs['suffix'], tag=inputs['tag'], keep_original_description=True)
+    assert report['preserved_original_description']['archived_description_sha256'] == qa.sha(body)
+    with zipfile.ZipFile(io.BytesIO(output)) as archive:
+        assert archive.read(qa.DIST + '/METADATA') == entries[qa.DIST + '/METADATA']
+
+
+@pytest.mark.parametrize('mutation', ['native', 'notice', 'record'])
+def test_original_description_option_still_rejects_original_archive_corruption(source_case, mutation):
+    source, entries, inputs, before = source_case
+    if mutation == 'native':
+        name = next(n for n in inputs['native_hashes'] if not n.endswith('.json'))
+        entries[name] += b'corrupt'
+    elif mutation == 'notice':
+        entries['vispy/_licenses/LICENSE-BSD'] += b'corrupt'
+    data = wheel_bytes(entries)
+    if mutation == 'record':
+        data = wheel_bytes(entries, lambda rows: rows[0].__setitem__(1, 'sha256=wrong'))
+    with pytest.raises(ValueError):
+        repackage_from_source(data, source, before, inputs['native_hashes'],
+            platform='linux', suffix=inputs['suffix'], tag=inputs['tag'], keep_original_description=True)

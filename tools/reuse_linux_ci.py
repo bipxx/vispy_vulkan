@@ -135,8 +135,11 @@ def import_archive(archive_path, pin, workspace, *, available=()):
     return dict(run_id=pin['run_id'],artifact_id=pin['artifact_id'],members=rows)
 
 
-def validate_inputs(inventory, pin, source, workspace, *, package_current_python=False):
+def validate_inputs(inventory, pin, source, workspace, *, package_current_python=False,
+                    keep_original_description=False):
     """Current source/package plus unchanged original native and harness proof."""
+    if keep_original_description and not package_current_python:
+        raise ValueError('Original description selection requires current Python packaging')
     try:
         from .qualification_native import source_inputs
     except ImportError:
@@ -183,7 +186,8 @@ def validate_inputs(inventory, pin, source, workspace, *, package_current_python
             raise ValueError('Current runtime input binding differs from source package')
         output,package=repackage_from_source(wheel.read_bytes(),source,before,
             result['native_output_hashes'],platform='linux',
-            suffix='.cpython-312-x86_64-linux-gnu.so',tag='cp312-cp312-linux_x86_64')
+            suffix='.cpython-312-x86_64-linux-gnu.so',tag='cp312-cp312-linux_x86_64',
+            keep_original_description=keep_original_description)
         checked.update(package_bytes=output,package_report=package)
     else:
         wheel_package_hashes(wheel,root=source,suffix='.cpython-312-x86_64-linux-gnu.so',platform='linux')
@@ -313,7 +317,11 @@ def main():
     parser.add_argument('--metadata-only',action='store_true')
     parser.add_argument('--package-current-python',action='store_true',
                         help='Audit and assemble current pure sources around unchanged proved native outputs')
+    parser.add_argument('--keep-original-description',action='store_true',
+                        help='Keep the original wheel description when only the repository README differs')
     args=parser.parse_args()
+    if args.keep_original_description and not args.package_current_python:
+        parser.error('--keep-original-description requires --package-current-python')
     workspace=no_alias(args.workspace.absolute())
     context=Context(workspace,ROOT/'compat/build-hygiene.json',None)
     scratch=context.scratch(args.run_id);context.marker(scratch,args.run_id,args.owner)
@@ -326,7 +334,8 @@ def main():
     write(evidence/'reuse-original-inventory.json',inventory)
     original_inputs=transport_retention(inventory,workspace,evidence)
     if args.package_current_python:
-        checked=validate_inputs(inventory,pin,ROOT,workspace,package_current_python=True)
+        checked=validate_inputs(inventory,pin,ROOT,workspace,package_current_python=True,
+                                keep_original_description=args.keep_original_description)
         original_wheel=checked['wheel']
         if checked['package_report']['changed_members']:
             output=checked['package_bytes'];checksum=hashlib.sha256(output).hexdigest()

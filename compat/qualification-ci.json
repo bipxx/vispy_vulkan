@@ -34,7 +34,7 @@
     },
     {
       "path": ".github/workflows/linux-vulkan.yml",
-      "sha256": "6d331767b1099a5ea9ce59a9d46a1e3cec957ed1e64809cde0b7af512ae9470d",
+      "sha256": "844ddd2c232f699f198751074a59abccec1c6a0a0c58460c77be9be6d75ac038",
       "job_key": "software-vulkan",
       "jobs": [
         "software-vulkan"
@@ -42,7 +42,7 @@
     },
     {
       "path": ".github/workflows/metal-wheel.yml",
-      "sha256": "92e21ec0a4940ec36d60eba55a0dd9443ce608ab3c34bd49b88a92aef222de9d",
+      "sha256": "714f1f8b90d0aad61bd68e5f8373266c5f673c23415ea810924bbb576c5436db",
       "job_key": "build",
       "jobs": [
         "Metal wheel arm64 CPython 3.12.8",

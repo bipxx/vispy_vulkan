@@ -12,6 +12,20 @@ import pytest
 from tools import reuse_metal_ci as metal
 
 
+def test_description_selection_cannot_bypass_native_only_route(tmp_path):
+    with pytest.raises(ValueError, match='requires current Python packaging'):
+        metal.validate_inputs(None, None, 'arm64', tmp_path, tmp_path,
+                              keep_original_description=True)
+
+
+def test_description_cli_rejects_option_before_allocating_or_downloading(tmp_path, monkeypatch):
+    monkeypatch.setattr(sys, 'argv', ['reuse', '--workspace', str(tmp_path), '--run-id', 'unit',
+                                     '--arch', 'arm64', '--keep-original-description'])
+    with pytest.raises(SystemExit) as error:
+        metal.main()
+    assert error.value.code == 2 and not list(tmp_path.iterdir())
+
+
 @pytest.fixture(params=['arm64', 'x86_64'])
 def original(tmp_path, monkeypatch, request):
     arch = request.param
@@ -128,6 +142,7 @@ def python_original(original, monkeypatch):
     # complete synthetic inputs rather than the older isolated native stubs.
     monkeypatch.undo()
     entries, inputs = sample('darwin', arch)
+    entries[qa.DIST + '/METADATA'] += b'Original README\n'
     prefix = 'metal-evidence-' + arch + '/'
     def replace(member, payload):
         row = next(row for row in inventory['members'] if row['member'] == member)
@@ -201,6 +216,47 @@ def test_explicit_metal_python_path_keeps_native_auditor_notice_manifest_and_met
     path.write_bytes(path.read_bytes() + b' ')
     with pytest.raises(ValueError):
         metal.validate_inputs(inventory, pin, arch, source, root, package_current_python=True)
+
+
+def test_explicit_metal_readme_change_keeps_original_description_and_all_other_wheel_bytes(python_original):
+    root, source, pin, arch, inventory = python_original
+    original = metal.validate_inputs(inventory, pin, arch, source, root, package_current_python=True)
+    (source / 'README.md').write_bytes(b'Updated nonshipping repository README\n')
+    checked = metal.validate_inputs(inventory, pin, arch, source, root,
+        package_current_python=True, keep_original_description=True)
+    assert checked['package_bytes'] == original['package_bytes']
+    report = checked['package_report']
+    assert report['changed_members'] == [] and report['artifact_admitted'] is False
+    assert report['preserved_original_description']['repository_readme_packaged'] is False
+    assert checked['archive']['GPU_qualified'] is False
+
+
+@pytest.mark.parametrize('name', ['cpp/render.cpp', 'tools/audit_metal_wheel.py', 'LICENSE-BSD',
+                                 'compat/runtime-package.json', 'pyproject.toml'])
+def test_metal_description_selection_preserves_other_source_guards(python_original, name):
+    root, source, pin, arch, inventory = python_original
+    path = source / name
+    path.write_bytes(path.read_bytes() + b' ')
+    with pytest.raises(ValueError):
+        metal.validate_inputs(inventory, pin, arch, source, root,
+            package_current_python=True, keep_original_description=True)
+
+
+@pytest.mark.parametrize('mutation', ['run', 'raw', 'consumer'])
+def test_metal_description_selection_preserves_resealed_original_identity_guards(python_original, mutation):
+    root, source, pin, arch, inventory = python_original
+    prefix = 'metal-evidence-' + arch + '/'
+    if mutation == 'run':
+        rewrite(root, inventory, prefix + 'ci-identity.json', lambda value: value.update(run_id=999))
+    elif mutation == 'raw':
+        def change(value):
+            next(iter(value['native'].values()))['raw_sha256'] = '0' * 64
+        rewrite(root, inventory, prefix + 'archive.json', change)
+    else:
+        rewrite(root, inventory, prefix + 'consumer.json', lambda value: value.update(status='FAILED_PRESERVED'))
+    with pytest.raises(ValueError):
+        metal.validate_inputs(inventory, pin, arch, source, root,
+            package_current_python=True, keep_original_description=True)
 
 
 def test_metal_cli_installs_and_retains_current_wheel_without_relabelling_original(python_original, monkeypatch):

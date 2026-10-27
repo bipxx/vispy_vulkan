@@ -4,6 +4,7 @@ import copy
 import hashlib
 import json
 from pathlib import Path
+import sys
 import zipfile
 
 import pytest
@@ -30,6 +31,19 @@ def test_reference_is_closed_and_preserves_production_identity():
         changed = {**pin, key: value}
         with pytest.raises(ValueError): reuse.reference(changed)
     with pytest.raises(ValueError): reuse.reference({**pin, 'fallback_build': True})
+
+
+def test_description_selection_cannot_bypass_native_only_route(tmp_path):
+    with pytest.raises(ValueError, match='requires current Python packaging'):
+        reuse.validate_inputs(None, None, tmp_path, tmp_path, keep_original_description=True)
+
+
+def test_description_cli_rejects_option_before_allocating_or_downloading(tmp_path, monkeypatch):
+    monkeypatch.setattr(sys, 'argv', ['reuse', '--workspace', str(tmp_path), '--run-id', 'unit',
+                                     '--keep-original-description'])
+    with pytest.raises(SystemExit) as error:
+        reuse.main()
+    assert error.value.code == 2 and not list(tmp_path.iterdir())
 
 
 def test_transport_reuses_retained_bytes_without_copying(tmp_path):
@@ -97,7 +111,8 @@ def test_reuse_reports_are_immutable(tmp_path):
 
 
 @pytest.mark.parametrize('mutation', ['native', 'harness', 'license'])
-def test_native_or_notice_changes_still_reject_explicit_python_packaging(tmp_path, monkeypatch, mutation):
+@pytest.mark.parametrize('keep_description', [False, True])
+def test_native_or_notice_changes_still_reject_explicit_python_packaging(tmp_path, monkeypatch, mutation, keep_description):
     from tools import qualification_native
     monkeypatch.syspath_prepend(str(reuse.ROOT / 'cmake'))
     source = tmp_path / 'source'
@@ -130,7 +145,7 @@ def test_native_or_notice_changes_still_reject_explicit_python_packaging(tmp_pat
     (source / paths[mutation]).write_bytes(b'changed')
     with pytest.raises(ValueError, match='Changed native/harness/package input'):
         reuse.validate_inputs({}, {'production_sha256': 'a' * 64}, source, workspace,
-                              package_current_python=True)
+                              package_current_python=True, keep_original_description=keep_description)
 
 
 @pytest.mark.parametrize('mutation', [None, 'native', 'harness', 'python', 'license', 'wheel'])
