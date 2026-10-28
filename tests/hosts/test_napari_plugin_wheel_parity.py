@@ -36,7 +36,7 @@ def qualified_suite():
 
 
 @pytest.mark.parametrize('name',suite.CASES)
-def test_plugin_event_and_retirement_workflow_matches_original(name,qualified_suite):
+def test_plugin_event_and_retirement_workflow_matches_original_exactly(name,qualified_suite):
     row=qualified_suite['workers'][name]
     assert row['process_exit']==row['worker']['process_exit']==0,row['worker'].get('error',row['worker']['status'])
     assert row['worker']['status']=='PASS_CANDIDATE_PLUGIN_CASE'
