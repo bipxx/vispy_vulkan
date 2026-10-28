@@ -1,6 +1,6 @@
 # napari hot-swap plan
 
-Active work, including W0-W13, is tracked in the
+Active work, including these workstreams, is tracked in the
 [consolidated plan](2026-10-28-consolidated-plan.md). This document records the
 hot-swap workstreams' origin and progress.
 

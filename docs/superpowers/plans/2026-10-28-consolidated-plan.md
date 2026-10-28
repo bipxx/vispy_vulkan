@@ -61,19 +61,13 @@ unmodified scientific hosts, napari first, run on it with practical parity.
 | D2 | **No preview publication.** Nothing is published before the release gates pass. | The gaps plan forbids publishing the draft release, hiding failed mandatory rows, or claiming full parity while gates are unmet (:980-981). The removal plan makes publishing subject to the release gates (:128). |
 | D3 | **The performance gate is a measured report (PERF-1), with no speedup claim. The presentation path is chosen from the measurements.** The design's 1.20x targets are retired. | The design required, on each primary resident workload, a median speedup of at least 1.20x, no worse p95, and at most 10% update regression (design :446). The 66-workload set comes from the completion and continuation plans (:126, :188). The design also forbade interaction that depends on a CPU readback (:631). |
 | D4 | **Markers M02 and M06 close with a documented difference.** The criterion is fixed, tested and approved by the user before re-capture, as for smooth lines. | M02 (exact plus tie-pixel) and M06 (sealed maximum error of 2) had already failed, and tolerances are never widened after a failure without a user decision. |
+| D5 | **The smooth-line criterion also applies to Glue `scatter_axes`, the mesh axes/colorbar scene and the napari-threedee fixture suites.** Everything else stays exact. | These suites draw smooth lines and compared exactly. |
+| D6 | **Broken oracle fixtures get new fixture modules and reference packets beside the retained ones, with an admission that records the oracle defect.** Original references are never replaced. | The fixture sources are pinned by `fixture_source_sha256` in their manifests. |
+| D7 | **Monitor moves and fractional DPI stay out of scope and are documented as untested.** The other Qt lifecycle items run now. | Only these two need a physical-desktop session (completion :239). |
 
-### Open
-
-Each of these is blocked on the user, and work that depends on one waits for it.
-
-| ID | Question | Why it is open |
-| --- | --- | --- |
-| D5 | Should the smooth-line criterion extend to Glue `scatter_axes`, mesh axes/colorbar and the napari-threedee fixture suites? | Those suites compare exactly and draw smooth lines. W10 and W13 will probably fail without it. |
-| D6 | May the broken oracle fixtures be re-captured (W10)? | Original references are never replaced, and the fixture sources are pinned by `fixture_source_sha256` in their manifests. The compatible route is a new fixture module and reference packet beside the retained one, with an admission that records the oracle defect. |
-| D7 | Monitor moves and fractional DPI: schedule a physical-desktop session, or keep them out of scope? | Only these two need a desktop session (completion :239). The other lifecycle items in B8 can run now. |
-
-The user has already decided that the Windows napari-threedee row stays required.
-W11 publication and W12 upstream posting each need explicit approval.
+No decisions are open. The user has already decided that the Windows
+napari-threedee row stays required. W11 publication and W12 upstream posting
+each need explicit approval.
 
 ## Work items
 
@@ -105,10 +99,11 @@ Diagnostic runs in the exact qualification profile keep the spec budget
 | W6 | Hot-swap rows for PySide6 and CPython 3.11-3.14 | One row per cell passes W2 and W3 | Wheels for 3.10-3.14 exist only at an earlier epoch, so they must be rebuilt at the current source. Admissions use the 23-job CI and a promotion review. |
 | W7 | WSL lavapipe hot-swap rows | WSL rows pass | Measure the smooth-line bound on lavapipe; 32 was measured on NVIDIA only. |
 | W8 (PERF-1) | Performance report: interaction frame time, large image and volume loads (including V09 timing), presentation path | A measured report against upstream OpenGL, with no speedup claim; the presentation choice is taken from the data (D3) | Native swapchain presentation is allowed only in hot swap. Inputs: the five-pair timings. PR #2 was closed, but its Qt single-present code is live (`src/vispy/app/backends/_qt.py:790-931`). Explain the unattributed Qt expose paints that invalidated the Native65 five-pair timing run (next-batch plan :443, :485, :3502). |
-| W10 | Oracle fixtures: the threedee drag race; the render-plane fixtures, including V07 and the plane widget; the plugin plan's opaque-volume residual. In W2, 11 cases were blocked by unadmitted references in the threedee, initialized and render-plane suites. | Parity tests pass against new admitted oracle captures | D6. These suites compare exactly and draw manipulator lines, so the exit will probably fail unless D5 extends the smooth-line criterion to them. |
+| W10 | Oracle fixtures: the threedee drag race; the render-plane fixtures, including V07 and the plane widget; the plugin plan's opaque-volume residual. In W2, 11 cases were blocked by unadmitted references in the threedee, initialized and render-plane suites. | Parity tests pass against new admitted oracle captures | New fixture modules and reference packets beside the retained ones, with an admission naming the oracle defect (D6). These suites draw manipulator lines, so they use the smooth-line criterion (D5). |
 | W11 | Publication: GitHub Release plus a PEP 503 index with hashes, a manylinux build, and the 100 MiB wheel budget | A clean venv installs from the channel and the W2 smoke test passes | Only at the release, after R2 and approval; no preview (D2). Record a new artifact, and never replace the draft release's assets (gaps plan :581-582). Prepared locally (`tools/wheel_index.py`). |
 | W12 | Upstream napari lazy `GLError` and qtpy lazy QtOpenGL | Upstream releases contain them | Approval. Drafts are in `docs/upstream-drafts/`. They remove the napari and qtpy patches, but stock Qt still fails the strict gates, so strict rows keep the Qt build without OpenGL. |
-| W13 | Glue in hot swap: the five workflows (scatter, scatter edit, scatter axes, volume, volume edit) | All five pass with stock hosts | W3, and D5 for `scatter_axes` (coverage H02). The design requires Glue (:26, :122), and no workstream covered it. |
+| W13 | Glue in hot swap: the five workflows (scatter, scatter edit, scatter axes, volume, volume edit) | All five pass with stock hosts | W3. `scatter_axes` uses the smooth-line criterion (D5; coverage H02). The design requires Glue (:26, :122), and no workstream covered it. |
+| W14 | Apply the smooth-line criterion to the mesh axes/colorbar scene and re-run it | It passes under the criterion | D5. Its fixture sources are pinned, so add the criterion in new modules. |
 
 W0 (drag race) and W2 (baseline) are done.
 
@@ -123,7 +118,7 @@ W0 (drag race) and W2 (baseline) are done.
 | B5 | Typed sampling and layout partitioning (Uint, Sint, unfilterable, comparison, half, NaN) | completion plan :58-64, :84-90; continuation plan :156 |
 | B6 | MSAA line coverage, deferred by the user; the partial MSAA patch stays outside production and is not shipped. Line partitioning, which is open. Agg joins and caps belong to W5 (M09). | `docs/tested-platforms.md` :63-65; next-batch plan :46-53; continuation plan :148-150 |
 | B7 | Native faults: fault injection, surface-acquisition failure, physical-memory accounting. Disposition unknown. | continuation plan :127-129, :176; completion plan :102 |
-| B8 | Qt lifecycle. Schedulable now: reparenting and WinIdChange, zero-size no-submit, close in flight. Needing a desktop session (D7): monitor moves and fractional DPI. Coverage rows Q02, Q04, Q05. | continuation plan :176; completion plan :239; design :378-387 |
+| B8 | Qt lifecycle: reparenting and WinIdChange, zero-size no-submit, close in flight. Monitor moves and fractional DPI are out of scope and documented as untested (D7). Coverage rows Q02, Q04, Q05. | continuation plan :176; completion plan :239; design :378-387 |
 | B9 | Tk: the old Tk 8.6 WSL profile is blocked; camera, DPI and physical input | gaps plan :148-157, :538 |
 | B10 | Admit the unchanged upstream stencil wrapper (8 stock upstream failures; coverage Q08) | coverage list :130 |
 | B11 | DIVE and visbrain (non-mandatory; coverage H04, H05, H07). DIVE passed only through PySide2, which the wheel now excludes, and its PyQt5 path fails upstream. visbrain has never run. | host-admission :165-167; native-sdk-reuse :231-243; `compat/runtime-package.json` :523; cp311 notes :84-88 |
@@ -143,8 +138,8 @@ W0 (drag race) and W2 (baseline) are done.
 
 ## Order
 
-1. Decisions D5-D7, while R1's instrumentation runs alongside.
-2. W2a and W3, then W10 (after D6), then W4 and W5 (after D5), then W13.
+1. R1's instrumentation runs alongside everything below.
+2. W2a and W3, then W10, then W4 and W5, then W13 and W14.
 3. W6 and W7, then W1 (native rebuild).
 4. W8.
 5. R2 (fresh release build), then W11 at the release and W12 on approval.
@@ -162,8 +157,9 @@ W0 (drag race) and W2 (baseline) are done.
   - Failures are never relabeled.
   - Original references are never replaced.
   - No skip, xfail, masks or fitted tolerances.
-  - The smooth-line criterion applies only to the two napari-threedee overlay
-    suites, by user decision; extending it needs D5.
+  - The smooth-line criterion applies to the two napari-threedee overlay suites
+    and, by D5, to Glue `scatter_axes`, the mesh axes/colorbar scene and the
+    napari-threedee fixture suites. Everything else stays exact.
 - **Qualification.**
   - Three gates per row, on the same installed artifact.
   - Full lifecycle, and nine-zero shutdown on the resource gauges.
@@ -223,7 +219,7 @@ W0 (drag race) and W2 (baseline) are done.
 | 2026-10-09 notes: cp313-314, msvc-runtime, napari-threedee packaging, native-sdk-reuse, qt-binding | Completed. |
 | 2026-10-09 notes: cp310-dive-pyside2, wide-line, wheel-qualification, native-epoch | Superseded or historical. |
 | 2026-10-09 notes: cp311 (DIVE blocker), host-admission (DIVE and visbrain), platform-qualification | Remaining items carried as B11, HW-1 and the Metal notes. |
-| `plans/2026-10-21-{glue-cache,image,mesh-layout,volume}-*-plan.md` | Completed. Glue and mesh-layout are bounded (see D5 and W13). |
+| `plans/2026-10-21-{glue-cache,image,mesh-layout,volume}-*-plan.md` | Completed. Glue and mesh-layout are bounded (see D5, W13 and W14). |
 | `plans/2026-10-21-napari-plugin-wheel-plan.md` | Completed. Its exact criterion is superseded by the smooth-line decision; its opaque-volume residual is W10. |
 | `plans/2026-10-21-smooth-line-mechanism-plan.md` | Superseded by `docs/smooth-lines.md`. |
 | `plans/scientific-fixture-coverage.md` | Active registry of coverage IDs, owned by the W, B and HW items here; stale rows refreshed under B16. |
