@@ -222,3 +222,15 @@ def test_plugin_qt_suites_render_in_the_declared_candidate_interpreter(name):
     assert 'os.environ.get("VISPY_PLUGIN_CANDIDATE_PYTHON", sys.executable)' in source
     assert 'subprocess.run([str(candidate_python)' in source
     assert source.count('sys.executable')==1  # only as the fallback
+
+
+@pytest.mark.parametrize('name',HOST_SUITES)
+def test_plugin_qt_suites_compare_frames_with_the_smooth_line_criterion(name):
+    # Decision D5: every napari-threedee fixture suite compares frames with the smooth-line criterion.
+    source=(Path(__file__).resolve().parents[2]/'tests/hosts'/name).read_text(encoding='utf-8')
+    assert 'reason = smooth_line_difference(image,' in source
+    assert 'array_equal(image' not in source
+
+
+# CI's curated test list is pinned (compat/qualification-ci.json), so the hot-swap gate tests run through this module.
+from test_hot_swap_policy import *  # noqa: E402,F401,F403
