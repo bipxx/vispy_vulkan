@@ -14,19 +14,22 @@ import zipfile
 
 PRODUCER=Path(__file__).resolve().parents[1]
 if __package__:
-    from .fixture_mesh_layout_extensions import CASES,case_contract,compare,render
+    from .fixture_mesh_layout_extensions import CASES,case_contract,render
+    from .mesh_layout_smooth_line import SMOOTH_LINE,compare
     from .mesh_layout_reference import MANIFEST_SHA256,load_case,load_manifest,sha
     from .mesh_layout_process import process_stamp,native_modules,assert_wheel_module_origins
 else:
     sys.path.insert(0,str(PRODUCER/'tools'))
-    from fixture_mesh_layout_extensions import CASES,case_contract,compare,render
+    from fixture_mesh_layout_extensions import CASES,case_contract,render
+    from mesh_layout_smooth_line import SMOOTH_LINE,compare
     from mesh_layout_reference import MANIFEST_SHA256,load_case,load_manifest,sha
     from mesh_layout_process import process_stamp,native_modules,assert_wheel_module_origins
 
 SHUTDOWN_FIELDS=('pending_tickets','live_buffer_bytes','live_cpu_buffer_bytes','live_texture_bytes',
                  'deferred_frames','queued_frames','vk_memory_live_allocations','vk_memory_live_bytes')
 SOURCES=('tools/fixture_mesh_layout_extensions.py','tools/fixture_gloo.py',
-         'tools/mesh_layout_reference.py','tools/mesh_layout_wheel_probe.py','tools/mesh_layout_process.py')
+         'tools/mesh_layout_reference.py','tools/mesh_layout_wheel_probe.py','tools/mesh_layout_process.py',
+         'tools/mesh_layout_smooth_line.py','tools/smooth_line_parity.py')
 
 
 def write(path,value):
@@ -130,7 +133,8 @@ def capture(args):
         result.update(status='PASS_INSTALLED_WHEEL_MESH_LAYOUT_CASE',process_exit=0,
             compared_pixels=image.shape[0]*image.shape[1],excluded_pixels=0,
             maximum_channel_error=int(difference.max()),differing_bytes=int(np.count_nonzero(difference)),
-            alpha_exact=bool(np.array_equal(image[:,:,3],reference[:,:,3])),cpu_atlases_exact=True)
+            alpha_exact=bool(np.array_equal(image[:,:,3],reference[:,:,3])),cpu_atlases_exact=True,
+            comparison='smooth_line' if args.case in SMOOTH_LINE else 'fixture')
     except BaseException:
         result['error']=traceback.format_exc()
         traceback.print_exc()

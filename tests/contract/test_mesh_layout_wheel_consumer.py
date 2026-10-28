@@ -84,3 +84,21 @@ def test_an_existing_in_repository_environment_cannot_pass_preflight(tmp_path,mo
             pytest.fail('Repository environment must not pass external origin preflight')
     assert json.loads((evidence/'setup.json').read_bytes())['status']=='FAILED_PRESERVED'
     assert json.loads((evidence/'environment-teardown.json').read_bytes())['status']=='EXISTING_ENVIRONMENT_UNCHANGED'
+
+
+def test_the_axes_colorbar_scene_uses_the_smooth_line_criterion_and_other_scenes_stay_unchanged():
+    # Decision D5 (W14): only axes_colorbar changes; the pinned fixture's comparison still decides every other scene.
+    import numpy as np
+    from tools.fixture_mesh_layout_extensions import BACKGROUND,SIZE
+    from tools.mesh_layout_smooth_line import SMOOTH_LINE,compare
+    assert SMOOTH_LINE=={'axes_colorbar'}
+    frame=np.empty((SIZE[1],SIZE[0],4),np.uint8);frame[...]=BACKGROUND
+    frame[40:60,40:120]=(240,240,240,255)
+    compare('axes_colorbar',frame,frame.copy())
+    edge=frame.copy();edge[40,40:120,:3]-=32
+    compare('axes_colorbar',edge,frame)
+    interior=frame.copy();interior[50,80,0]-=1
+    with pytest.raises(AssertionError,match='interior'):
+        compare('axes_colorbar',interior,frame)
+    with pytest.raises(AssertionError):
+        compare('grid_clipping',edge,frame)
