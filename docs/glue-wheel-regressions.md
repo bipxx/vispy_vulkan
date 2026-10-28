@@ -39,7 +39,10 @@ verify before any candidate case runs.
 
 Candidate comparisons require exact 128x128 RGBA, all original inputs and state,
 the original widget distinction, positive actual native draw/pipeline/queue work
-and the original landmarks. Failed candidate cases remain named failing tests;
+and the original landmarks. The one exception is `scatter_axes`, whose axes are
+smooth lines. Its frame uses the smooth-line criterion (decision D5,
+`tools/smooth_line_parity.py`): interiors exact, edges within 32 levels, and at
+most 1% of the frame differing. Failed candidate cases remain named failing tests;
 they are never skipped or marked as expected failures. Every case must still
 prove actual worker termination, loaded-native-image origins, no visible windows
 after close and eight zero-resource shutdown counters.
@@ -84,3 +87,23 @@ candidate wheel remains mandatory. The test still captures all five fresh origin
 scenes before running candidates. Other cells retain missing-admission failures.
 This workflow requires the declared self-hosted hardware; hosted CPU CI does not
 exercise the graphics job or promote the recorded four-of-five candidate result.
+
+## Hot-swap observation, 2026-10-28
+
+Run `w13-glue-hot-swap-224` repeated the suite with stock Glue hosts and only
+`vispy` replaced. The candidate wheel SHA256 was
+`444402459f79465fb1cb42b0dea55fb7e66ce73c22df9e96017f437786ce0d56`.
+All five fresh original OpenGL scenes passed again.
+
+| Workflow | Candidate result |
+| --- | --- |
+| `scatter`, `scatter_edit`, `volume`, `volume_edit` | All 16,384 pixels match exactly |
+| `scatter_axes` | Renders; it no longer refuses smooth lines. 114 pixels differ (0.7%), all on edges, with no interior or alpha difference. 12 exceed the 32-level bound, by up to 40. |
+
+The 12 pixels over the bound are the axes box's three corners and the tick ends.
+They are smooth line ends, 35-40 levels darker than OpenGL's, whose smooth lines
+extend slightly past each endpoint. So `scatter_axes` stays a failing test until
+the smooth line end work (consolidated plan W5, M08). All ten workers terminated,
+and both newly owned environments were removed.
+Independent candidate verification SHA256:
+`447fe550cf838bc76b8d0adab332ce30b6e764f22f6051e388952e6753dc01c2`.

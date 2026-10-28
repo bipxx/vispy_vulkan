@@ -102,3 +102,22 @@ def test_the_axes_colorbar_scene_uses_the_smooth_line_criterion_and_other_scenes
         compare('axes_colorbar',interior,frame)
     with pytest.raises(AssertionError):
         compare('grid_clipping',edge,frame)
+
+
+def test_axes_colorbar_documented_difference_drops_only_the_frame_cap():
+    # Decision D9: long antialiased-edge rows may differ within the bound beyond 1% of the frame; nothing else relaxes.
+    import numpy as np
+    from tools.fixture_mesh_layout_extensions import BACKGROUND,SIZE
+    from tools.mesh_layout_smooth_line import compare
+    from tools.smooth_line_parity import EDGE_TOLERANCE,smooth_line_difference
+    frame=np.empty((SIZE[1],SIZE[0],4),np.uint8);frame[...]=BACKGROUND
+    frame[60:64,8:216]=(240,240,240,255)
+    rows=frame.copy();rows[60,8:216,:3]-=12;rows[63,8:216,:3]-=12
+    assert smooth_line_difference(rows,frame)=='%d pixels differ'%(2*208)
+    compare('axes_colorbar',rows,frame)
+    for label,changed in (('interior',frame.copy()),('bound',rows.copy()),('alpha',rows.copy())):
+        if label=='interior':changed[61,100,0]-=1
+        elif label=='bound':changed[60,100,0]=frame[60,100,0]-EDGE_TOLERANCE-1
+        else:changed[60,100,3]-=1
+        with pytest.raises(AssertionError):
+            compare('axes_colorbar',changed,frame)

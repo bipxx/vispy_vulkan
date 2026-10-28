@@ -22,8 +22,11 @@ def reference_edges(reference):
     return np.any(windows.max(axis=0) != windows.min(axis=0), axis=2)
 
 
-def smooth_line_difference(image, reference):
-    """Return None if ``image`` matches ``reference`` under the smooth-line rule, else why not."""
+def smooth_line_difference(image, reference, max_differing_fraction=MAX_DIFFERING_FRACTION):
+    """Return None if ``image`` matches ``reference`` under the smooth-line rule, else why not.
+
+    ``max_differing_fraction=None`` drops only the frame cap, for a scene whose user-approved documented difference
+    says so; interiors and the edge bound still apply."""
     if image.shape != reference.shape or image.dtype != reference.dtype:
         return 'shape or dtype differs'
     difference = np.abs(image.astype(np.int16) - reference.astype(np.int16))
@@ -33,6 +36,6 @@ def smooth_line_difference(image, reference):
         return '%d interior pixels differ' % int(interior.sum())
     if difference.max() > EDGE_TOLERANCE:
         return 'edge difference %d exceeds %d' % (int(difference.max()), EDGE_TOLERANCE)
-    if differing.sum() > MAX_DIFFERING_FRACTION * differing.size:
+    if max_differing_fraction is not None and differing.sum() > max_differing_fraction * differing.size:
         return '%d pixels differ' % int(differing.sum())
     return None
