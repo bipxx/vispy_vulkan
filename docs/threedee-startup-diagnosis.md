@@ -212,3 +212,77 @@ modified, because historical run records execute it. Future runs should use the
 fixed probe. This fix resolves the intermittent interaction failure observed in
 run 201. The startup stall above remains unexplained and separate, and the
 Windows napari-threedee row stays mandatory and `PENDING`.
+
+## Startup stall: live recurrence and mechanism - 2026-10-28
+
+A cells3d launch hung in `window.show()` and was captured live. The launch used
+the dev environment: stock napari 0.9.2, PyQt6 6.11.0, CPython 3.12.8 and vispy
+source on Dawn/Vulkan, RTX 4090. Run `napari-startup-stall-recurrence-209` holds
+two minidumps, symbolized all-thread stacks and a wait chain. Run
+`com-stall-harness-213` analysed them.
+
+| Finding | Evidence |
+| --- | --- |
+| The main thread waits forever in UI Automation's first initialisation (`CDllHost::MTAInitializeActivators`). | Symbolized stacks in two snapshots, 89 s apart |
+| A CPython `platform` WMI query thread, started by numba's import, waits forever in `ConnectServer` on an RPCSS activation. | Stacks and wait chain |
+| The process's default thread pool has lost its worker factory. Healthy processes have two factories: the default pool's (maximum 768 threads) and the parallel loader's (maximum 3). The hung process has only the loader's, at handle 156. Handle 28 holds a `Semaphore`. In healthy trials the default pool's factory is at 28 in 2,016 of 2,090, and otherwise at 32-48. | Handle tables of both dumps; healthy trials |
+| The pool's two workers were created at 06:58:28.94 UTC, 2.1 s after the main thread. They began spinning within about a second of creation, at about 100% CPU each, mostly kernel. | Thread creation times, and CPU in the dump and at about 07:01:33 |
+| The surviving WMI query thread started 1.05 s after the workers. numba's call makes two WMI queries, and the other query's thread had exited. | Thread timeline; trial records |
+
+Early in startup, between process start and about 06:58:30, something closed
+the default thread pool's worker-factory handle. That was no later than about a
+second after the process's first COM RPC, at 06:58:28.94. After that, work
+queued to that pool never runs, including COM work. So the UI Automation
+activation in `window.show()` waits forever. It is unresolved whether the pool
+was already dead when the WMI queries ran.
+
+One explanation is refuted: a pending COM activation does not block the next.
+A WMI activation was held pending, with a stack identical from `ConnectServer`
+down and the same wait chain. UI Automation initialisation still took 5-9 ms,
+in 6 of 6 trials.
+
+CPython's WMI timeout path is not excluded. The hung process took it: its main
+thread moved on while the WMI query thread stayed in `ConnectServer`. Under
+8-way concurrency, 6 of 1,920 queries took that path (`WinError 258`) with no
+pool loss. That bounds the path but does not exclude it.
+
+The lost handle exists before any user code runs, and is never released. A bare
+`python -S` interpreter already has the default pool's factory among its first
+handles. So an ordinary double close should not reach it. The closer more
+likely used a garbage or foreign handle value, or another process closed the
+handle remotely. vispy, the `_dawn` native module and Dawn's Windows code paths
+contain no handle closing that could reach it. That audit does not cover the
+Vulkan loader, the NVIDIA driver, Qt, CPython or the other host libraries that
+ran in the same window.
+
+The 2026-10-23 stalled qualification run was traced by the debugger-based
+observer, which recorded no invalid or protected handle close. However, the
+observer cannot see a close of a valid, unprotected handle, and a stray close of
+the factory would be exactly that. The run's `RegisterDragDrop` stack is
+consistent with the same failure, but its pool state was not captured.
+
+Each reproduction attempt checked the worker factories after every stage:
+
+| Campaign | Trials | Lost pool | Stalls |
+| --- | --- | --- | --- |
+| Headless, sequential (napari, Qt with Dawn, bare COM) | 450 | 0 | 0 |
+| napari window shown, 2 s event loop: 100 plain, and 100 with the factory protected from close, which cannot show a loss | 200 | 0 | 0 |
+| 8 concurrent workers with kernel handle tracing (Qt, napari) | 1,440 | 0 | 0 |
+| Under a debugger that records bad handle closes | 5 | 0 | 0 |
+
+The event is rare in these conditions:
+
+- 0 in 733 unprotected napari launches, which bounds it below about 0.41% per launch (95%);
+- 0 in the 1,995 trials able to detect a loss.
+
+The closer is not identified, and the Windows napari-threedee row stays
+mandatory and `PENDING`. The next step is to instrument and wait:
+
+- Hot-swap and diagnostic napari launches will carry the stage-wise
+  worker-factory check.
+- Outside qualification evidence they will also carry kernel handle tracing.
+  Tracing makes invalid handle use raise, which is why qualification runs stay
+  without it.
+
+The next natural recurrence should then identify the closing process, or the
+closing thread's start module if that thread is still running.
