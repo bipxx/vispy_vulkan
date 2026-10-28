@@ -9,15 +9,44 @@ and documentation. PR #20 merged the runnable Image/Line example as
 with all eleven required source checks passed. This adds source workflow
 coverage without extending installed admission.
 
-The next source packet adds a [runnable Tk mesh example](../../tk-mesh.md).
-Windows run192 and WSL run193 verify actual example output, geometry/color updates and a
-generated quarter-turn drag, with reached stale-update/no-rotation controls
-and nine zero shutdown gauges per worker. The invalid broad control from191
-and the original192 receipt-parser failure remain preserved. Existing native
-artifacts were reused, and managed scratch was cleaned. Independent source review and source
-publication remain pending; historical mesh/volume results are not current
-admission for this example. Finish those bounded checks before choosing more
-API breadth. Preserve the older checkpoints below as historical evidence.
+The [runnable Tk mesh example](../../tk-mesh.md) is verified by Windows run192
+and WSL run193: actual example output, geometry/color updates and a generated
+quarter-turn drag, with reached stale-update/no-rotation controls and nine zero
+shutdown gauges per worker. The invalid broad control from191 and the
+original192 receipt-parser failure remain preserved. Review194 approved the
+exact packet with no findings. PR #21 merged as
+`3d73a6a9dd54a8181788d35b4d5eb5a459fc6897`, matching tested tree
+`08297009b044ae25d63205c5bb918874a0e7ea31` with all eleven required source
+checks passed (`build/runs/mesh-publication-195/merge-verification.json`).
+
+The [runnable Tk scalar volume example](../../tk-volume.md) is verified by
+Windows run196 and WSL run197: MIP blocks, a moved/vacated block, minip/MIP
+switching, rejected method/2D inputs and valid recovery, with reached
+stale-volume/no-minip controls and nine zero shutdown gauges per worker.
+Review198 approved the exact packet with no findings. PR #22 merged as
+`062fff14520e50e5892e48352bb0394b4b342320`, matching tested tree
+`a2a001f975deeb30b382b7abab10ac7b8c9f82cf` with all eleven required source
+checks passed. Start with `build/runs/volume-publication-199/milestone-handoff.md`.
+Existing native artifacts were reused and managed scratch was cleaned for both
+packets. These are source coverage only; historical mesh/volume results are not
+installed admission for either example. Preserve the older checkpoints below as
+historical evidence.
+
+### Release-scope decision - 2026-10-27
+
+The user decided that `windows-vulkan-napari-threedee-pyqt6` **stays mandatory
+for the first release** and was not moved to experimental. The row remains
+`PENDING` in `compat/no-opengl-matrix.json`, unchanged. The three-start
+diagnostic budget in [the diagnosis](../../threedee-startup-diagnosis.md) is
+exhausted, so no new startup trial is scheduled. First-release completion is
+therefore blocked, waiting on external input: either a genuine recurrence of
+the `RegisterDragDrop`/OLE stall in the exact profile, captured live (native
+stacks, WCT owner/server chain, observer pending-step/thread state before the
+deadline), or a new causal hypothesis approved for a bounded trial. No other
+source packet is open, and no further API breadth was selected for this
+closure. The decision record is
+`build/runs/volume-publication-199/host-scope-decision.json`; the earlier
+pending-question record is preserved unchanged beside it.
 
 ## Current execution checkpoint - 2026-10-26
 
