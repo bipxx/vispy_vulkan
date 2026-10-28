@@ -92,7 +92,7 @@ Diagnostic runs in the exact qualification profile keep the spec budget
 | ID | Work | Exit | Needs or notes |
 | --- | --- | --- | --- |
 | W1 | `GL_EXTENSIONS` reports `texture_float` only when float32 is filterable | CPU tests for both device answers; a napari float image renders with the fallback forced | Native rebuild. Overlaps typed-sampling item B5. Reuse fixture I07. |
-| W2a | W2 residuals: run the 6 `np.row_stack` cases with NumPy 2.4.6, the pairing those suites require, and make the `initialized` suite honour `VISPY_PLUGIN_CANDIDATE_PYTHON` (1 case) | These 7 cases run on the hot-swap stack | Hot-swap plan, W2 table |
+| W2a | W2 residuals: run the 6 `np.row_stack` cases with NumPy 2.4.6, the pairing those suites require, and make the `initialized` suite honour `VISPY_PLUGIN_CANDIDATE_PYTHON` (1 case) | These 7 cases run on the hot-swap stack | **Done** (see Progress). Hot-swap plan, W2 table |
 | W3 | Hot-swap audit gates | Controls reached; the stock baseline passes | New modules only, because the audit tools are pinned. Attribution must decide how a driver's GL load inside a native swapchain path counts, if W8 picks one. |
 | W4 | napari families not yet covered: cyclic labels r8/r16, Shapes/Vectors/Tracks (M10, M11), Surface at napari level (a new fixture), overlays (E06, T04), histogram, sized export (Q03, Q06) | Each matches its OpenGL reference, or has a documented difference fixed before capture | Record results in `compat/vispy-compatibility.json`. |
 | W5 | Known defects: M02 and M06 markers, M08 wide lines (16 references; the depth failure is retained), M09 joins, caps and new line fixtures, B03 opacity mutation, H01 screenshot and layer removal with no hidden finish, V04 volume controls | Fixed and admitted. M02 and M06 close with a user-approved documented difference, fixed before re-capture (D4). | V07 and the plane widget belong to W10. V09 timing belongs to W8. |
@@ -105,7 +105,7 @@ Diagnostic runs in the exact qualification profile keep the spec budget
 | W13 | Glue in hot swap: the five workflows (scatter, scatter edit, scatter axes, volume, volume edit) | All five pass with stock hosts | W3. `scatter_axes` uses the smooth-line criterion (D5; coverage H02). The design requires Glue (:26, :122), and no workstream covered it. |
 | W14 | Apply the smooth-line criterion to the mesh axes/colorbar scene and re-run it | It passes under the criterion | D5. Its fixture sources are pinned, so add the criterion in new modules. |
 
-W0 (drag race) and W2 (baseline) are done.
+W0 (drag race), W2 (baseline) and W2a are done.
 
 ### Backlog (not release-blocking)
 
@@ -136,10 +136,32 @@ W0 (drag race) and W2 (baseline) are done.
   needs macOS 14, and there are no Intel-Mac numba wheels (platform-qualification
   :90-96).
 
+## Progress
+
+**W2a done** on 2026-10-28, run `w2a-plugin-residuals-216`.
+
+- **Environment.** The lock is the NumPy 2.4.6 host lock with only `vispy`
+  replaced by `444402...`. numba 0.68.0 and llvmlite 0.50.0 came from W2's numba
+  lock, and napari-threedee 0.0.29 from its plugin lock. All 537 wheel members
+  were verified installed (`wheel-verification.json`).
+- **Interpreter fix.** The threedee and initialized suites now launch their
+  candidate child in `VISPY_PLUGIN_CANDIDATE_PYTHON`, like the overlay and
+  render-plane suites. A CPU contract guard covers all five suites. In this run
+  only initialized `retirement` reached the child; the other threedee and
+  initialized cases still stop at their reference admission (W10).
+- **Initialized `retirement`** now passes exactly in the candidate interpreter.
+- **The 6 former `np.row_stack` cases** (render-plane `plane_handles` and
+  `plane_clipped`, and all four scheduled cases) now render. They differ only on
+  reference edges: 0 interior pixels, and 0.44-0.53% of the frame. But 52-61
+  edge pixels per case exceed the 32-level smooth-line bound, by up to 112-132
+  levels (median 43-46; 1-2 pixels per case reach 112 or more). So they fail
+  the criterion D5 sets for these suites, and any other bound would need a user
+  decision. W10 investigates the cause.
+
 ## Order
 
 1. R1's instrumentation runs alongside everything below.
-2. W2a and W3, then W10, then W4 and W5, then W13 and W14.
+2. W3, then W10, then W4 and W5, then W13 and W14.
 3. W6 and W7, then W1 (native rebuild).
 4. W8.
 5. R2 (fresh release build), then W11 at the release and W12 on approval.

@@ -91,7 +91,10 @@ def test_registered_plugin_qt_workflow_matches_independent_upstream(name, tmp_pa
     reference = np.load(REFERENCE / record["artifacts"]["rgba"]["file"], allow_pickle=False)
     output = tmp_path / name
     child_env = dict(os.environ, PYTHONHASHSEED="0")
-    child = subprocess.run([sys.executable, "-X", "faulthandler",
+    # Every rendering/import/Qt operation runs in the explicit installed
+    # candidate interpreter, as in the overlay and render-plane suites.
+    candidate_python = Path(os.environ.get("VISPY_PLUGIN_CANDIDATE_PYTHON", sys.executable)).resolve(strict=True)
+    child = subprocess.run([str(candidate_python), "-X", "faulthandler",
                             str(ROOT / "tools/oracle_napari_threedee_capture.py"),
                             "--kind", "candidate", "--output", str(output), "--fixtures", name],
                            env=child_env, cwd=ROOT, capture_output=True, text=True)

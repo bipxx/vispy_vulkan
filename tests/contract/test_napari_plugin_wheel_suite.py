@@ -209,3 +209,16 @@ def test_one_level_interior_change_is_rejected(handles):
 def test_shape_and_dtype_must_match(handles):
     assert smooth_line_difference(handles[:-1], handles) is not None
     assert smooth_line_difference(handles.astype(np.int16), handles) is not None
+
+
+HOST_SUITES=('test_napari_threedee_parity.py','test_napari_threedee_initialized_parity.py',
+    'test_napari_threedee_overlay_parity.py','test_napari_render_plane_parity.py',
+    'test_napari_render_plane_scheduled_parity.py')
+
+
+@pytest.mark.parametrize('name',HOST_SUITES)
+def test_plugin_qt_suites_render_in_the_declared_candidate_interpreter(name):
+    source=(Path(__file__).resolve().parents[2]/'tests/hosts'/name).read_text(encoding='utf-8')
+    assert 'os.environ.get("VISPY_PLUGIN_CANDIDATE_PYTHON", sys.executable)' in source
+    assert 'subprocess.run([str(candidate_python)' in source
+    assert source.count('sys.executable')==1  # only as the fallback
