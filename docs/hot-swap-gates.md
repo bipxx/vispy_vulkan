@@ -21,7 +21,7 @@ strict audit (`tools/audit_no_opengl.py`, `tools/no_opengl/`) is unchanged.
 | `tools/hot_swap/windows_observer.py` | Debugger-based Windows observer, derived from the strict one |
 | `tools/hot_swap/derive_observer.py` | Generates the observer from the strict one |
 | `tools/hot_swap/policy.py` | Attribution, correlation of native events, the static scan, and the gates |
-| `tools/hot_swap/scenarios/` | The stock napari baseline and three controls |
+| `tools/hot_swap/scenarios/` | The stock napari and Glue baselines and three controls |
 
 `tools/hot_swap/derive_observer.py` generates the observer from the strict observer
 `tools/no_opengl/windows.py`, which is pinned and unchanged. A CPU contract test checks
@@ -140,6 +140,27 @@ environment was W2's stock lock with only `vispy` replaced by `444402...`. Resul
 | `control_renderer_import`: a `vispy.*` frame imports `OpenGL.GL` | `renderer_gl` FAIL, with 192 renderer events. The two `wglGetProcAddress` calls PyOpenGL makes through libffi are unattributed. |
 | `control_gl_context`: Qt creates and binds a GL context | `no_gl_context_or_draw` FAIL on `wglCreateContext`, called by Qt's `qwindows.dll`. `renderer_gl` is UNVERIFIED because the run was stopped. |
 | `stock_napari`: image and labels layers, 2D and 3D renders, close | No context or draw. 24 host GL events, 0 renderer and 0 unattributed. The static scan is complete (362 Python files, 3 binaries) and finds one runtime reference: `gloo/glir.py:1591 import OpenGL.GL`. So `renderer_gl` is **UNVERIFIED**. |
+
+Run `w13-glue-hot-swap-224` added `stock_glue`. It runs the five Glue fixture workflows
+(scatter, scatter edit, scatter axes, volume, volume edit), each shown and closed, with
+stock Glue hosts (glue-core 1.27.0, glue-qt 0.4.2, glue-vispy-viewers 1.4.0, PyQt6
+6.11.0). It created no GL context and drew nothing. Its dynamic record has 11 host GL
+events (the PyQt6 `QtOpenGL` and `QtOpenGLWidgets` modules and DLLs, and a PyOpenGL
+import), with 0 renderer and 0 unattributed. Like napari, `renderer_gl` is UNVERIFIED
+only because of the static reference.
+
+Run `w1-w5-native-batch-227` built a local test wheel, `7ad85601...`. It is `444402` with
+three changes, all pinned runtime files that ship with the fresh release build (R2):
+- W15 removes the static reference below;
+- W1 changes `dawn_parser.py`;
+- the W5 smooth line end fix.
+
+On that wheel both baselines reach `PASS_HOT_SWAP_GATES`:
+- the static scan is complete (362 files, 3 binaries) with no runtime reference;
+- `stock_napari` has 24 host GL events and `stock_glue` 11, with 0 renderer and 0
+  unattributed;
+- neither creates a GL context or draws;
+- the three controls keep their verdicts.
 
 The reference sits in `_check_pyopengl_3D()`, part of upstream's legacy OpenGL
 `GlirParser`, which the Dawn path never instantiates. `GlirParser` is still a public

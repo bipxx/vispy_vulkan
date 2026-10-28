@@ -66,6 +66,8 @@ unmodified scientific hosts, napari first, run on it with practical parity.
 | D7 | **Monitor moves and fractional DPI stay out of scope and are documented as untested.** The other Qt lifecycle items run now. | Only these two need a physical-desktop session (completion :239). |
 | D8 | **The four render-plane-scheduled cases close through W5's wide-line fix, with no new tolerance.** This revises the user's earlier approval of a looser rule, which rested on a wrong diagnosis. | 52-61 pixels per case exceeded the 32-level bound. A one-pixel boundary-move rule was fixed and tested before the re-run. It explained 33-46 of them and left 15-25, so all four cases still failed (run `w10-render-plane-rule-221`). Inspection then showed the pixels are not on the render plane's boundary, as first described. They are on napari-threedee's manipulator strokes, which are vispy `Line(width=3, method='gl')` wide aliased lines. Some candidate stroke pixels look partly covered where GL draws them solid. |
 
+| D9 | **Mesh `axes_colorbar` closes with a documented difference.** Only for that scene, the smooth-line rule's 1% frame cap does not apply. Interiors stay exact, every other pixel stays within 32 levels, alpha matches exactly, and the fixture's landmarks match exactly. Implemented in `tools/mesh_layout_smooth_line.py`, with CPU negative controls. | With the 0.14 px line-end fix, the scene's worst pixel fell from 147 to 12 levels. 418 pixels still differed (1.17%, cap 1%). 332 of them are the 166-px axis line's two antialiased edge rows, 11-12 levels off: GL's driver-defined side coverage, which a simple renderer model does not reproduce. |
+
 No decisions are open.
 
 The user has already decided that the Windows napari-threedee row stays
@@ -78,7 +80,7 @@ required. W11 publication and W12 upstream posting each need explicit approval.
 | ID | Work | Exit | Needs |
 | --- | --- | --- | --- |
 | R1 (W9) | Windows napari-threedee strict row | A cause and a regression test, then full lifecycle, nine-zero shutdown and all three gates on the release artifact (spec :340-345; status :86-87). A passing replay never closes it (diagnosis :49-50). | Identify the closer. Instrument hot-swap and diagnostic launches and wait for a recurrence. |
-| R2 | Release assembly: a fresh build of the then-current source (D1) | Every mandatory row requalified on it, final-head CI, promotion review | R1 |
+| R2 | Release assembly: a fresh build of the then-current source (D1) | Every mandatory row requalified on it, final-head CI, promotion review | R1. The fresh source must include run `w1-w5-native-batch-227`'s patch set (W1, W5 smooth line ends, W15). Those are pinned runtime files, so the Tk candidate's runtime inputs are renewed with it. |
 
 Additional R1 evidence: the 2026-10-23 stall in a napari-hosted volume case
 (`iso_categorical_fast`, run native65) had a consistent signature. Its main
@@ -93,20 +95,23 @@ Diagnostic runs in the exact qualification profile keep the spec budget
 
 | ID | Work | Exit | Needs or notes |
 | --- | --- | --- | --- |
-| W1 | `GL_EXTENSIONS` reports `texture_float` only when float32 is filterable | CPU tests for both device answers; a napari float image renders with the fallback forced | Native rebuild. Overlaps typed-sampling item B5. Reuse fixture I07. |
+| W1 | `GL_EXTENSIONS` reports `texture_float` only when float32 is filterable | CPU tests for both device answers; a napari float image renders with the fallback forced | No native change is needed: the answer is in `src/vispy/gloo/dawn_parser.py`, and `_dawn.device_info()` already reports `float32_filterable`. That file is pinned by the Tk candidate's runtime inputs, so the change lands with R2, like W15. Batched with W5 and W15 in run `w1-w5-native-batch-227`. Overlaps typed-sampling item B5. napari's fallback (`texture_format=None`) is the path fixture I07 covers. **Validated on the batch test wheel**: both CPU device answers, and the forced-fallback napari render within one level of the float path. |
 | W2a | W2 residuals: run the 6 `np.row_stack` cases with NumPy 2.4.6, the pairing those suites require, and make the `initialized` suite honour `VISPY_PLUGIN_CANDIDATE_PYTHON` (1 case) | These 7 cases run on the hot-swap stack | **Done** (see Progress). Hot-swap plan, W2 table |
-| W3 | Hot-swap audit gates | Controls reached; the stock baseline passes | **Tooling done** (see Progress). The baseline's dynamic record is clean, but on `444402` its `renderer_gl` gate is UNVERIFIED because of one static GL reference in `gloo/glir.py`; it closes on the fresh build with W15. Windows only; W7 needs a Linux observer. W8 must decide how a driver's GL activity inside a native swapchain path counts before selecting native presentation. |
+| W3 | Hot-swap audit gates | Controls reached; the stock baseline passes | **Tooling done** (see Progress). The baseline's dynamic record is clean, but on `444402` its `renderer_gl` gate is UNVERIFIED because of one static GL reference in `gloo/glir.py`; it closes on the fresh build with W15. On the batch test wheel, which carries W15, stock napari reaches `PASS_HOT_SWAP_GATES`. Windows only; W7 needs a Linux observer. W8 must decide how a driver's GL activity inside a native swapchain path counts before selecting native presentation. |
 | W4 | napari families not yet covered: cyclic labels r8/r16, Shapes/Vectors/Tracks (M10, M11), Surface at napari level (a new fixture), overlays (E06, T04), histogram, sized export (Q03, Q06) | Each matches its OpenGL reference, or has a documented difference fixed before capture | Record results in `compat/vispy-compatibility.json`. |
-| W5 | Known defects: M02 and M06 markers, M08 wide lines (16 references; the depth failure is retained), M09 joins, caps and new line fixtures, B03 opacity mutation, H01 screenshot and layer removal with no hidden finish, V04 volume controls | Fixed and admitted. M02 and M06 close with a user-approved documented difference, fixed before re-capture (D4). | V07 and the plane widget belong to W10. V09 timing belongs to W8. M08 includes napari-threedee's 3-px manipulator strokes, which block W10's four render-plane-scheduled cases (D8). Check whether Dawn's aliased wide lines partly cover pixels that GL draws solid. M09 includes the axis line ends in W14's `axes_colorbar`. |
+| W5 | Known defects: M02 and M06 markers, M08 wide lines (16 references; the depth failure is retained), M09 joins, caps and new line fixtures, B03 opacity mutation, H01 screenshot and layer removal with no hidden finish, V04 volume controls | Fixed and admitted. M02 and M06 close with a user-approved documented difference, fixed before re-capture (D4). | V07 and the plane widget belong to W10. V09 timing belongs to W8. M08 covers two residuals. The first is napari-threedee's 3-px manipulator strokes, which block W10's four render-plane-scheduled cases (D8). The second is the ends of smooth GL lines, which block W13's Glue `scatter_axes` (corners and tick ends) and W14's `axes_colorbar` (axis line ends). The data fit GL extending each smooth line end by about 0.13-0.15 px where Dawn ends exactly at the endpoint: a half-covered end pixel is 164 against 127, and a three-quarter one 230 against 191. GL's faint pixel past an axis end also writes depth that hides the tick drawn after it. **Fixed in the batch** (see Progress): a 0.14 px end extension, validated on GPU, ships with R2. A probe on `444402` (run `w5-wide-line-probe-225`) bounds the strokes:
+- isolated 3-px aliased lines (horizontal, vertical, diagonal) match GL exactly, so the strokes need a reproduction of the manipulator's segmented arcs, perspective and depth against its markers. The first test is the spherical markers' per-fragment depth (`gl_FragDepth = gl_FragCoord.z + depth_change`, with `depth_change` in GL NDC units) against a stroke that passes a sphere's edge;
+- 3-px smooth lines differ only on edges, by up to 37-47 levels;
+- M08's reference manifest records an older `tools/fixture_wide_lines.py` hash. |
 | W6 | Hot-swap rows for PySide6 and CPython 3.11-3.14 | One row per cell passes W2 and W3 | Wheels for 3.10-3.14 exist only at an earlier epoch, so they must be rebuilt at the current source. Admissions use the 23-job CI and a promotion review. |
 | W7 | WSL lavapipe hot-swap rows | WSL rows pass | Measure the smooth-line bound on lavapipe; 32 was measured on NVIDIA only. |
 | W8 (PERF-1) | Performance report: interaction frame time, large image and volume loads (including V09 timing), presentation path | A measured report against upstream OpenGL, with no speedup claim; the presentation choice is taken from the data (D3) | Native swapchain presentation is allowed only in hot swap. Inputs: the five-pair timings. PR #2 was closed, but its Qt single-present code is live (`src/vispy/app/backends/_qt.py:790-931`). Explain the unattributed Qt expose paints that invalidated the Native65 five-pair timing run (next-batch plan :443, :485, :3502). |
 | W10 | Oracle fixtures: the threedee drag race; the render-plane fixtures, including V07 and the plane widget; the plugin plan's opaque-volume residual. In W2, 11 cases were blocked by unadmitted references in the threedee, initialized and render-plane suites. | Parity tests pass against new admitted oracle captures | New fixture modules and reference packets beside the retained ones, with an admission naming the oracle defect (D6). These suites draw manipulator lines, so they use the smooth-line criterion (D5). **Partly done** (see Progress): the repaired fixtures exist and D5 is applied. The four render-plane-scheduled cases wait on W5's wide-line fix (D8). |
 | W11 | Publication: GitHub Release plus a PEP 503 index with hashes, a manylinux build, and the 100 MiB wheel budget | A clean venv installs from the channel and the W2 smoke test passes | Only at the release, after R2 and approval; no preview (D2). Record a new artifact, and never replace the draft release's assets (gaps plan :581-582). Prepared locally (`tools/wheel_index.py`). |
 | W12 | Upstream napari lazy `GLError` and qtpy lazy QtOpenGL | Upstream releases contain them | Approval. Drafts are in `docs/upstream-drafts/`. They remove the napari and qtpy patches, but stock Qt still fails the strict gates, so strict rows keep the Qt build without OpenGL. |
-| W13 | Glue in hot swap: the five workflows (scatter, scatter edit, scatter axes, volume, volume edit) | All five pass with stock hosts | W3. `scatter_axes` uses the smooth-line criterion (D5; coverage H02). The design requires Glue (:26, :122), and no workstream covered it. |
-| W14 | Apply the smooth-line criterion to the mesh axes/colorbar scene and re-run it | It passes under the criterion | D5. Its fixture sources are pinned, so the criterion is added in new modules. **Partly done** (see Progress): 12 of 13 scenes pass, and `axes_colorbar` fails the criterion. |
-| W15 | Remove upstream's PyOpenGL import from the shipped `gloo/glir.py`: `_check_pyopengl_3D()`, used only by the legacy GL `GlirParser`'s 3D textures | The W3 static scan finds no runtime GL reference, and the W3 stock baseline passes on the fresh build | R2. `glir.py` is pinned by the Tk candidate's runtime inputs, the DIVE PySide2 host environment and the Metal CI reuse record, so the edit lands with the fresh build. `GlirParser` stays public; its 3D-texture path should fail clearly instead. |
+| W13 | Glue in hot swap: the five workflows (scatter, scatter edit, scatter axes, volume, volume edit) | All five pass with stock hosts | W3. `scatter_axes` uses the smooth-line criterion (D5; coverage H02). The design requires Glue (:26, :122), and no workstream covered it. **Partly done** (see Progress): 4 of 5 pass on `444402`. On the batch test wheel, which carries the smooth line end fix, all five pass, `scatter_axes` included, and the Glue scenario passes both hot-swap gates; this closes at R2. |
+| W14 | Apply the smooth-line criterion to the mesh axes/colorbar scene and re-run it | It passes under the criterion | D5. Its fixture sources are pinned, so the criterion is added in new modules. **Partly done** (see Progress): 12 of 13 scenes pass on `444402`. On the batch test wheel all 13 pass, with `axes_colorbar` under its documented difference (D9); this closes at R2. |
+| W15 | Remove upstream's PyOpenGL import from the shipped `gloo/glir.py`: `_check_pyopengl_3D()`, used only by the legacy GL `GlirParser`'s 3D textures | The W3 static scan finds no runtime GL reference, and the W3 stock baseline passes on the fresh build | R2. `glir.py` is pinned by the Tk candidate's runtime inputs, the DIVE PySide2 host environment and the Metal CI reuse record, so the edit lands with the fresh build. `GlirParser` stays public; its 3D-texture path now fails clearly instead. Validated on the batch test wheel: the static scan is clean, and stock napari passes both gates. |
 
 W0 (drag race), W2 (baseline) and W2a are done. W3's tooling is done; its
 baseline closes with W15.
@@ -226,20 +231,68 @@ baseline closes with W15.
 - **Results.** 12 of 13 scenes pass. `axes_colorbar` now renders, where it once
   refused smooth lines, and has no interior differences. It fails the criterion
   on two counts:
-  - 4 pixels exceed the bound by up to 147 levels, because the candidate's x-axis
-    line is one pixel longer at each end. This is a cap difference, W5's M09.
+  - 4 pixels exceed the bound by up to 147 levels, at the x-axis line's two
+    ends. GL's smooth line extends just past each end. That faint pixel's depth
+    hides the tick drawn after it, where Dawn shows the tick. This is a smooth
+    line end difference, W5's M08.
   - 414 pixels differ, 1.16% of this 224x160 frame, against the 1% cap. Almost
     all are antialiased edges, within the bound, along the 168-px axis line and
     its ticks.
-- **Next.** Re-run after W5's cap fix. If only the 1% cap still fails, changing
-  it needs a user decision.
+- **Next.** Re-run after W5's smooth line end fix. If only the 1% cap still
+  fails, changing it needs a user decision.
+
+**W13 partly done** on 2026-10-28, run `w13-glue-hot-swap-224`, wheel
+`444402`, stock Glue hosts; see [Glue wheel regressions](../../glue-wheel-regressions.md).
+
+- **Criterion.** `tools/glue_wheel_suite.py` compares `scatter_axes` with the
+  smooth-line criterion (D5). The other four workflows stay exact, and the
+  pinned parity test is unchanged.
+- **Results.** All five fresh OpenGL references pass.
+  - `scatter`, `scatter_edit`, `volume` and `volume_edit` match exactly. The
+    volume failure recorded in coverage H02 no longer occurs.
+  - `scatter_axes` renders, with no interior or alpha difference. 0.7% of the
+    frame differs, but 12 corner and tick-end pixels exceed the bound, by up to
+    40 levels. They are smooth line ends, 35-40 levels darker than GL's, W5's
+    M08.
+- **Hot-swap gates** (`tools/hot_swap/scenarios/stock_glue.py`, all five
+  workflows). No GL context or draw. The dynamic record has 11 host GL events, 0
+  renderer and 0 unattributed. As with napari, `renderer_gl` is UNVERIFIED only
+  on the static `glir.py` reference (W15).
+
+**W1, W5 smooth line ends and W15, batched** on 2026-10-28, run
+`w1-w5-native-batch-227`, with a local test wheel `7ad85601...`.
+
+- **Source.** Patches against the pinned sources, which land with R2's
+  candidate renewal:
+  - `dawn_parser.py` (W1, with CPU tests);
+  - `glir.py` (W15);
+  - `line_consumer.cpp` (W5: each smooth line end extends 0.14 px past its
+    endpoint).
+- **Build.** A patched source snapshot was built the way `444402`'s native
+  module was (run `windows-native-proof-94`): the sealed SDK
+  `windows-x64-release-3`, the same toolchain and the same targets. 44 of 44
+  CTest cases pass. The test wheel is `444402` with only the five changed members
+  replaced. The rebuilt layer DLL's bytes differ although none of its sources
+  changed, so these builds are compared by behaviour, not by hash.
+- **Results on the test wheel.**
+  - W1: withholding Float32Filterable drops `texture_float`. napari then uses
+    `texture_format=None` and renders within one level of the float path.
+  - W5: the wide-line fixture's smooth cases fall from 37-47 levels to 1-19,
+    where the offline model predicted 0.8-18.8. Strips and loops become exact,
+    and aliased cases stay exact. All five Glue workflows pass. All 13 mesh
+    scenes pass, `axes_colorbar` under D9. napari-threedee overlay (5 of 5) and
+    initialized `retirement` still pass. The four render-plane-scheduled cases
+    still fail on the manipulator strokes (D8).
+  - W15 and W3: the static scan is clean. Stock napari and stock Glue reach
+    `PASS_HOT_SWAP_GATES`, and the controls keep their verdicts.
 
 ## Order
 
 1. R1's instrumentation runs alongside everything below.
-2. W4 and W5. W5 includes the wide-line and cap fixes that W10's four
-   render-plane-scheduled cases and W14's `axes_colorbar` wait on. Then W13.
-3. W6 and W7, then W1 (native rebuild).
+2. W5's manipulator strokes (D8; first test: spherical marker depth), then the
+   rest of W5, and W4. The smooth line ends are fixed in the batch and ship with
+   R2.
+3. W6 and W7.
 4. W8.
 5. W15 and R2 (fresh release build), then W11 at the release and W12 on approval.
 6. Backlog as capacity allows.

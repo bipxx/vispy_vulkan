@@ -32,11 +32,31 @@ def test_all_original_landmarks_and_exact_alpha_remain_required(name):
     suite.compare(name, image, image, actual, expected)
     changed = image.copy()
     changed[0, 0, 3] ^= 1
-    with pytest.raises(AssertionError, match='Exact full Glue frame differs'):
+    # An interior change fails both the exact and the smooth-line (D5) comparison.
+    message = 'Smooth-line Glue frame differs' if name in suite.SMOOTH_LINE else 'Exact full Glue frame differs'
+    with pytest.raises(AssertionError, match=message):
         suite.compare(name, changed, image, actual, expected)
     actual['inputs'] = [dict(sha256='changed-input')]
     with pytest.raises(AssertionError, match='host state/inputs differ'):
         suite.compare(name, image, image, actual, expected)
+
+
+def test_only_scatter_axes_accepts_bounded_smooth_line_edges():
+    # Decision D5: an antialiased-edge change within the bound passes scatter_axes; every other workflow stays exact.
+    assert suite.SMOOTH_LINE == {'scatter_axes'}
+    expected = dict(case='scatter_axes', inputs=[dict(sha256='original-input')], native_mro=['QOpenGLWidget'])
+    actual = dict(expected, native_mro=['DawnWidget'])
+    image = analytic_frame('scatter_axes')
+    image[30:34, 20:100] = [200, 200, 200, 255]
+    edge = image.copy()
+    edge[30, 20:100, :3] -= 32
+    suite.compare('scatter_axes', edge, image, actual, expected)
+    beyond = image.copy()
+    beyond[30, 20:100, :3] -= 33
+    with pytest.raises(AssertionError, match='Smooth-line Glue frame differs'):
+        suite.compare('scatter_axes', beyond, image, actual, expected)
+    with pytest.raises(AssertionError, match='Exact full Glue frame differs'):
+        suite.compare('scatter', edge, image, dict(actual, case='scatter'), dict(expected, case='scatter'))
 
 
 def test_cache_fix_preserves_the_entire_original_fixture_except_two_protocol_lines():

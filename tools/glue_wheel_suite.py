@@ -19,10 +19,12 @@ ROOT = Path(__file__).resolve().parents[1]
 if not __package__:
     sys.path.insert(0, str(ROOT / 'tools'))
     from fixture_glue_extensions import CASES, assert_landmarks, render
+    from smooth_line_parity import smooth_line_difference
     from image_wheel_runner import installed_environment, run_logged, sha, write
     from mesh_layout_process import process_stamp, worker_terminal, native_modules, assert_wheel_module_origins, normalized_path
 else:
     from .fixture_glue_extensions import CASES, assert_landmarks, render
+    from .smooth_line_parity import smooth_line_difference
     from .image_wheel_runner import installed_environment, run_logged, sha, write
     from .mesh_layout_process import process_stamp, worker_terminal, native_modules, assert_wheel_module_origins, normalized_path
 
@@ -44,7 +46,9 @@ SOURCES = ('tools/glue_wheel_suite.py', 'tools/fixture_glue_extensions.py', 'too
            'tools/fixture_gloo.py', 'tools/image_wheel_runner.py', 'tools/fixture_image_extensions.py',
            'tools/mesh_layout_process.py', 'tools/oracle_glue_requirements.txt',
            'tools/oracle_glue_admission.json', 'compat/upstream_manifest.json',
-           'LICENSE', 'LICENSE-BSD')
+           'LICENSE', 'LICENSE-BSD', 'tools/smooth_line_parity.py')
+# Decision D5: scatter_axes draws smooth (antialiased) axes, so its frame uses the smooth-line criterion.
+SMOOTH_LINE = frozenset({'scatter_axes'})
 VISPY_BLOCK = r'(?m)^vispy==0\.17\.0 \\\n(?:    --hash=sha256:[a-f0-9]+(?: \\)?\n)+'
 
 
@@ -122,7 +126,11 @@ def compare(name, image, original, params, expected):
     assert 'QOpenGLWidget' in reference.pop('native_mro')
     assert 'QOpenGLWidget' not in actual.pop('native_mro')
     assert actual == reference, (name, 'Original host state/inputs differ')
-    assert np.array_equal(image, original), (name, 'Exact full Glue frame differs')
+    if name in SMOOTH_LINE:
+        reason = smooth_line_difference(image, original)
+        assert reason is None, (name, 'Smooth-line Glue frame differs', reason)
+    else:
+        assert np.array_equal(image, original), (name, 'Exact full Glue frame differs')
     assert_landmarks(name, image)
 
 

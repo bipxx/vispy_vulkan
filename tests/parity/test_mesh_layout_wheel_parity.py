@@ -33,6 +33,6 @@ def test_installed_wheel_scene_matches_original_complete_frame(name,consumer):
     assert observed['process_exit']==worker['process_exit']==0, worker.get('error',worker)
     assert worker['status']=='PASS_INSTALLED_WHEEL_MESH_LAYOUT_CASE'
     assert worker['compared_pixels']==224*160 and worker['excluded_pixels']==0
-    # Decision D5: the axes/colorbar scene's smooth lines use the smooth-line criterion, edge alpha included.
+    # Decisions D5 and D9: the axes/colorbar scene uses the smooth-line criterion without the frame cap; alpha stays exact.
     assert worker['comparison']==('smooth_line' if name in SMOOTH_LINE else 'fixture')
-    assert (worker['alpha_exact'] or name in SMOOTH_LINE) and worker['cpu_atlases_exact']
+    assert worker['alpha_exact'] and worker['cpu_atlases_exact']
