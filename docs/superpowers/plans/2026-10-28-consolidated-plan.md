@@ -64,10 +64,12 @@ unmodified scientific hosts, napari first, run on it with practical parity.
 | D5 | **The smooth-line criterion also applies to Glue `scatter_axes`, the mesh axes/colorbar scene and the napari-threedee fixture suites.** Everything else stays exact. | These suites draw smooth lines and compared exactly. |
 | D6 | **Broken oracle fixtures get new fixture modules and reference packets beside the retained ones, with an admission that records the oracle defect.** Original references are never replaced. | The fixture sources are pinned by `fixture_source_sha256` in their manifests. |
 | D7 | **Monitor moves and fractional DPI stay out of scope and are documented as untested.** The other Qt lifecycle items run now. | Only these two need a physical-desktop session (completion :239). |
+| D8 | **The render plane's boundary pixels close with a looser rule, applied to the render-plane-scheduled suite.** On top of the smooth-line rule, an edge pixel that differs by more than 32 levels passes only if the boundary moved by at most one pixel. Its value must appear, within 32 levels, in the reference's 3x3 neighbourhood, and the reference's value in the candidate's. Interiors stay exact, and at most 1% of the frame may differ. The rule is fixed and tested before the re-run. | 52-61 boundary pixels per case exceeded the 32-level bound, by up to 112-132. 85-92% of them equal a neighbouring reference pixel, which fits floating-point boundary decisions in the plane-raycasting shader. |
 
-No decisions are open. The user has already decided that the Windows
-napari-threedee row stays required. W11 publication and W12 upstream posting
-each need explicit approval.
+No decisions are open.
+
+The user has already decided that the Windows napari-threedee row stays
+required. W11 publication and W12 upstream posting each need explicit approval.
 
 ## Work items
 
@@ -93,19 +95,21 @@ Diagnostic runs in the exact qualification profile keep the spec budget
 | --- | --- | --- | --- |
 | W1 | `GL_EXTENSIONS` reports `texture_float` only when float32 is filterable | CPU tests for both device answers; a napari float image renders with the fallback forced | Native rebuild. Overlaps typed-sampling item B5. Reuse fixture I07. |
 | W2a | W2 residuals: run the 6 `np.row_stack` cases with NumPy 2.4.6, the pairing those suites require, and make the `initialized` suite honour `VISPY_PLUGIN_CANDIDATE_PYTHON` (1 case) | These 7 cases run on the hot-swap stack | **Done** (see Progress). Hot-swap plan, W2 table |
-| W3 | Hot-swap audit gates | Controls reached; the stock baseline passes | New modules only, because the audit tools are pinned. Attribution must decide how a driver's GL load inside a native swapchain path counts, if W8 picks one. |
+| W3 | Hot-swap audit gates | Controls reached; the stock baseline passes | **Tooling done** (see Progress). The baseline's dynamic record is clean, but on `444402` its `renderer_gl` gate is UNVERIFIED because of one static GL reference in `gloo/glir.py`; it closes on the fresh build with W15. Windows only; W7 needs a Linux observer. W8 must decide how a driver's GL activity inside a native swapchain path counts before selecting native presentation. |
 | W4 | napari families not yet covered: cyclic labels r8/r16, Shapes/Vectors/Tracks (M10, M11), Surface at napari level (a new fixture), overlays (E06, T04), histogram, sized export (Q03, Q06) | Each matches its OpenGL reference, or has a documented difference fixed before capture | Record results in `compat/vispy-compatibility.json`. |
 | W5 | Known defects: M02 and M06 markers, M08 wide lines (16 references; the depth failure is retained), M09 joins, caps and new line fixtures, B03 opacity mutation, H01 screenshot and layer removal with no hidden finish, V04 volume controls | Fixed and admitted. M02 and M06 close with a user-approved documented difference, fixed before re-capture (D4). | V07 and the plane widget belong to W10. V09 timing belongs to W8. |
 | W6 | Hot-swap rows for PySide6 and CPython 3.11-3.14 | One row per cell passes W2 and W3 | Wheels for 3.10-3.14 exist only at an earlier epoch, so they must be rebuilt at the current source. Admissions use the 23-job CI and a promotion review. |
 | W7 | WSL lavapipe hot-swap rows | WSL rows pass | Measure the smooth-line bound on lavapipe; 32 was measured on NVIDIA only. |
 | W8 (PERF-1) | Performance report: interaction frame time, large image and volume loads (including V09 timing), presentation path | A measured report against upstream OpenGL, with no speedup claim; the presentation choice is taken from the data (D3) | Native swapchain presentation is allowed only in hot swap. Inputs: the five-pair timings. PR #2 was closed, but its Qt single-present code is live (`src/vispy/app/backends/_qt.py:790-931`). Explain the unattributed Qt expose paints that invalidated the Native65 five-pair timing run (next-batch plan :443, :485, :3502). |
-| W10 | Oracle fixtures: the threedee drag race; the render-plane fixtures, including V07 and the plane widget; the plugin plan's opaque-volume residual. In W2, 11 cases were blocked by unadmitted references in the threedee, initialized and render-plane suites. | Parity tests pass against new admitted oracle captures | New fixture modules and reference packets beside the retained ones, with an admission naming the oracle defect (D6). These suites draw manipulator lines, so they use the smooth-line criterion (D5). |
+| W10 | Oracle fixtures: the threedee drag race; the render-plane fixtures, including V07 and the plane widget; the plugin plan's opaque-volume residual. In W2, 11 cases were blocked by unadmitted references in the threedee, initialized and render-plane suites. | Parity tests pass against new admitted oracle captures | New fixture modules and reference packets beside the retained ones, with an admission naming the oracle defect (D6). These suites draw manipulator lines, so they use the smooth-line criterion (D5). **Partly done** (see Progress): the repaired fixtures exist and D5 is applied. Next: apply the render-plane boundary rule (D8) and re-run the scheduled cases. |
 | W11 | Publication: GitHub Release plus a PEP 503 index with hashes, a manylinux build, and the 100 MiB wheel budget | A clean venv installs from the channel and the W2 smoke test passes | Only at the release, after R2 and approval; no preview (D2). Record a new artifact, and never replace the draft release's assets (gaps plan :581-582). Prepared locally (`tools/wheel_index.py`). |
 | W12 | Upstream napari lazy `GLError` and qtpy lazy QtOpenGL | Upstream releases contain them | Approval. Drafts are in `docs/upstream-drafts/`. They remove the napari and qtpy patches, but stock Qt still fails the strict gates, so strict rows keep the Qt build without OpenGL. |
 | W13 | Glue in hot swap: the five workflows (scatter, scatter edit, scatter axes, volume, volume edit) | All five pass with stock hosts | W3. `scatter_axes` uses the smooth-line criterion (D5; coverage H02). The design requires Glue (:26, :122), and no workstream covered it. |
 | W14 | Apply the smooth-line criterion to the mesh axes/colorbar scene and re-run it | It passes under the criterion | D5. Its fixture sources are pinned, so add the criterion in new modules. |
+| W15 | Remove upstream's PyOpenGL import from the shipped `gloo/glir.py`: `_check_pyopengl_3D()`, used only by the legacy GL `GlirParser`'s 3D textures | The W3 static scan finds no runtime GL reference, and the W3 stock baseline passes on the fresh build | R2. `glir.py` is pinned by the Tk candidate's runtime inputs, the DIVE PySide2 host environment and the Metal CI reuse record, so the edit lands with the fresh build. `GlirParser` stays public; its 3D-texture path should fail clearly instead. |
 
-W0 (drag race), W2 (baseline) and W2a are done.
+W0 (drag race), W2 (baseline) and W2a are done. W3's tooling is done; its
+baseline closes with W15.
 
 ### Backlog (not release-blocking)
 
@@ -158,13 +162,65 @@ W0 (drag race), W2 (baseline) and W2a are done.
   the criterion D5 sets for these suites, and any other bound would need a user
   decision. W10 investigates the cause.
 
+**W3 tooling done** on 2026-10-28, run `w3-hot-swap-gates-217`; see
+[hot-swap gates](../../hot-swap-gates.md).
+
+- **New modules.** `tools/audit_hot_swap.py` and `tools/hot_swap/` add two gates,
+  `renderer_gl` and `no_gl_context_or_draw`. They attribute host GL activity and
+  scan the installed renderer package statically.
+- **Observer.** It is derived from the pinned strict observer, which is unchanged.
+- **Results.** On W2's stock lock with `444402`, all four scenarios match their
+  expected verdicts:
+  - the host-import control records 16 host GL events and no context or draw.
+    Its `renderer_gl` is UNVERIFIED because it never imports vispy;
+  - the renderer-import control fails `renderer_gl`;
+  - the GL-context control fails `no_gl_context_or_draw`;
+  - the stock napari baseline creates no GL context and draws nothing. Its
+    dynamic record has 24 host GL events, 0 renderer and 0 unattributed.
+- **Not yet passing.** The static scan finds one runtime GL reference in the
+  renderer: `gloo/glir.py:1591 import OpenGL.GL`, in upstream's legacy GL
+  parser. So the baseline's `renderer_gl` is UNVERIFIED, and W3's exit is not
+  met on `444402`. `glir.py` is pinned, so the fix is W15, on the fresh build.
+- **Tests.** Thirteen CPU contract tests cover the policy, the controller's tool
+  errors and the observer's derivation. CI's curated list is pinned, so they run
+  through `tests/contract/test_napari_plugin_wheel_suite.py`.
+
+**W10 partly done** on 2026-10-28, run `w10-oracle-fixtures-219`.
+
+- **The oracle repairs already exist** as new fixture modules beside the retained
+  ones, as D6 requires:
+  - `tools/fixture_napari_threedee_overlay.py` supersedes the threedee and
+    initialized fixtures. It initialises both camera modes before
+    napari-threedee adds its empty rotator markers, which upstream VisPy 0.17.0
+    cannot bound. It also draws the volume `translucent_no_depth`, because an
+    opaque volume hid the handles.
+  - `tools/fixture_napari_render_plane_scheduled.py` supersedes the render-plane
+    fixture. It delivers napari's 5 ms throttled mouse moves, which is W0's drag
+    race on the oracle side.
+  - The successors' references are fully admitted. The superseded suites keep
+    their unresolved admissions as named oracle-side failures.
+- **D5 applied.** All five napari-threedee fixture suites now compare frames
+  with the smooth-line criterion, and a CPU guard covers this.
+- **Results** on the NumPy 2.4.6 hot-swap stack:
+  - overlay passes 5 of 5;
+  - initialized `retirement` passes;
+  - the four render-plane-scheduled cases fail the criterion on the plane's
+    boundary: 52-61 pixels per case exceed 32 levels, by up to 112-132.
+- **What the boundary failure looks like.** The pixels lie in one 30x30 patch,
+  and 85-92% of them equal a neighbouring reference pixel. That is consistent
+  with boundary pixels flipping by one pixel in the plane-raycasting shader. It
+  is not a colour error.
+- **Decided.** The user chose a looser rule for these pixels over a renderer fix
+  (D8). Next, the rule is fixed in code with negative controls, applied to the
+  scheduled suite, and the four cases are re-run.
+
 ## Order
 
 1. R1's instrumentation runs alongside everything below.
-2. W3, then W10, then W4 and W5, then W13 and W14.
+2. W10's render-plane boundary rule (D8), then W4 and W5, then W13 and W14.
 3. W6 and W7, then W1 (native rebuild).
 4. W8.
-5. R2 (fresh release build), then W11 at the release and W12 on approval.
+5. W15 and R2 (fresh release build), then W11 at the release and W12 on approval.
 6. Backlog as capacity allows.
 
 ## Standing rules
