@@ -111,14 +111,17 @@ Decisions (user, 2026-10-28):
 3. **W12:** draft the upstream napari and qtpy changes locally. Nothing is
    posted without approval.
 
-**W9: live recurrence captured 2026-10-28** (run
-`napari-startup-stall-recurrence-209`, which holds the minidump, symbolized
-all-thread stacks and `findings.md`). napari's main thread blocked in a COM
-activation (UI Automation, `CDllHost::MTAInitializeActivators`) during
-`window.show()`. Meanwhile an import-time WMI query from CPython's `platform`
-module, reached through numba, held an RPCSS activation that never returned.
-The working hypothesis is that one pending COM activation blocks the next; it
-is not yet proven. Next: A/B launches with and without the WMI path.
+**W9: live recurrence captured and analysed 2026-10-28** (runs
+`napari-startup-stall-recurrence-209` and `com-stall-harness-213`; details in
+[the diagnosis](../../threedee-startup-diagnosis.md)). The hung process had lost
+its default thread pool. Something closed the pool's worker-factory handle
+early in startup, no later than about a second after the process's first COM
+RPC. COM work then stopped
+running, and the UI Automation activation in `window.show()` waited forever. The
+pending-activation hypothesis is refuted, while CPython's WMI timeout path is not
+excluded. The closer is not identified: 1,995 controlled trials able to detect a
+loss showed none. They ran sequentially, with the window shown, 8-way concurrent
+with kernel handle tracing, and under a debugger. Next: instrument and wait.
 
 ## Verification
 
