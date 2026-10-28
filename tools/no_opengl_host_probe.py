@@ -116,6 +116,20 @@ def pump(application, condition=lambda: True, timeout=15):
         time.sleep(.005)
 
 
+def settled_moves(application, qtest, native, points, applied, settle=.05, timeout=2):
+    """Deliver synthetic drag moves through the host's move throttling.
+
+    Qt 6 QTest delays only advance timestamps. vispy drops moves within 10 ms, and
+    napari's leading-edge qthrottled defers a move until the event loop dispatches
+    its timer, so an immediate release can end the drag before the last move runs.
+    """
+    for point in points:
+        deadline = time.monotonic() + settle
+        pump(application, lambda: time.monotonic() >= deadline)
+        qtest.mouseMove(native, point, 40)
+    pump(application, applied, timeout)
+
+
 def rgba_qimage(image, qtgui):
     import numpy as np
     formats = getattr(qtgui.QImage, 'Format', qtgui.QImage)
@@ -577,12 +591,13 @@ def threedee(evidence, application, dawn):
             assert widget.model._backend.is_dragging
             assert widget.model.selected_translator.id == 2
             evidence.frame('threedee_selected', viewer.screenshot(canvas_only=True, flash=False))
-            backend.QtTest.QTest.mouseMove(native, points[1], 40)
-            pump(application)
-            backend.QtTest.QTest.mouseMove(native, points[2], 40)
-            pump(application)
-            backend.QtTest.QTest.mouseRelease(native, buttons.LeftButton, pos=points[2])
-            pump(application)
+            try:
+                settled_moves(application, backend.QtTest.QTest, native, points[1:],
+                              lambda: np.asarray(layer.translate)[2] != 0)
+            finally:
+                stage['translation'] = np.asarray(layer.translate).tolist()
+                backend.QtTest.QTest.mouseRelease(native, buttons.LeftButton, pos=points[2])
+                pump(application)
             assert not widget.model._backend.is_dragging
             assert widget.model.selected_translator is None
             translation = np.asarray(layer.translate)

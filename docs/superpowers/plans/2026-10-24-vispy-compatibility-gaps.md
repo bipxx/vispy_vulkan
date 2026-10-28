@@ -48,6 +48,16 @@ closure. The decision record is
 `build/runs/volume-publication-199/host-scope-decision.json`; the earlier
 pending-question record is preserved unchanged beside it.
 
+On 2026-10-28 the user approved one bounded new-hypothesis trial. Run 201
+replayed the original back-to-back host launch sequence 12 times without
+reproducing the startup stall, so that hypothesis is unsupported, though not
+excluded. The trial exposed an intermittent
+`threedee_real_qt_selection_translation` failure. Run 202 traced it to a probe
+drag race against napari's leading-edge mouse-move throttle, and the probe's
+new `settled_moves()` fixes it, verified on Windows (run 203) and WSL (run 204).
+See the [diagnosis](../../threedee-startup-diagnosis.md). The row stays
+mandatory and `PENDING` on the unexplained startup stall alone.
+
 ## Current execution checkpoint - 2026-10-26
 
 The finite practical milestone is merged in PR #14: main

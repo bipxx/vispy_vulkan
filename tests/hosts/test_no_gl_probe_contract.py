@@ -2,6 +2,7 @@
 """Artifact and failure reporting contracts for installed host qualification."""
 
 import importlib.util
+import inspect
 import json
 from pathlib import Path
 import zipfile
@@ -60,3 +61,80 @@ def test_existing_evidence_is_never_overwritten(tmp_path):
     PROBE.Evidence(output, 'qwidget')
     with pytest.raises(FileExistsError):
         PROBE.Evidence(output, 'napari')
+
+
+class _Clock:
+    def __init__(self):
+        self.now = 0.
+
+    def monotonic(self):
+        return self.now
+
+    def sleep(self, seconds):
+        self.now += seconds
+
+
+class _ThrottledHost:
+    """vispy drops moves within 10 ms; napari's leading-edge qthrottled defers a
+    move until the event loop dispatches the 5 ms timer started after its handler."""
+
+    def __init__(self, clock, lost=()):
+        self.clock, self.lost = clock, set(lost)
+        self.applied, self.pending, self.due, self.delivered = [], None, None, -1.
+
+    def _apply(self, point):
+        self.applied.append(point)
+        self.clock.now += .015  # move-to-move delivery gap; run 202 measured 11.8-49 ms
+        self.due = self.clock.now + .005
+
+    def mouseMove(self, native, point, delay=-1):
+        if point in self.lost or self.clock.now - self.delivered < .01:
+            return
+        self.delivered = self.clock.now
+        if self.due is None:
+            self._apply(point)
+        else:
+            self.pending = point
+
+    def process_events(self):
+        if self.due is not None and self.clock.now >= self.due:
+            point, self.pending, self.due = self.pending, None, None
+            if point is not None:
+                self._apply(point)
+
+
+@pytest.fixture
+def throttled_host(monkeypatch):
+    clock = _Clock()
+    monkeypatch.setattr(PROBE, 'time', clock)
+    return lambda lost=(): _ThrottledHost(clock, lost)
+
+
+def test_single_pumps_leave_a_throttled_final_move_pending(throttled_host):
+    # The original threedee drag: release followed while napari still deferred move2.
+    host = throttled_host()
+    for point in ('first', 'final'):
+        host.mouseMove(None, point, 40)
+        PROBE.pump(host)
+    assert host.applied == ['first'] and host.pending == 'final'
+
+
+@pytest.mark.parametrize('settle', (.05, 0))
+def test_settled_moves_apply_the_final_move_before_returning(throttled_host, settle):
+    host = throttled_host()
+    PROBE.settled_moves(host, host, None, ('first', 'final'),
+                        lambda: host.applied[-1:] == ['final'], settle=settle)
+    assert host.applied == ['first', 'final'] and host.pending is None
+
+
+def test_threedee_drag_goes_through_settled_moves():
+    source = inspect.getsource(PROBE.threedee)
+    assert 'settled_moves(' in source and 'mouseMove(' not in source
+
+
+def test_settled_moves_fail_when_the_final_move_is_never_applied(throttled_host):
+    host = throttled_host(lost={'final'})
+    with pytest.raises(TimeoutError):
+        PROBE.settled_moves(host, host, None, ('first', 'final'),
+                            lambda: host.applied[-1:] == ['final'])
+    assert host.applied == ['first']
