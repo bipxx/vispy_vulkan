@@ -54,7 +54,8 @@ source, raw frames, process/registration/state/shader/failure evidence.
 An independent saved inspection must recheck full artifact namespaces and every
 comparison/state/registration/process/cleanup join. No skip, xfail, alignment,
 edge mask, fitted tolerance, changed plugin/host source, approximate picking,
-reduced quality or promoted partial success. Existing licensing stays AGPL for
+reduced quality or promoted partial success. (Superseded 2026-10-28 for smooth-line
+candidate frames by the criterion in docs/smooth-lines.md.) Existing licensing stays AGPL for
 new implementation code with the original BSD and dependency notices attached.
 
 The first actual environment setup stops before registration/graphics because

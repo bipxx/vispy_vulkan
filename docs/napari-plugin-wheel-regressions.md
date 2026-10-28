@@ -2,7 +2,7 @@
 
 The required suite contains handles, selection, translation, a missed click and
 callback retirement. It uses the existing unchanged registered layer-manipulator
-fixture, real Qt mouse events, fixed data/cameras and exact 256x192 RGBA. The
+fixture, real Qt mouse events, fixed data/cameras and full 256x192 RGBA frames. The
 selection, translation and miss cases also require their complete before-event
 frames. Callback membership, selected axes, translation, panning and retirement
 states remain exact. This is a bounded plugin workflow suite; the rest of the
@@ -16,9 +16,13 @@ wheel, and a separate CPU registration child must construct no QApplication or
 graphics context and import no Dawn module.
 
 All five fresh original OpenGL cases must pass and reproduce the retained original
-frames, auxiliary frames and parameters before candidate workers can run. Every
-candidate case remains required, including failures. No masks, alignment, fitted
-tolerance, reduced quality or substitute picking path is allowed. Each passing
+frames, auxiliary frames and parameters exactly before candidate workers can run.
+Every candidate case remains required, including failures. Candidate frames use
+the [smooth-line criterion](smooth-lines.md#parity-criterion-for-smooth-line-frames).
+Pixels uniform in the reference must match exactly; other pixels may differ by
+at most 32 of 255 on at most 1% of the frame. That bound was chosen just above
+the differences measured on NVIDIA. No hand-drawn masks, alignment, reduced
+quality or substitute picking path is allowed. Each passing
 candidate must prove actual native work, correct installed native origins, no
 visible windows after close and eight zero-resource shutdown counters. Failed
 candidate cases must also prove process closure, native origins and cleanup.
@@ -82,6 +86,8 @@ closure. The publication checkout passed all 156 combined CPU controls.
 
 No candidate plugin host-cell, wider graphics or release qualification is granted by the
 recorded one-of-five candidate result. All four failing workflows stay mandatory.
+That exact-comparison result is superseded for candidate frames by the
+2026-10-28 observation below; this historical record is unchanged.
 
 The upstream-only environment/fixture admission for Windows CPython 3.12.8/PyQt6
 is `compat/qualifications/napari_threedee/windows/3.12.8/pyqt6/admission.json`.
@@ -92,3 +98,15 @@ wheel through `tools/prepare_napari_plugin_host_cell.py`; the candidate still
 comes from the job's actual build. Every fresh original and candidate case stays
 mandatory. Other missing admissions keep failing. This upstream admission grants
 no candidate or release pass and schedules no hardware job by itself.
+
+## Hot-swap observation - 2026-10-28
+
+The suite passed 5 of 5 with candidate wheel `444402…` and the original wheel
+`c4862155…`, both in fresh owned environments on Windows CPython 3.12.8 with
+PyQt6 and NVIDIA RTX 4090 Vulkan. All five fresh OpenGL cases reproduced the
+retained frames exactly. All five candidate cases met the smooth-line criterion.
+This suite records results, not per-pixel figures. The in-process overlay suite
+logged the figures for the same workflows: 212-254 differing pixels, at most 29
+levels, none in uniform regions, and retirement exact. The installed-wheel evidence,
+with the helper hash pinned, is in run `napari-smooth-line-pinned-211`; the
+in-process figures are in run `napari-smooth-line-208`.

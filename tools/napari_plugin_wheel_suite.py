@@ -21,12 +21,14 @@ if not __package__:
     from fixture_napari_threedee_overlay import CASES,SIZE,assert_landmarks,render
     from image_wheel_runner import installed_environment,run_logged,sha,write
     from mesh_layout_process import process_stamp,worker_terminal,native_modules,assert_wheel_module_origins,normalized_path
+    from smooth_line_parity import smooth_line_difference
 else:
     from . import glue_wheel_suite as base
     from . import oracle_napari_threedee_overlay_capture as capture
     from .fixture_napari_threedee_overlay import CASES,SIZE,assert_landmarks,render
     from .image_wheel_runner import installed_environment,run_logged,sha,write
     from .mesh_layout_process import process_stamp,worker_terminal,native_modules,assert_wheel_module_origins,normalized_path
+    from .smooth_line_parity import smooth_line_difference
 ZERO_FIELDS=base.ZERO_FIELDS
 WORK_FIELDS=base.WORK_FIELDS
 package_hashes=base.package_hashes
@@ -42,7 +44,7 @@ ASCIITREE_BLOCK=base.VISPY_BLOCK.replace('vispy==0\\.17\\.0','asciitree==0\\.3\\
 RUNTIME='compat/host-environments/napari-threedee-upstream-numpy246-windows-cpython312-pyqt6.txt'
 LEGACY='tests/reference/napari-threedee-overlay-opengl'
 LEGACY_SHA256='b4a118f6320af8f8d12010948ff00964fe5966f967003ab40cb887af37ddc77e'
-SOURCES=tuple(dict.fromkeys((*base.SOURCES,'tools/napari_plugin_wheel_suite.py',
+SOURCES=tuple(dict.fromkeys((*base.SOURCES,'tools/napari_plugin_wheel_suite.py','tools/smooth_line_parity.py',
     'tools/fixture_napari_threedee_overlay.py','tools/oracle_napari_threedee_overlay_capture.py',RUNTIME,
     PLUGIN_WHEEL.relative_to(ROOT).as_posix(),ASCIITREE_WHEEL.relative_to(ROOT).as_posix(),
     *((INPUTS/name).relative_to(ROOT).as_posix() for name in ('manifest.json','asciitree-build.json',
@@ -114,9 +116,13 @@ def compare(name,image,original,params,expected,extras,original_extras):
     assert 'QOpenGLWidget' in reference.pop('native_mro')
     assert 'QOpenGLWidget' not in actual.pop('native_mro')
     assert actual==reference, 'Original plugin inputs, Qt events or callback state differ'
-    assert np.array_equal(image,original), 'Exact full plugin frame differs'
+    # Smooth-line coverage is driver-defined: interiors exact, antialiased edges bounded.
+    reason=smooth_line_difference(image,original)
+    assert reason is None, ('Plugin frame differs beyond smooth-line edges',reason)
     assert set(extras)==set(original_extras)
-    for key in extras:assert np.array_equal(extras[key],original_extras[key]), ('Auxiliary frame differs',key)
+    for key in extras:
+        reason=smooth_line_difference(extras[key],original_extras[key])
+        assert reason is None, ('Auxiliary frame differs beyond smooth-line edges',key,reason)
     assert_landmarks(name,image,params,extras)
 
 
