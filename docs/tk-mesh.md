@@ -32,8 +32,9 @@ widget-construction failure is preserved in run191 and rejected as control
 evidence. Run192 also preserves an initial JUnit-receipt parser failure and
 the subsequent validation of actual worker failures.
 
-Independent source review and publication of this new example remain pending.
-This is finite source coverage, not a new installed mesh admission, full mesh
+Independent review194 approved the exact source packet with no findings, and
+PR #21 merged it as `3d73a6a9dd54a8181788d35b4d5eb5a459fc6897` with all eleven
+required source checks passed. This is finite source coverage, not a new installed mesh admission, full mesh
 parity, depth-occlusion qualification, shading/filter coverage, perspective,
 physical input, default wheel-rate or multisample-storage qualification. The
 separate [historical mesh suite](mesh-layout-wheel-regressions.md) and

@@ -36,8 +36,9 @@ Local evidence entry points are `build/runs/volume-windows-196/` and
 `build/runs/volume-wsl-197/`. Source/native identity checks remain separate from
 installed-artifact qualification.
 
-Independent review and publication of this source packet remain pending. These
-checks do not qualify the example's `main()` loop, physical orbit/wheel input,
+Independent review198 approved the exact source packet with no findings, and
+PR #22 merged it as `062fff14520e50e5892e48352bb0394b4b342320` with all eleven
+required source checks passed. These checks do not qualify the example's `main()` loop, physical orbit/wheel input,
 all volume methods, interpolation/clim combinations, scientific accuracy beyond
 the authored binary data, mesh occlusion, perspective, performance or multisample
 storage. The [historical volume tests](volume-wheel-regressions.md) and
