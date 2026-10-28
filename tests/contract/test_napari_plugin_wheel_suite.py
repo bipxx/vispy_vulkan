@@ -1,9 +1,12 @@
 # SPDX-License-Identifier: AGPL-3.0-only
-"""All original frames, host state and auxiliary frames remain exact."""
+"""Candidate frames and auxiliary frames follow the smooth-line criterion; host state stays exact."""
 from pathlib import Path
 import numpy as np
 import pytest
 from tools import napari_plugin_wheel_suite as suite
+from tools.smooth_line_parity import (
+    EDGE_TOLERANCE,MAX_DIFFERING_FRACTION,reference_edges,smooth_line_difference,
+)
 
 
 def candidate_parameters(expected):
@@ -24,12 +27,12 @@ def test_original_cases_and_auxiliary_frames_are_accepted_with_candidate_widget(
 def test_one_changed_rgba_byte_cannot_be_admitted(name):
     image,params,extras=suite.legacy_reference(name)
     candidate=image.copy();candidate[0,0,3]^=1
-    with pytest.raises(AssertionError,match='Exact full plugin frame'):
+    with pytest.raises(AssertionError,match='Plugin frame differs beyond smooth-line edges'):
         suite.compare(name,candidate,image,candidate_parameters(params),params,extras,extras)
 
 
 @pytest.mark.parametrize('name',('selection','translation','miss'))
-def test_before_event_frames_are_mandatory_exact_observations(name):
+def test_before_event_frames_are_mandatory_observations(name):
     image,params,extras=suite.legacy_reference(name)
     changed={k:v.copy() for k,v in extras.items()};changed['before'][0,0,3]^=1
     with pytest.raises(AssertionError,match='Auxiliary frame'):
@@ -111,3 +114,98 @@ def test_original_provenance_checker_wheel_binding_is_restored(monkeypatch,raise
         with pytest.raises(ValueError,match='registration failure'):suite.plugin_info()
     else:suite.plugin_info()
     assert suite.capture.WHEEL==previous
+
+
+# Smooth-line criterion used by compare(): exact uniform regions, bounded and capped elsewhere.
+REFERENCE=Path(__file__).resolve().parents[2]/'tests/reference/napari-threedee-overlay-opengl'
+MAGENTA = np.array([255, 0, 255])
+
+
+def line(offset=0, rows=slice(64, 128)):
+    """A 64-row vertical line on the real frame size: 3-px core with half-intensity fringes."""
+    frame = np.zeros((192, 256, 4), np.uint8)
+    frame[..., 3] = 255
+    x = 128 + offset
+    frame[rows, x - 1:x + 2, :3] = MAGENTA
+    frame[rows, [x - 2, x + 2], :3] = MAGENTA // 2
+    return frame
+
+
+@pytest.fixture
+def handles():
+    return np.load(REFERENCE/'handles.rgba.npy',allow_pickle=False)
+
+
+def test_identical_frame_is_admitted(handles):
+    assert smooth_line_difference(handles.copy(), handles) is None
+
+
+def test_line_core_centre_is_a_uniform_region_and_fringes_are_edges():
+    edges = reference_edges(line())
+    assert not edges[96, 128] and edges[96, [126, 127, 129, 130]].all()
+
+
+def test_line_shifted_by_one_pixel_is_rejected():
+    assert 'exceeds' in smooth_line_difference(line(offset=1), line())
+
+
+def test_missing_line_is_rejected():
+    assert 'interior' in smooth_line_difference(line(rows=slice(0, 0)), line())
+
+
+def test_fringe_recolour_within_the_bound_is_admitted():
+    candidate = line()
+    candidate[64:128, [126, 130], 0] += 20
+    assert smooth_line_difference(candidate, line()) is None
+
+
+def test_fringe_recolour_beyond_the_bound_is_rejected():
+    candidate = line()
+    candidate[64:128, [126, 130], 0] += EDGE_TOLERANCE + 8
+    assert 'exceeds' in smooth_line_difference(candidate, line())
+
+
+def test_recolouring_a_line_with_a_uniform_core_is_rejected():
+    candidate = line()
+    candidate[64:128, 126:131, 0] -= 20
+    assert 'interior' in smooth_line_difference(candidate, line())
+
+
+def perturb_edges(frame, count, step):
+    candidate = frame.astype(np.int16)
+    for y, x in np.argwhere(reference_edges(frame))[:count]:
+        rgb = candidate[y, x, :3]
+        candidate[y, x, :3] = np.where(rgb > 255 - step, rgb - step, rgb + step)
+    return candidate.astype(np.uint8)
+
+
+def cap(frame):
+    return int(MAX_DIFFERING_FRACTION * frame.shape[0] * frame.shape[1])
+
+
+def test_bounded_change_on_allowed_edge_pixels_is_admitted(handles):
+    assert reference_edges(handles).sum() > cap(handles)
+    assert smooth_line_difference(perturb_edges(handles, cap(handles), EDGE_TOLERANCE), handles) is None
+
+
+def test_widespread_edge_change_is_rejected(handles):
+    assert 'pixels differ' in smooth_line_difference(perturb_edges(handles, cap(handles) + 1, 1), handles)
+
+
+def test_edge_change_beyond_the_bound_is_rejected(handles):
+    y, x = map(int, np.argwhere(reference_edges(handles) & (handles[..., 0] < 200))[0])
+    candidate = handles.copy()
+    candidate[y, x, 0] += EDGE_TOLERANCE + 1
+    assert 'exceeds' in smooth_line_difference(candidate, handles)
+
+
+def test_one_level_interior_change_is_rejected(handles):
+    y, x = map(int, np.argwhere(~reference_edges(handles))[0])
+    candidate = handles.copy()
+    candidate[y, x, 3] ^= 1
+    assert 'interior' in smooth_line_difference(candidate, handles)
+
+
+def test_shape_and_dtype_must_match(handles):
+    assert smooth_line_difference(handles[:-1], handles) is not None
+    assert smooth_line_difference(handles.astype(np.int16), handles) is not None
