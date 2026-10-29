@@ -314,10 +314,19 @@ void main() {
 }
 )GLSL";
 
-// A separable one-pixel filter of a butt-ended rectangle in line coordinates.
-// Fractional widths retain their area, including widths below one pixel. The
-// rotated filter is deliberately an approximation to hardware GL line smoothing.
+// A separable one-pixel filter of a rectangle in line coordinates. Fractional
+// widths retain their area, including widths below one pixel. The rotated filter
+// is deliberately an approximation to hardware GL line smoothing. Each end
+// extends 0.14 px past its endpoint, as GL smoothing does on the reference
+// hardware: fitted on one horizontal 3-px case, it matched the vertical,
+// diagonal and endpoint cases within the smooth-line bound. On that hardware a
+// pixel the line overlaps by at most 1/32 px gets no fragment, and coverage
+// otherwise steps by about 1/16. Coverage at or below 1/32 is therefore no
+// fragment here: it would still write depth, and black under a (src_alpha,
+// zero) blend such as napari's first visible layer.
 const char* smooth_geometry = R"GLSL(
+const float vispy_line_consumer_end_extension = 0.14;
+const float vispy_line_consumer_minimum_coverage = 1.0 / 32.0;
 float vispy_line_consumer_smooth(vec2 a, vec2 b, vec2 pixel) {
     vec2 delta = b - a;
     float segment_length = length(delta);
@@ -328,7 +337,9 @@ float vispy_line_consumer_smooth(vec2 a, vec2 b, vec2 pixel) {
     float across = abs(dot(relative, vec2(-tangent.y, tangent.x)));
     float width = vispy_line_consumer_raster.x;
     float side = clamp(min(width, width * 0.5 + 0.5 - across), 0.0, 1.0);
-    float cap = clamp(min(segment_length, min(along + 0.5, segment_length - along + 0.5)), 0.0, 1.0);
+    float end = vispy_line_consumer_end_extension;
+    float cap = clamp(min(segment_length + 2.0 * end,
+                          min(along + 0.5 + end, segment_length - along + 0.5 + end)), 0.0, 1.0);
     return side * cap;
 }
 )GLSL";
@@ -706,7 +717,7 @@ std::shared_ptr<const GeneratedLineConsumerArtifact> build_generated_line_consum
             replace_one(suffix,
                 "    bool vispy_line_consumer_covered = vispy_line_consumer_aliased(a, b, pixel, interval.y == 1.0);",
                 "    float vispy_line_consumer_coverage = vispy_line_consumer_smooth(pa, pb, pixel);\n"
-                "    bool vispy_line_consumer_covered = vispy_line_consumer_coverage > 0.0;");
+                "    bool vispy_line_consumer_covered = vispy_line_consumer_coverage > vispy_line_consumer_minimum_coverage;");
             replace_one(suffix, "    if (!vispy_line_consumer_covered || !vispy_line_consumer_valid) discard;\n",
                 "    if (!vispy_line_consumer_covered || !vispy_line_consumer_valid) discard;\n    " +
                 smooth_color_output(fragment) + ".a *= vispy_line_consumer_coverage;\n");

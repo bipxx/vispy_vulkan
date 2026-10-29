@@ -316,3 +316,21 @@ def test_nested_backpressure_paint_preserves_outer_paint_token(monkeypatch):
     assert errors == []
     assert events == ['ready', 'begin', 'draw', 'nested-ready', 'pump', 'alpha-tail', 'present', 'pump', 'end']
     assert backend._dawn_paint_token is None and backend._dawn_paint_deferred
+
+
+def test_dawn_canvas_release_stays_reachable_and_runs_once_on_destroy():
+    # A release slot reachable only through the widget's wrapper could be cleared by a cycle collection, which drops
+    # its defaults; the destroyed signal then raised TypeError in a Qt slot and leaked the canvas (W4 histogram case).
+    import gc
+    from PyQt6 import QtCore, QtWidgets
+    app = QtWidgets.QApplication.instance() or QtWidgets.QApplication([])
+    released = []
+    widget = QtWidgets.QWidget()
+    QT._connect_dawn_canvas_release(widget, 7, released.append)
+    gc.collect()
+    slot = QT._dawn_canvas_releases[7]
+    assert slot.func is QT._release_dawn_canvas and slot.args[1:] == (released.append, 7)
+    del slot
+    widget.deleteLater()
+    app.sendPostedEvents(None, QtCore.QEvent.Type.DeferredDelete.value)
+    assert released == [7] and 7 not in QT._dawn_canvas_releases

@@ -168,11 +168,14 @@ def get_gl_parameter(pname):
     # Hosts compare these with Python str (`'texture_float' in extensions`).
     # These are compatibility-profile labels for GL-shaped host probes, not
     # evidence of an OpenGL context or arbitrary OpenGL operation support.
+    # Hosts that see texture_float upload linear-filtered float32 textures, which
+    # need the Float32Filterable device feature; without it they use their fallback.
+    texture_float = "GL_ARB_texture_float " if info.get("float32_filterable") else ""
     strings = {
         7936: "Dawn",  # GL_VENDOR
         7937: str(device),  # GL_RENDERER
         7938: "4.5.0 Dawn " + backend,  # GL_VERSION
-        7939: "GL_ARB_texture_float GL_ARB_texture_non_power_of_two",  # GL_EXTENSIONS
+        7939: texture_float + "GL_ARB_texture_non_power_of_two",  # GL_EXTENSIONS
         35724: "4.50 Dawn " + backend + " GLSL",  # GL_SHADING_LANGUAGE_VERSION
     }
     if code in strings:

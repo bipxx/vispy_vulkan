@@ -19,6 +19,7 @@ surface fast path, which is outside strict Windows no-OpenGL qualification.
 from __future__ import division
 
 from time import sleep, time
+import functools
 import math
 import os
 import sys
@@ -242,6 +243,24 @@ capability = dict(  # things that can be set by the backend
 def _set_config(c):
     """Retain the requested Dawn configuration without constructing GL formats."""
     return dict(c)
+
+
+# Dawn canvas releases by canvas id, kept reachable from module globals until the widget's destroyed signal runs
+# them. A release slot reachable only through the widget's Python wrapper can be cleared by a collection of a garbage
+# cycle while the C++ widget still exists (CPython drops a cleared function's defaults), and the later signal then
+# raises TypeError in a Qt slot (qFatal under PyQt6's default excepthook) and leaks the canvas.
+_dawn_canvas_releases = {}
+
+
+def _release_dawn_canvas(releases, destroy, canvas_id, _obj=None):
+    releases.pop(canvas_id, None)
+    destroy(canvas_id)
+
+
+def _connect_dawn_canvas_release(widget, canvas_id, destroy):
+    release = functools.partial(_release_dawn_canvas, _dawn_canvas_releases, destroy, canvas_id)
+    _dawn_canvas_releases[canvas_id] = release
+    widget.destroyed.connect(release)
 
 
 def _select_dawn_presentation(value, platform):
@@ -722,9 +741,7 @@ class CanvasBackendDesktop(QtBaseCanvasBackend, QWidget):
         samples = int(p.context.config.get('samples', 0) or 0)
         width, height = int(p.size[0]), int(p.size[1])
         self._dawn_canvas_id = int(_dawn.register_canvas(width, height, samples, bool(p.vsync)))
-        self.destroyed.connect(
-            lambda _obj=None, canvas_id=self._dawn_canvas_id: _dawn.destroy_canvas(canvas_id)
-        )
+        _connect_dawn_canvas_release(self, self._dawn_canvas_id, _dawn.destroy_canvas)
         from ...gloo.dawn_parser import install_gl_queries
         install_gl_queries()
         self._initialized = True

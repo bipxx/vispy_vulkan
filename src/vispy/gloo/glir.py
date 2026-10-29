@@ -1584,14 +1584,14 @@ USE_TEX_3D = False
 
 
 def _check_pyopengl_3D():
-    """Helper to ensure users have OpenGL for 3D texture support (for now)"""
-    global USE_TEX_3D
-    USE_TEX_3D = True
-    try:
-        import OpenGL.GL as _gl
-    except ImportError:
-        raise ImportError('PyOpenGL is required for 3D texture support')
-    return _gl
+    """The legacy OpenGL parser's 1D/3D texture helpers.
+
+    Upstream VisPy imported PyOpenGL here. This build has no OpenGL runtime: the
+    Dawn renderer handles 1D and 3D textures, so this legacy path fails clearly
+    instead of importing an OpenGL implementation into a host process.
+    """
+    raise RuntimeError('1D and 3D textures in the legacy OpenGL GLIR parser need '
+                       'PyOpenGL, which this OpenGL-free build does not use')
 
 
 def glTexImage3D(target, level, internalformat, format, type, pixels):
