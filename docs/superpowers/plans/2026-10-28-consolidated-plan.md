@@ -65,7 +65,7 @@ unmodified scientific hosts, napari first, run on it with practical parity.
 | D5 | **The smooth-line criterion also applies to Glue `scatter_axes`, the mesh axes/colorbar scene and the napari-threedee fixture suites.** Everything else stays exact. | These suites draw smooth lines and compared exactly. |
 | D6 | **Broken oracle fixtures get new fixture modules and reference packets beside the retained ones, with an admission that records the oracle defect.** Original references are never replaced. | The fixture sources are pinned by `fixture_source_sha256` in their manifests. |
 | D7 | **Monitor moves and fractional DPI stay out of scope and are documented as untested.** The other Qt lifecycle items run now. | Only these two need a physical-desktop session (completion :239). |
-| D8 | **The four render-plane-scheduled cases stay failing and documented, with no new tolerance** (user, 2026-10-29). W5's wide-line fixes were tried first; this revises the user's earlier approval of a looser rule, which rested on a wrong diagnosis. | On the minimum-coverage test wheel (run `w5-fringe-native-234`), 11, 11, 8 and 14 pixels per case still exceed the bound, by up to 104: GL's driver-defined smoothing of short 3D stroke segments (W5 findings). Earlier, 52-61 pixels per case exceeded the 32-level bound. A one-pixel boundary-move rule was fixed and tested before the re-run. It explained 33-46 of them and left 15-25, so all four cases still failed (run `w10-render-plane-rule-221`). Inspection then showed the pixels are not on the render plane's boundary, as first described. They are on napari-threedee's manipulator strokes, vispy `Line(width=3, method='gl')`. They were first described as aliased, but napari-threedee sets `antialias = 2` on them after construction, so they are smooth lines, drawn in 3D against spherical markers that write per-fragment depth. |
+| D8 | **The four render-plane-scheduled cases stay failing and documented, with no new tolerance** (user, 2026-10-29). W5's wide-line fixes were tried first; this revises the user's earlier approval of a looser rule, which rested on a wrong diagnosis. **Revised under D19** (user, 2026-10-29: "Yes, apply it to D8 too"): the cases are judged by a correctly-positioned line criterion. The stroke pixels must be at the same places, with no gaps or stray pixels, and their intensity need not be exact. The criterion is fixed, with CPU negative controls, before the four cases are re-run. **They pass** (run `d8-positioned-255`, R2 test wheel). 8 to 14 pixels per case exceed 32 levels, by up to 104, and every one lies on a stroke edge in both frames. Alpha and interiors are exact. | On the minimum-coverage test wheel (run `w5-fringe-native-234`), 11, 11, 8 and 14 pixels per case still exceed the bound, by up to 104: GL's driver-defined smoothing of short 3D stroke segments (W5 findings). Earlier, 52-61 pixels per case exceeded the 32-level bound. A one-pixel boundary-move rule was fixed and tested before the re-run. It explained 33-46 of them and left 15-25, so all four cases still failed (run `w10-render-plane-rule-221`). Inspection then showed the pixels are not on the render plane's boundary, as first described. They are on napari-threedee's manipulator strokes, vispy `Line(width=3, method='gl')`. They were first described as aliased, but napari-threedee sets `antialias = 2` on them after construction, so they are smooth lines, drawn in 3D against spherical markers that write per-fragment depth. |
 | D9 | **Mesh `axes_colorbar` closes with a documented difference.** Only for that scene, the smooth-line rule's 1% frame cap does not apply. Interiors stay exact, every other pixel stays within 32 levels, alpha matches exactly, and the fixture's landmarks match exactly. Implemented in `tools/mesh_layout_smooth_line.py`, with CPU negative controls. | With the 0.14 px line-end fix, the scene's worst pixel fell from 147 to 12 levels. 418 pixels still differed (1.17%, cap 1%). 332 of them are the 166-px axis line's two antialiased edge rows, 11-12 levels off: GL's driver-defined side coverage, which a simple renderer model does not reproduce. |
 | D10 | **napari `tracks` and `shapes_selected` (W4, M11) close with a documented difference like D9** (user, 2026-10-29). For those two cases the 1% frame cap does not apply. Interiors stay exact, every pixel stays within 32 levels, alpha matches exactly, and the fixture's landmarks match exactly. Implemented in `tools/napari_vector_layers_comparison.py`, with CPU negative controls. | On the minimum-coverage test wheel, both fail only the frame cap: 2.7% and 3.7% of pixels differ, by at most 14 and 13 levels, with interiors and alpha exact. `shapes_selected` already passes this rule on `444402`; `tracks` needs the minimum coverage that lands with R2. |
 | D11 | **W4 napari `colorbar` and `histogram` close with the documented difference of D9 and D10** (user, 2026-10-29). No 1% frame cap; interiors exact, every pixel within 32 levels, alpha exact. Implemented in `tools/napari_layer_families_comparison.py`, with CPU negative controls. | On the test wheel with R2's fixes, 1.5% and 3.2% of pixels differ, on the antialiased box, tick and axis lines, by at most 19 and 12 levels. |
@@ -76,7 +76,8 @@ unmodified scientific hosts, napari first, run on it with practical parity.
 | D16 | **The wide-line reference tests pin both shared-fixture hashes** (user, 2026-10-29): the packets were captured with `tools/fixture_wide_lines.py` `f689a08a`, and the current fixture is `2568d76f`. | A reviewed publication on 2026-10-11 replaced the shared fixture, adding only the depth clear for `depth_occlusion_smooth`, and asked later source contexts to acknowledge it. The tests never did, so every reference check failed on the hash. |
 | D17 | **Markers M02 and M06 close with a documented difference** (user, 2026-10-29, under D4), fixed in the new fixtures before their final capture. M02: uniform pixels exact; at most 0.1% of the frame may differ, only on edge pixels, by any amount. M06: at most 0.5% of pixels may differ by more than 2 levels; every other pixel within 2. | Measured with exact captures first: aliased markers flip 41 edge pixels at exact inside/outside ties on arrow, diamond and tailed_arrow, as in the original native63 failure. The `points` method differs by 1-2 levels on fractional sizes (OpenGL appears to quantize sprite size; truncating to 1/32 explains about 70%), and dense overlap cascades that into 0.24% of pixels. |
 
-| D18 | **The hot swap presents through a native swapchain on Windows, from R2, once the napari parity suites pass under it** (user, 2026-10-29, under D3). GL activity that the audit attributes to a driver's presentation path, outside the renderer, counts as host activity, in the hot-swap profile only. Readback stays the strict no-OpenGL path and is made cheaper (B19). | W8 (`docs/performance-report.md`): at 3840x2160, readback paints are 226 ms apart for a resident image, native paints 2.3 ms. Readback costs about 53 ms per frame even at 1920x1080, and the design forbids interaction that depends on a CPU readback (:631). Stock napari passes both hot-swap gates under each presentation, with no driver GL activity observed. **Parity under native presentation** (run `d18-native-parity-249`, R2 test wheel): no test changes outcome between readback and native. The five in-process napari suites pass 44 of 44 under both. In the plugin suites, the failures are the 17 documented ones (D6, D8) under both. The plugin-wheel suite and four CPU tests could not run outside the main tree; they run in the release tree. |
+| D18 | **The hot swap presents through a native swapchain on Windows, from R2, once the napari parity suites pass under it** (user, 2026-10-29, under D3). GL activity that the audit attributes to a driver's presentation path, outside the renderer, counts as host activity, in the hot-swap profile only. Readback stays the strict no-OpenGL path and is made cheaper (B19). | W8 (`docs/performance-report.md`): at 3840x2160, readback paints are 226 ms apart for a resident image, native paints 2.3 ms. Readback costs about 53 ms per frame even at 1920x1080, and the design forbids interaction that depends on a CPU readback (:631). Stock napari passes both hot-swap gates under each presentation, with no driver GL activity observed. **Parity under native presentation: done** (runs `d18-native-parity-249` and `d8-positioned-255`, R2 test wheel). No test changes outcome between readback and native. Under both, the five in-process napari suites pass 44 of 44, the overlay workflows 5 of 5, the render-plane-scheduled suite 6 of 6 (under D19) and the plugin-wheel suite 5 of 5. Only D6's superseded fixtures fail, and they stop before rendering by design. |
+| D19 | **Lines pass when they are correctly positioned and look right; exact pixels are not required** (user, 2026-10-29: "as long as the lines look correctly positioned and look elegant, then we should be good to go. no need to be exact"). This is a general rule. For W7, WSL lavapipe lines are judged against the admitted NVIDIA references under the smooth-line rule, and Mesa llvmpipe's own smooth-line rasterization is not used as a line oracle. D8 is revised under it. | W7's measurement (run `w7-lavapipe-smooth-254`). The port on lavapipe matches the NVIDIA references within 19 levels on every smooth-line frame. Against llvmpipe OpenGL, 15 of 29 frames exceed 32: line ends, a fringe row, a depth fringe and a missing 1/32 coverage skip, which llvmpipe also shows against NVIDIA. |
 
 No decisions are open.
 
@@ -113,7 +114,7 @@ Diagnostic runs in the exact qualification profile keep the spec budget
 | W4 | napari families not yet covered: cyclic labels r8/r16, Shapes/Vectors/Tracks (M10, M11), Surface at napari level (a new fixture), overlays (E06, T04), histogram, sized export (Q03, Q06) | Each matches its OpenGL reference, or has a documented difference fixed before capture | Record results in `compat/vispy-compatibility.json`. **Fixtures done** (see Progress): every listed family has an OpenGL reference, and all pass on test wheels carrying R2's fixes (D10-D12). The matrix records them at R2. |
 | W5 | Known defects: M02 and M06 markers, M08 wide lines (16 references; the depth failure is retained), M09 joins, caps and new line fixtures, B03 opacity mutation, H01 screenshot and layer removal with no hidden finish, V04 volume controls | Fixed and admitted. M02 and M06 close with a user-approved documented difference, fixed before re-capture (D4). | V07 and the plane widget belong to W10. V09 timing belongs to W8. M08 covers three residuals. Two are fixed in local test builds and ship with R2: the ends of smooth GL lines (W13 `scatter_axes`, W14 `axes_colorbar`), and the smooth-line fringe behind W4's `tracks` crossing (a minimum coverage, run 234). The third is napari-threedee's smooth 3D manipulator strokes, which keep W10's four render-plane-scheduled cases failing and documented (D8). See W5 findings in Progress. **B03, H01 and V04 have fixtures and pass** (run 237, D13, D14). **M08 passes on the R2 test wheel** under D15 and D16 (run 239). **M09 passes exactly** on `444402` (run 241). **M02 and M06 pass under D17** on `444402` and the R2 test wheel (run 242). **Done**: every W5 item has a fixture and passes, or is a documented failure (D8). |
 | W6 | Hot-swap rows for PySide6 and CPython 3.11-3.14 | One row per cell passes W2 and W3 | Wheels for 3.10-3.14 exist only at an earlier epoch, so they must be rebuilt at the current source. Admissions use the 23-job CI and a promotion review. **Started** (see Progress): the PySide6 cp312 cell passes the probe's napari and threedee lifecycles. Its gates match PyQt6's, and both pass on the batch test wheel. The in-process scientific and plugin parity harnesses are PyQt6-only. **Local test wheels done** (2026-10-29, run `w6-abi-hot-swap-248`; the user chose local test builds now). CPython 3.11, 3.13 and 3.14 wheels were built from the R2 branch: the cp312 R2 test wheel with each ABI's two extension modules. All three pass the W3 gates and the probe's napari lifecycle; 3.11 and 3.13 also pass the threedee lifecycle. On 3.14 the threedee lifecycle is blocked upstream: napari-threedee 0.0.29 requires `zarr<3`, and zarr 2 needs a numcodecs older than 0.16, which has no 3.14 wheels. With zarr 3 forced, which fails `pip check`, it passes. Admission waits for R2's fresh build (D1). |
-| W7 | WSL lavapipe hot-swap rows | WSL rows pass | Measure the smooth-line bound on lavapipe; 32 was measured on NVIDIA only. **Observer done** (2026-10-29; see Progress): a Linux hot-swap observer derived from the strict LD_AUDIT and ptrace pair. Its WSL native controls pass 20 of 20. Remaining: the Linux napari environments, the probe and gates on a test wheel that carries W15, and the lavapipe smooth-line measurement against Mesa llvmpipe OpenGL. The admitted `bd89a994` has the same `glir.py` PyOpenGL import as `444402`. |
+| W7 | WSL lavapipe hot-swap rows | WSL rows pass | Measure the smooth-line bound on lavapipe; 32 was measured on NVIDIA only. **Observer done** (2026-10-29; see Progress): a Linux hot-swap observer derived from the strict LD_AUDIT and ptrace pair. Its WSL native controls pass 20 of 20. **Linux rows done on a test wheel** (run `w7-linux-rows-253`), in WSL with lavapipe on Xvfb. The admitted `bd89a994` has the same `glir.py` PyOpenGL import as `444402`, so its stock napari row is UNVERIFIED, as on Windows. Test wheel A (`c5a3807d`) is `bd89a994` with R2's three Python files. On it, stock napari reaches `PASS_HOT_SWAP_GATES`, the three controls give their designed verdicts, and the probe's napari and threedee lifecycles pass. **Smooth-line measurement done** (run `w7-lavapipe-smooth-254`, wheel B `922867ce`: test wheel A with R2's native line change, 44/44 native contracts). The port on lavapipe stays within 19 levels of the NVIDIA references on every smooth-line frame. Mesa llvmpipe OpenGL differs from both, so D19 judges Linux lines against the NVIDIA references. Open Linux-only findings, shared by llvmpipe and lavapipe, which are not lines: the brightest volume block renders hollow, and napari text and overlays sit about 1 px off. |
 | W8 (PERF-1) | Performance report: interaction frame time, large image and volume loads (including V09 timing), presentation path | A measured report against upstream OpenGL, with no speedup claim; the presentation choice is taken from the data (D3) | Native swapchain presentation is allowed only in hot swap. Inputs: the five-pair timings. PR #2 was closed, but its Qt single-present code is live (`src/vispy/app/backends/_qt.py:790-931`). Explain the unattributed Qt expose paints that invalidated the Native65 five-pair timing run (next-batch plan :443, :485, :3502). The pinned harness (`tools/benchmark_frames.py`) needs two environment settings: upstream PyQt6 canvases need `VISPY_PYQT5_SHARE_CONTEXT=true`, and only `VISPY_QT_PRESENTATION=native` reports the candidate completions it measures. It also passes `texture_format="rgba8"`, which VisPy expands to the invalid `rgbagba8`, so every RGBA workload fails on both sides. `tools/benchmark_frames_w8.py` runs the harness's code with those two lines fixed and the harness's hash recorded (O6). **Report done** (2026-10-29, run `w8-paced-benchmark-245`): [`docs/performance-report.md`](../../performance-report.md). Resident scenes keep the refresh rate, one refresh later than OpenGL. Full uploads run at about half OpenGL's rate. Partial texture updates run at 3.7 frames per second against 60 (B18). Readback presentation costs about 53 ms per frame at 1920x1080 and over 200 ms at 3840x2160 (B19). The unattributed paints come from desktop activity. Presentation: D18 (native for the hot swap from R2, after the napari parity suites pass under it). |
 | W10 | Oracle fixtures: the threedee drag race; the render-plane fixtures, including V07 and the plane widget; the plugin plan's opaque-volume residual. In W2, 11 cases were blocked by unadmitted references in the threedee, initialized and render-plane suites. | Parity tests pass against new admitted oracle captures | New fixture modules and reference packets beside the retained ones, with an admission naming the oracle defect (D6). These suites draw manipulator lines, so they use the smooth-line criterion (D5). **Partly done** (see Progress): the repaired fixtures exist and D5 is applied. The four render-plane-scheduled cases stay failing and documented (D8). |
 | W11 | Publication: GitHub Release plus a PEP 503 index with hashes, a manylinux build, and the 100 MiB wheel budget | A clean venv installs from the channel and the W2 smoke test passes | Only at the release, after R2 and approval; no preview (D2). Record a new artifact, and never replace the draft release's assets (gaps plan :581-582). Prepared locally (`tools/wheel_index.py`). |
@@ -428,6 +429,93 @@ with stock hosts and `444402`.
   are PyQt6-only harnesses. CPython 3.11, 3.13 and 3.14 need wheels at the current
   source.
 
+**D8 under D19** on 2026-10-29, run `d8-positioned-255`: the four
+render-plane-scheduled cases, judged by the positioned-line rule.
+
+- **Rule.** `tools/positioned_line_comparison.py` was fixed before the re-run;
+  `protocol.json` holds its sha256. It is the smooth-line criterion plus one
+  allowance: a pixel beyond the 32-level edge bound passes when it lies on an
+  edge in both frames, at most 0.1% of the frame. Interiors and alpha stay exact.
+  Fifteen CPU negative controls show that a gap, a stray block, a shift, an
+  interior or alpha change, and widespread differences fail, while a different
+  intensity on the stroke passes.
+- **Re-run.** It ran in a `git archive` copy, as in run 249, on the R2 test wheel.
+  Two attempts compared nothing, and both are kept:
+  - attempt 1: the copy lacked one of 51 gitignored input records in
+    `compat/host-environments`;
+  - attempt 2: the candidate had NumPy 2.5.3, which removed napari-threedee's
+    `np.row_stack`. The suite pins 2.4.6.
+
+  Attempt 3, with run 221's NumPy 2.4.6 lock, passes all six tests. The four
+  cases have 204, 200, 236 and 204 differing pixels; 11, 14, 8 and 11 of them
+  exceed 32, by at most 104, 92, 81 and 104.
+- **Index.** `tools/documented_outcomes.py` drops D8's four expected failures
+  (37 remain, all D6) and adds D19's rule. The wheel suite's D5 contract accepts
+  the positioned rule for the scheduled suite only.
+
+**W7 lavapipe smooth-line measurement** on 2026-10-29, run
+`w7-lavapipe-smooth-254`, done by an implementation agent. I checked its
+numbers against `results.json`.
+
+- **Wheel B.** `922867ce` is test wheel A with `_dawn` rebuilt from the R2 branch
+  in fresh mode. It passes 44 of 44 native contracts on lavapipe.
+- **Protocol.** It was written and hashed before any capture. One amendment,
+  also made before capture: the upstream file pins in
+  `compat/upstream_manifest.json` are CRLF bytes, but the Linux vispy 0.17.0
+  wheel installs them with LF, so the pins are checked after line-ending
+  normalization.
+- **Captures.** 46 cases on each side, under Mesa 25.2.8 llvmpipe OpenGL and
+  lavapipe, on Xvfb. Repeat captures are byte-identical.
+- **Results**, as edge maximum and frames over 32 for three comparisons: A,
+  lavapipe against llvmpipe; B, lavapipe against the NVIDIA packets; C,
+  llvmpipe against NVIDIA.
+
+  | Fixture | A | B | C |
+  | --- | --- | --- | --- |
+  | Threedee overlay | 26, 0/8 | 255, 7/8 | 255, 7/8 |
+  | Wide lines | 255, 10/13 | 19, 0/12 | 103, 9/12 |
+  | Wide-line depth | 255, 1/1 | 1, 0/1 | 255, 1/1 |
+  | Vector layers | 224, 1/2 | 14, 0/2 | 224, 1/2 |
+  | Layer families | 45, 2/3 | 255, 2/3 | 255, 2/3 |
+  | Mesh axes/colorbar | 145, 1/1 | 11, 0/1 | 147, 1/1 |
+
+  - Every over-32 frame in A comes from llvmpipe differing from NVIDIA: line
+    ends 128 where NVIDIA gives 164 and the port 163, a fringe row, a depth
+    fringe, and a missing 1/32 coverage skip.
+  - B's 255s on the overlay, scale bar and colorbar are not lines. They lie
+    where both Linux renderers agree: the brightest volume block renders
+    hollow, and napari text and overlays sit about 1 px off. These are open
+    Linux findings.
+  - The clipping bug affects no case.
+- **Decision.** The user decided D19: lines pass when correctly positioned,
+  without exact pixels. Linux lines are judged against the NVIDIA references.
+- **Tool.** `tools/smooth_line_lavapipe_measurement.py`, with CPU tests.
+
+**W7 Linux rows** on 2026-10-29, run `w7-linux-rows-253`: done by an
+implementation agent, and the verdicts and the wheel were checked before this
+record.
+
+- **Lock.** The PyQt6 napari input, compiled for `x86_64-manylinux_2_39` with W6's
+  flags and cutoff. Against W3's Windows lock it adds pexpect and ptyprocess and
+  drops colorama, pywin32 and tzdata; the other 111 pins match.
+- **Wheels.** The admitted `bd89a994`, and test wheel A (`c5a3807d`). Test wheel A
+  is `bd89a994` with only `_qt.py`, `dawn_parser.py` and `glir.py` replaced by
+  the R2 test wheel's. Every other member is byte-identical, and bd89's Python
+  equals `444402`'s.
+- **Gates** (Linux observer, lavapipe, Xvfb). All eight rows match their expected
+  verdicts. Stock napari is UNVERIFIED on `bd89a994`: the static scan finds
+  `glir.py`'s PyOpenGL import. On test wheel A it reaches
+  `PASS_HOT_SWAP_GATES`.
+- **Linux differences that change no verdict.**
+  - The GL-context control stops at `glXCreatePbuffer` from Qt's GLX
+    integration.
+  - Stock napari records 80 host GL events, against 24 on Windows, because
+    `libQt6Gui` links `libGL` and `libEGL` directly.
+- **Probe.** On test wheel A, the napari lifecycle passes all 9 stages and the
+  threedee lifecycle all 8.
+- **Cleanup.** The guest scratch held `uv venv`'s symlinks. An audited unlink
+  removed only those 8 links before both cleanups.
+
 **W7 Linux observer** on 2026-10-29, runs `w7-linux-observer-251` and
 `w7-review-252`: W7 steps 1-2, done by an implementation agent and reviewed
 before publication.
@@ -482,13 +570,24 @@ before publication.
 - **Results.** Every test has the same outcome under both presentations.
   - The five in-process suites pass 44 of 44: layer controls, layer families,
     vector layers, scientific and volume.
-  - The plugin suites fail only their 17 documented cases (D6, D8). The overlay
-    suite's five plugin workflows pass.
-  - Four CPU tests fail, and the plugin-wheel suite's five cases stop in setup.
-    The copy lacks untracked inputs they need from the main tree: a helper
-    executable, a host requirements file, and the upstream side's inputs. The
-    CPU tests create no graphics by design. The plugin-wheel suite runs in the
-    release tree.
+  - The overlay suite's five plugin workflows pass.
+  - **Correction** (run `d8-positioned-255`). This entry first said the plugin
+    suites failed only their 17 documented cases. That holds by node id, but six
+    of them never rendered:
+    - 11 of the 17 stop before rendering by design: D6's superseded fixtures,
+      whose references are unadmitted;
+    - D8's four cases and two D6 render-plane cases could not start their
+      worker. The copy lacked a gitignored input record, and this run's
+      NumPy 2.5.3 candidate lacks napari-threedee's `np.row_stack`; the suites
+      pin 2.4.6.
+
+    Run 255 completed the check with the NumPy 2.4.6 candidate.
+    - The render-plane-scheduled suite passes 6 of 6 under both presentations,
+      under D19.
+    - The plugin-wheel suite passes 5 of 5 under both, run in the main tree
+      with its evidence in scratch.
+  - Four CPU tests failed in the copy, for missing untracked inputs; they create
+    no graphics by design.
 - **Limit.** The suites compare offscreen captures, so they show that napari's
   workflows run correctly under native presentation, not that the presented
   pixels match.
@@ -645,10 +744,10 @@ H01 and V04.
 2. W4's fixtures and all of W5 are done; D8 and D10-D17 are decided. The
    smooth line ends, the minimum smooth coverage and the Qt canvas release are
    fixed in local test builds and ship with R2.
-3. W6 is done on local test wheels. W7's observer is done; its environments,
-   rows and lavapipe measurement follow.
+3. W6 is done on local test wheels. W7's observer and Linux rows are done on a
+   test wheel; the lavapipe smooth-line measurement follows.
 4. W8: the report is done. D18's napari parity under native presentation is done
-   (run 249), except the plugin-wheel suite, which runs in the release tree.
+   (runs 249 and 255).
 5. W15 and R2 (fresh release build), then W11 at the release and W12 on approval.
 6. Backlog as capacity allows.
 
