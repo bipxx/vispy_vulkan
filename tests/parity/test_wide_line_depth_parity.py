@@ -9,6 +9,7 @@ import pytest
 
 from tools.fixture_wide_lines import landmarks, specification as old_specification
 from tools.fixture_wide_lines_depth import CASES, assert_landmarks, render, specification
+from tools.wide_lines_comparison import CANONICAL_SHARED_FIXTURE_SHA256, CAPTURED_SHARED_FIXTURE_SHA256, wide_line_difference
 
 ROOT = Path(__file__).resolve().parents[2]
 REFERENCE = ROOT / "tests/reference/wide-lines-depth-opengl"
@@ -28,7 +29,9 @@ def test_defined_depth_variant_preserves_geometry_landmarks_and_old_failure():
     assert CASES[0] in old["errors"] and CASES[0] not in old["fixtures"]
     assert old["errors"][CASES[0]]["process"]["exit_code"] == 1
     assert "fixed wide-line landmark" in old["errors"][CASES[0]]["error"]
-    assert old["provenance"]["wide_fixture_sha256"] == digest(ROOT / "tools/fixture_wide_lines.py")
+    # Decision D16: captured with the shared fixture before its reviewed replacement (only the depth clear added).
+    assert old["provenance"]["wide_fixture_sha256"] == CAPTURED_SHARED_FIXTURE_SHA256
+    assert digest(ROOT / "tools/fixture_wide_lines.py") == CANONICAL_SHARED_FIXTURE_SHA256
     assert old["provenance"]["wide_capture_sha256"] == digest(ROOT / "tools/oracle_wide_lines_capture.py")
 
 
@@ -38,7 +41,8 @@ def test_defined_depth_reference_preserves_actual_driver_state_and_ordered_clear
     origins = manifest["provenance"]
     assert origins["kind"] == "upstream" and origins["vispy_version"] == "0.17.0"
     assert origins["wide_fixture_sha256"] == digest(ROOT / "tools/fixture_wide_lines_depth.py")
-    assert origins["shared_fixed_fixture_sha256"] == digest(ROOT / "tools/fixture_wide_lines.py")
+    assert origins["shared_fixed_fixture_sha256"] == CAPTURED_SHARED_FIXTURE_SHA256  # decision D16
+    assert digest(ROOT / "tools/fixture_wide_lines.py") == CANONICAL_SHARED_FIXTURE_SHA256
     assert origins["wide_capture_sha256"] == digest(ROOT / "tools/oracle_wide_lines_depth_capture.py")
     record = manifest["fixtures"][CASES[0]]
     assert record["parameters"] == specification(CASES[0]) and record["process"]["exit_code"] == 0
@@ -63,7 +67,8 @@ def test_native_initialized_wide_smooth_depth_matches_exact_gl_driver():
     origins = manifest["provenance"]
     assert origins["kind"] == "upstream" and origins["vispy_version"] == "0.17.0"
     assert origins["wide_fixture_sha256"] == digest(ROOT / "tools/fixture_wide_lines_depth.py")
-    assert origins["shared_fixed_fixture_sha256"] == digest(ROOT / "tools/fixture_wide_lines.py")
+    assert origins["shared_fixed_fixture_sha256"] == CAPTURED_SHARED_FIXTURE_SHA256  # decision D16
+    assert digest(ROOT / "tools/fixture_wide_lines.py") == CANONICAL_SHARED_FIXTURE_SHA256
     assert origins["wide_capture_sha256"] == digest(ROOT / "tools/oracle_wide_lines_depth_capture.py")
     record = manifest["fixtures"][name]
     assert record["process"]["exit_code"] == 0 and record["parameters"] == specification(name)
@@ -78,7 +83,9 @@ def test_native_initialized_wide_smooth_depth_matches_exact_gl_driver():
     np.save(output / "candidate.npy", image, allow_pickle=False)
     difference = np.abs(image.astype(np.int16) - expected.astype(np.int16))
     np.save(output / "difference.npy", difference, allow_pickle=False)
-    assert np.array_equal(image, expected), (name, int(difference.max()), int(np.any(difference, axis=2).sum()))
+    # Decision D15: the smooth depth case drops only the smooth-line frame cap, with exact alpha.
+    reason = wide_line_difference(True, image, expected)
+    assert reason is None, (name, reason, int(difference.max()), int(np.any(difference, axis=2).sum()))
     assert sum(command[:2] == ["FUNC", "glFinish"] for command in commands) == 1
     assert ["FUNC", "glClearDepth", 1.] in commands
     assert ["FUNC", "glClear", 256] in commands

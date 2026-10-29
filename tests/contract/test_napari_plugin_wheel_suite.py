@@ -237,3 +237,4 @@ from test_hot_swap_policy import *  # noqa: E402,F401,F403
 from test_napari_vector_layers_reference import *  # noqa: E402,F401,F403
 from test_napari_layer_families_reference import *  # noqa: E402,F401,F403
 from test_napari_layer_controls_reference import *  # noqa: E402,F401,F403
+from test_wide_lines_comparison import *  # noqa: E402,F401,F403

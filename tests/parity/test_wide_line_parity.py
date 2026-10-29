@@ -8,6 +8,7 @@ import numpy as np
 import pytest
 
 from tools.fixture_wide_lines import CASES, DOUBLE_QUARTER_GREEN, SIZE, assert_landmarks, clip_positions, landmarks, render, specification
+from tools.wide_lines_comparison import CANONICAL_SHARED_FIXTURE_SHA256, CAPTURED_SHARED_FIXTURE_SHA256, wide_line_difference
 
 ROOT = Path(__file__).resolve().parents[2]
 REFERENCE = ROOT / "tests/reference/wide-lines-opengl"
@@ -42,7 +43,9 @@ def test_wide_line_reference_keeps_actual_driver_advertisement_and_exit_qualific
     assert origins["kind"] == "upstream" and origins["vispy_version"] == "0.17.0"
     assert "site-packages" in origins["vispy_origin"] and "oracle-opengl" in origins["python_executable"]
     assert origins["renderer"]["version"].startswith("4.")
-    assert origins["wide_fixture_sha256"] == digest(ROOT / "tools/fixture_wide_lines.py")
+    # Decision D16: captured with the shared fixture before its reviewed replacement (only the depth clear added).
+    assert origins["wide_fixture_sha256"] == CAPTURED_SHARED_FIXTURE_SHA256
+    assert digest(ROOT / "tools/fixture_wide_lines.py") == CANONICAL_SHARED_FIXTURE_SHA256
     assert origins["wide_capture_sha256"] == digest(ROOT / "tools/oracle_wide_lines_capture.py")
     assert set(manifest["fixtures"]) | set(manifest["errors"]) == set(CASES)
     assert manifest["comparison"] == {"full_frame_exact": True, "fixed_landmarks_exact": True}
@@ -79,5 +82,7 @@ def test_native_wide_smooth_line_matches_independent_exact_driver(name):
     np.save(EVIDENCE / f"{name}.candidate.npy", image, allow_pickle=False)
     np.save(EVIDENCE / f"{name}.difference.npy", difference, allow_pickle=False)
     assert_landmarks(name, image)
-    assert np.array_equal(image, reference), (name, int(difference.max()), int(np.any(difference, axis=2).sum()))
+    # Decision D15: smooth cases drop only the smooth-line frame cap, with exact alpha; aliased cases stay exact.
+    reason = wide_line_difference(specification(name)["line_smooth"], image, reference)
+    assert reason is None, (name, reason, int(difference.max()), int(np.any(difference, axis=2).sum()))
     assert sum(command[:2] == ["FUNC", "glFinish"] for command in commands) == 1
