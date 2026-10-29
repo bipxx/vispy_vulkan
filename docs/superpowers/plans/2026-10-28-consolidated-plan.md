@@ -64,7 +64,7 @@ unmodified scientific hosts, napari first, run on it with practical parity.
 | D5 | **The smooth-line criterion also applies to Glue `scatter_axes`, the mesh axes/colorbar scene and the napari-threedee fixture suites.** Everything else stays exact. | These suites draw smooth lines and compared exactly. |
 | D6 | **Broken oracle fixtures get new fixture modules and reference packets beside the retained ones, with an admission that records the oracle defect.** Original references are never replaced. | The fixture sources are pinned by `fixture_source_sha256` in their manifests. |
 | D7 | **Monitor moves and fractional DPI stay out of scope and are documented as untested.** The other Qt lifecycle items run now. | Only these two need a physical-desktop session (completion :239). |
-| D8 | **The four render-plane-scheduled cases close through W5's wide-line fix, with no new tolerance.** This revises the user's earlier approval of a looser rule, which rested on a wrong diagnosis. | 52-61 pixels per case exceeded the 32-level bound. A one-pixel boundary-move rule was fixed and tested before the re-run. It explained 33-46 of them and left 15-25, so all four cases still failed (run `w10-render-plane-rule-221`). Inspection then showed the pixels are not on the render plane's boundary, as first described. They are on napari-threedee's manipulator strokes, which are vispy `Line(width=3, method='gl')` wide aliased lines. Some candidate stroke pixels look partly covered where GL draws them solid. |
+| D8 | **The four render-plane-scheduled cases close through W5's wide-line fix, with no new tolerance.** This revises the user's earlier approval of a looser rule, which rested on a wrong diagnosis. | 52-61 pixels per case exceeded the 32-level bound. A one-pixel boundary-move rule was fixed and tested before the re-run. It explained 33-46 of them and left 15-25, so all four cases still failed (run `w10-render-plane-rule-221`). Inspection then showed the pixels are not on the render plane's boundary, as first described. They are on napari-threedee's manipulator strokes, vispy `Line(width=3, method='gl')`. They were first described as aliased, but napari-threedee sets `antialias = 2` on them after construction, so they are smooth lines, drawn in 3D against spherical markers that write per-fragment depth. |
 
 | D9 | **Mesh `axes_colorbar` closes with a documented difference.** Only for that scene, the smooth-line rule's 1% frame cap does not apply. Interiors stay exact, every other pixel stays within 32 levels, alpha matches exactly, and the fixture's landmarks match exactly. Implemented in `tools/mesh_layout_smooth_line.py`, with CPU negative controls. | With the 0.14 px line-end fix, the scene's worst pixel fell from 147 to 12 levels. 418 pixels still differed (1.17%, cap 1%). 332 of them are the 166-px axis line's two antialiased edge rows, 11-12 levels off: GL's driver-defined side coverage, which a simple renderer model does not reproduce. |
 
@@ -99,10 +99,7 @@ Diagnostic runs in the exact qualification profile keep the spec budget
 | W2a | W2 residuals: run the 6 `np.row_stack` cases with NumPy 2.4.6, the pairing those suites require, and make the `initialized` suite honour `VISPY_PLUGIN_CANDIDATE_PYTHON` (1 case) | These 7 cases run on the hot-swap stack | **Done** (see Progress). Hot-swap plan, W2 table |
 | W3 | Hot-swap audit gates | Controls reached; the stock baseline passes | **Tooling done** (see Progress). The baseline's dynamic record is clean, but on `444402` its `renderer_gl` gate is UNVERIFIED because of one static GL reference in `gloo/glir.py`; it closes on the fresh build with W15. On the batch test wheel, which carries W15, stock napari reaches `PASS_HOT_SWAP_GATES`. Windows only; W7 needs a Linux observer. W8 must decide how a driver's GL activity inside a native swapchain path counts before selecting native presentation. |
 | W4 | napari families not yet covered: cyclic labels r8/r16, Shapes/Vectors/Tracks (M10, M11), Surface at napari level (a new fixture), overlays (E06, T04), histogram, sized export (Q03, Q06) | Each matches its OpenGL reference, or has a documented difference fixed before capture | Record results in `compat/vispy-compatibility.json`. |
-| W5 | Known defects: M02 and M06 markers, M08 wide lines (16 references; the depth failure is retained), M09 joins, caps and new line fixtures, B03 opacity mutation, H01 screenshot and layer removal with no hidden finish, V04 volume controls | Fixed and admitted. M02 and M06 close with a user-approved documented difference, fixed before re-capture (D4). | V07 and the plane widget belong to W10. V09 timing belongs to W8. M08 covers two residuals. The first is napari-threedee's 3-px manipulator strokes, which block W10's four render-plane-scheduled cases (D8). The second is the ends of smooth GL lines, which block W13's Glue `scatter_axes` (corners and tick ends) and W14's `axes_colorbar` (axis line ends). The data fit GL extending each smooth line end by about 0.13-0.15 px where Dawn ends exactly at the endpoint: a half-covered end pixel is 164 against 127, and a three-quarter one 230 against 191. GL's faint pixel past an axis end also writes depth that hides the tick drawn after it. **Fixed in the batch** (see Progress): a 0.14 px end extension, validated on GPU, ships with R2. A probe on `444402` (run `w5-wide-line-probe-225`) bounds the strokes:
-- isolated 3-px aliased lines (horizontal, vertical, diagonal) match GL exactly, so the strokes need a reproduction of the manipulator's segmented arcs, perspective and depth against its markers. The first test is the spherical markers' per-fragment depth (`gl_FragDepth = gl_FragCoord.z + depth_change`, with `depth_change` in GL NDC units) against a stroke that passes a sphere's edge;
-- 3-px smooth lines differ only on edges, by up to 37-47 levels;
-- M08's reference manifest records an older `tools/fixture_wide_lines.py` hash. |
+| W5 | Known defects: M02 and M06 markers, M08 wide lines (16 references; the depth failure is retained), M09 joins, caps and new line fixtures, B03 opacity mutation, H01 screenshot and layer removal with no hidden finish, V04 volume controls | Fixed and admitted. M02 and M06 close with a user-approved documented difference, fixed before re-capture (D4). | V07 and the plane widget belong to W10. V09 timing belongs to W8. M08 covers two residuals: the ends of smooth GL lines (W13 `scatter_axes`, W14 `axes_colorbar`), fixed in the batch and shipping with R2; and napari-threedee's smooth 3D manipulator strokes, which block W10's four render-plane-scheduled cases (D8). See W5 findings in Progress. |
 | W6 | Hot-swap rows for PySide6 and CPython 3.11-3.14 | One row per cell passes W2 and W3 | Wheels for 3.10-3.14 exist only at an earlier epoch, so they must be rebuilt at the current source. Admissions use the 23-job CI and a promotion review. |
 | W7 | WSL lavapipe hot-swap rows | WSL rows pass | Measure the smooth-line bound on lavapipe; 32 was measured on NVIDIA only. |
 | W8 (PERF-1) | Performance report: interaction frame time, large image and volume loads (including V09 timing), presentation path | A measured report against upstream OpenGL, with no speedup claim; the presentation choice is taken from the data (D3) | Native swapchain presentation is allowed only in hot swap. Inputs: the five-pair timings. PR #2 was closed, but its Qt single-present code is live (`src/vispy/app/backends/_qt.py:790-931`). Explain the unattributed Qt expose paints that invalidated the Native65 five-pair timing run (next-batch plan :443, :485, :3502). |
@@ -215,10 +212,10 @@ baseline closes with W15.
   one 30x30 patch around the manipulator.
   - A one-pixel boundary-move rule, fixed before the re-run, explained 33-46 of
     them per case and left 15-25.
-  - Crops show the differing pixels are on the manipulator's 3-px strokes, wide
-    aliased GL lines, not on the render plane's boundary, which is identical in
-    both frames. The earlier description of plane-raycasting boundary flips was
-    wrong.
+  - Crops show the differing pixels are on the manipulator's 3-px strokes, not on
+    the render plane's boundary, which is identical in both frames. The earlier
+    description of plane-raycasting boundary flips was wrong. The strokes are
+    smooth lines: napari-threedee sets `antialias = 2` on them.
 - **Decided (D8).** The rule is not used. The four cases stay failing until W5
   fixes wide lines.
 
@@ -258,6 +255,37 @@ baseline closes with W15.
   workflows). No GL context or draw. The dynamic record has 11 host GL events, 0
   renderer and 0 unattributed. As with napari, `renderer_gl` is UNVERIFIED only
   on the static `glir.py` reference (W15).
+
+**W5 findings so far** (M08 line work).
+
+- **Smooth GL line ends** (W13 Glue `scatter_axes`, W14 `axes_colorbar`).
+  - GL extends each smooth line end by about 0.13-0.15 px, where Dawn ended
+    exactly at the endpoint: a half-covered end pixel is 164 against 127, and a
+    three-quarter one 230 against 191.
+  - GL's faint pixel past an axis end also writes depth that hides the tick drawn
+    after it.
+  - A 0.14 px end extension is fixed in the batch below and ships with R2.
+- **Probe on `444402`** (run `w5-wide-line-probe-225`).
+  - Isolated 3-px aliased lines (horizontal, vertical, diagonal) match GL
+    exactly.
+  - 3-px smooth lines differed only on edges, by up to 37-47 levels.
+  - M08's reference manifest records an older `tools/fixture_wide_lines.py`
+    hash.
+- **Manipulator strokes** (D8; run `d8-stroke-mechanism-228`). The strokes are
+  smooth lines: napari-threedee sets `antialias = 2` on its `Line(width=3,
+  method='gl')` visuals. `plane_handles` was rendered live under GL and Dawn (test
+  wheel `7ad85601`) with four manipulator variants:
+
+  | Variant | Pixels over the bound | Differing in total |
+  | --- | --- | --- |
+  | baseline | 15 (max 143) | 207 |
+  | markers not spherical | 23 | 282 |
+  | markers hidden | 38 | 394 |
+  | lines not smoothed | 3 | 3 |
+
+  So the spherical markers' per-fragment depth is not the cause. The residual is
+  the smooth-line coverage of the short 3D stroke segments, which is where GL's
+  driver-defined smoothing differs.
 
 **W1, W5 smooth line ends and W15, batched** on 2026-10-28, run
 `w1-w5-native-batch-227`, with a local test wheel `7ad85601...`.
