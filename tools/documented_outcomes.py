@@ -6,10 +6,11 @@ decision, the modules that apply it and the cases and limits they must hold; tes
 checks it against those modules, so this index cannot drift from the rules that run. The decisions themselves are
 recorded in docs/superpowers/plans/2026-10-28-consolidated-plan.md.
 
-EXPECTED_FAILURES are tests that fail by decision (D8) or that belong to a superseded oracle fixture, retained beside
-its admitted successor (D6). They keep failing: the evidence rules forbid skip and xfail. tests/hosts/conftest.py and
-tests/parity/conftest.py only label them in pytest's report, count the failures this index does not explain, and name
-any listed test that passed.
+EXPECTED_FAILURES are tests that belong to a superseded oracle fixture, retained beside its admitted successor (D6).
+They keep failing: the evidence rules forbid skip and xfail. tests/hosts/conftest.py and tests/parity/conftest.py only
+label them in pytest's report, count the failures this index does not explain, and name any listed test that passed.
+D8's four render-plane-scheduled cases were expected failures until D19 revised D8; they now pass under its rule
+(run d8-positioned-255).
 """
 from __future__ import annotations
 
@@ -90,6 +91,14 @@ DIFFERENCES = {
          ('fixture_markers_all_symbols', 'MAX_EDGE_FRACTION', .001),
          ('fixture_markers_million', 'CRITERIA', dict.fromkeys(('points', 'instanced'), 'within_2_levels')),
          ('fixture_markers_million', 'LEVELS', 2), ('fixture_markers_million', 'MAX_BEYOND_FRACTION', .005))),
+    'D19': Difference(
+        'Lines pass when they are correctly positioned and look right; exact pixels are not required (D8 revised '
+        "under it). The render-plane-scheduled suite's manipulator strokes use the smooth-line criterion plus one "
+        'allowance: a pixel beyond its edge bound passes when it lies on an edge in both frames, at most 0.1% of the '
+        'frame. Interiors and alpha stay exact.',
+        ('positioned_line_comparison',),
+        (('positioned_line_comparison', 'EDGE_TOLERANCE', 32), ('positioned_line_comparison', 'MAX_DIFFERING_FRACTION', .01),
+         ('positioned_line_comparison', 'MAX_OVER_FRACTION', .001))),
 }
 
 
@@ -109,11 +118,6 @@ _MARKER_SUCCESSOR = ('the OpenGL capture process for this case exited 1, so its 
                      'marker-extension packets.')
 
 EXPECTED_FAILURES = {
-    **_cases('tests/hosts/test_napari_render_plane_scheduled_parity.py' + _PLANE,
-             ('plane_handles', 'plane_translation', 'plane_rotation', 'plane_clipped'), 'D8',
-             "napari-threedee's manipulator strokes, smooth 3D lines (Line(width=3, method='gl'), antialias 2), "
-             'exceed the smooth-line edge bound: GL smooths short 3D segments in a driver-defined way. A documented '
-             'failure, with no tolerance.'),
     **_cases('tests/hosts/test_napari_threedee_parity.py' + _PLUGIN,
              ('handles', 'selection', 'translation', 'miss', 'retirement'), 'D6',
              'Superseded oracle fixture: ' + _THREEDEE_SUCCESSOR),
@@ -124,7 +128,8 @@ EXPECTED_FAILURES = {
              "Superseded oracle fixture: its OpenGL capture is unadmitted; the oracle did not deliver napari's "
              'throttled mouse moves (the drag race, W0). ' + _PLANE_SUCCESSOR),
     **_cases('tests/hosts/test_napari_render_plane_parity.py' + _PLANE, ('plane_handles', 'plane_clipped'), 'D6',
-             "Superseded oracle fixture. Like D8's cases, it fails on the manipulator's smooth 3D strokes. "
+             "Superseded oracle fixture. It fails on the manipulator's smooth 3D strokes, which its admitted successor "
+             'judges by the positioned-line rule (D19). '
              + _PLANE_SUCCESSOR),
     **_cases('tests/parity/test_marker_extensions_parity.py' + _MARKERS,
              ('points_style_grid', 'points_camera_visual', 'points_color_revision', 'points_position_revision',
