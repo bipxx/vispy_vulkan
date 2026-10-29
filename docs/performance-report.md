@@ -21,8 +21,9 @@ named below.
   frame of a 1920x1080 canvas and over 200 ms at 3840x2160. With native
   swapchain presentation, a whole resident 3840x2160 frame takes about 2 ms, and
   the hot-swap gates pass on this machine. Under readback, interaction depends
-  on a CPU readback, which the design forbids. So the data favour native
-  presentation for the hot swap (decision D18, open).
+  on a CPU readback, which the design forbids. So the user chose native
+  presentation for the hot swap, from R2, once the napari parity suites pass
+  under it (decision D18).
 - Cold start is no slower than upstream.
 
 ## What was measured
@@ -227,12 +228,12 @@ D3 takes the presentation path from these measurements. The data:
   Windows no-OpenGL qualification, because some Vulkan Win32 drivers resolve
   WGL entry points (`_qt.py`).
 
-**Recommendation (D18, open for the user).**
-- Select native presentation for the hot swap on Windows, at R2, once the
-  napari parity suites pass under it.
-- Count GL activity that the audit attributes to a driver's presentation path,
-  outside the renderer, as host activity in the hot-swap profile only.
-- Keep readback for strict no-OpenGL qualification, and make it cheaper (B19).
+**Decision (D18, user, 2026-10-29).**
+- The hot swap presents through a native swapchain on Windows, from R2, once
+  the napari parity suites pass under it.
+- GL activity that the audit attributes to a driver's presentation path, outside
+  the renderer, counts as host activity in the hot-swap profile only.
+- Readback stays the strict no-OpenGL path, and B19 makes it cheaper.
 
 ## What the pinned harness could not measure
 

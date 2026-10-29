@@ -23,9 +23,11 @@ NOT_IN_CI = {
     **dict.fromkeys(('test_compatible_sdk', 'test_dive_w10_parameters', 'test_dive_w10_parity_proof',
                      'test_installed_plugin_candidate', 'test_native_sdk', 'test_newer_build_environments',
                      'test_pass25_guards', 'test_plugin_registration', 'test_qt_overlay_packaging',
-                     'test_volume_benchmark_adapter3', 'test_wheel_index', 'test_windows_wheel_matrix'),
+                     'test_volume_benchmark_adapter3', 'test_windows_wheel_matrix'),
                     'not yet checked in CI\'s environment (consolidated plan, Organization)'),
 }
+# Contract modules that stay local until their publication; a checkout may lack them.
+UNPUBLISHED = {'test_wheel_index': 'W11 index tooling, published with W11 on approval (D2)'}
 
 for _name in MODULES:
     _module = importlib.import_module(_name)
@@ -40,7 +42,8 @@ def test_every_contract_module_runs_in_ci_or_is_declared():
     named = set(re.findall(r'tests/contract/(test_\w+)\.py', workflows))
     modules = {path.stem for path in (ROOT / 'tests/contract').glob('test_*.py')}
     assert not set(MODULES) & named and not set(NOT_IN_CI) & (named | set(MODULES))
-    assert modules - named - set(MODULES) == set(NOT_IN_CI)
+    assert not set(UNPUBLISHED) & (named | set(MODULES) | set(NOT_IN_CI))
+    assert modules - named - set(MODULES) - set(UNPUBLISHED) == set(NOT_IN_CI)
 
 
 __all__ = [name for name in dir() if name.startswith('test_')]
