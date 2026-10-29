@@ -20,6 +20,9 @@ strict audit (`tools/audit_no_opengl.py`, `tools/no_opengl/`) is unchanged.
 | `tools/hot_swap/probe.py` | Child: runs the scenario script with an attributing audit hook |
 | `tools/hot_swap/windows_observer.py` | Debugger-based Windows observer, derived from the strict one |
 | `tools/hot_swap/derive_observer.py` | Generates the observer from the strict one |
+| `tools/hot_swap/loader_audit_linux.c`, `debugger_linux.c`, `linux_observer.py` | Linux observer: LD_AUDIT module, ptrace debugger and runner, derived from the strict ones (see [Linux observer](#linux-observer)) |
+| `tools/hot_swap/derive_linux_observer.py` | Generates the Linux observer from the strict one |
+| `tools/hot_swap/linux_controls.py` | The Linux observer's native controls |
 | `tools/hot_swap/policy.py` | Attribution, correlation of native events, the static scan, and the gates |
 | `tools/hot_swap/scenarios/` | The stock napari and Glue baselines and three controls |
 
@@ -188,9 +191,110 @@ The baseline's host GL activity comes from two sources:
   `wglGetCurrentContext`;
 - qtpy's imports of `PyQt6.QtOpenGL` and `QtOpenGLWidgets`, with their Qt DLLs.
 
+## Linux observer
+
+`tools/hot_swap/derive_linux_observer.py` derives the Linux x86-64 observer from the strict
+Linux pair in `tools/no_opengl/`, which is pinned and unchanged: the glibc LD_AUDIT module
+`loader_audit_linux.c`, the ptrace debugger `debugger_linux.c` and their runner `linux.py`.
+As in the strict profile, the auditor alone cannot pass, so a Linux run needs both; without
+them it is a `TOOL_ERROR`. A CPU contract test checks that the committed files equal the
+derivation. Each change is an exact replacement that must match once:
+
+- **Auditor** (`loader_audit_linux.c`):
+  - Every record ends with wall-clock time.
+  - A load records the object that requested it, from `la_objsearch`'s `LA_SER_ORIG` call:
+    the owner of the `DT_NEEDED` entry, or the object that called `dlopen`. This is the
+    Linux counterpart of the Windows loader caller. Objects opened without a search, such as
+    the program, the loader and the vDSO, have none.
+  - A GL binding, including `dlsym`, records its referencing object, the counterpart of the
+    direct caller, and its defining object.
+- **Debugger** (`debugger_linux.c`):
+  - A GL call records its caller: the module holding the return address at `[rsp]` when the
+    export's trap fires.
+  - Context, make-current, swap and draw calls are recorded and stop the process tree before
+    they execute, under any of the export's names. The C copy of these names is generated
+    from the tables in `tools/hot_swap/policy.py`.
+  - Other GL calls are recorded and stepped over: `rip` moves past the export's leading
+    `endbr64`. The trap stays armed, so no thread is single-stepped. A GL export whose first
+    instruction is not `endbr64` fails closed: the call is recorded and an observer error
+    stops the tree.
+  - A static process's GL lookup is recorded and single-stepped like its other lookups.
+  - Every record ends with wall-clock time.
+- **Runner** (`linux_observer.py`): parses the new records. A malformed record is an error.
+  The coverage rules are unchanged.
+
+Hosts make GL calls that are neither context nor draw calls, so these calls must be stepped
+over. For example, the Windows GL-context control recorded 385 host GL events before Qt created
+its context (run `w3-hot-swap-gates-217`). Stepping past `endbr64` is equivalent to executing
+it only while indirect branch tracking is off for user processes, as in the WSL kernel used
+below. The strict observer's breakpoints rely on that too.
+
+**Attribution.** The policy reads POSIX paths too:
+- A POSIX `vispy` origin gives POSIX renderer roots.
+- The shared `libpython3.x.so` counts as Python's extension-module loader, as does a static
+  `python3.x` executable. With a shared libpython, ctypes is built into it.
+- `libQt6OpenGL*.so` is one of Qt's own GL libraries.
+- The loader caller is the requesting object. So a GL library that another GL library
+  requests is attributed to that library's module, a host. For example, glvnd's `libGL.so.1`
+  requests `libGLX.so.0` and `libGLdispatch.so.0`. This cannot hide a renderer cause, because
+  the requesting library's own load is assessed too.
+- A tail call into a GL export names the caller's caller.
+
+**Static scan.** On Linux the scan also covers `vispy.libs`, including versioned `.so` names.
+ELF's `DT_NEEDED` names libraries but not the symbols taken from them, so the scan reads GL
+entry points from each image's undefined dynamic symbols. An unreadable ELF symbol table makes
+the scan incomplete.
+
+**Usage.** Build the collectors with the strict profile's flags, then pass them to the
+controller:
+
+```
+cc -shared -fPIC -O2 -Wall -Wextra -Werror -o loader_audit.so tools/hot_swap/loader_audit_linux.c
+cc -O2 -Wall -Wextra -Werror -o debugger_linux tools/hot_swap/debugger_linux.c
+python -I -B tools/audit_hot_swap.py --python <candidate environment python> \
+    --script <scenario> --output <new report path> \
+    --native-auditor loader_audit.so --native-debugger debugger_linux
+```
+
+**Native controls.** `tools/hot_swap/linux_controls.py --output <new directory>` builds the
+collectors and synthetic fixtures with the existing C compiler. None of the fixtures is a GL
+implementation: a library of GL-named exports named like a GLX vendor library, a host library
+that calls them, a driver program and a static program. It verifies the compiled entry bytes,
+then checks that:
+- a host GL call is recorded with its caller, executed once and stepped over;
+- the GL library's load names the host library as its requester, and a `dlsym` lookup names
+  the host library as its referencing object;
+- a context call, a draw call and a call through an export whose alias is a draw name all
+  stop the tree before executing;
+- an export without `endbr64` fails closed;
+- 32 threads entering a counted export 32 times each are all recorded, and the export ran
+  exactly 1024 times;
+- a forked child, an exec'd child and a static program are observed the same way.
+
+`tests/contract/test_hot_swap_linux_native.py` runs the controls on Linux only. It also compiles
+the collectors without warnings and checks the C context and draw names against the policy.
+
+**Evidence.** Run `w7-linux-observer-251` on 2026-10-29 used WSL Ubuntu 24.04 (kernel 6.18,
+glibc 2.39, GCC 13.3):
+- The native controls reached `PASS_CONTROLS` on all 20 checks.
+- All 3,912 GL-named function exports of WSL's glvnd libraries (`libGL`, `libEGL`, `libGLX`,
+  `libGLESv2`) begin with `endbr64`. Mesa's vendor libraries export none.
+- The control scenarios ran in an existing environment: CPython 3.12.8 with a shared
+  libpython, PyOpenGL 3.1.10 and PyQt6 6.11.0, but no qtpy.
+  - `control_host_import`: 26 host GL events, none unattributed, and no context or draw.
+    `renderer_gl` is UNVERIFIED because vispy is never imported, as on Windows.
+  - `control_renderer_import`: `renderer_gl` FAIL, with 217 renderer events and none
+    unattributed. Its 2 host events are glvnd's own dependency loads, described above.
+  - `control_gl_context` could not run without qtpy, so both gates are UNVERIFIED.
+- A read-only static scan of an installed Linux `vispy-0.17.0+vulkan.1` build was complete:
+  361 Python files and 3 ELF images. It found the same `gloo/glir.py:1591` reference as on
+  Windows.
+
 ## Limits
 
-- **Windows only.** WSL and Linux rows (W7) need a Linux observer.
+- **Platforms.** Windows x64 and Linux x86-64. The Linux observer is controlled natively. No
+  Linux or WSL scenario row (W7) has run on a candidate yet, and no Linux GL-context scenario
+  has run under real Qt.
 - **Immediate callers only.** Native attribution stops at the immediate caller. If the
   renderer reached GL through another native module, the activity would be attributed
   to that module. One example is a graphics driver inside a native swapchain path, if

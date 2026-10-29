@@ -14,7 +14,7 @@ ROOT = Path(__file__).resolve().parents[2]
 MODULES = ('test_hot_swap_policy', 'test_napari_vector_layers_reference', 'test_napari_layer_families_reference',
            'test_napari_layer_controls_reference', 'test_wide_lines_comparison', 'test_agg_lines_reference',
            'test_markers_d17_reference', 'test_pool_watch', 'test_documented_outcomes', 'test_publication_drift',
-           'test_benchmark_frames_w8', 'test_ci_local')
+           'test_benchmark_frames_w8', 'test_ci_local', 'test_hot_swap_linux_observer')
 # Contract modules that no workflow runs, with the reason. A new module goes in MODULES or here.
 NOT_IN_CI = {
     **dict.fromkeys(('test_color_volume_linux_wheel_parity', 'test_color_volume_wheel_parity',
@@ -25,6 +25,8 @@ NOT_IN_CI = {
                      'test_pass25_guards', 'test_plugin_registration', 'test_qt_overlay_packaging',
                      'test_volume_benchmark_adapter3', 'test_windows_wheel_matrix'),
                     'not yet checked in CI\'s environment (consolidated plan, Organization)'),
+    'test_hot_swap_linux_native': 'Linux-only native ptrace controls (C compiler, static libc, ptrace); not yet checked '
+                                  'in CI\'s environment (W7)',
 }
 # Contract modules that stay local until their publication; a checkout may lack them.
 UNPUBLISHED = {'test_wheel_index': 'W11 index tooling, published with W11 on approval (D2)'}
