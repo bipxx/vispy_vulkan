@@ -1,0 +1,253 @@
+{
+  "comparison": {
+    "criteria": {
+      "additive_reorder": "exact",
+      "first_layer_transition": "exact",
+      "opacity_mutation": "exact",
+      "removal_screenshot": "exact",
+      "volume_attenuated_mip": "exact",
+      "volume_iso": "exact",
+      "volume_translucent_step": "exact"
+    },
+    "smooth_line": "tools.smooth_line_parity.smooth_line_difference"
+  },
+  "errors": {},
+  "fixtures": {
+    "first_layer_transition": {
+      "criterion": "exact",
+      "expanded_shaders": {
+        "file": "first_layer_transition.shaders.json",
+        "sha256": "37063e553eb3ac3ddfe724967b5477680c2958ec2682b3ce92e037a95104ea93"
+      },
+      "filtered_glir": {
+        "file": "first_layer_transition.glir.json",
+        "sha256": "247c6de9546b962842c6091619a94ef712f45384aa245670357b60f3ea8ea923"
+      },
+      "parameters": {
+        "background": [
+          0,
+          0,
+          0,
+          255
+        ],
+        "camera": {
+          "center": [
+            0,
+            14.5,
+            19.5
+          ],
+          "zoom": 4
+        },
+        "case": "first_layer_transition",
+        "controls": {
+          "changed": {
+            "bottom_visible": false
+          },
+          "first": {
+            "bottom_visible": true
+          }
+        },
+        "criterion": "exact",
+        "finish_commands": 1,
+        "inputs_sha256": "a35386456e12d4c1e887538718df86cc60ec59524a8127e3eac48193711722ee",
+        "layer_names": [
+          "bottom",
+          "top"
+        ],
+        "layer_types": [
+          "Image",
+          "Image"
+        ],
+        "native_mro": [
+          "CanvasBackendDesktop",
+          "QtBaseCanvasBackend",
+          "BaseCanvasBackend",
+          "QOpenGLWidget",
+          "QWidget",
+          "QObject",
+          "wrapper",
+          "QPaintDevice",
+          "simplewrapper",
+          "object"
+        ],
+        "ndisplay": 2,
+        "size": [
+          160,
+          120
+        ]
+      },
+      "rgba": {
+        "file": "first_layer_transition.npy",
+        "sha256": "3b581f585be04e4a65840691c78f43dfe08e5795288c5d39eedd1b52c2f39fb5"
+      },
+      "shape": [
+        120,
+        160,
+        4
+      ]
+    }
+  },
+  "provenance": {
+    "capture_source_sha256": "a470d7b5c70c14551d149c673f0e7c01f78d2dee19712bcc9f652645fedbcf86",
+    "cmake": null,
+    "distribution_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-napari\\Lib\\site-packages",
+    "distribution_record_sha256": "455e084c0cb78e19e41c79d08a57d533b07d52b3248c2ebd4b73e80584b067cc",
+    "environment": {
+      "PYTHONPATH": null,
+      "QT_API": "pyqt6",
+      "QT_QPA_PLATFORM": null,
+      "QT_SCALE_FACTOR": "1",
+      "VISPY_PYQT5_SHARE_CONTEXT": "true"
+    },
+    "fixture_source_sha256": "6f855b3d3f02a77eb2bfd3da60bf0920093f015d8d0b17eff8469cbace1c6e57",
+    "installed": {
+      "HeapDict": "1.0.1",
+      "ImageIO": "2.38.1",
+      "Pint": "0.26.1",
+      "PyOpenGL": "3.1.10",
+      "PyQt6": "6.11.0",
+      "PyQt6-Qt6": "6.11.2",
+      "PyQt6_sip": "13.13.0",
+      "PyYAML": "6.0.3",
+      "Pygments": "2.21.0",
+      "QtPy": "2.4.3",
+      "annotated-doc": "0.0.5",
+      "annotated-types": "0.8.0",
+      "app-model": "0.5.1",
+      "asttokens": "3.0.2",
+      "attrs": "26.1.0",
+      "build": "1.6.1",
+      "cachey": "0.2.1",
+      "certifi": "2026.7.22",
+      "charset-normalizer": "3.5.2",
+      "click": "8.5.0",
+      "cloudpickle": "3.1.2",
+      "colorama": "0.4.6",
+      "comm": "0.2.3",
+      "dask": "2026.8.0",
+      "debugpy": "1.8.22",
+      "docstring_parser": "0.18.0",
+      "executing": "2.2.1",
+      "flexcache": "0.3",
+      "flexparser": "0.4",
+      "freetype-py": "2.5.1",
+      "fsspec": "2026.9.0",
+      "hsluv": "5.0.4",
+      "idna": "3.20",
+      "in-n-out": "0.2.1",
+      "ipykernel": "6.31.0",
+      "ipython": "9.17.1",
+      "ipython_pygments_lexers": "1.1.1",
+      "jedi": "0.20.0",
+      "jsonschema": "4.26.0",
+      "jsonschema-specifications": "2025.9.1",
+      "jupyter_client": "8.10.0",
+      "jupyter_core": "5.9.1",
+      "kiwisolver": "1.5.1",
+      "lazy-loader": "0.6",
+      "llvmlite": "0.50.0",
+      "locket": "1.0.0",
+      "lxml": "6.1.3",
+      "magicgui": "0.10.2",
+      "markdown-it-py": "4.2.0",
+      "matplotlib-inline": "0.2.2",
+      "mdurl": "0.1.2",
+      "napari": "0.9.2",
+      "napari-console": "0.1.4",
+      "napari-plugin-engine": "0.2.1",
+      "napari-resources": "1.0.1",
+      "napari-svg": "0.2.1",
+      "nest-asyncio": "1.6.0",
+      "networkx": "3.7",
+      "npe2": "0.9.0",
+      "numba": "0.68.0",
+      "numpy": "2.5.3",
+      "packaging": "26.3",
+      "pandas": "3.0.6",
+      "parso": "0.8.7",
+      "partd": "1.4.2",
+      "pillow": "12.3.0",
+      "platformdirs": "4.12.4",
+      "pooch": "1.9.0",
+      "prompt_toolkit": "3.0.53",
+      "psutil": "7.2.2",
+      "psygnal": "0.16.1",
+      "pure_eval": "0.2.4",
+      "pyconify": "0.2.1",
+      "pydantic": "2.14.0",
+      "pydantic-extra-types": "2.11.1",
+      "pydantic-settings": "2.15.0",
+      "pydantic_core": "2.50.0",
+      "pyproject_hooks": "1.3.3",
+      "python-dateutil": "2.9.0.post0",
+      "python-dotenv": "1.2.4",
+      "pywin32": "312",
+      "pyzmq": "27.2.0",
+      "qtconsole": "5.7.2",
+      "referencing": "0.37.0",
+      "requests": "2.34.2",
+      "rich": "15.0.0",
+      "rpds-py": "2026.9.1",
+      "scikit-image": "0.26.0",
+      "scipy": "1.18.1",
+      "shellingham": "1.5.4",
+      "six": "1.17.0",
+      "stack-data": "0.6.3",
+      "superqt": "0.8.2",
+      "tifffile": "2026.9.20",
+      "tomli_w": "1.2.0",
+      "toolz": "1.2.0",
+      "tornado": "6.5.10",
+      "tqdm": "4.70.1",
+      "traitlets": "5.16.1",
+      "typer": "0.27.3",
+      "typing-inspection": "0.4.4",
+      "typing_extensions": "4.16.0",
+      "tzdata": "2026.5",
+      "urllib3": "2.8.0",
+      "vispy": "0.17.0",
+      "wcwidth": "0.9.2",
+      "wrapt": "2.5.0"
+    },
+    "kind": "upstream",
+    "machine": "AMD64",
+    "napari_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-napari\\Lib\\site-packages\\napari\\__init__.py",
+    "napari_version": "0.9.2",
+    "numpy_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-napari\\Lib\\site-packages\\numpy\\__init__.py",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.12.8",
+    "python_executable": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-napari\\Scripts\\python.exe",
+    "qt_runtime": "6.11.2",
+    "regenerate": "uv venv build/oracle-opengl --python 3.12; uv pip install --python build/oracle-opengl/Scripts/python.exe -r tools/oracle_requirements.txt; build/oracle-opengl/Scripts/python.exe tools/oracle_capture.py --kind upstream --output tests/reference/opengl",
+    "renderer": {
+      "renderer": "NVIDIA GeForce RTX 4090/PCIe/SSE2",
+      "vendor": "NVIDIA Corporation",
+      "version": "4.6.0 NVIDIA 610.88"
+    },
+    "requirements_sha256": "a784b5a5e2b4ea201578acddc41e28e0997275ea2542642148322153cd240ffd",
+    "source_sha256": {
+      "gloo/buffer.py": "68e37b184b74814e0ae7a6f4f754c9f0c0af5b4e6369a60a8357c70da974e138",
+      "gloo/context.py": "6afc97492f65a5e865723535206fb769a1c4b55694d69786123fdee78bef992a",
+      "gloo/glir.py": "a3bb8a75b33f47420e9c100b8a6d81037a2f03c905e6c9f7d8399f4fb2eb8f7c",
+      "gloo/program.py": "4d3ab8e36260f9b5dc50f6aec075b12d642535f3cb8f49bfd4a27056301d5492",
+      "gloo/texture.py": "9f6d5f2e448e02c0ca4d66c65d17ddcdb6c0182bb8f15f1292a427f5a9faf6bc",
+      "gloo/wrappers.py": "73dbb5eb8ca78b2822266d272ffb14db9fcadd7a56512843209187714c9e8dcc"
+    },
+    "upstream_commit": "117b054598f4758b598f4b8f48feea48c11fe7b0",
+    "versions": {
+      "PyOpenGL": "3.1.10",
+      "PyQt6": "6.11.0",
+      "PyQt6-Qt6": "6.11.2",
+      "PyQt6-sip": "13.13.0",
+      "freetype-py": "2.5.1",
+      "hsluv": "5.0.4",
+      "kiwisolver": "1.5.1",
+      "numpy": "2.5.3",
+      "packaging": "26.3",
+      "vispy": "0.17.0"
+    },
+    "vispy_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-napari\\Lib\\site-packages\\vispy",
+    "vispy_version": "0.17.0"
+  },
+  "schema": 1
+}

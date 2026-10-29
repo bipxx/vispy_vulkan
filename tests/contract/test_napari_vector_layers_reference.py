@@ -37,5 +37,30 @@ def test_vector_layer_references_bind_the_fixture_criteria_and_artifacts():
         assert_landmarks(name, np.load(REFERENCE / record['rgba']['file'], allow_pickle=False))
 
 
+def test_tracks_and_shapes_documented_difference_drops_only_the_frame_cap():
+    # Decision D10: like D9, antialiased edges may differ within the bound beyond 1% of the frame; nothing else relaxes.
+    from tools.fixture_napari_vector_layers import BACKGROUND, SIZE
+    from tools.napari_vector_layers_comparison import DOCUMENTED_DIFFERENCE, smooth_line_case_difference
+    from tools.smooth_line_parity import EDGE_TOLERANCE, smooth_line_difference
+    assert DOCUMENTED_DIFFERENCE == {name for name, criterion in CRITERIA.items() if criterion == 'smooth_line'}
+    frame = np.empty((SIZE[1], SIZE[0], 4), np.uint8)
+    frame[...] = BACKGROUND
+    frame[40:44, 8:120] = (240, 240, 240, 255)
+    rows = frame.copy()
+    rows[40, 8:120, :3] -= 12
+    rows[43, 8:120, :3] -= 12
+    assert smooth_line_difference(rows, frame) == '%d pixels differ' % (2 * 112)
+    for name in sorted(DOCUMENTED_DIFFERENCE):
+        assert smooth_line_case_difference(name, rows, frame) is None
+        for label, changed in (('interior', rows.copy()), ('edge difference', rows.copy()), ('alpha', rows.copy())):
+            if label == 'interior':
+                changed[41, 60, 0] -= 1
+            elif label == 'edge difference':
+                changed[40, 60, 0] = frame[40, 60, 0] - EDGE_TOLERANCE - 1
+            else:
+                changed[40, 60, 3] -= 1
+            assert label in smooth_line_case_difference(name, changed, frame), (name, label)
+
+
 # Only the tests are re-exported into CI's curated list (tests/contract/test_napari_plugin_wheel_suite.py).
 __all__ = [name for name in dir() if name.startswith('test_')]
