@@ -1,0 +1,522 @@
+{
+  "comparison": {
+    "criteria": {
+      "instanced_aa0": "edge_pixels",
+      "instanced_aa1": "edge_pixels",
+      "points_aa0": "edge_pixels",
+      "points_aa1": "edge_pixels",
+      "points_scene_zoom2": "edge_pixels"
+    }
+  },
+  "errors": {},
+  "fixtures": {
+    "instanced_aa0": {
+      "capture": {
+        "file": "instanced_aa0.capture.json",
+        "sha256": "05d99940bb3c940d2da75072be14e2163bd3c694e4ac83f17b78f031cafdfd42"
+      },
+      "criterion": "edge_pixels",
+      "expanded_shaders": {
+        "file": "instanced_aa0.shaders.json",
+        "sha256": "d59bc33e7d03ef52337240807b846fef6ffb8030ecd71e48dd337918ec1a9bca"
+      },
+      "filtered_glir": {
+        "file": "instanced_aa0.glir.json",
+        "sha256": "0c28845a1b9e27cbe651e0c5dd66cf1c31254de7eb5ebb2d58b1be003f30f0e3"
+      },
+      "parameters": {
+        "antialias": 0.0,
+        "case": "instanced_aa0",
+        "criterion": "edge_pixels",
+        "edge_color": [
+          1.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "face_color": [
+          0.0,
+          1.0,
+          0.0,
+          1.0
+        ],
+        "inputs_sha256": "60abf50b295bade9435c4b5f3cb93cfa72e5150a7c812ed257714a19c5d8ba7e",
+        "method": "instanced",
+        "rows": [
+          [
+            20,
+            8.0,
+            0.0
+          ],
+          [
+            48,
+            8.0,
+            2.0
+          ],
+          [
+            84,
+            24.0,
+            0.0
+          ],
+          [
+            128,
+            24.0,
+            2.0
+          ]
+        ],
+        "scaling": "fixed",
+        "size": [
+          512,
+          160
+        ],
+        "symbols": [
+          "arrow",
+          "clobber",
+          "cross",
+          "cross_lines",
+          "diamond",
+          "disc",
+          "hbar",
+          "ring",
+          "square",
+          "star",
+          "tailed_arrow",
+          "triangle_down",
+          "triangle_up",
+          "vbar",
+          "x"
+        ],
+        "zoom": 1
+      },
+      "process": {
+        "exit_code": 0
+      },
+      "rgba": {
+        "file": "instanced_aa0.npy",
+        "sha256": "d0e86bdbb5c8ff7a7ed96bd2308b4028ab9fa414b0377d990b1306231d4c136a"
+      },
+      "shape": [
+        160,
+        512,
+        4
+      ]
+    },
+    "instanced_aa1": {
+      "capture": {
+        "file": "instanced_aa1.capture.json",
+        "sha256": "f357795aa8366531be6def7e8354534609c11a1aabda3290645de3a7964ddcfb"
+      },
+      "criterion": "edge_pixels",
+      "expanded_shaders": {
+        "file": "instanced_aa1.shaders.json",
+        "sha256": "d59bc33e7d03ef52337240807b846fef6ffb8030ecd71e48dd337918ec1a9bca"
+      },
+      "filtered_glir": {
+        "file": "instanced_aa1.glir.json",
+        "sha256": "00d7946a613bd68af9f1e184c595521538842a45c53811c6f7e770d46d811a5d"
+      },
+      "parameters": {
+        "antialias": 1.0,
+        "case": "instanced_aa1",
+        "criterion": "edge_pixels",
+        "edge_color": [
+          1.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "face_color": [
+          0.0,
+          1.0,
+          0.0,
+          1.0
+        ],
+        "inputs_sha256": "60abf50b295bade9435c4b5f3cb93cfa72e5150a7c812ed257714a19c5d8ba7e",
+        "method": "instanced",
+        "rows": [
+          [
+            20,
+            8.0,
+            0.0
+          ],
+          [
+            48,
+            8.0,
+            2.0
+          ],
+          [
+            84,
+            24.0,
+            0.0
+          ],
+          [
+            128,
+            24.0,
+            2.0
+          ]
+        ],
+        "scaling": "fixed",
+        "size": [
+          512,
+          160
+        ],
+        "symbols": [
+          "arrow",
+          "clobber",
+          "cross",
+          "cross_lines",
+          "diamond",
+          "disc",
+          "hbar",
+          "ring",
+          "square",
+          "star",
+          "tailed_arrow",
+          "triangle_down",
+          "triangle_up",
+          "vbar",
+          "x"
+        ],
+        "zoom": 1
+      },
+      "process": {
+        "exit_code": 0
+      },
+      "rgba": {
+        "file": "instanced_aa1.npy",
+        "sha256": "3dd44a0c347740ece5184358cfb5f18ec8157cbe7bb210487c2b491d85f292ea"
+      },
+      "shape": [
+        160,
+        512,
+        4
+      ]
+    },
+    "points_aa0": {
+      "capture": {
+        "file": "points_aa0.capture.json",
+        "sha256": "951943273590a8f7581df9e7370cb4d242edfe800b4a2ee4c9922948043c5c62"
+      },
+      "criterion": "edge_pixels",
+      "expanded_shaders": {
+        "file": "points_aa0.shaders.json",
+        "sha256": "9f062dbcd52cfa4923d53c79faffe0ffb62915a103dca8f7a975b9f1605ad4cc"
+      },
+      "filtered_glir": {
+        "file": "points_aa0.glir.json",
+        "sha256": "18b2241f10d4de6e1dbc9756bab5d521a9e9b1cc949b062ae85070ab5e365ccc"
+      },
+      "parameters": {
+        "antialias": 0.0,
+        "case": "points_aa0",
+        "criterion": "edge_pixels",
+        "edge_color": [
+          1.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "face_color": [
+          0.0,
+          1.0,
+          0.0,
+          1.0
+        ],
+        "inputs_sha256": "60abf50b295bade9435c4b5f3cb93cfa72e5150a7c812ed257714a19c5d8ba7e",
+        "method": "points",
+        "rows": [
+          [
+            20,
+            8.0,
+            0.0
+          ],
+          [
+            48,
+            8.0,
+            2.0
+          ],
+          [
+            84,
+            24.0,
+            0.0
+          ],
+          [
+            128,
+            24.0,
+            2.0
+          ]
+        ],
+        "scaling": "fixed",
+        "size": [
+          512,
+          160
+        ],
+        "symbols": [
+          "arrow",
+          "clobber",
+          "cross",
+          "cross_lines",
+          "diamond",
+          "disc",
+          "hbar",
+          "ring",
+          "square",
+          "star",
+          "tailed_arrow",
+          "triangle_down",
+          "triangle_up",
+          "vbar",
+          "x"
+        ],
+        "zoom": 1
+      },
+      "process": {
+        "exit_code": 0
+      },
+      "rgba": {
+        "file": "points_aa0.npy",
+        "sha256": "52cc0d0c9cbf53d80a860278e60cd34498814e3b0175fbeb6174788a6c07bf2f"
+      },
+      "shape": [
+        160,
+        512,
+        4
+      ]
+    },
+    "points_aa1": {
+      "capture": {
+        "file": "points_aa1.capture.json",
+        "sha256": "2b431057dd6cbc0308680456434ff82874329808d739afdb03ab4c3690086ca1"
+      },
+      "criterion": "edge_pixels",
+      "expanded_shaders": {
+        "file": "points_aa1.shaders.json",
+        "sha256": "9f062dbcd52cfa4923d53c79faffe0ffb62915a103dca8f7a975b9f1605ad4cc"
+      },
+      "filtered_glir": {
+        "file": "points_aa1.glir.json",
+        "sha256": "839e7887bb285b57efce9dd1af0840c101b4d48fcba668cc334c09a8d97700bf"
+      },
+      "parameters": {
+        "antialias": 1.0,
+        "case": "points_aa1",
+        "criterion": "edge_pixels",
+        "edge_color": [
+          1.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "face_color": [
+          0.0,
+          1.0,
+          0.0,
+          1.0
+        ],
+        "inputs_sha256": "60abf50b295bade9435c4b5f3cb93cfa72e5150a7c812ed257714a19c5d8ba7e",
+        "method": "points",
+        "rows": [
+          [
+            20,
+            8.0,
+            0.0
+          ],
+          [
+            48,
+            8.0,
+            2.0
+          ],
+          [
+            84,
+            24.0,
+            0.0
+          ],
+          [
+            128,
+            24.0,
+            2.0
+          ]
+        ],
+        "scaling": "fixed",
+        "size": [
+          512,
+          160
+        ],
+        "symbols": [
+          "arrow",
+          "clobber",
+          "cross",
+          "cross_lines",
+          "diamond",
+          "disc",
+          "hbar",
+          "ring",
+          "square",
+          "star",
+          "tailed_arrow",
+          "triangle_down",
+          "triangle_up",
+          "vbar",
+          "x"
+        ],
+        "zoom": 1
+      },
+      "process": {
+        "exit_code": 0
+      },
+      "rgba": {
+        "file": "points_aa1.npy",
+        "sha256": "848f6d9a9d9a9f45225c74ae3184e1384bbd156d52568f2ca56c267d18fdc15e"
+      },
+      "shape": [
+        160,
+        512,
+        4
+      ]
+    },
+    "points_scene_zoom2": {
+      "capture": {
+        "file": "points_scene_zoom2.capture.json",
+        "sha256": "a4033b1e17c34586cc0d0cde88ea8f2e9c85f13364c6bd405a6d78b59387eb4a"
+      },
+      "criterion": "edge_pixels",
+      "expanded_shaders": {
+        "file": "points_scene_zoom2.shaders.json",
+        "sha256": "e9900ca0d686706569b6bad493d0b2b639286525bdc4fbaf57f421de319feeef"
+      },
+      "filtered_glir": {
+        "file": "points_scene_zoom2.glir.json",
+        "sha256": "0f75fa4c69394cbd9aacacad606dd99314ef154964cff49f14cba66df7a3cea6"
+      },
+      "parameters": {
+        "antialias": 1.0,
+        "case": "points_scene_zoom2",
+        "criterion": "edge_pixels",
+        "edge_color": [
+          1.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "face_color": [
+          0.0,
+          1.0,
+          0.0,
+          1.0
+        ],
+        "inputs_sha256": "60abf50b295bade9435c4b5f3cb93cfa72e5150a7c812ed257714a19c5d8ba7e",
+        "method": "points",
+        "rows": [
+          [
+            20,
+            8.0,
+            0.0
+          ],
+          [
+            48,
+            8.0,
+            2.0
+          ],
+          [
+            84,
+            24.0,
+            0.0
+          ],
+          [
+            128,
+            24.0,
+            2.0
+          ]
+        ],
+        "scaling": "scene",
+        "size": [
+          512,
+          160
+        ],
+        "symbols": [
+          "arrow",
+          "clobber",
+          "cross",
+          "cross_lines",
+          "diamond",
+          "disc",
+          "hbar",
+          "ring",
+          "square",
+          "star",
+          "tailed_arrow",
+          "triangle_down",
+          "triangle_up",
+          "vbar",
+          "x"
+        ],
+        "zoom": 2
+      },
+      "process": {
+        "exit_code": 0
+      },
+      "rgba": {
+        "file": "points_scene_zoom2.npy",
+        "sha256": "379932b2f32b7122dca7cde5a7706373c3d291e0c252a2631abd5772fa37a741"
+      },
+      "shape": [
+        160,
+        512,
+        4
+      ]
+    }
+  },
+  "provenance": {
+    "capture_source_sha256": "e8a7790f5d9014b54763bc0675ebec2fb4b114d1a043a48c8dfedab11cf1992f",
+    "cmake": null,
+    "distribution_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Lib\\site-packages",
+    "distribution_record_sha256": "455e084c0cb78e19e41c79d08a57d533b07d52b3248c2ebd4b73e80584b067cc",
+    "environment": {
+      "PYTHONPATH": null,
+      "QT_API": "pyqt6",
+      "QT_QPA_PLATFORM": null,
+      "QT_SCALE_FACTOR": "1",
+      "VISPY_PYQT5_SHARE_CONTEXT": "true"
+    },
+    "fixture_source_sha256": "0b3e83922b85db21251931bc55d4ffb7ed08ccc611f6e9d5244b8336084ce17e",
+    "kind": "upstream",
+    "machine": "AMD64",
+    "markers_source_sha256": "84990f7b14ff92a4acfcccf39bcc8c788b7c9df76e75e85fc8c4e4e102b119c3",
+    "numpy_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Lib\\site-packages\\numpy\\__init__.py",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.12.8",
+    "python_executable": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Scripts\\python.exe",
+    "qt_runtime": "6.11.2",
+    "regenerate": "uv venv build/oracle-opengl --python 3.12; uv pip install --python build/oracle-opengl/Scripts/python.exe -r tools/oracle_requirements.txt; build/oracle-opengl/Scripts/python.exe tools/oracle_capture.py --kind upstream --output tests/reference/opengl",
+    "renderer": {
+      "renderer": "NVIDIA GeForce RTX 4090/PCIe/SSE2",
+      "vendor": "NVIDIA Corporation",
+      "version": "4.6.0 NVIDIA 610.88"
+    },
+    "requirements_sha256": "a784b5a5e2b4ea201578acddc41e28e0997275ea2542642148322153cd240ffd",
+    "source_sha256": {
+      "gloo/buffer.py": "68e37b184b74814e0ae7a6f4f754c9f0c0af5b4e6369a60a8357c70da974e138",
+      "gloo/context.py": "6afc97492f65a5e865723535206fb769a1c4b55694d69786123fdee78bef992a",
+      "gloo/glir.py": "a3bb8a75b33f47420e9c100b8a6d81037a2f03c905e6c9f7d8399f4fb2eb8f7c",
+      "gloo/program.py": "4d3ab8e36260f9b5dc50f6aec075b12d642535f3cb8f49bfd4a27056301d5492",
+      "gloo/texture.py": "9f6d5f2e448e02c0ca4d66c65d17ddcdb6c0182bb8f15f1292a427f5a9faf6bc",
+      "gloo/wrappers.py": "73dbb5eb8ca78b2822266d272ffb14db9fcadd7a56512843209187714c9e8dcc"
+    },
+    "upstream_commit": "117b054598f4758b598f4b8f48feea48c11fe7b0",
+    "versions": {
+      "PyOpenGL": "3.1.10",
+      "PyQt6": "6.11.0",
+      "PyQt6-Qt6": "6.11.2",
+      "PyQt6-sip": "13.13.0",
+      "freetype-py": "2.5.1",
+      "hsluv": "5.0.4",
+      "kiwisolver": "1.5.1",
+      "numpy": "2.5.3",
+      "packaging": "26.3",
+      "vispy": "0.17.0"
+    },
+    "vispy_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Lib\\site-packages\\vispy",
+    "vispy_version": "0.17.0"
+  },
+  "schema": 1
+}

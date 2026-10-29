@@ -1,0 +1,563 @@
+{
+  "comparison": {
+    "criteria": {
+      "caps": "exact",
+      "degenerate": "exact",
+      "joins": "exact",
+      "px_scale2": "exact",
+      "px_scale3": "exact"
+    }
+  },
+  "errors": {},
+  "fixtures": {
+    "caps": {
+      "capture": {
+        "file": "caps.capture.json",
+        "sha256": "0224dbc800cd071d690424d38cf6dad129859721f5eea79905bd19214838c1d4"
+      },
+      "criterion": "exact",
+      "expanded_shaders": {
+        "file": "caps.shaders.json",
+        "sha256": "c7c7336ad0c9c7ea5a98669743adc41989fa89eb7250ad20066cee8edd6e8ef4"
+      },
+      "filtered_glir": {
+        "file": "caps.glir.json",
+        "sha256": "0aa42a5f603fd806e1ed6ca5d9e0bb17e11b3e63500bf9be2d63bb04386d2419"
+      },
+      "parameters": {
+        "caps": [
+          "none",
+          "round",
+          "triangle in",
+          "triangle out",
+          "square",
+          "|"
+        ],
+        "case": "caps",
+        "color": [
+          0,
+          255,
+          0,
+          255
+        ],
+        "criterion": "exact",
+        "inputs_sha256": "53979852116fc9d86aa39d06e6b2fb64c95bee310ef8a1609bbee7962b61a4c5",
+        "joins": [
+          "round"
+        ],
+        "pixel_scale": 1.0,
+        "polylines": [
+          [
+            [
+              24,
+              10
+            ],
+            [
+              104,
+              10
+            ]
+          ],
+          [
+            [
+              24,
+              24
+            ],
+            [
+              104,
+              24
+            ]
+          ],
+          [
+            [
+              24,
+              38
+            ],
+            [
+              104,
+              38
+            ]
+          ],
+          [
+            [
+              24,
+              52
+            ],
+            [
+              104,
+              52
+            ]
+          ],
+          [
+            [
+              24,
+              66
+            ],
+            [
+              104,
+              66
+            ]
+          ],
+          [
+            [
+              24,
+              80
+            ],
+            [
+              104,
+              80
+            ]
+          ]
+        ],
+        "px_scale": 1,
+        "render_size": [
+          128,
+          96
+        ],
+        "size": [
+          128,
+          96
+        ],
+        "width": 9
+      },
+      "process": {
+        "exit_code": 0
+      },
+      "rgba": {
+        "file": "caps.npy",
+        "sha256": "390416c22d5ca883d6f6c83d31c88bd2d466f3f22265b4f2ca30a7c930812b49"
+      },
+      "shape": [
+        96,
+        128,
+        4
+      ]
+    },
+    "degenerate": {
+      "capture": {
+        "file": "degenerate.capture.json",
+        "sha256": "0b6fbc677cdbba188c431505c5c9e5d7fc610ce14fee6118a6c0f359cc85d590"
+      },
+      "criterion": "exact",
+      "expanded_shaders": {
+        "file": "degenerate.shaders.json",
+        "sha256": "281cbc8af260226627b7396498950b6cfa0e451ac4b228fb054788c31356a462"
+      },
+      "filtered_glir": {
+        "file": "degenerate.glir.json",
+        "sha256": "ea15f37fb1948b1982fe4e7203f67d426630a9c3365659ae1a0c5f3fb83341c8"
+      },
+      "parameters": {
+        "caps": [
+          "round"
+        ],
+        "case": "degenerate",
+        "color": [
+          0,
+          255,
+          0,
+          255
+        ],
+        "criterion": "exact",
+        "inputs_sha256": "c5b3ee79b667dd1baf5452c84a15e795416c28fa08eea54042ca1c5eeaa81966",
+        "joins": [
+          "round"
+        ],
+        "pixel_scale": 1.0,
+        "polylines": [
+          [
+            [
+              16,
+              14
+            ],
+            [
+              110,
+              14
+            ],
+            [
+              16,
+              30.5
+            ]
+          ],
+          [
+            [
+              16,
+              50
+            ],
+            [
+              100,
+              50
+            ],
+            [
+              40,
+              50
+            ]
+          ],
+          [
+            [
+              16,
+              74
+            ],
+            [
+              60,
+              74
+            ],
+            [
+              60,
+              74
+            ],
+            [
+              110,
+              86
+            ]
+          ]
+        ],
+        "px_scale": 1,
+        "render_size": [
+          128,
+          96
+        ],
+        "size": [
+          128,
+          96
+        ],
+        "width": 5
+      },
+      "process": {
+        "exit_code": 0
+      },
+      "rgba": {
+        "file": "degenerate.npy",
+        "sha256": "f273294ff2112efc52cf535cd5425256335b6a0604078eddb2f0fd98673fe6b7"
+      },
+      "shape": [
+        96,
+        128,
+        4
+      ]
+    },
+    "joins": {
+      "capture": {
+        "file": "joins.capture.json",
+        "sha256": "692285cda8dc326323f98e9ee909b034c8bd7df680e03d50f061223387d0a7e8"
+      },
+      "criterion": "exact",
+      "expanded_shaders": {
+        "file": "joins.shaders.json",
+        "sha256": "281cbc8af260226627b7396498950b6cfa0e451ac4b228fb054788c31356a462"
+      },
+      "filtered_glir": {
+        "file": "joins.glir.json",
+        "sha256": "a2d713216a03c2c3b4c03d76fc9dc5d93e0c465f280f7aabfc9ff00a01168b5f"
+      },
+      "parameters": {
+        "caps": [
+          "round"
+        ],
+        "case": "joins",
+        "color": [
+          0,
+          255,
+          0,
+          255
+        ],
+        "criterion": "exact",
+        "inputs_sha256": "b28727c8767b61d938114c0b9b9606bba7e86aa443f5e7f17bad8683a69298dd",
+        "joins": [
+          "miter",
+          "round",
+          "bevel"
+        ],
+        "pixel_scale": 1.0,
+        "polylines": [
+          [
+            [
+              16,
+              8
+            ],
+            [
+              52,
+              8
+            ],
+            [
+              52,
+              28
+            ],
+            [
+              100,
+              12
+            ]
+          ],
+          [
+            [
+              16,
+              38
+            ],
+            [
+              52,
+              38
+            ],
+            [
+              52,
+              58
+            ],
+            [
+              100,
+              42
+            ]
+          ],
+          [
+            [
+              16,
+              68
+            ],
+            [
+              52,
+              68
+            ],
+            [
+              52,
+              88
+            ],
+            [
+              100,
+              72
+            ]
+          ]
+        ],
+        "px_scale": 1,
+        "render_size": [
+          128,
+          96
+        ],
+        "size": [
+          128,
+          96
+        ],
+        "width": 7
+      },
+      "process": {
+        "exit_code": 0
+      },
+      "rgba": {
+        "file": "joins.npy",
+        "sha256": "b58df094a252ded66008b35f9e4d02b989046beb6726f46fbf0eff55193e90fb"
+      },
+      "shape": [
+        96,
+        128,
+        4
+      ]
+    },
+    "px_scale2": {
+      "capture": {
+        "file": "px_scale2.capture.json",
+        "sha256": "4a38d8e32d96e8ddd7aaca01ce34549a9fb4d3987806f20291b8e41699266768"
+      },
+      "criterion": "exact",
+      "expanded_shaders": {
+        "file": "px_scale2.shaders.json",
+        "sha256": "5b0b0923c5fc675ca88d1fe3d79e23597f90165ee08cbcfac3860201177effbb"
+      },
+      "filtered_glir": {
+        "file": "px_scale2.glir.json",
+        "sha256": "8eadcf89145ee20e42f68072d7cdfe65df08f63578a6b4ac474a825361cc3126"
+      },
+      "parameters": {
+        "caps": [
+          "round"
+        ],
+        "case": "px_scale2",
+        "color": [
+          0,
+          255,
+          0,
+          255
+        ],
+        "criterion": "exact",
+        "inputs_sha256": "cd3f54fd641c34671f3c2eded836916744b48d2eb9a44c361bdc65cc9a7d3ee5",
+        "joins": [
+          "round"
+        ],
+        "pixel_scale": 2.0,
+        "polylines": [
+          [
+            [
+              16,
+              70
+            ],
+            [
+              40,
+              22
+            ],
+            [
+              64,
+              70
+            ],
+            [
+              88,
+              22
+            ],
+            [
+              112,
+              70
+            ]
+          ]
+        ],
+        "px_scale": 2,
+        "render_size": [
+          256,
+          192
+        ],
+        "size": [
+          128,
+          96
+        ],
+        "width": 5
+      },
+      "process": {
+        "exit_code": 0
+      },
+      "rgba": {
+        "file": "px_scale2.npy",
+        "sha256": "a47ba7aa9a5899b351e316ec1abf739ce9306fed3cb2eff03f9d63424a91bae6"
+      },
+      "shape": [
+        192,
+        256,
+        4
+      ]
+    },
+    "px_scale3": {
+      "capture": {
+        "file": "px_scale3.capture.json",
+        "sha256": "064a7b9630bf8a95976e0f41fe80a03a03c828fbf385976298472fd1e5cd44ec"
+      },
+      "criterion": "exact",
+      "expanded_shaders": {
+        "file": "px_scale3.shaders.json",
+        "sha256": "5b0b0923c5fc675ca88d1fe3d79e23597f90165ee08cbcfac3860201177effbb"
+      },
+      "filtered_glir": {
+        "file": "px_scale3.glir.json",
+        "sha256": "ceff1c561751ff776b55d241f7b002d45bc0cf9844ac2b8277b199994197a82f"
+      },
+      "parameters": {
+        "caps": [
+          "round"
+        ],
+        "case": "px_scale3",
+        "color": [
+          0,
+          255,
+          0,
+          255
+        ],
+        "criterion": "exact",
+        "inputs_sha256": "cd3f54fd641c34671f3c2eded836916744b48d2eb9a44c361bdc65cc9a7d3ee5",
+        "joins": [
+          "round"
+        ],
+        "pixel_scale": 3.0,
+        "polylines": [
+          [
+            [
+              16,
+              70
+            ],
+            [
+              40,
+              22
+            ],
+            [
+              64,
+              70
+            ],
+            [
+              88,
+              22
+            ],
+            [
+              112,
+              70
+            ]
+          ]
+        ],
+        "px_scale": 3,
+        "render_size": [
+          384,
+          288
+        ],
+        "size": [
+          128,
+          96
+        ],
+        "width": 5
+      },
+      "process": {
+        "exit_code": 0
+      },
+      "rgba": {
+        "file": "px_scale3.npy",
+        "sha256": "f19fbfc20823414fa96eb14eeabd592fcfea3fac8b4a2d0e518077a86e5a7276"
+      },
+      "shape": [
+        288,
+        384,
+        4
+      ]
+    }
+  },
+  "provenance": {
+    "capture_source_sha256": "4d9d282fcf34cbbdab7d3b1e82584fbeb1ed4763e0dea0ffeec52d9376cae082",
+    "cmake": null,
+    "distribution_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Lib\\site-packages",
+    "distribution_record_sha256": "455e084c0cb78e19e41c79d08a57d533b07d52b3248c2ebd4b73e80584b067cc",
+    "environment": {
+      "PYTHONPATH": null,
+      "QT_API": "pyqt6",
+      "QT_QPA_PLATFORM": null,
+      "QT_SCALE_FACTOR": "1",
+      "VISPY_PYQT5_SHARE_CONTEXT": "true"
+    },
+    "fixture_source_sha256": "c243fe2adcf5328e6f3aba4f15d0ca413d18ebb85e853532d58c1a3d9cb01f30",
+    "kind": "upstream",
+    "line_source_sha256": "027dde892f0590da192168481d227f8654a40e199c05b89ba0615f79edcaeec6",
+    "machine": "AMD64",
+    "numpy_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Lib\\site-packages\\numpy\\__init__.py",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.12.8",
+    "python_executable": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Scripts\\python.exe",
+    "qt_runtime": "6.11.2",
+    "regenerate": "uv venv build/oracle-opengl --python 3.12; uv pip install --python build/oracle-opengl/Scripts/python.exe -r tools/oracle_requirements.txt; build/oracle-opengl/Scripts/python.exe tools/oracle_capture.py --kind upstream --output tests/reference/opengl",
+    "renderer": {
+      "renderer": "NVIDIA GeForce RTX 4090/PCIe/SSE2",
+      "vendor": "NVIDIA Corporation",
+      "version": "4.6.0 NVIDIA 610.88"
+    },
+    "requirements_sha256": "a784b5a5e2b4ea201578acddc41e28e0997275ea2542642148322153cd240ffd",
+    "source_sha256": {
+      "gloo/buffer.py": "68e37b184b74814e0ae7a6f4f754c9f0c0af5b4e6369a60a8357c70da974e138",
+      "gloo/context.py": "6afc97492f65a5e865723535206fb769a1c4b55694d69786123fdee78bef992a",
+      "gloo/glir.py": "a3bb8a75b33f47420e9c100b8a6d81037a2f03c905e6c9f7d8399f4fb2eb8f7c",
+      "gloo/program.py": "4d3ab8e36260f9b5dc50f6aec075b12d642535f3cb8f49bfd4a27056301d5492",
+      "gloo/texture.py": "9f6d5f2e448e02c0ca4d66c65d17ddcdb6c0182bb8f15f1292a427f5a9faf6bc",
+      "gloo/wrappers.py": "73dbb5eb8ca78b2822266d272ffb14db9fcadd7a56512843209187714c9e8dcc"
+    },
+    "upstream_commit": "117b054598f4758b598f4b8f48feea48c11fe7b0",
+    "versions": {
+      "PyOpenGL": "3.1.10",
+      "PyQt6": "6.11.0",
+      "PyQt6-Qt6": "6.11.2",
+      "PyQt6-sip": "13.13.0",
+      "freetype-py": "2.5.1",
+      "hsluv": "5.0.4",
+      "kiwisolver": "1.5.1",
+      "numpy": "2.5.3",
+      "packaging": "26.3",
+      "vispy": "0.17.0"
+    },
+    "vispy_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\oracle-opengl\\Lib\\site-packages\\vispy",
+    "vispy_version": "0.17.0"
+  },
+  "schema": 1
+}

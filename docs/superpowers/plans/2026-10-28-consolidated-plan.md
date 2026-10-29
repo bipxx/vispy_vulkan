@@ -73,6 +73,7 @@ unmodified scientific hosts, napari first, run on it with practical parity.
 | D14 | **W5 napari `volume_iso` closes with a small shading rule** (user, 2026-10-29). Pixels whose reference 3x3 neighbourhood is uniform stay exact; at most 0.1% of the frame may differ, each by at most 4 levels. Same module, with CPU negative controls. | 1 of 19,200 pixels differs by 3 levels inside the shaded iso surface: float differences in the hit point or shading normal. The other volume controls match exactly. |
 | D15 | **M08's smooth wide-line cases and the defined-depth case use the smooth-line rule without the frame cap, with exact alpha** (user, 2026-10-29). Aliased cases stay exact. This narrows D5's "everything else stays exact" for these two fixtures. Implemented in `tools/wide_lines_comparison.py`, with CPU negative controls. | On the test wheel with R2's fixes, five cases fail only the 1% cap, which is under 8 pixels in a 32x24 frame: 8-68 edge pixels differ, by at most 19 levels, with interiors and alpha exact. |
 | D16 | **The wide-line reference tests pin both shared-fixture hashes** (user, 2026-10-29): the packets were captured with `tools/fixture_wide_lines.py` `f689a08a`, and the current fixture is `2568d76f`. | A reviewed publication on 2026-10-11 replaced the shared fixture, adding only the depth clear for `depth_occlusion_smooth`, and asked later source contexts to acknowledge it. The tests never did, so every reference check failed on the hash. |
+| D17 | **Markers M02 and M06 close with a documented difference** (user, 2026-10-29, under D4), fixed in the new fixtures before their final capture. M02: uniform pixels exact; at most 0.1% of the frame may differ, only on edge pixels, by any amount. M06: at most 0.5% of pixels may differ by more than 2 levels; every other pixel within 2. | Measured with exact captures first: aliased markers flip 41 edge pixels at exact inside/outside ties on arrow, diamond and tailed_arrow, as in the original native63 failure. The `points` method differs by 1-2 levels on fractional sizes (OpenGL appears to quantize sprite size; truncating to 1/32 explains about 70%), and dense overlap cascades that into 0.24% of pixels. |
 
 No decisions are open.
 
@@ -107,7 +108,7 @@ Diagnostic runs in the exact qualification profile keep the spec budget
 | W2a | W2 residuals: run the 6 `np.row_stack` cases with NumPy 2.4.6, the pairing those suites require, and make the `initialized` suite honour `VISPY_PLUGIN_CANDIDATE_PYTHON` (1 case) | These 7 cases run on the hot-swap stack | **Done** (see Progress). Hot-swap plan, W2 table |
 | W3 | Hot-swap audit gates | Controls reached; the stock baseline passes | **Tooling done** (see Progress). The baseline's dynamic record is clean, but on `444402` its `renderer_gl` gate is UNVERIFIED because of one static GL reference in `gloo/glir.py`; it closes on the fresh build with W15. On the batch test wheel, which carries W15, stock napari reaches `PASS_HOT_SWAP_GATES`. Windows only; W7 needs a Linux observer. W8 must decide how a driver's GL activity inside a native swapchain path counts before selecting native presentation. |
 | W4 | napari families not yet covered: cyclic labels r8/r16, Shapes/Vectors/Tracks (M10, M11), Surface at napari level (a new fixture), overlays (E06, T04), histogram, sized export (Q03, Q06) | Each matches its OpenGL reference, or has a documented difference fixed before capture | Record results in `compat/vispy-compatibility.json`. **Fixtures done** (see Progress): every listed family has an OpenGL reference, and all pass on test wheels carrying R2's fixes (D10-D12). The matrix records them at R2. |
-| W5 | Known defects: M02 and M06 markers, M08 wide lines (16 references; the depth failure is retained), M09 joins, caps and new line fixtures, B03 opacity mutation, H01 screenshot and layer removal with no hidden finish, V04 volume controls | Fixed and admitted. M02 and M06 close with a user-approved documented difference, fixed before re-capture (D4). | V07 and the plane widget belong to W10. V09 timing belongs to W8. M08 covers three residuals. Two are fixed in local test builds and ship with R2: the ends of smooth GL lines (W13 `scatter_axes`, W14 `axes_colorbar`), and the smooth-line fringe behind W4's `tracks` crossing (a minimum coverage, run 234). The third is napari-threedee's smooth 3D manipulator strokes, which keep W10's four render-plane-scheduled cases failing and documented (D8). See W5 findings in Progress. **B03, H01 and V04 have fixtures and pass** (run 237, D13, D14). **M08 passes on the R2 test wheel** under D15 and D16 (run 239). M02/M06 (D4) and M09 remain. |
+| W5 | Known defects: M02 and M06 markers, M08 wide lines (16 references; the depth failure is retained), M09 joins, caps and new line fixtures, B03 opacity mutation, H01 screenshot and layer removal with no hidden finish, V04 volume controls | Fixed and admitted. M02 and M06 close with a user-approved documented difference, fixed before re-capture (D4). | V07 and the plane widget belong to W10. V09 timing belongs to W8. M08 covers three residuals. Two are fixed in local test builds and ship with R2: the ends of smooth GL lines (W13 `scatter_axes`, W14 `axes_colorbar`), and the smooth-line fringe behind W4's `tracks` crossing (a minimum coverage, run 234). The third is napari-threedee's smooth 3D manipulator strokes, which keep W10's four render-plane-scheduled cases failing and documented (D8). See W5 findings in Progress. **B03, H01 and V04 have fixtures and pass** (run 237, D13, D14). **M08 passes on the R2 test wheel** under D15 and D16 (run 239). **M09 passes exactly** on `444402` (run 241). **M02 and M06 pass under D17** on `444402` and the R2 test wheel (run 242). **Done**: every W5 item has a fixture and passes, or is a documented failure (D8). |
 | W6 | Hot-swap rows for PySide6 and CPython 3.11-3.14 | One row per cell passes W2 and W3 | Wheels for 3.10-3.14 exist only at an earlier epoch, so they must be rebuilt at the current source. Admissions use the 23-job CI and a promotion review. **Started** (see Progress): the PySide6 cp312 cell passes the probe's napari and threedee lifecycles. Its gates match PyQt6's, and both pass on the batch test wheel. The in-process scientific and plugin parity harnesses are PyQt6-only. |
 | W7 | WSL lavapipe hot-swap rows | WSL rows pass | Measure the smooth-line bound on lavapipe; 32 was measured on NVIDIA only. |
 | W8 (PERF-1) | Performance report: interaction frame time, large image and volume loads (including V09 timing), presentation path | A measured report against upstream OpenGL, with no speedup claim; the presentation choice is taken from the data (D3) | Native swapchain presentation is allowed only in hot swap. Inputs: the five-pair timings. PR #2 was closed, but its Qt single-present code is live (`src/vispy/app/backends/_qt.py:790-931`). Explain the unattributed Qt expose paints that invalidated the Native65 five-pair timing run (next-batch plan :443, :485, :3502). |
@@ -317,6 +318,33 @@ baseline closes with W15.
     design (D6). Its defined-depth successor passes 3 of 3.
   - On `444402` the smooth cases exceed the edge bound (37-47 levels) until R2's
     line-end fix.
+- **M09 Agg lines** (run `w5-m09-agg-lines-241`). The scene suite's two Agg
+  cases match exactly on the R2 test wheel, so the new
+  `tools/fixture_agg_lines.py` is exact, fixed before capture. Its cases are
+  every vispy 0.17 cap code, miter, round and bevel joins at a right angle and
+  an acute bend, degenerate joins, and `px_scale` 2 and 3. Dry runs corrected
+  the scene twice. Upstream draws nothing for a polyline with a full reversal
+  or a repeated vertex, and the landmarks record that. Neither the canvas dpi
+  nor a larger render size scales line width, so the scale cases use
+  `px_scale`. All five match exactly on `444402` and on the R2 test wheel
+  (`tests/reference/agg-lines-opengl`,
+  `tests/parity/test_agg_lines_parity.py`).
+- **M02 and M06 markers** (run `w5-markers-measure-242`).
+  - The marker-extension suites pass as admitted. The serialized packet matches
+    exactly, 19 of 19. The original and corrected suites fail only on their
+    unadmitted OpenGL captures, which the serialized packet supersedes.
+  - The old native63 harnesses were not re-run. New repository fixtures took
+    their place, first captured exactly to measure:
+    `tools/fixture_markers_all_symbols.py`, with all 15 symbols, sizes 8 and
+    24, edges 0 and 2, both methods, antialiasing 0 and 1, and scene scaling;
+    and `tools/fixture_markers_million.py`, with one million fixed-seed markers
+    in both methods.
+  - Experiments on the `points` method: draw order and integer or eighth-pixel
+    sizes match exactly. Computing `gl_PointCoord` from the fragment position
+    changes nothing. Truncating the sprite size to 1/32 px explains about 70%,
+    so OpenGL quantizes fractional sprite sizes by an exact rule still unknown
+    (backlog).
+  - Under D17 both packets pass on `444402` and on the R2 test wheel.
 
 **W1, W5 smooth line ends and W15, batched** on 2026-10-28, run
 `w1-w5-native-batch-227`, with a local test wheel `7ad85601...`.
@@ -474,10 +502,9 @@ H01 and V04.
 ## Order
 
 1. R1's instrumentation runs alongside everything below.
-2. The rest of W5: M02/M06 (D4) and M09. W4's fixtures and W5's B03, H01, V04
-   and M08 are done; D8 and D10-D16 are decided. The smooth line ends, the
-   minimum smooth coverage and the Qt canvas release are fixed in local test
-   builds and ship with R2.
+2. W4's fixtures and all of W5 are done; D8 and D10-D17 are decided. The
+   smooth line ends, the minimum smooth coverage and the Qt canvas release are
+   fixed in local test builds and ship with R2.
 3. W6 and W7.
 4. W8.
 5. W15 and R2 (fresh release build), then W11 at the release and W12 on approval.
