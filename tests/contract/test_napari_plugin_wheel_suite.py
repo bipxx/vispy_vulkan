@@ -232,11 +232,6 @@ def test_plugin_qt_suites_compare_frames_with_the_smooth_line_criterion(name):
     assert 'array_equal(image' not in source
 
 
-# CI's curated test list is pinned (compat/qualification-ci.json), so the hot-swap gate tests run through this module.
-from test_hot_swap_policy import *  # noqa: E402,F401,F403
-from test_napari_vector_layers_reference import *  # noqa: E402,F401,F403
-from test_napari_layer_families_reference import *  # noqa: E402,F401,F403
-from test_napari_layer_controls_reference import *  # noqa: E402,F401,F403
-from test_wide_lines_comparison import *  # noqa: E402,F401,F403
-from test_agg_lines_reference import *  # noqa: E402,F401,F403
-from test_markers_d17_reference import *  # noqa: E402,F401,F403
+# CI's curated test list is pinned (compat/qualification-ci.json) until R2, so the curated contract modules
+# (tests/contract/curated_contracts.py) run through this module.
+from curated_contracts import *  # noqa: E402,F401,F403
