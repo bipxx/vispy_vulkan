@@ -1,5 +1,22 @@
 # Smooth-line mechanism investigation
 
+2026-10-23 scope update (historical; superseded by the smooth-line criterion,
+`tools/smooth_line_parity.py`, merged in PR #25 on 2026-10-28, and by decisions
+D5 and D9 of the consolidated plan): the user explicitly relaxed extreme
+rasterizer parity.
+The following historical exact-reference investigation remains evidence, not a
+requirement to reproduce every driver edge pixel before shipping useful lines.
+Implementation now uses the existing generated ABI2 consumer with an explicit
+`SmoothAnalytic` policy: a butt-ended rectangle with separable one-pixel edge
+coverage, fractional widths and alpha modulation after the original fragment.
+This is an approximation of single-sample GL smoothing. Exact-reference and
+multisample policies remain unsupported rather than silently substituted.
+Clipping, interpolation, fragment helpers, depth and resource ownership continue
+through the existing consumer. Validate representative rendered lines and the
+previously blocked axes/colorbar workflow before declaring this gap closed.
+As of 2026-10-23, the source was under validation, and Native66 receipts
+described the prior build.
+
 The required axes/colorbar scene still fails because the generated line consumer
 honestly refuses smooth coverage. The shipping renderer remains unchanged until
 a real mechanism passes the original quality, lifetime, state and budget gates.
