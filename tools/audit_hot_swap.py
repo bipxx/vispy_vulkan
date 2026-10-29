@@ -1,10 +1,12 @@
 # SPDX-License-Identifier: AGPL-3.0-only
 """Hot-swap audit: run a host scenario with stock hosts and only vispy replaced, and assess the hot-swap gates.
 
-The child runs tools/hot_swap/probe.py (attributing audit hook) under tools/hot_swap/windows_observer.py, a
-derived copy of the strict debugger-based observer that records host GL lookups and queries instead of
-terminating. The strict no-OpenGL audit (tools/audit_no_opengl.py, tools/no_opengl/) is not modified; a
-hot-swap result never qualifies a strict row. See docs/hot-swap-gates.md.
+The child runs tools/hot_swap/probe.py (attributing audit hook) under a derived copy of the strict debugger-based
+observer that records host GL lookups and queries instead of terminating: tools/hot_swap/windows_observer.py on
+Windows, and on Linux x86-64 tools/hot_swap/linux_observer.py with the compiled derived collectors given by
+--native-auditor and --native-debugger (both required: the auditor alone cannot pass). The strict no-OpenGL audit
+(tools/audit_no_opengl.py, tools/no_opengl/) is not modified; a hot-swap result never qualifies a strict row.
+See docs/hot-swap-gates.md.
 
 Exit status: 0 PASS_HOT_SWAP_GATES, 1 FAIL, 2 UNVERIFIED, 3 a tool or usage error (a TOOL_ERROR report is still
 written when the output path is usable).
@@ -60,11 +62,19 @@ def run(args):
     environment = os.environ.copy()
     for key in ('PYTHONPATH', 'PYTHONHOME', 'PYTHONOPTIMIZE'):
         environment.pop(key, None)
-    if sys.platform != 'win32':
-        raise RuntimeError('The hot-swap native observer is Windows-only; Linux rows need a separate observer.')
-    from tools.hot_swap.windows_observer import trace
-    native = trace(command, environment=environment, cwd=report_path.parent, log=report_path.with_suffix('.process.log'),
-                   timeout=args.timeout)
+    if sys.platform == 'win32':
+        from tools.hot_swap.windows_observer import trace
+        native = trace(command, environment=environment, cwd=report_path.parent,
+                       log=report_path.with_suffix('.process.log'), timeout=args.timeout)
+    elif sys.platform.startswith('linux'):
+        if not (getattr(args, 'native_auditor', None) and getattr(args, 'native_debugger', None)):
+            raise RuntimeError('Linux runs need --native-auditor and --native-debugger: the auditor alone cannot pass')
+        from tools.hot_swap.linux_observer import trace
+        native = trace(command, auditor=args.native_auditor, environment=environment, cwd=report_path.parent,
+                       log=report_path.with_suffix('.process.log'), trace_path=report_path.with_suffix('.loader.tsv'),
+                       timeout=args.timeout, debugger=args.native_debugger)
+    else:
+        raise RuntimeError('The hot-swap native observer supports Windows x64 and Linux x86-64 only.')
     child = read_worker(worker)
     succeeded = native['process_exit'] == 0 and child.get('status') == 'PASS_SCENARIO'
     roots = origin_roots(child.get('vispy_origin'))
@@ -86,6 +96,7 @@ def run(args):
             'worker_error': child.get('error'), 'vispy_origin': child.get('vispy_origin'),
             'script': str(args.script), 'script_sha256': hashlib.sha256(args.script.read_bytes()).hexdigest(),
             'gates': gates, 'native_coverage': native['coverage'], 'native_errors': native.get('errors', []),
+            'native_tools': {key: native[key] for key in ('auditor_sha256', 'debugger_sha256') if key in native},
             'gl_modules_present': child.get('gl_modules_present'),
             'worker_report_sha256': hashlib.sha256(worker.read_bytes()).hexdigest() if worker.exists() else None}
 
@@ -103,6 +114,9 @@ def main():
     parser.add_argument('--script', type=Path, required=True, help='host scenario script to run')
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--timeout', type=float, default=180)
+    parser.add_argument('--native-auditor', type=Path,
+                        help='Linux: compiled tools/hot_swap/loader_audit_linux.c (LD_AUDIT module)')
+    parser.add_argument('--native-debugger', type=Path, help='Linux: compiled tools/hot_swap/debugger_linux.c')
     parser.add_argument('arguments', nargs=argparse.REMAINDER)
     args = parser.parse_args()
     args.arguments = [a for a in args.arguments if a != '--']

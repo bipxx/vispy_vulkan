@@ -9,8 +9,9 @@ A static scan of the installed renderer package covers GL code that the dynamic 
 from __future__ import annotations
 
 import ast
-from pathlib import Path, PureWindowsPath
+from pathlib import Path, PurePosixPath, PureWindowsPath
 import re
+import struct
 
 from tools.no_opengl.policy import import_reason, is_gl_entrypoint, library_reason
 
@@ -20,16 +21,26 @@ RENDERER = ('vispy',)
 _TRANSPARENT = re.compile(r'^(?:importlib(?:\.|$)|_frozen_importlib|encodings(?:\.|$)|ctypes(?:\.|$)|runpy$|'
                           r'threading$|pkgutil$|lazy_loader(?:\.|$)|tools\.hot_swap(?:\.|$)|OpenGL(?:\.|$)|'
                           r'PyQt[56]\.QtOpenGL|PySide6\.QtOpenGL|qtpy\.QtOpenGL)')
-# Executing these creates, binds or presents a GL context, or draws. glClearColor/Depth/Stencil and
-# glDrawBuffer* only set state.
-_CONTEXT = re.compile(r'^(?:wgl(?:Create|Make|Swap|Share|Copy|Delete)|eglCreate|eglMakeCurrent|eglSwap|'
-                      r'glX(?:Create|MakeCurrent|MakeContextCurrent|Swap)|OSMesa(?:Create|MakeCurrent)|SwapBuffers$)')
-_DRAW = re.compile(r'^gl(?:Draw(?!Buffer)|MultiDraw|Clear$|ClearBuffer|ClearNamedFramebuffer|ClearTex|Begin$|'
-                   r'CallLists?$|Dispatch|Blit|Accum$|Bitmap$|CopyPixels$|Rect|Eval(?:Mesh|Point)|ArrayElement$)')
-# Python's ctypes/FFI and its extension-module loader act for whichever Python code called them.
-_PYTHON_NATIVE = ('_ctypes', 'libffi', 'python3')
-# Qt's own GL modules and libraries, which an import of a QtOpenGL module loads.
-_QT_GL = re.compile(r'^(?:qtopengl|qt[56]opengl)', re.IGNORECASE)
+# Executing these creates, binds or presents a GL context, or draws: a name that starts with a prefix or equals a name.
+# glClearColor/Depth/Stencil and glDrawBuffer* only set state. The Linux observer's C copy is generated from these
+# tables (tools/hot_swap/derive_linux_observer.py), so they stay plain identifiers.
+CONTEXT_PREFIXES = ('wglCreate', 'wglMake', 'wglSwap', 'wglShare', 'wglCopy', 'wglDelete', 'eglCreate', 'eglMakeCurrent',
+                    'eglSwap', 'glXCreate', 'glXMakeCurrent', 'glXMakeContextCurrent', 'glXSwap', 'OSMesaCreate',
+                    'OSMesaMakeCurrent')
+CONTEXT_NAMES = ('SwapBuffers',)
+DRAW_PREFIXES = ('glDraw', 'glMultiDraw', 'glClearBuffer', 'glClearNamedFramebuffer', 'glClearTex', 'glDispatch', 'glBlit',
+                 'glRect', 'glEvalMesh', 'glEvalPoint')
+DRAW_NAMES = ('glClear', 'glBegin', 'glCallList', 'glCallLists', 'glAccum', 'glBitmap', 'glCopyPixels', 'glArrayElement')
+NOT_DRAW_PREFIXES = ('glDrawBuffer',)
+# Python's ctypes/FFI and its extension-module loader act for whichever Python code called them: _ctypes and libffi,
+# and the interpreter, either python3*.dll and a static Linux python3.x executable, or a shared libpython3.x.so.
+_PYTHON_NATIVE = ('_ctypes', 'libffi', 'python3', 'libpython3')
+# Qt's own GL modules and libraries, which an import of a QtOpenGL module loads (libQt6OpenGL.so.6 on Linux).
+_QT_GL = re.compile(r'^(?:lib)?(?:qtopengl|qt[56]opengl)', re.IGNORECASE)
+# Shared libraries a renderer package can ship, including versioned ELF names (libfoo-1a2b.so.1.3).
+_SHARED = re.compile(r'\.(?:pyd|dll|so)(?:\.\d+)*$', re.IGNORECASE)
+# The static scan's pseudo-import for an ELF image's undefined dynamic symbols: ELF names no library per symbol.
+ELF_SYMBOL_IMPORTS = 'undefined ELF dynamic symbols'
 # A Python GL event explains a native event observed after it, within this many seconds (wall clock).
 _EARLY, _LATE = 0.05, 10.0
 # A Qt library dependency loads while its importing module loads: the nearest preceding Qt binding import, within this
@@ -77,10 +88,11 @@ def _library(path):
 
 def renderer_roots(vispy_origin):
     """The installed renderer's directories: the vispy package and a vendored vispy.libs beside it. The origin comes
-    from the Windows observer's child, so it is parsed as a Windows path on any host that assesses a report."""
+    from the observed child: an absolute POSIX path from the Linux observer, otherwise a Windows path, parsed the same
+    way on any host that assesses a report."""
     if not vispy_origin:
         return []
-    package = PureWindowsPath(vispy_origin)
+    package = (PurePosixPath if str(vispy_origin).startswith('/') else PureWindowsPath)(vispy_origin)
     package = package.parent if package.suffix == '.py' else package
     return [str(package), str(package.parent / 'vispy.libs')]
 
@@ -152,7 +164,8 @@ def correlate(native_events, python_events, roots=()):
 
 def context_or_draw(name):
     """True for an executed GL call that creates, binds or presents a context, or that draws."""
-    return bool(_CONTEXT.match(name) or _DRAW.match(name))
+    return (name in CONTEXT_NAMES or name.startswith(CONTEXT_PREFIXES) or name in DRAW_NAMES
+            or (name.startswith(DRAW_PREFIXES) and not name.startswith(NOT_DRAW_PREFIXES)))
 
 
 def _test_only(relative):
@@ -162,8 +175,9 @@ def _test_only(relative):
 
 def static_scan(package, binary_imports=None):
     """GL references in the installed renderer package: Python imports, import_module/__import__ of GL modules,
-    ctypes loads of GL libraries, and GL libraries or GL entry points in native import tables. Test modules and
-    vispy.testing are listed separately; they never run in a host process."""
+    ctypes loads of GL libraries, and GL libraries or GL entry points in native import tables (for ELF images, the
+    undefined dynamic symbols). Native images are the package's and vispy.libs' .pyd, .dll and .so files, including
+    versioned .so names. Test modules and vispy.testing are listed separately; they never run in a host process."""
     package = Path(package)
     runtime, test_only, errors, files, binaries = [], [], [], 0, 0
     for path in sorted(package.rglob('*.py')):
@@ -194,8 +208,8 @@ def static_scan(package, binary_imports=None):
                 if import_reason(name) or 'QtOpenGL' in name:
                     (test_only if _test_only(relative) else runtime).append(
                         {'file': relative, 'line': node.lineno, 'reference': name})
-    for path in sorted([*package.rglob('*.pyd'), *package.rglob('*.dll'), *package.rglob('*.so'),
-                        *(package.parent / 'vispy.libs').rglob('*.dll')]):
+    for path in sorted(path for root in (package, package.parent / 'vispy.libs') for path in root.rglob('*')
+                       if _SHARED.search(path.name) and path.is_file()):
         binaries += 1
         try:
             imports = (binary_imports or _binary_imports)(path)
@@ -213,8 +227,60 @@ def static_scan(package, binary_imports=None):
 
 
 def _binary_imports(path):
+    """A native image's imports. ELF's DT_NEEDED names libraries but not the symbols taken from them, so an ELF image
+    also lists its undefined dynamic symbols under ELF_SYMBOL_IMPORTS."""
     from tools.no_opengl.dependencies import inspect_binary
-    return inspect_binary(Path(path)).get('imports', [])
+    binary = inspect_binary(Path(path))
+    imports = binary.get('imports', [])
+    if binary.get('format') == 'ELF':
+        imports = [*imports, {'name': ELF_SYMBOL_IMPORTS, 'symbols': elf_undefined_symbols(Path(path).read_bytes())}]
+    return imports
+
+
+def elf_undefined_symbols(data):
+    """The undefined symbols of a little-endian ELF image's dynamic symbol tables, in table order. A malformed image, or
+    a dynamically linked one without a dynamic symbol table, raises ValueError: the scan is then incomplete."""
+    if data[:4] != b'\x7fELF' or data[4:6] not in (b'\x01\x01', b'\x02\x01'):
+        raise ValueError('Only little-endian ELF32/ELF64 is supported')
+    wide = data[4] == 2
+    header, section, symbol = (('<16xHHIQQQIHHHHHH', '<IIQQQQIIQQ', '<IBBHQQ') if wide else
+                               ('<16xHHIIIIIHHHHHH', '<IIIIIIIIII', '<IIIBBH'))
+    _, _, _, _, phoff, shoff, _, _, phentsize, phnum, shentsize, shnum, _ = struct.unpack_from(header, data)
+
+    def within(offset, size):
+        if offset < 0 or size < 0 or offset + size > len(data):
+            raise ValueError('ELF table outside the image')
+
+    within(shoff, shnum * shentsize)
+    if shnum and shentsize != struct.calcsize(section):
+        raise ValueError('Unexpected ELF section header size')
+    sections = [struct.unpack_from(section, data, shoff + index * shentsize) for index in range(shnum)]
+    names, tables = [], 0
+    for _, kind, _, _, offset, size, link, _, _, entry in sections:
+        if kind != 11:  # SHT_DYNSYM
+            continue
+        if entry != struct.calcsize(symbol) or link >= shnum:
+            raise ValueError('Malformed ELF dynamic symbol table')
+        within(offset, size)
+        strings, string_size = sections[link][4], sections[link][5]
+        within(strings, string_size)
+        tables += 1
+        for index in range(1, size // entry):
+            fields = struct.unpack_from(symbol, data, offset + index * entry)
+            name, shndx = (fields[0], fields[3]) if wide else (fields[0], fields[5])
+            if shndx or not name:
+                continue
+            if name >= string_size:
+                raise ValueError('ELF symbol name outside its string table')
+            end = data.find(b'\0', strings + name, strings + string_size)
+            if end < 0:
+                raise ValueError('Unterminated ELF symbol name')
+            names.append(data[strings + name:end].decode('utf-8', 'replace'))
+    if not tables:
+        within(phoff, phnum * phentsize)
+        if any(struct.unpack_from('<I', data, phoff + index * phentsize)[0] == 2 for index in range(phnum)):
+            raise ValueError('Dynamically linked ELF image without a dynamic symbol table')
+    return names
 
 
 def assess_hot_swap(events, *, attribution_complete, native_api_complete, native_loads_complete,

@@ -109,11 +109,11 @@ Diagnostic runs in the exact qualification profile keep the spec budget
 | --- | --- | --- | --- |
 | W1 | `GL_EXTENSIONS` reports `texture_float` only when float32 is filterable | CPU tests for both device answers; a napari float image renders with the fallback forced | No native change is needed: the answer is in `src/vispy/gloo/dawn_parser.py`, and `_dawn.device_info()` already reports `float32_filterable`. That file is pinned by the Tk candidate's runtime inputs, so the change lands with R2, like W15. Batched with W5 and W15 in run `w1-w5-native-batch-227`. Overlaps typed-sampling item B5. napari's fallback (`texture_format=None`) is the path fixture I07 covers. **Validated on the batch test wheel**: both CPU device answers, and the forced-fallback napari render within one level of the float path. |
 | W2a | W2 residuals: run the 6 `np.row_stack` cases with NumPy 2.4.6, the pairing those suites require, and make the `initialized` suite honour `VISPY_PLUGIN_CANDIDATE_PYTHON` (1 case) | These 7 cases run on the hot-swap stack | **Done** (see Progress). Hot-swap plan, W2 table |
-| W3 | Hot-swap audit gates | Controls reached; the stock baseline passes | **Tooling done** (see Progress). The baseline's dynamic record is clean, but on `444402` its `renderer_gl` gate is UNVERIFIED because of one static GL reference in `gloo/glir.py`; it closes on the fresh build with W15. On the batch test wheel, which carries W15, stock napari reaches `PASS_HOT_SWAP_GATES`. Windows only; W7 needs a Linux observer. W8 must decide how a driver's GL activity inside a native swapchain path counts before selecting native presentation. |
+| W3 | Hot-swap audit gates | Controls reached; the stock baseline passes | **Tooling done** (see Progress). The baseline's dynamic record is clean, but on `444402` its `renderer_gl` gate is UNVERIFIED because of one static GL reference in `gloo/glir.py`; it closes on the fresh build with W15. On the batch test wheel, which carries W15, stock napari reaches `PASS_HOT_SWAP_GATES`. W7 adds the Linux observer (run `w7-linux-observer-251`). W8 must decide how a driver's GL activity inside a native swapchain path counts before selecting native presentation. |
 | W4 | napari families not yet covered: cyclic labels r8/r16, Shapes/Vectors/Tracks (M10, M11), Surface at napari level (a new fixture), overlays (E06, T04), histogram, sized export (Q03, Q06) | Each matches its OpenGL reference, or has a documented difference fixed before capture | Record results in `compat/vispy-compatibility.json`. **Fixtures done** (see Progress): every listed family has an OpenGL reference, and all pass on test wheels carrying R2's fixes (D10-D12). The matrix records them at R2. |
 | W5 | Known defects: M02 and M06 markers, M08 wide lines (16 references; the depth failure is retained), M09 joins, caps and new line fixtures, B03 opacity mutation, H01 screenshot and layer removal with no hidden finish, V04 volume controls | Fixed and admitted. M02 and M06 close with a user-approved documented difference, fixed before re-capture (D4). | V07 and the plane widget belong to W10. V09 timing belongs to W8. M08 covers three residuals. Two are fixed in local test builds and ship with R2: the ends of smooth GL lines (W13 `scatter_axes`, W14 `axes_colorbar`), and the smooth-line fringe behind W4's `tracks` crossing (a minimum coverage, run 234). The third is napari-threedee's smooth 3D manipulator strokes, which keep W10's four render-plane-scheduled cases failing and documented (D8). See W5 findings in Progress. **B03, H01 and V04 have fixtures and pass** (run 237, D13, D14). **M08 passes on the R2 test wheel** under D15 and D16 (run 239). **M09 passes exactly** on `444402` (run 241). **M02 and M06 pass under D17** on `444402` and the R2 test wheel (run 242). **Done**: every W5 item has a fixture and passes, or is a documented failure (D8). |
 | W6 | Hot-swap rows for PySide6 and CPython 3.11-3.14 | One row per cell passes W2 and W3 | Wheels for 3.10-3.14 exist only at an earlier epoch, so they must be rebuilt at the current source. Admissions use the 23-job CI and a promotion review. **Started** (see Progress): the PySide6 cp312 cell passes the probe's napari and threedee lifecycles. Its gates match PyQt6's, and both pass on the batch test wheel. The in-process scientific and plugin parity harnesses are PyQt6-only. **Local test wheels done** (2026-10-29, run `w6-abi-hot-swap-248`; the user chose local test builds now). CPython 3.11, 3.13 and 3.14 wheels were built from the R2 branch: the cp312 R2 test wheel with each ABI's two extension modules. All three pass the W3 gates and the probe's napari lifecycle; 3.11 and 3.13 also pass the threedee lifecycle. On 3.14 the threedee lifecycle is blocked upstream: napari-threedee 0.0.29 requires `zarr<3`, and zarr 2 needs a numcodecs older than 0.16, which has no 3.14 wheels. With zarr 3 forced, which fails `pip check`, it passes. Admission waits for R2's fresh build (D1). |
-| W7 | WSL lavapipe hot-swap rows | WSL rows pass | Measure the smooth-line bound on lavapipe; 32 was measured on NVIDIA only. |
+| W7 | WSL lavapipe hot-swap rows | WSL rows pass | Measure the smooth-line bound on lavapipe; 32 was measured on NVIDIA only. **Observer done** (2026-10-29; see Progress): a Linux hot-swap observer derived from the strict LD_AUDIT and ptrace pair. Its WSL native controls pass 20 of 20. Remaining: the Linux napari environments, the probe and gates on a test wheel that carries W15, and the lavapipe smooth-line measurement against Mesa llvmpipe OpenGL. The admitted `bd89a994` has the same `glir.py` PyOpenGL import as `444402`. |
 | W8 (PERF-1) | Performance report: interaction frame time, large image and volume loads (including V09 timing), presentation path | A measured report against upstream OpenGL, with no speedup claim; the presentation choice is taken from the data (D3) | Native swapchain presentation is allowed only in hot swap. Inputs: the five-pair timings. PR #2 was closed, but its Qt single-present code is live (`src/vispy/app/backends/_qt.py:790-931`). Explain the unattributed Qt expose paints that invalidated the Native65 five-pair timing run (next-batch plan :443, :485, :3502). The pinned harness (`tools/benchmark_frames.py`) needs two environment settings: upstream PyQt6 canvases need `VISPY_PYQT5_SHARE_CONTEXT=true`, and only `VISPY_QT_PRESENTATION=native` reports the candidate completions it measures. It also passes `texture_format="rgba8"`, which VisPy expands to the invalid `rgbagba8`, so every RGBA workload fails on both sides. `tools/benchmark_frames_w8.py` runs the harness's code with those two lines fixed and the harness's hash recorded (O6). **Report done** (2026-10-29, run `w8-paced-benchmark-245`): [`docs/performance-report.md`](../../performance-report.md). Resident scenes keep the refresh rate, one refresh later than OpenGL. Full uploads run at about half OpenGL's rate. Partial texture updates run at 3.7 frames per second against 60 (B18). Readback presentation costs about 53 ms per frame at 1920x1080 and over 200 ms at 3840x2160 (B19). The unattributed paints come from desktop activity. Presentation: D18 (native for the hot swap from R2, after the napari parity suites pass under it). |
 | W10 | Oracle fixtures: the threedee drag race; the render-plane fixtures, including V07 and the plane widget; the plugin plan's opaque-volume residual. In W2, 11 cases were blocked by unadmitted references in the threedee, initialized and render-plane suites. | Parity tests pass against new admitted oracle captures | New fixture modules and reference packets beside the retained ones, with an admission naming the oracle defect (D6). These suites draw manipulator lines, so they use the smooth-line criterion (D5). **Partly done** (see Progress): the repaired fixtures exist and D5 is applied. The four render-plane-scheduled cases stay failing and documented (D8). |
 | W11 | Publication: GitHub Release plus a PEP 503 index with hashes, a manylinux build, and the 100 MiB wheel budget | A clean venv installs from the channel and the W2 smoke test passes | Only at the release, after R2 and approval; no preview (D2). Record a new artifact, and never replace the draft release's assets (gaps plan :581-582). Prepared locally (`tools/wheel_index.py`). |
@@ -428,6 +428,41 @@ with stock hosts and `444402`.
   are PyQt6-only harnesses. CPython 3.11, 3.13 and 3.14 need wheels at the current
   source.
 
+**W7 Linux observer** on 2026-10-29, runs `w7-linux-observer-251` and
+`w7-review-252`: W7 steps 1-2, done by an implementation agent and reviewed
+before publication.
+
+- **Derivation.** `tools/hot_swap/derive_linux_observer.py` builds the auditor,
+  debugger and controller from the strict `tools/no_opengl/` Linux pair by exact
+  replacements. No pinned file changed, and a test pins the derived files to the
+  derivation.
+- **What it records.**
+  - The auditor stamps wall time on every record, records the object that
+    requested each load (`la_objsearch`), and records the referencing object of
+    each GL binding.
+  - The debugger names the caller from the return address. Context and draw
+    calls stop the process tree.
+  - Other GL calls are recorded and stepped over past the export's leading
+    `endbr64`, with the trap left armed. An export without `endbr64` fails
+    closed.
+- **Policy.**
+  - The context and draw families became prefix and name tables, which the C
+    copy is generated from. 379 export names of Windows' `opengl32.dll`
+    classify as under the old regexes, so Windows verdicts cannot change.
+  - Added for Linux: `libpython3`, `lib`-prefixed Qt GL libraries, POSIX
+    origins, versioned `.so` files and ELF undefined symbols.
+- **Results.**
+  - In WSL, both collectors build with `-Werror`, and the native controls pass
+    20 of 20: host calls stepped over once, context, draw and alias calls
+    stopped, an export without `endbr64` failing closed, a 32-thread count, and
+    fork, exec and static programs.
+  - All 3,912 GL exports of WSL's glvnd libraries start with `endbr64`.
+  - The local CI check passes 2,522 tests with the new CPU module curated. The
+    Linux-only native module is declared in `NOT_IN_CI`.
+- **Cleanup.** The guest scratch held pytest's `current` symlinks, which the
+  hygiene tool refuses. An audited unlink removed only those 27 links, each
+  pointing inside the same scratch, before both cleanups.
+
 **D18 parity under native presentation** on 2026-10-29, run
 `d18-native-parity-249`: the eleven napari parity suites on the R2 test wheel
 `66e7e9ad`, under readback (the control) and under native presentation.
@@ -610,7 +645,8 @@ H01 and V04.
 2. W4's fixtures and all of W5 are done; D8 and D10-D17 are decided. The
    smooth line ends, the minimum smooth coverage and the Qt canvas release are
    fixed in local test builds and ship with R2.
-3. W6 is done on local test wheels; W7.
+3. W6 is done on local test wheels. W7's observer is done; its environments,
+   rows and lavapipe measurement follow.
 4. W8: the report is done. D18's napari parity under native presentation is done
    (run 249), except the plugin-wheel suite, which runs in the release tree.
 5. W15 and R2 (fresh release build), then W11 at the release and W12 on approval.
