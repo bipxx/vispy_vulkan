@@ -103,6 +103,12 @@ and the loader caller for library loads.
     name.
   - Only Qt's own GL modules and libraries can also be explained by an import of a
     QtOpenGL module.
+  - If nothing else explains one of Qt's own GL libraries, the nearest Qt binding
+    import (PySide6, PyQt6, PyQt5, PySide2) within the preceding second explains
+    it. A Qt library dependency loads while its importing module loads. For
+    example, qtpy imports `PySide6.QtDataVisualization`, whose library links
+    `Qt6OpenGL.dll`. The probe records those binding imports as explanations
+    only, never as GL activity.
   - A renderer explanation wins. An unexplained event is unattributed.
 
 **Static scan.** Python raises no import event for a module that is already loaded, and
@@ -148,6 +154,16 @@ stock Glue hosts (glue-core 1.27.0, glue-qt 0.4.2, glue-vispy-viewers 1.4.0, PyQ
 events (the PyQt6 `QtOpenGL` and `QtOpenGLWidgets` modules and DLLs, and a PyOpenGL
 import), with 0 renderer and 0 unattributed. Like napari, `renderer_gl` is UNVERIFIED
 only because of the static reference.
+
+Run `w6-pyside6-hot-swap-230` added PySide6 6.12.0, with stock hosts and `444402`, and
+re-ran the PyQt6 scenarios with the final tool:
+- **PyQt6** (`gates-pyqt6/`): unchanged. Stock napari has 24 host GL events, 0
+  renderer and 0 unattributed.
+- **PySide6** (`gates-2/`): every control matches its expected verdict. Stock napari
+  creates no GL context or draw. Its dynamic record has 24 host GL events, 0
+  renderer and 0 unattributed, which needs the Qt binding rule above: under PySide6,
+  qtpy's `QtDataVisualization` import loads `Qt6OpenGL.dll`.
+- **PySide6 on the batch test wheel** (`gates-test-wheel/`): both gates pass.
 
 Run `w1-w5-native-batch-227` built a local test wheel, `7ad85601...`. It is `444402` with
 three changes, all pinned runtime files that ship with the fresh release build (R2):

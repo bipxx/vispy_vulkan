@@ -32,6 +32,10 @@ _PYTHON_NATIVE = ('_ctypes', 'libffi', 'python3')
 _QT_GL = re.compile(r'^(?:qtopengl|qt[56]opengl)', re.IGNORECASE)
 # A Python GL event explains a native event observed after it, within this many seconds (wall clock).
 _EARLY, _LATE = 0.05, 10.0
+# A Qt library dependency loads while its importing module loads: the nearest preceding Qt binding import, within this
+# many seconds, explains a Qt GL library loaded with no native caller (e.g. qtpy importing PySide6.QtDataVisualization,
+# whose Qt library links Qt6OpenGL.dll).
+_QT_DEPENDENCY = 1.0
 
 
 def attribute(modules):
@@ -98,9 +102,10 @@ def correlate(native_events, python_events, roots=()):
     attributed (ctypes calls raise no audit event), so it stays unattributed. A load or lookup through Python,
     or with no recorded caller, takes the attribution of the Python events that explain it and were observed
     shortly before it: a ctypes load request for the same library or, for Qt's own GL modules only, an import
-    of a QtOpenGL module; a ctypes lookup of the same name. A renderer explanation wins; unexplained events stay
-    unattributed."""
-    loads, symbols, qt_imports = {}, {}, []
+    of a QtOpenGL module; a ctypes lookup of the same name. A Qt GL library that no Python GL event explains takes the
+    nearest preceding Qt binding import within _QT_DEPENDENCY seconds. A renderer explanation wins; unexplained events
+    stay unattributed."""
+    loads, symbols, qt_imports, qt_bindings = {}, {}, [], []
     for event in python_events:
         side, wall = event.get('attribution', 'unattributed'), event.get('wall')
         if event.get('kind') == 'ctypes_load_request' and gl_library(event.get('path', '')):
@@ -109,10 +114,16 @@ def correlate(native_events, python_events, roots=()):
             symbols.setdefault(event.get('name'), []).append((wall, side))
         elif event.get('kind') == 'python_import' and 'QtOpenGL' in event.get('name', ''):
             qt_imports.append((wall, side))
+        elif event.get('kind') == 'qt_binding_import' and wall is not None:
+            qt_bindings.append((wall, side))
 
     def explained(candidates, wall):
         return {side for when, side in candidates
                 if when is not None and wall is not None and when - _EARLY <= wall <= when + _LATE}
+
+    def nearest_qt_import(wall):
+        earlier = [(when, side) for when, side in qt_bindings if wall is not None and 0 <= wall - when <= _QT_DEPENDENCY]
+        return {max(earlier)[1]} if earlier else set()
 
     result = []
     for event in native_events:
@@ -131,7 +142,7 @@ def correlate(native_events, python_events, roots=()):
             library = _library(event['path'])
             sides = explained(loads.get(library, ()), event.get('wall'))
             if _QT_GL.match(library):
-                sides |= explained(qt_imports, event.get('wall'))
+                sides |= explained(qt_imports, event.get('wall')) or nearest_qt_import(event.get('wall'))
         else:
             sides = explained(symbols.get(event.get('name'), ()), event.get('wall'))
         side = 'renderer' if 'renderer' in sides else 'host' if sides and sides <= {'host'} else 'unattributed'
