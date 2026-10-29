@@ -12,6 +12,47 @@ Large-image update, 2026-10-21: [the full 4096 packet](../../large-image-wheel-r
 
 Large-volume update, 2026-10-22: [the benchmark-data quality packet](../../large-volume-wheel-regressions.md) passes all 24 fresh originals before all 24 installed Native58 candidates. Each has initial/repeat/probe7/probe73 frames at the exact 1024² or 2048² physical viewport on 256³ or 512³ data. Independent inspection checks 251,658,240 whole-frame paired pixels (maximum error 1 under the fixed bound 2, including alpha), all 48 visible-change checks, actual transfer functions/controls/source bytes, stable IDs, original legacy cube geometry, candidate resident/full-update warm work, conserved non-growing memory, 48 actual workers/two parents, eight shutdown zeros and removed environments/uv cache. The [unchanged original manifest](../../../tests/reference/large-volume-opengl/manifest.json) is af7919c6f59dca7addee614a674942697b33d53df3446df0cea422ef980bf2ac. This moves V09 from missing to incomplete for one Native58 cp312/Windows CPython 3.12.8/NumPy 2.4.6/PyQt6/NVIDIA RTX 4090/610.88 cell. All 24 per-workload scientific-admission links now bind the unchanged independent controls rerun in NumPy 2.4.6; see [the admission packet](../../volume-scientific-admissions.md). Performance, other ABIs/bindings/providers/GPUs/drivers, native Linux, Metal and remaining release requirements are unqualified. Historical 185/39 totals remain unchanged.
 
+Native63 image update, 2026-10-22 (historical; Native63 was then the current artifact): The exact Native63 CPython3.12 wheel
+`c4b864e1e9123692ff70d25604815c96110a64f2979563e50f9d81ae436aebca` passes
+all thirteen unchanged image/label controls on Windows, NumPy2.4.6, PyQt6 and
+RTX4090/610.88: 159,744 whole RGBA pixels, zero differences or exclusions.
+The [final admission](../../../build/native63-science-prep-root-1/image-controls-final-admission1.json)
+binds the [independent saved audit](../../../build/native63-science-prep-root-1/image-controls-saved-audit1.json).
+A [fresh evidence join](../../../build/native63-inventory-refresh-root-1/image13-join1.json)
+checks the case/report/raw-capture/process hashes before correcting the stale
+missing entries below. This includes scalar uint8/int8, CPU/GPU scalar and RGBA
+NaNs, RGB3, multiplicative/additive channels, signed/high-ID label remap/paint,
+multiscale level revisions and slice changes. Each updated row remains bounded
+to its stated fixture; this adds no performance, other ABI/binding/platform,
+complete host workflow or full-release qualification. Historical aggregates
+and older epoch evidence remain unchanged.
+
+Native63 ordering update, 2026-10-22 (historical): The two existing U01/U03 fixtures
+have now also passed on the exact Native63 wheel above. Their
+[independent saved audit](../../../build/native63-buffer-ordering-prep-root-1/saved-audit1.json)
+checks all 1,536 RGBA pixels against both analytic expectations and the unchanged
+OpenGL reference, exact filtered/raw command ordering, actual worker identities,
+all eight shutdown zero gauges, 804 source/input pins, and removed environments
+and cache. The reference remains NVIDIA OpenGL595.79; the current candidate is
+NVIDIA Vulkan610.88. U03 deliberately uses the documented internal GLIR queue
+boundary because public Program.draw auto-flushes. These are two bounded current
+cases, not a general layout, full-thirty-input or performance admission.
+
+Native63 marker update, 2026-10-22 (historical): Both public marker methods now pass
+all fourteen retained scenes on the exact Native63 wheel: `points` and
+`instanced`, each with a style grid, three camera-scaling modes, spherical depth,
+color revision and position revision. The
+[independent saved audit](../../../build/native63-marker-prep-root-1/saved-audit1.json)
+checks 172,032 whole RGBA pixels against the unchanged OpenGL595.79 references,
+with zero differences or exclusions. It also checks original landmarks,
+owned-FBO and ordered structured-upload witnesses, six camera-residency cases
+with all six required counters unchanged, all fourteen actual worker/creation
+joins, eight shutdown zero gauges per worker, 811 input/source pins and removed
+environments/cache. The current candidate is Vulkan/RTX4090/610.88, CPython3.12.8
+and NumPy2.4.6. This is small-scene current-artifact qualification; the full
+symbol/antialias grid, million-marker workload, other cells and performance
+requirements remained open then; M02 and M06 have since passed under D17 (2026-10-29).
+
 ## Evidence boundary
 
 The sealed [reference inventory](../../../build/reports/reference-inventory-current-pass-10.json) has **185 admitted captured variants and 39 unresolved attempts**. These are not 185 distinct requirements. The historical native pass23/w7 core report is **247 passed, 8 explicit historical stencil-wrapper deselections, exit 0**. Its command explicitly ignores both required wide-line test files. The eight point identity references were authored afterward and have no candidate result. Glue, DIVE, registered plugin, alternate Qt binding/platform and performance qualification are separate gates.
@@ -30,28 +71,28 @@ The historical base inventory counted 71 scoped rows: 23 passed, 29 incomplete, 
 | --- | --- | --- | --- |
 | I01 | Scalar float32, clim auto/narrow, nonunit gamma and continuous colormap/LUT | passed | Bounded asymmetric small images; not every dtype/control combination. |
 | I02 | Scalar uint16 and signed int16 host-converted images | passed | Does not cover int8 or scalar uint8. |
-| I03 | Scalar uint8 and int8 after host fix_data_dtype | missing | RGBA uint8 does not establish scalar uint8; no int8 fixture. |
-| I04 | RGB(M,N,3) and RGBA(M,N,4) channel handling | incomplete | RGBA is covered by nearest/export/blend frames; RGB3 is missing and dtype/channel combinations are limited. |
+| I03 | Scalar uint8 and int8 after host fix_data_dtype | bounded pass | 2026-10-22: Native63 scalar_uint8_host and scalar_int8_host use public napari image paths, fixed clim/nearest interpolation and exact whole frames. Other dtype/control/cell combinations remain open. Earlier: RGBA uint8 does not establish scalar uint8; no int8 fixture. |
+| I04 | RGB(M,N,3) and RGBA(M,N,4) channel handling | bounded pass | 2026-10-22: Native63 rgb_three and rgba_nan add exact RGB3 and float32 RGBA frames to the retained RGBA cases. The full dtype/channel/interpolation matrix is not qualified. Earlier: RGBA is covered by nearest/export/blend frames; RGB3 is missing and dtype/channel combinations are limited. |
 | I05 | Nearest and linear image interpolation | passed | Small fixed frame only. |
 | I06 | GPU-scaled scalar NaN is transparent | passed | Pinned napari auto/GPU texture path only. |
-| I07 | CPU-scaled scalar NaN maps to lowest clim | missing | No public ImageVisual texture_format=None comparison. |
-| I08 | RGB NaN lowest-clim handling and alpha NaN zero | missing | Finite transparent export does not establish per-channel NaN rules. |
+| I07 | CPU-scaled scalar NaN maps to lowest clim | bounded pass | 2026-10-22: Native63 cpu_scalar_nan uses public ImageVisual texture_format=None, clim10..20, fixed NaN tile and exact original whole frame/lowest-clim landmarks. Earlier: No public ImageVisual texture_format=None comparison. |
+| I08 | RGB NaN lowest-clim handling and alpha NaN zero | bounded pass | 2026-10-22: Native63 rgba_nan covers one float32 RGBA red-channel NaN tile and separate alpha-NaN tile with exact original pixels and numeric landmarks. Other channels/formats/controls remain open. Earlier: Finite transparent export does not establish per-channel NaN rules. |
 | I09 | 4096x4096 scalar/RGBA resident quality and pan | passed | Four full 4096 scalar/RGBA nearest/linear cases, each with baseline/repeat/camera-pan/return, pass for Native58 cp312 against official VisPy 0.17.0/PyQt6 OpenGL on Windows CPython 3.12.8, NumPy 2.4.6, NVIDIA RTX 4090, driver 610.88. All 268,435,456 paired pixels match exact RGBA; analytic checks, persistent targets and 20 resident-zero counters pass. Readback waits are deliberate. Fractional interpolation/zoom, performance/no-wait/long-run memory, native Linux, Metal, other ABI/binding/provider/GPU/driver and remaining release requirements are unqualified. |
 | L01 | Background zero, sparse/high positive categorical IDs | passed | Positive int32 categories 7,65537,16777473 only. |
-| L02 | Negative IDs and exact >2^24 input-to-texture remap witness | incomplete | High-ID color works, but no negative IDs or explicit persisted uploaded remap witness. |
-| L03 | Offset tile updates preserve outside pixels and other content revisions | incomplete | Host edit/refresh has final outside-color evidence; no multiscale inactive-level revision proof. A low-level patch alone cannot establish host tiling. |
-| L04 | Multiscale selection and slice-change invalidation | missing | No independent multiscale image/label levels or dims slice changes. |
-| U01 | Middle-of-buffer set_subdata preserves surrounding attributes | missing | Current buffer snapshots use full set_data; new point patch starts at offset zero. |
+| L02 | Negative IDs and exact >2^24 input-to-texture remap witness | bounded pass | 2026-10-22: Native63 labels_signed_remap covers int32 -7,0,16777216,16777217, distinct actual uploaded label codes, public colormap colors and exact full frame. Other categorical types/host paths remain open. Earlier: High-ID color works, but no negative IDs or explicit persisted uploaded remap witness. |
+| L03 | Offset tile updates preserve outside pixels and other content revisions | bounded pass | 2026-10-22: Native63 public labels_paint_tile verifies the real brush event/upload offset and outside pixels; multiscale cases preserve inactive CPU level contents and actual selected-texture uploads. No independent per-level GPU cache or general tiled-cache contract is claimed. Earlier: Host edit/refresh has final outside-color evidence; no multiscale inactive-level revision proof. A low-level patch alone cannot establish host tiling. |
+| L04 | Multiscale selection and slice-change invalidation | bounded pass | 2026-10-22: Native63 multiscale_level0_retained, multiscale_level1_edit and slice_change use public napari level/slice controls, edits, actual upload witnesses and exact whole frames. Bounded image-level cases only. Earlier: No independent multiscale image/label levels or dims slice changes. |
+| U01 | Middle-of-buffer set_subdata preserves surrounding attributes | bounded pass | 2026-10-22: Native63 pending_middle_subdata uses public Program.draw/VertexBuffer.set_subdata: six middle records at byte offset168/stride28, fixed sentinel/position/outside data, old/new draws before one final read, exact original and analytic whole frame. General mutation/layout combinations remain open. Earlier: Current buffer snapshots use full set_data; new point patch starts at offset zero. |
 | U02 | Pending texture partial/full revisions preserve old draws and rendered FBO contents | passed | Three prewarmed sampler/rendered-texture revision cases only. |
-| U03 | One-flush early DATA,DRAW,SIZE,later DATA matches exact GLIR filtering | incomplete | Resize is before the first public draw, rather than the specified one-flush command sequence. |
+| U03 | One-flush early DATA,DRAW,SIZE,later DATA matches exact GLIR filtering | bounded pass | 2026-10-22: Native63 single_flush_resize_filter preserves raw DATA,DRAW,SIZE,DATA,DRAW and actual filtered DRAW,SIZE,DATA,DRAW in one explicit GLIR flush, with exact original/analytic whole frame. This is the internal queue boundary; public Program.draw auto-flushes. Earlier: Resize is before the first public draw, rather than the specified one-flush command sequence. |
 | U04 | Second-flush buffer update after an old draw has been parsed | passed | Bounded full-buffer revision case. |
 | U05 | Indexed/instanced point source IDs, divisors, constants and ordered revisions | incomplete | Eight upstream references are newer than pass23; no candidate run. Seven public Program.draw and one explicit nonzero-first queue contract. |
 | M01 | Six symbol faces/edges in a fixed point marker scene | passed | Only disc,square,diamond,triangle_up,cross,star; spherical disabled, one size/AA/scaling. |
-| M02 | All inventoried symbols, small/large size, edge width, AA and scaling | passed under D17 | 2026-10-29: `tools/fixture_markers_all_symbols.py` (all 15 symbols, sizes 8/24, edges 0/2, both methods, AA 0/1, scene scaling) passes under the user-approved documented difference D17 on `444402` and the R2 test wheel: aliased edge ties flip at most 0.1% of the frame, on edge pixels only. The native63 originals below stay retained. Earlier: No all-symbol/size/AA/scaling matrix. |
-| M03 | Both marker methods render correctly | incomplete | Composer tests build pipelines for points/instanced but do not render both scientific marker methods. |
-| M04 | Spherical lighting and fragment depth occlusion | incomplete | Spherical variants compile; no independent lighting/depth frame. |
-| M05 | Camera-only no-upload, color-only updates and full position replacement | missing | No scientific marker mutation/camera image corpus. |
-| M06 | One million fixed-seed canonical structured markers | passed under D17 | 2026-10-29: `tools/fixture_markers_million.py` (one million fixed-seed markers, both methods) passes under D17: at most 0.5% of pixels beyond 2 levels (fractional point sizes; equal-depth occlusion in dense overlap). Earlier: Small composer/gloo frames do not establish the 1M workload. |
+| M02 | All inventoried symbols, small/large size, edge width, AA and scaling | passed under D17 | 2026-10-29: `tools/fixture_markers_all_symbols.py` (all 15 symbols, sizes 8/24, edges 0/2, both methods, AA 0/1, scene scaling) passes under the user-approved documented difference D17 on `444402` and the R2 test wheel: aliased edge ties flip at most 0.1% of the frame, on edge pixels only. The native63 originals below stay retained. Earlier: All26-name/48-case originals are Root-admitted:144 whole1280x768RGBA frames/141557760 pixels on official0.17.0/OpenGL610.88. First actual Native63 candidate stops at baseline:42 differing pixels on size24/edge0/AA0 arrow, diamond and tailed_arrow boundaries, maximum channel error229. Proof/failure: build/native63-marker-all-symbols-candidate-prep-root-1/failure-audit1.json. Separate actual GL/native float probes reproduce both saved coverage classifications at all42 pixels; coordinate differences reach15float32ULPs (build/native63-point-coordinate-diagnostic-prep-root-1/analysis1.json). Actual interpolation-basis control reproduces the entire prior float frame exactly; centered interpolation matches original signs only9/42 and is rejected as a fix (basis-analysis2.json in the same prep directory). A later flat-center probe preserves both prior PC frames exactly and measures identical pre-expansion centers at all42 samples (build/native63-point-center-diagnostic-prep-root-1/analysis2.json); correctly oriented direct fragment reconstruction yields zero distance at all42 but matches original signs only14/42, so it is also rejected (build/native63-point-reconstruction-prep-root-1/conclusion2.json). Post-vertex coordinate precision remains unresolved. No production correction is proven. All48 candidate cases remain unqualified; original bytes and exact full-frame/tie-pixel criteria are unchanged. Older bounded marker passes remain separate. |
+| M03 | Both marker methods render correctly | bounded pass | 2026-10-22: Native63 points and instanced each pass all seven retained scientific workflows with exact whole original frames, actual owned-target draws and clean shutdown. Other workloads/cells remain open. Earlier: Composer tests build pipelines for points/instanced but do not render both scientific marker methods. |
+| M04 | Spherical lighting and fragment depth occlusion | bounded pass | 2026-10-22: Native63 spherical_depth passes both methods with the original fixed light, analytic center/rim/front-mesh depth ordering, owned depth FBO and exact whole frame. Broader lighting/depth/camera combinations remain open. Earlier: Spherical variants compile; no independent lighting/depth frame. |
+| M05 | Camera-only no-upload, color-only updates and full position replacement | bounded pass | 2026-10-22: Native63 passes six prewarmed camera cases with unchanged buffer/texture uploads, pipeline/portable-shader misses and point-conversion builds/bytes; four color/position revision cases preserve ordered old/new structured uploads and pending draws before one final read. Small fixed scenes only. Earlier: No scientific marker mutation/camera image corpus. |
+| M06 | One million fixed-seed canonical structured markers | passed under D17 | 2026-10-29: `tools/fixture_markers_million.py` (one million fixed-seed markers, both methods) passes under D17: at most 0.5% of pixels beyond 2 levels (fractional point sizes; equal-depth occlusion in dense overlap). Earlier: Full benchmark-derived18-case/72-frame originals are admitted on official0.17.0/OpenGL RTX4090/610.88, both methods and all updates:149299200 pixels,18 exact repeats, exact million-record/stride56 layouts and42 full56MB payloads. Actual Native63 first baseline compares2073600 pixels:2234 differ,15 exceed the sealed maxerror2, maximum105. Collection stops before warm frames; all18 native cases remain unqualified. Native eight-zero shutdown, package/source/process joins and physical cleanup hold. Original proof: build/native63-million-markers-prep-root-1/original-saved-admission1.json. Failure: build/native63-million-markers-candidate-prep-root-1/failure-audit1.json. All15 failures are near a disc discard boundary in a saved CPU model. Actual unrounded-window reconstruction has an exact stock baseline control but worsens image errors and is rejected (build/native63-million-point-coordinate-prep-root-1/analysis2.json). Six warm stages show zero source-upload/shader/pipeline/point-conversion work in that one diagnostic scene; full production residency and performance remain unproven. A fractional point-coordinate profile is authored but unrun. |
 | M07 | One-pixel endpoints, joins, clipping, varyings, depth and topology | passed | Bounded single-sample exact pinned-driver qualification, not portable coverage of all raster alternatives. |
 | M08 | Wide/smooth lines and depth/flat-varying semantics | passed under D15/D16 on the R2 test wheel | 2026-10-29: smooth cases use the smooth-line rule without the frame cap (D15) and the reference tests pin the reviewed shared-fixture replacement (D16); 17 of 18 pass (the 18th is the retained original depth capture) and the defined-depth successor 3 of 3. On `444402` the smooth cases exceed the edge bound until R2's line-end fix. Earlier: Sixteen valid upstream cases; one original undefined-depth failure retained. Pass23 excludes both wide test files. |
 | M09 | Agg line caps/joins, acute/degenerate joins and DPI-scaled width | passed | 2026-10-29: `tools/fixture_agg_lines.py` covers every cap code, miter/round/bevel joins at right and acute angles, degenerate joins and px_scale 2 and 3; exact on `444402` and the R2 test wheel. Earlier: Width7 at DPI96, one right-angle/default round join and two caps only. |
@@ -77,8 +118,8 @@ The historical base inventory counted 71 scoped rows: 23 passed, 29 incomplete, 
 | T03 | Required DPI1,1.25,1.5 text captures | bounded pass | Numeric DPI96/120/144 all match exactly and produce three distinct frames; this is not monitor-move or physical desktop scale admission. |
 | T04 | Annotation, axis labels, colorbars and scale bars | passed on the R2 test wheel | 2026-10-29: napari scale bar and axes overlays pass the smooth-line criterion and the colorbar passes under D11 (`tools/fixture_napari_layer_families.py`); host annotation placement remains open. Earlier: Rotated standalone text is now covered; axis/colorbar scene remains refused by smooth lines, and scale bars/host annotation placement remain open. |
 | B01 | Opaque/translucent/translucent_no_depth/additive/minimum host modes | passed | Two RGBA layers, first opaque, top opacity.75 only. |
-| B02 | Legal multiplicative host blending | missing | Pinned napari Blending enum and GL factor map expose it; no upstream blocker. |
-| B03 | First-layer behavior, opacity mutation and multichannel additive order | passed | 2026-10-29: `tools/fixture_napari_layer_controls.py`: an opacity change, a first-layer transition and a reordered additive stack match exactly on `444402` and the R2 test wheel. Earlier: Finite export and one two-layer additive case only. |
+| B02 | Legal multiplicative host blending | bounded pass | 2026-10-22: Native63 multiplicative uses two public napari RGBA layers, including spatially varying source alpha/color, with exact whole original frame and independent product-color landmarks. Other opacity/order/cell combinations remain open. Earlier: Pinned napari Blending enum and GL factor map expose it; no upstream blocker. |
+| B03 | First-layer behavior, opacity mutation and multichannel additive order | passed | 2026-10-29: `tools/fixture_napari_layer_controls.py`: an opacity change, a first-layer transition and a reordered additive stack match exactly on `444402` and the R2 test wheel. Earlier: Native63 additive_channels adds three public channel layers with fixed opacities1,.25,.75 and exact ordered whole frame. General first-layer transitions and dynamic opacity mutation remain open. |
 | Q01 | Parentable shown QWidget, show/minimize/resize and genuine device recovery | passed | Bounded PyQt6 Windows lifecycle; not all desktop transitions. |
 | Q02 | Existing-layout reparent, actual WinIdChange and shared-resource lifetimes | incomplete | Headless shared canvases and parent setter pass; actual shown peer close/reparent resource retention missing. |
 | Q03 | Zero/minimized no-submit and welcome/overlay screenshot inclusion | incomplete | 2026-10-29: napari's sized export (`viewer.screenshot(size=...)`) matches exactly (`tools/fixture_napari_layer_families.py`); zero/minimized no-submit and overlay inclusion remain open. Earlier: Minimize/show and child widget construction are tested, without exact no-submit or overlay pixels. |
@@ -104,6 +145,12 @@ The JSON report identifies the exact reference cases and pass23 test nodes for e
 
 ## Next three independent fixture packets
 
+These authoring recipes are retained from the earlier gap audit. As of
+2026-10-22, the image, marker and mesh/layout packets existed; consult the
+Native63 updates and the table above before creating fixtures or repeating
+captures. Remaining work then included qualifying the retained marker/mesh
+cases on the current artifact and closing each stated coverage limit.
+
 These packets follow the runtime point/inactive-resource, compatible SDK/legacy Qt and wide/smooth dependencies in the root plan. Independent upstream authoring can proceed before the candidate implementation. Freeze legal public API setup, data, analytic landmarks and criteria first; preserve all failed attempts and avoid candidate-fitted tolerances.
 
 ### 1. Image scaling, categorical revisions and legal blending
@@ -118,7 +165,7 @@ Proposed files: `tools/fixture_image_extensions.py`, `tools/oracle_image_extensi
 - Use public APIs, actual pending updates and one final dependent readback.
 - Matched candidate environment passes unchanged full-frame criteria and ordered upload evidence.
 
-Dependencies: Independent upstream authoring is ready; candidate requires matched qualified artifact/environment. Level and slice invalidation may expose separate runtime implementation gaps.
+Dependencies (2026-10-22): The thirteen image/label cases now have matched Native63 evidence. General dtype/control, tiled-cache and other-cell requirements remain separately scoped; requalification is required after affected implementation changes.
 
 ### 2. Rendered marker methods, spherical depth and revisions
 
@@ -132,7 +179,7 @@ Proposed files: `tools/fixture_marker_extensions.py`, `tools/oracle_marker_exten
 - Camera changes pixels with zero vertex upload/compiler misses.
 - Persist 1M seed/layout later for mandatory workload benchmark; small frame admission does not close 1M.
 
-Dependencies: Matched native point identity/inactive-input/budget tests precede candidate instanced qualification. Independent upstream capture does not require candidate implementation.
+Dependencies (2026-10-22): The retained fourteen original scenes now have matched Native63 evidence for both methods. General symbol/antialias coverage, the million-marker workload and other artifact/platform cells remain open; independent upstream captures are retained unchanged.
 
 ### 3. Shaded mesh, filters, clipped layout and annotations
 
@@ -161,7 +208,7 @@ Dependencies: Wide/smooth implementation before candidate axis/wireframe qualifi
 
 - Root's eight-phase dependency order is sound; keep full original13-step scope.
 - Wide-line and indexed-point repairs do not establish scientific marker spherical shading/depth or camera/revision behavior.
-- Add required120DPI (1.25), multiline/rotation, legal multiplicative mode, CPU-vs-GPU NaNs, multiscale/slice invalidation, exact one-flush DATA/DRAW/SIZE/DATA and middle-buffer patch as distinct gates.
+- Preserve required120DPI (1.25), multiline/rotation, legal multiplicative mode, CPU-vs-GPU NaNs, multiscale/slice invalidation, exact one-flush DATA/DRAW/SIZE/DATA and middle-buffer patch as distinct gates. On 2026-10-22, Native63 image/ordering evidence covered the stated image and buffer cases; text/layout evidence retains its separately declared artifact scope.
 - All5ABI headless clean consumers are packaging evidence, not alternative Qt binding/platform render proof.
 - Compatible SDK/CRT init repair does not close DIVE screenshot alpha parity or ordinary scatter/application teardown.
 - Public plugin picking is CPU ray/sphere; no GPU ID-pick qualification claim.
