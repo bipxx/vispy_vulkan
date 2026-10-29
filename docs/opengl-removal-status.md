@@ -9,6 +9,19 @@ artifact, environment and three gates. Follow the [strict offline CPython 3.12
 guide](offline-install-cp312.md) for installation. Metal remains experimental;
 native Linux hardware qualification remains separate from WSL software results.
 
+Update, 2026-10-29. The active plan is the
+[consolidated plan](superpowers/plans/2026-10-28-consolidated-plan.md). The
+Windows napari-threedee row still blocks the release: its startup stall loses
+the process's default thread pool, and the code that closes it is not yet
+known (R1). Launches can now record that moment with `tools/pool_watch.py`.
+Stock napari and stock Glue pass both hot-swap gates on the test wheels that
+carry the release patch set. W4 and W5 added independent OpenGL references for
+napari layer families and layer controls, wide and Agg lines, and markers.
+They pass on those test wheels, several under user-approved documented
+differences (D9-D17); four render-plane cases stay documented failures (D8).
+The release (R2) is a fresh build of the current source with that patch set,
+requalified on every mandatory row.
+
 The follow-up [VisPy compatibility work](vispy-compatibility.md) adds source-level
 Tkinter raster presentation and selected GL-shaped state operations through
 GLIR. Twelve integration cases pass on Windows and WSL Linux using existing
