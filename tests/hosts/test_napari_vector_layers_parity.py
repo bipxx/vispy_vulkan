@@ -8,7 +8,7 @@ import numpy as np
 import pytest
 
 from tools.fixture_napari_vector_layers import CASES, CRITERIA, assert_landmarks, render, specification
-from tools.smooth_line_parity import smooth_line_difference
+from tools.napari_vector_layers_comparison import smooth_line_case_difference
 
 ROOT = Path(__file__).resolve().parents[2]
 REFERENCE = ROOT / "tests/reference/napari-vector-layers-opengl"
@@ -58,7 +58,8 @@ def test_napari_vector_layer_matches_opengl(name):
     if CRITERIA[name] == "exact":
         assert np.array_equal(image, reference), (name, int(difference.max()), int(np.any(difference, axis=2).sum()))
     else:
-        reason = smooth_line_difference(image, reference)
+        # Decision D10: tracks and shapes_selected drop only the frame cap, and alpha must match exactly.
+        reason = smooth_line_case_difference(name, image, reference)
         assert reason is None, (name, reason)
     assert_landmarks(name, image)
     assert _dawn.device_info()["backend"] == "Vulkan"
