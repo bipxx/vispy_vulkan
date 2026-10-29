@@ -120,6 +120,21 @@ def test_qt_imports_explain_only_qt_gl_files():
     assert correlate([qt], renderer_import, ROOTS)[0]['attribution'] == 'renderer'
 
 
+def test_a_qt_gl_library_loaded_by_a_non_gl_qt_import_takes_that_import():
+    # qtpy imports PySide6.QtDataVisualization, whose Qt library links Qt6OpenGL.dll (W6, PySide6).
+    loaded = {'kind': 'native_load', 'path': r'C:\env\PySide6\Qt6OpenGL.dll', 'loader_caller': {'path': None},
+              'wall': 10.2}
+    qtpy = [{'kind': 'qt_binding_import', 'name': 'PySide6.QtCore', 'attribution': 'renderer', 'wall': 9.0},
+            {'kind': 'qt_binding_import', 'name': 'PySide6.QtDataVisualization', 'attribution': 'host', 'wall': 10.1}]
+    assert correlate([loaded], qtpy, ROOTS)[0]['attribution'] == 'host'  # the nearest preceding Qt import
+    by_renderer = [{**qtpy[1], 'attribution': 'renderer'}]
+    assert correlate([loaded], by_renderer, ROOTS)[0]['attribution'] == 'renderer'
+    assert correlate([{**loaded, 'wall': 12.0}], qtpy, ROOTS)[0]['attribution'] == 'unattributed'  # too late
+    opengl32 = {**loaded, 'path': r'C:\Windows\System32\opengl32.dll'}
+    assert correlate([opengl32], qtpy, ROOTS)[0]['attribution'] == 'unattributed'  # only Qt's own GL libraries
+    assert assess_hot_swap(qtpy, **COMPLETE)['host_gl_events'] == []  # explanations are not GL activity
+
+
 def test_static_scan_finds_renderer_gl_references_but_not_test_modules(tmp_path):
     package = tmp_path / 'vispy'
     (package / 'gloo' / 'tests').mkdir(parents=True)

@@ -22,6 +22,9 @@ sys.path.insert(0, str(ROOT))
 from tools.hot_swap.policy import attribute, gl_library  # noqa: E402
 from tools.no_opengl.policy import import_reason, is_gl_entrypoint  # noqa: E402
 
+# Imports of these bindings are recorded as explanations only: loading a Qt module can load Qt's own GL library.
+QT_BINDINGS = frozenset({'PySide6', 'PyQt6', 'PyQt5', 'PySide2'})
+
 
 def main():
     parser = argparse.ArgumentParser()
@@ -51,6 +54,8 @@ def main():
         try:
             if name == 'import' and import_reason(values[0]):
                 record('python_import', name=values[0])
+            elif name == 'import' and str(values[0]).split('.')[0] in QT_BINDINGS:
+                record('qt_binding_import', name=values[0])
             elif name == 'ctypes.dlopen' and values[0] is not None and gl_library(str(values[0])):
                 record('ctypes_load_request', path=str(values[0]))
             elif name in ('ctypes.dlsym', 'ctypes.dlsym/handle') and is_gl_entrypoint(str(values[1])):

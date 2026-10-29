@@ -100,7 +100,7 @@ Diagnostic runs in the exact qualification profile keep the spec budget
 | W3 | Hot-swap audit gates | Controls reached; the stock baseline passes | **Tooling done** (see Progress). The baseline's dynamic record is clean, but on `444402` its `renderer_gl` gate is UNVERIFIED because of one static GL reference in `gloo/glir.py`; it closes on the fresh build with W15. On the batch test wheel, which carries W15, stock napari reaches `PASS_HOT_SWAP_GATES`. Windows only; W7 needs a Linux observer. W8 must decide how a driver's GL activity inside a native swapchain path counts before selecting native presentation. |
 | W4 | napari families not yet covered: cyclic labels r8/r16, Shapes/Vectors/Tracks (M10, M11), Surface at napari level (a new fixture), overlays (E06, T04), histogram, sized export (Q03, Q06) | Each matches its OpenGL reference, or has a documented difference fixed before capture | Record results in `compat/vispy-compatibility.json`. |
 | W5 | Known defects: M02 and M06 markers, M08 wide lines (16 references; the depth failure is retained), M09 joins, caps and new line fixtures, B03 opacity mutation, H01 screenshot and layer removal with no hidden finish, V04 volume controls | Fixed and admitted. M02 and M06 close with a user-approved documented difference, fixed before re-capture (D4). | V07 and the plane widget belong to W10. V09 timing belongs to W8. M08 covers two residuals: the ends of smooth GL lines (W13 `scatter_axes`, W14 `axes_colorbar`), fixed in the batch and shipping with R2; and napari-threedee's smooth 3D manipulator strokes, which block W10's four render-plane-scheduled cases (D8). See W5 findings in Progress. |
-| W6 | Hot-swap rows for PySide6 and CPython 3.11-3.14 | One row per cell passes W2 and W3 | Wheels for 3.10-3.14 exist only at an earlier epoch, so they must be rebuilt at the current source. Admissions use the 23-job CI and a promotion review. |
+| W6 | Hot-swap rows for PySide6 and CPython 3.11-3.14 | One row per cell passes W2 and W3 | Wheels for 3.10-3.14 exist only at an earlier epoch, so they must be rebuilt at the current source. Admissions use the 23-job CI and a promotion review. **Started** (see Progress): the PySide6 cp312 cell passes the probe's napari and threedee lifecycles. Its gates match PyQt6's, and both pass on the batch test wheel. The in-process scientific and plugin parity harnesses are PyQt6-only. |
 | W7 | WSL lavapipe hot-swap rows | WSL rows pass | Measure the smooth-line bound on lavapipe; 32 was measured on NVIDIA only. |
 | W8 (PERF-1) | Performance report: interaction frame time, large image and volume loads (including V09 timing), presentation path | A measured report against upstream OpenGL, with no speedup claim; the presentation choice is taken from the data (D3) | Native swapchain presentation is allowed only in hot swap. Inputs: the five-pair timings. PR #2 was closed, but its Qt single-present code is live (`src/vispy/app/backends/_qt.py:790-931`). Explain the unattributed Qt expose paints that invalidated the Native65 five-pair timing run (next-batch plan :443, :485, :3502). |
 | W10 | Oracle fixtures: the threedee drag race; the render-plane fixtures, including V07 and the plane widget; the plugin plan's opaque-volume residual. In W2, 11 cases were blocked by unadmitted references in the threedee, initialized and render-plane suites. | Parity tests pass against new admitted oracle captures | New fixture modules and reference packets beside the retained ones, with an admission naming the oracle defect (D6). These suites draw manipulator lines, so they use the smooth-line criterion (D5). **Partly done** (see Progress): the repaired fixtures exist and D5 is applied. The four render-plane-scheduled cases wait on W5's wide-line fix (D8). |
@@ -313,6 +313,52 @@ baseline closes with W15.
     still fail on the manipulator strokes (D8).
   - W15 and W3: the static scan is clean. Stock napari and stock Glue reach
     `PASS_HOT_SWAP_GATES`, and the controls keep their verdicts.
+
+**W6 started** on 2026-10-28, run `w6-pyside6-hot-swap-230`: the PySide6 cp312 cell
+with stock hosts and `444402`.
+
+- **Environment.** The napari input with PyQt6 replaced by PySide6 6.12.0 (the
+  project's own pin), compiled with the PyQt6 lock's flags and cutoff date. Only
+  `vispy` is replaced. The probe verified that the installed napari, QtPy and
+  napari-threedee are byte-identical to their stock wheels.
+- **W2 lifecycles.** The probe's napari scenario passes (image, overlay and pan,
+  labels edits, 3D volume and export, device loss, close), and so does its
+  threedee scenario (registration, Qt drag, device recovery, retirement, close),
+  on PySide6 6.12.0 and Qt 6.12.0.
+- **W3 gates.** No GL context or draw. The dynamic record has 24 host GL events, 0
+  renderer and 0 unattributed. This needed one tooling fix: under PySide6, qtpy's
+  `QtDataVisualization` import loads `Qt6OpenGL.dll` with no native caller, so the
+  nearest preceding Qt binding import now explains Qt's own GL libraries.
+  `renderer_gl` waits on W15, as for PyQt6. On the batch test wheel both gates pass.
+  `control_gl_context` now uses qtpy, so it runs under either binding. The PyQt6
+  scenarios were re-run with the final tool, and every verdict is unchanged.
+- **Not covered.** The in-process scientific suites and the plugin parity suites
+  are PyQt6-only harnesses. CPython 3.11, 3.13 and 3.14 need wheels at the current
+  source.
+
+**W4 started** on 2026-10-28, run `w4-napari-vector-layers-232`: coverage M11
+(vectors, tracks, a shapes selection).
+
+- **Fixture.** `tools/fixture_napari_vector_layers.py`, with an independent
+  OpenGL capture (`tools/oracle_napari_vector_layers_capture.py`, upstream vispy
+  0.17.0, napari 0.9.2, RTX 4090) in `tests/reference/napari-vector-layers-opengl`.
+  The parity test is `tests/hosts/test_napari_vector_layers_parity.py`.
+- **Criteria, fixed before capture.**
+  - `vectors` is a triangle mesh and must match exactly.
+  - `tracks` (antialiased lines) and `shapes_selected` (meshes, an antialiased
+    selection outline and handles) use the smooth-line criterion.
+  - A dry run in the OpenGL environment caught two scene errors before any
+    capture: a two-point ellipse means centre and radii, and the 0.7 default
+    opacity. Both were fixed.
+- **Results on `444402`**, identical on the batch test wheel.
+  - `vectors` matches exactly.
+  - `tracks` fails. Where tracks cross, OpenGL keeps the first-drawn track on top
+    (napari's translucent blending tests depth), and Dawn draws the later one on
+    top. 30 pixels exceed the bound, by up to 225.
+  - `shapes_selected` fails only the 1% cap. 547 antialiased edge pixels (4.5%)
+    differ, none over the bound (max 13), as with D9.
+- **Next.** The tracks crossing is a renderer depth-semantics question for W5
+  (M08). The shapes selection needs a user decision, as D9 did.
 
 ## Order
 
