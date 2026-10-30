@@ -272,7 +272,7 @@ class DawnGlirParser(BaseGlirParser):
             self.capabilities["gl_version"] = "Dawn " + info["backend"]
 
 
-def read_pixels_dawn(viewport, alpha, mode, out_type="unsigned_byte"):
+def read_pixels_dawn(viewport, alpha, mode, out_type="unsigned_byte", copy=True):
     from .. import gloo
     from vispy import _dawn
 
@@ -298,4 +298,5 @@ def read_pixels_dawn(viewport, alpha, mode, out_type="unsigned_byte"):
     canvas_id = int(getattr(canvas._backend, "_dawn_canvas_id", 0) or 0)
     image = _dawn.read_pixels(canvas_id, x, y, width, height, bool(alpha),
                               out_type in ("float", np.float32), mode)
-    return np.array(image, copy=True)
+    # The native array owns a fresh buffer; copy=False returns it as is (B19).
+    return np.array(image, copy=True) if copy else image

@@ -138,6 +138,31 @@ void byte_output_and_rejections() {
     descriptor.texel_bytes = 8;
     rejects([&] { read_color(bytes, descriptor); }, "component width");
 }
+
+void unorm8_row_copy() {
+    // B19: the row copy equals read_color plus capture_byte for every byte in every channel position.
+    using F = wgpu::TextureFormat;
+    std::vector<uint8_t> row(256 * 4);
+    for (size_t texel = 0; texel < 256; ++texel)
+        for (size_t channel = 0; channel < 4; ++channel)
+            row[texel * 4 + channel] = static_cast<uint8_t>((texel + 67 * channel) & 255);
+    for (auto format : {F::RGBA8Unorm, F::RGBA8UnormSrgb, F::BGRA8Unorm, F::BGRA8UnormSrgb}) {
+        const auto descriptor = capture_format(format);
+        require(unorm8_rgba_rows(descriptor), "8-bit RGBA storage does not take the row copy");
+        for (int channels : {3, 4}) {
+            std::vector<uint8_t> direct(256 * channels), expected(256 * channels);
+            copy_unorm8_rgba_row(row.data(), direct.data(), 256, descriptor.bgra, channels);
+            for (size_t texel = 0; texel < 256; ++texel) {
+                const auto color = read_color(row.data() + texel * 4, descriptor);
+                for (int channel = 0; channel < channels; ++channel)
+                    expected[texel * channels + channel] = capture_byte(color[channel]);
+            }
+            require(direct == expected, "row copy differs from the per-texel conversion");
+        }
+    }
+    for (auto format : {F::R8Unorm, F::RG8Unorm, F::RGBA8Snorm, F::RGBA16Unorm, F::RGBA16Float, F::RGBA32Float})
+        require(!unorm8_rgba_rows(capture_format(format)), "other storage takes the row copy");
+}
 }  // namespace
 
 int main() {
@@ -145,6 +170,7 @@ int main() {
         normalized_channels();
         floating_channels();
         byte_output_and_rejections();
+        unorm8_row_copy();
         std::cout << "readback CPU contracts passed\n";
         return 0;
     } catch (const std::exception& error) {

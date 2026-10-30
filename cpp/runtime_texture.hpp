@@ -445,10 +445,12 @@ inline void apply_texture_data(TextureData& data, const ByteBlob& upload, const 
         }
     }
     else if (data.pixels.empty()) result.assign(total, 0);
-    else {
-        if (data.pixels.size() != total) throw error("resident byte size differs from SIZE allocation");
-        result = data.pixels;
-    }
+    else if (data.pixels.size() != total) throw error("resident byte size differs from SIZE allocation");
+    // A same-dtype patch of a resident shadow is written in place (B18). Every
+    // check has passed by now, so a rejected update leaves the shadow unchanged,
+    // and the DATA handler only patches a revision that nothing else holds.
+    const bool in_place = !mixed && !data.pixels.empty();
+    uint8_t* const target = in_place ? data.pixels.data() : result.data();
     const int patch_w = upload.shape[data.dimensions - 1];
     const int patch_h = data.dimensions >= 2 ? upload.shape[data.dimensions - 2] : 1;
     const int patch_d = data.dimensions == 3 ? upload.shape[0] : 1;
@@ -464,12 +466,12 @@ inline void apply_texture_data(TextureData& data, const ByteBlob& upload, const 
                 for (size_t component = 0; component < static_cast<size_t>(patch_w) * data.channels; ++component) {
                     const double value = storage_value(upload.bytes.data() + source + component * component_bytes,
                                                        upload.dtype, description);
-                    store(result.data() + destination + component * sizeof(double), value);
+                    store(target + destination + component * sizeof(double), value);
                 }
-            } else std::memcpy(result.data() + destination, upload.bytes.data() + source, row_bytes);
+            } else std::memcpy(target + destination, upload.bytes.data() + source, row_bytes);
         }
     }
-    data.pixels = std::move(result);
+    if (!in_place) data.pixels = std::move(result);
     data.dtype = mixed ? "f64" : upload.dtype;
 }
 

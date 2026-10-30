@@ -7,6 +7,7 @@
 #include <cmath>
 #include <cstddef>
 #include <cstdint>
+#include <cstring>
 #include <stdexcept>
 
 // Color read_pixels converts normalized or floating storage to public RGBA.
@@ -125,4 +126,26 @@ inline uint8_t capture_byte(float value) {
     if (!(value > 0.0f)) return 0;
     if (value >= 1.0f) return 255;
     return static_cast<uint8_t>(std::lround(value * 255.0f));
+}
+
+// An 8-bit normalized RGBA or BGRA color read gives each byte v back as
+// capture_byte(v / 255.0f), which is v (readback_contract checks every value),
+// so its rows are copied, swizzled or stripped of alpha without per-texel
+// conversion (B19). Every other storage keeps read_color and capture_byte.
+inline bool unorm8_rgba_rows(const CaptureFormat& format) {
+    return format.storage == CaptureStorage::Unorm8 && format.channels == 4 && format.texel_bytes == 4;
+}
+
+inline void copy_unorm8_rgba_row(const uint8_t* source, uint8_t* destination, size_t width, bool bgra,
+                                 int channels) {
+    if (!bgra && channels == 4) {
+        std::memcpy(destination, source, width * 4);
+        return;
+    }
+    for (size_t texel = 0; texel < width; ++texel, source += 4, destination += channels) {
+        destination[0] = source[bgra ? 2 : 0];
+        destination[1] = source[1];
+        destination[2] = source[bgra ? 0 : 2];
+        if (channels == 4) destination[3] = source[3];
+    }
 }

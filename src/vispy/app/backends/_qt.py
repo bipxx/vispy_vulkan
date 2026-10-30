@@ -992,8 +992,10 @@ class CanvasBackendDesktop(QtBaseCanvasBackend, QWidget):
 
     def _read_dawn_framebuffer(self):
         """Read an independently owned QImage without triggering another draw."""
-        from ...gloo import read_pixels
-        image = read_pixels(alpha=True)
+        from ...gloo.dawn_parser import read_pixels_dawn
+        # The native array is freshly owned and copied into bytes below, so
+        # read_pixels' defensive copy is skipped (B19).
+        image = read_pixels_dawn(None, True, 'color', copy=False)
         height, width, _channels = image.shape
         data = bytes(image.tobytes())
         formats = QtGui.QImage.Format if PYQT6_API else QtGui.QImage

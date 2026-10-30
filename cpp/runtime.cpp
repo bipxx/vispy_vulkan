@@ -8156,10 +8156,17 @@ Readback read_canvas(int canvas_id, int x, int y, int width, int height, bool al
     const size_t components = static_cast<size_t>(width) * height * channels;
     if (floating) result.floating_rgba.resize(components);
     else result.rgba.resize(components);
+    // 8-bit RGBA and BGRA color rows need no per-texel conversion (B19).
+    const bool direct_rows = mode == "color" && !floating && unorm8_rgba_rows(format);
     for (int row = 0; row < height; ++row) {
         int src_row = height - 1 - row + (mode == "stencil" ? y : 0);
         const uint8_t* srcp = mapped + static_cast<size_t>(src_row) * bpr +
                               (mode == "stencil" ? static_cast<size_t>(x) : 0);
+        if (direct_rows) {
+            copy_unorm8_rgba_row(srcp, result.rgba.data() + static_cast<size_t>(row) * width * channels,
+                                 static_cast<size_t>(width), format.bgra, channels);
+            continue;
+        }
         for (int col = 0; col < width; ++col) {
             const auto color = read_color(srcp + static_cast<size_t>(col) * format.texel_bytes, format);
             const size_t offset = (static_cast<size_t>(row) * width + col) * channels;

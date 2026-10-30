@@ -80,6 +80,12 @@ void partial_regions() {
         const size_t position = pixel * 4;
         require(data.pixels[position] == (pixel == 6 ? 255 : 20), "2D patch changed untouched pixel");
     }
+    // B18: a same-dtype patch writes into the resident shadow instead of a copy of it.
+    const auto* resident = data.pixels.data();
+    apply_texture_data(data, blob<uint8_t>({7, 8, 9, 10}, {1, 1, 4}, "u8"), {2, 1});
+    require(data.pixels.data() == resident && data.pixels.size() == 4 * 3 * 4, "same-dtype patch copied the shadow");
+    require(data.pixels[(2 * 4 + 1) * 4] == 7 && data.pixels[(2 * 4 + 1) * 4 + 3] == 10 &&
+            data.pixels[(1 * 4 + 2) * 4] == 255, "in-place patch offset semantics");
     auto before = data.pixels;
     rejects([&] { apply_texture_data(data, blob<uint8_t>({1, 2, 3, 4}, {1, 1, 4}, "u8"), {3, 0}); }, "bounds check");
     require(before == data.pixels, "bad region modified allocation");
