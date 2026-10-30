@@ -18,6 +18,9 @@ named below.
   updates are much slower: 3.7 frames per second against 60. The candidate
   copies the whole texture on the CPU for every partial update, and also on the
   GPU while a frame still uses it. napari's labels painting makes such updates.
+  On the R2 branch, a patch is written into the CPU shadow, and an update while
+  a frame holds the texture moves the shadow instead of copying it (updates
+  below).
 - The port's Windows default presentation, readback, adds about 53 ms to every
   frame of a 1920x1080 canvas and over 200 ms at 3840x2160. With native
   swapchain presentation, a whole resident 3840x2160 frame takes about 2 ms, and
@@ -225,6 +228,26 @@ The change is on the R2 branch and lands with R2. The paced comparison above
 has not been re-run with it. A bug in it was fixed on 2026-10-30: a staged upload was
 marked current before its frame was submitted, so a frame that failed to submit
 left the texture stale.
+
+**Update (2026-10-30, run `perf-profile-261`): the queued case (P3).** After
+P2's pacing, a vsynced paint returns once its frame has retired, and each
+batch retires completed frames first. So a texture updated before a frame's
+draws, as napari updates them, now reuses its revision with no copy, paced,
+unpaced or read back. A texture updated between two draws of one frame still
+gets a new revision, because the first draw holds the old one. A local test
+wheel now moves the old revision's CPU shadow instead of copying it, when
+that revision is already on the GPU: its draw needs only its GPU texture. An
+update of the whole texture copies nothing. On a 4096x4096 RGBA8 texture,
+headless:
+
+| Update between two draws of a frame | Before | After |
+| --- | --- | --- |
+| Eight 64x64 patches | 21.30 ms | 4.08 ms |
+| Full upload | 44.43 ms | 27.32 ms |
+
+What remains is a new 64 MiB GPU texture per frame. A device loss now
+rebuilds a texture from its own CPU shadow. The change is on the R2 branch
+and lands with R2.
 
 ## Readback presentation
 
