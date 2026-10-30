@@ -50,7 +50,7 @@ unmodified scientific hosts, napari first, run on it with practical parity.
 | Strict matrix | 13 of 14 mandatory rows qualified (6 Windows, 7 WSL), bound to `62df5e4c...` and `374a74ea...`. **Windows napari-threedee: PENDING.** DIVE and visbrain are non-mandatory and not admitted. | `compat/no-opengl-matrix.json` |
 | Hot swap | Stock napari works with the current wheel on Windows cp312. Drag-race fix merged (PR #24). Smooth-line criterion merged (PR #25). | `2026-10-28-napari-hot-swap.md` |
 | Startup stall | Mechanism found for the 2026-10-28 dev-environment recurrence: the default thread pool was lost early in startup. The qualification stall's pool state was never captured. The closer is unidentified (PR #26). | `docs/threedee-startup-diagnosis.md` |
-| Performance (W8) | Report done. Resident scenes keep the refresh rate; uploads are slower than OpenGL's, and partial texture updates much slower (B18). Readback presentation costs over 200 ms per 4K frame (B19). The hot swap moves to native presentation at R2, after the napari parity suites pass under it (D18). | `docs/performance-report.md` |
+| Performance (W8) | Report done. Resident scenes keep the refresh rate; uploads are slower than OpenGL's, and partial texture updates much slower (B18). Readback presentation costs over 200 ms per 4K frame (B19). The hot swap moves to native presentation at R2, after the napari parity suites pass under it (D18). B19 and B18's CPU part are fixed on the R2 branch (run `b19-readback-257`). | `docs/performance-report.md` |
 
 ## Decisions
 
@@ -79,7 +79,12 @@ unmodified scientific hosts, napari first, run on it with practical parity.
 | D18 | **The hot swap presents through a native swapchain on Windows, from R2, once the napari parity suites pass under it** (user, 2026-10-29, under D3). GL activity that the audit attributes to a driver's presentation path, outside the renderer, counts as host activity, in the hot-swap profile only. Readback stays the strict no-OpenGL path and is made cheaper (B19). | W8 (`docs/performance-report.md`): at 3840x2160, readback paints are 226 ms apart for a resident image, native paints 2.3 ms. Readback costs about 53 ms per frame even at 1920x1080, and the design forbids interaction that depends on a CPU readback (:631). Stock napari passes both hot-swap gates under each presentation, with no driver GL activity observed. **Parity under native presentation: done** (runs `d18-native-parity-249` and `d8-positioned-255`, R2 test wheel). No test changes outcome between readback and native. Under both, the five in-process napari suites pass 44 of 44, the overlay workflows 5 of 5, the render-plane-scheduled suite 6 of 6 (under D19) and the plugin-wheel suite 5 of 5. Only D6's superseded fixtures fail, and they stop before rendering by design. |
 | D19 | **Lines pass when they are correctly positioned and look right; exact pixels are not required** (user, 2026-10-29: "as long as the lines look correctly positioned and look elegant, then we should be good to go. no need to be exact"). This is a general rule. For W7, WSL lavapipe lines are judged against the admitted NVIDIA references under the smooth-line rule, and Mesa llvmpipe's own smooth-line rasterization is not used as a line oracle. D8 is revised under it. | W7's measurement (run `w7-lavapipe-smooth-254`). The port on lavapipe matches the NVIDIA references within 19 levels on every smooth-line frame. Against llvmpipe OpenGL, 15 of 29 frames exceed 32: line ends, a fringe row, a depth fringe and a missing 1/32 coverage skip, which llvmpipe also shows against NVIDIA. |
 
-No decisions are open.
+Open, for the user:
+
+- **The R1 watcher's replacement.** The in-process pool watcher can run other threads' finalizers (R1).
+- **W7's Linux non-line findings.** The hollow brightest volume block and the 1 px text and overlay offsets appear
+  under Mesa llvmpipe OpenGL as well as under the port on lavapipe. That makes them platform behaviour rather than
+  port defects, but no decision yet says which reference Linux non-line frames are judged against.
 
 The user has already decided, and confirmed on 2026-10-29, that the Windows
 napari-threedee row stays required, so the release waits for R1. On 2026-10-29
@@ -92,8 +97,8 @@ W11 publication and W12 upstream posting each need explicit approval.
 
 | ID | Work | Exit | Needs |
 | --- | --- | --- | --- |
-| R1 (W9) | Windows napari-threedee strict row | A cause and a regression test, then full lifecycle, nine-zero shutdown and all three gates on the release artifact (spec :340-345; status :86-87). A passing replay never closes it (diagnosis :49-50). | Identify the closer. Instrument hot-swap and diagnostic launches and wait for a recurrence. **Instrumentation** (2026-10-29): `tools/pool_watch.py` watches the default thread pool's worker-factory handle and, when it is lost, records the time, the handle's new type and every Python thread's stack. It only queries object types; CPU tests cover the record. Launches enable it with `VISPY_POOL_WATCH=<events.jsonl>`. |
-| R2 | Release assembly: a fresh build of the then-current source (D1) | Every mandatory row requalified on it, final-head CI, promotion review | R1. The fresh source must include run `w4-napari-layer-families-236`'s patch set: run `w1-w5-native-batch-227`'s (W1, W5 smooth line ends, W15), run `w5-fringe-native-234`'s minimum smooth coverage, and the Qt backend's Dawn canvas release fix. Those are pinned runtime files, so the Tk candidate's runtime inputs are renewed with it. The patch set is kept, applied to `main`, on the branch `r2/pending-runtime-patches` (O5). D18 adds the switch of the Windows hot swap to native presentation, with strict no-OpenGL qualification selecting readback explicitly. It applies only after the napari parity suites pass under native presentation on the R2 test wheel. |
+| R1 (W9) | Windows napari-threedee strict row | A cause and a regression test, then full lifecycle, nine-zero shutdown and all three gates on the release artifact (spec :340-345; status :86-87). A passing replay never closes it (diagnosis :49-50). | Identify the closer. Instrument hot-swap and diagnostic launches and wait for a recurrence. **Instrumentation** (2026-10-29): `tools/pool_watch.py` watches the default thread pool's worker-factory handle and, when it is lost, records the time, the handle's new type and every Python thread's stack. It only queries object types; CPU tests cover the record. Launches enable it with `VISPY_POOL_WATCH=<events.jsonl>`. **It crashes Tk processes** (run `b19-readback-257`): with it enabled, three of three Tk test runs ended in a fatal exception 0x80000003 in the watcher's thread while it was garbage-collecting; without it, none did. CPython 3.12 runs a scheduled collection in whichever thread next executes bytecode, so the watcher's 5 ms loop can run Tk's finalizers off Tk's thread, and Qt objects carry the same risk. It is no longer used in Tk launches. How to replace it is open (Decisions). Runs 249 and 255 made their napari launches without it. |
+| R2 | Release assembly: a fresh build of the then-current source (D1) | Every mandatory row requalified on it, final-head CI, promotion review | R1. The fresh source must include run `w4-napari-layer-families-236`'s patch set: run `w1-w5-native-batch-227`'s (W1, W5 smooth line ends, W15), run `w5-fringe-native-234`'s minimum smooth coverage, and the Qt backend's Dawn canvas release fix. Those are pinned runtime files, so the Tk candidate's runtime inputs are renewed with it. The patch set is kept, applied to `main`, on the branch `r2/pending-runtime-patches` (O5). D18 adds the switch of the Windows hot swap to native presentation, with strict no-OpenGL qualification selecting readback explicitly. It applies only after the napari parity suites pass under native presentation on the R2 test wheel. That condition is met (runs 249 and 255). The switch is made at R2 assembly, because selecting readback explicitly edits the pinned strict harness. The branch also carries B19 and B18's CPU part (run `b19-readback-257`, `bdfce97`). |
 
 Additional R1 evidence: the 2026-10-23 stall in a napari-hosted volume case
 (`iso_categorical_fast`, run native65) had a consistent signature. Its main
@@ -147,8 +152,8 @@ baseline closes with W15.
 | B15 | Coverage rows that are not napari-specific: U05, E03, E04, Q11 (missing), Q12 (partly done), Q13; upstream gap H03 | coverage list |
 | B16 | Refresh stale records: coverage rows that still cite smooth-line refusals (E06, T04, H02, V07, M08); close H06 (now 5/5); refresh `docs/opengl-removal-status.md` (stale since 10-24). **Done** (2026-10-29): those rows, H06 and the other rows W4 and W5 changed (M02, M06, M09, M11, V04, B03, Q03, H01) carry dated statuses, and the status document has a dated update. | digests of 2026-10-28 |
 | B17 | The local legacy 12,134-file compiler-cache set has no cleanup receipt. Do not repeat that cleanup blindly, and do not count its savings. | removal plan :120-122 |
-| B18 | Partial texture updates copy the whole texture. `apply_texture_data` rebuilds the CPU shadow on every partial update. While a queued frame uses the texture, the update also copies the shadow once more and copies the texture into a new GPU texture. napari's labels painting makes such updates. W8 measured 3.7 frames per second against OpenGL's 60 for eight 64x64 patches per frame on 4096x4096 RGBA layers. The files are pinned runtime inputs, so the fix lands with R2 or later. | `docs/performance-report.md` (Partial texture updates) |
-| B19 | Readback presentation's framebuffer read: about 23 ns per pixel natively (`read_canvas` allocates a staging buffer per read and converts each texel through a generic routine), then three Python copies (`_read_dawn_framebuffer`). That is about 53 ms per frame at 1920x1080. Pinned runtime files, as B18. | `docs/performance-report.md` (Readback presentation) |
+| B18 | Partial texture updates copy the whole texture. `apply_texture_data` rebuilds the CPU shadow on every partial update. While a queued frame uses the texture, the update also copies the shadow once more and copies the texture into a new GPU texture. napari's labels painting makes such updates. W8 measured 3.7 frames per second against OpenGL's 60 for eight 64x64 patches per frame on 4096x4096 RGBA layers. The files are pinned runtime inputs, so the fix lands with R2 or later. **CPU part done on a test wheel** (2026-10-29, run `b19-readback-257`; on the R2 branch): a same-dtype patch is written into the shadow. Eight 64x64 patches per frame take 0.43 ms instead of 115.7 with the GPU idle, and 14.5 instead of 132.7 while a queued frame holds the texture. **Open:** that queued case still copies the revision's shadow and its GPU texture. | `docs/performance-report.md` (Partial texture updates) |
+| B19 | Readback presentation's framebuffer read: about 23 ns per pixel natively (`read_canvas` allocates a staging buffer per read and converts each texel through a generic routine), then three Python copies (`_read_dawn_framebuffer`). That is about 53 ms per frame at 1920x1080. Pinned runtime files, as B18. **Done on a test wheel** (2026-10-29, run `b19-readback-257`; on the R2 branch). 8-bit RGBA and BGRA rows are copied, and the Qt path drops one Python copy. The bytes are identical. The whole Qt readback takes 8.2 ms at 1920x1080, down from 52.9, and 29.8 ms at 3840x2160, down from 218. The staging buffer is still allocated per read. | `docs/performance-report.md` (Readback presentation) |
 
 ### Organization (user, 2026-10-29)
 
@@ -158,7 +163,7 @@ baseline closes with W15.
 | O2 | Mark the expected failures as expected | **Done, without xfail**, because the evidence rules forbid skip and xfail. `tests/hosts/conftest.py` and `tests/parity/conftest.py` label the listed failures in pytest's report and its JUnit XML: 37, all superseded oracle fixtures kept by D6. D8's four cases left the list when D19 revised D8. They count the failures the index does not explain and name any listed test that passes. No outcome changes. |
 | O3 | One registry of the documented differences | **Done.** `tools/documented_outcomes.py` indexes D5, D9-D17 and D19: the modules that apply each decision, and the cases and limits they hold. It also holds the expected failures. A CPU contract checks it against those modules and against each suite's case list. |
 | O4 | One curated contract entry instead of re-exports through an unrelated module | **Done.** `tests/contract/curated_contracts.py` lists the curated contract modules. Until R2 the wheel suite imports it; at R2, CI's list names it directly. Its check requires every contract module to run in a workflow, be curated, or be declared. It found 11 published CPU contract modules that run in no workflow (`NOT_IN_CI`); each joins the curated list after a run in CI's environment. `test_wheel_index` stays local until W11 (`UNPUBLISHED`), so the check allows a checkout without it. The first version listed it in `NOT_IN_CI`, which failed every CPU job of PR #38, because the published tree lacks it. The local CI-list run had passed on the local tree, which has it. |
-| O5 | Keep the pending runtime patches outside `build/` | **Done.** Branch `r2/pending-runtime-patches` (`bfe66d3`, on `main` `f2f9129`) carries run 236's patch set, with only the replaced lines changed. It has no PR, and no workflow runs on it. R2 builds from it. |
+| O5 | Keep the pending runtime patches outside `build/` | **Done.** Branch `r2/pending-runtime-patches` (`bfe66d3`, on `main` `f2f9129`) carries run 236's patch set, with only the replaced lines changed. `bdfce97` adds B19 and B18's CPU part (run `b19-readback-257`). It has no PR, and no workflow runs on it. R2 builds from it. |
 | O6 | Line endings, and the benchmark harness's setup and format | **Done.** `main`'s `.gitattributes` (`* -text`) keeps checkouts byte-preserving, because dependency checksums and pinned file hashes need exact bytes, so mixed line endings are intentional and nothing is normalized; O1 flags line-ending-only drift instead. The pinned W8 harness is fixed in a successor (W8). |
 
 ### Blocked on external hardware
@@ -428,6 +433,50 @@ with stock hosts and `444402`.
 - **Not covered.** The in-process scientific suites and the plugin parity suites
   are PyQt6-only harnesses. CPython 3.11, 3.13 and 3.14 need wheels at the current
   source.
+
+**B19 and B18's CPU part on a test wheel** on 2026-10-29, run
+`b19-readback-257`, from the R2 branch's tree. Test wheel `9b7eea2d` is the
+R2 test wheel with the new native module and two Python files.
+
+- **Patches.**
+  - `read_canvas` copies, swizzles or strips 8-bit RGBA and BGRA color rows.
+    The old per-texel conversion gives back every byte unchanged, and a native
+    contract compares the two for every byte value in every channel position.
+  - The Qt readback path skips `read_pixels`' copy of the native array.
+  - `apply_texture_data` writes a same-dtype patch into the resident shadow. A
+    native contract requires it to keep the shadow's buffer.
+  - ctest passes 44 of 44.
+- **Measured against the R2 test wheel** on hidden or headless canvases, with
+  identical bytes and final images:
+
+  | Workload | Before | After |
+  | --- | --- | --- |
+  | Native read, 1920x1080 | 47.6 ms | 4.2 ms |
+  | Native read, 3840x2160 | 198 ms | 15.8 ms |
+  | Whole Qt readback, 1920x1080 | 52.9 ms | 8.2 ms |
+  | Whole Qt readback, 3840x2160 | 218 ms | 29.8 ms |
+  | Partial updates, GPU idle | 115.7 ms | 0.43 ms |
+  | Partial updates, queued frame | 132.7 ms | 14.5 ms |
+
+  Partial updates are eight 64x64 patches per frame on a 4096x4096 RGBA
+  texture.
+- **GPU tests.** Six test directories, 1,861 tests, were run on both wheels.
+  Only the new readback test and two Tk tests differ. Those Tk tests failed at
+  Tk start-up: Tcl transiently could not read its own library files, and which
+  Tk tests fail varies between identical runs on one wheel.
+- **napari parity.** Five in-process suites plus image extensions, 61 tests,
+  pass 60 of 61, including `labels_paint_tile`, napari's partial-update path.
+  The exception, `shapes_selected`, follows napari's saved settings rather
+  than the wheel:
+  - the wheel passes with a fresh `NAPARI_CONFIG`;
+  - the R2 test wheel fails with a copy of the failing environment's settings
+    (window at 0,0, 640x704).
+
+  Its fixture sets the selection highlight before fixing the canvas size, so
+  the saved window size moves the handles. An earlier attempt failed only
+  because the environment lacked numba, which run 249's had.
+- **R1 watcher.** It crashes Tk processes (see R1).
+- **On the R2 branch** as `bdfce97`.
 
 **Retention records** on 2026-10-29, run `d8-positioned-255`, after PR #42
 merged (`d00b10f`; merged tree == tested tree, 11/11 required checks).
@@ -769,7 +818,8 @@ H01 and V04.
 4. W8: the report is done. D18's napari parity under native presentation is done
    (runs 249 and 255).
 5. W15 and R2 (fresh release build), then W11 at the release and W12 on approval.
-6. Backlog as capacity allows.
+6. Backlog as capacity allows. B19 and B18's CPU part are on the R2 branch;
+   B18's queued-frame copy remains.
 
 ## Standing rules
 
@@ -827,6 +877,10 @@ H01 and V04.
     same time and splits large pytest commands into gate-checked shards
     (user, 2026-10-29: reduce testing time). Use it before publishing code.
     Documentation-only publications skip it.
+  - Give each napari parity run a fresh `NAPARI_CONFIG`. napari restores the
+    window geometry earlier runs saved in that environment, and the vector
+    layers fixture's `shapes_selected` depends on it (run `b19-readback-257`).
+  - Never enable the in-process pool watcher in a Tk process (R1).
   - Admissions also need the 23-job CI and a promotion review.
 - **Hygiene.**
   - Follow AGENTS.md: 20 GiB scratch and a 10 GiB reserve.
