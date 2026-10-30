@@ -12,7 +12,8 @@ named below.
 
 - Resident scenes (images, volumes and points that only move the camera) keep
   the display's refresh rate, about 60 frames per second, with one refresh more
-  latency than OpenGL.
+  latency than OpenGL. Pacing like OpenGL's swap removes that refresh (update below,
+  2026-10-30).
 - Full uploads every frame are about half as fast as OpenGL. Partial texture
   updates are much slower: 3.7 frames per second against 60. The candidate
   copies the whole texture on the CPU for every partial update, and also on the
@@ -109,6 +110,27 @@ port's presentation setting, so its numbers come from the same pairs.
   saved to disk. It takes 1.6-4.2 s on the candidate against 1.7-4.6 s
   upstream (2.4 s against 4.1 s for the resident image).
 
+**Update (2026-10-30, run `perf-profile-261`): latency.** The extra refresh
+came from queueing. The candidate's paint returned at once, so the harness
+kept up to 3 frames in flight, and each waited for one of the swapchain's
+images. OpenGL's vsynced swap blocks instead. A local test wheel now paces
+the same way: under vsync, the paint returns once its own frame's GPU work
+has retired. On the points workload, with every process pinned to the
+performance cores:
+
+| Renderer | Median / p95 | fps |
+| --- | --- | --- |
+| Upstream OpenGL | 16.62 / 33.45 ms | 59.97 |
+| Candidate, paced | 16.32 / 19.01 ms | 59.02 |
+| Candidate, not paced | 33.09 / 35.52 ms | 59.31 |
+
+Unpinned, Windows ran the non-foreground benchmark windows on efficiency
+cores. In one campaign that made the candidate's frames 2-3 times slower.
+Mailbox presentation retired frames in 3.2 ms, but rendered 286 frames per
+second and showed only 21% of them. In this session the candidate also
+missed a few refreshes, paced or not, in short bursts that W8 did not see.
+The change is on the R2 branch and lands with R2.
+
 ### Where the candidate's frame time goes
 
 From the harness's per-frame telemetry, in milliseconds per measured frame: the
@@ -200,7 +222,9 @@ Headless, with the upload every frame:
 | 56 MB vertex buffer drawn as points | 106.6 ms | 60.3 ms |
 
 The change is on the R2 branch and lands with R2. The paced comparison above
-has not been re-run with it.
+has not been re-run with it. A bug in it was fixed on 2026-10-30: a staged upload was
+marked current before its frame was submitted, so a frame that failed to submit
+left the texture stale.
 
 ## Readback presentation
 
