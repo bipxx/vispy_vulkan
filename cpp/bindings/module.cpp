@@ -86,6 +86,8 @@ nb::dict probe_dict(const Probe& probe) {
     out["finish_calls"] = probe.finish_calls;
     out["copy_bytes"] = probe.copy_bytes;
     out["completion_waits"] = probe.completion_waits;
+    out["present_pacing_waits"] = probe.present_pacing_waits;
+    out["present_pacing_timeouts"] = probe.present_pacing_timeouts;
     out["pending_tickets"] = probe.pending_tickets;
     out["retired_tickets"] = probe.retired_tickets;
     out["live_buffer_bytes"] = probe.live_buffer_bytes;
@@ -143,6 +145,7 @@ nb::dict probe_dict(const Probe& probe) {
     out["native_commands"] = probe.native_commands;
     out["native_interpret_ns"] = probe.native_interpret_ns;
     out["native_submit_ns"] = probe.native_submit_ns;
+    out["present_pacing_wait_ns"] = probe.present_pacing_wait_ns;
     out["texture_conversion_ns"] = probe.texture_conversion_ns;
     out["texture_upload_cpu_ns"] = probe.texture_upload_cpu_ns;
     out["buffer_upload_cpu_ns"] = probe.buffer_upload_cpu_ns;

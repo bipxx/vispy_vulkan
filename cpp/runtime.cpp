@@ -910,6 +910,7 @@ struct Ticket {
     std::shared_ptr<NativeQuerySegment> query_segment;
     std::shared_ptr<AsyncResult> encoding_validation;
     wgpu::Future encoding_validation_future{};
+    wgpu::Future completion_future{};  // OnSubmittedWorkDone; a vsynced present waits on it (pace_presented_frame)
     ~Ticket() {
         if (!id && line_resources && !line_resources->submitted())
             line_resources->rollback(false);
@@ -1547,7 +1548,7 @@ struct Engine {
     void register_submission_completion(const std::shared_ptr<Ticket>& ticket) {
         if (ticket->completion_registered) return;
         maybe_fail_submission("callback-registration");
-        queue.OnSubmittedWorkDone(wgpu::CallbackMode::AllowProcessEvents,
+        ticket->completion_future = queue.OnSubmittedWorkDone(wgpu::CallbackMode::AllowProcessEvents,
             [ticket, hold = hold_submission_completions](wgpu::QueueWorkDoneStatus status, wgpu::StringView message) {
                 ticket->ok = status == wgpu::QueueWorkDoneStatus::Success;
                 ticket->error = view_to_string(message);
@@ -5535,6 +5536,18 @@ void main() {
             owner->fail(vispy::timing::Status::SubmissionError, reason);
     }
 
+    // Plan P2 (user, 2026-10-30): a vsynced (FIFO) surface paces like OpenGL's blocking swap. The paint returns once
+    // this frame's GPU work, which waits for a swapchain image, has retired, so frames do not queue ahead of the
+    // display. The wait is counted apart from completion_waits, and bounded, so a stalled surface cannot hold the GUI.
+    void pace_presented_frame(const Canvas& target, const Ticket& ticket) {
+        if (!target.vsync || target.present_mode != wgpu::PresentMode::Fifo || !ticket.completion_future.id ||
+            ticket.callback_received.load()) return;
+        ++probe.present_pacing_waits;
+        HostTimer timer(probe.present_pacing_wait_ns);
+        if (instance.WaitAny(ticket.completion_future, 250'000'000ull) != wgpu::WaitStatus::Success)
+            ++probe.present_pacing_timeouts;
+    }
+
     void present_current_swapchain(Canvas& target, const std::shared_ptr<FrameMark::Queries>& owner) {
         HostTimer submit_timer(probe.native_submit_ns);
         if (!target.surface || !target.color_view || target.width <= 0 || target.height <= 0) {
@@ -5577,6 +5590,7 @@ void main() {
         }
         target.swapchain_current = true;
         freeze_submission_counters(*ticket, submit_timer);
+        pace_presented_frame(target, *ticket);
         if (ticket->queries && ticket->queries->final_requested && target.queued_frames.empty())
             finalize_query_frame(ticket->queries);
     }
@@ -6046,6 +6060,7 @@ void main() {
             target.swapchain_current = true;
         }
         freeze_submission_counters(*ticket, submit_timer);
+        if (ticket->presented) pace_presented_frame(target, *ticket);
         if (ticket->queries && ticket->queries->final_requested && target.queued_frames.empty())
             finalize_query_frame(ticket->queries);
     }

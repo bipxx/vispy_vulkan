@@ -90,6 +90,8 @@ struct Probe {
     uint64_t finish_calls = 0;
     uint64_t copy_bytes = 0;
     uint64_t completion_waits = 0;
+    uint64_t present_pacing_waits = 0;     // vsynced presents that waited for their own frame (plan P2)
+    uint64_t present_pacing_timeouts = 0;
     uint64_t pending_tickets = 0;
     uint64_t retired_tickets = 0;
     uint64_t live_buffer_bytes = 0;
@@ -146,6 +148,7 @@ struct Probe {
     uint64_t owned_texture_transfers = 0, owned_texture_transfer_bytes = 0;
     uint64_t native_batches = 0, native_commands = 0;
     uint64_t native_interpret_ns = 0, native_submit_ns = 0;
+    uint64_t present_pacing_wait_ns = 0;
     uint64_t texture_conversion_ns = 0, texture_upload_cpu_ns = 0, buffer_upload_cpu_ns = 0;
     uint64_t shader_cache_lookup_ns = 0, shader_normalize_ns = 0, shader_parse_ns = 0;
     uint64_t shader_link_ns = 0, shader_spirv_ns = 0, shader_reflect_ns = 0, shader_cpu_build_ns = 0;
