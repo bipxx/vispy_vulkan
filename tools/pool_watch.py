@@ -1,6 +1,10 @@
 # SPDX-License-Identifier: AGPL-3.0-only
 """R1 instrumentation: record the moment this process loses its default thread pool (Windows only).
 
+Superseded by tools/pool_watch_external.py (D20, user 2026-10-29); new launches do not use this module. Its thread runs
+Python in the watched process, and CPython 3.12 runs a scheduled garbage collection in whichever thread next executes
+bytecode, so the thread can run other threads' finalizers: it crashed Tk processes (run b19-readback-257).
+
 The 2026-10-28 napari startup stalls had lost the default thread pool's worker factory handle (runs
 napari-startup-stall-recurrence-209 and com-stall-harness-213): code that did not own the handle closed it, and the
 value was reused. Who closes it is unknown, so the plan instruments launches and waits for a recurrence.
