@@ -5045,6 +5045,7 @@ struct Vertex { @builtin(position) position: vec4f, @location(0) uv: vec2f }
         // The engine mutex holds the source revision stable. Dawn captures the
         // bytes synchronously in WriteTexture; no pointer is retained by us.
         HostTimer conversion_timer(probe.texture_conversion_ns);
+        uint64_t staged_bytes = 0;
         vispy::textures::with_upload_rows(full_upload,
             [&](const PreparedTexture&, const uint8_t* bytes, size_t submitted_bytes, uint32_t pitch, int height) {
                 conversion_timer.finish();
@@ -5056,15 +5057,26 @@ struct Vertex { @builtin(position) position: vec4f, @location(0) uv: vec2f }
                 layout.rowsPerImage = static_cast<uint32_t>(height);
                 wgpu::Extent3D extent{static_cast<uint32_t>(rev.width), static_cast<uint32_t>(rev.height),
                                      static_cast<uint32_t>(rev.depth)};
+                bool staged;
                 {
                     HostTimer timer(probe.texture_upload_cpu_ns);
-                    if (!stage_texture_copy(encoder, ticket, dest, bytes, submitted_bytes, layout, extent))
-                        queue.WriteTexture(&dest, bytes, submitted_bytes, &layout, &extent);
+                    staged = stage_texture_copy(encoder, ticket, dest, bytes, submitted_bytes, layout, extent);
+                    if (!staged) queue.WriteTexture(&dest, bytes, submitted_bytes, &layout, &extent);
+                }
+                if (staged) {
+                    staged_bytes = submitted_bytes;
+                    return;
                 }
                 probe.texture_uploads++;
                 probe.copy_bytes += submitted_bytes;
                 probe.texture_upload_bytes += submitted_bytes;
             });
+        if (staged_bytes) {
+            // The staged copy is part of this ticket's encoder and lands only if that encoder is submitted, so the
+            // revision becomes current, and the upload is counted, in commit_texture_uploads, as partial updates are.
+            ticket->ordered_uploads.push_back({&rev, rev.revision, 1, staged_bytes, staged_bytes});
+            return;
+        }
         rev.updates.clear();
         rev.base.reset();
         rev.gpu_revision = rev.revision;
@@ -5734,8 +5746,12 @@ void main() {
             }
             // Copies must precede this pass, but follow earlier recorded
             // draws that may have rendered into the sampled allocation.
-            for (const auto& texture : snap.textures)
+            for (const auto& texture : snap.textures) {
                 upload_texture(*texture, encoder, ticket.get());
+                // ordered_uploads points at this revision until commit_texture_uploads, after draws.clear(): the
+                // ticket holds it even when this snapshot does not draw.
+                ticket->textures.push_back(texture);
+            }
             encode_line_work(snap.line_work, encoder, *ticket, line_slot);
             if (snap.line_work && snap.line_work->chunk) {
                 const auto& chunk = *snap.line_work->chunk;
