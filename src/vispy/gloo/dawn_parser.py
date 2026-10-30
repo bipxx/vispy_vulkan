@@ -42,9 +42,10 @@ def _freeze(value, arrays):
 def _freeze_owned(value, arrays, capture, stats):
     if isinstance(value, np.ndarray):
         array = np.ascontiguousarray(value)
+        # Structured and void arrays (vispy's vertex buffers) decode as raw bytes on either path.
         mapped = ((array.dtype.kind in "iu" and array.dtype.itemsize in (1, 2, 4)) or
                   (array.dtype.kind == "f" and array.dtype.itemsize in (2, 4, 8)) or
-                  array.dtype.kind == "b")
+                  array.dtype.kind in "bV")
         if mapped:
             try:
                 snapshot = capture(memoryview(array))

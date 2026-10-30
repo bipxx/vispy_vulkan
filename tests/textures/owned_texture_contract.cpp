@@ -116,6 +116,30 @@ int main(){try{
         require(!moved&&same(data,expected)&&updates.empty()&&payload.bytes==original_payload.bytes,"legacy1D runtime/helper disagreement changed behavior");
         ++legacy_mismatch_cases;++partials;++cases;
     }
+    // The byte recycler (runtime_byte_recycler.hpp): a full transfer gives the replaced shadow's storage to the
+    // recycler, and a later request that the storage fits takes it back.
+    {
+        auto& recycler=vispy::memory::ByteRecycler::shared();
+        recycler.clear();
+        constexpr size_t large=size_t{4}<<20;
+        TextureData data;data.dimensions=2;data.width=1024;data.height=1024;data.channels=4;data.format="rgba";data.dtype="u8";data.pixels.assign(large,3);
+        const auto* replaced=data.pixels.data();
+        auto upload=make_blob({1024,1024,4},"u8");const auto* incoming=upload.bytes.data();
+        require(apply_owned_texture_data(data,upload,{0,0},true)&&data.pixels.data()==incoming,"full transfer did not move the payload");
+        require(recycler.kept_bytes()==large,"replaced shadow storage not kept");
+        auto reused=recycler.take(large-100);
+        require(reused.size()==large-100&&reused.data()==replaced&&recycler.kept_bytes()==0,"kept storage not reused");
+        require(recycler.take(large).empty(),"taken storage still kept");
+        recycler.give(std::vector<uint8_t>(1000,1));
+        require(recycler.kept_bytes()==0,"small block kept");
+        recycler.give(std::move(reused));
+        require(recycler.take(large/3).empty()&&recycler.kept_bytes()==large,"block more than twice the request given");
+        for(int block=0;block<6;++block)recycler.give(std::vector<uint8_t>(large,0));
+        require(recycler.kept_bytes()==vispy::memory::ByteRecycler::max_blocks*large,"kept block count not bounded");
+        recycler.clear();
+        require(recycler.kept_bytes()==0,"clear left storage");
+        ++cases;
+    }
     std::cout<<"{\"status\":\"PASS_OWNED_TEXTURE_DATA_CPU\",\"cases\":"<<cases<<",\"full_address_transfers\":"<<transfers<<",\"partial_unchanged_fallbacks\":"<<partials<<",\"exact_validation_failures\":"<<failures<<",\"runtime_gated_cases\":"<<runtime_gated_cases<<",\"runtime_1d_fallbacks\":"<<runtime_1d_fallbacks<<",\"malformed_gate_cases\":"<<malformed_gate_cases<<",\"legacy_1d_mismatch_cases\":"<<legacy_mismatch_cases<<",\"large_bytes\":67108864,\"GPU_used\":false}\n";
     return 0;
 }catch(const std::exception& error){std::cerr<<error.what()<<'\n';return 1;}}

@@ -5,6 +5,7 @@
 #include "shader/normalize.hpp"
 #include "runtime_texture.hpp"
 #include "runtime_owned_texture.hpp"
+#include "runtime_byte_recycler.hpp"
 #include "runtime_readback.hpp"
 #include "runtime_state.hpp"
 #include "runtime_state_query.hpp"
@@ -859,6 +860,17 @@ struct Canvas {
     bool capture_line_endpoints = true;
 };
 
+// A pooled, host-mapped buffer for a full texture upload (Engine::stage_texture_copy). queue.WriteTexture
+// makes Dawn allocate and fill a dedicated staging buffer per call above its 4 MiB ring: 64 MiB per frame for a
+// 4096x4096 float32 image (run perf-profile-261). A lease is unmapped and owned by its submission's Ticket while
+// its copy is in flight, then mapped again for the next upload.
+struct StagingLease {
+    wgpu::Buffer buffer;
+    uint64_t size = 0;
+    uint64_t generation = 0;
+    void* mapped = nullptr;
+};
+
 struct Ticket {
     struct OrderedUpload {
         TextureRev* revision;
@@ -885,6 +897,7 @@ struct Ticket {
     std::vector<std::shared_ptr<LineCapture>> line_captures;
     std::vector<wgpu::BindGroup> bind_groups;
     std::vector<wgpu::Buffer> transient_buffers;
+    std::vector<std::shared_ptr<StagingLease>> staging;  // full-upload staging in flight
     std::optional<NativeLinePool::BatchReservation> line_resources;
     bool submission_owner_retained = false;
     bool diagnostic_retirement_counted = false;
@@ -964,6 +977,12 @@ struct Engine {
     static constexpr size_t line_capture_limit = 128;
     static constexpr uint64_t line_capture_byte_limit = 64ull * 1024 * 1024;
     std::deque<std::shared_ptr<Ticket>> tickets;
+    // Mapped staging buffers idle for the next full texture upload (StagingLease), bounded.
+    static constexpr uint64_t staging_min_bytes = uint64_t{4} << 20, staging_max_request = uint64_t{256} << 20,
+                              staging_max_bytes = uint64_t{512} << 20;
+    static constexpr size_t staging_max_buffers = 4;
+    std::vector<std::shared_ptr<StagingLease>> staging_mapped;
+    uint64_t staging_kept_bytes = 0;
     size_t frame_slots = 3;
     // Test controls affect completion delivery, never whether work reaches GPU.
     std::shared_ptr<std::atomic<bool>> hold_submission_completions =
@@ -1552,6 +1571,7 @@ struct Engine {
             throw;
         }
         ++probe.dawn_queue_submits;
+        remap_staging(*ticket);
         ticket->submit_ns = monotonic_ns();
         if (ticket->queries) {
             // Mandatory ownership/count commit precedes optional callback/map
@@ -1682,6 +1702,7 @@ struct Engine {
     }
 
     void invalidate_device() {
+        clear_staging();
         if (memory_window_token) memory_window_invalidations |= WindowDeviceLost;
         device_lost = true;
         device_ready = false;
@@ -1808,6 +1829,7 @@ struct Engine {
         for (auto& [id, canvas] : canvases)
             cancel_canvas_frames(canvas, "cancelled", "runtime shutdown before complete paint retirement");
         if (queue && instance) wait_queue();
+        clear_staging();
         // Explicit shutdown may wait; normal submission never takes this
         // validation barrier. Process every submitted owner before releasing
         // diagnostic capacity or dropping its generation's native handles.
@@ -4801,6 +4823,75 @@ struct Vertex { @builtin(position) position: vec4f, @location(0) uv: vec2f }
             uploaded_bytes, copied_bytes});
     }
 
+    // Full texture uploads copy through pooled mapped staging buffers (StagingLease) when the upload has an
+    // encoder and a Ticket. A lease of at least 4 MiB and at most 256 MiB is taken from the pool, or created
+    // mapped, filled, unmapped, and copied into the texture by the frame's own encoder. Requests outside those
+    // bounds keep queue.WriteTexture.
+    std::shared_ptr<StagingLease> acquire_staging(uint64_t size) {
+        if (size < staging_min_bytes || size > staging_max_request) return nullptr;
+        auto best = staging_mapped.end();
+        for (auto it = staging_mapped.begin(); it != staging_mapped.end(); ++it)
+            if ((*it)->generation == device_generation && (*it)->size >= size && (*it)->size / 2 <= size &&
+                (best == staging_mapped.end() || (*it)->size < (*best)->size)) best = it;
+        if (best != staging_mapped.end()) {
+            auto lease = *best;
+            staging_kept_bytes -= lease->size;
+            staging_mapped.erase(best);
+            return lease;
+        }
+        wgpu::BufferDescriptor descriptor;
+        descriptor.size = (size + 3u) & ~uint64_t{3};
+        descriptor.usage = wgpu::BufferUsage::MapWrite | wgpu::BufferUsage::CopySrc;
+        descriptor.mappedAtCreation = true;
+        auto lease = std::make_shared<StagingLease>();
+        lease->buffer = device.CreateBuffer(&descriptor);
+        ++probe.buffer_allocations;
+        lease->size = descriptor.size;
+        lease->generation = device_generation;
+        lease->mapped = lease->buffer ? lease->buffer.GetMappedRange(0, descriptor.size) : nullptr;
+        return lease->mapped ? lease : nullptr;
+    }
+
+    bool stage_texture_copy(const wgpu::CommandEncoder& encoder, Ticket* ticket, const wgpu::TexelCopyTextureInfo& destination,
+                            const uint8_t* bytes, size_t size, const wgpu::TexelCopyBufferLayout& layout,
+                            const wgpu::Extent3D& extent) {
+        if (!encoder || !ticket) return false;
+        auto lease = acquire_staging(size);
+        if (!lease) return false;
+        std::memcpy(lease->mapped, bytes, size);
+        lease->buffer.Unmap();
+        lease->mapped = nullptr;
+        wgpu::TexelCopyBufferInfo source;
+        source.buffer = lease->buffer;
+        source.layout = layout;
+        encoder.CopyBufferToTexture(&source, &destination, &extent);
+        ticket->staging.push_back(std::move(lease));
+        return true;
+    }
+
+    // After Queue.Submit: each lease is asked to map again, which completes once the GPU has finished its copy, and
+    // then returns to the pool if the pool has room and the device generation is unchanged.
+    void remap_staging(Ticket& ticket) {
+        for (auto& lease : ticket.staging) {
+            auto keep = lease;
+            lease->buffer.MapAsync(wgpu::MapMode::Write, 0, lease->size, wgpu::CallbackMode::AllowProcessEvents,
+                [this, keep](wgpu::MapAsyncStatus status, wgpu::StringView) {
+                    if (status != wgpu::MapAsyncStatus::Success || keep->generation != device_generation) return;
+                    keep->mapped = keep->buffer.GetMappedRange(0, keep->size);
+                    if (!keep->mapped || staging_mapped.size() >= staging_max_buffers ||
+                        staging_kept_bytes + keep->size > staging_max_bytes) return;
+                    staging_kept_bytes += keep->size;
+                    staging_mapped.push_back(keep);
+                });
+        }
+        ticket.staging.clear();
+    }
+
+    void clear_staging() {
+        staging_mapped.clear();
+        staging_kept_bytes = 0;
+    }
+
     void upload_texture(TextureRev& rev, const wgpu::CommandEncoder& encoder = {}, Ticket* ticket = nullptr) {
         if (ticket && std::any_of(ticket->ordered_uploads.begin(), ticket->ordered_uploads.end(),
                 [&](const Ticket::OrderedUpload& upload) { return upload.revision == &rev &&
@@ -4967,7 +5058,8 @@ struct Vertex { @builtin(position) position: vec4f, @location(0) uv: vec2f }
                                      static_cast<uint32_t>(rev.depth)};
                 {
                     HostTimer timer(probe.texture_upload_cpu_ns);
-                    queue.WriteTexture(&dest, bytes, submitted_bytes, &layout, &extent);
+                    if (!stage_texture_copy(encoder, ticket, dest, bytes, submitted_bytes, layout, extent))
+                        queue.WriteTexture(&dest, bytes, submitted_bytes, &layout, &extent);
                 }
                 probe.texture_uploads++;
                 probe.copy_bytes += submitted_bytes;
@@ -6508,6 +6600,10 @@ void destroy_canvas(int canvas_id) {
     eng.terminal_canvases.push_back(canvas_id);
     if (eng.terminal_canvases.size() > 128) eng.terminal_canvases.pop_front();
     eng.canvases.erase(it);
+    if (eng.canvases.empty()) {
+        vispy::memory::ByteRecycler::shared().clear();
+        eng.clear_staging();
+    }
     eng.log("destroy canvas " + std::to_string(canvas_id));
 }
 
@@ -6689,7 +6785,13 @@ static void execute_commands_impl(int canvas_id, const std::vector<Command>& com
                 rev->owner = id;
                 rev->generation = obj.generation;
                 rev->revision = obj.buffer ? obj.buffer->revision + 1 : 1;
-                if (obj.buffer && !reuse) rev->cpu = obj.buffer->cpu;
+                if (obj.buffer && !reuse) {
+                    // A queued frame still holds the old revision: copy its bytes into a recycled block if one fits.
+                    rev->cpu = vispy::memory::ByteRecycler::shared().take(obj.buffer->cpu.size());
+                    if (!rev->cpu.empty() && rev->cpu.size() == obj.buffer->cpu.size())
+                        std::memcpy(rev->cpu.data(), obj.buffer->cpu.data(), rev->cpu.size());
+                    else rev->cpu = obj.buffer->cpu;
+                }
                 const auto& blob = cmd.args[2].blob;
                 int offset = static_cast<int>(cmd.args[1].i);
                 if (offset < 0 || static_cast<uint64_t>(offset) + blob.bytes.size() > rev->cpu.size())
@@ -7378,12 +7480,21 @@ void execute_commands(int canvas_id, const std::vector<Command>& commands,
     execute_commands_impl(canvas_id, commands, nullptr, binding_decode_ns, binding_decode_bytes, {});
 }
 
+// Payloads the interpreter copied rather than took serve the next snapshots (runtime_byte_recycler.hpp).
+static void recycle_payloads(std::vector<Value>& values) noexcept {
+    for (auto& value : values) {
+        if (value.kind == Value::Kind::Blob) vispy::memory::ByteRecycler::shared().give(std::move(value.blob.bytes));
+        else if (value.kind == Value::Kind::List) recycle_payloads(value.list);
+    }
+}
+
 void execute_owned_commands(int canvas_id, std::vector<Command>&& commands,
                             uint64_t binding_decode_ns, uint64_t binding_decode_bytes,
                             const UploadCaptureStats& capture_stats) {
     // Own even the non-transferred payloads until the interpreter returns or throws.
     auto owned = std::move(commands);
     execute_commands_impl(canvas_id, owned, &owned, binding_decode_ns, binding_decode_bytes, capture_stats);
+    for (auto& command : owned) recycle_payloads(command.args);
 }
 
 void finish_canvas(int canvas_id) {
@@ -8327,4 +8438,5 @@ void shutdown_runtime() {
     auto& eng = engine();
     std::lock_guard<std::mutex> lock(eng.mu);
     eng.shutdown();
+    vispy::memory::ByteRecycler::shared().clear();
 }
