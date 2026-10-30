@@ -97,6 +97,11 @@ nb::dict probe_dict(const Probe& probe) {
     out["queued_frames"] = probe.queued_frames;
     out["buffer_allocations"] = probe.buffer_allocations;
     out["texture_allocations"] = probe.texture_allocations;
+    out["texture_copy_on_write"] = probe.texture_copy_on_write;
+    out["texture_shadow_moves"] = probe.texture_shadow_moves;
+    out["texture_copy_on_write_bytes"] = probe.texture_copy_on_write_bytes;
+    out["buffer_copy_on_write"] = probe.buffer_copy_on_write;
+    out["buffer_copy_on_write_bytes"] = probe.buffer_copy_on_write_bytes;
     out["uniform_upload_bytes"] = probe.uniform_upload_bytes;
     out["texture_upload_bytes"] = probe.texture_upload_bytes;
     out["geometry_upload_bytes"] = probe.geometry_upload_bytes;

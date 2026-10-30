@@ -436,6 +436,53 @@ struct TextureRev : TextureData {
     size_t gpu_bytes = 0;
 };
 
+// A revision's CPU shadow, upload history and base, lent out of it while its other fields are copied, so the copy
+// does not take them. They return when this goes out of scope, also if the copy throws.
+struct LentTextureContents {
+    explicit LentTextureContents(TextureRev& revision)
+        : owner(revision), pixels(std::exchange(revision.pixels, {})), updates(std::exchange(revision.updates, {})),
+          base(std::exchange(revision.base, {})) {}
+    ~LentTextureContents() {
+        owner.pixels = std::move(pixels);
+        owner.updates = std::move(updates);
+        owner.base = std::move(base);
+    }
+    TextureRev& owner;
+    std::vector<uint8_t> pixels;
+    std::vector<TextureRev::Region> updates;
+    std::shared_ptr<TextureRev> base;
+};
+
+// Plan P3 (user, 2026-10-30): a texture DATA that copies a revision on write, because a frame still holds the current
+// one, copies its CPU shadow only when it must. A settled revision (current on the GPU, nothing pending) is read by
+// its holders only through its GPU texture, and is never uploaded again: a device loss drops frames that were not
+// submitted and rebuilds live revisions from their own pixels. So its shadow moves to the copy. Otherwise an entire
+// update starts from an empty shadow, and a patch copies the shadow, into recycled storage if a block fits. Returns
+// whether the shadow moved, so that a rejected update can return it.
+bool copy_texture_on_write(TextureRev& copy, TextureRev& current, bool entire, Probe& probe) {
+    const bool settled = current.texture && current.gpu_revision == current.revision && current.updates.empty() &&
+        !current.base;
+    {
+        LentTextureContents lent(current);
+        copy = current;
+        if (settled) copy.pixels = std::exchange(lent.pixels, {});
+    }
+    ++probe.texture_copy_on_write;
+    if (settled) {
+        ++probe.texture_shadow_moves;
+        return true;
+    }
+    if (!entire) {
+        const auto& shadow = current.pixels;
+        copy.pixels = vispy::memory::ByteRecycler::shared().take(shadow.size());
+        if (!shadow.empty() && copy.pixels.size() == shadow.size())
+            std::memcpy(copy.pixels.data(), shadow.data(), shadow.size());
+        else copy.pixels = shadow;
+        probe.texture_copy_on_write_bytes += shadow.size();
+    }
+    return false;
+}
+
 wgpu::TextureSampleType declared_sample_type(const NormSampler& sampler) {
     switch (sampler.sample_scalar) {
     case ShaderScalarType::Float: return wgpu::TextureSampleType::Float;
@@ -1770,6 +1817,12 @@ struct Engine {
         };
         for (auto& entry : objects) {
             invalidate_texture(entry.second.texture);
+            if (entry.second.texture) {
+                // Plan P3: a live revision rebuilds from its own pixels, which hold every patch. Its base may have
+                // moved its CPU shadow to it (copy_texture_on_write), and frames that were not submitted are dropped.
+                entry.second.texture->base.reset();
+                entry.second.texture->updates.clear();
+            }
             invalidate_buffer(entry.second.buffer);
             invalidate_buffer(entry.second.primitive_indices);
             invalidate_buffer(entry.second.point_geometry_cache);
@@ -6816,18 +6869,25 @@ static void execute_commands_impl(int canvas_id, const std::vector<Command>& com
                 rev->owner = id;
                 rev->generation = obj.generation;
                 rev->revision = obj.buffer ? obj.buffer->revision + 1 : 1;
-                if (obj.buffer && !reuse) {
-                    // A queued frame still holds the old revision: copy its bytes into a recycled block if one fits.
-                    rev->cpu = vispy::memory::ByteRecycler::shared().take(obj.buffer->cpu.size());
-                    if (!rev->cpu.empty() && rev->cpu.size() == obj.buffer->cpu.size())
-                        std::memcpy(rev->cpu.data(), obj.buffer->cpu.data(), rev->cpu.size());
-                    else rev->cpu = obj.buffer->cpu;
-                }
                 const auto& blob = cmd.args[2].blob;
                 int offset = static_cast<int>(cmd.args[1].i);
+                bool written = false;
+                if (obj.buffer && !reuse) {
+                    // A queued frame still holds the old revision: copy its bytes into a recycled block if one fits.
+                    // An update of the whole buffer replaces them, so it copies none (plan P3).
+                    const auto& old = obj.buffer->cpu;
+                    const bool whole = offset == 0 && blob.bytes.size() == old.size();
+                    rev->cpu = vispy::memory::ByteRecycler::shared().take(old.size());
+                    if (rev->cpu.empty() || rev->cpu.size() != old.size()) {
+                        rev->cpu = whole ? blob.bytes : old;
+                        written = whole;
+                    } else if (!whole) std::memcpy(rev->cpu.data(), old.data(), old.size());
+                    ++eng.probe.buffer_copy_on_write;
+                    if (!whole) eng.probe.buffer_copy_on_write_bytes += old.size();
+                }
                 if (offset < 0 || static_cast<uint64_t>(offset) + blob.bytes.size() > rev->cpu.size())
                     throw std::runtime_error("buffer update exceeds allocation bounds");
-                if (!blob.bytes.empty()) {
+                if (!written && !blob.bytes.empty()) {
                     std::memcpy(rev->cpu.data() + offset, blob.bytes.data(), blob.bytes.size());
                 }
                 rev->derived.clear();
@@ -6837,8 +6897,12 @@ static void execute_commands_impl(int canvas_id, const std::vector<Command>& com
             } else if (cmd.args.size() >= 3 && cmd.args[2].kind == Value::Kind::Blob) {
                 const bool reuse = obj.texture && obj.texture.use_count() == 1 &&
                     (!obj.texture->allocation_token || obj.texture->allocation_token.use_count() == 1);
+                const auto& blob = cmd.args[2].blob;
+                std::vector<int> offset;
+                for (const auto& axis : cmd.args[1].list) offset.push_back(static_cast<int>(axis.i));
                 auto rev = reuse ? obj.texture : std::make_shared<TextureRev>();
-                if (obj.texture && !reuse) *rev = *obj.texture;
+                const bool moved = obj.texture && !reuse && copy_texture_on_write(*rev, *obj.texture,
+                    texture_detail::texture_upload_is_entire(*obj.texture, blob, offset), eng.probe);
                 rev->owner = id;
                 rev->revision++;
                 if (!reuse) {
@@ -6847,11 +6911,8 @@ static void execute_commands_impl(int canvas_id, const std::vector<Command>& com
                     rev->sampler = nullptr;
                     rev->allocation_token.reset();
                 }
-                const auto& blob = cmd.args[2].blob;
-                std::vector<int> offset;
-                for (const auto& axis : cmd.args[1].list) offset.push_back(static_cast<int>(axis.i));
                 bool transferred = false;
-                {
+                try {
                     HostTimer timer(eng.probe.texture_conversion_ns);
                     if (owned_commands) {
                         // Validate inside the helper before inspecting shape metadata.
@@ -6865,6 +6926,10 @@ static void execute_commands_impl(int canvas_id, const std::vector<Command>& com
                     } else {
                         apply_texture_data(*rev, blob, offset, rev->allocation_descriptor.get());
                     }
+                } catch (...) {
+                    // DATA validation throws before it changes the shadow, so a rejected update returns a moved one.
+                    if (moved) obj.texture->pixels = std::move(rev->pixels);
+                    throw;
                 }
                 if (transferred) {
                     ++eng.probe.owned_texture_transfers;

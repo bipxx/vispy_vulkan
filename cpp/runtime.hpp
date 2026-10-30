@@ -101,6 +101,10 @@ struct Probe {
     uint64_t queued_frames = 0;
     uint64_t buffer_allocations = 0;
     uint64_t texture_allocations = 0;
+    uint64_t texture_copy_on_write = 0;        // DATA copies of a revision that a frame still held (plan P3)
+    uint64_t texture_shadow_moves = 0;         // of those, CPU shadows moved from a settled revision, not copied
+    uint64_t texture_copy_on_write_bytes = 0;  // CPU shadow bytes copied
+    uint64_t buffer_copy_on_write = 0, buffer_copy_on_write_bytes = 0;
     uint64_t uniform_upload_bytes = 0;
     uint64_t texture_upload_bytes = 0;
     uint64_t geometry_upload_bytes = 0;
