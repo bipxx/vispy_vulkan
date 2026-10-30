@@ -169,6 +169,17 @@ of the labels texture. While a queued frame still uses the texture, it also
 costs a second CPU copy and a full GPU copy. A 3D labels volume makes each copy
 proportionally larger. Backlog B18.
 
+**Update (2026-10-29, run `b19-readback-257`).** A local test wheel now writes
+a same-dtype patch into the shadow. It is on the R2 branch and lands with R2.
+On a headless canvas, eight 64x64 patches per frame on a 4096x4096 RGBA
+texture take:
+
+- 0.43 ms per frame instead of 115.7 when the GPU is idle between frames;
+- 14.5 ms instead of 132.7 while a queued frame holds the texture.
+
+The final images are identical. The queued case still copies the revision's
+shadow and its GPU texture.
+
 ## Readback presentation
 
 Readback is the port's Windows default for Qt canvases. Each paint draws the
@@ -202,6 +213,18 @@ the image three more times in Python (`_read_dawn_framebuffer` in
 per frame, so a canvas of that size cannot exceed about 19 frames per second.
 Backlog B19 is to make the read a row copy into a reused buffer and to remove
 the extra copies.
+
+**Update (2026-10-29, run `b19-readback-257`).** A local test wheel now copies
+8-bit RGBA and BGRA rows instead of converting each texel, and the backend
+makes one fewer Python copy. It is on the R2 branch and lands with R2. The
+bytes are identical. On a hidden canvas:
+
+| Framebuffer | Native read | Whole backend read |
+| --- | --- | --- |
+| 1920x1080 | 4.2 ms, was 47.6 | 8.2 ms, was 52.9 |
+| 3840x2160 | 15.8 ms, was 198 | 29.8 ms, was 218 |
+
+The staging buffer is still allocated per read.
 
 ## Presentation choice (D3)
 
