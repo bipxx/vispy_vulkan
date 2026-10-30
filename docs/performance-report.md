@@ -180,6 +180,28 @@ texture take:
 The final images are identical. The queued case still copies the revision's
 shadow and its GPU texture.
 
+**Update (2026-10-30, run `perf-profile-261`): full uploads.** Profiling showed
+that full uploads spent most of their time allocating and faulting in fresh
+memory every frame. A 64 MiB copy into fresh memory takes 12.3 ms, into reused
+memory 5.6 ms. The payload snapshot, the replaced CPU shadow, and Dawn's
+staging for `WriteTexture` were each a new 64 MiB block per frame. A local
+test wheel now:
+
+- reuses those blocks;
+- copies full texture uploads through pooled host-mapped staging;
+- captures structured vertex arrays directly instead of copying them twice.
+
+Headless, with the upload every frame:
+
+| Workload | Before | After |
+| --- | --- | --- |
+| 4096x4096 float32 image | 46.9 ms (21 fps) | 15.6 ms (64 fps) |
+| 256-cubed float32 volume | 35.8 ms | 15.0 ms |
+| 56 MB vertex buffer drawn as points | 106.6 ms | 60.3 ms |
+
+The change is on the R2 branch and lands with R2. The paced comparison above
+has not been re-run with it.
+
 ## Readback presentation
 
 Readback is the port's Windows default for Qt canvases. Each paint draws the

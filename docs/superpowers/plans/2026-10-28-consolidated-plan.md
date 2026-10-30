@@ -50,7 +50,7 @@ unmodified scientific hosts, napari first, run on it with practical parity.
 | Strict matrix | 13 of 14 mandatory rows qualified (6 Windows, 7 WSL), bound to `62df5e4c...` and `374a74ea...`. **Windows napari-threedee: PENDING.** DIVE and visbrain are non-mandatory and not admitted. | `compat/no-opengl-matrix.json` |
 | Hot swap | Stock napari works with the current wheel on Windows cp312. Drag-race fix merged (PR #24). Smooth-line criterion merged (PR #25). | `2026-10-28-napari-hot-swap.md` |
 | Startup stall | Mechanism found for the 2026-10-28 dev-environment recurrence: the default thread pool was lost early in startup. The qualification stall's pool state was never captured. The closer is unidentified (PR #26). | `docs/threedee-startup-diagnosis.md` |
-| Performance (W8) | Report done. Resident scenes keep the refresh rate; uploads are slower than OpenGL's, and partial texture updates much slower (B18). Readback presentation costs over 200 ms per 4K frame (B19). The hot swap moves to native presentation at R2, after the napari parity suites pass under it (D18). B19 and B18's CPU part are fixed on the R2 branch (run `b19-readback-257`). | `docs/performance-report.md` |
+| Performance (W8) | Report done. Resident scenes keep the refresh rate; uploads are slower than OpenGL's, and partial texture updates much slower (B18). Readback presentation costs over 200 ms per 4K frame (B19). The hot swap moves to native presentation at R2, after the napari parity suites pass under it (D18). B19 and B18's CPU part are fixed on the R2 branch (run `b19-readback-257`). Full texture uploads are about 3 times faster there (P1). | `docs/performance-report.md` |
 
 ## Decisions
 
@@ -95,7 +95,7 @@ W11 publication and W12 upstream posting each need explicit approval.
 | ID | Work | Exit | Needs |
 | --- | --- | --- | --- |
 | R1 (W9) | Windows napari-threedee strict row | A cause and a regression test, then full lifecycle, nine-zero shutdown and all three gates on the release artifact (spec :340-345; status :86-87). A passing replay never closes it (diagnosis :49-50). | Identify the closer. Instrument hot-swap and diagnostic launches and wait for a recurrence. **Instrumentation** (2026-10-29): `tools/pool_watch.py` watches the default thread pool's worker-factory handle and, when it is lost, records the time, the handle's new type and every Python thread's stack. It only queries object types; CPU tests cover the record. Launches enable it with `VISPY_POOL_WATCH=<events.jsonl>`. **It crashes Tk processes** (run `b19-readback-257`): with it enabled, three of three Tk test runs ended in a fatal exception 0x80000003 in the watcher's thread while it was garbage-collecting; without it, none did. CPython 3.12 runs a scheduled collection in whichever thread next executes bytecode, so the watcher's 5 ms loop can run Tk's finalizers off Tk's thread, and Qt objects carry the same risk. It is replaced by an out-of-process watcher (D20, run `r1-external-poller-259`): `tools/pool_watch_external.py --output <events.jsonl> -- <command>` wraps a launch. Runs 249 and 255 made their napari launches without any watcher. |
-| R2 | Release assembly: a fresh build of the then-current source (D1) | Every mandatory row requalified on it, final-head CI, promotion review | R1. The fresh source must include run `w4-napari-layer-families-236`'s patch set: run `w1-w5-native-batch-227`'s (W1, W5 smooth line ends, W15), run `w5-fringe-native-234`'s minimum smooth coverage, and the Qt backend's Dawn canvas release fix. Those are pinned runtime files, so the Tk candidate's runtime inputs are renewed with it. The patch set is kept, applied to `main`, on the branch `r2/pending-runtime-patches` (O5). D18 adds the switch of the Windows hot swap to native presentation, with strict no-OpenGL qualification selecting readback explicitly. It applies only after the napari parity suites pass under native presentation on the R2 test wheel. That condition is met (runs 249 and 255). The switch is made at R2 assembly, because selecting readback explicitly edits the pinned strict harness. The branch also carries B19 and B18's CPU part (run `b19-readback-257`, `bdfce97`). |
+| R2 | Release assembly: a fresh build of the then-current source (D1) | Every mandatory row requalified on it, final-head CI, promotion review | R1. The fresh source must include run `w4-napari-layer-families-236`'s patch set: run `w1-w5-native-batch-227`'s (W1, W5 smooth line ends, W15), run `w5-fringe-native-234`'s minimum smooth coverage, and the Qt backend's Dawn canvas release fix. Those are pinned runtime files, so the Tk candidate's runtime inputs are renewed with it. The patch set is kept, applied to `main`, on the branch `r2/pending-runtime-patches` (O5). D18 adds the switch of the Windows hot swap to native presentation, with strict no-OpenGL qualification selecting readback explicitly. It applies only after the napari parity suites pass under native presentation on the R2 test wheel. That condition is met (runs 249 and 255). The switch is made at R2 assembly, because selecting readback explicitly edits the pinned strict harness. The branch also carries B19 and B18's CPU part (run `b19-readback-257`) and P1's upload changes (run `perf-profile-261`). Its head is `8adcb25`. |
 
 Additional R1 evidence: the 2026-10-23 stall in a napari-hosted volume case
 (`iso_categorical_fast`, run native65) had a consistent signature. Its main
@@ -160,8 +160,18 @@ baseline closes with W15.
 | O2 | Mark the expected failures as expected | **Done, without xfail**, because the evidence rules forbid skip and xfail. `tests/hosts/conftest.py` and `tests/parity/conftest.py` label the listed failures in pytest's report and its JUnit XML: 37, all superseded oracle fixtures kept by D6. D8's four cases left the list when D19 revised D8. They count the failures the index does not explain and name any listed test that passes. No outcome changes. |
 | O3 | One registry of the documented differences | **Done.** `tools/documented_outcomes.py` indexes D5, D9-D17 and D19: the modules that apply each decision, and the cases and limits they hold. It also holds the expected failures. A CPU contract checks it against those modules and against each suite's case list. |
 | O4 | One curated contract entry instead of re-exports through an unrelated module | **Done.** `tests/contract/curated_contracts.py` lists the curated contract modules. Until R2 the wheel suite imports it; at R2, CI's list names it directly. Its check requires every contract module to run in a workflow, be curated, or be declared. It found 11 published CPU contract modules that run in no workflow (`NOT_IN_CI`); each joins the curated list after a run in CI's environment. `test_wheel_index` stays local until W11 (`UNPUBLISHED`), so the check allows a checkout without it. The first version listed it in `NOT_IN_CI`, which failed every CPU job of PR #38, because the published tree lacks it. The local CI-list run had passed on the local tree, which has it. |
-| O5 | Keep the pending runtime patches outside `build/` | **Done.** Branch `r2/pending-runtime-patches` (`bfe66d3`, on `main` `f2f9129`) carries run 236's patch set, with only the replaced lines changed. `bdfce97` adds B19 and B18's CPU part (run `b19-readback-257`). It has no PR, and no workflow runs on it. R2 builds from it. |
+| O5 | Keep the pending runtime patches outside `build/` | **Done.** Branch `r2/pending-runtime-patches` (`bfe66d3`, on `main` `f2f9129`) carries run 236's patch set, with only the replaced lines changed. `bdfce97` adds B19 and B18's CPU part (run `b19-readback-257`), and `8adcb25` adds P1's upload changes (run `perf-profile-261`). It has no PR, and no workflow runs on it. R2 builds from it. |
 | O6 | Line endings, and the benchmark harness's setup and format | **Done.** `main`'s `.gitattributes` (`* -text`) keeps checkouts byte-preserving, because dependency checksums and pinned file hashes need exact bytes, so mixed line endings are intentional and nothing is normalized; O1 flags line-ending-only drift instead. The pinned W8 harness is fixed in a successor (W8). |
+
+### Performance (user, 2026-10-30)
+
+The user asked to close the open work first, then look at performance, and chose this order.
+
+| ID | Work | State |
+| --- | --- | --- |
+| P1 | Upload memory churn. Full uploads allocated and faulted in fresh memory every frame: the payload snapshot, the replaced CPU shadow, and Dawn's staging for `WriteTexture`. | **Textures done on a test wheel** (run `perf-profile-261`; on the R2 branch). Headless, with the upload every frame, a 4096x4096 float32 image takes 15.6 ms instead of 46.9 (64 fps instead of 21), and a 256-cubed volume 15.0 instead of 35.8. **Vertex buffers in part:** 60.3 ms instead of 106.6. Their uploads run inside the render pass, so reusing staging for them needs the draw encoder to upload before the pass begins (follow-up). W8's paced comparison against OpenGL has not been re-run. |
+| P2 | Frame latency. Native presentation shows each frame one refresh later than OpenGL (W8: 33 against 17 ms median). | Next. Needs on-screen windows. |
+| P3 | B18's queued case: update in place when only frames already submitted hold the texture. | After P2. A short design first, because it touches revision and device-loss logic. |
 
 ### Blocked on external hardware
 
@@ -430,6 +440,40 @@ with stock hosts and `444402`.
 - **Not covered.** The in-process scientific suites and the plugin parity suites
   are PyQt6-only harnesses. CPython 3.11, 3.13 and 3.14 need wheels at the current
   source.
+
+**P1 upload memory churn** on 2026-10-30, run `perf-profile-261`, on the R2
+branch's tree (`bdfce97`).
+
+- **Measured first.** Headless, every frame, on test wheel `9b7eea2d`:
+  - A 64 MiB copy into fresh memory takes 12.3 ms; into reused memory, 5.6 ms.
+    Page faults dominated.
+  - The payload snapshot faulted in a new 64 MiB block.
+  - The replaced CPU shadow was freed.
+  - `WriteTexture` made Dawn allocate a dedicated staging buffer.
+  - Structured vertex arrays took the legacy path, which copied them twice.
+- **Changes.**
+  - A: owned capture for structured and void dtypes.
+  - B: a bounded native recycler for large byte blocks.
+  - C: pooled host-mapped staging for full texture uploads, copied by the
+    frame's own encoder.
+
+  | Workload, every frame | Before | A+B | A+B+C |
+  | --- | --- | --- | --- |
+  | 4096x4096 float32 image | 46.9 ms | 25.4 ms | 15.6 ms |
+  | 256-cubed float32 volume | 35.8 ms | 22.0 ms | 15.0 ms |
+  | 56 MB vertex buffer, points | 106.6 ms | 62.7 ms | 60.3 ms |
+
+- **Checks.**
+  - ctest 44 of 44, with contracts for A and B.
+  - A new GPU test for C checks every upload's bytes, and that warm uploads
+    allocate nothing of their own.
+  - The six GPU test directories pass 1,669 of 1,863 on both wheels. Only
+    the new test and transient Tk start-up failures differ, and those pass
+    on recheck.
+  - napari parity passes 61 of 61.
+- **On the R2 branch** as `8adcb25`.
+- **Incident.** Two `uv run` calls from inside the snapshot created a stray,
+  empty `.venv` there. It was removed before any build (standing rule).
 
 **D20's out-of-process watcher** on 2026-10-29, run `r1-external-poller-259`.
 
@@ -837,6 +881,7 @@ H01 and V04.
 5. W15 and R2 (fresh release build), then W11 at the release and W12 on approval.
 6. Backlog as capacity allows. B19 and B18's CPU part are on the R2 branch;
    B18's queued-frame copy remains.
+7. Performance (user, 2026-10-30): P1 is done for textures, then P2 and P3.
 
 ## Standing rules
 
@@ -899,6 +944,9 @@ H01 and V04.
     layers fixture's `shapes_selected` depends on it (run `b19-readback-257`).
   - Wrap diagnostic launches with `tools/pool_watch_external.py` (D20). Never use
     the in-process `tools/pool_watch.py`, which crashed Tk processes.
+  - Run `uv` from the repository root, never inside a source snapshot. There,
+    uv treats the snapshot's `pyproject.toml` as the project and creates a
+    `.venv` (run `perf-profile-261`).
   - Admissions also need the 23-job CI and a promotion review.
 - **Hygiene.**
   - Follow AGENTS.md: 20 GiB scratch and a 10 GiB reserve.
