@@ -13,12 +13,15 @@ Update, 2026-10-29. The active plan is the
 [consolidated plan](superpowers/plans/2026-10-28-consolidated-plan.md). The
 Windows napari-threedee row still blocks the release: its startup stall loses
 the process's default thread pool, and the code that closes it is not yet
-known (R1). Launches can now record that moment with `tools/pool_watch.py`.
+known (R1). Launches can now record that moment from outside the process with
+`tools/pool_watch_external.py` (D20). The earlier in-process `tools/pool_watch.py`
+crashed Tk processes and is no longer used.
 Stock napari and stock Glue pass both hot-swap gates on the test wheels that
 carry the release patch set. W4 and W5 added independent OpenGL references for
 napari layer families and layer controls, wide and Agg lines, and markers.
 They pass on those test wheels, several under user-approved documented
-differences (D9-D17); four render-plane cases stay documented failures (D8).
+differences (D9-D17 and D19). D19 also covers four render-plane cases that D8
+had kept as documented failures.
 The release (R2) is a fresh build of the current source with that patch set,
 requalified on every mandatory row.
 
