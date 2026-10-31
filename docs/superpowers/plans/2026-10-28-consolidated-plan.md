@@ -50,7 +50,7 @@ unmodified scientific hosts, napari first, run on it with practical parity.
 | Strict matrix | 13 of 14 mandatory rows qualified (6 Windows, 7 WSL), bound to `62df5e4c...` and `374a74ea...`. **Windows napari-threedee: PENDING.** DIVE and visbrain are non-mandatory and not admitted. | `compat/no-opengl-matrix.json` |
 | Hot swap | Stock napari works with the current wheel on Windows cp312. Drag-race fix merged (PR #24). Smooth-line criterion merged (PR #25). | `2026-10-28-napari-hot-swap.md` |
 | Startup stall | Mechanism found for the 2026-10-28 dev-environment recurrence: the default thread pool was lost early in startup. The qualification stall's pool state was never captured. The closer is unidentified (PR #26). | `docs/threedee-startup-diagnosis.md` |
-| Performance (W8) | Report done. Resident scenes keep the refresh rate; uploads are slower than OpenGL's, and partial texture updates much slower (B18). Readback presentation costs over 200 ms per 4K frame (B19). The hot swap moves to native presentation at R2, after the napari parity suites pass under it (D18). B19 and B18's CPU part are fixed on the R2 branch (run `b19-readback-257`). Full texture uploads are about 3 times faster there (P1). Vsynced native presentation there now paces like OpenGL's swap, without the extra refresh (P2). A texture updated between two draws of one frame no longer copies its whole CPU shadow (P3). | `docs/performance-report.md` |
+| Performance (W8) | Report done. Resident scenes keep the refresh rate; uploads are slower than OpenGL's, and partial texture updates much slower (B18). Readback presentation costs over 200 ms per 4K frame (B19). The hot swap moves to native presentation at R2, after the napari parity suites pass under it (D18). B19 and B18's CPU part are fixed on the R2 branch (run `b19-readback-257`). Full texture uploads are about 3 times faster there (P1). Vsynced native presentation there now paces like OpenGL's swap, without the extra refresh (P2). A texture updated between two draws of one frame no longer copies its whole CPU shadow (P3). A vsynced frame slower than a refresh renders one frame ahead, which brings full uploads to 0.82-0.99 of OpenGL's frame rate in a compact re-run (P4). | `docs/performance-report.md` |
 
 ## Decisions
 
@@ -82,8 +82,9 @@ unmodified scientific hosts, napari first, run on it with practical parity.
 | D22 | **Native presentation under vsync paces like OpenGL's swap** (user, 2026-10-30: "Pace like OpenGL"). On a FIFO surface, the paint returns once its own frame's GPU work has retired. The wait is bounded, and counted as `present_pacing_waits` with its time and timeouts. W8's measured-work gate still forbids `completion_waits` and `finish_calls`. | Run `perf-profile-261`: the port let up to 3 frames queue ahead, so its frames retired one refresh after OpenGL's. Paced and pinned (D23), its median and p95 are 16.32 and 19.01 ms, against 33.09 and 35.52 without pacing and upstream's 16.62 and 33.45. Mailbox retired frames in 3.2 ms, but rendered 286 fps and showed 21% of them. Deferring paints would not show in W8's metric. |
 | D23 | **On-screen benchmark runs keep every process on the performance cores** (user, 2026-10-30: "Run, pinned to fast cores"). Run `perf-profile-261`'s `pinned_launch.py` starts the run in a job object limited to the processors of the highest efficiency class, and opts each process out of power throttling. Each process's mask is recorded. Nothing system-wide changes. | Unpinned, Windows ran the non-foreground benchmark windows on efficiency cores in 60-66% of frames. Per-frame CPU work took 2-3 times as long, and refreshes were missed. The two wheels compared were identical headless and on screen. |
 | D24 | **P3 as revised: copy-on-write copies a texture's CPU shadow only when it must** (user, 2026-10-30: "implement the design"). A settled revision, current on the GPU with nothing pending, moves its shadow to the copy. An entire update copies none. A device loss rebuilds a live revision from its own pixels. The first design's rule, update in place when only submitted frames hold the texture, is dropped. | Run `perf-profile-261`'s probes: after P2's pacing, and under readback, updates made before a frame's draws already reuse the texture, so the first design's case no longer occurs on napari's paths. Copy-on-write remained for an update between two draws of one frame, at about 20 ms per 64 MiB texture, almost all a shadow copy. |
+| D25 | **A vsynced frame slower than a refresh renders one frame ahead** (user, 2026-10-31: "sure", to pacing on the previous frame so that CPU work overlaps the GPU, with camera-only latency kept at one refresh). D22 still holds for a frame produced in less than one refresh interval, counted from the previous paced paint's return: its paint returns once its own GPU work has retired. A slower frame's paint returns once the previous frame has retired. The Win32 surface reads its monitor's refresh rate, and elsewhere pacing assumes 60 Hz. | Runs `quick-bench-262` and `pacing-ahead-263`. With P1-P3, the paced paint waited 10.6-28.5 ms per heavy frame, which OpenGL overlaps with the next frame's CPU work: 0.64-0.72 of OpenGL's frame rate on uploads. Waiting only for the previous frame would show camera-only frames a refresh later, since they are produced faster than the display shows them. |
 
-No decisions are open. The latest is D24, the user's approval of P3's revised design.
+No decisions are open. The latest is D25, render-ahead for vsynced frames slower than a refresh.
 
 The user has already decided, and confirmed on 2026-10-29, that the Windows
 napari-threedee row stays required, so the release waits for R1. On 2026-10-29
@@ -97,7 +98,7 @@ W11 publication and W12 upstream posting each need explicit approval.
 | ID | Work | Exit | Needs |
 | --- | --- | --- | --- |
 | R1 (W9) | Windows napari-threedee strict row | A cause and a regression test, then full lifecycle, nine-zero shutdown and all three gates on the release artifact (spec :340-345; status :86-87). A passing replay never closes it (diagnosis :49-50). | Identify the closer. Instrument hot-swap and diagnostic launches and wait for a recurrence. **Instrumentation** (2026-10-29): `tools/pool_watch.py` watches the default thread pool's worker-factory handle and, when it is lost, records the time, the handle's new type and every Python thread's stack. It only queries object types; CPU tests cover the record. Launches enable it with `VISPY_POOL_WATCH=<events.jsonl>`. **It crashes Tk processes** (run `b19-readback-257`): with it enabled, three of three Tk test runs ended in a fatal exception 0x80000003 in the watcher's thread while it was garbage-collecting; without it, none did. CPython 3.12 runs a scheduled collection in whichever thread next executes bytecode, so the watcher's 5 ms loop can run Tk's finalizers off Tk's thread, and Qt objects carry the same risk. It is replaced by an out-of-process watcher (D20, run `r1-external-poller-259`): `tools/pool_watch_external.py --output <events.jsonl> -- <command>` wraps a launch. Runs 249 and 255 made their napari launches without any watcher. |
-| R2 | Release assembly: a fresh build of the then-current source (D1) | Every mandatory row requalified on it, final-head CI, promotion review | R1. The fresh source must include run `w4-napari-layer-families-236`'s patch set: run `w1-w5-native-batch-227`'s (W1, W5 smooth line ends, W15), run `w5-fringe-native-234`'s minimum smooth coverage, and the Qt backend's Dawn canvas release fix. Those are pinned runtime files, so the Tk candidate's runtime inputs are renewed with it. The patch set is kept, applied to `main`, on the branch `r2/pending-runtime-patches` (O5). D18 adds the switch of the Windows hot swap to native presentation, with strict no-OpenGL qualification selecting readback explicitly. It applies only after the napari parity suites pass under native presentation on the R2 test wheel. That condition is met (runs 249 and 255). The switch is made at R2 assembly, because selecting readback explicitly edits the pinned strict harness. The branch also carries B19 and B18's CPU part (run `b19-readback-257`) and P1's upload changes, P1's fix (step D), P2's pacing and P3 (run `perf-profile-261`). Its head is `55fed04`. |
+| R2 | Release assembly: a fresh build of the then-current source (D1) | Every mandatory row requalified on it, final-head CI, promotion review | R1. The fresh source must include run `w4-napari-layer-families-236`'s patch set: run `w1-w5-native-batch-227`'s (W1, W5 smooth line ends, W15), run `w5-fringe-native-234`'s minimum smooth coverage, and the Qt backend's Dawn canvas release fix. Those are pinned runtime files, so the Tk candidate's runtime inputs are renewed with it. The patch set is kept, applied to `main`, on the branch `r2/pending-runtime-patches` (O5). D18 adds the switch of the Windows hot swap to native presentation, with strict no-OpenGL qualification selecting readback explicitly. It applies only after the napari parity suites pass under native presentation on the R2 test wheel. That condition is met (runs 249 and 255). The switch is made at R2 assembly, because selecting readback explicitly edits the pinned strict harness. The branch also carries B19 and B18's CPU part (run `b19-readback-257`) and P1's upload changes, P1's fix (step D), P2's pacing and P3 (run `perf-profile-261`), and P4's render-ahead (run `pacing-ahead-263`). Its head is `9c50894`. |
 
 Additional R1 evidence: the 2026-10-23 stall in a napari-hosted volume case
 (`iso_categorical_fast`, run native65) had a consistent signature. Its main
@@ -163,7 +164,7 @@ baseline closes with W15.
 | O2 | Mark the expected failures as expected | **Done, without xfail**, because the evidence rules forbid skip and xfail. `tests/hosts/conftest.py` and `tests/parity/conftest.py` label the listed failures in pytest's report and its JUnit XML: 37, all superseded oracle fixtures kept by D6. D8's four cases left the list when D19 revised D8. They count the failures the index does not explain and name any listed test that passes. No outcome changes. |
 | O3 | One registry of the documented differences | **Done.** `tools/documented_outcomes.py` indexes D5, D9-D17 and D19: the modules that apply each decision, and the cases and limits they hold. It also holds the expected failures. A CPU contract checks it against those modules and against each suite's case list. |
 | O4 | One curated contract entry instead of re-exports through an unrelated module | **Done.** `tests/contract/curated_contracts.py` lists the curated contract modules. Until R2 the wheel suite imports it; at R2, CI's list names it directly. Its check requires every contract module to run in a workflow, be curated, or be declared. It found 11 published CPU contract modules that run in no workflow (`NOT_IN_CI`); each joins the curated list after a run in CI's environment. `test_wheel_index` stays local until W11 (`UNPUBLISHED`), so the check allows a checkout without it. The first version listed it in `NOT_IN_CI`, which failed every CPU job of PR #38, because the published tree lacks it. The local CI-list run had passed on the local tree, which has it. |
-| O5 | Keep the pending runtime patches outside `build/` | **Done.** Branch `r2/pending-runtime-patches` (`bfe66d3`, on `main` `f2f9129`) carries run 236's patch set, with only the replaced lines changed. `bdfce97` adds B19 and B18's CPU part (run `b19-readback-257`), and `8adcb25` adds P1's upload changes, `645b343` fixes their staged uploads, `53f3f49` adds P2's pacing, and `55fed04` adds P3 (run `perf-profile-261`). It has no PR, and no workflow runs on it. R2 builds from it. |
+| O5 | Keep the pending runtime patches outside `build/` | **Done.** Branch `r2/pending-runtime-patches` (`bfe66d3`, on `main` `f2f9129`) carries run 236's patch set, with only the replaced lines changed. `bdfce97` adds B19 and B18's CPU part (run `b19-readback-257`), and `8adcb25` adds P1's upload changes, `645b343` fixes their staged uploads, `53f3f49` adds P2's pacing, `55fed04` adds P3 (run `perf-profile-261`), and `9c50894` adds P4 (run `pacing-ahead-263`). It has no PR, and no workflow runs on it. R2 builds from it. |
 | O6 | Line endings, and the benchmark harness's setup and format | **Done.** `main`'s `.gitattributes` (`* -text`) keeps checkouts byte-preserving, because dependency checksums and pinned file hashes need exact bytes, so mixed line endings are intentional and nothing is normalized; O1 flags line-ending-only drift instead. The pinned W8 harness is fixed in a successor (W8). |
 
 ### Performance (user, 2026-10-30)
@@ -172,9 +173,10 @@ The user asked to close the open work first, then look at performance, and chose
 
 | ID | Work | State |
 | --- | --- | --- |
-| P1 | Upload memory churn. Full uploads allocated and faulted in fresh memory every frame: the payload snapshot, the replaced CPU shadow, and Dawn's staging for `WriteTexture`. | **Textures done on a test wheel** (run `perf-profile-261`; on the R2 branch). Headless, with the upload every frame, a 4096x4096 float32 image takes 15.6 ms instead of 46.9 (64 fps instead of 21), and a 256-cubed volume 15.0 instead of 35.8. **Vertex buffers in part:** 60.3 ms instead of 106.6. Their uploads run inside the render pass, so reusing staging for them needs the draw encoder to upload before the pass begins (follow-up). W8's paced comparison against OpenGL has not been re-run. **Fixed** (step D, `645b343`): C marked a staged upload current before Submit, so a frame whose encoding failed left the texture stale. |
+| P1 | Upload memory churn. Full uploads allocated and faulted in fresh memory every frame: the payload snapshot, the replaced CPU shadow, and Dawn's staging for `WriteTexture`. | **Textures done on a test wheel** (run `perf-profile-261`; on the R2 branch). Headless, with the upload every frame, a 4096x4096 float32 image takes 15.6 ms instead of 46.9 (64 fps instead of 21), and a 256-cubed volume 15.0 instead of 35.8. **Vertex buffers in part:** 60.3 ms instead of 106.6. Their uploads run inside the render pass, so reusing staging for them needs the draw encoder to upload before the pass begins (follow-up). W8's paced comparison has since been re-run in compact form (P4). **Fixed** (step D, `645b343`): C marked a staged upload current before Submit, so a frame whose encoding failed left the texture stale. |
 | P2 | Frame latency. Native presentation shows each frame one refresh later than OpenGL (W8: 33 against 17 ms median). | **Done on a test wheel** (run `perf-profile-261`; on the R2 branch as `53f3f49`). The port let up to 3 frames queue ahead of the display. Under vsync it now paces like OpenGL's swap (D22): a median of 16.32 ms against upstream's 16.62, pinned (D23). **Open:** in this session the port, paced or not, missed 1-32 refreshes per 1,000 frames, in bursts of one every 5 frames for 2-3 s. W8, an earlier run and upstream show none. It looks like a presentation-timing effect of this desktop's mixed refresh rates. |
 | P3 | B18's queued case: an update while a frame still holds the texture. | **Done on a test wheel** (run `perf-profile-261`, `p3-design.md`; on the R2 branch as `55fed04`). Revised design (D24): copy-on-write moves a settled revision's CPU shadow instead of copying it. On a 4096x4096 RGBA8 texture, between two draws, eight patches take 4.08 ms instead of 21.30, and a full upload 27.32 instead of 44.43. Single-draw frames are unchanged. Not done: pooling GPU textures, which would save about 3.5 ms per such frame for an extra 64 MiB of GPU memory. |
+| P4 | Render-ahead. P2's paced paint waited for its own frame, so heavy frames ran their CPU and GPU work in series (run `quick-bench-262`: 0.64-0.72 of OpenGL's frame rate on full uploads). | **Done on a test wheel** (run `pacing-ahead-263`; on the R2 branch as `9c50894`). A frame that took at least one refresh to produce returns once the previous frame has retired (D25). In the same session as OpenGL: a full 64 MiB image upload at 29.5 against 34.2 fps, a 256-cubed volume at 30.4 against 37.0, and 1M points with new positions at 10.7 against 10.8. Camera-only frames still wait for their own (median 16.39 ms). What remains on uploads is CPU work: packing, interpretation and the staging copy take 25.8 ms per 64 MiB image, against OpenGL's 12.7 ms upload. |
 
 ### Blocked on external hardware
 
@@ -443,6 +445,47 @@ with stock hosts and `444402`.
 - **Not covered.** The in-process scientific suites and the plugin parity suites
   are PyQt6-only harnesses. CPython 3.11, 3.13 and 3.14 need wheels at the current
   source.
+
+**P4 render-ahead** on 2026-10-31, runs `quick-bench-262` and
+`pacing-ahead-263`, on the R2 branch.
+
+- **Compact benchmark** (user, 2026-10-30: "can we have some more compact
+  benchmark?"). Run 262's `quick_bench.py` wraps W8's paced harness: 50
+  warm-up and 300 measured frames, 3 alternating pairs, and 1920x1080 image
+  viewports, so every window stays on the primary monitor. It is pinned
+  (D23) and takes 8-13 minutes. It is indicative, not PERF-1 qualification.
+- **Cause.** With P1-P3 (run 262), the candidate kept up on camera-only
+  frames and eight patches, but reached 0.64-0.72 of OpenGL's frame rate on
+  full uploads. Its CPU work per frame was close to OpenGL's for the image
+  and the points. The paced paint then waited 10.6-28.5 ms for its own
+  frame, which OpenGL overlaps with the next frame's CPU work.
+- **Fix** (D25, step H). A frame that took at least one refresh interval to
+  produce returns once the previous frame has retired; a faster one still
+  waits for its own. The Win32 surface reads its monitor's refresh rate. New
+  counters `present_render_ahead` and `present_render_ahead_waits`, and a
+  test override of the interval.
+- **Result** (run 263, upstream against candidate fps): camera-only image
+  60.0 and 60.0, with a candidate median of 16.39 ms; full 64 MiB image 34.2
+  and 29.5 (run 262: 37.4 and 24.7); eight patches 60.0 and 60.0; 256-cubed
+  volume 37.0 and 30.4; 1M points 10.8 and 10.7 (10.6 and 7.6). Every upload
+  frame rendered ahead, and the candidate's frame time equals its CPU work.
+- **Correction.** Run 262's volume rows ran about half as fast on both
+  renderers as in run 263, and so did its first points pair. In run 263 the
+  candidate's volume costs per byte match its image's, so there is no
+  volume-specific upload cost.
+- **Latency.** The harness now observes a heavy frame's completion when the
+  next frame polls for it, as it does for upstream. Those latencies read
+  higher than the GPU's retirement on both renderers, so frame rate is the
+  measure there.
+- **Checks.** ctest 44 of 44. A new Qt test: a frame slower than a refresh
+  returns with at most one frame in flight, and fast frames still wait for
+  their own. The pacing tests pass 8 of 8 runs. The GPU test directories
+  pass 1,681 of 1,875 (ABCDEFG: 1,680 of 1,874), and only Tk start-up
+  flakes differ. The benchmark tests pass 609 of 626 on both wheels.
+- **Test fix** (step Ht). P2's unpaced test flushed 12 headless frames
+  without processing events, and failed in 3 of 8 runs on ABCDEFG too
+  ("submission capacity exhausted"). It now waits for a free frame slot.
+- **On the R2 branch** as `9c50894` (steps H and Ht).
 
 **P3 copy-on-write** on 2026-10-30, run `perf-profile-261`, on the R2 branch.
 
@@ -955,8 +998,8 @@ H01 and V04.
 5. W15 and R2 (fresh release build), then W11 at the release and W12 on approval.
 6. Backlog as capacity allows. B19 and B18, its queued case through P3, are on
    the R2 branch. B20 needs a root cause.
-7. Performance (user, 2026-10-30): P1 (textures), P2 and P3 are on the R2
-   branch.
+7. Performance (user, 2026-10-30): P1 (textures), P2, P3 and P4 are on the
+   R2 branch.
 
 ## Standing rules
 
