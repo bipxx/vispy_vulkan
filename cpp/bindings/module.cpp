@@ -65,6 +65,8 @@ nb::dict info_dict(const DeviceInfo& info) {
     out["last_vertex_provoking"] = info.last_vertex_provoking;
     out["timestamp_query"] = info.timestamp_query;
     out["timestamp_quantization_ns"] = info.timestamp_quantization_ns;
+    out["host_mapped_pointer"] = info.host_mapped_pointer;
+    out["host_import_limit"] = info.host_import_limit;
     out["depth_stencil_storage"] = info.depth_stencil_storage;
     out["ok"] = info.ok;
     out["error"] = info.error;
@@ -148,6 +150,14 @@ nb::dict probe_dict(const Probe& probe) {
     out["owned_upload_fallback_exports"] = probe.owned_upload_fallback_exports;
     out["owned_texture_transfers"] = probe.owned_texture_transfers;
     out["owned_texture_transfer_bytes"] = probe.owned_texture_transfer_bytes;
+    out["host_block_captures"] = probe.host_block_captures;
+    out["host_block_capture_bytes"] = probe.host_block_capture_bytes;
+    out["host_import_copies"] = probe.host_import_copies;
+    out["host_import_bytes"] = probe.host_import_bytes;
+    out["host_import_fallbacks"] = probe.host_import_fallbacks;
+    out["host_imports"] = probe.host_imports;
+    out["host_import_evictions"] = probe.host_import_evictions;
+    out["host_import_pinned_bytes"] = probe.host_import_pinned_bytes;
     out["native_batches"] = probe.native_batches;
     out["native_commands"] = probe.native_commands;
     out["native_interpret_ns"] = probe.native_interpret_ns;
@@ -499,6 +509,8 @@ NB_MODULE(_dawn, m) {
     m.def("configure_frame_slots", &configure_frame_slots);
     m.def("diagnostic_submission_controls", &diagnostic_submission_controls,
           nb::arg("hold_completions") = false, nb::arg("fail_once") = "");
+    m.def("diagnostic_host_import_limit", &diagnostic_host_import_limit, nb::arg("bytes"),
+          "Test control: the pinned bytes host imports may hold (plan P5); 0 restores the default.");
     m.def("diagnostic_present_refresh_interval", &diagnostic_present_refresh_interval,
           nb::arg("canvas_id"), nb::arg("interval_ns"),
           "Test control: the refresh interval vsynced pacing compares frame production with; 0 restores the display's.");

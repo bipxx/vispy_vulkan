@@ -4,8 +4,9 @@
 #include "runtime_byte_recycler.hpp"
 #include <algorithm>
 namespace vispy::textures {
+// *copied reports whether a patch first copied a host block shadow that something else still holds (plan P5).
 inline bool apply_owned_texture_data(TextureData& data, ByteBlob& upload, const std::vector<int>& offset, bool allow_transfer,
-                               const TextureData* allocation = nullptr) {
+                               const TextureData* allocation = nullptr, bool* copied = nullptr) {
     using namespace texture_detail;
     const size_t count = texels(data);
     if (upload.shape.size() != static_cast<size_t>(data.dimensions + 1) ||
@@ -24,17 +25,20 @@ inline bool apply_owned_texture_data(TextureData& data, ByteBlob& upload, const 
     }
     const size_t component_bytes = dtype_size(upload.dtype);
     const size_t upload_pixel_bytes = multiply(component_bytes, data.channels);
-    if (upload.bytes.size() != multiply(upload_texels, upload_pixel_bytes)) throw error("DATA byte size differs from declared shape/dtype");
+    if (upload.size() != multiply(upload_texels, upload_pixel_bytes)) throw error("DATA byte size differs from declared shape/dtype");
     if (entire && allow_transfer) {
         auto dtype=upload.dtype;
-        // The replaced shadow's storage serves the next payload snapshot (runtime_byte_recycler.hpp).
+        // The replaced shadow's storage serves the next payload snapshot (runtime_byte_recycler.hpp); a replaced
+        // host block returns to its pool once nothing else holds it (plan P5).
         vispy::memory::ByteRecycler::shared().give(std::move(data.pixels));
         data.pixels=std::move(upload.bytes);
+        data.host=std::move(upload.host);
         data.dtype=std::move(dtype);
         return true;
     }
     // Partial/mixed-dtype behavior remains the exact canonical const helper.
-    apply_texture_data(data,upload,offset,allocation);
+    const bool copied_block = apply_texture_data(data,upload,offset,allocation);
+    if (copied) *copied = copied_block;
     return false;
 }
 } // namespace vispy::textures

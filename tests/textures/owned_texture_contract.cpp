@@ -140,6 +140,50 @@ int main(){try{
         require(recycler.kept_bytes()==0,"clear left storage");
         ++cases;
     }
+    // Host blocks (plan P5, runtime_host_block.hpp): a payload of at least 1 MiB arrives in a page-aligned block, which a
+    // full transfer moves into the shadow. A patch writes the block in place while the shadow is its one owner, and
+    // copies it first while something else holds it (a frame copying from it). The pool keeps returned blocks warm,
+    // and an imported block it drops waits for Dawn's disposal before its pages are freed.
+    {
+        auto& pool=vispy::memory::HostBlockPool::shared();
+        pool.clear();
+        constexpr size_t large=size_t{4}<<20;
+        TextureData data;data.dimensions=2;data.width=1024;data.height=1024;data.channels=4;data.format="rgba";data.dtype="u8";data.pixels.assign(large,3);
+        ByteBlob upload;upload.shape={1024,1024,4};upload.dtype="u8";upload.host=pool.take(large);std::memset(upload.host->data(),7,large);
+        const auto* incoming=upload.host->data();
+        require(upload.host->size()==large&&upload.host->capacity()%vispy::memory::HostBlock::alignment==0&&
+                reinterpret_cast<uintptr_t>(incoming)%vispy::memory::HostBlock::alignment==0,"host block not aligned");
+        require(apply_owned_texture_data(data,upload,{0,0},true)&&data.host&&data.host->data()==incoming&&data.pixels.empty()&&
+                shadow_size(data)==large&&!upload.host,"full transfer did not move the block");
+        auto first=make_blob({1,2,4},"u8");bool copied=true;
+        require(!apply_owned_texture_data(data,first,{3,5},true,nullptr,&copied)&&!copied&&data.host&&data.host->data()==incoming,
+                "unshared block not patched in place");
+        require(shadow_data(data)[(3*1024+5)*4]==first.bytes[0]&&shadow_data(data)[0]==7,"in-place patch wrong");
+        const std::vector<uint8_t> patched(shadow_data(data),shadow_data(data)+large);
+        auto frame=data.host;auto second=make_blob({1,1,4},"u8");copied=false;
+        require(!apply_owned_texture_data(data,second,{0,0},true,nullptr,&copied)&&copied&&!data.host&&data.pixels.size()==large,
+                "shared block not copied before the patch");
+        require(std::equal(patched.begin(),patched.end(),frame->data()),"patch wrote a shared block");
+        require(std::equal(patched.begin()+4,patched.end(),data.pixels.begin()+4)&&
+                std::equal(second.bytes.begin(),second.bytes.end(),data.pixels.begin()),"copied shadow differs");
+        frame.reset();
+        require(pool.kept_bytes()>=large,"returned block not kept");
+        auto again=pool.take(large-100);
+        require(again->data()==incoming&&again->size()==large-100,"kept block not reused");
+        pool.imported(*again);
+        require(vispy::memory::HostBlockPool::is_imported(*again)&&pool.pinned_bytes()==again->capacity(),"import not recorded");
+        auto* dropped=again.get();
+        again.reset();
+        pool.clear();
+        pool.free_disposed();
+        require(pool.waiting(dropped),"imported block freed before its disposal");
+        pool.disposed(*dropped);
+        require(pool.pinned_bytes()==0,"disposal not recorded");
+        pool.free_disposed();
+        require(!pool.waiting(dropped)&&pool.kept_bytes()==0,"disposed block not freed");
+        vispy::memory::ByteRecycler::shared().clear();
+        ++cases;
+    }
     std::cout<<"{\"status\":\"PASS_OWNED_TEXTURE_DATA_CPU\",\"cases\":"<<cases<<",\"full_address_transfers\":"<<transfers<<",\"partial_unchanged_fallbacks\":"<<partials<<",\"exact_validation_failures\":"<<failures<<",\"runtime_gated_cases\":"<<runtime_gated_cases<<",\"runtime_1d_fallbacks\":"<<runtime_1d_fallbacks<<",\"malformed_gate_cases\":"<<malformed_gate_cases<<",\"legacy_1d_mismatch_cases\":"<<legacy_mismatch_cases<<",\"large_bytes\":67108864,\"GPU_used\":false}\n";
     return 0;
 }catch(const std::exception& error){std::cerr<<error.what()<<'\n';return 1;}}

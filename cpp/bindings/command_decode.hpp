@@ -77,8 +77,9 @@ inline Value from_py(nb::handle obj, const nb::list& arrays, uint64_t& decoded_b
                 value.blob.shape.push_back(static_cast<int>(nb::cast<int64_t>(dim)));
             }
             auto& snapshot = owned_snapshot(dict["__owned_blob__"]);
-            decoded_bytes += snapshot.bytes.size();
+            decoded_bytes += snapshot.bytes.size() + (snapshot.host ? snapshot.host->size() : 0);
             value.blob.bytes = std::move(snapshot.bytes);
+            value.blob.host = std::move(snapshot.host);
             snapshot.consumed = true;
             return value;
         }

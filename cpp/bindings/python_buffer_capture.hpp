@@ -7,11 +7,14 @@
 #include <utility>
 #include <vector>
 #include "runtime_byte_recycler.hpp"
+#include "runtime_host_block.hpp"
 
 namespace vispy_binding::detail {
 // Called while Python's GIL is held. The exporter is pinned only for this
 // synchronous native copy. No Py_buffer or Python address escapes the call.
-inline bool capture_buffer(PyObject* object,std::vector<uint8_t>& destination) {
+// A payload of at least 1 MiB is copied into a host block instead (plan P5),
+// which the GPU can copy a full texture upload from; destination stays empty.
+inline bool capture_buffer(PyObject* object,std::vector<uint8_t>& destination,vispy::memory::HostBytes& host) {
     Py_buffer view{};
     if(PyObject_GetBuffer(object,&view,PyBUF_CONTIG_RO)!=0)return false;
     struct Release {Py_buffer* view;~Release(){PyBuffer_Release(view);}} release{&view};
@@ -20,6 +23,13 @@ inline bool capture_buffer(PyObject* object,std::vector<uint8_t>& destination) {
         if(view.len) {
             const auto* begin=static_cast<const uint8_t*>(view.buf);
             const auto size=static_cast<size_t>(view.len);
+            if(size>=vispy::memory::HostBlockPool::min_bytes) {
+                auto block=vispy::memory::HostBlockPool::shared().take(size);
+                std::memcpy(block->data(),begin,size);
+                destination.clear();
+                host=std::move(block);
+                return true;
+            }
             // Copy into a recycled block's committed pages when one fits (runtime_byte_recycler.hpp).
             snapshot=vispy::memory::ByteRecycler::shared().take(size);
             if(snapshot.size()==size)std::memcpy(snapshot.data(),begin,size);

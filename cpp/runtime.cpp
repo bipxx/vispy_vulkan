@@ -440,15 +440,17 @@ struct TextureRev : TextureData {
 // does not take them. They return when this goes out of scope, also if the copy throws.
 struct LentTextureContents {
     explicit LentTextureContents(TextureRev& revision)
-        : owner(revision), pixels(std::exchange(revision.pixels, {})), updates(std::exchange(revision.updates, {})),
-          base(std::exchange(revision.base, {})) {}
+        : owner(revision), pixels(std::exchange(revision.pixels, {})), host(std::exchange(revision.host, {})),
+          updates(std::exchange(revision.updates, {})), base(std::exchange(revision.base, {})) {}
     ~LentTextureContents() {
         owner.pixels = std::move(pixels);
+        owner.host = std::move(host);
         owner.updates = std::move(updates);
         owner.base = std::move(base);
     }
     TextureRev& owner;
     std::vector<uint8_t> pixels;
+    vispy::memory::HostBytes host;
     std::vector<TextureRev::Region> updates;
     std::shared_ptr<TextureRev> base;
 };
@@ -465,7 +467,10 @@ bool copy_texture_on_write(TextureRev& copy, TextureRev& current, bool entire, P
     {
         LentTextureContents lent(current);
         copy = current;
-        if (settled) copy.pixels = std::exchange(lent.pixels, {});
+        if (settled) {
+            copy.pixels = std::exchange(lent.pixels, {});
+            copy.host = std::exchange(lent.host, {});  // plan P5: a frame copying from it still holds it
+        }
     }
     ++probe.texture_copy_on_write;
     if (settled) {
@@ -473,12 +478,12 @@ bool copy_texture_on_write(TextureRev& copy, TextureRev& current, bool entire, P
         return true;
     }
     if (!entire) {
-        const auto& shadow = current.pixels;
-        copy.pixels = vispy::memory::ByteRecycler::shared().take(shadow.size());
-        if (!shadow.empty() && copy.pixels.size() == shadow.size())
-            std::memcpy(copy.pixels.data(), shadow.data(), shadow.size());
-        else copy.pixels = shadow;
-        probe.texture_copy_on_write_bytes += shadow.size();
+        const uint8_t* shadow = shadow_data(current);
+        const size_t size = shadow_size(current);
+        copy.pixels = vispy::memory::ByteRecycler::shared().take(size);
+        if (size && copy.pixels.size() == size) std::memcpy(copy.pixels.data(), shadow, size);
+        else copy.pixels.assign(shadow, shadow + size);
+        probe.texture_copy_on_write_bytes += size;
     }
     return false;
 }
@@ -913,7 +918,13 @@ struct Canvas {
     std::weak_ptr<Ticket> ahead_ticket;
 };
 
-// A pooled, host-mapped buffer for a full texture upload (Engine::stage_texture_copy). queue.WriteTexture
+// Plan P5 (user, 2026-10-31: D26): VISPY_DAWN_HOST_IMPORT=0 turns host imports off, with the toggle they need.
+static bool host_import_requested() {
+    const char* value = std::getenv("VISPY_DAWN_HOST_IMPORT");
+    return !(value && std::string_view(value) == "0");
+}
+
+// A pooled, host-mapped buffer for a full texture upload (Engine::stage_texture_rows). queue.WriteTexture
 // makes Dawn allocate and fill a dedicated staging buffer per call above its 4 MiB ring: 64 MiB per frame for a
 // 4096x4096 float32 image (run perf-profile-261). A lease is unmapped and owned by its submission's Ticket while
 // its copy is in flight, then mapped again for the next upload. A patch lease holds a revision's partial updates
@@ -953,6 +964,7 @@ struct Ticket {
     std::vector<wgpu::BindGroup> bind_groups;
     std::vector<wgpu::Buffer> transient_buffers;
     std::vector<std::shared_ptr<StagingLease>> staging;  // full-upload staging in flight
+    std::vector<vispy::memory::HostBytes> host_blocks;  // host blocks this frame's copies read (plan P5)
     std::optional<NativeLinePool::BatchReservation> line_resources;
     bool submission_owner_retained = false;
     bool diagnostic_retirement_counted = false;
@@ -1045,6 +1057,27 @@ struct Engine {
     static constexpr size_t patch_staging_max_buffers = 8;
     std::vector<std::shared_ptr<StagingLease>> patch_staging_mapped;
     uint64_t patch_staging_kept_bytes = 0;
+    // Plan P5: host blocks imported as buffers (Dawn's HostMappedPointer), which full texture uploads copy from.
+    // An import pins its block's pages until it is disposed of; together they stay within host_import_limit. A
+    // released import is disposed of once a Ticket submitted after its release (first_ticket or later) has retired,
+    // or once the device is destroyed. Imports carry no Dawn dispose callback: Dawn tracks one as a queue task,
+    // and a task tracked once the device is lost never runs, so releasing the lost device would abort.
+    struct HostImport {
+        vispy::memory::HostBlock* block;
+        wgpu::Buffer buffer;
+        uint64_t generation;
+        uint64_t last_use;
+    };
+    struct ReleasedHostImport {
+        vispy::memory::HostBlock* block;
+        uint64_t first_ticket;
+    };
+    static constexpr uint64_t host_import_default_limit = uint64_t{512} << 20;
+    uint64_t host_import_limit = host_import_default_limit;
+    uint64_t host_import_clock = 0;
+    std::vector<HostImport> host_imports;
+    std::vector<ReleasedHostImport> released_host_imports;
+    uint64_t last_retired_ticket = 0;
     size_t frame_slots = 3;
     // Test controls affect completion delivery, never whether work reaches GPU.
     std::shared_ptr<std::atomic<bool>> hold_submission_completions =
@@ -1686,11 +1719,13 @@ struct Engine {
                     log("FREE buffer owner=" + std::to_string(buf->owner) +
                         " generation=" + std::to_string(buf->generation));
             }
+            last_retired_ticket = ticket->id;
             tickets.pop_front();
             ++probe.retired_tickets;
             if (!error.empty() && !device_lost)
                 throw std::runtime_error("Dawn submission: " + error);
         }
+        release_dropped_host_imports();
         poll_query_results();
         probe.pending_tickets = tickets.size();
         update_work_peaks();
@@ -1765,6 +1800,7 @@ struct Engine {
 
     void invalidate_device() {
         clear_staging();
+        release_host_imports(nullptr, true);
         if (memory_window_token) memory_window_invalidations |= WindowDeviceLost;
         device_lost = true;
         device_ready = false;
@@ -1873,6 +1909,7 @@ struct Engine {
         depth_capture_layout = nullptr;
         for (auto& texture : dummy_textures) texture.reset();
         if (device) device.Destroy();
+        forget_host_imports();
         if (instance) instance.ProcessEvents();
         tickets.clear();
         poll_query_results();
@@ -1898,6 +1935,7 @@ struct Engine {
             cancel_canvas_frames(canvas, "cancelled", "runtime shutdown before complete paint retirement");
         if (queue && instance) wait_queue();
         clear_staging();
+        release_host_imports(nullptr, true);
         // Explicit shutdown may wait; normal submission never takes this
         // validation barrier. Process every submitted owner before releasing
         // diagnostic capacity or dropping its generation's native handles.
@@ -1944,6 +1982,7 @@ struct Engine {
         depth_capture_pipeline = nullptr;
         depth_capture_layout = nullptr;
         if (device) device.Destroy();
+        forget_host_imports();
         device = nullptr;
         canvases.clear();
         adapter = nullptr;
@@ -2094,6 +2133,15 @@ struct Engine {
         for (const auto& path : search_storage) search_paths.push_back(path);
         dawn::native::DawnInstanceDescriptor native_desc;
         native_desc.additionalRuntimeSearchPaths = std::span<std::string_view>(search_paths);
+        // Plan P5: Dawn's HostMappedPointer is an experimental feature, which this instance toggle allows. The toggle
+        // only allows such APIs; it changes nothing the runtime already uses.
+        const char* unsafe_toggles[] = {"allow_unsafe_apis"};
+        wgpu::DawnTogglesDescriptor instance_toggles;
+        if (host_import_requested()) {
+            instance_toggles.enabledToggleCount = 1;
+            instance_toggles.enabledToggles = unsafe_toggles;
+            native_desc.nextInChain = &instance_toggles;
+        }
         wgpu::InstanceFeatureName features[] = {wgpu::InstanceFeatureName::ShaderSourceSPIRV,
                                                wgpu::InstanceFeatureName::TimedWaitAny};
         wgpu::InstanceDescriptor desc;
@@ -2103,6 +2151,7 @@ struct Engine {
         release_surfaces();
         // Retained Canvas owners outlive all old-generation WSI destruction.
         if (device) device.Destroy();
+        forget_host_imports();
         queue = nullptr;
         device = nullptr;
         adapter = nullptr;
@@ -2194,6 +2243,15 @@ struct Engine {
                              wgpu::FeatureName::Unorm16TextureFormats, wgpu::FeatureName::TimestampQuery}) {
             if (adapter.HasFeature(feature)) device_features.push_back(feature);
         }
+        if (host_import_requested() && adapter.HasFeature(wgpu::FeatureName::HostMappedPointer)) {
+            wgpu::DawnHostMappedPointerLimits host_limits;
+            wgpu::Limits adapter_limits;
+            adapter_limits.nextInChain = &host_limits;
+            adapter.GetLimits(&adapter_limits);
+            const uint32_t alignment = host_limits.hostMappedPointerAlignment;
+            if (alignment != wgpu::kLimitU32Undefined && alignment && vispy::memory::HostBlock::alignment % alignment == 0)
+                device_features.push_back(wgpu::FeatureName::HostMappedPointer);
+        }
         device_desc.requiredFeatureCount = device_features.size();
         device_desc.requiredFeatures = device_features.data();
         device_desc.SetUncapturedErrorCallback(
@@ -2247,6 +2305,8 @@ struct Engine {
         info.float32_filterable = device.HasFeature(wgpu::FeatureName::Float32Filterable);
         info.unorm16_texture_formats = device.HasFeature(wgpu::FeatureName::Unorm16TextureFormats);
         info.timestamp_query = device.HasFeature(wgpu::FeatureName::TimestampQuery);
+        info.host_mapped_pointer = device.HasFeature(wgpu::FeatureName::HostMappedPointer);
+        info.host_import_limit = host_import_limit;
         const auto query_toggles = dawn::native::GetTogglesUsed(device.Get());
         info.timestamp_quantization_ns = std::any_of(query_toggles.begin(), query_toggles.end(),
             [](const char* toggle) { return std::string_view(toggle) == "timestamp_quantization"; }) ? 65536 : 0;
@@ -4944,21 +5004,171 @@ struct Vertex { @builtin(position) position: vec4f, @location(0) uv: vec2f }
         return create_staging(lease_size, true);
     }
 
-    bool stage_texture_copy(const wgpu::CommandEncoder& encoder, Ticket* ticket, const wgpu::TexelCopyTextureInfo& destination,
-                            const uint8_t* bytes, size_t size, const wgpu::TexelCopyBufferLayout& layout,
-                            const wgpu::Extent3D& extent) {
+    // A full upload's rows copied into a pooled mapped lease, each padded to the 256-byte pitch as it is copied (plan
+    // P5: no padded copy first), and the lease's copy into the texture recorded in the frame's encoder. The copy lands
+    // only if that encoder is submitted, so the revision becomes current, and the upload is counted, in
+    // commit_texture_uploads, as partial updates are. Returns false, leaving the upload to queue.WriteTexture, without
+    // an encoder or when no lease fits.
+    bool stage_texture_rows(const wgpu::CommandEncoder& encoder, Ticket* ticket, TextureRev& rev,
+                            const vispy::textures::FullUpload& upload) {
         if (!encoder || !ticket) return false;
-        auto lease = acquire_staging(size);
+        const size_t row_bytes = texture_detail::multiply(static_cast<size_t>(rev.width), upload.prepared().texel_size);
+        const size_t rows = texture_detail::multiply(static_cast<size_t>(rev.height), static_cast<size_t>(rev.depth));
+        if (upload.size() != texture_detail::multiply(row_bytes, rows))
+            throw std::runtime_error("texture: upload layout byte size differs");
+        if (row_bytes > UINT32_MAX - 255u) throw std::runtime_error("texture: upload row pitch overflows");
+        const uint32_t pitch = (static_cast<uint32_t>(row_bytes) + 255u) & ~255u;
+        const uint64_t staged = uint64_t{pitch} * rows;
+        HostTimer timer(probe.texture_upload_cpu_ns);
+        auto lease = acquire_staging(staged);
         if (!lease) return false;
-        std::memcpy(lease->mapped, bytes, size);
+        auto* target = static_cast<uint8_t*>(lease->mapped);
+        if (pitch == row_bytes) std::memcpy(target, upload.data(), upload.size());
+        else for (size_t row = 0; row < rows; ++row)
+            std::memcpy(target + row * pitch, upload.data() + row * row_bytes, row_bytes);
         lease->buffer.Unmap();
         lease->mapped = nullptr;
         wgpu::TexelCopyBufferInfo source;
         source.buffer = lease->buffer;
-        source.layout = layout;
+        source.layout.bytesPerRow = pitch;
+        source.layout.rowsPerImage = static_cast<uint32_t>(rev.height);
+        wgpu::TexelCopyTextureInfo destination;
+        destination.texture = rev.texture;
+        destination.aspect = wgpu::TextureAspect::All;
+        wgpu::Extent3D extent{static_cast<uint32_t>(rev.width), static_cast<uint32_t>(rev.height),
+                              static_cast<uint32_t>(rev.depth)};
         encoder.CopyBufferToTexture(&source, &destination, &extent);
         ticket->staging.push_back(std::move(lease));
+        ticket->ordered_uploads.push_back({&rev, rev.revision, 1, staged, staged});
         return true;
+    }
+
+    // Plan P5: whether the frame being encoded (current) or one in flight holds this host block.
+    bool host_block_in_flight(const vispy::memory::HostBlock* block, const Ticket* current) const {
+        auto holds = [block](const Ticket& ticket) {
+            return std::any_of(ticket.host_blocks.begin(), ticket.host_blocks.end(),
+                               [block](const vispy::memory::HostBytes& held) { return held.get() == block; });
+        };
+        if (current && holds(*current)) return true;
+        return std::any_of(tickets.begin(), tickets.end(), [&](const auto& ticket) { return holds(*ticket); });
+    }
+
+    // Releases one import. Its block stays imported until a Ticket submitted after this has retired; the import of an
+    // older device was freed with that device, so it is disposed of now.
+    std::vector<HostImport>::iterator release_host_import(std::vector<HostImport>::iterator entry) {
+        if (entry->buffer) entry->buffer.Destroy();
+        if (entry->generation == device_generation) released_host_imports.push_back({entry->block, next_ticket});
+        else vispy::memory::HostBlockPool::shared().disposed(*entry->block);
+        return host_imports.erase(entry);
+    }
+
+    // Releases imports: all of them (with the device), or those no frame holds.
+    void release_host_imports(const Ticket* current, bool all) {
+        for (auto it = host_imports.begin(); it != host_imports.end();) {
+            if (!all && host_block_in_flight(it->block, current)) ++it;
+            else it = release_host_import(it);
+        }
+        probe.host_import_pinned_bytes = vispy::memory::HostBlockPool::shared().pinned_bytes();
+    }
+
+    // After retiring Tickets: imports of an older device, and of blocks the pool dropped, are released; released
+    // imports whose later Ticket has retired are disposed of, and dropped blocks no longer imported are freed.
+    void release_dropped_host_imports() {
+        auto& pool = vispy::memory::HostBlockPool::shared();
+        for (auto it = host_imports.begin(); it != host_imports.end();) {
+            if (it->generation == device_generation && !pool.waiting(it->block)) ++it;
+            else it = release_host_import(it);
+        }
+        for (auto it = released_host_imports.begin(); it != released_host_imports.end();) {
+            if (last_retired_ticket < it->first_ticket) {
+                ++it;
+                continue;
+            }
+            pool.disposed(*it->block);
+            it = released_host_imports.erase(it);
+        }
+        pool.free_disposed();
+        probe.host_import_pinned_bytes = pool.pinned_bytes();
+    }
+
+    // Releases idle imports (no frame holds their blocks), least recently used first, until the live imports and
+    // `needed` more bytes fit within the limit.
+    void release_host_imports_over_limit(uint64_t needed, const Ticket* current) {
+        uint64_t live = 0;
+        for (const auto& entry : host_imports) live += entry.block->capacity();
+        while (live + needed > host_import_limit) {
+            auto victim = host_imports.end();
+            for (auto it = host_imports.begin(); it != host_imports.end(); ++it)
+                if (!host_block_in_flight(it->block, current) &&
+                    (victim == host_imports.end() || it->last_use < victim->last_use)) victim = it;
+            if (victim == host_imports.end()) break;
+            live -= victim->block->capacity();
+            release_host_import(victim);
+            ++probe.host_import_evictions;
+        }
+        probe.host_import_pinned_bytes = vispy::memory::HostBlockPool::shared().pinned_bytes();
+    }
+
+    // After device.Destroy(): Dawn has freed every import's memory, so every block is disposed of.
+    void forget_host_imports() {
+        auto& pool = vispy::memory::HostBlockPool::shared();
+        for (auto& entry : host_imports) pool.disposed(*entry.block);
+        host_imports.clear();
+        for (auto& released : released_host_imports) pool.disposed(*released.block);
+        released_host_imports.clear();
+        pool.free_disposed();
+        probe.host_import_pinned_bytes = pool.pinned_bytes();
+    }
+
+    // The buffer a host block is imported as on this device, created on its first use. Null when the device lacks
+    // the feature, when the block's earlier import has not been disposed of yet, or when a new import would exceed
+    // the limit even after releasing idle imports (no frame holds their blocks), least recently used first.
+    wgpu::Buffer host_import(vispy::memory::HostBlock& block, const Ticket* current) {
+        if (!info.host_mapped_pointer) return nullptr;
+        auto& pool = vispy::memory::HostBlockPool::shared();
+        for (auto it = host_imports.begin(); it != host_imports.end(); ++it) {
+            if (it->block != &block) continue;
+            if (it->generation == device_generation) {
+                it->last_use = ++host_import_clock;
+                return it->buffer;
+            }
+            release_host_import(it);
+            break;
+        }
+        if (vispy::memory::HostBlockPool::is_imported(block)) return nullptr;
+        const uint64_t capacity = block.capacity();
+        release_host_imports_over_limit(capacity, current);
+        // Released imports still pin their pages until they are disposed of.
+        if (pool.pinned_bytes() + capacity > host_import_limit) return nullptr;
+        wgpu::BufferHostMappedPointer host;
+        host.pointer = block.data();
+        wgpu::BufferDescriptor descriptor;
+        descriptor.nextInChain = &host;
+        descriptor.usage = wgpu::BufferUsage::CopySrc;
+        descriptor.size = capacity;
+        pool.imported(block);
+        for (auto filter : {wgpu::ErrorFilter::Internal, wgpu::ErrorFilter::OutOfMemory, wgpu::ErrorFilter::Validation})
+            device.PushErrorScope(filter);
+        wgpu::Buffer buffer = device.CreateBuffer(&descriptor);
+        std::string error;
+        const std::string reported = last_error;
+        for (int scope = 0; scope < 3; ++scope) {
+            auto popped = pop_validation();
+            if (error.empty()) error = popped;
+        }
+        last_error = reported;
+        if (!buffer || !error.empty()) {
+            // A failed import holds no pages. Stop importing on this device: the next upload stages its rows instead.
+            buffer = nullptr;
+            pool.disposed(block);
+            info.host_mapped_pointer = false;
+            log("host import failed: " + error);
+            return nullptr;
+        }
+        ++probe.host_imports;
+        host_imports.push_back({&block, buffer, device_generation, ++host_import_clock});
+        probe.host_import_pinned_bytes = pool.pinned_bytes();
+        return buffer;
     }
 
     // After Queue.Submit: each lease is asked to map again, which completes once the GPU has finished its copy, and
@@ -5028,7 +5238,7 @@ struct Vertex { @builtin(position) position: vec4f, @location(0) uv: vec2f }
         // adds a transfer to every SceneCanvas.render() readback target.
         if (rev.renderbuffer && rev.dimensions == 2 && rev.format == "rgba" &&
             (rev.internal_format.empty() || rev.internal_format == "rgba8") &&
-            rev.pixels.empty() && rev.updates.empty() && !rev.base) {
+            shadow_size(rev) == 0 && rev.updates.empty() && !rev.base) {
             freeze_texture_allocation(rev);
             wgpu::TextureDescriptor color;
             color.size = {static_cast<uint32_t>(rev.width), static_cast<uint32_t>(rev.height), 1};
@@ -5156,10 +5366,39 @@ struct Vertex { @builtin(position) position: vec4f, @location(0) uv: vec2f }
             ticket->ordered_uploads.push_back({&rev, rev.revision, rev.updates.size(), upload_bytes, copied_bytes});
             return;
         }
-        // The engine mutex holds the source revision stable. Dawn captures the
-        // bytes synchronously in WriteTexture; no pointer is retained by us.
+        // Plan P5: an upload that copies its shadow's host block unchanged reads the block through its import, when
+        // its rows need no padding. The Ticket holds the block until the copy has retired, so nothing writes it
+        // meanwhile; the copy is ordered as a staged one.
+        if (const auto& block = full_upload.host_block()) {
+            const size_t row_bytes = texture_detail::multiply(static_cast<size_t>(rev.width), prepared.texel_size);
+            wgpu::Buffer source;
+            if (encoder && ticket && row_bytes % 256u == 0 && row_bytes <= UINT32_MAX) source = host_import(*block, ticket);
+            if (source) {
+                wgpu::TexelCopyBufferInfo from;
+                from.buffer = source;
+                from.layout.bytesPerRow = static_cast<uint32_t>(row_bytes);
+                from.layout.rowsPerImage = static_cast<uint32_t>(rev.height);
+                wgpu::TexelCopyTextureInfo dest;
+                dest.texture = rev.texture;
+                dest.aspect = wgpu::TextureAspect::All;
+                wgpu::Extent3D extent{static_cast<uint32_t>(rev.width), static_cast<uint32_t>(rev.height),
+                                      static_cast<uint32_t>(rev.depth)};
+                {
+                    HostTimer timer(probe.texture_upload_cpu_ns);
+                    encoder.CopyBufferToTexture(&from, &dest, &extent);
+                }
+                ticket->host_blocks.push_back(block);
+                ++probe.host_import_copies;
+                probe.host_import_bytes += full_upload.size();
+                ticket->ordered_uploads.push_back({&rev, rev.revision, 1, full_upload.size(), full_upload.size()});
+                return;
+            }
+            ++probe.host_import_fallbacks;
+        }
+        // The engine mutex holds the source revision stable. A pooled lease takes the rows, padded as they are copied;
+        // otherwise Dawn captures the padded rows synchronously in WriteTexture, and no pointer is retained by us.
+        if (stage_texture_rows(encoder, ticket, rev, full_upload)) return;
         HostTimer conversion_timer(probe.texture_conversion_ns);
-        uint64_t staged_bytes = 0;
         vispy::textures::with_upload_rows(full_upload,
             [&](const PreparedTexture&, const uint8_t* bytes, size_t submitted_bytes, uint32_t pitch, int height) {
                 conversion_timer.finish();
@@ -5171,26 +5410,14 @@ struct Vertex { @builtin(position) position: vec4f, @location(0) uv: vec2f }
                 layout.rowsPerImage = static_cast<uint32_t>(height);
                 wgpu::Extent3D extent{static_cast<uint32_t>(rev.width), static_cast<uint32_t>(rev.height),
                                      static_cast<uint32_t>(rev.depth)};
-                bool staged;
                 {
                     HostTimer timer(probe.texture_upload_cpu_ns);
-                    staged = stage_texture_copy(encoder, ticket, dest, bytes, submitted_bytes, layout, extent);
-                    if (!staged) queue.WriteTexture(&dest, bytes, submitted_bytes, &layout, &extent);
-                }
-                if (staged) {
-                    staged_bytes = submitted_bytes;
-                    return;
+                    queue.WriteTexture(&dest, bytes, submitted_bytes, &layout, &extent);
                 }
                 probe.texture_uploads++;
                 probe.copy_bytes += submitted_bytes;
                 probe.texture_upload_bytes += submitted_bytes;
             });
-        if (staged_bytes) {
-            // The staged copy is part of this ticket's encoder and lands only if that encoder is submitted, so the
-            // revision becomes current, and the upload is counted, in commit_texture_uploads, as partial updates are.
-            ticket->ordered_uploads.push_back({&rev, rev.revision, 1, staged_bytes, staged_bytes});
-            return;
-        }
         rev.updates.clear();
         rev.base.reset();
         rev.gpu_revision = rev.revision;
@@ -6767,6 +6994,10 @@ void destroy_canvas(int canvas_id) {
     if (eng.canvases.empty()) {
         vispy::memory::ByteRecycler::shared().clear();
         eng.clear_staging();
+        // The queue is idle here (wait_queue above), so no frame still listed has a copy in flight.
+        eng.release_host_imports(nullptr, true);
+        vispy::memory::HostBlockPool::shared().clear();
+        eng.release_dropped_host_imports();
     }
     eng.log("destroy canvas " + std::to_string(canvas_id));
 }
@@ -6828,6 +7059,16 @@ void update_surface_scale(int canvas_id, double scale) {
         canvas.surface_owner->update(canvas.width, canvas.height, scale);
 }
 
+// Plan P5: payload snapshots that arrived in host blocks.
+static void count_host_blocks(const std::vector<Value>& values, Probe& probe) {
+    for (const auto& value : values) {
+        if (value.kind == Value::Kind::Blob && value.blob.host) {
+            ++probe.host_block_captures;
+            probe.host_block_capture_bytes += value.blob.host->size();
+        } else if (value.kind == Value::Kind::List) count_host_blocks(value.list, probe);
+    }
+}
+
 static void execute_commands_impl(int canvas_id, const std::vector<Command>& commands,
                                   std::vector<Command>* owned_commands,
                                   uint64_t binding_decode_ns, uint64_t binding_decode_bytes,
@@ -6841,6 +7082,7 @@ static void execute_commands_impl(int canvas_id, const std::vector<Command>& com
     eng.probe.owned_upload_capture_bytes += capture_stats.bytes;
     eng.probe.owned_upload_fallback_dtypes += capture_stats.fallback_dtypes;
     eng.probe.owned_upload_fallback_exports += capture_stats.fallback_exports;
+    if (owned_commands) for (const auto& command : *owned_commands) count_host_blocks(command.args, eng.probe);
     ++eng.probe.native_batches;
     if (!eng.init_device()) throw std::runtime_error(eng.info.error);
     eng.poll();
@@ -6956,19 +7198,20 @@ static void execute_commands_impl(int canvas_id, const std::vector<Command>& com
                     // A queued frame still holds the old revision: copy its bytes into a recycled block if one fits.
                     // An update of the whole buffer replaces them, so it copies none (plan P3).
                     const auto& old = obj.buffer->cpu;
-                    const bool whole = offset == 0 && blob.bytes.size() == old.size();
+                    const bool whole = offset == 0 && blob.size() == old.size();
                     rev->cpu = vispy::memory::ByteRecycler::shared().take(old.size());
                     if (rev->cpu.empty() || rev->cpu.size() != old.size()) {
-                        rev->cpu = whole ? blob.bytes : old;
+                        if (whole) rev->cpu.assign(blob.data(), blob.data() + blob.size());
+                        else rev->cpu = old;
                         written = whole;
                     } else if (!whole) std::memcpy(rev->cpu.data(), old.data(), old.size());
                     ++eng.probe.buffer_copy_on_write;
                     if (!whole) eng.probe.buffer_copy_on_write_bytes += old.size();
                 }
-                if (offset < 0 || static_cast<uint64_t>(offset) + blob.bytes.size() > rev->cpu.size())
+                if (offset < 0 || static_cast<uint64_t>(offset) + blob.size() > rev->cpu.size())
                     throw std::runtime_error("buffer update exceeds allocation bounds");
-                if (!written && !blob.bytes.empty()) {
-                    std::memcpy(rev->cpu.data() + offset, blob.bytes.data(), blob.bytes.size());
+                if (!written && blob.size()) {
+                    std::memcpy(rev->cpu.data() + offset, blob.data(), blob.size());
                 }
                 rev->derived.clear();
                 obj.buffer = rev;
@@ -6991,7 +7234,7 @@ static void execute_commands_impl(int canvas_id, const std::vector<Command>& com
                     rev->sampler = nullptr;
                     rev->allocation_token.reset();
                 }
-                bool transferred = false;
+                bool transferred = false, copied_block = false;
                 try {
                     HostTimer timer(eng.probe.texture_conversion_ns);
                     if (owned_commands) {
@@ -7002,18 +7245,23 @@ static void execute_commands_impl(int canvas_id, const std::vector<Command>& com
                             rev->format != "depth_component";
                         transferred = vispy::textures::apply_owned_texture_data(*rev,
                             (*owned_commands)[command_index].args[2].blob, offset,
-                            allow_transfer, rev->allocation_descriptor.get());
+                            allow_transfer, rev->allocation_descriptor.get(), &copied_block);
                     } else {
-                        apply_texture_data(*rev, blob, offset, rev->allocation_descriptor.get());
+                        copied_block = apply_texture_data(*rev, blob, offset, rev->allocation_descriptor.get());
                     }
                 } catch (...) {
                     // DATA validation throws before it changes the shadow, so a rejected update returns a moved one.
-                    if (moved) obj.texture->pixels = std::move(rev->pixels);
+                    if (moved) {
+                        obj.texture->pixels = std::move(rev->pixels);
+                        obj.texture->host = std::move(rev->host);
+                    }
                     throw;
                 }
+                // Plan P5: a patch copied a host block that a frame still copies from, instead of writing it.
+                if (copied_block) eng.probe.texture_copy_on_write_bytes += shadow_size(*rev);
                 if (transferred) {
                     ++eng.probe.owned_texture_transfers;
-                    eng.probe.owned_texture_transfer_bytes += rev->pixels.size();
+                    eng.probe.owned_texture_transfer_bytes += shadow_size(*rev);
                 }
                 eng.freeze_texture_allocation(*rev);
                 const bool full = texture_detail::texture_upload_is_entire(*rev, blob, offset);
@@ -7167,14 +7415,15 @@ static void execute_commands_impl(int canvas_id, const std::vector<Command>& com
             std::vector<float> floats;
             std::vector<int32_t> ints;
             if (cmd.args[3].kind == Value::Kind::Blob) {
-                if (cmd.args[3].blob.dtype == "bool") {
-                    for (uint8_t byte : cmd.args[3].blob.bytes) ints.push_back(byte ? 1 : 0);
-                } else if (cmd.args[3].blob.dtype == "i32") {
-                    ints.resize(cmd.args[3].blob.bytes.size() / 4);
-                    std::memcpy(ints.data(), cmd.args[3].blob.bytes.data(), ints.size() * 4);
+                const ByteBlob& values = cmd.args[3].blob;
+                if (values.dtype == "bool") {
+                    for (size_t index = 0; index < values.size(); ++index) ints.push_back(values.data()[index] ? 1 : 0);
+                } else if (values.dtype == "i32") {
+                    ints.resize(values.size() / 4);
+                    std::memcpy(ints.data(), values.data(), ints.size() * 4);
                 } else {
-                    floats.resize(cmd.args[3].blob.bytes.size() / 4);
-                    std::memcpy(floats.data(), cmd.args[3].blob.bytes.data(), floats.size() * 4);
+                    floats.resize(values.size() / 4);
+                    std::memcpy(floats.data(), values.data(), floats.size() * 4);
                 }
             }
             if (gtype == "int" || gtype == "bool" || gtype.find("ivec") == 0 || gtype.find("bvec") == 0)
@@ -7908,6 +8157,14 @@ void diagnostic_present_refresh_interval(int canvas_id, uint64_t interval_ns) {
     auto found = eng.canvases.find(canvas_id);
     if (found == eng.canvases.end()) throw std::runtime_error("pacing: diagnostic canvas does not exist");
     found->second.refresh_override_ns = interval_ns;  // 0 restores the display's refresh interval
+}
+
+void diagnostic_host_import_limit(uint64_t bytes) {
+    auto& eng = engine();
+    std::lock_guard<std::mutex> lock(eng.mu);
+    eng.host_import_limit = bytes ? bytes : Engine::host_import_default_limit;
+    eng.info.host_import_limit = eng.host_import_limit;
+    eng.release_host_imports_over_limit(0, nullptr);
 }
 
 std::vector<LineEndpointReadback> diagnostic_line_endpoints(int canvas_id) {

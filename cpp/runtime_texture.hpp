@@ -1,6 +1,7 @@
 #pragma once
 
 #include "runtime.hpp"
+#include "runtime_byte_recycler.hpp"
 #include "shader/integer_sampling.hpp"
 #include <webgpu/webgpu_cpp.h>
 
@@ -31,7 +32,14 @@ struct TextureData {
     std::string min_filter = "nearest";
     std::string mag_filter = "nearest";
     std::vector<std::string> wrapping;
+    // Plan P5: a full update's payload host block can be the shadow instead of pixels, which is then empty. It is
+    // shared with what else holds it (a frame copying from it) and written only while this is its one owner.
+    vispy::memory::HostBytes host;
 };
+
+// The CPU shadow's bytes, from pixels or the host block.
+inline const uint8_t* shadow_data(const TextureData& data) { return data.host ? data.host->data() : data.pixels.data(); }
+inline size_t shadow_size(const TextureData& data) { return data.host ? data.host->size() : data.pixels.size(); }
 
 // Sampling state belongs to the retained revision; storage belongs to its
 // immutable allocation. Construct this descriptor without copying the image
@@ -398,7 +406,8 @@ inline wgpu::AddressMode wrapping(const std::string& name) {
 }
 }  // namespace texture_detail
 
-inline void apply_texture_data(TextureData& data, const ByteBlob& upload, const std::vector<int>& offset,
+// Returns whether a patch first copied a host block shadow that something else still holds (plan P5).
+inline bool apply_texture_data(TextureData& data, const ByteBlob& upload, const std::vector<int>& offset,
                                const TextureData* allocation = nullptr) {
     using namespace texture_detail;
     const size_t count = texels(data);
@@ -418,13 +427,17 @@ inline void apply_texture_data(TextureData& data, const ByteBlob& upload, const 
     }
     const size_t component_bytes = dtype_size(upload.dtype);
     const size_t upload_pixel_bytes = multiply(component_bytes, data.channels);
-    if (upload.bytes.size() != multiply(upload_texels, upload_pixel_bytes)) throw error("DATA byte size differs from declared shape/dtype");
+    if (upload.size() != multiply(upload_texels, upload_pixel_bytes)) throw error("DATA byte size differs from declared shape/dtype");
     if (entire) {
-        data.pixels = upload.bytes;
+        // A payload in a host block becomes the shadow by sharing the block (plan P5).
+        if (upload.host) data.pixels = std::vector<uint8_t>();
+        else data.pixels = upload.bytes;
+        data.host = upload.host;
         data.dtype = upload.dtype;
-        return;
+        return false;
     }
-    const bool mixed = !data.pixels.empty() && data.dtype != upload.dtype;
+    const size_t resident = shadow_size(data);
+    const bool mixed = resident != 0 && data.dtype != upload.dtype;
     const size_t pixel_bytes = mixed ? multiply(sizeof(double), data.channels) : upload_pixel_bytes;
     const size_t total = multiply(count, pixel_bytes);
     std::vector<uint8_t> result;
@@ -436,21 +449,29 @@ inline void apply_texture_data(TextureData& data, const ByteBlob& upload, const 
         description = describe(storage);
         const size_t resident_component = dtype_size(data.dtype);
         const size_t components = multiply(count, data.channels);
-        if (data.pixels.size() != multiply(components, resident_component))
+        if (resident != multiply(components, resident_component))
             throw error("resident byte size differs from SIZE allocation");
         result.resize(total);
         for (size_t component = 0; component < components; ++component) {
-            const double value = storage_value(data.pixels.data() + component * resident_component, data.dtype, description);
+            const double value = storage_value(shadow_data(data) + component * resident_component, data.dtype, description);
             store(result.data() + component * sizeof(double), value);
         }
     }
-    else if (data.pixels.empty()) result.assign(total, 0);
-    else if (data.pixels.size() != total) throw error("resident byte size differs from SIZE allocation");
+    else if (resident == 0) result.assign(total, 0);
+    else if (resident != total) throw error("resident byte size differs from SIZE allocation");
     // A same-dtype patch of a resident shadow is written in place (B18). Every
     // check has passed by now, so a rejected update leaves the shadow unchanged,
-    // and the DATA handler only patches a revision that nothing else holds.
-    const bool in_place = !mixed && !data.pixels.empty();
-    uint8_t* const target = in_place ? data.pixels.data() : result.data();
+    // and the DATA handler only patches a revision that nothing else holds. A
+    // host block that something else still holds is copied first (plan P5).
+    const bool in_place = !mixed && resident != 0;
+    const bool copied = in_place && data.host && data.host.use_count() > 1;
+    if (copied) {
+        data.pixels = vispy::memory::ByteRecycler::shared().take(resident);
+        if (data.pixels.size() == resident) std::memcpy(data.pixels.data(), data.host->data(), resident);
+        else data.pixels.assign(data.host->data(), data.host->data() + resident);
+        data.host.reset();
+    }
+    uint8_t* const target = !in_place ? result.data() : data.host ? data.host->data() : data.pixels.data();
     const int patch_w = upload.shape[data.dimensions - 1];
     const int patch_h = data.dimensions >= 2 ? upload.shape[data.dimensions - 2] : 1;
     const int patch_d = data.dimensions == 3 ? upload.shape[0] : 1;
@@ -464,15 +485,19 @@ inline void apply_texture_data(TextureData& data, const ByteBlob& upload, const 
             const size_t source = (static_cast<size_t>(slice) * patch_h + row) * patch_w * upload_pixel_bytes;
             if (mixed) {
                 for (size_t component = 0; component < static_cast<size_t>(patch_w) * data.channels; ++component) {
-                    const double value = storage_value(upload.bytes.data() + source + component * component_bytes,
+                    const double value = storage_value(upload.data() + source + component * component_bytes,
                                                        upload.dtype, description);
                     store(target + destination + component * sizeof(double), value);
                 }
-            } else std::memcpy(target + destination, upload.bytes.data() + source, row_bytes);
+            } else std::memcpy(target + destination, upload.data() + source, row_bytes);
         }
     }
-    if (!in_place) data.pixels = std::move(result);
+    if (!in_place) {
+        data.pixels = std::move(result);
+        data.host.reset();
+    }
     data.dtype = mixed ? "f64" : upload.dtype;
+    return copied;
 }
 
 struct TexturePreparation {
@@ -503,7 +528,7 @@ inline TexturePreparation describe_texture_preparation(const TextureData& data,c
     const auto description = describe(storage);
     const size_t input_component = dtype_size(data.dtype);
     const size_t input_pixel = multiply(input_component, data.channels);
-    if (!data.pixels.empty() && data.pixels.size() != multiply(count, input_pixel)) throw error("resident byte size differs from allocation");
+    if (shadow_size(data) != 0 && shadow_size(data) != multiply(count, input_pixel)) throw error("resident byte size differs from allocation");
     PreparedTexture result;
     result.format = native_format(description);
     result.dimension = data.dimensions == 1 ? wgpu::TextureDimension::e1D : data.dimensions == 3 ? wgpu::TextureDimension::e3D : wgpu::TextureDimension::e2D;
@@ -532,14 +557,14 @@ inline PreparedTexture prepare_texture(const TextureData& data,const TextureData
         // Preserve float bits (including signed zero and NaN payloads), exact
         // categorical identity, and avoid per-texel conversion for resident
         // image/volume uploads already in their native format.
-        if (data.pixels.empty()) result.bytes.assign(multiply(count, result.texel_size), 0);
-        else result.bytes = data.pixels;
+        if (shadow_size(data) == 0) result.bytes.assign(multiply(count, result.texel_size), 0);
+        else result.bytes.assign(shadow_data(data), shadow_data(data) + shadow_size(data));
         return result;
     }
     result.bytes.resize(multiply(count, result.texel_size));
     std::vector<uint8_t> zero(input_pixel, 0);
     for (size_t pixel = 0; pixel < count; ++pixel) {
-        const uint8_t* source = data.pixels.empty() ? zero.data() : data.pixels.data() + pixel * input_pixel;
+        const uint8_t* source = shadow_size(data) == 0 ? zero.data() : shadow_data(data) + pixel * input_pixel;
         double values[4] = {0, 0, 0, 1};
         for (int channel = 0; channel < data.channels; ++channel)
             values[channel] = storage_value(source + channel * input_component, data.dtype, description);
@@ -556,6 +581,7 @@ namespace vispy::textures {
 class FullUpload {
     PreparedTexture prepared_;
     const std::vector<uint8_t>* borrowed_=nullptr;
+    vispy::memory::HostBytes host_;  // a direct upload's host block, held for the upload (plan P5)
     const uint8_t* address_=nullptr;
     size_t byte_count_=0;
     int width_=0,height_=0,depth_=0;
@@ -571,9 +597,11 @@ public:
     FullUpload(const FullUpload&)=delete;
     FullUpload& operator=(const FullUpload&)=delete;
     const PreparedTexture& prepared() const {return prepared_;}
-    bool is_borrowed() const {return borrowed_!=nullptr;}
-    const uint8_t* data() const {check_source();return borrowed_?borrowed_->data():prepared_.bytes.data();}
-    size_t size() const {check_source();return borrowed_?byte_count_:prepared_.bytes.size();}
+    bool is_borrowed() const {return borrowed_!=nullptr||host_!=nullptr;}
+    // The shadow's host block when this upload copies it unchanged; the GPU can copy from its import.
+    const vispy::memory::HostBytes& host_block() const {return host_;}
+    const uint8_t* data() const {check_source();return is_borrowed()?address_:prepared_.bytes.data();}
+    size_t size() const {check_source();return is_borrowed()?byte_count_:prepared_.bytes.size();}
     int width() const {return width_;}
     int height() const {return height_;}
     int depth() const {return depth_;}
@@ -583,7 +611,10 @@ inline FullUpload prepare_full_upload(const TextureData& data,const TextureData*
     auto layout=describe_texture_preparation(data,allocation);
     FullUpload upload;
     upload.width_=data.width;upload.height_=data.height;upload.depth_=data.depth;
-    if(layout.direct && !data.pixels.empty()) {
+    if(layout.direct && data.host) {
+        upload.prepared_=std::move(layout.descriptor);
+        upload.host_=data.host;upload.address_=data.host->data();upload.byte_count_=data.host->size();
+    } else if(layout.direct && !data.pixels.empty()) {
         upload.prepared_=std::move(layout.descriptor);
         upload.borrowed_=&data.pixels;upload.address_=data.pixels.data();upload.byte_count_=data.pixels.size();
     } else upload.prepared_=prepare_texture(data,allocation);
@@ -632,7 +663,7 @@ inline PreparedTexture prepare_region(const TextureData& allocation, const ByteB
     region.internal_format = allocation.internal_format;
     region.min_filter = allocation.min_filter;
     region.mag_filter = allocation.mag_filter;
-    region.pixels = upload.bytes;
+    region.pixels.assign(upload.data(), upload.data() + upload.size());
     const size_t expected = multiply(multiply(texels(region), region.channels), dtype_size(region.dtype));
     if (region.pixels.size() != expected) throw error("DATA byte size differs from declared shape/dtype");
     return prepare_texture(region, &allocation);

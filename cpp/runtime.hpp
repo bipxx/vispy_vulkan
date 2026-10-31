@@ -9,6 +9,7 @@
 #include "runtime_line_ownership.hpp"
 #include "runtime_line_capture.hpp"
 #include "runtime_framebuffer_config.hpp"
+#include "runtime_host_block.hpp"
 
 struct UploadCaptureStats {
     uint64_t captures = 0, bytes = 0, fallback_dtypes = 0, fallback_exports = 0;
@@ -18,6 +19,10 @@ struct ByteBlob {
     std::vector<uint8_t> bytes;
     std::vector<int> shape;
     std::string dtype;
+    // Plan P5: a payload snapshot of at least 1 MiB lives in a host block instead, and bytes is then empty.
+    vispy::memory::HostBytes host;
+    const uint8_t* data() const { return host ? host->data() : bytes.data(); }
+    size_t size() const { return host ? host->size() : bytes.size(); }
 };
 
 struct Value {
@@ -74,6 +79,9 @@ struct DeviceInfo {
     bool core_features_and_limits = false;
     bool timestamp_query = false;
     uint64_t timestamp_quantization_ns = 0;
+    // Plan P5: full texture uploads copy from imported host blocks (Dawn's HostMappedPointer), within this limit.
+    bool host_mapped_pointer = false;
+    uint64_t host_import_limit = 0;
     std::string depth_stencil_storage;
     bool ok = false;
 };
@@ -152,6 +160,11 @@ struct Probe {
     uint64_t owned_upload_captures = 0, owned_upload_capture_bytes = 0;
     uint64_t owned_upload_fallback_dtypes = 0, owned_upload_fallback_exports = 0;
     uint64_t owned_texture_transfers = 0, owned_texture_transfer_bytes = 0;
+    // Plan P5: payload snapshots taken into host blocks, and full uploads from a block's import (copies) or not
+    // (fallbacks); imports created and released to stay within the limit; the imports' pinned bytes (a gauge).
+    uint64_t host_block_captures = 0, host_block_capture_bytes = 0;
+    uint64_t host_import_copies = 0, host_import_bytes = 0, host_import_fallbacks = 0;
+    uint64_t host_imports = 0, host_import_evictions = 0, host_import_pinned_bytes = 0;
     uint64_t native_batches = 0, native_commands = 0;
     uint64_t native_interpret_ns = 0, native_submit_ns = 0;
     uint64_t present_pacing_wait_ns = 0;
@@ -324,6 +337,8 @@ Readback read_canvas(int canvas_id, int x, int y, int width, int height, bool al
 Readback read_presented(int canvas_id, int x, int y, int width, int height);
 void diagnostic_configure_line_endpoints(int canvas_id, bool enabled, bool capture = true);
 void diagnostic_present_refresh_interval(int canvas_id, uint64_t interval_ns);
+// Test control: the pinned bytes host imports may hold (plan P5); 0 restores the default.
+void diagnostic_host_import_limit(uint64_t bytes);
 vispy::lines::LineOwnershipSnapshot diagnostic_peek_line_ownership(int canvas_id);
 std::vector<LineEndpointReadback> diagnostic_line_endpoints(int canvas_id);
 CompileInfo compile_variant(const std::string& vertex, const std::string& fragment, bool base_level_sampling,

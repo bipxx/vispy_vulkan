@@ -21,8 +21,9 @@ void operator delete(void* p, std::size_t) noexcept { std::free(p); }
 nb::object inspect_value(const Value& value) {
     if (value.kind == Value::Kind::Blob) {
         nb::dict out;
-        out["bytes"] = nb::bytes(reinterpret_cast<const char*>(value.blob.bytes.data()), value.blob.bytes.size());
-        out["address"] = reinterpret_cast<uintptr_t>(value.blob.bytes.data());
+        // A payload of at least 1 MiB arrives in a host block (plan P5); the accessors read either storage.
+        out["bytes"] = nb::bytes(reinterpret_cast<const char*>(value.blob.data()), value.blob.size());
+        out["address"] = reinterpret_cast<uintptr_t>(value.blob.data());
         out["shape"] = value.blob.shape;
         out["dtype"] = value.blob.dtype;
         return out;
@@ -48,7 +49,8 @@ NB_MODULE(_owned_upload_contract, m) {
         return vispy_binding::decode(commands, nb::list(), bytes).size();
     });
     m.def("address", [](nb::handle obj) {
-        return reinterpret_cast<uintptr_t>(vispy_binding::owned_snapshot(obj).bytes.data());
+        const auto& snapshot = vispy_binding::owned_snapshot(obj);
+        return reinterpret_cast<uintptr_t>(snapshot.host ? snapshot.host->data() : snapshot.bytes.data());
     });
     m.def("decode", [](nb::list commands) {
         uint64_t bytes = 0;

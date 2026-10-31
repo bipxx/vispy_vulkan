@@ -14,6 +14,7 @@ inline constexpr const char* snapshot_name = "vispy.owned_upload.v1";
 
 struct OwnedSnapshot {
     std::vector<uint8_t> bytes;
+    vispy::memory::HostBytes host;  // a payload of at least 1 MiB (plan P5); bytes is then empty
     bool consumed = false;
 };
 
@@ -33,7 +34,7 @@ inline nb::capsule capture_upload(nb::handle obj) {
     // Nanobind translates C++ exceptions. The buffer helper releases its
     // Py_buffer on both successful copy and allocation failure.
     auto snapshot = std::make_unique<OwnedSnapshot>();
-    if (!vispy_binding::detail::capture_buffer(obj.ptr(), snapshot->bytes))
+    if (!vispy_binding::detail::capture_buffer(obj.ptr(), snapshot->bytes, snapshot->host))
         throw nb::python_error();
     nb::capsule result(snapshot.get(), snapshot_name, [](void* ptr) noexcept {
         delete static_cast<OwnedSnapshot*>(ptr);
@@ -51,6 +52,7 @@ class OwnedBatch {
         if (auto* snapshot = snapshot_if_valid(nb::handle(obj))) {
             snapshot->consumed = true;
             std::vector<uint8_t>().swap(snapshot->bytes);
+            snapshot->host.reset();
         }
     }
 
