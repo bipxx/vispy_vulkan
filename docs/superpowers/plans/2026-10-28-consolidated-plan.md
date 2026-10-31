@@ -98,7 +98,7 @@ W11 publication and W12 upstream posting each need explicit approval.
 | ID | Work | Exit | Needs |
 | --- | --- | --- | --- |
 | R1 (W9) | Windows napari-threedee strict row | A cause and a regression test, then full lifecycle, nine-zero shutdown and all three gates on the release artifact (spec :340-345; status :86-87). A passing replay never closes it (diagnosis :49-50). | Identify the closer. Instrument hot-swap and diagnostic launches and wait for a recurrence. **Instrumentation** (2026-10-29): `tools/pool_watch.py` watches the default thread pool's worker-factory handle and, when it is lost, records the time, the handle's new type and every Python thread's stack. It only queries object types; CPU tests cover the record. Launches enable it with `VISPY_POOL_WATCH=<events.jsonl>`. **It crashes Tk processes** (run `b19-readback-257`): with it enabled, three of three Tk test runs ended in a fatal exception 0x80000003 in the watcher's thread while it was garbage-collecting; without it, none did. CPython 3.12 runs a scheduled collection in whichever thread next executes bytecode, so the watcher's 5 ms loop can run Tk's finalizers off Tk's thread, and Qt objects carry the same risk. It is replaced by an out-of-process watcher (D20, run `r1-external-poller-259`): `tools/pool_watch_external.py --output <events.jsonl> -- <command>` wraps a launch. Runs 249 and 255 made their napari launches without any watcher. |
-| R2 | Release assembly: a fresh build of the then-current source (D1) | Every mandatory row requalified on it, final-head CI, promotion review | R1. The fresh source must include run `w4-napari-layer-families-236`'s patch set: run `w1-w5-native-batch-227`'s (W1, W5 smooth line ends, W15), run `w5-fringe-native-234`'s minimum smooth coverage, and the Qt backend's Dawn canvas release fix. Those are pinned runtime files, so the Tk candidate's runtime inputs are renewed with it. The patch set is kept, applied to `main`, on the branch `r2/pending-runtime-patches` (O5). D18 adds the switch of the Windows hot swap to native presentation, with strict no-OpenGL qualification selecting readback explicitly. It applies only after the napari parity suites pass under native presentation on the R2 test wheel. That condition is met (runs 249 and 255). The switch is made at R2 assembly, because selecting readback explicitly edits the pinned strict harness. The branch also carries B19 and B18's CPU part (run `b19-readback-257`) and P1's upload changes, P1's fix (step D), P2's pacing and P3 (run `perf-profile-261`), and P4's render-ahead (run `pacing-ahead-263`). Its head is `9c50894`. |
+| R2 | Release assembly: a fresh build of the then-current source (D1) | Every mandatory row requalified on it, final-head CI, promotion review | R1. The fresh source must include run `w4-napari-layer-families-236`'s patch set: run `w1-w5-native-batch-227`'s (W1, W5 smooth line ends, W15), run `w5-fringe-native-234`'s minimum smooth coverage, and the Qt backend's Dawn canvas release fix. Those are pinned runtime files, so the Tk candidate's runtime inputs are renewed with it. The patch set is kept, applied to `main`, on the branch `r2/pending-runtime-patches` (O5). D18 adds the switch of the Windows hot swap to native presentation, with strict no-OpenGL qualification selecting readback explicitly. It applies only after the napari parity suites pass under native presentation on the R2 test wheel. That condition is met (runs 249 and 255). The switch is made at R2 assembly, because selecting readback explicitly edits the pinned strict harness. The branch also carries B19 and B18's CPU part (run `b19-readback-257`) and P1's upload changes, P1's fix (step D), P2's pacing and P3 (run `perf-profile-261`), P4's render-ahead (run `pacing-ahead-263`), and B20's fix (run `b20-staged-patch-264`). Its head is `ffbd45a`. |
 
 Additional R1 evidence: the 2026-10-23 stall in a napari-hosted volume case
 (`iso_categorical_fast`, run native65) had a consistent signature. Its main
@@ -154,7 +154,7 @@ baseline closes with W15.
 | B17 | The local legacy 12,134-file compiler-cache set has no cleanup receipt. Do not repeat that cleanup blindly, and do not count its savings. | removal plan :120-122 |
 | B18 | Partial texture updates copy the whole texture. `apply_texture_data` rebuilds the CPU shadow on every partial update. While a queued frame uses the texture, the update also copies the shadow once more and copies the texture into a new GPU texture. napari's labels painting makes such updates. W8 measured 3.7 frames per second against OpenGL's 60 for eight 64x64 patches per frame on 4096x4096 RGBA layers. The files are pinned runtime inputs, so the fix lands with R2 or later. **CPU part done on a test wheel** (2026-10-29, run `b19-readback-257`; on the R2 branch): a same-dtype patch is written into the shadow. Eight 64x64 patches per frame take 0.43 ms instead of 115.7 with the GPU idle, and 14.5 instead of 132.7 while a queued frame holds the texture. **Queued case** (P3, run `perf-profile-261`; on the R2 branch as `55fed04`): after P2's pacing, updates made before a frame's draws reuse the texture. An update between two draws of one frame moves the shadow instead of copying it: eight patches take 4.1 ms instead of 21.3. It still allocates a new GPU texture. | `docs/performance-report.md` (Partial texture updates) |
 | B19 | Readback presentation's framebuffer read: about 23 ns per pixel natively (`read_canvas` allocates a staging buffer per read and converts each texel through a generic routine), then three Python copies (`_read_dawn_framebuffer`). That is about 53 ms per frame at 1920x1080. Pinned runtime files, as B18. **Done on a test wheel** (2026-10-29, run `b19-readback-257`; on the R2 branch). 8-bit RGBA and BGRA rows are copied, and the Qt path drops one Python copy. The bytes are identical. The whole Qt readback takes 8.2 ms at 1920x1080, down from 52.9, and 29.8 ms at 3840x2160, down from 218. The staging buffer is still allocated per read. | `docs/performance-report.md` (Readback presentation) |
-| B20 | **A small staged texture patch can reach the GPU as zeros.** On a 64x64 RGBA8 texture, a patch not yet uploaded, a draw, then a 16 KiB full upload of any texture in the same frame: the first draw shows zeros in the patch's region, while the CPU shadow is right. A 64 KiB upload, or a 128x128 texture, does not trigger it, and an 8 KiB patch fails too. The pre-P1 wheel `9b7eea2d` has it, so it predates the performance work. Found by P3's tests. Root cause unknown: the staging `WriteBuffer` and the `WriteTexture` of one frame are suspects. The trigger range is not mapped yet, and labels painting with a small colormap upload might meet it. | Run `perf-profile-261`, `p3_debug_variants.py` (`data-entire` and `other-entire` at 64x64) |
+| B20 | **A small staged texture patch could reach the GPU as zeros. Fixed on a test wheel** (run `b20-staged-patch-264`; on the R2 branch as `ffbd45a`). A frame copied a patch into its texture from a staging buffer that `queue.WriteBuffer` filled. When a new texture's first upload followed it in the same batch, that copy read zeros on the RTX 4090's Vulkan driver (610.88): the patch's texels stayed zero on the GPU, in that frame and later ones, while the CPU shadow was right. It needed a fresh process, and the new texture's upload and the patch's staging together had to stay under about 64 KiB; the patched texture's size did not matter. Uploading the new texture first, in an earlier frame, or the same bytes as a vertex buffer, avoided it. Dawn records the copy's write-to-read barrier as expected, so the driver is the likely cause; that is not proven. A revision's patches now stage through one host-mapped lease that the CPU fills, from a pool of their own, so the copy reads host memory. The pre-P1 wheel `9b7eea2d` had it, and labels painting could meet it. | Run `b20-staged-patch-264` (`b20_probe.py`, `tests/native/test_staged_patch.py`); run `perf-profile-261` (`p3_debug_variants.py`) |
 
 ### Organization (user, 2026-10-29)
 
@@ -164,7 +164,7 @@ baseline closes with W15.
 | O2 | Mark the expected failures as expected | **Done, without xfail**, because the evidence rules forbid skip and xfail. `tests/hosts/conftest.py` and `tests/parity/conftest.py` label the listed failures in pytest's report and its JUnit XML: 37, all superseded oracle fixtures kept by D6. D8's four cases left the list when D19 revised D8. They count the failures the index does not explain and name any listed test that passes. No outcome changes. |
 | O3 | One registry of the documented differences | **Done.** `tools/documented_outcomes.py` indexes D5, D9-D17 and D19: the modules that apply each decision, and the cases and limits they hold. It also holds the expected failures. A CPU contract checks it against those modules and against each suite's case list. |
 | O4 | One curated contract entry instead of re-exports through an unrelated module | **Done.** `tests/contract/curated_contracts.py` lists the curated contract modules. Until R2 the wheel suite imports it; at R2, CI's list names it directly. Its check requires every contract module to run in a workflow, be curated, or be declared. It found 11 published CPU contract modules that run in no workflow (`NOT_IN_CI`); each joins the curated list after a run in CI's environment. `test_wheel_index` stays local until W11 (`UNPUBLISHED`), so the check allows a checkout without it. The first version listed it in `NOT_IN_CI`, which failed every CPU job of PR #38, because the published tree lacks it. The local CI-list run had passed on the local tree, which has it. |
-| O5 | Keep the pending runtime patches outside `build/` | **Done.** Branch `r2/pending-runtime-patches` (`bfe66d3`, on `main` `f2f9129`) carries run 236's patch set, with only the replaced lines changed. `bdfce97` adds B19 and B18's CPU part (run `b19-readback-257`), and `8adcb25` adds P1's upload changes, `645b343` fixes their staged uploads, `53f3f49` adds P2's pacing, `55fed04` adds P3 (run `perf-profile-261`), and `9c50894` adds P4 (run `pacing-ahead-263`). It has no PR, and no workflow runs on it. R2 builds from it. |
+| O5 | Keep the pending runtime patches outside `build/` | **Done.** Branch `r2/pending-runtime-patches` (`bfe66d3`, on `main` `f2f9129`) carries run 236's patch set, with only the replaced lines changed. `bdfce97` adds B19 and B18's CPU part (run `b19-readback-257`), and `8adcb25` adds P1's upload changes, `645b343` fixes their staged uploads, `53f3f49` adds P2's pacing, `55fed04` adds P3 (run `perf-profile-261`), `9c50894` adds P4 (run `pacing-ahead-263`), and `ffbd45a` fixes B20 (run `b20-staged-patch-264`). It has no PR, and no workflow runs on it. R2 builds from it. |
 | O6 | Line endings, and the benchmark harness's setup and format | **Done.** `main`'s `.gitattributes` (`* -text`) keeps checkouts byte-preserving, because dependency checksums and pinned file hashes need exact bytes, so mixed line endings are intentional and nothing is normalized; O1 flags line-ending-only drift instead. The pinned W8 harness is fixed in a successor (W8). |
 
 ### Performance (user, 2026-10-30)
@@ -445,6 +445,45 @@ with stock hosts and `444402`.
 - **Not covered.** The in-process scientific suites and the plugin parity suites
   are PyQt6-only harnesses. CPython 3.11, 3.13 and 3.14 need wheels at the current
   source.
+
+**B20 staged patches** on 2026-10-31, run `b20-staged-patch-264`, on the R2
+branch.
+
+- **Reproduction** (user, 2026-10-31: "conitnue", to "Should I start on
+  B20?"). It shows only in a fresh process: run 261's single variants
+  failed, and its sequences of variants passed. On the H wheel, a texture
+  patch not yet uploaded, a draw, then a new texture's first upload in the
+  same batch leave zeros in the patch's region on the GPU, in that frame
+  and in later ones, while the CPU shadow is right.
+- **Trigger.** The patched texture's size does not matter (32x32 to
+  128x128), nor do the new texture's contents. The new texture's upload
+  and the patch's staging together must stay under about 64 KiB: with a
+  2 KiB patch, a 124x124 upload fails and a 125x125 one passes; with an
+  8 KiB patch, 116x116 fails and 118x118 passes. Uploading the new
+  texture before the patch, or in an earlier frame, avoids it, as does
+  the same bytes as a vertex buffer. A fresh vertex buffer written before
+  the new texture keeps its contents.
+- **Cause.** The frame's copy reads the patch's staging buffer, which
+  `queue.WriteBuffer` filled through Dawn's staging ring. Dawn records
+  that fill, the copy and the write-to-read barrier between them as
+  expected (code inspection), and the runtime's trace is the same for a
+  failing and a passing size, so the NVIDIA driver (610.88) is the likely
+  cause. That is not proven.
+- **Fix** (step J). A revision's patches stage through one host-mapped
+  lease that the CPU fills, so the copy reads host memory. The leases
+  come from a pool of their own (powers of two from 64 KiB, at most 8
+  kept, 64 MiB), so patches never take a full upload's lease.
+- **Checks.** The new test, `tests/native/test_staged_patch.py`, runs
+  each case in a child interpreter; it fails on the H wheel and passes
+  on J, as does every probe case that failed on H. ctest 44 of 44. The GPU
+  test directories pass 1,684 of 1,878 (H: 1,681 of 1,875): the new tests,
+  and Tk start-up flakes. The benchmark tests pass 609 of 626 on both
+  wheels, and the six napari parity suites 61 of 61.
+- **Cost** (`p3_cost.py`, pinned). Eight 64x64 patches before one draw
+  take 0.48 ms (H: 0.53), and between two draws 2.78 (H: 2.81). Buffer
+  allocations drop from 8 to 0 per frame, with no Vulkan memory
+  allocations.
+- **On the R2 branch** as `ffbd45a` (steps Jt and J).
 
 **P4 render-ahead** on 2026-10-31, runs `quick-bench-262` and
 `pacing-ahead-263`, on the R2 branch.
@@ -997,7 +1036,7 @@ H01 and V04.
    (runs 249 and 255).
 5. W15 and R2 (fresh release build), then W11 at the release and W12 on approval.
 6. Backlog as capacity allows. B19 and B18, its queued case through P3, are on
-   the R2 branch. B20 needs a root cause.
+   the R2 branch, and so is B20's fix.
 7. Performance (user, 2026-10-30): P1 (textures), P2, P3 and P4 are on the
    R2 branch.
 
