@@ -88,6 +88,8 @@ nb::dict probe_dict(const Probe& probe) {
     out["completion_waits"] = probe.completion_waits;
     out["present_pacing_waits"] = probe.present_pacing_waits;
     out["present_pacing_timeouts"] = probe.present_pacing_timeouts;
+    out["present_render_ahead"] = probe.present_render_ahead;
+    out["present_render_ahead_waits"] = probe.present_render_ahead_waits;
     out["pending_tickets"] = probe.pending_tickets;
     out["retired_tickets"] = probe.retired_tickets;
     out["live_buffer_bytes"] = probe.live_buffer_bytes;
@@ -497,6 +499,9 @@ NB_MODULE(_dawn, m) {
     m.def("configure_frame_slots", &configure_frame_slots);
     m.def("diagnostic_submission_controls", &diagnostic_submission_controls,
           nb::arg("hold_completions") = false, nb::arg("fail_once") = "");
+    m.def("diagnostic_present_refresh_interval", &diagnostic_present_refresh_interval,
+          nb::arg("canvas_id"), nb::arg("interval_ns"),
+          "Test control: the refresh interval vsynced pacing compares frame production with; 0 restores the display's.");
     m.def("configure_shader_cache", &configure_shader_cache, nb::arg("entries"), nb::arg("bytes"));
     m.def("benchmark_begin_frame", &benchmark_begin_frame);
     m.def("benchmark_memory_window_begin", []() {
@@ -642,6 +647,8 @@ NB_MODULE(_dawn, m) {
         result["vsync_requested"] = info.vsync_requested;
         result["pacing_disabled"] = info.pacing_disabled;
         result["attached"] = info.attached;
+        result["refresh_interval_ns"] = info.refresh_interval_ns;
+        result["refresh_interval_source"] = info.refresh_interval_source;
         return result;
     });
     m.def("diagnostic_configure_line_endpoints", &diagnostic_configure_line_endpoints,

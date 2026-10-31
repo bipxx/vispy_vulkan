@@ -51,6 +51,19 @@ class Win32SurfaceOwner final : public NativeSurfaceOwner {
         validate_window();
     }
     void detach() override { check_thread("Win32 surface detach"); }
+    uint64_t refresh_interval_ns() const override {
+        check_thread("Win32 refresh interval");
+        HWND window = reinterpret_cast<HWND>(static_cast<uintptr_t>(descriptor_.window));
+        MONITORINFOEXW monitor{};
+        monitor.cbSize = sizeof(monitor);
+        DEVMODEW mode{};
+        mode.dmSize = sizeof(mode);
+        // A frequency of 0 or 1 means the hardware's default rate, which Windows does not report.
+        if (!GetMonitorInfoW(MonitorFromWindow(window, MONITOR_DEFAULTTONEAREST), &monitor) ||
+            !EnumDisplaySettingsW(monitor.szDevice, ENUM_CURRENT_SETTINGS, &mode) || mode.dmDisplayFrequency <= 1)
+            return 0;
+        return 1'000'000'000ull / mode.dmDisplayFrequency;
+    }
 
   private:
     void validate_window() const {

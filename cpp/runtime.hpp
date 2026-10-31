@@ -92,6 +92,8 @@ struct Probe {
     uint64_t completion_waits = 0;
     uint64_t present_pacing_waits = 0;     // vsynced presents that waited for their own frame (plan P2)
     uint64_t present_pacing_timeouts = 0;
+    uint64_t present_render_ahead = 0;     // vsynced presents returned before their frame retired (one frame ahead)
+    uint64_t present_render_ahead_waits = 0;  // of those, the presents that waited for the previous frame
     uint64_t pending_tickets = 0;
     uint64_t retired_tickets = 0;
     uint64_t live_buffer_bytes = 0;
@@ -243,6 +245,8 @@ struct SurfaceInfo {
     bool vsync_requested = false;
     bool pacing_disabled = false;
     bool attached = false;
+    uint64_t refresh_interval_ns = 0;  // the interval vsynced pacing compares frame production with (plan P2)
+    std::string refresh_interval_source = "unconfigured";  // or "display", "default" (rate unknown), "diagnostic"
 };
 
 struct Readback {
@@ -319,6 +323,7 @@ Readback read_canvas(int canvas_id, int x, int y, int width, int height, bool al
                      const std::string& mode = "color");
 Readback read_presented(int canvas_id, int x, int y, int width, int height);
 void diagnostic_configure_line_endpoints(int canvas_id, bool enabled, bool capture = true);
+void diagnostic_present_refresh_interval(int canvas_id, uint64_t interval_ns);
 vispy::lines::LineOwnershipSnapshot diagnostic_peek_line_ownership(int canvas_id);
 std::vector<LineEndpointReadback> diagnostic_line_endpoints(int canvas_id);
 CompileInfo compile_variant(const std::string& vertex, const std::string& fragment, bool base_level_sampling,

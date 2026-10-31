@@ -852,6 +852,8 @@ struct QueuedFrame {
     uint64_t id = 0, generation = 0;
 };
 
+struct Ticket;
+
 struct Canvas {
     int id = 0;
     RenderState state;
@@ -905,6 +907,10 @@ struct Canvas {
     bool gpu_timing_enabled = false;
     bool diagnostic_line_endpoints = false;
     bool capture_line_endpoints = true;
+    // Vsynced (FIFO) pacing, plan P2: the display's refresh interval (0 when unknown) and its test override, when the
+    // last paced paint returned, and the last frame whose paint returned before the frame retired.
+    uint64_t refresh_interval_ns = 0, refresh_override_ns = 0, paced_return_ns = 0;
+    std::weak_ptr<Ticket> ahead_ticket;
 };
 
 // A pooled, host-mapped buffer for a full texture upload (Engine::stage_texture_copy). queue.WriteTexture
@@ -5563,6 +5569,7 @@ void main() {
         target.surface_configured = true;
         target.surface_w = target.width;
         target.surface_h = target.height;
+        target.refresh_interval_ns = target.surface_owner ? target.surface_owner->refresh_interval_ns() : 0;
         log("hwnd surface configured " + std::to_string(target.width) + "x" + std::to_string(target.height));
         log("surface present mode=" + std::string(config.presentMode == wgpu::PresentMode::Immediate ?
             "immediate" : config.presentMode == wgpu::PresentMode::Mailbox ? "mailbox" : "fifo"));
@@ -5589,16 +5596,35 @@ void main() {
             owner->fail(vispy::timing::Status::SubmissionError, reason);
     }
 
-    // Plan P2 (user, 2026-10-30): a vsynced (FIFO) surface paces like OpenGL's blocking swap. The paint returns once
-    // this frame's GPU work, which waits for a swapchain image, has retired, so frames do not queue ahead of the
-    // display. The wait is counted apart from completion_waits, and bounded, so a stalled surface cannot hold the GUI.
-    void pace_presented_frame(const Canvas& target, const Ticket& ticket) {
-        if (!target.vsync || target.present_mode != wgpu::PresentMode::Fifo || !ticket.completion_future.id ||
-            ticket.callback_received.load()) return;
-        ++probe.present_pacing_waits;
-        HostTimer timer(probe.present_pacing_wait_ns);
-        if (instance.WaitAny(ticket.completion_future, 250'000'000ull) != wgpu::WaitStatus::Success)
-            ++probe.present_pacing_timeouts;
+    // Plan P2 (user, 2026-10-30), with render-ahead (user, 2026-10-31): a vsynced (FIFO) surface paces like OpenGL's
+    // swap. A frame produced in less than one refresh interval, counted from the previous paced paint's return, could
+    // queue ahead of the display, so its paint returns once its own GPU work, which waits for a swapchain image, has
+    // retired. A slower frame cannot outrun the display: its paint returns once the previous frame has retired, so
+    // its GPU work overlaps the next frame's CPU work, as OpenGL's driver lets one frame render ahead. The waits are
+    // counted apart from completion_waits, and bounded, so a stalled surface cannot hold the GUI.
+    static constexpr uint64_t default_refresh_interval_ns = 16'666'667;  // 60 Hz, when the display's rate is unknown
+
+    static uint64_t pacing_interval_ns(const Canvas& target) {
+        return target.refresh_override_ns ? target.refresh_override_ns :
+            target.refresh_interval_ns ? target.refresh_interval_ns : default_refresh_interval_ns;
+    }
+
+    void pace_presented_frame(Canvas& target, const std::shared_ptr<Ticket>& ticket) {
+        if (!target.vsync || target.present_mode != wgpu::PresentMode::Fifo || !ticket->completion_future.id) return;
+        const bool ahead = target.paced_return_ns &&
+            monotonic_ns() - target.paced_return_ns >= pacing_interval_ns(target);
+        const auto previous = target.ahead_ticket.lock();
+        target.ahead_ticket = ahead ? std::weak_ptr<Ticket>(ticket) : std::weak_ptr<Ticket>();
+        // A frame's own completion implies the previous one's: the queue retires work in submission order.
+        const Ticket* waited = ahead ? previous.get() : ticket.get();
+        if (ahead) ++probe.present_render_ahead;
+        if (waited && !waited->callback_received.load()) {
+            ++(ahead ? probe.present_render_ahead_waits : probe.present_pacing_waits);
+            HostTimer timer(probe.present_pacing_wait_ns);
+            if (instance.WaitAny(waited->completion_future, 250'000'000ull) != wgpu::WaitStatus::Success)
+                ++probe.present_pacing_timeouts;
+        }
+        target.paced_return_ns = monotonic_ns();
     }
 
     void present_current_swapchain(Canvas& target, const std::shared_ptr<FrameMark::Queries>& owner) {
@@ -5643,7 +5669,7 @@ void main() {
         }
         target.swapchain_current = true;
         freeze_submission_counters(*ticket, submit_timer);
-        pace_presented_frame(target, *ticket);
+        pace_presented_frame(target, ticket);
         if (ticket->queries && ticket->queries->final_requested && target.queued_frames.empty())
             finalize_query_frame(ticket->queries);
     }
@@ -6113,7 +6139,7 @@ void main() {
             target.swapchain_current = true;
         }
         freeze_submission_counters(*ticket, submit_timer);
-        if (ticket->presented) pace_presented_frame(target, *ticket);
+        if (ticket->presented) pace_presented_frame(target, ticket);
         if (ticket->queries && ticket->queries->final_requested && target.queued_frames.empty())
             finalize_query_frame(ticket->queries);
     }
@@ -7822,6 +7848,14 @@ void diagnostic_configure_line_endpoints(int canvas_id, bool enabled, bool captu
     found->second.capture_line_endpoints = capture;
 }
 
+void diagnostic_present_refresh_interval(int canvas_id, uint64_t interval_ns) {
+    auto& eng = engine();
+    std::lock_guard<std::mutex> lock(eng.mu);
+    auto found = eng.canvases.find(canvas_id);
+    if (found == eng.canvases.end()) throw std::runtime_error("pacing: diagnostic canvas does not exist");
+    found->second.refresh_override_ns = interval_ns;  // 0 restores the display's refresh interval
+}
+
 std::vector<LineEndpointReadback> diagnostic_line_endpoints(int canvas_id) {
     auto& eng = engine();
     std::lock_guard<std::mutex> lock(eng.mu);
@@ -8237,6 +8271,9 @@ SurfaceInfo benchmark_surface_info(int canvas_id) {
     else result.present_mode = "fifo";
     result.pacing_disabled = !canvas.vsync && canvas.surface_configured &&
         canvas.present_mode == wgpu::PresentMode::Immediate;
+    result.refresh_interval_ns = eng.pacing_interval_ns(canvas);
+    result.refresh_interval_source = canvas.refresh_override_ns ? "diagnostic" :
+        canvas.refresh_interval_ns ? "display" : "default";
     return result;
 }
 
