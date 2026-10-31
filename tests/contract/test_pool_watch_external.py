@@ -1,6 +1,7 @@
 # SPDX-License-Identifier: AGPL-3.0-only
 """R1 instrumentation from outside the watched processes (tools/pool_watch_external.py, D20)."""
 from collections import defaultdict
+from types import SimpleNamespace
 import json
 import struct
 import sys
@@ -151,6 +152,64 @@ def test_launch_mode_records_a_real_lost_default_pool(tmp_path):
         assert events[-1]['event'] == 'target_exit' and events[-1]['returncode'] == 7
     else:
         assert [event['event'] for event in events] == ['unsupported_platform']
+
+
+def launch_model(monkeypatch, failure=None):
+    """The suspended-launch API boundary, without creating or changing a real process."""
+    events = []
+
+    class Child:
+        pid = 4242
+        killed = waited = False
+
+        def kill(self):
+            self.killed = True
+            events.append('kill')
+
+        def wait(self):
+            self.waited = True
+            events.append('wait')
+            return -1
+
+    child = Child()
+    monkeypatch.setattr(watcher.subprocess, 'Popen', lambda *args, **kwargs: child)
+    api = object.__new__(watcher.Windows)
+    api.job = None
+    api.ctypes = SimpleNamespace(get_last_error=lambda: 5)
+
+    def resume(process):
+        events.append('resume')
+        return -1 if failure == 'resume' else 0
+
+    api.kernel32 = SimpleNamespace(
+        OpenProcess=lambda *args: None if failure == 'open' else 10,
+        CreateJobObjectW=lambda *args: None if failure == 'job' else 20,
+        AssignProcessToJobObject=lambda *args: failure != 'assign',
+        CloseHandle=lambda handle: events.append(('close', handle)))
+    api.ntdll = SimpleNamespace(NtResumeProcess=resume)
+    return api, child, events
+
+
+@pytest.mark.parametrize('failure', ['open', 'job', 'assign', 'resume'])
+def test_failed_tracked_launch_kills_and_waits_without_running_unobserved(monkeypatch, failure):
+    api, child, events = launch_model(monkeypatch, failure)
+    with pytest.raises(OSError):
+        api.launch(['unused-test-command'])
+    assert child.killed and child.waited
+    assert events.index('kill') < events.index('wait')
+    assert api.job is None
+    assert ('resume' in events) == (failure == 'resume')
+    if failure != 'open':
+        assert events.count(('close', 10)) == 1
+    if failure in ('assign', 'resume'):
+        assert events.count(('close', 20)) == 1
+
+
+def test_tracked_launch_transfers_the_job_only_after_successful_resume(monkeypatch):
+    api, child, events = launch_model(monkeypatch)
+    assert api.launch(['unused-test-command']) is child
+    assert api.job == 20 and not child.killed and not child.waited
+    assert events == ['resume', ('close', 10)]
 
 
 __all__ = [name for name in dir() if name.startswith('test_')]
