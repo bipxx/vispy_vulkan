@@ -10,7 +10,9 @@ and nothing runs inside one.
 
 In launch mode the command starts suspended, is assigned to a new job object without limits, and is resumed, so the
 job lists every process the command creates: launchers such as a virtual environment's python.exe start the real
-interpreter as a child. (Enumerating all processes instead costs 35-45 ms per look on this desktop.) Each new job
+interpreter as a child. Failed process opening, job setup or resume terminates and waits for the owned child;
+launch never falls back to an untracked process tree. (Enumerating all processes instead costs 35-45 ms per look
+on this desktop.) Each new job
 member is adopted and recorded with its parent and executable name. Attach mode (--pid) watches that process only.
 For each process the watcher finds the lowest TpWorkerFactory handle (the default pool's, as tools/pool_watch.py does)
 and re-reads the table every --interval seconds. When that handle value is gone or names another object type, it
@@ -93,6 +95,7 @@ class Windows:
         k.QueryFullProcessImageNameW.argtypes = [wintypes.HANDLE, wintypes.DWORD, wintypes.LPWSTR,
                                                  ctypes.POINTER(wintypes.DWORD)]
         n.NtResumeProcess.argtypes = [wintypes.HANDLE]
+        n.NtResumeProcess.restype = ctypes.c_long
         n.NtQueryInformationProcess.argtypes = [wintypes.HANDLE, ctypes.c_ulong, ctypes.c_void_p, wintypes.ULONG,
                                                 ctypes.POINTER(wintypes.ULONG)]
         n.NtQueryInformationProcess.restype = ctypes.c_long
@@ -106,21 +109,34 @@ class Windows:
     def launch(self, command):
         """Start the command suspended, assign it to a new job object, and resume it; return the Popen."""
         child = subprocess.Popen(command, creationflags=0x00000004)  # CREATE_SUSPENDED
-        process = self.kernel32.OpenProcess(0x0100 | 0x0001 | 0x0800, False, child.pid)  # SET_QUOTA|TERMINATE|SUSPEND_RESUME
+        process, job = None, None
         try:
+            # SET_QUOTA|TERMINATE|SUSPEND_RESUME: establish tracking before the child runs.
+            process = self.kernel32.OpenProcess(0x0100 | 0x0001 | 0x0800, False, child.pid)
+            if not process:
+                raise OSError('cannot open the launched process %d (error %d)' %
+                              (child.pid, self.ctypes.get_last_error()))
             job = self.kernel32.CreateJobObjectW(None, None)
-            if job and process and self.kernel32.AssignProcessToJobObject(job, process):
-                self.job = job
-            elif job:
-                self.kernel32.CloseHandle(job)
+            if not job:
+                raise OSError('CreateJobObjectW failed (error %d)' % self.ctypes.get_last_error())
+            if not self.kernel32.AssignProcessToJobObject(job, process):
+                raise OSError('AssignProcessToJobObject failed (error %d)' % self.ctypes.get_last_error())
+            status = self.ntdll.NtResumeProcess(process)
+            if status < 0:
+                raise OSError('NtResumeProcess failed: 0x%08x' % (status & 0xFFFFFFFF))
+            self.job, job = job, None
+            return child
+        except BaseException:
+            try:
+                child.kill()
+            finally:
+                child.wait()
+            raise
         finally:
             if process:
-                self.ntdll.NtResumeProcess(process)
                 self.kernel32.CloseHandle(process)
-            else:
-                child.kill()
-                raise OSError('cannot open the launched process %d to resume it' % child.pid)
-        return child
+            if job:
+                self.kernel32.CloseHandle(job)
 
     def members(self):
         """Pids of every process in the job (JobObjectBasicProcessIdList), or [] without a job."""
@@ -256,8 +272,6 @@ def main(argv=None):
         return child.wait() if child else 0
     api = Windows()
     child = api.launch(command) if command else None
-    if child is not None and api.job is None:
-        record(event='no_job', pid=child.pid, seconds=round(time.perf_counter() - began, 4))
     watch(api, child.pid if child else args.pid, record, args.interval, began)
     if child is None:
         return 0
