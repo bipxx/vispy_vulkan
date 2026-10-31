@@ -165,6 +165,12 @@ struct Probe {
     uint64_t host_block_captures = 0, host_block_capture_bytes = 0;
     uint64_t host_import_copies = 0, host_import_bytes = 0, host_import_fallbacks = 0;
     uint64_t host_imports = 0, host_import_evictions = 0, host_import_pinned_bytes = 0;
+    // Plan P6: whole buffer updates whose payload's host block became the buffer's bytes; buffer uploads copied from a
+    // block's import (copies) or written through queue.WriteBuffer although their bytes are a block (fallbacks); GPU
+    // buffers of retired revisions that new revisions took, and the bytes of those still waiting (a gauge).
+    uint64_t buffer_shadow_transfers = 0, buffer_shadow_transfer_bytes = 0;
+    uint64_t buffer_import_copies = 0, buffer_import_bytes = 0, buffer_import_fallbacks = 0;
+    uint64_t buffer_pool_reuses = 0, buffer_pool_bytes = 0;
     uint64_t native_batches = 0, native_commands = 0;
     uint64_t native_interpret_ns = 0, native_submit_ns = 0;
     uint64_t present_pacing_wait_ns = 0;

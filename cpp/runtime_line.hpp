@@ -166,6 +166,12 @@ private:
     uint64_t per_instance_ = 0, total_ = 0;
 };
 
+// An index revision's bytes: the runtime's buffer revisions may keep them in a host block (bytes(), plan P6).
+template<class Revision> std::span<const uint8_t> revision_bytes(const Revision& revision) {
+    if constexpr (requires { revision.bytes(); }) return revision.bytes();
+    else return revision.cpu;
+}
+
 // Recreate borrowed tables from the owned, immutable index revision on demand.
 // Never retain a span into a temporary conversion or a replaced Program owner.
 template<class IndexRevision> struct CapturedSelection {
@@ -178,7 +184,7 @@ template<class IndexRevision> struct CapturedSelection {
         if (bool(index) != bool(index_bytes))
             throw std::invalid_argument("lines: captured index owner/width differs");
         Selection result{first, count, instances};
-        if (index) { result.indices = index->cpu; result.index_bytes = index_bytes; }
+        if (index) { result.indices = revision_bytes(*index); result.index_bytes = index_bytes; }
         return result;
     }
     Segments segments(uint64_t maximum = UINT64_MAX) const { return Segments(primitive, selection(), maximum); }

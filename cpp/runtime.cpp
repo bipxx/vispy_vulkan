@@ -372,6 +372,9 @@ struct BufferRev {
     inline static std::atomic<uint64_t> next_identity{1};
     const uint64_t identity = next_identity.fetch_add(1, std::memory_order_relaxed);
     std::vector<uint8_t> cpu;
+    // Plan P6: a user buffer's bytes may be a host block instead, and cpu is then empty: a whole update's payload
+    // block, or a pooled block that a revision copied for a patch. Readers use bytes() and size(), which cover both.
+    vispy::memory::HostBytes host;
     wgpu::Buffer gpu;
     uint64_t generation = 1;
     uint64_t revision = 0;
@@ -381,7 +384,21 @@ struct BufferRev {
     std::shared_ptr<const vispy::inputs::batches::owners::OwnerData<std::shared_ptr<BufferRev>>> batch_data;
     std::shared_ptr<const vispy::points::batches::owners::OwnerData<std::shared_ptr<BufferRev>>> point_batch_data;
     std::unordered_map<std::string, std::shared_ptr<BufferRev>> derived;
+
+    std::span<const uint8_t> bytes() const {
+        return host ? std::span<const uint8_t>(host->data(), host->size()) : std::span<const uint8_t>(cpu);
+    }
+    uint8_t* mutable_data() { return host ? host->data() : cpu.data(); }
+    size_t size() const { return host ? host->size() : cpu.size(); }
+    size_t capacity() const { return host ? host->capacity() : cpu.capacity(); }
 };
+
+// Plan P6: storage of `size` bytes with unspecified contents for a new revision: a pooled host block from 1 MiB, so that
+// the GPU can copy it through an import, else a vector.
+static void allocate_buffer_bytes(BufferRev& rev, size_t size) {
+    if (size >= vispy::memory::HostBlockPool::min_bytes) rev.host = vispy::memory::HostBlockPool::shared().take(size);
+    else rev.cpu.resize(size);
+}
 
 uint32_t attribute_components(const std::string& type) {
     if (type == "float" || type == "int" || type == "uint") return 1;
@@ -965,6 +982,8 @@ struct Ticket {
     std::vector<wgpu::Buffer> transient_buffers;
     std::vector<std::shared_ptr<StagingLease>> staging;  // full-upload staging in flight
     std::vector<vispy::memory::HostBytes> host_blocks;  // host blocks this frame's copies read (plan P5)
+    // Plan P6: revisions this frame copies from their blocks' imports, uploaded once the frame is submitted.
+    std::vector<std::pair<std::shared_ptr<BufferRev>, uint64_t>> imported_buffers;
     std::optional<NativeLinePool::BatchReservation> line_resources;
     bool submission_owner_retained = false;
     bool diagnostic_retirement_counted = false;
@@ -1078,6 +1097,21 @@ struct Engine {
     std::vector<HostImport> host_imports;
     std::vector<ReleasedHostImport> released_host_imports;
     uint64_t last_retired_ticket = 0;
+    // Plan P6: vertex and index buffers of at least 1 MiB whose revisions died with a retired Ticket, which a new
+    // revision of the same size and usage takes instead of allocating its own (revision_buffer). A buffer replaced
+    // while a frame reads it thus reuses one that has retired. They hold at most retired_buffer_limit bytes, each for
+    // retired_buffer_tickets more retired Tickets.
+    struct RetiredBuffer {
+        wgpu::Buffer buffer;
+        uint64_t size;
+        wgpu::BufferUsage usage;
+        uint64_t generation;
+        uint64_t retired_at;
+    };
+    static constexpr uint64_t retired_buffer_min_bytes = uint64_t{1} << 20;
+    static constexpr uint64_t retired_buffer_limit = uint64_t{512} << 20;
+    static constexpr uint64_t retired_buffer_tickets = 8;
+    std::vector<RetiredBuffer> retired_buffers;
     size_t frame_slots = 3;
     // Test controls affect completion delivery, never whether work reaches GPU.
     std::shared_ptr<std::atomic<bool>> hold_submission_completions =
@@ -1719,6 +1753,7 @@ struct Engine {
                     log("FREE buffer owner=" + std::to_string(buf->owner) +
                         " generation=" + std::to_string(buf->generation));
             }
+            keep_retired_buffers(*ticket);
             last_retired_ticket = ticket->id;
             tickets.pop_front();
             ++probe.retired_tickets;
@@ -1726,6 +1761,7 @@ struct Engine {
                 throw std::runtime_error("Dawn submission: " + error);
         }
         release_dropped_host_imports();
+        release_retired_buffers(false);
         poll_query_results();
         probe.pending_tickets = tickets.size();
         update_work_peaks();
@@ -1801,6 +1837,7 @@ struct Engine {
     void invalidate_device() {
         clear_staging();
         release_host_imports(nullptr, true);
+        release_retired_buffers(true);
         if (memory_window_token) memory_window_invalidations |= WindowDeviceLost;
         device_lost = true;
         device_ready = false;
@@ -1936,6 +1973,7 @@ struct Engine {
         if (queue && instance) wait_queue();
         clear_staging();
         release_host_imports(nullptr, true);
+        release_retired_buffers(true);
         // Explicit shutdown may wait; normal submission never takes this
         // validation barrier. Process every submitted owner before releasing
         // diagnostic capacity or dropping its generation's native handles.
@@ -2149,6 +2187,7 @@ struct Engine {
         desc.requiredFeatureCount = 2;
         desc.requiredFeatures = features;
         release_surfaces();
+        release_retired_buffers(true);
         // Retained Canvas owners outlive all old-generation WSI destruction.
         if (device) device.Destroy();
         forget_host_imports();
@@ -3167,7 +3206,7 @@ struct Engine {
             if (binding.offset < 0 || binding.stride < 0 || binding.divisor < 0 || binding.type != field.attribute.type)
                 throw std::runtime_error("lines: endpoint attribute has incompatible captured binding");
             widths.push_back(field.value_type.components());
-            sources.push_back({captured.vertices[index]->cpu, static_cast<uint64_t>(binding.offset),
+            sources.push_back({captured.vertices[index]->bytes(), static_cast<uint64_t>(binding.offset),
                                static_cast<uint64_t>(binding.stride), static_cast<uint64_t>(binding.divisor),
                                field.value_type.components(), field.attribute.name});
             stamps.push_back({field.attribute.name, field.attribute.type, captured.vertices[index]->identity,
@@ -4038,17 +4077,24 @@ struct Engine {
         }
     }
 
-    wgpu::Buffer upload_buffer(const void* data, size_t size, wgpu::BufferUsage usage) {
-        HostTimer timer(probe.buffer_upload_cpu_ns);
+    // A buffer for `size` bytes with this usage: the GPU buffer of a retired revision (plan P6), else a new one.
+    wgpu::Buffer revision_buffer(size_t size, wgpu::BufferUsage usage) {
         wgpu::BufferDescriptor bd;
         bd.size = std::max<size_t>(4, (size + 3u) & ~3u);
         if (bd.size > info.max_buffer_size) throw std::runtime_error("buffer exceeds granted device limit");
         bd.usage = usage | wgpu::BufferUsage::CopyDst;
+        if (auto buffer = take_retired_buffer(bd.size, bd.usage)) return buffer;
         auto buffer = device.CreateBuffer(&bd);
         ++probe.buffer_allocations;
+        return buffer;
+    }
+
+    wgpu::Buffer upload_buffer(const void* data, size_t size, wgpu::BufferUsage usage) {
+        HostTimer timer(probe.buffer_upload_cpu_ns);
+        auto buffer = revision_buffer(size, usage);
         if (data != nullptr && size > 0) {
             if (size % 4) {
-                std::vector<uint8_t> padded(bd.size, 0);
+                std::vector<uint8_t> padded(buffer.GetSize(), 0);
                 std::memcpy(padded.data(), data, size);
                 queue.WriteBuffer(buffer, 0, padded.data(), padded.size());
             } else queue.WriteBuffer(buffer, 0, data, size);
@@ -4057,24 +4103,79 @@ struct Engine {
         return buffer;
     }
 
-    void upload_revision(BufferRev& rev, wgpu::BufferUsage usage) {
-        if (!rev.gpu) rev.gpu = upload_buffer(rev.cpu.data(), rev.cpu.size(), usage);
-        else if (rev.gpu_revision != rev.revision) {
+    // Plan P6: whether the frame being encoded already copies this revision from its block's import.
+    static bool imported_in(const Ticket* ticket, const BufferRev& rev) {
+        return ticket && std::any_of(ticket->imported_buffers.begin(), ticket->imported_buffers.end(),
+            [&rev](const auto& entry) { return entry.first.get() == &rev && entry.second == rev.revision; });
+    }
+
+    void upload_revision(BufferRev& rev, wgpu::BufferUsage usage, const Ticket* ticket = nullptr) {
+        if (rev.gpu && (rev.gpu_revision == rev.revision || imported_in(ticket, rev))) return;
+        const auto bytes = rev.bytes();
+        // Plan P6: bytes in a host block that no import copied (import_draw_buffers).
+        if (rev.host) ++probe.buffer_import_fallbacks;
+        if (!rev.gpu) rev.gpu = upload_buffer(bytes.data(), bytes.size(), usage);
+        else {
             HostTimer timer(probe.buffer_upload_cpu_ns);
-            if (rev.cpu.size() % 4) {
+            if (bytes.size() % 4) {
                 std::vector<uint8_t> padded(rev.gpu.GetSize(), 0);
-                std::memcpy(padded.data(), rev.cpu.data(), rev.cpu.size());
+                std::memcpy(padded.data(), bytes.data(), bytes.size());
                 queue.WriteBuffer(rev.gpu, 0, padded.data(), padded.size());
-            } else queue.WriteBuffer(rev.gpu, 0, rev.cpu.data(), rev.cpu.size());
-            probe.copy_bytes += rev.cpu.size();
-        } else return;
+            } else queue.WriteBuffer(rev.gpu, 0, bytes.data(), bytes.size());
+            probe.copy_bytes += bytes.size();
+        }
         rev.gpu_revision = rev.revision;
         ++probe.buffer_uploads;
-        probe.geometry_upload_bytes += rev.cpu.size();
+        probe.geometry_upload_bytes += bytes.size();
+    }
+
+    // Plan P6: a revision whose bytes are a host block is copied on the GPU from the block's import, before the pass
+    // that reads it begins, and the Ticket holds the block until the copy has retired. The copy reaches the GPU with
+    // the frame's commands, so the revision counts as uploaded once the frame is submitted (commit_buffer_imports).
+    // False leaves the upload to upload_revision in the pass: the bytes are a vector, their size is not a multiple of
+    // 4, or the block has no import (host_import).
+    bool import_revision(const std::shared_ptr<BufferRev>& rev, wgpu::BufferUsage usage,
+                         const wgpu::CommandEncoder& encoder, Ticket& ticket) {
+        if (!rev->host || (rev->gpu && (rev->gpu_revision == rev->revision || imported_in(&ticket, *rev))))
+            return false;
+        const uint64_t size = rev->host->size();
+        if (!size || size % 4) return false;
+        auto source = host_import(*rev->host, &ticket);
+        if (!source) return false;
+        HostTimer timer(probe.buffer_upload_cpu_ns);
+        if (!rev->gpu) rev->gpu = revision_buffer(size, usage);
+        encoder.CopyBufferToBuffer(source, 0, rev->gpu, 0, size);
+        ticket.host_blocks.push_back(rev->host);
+        ticket.imported_buffers.push_back({rev, rev->revision});
+        return true;
+    }
+
+    // Plan P6: before a draw's pass begins, its vertex streams and index buffer are copied from their blocks'
+    // imports where they can be, so that the pass finds them uploaded. The batched routes upload in the pass.
+    void import_draw_buffers(const DrawSnap& snap, const wgpu::CommandEncoder& encoder, Ticket& ticket) {
+        if (!info.host_mapped_pointer || !snap.artifact || snap.count <= 0 || snap.instances <= 0 ||
+                snap.batch_inputs || snap.point_batch_inputs) return;
+        for (size_t v = 0; v < snap.vertex_streams.size() && v < snap.vertices.size(); ++v)
+            if (snap.vertices[v]) import_revision(snap.vertices[v], wgpu::BufferUsage::Vertex, encoder, ticket);
+        if (snap.index) import_revision(snap.index, wgpu::BufferUsage::Index, encoder, ticket);
+    }
+
+    // Plan P6: after Queue.Submit, the revisions this frame copied from imports are uploaded. The list then holds them
+    // no longer, so that a revision only the Ticket holds is seen to die with it (keep_retired_buffers).
+    void commit_buffer_imports(Ticket& ticket) {
+        for (const auto& [rev, revision] : ticket.imported_buffers) {
+            if (rev->revision != revision) continue;
+            rev->gpu_revision = revision;
+            ++probe.buffer_uploads;
+            probe.geometry_upload_bytes += rev->size();
+            ++probe.buffer_import_copies;
+            probe.buffer_import_bytes += rev->size();
+        }
+        ticket.imported_buffers.clear();
     }
 
     static uint64_t input_record_bytes(const std::shared_ptr<BufferRev>& record, bool payload_only = false) {
-        uint64_t bytes = payload_only ? record->cpu.size() : sizeof(BufferRev) + 2 * sizeof(void*) + record->cpu.capacity();
+        uint64_t bytes = payload_only ? record->size() : sizeof(BufferRev) + 2 * sizeof(void*) + record->capacity();
         if (!payload_only && record->batch_data) bytes += record->batch_data->metadata_storage_bytes();
         if (!payload_only && record->point_batch_data) bytes += record->point_batch_data->metadata_storage_bytes();
         for (const auto& [key, child] : record->derived) {
@@ -4089,7 +4190,7 @@ struct Engine {
                                      std::unordered_set<const void*>& visited) {
         using vispy::inputs::bounded_cost_add;
         if (!record || !visited.insert(record.get()).second) return 0;
-        uint64_t bytes = bounded_cost_add(sizeof(BufferRev) + 2 * sizeof(void*), record->cpu.capacity());
+        uint64_t bytes = bounded_cost_add(sizeof(BufferRev) + 2 * sizeof(void*), record->capacity());
         if (record->batch_data) bytes = bounded_cost_add(bytes, record->batch_data->metadata_storage_bytes());
         if (record->point_batch_data) bytes = bounded_cost_add(bytes, record->point_batch_data->metadata_storage_bytes());
         for (const auto& [key, child] : record->derived) {
@@ -4145,7 +4246,7 @@ struct Engine {
             Selection selected{static_cast<uint64_t>(snap.first), static_cast<uint64_t>(snap.count),
                                static_cast<uint64_t>(snap.instances)};
             if (snap.index) {
-                selected.indices = snap.index->cpu;
+                selected.indices = snap.index->bytes();
                 selected.index_bytes = snap.index_type == "unsigned_int" ? 4 : snap.index_type == "unsigned_byte" ? 1 : 2;
             }
             validate_selection(selected);
@@ -4173,7 +4274,7 @@ struct Engine {
                 result->cpu = topology_indices(selected, fan, input_buffer_limit()); return result;
             });
             snap.index = std::move(converted); snap.index_type = "unsigned_int";
-            snap.index_count = snap.count = static_cast<int>(snap.index->cpu.size() / 4);
+            snap.index_count = snap.count = static_cast<int>(snap.index->size() / 4);
             snap.first = 0; snap.mode = fan ? "triangles" : "line_strip";
         }
     }
@@ -4386,7 +4487,7 @@ struct Engine {
         Selection selected{static_cast<uint64_t>(snap.first), static_cast<uint64_t>(snap.count),
                            static_cast<uint64_t>(snap.instances)};
         if (snap.index) {
-            selected.indices = snap.index->cpu;
+            selected.indices = snap.index->bytes();
             selected.index_bytes = snap.index_type == "unsigned_int" ? 4 : snap.index_type == "unsigned_byte" ? 1 : 2;
         }
         validate_selection(selected);
@@ -4402,7 +4503,7 @@ struct Engine {
             const auto& field = snap.artifact->portable->attributes.at(n);
             const auto& binding = snap.bindings[n];
             const auto& buffer = snap.vertices[n];
-            sources.push_back({buffer->cpu, buffer->identity, buffer->revision,
+            sources.push_back({buffer->bytes(), buffer->identity, buffer->revision,
                 static_cast<uint64_t>(binding.offset), static_cast<uint64_t>(binding.stride),
                 attribute_components(field.type) * 4ull, static_cast<uint64_t>(binding.divisor), field.name});
         }
@@ -5118,6 +5219,58 @@ struct Vertex { @builtin(position) position: vec4f, @location(0) uv: vec2f }
         released_host_imports.clear();
         pool.free_disposed();
         probe.host_import_pinned_bytes = pool.pinned_bytes();
+    }
+
+    // Plan P6: at a Ticket's retirement, before it releases what it holds. A revision that only this Ticket holds dies
+    // with it, and its GPU buffer, if it is a vertex or index buffer of at least 1 MiB, waits for a new revision
+    // (retired_buffers). Only those are kept: SetVertexBuffer and SetIndexBuffer bind them, never a cached bind group.
+    void keep_retired_buffers(const Ticket& ticket) {
+        std::unordered_map<const BufferRev*, long> holds;
+        for (const auto& buffer : ticket.buffers)
+            if (buffer) ++holds[buffer.get()];
+        for (const auto& buffer : ticket.buffers) {
+            const auto it = buffer ? holds.find(buffer.get()) : holds.end();
+            if (it == holds.end()) continue;
+            const bool dies = buffer.use_count() == it->second;
+            holds.erase(it);
+            if (!dies || !buffer->gpu) continue;
+            const auto usage = buffer->gpu.GetUsage();
+            const uint64_t size = buffer->gpu.GetSize();
+            if ((usage != (wgpu::BufferUsage::Vertex | wgpu::BufferUsage::CopyDst) &&
+                 usage != (wgpu::BufferUsage::Index | wgpu::BufferUsage::CopyDst)) ||
+                size < retired_buffer_min_bytes || size > retired_buffer_limit) continue;
+            retired_buffers.push_back({std::move(buffer->gpu), size, usage, device_generation, ticket.id});
+            probe.buffer_pool_bytes += size;
+            while (probe.buffer_pool_bytes > retired_buffer_limit) {  // the oldest leave first
+                probe.buffer_pool_bytes -= retired_buffers.front().size;
+                retired_buffers.erase(retired_buffers.begin());
+            }
+        }
+    }
+
+    // The kept GPU buffer of a retired revision with this size and usage on this device, or null.
+    wgpu::Buffer take_retired_buffer(uint64_t size, wgpu::BufferUsage usage) {
+        for (auto it = retired_buffers.begin(); it != retired_buffers.end(); ++it) {
+            if (it->size != size || it->usage != usage || it->generation != device_generation) continue;
+            auto buffer = std::move(it->buffer);
+            probe.buffer_pool_bytes -= it->size;
+            retired_buffers.erase(it);
+            ++probe.buffer_pool_reuses;
+            return buffer;
+        }
+        return nullptr;
+    }
+
+    // Releases kept GPU buffers: all of them (with the device, or with the last canvas), or else those of an older
+    // device and those kept for retired_buffer_tickets retired Tickets.
+    void release_retired_buffers(bool all) {
+        for (auto it = retired_buffers.begin(); it != retired_buffers.end();) {
+            if (all || it->generation != device_generation ||
+                    last_retired_ticket >= it->retired_at + retired_buffer_tickets) {
+                probe.buffer_pool_bytes -= it->size;
+                it = retired_buffers.erase(it);
+            } else ++it;
+        }
     }
 
     // The buffer a host block is imported as on this device, created on its first use. Null when the device lacks
@@ -6172,6 +6325,7 @@ void main() {
                 }
                 rp.depthStencilAttachment = &depth;
             }
+            import_draw_buffers(snap, encoder, *ticket);
             auto pass = begin_timed_pass(encoder, rp, ticket.get(),
                 vispy::render::pass_kind(snap.origin, snap.fbo != 0));
             if (snap.artifact && snap.count > 0 && snap.instances > 0) {
@@ -6262,9 +6416,9 @@ void main() {
                                            uint32_t binding, wgpu::BufferUsage usage) {
                         if (!binding) return;
                         if (!revision) throw std::runtime_error("DRAW batches: missing reflected identity resource");
-                        upload_revision(*revision, usage);
+                        upload_revision(*revision, usage, ticket.get());
                         wgpu::BindGroupEntry entry;
-                        entry.binding = binding; entry.buffer = revision->gpu; entry.size = revision->cpu.size();
+                        entry.binding = binding; entry.buffer = revision->gpu; entry.size = revision->size();
                         entries.push_back(entry);
                         ticket->buffers.push_back(revision);
                         group_buffers.push_back(revision);
@@ -6293,12 +6447,12 @@ void main() {
                     for (size_t v = 0; v < snap.vertex_streams.size(); ++v) {
                         const auto& revision = vertex_at(v);
                         if (!revision) throw std::runtime_error("DRAW batches: missing physical vertex stream");
-                        upload_revision(*revision, wgpu::BufferUsage::Vertex);
+                        upload_revision(*revision, wgpu::BufferUsage::Vertex, ticket.get());
                         pass.SetVertexBuffer(static_cast<uint32_t>(v), revision->gpu, snap.vertex_streams[v].offset);
                         ticket->buffers.push_back(revision);
                     }
                     if (index) {
-                        upload_revision(*index, wgpu::BufferUsage::Index);
+                        upload_revision(*index, wgpu::BufferUsage::Index, ticket.get());
                         pass.SetIndexBuffer(index->gpu, index_type == "unsigned_int" ?
                             wgpu::IndexFormat::Uint32 : wgpu::IndexFormat::Uint16);
                         pass.DrawIndexed(count, instances, first_index, 0, first_instance);
@@ -6398,6 +6552,7 @@ void main() {
         target.clear_pending = false;
         if (ticket->line_resources) ticket->line_resources->mark_submitted();
         commit_texture_uploads(*ticket);
+        commit_buffer_imports(*ticket);
         try { maybe_fail_submission("after-submit"); }
         catch (const std::exception& error) {
             fail_submission_metadata(*ticket, vispy::timing::Status::SubmissionError, error.what());
@@ -6537,7 +6692,7 @@ void main() {
         std::function<void(const std::shared_ptr<const BufferRev>&)> count_buffer;
         count_buffer = [&](const std::shared_ptr<const BufferRev>& rev) {
             if (!rev || !buffer_revisions.insert(rev.get()).second) return;
-            eng.probe.live_cpu_buffer_bytes += rev->cpu.capacity();
+            eng.probe.live_cpu_buffer_bytes += rev->capacity();
             if (rev->batch_data) eng.probe.live_cpu_buffer_bytes += rev->batch_data->metadata_storage_bytes();
             if (rev->point_batch_data) eng.probe.live_cpu_buffer_bytes += rev->point_batch_data->metadata_storage_bytes();
             if (rev->gpu && buffers.insert(rev->gpu.Get()).second)
@@ -6549,7 +6704,7 @@ void main() {
         std::function<uint64_t(const std::shared_ptr<BufferRev>&)> current_record_bytes;
         current_record_bytes = [&](const std::shared_ptr<BufferRev>& rev) -> uint64_t {
             if (!rev || !current_buffer_revisions.insert(rev.get()).second) return 0;
-            uint64_t bytes = sizeof(BufferRev) + 2 * sizeof(void*) + rev->cpu.capacity();
+            uint64_t bytes = sizeof(BufferRev) + 2 * sizeof(void*) + rev->capacity();
             if (rev->batch_data) bytes += rev->batch_data->metadata_storage_bytes();
             if (rev->point_batch_data) bytes += rev->point_batch_data->metadata_storage_bytes();
             for (const auto& [key, child] : rev->derived) {
@@ -6998,6 +7153,7 @@ void destroy_canvas(int canvas_id) {
         eng.release_host_imports(nullptr, true);
         vispy::memory::HostBlockPool::shared().clear();
         eng.release_dropped_host_imports();
+        eng.release_retired_buffers(true);
     }
     eng.log("destroy canvas " + std::to_string(canvas_id));
 }
@@ -7186,32 +7342,42 @@ static void execute_commands_impl(int canvas_id, const std::vector<Command>& com
             if (obj.class_name.find("Shader") != std::string::npos && cmd.args.size() >= 3) {
                 obj.shader = cmd.args[2].s;
             } else if (obj.class_name.find("Buffer") != std::string::npos && cmd.args.size() >= 3) {
+                const auto& blob = cmd.args[2].blob;
+                const int offset = static_cast<int>(cmd.args[1].i);
+                const size_t allocated = obj.buffer ? obj.buffer->size() : 0;
+                if (offset < 0 || static_cast<uint64_t>(offset) + blob.size() > allocated)
+                    throw std::runtime_error("buffer update exceeds allocation bounds");
+                const bool whole = offset == 0 && blob.size() == allocated;
                 const bool reuse = obj.buffer && obj.buffer.use_count() == 1;
                 auto rev = reuse ? obj.buffer : std::make_shared<BufferRev>();
                 rev->owner = id;
                 rev->generation = obj.generation;
                 rev->revision = obj.buffer ? obj.buffer->revision + 1 : 1;
-                const auto& blob = cmd.args[2].blob;
-                int offset = static_cast<int>(cmd.args[1].i);
-                bool written = false;
-                if (obj.buffer && !reuse) {
-                    // A queued frame still holds the old revision: copy its bytes into a recycled block if one fits.
-                    // An update of the whole buffer replaces them, so it copies none (plan P3).
-                    const auto& old = obj.buffer->cpu;
-                    const bool whole = offset == 0 && blob.size() == old.size();
-                    rev->cpu = vispy::memory::ByteRecycler::shared().take(old.size());
-                    if (rev->cpu.empty() || rev->cpu.size() != old.size()) {
-                        if (whole) rev->cpu.assign(blob.data(), blob.data() + blob.size());
-                        else rev->cpu = old;
-                        written = whole;
-                    } else if (!whole) std::memcpy(rev->cpu.data(), old.data(), old.size());
-                    ++eng.probe.buffer_copy_on_write;
-                    if (!whole) eng.probe.buffer_copy_on_write_bytes += old.size();
-                }
-                if (offset < 0 || static_cast<uint64_t>(offset) + blob.size() > rev->cpu.size())
-                    throw std::runtime_error("buffer update exceeds allocation bounds");
-                if (!written && blob.size()) {
-                    std::memcpy(rev->cpu.data() + offset, blob.data(), blob.size());
+                if (obj.buffer && !reuse) ++eng.probe.buffer_copy_on_write;
+                // Plan P6: a whole update whose payload is a host block keeps the block as the buffer's bytes. The
+                // interpreter owns the command, so the block moves out of it; a revision rewritten in place gives its
+                // former bytes back to their pool or recycler.
+                auto* payload = owned_commands && whole && blob.host ?
+                    &(*owned_commands)[command_index].args[2].blob : nullptr;
+                if (payload) {
+                    vispy::memory::ByteRecycler::shared().give(std::move(rev->cpu));
+                    rev->cpu = {};
+                    rev->host = std::move(payload->host);
+                    ++eng.probe.buffer_shadow_transfers;
+                    eng.probe.buffer_shadow_transfer_bytes += rev->size();
+                } else {
+                    if (obj.buffer && !reuse) {
+                        // A queued frame still holds the old revision: the new one takes storage of its own, with the
+                        // old bytes unless the update replaces them all (plan P3).
+                        const auto old = obj.buffer->bytes();
+                        allocate_buffer_bytes(*rev, old.size());
+                        if (!whole) {
+                            std::memcpy(rev->mutable_data(), old.data(), old.size());
+                            eng.probe.buffer_copy_on_write_bytes += old.size();
+                        }
+                    }
+                    // Into the revision's block or vector, which no frame holds.
+                    if (blob.size()) std::memcpy(rev->mutable_data() + offset, blob.data(), blob.size());
                 }
                 rev->derived.clear();
                 obj.buffer = rev;
@@ -7290,7 +7456,7 @@ static void execute_commands_impl(int canvas_id, const std::vector<Command>& com
                 int nbytes = arg_id(cmd, 1);
                 if (nbytes < 0 || static_cast<uint64_t>(nbytes) > eng.info.max_buffer_size)
                     throw std::runtime_error("buffer size exceeds granted device limit");
-                if (!obj.buffer || static_cast<int>(obj.buffer->cpu.size()) != nbytes) {
+                if (!obj.buffer || static_cast<int>(obj.buffer->size()) != nbytes) {
                     auto rev = std::make_shared<BufferRev>();
                     rev->owner = id;
                     rev->generation = ++obj.generation;
@@ -7578,7 +7744,7 @@ static void execute_commands_impl(int canvas_id, const std::vector<Command>& com
                     if (snap.index_type != "unsigned_byte" && snap.index_type != "unsigned_short" && snap.index_type != "unsigned_int")
                         throw std::runtime_error("DRAW unsupported index type " + snap.index_type);
                     const size_t index_bytes = snap.index_type == "unsigned_int" ? 4 : snap.index_type == "unsigned_byte" ? 1 : 2;
-                    if (snap.index_count < 0 || static_cast<size_t>(snap.index_count) * index_bytes > snap.index->cpu.size())
+                    if (snap.index_count < 0 || static_cast<size_t>(snap.index_count) * index_bytes > snap.index->size())
                         throw std::runtime_error("DRAW index range exceeds index buffer");
                 }
             }
@@ -7613,7 +7779,7 @@ static void execute_commands_impl(int canvas_id, const std::vector<Command>& com
                     point_selection.count = snap.count;
                     point_selection.instances = snap.instances;
                     if (snap.index) {
-                        point_selection.indices = snap.index->cpu;
+                        point_selection.indices = snap.index->bytes();
                         point_selection.index_bytes = snap.index_type == "unsigned_int" ? 4 : snap.index_type == "unsigned_byte" ? 1 : 2;
                         point_index_identity = snap.index->identity;
                         point_index_revision = snap.index->revision;
@@ -7788,7 +7954,7 @@ static void execute_commands_impl(int canvas_id, const std::vector<Command>& com
                         const auto& source = snap.vertices[n];
                         const uint32_t width = attribute_components(attr.type) * 4;
                         widths.push_back(width);
-                        sources.push_back({source->cpu, source->identity, source->revision,
+                        sources.push_back({source->bytes(), source->identity, source->revision,
                             static_cast<uint64_t>(binding.offset), static_cast<uint64_t>(binding.stride),
                             width, static_cast<uint64_t>(binding.divisor), attr.name});
                     }
