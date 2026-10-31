@@ -916,12 +916,14 @@ struct Canvas {
 // A pooled, host-mapped buffer for a full texture upload (Engine::stage_texture_copy). queue.WriteTexture
 // makes Dawn allocate and fill a dedicated staging buffer per call above its 4 MiB ring: 64 MiB per frame for a
 // 4096x4096 float32 image (run perf-profile-261). A lease is unmapped and owned by its submission's Ticket while
-// its copy is in flight, then mapped again for the next upload.
+// its copy is in flight, then mapped again for the next upload. A patch lease holds a revision's partial updates
+// (Engine::acquire_patch_staging) and returns to a pool of its own.
 struct StagingLease {
     wgpu::Buffer buffer;
     uint64_t size = 0;
     uint64_t generation = 0;
     void* mapped = nullptr;
+    bool patch = false;
 };
 
 struct Ticket {
@@ -1037,6 +1039,12 @@ struct Engine {
     static constexpr size_t staging_max_buffers = 4;
     std::vector<std::shared_ptr<StagingLease>> staging_mapped;
     uint64_t staging_kept_bytes = 0;
+    // Mapped staging buffers idle for a revision's partial updates (B20), bounded apart from the full uploads' pool so
+    // that patches never take a full upload's lease.
+    static constexpr uint64_t patch_staging_min_bytes = uint64_t{64} << 10, patch_staging_max_bytes = uint64_t{64} << 20;
+    static constexpr size_t patch_staging_max_buffers = 8;
+    std::vector<std::shared_ptr<StagingLease>> patch_staging_mapped;
+    uint64_t patch_staging_kept_bytes = 0;
     size_t frame_slots = 3;
     // Test controls affect completion delivery, never whether work reaches GPU.
     std::shared_ptr<std::atomic<bool>> hold_submission_completions =
@@ -4899,6 +4907,10 @@ struct Vertex { @builtin(position) position: vec4f, @location(0) uv: vec2f }
             staging_mapped.erase(best);
             return lease;
         }
+        return create_staging(size, false);
+    }
+
+    std::shared_ptr<StagingLease> create_staging(uint64_t size, bool patch) {
         wgpu::BufferDescriptor descriptor;
         descriptor.size = (size + 3u) & ~uint64_t{3};
         descriptor.usage = wgpu::BufferUsage::MapWrite | wgpu::BufferUsage::CopySrc;
@@ -4908,8 +4920,28 @@ struct Vertex { @builtin(position) position: vec4f, @location(0) uv: vec2f }
         ++probe.buffer_allocations;
         lease->size = descriptor.size;
         lease->generation = device_generation;
+        lease->patch = patch;
         lease->mapped = lease->buffer ? lease->buffer.GetMappedRange(0, descriptor.size) : nullptr;
         return lease->mapped ? lease : nullptr;
+    }
+
+    // Plan B20: a revision's partial updates stage through one mapped lease that the CPU fills, so the frame's copy
+    // reads host memory. A staging buffer that queue.WriteBuffer filled could read as zeros in that copy once a new
+    // texture's first upload followed it in the same frame (tests/native/test_staged_patch.py). Leases are powers of
+    // two from 64 KiB, within the device's buffer limit, and a pooled lease is reused at its own size only.
+    std::shared_ptr<StagingLease> acquire_patch_staging(uint64_t size) {
+        if (size > info.max_buffer_size) throw std::runtime_error("buffer exceeds granted device limit");
+        uint64_t lease_size = patch_staging_min_bytes;
+        while (lease_size < size) lease_size <<= 1;
+        lease_size = std::min(lease_size, info.max_buffer_size);
+        for (auto it = patch_staging_mapped.begin(); it != patch_staging_mapped.end(); ++it) {
+            if ((*it)->generation != device_generation || (*it)->size != lease_size) continue;
+            auto lease = *it;
+            patch_staging_kept_bytes -= lease->size;
+            patch_staging_mapped.erase(it);
+            return lease;
+        }
+        return create_staging(lease_size, true);
     }
 
     bool stage_texture_copy(const wgpu::CommandEncoder& encoder, Ticket* ticket, const wgpu::TexelCopyTextureInfo& destination,
@@ -4930,7 +4962,7 @@ struct Vertex { @builtin(position) position: vec4f, @location(0) uv: vec2f }
     }
 
     // After Queue.Submit: each lease is asked to map again, which completes once the GPU has finished its copy, and
-    // then returns to the pool if the pool has room and the device generation is unchanged.
+    // then returns to its pool if that pool has room and the device generation is unchanged.
     void remap_staging(Ticket& ticket) {
         for (auto& lease : ticket.staging) {
             auto keep = lease;
@@ -4938,10 +4970,13 @@ struct Vertex { @builtin(position) position: vec4f, @location(0) uv: vec2f }
                 [this, keep](wgpu::MapAsyncStatus status, wgpu::StringView) {
                     if (status != wgpu::MapAsyncStatus::Success || keep->generation != device_generation) return;
                     keep->mapped = keep->buffer.GetMappedRange(0, keep->size);
-                    if (!keep->mapped || staging_mapped.size() >= staging_max_buffers ||
-                        staging_kept_bytes + keep->size > staging_max_bytes) return;
-                    staging_kept_bytes += keep->size;
-                    staging_mapped.push_back(keep);
+                    const bool patch = keep->patch;
+                    auto& pool = patch ? patch_staging_mapped : staging_mapped;
+                    auto& kept = patch ? patch_staging_kept_bytes : staging_kept_bytes;
+                    if (!keep->mapped || pool.size() >= (patch ? patch_staging_max_buffers : staging_max_buffers) ||
+                        kept + keep->size > (patch ? patch_staging_max_bytes : staging_max_bytes)) return;
+                    kept += keep->size;
+                    pool.push_back(keep);
                 });
         }
         ticket.staging.clear();
@@ -4950,6 +4985,8 @@ struct Vertex { @builtin(position) position: vec4f, @location(0) uv: vec2f }
     void clear_staging() {
         staging_mapped.clear();
         staging_kept_bytes = 0;
+        patch_staging_mapped.clear();
+        patch_staging_kept_bytes = 0;
     }
 
     void upload_texture(TextureRev& rev, const wgpu::CommandEncoder& encoder = {}, Ticket* ticket = nullptr) {
@@ -5067,38 +5104,55 @@ struct Vertex { @builtin(position) position: vec4f, @location(0) uv: vec2f }
                 ticket->textures.push_back(rev.base);
                 copied_bytes += rev.gpu_bytes;
             }
+            // The updates' rows, each padded to 256 bytes, stage through one mapped lease that the CPU fills (B20).
+            struct StagedRegion {
+                texture_detail::TextureRegionLayout layout;
+                uint64_t offset;
+                uint32_t bpr;
+            };
+            std::vector<StagedRegion> staged;
+            staged.reserve(rev.updates.size());
+            uint64_t staging_bytes = 0;
             for (const auto& update : rev.updates) {
-                HostTimer conversion_timer(probe.texture_conversion_ns);
-                auto region = prepare_region(*rev.allocation_descriptor, update.data);
                 const auto layout = texture_detail::texture_region_layout(rev.dimensions, update.data.shape, update.offset);
-                const uint32_t height = static_cast<uint32_t>(layout.height);
-                const uint32_t width = static_cast<uint32_t>(layout.width);
-                const uint32_t depth = static_cast<uint32_t>(layout.depth);
-                const uint32_t row_bytes = static_cast<uint32_t>(width * region.texel_size);
-                const uint32_t bpr = (row_bytes + 255u) & ~255u;
-                std::vector<uint8_t> rows(static_cast<size_t>(bpr) * height * depth, 0);
-                for (uint32_t z = 0; z < depth; ++z) for (uint32_t y = 0; y < height; ++y) {
-                    const size_t row = static_cast<size_t>(z) * height + y;
-                    std::memcpy(rows.data() + row * bpr, region.bytes.data() + row * row_bytes, row_bytes);
-                }
-                conversion_timer.finish();
-                auto staging = upload_buffer(rows.data(), rows.size(), wgpu::BufferUsage::CopySrc);
-                ticket->transient_buffers.push_back(staging);
+                const uint32_t bpr = (static_cast<uint32_t>(layout.width * prepared.texel_size) + 255u) & ~255u;
+                staged.push_back({layout, staging_bytes, bpr});
+                staging_bytes += static_cast<uint64_t>(bpr) * layout.height * layout.depth;
+            }
+            auto lease = acquire_patch_staging(staging_bytes);
+            if (!lease) throw std::runtime_error("partial texture upload staging buffer creation failed");
+            for (size_t index = 0; index < staged.size(); ++index) {
+                HostTimer conversion_timer(probe.texture_conversion_ns);
+                auto region = prepare_region(*rev.allocation_descriptor, rev.updates[index].data);
+                const auto& [layout, offset, bpr] = staged[index];
+                const size_t row_bytes = static_cast<size_t>(layout.width) * region.texel_size;
+                if (row_bytes > bpr) throw std::logic_error("partial texture updates differ in texel size");
+                auto* rows = static_cast<uint8_t*>(lease->mapped) + offset;
+                for (size_t row = 0; row < static_cast<size_t>(layout.height) * layout.depth; ++row)
+                    std::memcpy(rows + row * bpr, region.bytes.data() + row * row_bytes, row_bytes);
+            }
+            lease->buffer.Unmap();
+            lease->mapped = nullptr;
+            for (const auto& [layout, offset, bpr] : staged) {
                 wgpu::TexelCopyBufferInfo source;
-                source.buffer = staging;
+                source.buffer = lease->buffer;
+                source.layout.offset = offset;
                 source.layout.bytesPerRow = bpr;
-                source.layout.rowsPerImage = height;
+                source.layout.rowsPerImage = static_cast<uint32_t>(layout.height);
                 wgpu::TexelCopyTextureInfo destination;
                 destination.texture = rev.texture;
                 destination.origin = {static_cast<uint32_t>(layout.x), static_cast<uint32_t>(layout.y),
                                       static_cast<uint32_t>(layout.z)};
-                wgpu::Extent3D size{width, height, depth};
+                wgpu::Extent3D size{static_cast<uint32_t>(layout.width), static_cast<uint32_t>(layout.height),
+                                    static_cast<uint32_t>(layout.depth)};
                 {
                     HostTimer timer(probe.texture_upload_cpu_ns);
                     encoder.CopyBufferToTexture(&source, &destination, &size);
                 }
-                upload_bytes += rows.size();
             }
+            probe.copy_bytes += staging_bytes;
+            upload_bytes += staging_bytes;
+            ticket->staging.push_back(std::move(lease));
             ticket->ordered_uploads.push_back({&rev, rev.revision, rev.updates.size(), upload_bytes, copied_bytes});
             return;
         }

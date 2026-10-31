@@ -6,9 +6,9 @@ holds the current revision. When that revision is settled (current on the GPU, n
 only its GPU texture, so its shadow moves to the new revision instead of being copied, and an entire update copies
 nothing. A device loss rebuilds a live revision from its own pixels, so a revision whose shadow moved is never read
 again. Each texture test samples a texture texel for texel into the left and then the right half of one framebuffer
-in one batch, so the first draw is still pending when the update arrives. Textures are 128x128: at 64x64, a separate
-bug that predates P3 makes a small staged patch read as zeros when a 16 KiB texture upload follows it in the same
-frame, with or without copy-on-write (run perf-profile-261, p3_debug_variants.py).
+in one batch, so the first draw is still pending when the update arrives. Textures are 128x128, chosen while a separate
+bug that predates P3 made a small staged patch read as zeros when a new texture's first upload followed it in the
+same frame (B20, tests/native/test_staged_patch.py).
 """
 import numpy as np
 import pytest
