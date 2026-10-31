@@ -20,7 +20,9 @@ named below.
   GPU while a frame still uses it. napari's labels painting makes such updates.
   On the R2 branch, a patch is written into the CPU shadow, and an update while
   a frame holds the texture moves the shadow instead of copying it (updates
-  below).
+  below). A compact re-run on the R2 branch puts full uploads at 0.82-0.99
+  of OpenGL's frame rate, and eight patches at 60 frames per second
+  (2026-10-31).
 - The port's Windows default presentation, readback, adds about 53 ms to every
   frame of a 1920x1080 canvas and over 200 ms at 3840x2160. With native
   swapchain presentation, a whole resident 3840x2160 frame takes about 2 ms, and
@@ -134,6 +136,47 @@ second and showed only 21% of them. In this session the candidate also
 missed a few refreshes, paced or not, in short bursts that W8 did not see.
 The change is on the R2 branch and lands with R2.
 
+**Update (2026-10-31, runs `quick-bench-262` and `pacing-ahead-263`):
+uploads after P1-P4.** A compact form of this benchmark re-ran five
+workloads against the R2 branch's test wheels: the same paced harness with
+50 warm-up and 300 measured frames and 3 alternating pairs, 1920x1080 image
+viewports so that every window stays on the primary monitor, and every
+process pinned to the performance cores. It is indicative, not PERF-1
+qualification, and its image viewport and volume differ from W8's above.
+
+With P1-P3, the candidate kept up on camera-only frames and on eight
+patches, but reached 0.64-0.72 of OpenGL's rate on full uploads. Its paced
+paint waited for its own frame's GPU work, 10.6-28.5 ms per frame, which
+OpenGL overlaps with the next frame's CPU work. P4 (decision D25) lets a
+frame that took at least one refresh to produce return once the previous
+frame has retired, so one frame renders ahead, as OpenGL's driver allows. A
+faster frame still waits for its own, so camera-only latency stays at one
+refresh.
+
+| Workload | P1-P3 (run 262): upstream / candidate fps | P1-P4 (run 263): upstream / candidate fps |
+| --- | --- | --- |
+| Image, camera only | 60.0 / 60.0 | 60.0 / 60.0 |
+| Image, full 64 MiB upload | 37.4 / 24.7 | 34.2 / 29.5 |
+| RGBA, eight 64x64 patches | 59.1 / 56.2 | 60.0 / 60.0 |
+| Volume iso, full 64 MiB upload | 16.3 / 10.5 | 37.0 / 30.4 |
+| Points instanced, new positions | 10.6 / 7.6 | 10.8 / 10.7 |
+
+- Camera-only latency is unchanged: a median and p95 of 16.39 and 17.48 ms,
+  against upstream's 16.92 and 33.73.
+- On the upload workloads the candidate's frame time now equals its CPU
+  work. For the 64 MiB image that is 32.5 ms against upstream's 26.9.
+  Packing, native interpretation and the staging copy take 25.8 ms of it,
+  against OpenGL's 12.7 ms upload call.
+- In run 262 both renderers ran the volume about half as fast as in run
+  263, and its first points pair slowly. In run 263 the candidate's volume
+  costs per byte match its image's.
+- With render-ahead, the harness observes a heavy frame's completion when
+  the next frame polls for it, as it observes upstream's. Those latencies
+  read higher than the GPU's retirement on both renderers, so frame rate is
+  the measure to compare there.
+
+The change is on the R2 branch and lands with R2.
+
 ### Where the candidate's frame time goes
 
 From the harness's per-frame telemetry, in milliseconds per measured frame: the
@@ -224,8 +267,8 @@ Headless, with the upload every frame:
 | 256-cubed float32 volume | 35.8 ms | 15.0 ms |
 | 56 MB vertex buffer drawn as points | 106.6 ms | 60.3 ms |
 
-The change is on the R2 branch and lands with R2. The paced comparison above
-has not been re-run with it. A bug in it was fixed on 2026-10-30: a staged upload was
+The change is on the R2 branch and lands with R2. A compact paced comparison
+with it is above (2026-10-31). A bug in it was fixed on 2026-10-30: a staged upload was
 marked current before its frame was submitted, so a frame that failed to submit
 left the texture stale.
 
