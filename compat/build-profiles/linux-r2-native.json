@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "name": "linux-r2-native",
+  "owner": "root",
+  "purpose": "Fresh local WSL Vulkan integration of the pending R2 runtime when no matching qualified Linux SDK exists",
+  "storage_workspace": "/home/heq/vispy-vulkan-managed",
+  "expected_peak_bytes": 6442450944,
+  "aggregate_max_scratch_bytes": 21474836480,
+  "min_free_bytes": 10737418240,
+  "parallel_jobs": 8,
+  "disk_guard_seconds": 30,
+  "budget_basis": "Same 6 GiB as the Linux CI fresh native lease; retained run w7-lavapipe-smooth-254 used 3120334487 bytes including build and consumer environments, with 400261425 source bytes",
+  "reuse": [
+    "existing locked CPython and build tools",
+    "retained exact dependency sources and original licenses without history cloning",
+    "existing software Vulkan library and ICD, selected and hashed explicitly"
+  ],
+  "fresh": "One registered Linux run after the Windows scratch root is empty; export the exact selected source commit and verify dependencies before and after compilation",
+  "constraints": [
+    "check the guest filesystem and Windows backing volume before allocation and throughout execution",
+    "inherit the existing protected and blocked registry without replacing it",
+    "keep all compiler, uv, environment and test temporary outputs inside the selected registered run",
+    "no automatic network, source, package, driver or system-setting fallback",
+    "audit and materialize only known environment interpreter aliases before managed cleanup; unknown aliases remain refusals"
+  ],
+  "system_package_installation": false,
+  "retention": "Retain the exact wheel, preferred first-party delta, dependency-source references and licenses, toolchain/input hashes, commands, actual exits and focused installed results in the existing Windows store",
+  "terminal_cleanup": "Wait all owned children; retain failure reproducer if needed; inspect/apply the registry-bound guest cleanup plan; rehash retained files and report reclaimed bytes",
+  "scope": "Local WSL software Vulkan development integration only; full mandatory-row qualification, source/admission CI and promotion remain separate; no native Linux GPU or Metal claim"
+}
