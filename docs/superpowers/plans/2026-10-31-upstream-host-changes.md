@@ -6,7 +6,7 @@
 
 **Architecture:** Three tracks.
 1. **This repository** records the policy (D28) and registers every host patch with its upstream status, enforced by a CPU contract. The hot-swap audit also learns to name the host package behind each GL event.
-2. **The two W12 changes** are prepared on napari `main` and qtpy `master`, in clones outside managed scratch. They are tested from `git archive` exports inside registered runs, measured, and posted only after the user approves each PR.
+2. **The two W12 changes** are prepared on napari `main` and qtpy `master`, in clones outside managed scratch. They are tested from `git archive` exports inside registered runs, measured, and handed to the user, who submits each PR personally, as both projects' AI policies require.
 3. **Adoption.** When a host release contains a change, hot-swap rows move to that release, and the matching strict patch shrinks at the next requalification.
 
 **Tech Stack:**
