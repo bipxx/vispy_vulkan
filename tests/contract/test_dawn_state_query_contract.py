@@ -79,3 +79,15 @@ def test_invalid_owner_does_not_drain_or_invent_state(transport, monkeypatch, st
     with pytest.raises(RuntimeError, match='current Dawn canvas'):
         get_gl_parameter(0x0B72)
     assert calls == []
+
+
+@pytest.mark.parametrize('filterable', [True, False])
+def test_texture_float_is_advertised_only_when_float32_textures_are_filterable(transport, filterable):
+    # Hosts that see texture_float upload linear-filtered float32 textures (W1).
+    _, _, native = transport
+    native.device_info = lambda: {'max_texture_dimension_2d': 8192, 'float32_filterable': filterable}
+    extensions = get_gl_parameter(7939)  # GL_EXTENSIONS
+    assert ('texture_float' in extensions) is filterable
+    assert 'GL_ARB_texture_non_power_of_two' in extensions
+    native.device_info = lambda: {'max_texture_dimension_2d': 8192}  # an older native answer: no claim
+    assert 'texture_float' not in get_gl_parameter(7939)

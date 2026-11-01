@@ -9,6 +9,7 @@
 #include "runtime_line_ownership.hpp"
 #include "runtime_line_capture.hpp"
 #include "runtime_framebuffer_config.hpp"
+#include "runtime_host_block.hpp"
 
 struct UploadCaptureStats {
     uint64_t captures = 0, bytes = 0, fallback_dtypes = 0, fallback_exports = 0;
@@ -18,6 +19,10 @@ struct ByteBlob {
     std::vector<uint8_t> bytes;
     std::vector<int> shape;
     std::string dtype;
+    // Plan P5: a payload snapshot of at least 1 MiB lives in a host block instead, and bytes is then empty.
+    vispy::memory::HostBytes host;
+    const uint8_t* data() const { return host ? host->data() : bytes.data(); }
+    size_t size() const { return host ? host->size() : bytes.size(); }
 };
 
 struct Value {
@@ -74,6 +79,9 @@ struct DeviceInfo {
     bool core_features_and_limits = false;
     bool timestamp_query = false;
     uint64_t timestamp_quantization_ns = 0;
+    // Plan P5: full texture uploads copy from imported host blocks (Dawn's HostMappedPointer), within this limit.
+    bool host_mapped_pointer = false;
+    uint64_t host_import_limit = 0;
     std::string depth_stencil_storage;
     bool ok = false;
 };
@@ -90,6 +98,10 @@ struct Probe {
     uint64_t finish_calls = 0;
     uint64_t copy_bytes = 0;
     uint64_t completion_waits = 0;
+    uint64_t present_pacing_waits = 0;     // vsynced presents that waited for their own frame (plan P2)
+    uint64_t present_pacing_timeouts = 0;
+    uint64_t present_render_ahead = 0;     // vsynced presents returned before their frame retired (one frame ahead)
+    uint64_t present_render_ahead_waits = 0;  // of those, the presents that waited for the previous frame
     uint64_t pending_tickets = 0;
     uint64_t retired_tickets = 0;
     uint64_t live_buffer_bytes = 0;
@@ -99,6 +111,10 @@ struct Probe {
     uint64_t queued_frames = 0;
     uint64_t buffer_allocations = 0;
     uint64_t texture_allocations = 0;
+    uint64_t texture_copy_on_write = 0;        // DATA copies of a revision that a frame still held (plan P3)
+    uint64_t texture_shadow_moves = 0;         // of those, CPU shadows moved from a settled revision, not copied
+    uint64_t texture_copy_on_write_bytes = 0;  // CPU shadow bytes copied
+    uint64_t buffer_copy_on_write = 0, buffer_copy_on_write_bytes = 0;
     uint64_t uniform_upload_bytes = 0;
     uint64_t texture_upload_bytes = 0;
     uint64_t geometry_upload_bytes = 0;
@@ -144,8 +160,20 @@ struct Probe {
     uint64_t owned_upload_captures = 0, owned_upload_capture_bytes = 0;
     uint64_t owned_upload_fallback_dtypes = 0, owned_upload_fallback_exports = 0;
     uint64_t owned_texture_transfers = 0, owned_texture_transfer_bytes = 0;
+    // Plan P5: payload snapshots taken into host blocks, and full uploads from a block's import (copies) or not
+    // (fallbacks); imports created and released to stay within the limit; the imports' pinned bytes (a gauge).
+    uint64_t host_block_captures = 0, host_block_capture_bytes = 0;
+    uint64_t host_import_copies = 0, host_import_bytes = 0, host_import_fallbacks = 0;
+    uint64_t host_imports = 0, host_import_evictions = 0, host_import_pinned_bytes = 0;
+    // Plan P6: whole buffer updates whose payload's host block became the buffer's bytes; buffer uploads copied from a
+    // block's import (copies) or written through queue.WriteBuffer although their bytes are a block (fallbacks); GPU
+    // buffers of retired revisions that new revisions took, and the bytes of those still waiting (a gauge).
+    uint64_t buffer_shadow_transfers = 0, buffer_shadow_transfer_bytes = 0;
+    uint64_t buffer_import_copies = 0, buffer_import_bytes = 0, buffer_import_fallbacks = 0;
+    uint64_t buffer_pool_reuses = 0, buffer_pool_bytes = 0;
     uint64_t native_batches = 0, native_commands = 0;
     uint64_t native_interpret_ns = 0, native_submit_ns = 0;
+    uint64_t present_pacing_wait_ns = 0;
     uint64_t texture_conversion_ns = 0, texture_upload_cpu_ns = 0, buffer_upload_cpu_ns = 0;
     uint64_t shader_cache_lookup_ns = 0, shader_normalize_ns = 0, shader_parse_ns = 0;
     uint64_t shader_link_ns = 0, shader_spirv_ns = 0, shader_reflect_ns = 0, shader_cpu_build_ns = 0;
@@ -236,6 +264,8 @@ struct SurfaceInfo {
     bool vsync_requested = false;
     bool pacing_disabled = false;
     bool attached = false;
+    uint64_t refresh_interval_ns = 0;  // the interval vsynced pacing compares frame production with (plan P2)
+    std::string refresh_interval_source = "unconfigured";  // or "display", "default" (rate unknown), "diagnostic"
 };
 
 struct Readback {
@@ -312,6 +342,9 @@ Readback read_canvas(int canvas_id, int x, int y, int width, int height, bool al
                      const std::string& mode = "color");
 Readback read_presented(int canvas_id, int x, int y, int width, int height);
 void diagnostic_configure_line_endpoints(int canvas_id, bool enabled, bool capture = true);
+void diagnostic_present_refresh_interval(int canvas_id, uint64_t interval_ns);
+// Test control: the pinned bytes host imports may hold (plan P5); 0 restores the default.
+void diagnostic_host_import_limit(uint64_t bytes);
 vispy::lines::LineOwnershipSnapshot diagnostic_peek_line_ownership(int canvas_id);
 std::vector<LineEndpointReadback> diagnostic_line_endpoints(int canvas_id);
 CompileInfo compile_variant(const std::string& vertex, const std::string& fragment, bool base_level_sampling,

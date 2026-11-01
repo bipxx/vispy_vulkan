@@ -100,7 +100,7 @@ W11 publication and W12 upstream posting each need explicit approval.
 | ID | Work | Exit | Needs |
 | --- | --- | --- | --- |
 | R1 (W9) | Windows napari-threedee strict row | A cause and a regression test, then full lifecycle, nine-zero shutdown and all three gates on the release artifact (spec :340-345; status :86-87). A passing replay never closes it (diagnosis :49-50). | Identify the closer. Instrument hot-swap and diagnostic launches and wait for a recurrence. **Instrumentation** (2026-10-29): `tools/pool_watch.py` watches the default thread pool's worker-factory handle and, when it is lost, records the time, the handle's new type and every Python thread's stack. It only queries object types; CPU tests cover the record. Launches enable it with `VISPY_POOL_WATCH=<events.jsonl>`. **It crashes Tk processes** (run `b19-readback-257`): with it enabled, three of three Tk test runs ended in a fatal exception 0x80000003 in the watcher's thread while it was garbage-collecting; without it, none did. CPython 3.12 runs a scheduled collection in whichever thread next executes bytecode, so the watcher's 5 ms loop can run Tk's finalizers off Tk's thread, and Qt objects carry the same risk. It is replaced by an out-of-process watcher (D20, run `r1-external-poller-259`): `tools/pool_watch_external.py --output <events.jsonl> -- <command>` wraps a launch. Runs 249 and 255 made their napari launches without any watcher. |
-| R2 | Release assembly: a fresh build of the then-current source (D1) | Every mandatory row requalified on it, final-head CI, promotion review | R1. The fresh source must include run `w4-napari-layer-families-236`'s patch set: run `w1-w5-native-batch-227`'s (W1, W5 smooth line ends, W15), run `w5-fringe-native-234`'s minimum smooth coverage, and the Qt backend's Dawn canvas release fix. Those are pinned runtime files, so the Tk candidate's runtime inputs are renewed with it. The patch set is kept, applied to `main`, on the branch `r2/pending-runtime-patches` (O5). D18 adds the switch of the Windows hot swap to native presentation, with strict no-OpenGL qualification selecting readback explicitly. It applies only after the napari parity suites pass under native presentation on the R2 test wheel. That condition is met (runs 249 and 255). The switch is made at R2 assembly, because selecting readback explicitly edits the pinned strict harness. The branch also carries B19 and B18's CPU part (run `b19-readback-257`) and P1's upload changes, P1's fix (step D), P2's pacing and P3 (run `perf-profile-261`), P4's render-ahead (run `pacing-ahead-263`), B20's fix (run `b20-staged-patch-264`), P5's host imports (run `p5-upload-copies-265`), and P6's buffer imports (run `p6-buffer-uploads-266`). Its head is `6435f6b`. |
+| R2 | Release assembly: a fresh build of the then-current source (D1) | Every mandatory row requalified on it, final-head CI, promotion review | R1. The fresh source must include run `w4-napari-layer-families-236`'s patch set: run `w1-w5-native-batch-227`'s (W1, W5 smooth line ends, W15), run `w5-fringe-native-234`'s minimum smooth coverage, and the Qt backend's Dawn canvas release fix. Those are pinned runtime files, so the Tk candidate's runtime inputs are renewed with it. The patch set is kept, applied to `main`, on the branch `r2/pending-runtime-patches` (O5). D18 adds the switch of the Windows hot swap to native presentation, with strict no-OpenGL qualification selecting readback explicitly. It applies only after the napari parity suites pass under native presentation on the R2 test wheel. That condition is met (runs 249 and 255). The switch is made at R2 assembly, because selecting readback explicitly edits the pinned strict harness. The branch also carries B19 and B18's CPU part (run `b19-readback-257`) and P1's upload changes, P1's fix (step D), P2's pacing and P3 (run `perf-profile-261`), P4's render-ahead (run `pacing-ahead-263`), B20's fix (run `b20-staged-patch-264`), P5's host imports (run `p5-upload-copies-265`), and P6's buffer imports (run `p6-buffer-uploads-266`). Its local head is `c7b0eae` (capture repair/controls, Linux profile and archive audit repair from runs 281-286); the five follow-up commits have not been pushed. |
 
 Additional R1 evidence: the 2026-10-23 stall in a napari-hosted volume case
 (`iso_categorical_fast`, run native65) had a consistent signature. Its main
@@ -167,7 +167,7 @@ baseline closes with W15.
 | O2 | Mark the expected failures as expected | **Done, without xfail**, because the evidence rules forbid skip and xfail. `tests/hosts/conftest.py` and `tests/parity/conftest.py` label the listed failures in pytest's report and its JUnit XML: 37, all superseded oracle fixtures kept by D6. D8's four cases left the list when D19 revised D8. They count the failures the index does not explain and name any listed test that passes. No outcome changes. |
 | O3 | One registry of the documented differences | **Done.** `tools/documented_outcomes.py` indexes D5, D9-D17 and D19: the modules that apply each decision, and the cases and limits they hold. It also holds the expected failures. A CPU contract checks it against those modules and against each suite's case list. |
 | O4 | One curated contract entry instead of re-exports through an unrelated module | **Done.** `tests/contract/curated_contracts.py` lists the curated contract modules. Until R2 the wheel suite imports it; at R2, CI's list names it directly. Its check requires every contract module to run in a workflow, be curated, or be declared. It found 11 published CPU contract modules that run in no workflow (`NOT_IN_CI`); each joins the curated list after a run in CI's environment. `test_wheel_index` stays local until W11 (`UNPUBLISHED`), so the check allows a checkout without it. The first version listed it in `NOT_IN_CI`, which failed every CPU job of PR #38, because the published tree lacks it. The local CI-list run had passed on the local tree, which has it. |
-| O5 | Keep the pending runtime patches outside `build/` | **Done.** Branch `r2/pending-runtime-patches` (`bfe66d3`, on `main` `f2f9129`) carries run 236's patch set, with only the replaced lines changed. `bdfce97` adds B19 and B18's CPU part (run `b19-readback-257`), and `8adcb25` adds P1's upload changes, `645b343` fixes their staged uploads, `53f3f49` adds P2's pacing, `55fed04` adds P3 (run `perf-profile-261`), `9c50894` adds P4 (run `pacing-ahead-263`), `ffbd45a` fixes B20 (run `b20-staged-patch-264`), `2946b54` adds P5 (run `p5-upload-copies-265`), and `6435f6b` adds P6 (run `p6-buffer-uploads-266`). It has no PR, and no workflow runs on it. R2 builds from it. |
+| O5 | Keep the pending runtime patches outside `build/` | **Done.** Branch `r2/pending-runtime-patches` (`bfe66d3`, on `main` `f2f9129`) carries run 236's patch set, with only the replaced lines changed. `bdfce97` adds B19 and B18's CPU part (run `b19-readback-257`), and `8adcb25` adds P1's upload changes, `645b343` fixes their staged uploads, `53f3f49` adds P2's pacing, `55fed04` adds P3 (run `perf-profile-261`), `9c50894` adds P4 (run `pacing-ahead-263`), `ffbd45a` fixes B20 (run `b20-staged-patch-264`), `2946b54` adds P5 (run `p5-upload-copies-265`), and `6435f6b` adds P6 (run `p6-buffer-uploads-266`). Local `1d07f6a` adds the last-presented capture repair and its identity controls (run `presented-capture-281`); that commit has not been pushed. Local `53ec6ff` adds the bounded failure/teardown controls (run `capture-failures-283`), and local `9a523de` shares the final query eligibility predicate with its CPU contract (run `query-capture-284`), also unpushed. Local `18f362e` adds only the 6 GiB Linux build profile; production inputs remain byte-identical to `9a523de`. Local `c7b0eae` adds only the reviewed archive auditor and its standalone CPU controls (run `linux-query-286`); production inputs are unchanged. It has no PR, and no workflow runs on it. R2 builds from it. |
 | O6 | Line endings, and the benchmark harness's setup and format | **Done.** `main`'s `.gitattributes` (`* -text`) keeps checkouts byte-preserving, because dependency checksums and pinned file hashes need exact bytes, so mixed line endings are intentional and nothing is normalized; O1 flags line-ending-only drift instead. The pinned W8 harness is fixed in a successor (W8). |
 
 ### Performance (user, 2026-10-30)
@@ -450,6 +450,86 @@ with stock hosts and `444402`.
 - **Not covered.** The in-process scientific suites and the plugin parity suites
   are PyQt6-only harnesses. CPython 3.11, 3.13 and 3.14 need wheels at the current
   source.
+
+**Current presentation regression follow-up**, run `presented-capture-281`.
+
+- The frozen historical two-present fixtures remain unchanged. New current
+  contracts describe the existing single-present Qt path and presentation-free
+  readback. Their independent review and before-controls are retained in runs
+  278-282; they do not admit the old failing captures under new criteria.
+- Run 280 exposed a real native defect: the fast surface path presented its
+  converted image but left the diagnostic mirror unwritten. Its four successful
+  paint scenarios reached the exact final-pixel assertion and returned zeros.
+- The reviewed repair lazily refreshes that mirror on an explicit read only
+  while the last successful presentation's source identity remains provable.
+  It checks producer/diagnostic retirement, final timed-query results, pending
+  canvas work, and surface/device identity. Cached images retain the earlier
+  frame; an uncaptured changed source is explicitly unavailable. Ordinary
+  paints gain no submission, pass, present or wait.
+- Windows development wheel `5ea298db...` passes 44 native contracts, eight
+  strict paint scenarios and eight capture-identity controls. All four final
+  paint images match exact RGBA `[255, 0, 0, 64]`; the corrected asymmetric
+  headless oracle also passed on the original wheel before the repair. The
+  original dirty-source guard fails there as retained. Sources are saved
+  locally as R2 commit `1d07f6a452b49163f025a48968857d41110e6429`, with parent
+  `6435f6b`; no push, release admission or source publication is claimed.
+- Follow-up run `capture-failures-283` passes 13 additional controls on the
+  same wheel, without a native rebuild: timed/untimed producer records after
+  consumption, held retirement, reachable explicit-read CPU failures and retry,
+  failed owned producers and recovery, deferred paint origin, eight teardown
+  cycles, and a deliberate assertion-failure cleanup control. Twenty owned
+  cleanup records have no errors, both slot changes restore their original
+  value, and all 20 captured quadrant images match exactly. Local R2 commit
+  `53ec6ff8f8d273b4b2a48499e20df91597565749` retains these test sources.
+- Run `query-capture-284` extracts the unchanged final-query predicate into
+  `capture_queries_succeeded`, called by the pending runtime and its existing
+  timestamp contract. Seventeen direct eligibility checks pass under Windows
+  MSVC and WSL GCC: pending/final results, segment map errors after returned
+  record discard, malformed/reversed/overflowing timestamps, valid quantized
+  zero, untimed producers, terminal loss and temporary query ownership. A
+  separate deliberately map-error-blind helper fails at the intended assertion
+  on both compilers. Local `9a523dee96b4f7f45e4f789996725605c2867be1`
+  retains the three source changes. No SDK, environment or wheel rebuild.
+- Run `query-native-285` completes fresh Windows native integration of the
+  helper call. Wheel N `6075e630...`, native `768a2e41...`, is built from exact
+  source `9a523de` using the sealed SDK; all 813 exported source inputs are
+  verified. It passes 44 native contracts plus all 29 unchanged reviewed
+  graphics cases (8 strict paint, 8 capture identity, 13 failure/teardown).
+  All four exact final paint images and 20 failure-control quadrant images
+  pass. The three external watcher jobs exit successfully with no observed
+  pool loss. Only the native image and RECORD differ from wheel M; earlier
+  wheel evidence keeps its original source scope.
+- The next Linux build has an explicit
+  [`linux-r2-native` profile](../../../compat/build-profiles/linux-r2-native.json),
+  saved on the local R2 branch as `18f362e43525aad9c0434c69608b5dad9089c830`.
+  Its 6 GiB allocation matches fresh Linux CI and leaves the 20 GiB aggregate
+  cap and 10 GiB reserve unchanged. Earlier full Linux scratch was 3.12 GB,
+  including 400 MB of source. Reuse tools, dependency sources and the selected
+  software driver; stop on missing inputs. Windows scratch must be empty first.
+- Run `linux-query-286` completes fresh WSL software-Vulkan query/capture
+  integration. Wheel `23b02558...` is built from exact source `18f362e` without
+  downloads or dependency history cloning. All 44 native contracts and all 29
+  unchanged graphics cases pass under X11/Xvfb; no skipped or revised case.
+  The four final paint images and 20 failure-control quadrant images are exact,
+  and all 20 owned cleanup records and two slot restorations have no errors.
+  The stock software ICD/library are selected and hashed explicitly. This is
+  development integration, not native Linux GPU or release-row admission.
+- The archive auditor now accepts a verified source export without inventing a
+  Git checkout: it joins the build's source directory, the retained pre-build
+  export map and actual export receipt, complete source/license hashes against
+  original Git blobs, and the separately pinned external auditor dependencies.
+  All previous wheel/native/license/CTest checks remain. Its 26 CPU controls
+  plus curated registration pass; the real audit verifies 817 committed blobs
+  and all 537 installed package members. Local commit
+  `c7b0eae21ef7f9cef83274356d27b0a2f7dc56c0` retains the audit fix and test.
+  The original WSL Git identity failure and awaited Windows-identity recovery
+  remain recorded. No native rebuild followed this tooling-only repair.
+- Still required: coherent R2 source assembly and source CI, R1's original pool-close cause and
+  regression, and R2's fresh complete mandatory-row/CI/promotion qualification.
+  These results close the reproduced Windows capture defect and the listed
+  CPU fault/ownership controls at development scope. They do not induce real
+  GPU validation/queue/map-callback failures or measure live GPU handle
+  residency, and do not close those broader gates or the full plan.
 
 **P6 buffer uploads** on 2026-10-31, run `p6-buffer-uploads-266`, on the R2
 branch.

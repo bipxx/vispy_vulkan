@@ -41,6 +41,8 @@ class NativeSurfaceOwner {
     virtual bool is_alive() const = 0;
     virtual void update(int physical_width, int physical_height, double scale) = 0;
     virtual void detach() = 0;
+    // The refresh interval of the display showing the window, in ns, or 0 when unknown (vsynced pacing, plan P2).
+    virtual uint64_t refresh_interval_ns() const { return 0; }
     const NativeSurfaceDescriptor& descriptor() const { return descriptor_; }
 
   protected:

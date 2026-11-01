@@ -65,6 +65,8 @@ nb::dict info_dict(const DeviceInfo& info) {
     out["last_vertex_provoking"] = info.last_vertex_provoking;
     out["timestamp_query"] = info.timestamp_query;
     out["timestamp_quantization_ns"] = info.timestamp_quantization_ns;
+    out["host_mapped_pointer"] = info.host_mapped_pointer;
+    out["host_import_limit"] = info.host_import_limit;
     out["depth_stencil_storage"] = info.depth_stencil_storage;
     out["ok"] = info.ok;
     out["error"] = info.error;
@@ -86,6 +88,10 @@ nb::dict probe_dict(const Probe& probe) {
     out["finish_calls"] = probe.finish_calls;
     out["copy_bytes"] = probe.copy_bytes;
     out["completion_waits"] = probe.completion_waits;
+    out["present_pacing_waits"] = probe.present_pacing_waits;
+    out["present_pacing_timeouts"] = probe.present_pacing_timeouts;
+    out["present_render_ahead"] = probe.present_render_ahead;
+    out["present_render_ahead_waits"] = probe.present_render_ahead_waits;
     out["pending_tickets"] = probe.pending_tickets;
     out["retired_tickets"] = probe.retired_tickets;
     out["live_buffer_bytes"] = probe.live_buffer_bytes;
@@ -95,6 +101,11 @@ nb::dict probe_dict(const Probe& probe) {
     out["queued_frames"] = probe.queued_frames;
     out["buffer_allocations"] = probe.buffer_allocations;
     out["texture_allocations"] = probe.texture_allocations;
+    out["texture_copy_on_write"] = probe.texture_copy_on_write;
+    out["texture_shadow_moves"] = probe.texture_shadow_moves;
+    out["texture_copy_on_write_bytes"] = probe.texture_copy_on_write_bytes;
+    out["buffer_copy_on_write"] = probe.buffer_copy_on_write;
+    out["buffer_copy_on_write_bytes"] = probe.buffer_copy_on_write_bytes;
     out["uniform_upload_bytes"] = probe.uniform_upload_bytes;
     out["texture_upload_bytes"] = probe.texture_upload_bytes;
     out["geometry_upload_bytes"] = probe.geometry_upload_bytes;
@@ -139,10 +150,26 @@ nb::dict probe_dict(const Probe& probe) {
     out["owned_upload_fallback_exports"] = probe.owned_upload_fallback_exports;
     out["owned_texture_transfers"] = probe.owned_texture_transfers;
     out["owned_texture_transfer_bytes"] = probe.owned_texture_transfer_bytes;
+    out["host_block_captures"] = probe.host_block_captures;
+    out["host_block_capture_bytes"] = probe.host_block_capture_bytes;
+    out["host_import_copies"] = probe.host_import_copies;
+    out["host_import_bytes"] = probe.host_import_bytes;
+    out["host_import_fallbacks"] = probe.host_import_fallbacks;
+    out["host_imports"] = probe.host_imports;
+    out["host_import_evictions"] = probe.host_import_evictions;
+    out["host_import_pinned_bytes"] = probe.host_import_pinned_bytes;
+    out["buffer_shadow_transfers"] = probe.buffer_shadow_transfers;
+    out["buffer_shadow_transfer_bytes"] = probe.buffer_shadow_transfer_bytes;
+    out["buffer_import_copies"] = probe.buffer_import_copies;
+    out["buffer_import_bytes"] = probe.buffer_import_bytes;
+    out["buffer_import_fallbacks"] = probe.buffer_import_fallbacks;
+    out["buffer_pool_reuses"] = probe.buffer_pool_reuses;
+    out["buffer_pool_bytes"] = probe.buffer_pool_bytes;
     out["native_batches"] = probe.native_batches;
     out["native_commands"] = probe.native_commands;
     out["native_interpret_ns"] = probe.native_interpret_ns;
     out["native_submit_ns"] = probe.native_submit_ns;
+    out["present_pacing_wait_ns"] = probe.present_pacing_wait_ns;
     out["texture_conversion_ns"] = probe.texture_conversion_ns;
     out["texture_upload_cpu_ns"] = probe.texture_upload_cpu_ns;
     out["buffer_upload_cpu_ns"] = probe.buffer_upload_cpu_ns;
@@ -489,6 +516,11 @@ NB_MODULE(_dawn, m) {
     m.def("configure_frame_slots", &configure_frame_slots);
     m.def("diagnostic_submission_controls", &diagnostic_submission_controls,
           nb::arg("hold_completions") = false, nb::arg("fail_once") = "");
+    m.def("diagnostic_host_import_limit", &diagnostic_host_import_limit, nb::arg("bytes"),
+          "Test control: the pinned bytes host imports may hold (plan P5); 0 restores the default.");
+    m.def("diagnostic_present_refresh_interval", &diagnostic_present_refresh_interval,
+          nb::arg("canvas_id"), nb::arg("interval_ns"),
+          "Test control: the refresh interval vsynced pacing compares frame production with; 0 restores the display's.");
     m.def("configure_shader_cache", &configure_shader_cache, nb::arg("entries"), nb::arg("bytes"));
     m.def("benchmark_begin_frame", &benchmark_begin_frame);
     m.def("benchmark_memory_window_begin", []() {
@@ -583,7 +615,7 @@ NB_MODULE(_dawn, m) {
         info["vertex_input_cache_scope"] = "per-Program historical cache has at most 128 ordinary records and 64 MiB CPU vector/key capacities plus declared record/control/node bookkeeping; eviction uses unordered-map iteration, not recency; allocator headers and bucket padding are excluded; source parents are not retained; oversized records skip historical admission";
         info["vertex_input_current_scope"] = "per-Program nine current exact-key owners (six ordinary: index widening, topology, bounds, selection with owned child indices, vertex, instance; plus line endpoint, ordered batch, compact-fit decision) are outside the historical budget, including legal oversized records; all nine share the same historical and oversized working budgets; current_entries/current_bytes and cache_entries/cache_bytes are overlapping sampled owner views across Programs, not additive; current bytes include occupied-slot/key/record/control/child-map bookkeeping with retained record subtrees deduplicated; empty inline slots and allocator headers are excluded; pending/in-flight owners are outside both views; live_cpu_buffer_bytes deduplicates all actual retained vector capacities and live_buffer_bytes all actual retained GPU buffers; current categories replace on successful lookup/build and do not promise arbitrary alternating oversized reuse";
         info["vertex_input_oversized_scope"] = "additional per-Program oversized working history shared by all nine categories (six ordinary plus line endpoint, ordered batch and compact-fit decision): at most 8 entries and 256 MiB occupied entry/key/record/control/child bookkeeping and CPU vector capacities; shared record/child subgraphs counted once; least-recently-used capacity eviction, with current hits refreshing recency; actual DATA/SIZE/DELETE/ATTRIBUTE/LINK or source-stamp invalidation drops dependent categories and permits rebuilding; unchanged source stamps and DRAW selection alternation within admitted budget preserve exact owned children and uploaded resources; over-budget records skip admission but may remain current; evictions counts capacity removals cumulatively, not invalidations; entry/byte gauges aggregate live Programs and overlap current/history/pending owners, so views are not additive; excludes empty container, allocator headers/bucket padding, texture shadows and physical driver memory";
-        info["cpu_buffer_scope"] = "deduplicated BufferRev CPU vector capacities reachable through live objects, derived caches, pending/queued snapshots and in-flight tickets; excludes keys/container/allocator overhead, texture shadows and driver allocations; sampled peak uses these same ownership checkpoints";
+        info["cpu_buffer_scope"] = "deduplicated BufferRev CPU vector and host block capacities reachable through live objects, derived caches, pending/queued snapshots and in-flight tickets; excludes keys/container/allocator overhead, texture shadows and driver allocations; sampled peak uses these same ownership checkpoints";
         info["descriptor_peak_scope"] = "sampled at explicit probe and marked submission; retained renderer-owned descriptor bytes, excluding driver padding, opaque depth backing, and capture temporaries outside the retained graph";
         info["work_peak_scope"] = "renderer pending tickets, queued submission batches, retained draw/clear snapshots and bounded shader cache bytes; not full driver/allocator peaks";
         info["completion_scope"] = "Qt paint closure and all owned queued/render/presentation work callback observations, or legacy direct-native present closure; terminal cancellation/loss does not claim GPU completion; excludes scanout; no deliberate wait or present added by telemetry";
@@ -634,6 +666,8 @@ NB_MODULE(_dawn, m) {
         result["vsync_requested"] = info.vsync_requested;
         result["pacing_disabled"] = info.pacing_disabled;
         result["attached"] = info.attached;
+        result["refresh_interval_ns"] = info.refresh_interval_ns;
+        result["refresh_interval_source"] = info.refresh_interval_source;
         return result;
     });
     m.def("diagnostic_configure_line_endpoints", &diagnostic_configure_line_endpoints,
