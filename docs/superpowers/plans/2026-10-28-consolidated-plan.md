@@ -1145,12 +1145,15 @@ H01 and V04.
 - **Submission.** None: the user decided never to open these PRs (D29). The
   briefs and patches stay local, in `docs/upstream-drafts/`.
 - **W16.** The stock napari 0.10.0 lock is prepared locally, with PyQt6 6.12.0
-  because napari 0.10.0 excludes Qt 6.11.0. Its GUI runs wait for the user's
-  go-ahead.
+  on Qt 6.12.0. Its GUI runs wait for the user's go-ahead.
 
 **W16 baseline on napari 0.10.0** (2026-11-01, run `napari-010-baseline-295`,
 the user's go-ahead "Run now"). Test wheel `cc6fa732` with stock napari 0.10.0,
-qtpy 2.4.3 and PyQt6 6.12.0:
+qtpy 2.4.3 and PyQt6 6.12.0 on Qt 6.12.0:
+- **Qt changed too.** The 0.9.2 rows run PyQt6 6.11.0 on Qt 6.11.2, and that
+  pairing also resolves with napari 0.10.0, so this baseline changes Qt as well
+  as napari. An earlier note said the lock needed Qt 6.12 because napari 0.10.0
+  excludes Qt 6.11.0. That was wrong.
 - **Gates.** The stock napari scenario passes both hot-swap gates
   (`PASS_HOT_SWAP_GATES`) under readback and under native presentation. It
   shows 24 host GL events (napari 10, qtpy 4, native 6, and 4 whose stored
