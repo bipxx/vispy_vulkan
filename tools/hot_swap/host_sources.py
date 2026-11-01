@@ -2,7 +2,8 @@
 """Print the host GL sources of hot-swap audit reports: the top-level package behind each host GL event.
 
 D28 adoption checks compare these before and after a host release (consolidated plan; plan
-2026-10-31-upstream-host-changes.md, Tasks 9 and 10). An event with no Python caller counts as 'native'.
+2026-10-31-upstream-host-changes.md, Tasks 9 and 10). An event with no Python stack counts as 'native', and a host
+event whose stored stack holds no caller as 'host (stack truncated)'.
 Usage (repository root): python -m tools.hot_swap.host_sources <audit.json> [<audit.json> ...]
 """
 from __future__ import annotations

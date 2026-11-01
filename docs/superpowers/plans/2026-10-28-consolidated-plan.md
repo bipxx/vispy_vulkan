@@ -1124,6 +1124,30 @@ H01 and V04.
   activity observed. The user chose native presentation for the hot swap from
   R2, after the napari parity suites pass under it (D18).
 
+**W12 prepared under D28** (2026-11-01, plan
+`2026-10-31-upstream-host-changes.md`):
+- **Rebased and tested** on the projects' current branches (runs
+  `upstream-napari-291` and `upstream-qtpy-292`). The new tests pass, and
+  every suite keeps its failing set: napari's `_vispy` and `_qt` suites, and
+  qtpy's whole suite under PyQt5, PyQt6, PySide6 and PySide2.
+- **Measured effects** (run `upstream-effects-293`):
+  - The napari change matters only for a vispy whose `gl+` does not use
+    PyOpenGL. With this project's wheel, importing napari's canvas then loads
+    no GL library on Windows; with upstream vispy nothing changes. Since the
+    final review, napari takes `GLError` only from an already-imported
+    PyOpenGL, so it never imports PyOpenGL itself, not even at layer removal.
+  - The qtpy change stops importing Qt6's OpenGL modules but never changes
+    whether the system GL library is loaded. On Windows those imports do not
+    load it; on Linux `PyQt6.QtGui` loads it anyway.
+  - Stock PyQt6 cannot import `QtGui` on Linux without libGL, so neither
+    change helps there.
+- **Submission.** napari's and Spyder's AI policies require the user to submit
+  both PRs personally. The briefs and patches are local, in
+  `docs/upstream-drafts/`.
+- **W16.** The stock napari 0.10.0 lock is prepared locally, with PyQt6 6.12.0
+  because napari 0.10.0 excludes Qt 6.11.0. Its GUI runs wait for the user's
+  go-ahead.
+
 ## Order
 
 1. R1's instrumentation runs alongside everything below.

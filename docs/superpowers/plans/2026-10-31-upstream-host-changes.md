@@ -60,7 +60,7 @@
 
 ## Review Focus
 
-1. **PyOpenGL is installed but its GL library is missing or can't load.** `_gl_errors()` must return `()` for both `ImportError` and `OSError`. Test: Task 4, `test_gl_errors_is_empty_when_the_gl_library_cannot_load`.
+1. **PyOpenGL is installed but not in use, or its GL library is missing.** `_gl_errors()` must return `()` without importing `OpenGL.error`, and `(GLError,)` once PyOpenGL is in use. Tests: Task 4, `test_gl_errors_does_not_import_pyopengl` and `test_gl_errors_returns_pyopengl_error`. (The final review replaced the draft's lazy import, which still imported PyOpenGL at the first layer removal; see the ledger.)
 2. **Layer removal on a working GL stack.** Upstream vispy's `context.finish()` can still raise `GLError`, and it must stay suppressed. Test: Task 4, `test_layer_removal_still_suppresses_gl_error`.
 3. **Star imports on Qt6.** `from qtpy.QtGui import *` no longer copies the `QOpenGL*` names, so a caller relying on that gets a `NameError`.
    - Test: Task 5, `test_star_import_on_qt6_omits_qopengl_names`, pins the new behaviour.
@@ -206,10 +206,8 @@ def test_upstream_entries_are_consistent():
             assert change['status'] in STATUSES
             if change['status'] == 'not_planned':
                 assert change['reason'].strip()
-            if change['status'] == 'draft':  # drafts stay local until posting is approved (user, 2026-10-28)
+            if change['status'] in {'draft', 'approved'}:  # drafts stay local (user, 2026-10-28)
                 assert change['change'].startswith('docs/upstream-drafts/') and change['change'].endswith('.patch')
-            if change['status'] == 'approved':
-                assert (ROOT / change['change']).is_file()
             if change['status'] in {'posted', 'merged', 'released', 'declined'}:
                 assert PR.match(change['pr'] or '')
             assert (change.get('released_in') is not None) == (change['status'] == 'released')
@@ -298,7 +296,7 @@ def test_host_sources_command_prints_each_report(tmp_path, capsys):
 - Consumes: napari `origin/main`, with the commit recorded in Step 1 (`b304b99d` on 2026-10-30 or later).
 - Produces:
   - the branch `lazy-pyopengl-import`;
-  - `_gl_errors() -> tuple[type[BaseException], ...]` in `napari._vispy.canvas`, as in the draft: it catches `ImportError` and `OSError`, and returns `()` or `(GLError,)`;
+  - `_gl_errors() -> tuple[type[BaseException], ...]` in `napari._vispy.canvas`: `(GLError,)` when `OpenGL.error` is already in `sys.modules`, else `()`, never importing it. The draft's lazy import, used until the final review, caught `ImportError` and `OSError`;
   - run `upstream-napari-<id>`, with the base and patched JUnit results.
 
 - [ ] **Step 1: Clone and branch.**
@@ -534,7 +532,7 @@ Both projects forbid an AI agent from submitting a PR or writing its description
   - For napari, also check that the release still accepts `vispy` 0.17. If it doesn't, record that in the registry and the consolidated plan, and stop: moving the port to a newer vispy is a separate decision.
 - [ ] **Step 2: Lock the release.** Copy Task 9's lock with only this host's version changed, check it with Task 9, Step 1's command, and run W3 as in Task 9, Step 4.
   - Expected: `PASS_HOT_SWAP_GATES`.
-  - Expected: `host_sources` no longer lists the adopted host (`qtpy` or `napari`).
+  - Expected: `host_sources` no longer lists the adopted host (`qtpy` or `napari`). napari's `utils/info.py` still imports PyOpenGL inside `sys_info()`, which the stock scenario does not call; a `host (stack truncated)` entry needs a look at the event's full record.
 - [ ] **Step 3: Record the release** as `released` with `released_in`. Run the registry contract and publish.
 - [ ] **Step 4: Prepare the strict patch for R2.**
   - Write the reduced strict patch against the released version, with only the entry's `strict_only` hunks, and register it.

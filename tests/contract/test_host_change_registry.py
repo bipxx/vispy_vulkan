@@ -10,7 +10,8 @@ REGISTRY = ROOT / 'compat/host-changes.json'
 STATUSES = {'draft', 'approved', 'posted', 'merged', 'released', 'declined', 'not_planned'}
 PR = re.compile(r'^https://github\.com/(napari/napari|spyder-ide/qtpy)/pull/\d+$')
 HOT_SWAP = 'only VisPy is replaced'
-# Drafts stay local until the user approves posting them (user, 2026-10-28), so published main lacks the files.
+# Drafts stay local (user, 2026-10-28; publication_drift KNOWN), so published main lacks the files: an entry names
+# its draft by path, and the user, not this repository, submits it upstream (D28 plan, upstream AI policies).
 DRAFTS = 'docs/upstream-drafts/'
 
 
@@ -67,10 +68,8 @@ def test_upstream_entries_are_consistent():
             assert status in STATUSES, (entry['patch'], status)
             if status == 'not_planned':
                 assert change['reason'].strip(), entry['patch']
-            if status == 'draft':
+            if status in {'draft', 'approved'}:
                 assert change['change'].startswith(DRAFTS) and change['change'].endswith('.patch'), change
-            if status == 'approved':
-                assert (ROOT / change['change']).is_file(), change
             if status in {'posted', 'merged', 'released', 'declined'}:
                 assert PR.match(change['pr'] or ''), change
             assert (change.get('released_in') is not None) == (status == 'released'), change

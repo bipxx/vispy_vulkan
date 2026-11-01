@@ -196,9 +196,16 @@ def test_host_gl_sources_name_the_host_package_behind_each_event():
     events = [{'stack': ['importlib._bootstrap', 'OpenGL.platform.win32', 'OpenGL.error', 'napari._vispy.canvas']},
               {'stack': ['PyQt6.QtOpenGL', 'qtpy.QtGui', 'superqt.utils._qthrottler']},
               {'stack': ['qtpy.QtWidgets']},
-              {'stack': ['ctypes', 'OpenGL.GL']},  # nothing but machinery and GL modules: no Python caller
               {'kind': 'native_load'}]
-    assert host_gl_sources(events) == {'napari': 1, 'qtpy': 2, 'native': 2}
+    assert host_gl_sources(events) == {'napari': 1, 'qtpy': 2, 'native': 1}
+
+
+def test_a_host_event_whose_stored_stack_has_no_caller_is_not_counted_as_native():
+    # The probe attributes on the whole stack but stores its first 24 frames, so nested imports can leave only
+    # machinery and GL frames in the stored part of a host event.
+    truncated = {'attribution': 'host', 'stack': ['importlib._bootstrap'] * 20 + ['ctypes', 'OpenGL.platform.win32',
+                                                                                  'OpenGL.error', 'OpenGL']}
+    assert host_gl_sources([truncated, {'kind': 'native_load'}]) == {'host (stack truncated)': 1, 'native': 1}
 
 
 def test_host_sources_command_prints_each_report(tmp_path, capsys):
