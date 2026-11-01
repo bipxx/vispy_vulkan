@@ -876,6 +876,24 @@ struct QueuedFrame {
 
 struct Ticket;
 
+// A diagnostic image is associated with one successful presentation. Strong
+// texture/view handles prevent allocation identity reuse; swapchain_current
+// still guards pixel contents until a converted immutable mirror is captured.
+struct PresentedCapture {
+    bool valid = false, native_surface = false, mirror_ready = false;
+    bool producer_retired = false;
+    uint64_t ticket = 0, device_generation = 0, surface_generation = 0;
+    uint64_t diagnostic_ticket = 0;
+    std::shared_ptr<FrameMark::Queries> owner;
+    int width = 0, height = 0, samples = 0;
+    uint32_t output_width = 0, output_height = 0;
+    wgpu::TextureFormat output_format = wgpu::TextureFormat::Undefined;
+    wgpu::Texture source, mirror;
+    wgpu::TextureView source_view, mirror_view;
+    WGPUSurface surface = nullptr;
+    const vispy::platform::NativeSurfaceOwner* surface_owner = nullptr;
+};
+
 struct Canvas {
     int id = 0;
     RenderState state;
@@ -902,6 +920,7 @@ struct Canvas {
     wgpu::TextureView depth_view;
     wgpu::Texture presented;
     wgpu::TextureView presented_view;
+    PresentedCapture presented_capture;
     wgpu::BindGroup present_group;
     WGPUTextureView present_group_view = nullptr;
     WGPUBindGroupLayout present_group_layout = nullptr;
@@ -1318,6 +1337,14 @@ struct Engine {
 
     void record_completion(Ticket& ticket, const std::string& status) {
         auto frame = ticket.queries;
+        const auto presented_canvas = canvases.find(ticket.canvas_id);
+        if (presented_canvas != canvases.end()) {
+            auto& image = presented_canvas->second.presented_capture;
+            if (image.valid && status != "success" &&
+                    ((ticket.id && ticket.id <= image.ticket) || (ticket.id && ticket.id == image.diagnostic_ticket) ||
+                     (frame && frame == image.owner))) image = {};
+            else if (image.valid && ticket.id == image.ticket && status == "success") image.producer_retired = true;
+        }
         // User cancellation changes the capture/frame result, not successful
         // native payload validity. A native validation/queue failure or loss
         // discards its slots only here, after actual completion processing.
@@ -1765,10 +1792,19 @@ struct Engine {
         poll_query_results();
         probe.pending_tickets = tickets.size();
         update_work_peaks();
-        std::lock_guard<std::mutex> guard(callbacks->mu);
-        if (!callbacks->errors.empty()) {
-            last_error = callbacks->errors.front();
-            callbacks->errors.clear();
+        bool callback_failed = false;
+        {
+            std::lock_guard<std::mutex> guard(callbacks->mu);
+            if (!callbacks->errors.empty()) {
+                callback_failed = true;
+                last_error = callbacks->errors.front();
+                callbacks->errors.clear();
+            }
+        }
+        if (callback_failed) {
+            // An unattributed asynchronous validation error is not successful
+            // capture provenance, even after its exception has been caught.
+            for (auto& [id, canvas] : canvases) canvas.presented_capture = {};
             throw std::runtime_error("Dawn: " + last_error);
         }
     }
@@ -1861,6 +1897,7 @@ struct Engine {
         for (auto& entry : canvases) {
             auto& canvas = entry.second;
             canvas.frame_mark.reset();
+            canvas.presented_capture = {};
             canvas.color = nullptr;
             canvas.color_view = nullptr;
             canvas.multisampled_color = nullptr;
@@ -2085,6 +2122,7 @@ struct Engine {
     }
 
     void retire_surface(Canvas& canvas) {
+        canvas.presented_capture = {};
         const bool drain_native_owner = canvas.surface_owner &&
             vispy::platform::native_surface_requires_retirement_drain(canvas.surface_owner->descriptor().kind);
         if (drain_native_owner) {
@@ -2436,6 +2474,7 @@ struct Engine {
             target.built_samples == target.samples) {
             return;
         }
+        target.presented_capture = {};
         target.present_group = nullptr;
         wgpu::TextureDescriptor td;
         td.size = {static_cast<uint32_t>(target.width), static_cast<uint32_t>(target.height), 1};
@@ -6061,6 +6100,57 @@ void main() {
         target.paced_return_ns = monotonic_ns();
     }
 
+    void record_presented_capture(Canvas& target, const Ticket& ticket, bool mirrored,
+                                  const wgpu::Texture& surface_texture) {
+        if (ticket.queries && (!ticket.queries->work.failure.empty() ||
+                ticket.queries->failure != vispy::timing::Status::Pending || !ticket.queries->error.empty())) {
+            target.presented_capture = {};
+            return;
+        }
+        PresentedCapture capture;
+        capture.valid = true;
+        capture.native_surface = bool(surface_texture);
+        capture.mirror_ready = mirrored;
+        capture.ticket = ticket.id;
+        capture.owner = ticket.queries;
+        capture.device_generation = device_generation;
+        capture.surface_generation = target.surface_generation;
+        capture.width = target.width; capture.height = target.height; capture.samples = target.samples;
+        capture.output_width = surface_texture ? surface_texture.GetWidth() : target.presented.GetWidth();
+        capture.output_height = surface_texture ? surface_texture.GetHeight() : target.presented.GetHeight();
+        capture.output_format = surface_texture ? surface_texture.GetFormat() : target.presented.GetFormat();
+        capture.source = target.color; capture.source_view = target.color_view;
+        capture.mirror = target.presented; capture.mirror_view = target.presented_view;
+        capture.surface = target.surface.Get();
+        capture.surface_owner = target.surface_owner.get();
+        target.presented_capture = std::move(capture);
+    }
+
+    bool presented_capture_context_matches(const Canvas& target) const {
+        const auto& capture = target.presented_capture;
+        if (!capture.valid || !capture.ticket || !capture.producer_retired || !target.alive || !device || !device_ready || device_lost ||
+                callbacks->lost.load() || dawn::native::IsDeviceLost(device.Get()) ||
+                capture.device_generation != device_generation ||
+                capture.surface_generation != target.surface_generation ||
+                target.width != capture.width || target.height != capture.height || target.samples != capture.samples ||
+                target.built_w != capture.width || target.built_h != capture.height || target.built_samples != capture.samples ||
+                !target.presented || !target.presented_view ||
+                target.presented.Get() != capture.mirror.Get() || target.presented_view.Get() != capture.mirror_view.Get() ||
+                capture.output_width != target.presented.GetWidth() || capture.output_height != target.presented.GetHeight() ||
+                capture.output_format != target.presented.GetFormat()) return false;
+        if (capture.owner && (!capture.owner->work.ready() || capture.owner->work.status() != "success" ||
+                capture.owner->failure != vispy::timing::Status::Pending || !capture.owner->error.empty())) return false;
+        if (capture.owner && capture.owner->gpu_timing) {
+            vispy::timing::FrameResult result;
+            if (!capture.owner->collect(result) || result.status != "success" || !result.error.empty()) return false;
+        }
+        if (capture.native_surface && (!target.surface || !target.surface_owner || !target.surface_owner->is_alive() || !target.surface_configured ||
+                target.surface.Get() != capture.surface || target.surface_owner.get() != capture.surface_owner)) return false;
+        if (!capture.native_surface && target.surface) return false;
+        std::lock_guard<std::mutex> guard(callbacks->mu);
+        return callbacks->errors.empty();
+    }
+
     void present_current_swapchain(Canvas& target, const std::shared_ptr<FrameMark::Queries>& owner) {
         HostTimer submit_timer(probe.native_submit_ns);
         if (!target.surface || !target.color_view || target.width <= 0 || target.height <= 0) {
@@ -6102,6 +6192,7 @@ void main() {
             ticket->queries->last_present_submission_index = ticket->queries->work.last_present_submission_index;
         }
         target.swapchain_current = true;
+        record_presented_capture(target, *ticket, false, current.texture);
         freeze_submission_counters(*ticket, submit_timer);
         pace_presented_frame(target, ticket);
         if (ticket->queries && ticket->queries->final_requested && target.queued_frames.empty())
@@ -6516,6 +6607,7 @@ void main() {
         }
         target.present_swapchain = false;
         wgpu::TextureView swap_view;
+        wgpu::Texture swap_texture;
         if (present && target.surface && target.width > 0 && target.height > 0) {
             configure_surface(target);
             wgpu::SurfaceTexture current;
@@ -6524,6 +6616,7 @@ void main() {
                  current.status == wgpu::SurfaceGetCurrentTextureStatus::SuccessSuboptimal) &&
                 current.texture) {
                 swap_view = current.texture.CreateView();
+                swap_texture = current.texture;
                 target.present_swapchain = true;
             } else {
                 log("swapchain unavailable");
@@ -6533,6 +6626,7 @@ void main() {
             unavailable_paint_surface(owner, target, "requested paint surface is detached or expired");
         }
         if (present && target.color_view && target.presented_view) {
+            target.presented_capture = {};
             ticket->owned_textures.push_back(target.color);
             ticket->owned_textures.push_back(target.presented);
             blit_present(encoder, target, target.presented_view, ticket.get(), "present_capture");
@@ -6573,6 +6667,15 @@ void main() {
             }
             target.present_swapchain = false;
             target.swapchain_current = true;
+            record_presented_capture(target, *ticket, true, swap_texture);
+        }
+        else if (present && target.color_view && target.presented_view && !target.surface && !target.surface_owner &&
+                 (!owner || (!owner->work.paint_token && !owner->work.surface_expected && owner->work.failure.empty() &&
+                  !owner->paint_token && owner->frame_scope == "native_present" &&
+                  owner->failure == vispy::timing::Status::Pending && owner->error.empty()))) {
+            // Headless logical presentation already encoded its converted
+            // mirror. It has no successful Surface.Present or dirty flag.
+            record_presented_capture(target, *ticket, true, {});
         }
         freeze_submission_counters(*ticket, submit_timer);
         if (ticket->presented) pace_presented_frame(target, ticket);
@@ -8912,6 +9015,26 @@ Readback read_presented(int canvas_id, int x, int y, int width, int height) {
         result.error = "missing presented target";
         return result;
     }
+    auto& target = it->second;
+    auto& capture = target.presented_capture;
+    if (target.active_paint_token || target.frame_mark || target.clear_pending ||
+            !target.pending.empty() || !target.queued_frames.empty() || target.deferred_present) {
+        result.error = "read_presented unavailable: presentation identity changed or canvas work is unresolved";
+        return result;
+    }
+    // Wait only for already-submitted work, never flush a later draw or
+    // present. Retirement joins include earlier render tickets and owners.
+    if (capture.valid && !capture.producer_retired) eng.wait_queue();
+    if (!eng.presented_capture_context_matches(target)) {
+        result.error = "read_presented unavailable: the producing presentation did not retire successfully";
+        return result;
+    }
+    const bool refresh = !capture.mirror_ready;
+    if (refresh && (!capture.native_surface || !target.swapchain_current || !target.color || !target.color_view ||
+            target.color.Get() != capture.source.Get() || target.color_view.Get() != capture.source_view.Get())) {
+        result.error = "read_presented unavailable: the uncaptured presented source has changed";
+        return result;
+    }
     if (x < 0 || y < 0 || static_cast<uint64_t>(x) + width > it->second.presented.GetWidth() ||
         static_cast<uint64_t>(y) + height > it->second.presented.GetHeight()) {
         result.error = "read_presented rectangle exceeds target bounds";
@@ -8920,10 +9043,30 @@ Readback read_presented(int canvas_id, int x, int y, int width, int height) {
     HostTimer submit_timer(eng.probe.native_submit_ns);
     auto ticket = std::make_shared<Ticket>();
     ticket->canvas_id = canvas_id;
-    ticket->owned_textures.push_back(it->second.presented);
-    if (it->second.frame_mark && it->second.frame_mark->queries) {
-        eng.attach_query_frame(it->second, *ticket, 0);
-    }
+    ticket->owned_textures.push_back(capture.mirror);
+    // This explicit diagnostic follows a retired paint. Never append its
+    // conversion/copy to the closed owner's frozen counters or GPU map.
+    struct CaptureValidation {
+        wgpu::Device device;
+        std::shared_ptr<Ticket> ticket;
+        bool active = true;
+        CaptureValidation(wgpu::Device value, std::shared_ptr<Ticket> owner) : device(value), ticket(std::move(owner)) {
+            device.PushErrorScope(wgpu::ErrorFilter::Validation);
+        }
+        void close() {
+            if (!active) return;
+            active = false;
+            auto result = std::make_shared<AsyncResult>();
+            ticket->encoding_validation = result;
+            ticket->encoding_validation_future = device.PopErrorScope(wgpu::CallbackMode::AllowProcessEvents,
+                [result](wgpu::PopErrorScopeStatus status, wgpu::ErrorType type, wgpu::StringView message) {
+                    result->ok = status == wgpu::PopErrorScopeStatus::Success && type == wgpu::ErrorType::NoError;
+                    result->error = view_to_string(message);
+                    result->done.store(true);
+                });
+        }
+        ~CaptureValidation() { close(); }
+    } validation(eng.device, ticket);
     uint32_t bpr = (static_cast<uint32_t>(width) * 4u + 255u) & ~255u;
     wgpu::BufferDescriptor bd;
     bd.size = bpr * static_cast<uint32_t>(height);
@@ -8932,6 +9075,10 @@ Readback read_presented(int canvas_id, int x, int y, int width, int height) {
     ++eng.probe.buffer_allocations;
     auto encoder = eng.device.CreateCommandEncoder();
     ++eng.probe.command_encoders;
+    if (refresh) {
+        ticket->owned_textures.push_back(capture.source);
+        eng.blit_present(encoder, target, capture.mirror_view, ticket.get(), "present_capture");
+    }
     wgpu::TexelCopyTextureInfo src;
     src.texture = it->second.presented;
     src.aspect = wgpu::TextureAspect::All;
@@ -8945,6 +9092,8 @@ Readback read_presented(int canvas_id, int x, int y, int width, int height) {
     auto commands = encoder.Finish();
     ticket->transient_buffers.push_back(buffer);
     eng.submit_ticket_commands(ticket, commands);
+    validation.close();
+    capture.diagnostic_ticket = ticket->id;
     eng.track_submission(ticket);
     eng.freeze_submission_counters(*ticket, submit_timer);
     auto wait = std::make_shared<AsyncResult>();
@@ -8959,6 +9108,20 @@ Readback read_presented(int canvas_id, int x, int y, int width, int height) {
         result.error = eng.last_error;
         return result;
     }
+    struct Unmap { wgpu::Buffer buffer; ~Unmap() { buffer.Unmap(); } } unmap{buffer};
+    ++eng.probe.completion_waits;
+    const bool encoding_ok = eng.wait_result(ticket->encoding_validation_future, ticket->encoding_validation);
+    eng.wait_queue();
+    if (!encoding_ok || !ticket->diagnostic_retirement_counted || !ticket->ok ||
+            !ticket->encoding_validation->done.load() || !ticket->encoding_validation->ok) {
+        result.error = "read_presented unavailable: diagnostic GPU work did not retire successfully";
+        return result;
+    }
+    if (!eng.presented_capture_context_matches(target)) {
+        result.error = "read_presented unavailable: device or presentation changed during capture";
+        return result;
+    }
+    capture.mirror_ready = true;
     const auto* mapped = static_cast<const uint8_t*>(buffer.GetConstMappedRange(0, bd.size));
     result.width = width;
     result.height = height;
@@ -8969,7 +9132,6 @@ Readback read_presented(int canvas_id, int x, int y, int width, int height) {
                     mapped + static_cast<size_t>(row) * bpr,
                     static_cast<size_t>(width) * 4);
     }
-    buffer.Unmap();
     eng.probe.copy_bytes += result.rgba.size();
     return result;
 }
