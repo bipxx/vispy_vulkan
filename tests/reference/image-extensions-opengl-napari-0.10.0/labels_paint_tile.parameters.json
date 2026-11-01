@@ -1,0 +1,829 @@
+{
+  "actual_label_remap": [
+    {
+      "source_dtype": "<i4",
+      "source_id": -7,
+      "upload_dtype": "|u1",
+      "uploaded_code": 2
+    },
+    {
+      "source_dtype": "<i4",
+      "source_id": 0,
+      "upload_dtype": "|u1",
+      "uploaded_code": 1
+    },
+    {
+      "source_dtype": "<i4",
+      "source_id": 16777216,
+      "upload_dtype": "|u1",
+      "uploaded_code": 3
+    },
+    {
+      "source_dtype": "<i4",
+      "source_id": 16777217,
+      "upload_dtype": "|u1",
+      "uploaded_code": 4
+    }
+  ],
+  "camera_rect": [
+    -0.5,
+    -0.5,
+    32.0,
+    24.0
+  ],
+  "case": "labels_paint_tile",
+  "comparison": {
+    "candidate_alignment_or_color_fit": false,
+    "full_frame_exact": true,
+    "landmark_max_abs_u8": 1
+  },
+  "current_context_samples": 0,
+  "final_inputs": [
+    {
+      "dtype": "<i4",
+      "sha256": "d28e3a8113520952620db8979249dee3a6701f48904c2feeb0b8c51355260da7",
+      "shape": [
+        24,
+        32
+      ]
+    }
+  ],
+  "inputs": [
+    {
+      "dtype": "<i4",
+      "sha256": "3236e15c0e53720f8f81017fa5b9278253e4bf93db20b7396338486e6e5442ca",
+      "shape": [
+        24,
+        32
+      ]
+    }
+  ],
+  "landmarks": [
+    {
+      "column": 16,
+      "rgba": [
+        255,
+        0,
+        0,
+        255
+      ],
+      "row": 48
+    },
+    {
+      "column": 48,
+      "rgba": [
+        32,
+        64,
+        128,
+        255
+      ],
+      "row": 48
+    },
+    {
+      "column": 80,
+      "rgba": [
+        0,
+        255,
+        0,
+        255
+      ],
+      "row": 48
+    },
+    {
+      "column": 112,
+      "rgba": [
+        0,
+        0,
+        255,
+        255
+      ],
+      "row": 48
+    },
+    {
+      "column": 42,
+      "rgba": [
+        0,
+        0,
+        255,
+        255
+      ],
+      "row": 26
+    },
+    {
+      "column": 34,
+      "rgba": [
+        32,
+        64,
+        128,
+        255
+      ],
+      "row": 18
+    },
+    {
+      "column": 42,
+      "rgba": [
+        32,
+        64,
+        128,
+        255
+      ],
+      "row": 14
+    }
+  ],
+  "layer_names": [
+    "Labels"
+  ],
+  "layer_types": [
+    "Labels"
+  ],
+  "multiscale_revision_scope": "per-level CPU content plus real selected-texture GLIR uploads; no fictitious per-level GPU cache",
+  "native_mro": [
+    "CanvasBackendDesktop",
+    "QtBaseCanvasBackend",
+    "BaseCanvasBackend",
+    "QOpenGLWidget",
+    "QWidget",
+    "QObject",
+    "wrapper",
+    "QPaintDevice",
+    "simplewrapper",
+    "object"
+  ],
+  "partial_labels_events": [
+    {
+      "dtype": "|u1",
+      "offset": [
+        4,
+        8
+      ],
+      "sha256": "63b102194a49a2e1dbbed2d761ed2e804fe0a5a3dcbcd9243c3f4dc3e8ec15ff",
+      "shape": [
+        5,
+        5
+      ]
+    }
+  ],
+  "readbacks": "one final scene.render; no intermediate readback",
+  "sample_query_scope": "actual current context; scene.render uses a separate single-sample export FBO",
+  "selected_texture_descriptor_from_gloo": {
+    "format": "luminance",
+    "internalformat": "r8",
+    "interpolation": "nearest",
+    "shape": [
+      24,
+      32,
+      1
+    ]
+  },
+  "selected_texture_uploads": [
+    {
+      "command_index": 37,
+      "dtype": "|u1",
+      "offset": [
+        0,
+        0
+      ],
+      "sha256": "03bcc0430a8c61ae4557cbcbb2177be19593ddad42244cd19a61b283a4bfdc87",
+      "shape": [
+        24,
+        32,
+        1
+      ],
+      "stage": "initial"
+    },
+    {
+      "command_index": 114,
+      "dtype": "|u1",
+      "offset": [
+        4,
+        8
+      ],
+      "sha256": "63b102194a49a2e1dbbed2d761ed2e804fe0a5a3dcbcd9243c3f4dc3e8ec15ff",
+      "shape": [
+        5,
+        5,
+        1
+      ],
+      "stage": "painted"
+    }
+  ],
+  "size": [
+    128,
+    96
+  ],
+  "source_revisions": [
+    {
+      "levels": [
+        {
+          "dtype": "<i4",
+          "sha256": "3236e15c0e53720f8f81017fa5b9278253e4bf93db20b7396338486e6e5442ca",
+          "shape": [
+            24,
+            32
+          ]
+        }
+      ],
+      "stage": "initial"
+    },
+    {
+      "levels": [
+        {
+          "dtype": "<i4",
+          "sha256": "d28e3a8113520952620db8979249dee3a6701f48904c2feeb0b8c51355260da7",
+          "shape": [
+            24,
+            32
+          ]
+        }
+      ],
+      "stage": "painted"
+    }
+  ],
+  "stage_commands": [
+    {
+      "command_index": 0,
+      "stage": "initial"
+    },
+    {
+      "command_index": 1,
+      "stage": "initial"
+    },
+    {
+      "command_index": 2,
+      "stage": "initial"
+    },
+    {
+      "command_index": 3,
+      "stage": "initial"
+    },
+    {
+      "command_index": 4,
+      "stage": "initial"
+    },
+    {
+      "command_index": 5,
+      "stage": "initial"
+    },
+    {
+      "command_index": 6,
+      "stage": "initial"
+    },
+    {
+      "command_index": 7,
+      "stage": "initial"
+    },
+    {
+      "command_index": 8,
+      "stage": "initial"
+    },
+    {
+      "command_index": 9,
+      "stage": "initial"
+    },
+    {
+      "command_index": 10,
+      "stage": "initial"
+    },
+    {
+      "command_index": 11,
+      "stage": "initial"
+    },
+    {
+      "command_index": 12,
+      "stage": "initial"
+    },
+    {
+      "command_index": 13,
+      "stage": "initial"
+    },
+    {
+      "command_index": 14,
+      "stage": "initial"
+    },
+    {
+      "command_index": 15,
+      "stage": "initial"
+    },
+    {
+      "command_index": 16,
+      "stage": "initial"
+    },
+    {
+      "command_index": 17,
+      "stage": "initial"
+    },
+    {
+      "command_index": 18,
+      "stage": "initial"
+    },
+    {
+      "command_index": 19,
+      "stage": "initial"
+    },
+    {
+      "command_index": 20,
+      "stage": "initial"
+    },
+    {
+      "command_index": 21,
+      "stage": "initial"
+    },
+    {
+      "command_index": 22,
+      "stage": "initial"
+    },
+    {
+      "command_index": 23,
+      "stage": "initial"
+    },
+    {
+      "command_index": 24,
+      "stage": "initial"
+    },
+    {
+      "command_index": 25,
+      "stage": "initial"
+    },
+    {
+      "command_index": 26,
+      "stage": "initial"
+    },
+    {
+      "command_index": 27,
+      "stage": "initial"
+    },
+    {
+      "command_index": 28,
+      "stage": "initial"
+    },
+    {
+      "command_index": 29,
+      "stage": "initial"
+    },
+    {
+      "command_index": 30,
+      "stage": "initial"
+    },
+    {
+      "command_index": 31,
+      "stage": "initial"
+    },
+    {
+      "command_index": 32,
+      "stage": "initial"
+    },
+    {
+      "command_index": 33,
+      "stage": "initial"
+    },
+    {
+      "command_index": 34,
+      "stage": "initial"
+    },
+    {
+      "command_index": 35,
+      "stage": "initial"
+    },
+    {
+      "command_index": 36,
+      "stage": "initial"
+    },
+    {
+      "command_index": 37,
+      "stage": "initial"
+    },
+    {
+      "command_index": 38,
+      "stage": "initial"
+    },
+    {
+      "command_index": 39,
+      "stage": "initial"
+    },
+    {
+      "command_index": 40,
+      "stage": "initial"
+    },
+    {
+      "command_index": 41,
+      "stage": "initial"
+    },
+    {
+      "command_index": 42,
+      "stage": "initial"
+    },
+    {
+      "command_index": 43,
+      "stage": "initial"
+    },
+    {
+      "command_index": 44,
+      "stage": "initial"
+    },
+    {
+      "command_index": 45,
+      "stage": "initial"
+    },
+    {
+      "command_index": 46,
+      "stage": "initial"
+    },
+    {
+      "command_index": 47,
+      "stage": "initial"
+    },
+    {
+      "command_index": 48,
+      "stage": "initial"
+    },
+    {
+      "command_index": 49,
+      "stage": "initial"
+    },
+    {
+      "command_index": 50,
+      "stage": "initial"
+    },
+    {
+      "command_index": 51,
+      "stage": "initial"
+    },
+    {
+      "command_index": 52,
+      "stage": "initial"
+    },
+    {
+      "command_index": 53,
+      "stage": "initial"
+    },
+    {
+      "command_index": 54,
+      "stage": "initial"
+    },
+    {
+      "command_index": 55,
+      "stage": "initial"
+    },
+    {
+      "command_index": 56,
+      "stage": "initial"
+    },
+    {
+      "command_index": 57,
+      "stage": "initial"
+    },
+    {
+      "command_index": 58,
+      "stage": "initial"
+    },
+    {
+      "command_index": 59,
+      "stage": "initial"
+    },
+    {
+      "command_index": 60,
+      "stage": "initial"
+    },
+    {
+      "command_index": 61,
+      "stage": "initial"
+    },
+    {
+      "command_index": 62,
+      "stage": "initial"
+    },
+    {
+      "command_index": 63,
+      "stage": "initial"
+    },
+    {
+      "command_index": 64,
+      "stage": "initial"
+    },
+    {
+      "command_index": 65,
+      "stage": "initial"
+    },
+    {
+      "command_index": 66,
+      "stage": "initial"
+    },
+    {
+      "command_index": 67,
+      "stage": "initial"
+    },
+    {
+      "command_index": 68,
+      "stage": "initial"
+    },
+    {
+      "command_index": 69,
+      "stage": "initial"
+    },
+    {
+      "command_index": 70,
+      "stage": "initial"
+    },
+    {
+      "command_index": 71,
+      "stage": "initial"
+    },
+    {
+      "command_index": 72,
+      "stage": "initial"
+    },
+    {
+      "command_index": 73,
+      "stage": "initial"
+    },
+    {
+      "command_index": 74,
+      "stage": "initial"
+    },
+    {
+      "command_index": 75,
+      "stage": "initial"
+    },
+    {
+      "command_index": 76,
+      "stage": "initial"
+    },
+    {
+      "command_index": 77,
+      "stage": "initial"
+    },
+    {
+      "command_index": 78,
+      "stage": "initial"
+    },
+    {
+      "command_index": 79,
+      "stage": "initial"
+    },
+    {
+      "command_index": 80,
+      "stage": "initial"
+    },
+    {
+      "command_index": 81,
+      "stage": "initial"
+    },
+    {
+      "command_index": 82,
+      "stage": "initial"
+    },
+    {
+      "command_index": 83,
+      "stage": "initial"
+    },
+    {
+      "command_index": 84,
+      "stage": "initial"
+    },
+    {
+      "command_index": 85,
+      "stage": "initial"
+    },
+    {
+      "command_index": 86,
+      "stage": "initial"
+    },
+    {
+      "command_index": 87,
+      "stage": "initial"
+    },
+    {
+      "command_index": 88,
+      "stage": "initial"
+    },
+    {
+      "command_index": 89,
+      "stage": "initial"
+    },
+    {
+      "command_index": 90,
+      "stage": "initial"
+    },
+    {
+      "command_index": 91,
+      "stage": "initial"
+    },
+    {
+      "command_index": 92,
+      "stage": "initial"
+    },
+    {
+      "command_index": 93,
+      "stage": "initial"
+    },
+    {
+      "command_index": 94,
+      "stage": "initial"
+    },
+    {
+      "command_index": 95,
+      "stage": "initial"
+    },
+    {
+      "command_index": 96,
+      "stage": "initial"
+    },
+    {
+      "command_index": 97,
+      "stage": "initial"
+    },
+    {
+      "command_index": 98,
+      "stage": "initial"
+    },
+    {
+      "command_index": 99,
+      "stage": "prewarm"
+    },
+    {
+      "command_index": 100,
+      "stage": "prewarm"
+    },
+    {
+      "command_index": 101,
+      "stage": "prewarm"
+    },
+    {
+      "command_index": 102,
+      "stage": "prewarm"
+    },
+    {
+      "command_index": 103,
+      "stage": "prewarm"
+    },
+    {
+      "command_index": 104,
+      "stage": "prewarm"
+    },
+    {
+      "command_index": 105,
+      "stage": "prewarm"
+    },
+    {
+      "command_index": 106,
+      "stage": "prewarm"
+    },
+    {
+      "command_index": 107,
+      "stage": "prewarm"
+    },
+    {
+      "command_index": 108,
+      "stage": "prewarm"
+    },
+    {
+      "command_index": 109,
+      "stage": "prewarm"
+    },
+    {
+      "command_index": 110,
+      "stage": "prewarm"
+    },
+    {
+      "command_index": 111,
+      "stage": "prewarm"
+    },
+    {
+      "command_index": 112,
+      "stage": "prewarm"
+    },
+    {
+      "command_index": 113,
+      "stage": "painted"
+    },
+    {
+      "command_index": 114,
+      "stage": "painted"
+    },
+    {
+      "command_index": 115,
+      "stage": "painted"
+    },
+    {
+      "command_index": 116,
+      "stage": "painted"
+    },
+    {
+      "command_index": 117,
+      "stage": "painted"
+    },
+    {
+      "command_index": 118,
+      "stage": "painted"
+    },
+    {
+      "command_index": 119,
+      "stage": "painted"
+    },
+    {
+      "command_index": 120,
+      "stage": "painted"
+    },
+    {
+      "command_index": 121,
+      "stage": "painted"
+    },
+    {
+      "command_index": 122,
+      "stage": "painted"
+    },
+    {
+      "command_index": 123,
+      "stage": "painted"
+    },
+    {
+      "command_index": 124,
+      "stage": "painted"
+    },
+    {
+      "command_index": 125,
+      "stage": "painted"
+    },
+    {
+      "command_index": 126,
+      "stage": "painted"
+    },
+    {
+      "command_index": 127,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 128,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 129,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 130,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 131,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 132,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 133,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 134,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 135,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 136,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 137,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 138,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 139,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 140,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 141,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 142,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 143,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 144,
+      "stage": "final_read"
+    },
+    {
+      "command_index": 145,
+      "stage": "final_read"
+    }
+  ],
+  "workflow": "public napari"
+}

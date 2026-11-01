@@ -1,0 +1,1391 @@
+[
+  [
+    "CURRENT",
+    0,
+    1
+  ],
+  [
+    "FUNC",
+    "glViewport",
+    0,
+    0,
+    801,
+    565
+  ],
+  [
+    "FUNC",
+    "glViewport",
+    0,
+    0,
+    801,
+    499
+  ],
+  [
+    "FUNC",
+    "glClearColor",
+    0.0,
+    0.0,
+    0.0,
+    1.0
+  ],
+  [
+    "FUNC",
+    "glClear",
+    17664
+  ],
+  [
+    "FUNC",
+    "glColorMask",
+    false,
+    false,
+    false,
+    true
+  ],
+  [
+    "FUNC",
+    "glClear",
+    16384
+  ],
+  [
+    "FUNC",
+    "glColorMask",
+    true,
+    true,
+    true,
+    true
+  ],
+  [
+    "FUNC",
+    "glFlush"
+  ],
+  [
+    "CURRENT",
+    0,
+    1
+  ],
+  [
+    "FUNC",
+    "glViewport",
+    0,
+    0,
+    256,
+    192
+  ],
+  [
+    "FUNC",
+    "glClearColor",
+    0.0,
+    0.0,
+    0.0,
+    1.0
+  ],
+  [
+    "FUNC",
+    "glClear",
+    17664
+  ],
+  [
+    "FUNC",
+    "glDisable",
+    "cull_face"
+  ],
+  [
+    "FUNC",
+    "glEnable",
+    "depth_test"
+  ],
+  [
+    "FUNC",
+    "glEnable",
+    "blend"
+  ],
+  [
+    "FUNC",
+    "glBlendFuncSeparate",
+    "src_alpha",
+    "one_minus_src_alpha",
+    "one",
+    "one"
+  ],
+  [
+    "FUNC",
+    "glBlendEquationSeparate",
+    "func_add",
+    "func_add"
+  ],
+  [
+    "CREATE",
+    22,
+    "Program"
+  ],
+  [
+    "CREATE",
+    26,
+    "VertexShader"
+  ],
+  [
+    "DATA",
+    26,
+    0,
+    "uniform mat4 u_matrix;\n\nvec4 affine_transform_map(vec4 pos) {\n    return u_matrix * pos;\n}\n\n\nvec4 transform_map_chain(vec4 pos) {\n    vec4 result_1 = affine_transform_map(pos);\n    return result_1;\n}\n\nvec4 transform_map_chain_1(vec4 pos) {\n    vec4 result_1 = transform_map_chain(pos);\n    return result_1;\n}\n\nuniform mat4 u_inv_matrix;\n\nvec4 affine_transform_imap(vec4 pos) {\n    return u_inv_matrix * pos;\n}\n\n\nvec4 transform_imap_chain(vec4 pos) {\n    vec4 result_1 = affine_transform_imap(pos);\n    return result_1;\n}\n\nuniform mat4 u_matrix_1;\n\nvec4 affine_transform_map_1(vec4 pos) {\n    return u_matrix_1 * pos;\n}\n\n\nuniform vec4 u_scale;\nuniform vec4 u_translate;\n\nvec4 st_transform_map(vec4 pos) {\n    return vec4(pos.xyz * u_scale.xyz + u_translate.xyz * pos.w, pos.w);\n}\n\n\nvec4 transform_map_chain_2(vec4 pos) {\n    vec4 result_1 = transform_imap_chain(pos);\n    vec4 result_2 = affine_transform_map_1(result_1);\n    vec4 result_3 = st_transform_map(result_2);\n    return result_3;\n}\n\nuniform vec4 u_scale_1;\nuniform vec4 u_translate_1;\n\nvec4 st_transform_map_1(vec4 pos) {\n    return vec4(pos.xyz * u_scale_1.xyz + u_translate_1.xyz * pos.w, pos.w);\n}\n\n\nuniform vec4 u_scale_2;\nuniform vec4 u_translate_2;\n\nvec4 st_transform_map_2(vec4 pos) {\n    return vec4(pos.xyz * u_scale_2.xyz + u_translate_2.xyz * pos.w, pos.w);\n}\n\n\nvec4 transform_map_chain_3(vec4 pos) {\n    vec4 result_1 = transform_map_chain_2(pos);\n    vec4 result_2 = st_transform_map_1(result_1);\n    vec4 result_3 = st_transform_map_2(result_2);\n    return result_3;\n}\n\nvec4 transform_map_chain_4(vec4 pos) {\n    vec4 result_1 = transform_map_chain_3(pos);\n    return result_1;\n}\n\nvec4 null_transform_map(vec4 pos) {return pos;}\n\nvec4 transform_map_chain_5(vec4 pos) {\n    vec4 result_1 = null_transform_map(pos);\n    return result_1;\n}\n\nvec4 transform_map_chain_6(vec4 pos) {\n    vec4 result_1 = transform_map_chain_5(pos);\n    return result_1;\n}\n\nuniform vec4 u_scale_3;\nuniform vec4 u_translate_3;\n\nvec4 st_transform_map_3(vec4 pos) {\n    return vec4(pos.xyz * u_scale_3.xyz + u_translate_3.xyz * pos.w, pos.w);\n}\n\n\nuniform vec4 u_scale_4;\nuniform vec4 u_translate_4;\n\nvec4 st_transform_map_4(vec4 pos) {\n    return vec4(pos.xyz * u_scale_4.xyz + u_translate_4.xyz * pos.w, pos.w);\n}\n\n\nvec4 transform_map_chain_7(vec4 pos) {\n    vec4 result_1 = st_transform_map_3(pos);\n    vec4 result_2 = st_transform_map_4(result_1);\n    return result_2;\n}\n\nvec4 transform_map_chain_8(vec4 pos) {\n    vec4 result_1 = transform_map_chain_7(pos);\n    return result_1;\n}\n\nuniform vec4 u_scale_5;\nuniform vec4 u_translate_5;\n\nvec4 st_transform_map_5(vec4 pos) {\n    return vec4(pos.xyz * u_scale_5.xyz + u_translate_5.xyz * pos.w, pos.w);\n}\n\n\nvec4 transform_map_chain_9(vec4 pos) {\n    vec4 result_1 = st_transform_map_5(pos);\n    return result_1;\n}\n\nvec4 transform_map_chain_10(vec4 pos) {\n    vec4 result_1 = transform_map_chain_9(pos);\n    return result_1;\n}\n\nvec4 transform_map_chain_11(vec4 pos) {\n    vec4 result_1 = transform_map_chain_1(pos);\n    vec4 result_2 = transform_map_chain_4(result_1);\n    vec4 result_3 = transform_map_chain_6(result_2);\n    vec4 result_4 = transform_map_chain_8(result_3);\n    vec4 result_5 = transform_map_chain_10(result_4);\n    return result_5;\n}\n\nvarying vec4 v_position;\n\nvoid clip() {\n    // pass position as varying for interpolation\n    v_position = gl_Position;\n}\n\n\nattribute vec3 a_bc;\n\nvarying vec3 v_bc;\n\nvoid prepare_wireframe() {\n    v_bc = a_bc;\n}\n\n\n\nvec4 vec3to4(vec3 xyz) {\n    return vec4(xyz, 1.0);\n}\n\n\nuniform float u_cmin;\nuniform float u_cmax;\nfloat cmap(float val) { return (val - u_cmin) / (u_cmax - u_cmin); }\n\n\nuniform sampler2D texture2D_LUT;\nvec4 colormap(float t) {\n    // Map NaN to bad_color\n    if (!(t <= 0.0 || 0.0 <= t)) {\n        return vec4(0.000, 0.000, 0.000, 0.000);\n    }\n    return texture2D(texture2D_LUT, vec2(0.0, clamp(t, 0.0, 1.0)));\n}\n\n\nvec4 chain(float val) {\n    float result_1 = cmap(val);\n    vec4 result_2 = colormap(result_1);\n    return result_2;\n}\n\nattribute vec3 a_position;\nattribute float a_base_color;\n\nvarying vec4 v_base_color;\n\nvoid main() {\n    v_base_color = chain(a_base_color);\n    gl_Position = transform_map_chain_11(vec3to4(a_position));\n\n    clip();\nprepare_wireframe();\n\n}\n\n"
+  ],
+  [
+    "ATTACH",
+    22,
+    26
+  ],
+  [
+    "CREATE",
+    27,
+    "FragmentShader"
+  ],
+  [
+    "DATA",
+    27,
+    0,
+    "uniform float u_alpha;\n\nvoid apply_alpha() {\n    gl_FragColor.a = gl_FragColor.a * u_alpha;\n}\n\n\nuniform vec4 u_id_color;\nuniform int u_enabled;\n\nvoid picking_filter() {\n    if( u_enabled == 0 )\n        return;\n    if( gl_FragColor.a == 0.0 )\n        discard;\n    gl_FragColor = u_id_color;\n}\n\n\nuniform int u_enabled_1;\nuniform vec4 u_color;\nuniform float u_width;\nuniform int u_wireframe_only;\nuniform int u_faces_only;\n\nvarying vec3 v_bc;\n\nvoid draw_wireframe() {\n    if (u_enabled_1 != 1) {\n        return;\n    }\n\n    vec3 d = fwidth(v_bc);  // relative distance to edge\n    vec3 fading3 = smoothstep(vec3(0.0), u_width * d, v_bc);\n    float opacity = 1.0 - min(min(fading3.x, fading3.y), fading3.z);\n\n    if (u_wireframe_only == 1) {\n        if (opacity == 0.0) {\n            // Inside a triangle.\n            discard;\n        }\n        // On the edge.\n        gl_FragColor = u_color;\n        gl_FragColor.a = opacity;\n    } else if (u_faces_only == 1) {\n        if (opacity == 1.0) {\n            // Inside an edge.\n            discard;\n        }\n        // Inside a triangle.\n        gl_FragColor.a = 1.0 - opacity;\n    } else {\n        gl_FragColor = mix(gl_FragColor, u_color, opacity);\n    }\n\n}\n\n\n\nfloat clip_planes(vec3 loc) {\n    float distance_from_clip = 3.4e38; // max float\n    ;\n    return distance_from_clip;\n}\n\n\nuniform vec4 u_scale_6;\nuniform vec4 u_translate_6;\n\nvec4 st_transform_imap(vec4 pos) {\n    return vec4((pos.xyz - u_translate_6.xyz * pos.w) / u_scale_6.xyz,\n                pos.w);\n}\n\n\nvec4 transform_imap_chain(vec4 pos) {\n    vec4 result_1 = st_transform_imap(pos);\n    return result_1;\n}\n\nvec4 transform_imap_chain_1(vec4 pos) {\n    vec4 result_1 = transform_imap_chain(pos);\n    return result_1;\n}\n\nuniform vec4 u_scale_7;\nuniform vec4 u_translate_7;\n\nvec4 st_transform_imap_1(vec4 pos) {\n    return vec4((pos.xyz - u_translate_7.xyz * pos.w) / u_scale_7.xyz,\n                pos.w);\n}\n\n\nuniform vec4 u_scale_8;\nuniform vec4 u_translate_8;\n\nvec4 st_transform_imap_2(vec4 pos) {\n    return vec4((pos.xyz - u_translate_8.xyz * pos.w) / u_scale_8.xyz,\n                pos.w);\n}\n\n\nvec4 transform_imap_chain_2(vec4 pos) {\n    vec4 result_1 = st_transform_imap_1(pos);\n    vec4 result_2 = st_transform_imap_2(result_1);\n    return result_2;\n}\n\nvec4 transform_imap_chain_3(vec4 pos) {\n    vec4 result_1 = transform_imap_chain_2(pos);\n    return result_1;\n}\n\nvec4 null_transform_map(vec4 pos) {return pos;}\n\nvec4 transform_imap_chain_4(vec4 pos) {\n    vec4 result_1 = null_transform_map(pos);\n    return result_1;\n}\n\nvec4 transform_imap_chain_5(vec4 pos) {\n    vec4 result_1 = transform_imap_chain_4(pos);\n    return result_1;\n}\n\nuniform vec4 u_scale_9;\nuniform vec4 u_translate_9;\n\nvec4 st_transform_imap_3(vec4 pos) {\n    return vec4((pos.xyz - u_translate_9.xyz * pos.w) / u_scale_9.xyz,\n                pos.w);\n}\n\n\nuniform vec4 u_scale_10;\nuniform vec4 u_translate_10;\n\nvec4 st_transform_imap_4(vec4 pos) {\n    return vec4((pos.xyz - u_translate_10.xyz * pos.w) / u_scale_10.xyz,\n                pos.w);\n}\n\n\nuniform vec4 u_scale_11;\nuniform vec4 u_translate_11;\n\nvec4 st_transform_imap_5(vec4 pos) {\n    return vec4((pos.xyz - u_translate_11.xyz * pos.w) / u_scale_11.xyz,\n                pos.w);\n}\n\n\nuniform mat4 u_inv_matrix_1;\n\nvec4 affine_transform_imap(vec4 pos) {\n    return u_inv_matrix_1 * pos;\n}\n\n\nuniform mat4 u_matrix_2;\n\nvec4 affine_transform_map(vec4 pos) {\n    return u_matrix_2 * pos;\n}\n\n\nvec4 transform_map_chain(vec4 pos) {\n    vec4 result_1 = affine_transform_map(pos);\n    return result_1;\n}\n\nvec4 transform_imap_chain_6(vec4 pos) {\n    vec4 result_1 = st_transform_imap_5(pos);\n    vec4 result_2 = affine_transform_imap(result_1);\n    vec4 result_3 = transform_map_chain(result_2);\n    return result_3;\n}\n\nvec4 transform_imap_chain_7(vec4 pos) {\n    vec4 result_1 = st_transform_imap_3(pos);\n    vec4 result_2 = st_transform_imap_4(result_1);\n    vec4 result_3 = transform_imap_chain_6(result_2);\n    return result_3;\n}\n\nvec4 transform_imap_chain_8(vec4 pos) {\n    vec4 result_1 = transform_imap_chain_7(pos);\n    return result_1;\n}\n\nvec4 transform_map_chain_12(vec4 pos) {\n    vec4 result_1 = transform_imap_chain_1(pos);\n    vec4 result_2 = transform_imap_chain_3(result_1);\n    vec4 result_3 = transform_imap_chain_5(result_2);\n    vec4 result_4 = transform_imap_chain_8(result_3);\n    return result_4;\n}\n\nvarying vec4 v_position;\n\nvoid clip() {\n    float distance_from_clip = clip_planes(transform_map_chain_12(v_position).xyz);\n    if (distance_from_clip < 0.)\n        discard;\n}\n\n\nvec4 null_transform_map_1(vec4 pos) {return pos;}\n\nuniform vec4 u_view;\n\nvoid clip_1() {\n    vec4 pos = null_transform_map_1(gl_FragCoord);\n    if( pos.x < u_view.x || pos.x > u_view.y ||\n        pos.y < u_view.z || pos.y > u_view.w ) {\n        discard;\n    }\n}\n\n\n\nvarying vec4 v_base_color;\nvoid main() {\n    clip();\nclip_1();\n\n\n    gl_FragColor = v_base_color;\n\n    apply_alpha();\ndraw_wireframe();\npicking_filter();\n\n}\n\n"
+  ],
+  [
+    "ATTACH",
+    22,
+    27
+  ],
+  [
+    "LINK",
+    22
+  ],
+  [
+    "DELETE",
+    26
+  ],
+  [
+    "DELETE",
+    27
+  ],
+  [
+    "CREATE",
+    25,
+    "VertexBuffer"
+  ],
+  [
+    "SIZE",
+    25,
+    1152
+  ],
+  [
+    "DATA",
+    25,
+    0,
+    {
+      "array": {
+        "bytes": 1152,
+        "dtype": "|V4",
+        "sha256": "a3b1bc79e528b05ee2302c9f1d07d27ad578412a67669a1d1f61a3c86d05ec35",
+        "shape": [
+          288,
+          1
+        ]
+      }
+    }
+  ],
+  [
+    "ATTRIBUTE",
+    22,
+    "a_base_color",
+    "float",
+    [
+      25,
+      4,
+      0
+    ],
+    null
+  ],
+  [
+    "CREATE",
+    13,
+    "VertexBuffer"
+  ],
+  [
+    "SIZE",
+    13,
+    3456
+  ],
+  [
+    "DATA",
+    13,
+    0,
+    {
+      "array": {
+        "bytes": 3456,
+        "dtype": "|V12",
+        "sha256": "7fe9c4e5c971c11bf04ab7f801558bbb9f5fe5a6cdcecccccadf0ff4ed1661b2",
+        "shape": [
+          96,
+          3,
+          1
+        ]
+      }
+    }
+  ],
+  [
+    "ATTRIBUTE",
+    22,
+    "a_bc",
+    "vec3",
+    [
+      13,
+      12,
+      0
+    ],
+    null
+  ],
+  [
+    "CREATE",
+    23,
+    "VertexBuffer"
+  ],
+  [
+    "SIZE",
+    23,
+    3456
+  ],
+  [
+    "DATA",
+    23,
+    0,
+    {
+      "array": {
+        "bytes": 3456,
+        "dtype": "|V12",
+        "sha256": "e044db53dd3a79c48e1df7bb4d528f1b0f5847295d9c5d6781cb5138c6280aab",
+        "shape": [
+          96,
+          3,
+          1
+        ]
+      }
+    }
+  ],
+  [
+    "ATTRIBUTE",
+    22,
+    "a_position",
+    "vec3",
+    [
+      23,
+      12,
+      0
+    ],
+    null
+  ],
+  [
+    "UNIFORM",
+    22,
+    "u_alpha",
+    "float",
+    {
+      "array": {
+        "bytes": 4,
+        "dtype": "<f4",
+        "sha256": "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c",
+        "shape": [
+          1
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    22,
+    "u_cmax",
+    "float",
+    {
+      "array": {
+        "bytes": 4,
+        "dtype": "<f4",
+        "sha256": "ea2845900b5856c9bf354b1aa9761b5aa6888e5ed61738fe9579ca42bc0f6054",
+        "shape": [
+          1
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    22,
+    "u_cmin",
+    "float",
+    {
+      "array": {
+        "bytes": 4,
+        "dtype": "<f4",
+        "sha256": "71426d210d52fa91812d0a39251aa75ded92519c3d746b8ced4e5a02ec97960d",
+        "shape": [
+          1
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    22,
+    "u_color",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "f6bb1294da2f78cd935b01c7656280df5eaa0439e9d97bc03775825a41a508e4",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    22,
+    "u_enabled",
+    "int",
+    {
+      "array": {
+        "bytes": 4,
+        "dtype": "<i4",
+        "sha256": "df3f619804a92fdb4057192dc43dd748ea778adc52bc498ce80524c014b81119",
+        "shape": [
+          1
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    22,
+    "u_enabled_1",
+    "int",
+    {
+      "array": {
+        "bytes": 4,
+        "dtype": "<i4",
+        "sha256": "67abdd721024f0ff4e0b3f4c2fc13bc5bad42d0b7851d456d88d203d15aaa450",
+        "shape": [
+          1
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    22,
+    "u_faces_only",
+    "int",
+    {
+      "array": {
+        "bytes": 4,
+        "dtype": "<i4",
+        "sha256": "df3f619804a92fdb4057192dc43dd748ea778adc52bc498ce80524c014b81119",
+        "shape": [
+          1
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    22,
+    "u_id_color",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "65a84a17f6e2d03c09e4ed6b8f5e7f53a27bc8c539e54af4d12874243ebe2118",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    22,
+    "u_inv_matrix",
+    "mat4",
+    {
+      "array": {
+        "bytes": 64,
+        "dtype": "<f4",
+        "sha256": "e857d58fa69a3dcac88958c7a7dfcd3afd77979e8f3ed05cdde4007b37d0d70c",
+        "shape": [
+          16
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    22,
+    "u_inv_matrix_1",
+    "mat4",
+    {
+      "array": {
+        "bytes": 64,
+        "dtype": "<f4",
+        "sha256": "05a14c039c8ef09b8093921a1d9f357915da56dfcdbd4b96cef9b8c59bd77ff3",
+        "shape": [
+          16
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    22,
+    "u_matrix",
+    "mat4",
+    {
+      "array": {
+        "bytes": 64,
+        "dtype": "<f4",
+        "sha256": "5998e9d1dd9bf48af6af87a1ef8c7783b818ac8329637ada08cc5fb329042376",
+        "shape": [
+          16
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    22,
+    "u_matrix_1",
+    "mat4",
+    {
+      "array": {
+        "bytes": 64,
+        "dtype": "<f4",
+        "sha256": "371cc0c8ac783d1cb143a1e78ba9ecded819d8cae7fb891ca7f6b48c1a8c8f56",
+        "shape": [
+          16
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    22,
+    "u_matrix_2",
+    "mat4",
+    {
+      "array": {
+        "bytes": 64,
+        "dtype": "<f4",
+        "sha256": "7667db9c225c8fb84a476a2f588165a504201376c85b1e5eaad67702415e6785",
+        "shape": [
+          16
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    22,
+    "u_scale",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "c7dc438c81e41ba3105b677293a58de3d897d707964999c2be6b51e289b72543",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    22,
+    "u_scale_1",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "f6bb1294da2f78cd935b01c7656280df5eaa0439e9d97bc03775825a41a508e4",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    22,
+    "u_scale_10",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "f6bb1294da2f78cd935b01c7656280df5eaa0439e9d97bc03775825a41a508e4",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    22,
+    "u_scale_11",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "c7dc438c81e41ba3105b677293a58de3d897d707964999c2be6b51e289b72543",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    22,
+    "u_scale_2",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "f6bb1294da2f78cd935b01c7656280df5eaa0439e9d97bc03775825a41a508e4",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    22,
+    "u_scale_3",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "a416fff845c77f5467c037c96e18453dd9a307d0af8be8aa4d3aac93ee821b03",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    22,
+    "u_scale_4",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "f6bb1294da2f78cd935b01c7656280df5eaa0439e9d97bc03775825a41a508e4",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    22,
+    "u_scale_5",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "8ecb16b5b6ae86216a95101d2818a08345ecc1679eb3784c68bcc6e1a38a10b8",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    22,
+    "u_scale_6",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "8ecb16b5b6ae86216a95101d2818a08345ecc1679eb3784c68bcc6e1a38a10b8",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    22,
+    "u_scale_7",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "f6bb1294da2f78cd935b01c7656280df5eaa0439e9d97bc03775825a41a508e4",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    22,
+    "u_scale_8",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "a416fff845c77f5467c037c96e18453dd9a307d0af8be8aa4d3aac93ee821b03",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    22,
+    "u_scale_9",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "f6bb1294da2f78cd935b01c7656280df5eaa0439e9d97bc03775825a41a508e4",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    22,
+    "u_translate",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "faba0e3e80ee9d19a08352561fa875803be430c3c83eb6162236357e43adc94e",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    22,
+    "u_translate_1",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "374708fff7719dd5979ec875d56cd2286f6d3cf7ec317a3b25632aab28ec37bb",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    22,
+    "u_translate_10",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "374708fff7719dd5979ec875d56cd2286f6d3cf7ec317a3b25632aab28ec37bb",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    22,
+    "u_translate_11",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "faba0e3e80ee9d19a08352561fa875803be430c3c83eb6162236357e43adc94e",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    22,
+    "u_translate_2",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "374708fff7719dd5979ec875d56cd2286f6d3cf7ec317a3b25632aab28ec37bb",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    22,
+    "u_translate_3",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "d131c5ce177110c93a176a83518b9d5ade0a4d0cd08276f9deecd313a3b77444",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    22,
+    "u_translate_4",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "374708fff7719dd5979ec875d56cd2286f6d3cf7ec317a3b25632aab28ec37bb",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    22,
+    "u_translate_5",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "c4ed2338fa8bdfe87ba22b0b14e6f74e4bbf6d849f85310370833d9cc56510ac",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    22,
+    "u_translate_6",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "c4ed2338fa8bdfe87ba22b0b14e6f74e4bbf6d849f85310370833d9cc56510ac",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    22,
+    "u_translate_7",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "374708fff7719dd5979ec875d56cd2286f6d3cf7ec317a3b25632aab28ec37bb",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    22,
+    "u_translate_8",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "d131c5ce177110c93a176a83518b9d5ade0a4d0cd08276f9deecd313a3b77444",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    22,
+    "u_translate_9",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "374708fff7719dd5979ec875d56cd2286f6d3cf7ec317a3b25632aab28ec37bb",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    22,
+    "u_view",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "611730b85b1b74c7f1153e2dc84a14ee81a3171b1e9e078c57330837842e4ec5",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    22,
+    "u_width",
+    "float",
+    {
+      "array": {
+        "bytes": 4,
+        "dtype": "<f4",
+        "sha256": "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c",
+        "shape": [
+          1
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    22,
+    "u_wireframe_only",
+    "int",
+    {
+      "array": {
+        "bytes": 4,
+        "dtype": "<i4",
+        "sha256": "df3f619804a92fdb4057192dc43dd748ea778adc52bc498ce80524c014b81119",
+        "shape": [
+          1
+        ]
+      }
+    }
+  ],
+  [
+    "CREATE",
+    24,
+    "Texture2D"
+  ],
+  [
+    "INTERPOLATION",
+    24,
+    "linear",
+    "linear"
+  ],
+  [
+    "WRAPPING",
+    24,
+    [
+      "clamp_to_edge",
+      "clamp_to_edge"
+    ]
+  ],
+  [
+    "SIZE",
+    24,
+    [
+      1024,
+      1,
+      4
+    ],
+    "rgba",
+    null
+  ],
+  [
+    "DATA",
+    24,
+    [
+      0,
+      0
+    ],
+    {
+      "array": {
+        "bytes": 16384,
+        "dtype": "<f4",
+        "sha256": "8f75474cd1e0b33a29ff1dea2dbc86407c257c0900dce26465d3fd4241eeb55a",
+        "shape": [
+          1024,
+          1,
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "TEXTURE",
+    22,
+    "texture2D_LUT",
+    24
+  ],
+  [
+    "DRAW",
+    22,
+    "triangles",
+    [
+      0,
+      288
+    ],
+    1
+  ],
+  [
+    "FUNC",
+    "glColorMask",
+    false,
+    false,
+    false,
+    true
+  ],
+  [
+    "FUNC",
+    "glClear",
+    16384
+  ],
+  [
+    "FUNC",
+    "glColorMask",
+    true,
+    true,
+    true,
+    true
+  ],
+  [
+    "FUNC",
+    "glFlush"
+  ],
+  [
+    "CURRENT",
+    0,
+    1
+  ],
+  [
+    "FUNC",
+    "glClearColor",
+    0.0,
+    0.0,
+    0.0,
+    1.0
+  ],
+  [
+    "FUNC",
+    "glClear",
+    17664
+  ],
+  [
+    "FUNC",
+    "glDisable",
+    "cull_face"
+  ],
+  [
+    "FUNC",
+    "glEnable",
+    "depth_test"
+  ],
+  [
+    "FUNC",
+    "glEnable",
+    "blend"
+  ],
+  [
+    "FUNC",
+    "glBlendFuncSeparate",
+    "src_alpha",
+    "one_minus_src_alpha",
+    "one",
+    "one"
+  ],
+  [
+    "FUNC",
+    "glBlendEquationSeparate",
+    "func_add",
+    "func_add"
+  ],
+  [
+    "UNIFORM",
+    22,
+    "u_inv_matrix_1",
+    "mat4",
+    {
+      "array": {
+        "bytes": 64,
+        "dtype": "<f4",
+        "sha256": "a2477b049566b97cd5fc73be9e5c861ce48d79de521bfa242ac14a1fb8a3a6ef",
+        "shape": [
+          16
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    22,
+    "u_matrix_1",
+    "mat4",
+    {
+      "array": {
+        "bytes": 64,
+        "dtype": "<f4",
+        "sha256": "d2a0476171a9a533710e3564d18bf7cb14e818943b75a6927ee8032fa19662aa",
+        "shape": [
+          16
+        ]
+      }
+    }
+  ],
+  [
+    "DRAW",
+    22,
+    "triangles",
+    [
+      0,
+      288
+    ],
+    1
+  ],
+  [
+    "FUNC",
+    "glColorMask",
+    false,
+    false,
+    false,
+    true
+  ],
+  [
+    "FUNC",
+    "glClear",
+    16384
+  ],
+  [
+    "FUNC",
+    "glColorMask",
+    true,
+    true,
+    true,
+    true
+  ],
+  [
+    "FUNC",
+    "glFlush"
+  ],
+  [
+    "CURRENT",
+    0,
+    1
+  ],
+  [
+    "FUNC",
+    "glClearColor",
+    0.0,
+    0.0,
+    0.0,
+    1.0
+  ],
+  [
+    "FUNC",
+    "glClear",
+    17664
+  ],
+  [
+    "FUNC",
+    "glDisable",
+    "cull_face"
+  ],
+  [
+    "FUNC",
+    "glEnable",
+    "depth_test"
+  ],
+  [
+    "FUNC",
+    "glEnable",
+    "blend"
+  ],
+  [
+    "FUNC",
+    "glBlendFuncSeparate",
+    "src_alpha",
+    "one_minus_src_alpha",
+    "one",
+    "one"
+  ],
+  [
+    "FUNC",
+    "glBlendEquationSeparate",
+    "func_add",
+    "func_add"
+  ],
+  [
+    "UNIFORM",
+    22,
+    "u_inv_matrix",
+    "mat4",
+    {
+      "array": {
+        "bytes": 64,
+        "dtype": "<f4",
+        "sha256": "5ffbaae7da6c37926e3d0909eb5c523d684f7c67232ada75fdb47f6eaf3a1ff3",
+        "shape": [
+          16
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    22,
+    "u_inv_matrix_1",
+    "mat4",
+    {
+      "array": {
+        "bytes": 64,
+        "dtype": "<f4",
+        "sha256": "e74d5bea61ded8732b7e244e9059e75da45b474c3f61e8619ea4cfee019ac4c4",
+        "shape": [
+          16
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    22,
+    "u_matrix_1",
+    "mat4",
+    {
+      "array": {
+        "bytes": 64,
+        "dtype": "<f4",
+        "sha256": "9e74d816f5e56602477fc0032ff6b5c09567da651253d2e567813161b6a9c822",
+        "shape": [
+          16
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    22,
+    "u_matrix_2",
+    "mat4",
+    {
+      "array": {
+        "bytes": 64,
+        "dtype": "<f4",
+        "sha256": "22f28353060085c58c7b2b82a157676371f75387cf9de2aa0f5aa9a7a24092b8",
+        "shape": [
+          16
+        ]
+      }
+    }
+  ],
+  [
+    "DRAW",
+    22,
+    "triangles",
+    [
+      0,
+      288
+    ],
+    1
+  ],
+  [
+    "FUNC",
+    "glColorMask",
+    false,
+    false,
+    false,
+    true
+  ],
+  [
+    "FUNC",
+    "glClear",
+    16384
+  ],
+  [
+    "FUNC",
+    "glColorMask",
+    true,
+    true,
+    true,
+    true
+  ],
+  [
+    "FUNC",
+    "glFlush"
+  ],
+  [
+    "CURRENT",
+    0,
+    1
+  ],
+  [
+    "CREATE",
+    30,
+    "FrameBuffer"
+  ],
+  [
+    "CREATE",
+    28,
+    "RenderBuffer"
+  ],
+  [
+    "SIZE",
+    28,
+    [
+      192,
+      256
+    ],
+    "color"
+  ],
+  [
+    "ATTACH",
+    30,
+    "color",
+    28
+  ],
+  [
+    "CREATE",
+    29,
+    "RenderBuffer"
+  ],
+  [
+    "SIZE",
+    29,
+    [
+      192,
+      256
+    ],
+    "depth"
+  ],
+  [
+    "ATTACH",
+    30,
+    "depth",
+    29
+  ],
+  [
+    "FRAMEBUFFER",
+    30,
+    true
+  ],
+  [
+    "FUNC",
+    "glViewport",
+    0,
+    0,
+    256,
+    192
+  ],
+  [
+    "FUNC",
+    "glClearColor",
+    0.0,
+    0.0,
+    0.0,
+    1.0
+  ],
+  [
+    "FUNC",
+    "glClear",
+    17664
+  ],
+  [
+    "FUNC",
+    "glDisable",
+    "cull_face"
+  ],
+  [
+    "FUNC",
+    "glEnable",
+    "depth_test"
+  ],
+  [
+    "FUNC",
+    "glEnable",
+    "blend"
+  ],
+  [
+    "FUNC",
+    "glBlendFuncSeparate",
+    "src_alpha",
+    "one_minus_src_alpha",
+    "one",
+    "one"
+  ],
+  [
+    "FUNC",
+    "glBlendEquationSeparate",
+    "func_add",
+    "func_add"
+  ],
+  [
+    "DRAW",
+    22,
+    "triangles",
+    [
+      0,
+      288
+    ],
+    1
+  ],
+  [
+    "FUNC",
+    "glFinish"
+  ]
+]

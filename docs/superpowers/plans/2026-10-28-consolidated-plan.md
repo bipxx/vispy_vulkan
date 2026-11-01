@@ -87,8 +87,9 @@ unmodified scientific hosts, napari first, run on it with practical parity.
 | D27 | **A streamed buffer copies straight from its payload block** (user, 2026-10-31: "continue", to "Import buffer uploads the same way, to cut the points' 11.4 ms buffer copy"). A whole buffer update with a payload of at least 1 MiB keeps the payload's host block as the buffer's bytes, and a revision whose size is a multiple of 4 bytes is copied on the GPU from the block's import before the render pass that reads it (D26's feature, toggle and 512 MiB limit). Vertex and index buffers of at least 1 MiB whose revisions have retired are reused by new revisions of the same size and usage. The batched draw routes and every other upload keep queue.WriteBuffer, and `VISPY_DAWN_HOST_IMPORT=0` turns imports off. | Run `p6-buffer-uploads-266`. napari 0.9.2 draws points as vispy's instanced markers (56 bytes per point; the port accepts its `use(gl='gl+')`), the route of the compact benchmark's points. A whole update copied the payload into the buffer's CPU shadow and again into Dawn's staging, and a buffer replaced while a frame read it allocated a new GPU buffer. |
 | D28 | **Minor host changes are allowed, upstream first** (user, 2026-10-31: "I think it might be reasonable to allow some minor changes?"; 2026-11-01: "implemnt the plan", approving `2026-10-31-upstream-host-changes.md`). A host behaviour that needs a change outside vispy is fixed in this order: in vispy, which this project ships; upstream, in the host's own project, with the user's approval for each post (W12); or as a host patch used only by strict rows and registered in `compat/host-changes.json` with its upstream status. Hot-swap rows keep stock PyPI hosts; a row with a patched host is not a hot-swap row. A strict patch shrinks only at a requalification (R2 under D1), after a host release contains its upstream change. | Replacing only `vispy` is the hot swap's value. Patched hosts would need our own index (PyPI rejects local versions), re-patching for each host release, and a third profile. The two W12 changes are small: napari imports `OpenGL.error` lazily; qtpy imports Qt6's OpenGL modules lazily. Plan: `2026-10-31-upstream-host-changes.md`. |
 | D29 | **No PRs to napari or qtpy** (user, 2026-11-01: "these are my own project. nevner pr qtpy and napari"). W12 closes as not planned, and D28's upstream step is withdrawn: a host behaviour that needs a change outside vispy is fixed in vispy or, failing that, with a host patch used only by strict rows. Hot-swap rows keep stock hosts. The two prepared changes stay local records. | Run `upstream-effects-293`: the napari change helps only vispy builds whose `gl+` does not use PyOpenGL, and the qtpy change only stops two Qt modules loading. Both changes were tested (runs 291, 292 and 294), and nothing was posted. |
+| D30 | **Later napari releases get version-agnostic successor fixtures, with one reference packet per napari version** (user, 2026-11-01: "close the gaps and review again"; scope "Core suites + probe", design "Version-agnostic"). Each core suite's successor reuses the retained fixture and drops only its napari pin. Its packets live in `tests/reference/<base>-napari-<version>/` and record the napari version, so a future release needs new packets, not new code. The retained 0.9.2 modules and packets stay unchanged (D6). The napari-threedee plugin suites stay on 0.9.2. | Plan `2026-11-01-napari-010-parity.md`. |
 
-No decisions are open. The latest is D29: no PRs to napari or qtpy.
+No decisions are open. The latest is D30: version-agnostic successor fixtures for later napari releases.
 
 The user has already decided, and confirmed on 2026-10-29, that the Windows
 napari-threedee row stays required, so the release waits for R1. On 2026-10-29
@@ -131,7 +132,7 @@ Diagnostic runs in the exact qualification profile keep the spec budget
 | W13 | Glue in hot swap: the five workflows (scatter, scatter edit, scatter axes, volume, volume edit) | All five pass with stock hosts | W3. `scatter_axes` uses the smooth-line criterion (D5; coverage H02). The design requires Glue (:26, :122), and no workstream covered it. **Partly done** (see Progress): 4 of 5 pass on `444402`. On the batch test wheel, which carries the smooth line end fix, all five pass, `scatter_axes` included, and the Glue scenario passes both hot-swap gates; this closes at R2. |
 | W14 | Apply the smooth-line criterion to the mesh axes/colorbar scene and re-run it | It passes under the criterion | D5. Its fixture sources are pinned, so the criterion is added in new modules. **Partly done** (see Progress): 12 of 13 scenes pass on `444402`. On the batch test wheel all 13 pass, with `axes_colorbar` under its documented difference (D9); this closes at R2. |
 | W15 | Remove upstream's PyOpenGL import from the shipped `gloo/glir.py`: `_check_pyopengl_3D()`, used only by the legacy GL `GlirParser`'s 3D textures | The W3 static scan finds no runtime GL reference, and the W3 stock baseline passes on the fresh build | R2. `glir.py` is pinned by the Tk candidate's runtime inputs, the DIVE PySide2 host environment and the Metal CI reuse record, so the edit lands with the fresh build. `GlirParser` stays public; its 3D-texture path now fails clearly instead. Validated on the batch test wheel: the static scan is clean, and stock napari passes both gates. |
-| W16 | Hot-swap baseline on napari 0.10.0, PyPI's napari since 2026-10-30 (still `vispy>=0.17.0,<0.18`, `qtpy>=2.4.0`, `PyOpenGL>=3.1.10`) | On stock 0.10.0 with the current test wheel, every W2 case passes or has a recorded, triaged cause, and the stock scenario reaches `PASS_HOT_SWAP_GATES` | **Done** (runs `napari-010-baseline-295`, `napari-010-plugin-parity-296` and `napari-qt-controlled-297`; see Progress). Both gates pass under readback and native presentation. The probe's napari scenario and the parity fixtures are pinned to napari 0.9.2, so a 0.10.0 parity row needs OpenGL references captured on 0.10.0. Task 9 of `2026-10-31-upstream-host-changes.md`. |
+| W16 | Hot-swap baseline on napari 0.10.0, PyPI's napari since 2026-10-30 (still `vispy>=0.17.0,<0.18`, `qtpy>=2.4.0`, `PyOpenGL>=3.1.10`) | On stock 0.10.0 with the current test wheel, every W2 case passes or has a recorded, triaged cause, and the stock scenario reaches `PASS_HOT_SWAP_GATES` | **Done** (runs `napari-010-baseline-295`, `napari-010-plugin-parity-296`, `napari-qt-controlled-297` and `napari-010-parity-298`; see Progress). Both gates pass under readback and native presentation. Through D30's successor fixtures, the six core parity suites and the probe's napari scenario judge 0.10.0, and all pass. The napari-threedee plugin suites stay on 0.9.2. Task 9 of `2026-10-31-upstream-host-changes.md` and plan `2026-11-01-napari-010-parity.md`. |
 
 W0 (drag race), W2 (baseline) and W2a are done. W3's tooling is done; its
 baseline closes with W15.
@@ -1187,6 +1188,24 @@ qtpy 2.4.3 and PyQt6 6.12.0 on Qt 6.12.0:
     with a truncated stack. None comes from the renderer.
   - So neither the napari change nor the Qt change alters what the gates see.
     This is also the first 0.9.2 gate run on `cc6fa732`.
+- **0.10.0 parity row** (run `napari-010-parity-298`, D30; the user's "close
+  the gaps and review again"). The six core suites (scientific, layer controls,
+  layer families, vector layers, volume, image extensions) and the probe's
+  napari scenario now judge napari 0.10.0.
+  - Each suite has a version-agnostic successor fixture: the retained fixture
+    without its napari pin. Its packets are in
+    `tests/reference/<base>-napari-0.10.0/`, captured with upstream vispy
+    0.17.0 on the stock 0.10.0 lock, which each packet keeps as
+    `host-lock.txt`.
+  - On napari 0.9.2 the successors reproduce the retained code run in the same
+    environment: every frame, every parameter except the image workflow name,
+    and every shader.
+  - Test wheel `cc6fa732` passes all 55 cases under readback and under native
+    presentation. The probe's napari scenario passes on 0.10.0.
+  - 51 of the 54 frames are the same as in the 0.9.2 packets. colorbar and
+    scale_bar_axes differ because of napari 0.10.0's unified font sizes.
+    shapes_selected differs because of this machine's present environment: the
+    retained code run now also differs there, within the case's D10 rule.
 
 ## Order
 
@@ -1321,4 +1340,5 @@ qtpy 2.4.3 and PyQt6 6.12.0 on Qt 6.12.0:
 | `plans/2026-10-24-vispy-compatibility-gaps.md` | Log to 2026-10-28; superseded as a plan by this document. |
 | `plans/2026-10-28-napari-hot-swap.md` | Origin of W0-W12 and their progress record; work continues here. |
 | `plans/2026-10-31-upstream-host-changes.md` | Done: D28's host-change registry and W16, the napari 0.10.0 baseline. Its upstream PRs (W12) are not planned (D29). |
+| `plans/2026-11-01-napari-010-parity.md` | Done: D30's version-agnostic successor fixtures and the napari 0.10.0 parity row (six core suites and the probe). |
 | `docs/opengl-removal-status.md` | Refreshed on 2026-10-29 (B16). |

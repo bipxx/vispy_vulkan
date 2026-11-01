@@ -22,6 +22,8 @@ import zipfile
 
 
 SCENARIOS = ('qwidget', 'napari', 'glue', 'threedee')
+# napari releases the napari scenario qualifies: W2's 0.9.2 and W16's 0.10.0 (D30).
+NAPARI_VERSIONS = ('0.9.2', '0.10.0')
 HOST_PROFILES = {
     'napari': {'napari': 'napari', 'qtpy': 'qtpy'},
     'glue': {'glue-vispy-viewers': 'glue_vispy_viewers', 'glue-qt': 'glue_qt', 'qtpy': 'qtpy'},
@@ -284,11 +286,18 @@ def qwidget(evidence, application, dawn):
             require_closed(native, canvas_id, dawn)
 
 
+def require_napari():
+    """The installed napari release, which must be one with a qualified row."""
+    version = metadata.version('napari')
+    assert version in NAPARI_VERSIONS, f'napari {version} has no qualified row: {NAPARI_VERSIONS}'
+    return version
+
+
 def napari(evidence, application, dawn):
     import numpy as np
     import napari as host
     from napari.utils.colormaps import DirectLabelColormap
-    assert metadata.version('napari') == '0.9.2'
+    require_napari()
     assert metadata.version('QtPy') == '2.4.3'
     assert metadata.version('numba') == '0.68.0'
     evidence.report['host_versions'] = {name: metadata.version(name)
