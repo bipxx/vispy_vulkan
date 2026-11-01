@@ -33,13 +33,15 @@ def definition(function):
 
 def global_names(function):
     """The global names the function reads, nested scopes included, builtins excluded."""
-    def collect(table):
-        names = set(table.get_globals())
+    def collect(table):  # Symbol.is_global works in every scope; Python 3.14 adds annotation scopes
+        names = {symbol.get_name() for symbol in table.get_symbols() if symbol.is_global()}
         for child in table.get_children():
             names |= collect(child)
         return names
-    table = symtable.symtable(textwrap.dedent(inspect.getsource(function)), function.__name__, 'exec')
-    return {name for name in collect(table.get_children()[0]) if not hasattr(builtins, name)}
+    module = symtable.symtable(textwrap.dedent(inspect.getsource(function)), function.__name__, 'exec')
+    table = next(child for child in module.get_children()
+                 if isinstance(child, symtable.Function) and child.get_name() == function.__name__)
+    return {name for name in collect(table) if not hasattr(builtins, name)}
 
 
 @pytest.mark.parametrize('retained', PAIRS)

@@ -112,9 +112,22 @@ def test_lock_mismatches_names_every_unsatisfied_requirement(tmp_path, monkeypat
         return versions[name]
 
     monkeypatch.setattr(packets_module.metadata, 'version', version)
-    # The renderer is skipped (a candidate replaces it); markers that do not apply are skipped.
+    import packaging.markers
+    real_environment = packaging.markers.default_environment
+
+    def interpreter(full_version):  # the markers are evaluated as if on this Python, whichever runs the test
+        monkeypatch.setattr(packaging.markers, 'default_environment', lambda: {
+            **real_environment(), 'python_full_version': full_version,
+            'python_version': '.'.join(full_version.split('.')[:2])})
+
+    # The renderer is skipped (a candidate replaces it); requirements whose markers do not apply are skipped.
+    interpreter('3.12.8')
     assert packets_module.lock_mismatches(lock) == [('napari', '0.10.0', '==0.11.0'), ('qtpy', None, '==2.4.3')]
+    interpreter('3.10.19')
+    assert packets_module.lock_mismatches(lock) == [('napari', '0.10.0', '==0.11.0'), ('numpy', '2.4.6', '==2.2.6'),
+                                                    ('qtpy', None, '==2.4.3')]
     versions.update(napari='0.11.0', qtpy='2.4.3')
+    interpreter('3.14.0')
     assert packets_module.lock_mismatches(lock) == []
 
 
