@@ -1,6 +1,7 @@
 """A successful scenario cannot mask a later installed-artifact failure."""
 import json
 import hashlib
+import os
 from pathlib import Path
 import subprocess
 import sys
@@ -84,6 +85,7 @@ def test_binding_option_and_strict_presentation_reach_descendants(tmp_path, monk
                              '--binding', 'pyqt6', '--gates', 'imports', '--output', str(report),
                              '--workflow-id', 'tk-state', '--covered-feature', 'app.canvas', '--', '--literal', '--', 'value'],
                             capture_output=True, text=True)
+    assert os.environ.get('VISPY_QT_PRESENTATION') == parent_presentation
     value = json.loads(report.read_text())
     worker = json.loads(Path(value['worker_report']).read_text())
     assert worker['status'] == 'PASS_SCENARIO' and worker['binding'] == 'pyqt6', _failure_reports(report)
