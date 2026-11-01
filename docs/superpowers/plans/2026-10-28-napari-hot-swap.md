@@ -37,8 +37,9 @@ Where things stand on 2026-10-28:
 | **Hot swap (new)** | stock PyPI napari, qtpy, PyQt6 or PySide6, PyOpenGL | All rendering goes through Dawn. vispy and `vispy._dawn` never import, load or resolve GL. **No GL context is created or made current, and no GL draw runs** in the process. GL loads by host packages are recorded and attributed to the module and stack that caused them, not claimed absent. |
 
 The strict rows and policy stay unchanged. The hot-swap profile is a separate,
-explicitly narrower claim. Host changes follow D28 in the consolidated plan:
-upstream first, and hot-swap rows keep stock hosts.
+explicitly narrower claim. Host changes follow D28 and D29 in the consolidated
+plan: fix in vispy, otherwise with a strict-only host patch, never through PRs to
+napari or qtpy, and hot-swap rows keep stock hosts.
 
 ## Workstreams
 

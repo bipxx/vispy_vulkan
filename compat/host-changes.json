@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "decision": "D28",
+  "decision": "D28, D29",
   "patches": [
     {
       "patch": "compat/host-patches/glue-qt-0.4.2-no-opengl.patch",
@@ -46,7 +46,8 @@
       "upstream": [
         {
           "change": "docs/upstream-drafts/napari-lazy-pyopengl-import.patch",
-          "status": "draft",
+          "status": "not_planned",
+          "reason": "The user decided never to open PRs to napari or qtpy (D29, 2026-11-01: \"these are my own project. nevner pr qtpy and napari\"); the prepared change stays a local record (docs/upstream-drafts/, runs 291-294).",
           "pr": null,
           "released_in": null
         }
@@ -63,7 +64,8 @@
       "upstream": [
         {
           "change": "docs/upstream-drafts/qtpy-lazy-qtopengl.patch",
-          "status": "draft",
+          "status": "not_planned",
+          "reason": "The user decided never to open PRs to napari or qtpy (D29, 2026-11-01: \"these are my own project. nevner pr qtpy and napari\"); the prepared change stays a local record (docs/upstream-drafts/, runs 291-294).",
           "pr": null,
           "released_in": null
         }
