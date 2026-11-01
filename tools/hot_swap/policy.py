@@ -66,11 +66,17 @@ def attribute(modules):
 
 
 def host_gl_sources(events):
-    """Count host GL events by the top-level package of their first caller; 'native' when no Python caller exists."""
+    """Count host GL events by the top-level package of their first caller.
+
+    An event without a Python stack counts as 'native'. The probe attributes on the whole stack but stores only its
+    first frames, so a host event whose stored stack holds no caller counts as 'host (stack truncated)', never as
+    'native'.
+    """
     counts = {}
     for event in events:
-        name = first_caller(event.get('stack') or [])
-        source = name.split('.')[0] if name else 'native'
+        stack = event.get('stack') or []
+        name = first_caller(stack)
+        source = name.split('.')[0] if name else 'host (stack truncated)' if stack else 'native'
         counts[source] = counts.get(source, 0) + 1
     return counts
 
