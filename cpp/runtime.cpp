@@ -6140,10 +6140,8 @@ void main() {
                 capture.output_format != target.presented.GetFormat()) return false;
         if (capture.owner && (!capture.owner->work.ready() || capture.owner->work.status() != "success" ||
                 capture.owner->failure != vispy::timing::Status::Pending || !capture.owner->error.empty())) return false;
-        if (capture.owner && capture.owner->gpu_timing) {
-            vispy::timing::FrameResult result;
-            if (!capture.owner->collect(result) || result.status != "success" || !result.error.empty()) return false;
-        }
+        if (capture.owner && !vispy::timing::capture_queries_succeeded(
+                *capture.owner, capture.owner->gpu_timing)) return false;
         if (capture.native_surface && (!target.surface || !target.surface_owner || !target.surface_owner->is_alive() || !target.surface_configured ||
                 target.surface.Get() != capture.surface || target.surface_owner.get() != capture.surface_owner)) return false;
         if (!capture.native_surface && target.surface) return false;
