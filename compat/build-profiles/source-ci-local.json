@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "name": "source-ci-local",
+  "owner": "root",
+  "purpose": "Exact combined-source snapshot and local CPU workflow checks without native rebuilds or a new environment",
+  "storage_workspace": "C:/Users/HEQ/Projects/vispy_vulkan",
+  "expected_peak_bytes": 2147483648,
+  "aggregate_max_scratch_bytes": 21474836480,
+  "min_free_bytes": 10737418240,
+  "parallel_jobs": 4,
+  "disk_guard_seconds": 30,
+  "budget_basis": "Run r2-source-287 measured 994953149 bytes in the complete tracked source/reference snapshot; the initial 1 GiB estimate leaves inadequate room for CPU fixtures and logs",
+  "reuse": "Existing locked test interpreter and matching native helper artifacts; no new environment, dependency history clone or native wheel build",
+  "temporary_files": "Owned run scratch, outside its source snapshot so isolated-consumer guards remain meaningful; retain failures and use pytest producer cleanup for its temporary fixtures",
+  "constraints": "Keep the existing protected/blocked registry and shared limits. Check space periodically; stop owned commands on budget failure. Do not copy old build/evidence/environment trees or relax a verifier",
+  "terminal_cleanup": "Await children, retain exact tree/source deltas, commands/results/licenses and required failure reproducer, inspect/apply registered cleanup, and rehash retained files",
+  "scope": "Local source/CPU evidence only; exact final-head source CI and release qualification remain separate"
+}

@@ -7,13 +7,13 @@
 The binding wrappers select one toolkit per process. Resource sharing belongs
 to Dawn; this module does not import Qt's OpenGL context or widget classes.
 
-Windows defaults to Vulkan offscreen rendering with CPU readback into an owned
-QImage, painted by an ordinary QWidget. This deliberately pays a GPU completion
-wait and full-frame transfer to avoid Vulkan Win32 WSI drivers that resolve WGL
-entry points. ``config['qt_presentation']='native'`` (or the
-``VISPY_QT_PRESENTATION`` environment variable) explicitly opts into the native
-surface fast path, which is outside strict Windows no-OpenGL qualification.
-``auto`` selects readback on Windows and native presentation elsewhere.
+``auto`` selects native Vulkan surface presentation on every platform.
+``config['qt_presentation']='readback'`` (or ``VISPY_QT_PRESENTATION=readback``)
+selects offscreen rendering with CPU readback into an owned QImage, painted by
+an ordinary QWidget. The strict no-OpenGL controller explicitly selects this
+route to avoid Vulkan Win32 WSI drivers that resolve WGL entry points. Readback
+pays a GPU completion wait and full-frame transfer; native presentation remains
+outside strict Windows no-OpenGL qualification.
 """
 
 from __future__ import division
@@ -267,7 +267,7 @@ def _select_dawn_presentation(value, platform):
     """Choose an explicit presentation route; never fall back to OpenGL."""
     if value not in ('auto', 'readback', 'native'):
         raise ValueError('Dawn Qt presentation must be auto, readback or native')
-    return ('readback' if platform == 'win32' else 'native') if value == 'auto' else value
+    return 'native' if value == 'auto' else value
 
 
 # ------------------------------------------------------------- application ---

@@ -140,10 +140,11 @@ def test_readback_profile_never_requests_a_native_window_or_vulkan_surface(monke
     assert events == [('clear', 7), ('scale', 7, 1.5)]
 
 
-def test_windows_presentation_is_explicit_and_defaults_to_readback():
-    assert QT._select_dawn_presentation('auto', 'win32') == 'readback'
+def test_native_presentation_is_default_and_readback_remains_explicit():
+    assert QT._select_dawn_presentation('auto', 'win32') == 'native'
     assert QT._select_dawn_presentation('auto', 'linux') == 'native'
     assert QT._select_dawn_presentation('native', 'win32') == 'native'
+    assert QT._select_dawn_presentation('readback', 'win32') == 'readback'
     assert QT._select_dawn_presentation('readback', 'linux') == 'readback'
     with pytest.raises(ValueError, match='auto, readback or native'):
         QT._select_dawn_presentation('opengl', 'win32')

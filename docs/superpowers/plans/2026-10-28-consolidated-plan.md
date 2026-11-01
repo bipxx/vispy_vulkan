@@ -41,6 +41,18 @@ unmodified scientific hosts, napari first, run on it with practical parity.
 
 ## Where things stand
 
+Local integration update (run `r2-source-287`): the pending runtime fixes are
+combined with current main in an isolated source candidate. Fresh Windows and
+WSL development builds each passed 44 native and 29 graphics checks (runs 285
+and 286). D18's native default and explicit strict-controller readback selection
+are implemented in that candidate; 33 focused CPU checks pass against its exact
+source. The first check imported the older editable installation and failed;
+that result is retained, and the passing rerun asserts the candidate import
+origin. These are development results, not renewed release qualification. Full
+source CI, strict collector/preparation identities, final artifact packaging,
+R1's startup closer and mandatory final-artifact rows remain open. Earlier
+approvals and ledgers keep their original source/artifact identities.
+
 | Area | State | Source |
 | --- | --- | --- |
 | Practical milestone | Closed: 120 selected criteria, 23 CI jobs, promotion review (PR #14/#15) | `docs/practical-compatibility-release.md` |

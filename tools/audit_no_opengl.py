@@ -45,6 +45,9 @@ def run_candidate(args):
     if args.arguments:
         command.extend(['--', *arguments(args.arguments)])
     environment = os.environ.copy()
+    # Strict qualification owns its presentation route, including descendants.
+    # Never inherit an interactive user's native/auto setting on Windows.
+    environment['VISPY_QT_PRESENTATION'] = 'readback'
     for key in ('PYTHONPATH', 'PYTHONHOME', 'PYTHONOPTIMIZE'):
         environment.pop(key, None)
     log = report_path.with_suffix('.process.log')
