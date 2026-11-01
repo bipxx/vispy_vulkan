@@ -34,6 +34,7 @@
 - **The hot-swap claim** (hot-swap plan, Profiles): "All rendering goes through Dawn. vispy and `vispy._dawn` never import, load or resolve GL. **No GL context is created or made current, and no GL draw runs** in the process. GL loads by host packages are recorded and attributed to the module and stack that caused them, not claimed absent."
 - **The strict profile is untouched.** "The strict rows and policy stay unchanged. The hot-swap profile is a separate, explicitly narrower claim." A row that uses a patched host is not a hot-swap row.
 - **Approvals.** W12 and every upstream post need explicit approval. Each draft "needs explicit approval, a rebase onto the project's current main branch and the project's own test suite before a pull request is opened" (drafts README). Forks, pushes, PRs, comments and replies are outward-facing, so show their exact text to the user first.
+- **Upstream AI policies.** napari's AI policy says: "**Do not allow AI agents to submit PRs for you**, and **do not submit an AI-generated PR you haven't personally understood and tested**". Spyder, which maintains qtpy, adopted NumPy's AI policy: disclose AI use on the PR, "You must not use AI to autonomously create or interact with issues or pull requests", and write descriptions and comments "in your own words". So the agent never creates, comments on or replies to an upstream issue or PR. The user tests the branches, writes the descriptions and submits both PRs personally; the agent prepares the branches and factual briefs.
 - **D2:** nothing is published before the release gates pass. This plan publishes no wheel.
 - **Hygiene** (AGENTS.md, `docs/build-hygiene.md`):
   - Register each run with `tools/build_hygiene.py preflight --run-id <id> --owner upstream-host-changes --expected-peak-bytes <n> --register`, using the next free id (290 or higher).
@@ -63,7 +64,7 @@
 2. **Layer removal on a working GL stack.** Upstream vispy's `context.finish()` can still raise `GLError`, and it must stay suppressed. Test: Task 4, `test_layer_removal_still_suppresses_gl_error`.
 3. **Star imports on Qt6.** `from qtpy.QtGui import *` no longer copies the `QOpenGL*` names, so a caller relying on that gets a `NameError`.
    - Test: Task 5, `test_star_import_on_qt6_omits_qopengl_names`, pins the new behaviour.
-   - The PR text states it. The `__all__` alternative is built only if reviewers ask for it (Task 8).
+   - The brief flags it. The `__all__` alternative is built only if reviewers ask for it (Task 8).
 4. **A binding without its QtOpenGL module.** The first access must raise qtpy's existing `QtModuleNotInstalledError`, not `AttributeError` and not an error at import. Test: Task 5, `test_missing_qtopengl_raises_module_not_installed`.
 5. **A hot-swap lock that picks up a patched host.** A regenerated lock could carry `napari==0.9.2+vispynogl.1` or a `file:` napari. Test: Task 2, `test_stock_swap_locks_name_stock_hosts_only`.
 
@@ -99,7 +100,7 @@ Runs, each registered, closed and retained:
 - **Gate A, before Task 1:** the user approves D28 and this plan.
   - Tasks 2–6 then need no further approval.
   - Task 9 needs the user's go-ahead for its GUI runs.
-- **Gate B, before Task 8:** the user approves each PR's final diff and text (Task 7).
+- **Gate B, before Task 8:** the agent hands the user each branch, its final diff and a factual brief (Task 7). The user decides whether to submit, and does so personally.
 - **Outside our control:** upstream review, merge and release. Task 10 starts when a release exists.
 
 ---
@@ -454,51 +455,43 @@ The L checks run as root under `unshare -m`, with an empty file bind-mounted ove
   - A mismatch stops the task. It is recorded as a finding and diagnosed before any PR text is written.
 - [ ] **Step 4:** close and retain the run.
 
-### Task 7: PR texts, then Gate B
+### Task 7: Briefs for the user, then Gate B
+
+Both projects forbid an AI agent from submitting a PR or writing its description (Global Constraints, "Upstream AI policies"). So this task hands the user facts, not text to post.
 
 **Files:**
-- Create: `docs/upstream-drafts/napari-pr.md`, `docs/upstream-drafts/qtpy-pr.md`
-- Modify: `docs/upstream-drafts/README.md`, and `compat/host-changes.json` (statuses become `approved` after Gate B)
+- Create: `docs/upstream-drafts/napari-brief.md`, `docs/upstream-drafts/qtpy-brief.md`
+- Modify: `docs/upstream-drafts/README.md`, and `compat/host-changes.json` (statuses become `approved` once the user decides to submit)
 
 **Interfaces:**
 - Consumes: the diffs from Tasks 4 and 5, and the values in `effects.json`.
-- Produces: the two PR bodies, plus titles that follow each project's convention:
-  - napari: "Import `OpenGL.error` only where it is used";
-  - qtpy: "PR: Import Qt6 OpenGL modules only when a QOpenGL name is used".
+- Produces, per change, a brief with:
+  - the branch, its base, its commits and how to rerun the tests;
+  - why the change helps, and what Task 6 measured (with the numbers and their run);
+  - behaviour notes and what was not tested;
+  - the project's submission rules: napari's PR template sections and AI policy; for qtpy, Spyder's AI policy and its required AI-use disclosure.
 
-- [ ] **Step 1: Read each project's PR template and contributing guide.** These are napari's `.github/PULL_REQUEST_TEMPLATE.md` and qtpy's `CONTRIBUTING.md`. Follow their structure and any rule they set on disclosing AI assistance.
-- [ ] **Step 2: Write the napari body.**
+- [x] **Step 1: Read each project's PR template, contributing guide and AI policy.** napari: `.github/PULL_REQUEST_TEMPLATE.md` and the AI use policy (`napari/docs`, `docs/developers/contributing/ai.md`). qtpy: `CONTRIBUTING.md`, and Spyder's AI policy (`spyder-ide/spyder`, `CONTRIBUTING.md`).
+- [ ] **Step 2: Write the napari brief.**
   - The module-level import serves one `suppress` call.
   - The measured effect: N1/N2 for vispy builds whose `gl+` does not use PyOpenGL, and N3/N4 to show no change with upstream vispy.
-  - The new tests, the suites run (with the Task 4 counts) and the footer line.
-- [ ] **Step 3: Write the qtpy body.**
+  - The new tests and the suites run (with the Task 4 counts).
+- [ ] **Step 3: Write the qtpy brief.**
   - The measured effect: Q1–Q4 and T1, plus L1–L3 only where they show a difference.
-  - The star-import behaviour change, and the `__all__` alternative offered in a sentence.
-  - The bindings run (with the Task 5 counts), including how PySide2 was covered, and the footer line.
-- [ ] **Step 4: Gate B.** Show the user each final diff and full body.
-  - Get the base-to-branch diff with `git -C <clone> diff <base> <branch>`.
-  - Wait for an explicit "post" for each PR.
-  - Record the approvals in the W12 row, set the registry statuses to `approved`, and publish through the Task 3, Step 6 procedure. Expected: `test_host_change_registry.py` passes with `approved`.
+  - The star-import behaviour change, and the `__all__` alternative.
+  - The bindings run (with the Task 5 counts), including how PySide2 was covered.
+- [ ] **Step 4: Gate B.** Hand the user each branch, its base-to-branch diff (`git -C <clone> diff <base> <branch>`) and its brief. The user decides whether to submit. When they do, record their decision in the W12 row, set the registry status to `approved`, and publish through the Task 3, Step 6 procedure. Expected: `test_host_change_registry.py` passes with `approved`.
 
-### Task 8: Post the PRs and take them through review (after Gate B only)
+### Task 8: The user submits the PRs and takes them through review
 
 **Interfaces:**
-- Consumes: the Task 7 approvals and the registry.
+- Consumes: the Task 7 briefs and the registry.
 - Produces: PR URLs, and status changes in `compat/host-changes.json` (`posted`, then `merged` with its merge commit, or `declined` with the reason).
 
-- [ ] **Step 1: Fork and push.** `<user>` is the GitHub account the user names at Gate B (this project's repository belongs to `bipxx`).
-  - Run: `gh repo fork napari/napari --clone=false --remote=false`
-  - Then `git -C <clone> remote add fork https://github.com/<user>/napari.git` and `git -C <clone> push fork lazy-pyopengl-import`
-  - Do the same for qtpy.
-- [ ] **Step 2: Open the PRs.**
-  - Run: `gh pr create --repo napari/napari --base main --head <user>:lazy-pyopengl-import --title "<Task 7 title>" --body-file docs/upstream-drafts/napari-pr.md`
-  - Run the same for `spyder-ide/qtpy` with `--base master`.
-- [ ] **Step 3: Record the posts.** Set the registry statuses to `posted` with their URLs, update the W12 row, and publish. Expected: the registry contract passes.
-- [ ] **Step 4: The review loop.** For each review comment:
-  - draft the reply or the new commit, and show it to the user;
-  - post only after their approval;
-  - before every push, rerun Task 4 or 5's Steps 6–7 in a new registered run.
-- [ ] **Step 5: Record the outcome.** On merge or decline, update the registry and the W12 row, then publish.
+- [ ] **Step 1: The user submits.** The user tests each branch, writes the description in their own words, and forks, pushes and opens the PR personally. For qtpy the description discloses the AI use. The agent runs no `gh` command against napari or qtpy.
+- [ ] **Step 2: Record the posts.** When the user shares the URLs, set the registry statuses to `posted` with their URLs, update the W12 row, and publish. Expected: the registry contract passes.
+- [ ] **Step 3: The review loop.** The user answers reviewers. When the user asks, the agent explains code or reruns Task 4 or 5's Steps 6–7 on a new commit in a new registered run, and reports the results to the user only.
+- [ ] **Step 4: Record the outcome.** On merge or decline, update the registry and the W12 row, then publish.
 
 ### Task 9: W16, the hot-swap baseline on napari 0.10.0 (after the user's GUI go-ahead)
 
