@@ -22,6 +22,12 @@
 - `docs/superpowers/plans/2026-10-28-napari-hot-swap.md`, "Profiles".
 - The consolidated plan's W12 row and "Standing rules".
 
+## Status (2026-11-01)
+
+**D29: no PRs to napari or qtpy** (user: "these are my own project. nevner pr qtpy and napari"). Task 7 Step 4,
+Task 8 and Task 10 are not planned. The two tested changes stay local records: the branches, the briefs and the
+patches in `docs/upstream-drafts/`, plus runs 291-294. Tasks 1-7 are done; Task 9 (W16) continues.
+
 ## Where things stand (2026-10-31)
 
 - **No upstream issue or PR exists** for either change. A search of napari and qtpy found none.
@@ -478,9 +484,9 @@ Both projects forbid an AI agent from submitting a PR or writing its description
   - The measured effect: Q1–Q4 and T1, plus L1–L3 only where they show a difference.
   - The star-import behaviour change, and the `__all__` alternative.
   - The bindings run (with the Task 5 counts), including how PySide2 was covered.
-- [ ] **Step 4: Gate B.** Hand the user each branch, its base-to-branch diff (`git -C <clone> diff <base> <branch>`) and its brief. The user decides whether to submit. When they do, record their decision in the W12 row, set the registry status to `approved`, and publish through the Task 3, Step 6 procedure. Expected: `test_host_change_registry.py` passes with `approved`.
+- [ ] **Step 4: Gate B (not planned, D29).** Hand the user each branch, its base-to-branch diff (`git -C <clone> diff <base> <branch>`) and its brief. The user decides whether to submit. When they do, record their decision in the W12 row, set the registry status to `approved`, and publish through the Task 3, Step 6 procedure. Expected: `test_host_change_registry.py` passes with `approved`.
 
-### Task 8: The user submits the PRs and takes them through review
+### Task 8: The user submits the PRs and takes them through review (not planned, D29)
 
 **Interfaces:**
 - Consumes: the Task 7 briefs and the registry.
@@ -520,7 +526,7 @@ Both projects forbid an AI agent from submitting a PR or writing its description
   - Then run `uv run --no-sync --frozen python -B -m tools.hot_swap.host_sources <run>/audit.json`. Expected: the sources include `napari` and `qtpy`.
 - [ ] **Step 5: Record and close.** Add W16's result to the consolidated plan's Progress, publish, and close the run.
 
-### Task 10: Adopt a host release that contains a change (one run per release)
+### Task 10: Adopt a host release that contains a change (one run per release; not planned, D29)
 
 **Interfaces:**
 - Consumes: the registry entries with status `merged`, and Task 9's baseline sources.
