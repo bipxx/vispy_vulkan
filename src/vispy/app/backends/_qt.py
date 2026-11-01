@@ -7,7 +7,7 @@
 The binding wrappers select one toolkit per process. Resource sharing belongs
 to Dawn; this module does not import Qt's OpenGL context or widget classes.
 
-``auto`` selects native Vulkan surface presentation on every platform.
+``auto`` selects native surface presentation on every platform.
 ``config['qt_presentation']='readback'`` (or ``VISPY_QT_PRESENTATION=readback``)
 selects offscreen rendering with CPU readback into an owned QImage, painted by
 an ordinary QWidget. The strict no-OpenGL controller explicitly selects this
