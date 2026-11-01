@@ -26,7 +26,7 @@
 
 **D29: no PRs to napari or qtpy** (user: "these are my own project. nevner pr qtpy and napari"). Task 7 Step 4,
 Task 8 and Task 10 are not planned. The two tested changes stay local records: the branches, the briefs and the
-patches in `docs/upstream-drafts/`, plus runs 291-294. Tasks 1-7 are done; Task 9 (W16) continues.
+patches in `docs/upstream-drafts/`, plus runs 291-294. Tasks 1-7 are done, and so is Task 9 (W16, runs 295 and 296).
 
 ## Where things stand (2026-10-31)
 
