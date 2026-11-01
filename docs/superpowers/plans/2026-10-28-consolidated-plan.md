@@ -131,7 +131,7 @@ Diagnostic runs in the exact qualification profile keep the spec budget
 | W13 | Glue in hot swap: the five workflows (scatter, scatter edit, scatter axes, volume, volume edit) | All five pass with stock hosts | W3. `scatter_axes` uses the smooth-line criterion (D5; coverage H02). The design requires Glue (:26, :122), and no workstream covered it. **Partly done** (see Progress): 4 of 5 pass on `444402`. On the batch test wheel, which carries the smooth line end fix, all five pass, `scatter_axes` included, and the Glue scenario passes both hot-swap gates; this closes at R2. |
 | W14 | Apply the smooth-line criterion to the mesh axes/colorbar scene and re-run it | It passes under the criterion | D5. Its fixture sources are pinned, so the criterion is added in new modules. **Partly done** (see Progress): 12 of 13 scenes pass on `444402`. On the batch test wheel all 13 pass, with `axes_colorbar` under its documented difference (D9); this closes at R2. |
 | W15 | Remove upstream's PyOpenGL import from the shipped `gloo/glir.py`: `_check_pyopengl_3D()`, used only by the legacy GL `GlirParser`'s 3D textures | The W3 static scan finds no runtime GL reference, and the W3 stock baseline passes on the fresh build | R2. `glir.py` is pinned by the Tk candidate's runtime inputs, the DIVE PySide2 host environment and the Metal CI reuse record, so the edit lands with the fresh build. `GlirParser` stays public; its 3D-texture path now fails clearly instead. Validated on the batch test wheel: the static scan is clean, and stock napari passes both gates. |
-| W16 | Hot-swap baseline on napari 0.10.0, PyPI's napari since 2026-10-30 (still `vispy>=0.17.0,<0.18`, `qtpy>=2.4.0`, `PyOpenGL>=3.1.10`) | On stock 0.10.0 with the current test wheel, every W2 case passes or has a recorded, triaged cause, and the stock scenario reaches `PASS_HOT_SWAP_GATES` | **Done** (runs `napari-010-baseline-295` and `napari-010-plugin-parity-296`; see Progress). Both gates pass under readback and native presentation. The probe's napari scenario and the parity fixtures are pinned to napari 0.9.2, so a 0.10.0 parity row needs OpenGL references captured on 0.10.0. Task 9 of `2026-10-31-upstream-host-changes.md`. |
+| W16 | Hot-swap baseline on napari 0.10.0, PyPI's napari since 2026-10-30 (still `vispy>=0.17.0,<0.18`, `qtpy>=2.4.0`, `PyOpenGL>=3.1.10`) | On stock 0.10.0 with the current test wheel, every W2 case passes or has a recorded, triaged cause, and the stock scenario reaches `PASS_HOT_SWAP_GATES` | **Done** (runs `napari-010-baseline-295`, `napari-010-plugin-parity-296` and `napari-qt-controlled-297`; see Progress). Both gates pass under readback and native presentation. The probe's napari scenario and the parity fixtures are pinned to napari 0.9.2, so a 0.10.0 parity row needs OpenGL references captured on 0.10.0. Task 9 of `2026-10-31-upstream-host-changes.md`. |
 
 W0 (drag race), W2 (baseline) and W2a are done. W3's tooling is done; its
 baseline closes with W15.
@@ -1178,6 +1178,15 @@ qtpy 2.4.3 and PyQt6 6.12.0 on Qt 6.12.0:
   - The 10 CPU cases and the plugin-wheel suite's 5 cases pass. They use pinned
     napari 0.9.2 environments, so they do not measure 0.10.0. This is the
     plugin-wheel suite's first run on test wheel `cc6fa732`.
+- **Qt held fixed** (run `napari-qt-controlled-297`, the user's "continue").
+  The gates ran on test wheel `cc6fa732` for napari 0.9.2 and 0.10.0, both on
+  PyQt6 6.11.0 / Qt 6.11.2 and NumPy 2.4.6. Their locks differ only in napari
+  and npe2. The 0.10.0 lock on Qt 6.12.0 was rerun beside them.
+  - All six audits (three environments, readback and native) pass both gates.
+    Each has the same 24 host GL events: napari 10, qtpy 4, native 6, and 4
+    with a truncated stack. None comes from the renderer.
+  - So neither the napari change nor the Qt change alters what the gates see.
+    This is also the first 0.9.2 gate run on `cc6fa732`.
 
 ## Order
 
