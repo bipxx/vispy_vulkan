@@ -6,8 +6,10 @@ import sys
 import pytest
 
 from tools import audit_hot_swap as audit
+from tools.hot_swap import host_sources
 from tools.hot_swap.derive_observer import DERIVED, STRICT, derive
-from tools.hot_swap.policy import assess_hot_swap, attribute, context_or_draw, correlate, renderer_roots, static_scan
+from tools.hot_swap.policy import (assess_hot_swap, attribute, context_or_draw, correlate, first_caller,
+                                   host_gl_sources, renderer_roots, static_scan)
 
 CLEAN = {'runtime': [], 'test_only': [], 'errors': [], 'complete': True}
 COMPLETE = dict(attribution_complete=True, native_api_complete=True, native_loads_complete=True,
@@ -183,6 +185,27 @@ def test_an_unreadable_worker_report_or_a_tool_error_is_never_a_verdict(tmp_path
     with pytest.raises(SystemExit) as usage:  # an existing report path is a usage error, not a verdict
         audit.main()
     assert usage.value.code == 3
+
+
+def test_first_caller_skips_machinery_gl_modules_and_shims():
+    assert first_caller(['ctypes', 'OpenGL.GL', 'qtpy.QtOpenGL', 'napari.utils.info']) == 'napari.utils.info'
+    assert first_caller(['importlib._bootstrap', 'tools.hot_swap.probe']) is None
+
+
+def test_host_gl_sources_name_the_host_package_behind_each_event():
+    events = [{'stack': ['importlib._bootstrap', 'OpenGL.platform.win32', 'OpenGL.error', 'napari._vispy.canvas']},
+              {'stack': ['PyQt6.QtOpenGL', 'qtpy.QtGui', 'superqt.utils._qthrottler']},
+              {'stack': ['qtpy.QtWidgets']},
+              {'stack': ['ctypes', 'OpenGL.GL']},  # nothing but machinery and GL modules: no Python caller
+              {'kind': 'native_load'}]
+    assert host_gl_sources(events) == {'napari': 1, 'qtpy': 2, 'native': 2}
+
+
+def test_host_sources_command_prints_each_report(tmp_path, capsys):
+    report = tmp_path / 'audit.json'
+    report.write_text(json.dumps({'gates': {'host_gl_events': [{'stack': ['qtpy.QtGui']}, {}]}}), encoding='utf-8')
+    assert host_sources.main([str(report)]) == 0
+    assert capsys.readouterr().out.splitlines() == [f'== {report}', 'native\t1', 'qtpy\t1']
 
 
 # Only the tests are re-exported into CI's curated list (tests/contract/test_napari_plugin_wheel_suite.py).

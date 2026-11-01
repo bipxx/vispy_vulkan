@@ -1,0 +1,74 @@
+{
+  "schema": 1,
+  "decision": "D28",
+  "patches": [
+    {
+      "patch": "compat/host-patches/glue-qt-0.4.2-no-opengl.patch",
+      "sha256": "58b8402c025fdea80031a4768b7b803de47c3f19b67f3772db2d9b38937f4b4b",
+      "host": "glue-qt",
+      "version": "0.4.2",
+      "profiles": ["strict"],
+      "why_not_vispy": "glue-qt imports QtQuick and selects Qt Quick's OpenGL graphics API at startup; vispy cannot change that.",
+      "upstream": [
+        {
+          "status": "not_planned",
+          "reason": "Upstream selects the OpenGL graphics API so WebEngine can run beside its OpenGL widget (QTBUG-122886); the hot swap runs stock glue-qt and passes both gates with it (W13).",
+          "pr": null,
+          "released_in": null
+        }
+      ],
+      "strict_only": "glue_qt/utils/app.py: no QtQuick import or OpenGL graphics-API selection; pyproject.toml, PKG-INFO and glue_qt.egg-info/PKG-INFO: AGPL licence fields."
+    },
+    {
+      "patch": "compat/host-patches/glue-vispy-viewers-1.4.0-no-opengl.patch",
+      "sha256": "4c1cf0b9e54ed8a1b34d9082ece90e92f78272966f84438d6f4430532d75dc73",
+      "host": "glue-vispy-viewers",
+      "version": "1.4.0",
+      "profiles": ["strict"],
+      "why_not_vispy": "glue-vispy-viewers refuses to import without PyOpenGL and declares pyopengl and glfw; vispy cannot change that.",
+      "upstream": [
+        {
+          "status": "not_planned",
+          "reason": "Not part of W12: the hot swap runs stock glue-vispy-viewers, whose PyOpenGL import the audit records as host activity; an upstream change would need its own approval.",
+          "pr": null,
+          "released_in": null
+        }
+      ],
+      "strict_only": "glue_vispy_viewers/__init__.py: imports vispy._dawn instead of requiring PyOpenGL; glue_vispy_viewers/common/qt/data_viewer.py: a Dawn device message instead of the PyQt5 OpenGL one; setup.cfg, PKG-INFO and glue_vispy_viewers.egg-info/PKG-INFO: AGPL licence fields and the pyopengl and glfw requirements removed."
+    },
+    {
+      "patch": "compat/host-patches/napari-0.9.2-no-opengl.patch",
+      "sha256": "7e40226f71c0f09023e2081706e0e8274fbd8893bb7e49434791667447c7e391",
+      "host": "napari",
+      "version": "0.9.2",
+      "profiles": ["strict"],
+      "why_not_vispy": "napari imports OpenGL.error at module level and declares PyOpenGL as a dependency; vispy can change neither.",
+      "upstream": [
+        {
+          "change": "docs/upstream-drafts/napari-lazy-pyopengl-import.patch",
+          "status": "draft",
+          "pr": null,
+          "released_in": null
+        }
+      ],
+      "strict_only": "src/napari/_vispy/canvas.py: context.finish() without GLError suppression; src/napari/__init__.py: no Wayland PyOpenGL platform fix; src/napari/_vispy/utils/gl.py: no hidden-canvas context helper; src/napari/utils/info.py: a Dawn renderer report instead of PyOpenGL's; pyproject.toml and PKG-INFO: AGPL licence fields and the PyOpenGL requirement removed."
+    },
+    {
+      "patch": "compat/host-patches/qtpy-2.4.3-no-opengl.patch",
+      "sha256": "d1049276f30ec273c2e30b7f69f713be36b26921c7cecd3356343c5948ba6e35",
+      "host": "qtpy",
+      "version": "2.4.3",
+      "profiles": ["strict"],
+      "why_not_vispy": "qtpy imports Qt6's OpenGL modules whenever qtpy.QtGui or qtpy.QtWidgets is imported; vispy cannot change that.",
+      "upstream": [
+        {
+          "change": "docs/upstream-drafts/qtpy-lazy-qtopengl.patch",
+          "status": "draft",
+          "pr": null,
+          "released_in": null
+        }
+      ],
+      "strict_only": "qtpy/QtGui.py and qtpy/QtWidgets.py: QOpenGL names raise RuntimeError instead of loading lazily; qtpy/QtOpenGL.py and qtpy/QtOpenGLWidgets.py: no OpenGL exports; setup.cfg, PKG-INFO and QtPy.egg-info/PKG-INFO: AGPL licence fields."
+    }
+  ]
+}

@@ -49,15 +49,30 @@ _EARLY, _LATE = 0.05, 10.0
 _QT_DEPENDENCY = 1.0
 
 
+def first_caller(modules):
+    """The first module of a stack, innermost first, that is not machinery, a GL module or a shim; else None."""
+    for name in modules:
+        if name and not _TRANSPARENT.match(name):
+            return name
+    return None
+
+
 def attribute(modules):
     """'renderer', 'host' or 'unattributed' for a stack of module names, innermost first."""
-    for name in modules:
-        if not name or _TRANSPARENT.match(name):
-            continue
-        if any(name == root or name.startswith(root + '.') for root in RENDERER):
-            return 'renderer'
-        return 'host'
-    return 'unattributed'
+    name = first_caller(modules)
+    if name is None:
+        return 'unattributed'
+    return 'renderer' if any(name == root or name.startswith(root + '.') for root in RENDERER) else 'host'
+
+
+def host_gl_sources(events):
+    """Count host GL events by the top-level package of their first caller; 'native' when no Python caller exists."""
+    counts = {}
+    for event in events:
+        name = first_caller(event.get('stack') or [])
+        source = name.split('.')[0] if name else 'native'
+        counts[source] = counts.get(source, 0) + 1
+    return counts
 
 
 def gl_library(path):
