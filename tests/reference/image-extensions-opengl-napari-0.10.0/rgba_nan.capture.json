@@ -1,0 +1,571 @@
+{
+  "authoring_sha256": "78ebd88f038768b64d10d847065b6308fe7a79652f60ee9682a86a47fd2e0895",
+  "comparison": {
+    "candidate_alignment_or_color_fit": false,
+    "full_frame_exact": true,
+    "landmark_max_abs_u8": 1
+  },
+  "errors": {},
+  "fixtures": {
+    "rgba_nan": {
+      "actual_renderer_provenance": {
+        "capture_source_sha256": "66ae25247831c184f38f2c7a2ff151b940013087104907523b11e1ed2b9b151a",
+        "cmake": null,
+        "distribution_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\work\\napari-010-parity-298\\oracle-napari-010\\Lib\\site-packages",
+        "distribution_record_sha256": "455e084c0cb78e19e41c79d08a57d533b07d52b3248c2ebd4b73e80584b067cc",
+        "environment": {
+          "PYTHONPATH": null,
+          "QT_API": "pyqt6",
+          "QT_QPA_PLATFORM": null,
+          "QT_SCALE_FACTOR": "1",
+          "VISPY_PYQT5_SHARE_CONTEXT": null
+        },
+        "fixture_source_sha256": "37797259727afd9c6b15c7074319b935dcddb330deb2b6c99a03c8df6f36fddb",
+        "kind": "upstream",
+        "machine": "AMD64",
+        "numpy_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\work\\napari-010-parity-298\\oracle-napari-010\\Lib\\site-packages\\numpy\\__init__.py",
+        "platform": "Windows-11-10.0.26200-SP0",
+        "python": "3.12.8",
+        "python_executable": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\work\\napari-010-parity-298\\oracle-napari-010\\Scripts\\python.exe",
+        "qt_runtime": "6.12.0",
+        "regenerate": "uv venv build/oracle-opengl --python 3.12; uv pip install --python build/oracle-opengl/Scripts/python.exe -r tools/oracle_requirements.txt; build/oracle-opengl/Scripts/python.exe tools/oracle_capture.py --kind upstream --output tests/reference/opengl",
+        "renderer": {
+          "renderer": "NVIDIA GeForce RTX 4090/PCIe/SSE2",
+          "vendor": "NVIDIA Corporation",
+          "version": "4.6.0 NVIDIA 610.88"
+        },
+        "requirements_sha256": "a784b5a5e2b4ea201578acddc41e28e0997275ea2542642148322153cd240ffd",
+        "source_sha256": {
+          "gloo/buffer.py": "68e37b184b74814e0ae7a6f4f754c9f0c0af5b4e6369a60a8357c70da974e138",
+          "gloo/context.py": "6afc97492f65a5e865723535206fb769a1c4b55694d69786123fdee78bef992a",
+          "gloo/glir.py": "a3bb8a75b33f47420e9c100b8a6d81037a2f03c905e6c9f7d8399f4fb2eb8f7c",
+          "gloo/program.py": "4d3ab8e36260f9b5dc50f6aec075b12d642535f3cb8f49bfd4a27056301d5492",
+          "gloo/texture.py": "9f6d5f2e448e02c0ca4d66c65d17ddcdb6c0182bb8f15f1292a427f5a9faf6bc",
+          "gloo/wrappers.py": "73dbb5eb8ca78b2822266d272ffb14db9fcadd7a56512843209187714c9e8dcc"
+        },
+        "upstream_commit": "117b054598f4758b598f4b8f48feea48c11fe7b0",
+        "versions": {
+          "PyOpenGL": "3.1.10",
+          "PyQt6": "6.12.0",
+          "PyQt6-Qt6": "6.12.0",
+          "PyQt6-sip": "13.13.0",
+          "freetype-py": "2.5.1",
+          "hsluv": "5.0.5",
+          "kiwisolver": "1.5.1",
+          "numpy": "2.4.6",
+          "packaging": "26.3",
+          "vispy": "0.17.0"
+        },
+        "vispy_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\work\\napari-010-parity-298\\oracle-napari-010\\Lib\\site-packages\\vispy",
+        "vispy_version": "0.17.0"
+      },
+      "expanded_shaders": {
+        "file": "rgba_nan.shaders.json",
+        "sha256": "bf7efa104e108f4ab2139571065a9bfb10e8c14799674ae2abf4e4ed9bf9b911"
+      },
+      "filtered_glir": {
+        "file": "rgba_nan.glir.json",
+        "sha256": "16145e40ee4a3d3f0adbd7496152b049bd4fe37b1161e7df228caa9c86220c07"
+      },
+      "parameters": {
+        "case": "rgba_nan",
+        "clim": [
+          0.0,
+          1.0
+        ],
+        "comparison": {
+          "candidate_alignment_or_color_fit": false,
+          "full_frame_exact": true,
+          "landmark_max_abs_u8": 1
+        },
+        "current_context_samples": 0,
+        "final_inputs": [
+          {
+            "dtype": "<f4",
+            "sha256": "c68508c77300352c4e0de9d3d7fc0459fbaff830815a51af23d12d6f396369f4",
+            "shape": [
+              24,
+              32,
+              4
+            ]
+          }
+        ],
+        "inputs": [
+          {
+            "dtype": "<f4",
+            "sha256": "c68508c77300352c4e0de9d3d7fc0459fbaff830815a51af23d12d6f396369f4",
+            "shape": [
+              24,
+              32,
+              4
+            ]
+          }
+        ],
+        "landmarks": [
+          {
+            "column": 16,
+            "rgba": [
+              0,
+              128,
+              191,
+              255
+            ],
+            "row": 20
+          },
+          {
+            "column": 92,
+            "rgba": [
+              32,
+              64,
+              128,
+              255
+            ],
+            "row": 64
+          },
+          {
+            "column": 16,
+            "rgba": [
+              64,
+              128,
+              191,
+              255
+            ],
+            "row": 80
+          }
+        ],
+        "multiscale_revision_scope": "per-level CPU content plus real selected-texture GLIR uploads; no fictitious per-level GPU cache",
+        "readbacks": "one final scene.render; no intermediate readback",
+        "sample_query_scope": "actual current context; render export allocates its own single-sample FBO",
+        "selected_texture_descriptor_from_gloo": {
+          "format": "rgba",
+          "internalformat": "rgba32f",
+          "interpolation": "nearest",
+          "shape": [
+            24,
+            32,
+            4
+          ]
+        },
+        "size": [
+          128,
+          96
+        ],
+        "stage_commands": [
+          {
+            "command_index": 0,
+            "stage": "final_read"
+          },
+          {
+            "command_index": 1,
+            "stage": "final_read"
+          },
+          {
+            "command_index": 2,
+            "stage": "final_read"
+          },
+          {
+            "command_index": 3,
+            "stage": "final_read"
+          },
+          {
+            "command_index": 4,
+            "stage": "final_read"
+          },
+          {
+            "command_index": 5,
+            "stage": "final_read"
+          },
+          {
+            "command_index": 6,
+            "stage": "final_read"
+          },
+          {
+            "command_index": 7,
+            "stage": "final_read"
+          },
+          {
+            "command_index": 8,
+            "stage": "final_read"
+          },
+          {
+            "command_index": 9,
+            "stage": "final_read"
+          },
+          {
+            "command_index": 10,
+            "stage": "final_read"
+          },
+          {
+            "command_index": 11,
+            "stage": "final_read"
+          },
+          {
+            "command_index": 12,
+            "stage": "final_read"
+          },
+          {
+            "command_index": 13,
+            "stage": "final_read"
+          },
+          {
+            "command_index": 14,
+            "stage": "final_read"
+          },
+          {
+            "command_index": 15,
+            "stage": "final_read"
+          },
+          {
+            "command_index": 16,
+            "stage": "final_read"
+          },
+          {
+            "command_index": 17,
+            "stage": "final_read"
+          },
+          {
+            "command_index": 18,
+            "stage": "final_read"
+          },
+          {
+            "command_index": 19,
+            "stage": "final_read"
+          },
+          {
+            "command_index": 20,
+            "stage": "final_read"
+          },
+          {
+            "command_index": 21,
+            "stage": "final_read"
+          },
+          {
+            "command_index": 22,
+            "stage": "final_read"
+          },
+          {
+            "command_index": 23,
+            "stage": "final_read"
+          },
+          {
+            "command_index": 24,
+            "stage": "final_read"
+          },
+          {
+            "command_index": 25,
+            "stage": "final_read"
+          },
+          {
+            "command_index": 26,
+            "stage": "final_read"
+          },
+          {
+            "command_index": 27,
+            "stage": "final_read"
+          },
+          {
+            "command_index": 28,
+            "stage": "final_read"
+          },
+          {
+            "command_index": 29,
+            "stage": "final_read"
+          },
+          {
+            "command_index": 30,
+            "stage": "final_read"
+          },
+          {
+            "command_index": 31,
+            "stage": "final_read"
+          },
+          {
+            "command_index": 32,
+            "stage": "final_read"
+          },
+          {
+            "command_index": 33,
+            "stage": "final_read"
+          },
+          {
+            "command_index": 34,
+            "stage": "final_read"
+          },
+          {
+            "command_index": 35,
+            "stage": "final_read"
+          },
+          {
+            "command_index": 36,
+            "stage": "final_read"
+          },
+          {
+            "command_index": 37,
+            "stage": "final_read"
+          },
+          {
+            "command_index": 38,
+            "stage": "final_read"
+          },
+          {
+            "command_index": 39,
+            "stage": "final_read"
+          },
+          {
+            "command_index": 40,
+            "stage": "final_read"
+          },
+          {
+            "command_index": 41,
+            "stage": "final_read"
+          },
+          {
+            "command_index": 42,
+            "stage": "final_read"
+          },
+          {
+            "command_index": 43,
+            "stage": "final_read"
+          },
+          {
+            "command_index": 44,
+            "stage": "final_read"
+          },
+          {
+            "command_index": 45,
+            "stage": "final_read"
+          },
+          {
+            "command_index": 46,
+            "stage": "final_read"
+          },
+          {
+            "command_index": 47,
+            "stage": "final_read"
+          },
+          {
+            "command_index": 48,
+            "stage": "final_read"
+          },
+          {
+            "command_index": 49,
+            "stage": "final_read"
+          },
+          {
+            "command_index": 50,
+            "stage": "final_read"
+          },
+          {
+            "command_index": 51,
+            "stage": "final_read"
+          },
+          {
+            "command_index": 52,
+            "stage": "final_read"
+          },
+          {
+            "command_index": 53,
+            "stage": "final_read"
+          },
+          {
+            "command_index": 54,
+            "stage": "final_read"
+          },
+          {
+            "command_index": 55,
+            "stage": "final_read"
+          }
+        ],
+        "texture_format_requested": "r32f",
+        "texture_uploads": [
+          {
+            "command_index": 38,
+            "dtype": "<f4",
+            "offset": [
+              0,
+              0
+            ],
+            "sha256": "c68508c77300352c4e0de9d3d7fc0459fbaff830815a51af23d12d6f396369f4",
+            "shape": [
+              24,
+              32,
+              4
+            ],
+            "stage": "final_read"
+          }
+        ],
+        "workflow": "public ImageVisual"
+      },
+      "parameters_file": {
+        "file": "rgba_nan.parameters.json",
+        "sha256": "c916fb98836a681b6c29136813805b53f6e41674fe7de9a26b0b9214a1b8e6f6"
+      },
+      "rgba": {
+        "file": "rgba_nan.npy",
+        "sha256": "87336df49e75f952bab6b5dab9a3ebdd18e0388d01e690cb7b8678e8845197e7"
+      },
+      "shape": [
+        96,
+        128,
+        4
+      ]
+    }
+  },
+  "processes": {},
+  "provenance": {
+    "capture_sha256": "9730ca4afd0a7c6c247402038752284d422b0d769171b07898d045a75c69387b",
+    "environment": {
+      "PYTHONHASHSEED": "0",
+      "PYTHONPATH": null,
+      "QT_API": "pyqt6",
+      "QT_QPA_PLATFORM": null,
+      "QT_SCALE_FACTOR": "1"
+    },
+    "fixture_sha256": "b0e673d7c5c06f9352efd9608df57a13bad8f7fd918259369d3cda20c762ac81",
+    "host_lock": {
+      "file": "compat/host-environments/napari-0.10.0-windows-cpython312-pyqt6.txt",
+      "sha256": "d93e0c635d4a25cce31c1644695d0e99c08564337b145a1e9ac717ffead6d0c3",
+      "snapshot": "host-lock.txt"
+    },
+    "host_source_sha256": {
+      "_vispy/layers/base.py": "74f51e0418aec3f4478040c4f7644081b5e2e5405b995567c985e9e92789fcf8",
+      "_vispy/layers/labels.py": "633b8b99c52e1d44b1959f57f61a02905a5ada6f045fba9d89b5a44e6d093e62",
+      "_vispy/utils/gl.py": "76278bb2e622cc723ef8cbfc7302b9cba0869520e68475c126aa302c6641f65e",
+      "layers/_scalar_field/scalar_field.py": "a9ae6a88cd88599bf6f891cf5c6193f959ccabc262b8a4def0bac50856142384",
+      "layers/image/image.py": "4bac353d44c4a0d482b4f5b5a36b890f548f5a5963c78d020cdb1455f43ac1b3",
+      "layers/labels/labels.py": "638fac0e52592eb0508d0ffed16180ceeaaf3050cb715c4ac27dfe25b60701fe",
+      "utils/colormaps/colormap.py": "76e46d3f28ebd21fc7111c1beb087c8e914df356ad8e39b081060b0b550f9b14"
+    },
+    "installed_versions": {
+      "Deprecated": "3.0.1",
+      "HeapDict": "1.0.1",
+      "ImageIO": "2.38.1",
+      "Pint": "0.26.2",
+      "PyOpenGL": "3.1.10",
+      "PyQt6": "6.12.0",
+      "PyQt6-Qt6": "6.12.0",
+      "PyQt6_sip": "13.13.0",
+      "PyYAML": "6.0.3",
+      "Pygments": "2.21.0",
+      "QtPy": "2.4.3",
+      "annotated-doc": "0.0.5",
+      "annotated-types": "0.8.0",
+      "app-model": "0.5.1",
+      "asciitree": "1.0.0",
+      "asttokens": "3.0.2",
+      "attrs": "26.1.0",
+      "build": "1.6.1",
+      "cachey": "0.2.1",
+      "certifi": "2026.10.23",
+      "charset-normalizer": "3.5.2",
+      "click": "8.5.0",
+      "cloudpickle": "3.1.2",
+      "colorama": "0.4.6",
+      "comm": "0.2.3",
+      "dask": "2026.8.0",
+      "debugpy": "1.8.22",
+      "docstring_parser": "0.18.0",
+      "einops": "0.8.2",
+      "executing": "2.3.0",
+      "fasteners": "0.20",
+      "flexcache": "0.3",
+      "flexparser": "0.4",
+      "freetype-py": "2.5.1",
+      "fsspec": "2026.9.0",
+      "hsluv": "5.0.5",
+      "idna": "3.20",
+      "in-n-out": "0.2.1",
+      "ipykernel": "7.4.0",
+      "ipython": "9.18.0",
+      "ipython_pygments_lexers": "1.1.1",
+      "jedi": "0.20.1",
+      "jsonschema": "4.26.0",
+      "jsonschema-specifications": "2025.9.1",
+      "jupyter_client": "8.10.0",
+      "jupyter_core": "5.9.1",
+      "kiwisolver": "1.5.1",
+      "lazy-loader": "0.6",
+      "libigl": "2.6.3",
+      "llvmlite": "0.50.0",
+      "locket": "1.0.0",
+      "lxml": "6.1.3",
+      "magicgui": "0.10.2",
+      "markdown-it-py": "4.2.0",
+      "matplotlib-inline": "0.2.2",
+      "mdurl": "0.1.2",
+      "morphosamplers": "0.0.16",
+      "mrcfile": "1.5.4",
+      "napari": "0.10.0",
+      "napari-console": "0.1.5",
+      "napari-plugin-engine": "0.2.1",
+      "napari-resources": "1.0.1",
+      "napari-svg": "0.2.1",
+      "nest-asyncio2": "1.7.4",
+      "networkx": "3.7",
+      "npe2": "0.10.0",
+      "numba": "0.68.0",
+      "numcodecs": "0.15.2",
+      "numpy": "2.4.6",
+      "packaging": "26.3",
+      "pandas": "3.1.0",
+      "parso": "0.8.7",
+      "partd": "1.4.2",
+      "pillow": "13.0.0",
+      "platformdirs": "4.14.2",
+      "pooch": "1.9.0",
+      "prompt_toolkit": "3.0.53",
+      "psutil": "7.2.2",
+      "psygnal": "0.16.1",
+      "pure_eval": "0.2.4",
+      "pyconify": "0.3.0",
+      "pydantic": "2.14.2",
+      "pydantic-compat": "0.1.2",
+      "pydantic-extra-types": "2.11.1",
+      "pydantic-settings": "2.16.2",
+      "pydantic_core": "2.50.2",
+      "pyproject_hooks": "1.3.3",
+      "python-dateutil": "3.0.0",
+      "python-dotenv": "1.2.4",
+      "pywin32": "312",
+      "pyzmq": "27.2.0",
+      "qtconsole": "5.7.2",
+      "referencing": "0.37.0",
+      "requests": "2.34.2",
+      "rich": "15.0.0",
+      "rpds-py": "2026.9.1",
+      "scikit-image": "0.26.0",
+      "scipy": "1.18.1",
+      "shellingham": "1.5.4",
+      "six": "1.17.0",
+      "stack-data": "0.6.3",
+      "superqt": "0.9.1",
+      "tifffile": "2026.10.15",
+      "tomli_w": "1.2.0",
+      "toolz": "1.2.0",
+      "tornado": "6.6",
+      "tqdm": "4.70.1",
+      "traitlets": "5.16.1",
+      "typer": "0.27.3",
+      "typing-inspection": "0.4.4",
+      "typing_extensions": "4.16.0",
+      "tzdata": "2026.6",
+      "urllib3": "2.8.0",
+      "vispy": "0.17.0",
+      "wcwidth": "0.9.4",
+      "wrapt": "2.5.2",
+      "zarr": "2.18.7"
+    },
+    "kind": "upstream",
+    "napari_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\work\\napari-010-parity-298\\oracle-napari-010\\Lib\\site-packages\\napari",
+    "napari_version": "0.10.0",
+    "native_artifacts": {},
+    "python_executable": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\work\\napari-010-parity-298\\oracle-napari-010\\Scripts\\python.exe",
+    "retained_fixture_sha256": "7d18601e08982c0b0f73c656f1746899760c9fd042650470ef1504ba7cb5056d",
+    "vispy_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\work\\napari-010-parity-298\\oracle-napari-010\\Lib\\site-packages\\vispy",
+    "visual_source_sha256": {
+      "visuals/_scalable_textures.py": "0ac2389093cfa551dd1cdc35fc84a025819dfaa25403710230fa95586ed6540e",
+      "visuals/image.py": "0f2a1c25c37a22586350d9a6a8e7569ed057e0416d699b546db58445b992cb3e"
+    }
+  },
+  "schema": 1
+}

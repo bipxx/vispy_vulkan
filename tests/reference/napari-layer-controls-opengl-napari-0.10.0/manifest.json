@@ -1,0 +1,779 @@
+{
+  "comparison": {
+    "criteria": {
+      "additive_reorder": "exact",
+      "first_layer_transition": "exact",
+      "opacity_mutation": "exact",
+      "removal_screenshot": "exact",
+      "volume_attenuated_mip": "exact",
+      "volume_iso": "exact",
+      "volume_translucent_step": "exact"
+    },
+    "smooth_line": "tools.smooth_line_parity.smooth_line_difference"
+  },
+  "errors": {},
+  "fixtures": {
+    "additive_reorder": {
+      "capture": {
+        "file": "additive_reorder.capture.json",
+        "sha256": "488759a18effb6400f47957e7f0b0749fdc98459ab898dc53099dd0f48703bca"
+      },
+      "criterion": "exact",
+      "expanded_shaders": {
+        "file": "additive_reorder.shaders.json",
+        "sha256": "4577a5767b5929abc6c997ea5e840159086054a2468511166143197b2ebfe1aa"
+      },
+      "filtered_glir": {
+        "file": "additive_reorder.glir.json",
+        "sha256": "97679863b92ab968a4817484531157729c09e9d9a04c0de3d1207fb2ff149c83"
+      },
+      "parameters": {
+        "background": [
+          0,
+          0,
+          0,
+          255
+        ],
+        "camera": {
+          "center": [
+            0,
+            14.5,
+            19.5
+          ],
+          "zoom": 4
+        },
+        "case": "additive_reorder",
+        "controls": {
+          "changed": {
+            "order": [
+              "blue",
+              "red",
+              "green"
+            ]
+          },
+          "first": {
+            "order": [
+              "red",
+              "green",
+              "blue"
+            ]
+          }
+        },
+        "criterion": "exact",
+        "finish_commands": 1,
+        "inputs_sha256": "3e0ff1cf6e070d3e64ec432dbb1b97eabeff7ba374600e555b082908b4a988af",
+        "layer_names": [
+          "blue",
+          "red",
+          "green"
+        ],
+        "layer_types": [
+          "Image",
+          "Image",
+          "Image"
+        ],
+        "native_mro": [
+          "CanvasBackendDesktop",
+          "QtBaseCanvasBackend",
+          "BaseCanvasBackend",
+          "QOpenGLWidget",
+          "QWidget",
+          "QObject",
+          "wrapper",
+          "QPaintDevice",
+          "simplewrapper",
+          "object"
+        ],
+        "ndisplay": 2,
+        "size": [
+          160,
+          120
+        ]
+      },
+      "process": {
+        "exit_code": 0
+      },
+      "rgba": {
+        "file": "additive_reorder.npy",
+        "sha256": "d2f30dec6a28bdf356a65a48234b4cbd50c85a3a708213a9d7bf42eb424355cb"
+      },
+      "shape": [
+        120,
+        160,
+        4
+      ]
+    },
+    "first_layer_transition": {
+      "capture": {
+        "file": "first_layer_transition.capture.json",
+        "sha256": "b35a40c70fd13c37baf953980bb592bb776f9c26f78dcd0847397e1cc6741bbe"
+      },
+      "criterion": "exact",
+      "expanded_shaders": {
+        "file": "first_layer_transition.shaders.json",
+        "sha256": "baf47c18bcdb37b836dbd647c0ba30013d51a3681765d93ffd10e3e6275c37c5"
+      },
+      "filtered_glir": {
+        "file": "first_layer_transition.glir.json",
+        "sha256": "184c8d92852aa453a573814e7cc2bc5e0186cfc8d9b9d69ba6f747cc5cd38291"
+      },
+      "parameters": {
+        "background": [
+          0,
+          0,
+          0,
+          255
+        ],
+        "camera": {
+          "center": [
+            0,
+            14.5,
+            19.5
+          ],
+          "zoom": 4
+        },
+        "case": "first_layer_transition",
+        "controls": {
+          "changed": {
+            "bottom_visible": false
+          },
+          "first": {
+            "bottom_visible": true
+          }
+        },
+        "criterion": "exact",
+        "finish_commands": 1,
+        "inputs_sha256": "a35386456e12d4c1e887538718df86cc60ec59524a8127e3eac48193711722ee",
+        "layer_names": [
+          "bottom",
+          "top"
+        ],
+        "layer_types": [
+          "Image",
+          "Image"
+        ],
+        "native_mro": [
+          "CanvasBackendDesktop",
+          "QtBaseCanvasBackend",
+          "BaseCanvasBackend",
+          "QOpenGLWidget",
+          "QWidget",
+          "QObject",
+          "wrapper",
+          "QPaintDevice",
+          "simplewrapper",
+          "object"
+        ],
+        "ndisplay": 2,
+        "size": [
+          160,
+          120
+        ]
+      },
+      "process": {
+        "exit_code": 0
+      },
+      "rgba": {
+        "file": "first_layer_transition.npy",
+        "sha256": "3b581f585be04e4a65840691c78f43dfe08e5795288c5d39eedd1b52c2f39fb5"
+      },
+      "shape": [
+        120,
+        160,
+        4
+      ]
+    },
+    "opacity_mutation": {
+      "capture": {
+        "file": "opacity_mutation.capture.json",
+        "sha256": "b6091a50d3ca0669c88d69bd932fbd469586a0785d26b70d2923f137dc83a3bc"
+      },
+      "criterion": "exact",
+      "expanded_shaders": {
+        "file": "opacity_mutation.shaders.json",
+        "sha256": "9511f7ba660cdc9020909e203f39b9dce28da8517defd5aa9e5e97146666fec3"
+      },
+      "filtered_glir": {
+        "file": "opacity_mutation.glir.json",
+        "sha256": "1d9e646954852cb7ac22608ec990815d9a2feaeeca12c3678a6566519483b849"
+      },
+      "parameters": {
+        "background": [
+          0,
+          0,
+          0,
+          255
+        ],
+        "camera": {
+          "center": [
+            0,
+            14.5,
+            19.5
+          ],
+          "zoom": 4
+        },
+        "case": "opacity_mutation",
+        "controls": {
+          "changed": {
+            "opacity": 0.35
+          },
+          "first": {
+            "opacity": 1.0
+          }
+        },
+        "criterion": "exact",
+        "finish_commands": 1,
+        "inputs_sha256": "ee29359f395571dbbf737babfe64047aab773a615e9e1892f177521e73245cf2",
+        "layer_names": [
+          "image"
+        ],
+        "layer_types": [
+          "Image"
+        ],
+        "native_mro": [
+          "CanvasBackendDesktop",
+          "QtBaseCanvasBackend",
+          "BaseCanvasBackend",
+          "QOpenGLWidget",
+          "QWidget",
+          "QObject",
+          "wrapper",
+          "QPaintDevice",
+          "simplewrapper",
+          "object"
+        ],
+        "ndisplay": 2,
+        "size": [
+          160,
+          120
+        ]
+      },
+      "process": {
+        "exit_code": 0
+      },
+      "rgba": {
+        "file": "opacity_mutation.npy",
+        "sha256": "2513da642d7079c87e99f07f85e09cb69b231ffda4c2234c876ee4fe18d36c2f"
+      },
+      "shape": [
+        120,
+        160,
+        4
+      ]
+    },
+    "removal_screenshot": {
+      "capture": {
+        "file": "removal_screenshot.capture.json",
+        "sha256": "99cd98fc7343f03f5b707d4fbd592447f842a1c83c8fdbfbe68dda7083092781"
+      },
+      "criterion": "exact",
+      "expanded_shaders": {
+        "file": "removal_screenshot.shaders.json",
+        "sha256": "063e521da8dbc5626deae073d058295df36dbead83f4a68934c34389c98d832e"
+      },
+      "filtered_glir": {
+        "file": "removal_screenshot.glir.json",
+        "sha256": "0d429701ac02f532d7e3f53d22eda7416b02d332cfbfab2f5d292398b45d7044"
+      },
+      "parameters": {
+        "background": [
+          0,
+          0,
+          0,
+          255
+        ],
+        "camera": {
+          "center": [
+            0,
+            14.5,
+            19.5
+          ],
+          "zoom": 4
+        },
+        "case": "removal_screenshot",
+        "controls": {
+          "changed": {
+            "layers": [
+              "image"
+            ]
+          },
+          "first": {
+            "layers": [
+              "image",
+              "labels"
+            ]
+          }
+        },
+        "criterion": "exact",
+        "finish_commands": 1,
+        "inputs_sha256": "0da8ae0ca4a3b0d96f1b8f42d5b2780dd497fd73fe9d66126f237c3fc1fde168",
+        "layer_names": [
+          "image"
+        ],
+        "layer_types": [
+          "Image"
+        ],
+        "native_mro": [
+          "CanvasBackendDesktop",
+          "QtBaseCanvasBackend",
+          "BaseCanvasBackend",
+          "QOpenGLWidget",
+          "QWidget",
+          "QObject",
+          "wrapper",
+          "QPaintDevice",
+          "simplewrapper",
+          "object"
+        ],
+        "ndisplay": 2,
+        "size": [
+          160,
+          120
+        ]
+      },
+      "process": {
+        "exit_code": 0
+      },
+      "rgba": {
+        "file": "removal_screenshot.npy",
+        "sha256": "d490ddf799cc340c36ae22b2b6a79af9939c797a1792d249dc54310d395910fc"
+      },
+      "shape": [
+        120,
+        160,
+        4
+      ]
+    },
+    "volume_attenuated_mip": {
+      "capture": {
+        "file": "volume_attenuated_mip.capture.json",
+        "sha256": "dce9a22f8ecdedc9ad86e49eca20552f281a754e3717a24a663331b65ca29767"
+      },
+      "criterion": "exact",
+      "expanded_shaders": {
+        "file": "volume_attenuated_mip.shaders.json",
+        "sha256": "04a31b40a4c29d26661fe2e709d6d3eef6ca6a189b8b8bce03384aa212ab281e"
+      },
+      "filtered_glir": {
+        "file": "volume_attenuated_mip.glir.json",
+        "sha256": "d14a4df20d27e1fcf97c0a7c1f3c8883b9a5cac43ce8075d0357bf525d3d09e6"
+      },
+      "parameters": {
+        "background": [
+          0,
+          0,
+          0,
+          255
+        ],
+        "camera": {
+          "angles": [
+            -25,
+            35,
+            130
+          ],
+          "center": [
+            11.5,
+            11.5,
+            11.5
+          ],
+          "zoom": 5
+        },
+        "case": "volume_attenuated_mip",
+        "controls": {
+          "changed": {
+            "attenuation": 0.5
+          },
+          "first": {
+            "attenuation": 0.05
+          }
+        },
+        "criterion": "exact",
+        "finish_commands": 1,
+        "inputs_sha256": "39302dd04c661435737d6a358c567821a2bc1c18443ceb13d44b2985a5538cb1",
+        "layer_names": [
+          "volume"
+        ],
+        "layer_types": [
+          "Image"
+        ],
+        "native_mro": [
+          "CanvasBackendDesktop",
+          "QtBaseCanvasBackend",
+          "BaseCanvasBackend",
+          "QOpenGLWidget",
+          "QWidget",
+          "QObject",
+          "wrapper",
+          "QPaintDevice",
+          "simplewrapper",
+          "object"
+        ],
+        "ndisplay": 3,
+        "size": [
+          160,
+          120
+        ]
+      },
+      "process": {
+        "exit_code": 0
+      },
+      "rgba": {
+        "file": "volume_attenuated_mip.npy",
+        "sha256": "6ebdc6a1bb3f3c383655eb496ba525a72eab94749bd24e95fcc75dfbde1bcecf"
+      },
+      "shape": [
+        120,
+        160,
+        4
+      ]
+    },
+    "volume_iso": {
+      "capture": {
+        "file": "volume_iso.capture.json",
+        "sha256": "10824298dafdd166d8f9bea6ed58cab32f0080117f43ad590529626ce0044cdc"
+      },
+      "criterion": "exact",
+      "expanded_shaders": {
+        "file": "volume_iso.shaders.json",
+        "sha256": "f0c36b1b514be052b9ff1255853dc77a2d60a4aa396c21cda6daa07eef180ac9"
+      },
+      "filtered_glir": {
+        "file": "volume_iso.glir.json",
+        "sha256": "1d98d1b67e5bf2e4b18833a265f107bb9f3351004eefc427709fc344ec399d52"
+      },
+      "parameters": {
+        "background": [
+          0,
+          0,
+          0,
+          255
+        ],
+        "camera": {
+          "angles": [
+            -25,
+            35,
+            130
+          ],
+          "center": [
+            11.5,
+            11.5,
+            11.5
+          ],
+          "zoom": 5
+        },
+        "case": "volume_iso",
+        "controls": {
+          "changed": {
+            "iso_threshold": 0.5
+          },
+          "first": {
+            "iso_threshold": 0.3
+          }
+        },
+        "criterion": "exact",
+        "finish_commands": 1,
+        "inputs_sha256": "39302dd04c661435737d6a358c567821a2bc1c18443ceb13d44b2985a5538cb1",
+        "layer_names": [
+          "volume"
+        ],
+        "layer_types": [
+          "Image"
+        ],
+        "native_mro": [
+          "CanvasBackendDesktop",
+          "QtBaseCanvasBackend",
+          "BaseCanvasBackend",
+          "QOpenGLWidget",
+          "QWidget",
+          "QObject",
+          "wrapper",
+          "QPaintDevice",
+          "simplewrapper",
+          "object"
+        ],
+        "ndisplay": 3,
+        "size": [
+          160,
+          120
+        ]
+      },
+      "process": {
+        "exit_code": 0
+      },
+      "rgba": {
+        "file": "volume_iso.npy",
+        "sha256": "10cf81b900042dc13e1ec35acd605b4ea77dbfde4a2fc7d2381721109c4b512a"
+      },
+      "shape": [
+        120,
+        160,
+        4
+      ]
+    },
+    "volume_translucent_step": {
+      "capture": {
+        "file": "volume_translucent_step.capture.json",
+        "sha256": "a6ebfc73648d2a7c5fe5363ff626f38631076369f9a40cc433db4fd6487d109f"
+      },
+      "criterion": "exact",
+      "expanded_shaders": {
+        "file": "volume_translucent_step.shaders.json",
+        "sha256": "10d725d5312f0bff3721743e56a00ef83fa6df008d33459d22edd24a731e7564"
+      },
+      "filtered_glir": {
+        "file": "volume_translucent_step.glir.json",
+        "sha256": "61811f61a8ba13aafccc9ee5ac6a43e6aff4ac00d4dcf5a831c299e1036e52f4"
+      },
+      "parameters": {
+        "background": [
+          0,
+          0,
+          0,
+          255
+        ],
+        "camera": {
+          "angles": [
+            -25,
+            35,
+            130
+          ],
+          "center": [
+            11.5,
+            11.5,
+            11.5
+          ],
+          "zoom": 5
+        },
+        "case": "volume_translucent_step",
+        "controls": {
+          "changed": {
+            "opacity": 0.6,
+            "relative_step_size": 0.4
+          },
+          "first": {
+            "opacity": 1.0,
+            "relative_step_size": 0.8
+          }
+        },
+        "criterion": "exact",
+        "finish_commands": 1,
+        "inputs_sha256": "39302dd04c661435737d6a358c567821a2bc1c18443ceb13d44b2985a5538cb1",
+        "layer_names": [
+          "volume"
+        ],
+        "layer_types": [
+          "Image"
+        ],
+        "native_mro": [
+          "CanvasBackendDesktop",
+          "QtBaseCanvasBackend",
+          "BaseCanvasBackend",
+          "QOpenGLWidget",
+          "QWidget",
+          "QObject",
+          "wrapper",
+          "QPaintDevice",
+          "simplewrapper",
+          "object"
+        ],
+        "ndisplay": 3,
+        "size": [
+          160,
+          120
+        ]
+      },
+      "process": {
+        "exit_code": 0
+      },
+      "rgba": {
+        "file": "volume_translucent_step.npy",
+        "sha256": "29f997ecd8f1629945eebca2f24a19381aecfea493276e082d5ccfca11fd0657"
+      },
+      "shape": [
+        120,
+        160,
+        4
+      ]
+    }
+  },
+  "provenance": {
+    "capture_source_sha256": "00401e2f573086f5911893382402963aa04009b35bae9c7c692f7d31cbb6d5da",
+    "cmake": null,
+    "distribution_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\work\\napari-010-parity-298\\oracle-napari-010\\Lib\\site-packages",
+    "distribution_record_sha256": "455e084c0cb78e19e41c79d08a57d533b07d52b3248c2ebd4b73e80584b067cc",
+    "environment": {
+      "PYTHONPATH": null,
+      "QT_API": "pyqt6",
+      "QT_QPA_PLATFORM": null,
+      "QT_SCALE_FACTOR": "1",
+      "VISPY_PYQT5_SHARE_CONTEXT": "true"
+    },
+    "fixture_source_sha256": "2408a613d919601f53011a893f988c65611f97ded96f7b7ff68e390e19e5eb9f",
+    "host_lock": {
+      "file": "compat/host-environments/napari-0.10.0-windows-cpython312-pyqt6.txt",
+      "sha256": "d93e0c635d4a25cce31c1644695d0e99c08564337b145a1e9ac717ffead6d0c3",
+      "snapshot": "host-lock.txt"
+    },
+    "installed": {
+      "Deprecated": "3.0.1",
+      "HeapDict": "1.0.1",
+      "ImageIO": "2.38.1",
+      "Pint": "0.26.2",
+      "PyOpenGL": "3.1.10",
+      "PyQt6": "6.12.0",
+      "PyQt6-Qt6": "6.12.0",
+      "PyQt6_sip": "13.13.0",
+      "PyYAML": "6.0.3",
+      "Pygments": "2.21.0",
+      "QtPy": "2.4.3",
+      "annotated-doc": "0.0.5",
+      "annotated-types": "0.8.0",
+      "app-model": "0.5.1",
+      "asciitree": "1.0.0",
+      "asttokens": "3.0.2",
+      "attrs": "26.1.0",
+      "build": "1.6.1",
+      "cachey": "0.2.1",
+      "certifi": "2026.10.23",
+      "charset-normalizer": "3.5.2",
+      "click": "8.5.0",
+      "cloudpickle": "3.1.2",
+      "colorama": "0.4.6",
+      "comm": "0.2.3",
+      "dask": "2026.8.0",
+      "debugpy": "1.8.22",
+      "docstring_parser": "0.18.0",
+      "einops": "0.8.2",
+      "executing": "2.3.0",
+      "fasteners": "0.20",
+      "flexcache": "0.3",
+      "flexparser": "0.4",
+      "freetype-py": "2.5.1",
+      "fsspec": "2026.9.0",
+      "hsluv": "5.0.5",
+      "idna": "3.20",
+      "in-n-out": "0.2.1",
+      "ipykernel": "7.4.0",
+      "ipython": "9.18.0",
+      "ipython_pygments_lexers": "1.1.1",
+      "jedi": "0.20.1",
+      "jsonschema": "4.26.0",
+      "jsonschema-specifications": "2025.9.1",
+      "jupyter_client": "8.10.0",
+      "jupyter_core": "5.9.1",
+      "kiwisolver": "1.5.1",
+      "lazy-loader": "0.6",
+      "libigl": "2.6.3",
+      "llvmlite": "0.50.0",
+      "locket": "1.0.0",
+      "lxml": "6.1.3",
+      "magicgui": "0.10.2",
+      "markdown-it-py": "4.2.0",
+      "matplotlib-inline": "0.2.2",
+      "mdurl": "0.1.2",
+      "morphosamplers": "0.0.16",
+      "mrcfile": "1.5.4",
+      "napari": "0.10.0",
+      "napari-console": "0.1.5",
+      "napari-plugin-engine": "0.2.1",
+      "napari-resources": "1.0.1",
+      "napari-svg": "0.2.1",
+      "nest-asyncio2": "1.7.4",
+      "networkx": "3.7",
+      "npe2": "0.10.0",
+      "numba": "0.68.0",
+      "numcodecs": "0.15.2",
+      "numpy": "2.4.6",
+      "packaging": "26.3",
+      "pandas": "3.1.0",
+      "parso": "0.8.7",
+      "partd": "1.4.2",
+      "pillow": "13.0.0",
+      "platformdirs": "4.14.2",
+      "pooch": "1.9.0",
+      "prompt_toolkit": "3.0.53",
+      "psutil": "7.2.2",
+      "psygnal": "0.16.1",
+      "pure_eval": "0.2.4",
+      "pyconify": "0.3.0",
+      "pydantic": "2.14.2",
+      "pydantic-compat": "0.1.2",
+      "pydantic-extra-types": "2.11.1",
+      "pydantic-settings": "2.16.2",
+      "pydantic_core": "2.50.2",
+      "pyproject_hooks": "1.3.3",
+      "python-dateutil": "3.0.0",
+      "python-dotenv": "1.2.4",
+      "pywin32": "312",
+      "pyzmq": "27.2.0",
+      "qtconsole": "5.7.2",
+      "referencing": "0.37.0",
+      "requests": "2.34.2",
+      "rich": "15.0.0",
+      "rpds-py": "2026.9.1",
+      "scikit-image": "0.26.0",
+      "scipy": "1.18.1",
+      "shellingham": "1.5.4",
+      "six": "1.17.0",
+      "stack-data": "0.6.3",
+      "superqt": "0.9.1",
+      "tifffile": "2026.10.15",
+      "tomli_w": "1.2.0",
+      "toolz": "1.2.0",
+      "tornado": "6.6",
+      "tqdm": "4.70.1",
+      "traitlets": "5.16.1",
+      "typer": "0.27.3",
+      "typing-inspection": "0.4.4",
+      "typing_extensions": "4.16.0",
+      "tzdata": "2026.6",
+      "urllib3": "2.8.0",
+      "vispy": "0.17.0",
+      "wcwidth": "0.9.4",
+      "wrapt": "2.5.2",
+      "zarr": "2.18.7"
+    },
+    "kind": "upstream",
+    "machine": "AMD64",
+    "napari_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\work\\napari-010-parity-298\\oracle-napari-010\\Lib\\site-packages\\napari\\__init__.py",
+    "napari_version": "0.10.0",
+    "numpy_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\work\\napari-010-parity-298\\oracle-napari-010\\Lib\\site-packages\\numpy\\__init__.py",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.12.8",
+    "python_executable": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\work\\napari-010-parity-298\\oracle-napari-010\\Scripts\\python.exe",
+    "qt_runtime": "6.12.0",
+    "regenerate": "uv venv build/oracle-opengl --python 3.12; uv pip install --python build/oracle-opengl/Scripts/python.exe -r tools/oracle_requirements.txt; build/oracle-opengl/Scripts/python.exe tools/oracle_capture.py --kind upstream --output tests/reference/opengl",
+    "renderer": {
+      "renderer": "NVIDIA GeForce RTX 4090/PCIe/SSE2",
+      "vendor": "NVIDIA Corporation",
+      "version": "4.6.0 NVIDIA 610.88"
+    },
+    "requirements_sha256": "a784b5a5e2b4ea201578acddc41e28e0997275ea2542642148322153cd240ffd",
+    "retained_fixture_source_sha256": "6f855b3d3f02a77eb2bfd3da60bf0920093f015d8d0b17eff8469cbace1c6e57",
+    "source_sha256": {
+      "gloo/buffer.py": "68e37b184b74814e0ae7a6f4f754c9f0c0af5b4e6369a60a8357c70da974e138",
+      "gloo/context.py": "6afc97492f65a5e865723535206fb769a1c4b55694d69786123fdee78bef992a",
+      "gloo/glir.py": "a3bb8a75b33f47420e9c100b8a6d81037a2f03c905e6c9f7d8399f4fb2eb8f7c",
+      "gloo/program.py": "4d3ab8e36260f9b5dc50f6aec075b12d642535f3cb8f49bfd4a27056301d5492",
+      "gloo/texture.py": "9f6d5f2e448e02c0ca4d66c65d17ddcdb6c0182bb8f15f1292a427f5a9faf6bc",
+      "gloo/wrappers.py": "73dbb5eb8ca78b2822266d272ffb14db9fcadd7a56512843209187714c9e8dcc"
+    },
+    "suite": "layer_controls",
+    "upstream_commit": "117b054598f4758b598f4b8f48feea48c11fe7b0",
+    "versions": {
+      "PyOpenGL": "3.1.10",
+      "PyQt6": "6.12.0",
+      "PyQt6-Qt6": "6.12.0",
+      "PyQt6-sip": "13.13.0",
+      "freetype-py": "2.5.1",
+      "hsluv": "5.0.5",
+      "kiwisolver": "1.5.1",
+      "numpy": "2.4.6",
+      "packaging": "26.3",
+      "vispy": "0.17.0"
+    },
+    "vispy_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\work\\napari-010-parity-298\\oracle-napari-010\\Lib\\site-packages\\vispy",
+    "vispy_version": "0.17.0"
+  },
+  "schema": 1
+}

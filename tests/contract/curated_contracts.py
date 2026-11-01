@@ -16,7 +16,9 @@ MODULES = ('test_hot_swap_policy', 'test_napari_vector_layers_reference', 'test_
            'test_markers_d17_reference', 'test_pool_watch', 'test_documented_outcomes', 'test_publication_drift',
            'test_benchmark_frames_w8', 'test_ci_local', 'test_hot_swap_linux_observer',
            'test_smooth_line_lavapipe_measurement', 'test_positioned_line_comparison', 'test_pool_watch_external',
-           'test_host_change_registry')
+           'test_host_change_registry',
+           'test_napari_host_packets', 'test_napari_successor_fixtures',
+           'test_napari_successor_capture', 'test_napari_successor_references')
 # Contract modules that no workflow runs, with the reason. A new module goes in MODULES or here.
 NOT_IN_CI = {
     **dict.fromkeys(('test_color_volume_linux_wheel_parity', 'test_color_volume_wheel_parity',
