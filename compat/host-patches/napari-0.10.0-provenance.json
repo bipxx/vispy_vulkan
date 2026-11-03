@@ -1,0 +1,47 @@
+{
+  "schema": 1,
+  "project": "napari",
+  "version": "0.10.0",
+  "upstream_license": "BSD-3-Clause",
+  "changes_license": "AGPL-3.0-only",
+  "source_url": "https://files.pythonhosted.org/packages/60/79/80b82ccde2b9b02486b92678583681ac57ea4fcd41328c8bba5ddcb9e1e7/napari-0.10.0.tar.gz",
+  "source_sha256": "2fb099d8f6434ce3b925feec9411f18973041969a453452e036ad988218709ac",
+  "archive_root": "napari-0.10.0",
+  "patch": "napari-0.10.0-no-opengl.patch",
+  "patch_sha256": "11139a5ed21962979ba116d037fe9871e7494ad1595588ff7a5d3167737f2830",
+  "ported_from": {
+    "patch": "napari-0.9.2-no-opengl.patch",
+    "patch_sha256": "7e40226f71c0f09023e2081706e0e8274fbd8893bb7e49434791667447c7e391"
+  },
+  "files": {
+    "src/napari/__init__.py": {
+      "before_sha256": "f65352a314e59f7b362c2d2ec15ede9e6de6af3b9c2d4711a77d19d21e0fbfb3",
+      "after_sha256": "35e584f6fd7944fa04ae74b5cc442eecdd57bd32c15fd583e7d070761705a422"
+    },
+    "src/napari/_vispy/canvas.py": {
+      "before_sha256": "64963ee22512796fda918e4a39a0e8957d2fbbf4ec9cfb0eb84e6639a6b5f9a4",
+      "after_sha256": "740dec2321811f1b134dbb0f56c9053e892c137b080a77be3bfd2eed4c0f1dc9"
+    },
+    "src/napari/_vispy/utils/gl.py": {
+      "before_sha256": "76278bb2e622cc723ef8cbfc7302b9cba0869520e68475c126aa302c6641f65e",
+      "after_sha256": "58d9a114df63ac5944e5ca8e02ce1ae462ddf8f6270f3dac91b623410e464665"
+    },
+    "src/napari/utils/info.py": {
+      "before_sha256": "9c22d38edd54441d4628a1dacddf09a089ba18d32c972f7567cd59e97f57c802",
+      "after_sha256": "b1777034861a5bb84dd9c132a467f9401711909f8a21d00e84ac566070bfbf1e"
+    },
+    "pyproject.toml": {
+      "before_sha256": "5da1200f81b0a4bee238412a188617b0cdcf3c880c40f9ac1e5f11871025e733",
+      "after_sha256": "1ddfcd0df2de694734924ea5016e59ceacf017cddb0ed2d29723e58eccfcd9fd"
+    },
+    "PKG-INFO": {
+      "before_sha256": "4ab51adbee4eeeafa15de71eb0691de663e6c13305cbb7851839f4ac36136589",
+      "after_sha256": "a80e15be09688396b7188fdde5e54da28d1a333468f591e707a1b68a946107bc"
+    }
+  },
+  "qualification": "Source patch only. Requires the Dawn VisPy fork. GUI native-load and functional host gates remain pending.",
+  "qt_bootstrap_review": {
+    "file": "src/napari/_qt/qt_event_loop.py",
+    "finding": "No OpenGL, GL sharing or application-attribute calls; 0.9.2's Qt5 high-DPI attribute calls are gone. As in 0.9.2, it imports napari._wayland_fix._nvidia_driver_loaded, a /proc/driver/nvidia/version existence check that gates a Wayland warning; it loads nothing."
+  }
+}
