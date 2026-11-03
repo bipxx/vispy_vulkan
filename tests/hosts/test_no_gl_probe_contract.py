@@ -140,15 +140,17 @@ def test_settled_moves_fail_when_the_final_move_is_never_applied(throttled_host)
     assert host.applied == ['first']
 
 
-@pytest.mark.parametrize('version, accepted', [('0.9.2', True), ('0.10.0', True), ('0.9.1', False),
+@pytest.mark.parametrize('version, accepted', [('0.10.0', True), ('0.9.2', False), ('0.9.1', False),
                                                ('0.11.0', False), ('0.10.0rc1', False)])
 def test_napari_scenario_accepts_only_qualified_napari_versions(monkeypatch, version, accepted):
-    # W2 qualified napari 0.9.2 and W16 napari 0.10.0 (D30); any other release fails before a viewer exists.
-    assert PROBE.NAPARI_VERSIONS == ('0.9.2', '0.10.0')
+    # W16 qualified napari 0.10.0 (D30); D31 moved every row there and retired W2's 0.9.2. Any other release fails
+    # before a viewer exists.
+    assert PROBE.NAPARI_VERSIONS == ('0.10.0',)
     monkeypatch.setattr(PROBE.metadata, 'version', {'napari': version}.__getitem__)
     if accepted:
         assert PROBE.require_napari() == version
     else:
         with pytest.raises(AssertionError, match=f'napari {version} has no qualified row'):
             PROBE.require_napari()
-    assert 'require_napari()' in inspect.getsource(PROBE.napari)
+    # Both scenarios that start a napari viewer check its release first.
+    assert all('require_napari()' in inspect.getsource(scenario) for scenario in (PROBE.napari, PROBE.threedee))

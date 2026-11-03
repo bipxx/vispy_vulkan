@@ -22,8 +22,8 @@ import zipfile
 
 
 SCENARIOS = ('qwidget', 'napari', 'glue', 'threedee')
-# napari releases the napari scenario qualifies: W2's 0.9.2 and W16's 0.10.0 (D30).
-NAPARI_VERSIONS = ('0.9.2', '0.10.0')
+# napari releases the napari scenario qualifies: W16's 0.10.0 (D30). D31 moved every row to it and retired 0.9.2.
+NAPARI_VERSIONS = ('0.10.0',)
 HOST_PROFILES = {
     'napari': {'napari': 'napari', 'qtpy': 'qtpy'},
     'glue': {'glue-vispy-viewers': 'glue_vispy_viewers', 'glue-qt': 'glue_qt', 'qtpy': 'qtpy'},
@@ -535,6 +535,7 @@ def glue(evidence, application, dawn):
 def threedee(evidence, application, dawn):
     import numpy as np
     import napari as host
+    require_napari()
     assert metadata.version('napari-threedee') == '0.0.29'
     evidence.report['host_versions'] = {name: metadata.version(name)
         for name in ('napari', 'napari-threedee', 'QtPy', 'numpy')}
