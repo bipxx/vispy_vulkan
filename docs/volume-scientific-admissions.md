@@ -25,7 +25,10 @@ Every admission also lists the original small-control artifacts, their producer
 sources, runtime profile and original BSD and AGPL notices directly.
 
 The current records are in
-`compat/scientific-admissions/volume-native58-cp312-numpy246-v5`.
+`compat/scientific-admissions/volume-native58-cp312-numpy246-napari-0.10.0`, with the controls
+on napari 0.10.0 (D31, below). The W8 volume benchmark pairs recorded so far, and
+their tests, are bound to `compat/scientific-admissions/volume-native58-cp312-numpy246-v5`,
+which stays unchanged as their record.
 `quality-plan.json` maps all 24 workload names to their admissions;
 `qualification.json` binds their digests and explicitly disclaims performance
 and full release qualification. Earlier local admission sets remain historical:
@@ -70,6 +73,29 @@ The candidate resident counters stay zero in the first actual timing diagnostic.
 Full 100-warmup/1000-measured-frame, five-pair
 timings, the 20% resident speedup target, p95 and update limits, presentation,
 other platforms and the full release remain pending.
+
+## napari 0.10.0 (D31)
+
+The 17 controls were rerun on napari 0.10.0 with the same native58 wheel, NumPy
+2.4.6 and PyQt6 6.11.0 profile. Only napari and npe2 moved, to 0.10.0
+(`compat/host-environments/volume-scientific-controls-numpy246-napari-0.10.0-windows-cpython312-pyqt6.txt`).
+All 17 match their OpenGL references exactly: the 11 scalar cases the unchanged
+`volume-opengl` packet, and the 6 categorical cases, which ran napari 0.10.0, the
+napari 0.10.0 packet. The raw evidence is in
+`tests/reference/volume-scientific-controls-numpy246-napari-0.10.0` (manifest
+SHA256 `a06f7aed6af9a44466037d7cac8a715c17dee5c1e60b1f24b39e3d839c06f6c6`).
+
+`tools/volume_scientific_admission_successor.py` joins them to the same 24
+large-volume captures, which involve no napari; their evidence still lists the
+color-volume suite's runtime lock, which pins napari 0.9.2, as a source hash. Its
+verifier and helpers are
+the retained tool's own; its controls check reads the 0.10.0 references and
+their producers. All 24 admissions pass, each within the error limit of 2 (the
+maximum is 1) and with both visible-change checks. Regenerate with:
+
+```powershell
+.venv/Scripts/python.exe -I -B tools/volume_scientific_admission_successor.py --output <fresh-directory>
+```
 
 The implementation is AGPL-3.0-only. The original VisPy BSD license, copyright
 and disclaimer remain unchanged and attached; see `LICENSING.md`.

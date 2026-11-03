@@ -1,0 +1,98 @@
+{
+  "volume-256-1024-iso-full": {
+    "exact": false,
+    "scientific_admission": "volume-256-1024-iso-full.json"
+  },
+  "volume-256-1024-iso-resident": {
+    "exact": false,
+    "scientific_admission": "volume-256-1024-iso-resident.json"
+  },
+  "volume-256-1024-mip-full": {
+    "exact": false,
+    "scientific_admission": "volume-256-1024-mip-full.json"
+  },
+  "volume-256-1024-mip-resident": {
+    "exact": false,
+    "scientific_admission": "volume-256-1024-mip-resident.json"
+  },
+  "volume-256-1024-translucent-full": {
+    "exact": false,
+    "scientific_admission": "volume-256-1024-translucent-full.json"
+  },
+  "volume-256-1024-translucent-resident": {
+    "exact": false,
+    "scientific_admission": "volume-256-1024-translucent-resident.json"
+  },
+  "volume-256-2048-iso-full": {
+    "exact": false,
+    "scientific_admission": "volume-256-2048-iso-full.json"
+  },
+  "volume-256-2048-iso-resident": {
+    "exact": false,
+    "scientific_admission": "volume-256-2048-iso-resident.json"
+  },
+  "volume-256-2048-mip-full": {
+    "exact": false,
+    "scientific_admission": "volume-256-2048-mip-full.json"
+  },
+  "volume-256-2048-mip-resident": {
+    "exact": false,
+    "scientific_admission": "volume-256-2048-mip-resident.json"
+  },
+  "volume-256-2048-translucent-full": {
+    "exact": false,
+    "scientific_admission": "volume-256-2048-translucent-full.json"
+  },
+  "volume-256-2048-translucent-resident": {
+    "exact": false,
+    "scientific_admission": "volume-256-2048-translucent-resident.json"
+  },
+  "volume-512-1024-iso-full": {
+    "exact": false,
+    "scientific_admission": "volume-512-1024-iso-full.json"
+  },
+  "volume-512-1024-iso-resident": {
+    "exact": false,
+    "scientific_admission": "volume-512-1024-iso-resident.json"
+  },
+  "volume-512-1024-mip-full": {
+    "exact": false,
+    "scientific_admission": "volume-512-1024-mip-full.json"
+  },
+  "volume-512-1024-mip-resident": {
+    "exact": false,
+    "scientific_admission": "volume-512-1024-mip-resident.json"
+  },
+  "volume-512-1024-translucent-full": {
+    "exact": false,
+    "scientific_admission": "volume-512-1024-translucent-full.json"
+  },
+  "volume-512-1024-translucent-resident": {
+    "exact": false,
+    "scientific_admission": "volume-512-1024-translucent-resident.json"
+  },
+  "volume-512-2048-iso-full": {
+    "exact": false,
+    "scientific_admission": "volume-512-2048-iso-full.json"
+  },
+  "volume-512-2048-iso-resident": {
+    "exact": false,
+    "scientific_admission": "volume-512-2048-iso-resident.json"
+  },
+  "volume-512-2048-mip-full": {
+    "exact": false,
+    "scientific_admission": "volume-512-2048-mip-full.json"
+  },
+  "volume-512-2048-mip-resident": {
+    "exact": false,
+    "scientific_admission": "volume-512-2048-mip-resident.json"
+  },
+  "volume-512-2048-translucent-full": {
+    "exact": false,
+    "scientific_admission": "volume-512-2048-translucent-full.json"
+  },
+  "volume-512-2048-translucent-resident": {
+    "exact": false,
+    "scientific_admission": "volume-512-2048-translucent-resident.json"
+  }
+}
