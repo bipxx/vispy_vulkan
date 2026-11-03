@@ -1232,6 +1232,21 @@ D31). The three live napari-threedee suites now judge napari 0.10.0: overlay
 - **Next.** The plugin-wheel suite moves separately, because its 0.10.0 runtime
   resolves asciitree 1.0.0.
 
+**Plugin-wheel suite on napari 0.10.0** (2026-11-03, run
+`napari-010-plugin-wheel-300`, D31). This completes Phase 1 of the move: every
+live napari-threedee row now judges napari 0.10.0.
+- **Successor suite.** `tools/napari_plugin_wheel_suite_successor.py` runs the
+  retained suite's own code objects, rebound to the 0.10.0 inputs: the overlay
+  successor fixture, the 0.10.0 overlay packet, and that packet's host lock as
+  the runtime. Its own steps are the runtime (only VisPy is replaced, because
+  asciitree 1.0.0 has a wheel), the plugin check and the saved-evidence check.
+  A CPU contract checks the code identity and each renewed input.
+- **Upstream.** The upstream VisPy wheel reproduces the packet exactly on all
+  five cases.
+- **Candidate.** Test wheel `cc6fa732` passes 5 of 5. The suite's workers run
+  in a clean environment without `VISPY_*` settings, so they present with the
+  Windows default, readback.
+
 ## Order
 
 1. R1's instrumentation runs alongside everything below.

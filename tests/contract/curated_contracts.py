@@ -6,6 +6,7 @@ tests/contract/test_napari_plugin_wheel_suite.py imports this module and CI runs
 names this file instead, and the wheel suite drops the import. A new contract module is added to MODULES here, never
 to an unrelated module. This file has no test_ prefix, so collecting tests/contract does not run the tests again.
 """
+import ast
 import importlib
 from pathlib import Path
 import re
@@ -19,7 +20,8 @@ MODULES = ('test_hot_swap_policy', 'test_napari_vector_layers_reference', 'test_
            'test_host_change_registry',
            'test_napari_host_packets', 'test_napari_successor_fixtures',
            'test_napari_successor_capture', 'test_napari_successor_references',
-           'test_napari_world_position', 'test_napari_plugin_successor_capture')
+           'test_napari_world_position', 'test_napari_plugin_successor_capture',
+           'test_napari_plugin_wheel_suite_successor')
 # Contract modules that no workflow runs, with the reason. A new module goes in MODULES or here.
 NOT_IN_CI = {
     **dict.fromkeys(('test_color_volume_linux_wheel_parity', 'test_color_volume_wheel_parity',
@@ -51,6 +53,14 @@ def test_every_contract_module_runs_in_ci_or_is_declared():
     assert not set(MODULES) & named and not set(NOT_IN_CI) & (named | set(MODULES))
     assert not set(UNPUBLISHED) & (named | set(MODULES) | set(NOT_IN_CI))
     assert modules - named - set(MODULES) - set(UNPUBLISHED) == set(NOT_IN_CI)
+
+
+def test_curated_tests_never_replace_the_entry_modules_own_tests():
+    # The entry star-imports this module at its end, so a curated test named like one of its own tests replaces it.
+    entry = ast.parse((ROOT / 'tests/contract/test_napari_plugin_wheel_suite.py').read_text(encoding='utf-8'))
+    own = {node.name for node in entry.body if isinstance(node, ast.FunctionDef)}
+    curated = {name for module in MODULES for name in importlib.import_module(module).__all__}
+    assert not own & curated, sorted(own & curated)
 
 
 __all__ = [name for name in dir() if name.startswith('test_')]
