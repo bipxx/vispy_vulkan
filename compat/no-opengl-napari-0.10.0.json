@@ -1,0 +1,242 @@
+{
+  "schema": 1,
+  "decision": "D31",
+  "scope": "The strict matrix's four napari rows on napari 0.10.0 with its strict patch (run napari-010-strict-305). compat/no-opengl-matrix.json keeps the napari 0.9.2 rows: candidates pin its bytes. R2's matrix renewal takes these rows.",
+  "supersedes": {
+    "matrix": {
+      "path": "compat/no-opengl-matrix.json",
+      "sha256": "9477ee4a888fbe59d85ee09d0fe779de376f73982cdab7aea2447c11b046f410"
+    },
+    "rows": [
+      "windows-vulkan-napari-pyqt6",
+      "windows-vulkan-napari-threedee-pyqt6",
+      "wsl-linux-lavapipe-x11-napari-pyqt6",
+      "wsl-linux-lavapipe-x11-napari-threedee-pyqt6"
+    ]
+  },
+  "host": {
+    "napari": {
+      "version": "0.10.0",
+      "tag_object": "7ec308cf79c461eba9d22b5db65cc3f11c35a60d",
+      "commit": "b304b99dd04a78009c074bcc4980956b2f6f9af3",
+      "github": "https://github.com/napari/napari",
+      "sdist_sha256": "2fb099d8f6434ce3b925feec9411f18973041969a453452e036ad988218709ac",
+      "patch": "compat/host-patches/napari-0.10.0-no-opengl.patch",
+      "patch_sha256": "11139a5ed21962979ba116d037fe9871e7494ad1595588ff7a5d3167737f2830",
+      "wheel_sha256": "fa9d6917a8399b3e1fe3d76945fdecd245ef412c55432853cb340b2b7d37f9ca",
+      "requirements": "the qualified rows' sets with npe2 0.9.0 -> 0.10.0 (W16's npe2 pin)"
+    }
+  },
+  "rows": [
+    {
+      "id": "windows-vulkan-napari-pyqt6",
+      "platform": "windows-vulkan",
+      "application": "napari",
+      "binding": "pyqt6",
+      "mandatory": true,
+      "features": [
+        "launch",
+        "initial-render",
+        "update",
+        "interaction",
+        "capture-export",
+        "recovery",
+        "close"
+      ],
+      "status": "QUALIFIED",
+      "artifact_sha256": "62df5e4c31bf9a1bb1bea47fd68d50e4198d6ec13d2551c991da1e7f30a2b38f",
+      "environment_id": "eb23d7f0396b5e9b7c02b53d9e3e90bbfcc8953464d3fd1555ea9a82bd5f731d",
+      "gates": {
+        "no_gl_execution": "PASS",
+        "no_gl_loads": "PASS",
+        "no_gl_install_link_requirement": "PASS"
+      },
+      "evidence": [
+        {
+          "workspace": "vispy_vulkan",
+          "path": "build/runs/napari-010-strict-305/summary.json",
+          "sha256": "4f5a3a56e73cceaf902a43947c4f601988a63d037ef32eaa66039b48f9abf26d"
+        },
+        {
+          "workspace": "vispy_vulkan",
+          "path": "build/runs/napari-010-strict-305/windows-reports/napari-qualified2.json",
+          "sha256": "09766b35d1edc3694738903ab254ed20764192fa54f49fb44d9d96203dfdef23"
+        },
+        {
+          "workspace": "vispy_vulkan",
+          "path": "build/runs/napari-010-strict-305/windows-reports/napari-qualified2.worker.json",
+          "sha256": "ad2c30ac273fc53caece809a375343265ba5466c8d314efc897af084c3cdab50"
+        },
+        {
+          "workspace": "vispy_vulkan",
+          "path": "build/runs/napari-010-strict-305/windows-receipt.zip",
+          "sha256": "451a39f2c4770ab6dbd4c3ed299a09ba0326c92c03b94496cef4a074944e89a2"
+        },
+        {
+          "workspace": "vispy_vulkan",
+          "path": "build/runs/napari-010-strict-305/windows-reports/napari-qualified2-functional/functional.json",
+          "sha256": "c5998b3f10030e8e6e66d44a2ab5b2834191dccf262e11c59617c386b7de69ed"
+        }
+      ],
+      "qualification_scope": "Selected pyqt6 profile; exact installed536memberartifact and pinned host bytes; complete observed fixture lifecycle/interaction/capture/recovery/close; global ninezero shutdown; scoped to this same-artifact environment; napari 0.10.0 with the 0.10.0 strict patch (D31 Phase 5b)"
+    },
+    {
+      "id": "windows-vulkan-napari-threedee-pyqt6",
+      "platform": "windows-vulkan",
+      "application": "napari-threedee",
+      "binding": "pyqt6",
+      "mandatory": true,
+      "features": [
+        "launch",
+        "initial-render",
+        "update",
+        "interaction",
+        "capture-export",
+        "recovery",
+        "close"
+      ],
+      "status": "QUALIFIED",
+      "artifact_sha256": "62df5e4c31bf9a1bb1bea47fd68d50e4198d6ec13d2551c991da1e7f30a2b38f",
+      "environment_id": "eb23d7f0396b5e9b7c02b53d9e3e90bbfcc8953464d3fd1555ea9a82bd5f731d",
+      "gates": {
+        "no_gl_execution": "PASS",
+        "no_gl_loads": "PASS",
+        "no_gl_install_link_requirement": "PASS"
+      },
+      "evidence": [
+        {
+          "workspace": "vispy_vulkan",
+          "path": "build/runs/napari-010-strict-305/summary.json",
+          "sha256": "4f5a3a56e73cceaf902a43947c4f601988a63d037ef32eaa66039b48f9abf26d"
+        },
+        {
+          "workspace": "vispy_vulkan",
+          "path": "build/runs/napari-010-strict-305/windows-reports/threedee-qualified2.json",
+          "sha256": "c41b87309cf59513f666a40b6db602d002692bceb97715c594f13c7481314408"
+        },
+        {
+          "workspace": "vispy_vulkan",
+          "path": "build/runs/napari-010-strict-305/windows-reports/threedee-qualified2.worker.json",
+          "sha256": "5334381ed812cbaf8e7dfed9c3203b549a09506653a439896e44d0dd01178d4f"
+        },
+        {
+          "workspace": "vispy_vulkan",
+          "path": "build/runs/napari-010-strict-305/windows-receipt.zip",
+          "sha256": "451a39f2c4770ab6dbd4c3ed299a09ba0326c92c03b94496cef4a074944e89a2"
+        },
+        {
+          "workspace": "vispy_vulkan",
+          "path": "build/runs/napari-010-strict-305/windows-reports/threedee-qualified2-functional/functional.json",
+          "sha256": "434cc3e49be51c40d01bedacc04ac3566d9b1332c897b809b5a620fb134d6d96"
+        }
+      ],
+      "qualification_scope": "Selected pyqt6 profile; exact installed536memberartifact and pinned host bytes; complete observed fixture lifecycle/interaction/capture/recovery/close; global ninezero shutdown; scoped to this same-artifact environment; napari 0.10.0 with the 0.10.0 strict patch (D31 Phase 5b)",
+      "r1": "open",
+      "note": "Passed on its one attempt. R1 stays open: it needs the 2026-10-23 startup stall's cause and a regression test, and a passing run never closes it (consolidated plan, R1)."
+    },
+    {
+      "id": "wsl-linux-lavapipe-x11-napari-pyqt6",
+      "platform": "wsl-linux-lavapipe-x11",
+      "application": "napari",
+      "binding": "pyqt6",
+      "mandatory": true,
+      "features": [
+        "launch",
+        "initial-render",
+        "update",
+        "interaction",
+        "capture-export",
+        "recovery",
+        "close"
+      ],
+      "status": "QUALIFIED",
+      "artifact_sha256": "374a74ea9787ccccc643e0ac7e45d9f704a41d046465828736158ac94398c4a3",
+      "environment_id": "1285f0a0940926fcf5ffcfa4ab97b220cc730d52522c3325a0e6f7651a8e9282",
+      "gates": {
+        "no_gl_execution": "PASS",
+        "no_gl_loads": "PASS",
+        "no_gl_install_link_requirement": "PASS"
+      },
+      "evidence": [
+        {
+          "workspace": "vispy_vulkan",
+          "path": "build/runs/napari-010-strict-305/summary.json",
+          "sha256": "4f5a3a56e73cceaf902a43947c4f601988a63d037ef32eaa66039b48f9abf26d"
+        },
+        {
+          "workspace": "vispy_vulkan",
+          "path": "build/runs/napari-010-strict-305/linux-reports/napari-qualified2.json",
+          "sha256": "81cf1d7636470644ebc27ed9f43e3e174e940e93652b23a9778c93eba97595d6"
+        },
+        {
+          "workspace": "vispy_vulkan",
+          "path": "build/runs/napari-010-strict-305/linux-reports/napari-qualified2.worker.json",
+          "sha256": "d379a90442a12af166d7711a19c24cb6f29ad381ea7e9fcfff8acbb9689d92ec"
+        },
+        {
+          "workspace": "vispy_vulkan",
+          "path": "build/runs/napari-010-strict-305/linux-reports/receipt1.json",
+          "sha256": "656958648553986ad5c484559b124d923f2d4ed987937eadc017095b22cba4bb"
+        },
+        {
+          "workspace": "vispy_vulkan",
+          "path": "build/runs/napari-010-strict-305/linux-reports/napari-qualified2-functional/functional.json",
+          "sha256": "cf7660d4b1ee5a0f3645134200f28c05f2e86dc8bbef5523f2c0bddd77a242d7"
+        }
+      ],
+      "qualification_scope": "Mapped X11 source-built PyQt6; explicit Lavapipe software; exact536installedmembers and pinned host payload; full observed lifecycle/interaction/capture/recovery/close and ninezero shutdown; no nativeLinuxhardwareclaim; napari 0.10.0 with the 0.10.0 strict patch (D31 Phase 5b)"
+    },
+    {
+      "id": "wsl-linux-lavapipe-x11-napari-threedee-pyqt6",
+      "platform": "wsl-linux-lavapipe-x11",
+      "application": "napari-threedee",
+      "binding": "pyqt6",
+      "mandatory": true,
+      "features": [
+        "launch",
+        "initial-render",
+        "update",
+        "interaction",
+        "capture-export",
+        "recovery",
+        "close"
+      ],
+      "status": "QUALIFIED",
+      "artifact_sha256": "374a74ea9787ccccc643e0ac7e45d9f704a41d046465828736158ac94398c4a3",
+      "environment_id": "1285f0a0940926fcf5ffcfa4ab97b220cc730d52522c3325a0e6f7651a8e9282",
+      "gates": {
+        "no_gl_execution": "PASS",
+        "no_gl_loads": "PASS",
+        "no_gl_install_link_requirement": "PASS"
+      },
+      "evidence": [
+        {
+          "workspace": "vispy_vulkan",
+          "path": "build/runs/napari-010-strict-305/summary.json",
+          "sha256": "4f5a3a56e73cceaf902a43947c4f601988a63d037ef32eaa66039b48f9abf26d"
+        },
+        {
+          "workspace": "vispy_vulkan",
+          "path": "build/runs/napari-010-strict-305/linux-reports/threedee-qualified2.json",
+          "sha256": "0fa1e8301522ed9f450f8de71249d63d79e1951953c545d8908963539f74f6c7"
+        },
+        {
+          "workspace": "vispy_vulkan",
+          "path": "build/runs/napari-010-strict-305/linux-reports/threedee-qualified2.worker.json",
+          "sha256": "736e22d250a777b4376ee4b88990b043888042b8af26662d6eb6466efed94b3b"
+        },
+        {
+          "workspace": "vispy_vulkan",
+          "path": "build/runs/napari-010-strict-305/linux-reports/receipt1.json",
+          "sha256": "656958648553986ad5c484559b124d923f2d4ed987937eadc017095b22cba4bb"
+        },
+        {
+          "workspace": "vispy_vulkan",
+          "path": "build/runs/napari-010-strict-305/linux-reports/threedee-qualified2-functional/functional.json",
+          "sha256": "fadd3fa4d849a0a8f6a294b959906594909959df7f2226a8fd36fea9402a129a"
+        }
+      ],
+      "qualification_scope": "Mapped X11 source-built PyQt6; explicit Lavapipe software; exact536installedmembers and pinned host payload; full observed lifecycle/interaction/capture/recovery/close and ninezero shutdown; no nativeLinuxhardwareclaim; napari 0.10.0 with the 0.10.0 strict patch (D31 Phase 5b)"
+    }
+  ]
+}

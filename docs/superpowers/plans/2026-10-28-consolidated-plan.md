@@ -47,7 +47,7 @@ unmodified scientific hosts, napari first, run on it with practical parity.
 | Current admitted wheels | `444402...` (Windows cp312), `bd89a994...` (Linux, `linux_x86_64`, not manylinux) | same, :105-106 |
 | Earlier wheels | Windows cp310-cp314 and WSL cp312 at an earlier source epoch | `docs/tested-platforms.md` |
 | Published wheels | None uploaded anywhere | `docs/tested-platforms.md` |
-| Strict matrix | 13 of 14 mandatory rows qualified (6 Windows, 7 WSL), bound to `62df5e4c...` and `374a74ea...`. **Windows napari-threedee: PENDING.** DIVE and visbrain are non-mandatory and not admitted. | `compat/no-opengl-matrix.json` |
+| Strict matrix | On napari 0.9.2, 13 of 14 mandatory rows qualified (6 Windows, 7 WSL), bound to `62df5e4c...` and `374a74ea...`, with Windows napari-threedee PENDING. On napari 0.10.0 (D31 Phase 5b), all four napari rows pass on the same artifacts, Windows napari-threedee included; they are in the successor record until R2. R1 stays open. DIVE and visbrain are non-mandatory and not admitted. | `compat/no-opengl-matrix.json`, `compat/no-opengl-napari-0.10.0.json` |
 | Hot swap | Stock napari works with the current wheel on Windows cp312. Drag-race fix merged (PR #24). Smooth-line criterion merged (PR #25). | `2026-10-28-napari-hot-swap.md` |
 | Startup stall | Mechanism found for the 2026-10-28 dev-environment recurrence: the default thread pool was lost early in startup. The qualification stall's pool state was never captured. The closer is unidentified (PR #26). | `docs/threedee-startup-diagnosis.md` |
 | Performance (W8) | Report done. Resident scenes keep the refresh rate; uploads are slower than OpenGL's, and partial texture updates much slower (B18). Readback presentation costs over 200 ms per 4K frame (B19). The hot swap moves to native presentation at R2, after the napari parity suites pass under it (D18). B19 and B18's CPU part are fixed on the R2 branch (run `b19-readback-257`). Full texture uploads are about 3 times faster there (P1). Vsynced native presentation there now paces like OpenGL's swap, without the extra refresh (P2). A texture updated between two draws of one frame no longer copies its whole CPU shadow (P3). A vsynced frame slower than a refresh renders one frame ahead, which brings full uploads to 0.82-0.99 of OpenGL's frame rate in a compact re-run (P4). Full uploads now copy straight from their CPU shadow (P5), and streamed buffers from their payload blocks (P6): in a compact re-run, a full 64 MiB image runs at 1.08 of OpenGL's frame rate, a 256-cubed volume at 1.08, and 1M points with new positions at 1.19. | `docs/performance-report.md` |
@@ -1309,6 +1309,19 @@ too".
   "Rebuild and re-qualify now, BUT use more reasonable qulaitifcaiton". Only
   the napari layer of each strict host environment is rebuilt, and each row
   gets one pass of the unchanged gates (5b). Then 0.9.2 is retired (5c).
+
+**Strict napari rows on napari 0.10.0** (2026-11-03, run
+`napari-010-strict-305`, D31 Phase 5b). The user chose to re-qualify now.
+- **Scope.** Only the napari layer was rebuilt: napari 0.10.0 with its strict
+  patch, and npe2 0.10.0. The Qt builds without OpenGL, the admitted artifacts
+  and the qualified environments' other 116 pins were kept. Each row got one
+  pass of the unchanged gates.
+- **Results.** All four napari rows pass on Windows and WSL. Windows
+  napari-threedee, pending since 2026-10-23, is included. R1 stays open: a
+  passing run never closes it.
+- **Record.** `compat/no-opengl-napari-0.10.0.json` holds the rows, because
+  candidates pin the matrix's bytes. R2's matrix renewal takes them.
+- **Next.** 0.9.2 is retired (5c).
 
 ## Order
 
