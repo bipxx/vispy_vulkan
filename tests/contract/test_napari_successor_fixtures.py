@@ -65,15 +65,22 @@ def test_successor_render_is_the_retained_render_without_its_pin(retained):
         assert getattr(new, name) is getattr(old, name), (retained, name)
 
 
-@pytest.mark.parametrize('retained', [*PAIRS, 'fixture_image_extensions'])
+PLUGIN_PAIRS = {'fixture_napari_threedee_overlay': 'fixture_napari_threedee_overlay_successor',
+                'fixture_napari_threedee_initialized': 'fixture_napari_threedee_initialized_successor',
+                'fixture_napari_render_plane_scheduled': 'fixture_napari_render_plane_scheduled_successor'}
+
+
+@pytest.mark.parametrize('retained', [*PAIRS, 'fixture_image_extensions', *PLUGIN_PAIRS])
 def test_successor_fixture_imports_nothing_beyond_its_retained_module(retained):
     successor = f'{retained}_successor'
+    # The plugin successors also use napari's mouse-event world position (D31).
+    added = {f'tools.{successor}'} | ({'tools.napari_world_position'} if retained in PLUGIN_PAIRS else set())
     code = f"""
 import sys
 import tools.{retained}
 before = set(sys.modules)
 import tools.{successor}
-assert set(sys.modules) - before == {{'tools.{successor}'}}, sorted(set(sys.modules) - before)
+assert set(sys.modules) - before == {added!r}, sorted(set(sys.modules) - before)
 """
     child = subprocess.run([sys.executable, '-B', '-c', code], cwd=ROOT, capture_output=True, text=True)
     assert child.returncode == 0, (child.stdout, child.stderr)
@@ -116,6 +123,77 @@ def test_image_successor_renders_are_the_retained_ones_without_the_pin(function)
     assert unpinned_source(getattr(new, function)) == unpinned_source(getattr(old, function))
     for name in global_names(getattr(new, function)) - IMAGE_RENEWED:
         assert getattr(new, name) is getattr(old, name), (function, name)
+
+
+class UseWorldPosition(ast.NodeTransformer):
+    """canvas._map_canvas2world(p, canvas.view) -> world_position(viewer, canvas, p): napari 0.10 removed the private
+    canvas method and computes mouse-event positions with ViewerModel.canvas_to_world (D31)."""
+
+    def visit_Call(self, node):
+        self.generic_visit(node)
+        func = node.func
+        if (isinstance(func, ast.Attribute) and func.attr == '_map_canvas2world'
+                and isinstance(func.value, ast.Name) and func.value.id == 'canvas' and len(node.args) == 2
+                and ast.unparse(node.args[1]) == 'canvas.view' and not node.keywords):
+            return ast.Call(func=ast.Name('world_position', ast.Load()),
+                            args=[ast.Name('viewer', ast.Load()), ast.Name('canvas', ast.Load()), node.args[0]],
+                            keywords=[])
+        return node
+
+
+def is_call(statement, name):
+    return (isinstance(statement, ast.Expr) and isinstance(statement.value, ast.Call)
+            and ast.unparse(statement.value.func) == f'QtTest.QTest.{name}')
+
+
+class SettleMouseMoves(ast.NodeTransformer):
+    """A mouseMove not already followed by QtTest.QTest.qWait(10) gets one: napari's leading-edge 5 ms throttle can
+    defer the final move past a single processEvents() (the retained overlay fixtures' drag race), and the scheduled
+    fixture already waits so (D19). The wait delivers napari's own timer; no callback is replaced."""
+
+    def generic_visit(self, node):
+        super().generic_visit(node)
+        for field in ('body', 'orelse', 'finalbody'):
+            statements = getattr(node, field, None)
+            if isinstance(statements, list) and statements and isinstance(statements[0], ast.stmt):
+                settled = []
+                for index, statement in enumerate(statements):
+                    settled.append(statement)
+                    following = statements[index + 1] if index + 1 < len(statements) else None
+                    if is_call(statement, 'mouseMove') and not (following is not None and is_call(following, 'qWait')):
+                        settled.append(ast.parse('QtTest.QTest.qWait(10)').body[0])
+                setattr(node, field, settled)
+        return node
+
+
+def plugin_pair(retained):
+    return importlib.import_module(f'tools.{retained}'), importlib.import_module(f'tools.{PLUGIN_PAIRS[retained]}')
+
+
+@pytest.mark.parametrize('retained', PLUGIN_PAIRS)
+def test_plugin_successor_shares_the_retained_inputs(retained):
+    old, new = plugin_pair(retained)
+    for name in ('CASES', 'SIZE', 'AXES', 'specification', 'assert_landmarks', 'phantom', 'projected_axis_distance'):
+        if hasattr(old, name):
+            assert getattr(new, name) is getattr(old, name), (retained, name)
+
+
+@pytest.mark.parametrize('retained', PLUGIN_PAIRS)
+def test_plugin_successor_render_is_the_retained_render_with_its_three_changes(retained):
+    from tools.napari_host_packets import napari_pin_count
+    from tools.napari_world_position import world_position
+
+    old, new = plugin_pair(retained)
+    assert napari_pin_count(old.render) == 1 and napari_pin_count(new.render) == 0
+    source = unpinned_source(new.render)
+    assert "metadata.version('napari')" not in source and 'napari.__version__' not in source
+    assert '_map_canvas2world' not in source and 'world_position(viewer, canvas, ' in source
+    tree = ast.parse(unpinned_source(old.render))
+    expected = ast.unparse(SettleMouseMoves().visit(UseWorldPosition().visit(tree)))
+    assert source == expected, retained
+    assert new.world_position is world_position
+    for name in global_names(new.render) - {'world_position'}:
+        assert getattr(new, name) is getattr(old, name), (retained, name)
 
 
 __all__ = [name for name in dir() if name.startswith('test_')]

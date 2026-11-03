@@ -79,6 +79,45 @@ def test_every_successor_packet_binds_its_napari_version_and_sources(suite, monk
             fixture.assert_landmarks(name, np.load(packet / record['rgba']['file'], allow_pickle=False))
 
 
+# The napari-threedee plugin suites that are live on napari 0.9.2 (D31); None means every case. The other
+# initialized cases are D6's superseded fixtures, replaced by the overlay suite.
+PLUGIN_LIVE = {'overlay': None, 'initialized': ('retirement',), 'scheduled': None}
+PLUGIN_CAPTURE = ROOT / 'tools/oracle_napari_plugin_successor_capture.py'
+
+
+@pytest.mark.parametrize('suite', PLUGIN_LIVE)
+def test_every_plugin_successor_packet_binds_its_napari_version_and_sources(suite, monkeypatch):
+    monkeypatch.syspath_prepend(str(ROOT / 'tools'))
+    spec = importlib.util.spec_from_file_location('plugin_successor_capture_references', PLUGIN_CAPTURE)
+    capture = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(capture)
+    entry = capture.SUITES[suite]
+    fixture = importlib.import_module(f'tools.{entry.module}')
+    found = packets(entry.base)
+    assert found, f'no {entry.base} successor packet: capture one with tools/oracle_napari_plugin_successor_capture.py'
+    for version, packet in found.items():
+        manifest = json.loads((packet / 'manifest.json').read_text(encoding='utf-8'))
+        origins = manifest['provenance']
+        plugin = origins['plugin']
+        assert origins['kind'] == 'upstream' and origins['vispy_version'] == '0.17.0', packet.name
+        assert origins['napari_version'] == plugin['napari_version'] == version, packet.name
+        assert plugin['suite'] == suite and plugin['plugin_version'] == '0.0.29', packet.name
+        assert plugin['python_hash_seed'] == '0' and plugin['plugin_wheel_sha256'] == capture.WHEEL_SHA, packet.name
+        assert plugin['fixture_source_sha256'] == digest(ROOT / f'tools/{entry.module}.py'), packet.name
+        assert plugin['retained_fixture_source_sha256'] == digest(ROOT / entry.retained), packet.name
+        assert plugin['capture_source_sha256'] == digest(PLUGIN_CAPTURE), packet.name
+        check_lock(packet, plugin['host_lock'])
+        assert not manifest['errors'] and set(manifest['fixtures']) == set(PLUGIN_LIVE[suite] or fixture.CASES)
+        for name, record in manifest['fixtures'].items():
+            assert record['process']['exit_code'] == 0, (packet.name, name)
+            for artifact in [*record['artifacts'].values(), record['capture'], record['process']['stdout'],
+                             record['process']['stderr']]:
+                assert digest(packet / artifact['file']) == artifact['sha256'], (packet.name, artifact['file'])
+            arrays = {key: np.load(packet / artifact['file'], allow_pickle=False)
+                      for key, artifact in record['artifacts'].items() if artifact['file'].endswith('.npy')}
+            fixture.assert_landmarks(name, arrays.pop('rgba'), record['parameters'], arrays)
+
+
 def test_every_image_extension_packet_binds_its_freeze_and_sources():
     from tools.fixture_image_extensions_successor import CASES, COMPARISON, assert_landmarks, case_contract
 

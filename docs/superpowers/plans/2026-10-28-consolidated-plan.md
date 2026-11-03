@@ -88,8 +88,9 @@ unmodified scientific hosts, napari first, run on it with practical parity.
 | D28 | **Minor host changes are allowed, upstream first** (user, 2026-10-31: "I think it might be reasonable to allow some minor changes?"; 2026-11-01: "implemnt the plan", approving `2026-10-31-upstream-host-changes.md`). A host behaviour that needs a change outside vispy is fixed in this order: in vispy, which this project ships; upstream, in the host's own project, with the user's approval for each post (W12); or as a host patch used only by strict rows and registered in `compat/host-changes.json` with its upstream status. Hot-swap rows keep stock PyPI hosts; a row with a patched host is not a hot-swap row. A strict patch shrinks only at a requalification (R2 under D1), after a host release contains its upstream change. | Replacing only `vispy` is the hot swap's value. Patched hosts would need our own index (PyPI rejects local versions), re-patching for each host release, and a third profile. The two W12 changes are small: napari imports `OpenGL.error` lazily; qtpy imports Qt6's OpenGL modules lazily. Plan: `2026-10-31-upstream-host-changes.md`. |
 | D29 | **No PRs to napari or qtpy** (user, 2026-11-01: "these are my own project. nevner pr qtpy and napari"). W12 closes as not planned, and D28's upstream step is withdrawn: a host behaviour that needs a change outside vispy is fixed in vispy or, failing that, with a host patch used only by strict rows. Hot-swap rows keep stock hosts. The two prepared changes stay local records. | Run `upstream-effects-293`: the napari change helps only vispy builds whose `gl+` does not use PyOpenGL, and the qtpy change only stops two Qt modules loading. Both changes were tested (runs 291, 292 and 294), and nothing was posted. |
 | D30 | **Later napari releases get version-agnostic successor fixtures, with one reference packet per napari version** (user, 2026-11-01: "close the gaps and review again"; scope "Core suites + probe", design "Version-agnostic"). Each core suite's successor reuses the retained fixture and drops only its napari pin. Its packets live in `tests/reference/<base>-napari-<version>/` and record the napari version, so a future release needs new packets, not new code. The retained 0.9.2 modules and packets stay unchanged (D6). The napari-threedee plugin suites stay on 0.9.2. | Plan `2026-11-01-napari-010-parity.md`. |
+| D31 | **Every napari row moves to napari 0.10.0; 0.9.2 is retired, not deleted** (user, 2026-11-01: "can we remove 0.9.2?", then "which repo are you using? just move to 0.10"). Each row moves through its own 0.10.0 host lock and, where a suite pins napari, D30's successors with packets captured on 0.10.0. The retained 0.9.2 modules, packets and locks stay frozen: the successors import from them (D30), and D6 keeps original references. `pyproject.toml` and `uv.lock` keep the `hosts` group on 0.9.2 until R2 renews the records that pin them. | Plan `2026-11-01-napari-010-move.md`. |
 
-No decisions are open. The latest is D30: version-agnostic successor fixtures for later napari releases.
+No decisions are open. The latest is D31: every napari row moves to napari 0.10.0.
 
 The user has already decided, and confirmed on 2026-10-29, that the Windows
 napari-threedee row stays required, so the release waits for R1. On 2026-10-29
@@ -1207,6 +1208,30 @@ qtpy 2.4.3 and PyQt6 6.12.0 on Qt 6.12.0:
     shapes_selected differs because of this machine's present environment: the
     retained code run now also differs there, within the case's D10 rule.
 
+**Plugin suites on napari 0.10.0** (2026-11-02, run `napari-010-plugins-299`,
+D31). The three live napari-threedee suites now judge napari 0.10.0: overlay
+(5 cases), initialized (`retirement`) and render-plane-scheduled (4).
+- **Scope.** D6's superseded plugin fixtures are not carried over.
+- **Successors.** napari 0.10.0 removed `VispyCanvas._map_canvas2world`, which
+  the drag fixtures used. Each successor makes two changes to its retained
+  fixture beyond the napari pin, both checked by the AST contract:
+  - drag positions are read with `world_position`, which uses
+    `ViewerModel.canvas_to_world` on 0.10;
+  - every mouse move waits 10 ms (`qWait`), as the scheduled fixture's moves do
+    (D19). The retained overlay fixture's drag race showed once in the
+    validation.
+- **On napari 0.9.2** the successors reproduce the retained code run in the
+  same environment on all 10 cases: frames, auxiliary frames, parameters and
+  shaders. One recorded GLIR stream differs: overlay `translation` has one
+  more intermediate frame, the redraw that napari's delivered move triggers
+  during the wait. No test compares GLIR.
+- **Packets.** All three were captured with upstream vispy on the stock 0.10.0
+  lock.
+- **Candidate.** Test wheel `cc6fa732` passes 12 of 12 under readback and under
+  native presentation.
+- **Next.** The plugin-wheel suite moves separately, because its 0.10.0 runtime
+  resolves asciitree 1.0.0.
+
 ## Order
 
 1. R1's instrumentation runs alongside everything below.
@@ -1341,4 +1366,5 @@ qtpy 2.4.3 and PyQt6 6.12.0 on Qt 6.12.0:
 | `plans/2026-10-28-napari-hot-swap.md` | Origin of W0-W12 and their progress record; work continues here. |
 | `plans/2026-10-31-upstream-host-changes.md` | Done: D28's host-change registry and W16, the napari 0.10.0 baseline. Its upstream PRs (W12) are not planned (D29). |
 | `plans/2026-11-01-napari-010-parity.md` | Done: D30's version-agnostic successor fixtures and the napari 0.10.0 parity row (six core suites and the probe). |
+| `plans/2026-11-01-napari-010-move.md` | Active: D31, every napari row moves to napari 0.10.0. Phase 1a (three plugin suites) is done. |
 | `docs/opengl-removal-status.md` | Refreshed on 2026-10-29 (B16). |
