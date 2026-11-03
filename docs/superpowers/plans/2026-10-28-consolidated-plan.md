@@ -1277,6 +1277,25 @@ a Linux 0.10.0 lock: W16's input compiled for `x86_64-manylinux_2_39`.
   W7's 80 were on 6.11.0.
 - **Probe.** On test wheel A, the napari and threedee lifecycles pass.
 
+**napari wheel suites on napari 0.10.0** (2026-11-03, run
+`napari-010-wheel-suites-303`, D31 Phase 4). The user chose "Suites now,
+benchmarks later".
+- **Successors.** The volume and image installed-wheel suites gain reference,
+  probe and runner successors on the D30 0.10.0 packets.
+  - Each successor runs the retained code, rebound, wherever that code reads
+    only renewed inputs.
+  - It copies a step where the step holds a 0.9.2 literal or a retained-format
+    key. A CPU contract checks the AST of each copy.
+- **Results.** Test wheel `cc6fa732` passes all 17 volume and 13 image cases
+  from an installed wheel. Each napari worker reports napari 0.10.0.
+- **Unchanged.**
+  - The color-volume suite renders no napari, so it stays as it is. This is a
+    ruling against the option's wording. Its cost is that the suite keeps
+    PyQt6 6.11.0 from the 0.9.2 plugin lock, so that lock must outlive the
+    retirement of 0.9.2.
+  - The volume scientific admission keeps its 0.9.2 evidence until the user
+    approves the W8 benchmark runs.
+
 ## Order
 
 1. R1's instrumentation runs alongside everything below.
