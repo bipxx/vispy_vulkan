@@ -89,6 +89,27 @@ def test_unpinned_source_removes_only_top_level_pins():
     assert 'required pinned napari dependency' not in unpinned_source(pinned)
 
 
+def compound(name):
+    """A sample plugin render."""
+    assert metadata.version('napari') == '0.9.2' and metadata.version('napari-threedee') == '0.0.29'  # noqa: F821
+    assert ready and napari.__version__ == '0.9.2' and done  # noqa: F821
+    return name
+
+
+def compound_unpinned(name):
+    """A sample plugin render."""
+    assert metadata.version('napari-threedee') == '0.0.29'  # noqa: F821
+    assert ready and done  # noqa: F821
+    return name
+
+
+def test_unpinned_source_keeps_the_other_clauses_of_a_compound_pin():
+    assert unpinned_source(compound) == unpinned_source(compound_unpinned).replace(
+        'def compound_unpinned', 'def compound')
+    assert packets_module.napari_pin_count(compound) == 2 and packets_module.napari_pin_count(pinned) == 1
+    assert packets_module.napari_pin_count(compound_unpinned) == 0
+
+
 def test_evidence_dir_honours_the_override(tmp_path, monkeypatch):
     monkeypatch.delenv('VISPY_NAPARI_EVIDENCE', raising=False)
     assert evidence_dir('napari-volume-successor-candidate', '0.10.0') == (

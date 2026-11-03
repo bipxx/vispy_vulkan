@@ -92,10 +92,37 @@ def is_napari_pin(statement: ast.stmt) -> bool:
             and isinstance(test.comparators[0], ast.Constant) and isinstance(test.comparators[0].value, str))
 
 
+def _without_napari_pin(statement: ast.stmt) -> tuple[ast.stmt | None, int]:
+    """The statement without napari pins, and how many it had: a pin is dropped, and a pin clause of an `and`
+    assert (such as napari's beside the plugin's) is removed from it."""
+    if is_napari_pin(statement):
+        return None, 1
+    if isinstance(statement, ast.Assert) and isinstance(statement.test, ast.BoolOp) and isinstance(statement.test.op,
+                                                                                                    ast.And):
+        kept = [value for value in statement.test.values if not is_napari_pin(ast.Assert(test=value, msg=None))]
+        removed = len(statement.test.values) - len(kept)
+        if removed:
+            if not kept:
+                return None, removed
+            test = kept[0] if len(kept) == 1 else ast.BoolOp(op=ast.And(), values=kept)
+            return ast.Assert(test=test, msg=statement.msg), removed
+    return statement, 0
+
+
+def _definition(function) -> ast.FunctionDef:
+    return ast.parse(textwrap.dedent(inspect.getsource(function))).body[0]
+
+
+def napari_pin_count(function) -> int:
+    """How many napari pins the function's top-level statements carry, counting pin clauses of `and` asserts."""
+    return sum(_without_napari_pin(statement)[1] for statement in _definition(function).body)
+
+
 def unpinned_source(function) -> str:
-    """The function's definition, normalized by ast.unparse, without its top-level napari pins."""
-    definition = ast.parse(textwrap.dedent(inspect.getsource(function))).body[0]
-    definition.body = [statement for statement in definition.body if not is_napari_pin(statement)]
+    """The function's definition, normalized by ast.unparse, without its top-level napari pins (whole statements, or
+    the napari clauses of `and` asserts)."""
+    definition = _definition(function)
+    definition.body = [kept for kept, _ in map(_without_napari_pin, definition.body) if kept is not None]
     return ast.unparse(definition)
 
 
