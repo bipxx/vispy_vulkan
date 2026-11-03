@@ -1267,6 +1267,16 @@ is older source than `cc6fa732`).
   GL events and no renderer, unattributed or context event. The controls give
   their designed verdicts.
 
+**W7's Linux rows on napari 0.10.0** (2026-11-03, run `napari-010-w7-302`, D31
+Phase 3). As run `w7-linux-rows-253`, in WSL with lavapipe on an owned Xvfb, on
+a Linux 0.10.0 lock: W16's input compiled for `x86_64-manylinux_2_39`.
+- **Audits.** All eight rows give W7's verdicts, with W7's counts, under the
+  Linux observer. Stock napari is UNVERIFIED on the admitted `bd89a994`,
+  through `glir.py`'s static PyOpenGL import. It reaches `PASS_HOT_SWAP_GATES`
+  on test wheel A (`c5a3807d`), with 80 host GL events on PyQt6 6.12.0, where
+  W7's 80 were on 6.11.0.
+- **Probe.** On test wheel A, the napari and threedee lifecycles pass.
+
 ## Order
 
 1. R1's instrumentation runs alongside everything below.
