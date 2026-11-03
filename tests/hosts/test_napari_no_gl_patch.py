@@ -15,6 +15,8 @@ SPEC = importlib.util.spec_from_file_location(
     'prepare_napari_no_opengl', ROOT / 'tools/prepare_napari_no_opengl.py')
 PREPARE = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(PREPARE)
+# napari 0.9.2's and 0.10.0's patches (D31); the archive picks its own.
+MANIFESTS = (PREPARE.MANIFEST, ROOT / 'compat/host-patches/napari-0.10.0-provenance.json')
 
 
 def test_archive_mismatch_never_creates_output(tmp_path):
@@ -27,15 +29,26 @@ def test_archive_mismatch_never_creates_output(tmp_path):
 
 
 @pytest.fixture(scope='module')
-def patched_source(tmp_path_factory):
+def prepared(tmp_path_factory):
     archive = os.environ.get('NAPARI_SOURCE_ARCHIVE')
     if not archive:
-        pytest.skip('set NAPARI_SOURCE_ARCHIVE to the pinned upstream sdist')
-    return PREPARE.prepare(archive, tmp_path_factory.mktemp('napari') / 'source')
+        pytest.skip('set NAPARI_SOURCE_ARCHIVE to a pinned upstream sdist')
+    digest = PREPARE.sha256(archive)
+    manifests = [path for path in MANIFESTS
+                 if json.loads(path.read_text(encoding='utf-8'))['source_sha256'] == digest]
+    assert len(manifests) == 1, 'NAPARI_SOURCE_ARCHIVE is not a pinned napari sdist'
+    source = PREPARE.prepare(archive, tmp_path_factory.mktemp('napari') / 'source', manifest_path=manifests[0])
+    return source, manifests[0]
 
 
-def test_exact_pinned_source_patch_and_licenses(patched_source):
-    manifest = json.loads(PREPARE.MANIFEST.read_text(encoding='utf-8'))
+@pytest.fixture(scope='module')
+def patched_source(prepared):
+    return prepared[0]
+
+
+def test_exact_pinned_source_patch_and_licenses(prepared):
+    patched_source, manifest_path = prepared
+    manifest = json.loads(manifest_path.read_text(encoding='utf-8'))
     for name, hashes in manifest['files'].items():
         assert PREPARE.sha256(patched_source / name) == hashes['after_sha256']
         if name.endswith('.py'):
