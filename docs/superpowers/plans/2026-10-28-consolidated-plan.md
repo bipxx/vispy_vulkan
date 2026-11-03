@@ -1247,6 +1247,26 @@ live napari-threedee row now judges napari 0.10.0.
   in a clean environment without `VISPY_*` settings, so they present with the
   Windows default, readback.
 
+**W6's cells on napari 0.10.0** (2026-11-03, run `napari-010-w6-301`, D31
+Phase 2). The cells are PySide6 on CPython 3.12 (test wheel `cc6fa732`) and
+PyQt6 on 3.11, 3.13 and 3.14 (W6's R2 test wheels, built on `66e7e9ad`, which
+is older source than `cc6fa732`).
+- **Method.** Each cell's environment is W16's 0.10.0 input, compiled for that
+  Python and binding, with run 207's numba lock and the tracked napari-threedee
+  wheel.
+  - The per-cell drivers follow W6's (run 248). They leave out the R1 pool
+    watcher, give each launch a fresh `NAPARI_CONFIG`, and set no `VISPY_*`
+    presentation setting.
+  - They drive the current probe and audit tool. Their Windows gate logic is
+    unchanged since W6.
+- **W2.** The probe's napari scenario passes in all four cells. Its threedee
+  scenario passes except on 3.14. There, napari-threedee's `zarr<3` resolves to
+  zarr 2.18.6 with numcodecs 0.17.1, which do not import together. On 0.9.2 the
+  pair was zarr 2.18.6 with numcodecs 0.17.0, and the error was the same.
+- **W3.** Stock napari reaches `PASS_HOT_SWAP_GATES` in every cell, with 24 host
+  GL events and no renderer, unattributed or context event. The controls give
+  their designed verdicts.
+
 ## Order
 
 1. R1's instrumentation runs alongside everything below.
