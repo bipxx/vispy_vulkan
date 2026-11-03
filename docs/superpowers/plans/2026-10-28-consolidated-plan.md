@@ -1296,6 +1296,20 @@ benchmarks later".
   - The volume scientific admission keeps its 0.9.2 evidence until the user
     approves the W8 benchmark runs.
 
+**Strict napari patch on napari 0.10.0** (2026-11-03, run
+`napari-010-strict-304`, D31 Phase 5a). The user chose "Move the strict profile
+too".
+- **Patch.** `compat/host-patches/napari-0.10.0-no-opengl.patch` is the 0.9.2
+  patch's changes applied to napari 0.10.0, which still has every one of them.
+  It has 15 hunks, with provenance in `napari-0.10.0-provenance.json`.
+  - The unchanged `tools/prepare_napari_no_opengl.prepare` verifies it on the
+    0.10.0 source archive.
+  - `compat/host-changes.json` registers it.
+- **Next.** The user chose to re-qualify the strict napari rows on 0.10.0 now:
+  "Rebuild and re-qualify now, BUT use more reasonable qulaitifcaiton". Only
+  the napari layer of each strict host environment is rebuilt, and each row
+  gets one pass of the unchanged gates (5b). Then 0.9.2 is retired (5c).
+
 ## Order
 
 1. R1's instrumentation runs alongside everything below.
