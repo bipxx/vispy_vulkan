@@ -88,7 +88,7 @@ def test_widespread_differences_fail_the_frame_cap():
     assert 'pixels differ' in positioned_line_difference(candidate, reference)
 
 
-def test_shape_and_dtype_must_match():
+def test_positioned_rule_requires_matching_shape_and_dtype():
     frame = stroke_frame()
     assert positioned_line_difference(frame[:-1], frame) is not None
     assert positioned_line_difference(frame.astype(np.int16), frame) is not None
