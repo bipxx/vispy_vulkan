@@ -16,7 +16,13 @@ SPEC = importlib.util.spec_from_file_location(
 PREPARE = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(PREPARE)
 # napari 0.9.2's and 0.10.0's patches (D31); the archive picks its own.
-MANIFESTS = (PREPARE.MANIFEST, ROOT / 'compat/host-patches/napari-0.10.0-provenance.json')
+MANIFESTS = (ROOT / 'compat/host-patches/provenance.json', ROOT / 'compat/host-patches/napari-0.10.0-provenance.json')
+
+
+def test_the_default_manifest_is_napari_0_10_0():
+    # D31 retired napari 0.9.2; its manifest stays for the retained 0.9.2 records.
+    assert PREPARE.MANIFEST == MANIFESTS[1]
+    assert json.loads(PREPARE.MANIFEST.read_text(encoding='utf-8'))['version'] == '0.10.0'
 
 
 def test_archive_mismatch_never_creates_output(tmp_path):

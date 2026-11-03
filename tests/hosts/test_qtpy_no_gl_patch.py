@@ -2,6 +2,7 @@
 """Test the pinned QtPy patch using real bindings and forbidden-import guards."""
 
 import importlib.util
+import json
 import os
 from pathlib import Path
 import subprocess
@@ -15,6 +16,9 @@ SPEC = importlib.util.spec_from_file_location(
     'prepare_napari_no_opengl', ROOT / 'tools/prepare_napari_no_opengl.py')
 PREPARE = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(PREPARE)
+# napari 0.9.2's and 0.10.0's patches (D31); the napari archive picks its own.
+NAPARI_MANIFESTS = (ROOT / 'compat/host-patches/provenance.json',
+                    ROOT / 'compat/host-patches/napari-0.10.0-provenance.json')
 
 
 @pytest.fixture(scope='module')
@@ -26,7 +30,11 @@ def source_roots(tmp_path_factory):
     output = tmp_path_factory.mktemp('dawn-hosts')
     qtpy = PREPARE.prepare(qtpy_archive, output / 'qtpy',
                           ROOT / 'compat/host-patches/qtpy-2.4.3-provenance.json')
-    napari = PREPARE.prepare(napari_archive, output / 'napari')
+    digest = PREPARE.sha256(napari_archive)
+    manifests = [path for path in NAPARI_MANIFESTS
+                 if json.loads(path.read_text(encoding='utf-8'))['source_sha256'] == digest]
+    assert len(manifests) == 1, 'NAPARI_SOURCE_ARCHIVE is not a pinned napari sdist'
+    napari = PREPARE.prepare(napari_archive, output / 'napari', manifests[0])
     return qtpy, napari
 
 
