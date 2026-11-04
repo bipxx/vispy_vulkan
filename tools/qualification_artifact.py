@@ -196,8 +196,8 @@ def validate_archive(record, root=ROOT):
     windows = observation['kind'] == 'windows-gpu'
     check(windows or observation['kind'] == 'wsl-software', 'archive profile platform not yet supported')
     platform = 'win32' if windows else 'linux'
-    # D35: the Linux release wheel is retagged manylinux_2_38 after an auditwheel check, before qualification.
-    platform_tag = 'win_amd64' if windows else 'manylinux_2_38_x86_64'
+    # D35: the Linux release wheel carries auditwheel's verdict, manylinux_2_39, retagged before qualification.
+    platform_tag = 'win_amd64' if windows else 'manylinux_2_39_x86_64'
     suffix = '.' + abi + '-win_amd64.pyd' if windows else '.cpython-' + abi[2:] + '-x86_64-linux-gnu.so'
     wheel = retained_file(root, record['wheel'])
     check(wheel.name == 'vispy-0.17.0+vulkan.1-' + abi + '-' + abi + '-' + platform_tag + '.whl', 'wrong wheel filename/profile ABI')
