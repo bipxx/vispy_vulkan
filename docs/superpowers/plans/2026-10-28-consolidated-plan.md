@@ -88,7 +88,7 @@ unmodified scientific hosts, napari first, run on it with practical parity.
 | D28 | **Minor host changes are allowed, upstream first** (user, 2026-10-31: "I think it might be reasonable to allow some minor changes?"; 2026-11-01: "implemnt the plan", approving `2026-10-31-upstream-host-changes.md`). A host behaviour that needs a change outside vispy is fixed in this order: in vispy, which this project ships; upstream, in the host's own project, with the user's approval for each post (W12); or as a host patch used only by strict rows and registered in `compat/host-changes.json` with its upstream status. Hot-swap rows keep stock PyPI hosts; a row with a patched host is not a hot-swap row. A strict patch shrinks only at a requalification (R2 under D1), after a host release contains its upstream change. | Replacing only `vispy` is the hot swap's value. Patched hosts would need our own index (PyPI rejects local versions), re-patching for each host release, and a third profile. The two W12 changes are small: napari imports `OpenGL.error` lazily; qtpy imports Qt6's OpenGL modules lazily. Plan: `2026-10-31-upstream-host-changes.md`. |
 | D29 | **No PRs to napari or qtpy** (user, 2026-11-01: "these are my own project. nevner pr qtpy and napari"). W12 closes as not planned, and D28's upstream step is withdrawn: a host behaviour that needs a change outside vispy is fixed in vispy or, failing that, with a host patch used only by strict rows. Hot-swap rows keep stock hosts. The two prepared changes stay local records. | Run `upstream-effects-293`: the napari change helps only vispy builds whose `gl+` does not use PyOpenGL, and the qtpy change only stops two Qt modules loading. Both changes were tested (runs 291, 292 and 294), and nothing was posted. |
 | D30 | **Later napari releases get version-agnostic successor fixtures, with one reference packet per napari version** (user, 2026-11-01: "close the gaps and review again"; scope "Core suites + probe", design "Version-agnostic"). Each core suite's successor reuses the retained fixture and drops only its napari pin. Its packets live in `tests/reference/<base>-napari-<version>/` and record the napari version, so a future release needs new packets, not new code. The retained 0.9.2 modules and packets stay unchanged (D6). The napari-threedee plugin suites stay on 0.9.2. | Plan `2026-11-01-napari-010-parity.md`. |
-| D31 | **Every napari row moves to napari 0.10.0; 0.9.2 is retired, not deleted** (user, 2026-11-01: "can we remove 0.9.2?", then "which repo are you using? just move to 0.10"). Each row moves through its own 0.10.0 host lock and, where a suite pins napari, D30's successors with packets captured on 0.10.0. The retained 0.9.2 modules, packets and locks stay frozen: the successors import from them (D30), and D6 keeps original references. `pyproject.toml` and `uv.lock` keep the `hosts` group on 0.9.2 until R2 renews the records that pin them. **Done** (2026-11-03, Phases 1-5): every napari row except the volume scientific admission has its 0.10.0 successor, and 0.9.2 is retired: the probe's napari and threedee scenarios accept only 0.10.0, and the napari prepare tool defaults to 0.10.0's patch. The 0.9.2 rows in this plan are superseded. Kept on 0.9.2: the volume scientific admission's evidence until the W8 benchmark runs, and the color-volume suite's 0.9.2 plugin lock. | Plan `2026-11-01-napari-010-move.md`. |
+| D31 | **Every napari row moves to napari 0.10.0; 0.9.2 is retired, not deleted** (user, 2026-11-01: "can we remove 0.9.2?", then "which repo are you using? just move to 0.10"). Each row moves through its own 0.10.0 host lock and, where a suite pins napari, D30's successors with packets captured on 0.10.0. The retained 0.9.2 modules, packets and locks stay frozen: the successors import from them (D30), and D6 keeps original references. `pyproject.toml` and `uv.lock` keep the `hosts` group on 0.9.2 until R2 renews the records that pin them. **Done** (2026-11-03, Phases 1-5 and the volume scientific admission): every napari row has its 0.10.0 successor, and 0.9.2 is retired: the probe's napari and threedee scenarios accept only 0.10.0, and the napari prepare tool defaults to 0.10.0's patch. The 0.9.2 rows in this plan are superseded. Kept: the color-volume suite's 0.9.2 plugin lock, and admission set v5, which the W8 volume benchmark pairs' evidence binds. | Plan `2026-11-01-napari-010-move.md`. |
 
 No decisions are open. The latest is D31: every napari row moves to napari 0.10.0.
 
@@ -1342,6 +1342,19 @@ too".
 - **R2.** The dev `hosts` group moves to napari 0.10.0 when R2 renews the
   records that pin `pyproject.toml` and `uv.lock`, and R2's matrix renewal
   takes the strict successor rows.
+
+**Volume scientific admission on napari 0.10.0** (2026-11-03, run
+`napari-010-volume-admission-307`, D31). The user approved the benchmark runs
+("sure"); none were needed.
+- **Why.** The admission joins 24 large-volume workloads, which involve no
+  napari, to 17 small controls, and only the controls run napari. The W8 volume
+  benchmark pairs consume a finished set; they do not produce one.
+- **Controls.** The 17 controls ran again on the same native58 wheel and NumPy
+  2.4.6 profile, with napari and npe2 at 0.10.0. All 17 equal their references
+  exactly (the 6 categorical cases against the napari 0.10.0 packet).
+- **Set.** `compat/scientific-admissions/volume-native58-cp312-numpy246-napari-0.10.0`, written by
+  `tools/volume_scientific_admission_successor.py`: all 24 pass. Set v5 stays
+  as the record the W8 pairs bind. D31 is done.
 
 ## Order
 
