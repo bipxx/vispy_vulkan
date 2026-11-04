@@ -1,0 +1,208 @@
+{
+  "cache_preserved_for_unverified_worker": false,
+  "cases": {
+    "additive": {
+      "actual_worker_terminal": {
+        "error": 87,
+        "mode": "windows_worker_already_absent",
+        "terminal": true
+      },
+      "launch_id": "725e4fe3717e49fda0917fc47e795e10",
+      "process_exit": 0,
+      "report_sha256": "cdb0bd6d680adfee61dd4e6f65a63917b4a2069f3cc6271bed1e396953c68e75"
+    },
+    "attenuated_mip": {
+      "actual_worker_terminal": {
+        "error": 87,
+        "mode": "windows_worker_already_absent",
+        "terminal": true
+      },
+      "launch_id": "14d8a72e4b9646568f9067cd466c7b62",
+      "process_exit": 0,
+      "report_sha256": "12de7f2c60884bc9d109ce0c142ccac25958819085bd532d8a0429524a7fc139"
+    },
+    "average": {
+      "actual_worker_terminal": {
+        "error": 87,
+        "mode": "windows_worker_already_absent",
+        "terminal": true
+      },
+      "launch_id": "6bd3e0275ad34e84b276e7093971eae1",
+      "process_exit": 0,
+      "report_sha256": "91e3f83a1685ac1080beed7e3c0843bd8306296df2b262e73cbb7406d8af364d"
+    },
+    "categorical_clip": {
+      "actual_worker_terminal": {
+        "error": 87,
+        "mode": "windows_worker_already_absent",
+        "terminal": true
+      },
+      "launch_id": "8a3c3d5799294bd5b2a3407011f72560",
+      "process_exit": 0,
+      "report_sha256": "d6fca5e7ec2da9df115f839347311029070af8f9bbb45f605f5bb519643579cb"
+    },
+    "categorical_edit": {
+      "actual_worker_terminal": {
+        "error": 87,
+        "mode": "windows_worker_already_absent",
+        "terminal": true
+      },
+      "launch_id": "d9c22b880fee4d2dbbc789a296adf145",
+      "process_exit": 0,
+      "report_sha256": "247df7a1b38e526574b0c82a0fed9e061afc78e653ac5f492539fc27a91ee9c3"
+    },
+    "categorical_plane": {
+      "actual_worker_terminal": {
+        "error": 87,
+        "mode": "windows_worker_already_absent",
+        "terminal": true
+      },
+      "launch_id": "04848f0219de481599f0ec3fa56a6362",
+      "process_exit": 0,
+      "report_sha256": "d50c98341ed14d92eb897a472a242321dc0dbe4821a1f0579c55e9521e88494c"
+    },
+    "clipped_mip": {
+      "actual_worker_terminal": {
+        "error": 87,
+        "mode": "windows_worker_already_absent",
+        "terminal": true
+      },
+      "launch_id": "21c69a2f8e6649a19a4d4782a1da06e3",
+      "process_exit": 0,
+      "report_sha256": "5d39d6bcc6247f318d2418abe3b295f25203979f992360dc3b258131a9178597"
+    },
+    "iso": {
+      "actual_worker_terminal": {
+        "error": 87,
+        "mode": "windows_worker_already_absent",
+        "terminal": true
+      },
+      "launch_id": "3c93326e975743baa4c9071b1f1aa4b3",
+      "process_exit": 0,
+      "report_sha256": "7f3f189ab4e29df32bf717f1eec707e3fa115173c73ccf3e4258663949dd4ddc"
+    },
+    "iso_categorical_fast": {
+      "actual_worker_terminal": {
+        "error": 87,
+        "mode": "windows_worker_already_absent",
+        "terminal": true
+      },
+      "launch_id": "5ce6bd51d4734f25a28d97cf63329c36",
+      "process_exit": 0,
+      "report_sha256": "1df8ab4ad7ecb758b194a77dbe711528c57d563225d5c5bdde9eb23ab9c9ae58"
+    },
+    "iso_categorical_smooth": {
+      "actual_worker_terminal": {
+        "error": 87,
+        "mode": "windows_worker_already_absent",
+        "terminal": true
+      },
+      "launch_id": "5c4b457c64a548d8baad638b7c6b1a26",
+      "process_exit": 0,
+      "report_sha256": "12d767b5b8375f8b9c7e8b6b244cadf602d4874b3b5efa6c77c85c96d7112b2a"
+    },
+    "mesh_front_iso": {
+      "actual_worker_terminal": {
+        "error": 87,
+        "mode": "windows_worker_already_absent",
+        "terminal": true
+      },
+      "launch_id": "ac10f2e8b9c243e496c9540c309d396b",
+      "process_exit": 0,
+      "report_sha256": "8e11fedfdfd0e42447b5213e8bda73556ddf6f10df13dadb316c14f0858c90da"
+    },
+    "minip": {
+      "actual_worker_terminal": {
+        "error": 87,
+        "mode": "windows_worker_already_absent",
+        "terminal": true
+      },
+      "launch_id": "b47cf54eaf7b4091b9a2f2b3073c6279",
+      "process_exit": 0,
+      "report_sha256": "88e97ce10ab70cd29ecc07400d4feb37f71b12543f2490246cfde82081517d69"
+    },
+    "mip": {
+      "actual_worker_terminal": {
+        "error": 87,
+        "mode": "windows_worker_already_absent",
+        "terminal": true
+      },
+      "launch_id": "a59e4243e9f54d63b989c357435fbd18",
+      "process_exit": 0,
+      "report_sha256": "e563cde9cec2f632480a8abcbd8e3fe5d9c0d4defa3650b5e65e419c4e2b3a76"
+    },
+    "mip_linear": {
+      "actual_worker_terminal": {
+        "error": 87,
+        "mode": "windows_worker_already_absent",
+        "terminal": true
+      },
+      "launch_id": "e9323553c02b4bbe8f7ff8d6b448d26a",
+      "process_exit": 0,
+      "report_sha256": "78f86018539a506f6035cb6e24a747526335cbf1d2b271a80e6111a193c47555"
+    },
+    "plane_mip": {
+      "actual_worker_terminal": {
+        "error": 87,
+        "mode": "windows_worker_already_absent",
+        "terminal": true
+      },
+      "launch_id": "7a1d6ef40e3a4deaae2bb798ac604e02",
+      "process_exit": 0,
+      "report_sha256": "49e5af30e91cb7869c2992ba2e0d47f4c9b7f12953ae40e17e5255217fe88ed4"
+    },
+    "translucent": {
+      "actual_worker_terminal": {
+        "error": 87,
+        "mode": "windows_worker_already_absent",
+        "terminal": true
+      },
+      "launch_id": "99973741cebd41d39a39be230a9ccc2f",
+      "process_exit": 0,
+      "report_sha256": "2d39d401fa39cfbcda3ca051ff1a6e9631589cbc69908ef1a3a35c9834777cc7"
+    },
+    "translucent_categorical": {
+      "actual_worker_terminal": {
+        "error": 87,
+        "mode": "windows_worker_already_absent",
+        "terminal": true
+      },
+      "launch_id": "e68cbb576cf24741bb9e6da43ad2a1e2",
+      "process_exit": 0,
+      "report_sha256": "c5b3b0842d1705845d8be246ea422cd3413622bda66ec8eb366e4b3734e5ac00"
+    }
+  },
+  "full_release_qualified": false,
+  "owned_cache": "C:\\Users\\HEQ\\AppData\\Local\\Temp\\vispy-volume-admission-cache-jcip933r",
+  "owned_cache_removed": true,
+  "pid": 127204,
+  "process_stamp": {
+    "parent_pid": 173828,
+    "pid": 127204,
+    "windows_creation_time": 134382218706477987
+  },
+  "profile_sha256": "7bba61b6e22769bf950a3fd3fff1760d08bcb892b985d3ca63340e20e79907cd",
+  "sources_sha256": {
+    "LICENSE": "0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0",
+    "LICENSE-BSD": "a28bb857d763513c810ca843558c12cf97f64b990b855c1ce7f5e291e52fc25c",
+    "LICENSING.md": "e8a28d2d2c78d86fa2b6f83284e8f1a32237f87bfd417fd1cdfc84c8f3ce37f5",
+    "build/runs/napari-010-volume-admission-307/run_controls.py": "930ee10342e89a30d8bc7f77733c6b17c83ea36210911f314a84072d9d9e7e62",
+    "compat/host-environments/volume-scientific-controls-numpy246-napari-0.10.0-windows-cpython312-pyqt6.txt": "7bba61b6e22769bf950a3fd3fff1760d08bcb892b985d3ca63340e20e79907cd",
+    "tools/fixture_gloo.py": "37797259727afd9c6b15c7074319b935dcddb330deb2b6c99a03c8df6f36fddb",
+    "tools/fixture_mesh_layout_extensions.py": "ddbce05089ccb7b3b6b9f0b529159c4bd6de15ef152918f14400ddcea0571cd1",
+    "tools/fixture_napari_volume.py": "7ecf02d866cc497c8bd5c16e65b94e226f4536774f8daa671f0ca512565ce870",
+    "tools/fixture_napari_volume_successor.py": "a54768aca07fcc42e0e56fb987c0ba484768dd5c618cdda9ab9b55893426c2b7",
+    "tools/fixture_volume.py": "239ae6e505666bc0510d5b0084b359fc1221c0ff1d39a548847648f7ff316d6c",
+    "tools/mesh_layout_process.py": "129628ca97afc62755c109db6219d987766b702265c4ca23c21105ad5bd2ae1b",
+    "tools/mesh_layout_reference.py": "52aa9ecc9a86ba70c8b4e0dc9398c89ee16856a54c774a6eefb24369692a4ab8",
+    "tools/napari_host_packets.py": "53d0206177d14ab3480023d43a50c3eda32891d611eef77553257315ccb1039a",
+    "tools/volume_wheel_probe.py": "adb05446f93b4b395270d71f03bef36d833fbe62bc985d2ec130b1f07a6b5738",
+    "tools/volume_wheel_probe_successor.py": "95ab1887cca7abfd4652e828ed44ffca09c0850aa0919f9670bb470549497bc6",
+    "tools/volume_wheel_reference.py": "adb559839a042cd0091747de12e298d510e2c485398ee3e2eff4e7ab156f87f1",
+    "tools/volume_wheel_reference_successor.py": "ae84e251333dcdf202a2fdc53737d8385af5ccabcc8d007636eb51db4afd2e94",
+    "tools/volume_wheel_runner.py": "95681a4462ff8397186a85bacd078160cea3bd3d2ef9fa59592123bfd31f2e90",
+    "tools/volume_wheel_runner_successor.py": "5a5338bca2f8777dac67699fa49a420f991a46915d34420a9954f25ed2f539f2"
+  },
+  "status": "PASS_ALL17_NUMPY246_VOLUME_CONTROLS",
+  "wheel_sha256": "105698c7c6cef1e643b788a7b3a800e9630ebd7d9d6422fb4d11323389286f81"
+}

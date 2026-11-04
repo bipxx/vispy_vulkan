@@ -1,0 +1,587 @@
+[
+  [
+    "CURRENT",
+    0,
+    1
+  ],
+  [
+    "CREATE",
+    10,
+    "FrameBuffer"
+  ],
+  [
+    "CREATE",
+    8,
+    "RenderBuffer"
+  ],
+  [
+    "SIZE",
+    8,
+    [
+      96,
+      128
+    ],
+    "color"
+  ],
+  [
+    "ATTACH",
+    10,
+    "color",
+    8
+  ],
+  [
+    "CREATE",
+    9,
+    "RenderBuffer"
+  ],
+  [
+    "SIZE",
+    9,
+    [
+      96,
+      128
+    ],
+    "depth"
+  ],
+  [
+    "ATTACH",
+    10,
+    "depth",
+    9
+  ],
+  [
+    "FRAMEBUFFER",
+    10,
+    true
+  ],
+  [
+    "FUNC",
+    "glViewport",
+    0,
+    0,
+    128,
+    96
+  ],
+  [
+    "FUNC",
+    "glClearColor",
+    0.125490203499794,
+    0.250980406999588,
+    0.501960813999176,
+    1.0
+  ],
+  [
+    "FUNC",
+    "glClear",
+    17664
+  ],
+  [
+    "FUNC",
+    "glEnable",
+    "blend"
+  ],
+  [
+    "FUNC",
+    "glDisable",
+    "depth_test"
+  ],
+  [
+    "FUNC",
+    "glBlendFuncSeparate",
+    "src_alpha",
+    "one_minus_src_alpha",
+    "one",
+    "one_minus_src_alpha"
+  ],
+  [
+    "CREATE",
+    6,
+    "Program"
+  ],
+  [
+    "CREATE",
+    12,
+    "VertexShader"
+  ],
+  [
+    "DATA",
+    12,
+    0,
+    "uniform vec4 u_scale;\nuniform vec4 u_translate;\n\nvec4 st_transform_map(vec4 pos) {\n    return vec4(pos.xyz * u_scale.xyz + u_translate.xyz * pos.w, pos.w);\n}\n\n\nvec4 transform_map_chain(vec4 pos) {\n    vec4 result_1 = st_transform_map(pos);\n    return result_1;\n}\n\nvec4 transform_map_chain_1(vec4 pos) {\n    vec4 result_1 = transform_map_chain(pos);\n    return result_1;\n}\n\nvec4 null_transform_map(vec4 pos) {return pos;}\n\nvec4 transform_map_chain_2(vec4 pos) {\n    vec4 result_1 = null_transform_map(pos);\n    return result_1;\n}\n\nvec4 transform_map_chain_3(vec4 pos) {\n    vec4 result_1 = transform_map_chain_2(pos);\n    return result_1;\n}\n\nvec4 null_transform_map_1(vec4 pos) {return pos;}\n\nvec4 transform_map_chain_4(vec4 pos) {\n    vec4 result_1 = null_transform_map_1(pos);\n    return result_1;\n}\n\nvec4 transform_map_chain_5(vec4 pos) {\n    vec4 result_1 = transform_map_chain_4(pos);\n    return result_1;\n}\n\nuniform vec4 u_scale_1;\nuniform vec4 u_translate_1;\n\nvec4 st_transform_map_1(vec4 pos) {\n    return vec4(pos.xyz * u_scale_1.xyz + u_translate_1.xyz * pos.w, pos.w);\n}\n\n\nuniform vec4 u_scale_2;\nuniform vec4 u_translate_2;\n\nvec4 st_transform_map_2(vec4 pos) {\n    return vec4(pos.xyz * u_scale_2.xyz + u_translate_2.xyz * pos.w, pos.w);\n}\n\n\nvec4 transform_map_chain_6(vec4 pos) {\n    vec4 result_1 = st_transform_map_1(pos);\n    vec4 result_2 = st_transform_map_2(result_1);\n    return result_2;\n}\n\nvec4 transform_map_chain_7(vec4 pos) {\n    vec4 result_1 = transform_map_chain_6(pos);\n    return result_1;\n}\n\nuniform vec4 u_scale_3;\nuniform vec4 u_translate_3;\n\nvec4 st_transform_map_3(vec4 pos) {\n    return vec4(pos.xyz * u_scale_3.xyz + u_translate_3.xyz * pos.w, pos.w);\n}\n\n\nvec4 transform_map_chain_8(vec4 pos) {\n    vec4 result_1 = st_transform_map_3(pos);\n    return result_1;\n}\n\nvec4 transform_map_chain_9(vec4 pos) {\n    vec4 result_1 = transform_map_chain_8(pos);\n    return result_1;\n}\n\nvec4 transform_map_chain_10(vec4 pos) {\n    vec4 result_1 = transform_map_chain_1(pos);\n    vec4 result_2 = transform_map_chain_3(result_1);\n    vec4 result_3 = transform_map_chain_5(result_2);\n    vec4 result_4 = transform_map_chain_7(result_3);\n    vec4 result_5 = transform_map_chain_9(result_4);\n    return result_5;\n}\n\n\nuniform int method;  // 0=subdivide, 1=impostor\nattribute vec2 a_position;\nattribute vec2 a_texcoord;\nvarying vec2 v_texcoord;\n\nvoid main() {\n    v_texcoord = a_texcoord;\n    gl_Position = transform_map_chain_10(vec4(a_position, 0., 1.));\n}\n\n"
+  ],
+  [
+    "ATTACH",
+    6,
+    12
+  ],
+  [
+    "CREATE",
+    13,
+    "FragmentShader"
+  ],
+  [
+    "DATA",
+    13,
+    0,
+    "uniform float u_alpha;\n\nvoid apply_alpha() {\n    gl_FragColor.a = gl_FragColor.a * u_alpha;\n}\n\n\nuniform vec4 u_id_color;\nuniform int u_enabled;\n\nvoid picking_filter() {\n    if( u_enabled == 0 )\n        return;\n    if( gl_FragColor.a == 0.0 )\n        discard;\n    gl_FragColor = u_id_color;\n}\n\n\nuniform sampler2D u_texture_1;\n\nvec4 texture_lookup(vec2 texcoord) {\n    if(texcoord.x < 0.0 || texcoord.x > 1.0 ||\n    texcoord.y < 0.0 || texcoord.y > 1.0) {\n        discard;\n    }\n    return texture2D(u_texture_1, texcoord);\n}\n\nfloat color_to_luminance(vec4 color) { return color.r; }\n\nuniform vec2 u_clim;\n\nfloat apply_clim(float data) {\n    // pass through NaN values to get handled by the colormap\n    if (!(data <= 0.0 || 0.0 <= data)) return data;\n\n    data = clamp(data, min(u_clim.x, u_clim.y), max(u_clim.x, u_clim.y));\n    data = (data - u_clim.x) / (u_clim.y - u_clim.x);\n    return data;\n}\n\nuniform float u_gamma;\n\nfloat apply_gamma(float data) {\n    // pass through NaN values to get handled by the colormap\n    if (!(data <= 0.0 || 0.0 <= data)) return data;\n\n    return pow(data, u_gamma);\n}\n\n\nuniform sampler2D texture2D_LUT;\nvec4 colormap(float t) {\n    // Map NaN to bad_color\n    if (!(t <= 0.0 || 0.0 <= t)) {\n        return vec4(0.000, 0.000, 0.000, 0.000);\n    }\n    return texture2D(texture2D_LUT, vec2(0.0, clamp(t, 0.0, 1.0)));\n}\n\n\nvec4 chain(vec4 color) {\n    float result_1 = color_to_luminance(color);\n    float result_2 = apply_clim(result_1);\n    float result_3 = apply_gamma(result_2);\n    vec4 result_4 = colormap(result_3);\n    return result_4;\n}\n\nvec4 null_transform_map(vec4 pos) {return pos;}\n\n\nuniform vec2 image_size;\nuniform int method;  // 0=subdivide, 1=impostor\nuniform sampler2D u_texture;\nvarying vec2 v_texcoord;\n\nvec4 map_local_to_tex(vec4 x) {\n    // Cast ray from 3D viewport to surface of image\n    // (if null_transform_map does not affect z values, then this\n    // can be optimized as simply null_transform_map.map(x) )\n    vec4 p1 = null_transform_map(x);\n    vec4 p2 = null_transform_map(x + vec4(0, 0, 0.5, 0));\n    p1 /= p1.w;\n    p2 /= p2.w;\n    vec4 d = p2 - p1;\n    float f = p2.z / d.z;\n    vec4 p3 = p2 - d * f;\n\n    // finally map local to texture coords\n    return vec4(p3.xy / image_size, 0, 1);\n}\n\n\nvoid main()\n{\n    vec2 texcoord;\n    if( method == 0 ) {\n        texcoord = v_texcoord;\n    }\n    else {\n        // vertex shader outputs clip coordinates;\n        // fragment shader maps to texture coordinates\n        texcoord = map_local_to_tex(vec4(v_texcoord, 0, 1)).xy;\n    }\n\n    gl_FragColor = chain(texture_lookup(texcoord));\n\n    apply_alpha();\npicking_filter();\n\n}\n\n"
+  ],
+  [
+    "ATTACH",
+    6,
+    13
+  ],
+  [
+    "LINK",
+    6
+  ],
+  [
+    "DELETE",
+    12
+  ],
+  [
+    "DELETE",
+    13
+  ],
+  [
+    "UNIFORM",
+    6,
+    "u_alpha",
+    "float",
+    {
+      "array": {
+        "bytes": 4,
+        "dtype": "<f4",
+        "sha256": "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c",
+        "shape": [
+          1
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    6,
+    "u_clim",
+    "vec2",
+    {
+      "array": {
+        "bytes": 8,
+        "dtype": "<f4",
+        "sha256": "22b6f43bd8d27738d3213f29e96b62d01d9d6c0ab4f9732aaae803186f51eab7",
+        "shape": [
+          2
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    6,
+    "u_enabled",
+    "int",
+    {
+      "array": {
+        "bytes": 4,
+        "dtype": "<i4",
+        "sha256": "df3f619804a92fdb4057192dc43dd748ea778adc52bc498ce80524c014b81119",
+        "shape": [
+          1
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    6,
+    "u_gamma",
+    "float",
+    {
+      "array": {
+        "bytes": 4,
+        "dtype": "<f4",
+        "sha256": "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c",
+        "shape": [
+          1
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    6,
+    "u_id_color",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "bd4f23915b59dc9560b98559d719972260ba70ddab11d1528786495c270294f1",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    6,
+    "u_scale",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "9317a0e878193177b4a95da071b3edcaf03eb81bb5d53970d8d254e475d80134",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    6,
+    "u_scale_1",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "a416fff845c77f5467c037c96e18453dd9a307d0af8be8aa4d3aac93ee821b03",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    6,
+    "u_scale_2",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "f6bb1294da2f78cd935b01c7656280df5eaa0439e9d97bc03775825a41a508e4",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    6,
+    "u_scale_3",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "3323b07f7de182de035e8eafb61d12f9b4ae1e4d6e4e06710126e4fa6f5b5c34",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "CREATE",
+    2,
+    "Texture2D"
+  ],
+  [
+    "INTERPOLATION",
+    2,
+    "nearest",
+    "nearest"
+  ],
+  [
+    "WRAPPING",
+    2,
+    [
+      "clamp_to_edge",
+      "clamp_to_edge"
+    ]
+  ],
+  [
+    "SIZE",
+    2,
+    [
+      24,
+      32,
+      1
+    ],
+    "luminance",
+    null
+  ],
+  [
+    "DATA",
+    2,
+    [
+      0,
+      0
+    ],
+    {
+      "array": {
+        "bytes": 3072,
+        "dtype": "<f4",
+        "sha256": "2c31fc49aace7f14c406e2ab3a6264de36d08dc01dfa8693ec2b46dd1e12b317",
+        "shape": [
+          24,
+          32,
+          1
+        ]
+      }
+    }
+  ],
+  [
+    "TEXTURE",
+    6,
+    "u_texture_1",
+    2
+  ],
+  [
+    "UNIFORM",
+    6,
+    "u_translate",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "374708fff7719dd5979ec875d56cd2286f6d3cf7ec317a3b25632aab28ec37bb",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    6,
+    "u_translate_1",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "67d676cf62c5904ac14c953353b0237bd9897678bcd8134de5ad3398722685fa",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    6,
+    "u_translate_2",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "374708fff7719dd5979ec875d56cd2286f6d3cf7ec317a3b25632aab28ec37bb",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "UNIFORM",
+    6,
+    "u_translate_3",
+    "vec4",
+    {
+      "array": {
+        "bytes": 16,
+        "dtype": "<f4",
+        "sha256": "c4ed2338fa8bdfe87ba22b0b14e6f74e4bbf6d849f85310370833d9cc56510ac",
+        "shape": [
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "CREATE",
+    11,
+    "Texture2D"
+  ],
+  [
+    "INTERPOLATION",
+    11,
+    "linear",
+    "linear"
+  ],
+  [
+    "WRAPPING",
+    11,
+    [
+      "clamp_to_edge",
+      "clamp_to_edge"
+    ]
+  ],
+  [
+    "SIZE",
+    11,
+    [
+      1024,
+      1,
+      4
+    ],
+    "rgba",
+    null
+  ],
+  [
+    "DATA",
+    11,
+    [
+      0,
+      0
+    ],
+    {
+      "array": {
+        "bytes": 16384,
+        "dtype": "<f4",
+        "sha256": "b82401faa1ebd8e132b7805dac2d164539ce2f18c80de3d1da37c10bee95e5ad",
+        "shape": [
+          1024,
+          1,
+          4
+        ]
+      }
+    }
+  ],
+  [
+    "TEXTURE",
+    6,
+    "texture2D_LUT",
+    11
+  ],
+  [
+    "UNIFORM",
+    6,
+    "method",
+    "int",
+    {
+      "array": {
+        "bytes": 4,
+        "dtype": "<i4",
+        "sha256": "df3f619804a92fdb4057192dc43dd748ea778adc52bc498ce80524c014b81119",
+        "shape": [
+          1
+        ]
+      }
+    }
+  ],
+  [
+    "CREATE",
+    3,
+    "VertexBuffer"
+  ],
+  [
+    "SIZE",
+    3,
+    48
+  ],
+  [
+    "DATA",
+    3,
+    0,
+    {
+      "array": {
+        "bytes": 48,
+        "dtype": "|V8",
+        "sha256": "cd8592ea8f6f5871ee98cdb07617e98cef7a8289447e164bb43e75df1003abc3",
+        "shape": [
+          6,
+          1
+        ]
+      }
+    }
+  ],
+  [
+    "ATTRIBUTE",
+    6,
+    "a_position",
+    "vec2",
+    [
+      3,
+      8,
+      0
+    ],
+    null
+  ],
+  [
+    "CREATE",
+    4,
+    "VertexBuffer"
+  ],
+  [
+    "SIZE",
+    4,
+    48
+  ],
+  [
+    "DATA",
+    4,
+    0,
+    {
+      "array": {
+        "bytes": 48,
+        "dtype": "|V8",
+        "sha256": "6c50ce5a06b413f8196c056cebf7dc0a64e0e5787bdd62a8e888b26908001c76",
+        "shape": [
+          6,
+          1
+        ]
+      }
+    }
+  ],
+  [
+    "ATTRIBUTE",
+    6,
+    "a_texcoord",
+    "vec2",
+    [
+      4,
+      8,
+      0
+    ],
+    null
+  ],
+  [
+    "UNIFORM",
+    6,
+    "image_size",
+    "vec2",
+    {
+      "array": {
+        "bytes": 8,
+        "dtype": "<f4",
+        "sha256": "cc73abb4e5c4a85ec94b5d3687c307a6a5e57da80ba476bc20db032ce5085246",
+        "shape": [
+          2
+        ]
+      }
+    }
+  ],
+  [
+    "DRAW",
+    6,
+    "triangles",
+    [
+      0,
+      6
+    ],
+    1
+  ],
+  [
+    "FUNC",
+    "glFinish"
+  ]
+]

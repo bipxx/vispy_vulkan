@@ -1,0 +1,288 @@
+{
+  "analytic_plane_normal": [
+    0.9902836607134686,
+    0.13906211318663206,
+    0.0
+  ],
+  "analytic_rotation_radians": 0.13951426252818075,
+  "camera": {
+    "angles": [
+      20.0,
+      35.0,
+      -20.0
+    ],
+    "center": [
+      8.0,
+      12.0,
+      14.0
+    ],
+    "perspective": 0.0,
+    "zoom": 5.0
+  },
+  "case": "plane_rotation",
+  "cleanup_scope": "two mouse callback owners, detached visual, public viewer close and clean process exit; not proof of all signal disconnections",
+  "clip_plane": null,
+  "comparison": "whole-frame exact uint8 RGBA, independently projected face landmarks, no fitting",
+  "depiction": "plane",
+  "event_api": "real QtTest mousePress/mouseMove/mouseRelease on the installed Qt canvas",
+  "event_pixels": {
+    "initialize": [
+      125,
+      106
+    ],
+    "move": [
+      127,
+      107
+    ],
+    "press": [
+      124,
+      104
+    ]
+  },
+  "handle_size": 2.0,
+  "input": {
+    "dtype": "<f4",
+    "sha256": "0b9f4bf9d2a813b475831684c88f4d11c6ec5357e9d97a3902b2a31255f86b10",
+    "shape": [
+      20,
+      24,
+      28
+    ]
+  },
+  "interpolation3d": "nearest",
+  "landmarks": {
+    "rotator_x": {
+      "axis": "x",
+      "pixel": [
+        125.56987524312318,
+        105.65878722331061
+      ]
+    },
+    "rotator_y": {
+      "axis": "y",
+      "pixel": [
+        131.40412947680923,
+        86.52876368748666
+      ]
+    },
+    "rotator_z": {
+      "axis": "z",
+      "pixel": [
+        143.93759555761113,
+        100.8256010783217
+      ]
+    },
+    "translator_z": {
+      "axis": "z",
+      "pixel": [
+        114.77392930972063,
+        91.90050409382509
+      ]
+    }
+  },
+  "picking": "installed CPU ray/sphere callbacks, not GPU ID picking",
+  "plane_normal": [
+    1.0,
+    0.0,
+    0.0
+  ],
+  "plane_position": [
+    8.0,
+    12.0,
+    14.0
+  ],
+  "plane_thickness": 1.0,
+  "plugin": "napari-threedee",
+  "radius": 4.0,
+  "registered_widget": "render plane manipulator",
+  "rendering": "mip",
+  "size": [
+    256,
+    192
+  ],
+  "stages": [
+    {
+      "enabled": true,
+      "is_dragging": false,
+      "mouse_pan": true,
+      "normal": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "origin": [
+        8.0,
+        12.0,
+        14.0
+      ],
+      "owned_callbacks": [
+        true,
+        true
+      ],
+      "position": [
+        8.0,
+        12.0,
+        14.0
+      ],
+      "selected_axis_id": null,
+      "stage": "activated"
+    },
+    {
+      "enabled": true,
+      "is_dragging": false,
+      "mouse_pan": true,
+      "normal": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "origin": [
+        8.0,
+        12.0,
+        14.0
+      ],
+      "owned_callbacks": [
+        true,
+        true
+      ],
+      "position": [
+        8.0,
+        12.0,
+        14.0
+      ],
+      "selected_axis_id": null,
+      "stage": "before_events"
+    },
+    {
+      "enabled": true,
+      "is_dragging": true,
+      "mouse_pan": false,
+      "normal": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "origin": [
+        8.0,
+        12.0,
+        14.0
+      ],
+      "owned_callbacks": [
+        true,
+        true
+      ],
+      "position": [
+        8.0,
+        12.0,
+        14.0
+      ],
+      "selected_axis_id": 2,
+      "stage": "pressed"
+    },
+    {
+      "enabled": true,
+      "is_dragging": true,
+      "mouse_pan": false,
+      "normal": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "origin": [
+        8.0,
+        12.0,
+        14.0
+      ],
+      "owned_callbacks": [
+        true,
+        true
+      ],
+      "position": [
+        8.0,
+        12.0,
+        14.0
+      ],
+      "selected_axis_id": 2,
+      "stage": "initialized"
+    },
+    {
+      "enabled": true,
+      "is_dragging": true,
+      "mouse_pan": false,
+      "normal": [
+        0.9902836607134733,
+        0.13906211318659917,
+        0.0
+      ],
+      "origin": [
+        8.0,
+        12.0,
+        14.0
+      ],
+      "owned_callbacks": [
+        true,
+        true
+      ],
+      "position": [
+        8.0,
+        12.0,
+        14.0
+      ],
+      "selected_axis_id": 2,
+      "stage": "moved"
+    },
+    {
+      "enabled": true,
+      "is_dragging": false,
+      "mouse_pan": true,
+      "normal": [
+        0.9902836607134733,
+        0.13906211318659917,
+        0.0
+      ],
+      "origin": [
+        8.0,
+        12.0,
+        14.0
+      ],
+      "owned_callbacks": [
+        true,
+        true
+      ],
+      "position": [
+        8.0,
+        12.0,
+        14.0
+      ],
+      "selected_axis_id": null,
+      "stage": "final"
+    },
+    {
+      "enabled": false,
+      "is_dragging": false,
+      "mouse_pan": true,
+      "normal": [
+        0.9902836607134733,
+        0.13906211318659917,
+        0.0
+      ],
+      "origin": [
+        8.0,
+        12.0,
+        14.0
+      ],
+      "owned_callbacks": [
+        false,
+        false
+      ],
+      "position": [
+        8.0,
+        12.0,
+        14.0
+      ],
+      "selected_axis_id": null,
+      "stage": "retired_layer_removed"
+    }
+  ],
+  "volume_blending": "translucent_no_depth"
+}

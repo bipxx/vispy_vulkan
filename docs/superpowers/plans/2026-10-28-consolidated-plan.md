@@ -28,7 +28,9 @@ unmodified scientific hosts, napari first, run on it with practical parity.
   - **Strict no-OpenGL** uses patched napari/qtpy/Glue and Qt without its OpenGL
     modules. On Linux, Qt is built with OpenGL and EGL disabled; on Windows,
     selected stock modules are used and the GL modules excluded. It must pass
-    three gates on one installed artifact.
+    three gates on one installed artifact. By D32 its rows for VisPy itself,
+    headless and in plain Qt windows, are release-blocking; its host-application
+    rows are optional.
   - **Hot swap** uses stock PyPI hosts with only `vispy` replaced. Its claim:
     - vispy and its native module never import, load or resolve GL;
     - no GL context is created or made current, and no GL draw runs, anywhere
@@ -59,9 +61,9 @@ approvals and ledgers keep their original source/artifact identities.
 | Current admitted wheels | `444402...` (Windows cp312), `bd89a994...` (Linux, `linux_x86_64`, not manylinux) | same, :105-106 |
 | Earlier wheels | Windows cp310-cp314 and WSL cp312 at an earlier source epoch | `docs/tested-platforms.md` |
 | Published wheels | None uploaded anywhere | `docs/tested-platforms.md` |
-| Strict matrix | 13 of 14 mandatory rows qualified (6 Windows, 7 WSL), bound to `62df5e4c...` and `374a74ea...`. **Windows napari-threedee: PENDING.** DIVE and visbrain are non-mandatory and not admitted. | `compat/no-opengl-matrix.json` |
+| Strict matrix | On napari 0.9.2, 13 of 14 mandatory rows qualified (6 Windows, 7 WSL), bound to `62df5e4c...` and `374a74ea...`, with Windows napari-threedee PENDING. On napari 0.10.0 (D31 Phase 5b), all four napari rows pass on the same artifacts, Windows napari-threedee included; they are in the successor record until R2. R1 stays open. DIVE and visbrain are non-mandatory and not admitted. By D32 the 6 host-application rows are optional and the 8 headless and plain-Qt rows stay mandatory; R2 applies it. | `compat/no-opengl-matrix.json`, `compat/no-opengl-napari-0.10.0.json` |
 | Hot swap | Stock napari works with the current wheel on Windows cp312. Drag-race fix merged (PR #24). Smooth-line criterion merged (PR #25). | `2026-10-28-napari-hot-swap.md` |
-| Startup stall | Mechanism found for the 2026-10-28 dev-environment recurrence: the default thread pool was lost early in startup. The qualification stall's pool state was never captured. The closer is unidentified (PR #26). | `docs/threedee-startup-diagnosis.md` |
+| Startup stall | Mechanism found for the 2026-10-28 dev-environment recurrence: the default thread pool was lost early in startup. The qualification stall's pool state was never captured. The closer is unidentified (PR #26). By D33 it is documented, not release-blocking. | `docs/threedee-startup-diagnosis.md` |
 | Performance (W8) | Report done. Resident scenes keep the refresh rate; uploads are slower than OpenGL's, and partial texture updates much slower (B18). Readback presentation costs over 200 ms per 4K frame (B19). The hot swap moves to native presentation at R2, after the napari parity suites pass under it (D18). B19 and B18's CPU part are fixed on the R2 branch (run `b19-readback-257`). Full texture uploads are about 3 times faster there (P1). Vsynced native presentation there now paces like OpenGL's swap, without the extra refresh (P2). A texture updated between two draws of one frame no longer copies its whole CPU shadow (P3). A vsynced frame slower than a refresh renders one frame ahead, which brings full uploads to 0.82-0.99 of OpenGL's frame rate in a compact re-run (P4). Full uploads now copy straight from their CPU shadow (P5), and streamed buffers from their payload blocks (P6): in a compact re-run, a full 64 MiB image runs at 1.08 of OpenGL's frame rate, a 256-cubed volume at 1.08, and 1M points with new positions at 1.19. | `docs/performance-report.md` |
 
 ## Decisions
@@ -97,8 +99,14 @@ approvals and ledgers keep their original source/artifact identities.
 | D25 | **A vsynced frame slower than a refresh renders one frame ahead** (user, 2026-10-31: "sure", to pacing on the previous frame so that CPU work overlaps the GPU, with camera-only latency kept at one refresh). D22 still holds for a frame produced in less than one refresh interval, counted from the previous paced paint's return: its paint returns once its own GPU work has retired. A slower frame's paint returns once the previous frame has retired. The Win32 surface reads its monitor's refresh rate, and elsewhere pacing assumes 60 Hz. | Runs `quick-bench-262` and `pacing-ahead-263`. With P1-P3, the paced paint waited 10.6-28.5 ms per heavy frame, which OpenGL overlaps with the next frame's CPU work: 0.64-0.72 of OpenGL's frame rate on uploads. Waiting only for the previous frame would show camera-only frames a refresh later, since they are produced faster than the display shows them. |
 | D26 | **A full texture upload copies straight from its CPU shadow** (user, 2026-10-31: "Host import + fallback (Recommended)"). A payload snapshot of at least 1 MiB is captured into a pooled, page-aligned host block, which a full update makes the texture's CPU shadow. When the device has Dawn's experimental `HostMappedPointer` feature, which the `allow_unsafe_apis` instance toggle allows, a full upload that needs no conversion and whose rows are a multiple of 256 bytes copies from the block's import. Imports pin at most 512 MiB of host memory. Every other upload stages as before, and `VISPY_DAWN_HOST_IMPORT=0` turns imports and the toggle off. | Run `p5-upload-copies-265` (`p5-design.md`). A direct 64 MiB full upload made two CPU copies, the snapshot at flush and the staging copy, about 16 ms against OpenGL's 12.7. On this desktop, threads barely shorten a copy, which memory bandwidth bounds (7.6 to 5.7 ms). The toggle only allows extra APIs; nothing the port already uses changes. |
 | D27 | **A streamed buffer copies straight from its payload block** (user, 2026-10-31: "continue", to "Import buffer uploads the same way, to cut the points' 11.4 ms buffer copy"). A whole buffer update with a payload of at least 1 MiB keeps the payload's host block as the buffer's bytes, and a revision whose size is a multiple of 4 bytes is copied on the GPU from the block's import before the render pass that reads it (D26's feature, toggle and 512 MiB limit). Vertex and index buffers of at least 1 MiB whose revisions have retired are reused by new revisions of the same size and usage. The batched draw routes and every other upload keep queue.WriteBuffer, and `VISPY_DAWN_HOST_IMPORT=0` turns imports off. | Run `p6-buffer-uploads-266`. napari 0.9.2 draws points as vispy's instanced markers (56 bytes per point; the port accepts its `use(gl='gl+')`), the route of the compact benchmark's points. A whole update copied the payload into the buffer's CPU shadow and again into Dawn's staging, and a buffer replaced while a frame read it allocated a new GPU buffer. |
+| D28 | **Minor host changes are allowed, upstream first** (user, 2026-10-31: "I think it might be reasonable to allow some minor changes?"; 2026-11-01: "implemnt the plan", approving `2026-10-31-upstream-host-changes.md`). A host behaviour that needs a change outside vispy is fixed in this order: in vispy, which this project ships; upstream, in the host's own project, with the user's approval for each post (W12); or as a host patch used only by strict rows and registered in `compat/host-changes.json` with its upstream status. Hot-swap rows keep stock PyPI hosts; a row with a patched host is not a hot-swap row. A strict patch shrinks only at a requalification (R2 under D1), after a host release contains its upstream change. | Replacing only `vispy` is the hot swap's value. Patched hosts would need our own index (PyPI rejects local versions), re-patching for each host release, and a third profile. The two W12 changes are small: napari imports `OpenGL.error` lazily; qtpy imports Qt6's OpenGL modules lazily. Plan: `2026-10-31-upstream-host-changes.md`. |
+| D29 | **No PRs to napari or qtpy** (user, 2026-11-01: "these are my own project. nevner pr qtpy and napari"). W12 closes as not planned, and D28's upstream step is withdrawn: a host behaviour that needs a change outside vispy is fixed in vispy or, failing that, with a host patch used only by strict rows. Hot-swap rows keep stock hosts. The two prepared changes stay local records. | Run `upstream-effects-293`: the napari change helps only vispy builds whose `gl+` does not use PyOpenGL, and the qtpy change only stops two Qt modules loading. Both changes were tested (runs 291, 292 and 294), and nothing was posted. |
+| D30 | **Later napari releases get version-agnostic successor fixtures, with one reference packet per napari version** (user, 2026-11-01: "close the gaps and review again"; scope "Core suites + probe", design "Version-agnostic"). Each core suite's successor reuses the retained fixture and drops only its napari pin. Its packets live in `tests/reference/<base>-napari-<version>/` and record the napari version, so a future release needs new packets, not new code. The retained 0.9.2 modules and packets stay unchanged (D6). The napari-threedee plugin suites stay on 0.9.2. | Plan `2026-11-01-napari-010-parity.md`. |
+| D31 | **Every napari row moves to napari 0.10.0; 0.9.2 is retired, not deleted** (user, 2026-11-01: "can we remove 0.9.2?", then "which repo are you using? just move to 0.10"). Each row moves through its own 0.10.0 host lock and, where a suite pins napari, D30's successors with packets captured on 0.10.0. The retained 0.9.2 modules, packets and locks stay frozen: the successors import from them (D30), and D6 keeps original references. `pyproject.toml` and `uv.lock` keep the `hosts` group on 0.9.2 until R2 renews the records that pin them. **Done** (2026-11-03, Phases 1-5 and the volume scientific admission): every napari row has its 0.10.0 successor, and 0.9.2 is retired: the probe's napari and threedee scenarios accept only 0.10.0, and the napari prepare tool defaults to 0.10.0's patch. The 0.9.2 rows in this plan are superseded. Kept: the color-volume suite's 0.9.2 plugin lock, and admission set v5, which the W8 volume benchmark pairs' evidence binds. | Plan `2026-11-01-napari-010-move.md`. |
+| D32 | **Only VisPy's own strict rows are release-blocking** (user, 2026-11-04: "B, and always keep the project minimal, clean and principled"). The 8 strict rows that need no host patch stay mandatory: headless and plain Qt windows (PyQt5, PyQt6 and PySide6) on Windows Vulkan and WSL lavapipe. The 6 host-application strict rows, napari, napari-threedee and Glue on both platforms, become optional evidence, and napari and Glue are claimed through the hot swap only. The napari, QtPy and Glue host patches leave the release path and stay as records. "No-OpenGL" now names what VisPy itself does. The matrix is pinned until R2, whose renewal applies this. | This plan: Goal and scope, R2. |
+| D33 | **The Windows startup stall is documented, not release-blocking** (user, 2026-11-04: "Document, don't block"). R1 moves to the backlog as B22. The release notes describe the rare startup hang and how to report one under `tools/pool_watch_external.py`. The stall becomes release-blocking again if it recurs. | R1, B22. |
 
-No decisions are open. The latest is D27, streamed buffers that copy straight from their payload blocks.
+No decisions are open. The latest is D31: every napari row moves to napari 0.10.0.
 
 The user has already decided, and confirmed on 2026-10-29, that the Windows
 napari-threedee row stays required, so the release waits for R1. On 2026-10-29
@@ -111,8 +119,8 @@ W11 publication and W12 upstream posting each need explicit approval.
 
 | ID | Work | Exit | Needs |
 | --- | --- | --- | --- |
-| R1 (W9) | Windows napari-threedee strict row | A cause and a regression test, then full lifecycle, nine-zero shutdown and all three gates on the release artifact (spec :340-345; status :86-87). A passing replay never closes it (diagnosis :49-50). | Identify the closer. Instrument hot-swap and diagnostic launches and wait for a recurrence. **Instrumentation** (2026-10-29): `tools/pool_watch.py` watches the default thread pool's worker-factory handle and, when it is lost, records the time, the handle's new type and every Python thread's stack. It only queries object types; CPU tests cover the record. Launches enable it with `VISPY_POOL_WATCH=<events.jsonl>`. **It crashes Tk processes** (run `b19-readback-257`): with it enabled, three of three Tk test runs ended in a fatal exception 0x80000003 in the watcher's thread while it was garbage-collecting; without it, none did. CPython 3.12 runs a scheduled collection in whichever thread next executes bytecode, so the watcher's 5 ms loop can run Tk's finalizers off Tk's thread, and Qt objects carry the same risk. It is replaced by an out-of-process watcher (D20, run `r1-external-poller-259`): `tools/pool_watch_external.py --output <events.jsonl> -- <command>` wraps a launch. Runs 249 and 255 made their napari launches without any watcher. |
-| R2 | Release assembly: a fresh build of the then-current source (D1) | Every mandatory row requalified on it, final-head CI, promotion review | R1. The fresh source must include run `w4-napari-layer-families-236`'s patch set: run `w1-w5-native-batch-227`'s (W1, W5 smooth line ends, W15), run `w5-fringe-native-234`'s minimum smooth coverage, and the Qt backend's Dawn canvas release fix. Those are pinned runtime files, so the Tk candidate's runtime inputs are renewed with it. The patch set is kept, applied to `main`, on the branch `r2/pending-runtime-patches` (O5). D18 adds the switch of the Windows hot swap to native presentation, with strict no-OpenGL qualification selecting readback explicitly. It applies only after the napari parity suites pass under native presentation on the R2 test wheel. That condition is met (runs 249 and 255). The switch is made at R2 assembly, because selecting readback explicitly edits the pinned strict harness. The branch also carries B19 and B18's CPU part (run `b19-readback-257`) and P1's upload changes, P1's fix (step D), P2's pacing and P3 (run `perf-profile-261`), P4's render-ahead (run `pacing-ahead-263`), B20's fix (run `b20-staged-patch-264`), P5's host imports (run `p5-upload-copies-265`), and P6's buffer imports (run `p6-buffer-uploads-266`). Its local head is `c7b0eae` (capture repair/controls, Linux profile and archive audit repair from runs 281-286); the five follow-up commits have not been pushed. |
+| R1 (W9) | Windows napari-threedee strict row | **Not release-blocking since D33; tracked as B22.** A cause and a regression test, then full lifecycle, nine-zero shutdown and all three gates on the release artifact (spec :340-345; status :86-87). A passing replay never closes it (diagnosis :49-50). | Identify the closer. Instrument hot-swap and diagnostic launches and wait for a recurrence. **Instrumentation** (2026-10-29): `tools/pool_watch.py` watches the default thread pool's worker-factory handle and, when it is lost, records the time, the handle's new type and every Python thread's stack. It only queries object types; CPU tests cover the record. Launches enable it with `VISPY_POOL_WATCH=<events.jsonl>`. **It crashes Tk processes** (run `b19-readback-257`): with it enabled, three of three Tk test runs ended in a fatal exception 0x80000003 in the watcher's thread while it was garbage-collecting; without it, none did. CPython 3.12 runs a scheduled collection in whichever thread next executes bytecode, so the watcher's 5 ms loop can run Tk's finalizers off Tk's thread, and Qt objects carry the same risk. It is replaced by an out-of-process watcher (D20, run `r1-external-poller-259`): `tools/pool_watch_external.py --output <events.jsonl> -- <command>` wraps a launch. Runs 249 and 255 made their napari launches without any watcher. |
+| R2 | Release assembly: a fresh build of the then-current source (D1) | Every mandatory row requalified on it, final-head CI, promotion review | The fresh source must include run `w4-napari-layer-families-236`'s patch set: run `w1-w5-native-batch-227`'s (W1, W5 smooth line ends, W15), run `w5-fringe-native-234`'s minimum smooth coverage, and the Qt backend's Dawn canvas release fix. Those are pinned runtime files, so the Tk candidate's runtime inputs are renewed with it. The patch set is kept, applied to `main`, on the branch `r2/pending-runtime-patches` (O5). D18 adds the switch of the Windows hot swap to native presentation, with strict no-OpenGL qualification selecting readback explicitly. It applies only after the napari parity suites pass under native presentation on the R2 test wheel. That condition is met (runs 249 and 255). The switch is made at R2 assembly, because selecting readback explicitly edits the pinned strict harness. The branch also carries B19 and B18's CPU part (run `b19-readback-257`) and P1's upload changes, P1's fix (step D), P2's pacing and P3 (run `perf-profile-261`), P4's render-ahead (run `pacing-ahead-263`), B20's fix (run `b20-staged-patch-264`), P5's host imports (run `p5-upload-copies-265`), and P6's buffer imports (run `p6-buffer-uploads-266`). Its local head is `c7b0eae` (capture repair/controls, Linux profile and archive audit repair from runs 281-286); the five follow-up commits have not been pushed. **D31:** the renewal also moves the dev `hosts` group to napari 0.10.0, and the matrix renewal takes the strict successor rows (`compat/no-opengl-napari-0.10.0.json`). **D32 and D33:** R2 re-qualifies the 8 VisPy-level strict rows, its matrix renewal marks the 6 host rows optional, and it no longer waits for R1. |
 
 Additional R1 evidence: the 2026-10-23 stall in a napari-hosted volume case
 (`iso_categorical_fast`, run native65) had a consistent signature. Its main
@@ -137,10 +145,11 @@ Diagnostic runs in the exact qualification profile keep the spec budget
 | W8 (PERF-1) | Performance report: interaction frame time, large image and volume loads (including V09 timing), presentation path | A measured report against upstream OpenGL, with no speedup claim; the presentation choice is taken from the data (D3) | Native swapchain presentation is allowed only in hot swap. Inputs: the five-pair timings. PR #2 was closed, but its Qt single-present code is live (`src/vispy/app/backends/_qt.py:790-931`). Explain the unattributed Qt expose paints that invalidated the Native65 five-pair timing run (next-batch plan :443, :485, :3502). The pinned harness (`tools/benchmark_frames.py`) needs two environment settings: upstream PyQt6 canvases need `VISPY_PYQT5_SHARE_CONTEXT=true`, and only `VISPY_QT_PRESENTATION=native` reports the candidate completions it measures. It also passes `texture_format="rgba8"`, which VisPy expands to the invalid `rgbagba8`, so every RGBA workload fails on both sides. `tools/benchmark_frames_w8.py` runs the harness's code with those two lines fixed and the harness's hash recorded (O6). **Report done** (2026-10-29, run `w8-paced-benchmark-245`): [`docs/performance-report.md`](../../performance-report.md). Resident scenes keep the refresh rate, one refresh later than OpenGL. Full uploads run at about half OpenGL's rate. Partial texture updates run at 3.7 frames per second against 60 (B18). Readback presentation costs about 53 ms per frame at 1920x1080 and over 200 ms at 3840x2160 (B19). The unattributed paints come from desktop activity. Presentation: D18 (native for the hot swap from R2, after the napari parity suites pass under it). |
 | W10 | Oracle fixtures: the threedee drag race; the render-plane fixtures, including V07 and the plane widget; the plugin plan's opaque-volume residual. In W2, 11 cases were blocked by unadmitted references in the threedee, initialized and render-plane suites. | Parity tests pass against new admitted oracle captures | New fixture modules and reference packets beside the retained ones, with an admission naming the oracle defect (D6). These suites draw manipulator lines, so they use the smooth-line criterion (D5). **Done on the R2 test wheel** (see Progress): the repaired fixtures exist and D5 is applied. The overlay suite passes 5 of 5, initialized `retirement` passes, and the render-plane-scheduled suite passes 6 of 6, its four manipulator cases under D19 (D8 revised; run `d8-positioned-255`). The superseded suites keep failing as documented (D6). This closes at R2. |
 | W11 | Publication: GitHub Release plus a PEP 503 index with hashes, a manylinux build, and the 100 MiB wheel budget | A clean venv installs from the channel and the W2 smoke test passes | Only at the release, after R2 and approval; no preview (D2). Record a new artifact, and never replace the draft release's assets (gaps plan :581-582). Prepared locally (`tools/wheel_index.py`). |
-| W12 | Upstream napari lazy `GLError` and qtpy lazy QtOpenGL | Upstream releases contain them | Approval. Drafts are in `docs/upstream-drafts/`. They remove the napari and qtpy patches, but stock Qt still fails the strict gates, so strict rows keep the Qt build without OpenGL. |
+| W12 | Upstream napari lazy `GLError` and qtpy lazy QtOpenGL | Upstream releases contain them | Approval. Drafts are in `docs/upstream-drafts/`. They remove the napari and qtpy patches, but stock Qt still fails the strict gates, so strict rows keep the Qt build without OpenGL. Under D28 (plan `2026-10-31-upstream-host-changes.md`). **Not planned (D29): the user decided never to open these PRs.** The prepared changes stay local records (`docs/upstream-drafts/`, runs 291-294); status in `compat/host-changes.json`. |
 | W13 | Glue in hot swap: the five workflows (scatter, scatter edit, scatter axes, volume, volume edit) | All five pass with stock hosts | W3. `scatter_axes` uses the smooth-line criterion (D5; coverage H02). The design requires Glue (:26, :122), and no workstream covered it. **Partly done** (see Progress): 4 of 5 pass on `444402`. On the batch test wheel, which carries the smooth line end fix, all five pass, `scatter_axes` included, and the Glue scenario passes both hot-swap gates; this closes at R2. |
 | W14 | Apply the smooth-line criterion to the mesh axes/colorbar scene and re-run it | It passes under the criterion | D5. Its fixture sources are pinned, so the criterion is added in new modules. **Partly done** (see Progress): 12 of 13 scenes pass on `444402`. On the batch test wheel all 13 pass, with `axes_colorbar` under its documented difference (D9); this closes at R2. |
 | W15 | Remove upstream's PyOpenGL import from the shipped `gloo/glir.py`: `_check_pyopengl_3D()`, used only by the legacy GL `GlirParser`'s 3D textures | The W3 static scan finds no runtime GL reference, and the W3 stock baseline passes on the fresh build | R2. `glir.py` is pinned by the Tk candidate's runtime inputs, the DIVE PySide2 host environment and the Metal CI reuse record, so the edit lands with the fresh build. `GlirParser` stays public; its 3D-texture path now fails clearly instead. Validated on the batch test wheel: the static scan is clean, and stock napari passes both gates. |
+| W16 | Hot-swap baseline on napari 0.10.0, PyPI's napari since 2026-10-30 (still `vispy>=0.17.0,<0.18`, `qtpy>=2.4.0`, `PyOpenGL>=3.1.10`) | On stock 0.10.0 with the current test wheel, every W2 case passes or has a recorded, triaged cause, and the stock scenario reaches `PASS_HOT_SWAP_GATES` | **Done** (runs `napari-010-baseline-295`, `napari-010-plugin-parity-296`, `napari-qt-controlled-297` and `napari-010-parity-298`; see Progress). Both gates pass under readback and native presentation. Through D30's successor fixtures, the six core parity suites and the probe's napari scenario judge 0.10.0, and all pass. The napari-threedee plugin suites stayed on 0.9.2 until D31 Phase 1 moved them. Task 9 of `2026-10-31-upstream-host-changes.md` and plan `2026-11-01-napari-010-parity.md`. |
 
 W0 (drag race), W2 (baseline) and W2a are done. W3's tooling is done; its
 baseline closes with W15.
@@ -170,6 +179,7 @@ baseline closes with W15.
 | B19 | Readback presentation's framebuffer read: about 23 ns per pixel natively (`read_canvas` allocates a staging buffer per read and converts each texel through a generic routine), then three Python copies (`_read_dawn_framebuffer`). That is about 53 ms per frame at 1920x1080. Pinned runtime files, as B18. **Done on a test wheel** (2026-10-29, run `b19-readback-257`; on the R2 branch). 8-bit RGBA and BGRA rows are copied, and the Qt path drops one Python copy. The bytes are identical. The whole Qt readback takes 8.2 ms at 1920x1080, down from 52.9, and 29.8 ms at 3840x2160, down from 218. The staging buffer is still allocated per read. | `docs/performance-report.md` (Readback presentation) |
 | B20 | **A small staged texture patch could reach the GPU as zeros. Fixed on a test wheel** (run `b20-staged-patch-264`; on the R2 branch as `ffbd45a`). A frame copied a patch into its texture from a staging buffer that `queue.WriteBuffer` filled. When a new texture's first upload followed it in the same batch, that copy read zeros on the RTX 4090's Vulkan driver (610.88): the patch's texels stayed zero on the GPU, in that frame and later ones, while the CPU shadow was right. It needed a fresh process, and the new texture's upload and the patch's staging together had to stay under about 64 KiB; the patched texture's size did not matter. Uploading the new texture first, in an earlier frame, or the same bytes as a vertex buffer, avoided it. Dawn records the copy's write-to-read barrier as expected, so the driver is the likely cause; that is not proven. A revision's patches now stage through one host-mapped lease that the CPU fills, from a pool of their own, so the copy reads host memory. The pre-P1 wheel `9b7eea2d` had it, and labels painting could meet it. | Run `b20-staged-patch-264` (`b20_probe.py`, `tests/native/test_staged_patch.py`); run `perf-profile-261` (`p3_debug_variants.py`) |
 | B21 | **Dawn aborts when a lost device is released while a host import was alive. Worked around** (run `p5-upload-copies-265`; on the R2 branch as `2946b54`). A `HostMappedPointer` buffer destroyed after its device is lost tracks its dispose callback as a queue task that never runs, so releasing the device fails `DAWN_CHECK(mTasksInFlight->Empty())`, which aborts the process silently in release builds. P5's imports carry no dispose callback, and the runtime decides when their pages may be freed: once a frame submitted after the release has retired, or once the device is destroyed. An upstream Dawn report would need approval, as W12 does. | Run `p5-upload-copies-265` (`probe/host_import_probe.cpp`, `probe-loss-*.txt`) |
+| B22 | The Windows startup stall, formerly R1 (D33): documented, not release-blocking; release-blocking again if it recurs. R1's evidence and its out-of-process watcher (D20) stay as they are. | R1; `docs/threedee-startup-diagnosis.md` |
 
 ### Organization (user, 2026-10-29)
 
@@ -1214,18 +1224,249 @@ H01 and V04.
   activity observed. The user chose native presentation for the hot swap from
   R2, after the napari parity suites pass under it (D18).
 
+**W12 prepared under D28** (2026-11-01, plan
+`2026-10-31-upstream-host-changes.md`):
+- **Rebased and tested** on the projects' current branches (runs
+  `upstream-napari-291` and `upstream-qtpy-292`). The new tests pass, and
+  every suite keeps its failing set: napari's `_vispy` and `_qt` suites, and
+  qtpy's whole suite under PyQt5, PyQt6, PySide6 and PySide2.
+- **Measured effects** (run `upstream-effects-293`):
+  - The napari change matters only for a vispy whose `gl+` does not use
+    PyOpenGL. With this project's wheel, importing napari's canvas then loads
+    no GL library on Windows; with upstream vispy nothing changes. Since the
+    final review, napari takes `GLError` only from an already-imported
+    PyOpenGL, so it never imports PyOpenGL itself, not even at layer removal.
+  - The qtpy change stops importing Qt6's OpenGL modules but never changes
+    whether the system GL library is loaded. On Windows those imports do not
+    load it; on Linux `PyQt6.QtGui` loads it anyway.
+  - Stock PyQt6 cannot import `QtGui` on Linux without libGL, so neither
+    change helps there.
+- **Submission.** None: the user decided never to open these PRs (D29). The
+  briefs and patches stay local, in `docs/upstream-drafts/`.
+- **W16.** The stock napari 0.10.0 lock is prepared locally, with PyQt6 6.12.0
+  on Qt 6.12.0. Its GUI runs wait for the user's go-ahead.
+
+**W16 baseline on napari 0.10.0** (2026-11-01, run `napari-010-baseline-295`,
+the user's go-ahead "Run now"). Test wheel `cc6fa732` with stock napari 0.10.0,
+qtpy 2.4.3 and PyQt6 6.12.0 on Qt 6.12.0:
+- **Qt changed too.** The 0.9.2 rows run PyQt6 6.11.0 on Qt 6.11.2, and that
+  pairing also resolves with napari 0.10.0, so this baseline changes Qt as well
+  as napari. An earlier note said the lock needed Qt 6.12 because napari 0.10.0
+  excludes Qt 6.11.0. That was wrong.
+- **Gates.** The stock napari scenario passes both hot-swap gates
+  (`PASS_HOT_SWAP_GATES`) under readback and under native presentation. It
+  shows 24 host GL events (napari 10, qtpy 4, native 6, and 4 whose stored
+  stack holds no caller), none attributed to the renderer, and no static
+  reference.
+- **Probe.** The threedee scenario passes. The napari scenario stops at a
+  version pin: `tools/no_opengl_host_probe.py:291` asserts napari 0.9.2. Each
+  launch ran under `tools/pool_watch_external.py`.
+- **Parity.** The six parity suites cannot judge 0.10.0. 54 of 61 cases fail
+  on the same napari version pin (`'0.10.0' == '0.9.2'`), identically with
+  upstream vispy 0.17.0 as the control; 7 pass. A 0.10.0 parity row needs new
+  OpenGL references captured on napari 0.10.0 (D6: new fixture modules beside
+  the retained ones).
+- **Plugin parity** (run `napari-010-plugin-parity-296`). These are the six
+  napari-threedee and plugin-wheel suites that run 295 did not run.
+  - 23 rendering cases fail with the test wheel and with upstream vispy. The
+    10 that passed on napari 0.9.2 (runs 249 and 255) stop at the capture
+    tools' napari 0.9.2 pin, before rendering. The other 13 are D6's
+    documented failures, and 11 of those stop before launch on any host.
+  - With upstream vispy, 12 of the 23 stop earlier, because these suites
+    accept only the Vulkan build as the candidate.
+  - The 10 CPU cases and the plugin-wheel suite's 5 cases pass. They use pinned
+    napari 0.9.2 environments, so they do not measure 0.10.0. This is the
+    plugin-wheel suite's first run on test wheel `cc6fa732`.
+- **Qt held fixed** (run `napari-qt-controlled-297`, the user's "continue").
+  The gates ran on test wheel `cc6fa732` for napari 0.9.2 and 0.10.0, both on
+  PyQt6 6.11.0 / Qt 6.11.2 and NumPy 2.4.6. Their locks differ only in napari
+  and npe2. The 0.10.0 lock on Qt 6.12.0 was rerun beside them.
+  - All six audits (three environments, readback and native) pass both gates.
+    Each has the same 24 host GL events: napari 10, qtpy 4, native 6, and 4
+    with a truncated stack. None comes from the renderer.
+  - So neither the napari change nor the Qt change alters what the gates see.
+    This is also the first 0.9.2 gate run on `cc6fa732`.
+- **0.10.0 parity row** (run `napari-010-parity-298`, D30; the user's "close
+  the gaps and review again"). The six core suites (scientific, layer controls,
+  layer families, vector layers, volume, image extensions) and the probe's
+  napari scenario now judge napari 0.10.0.
+  - Each suite has a version-agnostic successor fixture: the retained fixture
+    without its napari pin. Its packets are in
+    `tests/reference/<base>-napari-0.10.0/`, captured with upstream vispy
+    0.17.0 on the stock 0.10.0 lock, which each packet keeps as
+    `host-lock.txt`.
+  - On napari 0.9.2 the successors reproduce the retained code run in the same
+    environment: every frame, every parameter except the image workflow name,
+    and every shader.
+  - Test wheel `cc6fa732` passes all 55 cases under readback and under native
+    presentation. The probe's napari scenario passes on 0.10.0.
+  - 51 of the 54 frames are the same as in the 0.9.2 packets. colorbar and
+    scale_bar_axes differ because of napari 0.10.0's unified font sizes.
+    shapes_selected differs because of this machine's present environment: the
+    retained code run now also differs there, within the case's D10 rule.
+
+**Plugin suites on napari 0.10.0** (2026-11-02, run `napari-010-plugins-299`,
+D31). The three live napari-threedee suites now judge napari 0.10.0: overlay
+(5 cases), initialized (`retirement`) and render-plane-scheduled (4).
+- **Scope.** D6's superseded plugin fixtures are not carried over.
+- **Successors.** napari 0.10.0 removed `VispyCanvas._map_canvas2world`, which
+  the drag fixtures used. Each successor makes two changes to its retained
+  fixture beyond the napari pin, both checked by the AST contract:
+  - drag positions are read with `world_position`, which uses
+    `ViewerModel.canvas_to_world` on 0.10;
+  - every mouse move waits 10 ms (`qWait`), as the scheduled fixture's moves do
+    (D19). The retained overlay fixture's drag race showed once in the
+    validation.
+- **On napari 0.9.2** the successors reproduce the retained code run in the
+  same environment on all 10 cases: frames, auxiliary frames, parameters and
+  shaders. One recorded GLIR stream differs: overlay `translation` has one
+  more intermediate frame, the redraw that napari's delivered move triggers
+  during the wait. No test compares GLIR.
+- **Packets.** All three were captured with upstream vispy on the stock 0.10.0
+  lock.
+- **Candidate.** Test wheel `cc6fa732` passes 12 of 12 under readback and under
+  native presentation.
+- **Next.** The plugin-wheel suite moves separately, because its 0.10.0 runtime
+  resolves asciitree 1.0.0.
+
+**Plugin-wheel suite on napari 0.10.0** (2026-11-03, run
+`napari-010-plugin-wheel-300`, D31). This completes Phase 1 of the move: every
+live napari-threedee row now judges napari 0.10.0.
+- **Successor suite.** `tools/napari_plugin_wheel_suite_successor.py` runs the
+  retained suite's own code objects, rebound to the 0.10.0 inputs: the overlay
+  successor fixture, the 0.10.0 overlay packet, and that packet's host lock as
+  the runtime. Its own steps are the runtime (only VisPy is replaced, because
+  asciitree 1.0.0 has a wheel), the plugin check and the saved-evidence check.
+  A CPU contract checks the code identity and each renewed input.
+- **Upstream.** The upstream VisPy wheel reproduces the packet exactly on all
+  five cases.
+- **Candidate.** Test wheel `cc6fa732` passes 5 of 5. The suite's workers run
+  in a clean environment without `VISPY_*` settings, so they present with the
+  Windows default, readback.
+
+**W6's cells on napari 0.10.0** (2026-11-03, run `napari-010-w6-301`, D31
+Phase 2). The cells are PySide6 on CPython 3.12 (test wheel `cc6fa732`) and
+PyQt6 on 3.11, 3.13 and 3.14 (W6's R2 test wheels, built on `66e7e9ad`, which
+is older source than `cc6fa732`).
+- **Method.** Each cell's environment is W16's 0.10.0 input, compiled for that
+  Python and binding, with run 207's numba lock and the tracked napari-threedee
+  wheel.
+  - The per-cell drivers follow W6's (run 248). They leave out the R1 pool
+    watcher, give each launch a fresh `NAPARI_CONFIG`, and set no `VISPY_*`
+    presentation setting.
+  - They drive the current probe and audit tool. Their Windows gate logic is
+    unchanged since W6.
+- **W2.** The probe's napari scenario passes in all four cells. Its threedee
+  scenario passes except on 3.14. There, napari-threedee's `zarr<3` resolves to
+  zarr 2.18.6 with numcodecs 0.17.1, which do not import together. On 0.9.2 the
+  pair was zarr 2.18.6 with numcodecs 0.17.0, and the error was the same.
+- **W3.** Stock napari reaches `PASS_HOT_SWAP_GATES` in every cell, with 24 host
+  GL events and no renderer, unattributed or context event. The controls give
+  their designed verdicts.
+
+**W7's Linux rows on napari 0.10.0** (2026-11-03, run `napari-010-w7-302`, D31
+Phase 3). As run `w7-linux-rows-253`, in WSL with lavapipe on an owned Xvfb, on
+a Linux 0.10.0 lock: W16's input compiled for `x86_64-manylinux_2_39`.
+- **Audits.** All eight rows give W7's verdicts, with W7's counts, under the
+  Linux observer. Stock napari is UNVERIFIED on the admitted `bd89a994`,
+  through `glir.py`'s static PyOpenGL import. It reaches `PASS_HOT_SWAP_GATES`
+  on test wheel A (`c5a3807d`), with 80 host GL events on PyQt6 6.12.0, where
+  W7's 80 were on 6.11.0.
+- **Probe.** On test wheel A, the napari and threedee lifecycles pass.
+
+**napari wheel suites on napari 0.10.0** (2026-11-03, run
+`napari-010-wheel-suites-303`, D31 Phase 4). The user chose "Suites now,
+benchmarks later".
+- **Successors.** The volume and image installed-wheel suites gain reference,
+  probe and runner successors on the D30 0.10.0 packets.
+  - Each successor runs the retained code, rebound, wherever that code reads
+    only renewed inputs.
+  - It copies a step where the step holds a 0.9.2 literal or a retained-format
+    key. A CPU contract checks the AST of each copy.
+- **Results.** Test wheel `cc6fa732` passes all 17 volume and 13 image cases
+  from an installed wheel. Each napari worker reports napari 0.10.0.
+- **Unchanged.**
+  - The color-volume suite renders no napari, so it stays as it is. This is a
+    ruling against the option's wording. Its cost is that the suite keeps
+    PyQt6 6.11.0 from the 0.9.2 plugin lock, so that lock must outlive the
+    retirement of 0.9.2.
+  - The volume scientific admission keeps its 0.9.2 evidence until the user
+    approves the W8 benchmark runs.
+
+**Strict napari patch on napari 0.10.0** (2026-11-03, run
+`napari-010-strict-304`, D31 Phase 5a). The user chose "Move the strict profile
+too".
+- **Patch.** `compat/host-patches/napari-0.10.0-no-opengl.patch` is the 0.9.2
+  patch's changes applied to napari 0.10.0, which still has every one of them.
+  It has 15 hunks, with provenance in `napari-0.10.0-provenance.json`.
+  - The unchanged `tools/prepare_napari_no_opengl.prepare` verifies it on the
+    0.10.0 source archive.
+  - `compat/host-changes.json` registers it.
+- **Next.** The user chose to re-qualify the strict napari rows on 0.10.0 now:
+  "Rebuild and re-qualify now, BUT use more reasonable qulaitifcaiton". Only
+  the napari layer of each strict host environment is rebuilt, and each row
+  gets one pass of the unchanged gates (5b). Then 0.9.2 is retired (5c).
+
+**Strict napari rows on napari 0.10.0** (2026-11-03, run
+`napari-010-strict-305`, D31 Phase 5b). The user chose to re-qualify now.
+- **Scope.** Only the napari layer was rebuilt: napari 0.10.0 with its strict
+  patch, and npe2 0.10.0. The Qt builds without OpenGL, the admitted artifacts
+  and the qualified environments' other 116 pins were kept. Each row got one
+  pass of the unchanged gates.
+- **Results.** All four napari rows pass on Windows and WSL. Windows
+  napari-threedee, pending since 2026-10-23, is included. R1 stays open: a
+  passing run never closes it.
+- **Record.** `compat/no-opengl-napari-0.10.0.json` holds the rows, because
+  candidates pin the matrix's bytes. R2's matrix renewal takes them.
+- **Next.** 0.9.2 is retired (5c).
+
+**napari 0.9.2 retired** (2026-11-03, run `napari-010-retire-306`, D31 Phase 5c).
+- **Probe.** `tools/no_opengl_host_probe.py`'s napari and threedee scenarios
+  accept only napari 0.10.0.
+- **Prepare tool.** `tools/prepare_napari_no_opengl.py` defaults to the 0.10.0
+  patch's provenance; the 0.9.2 manifest stays for the retained records.
+- **Superseded.** Every napari 0.9.2 row but the volume scientific admission
+  has a 0.10.0 successor:
+  - W2's Windows rows (W16 and D30);
+  - the plugin suites (Phase 1);
+  - W6's cells (Phase 2) and W7's Linux rows (Phase 3);
+  - the volume and image wheel suites (Phase 4);
+  - the strict rows (Phase 5b).
+  The 0.9.2 modules, packets, locks and evidence stay as retained records.
+- **Kept on 0.9.2.** The volume scientific admission keeps its 0.9.2 evidence
+  until the W8 benchmark runs. The color-volume suite keeps the 0.9.2 plugin
+  lock for its non-napari pins.
+- **R2.** The dev `hosts` group moves to napari 0.10.0 when R2 renews the
+  records that pin `pyproject.toml` and `uv.lock`, and R2's matrix renewal
+  takes the strict successor rows.
+
+**Volume scientific admission on napari 0.10.0** (2026-11-03, run
+`napari-010-volume-admission-307`, D31). The user approved the benchmark runs
+("sure"); none were needed.
+- **Why.** The admission joins 24 large-volume workloads, which involve no
+  napari, to 17 small controls, and only the controls run napari. The W8 volume
+  benchmark pairs consume a finished set; they do not produce one.
+- **Controls.** The 17 controls ran again on the same native58 wheel and NumPy
+  2.4.6 profile, with napari and npe2 at 0.10.0. All 17 equal their references
+  exactly (the 6 categorical cases against the napari 0.10.0 packet).
+- **Set.** `compat/scientific-admissions/volume-native58-cp312-numpy246-napari-0.10.0`, written by
+  `tools/volume_scientific_admission_successor.py`: all 24 pass. Set v5 stays
+  as the record the W8 pairs bind. D31 is done.
+
 ## Order
 
-1. R1's instrumentation runs alongside everything below.
+1. R1 is not release-blocking (D33); its watcher stays ready for a recurrence
+   (B22).
 2. W4's fixtures and all of W5 are done; D8, D10-D17 and D19 are decided. The
    smooth line ends, the minimum smooth coverage and the Qt canvas release are
    fixed in local test builds and ship with R2.
 3. W6 is done on local test wheels. W7's observer, Linux rows and lavapipe
    smooth-line measurement are done on test wheels; its Linux non-line findings
-   are open. W10 is done on the R2 test wheel.
+   are decided by D21 and applied at R2. W10 is done on the R2 test wheel.
 4. W8: the report is done. D18's napari parity under native presentation is done
    (runs 249 and 255).
-5. W15 and R2 (fresh release build), then W11 at the release and W12 on approval.
+5. W15 and R2 (fresh release build), then W11 at the release. W12 is closed
+   (D29).
 6. Backlog as capacity allows. B19 and B18, its queued case through P3, are on
    the R2 branch, and so is B20's fix.
 7. Performance (user, 2026-10-30): P1 (textures), P2, P3, P4, P5 and P6 are
@@ -1233,6 +1474,10 @@ H01 and V04.
 
 ## Standing rules
 
+- **Minimal, clean and principled** (user, 2026-11-04: "always keep the project minimal,
+  clean and principled"). Make the smallest change that meets the goal, add no
+  speculative machinery or duplicate records, and back every claim with its
+  evidence.
 - **Identity.** Distribution `vispy`, version `0.17.0+vulkan.N`, through direct
   wheels or a dedicated index, hash-locked by consumers. No Provides-Dist, no
   sys.path overlays, and no PyPI release without upstream.
@@ -1320,6 +1565,11 @@ H01 and V04.
   - The original VisPy BSD licence (`LICENSE-BSD`) and the third-party licences
     stay attached byte-exact.
   - Cybersecurity work is excluded.
+- **Host changes (D28, D29).** Fix in vispy first, and otherwise with a
+  strict-only host patch; never open PRs to napari or qtpy (D29). Every file in
+  `compat/host-patches/` is registered in `compat/host-changes.json`, and
+  hot-swap locks name stock hosts only;
+  `tests/contract/test_host_change_registry.py` checks both.
 
 ## Plan index
 
@@ -1341,4 +1591,7 @@ H01 and V04.
 | `plans/2026-10-23-opengl-runtime-removal-plan.md` | Mostly complete; its remaining scope is R1/R2. |
 | `plans/2026-10-24-vispy-compatibility-gaps.md` | Log to 2026-10-28; superseded as a plan by this document. |
 | `plans/2026-10-28-napari-hot-swap.md` | Origin of W0-W12 and their progress record; work continues here. |
+| `plans/2026-10-31-upstream-host-changes.md` | Done: D28's host-change registry and W16, the napari 0.10.0 baseline. Its upstream PRs (W12) are not planned (D29). |
+| `plans/2026-11-01-napari-010-parity.md` | Done: D30's version-agnostic successor fixtures and the napari 0.10.0 parity row (six core suites and the probe). |
+| `plans/2026-11-01-napari-010-move.md` | Active: D31, every napari row moves to napari 0.10.0. Phase 1a (three plugin suites) is done. |
 | `docs/opengl-removal-status.md` | Refreshed on 2026-10-29 (B16). |

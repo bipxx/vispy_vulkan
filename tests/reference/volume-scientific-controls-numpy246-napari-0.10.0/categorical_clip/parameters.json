@@ -1,0 +1,57 @@
+{
+  "camera_center": [
+    15.5,
+    15.5,
+    15.5
+  ],
+  "camera_scale_factor": 40.0,
+  "camera_up_direction": [
+    -1.0000000000000002,
+    0.0,
+    0.0
+  ],
+  "camera_view_direction": [
+    0.0,
+    1.0000000000000002,
+    0.0
+  ],
+  "camera_zoom": 2.4,
+  "case": "categorical_clip",
+  "depiction": "volume",
+  "inputs": [
+    {
+      "dtype": "<i4",
+      "sha256": "39108ecab7f41f03cd8da84190baaefe5dd7f373c36f68923c932297f13ae278",
+      "shape": [
+        32,
+        32,
+        32
+      ]
+    }
+  ],
+  "interpolation": "nearest",
+  "iso_gradient_mode": "fast",
+  "labels": [
+    0,
+    7,
+    65537,
+    16777473
+  ],
+  "method": "translucent_categorical",
+  "native_mro": [
+    "CanvasBackendDesktop",
+    "QtBaseCanvasBackend",
+    "BaseCanvasBackend",
+    "QWidget",
+    "QObject",
+    "wrapper",
+    "QPaintDevice",
+    "simplewrapper",
+    "object"
+  ],
+  "relative_step_size": 0.5,
+  "size": [
+    96,
+    96
+  ]
+}

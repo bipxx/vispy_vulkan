@@ -1,11 +1,13 @@
 # SPDX-License-Identifier: AGPL-3.0-only
 """Prepare an isolated, hash-checked napari source tree for the Dawn fork.
 
-Usage: python tools/prepare_napari_no_opengl.py --archive napari-0.9.2.tar.gz
+Usage: python tools/prepare_napari_no_opengl.py --archive napari-0.10.0.tar.gz
        --output <new-directory>
 
 This prepares source only; build/install it in a separate host environment.
 It never modifies an existing environment or claims GUI qualification.
+napari 0.10.0's manifest is the default (D31 retired 0.9.2); prepare() takes
+compat/host-patches/provenance.json for the retained 0.9.2 patch.
 """
 
 import argparse
@@ -17,7 +19,7 @@ import tarfile
 
 
 ROOT = Path(__file__).resolve().parents[1]
-MANIFEST = ROOT / 'compat/host-patches/provenance.json'
+MANIFEST = ROOT / 'compat/host-patches/napari-0.10.0-provenance.json'
 
 
 def sha256(path):
