@@ -55,6 +55,26 @@ source CI, strict collector/preparation identities, final artifact packaging,
 R1's startup closer and mandatory final-artifact rows remain open. Earlier
 approvals and ledgers keep their original source/artifact identities.
 
+Installed successor check (run `r2-package-288`): source `0a9e9a72` produced
+Windows cp312 wheel `13c36447`, with only the Qt Python backend changed from
+the retained native wheel. Archive, installed payload and native-input joins
+pass; 37 CPU and 29 graphics cases pass without skips. Actual QWidget lifecycle
+checks select native by default and explicit readback when requested, with
+nine zero live-resource gauges after each shutdown. Only 9.5 MB of package and
+helper sources were materialized; no native compilation or dependency snapshot
+was needed. These installed development results do not renew strict admission,
+source CI, Linux evidence or R1. Those remaining requirements above still apply.
+
+Linux successor check (run `r2-package-linux-289`): the same source `0a9e9a72`
+produced cp312 `linux_x86_64` wheel `63ea150f`. Original archive and native-input
+joins pass with only the Qt Python member changed. The offline WSL consumer
+passes 38 CPU and 29 graphics cases without skips on pinned lavapipe/X11, plus
+native-default and explicit-readback QWidget lifecycles with nine zero live
+gauges at shutdown. No renderer/SDK compilation or vendor snapshot was needed;
+the CPU loader-reader regression compiles its small existing C control.
+This verifies the installed successor on WSL software Vulkan; strict host
+admission, native Linux GPU, full source CI, R1 and release promotion remain open.
+
 | Area | State | Source |
 | --- | --- | --- |
 | Practical milestone | Closed: 120 selected criteria, 23 CI jobs, promotion review (PR #14/#15) | `docs/practical-compatibility-release.md` |
