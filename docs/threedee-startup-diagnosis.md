@@ -1,5 +1,10 @@
 # Windows threedee startup diagnosis
 
+Status, 2026-11-04: the stall stays unexplained. By D32 the strict napari-threedee
+row is optional, and by D33 the stall is documented, not release-blocking; it
+becomes release-blocking again if it recurs. On napari 0.10.0 the strict row
+passed its one attempt (D31 Phase 5b).
+
 Date: 2026-10-25. The bounded three-start diagnostic packet is complete. The
 current exact installed artifact passes its full host workflow and all three
 no-OpenGL gates. The historical OLE/RPC stall was not reproduced or causally
