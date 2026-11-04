@@ -51,3 +51,6 @@ visuals/shaders/variable.py
 
 # Matrix vertex records preserve column layout through direct buffer updates.
 gloo/buffer.py
+
+# W15: no PyOpenGL import; the legacy GL parser's 3D-texture path fails clearly instead.
+gloo/glir.py
