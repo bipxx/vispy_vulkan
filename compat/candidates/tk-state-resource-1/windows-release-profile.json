@@ -1,0 +1,122 @@
+{
+  "schema": 1,
+  "id": "windows-gpu-tk86-cp312-development",
+  "phase": "source-functional",
+  "product_runtime_source_commit": "0a521bb108b7016b6619591e6806fe84b68fad43",
+  "kind": "windows-gpu",
+  "architecture": "x86_64",
+  "python_abi": "cp312",
+  "python_version": "3.12.8 (main, Dec 19 2024, 14:41:01) [MSC v.1942 64 bit (AMD64)]",
+  "interpreter": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\.venv\\Scripts\\python.exe",
+  "interpreter_sha256": "4025e2a6d8fc90d053a8405e81f008cbd8ee45b582e2d77480341501f4aeda73",
+  "base_interpreter": {
+    "path": "C:\\Users\\HEQ\\AppData\\Roaming\\uv\\python\\cpython-3.12.8-windows-x86_64-none\\python.exe",
+    "sha256": "71b986e874ae1382c434f95852f5670e6d87576db2861cd03737dd4bce9d69ed"
+  },
+  "os_identity": "Windows-11-10.0.26200-SP0",
+  "toolkit": {
+    "tk_version": 8.6,
+    "tcl_version": 8.6,
+    "binding_origin": "C:\\Users\\HEQ\\AppData\\Roaming\\uv\\python\\cpython-3.12.8-windows-x86_64-none\\DLLs\\_tkinter.pyd",
+    "binding_hash_scope": "module",
+    "binding_sha256": "38453f6aff3f3a3ef0017c00bfee2f403ca0aeaf92b8b5c56d05460fd6dbbdf9"
+  },
+  "display_mode": "tk-raster",
+  "device": {
+    "backend": "Vulkan",
+    "adapter_type": "discrete",
+    "vendor": "nvidia",
+    "device": "NVIDIA GeForce RTX 4090",
+    "driver": "NVIDIA: 610.88 610.88.0.0",
+    "vendor_id": 4318,
+    "device_id": 9860,
+    "max_texture_dimension_1d": 32768,
+    "max_texture_dimension_2d": 32768,
+    "max_texture_dimension_3d": 16384,
+    "max_vertex_attributes": 30,
+    "max_vertex_buffers": 8,
+    "max_vertex_buffer_array_stride": 2048,
+    "max_storage_buffers_per_shader_stage": 16,
+    "max_uniform_buffers_per_shader_stage": 12,
+    "max_inter_stage_shader_variables": 30,
+    "max_storage_buffer_binding_size": 2147483644,
+    "max_bindings_per_bind_group": 1000,
+    "max_compute_invocations_per_workgroup": 1024,
+    "max_compute_workgroup_size_x": 1024,
+    "max_compute_workgroups_per_dimension": 65535,
+    "max_point_vertex_attributes": 30,
+    "core_features_and_limits": true,
+    "point_input_limit_scope": "all active user point inputs share one vertex buffer; exact vertex/instance identities use read-only vertex storage without reserving a user attribute; actual granted attribute/stride/storage/allocation limits apply",
+    "max_samplers_per_shader_stage": 16,
+    "max_sampled_textures_per_shader_stage": 48,
+    "max_buffer_size": 1099511627776,
+    "max_uniform_buffer_binding_size": 65536,
+    "software": false,
+    "float32_filterable": true,
+    "unorm16_texture_formats": true,
+    "bresenham_lines": true,
+    "last_vertex_provoking": true,
+    "timestamp_query": true,
+    "timestamp_quantization_ns": 65536,
+    "host_mapped_pointer": true,
+    "host_import_limit": 536870912,
+    "depth_stencil_storage": "depth24_unorm_stencil8",
+    "ok": true,
+    "error": "",
+    "loss_count": 0,
+    "revision": "117b054598f4758b598f4b8f48feea48c11fe7b0+dawn-499e5c6ff9b37d5de70c6493fb74c251e0d35c1c"
+  },
+  "native_sha256": "dcd2af798c1c89cd08d0f47de3159e2152f5a3cc6eddf56eeb973056b0e0d4fe",
+  "native_inputs_sha256": "b6415d736175ea8eccbab84fd9502f49d6a1f302b8c75b026c134568320bb4d8",
+  "loaded_library_identities": {
+    "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\work\\r2-wheels-311\\windows\\vispy\\_dawn.cp312-win_amd64.pyd": "dcd2af798c1c89cd08d0f47de3159e2152f5a3cc6eddf56eeb973056b0e0d4fe"
+  },
+  "source_observation": {
+    "cases": 8,
+    "case_unit": "Eight real branches, with 56 additional state/capture tests",
+    "report": {
+      "path": "build/runs/r2-wheels-311/windows-result.json",
+      "sha256": "fa5c41c1f7e2a99e00bdb102889fe25820bb685125c863c5412998bcfe40403d"
+    },
+    "functional_validation": {
+      "path": "build/runs/r2-wheels-311/windows-functional-validation.json",
+      "sha256": "ca53240cdbf7274aa31ab519411f731931b9b003e597a081270a3f8a9db2a2d7"
+    },
+    "shutdown_gauges": {
+      "pending_tickets": 0,
+      "queued_frames": 0,
+      "live_buffer_bytes": 0,
+      "live_cpu_buffer_bytes": 0,
+      "live_texture_bytes": 0,
+      "canvas_texture_bytes": 0,
+      "transient_buffer_bytes": 0,
+      "line_resource_pool_busy_slots": 0,
+      "line_resource_pool_bytes": 0
+    },
+    "scope": "Product-source functional observation from the exact-member-checked installed release wheel; existing dependencies, not the installed observer/profile admission"
+  },
+  "previous_source_observation": {
+    "path": "compat/candidates/tk-state-resource-1/windows-readback-profile.json",
+    "sha256": "795f39794a8c9f2e53db949535810ab911ac4bfdb5b4cfa0c32d1c85c3ef9b59"
+  },
+  "limitations": [
+    "Candidate, native-producer and scope reviews remain pending.",
+    "The installed observer/control/profile attempts, CI bundle and promotion review remain pending.",
+    "No native Linux GPU or Metal hardware claim."
+  ],
+  "native_producer": {
+    "status": "CURRENT_NATIVE_REUSE_REVIEW_PENDING",
+    "artifact_manifest": {
+      "path": "build/runs/r2-wheels-311/native-validation.json",
+      "sha256": "6d1744044273209831c311bbc0304e34995ce2916c47201b158df6263b293d22"
+    },
+    "scope": "This release build's SDK-linked Windows producer (run r2-wheels-311, run 94's protocol); its record is proposed for review with the renewed candidate"
+  },
+  "native_reuse": {
+    "basis": {
+      "path": "build/runs/r2-wheels-311/windows-wheel.json",
+      "sha256": "41bbfdae121b90f8d1de0f1240d08fde527b207ea467c62c3a6540208ba3db75"
+    },
+    "scope": "Backend-only assembly of the exact sources around this build's four native outputs; exact archive join"
+  }
+}

@@ -116,7 +116,10 @@ def test_mandatory_application_matrix_requires_bound_evidence_for_qualified_rows
     assert len({row['id'] for row in matrix['rows']}) == len(matrix['rows'])
     for platform in ('windows-vulkan', 'wsl-linux-lavapipe-x11'):
         rows = [row for row in mandatory if row['platform'] == platform]
-        assert {row['application'] for row in rows} == {'headless', 'qwidget', 'napari', 'glue-vispy-viewers', 'napari-threedee'}
+        # D32: only VisPy's own rows are release-blocking; the host-application rows are optional evidence.
+        assert {row['application'] for row in rows} == {'headless', 'qwidget'}
+        optional = {row['application'] for row in matrix['rows'] if row.get('platform') == platform and not row['mandatory']}
+        assert optional >= {'napari', 'glue-vispy-viewers', 'napari-threedee'}
         assert {row['binding'] for row in rows if row['application'] == 'qwidget'} == {'pyqt5', 'pyqt6', 'pyside6'}
     for row in mandatory:
         if row['status'] == 'PENDING':

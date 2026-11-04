@@ -2,10 +2,10 @@
   "schema": 1,
   "phase": "proposal",
   "route": "add-required-scoped-retain-parents",
-  "manifest_sha256": "dbdbb466798dbf52e7b3fc4c82d9c44c75f44019a0340ac1aed335d8496bc606",
+  "manifest_sha256": "19bc20795f2acdf36d8b87966909debe9f194f933062c06538ebed75ebc7f600",
   "candidate": {
     "path": "compat/candidates/tk-capture-1/candidate.json",
-    "scope_sha256": "6a5c2d6285a538fb5f4cec6396f12c888fc32555a38dbb251175d0da29250e34"
+    "scope_sha256": "f3d4d25d14ad25b7b52ef7c7788038e690a134e6fe7c648e922c5943365ecb39"
   },
   "origin_dispositions": [
     {

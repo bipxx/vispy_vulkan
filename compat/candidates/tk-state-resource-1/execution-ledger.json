@@ -14,7 +14,7 @@
     },
     {
       "path": "compat/no-opengl-matrix.json",
-      "sha256": "9477ee4a888fbe59d85ee09d0fe779de376f73982cdab7aea2447c11b046f410"
+      "sha256": "230b12f3d4ed418cde3b0313fbdea36557b02a61c80a1cf637699d7a9bc50fc4"
     }
   ],
   "capabilities": [

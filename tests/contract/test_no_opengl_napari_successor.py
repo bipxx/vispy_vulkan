@@ -1,8 +1,8 @@
 # SPDX-License-Identifier: AGPL-3.0-only
 """The strict napari rows on napari 0.10.0 (D31 Phase 5b).
 
-compat/no-opengl-napari-0.10.0.json succeeds the matrix's four napari rows. The matrix keeps its napari 0.9.2 rows,
-because candidates pin its bytes; R2's matrix renewal takes these rows.
+compat/no-opengl-napari-0.10.0.json succeeded the matrix's four napari 0.9.2 rows. R2's matrix renewal took its rows,
+as optional rows (D32) that name this record in their evidence: it holds their napari 0.10.0 host pin.
 """
 import hashlib
 import json
@@ -12,7 +12,7 @@ ROOT = Path(__file__).resolve().parents[2]
 RECORD = ROOT / 'compat/no-opengl-napari-0.10.0.json'
 MATRIX = ROOT / 'compat/no-opengl-matrix.json'
 APPLICATIONS = ('napari', 'napari-threedee')
-ROW_FIELDS = ('platform', 'application', 'binding', 'mandatory', 'features')
+RECORD_ONLY = ('note', 'r1')
 
 
 def sha(path):
@@ -27,17 +27,21 @@ def matrix_rows():
     return {row['id']: row for row in load(MATRIX)['rows'] if row.get('application') in APPLICATIONS}
 
 
-def test_the_record_names_the_matrix_bytes_it_succeeds():
-    assert load(RECORD)['supersedes'] == {'matrix': {'path': 'compat/no-opengl-matrix.json', 'sha256': sha(MATRIX)},
-                                          'rows': sorted(matrix_rows())}
+def test_the_record_names_the_matrix_bytes_it_succeeded():
+    supersedes = load(RECORD)['supersedes']
+    assert supersedes['matrix']['path'] == 'compat/no-opengl-matrix.json' and supersedes['rows'] == sorted(matrix_rows())
+    assert len(supersedes['matrix']['sha256']) == 64 and supersedes['matrix']['sha256'] != sha(MATRIX)  # renewed at R2
 
 
-def test_the_record_holds_exactly_the_matrix_napari_rows():
+def test_the_matrix_holds_exactly_the_record_rows_as_optional_rows():
     rows = {row['id']: row for row in load(RECORD)['rows']}
-    old = matrix_rows()
-    assert sorted(rows) == sorted(old) and len(rows) == 4
+    taken = matrix_rows()
+    assert sorted(rows) == sorted(taken) and len(rows) == 4
+    reference = {'workspace': 'vispy_vulkan', 'path': 'compat/no-opengl-napari-0.10.0.json', 'sha256': sha(RECORD)}
     for name, row in rows.items():
-        assert {field: row[field] for field in ROW_FIELDS} == {field: old[name][field] for field in ROW_FIELDS}
+        expected = {key: value for key, value in row.items() if key not in RECORD_ONLY}
+        expected.update(mandatory=False, evidence=row['evidence'] + [reference])
+        assert taken[name] == expected, name
 
 
 def test_each_row_keeps_its_platforms_admitted_artifact():

@@ -29,8 +29,8 @@
       "binding": null,
       "mandatory": true,
       "status": "QUALIFIED",
-      "artifact_sha256": "62df5e4c31bf9a1bb1bea47fd68d50e4198d6ec13d2551c991da1e7f30a2b38f",
-      "environment_id": "de241eb8d98d98127df10c47841447fb9d5dc1862b170e87e73d21a734bbae5a",
+      "artifact_sha256": "5c7142f38b0867fc744a7fe6025b8397f1bada46641b6d05da0d54dadbfab29e",
+      "environment_id": "6686fb6ba1e2b494ba57af68960694e8129c90541badd23ecb3eaa6504a57e2b",
       "features": [
         "clear",
         "image",
@@ -52,39 +52,79 @@
       },
       "evidence": [
         {
-          "path": "build/opengl-removal-final-headless-windows-root-1/result1.json",
-          "sha256": "2b325bc735af82fd3bb5e7949f40e18d66c3121f189b6d60189f34b3964c2486"
+          "path": "build/runs/r2-strict-313/windows-reports/headless/baseline1.json",
+          "sha256": "22d5b17aefd8a914ace9d9a03d514971d6ef7cee4f6a02e9b0fc758456ac9d00"
         },
         {
-          "path": "build/opengl-removal-final-headless-windows-root-1/qualified1.json",
-          "sha256": "f69c25d6a8086e68889fb5fb1028335b7c5d12e4e39bdb720da6fe9cf21f191b"
+          "path": "build/runs/r2-strict-313/windows-reports/headless/baseline1.worker.json",
+          "sha256": "67803d0acf0a0d8b6c4e8a187d36e5ccbad6e4ae62a65c3a6769f44123754701"
         },
         {
-          "path": "build/opengl-removal-final-headless-windows-root-1/qualified1.worker.json",
-          "sha256": "2f53a3337c4971c664a887c24635474cb6a3d47c198df4efc516d45eccd43517"
+          "path": "build/runs/r2-strict-313/windows-reports/headless/receipt1.zip",
+          "sha256": "de977cb70cd190a8d7a314fba428e4746b1e8b24155de2e09069bc6f9409548f"
         },
         {
-          "path": "build/opengl-removal-final-headless-windows-root-1/receipt1.json",
-          "sha256": "577c3fbabfbe2850d247b393f86f1908cdbce66763e9fad7b303096a58397b75"
+          "path": "build/runs/r2-strict-313/windows-reports/headless/qualified1.json",
+          "sha256": "3d316a33a24e3394d26ef62141c318ebfdcc3d0355a799f2ad5ba08953ebdfed"
         },
         {
-          "path": "build/opengl-removal-final-headless-windows-root-1/qualified-features1/result1.json",
-          "sha256": "75ee1ba1378104cfef7fe905c52f65e3d63cf8f9cb9bbf3fc874f36d018b2abc"
+          "path": "build/runs/r2-strict-313/windows-reports/headless/qualified1.worker.json",
+          "sha256": "305c082a5500eb675a8b111704b5e0618c76b115789df16e542eb6101404bed8"
         },
         {
-          "path": "build/opengl-removal-final-headless-windows-root-1/qualified-features1/gpu95/gpu1.xml",
-          "sha256": "bb2baaf99e4ab7c518cbc30ad0e421c0ebc638cb68a84b3191e2feb3c7ab9d5f"
+          "path": "build/runs/r2-strict-313/windows-reports/headless/qualified-features1/result1.json",
+          "sha256": "83b2439e17c644098f1c49404def74384140053c4afff844a70a46a38c9cb028"
         },
         {
-          "path": "build/opengl-removal-final-headless-windows-root-1/qualified-features1/science/result1.json",
-          "sha256": "f25917429bc839f33d683e9f4c6003cbf3eca7dd40fd0cf799a6955c9d0741ce"
+          "path": "build/runs/r2-strict-313/windows-reports/headless/state1.json",
+          "sha256": "92ebdb7e43ea11a2ea6756c4f1453176ed679965df5215d72c6a4e8d5a4b0958"
         },
         {
-          "path": "build/opengl-removal-final-headless-windows-root-1/qualified-features1/markers/result.json",
-          "sha256": "d264230158d01df4899db91bbbe2f91361af1d738e0447e67d26b0922dd197c2"
+          "path": "build/runs/r2-strict-313/windows-reports/headless/qualified-features1/gpu95/gpu1.xml",
+          "sha256": "a7f6716f59de22ee773eb5bc102bf75e728a264a23f17493ae47baeed8e3523c"
+        },
+        {
+          "path": "build/runs/r2-strict-313/windows-reports/headless/qualified-features1/rendering/result1.json",
+          "sha256": "b133b3d6a2e124d2fd8dd3b2581739eeaa4c9a858224175bfcc486c71eba238c"
+        },
+        {
+          "path": "build/runs/r2-strict-313/windows-reports/headless/qualified-features1/markers/result.json",
+          "sha256": "975db8c298d17c1a58bcf05edd09e5aa839b44d69ce1a48689fb85dfa1f9f2a4"
+        },
+        {
+          "path": "build/runs/r2-strict-313/windows-reports/headless/qualified-features1/science/result1.json",
+          "sha256": "01b3f0356ae6573091ea31d188a853f97a81feebc1566be4b3e7fd910e8b0e35"
+        },
+        {
+          "path": "build/runs/r2-strict-313/windows-reports/headless/qualified-features1/rendering/smooth-1.5-actual.npy",
+          "sha256": "6a55ee62e8e78b7628cc4db8e18bae9a1c7297d2e6f81597fe3ec16859705dea"
+        },
+        {
+          "path": "build/runs/r2-strict-313/windows-reports/headless/qualified-features1/rendering/smooth-1.5-expected.npy",
+          "sha256": "6a55ee62e8e78b7628cc4db8e18bae9a1c7297d2e6f81597fe3ec16859705dea"
+        },
+        {
+          "path": "build/runs/r2-strict-313/windows-reports/headless/qualified-features1/rendering/smooth-1.5.npy",
+          "sha256": "6a55ee62e8e78b7628cc4db8e18bae9a1c7297d2e6f81597fe3ec16859705dea"
+        },
+        {
+          "path": "build/runs/r2-strict-313/windows-reports/headless/qualified-features1/rendering/smooth-2.25-actual.npy",
+          "sha256": "3b3c227f1db0ee47eaed99d31cce4dd8b8c2c274562af2ab7c1a8eb8003c4cd4"
+        },
+        {
+          "path": "build/runs/r2-strict-313/windows-reports/headless/qualified-features1/rendering/smooth-2.25-expected.npy",
+          "sha256": "63b8e4c6380aee29f03bd80f38c9146a1dc4ff54e2afb248066a9d3507bc6345"
+        },
+        {
+          "path": "build/runs/r2-strict-313/windows-reports/headless/qualified-features1/rendering/smooth-2.25.npy",
+          "sha256": "3b3c227f1db0ee47eaed99d31cce4dd8b8c2c274562af2ab7c1a8eb8003c4cd4"
+        },
+        {
+          "path": "build/runs/r2-strict-313/summary.json",
+          "sha256": "c06574bf9e10e8c520e58f6a4f67091f28427a9a8e573f346450a9e4e4b4b279"
         }
       ],
-      "qualification_scope": "Same-process native-observed95GPUcases plus rendering/text/images,4096points+instancedmarkers,and36categorical/scalar/color-volume authored-landmark cases; no full-frame OpenGL or performance parity claim"
+      "qualification_scope": "Same-process native-observed95GPUcases plus rendering/text/images,4096points+instancedmarkers,and36categorical/scalar/color-volume authored-landmark cases; no full-frame OpenGL or performance parity claim R2 release artifact (run r2-strict-313; the environment differs from the qualified one only in vispy)."
     },
     {
       "id": "windows-vulkan-qwidget-pyqt5",
@@ -93,8 +133,8 @@
       "binding": "pyqt5",
       "mandatory": true,
       "status": "QUALIFIED",
-      "artifact_sha256": "62df5e4c31bf9a1bb1bea47fd68d50e4198d6ec13d2551c991da1e7f30a2b38f",
-      "environment_id": "ad6f64c7dd98eaec085d8cdf4483434c1a66115592085d678df7d76d2e14d1ea",
+      "artifact_sha256": "5c7142f38b0867fc744a7fe6025b8397f1bada46641b6d05da0d54dadbfab29e",
+      "environment_id": "9cc570e9cf44fa58bf8163ba42e6e74674fa9be55a065aa018008b03ac2b4396",
       "features": [
         "launch",
         "initial-render",
@@ -111,32 +151,39 @@
       },
       "evidence": [
         {
-          "workspace": "vispy_vulkan-opengl-python",
-          "path": "build/no-opengl-windows-finalrenderer1/summary1.json",
-          "sha256": "44eb93c486d03407e3e01db9795339defc86e4c6276e7dc5d5311bb0c8f9df8c"
+          "path": "build/runs/r2-strict-312/windows-reports/pyqt5/initial-native1.json",
+          "sha256": "b3178d8ed671933a9f29369a9b141ef7a67945725f317f6fe7640396cfdad2bf"
         },
         {
-          "workspace": "vispy_vulkan-opengl-python",
-          "path": "build/no-opengl-windows-finalrenderer1/pyqt5/qwidget-qualified2.json",
-          "sha256": "67eb3bfc25852cbd1785dfd89853c084a87dd8875f08f0421f6433df3eea21c0"
+          "path": "build/runs/r2-strict-312/windows-reports/pyqt5/initial-native1.worker.json",
+          "sha256": "9ba13a8f315018bc38464336dbbad6bd670d0bc7691810c95ff3c80b680f06a0"
         },
         {
-          "workspace": "vispy_vulkan-opengl-python",
-          "path": "build/no-opengl-windows-finalrenderer1/pyqt5/qwidget-qualified2.worker.json",
-          "sha256": "d1e56ad773c5fc4b43e7bfdde4a045d4a4f6082f3b89948f624424f8b6d0b3ce"
+          "path": "build/runs/r2-strict-312/windows-reports/pyqt5/receipt1.zip",
+          "sha256": "10420e7fd5c57c734ec57765f7a77989b679ae3b550b8ef5eb10666598c51ec5"
         },
         {
-          "workspace": "vispy_vulkan-opengl-python",
-          "path": "build/no-opengl-windows-finalrenderer1/pyqt5/receipt1.json",
-          "sha256": "56a238bd669c74ca714fe9719a68f7606aab098d19bfb3b00464bbf3cac2056e"
+          "path": "build/runs/r2-strict-312/windows-reports/pyqt5/qwidget-qualified2.json",
+          "sha256": "3a4e0ee530e9fa1a1f9651e754ce47d7e392f8159c8f0049b9d3fcbfc958aec4"
         },
         {
-          "workspace": "vispy_vulkan-opengl-python",
-          "path": "build/no-opengl-windows-finalrenderer1/pyqt5/qwidget-qualified2-functional/functional.json",
-          "sha256": "bb95548de65942cda2670704d5d4b19c473d7dcf1c5de0d2737dac93f8b52432"
+          "path": "build/runs/r2-strict-312/windows-reports/pyqt5/qwidget-qualified2.worker.json",
+          "sha256": "35bf31766fba7c616c7dbe25d7a6f42dbd0a2482cfa6f81b2df157fd76840e27"
+        },
+        {
+          "path": "build/runs/r2-strict-312/windows-reports/pyqt5/qwidget-qualified2-functional/functional.json",
+          "sha256": "09ecdead1d33f54bc117bee9b94d55452b83daaf9398971aba7b5d9fa3aeea79"
+        },
+        {
+          "path": "build/runs/r2-strict-312/windows-reports/pyqt5/state1.json",
+          "sha256": "db2f056e81cfb8f6121122e1e3e15849628c5b1d03c705ec90be3f45608033f1"
+        },
+        {
+          "path": "build/runs/r2-strict-312/summary.json",
+          "sha256": "825be7316e844af6dd1f22bf044abca1fd08d25c8b1e12ae39b8d5e7a1b39cf7"
         }
       ],
-      "qualification_scope": "Selected pyqt5 profile; exact installed536memberartifact and pinned host bytes; complete observed fixture lifecycle/interaction/capture/recovery/close; global ninezero shutdown; scoped to this same-artifact environment"
+      "qualification_scope": "Selected pyqt5 profile; exact installed537memberartifact and pinned host bytes; complete observed fixture lifecycle/interaction/capture/recovery/close; global ninezero shutdown; scoped to this same-artifact environment R2 release artifact (run r2-strict-312; the environment differs from the qualified one only in vispy)."
     },
     {
       "id": "windows-vulkan-qwidget-pyqt6",
@@ -145,8 +192,8 @@
       "binding": "pyqt6",
       "mandatory": true,
       "status": "QUALIFIED",
-      "artifact_sha256": "62df5e4c31bf9a1bb1bea47fd68d50e4198d6ec13d2551c991da1e7f30a2b38f",
-      "environment_id": "405ab8e5a25f63e8edf1a1f9dcb16563b576d5c105c657a76d8f4ccd14c3015a",
+      "artifact_sha256": "5c7142f38b0867fc744a7fe6025b8397f1bada46641b6d05da0d54dadbfab29e",
+      "environment_id": "6c3d0c985863cd5efcc0988df7b68a377fc6c075bd8ea884abbe17c52ab9a196",
       "features": [
         "launch",
         "initial-render",
@@ -163,32 +210,39 @@
       },
       "evidence": [
         {
-          "workspace": "vispy_vulkan-opengl-python",
-          "path": "build/no-opengl-windows-finalrenderer1/summary1.json",
-          "sha256": "44eb93c486d03407e3e01db9795339defc86e4c6276e7dc5d5311bb0c8f9df8c"
+          "path": "build/runs/r2-strict-312/windows-reports/pyqt6/initial-native1.json",
+          "sha256": "5d6438f9f394abc46005c88adc05d5ceb3728476e4c8555221cd6587698df65e"
         },
         {
-          "workspace": "vispy_vulkan-opengl-python",
-          "path": "build/no-opengl-windows-finalrenderer1/pyqt6-hosts/qwidget-qualified2.json",
-          "sha256": "35a5f7ce69a21f4ed073286139d54a5d2321255176ce3920aac3a9da0cd35455"
+          "path": "build/runs/r2-strict-312/windows-reports/pyqt6/initial-native1.worker.json",
+          "sha256": "e3a6d8ea69d7e28b87b1ece5cc11e0f9b175ff71f80b8b506d71d04654a08805"
         },
         {
-          "workspace": "vispy_vulkan-opengl-python",
-          "path": "build/no-opengl-windows-finalrenderer1/pyqt6-hosts/qwidget-qualified2.worker.json",
-          "sha256": "c1caab5cd30e3d6bde593656ae651ec075211ee298793d99469cb693a9b8f8ca"
+          "path": "build/runs/r2-strict-312/windows-reports/pyqt6/receipt1.zip",
+          "sha256": "fb258ce149b24d1f515d4e22a3e6262649f288ab25dd9ebf7d264ea9bf0b11aa"
         },
         {
-          "workspace": "vispy_vulkan-opengl-python",
-          "path": "build/no-opengl-windows-finalrenderer1/pyqt6-hosts/receipt1.json",
-          "sha256": "f7ee81270787296f13ceee6405169ff4cff619b8bb3633e7346bd368af4d53e3"
+          "path": "build/runs/r2-strict-312/windows-reports/pyqt6/qwidget-qualified2.json",
+          "sha256": "39d1fac270829f412c06aa40a933b6ad3bd72a9e4d18ea85119c9e7adb3730c9"
         },
         {
-          "workspace": "vispy_vulkan-opengl-python",
-          "path": "build/no-opengl-windows-finalrenderer1/pyqt6-hosts/qwidget-qualified2-functional/functional.json",
-          "sha256": "310c25631e0783a9a41c6afa28b4f0b1bb96d2061b355ca60c9aeec786b9185f"
+          "path": "build/runs/r2-strict-312/windows-reports/pyqt6/qwidget-qualified2.worker.json",
+          "sha256": "644d937dd0ba7c4740d93a43c2a048d85cd62eb3d23f36b2dc2662c4fd0780ed"
+        },
+        {
+          "path": "build/runs/r2-strict-312/windows-reports/pyqt6/qwidget-qualified2-functional/functional.json",
+          "sha256": "ec624ef90f4af1e68de0af6c1ca34e911ef43c39c4c834103f881b241a3cdd69"
+        },
+        {
+          "path": "build/runs/r2-strict-312/windows-reports/pyqt6/state1.json",
+          "sha256": "983426a85c3958d10a736ccc7825387e7f0fa2593f6f035a056e3400147f80cf"
+        },
+        {
+          "path": "build/runs/r2-strict-312/summary.json",
+          "sha256": "825be7316e844af6dd1f22bf044abca1fd08d25c8b1e12ae39b8d5e7a1b39cf7"
         }
       ],
-      "qualification_scope": "Selected pyqt6 profile; exact installed536memberartifact and pinned host bytes; complete observed fixture lifecycle/interaction/capture/recovery/close; global ninezero shutdown; scoped to this same-artifact environment"
+      "qualification_scope": "Selected pyqt6 profile; exact installed537memberartifact and pinned host bytes; complete observed fixture lifecycle/interaction/capture/recovery/close; global ninezero shutdown; scoped to this same-artifact environment R2 release artifact (run r2-strict-312; the environment differs from the qualified one only in vispy)."
     },
     {
       "id": "windows-vulkan-qwidget-pyside6",
@@ -197,8 +251,8 @@
       "binding": "pyside6",
       "mandatory": true,
       "status": "QUALIFIED",
-      "artifact_sha256": "62df5e4c31bf9a1bb1bea47fd68d50e4198d6ec13d2551c991da1e7f30a2b38f",
-      "environment_id": "96b8042b9f314c67cdec4e2ed885063f07e1ffff9556d94c82c77318ef1a06d1",
+      "artifact_sha256": "5c7142f38b0867fc744a7fe6025b8397f1bada46641b6d05da0d54dadbfab29e",
+      "environment_id": "deabe6a532db95f975138e98f216fc4b6b23b67b0bdec2ef466d89bf7d35d984",
       "features": [
         "launch",
         "initial-render",
@@ -215,42 +269,46 @@
       },
       "evidence": [
         {
-          "workspace": "vispy_vulkan-opengl-python",
-          "path": "build/no-opengl-windows-finalrenderer1/summary1.json",
-          "sha256": "44eb93c486d03407e3e01db9795339defc86e4c6276e7dc5d5311bb0c8f9df8c"
+          "path": "build/runs/r2-strict-312/windows-reports/pyside6/initial-native1.json",
+          "sha256": "cac9930974074ebb70975dc77923baebbe400edd9308314d2f4533e0cccfa1c5"
         },
         {
-          "workspace": "vispy_vulkan-opengl-python",
-          "path": "build/no-opengl-windows-finalrenderer1/pyside6/qwidget-qualified2.json",
-          "sha256": "7a916b4c9c75d00be99e1bcf0380650f63355438f1487c3f975a488f4015fd49"
+          "path": "build/runs/r2-strict-312/windows-reports/pyside6/initial-native1.worker.json",
+          "sha256": "dc90ac80bfda626c9f5bc97bacd6f0238ccd761538bbd26174e67f0f10a551e4"
         },
         {
-          "workspace": "vispy_vulkan-opengl-python",
-          "path": "build/no-opengl-windows-finalrenderer1/pyside6/qwidget-qualified2.worker.json",
-          "sha256": "bffa41bea0620bc3e551f59c031b3bac376495f85fe342c91e8ba3cb410476a3"
+          "path": "build/runs/r2-strict-312/windows-reports/pyside6/receipt1.zip",
+          "sha256": "9544a9d5396f2503998d7c532703c7fc8be8f4c36b6142ec4bc2ef9ba5b18db3"
         },
         {
-          "workspace": "vispy_vulkan-opengl-python",
-          "path": "build/no-opengl-windows-finalrenderer1/pyside6/receipt1.json",
-          "sha256": "5741b6387e28528446ab30d53fc135e406ceddf87b256d54898ad702cfc0700b"
+          "path": "build/runs/r2-strict-312/windows-reports/pyside6/qwidget-qualified2.json",
+          "sha256": "e79db5b3e1d2c4a4f8c52672af616330e069292770c82d70f302eb747a57faaf"
         },
         {
-          "workspace": "vispy_vulkan-opengl-python",
-          "path": "build/no-opengl-windows-finalrenderer1/pyside6/qwidget-qualified2-functional/functional.json",
-          "sha256": "853db6b53e7739813222b4532bda4488650787a7b206d15cf5f8e95d2d24300b"
+          "path": "build/runs/r2-strict-312/windows-reports/pyside6/qwidget-qualified2.worker.json",
+          "sha256": "f16251bb217c5a7919fa81cef46b7f1fee52e12ba34cc0d6758d59be9680093c"
+        },
+        {
+          "path": "build/runs/r2-strict-312/windows-reports/pyside6/qwidget-qualified2-functional/functional.json",
+          "sha256": "beb8d233a157b4dfee3efd9ded0e560f9f7e178af8827d66ba4b2d2e40c49504"
+        },
+        {
+          "path": "build/runs/r2-strict-312/windows-reports/pyside6/state1.json",
+          "sha256": "f2801aa65ec2efb2ffc2e0f2d557623e6321728db5b3dd7fc2f078096ad64675"
+        },
+        {
+          "path": "build/runs/r2-strict-312/summary.json",
+          "sha256": "825be7316e844af6dd1f22bf044abca1fd08d25c8b1e12ae39b8d5e7a1b39cf7"
         }
       ],
-      "qualification_scope": "Selected pyside6 profile; exact installed536memberartifact and pinned host bytes; complete observed fixture lifecycle/interaction/capture/recovery/close; global ninezero shutdown; scoped to this same-artifact environment"
+      "qualification_scope": "Selected pyside6 profile; exact installed537memberartifact and pinned host bytes; complete observed fixture lifecycle/interaction/capture/recovery/close; global ninezero shutdown; scoped to this same-artifact environment R2 release artifact (run r2-strict-312; the environment differs from the qualified one only in vispy)."
     },
     {
       "id": "windows-vulkan-napari-pyqt6",
       "platform": "windows-vulkan",
       "application": "napari",
       "binding": "pyqt6",
-      "mandatory": true,
-      "status": "QUALIFIED",
-      "artifact_sha256": "62df5e4c31bf9a1bb1bea47fd68d50e4198d6ec13d2551c991da1e7f30a2b38f",
-      "environment_id": "405ab8e5a25f63e8edf1a1f9dcb16563b576d5c105c657a76d8f4ccd14c3015a",
+      "mandatory": false,
       "features": [
         "launch",
         "initial-render",
@@ -260,6 +318,9 @@
         "recovery",
         "close"
       ],
+      "status": "QUALIFIED",
+      "artifact_sha256": "62df5e4c31bf9a1bb1bea47fd68d50e4198d6ec13d2551c991da1e7f30a2b38f",
+      "environment_id": "eb23d7f0396b5e9b7c02b53d9e3e90bbfcc8953464d3fd1555ea9a82bd5f731d",
       "gates": {
         "no_gl_execution": "PASS",
         "no_gl_loads": "PASS",
@@ -267,39 +328,44 @@
       },
       "evidence": [
         {
-          "workspace": "vispy_vulkan-opengl-python",
-          "path": "build/no-opengl-windows-finalrenderer1/summary1.json",
-          "sha256": "44eb93c486d03407e3e01db9795339defc86e4c6276e7dc5d5311bb0c8f9df8c"
+          "workspace": "vispy_vulkan",
+          "path": "build/runs/napari-010-strict-305/summary.json",
+          "sha256": "4f5a3a56e73cceaf902a43947c4f601988a63d037ef32eaa66039b48f9abf26d"
         },
         {
-          "workspace": "vispy_vulkan-opengl-python",
-          "path": "build/no-opengl-windows-finalrenderer1/pyqt6-hosts/napari-qualified2.json",
-          "sha256": "221b454fc1b1a74c2c5ede33cb0f39a167d0e4a7110d803e8ddb77d125943fac"
+          "workspace": "vispy_vulkan",
+          "path": "build/runs/napari-010-strict-305/windows-reports/napari-qualified2.json",
+          "sha256": "09766b35d1edc3694738903ab254ed20764192fa54f49fb44d9d96203dfdef23"
         },
         {
-          "workspace": "vispy_vulkan-opengl-python",
-          "path": "build/no-opengl-windows-finalrenderer1/pyqt6-hosts/napari-qualified2.worker.json",
-          "sha256": "cc0dd5fa260989625739fae37ff8890cc1f7d60ab3a0865c86ae161eb3d4f5aa"
+          "workspace": "vispy_vulkan",
+          "path": "build/runs/napari-010-strict-305/windows-reports/napari-qualified2.worker.json",
+          "sha256": "ad2c30ac273fc53caece809a375343265ba5466c8d314efc897af084c3cdab50"
         },
         {
-          "workspace": "vispy_vulkan-opengl-python",
-          "path": "build/no-opengl-windows-finalrenderer1/pyqt6-hosts/receipt1.json",
-          "sha256": "f7ee81270787296f13ceee6405169ff4cff619b8bb3633e7346bd368af4d53e3"
+          "workspace": "vispy_vulkan",
+          "path": "build/runs/napari-010-strict-305/windows-receipt.zip",
+          "sha256": "451a39f2c4770ab6dbd4c3ed299a09ba0326c92c03b94496cef4a074944e89a2"
         },
         {
-          "workspace": "vispy_vulkan-opengl-python",
-          "path": "build/no-opengl-windows-finalrenderer1/pyqt6-hosts/napari-qualified2-functional/functional.json",
-          "sha256": "748234214c9575fcca0498b0f1af373e6ede4f531f253988b20f345ceae0ddf5"
+          "workspace": "vispy_vulkan",
+          "path": "build/runs/napari-010-strict-305/windows-reports/napari-qualified2-functional/functional.json",
+          "sha256": "c5998b3f10030e8e6e66d44a2ab5b2834191dccf262e11c59617c386b7de69ed"
+        },
+        {
+          "workspace": "vispy_vulkan",
+          "path": "compat/no-opengl-napari-0.10.0.json",
+          "sha256": "a724432bb7b29de635d46eef4f694e6673ecf9ab84d12c535e1caee8d099f349"
         }
       ],
-      "qualification_scope": "Selected pyqt6 profile; exact installed536memberartifact and pinned host bytes; complete observed fixture lifecycle/interaction/capture/recovery/close; global ninezero shutdown; scoped to this same-artifact environment"
+      "qualification_scope": "Selected pyqt6 profile; exact installed536memberartifact and pinned host bytes; complete observed fixture lifecycle/interaction/capture/recovery/close; global ninezero shutdown; scoped to this same-artifact environment; napari 0.10.0 with the 0.10.0 strict patch (D31 Phase 5b)"
     },
     {
       "id": "windows-vulkan-glue-vispy-viewers-pyqt6",
       "platform": "windows-vulkan",
       "application": "glue-vispy-viewers",
       "binding": "pyqt6",
-      "mandatory": true,
+      "mandatory": false,
       "status": "QUALIFIED",
       "artifact_sha256": "62df5e4c31bf9a1bb1bea47fd68d50e4198d6ec13d2551c991da1e7f30a2b38f",
       "environment_id": "8c73fcfde8c30508e0acddf6b8c65ab281546a28decfa2cb9c9201ef270b9c97",
@@ -351,10 +417,7 @@
       "platform": "windows-vulkan",
       "application": "napari-threedee",
       "binding": "pyqt6",
-      "mandatory": true,
-      "status": "PENDING",
-      "artifact_sha256": null,
-      "environment_id": null,
+      "mandatory": false,
       "features": [
         "launch",
         "initial-render",
@@ -364,41 +427,47 @@
         "recovery",
         "close"
       ],
+      "status": "QUALIFIED",
+      "artifact_sha256": "62df5e4c31bf9a1bb1bea47fd68d50e4198d6ec13d2551c991da1e7f30a2b38f",
+      "environment_id": "eb23d7f0396b5e9b7c02b53d9e3e90bbfcc8953464d3fd1555ea9a82bd5f731d",
       "gates": {
-        "no_gl_execution": "UNVERIFIED",
-        "no_gl_loads": "UNVERIFIED",
-        "no_gl_install_link_requirement": "UNVERIFIED"
+        "no_gl_execution": "PASS",
+        "no_gl_loads": "PASS",
+        "no_gl_install_link_requirement": "PASS"
       },
-      "evidence": [],
-      "latest_attempt": {
-        "status": "FAILED_TIMEOUT_PRESERVED",
-        "artifact_sha256": "62df5e4c31bf9a1bb1bea47fd68d50e4198d6ec13d2551c991da1e7f30a2b38f",
-        "functional_status": "running",
-        "gates": {
-          "no_gl_execution": "UNVERIFIED",
-          "no_gl_loads": "UNVERIFIED",
-          "no_gl_install_link_requirement": "UNVERIFIED"
+      "evidence": [
+        {
+          "workspace": "vispy_vulkan",
+          "path": "build/runs/napari-010-strict-305/summary.json",
+          "sha256": "4f5a3a56e73cceaf902a43947c4f601988a63d037ef32eaa66039b48f9abf26d"
         },
-        "observer_pending_steps": {},
-        "observed_stall": "Viewer.show QWidget/QWindow creation through OLE RegisterDragDrop/RPC; distinct from proven resolver race; no generic retry or behavior workaround",
-        "evidence": [
-          {
-            "workspace": "vispy_vulkan-opengl-python",
-            "path": "build/no-opengl-windows-finalrenderer1/pyqt6-hosts/threedee-qualified2.json",
-            "sha256": "464034445ae4774885fb258da4466b8a83721e1da087fa15c2ec1c0380732dd1"
-          },
-          {
-            "workspace": "vispy_vulkan-opengl-python",
-            "path": "build/no-opengl-windows-finalrenderer1/pyqt6-hosts/threedee-qualified2-stall-stack.log",
-            "sha256": "a5520506ee57e8954c56bd09d2a704c17f751ffc214659e82e65ee8d7049e4b1"
-          },
-          {
-            "workspace": "vispy_vulkan-opengl-python",
-            "path": "build/no-opengl-windows-finalrenderer1/pyqt6-hosts/threedee-qualified2-functional/functional.json",
-            "sha256": "cd5a3d70d54143e2fb42657edbcfbc92dc340285603f4ab64f1eebc4a023f7c9"
-          }
-        ]
-      }
+        {
+          "workspace": "vispy_vulkan",
+          "path": "build/runs/napari-010-strict-305/windows-reports/threedee-qualified2.json",
+          "sha256": "c41b87309cf59513f666a40b6db602d002692bceb97715c594f13c7481314408"
+        },
+        {
+          "workspace": "vispy_vulkan",
+          "path": "build/runs/napari-010-strict-305/windows-reports/threedee-qualified2.worker.json",
+          "sha256": "5334381ed812cbaf8e7dfed9c3203b549a09506653a439896e44d0dd01178d4f"
+        },
+        {
+          "workspace": "vispy_vulkan",
+          "path": "build/runs/napari-010-strict-305/windows-receipt.zip",
+          "sha256": "451a39f2c4770ab6dbd4c3ed299a09ba0326c92c03b94496cef4a074944e89a2"
+        },
+        {
+          "workspace": "vispy_vulkan",
+          "path": "build/runs/napari-010-strict-305/windows-reports/threedee-qualified2-functional/functional.json",
+          "sha256": "434cc3e49be51c40d01bedacc04ac3566d9b1332c897b809b5a620fb134d6d96"
+        },
+        {
+          "workspace": "vispy_vulkan",
+          "path": "compat/no-opengl-napari-0.10.0.json",
+          "sha256": "a724432bb7b29de635d46eef4f694e6673ecf9ab84d12c535e1caee8d099f349"
+        }
+      ],
+      "qualification_scope": "Selected pyqt6 profile; exact installed536memberartifact and pinned host bytes; complete observed fixture lifecycle/interaction/capture/recovery/close; global ninezero shutdown; scoped to this same-artifact environment; napari 0.10.0 with the 0.10.0 strict patch (D31 Phase 5b)"
     },
     {
       "id": "wsl-linux-lavapipe-x11-headless",
@@ -407,8 +476,8 @@
       "binding": null,
       "mandatory": true,
       "status": "QUALIFIED",
-      "artifact_sha256": "374a74ea9787ccccc643e0ac7e45d9f704a41d046465828736158ac94398c4a3",
-      "environment_id": "b1a56c6320bcc69fb8f3bf59ca2d38663dd1604d53fe4cae8bb9145cd4984168",
+      "artifact_sha256": "66f35ab0dae878af1744f2061be1042bd2c5abfd24d3192c7456865f2c6fd3f7",
+      "environment_id": "1281b8a12abc49ec1e1f55241d3477a5032cf96aa3b21791f8998844ae82039a",
       "features": [
         "clear",
         "image",
@@ -430,43 +499,83 @@
       },
       "evidence": [
         {
-          "path": "build/opengl-removal-n345c-linux-wheel-root-1/qualification1/observer1/result1.json",
-          "sha256": "6d8acceca9de889b50d002131c0a4715ad9f5acf31229a56eef2e931585a9840"
+          "path": "build/runs/r2-strict-317/linux-reports/headless/baseline.json",
+          "sha256": "0067c262745c78718bfbeb5fd491f9fd64af991fbc4b4739493858096a26ab2f"
         },
         {
-          "path": "build/opengl-removal-n345c-linux-wheel-root-1/qualification1/observer1/outputs/qualified.json",
-          "sha256": "a3e7c3b110a65094adc9b8f23b10e20ea5e11a02054e37ab4ec58931df66780f"
+          "path": "build/runs/r2-strict-317/linux-reports/headless/baseline.worker.json",
+          "sha256": "418b77272ea94adcbf8c4270afdccbf3b2d1f65cf176fffb1da50b00389e8359"
         },
         {
-          "path": "build/opengl-removal-n345c-linux-wheel-root-1/qualification1/observer1/outputs/qualified.worker.json",
-          "sha256": "44a429793b00122cb799bd4f8a4422147edd52dae6e21ca6191e1c2681ec6dad"
+          "path": "build/runs/r2-strict-317/linux-reports/headless/receipt.json",
+          "sha256": "e81339125b4a66a3f846a0cb4fb045675724d626c7ef50562be3f4a589e026e0"
         },
         {
-          "path": "build/opengl-removal-n345c-linux-wheel-root-1/qualification1/observer1/outputs/receipt.json",
-          "sha256": "45965a2a43120b5c7fa742fbcc225e83b7f590e1fd9ae529badfe49183207aca"
+          "path": "build/runs/r2-strict-317/linux-reports/headless/qualified.json",
+          "sha256": "516529b209a5740821104182ba63d02232561bcb7213554a0a5215f7967cf379"
         },
         {
-          "path": "build/opengl-removal-n345c-linux-wheel-root-1/qualification1/observer1/outputs/qualified-features/result1.json",
-          "sha256": "a625cfcd39b47abbf893fdb57dd4f0ebf9c0024a1c27187a6a2205110e8ee832"
+          "path": "build/runs/r2-strict-317/linux-reports/headless/qualified.worker.json",
+          "sha256": "2ac63459916908ca5e00708367b5a28772f9efa03a9cb8c22036a1f29bf80ae1"
         },
         {
-          "path": "build/opengl-removal-n345c-linux-wheel-root-1/qualification1/observer1/outputs/qualified-features/gpu95/gpu.xml",
-          "sha256": "cfa368502087a2070fa32789b73e30811d8b4638a0a2075b68f0577213f062bc"
+          "path": "build/runs/r2-strict-317/linux-reports/headless/state1.json",
+          "sha256": "b0048643d117acbf052a8ed47fd63ccd4b147aa9ee56330e5ff9bc97ae95f141"
         },
         {
-          "path": "build/opengl-removal-n345c-linux-wheel-root-1/qualification1/observer1/outputs/qualified-features/science/result1.json",
-          "sha256": "c5b8f407d51359b5c81a604ce7b8cc07a32bbade7fedbdae62d40de64543e428"
+          "path": "build/runs/r2-strict-317/linux-reports/headless/qualified-features/result1.json",
+          "sha256": "37e24f3798d17228cdde2a6f5da40136392ccc218e73afed4f038328aa4b6581"
         },
         {
-          "path": "build/opengl-removal-n345c-linux-wheel-root-1/qualification1/observer1/outputs/qualified-features/markers/result.json",
-          "sha256": "545132d5898cb31760c8692fe2023ee16915db1c47689be9ddf660d03b2ce0c2"
+          "path": "build/runs/r2-strict-317/linux-reports/headless/qualified-features/gpu95/gpu.xml",
+          "sha256": "91eba0c74669ed0b477435a531174134cdbeb21728f9514c1d3cd76670118f39"
         },
         {
-          "path": "build/opengl-removal-n345c-linux-wheel-root-1/qualification1/observer1/controls-build1.json",
-          "sha256": "2228fe9cc037a218ba2043b1cd80b8929819894e32536fa768560704d3f5aeaf"
+          "path": "build/runs/r2-strict-317/linux-reports/headless/qualified-features/gpu95/functional.json",
+          "sha256": "76c3a872c7748a8b1667605bfbc18210a26061559f34fb94c1e145f604990c8f"
+        },
+        {
+          "path": "build/runs/r2-strict-317/linux-reports/headless/qualified-features/rendering/result1.json",
+          "sha256": "25e9ad86444224af7e12127527703b4f8caf66beae9ac02d8f329175a7fd6731"
+        },
+        {
+          "path": "build/runs/r2-strict-317/linux-reports/headless/qualified-features/markers/result.json",
+          "sha256": "e49038a50347e3b477fb4d1bae2363701b82b2d45335403500840dcafa5bdf93"
+        },
+        {
+          "path": "build/runs/r2-strict-317/linux-reports/headless/qualified-features/science/result1.json",
+          "sha256": "e2ee7b52c0037489bae7ddfd8864d48be324553ad7293054ac690388ac6e8435"
+        },
+        {
+          "path": "build/runs/r2-strict-317/linux-reports/headless/qualified-features/rendering/smooth-1.5-actual.npy",
+          "sha256": "6a55ee62e8e78b7628cc4db8e18bae9a1c7297d2e6f81597fe3ec16859705dea"
+        },
+        {
+          "path": "build/runs/r2-strict-317/linux-reports/headless/qualified-features/rendering/smooth-1.5-expected.npy",
+          "sha256": "6a55ee62e8e78b7628cc4db8e18bae9a1c7297d2e6f81597fe3ec16859705dea"
+        },
+        {
+          "path": "build/runs/r2-strict-317/linux-reports/headless/qualified-features/rendering/smooth-1.5.npy",
+          "sha256": "6a55ee62e8e78b7628cc4db8e18bae9a1c7297d2e6f81597fe3ec16859705dea"
+        },
+        {
+          "path": "build/runs/r2-strict-317/linux-reports/headless/qualified-features/rendering/smooth-2.25-actual.npy",
+          "sha256": "8a14781708fbf624a5157ed7c323932f71f4edfdfaa6f6a243321cddd677e03d"
+        },
+        {
+          "path": "build/runs/r2-strict-317/linux-reports/headless/qualified-features/rendering/smooth-2.25-expected.npy",
+          "sha256": "63b8e4c6380aee29f03bd80f38c9146a1dc4ff54e2afb248066a9d3507bc6345"
+        },
+        {
+          "path": "build/runs/r2-strict-317/linux-reports/headless/qualified-features/rendering/smooth-2.25.npy",
+          "sha256": "8a14781708fbf624a5157ed7c323932f71f4edfdfaa6f6a243321cddd677e03d"
+        },
+        {
+          "path": "build/runs/r2-strict-317/summary.json",
+          "sha256": "0343ddf1ad631e4951bfbe09283679921c7c8a3279bc2e5ce1cff661ff8aa027"
         }
       ],
-      "qualification_scope": "WSL Lavapipe CPU software explicitly admitted; same observedprocess95GPUcases,unchangedLinuxrendering/compiledtext and4096bothmarkerpaths plus36categorical/scalar/color-volume landmarks; notnativeLinuxhardware orfullframeOpenGL/performanceparity"
+      "qualification_scope": "WSL Lavapipe CPU software explicitly admitted; same observedprocess95GPUcases,unchangedLinuxrendering/compiledtext and4096bothmarkerpaths plus36categorical/scalar/color-volume landmarks; notnativeLinuxhardware orfullframeOpenGL/performanceparity R2 release artifact (run r2-strict-317; the environment differs from the qualified one only in vispy)."
     },
     {
       "id": "wsl-linux-lavapipe-x11-qwidget-pyqt5",
@@ -475,8 +584,8 @@
       "binding": "pyqt5",
       "mandatory": true,
       "status": "QUALIFIED",
-      "artifact_sha256": "374a74ea9787ccccc643e0ac7e45d9f704a41d046465828736158ac94398c4a3",
-      "environment_id": "c7b4a54c33b75a27447dea8fa53b13b206e59d7889d1083fb7bf13bb5b3b70c3",
+      "artifact_sha256": "66f35ab0dae878af1744f2061be1042bd2c5abfd24d3192c7456865f2c6fd3f7",
+      "environment_id": "ad80903b38f61fd9a65d1ce4db7df25d7f2c3867ae7712c3a8dc106dbe3769bc",
       "features": [
         "launch",
         "initial-render",
@@ -493,37 +602,39 @@
       },
       "evidence": [
         {
-          "workspace": "vispy_vulkan-opengl-python",
-          "path": "build/no-opengl-linux-pyqt5-finalrenderer1/summary1.json",
-          "sha256": "e503de845c9984190a68c2dc7e9bc4b8091816596d1d3f86b24304f8df41a687"
+          "path": "build/runs/r2-strict-313/linux-reports/pyqt5/native1.json",
+          "sha256": "19f006b57fd15139ae7a14f874279890664335f56b4b1b6b76eb5e02f20e1187"
         },
         {
-          "workspace": "vispy_vulkan-opengl-python",
-          "path": "build/no-opengl-linux-pyqt5-finalrenderer1/qualified/qualified2.json",
-          "sha256": "7200d64fca69e0bc45f3511cf8cef60f466346df8282e24e5b6df2193ec5577b"
+          "path": "build/runs/r2-strict-313/linux-reports/pyqt5/native1.worker.json",
+          "sha256": "d2c710cbf60c78d538f4e39524c97b3cb3eef04d574379fdd4da5cab26821f5c"
         },
         {
-          "workspace": "vispy_vulkan-opengl-python",
-          "path": "build/no-opengl-linux-pyqt5-finalrenderer1/qualified/qualified2.worker.json",
-          "sha256": "e5f7826761e2c0851af2bbe20fccb2d9ab7ea476420b157140b7919785a41ae8"
+          "path": "build/runs/r2-strict-313/linux-reports/pyqt5/receipt1.json",
+          "sha256": "b314e8cff142fe81c0d58158d269582736f5881f8250776fc165202e2f4389b5"
         },
         {
-          "workspace": "vispy_vulkan-opengl-python",
-          "path": "build/no-opengl-linux-pyqt5-finalrenderer1/qualified/receipt1.json",
-          "sha256": "b531d85285565919cdf3323b6f75fc1cb254d37e9efe1b4f622487f73548dd19"
+          "path": "build/runs/r2-strict-313/linux-reports/pyqt5/qualified2.json",
+          "sha256": "bc90097507a398dfb82b8a4f09cd60287c736a6933709033c52a92098eb5f23d"
         },
         {
-          "workspace": "vispy_vulkan-opengl-python",
-          "path": "build/no-opengl-linux-pyqt5-finalrenderer1/qualified/qualified2-functional/functional.json",
-          "sha256": "37b6fea54a7b6f46fbb0bab8c21c9e51d423846a66d096b7f2e441d8c6ca1088"
+          "path": "build/runs/r2-strict-313/linux-reports/pyqt5/qualified2.worker.json",
+          "sha256": "dec2f6716aca0a65394c23e70d18813f288d86a2a0381ec291db501db2ead298"
         },
         {
-          "workspace": "vispy_vulkan-opengl-python",
-          "path": "build/no-opengl-linux-pyqt5-finalrenderer1/provider-member1.json",
-          "sha256": "138152feaba639bfa194eed732b2ad7c2eb1d490294a67a9b0d22772a4732601"
+          "path": "build/runs/r2-strict-313/linux-reports/pyqt5/qualified2-functional/functional.json",
+          "sha256": "afa20195302816494dc1aab285295a611729062487a7b50f02e7b9b90448568e"
+        },
+        {
+          "path": "build/runs/r2-strict-313/linux-reports/pyqt5/state1.json",
+          "sha256": "2f26e5b9b902e1e1a8760d80d01e7f7751c3662dbe116a96c462d4ef9d34c9f4"
+        },
+        {
+          "path": "build/runs/r2-strict-313/summary.json",
+          "sha256": "c06574bf9e10e8c520e58f6a4f67091f28427a9a8e573f346450a9e4e4b4b279"
         }
       ],
-      "qualification_scope": "New strict rootfs; source Qt5.15.19/PyQt5.15.11 plus original SIP12.20;743provider members/43sourceELFs+unchangedSIP; mappedX11 fullWidget lifecycle/input/capture/recovery/close; explicitLavapipe independent DawnVulkan;536renderer members and ninezero shutdown; no nativeLinuxhardwareclaim",
+      "qualification_scope": "New strict rootfs; source Qt5.15.19/PyQt5.15.11 plus original SIP12.20;743provider members/43sourceELFs+unchangedSIP; mappedX11 fullWidget lifecycle/input/capture/recovery/close; explicitLavapipe independent DawnVulkan;536renderer members and ninezero shutdown; no nativeLinuxhardwareclaim R2 release artifact (run r2-strict-313; the environment differs from the qualified one only in vispy).",
       "provider_profile": {
         "path": "compat/qt/linux-pyqt5-no-opengl.json",
         "sha256": "5b574cbad9621af480a76a1805f6e8b8f999627ec3023e40ba8bbb5193bddb59"
@@ -536,8 +647,8 @@
       "binding": "pyqt6",
       "mandatory": true,
       "status": "QUALIFIED",
-      "artifact_sha256": "374a74ea9787ccccc643e0ac7e45d9f704a41d046465828736158ac94398c4a3",
-      "environment_id": "1977c5a7c1b9ad7170f5ce8dba38f56d786b7be2c4fbc5b29a8f0bca4bf9b2cd",
+      "artifact_sha256": "66f35ab0dae878af1744f2061be1042bd2c5abfd24d3192c7456865f2c6fd3f7",
+      "environment_id": "c522c7fb0b74833ec551f33f31d44deaa82102a1d8699006b9825aa71b085cbf",
       "features": [
         "launch",
         "initial-render",
@@ -554,32 +665,39 @@
       },
       "evidence": [
         {
-          "workspace": "vispy_vulkan-opengl-python",
-          "path": "build/no-opengl-linux-finalrenderer1/summary1.json",
-          "sha256": "6c1a22f285be9b2aa590669fb8b74f12270beb29e69040fbed69f6dfdeb444a8"
+          "path": "build/runs/r2-strict-313/linux-reports/pyqt6/initial-native1.json",
+          "sha256": "5a5d34bdd106b5992940221ebc06a3f638a1ad4bbfaeea9c86fbc9939a9b907f"
         },
         {
-          "workspace": "vispy_vulkan-opengl-python",
-          "path": "build/no-opengl-linux-finalrenderer1/napari-threedee/qwidget-qualified2.json",
-          "sha256": "5d66cf60d6cc6c8c85f98e5a2dccbb3b8eb78f4439ad901f3932c317784bc286"
+          "path": "build/runs/r2-strict-313/linux-reports/pyqt6/initial-native1.worker.json",
+          "sha256": "1b483af99f65c2bc7eaeba359027d7faccc9216c1b4aaab7babc6eef90661cd0"
         },
         {
-          "workspace": "vispy_vulkan-opengl-python",
-          "path": "build/no-opengl-linux-finalrenderer1/napari-threedee/qwidget-qualified2.worker.json",
-          "sha256": "760ffb28f3dd72930b6334bb25599dc92acb35cd15337252fc9b7fb244078b3e"
+          "path": "build/runs/r2-strict-313/linux-reports/pyqt6/receipt1.json",
+          "sha256": "020b6a10d5db575bb281e1e6aebf816c2324d300846e66f9d85ed1c8b01dfc08"
         },
         {
-          "workspace": "vispy_vulkan-opengl-python",
-          "path": "build/no-opengl-linux-finalrenderer1/napari-threedee/receipt1.json",
-          "sha256": "15673b34ce03618571a98cd17969247ce845b6c33a2d44638360ae256551029e"
+          "path": "build/runs/r2-strict-313/linux-reports/pyqt6/qwidget-qualified2.json",
+          "sha256": "fa26750ea2cfcb08c1e4a2fcb85a03227a46031b21246a3377146ca7997309e6"
         },
         {
-          "workspace": "vispy_vulkan-opengl-python",
-          "path": "build/no-opengl-linux-finalrenderer1/napari-threedee/qwidget-qualified2-functional/functional.json",
-          "sha256": "678697a57187fbf3012dd6e6114440b7eb9aeede68671ee986c4f0f27b726783"
+          "path": "build/runs/r2-strict-313/linux-reports/pyqt6/qwidget-qualified2.worker.json",
+          "sha256": "beea9027fccd02844b3d0e8cc5120279bcc46d77f8d9cb449da610eab0d2b274"
+        },
+        {
+          "path": "build/runs/r2-strict-313/linux-reports/pyqt6/qwidget-qualified2-functional/functional.json",
+          "sha256": "21baae478b1eca8cd32e21ac80e1b38aa8332c07a9519cec02109c394127d786"
+        },
+        {
+          "path": "build/runs/r2-strict-313/linux-reports/pyqt6/state1.json",
+          "sha256": "5365f1ca2afc116a3c7a021cb34a88b770a3a0b05b25ab7411aba3737d96e348"
+        },
+        {
+          "path": "build/runs/r2-strict-313/summary.json",
+          "sha256": "c06574bf9e10e8c520e58f6a4f67091f28427a9a8e573f346450a9e4e4b4b279"
         }
       ],
-      "qualification_scope": "Mapped X11 source-built PyQt6; explicit Lavapipe software; exact536installedmembers and pinned host payload; full observed lifecycle/interaction/capture/recovery/close and ninezero shutdown; no nativeLinuxhardwareclaim"
+      "qualification_scope": "Mapped X11 source-built PyQt6; explicit Lavapipe software; exact536installedmembers and pinned host payload; full observed lifecycle/interaction/capture/recovery/close and ninezero shutdown; no nativeLinuxhardwareclaim R2 release artifact (run r2-strict-313; the environment differs from the qualified one only in vispy)."
     },
     {
       "id": "wsl-linux-lavapipe-x11-qwidget-pyside6",
@@ -588,8 +706,8 @@
       "binding": "pyside6",
       "mandatory": true,
       "status": "QUALIFIED",
-      "artifact_sha256": "374a74ea9787ccccc643e0ac7e45d9f704a41d046465828736158ac94398c4a3",
-      "environment_id": "373f37c73cf7f58e07789c7e22fd06ee015e19b53ac4dc03bd423f8e80a513e3",
+      "artifact_sha256": "66f35ab0dae878af1744f2061be1042bd2c5abfd24d3192c7456865f2c6fd3f7",
+      "environment_id": "662a7bbe57d75d4db4903e9811183a0073ea8fa0a265f775a1a13a054f3d39c7",
       "features": [
         "launch",
         "initial-render",
@@ -606,37 +724,39 @@
       },
       "evidence": [
         {
-          "workspace": "vispy_vulkan-opengl-python",
-          "path": "build/no-opengl-linux-pyside6-finalrenderer1/summary1.json",
-          "sha256": "07d87ed37e3100946489c40b8a05daf9c4dc6dd42fcab1630e4b7e6c7d24f0aa"
+          "path": "build/runs/r2-strict-313/linux-reports/pyside6/native1.json",
+          "sha256": "e1a009b971bd69a09df2370f37a74ece34c3411e417dc67113efb1db926db5b7"
         },
         {
-          "workspace": "vispy_vulkan-opengl-python",
-          "path": "build/no-opengl-linux-pyside6-finalrenderer1/qualified/qualified2.json",
-          "sha256": "afde899c22ccc15395f8e457c0ee8d064de4e5c70afcf59244bb31ab307e9077"
+          "path": "build/runs/r2-strict-313/linux-reports/pyside6/native1.worker.json",
+          "sha256": "b372742f62e9cdec2324253f506cbc5cf3879a1b8faf0918c211839b51cc75f3"
         },
         {
-          "workspace": "vispy_vulkan-opengl-python",
-          "path": "build/no-opengl-linux-pyside6-finalrenderer1/qualified/qualified2.worker.json",
-          "sha256": "5dc98bcaeb11cee93f68ec748317037237fa53af4605fdec44fd8893da603bf7"
+          "path": "build/runs/r2-strict-313/linux-reports/pyside6/receipt1.json",
+          "sha256": "c1f4d81e00734e90e43a86426d52cd0da3dc958b89edc6eba02ac986b7b15c77"
         },
         {
-          "workspace": "vispy_vulkan-opengl-python",
-          "path": "build/no-opengl-linux-pyside6-finalrenderer1/qualified/receipt1.json",
-          "sha256": "09807b3725e634ca90473bd24b10c6f1d0ce7693d376a9210428066ffb2b53f2"
+          "path": "build/runs/r2-strict-313/linux-reports/pyside6/qualified2.json",
+          "sha256": "06f3adc9193c5cd9d4bacc751f4c137445b34ac222cc7730607e94af89268cb8"
         },
         {
-          "workspace": "vispy_vulkan-opengl-python",
-          "path": "build/no-opengl-linux-pyside6-finalrenderer1/qualified/qualified2-functional/functional.json",
-          "sha256": "dd76725b83040b915815ab3a66d23c7dab09d259b3b8cd19d48008769ba32dcc"
+          "path": "build/runs/r2-strict-313/linux-reports/pyside6/qualified2.worker.json",
+          "sha256": "7b4073f77c336723ec26a61ad8cbb7237c749055fcb4cc7534ddce6635a31c6e"
         },
         {
-          "workspace": "vispy_vulkan-opengl-python",
-          "path": "build/no-opengl-linux-pyside6-finalrenderer1/provider-member1.json",
-          "sha256": "ab1a4c88668022d8507653c8ef51ab4b0e1006a027be39630ca858584fb81034"
+          "path": "build/runs/r2-strict-313/linux-reports/pyside6/qualified2-functional/functional.json",
+          "sha256": "601c08d68e4bcdef9bf0b584912f0ce2f4cde3421b6077363960e2710591814b"
+        },
+        {
+          "path": "build/runs/r2-strict-313/linux-reports/pyside6/state1.json",
+          "sha256": "37ba28cfbffc4e5944b91f3565f8b9ddce13b2d1e91f585b719b4d3e886b04a6"
+        },
+        {
+          "path": "build/runs/r2-strict-313/summary.json",
+          "sha256": "c06574bf9e10e8c520e58f6a4f67091f28427a9a8e573f346450a9e4e4b4b279"
         }
       ],
-      "qualification_scope": "New strict rootfs; source-built Qt/PySide6.12 normative profile761provider members/all50ELFs; mappedX11 QWidget full lifecycle/input/capture/recovery/close; explicitLavapipe software; exact536renderer members and ninezero globalshutdown; no nativeLinuxhardwareclaim",
+      "qualification_scope": "New strict rootfs; source-built Qt/PySide6.12 normative profile761provider members/all50ELFs; mappedX11 QWidget full lifecycle/input/capture/recovery/close; explicitLavapipe software; exact536renderer members and ninezero globalshutdown; no nativeLinuxhardwareclaim R2 release artifact (run r2-strict-313; the environment differs from the qualified one only in vispy).",
       "provider_profile": {
         "path": "compat/qt/linux-pyside6-no-opengl.json",
         "sha256": "ce209059472f57221b03c13a44fb09331ff926edfa42e9b196b9eb659fb8a454"
@@ -647,10 +767,7 @@
       "platform": "wsl-linux-lavapipe-x11",
       "application": "napari",
       "binding": "pyqt6",
-      "mandatory": true,
-      "status": "QUALIFIED",
-      "artifact_sha256": "374a74ea9787ccccc643e0ac7e45d9f704a41d046465828736158ac94398c4a3",
-      "environment_id": "1977c5a7c1b9ad7170f5ce8dba38f56d786b7be2c4fbc5b29a8f0bca4bf9b2cd",
+      "mandatory": false,
       "features": [
         "launch",
         "initial-render",
@@ -660,6 +777,9 @@
         "recovery",
         "close"
       ],
+      "status": "QUALIFIED",
+      "artifact_sha256": "374a74ea9787ccccc643e0ac7e45d9f704a41d046465828736158ac94398c4a3",
+      "environment_id": "1285f0a0940926fcf5ffcfa4ab97b220cc730d52522c3325a0e6f7651a8e9282",
       "gates": {
         "no_gl_execution": "PASS",
         "no_gl_loads": "PASS",
@@ -667,39 +787,44 @@
       },
       "evidence": [
         {
-          "workspace": "vispy_vulkan-opengl-python",
-          "path": "build/no-opengl-linux-finalrenderer1/summary1.json",
-          "sha256": "6c1a22f285be9b2aa590669fb8b74f12270beb29e69040fbed69f6dfdeb444a8"
+          "workspace": "vispy_vulkan",
+          "path": "build/runs/napari-010-strict-305/summary.json",
+          "sha256": "4f5a3a56e73cceaf902a43947c4f601988a63d037ef32eaa66039b48f9abf26d"
         },
         {
-          "workspace": "vispy_vulkan-opengl-python",
-          "path": "build/no-opengl-linux-finalrenderer1/napari-threedee/napari-qualified2.json",
-          "sha256": "ffa8dfbb7a464ccd1dc8cbf932e2cbaeda9a64ca4db610a3ca2ef994e422ae0b"
+          "workspace": "vispy_vulkan",
+          "path": "build/runs/napari-010-strict-305/linux-reports/napari-qualified2.json",
+          "sha256": "81cf1d7636470644ebc27ed9f43e3e174e940e93652b23a9778c93eba97595d6"
         },
         {
-          "workspace": "vispy_vulkan-opengl-python",
-          "path": "build/no-opengl-linux-finalrenderer1/napari-threedee/napari-qualified2.worker.json",
-          "sha256": "d35d30eb635bd7e54b22514a836404742952deacfdeafe1ce45669239581ca2d"
+          "workspace": "vispy_vulkan",
+          "path": "build/runs/napari-010-strict-305/linux-reports/napari-qualified2.worker.json",
+          "sha256": "d379a90442a12af166d7711a19c24cb6f29ad381ea7e9fcfff8acbb9689d92ec"
         },
         {
-          "workspace": "vispy_vulkan-opengl-python",
-          "path": "build/no-opengl-linux-finalrenderer1/napari-threedee/receipt1.json",
-          "sha256": "15673b34ce03618571a98cd17969247ce845b6c33a2d44638360ae256551029e"
+          "workspace": "vispy_vulkan",
+          "path": "build/runs/napari-010-strict-305/linux-reports/receipt1.json",
+          "sha256": "656958648553986ad5c484559b124d923f2d4ed987937eadc017095b22cba4bb"
         },
         {
-          "workspace": "vispy_vulkan-opengl-python",
-          "path": "build/no-opengl-linux-finalrenderer1/napari-threedee/napari-qualified2-functional/functional.json",
-          "sha256": "c70e16f548aa80c6ed4c8dbdb2478ca29e9af132111dea424801d98138b05410"
+          "workspace": "vispy_vulkan",
+          "path": "build/runs/napari-010-strict-305/linux-reports/napari-qualified2-functional/functional.json",
+          "sha256": "cf7660d4b1ee5a0f3645134200f28c05f2e86dc8bbef5523f2c0bddd77a242d7"
+        },
+        {
+          "workspace": "vispy_vulkan",
+          "path": "compat/no-opengl-napari-0.10.0.json",
+          "sha256": "a724432bb7b29de635d46eef4f694e6673ecf9ab84d12c535e1caee8d099f349"
         }
       ],
-      "qualification_scope": "Mapped X11 source-built PyQt6; explicit Lavapipe software; exact536installedmembers and pinned host payload; full observed lifecycle/interaction/capture/recovery/close and ninezero shutdown; no nativeLinuxhardwareclaim"
+      "qualification_scope": "Mapped X11 source-built PyQt6; explicit Lavapipe software; exact536installedmembers and pinned host payload; full observed lifecycle/interaction/capture/recovery/close and ninezero shutdown; no nativeLinuxhardwareclaim; napari 0.10.0 with the 0.10.0 strict patch (D31 Phase 5b)"
     },
     {
       "id": "wsl-linux-lavapipe-x11-glue-vispy-viewers-pyqt6",
       "platform": "wsl-linux-lavapipe-x11",
       "application": "glue-vispy-viewers",
       "binding": "pyqt6",
-      "mandatory": true,
+      "mandatory": false,
       "status": "QUALIFIED",
       "artifact_sha256": "374a74ea9787ccccc643e0ac7e45d9f704a41d046465828736158ac94398c4a3",
       "environment_id": "9f324bae6cd38d6a5739947fa7dc209fe9eacb5c1463f2e2ad31147fb7056988",
@@ -751,10 +876,7 @@
       "platform": "wsl-linux-lavapipe-x11",
       "application": "napari-threedee",
       "binding": "pyqt6",
-      "mandatory": true,
-      "status": "QUALIFIED",
-      "artifact_sha256": "374a74ea9787ccccc643e0ac7e45d9f704a41d046465828736158ac94398c4a3",
-      "environment_id": "1977c5a7c1b9ad7170f5ce8dba38f56d786b7be2c4fbc5b29a8f0bca4bf9b2cd",
+      "mandatory": false,
       "features": [
         "launch",
         "initial-render",
@@ -764,6 +886,9 @@
         "recovery",
         "close"
       ],
+      "status": "QUALIFIED",
+      "artifact_sha256": "374a74ea9787ccccc643e0ac7e45d9f704a41d046465828736158ac94398c4a3",
+      "environment_id": "1285f0a0940926fcf5ffcfa4ab97b220cc730d52522c3325a0e6f7651a8e9282",
       "gates": {
         "no_gl_execution": "PASS",
         "no_gl_loads": "PASS",
@@ -771,32 +896,37 @@
       },
       "evidence": [
         {
-          "workspace": "vispy_vulkan-opengl-python",
-          "path": "build/no-opengl-linux-finalrenderer1/summary1.json",
-          "sha256": "6c1a22f285be9b2aa590669fb8b74f12270beb29e69040fbed69f6dfdeb444a8"
+          "workspace": "vispy_vulkan",
+          "path": "build/runs/napari-010-strict-305/summary.json",
+          "sha256": "4f5a3a56e73cceaf902a43947c4f601988a63d037ef32eaa66039b48f9abf26d"
         },
         {
-          "workspace": "vispy_vulkan-opengl-python",
-          "path": "build/no-opengl-linux-finalrenderer1/napari-threedee/threedee-qualified2.json",
-          "sha256": "f4a97d6166f661631973ae2069f2863d81cfc8898f6b5eaed771503fbe24021c"
+          "workspace": "vispy_vulkan",
+          "path": "build/runs/napari-010-strict-305/linux-reports/threedee-qualified2.json",
+          "sha256": "0fa1e8301522ed9f450f8de71249d63d79e1951953c545d8908963539f74f6c7"
         },
         {
-          "workspace": "vispy_vulkan-opengl-python",
-          "path": "build/no-opengl-linux-finalrenderer1/napari-threedee/threedee-qualified2.worker.json",
-          "sha256": "64c1f8cae9f9b5dd982890b9354207d179405784bd4b569a2f7dba8baffa2933"
+          "workspace": "vispy_vulkan",
+          "path": "build/runs/napari-010-strict-305/linux-reports/threedee-qualified2.worker.json",
+          "sha256": "736e22d250a777b4376ee4b88990b043888042b8af26662d6eb6466efed94b3b"
         },
         {
-          "workspace": "vispy_vulkan-opengl-python",
-          "path": "build/no-opengl-linux-finalrenderer1/napari-threedee/receipt1.json",
-          "sha256": "15673b34ce03618571a98cd17969247ce845b6c33a2d44638360ae256551029e"
+          "workspace": "vispy_vulkan",
+          "path": "build/runs/napari-010-strict-305/linux-reports/receipt1.json",
+          "sha256": "656958648553986ad5c484559b124d923f2d4ed987937eadc017095b22cba4bb"
         },
         {
-          "workspace": "vispy_vulkan-opengl-python",
-          "path": "build/no-opengl-linux-finalrenderer1/napari-threedee/threedee-qualified2-functional/functional.json",
-          "sha256": "85d630cfe84df863ad5473d1de15ce8abe261fbe14c39801bb6f69cd33b07b91"
+          "workspace": "vispy_vulkan",
+          "path": "build/runs/napari-010-strict-305/linux-reports/threedee-qualified2-functional/functional.json",
+          "sha256": "fadd3fa4d849a0a8f6a294b959906594909959df7f2226a8fd36fea9402a129a"
+        },
+        {
+          "workspace": "vispy_vulkan",
+          "path": "compat/no-opengl-napari-0.10.0.json",
+          "sha256": "a724432bb7b29de635d46eef4f694e6673ecf9ab84d12c535e1caee8d099f349"
         }
       ],
-      "qualification_scope": "Mapped X11 source-built PyQt6; explicit Lavapipe software; exact536installedmembers and pinned host payload; full observed lifecycle/interaction/capture/recovery/close and ninezero shutdown; no nativeLinuxhardwareclaim"
+      "qualification_scope": "Mapped X11 source-built PyQt6; explicit Lavapipe software; exact536installedmembers and pinned host payload; full observed lifecycle/interaction/capture/recovery/close and ninezero shutdown; no nativeLinuxhardwareclaim; napari 0.10.0 with the 0.10.0 strict patch (D31 Phase 5b)"
     },
     {
       "id": "dive-admission",
