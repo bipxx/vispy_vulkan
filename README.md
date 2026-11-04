@@ -6,6 +6,16 @@ Start with the [qualified Tk compatibility baseline](docs/qualified-tk-baseline.
 
 The [offline CPython 3.12 installation guide](docs/offline-install-cp312.md) describes a separate, older Qt bundle. Its [qualification matrix](compat/no-opengl-matrix.json) records thirteen qualified rows out of fourteen; Windows napari-threedee startup remains unresolved. Those results do not qualify the newer Tk wheels for every Qt or host workflow. macOS Metal remains experimental; native Linux hardware and broader performance qualification remain separate.
 
+## Install
+
+The first public release provides CPython 3.12 wheels for Windows x86_64 and Linux x86_64:
+
+```sh
+pip install "vispy==0.17.0+vulkan.1" --extra-index-url https://bipxx.github.io/vispy_vulkan/simple/
+```
+
+Pin the exact local version so a PyPI VisPy release cannot take precedence. See the [release notes](docs/release-0.17.0-vulkan.1.md) for wheel hashes, qualified platforms and limits.
+
 ## Build
 
 The repository includes the supplied dependency sources and their immutable checksums. No Git submodule initialization is required. Vendor Git attributes include platform line-ending rules, so use this initial checkout sequence to preserve the pinned bytes.

@@ -13,7 +13,7 @@ ROOT = Path(__file__).resolve().parents[2]
 MODULES = ('test_hot_swap_policy', 'test_napari_vector_layers_reference', 'test_napari_layer_families_reference',
            'test_napari_layer_controls_reference', 'test_wide_lines_comparison', 'test_agg_lines_reference',
            'test_markers_d17_reference', 'test_pool_watch', 'test_documented_outcomes', 'test_publication_drift',
-           'test_benchmark_frames_w8', 'test_ci_local', 'test_hot_swap_linux_observer',
+           'test_benchmark_frames_w8', 'test_ci_local', 'test_hot_swap_linux_observer', 'test_wheel_index',
            'test_smooth_line_lavapipe_measurement', 'test_positioned_line_comparison', 'test_pool_watch_external',
            'test_single_present_contract', 'test_linux_wheel_audit_source', 'test_host_change_registry',
            'test_napari_host_packets', 'test_napari_successor_fixtures',
@@ -34,8 +34,6 @@ NOT_IN_CI = {
     'test_hot_swap_linux_native': 'Linux-only native ptrace controls (C compiler, static libc, ptrace); not yet checked '
                                   'in CI\'s environment (W7)',
 }
-# Contract modules that stay local until their publication; a checkout may lack them.
-UNPUBLISHED = {'test_wheel_index': 'W11 index tooling, published with W11 on approval (D2)'}
 
 for _name in MODULES:
     _module = importlib.import_module(_name)
@@ -50,8 +48,7 @@ def test_every_contract_module_runs_in_ci_or_is_declared():
     named = set(re.findall(r'tests/contract/(test_\w+)\.py', workflows))
     modules = {path.stem for path in (ROOT / 'tests/contract').glob('test_*.py')}
     assert not set(MODULES) & named and not set(NOT_IN_CI) & (named | set(MODULES))
-    assert not set(UNPUBLISHED) & (named | set(MODULES) | set(NOT_IN_CI))
-    assert modules - named - set(MODULES) - set(UNPUBLISHED) == set(NOT_IN_CI)
+    assert modules - named - set(MODULES) == set(NOT_IN_CI)
 
 
 __all__ = [name for name in dir() if name.startswith('test_')]
