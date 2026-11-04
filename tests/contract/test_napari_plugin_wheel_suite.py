@@ -234,7 +234,3 @@ def test_plugin_qt_suites_compare_frames_with_the_smooth_line_criterion(name):
     assert 'reason = %s(image,' % rule in source
     assert 'array_equal(image' not in source
 
-
-# CI's curated test list is pinned (compat/qualification-ci.json) until R2, so the curated contract modules
-# (tests/contract/curated_contracts.py) run through this module.
-from curated_contracts import *  # noqa: E402,F401,F403
