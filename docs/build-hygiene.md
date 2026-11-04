@@ -154,6 +154,19 @@ once. Branch references and shared environments can look large in naive totals
 while offering almost no reclaimable disk space. Do not create another large
 backup of already-retained data merely to report cleanup.
 
+## Local R2 Linux native profile
+
+Local R2 Linux integration uses the explicit
+[`linux-r2-native` profile](../compat/build-profiles/linux-r2-native.json).
+Its 6 GiB allocation matches fresh Linux CI and leaves the shared 20 GiB cap
+and 10 GiB reserve unchanged. The retained full Linux run used about 3.12 GB;
+its source was about 400 MB. Use the existing guest workspace and inherited
+registry, keep Windows managed scratch empty, and check both filesystems.
+Reuse locked tools, dependency sources, licenses and the selected software
+Vulkan driver. A missing prerequisite stops the run. No system installation or
+automatic download fallback is authorized by this profile. It covers local
+development integration; it does not admit an artifact or qualify native GPUs.
+
 ## Mesa clipping-repair diagnostic profile
 
 The versioned [mesa-lvp-repair profile](../compat/build-profiles/mesa-lvp-repair.json)

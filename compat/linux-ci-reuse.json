@@ -1,21 +1,15 @@
 {
   "schema": 1,
   "repository": "bipxx/vispy_vulkan",
-  "run_id": 40235407061,
+  "run_id": 41861336116,
   "attempt": 1,
-  "source_head": "ee2b8d88f6d0dd929d4fd9697d6bd0a9829cc0a2",
-  "artifact_id": 12615023781,
-  "artifact_sha256": "afae9edeeda8060759e3babdf5bd26557c5d5cbde1f784688e786db68418b474",
-  "artifact_bytes": 42526886,
+  "source_head": "73909521b4fb819f1ffa09606280044f0b78fe85",
+  "artifact_id": 13340334029,
+  "artifact_sha256": "77efdc5087576dd41a099f9c629824a31f0ca17745bf2fd0347671d8d8a79942",
+  "artifact_bytes": 43026650,
   "max_expanded_bytes": 134217728,
-  "production_sha256": "6e21a4bbed7849a564bf5c425d1519ca7794327e61602aabdb5a4b8c0c59726f",
+  "production_sha256": "964fed48037f7f33a12903d8f1e372582c6c790292bc161e0d53683bd1c82b8e",
   "driver_sha256": "9c5c41b3a7b9d759b0960c868f10375281798ad084150716d6d122c8789b9e12",
   "driver_pin_sha256": "46c952cbdeb4de964b6ca127d2b5d7c71b9a566d98e225984059cb123d4c9980",
-  "recovered_members": [
-    {
-      "member": "runs/native-ci-40235407061-1/wheels/.gitignore",
-      "sha256": "684888c0ebb17f374298b65ee2807526c066094c701bcc7ebbe1c1095f494fc1",
-      "data_hex": "2a"
-    }
-  ]
+  "recovered_members": []
 }

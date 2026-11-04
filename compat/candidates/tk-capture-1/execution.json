@@ -1,22 +1,22 @@
 {
   "schema": 1,
   "phase": "execution-preparation",
-  "manifest_sha256": "d407e979c238a7ffe64d0bcb2b6e4a3573da286d0c8e3e400b034941b9d82a98",
+  "manifest_sha256": "3fd8d221158c24f30a2a1a1270380cc2990bf0703ce09001758920b925a7e84b",
   "candidate": {
     "path": "compat/candidates/tk-capture-1/candidate.json",
-    "scope_sha256": "6a5c2d6285a538fb5f4cec6396f12c888fc32555a38dbb251175d0da29250e34"
+    "scope_sha256": "f3d4d25d14ad25b7b52ef7c7788038e690a134e6fe7c648e922c5943365ecb39"
   },
   "coverage": {
     "path": "compat/candidates/tk-capture-1/coverage.json",
-    "sha256": "90149ff9dcbc0ac52e0203ce65e6523494736b8751a9f98912b836d9358f3552"
+    "sha256": "956eacaae4d4b93be66bb4cf7d383973d4fd10fd9e8fa6db4d63eac086b185ca"
   },
   "baseline": {
     "path": "compat/vispy-compatibility.json",
-    "sha256": "875c1be945f27398577ef140450b6998fe22713836a9defea2ec57b24fae538d"
+    "sha256": "cb937aaaeb850cb3b21e0eb43f95d2bddb8da1c5ac5256103f6f747577202317"
   },
   "execution": {
     "path": "compat/candidates/tk-capture-1/execution-ledger.json",
-    "scope_sha256": "948fc9696fa89a1329048006859aadf2ed7a6d8bdc0799c017c9b6d1b7c5377c"
+    "scope_sha256": "0dfa2bbe6617bf6952e186daeb14e6e3e12a7a974ad94835375adee4617855da"
   },
   "mappings": [
     {

@@ -6,8 +6,61 @@
 using namespace vispy::timing;
 void require(bool value, const char* message) { if (!value) throw std::runtime_error(message); }
 
+void capture_query_contract() {
+    Frame frame;
+    require(capture_queries_succeeded(frame, false), "untimed producer needs no fabricated GPU record");
+    require(!capture_queries_succeeded(frame, true), "unfinalized producer is not query success");
+    frame.finalized = true;
+    require(!capture_queries_succeeded(frame, true), "empty timed producer is not query success");
+    auto segment = std::make_shared<Segment>();
+    segment->kinds = {"surface_conversion"};
+    frame.segments = {segment};
+    require(!capture_queries_succeeded(frame, true), "pending segment is not capture-ready");
+    segment->status = Status::MapError;
+    segment->error = "controlled map outcome";
+    FrameResult consumed;
+    require(frame.collect(consumed) && consumed.status == "map_error", "map failure can be emitted independently");
+    consumed = {};
+    require(frame.failure == Status::Pending && frame.error.empty() && !capture_queries_succeeded(frame, true),
+            "segment failure remains ineligible after its returned record is discarded");
+    segment->error.clear(); segment->status = Status::Success;
+    segment->values = {9};
+    require(!capture_queries_succeeded(frame, true), "wrong timestamp count is not capture success");
+    segment->values = {9, 8};
+    require(!capture_queries_succeeded(frame, true), "reversed timestamps are not capture success");
+    segment->values = {0, 0};
+    require(frame.collect(consumed) && consumed.status == "success" && consumed.passes[0].elapsed_ns == 0,
+            "valid quantized zero is still a real pass");
+    consumed = {};
+    require(capture_queries_succeeded(frame, true) && capture_queries_succeeded(frame, true),
+            "successful collection remains eligible after repeated or discarded returned records");
+    segment->status = Status::Pending;
+    require(!capture_queries_succeeded(frame, true), "ready state is never cached over a pending segment");
+    segment->status = Status::MapError;
+    require(!capture_queries_succeeded(frame, true), "a formerly pending map failure cannot become success");
+    segment->status = Status::Success; segment->values = {0, UINT64_MAX};
+    auto tail = std::make_shared<Segment>();
+    tail->status = Status::Success; tail->kinds = {"present_capture"}; tail->values = {0, 1};
+    frame.segments.push_back(tail);
+    require(!capture_queries_succeeded(frame, true), "overflowing elapsed sum is not capture success");
+    frame.segments.pop_back(); segment->values = {1, 2};
+    require(capture_queries_succeeded(frame, true), "terminal failure control starts with otherwise valid queries");
+    frame.fail(Status::DeviceLost, "controlled lost outcome");
+    require(!capture_queries_succeeded(frame, true), "terminal producer query failure is not capture success");
+    std::weak_ptr<Segment> weak;
+    {
+        Frame owner; owner.finalized = true;
+        auto owned = std::make_shared<Segment>();
+        owned->status = Status::Success; owned->kinds = {"scene"}; owned->values = {1, 2};
+        weak = owned; owner.segments = {std::move(owned)};
+        require(capture_queries_succeeded(owner, true), "final owner can be inspected without retaining it");
+    }
+    require(weak.expired(), "query eligibility keeps no segment owner after frame destruction");
+}
+
 int main() {
     try {
+        capture_query_contract();
         Frame frame;
         frame.frame_id = 7; frame.device_generation = 3; frame.quantization_ns = 65536;
         uint32_t count = 0;

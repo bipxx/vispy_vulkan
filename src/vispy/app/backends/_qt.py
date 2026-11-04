@@ -7,18 +7,19 @@
 The binding wrappers select one toolkit per process. Resource sharing belongs
 to Dawn; this module does not import Qt's OpenGL context or widget classes.
 
-Windows defaults to Vulkan offscreen rendering with CPU readback into an owned
-QImage, painted by an ordinary QWidget. This deliberately pays a GPU completion
-wait and full-frame transfer to avoid Vulkan Win32 WSI drivers that resolve WGL
-entry points. ``config['qt_presentation']='native'`` (or the
-``VISPY_QT_PRESENTATION`` environment variable) explicitly opts into the native
-surface fast path, which is outside strict Windows no-OpenGL qualification.
-``auto`` selects readback on Windows and native presentation elsewhere.
+``auto`` selects native surface presentation on every platform.
+``config['qt_presentation']='readback'`` (or ``VISPY_QT_PRESENTATION=readback``)
+selects offscreen rendering with CPU readback into an owned QImage, painted by
+an ordinary QWidget. The strict no-OpenGL controller explicitly selects this
+route to avoid Vulkan Win32 WSI drivers that resolve WGL entry points. Readback
+pays a GPU completion wait and full-frame transfer; native presentation remains
+outside strict Windows no-OpenGL qualification.
 """
 
 from __future__ import division
 
 from time import sleep, time
+import functools
 import math
 import os
 import sys
@@ -244,11 +245,29 @@ def _set_config(c):
     return dict(c)
 
 
+# Dawn canvas releases by canvas id, kept reachable from module globals until the widget's destroyed signal runs
+# them. A release slot reachable only through the widget's Python wrapper can be cleared by a collection of a garbage
+# cycle while the C++ widget still exists (CPython drops a cleared function's defaults), and the later signal then
+# raises TypeError in a Qt slot (qFatal under PyQt6's default excepthook) and leaks the canvas.
+_dawn_canvas_releases = {}
+
+
+def _release_dawn_canvas(releases, destroy, canvas_id, _obj=None):
+    releases.pop(canvas_id, None)
+    destroy(canvas_id)
+
+
+def _connect_dawn_canvas_release(widget, canvas_id, destroy):
+    release = functools.partial(_release_dawn_canvas, _dawn_canvas_releases, destroy, canvas_id)
+    _dawn_canvas_releases[canvas_id] = release
+    widget.destroyed.connect(release)
+
+
 def _select_dawn_presentation(value, platform):
     """Choose an explicit presentation route; never fall back to OpenGL."""
     if value not in ('auto', 'readback', 'native'):
         raise ValueError('Dawn Qt presentation must be auto, readback or native')
-    return ('readback' if platform == 'win32' else 'native') if value == 'auto' else value
+    return 'native' if value == 'auto' else value
 
 
 # ------------------------------------------------------------- application ---
@@ -722,9 +741,7 @@ class CanvasBackendDesktop(QtBaseCanvasBackend, QWidget):
         samples = int(p.context.config.get('samples', 0) or 0)
         width, height = int(p.size[0]), int(p.size[1])
         self._dawn_canvas_id = int(_dawn.register_canvas(width, height, samples, bool(p.vsync)))
-        self.destroyed.connect(
-            lambda _obj=None, canvas_id=self._dawn_canvas_id: _dawn.destroy_canvas(canvas_id)
-        )
+        _connect_dawn_canvas_release(self, self._dawn_canvas_id, _dawn.destroy_canvas)
         from ...gloo.dawn_parser import install_gl_queries
         install_gl_queries()
         self._initialized = True
@@ -975,8 +992,10 @@ class CanvasBackendDesktop(QtBaseCanvasBackend, QWidget):
 
     def _read_dawn_framebuffer(self):
         """Read an independently owned QImage without triggering another draw."""
-        from ...gloo import read_pixels
-        image = read_pixels(alpha=True)
+        from ...gloo.dawn_parser import read_pixels_dawn
+        # The native array is freshly owned and copied into bytes below, so
+        # read_pixels' defensive copy is skipped (B19).
+        image = read_pixels_dawn(None, True, 'color', copy=False)
         height, width, _channels = image.shape
         data = bytes(image.tobytes())
         formats = QtGui.QImage.Format if PYQT6_API else QtGui.QImage

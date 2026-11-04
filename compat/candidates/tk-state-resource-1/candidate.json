@@ -2,44 +2,38 @@
   "schema": 1,
   "phase": "development",
   "id": "tk-state-resource-1",
-  "manifest_sha256": "0d5d842d1540163fbe477fa46aacf74128c7910d93f9e28c7b05dcde8afbaa7a",
-  "product_source_commit": "5c7d1273bc3471136d87f730482e07a679e0e00e",
+  "manifest_sha256": "8c971f401bfe6bc65a62f360ae101dab09ab83755a5117f76f402a6014e1ddce",
+  "product_source_commit": "0a521bb108b7016b6619591e6806fe84b68fad43",
   "upstream_commit": "117b054598f4758b598f4b8f48feea48c11fe7b0",
   "ledger": {
     "path": "compat/vispy-compatibility.json",
-    "sha256": "875c1be945f27398577ef140450b6998fe22713836a9defea2ec57b24fae538d"
+    "sha256": "cb937aaaeb850cb3b21e0eb43f95d2bddb8da1c5ac5256103f6f747577202317"
   },
   "matrix": {
     "path": "compat/no-opengl-matrix.json",
-    "sha256": "9477ee4a888fbe59d85ee09d0fe779de376f73982cdab7aea2447c11b046f410"
+    "sha256": "230b12f3d4ed418cde3b0313fbdea36557b02a61c80a1cf637699d7a9bc50fc4"
   },
   "required_host_rows": [
     "windows-vulkan-headless",
     "windows-vulkan-qwidget-pyqt5",
     "windows-vulkan-qwidget-pyqt6",
     "windows-vulkan-qwidget-pyside6",
-    "windows-vulkan-napari-pyqt6",
-    "windows-vulkan-glue-vispy-viewers-pyqt6",
-    "windows-vulkan-napari-threedee-pyqt6",
     "wsl-linux-lavapipe-x11-headless",
     "wsl-linux-lavapipe-x11-qwidget-pyqt5",
     "wsl-linux-lavapipe-x11-qwidget-pyqt6",
-    "wsl-linux-lavapipe-x11-qwidget-pyside6",
-    "wsl-linux-lavapipe-x11-napari-pyqt6",
-    "wsl-linux-lavapipe-x11-glue-vispy-viewers-pyqt6",
-    "wsl-linux-lavapipe-x11-napari-threedee-pyqt6"
+    "wsl-linux-lavapipe-x11-qwidget-pyside6"
   ],
   "runtime_inputs": {
     "path": "compat/candidates/tk-state-resource-1/runtime-inputs.json",
-    "sha256": "5287eb42b9c77886e7a73bbe446e157eb3a58f35ce2b07aeea483000e01d0444"
+    "sha256": "d1b144e085acc6a3d0bcdf7aacd2ce31a9237a13839f56fada917837611a19d9"
   },
   "profiles": [
     {
       "id": "windows-gpu-tk86-cp312-development",
       "required": true,
       "observation": {
-        "path": "compat/candidates/tk-state-resource-1/windows-readback-profile.json",
-        "sha256": "795f39794a8c9f2e53db949535810ab911ac4bfdb5b4cfa0c32d1c85c3ef9b59"
+        "path": "compat/candidates/tk-state-resource-1/windows-release-profile.json",
+        "sha256": "c7210191c6643613776af558bd0c7ba9eddc3b4b4b695cde8744e9394690c0e0"
       },
       "wheel": null,
       "previous_qualified_wheel_sha256": "62df5e4c31bf9a1bb1bea47fd68d50e4198d6ec13d2551c991da1e7f30a2b38f",
@@ -57,8 +51,8 @@
       "id": "wsl-software-tk90-cp31213-development",
       "required": true,
       "observation": {
-        "path": "compat/candidates/tk-state-resource-1/linux-readback-profile.json",
-        "sha256": "e66fbb4d620812fdd07010ffb04c2974e5946924ee45abe5b1c0681bb382a82e"
+        "path": "compat/candidates/tk-state-resource-1/linux-release-profile.json",
+        "sha256": "23e3da9e0eda56287d61052217de8ee13b0cf1d3ec07a5cd349190b956eb8f2c"
       },
       "wheel": null,
       "previous_qualified_wheel_sha256": "374a74ea9787ccccc643e0ac7e45d9f704a41d046465828736158ac94398c4a3",
@@ -1163,8 +1157,14 @@
     }
   ],
   "reviews": {
-    "source": null,
-    "scope": null
+    "source": {
+      "path": "compat/candidates/tk-state-resource-1/reviews/source-e5a78da7f-fable.json",
+      "sha256": "c358a1d70b1af7697afdff82f12174190dbaaab77ece1286edef0368e571edc3"
+    },
+    "scope": {
+      "path": "compat/candidates/tk-state-resource-1/reviews/scope-e5a78da7f-fable.json",
+      "sha256": "a890f2f1e78912980d0831b5f0417986cd08523c3e0104e14f29ee2cb4927ffb"
+    }
   },
   "blockers": [
     "All proposals are unreviewed and unapplied; all 142 original required pairs remain in the canonical ledger.",
@@ -1232,11 +1232,11 @@
     },
     {
       "path": "compat/qualification-ci.json",
-      "sha256": "5ea2f0d91d035d5aa09a0b9c7728a775b8eab093d07e3ceee429bdb0a527af90"
+      "sha256": "eb850e65a852f0f4a07c926f36321f4cc7273eecf17f1dbfb7a866839f09d7dc"
     },
     {
       "path": "tools/qualification_artifact.py",
-      "sha256": "65ae2431ac46c49a27c94f6be1b5d2e5240a87bae8038f20e38452c6c5f17909"
+      "sha256": "b803e10c7e89de1658fdb6c26d8aa5983bbdaca7ff4fb303e6dc6e262a666448"
     },
     {
       "path": "tools/repackage_python_wheel.py",
@@ -1260,7 +1260,7 @@
     },
     {
       "path": "tools/qualification_linux_native.py",
-      "sha256": "f730be50b29a9cd0f234a5c02f968908572238365d71c52a5f06e14b43e95577"
+      "sha256": "04a1b88988bc934ddb6d6c766c5b44f3da8b516d251c80e5fedf04c3fbef8a19"
     },
     {
       "path": "compat/qualification-native.schema.json",
@@ -1276,7 +1276,7 @@
     },
     {
       "path": "tools/audit_linux_wheel.py",
-      "sha256": "3106c09f756ed53ac14d0190355c49a79ddc114271b06bbccd530999300457df"
+      "sha256": "551e565c4e1e2ccd1c98f2bfcef1fd9b5db2252af6b1a9a42515d781ae93ad3a"
     },
     {
       "path": "tools/linux_ci_lifecycle.py",
@@ -1288,7 +1288,7 @@
     },
     {
       "path": "compat/linux-ci-reuse.json",
-      "sha256": "06eb14feac7b52b6a42ff2fb30064044b9cf06423f870a9c694384e5a95bce40"
+      "sha256": "d716a666964dbd05b5c31c083e3f3b655be0c5eeaac4b610f767e434fe5ba645"
     },
     {
       "path": "tools/reuse_metal_ci.py",
@@ -1356,11 +1356,11 @@
     },
     {
       "path": ".github/workflows/cpu-contract.yml",
-      "sha256": "e3c1f227e628de4b6bfc9dfaf5e46240e79b9e138fb693d5a8919cd4aee875b1"
+      "sha256": "fc90d204ed8e4ab00b774635d590d2c1fbe81a7412064e146f65f57740c9a339"
     },
     {
       "path": "tools/audit_no_opengl.py",
-      "sha256": "6740dfc384e829b2b644209bbf203516e26ae704e4460c1339cd9424f3c4e140"
+      "sha256": "3af4099be8418863162039b2638111173685aee6ddf9aee7b4154b4a96b6afbe"
     },
     {
       "path": "tools/mesh_layout_process.py",

@@ -91,11 +91,15 @@ try:
         gloo.clear(color=(0,0,0,0));program.draw('lines')
         image=gloo.read_pixels((0,0,64,64),alpha=True)
         coverage=np.zeros((64,64),np.float64)
+        # W5: each smooth line end extends 0.14 px (cpp/shader/line_consumer.cpp), so columns 7 and 56 get side*0.14;
+        # at width 2.25 the 0.125*0.14 corners stay at or below the 1/32 minimum coverage and draw nothing.
         if width==1.5:
             coverage[31:33,8:56]=.75
+            coverage[31:33,[7,56]]=.75*.14
         else:
             coverage[31:33,8:56]=1
             coverage[30,8:56]=.125;coverage[33,8:56]=.125
+            coverage[31:33,[7,56]]=.14
         alpha=.8*coverage
         expected=np.zeros((64,64,4),np.uint8)
         expected[:,:,0]=np.rint(255*alpha).astype(np.uint8)

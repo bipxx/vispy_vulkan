@@ -35,7 +35,9 @@ def test_installed_artifact_host_lifecycle(scenario, tmp_path):
         assert host_wheels, 'Exact host wheels are required for ' + scenario
         for host_wheel in host_wheels.split(os.pathsep):
             command.extend(['--host-wheel', str(Path(host_wheel).resolve(strict=True))])
-    result = subprocess.run(command, capture_output=True, text=True, timeout=180)
+    # This direct strict-functional launch bypasses the audit controller.
+    environment = {**os.environ, 'VISPY_QT_PRESENTATION': 'readback'}
+    result = subprocess.run(command, env=environment, capture_output=True, text=True, timeout=180)
     report_file = output / 'functional.json'
     detail = report_file.read_text(encoding='utf-8') if report_file.exists() else ''
     assert result.returncode == 0, result.stdout + result.stderr + detail

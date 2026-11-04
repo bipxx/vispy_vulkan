@@ -1,22 +1,22 @@
 {
   "schema": 1,
   "phase": "execution-preparation",
-  "manifest_sha256": "104d0dab0f79247cf9b18b136845b2574d800e4b85c97b493cd5917e60dea5c5",
+  "manifest_sha256": "03a71a06c0f2f93f8ede65cbdf976cad1e58d2d55c021ffce53a1f56b027ec9e",
   "candidate": {
     "path": "compat/candidates/tk-state-resource-1/candidate.json",
-    "scope_sha256": "32dc9f632279560345f77bb02d0bede52323802146193bd98611476e398a7009"
+    "scope_sha256": "8bcbb6c53d5e21b9e2fa0e6749e699cf77eb69489780e1d383f54927787fef7c"
   },
   "coverage": {
     "path": "compat/candidates/tk-state-resource-1/coverage.json",
-    "sha256": "efb90a7dea833557fa2a9f6f7da04c1140c67bd73194fce3e662adc146b6bada"
+    "sha256": "42e13386e8bf473f6518f6401ec1cb5e929052cb25b79c45b38d295a81ddd078"
   },
   "baseline": {
     "path": "compat/vispy-compatibility.json",
-    "sha256": "875c1be945f27398577ef140450b6998fe22713836a9defea2ec57b24fae538d"
+    "sha256": "cb937aaaeb850cb3b21e0eb43f95d2bddb8da1c5ac5256103f6f747577202317"
   },
   "execution": {
     "path": "compat/candidates/tk-state-resource-1/execution-ledger.json",
-    "scope_sha256": "9ca9058a4d348bdafb6cef2197a9dcaedf7541c462680da205e58515682f2022"
+    "scope_sha256": "a6f608369bd5280dcc72847145bdd1cf38a9f688c6df88c0d93e170b383a0a43"
   },
   "mappings": [
     {

@@ -41,6 +41,11 @@ for dtype in numeric:
     raw = np.arange(48).reshape(4, 4, 3).astype(dtype)
     arrays.extend([raw, raw[:, ::-1], np.asfortranarray(raw), raw.transpose(1, 0, 2)])
 arrays.extend([np.arange(24, dtype=">f4").reshape(2, 3, 4), np.arange(24, dtype=">i2").reshape(2, 3, 4), np.empty((0, 3), dtype=np.float32), np.array(17, dtype=np.float32)])
+# Structured and void arrays, such as vispy's vertex buffers, are captured as the raw bytes the legacy path sends.
+vertex = np.zeros(5, dtype=[("a_position", "<f4", 3), ("a_color", "<f4", 4), ("a_size", "<f4")])
+vertex["a_position"], vertex["a_color"], vertex["a_size"] = np.arange(15).reshape(5, 3), np.arange(20).reshape(5, 4) / 20, 3
+arrays.extend([np.arange(16, dtype=np.uint8).view("V8"), np.array([(1.5, -2), (3.25, 7)], dtype=[("x", "<f4"), ("y", "<i2")]),
+               vertex, vertex[::2]])
 for index, array in enumerate(arrays):
     wanted = np.ascontiguousarray(array).tobytes()
     commands = [("DATA", 7, [0], array)]
@@ -55,8 +60,7 @@ for index, array in enumerate(arrays):
     check(f"owned_payload_{index}", left[0][2]["bytes"] == right[0][2]["bytes"] == wanted and left[0][2]["dtype"] == right[0][2]["dtype"] and left[0][2]["shape"] == right[0][2]["shape"] and count == old_count == len(wanted))
     check(f"owned_address_and_counts_{index}", (not wanted or address == left[0][2]["address"]) and side == [] and counters == dict(captures=1, bytes=len(wanted), fallback_dtypes=0, fallback_exports=0))
 
-unsupported = [np.zeros(2, dtype=dtype) for dtype in ("M8[D]", "m8[ns]", "V8", "U3", "S3", "O", "c8", "i8", "u8")]
-unsupported.append(np.zeros(2, dtype=[("x", "<f4"), ("y", "<i2")]))
+unsupported = [np.zeros(2, dtype=dtype) for dtype in ("M8[D]", "m8[ns]", "U3", "S3", "O", "c8", "i8", "u8")]
 for index, array in enumerate(unsupported):
     commands = [("DATA", 7, [0], array)]
     counters = stats()

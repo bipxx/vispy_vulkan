@@ -44,11 +44,11 @@ def test_build_dependencies_and_host_lock():
     build_dependencies = project["build-system"]["requires"]
     for dependency in ("Cython", "numpy", "cmake", "nanobind", "scikit-build-core"):
         assert any(requirement.startswith(dependency + "==") for requirement in build_dependencies), dependency
-    assert "napari==0.9.2; python_version >= '3.11'" in project["dependency-groups"]["hosts"]
+    assert "napari==0.10.0; python_version >= '3.11'" in project["dependency-groups"]["hosts"]
     assert project["tool"]["scikit-build"]["editable"]["mode"] == "redirect"
     lock = tomllib.loads((ROOT / "uv.lock").read_text(encoding="utf-8"))
     napari = [package for package in lock["package"] if package["name"] == "napari"]
-    assert len(napari) == 1 and napari[0]["version"] == "0.9.2"
+    assert len(napari) == 1 and napari[0]["version"] == "0.10.0"
     assert all(wheel["hash"].startswith("sha256:") for wheel in napari[0]["wheels"])
 
 

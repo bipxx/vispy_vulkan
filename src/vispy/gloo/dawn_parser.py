@@ -42,9 +42,10 @@ def _freeze(value, arrays):
 def _freeze_owned(value, arrays, capture, stats):
     if isinstance(value, np.ndarray):
         array = np.ascontiguousarray(value)
+        # Structured and void arrays (vispy's vertex buffers) decode as raw bytes on either path.
         mapped = ((array.dtype.kind in "iu" and array.dtype.itemsize in (1, 2, 4)) or
                   (array.dtype.kind == "f" and array.dtype.itemsize in (2, 4, 8)) or
-                  array.dtype.kind == "b")
+                  array.dtype.kind in "bV")
         if mapped:
             try:
                 snapshot = capture(memoryview(array))
@@ -168,11 +169,14 @@ def get_gl_parameter(pname):
     # Hosts compare these with Python str (`'texture_float' in extensions`).
     # These are compatibility-profile labels for GL-shaped host probes, not
     # evidence of an OpenGL context or arbitrary OpenGL operation support.
+    # Hosts that see texture_float upload linear-filtered float32 textures, which
+    # need the Float32Filterable device feature; without it they use their fallback.
+    texture_float = "GL_ARB_texture_float " if info.get("float32_filterable") else ""
     strings = {
         7936: "Dawn",  # GL_VENDOR
         7937: str(device),  # GL_RENDERER
         7938: "4.5.0 Dawn " + backend,  # GL_VERSION
-        7939: "GL_ARB_texture_float GL_ARB_texture_non_power_of_two",  # GL_EXTENSIONS
+        7939: texture_float + "GL_ARB_texture_non_power_of_two",  # GL_EXTENSIONS
         35724: "4.50 Dawn " + backend + " GLSL",  # GL_SHADING_LANGUAGE_VERSION
     }
     if code in strings:
@@ -269,7 +273,7 @@ class DawnGlirParser(BaseGlirParser):
             self.capabilities["gl_version"] = "Dawn " + info["backend"]
 
 
-def read_pixels_dawn(viewport, alpha, mode, out_type="unsigned_byte"):
+def read_pixels_dawn(viewport, alpha, mode, out_type="unsigned_byte", copy=True):
     from .. import gloo
     from vispy import _dawn
 
@@ -295,4 +299,5 @@ def read_pixels_dawn(viewport, alpha, mode, out_type="unsigned_byte"):
     canvas_id = int(getattr(canvas._backend, "_dawn_canvas_id", 0) or 0)
     image = _dawn.read_pixels(canvas_id, x, y, width, height, bool(alpha),
                               out_type in ("float", np.float32), mode)
-    return np.array(image, copy=True)
+    # The native array owns a fresh buffer; copy=False returns it as is (B19).
+    return np.array(image, copy=True) if copy else image

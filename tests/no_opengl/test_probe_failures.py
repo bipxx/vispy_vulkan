@@ -1,6 +1,7 @@
 """A successful scenario cannot mask a later installed-artifact failure."""
 import json
 import hashlib
+import os
 from pathlib import Path
 import subprocess
 import sys
@@ -66,15 +67,25 @@ def test_post_scenario_invalid_wheel_fails_process_and_report(tmp_path, wheel_ex
     assert ('BadZipFile' if wheel_exists else 'FileNotFoundError') in value['error']
 
 
-def test_binding_option_is_an_enum_not_a_filesystem_path(tmp_path):
+@pytest.mark.parametrize('parent_presentation', [None, 'auto', 'native', 'readback'])
+def test_binding_option_and_strict_presentation_reach_descendants(tmp_path, monkeypatch, parent_presentation):
+    if parent_presentation is None:
+        monkeypatch.delenv('VISPY_QT_PRESENTATION', raising=False)
+    else:
+        monkeypatch.setenv('VISPY_QT_PRESENTATION', parent_presentation)
     script = tmp_path / 'scenario.py'
-    script.write_text('pass\n')
+    # Check both the observed worker and a real descendant's inherited route.
+    script.write_text('import os, subprocess, sys\n'
+                      'assert os.environ["VISPY_QT_PRESENTATION"] == "readback"\n'
+                      'subprocess.run([sys.executable, "-I", "-B", "-c", '
+                      '\'import os; assert os.environ["VISPY_QT_PRESENTATION"] == "readback"\'], check=True)\n')
     report = tmp_path / 'report.json'
     result = subprocess.run([sys.executable, '-B', str(ROOT / 'tools/audit_no_opengl.py'), 'run',
                              '--python', sys.executable, '--scenario', 'script', '--script', str(script),
                              '--binding', 'pyqt6', '--gates', 'imports', '--output', str(report),
                              '--workflow-id', 'tk-state', '--covered-feature', 'app.canvas', '--', '--literal', '--', 'value'],
                             capture_output=True, text=True)
+    assert os.environ.get('VISPY_QT_PRESENTATION') == parent_presentation
     value = json.loads(report.read_text())
     worker = json.loads(Path(value['worker_report']).read_text())
     assert worker['status'] == 'PASS_SCENARIO' and worker['binding'] == 'pyqt6', _failure_reports(report)

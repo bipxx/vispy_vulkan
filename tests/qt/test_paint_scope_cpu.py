@@ -140,10 +140,11 @@ def test_readback_profile_never_requests_a_native_window_or_vulkan_surface(monke
     assert events == [('clear', 7), ('scale', 7, 1.5)]
 
 
-def test_windows_presentation_is_explicit_and_defaults_to_readback():
-    assert QT._select_dawn_presentation('auto', 'win32') == 'readback'
+def test_native_presentation_is_default_and_readback_remains_explicit():
+    assert QT._select_dawn_presentation('auto', 'win32') == 'native'
     assert QT._select_dawn_presentation('auto', 'linux') == 'native'
     assert QT._select_dawn_presentation('native', 'win32') == 'native'
+    assert QT._select_dawn_presentation('readback', 'win32') == 'readback'
     assert QT._select_dawn_presentation('readback', 'linux') == 'readback'
     with pytest.raises(ValueError, match='auto, readback or native'):
         QT._select_dawn_presentation('opengl', 'win32')
@@ -316,3 +317,21 @@ def test_nested_backpressure_paint_preserves_outer_paint_token(monkeypatch):
     assert errors == []
     assert events == ['ready', 'begin', 'draw', 'nested-ready', 'pump', 'alpha-tail', 'present', 'pump', 'end']
     assert backend._dawn_paint_token is None and backend._dawn_paint_deferred
+
+
+def test_dawn_canvas_release_stays_reachable_and_runs_once_on_destroy():
+    # A release slot reachable only through the widget's wrapper could be cleared by a cycle collection, which drops
+    # its defaults; the destroyed signal then raised TypeError in a Qt slot and leaked the canvas (W4 histogram case).
+    import gc
+    from PyQt6 import QtCore, QtWidgets
+    app = QtWidgets.QApplication.instance() or QtWidgets.QApplication([])
+    released = []
+    widget = QtWidgets.QWidget()
+    QT._connect_dawn_canvas_release(widget, 7, released.append)
+    gc.collect()
+    slot = QT._dawn_canvas_releases[7]
+    assert slot.func is QT._release_dawn_canvas and slot.args[1:] == (released.append, 7)
+    del slot
+    widget.deleteLater()
+    app.sendPostedEvents(None, QtCore.QEvent.Type.DeferredDelete.value)
+    assert released == [7] and 7 not in QT._dawn_canvas_releases

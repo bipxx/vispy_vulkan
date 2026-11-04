@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "source_commit": "5c7d1273bc3471136d87f730482e07a679e0e00e",
+  "source_commit": "0a521bb108b7016b6619591e6806fe84b68fad43",
   "python": [
     {
       "member": "vispy/__init__.py",
@@ -97,7 +97,7 @@
       "member": "vispy/app/backends/_qt.py",
       "file": {
         "path": "src/vispy/app/backends/_qt.py",
-        "sha256": "a2e7c45beb48606bd75e515c792228c8804dfb99bf4dce90faaa19e434a4869d"
+        "sha256": "da2f311cffc644424fe66c0b1f61a02138a37ccff367027a5963c668d585f27f"
       }
     },
     {
@@ -475,7 +475,7 @@
       "member": "vispy/gloo/dawn_parser.py",
       "file": {
         "path": "src/vispy/gloo/dawn_parser.py",
-        "sha256": "8dcbf7c6afc26404d647c5901e0bf15e43dfd6983e08eb1ebf483da9b9960ad8"
+        "sha256": "2a52bca0510dce264a15d961c1168a455fef1648c9042b83368ccfd05d641854"
       }
     },
     {
@@ -587,7 +587,7 @@
       "member": "vispy/gloo/glir.py",
       "file": {
         "path": "src/vispy/gloo/glir.py",
-        "sha256": "a3bb8a75b33f47420e9c100b8a6d81037a2f03c905e6c9f7d8399f4fb2eb8f7c"
+        "sha256": "620dd9f0bc26bd41f8c41dc6cdc8f6fc2b79db8933c5585cb9dd8132cd07073d"
       }
     },
     {
@@ -3576,19 +3576,19 @@
   "native": [
     {
       "path": "cpp/bindings/command_decode.hpp",
-      "sha256": "7f82c832030952a78bf9266e1b62f7188e884f349310a406f3fac4cdc31cf50f"
+      "sha256": "15a9f9c2b11f63ea3b0b5c6c5bf5fd119ff1b01b50a4cc07ea57951b57e993e6"
     },
     {
       "path": "cpp/bindings/module.cpp",
-      "sha256": "32c255f277336ede8455b2061d6de00eb5b2bd93892a7f5bf673afe391674257"
+      "sha256": "92b84f1f8b76ffa6a31705d741d74d4116f3e65aabfd5409a04e353107cbe61b"
     },
     {
       "path": "cpp/bindings/owned_payload.hpp",
-      "sha256": "6182949711dbccfaaf2e19cbb3dbc801a862ab12ddb112fd28b3197f5ff18782"
+      "sha256": "b1d6cc12f927bdeca1c06d315a9c75da22b35dd3372d975d8fb54b0e858e1713"
     },
     {
       "path": "cpp/bindings/python_buffer_capture.hpp",
-      "sha256": "90b05f928ae27f151cbe3093dd90ba7d694e65eaf332c71df88a22772f4be105"
+      "sha256": "07814aa590ad737c6b940cf236829a1b9a003d4e4482be31757a028578250a82"
     },
     {
       "path": "cpp/platform/native_library.cpp",
@@ -3600,7 +3600,7 @@
     },
     {
       "path": "cpp/platform/native_surface.hpp",
-      "sha256": "9f74ac5df137cb4cdede05837e9105971c003d836ed05e7a1f7e330e7572cc0d"
+      "sha256": "d3ef7c8cf95619a030892d5d8e7b3105ac555d7745c63a888e1a8c4b31ddc358"
     },
     {
       "path": "cpp/platform/surface_metal.mm",
@@ -3608,7 +3608,7 @@
     },
     {
       "path": "cpp/platform/surface_win32.cpp",
-      "sha256": "095b2281d4ac1044a87d08093996c87d4b2a75b236e20e1c9eacb8c158b8208f"
+      "sha256": "7109a1b88f675917f9d038e2c2a13c4d808f8d0c40c2786ebaccf8347fe9b04a"
     },
     {
       "path": "cpp/platform/surface_x11.cpp",
@@ -3624,11 +3624,11 @@
     },
     {
       "path": "cpp/runtime.cpp",
-      "sha256": "4be87ec8cf7242cea570be16dbb04a28b156ddcfce86617ebbf83da631cc01ac"
+      "sha256": "1a60c94d157e27184d893d10207408c8fa1557277f642ed1e0b490b34ca8c33a"
     },
     {
       "path": "cpp/runtime.hpp",
-      "sha256": "e06d09836b1dba55114cedac9f99c1b599876e67a366fa87bb7ee5c7a8111bf4"
+      "sha256": "f5071ee542f06c5d7450dfc3e31085966051902092eb10dd7bc4bb2916613127"
     },
     {
       "path": "cpp/runtime_batch_cache.hpp",
@@ -3664,7 +3664,7 @@
     },
     {
       "path": "cpp/runtime_line.hpp",
-      "sha256": "5449158c7ba567a49047016a24a2d831ff68902cb4fa989711becf86030911e7"
+      "sha256": "1a7f8f2cb0a47898f386c8893552d48d8a29a56cf6c21af55bfe8f129dc7aae0"
     },
     {
       "path": "cpp/runtime_line_batch.hpp",
@@ -3704,7 +3704,7 @@
     },
     {
       "path": "cpp/runtime_owned_texture.hpp",
-      "sha256": "db00f7b51f7d63236db9d0bd0455a3fca4e377a39dab995a8a350157cd4e4065"
+      "sha256": "c525a09371a3069219400066a6fb94c36d107e4932c719bbd2288fb334c3eb1d"
     },
     {
       "path": "cpp/runtime_point.hpp",
@@ -3724,11 +3724,11 @@
     },
     {
       "path": "cpp/runtime_query_timing.hpp",
-      "sha256": "424e47e17127902cf9e88fc432929f41d526da9d352a23999cc9e666a0c94191"
+      "sha256": "c63474aa388065c4c7e6263eba2792f6693d09d53cb3280b7dacb4a2e19841af"
     },
     {
       "path": "cpp/runtime_readback.hpp",
-      "sha256": "4fef704e180d079ebde36b644b09222a700439adb3a10543fd6a22ccf5c46e86"
+      "sha256": "b47c1bb160ff9c42d9002f5d35431c60913147b26c8ddcc312aa1112fcccf701"
     },
     {
       "path": "cpp/runtime_render_semantics.hpp",
@@ -3744,7 +3744,7 @@
     },
     {
       "path": "cpp/runtime_texture.hpp",
-      "sha256": "fdd573ca262805824895dfe7e60d3c3389f49be39fa75aaad65667e597ca1c55"
+      "sha256": "6b06c598bc8c09ac878039bf25fe9eb819f3accf9f5916515f4509482a3a76fe"
     },
     {
       "path": "cpp/runtime_uniform_updates.hpp",
@@ -3772,7 +3772,7 @@
     },
     {
       "path": "cpp/shader/line_consumer.cpp",
-      "sha256": "3c279501f041654b0707452a5fce8c50578b31f21c065cb081b27d76b96649d3"
+      "sha256": "a3c121cdeacf5042edf2dad7f486cebec75bd11179453491aa1bbd2b4904c1d1"
     },
     {
       "path": "cpp/shader/line_consumer.hpp",
@@ -3793,12 +3793,20 @@
     {
       "path": "cpp/shader/normalize.hpp",
       "sha256": "fde90410fb3f5fd3bafe04ee232034c2d0a96a8dba075c53bb8d65a32871f5df"
+    },
+    {
+      "path": "cpp/runtime_byte_recycler.hpp",
+      "sha256": "4a90a338fd8833e387a7591f9c82fe955909a31118f641e1debd18296475eb80"
+    },
+    {
+      "path": "cpp/runtime_host_block.hpp",
+      "sha256": "49c1d8045c66a63f52e943eb9028eff10224a3b28cf4d10553ce7137cb17177f"
     }
   ],
   "locks": [
     {
       "path": "uv.lock",
-      "sha256": "31f1430802913f01908d01832ccd879bd110b7aef1d4cce4ffe060857fe26a47"
+      "sha256": "e681bfa5eb1b96a33cf5e6aab18006181252f37d7fc14b47a16571522446ce0e"
     },
     {
       "path": "cmake/dependencies.lock.json",
@@ -3958,7 +3966,7 @@
     },
     {
       "path": "pyproject.toml",
-      "sha256": "7b86ee1e6a6978c2a6368a34051cf88f347832eb1d60b70a29fd40d7d76ba5a0"
+      "sha256": "d9cee4e2a567a5247386af12be683b06a41a759b663b7234a62297fe6b934d6c"
     },
     {
       "path": "src/vispy/visuals/text/_sdf_cpu.pyx",

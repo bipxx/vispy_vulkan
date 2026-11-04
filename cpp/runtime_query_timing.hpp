@@ -147,4 +147,13 @@ struct Frame {
     }
 };
 
+// Query eligibility only: callers separately require successful producer
+// retirement and unchanged source/surface/device ownership. Untimed frames do
+// not need a GPU result. Collection is const and never consumes terminal rows.
+inline bool capture_queries_succeeded(const Frame& frame, bool gpu_timing) {
+    if (!gpu_timing) return true;
+    FrameResult result;
+    return frame.collect(result) && result.status == "success" && result.error.empty();
+}
+
 }  // namespace vispy::timing

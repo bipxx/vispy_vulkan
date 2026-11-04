@@ -1,0 +1,36 @@
+{
+  "schema": 1,
+  "kind": "scope",
+  "status": "APPROVED",
+  "independent": true,
+  "reviewer": "Claude Fable 5.1, fresh-context independent reviewer for run r2-records-315",
+  "candidate_scope_sha256": "8bcbb6c53d5e21b9e2fa0e6749e699cf77eb69489780e1d383f54927787fef7c",
+  "publication_head": "e5a78da7fce3121687da87e565468de4fe1ee547",
+  "product_source_commit": "0a521bb108b7016b6619591e6806fe84b68fad43",
+  "source_manifest": {
+    "path": "build/runs/r2-records-315/source-manifest.json",
+    "sha256": "aae8f4bb8776de7528bc7509ba1efad0b298e79d80ee7ee39578d6afb330db6b"
+  },
+  "review_report": {
+    "path": "build/runs/r2-records-315/reviews/tk-state-resource-1-scope-review.json",
+    "sha256": "0f2a81afff0815e48f3ca3759f2ff762fcf2f43e277b8847a247c9ef2e28c73e"
+  },
+  "native_reuse_links": [
+    "7a675eff1ce0b5f279c8205a97d3f93292c8c4893db598e366e458863b5c4272",
+    "022afb363dd9e2bad949f8d7865266de2c173788ae0061c369604094bd2eadc2"
+  ],
+  "approval_scope": "Independent SCOPE review for candidate tk-state-resource-1 at scope 8bcbb6c53d5e21b9e2fa0e6749e699cf77eb69489780e1d383f54927787fef7c, publication head e5a78da7fce3121687da87e565468de4fe1ee547, product 0a521bb108b7016b6619591e6806fe84b68fad43: the finite current scope, its coverage/execution/admission mapping, the renewed profile observations, the D32 matrix renewal on the release wheels and the two exact native reuse applicability objects. The detailed report defines this decision.",
+  "coverage_map_sha256": "9cb46864dec92a296ab1bd9aa1a4cb1a99efaa6b74cf554813de47630a5a16bf",
+  "execution_map_sha256": "03a71a06c0f2f93f8ede65cbdf976cad1e58d2d55c021ffce53a1f56b027ec9e",
+  "admission_scope_sha256": "ba58f46929d0bf5d13d1da7a3055d44bef36b1ecc48ed77b4cd9ae9b1bd72dc0",
+  "scope": "Exact current scope of tk-state-resource-1: 15 proposal(s), 2 profiles (windows-gpu-tk86-cp312-development, wsl-software-tk90-cp31213-development), 30 pairs, 60 criterion definitions, 120 requested criteria with same-profile closure 120, unchanged fixtures/branches/oracles, 142 parent obligations preserved and none discharged; profiles renewed to source-functional observations of the release wheels W 5c7142f3 and L 66f35ab0 at product 0a521bb1; D32's 8 mandatory matrix rows bound to W and L; the exact Windows (run r2-wheels-311, production 35d60f57) and Linux (CI run 41861336116, production 964fed48) native reuse applicability objects.",
+  "limitations": [
+    "This approves only the current finite scope, its coverage/execution/selection mapping and the two exact native reuse applicability objects; the source approval is a separate decision. No installed-artifact, observer/control/profile, final-head CI, CI-bundle, promotion, GPU or whole-release approval is given.",
+    "The six host-application matrix rows are optional (D32) and QUALIFIED on the pre-release artifacts 62df5e4c and 374a74ea, not on W or L; run r2-hot-swap-314's passes on W and L are separate evidence, not matrix rows.",
+    "The eight mandatory rows qualify the strict readback presentation on Windows (tools/audit_no_opengl.py); native presentation, the release default (D18), is outside strict qualification.",
+    "The profiles are source-functional observations of the release wheels; the installed Tk attempts (run r2-installed-318) and their protocols remain pending.",
+    "Read-only inspection: this reviewer ran no build, GPU program, WSL command or test; results were taken from the retained reports, which were hash-checked against the records that name them.",
+    "No native Linux GPU or Metal claim; compat/metal-ci-reuse.json is not renewed (B23) and is outside these profiles.",
+    "Binding this approval to candidate metadata and resealing are the coordinator's actions through the normal tools; this review wrote only its eight files under build/runs/r2-records-315/reviews/."
+  ]
+}

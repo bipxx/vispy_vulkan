@@ -1,0 +1,23 @@
+{
+  "schema": 1,
+  "kind": "source",
+  "status": "APPROVED",
+  "independent": true,
+  "reviewer": "Claude Fable 5.1, fresh-context independent reviewer for run r2-records-315",
+  "candidate_scope_sha256": "f3d4d25d14ad25b7b52ef7c7788038e690a134e6fe7c648e922c5943365ecb39",
+  "publication_head": "e5a78da7fce3121687da87e565468de4fe1ee547",
+  "product_source_commit": "0a521bb108b7016b6619591e6806fe84b68fad43",
+  "source_manifest": {
+    "path": "build/runs/r2-records-315/source-manifest.json",
+    "sha256": "aae8f4bb8776de7528bc7509ba1efad0b298e79d80ee7ee39578d6afb330db6b"
+  },
+  "review_report": {
+    "path": "build/runs/r2-records-315/reviews/tk-capture-1-source-review.json",
+    "sha256": "d56a027a94435d78a4db02ff00ab6570e7f33c5c465cb43d728151417c36297d"
+  },
+  "native_reuse_links": [
+    "eeadb10c5fd17652c1f6b8f8e9af89a8747847da884bcb0c97ffa689a5d7c1d9",
+    "ec0b338ec81e681848d83cd7532bcc6d4f14ee8d412f1b6d409fc67d8b082fba"
+  ],
+  "approval_scope": "Independent SOURCE review for publication head e5a78da7fce3121687da87e565468de4fe1ee547 and product source 0a521bb108b7016b6619591e6806fe84b68fad43: the cumulative product diff from the last approved product 5c7d1273 (P1-P6 upload and pacing work, B18-B20, W1/W5/W15, D18's native default with explicit strict readback, the native capture repair), the manifest's 18 preparation tools/records, the 28 renewed records and the 4 producer proposals, for candidate tk-capture-1 at scope f3d4d25d14ad25b7b52ef7c7788038e690a134e6fe7c648e922c5943365ecb39; and the source-side applicability of the two exact native reuse objects (Windows run r2-wheels-311, production 35d60f57; Linux CI run 41861336116, production 964fed48). The detailed report and the source manifest define this decision. Not semantic scope, installed-artifact, CI, promotion or GPU approval."
+}
