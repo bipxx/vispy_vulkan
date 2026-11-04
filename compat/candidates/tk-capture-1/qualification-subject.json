@@ -1,12 +1,12 @@
 {
   "schema": 1,
   "kind": "qualification-subject",
-  "manifest_sha256": "a397009704aa5067b1b6a994017d99672dcfb6cad48606ed0231f62e2faa29f8",
+  "manifest_sha256": "4ed121295493e1398bfdef64a1be01b0fe30bc5835e71295fba48c7196254514",
   "product_source_commit": "0a521bb108b7016b6619591e6806fe84b68fad43",
   "qualification_head": null,
   "candidate": {
     "path": "compat/candidates/tk-capture-1/candidate.json",
-    "sha256": "a89e91d4589a0e27026c822ae750e4f11cedd441dd4abd97fd0649c830cea15d"
+    "sha256": "c71e95991a760289f03d4f5dbc6825e234a974497f35339d969b1f07425dab07"
   },
   "selection": {
     "path": "compat/candidates/tk-capture-1/admission-selection.json",

@@ -2,7 +2,7 @@
   "schema": 1,
   "phase": "development",
   "id": "tk-capture-1",
-  "manifest_sha256": "bcbb8701e0cf81ff52cf628a55b634d01024d2d8d1aacf54601580a8e7ea6ee3",
+  "manifest_sha256": "b074d4b827ad1b3d502321985ea884e074ef176cfc737c7defd4ec71d29ce681",
   "product_source_commit": "0a521bb108b7016b6619591e6806fe84b68fad43",
   "upstream_commit": "117b054598f4758b598f4b8f48feea48c11fe7b0",
   "ledger": {
@@ -202,8 +202,14 @@
     }
   ],
   "reviews": {
-    "source": null,
-    "scope": null
+    "source": {
+      "path": "compat/candidates/tk-capture-1/reviews/source-e5a78da7f-fable.json",
+      "sha256": "8f3e2a42066ebeab97dbaab69719bc156b4e8010e20991331c828e36443b910f"
+    },
+    "scope": {
+      "path": "compat/candidates/tk-capture-1/reviews/scope-e5a78da7f-fable.json",
+      "sha256": "04925cc2460701c95771a3276fe9d157b21319d12de35a68dd0c8e73d492331c"
+    }
   },
   "blockers": [
     "Source implementation is reviewed; candidate-bound source/scope/native-reuse approval remains pending.",

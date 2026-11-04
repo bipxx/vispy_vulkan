@@ -1,12 +1,12 @@
 {
   "schema": 1,
   "kind": "qualification-subject",
-  "manifest_sha256": "dbf9e515e9fa6b11f61fbe69070254a130179b071766245ba47a80ede7865ea0",
+  "manifest_sha256": "7700563cba857396e91408b1338305f81c6deb4b8ce6c929c40f7bd1e0015893",
   "product_source_commit": "0a521bb108b7016b6619591e6806fe84b68fad43",
   "qualification_head": null,
   "candidate": {
     "path": "compat/candidates/tk-state-resource-1/candidate.json",
-    "sha256": "2d0013b47faf46b38fa1fa579814db0a23778ea1aa45afcd7165f207d12c0d9a"
+    "sha256": "bdd6433a5e48d78f729d2147079dff25d71006853bb3fdc33287d995ec126c46"
   },
   "selection": {
     "path": "compat/candidates/tk-state-resource-1/admission-selection.json",
