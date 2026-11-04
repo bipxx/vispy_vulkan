@@ -1266,7 +1266,7 @@ wheels = [
 
 [[package]]
 name = "napari"
-version = "0.9.2"
+version = "0.10.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "app-model" },
@@ -1311,9 +1311,9 @@ dependencies = [
     { name = "vispy" },
     { name = "wrapt" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/ec/9b/45b699cc05c95028cfa03de180f311de987eb8070c3cf1cb12e5c071d1d6/napari-0.9.2.tar.gz", hash = "sha256:54e1db922d430094cc9208a1a1b1cd82c2b31bc28db3cb7b284d3b6ee6d6c983", size = 3385038, upload-time = "2026-09-29T22:18:47.563Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/60/79/80b82ccde2b9b02486b92678583681ac57ea4fcd41328c8bba5ddcb9e1e7/napari-0.10.0.tar.gz", hash = "sha256:2fb099d8f6434ce3b925feec9411f18973041969a453452e036ad988218709ac", size = 3434363, upload-time = "2026-10-30T22:14:31.783Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/57/fe/918cf8d7705da6229a370b6a22fdf7fc8dbe8732b7236e84ea0a526ab7e3/napari-0.9.2-py3-none-any.whl", hash = "sha256:a67f7add584c8d2560096a0ae0b5322eceba046db42f4c130c8e622c5c72a04f", size = 3715060, upload-time = "2026-09-29T22:18:45.396Z" },
+    { url = "https://files.pythonhosted.org/packages/0b/0b/05dc3bb3a8bd3f588ee0bf0f4f766cc8fcfc4624b97bff46578d1494bf03/napari-0.10.0-py3-none-any.whl", hash = "sha256:df9de6c94542636395b35733f6c49eb88af3274147177037c53bccb82123fd22", size = 3770560, upload-time = "2026-10-30T22:14:29.292Z" },
 ]
 
 [[package]]
@@ -1412,7 +1412,7 @@ wheels = [
 
 [[package]]
 name = "npe2"
-version = "0.9.0"
+version = "0.10.2"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "build" },
@@ -1425,9 +1425,9 @@ dependencies = [
     { name = "tomli-w" },
     { name = "typer" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/c0/a8/1b8a59b9554b6491182816725a7e3f3ceddc9c97e4f585ff49213b0fec58/npe2-0.9.0.tar.gz", hash = "sha256:70014cad1b61c2defdf7b8ee19a1e047333368ec71dd8139a770bf062afeeff3", size = 129568, upload-time = "2026-08-18T01:42:38.78Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/ea/6f/e2f1f82693793dbe123adfd35ca76b40d14cbc3b4823e259e03108151ea1/npe2-0.10.2.tar.gz", hash = "sha256:2eeec4a379f96a8a106801808aa710ff071c5de80a3b7b52d76b4219903466cf", size = 138619, upload-time = "2026-11-04T14:35:31.026Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/8d/b1/5e0b586573ed6c5d4c497032d0d52780d597517e4f2ecfc13e63cfb364b3/npe2-0.9.0-py3-none-any.whl", hash = "sha256:d6db6dc37eebdd54b3c90b3eaeaa11a37f6dd0e9c8cc3f8b67c9a0e64e9e3ad0", size = 95850, upload-time = "2026-08-18T01:42:37.616Z" },
+    { url = "https://files.pythonhosted.org/packages/ef/1a/4b90fa12d2880a7e06fc525d1f34540511c9627615c6c219e60579d87719/npe2-0.10.2-py3-none-any.whl", hash = "sha256:98adf80167f53a0a34bb7ae7e4607380bda2617e98e216986035d9e5028777b2", size = 97805, upload-time = "2026-11-04T14:35:29.796Z" },
 ]
 
 [[package]]
@@ -2418,6 +2418,10 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/94/7b/5361cd0cf56cb8a2aedbc368797ee8d91a6f4b7e0aa1f03839f5e7e0c8fd/pyqt5_sip-12.20.0-cp314-cp314-manylinux_2_5_x86_64.manylinux1_x86_64.whl", hash = "sha256:32fa6cd31b5b6c049171f11eeb76a7d06bb04e5823983d852ea64c336ce66b6c", size = 282761, upload-time = "2026-10-04T12:25:55.072Z" },
     { url = "https://files.pythonhosted.org/packages/d9/85/29e5ee4370b442e07f5a55f716ae35390f3cc9f355c16de41bef7bd48452/pyqt5_sip-12.20.0-cp314-cp314-win32.whl", hash = "sha256:7ec983ef59c0d2e06c900c409d346b9c0f00cca4e678397fd709089468bc15c5", size = 50691, upload-time = "2026-10-04T12:25:57.38Z" },
     { url = "https://files.pythonhosted.org/packages/20/5c/ecf0053e1b45464f2c06c036a16d54bc6e15a7d6d87f54a136e741c6dec4/pyqt5_sip-12.20.0-cp314-cp314-win_amd64.whl", hash = "sha256:c7bf7656d37e1144d0638f46ea623a9584a3921d5921c287ac831c5d77cdd2dd", size = 59615, upload-time = "2026-10-04T12:25:56.268Z" },
+    { url = "https://files.pythonhosted.org/packages/b5/34/ca7e43c9a0393740ac919588996f2b248a86c42bbbddcfdb1fac86706241/pyqt5_sip-12.20.0-cp315-cp315-macosx_10_15_universal2.whl", hash = "sha256:413e4a7622b0b8999a2c6d8afa68bd1143a9f26d26a0f28c2141fd8075d80038", size = 125589, upload-time = "2026-10-10T14:49:54.53Z" },
+    { url = "https://files.pythonhosted.org/packages/75/50/edfd8f3f7ae5f65e1286d38e5c3d9551e939be6469ccc4c5fe3919384c47/pyqt5_sip-12.20.0-cp315-cp315-manylinux_2_5_x86_64.manylinux1_x86_64.whl", hash = "sha256:f36c3b02b4f76a8e923d1a11855b521225d6c6dca6d18b0ed2152c81d4d78419", size = 285607, upload-time = "2026-10-10T14:49:57.483Z" },
+    { url = "https://files.pythonhosted.org/packages/8f/70/3a83744a37476850389b3562ef90469b5ee8208162b5ae58eac5af7fcd42/pyqt5_sip-12.20.0-cp315-cp315-win32.whl", hash = "sha256:d04e4f9bf390b6ef69277cefcc770e4de238cb99efc60092a8401c8a16df4a80", size = 50762, upload-time = "2026-10-10T14:49:59.588Z" },
+    { url = "https://files.pythonhosted.org/packages/16/6d/f2cf237992f97285d1b60f92a015e73debd86318541a9cd200d560edbc35/pyqt5_sip-12.20.0-cp315-cp315-win_amd64.whl", hash = "sha256:ae4c75570f13f34335a0af6791e3160a183756504ace9542797fe104b3ceb536", size = 59709, upload-time = "2026-10-10T14:49:58.6Z" },
 ]
 
 [[package]]
@@ -2480,6 +2484,11 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/1f/f9/023daa2a633cde62b2f7452e62d53273a8b23c3ce5dc31d7ecdc6b797897/pyqt6_sip-13.13.0-cp314-cp314-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:70199e2b37ac83a4799df2a2a2ec8358e1d20dfdf011f2baec17a8867c34fe12", size = 323559, upload-time = "2026-10-04T12:26:41.919Z" },
     { url = "https://files.pythonhosted.org/packages/08/0b/1c8ebeb9184c9f017173ae952e89f5191571c680f3e18875217a1c00860b/pyqt6_sip-13.13.0-cp314-cp314-win_amd64.whl", hash = "sha256:26ee16a9b53aa7c8271a19154c35ab2e17514dbae85ac9a770ba40feac347be2", size = 55130, upload-time = "2026-10-04T12:26:44.552Z" },
     { url = "https://files.pythonhosted.org/packages/35/b9/9bdfa5222e42aba61205847721d1b4c53145ffcb740952272a4fbe33289f/pyqt6_sip-13.13.0-cp314-cp314-win_arm64.whl", hash = "sha256:88e3bbc1a6bb1632ead7b15f77769f09b9a581eb77eb41a6862c32396f47b4a4", size = 49706, upload-time = "2026-10-04T12:26:45.471Z" },
+    { url = "https://files.pythonhosted.org/packages/91/8c/a68a45e2a651795c9b5bcd95eec4ef9cb945c35af238f7ef0369a39a7e72/pyqt6_sip-13.13.0-cp315-cp315-macosx_10_15_universal2.whl", hash = "sha256:e3b47eaab721871177148f4771a8b2259de5356e30cbcf04e88acfe55b57f257", size = 113961, upload-time = "2026-10-10T14:50:58.283Z" },
+    { url = "https://files.pythonhosted.org/packages/f8/20/eebfef3e76175553f5049f2dd54d3e2e940b116ddb61d1ecdec12b93eb3a/pyqt6_sip-13.13.0-cp315-cp315-manylinux1_x86_64.manylinux_2_5_x86_64.whl", hash = "sha256:f856e077035bd0316e26396fa70100b6ff13405d017464bbb501ae73070f3dce", size = 304973, upload-time = "2026-10-10T14:51:01.158Z" },
+    { url = "https://files.pythonhosted.org/packages/09/44/a944b91a94c9745cfce05174d4a2dab4faa67b03b23c160948505993b1b0/pyqt6_sip-13.13.0-cp315-cp315-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:78fd781938d09797db6d0b23ac070a91d567c9170581dba3ca87630abb69055b", size = 327367, upload-time = "2026-10-10T14:50:59.831Z" },
+    { url = "https://files.pythonhosted.org/packages/2e/b3/939df28667fd61f4d04abb7adab93f034fd4f62a7d3e0dac82ea58268532/pyqt6_sip-13.13.0-cp315-cp315-win_amd64.whl", hash = "sha256:67b37ae7d238462a89908b1c3e3a4bc9551fc9b8d3e8be05ff3314b7a24a3e53", size = 55311, upload-time = "2026-10-10T14:51:02.736Z" },
+    { url = "https://files.pythonhosted.org/packages/89/48/a640f06a065655cc0286fc16a7fed8b09bfe3a8291e4223d483e834d0c05/pyqt6_sip-13.13.0-cp315-cp315-win_arm64.whl", hash = "sha256:a1cd42fdbb191d3ee0a0c8858348e18ddb5ea4bbc009af34da4a536db1f92e63", size = 49744, upload-time = "2026-10-10T14:51:04.017Z" },
 ]
 
 [[package]]
@@ -3589,7 +3598,7 @@ dev = [
     { name = "tomli", marker = "python_full_version < '3.11'" },
 ]
 hosts = [
-    { name = "napari", marker = "python_full_version >= '3.11'", specifier = "==0.9.2" },
+    { name = "napari", marker = "python_full_version >= '3.11'", specifier = "==0.10.0" },
     { name = "numba", marker = "python_full_version >= '3.11'", specifier = "==0.68.0" },
     { name = "pyqt6", marker = "python_full_version >= '3.11'", specifier = "==6.11.0" },
 ]
