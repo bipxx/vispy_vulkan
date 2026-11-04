@@ -1,37 +1,8 @@
 name: Linux software Vulkan wheel
 
 on:
+  # This protected required context must be produced for every PR.
   pull_request:
-    paths:
-      - '.github/workflows/linux-vulkan.yml'
-      - 'tools/audit_linux_wheel.py'
-      - 'tools/run_linux_native_contracts.py'
-      - 'tools/linux_ci_lifecycle.py'
-      - 'tools/reuse_linux_ci.py'
-      - 'tools/qualification_linux_native.py'
-      - 'tools/qualification_native.py'
-      - 'compat/linux-ci-reuse.json'
-      - 'compat/qualification-native.schema.json'
-      - 'compat/candidates/**'
-      - 'tools/linux_wheel_smoke.py'
-      - 'tools/compatibility_render_smoke.py'
-      - 'tools/aggregate_attribute_smoke.py'
-      - 'tools/instanced_mesh_smoke.py'
-      - 'tools/original_instanced_mesh_replay.py'
-      - 'tools/marker_wheel_smoke.py'
-      - 'tools/immediate_state_wheel_smoke.py'
-      - 'tools/build_software_vulkan.py'
-      - 'compat/software-vulkan-build.json'
-      - 'compat/mesa-build-requirements.txt'
-      - 'compat/patches/mesa-*'
-      - 'tools/mesh_layout_process.py'
-      - 'CMakeLists.txt'
-      - 'cmake/**'
-      - 'cpp/**'
-      - 'src/**'
-      - 'third_party/**'
-      - 'pyproject.toml'
-      - 'uv.lock'
   workflow_dispatch:
     inputs:
       native_mode:
@@ -123,7 +94,7 @@ jobs:
         run: |
           /usr/bin/python3 -B tools/linux_ci_lifecycle.py --state "$CI_STATE" run --phase reuse -- \
             "$BUILD_PYTHON" -B tools/reuse_linux_ci.py --workspace "$DRIVER_WORKSPACE" \
-            --run-id "$NATIVE_RUN" --owner ci
+              --run-id "$NATIVE_RUN" --owner ci --package-current-python --keep-original-description
       - name: Build and verify pinned software Vulkan clipping repair
         if: env.NATIVE_MODE == 'fresh'
         run: |

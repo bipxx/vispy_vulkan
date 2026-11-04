@@ -29,9 +29,9 @@ PROTOCOL = {
     'tools/linux_ci_lifecycle.py': 'c5cc6aac71160ca1d3f784cb6988a95c2ce6313ea25079163380f1b99875c53f',
     'tools/build_hygiene.py': '0a4f8cbc161afa39dfaf25e840bb0c788fda4f709b84f7440bd52102f847fa84',
     'tools/run_linux_native_contracts.py': 'e07e6aede2b8f35b0c75533606f59f0669783c1b9822c59534d62d6ffee5caca',
-    'tools/audit_linux_wheel.py': '3106c09f756ed53ac14d0190355c49a79ddc114271b06bbccd530999300457df',
+    'tools/audit_linux_wheel.py': '551e565c4e1e2ccd1c98f2bfcef1fd9b5db2252af6b1a9a42515d781ae93ad3a',
     '.github/workflows/qualification_gate.py': '26969e912f921cc57200f66d62a6b17194541006a11b9d5b0bda95c63ac51e92',
-    '.github/workflows/linux-vulkan.yml': '9237e98216a69e9245a9bc9771492e3c07669c0127ad6f9529c17b8570dc7864',
+    '.github/workflows/linux-vulkan.yml': '844ddd2c232f699f198751074a59abccec1c6a0a0c58460c77be9be6d75ac038',
 }
 WORKFLOW_PATH = '.github/workflows/linux-vulkan.yml'
 # Keep the exact successful full-build collector authority. The current collector
