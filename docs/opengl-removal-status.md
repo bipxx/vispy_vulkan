@@ -1,13 +1,18 @@
 # OpenGL runtime removal status
 
-Thirteen of fourteen mandatory runtime rows are qualified, including every
-Linux software Vulkan/X11 binding and admitted host row. Windows
-napari-threedee remains unqualified because of intermittent OLE window-startup
-hangs. Required CI remains active; focused final-artifact checks are complete. The
+Release update, 2026-11-04: all eight mandatory strict no-OpenGL rows pass on
+the release's CPython 3.12 Windows and Linux wheels: headless and selected
+PyQt5/PyQt6/PySide6 QWidget profiles on Windows Vulkan and WSL lavapipe X11.
+The napari 0.10.0, Glue and napari-threedee host rows are optional (D32).
+All 23 required CI jobs pass. The rare Windows startup stall is documented,
+not release-blocking (D33, B22). The
 [current matrix](../compat/no-opengl-matrix.json) binds each result to its exact
-artifact, environment and three gates. Follow the [strict offline CPython 3.12
-guide](offline-install-cp312.md) for installation. Metal remains experimental;
+artifact, environment and three gates. See the [release notes](release-0.17.0-vulkan.1.md)
+for installation and exact wheel identities. Metal remains experimental;
 native Linux hardware qualification remains separate from WSL software results.
+
+The earlier qualification history follows; its artifacts and pending rows
+retain their historical scope.
 
 Update, 2026-10-29. The active plan is the
 [consolidated plan](superpowers/plans/2026-10-28-consolidated-plan.md). The

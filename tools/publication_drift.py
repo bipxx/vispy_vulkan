@@ -29,8 +29,14 @@ KNOWN = {  # a path, or a directory ending in /
         'the local 1.17 MB agent-history file; its published copy keeps its earlier body byte-exact and is never '
         'overwritten by it (consolidated plan, plan index)',
     'docs/upstream-drafts/': 'W12 upstream drafts stay local until the user approves posting (user, 2026-10-28)',
-    'tools/wheel_index.py': 'W11 index tooling, prepared locally; it is published with W11, on approval (D2)',
-    'tests/contract/test_wheel_index.py': 'the CPU test of tools/wheel_index.py, published with it (W11)',
+    'compat/build-profiles/r2-package-verify.json':
+        'run r2-package-288 local packaging profile, another owner\'s run input',
+    'compat/build-profiles/r2-package-linux-verify.json':
+        'run r2-package-289 local packaging profile, another owner\'s run input',
+    'compat/candidates/tk-state-resource-1/execution-ledger.json':
+        'combined installed ledger referenced by R2 admission run r2-promotion-320; main keeps the preparation ledger',
+    'compat/candidates/tk-capture-1/execution-ledger.json':
+        'combined installed ledger referenced by R2 admission run r2-promotion-320; main keeps the preparation ledger',
 }
 
 

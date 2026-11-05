@@ -1,5 +1,15 @@
 # Tested Windows and WSL milestone
 
+Release update, 2026-11-04: `v0.17.0-vulkan.1` selects new CPython 3.12 Windows
+and Linux wheels. All eight mandatory strict rows pass on these exact wheels:
+headless and selected PyQt5/PyQt6/PySide6 QWidget profiles on Windows Vulkan
+and WSL lavapipe X11. The Linux wheel is auditwheel-tagged `manylinux_2_39`;
+pip installs it on glibc 2.39 or newer (its binaries need glibc 2.38's symbols,
+GCC 13's libstdc++ (`GLIBCXX_3.4.31`) and libX11).
+Only WSL software Vulkan is qualified on Linux; native GPUs remain unverified.
+See the [release notes](release-0.17.0-vulkan.1.md) for release wheel identities
+and installation. The earlier milestone and retained hashes below are historical.
+
 Updated 2026-10-23. This first usable milestone targets Windows Vulkan and WSL
 Linux software Vulkan. macOS Metal remains experimental. The results below
 cover source commit `3f2012b38ae380a48c52a52c034425010ffd0ac0`; subsequent
@@ -59,7 +69,8 @@ been uploaded as a GitHub release or published to a package index.
 
 - Metal has no completed graphics qualification and is explicitly experimental.
 - WSL validation uses a CPU software adapter. Native Linux GPU hardware and
-  manylinux/distribution portability remain unverified.
+  broader distribution portability remain unverified; the release's manylinux
+  tag and runtime floor are recorded above.
 - Analytic smooth-line edges approximate OpenGL. Exact driver rasterizer parity
   and additional MSAA line coverage are deferred; the unfinished MSAA experiment
   is not shipped. See [smooth-line support](smooth-lines.md).
