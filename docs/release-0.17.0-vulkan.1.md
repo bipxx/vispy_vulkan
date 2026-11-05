@@ -37,8 +37,9 @@ RGBA capture is separate. This mode does not promise Vulkan window presentation,
 vsync or transparent window compositing. Recovery checks use injected device
 loss. See the [finite Tk scope and differences](https://github.com/bipxx/vispy_vulkan/blob/main/docs/practical-compatibility-release.md).
 
-Linux requires glibc 2.38, GCC 13's libstdc++ (`GLIBCXX_3.4.31`) and libX11.
-Auditwheel's tag is `manylinux_2_39_x86_64`. Only WSL software Vulkan is
+The Linux wheel is tagged `manylinux_2_39_x86_64` (auditwheel's verdict), so pip
+installs it only on glibc 2.39 or newer. Its binaries need glibc 2.38's symbols,
+GCC 13's libstdc++ (`GLIBCXX_3.4.31`) and libX11. Only WSL software Vulkan is
 qualified on Linux; native Linux GPUs are unverified. No wheels for other
 Python versions or macOS are included. Metal is experimental, build-only and
 not qualified for graphics. The napari 0.10.0, Glue and napari-threedee host
