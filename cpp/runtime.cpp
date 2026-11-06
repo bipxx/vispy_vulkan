@@ -9208,5 +9208,6 @@ void shutdown_runtime() {
     auto& eng = engine();
     std::lock_guard<std::mutex> lock(eng.mu);
     eng.shutdown();
+    vispy::memory::HostBlockPool::shared().clear();
     vispy::memory::ByteRecycler::shared().clear();
 }

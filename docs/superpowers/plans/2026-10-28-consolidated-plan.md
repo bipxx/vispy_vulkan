@@ -43,6 +43,14 @@ unmodified scientific hosts, napari first, run on it with practical parity.
 
 ## Where things stand
 
+Use the [live coverage checklist](../../coverage-checklist.md) for detailed
+coverage status and next verification steps. Update its affected IDs alongside
+implementation, test, review and release changes; retain the linked manifests as
+the evidence authority.
+
+The development checkpoints below retain their pre-release status. The table
+after them summarizes the current published release.
+
 Local integration update (run `r2-source-287`): the pending runtime fixes are
 combined with current main in an isolated source candidate. Fresh Windows and
 WSL development builds each passed 44 native and 29 graphics checks (runs 285
@@ -77,14 +85,21 @@ admission, native Linux GPU, full source CI, R1 and release promotion remain ope
 
 | Area | State | Source |
 | --- | --- | --- |
-| Practical milestone | Closed: 120 selected criteria, 23 CI jobs, promotion review (PR #14/#15) | `docs/practical-compatibility-release.md` |
-| Current admitted wheels | `444402...` (Windows cp312), `bd89a994...` (Linux, `linux_x86_64`, not manylinux) | same, :105-106 |
-| Earlier wheels | Windows cp310-cp314 and WSL cp312 at an earlier source epoch | `docs/tested-platforms.md` |
-| Published wheels | None uploaded anywhere | `docs/tested-platforms.md` |
-| Strict matrix | On napari 0.9.2, 13 of 14 mandatory rows qualified (6 Windows, 7 WSL), bound to `62df5e4c...` and `374a74ea...`, with Windows napari-threedee PENDING. On napari 0.10.0 (D31 Phase 5b), all four napari rows pass on the same artifacts, Windows napari-threedee included; they are in the successor record until R2. R1 stays open. DIVE and visbrain are non-mandatory and not admitted. By D32 the 6 host-application rows are optional and the 8 headless and plain-Qt rows stay mandatory; R2 applies it. | `compat/no-opengl-matrix.json`, `compat/no-opengl-napari-0.10.0.json` |
+| Practical milestone | Released `v0.17.0-vulkan.1`: both Tk candidates admitted (120 and 8 criteria), 23 required CI jobs passed, independent promotion approved (PR #72). | `docs/release-0.17.0-vulkan.1.md` |
+| Current admitted wheels | `5c7142f3...` (Windows cp312 x86_64), `66f35ab0...` (Linux cp312, `manylinux_2_39_x86_64`). | `docs/release-0.17.0-vulkan.1.md` |
+| Earlier wheels | `444402...` / `bd89a994...` and the earlier Windows cp310-cp314 / WSL cp312 wheels remain historical evidence. | `docs/tested-platforms.md` |
+| Published wheels | Both release wheels are published in GitHub Release `v0.17.0-vulkan.1`, with the PEP 503 index at https://bipxx.github.io/vispy_vulkan/simple/. | `docs/release-0.17.0-vulkan.1.md` |
+| Strict matrix | All eight mandatory headless/plain-Qt rows pass on the release wheels. Host-application rows are optional (D32); napari uses 0.10.0 (D31), with historical 0.9.2 evidence retained. The Windows startup stall is backlog B22 under D33. | `compat/no-opengl-matrix.json`, `docs/release-0.17.0-vulkan.1.md` |
 | Hot swap | Stock napari works with the current wheel on Windows cp312. Drag-race fix merged (PR #24). Smooth-line criterion merged (PR #25). | `2026-10-28-napari-hot-swap.md` |
 | Startup stall | Mechanism found for the 2026-10-28 dev-environment recurrence: the default thread pool was lost early in startup. The qualification stall's pool state was never captured. The closer is unidentified (PR #26). By D33 it is documented, not release-blocking. | `docs/threedee-startup-diagnosis.md` |
 | Performance (W8) | Report done. Resident scenes keep the refresh rate; uploads are slower than OpenGL's, and partial texture updates much slower (B18). Readback presentation costs over 200 ms per 4K frame (B19). The hot swap moves to native presentation at R2, after the napari parity suites pass under it (D18). B19 and B18's CPU part are fixed on the R2 branch (run `b19-readback-257`). Full texture uploads are about 3 times faster there (P1). Vsynced native presentation there now paces like OpenGL's swap, without the extra refresh (P2). A texture updated between two draws of one frame no longer copies its whole CPU shadow (P3). A vsynced frame slower than a refresh renders one frame ahead, which brings full uploads to 0.82-0.99 of OpenGL's frame rate in a compact re-run (P4). Full uploads now copy straight from their CPU shadow (P5), and streamed buffers from their payload blocks (P6): in a compact re-run, a full 64 MiB image runs at 1.08 of OpenGL's frame rate, a 256-cubed volume at 1.08, and 1M points with new positions at 1.19. | `docs/performance-report.md` |
+
+Post-release source fix (2026-11-05, run `shutdown-fix-322`): explicit shutdown
+also drains the host-block cache after engine/device teardown. A CPU regression
+executes the production shutdown wrapper against the real upload caches and
+passes on Windows and WSL; it fails on the pre-fix wrapper. This
+source fix is separate from the released wheels above; their existing evidence
+and artifacts remain bound to their original source.
 
 ## Decisions
 
