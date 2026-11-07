@@ -1,0 +1,540 @@
+{
+  "schema": 1,
+  "status": "FINITE_INSTALLED_MATRIX_ARRAY_ATTRIBUTE_ACCEPTANCE",
+  "checklist_id": "SHD-03",
+  "parent_closed": false,
+  "cases_per_platform_across_runs": 285,
+  "cpu_cases_per_platform": 275,
+  "rendered_test_groups_per_platform": 10,
+  "baseline_cases": 282,
+  "boundary_cases": 3,
+  "observations": [
+    {
+      "run": "attributes-installed-windows-419",
+      "cases": 282,
+      "wheel": {
+        "path": "build/artifacts/ba8a54c5b7ede9387d62ff72b1269602d61c0bdc61c77928ee52a7e37107bf24/vispy-0.17.0+vulkan.2-cp312-cp312-win_amd64.whl",
+        "sha256": "ba8a54c5b7ede9387d62ff72b1269602d61c0bdc61c77928ee52a7e37107bf24"
+      },
+      "source_hashes": {
+        "tests/shaders/test_attribute_array_packing.py": "8c236a7c9e7248abec0c3b50c7ba484f9eeb0178033039b0f8254893d6050ae5",
+        "tests/shaders/test_attribute_rendering_acceptance.py": "fc563b137e43c4c7d9e7f24a4705ea2b7dba6f3344ed559285ec31f6bccbcea3",
+        "tests/shaders/test_composed_attributes.py": "fea15b500cc22203dd43d3fc936cfdee4c2c3f8f5fe978e4e9c755f2ce0e5410",
+        "tests/shaders/test_matrix_attribute_packing.py": "73aa0ba8c0ff0fe613d7645fbec636dc5591ecca921c6559e3cfeac6052ea451",
+        "tools/aggregate_attribute_smoke.py": "f9fa074a46c61a64243bd2417bc66f319b4cc111ccf323c5f5903c852742e421"
+      },
+      "test_targets": [
+        "tests/shaders/test_matrix_attribute_packing.py",
+        "tests/shaders/test_attribute_array_packing.py",
+        "tests/shaders/test_composed_attributes.py",
+        "tests/shaders/test_attribute_rendering_acceptance.py"
+      ],
+      "loaded_origins": 151,
+      "device": {
+        "backend": "Vulkan",
+        "adapter_type": "discrete",
+        "vendor": "nvidia",
+        "device": "NVIDIA GeForce RTX 4090",
+        "driver": "NVIDIA: 610.88 610.88.0.0",
+        "vendor_id": 4318,
+        "device_id": 9860,
+        "max_texture_dimension_1d": 32768,
+        "max_texture_dimension_2d": 32768,
+        "max_texture_dimension_3d": 16384,
+        "max_vertex_attributes": 30,
+        "max_vertex_buffers": 8,
+        "max_vertex_buffer_array_stride": 2048,
+        "max_storage_buffers_per_shader_stage": 16,
+        "max_uniform_buffers_per_shader_stage": 12,
+        "max_inter_stage_shader_variables": 30,
+        "max_storage_buffer_binding_size": 2147483644,
+        "max_bindings_per_bind_group": 1000,
+        "max_compute_invocations_per_workgroup": 1024,
+        "max_compute_workgroup_size_x": 1024,
+        "max_compute_workgroups_per_dimension": 65535,
+        "max_point_vertex_attributes": 30,
+        "core_features_and_limits": true,
+        "point_input_limit_scope": "all active user point inputs share one vertex buffer; exact vertex/instance identities use read-only vertex storage without reserving a user attribute; actual granted attribute/stride/storage/allocation limits apply",
+        "max_samplers_per_shader_stage": 16,
+        "max_sampled_textures_per_shader_stage": 48,
+        "max_buffer_size": 1099511627776,
+        "max_uniform_buffer_binding_size": 65536,
+        "software": false,
+        "float32_filterable": true,
+        "unorm16_texture_formats": true,
+        "bresenham_lines": true,
+        "last_vertex_provoking": true,
+        "timestamp_query": true,
+        "timestamp_quantization_ns": 65536,
+        "host_mapped_pointer": true,
+        "host_import_limit": 536870912,
+        "depth_stencil_storage": "depth24_unorm_stencil8",
+        "ok": true,
+        "error": "",
+        "loss_count": 0,
+        "revision": "117b054598f4758b598f4b8f48feea48c11fe7b0+dawn-499e5c6ff9b37d5de70c6493fb74c251e0d35c1c"
+      },
+      "shutdown_gauges": {
+        "pending_tickets": 0,
+        "queued_frames": 0,
+        "live_buffer_bytes": 0,
+        "live_cpu_buffer_bytes": 0,
+        "live_texture_bytes": 0,
+        "canvas_texture_bytes": 0,
+        "transient_buffer_bytes": 0,
+        "line_resource_pool_busy_slots": 0,
+        "line_resource_pool_bytes": 0,
+        "host_import_pinned_bytes": 0
+      },
+      "evidence": {
+        "verification.json": {
+          "path": "build/runs/attributes-installed-windows-419/verification.json",
+          "sha256": "cb8773e380956662c5a10a0cae9a250fb936e8939735d0d8782672f0de908ba3"
+        },
+        "input-result.json": {
+          "path": "build/runs/attributes-installed-windows-419/input-result.json",
+          "sha256": "213768d0af0ae1ff18310a4c516c8e79633fc3875304b9e0015ccedd98a1626b"
+        },
+        "inputs.xml": {
+          "path": "build/runs/attributes-installed-windows-419/inputs.xml",
+          "sha256": "f6afea8a4765c8a2343c0cc946398ed6d4c8411b0bb4b25304ad6cf3efc215f1"
+        },
+        "test-source-and-licenses.zip": {
+          "path": "build/runs/attributes-installed-windows-419/test-source-and-licenses.zip",
+          "sha256": "e324dc7bdaadce59de23a1773e887a2119934ceb8558ba1ee6c044cf5eaca1f2"
+        },
+        "terminal-retention.json": {
+          "path": "build/runs/attributes-installed-windows-419/terminal-retention.json",
+          "sha256": "53ee973af25606b31480b7297f66ca667cc60d0e1aec9c1cbf5e96ad84656134"
+        },
+        "post-cleanup.json": {
+          "path": "build/runs/attributes-installed-windows-419/post-cleanup.json",
+          "sha256": "e719eb1385bf194f7df875420bcc9e5a9dea45903d18bcf4af67453b6dfbd3d1"
+        },
+        "fixture-results.json": {
+          "path": "build/runs/attributes-installed-windows-419/fixture-results.json",
+          "sha256": "04e6278e3e29791af41c7a7c42faf02d720c8be0432693791dfda4132b764000"
+        }
+      }
+    },
+    {
+      "run": "attributes-installed-wsl-420",
+      "cases": 282,
+      "wheel": {
+        "path": "build/artifacts/4bc3cd778990a35a3ff3e72f68fc8905e74804cb78b1d7091adbdc1b1fbfcdc8/vispy-0.17.0+vulkan.2-cp312-cp312-manylinux_2_39_x86_64.whl",
+        "sha256": "4bc3cd778990a35a3ff3e72f68fc8905e74804cb78b1d7091adbdc1b1fbfcdc8"
+      },
+      "source_hashes": {
+        "tests/shaders/test_attribute_array_packing.py": "8c236a7c9e7248abec0c3b50c7ba484f9eeb0178033039b0f8254893d6050ae5",
+        "tests/shaders/test_attribute_rendering_acceptance.py": "fc563b137e43c4c7d9e7f24a4705ea2b7dba6f3344ed559285ec31f6bccbcea3",
+        "tests/shaders/test_composed_attributes.py": "fea15b500cc22203dd43d3fc936cfdee4c2c3f8f5fe978e4e9c755f2ce0e5410",
+        "tests/shaders/test_matrix_attribute_packing.py": "73aa0ba8c0ff0fe613d7645fbec636dc5591ecca921c6559e3cfeac6052ea451",
+        "tools/aggregate_attribute_smoke.py": "f9fa074a46c61a64243bd2417bc66f319b4cc111ccf323c5f5903c852742e421"
+      },
+      "test_targets": [
+        "tests/shaders/test_matrix_attribute_packing.py",
+        "tests/shaders/test_attribute_array_packing.py",
+        "tests/shaders/test_composed_attributes.py",
+        "tests/shaders/test_attribute_rendering_acceptance.py"
+      ],
+      "loaded_origins": 150,
+      "device": {
+        "backend": "Vulkan",
+        "adapter_type": "cpu",
+        "vendor": "mesa",
+        "device": "llvmpipe (LLVM 18.1.3, 256 bits)",
+        "driver": "llvmpipe: Mesa 26.1.8 (LLVM 18.1.3)",
+        "vendor_id": 65541,
+        "device_id": 0,
+        "max_texture_dimension_1d": 16384,
+        "max_texture_dimension_2d": 16384,
+        "max_texture_dimension_3d": 4096,
+        "max_vertex_attributes": 30,
+        "max_vertex_buffers": 8,
+        "max_vertex_buffer_array_stride": 2048,
+        "max_storage_buffers_per_shader_stage": 16,
+        "max_uniform_buffers_per_shader_stage": 12,
+        "max_inter_stage_shader_variables": 30,
+        "max_storage_buffer_binding_size": 134217728,
+        "max_bindings_per_bind_group": 1000,
+        "max_compute_invocations_per_workgroup": 1024,
+        "max_compute_workgroup_size_x": 1024,
+        "max_compute_workgroups_per_dimension": 65535,
+        "max_point_vertex_attributes": 30,
+        "core_features_and_limits": true,
+        "point_input_limit_scope": "all active user point inputs share one vertex buffer; exact vertex/instance identities use read-only vertex storage without reserving a user attribute; actual granted attribute/stride/storage/allocation limits apply",
+        "max_samplers_per_shader_stage": 16,
+        "max_sampled_textures_per_shader_stage": 48,
+        "max_buffer_size": 4294967295,
+        "max_uniform_buffer_binding_size": 65536,
+        "software": true,
+        "float32_filterable": true,
+        "unorm16_texture_formats": true,
+        "bresenham_lines": true,
+        "last_vertex_provoking": true,
+        "timestamp_query": true,
+        "timestamp_quantization_ns": 65536,
+        "host_mapped_pointer": true,
+        "host_import_limit": 536870912,
+        "depth_stencil_storage": "depth24_unorm_stencil8",
+        "ok": true,
+        "error": "",
+        "loss_count": 0,
+        "revision": "117b054598f4758b598f4b8f48feea48c11fe7b0+dawn-499e5c6ff9b37d5de70c6493fb74c251e0d35c1c"
+      },
+      "shutdown_gauges": {
+        "pending_tickets": 0,
+        "queued_frames": 0,
+        "live_buffer_bytes": 0,
+        "live_cpu_buffer_bytes": 0,
+        "live_texture_bytes": 0,
+        "canvas_texture_bytes": 0,
+        "transient_buffer_bytes": 0,
+        "line_resource_pool_busy_slots": 0,
+        "line_resource_pool_bytes": 0,
+        "host_import_pinned_bytes": 0
+      },
+      "evidence": {
+        "verification.json": {
+          "path": "build/runs/attributes-installed-wsl-420/verification.json",
+          "sha256": "16711053fb4ad821f6af0e783de313b5c01d6b30458bd9e544e0950fcb4a4f8a"
+        },
+        "input-result.json": {
+          "path": "build/runs/attributes-installed-wsl-420/input-result.json",
+          "sha256": "3f293259498752277547b5fc3c4978457b97ee5326e3af8332940f65e9f9176e"
+        },
+        "inputs.xml": {
+          "path": "build/runs/attributes-installed-wsl-420/inputs.xml",
+          "sha256": "0753318b7c0e1f21fa55830cc98f9b1ec829b10d6bd04cb01c0a61764488be8f"
+        },
+        "test-source-and-licenses.zip": {
+          "path": "build/runs/attributes-installed-wsl-420/test-source-and-licenses.zip",
+          "sha256": "e324dc7bdaadce59de23a1773e887a2119934ceb8558ba1ee6c044cf5eaca1f2"
+        },
+        "terminal-retention.json": {
+          "path": "build/runs/attributes-installed-wsl-420/terminal-retention.json",
+          "sha256": "94041f470d81d9ce40147bfefa3c81d84813091a7490faa84f1abf4f5fca5ec0"
+        },
+        "post-cleanup.json": {
+          "path": "build/runs/attributes-installed-wsl-420/post-cleanup.json",
+          "sha256": "0cfa7dbe6f1da943c15859f46e13d5d5f54334ea846674e4a320e3812e7370a7"
+        },
+        "fixture-results.json": {
+          "path": "build/runs/attributes-installed-wsl-420/fixture-results.json",
+          "sha256": "695fd20cd1695d23178cbb492699884534ebda6616cccadae21161a74d527e6f"
+        }
+      }
+    },
+    {
+      "run": "attribute-limits-windows-422",
+      "cases": 3,
+      "wheel": {
+        "path": "build/artifacts/ba8a54c5b7ede9387d62ff72b1269602d61c0bdc61c77928ee52a7e37107bf24/vispy-0.17.0+vulkan.2-cp312-cp312-win_amd64.whl",
+        "sha256": "ba8a54c5b7ede9387d62ff72b1269602d61c0bdc61c77928ee52a7e37107bf24"
+      },
+      "source_hashes": {
+        "tests/shaders/test_attribute_rendering_acceptance.py": "3bc1fda9b2f3c34a20410631d05f78dd8b13799a537609c530b27dd154872046"
+      },
+      "test_targets": [
+        "tests/shaders/test_attribute_rendering_acceptance.py::test_attribute_route_limits_and_raster_refusal_recovery"
+      ],
+      "loaded_origins": 56,
+      "device": {
+        "backend": "Vulkan",
+        "adapter_type": "discrete",
+        "vendor": "nvidia",
+        "device": "NVIDIA GeForce RTX 4090",
+        "driver": "NVIDIA: 610.88 610.88.0.0",
+        "vendor_id": 4318,
+        "device_id": 9860,
+        "max_texture_dimension_1d": 32768,
+        "max_texture_dimension_2d": 32768,
+        "max_texture_dimension_3d": 16384,
+        "max_vertex_attributes": 30,
+        "max_vertex_buffers": 8,
+        "max_vertex_buffer_array_stride": 2048,
+        "max_storage_buffers_per_shader_stage": 16,
+        "max_uniform_buffers_per_shader_stage": 12,
+        "max_inter_stage_shader_variables": 30,
+        "max_storage_buffer_binding_size": 2147483644,
+        "max_bindings_per_bind_group": 1000,
+        "max_compute_invocations_per_workgroup": 1024,
+        "max_compute_workgroup_size_x": 1024,
+        "max_compute_workgroups_per_dimension": 65535,
+        "max_point_vertex_attributes": 30,
+        "core_features_and_limits": true,
+        "point_input_limit_scope": "all active user point inputs share one vertex buffer; exact vertex/instance identities use read-only vertex storage without reserving a user attribute; actual granted attribute/stride/storage/allocation limits apply",
+        "max_samplers_per_shader_stage": 16,
+        "max_sampled_textures_per_shader_stage": 48,
+        "max_buffer_size": 1099511627776,
+        "max_uniform_buffer_binding_size": 65536,
+        "software": false,
+        "float32_filterable": true,
+        "unorm16_texture_formats": true,
+        "bresenham_lines": true,
+        "last_vertex_provoking": true,
+        "timestamp_query": true,
+        "timestamp_quantization_ns": 65536,
+        "host_mapped_pointer": true,
+        "host_import_limit": 536870912,
+        "depth_stencil_storage": "depth24_unorm_stencil8",
+        "ok": true,
+        "error": "",
+        "loss_count": 0,
+        "revision": "117b054598f4758b598f4b8f48feea48c11fe7b0+dawn-499e5c6ff9b37d5de70c6493fb74c251e0d35c1c"
+      },
+      "shutdown_gauges": {
+        "pending_tickets": 0,
+        "queued_frames": 0,
+        "live_buffer_bytes": 0,
+        "live_cpu_buffer_bytes": 0,
+        "live_texture_bytes": 0,
+        "canvas_texture_bytes": 0,
+        "transient_buffer_bytes": 0,
+        "line_resource_pool_busy_slots": 0,
+        "line_resource_pool_bytes": 0,
+        "host_import_pinned_bytes": 0
+      },
+      "evidence": {
+        "verification.json": {
+          "path": "build/runs/attribute-limits-windows-422/verification.json",
+          "sha256": "7690376f536de974a4b432ce5418285c713d6d3d2aea442f8538a8d35b01e968"
+        },
+        "input-result.json": {
+          "path": "build/runs/attribute-limits-windows-422/input-result.json",
+          "sha256": "15d183760cb115421cfefd5123740ea02fb7573cbf442b5479370c609cbe3cd2"
+        },
+        "inputs.xml": {
+          "path": "build/runs/attribute-limits-windows-422/inputs.xml",
+          "sha256": "8d6c2b990582ef42aec6351286f8dc356f7400d262a7628ccc9950a86ea70f6d"
+        },
+        "test-source-and-licenses.zip": {
+          "path": "build/runs/attribute-limits-windows-422/test-source-and-licenses.zip",
+          "sha256": "cbeca5ad9552f8a8ee5738a50b2f85ce84ebc083ab0e116e84370c908a7012d0"
+        },
+        "terminal-retention.json": {
+          "path": "build/runs/attribute-limits-windows-422/terminal-retention.json",
+          "sha256": "51c4ec6923164e2468324e692a7ea22581d628857112158d627f540fc96e0a52"
+        },
+        "post-cleanup.json": {
+          "path": "build/runs/attribute-limits-windows-422/post-cleanup.json",
+          "sha256": "4cfe0fe88eac75dfd1b7ed6c13dc0c15005f3e2ad94f4cf19ac438436c3c8958"
+        }
+      }
+    },
+    {
+      "run": "attribute-limits-wsl-423",
+      "cases": 3,
+      "wheel": {
+        "path": "build/artifacts/4bc3cd778990a35a3ff3e72f68fc8905e74804cb78b1d7091adbdc1b1fbfcdc8/vispy-0.17.0+vulkan.2-cp312-cp312-manylinux_2_39_x86_64.whl",
+        "sha256": "4bc3cd778990a35a3ff3e72f68fc8905e74804cb78b1d7091adbdc1b1fbfcdc8"
+      },
+      "source_hashes": {
+        "tests/shaders/test_attribute_rendering_acceptance.py": "3bc1fda9b2f3c34a20410631d05f78dd8b13799a537609c530b27dd154872046"
+      },
+      "test_targets": [
+        "tests/shaders/test_attribute_rendering_acceptance.py::test_attribute_route_limits_and_raster_refusal_recovery"
+      ],
+      "loaded_origins": 55,
+      "device": {
+        "backend": "Vulkan",
+        "adapter_type": "cpu",
+        "vendor": "mesa",
+        "device": "llvmpipe (LLVM 18.1.3, 256 bits)",
+        "driver": "llvmpipe: Mesa 26.1.8 (LLVM 18.1.3)",
+        "vendor_id": 65541,
+        "device_id": 0,
+        "max_texture_dimension_1d": 16384,
+        "max_texture_dimension_2d": 16384,
+        "max_texture_dimension_3d": 4096,
+        "max_vertex_attributes": 30,
+        "max_vertex_buffers": 8,
+        "max_vertex_buffer_array_stride": 2048,
+        "max_storage_buffers_per_shader_stage": 16,
+        "max_uniform_buffers_per_shader_stage": 12,
+        "max_inter_stage_shader_variables": 30,
+        "max_storage_buffer_binding_size": 134217728,
+        "max_bindings_per_bind_group": 1000,
+        "max_compute_invocations_per_workgroup": 1024,
+        "max_compute_workgroup_size_x": 1024,
+        "max_compute_workgroups_per_dimension": 65535,
+        "max_point_vertex_attributes": 30,
+        "core_features_and_limits": true,
+        "point_input_limit_scope": "all active user point inputs share one vertex buffer; exact vertex/instance identities use read-only vertex storage without reserving a user attribute; actual granted attribute/stride/storage/allocation limits apply",
+        "max_samplers_per_shader_stage": 16,
+        "max_sampled_textures_per_shader_stage": 48,
+        "max_buffer_size": 4294967295,
+        "max_uniform_buffer_binding_size": 65536,
+        "software": true,
+        "float32_filterable": true,
+        "unorm16_texture_formats": true,
+        "bresenham_lines": true,
+        "last_vertex_provoking": true,
+        "timestamp_query": true,
+        "timestamp_quantization_ns": 65536,
+        "host_mapped_pointer": true,
+        "host_import_limit": 536870912,
+        "depth_stencil_storage": "depth24_unorm_stencil8",
+        "ok": true,
+        "error": "",
+        "loss_count": 0,
+        "revision": "117b054598f4758b598f4b8f48feea48c11fe7b0+dawn-499e5c6ff9b37d5de70c6493fb74c251e0d35c1c"
+      },
+      "shutdown_gauges": {
+        "pending_tickets": 0,
+        "queued_frames": 0,
+        "live_buffer_bytes": 0,
+        "live_cpu_buffer_bytes": 0,
+        "live_texture_bytes": 0,
+        "canvas_texture_bytes": 0,
+        "transient_buffer_bytes": 0,
+        "line_resource_pool_busy_slots": 0,
+        "line_resource_pool_bytes": 0,
+        "host_import_pinned_bytes": 0
+      },
+      "evidence": {
+        "verification.json": {
+          "path": "build/runs/attribute-limits-wsl-423/verification.json",
+          "sha256": "9a6fd0058fc6826556bff3e2ff6b425cca0fc780d6f0ebce3e868441a1621018"
+        },
+        "input-result.json": {
+          "path": "build/runs/attribute-limits-wsl-423/input-result.json",
+          "sha256": "93b4724ac96864756ea596474953fac5280e5021a03e7decd80d79e7d023a20b"
+        },
+        "inputs.xml": {
+          "path": "build/runs/attribute-limits-wsl-423/inputs.xml",
+          "sha256": "816ffcc2783f1949d527a8322171531e44460e42e5b90b09fd74efb03c2d2aa9"
+        },
+        "test-source-and-licenses.zip": {
+          "path": "build/runs/attribute-limits-wsl-423/test-source-and-licenses.zip",
+          "sha256": "cbeca5ad9552f8a8ee5738a50b2f85ce84ebc083ab0e116e84370c908a7012d0"
+        },
+        "terminal-retention.json": {
+          "path": "build/runs/attribute-limits-wsl-423/terminal-retention.json",
+          "sha256": "5b45b556ed119c476d216f87e42d7546e2affb1ec7fcbad23b96532f72f85239"
+        },
+        "post-cleanup.json": {
+          "path": "build/runs/attribute-limits-wsl-423/post-cleanup.json",
+          "sha256": "84804452fb4f730c17ccfbe5e13fa6a4b49c2af93a146cb504748a9bec6c9e09"
+        }
+      }
+    }
+  ],
+  "unchanged_baseline_function_asts": true,
+  "native_reflection_sources": {
+    "tests/shaders/attribute_binding_contract.hpp": "00d8f1734ab47c7af50a3250e947eaaf1338b90669c22f578f21fc224bbf01a2",
+    "tests/shaders/artifact_contract.cpp": "9bb76c789324a4030e587faa184485512a8925ebdaf8079f7f755568f5dfd633"
+  },
+  "native_proofs": {
+    "dynamic-sampler-native-402": {
+      "native-validation.json": {
+        "path": "build/runs/dynamic-sampler-native-402/native-validation.json",
+        "sha256": "e1fa490d38c70aa4350d24c2215a918ead6d5e05df27260a61d9301d282f5164"
+      },
+      "source-before.json": {
+        "path": "build/runs/dynamic-sampler-native-402/source-before.json",
+        "sha256": "7a8dbe532238447fa9d65299c8e6aa3e68e29dfd8729865579fd74d386ae6651"
+      },
+      "ctest.xml": {
+        "path": "build/runs/dynamic-sampler-native-402/ctest.xml",
+        "sha256": "a456b0af9e271bfc8ee50e0c61406b009907fff8d3785a09eda577f6be2306f2"
+      }
+    },
+    "linux-dynamic-artifact-414": {
+      "native-capture-validation.json": {
+        "path": "build/runs/linux-dynamic-artifact-414/native-capture-validation.json",
+        "sha256": "1f98f3f400dac6df109f637bcb5c25c19701e442d3774415e506069e59413d66"
+      },
+      "successful-original-capture.json": {
+        "path": "build/runs/linux-dynamic-artifact-414/successful-original-capture.json",
+        "sha256": "f91a82ad286c6e9075b4b41952021037acd707a92527f5ad14ec1f21cce72971"
+      }
+    }
+  },
+  "native_reflection_scope": {
+    "matrix_columns": [
+      2,
+      3,
+      4
+    ],
+    "matrix_rows": [
+      2,
+      3,
+      4
+    ],
+    "array_shapes": [
+      [],
+      [
+        2
+      ],
+      [
+        2,
+        3
+      ]
+    ],
+    "vector_array_types": [
+      "float",
+      "int",
+      "uint",
+      "vec2",
+      "ivec3",
+      "uvec4"
+    ],
+    "invalid_shapes": [
+      [
+        0
+      ],
+      [
+        4294967295
+      ],
+      [
+        65536,
+        65536
+      ]
+    ]
+  },
+  "rendered_scope": [
+    "nine float matrix shapes via constants/buffers/interleaving on triangles/points/lines",
+    "nested vector/matrix and selected signed integer arrays, updates and shader rebuilds",
+    "uint16 indexed matrix/vector comparisons with independent landmarks",
+    "nonsymmetric mat3x2 geometry, separate/interleaved records, divisors 1/2, partial updates and device loss",
+    "raster/point exact 30-location grant with one-extra refusal and same-canvas recovery",
+    "generated width-5 lines accept 31 logical locations through compute, then render at 30"
+  ],
+  "aggregate_pixel_rows_per_platform": {
+    "raw": 149,
+    "indexed": 3,
+    "composed": 207
+  },
+  "preserved_fixture_failure": {
+    "failure-analysis.json": {
+      "path": "build/runs/attribute-limits-windows-421/failure-analysis.json",
+      "sha256": "d0e3bd43454000001fe09223ef86247faeb94692f91885af5f1d99381f88cca5"
+    },
+    "events.log": {
+      "path": "build/runs/attribute-limits-windows-421/events.log",
+      "sha256": "98db947d5d6a444e35c46acce1599566407d5ed2bab2bd049c2c33cc6365a0a9"
+    },
+    "failed-source-and-licenses.zip": {
+      "path": "build/runs/attribute-limits-windows-421/failed-source-and-licenses.zip",
+      "sha256": "01ddf66f6713611363fff6056e71bdec67eeafaafe312c7b46fba656e4044c26"
+    },
+    "terminal-retention.json": {
+      "path": "build/runs/attribute-limits-windows-421/terminal-retention.json",
+      "sha256": "836a66c83c8f103f30550979cc3325e4a131f2697cb05d05fce0e6eae1ccba2a"
+    },
+    "post-cleanup.json": {
+      "path": "build/runs/attribute-limits-windows-421/post-cleanup.json",
+      "sha256": "4cfe0fe88eac75dfd1b7ed6c13dc0c15005f3e2ad94f4cf19ac438436c3c8958"
+    }
+  },
+  "remaining": [
+    "additional value/format/index/divisor combinations",
+    "compute/storage boundary breadth",
+    "MSAA and other hardware/profile combinations",
+    "independent review and profile admission"
+  ],
+  "native_build": false,
+  "new_environment": false,
+  "artifact_admitted": false
+}

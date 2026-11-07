@@ -698,6 +698,16 @@ preserved. Required acceptance detail: SH-1–SH-5 in the
   Broader storage/interface, shape/type and profile claims remain SHD-02 work.
 - [ ] **SHD-03 — Matrix/array attributes / SH-3:** locations, column order, stride,
   offsets, divisors, constants, instancing, mutations and input-limit errors.
+- [x] **SHD-03-SELECTED — Finite installed matrix/array attributes:**
+  285 cases per current Windows/WSL wheel pass across retained 282 + 3 runs:
+  275 CPU packing/composition cases and ten rendered test groups. Independent
+  nonsymmetric matrix geometry checks separate/interleaved records, divisors
+  1/2, partial updates and loss. Aggregate raw/indexed/composed pixel oracles,
+  exact raster/point grants and same-canvas recovery pass. Wide generated lines
+  preserve their compute-route allowance beyond the raster attribute grant.
+  Current native proofs bind the reflection/layout contract. All member/origin
+  checks and shutdown gauges pass; scratch is removed. [Scope and boundaries](attribute-acceptance.md).
+  SHD-03 stays open beyond the named value/format/divisor/profile combinations.
 - [ ] **SHD-04 — Geometry consumers / SH-4:** bound supported compute/instanced
   expansion or document an application rewrite; preserve topology, interpolation,
   clipping, depth and mutation/loss behavior for that subset.
@@ -895,6 +905,7 @@ exit condition is satisfied. Optional or deferred items are selected by need.
 
 | Date | Change | Evidence |
 | --- | --- | --- |
+| 2026-11-07 | Added nonsymmetric matrix geometry and route-specific grant/recovery tests; 285 matrix/array attribute cases pass per Windows/WSL wheel. Bound current native reflection/layout proofs, preserved the initial fixture assumption failure, and cleaned all targets. | `attributes-v1.json`; broader SHD-03 and admission remain open. |
 | 2026-11-07 | Imported successful Linux native/source/archive proof, retagged only metadata to audited manylinux_2_39 and passed 258 installed cases, validators and active controls on WSL. Matching finite uniform subset now has Windows/WSL evidence. | `dynamic-explicit-samplers-wip.json`, `uniform-arrays-v1.json`; all owned scratch cleaned. |
 | 2026-11-07 | Recorded finite installed Windows uniform-array acceptance: 120 cases (72 CPU + 48 rendered), exact origins and zero gauges; scratch cleaned. Linux native CI completed, artifact/installed checks pending. | `uniform-arrays-windows-v1.json`; SHD-02 broader scope remains open. |
 | 2026-11-07 | Assembled the dynamic sampler Windows successor wheel from retained native outputs; 138 installed cases pass (75 sampler + 63 lifecycle/state/examples), with capture controls and zero gauges. No native build or new environment. | Wheel `ba8a54c5`; `windows-dynamic-package-410`, strict cleanup complete. |

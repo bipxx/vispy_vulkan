@@ -43,6 +43,18 @@ unmodified scientific hosts, napari first, run on it with practical parity.
 
 ## Where things stand
 
+2026-11-07 attribute checkpoint: current Windows/WSL wheels pass 285 finite
+attribute cases each (275 CPU plus ten rendered groups), including independent
+nonsymmetric matrix geometry, instanced divisors 1/2, partial update/loss,
+aggregate oracles and route-specific grant/recovery. Current native proofs bind
+exact reflection/layout checks. Wide-line compute inputs retain their separate
+storage/compute contract; the incorrect blanket raster-limit fixture is kept
+as a corrected failure. All tracked gauges are zero and scratch is cleaned.
+See [attribute acceptance](../../attribute-acceptance.md); SHD-03 broader scope
+and independent/profile admission remain open. Reuse existing artifacts for
+the next selected acceptance item; no native code changed in this checkpoint.
+
+
 2026-11-07 cross-platform successor checkpoint: Windows wheel `ba8a54c5` and
 Linux manylinux wheel `4bc3cd77` now have actual installed functional evidence.
 Linux native/source/archive joins and all 44 contracts pass; the final tagged
