@@ -331,8 +331,9 @@ Authority: [capture coverage map](../compat/candidates/tk-capture-1/coverage.jso
     overall source-suite pass or independent review.
     [Baseline comparison](../build/runs/native-storage-baseline-373/external-evidence.json).
     The Windows native producer/storage-path blocker is closed at local proof
-    scope. Current Windows v2 packaging/installed checks and formal cross-store
-    provenance admission remain open, as do successor records and strict gates.
+    scope. Windows v2 packaging/installed checks were still pending here; their
+    later closure is recorded below. Formal cross-store provenance admission,
+    successor records and strict gates remain open.
     **Recovery, 2026-11-07:** selected fresh managed storage on D: under the same
     20 GiB/10 GiB policy, inheriting every protected/blocked path. Recovered all
     40 original Linux failure-artifact members. Ninja removed a temporary `.o.d`
@@ -392,6 +393,34 @@ Authority: [capture coverage map](../compat/candidates/tk-capture-1/coverage.jso
     17, 18 and 34 retained entries respectively rehashed after deletion. The
     capture retention path-format error is preserved with its corrected reader;
     no test verdict or validator was changed.
+
+- [x] **FIX-06-WINDOWS-PACKAGE — Current Windows v2 packaging:** wheel
+  `5cb463cd5e5c889af8b5c8d605bd6f60fe33d1bbeed521443d4f0966788017f9`
+  is `vispy-0.17.0+vulkan.2-cp312-cp312-win_amd64.whl` (6,808,391 bytes).
+  The existing backend assembled exact source `e99db28b` around the four verified
+  native outputs from `windows-secondary-native-374`; no native rebuild, SDK or
+  environment installation. The exact archive/source/native/license/RECORD join
+  passes with the frozen source's explicit v2 expectation. The first caller's
+  omitted version argument failed against the verifier's historical v1 default;
+  that failed attempt is retained and cleaned. The successful audit reuses the
+  same wheel bytes and leaves verifier defaults unchanged.
+  [Original failure](../build/runs/windows-current-package-376/external-evidence.json),
+  [exact archive audit](../build/runs/windows-current-installed-377/external-evidence.json).
+- [x] **FIX-06-WINDOWS-INSTALLED — Exact current Windows v2 observations:** the
+  same `5cb463cd` wheel passes 63 cases without skips: four upload/shutdown,
+  56 state/capture and three maintained image-overlay/mesh/volume example cases.
+  The unchanged eight-branch Tk and four-branch capture validators pass; all five
+  active capture corruptions reject. Each child verifies 537 installed members;
+  the examples verify 172 loaded VisPy Python origins under that one target.
+  Measured shutdown gauges return to zero, including pinned host imports and
+  repeated shutdown/external-snapshot readback. Scope is CPython 3.12.8, Tk/Tcl
+  8.6 and RTX 4090 Windows Vulkan. The one offline no-deps copy-mode target uses
+  existing dependencies. Strict cleanup removes 42,527,510 bytes across the
+  failed assembly and installed run, rehashing 24/58 retained entries. A retention
+  helper filename correction is preserved; no test or validator was changed.
+  [Installed evidence and cleanup](../build/runs/windows-current-installed-377/external-evidence.json).
+  These are local observations: formal cross-store provenance admission,
+  successor reviews/records, mandatory rows, CI and release promotion remain open.
 
 - [x] **FIX-06-LINUX-PACKAGE — Current Linux v2 platform packaging:** fresh
   auditwheel 6.8.2 analysis of wheel `4c826163` confirms

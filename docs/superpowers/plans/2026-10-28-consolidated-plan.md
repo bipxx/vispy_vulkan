@@ -83,8 +83,20 @@ records 74 passes/two stale-v1-record failures per platform; the original
 verifier/schema/tests reproduce both failures with 53 passes. An actual retained
 legacy native proof still produces the identical validation result.
 [Comparison](../../../build/runs/native-storage-baseline-373/external-evidence.json).
-Next, assemble and verify the current Windows v2 wheel from this leaf, then
-implement formal cross-store reference admission with the original source/SDK
+The current Windows v2 wheel is now assembled and locally verified:
+`5cb463cd5e5c889af8b5c8d605bd6f60fe33d1bbeed521443d4f0966788017f9`,
+`cp312-cp312-win_amd64`, source `e99db28b`. Exact source/native/archive/license
+and RECORD joins pass around the retained leaf without another native build.
+All 63 installed cases pass with no skips, along with eight Tk recovery and four
+capture branches and all five active rejection controls. Each child verifies
+537 installed members; the maintained examples verify 172 loaded Python origins.
+Measured shutdown gauges retire to zero. Scope is CPython 3.12.8 / Tk 8.6 /
+RTX 4090 Vulkan. One offline copied target reuses existing dependencies.
+The original omitted-version caller failure is retained; the retry verifies the
+same archive bytes using an explicit source-bound v2 expectation and leaves v1
+verifier defaults unchanged. Cleanup removes 42,527,510 bytes and rehashes 24/58
+retained entries. [Windows package/installed evidence](../../../build/runs/windows-current-installed-377/external-evidence.json).
+Next, implement formal cross-store reference admission with the original source/SDK
 origins and independent review bindings preserved. Renew successor records and
 strict/profile/CI evidence afterward; no old record is repinned to imply a pass.
 C: native allocation remains stopped. Native proof does not grant wheel,

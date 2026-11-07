@@ -183,6 +183,18 @@ admission, current installed-wheel qualification, strict profile coverage or
 release promotion. Retain the original native source archive and notices by
 hash rather than copying its contents into another run.
 
+Current Windows backend-only assembly and installed checks use the
+[`windows-package-secondary-v1` profile](../compat/build-profiles/windows-package-secondary-v1.json):
+one 512 MiB registered D: allocation under the same shared cap/reserve, the
+existing packaging backend/dependencies, retained native outputs and one offline
+no-deps copied target. A source or report update does not justify rebuilding the
+native leaf. Supply the frozen source version explicitly to both
+`source_distribution_licenses` and `audit_archive`; their v1 defaults preserve
+historical callers. If a caller omits that argument, retain/clean the failure and
+audit the same archive bytes with the correct source expectation before deciding
+that another assembly is needed. Reuse existing preferred source/license
+archives by hash; keep only distinct harness/profile sources and focused results.
+
 ## Local R2 Linux native profile
 
 Local R2 Linux integration uses the explicit
