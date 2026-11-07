@@ -655,6 +655,14 @@ preserved. Required acceptance detail: SH-1–SH-5 in the
   Linux verification, multidimensional selection and broader filter/preprocessor controls,
   implicit-derivative decisions and successor admission remain pending.
   [Implementation and remaining work](dynamic-sampler-indexing.md).
+  **Actual Windows successor wheel:** `ba8a54c5` has exact source/native/license/
+  RECORD joins and passes all 75 sampler plus 63 upload/state/example cases from
+  one offline installation, with no native overlay. The Tk/capture validators
+  and five active negative controls pass their expected outcomes. All tracked
+  shutdown gauges are zero; 42,541,359 scratch bytes are removed and 67 retained
+  entries rehashed. [Exact wheel evidence](../compat/api-acceptance/dynamic-explicit-samplers-wip.json).
+  This is local functional acceptance, not independent/profile/release admission.
+
 - [x] **SHD-01-LITERAL — Finite installed literal sampler-array scope:**
   32 cases pass without skips on each current Windows/WSL v2 wheel. Six sampler
   families and one/two/three-dimensional literal shapes render independent
@@ -867,6 +875,7 @@ exit condition is satisfied. Optional or deferred items are selected by need.
 
 | Date | Change | Evidence |
 | --- | --- | --- |
+| 2026-11-07 | Assembled the dynamic sampler Windows successor wheel from retained native outputs; 138 installed cases pass (75 sampler + 63 lifecycle/state/examples), with capture controls and zero gauges. No native build or new environment. | Wheel `ba8a54c5`; `windows-dynamic-package-410`, strict cleanup complete. |
 | 2026-11-07 | Added 20 dimension/stage/index, two actual binding-limit refusal/recovery and six single-level LOD/filter/evaluation cases. All pass using the existing Windows native module; 75 distinct cases across three retained runs. | `dynamic-explicit-samplers-wip.json`; Linux CI continues on unchanged native source. |
 | 2026-11-07 | Dynamic explicit sampler selection passes all 44 Windows native contracts and 47 native-overlay cases, including declaration/macro/nested-call controls. Added collision-safe names and a portable shader identity marker; ten shutdown gauges zero. | `dynamic-sampler-indexing.md`; SHD-01 stays open for Linux, breadth/limits, independent review and successor admission. |
 | 2026-11-07 | Recorded finite installed event, Tk input, reversed-depth and literal sampler-array acceptance on both exact current v2 wheels. All scratch targets cleaned; broader parent claims remain separate. | `compat/api-acceptance/` packets and their exact source/wheel/evidence joins. |

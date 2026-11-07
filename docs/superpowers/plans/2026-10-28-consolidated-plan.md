@@ -43,6 +43,16 @@ unmodified scientific hosts, napari first, run on it with practical parity.
 
 ## Where things stand
 
+2026-11-07 Windows successor wheel checkpoint: wheel `ba8a54c5` assembles the
+existing verified dynamic-sampler native outputs with no compilation. Exact
+source/native/license/RECORD joins pass. A normal offline installation passes
+75 sampler and 63 upload/state/example cases, plus the expected capture controls,
+with zero shutdown gauges. Assembly/install scratch is removed. This replaces
+the need for a native overlay for current Windows functional observations; it
+does not renew old admissions. Linux CI `42381467559` continues independently.
+See the [sampler packet](../../../compat/api-acceptance/dynamic-explicit-samplers-wip.json).
+
+
 2026-11-07 successor implementation WIP: direct explicit LOD/fetch selection
 for one-dimensional sampler arrays is being implemented and tested. It keeps
 static resource bindings, typed index dispatch and single argument evaluation;

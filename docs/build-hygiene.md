@@ -330,3 +330,11 @@ mode. Reuse reserves 1 GiB, and both modes preserve the shared 20 GiB scratch an
 10 GiB reserve limits. A PR path filter sees cumulative changes, so it does not
 replace an input comparison inside the job. Metadata-only changes must not
 silently trigger a native rebuild. Metal graphics qualification remains open.
+
+The [dynamic Windows package profile](../compat/build-profiles/windows-dynamic-package-secondary-v1.json)
+is a distinct local successor for the dynamic sampler source. It reuses the
+verified outputs of `dynamic-sampler-native-402`, the original prepared backend
+and the same 512 MiB/20 GiB/10 GiB budgets. It does not rewrite the older profile
+or permit a new native build, SDK or environment. Record the exact assembled
+wheel and source/native joins, verify a normal offline target, then retain and
+clean it. Its functional observations confer no independent/profile admission.

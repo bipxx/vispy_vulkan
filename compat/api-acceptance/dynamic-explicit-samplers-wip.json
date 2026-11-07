@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "status": "SUCCESSOR_WIP_WINDOWS_NATIVE_AND_RENDERED_ONLY",
+  "status": "SUCCESSOR_WIP_WINDOWS_WHEEL_FUNCTIONAL_ONLY",
   "checklist_id": "SHD-01",
   "parent_closed": false,
   "artifact_admitted": false,
@@ -167,13 +167,13 @@
     }
   },
   "remaining": [
-    "Linux verification",
+    "Linux verification and installed successor wheel",
     "multidimensional dynamic selection",
     "broader preprocessor forms",
     "multilevel mip chains and additional filtering/LOD forms",
     "implicit-derivative decisions",
     "independent review",
-    "successor packaging and profile admission"
+    "successor profile admission and release"
   ],
   "additional_windows_observations": [
     {
@@ -435,5 +435,129 @@
     "Twenty dimension/stage/int-uint cases: float 1D/3D/cube with explicit LOD and admitted fetch forms in vertex/fragment stages; runtime indices 0/1/-1/2",
     "Two actual granted active binding boundary cases: one beyond refuses; at-limit compilation and rendered recovery pass in each stage",
     "Six single-level nearest/linear cases at LOD -2/0/2; independent gradient values and exactly one index/coordinate/LOD evaluation"
-  ]
+  ],
+  "installed_windows_successor_wheel": {
+    "wheel": {
+      "path": "build/artifacts/ba8a54c5b7ede9387d62ff72b1269602d61c0bdc61c77928ee52a7e37107bf24/vispy-0.17.0+vulkan.2-cp312-cp312-win_amd64.whl",
+      "sha256": "ba8a54c5b7ede9387d62ff72b1269602d61c0bdc61c77928ee52a7e37107bf24"
+    },
+    "source_commit": "af6a91ee7d42960f257964bddce4daab3c17327a",
+    "native_production_identity": "9dff8569f9e4c75e00527e383bdd546c25ea75201affe544e1e970a83bfe671d",
+    "native_outputs": {
+      "vispy/_dawn.cp312-win_amd64.pyd": "8b93326abbc14d28fe6743bc3571d5dbb83edb5e75c8c91535294ab5da0398e2",
+      "vispy/visuals/text/_sdf_cpu.cp312-win_amd64.pyd": "fd14a55ac02b415ee2b4027a7632cfe23a4b4fc7976f9eb815180c5bc31d849e",
+      "vispy/VkLayer_vispy_submit.dll": "050a86a3550aaed01e5a66a15fb44a313af83f816586c2119a7d14f57fb9e37b",
+      "vispy/VkLayer_vispy_submit.json": "7323cea73a46efcba615ca452d2b0235e3741109628c4bf2979c105e6ae69d56"
+    },
+    "cases": 138,
+    "sampler_cases": 75,
+    "other_cases": 63,
+    "skipped": 0,
+    "installed_members_verified_per_child": 537,
+    "sampler_loaded_origins": 56,
+    "example_loaded_python_origins": 172,
+    "device": {
+      "backend": "Vulkan",
+      "adapter_type": "discrete",
+      "vendor": "nvidia",
+      "device": "NVIDIA GeForce RTX 4090",
+      "driver": "NVIDIA: 610.88 610.88.0.0",
+      "vendor_id": 4318,
+      "device_id": 9860,
+      "max_texture_dimension_1d": 32768,
+      "max_texture_dimension_2d": 32768,
+      "max_texture_dimension_3d": 16384,
+      "max_vertex_attributes": 30,
+      "max_vertex_buffers": 8,
+      "max_vertex_buffer_array_stride": 2048,
+      "max_storage_buffers_per_shader_stage": 16,
+      "max_uniform_buffers_per_shader_stage": 12,
+      "max_inter_stage_shader_variables": 30,
+      "max_storage_buffer_binding_size": 2147483644,
+      "max_bindings_per_bind_group": 1000,
+      "max_compute_invocations_per_workgroup": 1024,
+      "max_compute_workgroup_size_x": 1024,
+      "max_compute_workgroups_per_dimension": 65535,
+      "max_point_vertex_attributes": 30,
+      "core_features_and_limits": true,
+      "point_input_limit_scope": "all active user point inputs share one vertex buffer; exact vertex/instance identities use read-only vertex storage without reserving a user attribute; actual granted attribute/stride/storage/allocation limits apply",
+      "max_samplers_per_shader_stage": 16,
+      "max_sampled_textures_per_shader_stage": 48,
+      "max_buffer_size": 1099511627776,
+      "max_uniform_buffer_binding_size": 65536,
+      "software": false,
+      "float32_filterable": true,
+      "unorm16_texture_formats": true,
+      "bresenham_lines": true,
+      "last_vertex_provoking": true,
+      "timestamp_query": true,
+      "timestamp_quantization_ns": 65536,
+      "host_mapped_pointer": true,
+      "host_import_limit": 536870912,
+      "depth_stencil_storage": "depth24_unorm_stencil8",
+      "ok": true,
+      "error": "",
+      "loss_count": 0,
+      "revision": "117b054598f4758b598f4b8f48feea48c11fe7b0+dawn-499e5c6ff9b37d5de70c6493fb74c251e0d35c1c"
+    },
+    "toolkit": {
+      "tk_version": 8.6,
+      "tcl_version": 8.6,
+      "binding_origin": "C:\\Users\\HEQ\\AppData\\Roaming\\uv\\python\\cpython-3.12.8-windows-x86_64-none\\DLLs\\_tkinter.pyd",
+      "binding_hash_scope": "module",
+      "binding_sha256": "38453f6aff3f3a3ef0017c00bfee2f403ca0aeaf92b8b5c56d05460fd6dbbdf9"
+    },
+    "profile": {
+      "path": "compat/build-profiles/windows-dynamic-package-secondary-v1.json",
+      "sha256": "2c4160803759fc648128373da217f17148dbd56074bd92149d30e6a4e872075e"
+    },
+    "native_overlay": false,
+    "artifact_admitted": false,
+    "evidence": {
+      "windows-wheel.json": {
+        "path": "build/runs/windows-dynamic-package-410/windows-wheel.json",
+        "sha256": "e280ecbeff4cf6c512b5095caeb3752d28d45e926b501a01f04e6349e49817a1"
+      },
+      "windows-archive-join.json": {
+        "path": "build/runs/windows-dynamic-package-410/windows-archive-join.json",
+        "sha256": "5081fe5006caf47e592a8a9e7b1acc7abeeecd930b6bacffefb2a3a2c8358017"
+      },
+      "assembly-source-audit.json": {
+        "path": "build/runs/windows-dynamic-package-410/assembly-source-audit.json",
+        "sha256": "038f1d3ff467d6235cc9236d7877719e7014705c5c19daab2b6fd8a366552a1f"
+      },
+      "acceptance-report.json": {
+        "path": "build/runs/windows-dynamic-package-410/acceptance-report.json",
+        "sha256": "b1efbffc764a9de67f90c3f9ad5c9f184a03f260502eb6fda0a38da220ff4ec8"
+      },
+      "input-result.json": {
+        "path": "build/runs/windows-dynamic-package-410/input-result.json",
+        "sha256": "b41af11ef3845ed7b52b2d56d4dbe4998b1512f5409ddb9c24dc6b243da61c8c"
+      },
+      "inputs.xml": {
+        "path": "build/runs/windows-dynamic-package-410/inputs.xml",
+        "sha256": "3e57342691e07b3ceca5d82fa962fc82a03291a92037d085fba0ae8c46e0617e"
+      },
+      "upload.xml": {
+        "path": "build/runs/windows-dynamic-package-410/upload.xml",
+        "sha256": "4ce9e22c2dccb8921eb52e0d8da4c5271207f5b9e7fc67001d48ef34c511fb17"
+      },
+      "state.xml": {
+        "path": "build/runs/windows-dynamic-package-410/state.xml",
+        "sha256": "0db812fafedbf63346e666683476293a51f1ca387ce5ac5bf2f75131252bc6e7"
+      },
+      "examples.xml": {
+        "path": "build/runs/windows-dynamic-package-410/examples.xml",
+        "sha256": "4bee2c38150b5c8c248de82f9cb9665e30b7f0e84edb7bb4436c1f42f5a93939"
+      },
+      "terminal-retention.json": {
+        "path": "build/runs/windows-dynamic-package-410/terminal-retention.json",
+        "sha256": "38a2f05d5e232cef43bce9a205c6050a6676e41b0d15fd4c5279fbbde9ca938d"
+      },
+      "post-cleanup.json": {
+        "path": "build/runs/windows-dynamic-package-410/post-cleanup.json",
+        "sha256": "2f9acb453a1a89dd8ff401c5de2284bbe4fc0f733dbd8a9ae2cf286a4403b9e6"
+      }
+    }
+  }
 }

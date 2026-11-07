@@ -1,6 +1,6 @@
 # Dynamic sampler indexing implementation
 
-SHD-01 remains open. The published v2 wheels retain their literal-only sampler
+SHD-01 remains open. The earlier v2 candidate wheels retain their literal-only sampler
 indexing contract. The source work described here is a successor experiment,
 not support attributed to those existing wheel identities.
 
@@ -84,3 +84,26 @@ changes add tests/documentation only. Do not restart its native build for them.
 Linux outputs, multidimensional dynamic selection, broader preprocessor and
 filter/LOD forms, implicit derivative decisions, cumulative independent review
 and successor artifact/profile admission remain open.
+
+## Windows successor wheel observation
+
+`windows-dynamic-package-410` assembles a normal wheel from those same verified
+native outputs using the existing locked backend; it invokes no native build.
+Wheel SHA-256 is
+`ba8a54c5b7ede9387d62ff72b1269602d61c0bdc61c77928ee52a7e37107bf24`,
+with source commit `af6a91ee` and native production identity `9dff8569`.
+Explicit source-version staging and exact source/native/license/RECORD joins pass.
+
+One offline copied installation passes all 75 sampler cases in one process and
+63 upload/shutdown, Tk state/capture and maintained-example cases in their
+separate processes. All 537 installed members match in each child. Sampler
+checks verify 56 loaded module origins; examples verify 172 Python origins.
+The eight-branch Tk and four-branch capture validators pass; all five active
+capture negative controls reject. Tracked shutdown gauges are zero.
+
+The installation and assembly scratch are removed (42,541,359 bytes), with all
+67 retained entries rehashed. The dedicated successor storage profile keeps
+the existing 512 MiB allocation, 20 GiB aggregate cap and 10 GiB reserve. This
+provides local functional evidence on an actual wheel, with no native overlay;
+independent review, strict profile admission and release remain pending. The
+earlier wheels and native-overlay observations retain their original scope.
