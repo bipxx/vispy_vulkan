@@ -331,6 +331,12 @@ class SourceWriter {
         for (char ch : tok.text) if (ch == '\n') map_.push_back(source_line++);
         started_ = false;
     }
+    void generated(const std::string& text) {
+        if (started_) out_ << '\n';
+        out_ << text;
+        for (char ch : text) if (ch == '\n') map_.push_back(0);
+        started_ = false;
+    }
     std::string finish() {
         if (started_) out_ << '\n';
         return out_.str();
@@ -710,6 +716,85 @@ std::vector<bool> global_uniform_references(
     return references;
 }
 
+// Explicit-LOD/fetch selection never introduces implicit derivatives. Keep the
+// existing static resource graph and pass index/coordinates/LOD once to a typed
+// helper. Implicit sampling and opaque helper arguments retain their guards.
+std::string lower_dynamic_explicit_samples(
+        const std::vector<Tok>& tokens, const std::vector<NormSampler>& samplers,
+        const std::vector<bool>& references, std::vector<bool>& skip,
+        std::unordered_map<size_t, std::string>& replacements) {
+    std::unordered_map<std::string, std::vector<const NormSampler*>> arrays;
+    for (const auto& sampler : samplers) {
+        const auto bracket = sampler.name.find('[');
+        if (bracket != std::string::npos && sampler.array_dimensions.size() == 1)
+            arrays[sampler.name.substr(0, bracket)].push_back(&sampler);
+    }
+    std::ostringstream helpers;
+    std::unordered_set<std::string> occupied;
+    for (const auto& token : tokens) {
+        // Directives can introduce macros that would rewrite a generated call
+        // even though its definition precedes the user's source body.
+        if (!token.text.empty() && token.text.front() == '#') {
+            for (const auto& word : tokenize(token.text.substr(1)))
+                if (word.ident) occupied.insert(word.text);
+        } else if (token.ident) occupied.insert(token.text);
+    }
+    size_t ordinal = 0;
+    for (size_t call = 0; call + 1 < tokens.size(); ++call) {
+        if (skip[call] || tokens[call + 1].text != "(") continue;
+        const auto& operation = tokens[call].text;
+        const bool fetch = operation == "texelFetch";
+        if (!fetch && operation != "textureLod" && operation != "texture1DLod" &&
+            operation != "texture2DLod" && operation != "texture3DLod" && operation != "textureCubeLod") continue;
+        size_t close;
+        const auto arguments = argument_ranges(tokens, call + 1, close);
+        if (arguments.size() != 3) continue;
+        const auto [first, last] = arguments[0];
+        if (first + 3 >= last || !references[first] || tokens[first + 1].text != "[" ||
+            tokens[last - 1].text != "]") continue;
+        const auto found = arrays.find(tokens[first].text);
+        if (found == arrays.end()) continue;
+        // Leave literal spelling/range diagnostics to the existing resolver.
+        if ((last == first + 4 && !tokens[first + 2].ident) ||
+                (last == first + 5 && tokens[first + 2].text == "-" &&
+                !tokens[first + 3].ident)) continue;
+        const auto& leaves = found->second;
+        const auto* sample = leaves.front();
+        if (fetch && sample->dim == "cube") continue;
+        int depth = 1;
+        bool nested_array = false;
+        for (size_t part = first + 2; part < last - 1; ++part) {
+            if (tokens[part].text == "[") ++depth;
+            else if (tokens[part].text == "]" && --depth == 0) nested_array = true;
+        }
+        if (nested_array || depth != 1) continue;
+        std::string name;
+        do { name = "vispy_dynamic_sample_" + std::to_string(ordinal++); }
+        while (occupied.contains(name));
+        occupied.insert(name);
+        const std::string result = sampler_prefix(sample->sample_scalar) + "vec4";
+        const std::string coordinate = sample->dim == "1d" ? (fetch ? "int" : "float") :
+            std::string(fetch ? "ivec" : "vec") + (sample->dim == "2d" ? "2" : "3");
+        for (const std::string index_type : {"int", "uint"}) {
+            helpers << result << " " << name << "(" << index_type << " index, " << coordinate
+                    << " coordinate, " << (fetch ? "int" : "float") << " level) { switch(index) {\n";
+            for (size_t leaf = 0; leaf < leaves.size(); ++leaf) {
+                const auto& resource = *leaves[leaf];
+                helpers << "case " << leaf << (index_type == "uint" ? "u" : "") << ": return "
+                        << (fetch ? "texelFetch" : "textureLod") << "(" << sampler_type(resource)
+                        << "(" << sampler_texture_name(resource) << ", " << sampler_sampler_name(resource)
+                        << "), coordinate, level);\n";
+            }
+            // Defined zero for runtime out-of-range selection; no host/resource
+            // indexing and no implicit clamp to another bound texture.
+            helpers << "default: return " << result << "(0); } }\n";
+        }
+        replacements[call] = name;
+        skip[first] = skip[first + 1] = skip[last - 1] = true;
+    }
+    return helpers.str();
+}
+
 std::string emit_body(const std::vector<Tok>& tokens, const std::vector<Decl>& decls,
                       const std::vector<NormUniform>& uniforms,
                       const std::vector<NormSampler>& samplers, bool vertex,
@@ -730,6 +815,8 @@ std::string emit_body(const std::vector<Tok>& tokens, const std::vector<Decl>& d
     const auto array_references = global_uniform_references(tokens, decls, array_names, false);
     std::unordered_map<size_t, std::string> sampler_replacements;
     std::unordered_map<size_t, SamplerReference> sampler_uses;
+    const auto dynamic_helpers = lower_dynamic_explicit_samples(
+        tokens, samplers, array_references, skip, sampler_replacements);
     if (!lower_sampler_functions(tokens, samplers, skip, sampler_replacements, sampler_uses, array_references, error)) return {};
     std::unordered_map<size_t, std::vector<std::string>> suffixes;
     const bool user_isnan = custom_predicate(tokens, "isnan");
@@ -738,6 +825,7 @@ std::string emit_body(const std::vector<Tok>& tokens, const std::vector<Decl>& d
     for (size_t i = 1; i + 1 < tokens.size(); ++i)
         user_sample |= tokens[i].text == "sample" && is_type(tokens[i - 1].text) && tokens[i + 1].text == "(";
     SourceWriter writer(line_map);
+    writer.generated(dynamic_helpers);
     for (size_t i = 0; i < tokens.size(); ++i) {
         if (skip[i]) continue;
         const Tok& tok = tokens[i];

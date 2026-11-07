@@ -1,0 +1,176 @@
+{
+  "schema": 1,
+  "status": "SUCCESSOR_WIP_WINDOWS_NATIVE_AND_RENDERED_ONLY",
+  "checklist_id": "SHD-01",
+  "parent_closed": false,
+  "artifact_admitted": false,
+  "qualified_wheel": false,
+  "native_contracts": 44,
+  "rendered_cases": 47,
+  "new_dynamic_cases": 12,
+  "collision_nested_cases": 3,
+  "regression_cases": 32,
+  "skipped": 0,
+  "base_wheel": {
+    "path": "build/artifacts/5cb463cd5e5c889af8b5c8d605bd6f60fe33d1bbeed521443d4f0966788017f9/vispy-0.17.0+vulkan.2-cp312-cp312-win_amd64.whl",
+    "sha256": "5cb463cd5e5c889af8b5c8d605bd6f60fe33d1bbeed521443d4f0966788017f9"
+  },
+  "native_overlay": [
+    {
+      "member": "vispy/_dawn.cp312-win_amd64.pyd",
+      "file": {
+        "path": "build/artifacts/8b93326abbc14d28fe6743bc3571d5dbb83edb5e75c8c91535294ab5da0398e2/_dawn.cp312-win_amd64.pyd",
+        "sha256": "8b93326abbc14d28fe6743bc3571d5dbb83edb5e75c8c91535294ab5da0398e2"
+      }
+    },
+    {
+      "member": "vispy/visuals/text/_sdf_cpu.cp312-win_amd64.pyd",
+      "file": {
+        "path": "build/artifacts/fd14a55ac02b415ee2b4027a7632cfe23a4b4fc7976f9eb815180c5bc31d849e/_sdf_cpu.cp312-win_amd64.pyd",
+        "sha256": "fd14a55ac02b415ee2b4027a7632cfe23a4b4fc7976f9eb815180c5bc31d849e"
+      }
+    },
+    {
+      "member": "vispy/VkLayer_vispy_submit.dll",
+      "file": {
+        "path": "build/artifacts/050a86a3550aaed01e5a66a15fb44a313af83f816586c2119a7d14f57fb9e37b/VkLayer_vispy_submit.dll",
+        "sha256": "050a86a3550aaed01e5a66a15fb44a313af83f816586c2119a7d14f57fb9e37b"
+      }
+    },
+    {
+      "member": "vispy/VkLayer_vispy_submit.json",
+      "file": {
+        "path": "build/artifacts/7323cea73a46efcba615ca452d2b0235e3741109628c4bf2979c105e6ae69d56/VkLayer_vispy_submit.json",
+        "sha256": "7323cea73a46efcba615ca452d2b0235e3741109628c4bf2979c105e6ae69d56"
+      }
+    }
+  ],
+  "source_hashes": {
+    "tests/shaders/test_dynamic_explicit_sampler_arrays.py": "1f0531a2caa168c391ee02117e050c0fa6407093048d566b81a61f4fb3ad460a",
+    "tests/shaders/test_multidimensional_sampler_arrays.py": "b6418ed8e0e8eb41e3ff631dc751b8c14c6b6f255608e8d3d872ac1837fe820b",
+    "tests/shaders/test_sampler_array_boundaries.py": "ec65ee3a1881abdf016713b6d6204065e3e8b48ef6baab63ab3f751d0ecd1707",
+    "tests/shaders/test_sampler_arrays.py": "b1f3c131685f43cf6b4af38ddcab5d96f10e4f3dbc70dd4f2b9bee7648f92fe8",
+    "tools/immediate_state_wheel_smoke.py": "16a8dab36497a8321b7ba3acf3a40cba18d9285c8bf305f891c654a8747afd3e"
+  },
+  "shutdown_gauges": {
+    "pending_tickets": 0,
+    "queued_frames": 0,
+    "live_buffer_bytes": 0,
+    "live_cpu_buffer_bytes": 0,
+    "live_texture_bytes": 0,
+    "canvas_texture_bytes": 0,
+    "transient_buffer_bytes": 0,
+    "line_resource_pool_busy_slots": 0,
+    "line_resource_pool_bytes": 0,
+    "host_import_pinned_bytes": 0
+  },
+  "device": {
+    "backend": "Vulkan",
+    "adapter_type": "discrete",
+    "vendor": "nvidia",
+    "device": "NVIDIA GeForce RTX 4090",
+    "driver": "NVIDIA: 610.88 610.88.0.0",
+    "vendor_id": 4318,
+    "device_id": 9860,
+    "max_texture_dimension_1d": 32768,
+    "max_texture_dimension_2d": 32768,
+    "max_texture_dimension_3d": 16384,
+    "max_vertex_attributes": 30,
+    "max_vertex_buffers": 8,
+    "max_vertex_buffer_array_stride": 2048,
+    "max_storage_buffers_per_shader_stage": 16,
+    "max_uniform_buffers_per_shader_stage": 12,
+    "max_inter_stage_shader_variables": 30,
+    "max_storage_buffer_binding_size": 2147483644,
+    "max_bindings_per_bind_group": 1000,
+    "max_compute_invocations_per_workgroup": 1024,
+    "max_compute_workgroup_size_x": 1024,
+    "max_compute_workgroups_per_dimension": 65535,
+    "max_point_vertex_attributes": 30,
+    "core_features_and_limits": true,
+    "point_input_limit_scope": "all active user point inputs share one vertex buffer; exact vertex/instance identities use read-only vertex storage without reserving a user attribute; actual granted attribute/stride/storage/allocation limits apply",
+    "max_samplers_per_shader_stage": 16,
+    "max_sampled_textures_per_shader_stage": 48,
+    "max_buffer_size": 1099511627776,
+    "max_uniform_buffer_binding_size": 65536,
+    "software": false,
+    "float32_filterable": true,
+    "unorm16_texture_formats": true,
+    "bresenham_lines": true,
+    "last_vertex_provoking": true,
+    "timestamp_query": true,
+    "timestamp_quantization_ns": 65536,
+    "host_mapped_pointer": true,
+    "host_import_limit": 536870912,
+    "depth_stencil_storage": "depth24_unorm_stencil8",
+    "ok": true,
+    "error": "",
+    "loss_count": 0,
+    "revision": "117b054598f4758b598f4b8f48feea48c11fe7b0+dawn-499e5c6ff9b37d5de70c6493fb74c251e0d35c1c"
+  },
+  "evidence": {
+    "dynamic-sampler-native-402": {
+      "native-validation.json": {
+        "path": "build/runs/dynamic-sampler-native-402/native-validation.json",
+        "sha256": "e1fa490d38c70aa4350d24c2215a918ead6d5e05df27260a61d9301d282f5164"
+      },
+      "runtime-inputs.json": {
+        "path": "build/runs/dynamic-sampler-native-402/runtime-inputs.json",
+        "sha256": "f0f7a5d29288de7e660a438e9cf9ee272e5a423930cb9db75eeb50bcb35c18a3"
+      },
+      "source-before.json": {
+        "path": "build/runs/dynamic-sampler-native-402/source-before.json",
+        "sha256": "7a8dbe532238447fa9d65299c8e6aa3e68e29dfd8729865579fd74d386ae6651"
+      },
+      "source-after.json": {
+        "path": "build/runs/dynamic-sampler-native-402/source-after.json",
+        "sha256": "7a8dbe532238447fa9d65299c8e6aa3e68e29dfd8729865579fd74d386ae6651"
+      },
+      "ctest.xml": {
+        "path": "build/runs/dynamic-sampler-native-402/ctest.xml",
+        "sha256": "a456b0af9e271bfc8ee50e0c61406b009907fff8d3785a09eda577f6be2306f2"
+      },
+      "terminal-retention.json": {
+        "path": "build/runs/dynamic-sampler-native-402/terminal-retention.json",
+        "sha256": "8e36d5c38821f1e72987adfe05a52bf101907ad043a0fb4171a7d2342a6360fa"
+      },
+      "post-cleanup.json": {
+        "path": "build/runs/dynamic-sampler-native-402/post-cleanup.json",
+        "sha256": "d90b188735a008f45ebd6b8e07d7b04a946450c9de9c7d89cc090def388ecc08"
+      }
+    },
+    "dynamic-sampler-rendered-403": {
+      "verification.json": {
+        "path": "build/runs/dynamic-sampler-rendered-403/verification.json",
+        "sha256": "fba7bbbbd19b24bcbf2cac50e796296d1aeb265b4a29154682effddae4a0114b"
+      },
+      "input-result.json": {
+        "path": "build/runs/dynamic-sampler-rendered-403/input-result.json",
+        "sha256": "e9df781a0f2be0e6be9e52efb0634bc964bce8d4656bd6720f345cb8be6008a5"
+      },
+      "inputs.xml": {
+        "path": "build/runs/dynamic-sampler-rendered-403/inputs.xml",
+        "sha256": "5b91bb76704f42863d56859a10f4a7c6024bfd6690297ece0330a79e1a257156"
+      },
+      "native-overlay.json": {
+        "path": "build/runs/dynamic-sampler-rendered-403/native-overlay.json",
+        "sha256": "0e5255320773f83074bf775f334084fa64729f33b01981b4bef331c30490eef8"
+      },
+      "terminal-retention.json": {
+        "path": "build/runs/dynamic-sampler-rendered-403/terminal-retention.json",
+        "sha256": "1031a3ac759e98dbba5c843ec88c57e0bdd5433b29c42acee4bc59fcfef14209"
+      },
+      "post-cleanup.json": {
+        "path": "build/runs/dynamic-sampler-rendered-403/post-cleanup.json",
+        "sha256": "094eedbc6a510cc47c8ca521a67988b59a6fb27824a95383e5b331365de714f8"
+      }
+    }
+  },
+  "remaining": [
+    "Linux verification",
+    "stage/dimension/LOD/limit breadth",
+    "implicit-derivative decisions",
+    "independent review",
+    "successor packaging and profile admission"
+  ]
+}

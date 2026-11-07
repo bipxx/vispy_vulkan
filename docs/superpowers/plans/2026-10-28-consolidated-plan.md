@@ -43,6 +43,16 @@ unmodified scientific hosts, napari first, run on it with practical parity.
 
 ## Where things stand
 
+2026-11-07 successor implementation WIP: direct explicit LOD/fetch selection
+for one-dimensional sampler arrays is being implemented and tested. It keeps
+static resource bindings, typed index dispatch and single argument evaluation;
+current v2 wheel observations remain literal-only. All 44 Windows native
+contracts and 47 native-overlay rendered/compiler cases pass, including
+declaration/macro collision and nested-call controls. Ten shutdown gauges are
+zero. Linux verification, limit controls and broader stage/dimension coverage precede successor
+packaging. Implicit derivatives retain their guard and require a separate
+decision. See the [implementation detail](../../dynamic-sampler-indexing.md).
+
 2026-11-07 sampler checkpoint: 32 literal-array/diagnostic cases pass on both
 current installed wheels. Six sampler families, up to three literal dimensions,
 rebinding and selected queued/loss paths now have exact installed observations.

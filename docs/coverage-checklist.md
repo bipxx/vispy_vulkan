@@ -643,6 +643,14 @@ preserved. Required acceptance detail: SH-1–SH-5 in the
 
 - [ ] **SHD-01 — Dynamic sampler arrays / SH-1:** supported sampler families, lengths,
   constant/runtime indices, uniform/divergent indexing, limits, rebinding and LOD.
+  **Successor WIP:** direct explicit LOD/fetch selection over one-dimensional
+  arrays now has source lowering and analytic regressions. Current v2 wheels
+  remain literal-only. All 44 successor Windows native contracts pass. A Windows
+  native-overlay experiment passes 12 dynamic cases, three rendered declaration/
+  macro/nested-call controls and 32 existing regressions, with ten zero shutdown
+  gauges. Linux verification, broader stage/dimension/limit controls,
+  implicit-derivative decisions and successor admission remain pending.
+  [Implementation and remaining work](dynamic-sampler-indexing.md).
 - [x] **SHD-01-LITERAL — Finite installed literal sampler-array scope:**
   32 cases pass without skips on each current Windows/WSL v2 wheel. Six sampler
   families and one/two/three-dimensional literal shapes render independent
@@ -855,6 +863,8 @@ exit condition is satisfied. Optional or deferred items are selected by need.
 
 | Date | Change | Evidence |
 | --- | --- | --- |
+| 2026-11-07 | Dynamic explicit sampler selection passes all 44 Windows native contracts and 47 native-overlay cases, including declaration/macro/nested-call controls. Added collision-safe names and a portable shader identity marker; ten shutdown gauges zero. | `dynamic-sampler-indexing.md`; SHD-01 stays open for Linux, breadth/limits, independent review and successor admission. |
+| 2026-11-07 | Recorded finite installed event, Tk input, reversed-depth and literal sampler-array acceptance on both exact current v2 wheels. All scratch targets cleaned; broader parent claims remain separate. | `compat/api-acceptance/` packets and their exact source/wheel/evidence joins. |
 | 2026-11-07 | Added source-bound successor version support to the archive core without changing v1 defaults or source package version. 53 cases and four real archive compatibility checks pass; remaining caller audit is explicit. | `package-version-333/verification.json`; FIX-06-VERSION remains open. |
 | 2026-11-07 | Fixed successor RECORD handling in pure-source repackaging; source-bound main CI/Linux producer version checks. 47 repackager and 126 related cases pass. No new build, environment or scratch; remaining callers/version freeze are pending. | `package-callers-334/verification.json`; FIX-06-VERSION remains open. |
 | 2026-11-07 | Selected v2 metadata consistently, audited remaining version literals and updated required oracle/installation checks. 128 source cases pass. Linux protocol controls: 85 pass, one stale record refusal; both historical real producers validate. Guest scratch cleaned. | `successor-version-335`, `version-protocol-336`; Git freeze/final qualification pending. |
