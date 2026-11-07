@@ -643,6 +643,17 @@ preserved. Required acceptance detail: SH-1–SH-5 in the
 
 - [ ] **SHD-01 — Dynamic sampler arrays / SH-1:** supported sampler families, lengths,
   constant/runtime indices, uniform/divergent indexing, limits, rebinding and LOD.
+- [x] **SHD-01-LITERAL — Finite installed literal sampler-array scope:**
+  32 cases pass without skips on each current Windows/WSL v2 wheel. Six sampler
+  families and one/two/three-dimensional literal shapes render independent
+  values after rebinding; selected queued revision/deletion and device-loss
+  recovery cases pass. Eight new direct/helper diagnostics distinguish dynamic
+  uniform/divergent indices, negative indices and out-of-range literals, then
+  compile a valid shader after each refusal. All 537 installed members and
+  loaded origins match; ten shutdown gauges are zero. Scratch targets removed.
+  [Exact scope and evidence](../compat/api-acceptance/sampler-arrays-v1.json).
+  Dynamic indexing, broader filtering/LOD, resource-limit and all-family loss
+  coverage remain open under SHD-01; this does not admit a strict profile.
 - [ ] **SHD-02 — Multidimensional arrays / SH-2:** supported storage/interface classes,
   indexing, partial updates, invalid shapes, reflection and cache identity.
 - [ ] **SHD-03 — Matrix/array attributes / SH-3:** locations, column order, stride,

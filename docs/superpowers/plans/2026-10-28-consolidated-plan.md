@@ -43,6 +43,21 @@ unmodified scientific hosts, napari first, run on it with practical parity.
 
 ## Where things stand
 
+2026-11-07 sampler checkpoint: 32 literal-array/diagnostic cases pass on both
+current installed wheels. Six sampler families, up to three literal dimensions,
+rebinding and selected queued/loss paths now have exact installed observations.
+Eight new compiler-boundary cases preserve uniform/divergent dynamic-index
+refusals and recovery. See the [sampler packet](../../../compat/api-acceptance/sampler-arrays-v1.json).
+SHD-01 remains open: dynamic indexing needs a resource-selection lowering with
+explicit derivative/uniformity decisions, real index/binding limits and LOD
+outputs. Extend the existing resource graph in `cpp/shader/normalize.cpp`;
+do not merely relax its literal-index guard. Keep literal and helper paths,
+reflection, shader identity and device-loss reconstruction under regression.
+Uniform versus divergent indexing and implicit derivatives versus explicit LOD
+must receive separate tests and support/refusal decisions before promotion.
+Both current test targets are cleaned; no new wheel or native build was needed.
+
+
 2026-11-07 reversed-depth checkpoint: STA-02's finite installed-proof action is
 closed. All 30 analytic color/depth cases pass on both current v2 wheels,
 including ordinary/explicit-depth device-loss recovery. Both processes verify
