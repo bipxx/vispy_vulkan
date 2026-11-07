@@ -1,0 +1,153 @@
+{
+  "schema": 1,
+  "status": "FINITE_WINDOWS_INSTALLED_UNIFORM_ARRAY_ACCEPTANCE",
+  "checklist_id": "SHD-02",
+  "parent_closed": false,
+  "wheel": {
+    "path": "build/artifacts/ba8a54c5b7ede9387d62ff72b1269602d61c0bdc61c77928ee52a7e37107bf24/vispy-0.17.0+vulkan.2-cp312-cp312-win_amd64.whl",
+    "sha256": "ba8a54c5b7ede9387d62ff72b1269602d61c0bdc61c77928ee52a7e37107bf24"
+  },
+  "source_hashes": {
+    "tests/shaders/test_composed_uniform_arrays.py": "5b4b6dba43c80def637b9cc85d0522aba1d96378c7543beaa1fd9ef384109d2a",
+    "tests/shaders/test_program_array_shapes.py": "93dac540bb3bbba47fde667aa7ed3da08294f56585d5e132e47fdcb70fae50dc",
+    "tests/shaders/test_variable_arrays.py": "f8f2641b7dbd3b5c415bdf8da18896add3dd875a07cf26373e91ef6898e7b7c4",
+    "tools/immediate_state_wheel_smoke.py": "16a8dab36497a8321b7ba3acf3a40cba18d9285c8bf305f891c654a8747afd3e"
+  },
+  "test_targets": [
+    "tests/shaders/test_program_array_shapes.py",
+    "tests/shaders/test_variable_arrays.py",
+    "tests/shaders/test_composed_uniform_arrays.py"
+  ],
+  "cases": 120,
+  "cpu_cases": 72,
+  "rendered_cases": 48,
+  "skipped": 0,
+  "installed_members_verified": 537,
+  "loaded_vispy_modules": 151,
+  "device": {
+    "backend": "Vulkan",
+    "adapter_type": "discrete",
+    "vendor": "nvidia",
+    "device": "NVIDIA GeForce RTX 4090",
+    "driver": "NVIDIA: 610.88 610.88.0.0",
+    "vendor_id": 4318,
+    "device_id": 9860,
+    "max_texture_dimension_1d": 32768,
+    "max_texture_dimension_2d": 32768,
+    "max_texture_dimension_3d": 16384,
+    "max_vertex_attributes": 30,
+    "max_vertex_buffers": 8,
+    "max_vertex_buffer_array_stride": 2048,
+    "max_storage_buffers_per_shader_stage": 16,
+    "max_uniform_buffers_per_shader_stage": 12,
+    "max_inter_stage_shader_variables": 30,
+    "max_storage_buffer_binding_size": 2147483644,
+    "max_bindings_per_bind_group": 1000,
+    "max_compute_invocations_per_workgroup": 1024,
+    "max_compute_workgroup_size_x": 1024,
+    "max_compute_workgroups_per_dimension": 65535,
+    "max_point_vertex_attributes": 30,
+    "core_features_and_limits": true,
+    "point_input_limit_scope": "all active user point inputs share one vertex buffer; exact vertex/instance identities use read-only vertex storage without reserving a user attribute; actual granted attribute/stride/storage/allocation limits apply",
+    "max_samplers_per_shader_stage": 16,
+    "max_sampled_textures_per_shader_stage": 48,
+    "max_buffer_size": 1099511627776,
+    "max_uniform_buffer_binding_size": 65536,
+    "software": false,
+    "float32_filterable": true,
+    "unorm16_texture_formats": true,
+    "bresenham_lines": true,
+    "last_vertex_provoking": true,
+    "timestamp_query": true,
+    "timestamp_quantization_ns": 65536,
+    "host_mapped_pointer": true,
+    "host_import_limit": 536870912,
+    "depth_stencil_storage": "depth24_unorm_stencil8",
+    "ok": true,
+    "error": "",
+    "loss_count": 0,
+    "revision": "117b054598f4758b598f4b8f48feea48c11fe7b0+dawn-499e5c6ff9b37d5de70c6493fb74c251e0d35c1c"
+  },
+  "shutdown_gauges": {
+    "pending_tickets": 0,
+    "queued_frames": 0,
+    "live_buffer_bytes": 0,
+    "live_cpu_buffer_bytes": 0,
+    "live_texture_bytes": 0,
+    "canvas_texture_bytes": 0,
+    "transient_buffer_bytes": 0,
+    "line_resource_pool_busy_slots": 0,
+    "line_resource_pool_bytes": 0,
+    "host_import_pinned_bytes": 0
+  },
+  "evidence": {
+    "verification.json": {
+      "path": "build/runs/uniform-installed-windows-412/verification.json",
+      "sha256": "a1c32d33a9933c108d8257d14e395cdb9f95b31f2d0c4256045184ce471cb8b4"
+    },
+    "input-result.json": {
+      "path": "build/runs/uniform-installed-windows-412/input-result.json",
+      "sha256": "4c49b4ed42591ae7dc4ad28a918c04a0cbbc21945b17922e89b27a82f9f53f3f"
+    },
+    "inputs.xml": {
+      "path": "build/runs/uniform-installed-windows-412/inputs.xml",
+      "sha256": "c3e7f4f8986c0fa07fa689077502c62061da9e98e14627e052afe37952573e05"
+    },
+    "test-source-and-licenses.zip": {
+      "path": "build/runs/uniform-installed-windows-412/test-source-and-licenses.zip",
+      "sha256": "92e4e80627ea510905522ed3fa73515e91a37ae049b1ed25d5b118ecc142155d"
+    },
+    "terminal-retention.json": {
+      "path": "build/runs/uniform-installed-windows-412/terminal-retention.json",
+      "sha256": "e15a12bf3285475b259bf97a23e1f6566e664924bf07e82e71f2559865f2d6bf"
+    },
+    "post-cleanup.json": {
+      "path": "build/runs/uniform-installed-windows-412/post-cleanup.json",
+      "sha256": "4cfe0fe88eac75dfd1b7ed6c13dc0c15005f3e2ad94f4cf19ac438436c3c8958"
+    }
+  },
+  "rendered_types": [
+    "float",
+    "int",
+    "bool",
+    "vec3",
+    "bvec3",
+    "mat2",
+    "mat2x3",
+    "mat4x2"
+  ],
+  "rendered_shapes": [
+    [
+      3
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      2,
+      2,
+      3
+    ]
+  ],
+  "rendered_topologies": [
+    "triangles",
+    "lines"
+  ],
+  "cpu_scope": [
+    "whole/subarray/leaf uploads and public variable metadata",
+    "invalid shapes/types preserve prior uploads",
+    "shader replacement and ordered cache replay",
+    "composition names, independent equal-product shapes and update state",
+    "varying declarations preserve interface metadata without becoming assignable uniforms"
+  ],
+  "remaining": [
+    "Linux installed verification",
+    "other storage/interface classes",
+    "additional types/shapes and linked reflection breadth",
+    "independent review and profile admission"
+  ],
+  "artifact_admitted": false,
+  "native_build": false,
+  "new_environment": false
+}

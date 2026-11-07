@@ -43,6 +43,15 @@ unmodified scientific hosts, napari first, run on it with practical parity.
 
 ## Where things stand
 
+2026-11-07 uniform checkpoint: Windows wheel `ba8a54c5` passes 120 finite
+uniform-array cases (72 CPU, 48 rendered), with exact installed origins, zero
+shutdown gauges and cleaned scratch. SHD-02 remains open beyond that subset.
+Linux native CI `42381467559` completed successfully on source `f7d21c31`;
+import the exact retained artifact and verify installed sampler/uniform cases
+next. Do not restart its native build for subsequent test/documentation changes.
+See [uniform acceptance](../../uniform-array-acceptance.md).
+
+
 2026-11-07 Windows successor wheel checkpoint: wheel `ba8a54c5` assembles the
 existing verified dynamic-sampler native outputs with no compilation. Exact
 source/native/license/RECORD joins pass. A normal offline installation passes

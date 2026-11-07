@@ -676,6 +676,14 @@ preserved. Required acceptance detail: SH-1–SH-5 in the
   coverage remain open under SHD-01; this does not admit a strict profile.
 - [ ] **SHD-02 — Multidimensional arrays / SH-2:** supported storage/interface classes,
   indexing, partial updates, invalid shapes, reflection and cache identity.
+- [x] **SHD-02-UNIFORM-WIN — Finite installed numeric uniform arrays:**
+  120 cases pass on Windows wheel `ba8a54c5`: 72 CPU shape/upload/composition
+  cases and 48 rendered cases spanning eight numeric types, three shapes and
+  triangle/line routes. All 537 members and 151 loaded origins match; ten
+  shutdown gauges are zero. Scratch is removed and evidence rehashed.
+  [Exact scope and boundaries](uniform-array-acceptance.md). Linux installed
+  verification, broader storage/interface classes and profile admission remain
+  open under SHD-02; public interface metadata is not blanket GPU reflection.
 - [ ] **SHD-03 — Matrix/array attributes / SH-3:** locations, column order, stride,
   offsets, divisors, constants, instancing, mutations and input-limit errors.
 - [ ] **SHD-04 — Geometry consumers / SH-4:** bound supported compute/instanced
@@ -875,6 +883,7 @@ exit condition is satisfied. Optional or deferred items are selected by need.
 
 | Date | Change | Evidence |
 | --- | --- | --- |
+| 2026-11-07 | Recorded finite installed Windows uniform-array acceptance: 120 cases (72 CPU + 48 rendered), exact origins and zero gauges; scratch cleaned. Linux native CI completed, artifact/installed checks pending. | `uniform-arrays-windows-v1.json`; SHD-02 broader scope remains open. |
 | 2026-11-07 | Assembled the dynamic sampler Windows successor wheel from retained native outputs; 138 installed cases pass (75 sampler + 63 lifecycle/state/examples), with capture controls and zero gauges. No native build or new environment. | Wheel `ba8a54c5`; `windows-dynamic-package-410`, strict cleanup complete. |
 | 2026-11-07 | Added 20 dimension/stage/index, two actual binding-limit refusal/recovery and six single-level LOD/filter/evaluation cases. All pass using the existing Windows native module; 75 distinct cases across three retained runs. | `dynamic-explicit-samplers-wip.json`; Linux CI continues on unchanged native source. |
 | 2026-11-07 | Dynamic explicit sampler selection passes all 44 Windows native contracts and 47 native-overlay cases, including declaration/macro/nested-call controls. Added collision-safe names and a portable shader identity marker; ten shutdown gauges zero. | `dynamic-sampler-indexing.md`; SHD-01 stays open for Linux, breadth/limits, independent review and successor admission. |
