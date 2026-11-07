@@ -82,10 +82,19 @@ verified, 37 generated visual aliases recorded, and 15 existing CPU cases pass
 without skips on each platform. CPU probes confirm the factory, ViewBox and Grid
 boundaries without importing the GPU module or creating a GUI object. Preserve
 the initial WSL file-capture failure and successful sys-capture retry separately.
-The canonical 142-parent inventory remains unreviewed as a whole; API-04 through
-API-06 and current installed-artifact/CI/publication work remain open. Complete
-the remaining visual/source review before batching public documentation fixes
-and any necessary pure-member assembly; another native build is not warranted.
+API-04's [76-parent visual review](../../visual-coverage-review.md) now accounts
+for 39 visuals, 14 filters, nine shader helpers and 14 transform helpers. All 143
+recorded source files match `786079e8`; four upstream pins verify. Fifty-one
+existing CPU cases pass without skips per platform, with no GPU module or GUI
+object. Picking-byte, clipping-bounds and Alpha probes remain CPU evidence;
+actual native shader compilation/rendering retains its own acceptance work.
+The canonical 142-parent inventory remains unreviewed as a whole. All four
+namespace parent reviews are complete at their stated source scope; API-05/06
+method/example/event reconciliation and selected installed acceptance remain
+open, alongside current qualification/CI/publication. Next batch the three stale
+public descriptions (visuals, widgets, ViewBox default camera) with that
+reconciliation before necessary pure-member assembly; no native rebuild is
+warranted by documentation changes.
 
 The development checkpoints below retain their pre-release status. The table
 after them summarizes the current published release.
