@@ -68,7 +68,27 @@ measured gauges to zero. A single offline installed target serves all checks;
 there is no native rebuild or new environment. Candidate records, strict
 observer/absence gates, mandatory profile qualification and publication remain
 pending; the local functional results are not a substitute for those gates.
-Windows production awaits C: capacity.
+The Windows storage/producer blocker is now closed at local native-proof scope.
+The hash-bound `windows-native-secondary-v1` profile retains the 768 MiB leaf
+allocation, shared 20 GiB cap and 10 GiB reserve while selecting D: for scratch,
+TEMP/TMP, build/test outputs and retained artifacts. All original C: source,
+SDK, prepared interpreter/compiler and dependency origins stay unchanged.
+The source/write-path audit verifies 133 compiler/harness inputs against
+`982ceb83`; all 44 native contracts, before/after source/SDK/tool identities and
+cache/project/command/output joins pass. The original native source archive and
+notices are reused by hash. Strict cleanup removes 277,648,912 bytes and rehashes
+145 retained entries. [Windows proof](../../../build/runs/windows-secondary-native-374/external-evidence.json).
+All 21 new storage controls pass on both Windows and WSL. The complete module
+records 74 passes/two stale-v1-record failures per platform; the original
+verifier/schema/tests reproduce both failures with 53 passes. An actual retained
+legacy native proof still produces the identical validation result.
+[Comparison](../../../build/runs/native-storage-baseline-373/external-evidence.json).
+Next, assemble and verify the current Windows v2 wheel from this leaf, then
+implement formal cross-store reference admission with the original source/SDK
+origins and independent review bindings preserved. Renew successor records and
+strict/profile/CI evidence afterward; no old record is repinned to imply a pass.
+C: native allocation remains stopped. Native proof does not grant wheel,
+candidate, hardware or release admission.
 New scratch/evidence uses the
 registered D: workspace with inherited protection/block lists; pinned C: inputs
 remain in place. API-01's [25-parent application review](../../application-coverage-review.md)

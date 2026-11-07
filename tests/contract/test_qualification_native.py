@@ -263,3 +263,108 @@ def test_cmake_internal_cache_drive_letter_preserves_exact_directory(directory, 
     else:
         with pytest.raises(qn.InventoryError, match='CMAKE_CACHEFILE_DIR'):
             qn.validate_proofs(*args)
+
+
+@pytest.fixture
+def secondary_case(tmp_path_factory):
+    """Real schema/profile files in plain owned directories; no tmp_path aliases."""
+    import json
+    import uuid
+    root = tmp_path_factory.getbasetemp() / ('native-storage-' + uuid.uuid4().hex)
+    (root / 'compat/build-profiles').mkdir(parents=True)
+    (root / qn.SCHEMA).write_bytes((qn.ROOT / qn.SCHEMA).read_bytes())
+    profile = qn.read_json(qn.ROOT / qn.STORAGE_PROFILE)
+    profile.update(source_workspace='C:/source', storage_workspace='D:/managed',
+                   sdk_origin='C:/source/build/native-sdk/windows-x64-release-3')
+    profile_path = root / qn.STORAGE_PROFILE
+    profile_path.write_text(json.dumps(profile, indent=2) + '\n', encoding='utf-8')
+    args = list(sample())
+    recipe, raw = args[:2]
+    recipe['storage_profile'] = {'path': qn.STORAGE_PROFILE, 'sha256': qn.sha(profile_path.read_bytes())}
+    raw['locations'].update(build='D:/managed/build/work/unit-only/native',
+                            ctest_output='D:/managed/build/work/unit-only/ctest.xml',
+                            sdk=profile['sdk_origin'])
+    def reseal():
+        raw['recipe_sha256'] = qn.recipe_digest(recipe)
+        args[5] = args[6] = ('\r\n'.join(name + ':STRING=' + value for name, value in
+                             qn.cache_policy(recipe, args[7], raw['locations']).items()) + '\r\n').encode()
+        raw['cache_before_sha256'] = raw['cache_after_sha256'] = qn.sha(args[5])
+        for command in raw['commands']:
+            command['argv'] = qn.commands(recipe, args[7], raw['locations'])[command['phase']]
+    reseal()
+    return root, profile, profile_path, args, reseal
+
+
+def test_hash_bound_secondary_storage_preserves_source_sdk_commands_and_non_admission(secondary_case):
+    root, profile, path, args, reseal = secondary_case
+    result = qn.validate_proofs(*args, root=root)
+    assert result['native_build_verified'] and not result['artifact_admitted']
+    assert not result['hardware_qualified']
+    assert args[1]['locations']['source'] == 'C:/source'
+    assert args[1]['locations']['sdk'] == profile['sdk_origin']
+    assert args[1]['commands'][1]['argv'][1:5] == [
+        '-S', 'C:/source', '-B', 'D:/managed/build/work/unit-only/native']
+
+
+def test_legacy_recipe_cannot_reseal_a_secondary_drive_without_policy(secondary_case):
+    root, profile, path, args, reseal = secondary_case
+    del args[0]['storage_profile']
+    reseal()
+    with pytest.raises(qn.InventoryError, match='one managed scratch run'):
+        qn.validate_proofs(*args, root=root)
+
+
+def test_secondary_storage_profile_bytes_must_match_recipe(secondary_case):
+    root, profile, path, args, reseal = secondary_case
+    path.write_bytes(path.read_bytes() + b' ')
+    with pytest.raises(qn.InventoryError, match='changed evidence'):
+        qn.validate_proofs(*args, root=root)
+
+
+@pytest.mark.parametrize('change', ['source', 'sdk', 'drive', 'root', 'ctest-run', 'parent'])
+def test_resealed_secondary_locations_cannot_change_bound_inputs_or_escape_run(secondary_case, change):
+    root, profile, path, args, reseal = secondary_case
+    locations = args[1]['locations']
+    if change == 'source':
+        locations['source'] = 'C:/another-source'
+    elif change == 'sdk':
+        locations['sdk'] = 'D:/copied-sdk'
+    elif change == 'drive':
+        locations['build'] = 'E:/managed/build/work/unit-only/native'
+    elif change == 'root':
+        locations['build'] = 'D:/other/build/work/unit-only/native'
+    elif change == 'ctest-run':
+        locations['ctest_output'] = 'D:/managed/build/work/other/ctest.xml'
+    else:
+        locations['build'] = 'D:/managed/build/work/unit-only/../native'
+    reseal()
+    with pytest.raises(qn.InventoryError):
+        qn.validate_proofs(*args, root=root)
+
+
+@pytest.mark.parametrize('field,value', [
+    ('min_free_bytes', 0), ('aggregate_max_scratch_bytes', 21474836481),
+    ('expected_peak_bytes', 1073741824), ('expected_peak_bytes', True),
+    ('owner', 'another-owner'), ('unreviewed', 'field'),
+    ('source_workspace', 'source'), ('storage_workspace', 'D:/managed/../other'),
+    ('storage_workspace', '//server/share/managed'),
+    ('storage_workspace', 'C:/source/build/other'),
+    ('sdk_origin', 'D:/copied-sdk'),
+])
+def test_resealed_storage_policy_cannot_waive_limits_paths_or_sdk(secondary_case, field, value):
+    import json
+    root, profile, path, args, reseal = secondary_case
+    profile[field] = value
+    path.write_text(json.dumps(profile, indent=2) + '\n', encoding='utf-8')
+    args[0]['storage_profile']['sha256'] = qn.sha(path.read_bytes())
+    reseal()
+    with pytest.raises(qn.InventoryError):
+        qn.validate_proofs(*args, root=root)
+
+
+def test_secondary_recipe_cannot_select_an_arbitrary_profile_file(secondary_case):
+    root, profile, path, args, reseal = secondary_case
+    args[0]['storage_profile']['path'] = 'compat/build-profiles/unreviewed.json'
+    reseal()
+    with pytest.raises(qn.InventoryError, match='wrong constant'):
+        qn.validate_proofs(*args, root=root)

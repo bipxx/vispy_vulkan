@@ -154,6 +154,35 @@ once. Branch references and shared environments can look large in naive totals
 while offering almost no reclaimable disk space. Do not create another large
 backup of already-retained data merely to report cleanup.
 
+## Windows native leaf on secondary storage
+
+The versioned
+[`windows-native-secondary-v1` profile](../compat/build-profiles/windows-native-secondary-v1.json)
+places an SDK-linked Windows leaf in the coordinator's registered D: workspace.
+It keeps the existing 768 MiB additional allocation, shared 20 GiB scratch cap
+and 10 GiB reserve. The source workspace, original SDK, prepared Python/compiler
+and immutable dependency origins remain on C:. This permits no SDK rebuild,
+environment installation, source-history clone or change to an identity-pinned
+origin. Set TEMP/TMP before launching the producer; CMake, compiler, CTest and
+retained output paths must all use the selected D: run/store.
+
+The optional recipe `storage_profile` reference binds the exact profile bytes
+into the recipe digest and its existing independent review edge. Legacy recipes
+retain their original source-workspace scratch rule. A selected profile must
+bind canonical, separate local-drive roots and the original SDK location;
+source/cache/project/command joins, all required native tests and shipping
+output checks remain mandatory. An admitted v1 profile is immutable; changed
+policy needs a successor. Live guards tolerate only files disappearing during
+sampling; other I/O errors stop the owned child. Terminal cleanup still uses
+the unchanged strict snapshot and inherited protected/blocked registry.
+
+This profile establishes storage placement for local native proof. Formal
+candidate records still require their own admitted reference resolution and
+review bindings. A passing native proof on D: does not establish cross-store
+admission, current installed-wheel qualification, strict profile coverage or
+release promotion. Retain the original native source archive and notices by
+hash rather than copying its contents into another run.
+
 ## Local R2 Linux native profile
 
 Local R2 Linux integration uses the explicit

@@ -313,6 +313,26 @@ Authority: [capture coverage map](../compat/candidates/tk-capture-1/coverage.jso
     New allocations on C: remain stopped. D: has spare capacity, but using it
     first requires an exact source/origin/proof-path audit; pinned inputs and
     rejected cleanup targets must remain untouched.
+    **Windows storage/producer recovery, 2026-11-07:** completed the source and
+    write-path audit and a fresh SDK-linked leaf under the hash-bound
+    `windows-native-secondary-v1` profile. Source, prepared Python/compiler,
+    original SDK and dependency origins stayed on C:; scratch and retained
+    outputs used D:. All 44 native contracts passed without skips. All 133
+    compiler/harness inputs matched source `982ceb83` before and after; cache,
+    project, command and shipping-output joins passed, as did SDK/tool identity
+    checks. No SDK/environment rebuild or install was needed.
+    The 768 MiB allocation and shared 20 GiB/10 GiB limits are unchanged.
+    Strict cleanup removed 277,648,912 bytes and rehashed 145 retained entries.
+    [Native proof and cleanup](../build/runs/windows-secondary-native-374/external-evidence.json).
+    The verifier's 21 new storage controls pass on Windows and WSL. Each current
+    module run has 74 passes and the same two stale-v1-record failures; the old
+    verifier/schema/tests reproduce those failures with 53 passes. The retained
+    original Windows native proof still validates identically. This is not an
+    overall source-suite pass or independent review.
+    [Baseline comparison](../build/runs/native-storage-baseline-373/external-evidence.json).
+    The Windows native producer/storage-path blocker is closed at local proof
+    scope. Current Windows v2 packaging/installed checks and formal cross-store
+    provenance admission remain open, as do successor records and strict gates.
     **Recovery, 2026-11-07:** selected fresh managed storage on D: under the same
     20 GiB/10 GiB policy, inheriting every protected/blocked path. Recovered all
     40 original Linux failure-artifact members. Ninja removed a temporary `.o.d`
@@ -333,8 +353,8 @@ Authority: [capture coverage map](../compat/candidates/tk-capture-1/coverage.jso
     failure and cleanup refusals remain retained. Both storage roots have empty
     managed scratch. [Review/freeze references](../build/runs/driver-freeze-343/external-evidence.json).
     Fresh Linux retry [CI 42357137754](https://github.com/bipxx/vispy_vulkan/actions/runs/42357137754)
-    was dispatched at that checkpoint; its verified outcome is recorded below. Windows producer still needs
-    restored C: capacity or a separately validated storage-path design.
+    was dispatched at that checkpoint; its verified outcome is recorded below.
+    The later D: Windows producer recovery is recorded above; C: allocations remain stopped.
     **Linux v2 producer verified, 2026-11-07:** CI `42357137754` completed
     successfully at `fa72c6da`. All 44 native contracts and the unchanged original
     native/source/archive/license joins pass. The raw cp312 Linux wheel is

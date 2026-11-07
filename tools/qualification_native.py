@@ -16,18 +16,19 @@ import xml.etree.ElementTree as ET
 try:
     from .compatibility_candidate import scope_digest, validate_candidate
     from .compatibility_conservation import digest
-    from .compatibility_inventory import ROOT, InventoryError, check, read_json, shape, unique_by
+    from .compatibility_inventory import ROOT, InventoryError, check, file_ref, read_json, shape, unique_by
     from .qualification_artifact import (SDK_SHA, COMPILER_SHA, native_sdk, retained_file,
                                          sha, validate_sdk)
     from . import native_epoch
 except ImportError:
     from compatibility_candidate import scope_digest, validate_candidate
     from compatibility_conservation import digest
-    from compatibility_inventory import ROOT, InventoryError, check, read_json, shape, unique_by
+    from compatibility_inventory import ROOT, InventoryError, check, file_ref, read_json, shape, unique_by
     from qualification_artifact import SDK_SHA, COMPILER_SHA, native_sdk, retained_file, sha, validate_sdk
     import native_epoch
 
 SCHEMA = 'compat/qualification-native.schema.json'
+STORAGE_PROFILE = 'compat/build-profiles/windows-native-secondary-v1.json'
 PHASES = ('dependency-before', 'configure', 'build', 'ctest', 'dependency-after')
 NATIVE_TARGETS = {'_dawn', '_sdf_cpu', 'VkLayer_vispy_submit'}
 # Both owned-upload CTest entries execute the same compiled Python helper.
@@ -79,6 +80,32 @@ def production_identity(recipe, outputs):
                    'toolchain': recipe['toolchain'], 'outputs': outputs})
 
 
+def storage_policy(recipe, root=ROOT):
+    """Optional v1 storage authority; legacy recipes keep their original root.
+
+    A profile reference is part of recipe_digest and the independent reuse-review
+    edge. It selects scratch placement, never a replacement SDK/source/toolchain.
+    Keep an admitted v1 profile immutable; a different policy needs a successor.
+    """
+    if 'storage_profile' not in recipe:
+        return None
+    reference = recipe['storage_profile']
+    check(reference['path'] == STORAGE_PROFILE, 'unrecognized native storage profile')
+    profile = read_json(file_ref(Path(root), reference))
+    validate_shape(profile, 'storage-policy', root)
+    paths = {name: PureWindowsPath(profile[name]) for name in
+             ('source_workspace', 'storage_workspace', 'sdk_origin')}
+    check(all(path.is_absolute() and re.fullmatch(r'[A-Za-z]:', path.drive)
+              and '..' not in path.parts and path.as_posix() == profile[name]
+              for name, path in paths.items()), 'native storage policy needs canonical local Windows paths')
+    source, storage = paths['source_workspace'], paths['storage_workspace']
+    check(not source.is_relative_to(storage) and not storage.is_relative_to(source),
+          'secondary native storage must be separate from source')
+    check(paths['sdk_origin'] == source / 'build/native-sdk/windows-x64-release-3',
+          'native storage policy changed the original SDK location')
+    return profile
+
+
 def validate_recipe(recipe, root=ROOT):
     validate_shape(recipe, 'recipe', root)
     check(recipe['targets'] == sorted(set(recipe['targets'])) and MIN_TARGETS <= set(recipe['targets']),
@@ -95,6 +122,7 @@ def validate_recipe(recipe, root=ROOT):
           'native tool origins must be canonical absolute Windows paths')
     check(tools['compiler']['sha256'] == COMPILER_SHA, 'native compiler is not SDK-qualified')
     check(recipe['sdk_sha256'] == SDK_SHA, 'native recipe uses an unapproved SDK')
+    storage_policy(recipe, root)
     return tools
 
 
@@ -153,11 +181,19 @@ def validate_proofs(recipe, raw, expected_sources, before, after, cache_before, 
     check(all(value.is_absolute() and '..' not in value.parts and value.as_posix() == raw['locations'][key]
               for key, value in locations.items()),
           'native locations must be canonical absolute Windows paths')
-    work = locations['source'] / 'build/work'
+    profile = storage_policy(recipe, root)
+    if profile is not None:
+        check(raw['locations']['source'] == profile['source_workspace'],
+              'native source location differs from storage policy')
+        check(raw['locations']['sdk'] == profile['sdk_origin'],
+              'native SDK origin differs from storage policy')
+    workspace = PureWindowsPath(profile['storage_workspace']) if profile else locations['source']
+    work = workspace / 'build/work'
     check(locations['build'].is_relative_to(work) and len(locations['build'].relative_to(work).parts) == 2
           and locations['build'].name == 'native' and locations['ctest_output'].parent == locations['build'].parent,
           'native build must use one managed scratch run')
-    check(not locations['sdk'].is_relative_to(work), 'native SDK cannot be copied into managed scratch')
+    check(all(not locations['sdk'].is_relative_to(path) for path in
+              (work, locations['source'] / 'build/work')), 'native SDK cannot be copied into managed scratch')
     check(recipe_digest(recipe) == raw['recipe_sha256'], 'native result uses another recipe')
     check(recipe['source_inputs_sha256'] == digest(expected_sources), 'native recipe source identity changed')
     production = {name: value for name, value in expected_sources.items() if not name.startswith('tests/')}
