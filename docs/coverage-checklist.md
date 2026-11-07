@@ -648,7 +648,11 @@ preserved. Required acceptance detail: SH-1–SH-5 in the
   remain literal-only. All 44 successor Windows native contracts pass. A Windows
   native-overlay experiment passes 12 dynamic cases, three rendered declaration/
   macro/nested-call controls and 32 existing regressions, with ten zero shutdown
-  gauges. Linux verification, broader stage/dimension/limit controls,
+  gauges. Twenty additional dimension/stage/int-uint cases, two granted-binding
+  boundary/recovery cases and six single-level LOD/filter/argument-evaluation
+  cases also pass against the same native bytes. Their three retained runs cover
+  75 distinct cases (67 + 2 + 6), each with zero shutdown gauges and cleaned scratch.
+  Linux verification, multidimensional selection and broader filter/preprocessor controls,
   implicit-derivative decisions and successor admission remain pending.
   [Implementation and remaining work](dynamic-sampler-indexing.md).
 - [x] **SHD-01-LITERAL — Finite installed literal sampler-array scope:**
@@ -863,6 +867,7 @@ exit condition is satisfied. Optional or deferred items are selected by need.
 
 | Date | Change | Evidence |
 | --- | --- | --- |
+| 2026-11-07 | Added 20 dimension/stage/index, two actual binding-limit refusal/recovery and six single-level LOD/filter/evaluation cases. All pass using the existing Windows native module; 75 distinct cases across three retained runs. | `dynamic-explicit-samplers-wip.json`; Linux CI continues on unchanged native source. |
 | 2026-11-07 | Dynamic explicit sampler selection passes all 44 Windows native contracts and 47 native-overlay cases, including declaration/macro/nested-call controls. Added collision-safe names and a portable shader identity marker; ten shutdown gauges zero. | `dynamic-sampler-indexing.md`; SHD-01 stays open for Linux, breadth/limits, independent review and successor admission. |
 | 2026-11-07 | Recorded finite installed event, Tk input, reversed-depth and literal sampler-array acceptance on both exact current v2 wheels. All scratch targets cleaned; broader parent claims remain separate. | `compat/api-acceptance/` packets and their exact source/wheel/evidence joins. |
 | 2026-11-07 | Added source-bound successor version support to the archive core without changing v1 defaults or source package version. 53 cases and four real archive compatibility checks pass; remaining caller audit is explicit. | `package-version-333/verification.json`; FIX-06-VERSION remains open. |

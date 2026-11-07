@@ -61,7 +61,26 @@ user declarations and directives; the portable shader identity includes the
 `explicit-static-switch-zero-oob-v1` marker. No native build or output result is
 transferred to the old v2 wheels.
 
-Remaining work includes Linux outputs, broader macro/preprocessor forms, vertex-stage and dimension
-breadth, actual resource-limit refusals, LOD/filtering outputs, cumulative
-independent review and successor artifact/profile admission. Implicit derivative
-semantics require their own design and output packet.
+Further Windows observations reuse that same native module, with no native
+build: `dynamic-sampler-breadth-406` passes 67 cases; the two newly added binding
+boundary cases pass in `dynamic-sampler-limits-407`; six additional single-level
+LOD/filtering cases pass in `dynamic-sampler-lod-408`. Their union is 75 distinct
+cases across those three executions, with separate exact test-source hashes.
+All three processes retire ten shutdown gauges to zero and their scratch
+targets are removed. The [WIP packet](../compat/api-acceptance/dynamic-explicit-samplers-wip.json)
+preserves the earlier 47-case observation and adds these successor observations.
+
+Twenty cases cover float 1D/3D/cube sampling in vertex and fragment stages with
+int/uint indices and runtime negative/high bounds. The two limit cases use the
+actual granted sampler/texture minimum: one extra live leaf refuses, then a
+valid at-limit shader compiles and renders. Six gradient cases distinguish
+nearest from linear interpolation at explicit LOD -2/0/2 on single-level
+textures, with one invocation of each index, coordinate and LOD argument.
+Linear byte expectations allow one unit of quantization; nearest expectations
+are exact. These cases do not prove multilevel mip chains or arbitrary filters.
+
+Linux CI run `42381467559` builds native source `f7d21c31`; these subsequent
+changes add tests/documentation only. Do not restart its native build for them.
+Linux outputs, multidimensional dynamic selection, broader preprocessor and
+filter/LOD forms, implicit derivative decisions, cumulative independent review
+and successor artifact/profile admission remain open.

@@ -49,7 +49,13 @@ static resource bindings, typed index dispatch and single argument evaluation;
 current v2 wheel observations remain literal-only. All 44 Windows native
 contracts and 47 native-overlay rendered/compiler cases pass, including
 declaration/macro collision and nested-call controls. Ten shutdown gauges are
-zero. Linux verification, limit controls and broader stage/dimension coverage precede successor
+zero. Additional tests using those native bytes now cover float 1D/3D/cube in
+both stages with int/uint indices, actual granted binding refusal/recovery and
+single-level nearest/linear sampling at LOD -2/0/2 with single argument
+evaluation. The retained 67 + 2 + 6 runs contain 75 distinct cases, with cleaned
+scratch and zero shutdown gauges. Linux run `42381467559` continues on native
+source `f7d21c31`; these test-only changes require no duplicate native build.
+Linux verification, multidimensional selection and broader filtering/preprocessor coverage precede successor
 packaging. Implicit derivatives retain their guard and require a separate
 decision. See the [implementation detail](../../dynamic-sampler-indexing.md).
 

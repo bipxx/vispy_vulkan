@@ -168,9 +168,272 @@
   },
   "remaining": [
     "Linux verification",
-    "stage/dimension/LOD/limit breadth",
+    "multidimensional dynamic selection",
+    "broader preprocessor forms",
+    "multilevel mip chains and additional filtering/LOD forms",
     "implicit-derivative decisions",
     "independent review",
     "successor packaging and profile admission"
+  ],
+  "additional_windows_observations": [
+    {
+      "run": "dynamic-sampler-breadth-406",
+      "cases": 67,
+      "source_hashes": {
+        "tests/shaders/test_dynamic_explicit_sampler_arrays.py": "c9b35d756135a165b16972fbd3da0e1ddb4b8d237722a85c56e4705b465ab0d0",
+        "tests/shaders/test_multidimensional_sampler_arrays.py": "b6418ed8e0e8eb41e3ff631dc751b8c14c6b6f255608e8d3d872ac1837fe820b",
+        "tests/shaders/test_sampler_array_boundaries.py": "ec65ee3a1881abdf016713b6d6204065e3e8b48ef6baab63ab3f751d0ecd1707",
+        "tests/shaders/test_sampler_arrays.py": "b1f3c131685f43cf6b4af38ddcab5d96f10e4f3dbc70dd4f2b9bee7648f92fe8",
+        "tools/immediate_state_wheel_smoke.py": "16a8dab36497a8321b7ba3acf3a40cba18d9285c8bf305f891c654a8747afd3e"
+      },
+      "test_targets": [
+        "tests/shaders/test_sampler_arrays.py",
+        "tests/shaders/test_multidimensional_sampler_arrays.py",
+        "tests/shaders/test_sampler_array_boundaries.py",
+        "tests/shaders/test_dynamic_explicit_sampler_arrays.py"
+      ],
+      "native_overlay": [
+        {
+          "member": "vispy/_dawn.cp312-win_amd64.pyd",
+          "file": {
+            "path": "build/artifacts/8b93326abbc14d28fe6743bc3571d5dbb83edb5e75c8c91535294ab5da0398e2/_dawn.cp312-win_amd64.pyd",
+            "sha256": "8b93326abbc14d28fe6743bc3571d5dbb83edb5e75c8c91535294ab5da0398e2"
+          }
+        },
+        {
+          "member": "vispy/visuals/text/_sdf_cpu.cp312-win_amd64.pyd",
+          "file": {
+            "path": "build/artifacts/fd14a55ac02b415ee2b4027a7632cfe23a4b4fc7976f9eb815180c5bc31d849e/_sdf_cpu.cp312-win_amd64.pyd",
+            "sha256": "fd14a55ac02b415ee2b4027a7632cfe23a4b4fc7976f9eb815180c5bc31d849e"
+          }
+        },
+        {
+          "member": "vispy/VkLayer_vispy_submit.dll",
+          "file": {
+            "path": "build/artifacts/050a86a3550aaed01e5a66a15fb44a313af83f816586c2119a7d14f57fb9e37b/VkLayer_vispy_submit.dll",
+            "sha256": "050a86a3550aaed01e5a66a15fb44a313af83f816586c2119a7d14f57fb9e37b"
+          }
+        },
+        {
+          "member": "vispy/VkLayer_vispy_submit.json",
+          "file": {
+            "path": "build/artifacts/7323cea73a46efcba615ca452d2b0235e3741109628c4bf2979c105e6ae69d56/VkLayer_vispy_submit.json",
+            "sha256": "7323cea73a46efcba615ca452d2b0235e3741109628c4bf2979c105e6ae69d56"
+          }
+        }
+      ],
+      "shutdown_gauges": {
+        "pending_tickets": 0,
+        "queued_frames": 0,
+        "live_buffer_bytes": 0,
+        "live_cpu_buffer_bytes": 0,
+        "live_texture_bytes": 0,
+        "canvas_texture_bytes": 0,
+        "transient_buffer_bytes": 0,
+        "line_resource_pool_busy_slots": 0,
+        "line_resource_pool_bytes": 0,
+        "host_import_pinned_bytes": 0
+      },
+      "evidence": {
+        "verification.json": {
+          "path": "build/runs/dynamic-sampler-breadth-406/verification.json",
+          "sha256": "e9dc43741947e2fa379b3c7d07b39d5750244c868d0d75e06e884af4dde900b1"
+        },
+        "input-result.json": {
+          "path": "build/runs/dynamic-sampler-breadth-406/input-result.json",
+          "sha256": "23f7c5ef0e23fbbf15ca0db8f693ae72e53b48a9f04018776d932368d14f7aea"
+        },
+        "inputs.xml": {
+          "path": "build/runs/dynamic-sampler-breadth-406/inputs.xml",
+          "sha256": "ca2363b017a12003ce5fc705d746d300a1f7d5c2644464818b9c7ca62108382d"
+        },
+        "native-overlay.json": {
+          "path": "build/runs/dynamic-sampler-breadth-406/native-overlay.json",
+          "sha256": "0e5255320773f83074bf775f334084fa64729f33b01981b4bef331c30490eef8"
+        },
+        "test-source-and-licenses.zip": {
+          "path": "build/runs/dynamic-sampler-breadth-406/test-source-and-licenses.zip",
+          "sha256": "98889f7ebbb0ff68fa834e62e5a892f6008cf452925788f6c1171e280ae59120"
+        },
+        "terminal-retention.json": {
+          "path": "build/runs/dynamic-sampler-breadth-406/terminal-retention.json",
+          "sha256": "26d1c0b1a87f0f50c991c641784c3126d4b55fc6577cf8cb0c2d21e8d971033e"
+        },
+        "post-cleanup.json": {
+          "path": "build/runs/dynamic-sampler-breadth-406/post-cleanup.json",
+          "sha256": "094eedbc6a510cc47c8ca521a67988b59a6fb27824a95383e5b331365de714f8"
+        }
+      }
+    },
+    {
+      "run": "dynamic-sampler-limits-407",
+      "cases": 2,
+      "source_hashes": {
+        "tests/shaders/test_dynamic_explicit_sampler_arrays.py": "63bb0f4e4800f338bdc32ecd7d7210f41d67a86cc6ff64a3df5739bbbba4a808"
+      },
+      "test_targets": [
+        "tests/shaders/test_dynamic_explicit_sampler_arrays.py::test_dynamic_explicit_active_binding_limit_refusal_and_render_recovery"
+      ],
+      "native_overlay": [
+        {
+          "member": "vispy/_dawn.cp312-win_amd64.pyd",
+          "file": {
+            "path": "build/artifacts/8b93326abbc14d28fe6743bc3571d5dbb83edb5e75c8c91535294ab5da0398e2/_dawn.cp312-win_amd64.pyd",
+            "sha256": "8b93326abbc14d28fe6743bc3571d5dbb83edb5e75c8c91535294ab5da0398e2"
+          }
+        },
+        {
+          "member": "vispy/visuals/text/_sdf_cpu.cp312-win_amd64.pyd",
+          "file": {
+            "path": "build/artifacts/fd14a55ac02b415ee2b4027a7632cfe23a4b4fc7976f9eb815180c5bc31d849e/_sdf_cpu.cp312-win_amd64.pyd",
+            "sha256": "fd14a55ac02b415ee2b4027a7632cfe23a4b4fc7976f9eb815180c5bc31d849e"
+          }
+        },
+        {
+          "member": "vispy/VkLayer_vispy_submit.dll",
+          "file": {
+            "path": "build/artifacts/050a86a3550aaed01e5a66a15fb44a313af83f816586c2119a7d14f57fb9e37b/VkLayer_vispy_submit.dll",
+            "sha256": "050a86a3550aaed01e5a66a15fb44a313af83f816586c2119a7d14f57fb9e37b"
+          }
+        },
+        {
+          "member": "vispy/VkLayer_vispy_submit.json",
+          "file": {
+            "path": "build/artifacts/7323cea73a46efcba615ca452d2b0235e3741109628c4bf2979c105e6ae69d56/VkLayer_vispy_submit.json",
+            "sha256": "7323cea73a46efcba615ca452d2b0235e3741109628c4bf2979c105e6ae69d56"
+          }
+        }
+      ],
+      "shutdown_gauges": {
+        "pending_tickets": 0,
+        "queued_frames": 0,
+        "live_buffer_bytes": 0,
+        "live_cpu_buffer_bytes": 0,
+        "live_texture_bytes": 0,
+        "canvas_texture_bytes": 0,
+        "transient_buffer_bytes": 0,
+        "line_resource_pool_busy_slots": 0,
+        "line_resource_pool_bytes": 0,
+        "host_import_pinned_bytes": 0
+      },
+      "evidence": {
+        "verification.json": {
+          "path": "build/runs/dynamic-sampler-limits-407/verification.json",
+          "sha256": "19490b3e8734902d8f60cba4fb5cfdb7c104cf4f2f90ade93ecb87ee19431cd5"
+        },
+        "input-result.json": {
+          "path": "build/runs/dynamic-sampler-limits-407/input-result.json",
+          "sha256": "ee90b06263dcfb9ab0c93472b4bfa0a81b956bd2f7162d70a0ccda89dfd65b13"
+        },
+        "inputs.xml": {
+          "path": "build/runs/dynamic-sampler-limits-407/inputs.xml",
+          "sha256": "ad3d71e63898303eb66cad73554621ae48a737f3b00e4833af6e3bbcea544af7"
+        },
+        "native-overlay.json": {
+          "path": "build/runs/dynamic-sampler-limits-407/native-overlay.json",
+          "sha256": "0e5255320773f83074bf775f334084fa64729f33b01981b4bef331c30490eef8"
+        },
+        "test-source-and-licenses.zip": {
+          "path": "build/runs/dynamic-sampler-limits-407/test-source-and-licenses.zip",
+          "sha256": "41dfe215ee52312368e832a484d479c260ff7245071d61fbeccdacf36e639294"
+        },
+        "terminal-retention.json": {
+          "path": "build/runs/dynamic-sampler-limits-407/terminal-retention.json",
+          "sha256": "7e0f55ffcb2089619aa52726cada8a9c82a1cc1ea2efdfd3490d9420c8bbc1bd"
+        },
+        "post-cleanup.json": {
+          "path": "build/runs/dynamic-sampler-limits-407/post-cleanup.json",
+          "sha256": "094eedbc6a510cc47c8ca521a67988b59a6fb27824a95383e5b331365de714f8"
+        }
+      }
+    },
+    {
+      "run": "dynamic-sampler-lod-408",
+      "cases": 6,
+      "source_hashes": {
+        "tests/shaders/test_dynamic_explicit_sampler_arrays.py": "37e6ff810722487e4bbb5d3a7750d4d7bb65423a876696a629643f4a087fe802"
+      },
+      "test_targets": [
+        "tests/shaders/test_dynamic_explicit_sampler_arrays.py::test_dynamic_explicit_single_level_filtering_and_all_arguments_evaluated_once"
+      ],
+      "native_overlay": [
+        {
+          "member": "vispy/_dawn.cp312-win_amd64.pyd",
+          "file": {
+            "path": "build/artifacts/8b93326abbc14d28fe6743bc3571d5dbb83edb5e75c8c91535294ab5da0398e2/_dawn.cp312-win_amd64.pyd",
+            "sha256": "8b93326abbc14d28fe6743bc3571d5dbb83edb5e75c8c91535294ab5da0398e2"
+          }
+        },
+        {
+          "member": "vispy/visuals/text/_sdf_cpu.cp312-win_amd64.pyd",
+          "file": {
+            "path": "build/artifacts/fd14a55ac02b415ee2b4027a7632cfe23a4b4fc7976f9eb815180c5bc31d849e/_sdf_cpu.cp312-win_amd64.pyd",
+            "sha256": "fd14a55ac02b415ee2b4027a7632cfe23a4b4fc7976f9eb815180c5bc31d849e"
+          }
+        },
+        {
+          "member": "vispy/VkLayer_vispy_submit.dll",
+          "file": {
+            "path": "build/artifacts/050a86a3550aaed01e5a66a15fb44a313af83f816586c2119a7d14f57fb9e37b/VkLayer_vispy_submit.dll",
+            "sha256": "050a86a3550aaed01e5a66a15fb44a313af83f816586c2119a7d14f57fb9e37b"
+          }
+        },
+        {
+          "member": "vispy/VkLayer_vispy_submit.json",
+          "file": {
+            "path": "build/artifacts/7323cea73a46efcba615ca452d2b0235e3741109628c4bf2979c105e6ae69d56/VkLayer_vispy_submit.json",
+            "sha256": "7323cea73a46efcba615ca452d2b0235e3741109628c4bf2979c105e6ae69d56"
+          }
+        }
+      ],
+      "shutdown_gauges": {
+        "pending_tickets": 0,
+        "queued_frames": 0,
+        "live_buffer_bytes": 0,
+        "live_cpu_buffer_bytes": 0,
+        "live_texture_bytes": 0,
+        "canvas_texture_bytes": 0,
+        "transient_buffer_bytes": 0,
+        "line_resource_pool_busy_slots": 0,
+        "line_resource_pool_bytes": 0,
+        "host_import_pinned_bytes": 0
+      },
+      "evidence": {
+        "verification.json": {
+          "path": "build/runs/dynamic-sampler-lod-408/verification.json",
+          "sha256": "5d9c0fe8513c7f19b11216779ec14f03447662b8930d649794ceffd7143bd2de"
+        },
+        "input-result.json": {
+          "path": "build/runs/dynamic-sampler-lod-408/input-result.json",
+          "sha256": "33b3043b7ce52d1e837f269cc46fcfcdfbc0b0772f5d2f0fb4ffaa47eb3efe4d"
+        },
+        "inputs.xml": {
+          "path": "build/runs/dynamic-sampler-lod-408/inputs.xml",
+          "sha256": "b052bd431027f94db776def06a19698a179480a35ca2fae3b517349a0ea3a48b"
+        },
+        "native-overlay.json": {
+          "path": "build/runs/dynamic-sampler-lod-408/native-overlay.json",
+          "sha256": "0e5255320773f83074bf775f334084fa64729f33b01981b4bef331c30490eef8"
+        },
+        "test-source-and-licenses.zip": {
+          "path": "build/runs/dynamic-sampler-lod-408/test-source-and-licenses.zip",
+          "sha256": "dab8d8848a189dde9fb3fc687429aba7d46fadb5ad0f3aa82b0422355c03239b"
+        },
+        "terminal-retention.json": {
+          "path": "build/runs/dynamic-sampler-lod-408/terminal-retention.json",
+          "sha256": "881863ae2fb46fcb1d8794f89181abb88cd6c77be738aad101a81d82f29d1a68"
+        },
+        "post-cleanup.json": {
+          "path": "build/runs/dynamic-sampler-lod-408/post-cleanup.json",
+          "sha256": "094eedbc6a510cc47c8ca521a67988b59a6fb27824a95383e5b331365de714f8"
+        }
+      }
+    }
+  ],
+  "distinct_windows_cases_across_additional_runs": 75,
+  "additional_scope": [
+    "Twenty dimension/stage/int-uint cases: float 1D/3D/cube with explicit LOD and admitted fetch forms in vertex/fragment stages; runtime indices 0/1/-1/2",
+    "Two actual granted active binding boundary cases: one beyond refuses; at-limit compilation and rendered recovery pass in each stage",
+    "Six single-level nearest/linear cases at LOD -2/0/2; independent gradient values and exactly one index/coordinate/LOD evaluation"
   ]
 }
