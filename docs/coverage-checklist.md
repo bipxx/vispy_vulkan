@@ -325,6 +325,16 @@ Authority: [capture coverage map](../compat/candidates/tk-capture-1/coverage.jso
     aliases were unlinked without following their targets; the initial refusal is
     retained. [Evidence references](../build/runs/driver-guard-341/external-evidence.json).
     Fresh Linux CI and the Windows producer/storage-path audit remain pending.
+    **Reviewed retry:** independent source review found no blocking guard defect.
+    Its production-wiring test request is closed by actual `build()` entry and
+    old-guard mutation controls; the complete module now passes 19 cases on each
+    platform. Tool-only source `fa72c6da` is pushed with zero unexplained drift;
+    native production inputs remain unchanged from `4ed660bf`. Original test-fixture
+    failure and cleanup refusals remain retained. Both storage roots have empty
+    managed scratch. [Review/freeze references](../build/runs/driver-freeze-343/external-evidence.json).
+    Fresh Linux retry [CI 42357137754](https://github.com/bipxx/vispy_vulkan/actions/runs/42357137754)
+    is in progress; its outcome is not yet qualified. Windows producer still needs
+    restored C: capacity or a separately validated storage-path design.
 
 ## API breadth and inventory review
 
@@ -334,8 +344,18 @@ inventory. These are review tasks, not a demand to implement every upstream API.
 Related sources: [inventory guide](compatibility-inventory.md), backlog B1/B2 in
 the [consolidated plan](superpowers/plans/2026-10-28-consolidated-plan.md).
 
-- [ ] **API-01 — Application namespace:** review all 25 `app` parents, including
+- [x] **API-01 — Application namespace:** review all 25 `app` parents, including
   backend selection, application, canvas, context, event and timer contracts.
+  **Complete at parent/source-route review scope, 2026-11-07:**
+  [the application review](application-coverage-review.md) accounts for 14 selector
+  IDs and 11 exported entries against exact source `fa72c6da`, verifying the
+  upstream pins and 15 fork source files. Nine explicit refusals remain distinct
+  from the implemented, unqualified notebook route. All 22 boundary/event/curation
+  checks pass on Windows and WSL with verified source origins. Independent review
+  found no blocking accuracy or accounting issue. [Evidence/review references](../build/runs/app-audit-345/external-evidence.json).
+  Inventory bytes, `reviewed=false`, all 142 original obligations and selections
+  remain unchanged. API-05/06 retain method/value, alias, delivered-event, timer
+  and exact-artifact acceptance work; no full parent or v2 admission transfers.
 - [ ] **API-02 — Rendering namespace:** review all 19 `gloo` parents, including
   public wrappers, resources, buffers, textures, programs and readback.
 - [ ] **API-03 — Scene namespace:** review all 22 `scene` parents, including
@@ -549,6 +569,8 @@ exit condition is satisfied. Optional or deferred items are selected by need.
 | 2026-11-07 | Closed FIX-06-VERSION at source-freeze scope. Pushed `4ed660bf`, zero unexplained drift, preserved initial omitted-profile refusal and owner checkout/index. Private index cleaned. Fresh Linux producer dispatched at this exact commit as CI `42355088675`. | `successor-freeze-337`; final artifacts/qualification remain open. |
 | 2026-11-07 | Preserved Linux driver-preparation failure and artifact identity; local transport refused below reserve. Cancelled the Windows compiler when remaining capacity no longer fit, awaited original exits, removed 56.8 MB scratch and rehashed 79 retained files. No new producer pass or release claim. | `successor-linux-338`, `successor-native-339`; alternative storage needs an origin/proof audit. |
 | 2026-11-07 | Selected D: storage with inherited protection/block lists; recovered the Linux failure and both remote cleanup receipts. Fixed the inner Mesa live-sampling race; 17 tests pass on each platform, while strict terminal snapshots remain unchanged. Original failures and pytest alias cleanup retained; owned D: scratch cleaned. | `driver-guard-341/external-evidence.json`; fresh producer qualification remains open. |
+| 2026-11-07 | Independent review's wiring gap closed; 19 cases pass per platform with an old-guard mutation control. Pushed the tool-only fix as `fa72c6da`, retained failures, cleaned all owned scratch and dispatched Linux retry `42357137754`. | `driver-freeze-343/external-evidence.json`; actual producer/release qualification remains open. |
+| 2026-11-07 | Closed API-01 at 25-parent/source-route review scope after independent review. 22 CPU boundary/event/curation checks pass on Windows and WSL; no native application constructed. Inventory/selection unchanged, API-05/06 acceptance still open. Test scratch cleaned and 16 retained files rehashed. | `application-coverage-review.md`, `app-audit-345/external-evidence.json`; source review only. |
 | 2026-11-07 | Closed FIX-04-OBS: fresh 56-assertion/eight-branch and capture/control observations on both successor wheels. Retained evidence and cleaned scratch. Identified v1-only package metadata coupling; settle successor version before final record freeze. | `shutdown-observations-332/verification.json`, `post-cleanup.json`; FIX-04/FIX-06 remain open. |
 | 2026-11-06 | Initial live checklist; release baseline separated from source fixes, historical host qualifications and optional gaps. | Release notes, strict matrix, consolidated backlog and shutdown-fix-322 records linked above. |
 | 2026-11-06 | Started FIX-04; recorded the native-input pin refusal and its FIX-05 prerequisite. | `source-fix-integration-323`; no release or qualification transferred. |

@@ -48,6 +48,17 @@ coverage status and next verification steps. Update its affected IDs alongside
 implementation, test, review and release changes; retain the linked manifests as
 the evidence authority.
 
+2026-11-07 checkpoint: the v2 metadata/source freeze is complete. The reviewed
+tool-only fix at `fa72c6da` separates Mesa live disk sampling from strict terminal
+cleanup; 19 source controls pass on each platform. Linux retry `42357137754` has
+passed driver preparation and is building the renderer; no v2 artifact is yet
+qualified. Windows production awaits C: capacity. New scratch/evidence uses the
+registered D: workspace with inherited protection/block lists; pinned C: inputs
+remain in place. API-01's [25-parent application review](../../application-coverage-review.md)
+is complete at source-route scope, independently reviewed, with 22 CPU checks per
+platform. The canonical 142-parent inventory remains unreviewed as a whole;
+API-02 through API-06 and current artifact/CI/publication work remain open.
+
 The development checkpoints below retain their pre-release status. The table
 after them summarizes the current published release.
 
