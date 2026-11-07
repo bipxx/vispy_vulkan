@@ -108,9 +108,24 @@ remain retained. Real native proofs 325/374, original Linux capture 350 and both
 current wheel archive joins replay unchanged. No native build, install, source
 clone or origin relocation was needed.
 [Store conformance/replays](../../../build/runs/evidence-contracts-382/external-evidence.json).
-Next, prepare separately versioned successor candidate and provenance records
-using this store authority, then obtain their exact independent source/scope
-review bindings. Preserve canonical v1 records. Renew successor records and
+Separate v2 candidates and provenance review packets are now prepared:
+`tk-state-resource-2`, `tk-capture-2` and shared `tk-v2` runtime/profile records,
+bound to product source `db0697f7`. Both candidates validate on Windows and WSL
+and reject required review. Their new coverage/execution/selection maps retain
+all 32 proposed pairs, 64 criteria and 128 criterion/profile bindings, all 142
+original required pairs and eight mandatory host rows. No receipt, identity or
+approval is transferred. Four exact archive prerequisites pass per host; all
+four native packets stop at pending review. The two qualification subjects have
+zero proved and 128 missing obligations. All 60 canonical v1 files are unchanged.
+Existing wheels, native outputs, SDK and dependencies are reused without a build
+or install. The initial controller temp-directory error is retained; completed
+cleanup rehashes 65 retained entries.
+[Prepared review bindings](../../../compat/candidates/tk-v2/review-packet.json),
+[validation](../../../build/runs/successor-candidates-384/external-evidence.json).
+Next, obtain exact independent source/scope reviews of this concrete packet,
+including both native reuse edges, the coverage/execution maps and complete
+admission selections. The optional Claude peer skill's runner and guide are
+missing, so it supplied no review. Preserve canonical v1 records. Renew successor records and
 strict/profile/CI evidence afterward; no old record is repinned to imply a pass.
 C: native allocation remains stopped. Native proof does not grant wheel,
 candidate, hardware or release admission.

@@ -394,6 +394,29 @@ Authority: [capture coverage map](../compat/candidates/tk-capture-1/coverage.jso
     capture retention path-format error is preserved with its corrected reader;
     no test verdict or validator was changed.
 
+- [x] **FIX-06-SUCCESSOR-PREPARATION — Separate current v2 candidates:**
+  [state/resource](../compat/candidates/tk-state-resource-2/candidate.json) and
+  [capture](../compat/candidates/tk-capture-2/candidate.json) now validate against
+  product source `db0697f7`, current runtime/tool identities and the exact Windows
+  `5cb463cd` / Linux `b4c72484` wheels. Shared runtime and four fresh profile
+  observations use exact source/native/archive/license joins; original producer
+  and observation commits remain recorded. No producer is relabeled or rebuilt.
+  Both candidates pass preparation on Windows and WSL and reject required review.
+  Coverage/execution maps preserve 32 selected feature/profile pairs, 64 criteria
+  and all 128 criterion/profile bindings. Complete dependency selections preserve
+  every requested criterion and all 142 original required pairs/eight mandatory
+  host rows. New execution rows have no transferred identity, receipt, review or
+  admission flags. Four exact archive records pass per host; four native packets
+  per host stop at the pending-review gate. Both qualification subjects remain
+  unadmitted with zero proved and 128 missing obligations.
+  [Exact review packet](../compat/candidates/tk-v2/review-packet.json),
+  [preparation/validation evidence](../build/runs/successor-candidates-384/external-evidence.json).
+  All 60 canonical v1 files are byte-identical. The original controller temp-dir
+  failure and correction are retained; its failed attempt launched no test child.
+  Scratch is removed and 65 retained entries rehashed. No build, install or new
+  environment. Independent reviews, native admission, strict attempts, CI and
+  promotion remain open; the optional Claude peer runner/guide are absent.
+
 - [x] **FIX-06-EVIDENCE-STORE — Cross-store source/proof support:** optional
   hash-bound `secondary-v1` authority selects the retained D: store for produced
   native proofs, Linux original CI payloads and wheel/output bytes. Candidate,

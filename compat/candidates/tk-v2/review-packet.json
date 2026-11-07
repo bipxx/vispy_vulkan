@@ -1,0 +1,104 @@
+{
+  "schema": 1,
+  "status": "UNREVIEWED_SUCCESSOR_REVIEW_PACKET",
+  "source_commit": "db0697f73784b4c606a8aad6510bdac9c6c447b0",
+  "candidates": [
+    {
+      "candidate": "tk-state-resource-2",
+      "candidate_file": {
+        "path": "compat/candidates/tk-state-resource-2/candidate.json",
+        "sha256": "86b2062963d0bd1bbd6dcad54d8f1794c45976656955c36b433dfcac36803d3c"
+      },
+      "candidate_scope_sha256": "a765c7b0ffebbbdf18dd36c3f7f316876dfcf7d4440aca51060cbbc55bebf7db",
+      "coverage_map_sha256": "0c66be3c17f83470b743746bfd45c7899a8a05b94f058f2d0fb42205bef8ff6e",
+      "execution_map_sha256": "e3d2b975a045d7950c5a70bfb48a08e81db564a508bb3653917a701f38cdd97c",
+      "admission_scope_sha256": "377062b3379151785b677b876994a0bf7f2db9a4acd298c2f7049e081b4b6ddf",
+      "native_reuse_links": [
+        "c21453955e8a21abbf0102b5b23636fb2937074d60f132f38dc177656bbc9b30",
+        "f9be5459b4c30ae8f312b80a9c0c88bfcc23c06c8c2f21bbc03340ef9d091f81"
+      ],
+      "required_kinds": [
+        "source",
+        "scope"
+      ],
+      "required_source_bindings": [
+        "candidate_scope_sha256",
+        "native_reuse_links"
+      ],
+      "required_scope_bindings": [
+        "candidate_scope_sha256",
+        "coverage_map_sha256",
+        "execution_map_sha256",
+        "admission_scope_sha256",
+        "native_reuse_links"
+      ],
+      "approvals_present": false,
+      "source_review_must_cover": "Cumulative implementation/fixtures, shutdown fix and retained producer/evidence-store joins; no approval inherited from the v1 packet.",
+      "scope_review_must_cover": "Exact operations, values, profiles, exclusions, all original required pairs and dependency-complete selection; selected Tk scope is not full VisPy method parity.",
+      "pending_native_records": [
+        {
+          "path": "compat/candidates/tk-state-resource-2/windows-native-provenance.json",
+          "sha256": "14d877899ccfd63a9b27ed40a0e2f1d7a79e5dbb8fd7a709bea8a671c29d3b2d"
+        },
+        {
+          "path": "compat/candidates/tk-state-resource-2/linux-native-provenance.json",
+          "sha256": "0ebe4e853c0a52ecd89f263510ec54c58d5015195d37881e1b8220c01eba4269"
+        }
+      ],
+      "pending_subject": {
+        "path": "compat/candidates/tk-state-resource-2/qualification-subject.json",
+        "sha256": "3db5f74e0e83db8e5655e13c8b509ac1e0c1d446eb11d0c4ff14b9cbf5b09c34"
+      }
+    },
+    {
+      "candidate": "tk-capture-2",
+      "candidate_file": {
+        "path": "compat/candidates/tk-capture-2/candidate.json",
+        "sha256": "97a61af9022a50a339ea60839f77403488528812301111847d8f4edc27ec5169"
+      },
+      "candidate_scope_sha256": "9c537440634aa4a9e3fa34d14774975cc633b651b391e00cce08ce4ebf73600c",
+      "coverage_map_sha256": "32418a80e0fabb73b46f4303db09df7d3f3acad5172d86434eb5a4e30c3d47f6",
+      "execution_map_sha256": "391b1cf327840bd9d3e5fc358404c29414fca67777cb57c80392689c2d900087",
+      "admission_scope_sha256": "d69aaf2df8a5fa92550044d165aa9c25a3f885112d7a0c9dd9490290859876b7",
+      "native_reuse_links": [
+        "69c186bac06a2928fdfc2f33e8f9adc88fc1d2825b120c440646cc970eeba320",
+        "afe78a47974cdcccdfbb18e699010c15d76d12f7b5f075342f4402f137a3f7f3"
+      ],
+      "required_kinds": [
+        "source",
+        "scope"
+      ],
+      "required_source_bindings": [
+        "candidate_scope_sha256",
+        "native_reuse_links"
+      ],
+      "required_scope_bindings": [
+        "candidate_scope_sha256",
+        "coverage_map_sha256",
+        "execution_map_sha256",
+        "admission_scope_sha256",
+        "native_reuse_links"
+      ],
+      "approvals_present": false,
+      "source_review_must_cover": "Cumulative implementation/fixtures, shutdown fix and retained producer/evidence-store joins; no approval inherited from the v1 packet.",
+      "scope_review_must_cover": "Exact operations, values, profiles, exclusions, all original required pairs and dependency-complete selection; selected Tk scope is not full VisPy method parity.",
+      "pending_native_records": [
+        {
+          "path": "compat/candidates/tk-capture-2/windows-native-provenance.json",
+          "sha256": "83b6fd57510ebaa153cc989f1e70dc904fdff8196d090ac93df8f5c2d25d7094"
+        },
+        {
+          "path": "compat/candidates/tk-capture-2/linux-native-provenance.json",
+          "sha256": "ee3727391dbf5be9ffed8a6fcced384031ff5c9612c5fb7a6064cbdce2b3d427"
+        }
+      ],
+      "pending_subject": {
+        "path": "compat/candidates/tk-capture-2/qualification-subject.json",
+        "sha256": "6192d4f4a081a7864a83388cad95699c0a91fb4446e9687ed8315ed348f3ff26"
+      }
+    }
+  ],
+  "note": "This is an exact review request, not an approval. After real reviews, refresh candidate self seals and candidate-file hash references in native records/subjects; the reviewed scope/reuse digests exclude only their documented mutable review/self-identity edges.",
+  "native_build": false,
+  "release_qualified": false
+}
