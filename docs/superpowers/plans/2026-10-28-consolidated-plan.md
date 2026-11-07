@@ -76,8 +76,16 @@ is complete at source-route scope, independently reviewed, with 22 CPU checks pe
 platform. API-02's [19-parent gloo review](../../gloo-coverage-review.md) is also
 complete at source-route scope after independent review; its public module
 descriptions now state the bounded Dawn interface, preserving original notices.
-The canonical 142-parent inventory remains unreviewed as a whole; API-03 through
-API-06 and current installed-artifact/CI/publication work remain open.
+API-03's [22-parent scene review](../../scene-coverage-review.md) is complete at
+source-route scope against `dcf730bf`: 44 source files and three upstream pins
+verified, 37 generated visual aliases recorded, and 15 existing CPU cases pass
+without skips on each platform. CPU probes confirm the factory, ViewBox and Grid
+boundaries without importing the GPU module or creating a GUI object. Preserve
+the initial WSL file-capture failure and successful sys-capture retry separately.
+The canonical 142-parent inventory remains unreviewed as a whole; API-04 through
+API-06 and current installed-artifact/CI/publication work remain open. Complete
+the remaining visual/source review before batching public documentation fixes
+and any necessary pure-member assembly; another native build is not warranted.
 
 The development checkpoints below retain their pre-release status. The table
 after them summarizes the current published release.

@@ -436,13 +436,31 @@ the [consolidated plan](superpowers/plans/2026-10-28-consolidated-plan.md).
   Inventory and selections remain unchanged. No full parent or v2 installed
   acceptance transfers. The corrected pure members are packaged and locally
   checked on Linux (FIX-06); broader API-05/06 acceptance remains open.
-- [ ] **API-03 — Scene namespace:** review all 22 `scene` parents, including
+- [x] **API-03 — Scene namespace:** review all 22 `scene` parents, including
   aliases, cameras, viewboxes, transforms, clipping and shared lifetimes.
+  **Complete at parent/source-route review scope, 2026-11-07:**
+  [the scene review](scene-coverage-review.md) accounts for all 22 seed parents,
+  37 generated visual aliases and the root camera/widget/transform wildcard
+  exports against source `dcf730bf`. All 44 inspected source files match that
+  commit and all three upstream source pins verify. Fifteen existing CPU cases
+  pass without skips on each of Windows and WSL, with additional namespace,
+  factory and ViewBox/Grid boundary probes; the GPU module is not imported, and
+  no application, canvas or timer is created. The initial WSL pytest file-capture error is retained; retry
+  uses the established sys-capture mode with unchanged test targets and probes.
+  [Accounting/failure](../build/runs/scene-audit-360/external-evidence.json),
+  [CPU retry](../build/runs/scene-cpu-361/external-evidence.json).
+  Inventory, selections and shipping source remain unchanged. API-05/06 retain
+  method/value/event, shader/clipping/picking and exact installed acceptance.
 - [ ] **API-04 — Visual namespace:** review all 76 `visuals` parents, including
   ordinary rendering, mutations, filters and application-specific visuals.
 - [ ] **API-05 — Method and route reconciliation:** map public methods, wildcard
   aliases, representative examples, events and raw interoperability not represented
   by the seed. A planning route is not an installed qualification.
+  The scene review adds explicit factory/alias distinctions, direct-child
+  untransformed ViewBox bounds and Grid removal's retained parent/cell references.
+  Batch the stale widgets introduction and ViewBox `camera=None` documentation
+  corrections with the remaining API documentation review before another shipping
+  pure-source freeze; do not rebuild native code for that documentation batch.
 - [ ] **API-06 — Selected API acceptance:** for each claimed finite subset, record
   supported values/formats, ordinary/mutation/failure/recovery behavior, clear
   refusals, documented differences and exact profile evidence. Keep original parent
@@ -655,6 +673,7 @@ exit condition is satisfied. Optional or deferred items are selected by need.
 | 2026-11-07 | Verified exact installed Linux v2 wheel `4c826163`: 537 members, four upload/shutdown cases, 56 state/resource cases without skips, eight Tk recovery branches and four capture branches. All five active capture controls reject; measured shutdown gauges are zero. Reused existing interpreter/dependencies/driver with no native build or new environment. | `linux-installed-354`, `linux-observations-355`, `linux-capture-356`; local software Vulkan observations, no admission transfer. |
 | 2026-11-07 | Closed FIX-06-LINUX-PACKAGE: fresh locked auditwheel analysis confirms manylinux_2_39; wheel `438ec1ce` changes only WHEEL/RECORD, with 560 other members unchanged and exact current archive/source/native/license joins passing. Original helper-import failure and transient PID-check refusal are preserved; the unchanged strict planner subsequently passes. | `linux-retag-357`; exact installed checks and admission remain separate. |
 | 2026-11-07 | Closed FIX-06-LINUX-INSTALLED: exact final-tagged wheel `438ec1ce` passes 60 no-skip test cases, eight Tk branches, four capture branches and all five active rejection controls on a single offline installed target. Every child verifies 537 members; measured gauges retire to zero. | `linux-final-installed-358`; local software Vulkan verification only, strict rows/admission/publication remain open. |
+| 2026-11-07 | Closed API-03 at 22-parent/source-route scope: verified 44 source files/three upstream pins, recorded 37 generated visual aliases, and passed 15 existing CPU tests per platform plus namespace/factory/ViewBox/Grid probes. Preserved the WSL pytest file-capture failure; unchanged cases pass with sys capture. | `scene-coverage-review.md`, `scene-audit-360`, `scene-cpu-361`; no shipping change or method/artifact admission. |
 | 2026-11-07 | Closed FIX-04-OBS: fresh 56-assertion/eight-branch and capture/control observations on both successor wheels. Retained evidence and cleaned scratch. Identified v1-only package metadata coupling; settle successor version before final record freeze. | `shutdown-observations-332/verification.json`, `post-cleanup.json`; FIX-04/FIX-06 remain open. |
 | 2026-11-06 | Initial live checklist; release baseline separated from source fixes, historical host qualifications and optional gaps. | Release notes, strict matrix, consolidated backlog and shutdown-fix-322 records linked above. |
 | 2026-11-06 | Started FIX-04; recorded the native-input pin refusal and its FIX-05 prerequisite. | `source-fix-integration-323`; no release or qualification transferred. |
