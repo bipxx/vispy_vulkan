@@ -176,9 +176,10 @@ def capture_from_inventory(inventory, root=ROOT):
                 cleanup=reference(prefix+'cleanup-result.json'), files=files)
 
 
-def validate_capture(capture, expected_production, root=ROOT):
+def validate_capture(capture, expected_production, root=ROOT, *, evidence_root=None):
     """Original v1 protocol join. A positive result never admits an artifact."""
     root = Path(root)
+    evidence_root = root if evidence_root is None else Path(evidence_root)
     definitions = read_json(root/SCHEMA)['$defs']
     shape(capture, definitions['linux-capture'], definitions)
     cache = {}
@@ -186,7 +187,7 @@ def validate_capture(capture, expected_production, root=ROOT):
     def data(ref):
         key = (ref['path'], ref['sha256'])
         if key not in cache:
-            cache[key] = retained_file(root, ref).read_bytes()
+            cache[key] = retained_file(evidence_root, ref).read_bytes()
         return cache[key]
 
     state = decode(data(capture['state']))
@@ -296,7 +297,8 @@ def validate_capture(capture, expected_production, root=ROOT):
     check(all(type(row['bytes']) is int and row['bytes'] >= 0 for row in plan['snapshot']['files'])
           and sum(row['bytes'] for row in plan['snapshot']['files']) <= policy['max_scratch_bytes'],
           'Linux original scratch exceeded its budget')
-    check(not (root/'build/work'/run_id).exists(), 'Linux imported scratch is still present')
+    check(all(not (workspace/'build/work'/run_id).exists() for workspace in (root, evidence_root)),
+          'Linux imported scratch is still present')
 
     receipts = {}
     for ref in state['commands']:
@@ -467,6 +469,10 @@ def validate_capture(capture, expected_production, root=ROOT):
 
 
 def validate_record(record, root=ROOT):
+    try:
+        from .retained_evidence import evidence_root
+    except ImportError:
+        from retained_evidence import evidence_root
     root = Path(root)
     definitions = read_json(root/SCHEMA)['$defs']
     shape(record, definitions['linux-record'], definitions)
@@ -487,7 +493,12 @@ def validate_record(record, root=ROOT):
         check(type(approval.get('native_reuse_links')) is list and digest(reuse) in approval['native_reuse_links'],
               'Linux reuse lacks exact independent review')
     inputs = read_json(retained_file(root, candidate['runtime_inputs']))
-    result, environment = validate_capture(read_json(retained_file(root, record['capture'])), production_inputs(inputs), root)
+    evidence = evidence_root(root, reuse.get('evidence_store'))
+    capture = read_json(retained_file(evidence, record['capture']))
+    if 'evidence_store' in reuse:
+        result, environment = validate_capture(capture, production_inputs(inputs), root, evidence_root=evidence)
+    else:
+        result, environment = validate_capture(capture, production_inputs(inputs), root)
     expected_abi = dict(tag='cp312', build_version=environment['python'].split()[0],
                         build_python_sha256=environment['python_executable_sha256'],
                         consumer_version=profile['python_version'].split()[0],

@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "kind": "secondary-evidence-store-v1",
+  "hosts": {
+    "windows": {
+      "source_workspace": "C:/Users/HEQ/Projects/vispy_vulkan",
+      "storage_workspace": "D:/vispy-vulkan-managed"
+    },
+    "posix": {
+      "source_workspace": "/mnt/c/Users/HEQ/Projects/vispy_vulkan",
+      "storage_workspace": "/mnt/d/vispy-vulkan-managed"
+    }
+  },
+  "scope": "Retained produced evidence only, using existing Windows/WSL views of the same source and D: store. Candidate/review/runtime-source/preparation/SDK/dependency origins remain under the original source workspace. No root fallback, copy, origin relocation, review waiver or artifact/profile/release admission. Keep admitted v1 policy bytes immutable; issue a successor for changes."
+}

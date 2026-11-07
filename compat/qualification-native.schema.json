@@ -3,21 +3,68 @@
     "storage-policy": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["schema", "kind", "source_workspace", "storage_workspace", "sdk_origin", "owner", "expected_peak_bytes", "aggregate_max_scratch_bytes", "min_free_bytes", "purpose", "guard", "retention", "scope"],
+      "required": [
+        "schema",
+        "kind",
+        "source_workspace",
+        "storage_workspace",
+        "sdk_origin",
+        "owner",
+        "expected_peak_bytes",
+        "aggregate_max_scratch_bytes",
+        "min_free_bytes",
+        "purpose",
+        "guard",
+        "retention",
+        "scope"
+      ],
       "properties": {
-        "schema": {"const": 1},
-        "kind": {"const": "windows-native-secondary-storage-v1"},
-        "source_workspace": {"type": "string", "minLength": 1},
-        "storage_workspace": {"type": "string", "minLength": 1},
-        "sdk_origin": {"type": "string", "minLength": 1},
-        "owner": {"const": "root-windows-secondary-v1"},
-        "expected_peak_bytes": {"const": 805306368},
-        "aggregate_max_scratch_bytes": {"const": 21474836480},
-        "min_free_bytes": {"const": 10737418240},
-        "purpose": {"type": "string", "minLength": 1},
-        "guard": {"type": "string", "minLength": 1},
-        "retention": {"type": "string", "minLength": 1},
-        "scope": {"type": "string", "minLength": 1}
+        "schema": {
+          "const": 1
+        },
+        "kind": {
+          "const": "windows-native-secondary-storage-v1"
+        },
+        "source_workspace": {
+          "type": "string",
+          "minLength": 1
+        },
+        "storage_workspace": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sdk_origin": {
+          "type": "string",
+          "minLength": 1
+        },
+        "owner": {
+          "const": "root-windows-secondary-v1"
+        },
+        "expected_peak_bytes": {
+          "const": 805306368
+        },
+        "aggregate_max_scratch_bytes": {
+          "const": 21474836480
+        },
+        "min_free_bytes": {
+          "const": 10737418240
+        },
+        "purpose": {
+          "type": "string",
+          "minLength": 1
+        },
+        "guard": {
+          "type": "string",
+          "minLength": 1
+        },
+        "retention": {
+          "type": "string",
+          "minLength": 1
+        },
+        "scope": {
+          "type": "string",
+          "minLength": 1
+        }
       }
     },
     "recipe": {
@@ -40,10 +87,18 @@
         "storage_profile": {
           "type": "object",
           "additionalProperties": false,
-          "required": ["path", "sha256"],
+          "required": [
+            "path",
+            "sha256"
+          ],
           "properties": {
-            "path": {"const": "compat/build-profiles/windows-native-secondary-v1.json"},
-            "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+            "path": {
+              "const": "compat/build-profiles/windows-native-secondary-v1.json"
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            }
           }
         },
         "schema": {
@@ -682,6 +737,9 @@
             "impact": {
               "type": "string",
               "minLength": 1
+            },
+            "evidence_store": {
+              "$ref": "#/$defs/retained-store-ref"
             }
           }
         },
@@ -881,8 +939,28 @@
                   "pattern": "^[0-9a-f]{64}$"
                 }
               }
+            },
+            "evidence_store": {
+              "$ref": "#/$defs/retained-store-ref"
             }
           }
+        }
+      }
+    },
+    "retained-store-ref": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "const": "compat/evidence-stores/secondary-v1.json"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
         }
       }
     }

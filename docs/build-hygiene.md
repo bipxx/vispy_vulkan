@@ -195,6 +195,40 @@ audit the same archive bytes with the correct source expectation before deciding
 that another assembly is needed. Reuse existing preferred source/license
 archives by hash; keep only distinct harness/profile sources and focused results.
 
+## Retained evidence on secondary storage
+
+[`secondary-v1`](../compat/evidence-stores/secondary-v1.json) explicitly describes
+the existing Windows and WSL views of the source workspace and D: retained
+store. `tools/retained_evidence.py` validates that hash-bound profile, separate
+canonical roots and their actual host directories. It rejects managed-scratch
+roots and root aliases. There is no ambient environment override, alternate-root
+search, source copy or SDK/dependency relocation. The existing retained-file
+hash, containment and scratch checks still run under the selected evidence root.
+Omitting the selector preserves the original source-root behavior.
+
+| Record | Source workspace retains authority for | Selected store supplies |
+| --- | --- | --- |
+| Windows native | Candidate/reviews/profile/runtime inputs, original source inputs, preparation, SDK record/consumer/manifest, tool origins | Recipe, original result/logs, before/after source maps, caches/projects/CTest and native outputs |
+| Linux native | Candidate/reviews/profile/runtime inputs, schema and producer policy | Original capture descriptor and its retained original CI payloads |
+| Wheel archive | Candidate/profile, source version, runtime package contract, pure sources and notices | Exact wheel and native output files |
+
+Native records put `evidence_store: {path, sha256}` inside their existing `reuse`
+object. Both independent `native_reuse_links` bind the digest of that complete
+object, including the store selection. The Windows recipe's existing scratch
+policy is a separate input; retention placement does not rewrite where a producer
+originally ran. Linux capture validation reads the schema at the source root and
+the original bytes at the evidence root, preserving original remote paths and
+checking imported scratch absence under both local roots. Archive records carry
+an optional top-level `evidence_store` reference and continue to report missing
+producer/installed gates rather than artifact admission.
+
+The imported helper is a required candidate preparation-tool identity. Missing
+or changed helper bytes therefore invalidate a new candidate before origin or
+review checks. Existing v1 candidates/approvals are not rewritten to fit these
+new identities. Keep an admitted v1 store profile immutable; a successor profile
+needs explicit schema support and new bindings. No positive synthetic record,
+raw archive check or historical proof replay supplies an actual approval.
+
 ## Local R2 Linux native profile
 
 Local R2 Linux integration uses the explicit

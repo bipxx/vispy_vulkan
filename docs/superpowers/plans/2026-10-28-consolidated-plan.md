@@ -96,8 +96,21 @@ The original omitted-version caller failure is retained; the retry verifies the
 same archive bytes using an explicit source-bound v2 expectation and leaves v1
 verifier defaults unchanged. Cleanup removes 42,527,510 bytes and rehashes 24/58
 retained entries. [Windows package/installed evidence](../../../build/runs/windows-current-installed-377/external-evidence.json).
-Next, implement formal cross-store reference admission with the original source/SDK
-origins and independent review bindings preserved. Renew successor records and
+Cross-store source/proof support is now implemented: a hash-bound store profile
+selects produced proof/capture/wheel bytes on D:, while source authority retains
+candidate/review/runtime inputs, preparation and SDK/tool origins. Native reuse
+review digests include the store selection; the imported helper is mandatory in
+candidate tool identities. All 25 new controls pass on Windows and WSL. The full
+Windows four-module run has 237 passes and three old-record failures, not a full
+pass. A full WSL attempt timed out at the unchanged 150-second limit; targeted
+conformance then passed within that limit. Initial fixture failures and timeout
+remain retained. Real native proofs 325/374, original Linux capture 350 and both
+current wheel archive joins replay unchanged. No native build, install, source
+clone or origin relocation was needed.
+[Store conformance/replays](../../../build/runs/evidence-contracts-382/external-evidence.json).
+Next, prepare separately versioned successor candidate and provenance records
+using this store authority, then obtain their exact independent source/scope
+review bindings. Preserve canonical v1 records. Renew successor records and
 strict/profile/CI evidence afterward; no old record is repinned to imply a pass.
 C: native allocation remains stopped. Native proof does not grant wheel,
 candidate, hardware or release admission.

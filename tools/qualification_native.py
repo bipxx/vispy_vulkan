@@ -20,12 +20,14 @@ try:
     from .qualification_artifact import (SDK_SHA, COMPILER_SHA, native_sdk, retained_file,
                                          sha, validate_sdk)
     from . import native_epoch
+    from .retained_evidence import evidence_root
 except ImportError:
     from compatibility_candidate import scope_digest, validate_candidate
     from compatibility_conservation import digest
     from compatibility_inventory import ROOT, InventoryError, check, file_ref, read_json, shape, unique_by
     from qualification_artifact import SDK_SHA, COMPILER_SHA, native_sdk, retained_file, sha, validate_sdk
     import native_epoch
+    from retained_evidence import evidence_root
 
 SCHEMA = 'compat/qualification-native.schema.json'
 STORAGE_PROFILE = 'compat/build-profiles/windows-native-secondary-v1.json'
@@ -258,9 +260,10 @@ def validate_record(record, root=ROOT):
     validate_shape(record, 'record', root)
     candidate = read_json(retained_file(root, record['candidate']))
     validate_candidate(candidate, root, require_reviewed=True)
-    recipe = read_json(retained_file(root, record['recipe']))
-    validate_recipe(recipe, root)
     reuse = record['reuse']
+    evidence = evidence_root(root, reuse.get('evidence_store'))
+    recipe = read_json(retained_file(evidence, record['recipe']))
+    validate_recipe(recipe, root)
     check(reuse['candidate_scope_sha256'] == scope_digest(candidate), 'native reuse candidate scope changed')
     check(reuse['recipe_sha256'] == recipe_digest(recipe), 'native reuse recipe changed')
     profiles = {p['id']: p for p in candidate['profiles']}
@@ -303,21 +306,21 @@ def validate_record(record, root=ROOT):
     consumer = read_json(retained_file(root, sdk_record['consumer']))
     check(PureWindowsPath(consumer['compiler']) == PureWindowsPath(tools['compiler']['origin']),
           'native compiler origin differs from SDK consumer')
-    raw = read_json(retained_file(root, record['result']))
+    raw = read_json(retained_file(evidence, record['result']))
     validate_shape(raw, 'result', root)
     check(PureWindowsPath(raw['locations']['sdk']) == PureWindowsPath(str(retained_file(root, sdk_record['manifest']).parent)),
           'native build used another SDK origin')
     for command in raw['commands']:
-        retained_file(root, command['log'])
+        retained_file(evidence, command['log'])
     projects = unique_by(record['projects'], lambda p: p['target'], 'retained native project')
-    projects = {name: (retained_file(root, p['before']), retained_file(root, p['after'])) for name, p in projects.items()}
+    projects = {name: (retained_file(evidence, p['before']), retained_file(evidence, p['after'])) for name, p in projects.items()}
     outputs = unique_by(record['outputs'], lambda p: p['member'], 'retained native output')
-    outputs = {name: sha(retained_file(root, p['file']).read_bytes()) for name, p in outputs.items()}
+    outputs = {name: sha(retained_file(evidence, p['file']).read_bytes()) for name, p in outputs.items()}
     result = validate_proofs(recipe, raw, expected,
-                           read_json(retained_file(root, record['source_before'])), read_json(retained_file(root, record['source_after'])),
-                           retained_file(root, record['cache_before']).read_bytes(),
-                           retained_file(root, record['cache_after']).read_bytes(),
-                           consumer, projects, retained_file(root, record['ctest']).read_bytes(), outputs, root)
+                           read_json(retained_file(evidence, record['source_before'])), read_json(retained_file(evidence, record['source_after'])),
+                           retained_file(evidence, record['cache_before']).read_bytes(),
+                           retained_file(evidence, record['cache_after']).read_bytes(),
+                           consumer, projects, retained_file(evidence, record['ctest']).read_bytes(), outputs, root)
     check(result['production_sha256'] == reuse['production_sha256'], 'native reuse output/production identity changed')
     return result
 

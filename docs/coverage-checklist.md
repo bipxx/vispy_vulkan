@@ -394,6 +394,27 @@ Authority: [capture coverage map](../compat/candidates/tk-capture-1/coverage.jso
     capture retention path-format error is preserved with its corrected reader;
     no test verdict or validator was changed.
 
+- [x] **FIX-06-EVIDENCE-STORE — Cross-store source/proof support:** optional
+  hash-bound `secondary-v1` authority selects the retained D: store for produced
+  native proofs, Linux original CI payloads and wheel/output bytes. Candidate,
+  review, schema/policy, source, preparation and SDK origins retain source-root
+  resolution. Native reuse reviews bind the store choice; the imported helper
+  is a required candidate tool identity. Legacy records omit the selector and
+  retain their previous behavior. Existing retained-file and scratch rules are
+  unchanged; source/SDK origins and original producer locations do not move.
+  All 25 new store/candidate-pin controls pass on Windows and WSL, including full
+  synthetic archive and Linux-record joins with explicit candidate seams. The
+  full Windows four-module run has 237 passes and three stale-v1-record failures;
+  it is not an overall pass. The full WSL run hit its unchanged 150-second limit;
+  only the targeted 25-case WSL completion is claimed. Initial scratch-root and
+  synthetic RECORD-version fixture failures remain retained and cleaned.
+  Real retained native proofs `325`/`374`, Linux CI capture `350`, and both current
+  Windows/Linux wheel archive joins replay unchanged, without a build or install.
+  [Conformance/replays](../build/runs/evidence-contracts-382/external-evidence.json),
+  [full WSL timeout](../build/runs/evidence-contracts-381/external-evidence.json).
+  This closes the source-level resolver blocker. Actual successor candidate,
+  independent review, provenance/admission records, strict rows and CI remain open.
+
 - [x] **FIX-06-WINDOWS-PACKAGE — Current Windows v2 packaging:** wheel
   `5cb463cd5e5c889af8b5c8d605bd6f60fe33d1bbeed521443d4f0966788017f9`
   is `vispy-0.17.0+vulkan.2-cp312-cp312-win_amd64.whl` (6,808,391 bytes).

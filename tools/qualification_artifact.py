@@ -208,6 +208,10 @@ def audit_archive(data, *, manifest_data, pure_hashes, notices, distribution_lic
 
 
 def validate_archive(record, root=ROOT):
+    try:
+        from .retained_evidence import evidence_root
+    except ImportError:
+        from retained_evidence import evidence_root
     root = Path(root)
     validate_shape(record, 'archive', root)
     validate_policy(root)
@@ -227,10 +231,11 @@ def validate_archive(record, root=ROOT):
     # D35: the Linux release wheel carries auditwheel's verdict, manylinux_2_39, retagged before qualification.
     platform_tag = 'win_amd64' if windows else 'manylinux_2_39_x86_64'
     suffix = '.' + abi + '-win_amd64.pyd' if windows else '.cpython-' + abi[2:] + '-x86_64-linux-gnu.so'
-    wheel = retained_file(root, record['wheel'])
+    evidence = evidence_root(root, record.get('evidence_store'))
+    wheel = retained_file(evidence, record['wheel'])
     check(wheel.name == 'vispy-' + version + '-' + abi + '-' + abi + '-' + platform_tag + '.whl', 'wrong wheel filename/profile ABI')
     outputs = unique_by(record['native_outputs'], lambda r: r['member'], 'native output member')
-    native_hashes = {name: sha(retained_file(root, ref['file']).read_bytes()) for name, ref in outputs.items()}
+    native_hashes = {name: sha(retained_file(evidence, ref['file']).read_bytes()) for name, ref in outputs.items()}
     result = audit_archive(wheel.read_bytes(), manifest_data=(root / 'compat/runtime-package.json').read_bytes(),
                            pure_hashes=runtime_package.source_package_hashes(root), notices=source_notices(root),
                            distribution_licenses=source_distribution_licenses(root, version=version), native_hashes=native_hashes,
