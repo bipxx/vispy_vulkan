@@ -1,0 +1,965 @@
+{
+  "schema": 1,
+  "status": "FINITE_INSTALLED_CPU_EVENT_ACCEPTANCE",
+  "catalog": {
+    "path": "build/runs/api-reconciliation-367/method-catalog.json",
+    "sha256": "4f914bbc161bc2efe3028134975359e3f4e92e4d76d31b72252064c5a89ea633"
+  },
+  "catalog_unchanged": true,
+  "catalog_operations_still_unreviewed": 984,
+  "operation_groups_with_finite_scope": 38,
+  "visible_aliases_with_finite_scope": 62,
+  "original_parent_ids": [
+    "app.keyevent",
+    "app.mouseevent"
+  ],
+  "test_source": {
+    "path": "tests/contract/test_event_values.py",
+    "sha256": "6265c9e425d02f3017f91ff4f4f129f6b00b764ca82e92f9c2c7e3bc5c38eefc"
+  },
+  "source_hashes": {
+    "tests/contract/test_event_values.py": "6265c9e425d02f3017f91ff4f4f129f6b00b764ca82e92f9c2c7e3bc5c38eefc",
+    "src/vispy/util/event.py": "eecbc1379d85036481762cabc1ac4320a7b340bf7644e3f78ee693a018f252ff",
+    "src/vispy/util/keys.py": "b1f44e7f6cdc9fbbfc65adb0efa586d585644c14c1b5742b9703cdfcb1d8e52b",
+    "src/vispy/app/canvas.py": "00a98debb5519d344c9c9e9ee0f838eb9bfae784cd7c36eb86581076fcec310f",
+    "src/vispy/scene/events.py": "5d8362f30b2ec799e6ec8f5194c3010b39be4bb1e3867169c8ce1c8717965fa1",
+    "src/vispy/util/tests/test_event_emitter.py": "c8823936bbfaf9fac6c15e2f018fe5bec298d6a84d1d05177238a1b189a708bc",
+    "src/vispy/util/tests/test_key.py": "c98b7735e4bec1ad53eade7db1f38702ceb8b742907ffa0d75e07cf5d1800d6d"
+  },
+  "observations": [
+    {
+      "profile": "windows-v2-installed-cpu-events",
+      "wheel": {
+        "path": "build/artifacts/5cb463cd5e5c889af8b5c8d605bd6f60fe33d1bbeed521443d4f0966788017f9/vispy-0.17.0+vulkan.2-cp312-cp312-win_amd64.whl",
+        "sha256": "5cb463cd5e5c889af8b5c8d605bd6f60fe33d1bbeed521443d4f0966788017f9"
+      },
+      "wheel_source_commit": "e99db28b2a80d8c8f46a2210957243689b5dcc3b",
+      "interpreter": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\.venv\\Scripts\\python.exe",
+      "python_version": "3.12.8 (main, Dec 19 2024, 14:41:01) [MSC v.1942 64 bit (AMD64)]",
+      "cases": 57,
+      "new_cases": 30,
+      "shipped_cases": 27,
+      "skipped": 0,
+      "installed_members_verified": 537,
+      "loaded_vispy_modules": 180,
+      "renderer_module_loaded": false,
+      "backend_modules": [],
+      "native_cpu_helpers": [
+        "vispy.visuals.text._sdf_cpu"
+      ],
+      "evidence": {
+        "path": "build/runs/event-installed-windows-387/verification.json",
+        "sha256": "cd580d94cccc6f83ccbcd322bc6c0ae036928d07500aeb601618cbe89e29f0bb"
+      },
+      "raw_report": {
+        "path": "build/runs/event-installed-windows-387/event-result.json",
+        "sha256": "bc2fd751efdc5853fdf514a00f5895dde4e6acb162e635eaba82ec0159645faa"
+      },
+      "test_results": {
+        "path": "build/runs/event-installed-windows-387/events.xml",
+        "sha256": "a81cae7989f6a057a41d45a842f6e85bbe59a9c421174f773881a95fb4bb266c"
+      },
+      "cleanup": {
+        "path": "build/runs/event-installed-windows-387/post-cleanup.json",
+        "sha256": "4cfe0fe88eac75dfd1b7ed6c13dc0c15005f3e2ad94f4cf19ac438436c3c8958"
+      }
+    },
+    {
+      "profile": "wsl-v2-installed-cpu-events",
+      "wheel": {
+        "path": "build/artifacts/b4c724842cbb8bfadb2097a025acd30cbdce006bad2b27b3b62b149cda398b69/vispy-0.17.0+vulkan.2-cp312-cp312-manylinux_2_39_x86_64.whl",
+        "sha256": "b4c724842cbb8bfadb2097a025acd30cbdce006bad2b27b3b62b149cda398b69"
+      },
+      "wheel_source_commit": "c141eadead15a97f9f44c552437e9519e2ee7864",
+      "interpreter": "/home/heq/.local/share/uv/python/cpython-3.12.13-linux-x86_64-gnu/bin/python3.12",
+      "python_version": "3.12.13 (main, Apr 14 2026, 14:29:00) [Clang 22.1.3 ]",
+      "cases": 57,
+      "new_cases": 30,
+      "shipped_cases": 27,
+      "skipped": 0,
+      "installed_members_verified": 537,
+      "loaded_vispy_modules": 179,
+      "renderer_module_loaded": false,
+      "backend_modules": [],
+      "native_cpu_helpers": [
+        "vispy.visuals.text._sdf_cpu"
+      ],
+      "evidence": {
+        "path": "build/runs/event-installed-wsl-388/verification.json",
+        "sha256": "acdab0fbee7c719474adf79665aa7bb1f1beee5072f5b478bcb1f8b022ff8d83"
+      },
+      "raw_report": {
+        "path": "build/runs/event-installed-wsl-388/event-result.json",
+        "sha256": "0d294a520483f4902934ed0850243e5e35c8abe6ca920c806c0c9831abebbe93"
+      },
+      "test_results": {
+        "path": "build/runs/event-installed-wsl-388/events.xml",
+        "sha256": "8887709986ac304a09e9c59503e91c015fb7b16c8fe14ac3e1e0a0d752072bec"
+      },
+      "cleanup": {
+        "path": "build/runs/event-installed-wsl-388/post-cleanup.json",
+        "sha256": "094eedbc6a510cc47c8ca521a67988b59a6fb27824a95383e5b331365de714f8"
+      }
+    }
+  ],
+  "scopes": [
+    {
+      "id": "mouse-payload",
+      "values": "Default (0,0) position/zero delta; buttons None/1/2/3; floating position/delta, modifier tuples, native/custom payload identity.",
+      "mutation": "Position/delta arrays copied, modifier list converted to tuple; caller button list retained by identity.",
+      "failure_recovery": "Invalid string/object button conversion rejects; a subsequent valid event constructs normally."
+    },
+    {
+      "id": "mouse-history",
+      "values": "Finite acyclic press plus two moves, raw press/last links and is_dragging.",
+      "mutation": "drag_events excludes the press; trail projects coordinates to integer dtype by truncation.",
+      "failure_recovery": "Non-drag returns None; cyclic history and arbitrary shape/domain behavior are not accepted by this scope."
+    },
+    {
+      "id": "key-payload",
+      "values": "Enter/A/None keys, empty/case-sensitive/Unicode text, Shift/Control modifier payloads; no OS translation.",
+      "mutation": "Key/native identity and text retained; modifiers copied to tuple.",
+      "failure_recovery": "Unsupported dictionary comparison raises ValueError and later valid key comparison succeeds; string aliases are case-insensitive and ASCII character matching uses uppercase code65, not97."
+    },
+    {
+      "id": "resize-draw",
+      "values": "Logical (30,20), explicit physical (60,40) or logical fallback; draw region None or (1,2,3,4).",
+      "mutation": "Tuple conversion preserves separate logical/physical values; native and region payload identities retained.",
+      "failure_recovery": "ResizeEvent requires an iterable size; its default None/int size raises TypeError, followed by valid construction. No delivered DPI behavior is inferred."
+    },
+    {
+      "id": "dispatch",
+      "values": "Event and five subclass source stacks, handled/blocked flags, connect/disconnect/order, typed/prebuilt events and existing shipped emitter cases.",
+      "mutation": "handled does not stop later callbacks; blocked does. Source stacks balance after normal or failed dispatch.",
+      "failure_recovery": "Explicit callback exception propagates with ignore_callback_errors=False; disconnect and re-emission recover. Existing27 shipped tests cover additional ordering/blocking/reentrance/key cases."
+    },
+    {
+      "id": "emitter-group",
+      "values": "auto_connect=False; Event children; dynamic names and group observer.",
+      "mutation": "Whole-name collision preflight leaves later child absent; valid add and group block/unblock/disconnect work.",
+      "failure_recovery": "Duplicate-name rejection followed by successful addition/emission; general auto-connect/type-failure atomicity is outside this scope."
+    },
+    {
+      "id": "scene-wrapper",
+      "values": "CPU affine (3,4)->(7,11,0,1), cached coordinates and reassigned visual ->(1,9,0,1); raw history/payload forwarding.",
+      "mutation": "Changing visual invalidates coordinate cache. copy shares mouse_event/visual but starts with fresh flags/source stack. Wrapper native is None while raw mouse native remains accessible.",
+      "failure_recovery": "Missing scale raises TypeError; a new gesture_zoom scale1.25 succeeds. Historical wrapper type semantics, picking, general transforms and physical delivery are not accepted here."
+    }
+  ],
+  "operations": [
+    {
+      "kind": "constructor",
+      "name": "__init__",
+      "aliases": [
+        "vispy.app.KeyEvent.__init__"
+      ],
+      "original_parents": [
+        "app.keyevent"
+      ],
+      "source": {
+        "call": {
+          "line": 774,
+          "path": "src/vispy/app/canvas.py",
+          "sha256": "00a98debb5519d344c9c9e9ee0f838eb9bfae784cd7c36eb86581076fcec310f"
+        }
+      },
+      "acceptance": "finite-cpu-values-only",
+      "full_value_domain_accepted": false
+    },
+    {
+      "kind": "property",
+      "name": "blocked",
+      "aliases": [
+        "vispy.app.KeyEvent.blocked",
+        "vispy.app.MouseEvent.blocked",
+        "vispy.app.canvas.DrawEvent.blocked",
+        "vispy.app.canvas.ResizeEvent.blocked",
+        "vispy.scene.events.SceneMouseEvent.blocked"
+      ],
+      "original_parents": [
+        "app.keyevent",
+        "app.mouseevent"
+      ],
+      "source": {
+        "get": {
+          "line": 103,
+          "path": "src/vispy/util/event.py",
+          "sha256": "eecbc1379d85036481762cabc1ac4320a7b340bf7644e3f78ee693a018f252ff"
+        },
+        "set": {
+          "line": 112,
+          "path": "src/vispy/util/event.py",
+          "sha256": "eecbc1379d85036481762cabc1ac4320a7b340bf7644e3f78ee693a018f252ff"
+        }
+      },
+      "acceptance": "finite-cpu-values-only",
+      "full_value_domain_accepted": false
+    },
+    {
+      "kind": "property",
+      "name": "handled",
+      "aliases": [
+        "vispy.app.KeyEvent.handled",
+        "vispy.app.MouseEvent.handled",
+        "vispy.app.canvas.DrawEvent.handled",
+        "vispy.app.canvas.ResizeEvent.handled",
+        "vispy.scene.events.SceneMouseEvent.handled"
+      ],
+      "original_parents": [
+        "app.keyevent",
+        "app.mouseevent"
+      ],
+      "source": {
+        "get": {
+          "line": 89,
+          "path": "src/vispy/util/event.py",
+          "sha256": "eecbc1379d85036481762cabc1ac4320a7b340bf7644e3f78ee693a018f252ff"
+        },
+        "set": {
+          "line": 99,
+          "path": "src/vispy/util/event.py",
+          "sha256": "eecbc1379d85036481762cabc1ac4320a7b340bf7644e3f78ee693a018f252ff"
+        }
+      },
+      "acceptance": "finite-cpu-values-only",
+      "full_value_domain_accepted": false
+    },
+    {
+      "kind": "property",
+      "name": "key",
+      "aliases": [
+        "vispy.app.KeyEvent.key"
+      ],
+      "original_parents": [
+        "app.keyevent"
+      ],
+      "source": {
+        "get": {
+          "line": 780,
+          "path": "src/vispy/app/canvas.py",
+          "sha256": "00a98debb5519d344c9c9e9ee0f838eb9bfae784cd7c36eb86581076fcec310f"
+        }
+      },
+      "acceptance": "finite-cpu-values-only",
+      "full_value_domain_accepted": false
+    },
+    {
+      "kind": "property",
+      "name": "modifiers",
+      "aliases": [
+        "vispy.app.KeyEvent.modifiers"
+      ],
+      "original_parents": [
+        "app.keyevent"
+      ],
+      "source": {
+        "get": {
+          "line": 788,
+          "path": "src/vispy/app/canvas.py",
+          "sha256": "00a98debb5519d344c9c9e9ee0f838eb9bfae784cd7c36eb86581076fcec310f"
+        }
+      },
+      "acceptance": "finite-cpu-values-only",
+      "full_value_domain_accepted": false
+    },
+    {
+      "kind": "property",
+      "name": "native",
+      "aliases": [
+        "vispy.app.KeyEvent.native",
+        "vispy.app.MouseEvent.native",
+        "vispy.app.canvas.DrawEvent.native",
+        "vispy.app.canvas.ResizeEvent.native",
+        "vispy.scene.events.SceneMouseEvent.native"
+      ],
+      "original_parents": [
+        "app.keyevent",
+        "app.mouseevent"
+      ],
+      "source": {
+        "get": {
+          "line": 84,
+          "path": "src/vispy/util/event.py",
+          "sha256": "eecbc1379d85036481762cabc1ac4320a7b340bf7644e3f78ee693a018f252ff"
+        }
+      },
+      "acceptance": "finite-cpu-values-only",
+      "full_value_domain_accepted": false
+    },
+    {
+      "kind": "property",
+      "name": "source",
+      "aliases": [
+        "vispy.app.KeyEvent.source",
+        "vispy.app.MouseEvent.source",
+        "vispy.app.canvas.DrawEvent.source",
+        "vispy.app.canvas.ResizeEvent.source",
+        "vispy.scene.events.SceneMouseEvent.source"
+      ],
+      "original_parents": [
+        "app.keyevent",
+        "app.mouseevent"
+      ],
+      "source": {
+        "get": {
+          "line": 60,
+          "path": "src/vispy/util/event.py",
+          "sha256": "eecbc1379d85036481762cabc1ac4320a7b340bf7644e3f78ee693a018f252ff"
+        }
+      },
+      "acceptance": "finite-cpu-values-only",
+      "full_value_domain_accepted": false
+    },
+    {
+      "kind": "property",
+      "name": "sources",
+      "aliases": [
+        "vispy.app.KeyEvent.sources",
+        "vispy.app.MouseEvent.sources",
+        "vispy.app.canvas.DrawEvent.sources",
+        "vispy.app.canvas.ResizeEvent.sources",
+        "vispy.scene.events.SceneMouseEvent.sources"
+      ],
+      "original_parents": [
+        "app.keyevent",
+        "app.mouseevent"
+      ],
+      "source": {
+        "get": {
+          "line": 65,
+          "path": "src/vispy/util/event.py",
+          "sha256": "eecbc1379d85036481762cabc1ac4320a7b340bf7644e3f78ee693a018f252ff"
+        }
+      },
+      "acceptance": "finite-cpu-values-only",
+      "full_value_domain_accepted": false
+    },
+    {
+      "kind": "property",
+      "name": "text",
+      "aliases": [
+        "vispy.app.KeyEvent.text"
+      ],
+      "original_parents": [
+        "app.keyevent"
+      ],
+      "source": {
+        "get": {
+          "line": 784,
+          "path": "src/vispy/app/canvas.py",
+          "sha256": "00a98debb5519d344c9c9e9ee0f838eb9bfae784cd7c36eb86581076fcec310f"
+        }
+      },
+      "acceptance": "finite-cpu-values-only",
+      "full_value_domain_accepted": false
+    },
+    {
+      "kind": "property",
+      "name": "type",
+      "aliases": [
+        "vispy.app.KeyEvent.type",
+        "vispy.app.MouseEvent.type",
+        "vispy.app.canvas.DrawEvent.type",
+        "vispy.app.canvas.ResizeEvent.type",
+        "vispy.scene.events.SceneMouseEvent.type"
+      ],
+      "original_parents": [
+        "app.keyevent",
+        "app.mouseevent"
+      ],
+      "source": {
+        "get": {
+          "line": 79,
+          "path": "src/vispy/util/event.py",
+          "sha256": "eecbc1379d85036481762cabc1ac4320a7b340bf7644e3f78ee693a018f252ff"
+        }
+      },
+      "acceptance": "finite-cpu-values-only",
+      "full_value_domain_accepted": false
+    },
+    {
+      "kind": "constructor",
+      "name": "__init__",
+      "aliases": [
+        "vispy.app.MouseEvent.__init__"
+      ],
+      "original_parents": [
+        "app.mouseevent"
+      ],
+      "source": {
+        "call": {
+          "line": 661,
+          "path": "src/vispy/app/canvas.py",
+          "sha256": "00a98debb5519d344c9c9e9ee0f838eb9bfae784cd7c36eb86581076fcec310f"
+        }
+      },
+      "acceptance": "finite-cpu-values-only",
+      "full_value_domain_accepted": false
+    },
+    {
+      "kind": "property",
+      "name": "button",
+      "aliases": [
+        "vispy.app.MouseEvent.button"
+      ],
+      "original_parents": [
+        "app.mouseevent"
+      ],
+      "source": {
+        "get": {
+          "line": 678,
+          "path": "src/vispy/app/canvas.py",
+          "sha256": "00a98debb5519d344c9c9e9ee0f838eb9bfae784cd7c36eb86581076fcec310f"
+        }
+      },
+      "acceptance": "finite-cpu-values-only",
+      "full_value_domain_accepted": false
+    },
+    {
+      "kind": "property",
+      "name": "buttons",
+      "aliases": [
+        "vispy.app.MouseEvent.buttons"
+      ],
+      "original_parents": [
+        "app.mouseevent"
+      ],
+      "source": {
+        "get": {
+          "line": 682,
+          "path": "src/vispy/app/canvas.py",
+          "sha256": "00a98debb5519d344c9c9e9ee0f838eb9bfae784cd7c36eb86581076fcec310f"
+        }
+      },
+      "acceptance": "finite-cpu-values-only",
+      "full_value_domain_accepted": false
+    },
+    {
+      "kind": "property",
+      "name": "delta",
+      "aliases": [
+        "vispy.app.MouseEvent.delta"
+      ],
+      "original_parents": [
+        "app.mouseevent"
+      ],
+      "source": {
+        "get": {
+          "line": 690,
+          "path": "src/vispy/app/canvas.py",
+          "sha256": "00a98debb5519d344c9c9e9ee0f838eb9bfae784cd7c36eb86581076fcec310f"
+        }
+      },
+      "acceptance": "finite-cpu-values-only",
+      "full_value_domain_accepted": false
+    },
+    {
+      "kind": "method",
+      "name": "drag_events",
+      "aliases": [
+        "vispy.app.MouseEvent.drag_events"
+      ],
+      "original_parents": [
+        "app.mouseevent"
+      ],
+      "source": {
+        "call": {
+          "line": 715,
+          "path": "src/vispy/app/canvas.py",
+          "sha256": "00a98debb5519d344c9c9e9ee0f838eb9bfae784cd7c36eb86581076fcec310f"
+        }
+      },
+      "acceptance": "finite-cpu-values-only",
+      "full_value_domain_accepted": false
+    },
+    {
+      "kind": "property",
+      "name": "is_dragging",
+      "aliases": [
+        "vispy.app.MouseEvent.is_dragging"
+      ],
+      "original_parents": [
+        "app.mouseevent"
+      ],
+      "source": {
+        "get": {
+          "line": 710,
+          "path": "src/vispy/app/canvas.py",
+          "sha256": "00a98debb5519d344c9c9e9ee0f838eb9bfae784cd7c36eb86581076fcec310f"
+        }
+      },
+      "acceptance": "finite-cpu-values-only",
+      "full_value_domain_accepted": false
+    },
+    {
+      "kind": "property",
+      "name": "last_event",
+      "aliases": [
+        "vispy.app.MouseEvent.last_event"
+      ],
+      "original_parents": [
+        "app.mouseevent"
+      ],
+      "source": {
+        "get": {
+          "line": 698,
+          "path": "src/vispy/app/canvas.py",
+          "sha256": "00a98debb5519d344c9c9e9ee0f838eb9bfae784cd7c36eb86581076fcec310f"
+        }
+      },
+      "acceptance": "finite-cpu-values-only",
+      "full_value_domain_accepted": false
+    },
+    {
+      "kind": "property",
+      "name": "modifiers",
+      "aliases": [
+        "vispy.app.MouseEvent.modifiers"
+      ],
+      "original_parents": [
+        "app.mouseevent"
+      ],
+      "source": {
+        "get": {
+          "line": 686,
+          "path": "src/vispy/app/canvas.py",
+          "sha256": "00a98debb5519d344c9c9e9ee0f838eb9bfae784cd7c36eb86581076fcec310f"
+        }
+      },
+      "acceptance": "finite-cpu-values-only",
+      "full_value_domain_accepted": false
+    },
+    {
+      "kind": "property",
+      "name": "pos",
+      "aliases": [
+        "vispy.app.MouseEvent.pos"
+      ],
+      "original_parents": [
+        "app.mouseevent"
+      ],
+      "source": {
+        "get": {
+          "line": 674,
+          "path": "src/vispy/app/canvas.py",
+          "sha256": "00a98debb5519d344c9c9e9ee0f838eb9bfae784cd7c36eb86581076fcec310f"
+        }
+      },
+      "acceptance": "finite-cpu-values-only",
+      "full_value_domain_accepted": false
+    },
+    {
+      "kind": "property",
+      "name": "press_event",
+      "aliases": [
+        "vispy.app.MouseEvent.press_event"
+      ],
+      "original_parents": [
+        "app.mouseevent"
+      ],
+      "source": {
+        "get": {
+          "line": 694,
+          "path": "src/vispy/app/canvas.py",
+          "sha256": "00a98debb5519d344c9c9e9ee0f838eb9bfae784cd7c36eb86581076fcec310f"
+        }
+      },
+      "acceptance": "finite-cpu-values-only",
+      "full_value_domain_accepted": false
+    },
+    {
+      "kind": "property",
+      "name": "time",
+      "aliases": [
+        "vispy.app.MouseEvent.time"
+      ],
+      "original_parents": [
+        "app.mouseevent"
+      ],
+      "source": {
+        "get": {
+          "line": 702,
+          "path": "src/vispy/app/canvas.py",
+          "sha256": "00a98debb5519d344c9c9e9ee0f838eb9bfae784cd7c36eb86581076fcec310f"
+        }
+      },
+      "acceptance": "finite-cpu-values-only",
+      "full_value_domain_accepted": false
+    },
+    {
+      "kind": "method",
+      "name": "trail",
+      "aliases": [
+        "vispy.app.MouseEvent.trail"
+      ],
+      "original_parents": [
+        "app.mouseevent"
+      ],
+      "source": {
+        "call": {
+          "line": 734,
+          "path": "src/vispy/app/canvas.py",
+          "sha256": "00a98debb5519d344c9c9e9ee0f838eb9bfae784cd7c36eb86581076fcec310f"
+        }
+      },
+      "acceptance": "finite-cpu-values-only",
+      "full_value_domain_accepted": false
+    },
+    {
+      "kind": "constructor",
+      "name": "__init__",
+      "aliases": [
+        "vispy.app.canvas.DrawEvent.__init__"
+      ],
+      "original_parents": [],
+      "source": {
+        "call": {
+          "line": 852,
+          "path": "src/vispy/app/canvas.py",
+          "sha256": "00a98debb5519d344c9c9e9ee0f838eb9bfae784cd7c36eb86581076fcec310f"
+        }
+      },
+      "acceptance": "finite-cpu-values-only",
+      "full_value_domain_accepted": false
+    },
+    {
+      "kind": "property",
+      "name": "region",
+      "aliases": [
+        "vispy.app.canvas.DrawEvent.region"
+      ],
+      "original_parents": [],
+      "source": {
+        "get": {
+          "line": 856,
+          "path": "src/vispy/app/canvas.py",
+          "sha256": "00a98debb5519d344c9c9e9ee0f838eb9bfae784cd7c36eb86581076fcec310f"
+        }
+      },
+      "acceptance": "finite-cpu-values-only",
+      "full_value_domain_accepted": false
+    },
+    {
+      "kind": "constructor",
+      "name": "__init__",
+      "aliases": [
+        "vispy.app.canvas.ResizeEvent.__init__"
+      ],
+      "original_parents": [],
+      "source": {
+        "call": {
+          "line": 813,
+          "path": "src/vispy/app/canvas.py",
+          "sha256": "00a98debb5519d344c9c9e9ee0f838eb9bfae784cd7c36eb86581076fcec310f"
+        }
+      },
+      "acceptance": "finite-cpu-values-only",
+      "full_value_domain_accepted": false
+    },
+    {
+      "kind": "property",
+      "name": "physical_size",
+      "aliases": [
+        "vispy.app.canvas.ResizeEvent.physical_size"
+      ],
+      "original_parents": [],
+      "source": {
+        "get": {
+          "line": 825,
+          "path": "src/vispy/app/canvas.py",
+          "sha256": "00a98debb5519d344c9c9e9ee0f838eb9bfae784cd7c36eb86581076fcec310f"
+        }
+      },
+      "acceptance": "finite-cpu-values-only",
+      "full_value_domain_accepted": false
+    },
+    {
+      "kind": "property",
+      "name": "size",
+      "aliases": [
+        "vispy.app.canvas.ResizeEvent.size"
+      ],
+      "original_parents": [],
+      "source": {
+        "get": {
+          "line": 821,
+          "path": "src/vispy/app/canvas.py",
+          "sha256": "00a98debb5519d344c9c9e9ee0f838eb9bfae784cd7c36eb86581076fcec310f"
+        }
+      },
+      "acceptance": "finite-cpu-values-only",
+      "full_value_domain_accepted": false
+    },
+    {
+      "kind": "constructor",
+      "name": "__init__",
+      "aliases": [
+        "vispy.scene.events.SceneMouseEvent.__init__"
+      ],
+      "original_parents": [],
+      "source": {
+        "call": {
+          "line": 15,
+          "path": "src/vispy/scene/events.py",
+          "sha256": "5d8362f30b2ec799e6ec8f5194c3010b39be4bb1e3867169c8ce1c8717965fa1"
+        }
+      },
+      "acceptance": "finite-cpu-values-only",
+      "full_value_domain_accepted": false
+    },
+    {
+      "kind": "property",
+      "name": "button",
+      "aliases": [
+        "vispy.scene.events.SceneMouseEvent.button"
+      ],
+      "original_parents": [],
+      "source": {
+        "get": {
+          "line": 59,
+          "path": "src/vispy/scene/events.py",
+          "sha256": "5d8362f30b2ec799e6ec8f5194c3010b39be4bb1e3867169c8ce1c8717965fa1"
+        }
+      },
+      "acceptance": "finite-cpu-values-only",
+      "full_value_domain_accepted": false
+    },
+    {
+      "kind": "property",
+      "name": "buttons",
+      "aliases": [
+        "vispy.scene.events.SceneMouseEvent.buttons"
+      ],
+      "original_parents": [],
+      "source": {
+        "get": {
+          "line": 64,
+          "path": "src/vispy/scene/events.py",
+          "sha256": "5d8362f30b2ec799e6ec8f5194c3010b39be4bb1e3867169c8ce1c8717965fa1"
+        }
+      },
+      "acceptance": "finite-cpu-values-only",
+      "full_value_domain_accepted": false
+    },
+    {
+      "kind": "method",
+      "name": "copy",
+      "aliases": [
+        "vispy.scene.events.SceneMouseEvent.copy"
+      ],
+      "original_parents": [],
+      "source": {
+        "call": {
+          "line": 90,
+          "path": "src/vispy/scene/events.py",
+          "sha256": "5d8362f30b2ec799e6ec8f5194c3010b39be4bb1e3867169c8ce1c8717965fa1"
+        }
+      },
+      "acceptance": "finite-cpu-values-only",
+      "full_value_domain_accepted": false
+    },
+    {
+      "kind": "property",
+      "name": "delta",
+      "aliases": [
+        "vispy.scene.events.SceneMouseEvent.delta"
+      ],
+      "original_parents": [],
+      "source": {
+        "get": {
+          "line": 76,
+          "path": "src/vispy/scene/events.py",
+          "sha256": "5d8362f30b2ec799e6ec8f5194c3010b39be4bb1e3867169c8ce1c8717965fa1"
+        }
+      },
+      "acceptance": "finite-cpu-values-only",
+      "full_value_domain_accepted": false
+    },
+    {
+      "kind": "property",
+      "name": "last_event",
+      "aliases": [
+        "vispy.scene.events.SceneMouseEvent.last_event"
+      ],
+      "original_parents": [],
+      "source": {
+        "get": {
+          "line": 39,
+          "path": "src/vispy/scene/events.py",
+          "sha256": "5d8362f30b2ec799e6ec8f5194c3010b39be4bb1e3867169c8ce1c8717965fa1"
+        }
+      },
+      "acceptance": "finite-cpu-values-only",
+      "full_value_domain_accepted": false
+    },
+    {
+      "kind": "property",
+      "name": "modifiers",
+      "aliases": [
+        "vispy.scene.events.SceneMouseEvent.modifiers"
+      ],
+      "original_parents": [],
+      "source": {
+        "get": {
+          "line": 69,
+          "path": "src/vispy/scene/events.py",
+          "sha256": "5d8362f30b2ec799e6ec8f5194c3010b39be4bb1e3867169c8ce1c8717965fa1"
+        }
+      },
+      "acceptance": "finite-cpu-values-only",
+      "full_value_domain_accepted": false
+    },
+    {
+      "kind": "property",
+      "name": "pos",
+      "aliases": [
+        "vispy.scene.events.SceneMouseEvent.pos"
+      ],
+      "original_parents": [],
+      "source": {
+        "get": {
+          "line": 29,
+          "path": "src/vispy/scene/events.py",
+          "sha256": "5d8362f30b2ec799e6ec8f5194c3010b39be4bb1e3867169c8ce1c8717965fa1"
+        }
+      },
+      "acceptance": "finite-cpu-values-only",
+      "full_value_domain_accepted": false
+    },
+    {
+      "kind": "property",
+      "name": "press_event",
+      "aliases": [
+        "vispy.scene.events.SceneMouseEvent.press_event"
+      ],
+      "original_parents": [],
+      "source": {
+        "get": {
+          "line": 50,
+          "path": "src/vispy/scene/events.py",
+          "sha256": "5d8362f30b2ec799e6ec8f5194c3010b39be4bb1e3867169c8ce1c8717965fa1"
+        }
+      },
+      "acceptance": "finite-cpu-values-only",
+      "full_value_domain_accepted": false
+    },
+    {
+      "kind": "property",
+      "name": "scale",
+      "aliases": [
+        "vispy.scene.events.SceneMouseEvent.scale"
+      ],
+      "original_parents": [],
+      "source": {
+        "get": {
+          "line": 81,
+          "path": "src/vispy/scene/events.py",
+          "sha256": "5d8362f30b2ec799e6ec8f5194c3010b39be4bb1e3867169c8ce1c8717965fa1"
+        }
+      },
+      "acceptance": "finite-cpu-values-only",
+      "full_value_domain_accepted": false
+    },
+    {
+      "kind": "property",
+      "name": "visual",
+      "aliases": [
+        "vispy.scene.events.SceneMouseEvent.visual"
+      ],
+      "original_parents": [],
+      "source": {
+        "get": {
+          "line": 20,
+          "path": "src/vispy/scene/events.py",
+          "sha256": "5d8362f30b2ec799e6ec8f5194c3010b39be4bb1e3867169c8ce1c8717965fa1"
+        },
+        "set": {
+          "line": 24,
+          "path": "src/vispy/scene/events.py",
+          "sha256": "5d8362f30b2ec799e6ec8f5194c3010b39be4bb1e3867169c8ce1c8717965fa1"
+        }
+      },
+      "acceptance": "finite-cpu-values-only",
+      "full_value_domain_accepted": false
+    }
+  ],
+  "test_nodeids": [
+    ".TestEmitters::test_chained_emitters",
+    ".TestEmitters::test_decorator_connection",
+    ".TestEmitters::test_disconnect",
+    ".TestEmitters::test_emission_order",
+    ".TestEmitters::test_emitter",
+    ".TestEmitters::test_emitter_block",
+    ".TestEmitters::test_emitter_error_handling",
+    ".TestEmitters::test_emitter_loop",
+    ".TestEmitters::test_emitter_source",
+    ".TestEmitters::test_emitter_subclass",
+    ".TestEmitters::test_emitter_type",
+    ".TestEmitters::test_emitter_type_event_class",
+    ".TestEmitters::test_event_block",
+    ".TestEmitters::test_event_handling",
+    ".TestEmitters::test_event_kwargs",
+    ".TestEmitters::test_multiple_callbacks",
+    ".TestEmitters::test_prebuilt_event",
+    ".TestEmitters::test_reconnect",
+    ".TestEmitters::test_source_stack_integrity",
+    ".TestEmitters::test_symbolic_callback",
+    ".TestEmitters::test_typed_event",
+    "::test_emitter_block",
+    "::test_emitter_reentrance_allowed_when_blocked1",
+    "::test_emitter_reentrance_allowed_when_blocked2",
+    "::test_emitter_reentrance_allowed_when_blocked3",
+    "::test_event_connect_order",
+    "::test_key",
+    "tests.contract.test_event_values::test_draw_region_and_native_payload_are_preserved[None]",
+    "tests.contract.test_event_values::test_draw_region_and_native_payload_are_preserved[region1]",
+    "tests.contract.test_event_values::test_emitter_group_addition_name_failure_blocking_and_recovery",
+    "tests.contract.test_event_values::test_event_handling_blocking_and_callback_error_source_recovery",
+    "tests.contract.test_event_values::test_finite_drag_history_excludes_press_and_projects_integer_trail",
+    "tests.contract.test_event_values::test_invalid_button_rejects_then_valid_construction_recovers[invalid1]",
+    "tests.contract.test_event_values::test_invalid_button_rejects_then_valid_construction_recovers[not-a-button]",
+    "tests.contract.test_event_values::test_key_event_preserves_key_text_and_modifier_values[None-\\u03bb\\u6f22]",
+    "tests.contract.test_event_values::test_key_event_preserves_key_text_and_modifier_values[key0-]",
+    "tests.contract.test_event_values::test_key_event_preserves_key_text_and_modifier_values[key1-A]",
+    "tests.contract.test_event_values::test_key_event_preserves_key_text_and_modifier_values[key2-a]",
+    "tests.contract.test_event_values::test_key_string_aliases_codes_and_invalid_comparison_recovery",
+    "tests.contract.test_event_values::test_mouse_defaults_and_button_values[1]",
+    "tests.contract.test_event_values::test_mouse_defaults_and_button_values[2]",
+    "tests.contract.test_event_values::test_mouse_defaults_and_button_values[3]",
+    "tests.contract.test_event_values::test_mouse_defaults_and_button_values[None]",
+    "tests.contract.test_event_values::test_mouse_storage_native_identity_and_mutation_boundaries",
+    "tests.contract.test_event_values::test_resize_logical_and_physical_values_are_distinct[None]",
+    "tests.contract.test_event_values::test_resize_logical_and_physical_values_are_distinct[physical1]",
+    "tests.contract.test_event_values::test_resize_requires_iterable_size_and_recovers[10]",
+    "tests.contract.test_event_values::test_resize_requires_iterable_size_and_recovers[None]",
+    "tests.contract.test_event_values::test_scene_event_coordinates_cache_and_visual_reassignment",
+    "tests.contract.test_event_values::test_scene_event_history_payload_copy_and_independent_flags",
+    "tests.contract.test_event_values::test_scene_zoom_scale_refusal_then_valid_payload_recovers",
+    "tests.contract.test_event_values::test_shared_event_properties_preserve_source_stack_and_mutable_flags[draw]",
+    "tests.contract.test_event_values::test_shared_event_properties_preserve_source_stack_and_mutable_flags[event]",
+    "tests.contract.test_event_values::test_shared_event_properties_preserve_source_stack_and_mutable_flags[key]",
+    "tests.contract.test_event_values::test_shared_event_properties_preserve_source_stack_and_mutable_flags[mouse]",
+    "tests.contract.test_event_values::test_shared_event_properties_preserve_source_stack_and_mutable_flags[resize]",
+    "tests.contract.test_event_values::test_shared_event_properties_preserve_source_stack_and_mutable_flags[scene]"
+  ],
+  "additional_helpers": [
+    "vispy.util.event.Event",
+    "vispy.util.event.EventEmitter",
+    "vispy.util.event.EmitterGroup",
+    "vispy.util.keys.Key"
+  ],
+  "remaining": [
+    "Physical keyboard/mouse/wheel/touch/focus delivery and GUI backend normalization",
+    "General event value/shape domains and cyclic drag history",
+    "Full camera/scene interaction, transform, picking and rendering acceptance",
+    "Other API-05/06 method families and profile/CI/admission requirements"
+  ],
+  "inventory_reviewed": false,
+  "parent_admission_transferred": false,
+  "full_value_domains": false,
+  "physical_delivery_qualified": false,
+  "api05_complete": false,
+  "artifact_admitted": false,
+  "native_build": false,
+  "environment_created": false
+}

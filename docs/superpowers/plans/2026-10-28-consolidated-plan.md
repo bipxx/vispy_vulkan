@@ -124,11 +124,27 @@ cleanup rehashes 65 retained entries.
 [validation](../../../build/runs/successor-candidates-384/external-evidence.json).
 Next, obtain exact independent source/scope reviews of this concrete packet,
 including both native reuse edges, the coverage/execution maps and complete
-admission selections. The optional Claude peer skill's runner and guide are
-missing, so it supplied no review. Preserve canonical v1 records. Renew successor records and
+admission selections. The optional Claude peer wrapper/guide are absent, but a
+direct installed CLI fallback was found and attempted in read-only safe mode
+(Read/Grep/Glob only, no editing/shell/plugins/session persistence). The service
+returned HTTP429 `usage_limit_reached` before any model input/output tokens;
+no reviewer ran or approval was issued. The original response, command, unchanged
+source hashes and cleanup are retained in `successor-source-peer-386`.
+Preserve canonical v1 records. Renew successor records and
 strict/profile/CI evidence afterward; no old record is repinned to imply a pass.
 C: native allocation remains stopped. Native proof does not grant wheel,
 candidate, hardware or release admission.
+Finite event-method acceptance progressed while reviews remain pending. Current
+Windows `5cb463cd` and Linux `b4c72484` each pass 57 installed CPU cases (30 new,
+27 shipped, no skips), checking 537 members and all 180/179 loaded VisPy origins.
+The renderer/backend modules do not load; the CPU SDF helper's installed origin
+is verified. A supplemental value/limit record covers 38 discovered operation
+groups / 62 aliases plus utility emitters/keys without rewriting the 984-group
+catalog or any prepared v2 candidate. Both targets are cleaned (45,644,393 bytes;
+15/20 retained entries rehashed). Physical input, general value domains,
+camera/scene/rendering and admission remain separate API-05/06/LIF-06 work.
+[Finite values](../../../compat/api-acceptance/event-values-v1.json),
+[method details](../../api-method-reconciliation.md#finite-installed-event-model-acceptance).
 New scratch/evidence uses the
 registered D: workspace with inherited protection/block lists; pinned C: inputs
 remain in place. API-01's [25-parent application review](../../application-coverage-review.md)

@@ -1,6 +1,6 @@
 # API method, alias and workflow reconciliation
 
-Checkpoint: 2026-11-07, source base `02a3839f` plus three docstring corrections.
+Discovery checkpoint: 2026-11-07, source base `02a3839f` plus three docstring corrections.
 This extends the [implementation routes](api-implementation-routes.md) and four
 namespace reviews. **API-05 remains open.** The source snapshot discovers
 operations; it does not decide their supported values or discharge an original
@@ -47,6 +47,7 @@ required value/mode keeps its own acceptance obligation.
 | Application / app parents | Instance `create`, `run`, `process_events`, `quit`; module aliases and `use_app`. | Existing Application/default-app implementation and finite manual Tk pump. | Singleton/alias reuse, blocking versus manual loop, host ownership and repeated/error calls; instance proof does not qualify every module alias. |
 | Canvas / app.canvas | Constructor/config, current/shared context, size/physical size, update/show/close and context-manager methods. | Existing Canvas/backend and Tk/Qt lifecycle suites. | Supported config/value tables, delivered resize/focus, close/error/loss and shared ownership on each claimed profile. |
 | Timer / app.timer | Constructor/start/stop, interval/iterations/running, start/stop/timeout events. | Existing one-shot criterion plus native timer ordering tests. | Repeating/restart/interval changes, callback failure/stop and UI-thread delivery; event declaration is insufficient. |
+| Event models / app.keyevent, app.mouseevent and non-root helpers | Mouse/key/resize/draw/scene payloads, histories, source/flag properties and emitter dispatch. | The finite installed CPU acceptance below covers 38 discovered groups/62 aliases plus utility dispatch/key helpers. | Physical delivery/normalization, general value domains, cyclic histories, picking and broader camera/scene interaction remain separate. |
 | Context / gloo.glcontext | Current selection, shared namespace, GLIR flush, config and `GLShared` extension methods. | Existing shared GLIR/parser and two-canvas scenarios. | Direct-constructor forms, namespace/owner identity, ordering and loss/close behavior. |
 | Objects/buffers / gloo parents | `delete`, `set_data`, subdata/indexed assignment, views, dtype/stride/divisor and operators. | Existing upload/retirement mechanism and indexed/instanced tests. | Value/layout bounds, alias/view update ordering, constants/matrices, rejection atomicity and survivor/resource retirement. |
 | Textures/framebuffers / gloo parents | Data/subregion assignment, formats/filter/wrap, attachment/resize/read and activation operators. | Existing texture/FBO and finite capture mechanisms. | Typed sampler/format matrix, layers/MSAA, bounds, nesting/restoration, mutation/failure/recovery. |
@@ -62,6 +63,38 @@ required value/mode keeps its own acceptance obligation.
 | Transforms / visual transform parents | Mapping/inverse/composition, factory keys, cache and TransformSystem plus selected operators. | Existing CPU mapping tests and scene transform propagation. | Domains/shapes/dtypes, dynamic cache updates, framebuffer/pixel-scale and CPU-versus-shader expectations. |
 
 ## Event and backend additions
+
+### Finite installed event-model acceptance
+
+The [event value record](../compat/api-acceptance/event-values-v1.json) overlays
+finite CPU observations on 38 discovered operation groups / 62 visible aliases.
+It records exact values and limits; it does not change the immutable catalog's
+984 `unreviewed` entries or admit either original parent. Utility `Event`,
+`EventEmitter`, `EmitterGroup` and `Key` helpers supplement that catalog.
+
+All 57 cases pass without skips on each exact current wheel: Windows `5cb463cd`
+and WSL Linux `b4c72484`. Thirty new cases complement 27 shipped emitter/key
+cases. Each child checks 537 installed members and all loaded VisPy origins
+(180 Windows / 179 WSL). The renderer module and GUI backend modules do not load;
+a CPU SDF helper loads transitively from the checked installed package. The new
+tests prohibit Application, Canvas and Timer construction. No device, rendering,
+physical delivery, DPI or strict profile claim follows from this CPU scope.
+
+| Family | Observed finite values and behavior | Explicit boundary |
+| --- | --- | --- |
+| Mouse payload | Default position/delta; buttons None/1/2/3; float position/delta copies; modifier tuple; native/custom payload identity. Invalid string/object buttons reject and valid construction recovers. | The caller's button list remains shared. Arbitrary shapes, button codes and backend normalization are not accepted here. |
+| Drag history | Finite press plus two moves; raw press/last identity; non-drag returns None. `drag_events()` excludes the press and `trail()` truncates to integer coordinates. | No cyclic chain, physical pointer delivery or subpixel-trail preservation claim. |
+| Key payload | Enter/A/None; empty, case-sensitive and Unicode text; modifier/native identity. String key aliases ignore case; character comparison uses uppercase ASCII65, not97. Invalid dictionary comparison rejects and later comparison works. | No OS key/text translation or arbitrary alternate-primary Key-object equality claim. |
+| Resize/draw | Logical (30,20), physical (60,40) or logical fallback; draw region None/(1,2,3,4); native identity. | `ResizeEvent` requires an iterable size: its default None and integer size reject with TypeError. No delivered DPI/resize assertion. |
+| Dispatch/group | Source stacks and flags on six models; handled continues, blocked stops; callback exception restores source stack, disconnect/re-emission recovers. Dynamic group names, collision preflight, block/unblock and disconnect work. | Group auto-connect and arbitrary type-failure atomicity remain outside the new finite group scope. Shipped tests add ordering/blocker/reentrance cases. |
+| Scene wrapper | Two literal CPU affine mappings, cached position and visual reassignment; raw history/payload forwarding; missing scale refusal then valid1.25. | Copy shares raw event/visual but resets flags/source stack. Wrapper native is None; raw native remains available. Historical wrapper type, picking and general transform behavior are not qualified here. |
+
+[Windows evidence](../build/runs/event-installed-windows-387/external-evidence.json),
+[WSL evidence](../build/runs/event-installed-wsl-388/external-evidence.json).
+Both isolated targets were removed after retaining results and rehashing 15/20
+entries respectively; 45,644,393 scratch bytes were reclaimed. Existing wheels
+and dependencies were reused without a native build or new environment. API-05,
+API-06 profile admission and physical input LIF-06 remain open.
 
 Canvas declares initialize, resize, draw, five mouse-related events, key press /
 release, stylus, touch and close (13 names total). Its deprecated `paint` alias is

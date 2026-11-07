@@ -415,7 +415,8 @@ Authority: [capture coverage map](../compat/candidates/tk-capture-1/coverage.jso
   failure and correction are retained; its failed attempt launched no test child.
   Scratch is removed and 65 retained entries rehashed. No build, install or new
   environment. Independent reviews, native admission, strict attempts, CI and
-  promotion remain open; the optional Claude peer runner/guide are absent.
+  promotion remain open. The optional peer wrapper/guide are absent; the later
+  direct CLI attempt and its service limit are recorded below.
 
 - [x] **FIX-06-EVIDENCE-STORE — Cross-store source/proof support:** optional
   hash-bound `secondary-v1` authority selects the retained D: store for produced
@@ -576,6 +577,23 @@ the [consolidated plan](superpowers/plans/2026-10-28-consolidated-plan.md).
   The initial WSL timeout/constructor-guard discovery defect is preserved; caching
   and original constructor references fix discovery within the same time limit.
   [Discovery/CPU evidence](../build/runs/api-reconciliation-367/external-evidence.json).
+- [x] **API-05-EVENT-VALUES — Finite installed event-model semantics:**
+  [method/value record](../compat/api-acceptance/event-values-v1.json) maps finite
+  scopes for 38 catalog operation groups / 62 aliases, plus Event/Emitter/Group/Key
+  helpers. Current Windows `5cb463cd` and Linux `b4c72484` each pass 57 CPU cases
+  without skips: 30 new cases and 27 shipped emitter/key cases. Each child checks
+  537 installed members and all loaded VisPy origins (180/179). No renderer or GUI
+  backend loads; the installed CPU SDF helper is hash-checked. New cases prohibit
+  GUI construction and cover payload/alias values, integer drag trails, flags and
+  source-stack recovery, dynamic group names/blocking, scene coordinate-cache
+  reset and scale refusal/recovery. Resize's required iterable size, borrowed
+  mouse-button list and scene-copy/raw-native boundaries are explicit.
+  [Windows](../build/runs/event-installed-windows-387/external-evidence.json),
+  [WSL](../build/runs/event-installed-wsl-388/external-evidence.json).
+  Strict cleanup reclaims 45,644,393 bytes and rehashes 15/20 retained entries.
+  The 984-group discovery catalog and all 26 prepared v2 candidate records are
+  unchanged. This finite CPU supplement supplies no parent, physical-delivery,
+  rendering, strict-profile or release admission; API-05/06 and LIF-06 remain open.
 - [x] **API-05-DOC — Correct reviewed public descriptions:** visuals now describe
   the supported gloo/GLIR/Dawn path, widgets describe their actual scene-layout
   exports, and ViewBox documents the existing BaseCamera default / explicit
@@ -602,14 +620,16 @@ the [consolidated plan](superpowers/plans/2026-10-28-consolidated-plan.md).
   all 30/51 retained entries respectively rehashed. Only the final new wheel is
   retained; its intermediate raw assembly and temporary tool target are removed.
   These are local functional observations; original v1 and earlier v2 records stay
-  immutable. Windows production, semantic/API acceptance, strict observer/profile
-  gates, current CI, independent promotion and publication remain open.
+  immutable. Windows production/installed checks later closed under FIX-06.
+  Semantic/API acceptance, strict observer/profile gates, current CI, independent
+  promotion and publication remain open.
 - [ ] **API-06 — Selected API acceptance:** for each claimed finite subset, record
   supported values/formats, ordinary/mutation/failure/recovery behavior, clear
   refusals, documented differences and exact profile evidence. Keep original parent
   obligations intact; review does not itself qualify a parent or create an admission.
-  **Partial current-artifact progress:** the three maintained examples now have
-  the exact Linux observations described in API-05-DOC. This proves their named
+  **Partial current-artifact progress:** the three maintained examples have
+  exact Linux observations in API-05-DOC and Windows observations under FIX-06.
+  The finite CPU event supplement above adds value/dispatch evidence. This proves the named
   landmark, update/rejection and delivered drag/quarter-yaw cases. It does not
   establish every acceptance mode for every example, all methods, full DPI/input,
   large volumes or other profiles. Their source-discovery catalog remains unchanged.
