@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "name": "secondary-storage",
+  "coordinator": "root",
+  "storage_workspace": "D:/vispy-vulkan-managed",
+  "previous_workspace": "C:/Users/HEQ/Projects/vispy_vulkan",
+  "reason": "C: fell below the existing 10 GiB reserve. D: is a separate filesystem with approximately 75 GB free. All old C: scratch is terminal and absent. Select D: for new scratch and retained artifacts; do not bypass the C: capacity rejection or relocate pinned inputs.",
+  "initial_scope": "Retain and inspect the failed Linux CI artifact without source, SDK, dependency or environment relocation. A Windows producer on D: needs a separate source/origin/proof-path audit before launch.",
+  "failure_transport_expected_peak_bytes": 134217728,
+  "aggregate_max_scratch_bytes": 21474836480,
+  "min_free_bytes": 10737418240,
+  "registry": "Inherit every original C: protected and blocked absolute path and record the original registry path/hash. Admit only the fresh D: managed layout. Keep original rejection records at their existing C: origins. Never adopt or clean a legacy directory.",
+  "capacity_roots": ["D:/vispy-vulkan-managed", "D:/"],
+  "reuse": "Read existing C: source, policy, tools and original licenses. Keep D: scratch at build/work/<run-id>, evidence at build/runs/<run-id> and artifacts at build/artifacts/<sha256>. No directory alias, recursive copy of build history, environment creation or dependency download.",
+  "terminal_cleanup": "Wait for children, retain actual exit/wait and original artifact/source/license identities outside scratch, inspect a registry-aware cleanup plan, apply it and rehash retained files. No new experiment before terminal cleanup."
+}

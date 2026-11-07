@@ -253,7 +253,7 @@ Authority: [capture coverage map](../compat/candidates/tk-capture-1/coverage.jso
 - [ ] **FIX-06 — Patch qualification and publication:** renew affected records and
   mandatory rows on those artifacts, satisfy required CI/promotion, and publish only
   through the authorized release process. Existing v1 wheels do not contain FIX-01.
-- [ ] **FIX-06-VERSION — Successor release metadata:** choose/freeze the successor
+- [x] **FIX-06-VERSION — Successor release metadata:** choose/freeze the successor
   package version before final record renewal and qualification. The archive
     verifier originally hard-coded the v1 distribution directory, METADATA version
     and wheel filename. Support a source-bound expected version while preserving
@@ -291,8 +291,40 @@ Authority: [capture coverage map](../compat/candidates/tk-capture-1/coverage.jso
     refusal, not an overall pass. [Protocol evidence](../build/runs/version-protocol-336/verification.json),
     [historical joins](../build/runs/version-protocol-336/historical-producers.json),
     [guest cleanup](../build/runs/version-protocol-336/post-cleanup.json).
-    Git source freeze and final matching producers/records remain pending. No
-    v2 artifact, installed identity, CI admission or publication is claimed.
+    **Complete at metadata/source-freeze scope:** exact source
+    `4ed660bfcac535ed46ff3d092c1a9dae1213ed82` is pushed to the working branch;
+    final drift has zero unexplained paths. An initial two-profile omission and its
+    correction are preserved. The publication owner's checkout/index are unchanged.
+    [Source freeze](../build/runs/successor-freeze-337/verification.json),
+    [cleanup](../build/runs/successor-freeze-337/post-cleanup.json).
+    Final matching producers/records, reviews and qualification remain FIX-04/FIX-06.
+    No v2 artifact, installed identity, CI admission or release publication is claimed.
+    **Final producer attempt, 2026-11-07:** Linux CI `42355088675` stopped in
+    software-driver preparation before the renderer build. Its original failure
+    artifact `13566538820` remains on GitHub; local transport was refused because
+    C: fell below the 10 GiB reserve. Inner driver exit/cleanup evidence has not
+    yet been retrieved. [Failure status](../build/runs/successor-linux-338/verification.json).
+    The Windows SDK-linked run was cancelled when free space no longer covered
+    its remaining declared allocation; the compiler and producer both have actual
+    nonzero exits and waits. No CTests/new outputs are claimed. Its 56,846,683
+    scratch bytes were removed and 79 retained files rehashed.
+    [Capacity stop](../build/runs/successor-native-339/verification.json),
+    [cleanup](../build/runs/successor-native-339/post-cleanup.json).
+    New allocations on C: remain stopped. D: has spare capacity, but using it
+    first requires an exact source/origin/proof-path audit; pinned inputs and
+    rejected cleanup targets must remain untouched.
+    **Recovery, 2026-11-07:** selected fresh managed storage on D: under the same
+    20 GiB/10 GiB policy, inheriting every protected/blocked path. Recovered all
+    40 original Linux failure-artifact members. Ninja removed a temporary `.o.d`
+    file during the inner Mesa guard's strict snapshot; that guard terminated and
+    awaited its compiler. Both original remote cleanup records passed. The live
+    sampler is now separate from terminal cleanup and preserves owner, registry,
+    global/profile limits and other I/O errors. All 17 driver-tool tests pass on
+    Windows and WSL, including the unchanged terminal-snapshot refusal control.
+    D: transport and test scratch are absent after strict cleanup. Ten known pytest
+    aliases were unlinked without following their targets; the initial refusal is
+    retained. [Evidence references](../build/runs/driver-guard-341/external-evidence.json).
+    Fresh Linux CI and the Windows producer/storage-path audit remain pending.
 
 ## API breadth and inventory review
 
@@ -514,6 +546,9 @@ exit condition is satisfied. Optional or deferred items are selected by need.
 | 2026-11-07 | Added source-bound successor version support to the archive core without changing v1 defaults or source package version. 53 cases and four real archive compatibility checks pass; remaining caller audit is explicit. | `package-version-333/verification.json`; FIX-06-VERSION remains open. |
 | 2026-11-07 | Fixed successor RECORD handling in pure-source repackaging; source-bound main CI/Linux producer version checks. 47 repackager and 126 related cases pass. No new build, environment or scratch; remaining callers/version freeze are pending. | `package-callers-334/verification.json`; FIX-06-VERSION remains open. |
 | 2026-11-07 | Selected v2 metadata consistently, audited remaining version literals and updated required oracle/installation checks. 128 source cases pass. Linux protocol controls: 85 pass, one stale record refusal; both historical real producers validate. Guest scratch cleaned. | `successor-version-335`, `version-protocol-336`; Git freeze/final qualification pending. |
+| 2026-11-07 | Closed FIX-06-VERSION at source-freeze scope. Pushed `4ed660bf`, zero unexplained drift, preserved initial omitted-profile refusal and owner checkout/index. Private index cleaned. Fresh Linux producer dispatched at this exact commit as CI `42355088675`. | `successor-freeze-337`; final artifacts/qualification remain open. |
+| 2026-11-07 | Preserved Linux driver-preparation failure and artifact identity; local transport refused below reserve. Cancelled the Windows compiler when remaining capacity no longer fit, awaited original exits, removed 56.8 MB scratch and rehashed 79 retained files. No new producer pass or release claim. | `successor-linux-338`, `successor-native-339`; alternative storage needs an origin/proof audit. |
+| 2026-11-07 | Selected D: storage with inherited protection/block lists; recovered the Linux failure and both remote cleanup receipts. Fixed the inner Mesa live-sampling race; 17 tests pass on each platform, while strict terminal snapshots remain unchanged. Original failures and pytest alias cleanup retained; owned D: scratch cleaned. | `driver-guard-341/external-evidence.json`; fresh producer qualification remains open. |
 | 2026-11-07 | Closed FIX-04-OBS: fresh 56-assertion/eight-branch and capture/control observations on both successor wheels. Retained evidence and cleaned scratch. Identified v1-only package metadata coupling; settle successor version before final record freeze. | `shutdown-observations-332/verification.json`, `post-cleanup.json`; FIX-04/FIX-06 remain open. |
 | 2026-11-06 | Initial live checklist; release baseline separated from source fixes, historical host qualifications and optional gaps. | Release notes, strict matrix, consolidated backlog and shutdown-fix-322 records linked above. |
 | 2026-11-06 | Started FIX-04; recorded the native-input pin refusal and its FIX-05 prerequisite. | `source-fix-integration-323`; no release or qualification transferred. |
