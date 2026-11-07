@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "name": "successor-installed",
+  "storage_workspace": "D:/vispy-vulkan-managed",
+  "guest_workspace": "/mnt/d/vispy-vulkan-managed",
+  "owner": "root-linux-installed",
+  "expected_peak_bytes": 536870912,
+  "aggregate_max_scratch_bytes": 21474836480,
+  "min_free_bytes": 10737418240,
+  "purpose": "Verify the current v2 Linux wheel in an isolated target on D: with actual WSL software Vulkan upload/shutdown checks",
+  "additional_observations": "A separately registered run under the same owner/budget may use the unchanged state-query/capture and real eight-branch Tk workflow protocol against the same exact wheel. Record actual toolkit/device/exit identities. These observations prepare candidate records; they do not grant observer, absence, profile or release admission.",
+  "reuse": "Existing CPython3.12.13, read-only dependency site-packages and the pinned external Mesa driver. Offline no-deps copy-mode target install; no environment creation, native build, driver rebuild or dependency download.",
+  "registry": "Guest view inherits all Windows D: registry protection/block entries plus the original guest registry entries, with exact origin paths/hashes retained. Native drive paths are translated to their existing /mnt/<drive> names, never to aliases or relocated inputs.",
+  "capacity_roots": ["/mnt/d/vispy-vulkan-managed", "/mnt/d", "/home/heq"],
+  "filesystem_checks": "Check guest and writable D: filesystems for read-only status and enforce the 10 GiB reserve. Installed files, temporary extraction, caches and logs use D:, whose Windows backing volume is /mnt/d. C: source and existing guest dependencies remain read-only inputs.",
+  "terminal_cleanup": "Await every child, preserve actual exits/waits and failures, retain exact sources/licenses/evidence outside scratch, then inspect/apply the unchanged strict cleanup plan through the guest registry view and rehash retained files.",
+  "scope": "Local installed WSL software Vulkan verification only; no physical GPU, mandatory profile, source/scope review, release admission or publication transfer."
+}

@@ -346,6 +346,62 @@ Authority: [capture coverage map](../compat/candidates/tk-capture-1/coverage.jso
     Two newer module-description edits are the only current pure-member changes.
     Repackage them around these verified native bytes, then run installed checks;
     this result grants no candidate, profile, hardware or release admission.
+    **Current pure assembly:** the two corrected descriptions are now packaged
+    around those same verified native bytes. Current cp312 Linux wheel:
+    `4c826163cce271b36cd3ab3a981c8dec506f4cca7fa0396c5c381dfd462d59dd`.
+    Exact archive/source/license joins pass; metadata, membership and native bytes
+    are unchanged. Source is frozen/pushed at `99aafd1c`, with zero unexplained
+    drift. [Source freeze](../build/runs/gloo-freeze-352/external-evidence.json),
+    [assembly/cleanup](../build/runs/linux-pure-353/external-evidence.json).
+    **Current installed WSL checks:** this exact wheel passes four upload/shutdown
+    cases, including a held submission, 2 MiB of pinned imports, ten zero gauges
+    after repeated shutdown and independent external-snapshot readback. A separate
+    installed run passes 56 state/resource cases without skips and the unchanged
+    eight-branch Tk recovery validator with Tcl/Tk 9.0; its nine measured shutdown
+    gauges are zero. Both runs verify all 537 installed package members and use
+    the pinned software Vulkan driver. No native rebuild or new environment was
+    needed. [Upload/shutdown evidence](../build/runs/linux-installed-354/external-evidence.json),
+    [state/Tk evidence](../build/runs/linux-observations-355/external-evidence.json).
+    The same installed wheel also passes all four capture branches; five active
+    output/queue corruptions are rejected, with nine zero gauges after every
+    child. [Capture/control evidence](../build/runs/linux-capture-356/external-evidence.json).
+    These local checks do not renew candidate admission, mandatory profiles or
+    release qualification. Windows v2 production, admission and publication
+    remain open; final-tagged Linux verification is recorded below.
+    All three runs completed strict cleanup: 89,570,275 scratch bytes removed;
+    17, 18 and 34 retained entries respectively rehashed after deletion. The
+    capture retention path-format error is preserved with its corrected reader;
+    no test verdict or validator was changed.
+
+- [x] **FIX-06-LINUX-PACKAGE — Current Linux v2 platform packaging:** fresh
+  auditwheel 6.8.2 analysis of wheel `4c826163` confirms
+  `cp312-cp312-manylinux_2_39_x86_64`. The retagged wheel is
+  `438ec1ce5b4b9f3e6565e2cb4ea83a4de55c9dc844b7af5f2d511d2d1fb613cd`.
+  Only `WHEEL` and `RECORD` change; all other 560 distribution members, including
+  every native binary, package source and license, are byte-identical. The exact
+  current source/native/archive/license and RECORD joins pass. The four locked
+  packaging tools' sources/licenses are retained once by hash. No native build,
+  environment or physical-GPU qualification is involved.
+  [Packaging evidence](../build/runs/linux-retag-357/external-evidence.json).
+  Installed observations on `4c826163` remain bound to that raw wheel; exact
+  installed verification of `438ec1ce` is recorded separately below. Final
+  admission remains open. Packaging scratch cleanup reclaimed 23,224,370 bytes;
+  all 27 retained entries rehashed after removal.
+- [x] **FIX-06-LINUX-INSTALLED — Exact final-tagged Linux v2 observations:** wheel
+  `438ec1ce5b4b9f3e6565e2cb4ea83a4de55c9dc844b7af5f2d511d2d1fb613cd`
+  passes all 60 test cases (four upload/shutdown, 56 state/capture; no skips),
+  the eight-branch Tk recovery validator and four-branch capture validator.
+  All five active capture corruptions are independently rejected. Every child
+  verifies all 537 installed package members; the held-upload/repeated-shutdown
+  checks again prove 2 MiB pinned imports retire, ten gauges become zero and the
+  external snapshot stays readable. State/capture children retire all nine of
+  their measured gauges. This uses one offline no-deps installation, CPython
+  3.12.13, Tcl/Tk 9.0 and pinned WSL llvmpipe/Mesa 26.1.8 with LLVM 18.1.3.
+  [Exact installed evidence](../build/runs/linux-final-installed-358/external-evidence.json).
+  Strict cleanup removed 29,856,782 scratch bytes; all 44 retained entries rehash
+  successfully and the single installed target is absent.
+  These observations do not discharge strict observer/absence gates, 120/8 finite
+  criterion admission, the eight mandatory profiles or final release qualification.
 
 ## API breadth and inventory review
 
@@ -378,7 +434,8 @@ the [consolidated plan](superpowers/plans/2026-10-28-consolidated-plan.md).
   deviation entries. Both existing source-parity checks pass; native production
   inputs are unchanged. [Audit/correction/review references](../build/runs/gloo-audit-348/external-evidence.json).
   Inventory and selections remain unchanged. No full parent or v2 installed
-  acceptance transfers; the corrected pure members still need successor packaging.
+  acceptance transfers. The corrected pure members are packaged and locally
+  checked on Linux (FIX-06); broader API-05/06 acceptance remains open.
 - [ ] **API-03 — Scene namespace:** review all 22 `scene` parents, including
   aliases, cameras, viewboxes, transforms, clipping and shared lifetimes.
 - [ ] **API-04 — Visual namespace:** review all 76 `visuals` parents, including
@@ -594,6 +651,10 @@ exit condition is satisfied. Optional or deferred items are selected by need.
 | 2026-11-07 | Closed API-01 at 25-parent/source-route review scope after independent review. 22 CPU boundary/event/curation checks pass on Windows and WSL; no native application constructed. Inventory/selection unchanged, API-05/06 acceptance still open. Test scratch cleaned and 16 retained files rehashed. | `application-coverage-review.md`, `app-audit-345/external-evidence.json`; source review only. |
 | 2026-11-07 | Closed API-02 at 19-parent/source-route scope after independent review and two wording corrections. Corrected public module descriptions; executable ASTs/native inputs unchanged, BSD headers/deviations verified, two source-parity checks pass. | `gloo-coverage-review.md`, `gloo-audit-348/external-evidence.json`; pure packaging and method/value acceptance remain open. |
 | 2026-11-07 | Retained and verified the successful v2 Linux producer: 44 contracts, exact native/archive/source/license joins, both original cleanups. Raw wheel `1afcf55a`, `_dawn` `928e0439`; local transport cleaned, 184 files rehashed. | `linux-artifact-350/external-evidence.json`; current pure-member assembly, installed checks and admission remain open. |
+| 2026-11-07 | Pushed reviewed gloo/module-description source `99aafd1c`, then assembled current Linux wheel `4c826163` by replacing only two pure description members in the verified v2 archive. Native bytes/metadata/notices unchanged; exact archive join passes. Both scratch roots empty after cleanup. | `gloo-freeze-352`, `linux-pure-353`; installed/admission/publication work remains open. |
+| 2026-11-07 | Verified exact installed Linux v2 wheel `4c826163`: 537 members, four upload/shutdown cases, 56 state/resource cases without skips, eight Tk recovery branches and four capture branches. All five active capture controls reject; measured shutdown gauges are zero. Reused existing interpreter/dependencies/driver with no native build or new environment. | `linux-installed-354`, `linux-observations-355`, `linux-capture-356`; local software Vulkan observations, no admission transfer. |
+| 2026-11-07 | Closed FIX-06-LINUX-PACKAGE: fresh locked auditwheel analysis confirms manylinux_2_39; wheel `438ec1ce` changes only WHEEL/RECORD, with 560 other members unchanged and exact current archive/source/native/license joins passing. Original helper-import failure and transient PID-check refusal are preserved; the unchanged strict planner subsequently passes. | `linux-retag-357`; exact installed checks and admission remain separate. |
+| 2026-11-07 | Closed FIX-06-LINUX-INSTALLED: exact final-tagged wheel `438ec1ce` passes 60 no-skip test cases, eight Tk branches, four capture branches and all five active rejection controls on a single offline installed target. Every child verifies 537 members; measured gauges retire to zero. | `linux-final-installed-358`; local software Vulkan verification only, strict rows/admission/publication remain open. |
 | 2026-11-07 | Closed FIX-04-OBS: fresh 56-assertion/eight-branch and capture/control observations on both successor wheels. Retained evidence and cleaned scratch. Identified v1-only package metadata coupling; settle successor version before final record freeze. | `shutdown-observations-332/verification.json`, `post-cleanup.json`; FIX-04/FIX-06 remain open. |
 | 2026-11-06 | Initial live checklist; release baseline separated from source fixes, historical host qualifications and optional gaps. | Release notes, strict matrix, consolidated backlog and shutdown-fix-322 records linked above. |
 | 2026-11-06 | Started FIX-04; recorded the native-input pin refusal and its FIX-05 prerequisite. | `source-fix-integration-323`; no release or qualification transferred. |

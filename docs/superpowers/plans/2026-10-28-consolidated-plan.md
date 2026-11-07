@@ -52,8 +52,24 @@ the evidence authority.
 tool-only fix at `fa72c6da` separates Mesa live disk sampling from strict terminal
 cleanup; 19 source controls pass on each platform. Linux retry `42357137754`
 completed with 44 native contracts and exact native/source/archive/license joins.
-Its raw v2 wheel still needs two corrected pure module descriptions, installed
-checks and admission. Windows production awaits C: capacity. New scratch/evidence uses the
+Current Linux wheel `4c826163` incorporates the two corrected pure module
+descriptions around the same verified native bytes; exact archive joins pass.
+Installed WSL verification now passes four upload/shutdown cases and, separately,
+56 state/resource cases plus the eight-branch Tk recovery validator on that exact
+wheel. All 537 installed members match; these local observations grant no
+candidate, mandatory-profile or release admission. All four capture branches also
+pass, with five active corruption controls rejected and zero measured shutdown
+gauges in each child. Fresh auditwheel analysis confirms manylinux_2_39; retagged
+wheel `438ec1ce` changes only WHEEL/RECORD, with exact source/native/license joins
+passing. Its exact installed run (`linux-final-installed-358`) now passes 60
+no-skip test cases, eight Tk recovery branches, four capture branches and all five
+active capture controls. All children verify 537 installed members and retire the
+measured gauges to zero. A single offline installed target serves all checks;
+there is no native rebuild or new environment. Candidate records, strict
+observer/absence gates, mandatory profile qualification and publication remain
+pending; the local functional results are not a substitute for those gates.
+Windows production awaits C: capacity.
+New scratch/evidence uses the
 registered D: workspace with inherited protection/block lists; pinned C: inputs
 remain in place. API-01's [25-parent application review](../../application-coverage-review.md)
 is complete at source-route scope, independently reviewed, with 22 CPU checks per

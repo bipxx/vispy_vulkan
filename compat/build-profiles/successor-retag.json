@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "name": "successor-retag",
+  "storage_workspace": "D:/vispy-vulkan-managed",
+  "guest_workspace": "/mnt/d/vispy-vulkan-managed",
+  "owner": "root-linux-packaging",
+  "expected_peak_bytes": 268435456,
+  "aggregate_max_scratch_bytes": 21474836480,
+  "min_free_bytes": 10737418240,
+  "purpose": "Recheck the exact v2 Linux wheel with the previously locked auditwheel 6.8.2 / wheel 0.48.0 toolset, then retag only WHEEL and RECORD to the actual manylinux ABI verdict",
+  "reuse": "Existing CPython 3.12.13 and immutable source/native wheel. Reuse an existing matching tool target if available; otherwise install the four hash-locked pure Python tools from r2-prep-310/retag-tools.txt into one plain target on D:. No virtual environment, native compiler, dependency source clone or driver build.",
+  "capacity_roots": ["/mnt/d/vispy-vulkan-managed", "/mnt/d", "/home/heq"],
+  "writes": "All extraction, tool installation, temporary files, logs and cache use the owned D: scratch. Original C: sources and guest interpreter remain read-only. The D: backing volume and guest filesystem must be writable and keep the original reserve.",
+  "retention": "Keep exact tool source/license archive once by hash, lock, actual child exits/waits, ABI report, source/native/member joins and retagged wheel outside scratch. Only WHEEL and RECORD may differ. Apply unchanged strict cleanup and rehash retained files before another run.",
+  "scope": "Packaging prerequisite only. No installed-check, candidate, mandatory-profile, physical GPU or release admission transfers from the input wheel."
+}
