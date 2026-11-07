@@ -81,8 +81,15 @@ selector.
 
 ## Representative example bindings
 
-The three maintained examples are now linked to their actual existing test
-bodies. These are source bindings, not fresh executions or admissions here.
+The three maintained examples are linked to their actual existing test bodies.
+The initial discovery kept them as source bindings. A later local installed run
+now passes all three on Linux wheel `b4c72484`, source `c141eade`, CPython 3.12.13,
+Tk 9.0 and pinned WSL software Vulkan. It verifies 537 package members and all 171
+loaded VisPy Python-module origins in the example process, with ten zero shutdown
+gauges. This is exact local functional evidence, not strict profile or parent
+admission. [Installed observations](../build/runs/linux-current-installed-370/external-evidence.json).
+The original discovery catalog keeps `executed=false`; its historical state is
+not rewritten to represent the later observation.
 
 | Example | Public method/value route | Existing decisive test body | Residual scope |
 | --- | --- | --- | --- |
@@ -110,9 +117,13 @@ hidden constructors remain retained; the retry caches source metadata and uses
 original constructor references without changing the 150-second limit or the
 construction guards.
 
-These three pure package members still need packaging after the coherent source
-batch is frozen. Existing Linux wheel `438ec1ce` and its results retain their
-original bytes and scope; they do not silently acquire these descriptions.
-Native production inputs are unchanged, so this documentation batch needs no
-native build. API-05 still requires semantic method/value/example/event review;
-API-06 and release gates still require exact installed evidence and admission.
+The coherent source batch is frozen at `c141eade` and packaged as Linux wheel
+`b4c724842cbb8bfadb2097a025acd30cbdce006bad2b27b3b62b149cda398b69`.
+Five description members differ from the original CI producer; all native and
+notice bytes stay unchanged. Exact archive joins and manylinux_2_39 analysis
+pass using the retained locked tools without new installation or native build.
+The installed run passes 63 cases, eight Tk branches, four capture branches and
+all five active rejection controls, including the three example tests above.
+Existing Linux wheel `438ec1ce` and its results retain their original bytes and
+scope. API-05 still requires semantic reconciliation; API-06 and release gates
+still require the remaining exact profile evidence and independent admission.

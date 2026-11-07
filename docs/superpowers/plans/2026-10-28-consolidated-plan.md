@@ -98,10 +98,19 @@ unchanged executable ASTs, BSD headers and line endings. The
 265 visible aliases, 984 unreviewed operation groups, event declarations and three
 actual example/test source bindings. Windows/WSL catalogs match and all 58 selected
 CPU cases pass per platform. Preserve the original timeout/guard-discovery failure;
-the cached retry keeps the original time budget and construction guards. Freeze
-this coherent documentation/source batch before necessary pure-member assembly;
-no native rebuild is warranted. Semantic method/value/event reconciliation and
-exact installed admission remain open.
+the cached retry keeps the original time budget and construction guards. The
+coherent documentation/source batch is frozen at `c141eade`; no native rebuild
+was needed for Linux wheel
+`b4c72484` includes the five pure descriptions changed since the CI producer,
+with exact source/native/license joins and fresh manylinux_2_39 analysis. The
+existing locked tool archive was reused without installation. One installed
+target passes all 63 tests, eight Tk branches, four capture branches and all five
+active corruption controls, including the three maintained examples. All 537
+package members and 171 loaded VisPy Python-module origins in the example process
+verify; measured gauges retire to zero. These WSL software Vulkan observations
+are separate from strict profile/admission gates. Semantic method/value/event
+reconciliation, Windows production, current strict/CI evidence, independent
+promotion and publication remain open.
 
 The development checkpoints below retain their pre-release status. The table
 after them summarizes the current published release.

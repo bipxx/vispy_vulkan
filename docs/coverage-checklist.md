@@ -488,12 +488,38 @@ the [consolidated plan](superpowers/plans/2026-10-28-consolidated-plan.md).
   exports, and ViewBox documents the existing BaseCamera default / explicit
   `panzoom` choice. Executable ASTs, original BSD headers and line endings are
   preserved; all three pure members are declared deviations. Source parity and
-  identity contracts pass on each platform. Packaging is pending the source freeze;
-  no native build is warranted and no old wheel identity is relabeled.
+  identity contracts pass on each platform. Source is frozen at `c141eade` and
+  packaged in the new Linux wheel below; no old wheel identity is relabeled.
+  **Current Linux package and installed observations, 2026-11-07:** wheel
+  `b4c724842cbb8bfadb2097a025acd30cbdce006bad2b27b3b62b149cda398b69`
+  carries the five description changes since producer `fa72c6da`, including the
+  three new corrections. Exact source/native/archive/license/RECORD joins and
+  fresh manylinux_2_39 analysis pass. Existing locked packaging tools were reused;
+  no dependency install, new environment or native build was needed.
+  [Package evidence](../build/runs/linux-current-package-369/external-evidence.json).
+  One offline installed target verifies all 537 package members in each test/capture child.
+  All 63 tests pass without skips: four upload/shutdown, 56 state/capture and the
+  three maintained image-overlay/mesh/volume example tests. The eight-branch Tk
+  and four-branch capture validators pass; five active capture controls reject.
+  The example process verifies 171 loaded VisPy Python-module origins under that target
+  and retires all ten measured gauges, as do upload/shutdown checks; state/capture
+  checks retire their nine gauges. Scope is CPython 3.12.13 / Tk 9.0 / pinned WSL
+  Mesa software Vulkan. [Installed evidence](../build/runs/linux-current-installed-370/external-evidence.json).
+  Strict cleanup removed 63,208,025 bytes across packaging and installation;
+  all 30/51 retained entries respectively rehashed. Only the final new wheel is
+  retained; its intermediate raw assembly and temporary tool target are removed.
+  These are local functional observations; original v1 and earlier v2 records stay
+  immutable. Windows production, semantic/API acceptance, strict observer/profile
+  gates, current CI, independent promotion and publication remain open.
 - [ ] **API-06 — Selected API acceptance:** for each claimed finite subset, record
   supported values/formats, ordinary/mutation/failure/recovery behavior, clear
   refusals, documented differences and exact profile evidence. Keep original parent
   obligations intact; review does not itself qualify a parent or create an admission.
+  **Partial current-artifact progress:** the three maintained examples now have
+  the exact Linux observations described in API-05-DOC. This proves their named
+  landmark, update/rejection and delivered drag/quarter-yaw cases. It does not
+  establish every acceptance mode for every example, all methods, full DPI/input,
+  large volumes or other profiles. Their source-discovery catalog remains unchanged.
 
 ## Shader and rendering edge coverage
 
@@ -705,6 +731,7 @@ exit condition is satisfied. Optional or deferred items are selected by need.
 | 2026-11-07 | Closed API-03 at 22-parent/source-route scope: verified 44 source files/three upstream pins, recorded 37 generated visual aliases, and passed 15 existing CPU tests per platform plus namespace/factory/ViewBox/Grid probes. Preserved the WSL pytest file-capture failure; unchanged cases pass with sys capture. | `scene-coverage-review.md`, `scene-audit-360`, `scene-cpu-361`; no shipping change or method/artifact admission. |
 | 2026-11-07 | Closed API-04 at 76-parent/source-route scope: 39 visuals, 14 filters, nine shader helpers, 14 transform helpers; 143 exact source files and four upstream pins verified. All 51 selected CPU cases pass per platform, plus parent/type/packing/clipping/Alpha probes. Original Rect-iteration harness failure retained. | `visual-coverage-review.md`, `visual-audit-363`, `visual-cpu-364`; actual shader/rendered/method acceptance remains open. |
 | 2026-11-07 | Closed API-05-DOC with three docstring-only corrections and explicit deviations; executable ASTs/headers/line endings unchanged. Discovered 265 aliases / 984 unreviewed operation groups, event declarations and three source example/test bindings. Windows/WSL catalogs match and 58 CPU cases pass per platform. Initial timeout/guard-discovery failure retained. | `api-method-reconciliation.md`, `api-reconciliation-366/367`; API-05 semantic reconciliation, packaging and acceptance remain open. |
+| 2026-11-07 | Packaged current source `c141eade` as Linux wheel `b4c72484` around the unchanged verified native leaf; exact archive/source/native/license joins and manylinux_2_39 analysis pass. Reused the locked tool archive without installation. All 63 installed cases, eight Tk branches, four capture branches and five active rejection controls pass, including the three maintained examples. | `linux-current-package-369`, `linux-current-installed-370`; local software Vulkan observations, no strict/admission/publication transfer. |
 | 2026-11-07 | Closed FIX-04-OBS: fresh 56-assertion/eight-branch and capture/control observations on both successor wheels. Retained evidence and cleaned scratch. Identified v1-only package metadata coupling; settle successor version before final record freeze. | `shutdown-observations-332/verification.json`, `post-cleanup.json`; FIX-04/FIX-06 remain open. |
 | 2026-11-06 | Initial live checklist; release baseline separated from source fixes, historical host qualifications and optional gaps. | Release notes, strict matrix, consolidated backlog and shutdown-fix-322 records linked above. |
 | 2026-11-06 | Started FIX-04; recorded the native-input pin refusal and its FIX-05 prerequisite. | `source-fix-integration-323`; no release or qualification transferred. |
