@@ -473,9 +473,23 @@ the [consolidated plan](superpowers/plans/2026-10-28-consolidated-plan.md).
   by the seed. A planning route is not an installed qualification.
   The scene review adds explicit factory/alias distinctions, direct-child
   untransformed ViewBox bounds and Grid removal's retained parent/cell references.
-  Batch the stale visuals/widgets introductions and ViewBox `camera=None` documentation
-  corrections with the remaining API documentation review before another shipping
-  pure-source freeze; do not rebuild native code for that documentation batch.
+  [Method/alias discovery and example bindings](api-method-reconciliation.md) now
+  retain 265 visible class/function aliases and 984 unreviewed source operation
+  groups, with matching Windows/WSL catalog bytes. Inherited properties/methods,
+  selected operators, source locations, three local examples and event declarations
+  are recorded; generated signatures, values and general instance dataflow remain
+  explicit limitations. The 142 original parents/selections are unchanged.
+  All 58 selected CPU cases pass per platform, without a GPU module or GUI object.
+  The initial WSL timeout/constructor-guard discovery defect is preserved; caching
+  and original constructor references fix discovery within the same time limit.
+  [Discovery/CPU evidence](../build/runs/api-reconciliation-367/external-evidence.json).
+- [x] **API-05-DOC — Correct reviewed public descriptions:** visuals now describe
+  the supported gloo/GLIR/Dawn path, widgets describe their actual scene-layout
+  exports, and ViewBox documents the existing BaseCamera default / explicit
+  `panzoom` choice. Executable ASTs, original BSD headers and line endings are
+  preserved; all three pure members are declared deviations. Source parity and
+  identity contracts pass on each platform. Packaging is pending the source freeze;
+  no native build is warranted and no old wheel identity is relabeled.
 - [ ] **API-06 — Selected API acceptance:** for each claimed finite subset, record
   supported values/formats, ordinary/mutation/failure/recovery behavior, clear
   refusals, documented differences and exact profile evidence. Keep original parent
@@ -690,6 +704,7 @@ exit condition is satisfied. Optional or deferred items are selected by need.
 | 2026-11-07 | Closed FIX-06-LINUX-INSTALLED: exact final-tagged wheel `438ec1ce` passes 60 no-skip test cases, eight Tk branches, four capture branches and all five active rejection controls on a single offline installed target. Every child verifies 537 members; measured gauges retire to zero. | `linux-final-installed-358`; local software Vulkan verification only, strict rows/admission/publication remain open. |
 | 2026-11-07 | Closed API-03 at 22-parent/source-route scope: verified 44 source files/three upstream pins, recorded 37 generated visual aliases, and passed 15 existing CPU tests per platform plus namespace/factory/ViewBox/Grid probes. Preserved the WSL pytest file-capture failure; unchanged cases pass with sys capture. | `scene-coverage-review.md`, `scene-audit-360`, `scene-cpu-361`; no shipping change or method/artifact admission. |
 | 2026-11-07 | Closed API-04 at 76-parent/source-route scope: 39 visuals, 14 filters, nine shader helpers, 14 transform helpers; 143 exact source files and four upstream pins verified. All 51 selected CPU cases pass per platform, plus parent/type/packing/clipping/Alpha probes. Original Rect-iteration harness failure retained. | `visual-coverage-review.md`, `visual-audit-363`, `visual-cpu-364`; actual shader/rendered/method acceptance remains open. |
+| 2026-11-07 | Closed API-05-DOC with three docstring-only corrections and explicit deviations; executable ASTs/headers/line endings unchanged. Discovered 265 aliases / 984 unreviewed operation groups, event declarations and three source example/test bindings. Windows/WSL catalogs match and 58 CPU cases pass per platform. Initial timeout/guard-discovery failure retained. | `api-method-reconciliation.md`, `api-reconciliation-366/367`; API-05 semantic reconciliation, packaging and acceptance remain open. |
 | 2026-11-07 | Closed FIX-04-OBS: fresh 56-assertion/eight-branch and capture/control observations on both successor wheels. Retained evidence and cleaned scratch. Identified v1-only package metadata coupling; settle successor version before final record freeze. | `shutdown-observations-332/verification.json`, `post-cleanup.json`; FIX-04/FIX-06 remain open. |
 | 2026-11-06 | Initial live checklist; release baseline separated from source fixes, historical host qualifications and optional gaps. | Release notes, strict matrix, consolidated backlog and shutdown-fix-322 records linked above. |
 | 2026-11-06 | Started FIX-04; recorded the native-input pin refusal and its FIX-05 prerequisite. | `source-fix-integration-323`; no release or qualification transferred. |

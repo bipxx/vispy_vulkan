@@ -31,9 +31,9 @@ class ViewBox(Widget):
     Parameters
     ----------
     camera : instance of Camera | str | None
-        The camera through which to view the SubScene. If None, then a
-        PanZoomCamera (2D interaction) is used. If str, then the string is
-        used as the argument to :func:`make_camera`.
+        The camera through which to view the SubScene. If None, a BaseCamera
+        is used. Pass 'panzoom' explicitly for 2D pan/zoom interaction. A string
+        is passed to :func:`make_camera`.
     **kwargs : dict
         Extra keyword arguments to pass to `Widget`.
     """

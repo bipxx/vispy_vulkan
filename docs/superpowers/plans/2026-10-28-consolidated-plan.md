@@ -91,10 +91,17 @@ actual native shader compilation/rendering retains its own acceptance work.
 The canonical 142-parent inventory remains unreviewed as a whole. All four
 namespace parent reviews are complete at their stated source scope; API-05/06
 method/example/event reconciliation and selected installed acceptance remain
-open, alongside current qualification/CI/publication. Next batch the three stale
-public descriptions (visuals, widgets, ViewBox default camera) with that
-reconciliation before necessary pure-member assembly; no native rebuild is
-warranted by documentation changes.
+open, alongside current qualification/CI/publication. The three stale public
+descriptions (visuals, widgets, ViewBox default camera) are now corrected with
+unchanged executable ASTs, BSD headers and line endings. The
+[method reconciliation companion](../../api-method-reconciliation.md) records
+265 visible aliases, 984 unreviewed operation groups, event declarations and three
+actual example/test source bindings. Windows/WSL catalogs match and all 58 selected
+CPU cases pass per platform. Preserve the original timeout/guard-discovery failure;
+the cached retry keeps the original time budget and construction guards. Freeze
+this coherent documentation/source batch before necessary pure-member assembly;
+no native rebuild is warranted. Semantic method/value/event reconciliation and
+exact installed admission remain open.
 
 The development checkpoints below retain their pre-release status. The table
 after them summarizes the current published release.

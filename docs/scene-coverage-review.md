@@ -54,9 +54,11 @@ reparent/transform mutation, view/camera changes, clipping/picking, resize,
 error/recovery and close on an exact installed profile. Give other routes a
 concrete supported subset or explicit disposition. Keep timer-driven cameras and
 the Console's specialized renderer separate from ordinary camera/text claims.
-Reconcile the two stale widget/ViewBox descriptions in a single documentation
-batch before the next shipping pure-source freeze; the audit itself changes no
-shipping code and warrants no wheel or native rebuild.
+The two stale widget/ViewBox descriptions identified at this review baseline are
+corrected in [the later API-05 documentation batch](api-method-reconciliation.md),
+with unchanged executable ASTs and original headers. This original source audit
+itself changed no shipping code; the later pure descriptions need packaging,
+without a native rebuild.
 
 Source accounting and CPU evidence are recorded in
 [the scene audit](../build/runs/scene-audit-360/external-evidence.json). Existing

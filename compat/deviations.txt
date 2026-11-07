@@ -57,3 +57,8 @@ gloo/buffer.py
 
 # W15: no PyOpenGL import; the legacy GL parser's 3D-texture path fails clearly instead.
 gloo/glir.py
+
+# Public visual/widget descriptions and the actual ViewBox default camera.
+visuals/__init__.py
+scene/widgets/__init__.py
+scene/widgets/viewbox.py

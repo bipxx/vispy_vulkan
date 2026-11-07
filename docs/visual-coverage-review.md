@@ -142,11 +142,12 @@ explicitly refused by the renderer; affected custom consumers need a supported
 rewrite or documented disposition. Other shader/state/typed texture/scientific
 gaps remain open rather than being inferred absent or complete from exports.
 
-The public visuals module still says it defines only OpenGL machinery. Queue
-that stale description with the widgets introduction and ViewBox default-camera
-corrections already recorded by API-03. Finish method/route reconciliation and
-batch those public documentation edits before another shipping pure-source
-freeze. This audit changes no shipping code and needs no native build or wheel
-rebuild. API-05/06 must bind each selected workflow to its values, expected
+At this review baseline the public visuals module still described only OpenGL
+machinery. [The later API-05 documentation batch](api-method-reconciliation.md)
+corrects that description together with the widgets introduction and ViewBox
+default-camera description, preserving executable ASTs and original headers.
+Those pure descriptions need packaging after source freeze; no native rebuild
+is warranted. This original audit changed no shipping code. API-05/06 must bind
+each selected workflow to its values, expected
 outputs, mutations, failures/recovery and exact installed profile; source review
 does not transfer an admission.
