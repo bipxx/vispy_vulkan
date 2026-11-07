@@ -657,8 +657,15 @@ preserved. Required acceptance detail: SH-1–SH-5 in the
   into the relevant prepared/installed CI profile before generalizing its evidence.
 - [ ] **STA-01 — Legal raster state / B4:** reconcile dither, disabled multisampling,
   fractional polygon offset, mixed constant blending and stencil combinations.
-- [ ] **STA-02 — Reversed depth:** move the claimed cases beyond source-only coverage
-  if installed support is to be claimed.
+- [x] **STA-02 — Reversed depth, finite installed proof:** all 30 existing
+  analytic color/depth cases pass without skips on each current v2 wheel:
+  Windows RTX Vulkan and pinned WSL software Vulkan. Ordering/clamping/equal
+  ranges, masks, clipping, queued orientation, explicit/aliased fragment depth,
+  indexed instancing and both forced device-loss paths are covered. Each process
+  verifies 537 installed members and 56/55 loaded origins; ten shutdown gauges are
+  zero. Both scratch targets are removed. [Exact evidence and boundaries](../compat/api-acceptance/reversed-depth-v1.json).
+  Independent implementation review and strict observer/profile admission remain
+  open; no arbitrary shader/format or performance claim follows.
 - [ ] **TEX-01 — Typed sampling / B5:** review Uint/Sint, unfilterable float,
   comparison samplers, half precision and NaN behavior across claimed layouts.
 - [ ] **LIN-01 — Line partitioning / B6:** prove chunk boundaries, topology,

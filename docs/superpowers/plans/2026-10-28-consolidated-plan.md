@@ -43,6 +43,17 @@ unmodified scientific hosts, napari first, run on it with practical parity.
 
 ## Where things stand
 
+2026-11-07 reversed-depth checkpoint: STA-02's finite installed-proof action is
+closed. All 30 analytic color/depth cases pass on both current v2 wheels,
+including ordinary/explicit-depth device-loss recovery. Both processes verify
+537 members and 56/55 loaded VisPy origins, with ten zero shutdown gauges.
+Both scratch installations are removed. See the
+[depth packet](../../../compat/api-acceptance/reversed-depth-v1.json).
+Independent implementation review and strict observer/profile admission remain
+open. Broader legal raster-state work stays STA-01; do not transfer this result
+to arbitrary formats/shader forms or performance.
+
+
 2026-11-07 input checkpoint: LIF-06-TK has finite installed acceptance on both
 current v2 wheels: 39 cases each, no skips, 22 adapter vectors plus 17
 toolkit-generated cases (three rendered camera landmarks). New focus/host Entry
