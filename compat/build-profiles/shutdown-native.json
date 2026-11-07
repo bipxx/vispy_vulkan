@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "name": "shutdown-native",
+  "owner": "root-shutdown-native",
+  "purpose": "SDK-linked Windows cp312 successor native leaf for the explicit-shutdown host-cache fix",
+  "storage_workspace": "C:/Users/HEQ/Projects/vispy_vulkan",
+  "expected_peak_bytes": 4294967296,
+  "aggregate_max_scratch_bytes": 21474836480,
+  "min_free_bytes": 10737418240,
+  "parallel_jobs": 3,
+  "disk_guard_seconds": 30,
+  "reuse": "Existing qualified windows-x64-release-3 SDK, identity-pinned cp312 preparation and dependency origins; no SDK rebuild, source clone, new environment or package download",
+  "constraints": "Build from verified source candidate b5fbe5917bcd5f6fb21cfda425980a12a8af34f1 in the canonical validation root, with VISPY_INPLACE=OFF. Keep successor input maps outside old release records. Validate actual source bytes before and after every build. No admission or release claims from a native build alone",
+  "budget_basis": "Same 4 GiB bounded SDK-linked leaf profile used by release run r2-wheels-311; one native build, compiler intermediates and small temporary files, without vendor SDK duplication",
+  "terminal_cleanup": "Await owned children; retain sources, original AGPL/BSD licenses, recipe, projects, logs, tests, failure reproducer if needed and native outputs by hash; inspect and apply registry-aware cleanup of this run only before the next experiment"
+}

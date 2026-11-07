@@ -136,10 +136,80 @@ Authority: [capture coverage map](../compat/candidates/tk-capture-1/coverage.jso
   `cpp/runtime.cpp` native-input pin, as expected; matching artifact/record work
   from FIX-05 is a prerequisite to a green integration. The passing CPU regression
   does not override that refusal. Evidence: [drift report](../build/runs/source-fix-integration-323/drift-before.json).
+  Source candidate: `b5fbe591`. Independent source review found no blocking defect:
+  [review report](../build/runs/source-fix-integration-323/peer-review.md). This
+  review does not approve an installed artifact or waive the native-input failure.
+  Isolated CI setup `source-fix-integration-323` stopped before tests because the
+  offline cache lacked locked Cython 3.1.5. Its checkout and scratch were removed;
+  [cleanup receipt](../build/runs/source-fix-integration-323/post-cleanup.json)
+  verifies 27 retained files. Retry `source-fix-ci-324` used the same source commit,
+  the same 4 GiB limit and exact hash-checked locked package downloads. Dependency
+  verification, all 44 CPU contracts and the curated shutdown regression passed.
+  Parallel pytest temporary-directory collisions and two Windows fixture path-length
+  failures were resolved by rerunning affected commands with isolated/short owned
+  temporary paths. **16/23 source commands pass; seven still fail on old runtime
+  pins.** These are source-CI command counts, not API coverage. Evidence:
+  [acceptance report](../build/runs/source-fix-ci-324/acceptance-report.json).
+  Matching native artifacts/records remain the next prerequisite; no merge or
+  published-wheel coverage is claimed.
+  Cleanup is complete: both temporary checkouts and managed scratch are absent;
+  [run 324 receipt](../build/runs/source-fix-ci-324/post-cleanup.json) verifies
+  127 retained files. uv's empty cache marker caused a preserved generic-planner
+  refusal; audited `uv cache clean` removed only this run's cache before the
+  normal registry-aware plan/apply succeeded.
 - [ ] **FIX-05 — Patch artifact verification:** build successor artifacts containing
   the fix, verify native/package/license joins, and exercise actual renderer teardown
   with live uploads and imports on Windows and WSL. CPU wrapper evidence alone does
   not prove a new installed renderer artifact.
+  **Partial, 2026-11-06:** the Windows substep below is complete; Linux remains open.
+- [x] **FIX-05-WIN — Local Windows successor verification:** product source
+  `b5fbe5917bcd5f6fb21cfda425980a12a8af34f1`, native `_dawn` SHA256
+  `3b7e54641a127c72f476229a3459494154e83f519f41323f28c2f4fe0bd22feb`;
+  unreleased cp312 x86_64 wheel SHA256
+  `43af80d30a207e4f5e31273829fb2191d504f18cba2946a8229de7507b4b5c6c`.
+  Reused the retained SDK/prepared environment; all 44 native contracts and the
+  source/native/package/original-license joins passed. All 537 installed package
+  members were verified under `-I -S`. Four distinct installed cases passed:
+  texture upload, instanced/vertex buffer uploads, and actual shutdown ownership.
+  Scope: `dawn_headless`, NVIDIA RTX 4090 / driver 610.88, 512×512 RGBA8 shutdown
+  payload. One held submission and 2 MiB pinned imports retired; all ten checked
+  ownership gauges were zero. Repeated shutdown and exact readback of a separately
+  owned snapshot after shutdown passed. Warm CPU-cache byte release remains proved
+  by FIX-01's direct CPU regression, not a new installed-memory gauge.
+  Evidence: [native proof](../build/runs/shutdown-native-325/native-validation.json),
+  [installed acceptance](../build/runs/shutdown-package-326/acceptance-report.json),
+  [native regression](../tests/native/test_shutdown_uploads.py). The initial
+  regression's context-manager cleanup failure and corrected rerun are retained;
+  no native rebuild was needed for that test correction. Both runs' scratch is
+  removed: [native cleanup](../build/runs/shutdown-native-325/post-cleanup.json),
+  [installed cleanup](../build/runs/shutdown-package-326/post-cleanup.json).
+  This is local artifact verification, not mandatory-row or release admission;
+  the published v1 wheel is unchanged.
+- [ ] **FIX-05-LINUX — Linux successor verification:** produce matching Linux
+  native/wheel inputs and repeat the installed shutdown ownership check on WSL
+  software Vulkan, recording actual import capability/fallback and exact artifact
+  hashes. Preserve the fresh CI producer and package/license joins required for
+  later admission; the current published Linux wheel does not contain FIX-01.
+  **In progress, 2026-11-06:** WSL and `/mnt/c` are writable with sufficient
+  capacity; the inherited guest registry, existing Python/dependencies and pinned
+  external lavapipe library are available, and guest scratch is empty. Pushed
+  only the reviewed source branch at `b5fbe591` and dispatched
+  [fresh Linux CI run 42334823925](https://github.com/bipxx/vispy_vulkan/actions/runs/42334823925).
+  This producer is needed for later admission; no duplicate local native build is
+  planned. The first dispatch request timed out before acceptance; its preserved
+  direct retry succeeded. Evidence: [producer decision](../build/runs/shutdown-linux-327/fresh-producer-decision.json),
+  [filesystem check](../build/runs/shutdown-linux-327/wsl-filesystem.log).
+  The first CI run failed before the renderer build: the driver and all four
+  controls passed, but the parent live-size sampler raced with child cleanup and
+  terminated the driver phase on `FileNotFoundError`. Original failure/partial
+  inner-cleanup records are preserved; [local transport cleanup](../build/runs/shutdown-linux-327/post-cleanup.json)
+  rehashed 93 retained files. The sampler now catches only a vanished-file
+  `FileNotFoundError`, retaining budget checks, other I/O failures and the unchanged
+  strict cleanup verifier. A deterministic failing baseline, 3/3 regression checks
+  and 39/39 WSL lifecycle cases are retained in
+  [run 328](../build/runs/ci-space-race-328/verification.json). Its guest scratch is
+  [cleaned](../build/runs/ci-space-race-328/post-cleanup.json); the Windows successor's
+  production inputs remain unchanged, so it needs no native rebuild.
 - [ ] **FIX-06 — Patch qualification and publication:** renew affected records and
   mandatory rows on those artifacts, satisfy required CI/promotion, and publish only
   through the authorized release process. Existing v1 wheels do not contain FIX-01.
@@ -330,6 +400,11 @@ criteria; software timestamps do not establish physical display scanout latency.
 
 ## Next work order
 
+Close one item at a time: record its source/artifact scope, run its acceptance
+checks, retain the result and clean its scratch before moving on. A prerequisite
+may be worked within the active item, but the checkbox stays open until every
+exit condition is satisfied. Optional or deferred items are selected by need.
+
 1. FIX-04–FIX-06: review the source candidate, produce the matching FIX-05 native
    artifact/record prerequisites, then complete the FIX-04 checks/merge and FIX-06
    qualification/publication. This is one active fix workstream; do not mark
@@ -346,3 +421,9 @@ criteria; software timestamps do not establish physical display scanout latency.
 | --- | --- | --- |
 | 2026-11-06 | Initial live checklist; release baseline separated from source fixes, historical host qualifications and optional gaps. | Release notes, strict matrix, consolidated backlog and shutdown-fix-322 records linked above. |
 | 2026-11-06 | Started FIX-04; recorded the native-input pin refusal and its FIX-05 prerequisite. | `source-fix-integration-323`; no release or qualification transferred. |
+| 2026-11-06 | Source review passed; retained and cleaned failed offline CI setup. Started a bounded locked-package retry on the same candidate. | `source-fix-integration-323`, `source-fix-ci-324`; FIX-04 remains open. |
+| 2026-11-06 | All 44 CPU contracts and the shutdown regression passed. Source CI remains 16/23 commands passing after isolated fixture retries; seven commands reject old runtime pins. | `source-fix-ci-324/acceptance-report.json`; FIX-04 remains open pending matching artifacts/records and merge. |
+| 2026-11-06 | Removed both isolated checkouts and all run 323/324 scratch; preserved failures and rehashed retained evidence. | `source-fix-integration-323/post-cleanup.json`, `source-fix-ci-324/post-cleanup.json`; original publication checkout unchanged. |
+| 2026-11-06 | Closed FIX-05-WIN: fresh SDK-linked Windows leaf, 44 native contracts, exact package/license join, 537 installed member identities and four distinct installed cases. Added explicit Linux substep; parent FIX-05 and FIX-04 remain open. | `shutdown-native-325`, `shutdown-package-326`; unreleased wheel `43af80d3`, both runs cleaned with 137/34 retained files rehashed. |
+| 2026-11-06 | Started FIX-05-LINUX: healthy WSL/backing volume, unchanged driver/dependency reuse, source-only branch push and explicit fresh CI producer. | `shutdown-linux-327`, CI `42334823925`; no artifact or qualification pass yet. |
+| 2026-11-06 | Preserved the failed first Linux CI producer; fixed its live scratch-sampling cleanup race with a deterministic baseline and 39 passing WSL lifecycle cases. Both local transport and guest test scratch cleaned. | `shutdown-linux-327/failure-analysis.json`, `ci-space-race-328/verification.json`; Linux renderer verification remains open. |

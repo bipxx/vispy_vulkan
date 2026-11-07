@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "name": "shutdown-linux",
+  "owner": "root-shutdown-linux",
+  "purpose": "Retain one fresh Linux CI producer for the shutdown successor, then verify its installed wheel on WSL without a duplicate local native build",
+  "storage_workspace": "C:/Users/HEQ/Projects/vispy_vulkan",
+  "transport_expected_peak_bytes": 536870912,
+  "consumer_expected_peak_bytes": 536870912,
+  "aggregate_max_scratch_bytes": 21474836480,
+  "min_free_bytes": 10737418240,
+  "parallel_jobs": 1,
+  "disk_guard_seconds": 30,
+  "producer": "Explicit fresh-mode linux-vulkan.yml at the exact frozen source recorded by the current run's source-candidate.json. Native production bytes remain those of reviewed b5fbe5917bcd5f6fb21cfda425980a12a8af34f1. The retry corrects only live-sampling ENOENT during child cleanup; strict terminal cleanup remains unchanged. Existing external CI native/Mesa lifecycle supplies registered 6 GiB leases, guards, sources, notices, original phase receipts and cleanup. Old Linux native reuse is invalid for the changed runtime",
+  "reuse": "Existing Git objects without checkout changes; existing WSL CPython3.12.13, explicit dependency site-packages and retained external lavapipe ICD/libraries. No local compiler, SDK rebuild, environment or dependency installation",
+  "constraints": "Retain the original artifact and producer identity before validation. Preserve old input maps and release records. No verifier relaxation or admission transfer. WSL checks both /home/heq and /mnt/c; inherited protected/blocked registries remain intact. Finish Windows transport scratch before starting a guest consumer lease",
+  "terminal_cleanup": "Await children; retain original producer artifact members by hash, source/patch/license references, actual exit/wait and failures. Inspect/apply the registry-aware exact transport cleanup; then separately register, verify and clean the WSL consumer. All reports remain outside scratch",
+  "scope": "Linux development producer and installed WSL software Vulkan verification only. Mandatory-row renewal, final-head CI, merge and publication remain separate"
+}
