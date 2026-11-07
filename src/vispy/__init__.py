@@ -6,12 +6,14 @@
 Vispy
 =====
 
-Vispy is a **high-performance interactive 2D/3D data visualization
-library**. Vispy leverages the computational power of modern **Graphics
-Processing Units (GPUs)** through the **OpenGL** library to display very
-large datasets.
+This VisPy 0.17.0 compatibility fork renders through Dawn, using Vulkan on
+Windows/Linux and Metal on macOS. Familiar application, gloo, visual and scene
+interfaces support the workflows described in the fork's compatibility docs.
+Those docs define the supported values, platform profiles and remaining gaps;
+macOS graphics support is experimental.
 
-For more information, see http://vispy.org.
+The fork README describes current support. Upstream API documentation is at
+http://vispy.org.
 """
 
 from __future__ import division

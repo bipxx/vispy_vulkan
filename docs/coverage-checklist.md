@@ -333,8 +333,19 @@ Authority: [capture coverage map](../compat/candidates/tk-capture-1/coverage.jso
     failure and cleanup refusals remain retained. Both storage roots have empty
     managed scratch. [Review/freeze references](../build/runs/driver-freeze-343/external-evidence.json).
     Fresh Linux retry [CI 42357137754](https://github.com/bipxx/vispy_vulkan/actions/runs/42357137754)
-    is in progress; its outcome is not yet qualified. Windows producer still needs
+    was dispatched at that checkpoint; its verified outcome is recorded below. Windows producer still needs
     restored C: capacity or a separately validated storage-path design.
+    **Linux v2 producer verified, 2026-11-07:** CI `42357137754` completed
+    successfully at `fa72c6da`. All 44 native contracts and the unchanged original
+    native/source/archive/license joins pass. The raw cp312 Linux wheel is
+    `1afcf55a926022024d6202e5c32d7102dfa9f478f101bccb6fcee388e60a475e`;
+    `_dawn` is `928e043978ac943d1aa44470656b7a43ab574523d60512898f7aa19c1aa4b5ec`.
+    Both original remote cleanups passed. All 166 artifact members are retained;
+    transport scratch was removed and 184 retained files rehashed.
+    [Producer/archive evidence](../build/runs/linux-artifact-350/external-evidence.json).
+    Two newer module-description edits are the only current pure-member changes.
+    Repackage them around these verified native bytes, then run installed checks;
+    this result grants no candidate, profile, hardware or release admission.
 
 ## API breadth and inventory review
 
@@ -356,8 +367,18 @@ the [consolidated plan](superpowers/plans/2026-10-28-consolidated-plan.md).
   Inventory bytes, `reviewed=false`, all 142 original obligations and selections
   remain unchanged. API-05/06 retain method/value, alias, delivered-event, timer
   and exact-artifact acceptance work; no full parent or v2 admission transfers.
-- [ ] **API-02 — Rendering namespace:** review all 19 `gloo` parents, including
+- [x] **API-02 — Rendering namespace:** review all 19 `gloo` parents, including
   public wrappers, resources, buffers, textures, programs and readback.
+  **Complete at parent/source-route review scope, 2026-11-07:**
+  [the gloo review](gloo-coverage-review.md) accounts for all 19 entries and retains
+  dynamic wrapper/method/value work under API-05/06. Independent review's texture
+  view and readback-ordering wording findings are corrected; the initial snapshot
+  is preserved. The two public module descriptions now reflect Dawn compatibility
+  limits, with identical executable ASTs, original BSD headers retained and explicit
+  deviation entries. Both existing source-parity checks pass; native production
+  inputs are unchanged. [Audit/correction/review references](../build/runs/gloo-audit-348/external-evidence.json).
+  Inventory and selections remain unchanged. No full parent or v2 installed
+  acceptance transfers; the corrected pure members still need successor packaging.
 - [ ] **API-03 — Scene namespace:** review all 22 `scene` parents, including
   aliases, cameras, viewboxes, transforms, clipping and shared lifetimes.
 - [ ] **API-04 — Visual namespace:** review all 76 `visuals` parents, including
@@ -571,6 +592,8 @@ exit condition is satisfied. Optional or deferred items are selected by need.
 | 2026-11-07 | Selected D: storage with inherited protection/block lists; recovered the Linux failure and both remote cleanup receipts. Fixed the inner Mesa live-sampling race; 17 tests pass on each platform, while strict terminal snapshots remain unchanged. Original failures and pytest alias cleanup retained; owned D: scratch cleaned. | `driver-guard-341/external-evidence.json`; fresh producer qualification remains open. |
 | 2026-11-07 | Independent review's wiring gap closed; 19 cases pass per platform with an old-guard mutation control. Pushed the tool-only fix as `fa72c6da`, retained failures, cleaned all owned scratch and dispatched Linux retry `42357137754`. | `driver-freeze-343/external-evidence.json`; actual producer/release qualification remains open. |
 | 2026-11-07 | Closed API-01 at 25-parent/source-route review scope after independent review. 22 CPU boundary/event/curation checks pass on Windows and WSL; no native application constructed. Inventory/selection unchanged, API-05/06 acceptance still open. Test scratch cleaned and 16 retained files rehashed. | `application-coverage-review.md`, `app-audit-345/external-evidence.json`; source review only. |
+| 2026-11-07 | Closed API-02 at 19-parent/source-route scope after independent review and two wording corrections. Corrected public module descriptions; executable ASTs/native inputs unchanged, BSD headers/deviations verified, two source-parity checks pass. | `gloo-coverage-review.md`, `gloo-audit-348/external-evidence.json`; pure packaging and method/value acceptance remain open. |
+| 2026-11-07 | Retained and verified the successful v2 Linux producer: 44 contracts, exact native/archive/source/license joins, both original cleanups. Raw wheel `1afcf55a`, `_dawn` `928e0439`; local transport cleaned, 184 files rehashed. | `linux-artifact-350/external-evidence.json`; current pure-member assembly, installed checks and admission remain open. |
 | 2026-11-07 | Closed FIX-04-OBS: fresh 56-assertion/eight-branch and capture/control observations on both successor wheels. Retained evidence and cleaned scratch. Identified v1-only package metadata coupling; settle successor version before final record freeze. | `shutdown-observations-332/verification.json`, `post-cleanup.json`; FIX-04/FIX-06 remain open. |
 | 2026-11-06 | Initial live checklist; release baseline separated from source fixes, historical host qualifications and optional gaps. | Release notes, strict matrix, consolidated backlog and shutdown-fix-322 records linked above. |
 | 2026-11-06 | Started FIX-04; recorded the native-input pin refusal and its FIX-05 prerequisite. | `source-fix-integration-323`; no release or qualification transferred. |

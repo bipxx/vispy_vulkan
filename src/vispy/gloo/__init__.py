@@ -3,20 +3,19 @@
 # Distributed under the (new) BSD License. See LICENSE.txt for more info.
 
 """
-Object oriented interface to OpenGL.
+Object oriented rendering interface executed by Dawn.
 
-This module implements classes for the things that are "objects" in
-OpenGL, such as textures, FBO's, VBO's and shaders. Further, some
-convenience classes are implemented (like the collection class).
+Program, texture, framebuffer and buffer objects express rendering through an
+ordered GLIR command stream. Dawn executes the supported commands using Vulkan
+or Metal. GL-named resources and constants preserve familiar VisPy call sites.
 
-This set of classes provides a friendly (Pythonic) interface
-to OpenGL, and is designed to provide OpenGL's full functionality.
+The fork's compatibility documentation defines supported shader forms, formats,
+state operations and platform profiles. Exported classes have distinct scopes;
+their availability does not establish support for every upstream method/value.
 
-All classes inherit from GLObject, which provide a basic interface,
-enabling, activating and deleting the object. Central to each
-visualization is the Program. Other objects, such as Texture2D and
-VertexBuffer should be set as uniforms and attributes of the Program
-object.
+GLObject supplies logical resource identity and queued deletion. Program objects
+bind textures as uniforms and vertex buffers as attributes, then submit draws
+through the active canvas/context.
 
 Example::
 
@@ -29,16 +28,6 @@ Example::
     # Draw event handler
     program['u_color'] = 0.0, 1.0, 0.0
     program.draw(gl.GL_TRIANGLES)
-
-.. Note::
-
-    With vispy.gloo we strive to offer a Python interface that provides
-    the full functionality of OpenGL. However, this layer is a work in
-    progress and there are still a few known limitations. Most notably:
-
-    * TextureCubeMap is not yet implemented
-    * FBOs can only do 2D textures (not 3D textures or cube maps)
-    * No support for compressed textures.
 
 """
 
