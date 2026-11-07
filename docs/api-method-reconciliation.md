@@ -160,3 +160,24 @@ all five active rejection controls, including the three example tests above.
 Existing Linux wheel `438ec1ce` and its results retain their original bytes and
 scope. API-05 still requires semantic reconciliation; API-06 and release gates
 still require the remaining exact profile evidence and independent admission.
+
+## Finite installed Tk delivery acceptance
+
+[Tk input scope](../compat/api-acceptance/tk-input-v1.json) records 39 passing
+cases per current v2 wheel on Windows Tk 8.6/RTX Vulkan and WSL Tk 9/software
+Vulkan. Of these, 22 are explicit synthetic adapter vectors and 17 use
+toolkit-generated delivery; three of the latter assert independent rendered
+PanZoom/Turntable landmarks. Controlled-clock double-click cases are included.
+
+The two new routing cases exercise actual focus transfer between embedded
+canvases and a host Entry, including cancellation, native widget attribution,
+host binding/text preservation and subsequent recovery. A delivered key-release
+callback failure clears cached keys/modifiers and permits the next key pair.
+Each child verifies all 537 installed members and its loaded VisPy origins;
+all ten tracked resource gauges are zero after shutdown. Both scratch targets
+are removed and evidence rehashed. No native build or new environment was used.
+
+These observations close LIF-06-TK only. They do not establish physical-device
+delivery, touch/stylus, Qt gestures, every keyboard layout, DPI behavior or
+strict profile admission. The Tk adapter has no touch/stylus bindings in this
+scope; the parent input obligation remains open.

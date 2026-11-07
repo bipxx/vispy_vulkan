@@ -43,6 +43,17 @@ unmodified scientific hosts, napari first, run on it with practical parity.
 
 ## Where things stand
 
+2026-11-07 input checkpoint: LIF-06-TK has finite installed acceptance on both
+current v2 wheels: 39 cases each, no skips, 22 adapter vectors plus 17
+toolkit-generated cases (three rendered camera landmarks). New focus/host Entry
+isolation and delivered key-release failure recovery pass on Tk 8.6 Windows and
+Tk 9 WSL. All installed/member origins match and ten shutdown gauges are zero.
+Scratch targets are removed. See the [input packet](../../../compat/api-acceptance/tk-input-v1.json).
+Keep parent LIF-06 open for selected Qt/touch/layout delivery; do not substitute
+toolkit generation for physical HID. Reuse current wheels for the next finite
+acceptance item. Independent source/scope review and v2 admission remain pending.
+
+
 Use the [live coverage checklist](../../coverage-checklist.md) for detailed
 coverage status and next verification steps. Update its affected IDs alongside
 implementation, test, review and release changes; retain the linked manifests as

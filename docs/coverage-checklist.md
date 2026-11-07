@@ -705,6 +705,16 @@ observations on each claimed profile, not just a successful screenshot.
   matrix; single-sample and asymmetric color-resolve proofs remain separate.
 - [ ] **LIF-06 — Input forwarding / Q13:** selected keyboard, wheel, touch, focus,
   mouse, timer and coordinate semantics beyond the currently proved workflows.
+- [x] **LIF-06-TK — Finite installed Tk input acceptance:** 39 cases pass without
+  skips on each exact v2 wheel: Windows Tk 8.6/RTX Vulkan and WSL Tk 9/software
+  Vulkan. This comprises 22 explicit adapter vectors and 17 toolkit-generated
+  cases, including three rendered camera landmark tests. Two new cases verify
+  focus isolation/host Entry preservation and delivered key-release failure
+  recovery. All 537 installed members and 175/174 loaded module origins match;
+  ten shutdown gauges are zero on each platform. Scratch installations removed.
+  [Exact scope and evidence](../compat/api-acceptance/tk-input-v1.json).
+  Physical HID, touch/stylus, Qt gestures, other layouts and DPI remain outside
+  this finite scope; parent LIF-06 and strict profile admission stay open.
 - [ ] **LIF-07 — Tk extensions / B9:** camera, DPI and physical-input behavior
   beyond the admitted finite raster/manual-pump scope. The old Tk 8.6 WSL profile
   must not substitute for the admitted Tk 9 profile.

@@ -1,0 +1,251 @@
+{
+  "schema": 1,
+  "status": "FINITE_INSTALLED_TK_INPUT_ACCEPTANCE",
+  "parent_id": "LIF-06",
+  "parent_closed": false,
+  "source_hashes": {
+    "src/vispy/app/backends/_dawn_tk.py": "6a4bd1f0bb786235e255d257a733b6acde42a096fa059d9b73ae60e0f4d4c554",
+    "src/vispy/app/base.py": "30fc071772ca917548a28ebced100baeddf0566c264e6c8fac4043217123f6b7",
+    "src/vispy/app/canvas.py": "00a98debb5519d344c9c9e9ee0f838eb9bfae784cd7c36eb86581076fcec310f",
+    "src/vispy/app/timer.py": "41129507f231e2deed48570557572fcc3fe60cb10d4d46e13dee8b94f5dfec75",
+    "tests/native/test_tkinter_backend.py": "0d1755165e00b45b23d42f525f0ef976a777bbb5eaffd7672c025c90b432c47a",
+    "tests/native/test_tkinter_input_routing.py": "e0bbb884a152e2c0ac743321bea22a6cae8e96d5c0d839bf9d18cbbd3c92f262",
+    "tests/native/test_tkinter_panzoom_coordinates.py": "2af1b9262b8a82fa409c720ebcf2c6c33d8d31544617d3766f3fd931a8565956",
+    "tests/native/test_tkinter_panzoom_wheel.py": "eda2333b867e752a239e0c97e0c478e90178ffb439341edd932ab5ee6f10f864",
+    "tests/native/test_tkinter_turntable_coordinates.py": "caeb4b40371e94c39b10aa470c92c469e210e4a836c00263573c44052fbcbaae"
+  },
+  "test_targets": [
+    "tests/native/test_tkinter_backend.py::test_double_click_keeps_trigger_metadata_and_ordinary_clicks",
+    "tests/native/test_tkinter_backend.py::test_focus_loss_breaks_double_click_history",
+    "tests/native/test_tkinter_backend.py::test_focus_loss_finishes_cancellation_after_release_callback_failure",
+    "tests/native/test_tkinter_backend.py::test_double_click_threshold_position_and_button",
+    "tests/native/test_tkinter_backend.py::test_modifier_aliases_dual_keys_release_state_and_native_provenance",
+    "tests/native/test_tkinter_backend.py::test_synthetic_platform_modifier_masks",
+    "tests/native/test_tkinter_backend.py::test_synthetic_key_identity_text_and_release_after_modifier_change",
+    "tests/native/test_tkinter_backend.py::test_live_key_events_retain_native_widget_and_printable_text",
+    "tests/native/test_tkinter_backend.py::test_live_wheel_units_held_buttons_and_native_metadata",
+    "tests/native/test_tkinter_backend.py::test_embedded_input_routes_once_and_preserves_host_binding",
+    "tests/native/test_tkinter_backend.py::test_real_tk_input_and_stopped_timer",
+    "tests/native/test_tkinter_backend.py::test_drag_button_state_and_focus_loss",
+    "tests/native/test_tkinter_backend.py::test_legacy_wheel_buttons_are_distinct_from_tk9_extra_buttons",
+    "tests/native/test_tkinter_input_routing.py",
+    "tests/native/test_tkinter_panzoom_coordinates.py",
+    "tests/native/test_tkinter_panzoom_wheel.py",
+    "tests/native/test_tkinter_turntable_coordinates.py"
+  ],
+  "observations": [
+    {
+      "profile": "input-installed-windows-390",
+      "wheel": {
+        "path": "build/artifacts/5cb463cd5e5c889af8b5c8d605bd6f60fe33d1bbeed521443d4f0966788017f9/vispy-0.17.0+vulkan.2-cp312-cp312-win_amd64.whl",
+        "sha256": "5cb463cd5e5c889af8b5c8d605bd6f60fe33d1bbeed521443d4f0966788017f9"
+      },
+      "toolkit": {
+        "tk_version": 8.6,
+        "tcl_version": 8.6,
+        "binding_origin": "C:\\Users\\HEQ\\AppData\\Roaming\\uv\\python\\cpython-3.12.8-windows-x86_64-none\\DLLs\\_tkinter.pyd",
+        "binding_sha256": "38453f6aff3f3a3ef0017c00bfee2f403ca0aeaf92b8b5c56d05460fd6dbbdf9"
+      },
+      "cases": 39,
+      "adapter_vectors": 22,
+      "toolkit_generated_cases": 17,
+      "rendered_camera_cases": 3,
+      "installed_members_verified": 537,
+      "loaded_vispy_modules": 175,
+      "shutdown_gauges": {
+        "pending_tickets": 0,
+        "queued_frames": 0,
+        "live_buffer_bytes": 0,
+        "live_cpu_buffer_bytes": 0,
+        "live_texture_bytes": 0,
+        "canvas_texture_bytes": 0,
+        "transient_buffer_bytes": 0,
+        "line_resource_pool_busy_slots": 0,
+        "line_resource_pool_bytes": 0,
+        "host_import_pinned_bytes": 0
+      },
+      "device": {
+        "backend": "Vulkan",
+        "adapter_type": "discrete",
+        "vendor": "nvidia",
+        "device": "NVIDIA GeForce RTX 4090",
+        "driver": "NVIDIA: 610.88 610.88.0.0",
+        "vendor_id": 4318,
+        "device_id": 9860,
+        "max_texture_dimension_1d": 32768,
+        "max_texture_dimension_2d": 32768,
+        "max_texture_dimension_3d": 16384,
+        "max_vertex_attributes": 30,
+        "max_vertex_buffers": 8,
+        "max_vertex_buffer_array_stride": 2048,
+        "max_storage_buffers_per_shader_stage": 16,
+        "max_uniform_buffers_per_shader_stage": 12,
+        "max_inter_stage_shader_variables": 30,
+        "max_storage_buffer_binding_size": 2147483644,
+        "max_bindings_per_bind_group": 1000,
+        "max_compute_invocations_per_workgroup": 1024,
+        "max_compute_workgroup_size_x": 1024,
+        "max_compute_workgroups_per_dimension": 65535,
+        "max_point_vertex_attributes": 30,
+        "core_features_and_limits": true,
+        "point_input_limit_scope": "all active user point inputs share one vertex buffer; exact vertex/instance identities use read-only vertex storage without reserving a user attribute; actual granted attribute/stride/storage/allocation limits apply",
+        "max_samplers_per_shader_stage": 16,
+        "max_sampled_textures_per_shader_stage": 48,
+        "max_buffer_size": 1099511627776,
+        "max_uniform_buffer_binding_size": 65536,
+        "software": false,
+        "float32_filterable": true,
+        "unorm16_texture_formats": true,
+        "bresenham_lines": true,
+        "last_vertex_provoking": true,
+        "timestamp_query": true,
+        "timestamp_quantization_ns": 65536,
+        "host_mapped_pointer": true,
+        "host_import_limit": 536870912,
+        "depth_stencil_storage": "depth24_unorm_stencil8",
+        "ok": true,
+        "error": "",
+        "loss_count": 0,
+        "revision": "117b054598f4758b598f4b8f48feea48c11fe7b0+dawn-499e5c6ff9b37d5de70c6493fb74c251e0d35c1c"
+      },
+      "evidence": {
+        "verification.json": {
+          "path": "build/runs/input-installed-windows-390/verification.json",
+          "sha256": "3e99348a2c9bb4f7bdeeeb45b1576da7ed096bc66d7c5e08d6b9987ef6f7bed3"
+        },
+        "input-result.json": {
+          "path": "build/runs/input-installed-windows-390/input-result.json",
+          "sha256": "2f0429b3d262fd4213248ca4dae71b36fb2132f6c9b851b931039bf586045f1d"
+        },
+        "inputs.xml": {
+          "path": "build/runs/input-installed-windows-390/inputs.xml",
+          "sha256": "b9e09c735d8fc724486bb6651abee44595886f698e6b23b21ed75a6f3d4d7089"
+        },
+        "terminal-retention.json": {
+          "path": "build/runs/input-installed-windows-390/terminal-retention.json",
+          "sha256": "469f7e3be5a0fc2e3e4c6053c16e307bdf85bc27c3b7c972fd3ed08ee0469df8"
+        },
+        "post-cleanup.json": {
+          "path": "build/runs/input-installed-windows-390/post-cleanup.json",
+          "sha256": "e719eb1385bf194f7df875420bcc9e5a9dea45903d18bcf4af67453b6dfbd3d1"
+        }
+      }
+    },
+    {
+      "profile": "input-installed-wsl-391",
+      "wheel": {
+        "path": "build/artifacts/b4c724842cbb8bfadb2097a025acd30cbdce006bad2b27b3b62b149cda398b69/vispy-0.17.0+vulkan.2-cp312-cp312-manylinux_2_39_x86_64.whl",
+        "sha256": "b4c724842cbb8bfadb2097a025acd30cbdce006bad2b27b3b62b149cda398b69"
+      },
+      "toolkit": {
+        "tk_version": 9.0,
+        "tcl_version": 9.0,
+        "binding_origin": "/home/heq/.local/share/uv/python/cpython-3.12.13-linux-x86_64-gnu/lib/python3.12/lib-dynload/_tkinter.cpython-312-x86_64-linux-gnu.so",
+        "binding_sha256": "0240658571f1531461f4a7178c454795c55fe0f5723eebeda0b5de2f4aeee303"
+      },
+      "cases": 39,
+      "adapter_vectors": 22,
+      "toolkit_generated_cases": 17,
+      "rendered_camera_cases": 3,
+      "installed_members_verified": 537,
+      "loaded_vispy_modules": 174,
+      "shutdown_gauges": {
+        "pending_tickets": 0,
+        "queued_frames": 0,
+        "live_buffer_bytes": 0,
+        "live_cpu_buffer_bytes": 0,
+        "live_texture_bytes": 0,
+        "canvas_texture_bytes": 0,
+        "transient_buffer_bytes": 0,
+        "line_resource_pool_busy_slots": 0,
+        "line_resource_pool_bytes": 0,
+        "host_import_pinned_bytes": 0
+      },
+      "device": {
+        "backend": "Vulkan",
+        "adapter_type": "cpu",
+        "vendor": "mesa",
+        "device": "llvmpipe (LLVM 18.1.3, 256 bits)",
+        "driver": "llvmpipe: Mesa 26.1.8 (LLVM 18.1.3)",
+        "vendor_id": 65541,
+        "device_id": 0,
+        "max_texture_dimension_1d": 16384,
+        "max_texture_dimension_2d": 16384,
+        "max_texture_dimension_3d": 4096,
+        "max_vertex_attributes": 30,
+        "max_vertex_buffers": 8,
+        "max_vertex_buffer_array_stride": 2048,
+        "max_storage_buffers_per_shader_stage": 16,
+        "max_uniform_buffers_per_shader_stage": 12,
+        "max_inter_stage_shader_variables": 30,
+        "max_storage_buffer_binding_size": 134217728,
+        "max_bindings_per_bind_group": 1000,
+        "max_compute_invocations_per_workgroup": 1024,
+        "max_compute_workgroup_size_x": 1024,
+        "max_compute_workgroups_per_dimension": 65535,
+        "max_point_vertex_attributes": 30,
+        "core_features_and_limits": true,
+        "point_input_limit_scope": "all active user point inputs share one vertex buffer; exact vertex/instance identities use read-only vertex storage without reserving a user attribute; actual granted attribute/stride/storage/allocation limits apply",
+        "max_samplers_per_shader_stage": 16,
+        "max_sampled_textures_per_shader_stage": 48,
+        "max_buffer_size": 4294967295,
+        "max_uniform_buffer_binding_size": 65536,
+        "software": true,
+        "float32_filterable": true,
+        "unorm16_texture_formats": true,
+        "bresenham_lines": true,
+        "last_vertex_provoking": true,
+        "timestamp_query": true,
+        "timestamp_quantization_ns": 65536,
+        "host_mapped_pointer": true,
+        "host_import_limit": 536870912,
+        "depth_stencil_storage": "depth24_unorm_stencil8",
+        "ok": true,
+        "error": "",
+        "loss_count": 0,
+        "revision": "117b054598f4758b598f4b8f48feea48c11fe7b0+dawn-499e5c6ff9b37d5de70c6493fb74c251e0d35c1c"
+      },
+      "evidence": {
+        "verification.json": {
+          "path": "build/runs/input-installed-wsl-391/verification.json",
+          "sha256": "552653f2c136c83a48b6c97e1a30cb4a17a24a878811aa05ad6ae29798af393c"
+        },
+        "input-result.json": {
+          "path": "build/runs/input-installed-wsl-391/input-result.json",
+          "sha256": "23e914d1dcc5503a0100b9948a3ac33429137efbea3212809ea92f537ef15e43"
+        },
+        "inputs.xml": {
+          "path": "build/runs/input-installed-wsl-391/inputs.xml",
+          "sha256": "35813dfb4d28c6ce2224f5de5d79af5dab6a92b8fd42d1e04fa910c96cf0b3dd"
+        },
+        "terminal-retention.json": {
+          "path": "build/runs/input-installed-wsl-391/terminal-retention.json",
+          "sha256": "8c8f47c8c58f49387a635ede73e58d08c5abb8e74e68c4b3bb0998231cd658a0"
+        },
+        "post-cleanup.json": {
+          "path": "build/runs/input-installed-wsl-391/post-cleanup.json",
+          "sha256": "84804452fb4f730c17ccfbe5e13fa6a4b49c2af93a146cb504748a9bec6c9e09"
+        }
+      }
+    }
+  ],
+  "accepted_scope": [
+    "Tk-generated key/text, mouse, wheel, timer and focus delivery",
+    "Focus transfer cancels first canvas state, isolates second canvas and preserves host Entry bindings/text",
+    "Delivered key-release callback failure clears caches and next delivered key recovers",
+    "Controlled-clock double-click metadata, thresholds and cancellation",
+    "Explicit synthetic modifier/key/button adapter vectors",
+    "PanZoom drag/wheel and Turntable literal coordinate plus rendered-pixel landmarks"
+  ],
+  "excluded_scope": [
+    "physical HID injection",
+    "touch/stylus delivery",
+    "Qt input/gestures",
+    "cross-monitor/fractional DPI",
+    "all keyboard layouts and arbitrary values",
+    "strict profile or release admission"
+  ],
+  "artifact_admitted": false,
+  "native_build": false,
+  "new_environment": false
+}
