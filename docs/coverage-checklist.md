@@ -1,6 +1,6 @@
 # VisPy Vulkan coverage checklist
 
-Last reviewed: **2026-11-06**. This is the live coverage worklist for implementation,
+Last reviewed: **2026-11-07**. This is the live coverage worklist for implementation,
 verification and release follow-up. The [consolidated plan](superpowers/plans/2026-10-28-consolidated-plan.md)
 remains the implementation plan; the linked manifests and admissions remain the
 authority for each result.
@@ -157,11 +157,23 @@ Authority: [capture coverage map](../compat/candidates/tk-capture-1/coverage.jso
   127 retained files. uv's empty cache marker caused a preserved generic-planner
   refusal; audited `uv cache clean` removed only this run's cache before the
   normal registry-aware plan/apply succeeded.
-- [ ] **FIX-05 — Patch artifact verification:** build successor artifacts containing
+- [x] **FIX-04-OBS — Fresh candidate source observations:** both successor wheels
+  passed the 56 installed state/capture assertions and the real eight-branch Tk
+  workflow. Both source/native capture observations passed all four asserted modes;
+  each of the five active mutation controls was independently rejected. All nine
+  live-resource shutdown gauges were zero. Evidence:
+  [observations](../build/runs/shutdown-observations-332/verification.json),
+  [cleanup](../build/runs/shutdown-observations-332/post-cleanup.json) (72 retained
+  files rehashed, 86 MB scratch removed). This supports source/profile preparation;
+  it grants no independent approval or installed observer/profile admission.
+  Canonical v1 candidate records were not modified during collection.
+- [x] **FIX-05 — Patch artifact verification:** build successor artifacts containing
   the fix, verify native/package/license joins, and exercise actual renderer teardown
   with live uploads and imports on Windows and WSL. CPU wrapper evidence alone does
   not prove a new installed renderer artifact.
-  **Partial, 2026-11-06:** the Windows substep below is complete; Linux remains open.
+  **Complete at local artifact-verification scope, 2026-11-06:** Windows and WSL
+  substeps below passed against exact unreleased successor wheels. This does not
+  complete record renewal, source integration or release qualification.
 - [x] **FIX-05-WIN — Local Windows successor verification:** product source
   `b5fbe5917bcd5f6fb21cfda425980a12a8af34f1`, native `_dawn` SHA256
   `3b7e54641a127c72f476229a3459494154e83f519f41323f28c2f4fe0bd22feb`;
@@ -185,12 +197,33 @@ Authority: [capture coverage map](../compat/candidates/tk-capture-1/coverage.jso
   [installed cleanup](../build/runs/shutdown-package-326/post-cleanup.json).
   This is local artifact verification, not mandatory-row or release admission;
   the published v1 wheel is unchanged.
-- [ ] **FIX-05-LINUX — Linux successor verification:** produce matching Linux
-  native/wheel inputs and repeat the installed shutdown ownership check on WSL
-  software Vulkan, recording actual import capability/fallback and exact artifact
-  hashes. Preserve the fresh CI producer and package/license joins required for
-  later admission; the current published Linux wheel does not contain FIX-01.
-  **In progress, 2026-11-06:** WSL and `/mnt/c` are writable with sufficient
+- [x] **FIX-05-LINUX — Local Linux successor verification:** fresh
+  [CI run 42335940224](https://github.com/bipxx/vispy_vulkan/actions/runs/42335940224)
+  passed at source `a00461b60d0751a4290e0000f1df8b8967a9af3d`. Its native production
+  bytes match reviewed `b5fbe591` (the retry changes only collector/test/docs inputs).
+  Native `_dawn` SHA256
+  `2280cd8161fe058f39e4f7ed2f1c55c3ae59404323a849ce97d3612099fcf0cf`;
+  unreleased cp312 x86_64 Linux-tagged wheel SHA256
+  `b71ed6a3bfd5c43f4147a599787143a3fa5b98dbd6f552ffe9db26b81c37eb6d`.
+  All 44 native contracts, CI installed smoke checks and producer cleanup passed.
+  The original source/native/package/original-license joins validate. The WSL
+  `-I -S` consumer verified all 537 package members and passed the same four
+  installed cases as Windows: texture upload, instanced/vertex buffer uploads and
+  actual shutdown ownership. Scope: `dawn_headless`, CPython 3.12.13, llvmpipe /
+  Mesa 26.1.8 / LLVM 18.1.3, 512×512 RGBA8 shutdown payload. Host imports were
+  supported; one held submission and 2 MiB pinned imports retired. All ten checked
+  ownership gauges were zero, repeated shutdown passed and the external snapshot
+  produced an exact pixel readback after shutdown.
+  Evidence: [original native join](../build/runs/shutdown-linux-retry-329/native-capture-validation.json),
+  [archive join](../build/runs/shutdown-linux-retry-329/linux-archive-join.json),
+  [installed acceptance](../build/runs/shutdown-wsl-330/acceptance-report.json).
+  Existing WSL driver/dependencies were reused; no local native build or new
+  environment was needed. [Transport cleanup](../build/runs/shutdown-linux-retry-329/post-cleanup.json)
+  rehashed 242 retained files; [consumer cleanup](../build/runs/shutdown-wsl-330/post-cleanup.json)
+  rehashed 14. This is software Vulkan local verification, not native Linux GPU,
+  mandatory-row or release admission. The wheel is not release-retagged; the
+  published Linux v1 wheel remains unchanged.
+  **Initial attempt, 2026-11-06:** WSL and `/mnt/c` were writable with sufficient
   capacity; the inherited guest registry, existing Python/dependencies and pinned
   external lavapipe library are available, and guest scratch is empty. Pushed
   only the reviewed source branch at `b5fbe591` and dispatched
@@ -210,9 +243,56 @@ Authority: [capture coverage map](../compat/candidates/tk-capture-1/coverage.jso
   [run 328](../build/runs/ci-space-race-328/verification.json). Its guest scratch is
   [cleaned](../build/runs/ci-space-race-328/post-cleanup.json); the Windows successor's
   production inputs remain unchanged, so it needs no native rebuild.
+  Exact current/previous collector hashes remain recognized by the semantic
+  verifier; the actual published v1 producer still validates unchanged.
+  [Verifier controls](../build/runs/collector-protocol-331/verification.json):
+  83 pass; one real-candidate case still stops at an old evidence pin (actual exit
+  1, not waived). [Guest source-test cleanup](../build/runs/collector-protocol-331/post-cleanup.json)
+  is complete. The Windows-mounted verifier attempts' capture/timeout failures and
+  unknown original child wait are preserved and are not passing gates.
 - [ ] **FIX-06 — Patch qualification and publication:** renew affected records and
   mandatory rows on those artifacts, satisfy required CI/promotion, and publish only
   through the authorized release process. Existing v1 wheels do not contain FIX-01.
+- [ ] **FIX-06-VERSION — Successor release metadata:** choose/freeze the successor
+  package version before final record renewal and qualification. The archive
+    verifier originally hard-coded the v1 distribution directory, METADATA version
+    and wheel filename. Support a source-bound expected version while preserving
+  v1 validation; test rejection of mismatched/duplicate metadata and retained
+  original notices. Audit the other packaging/CI callers before changing defaults.
+  Do not overwrite the published v1 assets or reinterpret the development wheels
+  as a separately versioned release. Native reuse must continue satisfying the
+  unchanged producer-input rules; no verifier relaxation to avoid a build.
+  **Partial, 2026-11-07:** the archive core now accepts an explicit normalized
+  expected version, and the record validator derives that expectation from the
+  source project's metadata. Distribution directory, METADATA, RECORD and
+  original-license namespaces follow the same expectation. Legacy defaults remain
+  v1, with no archive-driven version inference. A six-failure baseline now passes;
+  all 53 focused cases pass, and the four actual published/development v1 archives
+  still validate. [Evidence](../build/runs/package-version-333/verification.json).
+    The pure-source repackager now binds RECORD, metadata lookup and license
+    namespaces to the explicit expected/source version; it still preserves frozen
+    metadata, notices, native bytes and membership. Three successor cases failed
+    before the fix; all 47 repackager cases and 126 related cases now pass. The
+    main CI wheel identity check and Linux producer auditor use source metadata
+    instead of a v1 literal. Linux auditor identity includes the added helper.
+    Embedded workflow Python blocks parse successfully; CI/native execution has
+    not been repeated. [Caller evidence](../build/runs/package-callers-334/verification.json).
+    **Metadata selected, 2026-11-07:** the successor is `0.17.0+vulkan.2`
+    (planned tag `v0.17.0-vulkan.2`). Project, source module and lockfile agree;
+    dependency content is unchanged. The required oracle and installed identity
+    checks now use that source expectation; future preparation scripts derive the
+    expected filename without modifying existing prepared-environment records.
+    All 128 related source cases pass. Thirty remaining literal-bearing files have
+    explicit legacy, synthetic-fixture or historical-protocol dispositions; they
+    provide no v2 qualification. [Version audit](../build/runs/successor-version-335/verification.json).
+    Exact older Linux producer captures still validate, and unknown collector/
+    auditor implementations are rejected even after consistent source/retention
+    rebinding. The full protocol suite records 85 passes and one stale-candidate
+    refusal, not an overall pass. [Protocol evidence](../build/runs/version-protocol-336/verification.json),
+    [historical joins](../build/runs/version-protocol-336/historical-producers.json),
+    [guest cleanup](../build/runs/version-protocol-336/post-cleanup.json).
+    Git source freeze and final matching producers/records remain pending. No
+    v2 artifact, installed identity, CI admission or publication is claimed.
 
 ## API breadth and inventory review
 
@@ -395,8 +475,13 @@ criteria; software timestamps do not establish physical display scanout latency.
 - [ ] **TOOL-03 — Legacy cleanup receipt / B17:** audit/reconcile the missing
   historical compiler-cache cleanup receipt. Do not repeat the cleanup or claim
   reclaimed bytes without proof.
-- [x] **TOOL-04 — Latest fix hygiene:** shutdown-fix scratch removed and 18 retained
-  files rehashed. Evidence: [post-cleanup receipt](../build/runs/shutdown-fix-322/post-cleanup.json).
+- [x] **TOOL-04 — Latest fix hygiene:** source-fix, artifact, transport and guest
+  test/consumer scratch are removed. Latest receipts:
+  [transport 329](../build/runs/shutdown-linux-retry-329/post-cleanup.json),
+  [WSL consumer 330](../build/runs/shutdown-wsl-330/post-cleanup.json),
+  [source tests 331](../build/runs/collector-protocol-331/post-cleanup.json).
+  Meaningful failed attempts, original sources/notices, actual exits/waits and
+  current proof/artifact identities remain retained; unknown waits are not passes.
 
 ## Next work order
 
@@ -405,20 +490,31 @@ checks, retain the result and clean its scratch before moving on. A prerequisite
 may be worked within the active item, but the checkbox stays open until every
 exit condition is satisfied. Optional or deferred items are selected by need.
 
-1. FIX-04–FIX-06: review the source candidate, produce the matching FIX-05 native
-   artifact/record prerequisites, then complete the FIX-04 checks/merge and FIX-06
-   qualification/publication. This is one active fix workstream; do not mark
-   FIX-04 complete while its native-input validation is failing.
-2. BUG-01: keep recurrence evidence/cause work focused; follow D33 if it recurs.
-3. API-01–API-06 and SCI-05: reconcile breadth and stale dispositions before
+1. Settle FIX-06-VERSION before the final source/record freeze. The existing
+   development artifacts and FIX-04-OBS observations stay valid at their exact
+   hashes, but cannot silently acquire a different package identity.
+2. FIX-04: use the now-verified FIX-05 Windows/Linux artifacts to renew their
+   source/runtime/candidate/native/coverage/selection records and bound reviews.
+   Rerun applicable source checks, then complete the normal merge. Preserve the
+   original producer identities; no native rebuild is needed for record/doc-only
+   changes. Do not mark FIX-04 complete while its evidence pins are failing.
+3. FIX-06: renew the selected mandatory qualification rows, required CI/promotion
+   and release metadata, then publish through the authorized process. Local
+   artifact verification does not transfer the v1 admissions to these wheels.
+4. BUG-01: keep recurrence evidence/cause work focused; follow D33 if it recurs.
+5. API-01–API-06 and SCI-05: reconcile breadth and stale dispositions before
    expanding support claims or proposing broad implementation work.
-4. Select optional rendering, lifecycle, host, platform or tooling work by need.
+6. Select optional rendering, lifecycle, host, platform or tooling work by need.
    Deferred scope does not become a release requirement merely by appearing here.
 
 ## Change log
 
 | Date | Change | Evidence |
 | --- | --- | --- |
+| 2026-11-07 | Added source-bound successor version support to the archive core without changing v1 defaults or source package version. 53 cases and four real archive compatibility checks pass; remaining caller audit is explicit. | `package-version-333/verification.json`; FIX-06-VERSION remains open. |
+| 2026-11-07 | Fixed successor RECORD handling in pure-source repackaging; source-bound main CI/Linux producer version checks. 47 repackager and 126 related cases pass. No new build, environment or scratch; remaining callers/version freeze are pending. | `package-callers-334/verification.json`; FIX-06-VERSION remains open. |
+| 2026-11-07 | Selected v2 metadata consistently, audited remaining version literals and updated required oracle/installation checks. 128 source cases pass. Linux protocol controls: 85 pass, one stale record refusal; both historical real producers validate. Guest scratch cleaned. | `successor-version-335`, `version-protocol-336`; Git freeze/final qualification pending. |
+| 2026-11-07 | Closed FIX-04-OBS: fresh 56-assertion/eight-branch and capture/control observations on both successor wheels. Retained evidence and cleaned scratch. Identified v1-only package metadata coupling; settle successor version before final record freeze. | `shutdown-observations-332/verification.json`, `post-cleanup.json`; FIX-04/FIX-06 remain open. |
 | 2026-11-06 | Initial live checklist; release baseline separated from source fixes, historical host qualifications and optional gaps. | Release notes, strict matrix, consolidated backlog and shutdown-fix-322 records linked above. |
 | 2026-11-06 | Started FIX-04; recorded the native-input pin refusal and its FIX-05 prerequisite. | `source-fix-integration-323`; no release or qualification transferred. |
 | 2026-11-06 | Source review passed; retained and cleaned failed offline CI setup. Started a bounded locked-package retry on the same candidate. | `source-fix-integration-323`, `source-fix-ci-324`; FIX-04 remains open. |
@@ -427,3 +523,4 @@ exit condition is satisfied. Optional or deferred items are selected by need.
 | 2026-11-06 | Closed FIX-05-WIN: fresh SDK-linked Windows leaf, 44 native contracts, exact package/license join, 537 installed member identities and four distinct installed cases. Added explicit Linux substep; parent FIX-05 and FIX-04 remain open. | `shutdown-native-325`, `shutdown-package-326`; unreleased wheel `43af80d3`, both runs cleaned with 137/34 retained files rehashed. |
 | 2026-11-06 | Started FIX-05-LINUX: healthy WSL/backing volume, unchanged driver/dependency reuse, source-only branch push and explicit fresh CI producer. | `shutdown-linux-327`, CI `42334823925`; no artifact or qualification pass yet. |
 | 2026-11-06 | Preserved the failed first Linux CI producer; fixed its live scratch-sampling cleanup race with a deterministic baseline and 39 passing WSL lifecycle cases. Both local transport and guest test scratch cleaned. | `shutdown-linux-327/failure-analysis.json`, `ci-space-race-328/verification.json`; Linux renderer verification remains open. |
+| 2026-11-06 | Closed FIX-05-LINUX and parent FIX-05 at local verification scope: fresh CI producer, 44 native contracts, exact source/native/package/license joins and four passing installed WSL cases. Preserved old collector/producer validity and stale-record failures. All owned scratch cleaned. | CI `42335940224`, `shutdown-linux-retry-329`, `shutdown-wsl-330`, `collector-protocol-331`; unreleased Linux wheel `b71ed6a3`. FIX-04/FIX-06 remain open. |

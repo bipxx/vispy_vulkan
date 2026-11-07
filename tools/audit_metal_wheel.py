@@ -19,6 +19,8 @@ import zipfile
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'cmake'))
 from runtime_package import source_package_hashes, wheel_package_hashes
+sys.path.insert(0, str(ROOT / 'tools'))
+from qualification_artifact import source_version
 
 
 def require(condition, message):
@@ -97,7 +99,7 @@ def archive_audit(args):
                                'otool_dependencies': dependencies}
         metadata = BytesParser().parsebytes(archive.read(next(n for n in archive.namelist()
                                                              if n.endswith('.dist-info/METADATA'))))
-        require(metadata['Name'] == 'vispy' and metadata['Version'] == '0.17.0+vulkan.1',
+        require(metadata['Name'] == 'vispy' and metadata['Version'] == source_version(ROOT),
                 'Distribution identity differs')
         require(metadata['License-Expression'] == 'AGPL-3.0-only', 'Implementation license differs')
         for name in ('LICENSE', 'LICENSE-BSD', 'LICENSING.md'):

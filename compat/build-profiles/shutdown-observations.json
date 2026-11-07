@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "name": "shutdown-observations",
+  "owner": "root-shutdown-observations",
+  "storage_workspace": "C:/Users/HEQ/Projects/vispy_vulkan",
+  "expected_peak_bytes": 2147483648,
+  "aggregate_max_scratch_bytes": 21474836480,
+  "min_free_bytes": 10737418240,
+  "purpose": "Collect fresh Tk state/workflow and capture source observations for candidate record renewal on the verified shutdown successor wheels",
+  "reuse": "Exact hash-retained Windows/Linux wheels, existing interpreter/dependency sites and existing external WSL lavapipe. No native/SDK compilation, source clone, new environment or dependency installation",
+  "constraints": "One sequential observer child, recorded actual exit/wait; existing 56 state/capture assertions, eight-branch workflow, capture scenario and five active controls unchanged. Source/native observations grant no installed observer/profile admission. Existing v1 records stay unchanged during collection",
+  "terminal_cleanup": "Retain source/script/license identities, observations and meaningful failures; inspect/apply registry-aware cleanup before the next experiment"
+}

@@ -10,6 +10,7 @@ from pathlib import Path
 
 import pytest
 import vispy
+from tools.qualification_artifact import source_version
 
 ROOT = Path(__file__).resolve().parents[2]
 
@@ -31,8 +32,8 @@ def test_editable_distribution_identity():
     print("version", dist.version)
     print("import vispy", vispy.__version__, vispy.__file__)
     assert dist.metadata["Name"].lower() == "vispy"
-    assert dist.version == "0.17.0+vulkan.1"
-    assert vispy.__version__ == "0.17.0+vulkan.1"
+    assert dist.version == source_version(ROOT)
+    assert vispy.__version__ == source_version(ROOT)
     assert "sys.path overlay" not in (vispy.__file__ or "")
 
 
@@ -42,7 +43,8 @@ def test_wheel_uninstall_restores_upstream():
     for name in ("PYTHONPATH", "PYTHONHOME", "VISPY_APP_BACKEND", "VISPY_GL_BACKEND"):
         env.pop(name, None)
     supplied_wheel = env.get("VISPY_TEST_WHEEL")
-    wheels = [Path(supplied_wheel).resolve()] if supplied_wheel else sorted((ROOT / "dist").glob("vispy-0.17.0+vulkan.1*.whl"))
+    expected_version = source_version(ROOT)
+    wheels = [Path(supplied_wheel).resolve()] if supplied_wheel else sorted((ROOT / "dist").glob(f"vispy-{expected_version}-*.whl"))
     assert len(wheels) == 1 and wheels[0].is_file(), "Build the current wheel first or set VISPY_TEST_WHEEL to its absolute path"
     # Each invocation owns a unique environment outside the checkout. It cannot
     # clear another worker's reference environment or accidentally import src.
@@ -59,7 +61,7 @@ def test_wheel_uninstall_restores_upstream():
         with requirements.open("a", encoding="utf-8") as file:
             file.write(f"\nvispy @ {wheels[0].as_uri()} --hash=sha256:{wheel_digest}\n")
         subprocess.run(["uv", "pip", "install", "--python", str(python), "--require-hashes", "--requirements", str(requirements)], cwd=consumer, env=env, check=True)
-        probe = subprocess.run([str(python), "-I", str(Path(__file__).with_name("wheel_consumer_probe.py")), str(ROOT)], cwd=consumer, env=env, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+        probe = subprocess.run([str(python), "-I", str(Path(__file__).with_name("wheel_consumer_probe.py")), str(ROOT), expected_version], cwd=consumer, env=env, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
         print(probe.stdout)
         subprocess.run(["uv", "pip", "uninstall", "--python", str(python), "vispy"], cwd=consumer, env=env, check=True)
         absent = subprocess.check_output([str(python), "-I", "-c", "import importlib.util; assert importlib.util.find_spec('vispy') is None; print('uninstalled')"], cwd=consumer, env=env, text=True)

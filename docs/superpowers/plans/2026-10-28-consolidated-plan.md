@@ -101,6 +101,19 @@ passes on Windows and WSL; it fails on the pre-fix wrapper. This
 source fix is separate from the released wheels above; their existing evidence
 and artifacts remain bound to their original source.
 
+Successor artifact verification (2026-11-06): FIX-05 is locally complete on
+Windows and WSL. Windows wheel `43af80d3` and Linux CI wheel `b71ed6a3` each passed
+four installed upload/shutdown cases; both native producers passed all 44
+contracts. The original sources, native/package/license joins, 537 installed
+members per wheel and actual teardown with a held submission and pinned imports
+are verified. Fresh Linux CI `42335940224` includes the tested live-sampling
+cleanup-race fix; previous producer evidence remains valid under its original
+collector identity. All owned scratch is cleaned. These wheels are unreleased
+and unadmitted. Next is record renewal and source checks/merge (FIX-04), followed
+by mandatory qualification, required CI/promotion and publication (FIX-06).
+Exact hashes, scope, failures and receipts are in the
+[coverage checklist](../../coverage-checklist.md).
+
 ## Decisions
 
 ### Decided (user, 2026-10-28)

@@ -19,6 +19,7 @@ from runtime_package import source_package_hashes, wheel_package_hashes
 sys.path.insert(0, str(ROOT / 'tools'))
 from run_linux_native_contracts import validate_retained
 from native_epoch import member, project_inventory
+from qualification_artifact import source_version
 
 
 def digest(data):
@@ -28,7 +29,7 @@ def digest(data):
 def auditor_identity():
     paths = [Path(__file__).resolve()]
     paths += [Path(sys.modules[function.__module__].__file__).resolve()
-              for function in (source_package_hashes, validate_retained, project_inventory)]
+              for function in (source_package_hashes, validate_retained, project_inventory, source_version)]
     return {str(path): digest(path.read_bytes()) for path in paths}
 
 
@@ -132,7 +133,8 @@ def main():
     wheel = args.wheel.resolve(strict=True)
     build = args.build_dir.resolve(strict=True)
     args.output.parent.mkdir(parents=True, exist_ok=True)
-    assert wheel.name == 'vispy-0.17.0+vulkan.1-cp312-cp312-linux_x86_64.whl'
+    version = source_version(root)
+    assert wheel.name == f'vispy-{version}-cp312-cp312-linux_x86_64.whl'
     assert wheel.stat().st_size <= 100 * 1024 ** 2
     contracts = validate_retained(args.contracts, build, (build / 'CMakeCache.txt').read_bytes())
     cache = {}
@@ -182,7 +184,7 @@ def main():
                 data = archive.read(name)
                 assert data[:6] == b'\x7fELF\x02\x01' and data[18:20] == b'\x3e\x00', name
         metadata = BytesParser().parsebytes(archive.read(next(n for n in names if n.endswith('.dist-info/METADATA'))))
-        assert metadata['Name'] == 'vispy' and metadata['Version'] == '0.17.0+vulkan.1'
+        assert metadata['Name'] == 'vispy' and metadata['Version'] == version
         assert metadata['License-Expression'] == 'AGPL-3.0-only'
         assert metadata['Description-Content-Type'] == 'text/markdown'
         for name in ('LICENSE', 'LICENSE-BSD', 'LICENSING.md'):

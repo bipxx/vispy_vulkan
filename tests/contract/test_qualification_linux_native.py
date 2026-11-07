@@ -2,8 +2,10 @@
 """Draft Linux transport controls; synthetic records grant no admission."""
 import copy
 import hashlib
+import io
 import json
 from pathlib import Path
+import zipfile
 
 import pytest
 
@@ -120,6 +122,22 @@ def test_complete_synthetic_native_join(full_capture):
     assert result['artifact_admitted'] is result['hardware_qualified'] is False
     assert environment['python'] == '3.12.8 synthetic'
     assert set(result['native_output_hashes']) == set(native.MEMBERS)
+
+
+@pytest.mark.parametrize('name', ['tools/linux_ci_lifecycle.py', 'tools/audit_linux_wheel.py'])
+def test_unknown_protocol_rejected_even_with_consistent_source_and_retention(full_capture, name):
+    fixture = full_capture
+    original = fixture.data[str(fixture.evidence / 'source-inputs.zip')]
+    payload = b'# Unknown protocol implementation\n'
+    stream = io.BytesIO()
+    with zipfile.ZipFile(io.BytesIO(original)) as source, zipfile.ZipFile(stream, 'w') as target:
+        for info in source.infolist():
+            target.writestr(info, payload if info.filename == name else source.read(info.filename))
+    fixture.put('source-inputs.zip', stream.getvalue())
+    for source_map in ('source-before.json', 'source-after.json'):
+        fixture.edit(source_map, lambda value: value.update({name: native.sha(payload)}))
+    with pytest.raises(ValueError, match='unsupported original Linux capture protocol: ' + name):
+        native.validate_capture(fixture.finish(), fixture.production, fixture.root)
 
 
 def test_complete_native_fixture_needs_no_optional_yaml(tmp_path,monkeypatch):

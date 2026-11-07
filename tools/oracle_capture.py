@@ -21,6 +21,7 @@ import sys
 import traceback
 
 from fixture_gloo import FIXTURES, assert_expected_regions, assert_numeric_landmarks, render
+from qualification_artifact import source_version
 
 ROOT = Path(__file__).resolve().parents[1]
 PIN = "117b054598f4758b598f4b8f48feea48c11fe7b0"
@@ -42,7 +43,7 @@ def provenance(kind):
     from PyQt6 import QtCore
     from vispy import app, gloo
 
-    expected = "0.17.0" if kind == "upstream" else "0.17.0+vulkan.1"
+    expected = "0.17.0" if kind == "upstream" else source_version(ROOT)
     assert metadata.version("vispy") == expected, "wrong installed distribution"
     assert vispy.__version__ == expected, "wrong imported module"
     package = Path(vispy.__file__).resolve().parent
