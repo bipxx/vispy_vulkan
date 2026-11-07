@@ -662,6 +662,13 @@ preserved. Required acceptance detail: SH-1–SH-5 in the
   shutdown gauges are zero; 42,541,359 scratch bytes are removed and 67 retained
   entries rehashed. [Exact wheel evidence](../compat/api-acceptance/dynamic-explicit-samplers-wip.json).
   This is local functional acceptance, not independent/profile/release admission.
+  **Matching Linux successor:** original CI source/native/archive joins and
+  44 contracts pass. Final manylinux_2_39 wheel `4bc3cd77` changes metadata only
+  from raw `7b43577f` and passes 258 installed cases (75 sampler, 120 uniform,
+  63 core/examples), both functional validators and all five negative controls.
+  All tracked gauges are zero; local scratch is removed and evidence rehashed.
+  Scope is pinned WSL software Vulkan. Review/profile/release remain pending.
+
 
 - [x] **SHD-01-LITERAL — Finite installed literal sampler-array scope:**
   32 cases pass without skips on each current Windows/WSL v2 wheel. Six sampler
@@ -684,6 +691,11 @@ preserved. Required acceptance detail: SH-1–SH-5 in the
   [Exact scope and boundaries](uniform-array-acceptance.md). Linux installed
   verification, broader storage/interface classes and profile admission remain
   open under SHD-02; public interface metadata is not blanket GPU reflection.
+- [x] **SHD-02-UNIFORM-WSL — Matching finite installed numeric uniforms:**
+  Linux manylinux wheel `4bc3cd77` passes the same 120 cases and fixture hashes
+  within its 195-case shader process, with no skips, exact installed origins
+  and zero shutdown gauges. Scratch is removed. [Cross-platform scope](../compat/api-acceptance/uniform-arrays-v1.json).
+  Broader storage/interface, shape/type and profile claims remain SHD-02 work.
 - [ ] **SHD-03 — Matrix/array attributes / SH-3:** locations, column order, stride,
   offsets, divisors, constants, instancing, mutations and input-limit errors.
 - [ ] **SHD-04 — Geometry consumers / SH-4:** bound supported compute/instanced
@@ -883,6 +895,7 @@ exit condition is satisfied. Optional or deferred items are selected by need.
 
 | Date | Change | Evidence |
 | --- | --- | --- |
+| 2026-11-07 | Imported successful Linux native/source/archive proof, retagged only metadata to audited manylinux_2_39 and passed 258 installed cases, validators and active controls on WSL. Matching finite uniform subset now has Windows/WSL evidence. | `dynamic-explicit-samplers-wip.json`, `uniform-arrays-v1.json`; all owned scratch cleaned. |
 | 2026-11-07 | Recorded finite installed Windows uniform-array acceptance: 120 cases (72 CPU + 48 rendered), exact origins and zero gauges; scratch cleaned. Linux native CI completed, artifact/installed checks pending. | `uniform-arrays-windows-v1.json`; SHD-02 broader scope remains open. |
 | 2026-11-07 | Assembled the dynamic sampler Windows successor wheel from retained native outputs; 138 installed cases pass (75 sampler + 63 lifecycle/state/examples), with capture controls and zero gauges. No native build or new environment. | Wheel `ba8a54c5`; `windows-dynamic-package-410`, strict cleanup complete. |
 | 2026-11-07 | Added 20 dimension/stage/index, two actual binding-limit refusal/recovery and six single-level LOD/filter/evaluation cases. All pass using the existing Windows native module; 75 distinct cases across three retained runs. | `dynamic-explicit-samplers-wip.json`; Linux CI continues on unchanged native source. |

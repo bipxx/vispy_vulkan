@@ -107,3 +107,35 @@ the existing 512 MiB allocation, 20 GiB aggregate cap and 10 GiB reserve. This
 provides local functional evidence on an actual wheel, with no native overlay;
 independent review, strict profile admission and release remain pending. The
 earlier wheels and native-overlay observations retain their original scope.
+
+## Linux successor wheel observation
+
+Linux CI `42381467559` completed successfully for native source `f7d21c31`.
+Imported original source/native/archive joins pass, all 44 native contracts
+pass, and both remote cleanup receipts pass. Raw wheel `7b43577f` exactly
+matches the current shipping sources and notices. Native production identity
+is `7e4a732d`; `_dawn` SHA-256 is
+`6c4e3beaaaf922160d9392fb12213b60911585eeca09b18ec07d4ac67fa5e286`.
+
+The pinned existing auditwheel toolset reports manylinux_2_39_x86_64. Retagging
+changes WHEEL/RECORD only, preserving 560 other members byte-for-byte. Final
+wheel SHA-256 is
+`4bc3cd778990a35a3ff3e72f68fc8905e74804cb78b1d7091adbdc1b1fbfcdc8`.
+A normal installation passes 258 cases without skips: 75 sampler, 120 uniform
+array and 63 upload/state/example cases. Tk/capture validators pass and all five
+active capture controls reject. All 537 installed members match per child;
+shader checks verify 150 loaded origins and examples verify 171 Python origins.
+All tracked shutdown gauges are zero. Scope is CPython 3.12.13, Tk 9 and the
+pinned Mesa 26.1.8 WSL software driver; no physical GPU claim follows.
+
+The original raw wheel also passed the 195 shader cases separately before
+retagging. Both observations retain their identities; no installed result is
+transferred between wheel hashes. All local transport, retag/tool and installed
+scratch is removed and retained files rehashed. A retention helper initially
+used a Windows native-key spelling; its correction and the zero-deletion
+missing-manifest refusal are preserved. Tests and verifiers were unchanged.
+
+These results close the selected cross-platform artifact/functional gap for
+the explicit one-dimensional path. Multidimensional dynamic selection,
+broader preprocessing/filter/mip-chain forms, implicit derivative decisions,
+independent review, strict profile admission and release remain open.

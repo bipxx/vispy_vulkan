@@ -21,6 +21,13 @@ generalize to every numeric type, nested structure, SSBO, vertex attribute,
 varying, array shape or loss scenario.
 
 Linux CI `42381467559` has completed successfully for native source `f7d21c31`.
-Artifact import and matching installed uniform/sampler acceptance remain to be
-verified. No Linux installed result or strict profile admission follows from
-the Windows observations or the CI status alone.
+The imported native/source/archive joins and all 44 native contracts pass.
+Final manylinux wheel `4bc3cd77` then passes the same 120 uniform cases inside
+a 195-case shader process, with no skips, exact installed origins and ten zero
+shutdown gauges. Its eight numeric types, three shapes and triangle/line scope
+match the Windows fixture hashes. The [cross-platform packet](../compat/api-acceptance/uniform-arrays-v1.json)
+links the unchanged original Windows observation and the exact Linux node IDs.
+Linux includes 150 loaded VisPy origins under the checked target; Windows has
+151. Both scratch targets are removed and evidence rehashed. This closes that
+finite uniform subset on Windows and WSL, while other storage/interface classes,
+additional shapes/types, independent review and profile admission remain open.

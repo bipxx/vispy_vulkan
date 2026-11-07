@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "status": "SUCCESSOR_WIP_WINDOWS_WHEEL_FUNCTIONAL_ONLY",
+  "status": "SUCCESSOR_WIP_WINDOWS_WSL_WHEEL_FUNCTIONAL_ACCEPTANCE",
   "checklist_id": "SHD-01",
   "parent_closed": false,
   "artifact_admitted": false,
@@ -167,7 +167,6 @@
     }
   },
   "remaining": [
-    "Linux verification and installed successor wheel",
     "multidimensional dynamic selection",
     "broader preprocessor forms",
     "multilevel mip chains and additional filtering/LOD forms",
@@ -557,6 +556,209 @@
       "post-cleanup.json": {
         "path": "build/runs/windows-dynamic-package-410/post-cleanup.json",
         "sha256": "2f9acb453a1a89dd8ff401c5de2284bbe4fc0f733dbd8a9ae2cf286a4403b9e6"
+      }
+    }
+  },
+  "installed_linux_successor_wheel": {
+    "wheel": {
+      "path": "build/artifacts/4bc3cd778990a35a3ff3e72f68fc8905e74804cb78b1d7091adbdc1b1fbfcdc8/vispy-0.17.0+vulkan.2-cp312-cp312-manylinux_2_39_x86_64.whl",
+      "sha256": "4bc3cd778990a35a3ff3e72f68fc8905e74804cb78b1d7091adbdc1b1fbfcdc8"
+    },
+    "raw_ci_wheel": {
+      "path": "build/artifacts/7b43577f866a54081ec7fba8bd2743e6ab35edd83f141a7e8e30933fe2197d22/vispy-0.17.0+vulkan.2-cp312-cp312-linux_x86_64.whl",
+      "sha256": "7b43577f866a54081ec7fba8bd2743e6ab35edd83f141a7e8e30933fe2197d22"
+    },
+    "source_commit": "f7d21c314ee931a56822785441c8fd9bade45da2",
+    "native_production_identity": "7e4a732d0f0c46c3a6c11b7cdab4c4795370b474807ee8dc9b746e03d8ebbeb7",
+    "native_outputs": {
+      "vispy/_dawn.cpython-312-x86_64-linux-gnu.so": "6c4e3beaaaf922160d9392fb12213b60911585eeca09b18ec07d4ac67fa5e286",
+      "vispy/visuals/text/_sdf_cpu.cpython-312-x86_64-linux-gnu.so": "1e508269c6d8c4a0f9ed041987237c6fef5768eeb1e8174ed1e8eb29f8f7162f",
+      "vispy/VkLayer_vispy_submit.so": "95907606472ffe51bec021d4b28e4717472e40f2cef34cd2590d172575c113d4",
+      "vispy/VkLayer_vispy_submit.json": "e0762acec9e2df811cbb67e1c25e5c82d9fb76def0101f54fd737464c76786c2"
+    },
+    "native_contracts": 44,
+    "cases": 258,
+    "shader_cases": 195,
+    "sampler_cases": 75,
+    "uniform_cases": 120,
+    "other_cases": 63,
+    "skipped": 0,
+    "installed_members_verified_per_child": 537,
+    "shader_loaded_origins": 150,
+    "example_loaded_python_origins": 171,
+    "device": {
+      "backend": "Vulkan",
+      "adapter_type": "cpu",
+      "vendor": "mesa",
+      "device": "llvmpipe (LLVM 18.1.3, 256 bits)",
+      "driver": "llvmpipe: Mesa 26.1.8 (LLVM 18.1.3)",
+      "vendor_id": 65541,
+      "device_id": 0,
+      "max_texture_dimension_1d": 16384,
+      "max_texture_dimension_2d": 16384,
+      "max_texture_dimension_3d": 4096,
+      "max_vertex_attributes": 30,
+      "max_vertex_buffers": 8,
+      "max_vertex_buffer_array_stride": 2048,
+      "max_storage_buffers_per_shader_stage": 16,
+      "max_uniform_buffers_per_shader_stage": 12,
+      "max_inter_stage_shader_variables": 30,
+      "max_storage_buffer_binding_size": 134217728,
+      "max_bindings_per_bind_group": 1000,
+      "max_compute_invocations_per_workgroup": 1024,
+      "max_compute_workgroup_size_x": 1024,
+      "max_compute_workgroups_per_dimension": 65535,
+      "max_point_vertex_attributes": 30,
+      "core_features_and_limits": true,
+      "point_input_limit_scope": "all active user point inputs share one vertex buffer; exact vertex/instance identities use read-only vertex storage without reserving a user attribute; actual granted attribute/stride/storage/allocation limits apply",
+      "max_samplers_per_shader_stage": 16,
+      "max_sampled_textures_per_shader_stage": 48,
+      "max_buffer_size": 4294967295,
+      "max_uniform_buffer_binding_size": 65536,
+      "software": true,
+      "float32_filterable": true,
+      "unorm16_texture_formats": true,
+      "bresenham_lines": true,
+      "last_vertex_provoking": true,
+      "timestamp_query": true,
+      "timestamp_quantization_ns": 65536,
+      "host_mapped_pointer": true,
+      "host_import_limit": 536870912,
+      "depth_stencil_storage": "depth24_unorm_stencil8",
+      "ok": true,
+      "error": "",
+      "loss_count": 0,
+      "revision": "117b054598f4758b598f4b8f48feea48c11fe7b0+dawn-499e5c6ff9b37d5de70c6493fb74c251e0d35c1c"
+    },
+    "toolkit": {
+      "tk_version": 9.0,
+      "tcl_version": 9.0,
+      "binding_origin": "/home/heq/.local/share/uv/python/cpython-3.12.13-linux-x86_64-gnu/lib/python3.12/lib-dynload/_tkinter.cpython-312-x86_64-linux-gnu.so",
+      "binding_hash_scope": "module",
+      "binding_sha256": "0240658571f1531461f4a7178c454795c55fe0f5723eebeda0b5de2f4aeee303"
+    },
+    "native_overlay": false,
+    "artifact_admitted": false,
+    "evidence": {
+      "linux-dynamic-artifact-414": {
+        "verification.json": {
+          "path": "build/runs/linux-dynamic-artifact-414/verification.json",
+          "sha256": "af66c248563f1a31e5eeec5d26bf792e423da9705ec3f81d4f253e92fb614967"
+        },
+        "native-capture-validation.json": {
+          "path": "build/runs/linux-dynamic-artifact-414/native-capture-validation.json",
+          "sha256": "1f98f3f400dac6df109f637bcb5c25c19701e442d3774415e506069e59413d66"
+        },
+        "successful-original-capture.json": {
+          "path": "build/runs/linux-dynamic-artifact-414/successful-original-capture.json",
+          "sha256": "f91a82ad286c6e9075b4b41952021037acd707a92527f5ad14ec1f21cce72971"
+        },
+        "ci-retained-members.json": {
+          "path": "build/runs/linux-dynamic-artifact-414/ci-retained-members.json",
+          "sha256": "6464743ed344c90a3827681dbbb6fbfc7ba99a35df09701ed891ca96fb9c607f"
+        },
+        "linux-wheel.json": {
+          "path": "build/runs/linux-dynamic-artifact-414/linux-wheel.json",
+          "sha256": "bfc916f1cc794ddc9473f47a590c09a9ff5b370195bc5549cfe27abd1a977da8"
+        },
+        "terminal-retention.json": {
+          "path": "build/runs/linux-dynamic-artifact-414/terminal-retention.json",
+          "sha256": "cd75d0d65f7caa0ebd67be59cbc24faf9668f67d5a055804221bc335398d1537"
+        },
+        "post-cleanup.json": {
+          "path": "build/runs/linux-dynamic-artifact-414/post-cleanup.json",
+          "sha256": "8e69f187480558518a192d1a26fcd04b481f7f7596eda64a3451abf74934394e"
+        }
+      },
+      "shader-installed-wsl-415": {
+        "verification.json": {
+          "path": "build/runs/shader-installed-wsl-415/verification.json",
+          "sha256": "6a3431d0f122a8e2823c04744a11e670c9562409cd7c58b7353a705423d9fe73"
+        },
+        "input-result.json": {
+          "path": "build/runs/shader-installed-wsl-415/input-result.json",
+          "sha256": "0fcf1ab773cea02560aabc1ca3f1a0d7c1cd40122e022fcc4df337cae81395ec"
+        },
+        "inputs.xml": {
+          "path": "build/runs/shader-installed-wsl-415/inputs.xml",
+          "sha256": "6733e6b3564d8d8a035bc9112ebb900e7005049dd01bfb3572c0f3f4226db5b1"
+        },
+        "driver-origin.json": {
+          "path": "build/runs/shader-installed-wsl-415/driver-origin.json",
+          "sha256": "f0ac83b5645bb2c665b15488dfd5ce71b229fc579f50701b5c0ffee0310e8949"
+        },
+        "terminal-retention.json": {
+          "path": "build/runs/shader-installed-wsl-415/terminal-retention.json",
+          "sha256": "02f4084d6681e9c963b1a58c3023e28a5f0044893e609db5ce9953136d59c0ea"
+        },
+        "post-cleanup.json": {
+          "path": "build/runs/shader-installed-wsl-415/post-cleanup.json",
+          "sha256": "84804452fb4f730c17ccfbe5e13fa6a4b49c2af93a146cb504748a9bec6c9e09"
+        }
+      },
+      "linux-dynamic-retag-416": {
+        "linux-wheel.json": {
+          "path": "build/runs/linux-dynamic-retag-416/linux-wheel.json",
+          "sha256": "18f7dd93d87f704ff2cf5db679a21fbd2e529e1000746232fb34532adcc45eea"
+        },
+        "archive-audit.json": {
+          "path": "build/runs/linux-dynamic-retag-416/archive-audit.json",
+          "sha256": "7f5e5bf017cfab7809d283bfd2fbc69a259cb1eeaf8cf67b41644ea12c57d42c"
+        },
+        "retag.json": {
+          "path": "build/runs/linux-dynamic-retag-416/retag.json",
+          "sha256": "e8aee69830603b64dbb27f8f720e365e8bf458db9fcbee3bc55d84ac606f4329"
+        },
+        "tool-reuse.json": {
+          "path": "build/runs/linux-dynamic-retag-416/tool-reuse.json",
+          "sha256": "83f491a446023054d633a7f52d7beb59536aada7c0f4703ec919e287e37e5485"
+        },
+        "terminal-retention.json": {
+          "path": "build/runs/linux-dynamic-retag-416/terminal-retention.json",
+          "sha256": "34f2f0112319a438e029a03dbc305c636d82047517d8e774500f7ce8d0936fd2"
+        },
+        "post-cleanup.json": {
+          "path": "build/runs/linux-dynamic-retag-416/post-cleanup.json",
+          "sha256": "a1a698aa60ca061048ae6f0a5c79e00838563bf4ecc88d7c4ccd32d9bcf1a2c2"
+        }
+      },
+      "linux-dynamic-installed-417": {
+        "acceptance-report.json": {
+          "path": "build/runs/linux-dynamic-installed-417/acceptance-report.json",
+          "sha256": "e00e4fdccd9607454262de52ecc303128c912a72ebb12ef0565e6f8efb8ba67e"
+        },
+        "input-result.json": {
+          "path": "build/runs/linux-dynamic-installed-417/input-result.json",
+          "sha256": "4bb4f467263c9d1d78e60eb0795ece849c98e60b231171f57dd0b82be83e5e21"
+        },
+        "inputs.xml": {
+          "path": "build/runs/linux-dynamic-installed-417/inputs.xml",
+          "sha256": "b86ed9f0ff96d05ec4c269d7afe3a6afed37b9969c2586760e8c77e314949b75"
+        },
+        "upload.xml": {
+          "path": "build/runs/linux-dynamic-installed-417/upload.xml",
+          "sha256": "27b81ab8944a0d9dd23f6d863a607c90c97620375772c1fa4d859293adaa7723"
+        },
+        "state.xml": {
+          "path": "build/runs/linux-dynamic-installed-417/state.xml",
+          "sha256": "29848942b72b0ffff0e60f516051d1410345262368ec6cad743c863f19d6cb96"
+        },
+        "examples.xml": {
+          "path": "build/runs/linux-dynamic-installed-417/examples.xml",
+          "sha256": "6380c37c2fd137d462f475a7920fbec72549f86d824e073728f446911c8878c3"
+        },
+        "terminal-retention.json": {
+          "path": "build/runs/linux-dynamic-installed-417/terminal-retention.json",
+          "sha256": "1a15a3f1a33b42aeeb08ad78cb0c7c1041f7f13bab13a40926f9f39ee80cbd03"
+        },
+        "post-cleanup.json": {
+          "path": "build/runs/linux-dynamic-installed-417/post-cleanup.json",
+          "sha256": "416acf215be30f4661198aba2ebec17fc250b844d2ca2196dbce4296ad18c944"
+        },
+        "retention-recovery.json": {
+          "path": "build/runs/linux-dynamic-installed-417/retention-recovery.json",
+          "sha256": "f8deef8c261c83cb624e3bbaca6fa886dbc9935fe5f0a0fc8c14b41aa7e436b6"
+        }
       }
     }
   }

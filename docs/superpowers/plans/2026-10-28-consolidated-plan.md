@@ -43,6 +43,19 @@ unmodified scientific hosts, napari first, run on it with practical parity.
 
 ## Where things stand
 
+2026-11-07 cross-platform successor checkpoint: Windows wheel `ba8a54c5` and
+Linux manylinux wheel `4bc3cd77` now have actual installed functional evidence.
+Linux native/source/archive joins and all 44 contracts pass; the final tagged
+wheel passes 258 cases, validators and active controls on pinned WSL software
+Vulkan. Windows has the matching 75 sampler and 120 uniform scopes plus 63
+core/example cases. All tracked gauges are zero and owned scratch is cleaned.
+Next: independent cumulative source/scope review when available, successor
+provenance/observer/profile admission, and selected remaining implementation
+work. Preserve multidimensional dynamic, implicit derivative, broader storage/
+interface and mip-chain boundaries. No old approval or physical GPU claim
+transfers. See the [current packet](../../../compat/api-acceptance/dynamic-explicit-samplers-wip.json).
+
+
 2026-11-07 uniform checkpoint: Windows wheel `ba8a54c5` passes 120 finite
 uniform-array cases (72 CPU, 48 rendered), with exact installed origins, zero
 shutdown gauges and cleaned scratch. SHD-02 remains open beyond that subset.
