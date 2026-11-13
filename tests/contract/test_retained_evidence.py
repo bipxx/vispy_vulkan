@@ -66,6 +66,143 @@ def test_explicit_store_and_legacy_resolution(pair):
         qa.retained_file(source, item)
 
 
+@pytest.mark.parametrize('fault', [None, 'missing-selector', 'wrong-hash', 'absolute',
+                                  'parent', 'scratch', 'source-scratch', 'source-moved'])
+def test_namespaced_raw_evidence_requires_the_exact_store(pair, fault):
+    source, evidence, _, selector = pair
+    item = put(evidence, 'build/runs/unit/runtime.json', b'original observer bytes')
+    reference = dict(item, path=stores.EVIDENCE_PREFIX + item['path'])
+    if fault == 'missing-selector': selector = None
+    elif fault == 'wrong-hash': reference['sha256'] = '0' * 64
+    elif fault == 'absolute': reference['path'] = stores.EVIDENCE_PREFIX + '/absolute'
+    elif fault == 'parent': reference['path'] = stores.EVIDENCE_PREFIX + '../source/file'
+    elif fault == 'scratch': reference = dict(put(evidence, 'build/work/unit/raw', b'scratch'), path=stores.EVIDENCE_PREFIX+'build/work/unit/raw')
+    elif fault == 'source-scratch': reference = put(source, 'build/work/unit/raw', b'source scratch')
+    elif fault == 'source-moved':
+        # A source reference is never silently searched in the selected store.
+        reference = item
+    if fault:
+        with pytest.raises(qa.InventoryError): stores.evidence_file(source, reference, selector)
+    else:
+        assert stores.evidence_file(source, reference, selector).read_bytes() == b'original observer bytes'
+        local = put(source, 'source.json', b'local')
+        assert stores.evidence_file(source, local, selector).read_bytes() == b'local'
+
+
+@pytest.mark.parametrize('kind', ['archive-prerequisite','native-leaf-provenance','original-linux-ci-native-reuse'])
+def test_native_proof_fields_keep_source_and_store_namespaces(pair,kind):
+    from tools import qualification_index as qi
+    source,evidence,_,selector=pair
+    source_ref=put(source,'sdk.json',{})
+    produced_ref=put(evidence,'build/runs/unit/produced.json',{})
+    record=dict(kind=kind,candidate=source_ref)
+    if kind=='archive-prerequisite':record.update(evidence_store=selector,wheel=produced_ref,native_outputs=[])
+    else:
+        record['reuse']=dict(evidence_store=selector)
+        if kind=='native-leaf-provenance':record.update(sdk=source_ref,result=produced_ref)
+        else:
+            capture=put(evidence,'build/runs/unit/capture.json',{'files':[dict(file=produced_ref)]})
+            record['capture']=capture
+    refs=qi.proof_input_references(record,source,selector)
+    assert ('sdk.json',source_ref['sha256']) in refs
+    assert (stores.EVIDENCE_PREFIX+produced_ref['path'],produced_ref['sha256']) in refs
+    assert (produced_ref['path'],produced_ref['sha256']) not in refs
+    with pytest.raises(qa.InventoryError,match='evidence stores differ'):
+        qi.proof_input_references(record,source,dict(selector,sha256='0'*64))
+
+
+@pytest.mark.parametrize('recorded_host',['windows','posix'])
+@pytest.mark.parametrize('recorded_root',['source_workspace','storage_workspace'])
+def test_original_paths_project_both_recorded_host_views(pair,recorded_host,recorded_root):
+    source,evidence,profile,selector=pair
+    tail='build/runs/unit/original.json'
+    original=profile['hosts'][recorded_host][recorded_root]+'/'+tail
+    logical,physical=stores.original_evidence_path(source,selector,original)
+    assert logical==(stores.EVIDENCE_PREFIX if recorded_root=='storage_workspace' else '')+tail
+    assert physical==((evidence if recorded_root=='storage_workspace' else source)/tail)
+
+
+@pytest.mark.parametrize('fault', [None, 'source-hash', 'store-hash', 'outside', 'partial',
+                                  'different-plan', 'missing-wait', 'roles', 'wrong-selector',
+                                  'reconstruct', 'archive-hash', 'member-hash', 'wrong-member',
+                                  'unused-reconstruction', 'process-view', 'result-view', 'missing-originals',
+                                  'failed-repro','failed-no-repro'])
+def test_original_mixed_root_cleanup_inputs_remain_hash_and_process_bound(pair, fault):
+    from tools import qualification_index as qi
+    source, evidence, policy, selector = pair
+    put(source, qi.SCHEMA, (qa.ROOT / qi.SCHEMA).read_bytes())
+    host = 'windows' if os.name == 'nt' else 'posix'
+    view = policy['hosts'][host]
+    def raw(name, value):
+        item = put(evidence, name, value)
+        return dict(item, path=stores.EVIDENCE_PREFIX+item['path'])
+    name = 'unit-secondary-retention'
+    src = put(source, 'source.txt', b'preferred source')
+    data = put(evidence, 'build/runs/unit/evidence.json', b'raw original evidence')
+    inputs = [dict(src, path=view['source_workspace']+'/source.txt', roles=['source','licenses']),
+              dict(data, path=view['storage_workspace']+'/'+data['path'], roles=['evidence','repro'])]
+    terminal = dict(schema=1, run_id=name, owner='unit-only', state='succeeded', process_exit=0,
+                    child_waited=True, scratch_root=view['storage_workspace']+'/build/work/'+name, retained=deepcopy(inputs))
+    if fault in ('failed-repro','failed-no-repro'):
+        terminal.update(state='failed',process_exit=3)
+        if fault=='failed-no-repro':terminal['retained'][1]['roles']=['evidence']
+    if fault == 'outside': terminal['retained'][0]['path'] = view['source_workspace']+'-other/source.txt'
+    elif fault == 'source-hash': terminal['retained'][0]['sha256'] = '0'*64
+    elif fault == 'store-hash': terminal['retained'][1]['sha256'] = '0'*64
+    elif fault == 'roles': terminal['retained'][0]['roles'] = ['source']
+    terminal_ref = raw('build/runs/unit/terminal.json', terminal)
+    policy_ref = put(source, 'compat/hygiene.json', {})
+    registry_ref = raw('build/runs/unit/registry.json', {})
+    plan_name = 'build/runs/unit/plan.json'
+    plan = dict(schema=1, kind='build-hygiene-cleanup-plan', workspace=view['storage_workspace'],
+        manifest=view['storage_workspace']+'/build/runs/unit/terminal.json',manifest_sha256=terminal_ref['sha256'],
+        policy_sha256=policy_ref['sha256'],registry_sha256=registry_ref['sha256'],run_id=name,owner='unit-only',
+        scratch_root=terminal['scratch_root'],retained=deepcopy(terminal['retained']),snapshot={'files':[{'path':'owner'}]})
+    plan_ref = raw(plan_name,plan)
+    applied = dict(actual_exit=0,child_waited=True,
+        command=['python','hygiene.py','apply','--plan',view['storage_workspace']+'/'+plan_name],
+        result=dict(status='PASS_APPLY',deleted=1,retained_verified=2,scratch_root=terminal['scratch_root']))
+    if fault == 'partial': applied['result']['deleted']=0
+    elif fault == 'different-plan': applied['command'][-1]=view['storage_workspace']+'/other.json'
+    elif fault == 'missing-wait': applied['child_waited']=False
+    process_ref=raw('build/runs/unit/original-process.json',dict(actual_exit=applied['actual_exit'],
+        child_waited=applied['child_waited'],argv=applied['command']))
+    result_ref=raw('build/runs/unit/original-result.json',deepcopy(applied['result']))
+    applied.update(source_process=process_ref,source_result=result_ref)
+    if fault=='process-view':applied['command']=list(applied['command'])+['other']
+    elif fault=='result-view':applied['result']['deleted']=7
+    elif fault=='missing-originals':del applied['source_process']
+    record=dict(terminal=terminal_ref,plan=plan_ref,applied=raw('build/runs/unit/applied.json',applied),
+                policy=policy_ref,registry=registry_ref,evidence_store=selector)
+    if fault == 'wrong-selector': record['evidence_store']=dict(selector,sha256='0'*64)
+    reconstruction_cases = ('reconstruct','archive-hash','member-hash','wrong-member','unused-reconstruction')
+    if fault in reconstruction_cases:
+        import io,zipfile
+        stream=io.BytesIO()
+        with zipfile.ZipFile(stream,'w') as bundle:
+            bundle.writestr('source.txt',b'wrong original' if fault=='member-hash' else b'preferred source')
+        archive=put(evidence,'build/runs/later/original-source.zip',stream.getvalue())
+        archive['path']=stores.EVIDENCE_PREFIX+archive['path']
+        if fault=='archive-hash':archive['sha256']='0'*64
+        member='missing.txt' if fault=='wrong-member' else 'source.txt'
+        original=src if fault!='unused-reconstruction' else dict(path='unretained.txt',sha256=src['sha256'])
+        record['reconstructions']=[dict(input=original,archive=archive,member=member)]
+        (source/'source.txt').write_bytes(b'new current source')
+    if fault and fault not in ('reconstruct','failed-repro'):
+        messages={'source-hash':'changed evidence','store-hash':'changed evidence',
+            'outside':'outside the explicitly selected','partial':'not completely applied',
+            'different-plan':'applied another plan','missing-wait':'original cleanup apply process',
+            'roles':'role missing','wrong-selector':'changed evidence','archive-hash':'changed evidence',
+            'member-hash':'reconstructed retained bytes differ','wrong-member':'archive member missing',
+            'unused-reconstruction':'outside original retention','process-view':'differs from original',
+            'result-view':'differs from original','missing-originals':'lacks original process/result',
+            'failed-no-repro':'role missing'}
+        with pytest.raises(qa.InventoryError,match=messages[fault]):qi.validate_retention(record,source)
+    else:
+        covered=qi.validate_retention(record,source)
+        assert covered=={('source.txt',src['sha256']),(stores.EVIDENCE_PREFIX+data['path'],data['sha256'])}
+
+
 @pytest.mark.parametrize('mutation', ['hash', 'name', 'unknown', 'bool-schema', 'host', 'relative',
     'parent', 'nested', 'same', 'scratch', 'unc', 'missing', 'source'])
 def test_resealed_store_controls(pair, mutation):

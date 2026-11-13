@@ -1,0 +1,237 @@
+{
+  "schema": 1,
+  "status": "FINITE_INSTALLED_GENERATED_LINE_REFUSAL_RECOVERY_ACCEPTANCE",
+  "checklist_id": "SHD-05-BOUNDARIES",
+  "parent_id": "SHD-05",
+  "parent_closed": false,
+  "date": "2026-11-08",
+  "evidence_store": {
+    "path": "compat/evidence-stores/secondary-v1.json",
+    "sha256": "b164e3fdc85863a2327b508ea60f8d3068f740cfe90f665aa52905e28bfb3ca5"
+  },
+  "cases_per_platform": 7,
+  "test_target": "tests/shaders/test_line_side_effect_boundaries.py",
+  "boundary_cases": [
+    "vertex-storage",
+    "vertex-clip-distance",
+    "fragment-storage",
+    "fragment-atomic",
+    "fragment-image",
+    "fragment-barrier",
+    "fragment-early-tests"
+  ],
+  "acceptance": {
+    "diagnostic": "Expected case-specific RuntimeError substring",
+    "recovery": "Same live canvas: valid width-5 line renders green center RGBA [0,255,0,255] and black corner [0,0,0,255] on 16x16 single-sample target",
+    "lifecycle": "Explicit program/buffer deletion, flush/close, process events and engine shutdown; ten resource gauges zero"
+  },
+  "observations": [
+    {
+      "run": "lines-installed-windows-429",
+      "platform": "windows-vulkan",
+      "wheel": {
+        "path": "build/artifacts/ba8a54c5b7ede9387d62ff72b1269602d61c0bdc61c77928ee52a7e37107bf24/vispy-0.17.0+vulkan.2-cp312-cp312-win_amd64.whl",
+        "sha256": "ba8a54c5b7ede9387d62ff72b1269602d61c0bdc61c77928ee52a7e37107bf24"
+      },
+      "cases": 7,
+      "skipped": 0,
+      "source_hashes": {
+        "tests/shaders/test_line_side_effect_boundaries.py": "64b42051c67236199defae84e999306068b0f638e2bf8d5767e9d96dd0c7b6d3"
+      },
+      "installed_members_verified": 537,
+      "loaded_origins": 56,
+      "device": {
+        "backend": "Vulkan",
+        "adapter_type": "discrete",
+        "vendor": "nvidia",
+        "device": "NVIDIA GeForce RTX 4090",
+        "driver": "NVIDIA: 610.88 610.88.0.0",
+        "vendor_id": 4318,
+        "device_id": 9860,
+        "max_texture_dimension_1d": 32768,
+        "max_texture_dimension_2d": 32768,
+        "max_texture_dimension_3d": 16384,
+        "max_vertex_attributes": 30,
+        "max_vertex_buffers": 8,
+        "max_vertex_buffer_array_stride": 2048,
+        "max_storage_buffers_per_shader_stage": 16,
+        "max_uniform_buffers_per_shader_stage": 12,
+        "max_inter_stage_shader_variables": 30,
+        "max_storage_buffer_binding_size": 2147483644,
+        "max_bindings_per_bind_group": 1000,
+        "max_compute_invocations_per_workgroup": 1024,
+        "max_compute_workgroup_size_x": 1024,
+        "max_compute_workgroups_per_dimension": 65535,
+        "max_point_vertex_attributes": 30,
+        "core_features_and_limits": true,
+        "point_input_limit_scope": "all active user point inputs share one vertex buffer; exact vertex/instance identities use read-only vertex storage without reserving a user attribute; actual granted attribute/stride/storage/allocation limits apply",
+        "max_samplers_per_shader_stage": 16,
+        "max_sampled_textures_per_shader_stage": 48,
+        "max_buffer_size": 1099511627776,
+        "max_uniform_buffer_binding_size": 65536,
+        "software": false,
+        "float32_filterable": true,
+        "unorm16_texture_formats": true,
+        "bresenham_lines": true,
+        "last_vertex_provoking": true,
+        "timestamp_query": true,
+        "timestamp_quantization_ns": 65536,
+        "host_mapped_pointer": true,
+        "host_import_limit": 536870912,
+        "depth_stencil_storage": "depth24_unorm_stencil8",
+        "ok": true,
+        "error": "",
+        "loss_count": 0,
+        "revision": "117b054598f4758b598f4b8f48feea48c11fe7b0+dawn-499e5c6ff9b37d5de70c6493fb74c251e0d35c1c"
+      },
+      "shutdown_gauges": {
+        "pending_tickets": 0,
+        "queued_frames": 0,
+        "live_buffer_bytes": 0,
+        "live_cpu_buffer_bytes": 0,
+        "live_texture_bytes": 0,
+        "canvas_texture_bytes": 0,
+        "transient_buffer_bytes": 0,
+        "line_resource_pool_busy_slots": 0,
+        "line_resource_pool_bytes": 0,
+        "host_import_pinned_bytes": 0
+      },
+      "evidence": {
+        "verification.json": {
+          "path": "build/runs/lines-installed-windows-429/verification.json",
+          "sha256": "d9209fe6c54f34e4f802d5fd4a8fef4107dfade59a7d9a9f0b579f818ec0b1dc"
+        },
+        "input-result.json": {
+          "path": "build/runs/lines-installed-windows-429/input-result.json",
+          "sha256": "47516fa3365f7c2d9385b4382843e7bdbf2a5abd6f06fa7e7ad4b8780094575b"
+        },
+        "inputs.xml": {
+          "path": "build/runs/lines-installed-windows-429/inputs.xml",
+          "sha256": "24c43027536f062b21aff13c71447ea1bf19cf06b8c8271b0009c52a79639f6f"
+        },
+        "post-cleanup.json": {
+          "path": "build/runs/lines-installed-windows-429/post-cleanup.json",
+          "sha256": "4cfe0fe88eac75dfd1b7ed6c13dc0c15005f3e2ad94f4cf19ac438436c3c8958"
+        },
+        "test-source-and-licenses.zip": {
+          "path": "build/runs/lines-installed-windows-429/test-source-and-licenses.zip",
+          "sha256": "276cce4dd2af78c5e8902481d7a1ed69343996dea35c4f50e56bc852b94ed444"
+        },
+        "controller-processes.json": {
+          "path": "build/runs/lines-installed-windows-429/controller-processes.json",
+          "sha256": "17cc09dfad1e7eb41f3f52d69e7248cce60cd1f8500a37bbe94d33a118d70dee"
+        }
+      }
+    },
+    {
+      "run": "lines-installed-wsl-430",
+      "platform": "wsl-software-vulkan",
+      "wheel": {
+        "path": "build/artifacts/4bc3cd778990a35a3ff3e72f68fc8905e74804cb78b1d7091adbdc1b1fbfcdc8/vispy-0.17.0+vulkan.2-cp312-cp312-manylinux_2_39_x86_64.whl",
+        "sha256": "4bc3cd778990a35a3ff3e72f68fc8905e74804cb78b1d7091adbdc1b1fbfcdc8"
+      },
+      "cases": 7,
+      "skipped": 0,
+      "source_hashes": {
+        "tests/shaders/test_line_side_effect_boundaries.py": "64b42051c67236199defae84e999306068b0f638e2bf8d5767e9d96dd0c7b6d3"
+      },
+      "installed_members_verified": 537,
+      "loaded_origins": 55,
+      "device": {
+        "backend": "Vulkan",
+        "adapter_type": "cpu",
+        "vendor": "mesa",
+        "device": "llvmpipe (LLVM 18.1.3, 256 bits)",
+        "driver": "llvmpipe: Mesa 26.1.8 (LLVM 18.1.3)",
+        "vendor_id": 65541,
+        "device_id": 0,
+        "max_texture_dimension_1d": 16384,
+        "max_texture_dimension_2d": 16384,
+        "max_texture_dimension_3d": 4096,
+        "max_vertex_attributes": 30,
+        "max_vertex_buffers": 8,
+        "max_vertex_buffer_array_stride": 2048,
+        "max_storage_buffers_per_shader_stage": 16,
+        "max_uniform_buffers_per_shader_stage": 12,
+        "max_inter_stage_shader_variables": 30,
+        "max_storage_buffer_binding_size": 134217728,
+        "max_bindings_per_bind_group": 1000,
+        "max_compute_invocations_per_workgroup": 1024,
+        "max_compute_workgroup_size_x": 1024,
+        "max_compute_workgroups_per_dimension": 65535,
+        "max_point_vertex_attributes": 30,
+        "core_features_and_limits": true,
+        "point_input_limit_scope": "all active user point inputs share one vertex buffer; exact vertex/instance identities use read-only vertex storage without reserving a user attribute; actual granted attribute/stride/storage/allocation limits apply",
+        "max_samplers_per_shader_stage": 16,
+        "max_sampled_textures_per_shader_stage": 48,
+        "max_buffer_size": 4294967295,
+        "max_uniform_buffer_binding_size": 65536,
+        "software": true,
+        "float32_filterable": true,
+        "unorm16_texture_formats": true,
+        "bresenham_lines": true,
+        "last_vertex_provoking": true,
+        "timestamp_query": true,
+        "timestamp_quantization_ns": 65536,
+        "host_mapped_pointer": true,
+        "host_import_limit": 536870912,
+        "depth_stencil_storage": "depth24_unorm_stencil8",
+        "ok": true,
+        "error": "",
+        "loss_count": 0,
+        "revision": "117b054598f4758b598f4b8f48feea48c11fe7b0+dawn-499e5c6ff9b37d5de70c6493fb74c251e0d35c1c"
+      },
+      "shutdown_gauges": {
+        "pending_tickets": 0,
+        "queued_frames": 0,
+        "live_buffer_bytes": 0,
+        "live_cpu_buffer_bytes": 0,
+        "live_texture_bytes": 0,
+        "canvas_texture_bytes": 0,
+        "transient_buffer_bytes": 0,
+        "line_resource_pool_busy_slots": 0,
+        "line_resource_pool_bytes": 0,
+        "host_import_pinned_bytes": 0
+      },
+      "evidence": {
+        "verification.json": {
+          "path": "build/runs/lines-installed-wsl-430/verification.json",
+          "sha256": "bbb20caa2f4cb0660a21d1ce8192c2469ebfffa9cf1291e43a7769e864caa10b"
+        },
+        "input-result.json": {
+          "path": "build/runs/lines-installed-wsl-430/input-result.json",
+          "sha256": "5f2b93f8f470426fa6c933c933feb55219c9b1e8069a0a4b762647de075585d9"
+        },
+        "inputs.xml": {
+          "path": "build/runs/lines-installed-wsl-430/inputs.xml",
+          "sha256": "427739a12a5b3388b525c94dfb9287e072dca03e716ce566624d152de3ce7e14"
+        },
+        "post-cleanup.json": {
+          "path": "build/runs/lines-installed-wsl-430/post-cleanup.json",
+          "sha256": "84804452fb4f730c17ccfbe5e13fa6a4b49c2af93a146cb504748a9bec6c9e09"
+        },
+        "test-source-and-licenses.zip": {
+          "path": "build/runs/lines-installed-wsl-430/test-source-and-licenses.zip",
+          "sha256": "276cce4dd2af78c5e8902481d7a1ed69343996dea35c4f50e56bc852b94ed444"
+        },
+        "controller-processes.json": {
+          "path": "build/runs/lines-installed-wsl-430/controller-processes.json",
+          "sha256": "3af272d5428fbbaeabd8b9f3c4e12f384eb405e5f0eac49a6345036077aa24bd"
+        }
+      }
+    }
+  ],
+  "native_build": false,
+  "new_dependency_environment": false,
+  "artifact_admitted": false,
+  "remaining": [
+    "Broader external-storage/builtin/early-late-depth semantics and additional supported line routes",
+    "Independent cumulative source/scope review",
+    "Strict observer/profile and release admission"
+  ],
+  "prior_attempt": {
+    "run": "lines-installed-windows-425",
+    "status": "PREFLIGHT_REFUSED_NO_TESTS_LAUNCHED",
+    "reason": "Disk reserve insufficient; no result transferred"
+  }
+}

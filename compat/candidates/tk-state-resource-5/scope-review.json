@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "status": "APPROVED",
+  "kind": "scope",
+  "independent": true,
+  "reviewer": "Claude peer review (claude-fable-5-2), follow-up run480",
+  "candidate_scope_sha256": "d079d4d6c1e01cca1ac769a0cf3e2d984666fe52d410178739c0f77685f56277",
+  "native_reuse_links": [
+    "128a206c1ea204d7eea758519014428972e98d1ccd6de51755cb3cb9c4b585a5",
+    "faf95a635d1bcf78eee0989db77bee6bf00f1ce782dc88739249f6b38fec63ac"
+  ],
+  "coverage_map_sha256": "b8605e5bef5415bec8a3655e133520f9c691aa214df5f2aa6729c375c4d0ceb0",
+  "execution_map_sha256": "11e44deecf4fdf594157259ad4f661fa797d57ba70dbefe2cb8290a0453b2ef3",
+  "admission_scope_sha256": "08d6e6b4df0a2633f69ee7b88ad71c89a519333f6de87109e1f76949f70458cf",
+  "evidence": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\successor-scope-review-480\\review-response.md",
+    "sha256": "a56ad3ec714a1799c485c54af67c9da98a2e8e6a920b8a17ae34176783c24855"
+  },
+  "raw_response": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\successor-scope-review-480\\review-response.json",
+    "sha256": "53f1cf3163fe017d8f56c2648cfa4978572a458263785ea3cea295cb2541a98c"
+  },
+  "limitations": "Finite raster Tk scope on the two bound CPython profiles; prior cumulative review limitations carry over. Capture replays, installed admission, CI and promotion are not approved by this record."
+}

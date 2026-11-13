@@ -1,0 +1,120 @@
+{
+  "schema": 1,
+  "status": "PASS_WINDOWS_EXACT_WHEEL_TK_STRICT_OBSERVATIONS_NOT_RELEASE_ADMISSION",
+  "source_commit": "b38c4f9068d6a425eef43b62313f0f4cf37f57d9",
+  "wheel": {
+    "path": "build/artifacts/a86b030b005cba455f46ccaeffc56bf3f438142e490999f88156370e6093fb6c/vispy-0.17.0+vulkan.2-cp312-cp312-win_amd64.whl",
+    "sha256": "a86b030b005cba455f46ccaeffc56bf3f438142e490999f88156370e6093fb6c"
+  },
+  "platform": "Windows Vulkan",
+  "workflows": [
+    {
+      "candidate": "tk-state-resource-4",
+      "workflow": "tk-state-ownership",
+      "report": {
+        "path": "D:\\vispy-vulkan-managed\\build\\runs\\windows-strict-tk-455\\tk-state-ownership\\replay-1.json",
+        "sha256": "7d51f49340ba3f97bea6b8f7946b643578987f469806aad2542dbdecb8b70732"
+      },
+      "worker": {
+        "path": "D:\\vispy-vulkan-managed\\build\\runs\\windows-strict-tk-455\\tk-state-ownership\\replay-1.worker.json",
+        "sha256": "2c3181397e1538b6792ebde6fcca301709c094b8c0eb79db7a70c80f16d35abc"
+      },
+      "environment_id": "7693f3ee9e19e5b3d8a0ed2ed886d87e801714d34a58461a87c2d0eacd947f47",
+      "gates": {
+        "no_gl_execution": "PASS",
+        "no_gl_loads": "PASS",
+        "no_gl_install_link_requirement": "PASS"
+      },
+      "functional_result_sha256": null
+    },
+    {
+      "candidate": "tk-state-resource-4",
+      "workflow": "tk-resource-timer",
+      "report": {
+        "path": "D:\\vispy-vulkan-managed\\build\\runs\\windows-strict-tk-455\\tk-resource-timer\\replay-1.json",
+        "sha256": "3f043276d26234fb4dca1a133ab1b253176fb10537afe4cee35c8ad599218196"
+      },
+      "worker": {
+        "path": "D:\\vispy-vulkan-managed\\build\\runs\\windows-strict-tk-455\\tk-resource-timer\\replay-1.worker.json",
+        "sha256": "3677d49150380a4d6aafba7d5d0d2666ad0236d7bdb984f8af3e41805a3e46ca"
+      },
+      "environment_id": "7693f3ee9e19e5b3d8a0ed2ed886d87e801714d34a58461a87c2d0eacd947f47",
+      "gates": {
+        "no_gl_execution": "PASS",
+        "no_gl_loads": "PASS",
+        "no_gl_install_link_requirement": "PASS"
+      },
+      "functional_result_sha256": null
+    },
+    {
+      "candidate": "tk-state-resource-4",
+      "workflow": "tk-state-resource-failures",
+      "report": {
+        "path": "D:\\vispy-vulkan-managed\\build\\runs\\windows-strict-tk-455\\tk-state-resource-failures\\replay-1.json",
+        "sha256": "65b5f5777b7fc6057eb99289c37c6ee2928a106b2aa227ea8acf419d7659d897"
+      },
+      "worker": {
+        "path": "D:\\vispy-vulkan-managed\\build\\runs\\windows-strict-tk-455\\tk-state-resource-failures\\replay-1.worker.json",
+        "sha256": "a1c09407a63c705134f643abcbf692580b39a4cf14842c8868f253b6bc048939"
+      },
+      "environment_id": "7693f3ee9e19e5b3d8a0ed2ed886d87e801714d34a58461a87c2d0eacd947f47",
+      "gates": {
+        "no_gl_execution": "PASS",
+        "no_gl_loads": "PASS",
+        "no_gl_install_link_requirement": "PASS"
+      },
+      "functional_result_sha256": "c7ae9ce1dfcf3a250c265e977f51943f07ddc2b7057f5b78819972abfa3135e7"
+    },
+    {
+      "candidate": "tk-capture-4",
+      "workflow": "tk-capture-formats",
+      "report": {
+        "path": "D:\\vispy-vulkan-managed\\build\\runs\\windows-strict-tk-455\\tk-capture-formats\\replay-0.json",
+        "sha256": "c0f07db3cac0f04016ac9f1d0f6d6ea1fc166414917fa92b2868c92f18c38f70"
+      },
+      "worker": {
+        "path": "D:\\vispy-vulkan-managed\\build\\runs\\windows-strict-tk-455\\tk-capture-formats\\replay-0.worker.json",
+        "sha256": "0829d9673f4946c154bcd031d7230b64ef49219c9e56d3c9caab9304cdd788a8"
+      },
+      "environment_id": "7693f3ee9e19e5b3d8a0ed2ed886d87e801714d34a58461a87c2d0eacd947f47",
+      "gates": {
+        "no_gl_execution": "PASS",
+        "no_gl_loads": "PASS",
+        "no_gl_install_link_requirement": "PASS"
+      },
+      "functional_result_sha256": "af38b3ff5171e73d22dfd1d1ac3a0e62d36301ab9b834d730b53712ebbfaba63"
+    }
+  ],
+  "strict_workflows_passed": 4,
+  "independently_reviewed": false,
+  "artifact_admitted": false,
+  "mandatory_headless_qwidget_rows_proved": 0,
+  "wsl_strict_observations_renewed": false,
+  "previous_failure": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\windows-strict-tk-454\\failure-analysis.json",
+    "sha256": "99a50d335c811637b1d651250fc4a0b883905972080005a479c05236ecd4c10a"
+  },
+  "previous_failure_cleanup": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\windows-strict-tk-454\\post-cleanup.json",
+    "sha256": "307550aec118276c1ca9285e4bbc82f5c70ed4a5d03ea655998c2607e1779917"
+  },
+  "source_and_licenses": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\windows-strict-tk-455\\source-and-licenses.zip",
+    "sha256": "485477c44e2c10a67087578170885475b866508ab55c45c53a5d2e0c5d0d9fa0"
+  },
+  "inputs": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\windows-strict-tk-455\\inputs.json",
+    "sha256": "8613b32d9973126bf0aab7fd1f16647b3495616e3ac5abc31e4798280994c715"
+  },
+  "processes": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\windows-strict-tk-455\\processes.json",
+    "sha256": "5499ce7e9fac6a4c3c0c4180b3a535341bd52d50b042e3150f77b1f6db1421ae"
+  },
+  "notes": [
+    "All four pinned Tk candidate workflows completed discovery, installed dependency inventory and fresh replay.",
+    "Initial replay with additional OS loads remained UNVERIFIED; a fresh receipt audited that observed load set before a successful fresh replay. No dependency exemptions or observer changes.",
+    "The separate 186-case installed suite and active capture controls retain their existing exact-wheel proof.",
+    "New managed consumer was necessary because prior strict consumers were cleaned; retained dependency wheels and native artifacts were reused offline.",
+    "These are graphics runtime/installation observations, not cybersecurity work, independent candidate review, complete acceptance admission or mandatory-row qualification."
+  ]
+}

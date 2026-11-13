@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "status": "APPROVED",
+  "kind": "source",
+  "independent": true,
+  "reviewer": "Claude peer review (claude-fable-5-2), revision6 run490",
+  "candidate_scope_sha256": "9dc339f3fefe29dafaea81fc127f4e03d441741707c081cf66e927f7fa5dc193",
+  "native_reuse_links": [
+    "0bacdcba3487532be18ce797ba7eec825f535c5bfbec71413d55373e3623c46f",
+    "0cdb710a0f4395689b0391a53be186a81101fb0d7b64563d49fc388ee416665a"
+  ],
+  "evidence": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\qualification-candidate-peer-490\\review-response.md",
+    "sha256": "539e6ef93ea6ea6318ee6799bc26047897c3f923abbdfa76d80718bfc789ee0f"
+  },
+  "raw_response": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\qualification-candidate-peer-490\\review-response.json",
+    "sha256": "976eeb12833182e3b6333093e2abd5789c4420fee1eb5432427804f80909124c"
+  },
+  "limitations": "Finite raster Tk scope on the two bound CPython profiles. No proof completeness, installed admission, required hosted CI or promotion approved. Index does not enumerate Windows transitive raw command logs; bind them explicitly in contributing cleanup proof. Reviewers must check history-bound workflow attribution for pre-observation failures. Incomplete workflow selections fail closed; they are not missing-proof success. Source-local producer inputs require retained-byte proof; hash resolution alone is insufficient. CI-named tests and qualification_gate.py must be bound by the frozen qualification head; hosted failures block admission without waiver."
+}

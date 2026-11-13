@@ -1,0 +1,63 @@
+{
+  "schema": 1,
+  "status": "NATIVE_JOINS_BOUND_WORKFLOW_SELECTION_SOURCE_TESTED_ADMISSION_PENDING",
+  "runtime_source_commit": "b38c4f9068d6a425eef43b62313f0f4cf37f57d9",
+  "candidate": "tk-state-resource-5",
+  "native_validation": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\qualification-binding-484\\native-validation.json",
+    "sha256": "7d765d57879ad4fb890de89b527a958ebfe7b4f19287a52b610e9be778e23e68"
+  },
+  "subject_validation_before_tool_change": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\qualification-binding-484\\subject-validation.json",
+    "sha256": "c166d87d42503ec05c1c1b81dd18ea027705517159b2d19e6098ddb144d9a2b7"
+  },
+  "evidence_audit": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\qualification-binding-484\\evidence-adapter-audit.json",
+    "sha256": "a46f5a7282bd64f47fe3415b2977e0617b15a79397d287e1951a9072f012a3bc"
+  },
+  "tests": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\qualification-binding-484\\workflow-selection-tests.log",
+    "sha256": "ee9d96a5adfb45dda33e3d41eade18ef2bea074c6ed145bb1d9dcdf05efba485"
+  },
+  "test_process": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\qualification-binding-484\\workflow-selection-tests-process.json",
+    "sha256": "4b9a8b8a604db6772376cd9c2fac68b2314077bb7ba11ee39b3f85fc7960a125"
+  },
+  "historical_test_failure": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\qualification-binding-484\\historical-subject-baseline.json",
+    "sha256": "8440e1aa3d127b4c14926d19c577ceff554188e82113c48df2b903788c940edb"
+  },
+  "source_changes": [
+    {
+      "path": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\tools\\qualification_index.py",
+      "sha256": "460be040615d3ca3709f26119678a2b8d8f83a730aa4892e5390629b7b7dd355"
+    },
+    {
+      "path": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\compat\\qualification-index.schema.json",
+      "sha256": "61983265cbf32031e2ac1380b3d9b1ff24177ac1228e547c87c8aebeedb5c6ef"
+    },
+    {
+      "path": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\tests\\contract\\test_qualification_index.py",
+      "sha256": "f6edabb7256df1c28aa26a3486ad070ed7cbc800e98c7a4e8e27e62bf820d313"
+    }
+  ],
+  "passed_contract_cases": 52,
+  "deselected_historical_case": 1,
+  "full_file_initial_result": {
+    "passed": 52,
+    "failed": 1
+  },
+  "native_profiles_bound": 2,
+  "qualified_rows_bound": 0,
+  "artifact_admitted": false,
+  "shipping_runtime_changed": false,
+  "native_rebuilt": false,
+  "environment_created": false,
+  "scratch_created": false,
+  "remaining": [
+    "Extend the explicit secondary-store policy to installed reports and mixed-root retention, preserving exact origin/hash checks.",
+    "Review/freeze the changed qualification implementation and renew candidate tool identities. Earlier approvals bind their old exact bytes.",
+    "Bind complete per-workflow attempt histories, functional pytest receipts, distribution audits and terminal retention.",
+    "Complete required head/attempt-bound CI and independent impact/promotion reviews, then integration/publication."
+  ]
+}

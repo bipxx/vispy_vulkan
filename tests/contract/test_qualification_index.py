@@ -74,6 +74,14 @@ def test_original_retention_can_be_checked_after_scratch_is_gone(monkeypatch):
     assert qi.validate_retention(record) == {(source['path'], source['sha256'])}
 
 
+def test_legacy_retention_cannot_silently_ignore_archive_reconstruction(monkeypatch):
+    put = virtual(monkeypatch)
+    record, source = retention_fixture(put)
+    record['reconstructions'] = [dict(input=source, archive=put('unit/archive.json', {}), member='source')]
+    with pytest.raises(qi.InventoryError, match='explicit evidence store'):
+        qi.validate_retention(record)
+
+
 @pytest.mark.parametrize('bad', ['wait', 'roles', 'manifest', 'owner', 'policy', 'scope', 'retained',
                                 'unapplied', 'partial', 'wrong-plan', 'apply-wait'])
 def test_resealed_retention_control_joins(monkeypatch, bad):
@@ -93,6 +101,119 @@ def test_older_pass_cannot_hide_newer_failure_or_omit_original_history(monkeypat
         qi.validate_attempts([passed, failed], 'first', qi.ROOT, history, 'unit', '1' * 64)
     with pytest.raises(qi.InventoryError, match='original history'):
         qi.validate_attempts([passed], 'first', qi.ROOT, history, 'unit', '1' * 64)
+
+
+@pytest.mark.parametrize('bad', [None, 'later-failure', 'wrong-workflow', 'missing-workflow',
+                               'duplicate-workflow', 'legacy-and-workflow', 'omitted-history'])
+def test_separate_workflow_attempts_keep_complete_history(monkeypatch, bad):
+    put = virtual(monkeypatch)
+    attempts = []
+    for sequence, workflow in enumerate(('state', 'capture'), 1):
+        attempts.append({'id': workflow + '-pass', 'sequence': sequence, 'outcome': 'passed',
+            'retention': None, 'resolution': None, 'report': put('unit/' + workflow + '.json', {
+                'status': 'PASS_ALL_NO_OPENGL_GATES', 'process_exit': 0, 'child_waited': True,
+                'workflow': {'id': workflow}})})
+    if bad == 'later-failure':
+        attempts.append({'id': 'state-fail', 'sequence': 3, 'outcome': 'failed', 'retention': None,
+            'resolution': None, 'report': put('unit/state-fail.json', {'status': 'FAIL',
+                'process_exit': 1, 'child_waited': True, 'workflow': {'id': 'state'}})})
+    history = {'schema': 1, 'kind': 'workflow-attempt-history', 'profile': 'unit',
+        'wheel_sha256': '1' * 64,
+        'attempts': [{k: a[k] for k in ('id', 'sequence', 'outcome', 'report')} for a in attempts]}
+    entry = {'profile': 'unit', 'attempts': attempts, 'selected_attempt': None,
+        'selected_workflow_attempts': [{'workflow': w, 'attempt': w + '-pass'} for w in ('state', 'capture')]}
+    if bad == 'wrong-workflow': entry['selected_workflow_attempts'][0]['attempt'] = 'capture-pass'
+    elif bad == 'missing-workflow': entry['selected_workflow_attempts'].pop()
+    elif bad == 'duplicate-workflow': entry['selected_workflow_attempts'].append(entry['selected_workflow_attempts'][0])
+    elif bad == 'legacy-and-workflow': entry['selected_attempt'] = 'state-pass'
+    elif bad == 'omitted-history': history['attempts'].pop()
+    if bad:
+        with pytest.raises(qi.InventoryError):
+            qi.validate_workflow_attempts(entry, {'state', 'capture'}, qi.ROOT, history, '1' * 64)
+    else:
+        selected = qi.validate_workflow_attempts(entry, {'state', 'capture'}, qi.ROOT, history, '1' * 64)
+        assert {k: a['id'] for k, a in selected.items()} == {'state': 'state-pass', 'capture': 'capture-pass'}
+
+
+@pytest.mark.parametrize('fault', [None, 'wrong-profile', 'wrong-wheel', 'workflow-mismatch',
+                                 'missing-observation', 'unknown-workflow'])
+def test_resolved_pre_workflow_failure_can_precede_latest_success(monkeypatch, fault):
+    put = virtual(monkeypatch)
+    failure = dict(id='early',sequence=1,outcome='failed',workflow='state',retention=None,
+        resolution=None,report=put('unit/early.json',dict(status='FAIL',process_exit=1,child_waited=True)))
+    failed_identity = qi.attempt_identity(failure)
+    resolution = dict(schema=1,kind='attempt-resolution',status='APPROVED',independent=True,
+        reviewer='synthetic-unit-only',attempt_sha256=qi.digest(failed_identity),profile='unit',
+        wheel_sha256='1'*64,disposition='Original pre-observation failure retained; latest run is a separate success.')
+    if fault=='wrong-profile': resolution['profile']='other'
+    elif fault=='wrong-wheel': resolution['wheel_sha256']='2'*64
+    failure['resolution']=put('unit/resolution.json',resolution)
+    success=dict(id='latest',sequence=2,outcome='passed',workflow='state',retention=None,resolution=None,
+        report=put('unit/latest.json',dict(status='PASS_ALL_NO_OPENGL_GATES',process_exit=0,child_waited=True,workflow={'id':'state'})))
+    if fault=='workflow-mismatch': success['workflow']='capture'
+    elif fault=='missing-observation': success['report']=put('unit/latest.json',dict(status='PASS_ALL_NO_OPENGL_GATES',process_exit=0,child_waited=True))
+    elif fault=='unknown-workflow':
+        failure['workflow']='outside'
+        resolution['attempt_sha256']=qi.digest(qi.attempt_identity(failure))
+        failure['resolution']=put('unit/resolution.json',resolution)
+    attempts=[failure,success]
+    history=dict(schema=1,kind='workflow-attempt-history',profile='unit',wheel_sha256='1'*64,
+        attempts=[qi.attempt_identity(a) for a in attempts])
+    entry=dict(profile='unit',attempts=attempts,selected_attempt=None,
+        selected_workflow_attempts=[dict(workflow='state',attempt='latest')])
+    if fault:
+        messages={'wrong-profile':'failure resolution belongs','wrong-wheel':'failure resolution belongs',
+            'workflow-mismatch':'bound and observed workflow identities differ',
+            'missing-observation':'attempt lacks observed workflow identity',
+            'unknown-workflow':'unselected candidate workflow'}
+        with pytest.raises(qi.InventoryError,match=messages[fault]):
+            qi.validate_workflow_attempts(entry,{'state'},qi.ROOT,history,'1'*64)
+    else:
+        assert qi.validate_workflow_attempts(entry,{'state'},qi.ROOT,history,'1'*64)['state']==success
+
+
+@pytest.mark.parametrize('swapped', [False, True])
+def test_subject_binds_each_row_to_its_workflow_attempt(monkeypatch, swapped):
+    put, subject = synthetic_subject(monkeypatch)
+    covered = qi.validate_retention({})
+    def retain(reference):
+        covered.add((reference['path'], reference['sha256']))
+        return reference
+    profile = subject['profiles'][0]
+    state_runtime = retain(put('unit/state-runtime.json', {'status': 'PASS_ALL_NO_OPENGL_GATES',
+        'process_exit': 0, 'child_waited': True, 'workflow': {'id': 'state'}}))
+    capture_runtime = retain(put('unit/capture-runtime.json', {'status': 'PASS_ALL_NO_OPENGL_GATES',
+        'process_exit': 0, 'child_waited': True, 'workflow': {'id': 'capture'}}))
+    rows = []
+    for feature, runtime in (('unit', state_runtime), ('crop', capture_runtime)):
+        gate = retain(put('unit/' + feature + '-gate.json', {'raw_reports': {
+            'runtime': state_runtime if swapped and feature == 'crop' else runtime}}))
+        receipt = retain(put('unit/' + feature + '-receipt.json', {'gates': {'execution-api': gate}}))
+        rows.append({'feature': feature, 'profile': profile['profile'], 'state': 'qualified',
+            'workflow': {'id': 'state' if feature == 'unit' else 'capture'},
+            'receipt': receipt, 'identity': {'wheel_sha256': '3' * 64}})
+    subject['ledger'] = put('unit/ledger.json', {'rows': rows})
+    # Replace the virtual selection with both workflows, preserving all joins.
+    selection_path = qi.retained_file(qi.ROOT, subject['selection'])
+    selection = qi.read_json(selection_path)
+    crop = {'feature': 'crop', 'profile': profile['profile'], 'criterion': 'crop.ordinary'}
+    selection['closure'].append(crop)
+    subject['selection'] = put('unit/selection.json', selection)
+    profile['attempts'] = [dict(profile['attempts'][0], id=name, sequence=i, report=report)
+        for i, (name, report) in enumerate((('state-pass', state_runtime), ('capture-pass', capture_runtime)), 1)]
+    profile['selected_attempt'] = None
+    profile['selected_workflow_attempts'] = [{'workflow': w, 'attempt': w + '-pass'} for w in ('state', 'capture')]
+    profile['attempt_history'] = retain(put('unit/history.json', {'schema': 1,
+        'kind': 'workflow-attempt-history', 'profile': profile['profile'], 'wheel_sha256': '3' * 64,
+        'attempts': [{k: a[k] for k in ('id', 'sequence', 'outcome', 'report')} for a in profile['attempts']]}))
+    qi.seal(subject)
+    if swapped:
+        with pytest.raises(qi.InventoryError, match='selected original attempt'):
+            qi.validate_subject(subject)
+    else:
+        result = qi.validate_subject(subject)
+        assert result['subject_proved'] and len(result['proved']) == 5
+        assert not result['admitted']
 
 
 def synthetic_subject(monkeypatch, bad=None):
@@ -177,6 +298,47 @@ def test_linux_capture_raw_inputs_must_survive_contributing_run(monkeypatch, mis
         assert result['subject_proved'] and not result['admitted']
 
 
+@pytest.mark.parametrize('missing', [None, 'raw', 'wrong-namespace'])
+def test_store_native_and_archive_inputs_join_their_retention_namespace(monkeypatch, missing):
+    put,subject=synthetic_subject(monkeypatch)
+    covered=qi.validate_retention({})
+    selector=put('compat/evidence-stores/secondary-v1.json',{'synthetic_unit_only':True})
+    original_retained=qi.retained_file
+    def root_check(root,reference):
+        assert reference==selector
+        return root
+    monkeypatch.setattr(qi,'evidence_root',root_check)
+    monkeypatch.setattr(qi,'evidence_file',lambda root,reference,binding: original_retained(root,reference))
+    def stored(name,value):
+        return put(qi.EVIDENCE_PREFIX+name,value)
+    def plain(reference):
+        return dict(reference,path=reference['path'].removeprefix(qi.EVIDENCE_PREFIX))
+    raw=stored('unit/raw.json',{'unit_raw':True})
+    capture=stored('unit/capture.json',{'files':[{'file':plain(raw)}]})
+    wheel=stored('unit/wheel.json',{'unit_wheel':True})
+    scope=qi.scope_digest(qi.read_json(qi.retained_file(qi.ROOT,subject['candidate'])))
+    archive=put('unit/archive.json',{'kind':'archive-prerequisite','candidate':{'scope_sha256':scope},
+        'profile':'unit-profile','wheel':plain(wheel),'native_outputs':[],'evidence_store':selector})
+    producer=put('unit/native.json',{'kind':'original-linux-ci-native-reuse','candidate':subject['candidate'],
+        'reuse':{'profile':'unit-profile','evidence_store':selector},'capture':plain(capture)})
+    profile=subject['profiles'][0];profile['archive']=archive;profile['producer']=producer
+    subject['evidence_store']=selector
+    for reference in (archive,producer,wheel,capture,raw):
+        if reference==raw and missing:
+            if missing=='wrong-namespace':covered.add((plain(raw)['path'],raw['sha256']))
+        else:covered.add((reference['path'],reference['sha256']))
+    qi.seal(subject)
+    if missing:
+        with pytest.raises(qi.InventoryError,match='artifact/native proof has unretained inputs'):
+            qi.validate_subject(subject)
+    else:
+        result=qi.validate_subject(subject)
+        assert result['subject_proved'] and not result['admitted']
+        # The store selector is a verified current declaration, not a file that
+        # had to exist in an original producer's retained-input inventory.
+        assert (selector['path'],selector['sha256']) not in covered
+
+
 @pytest.mark.parametrize('bad', ['native', 'missing-profile', 'unretained'])
 def test_resealed_subject_semantic_controls(monkeypatch, bad):
     _, subject = synthetic_subject(monkeypatch, bad)
@@ -219,13 +381,16 @@ def test_promotion_review_binds_exact_head_ci_and_subject(monkeypatch, bad):
         assert result['admitted'] and not result['release_complete']
 
 
-def test_real_subject_preserves_120_obligations_and_reports_missing_proof():
+def test_historical_subject_preserves_120_obligations_and_rejects_current_toolset():
     before = qi.DEFAULT.read_bytes()
-    result = qi.validate_subject(qi.read_json(qi.DEFAULT))
-    assert len(result['requested']) == len(result['closure']) == len(result['missing']) == 120
-    assert not result['proved'] and not result['blocked']
-    assert not result['subject_proved'] and not result['admitted']
-    assert len({entry['criterion']['profile'] for entry in result['missing']}) == 2
+    subject = qi.read_json(qi.DEFAULT)
+    selection = qi.read_json(qi.ROOT / subject['selection']['path'])
+    assert len(selection['requested']) == len(selection['closure']) == 120
+    assert len({entry['profile'] for entry in selection['closure']}) == 2
+    # This exact historical packet pins an older preparation-tool inventory.
+    # Its scope remains evidence; it must not approve today's changed tools.
+    with pytest.raises(qi.InventoryError, match='incomplete preparation verifier/tool identities'):
+        qi.validate_subject(subject)
     assert qi.DEFAULT.read_bytes() == before
 
 

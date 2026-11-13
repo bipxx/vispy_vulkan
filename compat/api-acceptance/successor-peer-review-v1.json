@@ -1,0 +1,123 @@
+{
+  "schema": 1,
+  "status": "INDEPENDENT_SOURCE_APPROVED_SCOPE_CHANGES_REQUESTED",
+  "source_commit": "b38c4f9068d6a425eef43b62313f0f4cf37f57d9",
+  "reviewer": "Claude peer review",
+  "model": [
+    "claude-fable-5-2"
+  ],
+  "review": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\successor-independent-review-478\\review-response.md",
+    "sha256": "a9c6340814c7cb4c1efecbd6194381a125320570c239e4fa3cfbb02ee89fa6ef"
+  },
+  "raw_response": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\successor-independent-review-478\\review-response.json",
+    "sha256": "f0f8e066bcdf5064bfa8f4facffaff2836981bd8d1a315e1da603fd2fb646db9"
+  },
+  "process": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\successor-independent-review-478\\review-process.json",
+    "sha256": "5cd99fe55a2193ba8f40c6b95c10ad74963d6052f35b2589b859614476416873"
+  },
+  "request": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\successor-independent-review-478\\review-request.txt",
+    "sha256": "a98bf70f8f0a8685251f84a49ab10855870f9df74f4153820f73edfa24a71943"
+  },
+  "decisions": [
+    {
+      "candidate": "tk-state-resource-4",
+      "kind": "source",
+      "decision": "approved",
+      "bindings": {
+        "candidate_scope_sha256": "f06f4c419cd9030d7342f484d4107d67c196fdd64f41ba41967cb83a8b22eec7",
+        "native_reuse_links": [
+          "26ecac5b65e3ad6c19e1492749bce03db2a184004384cdcc36fa8365ac9241b4",
+          "4d6bc23162494345848a9fa42ef9e1ce8d2472fc41ccdc35ac4dededceb60c2b"
+        ]
+      }
+    },
+    {
+      "candidate": "tk-state-resource-4",
+      "kind": "scope",
+      "decision": "changes_requested",
+      "bindings": {
+        "candidate_scope_sha256": "f06f4c419cd9030d7342f484d4107d67c196fdd64f41ba41967cb83a8b22eec7",
+        "native_reuse_links": [
+          "26ecac5b65e3ad6c19e1492749bce03db2a184004384cdcc36fa8365ac9241b4",
+          "4d6bc23162494345848a9fa42ef9e1ce8d2472fc41ccdc35ac4dededceb60c2b"
+        ],
+        "coverage_map_sha256": "55f537f4896240b9567b778166f9fc3e06a7ed729f80a71cac5c37b2b002f0d6",
+        "execution_map_sha256": "abdaf4947c1d18922801de12ec4800a4436c3d8360b06517a2fe6e376fea6b81",
+        "admission_scope_sha256": "5bbade342113f0f680bbafa89119bf7b7e1bc90c2cf3717615cf0add22dbff40"
+      }
+    },
+    {
+      "candidate": "tk-capture-4",
+      "kind": "source",
+      "decision": "approved",
+      "bindings": {
+        "candidate_scope_sha256": "af960371ffb382ce4c17fac5302b91b7c6e63379bbe2de443d7b245b41555eac",
+        "native_reuse_links": [
+          "3c1df0d4ac2cde2241ffa5993196d692de9b4ee57222027109a84a26e29292b7",
+          "f00f8d976aa8af36ebeb886efb6452dc3983f4f8bac773463e14983c2d3fb727"
+        ]
+      }
+    },
+    {
+      "candidate": "tk-capture-4",
+      "kind": "scope",
+      "decision": "changes_requested",
+      "bindings": {
+        "candidate_scope_sha256": "af960371ffb382ce4c17fac5302b91b7c6e63379bbe2de443d7b245b41555eac",
+        "native_reuse_links": [
+          "3c1df0d4ac2cde2241ffa5993196d692de9b4ee57222027109a84a26e29292b7",
+          "f00f8d976aa8af36ebeb886efb6452dc3983f4f8bac773463e14983c2d3fb727"
+        ],
+        "coverage_map_sha256": "7b3336ab24af699cb5ea307b98460bda628e1bed4d2cb78dba656f524450980f",
+        "execution_map_sha256": "b4d2736a11970451da7e53dc5c572707be8e040c53c911de04aa9835ae6bb2d0",
+        "admission_scope_sha256": "2401fc54cbc5c139444dc020a95c4fece9c656de8939c45f06abf879a05b90b1"
+      }
+    }
+  ],
+  "blocking_findings": [
+    {
+      "id": "F1",
+      "severity": "medium",
+      "summary": "Capture candidate omits backend/canvas/current-target dependencies; merge capture into the state candidate with an enforced current-target dependency."
+    },
+    {
+      "id": "F2",
+      "severity": "medium",
+      "summary": "Textured-program claim omits its vec4 tint attribute and varying color; correct proposal and four criteria to match the unchanged fixture."
+    }
+  ],
+  "additional_actions": [
+    {
+      "id": "F6",
+      "action": "Explicitly exclude optional native Vulkan Tk presentation from the raster candidate scope."
+    },
+    {
+      "id": "F3",
+      "action": "Retain older-CPython Destroy-binding concern as unverified outside the two bound CPython profiles."
+    },
+    {
+      "id": "F4",
+      "action": "Distinguish four observed workflows from the two criterion-bearing workflows."
+    },
+    {
+      "id": "F5",
+      "action": "Keep disclosed composite failure/recovery participation scope; no universal invalid-input claim."
+    }
+  ],
+  "source_approvals": 2,
+  "scope_approvals": 0,
+  "scope_changes_requested": 2,
+  "review_records_applied": false,
+  "artifact_admitted": false,
+  "native_build": false,
+  "tests_rerun": false,
+  "limits": [
+    "Reviewer read code and records but ran no tests or hash validators; coordinator independently rehashed the frozen inputs.",
+    "Approvals bind only the exact revision-4 hashes. Revised candidate scopes require reissued source and scope bindings.",
+    "No critical/high defect was reported; findings and inspection limits remain in the complete response."
+  ]
+}

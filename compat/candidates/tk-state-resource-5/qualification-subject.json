@@ -1,0 +1,55 @@
+{
+  "schema": 1,
+  "kind": "qualification-subject",
+  "manifest_sha256": "dedb480ebc38874f273c58ad1ffee75f3b26e7c0ea224585bb2f606cd9b7fcdd",
+  "product_source_commit": "b38c4f9068d6a425eef43b62313f0f4cf37f57d9",
+  "qualification_head": null,
+  "candidate": {
+    "path": "compat/candidates/tk-state-resource-5/candidate.json",
+    "sha256": "56c3c3568f5fc44a04401e8bea663cc84fd47583633e50dbb99e33a0a3e6fa5a"
+  },
+  "selection": {
+    "path": "compat/candidates/tk-state-resource-5/admission-selection.json",
+    "sha256": "489fef0e3373b5ea7725ce9ece53bd512880b14bb78512b69d8ccb92d03419eb"
+  },
+  "execution": {
+    "path": "compat/candidates/tk-state-resource-5/execution.json",
+    "sha256": "e15526b571fa89268d1d085b7694b8fafe5b87aa7ab4a1151e09bb1a819915da"
+  },
+  "ledger": {
+    "path": "compat/candidates/tk-state-resource-5/execution-ledger.json",
+    "sha256": "3c5248a2f3a265e7d646f8e1a79dfa9e0844f3fc5a0565d4dce607d123cc868f"
+  },
+  "profiles": [
+    {
+      "profile": "windows-gpu-tk86-cp312-development",
+      "archive": {
+        "path": "compat/candidates/tk-state-resource-5/windows-archive.json",
+        "sha256": "1559b897e7f7a9ec705aecedd805ea1a10fe195e37bc11193cbce5084d954676"
+      },
+      "producer": {
+        "path": "compat/candidates/tk-state-resource-5/windows-native-provenance.json",
+        "sha256": "8d1408b6e55087cce6aec268be498b633df164e8d592f9dc41f226bf373fee7f"
+      },
+      "producer_retention": null,
+      "attempts": [],
+      "selected_attempt": null,
+      "attempt_history": null
+    },
+    {
+      "profile": "wsl-software-tk90-cp31213-development",
+      "archive": {
+        "path": "compat/candidates/tk-state-resource-5/linux-archive.json",
+        "sha256": "4858622f65c2e934c730964a693c34e588b84ec8c4a1a1d12d309e15802849d6"
+      },
+      "producer": {
+        "path": "compat/candidates/tk-state-resource-5/linux-native-provenance.json",
+        "sha256": "66f905a3d88a0b968421607ed1cf1ea67a782f61893a71d0e0ffce790f91ab97"
+      },
+      "producer_retention": null,
+      "attempts": [],
+      "selected_attempt": null,
+      "attempt_history": null
+    }
+  ]
+}

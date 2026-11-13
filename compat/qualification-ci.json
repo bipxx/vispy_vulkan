@@ -7,7 +7,7 @@
   "workflows": [
     {
       "path": ".github/workflows/cpu-contract.yml",
-      "sha256": "fc90d204ed8e4ab00b774635d590d2c1fbe81a7412064e146f65f57740c9a339",
+      "sha256": "1d85ac7e48cb863ce34f909172678198723a83761ba20ea07a43d4278884cfc2",
       "job_key": "cpu",
       "jobs": [
         "CPU linux-x86_64 CPython 3.10.19",

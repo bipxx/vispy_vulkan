@@ -1,0 +1,63 @@
+{
+  "schema": 1,
+  "status": "PASS_REVIEWED_CAPTURE_RECIPE_WSL_OBSERVATION",
+  "candidate": "tk-state-resource-5",
+  "source_commit": "b38c4f9068d6a425eef43b62313f0f4cf37f57d9",
+  "wheel": {
+    "path": "build/artifacts/48164e052ddc3d8e5376a3a1f13fa652583142f4634438ae9067e204aab8b6ce/vispy-0.17.0+vulkan.2-cp312-cp312-manylinux_2_39_x86_64.whl",
+    "sha256": "48164e052ddc3d8e5376a3a1f13fa652583142f4634438ae9067e204aab8b6ce"
+  },
+  "workflow": "tk-capture-formats",
+  "features": [
+    "tk.application.manual",
+    "tk.backend.raster",
+    "tk.canvas.basic",
+    "tk.context.current",
+    "tk.readback.crop-formats"
+  ],
+  "report": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-capture-rebind-483\\reports\\tk-capture-formats\\replay-0.json",
+    "sha256": "8fb5c6d0b5f395ed1afaa78bbb98aba2d4c2ce4395fb3bc121657cbded4a013e"
+  },
+  "worker": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-capture-rebind-483\\reports\\tk-capture-formats\\replay-0.worker.json",
+    "sha256": "bd90259b525e0bdf416ad7240b39192add3d916de8081a0651c9fe776aa7f271"
+  },
+  "functional_validation": {
+    "schema": 1,
+    "contract": "tk-capture-1",
+    "status": "PASS_FUNCTIONAL_RESULT",
+    "branch_ids": [
+      "capture.invalid-viewport",
+      "capture.ordinary",
+      "capture.resize",
+      "capture.retry"
+    ],
+    "qualified": false
+  },
+  "installed_members_verified": 537,
+  "shutdown_gauges": {
+    "pending_tickets": 0,
+    "queued_frames": 0,
+    "live_buffer_bytes": 0,
+    "live_cpu_buffer_bytes": 0,
+    "live_texture_bytes": 0,
+    "canvas_texture_bytes": 0,
+    "transient_buffer_bytes": 0,
+    "line_resource_pool_busy_slots": 0,
+    "line_resource_pool_bytes": 0
+  },
+  "environment_id": "2c8ae25cec2e37f8b1fc5cb9ae38d05e6a73d5f39ee13f83b9433f39f7df4c39",
+  "controller": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-capture-rebind-483\\controller-process.json",
+    "sha256": "fb03e2a07e11f6fce2f01f2fe0266704d39fd8ffb1548630415d2ef4c9f732ea"
+  },
+  "processes": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-capture-rebind-483\\processes.json",
+    "sha256": "cd1379df9d27692fc3b7ebeaf88d001ebe3d8771dd33af1d66eba8db432e87bc"
+  },
+  "remaining_capture_replays": 0,
+  "artifact_admitted": false,
+  "execution_attempt_bound": false,
+  "native_build": false
+}

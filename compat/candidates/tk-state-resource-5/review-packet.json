@@ -1,0 +1,54 @@
+{
+  "schema": 1,
+  "status": "UNREVIEWED_REVISED_SCOPE_PACKET",
+  "source_commit": "b38c4f9068d6a425eef43b62313f0f4cf37f57d9",
+  "previous_review": {
+    "path": "compat/api-acceptance/successor-peer-review-v1.json",
+    "sha256": "274db0fe9a2cb0cb7e526e31d5f0219cc8f327ace413d28c31ff9f7250b3defa"
+  },
+  "candidates": [
+    {
+      "candidate": "tk-state-resource-5",
+      "candidate_file": {
+        "path": "compat/candidates/tk-state-resource-5/candidate.json",
+        "sha256": "6b178b54172ee36aaa6dd29843034a61b52a98e78c9a22b8f0f646f637ae2702"
+      },
+      "candidate_scope_sha256": "d079d4d6c1e01cca1ac769a0cf3e2d984666fe52d410178739c0f77685f56277",
+      "coverage_map_sha256": "b8605e5bef5415bec8a3655e133520f9c691aa214df5f2aa6729c375c4d0ceb0",
+      "execution_map_sha256": "11e44deecf4fdf594157259ad4f661fa797d57ba70dbefe2cb8290a0453b2ef3",
+      "admission_scope_sha256": "08d6e6b4df0a2633f69ee7b88ad71c89a519333f6de87109e1f76949f70458cf",
+      "native_reuse_links": [
+        "128a206c1ea204d7eea758519014428972e98d1ccd6de51755cb3cb9c4b585a5",
+        "faf95a635d1bcf78eee0989db77bee6bf00f1ce782dc88739249f6b38fec63ac"
+      ],
+      "required_kinds": [
+        "source",
+        "scope"
+      ],
+      "approvals_present": false,
+      "pending_native_records": [
+        {
+          "path": "compat/candidates/tk-state-resource-5/windows-native-provenance.json",
+          "sha256": "b61a898f304182072bd6ff51788313bed2d119e2d0bc35990e60a8ac27033abd"
+        },
+        {
+          "path": "compat/candidates/tk-state-resource-5/linux-native-provenance.json",
+          "sha256": "460803d3c37b78c9968118c6e53976b90a87dca2be7221c007617302480a5cbc"
+        }
+      ],
+      "pending_subject": {
+        "path": "compat/candidates/tk-state-resource-5/qualification-subject.json",
+        "sha256": "8a4545aaa376d3f99d2a413fdcf3f0d33c49034c15111110e480fa6896edf06d"
+      }
+    }
+  ],
+  "fixes": [
+    "F1: capture and state merged; capture depends on current target in both profiles.",
+    "F2: proposal and four criteria describe the unchanged position/tint/color/sampler fixture.",
+    "F6: optional native Vulkan Tk presentation explicitly excluded from raster admission."
+  ],
+  "native_build": false,
+  "tests_rerun": false,
+  "artifact_admitted": false,
+  "note": "Revision-4 source approvals remain historical feedback only. Reissue source/scope decisions for these new digests. Capture observer arguments now include prerequisite features, so two fresh platform capture replays must bind the revised recipe; old capture observations retain their original scope. No fixture, shipping source, wheel or renderer rebuild is required."
+}

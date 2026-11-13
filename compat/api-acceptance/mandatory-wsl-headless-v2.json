@@ -1,0 +1,214 @@
+{
+  "schema": 1,
+  "status": "PASS_WSL_HEADLESS_CURRENT_WHEEL_OBSERVATION_RELEASE_ADMISSION_PENDING",
+  "row": "wsl-linux-lavapipe-x11-headless",
+  "source_commit": "b38c4f9068d6a425eef43b62313f0f4cf37f57d9",
+  "wheel": {
+    "path": "build/artifacts/48164e052ddc3d8e5376a3a1f13fa652583142f4634438ae9067e204aab8b6ce/vispy-0.17.0+vulkan.2-cp312-cp312-manylinux_2_39_x86_64.whl",
+    "sha256": "48164e052ddc3d8e5376a3a1f13fa652583142f4634438ae9067e204aab8b6ce"
+  },
+  "functional": {
+    "gpu_tests": 95,
+    "rendering_status": "PASS_INSTALLED_LINUX_SOFTWARE_RENDERBUFFER_CLEAR_SMOOTH_TEXT",
+    "markers": 4096,
+    "science_cases": 36,
+    "bundle_sha256": "16195dbe13498734c44336d5e154623586267b20965c708699ac625992d0c18a"
+  },
+  "feature_labels": [
+    "clear",
+    "image",
+    "labels",
+    "volume",
+    "markers",
+    "mesh",
+    "compiled-text",
+    "depth-order",
+    "shader-arrays-attributes-lod",
+    "multisample-lines",
+    "recovery",
+    "shutdown-zero-resources"
+  ],
+  "installed_members_verified": 537,
+  "source_overrides": 0,
+  "device": {
+    "backend": "Vulkan",
+    "adapter_type": "cpu",
+    "vendor": "mesa",
+    "device": "llvmpipe (LLVM 18.1.3, 256 bits)",
+    "driver": "llvmpipe: Mesa 26.1.8 (LLVM 18.1.3)",
+    "vendor_id": 65541,
+    "device_id": 0,
+    "max_texture_dimension_1d": 16384,
+    "max_texture_dimension_2d": 16384,
+    "max_texture_dimension_3d": 4096,
+    "max_vertex_attributes": 30,
+    "max_vertex_buffers": 8,
+    "max_vertex_buffer_array_stride": 2048,
+    "max_storage_buffers_per_shader_stage": 16,
+    "max_uniform_buffers_per_shader_stage": 12,
+    "max_inter_stage_shader_variables": 30,
+    "max_storage_buffer_binding_size": 134217728,
+    "max_bindings_per_bind_group": 1000,
+    "max_compute_invocations_per_workgroup": 1024,
+    "max_compute_workgroup_size_x": 1024,
+    "max_compute_workgroups_per_dimension": 65535,
+    "max_point_vertex_attributes": 30,
+    "core_features_and_limits": true,
+    "point_input_limit_scope": "all active user point inputs share one vertex buffer; exact vertex/instance identities use read-only vertex storage without reserving a user attribute; actual granted attribute/stride/storage/allocation limits apply",
+    "max_samplers_per_shader_stage": 16,
+    "max_sampled_textures_per_shader_stage": 48,
+    "max_buffer_size": 4294967295,
+    "max_uniform_buffer_binding_size": 65536,
+    "software": true,
+    "float32_filterable": true,
+    "unorm16_texture_formats": true,
+    "bresenham_lines": true,
+    "last_vertex_provoking": true,
+    "timestamp_query": true,
+    "timestamp_quantization_ns": 65536,
+    "host_mapped_pointer": true,
+    "host_import_limit": 536870912,
+    "depth_stencil_storage": "depth24_unorm_stencil8",
+    "ok": true,
+    "error": "",
+    "loss_count": 0,
+    "revision": "117b054598f4758b598f4b8f48feea48c11fe7b0+dawn-499e5c6ff9b37d5de70c6493fb74c251e0d35c1c"
+  },
+  "shutdown_gauges": {
+    "pending_tickets": 0,
+    "queued_frames": 0,
+    "live_buffer_bytes": 0,
+    "live_cpu_buffer_bytes": 0,
+    "live_texture_bytes": 0,
+    "canvas_texture_bytes": 0,
+    "transient_buffer_bytes": 0,
+    "line_resource_pool_busy_slots": 0,
+    "line_resource_pool_bytes": 0
+  },
+  "environment_id": "fe8d5deec75c10de29caf1b62abbaa2cb0fa2313714fd8d64de501163dbb1805",
+  "report": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-headless-row-470\\reports\\replay-0.json",
+    "sha256": "764f06b1028e11a541e979db08eb7793f26064b4e5841f3103e2aea16a294c3d"
+  },
+  "worker": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-headless-row-470\\reports\\replay-0.worker.json",
+    "sha256": "595e329b9c2641c270b3c6292c8676c45e8eee65c2d5de683fad4c827e8bad4b"
+  },
+  "receipt": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-headless-row-470\\reports\\receipt-0.json",
+    "sha256": "0dbfb043f6fd18caf5748b1d34b32a645e561e9d33f50c98e45446dac96fea73"
+  },
+  "bundle": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-headless-row-470\\reports\\replay-0-features\\result1.json",
+    "sha256": "16195dbe13498734c44336d5e154623586267b20965c708699ac625992d0c18a"
+  },
+  "gpu_cases": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-headless-row-470\\reports\\replay-0-features\\gpu95\\gpu.xml",
+    "sha256": "1bbe0ad9185cd3efd8440bd2de7f11c31ae3517d775639b9cee7e0dd516de68a"
+  },
+  "gpu_shutdown": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-headless-row-470\\reports\\replay-0-features\\gpu95\\functional.json",
+    "sha256": "64a799ef2838d818dc65c90085b8eb374f12473fceaace19f773c1703b730c09"
+  },
+  "rendering": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-headless-row-470\\reports\\replay-0-features\\rendering\\result1.json",
+    "sha256": "142d1279ffdb73008c8d3d80b1ddab9a445574028711f3d2c4af12faf5dab12d"
+  },
+  "markers": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-headless-row-470\\reports\\replay-0-features\\markers\\result.json",
+    "sha256": "9538444a79bca87a9e43259eed1249601fddac8da74eab2a3998dc6e8c38e024"
+  },
+  "science": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-headless-row-470\\reports\\replay-0-features\\science\\result1.json",
+    "sha256": "bc34a547ff6ab19b5206c7ae5ba2fe240ddadb234bb9e3d513c7f1d76ef4a96d"
+  },
+  "matrix_reference": {
+    "path": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\compat\\no-opengl-matrix.json",
+    "sha256": "230b12f3d4ed418cde3b0313fbdea36557b02a61c80a1cf637699d7a9bc50fc4"
+  },
+  "borrowed_origins": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-headless-row-470\\borrowed-origins.json",
+    "sha256": "63701541a98f70aabcc39be63ef3917bb9777ed1364f5958b2c6beaa87d2c66f"
+  },
+  "borrowed_dependencies": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-headless-row-470\\borrowed-dependencies.json",
+    "sha256": "2afa833a6ec5c9715fa5dbd16509dec4b4fb7d1f6a84cb63837912a0c5b6d95a"
+  },
+  "storage_plan": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-headless-row-470\\storage-plan.json",
+    "sha256": "b69a8aef7c8831c2e4bff473efccb5e22b6aeadda20cceb9d5980a63dd660e62"
+  },
+  "dependency_notices": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-headless-row-470\\dependency-licenses.json",
+    "sha256": "2e487c09f88aee9c78a1082993ec6de2bcb32f8425a86efd29a3d21c1422a039"
+  },
+  "shared_source": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\windows-headless-row-466\\source-and-licenses.zip",
+    "sha256": "1efd5ebb167ff4a85a41cf05df909b717e7191967d5836b8110bb827867a8157"
+  },
+  "runner_source": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-headless-row-468\\runner-source-and-licenses.zip",
+    "sha256": "7a972af84d9dccf1b3b1d4958a0bef3a8d28ee3f3ff5f104edab1075ca322236"
+  },
+  "runner_bindings": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-headless-row-468\\runner-binding.patch",
+    "sha256": "1f7331dce387e876bde9806d4cfe22737f1cf87847722f4ac0d27de2d3d9118d"
+  },
+  "traceback_actor": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-headless-row-469\\functional\\gpu.py",
+    "sha256": "c5435933d9ffc7e8e87c5a5b01ab5ae84cfe4ba64162d6cea35b29096d981725"
+  },
+  "collector_reference": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-headless-row-470\\collector-reference.json",
+    "sha256": "85b0b6aa1d09e635f903cf88f813df9cf7ccc40e3075fd89e8bbfa03673288fe"
+  },
+  "processes": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-headless-row-470\\processes.json",
+    "sha256": "a7265ebb47124ec38444e0edf9fe187155ce648bb8aefef9524d4dc0a460c05b"
+  },
+  "controller": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-headless-row-470\\controller-process.json",
+    "sha256": "a1c619772b4652d68a4ab922d1695f2a50da742ee41341560421f792dea6c5b3"
+  },
+  "setup_failures": [
+    {
+      "run": "wsl-headless-row-468",
+      "analysis": {
+        "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-headless-row-468\\failure-analysis.json",
+        "sha256": "afcd694c9d73448bc9ad44e97c60c7f80c80c56665130e7de96e94cf38b16676"
+      },
+      "cleanup": {
+        "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-headless-row-468\\post-cleanup.json",
+        "sha256": "bc396e9679a67513fb226d10e41b59d58cd9af3c06d1d73df9335bd96080a13d"
+      }
+    },
+    {
+      "run": "wsl-headless-row-469",
+      "analysis": {
+        "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-headless-row-469\\failure-analysis.json",
+        "sha256": "b0330070c70ae3f3ce729b857f0a4d4e57517c504b17a3eb2e04a7a4a70dc429"
+      },
+      "cleanup": {
+        "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-headless-row-469\\post-cleanup.json",
+        "sha256": "886cc2c3f4975afb6a521df6f64d090f5a0547d5b06363978efb7de99028140c"
+      }
+    }
+  ],
+  "historical_row_artifact": "66f35ab0dae878af1744f2061be1042bd2c5abfd24d3192c7456865f2c6fd3f7",
+  "canonical_matrix_modified": false,
+  "mandatory_rows_observed_in_this_packet": 1,
+  "total_current_row_observations": 2,
+  "remaining_row_observations": 6,
+  "mandatory_rows_admitted": 0,
+  "independently_reviewed": false,
+  "artifact_admitted": false,
+  "native_build": false,
+  "dependencies_downloaded": false,
+  "dependency_strategy": "Retained matching dependencies are borrowed as read-only lower; selected wheel is normally installed into a bounded private overlay under the consumer prefix.",
+  "limits": [
+    "WSL software Vulkan only; no native Linux hardware claim.",
+    "Original95 GPU and36 scientific/value oracles unchanged. Traceback logging and POSIX temporary storage repair capture setup, not graphics assertions.",
+    "Original rootfs/dependency fingerprints verified unchanged after the private namespace exits.",
+    "Canonical matrix and previous qualifications unchanged; independent review, remaining six Qt row observations, attempt/subject/CI/promotion joins remain pending."
+  ]
+}

@@ -1,0 +1,97 @@
+{
+  "schema": 1,
+  "phase": "admission-selection",
+  "manifest_sha256": "2401fc54cbc5c139444dc020a95c4fece9c656de8939c45f06abf879a05b90b1",
+  "candidate": {
+    "path": "compat/candidates/tk-capture-4/candidate.json",
+    "scope_sha256": "af960371ffb382ce4c17fac5302b91b7c6e63379bbe2de443d7b245b41555eac"
+  },
+  "execution_map": {
+    "path": "compat/candidates/tk-capture-4/execution.json",
+    "scope_sha256": "b4d2736a11970451da7e53dc5c572707be8e040c53c911de04aa9835ae6bb2d0"
+  },
+  "requested": [
+    {
+      "feature": "tk.readback.crop-formats",
+      "profile": "windows-gpu-tk86-cp312-development",
+      "criterion": "tk.readback.crop-formats.failure"
+    },
+    {
+      "feature": "tk.readback.crop-formats",
+      "profile": "windows-gpu-tk86-cp312-development",
+      "criterion": "tk.readback.crop-formats.mutation"
+    },
+    {
+      "feature": "tk.readback.crop-formats",
+      "profile": "windows-gpu-tk86-cp312-development",
+      "criterion": "tk.readback.crop-formats.ordinary"
+    },
+    {
+      "feature": "tk.readback.crop-formats",
+      "profile": "windows-gpu-tk86-cp312-development",
+      "criterion": "tk.readback.crop-formats.recovery"
+    },
+    {
+      "feature": "tk.readback.crop-formats",
+      "profile": "wsl-software-tk90-cp31213-development",
+      "criterion": "tk.readback.crop-formats.failure"
+    },
+    {
+      "feature": "tk.readback.crop-formats",
+      "profile": "wsl-software-tk90-cp31213-development",
+      "criterion": "tk.readback.crop-formats.mutation"
+    },
+    {
+      "feature": "tk.readback.crop-formats",
+      "profile": "wsl-software-tk90-cp31213-development",
+      "criterion": "tk.readback.crop-formats.ordinary"
+    },
+    {
+      "feature": "tk.readback.crop-formats",
+      "profile": "wsl-software-tk90-cp31213-development",
+      "criterion": "tk.readback.crop-formats.recovery"
+    }
+  ],
+  "closure": [
+    {
+      "feature": "tk.readback.crop-formats",
+      "profile": "windows-gpu-tk86-cp312-development",
+      "criterion": "tk.readback.crop-formats.failure"
+    },
+    {
+      "feature": "tk.readback.crop-formats",
+      "profile": "windows-gpu-tk86-cp312-development",
+      "criterion": "tk.readback.crop-formats.mutation"
+    },
+    {
+      "feature": "tk.readback.crop-formats",
+      "profile": "windows-gpu-tk86-cp312-development",
+      "criterion": "tk.readback.crop-formats.ordinary"
+    },
+    {
+      "feature": "tk.readback.crop-formats",
+      "profile": "windows-gpu-tk86-cp312-development",
+      "criterion": "tk.readback.crop-formats.recovery"
+    },
+    {
+      "feature": "tk.readback.crop-formats",
+      "profile": "wsl-software-tk90-cp31213-development",
+      "criterion": "tk.readback.crop-formats.failure"
+    },
+    {
+      "feature": "tk.readback.crop-formats",
+      "profile": "wsl-software-tk90-cp31213-development",
+      "criterion": "tk.readback.crop-formats.mutation"
+    },
+    {
+      "feature": "tk.readback.crop-formats",
+      "profile": "wsl-software-tk90-cp31213-development",
+      "criterion": "tk.readback.crop-formats.ordinary"
+    },
+    {
+      "feature": "tk.readback.crop-formats",
+      "profile": "wsl-software-tk90-cp31213-development",
+      "criterion": "tk.readback.crop-formats.recovery"
+    }
+  ]
+}

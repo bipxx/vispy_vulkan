@@ -1,0 +1,386 @@
+{
+  "schema": 1,
+  "date": "2026-11-08",
+  "status": "EXPERIMENTAL_SOURCE_FUNCTIONAL_TK_NATIVE_WINDOWS_X11",
+  "checklist_id": "LIF-07-NATIVE-PROTOTYPE",
+  "parent_closed": false,
+  "evidence_store": {
+    "path": "compat/evidence-stores/secondary-v1.json",
+    "sha256": "b164e3fdc85863a2327b508ea60f8d3068f740cfe90f665aa52905e28bfb3ca5"
+  },
+  "source_hashes": {
+    "src/vispy/app/backends/_dawn_tk.py": "8de25b91d0dc80f01ce5840bdac728d742e47dac562319aa2df4c3a6c9a88fc9",
+    "tests/experimental/test_tkinter_native_presentation.py": "07fa522548cf29d2a0e3e86e408f54c3148d01b6136ee188a89ff5d35651e8be"
+  },
+  "api": {
+    "backend": "tkinter",
+    "backend_kwargs": {
+      "presentation": "native"
+    },
+    "default_presentation": "raster"
+  },
+  "observations": [
+    {
+      "platform": "windows",
+      "run": "tk-native-windows-444",
+      "base_wheel": {
+        "path": "build/artifacts/ba8a54c5b7ede9387d62ff72b1269602d61c0bdc61c77928ee52a7e37107bf24/vispy-0.17.0+vulkan.2-cp312-cp312-win_amd64.whl",
+        "sha256": "ba8a54c5b7ede9387d62ff72b1269602d61c0bdc61c77928ee52a7e37107bf24"
+      },
+      "unchanged_package_members": 536,
+      "python_source_overrides": 1,
+      "cases": 7,
+      "skipped": 0,
+      "device": {
+        "backend": "Vulkan",
+        "adapter_type": "discrete",
+        "vendor": "nvidia",
+        "device": "NVIDIA GeForce RTX 4090",
+        "driver": "NVIDIA: 610.88 610.88.0.0",
+        "vendor_id": 4318,
+        "device_id": 9860,
+        "max_texture_dimension_1d": 32768,
+        "max_texture_dimension_2d": 32768,
+        "max_texture_dimension_3d": 16384,
+        "max_vertex_attributes": 30,
+        "max_vertex_buffers": 8,
+        "max_vertex_buffer_array_stride": 2048,
+        "max_storage_buffers_per_shader_stage": 16,
+        "max_uniform_buffers_per_shader_stage": 12,
+        "max_inter_stage_shader_variables": 30,
+        "max_storage_buffer_binding_size": 2147483644,
+        "max_bindings_per_bind_group": 1000,
+        "max_compute_invocations_per_workgroup": 1024,
+        "max_compute_workgroup_size_x": 1024,
+        "max_compute_workgroups_per_dimension": 65535,
+        "max_point_vertex_attributes": 30,
+        "core_features_and_limits": true,
+        "point_input_limit_scope": "all active user point inputs share one vertex buffer; exact vertex/instance identities use read-only vertex storage without reserving a user attribute; actual granted attribute/stride/storage/allocation limits apply",
+        "max_samplers_per_shader_stage": 16,
+        "max_sampled_textures_per_shader_stage": 48,
+        "max_buffer_size": 1099511627776,
+        "max_uniform_buffer_binding_size": 65536,
+        "software": false,
+        "float32_filterable": true,
+        "unorm16_texture_formats": true,
+        "bresenham_lines": true,
+        "last_vertex_provoking": true,
+        "timestamp_query": true,
+        "timestamp_quantization_ns": 65536,
+        "host_mapped_pointer": true,
+        "host_import_limit": 536870912,
+        "depth_stencil_storage": "depth24_unorm_stencil8",
+        "ok": true,
+        "error": "",
+        "loss_count": 0,
+        "revision": "117b054598f4758b598f4b8f48feea48c11fe7b0+dawn-499e5c6ff9b37d5de70c6493fb74c251e0d35c1c"
+      },
+      "source_hashes": {
+        "src/vispy/app/backends/_dawn_tk.py": "8de25b91d0dc80f01ce5840bdac728d742e47dac562319aa2df4c3a6c9a88fc9",
+        "tests/experimental/test_tkinter_native_presentation.py": "07fa522548cf29d2a0e3e86e408f54c3148d01b6136ee188a89ff5d35651e8be"
+      },
+      "loaded_origins": 56,
+      "shutdown_gauges": {
+        "pending_tickets": 0,
+        "queued_frames": 0,
+        "live_buffer_bytes": 0,
+        "live_cpu_buffer_bytes": 0,
+        "live_texture_bytes": 0,
+        "canvas_texture_bytes": 0,
+        "transient_buffer_bytes": 0,
+        "line_resource_pool_busy_slots": 0,
+        "line_resource_pool_bytes": 0,
+        "host_import_pinned_bytes": 0
+      },
+      "evidence": {
+        "input-result.json": {
+          "path": "build/runs/tk-native-windows-444/input-result.json",
+          "sha256": "228720bdb3d7714eb5043058973c696b2ee3376f3e9da3ae4ba91d4ae8bde6be"
+        },
+        "inputs.xml": {
+          "path": "build/runs/tk-native-windows-444/inputs.xml",
+          "sha256": "f5491e6a89a75b0693ee7822b0ef7269c9df9ba79767b2231081894097b9787a"
+        },
+        "controller-processes.json": {
+          "path": "build/runs/tk-native-windows-444/controller-processes.json",
+          "sha256": "991a57bb95715d8c365d82101d92b081934591923a59f1d7d3092f358af6c1af"
+        },
+        "post-cleanup.json": {
+          "path": "build/runs/tk-native-windows-444/post-cleanup.json",
+          "sha256": "99e8ec054286b0dd660a60b9c1bf4f2e17e15cd81a14c9261bcc6fa2f2701f40"
+        },
+        "source-and-licenses.zip": {
+          "path": "build/runs/tk-native-windows-444/source-and-licenses.zip",
+          "sha256": "f627d4c362b311906f9cea468de88399f54eaba160b8502f2879ea64baf034e7"
+        }
+      }
+    },
+    {
+      "platform": "wsl-x11",
+      "run": "tk-native-wsl-445",
+      "base_wheel": {
+        "path": "build/artifacts/4bc3cd778990a35a3ff3e72f68fc8905e74804cb78b1d7091adbdc1b1fbfcdc8/vispy-0.17.0+vulkan.2-cp312-cp312-manylinux_2_39_x86_64.whl",
+        "sha256": "4bc3cd778990a35a3ff3e72f68fc8905e74804cb78b1d7091adbdc1b1fbfcdc8"
+      },
+      "unchanged_package_members": 536,
+      "python_source_overrides": 1,
+      "cases": 7,
+      "skipped": 0,
+      "device": {
+        "backend": "Vulkan",
+        "adapter_type": "cpu",
+        "vendor": "mesa",
+        "device": "llvmpipe (LLVM 20.1.2, 256 bits)",
+        "driver": "llvmpipe: Mesa 25.2.8-0ubuntu0.24.04.2 (LLVM 20.1.2)",
+        "vendor_id": 65541,
+        "device_id": 0,
+        "max_texture_dimension_1d": 16384,
+        "max_texture_dimension_2d": 16384,
+        "max_texture_dimension_3d": 4096,
+        "max_vertex_attributes": 30,
+        "max_vertex_buffers": 8,
+        "max_vertex_buffer_array_stride": 2048,
+        "max_storage_buffers_per_shader_stage": 16,
+        "max_uniform_buffers_per_shader_stage": 12,
+        "max_inter_stage_shader_variables": 30,
+        "max_storage_buffer_binding_size": 134217728,
+        "max_bindings_per_bind_group": 1000,
+        "max_compute_invocations_per_workgroup": 1024,
+        "max_compute_workgroup_size_x": 1024,
+        "max_compute_workgroups_per_dimension": 65535,
+        "max_point_vertex_attributes": 30,
+        "core_features_and_limits": true,
+        "point_input_limit_scope": "all active user point inputs share one vertex buffer; exact vertex/instance identities use read-only vertex storage without reserving a user attribute; actual granted attribute/stride/storage/allocation limits apply",
+        "max_samplers_per_shader_stage": 16,
+        "max_sampled_textures_per_shader_stage": 48,
+        "max_buffer_size": 4294967295,
+        "max_uniform_buffer_binding_size": 65536,
+        "software": true,
+        "float32_filterable": true,
+        "unorm16_texture_formats": true,
+        "bresenham_lines": true,
+        "last_vertex_provoking": true,
+        "timestamp_query": true,
+        "timestamp_quantization_ns": 65536,
+        "host_mapped_pointer": true,
+        "host_import_limit": 536870912,
+        "depth_stencil_storage": "depth24_unorm_stencil8",
+        "ok": true,
+        "error": "",
+        "loss_count": 0,
+        "revision": "117b054598f4758b598f4b8f48feea48c11fe7b0+dawn-499e5c6ff9b37d5de70c6493fb74c251e0d35c1c"
+      },
+      "source_hashes": {
+        "src/vispy/app/backends/_dawn_tk.py": "8de25b91d0dc80f01ce5840bdac728d742e47dac562319aa2df4c3a6c9a88fc9",
+        "tests/experimental/test_tkinter_native_presentation.py": "07fa522548cf29d2a0e3e86e408f54c3148d01b6136ee188a89ff5d35651e8be"
+      },
+      "loaded_origins": 55,
+      "shutdown_gauges": {
+        "pending_tickets": 0,
+        "queued_frames": 0,
+        "live_buffer_bytes": 0,
+        "live_cpu_buffer_bytes": 0,
+        "live_texture_bytes": 0,
+        "canvas_texture_bytes": 0,
+        "transient_buffer_bytes": 0,
+        "line_resource_pool_busy_slots": 0,
+        "line_resource_pool_bytes": 0,
+        "host_import_pinned_bytes": 0
+      },
+      "evidence": {
+        "input-result.json": {
+          "path": "build/runs/tk-native-wsl-445/input-result.json",
+          "sha256": "894b134e46f3a14f893729bf29452a8c0e695f20c69fae58c59382b9231f7083"
+        },
+        "inputs.xml": {
+          "path": "build/runs/tk-native-wsl-445/inputs.xml",
+          "sha256": "b858a51953419445f409cb1a844f4b16f222cdf1c7116fdf5836215036aa82b3"
+        },
+        "controller-processes.json": {
+          "path": "build/runs/tk-native-wsl-445/controller-processes.json",
+          "sha256": "47d2106b54e77cbae0542b90822eed422dcb414ce89915f43cf8a0b438a23f32"
+        },
+        "post-cleanup.json": {
+          "path": "build/runs/tk-native-wsl-445/post-cleanup.json",
+          "sha256": "a1a698aa60ca061048ae6f0a5c79e00838563bf4ecc88d7c4ccd32d9bcf1a2c2"
+        },
+        "source-and-licenses.zip": {
+          "path": "build/runs/tk-native-wsl-445/source-and-licenses.zip",
+          "sha256": "f627d4c362b311906f9cea468de88399f54eaba160b8502f2879ea64baf034e7"
+        }
+      },
+      "driver_origin": {
+        "icd": "/usr/share/vulkan/icd.d/lvp_icd.json",
+        "icd_sha256": "70d49f7fd41a7593a4e283543ed4855c139c700e5c1b31792f56e9576ede2398",
+        "library": "/usr/lib/x86_64-linux-gnu/libvulkan_lvp.so",
+        "library_sha256": "9d69cae2004b16572acca424741109be37c4ffc759c2461af69d75f7d1c6c139"
+      },
+      "driver_origin_record": {
+        "path": "build/runs/tk-native-wsl-445/driver-origin.json",
+        "sha256": "9f690ff794c28331e14a20e2a65f04f2846187ee03cfadf9a42b777ada62782e"
+      },
+      "driver_package": "mesa-vulkan-drivers:amd64 25.2.8-0ubuntu0.24.04.2",
+      "original_driver_license": {
+        "path": "build/runs/tk-native-wsl-445/driver-original-license.txt",
+        "sha256": "cbf3d2eb38998daf390f52d49969d1be5607a6aee138351e161c12a6976ba49e"
+      }
+    }
+  ],
+  "raster_regressions": [
+    {
+      "run": "tk-native-windows-443",
+      "raster_backend_cases_passed": 122,
+      "entire_run_passed": true,
+      "note": "Windows final source before byte-identical test-file relocation.",
+      "junit": {
+        "path": "build/runs/tk-native-windows-443/inputs.xml",
+        "sha256": "b98acf6ae768af8f5eb8d85c5666622d0bfcbf92fb187d2288c1402dcc2d6b83"
+      },
+      "result": {
+        "path": "build/runs/tk-native-windows-443/input-result.json",
+        "sha256": "29e6a9c5e9c455fc79ef9a9f72146d77144156dcf8bff193c0e133fb2bf4204f"
+      }
+    },
+    {
+      "run": "tk-native-wsl-439",
+      "raster_backend_cases_passed": 122,
+      "entire_run_passed": false,
+      "note": "Earlier source epoch; whole run had six headless-driver native-mode failures, preserved separately.",
+      "junit": {
+        "path": "build/runs/tk-native-wsl-439/inputs.xml",
+        "sha256": "23bdbd63e085c01fafcd9777531ddd4de10e11fc0a51e26976bcf232324d2760"
+      },
+      "result": {
+        "path": "build/runs/tk-native-wsl-439/input-result.json",
+        "sha256": "a44bef425e77b30930e6b1cb58568602c4e526821480ae93968807635cbcd79b"
+      }
+    }
+  ],
+  "corrected_failures": [
+    {
+      "run": "tk-native-windows-436",
+      "reason": "Staging-script syntax failed before tests; reproducer retained."
+    },
+    {
+      "run": "tk-native-windows-437",
+      "reason": "Three fixture failures: Windows minimum toplevel width and nonexistent Canvas.hide; corrected to supported size and show(False)."
+    },
+    {
+      "run": "tk-native-wsl-439",
+      "reason": "Six native surface timeouts using headless-only driver; 122 raster cases pass."
+    },
+    {
+      "run": "tk-native-wsl-440",
+      "reason": "Diagnostic records mapped live Tk XID but no attached surface."
+    },
+    {
+      "run": "tk-native-wsl-441",
+      "reason": "After explicit Tk display publication, driver correctly refuses X11 surface capabilities: platforms=[] driver cannot provide WSI."
+    }
+  ],
+  "fixes": [
+    "Publish pending Tk X11 window work before private-connection validation.",
+    "Reject failed attachment explicitly rather than cache a detached window.",
+    "Use the separately hash-bound preinstalled X11-capable driver for X11 tests; preserve the headless driver unchanged."
+  ],
+  "cleanup": [
+    {
+      "run": "tk-native-windows-436",
+      "bytes_removed": 17890134,
+      "receipt": {
+        "path": "build/runs/tk-native-windows-436/post-cleanup.json",
+        "sha256": "4cfe0fe88eac75dfd1b7ed6c13dc0c15005f3e2ad94f4cf19ac438436c3c8958"
+      }
+    },
+    {
+      "run": "tk-native-windows-437",
+      "bytes_removed": 17893540,
+      "receipt": {
+        "path": "build/runs/tk-native-windows-437/post-cleanup.json",
+        "sha256": "99e8ec054286b0dd660a60b9c1bf4f2e17e15cd81a14c9261bcc6fa2f2701f40"
+      }
+    },
+    {
+      "run": "tk-native-windows-438",
+      "bytes_removed": 17893540,
+      "receipt": {
+        "path": "build/runs/tk-native-windows-438/post-cleanup.json",
+        "sha256": "99e8ec054286b0dd660a60b9c1bf4f2e17e15cd81a14c9261bcc6fa2f2701f40"
+      }
+    },
+    {
+      "run": "tk-native-wsl-439",
+      "bytes_removed": 29864561,
+      "receipt": {
+        "path": "build/runs/tk-native-wsl-439/post-cleanup.json",
+        "sha256": "cd195720880eedbd7440669821d834dfd8ee252274897b3d98413c913d7fb4ff"
+      }
+    },
+    {
+      "run": "tk-native-wsl-440",
+      "bytes_removed": 29864561,
+      "receipt": {
+        "path": "build/runs/tk-native-wsl-440/post-cleanup.json",
+        "sha256": "cd195720880eedbd7440669821d834dfd8ee252274897b3d98413c913d7fb4ff"
+      }
+    },
+    {
+      "run": "tk-native-wsl-441",
+      "bytes_removed": 29864917,
+      "receipt": {
+        "path": "build/runs/tk-native-wsl-441/post-cleanup.json",
+        "sha256": "cd195720880eedbd7440669821d834dfd8ee252274897b3d98413c913d7fb4ff"
+      }
+    },
+    {
+      "run": "tk-native-wsl-442",
+      "bytes_removed": 29078485,
+      "receipt": {
+        "path": "build/runs/tk-native-wsl-442/post-cleanup.json",
+        "sha256": "4ba4af7055eb876e66bac52771ad91f5125306d4f6c986c9a8e3a127077b2684"
+      }
+    },
+    {
+      "run": "tk-native-windows-443",
+      "bytes_removed": 17893896,
+      "receipt": {
+        "path": "build/runs/tk-native-windows-443/post-cleanup.json",
+        "sha256": "99e8ec054286b0dd660a60b9c1bf4f2e17e15cd81a14c9261bcc6fa2f2701f40"
+      }
+    },
+    {
+      "run": "tk-native-windows-444",
+      "bytes_removed": 17893896,
+      "receipt": {
+        "path": "build/runs/tk-native-windows-444/post-cleanup.json",
+        "sha256": "99e8ec054286b0dd660a60b9c1bf4f2e17e15cd81a14c9261bcc6fa2f2701f40"
+      }
+    },
+    {
+      "run": "tk-native-wsl-445",
+      "bytes_removed": 29078485,
+      "receipt": {
+        "path": "build/runs/tk-native-wsl-445/post-cleanup.json",
+        "sha256": "a1a698aa60ca061048ae6f0a5c79e00838563bf4ecc88d7c4ccd32d9bcf1a2c2"
+      }
+    }
+  ],
+  "scratch_bytes_removed": 237216015,
+  "native_build": false,
+  "new_dependency_environment": false,
+  "base_wheel_qualified_for_override": false,
+  "independent_review": false,
+  "strict_profile_admitted": false,
+  "release_qualified": false,
+  "expected_frozen_candidate_refusal": {
+    "path": "build/runs/tk-native-wsl-445/candidate-drift.json",
+    "sha256": "a954b31a4d8a667e41a450965e14014524c90498fca1bf32f1cea9df211793e1"
+  },
+  "remaining": [
+    "Review/freeze and repackage the Python change before installed-wheel qualification.",
+    "Fractional/cross-monitor DPI, physical HID/touch, embedding variations and arbitrary raw Tcl/OS destruction.",
+    "Vsync/compositor/scanout behavior beyond forwarded request and actual presentation receipts.",
+    "macOS native Tk and Wayland are unsupported by this prototype; no native Linux physical GPU admission.",
+    "No clipping/typed-sampling/hardware qualification transfers to the system X11 test driver."
+  ]
+}

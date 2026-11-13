@@ -1,0 +1,38 @@
+{
+  "schema": 1,
+  "status": "INDEPENDENT_TOOL_REVIEW_CHANGES_REQUESTED",
+  "review": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\qualification-tools-peer-486\\review-response.md",
+    "sha256": "9cf2e2bc70c763e1353fc78f35a0a15b5b16dda7eaff742b3181ec13aa2012af"
+  },
+  "process": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\qualification-tools-peer-486\\review-process.json",
+    "sha256": "2977a9206b619b26e305fca8ae0bceca651d86768ad2f8a23ce5eb2bd3b10131"
+  },
+  "reviewed_tools": {
+    "tools/qualification_index.py": "07a98b99cb080b4032804aff20c023265bb5d0debdc9c477c02615faef056481",
+    "tools/retained_evidence.py": "ddea867957986c08f9154914d32336e186d0202faec468544cc4ef07934f5943",
+    "tools/compatibility_inventory.py": "6b4a08b9172558b2c520273d7acd55e6b5f8ff6a7ed4b50c2f2e32e1db9dde15",
+    "tools/compatibility_evidence.py": "c261f7431eae27b930ec84d4a5121bbbc7968b19df12b3955d84743eea3456a3",
+    "compat/qualification-index.schema.json": "f38ad0d0e26dfc11154737b55bd5d419843b3e7e3c0e87c41a7a837b568e5727",
+    "tests/contract/test_qualification_index.py": "c5a72b5c94c12d84b6affd1169d4faa638c163eec4a22bab172905fe2342f170",
+    "tests/contract/test_retained_evidence.py": "992e4089b6b2da7c93383981d4a424d2d5cdfb4f35ad663b8d4d42270b4a780a",
+    "tests/contract/test_compatibility_inventory.py": "4f00eb94e6f76dd7cf87e4f1d54252f92320e8240dc41433ad520d6fe4c3f884"
+  },
+  "source_archive": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\qualification-tools-peer-486\\source-and-licenses.zip",
+    "sha256": "663317a7541da6d2035e6d5bf7af5438a1bfa48760b266f1bcd145dd5675216a"
+  },
+  "blocking_findings": [
+    "R1: preserve profile/wheel context in per-workflow resolution validation",
+    "R2: project native/archive proof references into selected store namespace",
+    "R3: reject source-side scratch evidence in store mode"
+  ],
+  "additional_findings": [
+    "R4: attribute pre-workflow failed attempts without inventing observed identity",
+    "R5: bind derived cleanup apply view to original process/log bytes",
+    "R6: document off-host CI delivery of store-backed evidence"
+  ],
+  "approved": false,
+  "artifact_admitted": false
+}

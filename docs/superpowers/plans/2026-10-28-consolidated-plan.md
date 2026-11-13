@@ -1,5 +1,53 @@
 # Consolidated plan
 
+Revision6 source/scope review (2026-11-13): independent decisions are approved
+and bound to candidate, coverage, execution, admission closure and both native
+reuse digests. [Decision](../../../compat/api-acceptance/successor-peer-review-v3.json). All four preparation validators
+require and pass the new reviews; both original native producer joins validate.
+Scope digests, runtime, fixtures and wheels are unchanged. No installed rows or
+artifacts are admitted. Qualification Git head, installed receipt/history/retention
+bindings, required hosted CI and promotion remain open.
+
+
+Installed criterion receipt update (2026-11-13): both exact mapped pytest fixtures
+pass on each selected Windows/WSL wheel, with all six setup/call/teardown events
+per platform, 537 member checks, zero source overrides and zero shutdown gauges.
+[Evidence](../../../compat/api-acceptance/installed-criterion-phases-v1.json). These fresh phase receipts close the missing
+pytest-report format; qualified row/retention joins remain pending.
+
+
+### Current preparation — 2026-11-13
+
+`tk-state-resource-6` renews the independently approved qualification-tool
+identities. Its 64 criteria / 128 profile bindings and prerequisite closure
+validate; all earlier candidate records and 608 runtime/build/lock/license
+references remain byte-exact. CI now explicitly selects revision6, validates
+its admission selection and runs retained-evidence tests. All 23 required
+jobs remain required. Five preparation CLIs pass locally; CI/retention
+contracts pass 102 cases. [Evidence](../../../compat/api-acceptance/qualification-candidate-renewal-v1.json).
+
+This is an **unreviewed preparation**, not installed or release qualification.
+The subject now declares the store selector; producer references await new
+candidate source/scope decisions. Qualification Git head, complete installed
+histories/receipts/retention, required hosted CI and promotion remain open.
+No native build, installation, artifact admission or new scratch occurred.
+The earlier checkpoints below retain their original date and byte scope.
+
+
+
+### Qualification-tool follow-up — 2026-11-13
+
+Independent follow-up approves the exact eight tool/schema/test hashes for candidate
+renewal only ([decision](../../../compat/api-acceptance/qualification-tools-followup-v1.json)). Coordinator rehashed those bytes; the review child
+exited 0 and was awaited. Prior 372 contract passes and 6 focused passes remain
+source evidence; no wheels were rebuilt or admitted. Renewed candidate/source/scope
+bindings, the subject store selector, complete installed histories/receipts and
+real producer retention remain pending. CI must select the renewed preparation
+records **and run `tests/contract/test_retained_evidence.py`**, then renew its
+workflow policy hash. No required job is waived. Low review limits (Windows
+transitive retention, early-failure attribution and incremental failure reporting)
+are recorded in the decision; they are not broader coverage claims.
+
 Date: 2026-10-28. This is the single active plan. It merges every still-open
 item from the earlier plans, notes and specs into one list, with one owner ID
 per item. The earlier documents stay as historical records and are not
@@ -10,6 +58,169 @@ Requirement IDs (HOST-1, PERF-1, SH-1, ...) remain defined by the pinned
 [gap-closure spec](../specs/2026-10-24-vispy-compatibility-gap-closure.md).
 
 ## Goal and scope
+
+2026-11-13 peer-finding repairs: workflow failure-resolution context, native
+proof namespaces and source-side scratch exclusion are fixed. Early failed
+attempts can carry history-bound workflow attribution; cleanup views bind the
+original process/result bytes. Contracts pass372 plus6 exact-error follow-ups;
+245 Windows and167 Linux input references resolve/hash-check. Both original WSL
+reports and the80-input cleanup still validate. [Evidence](../../../compat/api-acceptance/qualification-tool-fixes-wip-v1.json).
+Next re-review these exact bytes, freeze and renew candidate bindings. Required
+source CI must use prepared templates; positive installed evidence remains a
+separate explicit local proof overlay, with no required-job waiver.
+
+2026-11-13 secondary evidence adapter checkpoint: explicit store references
+normalize the two original WSL state/capture reports, preserving all three gate
+checks and every raw byte. Mixed-root cleanup validates all80 original inputs;
+four historical documents are supplied by exact pinned archive members. Broad
+source contracts pass344; archive follow-up99 and final opt-in guard2 pass.
+[Evidence](../../../compat/api-acceptance/secondary-evidence-adapter-wip-v1.json). Next review/freeze the changed qualification tools,
+renew candidate tool pins, and bind workflow/pytest/distribution/retention proof.
+No artifact or release is admitted by these source-only changes.
+
+2026-11-13 qualification binding: both reviewed original native joins pass
+and producer references are now in the subject. The index now supports separate
+latest-success attempts for each required workflow; 52 focused source contracts
+pass, while one older candidate toolset failure is retained separately.
+[Binding/tooling evidence](../../../compat/api-acceptance/qualification-binding-wip-v1.json). The installed evidence adapter still
+assumes source-local reports and single-workspace retention. Extend the existing
+explicit secondary-store policy without dropping origin/hash checks, then
+review/freeze qualification-tool changes and renew candidate tool pins. Earlier
+revision-5 approvals and host observations keep their original exact scope;
+no installed rows or artifacts are admitted by these source-only changes.
+
+2026-11-13: WSL capture replay with reviewed prerequisite labels passes all
+three graphics gates and the same-child four-branch contract, with 537 verified
+members and nine zero gauges. [Evidence](../../../compat/api-acceptance/tk-capture-rebind-wsl-v1.json). Both platform capture rebinds are now complete; next bind execution
+attempts and subjects, then source/attempt CI and promotion. No admission yet.
+
+2026-11-13: Windows capture replay with the reviewed prerequisite labels passes
+all three graphics gates and the same-child four-branch contract, with 537
+verified members and nine zero resource gauges. [Evidence](../../../compat/api-acceptance/tk-capture-rebind-windows-v1.json).
+WSL capture rebind remains; no artifact admission is claimed.
+
+2026-11-13: revised source and scope decisions for `tk-state-resource-5` are
+approved and bound. Review-required candidate/coverage/execution/selection
+validators pass all 128 bindings; no artifact is admitted.
+[Evidence](../../../compat/api-acceptance/successor-peer-review-v2.json). Next:
+two capture replays, attempts/subjects, CI and promotion. No rebuild needed.
+
+2026-11-09 scope repair checkpoint: `tk-state-resource-5` merges capture and
+state with enforced prerequisites, corrects the four textured-program value
+claims and explicitly excludes native presentation from raster admission.
+All 128 criteria, closure 128 and both archive prerequisites pass unchanged
+validators. [Repair](../../../compat/api-acceptance/tk-scope-repair-v1.json).
+Shipping source, fixtures, wheels and old records are unchanged. Next: revised
+source/scope review bindings and two capture replays with the revised observer
+feature labels, then attempt/subject/CI/promotion joins. Eight host rows remain
+observed; no old approval transfers and no native rebuild is needed.
+
+2026-11-09 independent review checkpoint: two revision-4 source approvals
+and two scope changes requested. Capture dependencies and textured-program claim
+wording must be corrected, with explicit raster/native separation. Reissue
+review bindings after scope renewal; no native rebuild or observation rerun is
+justified by record-only fixes. [Review](../../../compat/api-acceptance/successor-peer-review-v1.json).
+All eight host-row observations remain collected; formal admission remains open.
+
+2026-11-09 WSL PySide6 checkpoint: all seven existing QWidget stages pass on
+the selected Linux wheel under pinned software Vulkan. Installed inventory and
+fresh replay pass all three graphics gates; all 537 package members and nine zero
+shutdown counters are verified. [Evidence](../../../compat/api-acceptance/mandatory-wsl-pyside6-v2.json).
+All eight mandatory host-row observations are now collected. Dependencies were
+borrowed read-only without downloads or native builds. Next: independent source/
+scope review, subject/attempt bindings, required CI and formal admission before
+integration and publication. Earlier checkpoints retain their historical scopes.
+
+2026-11-09 WSL PyQt6 checkpoint: all seven existing QWidget stages pass on
+the selected Linux wheel under pinned software Vulkan. Installed inventory and
+fresh replay pass all three graphics gates; all 537 package members and nine zero
+shutdown counters are verified. [Evidence](../../../compat/api-acceptance/mandatory-wsl-pyqt6-v2.json).
+Seven of eight host-row observations are collected; WSL PySide6 remains.
+Dependencies were borrowed read-only into a private overlay without downloads
+or native builds. Independent review and formal admission remain pending.
+
+2026-11-09 WSL PyQt5 checkpoint: all seven existing QWidget stages pass on
+the selected Linux wheel under pinned software Vulkan, with installed inventory
+and fresh replay passing all three graphics gates. All 537 members and nine zero
+shutdown counters are verified. [Evidence](../../../compat/api-acceptance/mandatory-wsl-pyqt5-v2.json).
+Six of eight host-row observations are collected; WSL PyQt6 and PySide6 remain.
+Dependencies were borrowed read-only and the selected wheel installed into a
+private bounded overlay. The initial source-mount setup failure is retained and
+cleaned. Independent review and formal admission remain pending. Later checkpoints
+below are historical; the handoff records the current execution order.
+
+2026-11-09 PySide6 checkpoint: Windows plain QWidget passes all seven existing
+stages, installed inventory and fresh three-gate replay on the selected Windows
+wheel. Capture ownership, overlays/input, resize/hide/restore, device recovery
+and close pass; 537 package members and nine zero shutdown gauges are verified.
+[Evidence](../../../compat/api-acceptance/mandatory-windows-pyside6-v2.json).
+Five of eight host-row observations are collected, completing the Windows rows.
+WSL PyQt5/PyQt6/PySide6 remain. Retained Qt wheels were installed offline without
+native builds; independent review and formal admission remain pending.
+
+2026-11-09 PyQt6 checkpoint: Windows plain QWidget passes all seven existing
+
+stages, installed inventory and fresh three-gate replay on selected wheel
+
+`a86b030b¡­`. Capture ownership, overlays/input, resize/hide/restore, device recovery
+
+and close pass; 537 package members and nine zero shutdown gauges are verified.
+
+[Evidence](../../../compat/api-acceptance/mandatory-windows-pyqt6-v2.json).
+
+Four of eight host-row observations are collected. Windows PySide6 and WSL
+
+PyQt5/PyQt6/PySide6 remain. Retained Qt wheels were installed offline without
+
+native builds; independent review and formal admission remain pending.
+
+
+
+2026-11-09 PyQt5 checkpoint: Windows plain QWidget passes all seven existing
+probe stages, installed inventory and fresh three-gate replay on selected wheel
+`a86b030b…`. Capture ownership, overlays/input, resize/hide/restore, device recovery
+and close pass; 537 package members and nine zero shutdown gauges are verified.
+[Evidence](../../../compat/api-acceptance/mandatory-windows-pyqt5-v2.json).
+That checkpoint collected three of eight observations; the newer checkpoint above
+adds Windows PyQt6. Retained Qt wheels were
+installed offline; no native build or source override was needed. Independent
+review, subject/attempt/CI/promotion joins and formal admission remain open.
+
+2026-11-09 headless checkpoint: Windows and WSL now both pass the existing
+95-test GPU corpus, rendering/compiled text, 4,096 markers and 36 scientific
+cases, with installed inventory and fresh replay passing all three graphics
+gates. [WSL evidence](../../../compat/api-acceptance/mandatory-wsl-headless-v2.json).
+That headless checkpoint collected two of eight observations; the newer checkpoint
+above adds Windows PyQt5.
+WSL reuses matching dependencies read-only and installs only the selected wheel
+in a private overlay. Bounded POSIX temporary storage repairs capture setup;
+shipping source, wheels, original dependencies and canonical admissions are unchanged.
+
+2026-11-09 mandatory-row checkpoint: Windows headless now passes the original
+95-test GPU corpus, rendering/compiled text, 4,096 markers and 36 scientific
+cases on selected wheel `a86b030b…`. Installed inventory and fresh replay pass
+all three graphics gates. [Evidence](../../../compat/api-acceptance/mandatory-windows-headless-v2.json).
+This was the first headless observation; the newer checkpoint above records both. The
+historical matrix, independent reviews and final admission state are unchanged.
+
+2026-11-09 checkpoint: Windows and WSL now each have four pinned Tk workflows
+passing fresh installed observations and all three graphics gates on the
+selected experimental wheels. WSL required a small collector rebuild from
+already-frozen source: the reused binary lacked its complete-record parser.
+All 20 collector controls and four fresh WSL replays pass; source, wheels,
+renderer and SDK are unchanged. [WSL evidence](../../../compat/api-acceptance/tk-strict-wsl-v2.json).
+Next: independent source/scope review, attempt/subject/CI/promotion joins and
+renewal of the separate eight mandatory headless/QWidget host rows.
+
+2026-11-08 checkpoint: optional native Tk is packaged at source `b38c4f90` in
+Windows wheel `a86b030b…` and Linux wheel `48164e05…`. Both pass 186 finite
+installed cases, functional validators and five active capture controls, with
+zero source overrides. Native artifacts and notices were reused unchanged;
+all six owned packaging/test scratch directories are absent and retained
+evidence rehashed. See [installed scope](../../../compat/api-acceptance/tk-native-installed-v1.json).
+Revision-4 candidates preserve 128 criteria/eight mandatory rows, without
+transferring approvals. Next: independent source/scope review followed by strict
+installed/profile qualification; no additional parity expansion is required.
 
 The product is a same-name `vispy` 0.17.0 fork, version `0.17.0+vulkan.N`.
 It has a Dawn renderer behind gloo/GLIR and creates no OpenGL context. The goal is that
@@ -42,6 +253,74 @@ unmodified scientific hosts, napari first, run on it with practical parity.
     may be called "no-OpenGL".
 
 ## Where things stand
+
+2026-11-08 optional Qt-free presentation prototype: Tk accepts explicit
+`presentation='native'` while raster stays default. Seven native source-overlay
+cases pass per Windows/WSL-X11 profile, and the final Windows full Tk run passes
+129 cases. The system Mesa 25.2.8 X11 test driver is separately identified;
+headless clipping-driver/native-attachment failures are retained. All ten runs'
+scratch is removed, including failed attempts. This Python-only backend change
+needs no native rebuild, but existing frozen candidate runtime pins correctly
+refuse the changed member. It is not in the retained release wheels; selection,
+review, repackaging and installed/profile qualification remain separate.
+See [prototype documentation](../../tk-native-presentation.md).
+
+2026-11-08 current-wheel refresh: all 126 original cases per platform pass on
+`ba8a54c5` / `4bc3cd77`: 57 CPU event, 39 Tk input/camera and 30 reversed-depth
+cases, with unchanged source pins and identical original case nodes. Each child
+verifies 537 members and its loaded origins. Event cases load no renderer/backend;
+input/depth retire ten resource gauges to zero. One installation per platform
+is reused, both targets are cleaned (47,751,307 bytes) and 26/28 retained entries
+rehashed. No native build or new dependency environment was needed. See the
+[new acceptance packet](../../../compat/api-acceptance/current-event-input-depth-v1.json).
+Independent review and installed/profile qualification remain open.
+
+2026-11-08 coverage gap review: three finite acceptance scopes still bind earlier
+v2 wheels: 57 event, 39 Tk input and 30 reversed-depth cases per platform. Their
+source pins are unchanged; refresh those 126 cases on current artifacts without
+a native rebuild. All 32 literal-sampler nodes are already present in passing
+current suites. The 984-group method catalog remains unreviewed, and current
+qualification subjects retain empty attempts. See the
+[findings and priorities](../../coverage-gap-review-2026-11-08.md).
+
+2026-11-08 successor renewal: new development candidates `tk-state-resource-3`
+and `tk-capture-3` with shared `tk-v2-current` bind source `603ac73a`, the current
+Windows/Linux wheels and original dynamic-sampler native producers. Previous
+candidate records are preserved. Windows/WSL preparation and four archive
+prerequisites pass; review-required validation still refuses. The 128 selected
+criteria/dependency closures, 142 canonical parents and eight mandatory rows
+remain conserved; no proof or qualification transfers. The distribution version
+is still `0.17.0+vulkan.2`. See the
+[current review packet](../../../compat/candidates/tk-v2-current/review-packet.json).
+
+2026-11-08 review readiness: the cumulative source/evidence packet is prepared,
+with 57 native C++ inputs matching both producers and 362 Python members per
+current wheel matching source. Both old v2 candidate validators refuse the
+changed artifact.hpp pin; renew records before exact candidate approvals. The
+prior reviewer request did not execute because of a usage limit, with a reported
+November 9, 21:00 Eastern reset. No retry, new build or approval transfer occurred.
+See [renewal order and review readiness](../../successor-review-readiness.md).
+
+2026-11-08 line-boundary checkpoint: seven generated-line refusal and same-canvas
+recovery cases pass on each existing Windows/WSL wheel (`ba8a54c5`/`4bc3cd77`).
+Expected diagnostics and recovery pixels, 537 installed member identities,
+56/55 loaded origins and ten zero shutdown gauges are verified. Both scratch
+targets are removed (47,751,313 bytes); 15/17 retained entries are rehashed.
+No native change, native build or new dependency environment was needed.
+SHD-05-BOUNDARIES is closed at finite installed acceptance scope; parent SHD-05,
+cumulative review and successor admission remain open. See the
+[acceptance packet](../../../compat/api-acceptance/line-side-effect-boundaries-v1.json).
+
+2026-11-08 worklist reconciliation: use the
+[remaining gaps checklist](../../remaining-gaps-checklist.md) for the current
+finite worklist and release prerequisites. The earlier generated-line test
+preflight refusal is superseded by the successful finite runs above. Current Windows/
+WSL sampler, uniform and attribute observations remain valid at their original
+artifact scopes. Cumulative independent review, successor provenance/profile
+renewal, required release checks, integration and publication remain open.
+The version decision is complete; full parity and optional platform expansion
+are not release requirements. This documentation update runs no tests and
+transfers no approval.
 
 2026-11-07 attribute checkpoint: current Windows/WSL wheels pass 285 finite
 attribute cases each (275 CPU plus ten rendered groups), including independent

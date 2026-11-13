@@ -1,0 +1,174 @@
+{
+  "schema": 1,
+  "status": "FINITE_WSL_TK_OBSERVATIONS_RELEASE_ADMISSION_PENDING",
+  "source_commit": "b38c4f9068d6a425eef43b62313f0f4cf37f57d9",
+  "wheel": {
+    "path": "build/artifacts/48164e052ddc3d8e5376a3a1f13fa652583142f4634438ae9067e204aab8b6ce/vispy-0.17.0+vulkan.2-cp312-cp312-manylinux_2_39_x86_64.whl",
+    "sha256": "48164e052ddc3d8e5376a3a1f13fa652583142f4634438ae9067e204aab8b6ce"
+  },
+  "platform": "WSL software Vulkan; read-only GL-free userspace, CPython3.12.13/Tk9, pinned Mesa26/LLVM18",
+  "strict_workflows_passed": 3,
+  "required_workflows": 4,
+  "workflows": [
+    {
+      "candidate": "tk-state-resource-4",
+      "workflow": "tk-state-ownership",
+      "run": "wsl-strict-tk-459",
+      "report": {
+        "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-strict-tk-459\\reports\\tk-state-ownership\\replay-0.json",
+        "sha256": "7063159693c6be1f3d959e18a5bf2ddf7338cb57dc495050c590eca5d7c4d30d"
+      },
+      "worker": {
+        "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-strict-tk-459\\reports\\tk-state-ownership\\replay-0.worker.json",
+        "sha256": "51519ac2a876df3fd46274a87d24ee645ec0cbda16216fc97e96a5eb36eaf286"
+      },
+      "environment_id": "c5bfc9933fd629b75e19053f628f58e7fd7492ada4467ec10697aca96c6455ee",
+      "gates": {
+        "no_gl_execution": "PASS",
+        "no_gl_loads": "PASS",
+        "no_gl_install_link_requirement": "PASS"
+      },
+      "functional_result_sha256": null
+    },
+    {
+      "candidate": "tk-state-resource-4",
+      "workflow": "tk-resource-timer",
+      "run": "wsl-strict-tk-459",
+      "report": {
+        "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-strict-tk-459\\reports\\tk-resource-timer\\replay-0.json",
+        "sha256": "2e1e8722dc313338e3c58289e1a0b2bdfe21c638f10f6f6dd4c8c6aa2235f55c"
+      },
+      "worker": {
+        "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-strict-tk-459\\reports\\tk-resource-timer\\replay-0.worker.json",
+        "sha256": "9c6f26f3fa83f5515f11414b653667bde43aa364250cc38f3fbed8b70de236c3"
+      },
+      "environment_id": "c5bfc9933fd629b75e19053f628f58e7fd7492ada4467ec10697aca96c6455ee",
+      "gates": {
+        "no_gl_execution": "PASS",
+        "no_gl_loads": "PASS",
+        "no_gl_install_link_requirement": "PASS"
+      },
+      "functional_result_sha256": null
+    },
+    {
+      "candidate": "tk-capture-4",
+      "workflow": "tk-capture-formats",
+      "run": "wsl-strict-tk-460",
+      "report": {
+        "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-strict-tk-460\\reports\\tk-capture-formats\\replay-0.json",
+        "sha256": "b920010b562375001086b659578227480c77fba8b5e5997e1bf66dcbc4f242f6"
+      },
+      "worker": {
+        "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-strict-tk-460\\reports\\tk-capture-formats\\replay-0.worker.json",
+        "sha256": "b1265ce39247b74f6f97a5904a5e6accc255d584c72cd854f1254e4a5d93e94b"
+      },
+      "environment_id": "c5bfc9933fd629b75e19053f628f58e7fd7492ada4467ec10697aca96c6455ee",
+      "gates": {
+        "no_gl_execution": "PASS",
+        "no_gl_loads": "PASS",
+        "no_gl_install_link_requirement": "PASS"
+      },
+      "functional_result_sha256": "eb3b6b763d0432d15c309eef3daa9027b28c90196d671dee07b306fdd80cc726"
+    }
+  ],
+  "missing_workflows": [
+    "tk-state-resource-failures"
+  ],
+  "join_scope": "Two passing workflows from459 plus independently executed remaining workflows from460; original overall459 failure remains a failure.",
+  "installed_members_verified_per_worker": 537,
+  "source_overrides": 0,
+  "borrowed_origins": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-strict-tk-460\\borrowed-origins.json",
+    "sha256": "63701541a98f70aabcc39be63ef3917bb9777ed1364f5958b2c6beaa87d2c66f"
+  },
+  "driver_icd": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-strict-tk-460\\driver-icd.json",
+    "sha256": "31bde349b89512723819149911b6fd7194419e4cc9689730867a90529634a0d2"
+  },
+  "llvm_license": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-strict-tk-460\\borrowed-llvm-license.txt",
+    "sha256": "dc2a171c75ca72818f7f4312602f27cb0e4bf6d010a86e7073a3797cb228ddff"
+  },
+  "source_and_licenses": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-strict-tk-456\\source-and-licenses.zip",
+    "sha256": "64ff2ac2691e6d7219d6b87079d9bfb831faa1bd714bc9522ceda97c03be914a"
+  },
+  "processes": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-strict-tk-460\\processes.json",
+    "sha256": "d597b392026bc1888b5f00e30428a3501991b235f454ed033f36d1c2c890d12d"
+  },
+  "controller": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-strict-tk-460\\controller-process.json",
+    "sha256": "1399ca615a1215d496b886ddc8612944a8cfddf3bd412992573ebaf43919094a"
+  },
+  "previous_attempts": [
+    {
+      "run": "wsl-strict-tk-456",
+      "retention": {
+        "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-strict-tk-456\\terminal-retention.json",
+        "sha256": "5488eddc489c8c23f6a0e32003bef36cbb46385234668fcf2487f38fbb129b49"
+      },
+      "cleanup": {
+        "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-strict-tk-456\\post-cleanup.json",
+        "sha256": "94728a2ecfccd35ea87abcddeff1f82ee0565237e6f0409da7b0c07626564e59"
+      }
+    },
+    {
+      "run": "wsl-strict-tk-457",
+      "retention": {
+        "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-strict-tk-457\\terminal-retention.json",
+        "sha256": "d009de11df3475137623598dbf57a4f029bcbd50f9c11002f5ddea06d6fbdbc9"
+      },
+      "cleanup": {
+        "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-strict-tk-457\\post-cleanup.json",
+        "sha256": "a411d22e2b5642766c64428ac55413f4d1afb8d15b1cbe04a11bda2b87ab0df0"
+      }
+    },
+    {
+      "run": "wsl-strict-tk-458",
+      "retention": {
+        "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-strict-tk-458\\terminal-retention.json",
+        "sha256": "0ac8e3b469d30b829b09882e06cbfe6d04da0ef1ab579fda749bdad7a31fcec4"
+      },
+      "cleanup": {
+        "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-strict-tk-458\\post-cleanup.json",
+        "sha256": "340379925fdb2e9d784dbf0e1c08aa1d9eeeb3e7295e36034ff01766f6fb60ed"
+      }
+    },
+    {
+      "run": "wsl-strict-tk-459",
+      "retention": {
+        "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-strict-tk-459\\terminal-retention.json",
+        "sha256": "983479edccdf6eae305227df77ddc397042d9dc2e4403123451e6a6688e27afa"
+      },
+      "cleanup": {
+        "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-strict-tk-459\\post-cleanup.json",
+        "sha256": "afa03536efeaea28747c9b61a4252a3980018ef526d9352da460d1299df594bb"
+      }
+    }
+  ],
+  "unresolved_collector_issue": {
+    "id": "FIX-06-WSL-COLLECTOR",
+    "status": "OPEN",
+    "description": "459 failure/recovery replay ended with collector errors=1, root_code=137 and no precise debug_error event while tracing a static ldconfig helper. Discovery passed. A later successful repeat, if present, does not resolve this intermittent collector failure.",
+    "report": {
+      "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-strict-tk-459\\reports\\tk-state-resource-failures\\replay-0.json",
+      "sha256": "8601b29878c313c8823772fcc097a8760bfd54fd82d6508bb260a14d97dd9821"
+    },
+    "trace": {
+      "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-strict-tk-459\\reports\\tk-state-resource-failures\\replay-0.loader.debugger.tsv",
+      "sha256": "438008751b783293b487295f6b2b3e6df30b1b733794e571b9f84994d8c3c585"
+    }
+  },
+  "independently_reviewed": false,
+  "artifact_admitted": false,
+  "mandatory_headless_qwidget_rows_proved": 0,
+  "native_build": false,
+  "system_packages_changed": false,
+  "limits": [
+    "Finite per-workflow observations; no automatic promotion or transfer of candidate reviews.",
+    "Private64MiB POSIX trace scratch and read-only borrowed runtime avoid driver/rootfs installation changes.",
+    "Failed collector, cancelled guard, missing LLVM and intermittent static-helper attempts remain preserved.",
+    "Published v1 and all26 revision4 candidate records remain unchanged."
+  ]
+}

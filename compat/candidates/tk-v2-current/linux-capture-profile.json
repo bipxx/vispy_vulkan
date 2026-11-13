@@ -1,0 +1,138 @@
+{
+  "schema": 1,
+  "id": "wsl-software-tk90-cp31213-development",
+  "phase": "source-functional",
+  "product_runtime_source_commit": "603ac73abbf57fdcf4dc8022d4171844448f871d",
+  "kind": "wsl-software",
+  "architecture": "x86_64",
+  "python_abi": "cp312",
+  "python_version": "3.12.13 (main, Apr 14 2026, 14:29:00) [Clang 22.1.3 ]",
+  "interpreter": "/home/heq/.local/share/uv/python/cpython-3.12.13-linux-x86_64-gnu/bin/python3.12",
+  "interpreter_sha256": "339de109f072e52523066d97a2b3372e358a10cc00c6a9df62c28a6618061900",
+  "base_interpreter": {
+    "path": "/home/heq/.local/share/uv/python/cpython-3.12.13-linux-x86_64-gnu/bin/python3.12",
+    "sha256": "339de109f072e52523066d97a2b3372e358a10cc00c6a9df62c28a6618061900"
+  },
+  "os_identity": "Linux-6.18.54.1-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "toolkit": {
+    "tk_version": 9.0,
+    "tcl_version": 9.0,
+    "binding_origin": "/home/heq/.local/share/uv/python/cpython-3.12.13-linux-x86_64-gnu/lib/python3.12/lib-dynload/_tkinter.cpython-312-x86_64-linux-gnu.so",
+    "binding_hash_scope": "module",
+    "binding_sha256": "0240658571f1531461f4a7178c454795c55fe0f5723eebeda0b5de2f4aeee303"
+  },
+  "display_mode": "tk-raster",
+  "device": {
+    "backend": "Vulkan",
+    "adapter_type": "cpu",
+    "vendor": "mesa",
+    "device": "llvmpipe (LLVM 18.1.3, 256 bits)",
+    "driver": "llvmpipe: Mesa 26.1.8 (LLVM 18.1.3)",
+    "vendor_id": 65541,
+    "device_id": 0,
+    "max_texture_dimension_1d": 16384,
+    "max_texture_dimension_2d": 16384,
+    "max_texture_dimension_3d": 4096,
+    "max_vertex_attributes": 30,
+    "max_vertex_buffers": 8,
+    "max_vertex_buffer_array_stride": 2048,
+    "max_storage_buffers_per_shader_stage": 16,
+    "max_uniform_buffers_per_shader_stage": 12,
+    "max_inter_stage_shader_variables": 30,
+    "max_storage_buffer_binding_size": 134217728,
+    "max_bindings_per_bind_group": 1000,
+    "max_compute_invocations_per_workgroup": 1024,
+    "max_compute_workgroup_size_x": 1024,
+    "max_compute_workgroups_per_dimension": 65535,
+    "max_point_vertex_attributes": 30,
+    "core_features_and_limits": true,
+    "point_input_limit_scope": "all active user point inputs share one vertex buffer; exact vertex/instance identities use read-only vertex storage without reserving a user attribute; actual granted attribute/stride/storage/allocation limits apply",
+    "max_samplers_per_shader_stage": 16,
+    "max_sampled_textures_per_shader_stage": 48,
+    "max_buffer_size": 4294967295,
+    "max_uniform_buffer_binding_size": 65536,
+    "software": true,
+    "float32_filterable": true,
+    "unorm16_texture_formats": true,
+    "bresenham_lines": true,
+    "last_vertex_provoking": true,
+    "timestamp_query": true,
+    "timestamp_quantization_ns": 65536,
+    "host_mapped_pointer": true,
+    "host_import_limit": 536870912,
+    "depth_stencil_storage": "depth24_unorm_stencil8",
+    "ok": true,
+    "error": "",
+    "loss_count": 0,
+    "revision": "117b054598f4758b598f4b8f48feea48c11fe7b0+dawn-499e5c6ff9b37d5de70c6493fb74c251e0d35c1c"
+  },
+  "native_sha256": "6c4e3beaaaf922160d9392fb12213b60911585eeca09b18ec07d4ac67fa5e286",
+  "native_inputs_sha256": "e165787455895117cc64b090a9927240145421b8ebeecd7164840944ae3b49a5",
+  "observed_module_origin": "/mnt/d/vispy-vulkan-managed/build/work/linux-dynamic-installed-417/linux/vispy/_dawn.cpython-312-x86_64-linux-gnu.so",
+  "evidence_store": {
+    "path": "compat/evidence-stores/secondary-v1.json",
+    "sha256": "b164e3fdc85863a2327b508ea60f8d3068f740cfe90f665aa52905e28bfb3ca5"
+  },
+  "source_observation": {
+    "cases": 4,
+    "report": {
+      "path": "build/runs/linux-dynamic-installed-417/capture-linux-positive-result.json",
+      "sha256": "37d1602a11d6a8df680b159df0beb7cafb3ba17a4c5ee93e33b9ea803968858b"
+    },
+    "shutdown_gauges": {
+      "pending_tickets": 0,
+      "queued_frames": 0,
+      "live_buffer_bytes": 0,
+      "live_cpu_buffer_bytes": 0,
+      "live_texture_bytes": 0,
+      "canvas_texture_bytes": 0,
+      "transient_buffer_bytes": 0,
+      "line_resource_pool_busy_slots": 0,
+      "line_resource_pool_bytes": 0
+    },
+    "functional_validation": {
+      "schema": 1,
+      "contract": "tk-capture-1",
+      "status": "PASS_FUNCTIONAL_RESULT",
+      "branch_ids": [
+        "capture.invalid-viewport",
+        "capture.ordinary",
+        "capture.resize",
+        "capture.retry"
+      ],
+      "qualified": false
+    },
+    "scope": "Exact-member-checked installed product observation, conservatively used for preparation only; not an observer/absence/profile admission"
+  },
+  "original_observation_source_commit": "f7d21c314ee931a56822785441c8fd9bade45da2",
+  "source_equivalence": {
+    "basis": "Exact current source/native/archive/license/RECORD joins against the unchanged retained wheel; producer commit is not relabeled",
+    "archive_join": {
+      "path": "build/runs/successor-record-renewal-432/linux-current-archive-join.json",
+      "sha256": "796dc10ad8c4babf797846bda4c637bfbcdefc3a858976b92be6654a89b8060b"
+    },
+    "runtime_source_commit": "603ac73abbf57fdcf4dc8022d4171844448f871d"
+  },
+  "wheel": {
+    "path": "build/artifacts/4bc3cd778990a35a3ff3e72f68fc8905e74804cb78b1d7091adbdc1b1fbfcdc8/vispy-0.17.0+vulkan.2-cp312-cp312-manylinux_2_39_x86_64.whl",
+    "sha256": "4bc3cd778990a35a3ff3e72f68fc8905e74804cb78b1d7091adbdc1b1fbfcdc8"
+  },
+  "native_producer": {
+    "status": "SUCCESSOR_REUSE_REVIEW_PENDING",
+    "original_source_commit": "f7d21c314ee931a56822785441c8fd9bade45da2",
+    "source_commit_scope": "Original successful Linux CI source commit; packaging retains the same source identity.",
+    "source_snapshot": {
+      "path": "build/runs/linux-dynamic-artifact-414/original-source-hashes.json",
+      "sha256": "bb32baf2d232fb2fb4d99ae421af49faeb1f92da934940d933172d64c6f2a307"
+    },
+    "validation": {
+      "path": "build/runs/linux-dynamic-artifact-414/native-capture-validation.json",
+      "sha256": "1f98f3f400dac6df109f637bcb5c25c19701e442d3774415e506069e59413d66"
+    }
+  },
+  "limitations": [
+    "Source and scope reviews are empty; no historical approval transfers.",
+    "Strict observer/absence/control/profile admission, complete CI and promotion remain pending.",
+    "Native Linux physical GPU is unqualified; Metal is experimental."
+  ]
+}

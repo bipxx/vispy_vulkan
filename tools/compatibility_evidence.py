@@ -17,10 +17,12 @@ try:
     from .compatibility_inventory import ROOT, GATES, check, file_ref, read_json
     from .no_opengl.policy import LIVE_GAUGES
     from .no_opengl.functional import WORKFLOW as FUNCTIONAL_WORKFLOW, CAPTURE_WORKFLOW, digest as functional_digest, validate_bound_result
+    from .retained_evidence import evidence_file, evidence_root
 except ImportError:
     from compatibility_inventory import ROOT, GATES, check, file_ref, read_json
     from no_opengl.policy import LIVE_GAUGES
     from no_opengl.functional import WORKFLOW as FUNCTIONAL_WORKFLOW, CAPTURE_WORKFLOW, digest as functional_digest, validate_bound_result
+    from retained_evidence import evidence_file, evidence_root
 
 CORE_CONTROLS = ('safe_control_exits_zero', 'safe_control_has_no_gl_violation',
                  'native_lookup_without_call_detected', 'transient_forbidden_load_detected',
@@ -49,8 +51,12 @@ def expected_workflow(root, row):
 def normalize(root, row, references):
     root = Path(root)
     required = {'runtime', 'worker', 'dependencies', 'inventory', 'discovery', 'discovery_worker', 'controls', 'control_reports'}
-    check(set(references) == required, 'incomplete raw qualification report bundle')
-    read = lambda ref: read_json(file_ref(root, ref))
+    selector = references.get('evidence_store')
+    check(set(references) == required | ({'evidence_store'} if selector is not None else set()),
+          'incomplete raw qualification report bundle')
+    if selector is not None:
+        evidence_root(root, selector)
+    read = lambda ref: read_json(evidence_file(root, ref, selector))
     raw = {name: read(references[name]) for name in required - {'control_reports'}}
     check(all(isinstance(value, dict) for value in raw.values()), 'raw qualification reports must be JSON objects')
     expected = expected_workflow(root, row)

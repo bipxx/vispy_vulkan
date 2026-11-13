@@ -1,0 +1,299 @@
+{
+  "schema": 1,
+  "date": "2026-11-08",
+  "status": "FINITE_CURRENT_WINDOWS_WSL_EVENT_INPUT_DEPTH_ACCEPTANCE",
+  "checklist_ids": [
+    "API-05-EVENT-VALUES-CURRENT",
+    "LIF-06-TK-CURRENT",
+    "STA-02-CURRENT"
+  ],
+  "evidence_store": {
+    "path": "compat/evidence-stores/secondary-v1.json",
+    "sha256": "b164e3fdc85863a2327b508ea60f8d3068f740cfe90f665aa52905e28bfb3ca5"
+  },
+  "cases_per_platform": 126,
+  "scope_cases": {
+    "event": 57,
+    "input": 39,
+    "depth": 30
+  },
+  "observations": [
+    {
+      "platform": "windows",
+      "run": "current-scope-windows-434",
+      "wheel": {
+        "path": "build/artifacts/ba8a54c5b7ede9387d62ff72b1269602d61c0bdc61c77928ee52a7e37107bf24/vispy-0.17.0+vulkan.2-cp312-cp312-win_amd64.whl",
+        "sha256": "ba8a54c5b7ede9387d62ff72b1269602d61c0bdc61c77928ee52a7e37107bf24"
+      },
+      "installations": 1,
+      "cases": 126,
+      "skipped": 0,
+      "scopes": {
+        "event": {
+          "cases": 57,
+          "source_hashes": {
+            "tests/contract/test_event_values.py": "6265c9e425d02f3017f91ff4f4f129f6b00b764ca82e92f9c2c7e3bc5c38eefc",
+            "src/vispy/util/event.py": "eecbc1379d85036481762cabc1ac4320a7b340bf7644e3f78ee693a018f252ff",
+            "src/vispy/util/keys.py": "b1f44e7f6cdc9fbbfc65adb0efa586d585644c14c1b5742b9703cdfcb1d8e52b",
+            "src/vispy/app/canvas.py": "00a98debb5519d344c9c9e9ee0f838eb9bfae784cd7c36eb86581076fcec310f",
+            "src/vispy/scene/events.py": "5d8362f30b2ec799e6ec8f5194c3010b39be4bb1e3867169c8ce1c8717965fa1",
+            "src/vispy/util/tests/test_event_emitter.py": "c8823936bbfaf9fac6c15e2f018fe5bec298d6a84d1d05177238a1b189a708bc",
+            "src/vispy/util/tests/test_key.py": "c98b7735e4bec1ad53eade7db1f38702ceb8b742907ffa0d75e07cf5d1800d6d"
+          },
+          "original_packet": {
+            "path": "compat/api-acceptance/event-values-v1.json",
+            "sha256": "6ec0a4a845bb24c22a57fa7f3572a57b2b70001c8ec409709e1ab077c7ad89a7"
+          },
+          "loaded_origins": 180,
+          "shutdown_gauges": null,
+          "original_node_ids_preserved": true,
+          "result": {
+            "path": "build/runs/current-scope-windows-434/event-result.json",
+            "sha256": "13e62f28559d390154a7507cd3abb655c8d0802114602f9e7bc75cf3e9bc25a4"
+          },
+          "junit": {
+            "path": "build/runs/current-scope-windows-434/events.xml",
+            "sha256": "43030bd48e92582c0d00b702b4890b3143aedaad663b4a074900150acf42cc36"
+          },
+          "gpu_module_loaded": false,
+          "backend_modules": []
+        },
+        "input": {
+          "cases": 39,
+          "source_hashes": {
+            "src/vispy/app/backends/_dawn_tk.py": "6a4bd1f0bb786235e255d257a733b6acde42a096fa059d9b73ae60e0f4d4c554",
+            "src/vispy/app/base.py": "30fc071772ca917548a28ebced100baeddf0566c264e6c8fac4043217123f6b7",
+            "src/vispy/app/canvas.py": "00a98debb5519d344c9c9e9ee0f838eb9bfae784cd7c36eb86581076fcec310f",
+            "src/vispy/app/timer.py": "41129507f231e2deed48570557572fcc3fe60cb10d4d46e13dee8b94f5dfec75",
+            "tests/native/test_tkinter_backend.py": "0d1755165e00b45b23d42f525f0ef976a777bbb5eaffd7672c025c90b432c47a",
+            "tests/native/test_tkinter_input_routing.py": "e0bbb884a152e2c0ac743321bea22a6cae8e96d5c0d839bf9d18cbbd3c92f262",
+            "tests/native/test_tkinter_panzoom_coordinates.py": "2af1b9262b8a82fa409c720ebcf2c6c33d8d31544617d3766f3fd931a8565956",
+            "tests/native/test_tkinter_panzoom_wheel.py": "eda2333b867e752a239e0c97e0c478e90178ffb439341edd932ab5ee6f10f864",
+            "tests/native/test_tkinter_turntable_coordinates.py": "caeb4b40371e94c39b10aa470c92c469e210e4a836c00263573c44052fbcbaae"
+          },
+          "original_packet": {
+            "path": "compat/api-acceptance/tk-input-v1.json",
+            "sha256": "4bd5c62b25a64e1cadf5c6e394f04b25682942eb3d471959e70caa21c25182a1"
+          },
+          "loaded_origins": 175,
+          "shutdown_gauges": {
+            "pending_tickets": 0,
+            "queued_frames": 0,
+            "live_buffer_bytes": 0,
+            "live_cpu_buffer_bytes": 0,
+            "live_texture_bytes": 0,
+            "canvas_texture_bytes": 0,
+            "transient_buffer_bytes": 0,
+            "line_resource_pool_busy_slots": 0,
+            "line_resource_pool_bytes": 0,
+            "host_import_pinned_bytes": 0
+          },
+          "original_node_ids_preserved": true,
+          "result": {
+            "path": "build/runs/current-scope-windows-434/input-result.json",
+            "sha256": "2acf783f350613a3d35b2cd20bfa37f21ef950bcb94c59cb290403a5b31cdcae"
+          },
+          "junit": {
+            "path": "build/runs/current-scope-windows-434/inputs.xml",
+            "sha256": "af35cd50a95d12db14f3f72cd040089bfb746cb8d1b26eb54e2fe868f994f8bb"
+          }
+        },
+        "depth": {
+          "cases": 30,
+          "source_hashes": {
+            "tests/native/test_reversed_depth_range.py": "80d0c34eb8eeaea942cbe101647193cc63a9b788acff3f869befaaaec8c77158"
+          },
+          "original_packet": {
+            "path": "compat/api-acceptance/reversed-depth-v1.json",
+            "sha256": "193fe0756f8d5db782874380f4a6c9af5fef6beb019ec4d4b0b7ddf938f05a39"
+          },
+          "loaded_origins": 56,
+          "shutdown_gauges": {
+            "pending_tickets": 0,
+            "queued_frames": 0,
+            "live_buffer_bytes": 0,
+            "live_cpu_buffer_bytes": 0,
+            "live_texture_bytes": 0,
+            "canvas_texture_bytes": 0,
+            "transient_buffer_bytes": 0,
+            "line_resource_pool_busy_slots": 0,
+            "line_resource_pool_bytes": 0,
+            "host_import_pinned_bytes": 0
+          },
+          "original_node_ids_preserved": true,
+          "result": {
+            "path": "build/runs/current-scope-windows-434/depth-result.json",
+            "sha256": "e599410c754083e37724d3abf4edc9bf355a969a6a70d6d1ee720f3061b18bb4"
+          },
+          "junit": {
+            "path": "build/runs/current-scope-windows-434/depth.xml",
+            "sha256": "6b1d2206acd17f024fbbf5b0c155f79618af07bb78511358850c9c106e68e887"
+          }
+        }
+      },
+      "evidence": {
+        "verification.json": {
+          "path": "build/runs/current-scope-windows-434/verification.json",
+          "sha256": "e9ce22f8145ff1d6fc48d3507bfcbac486ff3a5d4bfe1960ba6af63466f46a7b"
+        },
+        "controller-processes.json": {
+          "path": "build/runs/current-scope-windows-434/controller-processes.json",
+          "sha256": "45001cdfa02ef8e920300c7f6b4ea3ac805e40e0d43b49fdef8fecbf4a7b5587"
+        },
+        "post-cleanup.json": {
+          "path": "build/runs/current-scope-windows-434/post-cleanup.json",
+          "sha256": "21212c2636168a2c0f9ace56bdc1bd647abac4fc50ce932da472f7abe7ba2cde"
+        },
+        "test-source-and-licenses.zip": {
+          "path": "build/runs/current-scope-windows-434/test-source-and-licenses.zip",
+          "sha256": "76b5240ad7ec39c71e2ce880faaff9f059d7b2c7fd2a6a6d17d6b372aa86c382"
+        }
+      }
+    },
+    {
+      "platform": "wsl",
+      "run": "current-scope-wsl-435",
+      "wheel": {
+        "path": "build/artifacts/4bc3cd778990a35a3ff3e72f68fc8905e74804cb78b1d7091adbdc1b1fbfcdc8/vispy-0.17.0+vulkan.2-cp312-cp312-manylinux_2_39_x86_64.whl",
+        "sha256": "4bc3cd778990a35a3ff3e72f68fc8905e74804cb78b1d7091adbdc1b1fbfcdc8"
+      },
+      "installations": 1,
+      "cases": 126,
+      "skipped": 0,
+      "scopes": {
+        "event": {
+          "cases": 57,
+          "source_hashes": {
+            "tests/contract/test_event_values.py": "6265c9e425d02f3017f91ff4f4f129f6b00b764ca82e92f9c2c7e3bc5c38eefc",
+            "src/vispy/util/event.py": "eecbc1379d85036481762cabc1ac4320a7b340bf7644e3f78ee693a018f252ff",
+            "src/vispy/util/keys.py": "b1f44e7f6cdc9fbbfc65adb0efa586d585644c14c1b5742b9703cdfcb1d8e52b",
+            "src/vispy/app/canvas.py": "00a98debb5519d344c9c9e9ee0f838eb9bfae784cd7c36eb86581076fcec310f",
+            "src/vispy/scene/events.py": "5d8362f30b2ec799e6ec8f5194c3010b39be4bb1e3867169c8ce1c8717965fa1",
+            "src/vispy/util/tests/test_event_emitter.py": "c8823936bbfaf9fac6c15e2f018fe5bec298d6a84d1d05177238a1b189a708bc",
+            "src/vispy/util/tests/test_key.py": "c98b7735e4bec1ad53eade7db1f38702ceb8b742907ffa0d75e07cf5d1800d6d"
+          },
+          "original_packet": {
+            "path": "compat/api-acceptance/event-values-v1.json",
+            "sha256": "6ec0a4a845bb24c22a57fa7f3572a57b2b70001c8ec409709e1ab077c7ad89a7"
+          },
+          "loaded_origins": 179,
+          "shutdown_gauges": null,
+          "original_node_ids_preserved": true,
+          "result": {
+            "path": "build/runs/current-scope-wsl-435/event-result.json",
+            "sha256": "df0051db7e9ed56fae8006824d7617c4c1be725b14d7d1fa334510d85f1c3855"
+          },
+          "junit": {
+            "path": "build/runs/current-scope-wsl-435/events.xml",
+            "sha256": "876c6c0f3bac74a95e411798acc252bfa9001fa37bb9141ec3acf5d9e90e1f35"
+          },
+          "gpu_module_loaded": false,
+          "backend_modules": []
+        },
+        "input": {
+          "cases": 39,
+          "source_hashes": {
+            "src/vispy/app/backends/_dawn_tk.py": "6a4bd1f0bb786235e255d257a733b6acde42a096fa059d9b73ae60e0f4d4c554",
+            "src/vispy/app/base.py": "30fc071772ca917548a28ebced100baeddf0566c264e6c8fac4043217123f6b7",
+            "src/vispy/app/canvas.py": "00a98debb5519d344c9c9e9ee0f838eb9bfae784cd7c36eb86581076fcec310f",
+            "src/vispy/app/timer.py": "41129507f231e2deed48570557572fcc3fe60cb10d4d46e13dee8b94f5dfec75",
+            "tests/native/test_tkinter_backend.py": "0d1755165e00b45b23d42f525f0ef976a777bbb5eaffd7672c025c90b432c47a",
+            "tests/native/test_tkinter_input_routing.py": "e0bbb884a152e2c0ac743321bea22a6cae8e96d5c0d839bf9d18cbbd3c92f262",
+            "tests/native/test_tkinter_panzoom_coordinates.py": "2af1b9262b8a82fa409c720ebcf2c6c33d8d31544617d3766f3fd931a8565956",
+            "tests/native/test_tkinter_panzoom_wheel.py": "eda2333b867e752a239e0c97e0c478e90178ffb439341edd932ab5ee6f10f864",
+            "tests/native/test_tkinter_turntable_coordinates.py": "caeb4b40371e94c39b10aa470c92c469e210e4a836c00263573c44052fbcbaae"
+          },
+          "original_packet": {
+            "path": "compat/api-acceptance/tk-input-v1.json",
+            "sha256": "4bd5c62b25a64e1cadf5c6e394f04b25682942eb3d471959e70caa21c25182a1"
+          },
+          "loaded_origins": 174,
+          "shutdown_gauges": {
+            "pending_tickets": 0,
+            "queued_frames": 0,
+            "live_buffer_bytes": 0,
+            "live_cpu_buffer_bytes": 0,
+            "live_texture_bytes": 0,
+            "canvas_texture_bytes": 0,
+            "transient_buffer_bytes": 0,
+            "line_resource_pool_busy_slots": 0,
+            "line_resource_pool_bytes": 0,
+            "host_import_pinned_bytes": 0
+          },
+          "original_node_ids_preserved": true,
+          "result": {
+            "path": "build/runs/current-scope-wsl-435/input-result.json",
+            "sha256": "e1861157574a5ca6f3f4f1be2fb7e026d0b63450237c2f8485a5c7873f0615ad"
+          },
+          "junit": {
+            "path": "build/runs/current-scope-wsl-435/inputs.xml",
+            "sha256": "06e1459d6f7cb77c4a9a317d51c18604342a526e3bd78c379cfbfd152e7697e3"
+          }
+        },
+        "depth": {
+          "cases": 30,
+          "source_hashes": {
+            "tests/native/test_reversed_depth_range.py": "80d0c34eb8eeaea942cbe101647193cc63a9b788acff3f869befaaaec8c77158"
+          },
+          "original_packet": {
+            "path": "compat/api-acceptance/reversed-depth-v1.json",
+            "sha256": "193fe0756f8d5db782874380f4a6c9af5fef6beb019ec4d4b0b7ddf938f05a39"
+          },
+          "loaded_origins": 55,
+          "shutdown_gauges": {
+            "pending_tickets": 0,
+            "queued_frames": 0,
+            "live_buffer_bytes": 0,
+            "live_cpu_buffer_bytes": 0,
+            "live_texture_bytes": 0,
+            "canvas_texture_bytes": 0,
+            "transient_buffer_bytes": 0,
+            "line_resource_pool_busy_slots": 0,
+            "line_resource_pool_bytes": 0,
+            "host_import_pinned_bytes": 0
+          },
+          "original_node_ids_preserved": true,
+          "result": {
+            "path": "build/runs/current-scope-wsl-435/depth-result.json",
+            "sha256": "5d76098d29c9cf48aaede75df1a490c11a5e2a0bae0157c927754e730122114d"
+          },
+          "junit": {
+            "path": "build/runs/current-scope-wsl-435/depth.xml",
+            "sha256": "072a384f31c986911e69daa7486dc1e3c43c06fd82f48238fd8e70c7d75b6303"
+          }
+        }
+      },
+      "evidence": {
+        "verification.json": {
+          "path": "build/runs/current-scope-wsl-435/verification.json",
+          "sha256": "9284440eb9fed4ccd5092ea94e43d2e2f9f3351daf7fd910612c49972d9e45a4"
+        },
+        "controller-processes.json": {
+          "path": "build/runs/current-scope-wsl-435/controller-processes.json",
+          "sha256": "3c513d25b857ba5887f8238c15ccc29734d21292d21ebdb2ba2ef2afed60254f"
+        },
+        "post-cleanup.json": {
+          "path": "build/runs/current-scope-wsl-435/post-cleanup.json",
+          "sha256": "65c5c796d1ad61c109230e0e7c9334efd19faccc222e027d0383b46687401d59"
+        },
+        "test-source-and-licenses.zip": {
+          "path": "build/runs/current-scope-wsl-435/test-source-and-licenses.zip",
+          "sha256": "76b5240ad7ec39c71e2ce880faaff9f059d7b2c7fd2a6a6d17d6b372aa86c382"
+        }
+      }
+    }
+  ],
+  "scratch_bytes_removed": 47751307,
+  "old_packets_unchanged": true,
+  "native_build": false,
+  "new_dependency_environment": false,
+  "artifact_admitted": false,
+  "broader_parents_closed": false,
+  "strict_profile_qualified": false,
+  "scope_limits": [
+    "Event tests are CPU model semantics with no renderer/backend import.",
+    "Tk input uses recorded adapter/toolkit-generated delivery and selected camera pixels; not physical HID or arbitrary layouts/DPI/touch.",
+    "Reversed depth remains the same finite analytic color/depth, ordering and loss subset; not all formats/shader forms.",
+    "No independent review, strict profile, CI, mandatory-row or release admission transfers."
+  ]
+}

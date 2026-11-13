@@ -44,14 +44,14 @@
     {
       "id": "windows-gpu-tk86-cp312-development",
       "description": "Selected execution profile windows-gpu-tk86-cp312-development; concrete observation pinned by preparation, not installed admission.",
-      "admitted": false,
-      "environment_sha256": null
+      "admitted": true,
+      "environment_sha256": "9d483892a57e5a8b675f5a9f6c7faf9cc7b017260ece01b971875837723945e7"
     },
     {
       "id": "wsl-software-tk90-cp31213-development",
       "description": "Selected execution profile wsl-software-tk90-cp31213-development; concrete observation pinned by preparation, not installed admission.",
-      "admitted": false,
-      "environment_sha256": null
+      "admitted": true,
+      "environment_sha256": "de33015c9b3de6b8cf876ee0cde82962740144dda6cc49aa88847148ccbfc85c"
     }
   ],
   "features": [
@@ -5420,8 +5420,8 @@
     {
       "feature": "tk.application.manual",
       "profile": "windows-gpu-tk86-cp312-development",
-      "state": "implemented-untested",
-      "outcome": "not-run",
+      "state": "qualified",
+      "outcome": "passed",
       "workflow": {
         "id": "tk-state-resource-failures",
         "scenario": "script",
@@ -5446,16 +5446,24 @@
           "expected": "ordinary: process_events drives both targets; quit preserves supplied interpreter, jobs and binding."
         }
       ],
-      "identity": null,
-      "receipt": null,
-      "blocker": "New execution identity has no transferred receipt; source/scope review and installed proof remain pending.",
-      "next_action": "Obtain bound reviews, then exact same-profile product/workflow evidence under the existing auditors."
+      "identity": {
+        "source_commit": "0a521bb108b7016b6619591e6806fe84b68fad43",
+        "patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "profile_sha256": "9d483892a57e5a8b675f5a9f6c7faf9cc7b017260ece01b971875837723945e7",
+        "wheel_sha256": "5c7142f38b0867fc744a7fe6025b8397f1bada46641b6d05da0d54dadbfab29e"
+      },
+      "receipt": {
+        "path": "build/runs/r2-installed-318/windows/tk-state-resource-1/tk.application.manual.receipt.json",
+        "sha256": "c207c1b78975df3a007aa1b27c1988e3b87b2c6c41c4f98de114750ce8b6031d"
+      },
+      "blocker": "Installed selected Windows workflow proved; scoped artifact promotion remains pending.",
+      "next_action": "Retain all attempts, bind producer/archive/terminal evidence and obtain final current-head promotion review."
     },
     {
       "feature": "tk.application.manual",
       "profile": "wsl-software-tk90-cp31213-development",
-      "state": "implemented-untested",
-      "outcome": "not-run",
+      "state": "qualified",
+      "outcome": "passed",
       "workflow": {
         "id": "tk-state-resource-failures",
         "scenario": "script",
@@ -5480,16 +5488,24 @@
           "expected": "ordinary: process_events drives both targets; quit preserves supplied interpreter, jobs and binding."
         }
       ],
-      "identity": null,
-      "receipt": null,
-      "blocker": "New execution identity has no transferred receipt; source/scope review and installed proof remain pending.",
-      "next_action": "Obtain bound reviews, then exact same-profile product/workflow evidence under the existing auditors."
+      "identity": {
+        "source_commit": "0a521bb108b7016b6619591e6806fe84b68fad43",
+        "patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "profile_sha256": "de33015c9b3de6b8cf876ee0cde82962740144dda6cc49aa88847148ccbfc85c",
+        "wheel_sha256": "66f35ab0dae878af1744f2061be1042bd2c5abfd24d3192c7456865f2c6fd3f7"
+      },
+      "receipt": {
+        "path": "build/runs/r2-installed-318/linux/tk-state-resource-1/tk.application.manual.receipt.json",
+        "sha256": "1b3045774697ab88059562cf768efde06bf93efadc2706cd49511aecc7a063f6"
+      },
+      "blocker": "Installed selected WSL software Vulkan workflow proved; scoped artifact promotion remains pending.",
+      "next_action": "Retain all attempts, bind producer/archive/terminal evidence and obtain final current-head promotion review."
     },
     {
       "feature": "tk.backend.raster",
       "profile": "windows-gpu-tk86-cp312-development",
-      "state": "implemented-untested",
-      "outcome": "not-run",
+      "state": "qualified",
+      "outcome": "passed",
       "workflow": {
         "id": "tk-state-resource-failures",
         "scenario": "script",
@@ -5514,16 +5530,24 @@
           "expected": "ordinary: Embedded red and standalone blue targets present through real Tk RGB images; host binding survives quit."
         }
       ],
-      "identity": null,
-      "receipt": null,
-      "blocker": "New execution identity has no transferred receipt; source/scope review and installed proof remain pending.",
-      "next_action": "Obtain bound reviews, then exact same-profile product/workflow evidence under the existing auditors."
+      "identity": {
+        "source_commit": "0a521bb108b7016b6619591e6806fe84b68fad43",
+        "patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "profile_sha256": "9d483892a57e5a8b675f5a9f6c7faf9cc7b017260ece01b971875837723945e7",
+        "wheel_sha256": "5c7142f38b0867fc744a7fe6025b8397f1bada46641b6d05da0d54dadbfab29e"
+      },
+      "receipt": {
+        "path": "build/runs/r2-installed-318/windows/tk-state-resource-1/tk.backend.raster.receipt.json",
+        "sha256": "baa393e162df8f219e6af13fcd81cab81a86dd239396333541d8cb2b33b50bb3"
+      },
+      "blocker": "Installed selected Windows workflow proved; scoped artifact promotion remains pending.",
+      "next_action": "Retain all attempts, bind producer/archive/terminal evidence and obtain final current-head promotion review."
     },
     {
       "feature": "tk.backend.raster",
       "profile": "wsl-software-tk90-cp31213-development",
-      "state": "implemented-untested",
-      "outcome": "not-run",
+      "state": "qualified",
+      "outcome": "passed",
       "workflow": {
         "id": "tk-state-resource-failures",
         "scenario": "script",
@@ -5548,16 +5572,24 @@
           "expected": "ordinary: Embedded red and standalone blue targets present through real Tk RGB images; host binding survives quit."
         }
       ],
-      "identity": null,
-      "receipt": null,
-      "blocker": "New execution identity has no transferred receipt; source/scope review and installed proof remain pending.",
-      "next_action": "Obtain bound reviews, then exact same-profile product/workflow evidence under the existing auditors."
+      "identity": {
+        "source_commit": "0a521bb108b7016b6619591e6806fe84b68fad43",
+        "patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "profile_sha256": "de33015c9b3de6b8cf876ee0cde82962740144dda6cc49aa88847148ccbfc85c",
+        "wheel_sha256": "66f35ab0dae878af1744f2061be1042bd2c5abfd24d3192c7456865f2c6fd3f7"
+      },
+      "receipt": {
+        "path": "build/runs/r2-installed-318/linux/tk-state-resource-1/tk.backend.raster.receipt.json",
+        "sha256": "055d74c9b0b35c29f18e0bcdbcf1930df9f4fd6a9cd4d6f60d6874245d1f020f"
+      },
+      "blocker": "Installed selected WSL software Vulkan workflow proved; scoped artifact promotion remains pending.",
+      "next_action": "Retain all attempts, bind producer/archive/terminal evidence and obtain final current-head promotion review."
     },
     {
       "feature": "tk.buffer.triangle",
       "profile": "windows-gpu-tk86-cp312-development",
-      "state": "implemented-untested",
-      "outcome": "not-run",
+      "state": "qualified",
+      "outcome": "passed",
       "workflow": {
         "id": "tk-state-resource-failures",
         "scenario": "script",
@@ -5582,16 +5614,24 @@
           "expected": "ordinary: Three float32 vec2 vertices cover the whole target with exact sampled color."
         }
       ],
-      "identity": null,
-      "receipt": null,
-      "blocker": "New execution identity has no transferred receipt; source/scope review and installed proof remain pending.",
-      "next_action": "Obtain bound reviews, then exact same-profile product/workflow evidence under the existing auditors."
+      "identity": {
+        "source_commit": "0a521bb108b7016b6619591e6806fe84b68fad43",
+        "patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "profile_sha256": "9d483892a57e5a8b675f5a9f6c7faf9cc7b017260ece01b971875837723945e7",
+        "wheel_sha256": "5c7142f38b0867fc744a7fe6025b8397f1bada46641b6d05da0d54dadbfab29e"
+      },
+      "receipt": {
+        "path": "build/runs/r2-installed-318/windows/tk-state-resource-1/tk.buffer.triangle.receipt.json",
+        "sha256": "256cb9e4468f8c3819a9d3a7bc814d645856d6473eb00f51f975910e0c869fea"
+      },
+      "blocker": "Installed selected Windows workflow proved; scoped artifact promotion remains pending.",
+      "next_action": "Retain all attempts, bind producer/archive/terminal evidence and obtain final current-head promotion review."
     },
     {
       "feature": "tk.buffer.triangle",
       "profile": "wsl-software-tk90-cp31213-development",
-      "state": "implemented-untested",
-      "outcome": "not-run",
+      "state": "qualified",
+      "outcome": "passed",
       "workflow": {
         "id": "tk-state-resource-failures",
         "scenario": "script",
@@ -5616,16 +5656,24 @@
           "expected": "ordinary: Three float32 vec2 vertices cover the whole target with exact sampled color."
         }
       ],
-      "identity": null,
-      "receipt": null,
-      "blocker": "New execution identity has no transferred receipt; source/scope review and installed proof remain pending.",
-      "next_action": "Obtain bound reviews, then exact same-profile product/workflow evidence under the existing auditors."
+      "identity": {
+        "source_commit": "0a521bb108b7016b6619591e6806fe84b68fad43",
+        "patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "profile_sha256": "de33015c9b3de6b8cf876ee0cde82962740144dda6cc49aa88847148ccbfc85c",
+        "wheel_sha256": "66f35ab0dae878af1744f2061be1042bd2c5abfd24d3192c7456865f2c6fd3f7"
+      },
+      "receipt": {
+        "path": "build/runs/r2-installed-318/linux/tk-state-resource-1/tk.buffer.triangle.receipt.json",
+        "sha256": "0852d0f6cce09bdd3ac37481f35d7205a69df70564ed27de4ea48f1664116e47"
+      },
+      "blocker": "Installed selected WSL software Vulkan workflow proved; scoped artifact promotion remains pending.",
+      "next_action": "Retain all attempts, bind producer/archive/terminal evidence and obtain final current-head promotion review."
     },
     {
       "feature": "tk.canvas.basic",
       "profile": "windows-gpu-tk86-cp312-development",
-      "state": "implemented-untested",
-      "outcome": "not-run",
+      "state": "qualified",
+      "outcome": "passed",
       "workflow": {
         "id": "tk-state-resource-failures",
         "scenario": "script",
@@ -5650,16 +5698,24 @@
           "expected": "ordinary: Two actual configured targets have independent categorical pixels and distinct widget ownership."
         }
       ],
-      "identity": null,
-      "receipt": null,
-      "blocker": "New execution identity has no transferred receipt; source/scope review and installed proof remain pending.",
-      "next_action": "Obtain bound reviews, then exact same-profile product/workflow evidence under the existing auditors."
+      "identity": {
+        "source_commit": "0a521bb108b7016b6619591e6806fe84b68fad43",
+        "patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "profile_sha256": "9d483892a57e5a8b675f5a9f6c7faf9cc7b017260ece01b971875837723945e7",
+        "wheel_sha256": "5c7142f38b0867fc744a7fe6025b8397f1bada46641b6d05da0d54dadbfab29e"
+      },
+      "receipt": {
+        "path": "build/runs/r2-installed-318/windows/tk-state-resource-1/tk.canvas.basic.receipt.json",
+        "sha256": "0e33d4537baafda906007551b9317e5e0806f3d023e149ee822f3005a234ddd9"
+      },
+      "blocker": "Installed selected Windows workflow proved; scoped artifact promotion remains pending.",
+      "next_action": "Retain all attempts, bind producer/archive/terminal evidence and obtain final current-head promotion review."
     },
     {
       "feature": "tk.canvas.basic",
       "profile": "wsl-software-tk90-cp31213-development",
-      "state": "implemented-untested",
-      "outcome": "not-run",
+      "state": "qualified",
+      "outcome": "passed",
       "workflow": {
         "id": "tk-state-resource-failures",
         "scenario": "script",
@@ -5684,16 +5740,24 @@
           "expected": "ordinary: Two actual configured targets have independent categorical pixels and distinct widget ownership."
         }
       ],
-      "identity": null,
-      "receipt": null,
-      "blocker": "New execution identity has no transferred receipt; source/scope review and installed proof remain pending.",
-      "next_action": "Obtain bound reviews, then exact same-profile product/workflow evidence under the existing auditors."
+      "identity": {
+        "source_commit": "0a521bb108b7016b6619591e6806fe84b68fad43",
+        "patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "profile_sha256": "de33015c9b3de6b8cf876ee0cde82962740144dda6cc49aa88847148ccbfc85c",
+        "wheel_sha256": "66f35ab0dae878af1744f2061be1042bd2c5abfd24d3192c7456865f2c6fd3f7"
+      },
+      "receipt": {
+        "path": "build/runs/r2-installed-318/linux/tk-state-resource-1/tk.canvas.basic.receipt.json",
+        "sha256": "7649e6a55c865ddf67e90801a92d9cf7f73d0b2ef34af0527361678e8fd64fff"
+      },
+      "blocker": "Installed selected WSL software Vulkan workflow proved; scoped artifact promotion remains pending.",
+      "next_action": "Retain all attempts, bind producer/archive/terminal evidence and obtain final current-head promotion review."
     },
     {
       "feature": "tk.canvas.recovery",
       "profile": "windows-gpu-tk86-cp312-development",
-      "state": "implemented-untested",
-      "outcome": "not-run",
+      "state": "qualified",
+      "outcome": "passed",
       "workflow": {
         "id": "tk-state-resource-failures",
         "scenario": "script",
@@ -5718,16 +5782,24 @@
           "expected": "ordinary: Same surviving widget/resources render exact blue after native generation advances."
         }
       ],
-      "identity": null,
-      "receipt": null,
-      "blocker": "New execution identity has no transferred receipt; source/scope review and installed proof remain pending.",
-      "next_action": "Obtain bound reviews, then exact same-profile product/workflow evidence under the existing auditors."
+      "identity": {
+        "source_commit": "0a521bb108b7016b6619591e6806fe84b68fad43",
+        "patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "profile_sha256": "9d483892a57e5a8b675f5a9f6c7faf9cc7b017260ece01b971875837723945e7",
+        "wheel_sha256": "5c7142f38b0867fc744a7fe6025b8397f1bada46641b6d05da0d54dadbfab29e"
+      },
+      "receipt": {
+        "path": "build/runs/r2-installed-318/windows/tk-state-resource-1/tk.canvas.recovery.receipt.json",
+        "sha256": "3c24009babebb9fb99e9b0286fde974149c8638229db492415ad890d2dd4d966"
+      },
+      "blocker": "Installed selected Windows workflow proved; scoped artifact promotion remains pending.",
+      "next_action": "Retain all attempts, bind producer/archive/terminal evidence and obtain final current-head promotion review."
     },
     {
       "feature": "tk.canvas.recovery",
       "profile": "wsl-software-tk90-cp31213-development",
-      "state": "implemented-untested",
-      "outcome": "not-run",
+      "state": "qualified",
+      "outcome": "passed",
       "workflow": {
         "id": "tk-state-resource-failures",
         "scenario": "script",
@@ -5752,16 +5824,24 @@
           "expected": "ordinary: Same surviving widget/resources render exact blue after native generation advances."
         }
       ],
-      "identity": null,
-      "receipt": null,
-      "blocker": "New execution identity has no transferred receipt; source/scope review and installed proof remain pending.",
-      "next_action": "Obtain bound reviews, then exact same-profile product/workflow evidence under the existing auditors."
+      "identity": {
+        "source_commit": "0a521bb108b7016b6619591e6806fe84b68fad43",
+        "patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "profile_sha256": "de33015c9b3de6b8cf876ee0cde82962740144dda6cc49aa88847148ccbfc85c",
+        "wheel_sha256": "66f35ab0dae878af1744f2061be1042bd2c5abfd24d3192c7456865f2c6fd3f7"
+      },
+      "receipt": {
+        "path": "build/runs/r2-installed-318/linux/tk-state-resource-1/tk.canvas.recovery.receipt.json",
+        "sha256": "f3f6a17b51f7f6ea05a94f4b1ad04ef48490fdb7b011042255c591cab8c07e5e"
+      },
+      "blocker": "Installed selected WSL software Vulkan workflow proved; scoped artifact promotion remains pending.",
+      "next_action": "Retain all attempts, bind producer/archive/terminal evidence and obtain final current-head promotion review."
     },
     {
       "feature": "tk.context.current",
       "profile": "windows-gpu-tk86-cp312-development",
-      "state": "implemented-untested",
-      "outcome": "not-run",
+      "state": "qualified",
+      "outcome": "passed",
       "workflow": {
         "id": "tk-state-resource-failures",
         "scenario": "script",
@@ -5786,16 +5866,24 @@
           "expected": "ordinary: Each clear/flush route acts on the selected first target; second target remains blue."
         }
       ],
-      "identity": null,
-      "receipt": null,
-      "blocker": "New execution identity has no transferred receipt; source/scope review and installed proof remain pending.",
-      "next_action": "Obtain bound reviews, then exact same-profile product/workflow evidence under the existing auditors."
+      "identity": {
+        "source_commit": "0a521bb108b7016b6619591e6806fe84b68fad43",
+        "patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "profile_sha256": "9d483892a57e5a8b675f5a9f6c7faf9cc7b017260ece01b971875837723945e7",
+        "wheel_sha256": "5c7142f38b0867fc744a7fe6025b8397f1bada46641b6d05da0d54dadbfab29e"
+      },
+      "receipt": {
+        "path": "build/runs/r2-installed-318/windows/tk-state-resource-1/tk.context.current.receipt.json",
+        "sha256": "ed37348fde0a922ba522221e7fa34853edbb60aef3299fd5abf596b0eeb8e9a3"
+      },
+      "blocker": "Installed selected Windows workflow proved; scoped artifact promotion remains pending.",
+      "next_action": "Retain all attempts, bind producer/archive/terminal evidence and obtain final current-head promotion review."
     },
     {
       "feature": "tk.context.current",
       "profile": "wsl-software-tk90-cp31213-development",
-      "state": "implemented-untested",
-      "outcome": "not-run",
+      "state": "qualified",
+      "outcome": "passed",
       "workflow": {
         "id": "tk-state-resource-failures",
         "scenario": "script",
@@ -5820,16 +5908,24 @@
           "expected": "ordinary: Each clear/flush route acts on the selected first target; second target remains blue."
         }
       ],
-      "identity": null,
-      "receipt": null,
-      "blocker": "New execution identity has no transferred receipt; source/scope review and installed proof remain pending.",
-      "next_action": "Obtain bound reviews, then exact same-profile product/workflow evidence under the existing auditors."
+      "identity": {
+        "source_commit": "0a521bb108b7016b6619591e6806fe84b68fad43",
+        "patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "profile_sha256": "de33015c9b3de6b8cf876ee0cde82962740144dda6cc49aa88847148ccbfc85c",
+        "wheel_sha256": "66f35ab0dae878af1744f2061be1042bd2c5abfd24d3192c7456865f2c6fd3f7"
+      },
+      "receipt": {
+        "path": "build/runs/r2-installed-318/linux/tk-state-resource-1/tk.context.current.receipt.json",
+        "sha256": "d19895099c7b7a1ce8d056f39641a9fc8f4fdedfc196a107a15a627f63d64bab"
+      },
+      "blocker": "Installed selected WSL software Vulkan workflow proved; scoped artifact promotion remains pending.",
+      "next_action": "Retain all attempts, bind producer/archive/terminal evidence and obtain final current-head promotion review."
     },
     {
       "feature": "tk.context.shared",
       "profile": "windows-gpu-tk86-cp312-development",
-      "state": "implemented-untested",
-      "outcome": "not-run",
+      "state": "qualified",
+      "outcome": "passed",
       "workflow": {
         "id": "tk-state-resource-failures",
         "scenario": "script",
@@ -5854,16 +5950,24 @@
           "expected": "ordinary: Both consumers of one Program/Texture/VertexBuffer see full red RGBA pixels."
         }
       ],
-      "identity": null,
-      "receipt": null,
-      "blocker": "New execution identity has no transferred receipt; source/scope review and installed proof remain pending.",
-      "next_action": "Obtain bound reviews, then exact same-profile product/workflow evidence under the existing auditors."
+      "identity": {
+        "source_commit": "0a521bb108b7016b6619591e6806fe84b68fad43",
+        "patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "profile_sha256": "9d483892a57e5a8b675f5a9f6c7faf9cc7b017260ece01b971875837723945e7",
+        "wheel_sha256": "5c7142f38b0867fc744a7fe6025b8397f1bada46641b6d05da0d54dadbfab29e"
+      },
+      "receipt": {
+        "path": "build/runs/r2-installed-318/windows/tk-state-resource-1/tk.context.shared.receipt.json",
+        "sha256": "9f5094339d498135c349205861dc2b1b48f92b4129cd03e15d72279660b6b9ea"
+      },
+      "blocker": "Installed selected Windows workflow proved; scoped artifact promotion remains pending.",
+      "next_action": "Retain all attempts, bind producer/archive/terminal evidence and obtain final current-head promotion review."
     },
     {
       "feature": "tk.context.shared",
       "profile": "wsl-software-tk90-cp31213-development",
-      "state": "implemented-untested",
-      "outcome": "not-run",
+      "state": "qualified",
+      "outcome": "passed",
       "workflow": {
         "id": "tk-state-resource-failures",
         "scenario": "script",
@@ -5888,16 +5992,24 @@
           "expected": "ordinary: Both consumers of one Program/Texture/VertexBuffer see full red RGBA pixels."
         }
       ],
-      "identity": null,
-      "receipt": null,
-      "blocker": "New execution identity has no transferred receipt; source/scope review and installed proof remain pending.",
-      "next_action": "Obtain bound reviews, then exact same-profile product/workflow evidence under the existing auditors."
+      "identity": {
+        "source_commit": "0a521bb108b7016b6619591e6806fe84b68fad43",
+        "patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "profile_sha256": "de33015c9b3de6b8cf876ee0cde82962740144dda6cc49aa88847148ccbfc85c",
+        "wheel_sha256": "66f35ab0dae878af1744f2061be1042bd2c5abfd24d3192c7456865f2c6fd3f7"
+      },
+      "receipt": {
+        "path": "build/runs/r2-installed-318/linux/tk-state-resource-1/tk.context.shared.receipt.json",
+        "sha256": "c1e92ae849ed225e9cb81ed90604eb09dc0503bc8c0774a6bad50ddc9acb199f"
+      },
+      "blocker": "Installed selected WSL software Vulkan workflow proved; scoped artifact promotion remains pending.",
+      "next_action": "Retain all attempts, bind producer/archive/terminal evidence and obtain final current-head promotion review."
     },
     {
       "feature": "tk.gl.flush",
       "profile": "windows-gpu-tk86-cp312-development",
-      "state": "implemented-untested",
-      "outcome": "not-run",
+      "state": "qualified",
+      "outcome": "passed",
       "workflow": {
         "id": "tk-state-resource-failures",
         "scenario": "script",
@@ -5922,16 +6034,24 @@
           "expected": "ordinary: Raw glFlush increments actual submissions before readback/finish, without wait or presentation counters."
         }
       ],
-      "identity": null,
-      "receipt": null,
-      "blocker": "New execution identity has no transferred receipt; source/scope review and installed proof remain pending.",
-      "next_action": "Obtain bound reviews, then exact same-profile product/workflow evidence under the existing auditors."
+      "identity": {
+        "source_commit": "0a521bb108b7016b6619591e6806fe84b68fad43",
+        "patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "profile_sha256": "9d483892a57e5a8b675f5a9f6c7faf9cc7b017260ece01b971875837723945e7",
+        "wheel_sha256": "5c7142f38b0867fc744a7fe6025b8397f1bada46641b6d05da0d54dadbfab29e"
+      },
+      "receipt": {
+        "path": "build/runs/r2-installed-318/windows/tk-state-resource-1/tk.gl.flush.receipt.json",
+        "sha256": "50581c46e184ed09b00fe1eefd94d1fe87b47a94abb8b0991c695a89fb7cf341"
+      },
+      "blocker": "Installed selected Windows workflow proved; scoped artifact promotion remains pending.",
+      "next_action": "Retain all attempts, bind producer/archive/terminal evidence and obtain final current-head promotion review."
     },
     {
       "feature": "tk.gl.flush",
       "profile": "wsl-software-tk90-cp31213-development",
-      "state": "implemented-untested",
-      "outcome": "not-run",
+      "state": "qualified",
+      "outcome": "passed",
       "workflow": {
         "id": "tk-state-resource-failures",
         "scenario": "script",
@@ -5956,16 +6076,24 @@
           "expected": "ordinary: Raw glFlush increments actual submissions before readback/finish, without wait or presentation counters."
         }
       ],
-      "identity": null,
-      "receipt": null,
-      "blocker": "New execution identity has no transferred receipt; source/scope review and installed proof remain pending.",
-      "next_action": "Obtain bound reviews, then exact same-profile product/workflow evidence under the existing auditors."
+      "identity": {
+        "source_commit": "0a521bb108b7016b6619591e6806fe84b68fad43",
+        "patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "profile_sha256": "de33015c9b3de6b8cf876ee0cde82962740144dda6cc49aa88847148ccbfc85c",
+        "wheel_sha256": "66f35ab0dae878af1744f2061be1042bd2c5abfd24d3192c7456865f2c6fd3f7"
+      },
+      "receipt": {
+        "path": "build/runs/r2-installed-318/linux/tk-state-resource-1/tk.gl.flush.receipt.json",
+        "sha256": "3220b8b2c5e34c2b54e1646d66890b0110fb5810e9757a0ba070a80d6ef3dba4"
+      },
+      "blocker": "Installed selected WSL software Vulkan workflow proved; scoped artifact promotion remains pending.",
+      "next_action": "Retain all attempts, bind producer/archive/terminal evidence and obtain final current-head promotion review."
     },
     {
       "feature": "tk.object.delete",
       "profile": "windows-gpu-tk86-cp312-development",
-      "state": "implemented-untested",
-      "outcome": "not-run",
+      "state": "qualified",
+      "outcome": "passed",
       "workflow": {
         "id": "tk-state-resource-failures",
         "scenario": "script",
@@ -5990,16 +6118,24 @@
           "expected": "ordinary: Explicit delete of Program/Texture/VertexBuffer and flush/finish retires resources without closing the host."
         }
       ],
-      "identity": null,
-      "receipt": null,
-      "blocker": "New execution identity has no transferred receipt; source/scope review and installed proof remain pending.",
-      "next_action": "Obtain bound reviews, then exact same-profile product/workflow evidence under the existing auditors."
+      "identity": {
+        "source_commit": "0a521bb108b7016b6619591e6806fe84b68fad43",
+        "patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "profile_sha256": "9d483892a57e5a8b675f5a9f6c7faf9cc7b017260ece01b971875837723945e7",
+        "wheel_sha256": "5c7142f38b0867fc744a7fe6025b8397f1bada46641b6d05da0d54dadbfab29e"
+      },
+      "receipt": {
+        "path": "build/runs/r2-installed-318/windows/tk-state-resource-1/tk.object.delete.receipt.json",
+        "sha256": "ff754c9471e2e7e86dd610a6876d3ac4bdffbed4488e127fe2de0b2dc728d2cb"
+      },
+      "blocker": "Installed selected Windows workflow proved; scoped artifact promotion remains pending.",
+      "next_action": "Retain all attempts, bind producer/archive/terminal evidence and obtain final current-head promotion review."
     },
     {
       "feature": "tk.object.delete",
       "profile": "wsl-software-tk90-cp31213-development",
-      "state": "implemented-untested",
-      "outcome": "not-run",
+      "state": "qualified",
+      "outcome": "passed",
       "workflow": {
         "id": "tk-state-resource-failures",
         "scenario": "script",
@@ -6024,16 +6160,24 @@
           "expected": "ordinary: Explicit delete of Program/Texture/VertexBuffer and flush/finish retires resources without closing the host."
         }
       ],
-      "identity": null,
-      "receipt": null,
-      "blocker": "New execution identity has no transferred receipt; source/scope review and installed proof remain pending.",
-      "next_action": "Obtain bound reviews, then exact same-profile product/workflow evidence under the existing auditors."
+      "identity": {
+        "source_commit": "0a521bb108b7016b6619591e6806fe84b68fad43",
+        "patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "profile_sha256": "de33015c9b3de6b8cf876ee0cde82962740144dda6cc49aa88847148ccbfc85c",
+        "wheel_sha256": "66f35ab0dae878af1744f2061be1042bd2c5abfd24d3192c7456865f2c6fd3f7"
+      },
+      "receipt": {
+        "path": "build/runs/r2-installed-318/linux/tk-state-resource-1/tk.object.delete.receipt.json",
+        "sha256": "38ea87064f7611de858b3cd166373dc72fcffc109a019b0eb5641f94f35a89b4"
+      },
+      "blocker": "Installed selected WSL software Vulkan workflow proved; scoped artifact promotion remains pending.",
+      "next_action": "Retain all attempts, bind producer/archive/terminal evidence and obtain final current-head promotion review."
     },
     {
       "feature": "tk.program.texture",
       "profile": "windows-gpu-tk86-cp312-development",
-      "state": "implemented-untested",
-      "outcome": "not-run",
+      "state": "qualified",
+      "outcome": "passed",
       "workflow": {
         "id": "tk-state-resource-failures",
         "scenario": "script",
@@ -6058,16 +6202,24 @@
           "expected": "ordinary: One vec2 attribute and sampler2D compile/render a full-screen triangle in both consumers."
         }
       ],
-      "identity": null,
-      "receipt": null,
-      "blocker": "New execution identity has no transferred receipt; source/scope review and installed proof remain pending.",
-      "next_action": "Obtain bound reviews, then exact same-profile product/workflow evidence under the existing auditors."
+      "identity": {
+        "source_commit": "0a521bb108b7016b6619591e6806fe84b68fad43",
+        "patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "profile_sha256": "9d483892a57e5a8b675f5a9f6c7faf9cc7b017260ece01b971875837723945e7",
+        "wheel_sha256": "5c7142f38b0867fc744a7fe6025b8397f1bada46641b6d05da0d54dadbfab29e"
+      },
+      "receipt": {
+        "path": "build/runs/r2-installed-318/windows/tk-state-resource-1/tk.program.texture.receipt.json",
+        "sha256": "5cb064d04c13aa0d14af50a3bdbb80451a5a870af39fa71dcd1272adf1e2ea2d"
+      },
+      "blocker": "Installed selected Windows workflow proved; scoped artifact promotion remains pending.",
+      "next_action": "Retain all attempts, bind producer/archive/terminal evidence and obtain final current-head promotion review."
     },
     {
       "feature": "tk.program.texture",
       "profile": "wsl-software-tk90-cp31213-development",
-      "state": "implemented-untested",
-      "outcome": "not-run",
+      "state": "qualified",
+      "outcome": "passed",
       "workflow": {
         "id": "tk-state-resource-failures",
         "scenario": "script",
@@ -6092,16 +6244,24 @@
           "expected": "ordinary: One vec2 attribute and sampler2D compile/render a full-screen triangle in both consumers."
         }
       ],
-      "identity": null,
-      "receipt": null,
-      "blocker": "New execution identity has no transferred receipt; source/scope review and installed proof remain pending.",
-      "next_action": "Obtain bound reviews, then exact same-profile product/workflow evidence under the existing auditors."
+      "identity": {
+        "source_commit": "0a521bb108b7016b6619591e6806fe84b68fad43",
+        "patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "profile_sha256": "de33015c9b3de6b8cf876ee0cde82962740144dda6cc49aa88847148ccbfc85c",
+        "wheel_sha256": "66f35ab0dae878af1744f2061be1042bd2c5abfd24d3192c7456865f2c6fd3f7"
+      },
+      "receipt": {
+        "path": "build/runs/r2-installed-318/linux/tk-state-resource-1/tk.program.texture.receipt.json",
+        "sha256": "8dc341c137c2ee98c81dd522a53818bae835e76f25ae8766c00ce6ee28742cd4"
+      },
+      "blocker": "Installed selected WSL software Vulkan workflow proved; scoped artifact promotion remains pending.",
+      "next_action": "Retain all attempts, bind producer/archive/terminal evidence and obtain final current-head promotion review."
     },
     {
       "feature": "tk.readback.rgba",
       "profile": "windows-gpu-tk86-cp312-development",
-      "state": "implemented-untested",
-      "outcome": "not-run",
+      "state": "qualified",
+      "outcome": "passed",
       "workflow": {
         "id": "tk-state-resource-failures",
         "scenario": "script",
@@ -6126,16 +6286,24 @@
           "expected": "ordinary: Full current client RGBA8 array is exactly red/green/blue, independent of Tk corner checks."
         }
       ],
-      "identity": null,
-      "receipt": null,
-      "blocker": "New execution identity has no transferred receipt; source/scope review and installed proof remain pending.",
-      "next_action": "Obtain bound reviews, then exact same-profile product/workflow evidence under the existing auditors."
+      "identity": {
+        "source_commit": "0a521bb108b7016b6619591e6806fe84b68fad43",
+        "patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "profile_sha256": "9d483892a57e5a8b675f5a9f6c7faf9cc7b017260ece01b971875837723945e7",
+        "wheel_sha256": "5c7142f38b0867fc744a7fe6025b8397f1bada46641b6d05da0d54dadbfab29e"
+      },
+      "receipt": {
+        "path": "build/runs/r2-installed-318/windows/tk-state-resource-1/tk.readback.rgba.receipt.json",
+        "sha256": "e29e13f8f45ef9a291910faef9b342b5b31212b98cc7db1749b35a16809f11d2"
+      },
+      "blocker": "Installed selected Windows workflow proved; scoped artifact promotion remains pending.",
+      "next_action": "Retain all attempts, bind producer/archive/terminal evidence and obtain final current-head promotion review."
     },
     {
       "feature": "tk.readback.rgba",
       "profile": "wsl-software-tk90-cp31213-development",
-      "state": "implemented-untested",
-      "outcome": "not-run",
+      "state": "qualified",
+      "outcome": "passed",
       "workflow": {
         "id": "tk-state-resource-failures",
         "scenario": "script",
@@ -6160,16 +6328,24 @@
           "expected": "ordinary: Full current client RGBA8 array is exactly red/green/blue, independent of Tk corner checks."
         }
       ],
-      "identity": null,
-      "receipt": null,
-      "blocker": "New execution identity has no transferred receipt; source/scope review and installed proof remain pending.",
-      "next_action": "Obtain bound reviews, then exact same-profile product/workflow evidence under the existing auditors."
+      "identity": {
+        "source_commit": "0a521bb108b7016b6619591e6806fe84b68fad43",
+        "patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "profile_sha256": "de33015c9b3de6b8cf876ee0cde82962740144dda6cc49aa88847148ccbfc85c",
+        "wheel_sha256": "66f35ab0dae878af1744f2061be1042bd2c5abfd24d3192c7456865f2c6fd3f7"
+      },
+      "receipt": {
+        "path": "build/runs/r2-installed-318/linux/tk-state-resource-1/tk.readback.rgba.receipt.json",
+        "sha256": "de39f72a0334947d5bb54a56ced9f83087815ecd1da753f6ba6433da030c3a08"
+      },
+      "blocker": "Installed selected WSL software Vulkan workflow proved; scoped artifact promotion remains pending.",
+      "next_action": "Retain all attempts, bind producer/archive/terminal evidence and obtain final current-head promotion review."
     },
     {
       "feature": "tk.texture.rgba8",
       "profile": "windows-gpu-tk86-cp312-development",
-      "state": "implemented-untested",
-      "outcome": "not-run",
+      "state": "qualified",
+      "outcome": "passed",
       "workflow": {
         "id": "tk-state-resource-failures",
         "scenario": "script",
@@ -6194,16 +6370,24 @@
           "expected": "ordinary: One uint8 RGBA texel is sampled exactly in both consumers."
         }
       ],
-      "identity": null,
-      "receipt": null,
-      "blocker": "New execution identity has no transferred receipt; source/scope review and installed proof remain pending.",
-      "next_action": "Obtain bound reviews, then exact same-profile product/workflow evidence under the existing auditors."
+      "identity": {
+        "source_commit": "0a521bb108b7016b6619591e6806fe84b68fad43",
+        "patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "profile_sha256": "9d483892a57e5a8b675f5a9f6c7faf9cc7b017260ece01b971875837723945e7",
+        "wheel_sha256": "5c7142f38b0867fc744a7fe6025b8397f1bada46641b6d05da0d54dadbfab29e"
+      },
+      "receipt": {
+        "path": "build/runs/r2-installed-318/windows/tk-state-resource-1/tk.texture.rgba8.receipt.json",
+        "sha256": "1078e9c9f7d29c91fc93d2c4bdf29a3776f0d349282eeb77a6ca1de9aa2082e0"
+      },
+      "blocker": "Installed selected Windows workflow proved; scoped artifact promotion remains pending.",
+      "next_action": "Retain all attempts, bind producer/archive/terminal evidence and obtain final current-head promotion review."
     },
     {
       "feature": "tk.texture.rgba8",
       "profile": "wsl-software-tk90-cp31213-development",
-      "state": "implemented-untested",
-      "outcome": "not-run",
+      "state": "qualified",
+      "outcome": "passed",
       "workflow": {
         "id": "tk-state-resource-failures",
         "scenario": "script",
@@ -6228,16 +6412,24 @@
           "expected": "ordinary: One uint8 RGBA texel is sampled exactly in both consumers."
         }
       ],
-      "identity": null,
-      "receipt": null,
-      "blocker": "New execution identity has no transferred receipt; source/scope review and installed proof remain pending.",
-      "next_action": "Obtain bound reviews, then exact same-profile product/workflow evidence under the existing auditors."
+      "identity": {
+        "source_commit": "0a521bb108b7016b6619591e6806fe84b68fad43",
+        "patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "profile_sha256": "de33015c9b3de6b8cf876ee0cde82962740144dda6cc49aa88847148ccbfc85c",
+        "wheel_sha256": "66f35ab0dae878af1744f2061be1042bd2c5abfd24d3192c7456865f2c6fd3f7"
+      },
+      "receipt": {
+        "path": "build/runs/r2-installed-318/linux/tk-state-resource-1/tk.texture.rgba8.receipt.json",
+        "sha256": "fa77425dd2dd0f601d6aca481013a17647e4542aedf92a7471673680f543d4f2"
+      },
+      "blocker": "Installed selected WSL software Vulkan workflow proved; scoped artifact promotion remains pending.",
+      "next_action": "Retain all attempts, bind producer/archive/terminal evidence and obtain final current-head promotion review."
     },
     {
       "feature": "tk.timer.once",
       "profile": "windows-gpu-tk86-cp312-development",
-      "state": "implemented-untested",
-      "outcome": "not-run",
+      "state": "qualified",
+      "outcome": "passed",
       "workflow": {
         "id": "tk-state-resource-failures",
         "scenario": "script",
@@ -6262,16 +6454,24 @@
           "expected": "ordinary: One public Timer timeout uploads green, stops itself and has no remaining owned job."
         }
       ],
-      "identity": null,
-      "receipt": null,
-      "blocker": "New execution identity has no transferred receipt; source/scope review and installed proof remain pending.",
-      "next_action": "Obtain bound reviews, then exact same-profile product/workflow evidence under the existing auditors."
+      "identity": {
+        "source_commit": "0a521bb108b7016b6619591e6806fe84b68fad43",
+        "patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "profile_sha256": "9d483892a57e5a8b675f5a9f6c7faf9cc7b017260ece01b971875837723945e7",
+        "wheel_sha256": "5c7142f38b0867fc744a7fe6025b8397f1bada46641b6d05da0d54dadbfab29e"
+      },
+      "receipt": {
+        "path": "build/runs/r2-installed-318/windows/tk-state-resource-1/tk.timer.once.receipt.json",
+        "sha256": "92327c4a385b2292f4414232794870730328a441a2f8750da266263ab489483a"
+      },
+      "blocker": "Installed selected Windows workflow proved; scoped artifact promotion remains pending.",
+      "next_action": "Retain all attempts, bind producer/archive/terminal evidence and obtain final current-head promotion review."
     },
     {
       "feature": "tk.timer.once",
       "profile": "wsl-software-tk90-cp31213-development",
-      "state": "implemented-untested",
-      "outcome": "not-run",
+      "state": "qualified",
+      "outcome": "passed",
       "workflow": {
         "id": "tk-state-resource-failures",
         "scenario": "script",
@@ -6296,16 +6496,24 @@
           "expected": "ordinary: One public Timer timeout uploads green, stops itself and has no remaining owned job."
         }
       ],
-      "identity": null,
-      "receipt": null,
-      "blocker": "New execution identity has no transferred receipt; source/scope review and installed proof remain pending.",
-      "next_action": "Obtain bound reviews, then exact same-profile product/workflow evidence under the existing auditors."
+      "identity": {
+        "source_commit": "0a521bb108b7016b6619591e6806fe84b68fad43",
+        "patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "profile_sha256": "de33015c9b3de6b8cf876ee0cde82962740144dda6cc49aa88847148ccbfc85c",
+        "wheel_sha256": "66f35ab0dae878af1744f2061be1042bd2c5abfd24d3192c7456865f2c6fd3f7"
+      },
+      "receipt": {
+        "path": "build/runs/r2-installed-318/linux/tk-state-resource-1/tk.timer.once.receipt.json",
+        "sha256": "5e69869d0c9a69d28cc2026fa094a7dd2209919140b101eea52ce791e27a2b14"
+      },
+      "blocker": "Installed selected WSL software Vulkan workflow proved; scoped artifact promotion remains pending.",
+      "next_action": "Retain all attempts, bind producer/archive/terminal evidence and obtain final current-head promotion review."
     },
     {
       "feature": "tk.wrappers.raster",
       "profile": "windows-gpu-tk86-cp312-development",
-      "state": "implemented-untested",
-      "outcome": "not-run",
+      "state": "qualified",
+      "outcome": "passed",
       "workflow": {
         "id": "tk-state-resource-failures",
         "scenario": "script",
@@ -6330,16 +6538,24 @@
           "expected": "ordinary: Current full-client viewport and disabled blend/depth/scissor render exact textured-triangle pixels."
         }
       ],
-      "identity": null,
-      "receipt": null,
-      "blocker": "New execution identity has no transferred receipt; source/scope review and installed proof remain pending.",
-      "next_action": "Obtain bound reviews, then exact same-profile product/workflow evidence under the existing auditors."
+      "identity": {
+        "source_commit": "0a521bb108b7016b6619591e6806fe84b68fad43",
+        "patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "profile_sha256": "9d483892a57e5a8b675f5a9f6c7faf9cc7b017260ece01b971875837723945e7",
+        "wheel_sha256": "5c7142f38b0867fc744a7fe6025b8397f1bada46641b6d05da0d54dadbfab29e"
+      },
+      "receipt": {
+        "path": "build/runs/r2-installed-318/windows/tk-state-resource-1/tk.wrappers.raster.receipt.json",
+        "sha256": "ab4c874291a109c6818b24bf80153c3577ed581464568e602033c8c5f6d88f40"
+      },
+      "blocker": "Installed selected Windows workflow proved; scoped artifact promotion remains pending.",
+      "next_action": "Retain all attempts, bind producer/archive/terminal evidence and obtain final current-head promotion review."
     },
     {
       "feature": "tk.wrappers.raster",
       "profile": "wsl-software-tk90-cp31213-development",
-      "state": "implemented-untested",
-      "outcome": "not-run",
+      "state": "qualified",
+      "outcome": "passed",
       "workflow": {
         "id": "tk-state-resource-failures",
         "scenario": "script",
@@ -6364,16 +6580,24 @@
           "expected": "ordinary: Current full-client viewport and disabled blend/depth/scissor render exact textured-triangle pixels."
         }
       ],
-      "identity": null,
-      "receipt": null,
-      "blocker": "New execution identity has no transferred receipt; source/scope review and installed proof remain pending.",
-      "next_action": "Obtain bound reviews, then exact same-profile product/workflow evidence under the existing auditors."
+      "identity": {
+        "source_commit": "0a521bb108b7016b6619591e6806fe84b68fad43",
+        "patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "profile_sha256": "de33015c9b3de6b8cf876ee0cde82962740144dda6cc49aa88847148ccbfc85c",
+        "wheel_sha256": "66f35ab0dae878af1744f2061be1042bd2c5abfd24d3192c7456865f2c6fd3f7"
+      },
+      "receipt": {
+        "path": "build/runs/r2-installed-318/linux/tk-state-resource-1/tk.wrappers.raster.receipt.json",
+        "sha256": "c9de525f5139551ddeab538aa8c1efd5e18302793d3df5a19542e3beea4f3950"
+      },
+      "blocker": "Installed selected WSL software Vulkan workflow proved; scoped artifact promotion remains pending.",
+      "next_action": "Retain all attempts, bind producer/archive/terminal evidence and obtain final current-head promotion review."
     },
     {
       "feature": "tk.wrappers.submission",
       "profile": "windows-gpu-tk86-cp312-development",
-      "state": "implemented-untested",
-      "outcome": "not-run",
+      "state": "qualified",
+      "outcome": "passed",
       "workflow": {
         "id": "tk-state-resource-failures",
         "scenario": "script",
@@ -6398,16 +6622,24 @@
           "expected": "ordinary: gloo.clear/flush/finish preserve ordered red/green/blue work and separate submit/wait/present effects."
         }
       ],
-      "identity": null,
-      "receipt": null,
-      "blocker": "New execution identity has no transferred receipt; source/scope review and installed proof remain pending.",
-      "next_action": "Obtain bound reviews, then exact same-profile product/workflow evidence under the existing auditors."
+      "identity": {
+        "source_commit": "0a521bb108b7016b6619591e6806fe84b68fad43",
+        "patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "profile_sha256": "9d483892a57e5a8b675f5a9f6c7faf9cc7b017260ece01b971875837723945e7",
+        "wheel_sha256": "5c7142f38b0867fc744a7fe6025b8397f1bada46641b6d05da0d54dadbfab29e"
+      },
+      "receipt": {
+        "path": "build/runs/r2-installed-318/windows/tk-state-resource-1/tk.wrappers.submission.receipt.json",
+        "sha256": "f759f7f5771e0fd47e8bd145bf0fa992b2d1982bb966e34a163d395b6506a874"
+      },
+      "blocker": "Installed selected Windows workflow proved; scoped artifact promotion remains pending.",
+      "next_action": "Retain all attempts, bind producer/archive/terminal evidence and obtain final current-head promotion review."
     },
     {
       "feature": "tk.wrappers.submission",
       "profile": "wsl-software-tk90-cp31213-development",
-      "state": "implemented-untested",
-      "outcome": "not-run",
+      "state": "qualified",
+      "outcome": "passed",
       "workflow": {
         "id": "tk-state-resource-failures",
         "scenario": "script",
@@ -6432,10 +6664,18 @@
           "expected": "ordinary: gloo.clear/flush/finish preserve ordered red/green/blue work and separate submit/wait/present effects."
         }
       ],
-      "identity": null,
-      "receipt": null,
-      "blocker": "New execution identity has no transferred receipt; source/scope review and installed proof remain pending.",
-      "next_action": "Obtain bound reviews, then exact same-profile product/workflow evidence under the existing auditors."
+      "identity": {
+        "source_commit": "0a521bb108b7016b6619591e6806fe84b68fad43",
+        "patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "profile_sha256": "de33015c9b3de6b8cf876ee0cde82962740144dda6cc49aa88847148ccbfc85c",
+        "wheel_sha256": "66f35ab0dae878af1744f2061be1042bd2c5abfd24d3192c7456865f2c6fd3f7"
+      },
+      "receipt": {
+        "path": "build/runs/r2-installed-318/linux/tk-state-resource-1/tk.wrappers.submission.receipt.json",
+        "sha256": "89a446a0a3ff3f0dd060ee5e632e681f6f7018e70f6dcaf71e56472f05e333a1"
+      },
+      "blocker": "Installed selected WSL software Vulkan workflow proved; scoped artifact promotion remains pending.",
+      "next_action": "Retain all attempts, bind producer/archive/terminal evidence and obtain final current-head promotion review."
     }
   ],
   "applicability": [
@@ -12176,7 +12416,7 @@
       "profile": "windows-gpu-tk86-cp312-development",
       "status": "required",
       "rationale": "Selected additive scope; original parents remain required.",
-      "reviewed": false,
+      "reviewed": true,
       "dependencies": [
         "tk.backend.raster"
       ]
@@ -12186,7 +12426,7 @@
       "profile": "wsl-software-tk90-cp31213-development",
       "status": "required",
       "rationale": "Selected additive scope; original parents remain required.",
-      "reviewed": false,
+      "reviewed": true,
       "dependencies": [
         "tk.backend.raster"
       ]
@@ -12220,7 +12460,7 @@
       "profile": "windows-gpu-tk86-cp312-development",
       "status": "required",
       "rationale": "Selected additive scope; original parents remain required.",
-      "reviewed": false,
+      "reviewed": true,
       "dependencies": []
     },
     {
@@ -12228,7 +12468,7 @@
       "profile": "wsl-software-tk90-cp31213-development",
       "status": "required",
       "rationale": "Selected additive scope; original parents remain required.",
-      "reviewed": false,
+      "reviewed": true,
       "dependencies": []
     },
     {
@@ -12260,7 +12500,7 @@
       "profile": "windows-gpu-tk86-cp312-development",
       "status": "required",
       "rationale": "Selected additive scope; original parents remain required.",
-      "reviewed": false,
+      "reviewed": true,
       "dependencies": [
         "tk.context.shared",
         "tk.object.delete"
@@ -12271,7 +12511,7 @@
       "profile": "wsl-software-tk90-cp31213-development",
       "status": "required",
       "rationale": "Selected additive scope; original parents remain required.",
-      "reviewed": false,
+      "reviewed": true,
       "dependencies": [
         "tk.context.shared",
         "tk.object.delete"
@@ -12306,7 +12546,7 @@
       "profile": "windows-gpu-tk86-cp312-development",
       "status": "required",
       "rationale": "Selected additive scope; original parents remain required.",
-      "reviewed": false,
+      "reviewed": true,
       "dependencies": [
         "tk.application.manual"
       ]
@@ -12316,7 +12556,7 @@
       "profile": "wsl-software-tk90-cp31213-development",
       "status": "required",
       "rationale": "Selected additive scope; original parents remain required.",
-      "reviewed": false,
+      "reviewed": true,
       "dependencies": [
         "tk.application.manual"
       ]
@@ -12350,7 +12590,7 @@
       "profile": "windows-gpu-tk86-cp312-development",
       "status": "required",
       "rationale": "Selected additive scope; original parents remain required.",
-      "reviewed": false,
+      "reviewed": true,
       "dependencies": [
         "tk.canvas.basic",
         "tk.context.current"
@@ -12361,7 +12601,7 @@
       "profile": "wsl-software-tk90-cp31213-development",
       "status": "required",
       "rationale": "Selected additive scope; original parents remain required.",
-      "reviewed": false,
+      "reviewed": true,
       "dependencies": [
         "tk.canvas.basic",
         "tk.context.current"
@@ -12396,7 +12636,7 @@
       "profile": "windows-gpu-tk86-cp312-development",
       "status": "required",
       "rationale": "Selected additive scope; original parents remain required.",
-      "reviewed": false,
+      "reviewed": true,
       "dependencies": [
         "tk.canvas.basic"
       ]
@@ -12406,7 +12646,7 @@
       "profile": "wsl-software-tk90-cp31213-development",
       "status": "required",
       "rationale": "Selected additive scope; original parents remain required.",
-      "reviewed": false,
+      "reviewed": true,
       "dependencies": [
         "tk.canvas.basic"
       ]
@@ -12440,7 +12680,7 @@
       "profile": "windows-gpu-tk86-cp312-development",
       "status": "required",
       "rationale": "Selected additive scope; original parents remain required.",
-      "reviewed": false,
+      "reviewed": true,
       "dependencies": [
         "tk.context.current"
       ]
@@ -12450,7 +12690,7 @@
       "profile": "wsl-software-tk90-cp31213-development",
       "status": "required",
       "rationale": "Selected additive scope; original parents remain required.",
-      "reviewed": false,
+      "reviewed": true,
       "dependencies": [
         "tk.context.current"
       ]
@@ -12484,7 +12724,7 @@
       "profile": "windows-gpu-tk86-cp312-development",
       "status": "required",
       "rationale": "Selected additive scope; original parents remain required.",
-      "reviewed": false,
+      "reviewed": true,
       "dependencies": [
         "tk.context.current"
       ]
@@ -12494,7 +12734,7 @@
       "profile": "wsl-software-tk90-cp31213-development",
       "status": "required",
       "rationale": "Selected additive scope; original parents remain required.",
-      "reviewed": false,
+      "reviewed": true,
       "dependencies": [
         "tk.context.current"
       ]
@@ -12528,7 +12768,7 @@
       "profile": "windows-gpu-tk86-cp312-development",
       "status": "required",
       "rationale": "Selected additive scope; original parents remain required.",
-      "reviewed": false,
+      "reviewed": true,
       "dependencies": [
         "tk.context.current"
       ]
@@ -12538,7 +12778,7 @@
       "profile": "wsl-software-tk90-cp31213-development",
       "status": "required",
       "rationale": "Selected additive scope; original parents remain required.",
-      "reviewed": false,
+      "reviewed": true,
       "dependencies": [
         "tk.context.current"
       ]
@@ -12572,7 +12812,7 @@
       "profile": "windows-gpu-tk86-cp312-development",
       "status": "required",
       "rationale": "Selected additive scope; original parents remain required.",
-      "reviewed": false,
+      "reviewed": true,
       "dependencies": [
         "tk.context.shared",
         "tk.buffer.triangle",
@@ -12585,7 +12825,7 @@
       "profile": "wsl-software-tk90-cp31213-development",
       "status": "required",
       "rationale": "Selected additive scope; original parents remain required.",
-      "reviewed": false,
+      "reviewed": true,
       "dependencies": [
         "tk.context.shared",
         "tk.buffer.triangle",
@@ -12622,7 +12862,7 @@
       "profile": "windows-gpu-tk86-cp312-development",
       "status": "required",
       "rationale": "Selected additive scope; original parents remain required.",
-      "reviewed": false,
+      "reviewed": true,
       "dependencies": [
         "tk.context.current"
       ]
@@ -12632,7 +12872,7 @@
       "profile": "wsl-software-tk90-cp31213-development",
       "status": "required",
       "rationale": "Selected additive scope; original parents remain required.",
-      "reviewed": false,
+      "reviewed": true,
       "dependencies": [
         "tk.context.current"
       ]
@@ -12666,7 +12906,7 @@
       "profile": "windows-gpu-tk86-cp312-development",
       "status": "required",
       "rationale": "Selected additive scope; original parents remain required.",
-      "reviewed": false,
+      "reviewed": true,
       "dependencies": [
         "tk.context.shared",
         "tk.object.delete",
@@ -12678,7 +12918,7 @@
       "profile": "wsl-software-tk90-cp31213-development",
       "status": "required",
       "rationale": "Selected additive scope; original parents remain required.",
-      "reviewed": false,
+      "reviewed": true,
       "dependencies": [
         "tk.context.shared",
         "tk.object.delete",
@@ -12714,7 +12954,7 @@
       "profile": "windows-gpu-tk86-cp312-development",
       "status": "required",
       "rationale": "Selected additive scope; original parents remain required.",
-      "reviewed": false,
+      "reviewed": true,
       "dependencies": [
         "tk.application.manual"
       ]
@@ -12724,7 +12964,7 @@
       "profile": "wsl-software-tk90-cp31213-development",
       "status": "required",
       "rationale": "Selected additive scope; original parents remain required.",
-      "reviewed": false,
+      "reviewed": true,
       "dependencies": [
         "tk.application.manual"
       ]
@@ -12758,7 +12998,7 @@
       "profile": "windows-gpu-tk86-cp312-development",
       "status": "required",
       "rationale": "Selected additive scope; original parents remain required.",
-      "reviewed": false,
+      "reviewed": true,
       "dependencies": [
         "tk.context.current"
       ]
@@ -12768,7 +13008,7 @@
       "profile": "wsl-software-tk90-cp31213-development",
       "status": "required",
       "rationale": "Selected additive scope; original parents remain required.",
-      "reviewed": false,
+      "reviewed": true,
       "dependencies": [
         "tk.context.current"
       ]
@@ -12802,7 +13042,7 @@
       "profile": "windows-gpu-tk86-cp312-development",
       "status": "required",
       "rationale": "Selected additive scope; original parents remain required.",
-      "reviewed": false,
+      "reviewed": true,
       "dependencies": [
         "tk.gl.flush",
         "tk.context.current"
@@ -12813,7 +13053,7 @@
       "profile": "wsl-software-tk90-cp31213-development",
       "status": "required",
       "rationale": "Selected additive scope; original parents remain required.",
-      "reviewed": false,
+      "reviewed": true,
       "dependencies": [
         "tk.gl.flush",
         "tk.context.current"

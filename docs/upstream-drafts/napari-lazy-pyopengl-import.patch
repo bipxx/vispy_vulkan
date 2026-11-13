@@ -1,0 +1,122 @@
+diff --git a/src/napari/_vispy/_tests/test_canvas.py b/src/napari/_vispy/_tests/test_canvas.py
+index dd4ed837..bf3ffbf6 100644
+--- a/src/napari/_vispy/_tests/test_canvas.py
++++ b/src/napari/_vispy/_tests/test_canvas.py
+@@ -1,5 +1,12 @@
++import ast
++import inspect
++import sys
++from functools import partial
++
+ import numpy as np
+ 
++from napari._vispy import canvas as canvas_module
++from napari._vispy.canvas import _gl_errors
+ from napari.components.overlays import (
+     BoundingBoxOverlay,
+     CanvasOverlay,
+@@ -369,3 +376,60 @@ def test_inserted_layer_receives_shared_world_units_when_units_unchanged(
+ 
+     assert viewer.layers.extent.units == (reg.nm, reg.nm)
+     assert canvas.layer_to_visual[image_um].world_units == (reg.nm, reg.nm)
++
++
++def _raise(error):
++    raise error
++
++
++class _RecordImports:
++    """A meta path finder that records attempts to import ``OpenGL.error``."""
++
++    def __init__(self):
++        self.attempts = []
++
++    def find_spec(self, name, path=None, target=None):
++        if name == 'OpenGL.error':
++            self.attempts.append(name)
++
++
++def test_canvas_has_no_module_level_opengl_import():
++    tree = ast.parse(inspect.getsource(canvas_module))
++    top = {
++        node.module or ''
++        for node in tree.body
++        if isinstance(node, ast.ImportFrom)
++    }
++    top |= {
++        alias.name
++        for node in tree.body
++        if isinstance(node, ast.Import)
++        for alias in node.names
++    }
++    assert not {name for name in top if name.split('.')[0] == 'OpenGL'}
++
++
++def test_gl_errors_returns_pyopengl_error():
++    from OpenGL.error import GLError
++
++    assert _gl_errors() == (GLError,)
++
++
++def test_gl_errors_does_not_import_pyopengl(monkeypatch):
++    # Without vispy's PyOpenGL backend, OpenGL.error is not imported; asking
++    # for the error types must not import it (and load the GL library).
++    recorder = _RecordImports()
++    monkeypatch.delitem(sys.modules, 'OpenGL.error', raising=False)
++    monkeypatch.setattr(sys, 'meta_path', [recorder, *sys.meta_path])
++    assert _gl_errors() == ()
++    assert recorder.attempts == []
++
++
++def test_layer_removal_still_suppresses_gl_error(qt_viewer, monkeypatch):
++    from OpenGL.error import GLError
++
++    layer = qt_viewer.viewer.add_points([[0, 0]])
++    context = qt_viewer.canvas._scene_canvas.context
++    error = GLError(err=1282, baseOperation='glFinish')
++    monkeypatch.setattr(context, 'finish', partial(_raise, error))
++    qt_viewer.viewer.layers.remove(layer)  # must not raise
+diff --git a/src/napari/_vispy/canvas.py b/src/napari/_vispy/canvas.py
+index 56170ed5..81a395a9 100644
+--- a/src/napari/_vispy/canvas.py
++++ b/src/napari/_vispy/canvas.py
+@@ -4,6 +4,7 @@ from __future__ import annotations
+ 
+ import contextlib
+ import gc
++import sys
+ import warnings
+ from functools import partial
+ from itertools import zip_longest
+@@ -12,7 +13,6 @@ from typing import TYPE_CHECKING, Any, ClassVar
+ from weakref import WeakSet
+ 
+ import numpy as np
+-from OpenGL.error import GLError
+ from superqt.utils import qthrottled
+ from vispy.scene import Grid, SceneCanvas as SceneCanvas_, ViewBox, Widget
+ 
+@@ -879,7 +879,7 @@ class VispyCanvas:
+         # If the GPU is still processing deletion commands from the removed layer, it can lead to
+         # memory access violations when the scene graph is updated with new resources.
+         # finish() ensures complete GPU synchronization before proceeding
+-        with contextlib.suppress(AttributeError, GLError):
++        with contextlib.suppress(AttributeError, *_gl_errors()):
+             # need to suppress the error because of implementation details of vispy
+             self._scene_canvas.context.finish()
+ 
+@@ -1485,3 +1485,14 @@ class VispyCanvas:
+     def font_info(self) -> FontInfo:
+         """Get the vispy visual for a given overlay."""
+         return self._font_info
++
++
++def _gl_errors() -> tuple[type[BaseException], ...]:
++    """Return PyOpenGL's error type if PyOpenGL is in use, without importing it.
++
++    ``context.finish()`` can only raise ``GLError`` through PyOpenGL, which
++    vispy's ``gl+`` backend imports. Importing ``OpenGL.error`` here would load
++    the platform GL library even with vispy builds that do not use PyOpenGL.
++    """
++    error = sys.modules.get('OpenGL.error')
++    return () if error is None else (error.GLError,)

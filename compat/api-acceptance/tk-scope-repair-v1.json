@@ -1,0 +1,152 @@
+{
+  "schema": 1,
+  "status": "PASS_SCOPE_REPAIRS_REVISED_REVIEW_AND_CAPTURE_REPLAYS_PENDING",
+  "candidate": "tk-state-resource-5",
+  "supersedes_for_next_qualification": [
+    "tk-state-resource-4",
+    "tk-capture-4"
+  ],
+  "source_commit": "b38c4f9068d6a425eef43b62313f0f4cf37f57d9",
+  "verification": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\tk-scope-record-repair-479\\verification.json",
+    "sha256": "f46040d82b33acd09b0bafb04be57b7a91fb8dc8a52d91dfda261808a1eebab7"
+  },
+  "previous_review": {
+    "path": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\compat\\api-acceptance\\successor-peer-review-v1.json",
+    "sha256": "274db0fe9a2cb0cb7e526e31d5f0219cc8f327ace413d28c31ff9f7250b3defa"
+  },
+  "review_packet": {
+    "path": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\compat\\candidates\\tk-state-resource-5\\review-packet.json",
+    "sha256": "0ca8eb1ba6f5fd5704ca9a242150f5b2ba2b81f74e3fa914f4eba5a46776ac91"
+  },
+  "requested_criteria": 128,
+  "dependency_closure": 128,
+  "archive_prerequisites_passed": 2,
+  "fixes": [
+    "F1: merged capture with state and added current-target dependency in both profiles; capture workflow declares the complete prerequisite feature closure.",
+    "F2: proposal and four textured-program criteria now describe the existing vec2 position, constant vec4 tint, varying color, sampler and triangle fixture.",
+    "F6: native Vulkan Tk presentation explicitly excluded from the raster candidate."
+  ],
+  "current_host_row_observations": 8,
+  "host_observation_index": {
+    "path": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\compat\\api-acceptance\\mandatory-current-wheels-observations-v2.json",
+    "sha256": "fe05fac63dbc49531c825046c0385913982f079bb71f3ae7fdea6b44cf926b59"
+  },
+  "shipping_sources_unchanged": 534,
+  "old_candidate_records_preserved": 138,
+  "revised_source_review": null,
+  "revised_scope_review": null,
+  "capture_replays_required": 2,
+  "required_capture_workflow": {
+    "id": "tk-capture-formats",
+    "script": {
+      "path": "tools/tkinter_capture_scenario.py",
+      "sha256": "bcce154942b072eaf4d192687ae3afd43c973b3cfd535ab22310cee58ddc7888"
+    },
+    "profiles": [
+      "windows-gpu-tk86-cp312-development",
+      "wsl-software-tk90-cp31213-development"
+    ],
+    "features": [
+      "tk.application.manual",
+      "tk.backend.raster",
+      "tk.canvas.basic",
+      "tk.context.current",
+      "tk.readback.crop-formats"
+    ],
+    "modes": [
+      "embedded"
+    ],
+    "launch": [
+      "{consumer_python}",
+      "tools/tkinter_capture_scenario.py"
+    ],
+    "acceptance": [
+      {
+        "kind": "ordinary",
+        "nodeid": "tests/native/test_tkinter_capture_scenario.py::test_real_tk_capture_observer_scenario",
+        "cases": 1,
+        "expected": "Independent RGBA8 byte and normalized-float32 crop(3,4,131,69) on257x129 target preserves orientation/alpha and every pixel.",
+        "source": {
+          "path": "tests/native/test_tkinter_capture_scenario.py",
+          "sha256": "a06eb870b25fe0b814facfd10bfed50db9a43f645873a2eb54a80080a632ab55"
+        }
+      },
+      {
+        "kind": "mutation",
+        "nodeid": "tests/native/test_tkinter_capture_scenario.py::test_real_tk_capture_observer_scenario",
+        "cases": 1,
+        "expected": "Resize to301x177 then crop(5,7,157,97), crossing both quadrant boundaries, with independently expected byte/float values.",
+        "source": {
+          "path": "tests/native/test_tkinter_capture_scenario.py",
+          "sha256": "a06eb870b25fe0b814facfd10bfed50db9a43f645873a2eb54a80080a632ab55"
+        }
+      },
+      {
+        "kind": "failure",
+        "nodeid": "tests/native/test_tkinter_capture_scenario.py::test_real_tk_capture_observer_scenario",
+        "cases": 1,
+        "expected": "Malformed three-component viewport raises original ValueError without submit/finish/wait/present or consuming real pending clear work.",
+        "source": {
+          "path": "tests/native/test_tkinter_capture_scenario.py",
+          "sha256": "a06eb870b25fe0b814facfd10bfed50db9a43f645873a2eb54a80080a632ab55"
+        }
+      },
+      {
+        "kind": "recovery",
+        "nodeid": "tests/native/test_tkinter_capture_scenario.py::test_real_tk_capture_observer_scenario",
+        "cases": 1,
+        "expected": "Valid cropped byte/float retry consumes that exact retained cyan-alpha clear without an intervening repaint or presentation.",
+        "source": {
+          "path": "tests/native/test_tkinter_capture_scenario.py",
+          "sha256": "a06eb870b25fe0b814facfd10bfed50db9a43f645873a2eb54a80080a632ab55"
+        }
+      }
+    ],
+    "expected": "All four finite modes assert in the same self-contained actual Tk/current-target workflow. Original installed/member/absence/control/shutdown gates remain required.",
+    "observer": [
+      "{controller_python}",
+      "tools/audit_no_opengl.py",
+      "run",
+      "--python",
+      "{consumer_python}",
+      "--wheel",
+      "{wheel}",
+      "--scenario",
+      "script",
+      "--script",
+      "tools/tkinter_capture_scenario.py",
+      "--workflow-id",
+      "tk-capture-formats",
+      "--covered-feature",
+      "tk.application.manual",
+      "--covered-feature",
+      "tk.backend.raster",
+      "--covered-feature",
+      "tk.canvas.basic",
+      "--covered-feature",
+      "tk.context.current",
+      "--covered-feature",
+      "tk.readback.crop-formats",
+      "--dependencies-report",
+      "{dependency_report}",
+      "--policy",
+      "deny",
+      "--output",
+      "{evidence_dir}/tk-capture-formats.json"
+    ]
+  },
+  "source_approvals_transferred": 0,
+  "scope_approvals_transferred": 0,
+  "artifact_admitted": false,
+  "native_build": false,
+  "environment_created": false,
+  "scratch_created": false,
+  "tests_rerun": false,
+  "scope_notes": [
+    "Four workflows per platform were observed; only state/resource/failures and capture have criterion mappings. Extra workflows do not add admitted criteria.",
+    "Composite failure/recovery participation remains finite; no universal invalid-input claim.",
+    "F3 older-CPython Destroy-binding concern remains unverified and outside the two bound CPython profiles.",
+    "New capture feature labels change the exact observer recipe; preserve old observations and collect two fresh platform capture replays. Other eight host-row observations are unchanged."
+  ]
+}

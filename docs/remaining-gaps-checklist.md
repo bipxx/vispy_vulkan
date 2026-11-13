@@ -1,0 +1,478 @@
+# Remaining gaps checklist
+
+Revision6 source/scope review (2026-11-13): independent decisions are approved
+and bound to candidate, coverage, execution, admission closure and both native
+reuse digests. [Decision](../compat/api-acceptance/successor-peer-review-v3.json). All four preparation validators
+require and pass the new reviews; both original native producer joins validate.
+Scope digests, runtime, fixtures and wheels are unchanged. No installed rows or
+artifacts are admitted. Qualification Git head, installed receipt/history/retention
+bindings, required hosted CI and promotion remain open.
+
+
+Installed criterion receipt update (2026-11-13): both exact mapped pytest fixtures
+pass on each selected Windows/WSL wheel, with all six setup/call/teardown events
+per platform, 537 member checks, zero source overrides and zero shutdown gauges.
+[Evidence](../compat/api-acceptance/installed-criterion-phases-v1.json). These fresh phase receipts close the missing
+pytest-report format; qualified row/retention joins remain pending.
+
+
+### Current preparation — 2026-11-13
+
+`tk-state-resource-6` renews the independently approved qualification-tool
+identities. Its 64 criteria / 128 profile bindings and prerequisite closure
+validate; all earlier candidate records and 608 runtime/build/lock/license
+references remain byte-exact. CI now explicitly selects revision6, validates
+its admission selection and runs retained-evidence tests. All 23 required
+jobs remain required. Five preparation CLIs pass locally; CI/retention
+contracts pass 102 cases. [Evidence](../compat/api-acceptance/qualification-candidate-renewal-v1.json).
+
+This is an **unreviewed preparation**, not installed or release qualification.
+The subject now declares the store selector; producer references await new
+candidate source/scope decisions. Qualification Git head, complete installed
+histories/receipts/retention, required hosted CI and promotion remain open.
+No native build, installation, artifact admission or new scratch occurred.
+The earlier checkpoints below retain their original date and byte scope.
+
+
+
+### Qualification-tool follow-up — 2026-11-13
+
+Independent follow-up approves the exact eight tool/schema/test hashes for candidate
+renewal only ([decision](../compat/api-acceptance/qualification-tools-followup-v1.json)). Coordinator rehashed those bytes; the review child
+exited 0 and was awaited. Prior 372 contract passes and 6 focused passes remain
+source evidence; no wheels were rebuilt or admitted. Renewed candidate/source/scope
+bindings, the subject store selector, complete installed histories/receipts and
+real producer retention remain pending. CI must select the renewed preparation
+records **and run `tests/contract/test_retained_evidence.py`**, then renew its
+workflow policy hash. No required job is waived. Low review limits (Windows
+transitive retention, early-failure attribution and incremental failure reporting)
+are recorded in the decision; they are not broader coverage claims.
+
+Reviewed **2026-11-13** against local source, the
+[coverage checklist](coverage-checklist.md), acceptance manifests and the
+[consolidated plan](superpowers/plans/2026-10-28-consolidated-plan.md).
+This is the concise execution view; those records retain detailed evidence and
+stable IDs. An unchecked item can mean missing verification or disposition,
+not necessarily missing implementation. Exact test scopes are linked below.
+
+The [coverage gap review](coverage-gap-review-2026-11-08.md) identified three
+current-wheel refresh needs. They are now closed: 57 event, 39 Tk input and
+30 depth cases pass per platform on the latest wheels, with original cases and
+source pins preserved. [Fresh exact-artifact evidence](../compat/api-acceptance/current-event-input-depth-v1.json)
+is separate from the unchanged older results. The 32 literal-sampler cases are
+also already included in current passing suites. Independent review and
+installed/profile qualification remain the next release work.
+
+The target remains practical VisPy compatibility. Full upstream parity, exact
+OpenGL rasterization and laboratory display-latency parity are not required.
+Optional scope below does not become a release requirement by appearing here.
+
+## Current baseline
+
+- Published release: `v0.17.0-vulkan.1`. Its approvals retain their original scope.
+- Selected experimental successor: `0.17.0+vulkan.2`, Windows wheel `a86b030b…`
+  and Linux wheel `48164e05…`, with current Tk, both headless, all three Windows Qt and all three WSL Qt observations.
+- Earlier successor wheels `ba8a54c5…` / `4bc3cd77…` retain 75 sampler cases, 120 numeric
+  uniform-array cases, and 285 attribute cases per platform across separate
+  retained runs. These are finite suites, not exhaustive API coverage.
+- See [samplers](../compat/api-acceptance/dynamic-explicit-samplers-wip.json),
+  [uniforms](../compat/api-acceptance/uniform-arrays-v1.json) and
+  [attributes](../compat/api-acceptance/attributes-v1.json) for exact hashes,
+  values, platforms, failures and cleanup. Local functional passes do not
+  supply successor review, strict-profile admission or release approval.
+
+## Latest closed bounded task
+
+- [x] **FIX-06-NATIVE-JOIN (2026-11-13):** original Windows402 and Linux414
+  producer joins validated against the reviewed revision-5 records; both producer
+  references were bound to the subject before the qualification-tool change.
+  [Evidence](../compat/api-acceptance/qualification-binding-wip-v1.json). No artifact admission.
+- [x] **FIX-06-WORKFLOW-ATTEMPT-SOURCE (2026-11-13):** optional per-workflow
+  latest-success selection is implemented, preserving legacy subjects. Nine new
+  selection/integration cases reject stale failures, omitted/duplicate workflows,
+  incomplete histories and swapped runtime reports; 52 focused contract cases pass.
+  Full-file run also retains one stale historical preparation-toolset failure.
+  This is source-tested qualification tooling, not installed-wheel admission.
+- [x] **FIX-06-EVIDENCE-ADAPTER-SOURCE (2026-11-13):** explicit secondary-store
+  raw report references and mixed-root retention are implemented. Both original
+  WSL state/resource and capture reports normalize all three gates. The original
+  WSL cleanup validates all 80 inputs, including four exact archived documents.
+  Source-local checks and all original report bytes remain intact.
+  [Evidence](../compat/api-acceptance/secondary-evidence-adapter-wip-v1.json).
+  Broad contracts: 344 pass; archive follow-up: 99 pass; final opt-in guard: 2 pass.
+  Frozen-record tests retain scope and now reject stale current-tool claims.
+  These are source-tool and retained-evidence joins, not artifact admission.
+- [ ] **FIX-06-EVIDENCE-BINDINGS:** bind complete profile/workflow histories,
+  pytest/distribution receipts and cleanup evidence for both selected wheels.
+  Preserve original origins; unselected paths need exact retained-byte bindings.
+- [x] **FIX-06-TOOL-REVIEW-FIXES-SOURCE (2026-11-13):** resolved-failure
+  profile/wheel context, native/store namespaces and source-side scratch handling
+  are fixed. Early failures have history-bound workflow attribution; derived
+  cleanup views are checked against original process/result bytes. Full source
+  contracts pass 372 cases; exact error follow-up passes 6. Both WSL reports and
+  the 80-input cleanup still validate; native input joins check 245 Windows and
+  167 Linux references. [Fix evidence](../compat/api-acceptance/qualification-tool-fixes-wip-v1.json).
+- [x] **FIX-06-TOOL-FOLLOWUP-REVIEW (2026-11-13):** independent review approves
+  the exact eight tool/schema/test hashes for candidate renewal only. Coordinator
+  rehashed them. [Decision](../compat/api-acceptance/qualification-tools-followup-v1.json).
+  Run486 remains authoritative for its old hashes; candidate reviews are pending.
+- [x] **FIX-06-CI-PREPARATION-WIRING (2026-11-13):** CPU workflow explicitly
+  validates revision6 preparation, coverage, execution and admission selection;
+  retained-evidence tests are included and exact policy hash renewed. Five CLIs
+  pass locally, 102 CI/retention contracts pass; all 23 required jobs are preserved.
+- [ ] **FIX-06-CI-EVIDENCE-DELIVERY:** run required CI at the frozen qualification
+  head; local store-backed positive proof remains an explicit subject overlay.
+  Local CLI checks do not supply hosted CI or installed admission.
+- [x] **FIX-06-QUALIFICATION-TOOL-REVIEW (2026-11-13):** exact tool follow-up
+  and renewed revision6 source/scope decisions approved; new candidate identities
+  and native joins validate. Revision5 approvals retain their original scope.
+- [x] **FIX-06-INSTALLED-PYTEST-PHASES (2026-11-13):** both mapped fixtures pass
+  on each selected wheel with complete setup/call/teardown records; 537 members
+  verified, zero source overrides and shutdown gauges. [Receipts](../compat/api-acceptance/installed-criterion-phases-v1.json).
+- [ ] **FIX-06-QUALIFICATION-HEAD:** freeze the qualification implementation
+  and CI/test bytes in an isolated Git commit; keep runtime source identity.
+- [ ] **FIX-06-INSTALLED-ROW-JOINS:** bind the new phase receipts and original
+  observer gates to same-profile identities and complete histories/retention.
+
+- [x] **FIX-06-REVIEW-SCOPE-REPAIR:** merged capture into
+  `tk-state-resource-5` with an enforced current-target prerequisite chain;
+  corrected the four textured-program values and proposal; explicitly excluded
+  experimental native presentation. Existing validators pass all 128 criteria
+  with closure 128 and both archive prerequisites. Runtime/fixtures/wheels and
+  all earlier candidate records are unchanged. [Scope repair](../compat/api-acceptance/tk-scope-repair-v1.json).
+- [x] **FIX-06-REVISED-REVIEW (2026-11-13):** independent source and scope
+  decisions are approved and bound to `tk-state-resource-5`. Candidate, coverage,
+  execution and 128-criterion selection pass their review-required verifiers.
+  Scope hashes are unchanged; no artifact is admitted. [Review evidence](../compat/api-acceptance/successor-peer-review-v2.json).
+- [x] **FIX-06-CAPTURE-REBIND-WINDOWS (2026-11-13):** reviewed five-feature
+  capture recipe passes fresh three-gate replay on wheel `a86b030b…`; same-child
+  `tk-capture-1` validates all four branches, 537 members and nine zero counters.
+  [Evidence](../compat/api-acceptance/tk-capture-rebind-windows-v1.json). No admission.
+- [x] **FIX-06-CAPTURE-REBIND-WSL (2026-11-13):** reviewed five-feature
+  capture recipe passes fresh three-gate replay on wheel `48164e05…`; same-child
+  `tk-capture-1` validates all four branches, 537 members and nine zero counters.
+  [Evidence](../compat/api-acceptance/tk-capture-rebind-wsl-v1.json).
+- [x] **FIX-06-CAPTURE-REBIND:** both reviewed platform recipes now pass.
+  The earlier WSL Drvfs setup failure is retained and cleaned; bounded POSIX
+  temporary storage and borrowed read-only dependencies resolved the installer
+  filesystem issue. Observations still need execution-attempt/subject bindings.
+
+- [x] **FIX-06-WSL-PYSIDE6-OBSERVATION:** the selected Linux wheel passes
+  all seven unmodified plain-QWidget stages on pinned software Vulkan, including
+  capture/update ownership, overlays/input, resize/hide/restore, device recovery
+  and close. Installed inventory and fresh replay pass all three graphics gates;
+  537 package members and nine zero shutdown counters are verified. Dependencies
+  were borrowed read-only, with only the selected wheel in a private bounded overlay.
+  [Evidence](../compat/api-acceptance/mandatory-wsl-pyside6-v2.json). **All eight host-row observations collected.** Independent
+  review and formal admission remain pending.
+
+- [x] **FIX-06-WSL-PYQT6-OBSERVATION:** the selected Linux wheel passes
+  all seven unmodified plain-QWidget stages on pinned software Vulkan, including
+  capture/update ownership, overlays/input, resize/hide/restore, device recovery
+  and close. Installed inventory and fresh replay pass all three graphics gates;
+  537 package members and nine zero shutdown counters are verified. The retained
+  PyQt6 dependencies were borrowed read-only, with a private selected-wheel overlay.
+  [Evidence](../compat/api-acceptance/mandatory-wsl-pyqt6-v2.json). **All eight host-row observations collected.** Independent review and formal admission remain pending.
+
+- [x] **FIX-06-WSL-PYQT5-OBSERVATION:** the selected Linux wheel passes
+  all seven unmodified plain-QWidget stages on pinned software Vulkan, including
+  capture/update ownership, overlays/input, resize/hide/restore, device recovery
+  and close. Installed inventory and fresh replay pass all three graphics gates;
+  537 package members and nine zero shutdown counters are verified. Dependencies
+  were borrowed read-only; only the selected wheel used a private bounded overlay.
+  [Evidence](../compat/api-acceptance/mandatory-wsl-pyqt5-v2.json). **All eight host-row observations collected.** Independent review and formal admission remain pending.
+
+- [x] **FIX-06-WINDOWS-PYSIDE6-OBSERVATION:** the selected Windows wheel passes
+  all seven plain-QWidget stages, including rendering/capture ownership,
+  parent/show/resize, overlays and input, hide/restore, device recovery and close.
+  Installed inventory and fresh replay pass all three graphics gates; 537 package
+  members and nine zero shutdown gauges are verified. Retained selected Qt wheels
+  were installed offline without native builds.
+  [Evidence](../compat/api-acceptance/mandatory-windows-pyside6-v2.json). **All eight host-row observations collected.** Independent review and formal admission remain pending.
+
+- [x] **FIX-06-WINDOWS-PYQT6-OBSERVATION:** the selected Windows wheel passes
+  all seven plain-QWidget stages, including rendering/capture ownership,
+  parent/show/resize, overlays and input, hide/restore, device recovery and close.
+  Installed inventory and fresh replay pass all three graphics gates; 537 package
+  members and nine zero shutdown gauges are verified. Retained selected Qt wheels
+  were installed offline without native builds.
+  [Evidence](../compat/api-acceptance/mandatory-windows-pyqt6-v2.json). **All eight host-row observations collected.** Independent review and formal admission remain pending.
+
+- [x] **FIX-06-WINDOWS-PYQT5-OBSERVATION:** the selected Windows wheel passes
+  all seven plain-QWidget probe stages: exact installed payload and Vulkan device,
+  parent/show/resize, capture/update ownership, overlays and input, hide/restore,
+  device-loss recovery and close. Installed inventory and a fresh replay pass all
+  three graphics gates; 537 members and nine zero shutdown gauges are verified.
+  The retained selected Qt profile is installed offline without a native build.
+  [Evidence](../compat/api-acceptance/mandatory-windows-pyqt5-v2.json). **All eight host-row observations collected.** Independent review and formal admission remain pending.
+
+- [x] **FIX-06-WSL-HEADLESS-OBSERVATION:** the Linux wheel passes 95 GPU tests,
+  rendering/compiled text, 4,096 markers and 36 scientific cases on pinned
+  software Vulkan. Installed inventory and fresh replay pass all three gates,
+  with 537 members verified. Dependencies are reused read-only, with only the
+  selected wheel installed into a private overlay. The original pytest capture
+  failure is retained; bounded POSIX temporary storage fixes its file semantics.
+  [Observation packet](../compat/api-acceptance/mandatory-wsl-headless-v2.json).
+  **All eight host-row observations collected.** No admissions transfer.
+
+- [x] **FIX-06-WINDOWS-HEADLESS-OBSERVATION:** the current Windows wheel passes
+  95 GPU tests, rendering/compiled text, a 4,096-marker scene and 36 scientific
+  cases with the existing value/pixel oracles. Installed inventory and fresh
+  replay pass all three graphics gates; 537 members and zero-resource cleanup
+  are checked. [Observation packet](../compat/api-acceptance/mandatory-windows-headless-v2.json).
+  Both headless observations are collected. Canonical matrix entries and
+  admissions remain unchanged; all eight row observations are collected.
+
+- [x] **FIX-06-WSL-COLLECTOR:** resolved the stale native collector mismatch.
+  The old binary lacks the complete-record parser in frozen source and fails
+  its fragmented-record controls. An unmodified-source rebuild passes all 20
+  controls. Original binary/evidence retained; shipping source and wheels unchanged.
+- [x] **FIX-06-TK-WSL-OBSERVATIONS:** all four workflows pass all three graphics
+  gates in fresh installed replays on Linux wheel `48164e05…`. Each worker
+  verifies 537 members with zero overrides. All workflows use the refreshed
+  collector and one offline consumer. [Current packet](../compat/api-acceptance/tk-strict-wsl-v2.json).
+  Independent source/scope review, candidate admission and formal admission of
+  the eight mandatory host rows remain open. No previous approvals transfer.
+- [x] **FIX-06-TK-WSL-OBSERVATIONS-PARTIAL:** earlier three-workflow and
+  diagnostic packets remain historical, with failed attempts preserved.
+
+- [x] **FIX-06-TK-WINDOWS-OBSERVATIONS:** all four pinned Tk candidate workflows
+  pass installed dependency inventory and fresh replay with all three graphics
+  gates on Windows wheel `a86b030b…`. The existing interpreter, native outputs,
+  observer and offline dependency wheels were reused; the small managed consumer
+  is disposable. [Exact reports and scope](../compat/api-acceptance/tk-strict-windows-v1.json).
+  This closes the Windows observation collection step only. Candidate admission,
+  independent review and eight mandatory host rows remain open.
+
+- [x] **LIF-07-NATIVE-WHEELS:** new experimental Windows `a86b030b…` and Linux
+  `48164e05…` wheels contain native Tk at source `b38c4f90`. Each passes 186
+  installed cases, with 537 package members verified and zero source overrides.
+  Functional validators and five active capture controls pass per platform.
+  WSL native and raster checks use separately identified existing drivers;
+  failed MSAA and stale-harness attempts remain retained. All six packaging/test
+  scratch directories are cleaned. [Evidence](../compat/api-acceptance/tk-native-installed-v1.json).
+  Candidate revision 4 renews preparation only. Next: independent source/scope
+  review, then the unchanged strict installed/profile admission requirements.
+
+- [x] **LIF-07-NATIVE-PROTOTYPE — Optional native Tk source prototype:**
+  seven cases pass per Windows/WSL-X11 source overlay. Tk raster stays default;
+  native mode avoids PhotoImage readback and uses the existing Vulkan surface
+  APIs. WSL uses an explicitly hashed existing X11-capable system driver; the
+  pinned headless clipping driver is unchanged and cannot present to X11.
+  Both prototype proof and all failed/intermediate scratch are retained/cleaned.
+  [Usage and exact limitations](tk-native-presentation.md). This historical
+  source-overlay result is superseded for packaging by the installed task above;
+  independent review and release qualification remain open.
+
+- [x] **Current event/input/depth refresh:** all 126 cases pass on each current
+  wheel using one offline installation per platform. All 537 installed members
+  are checked per child; event semantics load no renderer/backend, while input
+  and depth processes each retire ten resource gauges to zero. Both targets
+  are removed (47,751,307 bytes), with 26/28 retained entries rehashed.
+  [Finite scope and evidence](../compat/api-acceptance/current-event-input-depth-v1.json).
+
+- [x] **SHD-05-BOUNDARIES — Seven generated-line refusal/recovery cases.**
+  [The test](../tests/shaders/test_line_side_effect_boundaries.py) covers
+  vertex storage writes, clip distance, fragment storage writes, atomics,
+  image stores, barriers and early fragment tests. It expects explicit refusal
+  followed by a valid draw on the same canvas. All seven pass without skips on
+  Windows wheel `ba8a54c5…` and WSL software Vulkan wheel `4bc3cd77…`.
+  Each process verifies 537 installed members, 56/55 loaded module origins,
+  the expected recovery pixels and ten zero shutdown gauges. No native build
+  or new dependency environment was needed. Both scratch targets are removed
+  (47,751,313 bytes), with 15/17 retained entries rehashed. The earlier storage
+  refusal remains a separate failed preflight, not a test result.
+  [Exact acceptance and durable evidence](../compat/api-acceptance/line-side-effect-boundaries-v1.json).
+  Parent SHD-05, independent review and strict-profile/release admission remain
+  open. The next release prerequisites are cumulative review and installed/profile
+  qualification below; record preparation is complete. Optional implementation
+  work must select another finite scope.
+
+## Successor release completion
+
+- [ ] **FIX-04 — Cumulative independent source and scope review.** Review the
+  current cumulative implementation, including dynamic explicit sampler
+  lowering and optional native Tk lifetime/X11 handling. Resolve findings and
+  bind the exact source.
+  Earlier source reviews do not approve later native changes. The last peer
+  review attempt was unavailable because of a provider usage limit; it did not
+  produce an approval. **Preparation complete, 2026-11-08:** current source and
+  exact artifact/evidence packet assembled, matching native/pure bytes verified.
+  Reported reviewer reset: November 9 at 21:00 Eastern; no retry or approval.
+  [Readiness, expected validator refusals and renewal order](successor-review-readiness.md).
+- [ ] **FIX-04 / FIX-06 — Renew candidate provenance.** Join the selected current
+  source, original native producers, runtime inputs, wheels, coverage maps,
+  observations and selection records. Existing v2 candidate preparation is
+  anchored to exact source/artifacts and must not silently inherit current
+  approvals. **Progress:** new `tk-state-resource-4` / `tk-capture-4` preparation
+  records bind the current wheels and original producers without changing prior
+  packets; Windows/WSL preparation and four archive prerequisites pass. Independent
+  reviews, installed observer/strict-profile and final qualification bindings
+  remain open. [Current request](../compat/candidates/tk-v2-native/review-packet.json).
+  **Exit:** unchanged validators accept all selected identities at the claimed
+  admission level, with real required reviews and profile evidence.
+- [ ] **FIX-06 — Renew observer and strict-profile evidence.** Run the applicable
+  functional lifecycle and all three strict gates on the exact selected
+  installed artifacts. Renew the eight mandatory Windows/WSL headless and
+  PyQt5/PyQt6/PySide6 rows; keep Tk candidate admission distinct from these rows.
+  **Readiness audited:** all eight rows still bind older artifacts, so none
+  supplies strict admission for the selected wheels. The
+  [qualification handoff](successor-qualification-handoff.md) records exact
+  artifacts, review bindings, workflow templates and the shortest execution order.
+  **Windows/WSL Tk progress:** all four pinned candidate workflows now pass the
+  three graphics gates on each platform in fresh exact-wheel replays. Their subjects
+  remain pending; do not count these as the separate mandatory headless/Qt rows.
+  **Mandatory-row progress:** Windows and WSL headless now have current-wheel
+  functional, installed inventory and fresh three-gate replay evidence. Windows
+  PyQt5/PyQt6/PySide6 now also pass on both platforms. All eight row observations
+  are collected. None is
+  newly admitted until the required review/CI/promotion joins pass.
+- [ ] **FIX-06 — Required CI and independent promotion.** Complete the selected
+  source/attempt-bound CI checks and required independent candidate reviews.
+  The successful Linux native producer and local functional suites are inputs,
+  not a substitute for this release-wide validation.
+- [ ] **FIX-04 — Integrate the validated source.** Resolve applicable source
+  checks and complete review/merge against the intended branch. Preserve the
+  other owner's dirty publication checkout and index.
+- [ ] **FIX-06 — Publish the successor.** After the preceding gates pass, publish
+  the approved wheels, hashes, release notes and package index, then verify a
+  clean channel installation. Preserve published v1 assets and their admissions.
+  Keep AGPL-3.0-only fork licensing and original BSD/dependency notices attached.
+
+The successor version decision and current Windows/Linux local packaging are
+already complete. Do not rebuild native artifacts for record, test or document
+changes alone. Rebuild only when native inputs actually change.
+
+## Rendering and shader scope
+
+For each open parent, first select a finite supported subset or document an
+explicit boundary; implementing every possible form is not required.
+
+- [ ] **SHD-01 — Sampler breadth:** decide multidimensional runtime indexing,
+  implicit-derivative/uniformity rules, additional preprocessor/helper forms,
+  multilevel mip chains and wider filtering/LOD combinations. The proved path
+  is direct explicit selection over one-dimensional arrays; retain intentional
+  refusals and add value, binding-limit and recovery tests for any expansion.
+- [ ] **SHD-02 — Array breadth:** settle remaining storage/interface classes,
+  shape/type combinations, indexing, partial updates, reflection and shader-cache
+  identity beyond the installed numeric uniform subset.
+- [ ] **SHD-03 — Attribute breadth:** disposition constants, additional formats,
+  shapes/divisors and mutation combinations beyond the finite matrix/array
+  evidence. Retain route-specific raster versus generated-line input limits.
+- [ ] **SHD-04 — Geometry consumers:** select supported compute/instanced
+  expansion or an explicit application rewrite; prove topology, interpolation,
+  clipping, depth and mutation/loss for that subset.
+- [ ] **SHD-05 — Broader line semantics:** beyond the seven proved boundary cases above,
+  decide any additional builtin, external-storage and early/late-depth support.
+  Unsupported semantics must keep explicit diagnostics and recovery behavior.
+- [ ] **SHD-06 — Mesa clipping preparation/admission:** reconcile the retained
+  clip-axis patch, original CI driver record and selected prepared/installed
+  profile. Source-functional driver evidence is not blanket profile admission;
+  close this only when the required joins and observations are established.
+- [ ] **STA-01 — Raster-state combinations:** reconcile dither, disabled
+  multisampling, fractional polygon offset, mixed constant blending and stencil.
+  Keep the already-proved reversed-depth subset separate.
+- [ ] **TEX-01 — Typed sampling:** disposition Uint/Sint, unfilterable float,
+  comparison sampling, half precision and NaN behavior on claimed layouts.
+- [ ] **LIN-01 — Line partitioning:** bind chunk boundaries, endpoint carry,
+  topology, resource limits and ordering to selected rendered acceptance cases.
+
+## Scientific workflows and API reconciliation
+
+- [ ] **API-05 — Methods, routes and aliases:** reconcile remaining public
+  methods, wildcard exports, aliases and value-dependent dispatch with actual
+  source routes. Parent-level app/gloo/scene/visual reviews are already recorded;
+  the canonical inventory is still not a fully reviewed method inventory.
+- [ ] **API-06 — Selected API acceptance:** for each claimed subset, record
+  inputs/values, expected output, ordinary/mutation/failure/recovery behavior,
+  exact installed artifact and explicit unsupported cases.
+- [ ] **SCI-01 — Indexed/instanced points:** rendered source-ID, divisor,
+  constant-input and ordered-revision combinations.
+- [ ] **SCI-02 — Mesh filters:** enumerate supported filters/compositions and
+  prove meaningful output plus mutation behavior for selected combinations.
+- [ ] **SCI-03 — Scenes/cameras:** reconcile selected 3D cameras, planes,
+  depth/stencil and polygon-offset interactions.
+- [ ] **SCI-04 — Large volumes:** separate scientific quality, mode, performance,
+  platform and artifact claims; extend only the selected bounded workflow.
+- [ ] **SCI-05 — Stale fixture dispositions:** reconcile U05, E03, E04, Q11–Q13
+  and H03 against newer evidence before changing their status.
+- [ ] **SCI-06 — Stencil wrapper:** resolve the upstream acceptance gap
+  independently of already-passing native stencil capture cases.
+
+## Lifecycle, capture, input and known issues
+
+- [ ] **LIF-01 — Fault coverage:** audit acquisition failures, fault injection
+  and physical-memory-accounting evidence; retain unresolved cases explicitly.
+- [ ] **LIF-02 — Reparenting:** selected real layout reparenting, WinIdChange,
+  surface ownership and shared-resource lifetimes.
+- [ ] **LIF-03 — Zero/minimized windows:** prove no-submit behavior and restoration
+  beyond screenshots or overlay observations.
+- [ ] **LIF-04 — Close/loss:** selected in-flight close, actual surface loss,
+  multicanvas recovery and resource retirement.
+- [ ] **LIF-05 — MSAA capture:** disposition broader depth/stencil and
+  format/feature combinations separately from existing color-resolve evidence.
+- [ ] **LIF-06 — Input forwarding:** selected Qt keyboard, wheel, focus, mouse,
+  timer and coordinate delivery beyond the finite Tk subset. Touch, stylus,
+  gestures and additional layouts need their own selected scope.
+- [ ] **LIF-07 — Tk extensions:** decide camera/DPI/physical-input claims beyond
+  the proved raster/manual-pump and toolkit-generated input cases.
+  The opt-in native presentation prototype now has finite source-functional
+  proof; it does not close DPI, physical-input or release/profile obligations.
+- [ ] **BUG-01 — Rare Windows startup stall:** retain the external watcher and
+  exact recurrence evidence; establish cause and a targeted regression. It is
+  documented under D33; recurrence makes it release-blocking again.
+- [ ] **BUG-02 — Historical PyQt5 OLE hang:** determine whether it shares BUG-01's
+  cause or needs a separate documented disposition.
+
+## Optional integrations, packaging and tooling
+
+Select these only when needed for a product claim.
+
+- [ ] **HOST-03:** renew optional strict napari/Glue/napari-threedee rows if
+  claiming them on the successor artifact; old host qualifications do not transfer.
+- [ ] **HOST-04:** resolve DIVE's supported binding/API and upstream baseline
+  before claiming rendered workflows; PySide2 remains excluded.
+- [ ] **HOST-05:** select rendered Visbrain/other-application workflows rather
+  than treating imports or inventories as application acceptance.
+- [ ] **HOST-06:** reconcile Glue's older volume-mutation gap with newer workflow
+  results while preserving each evidence epoch.
+- [ ] **PLAT-02:** produce and qualify other CPython ABI wheels only if selected;
+  the current release claim is CPython 3.12 x86_64.
+- [ ] **PLAT-08:** qualify additional Vulkan GPU/driver combinations before
+  extending the current hardware claim.
+- [ ] **PERF-02 / PERF-03:** select further imported-block conversions and batched
+  buffer upload optimization only if measurements justify them.
+- [ ] **PERF-04:** bounded cold-build/peak-memory measurements and reconciliation
+  of historical review regressions if making those performance claims.
+- [ ] **TOOL-01:** fix Metal artifact reuse/source ancestry independently of
+  physical Metal qualification.
+- [ ] **TOOL-02:** optional compiler-output cache with exact input identities and
+  the shared storage budget.
+- [ ] **TOOL-03:** reconcile the missing historical compiler-cache cleanup receipt.
+  The new cleanup receipts do not establish the missing historical event.
+
+## Explicit deferred or unavailable scope
+
+- [ ] **LIN-02:** MSAA generated-line coverage remains deferred; an unshipped
+  partial patch is not production support.
+- [ ] **LIF-08:** cross-monitor changes and fractional DPI remain outside the
+  selected release scope.
+- [ ] **PLAT-03:** native Linux physical GPU qualification needs available
+  hardware; WSL software Vulkan does not establish it.
+- [ ] **PLAT-04:** macOS Metal remains experimental; no Mac is available for
+  physical graphics/input/lifecycle qualification.
+- [ ] **PLAT-05 / PLAT-06:** native Wayland is unsupported; ARM, free-threaded
+  Python and ABI3 are outside the current release scope.
+
+These are acknowledged boundaries, not a request to obtain hardware or expand
+the release. No full-parity requirement is introduced.
+
+## Update rule
+
+Close one finite task at a time. Update its stable ID here and in the detailed
+coverage checklist with source identity, exact wheel/platform, test counts,
+failure/recovery result and durable evidence. Mark completion only at the proved
+level; a parent stays open while broader claims are unsettled. Retain sources,
+licenses and meaningful failures, apply the unchanged build-hygiene policy,
+and record terminal cleanup before the next experiment. Do not derive a universal
+coverage percentage from these different scopes.

@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "kind": "original-linux-ci-native-reuse",
+  "candidate": {
+    "path": "compat/candidates/tk-state-resource-6/candidate.json",
+    "sha256": "bbda34df6ebeaaa02a78dc4ce3809df70f8541a77308125ee210c4f749f1e04c"
+  },
+  "capture": {
+    "path": "build/runs/linux-dynamic-artifact-414/successful-original-capture.json",
+    "sha256": "f91a82ad286c6e9075b4b41952021037acd707a92527f5ad14ec1f21cce72971"
+  },
+  "reuse": {
+    "candidate_scope_sha256": "9dc339f3fefe29dafaea81fc127f4e03d441741707c081cf66e927f7fa5dc193",
+    "profile": "wsl-software-tk90-cp31213-development",
+    "capture_sha256": "f91a82ad286c6e9075b4b41952021037acd707a92527f5ad14ec1f21cce72971",
+    "production_sha256": "7e4a732d0f0c46c3a6c11b7cdab4c4795370b474807ee8dc9b746e03d8ebbeb7",
+    "evidence_store": {
+      "path": "compat/evidence-stores/secondary-v1.json",
+      "sha256": "b164e3fdc85863a2327b508ea60f8d3068f740cfe90f665aa52905e28bfb3ca5"
+    },
+    "impact": "Reuse the exact original successful fresh Linux CI42381467559 capture; its compiler inputs match current v2. Original build/strip/archive/cleanup and notices preserved; independent successor reviews pending. Scope revision5 merges capture dependencies and corrects claim text only; shipping source and fixtures are unchanged. Independent revised bindings pending. Revision6 changes qualification tools and CI preparation selection only; runtime and producer outputs remain unchanged. New independent source/scope and reuse bindings pending.",
+    "abi": {
+      "tag": "cp312",
+      "build_version": "3.12.8",
+      "build_python_sha256": "0dc3a692fa85fcdb7f1a5877d2adf179809ac417a07ffde2373c832863800a15",
+      "consumer_version": "3.12.13",
+      "consumer_python_sha256": "339de109f072e52523066d97a2b3372e358a10cc00c6a9df62c28a6618061900"
+    }
+  }
+}

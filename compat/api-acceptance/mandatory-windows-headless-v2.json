@@ -1,0 +1,173 @@
+{
+  "schema": 1,
+  "status": "PASS_WINDOWS_HEADLESS_CURRENT_WHEEL_OBSERVATION_RELEASE_ADMISSION_PENDING",
+  "row": "windows-vulkan-headless",
+  "source_commit": "b38c4f9068d6a425eef43b62313f0f4cf37f57d9",
+  "wheel": {
+    "path": "build/artifacts/a86b030b005cba455f46ccaeffc56bf3f438142e490999f88156370e6093fb6c/vispy-0.17.0+vulkan.2-cp312-cp312-win_amd64.whl",
+    "sha256": "a86b030b005cba455f46ccaeffc56bf3f438142e490999f88156370e6093fb6c"
+  },
+  "functional": {
+    "gpu_tests": 95,
+    "rendering_status": "PASS_INSTALLED_ABI_RENDERBUFFER_CLEAR_SMOOTH_TEXT",
+    "markers": 4096,
+    "science_cases": 36,
+    "bundle_sha256": "ddab88c152b3b1b30d7c5ab260968b5dbed4cbe50dc208f6eaf1c7fa895db51b"
+  },
+  "feature_labels": [
+    "clear",
+    "image",
+    "labels",
+    "volume",
+    "markers",
+    "mesh",
+    "compiled-text",
+    "depth-order",
+    "shader-arrays-attributes-lod",
+    "multisample-lines",
+    "recovery",
+    "shutdown-zero-resources"
+  ],
+  "installed_members_verified": 537,
+  "source_overrides": 0,
+  "device": {
+    "backend": "Vulkan",
+    "adapter_type": "discrete",
+    "vendor": "nvidia",
+    "device": "NVIDIA GeForce RTX 4090",
+    "driver": "NVIDIA: 610.88 610.88.0.0",
+    "vendor_id": 4318,
+    "device_id": 9860,
+    "max_texture_dimension_1d": 32768,
+    "max_texture_dimension_2d": 32768,
+    "max_texture_dimension_3d": 16384,
+    "max_vertex_attributes": 30,
+    "max_vertex_buffers": 8,
+    "max_vertex_buffer_array_stride": 2048,
+    "max_storage_buffers_per_shader_stage": 16,
+    "max_uniform_buffers_per_shader_stage": 12,
+    "max_inter_stage_shader_variables": 30,
+    "max_storage_buffer_binding_size": 2147483644,
+    "max_bindings_per_bind_group": 1000,
+    "max_compute_invocations_per_workgroup": 1024,
+    "max_compute_workgroup_size_x": 1024,
+    "max_compute_workgroups_per_dimension": 65535,
+    "max_point_vertex_attributes": 30,
+    "core_features_and_limits": true,
+    "point_input_limit_scope": "all active user point inputs share one vertex buffer; exact vertex/instance identities use read-only vertex storage without reserving a user attribute; actual granted attribute/stride/storage/allocation limits apply",
+    "max_samplers_per_shader_stage": 16,
+    "max_sampled_textures_per_shader_stage": 48,
+    "max_buffer_size": 1099511627776,
+    "max_uniform_buffer_binding_size": 65536,
+    "software": false,
+    "float32_filterable": true,
+    "unorm16_texture_formats": true,
+    "bresenham_lines": true,
+    "last_vertex_provoking": true,
+    "timestamp_query": true,
+    "timestamp_quantization_ns": 65536,
+    "host_mapped_pointer": true,
+    "host_import_limit": 536870912,
+    "depth_stencil_storage": "depth24_unorm_stencil8",
+    "ok": true,
+    "error": "",
+    "loss_count": 0,
+    "revision": "117b054598f4758b598f4b8f48feea48c11fe7b0+dawn-499e5c6ff9b37d5de70c6493fb74c251e0d35c1c"
+  },
+  "shutdown_gauges": {
+    "pending_tickets": 0,
+    "queued_frames": 0,
+    "live_buffer_bytes": 0,
+    "live_cpu_buffer_bytes": 0,
+    "live_texture_bytes": 0,
+    "canvas_texture_bytes": 0,
+    "transient_buffer_bytes": 0,
+    "line_resource_pool_busy_slots": 0,
+    "line_resource_pool_bytes": 0
+  },
+  "environment_id": "456103ef0056eae45fecb3c66fa08bfd3b53a3aefda8e01aa94295ecb3109dcb",
+  "report": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\windows-headless-row-467\\replay-0.json",
+    "sha256": "1ab177ce836e04ce34e7e0e164eef2694ac127c23411faad3e3cc6674fb487fb"
+  },
+  "worker": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\windows-headless-row-467\\replay-0.worker.json",
+    "sha256": "38a87d38e44692a7b03f260faa5e97d07b633f77652ed01ee668f68b015041c6"
+  },
+  "receipt": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\windows-headless-row-467\\receipt-0.json",
+    "sha256": "07790c741266d7163cb3e131b6b051bd304930856863c129c92447deeae0296e"
+  },
+  "bundle": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\windows-headless-row-467\\replay-0-features\\result1.json",
+    "sha256": "ddab88c152b3b1b30d7c5ab260968b5dbed4cbe50dc208f6eaf1c7fa895db51b"
+  },
+  "gpu_cases": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\windows-headless-row-467\\replay-0-features\\gpu95\\gpu1.xml",
+    "sha256": "8733df18865ae9d2ba5281b2713ed68ffad66815e5411a441433f79f068a4022"
+  },
+  "gpu_shutdown": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\windows-headless-row-467\\replay-0-features\\gpu95\\gpu-shutdown1.json",
+    "sha256": "9e7dd8079770fd86079f566aea836160d8e4d11accff04169c75309eb70bf2f0"
+  },
+  "rendering": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\windows-headless-row-467\\replay-0-features\\rendering\\result1.json",
+    "sha256": "943d2e7043a995acd22d6984bb28196ece89d1d98ca876e97feda484aa50eebc"
+  },
+  "markers": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\windows-headless-row-467\\replay-0-features\\markers\\result.json",
+    "sha256": "365a26257a9bfb8cc132dd28ca603ca50fe056c0155d7dcc5c4e9d80927bbdeb"
+  },
+  "science": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\windows-headless-row-467\\replay-0-features\\science\\result1.json",
+    "sha256": "7de94f779444dc0c1434c7277b024dd46b781775dba91189f20a98d606472133"
+  },
+  "matrix_reference": {
+    "path": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\compat\\no-opengl-matrix.json",
+    "sha256": "230b12f3d4ed418cde3b0313fbdea36557b02a61c80a1cf637699d7a9bc50fc4"
+  },
+  "dependency_licenses": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\windows-headless-row-467\\dependency-licenses.json",
+    "sha256": "028da1356b058d70f3b4c6a3a9a16996ba80d8c2835c93d3259a82cf11371e5d"
+  },
+  "source_and_licenses": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\windows-headless-row-466\\source-and-licenses.zip",
+    "sha256": "1efd5ebb167ff4a85a41cf05df909b717e7191967d5836b8110bb827867a8157"
+  },
+  "source_inputs": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\windows-headless-row-466\\source-inputs.json",
+    "sha256": "5d552a4c04b27afdabdc041afa9d5e5d046fdaaaaacb2952b2f707a1ba3f8cd5"
+  },
+  "runner_binding_patch": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\windows-headless-row-466\\runner-binding.patch",
+    "sha256": "c29f8d094bdcd7d54a2d424a0ebb40ad40f0f588379b397336264aedf3baee24"
+  },
+  "processes": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\windows-headless-row-467\\processes.json",
+    "sha256": "d3861efaa1eff11409c0e4a2dcc24561f69fe4f17b46d58019e2c49bfc49b7a5"
+  },
+  "controller": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\windows-headless-row-467\\controller-process.json",
+    "sha256": "9a09039f319e3802b09c82db3fb8066a8b2bf6a7d124294ae0f9a6b01131c367"
+  },
+  "previous_setup_failure": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\windows-headless-row-466\\failure-analysis.json",
+    "sha256": "f5529500b9f8dc93189be5cbded07e86cc5f22510688e7c647ba99ef257a126b"
+  },
+  "previous_setup_cleanup": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\windows-headless-row-466\\post-cleanup.json",
+    "sha256": "21212c2636168a2c0f9ace56bdc1bd647abac4fc50ce932da472f7abe7ba2cde"
+  },
+  "historical_row_artifact": "5c7142f38b0867fc744a7fe6025b8397f1bada46641b6d05da0d54dadbfab29e",
+  "canonical_matrix_modified": false,
+  "mandatory_rows_observed_in_this_packet": 1,
+  "mandatory_rows_admitted": 0,
+  "independently_reviewed": false,
+  "artifact_admitted": false,
+  "native_build": false,
+  "limits": [
+    "Finite authored scientific/graphics checks and strict observations on this exact wheel; no universal VisPy coverage claim.",
+    "Original rendering/GPU/science oracles retained; runner differences bind paths, scratch and truthful source/native producer metadata.",
+    "Canonical eight-row matrix keeps its historical qualifications; independent review, row/attempt/CI/promotion joins and remaining seven row observations remain open."
+  ]
+}

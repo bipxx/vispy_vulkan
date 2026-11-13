@@ -1,0 +1,170 @@
+{
+  "schema": 2,
+  "status": "PASS_ALL_FOUR_WSL_TK_STRICT_OBSERVATIONS_RELEASE_ADMISSION_PENDING",
+  "source_commit": "b38c4f9068d6a425eef43b62313f0f4cf37f57d9",
+  "wheel": {
+    "path": "build/artifacts/48164e052ddc3d8e5376a3a1f13fa652583142f4634438ae9067e204aab8b6ce/vispy-0.17.0+vulkan.2-cp312-cp312-manylinux_2_39_x86_64.whl",
+    "sha256": "48164e052ddc3d8e5376a3a1f13fa652583142f4634438ae9067e204aab8b6ce"
+  },
+  "strict_workflows_passed": 4,
+  "workflows": [
+    {
+      "workflow": "tk-state-ownership",
+      "candidate": "tk-state-resource-4",
+      "report": {
+        "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-strict-current-collector-465\\reports\\tk-state-ownership\\replay-0.json",
+        "sha256": "75b17dd270887456d10d1dc3d0e7eae13fc7ebd09755d3117267e5a33d12659a"
+      },
+      "worker": {
+        "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-strict-current-collector-465\\reports\\tk-state-ownership\\replay-0.worker.json",
+        "sha256": "5c8d246c512eda5345f967d00931fb45fe9c48fb0fdb2fec40a76d1facec588a"
+      },
+      "environment_id": "c5bfc9933fd629b75e19053f628f58e7fd7492ada4467ec10697aca96c6455ee",
+      "gates": {
+        "no_gl_execution": "PASS",
+        "no_gl_loads": "PASS",
+        "no_gl_install_link_requirement": "PASS"
+      },
+      "deferred_loader_records": 0,
+      "functional_result_sha256": null
+    },
+    {
+      "workflow": "tk-resource-timer",
+      "candidate": "tk-state-resource-4",
+      "report": {
+        "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-strict-current-collector-465\\reports\\tk-resource-timer\\replay-0.json",
+        "sha256": "862e978614e418752d06936a18dede31a5fae2130c2fe38e3bc68cf34697e33f"
+      },
+      "worker": {
+        "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-strict-current-collector-465\\reports\\tk-resource-timer\\replay-0.worker.json",
+        "sha256": "33acb23c48c51d6de14f56cf2ec2782f208b4179dcf26f05f451709029eb596f"
+      },
+      "environment_id": "c5bfc9933fd629b75e19053f628f58e7fd7492ada4467ec10697aca96c6455ee",
+      "gates": {
+        "no_gl_execution": "PASS",
+        "no_gl_loads": "PASS",
+        "no_gl_install_link_requirement": "PASS"
+      },
+      "deferred_loader_records": 0,
+      "functional_result_sha256": null
+    },
+    {
+      "workflow": "tk-state-resource-failures",
+      "candidate": "tk-state-resource-4",
+      "report": {
+        "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-strict-current-collector-465\\reports\\tk-state-resource-failures\\replay-0.json",
+        "sha256": "a7798b1c7a0dc81ef90e34d45149c4e0ced4a8edc2d88b76864fae773161ad46"
+      },
+      "worker": {
+        "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-strict-current-collector-465\\reports\\tk-state-resource-failures\\replay-0.worker.json",
+        "sha256": "063a2f291a535a786385a9f278c1a9a0c6f740befe1c15f425b651dce599db4b"
+      },
+      "environment_id": "c5bfc9933fd629b75e19053f628f58e7fd7492ada4467ec10697aca96c6455ee",
+      "gates": {
+        "no_gl_execution": "PASS",
+        "no_gl_loads": "PASS",
+        "no_gl_install_link_requirement": "PASS"
+      },
+      "deferred_loader_records": 1,
+      "functional_result_sha256": "e1386e3caac76e883ca505df8f4d1114088738706155cdc914c273b7c4bd3065"
+    },
+    {
+      "workflow": "tk-capture-formats",
+      "candidate": "tk-capture-4",
+      "report": {
+        "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-strict-current-collector-465\\reports\\tk-capture-formats\\replay-0.json",
+        "sha256": "727aa10c9a67f08f075194c56debfccc695cc0efbe59869b44a2d091432cd19f"
+      },
+      "worker": {
+        "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-strict-current-collector-465\\reports\\tk-capture-formats\\replay-0.worker.json",
+        "sha256": "20849c2611789f3dca96479a437a740d9969b4b0589f1d85d5154d65b8adb616"
+      },
+      "environment_id": "c5bfc9933fd629b75e19053f628f58e7fd7492ada4467ec10697aca96c6455ee",
+      "gates": {
+        "no_gl_execution": "PASS",
+        "no_gl_loads": "PASS",
+        "no_gl_install_link_requirement": "PASS"
+      },
+      "deferred_loader_records": 0,
+      "functional_result_sha256": "ec8bca5b0a56d1b90545c3fa5e51cd404bf2b4182195667624a15aad0e1604f7"
+    }
+  ],
+  "installed_members_verified_per_worker": 537,
+  "source_overrides": 0,
+  "collector": {
+    "path": "/mnt/d/vispy-vulkan-managed/build/artifacts/956582c9884330c72dbe165617cdc6105fe6cb63b2e2b9b23495f2bf7b0e8b35/debugger_linux",
+    "sha256": "956582c9884330c72dbe165617cdc6105fe6cb63b2e2b9b23495f2bf7b0e8b35"
+  },
+  "collector_source_sha256": "3de2b562eb75c254a4034c278cdec752588cec44cc725fc1100ff3c33791c857",
+  "collector_control_checks": 20,
+  "controls": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-collector-controls-464\\reports\\current\\controls.json",
+    "sha256": "2093546be51e4955e8c43a65cec8dfe2b629f68bf53835a77a8a270aa3491708"
+  },
+  "controls_comparison": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-collector-controls-464\\result.json",
+    "sha256": "ce94aa268243806fe82910575586930abdb54d8865d65018a55a0db7b7f322ae"
+  },
+  "collector_build_inputs": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-collector-refresh-463\\inputs.json",
+    "sha256": "81e6e230212f59b7630bed923b883b4cae20cf4416dcb98d6e14f2ed20d2fc2e"
+  },
+  "collector_build_processes": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-collector-refresh-463\\processes.json",
+    "sha256": "fb8e783e13ebc1d035cd090cd6e08ae001e38707f91f09f3bafb1b9f05c1941a"
+  },
+  "original_binary_sha256": "82aa1382081590857384c62d56f926942e79e3334e53feef29c81ac7b87db4a5",
+  "original_binary_replaced": false,
+  "resolution": "Reused binary lacked complete-record parser already present in frozen source. Old binary deterministically fails fragmented-record controls; rebuilt unmodified source passes all20 controls and all4 fresh installed workflows.",
+  "borrowed_origins": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-strict-current-collector-465\\borrowed-origins.json",
+    "sha256": "63701541a98f70aabcc39be63ef3917bb9777ed1364f5958b2c6beaa87d2c66f"
+  },
+  "collector_reference": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-strict-current-collector-465\\collector-reference.json",
+    "sha256": "85b0b6aa1d09e635f903cf88f813df9cf7ccc40e3075fd89e8bbfa03673288fe"
+  },
+  "driver_icd": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-strict-current-collector-465\\driver-icd.json",
+    "sha256": "31bde349b89512723819149911b6fd7194419e4cc9689730867a90529634a0d2"
+  },
+  "source_and_licenses": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-strict-tk-456\\source-and-licenses.zip",
+    "sha256": "64ff2ac2691e6d7219d6b87079d9bfb831faa1bd714bc9522ceda97c03be914a"
+  },
+  "llvm_license": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-strict-tk-459\\borrowed-llvm-license.txt",
+    "sha256": "dc2a171c75ca72818f7f4312602f27cb0e4bf6d010a86e7073a3797cb228ddff"
+  },
+  "controller": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-strict-current-collector-465\\controller-process.json",
+    "sha256": "7877640024b15baec59d4109509233bf905b063398023c1f1f643f98bd1b3129"
+  },
+  "processes": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-strict-current-collector-465\\processes.json",
+    "sha256": "ab4b4a70f70c620ea6b9f8240773417d280e329b10a1df00cb8240e40030c164"
+  },
+  "historical_partial_packet": {
+    "path": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\compat\\api-acceptance\\tk-strict-wsl-v1.json",
+    "sha256": "1efd61b49bc152934ad5399bdc710defd66c7ea94336724eb6a6e22bfa2de92b"
+  },
+  "historical_diagnostics": {
+    "path": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\compat\\api-acceptance\\tk-strict-wsl-diagnostic-v1.json",
+    "sha256": "40fb328794e2aa2c0c3d6d7532a85c0138f952a942618b194dee8ec8b1e3094f"
+  },
+  "failed_control_setup": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-collector-refresh-463\\failure-analysis.json",
+    "sha256": "993054222d74e5b666e65ebbbf683c3d332abfe1a2f17ffe71e22422571030f5"
+  },
+  "independently_reviewed": false,
+  "artifact_admitted": false,
+  "mandatory_headless_qwidget_rows_proved": 0,
+  "shipping_source_changed": false,
+  "wheel_rebuilt": false,
+  "renderer_sdk_rebuilt": false,
+  "limits": [
+    "Finite Tk observation scope; independent candidate decisions, attempt/subject/CI/promotion joins and mandatory rows remain open.",
+    "Historical failures and original collector retain their original identities; no approvals transferred.",
+    "Only a small graphics collector was built from existing frozen source; no renderer or dependency rebuild."
+  ]
+}
