@@ -5,6 +5,7 @@ import json
 from pathlib import Path
 
 import vispy
+from tools.qualification_artifact import source_version
 from vispy.app import Canvas
 from vispy.gloo import Program
 from vispy.scene import SceneCanvas
@@ -22,7 +23,7 @@ PARITY = ROOT / "third_party" / "parity" / "vispy" / "vispy"
 
 
 def test_version_and_public_objects():
-    assert vispy.__version__ == "0.17.0+vulkan.1"
+    assert vispy.__version__ == source_version(ROOT)
     assert vispy.__version__.split("+", 1)[0] == "0.17.0"
     assert Program.__module__ == "vispy.gloo.program"
     assert Canvas.__module__ == "vispy.app.canvas"
@@ -30,7 +31,7 @@ def test_version_and_public_objects():
     assert ImageVisual.__module__ == "vispy.visuals.image"
     assert Function.__module__ == "vispy.visuals.shaders.function"
     print("distribution vispy")
-    print("version 0.17.0+vulkan.1")
+    print("version", source_version(ROOT))
     print("import vispy ok", vispy.__version__)
 
 

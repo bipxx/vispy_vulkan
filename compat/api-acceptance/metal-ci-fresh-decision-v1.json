@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "EXPLICIT_FRESH_EXPERIMENTAL_METAL_BUILD_DECISION",
+  "pinned_source_head": "ee2b8d88f6d0dd929d4fd9697d6bd0a9829cc0a2",
+  "current_runtime_source": "b38c4f9068d6a425eef43b62313f0f4cf37f57d9",
+  "changed_inputs": 34,
+  "input_delta": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\ci-contract-fixture-fixes-495\\metal-input-delta.json",
+    "sha256": "b29376a12adbe2d59f6b3c9d284ff5e877951ba51abfd010290f51cd6a31ee42"
+  },
+  "decision": {
+    "native_mode": "fresh",
+    "architectures": [
+      "arm64",
+      "x86_64"
+    ],
+    "workflow": ".github/workflows/metal-wheel.yml",
+    "profile": {
+      "path": "compat/build-profiles/metal-ci-native.json",
+      "sha256": "e047235e1b04c93d87d3a9b36e902075038d1bbdbf1ace9306dc03badcf9a8de"
+    },
+    "reason": "Native source differs from the pinned original producer, including cpp/runtime.cpp and bindings. Existing documented fresh route is required; do not relabel unchanged original native proof.",
+    "expected_peak_bytes_per_runner": 6442450944,
+    "scope": "Hosted source-head experimental Metal build and installed CPU controls only; no graphics/hardware qualification or artifact admission."
+  },
+  "fresh_ci_passed": false,
+  "validator_weakened": false,
+  "old_origins_changed": false,
+  "artifact_admitted": false
+}

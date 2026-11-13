@@ -63,6 +63,17 @@ to bypass an earlier refusal. A separate WSL workspace needs its own native-path
 registry and backing-volume entry; the coordinator also accounts for combined
 Windows/guest allocations rather than treating their budgets as independent.
 
+Retained registry files are input identities. To add protections, create a
+successor registry containing every predecessor protected/blocked entry and the
+new pinned paths; preserve the predecessor bytes. Explicitly pass `--registry`
+on all subsequent preflight, plan and apply commands. Do not silently fall back
+to an older registry or overwrite a registry cited by retained qualification.
+The current coordinator selection is recorded in
+[mandatory review follow-up](../compat/api-acceptance/mandatory-review-followup-v1.json):
+`D:/vispy-vulkan-managed/build/.hygiene/registry-mandatory-successor-535.json`.
+Its 18 added legacy inputs remain at their original paths; they are protected
+from cleanup, not adopted as scratch or relocated into the evidence store.
+
 ## Required lifecycle
 
 1. Reuse an existing artifact when native inputs and configuration match. Before
@@ -153,6 +164,81 @@ Measure both logical size and unique compressed file data, with hardlinks counte
 once. Branch references and shared environments can look large in naive totals
 while offering almost no reclaimable disk space. Do not create another large
 backup of already-retained data merely to report cleanup.
+
+## Windows native leaf on secondary storage
+
+The versioned
+[`windows-native-secondary-v1` profile](../compat/build-profiles/windows-native-secondary-v1.json)
+places an SDK-linked Windows leaf in the coordinator's registered D: workspace.
+It keeps the existing 768 MiB additional allocation, shared 20 GiB scratch cap
+and 10 GiB reserve. The source workspace, original SDK, prepared Python/compiler
+and immutable dependency origins remain on C:. This permits no SDK rebuild,
+environment installation, source-history clone or change to an identity-pinned
+origin. Set TEMP/TMP before launching the producer; CMake, compiler, CTest and
+retained output paths must all use the selected D: run/store.
+
+The optional recipe `storage_profile` reference binds the exact profile bytes
+into the recipe digest and its existing independent review edge. Legacy recipes
+retain their original source-workspace scratch rule. A selected profile must
+bind canonical, separate local-drive roots and the original SDK location;
+source/cache/project/command joins, all required native tests and shipping
+output checks remain mandatory. An admitted v1 profile is immutable; changed
+policy needs a successor. Live guards tolerate only files disappearing during
+sampling; other I/O errors stop the owned child. Terminal cleanup still uses
+the unchanged strict snapshot and inherited protected/blocked registry.
+
+This profile establishes storage placement for local native proof. Formal
+candidate records still require their own admitted reference resolution and
+review bindings. A passing native proof on D: does not establish cross-store
+admission, current installed-wheel qualification, strict profile coverage or
+release promotion. Retain the original native source archive and notices by
+hash rather than copying its contents into another run.
+
+Current Windows backend-only assembly and installed checks use the
+[`windows-package-secondary-v1` profile](../compat/build-profiles/windows-package-secondary-v1.json):
+one 512 MiB registered D: allocation under the same shared cap/reserve, the
+existing packaging backend/dependencies, retained native outputs and one offline
+no-deps copied target. A source or report update does not justify rebuilding the
+native leaf. Supply the frozen source version explicitly to both
+`source_distribution_licenses` and `audit_archive`; their v1 defaults preserve
+historical callers. If a caller omits that argument, retain/clean the failure and
+audit the same archive bytes with the correct source expectation before deciding
+that another assembly is needed. Reuse existing preferred source/license
+archives by hash; keep only distinct harness/profile sources and focused results.
+
+## Retained evidence on secondary storage
+
+[`secondary-v1`](../compat/evidence-stores/secondary-v1.json) explicitly describes
+the existing Windows and WSL views of the source workspace and D: retained
+store. `tools/retained_evidence.py` validates that hash-bound profile, separate
+canonical roots and their actual host directories. It rejects managed-scratch
+roots and root aliases. There is no ambient environment override, alternate-root
+search, source copy or SDK/dependency relocation. The existing retained-file
+hash, containment and scratch checks still run under the selected evidence root.
+Omitting the selector preserves the original source-root behavior.
+
+| Record | Source workspace retains authority for | Selected store supplies |
+| --- | --- | --- |
+| Windows native | Candidate/reviews/profile/runtime inputs, original source inputs, preparation, SDK record/consumer/manifest, tool origins | Recipe, original result/logs, before/after source maps, caches/projects/CTest and native outputs |
+| Linux native | Candidate/reviews/profile/runtime inputs, schema and producer policy | Original capture descriptor and its retained original CI payloads |
+| Wheel archive | Candidate/profile, source version, runtime package contract, pure sources and notices | Exact wheel and native output files |
+
+Native records put `evidence_store: {path, sha256}` inside their existing `reuse`
+object. Both independent `native_reuse_links` bind the digest of that complete
+object, including the store selection. The Windows recipe's existing scratch
+policy is a separate input; retention placement does not rewrite where a producer
+originally ran. Linux capture validation reads the schema at the source root and
+the original bytes at the evidence root, preserving original remote paths and
+checking imported scratch absence under both local roots. Archive records carry
+an optional top-level `evidence_store` reference and continue to report missing
+producer/installed gates rather than artifact admission.
+
+The imported helper is a required candidate preparation-tool identity. Missing
+or changed helper bytes therefore invalidate a new candidate before origin or
+review checks. Existing v1 candidates/approvals are not rewritten to fit these
+new identities. Keep an admitted v1 store profile immutable; a successor profile
+needs explicit schema support and new bindings. No positive synthetic record,
+raw archive check or historical proof replay supplies an actual approval.
 
 ## Local R2 Linux native profile
 
@@ -255,3 +341,11 @@ mode. Reuse reserves 1 GiB, and both modes preserve the shared 20 GiB scratch an
 10 GiB reserve limits. A PR path filter sees cumulative changes, so it does not
 replace an input comparison inside the job. Metadata-only changes must not
 silently trigger a native rebuild. Metal graphics qualification remains open.
+
+The [dynamic Windows package profile](../compat/build-profiles/windows-dynamic-package-secondary-v1.json)
+is a distinct local successor for the dynamic sampler source. It reuses the
+verified outputs of `dynamic-sampler-native-402`, the original prepared backend
+and the same 512 MiB/20 GiB/10 GiB budgets. It does not rewrite the older profile
+or permit a new native build, SDK or environment. Record the exact assembled
+wheel and source/native joins, verify a normal offline target, then retain and
+clean it. Its functional observations confer no independent/profile admission.

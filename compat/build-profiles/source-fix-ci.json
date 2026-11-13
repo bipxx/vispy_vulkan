@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "name": "source-fix-ci",
+  "owner": "root-source-fix",
+  "purpose": "Exact shutdown-fix source CI before artifact/record renewal",
+  "storage_workspace": "C:/Users/HEQ/Projects/vispy_vulkan",
+  "expected_peak_bytes": 4294967296,
+  "aggregate_max_scratch_bytes": 21474836480,
+  "min_free_bytes": 10737418240,
+  "parallel_jobs": 4,
+  "disk_guard_seconds": 30,
+  "source_worktree": "C:/Users/HEQ/Projects/vispy_vulkan-shutdown-324",
+  "budget_basis": "One approximately1GiB shared-object source worktree, one clean locked dev/build environment, CPU helper build and bounded test fixtures; no second dependency/history clone",
+  "reuse": "Existing Git objects, managed CPython3.12.8 and immutable dependency inputs. One clean locked dev/build environment; exact locked package downloads with --require-hashes and --only-binary permitted into run-owned cache after retained offline failure323. No unlocked resolution or system installation",
+  "constraints": "Account for source worktree, environment and download cache against4GiB. No Dawn/SDK build, source verifier relaxation, historical record mutation or admission transfer",
+  "terminal_cleanup": "Await children, retain candidate/source deltas, source CI/review/failure evidence and licenses, audit/remove only the newly owned source worktree with Git, then apply managed cleanup with the existing protected/blocked registry",
+  "scope": "Source and CPU checks only. Native-input refusals remain failures until matching artifact records are genuinely produced"
+}

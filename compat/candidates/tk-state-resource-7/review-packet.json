@@ -1,0 +1,49 @@
+{
+  "schema": 1,
+  "status": "REVIEWED_SCOPE_INSTALLED_QUALIFICATION_PENDING",
+  "source_commit": "b38c4f9068d6a425eef43b62313f0f4cf37f57d9",
+  "previous_candidate": {
+    "path": "compat/candidates/tk-state-resource-6/candidate.json",
+    "sha256": "bbda34df6ebeaaa02a78dc4ce3809df70f8541a77308125ee210c4f749f1e04c"
+  },
+  "tool_approval": {
+    "path": "compat/api-acceptance/qualification-tools-followup-v1.json",
+    "sha256": "7718e4c6a87da71ec2d8d16bceff0004e30c3ec6a5fa7fdcbac0aca3c1cc8175"
+  },
+  "candidate_file": {
+    "path": "compat/candidates/tk-state-resource-7/candidate.json",
+    "sha256": "94ebf13acbe11080294b5f3da33a0e124f9afaeea211cbb9545042850c20d848"
+  },
+  "candidate_scope_sha256": "e753601edf723f793c89c1feb121694e44174b51735b86420388554b391334b1",
+  "coverage_map_sha256": "dc379a138c3129e2a6b2d8a0fbf03b20dfa28373b8409f8d16b6a407e94a61a3",
+  "execution_map_sha256": "30a5fd40acf1918d09d68a26021b89516b0bc559c95fe0f27633e98e2c900dd8",
+  "admission_scope_sha256": "f736d5e09a4c4650970d0c1343d10853db82ea6a92623709c5b3a8709c1462e3",
+  "native_reuse_links": [
+    "0b318213871a74b49dc68966dda0b0218258d1e75a5b0d80ce6a304f661b89a5",
+    "79dde9fde3f4095368d11641117bb06603f927f72635f097dfdde214d6a97831"
+  ],
+  "required_kinds": [
+    "source",
+    "scope"
+  ],
+  "approvals_present": true,
+  "pending_subject": {
+    "path": "compat/candidates/tk-state-resource-7/qualification-subject.json",
+    "sha256": "eadec730e56f1af1845994a703d0f73683b8c4fc7a05b26ec71ac1269ec606d0"
+  },
+  "ci_policy": {
+    "path": "compat/qualification-ci.json",
+    "sha256": "7ccfb607144848b09b4b434eedf0d5f219d963c15ff10404baa18eb7589234a0"
+  },
+  "source_head_ci_passed": false,
+  "delta": "CPU workflow separates6 provider-free benchmark files from scientific tests and runs finite CPU event-value tests after compilation. Linux reuse requires a fully reviewed explicit successor; Metal dispatch and managed artifact layout preserve original source/bytes. Three successful head340 native CI artifacts replace stale reuse pins. Root test fixture resolves the explicit selected CI preparation rather than hardcoding a historical revision. No product runtime edits; CI reuse helpers have focused regression coverage and require independent delta review.",
+  "source_approvals_transferred": 0,
+  "artifact_admitted": false,
+  "native_build": false,
+  "retention_limits": [
+    "Index does not enumerate Windows transitive raw command logs; bind them explicitly in contributing cleanup proof.",
+    "Reviewers must check history-bound workflow attribution for pre-observation failures.",
+    "Incomplete workflow selections fail closed; they are not missing-proof success.",
+    "Source-local producer inputs require retained-byte proof; hash resolution alone is insufficient."
+  ]
+}

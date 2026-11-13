@@ -1,0 +1,311 @@
+diff --git a/qtpy/QtGui.py b/qtpy/QtGui.py
+index af5f5ac..08d5d8a 100644
+--- a/qtpy/QtGui.py
++++ b/qtpy/QtGui.py
+@@ -9,6 +9,7 @@
+ """Provides QtGui classes and functions."""
+ 
+ from functools import partialmethod
++from importlib import import_module
+ 
+ from . import PYQT5, PYQT6, PYSIDE2, PYSIDE6, _parse_version
+ from . import QT_VERSION as _qt_version
+@@ -21,6 +22,11 @@
+ 
+ _missing_optional_names = {}
+ 
++# On Qt6, the QOpenGL* classes live in a separate module, which also loads
++# Qt's OpenGL library, so it is imported on the first access to one.
++_lazy_qtopengl_module = None
++_QTOPENGL_PREFIXES = ("QOpenGL", "QAbstractOpenGL")
++
+ _QTOPENGL_NAMES = {
+     "QOpenGLBuffer",
+     "QOpenGLContext",
+@@ -41,7 +47,23 @@
+ 
+ 
+ def __getattr__(name):
+-    """Custom getattr to chain and wrap errors due to missing optional deps."""
++    """Import Qt6 QOpenGL* names lazily; wrap missing optional dep errors."""
++    if _lazy_qtopengl_module is not None and name.startswith(
++        _QTOPENGL_PREFIXES,
++    ):
++        try:
++            module = import_module(_lazy_qtopengl_module)
++        except ImportError as error:
++            for missing in _QTOPENGL_NAMES:
++                _missing_optional_names[missing] = {
++                    "name": _lazy_qtopengl_module,
++                    "missing_package": "pyopengl",
++                    "import_error": error,
++                }
++        else:
++            if hasattr(module, name):
++                globals()[name] = getattr(module, name)
++                return globals()[name]
+     raise getattr_missing_optional_dep(
+         name,
+         module_name=__name__,
+@@ -66,18 +88,10 @@ def __getattr__(name):
+     from PyQt6 import QtGui
+     from PyQt6.QtGui import *
+ 
+-    # Attempt to import QOpenGL* classes, but if that fails,
+-    # don't raise an exception until the name is explicitly accessed.
++    # QOpenGL* classes are imported from PyQt6.QtOpenGL on first access,
++    # and a failed import is only raised then.
+     # See https://github.com/spyder-ide/qtpy/pull/387/
+-    try:
+-        from PyQt6.QtOpenGL import *
+-    except ImportError as error:
+-        for name in _QTOPENGL_NAMES:
+-            _missing_optional_names[name] = {
+-                "name": "PyQt6.QtOpenGL",
+-                "missing_package": "pyopengl",
+-                "import_error": error,
+-            }
++    _lazy_qtopengl_module = "PyQt6.QtOpenGL"
+ 
+     QFontMetrics.width = lambda self, *args, **kwargs: self.horizontalAdvance(
+         *args,
+@@ -129,18 +143,10 @@ def __getattr__(name):
+ elif PYSIDE6:
+     from PySide6.QtGui import *
+ 
+-    # Attempt to import QOpenGL* classes, but if that fails,
+-    # don't raise an exception until the name is explicitly accessed.
++    # QOpenGL* classes are imported from PySide6.QtOpenGL on first access,
++    # and a failed import is only raised then.
+     # See https://github.com/spyder-ide/qtpy/pull/387/
+-    try:
+-        from PySide6.QtOpenGL import *
+-    except ImportError as error:
+-        for name in _QTOPENGL_NAMES:
+-            _missing_optional_names[name] = {
+-                "name": "PySide6.QtOpenGL",
+-                "missing_package": "pyopengl",
+-                "import_error": error,
+-            }
++    _lazy_qtopengl_module = "PySide6.QtOpenGL"
+ 
+     # Backport `QFileSystemModel` moved to QtGui in Qt6
+     from PySide6.QtWidgets import QFileSystemModel
+diff --git a/qtpy/QtWidgets.py b/qtpy/QtWidgets.py
+index dd8255a..4a4ea40 100644
+--- a/qtpy/QtWidgets.py
++++ b/qtpy/QtWidgets.py
+@@ -8,6 +8,7 @@
+ 
+ """Provides widget classes and functions."""
+ from functools import partialmethod
++from importlib import import_module
+ 
+ from . import PYQT5, PYQT6, PYSIDE2, PYSIDE6, _parse_version
+ from . import QT_VERSION as _qt_version
+@@ -20,9 +21,25 @@
+ 
+ _missing_optional_names = {}
+ 
++# On Qt6, QOpenGLWidget lives in a separate module, which also loads Qt's
++# OpenGL libraries, so it is imported on the first access to it.
++_lazy_qtopenglwidgets_module = None
++
+ 
+ def __getattr__(name):
+-    """Custom getattr to chain and wrap errors due to missing optional deps."""
++    """Import Qt6's QOpenGLWidget lazily; wrap missing optional dep errors."""
++    if _lazy_qtopenglwidgets_module is not None and name == "QOpenGLWidget":
++        try:
++            module = import_module(_lazy_qtopenglwidgets_module)
++        except ImportError as error:
++            _missing_optional_names[name] = {
++                "name": _lazy_qtopenglwidgets_module,
++                "missing_package": "pyopengl",
++                "import_error": error,
++            }
++        else:
++            globals()[name] = module.QOpenGLWidget
++            return globals()[name]
+     raise getattr_missing_optional_dep(
+         name,
+         module_name=__name__,
+@@ -52,17 +69,10 @@ def __getattr__(name):
+ 
+     from PyQt6.QtWidgets import *
+ 
+-    # Attempt to import QOpenGLWidget, but if that fails,
+-    # don't raise an exception until the name is explicitly accessed.
++    # QOpenGLWidget is imported from PyQt6.QtOpenGLWidgets on first access,
++    # and a failed import is only raised then.
+     # See https://github.com/spyder-ide/qtpy/pull/387/
+-    try:
+-        from PyQt6.QtOpenGLWidgets import QOpenGLWidget
+-    except ImportError as error:
+-        _missing_optional_names["QOpenGLWidget"] = {
+-            "name": "PyQt6.QtOpenGLWidgets",
+-            "missing_package": "pyopengl",
+-            "import_error": error,
+-        }
++    _lazy_qtopenglwidgets_module = "PyQt6.QtOpenGLWidgets"
+ 
+     # Map missing/renamed methods
+     QTextEdit.setTabStopWidth = (
+@@ -128,17 +138,10 @@ def __getattr__(name):
+ 
+     from PySide6.QtWidgets import *
+ 
+-    # Attempt to import QOpenGLWidget, but if that fails,
+-    # don't raise an exception until the name is explicitly accessed.
++    # QOpenGLWidget is imported from PySide6.QtOpenGLWidgets on first access,
++    # and a failed import is only raised then.
+     # See https://github.com/spyder-ide/qtpy/pull/387/
+-    try:
+-        from PySide6.QtOpenGLWidgets import QOpenGLWidget
+-    except ImportError as error:
+-        _missing_optional_names["QOpenGLWidget"] = {
+-            "name": "PySide6.QtOpenGLWidgets",
+-            "missing_package": "pyopengl",
+-            "import_error": error,
+-        }
++    _lazy_qtopenglwidgets_module = "PySide6.QtOpenGLWidgets"
+ 
+     # Map missing/renamed methods
+     QTextEdit.setTabStopWidth = (
+diff --git a/tests/test_qtgui.py b/tests/test_qtgui.py
+index ed5dd4b..8ff2c1a 100644
+--- a/tests/test_qtgui.py
++++ b/tests/test_qtgui.py
+@@ -1,17 +1,23 @@
+ """Test QtGui."""
+ 
++import os
++import subprocess
+ import sys
++from importlib import import_module
+ 
+ import pytest
+ 
+ from qtpy import (
++    API_NAME,
+     PYQT5,
++    PYQT6,
+     PYQT_VERSION,
+     PYSIDE2,
+     PYSIDE6,
+     QT_VERSION,
+     QtCore,
+     QtGui,
++    QtModuleNotInstalledError,
+     QtWidgets,
+     _parse_version,
+ )
+@@ -246,3 +252,66 @@ def test_opengl_imports():
+ def test_theme_icon_enum():
+     """Test `QIcon.ThemeIcon` presence and work."""
+     QtGui.QIcon.fromTheme(QtGui.QIcon.ThemeIcon.AddressBookNew)
++
++
++requires_qt6 = pytest.mark.skipif(
++    not (PYQT6 or PYSIDE6),
++    reason="Only Qt6 bindings keep the QOpenGL* classes outside QtGui",
++)
++
++
++def _run_child(code):
++    """Run `code` in a fresh interpreter with the current Qt API."""
++    result = subprocess.run(
++        [sys.executable, "-c", code],
++        capture_output=True,
++        text=True,
++        check=True,
++        env=os.environ.copy(),
++    )
++    return result.stdout.strip()
++
++
++def _raise_import_error(name):
++    raise ImportError(name)
++
++
++@requires_qt6
++def test_qtgui_import_defers_qtopengl():
++    """Importing QtGui and QtWidgets does not import Qt6's OpenGL modules."""
++    loaded = _run_child(
++        "import sys, qtpy.QtGui, qtpy.QtWidgets; "
++        "print(sorted(m for m in sys.modules "
++        "if m.endswith(('.QtOpenGL', '.QtOpenGLWidgets'))))",
++    )
++    assert loaded == "[]"
++
++
++@requires_qt6
++def test_qopengl_names_resolve_on_first_access():
++    """QOpenGL* names still resolve from QtGui, from the binding's QtOpenGL."""
++    opengl = import_module(f"{API_NAME}.QtOpenGL")
++    assert QtGui.QOpenGLBuffer is opengl.QOpenGLBuffer
++    assert QtGui.QAbstractOpenGLFunctions is opengl.QAbstractOpenGLFunctions
++
++
++def test_unknown_qopengl_name_raises_attribute_error():
++    """An unknown QOpenGL* name is still an AttributeError."""
++    with pytest.raises(AttributeError):
++        QtGui.QOpenGLNoSuchClass  # noqa: B018
++
++
++@requires_qt6
++def test_missing_qtopengl_raises_module_not_installed(monkeypatch):
++    """A binding without QtOpenGL reports the missing module on access."""
++    monkeypatch.delitem(vars(QtGui), "QOpenGLBuffer", raising=False)
++    monkeypatch.setattr(QtGui, "import_module", _raise_import_error)
++    with pytest.raises(QtModuleNotInstalledError):
++        QtGui.QOpenGLBuffer  # noqa: B018
++
++
++@requires_qt6
++def test_star_import_on_qt6_omits_qopengl_names():
++    """`from qtpy.QtGui import *` no longer copies QOpenGL* names on Qt6."""
++    code = "from qtpy.QtGui import *; print('QOpenGLBuffer' in dir())"
++    assert _run_child(code) == "False"
+diff --git a/tests/test_qtwidgets.py b/tests/test_qtwidgets.py
+index 5a8e2ec..d4d7b14 100644
+--- a/tests/test_qtwidgets.py
++++ b/tests/test_qtwidgets.py
+@@ -1,14 +1,18 @@
+ """Test QtWidgets."""
+ 
+ import sys
++from importlib import import_module
+ from time import sleep
+ 
+ import pytest
+ 
+ from qtpy import (
++    API_NAME,
+     PYQT5,
++    PYQT6,
+     PYQT_VERSION,
+     PYSIDE2,
++    PYSIDE6,
+     QtCore,
+     QtGui,
+     QtWidgets,
+@@ -204,6 +208,18 @@ def test_opengl_imports():
+     assert QtWidgets.QOpenGLWidget is not None
+ 
+ 
++@pytest.mark.skipif(
++    not (PYQT6 or PYSIDE6),
++    reason="Only Qt6 bindings keep QOpenGLWidget outside QtWidgets",
++)
++def test_qopenglwidget_resolves_on_first_access():
++    """QOpenGLWidget still resolves from QtWidgets, from QtOpenGLWidgets."""
++    from qtpy.QtWidgets import QOpenGLWidget
++
++    widgets = import_module(f"{API_NAME}.QtOpenGLWidgets")
++    assert QOpenGLWidget is widgets.QOpenGLWidget
++
++
+ @pytest.mark.skipif(
+     sys.platform == "darwin"
+     and sys.version_info[:2] == (3, 7)

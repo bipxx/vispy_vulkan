@@ -1,0 +1,59 @@
+{
+  "schema": 1,
+  "kind": "qualification-subject",
+  "manifest_sha256": "a0b31256f0f6cb744de1b0942feb08d750f943f6433f7d4d2090f174e4ece526",
+  "product_source_commit": "b38c4f9068d6a425eef43b62313f0f4cf37f57d9",
+  "qualification_head": "340499b0ff81ca12dddf04b763477c93737fde89",
+  "candidate": {
+    "path": "compat/candidates/tk-state-resource-6/candidate.json",
+    "sha256": "bbda34df6ebeaaa02a78dc4ce3809df70f8541a77308125ee210c4f749f1e04c"
+  },
+  "selection": {
+    "path": "compat/candidates/tk-state-resource-6/admission-selection.json",
+    "sha256": "a7b892621ce5aad7686542f249fd05bbb20a8e5fc3522141f2c0c2ed0f69deec"
+  },
+  "execution": {
+    "path": "compat/candidates/tk-state-resource-6/execution.json",
+    "sha256": "152513b52e467765bcd948a68231063e3f2de6bcd3f74326e7442ce20034ec09"
+  },
+  "ledger": {
+    "path": "compat/candidates/tk-state-resource-6/execution-ledger.json",
+    "sha256": "3c5248a2f3a265e7d646f8e1a79dfa9e0844f3fc5a0565d4dce607d123cc868f"
+  },
+  "evidence_store": {
+    "path": "compat/evidence-stores/secondary-v1.json",
+    "sha256": "b164e3fdc85863a2327b508ea60f8d3068f740cfe90f665aa52905e28bfb3ca5"
+  },
+  "profiles": [
+    {
+      "profile": "windows-gpu-tk86-cp312-development",
+      "archive": {
+        "path": "compat/candidates/tk-state-resource-6/windows-archive.json",
+        "sha256": "7406732f619682646a05b4ba7e85a7067a0f531183354523c5aafd873b58160a"
+      },
+      "producer": {
+        "path": "compat/candidates/tk-state-resource-6/windows-native-provenance.json",
+        "sha256": "21bd690b52f1dfed8021772ad603efc5a741c792310a06b94e38f714f848aa0d"
+      },
+      "producer_retention": null,
+      "attempts": [],
+      "selected_attempt": null,
+      "attempt_history": null
+    },
+    {
+      "profile": "wsl-software-tk90-cp31213-development",
+      "archive": {
+        "path": "compat/candidates/tk-state-resource-6/linux-archive.json",
+        "sha256": "4d3dc8c8b0bf6a78d8dd28c17aadf928e2048d351e2cc04fb77343db598c7dac"
+      },
+      "producer": {
+        "path": "compat/candidates/tk-state-resource-6/linux-native-provenance.json",
+        "sha256": "42a3635d75b4d3026f4e510060b12176557f54b3f6fe9d5fc95c1a0858a251c1"
+      },
+      "producer_retention": null,
+      "attempts": [],
+      "selected_attempt": null,
+      "attempt_history": null
+    }
+  ]
+}

@@ -7,10 +7,10 @@ import pytest
 
 
 @pytest.fixture
-def without_current_reviews(monkeypatch):
+def without_current_reviews(monkeypatch, current_preparation):
     """Remove reviews only from an in-memory candidate; retain the real verifier."""
     from tools.compatibility_candidate import seal, scope_digest
-    candidate_path = Path(__file__).resolve().parents[2] / 'compat/candidates/tk-state-resource-1/candidate.json'
+    candidate_path = current_preparation['candidate'].resolve()
 
     def isolate(module):
         original = module.read_json
@@ -26,5 +26,6 @@ def without_current_reviews(monkeypatch):
             return value
 
         monkeypatch.setattr(module, 'read_json', read)
+        return candidate_path
 
     return isolate

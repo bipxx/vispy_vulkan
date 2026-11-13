@@ -1,0 +1,765 @@
+{
+  "schema": 1,
+  "status": "SUCCESSOR_WIP_WINDOWS_WSL_WHEEL_FUNCTIONAL_ACCEPTANCE",
+  "checklist_id": "SHD-01",
+  "parent_closed": false,
+  "artifact_admitted": false,
+  "qualified_wheel": false,
+  "native_contracts": 44,
+  "rendered_cases": 47,
+  "new_dynamic_cases": 12,
+  "collision_nested_cases": 3,
+  "regression_cases": 32,
+  "skipped": 0,
+  "base_wheel": {
+    "path": "build/artifacts/5cb463cd5e5c889af8b5c8d605bd6f60fe33d1bbeed521443d4f0966788017f9/vispy-0.17.0+vulkan.2-cp312-cp312-win_amd64.whl",
+    "sha256": "5cb463cd5e5c889af8b5c8d605bd6f60fe33d1bbeed521443d4f0966788017f9"
+  },
+  "native_overlay": [
+    {
+      "member": "vispy/_dawn.cp312-win_amd64.pyd",
+      "file": {
+        "path": "build/artifacts/8b93326abbc14d28fe6743bc3571d5dbb83edb5e75c8c91535294ab5da0398e2/_dawn.cp312-win_amd64.pyd",
+        "sha256": "8b93326abbc14d28fe6743bc3571d5dbb83edb5e75c8c91535294ab5da0398e2"
+      }
+    },
+    {
+      "member": "vispy/visuals/text/_sdf_cpu.cp312-win_amd64.pyd",
+      "file": {
+        "path": "build/artifacts/fd14a55ac02b415ee2b4027a7632cfe23a4b4fc7976f9eb815180c5bc31d849e/_sdf_cpu.cp312-win_amd64.pyd",
+        "sha256": "fd14a55ac02b415ee2b4027a7632cfe23a4b4fc7976f9eb815180c5bc31d849e"
+      }
+    },
+    {
+      "member": "vispy/VkLayer_vispy_submit.dll",
+      "file": {
+        "path": "build/artifacts/050a86a3550aaed01e5a66a15fb44a313af83f816586c2119a7d14f57fb9e37b/VkLayer_vispy_submit.dll",
+        "sha256": "050a86a3550aaed01e5a66a15fb44a313af83f816586c2119a7d14f57fb9e37b"
+      }
+    },
+    {
+      "member": "vispy/VkLayer_vispy_submit.json",
+      "file": {
+        "path": "build/artifacts/7323cea73a46efcba615ca452d2b0235e3741109628c4bf2979c105e6ae69d56/VkLayer_vispy_submit.json",
+        "sha256": "7323cea73a46efcba615ca452d2b0235e3741109628c4bf2979c105e6ae69d56"
+      }
+    }
+  ],
+  "source_hashes": {
+    "tests/shaders/test_dynamic_explicit_sampler_arrays.py": "1f0531a2caa168c391ee02117e050c0fa6407093048d566b81a61f4fb3ad460a",
+    "tests/shaders/test_multidimensional_sampler_arrays.py": "b6418ed8e0e8eb41e3ff631dc751b8c14c6b6f255608e8d3d872ac1837fe820b",
+    "tests/shaders/test_sampler_array_boundaries.py": "ec65ee3a1881abdf016713b6d6204065e3e8b48ef6baab63ab3f751d0ecd1707",
+    "tests/shaders/test_sampler_arrays.py": "b1f3c131685f43cf6b4af38ddcab5d96f10e4f3dbc70dd4f2b9bee7648f92fe8",
+    "tools/immediate_state_wheel_smoke.py": "16a8dab36497a8321b7ba3acf3a40cba18d9285c8bf305f891c654a8747afd3e"
+  },
+  "shutdown_gauges": {
+    "pending_tickets": 0,
+    "queued_frames": 0,
+    "live_buffer_bytes": 0,
+    "live_cpu_buffer_bytes": 0,
+    "live_texture_bytes": 0,
+    "canvas_texture_bytes": 0,
+    "transient_buffer_bytes": 0,
+    "line_resource_pool_busy_slots": 0,
+    "line_resource_pool_bytes": 0,
+    "host_import_pinned_bytes": 0
+  },
+  "device": {
+    "backend": "Vulkan",
+    "adapter_type": "discrete",
+    "vendor": "nvidia",
+    "device": "NVIDIA GeForce RTX 4090",
+    "driver": "NVIDIA: 610.88 610.88.0.0",
+    "vendor_id": 4318,
+    "device_id": 9860,
+    "max_texture_dimension_1d": 32768,
+    "max_texture_dimension_2d": 32768,
+    "max_texture_dimension_3d": 16384,
+    "max_vertex_attributes": 30,
+    "max_vertex_buffers": 8,
+    "max_vertex_buffer_array_stride": 2048,
+    "max_storage_buffers_per_shader_stage": 16,
+    "max_uniform_buffers_per_shader_stage": 12,
+    "max_inter_stage_shader_variables": 30,
+    "max_storage_buffer_binding_size": 2147483644,
+    "max_bindings_per_bind_group": 1000,
+    "max_compute_invocations_per_workgroup": 1024,
+    "max_compute_workgroup_size_x": 1024,
+    "max_compute_workgroups_per_dimension": 65535,
+    "max_point_vertex_attributes": 30,
+    "core_features_and_limits": true,
+    "point_input_limit_scope": "all active user point inputs share one vertex buffer; exact vertex/instance identities use read-only vertex storage without reserving a user attribute; actual granted attribute/stride/storage/allocation limits apply",
+    "max_samplers_per_shader_stage": 16,
+    "max_sampled_textures_per_shader_stage": 48,
+    "max_buffer_size": 1099511627776,
+    "max_uniform_buffer_binding_size": 65536,
+    "software": false,
+    "float32_filterable": true,
+    "unorm16_texture_formats": true,
+    "bresenham_lines": true,
+    "last_vertex_provoking": true,
+    "timestamp_query": true,
+    "timestamp_quantization_ns": 65536,
+    "host_mapped_pointer": true,
+    "host_import_limit": 536870912,
+    "depth_stencil_storage": "depth24_unorm_stencil8",
+    "ok": true,
+    "error": "",
+    "loss_count": 0,
+    "revision": "117b054598f4758b598f4b8f48feea48c11fe7b0+dawn-499e5c6ff9b37d5de70c6493fb74c251e0d35c1c"
+  },
+  "evidence": {
+    "dynamic-sampler-native-402": {
+      "native-validation.json": {
+        "path": "build/runs/dynamic-sampler-native-402/native-validation.json",
+        "sha256": "e1fa490d38c70aa4350d24c2215a918ead6d5e05df27260a61d9301d282f5164"
+      },
+      "runtime-inputs.json": {
+        "path": "build/runs/dynamic-sampler-native-402/runtime-inputs.json",
+        "sha256": "f0f7a5d29288de7e660a438e9cf9ee272e5a423930cb9db75eeb50bcb35c18a3"
+      },
+      "source-before.json": {
+        "path": "build/runs/dynamic-sampler-native-402/source-before.json",
+        "sha256": "7a8dbe532238447fa9d65299c8e6aa3e68e29dfd8729865579fd74d386ae6651"
+      },
+      "source-after.json": {
+        "path": "build/runs/dynamic-sampler-native-402/source-after.json",
+        "sha256": "7a8dbe532238447fa9d65299c8e6aa3e68e29dfd8729865579fd74d386ae6651"
+      },
+      "ctest.xml": {
+        "path": "build/runs/dynamic-sampler-native-402/ctest.xml",
+        "sha256": "a456b0af9e271bfc8ee50e0c61406b009907fff8d3785a09eda577f6be2306f2"
+      },
+      "terminal-retention.json": {
+        "path": "build/runs/dynamic-sampler-native-402/terminal-retention.json",
+        "sha256": "8e36d5c38821f1e72987adfe05a52bf101907ad043a0fb4171a7d2342a6360fa"
+      },
+      "post-cleanup.json": {
+        "path": "build/runs/dynamic-sampler-native-402/post-cleanup.json",
+        "sha256": "d90b188735a008f45ebd6b8e07d7b04a946450c9de9c7d89cc090def388ecc08"
+      }
+    },
+    "dynamic-sampler-rendered-403": {
+      "verification.json": {
+        "path": "build/runs/dynamic-sampler-rendered-403/verification.json",
+        "sha256": "fba7bbbbd19b24bcbf2cac50e796296d1aeb265b4a29154682effddae4a0114b"
+      },
+      "input-result.json": {
+        "path": "build/runs/dynamic-sampler-rendered-403/input-result.json",
+        "sha256": "e9df781a0f2be0e6be9e52efb0634bc964bce8d4656bd6720f345cb8be6008a5"
+      },
+      "inputs.xml": {
+        "path": "build/runs/dynamic-sampler-rendered-403/inputs.xml",
+        "sha256": "5b91bb76704f42863d56859a10f4a7c6024bfd6690297ece0330a79e1a257156"
+      },
+      "native-overlay.json": {
+        "path": "build/runs/dynamic-sampler-rendered-403/native-overlay.json",
+        "sha256": "0e5255320773f83074bf775f334084fa64729f33b01981b4bef331c30490eef8"
+      },
+      "terminal-retention.json": {
+        "path": "build/runs/dynamic-sampler-rendered-403/terminal-retention.json",
+        "sha256": "1031a3ac759e98dbba5c843ec88c57e0bdd5433b29c42acee4bc59fcfef14209"
+      },
+      "post-cleanup.json": {
+        "path": "build/runs/dynamic-sampler-rendered-403/post-cleanup.json",
+        "sha256": "094eedbc6a510cc47c8ca521a67988b59a6fb27824a95383e5b331365de714f8"
+      }
+    }
+  },
+  "remaining": [
+    "multidimensional dynamic selection",
+    "broader preprocessor forms",
+    "multilevel mip chains and additional filtering/LOD forms",
+    "implicit-derivative decisions",
+    "independent review",
+    "successor profile admission and release"
+  ],
+  "additional_windows_observations": [
+    {
+      "run": "dynamic-sampler-breadth-406",
+      "cases": 67,
+      "source_hashes": {
+        "tests/shaders/test_dynamic_explicit_sampler_arrays.py": "c9b35d756135a165b16972fbd3da0e1ddb4b8d237722a85c56e4705b465ab0d0",
+        "tests/shaders/test_multidimensional_sampler_arrays.py": "b6418ed8e0e8eb41e3ff631dc751b8c14c6b6f255608e8d3d872ac1837fe820b",
+        "tests/shaders/test_sampler_array_boundaries.py": "ec65ee3a1881abdf016713b6d6204065e3e8b48ef6baab63ab3f751d0ecd1707",
+        "tests/shaders/test_sampler_arrays.py": "b1f3c131685f43cf6b4af38ddcab5d96f10e4f3dbc70dd4f2b9bee7648f92fe8",
+        "tools/immediate_state_wheel_smoke.py": "16a8dab36497a8321b7ba3acf3a40cba18d9285c8bf305f891c654a8747afd3e"
+      },
+      "test_targets": [
+        "tests/shaders/test_sampler_arrays.py",
+        "tests/shaders/test_multidimensional_sampler_arrays.py",
+        "tests/shaders/test_sampler_array_boundaries.py",
+        "tests/shaders/test_dynamic_explicit_sampler_arrays.py"
+      ],
+      "native_overlay": [
+        {
+          "member": "vispy/_dawn.cp312-win_amd64.pyd",
+          "file": {
+            "path": "build/artifacts/8b93326abbc14d28fe6743bc3571d5dbb83edb5e75c8c91535294ab5da0398e2/_dawn.cp312-win_amd64.pyd",
+            "sha256": "8b93326abbc14d28fe6743bc3571d5dbb83edb5e75c8c91535294ab5da0398e2"
+          }
+        },
+        {
+          "member": "vispy/visuals/text/_sdf_cpu.cp312-win_amd64.pyd",
+          "file": {
+            "path": "build/artifacts/fd14a55ac02b415ee2b4027a7632cfe23a4b4fc7976f9eb815180c5bc31d849e/_sdf_cpu.cp312-win_amd64.pyd",
+            "sha256": "fd14a55ac02b415ee2b4027a7632cfe23a4b4fc7976f9eb815180c5bc31d849e"
+          }
+        },
+        {
+          "member": "vispy/VkLayer_vispy_submit.dll",
+          "file": {
+            "path": "build/artifacts/050a86a3550aaed01e5a66a15fb44a313af83f816586c2119a7d14f57fb9e37b/VkLayer_vispy_submit.dll",
+            "sha256": "050a86a3550aaed01e5a66a15fb44a313af83f816586c2119a7d14f57fb9e37b"
+          }
+        },
+        {
+          "member": "vispy/VkLayer_vispy_submit.json",
+          "file": {
+            "path": "build/artifacts/7323cea73a46efcba615ca452d2b0235e3741109628c4bf2979c105e6ae69d56/VkLayer_vispy_submit.json",
+            "sha256": "7323cea73a46efcba615ca452d2b0235e3741109628c4bf2979c105e6ae69d56"
+          }
+        }
+      ],
+      "shutdown_gauges": {
+        "pending_tickets": 0,
+        "queued_frames": 0,
+        "live_buffer_bytes": 0,
+        "live_cpu_buffer_bytes": 0,
+        "live_texture_bytes": 0,
+        "canvas_texture_bytes": 0,
+        "transient_buffer_bytes": 0,
+        "line_resource_pool_busy_slots": 0,
+        "line_resource_pool_bytes": 0,
+        "host_import_pinned_bytes": 0
+      },
+      "evidence": {
+        "verification.json": {
+          "path": "build/runs/dynamic-sampler-breadth-406/verification.json",
+          "sha256": "e9dc43741947e2fa379b3c7d07b39d5750244c868d0d75e06e884af4dde900b1"
+        },
+        "input-result.json": {
+          "path": "build/runs/dynamic-sampler-breadth-406/input-result.json",
+          "sha256": "23f7c5ef0e23fbbf15ca0db8f693ae72e53b48a9f04018776d932368d14f7aea"
+        },
+        "inputs.xml": {
+          "path": "build/runs/dynamic-sampler-breadth-406/inputs.xml",
+          "sha256": "ca2363b017a12003ce5fc705d746d300a1f7d5c2644464818b9c7ca62108382d"
+        },
+        "native-overlay.json": {
+          "path": "build/runs/dynamic-sampler-breadth-406/native-overlay.json",
+          "sha256": "0e5255320773f83074bf775f334084fa64729f33b01981b4bef331c30490eef8"
+        },
+        "test-source-and-licenses.zip": {
+          "path": "build/runs/dynamic-sampler-breadth-406/test-source-and-licenses.zip",
+          "sha256": "98889f7ebbb0ff68fa834e62e5a892f6008cf452925788f6c1171e280ae59120"
+        },
+        "terminal-retention.json": {
+          "path": "build/runs/dynamic-sampler-breadth-406/terminal-retention.json",
+          "sha256": "26d1c0b1a87f0f50c991c641784c3126d4b55fc6577cf8cb0c2d21e8d971033e"
+        },
+        "post-cleanup.json": {
+          "path": "build/runs/dynamic-sampler-breadth-406/post-cleanup.json",
+          "sha256": "094eedbc6a510cc47c8ca521a67988b59a6fb27824a95383e5b331365de714f8"
+        }
+      }
+    },
+    {
+      "run": "dynamic-sampler-limits-407",
+      "cases": 2,
+      "source_hashes": {
+        "tests/shaders/test_dynamic_explicit_sampler_arrays.py": "63bb0f4e4800f338bdc32ecd7d7210f41d67a86cc6ff64a3df5739bbbba4a808"
+      },
+      "test_targets": [
+        "tests/shaders/test_dynamic_explicit_sampler_arrays.py::test_dynamic_explicit_active_binding_limit_refusal_and_render_recovery"
+      ],
+      "native_overlay": [
+        {
+          "member": "vispy/_dawn.cp312-win_amd64.pyd",
+          "file": {
+            "path": "build/artifacts/8b93326abbc14d28fe6743bc3571d5dbb83edb5e75c8c91535294ab5da0398e2/_dawn.cp312-win_amd64.pyd",
+            "sha256": "8b93326abbc14d28fe6743bc3571d5dbb83edb5e75c8c91535294ab5da0398e2"
+          }
+        },
+        {
+          "member": "vispy/visuals/text/_sdf_cpu.cp312-win_amd64.pyd",
+          "file": {
+            "path": "build/artifacts/fd14a55ac02b415ee2b4027a7632cfe23a4b4fc7976f9eb815180c5bc31d849e/_sdf_cpu.cp312-win_amd64.pyd",
+            "sha256": "fd14a55ac02b415ee2b4027a7632cfe23a4b4fc7976f9eb815180c5bc31d849e"
+          }
+        },
+        {
+          "member": "vispy/VkLayer_vispy_submit.dll",
+          "file": {
+            "path": "build/artifacts/050a86a3550aaed01e5a66a15fb44a313af83f816586c2119a7d14f57fb9e37b/VkLayer_vispy_submit.dll",
+            "sha256": "050a86a3550aaed01e5a66a15fb44a313af83f816586c2119a7d14f57fb9e37b"
+          }
+        },
+        {
+          "member": "vispy/VkLayer_vispy_submit.json",
+          "file": {
+            "path": "build/artifacts/7323cea73a46efcba615ca452d2b0235e3741109628c4bf2979c105e6ae69d56/VkLayer_vispy_submit.json",
+            "sha256": "7323cea73a46efcba615ca452d2b0235e3741109628c4bf2979c105e6ae69d56"
+          }
+        }
+      ],
+      "shutdown_gauges": {
+        "pending_tickets": 0,
+        "queued_frames": 0,
+        "live_buffer_bytes": 0,
+        "live_cpu_buffer_bytes": 0,
+        "live_texture_bytes": 0,
+        "canvas_texture_bytes": 0,
+        "transient_buffer_bytes": 0,
+        "line_resource_pool_busy_slots": 0,
+        "line_resource_pool_bytes": 0,
+        "host_import_pinned_bytes": 0
+      },
+      "evidence": {
+        "verification.json": {
+          "path": "build/runs/dynamic-sampler-limits-407/verification.json",
+          "sha256": "19490b3e8734902d8f60cba4fb5cfdb7c104cf4f2f90ade93ecb87ee19431cd5"
+        },
+        "input-result.json": {
+          "path": "build/runs/dynamic-sampler-limits-407/input-result.json",
+          "sha256": "ee90b06263dcfb9ab0c93472b4bfa0a81b956bd2f7162d70a0ccda89dfd65b13"
+        },
+        "inputs.xml": {
+          "path": "build/runs/dynamic-sampler-limits-407/inputs.xml",
+          "sha256": "ad3d71e63898303eb66cad73554621ae48a737f3b00e4833af6e3bbcea544af7"
+        },
+        "native-overlay.json": {
+          "path": "build/runs/dynamic-sampler-limits-407/native-overlay.json",
+          "sha256": "0e5255320773f83074bf775f334084fa64729f33b01981b4bef331c30490eef8"
+        },
+        "test-source-and-licenses.zip": {
+          "path": "build/runs/dynamic-sampler-limits-407/test-source-and-licenses.zip",
+          "sha256": "41dfe215ee52312368e832a484d479c260ff7245071d61fbeccdacf36e639294"
+        },
+        "terminal-retention.json": {
+          "path": "build/runs/dynamic-sampler-limits-407/terminal-retention.json",
+          "sha256": "7e0f55ffcb2089619aa52726cada8a9c82a1cc1ea2efdfd3490d9420c8bbc1bd"
+        },
+        "post-cleanup.json": {
+          "path": "build/runs/dynamic-sampler-limits-407/post-cleanup.json",
+          "sha256": "094eedbc6a510cc47c8ca521a67988b59a6fb27824a95383e5b331365de714f8"
+        }
+      }
+    },
+    {
+      "run": "dynamic-sampler-lod-408",
+      "cases": 6,
+      "source_hashes": {
+        "tests/shaders/test_dynamic_explicit_sampler_arrays.py": "37e6ff810722487e4bbb5d3a7750d4d7bb65423a876696a629643f4a087fe802"
+      },
+      "test_targets": [
+        "tests/shaders/test_dynamic_explicit_sampler_arrays.py::test_dynamic_explicit_single_level_filtering_and_all_arguments_evaluated_once"
+      ],
+      "native_overlay": [
+        {
+          "member": "vispy/_dawn.cp312-win_amd64.pyd",
+          "file": {
+            "path": "build/artifacts/8b93326abbc14d28fe6743bc3571d5dbb83edb5e75c8c91535294ab5da0398e2/_dawn.cp312-win_amd64.pyd",
+            "sha256": "8b93326abbc14d28fe6743bc3571d5dbb83edb5e75c8c91535294ab5da0398e2"
+          }
+        },
+        {
+          "member": "vispy/visuals/text/_sdf_cpu.cp312-win_amd64.pyd",
+          "file": {
+            "path": "build/artifacts/fd14a55ac02b415ee2b4027a7632cfe23a4b4fc7976f9eb815180c5bc31d849e/_sdf_cpu.cp312-win_amd64.pyd",
+            "sha256": "fd14a55ac02b415ee2b4027a7632cfe23a4b4fc7976f9eb815180c5bc31d849e"
+          }
+        },
+        {
+          "member": "vispy/VkLayer_vispy_submit.dll",
+          "file": {
+            "path": "build/artifacts/050a86a3550aaed01e5a66a15fb44a313af83f816586c2119a7d14f57fb9e37b/VkLayer_vispy_submit.dll",
+            "sha256": "050a86a3550aaed01e5a66a15fb44a313af83f816586c2119a7d14f57fb9e37b"
+          }
+        },
+        {
+          "member": "vispy/VkLayer_vispy_submit.json",
+          "file": {
+            "path": "build/artifacts/7323cea73a46efcba615ca452d2b0235e3741109628c4bf2979c105e6ae69d56/VkLayer_vispy_submit.json",
+            "sha256": "7323cea73a46efcba615ca452d2b0235e3741109628c4bf2979c105e6ae69d56"
+          }
+        }
+      ],
+      "shutdown_gauges": {
+        "pending_tickets": 0,
+        "queued_frames": 0,
+        "live_buffer_bytes": 0,
+        "live_cpu_buffer_bytes": 0,
+        "live_texture_bytes": 0,
+        "canvas_texture_bytes": 0,
+        "transient_buffer_bytes": 0,
+        "line_resource_pool_busy_slots": 0,
+        "line_resource_pool_bytes": 0,
+        "host_import_pinned_bytes": 0
+      },
+      "evidence": {
+        "verification.json": {
+          "path": "build/runs/dynamic-sampler-lod-408/verification.json",
+          "sha256": "5d9c0fe8513c7f19b11216779ec14f03447662b8930d649794ceffd7143bd2de"
+        },
+        "input-result.json": {
+          "path": "build/runs/dynamic-sampler-lod-408/input-result.json",
+          "sha256": "33b3043b7ce52d1e837f269cc46fcfcdfbc0b0772f5d2f0fb4ffaa47eb3efe4d"
+        },
+        "inputs.xml": {
+          "path": "build/runs/dynamic-sampler-lod-408/inputs.xml",
+          "sha256": "b052bd431027f94db776def06a19698a179480a35ca2fae3b517349a0ea3a48b"
+        },
+        "native-overlay.json": {
+          "path": "build/runs/dynamic-sampler-lod-408/native-overlay.json",
+          "sha256": "0e5255320773f83074bf775f334084fa64729f33b01981b4bef331c30490eef8"
+        },
+        "test-source-and-licenses.zip": {
+          "path": "build/runs/dynamic-sampler-lod-408/test-source-and-licenses.zip",
+          "sha256": "dab8d8848a189dde9fb3fc687429aba7d46fadb5ad0f3aa82b0422355c03239b"
+        },
+        "terminal-retention.json": {
+          "path": "build/runs/dynamic-sampler-lod-408/terminal-retention.json",
+          "sha256": "881863ae2fb46fcb1d8794f89181abb88cd6c77be738aad101a81d82f29d1a68"
+        },
+        "post-cleanup.json": {
+          "path": "build/runs/dynamic-sampler-lod-408/post-cleanup.json",
+          "sha256": "094eedbc6a510cc47c8ca521a67988b59a6fb27824a95383e5b331365de714f8"
+        }
+      }
+    }
+  ],
+  "distinct_windows_cases_across_additional_runs": 75,
+  "additional_scope": [
+    "Twenty dimension/stage/int-uint cases: float 1D/3D/cube with explicit LOD and admitted fetch forms in vertex/fragment stages; runtime indices 0/1/-1/2",
+    "Two actual granted active binding boundary cases: one beyond refuses; at-limit compilation and rendered recovery pass in each stage",
+    "Six single-level nearest/linear cases at LOD -2/0/2; independent gradient values and exactly one index/coordinate/LOD evaluation"
+  ],
+  "installed_windows_successor_wheel": {
+    "wheel": {
+      "path": "build/artifacts/ba8a54c5b7ede9387d62ff72b1269602d61c0bdc61c77928ee52a7e37107bf24/vispy-0.17.0+vulkan.2-cp312-cp312-win_amd64.whl",
+      "sha256": "ba8a54c5b7ede9387d62ff72b1269602d61c0bdc61c77928ee52a7e37107bf24"
+    },
+    "source_commit": "af6a91ee7d42960f257964bddce4daab3c17327a",
+    "native_production_identity": "9dff8569f9e4c75e00527e383bdd546c25ea75201affe544e1e970a83bfe671d",
+    "native_outputs": {
+      "vispy/_dawn.cp312-win_amd64.pyd": "8b93326abbc14d28fe6743bc3571d5dbb83edb5e75c8c91535294ab5da0398e2",
+      "vispy/visuals/text/_sdf_cpu.cp312-win_amd64.pyd": "fd14a55ac02b415ee2b4027a7632cfe23a4b4fc7976f9eb815180c5bc31d849e",
+      "vispy/VkLayer_vispy_submit.dll": "050a86a3550aaed01e5a66a15fb44a313af83f816586c2119a7d14f57fb9e37b",
+      "vispy/VkLayer_vispy_submit.json": "7323cea73a46efcba615ca452d2b0235e3741109628c4bf2979c105e6ae69d56"
+    },
+    "cases": 138,
+    "sampler_cases": 75,
+    "other_cases": 63,
+    "skipped": 0,
+    "installed_members_verified_per_child": 537,
+    "sampler_loaded_origins": 56,
+    "example_loaded_python_origins": 172,
+    "device": {
+      "backend": "Vulkan",
+      "adapter_type": "discrete",
+      "vendor": "nvidia",
+      "device": "NVIDIA GeForce RTX 4090",
+      "driver": "NVIDIA: 610.88 610.88.0.0",
+      "vendor_id": 4318,
+      "device_id": 9860,
+      "max_texture_dimension_1d": 32768,
+      "max_texture_dimension_2d": 32768,
+      "max_texture_dimension_3d": 16384,
+      "max_vertex_attributes": 30,
+      "max_vertex_buffers": 8,
+      "max_vertex_buffer_array_stride": 2048,
+      "max_storage_buffers_per_shader_stage": 16,
+      "max_uniform_buffers_per_shader_stage": 12,
+      "max_inter_stage_shader_variables": 30,
+      "max_storage_buffer_binding_size": 2147483644,
+      "max_bindings_per_bind_group": 1000,
+      "max_compute_invocations_per_workgroup": 1024,
+      "max_compute_workgroup_size_x": 1024,
+      "max_compute_workgroups_per_dimension": 65535,
+      "max_point_vertex_attributes": 30,
+      "core_features_and_limits": true,
+      "point_input_limit_scope": "all active user point inputs share one vertex buffer; exact vertex/instance identities use read-only vertex storage without reserving a user attribute; actual granted attribute/stride/storage/allocation limits apply",
+      "max_samplers_per_shader_stage": 16,
+      "max_sampled_textures_per_shader_stage": 48,
+      "max_buffer_size": 1099511627776,
+      "max_uniform_buffer_binding_size": 65536,
+      "software": false,
+      "float32_filterable": true,
+      "unorm16_texture_formats": true,
+      "bresenham_lines": true,
+      "last_vertex_provoking": true,
+      "timestamp_query": true,
+      "timestamp_quantization_ns": 65536,
+      "host_mapped_pointer": true,
+      "host_import_limit": 536870912,
+      "depth_stencil_storage": "depth24_unorm_stencil8",
+      "ok": true,
+      "error": "",
+      "loss_count": 0,
+      "revision": "117b054598f4758b598f4b8f48feea48c11fe7b0+dawn-499e5c6ff9b37d5de70c6493fb74c251e0d35c1c"
+    },
+    "toolkit": {
+      "tk_version": 8.6,
+      "tcl_version": 8.6,
+      "binding_origin": "C:\\Users\\HEQ\\AppData\\Roaming\\uv\\python\\cpython-3.12.8-windows-x86_64-none\\DLLs\\_tkinter.pyd",
+      "binding_hash_scope": "module",
+      "binding_sha256": "38453f6aff3f3a3ef0017c00bfee2f403ca0aeaf92b8b5c56d05460fd6dbbdf9"
+    },
+    "profile": {
+      "path": "compat/build-profiles/windows-dynamic-package-secondary-v1.json",
+      "sha256": "2c4160803759fc648128373da217f17148dbd56074bd92149d30e6a4e872075e"
+    },
+    "native_overlay": false,
+    "artifact_admitted": false,
+    "evidence": {
+      "windows-wheel.json": {
+        "path": "build/runs/windows-dynamic-package-410/windows-wheel.json",
+        "sha256": "e280ecbeff4cf6c512b5095caeb3752d28d45e926b501a01f04e6349e49817a1"
+      },
+      "windows-archive-join.json": {
+        "path": "build/runs/windows-dynamic-package-410/windows-archive-join.json",
+        "sha256": "5081fe5006caf47e592a8a9e7b1acc7abeeecd930b6bacffefb2a3a2c8358017"
+      },
+      "assembly-source-audit.json": {
+        "path": "build/runs/windows-dynamic-package-410/assembly-source-audit.json",
+        "sha256": "038f1d3ff467d6235cc9236d7877719e7014705c5c19daab2b6fd8a366552a1f"
+      },
+      "acceptance-report.json": {
+        "path": "build/runs/windows-dynamic-package-410/acceptance-report.json",
+        "sha256": "b1efbffc764a9de67f90c3f9ad5c9f184a03f260502eb6fda0a38da220ff4ec8"
+      },
+      "input-result.json": {
+        "path": "build/runs/windows-dynamic-package-410/input-result.json",
+        "sha256": "b41af11ef3845ed7b52b2d56d4dbe4998b1512f5409ddb9c24dc6b243da61c8c"
+      },
+      "inputs.xml": {
+        "path": "build/runs/windows-dynamic-package-410/inputs.xml",
+        "sha256": "3e57342691e07b3ceca5d82fa962fc82a03291a92037d085fba0ae8c46e0617e"
+      },
+      "upload.xml": {
+        "path": "build/runs/windows-dynamic-package-410/upload.xml",
+        "sha256": "4ce9e22c2dccb8921eb52e0d8da4c5271207f5b9e7fc67001d48ef34c511fb17"
+      },
+      "state.xml": {
+        "path": "build/runs/windows-dynamic-package-410/state.xml",
+        "sha256": "0db812fafedbf63346e666683476293a51f1ca387ce5ac5bf2f75131252bc6e7"
+      },
+      "examples.xml": {
+        "path": "build/runs/windows-dynamic-package-410/examples.xml",
+        "sha256": "4bee2c38150b5c8c248de82f9cb9665e30b7f0e84edb7bb4436c1f42f5a93939"
+      },
+      "terminal-retention.json": {
+        "path": "build/runs/windows-dynamic-package-410/terminal-retention.json",
+        "sha256": "38a2f05d5e232cef43bce9a205c6050a6676e41b0d15fd4c5279fbbde9ca938d"
+      },
+      "post-cleanup.json": {
+        "path": "build/runs/windows-dynamic-package-410/post-cleanup.json",
+        "sha256": "2f9acb453a1a89dd8ff401c5de2284bbe4fc0f733dbd8a9ae2cf286a4403b9e6"
+      }
+    }
+  },
+  "installed_linux_successor_wheel": {
+    "wheel": {
+      "path": "build/artifacts/4bc3cd778990a35a3ff3e72f68fc8905e74804cb78b1d7091adbdc1b1fbfcdc8/vispy-0.17.0+vulkan.2-cp312-cp312-manylinux_2_39_x86_64.whl",
+      "sha256": "4bc3cd778990a35a3ff3e72f68fc8905e74804cb78b1d7091adbdc1b1fbfcdc8"
+    },
+    "raw_ci_wheel": {
+      "path": "build/artifacts/7b43577f866a54081ec7fba8bd2743e6ab35edd83f141a7e8e30933fe2197d22/vispy-0.17.0+vulkan.2-cp312-cp312-linux_x86_64.whl",
+      "sha256": "7b43577f866a54081ec7fba8bd2743e6ab35edd83f141a7e8e30933fe2197d22"
+    },
+    "source_commit": "f7d21c314ee931a56822785441c8fd9bade45da2",
+    "native_production_identity": "7e4a732d0f0c46c3a6c11b7cdab4c4795370b474807ee8dc9b746e03d8ebbeb7",
+    "native_outputs": {
+      "vispy/_dawn.cpython-312-x86_64-linux-gnu.so": "6c4e3beaaaf922160d9392fb12213b60911585eeca09b18ec07d4ac67fa5e286",
+      "vispy/visuals/text/_sdf_cpu.cpython-312-x86_64-linux-gnu.so": "1e508269c6d8c4a0f9ed041987237c6fef5768eeb1e8174ed1e8eb29f8f7162f",
+      "vispy/VkLayer_vispy_submit.so": "95907606472ffe51bec021d4b28e4717472e40f2cef34cd2590d172575c113d4",
+      "vispy/VkLayer_vispy_submit.json": "e0762acec9e2df811cbb67e1c25e5c82d9fb76def0101f54fd737464c76786c2"
+    },
+    "native_contracts": 44,
+    "cases": 258,
+    "shader_cases": 195,
+    "sampler_cases": 75,
+    "uniform_cases": 120,
+    "other_cases": 63,
+    "skipped": 0,
+    "installed_members_verified_per_child": 537,
+    "shader_loaded_origins": 150,
+    "example_loaded_python_origins": 171,
+    "device": {
+      "backend": "Vulkan",
+      "adapter_type": "cpu",
+      "vendor": "mesa",
+      "device": "llvmpipe (LLVM 18.1.3, 256 bits)",
+      "driver": "llvmpipe: Mesa 26.1.8 (LLVM 18.1.3)",
+      "vendor_id": 65541,
+      "device_id": 0,
+      "max_texture_dimension_1d": 16384,
+      "max_texture_dimension_2d": 16384,
+      "max_texture_dimension_3d": 4096,
+      "max_vertex_attributes": 30,
+      "max_vertex_buffers": 8,
+      "max_vertex_buffer_array_stride": 2048,
+      "max_storage_buffers_per_shader_stage": 16,
+      "max_uniform_buffers_per_shader_stage": 12,
+      "max_inter_stage_shader_variables": 30,
+      "max_storage_buffer_binding_size": 134217728,
+      "max_bindings_per_bind_group": 1000,
+      "max_compute_invocations_per_workgroup": 1024,
+      "max_compute_workgroup_size_x": 1024,
+      "max_compute_workgroups_per_dimension": 65535,
+      "max_point_vertex_attributes": 30,
+      "core_features_and_limits": true,
+      "point_input_limit_scope": "all active user point inputs share one vertex buffer; exact vertex/instance identities use read-only vertex storage without reserving a user attribute; actual granted attribute/stride/storage/allocation limits apply",
+      "max_samplers_per_shader_stage": 16,
+      "max_sampled_textures_per_shader_stage": 48,
+      "max_buffer_size": 4294967295,
+      "max_uniform_buffer_binding_size": 65536,
+      "software": true,
+      "float32_filterable": true,
+      "unorm16_texture_formats": true,
+      "bresenham_lines": true,
+      "last_vertex_provoking": true,
+      "timestamp_query": true,
+      "timestamp_quantization_ns": 65536,
+      "host_mapped_pointer": true,
+      "host_import_limit": 536870912,
+      "depth_stencil_storage": "depth24_unorm_stencil8",
+      "ok": true,
+      "error": "",
+      "loss_count": 0,
+      "revision": "117b054598f4758b598f4b8f48feea48c11fe7b0+dawn-499e5c6ff9b37d5de70c6493fb74c251e0d35c1c"
+    },
+    "toolkit": {
+      "tk_version": 9.0,
+      "tcl_version": 9.0,
+      "binding_origin": "/home/heq/.local/share/uv/python/cpython-3.12.13-linux-x86_64-gnu/lib/python3.12/lib-dynload/_tkinter.cpython-312-x86_64-linux-gnu.so",
+      "binding_hash_scope": "module",
+      "binding_sha256": "0240658571f1531461f4a7178c454795c55fe0f5723eebeda0b5de2f4aeee303"
+    },
+    "native_overlay": false,
+    "artifact_admitted": false,
+    "evidence": {
+      "linux-dynamic-artifact-414": {
+        "verification.json": {
+          "path": "build/runs/linux-dynamic-artifact-414/verification.json",
+          "sha256": "af66c248563f1a31e5eeec5d26bf792e423da9705ec3f81d4f253e92fb614967"
+        },
+        "native-capture-validation.json": {
+          "path": "build/runs/linux-dynamic-artifact-414/native-capture-validation.json",
+          "sha256": "1f98f3f400dac6df109f637bcb5c25c19701e442d3774415e506069e59413d66"
+        },
+        "successful-original-capture.json": {
+          "path": "build/runs/linux-dynamic-artifact-414/successful-original-capture.json",
+          "sha256": "f91a82ad286c6e9075b4b41952021037acd707a92527f5ad14ec1f21cce72971"
+        },
+        "ci-retained-members.json": {
+          "path": "build/runs/linux-dynamic-artifact-414/ci-retained-members.json",
+          "sha256": "6464743ed344c90a3827681dbbb6fbfc7ba99a35df09701ed891ca96fb9c607f"
+        },
+        "linux-wheel.json": {
+          "path": "build/runs/linux-dynamic-artifact-414/linux-wheel.json",
+          "sha256": "bfc916f1cc794ddc9473f47a590c09a9ff5b370195bc5549cfe27abd1a977da8"
+        },
+        "terminal-retention.json": {
+          "path": "build/runs/linux-dynamic-artifact-414/terminal-retention.json",
+          "sha256": "cd75d0d65f7caa0ebd67be59cbc24faf9668f67d5a055804221bc335398d1537"
+        },
+        "post-cleanup.json": {
+          "path": "build/runs/linux-dynamic-artifact-414/post-cleanup.json",
+          "sha256": "8e69f187480558518a192d1a26fcd04b481f7f7596eda64a3451abf74934394e"
+        }
+      },
+      "shader-installed-wsl-415": {
+        "verification.json": {
+          "path": "build/runs/shader-installed-wsl-415/verification.json",
+          "sha256": "6a3431d0f122a8e2823c04744a11e670c9562409cd7c58b7353a705423d9fe73"
+        },
+        "input-result.json": {
+          "path": "build/runs/shader-installed-wsl-415/input-result.json",
+          "sha256": "0fcf1ab773cea02560aabc1ca3f1a0d7c1cd40122e022fcc4df337cae81395ec"
+        },
+        "inputs.xml": {
+          "path": "build/runs/shader-installed-wsl-415/inputs.xml",
+          "sha256": "6733e6b3564d8d8a035bc9112ebb900e7005049dd01bfb3572c0f3f4226db5b1"
+        },
+        "driver-origin.json": {
+          "path": "build/runs/shader-installed-wsl-415/driver-origin.json",
+          "sha256": "f0ac83b5645bb2c665b15488dfd5ce71b229fc579f50701b5c0ffee0310e8949"
+        },
+        "terminal-retention.json": {
+          "path": "build/runs/shader-installed-wsl-415/terminal-retention.json",
+          "sha256": "02f4084d6681e9c963b1a58c3023e28a5f0044893e609db5ce9953136d59c0ea"
+        },
+        "post-cleanup.json": {
+          "path": "build/runs/shader-installed-wsl-415/post-cleanup.json",
+          "sha256": "84804452fb4f730c17ccfbe5e13fa6a4b49c2af93a146cb504748a9bec6c9e09"
+        }
+      },
+      "linux-dynamic-retag-416": {
+        "linux-wheel.json": {
+          "path": "build/runs/linux-dynamic-retag-416/linux-wheel.json",
+          "sha256": "18f7dd93d87f704ff2cf5db679a21fbd2e529e1000746232fb34532adcc45eea"
+        },
+        "archive-audit.json": {
+          "path": "build/runs/linux-dynamic-retag-416/archive-audit.json",
+          "sha256": "7f5e5bf017cfab7809d283bfd2fbc69a259cb1eeaf8cf67b41644ea12c57d42c"
+        },
+        "retag.json": {
+          "path": "build/runs/linux-dynamic-retag-416/retag.json",
+          "sha256": "e8aee69830603b64dbb27f8f720e365e8bf458db9fcbee3bc55d84ac606f4329"
+        },
+        "tool-reuse.json": {
+          "path": "build/runs/linux-dynamic-retag-416/tool-reuse.json",
+          "sha256": "83f491a446023054d633a7f52d7beb59536aada7c0f4703ec919e287e37e5485"
+        },
+        "terminal-retention.json": {
+          "path": "build/runs/linux-dynamic-retag-416/terminal-retention.json",
+          "sha256": "34f2f0112319a438e029a03dbc305c636d82047517d8e774500f7ce8d0936fd2"
+        },
+        "post-cleanup.json": {
+          "path": "build/runs/linux-dynamic-retag-416/post-cleanup.json",
+          "sha256": "a1a698aa60ca061048ae6f0a5c79e00838563bf4ecc88d7c4ccd32d9bcf1a2c2"
+        }
+      },
+      "linux-dynamic-installed-417": {
+        "acceptance-report.json": {
+          "path": "build/runs/linux-dynamic-installed-417/acceptance-report.json",
+          "sha256": "e00e4fdccd9607454262de52ecc303128c912a72ebb12ef0565e6f8efb8ba67e"
+        },
+        "input-result.json": {
+          "path": "build/runs/linux-dynamic-installed-417/input-result.json",
+          "sha256": "4bb4f467263c9d1d78e60eb0795ece849c98e60b231171f57dd0b82be83e5e21"
+        },
+        "inputs.xml": {
+          "path": "build/runs/linux-dynamic-installed-417/inputs.xml",
+          "sha256": "b86ed9f0ff96d05ec4c269d7afe3a6afed37b9969c2586760e8c77e314949b75"
+        },
+        "upload.xml": {
+          "path": "build/runs/linux-dynamic-installed-417/upload.xml",
+          "sha256": "27b81ab8944a0d9dd23f6d863a607c90c97620375772c1fa4d859293adaa7723"
+        },
+        "state.xml": {
+          "path": "build/runs/linux-dynamic-installed-417/state.xml",
+          "sha256": "29848942b72b0ffff0e60f516051d1410345262368ec6cad743c863f19d6cb96"
+        },
+        "examples.xml": {
+          "path": "build/runs/linux-dynamic-installed-417/examples.xml",
+          "sha256": "6380c37c2fd137d462f475a7920fbec72549f86d824e073728f446911c8878c3"
+        },
+        "terminal-retention.json": {
+          "path": "build/runs/linux-dynamic-installed-417/terminal-retention.json",
+          "sha256": "1a15a3f1a33b42aeeb08ad78cb0c7c1041f7f13bab13a40926f9f39ee80cbd03"
+        },
+        "post-cleanup.json": {
+          "path": "build/runs/linux-dynamic-installed-417/post-cleanup.json",
+          "sha256": "416acf215be30f4661198aba2ebec17fc250b844d2ca2196dbce4296ad18c944"
+        },
+        "retention-recovery.json": {
+          "path": "build/runs/linux-dynamic-installed-417/retention-recovery.json",
+          "sha256": "f8deef8c261c83cb624e3bbaca6fa886dbc9935fe5f0a0fc8c14b41aa7e436b6"
+        }
+      }
+    }
+  }
+}

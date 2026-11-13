@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "kind": "original-linux-ci-native-reuse",
+  "candidate": {
+    "path": "compat/candidates/tk-capture-2/candidate.json",
+    "sha256": "97a61af9022a50a339ea60839f77403488528812301111847d8f4edc27ec5169"
+  },
+  "capture": {
+    "path": "build/runs/linux-artifact-350/successful-original-capture.json",
+    "sha256": "f3472a92431f985c9a4d24f9b1be0ef844b8438faf77bbffb5fd9ed254d14126"
+  },
+  "reuse": {
+    "candidate_scope_sha256": "9c537440634aa4a9e3fa34d14774975cc633b651b391e00cce08ce4ebf73600c",
+    "profile": "wsl-software-tk90-cp31213-development",
+    "capture_sha256": "f3472a92431f985c9a4d24f9b1be0ef844b8438faf77bbffb5fd9ed254d14126",
+    "production_sha256": "b089066b53585bbad7660b47a255f52952acfaa3262ed64864910ae503441880",
+    "evidence_store": {
+      "path": "compat/evidence-stores/secondary-v1.json",
+      "sha256": "b164e3fdc85863a2327b508ea60f8d3068f740cfe90f665aa52905e28bfb3ca5"
+    },
+    "impact": "Reuse the exact original successful fresh Linux CI42357137754 capture; its compiler inputs match current v2. Original build/strip/archive/cleanup and notices preserved; independent successor reviews pending.",
+    "abi": {
+      "tag": "cp312",
+      "build_version": "3.12.8",
+      "build_python_sha256": "0dc3a692fa85fcdb7f1a5877d2adf179809ac417a07ffde2373c832863800a15",
+      "consumer_version": "3.12.13",
+      "consumer_python_sha256": "339de109f072e52523066d97a2b3372e358a10cc00c6a9df62c28a6618061900"
+    }
+  }
+}

@@ -123,66 +123,2427 @@ out of scope. Earlier checkpoints below retain their recorded revision scopes.
 
 # VisPy Vulkan implementation completion plan
 
-Current source checkpoint, 2026-10-23: portable analytic smooth lines now use the
-existing generated ABI2 consumer in both runtime paths. Width stays a uniform,
-including fractional/subpixel widths. Coverage modulates original fragment alpha.
-The user relaxed exact rasterizer parity and lab-grade display measurements as
-practical completion gates; historical strict results remain unchanged.
+Current Linux/native build checkpoint, 2026-10-23: fresh WSL Ubuntu source build
+is active in session95285, task /home/heq/vispy-native67-linux-root-3, uv wheel
+builder PID408 in the current WSL boot. It has passed all ten immutable source
+trees, configured successfully and is compiling1080 Ninja steps. Do not restart
+this live handle. Control scripts/logs/receipts are under
+build/native67-linux-prep-root-1 (linux_build3.py, build-result3.json, wheel-build3.log).
+It builds the published aa515012b runtime/package source plus the candidate
+project CMake fix, not the Windows SDK or any old Linux ABI outputs.
 
-An isolated current-source build verified ten immutable dependency origins and
-the 213-file SDK. The generated-consumer C++ contract passed 38343 checks. Fresh
-RTX4090 Vulkan rendering passed five whole-RGBA line checks against the declared
-analytic policy (maximum error1), plus clipping, perspective, depth occlusion and
-alpha blending checks. Width changes reused consumer/pipeline; nine checked live
-resource gauges were zero after shutdown. The previously blocked axes/colorbar
-fixture rendered and its saved image was visually inspected.
+Real build fix: CMakeLists.txt now forces DAWN_SUPPORTS_CXX_MODULES=OFF before
+adding Dawn. The extension uses headers, not the optional module interface;
+Dawn's syntax check admits GCC13/Ninja although CMake cannot scan its import
+graph. The candidate CMake SHA is
+60e4599c4a43a1722e41c3ffb8e8a0c88ea8acba5a30165fed15b89655cefe60.
+This canonical change is NOT yet in the publication checkout (still clean aa515012b).
+Finish native build, stripped-origin comparison and installed software-Vulkan
+smoke before publishing this small build fix; preserve running PR3 CI.
 
-This is bounded source-build validation, not refreshed wheel/host admission or
-exact OpenGL parity. Exact-reference smoothing and MSAA remain unsupported.
-See docs/smooth-lines.md. Installed Native58 and all historical evidence remain
-unchanged. AGPL and original BSD notices remain attached. Cybersecurity work
-remains out of scope.
+Attempt1/session50968 is terminal1: git archive expanded the upstream VisPy
+.git_archival.txt export-subst placeholders, so its immutable source check failed.
+The147457375-byte archive is retained (SHA
+a1a9fe083fc6685865950fc6e8f9d3b0e2a0420466b26ec2e03dbfd90bb48cfd).
+Attempt2/session36578 is terminal1: restoring the exact committed literal metadata
+passed all source pins, then exposed the unused dawncpp_module generation error.
+Attempt3 uses a fresh extracted source copy with the same literal metadata and
+candidate project CMake fix. No vendor pins or upstream license bytes changed.
 
+WSL currently observes only llvmpipe CPU Vulkan (Mesa25.2.8/LLVM20.1.2), DISPLAY:0,
+Xvfb, GCC13.3 and an existing managed CPython3.12.8. This cannot qualify native
+Linux GPU or Metal. The new wheel will be raw linux_x86_64, not manylinux.
+After success, independently compare packaged native bytes with a controlled
+CMake --install --strip into a NEW owned prefix (retain original install manifest
+and raw leaves; Linux strip may change bytes), then use an external installed
+consumer for clear, blended smooth widths/reuse and compiled-SDF text with explicit
+software allowance. Use the recorded CMAKE_COMMAND executable before cache cleanup.
+No installed source-package or renderer pass is inferred while compilation is live.
 
-Current checkpoint, 2026-10-23: Native66 Qt presentation fix is ready for review
-on `work/qt-single-present`. Backend swaps inside a native paint scope now defer
-presentation until the alpha-clear tail is complete. Nested busy paints preserve
-the outer paint token; the earlier native API keeps its existing swap sequence.
+Ten Native67 CPU CI artifacts are now independently audited, including the first
+macOS ARM64 CP310 cell, all Linux CP310–CP314 and Windows CP310/CP312–CP314.
+Each has1018 pytest cases and42 native CPU contracts, zero skips, generated smooth
+contract38343 checks, source-input identities and PR merge tree equality verified.
+Evidence: build/native67-ci-observation-root-1/audit2.json and ten retained ZIPs.
+These are CPU results only. Older denied cleanup paths remain untouched, and
+the implementation goal remains active pending the actual platform work.
 
-Validation on the fresh Windows CPython 3.12 wheel:
+Current Windows wheel family checkpoint, 2026-10-23: all five current Native67
+Windows wheels CP310/CP311/CP312/CP313/CP314 are built, package/native-origin/
+license verified, and retained. Family manifest:
+build/native67-windows-family-root-1/wheel-family-manifest1.json.
+All runtime source bytes correspond to public code head
+aa515012bee224ef0db153062ccbc88598403480. The CP312 artifact retains its53-case
+installed scope. Each other ABI passes four isolated hardware Vulkan checks:
+whole-frame clear, fractional smooth widths1.5/2.25 with full RGBA blended
+expectations and pipeline reuse, plus actual compiled-SDF text. All550 installed
+package members and native loaded origins verify per ABI; nine live gauges zero.
+These ABI smokes do not imply the complete host/scientific suite on every ABI.
 
-- 22 Qt CPU regression cases passed, including a nested-paint regression that
-  reproduced the token-clearing error before the fix.
-- All 44 native targets built and all 47 CTests passed, followed by the terminal
-  source, compiler-policy and artifact audit.
-- All 75 Qt stress cases passed: 25 loss/recovery cycles and exact red readbacks
-  per PyQt5, PyQt6 and PySide6 binding.
-- All 17 scientific-volume controls matched exactly across 156,672 pixels.
-- All 24 large-volume controls passed across 96 complete frames and 251,658,240
-  pixels, with maximum channel error 1 within the unchanged limit of 2 and no
-  excluded pixels.
+Family build session81525 completed0 with all four builder controllers waited0.
+All four installed consumers are terminal0 and their external environments are
+physically gone. Source/leaf/wheel and per-ABI audit records remain. Together
+with CP312 cleanup,120 owned wheel-build object files were removed, all build
+and consumer caches removed, and wheel/native binaries retained hash-exact.
+The two temporary CP310.19/CP311.14 interpreters were uninstalled using uv with
+their exact owned --install-dir; their exact Astral registrations and owned temp
+root are gone. Pre-existing CP313/CP314 interpreters and installed Native58 remain
+hash-verified unchanged. Do not restart terminal81525 or its builder processes.
 
-The isolated wheel passed package, native-origin and license audits. Its SHA256
-is `ea48141c8bc1988d038eabd984f704e4a25d20fe1f38b432d0a91fb9a107cddd`.
-The implementation remains AGPL-3.0-only; original BSD licenses, copyright and
-third-party notices remain attached unchanged in source and the wheel.
+CP310 preliminary unblended smoke expectations differed at four line-cap RGB
+pixels with zero alpha; the whole alpha frame was exact. Those failed probes
+and raw frames remain. The four ABI acceptance smokes retain the same raster
+inputs and check normal SRC_ALPHA blending over the complete RGBA frame (no
+pixel exclusions), within one UNORM8 step. This avoids chasing invisible cap
+bits under the user's relaxed parity scope; it is not an exact GL promotion.
+PR3 description records the current Windows family. Publication code is unchanged
+and CI is preserved. Current README/status text refresh and wider platform/CI
+work remain pending; full implementation completion is not yet established.
 
-The first volume workload completed five alternating OpenGL/Vulkan pairs, each
-with 100 warm-up and 1,000 measured frames. All 10 workers and 15 paired full-frame
-comparisons verified, with no unattributed draw, parser or paint work. Each
-candidate measured 1,000 application/Dawn presents and 2,000 Vulkan submissions.
-Release performance remains **unproven**: input-to-visible scanout and complete
-driver/allocator peak accounting are still missing. These results do not qualify
-a speedup or all 24 timing workloads.
+Current CI/artifact checkpoint, 2026-10-23: six Native67 CI artifacts are now
+independently admitted: Windows CP312/CP313/CP314 and Linux CP310/CP311/CP312.
+Each passes1018 collected pytest cases (56+858+104) through setup/call/teardown,
+matching zero-failure/skip JUnit records, plus all42 exact registered native CPU
+contracts. Generated-consumer logs contain38343 checks, including analytic smooth.
+All six archive digests match GitHub metadata. Tested PR merge
+fb4202c994e4477175765eeead9a774f40ec5d58 has exactly the same entire tree as
+aa515012bee224ef0db153062ccbc88598403480. Source-input hashes and CPU-only CMake
+configuration match. This is CPU qualification, not Metal/Linux hardware proof.
+Evidence: build/native67-ci-observation-root-1/audit1.json and six retained ZIPs.
 
-The full implementation remains WIP. Marker and million-point parity, smooth-line
-parity, remaining host/platform/hardware coverage, scanout and allocator evidence
-remain open. WSL currently exposes only software Vulkan; macOS Metal hardware is
-unqualified. Current source is epoch 66, snapshot 52; installed Native58 stays
-unchanged. Removed 131 disposable object files (about 181 MiB) after terminal
-validation, retaining binaries, sources, logs and raw evidence.
+Current Windows ABI packaging is active under process session81525. Two fresh
+PEP517 builders for CP310.19 and CP311.14 are verifying immutable origins in
+build/native67-wheel-windows-cp310-root-1 and cp311-root-1; CP313.8 and CP314.0
+are queued in the same two-worker controller. Do not restart those handles.
+Driver and current process/runtime records: build/native67-windows-family-root-1/
+family-result1.json. consumer1.py and run_consumers1.py are prepared but NOT run:
+they require all four actual builds/audits to pass before installed clear,
+fractional smooth-line/pipeline-reuse and compiled-SDF text checks per ABI.
+No new ABI wheel pass or GPU qualification is inferred yet.
 
-Historical checkpoints follow; each describes the state at its recorded revision.
+The two missing exact build interpreters were provisioned in the new exclusive
+external root C:/Users/HEQ/AppData/Local/Temp/vispy-native67-family-python-0j2yxsn0.
+The installer used --no-bin but its default registered the exact Astral
+CPython3.10.19/CPython3.11.14 InstallPath keys to that owned root. After all builds
+AND consumers actually terminate, clean these using uv python uninstall for
+those two exact versions with --install-dir pointing to the owned root, verify
+the owned registrations are absent, and remove the guarded owned temp root.
+Do not touch the pre-existing CP313/CP314 or older global interpreters. Future
+temporary interpreter provisioning should also use --no-registry. Family build,
+consumer and provision caches/objects await terminal cleanup. Historical denied
+paths remain untouched. Installed Native58 and public code head remain unchanged;
+PR3 body records the six audited CPU cells without cancelling running CI.
+
+Current broader regression checkpoint, 2026-10-23: the same Native67 CP312 wheel
+passes all17 original scientific volume and13 image/label cases. Independent
+saved-output audit re-executes unchanged comparison/parameter rules for all30
+whole frames:316416pixels, maxerror0, changed components0, excluded pixels0.
+All550 installed package members, loaded native origins and nine zero live
+shutdown gauges were checked per worker. All workers are terminal and all fresh
+external environments were physically removed. Installed Native58 remains
+hash-verified unchanged. Evidence: build/native67-wheel-prep-root-1/
+scientific-image-audit5.json and native67-installed-regressions-root-4/root-5.
+
+Attempt4 used the manipulator closure, which lacks Numba:14 direct cases passed,
+16 host cases stopped before rendering. These failures remain preserved. Those
+16 cases passed in attempt5 with the existing scientific-controls profile
+e5791fbf4c108029597d6604bbd24df60e845fd750f3127140ba3c1d31fecac1.
+The saved metadata writer used fixture_gloo.freeze, which stringifies dictionaries;
+the auditor replays those literal dictionaries and their NumPy float64 wrappers
+without changing the original artifacts. Raw frames and original rules independently
+verify all30. Chains48696 and57956 are terminal0; the failed attempt4 aggregate
+is retained. Cache cleanup86968 completed0, removing26538 files/840639881bytes
+from the one newly owned cache; wheel, raw results, failures and logs remain.
+
+Together with the prior23 installed host cases, this gives53 bounded installed
+cases on the current Windows CP312 wheel. The12 mesh/layout and30 scientific/image
+frames are byte-exact; smooth axes and the ten Glue/plugin cases have the stated
+functional/state/landmark scope, not an inferred exact-parity claim. PR3 description
+now includes the scientific/image results. Code head stays aa515012bee224ef0db153062ccbc88598403480;
+running CI is preserved. README/status documentation refresh is pending the next
+publication batch. Wider platform/artifact/CI and broader regression work remain;
+do not mark the full implementation goal complete.
+Latest observed Native67 CI run39953557160 has three green jobs (Windows CP314,
+Linux CP311/CP312), five in progress and twelve queued. These are direct job-status
+observations; their artifacts have not yet been independently admitted. PR3 body
+was read back with the316416-pixel result and unchanged code head. See
+build/native67-wheel-prep-root-1/scientific-image-publication5.json.
+
+Current installed-wheel checkpoint, 2026-10-23: fresh CP312 Windows wheel
+40db90eb62b9f988c97f96cd70acfd6998292e7604c7ca6ee097137a0255fe16
+passed all523 package bytes, four exact fresh native-output origins and23 license
+members (AGPL plus unchanged BSD/notices). Dawn module is
+7d93fdeff6316d07964e093b1b3237fabcd3af1134cd0752cfc14870e5be9f59.
+No in-place copy occurred; installed Native58 remains hash-verified unchanged.
+Wheel chain74938 is terminal0. Its24 disposable objects (26713354bytes) and
+owned build cache were removed while preserving wheel, binaries, logs and receipts.
+
+All23 selected installed functional cases PASSED and were independently audited:
+mesh/layout13, Glue5, napari-threedee5. The12 existing mesh/layout full frames are
+byte-exact to retained OpenGL images. Axes/colorbar renders and passes functional
+checks, with1218 changed RGBA components/max147 against the historical exact GL
+frame; it is not promoted to exact parity. Glue scatter axes and all plugin
+handles/selection/translation/miss/retirement landmark/state assertions passed.
+All550 installed package members and loaded native origins were verified per
+worker; nine live shutdown gauges were zero per worker. All workers are terminal
+and all fresh external consumer environments were physically removed. Axes,
+Glue axes and plugin handles images were visually inspected.
+
+Evidence: build/native67-wheel-prep-root-1/installed-host-audit1.json and the
+native67-wheel-windows-cp312-root-1/native67-installed-hosts-root-2/root-3 packets.
+Attempt1 setup failed due separate renderer/dependency installation; its owned
+environment was removed. Attempt2 mesh probes unpacked the reference tuple in
+the wrong order; these failures remain retained. Its10 Glue/plugin cases passed.
+Corrected attempt3 reran all13 mesh cases and passed. No renderer source change
+was required. Chains89083 and71310 are terminal0; the failed attempt2 aggregate
+remains FAILED_CASES_PRESERVED rather than rewritten. This is bounded functional
+wheel/host admission, not full-platform/release qualification. Exact driver
+parity and lab latency measurement remain outside the practical completion gate.
+Host cache cleanup65885 completed0: both owned caches removed (337+32008files,
+872332917bytes), with wheel/images/logs/failures retained. All local actors are
+terminal. PR3 description now records the fresh wheel and23 installed checks;
+its head remains aa515012bee224ef0db153062ccbc88598403480 to preserve the running
+CI jobs. Latest run39953557160 has six actual jobs in progress and fourteen queued;
+no CPU matrix pass is inferred. Fresh Windows evidence closes the bounded
+smooth-line wheel/host refusal gap. Wider regression/platform qualification
+remains pending; do not mark the full implementation goal complete.
+
+Current source checkpoint, 2026-10-23: portable SmoothAnalytic coverage is
+implemented in the existing ABI2 consumer and selected by both runtime draw
+paths. Fractional widths remain uniforms; exact-reference/MSAA policies still
+refuse explicitly. The isolated source snapshot contains only three changed
+production files relative to Native66. All ten immutable dependency origins and
+the 213-file SDK passed verification. The generated-consumer compiler contract
+passed 38343 checks after fixing a namespace typo in the added test.
+
+Fresh candidate module 31afb230410b7153db06590f2b847e9f3fd76c88424e406b3b8320409025ead2
+passed five complete 64x64 RGBA line checks on RTX4090 Vulkan, max error0/1
+against the declared analytic policy (not against OpenGL). Width changes reused
+consumer/pipeline. Three additional whole-frame checks passed: clipping+depth,
+perspective+depth and alpha blending, max error0/1. All nine checked live gauges
+were zero after shutdown. The original public axes_colorbar fixture rendered
+and its saved image was visually inspected. Evidence is retained under
+build/native67-smooth-prep-root-1; attempts1/2 failed configuration, attempt3
+verified configuration but failed test compilation, attempt4 passed the compiler
+contract; gpu-chain1 and gpu-state2 passed. All those actors are terminal.
+This closes the source-level smooth-line refusal for that scene; refreshed wheel
+and host workflow validation remain pending. Installed Native58 is unchanged.
+Published as commit aa515012bee224ef0db153062ccbc88598403480 on
+work/portable-smooth-lines, draft https://github.com/bipxx/vispy_vulkan/pull/3,
+based on the Native66 Qt branch. All620 audited committed production/test/new-doc
+blobs match canonical files; the public plan keeps its historical body intact.
+Remote head and draft PR were independently read back. Cleanup removed31 owned
+terminal object files (37799251bytes) while retaining seven hash-verified binaries.
+Historically denied cleanup paths were not touched.
+
+Current scope adjustment, 2026-10-23 (user instruction): prioritize practical
+visible correctness, stability, feature coverage and packaging. Exact OpenGL
+subpixel/rasterizer parity and lab-grade input-to-visible measurements are not
+completion requirements for the practical milestone. The user has no external
+latency measurement hardware. Keep historical strict benchmark results and
+their UNPROVEN gates unchanged; document numerical and platform limitations
+without claiming measurements or hardware validation that did not happen.
+
+Next functional priority is portable smooth-line support, which currently blocks
+axes/colorbars and several integration workflows. Assess it with representative
+visual and functional checks, preserving clipping, depth, blending and resource
+lifetime behavior. Do not require bit-exact agreement with the entire historical
+smooth-line training corpus. Follow with focused regression checks and packaging.
+Keep cybersecurity work out of scope. Preserve AGPL implementation licensing and
+all original BSD notices. Continue cleaning owned disposable build artifacts.
+
+The controlled Windows graphics-memory trace is diagnostic evidence only; it
+does not qualify complete benchmark allocator peaks or display scanout. Automatic
+approval review blocked deletion of build/native66-windows-graphics-telemetry-root-1/
+allocation_probe2.obj; leave it in place and do not retry that deletion.
+
+Current checkpoint, 2026-10-23: Native66 guarded native pipeline84514 and
+native/wheel audit chain68940 both completed with exit0. All44 targets compiled,
+all47 exact CTests passed, and the terminal audit passed. Fresh CP312 Windows
+wheel ea48141c8bc1988d038eabd984f704e4a25d20fe1f38b432d0a91fb9a107cddd
+passed523 package-member checks, four exact fresh native-origin checks and all
+license checks. Its Dawn module is99dbc883f4a2700897d2f3b458a55dcb219e2728cca1650817e1fc162d386287.
+Installed Native58/activation remain unchanged. Old native/wheel actors are
+terminal; do not repoll/restart84514,68940 or their ended processes.
+
+Native66 Qt stress chain61734 also completed with exit0:75 actual cases,
+25 per PyQt5/PyQt6/PySide6,150 original public calls,25 losses and exact red
+readbacks per binding. All550 installed package members and nine zero live
+shutdown gauges verified; cumulative counters retained. Audit SHA
+fb26906ab426ac403bd3a90b84affe432158053a42d1cc0fe2bc7e326804df1f.
+Actual current source has22 passed Qt CPU cases, including the nested-token
+regression that failed before previous-token restoration. All17 current66
+scientific controls now PASSED:156672 full-frame pixels exactly, maxerror0,
+zero exclusions, all workers terminal and owned environments/cache removed.
+Small and large controls are terminal. All24 large controls PASSED:96 frames,
+251658240pixels, maxerror1 within unchanged2, zero exclusions; owned roots removed.
+Scientific chain35085 completed0. Performance chain99659 completed1 because the
+collector returned2 for release-unqualified data, with all10 workers terminal.
+The first five alternating pairs completed100warm/1000measured frames per worker,
+all15 paired image comparisons passed (maxerror1), hardware/scientific identity
+and actual counters verified, no unattributed draw/paint/parser work. Candidate
+runs each record1000 application/Dawn presents and2000 Vulkan submits. The saved
+original gate remains UNPROVEN due to two real gaps: input-to-visible scanout and
+complete driver/allocator peak accounting. Full24 timing remains pending.
+All local native/wheel/Qt/scientific/timing actors are terminal. No automatic retry.
+
+Native66 snapshot52 binds618 source/4141 harness inputs. Approved manifest
+SHAa9ea87fbea081094888994cdcba886c76072d3a80fe6a8d886973a3bba691b3c;
+frozen-input SHAdce53bae3ca4f9a8f4e03d5453835a850ab97f6a7bc2c35a7398930aac4b860a;
+source-tree c5a197f5c80c191dc9b53738d6b2063d81c460129ea1e379076f2826e243e53f;
+harness-tree1118796b38a43278460ac51874eef9ecb111bf6fd894f66be967901c70e08470.
+The change coalesces backend swaps inside the native whole-paint token into the
+existing final present after alpha-clear. It preserves legacy paths and OS paints.
+Final66 GPU Qt lifecycle is now tested; qualified performance remains pending.
+
+Owned cleanup completed once:107 native objects and24 wheel objects, total
+189972411bytes removed;60+12 binaries/libraries retained hash-exact. Wheel UV
+cache and all Qt-owned external environments/cache roots are physically absent.
+Sources, snapshots, captures, logs and receipts remain. Current science-owned
+environment cleanup waits for its actual worker termination.
+
+Native66 Qt fix is PUSHED on work/qt-single-present, commit
+60b30d7ca08dbf15ec6de1232cca26b468ddc236, draft PR2:
+https://github.com/bipxx/vispy_vulkan/pull/2. All618 committed production blobs
+match the tested66 source; publication checkout is clean.
+Public draft PR1's prior work/volume-admission-ci-paths branch remains at tested65
+HEAD284512868 while its current macOS CI matrix finishes.
+Eleven published65 CI cells are artifact-audited: all5 Windows CP310-314,
+all5 Linux CP310-314, macOS arm64 CP312. Each has1018 Python+42 native CPU
+passes with zero skips. Other macOS cells remain incomplete; CPU CI does not
+qualify graphics hardware. Implementation AGPL-3.0-only and original BSD/license/
+copyright notices remain attached unchanged in source and the new wheel.
+
+Full original13 scope remains active/incomplete: marker48/million18 and smooth
+image parity, qualified performance, remaining hosts/platforms/hardware, scanout
+and allocator requirements. WSL currently enumerates only llvmpipe CPU Vulkan;
+Metal hardware remains unqualified. New CPU-only saved-marker analysis tests
+400 exact rational pixel-pair constraints: a float32-rounded step cannot fit all
+pairs even with hidden bases, while exact1/14 remains pairwise feasible. Forty
+higher-precision base models,144 mixed-precision models and270 edge-origin
+reciprocal-precision models still fail full6272 saved pixels; this is a narrowed arithmetic question, not a renderer fix. No
+production source, frozen benchmark or image threshold changed. No cybersecurity
+work. Older checkpoint descriptions below record their state at the time.
+
+The following earlier checkpoint is historical and superseded where stated.
+
+Historical checkpoint, 2026-10-23: Native65 source freeze, guarded native build,
+all47 CTests and terminal audit PASSED. Pipeline session42234 exited0 and is
+closed. Fresh wheel45c42025... and its native-origin/package/license audit
+PASSED. Current65 three-binding Qt stress PASSED all75 cases (25 per binding).
+All17 scientific controls and24 large-volume controls PASSED in a fresh,
+unchanged-suite retry. The earlier worker91032 was identity-bound aborted after
+native stacks and WCT proved a window-creation RPC wait; both failed controllers
+ended, owned environments were removed and all prior evidence retained. Cause
+remains unproven; Windows services were not changed. Fresh17 compares156672
+pixels exactly; fresh large24 compares96 frames/251658240pixels, max error1
+within unchanged2 and no exclusions. Producer4's complete24-workload scientific
+admission set PASSED the unchanged frozen benchmark validator. First actual
+five-pair timing collection30577 ended with failure during its third pair:
+candidate02 recorded2 unattributed paints/draws. Five pairs remain unqualified.
+Earlier sessions30051,71603,69002,60827,56172,84212 are terminal; do not repoll or
+restart them. All later diagnostic/stress sessions37124,75989,74975 are also
+terminal. No local worker remains active at this checkpoint; do not replay old
+exclusive-output actors.
+
+Canonical WIP now includes the Native64 Win32/Xlib retirement fix and Native65
+Qt deferred-redraw coalescing. All18 Qt CPU regressions passed. Native64's
+102-case rendering aggregate and three-binding75-cycle stress are historical
+passed evidence for that artifact, not current65 results. The serial follow-up
+has audited/built the wheel and passed current65 Qt75. The fresh scientific
+retry has passed17+24 controls. Owned terminal object cleanup removed107 native,
+24 wheel-build and2 diagnostic objects; binaries/libraries retained.
+
+New current65 scientific/performance adapters are prepared outside canonical
+production sources. CPU controls prove unchanged scientific loops/reference
+inputs, reject historical64 admission and optimized startup, and verify that
+metadata-only timing overrides restore correctly after exceptions. Actual65
+scientific admissions are now produced; first five alternating GL/Vulkan timing
+pairs failed attribution. The frozen benchmark and all image thresholds remain
+unchanged. Full volume timing still requires all24 workloads, and original13
+requirements remain wider than this selected scientific/timing path.
+
+Full original13 scope remains active: marker48/million18 and smooth parity,
+qualified performance, remaining hosts/platforms/hardware, scanout and allocator
+requirements are not complete. Installed Native58/activation stay unchanged.
+Implementation AGPL-3.0-only and original BSD/copyright notices remain attached.
+Publication's two tested commits (ca3bd68b1,284512868) are PUSHED to the existing
+draft PR1; checkout clean and remote HEAD284512868 verified. CI runs39938393331
+and39938393422 were last observed queued. No cybersecurity work. Detailed
+retained evidence follows below;
+older checkpoint descriptions record their state at the time, not current status.
+
+Next implementation candidate is staged ONLY at native65-coalesced-present-
+prep-root-1: defer the Qt-owned inner swap until its final alpha tail/present.
+Canonical65 remains unchanged. All21 proposed CPU cases pass (18 original+3
+real-swap regressions). Private wheel eb041946... keeps all native/license bytes
+identical to65. Exact frozen100warm/1000measured diagnostic proves submissions
+halve (Dawn2000→1000,Vulkan4000→2000), with3 full1024² quality captures exactly
+equal and0 unattributed counters in this two-run sample. Private three-binding
+Qt stress also PASSED75 cases/25 explicit losses per binding. proposal-admission1
+is ready for future source promotion/formal epoch qualification. This is NOT a
+five-pair speedup, a cure for rare extra paints, or private scientific17/large24
+qualification. Preserve original scope and do not treat this checkpoint as done.
+
+## Historical checkpoint173
+
+Continuation checkpoint173, 2026-10-23: Complete private proposed runtime now
+ACTUALLY linked and CPU-imported,3-file WIP source promoted, Native64 ownership
+prepared, and corrected guarded freeze is ACTIVE on the SAME controller handle.
+Do NOT mark Native64 built/qualified: formal freeze/build/47CTest, wheel and GPU
+tests remain pending. Full original13 active/incomplete. Installed Native58
+leaves/activation and all Native63 frozen evidence unchanged; AGPL+BSD retained,
+no publication, tolerance/reference or cybersecurity change.
+
+Proposal full_runtime1 compiles the COMPLETE native module in a separate copy
+of all current cpp sources with exactly2 proposed cpp/header substitutions,
+using the pinned213-file SDK and the same legacy-Qt MSVC mutex policy. Actual
+controller session32069 exits0; configure launcher12372/build36592 both exit0.
+Isolated CPU import loads exact private _dawn, creates NO device (generation0,
+0 submits), shutdown8 resource fields ZERO, actual creation-bound worker wait
+and all source/SDK holds pass. full-runtime-result1 retains exact source and
+artifact hashes, explicitly not a formal epoch or GPU proof. Single cleanup
+removes21 owned .obj intermediates after terminal proof; private source/pyd/
+libraries/logs/receipts preserved, no denied cleanup retry.
+
+New build/native64-prep-root-1 prepares618-source/4141-harness/44-target/47CTest
+ownership from exact admitted63 parent. Three sources transfer into a new
+CPU packet with real native_contract+full-runtime proofs. Entire2-file native56
+Xlib owner is explicitly retired into retained history, not dropped; remaining
+active ownership archives rebind to admitted complete frozen63 sealed copies.
+Native63 terminal47/47 is checked. Native64 uses fresh source snapshot50,
+evidence native-pass-64 and native-pass64-sdk. No old archive/guard changed.
+
+promote1 ACTUALLY applies exactly3 canonical WIP files: cpp/runtime.cpp,
+cpp/platform/native_surface.hpp,tests/platform/native_contract.cpp, exact
+compiled candidate hashes; before copies and protected-native/license joins
+retained. This changes development SOURCE, not installed native binaries or
+activation. Runtime Win32 retirement hypothesis remains GPU-unproven.
+
+First guarded freeze controller68890/child29656 exits1 BEFORE any snapshot/
+evidence/cache output: stale harness pin for tests/bindings/owned_packing_
+contract.py. Full4141-input inventory (session96755 exits0) finds exactlyONE
+unrelated harness delta, no missing files. The current file replaces Python-
+version-dependent AST dump pin with exact unchanged _freeze source pin plus
+explicit UTF8; no test behavior/threshold relaxation. admit_harness2 fetches
+the exact published file at a8373d913, proves byte identity and binds ALL20
+already digest-audited CPU artifacts' actual owned_upload_packing_contract
+execution (148 checks each). Same legacy freezer source digest51f69590... is
+verified. Candidate/approved manifest2 binds this single independently executed
+portable harness correction. Original rejected manifest1/freeze log preserved.
+
+Corrected freeze_build2 controller session56169 remains ACTIVE; freeze2 launcher
+93060, native Python32624. Immutable-dependency verifier launcher54808/actual
+94160 was observed live accumulating178.89 CPU seconds; it subsequently ended,
+and snapshot build/w50/source/CMakeLists.txt now exists. Thus read-only
+preflight has passed and capture is in progress; frozen-inputs.json was not
+yet present at last observation. Keep polling SAME session56169, NEVER restart
+because quiet/slow. Script will automatically run build2 only after actual
+freeze completion. No build2/terminal47/wheel/GPU admission yet. Prepared
+native_terminal_audit1.py targets actual47/no skips, protected leaves/licenses,
+exact snapshot/harness and the portable packing correction after completion.
+
+Parallel preparation build/native64-qt-bindings-prep-root-1/author1 is executed
+CPU-only: byte-identical public2-case test, existing PyQt5/PySide6 hashed profiles,
+new minimal PyQt6 profile from exact current uv.lock compatible Windows wheels
+(PyQt6 6.11.0,Qt6 6.11.2,sip13.13.0), all NumPy2.5.3. Worker1 accepts ONLY
+source_epoch64 and a future actual installed-wheel/native hash map; no manifest
+or wheel identity invented. Restores the WHOLE-SESSION loss invariant in
+addition to exact explicit-event+1. These inputs are UNRUN and unqualified.
+
+Next: finish SAME formal freeze/build process, audit actual47 outputs, build
+matching immutable64 wheel, then execute all3 binding consumers with restored
+global loss guard. Reject hypothesis if extra post-close loss persists; no
+activation/publication before necessary regression/ownership evidence. All
+marker, remaining host/platform/performance and original13 gaps remain open.
+
+Continuation checkpoint172, 2026-10-23: Late-loss trace ACTUALLY localizes the
+second invalidation after Win32 canvas destruction; isolated retirement-policy
+candidate is staged and its REAL SDK native contract passes. Production remains
+unchanged and the GPU fix is UNPROVEN. Full original13 active/incomplete,
+AGPL+BSD preserved, cybersecurity excluded; no publication/activation/gate or
+reference changes.
+
+Source verification corrects an important observation assumption: probe_counters
+calls eng.poll(), so probe is NOT passive. debug_trace only locks/copies trace
+and does not poll/init/recover. New worker3 takes passive debug_trace snapshots
+around existing device_info/lose_device, native lifecycle/probe/process_events
+calls and pytest boundaries. No added probe/device-info calls for snapshots.
+Unchanged public2-case suite, exact current wheel/data/runtime remain. Actual
+CPU executes the observer AST with fake native functions, verifies only3 trace
+queries and one forwarded actual call, no extra probe/init; negative startup
+passes. inputs3 pins661 files/root readiness669, explicitly root not independent
+peer review. This is one PyQt5 diagnostic, not a new PySide6 qualification.
+
+Actual controller session46573 exits0, launcher82080; both public cases pass,
+red4x4 preserved. Saved analyze_trace3 exits0: LATE_EXTRA_LOSS_REPRODUCED_WITH_
+PASSIVE_TRACE.145 snapshots are monotonically prefix-consistent, no4096-line
+rotation/truncation. First device-loss log appears at snapshot72 after the
+explicit lose_device (0->1). Second appears at snapshot136 after EXISTING
+process_events, immediately after snapshot134's completed destroy_canvas(2)
+in the late-events test. The only added native trace line is device loss
+reported. This locates processing, NOT exact callback reason or origin. Whole
+session ends loss_count2 with one explicit loss. Full binding remains unqualified.
+All661 input/source/package holds, actual source/nonce/process joins, native8
+shutdown zeros, owned external environment/shared cache physical absence pass.
+Raw145 trace files, test/native call observations/readbacks/logs retained.
+
+Source comparison: retire_surface currently performs next-serial+DeviceTick
+deferred deletion drain only for Xlib. Win32 unconfigures/releases Surface and
+returns; Qt _vispy_close immediately closes native QWidget after destroy_canvas.
+This asymmetry supports a FALSIFIABLE Win32 surface-retirement hypothesis, not
+a proven callback-generation defect. Destroyed/CallbackCancelled are already
+ignored and no callback patch is justified from current logs alone.
+
+Owned build/native63-win32-retirement-proposal-root-1 stages a3-file candidate
+without editing canonical files: new native_surface_requires_retirement_drain
+predicate selects Win32+Xlib; runtime routes those kinds through EXISTING
+release/next-serial/tick/health/timeout protocol; native_contract adds3 policy
+assertions (Win32 true, Xlib true, Metal false). proposal1.patch/json retain
+exact original/candidate hashes and trace join. Runtime copy is NOT compiled
+or GPU-tested yet; do not label this a fixed live implementation.
+
+Actual cpu1 config/build links candidate header/native_contract and exact copied
+platform sources against the existing SDK, verifying all213 SDK file hashes
+through Reader before/after. Compiler stages exit0. CTest itself passes, but
+cpu1 receipt script exits1 because it assumes old CTest wording. Raw failure/
+logs retained. Correct finish_cpu2 reruns ONLY this CPU contract with JUnit,
+actual waited process exit0,1 test/0 failures/skips, all3 policy assertions and
+existing retirement/loader/hidden-HWND contracts pass. cpu-result2 records real
+SDK/source/binary/CTest proof, explicitly NOT runtime_cpp compilation or GPU
+retirement proof. No new source/native epoch claimed. Single cleanup removes
+five hash-recorded, absolute-owned CPU .obj intermediates after terminal proof;
+source, binaries, CMakeCache, JUnit/logs/receipts and SDK preserved, no denied retry.
+
+Next: prepare a fresh isolated source/native epoch for this exact3-file variant,
+run full required native checks/build a matching wheel, and test unchanged Qt
+cases PLUS restored whole-session loss-count invariant across PyQt5/PySide6/
+PyQt6. Do not reuse63 identity or promote the staged policy/CPU result as GPU
+fix. Reject the hypothesis if the same extra loss persists; preserve original
+failure and no tolerance relaxation. All other original13 gaps remain open.
+
+Continuation checkpoint171, 2026-10-23: Fresh external PyQt5/PySide6 current-wheel
+public tests ACTUALLY run, with an IMPORTANT unresolved extra loss after the
+explicit recovery. Do NOT call either full binding/lifecycle qualified. Four
+narrow public cases pass, but broad post-recovery stability is contradicted by
+the observed late increment. Full original13 active/incomplete, production/
+native activation/publication/thresholds unchanged, cybersecurity excluded,
+AGPL+BSD preserved.
+
+Owned build/native63-qt-bindings-prep-root-1 inputs1 pins618 current production
+files plus exact current wheel550/native4f/lifecycle/test/runtime sources631.
+Copies tests/qt/test_widget_lifecycle.py BYTE IDENTICAL (2 existing cases), own
+pytest config, no repository conftest/environment imports. Separate external
+CPython3.12.8 environments use existing fully hashed Qt profiles: PyQt5 5.15.11/
+Qt5 5.15.2 (15 dependencies+vispy), PySide6 6.12.0 (18+vispy), NumPy2.5.3.
+Native read_pixels observer forwards original return, retains all arrays,
+timing explicitly unqualified. Root readiness636, actual negative startup
+pre-graphics guard/terminal proof and exact controller lifecycle inverse pass;
+root checks are NOT independent peer review.
+
+Initial controller session38872 exits1, PyQt5 launcher61792. Both unchanged
+public tests PASS (parenting/non-QGLWidget, DPI overrides/overlay/minimize,
+real HWND presentation, explicit loss/repaint recovery+red4x4, handle detach/
+reattach and late events after close), but worker1's whole-session loss count
+guard0+1==final2 FAILS. PySide6 never starts. Parent remains FAILED, all631
+source/package holds and native8 shutdown zeros, actual worker terminal,
+environment/cache physically gone. Raw logs/readbacks/failure preserved.
+
+Corrected OBSERVER worker2 records existing device_info/lose_device calls with
+no additional device query inside lose; exact+1 required at explicit event,
+unchanged public tests retained. CPU executes actual observer AST definitions
+with fake native functions to prove forwarding, call counts and no extra query,
+plus negative startup. inputs2 retains old failure and sources, root readiness
+657. Actual controller session13603 exits0, PyQt5 launcher22556 then PySide6
+91748. Both2-case public suites PASS with0 failures/errors/skips, all6 phases
+passed each, real Vulkan RTX4090/610.88, installed550 members and sole-binding
+package inventory/origins verified. Saved audit2 exits0, red4x4 native arrays
+retained plus first40x30 framebuffer read; native8 resource fields ZERO each,
+actual nonce/start/finish/process joins, all inputs and physical absence of both
+environments/shared cache verified. No cleanup retry or inherited path touched.
+
+CRITICAL late_loss_audit1 exits0 with PUBLIC_QT_CASES_PASS_BUT_BOTH_BINDINGS_HAVE_
+UNRESOLVED_LATE_EXTRA_LOSS. BOTH new workers record exactly one explicit
+lose_device, immediate public-test/observer loss0->1, then final device_info2.
+This means prior bootstrap-only explanation was PREMATURE. The earlier global
+guard exposed a meaningful anomaly; changing observer scope does not close it.
+Do not promote passed public assertions or audit2's narrow status to stable
+recovery/lifecycle. All source/logs/receipts preserved, effective broad binding
+qualification remains red/unresolved. Count2 is not unexplained startup in the
+new logs: the later query observes an additional post-explicit-recovery loss.
+
+Source inspection finds one shared DeviceCallbacks object captured across
+device generations, a lost flag cleared during init, and one increment site
+in invalidate_device. Destroyed/CallbackCancelled are ALREADY ignored. These
+facts suggest investigation of callback generation/retirement but do NOT prove
+the late callback's exact reason or cause. No production callback patch made.
+Next: add nonrecovering probe/debug-trace boundaries and observe existing
+native calls through the unchanged suite to localize the late increment;
+retain the whole-session invariant instead of dropping it for admission.
+Then implement/test any justified lifecycle fix through a fresh source/native
+epoch. Full bindings, hosts, platform, marker M02/M06 and other original13 gaps
+remain open; no performance, rollback or scientific image-parity claim.
+
+Continuation checkpoint170, 2026-10-23: Closed an independent release-evidence
+gap by ACTUALLY downloading and auditing ALL20 published push-matrix artifacts,
+rather than relying on green job status. Full original13 remains active/
+incomplete. No implementation/native activation/publication change, CI rerun,
+image/reference/tolerance change or cybersecurity work. AGPL+BSD preserved.
+
+Live GitHub REST observation confirms push run39859580417 attempt1 completed
+successfully at a8373d913be9593bdb49586a8bae3a49139bf8d7, all20 jobs successful,
+all20 expected artifacts nonempty/unexpired with matching run/head identity.
+Owned build/native63-ci-artifact-audit-root-1/download1 downloads exact20 ZIPs
+via waited gh processes, retains raw API metadata/process receipts/stderr,
+published workflow/gate bytes and per-archive member inventory. EVERY download
+matches BOTH GitHub-recorded SHA256 digest and byte length; ZIP CRC passes.
+Actual download1 exits0, no rerun/republication/authentication mutation.
+ZIPs inspected in place, no extracted temporary/build/cache tree created.
+
+Actual audit1 exits0: AUDITED_ALL20_PUBLISHED_CPU_ARTIFACT_CONTENTS_NO_GRAPHICS_
+QUALIFICATION. Cells cover Windows/Linux x86_64 and macOS arm64/x86_64, each
+CPython3.10.19/3.11.14/3.12.8/3.13.8/3.14.0. Every11-member ZIP contains
+environment,3 JSON pytest observations plus3 JUnit XMLs, hashed requirements,
+uv version, CMakeCache and actual LastTest.log. Git HEAD/platform/architecture/
+exact interpreter/NumPy versions verified from retained environments.
+
+Each cell: native-epoch/license56, upstream/CPU104, scientific CPU858 Python
+tests, with ALL setup/call/teardown reports passed, exact JSON collection to
+JUnit identity joins and0 errors/failures/skips. All3 frozen-license mutation
+regressions (LICENSE,LICENSE-BSD,LICENSING.md) present/passed each cell. Actual
+CTest log has42 unique sequential tests,42 Test Passed records and end marker;
+CMakeCache explicitly CPU_CONTRACTS_ONLY=ON, build contracts/inplace/dependency
+verification ON. All three Python collections and all native test-name lists
+are IDENTICAL across20 cells. Total20360 Python test executions plus840 native
+CTest executions; these are repeated platform/version executions, not21200
+unique tests. Corrects older indirect39/100 test-count summaries: exact
+published artifacts here prove42 native CTests and104 upstream/CPU tests.
+
+This is published-commit CPU evidence, NOT a current renderer graphics/wheel
+admission. Environment uses in-tree editable CPU extension, hosted Windows
+Server and newer macOS; no external clean-wheel rendering/rollback, desktop
+Windows lifecycle or macOS13 Metal hardware proof. No Vulkan/Metal graphics,
+host interaction, image parity, performance or standalone diagnostic promotion.
+Raw ZIPs/API/environment/test evidence retained; no build junk created. The
+previously open20-artifact semantic-inspection item is closed for this exact
+push run only; PR retry artifacts were not downloaded/audited by this action.
+
+Next independent runnable release gap: external Windows Qt-binding consumers
+on the current frozen wheel (PyQt5/PySide6 remain separate from PyQt6 evidence),
+with exact dependency pins, original reference/installed origins, actual native
+desktop lifecycle/render/teardown and no coinstalled bindings. Check existing
+contracts/admissions before authoring any run. Marker M02/M06 failures remain
+open alongside all other unmet original13 conditions; no stronger release claim.
+
+Continuation checkpoint169, 2026-10-23: Standalone native hardware-point
+render ACTUALLY IMPLEMENTED, COMPILED and EXECUTED in two equivalent viewport
+routes. It DOES NOT reproduce the saved OpenGL coordinate instrument exactly.
+This disproves the assumption that adding native PointCoord support to Dawn
+alone would close marker parity; it is not a proof of universal impossibility.
+Original13 goal remains active/incomplete. No production/package/native
+activation/publication edit, tolerance/reference change or cybersecurity work.
+AGPL and original BSD remain unchanged.
+
+Owned build/native63-native-point-render-prep-root-1/author1 uses the pinned
+Khronos SPIR-V grammar to emit small vertex/fragment modules. Vertex loads
+Position and PointSize from two per-vertex attributes (not shader-size constant);
+fragment writes native PointCoord.xy,4,1 to an RGBA32Float attachment.32 exact
+saved GPU float32 NDC positions are used, padded size14, full1920x1080 viewport.
+The instruction walk is NOT formal SPIR-V validation. render1.cpp dynamically
+loads System32 Vulkan, selects NV4090/expected610.88 raw driver, explicitly
+enables largePoints, creates POINT_LIST pipeline, one owned target/readback,
+submits32 points once, waits actual fence, maps complete33177600-byte output,
+waits device idle and calls all18 registered resource-release actions.
+
+Actual compile1 and pre-loader negative startup PASS. CPU startup with missing
+arguments exits1 before loader/resources/submission, with native pid/creation
+stamp and waited terminal proof. Actual run1 launcher55628 exits0; saved
+request/result/worker log under build/native63-native-point-render-run-root-1
+join source/exe/input hashes and native start/finish creation stamp, direct
+wait, actual device identity, fence/idle success,18 release calls and raw output
+SHA. No Dawn/native8-counter/driver-memory claim; this is standalone own device.
+
+Saved analyze1 exits0: NATIVE_HARDWARE_POINTCOORD_DIFFERS_FROM_SAVED_GL32_
+INSTRUMENT. Both instruments cover6272 sprite pixels, but28 footprint pixels
+differ. Whole RG field differs at5894 pixels;392 native sprite pixels match
+both coordinates, only2/32 probe coordinates exact. On the6258 shared-footprint
+pixels, ALL6258 X coordinates are BIT EXACT; only392 Y coordinates exact, with
+maximum Y error1.788139343e-7. Whole-frame maxnear1 is explained by footprint
+mismatch and must not be described as within-sprite arithmetic error.
+
+The official Vulkan PointCoord upper-left-origin and negative-height viewport
+rules were checked. Bounded second route render2/authoring2/compile2 uses
+Vulkan1.1, viewport y1080/height-1080 and unchanged original NDC Y (rather than
+CPU Y negation). Source/data inverse and old failure/source hashes retained.
+Before saved analyze2 execution, its generated reference path was corrected
+back to the existing clip analysis1; no GPU input/result changed. Actual run2
+launcher46128 exits0, same18 release calls, fence/idle and source/process joins.
+Both whole33177600-byte arrays are BIT IDENTICAL, so viewport-sign choice does
+not repair this instrument. conclusion1 exits0 and retains these facts. No
+original marker colour/SDF/blend/depth or million-marker pipeline exercised.
+
+Only hash-verified render1.obj/render2.obj are removed after actual native
+terminal/resource closure and absolute-owned-parent/reparse checks. cleanup1
+records both SHA/physical absence. All sources/executables/SPIR-V/input data,
+compile/startup logs/receipts, two raw captures and analyses preserved. No cache
+or venv created, no denied cleanup path retried. Compiler receipts' object
+hashes are historical after this cleanup. No replay needed.
+
+Native hardware points are feasible on this device but NOT a ready exact-GL
+substitute; do not fork pinned Dawn/compiler assuming parity follows. The
+remaining discrepancy includes coordinate-origin/viewport/raster arithmetic,
+not only private quad interpolation. Next work must derive a principled GL/VK
+coordinate contract or advance another independent original13 requirement;
+no fitted Y bias/epsilon, tolerance relaxation, native-only scope substitution,
+or repeated rejected formula/viewport variant. Full18 M06,48 M02, performance,
+platforms and remaining original13 requirements remain unqualified.
+
+Continuation checkpoint168, 2026-10-23: Native Vulkan hardware-point capability
+actually observed, distinct from Dawn/compiler/rendering support. Original13
+goal remains active/incomplete. No production, package, native activation,
+publication, image/reference/tolerance changes or cybersecurity work. AGPL
+and original BSD remain attached and unchanged.
+
+New owned build/native63-hardware-point-feasibility-root-1/query1.cpp is a
+standalone C++ Vulkan capability query. Uses pinned Vulkan headers and the
+System32 loader, creates ONLY a Vulkan instance, enumerates physical devices,
+queries properties/features/formats, then destroys instance/unloads loader.
+No logical devices, command buffers, frames, queue submits or Dawn imports.
+First compile1 exits1 before compilation due Python list-to-cmd embedded
+quote handling; raw log/source preserved. Literal compile2.cmd fixes shell
+quoting, actual compile2 exits0 with source/license/header/object/exe/log
+hashes and waited compiler-process receipt. No inherited SDK/build replay.
+
+Actual run1 exits0, native exe launcher directly waited with matching native
+pid/Windows creation-time start/finish stamps, terminal proof and input hashes.
+RTX4090 vendor4318/device9860 reports largePoints=true, pointSizeRange
+[1,2047.9375], pointSizeGranularity0.0625, subPixelPrecisionBits8; format flags
+retained raw. Hardware can advertise large native points; this does not prove
+GL parity or successful device-feature enablement/pipeline/rendering. Raw
+other-device rows retained. result1 status
+OBSERVED_VULKAN_NATIVE_POINT_CAPABILITIES_NOT_RENDERED, instance closed,0
+logical devices/queue submits/frames. No new runtime environment/cache.
+
+Actual single cleanup removes ONLY hash-verified owned query1.obj after native
+terminal proof and absolute-parent/reparse validation. cleanup1 records hash
+and physical absence; query source/exe, both compile logs and receipts retained.
+No denied path retried. The historical compile receipt object hash describes
+the removed build intermediate; do not rerun run1 expecting the object present.
+
+Source-only interface_audit1 exits0: public pinned VulkanBackend.h exposes
+GetInstance/GetInstanceProcAddr, private DeviceVk.h exposes GetVkDevice. This
+public header's external-image descriptors cover Linux/Fuchsia FDs/Android,
+not a Win32 descriptor. This is a HEADER inventory, not proof that every
+possible Windows sharing interface is absent. Together with checkpoint167
+reader/dynamic-size barriers, hardware support alone cannot enable a native
+point draw in current production. No vendor compiler/source workaround made.
+
+Next bounded proof: standalone owned native Vulkan point render, explicitly
+enable largePoints, preserve exact GPU identity and complete readback, and
+compare actual hardware PointCoord against immutable GL coordinate/colour
+instruments before proposing integration. Dawn interop, same-device ordering,
+resource ownership/cache semantics and portable platform support still need
+their own proofs. Full18 M06,48 M02, performance/platform and remaining
+original13 requirements remain unqualified; standalone success cannot close
+those broad gates or substitute a Vulkan-only scope.
+
+Continuation checkpoint167, 2026-10-23: Direct per-axis fragment-coordinate
+experiment ACTUALLY completed and is REJECTED as an image fix. Full original13
+scope remains active/incomplete; no production/native/activation/publication
+edit or tolerance/reference change, no cybersecurity work. AGPL+BSD preserved.
+
+Owned build/native63-million-point-axis-prep-root-1 derives the retained exact
+stock controller/lifecycle, current wheel550/native4f, canonical million-record
+data and4 original reference stages. Variant carries the measured nearest-even
+window-grid centre and padded size as flat values, calculates fragment X/Y
+coordinates independently with precise divide then add, retaining other marker
+varyings/SDF. Control vertex/fragment templates remain exactly prior stock.
+Actual CPU node construction/setter/source-inverse checks and bad-manifest
+startup-terminal proof PASS; inputs1 seals1481 files, root readiness1485 files,
+explicitly NOT independent peer review. No production precision contract.
+
+Actual controller session91980 exits0, control launcher51112 then direct-axis
+40352, NV4090/Vulkan610.88. Output build/native63-million-point-axis-run-root-1
+retains all8 whole1920x1080 frames/traces. Saved analyze1 exits0: stock-control
+baseline BIT EXACT. Variant baseline/repeat26 pixels exceed2/max138; update0
+28/max145; update45 24/max192. All4 fail unchanged full-frame gate. Compared
+with stock15/max105, this is not a fix. Saved partition exits0: resolves7 stock
+failures, persists8, introduces18. Partition authored while capture running,
+not sealed pre-GPU, descriptive only. Centre agreement and removing coordinate
+cross-axis interpolation together still do not reproduce GL point arithmetic.
+No further arbitrary reciprocal/offset/epsilon variant is justified by this.
+
+Saved audit verifies all1481 source/package holds, full raw frame/original
+hashes, source layout/input facts and process/nonces/origins. All6 warm stages
+have ZERO upload/pipeline/conversion counters, both shutdowns8 resource zeros,
+owned environment/shared cache physically absent. Raw failures preserved;
+no denied cleanup path retried.
+
+Source-only native_point_route_audit1 exits0 and retains exact current source
+hashes. Current normalizer rewrites gl_PointCoord to private sprite varying.
+Pinned Tint SPIR-V reader Builtin switch has PointSize but no PointCoord and
+rejects unhandled builtins; shader I/O lower explicitly rejects nonconstant
+PointSize or constants other than1.0. Runtime passes portable SPIR-V through
+Dawn module creation. Therefore changing draw topology alone is insufficient
+for native hardware points in THIS pinned stack. This is source feasibility,
+not an executed native-point rejection or proof about another backend/revision.
+Next architectural work: determine a bounded native-point compiler/backend
+route with explicit hardware support, instead of recycling failed direct
+coordinate formulas. Full18 M06,48 M02, performance/platform and original13
+requirements remain unqualified. A native route still needs its own full
+original reference qualification; do not substitute it for portable scope.
+
+Continuation checkpoint166, 2026-10-23: Saved full-sprite analysis narrows the
+remaining point-coordinate discrepancy to axis-dependent interpolation as
+well as arithmetic. Full original13 stays active/incomplete. No GPU replay,
+production/binary/activation/publication edit, tolerance/reference change or
+cybersecurity work. AGPL and original BSD remain preserved.
+
+New saved analyses under build/native63-million-clip-centre-prep-root-1 use
+the ACTUAL original/native32 isolated sprites from the admitted diagnostic
+captures and the independently measured nearest-even centre-grid identities.
+coordinate_census2 initially exits1 on a positivity assumption at zero/tiny
+signed sprite-edge coordinates. It writes no verdict. Retained corrected
+coordinate_census3 uses monotonic IEEE signed-float keys and includes every
+pixel; coordinate_census4 additionally reports absolute errors so large ULP
+distances near zero are not mistaken for large coordinate errors. Actual
+census4 exits0 over ALL6272 sprite pixels/12544 coordinate channels, with
+full original array SHA verified and no excluded footprint samples.
+
+Six standard arithmetic sequences tested without fitted constants: direct
+divide/add matches152 complete pixels; reciprocal multiply/add104; fused
+reciprocal multiply/add113; float64 divide/add then round128; edge-origin
+divide128; edge-origin reciprocal multiply0. NONE reproduces the complete
+OpenGL coordinate field. All have maximum absolute coordinate difference
+1.788139343e-7. These are coordinate-model descriptions, not image gates,
+and do not justify any production epsilon/reciprocal/bias. Exact centre
+agreement therefore does not remove the remaining arithmetic discrepancy.
+
+Actual axis_separability1 exits0 across both roles'6272-pixel fields, retaining
+per-sprite footprint/column/row counts. Original: X independent of Y and Y
+independent of X for ALL32 sprites. Native stock: X independent of Y only3/32,
+Y independent of X only12/32. This is direct evidence of cross-axis variation
+in the native pointcoord field and is consistent with two-dimensional quad
+interpolation introducing numerical terms absent from GL points. It does
+NOT prove an exact replacement formula, hardware reciprocal or portable fix.
+No extra environment/cache created; all existing raw evidence retained.
+
+Next bounded diagnostic should calculate coordinates from corresponding
+fragment axes plus a flat measured-rule centre, eliminating cross-axis quad
+interpolation, while preserving an exact stock control and comparing whole
+million-marker frames. Existing unrounded direct reconstruction already
+FAILED; any new instrument must explicitly use the measured separate-float32
+viewport plus nearest-even centre rule. No repeat of rejected unrounded or
+half-up variants, no fitted bias. Full18 production M06,48 M02 candidates,
+performance/platform and remaining original13 requirements still unqualified.
+
+Continuation checkpoint165, 2026-10-23: Exact half-grid ties explain the saved
+viewport census misses, but corrected nearest-even centre quantization still
+FAILS the whole million-marker image. Full original13 scope stays active and
+incomplete; no production/binary/activation/publication change, tolerance or
+reference change, cybersecurity work. Original AGPL+BSD notices preserved.
+
+Saved clip-centre tie_audit1 exits0: separate float32 viewport multiply/add,
+followed by nearest-even on the measured8-bit grid, matches BOTH coordinates
+of ALL32 measured OpenGL raster centres. Every one of the7 prior half-up
+model misses is an exact half-grid tie. This corrects the diagnostic arithmetic
+model; it does not establish portable precision/rounding or an image fix.
+Previously failed quantization used floor(x+.5), which rounds ties upward.
+Saved localize_introduced1 under centre-grid prep exits0: all79 introduced
+pixels have CPU boundary-neighbour candidates within0.002508493039 pixels of
+radius3.5; nearest2 indices/positions retained. These are approximate CPU
+neighbours, not proven contributors through overlap/depth or GPU arithmetic.
+
+New owned build/native63-million-point-even-grid-prep-root-1 seals1470 held
+files, root readiness1474 (NOT independent peer review). Diagnostic variant
+uses precise separate float32 viewport multiply/add and roundEven for the
+measured1/256 centre grid, before unchanged native sprite expansion and stock
+gl_PointCoord fragment. Stock-control templates stay identical. Exact parent
+lifecycle inverse, actual public node/setter CPU checks and pre-graphics bad
+manifest startup terminal proof pass. No production precision constant added.
+
+Actual controller session4528 exits0, stock-control launcher88176 then variant
+73088. Output build/native63-million-point-even-grid-run-root-1 retains all8
+whole1920x1080 frames/traces on Native63/NV4090/Vulkan610.88. Saved analyze1
+exits0: stock-control baseline BIT EXACT to retained stock baseline. Variant
+baseline/repeat27 pixels exceed2/max138, update0 has28/max145, update45 has24/
+max192. This improves upon failed half-up90 baseline failures, but worsens
+stock15/max105 and FAILS all4 stages. No promotion. Saved failure_partition1
+exits0: resolves5 of stock15, persists10, introduces17 new baseline failures.
+The saved partition was authored after baseline was seen, not preregistered;
+it is descriptive only, while full-frame gate/controls were sealed beforeGPU.
+
+All6 warm stages across both variants retain ZERO upload/pipeline/conversion
+counters; both shutdowns have8 resource-zero fields. Saved audit verifies1470
+source/package holds, all raw arrays/traces and original references, actual
+process/nonce/worker joins and physical absence of owned environment/cache.
+All raw failures preserved; no denied cleanup retry. Next: isolate the17 new
+and10 persisted baseline failures with the corrected centre rule, measuring
+coordinate/interpolation and SDF decisions against exact stock controls. Do not
+promote centre-model agreement to full renderer agreement. All18 production
+M06,48 M02 candidates, performance/platforms and other original13 gaps open.
+
+Continuation checkpoint164, 2026-10-23: Exact flat pre-expansion clip/NDC-centre
+instrument ACTUALLY completed for the32 fractional-profile points. Both roles
+produce BIT IDENTICAL NDC x/y at ALL32 samples. This narrows the discrepancy
+after measured centre production; it does not qualify an image fix. Full
+original13 goal active/incomplete; no production/native/package/publication
+change, cybersecurity work or tolerance/reference change. AGPL+BSD preserved.
+
+Owned build/native63-million-clip-centre-prep-root-1 contains fixture1 with
+GLSL130 flat clip output captured immediately after original gl_Position,
+fragment RG=original pointcoord and BA=clip.xy/clip.w. Float-only v_size uses
+public Varying.invar direction correction (including symbol dependency),
+matching the previously proven diagnostic pattern. Original colour path stays
+unchanged. CPU actual node/setter/modern-varying checks and bad-manifest startup
+terminal proof pass; parent lifecycle inverse proven. inputs1 seals776 files,
+root readiness781 files, explicitly NOT independent peer review. Mandatory
+pre-GPU controls: BOTH whole colour arrays equal prior role captures, and
+pointcoord in every32 sample's2x2 neighbourhood is bit identical to prior
+float capture. New shader output is not interpreted without these controls.
+
+Actual controller session36573 exits0, OpenGL launcher93072 then Native63
+Vulkan launcher94052. Fresh external official/current wheels, NV4090/610.88,
+same camera/data/full1920x1080 targets. Output
+build/native63-million-clip-centre-run-root-1 retains all4 whole lossless arrays
+and full traces. Both whole-colour/probe-coordinate controls PASS. Saved
+analyze1 exits0: CLIP_CENTRES_CAPTURED_WITH_EXACT_COORDINATE_CONTROLS, NDC
+bit-identical32/32. Float64 descriptive viewport mapping then nearest1/256
+still differs from measured OpenGL centre by up to0.003907203674 pixels.
+This does NOT prove GPU viewport arithmetic equals that CPU expression.
+
+Saved viewport_census1 exits0, tests three declared ordinary float32 formulas
+with nearest8bit grid, without fitted constants: separate multiply/add matches
+25/32 two-axis raster-grid identities; fused multiply/add23/32; (ndc+1)*half
+23/32. No formula is promoted. Census rounds measured centre to an integer
+grid only to describe grid identity; all image qualification gates remain
+whole-frame and unchanged. Analyzer/census authored during/after capture,
+not sealed pre-GPU; requirements/controls were preregistered in inputs1.
+
+Saved analysis verifies776 held sources/packages, complete array hashes,
+camera matrices, process/nonces/origins, Native8-zero shutdown and physical
+absence of owned environments/shared cache. Raw captures preserved; no denied
+cleanup path retried. Newly introduced79 full-image grid-experiment failures
+still not source-localized. Next causal work must inspect viewport/raster
+centre rounding with independent phase probes and exact clip precision, and
+join newly introduced pixels before broad cause claims. No arbitrary bias,
+epsilon or production precision constant justified. All18 production M06,
+48 M02 candidates, full performance/platform and original13 gaps remain open.
+
+Continuation checkpoint163, 2026-10-23: Post-grid float-coordinate profile
+ACTUALLY completed and separates width correction from remaining centre/
+discard errors. Full original13 goal remains active/incomplete. No production
+edit, native build/activation, publication, tolerance change or cybersecurity
+work. Original BSD and AGPL notices remain attached and unchanged.
+
+Owned build/native63-post-grid-profile-prep-root-1 retains make1/fixture1/
+worker1/run1, inputs1 (794 held files) and root readiness799 (NOT independent
+peer review). Both roles use the unchanged Native63 wheel550/native4f on
+RTX4090 Vulkan610.88, same32 original points/camera/full viewport. Control
+must match BOTH entire colour and float arrays from the previous native
+profile before proceeding; snapped role uses the EXACT vertex insertion from
+the failed whole-million experiment, with identical vertex source for its
+colour and float captures. Actual CPU checks exercise all4 public visual
+node constructors/setters, verify source insertion and parent lifecycle
+inverse; bad-manifest worker exits before graphics with terminal proof.
+
+Actual controller session84938 exits0, control launcher56656 then snapped
+89356. Output build/native63-post-grid-profile-run-root-1 retains four whole
+lossless1920x1080 arrays and full traces. Control BOTH arrays exactly match
+the prior saved stock profile. Saved analyze1 exits0 with
+POST_GRID_PROFILE_BRIDGED_BOTH_NATIVE_ROLES: actual colour occupancy matches
+r<=1.5 at ALL32 probes for EACH role. Analysis uses previously registered
+bridge/stock-control requirements; analyzer itself was authored while the
+capture was running, not sealed in the pre-GPU manifest. It is saved-data
+analysis, not independently reviewed admission.
+
+Saved conclusion1 exits0: maximum source-probe width error from14 decreases
+from0.003909725735 to0.000028371754 pixels. However snapped effective centres
+can differ from saved OpenGL by0.003907799721 pixels, approximately1/256.
+Only4/15 snapped source probes match GL discard (stock1/15), consistent with
+the full-image rejection and not a fix. Some near-identical centres still
+have opposite discard decisions at near-boundary SDFs. The original GPU
+clip/window-centre arithmetic has NOT been measured by this profile, so do
+not attribute these grid shifts solely to a raster rounding convention or
+fit constants. Newly introduced79 full-image failures have NOT been joined
+to source records in this32-point instrument; no causal claim covers them.
+
+Saved analysis verifies source/package holds, full decompressed array SHA,
+camera matrices, source-layout facts, all nonce/process joins, native8-zero
+shutdown for BOTH roles, environment teardown and physical absence of both
+environments/shared cache. Raw evidence retained; no denied cleanup retry.
+Next: measure exact pre-snap float clip/window centres on these points and
+compare to the raster centres; localize newly introduced whole-frame pixels
+to source records before explaining them. All18 production M06 and48 M02
+candidate cases, performance/platforms and other original13 gaps remain open.
+
+Continuation checkpoint162, 2026-10-23: Measured-grid vertex-centre experiment
+ACTUALLY EXECUTED and REJECTED as a production fix. This is progress through a
+falsified bounded hypothesis; original13 scope remains active and incomplete.
+No production edit, native rebuild, activation, publication, image gate change,
+reference change or cybersecurity work. AGPL and original BSD remain attached.
+
+New owned build/native63-million-point-centre-grid-prep-root-1 derives a two-role
+diagnostic from the retained million-point controller/worker. Control shader
+templates are exactly the prior control. Reconstructed variant quantizes the
+window centre to the ACTUALLY measured OpenGL8-bit grid BEFORE unchanged native
+quad expansion, and retains original gl_PointCoord fragment calculation. This
+is a device-specific experiment, not a portable precision contract. CPU public
+visual-node construction/set_data for both variants passes; exact parent
+lifecycle inverse and negative pre-graphics startup control pass. Manifest1457
+held files and root readiness1462 files (NOT independent peer review) precede
+GPU execution; full-frame error is measured for this diagnostic, technical and
+stock-control mismatch remain fatal.
+
+Actual controller session25683 exits0, control launcher55004 then reconstructed
+93912. Output build/native63-million-point-centre-grid-run-root-1 retains all8
+whole1920x1080 frames and traces. analyze1 exits0: stock-control baseline BIT
+EXACT to saved stock Native63. Quantized variant baseline/repeat has90 pixels
+exceeding2/max138, update0 has81/max145, update45 has77/max199. Stock baseline
+had15/max105, so the measured-grid insertion worsens the full image and is NOT
+promoted. No tolerance or mask makes this pass. Saved failure_partition1 exits0:
+of the15 original stock failures, only4 resolve and11 persist;79 new baseline
+failures appear. All sets are descriptive only; qualification still compares
+all2073600 pixels. This refutes centre snapping alone as an adequate correction.
+
+Both variants' repeat/update0/update45 have all6 warm counters ZERO; both
+shutdowns have8 resource-zero fields. Saved analysis verifies all1457 source/
+package holds, actual process/nonce/worker joins, full raw frame hashes and
+original references, and physical absence of owned environment/shared cache.
+No denied cleanup path was retried; all failures and raw evidence preserved.
+Next causal question: measure post-snap float coordinates to separate centre
+rounding from remaining interpolation/SDF differences, including newly
+introduced failures. Do not iterate arbitrary rounding constants or insert a
+production epsilon. Existing DeviceInfo exposes no raster subpixel precision;
+Vulkan layer has physical-device-properties access, but no production change
+is justified by this failed diagnostic. All18 production M06 and48 M02 candidate
+cases, performance and the rest of original13 remain unqualified.
+
+Continuation checkpoint161, 2026-10-23: Fractional point-coordinate profile
+ACTUALLY CAPTURED and saved analysis passes. This advances the marker mismatch
+investigation; the original13 scope remains active and incomplete. No production
+source, original image gate, reference, native binary, or publication changed.
+AGPL and original BSD notices remain unchanged and packaged together.
+
+Owned prefix build/native63-fractional-point-profile-prep-root-1 contains the
+sealed32 points (15 exact source neighbours plus17 independent fractional
+sweep controls), colour/float fixture1, actual public node/setter CPU pass,
+worker1, controller run1, manifest inputs1 (755 held files), and root readiness
+(760 held files, explicitly NOT independent peer review). An actual worker
+negative startup control rejects a bad manifest before graphics and proves
+start/finish/process-terminal receipts. Analysis requirements were registered
+in inputs1 before GPU pixels: require32/32 colour/SDF bridge per role, preserve
+entire lossless arrays, and never substitute this subset for full M06/M02.
+
+Actual controller session3616 exits0: original OpenGL launcher29892 followed
+by current Native63 Vulkan launcher85684. Both run official/current full wheel
+packages in fresh external environments on NVIDIA RTX4090/610.88. Each retains
+one whole1920x1080 RGBA8 colour array and one whole RGBA32Float coordinate/SDF
+array in lossless npz, commands, shader sources and physical target/device facts.
+Output build/native63-fractional-point-profile-run-root-1/result.json is
+CAPTURED_FRACTIONAL_PROFILE_PENDING_ANALYSIS. Saved analyze1.py exits0 with
+FRACTIONAL_PROFILE_BRIDGED_BOTH_ROLES: actual occupancy matches r<=1.5 at ALL32
+samples in EACH role;14/15 isolated source probes have opposite discard
+decisions. This establishes a causal subset bridge, not full-image parity.
+
+Measured OpenGL GL_SUBPIXEL_BITS=8; effective centres for all32 probes lie within
+0.000002027 pixels of the reported1/256 grid. Independent sweep k0..8 stays
+near phase0 and k9..16 near phase1/256 in BOTH roles. Vulkan source probes also
+show effective widths near13.996094 or14.003910 rather than14 on several axes;
+OpenGL widths stay near14. These measured +/-1/256 width changes suggest
+independent quad-corner raster quantization. That causal explanation remains a
+hypothesis; do not promote a hardcoded precision value or a fitted bias.
+
+Saved analysis verifies package/source holds, full decompressed-array hashes,
+unchanged vertex templates, identical actual camera-matrix SHA, all process/
+nonce/worker joins, native8-zero shutdown, and physical absence of both owned
+environments and shared cache/cwd. All raw captures and failure evidence remain.
+No cleanup retry or inherited denied path was touched. All18 production M06
+and48 M02 candidate cases, full performance and other original13 requirements
+remain unqualified. Next: use the measured raster grid in an explicitly bounded
+diagnostic to test centre quantization before sprite expansion against the exact
+stock control and full saved first-M06 images. A production change additionally
+needs a portable device-precision contract and general viewport-origin handling;
+the diagnostic's measured8 bits are not such a contract. Cybersecurity excluded.
+
+Continuation checkpoint160, 2026-10-23: The million-point unrounded-window
+coordinate diagnostic actually completed with an exact stock control, and
+the reconstruction is REJECTED as a fix. Full original13 goal stays active;
+all18 production M06 cases and all48 M02 candidate cases remain unqualified.
+
+Initial diagnostic run1/session14644 exits1, control launcher84020, BEFORE any
+frame: copied class CoordinateMarkers lacks the required Visual suffix for
+create_visual_node. Compared pixels0, frames empty; reconstructed worker never
+starts. All1421 pins/package/origin holds and native8-zero shutdown hold, actual
+worker terminal and environment/cache physically absent. This is a diagnostic
+API authoring failure, not a coordinate result. Raw failure is preserved.
+
+Corrected render6 changes ONLY CoordinateMarkers to CoordinateMarkersVisual.
+CPU visual2 executes the exact copied class through actual public node factory
+AND constructor with no canvas/context/_dawn. Negative startup2 and6 actual
+callback CPU controls pass. Root readiness (not independent peer review) binds
+1448 files and proves the renderer and actor/lifecycle inverse. Source shader
+math, source data, original frames and thresholds stay unchanged. Diagnostic
+image error is measured, not fatal; stock-control mismatch and technical/
+device/residency failures are fatal. This predeclared measurement mode does not
+override the failed production collection's stop-on-first-failure rule.
+
+Actual corrected controller run2/session30068 exits0, control76780 then
+reconstructed32072. Stock-control baseline is BIT EXACT over the entire saved
+Native63 first baseline. Both roles retain million-record canonical data and
+all4 original camera stages. However, reconstruction baseline/repeat has1172
+pixels exceeding2 and maxerror218; update0 has1139/max192; update45 has1111/
+max201. Stock production baseline had15/max105. More accurate-looking direct
+coordinate arithmetic is NOT supported as an image fix; no production patch
+or tolerance change follows. Preregistered analyze2.py exits0, status
+RECONSTRUCTION_STILL_FAILS_FIRST_M06_CASE_NOT_A_FIX. Evidence under
+build/native63-million-point-coordinate-run-root-2 and prep-root-1/analysis2.json.
+
+There is positive bounded residency evidence: repeat/update0/update45 in BOTH
+variants have ZERO buffer_uploads,texture_uploads,pipeline_misses,
+portable_shader_misses,point_conversion_builds andpoint_conversion_bytes.
+All6 warm stages therefore reuse the million-record source/conversion work in
+this one diagnostic scene. This is not the complete production18-case matrix
+or performance qualification. Both worker shutdowns have8zero resource fields;
+actual process/source/package joins and all1448 pins hold, owned environment/
+cache physically absent, all original references unchanged.
+
+Next measurement is authored, UNRUN: native63-fractional-point-profile-prep-
+root-1/authoring1.json freezes15 actual source points nearest the failed disc
+cutoffs plus17 independent fractional-position controls (32 total). Their
+original world coordinates, original1920x1080 camera/target and nonoverlapping
+padded envelopes are preserved. The sweep spans a nominal1/256 pixel in
+1/4096-pixel test increments; this is test resolution, NOT an assumed hardware
+constant or production bias. Planned actual GL_SUBPIXEL_BITS and point-origin
+queries plus unchanged-shader colour and early floatPC/SDF captures must test
+each role's discard bridge before causal inference. Entire lossless arrays
+remain retained; this subset is a measurement instrument and NEVER substitutes
+for full million-point/M02 image gates. No profile renderer/worker/manifest or
+GPU actor exists yet. Quantization behavior remains a hypothesis, not a patch.
+
+AGPL plus unchanged original BSD/copyright/notices, protected benchmark,
+production/native sources and activation remain unchanged. No cybersecurity,
+denied cleanup retry, native build, activation or push. This turn makes actual
+diagnostic and bounded1M-residency progress while preserving the full scope.
+
+Continuation checkpoint159, 2026-10-23: The FIRST actual Native63 M06 million-
+marker comparison has run and FAILED its first baseline. The previous turn's
+full original72-frame admission was concrete progress; this turn binds those
+unchanged frames to C4, tests the actual million-record native path and exposes
+a real scientific image gap. Full original13 scope stays active/incomplete.
+
+New candidate packet holds1384 source/reference/receipt files, all72 original
+RGBA frames plus traces/observations and their process lineage. It uses the
+exact C4 wheel550/current4f270c9a native module in a fresh owned environment,
+same Python3.12.8/NumPy2.4.6 profile, data factory, camera and RGBA8/D24S8 target.
+Shared render4 differs from original render3 ONLY by an optional callback after
+raw stage evidence is saved. The callback compares every RGBA pixel at the
+already-sealed maxerror2 with no mask/alignment and checks six warm no-work
+counters. All18cases and30 planned repeat/camera warm checks remain required.
+Actual negative CPU startup proves start/finish/terminal and pre-graphics guard;
+six actual-callback CPU controls test positive2,positive3,negative3,warm upload,
+missing counter and software device. All explicitly synthetic raw test assets
+are removed. Root readiness (not peer review) proves renderer/parent lifecycle
+inverse and source binds before execution.
+
+Actual candidate controller run1/session35123 exits1; first worker launcher
+87344, points-points-disc-4-flat-resident baseline. Of2073600 compared pixels,
+2234 differ and15 exceed2; maximum channel error105. First badx1091/y40:
+original[35,35,35,150], native[33,33,33,158]. Raw whole frame, commands, shaders,
+device, counter deltas and comparison are saved before the strict assertion.
+Cold counters: bufferuploads1,textureuploads1,pipelinemisses2,portablemiss1,
+pointconversionbuild1/56000000bytes. No repeat/camera warm check is reached;
+no residency/performance claim follows. Matrix started but not completed,
+verified_cases empty and ALL18 required cases remain unqualified.
+
+Actual NV RTX4090/Vulkan610.88, nonsoftware, native4f, full550 package/origins,
+runtime input compatibility, all1384 held hashes and all72 original artifacts
+hold. Native finally shutdown reports all8 resource/ticket/allocation fields0;
+actual worker terminal and environment/cache physically absent. Saved-only
+failure_audit1.py exits0, status
+ROOT_AUDITED_NATIVE63_M06_FIRST_BASELINE_FALSIFIED_NO_PROMOTION. Evidence:
+build/native63-million-markers-candidate-run-root-1 and candidate-prep-root-1/
+failure-audit1.json. No failed collection is retried or promoted.
+
+Saved boundary_localization1.py exits0. The source camera matrix (540,-540,
+1e-6 scales and960,540 translation) exactly hashes to the ACTUAL matrix in BOTH
+traces. All15 bad pixels have a source disc outer-discard boundary within
+0.0024462404212681754 pixels in the float64 CPU center model. This does NOT yet
+prove which fragment was causal or a hardware precision constant; no fitted
+bias, tolerance or mask is introduced. It motivates an unrounded-window point-
+coordinate diagnostic rather than a speculative depth-state production edit.
+
+New native63-million-point-coordinate-prep-root-1/shader1.py and CPU1 are
+authored/checked, UNRUN. A native-only copied shader adds a flat clip-position
+varying after original gl_Position, retaining all geometry statements and
+legacy GLSL120 varying direction. The variant uses fused small window deltas
+and reciprocal total size, preserving GL numeric low-Y convention and a fixed
+1920x1080 zero-origin diagnostic viewport. Literal gl_PointCoord anchor keeps
+the existing quad lowering enabled. All source-removal inverses hold. Shared
+render5 uses a copied MarkersVisual subclass for the FIRST case only; original
+templates are not mutated. Control baseline MUST match the saved stock C4 RGBA
+frame exactly before any causal inference. Variant must compare WHOLE frames
+to the unchanged originals, never only the15 pixels. No new diagnostic worker,
+manifest or GPU actor exists yet. Even success would not qualify all18 M06
+cases, fix M02 AA0 ties, or establish performance.
+
+Protected benchmark, production/native sources, activation and original BSD/
+copyright/notices plus AGPL are unchanged. No cybersecurity work, denied
+cleanup retry, native build, activation or publication push. Next: execute the
+declared coordinate control/variant diagnostic and use evidence to choose a
+general renderer correction while preserving the full original gates.
+
+Continuation checkpoint158, 2026-10-23: ALL18 original M06 million-marker
+cases have actually completed and their72 whole frames are Root-admitted as
+references ONLY. Full original13 scope remains active/incomplete; no M02 or
+native-M06/performance gap is relabeled as passed.
+
+Initial readiness catches Rect iteration on CPU before any GPU actor: Rect is
+not iterable, so render2 uses its public pos/size properties. First actual
+controller2/session25511 terminates1 after launcher91708 exits before startup
+receipt: worker2 sha(__file__) wrongly expects a Path, receives str and raises
+before importing NumPy or VisPy. The inherited controller correctly preserves
+the owned environment/cache and global HOLD because receipt-based termination
+is unverified. Root Windows process snapshots find zero related launcher,
+child, interpreter-root or exact worker-script processes. Source/log ordering
+proves startup failed before graphics. Both hold records and all old failure
+artifacts remain preserved. A fresh OS absence check precedes exactly one
+native PowerShell literal cleanup of vispy-image-wheel-muyhsmda and
+vispy-native63-M06-original-q0kunm3j; both are physically absent and the global
+hold is cleared with a separate resolution receipt. The original failed parent
+is NOT rewritten. Its stale unverified marker is historical, resolved by the
+new process/cleanup records. Startup-recovery-ready1 has an unused contradictory
+auxiliary no_worker_receipt=False field; authoritative source assertions,
+worker_receipt_missing=True and the cleanup receipt correctly record missing
+receipts. No claim relies on that auxiliary flag.
+
+Worker3 fixes sha to accept string/Path. An actual negative CPU subprocess
+exercises startup with the selected manifest absent: valid start/finish stamps
+and hashes, actual terminal proof, expected refusal, no NumPy/VisPy graphics
+imports or frames. This addresses the exact failure before another GPU actor.
+Render3 additionally calls the ACTUAL protected benchmark's AST-selected
+prepare_benchmark_canvas, preserving public Qt warmup/resize and exact physical
+1920x1080 target. Worker4 differs only in selected source/manifest names from
+the startup-proven worker3; readiness checks that inverse. All root execution
+reviews are explicitly root-authored, not independent peer reviews.
+
+Actual original_controller4.py session40743 exits0 in fresh run-root2. It uses
+one owned official C486 wheel521 environment,18 fresh serial Windows workers,
+Python3.12.8/NumPy2.4.6/PyQt6, NV RTX4090 OpenGL4.6 driver610.88. Every selected
+million-record data hash is checked BEFORE graphics. All18cases x4 stages
+capture72 full1920x1080RGBA frames,149299200 pixels. Both methods and all three
+size/symbol/spherical combinations plus camera/color/full-position updates
+remain included. Actual renderbuffer precision is RGBA8/depth24/stencil8.
+
+Saved-only original_saved_audit1.py exits0 and recomputes all969 held hashes,
+all raw frame/artifact hashes, process/creation/nonce/source/package/native
+origin joins, actual device/target/camera/layout facts and raw GLIR. It confirms
+all18 exact repeat frames,12 changed camera-update frames with no marker DATA,
+42 actual full56MB structured payloads (2,352,000,000 total parsed DATA bytes),
+and exact1,000,000-record/stride56 draw layouts in every stage. No blanket
+physical-upload/performance inference is made from the benchmark logical
+16MB-color/12MB-position counts. Both the worker environment and shared cache/
+cwd are physically absent. Evidence:
+build/native63-million-markers-original-run-root-2/result.json and
+build/native63-million-markers-prep-root-1/original-saved-admission1.json,
+status ROOT_ADMITTED_ALL18_ORIGINAL_M06_REFERENCE_FRAMESETS_ONLY.
+
+The M06 candidate criterion was sealed BEFORE native pixels: whole RGBA frame
+max channel error2, no masks/alignment, exact structural/data/layout/camera
+controls and exact original repeats. This does not relax M02's retained exact
+criterion. Native C4 candidate18-case/72-frame collection and six-counter warm
+residency checks are next; timing/full benchmark/release qualification still
+require their separate original gates. Protected benchmark/source/native
+activation and AGPL plus original BSD/copyright/notices are unchanged. No
+cybersecurity work, denied cleanup retry, native build, activation or push.
+
+Continuation checkpoint157, 2026-10-22: Independent full-size M06 authoring
+and CPU public-setter validation now exist. The prior reconstruction turn was
+concrete diagnostic progress but did NOT solve M02; that gap remains open.
+This turn advances another explicit original requirement without replacing
+the all-symbol/line/platform/performance gates.
+
+New build/native63-million-markers-prep-root-1/fixture1.py obtains the ACTUAL
+protected benchmark Workload dataclass/defaults and catalog through a bounded
+AST-only execution, with no benchmark runtime/graphics import. The benchmark
+SHA remains55f76b5cf1bc95b23547b572af61e41a6bd524911fd44bc2305318002e60ab26.
+All18 point cells are retained: points/instanced x disc4-flat/star16-flat/
+disc8-sphere x resident/color/positions, viewport1920x1080, edge1/AA1 and seed
+20261009. Four stages reproduce benchmark baseline/repeat and update0/update45
+semantics, including the position case's simultaneous phase-dependent color
+change. Each frame has1,000,000 canonical records, stride56/56,000,000 bytes.
+All72 stage data/camera/logical-update hashes are sealed before GPU pixels.
+Shared12MB source positions SHA:
+5c17e805d58749c3ac98e5f3c3f01ef97eb16556b7f613ee228309aeab5f2189.
+Author session76734 actually exits0.
+
+Actual cpu_public1.py session62441 exits0. It constructs the real public
+MarkersVisual for every cell, calls set_data for initial/nonresident updates,
+and verifies all72 million-record hashes against the authored matrix. It also
+checks full queued DATA payload hashes and zero queued marker DATA for the
+repeat/resident stages. All42 actual public setter calls queue56MB structured
+buffers (2,352,000,000 total CPU-queued bytes). The benchmark's logical color16MB
+and position12MB counts are therefore explicitly NOT physical upload evidence.
+No canvas, current context, draw, parser flush or _dawn module is created.
+This uses recorded NumPy2.5.3; future runtime NumPy2.4.6 must reproduce all
+selected hashes BEFORE canvas creation, and compatibility is still unproven.
+
+New render1.py is authored and syntax-checked, UNRUN. It uses public marker
+shaders and original camera semantics with an explicit owned RGBA8 color
+renderbuffer plus shared packed depth24/stencil8 renderbuffer. Public desktop
+enum formats0x8058/0x88f0 are supported in pinned GLIR and current runtime;
+the default named depth RenderBuffer would otherwise be GL depth16, so it is
+not silently substituted for the benchmark's depth24. Four raw whole frames,
+DATA shader/command traces, structured/count/layout facts, actual target/device
+facts and optional native probes are saved before gates. No timing/presentation
+claim. Original/candidate worker/controller manifests and GPU capture remain
+pending, as do native residency/cache assertions and scientific/performance
+admission. M06 is prepared, not passed.
+
+All memory-only CPU work terminates; no new temporary environment or GPU actor
+was created. Protected benchmark, production/native sources and installed
+activation are unchanged. AGPL plus original BSD/copyright/notices remain
+attached unchanged. No cybersecurity work, denied cleanup retry, native build,
+activation or push. Full original13 goal remains active/incomplete.
+
+Continuation checkpoint156, 2026-10-22: A direct fragment-coordinate
+reconstruction diagnostic has actually run, been corrected for a coordinate
+convention error, and been rejected as an exact M02 fix. Neither variant is
+promoted. The previous turn's exact center/PC control was concrete progress;
+this turn establishes that direct mathematical reconstruction still does not
+reproduce the original boundary decisions.
+
+First reconstruction pair session12650 exits0 (control93980,
+reconstructed70388), and its interpolation control reproduces the ENTIRE prior
+RGBA float frame exactly. However, the reconstruction incorrectly subtracts an
+image-top center from numeric GL-window gl_FragCoord. It generates large
+negative y coordinates; its incidental28/42 sign count is INVALID evidence for
+the intended formula. Model-audit1.json explicitly rejects it and preserves
+all raw data. The renderer contract, design.md line387, already states the GL
+low-Y numeric convention. This was a diagnostic authoring mistake, not evidence
+of a production coordinate-origin defect.
+
+Corrected formula uses GL-window center and flips only the delta's y for
+upper-left point coordinates. CPU known-window control and exact source
+inverse pass. Root readiness is explicitly ROOT review, NOT an independent
+Claude review. It verifies actor lifecycle code by exact reverse transformation
+to the previously reviewed controller, actual CPU expression composition, source
+holds and controls. First readiness2 inverse check fails CPU-only because its
+text replacement re-renames the old receipt gate's similarly named worker;
+readiness3 defers reinserting that unchanged gate until after replacements and
+passes. No GPU launch happened during this bookkeeping correction.
+
+Actual corrected pair controller run2/session69680 exits0, control50296 and
+reconstructed94000. The whole control float frame remains bit exact. Corrected
+reconstruction has SDF exactlyZERO at all42 previously failing pixels. Original
+GL has positive distance at28 and nonpositive at14, so the reconstructed
+coverage matches only14/42. This is NOT a passing fix or full-frame admission;
+no numerical bias, symbol fitting, mask or tolerance change is introduced.
+Actual analyze2.py and conclusion2.py exit0. All917 held files, current550-member
+native package, native origins, process joins and eight-zero shutdown checks
+hold. Both owned environments and shared cache/cwd are physically absent.
+Evidence: build/native63-point-reconstruction-run-root-2/result.json and
+build/native63-point-reconstruction-prep-root-1/{analysis2,conclusion2}.json.
+The first wrong-origin run and all readiness sources remain preserved.
+
+Pinned Tint reader still restricts point_size stores to constant1.0
+(third_party/dawn/src/tint/lang/spirv/reader/lower/shader_io.cc:378); native
+variable-sized hardware points are not a drop-in alternative. No vendor patch
+or raw Vulkan fallback is attempted. All48 M02 candidate cases remain
+unqualified; simply reconstructing ideal point coordinates cannot close their
+exact numerical boundary gap. Other original13 requirements, including the
+independent million-marker workload, remain open and must progress as well.
+AGPL plus original unchanged BSD/copyright/notices stay attached. No production
+source edit, native build/activation/push, cybersecurity work or denied cleanup
+retry. Goal remains active and incomplete.
+
+Continuation checkpoint155, 2026-10-22: The CORRECTED flat-center diagnostic
+actually succeeds, including its strict whole-frame control. Both OpenGL and
+current Native63 PCxy channels are BIT EXACT to their respective prior float
+captures at all42 failure samples AND every pixel in the 1280x768 frame. The
+observed flat center NDCxy also matches bit-for-bit between roles at ALL42
+failure samples, with zero measured center delta in window pixels. Thus a
+difference in the measured pre-expansion vertex center does not explain those
+failures. Hardware viewport/raster and coordinate-generation arithmetic after
+that measurement remain unobserved; no production fix is proven.
+
+Actual controller run4/session51860 exits0, original launcher8584 then native
+launcher73236. Corrected captured shaders prove vertex out float v_size and
+fragment in float v_size with no unintended size output. Native8shutdownzero,
+NV4090/610.88 GL and Vulkan device facts, all846 held files, full521/550 package
+inventories, process/creation/nonce/origin/input joins and saved artifacts hold.
+Actual analyze2.py exits0, status
+POINT_COORDINATE_CONTROL_REPRODUCED_FLAT_CENTER_MEASURED. Both owned worker
+environments and cache/cwd are physically absent. Evidence:
+build/native63-point-center-diagnostic-run-root-2/result.json and
+build/native63-point-center-diagnostic-prep-root-1/analysis2.json.
+
+Third review incorrectly claimed InVar lacks an expression override. Actual
+source DOES override it to use names[self._var]. Real CPU Compiler4 proves
+matching vertex/fragment declarations and both fragment-main/symbol-function
+references, including a forced static naming collision. No canvas/context or
+_dawn loaded during CPU4. Fourth review withdraws the sole false finding and
+is READY. Both earlier FIX reviews and raw failed run1 stay preserved. Actual
+controller is run4.py bound in review-operation4; manifest descriptive field
+says run3.py, explicitly recorded in launch2.json. No worker/renderer changed
+merely to accommodate the false naming concern.
+
+Saved-only window_coordinate_models1.py also exits0: four unfitted ordinary
+arithmetic arrangements using MEASURED centers fail to reproduce all7488
+original samples per coordinate. This is diagnostic evidence, not a fitted
+bias or a production correction. For the next principled probe, consult
+OpenGL4.6 compatibility section14.4, equations14.3/14.4:
+https://registry.khronos.org/OpenGL/specs/gl/glspec46.compatibility.pdf
+These define sprite coordinates using fragment centers and unrounded point
+window coordinates. They do not justify substituting a fitted epsilon or
+snapping the measured center. A native diagnostic evaluating that formula from
+flat center/fragment position can test the alternative to quad interpolation;
+actual GPU arithmetic and original coverage still require measurement.
+
+Full original13 remains active/incomplete; all48 candidate M02 cases remain
+unqualified. No production source edit/build/activation/push. Original BSD
+and copyright/notices remain attached unchanged alongside AGPL. Cybersecurity
+excluded; no denied cleanup retries. This turn is concrete diagnostic progress,
+not completion or a substitute for the original full-frame admission gates.
+
+Continuation checkpoint154, 2026-10-22: A distinct flat-NDC-center probe was
+authored, source-checked, reviewed and actually executed. The prior goal turn
+was concrete progress: its exact native control ruled out centered-coordinate
+interpolation as a fix. This turn investigates center placement without
+changing production arithmetic, references or thresholds.
+
+The center probe records pointcoord.xy plus a flat vertex center NDC.xy,
+assigned immediately after original gl_Position and before native expansion.
+GLSL130 enables flat in/out. The first review incorrectly claimed the desktop
+converter strips explicit versions; actual source-only execution of the
+converter from the original C486 wheel, pinned source and current source
+preserves130/flat, adding120 ONLY when absent. It also incorrectly questioned
+prior frame/sample hashes already present in all809 held pins. Actual
+adjudication and exact selected maps resolve both; second review is READY.
+All original verdicts and source evidence stay preserved.
+
+Actual controller run2/session62469 terminates1. Original worker launcher18360
+renders and saves a finite but ENTIRELY ZERO float frame, then fails its
+center-range assertion. Controller stops BEFORE native role. Actual OpenGL
+RTX4090/610.88, RGBA32F internalformat34836, correct FBO and blendFalse are
+saved before failure. All809 held files, package/origin/process/nonce joins
+hold, worker terminal and environment/cache physically absent. Root saved-only
+audit_failure1.py terminates0, status
+ROOT_AUDITED_ZERO_FRAME_CENTER_PROBE_FAILURE_NO_NATIVE_ROLE.
+Evidence: build/native63-point-center-diagnostic-run-root-1 and
+build/native63-point-center-diagnostic-prep-root-1/failure-audit1.json.
+No center inference, GPU retry or production promotion follows this failure.
+
+Saved shader comparison exposes a real diagnostic defect: the legacy shared
+Variable('varying float v_size') maps to out float v_size in BOTH GLSL130
+stages, including an unintended fragment output. This defect is observed;
+the exact driver-level cause of the blank output is not separately proven.
+New unrun fixture3 uses public Varying.invar() for both fragment dependencies
+and the shared vertex output. CPU3 passes source-removal inverse and actual
+AST-method direction checks (out versus in), without graphics imports. The
+first CPU author2 attempt failed only because its test stand-in lacked dtype;
+its source/partial fixture remain preserved, and corrected author3/CPU3 pass.
+Future worker must verify actual captured fragment in float v_size and NO
+out float v_size. The strict BOTH-role, WHOLE-FRAME prior point-coordinate
+identity control remains mandatory. No revised manifest/actor has run yet.
+
+Full original13 scope remains active and incomplete. AGPL implementation and
+unchanged original BSD/copyright/notices remain attached. No production source
+change, build, activation or push; no cybersecurity work or denied cleanup
+retry. The next step is review and execute the corrected center diagnostic,
+then use qualified measurements to choose a principled renderer correction.
+
+Continuation checkpoint153, 2026-10-22: The controlled native interpolation
+basis pair actually completed (controller session66946 exit0, control launcher
+93480, centered launcher62472). Third review is READY; the second review's sole
+conditional blocker was refuted by both actual held maps, which already pin
+basis_fixture4 at bd6ae7c32f6ba5ba9d5247318a6608c36a9d6ce39bbb36fd79f1214532a9eeac.
+All earlier review verdicts, sources and adjudication remain preserved. The
+actual controller is basis-run3.py, bound by the third review's source map;
+the unchanged inputs2 descriptive controller field says basis-run2.py. This
+distinction is explicitly retained in basis-launch1.json.
+
+Actual preregistered basis-analyze2.py exits0. The control reproduces the prior
+native float capture BIT EXACTLY across the ENTIRE 1280x768x4 frame, including
+all42 failing samples. The centered variant matches original coordinate bits
+at only2/42 and original distance signs at only9/42: it is NOT a production fix.
+Its float frame differs from original at37665 pixels and prior native at37110;
+these are diagnostic float comparisons, never color-image parity. Sources,
+package identities, process/nonce joins and eight-zero shutdown checks hold.
+Both fresh environments and shared cache/cwd are physically removed; no denied
+cleanup path was retried. Evidence is under
+build/native63-point-coordinate-basis-run-root-1 and
+build/native63-point-coordinate-diagnostic-prep-root-1/basis-analysis2.json.
+
+Saved-only coordinate_arithmetic_census1.py exits0 and compares four ordinary
+division/reciprocal/fused arithmetic arrangements against7488 samples per
+coordinate from13 size24/edge0 markers. NONE reproduces all original coordinate
+bits. No fitted epsilon, mask, symbol adjustment, production patch or new GPU
+actor follows. The next useful diagnostic must distinguish actual GPU center
+placement from point-coordinate evaluation before choosing an implementation
+change. CPU-reported integer centers alone do not prove GPU arithmetic centers.
+Full original13 goal remains active/incomplete; no new qualification, build,
+activation or publication push. AGPL plus original BSD remain attached and
+unchanged. Cybersecurity work remains excluded.
+
+Continuation checkpoint152, 2026-10-22: Actual two-role point-coordinate float
+capture and preregistered saved-data analysis completed. Both original GL and
+current Native63 workers terminated successfully on the NVIDIA RTX4090,
+driver610.88; source/package/origin/process joins and native eight-zero shutdown
+checks held. The saved float SDF signs reproduce BOTH original and candidate
+coverage at all42 previously differing pixels. All42 have coordinate bit
+differences, reaching7ULPs in x and15ULPs in y. Evidence:
+build/native63-point-coordinate-diagnostic-run-root-1/result.json and
+build/native63-point-coordinate-diagnostic-prep-root-1/analysis1.json.
+The two owned worker environments and shared cache/cwd were physically removed.
+No production correction, full M02 parity, performance or release claim follows.
+
+The next controlled diagnostic compares interpolation of normalized0..1
+coordinates with interpolation of signed-1..1 coordinates followed by fragment
+normalization. CPU source inspection found that the unrun basis_fixture3 loses
+the runtime LINK trigger (literal gl_PointCoord) when replacing the fragment
+hook. New basis_fixture4 retains that trigger through an unused builtin-return
+function; version3 stays preserved and unrun. Its CPU inverse/source checks
+pass. basis-inputs1 holds782 files and binds both new roles to the SAME current
+wheel and sealed prior GL/native float data. The preregistered analysis requires
+the control to match all four prior float channels at all42 pixels before any
+causal inference; it also reports whole-frame differences. The two-run protocol
+is undergoing read-only review; no basis GPU actor has run at this checkpoint.
+
+The immediately preceding license-only turn verified existing identical BSD
+copies and both license sets in the current wheel, with no source changes.
+This continuation adds a concrete correction to the unrun diagnostic and a
+reviewable, hash-bound experiment. Full original13 scope remains active and
+incomplete, including all48 candidate M02 cases, smooth lines, million-marker
+workloads, broader science/host/platform checks and performance/release gates.
+AGPL implementation plus unchanged original BSD/copyright/notices remain
+attached. Cybersecurity work remains excluded. No native build/activation or
+publication push occurred.
+
+Continuation checkpoint151, 2026-10-22: The FIRST actual Native63 all-symbol
+candidate comparison has run and honestly FAILED. The prior goal turn was
+concrete progress: all48 original framesets were captured/admitted; this turn
+binds those exact originals to the current wheel, executes the candidate and
+localizes a real image gap. Full original13 goal stays active/incomplete.
+
+New build/native63-marker-all-symbols-candidate-prep-root-1/prepare1.py binds
+723 held files, exact current63 c4b864e1 wheel/550 package members/native4f270c9a,
+all618 production/protected installed58 native4, full47/wheel proof joins,
+unchanged fixture6/authoring/profile and admitted144 original frames/576 raw
+artifacts. It checks all full maps, every source/reference hash and AST equality
+of the three already-tested process/origin/GPU-activity predicates. Additional
+actual CPU inspection confirms lifecycle/process/runtime profile pins are in
+the full map. No source/reference data or quality criterion changes.
+
+Actual read-only review16518/Claude91576 exits0
+READY_FOR_ONE_NATIVE63_M02_ALL48_COMPARISON, all held bytes unchanged, tools
+disabled and owned peer temp removed. Candidate worker1 loads unchanged
+fixture6 in a clean external Native63 install. Every raw frame/commands/shaders/
+observations and post-read native probe/comparison is saved BEFORE exact array
+equality. The controller checks all original artifacts before first actor and
+after a hypothetical full success; selected reference case is hashed at worker
+start/end. All48 remain mandatory, with same144 wholeRGBA frames/tie pixels,
+no exclusions/tolerance/fit/alignment and no performance qualification. Probes
+are after the public read's normal finish, outside the frame; not timing data.
+
+Actual run1 driver34967 exits1 after exactly ONE fresh candidate worker,
+launcher2264, case points_fixed_aa0_panel0. Parent
+build/native63-marker-all-symbols-candidate-run-root-1/result.json is
+FAILED_PRESERVED; verified_cases is empty and all48 required cases remain
+unverified. Baseline rgba.npy/trace/shaders/observations/native-probe/comparison
+are retained. Full983040-pixel comparison has42 differing pixels,126 differing
+channel elements and maximum absolute channel error229. First difference is
+x338/y493: original[0,0,0,255], candidate[229,102,51,255]. This is not a pass,
+not an allowed edge exclusion and not a reason to change the fixed originals.
+
+Actual analyze_failure1.py uses only saved bytes and writes failure-localization1:
+ALL42 pixels belong to the size24/edge0/AA0 row: arrow16, diamond14 and
+tailed_arrow12. They lie on diagonal signed-distance boundaries; some are
+extra and others missing. Cause is NOT yet proven. Current point wrapper emits
+gl_PointCoord via a noperspective varying interpolated across generated
+triangles; the saved pattern motivates measuring that coordinate and the SDF
+before changing production code. No integer-size rounding/center snapping,
+per-symbol epsilon, palette fit, masks or speculative implementation patch.
+
+Actual failure_audit1.py exits0 with
+ROOT_AUDITED_NATIVE63_FIRST_M02_FRAME_FALSIFIED_NO_PROMOTION. It independently
+checks all723 source pins/all576 unchanged original artifacts, actual review,
+parent/start/finish/nonce/source/creation-bound terminal proof, full550 installed
+members/native origins, all saved raw artifact hashes and recomputes the entire
+failed array comparison and localization. All eight shutdown counters are zero;
+worker closure/input/source checks pass. Actual owned external environment and
+cache/cwd are physically absent and no global/env unknown-worker hold exists.
+The worker queried device_info only after successful render, so this FAILED
+case has no device qualification record; the auditor explicitly does not claim
+hardware qualification from the failed case. The post-read probe has no vendor/
+driver fields. Preserve this limitation in causal analysis and the next probe.
+
+Next diagnostic authoring exists at
+build/native63-point-coordinate-diagnostic-prep-root-1/fixture1.py and cpu1.json.
+CPU source checks ACTUALLY pass without graphics imports. It is an UNRUN
+diagnostic renderer: same117 authored records/public transforms and unchanged
+marker vertex shader; a subclass inserts a distinct early fragment output
+vec4(pointcoord,$v_size,r), disables blending and writes an RGBA32Float texture
+with one public FLOAT read. This would expose pointcoord_x/y, marker_size and
+signed_distance on both pristine OpenGL and exact current Native63. Original
+color/discard output is bypassed ONLY in this distinct diagnostic, never in
+the parity fixture. The insertion has an exact removal inverse and rejects
+missing/duplicate anchors. No worker/controller/input/process review or GPU
+probe exists yet. Typed readback source supports RGBA32Float, but actual probe
+format/unclamped negative data must still be verified. Changing fragment output
+can change optimization: first check that the probe's SDF signs reproduce the
+immutable42-pixel failure before claiming a cause. Diagnostic cannot qualify
+M02, replace originals, or become performance evidence.
+
+NEXT: finish/review this bounded two-role diagnostic with actual same-device
+provenance and terminal/cleanup proofs, capture full float data, then derive a
+principled point-coordinate/arithmetic fix with tests and a genuine fresh native
+epoch/build/wheel if production changes. Do not replay the rejected candidate
+matrix until a justified correction exists. All48 originals and strict paired
+pixel criteria remain fixed. M06million/smoothall16/other scientific/host/
+binding/platform/ABI/performance/full66/5pairs1.10/scanout/allocator/activation/
+release stay open. Both CI20 matrices remain terminal green on a8373d913;
+public PR1 stays draft, canonical has no Git metadata, docs not pushed. AGPL/
+original BSD/copyright/notices and protected58/native source618 unchanged.
+Cybersecurity excluded. All actual local and remote handles are terminal;
+new diagnostics have created no GPU actors, temp environments or build assets.
+
+Continuation checkpoint150, 2026-10-22: The complete all26-symbol ORIGINAL
+reference matrix has ACTUALLY captured and passed Root saved-data admission.
+Full original13 implementation goal remains active/incomplete; no M02 Vulkan
+comparison, million-marker, performance or full-release qualification follows.
+
+Prior combined review71837/Claude92716 terminates0 FIX before any root3 actor:
+it correctly identifies the AA=.5 cross_lines/++ zero-edge sample at the exact
+discard threshold. Fixture6 records that occupancy without forcing a direction,
+requires empty AA0 and visible AA1/2 zero-edge lines, keeps the filled-symbol
+checks and requires EVERY unchanged edge2.5 symbol visible. All raw pixels,
+including these ties and blank cells, remain in exact whole-frame comparison;
+there is no pixel exclusion, tolerance, fit, alignment or data/shader change.
+Source math/negative controls and actual old-baseline input hashes are recorded
+in cpu6.json: ACTUAL368 controls pass. Fixture5/review4 stay retained/unrun.
+
+New inputs5 SHAedd5a23e39e931acd8f2fd002559629edb4d21ff666c218d7d28bec5adc855c6
+holds708 files and selects fixture6 SHA
+2dbb692554c018938144c1b1eae44c8444040352dd7c5968ab915501126d23ea,
+worker5/controller5, same official wheel/profile and all618 production plus
+protected58 native4. Combined full review95120/Claude64708 ACTUALLY exits0 READY,
+all held bytes unchanged, tools disabled, owned peer temp removed. It clears
+the only prior tie blocker and all existing process/cleanup gates. No extra
+weaker fixture review or source gate is substituted.
+
+Driver15048 then ACTUALLY executes original_controller5.py once into
+build/native63-marker-all-symbols-original-run-root-3 and exits0. Parent status
+is CAPTURED_ALL48_ORIGINAL_M02_CASES_PENDING_SAVED_ADMISSION,48 verified cases,
+no required case without verified result,144 whole1280x768RGBA frames and
+141557760 reference pixels. ALL48 were recaptured fresh, including both methods,
+both13-name panels, three scaling modes, four AA values and all sizes/edges;
+earlier failed partial frames are not reused. Actual public GLplus dispatch,
+official521-member VisPy0.17.0/Python3128/NumPy246/PyQt6 environment, NV RTX4090/
+OpenGL4.6.0 driver610.88 compatibility profile2 and every worker's creation/
+nonce/source/terminal joins are retained. Raw observed point ranges are
+aliased[1,2047], smooth[1,189.875], granularity.125; unsizedGL_RGBA storage
+reports physical8/8/8/8 bits and single-sample owned targets. These are actual
+facts, not a guessed point-width rounding rule or new implementation patch.
+
+Actual original_saved_audit5.py/session2072 exits0 and writes
+original-saved-admission5.json SHA
+1fbce1f5e5996ad37b74980e51e29a1541ee695993addcaba0d85d8a2e441021 with
+ROOT_ADMITTED_ALL48_ORIGINAL_M02_REFERENCE_FRAMES_ONLY. It rechecks all708 live
+pins, actual complete execution review/source holds, all48 parent/worker/process/
+native-package/origin joins,144 raw artifact maps and whole arrays, all48 exact
+repeat frames (47185920 pixels), canonical source/layout/parsed attributes,
+draw instances, declared geometry/clipper/target/storage/driver facts and
+source-derived symbol occupancy. It imports no VisPy/Qt/OpenGL and reruns no
+GPU actor. This is Root saved inspection, not a second person's raw-data audit.
+
+All48 actual workers are known terminal. Cache/cwd
+C:/Users/HEQ/AppData/Local/Temp/vispy-native63-M02-original-y2f5jp49 and venv
+C:/Users/HEQ/AppData/Local/Temp/vispy-image-wheel-9e8viml7 are independently
+confirmed physically absent. No unknown-worker/global hold, cleanup rejection
+or native build assets. Both failed original attempts, all raw frames/errors/
+sources and review refusals remain unchanged. Both CPU CI20 matrices remain
+terminal green; no live local/remote handle remains at this checkpoint.
+
+NEXT: bind the exact current Native63 c4b864e1 wheel/550 members and admitted
+originals into the all48 candidate capture; preserve fixture6/authoring/profile/
+all144frames and compare EVERY RGBA pixel exactly, including the AA=.5 ties.
+No candidate matrix pixel exists yet. Keep all48 mandatory and stop/preserve a
+failure without masking or relabeling. Scope beyond M02 remains: M06million,
+smoothall16 and other scientific/host/binding/platform/ABI/full66/5pairs1.10/
+scanout/allocator/activation/release gates. AGPL/original BSD/copyright/notices,
+protected installed58 activation and public a8373d913/PR1draft stay unchanged;
+canonical docs not pushed yet, canonical workspace still has no Git metadata.
+Cybersecurity excluded.
+
+Continuation checkpoint149, 2026-10-22: Both real CPU CI matrices for source
+a8373d913 are terminal SUCCESS. Push39859580417 attempt1 and PR39859590468
+attempt2 each have all20 successful rows and20 nonempty unexpired evidence
+artifacts, with actual required native/license/reference/CPU assertion steps
+verified. successful-pr-retry3.json preserves the completed PR result. The
+original PR setup-uv timeout/attempt1 failure stays retained. No more live CI
+job or extra retry. This is CPU matrix evidence, not GPU/platform graphics,
+artifact-content re-audit or full-release qualification.
+
+Actual targeted GLplus review2001/Claude39648 exits0 READY, source pins hold,
+owned peer temp removed. Original controller3 driver7370 ACTUALLY executes the
+fresh all48 attempt into original-run-root-2 and exits1 after25 workers. All24
+panel0 cases (both methods, all scaling/AA) pass three stages each. First
+points_fixed_aa0_panel1 saves its baseline then fails an EXTRA image landmark:
+the new check wrongly required a filled cross_lines face with edge0 and AA0.
+The pinned shader returns a nonnegative distance for cross_lines, and the
+size24 integer-centered sample distances are strictly positive, so the original
+fragment shader correctly discards this zero-width/zero-AA line. Alias++ has
+the same source/code. This is a producer assertion defect, not a Vulkan image
+failure. No candidate matrix pixels exist or original reference is admitted.
+
+Actual original_failure_audit2.py exits0 and writes
+ROOT_AUDITED_SECOND_ORIGINAL_M02_FAILURE_ZERO_WIDTH_CROSS_LINES_ASSERTION:
+all677 source holds,25 actual terminal process/nonce/source/creation joins,
+official521 origins/native images,73 raw full frames/71761920 pixels and all24
+repeat identities verified; failed baseline/error preserved. Remaining required
+unverified cases are24. External venv vispy-image-wheel-1z_5v7h8 and cache/cwd
+vispy-native63-M02-original-2xtc6b2p are physically removed; no unknown-worker
+hold or cleanup denial. First failed root1/36frames remain untouched too.
+
+New fixture5 changes ONLY the incorrect additional analytic landmark. It now
+REQUIRES cross_lines/++ size24/edge0 cells EMPTY at AA0, retains the other face
+checks and additionally requires EVERY symbol visible in unchanged size24/
+edge2.5 cells. It does not drop symbols/cases/pixels, change geometry/palette/
+shader/parameters, or mask those blank cells from future whole-frame equality.
+landmark-contract5.json documents the source formula and this correction before
+any candidate matrix pixels. CPU5 ACTUALLY passes360 checks, including the
+independent signed-distance sample-grid calculation, original saved failed
+baseline now validating under the correct expectation, and corruption controls
+that reject a filled zero-width line or missing edged line. Earlier source and
+failed assertions/data remain retained; this is not reference admission.
+
+New inputs4 holds695 files and selects fixture5/cpu5/worker4/controller4 with
+fresh original-run-root-3. Same approved GLplus/process/runtime logic, same48
+cases/144whole1280x768frames/141557760pixels/exact comparison/no exclusions.
+ALL48 must be recaptured from scratch; neither earlier partial set can be mixed
+in. Combined targeted fixture+execution review71837/Claude92716 is live. Observe
+that SAME handle and resolve its actual result before launching the first root3
+actor. Draft original_saved_audit4.py will admit only a successful full saved
+original set, not M02/candidate/full13. All618 production/protected58 native4,
+AGPL/original BSD/copyright/notices unchanged; no native build or cybersecurity
+work. The full original13 goal remains active and incomplete.
+
+Continuation checkpoint148, 2026-10-22: Actual complete execution review47347/
+Claude75040 exits0 with FIX on two parent-controller gaps. New controller2
+binds worker prefix/package/VisPy/NumPy origins to the environment actually
+created, preserves cumulative known-positive GPU activity across later false/
+unknown cases, tracks explicit verified_cases only after all parent checks,
+rehashes raw artifacts and does a final source verify. CPU controller predicates
+pass actual cumulative/unknown sequences and forged-origin rejection controls.
+Fresh inputs2 holds662 files; rejected controller1/worker1/inputs1 remain.
+Complete review92029/Claude85984 then ACTUALLY exits0 READY for one all48
+original capture, unchanged fixture4/data/criteria, owned peer temp removed.
+
+Actual driver26369 runs original_controller2.py once and terminates exit1.
+build/native63-marker-all-symbols-original-run-root-1/result.json is honestly
+FAILED_PRESERVED. Twelve point-method panel0 cases pass all three stages each
+(36 full frames/35389440 pixels), then the FIRST instanced case
+instanced_fixed_aa0_panel0 fails before a read. Actual worker error is
+AttributeError: vispy.gloo.gl has no glDrawArraysInstanced; raw log explicitly
+identifies the default vispy.gloo.gl.gl2 facade. New original worker omitted
+the existing successful original oracle's public vispy.use(gl="gl+") call.
+This is a reference-producer dispatch omission, not a measured candidate Vulkan
+renderer failure. No reference set is admitted, no case is silently omitted,
+and no candidate matrix pixels exist. Required unverified cases stay36.
+
+Actual original_failure_audit1.py terminates0 with
+ROOT_AUDITED_FIRST_ORIGINAL_M02_FAILURE_MISSING_GLPLUS_SELECTION. It rechecks
+all662 held pins, all13 actual start/finish/source/nonce/creation-bound terminal
+joins, official521 package/origin/native-image facts, all saved raw artifact
+hashes and36 full frames, all12 repeat identities and exact failed instanced
+error. Cumulative GPU flags correctly remain true. Both owned external paths
+are physically gone (venv vispy-image-wheel-u8g8asxr and cache/cwd
+vispy-native63-M02-original-wbp1r21r), no global/environment unknown-worker hold.
+No cleanup rejection or retry. One derived first-frame PNG was inspected;
+rendered grid agrees with the declared size/edge ordering. This is not a new
+reference admission or candidate equality claim.
+
+The causal correction is now authored without changing fixture4, input data,
+shader source or quality: original_worker3 explicitly selects public gl+ BEFORE
+scene construction, exactly matching both the current and frozen successful
+marker14 original oracle. It records backend/module origin and callable
+glDrawArraysInstanced/glVertexAttribDivisor; parent3 joins those external facts.
+backend_cpu3 checks AST-equivalent original selection before render; actual
+unchanged fixture4 is established by prepare3's recheck of all662 prior pins
+(the backend test's redundant self-equality is not evidence for that claim).
+New original-inputs3.json holds677 files and keeps all prior sources/inputs/
+reviews/failed parent result/audit. Controller3 selects fresh original run root2
+and must recapture ALL48 cases from scratch; old12 point cases are not mixed
+into a new reference set. Same reviewed process logic, full48/144/141557760 plan
+and no exclusions/tolerance/fit/alignment. No actual second attempt yet.
+
+Targeted complete execution review2001/Claude39648 is live on these exact
+inputs3/controller3/worker3 and preserved failure evidence. Poll the SAME handle;
+do not edit held sources or launch until its actual terminal READY. Draft
+original_saved_audit3.py is prepared for all48 saved-frame/process/source/
+original-driver/cleanup admission only after a successful second attempt; it
+has not run. All13 full implementation requirements remain incomplete and
+active; M02/M06 and performance/platform/remaining scientific gates stay open.
+AGPL/original BSD/copyright/notices, protected installed58 native4 and618
+implementation files are unchanged. Cybersecurity excluded; no new native build
+assets generated. PR CIattempt2 still has19 successful rows, same IntelMac
+CPython3.11.14 build job120162028890 live; no extra rerun requested.
+
+Continuation checkpoint147, 2026-10-22: Previous goal turn made concrete
+implementation/preparation progress (selected M02 renderer,355 CPU checks and
+complete reference-worker/controller source); it was not a no-progress turn.
+Actual third fixture review90921/Claude63760 is now terminal0 with
+READY_TO_PREPARE_ORIGINAL_M02_CAPTURE. It closes all accepted second-review
+blockers: guarded layout observations, every padded corner inside all actual
+fragment clippers, parsed attribute types/stride/offsets/divisors, quad layout,
+selection and instances. The review preserves all48 cases/144 full frames and
+explicitly admits no references or GPU execution. All review-held files stay
+unchanged and its owned external peer temp is physically removed.
+
+Actual original_prepare1.py exits0 and writes original-inputs1.json under
+build/native63-marker-all-symbols-prep-root-1:652 held files, all618 current
+implementation inputs plus protected installed58 native4, official OpenGL
+wheelc4862155/521 exact package members, unchanged authored26-symbol matrix,
+runtime profile, selected fixture4/cpu4, source/provenance/process helpers and
+new controller/worker. Both earlier actual marker14 commands.json inputs are
+explicitly held, closing the third review's CPU provenance advisory. The
+authoring original_pin remains null and is explicitly not a commit proof;
+official wheel/member/source hashes are the provenance. No old48/47/native
+qualification or earlier driver result is relabeled.
+
+Actual root_preflight1.py exits0 with
+ROOT_PREFLIGHTED_ORIGINAL_ALL48_INPUTS_ONLY after rechecking all652 live pins,
+the exact48 Cartesian combinations, two disjoint13-symbol panels/26 names,
+144-frame/141557760-pixel plan, fixture peer closure and absent original run/
+unknown-worker hold. It imports no VisPy/OpenGL and launches no actor. Complete
+execution review47347/Claude75040 is now live on the actual bound manifest,
+fixture/worker/controller/lifecycle/process sources. The original controller
+cannot run on the weaker fixture verdict; its required complete-execution
+verdict is READY_FOR_ONE_ORIGINAL_M02_ALL48_CAPTURE. Observe the SAME review
+handle, do not rewrite its held sources or launch/restart a capture while it
+is unresolved. No original/candidate matrix pixels, reference admission, M02/
+M06/performance/full13 qualification yet. CI PRattempt2 still has19 successful
+rows and the same IntelMac3.11.14 compile job120162028890 live. Push20success
+remains distinct; no new retry/source/workflow edits. AGPL/original BSD/notices,
+canonical/no-Git split and cleanup restrictions remain unchanged.
+
+Continuation checkpoint146, 2026-10-22: The current Native63 marker14 run is
+ACTUALLY terminal and independently checked from saved data. The immutable
+serialized-attempt-3 OpenGL manifest372b0b01e7d22414f869b8de226488c06854d860e13a0ec0a1da887d39602d59
+and all eight original authoring sources remain unchanged. Preparation at
+build/native63-marker-prep-root-1 preserves the original NumPy scalar serializer,
+all five original CPU function ASTs and141 packet members. Selected worker2,
+run2 and inputs2 hold811 files, including618 current implementation inputs,
+current63 wheel/proofs and protected installed58 native4. inputs2 SHA is
+a417f0d2e4d76abfbedc7ce5d092dff3bd8c9c59298d59f343a14e070cb7428e.
+Candidate1/inputs1 remain retained, unexecuted preparations.
+
+Read-only peer84165/Claude79984 exits0 with
+READY_FOR_NATIVE63_MARKER14_GPU_EXECUTION and unchanged inputs. Actual driver
+25927 then exits0 after all14 serial fresh case workers. The parent result
+build/native63-marker-run-root-1/result.json is
+PASS_NATIVE63_FOURTEEN_ORIGINAL_MARKER_CASES; no required case lacks a verified
+result. Both methods pass style_grid, camera_fixed/scene/visual,
+spherical_depth, color_revision and position_revision. All172032 paired pixels
+match exactly with zero exclusions against the fixed original GL595.79 frames
+on current Vulkan610.88/RTX4090. Current wheelc4b864e1, all550 installed members,
+externalPython3128/NumPy246, actual process/creation/nonce joins, target/trace,
+original one-read-per-case, structured revisions and all eight shutdown zeros
+are verified. All six resident camera cases preserve all six required counters.
+The inherited printed buffer-ordering stage label is cosmetic; actual case
+names, argv, source hashes and paths identify the marker run. No used source
+was edited to relabel it. The serializer preserves values; pre-serialization
+runtime scalar types are not claimed as separately instrumented.
+
+Actual audit1.py writes saved-audit1.json with
+ROOT_AUDITED_NATIVE63_FOURTEEN_ORIGINAL_MARKER_CASES after independently joining
+all811 live pins/141 packet members, raw whole frames/analytic landmarks,
+source/package/native/process facts, counters, shutdown and physical removal of
+the recorded external environment/cache paths. Parent post-terminal worker-log
+hashes match the worker pre-exit observations in all14 cases. Coverage M03/M04/
+M05 is corrected to bounded current-artifact passes; M02 all-symbol and M06
+million-marker remain open. No native implementation or installed58 change.
+
+Next M02 inputs were authored BEFORE any new reference/candidate pixels at
+build/native63-marker-all-symbols-prep-root-1. author1.py/authoring1.json cover
+all15 canonical symbols and11 aliases, both methods, three scaling modes,
+AA0/.5/1/2 and sizes1/8/24 with edges0/.5/2.5 in two13-symbol panels. The48
+public CPU constructor/layout cases pass, each117 markers. Immutable
+render-contract1 declares144 whole1280x768RGBA frames (141557760 paired pixels)
+across baseline, exact repeat and camera zoom1.25, single-sample color-onlyRGBA8,
+no exclusions/fit/alignment. All48 original references must be admitted before
+any candidate matrix capture. No new original/candidate GPU actor has run.
+
+New fixture1.py implements that renderer without importing graphics on module
+import. Its exact data_for function source equals the earlier authored function;
+palette/input/layout hashes stay unchanged. Actual live shader transforms will
+witness every center, size, edge and full padded sprite bounds, with no clips
+or overlaps. Actual original GL state will record profile, sprite/program-size
+states, supported point ranges/granularity and owned RGBA8/viewport/sample/depth
+facts. Marker depth testing is explicitly disabled on the public visual because
+its default would otherwise override a preceding gloo state command. Each raw
+stage is persisted before image assertions; repeat identity and every public
+symbol's nonempty large-size cell are additional checks, not comparison masks.
+cpu1.py actually passes199 checks:48 exact original input/layout constructors,
+144 independent affine shader-geometry cases and seven rejection controls.
+Its first run correctly rejected an unknown serializer type but the negative
+test expected the wrong exception class; that failed observation is retained,
+and only the expected TypeError handler was corrected. Read-only fixture peer
+review is active; original_worker1.py is a separate unreviewed preparation.
+There is no admitted capture controller, new GPU reference, candidate matrix
+result or M02 qualification yet. Preserve those distinctions.
+
+Primary Khronos GL4.6 section14.4.1 and GL2.1 section3.3.1 inspection, recorded
+in point-raster-contract1.json, does not justify unconditional integer point
+rounding/center snapping: the actual upstream GLIR path enables point sprites.
+No speculative point normalization patch was made. Tiny/fractional inputs stay
+in the original matrix, and real supported point state must be observed.
+
+CI push39859580417/attempt1 is ACTUALLY terminal success on sourcea8373d913:
+all20 target/CPython rows and20 nonempty unexpired evidence artifacts verified
+by successful-push-matrix1.json. Actual native/license, immutable references,
+native CPU compile/CTest and original CPU assertion steps pass in every row.
+Artifact contents have not been independently downloaded/re-audited; CPU green
+does not qualify native Linux/Metal graphics. PR39859590468/attempt1 ends with
+exactly the preserved setup-uv timeout failure described in checkpoint145.
+failed-job-rerun1.json proves one failed-job-only request AFTER terminal; no
+workflow/source edits or full live-matrix restart. Attempt2 is now confirmed
+live, with only IntelMac CPython3.11.14 still compiling, job120162028890.
+Observe this same job; do not issue another retry or replace original failure.
+
+AGPL3-only implementation, exact original BSD/copyright/notices and both-license
+source/package attachment are rechecked. Owned peer temp is removed only after
+actual terminal; no new build assets generated. Previously denied cleanup paths
+are untouched. Public work head staysa8373d913/PR1draft, docs canonical-only,
+no canonical Git metadata. All13 original requirements remain in scope and
+incomplete; cybersecurity excluded. NEXT: resolve the fixture review, prepare
+and review the all48 original reference capture/process admission, then capture
+and independently admit all originals before any current63 candidate comparison.
+Full smoothall16, million markers, remaining scientific/host/binding/platform/
+artifact/performance/scanout/allocator/activation/release gates remain open.
+
+Checkpoint146 follow-up, pre-pixel M02 review: actual peer21205/Claude70412
+terminates0 with FIX_BEFORE_ORIGINAL_M02_CAPTURE. Both request/response and
+reviewed v1 source/CPU receipt remain unchanged. Root accepts the real blend
+replacement defect: set_gl_state replaced the original Markers blend settings.
+Selected fixture3.py now uses update_gl_state, with cpu3.py checking exact
+merged state including blend=True and the original source-alpha blend function.
+Observation/query errors are recorded and raw frames saved before rejecting;
+the public read's normal finish is disclosed. Physical eight bits/channel stay
+mandatory while the original public color RenderBuffer's unsized GL_RGBA
+allocation/reporting is recorded accurately in new render-contract2.json.
+Neither authoring1 nor contract1 is overwritten and no pixels had been seen.
+
+Root actual adjudicate1.py verifies pinned/current Program.draw ASTs end with
+canvas.context.flush_commands(), and both Shader classes send code via DATA.
+It refutes peer B1/B5's deferred-only/SHADERS claims from actual source rather
+than applying an unjustified flush or replacing the correct DATA logger.
+Selected fixture also asserts nonempty expanded shaders. An additional Rect
+iteration mistake in v2 is found from actual Clipper/Rect source, checked on
+real CPU objects and corrected in preserved v3. cpu2/cpu3 each actually pass199
+checks; v1/v2 source/receipts and the first negative-control failure remain.
+Fixture3's second read-only review80995/Claude51592 is live. Its first local
+invocation refused a generated self-reference to absent response2 before any
+peer process/request; the corrected invocation retains response1 as evidence.
+
+New original_worker1.py, original_controller1.py and original_prepare1.py are
+UNRUN preparations. All five selected fixture/CPU/worker/controller/preparer
+files compile without imports or bytecode. The preparer will require the
+terminal fixture review READY_TO_PREPARE before binding all618 production
+inputs/protected native4, official original wheel521 members, source/profile
+and process helpers. It has NOT run or created original-inputs1.json. The
+controller separately requires an as-yet-absent execution review verdict
+READY_FOR_ONE_ORIGINAL_M02_ALL48_CAPTURE; fixture-only readiness cannot launch
+it. No original run root, actual GPU actor, reference admission, candidate
+matrix comparison, or M02 qualification exists. Source/protocol review is the
+next step; retain all48 cases and144 frames. No new build assets generated.
+retry-observation2.json preserves an actual fresh observation of PRattempt2:
+19 successful rows, same IntelMac3.11.14 job compiling, no additional rerun.
+
+Checkpoint146 second-review follow-up: actual review80995/Claude51592 exits0
+with FIX_BEFORE_ORIGINAL_M02_CAPTURE, accepting Root's source-based flush/
+shader adjudication, blend fix, camera/scaling math and upload identity. Root
+implements its three remaining requirements in preserved fixture4: guard all
+layout observations before saving; map every padded sprite corner through ALL
+actual inherited fragment clippers and reject any truncation; validate actual
+parsed attribute types/VBO stride56/offsets/divisors, quad source/stride8, draw
+selection and instance counts. Actual retained current63 marker14 traces show
+generated quad names a_a_quad_pos/a_a_quad_pos_1, so validation uses the real
+quad VBO identity rather than a guessed attribute name. These saved-trace reads
+are predicate checks, not new matrix candidate pixels or another GPU run.
+
+Selected cpu4.py ACTUALLY passes355 checks:48 input/layout cases,144 shader
+geometry cases plus144 declared-center crosschecks, two real saved parser
+traces, clipper/scalar controls and15 negative controls. Wrong offsets, instance
+counts, fragment clip bounds and declared camera stage reject. NumPy scalar
+query return handling and pending GL error observations are robust; parser
+lookup now falls within canvas cleanup. Earlier source versions/receipts stay
+unchanged. Third fixture review90921/Claude63760 is live; no preparation manifest
+or GPU actor exists. original_prepare1.py and the separate unrun execution
+review now select fixture4/cpu4 and require the third review's actual terminal
+READY before binding inputs. The original controller polls the SAME child
+handle every30seconds until actual exit; an observation timeout never restarts
+or treats that worker as terminal. No original case/candidate capture is
+authorized by fixture-only review. Full48/144/141557760/exact criteria unchanged.
+
+Continuation checkpoint145, 2026-10-22: Two additional original requirements
+now have ACTUAL current Native63 GPU evidence, without changing implementation,
+reference bytes, source data, assertions or thresholds. The scientific coverage
+table was stale: U01/U03 already had admitted original fixtures and old25/26
+candidate evidence, while multiple image rows were incorrectly still missing.
+The original Texture1D query advisory was inspected but no speculative API/GL
+limit change was made; the concrete work was current-artifact qualification and
+correcting the requirement inventory from actual evidence.
+
+New build/native63-buffer-ordering-prep-root-1 prepares the exact existing
+buffer-ordering-opengl reference manifest462a709812c7b30438cd6b02c279879c34523c342a22629eb0df87418d088b6c,
+six original authoring source snapshots at their original relative tree paths,
+and the full finite reference/profile packet (36members). The three original
+CPU function ASTs run unchanged without importing pytest/GPU tests; both whole
+analytic reference frames and original command transcripts are rechecked.
+Preparation1 correctly refused a wrong metadata key glir after packet copy;
+prepare2 resumes only already-copied exactSHA bytes and uses the actual
+filtered_glir key. inputs1.json is8c442f3b770362100d7e14f117511f2c9532ec9a53b9781fa8c41ce3ca16933e,
+804 held files including all618 production/current wheel proof/protected58
+native4/controller/worker/helper/source inputs. Parent CPU NumPy2.5.3 is
+disclosed; actual fresh installed workers require NumPy2.4.6/Python3.12.8.
+
+Actual read-only peer review50902/Claude53520 terminates0 with
+READY_FOR_NATIVE63_BUFFER_ORDERING_GPU_EXECUTION, all held bytes unchanged,
+tools disabled and owned peer temp removed. Driver20508 then ACTUALLY runs the
+two unchanged cases once in serial fresh processes, launcher49936 and87464.
+Both exit0; actual worker stamps/nonce/source/creation-bound Windows launcher
+edges and terminal proofs are saved. Parent result at
+build/native63-buffer-ordering-run-root-1/result.json is
+PASS_NATIVE63_TWO_ORIGINAL_BUFFER_ORDERING_CASES on exact550-member wheelc4b864e1,
+Vulkan RTX4090/610.88, externalPython3128/NumPy246. Each32x24 wholeRGBA frame
+matches both unchanged original OpenGL595.79 capture and independently authored
+analytic image exactly:1536pixels,0differences,0exclusions across both cases.
+This explicitly compares the current driver against an older fixed reference,
+not old hardware qualification relabeled.
+
+U01 pending_middle_subdata retains public Program.draw / VertexBuffer.set_subdata
+with six middle records at byte offset168 and stride28, fixed sentinel/position/
+outside data, ordered DRAW/DATA/DRAW, and old/new draws before one final read.
+U03 single_flush_resize_filter retains raw DATA,DRAW,SIZE,DATA,DRAW and actual
+filtered DRAW,SIZE,DATA,DRAW in one explicit GLIR flush/one target parser call.
+It is the INTERNAL documented queue boundary: public Program.draw auto-flushes.
+No finish/capture/swap/probe was inserted in the original dependent windows.
+The single original prewarm draw/swap and final read are unchanged.
+
+Independent audit1.py ACTUALLY passes and writes saved-audit1.json with status
+ROOT_AUDITED_NATIVE63_TWO_ORIGINAL_BUFFER_ORDERING_CASES. It checks all804 live
+pins/36copied members, peer/parent/actual process/nonce/creation joins, all raw
+artifact hashes, both full original and independently recomputed analytic
+frames, actual target command windows/payload byte hashes/offsets, device cell,
+all550 installed members/native image origins and eight shutdown zeros per
+worker. The worker's pre-exit log snapshot is explicitly nonauthoritative;
+parent hashes after actual terminal match here (both empty), so no log-race
+difference exists. Both temporary venv and recorded cache/cwd paths are
+physically absent. No global/env unknown-worker hold and no new cleanup denial.
+All source, raw evidence, reference packet and failures remain; no build objects
+were generated. The completed paint diagnostic is not replayed or reclassified.
+
+`scientific-fixture-coverage.md` now records bounded current Native63 U01/U03.
+New native63-inventory-refresh-root-1/image13_join1.py ACTUALLY joins the existing
+current63 final admission/saved audit/parent/per-case report/raw capture/process
+hashes before correcting I03/I04/I07/I08/L02/L03/L04/B02 and the covered B03
+subset. The13 actual image cases were not rerun. They cover scalaruint8/int8,
+RGB3/RGBA NaNs/CPU scalar NaN, signed and >2^24 label remap/paint, real selected
+texture/multiscale/slice updates and legal multiplicative/additive channels.
+All scope limits remain explicit, including no invented per-level GPU cache;
+dynamic opacity/first-layer transitions stay open. Historical totals remain
+unchanged. Old fixture recipes are labeled as retained recipes, not instructions
+to recreate already admitted packets. Docs are canonical-only, not pushed while
+the current CI matrices still run.
+
+CI update: push39859580417 currently has16 completed/no failures and4queued/
+running. PR39859590468 has16 completed with one ACTUAL failed IntelMac3.11.14
+job120107211083 and4running. Raw job log/metadata and classification1.json are
+retained in build/native63-ci-current-review-root-1. Failure is setup-uv's
+manifest fetch timeout before managed Python install, compilation or tests;
+the always-on upload then correctly also refuses absent evidence. No code/test
+failure is claimed, and the failed job is NOT a pass. The first log fetch used
+an unsupported gh --output flag; corrected direct stdout capture succeeds.
+No workflow/evidence gate is weakened, no action/deprecation/cybersecurity work
+performed, no job/matrix is restarted. Observe the same active matrices; a
+failed-job-only infrastructure retry can be considered after terminal while
+retaining this original failure.
+
+All local GPU/CPU/review handles are terminal; only those remote CI runs remain
+live. AGPL/original BSD/copyright/notices, installed58 native4 and production618
+are unchanged. Public work head staysa8373d913/PR1draft; canonical has no Git
+metadata. Full original13 goal stays active. NEXT practical rendering work:
+reuse the existing marker14 serialized-attempt-3 reference (actual manifest
+372b0b01e7d22414f869b8de226488c06854d860e13a0ec0a1da887d39602d59,
+14 admitted original cases/no errors) to requalify both public marker methods,
+spherical depth, camera-only residency and color/position revisions on current63.
+Preserve earlier failed marker attempts and their serializer-specific protocol;
+do not create substitute data/references. All-symbol/1M markers, smoothall16,
+broader mesh/host/binding/platform/performance/scanout/opaqueallocator requirements
+remain separate and open. No full release or timing qualification follows.
+
+Continuation checkpoint144, 2026-10-22: The one reviewed current63 GPU paint
+diagnostic has ACTUALLY executed and is terminal, independently audited. Peer
+controller review72375/Claude81580 completed0 with
+READY_FOR_ONE_NATIVE63_PAINT_DIAGNOSTIC, exact held source/manifest bytes, tools
+disabled and owned temp removed. Root execute_reviewed_controller1.py authorizes
+finite build reads through Reader, rechecks actual pinned UV/base executable
+hashes and PATH resolution, then calls the exact reviewed controller2 execute
+without workload/source overrides. Driver60899 terminates0; actual launcher
+65576/worker87844 share the observed Windows parent edge and creation stamp.
+The worker is already absent (kernel87) after wait, independently rechecked;
+no kill/retry/second GPU actor is authorized by this experiment.
+
+`build/native63-paint-diagnostic-run-root-1/result.json` is
+CAPTURED_DIAGNOSTIC_NOT_PERFORMANCE_QUALIFIED. Real current63 wheelc4b864e1,
+external Python3.12.8/NumPy2.4.6/PyQt6.11.0/Qt6.11.2/sip13.13.0, hardware
+RTX4090/Vulkan610.88 match exact held550 package and scientific admission cell.
+All1000 measured frame IDs100..1099 have one update/draw/paint each, actual
+closed/retired submission-frozen receipts and two presents each. Trace has
+4406 ordered rows/1101 outer paints:1100 issued/owned and one pre-warm unowned
+paint before frame0. That one stack enters through Qt event dispatch during
+benchmark phase's initial process_events; it is not moved into a frame. All
+four measured unattributed paint/draw/parse/pack deltas are zero, with exact
+trace/frozen-counter boundaries and independent per-paint conservation.
+Observation is NOT_REPRODUCED_UNDER_TRACE, not a paint fix or cause proof.
+Actor pre-imports vispy/_dawn before runpy unlike the old fresh worker launch;
+that difference and diagnostic observation overhead remain explicit limitations.
+
+Raw run status remains blocked, raw worker failed_or_blocked/exit2, solely
+because the diagnostic gate deliberately returns unproven before first write.
+The original observer-free geometry/work gate actually passed. No raw shutdown,
+telemetry-shutdown or allocation-window cleanup error exists. Wrapper/controller
+exit0 means captured diagnostic only. Original timings/samples/observed GPU maps/
+issued ledger/quality frames stay unchanged and forever performance-inadmissible.
+No five-pair/1.10/full66 or rendering/platform release result is inferred.
+
+Independent audit_paint_diagnostic2.py ACTUALLY passes41 checks: all866 held
+inputs/peer maps, actual root/actor/bootstrap/raw worker PID+creation+nonce joins,
+actual terminal proof, raw status/errors, all4406 rows/paint entry-exit links/
+frame owners/both marker snapshots/1000 samples, full raw file SHA inventory,
+all550 installed payload hashes, actual native image inventory,8 shutdown zero
+gauges, exact tool paths/hashes and active dependency-profile versions. First
+reader1 refused because its naive version scan counted NumPy pins for Python
+3.10/3.11 too; reader2 evaluates the original PEP508 markers for actual3.12.8.
+No profile, artifact, reference, criterion or actor changed, and no GPU replay
+occurred. audit2 receipt is paint-diagnostic-audit2.json, status
+ROOT_AUDITED_CURRENT63_ONE_PAINT_DIAGNOSTIC_NOT_REPRODUCED.
+
+Actual environment teardown is PASS_OWNED_ENVIRONMENT_TEARDOWN, all setup
+children waited, external venv root removed, wheel preserved. Controller reports
+owned cache/cwd removed but did not save that exact successful cache path;
+the audit states this limit. Additional read-only completed-diagnostic-cleanup1
+physically verifies zero remaining paths under this experiment's exact owned
+vispy-native63-paint-diagnostic- temp prefix. It deletes nothing. Both real
+unknown-worker markers are absent; all8 logical shutdown gauges are zero.
+All raw evidence/source/failures/binaries/licenses remain. Earlier policy-denied
+backend CPU temp is untouched/unretried. No native build junk was generated.
+
+Latest retained ci-observation3.json still shows push14/20 and PR13/20 completed
+with no failures; both are pending, not full-matrix or graphics passes. All
+local review/CPU/GPU handles in this checkpoint are terminal; only remote CI is
+live. AGPL/original BSD/notices and installed58 native4 remain unchanged. Work
+is canonical-only and PR1 stays draft. Full original13 goal remains active.
+The intermittent extra measured paints/cause remain unresolved; do not repeat
+the diagnostic or paired collection until a justified next experiment/fix is
+reviewed. Continue other original rendering/host/binding/platform/allocator/
+scanout gates while retaining the original failed performance collection and
+the new non-reproduction. Cybersecurity remains excluded.
+
+Continuation checkpoint143, 2026-10-22: Source2 diagnostic peer review
+session12393/Claude43488 completed0/FIX, with exact source holds/tools disabled
+and owned temp removed. It identified completeness incorrectly depending on
+missing non-measured stacks and an untested final receipt path/missing nonce.
+Unlaunched source3 paint_trace_core3.py / qt_paint_binding3.py /
+volume_benchmark_diag6.py fixes both: stack coverage/per-phase misses are
+separate from exact paint-count completeness; raw measured unowned counter is
+crosschecked against trace entry count; nonce/wheel/admission are required;
+existing output is refused before any writes; primary BaseExceptions retain
+secondary source-hold/receipt errors as notes; screen/DPR types are observed.
+
+Actual source3 regression checks pass53 loader/binding,26 scope/options and14
+real Qt dispatch cases. End-to-end diagnostic_receipt_controls4.py adds37
+checks through actual main/adapter2/base CLI/checked worker/real adapter2 worker
+context/real Handoff/frozen telemetry/gate/receipt, with renderer/Qt/package
+context stubs only. It exercises100warm/1000measured,20startup unowned paints
+exhausting non-measured stack budget,2measured and3post-measured unowned paints;
+trace remains complete while stack gaps stay explicit. Zero extra paint gives
+NOT_REPRODUCED_UNDER_TRACE; a deliberately mismatched raw counter gives
+INCOMPLETE_DIAGNOSTIC. Nonce/argv/all fixed receipt SHA/pending rename/foreign
+output/no-nonce refusal/restoration checks pass. Initial controls refused a
+nonexistent stub wheel path, then the fake parser's function module; corrected
+controls use the real existing wheel path and exact parser identity without
+weakening production checks. Failed attempt2/3 raw CPU fixtures are retained.
+An intermediate PowerShell quoting refusal created no control source/actor.
+
+Actual source3 peer review session17120/Claude59008 is terminal0 with verdict
+READY_FOR_NATIVE63_PAINT_DIAGNOSTIC (source and preparation only), all held
+sources unchanged/tools disabled/temp removed. This closes its two blockers;
+it explicitly does not admit an external controller, GPU result, performance
+or release. Additional diagnostic_receipt_controls5.py actually runs the real
+__main__ bootstrap via runpy and passes40 checks, joining bootstrap PID/full
+creation stamp/nonce to the real adapter worker-start. It uses the same CPU
+stubs, creates no renderer/GPU and preserves complete raw CPU fixture copies.
+
+New paint_diagnostic_controller2.py / paint_diagnostic_wrapper1.py prepare ONE
+fixed diagnostic under future native63-paint-diagnostic-run-root-1. Inputs2
+CPU preflight ACTUALLY passes866 held files, including all618 production source
+pins, protected installed58 native4, current47/fresh550-member wheel/proof
+closure, exact24 scientific records/qualification, current source3/review/test
+closure, process/lifecycle helpers, runtime profile and both licenses. Manifest
+SHA256 a856cefc3186ba6a83907450845c9cb4392b886ed3b39d19b9d643f266310828.
+Prepared candidate1 remains unchanged; candidate2 reports GPU-attempt state
+unknown as null until the real actor reports, instead of falsely reporting no
+attempt. Two initial CPU preflights refused a mistyped control filename and
+incomplete tools source closure before manifest/GPU output creation; corrected
+preflight crossjoins the actual scope-control source map. No assertions bypassed.
+
+The planned actor checks exact external installed550/package/NumPy246/Python3128
+before GPU work, runs the fixed diagnostic once, requires diagnostic gate2/
+unproven and complete trace/raw counts, joins actual bootstrap/worker-start/
+actor PID+creation+nonce, then observes native image origins and shuts down with
+eight zero gauges after measurement. Wrapper separately conserves all measured
+unowned paint/draw/parse/pack calls against traced unowned paints, distinguishing
+UNOWNED_WORK_OUTSIDE_TRACED_PAINT from the trace's paint-only observation, and
+hashes every raw output file. No raw run/sample is rewritten. Controller waits
+the actual launcher, proves the real actor terminal with creation-bound helper,
+and preserves ALL environment/cache/cwd plus both env/global markers on unknown
+worker. Known-terminal paths clean only new owned temp scopes; no retry/kill.
+
+Actual controller_controls2.py passes32 checks using synchronous Popen/env/
+process-helper STUBS, with NO subprocess/environment/GPU created: success,
+terminal failure, unknown-worker preservation/dual markers, no retry, global
+real hold untouched, unknown GPU attempt null, non-paint work classification
+and negative counter refusal. Only synthetic cache fixtures are deleted after
+their no-process nature is established; actual unknown-worker path preserves.
+Source3 remains unchanged. Controller/actor independent review is ACTUALLY live
+as session72375/Claude81580, with all packet source/manifest hashes held.
+Do not edit held inputs or execute until its terminal reviewed verdict is read.
+The actual GPU output directory and global unresolved-worker hold remain absent.
+
+Push CPU run39859580417 now has14 completed jobs/no failures; PR run39859590468
+has13/no failures at actual live observations. Neither is a complete matrix or
+graphics qualification. All new actual local CPU/test processes are terminal;
+only the controller peer and these CI runs are live. All owned new external CPU
+temps were removed; the earlier policy-denied backend-cpu-kj_75al9 directory
+remains untouched/unretried. No new native build junk or cybersecurity work.
+AGPL/original BSD/notices and installed58 activation remain unchanged. This work
+is canonical-only, PR1 stays draft, full original13 goal stays active. Next:
+consume controller review/fix findings, run the one bounded diagnostic only if
+admitted, independently audit actual raw/process/cleanup outcomes, and pursue
+the demonstrated paint cause plus original matched-pair and remaining gates.
+
+Continuation checkpoint142, 2026-10-22: Diagnostic review1 session5456 /
+Claude54428 is ACTUALLY terminal0, tools disabled, held sources unchanged and
+owned review temp removed. Its verdict is FIX_BEFORE_NATIVE63_PAINT_DIAGNOSTIC,
+not execution admission. Concrete findings are retained in
+build/native63-performance-prep-root-1/diagnostic-review-response1.json.
+Python wrapper IDs can be reused and cannot establish Qt event identity;
+unrelated event type faults should not invalidate target paint accounting;
+real backend applicability and actually parsed options needed stronger checks.
+
+New unlaunched successors paint_trace_core2.py / qt_paint_binding2.py /
+volume_benchmark_diag5.py remove event identity correlation entirely, retain
+independent filter/paint primitives, guard unrelated type conversion, restrict
+full event rows to relevant target event types, reserve half the stack budget
+for measured unowned paints, correct warm_between, require exactly paintEvent,
+refuse abbreviated/duplicate flags and recheck final parsed worker options.
+Trace receipt additionally binds argv/launchID/worker-start/worker/samples/
+issuedframes/bootstrap and uses an exclusive pending file then rename.
+Actual new controls pass53 loader/binding cases,26 actual frozen-telemetry/
+handoff/options cases and14 real PyQt6 dispatch checks. Real Qt checks cover
+filter-bypassing direct paint without a fabricated match, registered custom
+event type, repaint-manager widget.update, spontaneous QWindow Expose and paint,
+restoration/removal, with no renderer or GPU. These replace neither full
+rendered diagnostic nor original performance/release requirements.
+
+Actual exact Native63 wheel CPU applicability passes backend_cpu2.py: real
+_qt.CanvasBackendDesktop exposes PyQt6.QtCore/QApplication, native accessor
+returns the backend and frozen paint selection is exactly ['paintEvent'].
+No QApplication, canvas or device is constructed. Extracted wheel members hold
+byte-for-byte; actual worker terminal is verified and its owned temp removed.
+The first CPU import attempt refused because the workspace editable finder
+redirected VisPy; it did not qualify the wheel. The corrected worker uses real
+Python -I -S -B and explicit existing dependency directory, with extracted wheel
+first. First failed CPU launcher75440 and direct children are authoritatively
+absent by Windows process inventory. Automatic approval review nevertheless
+rejected deletion of its exact owned temp directory
+C:/Users/HEQ/AppData/Local/Temp/vispy-native63-backend-cpu-kj_75al9 with only
+"blocked by policy". That directory remains; no retry or workaround is allowed.
+The two source-generation token-count refusals occurred before worker/control
+successor output; original preparations and corrected resume scripts remain.
+
+Source2 review is now ACTUALLY live as session12393 / Claude43488, with all
+packet source hashes held. Do not edit them until actual terminal observation.
+Review packet includes review1 and actual new controls/backend proof. A primary
+exception could still be masked by source-hold/receipt-finally errors; this
+advisory is explicitly disclosed for review. No creation-bound GPU controller
+has been implemented or launched. Next: consume review2/fix material findings,
+prepare/review the controller with exact clean package/process/teardown proof,
+then execute only the one bounded diagnostic. No current63 timing, five-pair,
+paint-fix, smooth/full13, native-Linux-GPU or Metal qualification is claimed.
+CI remains at the last authoritative12/9 completed/no-failure live observations.
+All licenses/notices and installed Native58 activation remain unchanged. Goal
+stays active, cybersecurity excluded; this checkpoint/private work is not pushed.
+
+Continuation checkpoint141, 2026-10-22: The actual Linux CPython3.14 CI failure
+on41c12a6 was the legacy-freezer test's version-dependent ast.dump digest;
+41/42 native CPU tests passed and the packing guard refused unchanged source.
+Test-only commita8373d913be9593bdb49586a8bae3a49139bf8d7 is pushed on the same
+work branch/PR1. It pins the exact normalized legacy function source instead.
+Real Python3.10-3.14 controls accept unchanged LF/CRLF and reject a semantic
+mutation; the compiled CPython3.12 decoder packing contract passes148 checks.
+Production618 sources and original Native63 frozen4141-harness records are
+unchanged; the current test harness changes one file. Old41c12 CI runs are
+terminal/cancelled after supersession, not passes. Replacement push CPU run
+39859580417 has12 completed jobs/no failures and PR run39859590468 has9/no
+failures at `build/native63-performance-prep-root-1/ci-observation2.json`.
+Both remain authoritatively live; do not restart them. The separate phylib
+Linux CPU import run39859590304 succeeded; none of these qualify graphics.
+
+New scientific producer work is ACTUALLY complete at the bounded admission
+scope. First peer request exceeded the CLI prompt limit before inference.
+Reviews2/3 identified concrete producer defects; sources1/2 never executed.
+Source3 verify-only refused an overstrict small-control ordering assertion
+before output creation. Corrected produce_admissions4.py verifies the exact
+17-control set/order and all24 current large witnesses/1012 evidence files
+without providers or output. Actual review4 is READY; actual producer4 exits0
+and creates admissions4 with24 scientific records plus qualification/plan.
+Independent audit_admissions4.py passes every unchanged frozen scientific gate
+after final rename, including original upstream references, current550-member
+package/wheel, four full stages/no exclusions/maxerror2, repeat/change checks,
+raw uploads/counters/lifecycle/source closure. Native63 epoch is explicit:
+Native63-v1-actual-full47-wheel. Qualification SHA256 is
+75da4eaaa041cdc83469fa1aff3a13648f7eec270df1b095ae068f506be0b1ab.
+No old Native59 admission was relabeled, no new GPU actor ran, and no timings
+or performance/release qualification are produced by this projection.
+
+Read-only retained-failure inspection fixes the diagnostic options to candidate
+volume-256-1024-mip-resident,100warm/1000measured/queue3/timeout600/vsyncfalse/
+runindex1. The old launch actually used Native58/adapter2/v5, not later private
+Native59-v6. Before/after unowned paint/draw counts1->3 establish two additional
+paths inside the measured snapshots, with eight extra parse/pack calls. The
+old failed collection/raw timings remain unchanged and are not replayed.
+Actual read-only peer plan completed0. Root refinements preserve current-frame
+dict identity, count only outer frozen paint depth, capture frame-code metadata
+without linecache IO, and label event-filter matches only as prior observations,
+not enclosing dispatch or causality. Original five matched pairs/1.10 remain.
+
+New private preparation under build/native63-performance-prep-root-1 adds
+paint_trace_core1.py (bounded16384 rows/16 stacks), native63_admission1.py
+(explicit current protocol/artifact/set digest plus original scientific gate),
+qt_paint_binding1.py (always-forward app filter and exact paint forwarding), and
+volume_benchmark_diag4.py (actual handoff factory integration, frozen begin/
+parser unchanged, diagnostic gate forced unproven before first run emission,
+separate trace receipt). Actual controls pass25 core cases,51 loader/binding
+CPU cases including all24 real scientific records,12 real PyQt6 QWidget smoke
+checks without renderer/GPU, and15 actual frozen-telemetry/handoff scope checks.
+The scope state is a stub; this is not a rendered diagnostic or performance
+proof. Review_diagnostic1.py is currently live as session5456/Claude54428;
+held source hashes must remain unchanged until its actual wait closes.
+No new GPU diagnostic/controller launch has occurred. The controller still
+needs creation-bound terminal/unknown-worker-hold/clean-environment provenance
+and review before the one bounded actual diagnostic can execute.
+
+Original AGPL LICENSE, unchanged VisPy LICENSE-BSD, LICENSING.md and both
+upstream BSD copies match their exact held SHA256s in canonical and publication
+checkouts. Public work head remains a8373d913, publication is clean, canonical
+has no Git metadata. New control metadata temp was removed after terminal;
+active peer temp stays owned until its process ends. No new native build junk,
+denied cleanup retries, renderer activation or cybersecurity work occurred.
+This checkpoint and private diagnostic work are canonical-only. Full original
+13 scope remains open: diagnose/fix paint cause and collect five valid pairs,
+full66 benchmark families, portable smooth/all16/host overlays, other host/ABI
+artifacts, native Linux Vulkan and macOS Metal hardware, scanout and complete
+opaque driver/allocator peaks. Goal remains active and PR1 remains draft.
+
+Continuation checkpoint140, 2026-10-22: The reviewed current63 source WIP is
+NOW PUSHED as commit41c12a6d05308378c0206a63dd8fd0e4366267f1 on the existing
+public `work/volume-admission-ci-paths` branch. Draft PR1 targets main:
+https://github.com/bipxx/vispy_vulkan/pull/1 . Remote branch SHA was independently
+read back and matched. The isolated publication checkout is clean. Canonical
+workspace remains without Git metadata and was NOT initialized or activated.
+Public main remains337693e3dafe0cff8001b775ae9d35ff5a49aa07.
+
+Correction to earlier inferred publication labels: be393c3f8 was the HEAD of
+the published work/volume-admission-ci-paths branch, NOT main. Its17 ancestor
+commits after337693 were already published on individual work branches; they
+were not unpublished local history. Actual fetch/ancestry/branch/ls-remote
+observations established this before push. No forced push or main update was
+performed. The draft PR includes that earlier branch work and this new commit;
+it makes no complete release/performance/platform claim.
+
+`build/native63-publication-prep-root-1/copyplan4.json` verified all618
+canonical production-source hashes against approved63/actual47, then exactly
+188 selected canonical source files were copied to the isolated checkout with
+zero private overrides/native binaries/vendor changes/.gitignore replacement
+or deletions. Actual read-only review10153/Claude39544 completed0 with
+READY_FOR_SOURCE_WIP_COMMIT. It covered production delta/owned capture and
+upload semantics/Texture1D replay and grants/generated-line target depth/cache
+identity/CMake/normalizer/smaller fixes, unpublished-to-main workflow delta and
+honest README/license limits. It did not qualify full original13. Root also
+read command_decode.hpp (omitted as a full file from the peer's packet),
+confirming legacy __bytes__ precedence before owned markers and two-phase owned
+batch validation/metadata-before-move; actual native47 owned decoder/packing
+contracts and binding17 failure controls retain their existing coverage.
+The stencil-only attachment advisory is not a current producer path: runtime
+uses Depth24PlusStencil8 for depth/stencil storage, not Stencil8. Explicit
+gl_FragDepth redeclaration remains a previously demonstrated normalizer
+limitation; generic Texture1D Python max-size reporting remains an advisory
+for broader limit-domain coverage, not a claim that it was exercised here.
+
+Actual isolated publication CPU validation25339 completed0: benchmark
+group90056 passed440 cases; parser/typed API/native-epoch guard group60964
+passed126, total566 with zero failures/errors/skips. Benchmark and VisPy/parser
+groups used separate processes, explicit publication import paths and -I -B;
+no device/renderer was created. Their owned pytest temp directories were
+removed once after terminal. Publication and canonical source bytes held.
+Actual strict CRLF-aware Git check retains all substantive whitespace checks;
+the sole new diagnostic is a blank EOF line56 in the exact frozen legacy
+reference header tests/textures/texture_preparation_legacy_reference.hpp.
+It is explicitly recorded/accepted to preserve tested4141-harness bytes,
+instead of changing the admitted source/harness for formatting. All188 staged
+and committed payload SHA256s were checked against the reviewed canonical plan.
+Stage verification52233 finished successfully and was observed before push.
+All original BSD/AGPL/LICENSING/notices committed bytes match canonical.
+
+`publication-result1.json` records the exact pushed SHA, clean checkout,
+source review/CPU receipts, corrected branch history and draft PR. GitHub CPU
+run39857140116 started for41c12a6d0; last actual observation has20 queued/running
+jobs, zero completed and no terminal failures. This is a verified live external
+job, NOT a matrix pass and not GPU/platform qualification. Observe the same run
+without restarting it. Previous39746758393 passed on be393 work-branch source;
+it does not qualify the new commit. Local native47/scopedGPU102 results remain
+the existing actual current63 artifact results, not results from this new CI.
+
+Performance preflight makes additional concrete progress without any GPU or
+old worker replay. `build/native63-performance-prep-root-1/index_candidate_quality1.py`
+ACTUALLY verifies all24 current63 candidate quality records against the frozen
+benchmark CATALOG: exact workload hashes/parameters, real data SHA, four stage
+records, current wheel/installed package shared with independent science17,
+worker origin/terminal/cleanup/shutdown records and admitted saved report hashes.
+It writes candidate-quality-index1.json with status
+CURRENT63_CANDIDATE24_QUALITY_WORKLOAD_IDENTITIES_VERIFIED_NOT_SCIENTIFIC_ADMISSIONS.
+This is intentionally a witness index, NOT a scientific admission or timing
+pass. No VisPy/Qt/OpenGL/provider imports occurred, frozen benchmark55f76... is
+unchanged, and no old timings were reused. Existing adapter3 accepts only the
+old private Native59-v6 admission protocol, which is not a current63 producer.
+Next must build/review a new explicit63 admission projection joining these real
+24 witnesses, current independent17 controls and original upstream references,
+then bind a bounded Qt paint/event-origin diagnostic. Do not relabel old sets,
+drop/reassign two unowned paints, suppress work or weaken five pairs/1.10 gate.
+
+All local build/test/review handles are terminal; only GitHub39857140116 is
+live. Owned CPU/review temps were cleaned, no denied cleanup retried, and raw
+success/failure/source/evidence retained. This new checkpoint is canonical-only
+after the reviewed push; the pushed plan currently ends at checkpoint139.
+NEXT: observe CI, prepare/review real63 performance admission/diagnostic, then
+fix the demonstrated paint cause and collect required matched pairs. Continue
+portable smooth/all16/host overlays, other hosts/ABIs/platforms/native Linux
+GPU/Metal, scanout and complete driver-memory gates. Full original13 goal stays
+active; cybersecurity excluded; AGPL plus original BSD/copyright/notices stay.
 
 Continuation checkpoint139, 2026-10-22: ACTUAL final63 image13, large24 and
 large-image4 all passed their once-only serial runners, independent saved
@@ -4765,3 +7126,277 @@ Root59803b prepares Native58 current-identity transition metadata only: all523 p
 
 
 Continuation 2026-10-22, observer-free volume implementation: new versioned tools retain all frozen worker/controller/reference/native sources and thresholds. Cold/warm-only geometry observation restores the exact frozen parser wrapper for measurement, with source/warm corroboration and raw per-paint counter bounds. New controller preserves gap labels, joins both start/finish source maps and explicit sample leaves, and reuses existing process ownership/cleanup. Independent peer reviews remain FIX_BEFORE_EXECUTION historical verdicts; root resolves required real-release-gap test and receipt findings with cpu6:434 passed,0 failures/errors/skips, full26 source closure plus command/count/report hashes. Actual fresh collection build/volume-observer-free-pairs-run-root-1 is FAILED/PARTIAL: first upstream/candidate pair verified; next candidate rejected for2 unsolicited unattributed Qt paints. All3 actual workers pass geometry handoff with0 measured observer invocations; actual candidate warm geometry empty. Independent partial-review1.json revalidates firstpair images/hardware/rawsamples, rejection of thirdworker and allterminal/cleanup. Do not promote this to fivepairs, speedup, observer release-gap closure or fullmode/platform qualification. Pending: investigate unsolicited paints without suppressing renderer work or weakening ownership, collect5 valid pairs, actualfullmode, scanout/driverallocator and allother original13 requirements. New source/WIP not pushed. OriginalAGPL+BSD notices unchanged; cybersecurity excluded.
+
+Continuation 2026-10-23, Native64 WSL portability: build/native64-wsl-portability-root-1/audit1.json records actual GCC13.3 runtime.cpp compilation with current Win32/Xlib retirement policy, exact54 current/private CPP members, terminal worker identity and successful launcher/compiler waits. Linux6.18 WSL2/glibc2.39. Temporary runtime.o (10399000 bytes) removed only after compiler completion; source, logs, output digest and receipts retained. Initial launcher preflight rejected a55-member map containing standalone CMakeLists.txt before copying/launching; retained rejected launcher, corrected to54 CPP members. This is compile-only, with no Linux link, wheel, Vulkan hardware or release qualification. Native64 freeze2 remains the same live controller/session56169 (launcher93060, Python32624, verifier child83512); no restart, terminal build or Qt outcome claimed. Original BSD license copies verified byte-identical, packaging includes BSD plus AGPL3 and LICENSING.md. Cybersecurity remains excluded.
+
+Continuation 2026-10-23, Native64 guarded freeze completed: same controller/session56169 waited for freeze2 launcher93060 terminal exit0. frozen-admission2.json binds frozen619cbb7ad352909bda9cba82b3b78a4671f2fdf2c2ad612b8825c779c3a78c8c, sourcebbe3f39d9e5a268c22d118d99e29cafc7e08b72742a6dc9b9b899d15f5cab7aa and harness033202b3c2ef61a9406ae5428c5ad25700264cc4c941498e865e8fa4f540841d. Controller automatically started build2 launcher48212/actual20248, still pending. prepare_wheel1.py authored fresh64 PEP517 recipe/builder/origin audit/finalizer with terminal47 guard and unchanged license/native preservation gates; actual wheel plan remains unresolved until completed native audit. Qt prepare_controller1.py authored actual three-binding run1 with explicit whole-session loss invariant required in both worker and controller; no manifest/readiness/wheel identity invented and no GPU run yet. Not release-qualified or pushed.
+
+Continuation 2026-10-23, strict Native64 Qt handoff: authored build/native64-qt-bindings-prep-root-1/bind_inputs1.py and binding-preparation1.json, syntax checked only, execution intentionally gated on actual terminal47 and fresh Native64 wheel origin audit. It will derive all550 package hashes from the actual wheel, compare618 current source pins, keep exact public tests, prepare isolated Qt5/Qt6/PySide6 roles, execute actual observer CPU controls and bad-manifest pregraphics rejection, and bind root-readiness without claiming independent peer review. Controller and worker both require whole-session loss invariant. No inputs/readiness or GPU outputs fabricated. Existing build2 controller session56169/launcher48212/actual20248 remains live with dependency verifier descendants48680/57332; no restart or completed build claim. Next: await same handle, run native_terminal_audit1.py, finalize_wheel_plan2.py, wheel_build2.py, wheel_native_audit1.py, then bind_inputs1.py and Qt run1.py if all actual gates pass.
+
+Continuation 2026-10-23, Native64 saved Qt audit prepared: prepare_saved_audit1.py created audit1.py/saved-audit-preparation1.json, syntax checked, not executed. It preserves original test/JUnit/readback/package/process/native-origin/teardown checks, expands to all3 bindings/6 executions, and independently requires final loss_count equals initial plus1 observed explicit event. Historical63 extra loss remains real and unresolved until fresh64 evidence. Same session56169/build2 launcher48212/actual20248 remains live; dependency verifier57332 accumulated CPU through329.56s and exited on subsequent observation while main build continued. No build/CTest/wheel/Qt pass inferred.
+
+Continuation 2026-10-23, Native64 configuration passed: same session56169 verified CMake70856 waiting on active SDK verifier23248/59612 (CPU171.77s then242.31s). Verifier completed, configure.log reports Configuring done264.2s and Generating done0.4s; MSVC19.44/Python3.12.8 detected. No restart/guard changes. Actual build/evidence/native-pass-64/build.log now shows successful VkLayer_vispy_submit.dll and shader_contract.exe builds and point_contract compilation in progress. Full44-target build,47 CTests, terminal audit and fresh wheel/strict3Qt runs still pending. No cleanup of active build outputs and no new push.
+
+Continuation 2026-10-23, actual Native64 compilation/CTest completed: build/evidence/native-pass-64/ctest.log reports100% tests passed out of47,8.81s, including native_contract. Actual build log includes native outputs and _owned_upload_contract. SAME controller/session56169 and build2 launcher48212/actual20248 remain live completing post-build preservation checks; active verifier launcher46744/actual64196 observed. No terminal pipeline result or native-terminal-audit1.json yet, so wheel finalizer/builder not launched. This is stronger actual CPU evidence, not a GPU fix/release/full original13 claim. All prepared wheel/strict3Qt gates retained. No restart, active-output cleanup or push.
+
+Continuation 2026-10-23, Native64 terminal build audited and wheel launched: session56169 actually exited0 with pipeline-result2 status NATIVE64_FRESH_FREEZE_BUILD_AND_CTEST_COMPLETED. native_terminal_audit1.py actualexit0 PASS_NATIVE64_TERMINAL_BUILD_AUDIT: exact47 names/no failures/errors/skips,618 frozen sources/4141 harness, decoder70/packing148/texture454, compiled native origins/policies, installed native4 and AGPL/BSD notices verified unchanged. finalize_wheel_plan2.py actualexit0. wheel_build2.py rejected before destination creation/child launch because adaptation retained native-pass-63/status.json and numeric epoch63; rejected script/admission/plan retained. prepare_wheel_retry3.py creates versioned wheel_build3.py/parent-admission2.json correcting only epoch status identity and v3 self-admission, no guards relaxed. Actual fresh builder3 launched uv PID41748, active session49475, output build/native64-wheel-windows-cp312-root-1. No wheel completion/GPU/activation/release/push claim yet. Next: poll SAME49475, audit fresh wheel native bytes with wheel_native_audit1.py, bind and run strict3Qt if all gates pass.
+
+Continuation 2026-10-23, actual Native64 fresh wheel and strict3Qt PASS: same wheel session49475 launcher41748 completedexit0. Wheel58c13cb13cdc83f9ab09d1b0aee05326c4e8838ca056a17fbd7228f7feca5d30, packaged_dawn1ccdb5d3173c46c488f17ec2625828d561248044fae20fa76a37995db7d11f03;523pure/native4/license23=550 package members. AGPL3/BSD/licensing bytes match source; builder removed owned uv cache, protected installed native4 unchanged. wheel_native_audit1.py actualexit0 verifies all4 fresh output bytes/no strip transform. bind_inputs1.py actualexit0 verifies source/package/observer forwarding and actual bad-manifest pregraphics terminal rejection; root-ready, strict actual3-binding run session3882 completedexit0. audit1.py actualexit0 ROOT_AUDITED_NATIVE64_THREE_QT_BINDINGS_WITH_WHOLE_SESSION_LOSS_INVARIANT: PyQt5 5.15.11,PyQt6 6.11.0,PySide6 6.12.0 each2 public lifecycle tests/6 report phases passed; initial0, exactly1 explicit loss, final1, no extra post-recovery loss. All GPU identities NV4090/Vulkan610.88, exact red4x4/readbacks,550 installed members, process identities/terminal,8 shutdown zeros, external environments/cache physically absent audited. This closes the reproduced Native63 late-loss gap for these unchanged2cases on currentWindows/CP312; no full host/platform/lifecycle-stress/original13/performance qualification implied. cleanup_objects1.ps1 actualexit0 removes131 exact owned .obj files from terminal native-pass64-sdk and native64 wheel native-build after path/hash inventory, receipt retained, all sources/binaries/wheel/evidence kept, no retries. Native58 activation unchanged; no new push. Remaining work retains complete original13 scope, including marker48/million18 fixed image mismatches, smooth parity, volume/performance, broader host/scientific/picking/3D/platform/wheel matrices and hardware gaps; cybersecurity excluded.
+
+Continuation 2026-10-23, actual Native64 repeated Qt lifecycle stress PASS: new build/native64-qt-stress-prep-root-1 retains byte-identical original public test source plus parametrized wrapper invoking both original functions percycle and draining3 late Qt event turns with exact loss+1 check. Same admitted fresh64 wheel58c13cb.../native1ccdb5d...; no production/frozen/public source edits. prepare1.py and actual bind_inputs1.py passed including actual observer forwarding and bad-manifest pregraphics rejection. Actual controller session45836 terminalexit0, PyQt5 launcher63240/PyQt6 8576/PySide6 51112; each25 pytest cases passed,75 total paired cycles invoking original public functions150 times, not150 unique tests. Actual saved audit1.py exit0 ROOT_AUDITED_NATIVE64_THREE_QT_BINDINGS_25_CYCLE_STRESS verifies all75 collected/report/JUnit cases, eachbinding loss0→25 with25 exact explicit-event deltas and whole-session final count25,25 exact red4x4 readbacks perbinding/allrawarrays retained,550 installed package hashes/native origins, NV4090 Vulkan610.88,8 shutdown zeros, actual worker terminal identities, external environments/owned cache physically removed. Wrapper preserves original reparent/overlay/DPI/minimize/framebuffer/native paint/recovery/detach/late-close assertions. This establishes bounded25-cycle perbinding Windows/CP312 stability for this route; full host/platform stress, marker/smooth parity, volumes/performance, broader scientific/picking/3D and all original13 scope remain open. Native58 activation and publication unchanged; no new push, cybersecurity excluded.
+
+Continuation 2026-10-23, fresh Native64 finite texture and queued-lifetime regression PASS: prepare_gpu1.py binds actual47/fresh wheel/native-origin/Qt-stress proofs and618 current production hashes, copies historical reviewed worker/wrapper byte-identically, adapts controller only epoch/current root readiness; root admission explicitly not independent peer review. Actual GPU session63504/launcher32560 terminalexit0; gpu_saved_audit1.py and gpu_final_admission1.py actualexit0:8 finite cases/23 entire exact captures, recomputed original counter windows,9 owned transfers/11428 bytes, current NV4090 Vulkan610.88/CP3128/NumPy246, strict550 package/native origins and terminal/cleanup proved. No thresholds or worker changes. Next prepare_lifetime1.py copies unchanged worker/wrapper/lifecycle plus16 exact frozen input/reference members; lifetime_controls1.py actualexit0 verifies5 lifecycle AST projections and actual optimized-worker refusal before renderer import. bind_lifetime1.py root current-identity admission (not new peer review); actual lifetime session78582/launcher59132 terminalexit0. Saved/final lifetime audits actualexit0 PASS8 queued-lifetime cases/5 whole exact captures,36 warm presents with0 completion waits,96 resource generations (last frame capture only),12 submitted-close controls, deferred revision/delete midsequence0 waits/0 submits, strict current GPU/native/counter/process/env evidence. Both owned external env/cache roots physically removed with once-only cleanup. Current64 GPU coverage now these16 finite cases plus3Qt singlepass/stress, not previous63 numeric/scientific/image/volume admission or full original13/performance/platform qualification. All raw sources/captures/receipts retained; no activation or new push. Remaining next numeric/recovery/scientific current-wheel checks and unresolved fixed marker/smooth/volume/performance/platform requirements; cybersecurity excluded.
+
+Continuation 2026-10-23, actual Native64 numeric transfer PASS: prepare_numeric1.py retains exact historical worker/wrapper/lifecycle and28 originalGL oracle members (manifest fca64768c1e433e41494c197d0acd23c47841c7f039329d8a2b25b80e3ca5054), adapts current64 controller/readiness without claiming new independent peer review. numeric_controls1.py actualexit0 verifies12 cases/13304 values/full8bit domains/no padding and actual optimized-worker pregraphics refusal; once-only owned CPU temp cleanup verified. bind_numeric1.py current47/freshwheel/origin/618source/queued-lifetime proof closure passed. Actual numeric controller session47489/launcher48680 terminalexit0 on same64 wheel58c13cb...; numeric_saved_audit1.py and numeric_final_admission1.py actualexit0 ROOT_ADMITTED_NATIVE64_TWELVE_NUMERIC_TRANSFER_CONTROLS: all13304 originalGL expected bytes or float32 bits match exactly,0 mismatches,12 full capture rows/raw red files, original thresholds unchanged, current NV4090 Vulkan610.88/CP3128/NumPy246, strict package/native origins/process/closure and externalenv/cache removal audited. This is storage-transfer conversion evidence only, not shader sampling/image/performance or all integer formats. Current64 finite GPU coverage now28 cases (8texture+8lifetime+12numeric), plus Qt single/stress. Next original7 retained-resource device-loss cases: located historical recovery_worker4.py/wrapper3/run4/controls4/saved_audit4/final_admission3 and7-member recovery-inputs2; not yet adapted/launched. Broader original13 marker/smooth/science/image/volume/performance/platform/hardware gaps remain; no activation or new push, cybersecurity excluded.
+
+Continuation 2026-10-23, actual Native64 retained-resource recovery and combined35-core PASS: prepare_recovery1.py retains exact historical recovery_worker4/wrapper3/lifecycle and7 reference/input members, adapts controller/admission to real64 evidence with explicit root-not-independent-review status. recovery_controls4.py actualexit0 verifies7 original AST definitions/2 original bodies,256 originalGL u8-tofloat values,2 actual nested trace controls and optimized-worker rejection before renderer import. bind_recovery1.py current47/freshwheel/origin/618source and priorfinite/lifetime/numeric closures passed. Actual recovery session95997/launcher44036 terminalexit0; recovery_saved_audit4.py/final_admission3.py actualexit0 ROOT_ADMITTED_NATIVE64_SEVEN_FINITE_DEVICE_RECOVERY_CONTROLS:7 cases/16 whole exact analytic captures, retained-resource restoration and original no-DATA/counter/device assertions, strict current NV4090 Vulkan610.88/CP3128/NumPy246/package/native/process closure and externalenv/cache removal. Queued-loss rollback/allresource families/fullscientific/performance not claimed. core_regression_audit1.py actualexit0 ROOT_AUDITED_NATIVE64_CORE_35_CASE_REGRESSION joins actual8texture+8lifetime+12numeric+7recovery current-wheel admissions,47 CTests,13304 exactvalues, protected native/source continuity and terminal/cleanup; all35 relate to actual64 wheel58c13cb..., not relabeled63 outcomes. Qt singlepass/stress retained separately. Next current-wheel scientific/image/large-scene controls, with original marker/smooth/volume/performance/platform gaps retained. Original BSD and AGPL notices unchanged, native58 activation unchanged, no new push, cybersecurity excluded.
+
+Continuation 2026-10-23, actual Native64 special9 and scientific17 PASS: new native64-special-prep-root-1 preserves exact historical Texture1D/generated-line/Qt workers and oracles, adapts current artifact gate to actual core35 aggregate (no fabricated old qualification-chain record), source618/license/native/wheel gates retained and no new independent peer-review claim. Actual execute session92420 exited0, all6 run/audit children terminal0:4 Texture1D cases/6 fullcaptures,4 generated-line1D/depth cases/8 fullcaptures,1 canonical QWidget paint/recovery/1 fullcapture; final execution-control1/result.json ROOT_ADMITTED_NATIVE64_ACTUAL_FRESH_WHEEL_NINE_SPECIAL_CASES_FIFTEEN_CAPTURES, owned env/cache roots physically absent, raw retained. Science prepare_small1.py copies85 exact worker/input/reference members and historical59 comparison sources; only protocol/current64/readiness metadata changes, no case/oracle criteria changes. cpu_controls2.py actualexit0 verifies wrapper exact except epoch, actual percase controller AST unchanged except added verify, saved17 raw comparison loop AST exact, and actual optimized early refusal. bind_small2.py/execute_small2.py actual session35025 terminalexit0 with all4 admit/run/saved/final child processes0. All17 scalar/categorical volume controls passed current fresh64 wheel58c13cb... and_dawn1ccdb5d...; saved/final audits verify17 whole96x96 frames/156672 pixels,0 channel error/0 exclusions, current NV4090 Vulkan610.88, actual process/package/native/inputs checks and physical externalenv/cache cleanup. These are fresh64 results, not relabeled63. Current64 bounded GPU coverage61 cases (core35+special9+science17), Qt single/stress separate. No large24/image13/largeimage4 current64 admission yet, no full original13, marker48/million18 or smooth-parity/performance/platform/hardware qualification implied. OriginalAGPL/BSD unchanged, native58 activation unchanged, no new push; cybersecurity excluded.
+
+Continuation 2026-10-23, actual Native64 image13 PASS: prepare_image1.py copies107 exact fixed input/reference/worker members and unchanged historical comparison sources, preserves original wrapper except protocol epoch, adapts only current artifact/readiness closure with explicit root-not-independent-peer status. image_cpu_controls1.py actualexit0 confirms controller13 percase AST and saved13 raw comparison AST unchanged except added verify, exact wrapper epoch transform,107 member hashes and actual optimized refusal before output/GPU. bind_image1.py validates actual17scientific wholeframe/currentwheel prerequisite, CPU proof and all held sources. Actual execute_image1.py session47524 terminalexit0; admit94548/run94352/saved90908/final56104 allterminal0. Saved/final ROOT_ADMITTED_NATIVE64_THIRTEEN_IMAGE_LABEL_CONTROLS confirms13 full128x96 captures/159744 pixels,0 channel error/0 excluded pixels, exactoriginalreferences, current64 wheel58c13cb.../_dawn1ccdb5d..., strict process/native/package/probe/input/source and physical owned externalenv/cache cleanup. Cases cover additive/multiplicative channels,CPU/GPU scalarNaN,RGBA NaN,RGB,labels painting/signedremap,multiscale retained/edit,int8/uint8 host scalars,slice change. Raw evidence preserved, no threshold edits or production source changes. Current64 bounded core/rendering74 cases=35core+9special+17science+13image, Qt single/stress separate. Pending actuallarge24 andlargeimage4 current64 (historical63 notrelabeled), original marker48/million18 mismatches,smooth parity,volume modes/5pairs/perf and broader hosts/picking/3D/platform/wheel/hardware/scanout/allocator original13 requirements. Native58 activation and AGPL/BSD unchanged; no new push, cybersecurity excluded.
+
+Continuation 2026-10-23, actual Native64 large24 PASS: prepare_large1.py retains333 exact payload/render/reference members, historical comparison sources and all executor function bodies; only candidate wheel fingerprint changes to actual64 wheel58c13cb..., execution-manifest2 binds exact executor SHA. large_cpu_controls2.py actualexit0 confirms whole-executor byte inverse except wheel hash, wrapper epoch-only transform, original24 controller AST and saved96-frame/counter AST unchanged except added verify, both actual optimized-controller/worker refusals,333 hashes. bind_large2.py actual currentimage13/native source/wheel gate passed. Actual execute_large2.py session92804 terminalexit0, admit79252/run73224/saved16344/final93204 allchildwait0. ROOT_ADMITTED_NATIVE64_TWENTY_FOUR_LARGE_VOLUME_CONTROLS:24 workloads across256/512 volumes and1024/2048 frame sizes, resident/full paths forMIP/translucent/ISO;96 wholeframes/251658240pixels, actual maxchannelerror1 within unchanged2 limit,0exclusions,48 changed-pixel checks, allrawcounter deltas/hotwork recomputed, strict currentGPU/native/package/process/source and physical env/cache cleanup audited. Raw captures/logs/source/proofs kept. This is quality/work-accounting, not qualified5-pair timing/fullvolume/platform/driverallocator/scanout/release. Current64 bounded casecoverage98=35core+9special+17science+13image+24large, Qt single/stress separate. Remaining current-wheel largeimage4 source controls located:69 payloads/4cases/16frames, large_image_worker2+controls wrapper2/run2/saved audit2/admit2/final2/execute_large_image2; not yet adapted or launched. Original marker48/million18/smooth/parity/performance and complete original13 gaps remain. Native58 activation and AGPL/BSD unchanged; no new push, cybersecurity excluded.
+
+Continuation 2026-10-23, actual Native64 large-image4 and102 bounded-regression aggregate PASS: author_large_image1.py derives explicit adapters, prepare_large_image1.py retains69 original payloads/reference members and all executor functions with only actual candidate wheel SHA changed. large_image_cpu_controls2.py actualexit0 verifies whole executor inverse/wrapper protocol/percase AST/saved16 frame+counter AST and both optimized refusals. First bind refused a generated artifact status incorrectly naming prior image13 stage; attempted executor also refused missing readiness before GPU/control-output creation. correct_large_image_metadata1.py preserves exact rejected bytes as large-image-artifact2.rejected1.json and corrects ONLY unsealed status label to ACTUAL_NATIVE64_LARGE_IMAGE4_AFTER_TERMINAL_LARGE24; all inputs/code/oracles/gates unchanged, receipt retained. Subsequent bind passed. Actual execute_large_image2.py session39413 terminalexit0, admit94684/run37604/saved60632/final87160 allwait0. Final ROOT_ADMITTED_NATIVE64_FOUR_LARGE_IMAGE_CONTROLS:4 scalar/RGBA nearest/linear cases,16 wholeframes/268435456pixels,0channelerror/0exclusions,12residentchecks, allrawcounter+analytic controls recomputed, strict current GPU/native/package/source/process and physical owned env/cache removal. rendering_regression_audit1.py actualexit0 ROOT_AUDITED_NATIVE64_EXISTING_102_CASE_RENDERING_REGRESSION joins actual35core+9special+17science+13image+24large+4largeimage on same actual64 wheel58c13cb.../_dawn1ccdb5d...,47nativeCTests and separately3bindings×25Qtstresscycles; rechecks618current source/protected native and packaged AGPL/BSD continuity. This completes existing bounded102 suite on64, NOT full original13 release. Next work must address unresolved original marker48/million18 fixed-image parity, smooth parity and qualified volume5-pair/performance/host/platform/hardware/scanout/allocator requirements; no claim gaps closed by these regressions. All evidence/failures/rawframes retained, native58 activation unchanged, no new push, cybersecurity excluded.
+
+Continuation 2026-10-23, new CPU marker-coordinate structural evidence (no GPU/source promotion): build/native64-marker-arithmetic-root-1 uses Reader-gated retained originalGL32 isolated14x14 sprites/6272pixels, rawarray hashes and fixed qgrid centre records, including17 independent phase controls. analyze1.py actualexit0 evaluates252 local-anchor/reciprocal-rounding configurations (nominal±4ULP, centre/firstpixel/2..32pixel anchors, separate/wide order):0 complete matches, best4060/12544 channels; no fitted constant promoted. complement2.py actualexit0 rejects complement-after-rounded-lower-origin configurations as complete explanation;0 complete matches. affine3.py actualexit0 yields new structural constraint: one rounded affine sequence feasible/exact for19/32 X axes and8/32 Y axes, but separate even/odd sequences feasible with bit-exact witnesses for all128 parity sequences across64 axes. Nominal float32(1/14) lies in only1/128 parity slope intervals; exact1/14 in85/128. These are observed-value feasibility fits, not a production recipe or driver algorithm proof. This narrows next investigation toward two-pixel interpolation/lane evaluation rather than more global nearest-centre/FMA/bias guesses. Production/source618/Native64 wheel unchanged and all102+Qt regression evidence retained. No claim this fixes original marker48/million18 parity; saved measurements are historical originalGL, no current64 marker image reproduction done this turn. No benchmark/tolerance/exclusion/epsilon changes, no GPU replay, no temp build objects, no push or activation. Full original13, smooth/parity/performance/platform gaps stay open; cybersecurity excluded.
+
+Continuation 2026-10-23, marker two-pixel hypothesis narrowed without production changes: authoritative current plan/artifacts rechecked; existing actual64 rendering-regression-audit1 remains102-case PASS. New quad4.py computes global raster-parity neighbour constraints and shared2x2-centre arithmetic over all6272 saved originalGL pixels. First actual CPU run finished arithmetic but receipt serialization rejected np.bool_ and left partialquad4.json; source/partial retained. export_quad5.py writes versionedquad5.py correcting only two boolean casts/outputfilename, actualquad5 exit0. Across203 X and197 Y inside-sprite even→odd pairs, neither one global forward nor reverse step is feasible; nominal rounded reciprocal predicts130/203 X forward and105/197 Y forward, exact1/14 predicts139/203 and113/197. No tested quad-centre model matches all coordinates; best overall model remains a pixel-centre control, not a workingquadrecipe. Thus prior separate-even/odd affine feasibility is a descriptive constraint only, not evidence of a simple shared derivative implementation. No fitted step/epsilon promoted, no old GPU actor replay, no native/public benchmark/image thresholds edited. Saved native POINT_LIST frame/author/analyze records located at native63-native-point-render-run-root-2/pointcoord1.rgba32f and prep-root-1 for next CPU comparison; naive hardwarepoint route remains previously rejected. Further inspection confirms original marker uses rawgl_PointCoord, source definitions unchanged.32 profile independent controls shareY952 and sweep X subpixel ties, not a broad Y-phase sweep; keep that limitation explicit. Current64 M06/M02 full fixed-image qualification still absent/open, broader original13/perf/smooth/platform gaps unchanged. No build junk created beyond retainedCPU diagnostic evidence, AGPL/BSD and installed native58 unchanged, no push.
+
+Continuation 2026-10-23, marker bridge narrows parity; private Qt deferred-paint fix implemented and GPU-tested: native64-marker-arithmetic-root-1/native_bridge6.py actualCPUexit0 verifies saved standalone POINT_LIST result/raw/GL hashes and18 resource releases.31/32 samples have identical GL/VK footprints, all31 still differ inY and0 differ inX;1876 GL low-halfY values cannot be produced by a single1-float32 subtraction. Thus viewport-placement-only/origin-flip-only correction is insufficient, not a proof of a general impossibility. Marker gap stays open, no GPU replay/fitted production constants. Inspected actual preserved observer-free volume partial failure:01candidate has2 unattributed paints/draws despite1000 owned measured paints and1100 verified warm+measured frames. Canonical_qt.py paintEvent schedules untracked QTimer.singleShot(1,self.update) on every busy paint. New native64-qt-deferred-paint-prep-root-1/prepare1.py stages ONE purePython backend file only: coalesce deferred redraw on existing completion pump, clear after admitted paint/close/callback error; canonical source618 remains unchanged. qt_control1.py actualexit0 uses actual PyQt6 QEventLoop/QTimer/QWidget and extracted actual backend methods with simulated Dawn (noGPU): old emits2 late update requests after fulfillment and afterclose, proposal0; deferred-until-ready old2/proposal1. This proves stale Qt update scheduling, not cause of original performance failure. Private wheel656704efaccff6ed8b429f39d604a56b0d4099962a2e8113ef036594325d20a4 changes only vispy/app/backends/_qt.py and dist-info/RECORD from admitted64 base58c13cb..., all550 payload/native/license bytes otherwise exact, no formal native epoch or fresh native build claim.
+
+Fresh private stress native64-qt-paint-private-stress-prep-root-1: actual bad-manifest pregraphics terminal rejection and allsource/wheel pins passed, actual run session34149 terminalexit1 ONLY finalowned-cache cleanup; all3 workers (PyQt5 launcher92080,PyQt6 94676,PySide6 92864) actually passed25 cycles each with final loss25/exact25 redcaptures/8zero shutdown and installed env teardown. Parent result remains FAILED_CLEANUP_PRESERVED. Removalfailed WinError3 on a deepPySide6 cache path; exact longpath GetItem proved fileexists/rootordinarydir, allworker terminal stamps and allsetup children reverified. authorize_longpath_cleanup1.py makes new bounded owner-specific authority under existing user cleanup instruction (not a policy/approval/access denial); cleanup_longpath1.ps1 checks exact absoluteTemp-root match/allentries underroot/no reparse and performs one nativePowerShell extended-literal-path removal. Actualexit0 PASS_BOUNDED_LONG_PATH_OWNED_CACHE_CLEANUP, root physicallygone, no furtherretry. audit2.py actualexit0 ROOT_AUDITED_PRIVATE_QT_PAINT_25_CYCLE_STRESS_WITH_BOUNDED_CACHE_REMEDIATION rechecks all75 cases/150 original function calls/readbacks/package/native/process/loss and cleanup, explicitly retains originalcontroller failure/remediation receipt. No canonicalpromotion/Native65activation/push. Next actualunchanged performance measurement must test unsolicitedpaint hypothesis with artifact-bound private scientific controls; do not claim benchmark gap closed or reuse oldNative59-v6 quality as current. Full original13 marker/smooth/performance/platform/hardware gaps remain, AGPL/BSD/native58 preserved, cybersecurity excluded.
+
+Continuation 2026-10-23, actual unchanged frozen benchmark diagnostics for base/private Qt scheduling PASS: inspected original observer-free partial run/admission coupling; current private wheel requires new scientific binding before qualified fullpair release, so no oldNative59-v6 quality relabel. New native64-qt-paint-benchmark-prep-root-1 calls EXACT canonical tools/benchmark_frames.py hash55f76b5cf1bc95b23547b572af61e41a6bd524911fd44bc2305318002e60ab26 run_worker without perframe wrappers or modified workload/telemetry/thresholds. This is explicitly a scheduling diagnostic, not scientific/fivepair release admission. Actual CPU bad-manifest worker rejection beforeGPU passed. Actual controller session81363 terminalexit0, baseline launcher39488/private59020 actualworker terminal/nonces/creationstamps verified; fresh external CP3128/NumPy246/PyQt6 profile3e7fb65...; roles are validated Native64 wheel58c13cb... and private Qt-only override656704ef..., same native1ccdb5d.... Both actual volume-256-1024-mip-resident runs use100warm+1000measured/queue3/vsyncFalse; both frozenworkerexit0/statusmeasured and unpaced actual HWND presentation,1100 closed+retired owned Qt frames/1000 measured samples. Both have1000 owned draws/paints/updates and0 ALL unattributed Python counters. Native required resident hotwork/waits all0, frozen measured-work gate passed. audit1.py actualexit0 ROOT_AUDITED_BASE_AND_PRIVATE_FROZEN_QT_DIAGNOSTICS recomputes native andPython deltas, allsample IDs/tokens/ownership andmetrics, verifies strict550 installedpackage/native origins,3 full1024x1024 qualitycaptures bytearrayexact betweenroles (3145728pixels/0error),8shutdownzeros and physical externalenv/cache deletion. Raw artifacts retained. Important: old2-extra-paint failure did NOT reproduce on baseline either; this proves no-regression/current scheduling behavior, NOT that the coalescing fix caused original failure to disappear. Private Qt fix remains unpromoted, canonical618/current102-regression/installed native58/AGPL-BSD unchanged. Next source review/promotion of independently reproduced stale-retry fix and proper private/current scientific binding for original5-alternating GL/Vulkan pairs; no full performance/scanout/allocator/original13 claim. Marker/smooth/platform/hardware gaps remain. No push, cybersecurity excluded.
+
+Continuation 2026-10-23, Qt deferred-redraw implementation PROMOTED into canonical WIP; guarded Native65 running: reviewed exact private proposal, confirms no added readiness query while deferred flagfalse, coalesces busy paints using existing completion pump, clearsafter admitted paint/close/callbackfailure and preserves firstapplicationerror. Existing tests/qt/test_paint_scope_cpu.py expected old singleshot behavior, so stage_tests1.py preserves allpriorpaint/token/abort tests, updates backpressure expectation to noqueuedoneshot, adds real-method coalescing/idle/noquery/closedpump and callbackfirst-error cancellation tests. Native65 prepare1.py actualexit0 derives618source/4141harness/44targets/47CTests, retains all22 C++ ownership packets byteidentically at frozen64archives, noCPP changes, purePython source overlay1 +existingCPUtest harnesschange1, oldharness countunchanged. promote1.py actualexit0 backs up2 original files and promotes EXACT private-tested Qt bytes (8391b3316d2522e1c697aa613b264aecb9ffda316c1334a8f2092bc57242a313) and stagedregressionfile. Installednative4/activation/licenses/frozenbenchmark unchanged. Actual root isolated no-autoplugin/no-bytecode pytest18/18 passed,0 failures/errors/skips (qt-paint-cpu1.xml), including bothnew cases. freeze_build1.py bindsactualJUnit/source hashes and approvedmanifest/currentinputs with unchangedguardtools; active session42234, freeze1 launcher36116/actual50872. No restart, no frozen65/full47/wheel/GPU/activation/result claim yet. Native65 intendedsnapshot51/evidence65/buildnative-pass65-sdk; pipeline auto-builds after actualfreeze completion. Prepared native_terminal_audit1.py (unrun) requiresactualpipeline completion/full47/newsource-harness,portablepacking parent64 admission andexact18QtCPU binding. ALL earlier Native64 base/private producers holding oldcanonical_qt6e528... are now stale as live-source admissions; do NOT replay/relabel them as65. Immutable64frozen102 regression/private75+1000diagnostics remain validhistorical evidence, same privateQt bytes promoted. Full scientific5pair/sourcebinding, oldunsolicitedpaint causal attribution, marker48/million18/smooth/parity/platform/hardware/scanout/allocator original13 gaps remain. No newpush; cybersecurity excluded.
+
+Continuation 2026-10-23, Native65 freeze PASS and serial qualification in flight: existing session42234 freeze1 launcher36116/actual50872 completed successfully without restart. Actual frozen-admission1 binds frozen-inputs a15eb543ee561f35315fc23e7de92779ccc07eaa4be56b5e30fb00b74f790326, source6f0de265d059a081cb15e89099b9052880168c279dd7fd8d2b4e8caabeaf2dac, harness486a0a9ef5705bfad5db002e3693889c790469ba757797395096f250bfd0d61e. Same pipeline actual80604 launched build1 launcher48564/actual38308; read-only build preflight passed, CMake configure7200 observed live. No terminal47/wheel/GPU claim yet. Prepared exact successful64-derived fresh wheel recipe/builder/audit for65, only finalizable from actual terminal47 audit. Native65 Qt stress preparation completed, unchanged public2-function/25-cycle wrapper across3 bindings, short owned-cache prefix vispy-q65- prevents prior Windows longpath shape; not yet GPU executed. Licensing rechecked: originalBSD three copies identical a28bb857..., AGPL implementation metadata and package license-files retain LICENSE, LICENSE-BSD, LICENSING.md and thirdparty notices.
+
+New native65-science-prep-root-1 stages fixed17 and24 large scientific controls without changing original workers/oracles/tolerances. Actual cpu_controls2.py exit0 verifies17 case-loop/saved-comparison ASTs,85 fixed inputs, wrapper protocol-only adaptation and optimized pregraphics refusal. Large prepare retains333 fixed payloads and wheel-digest-only executor template; caught unbound obsolete image13 prerequisite metadata in admit script before launch, retained original authoring1 and exact before files, amendment creates authoring2, no failed GPU run. Actual large_prebinding_cpu1.py exit0 verifies original wrapper,24 controller and96-frame comparison loop ASTs,333 member hashes, executor exact inverse except pending wheel fingerprint and2 actual optimized pregraphics refusals. Final actual-wheel largeCPU control remains required after binding. Current65 small artifact gate requires actual47/fresh wheel/native-origin/all550 package+AGPL/BSD checks and actual65 Qt75 stress; historical64 102-case aggregate is explicitly baseline only, verified source delta exactlyQt backend, never relabelled current65. Large gate requires actual65 scientific17 fullframes first, with same fixed large24 quality/counter gates. These new scientific actors are not yet bound/launched and do not claim full original13 or performance.
+
+Post-build continuation: prepare_post_chain1.py creation-bound actual LIVE existing pipeline80604, exact14-step script hashes and no retries. post_build_chain1.py active session30051, waits directly on that same existing process handle; ONLY after terminal pipeline success runs native audit, wheel finalize/build/origin audit, Qt bind/run/audit, small finalize/bind/execute, large finalize/CPU/bind/execute in order. Each child waited with retained exclusive logs/exit receipts; first failure stops preserved. No activation/publication, installed native58 and all notices preserved. Pending full original13 marker48/million18/smooth parity, qualified five-pair timing/performance, hosts/platforms/hardware/scanout/allocator remain open. Keep both active handles; do not restart based on quiet output. New checks created no disposable environments yet; preserve proof/raw assets, clean only owned terminal caches as authorized. Cybersecurity excluded.
+
+Continuation 2026-10-23, actual Native65 full47 CTest PASS, final guarded build still live: configure dependency verifier77164 terminal, CMake configure7200 succeeded, fresh44-target build produced owned module/contracts and all47 CTests completed PASS (8.71s, no failures/skips). Actual38308 now waits on post-build verifier launcher47784/actual59288; actual59288 observed CPU263.20s, do not restart based on quiet output. Pipeline42234, follow-up30051 unchanged and waiting actual80604 terminal, no formal terminal-audit/wheel/GPU result yet.
+
+New native65-performance-prep-root-1 scientific_admission1.py requires actual14-step65 chain success, reruns EXACT small17 and large24 saved CPU verifiers through result construction (omits only exclusive final export), compares recomputed results to actual saved receipts, binds full current550 installed package identity across all controls, exact originalGL/data/workload hashes, fixed2 whole-frame threshold/no exclusions, changed-pixel/counter evidence, CP3128/NumPy246/NV4090Vulkan610.88. It emits24 current65 scientific admissions only after actual evidence and frozen validator passes, never historical59/64 relabel. cpu_controls1.py actualexit0 rejects historical64 aggregate and optimized startup before GPU/output. One new owned py_compile pyc was physically removed with exact file/path guard; no old cleanup retried.
+
+prepare_adapter1.py derives metadata-only new65 admission_adapter1.py from existing adapter3, exact inverse checked except admission epoch/status/source-script location. Original observer-free worker, benchmark sampling/frame ownership and all thresholds remain unchanged. adapter_cpu_controls1.py actualexit0 rejects invalid qualification digest, proves source fingerprint and restores metadata overrides on exception without graphics imports. pairs1.py wraps existing unchanged pairs2+legacy collector: only redirects worker to pinned current65 metadata adapter and appends explicit admission-set SHA; all measurement arguments/schedule/release paths preserved. pairs_cpu_controls1.py actualexit0 proves one chained launch redirect preserves original args and restores every nested override after exception, no fake timing. hardware1.json retains designated earlier device cell as REQUIREMENT only; fresh pairs must independently pass unchanged validate_hardware. collect1.py gates real65 qualification/550wheel/native/package/CPU proofs and uses exact100warm/1000frames/5repetitions/queue3. No timing executed yet; all24 remains full volume performance scope, full66/original13 not implied.
+
+New run_admission1.py active session71603 (actual41748/launcher81508), creation-bound to SAME follow-up actual89796/launcher57216/time134372199988740543. It waits that actual process terminal, requires successful14-stage chain, then launches current65 scientific producer once, preserves failures and records real childwait/exit. Three active handles:42234 native pipeline,30051 wheel/Qt75/scientific17/large24,71603 admission tail. Do not rerun these exclusive-output scripts or treat observation timeout as terminal. Still no current65 wheel/GPU/scientific/timing admission until these actually complete. No activation or push, AGPL+originalBSD unchanged, cybersecurity excluded. Marker48/million18/smooth/fullperformance/hosts/platform/hardware/scanout/allocator original13 gaps remain.
+
+Continuation 2026-10-23, actual Native65 native47, wheel and Qt75 PASS: session42234 terminalexit0 NATIVE65_FRESH_FREEZE_BUILD_AND_CTEST_COMPLETED; native_terminal_audit1.py actualexit0 PASS_NATIVE65_TERMINAL_BUILD_AUDIT validates618source/4141harness/full47 exactnames, decoder70/packing148/texture454, protected native/AGPL/BSD and compiler policies. Follow-up30051 audited and built fresh PEP517 wheel45c42025d7cd8ade367883715665609d0e32ed3f29f39251790c784fedad0e7f, packaged_dawn5463f733b237e6c398d11d36334b09403ea3f2211eece3352a1f894378a60116. Wheel result WHEEL_BUILT_PACKAGE_AND_LICENSE_BYTES_VERIFIED exit0/childwait,523pure+4native+23licenses=550, owned UV cache physically removed. Actual wheel-native audit PASS for all4 fresh project outputs, original AGPL/BSD copies byteexact. Installed58/activation unchanged.
+
+cleanup_native_objects1.ps1 actualexit0: once-only bounded exact107 .obj removed ONLY completed native-pass65-sdk, all preserved executable/library/module hashes rechecked unchanged. prepare_wheel_cleanup1.py requires actual wheel-origin/Qt75 proofs; cleanup_wheel_objects1.ps1 actualexit0 removes24 .obj ONLY completed wheel native-build, all preserved outputs rechecked. Total131 new65 owned objects removed, no raw evidence/source/snapshot/wheel/SDK/receipt removal, no denied or prior cleanup repeated. Both exclusive receipts prohibit retries.
+
+Qt bind negative startup control and real3-binding controller actualexit0, audit1.py actualexit0 ROOT_AUDITED_NATIVE65_THREE_QT_BINDINGS_25_CYCLE_STRESS. PyQt5 launcher52476/PyQt6 57548/PySide6 93956 all actualworker terminal;75 pytest pairedcycles=150 unchanged public-function calls,25 explicit recoveries/readbacks per binding, whole-session loss invariant, exact4x4 red reads,8shutdownzero fields,550 installed package/native origins and owned environments/cache physically absent. Fresh65 artifact tested, not historical64 relabel. Original audit limitation prose contains an inherited fresh64 wording typo; enforced source_epoch65/actual wheel identity and all role receipts prove current65. No claim full binding/platform/release coverage.
+
+Follow-up30051 now executes scientific17 (execute_small2 launcher33364); actual cases progressed through iso_categorical_fast at last checked run.log, no final small admission yet. Once actual17 passes, driver binds/runs original24 large workload controls. Tail71603 still waits actual89796 terminal before rechecking raw17+24 and producing current65 benchmark scientific set. Do not rerun exclusive actors or treat missing future result/quiet output as failure. Marker diagnosis reviewed retained GL point-origin0x8ca2/default upper-left and old independent phase controls (all one nominalY); broader Y-phase evidence is still needed before a precision/origin remedy can be justified. No marker source/reference/tolerance edit or additional GPU probe launched alongside qualification. Full original13 marker/smooth/parity/performance/hosts/platform/hardware/scanout/allocator gaps remain; current65 complete102 regression is not claimed by selected41 scientific cases. No push or activation, cybersecurity excluded.
+
+Continuation 2026-10-23, scientific host wait diagnosed and publication patch locally committed: current65 scientific17 progressed through14 cases then iso_categorical_fast launcher9724/actual91032 remains LIVE with start time134372211981475730. Same actualprocess observed CPU1347s; no timeout/restart/kill. Prior immutable64 same case→next case interval12.05s establishes unusual delay, not terminal failure. New native65-diagnostic-tools-root-1 py-spy0.4.2 Python sample places main thread napari qt_main_window.show:527, two native samples both show Windows RPC/COM/OLE RegisterDragDrop through qwindows.dll/Qt QWidget creation. Native exported symbol names can be approximate; cause and renderer involvement not proven. Main thread waits while2 native threads consume CPU. One invalid py-spy native+nonblocking combination rejected before sampling; preserved empty output, then valid native samples captured. Minimal independent .venv PyQt6 QMainWindow acceptDrops/show/processEvents/close actualexit0 imports noVisPy/Napari/renderer, so no universal Qt window creation failure is established. observations1.json binds actualcreation-wait proof and stack/journal hashes. No scientific pass or performance claim for current17. Once-only diagnostic UV cache cleanup actualexit0, all stack/source/proof files kept, no active scientific env touched. Sessions30051/71603 still wait same chain; do not restart based on elapsed time.
+
+Publication checkout was clean at a8373d913, expected branch/origin verified. native65-publication-prep-root-1 prepare1.py copies ONLY5 audited implementation/test files: native64 retirement C++/header/test3 plus65Qt backend/CPUtest2, no build assets. All5license copies identical between canonical and publication. Initial CPU runner correctly REFUSED because editable importer resolved canonical; no test counted. Initial diff detected CRLF mismatch; canonical/frozen files untouched. Publication normalization then match_line_styles2 retains each existing style (Qt CRLF,CPUtest LF) with exact canonical Python AST,3C++ files byteexact. Final -I -B -S runner manually adds dependencies and publication src, asserts actual module origins, all18 CPU cases passed/no errors/failures/skips. Whitespace diffcheck with existing CR-at-EOL policy passed; exact5-file diff87add/6delete manually reviewed, audit1.json passed. Local commits ca3bd68b12c962ecf8a6c8766f2e096bb95b25b2 and284512868bb559ef50df9a048b51842532ed9b61 checkpoint native retirement andQt redraw separately. Clean publication worktree; actual git ls-remote still a8373d913. commits1.json records local-only, NOT pushed. Actual47native+75Qt+18publicationCPU proofs retained; scientific17/large24/currenttiming/full102/original13 remain incomplete. Licensing AGPL-3.0-only with originalBSD/copyright unchanged, no activation/cybersecurity work.
+
+Continuation 2026-10-23, observed RPC wait ended safely and unchanged scientific retry PASS: new native65-window-wait-prep-root-1 native_threads1.cpp and wait_chain1.cpp compile0, fixed91032/time134372211981475730 guard, sample all3 requested threads and resume them. Hot native threads sampled in Windows worker-factory wait; main94480 retains COM/OLE RegisterDragDrop/Qt window creation stack. WCT success0/cyclefalse reports own thread→ALPC→peer2020 (RpcSs/RpcEptMapper svchost, read-only service names). Cause is NOT proven renderer or OS defect. Root stops ONLY creation-bound synthetic91032 with explicit external-wait evidence, terminal handle wait0, no service/registry changes. Existing30051/71603 both actualterminal1, original17 result FAILED_PRESERVED14 cases/3 missing, source/input/wheel holds true, environment and cache physically removed, no globalHOLD. Raw failed attempt retained. Once-only native diagnostic .obj cleanup removes2 objects; binaries/logs/source kept.
+
+New native65-science-retry-root-1 repeats ALL unchanged17+24 cases once, same wheel45c42025.../native5463f733..., original85+333 payloads and comparison loops preserved. Session69002 terminal0: all7 controller steps0, fresh17 exact156672pixels/0error and all24 large96frames/251658240pixels/max1 within unchanged2/48 changed-pixel checks, actual workers/native550/package/counter/source and owned env/cache cleanup verified. Prior iso_categorical_fast passed in fresh run; old RPC attempt not relabelled. Scope remains41 scientific cases, not current65 complete102.
+
+Current65 scientific admission producer evolves with all failures retained: producer2 fails on absent large-report python key; producer3 binds recorded environment interpreter plus exact per-worker launch executable (actual small+large schema/wrong-version CPU controls pass), then catches Windows lexical relative evidence length261. Same file exists at resolved normalized path. Producer4 emits normalized absolute evidence paths and unchanged hashes; actual frozen validator CPU control proves old spelling unproven/new spelling passed on SAME raw evidence. Session84212 actualterminal0, scientific-admissions4 contains24 records+quality-plan+qualification, qualificationSHA c42dc23de1a483eeb57923d15b7458a2a24fc4057fef6d3cea3ec86981a612a3, execution-control4/result PASS_NATIVE65_CURRENT_ARTIFACT_SCIENTIFIC_ADMISSIONS. Old2/3 pending failures preserved. collect4 uses actual producer4/CPU proof and unchanged adapters/frame counts/gates. First five-pair session30577 terminal2: five verified worker runs, sixth02candidate measured but2 unattributed paints/draws/8 extra parse+pack calls; parentfailed/partial, allworkers terminal and owned env/cache gone. No fivepair/full24 speed claim. Valid candidate counters reveal2000 application presents/2000 Dawn submits/4000 Vulkan submits per1000 measured paints; native_submit host timing dominates saved CPU differences. Native65 previous deferred-redraw fix does NOT prove cure of rare unowned paints.
+
+New implementation candidate native65-coalesced-present-prep-root-1 is PRIVATE ONLY: _dawn_paint_token tracks active native Qt paint; _vispy_swap_buffers callback remains but defers its native present while token is active, leaving actual final present after alpha-tail; finally clears token on success/error. Explicit direct native presents and no-scope legacy behavior preserved; no OS paint suppressed and no C++/benchmark changes. StagedQtSHA c00ba663f65f219408fbffeefe794ecc351b55ecc3dcce9f031de704e63d955b (LF), stagedCPUtest baea4ecdbbb910ad122af44835ac6e8102530987f00dad58c94791f0a454da53, actual21CPU tests passed (18 existing+3 real swap-path/error regressions). CanonicalQt remains8391b331... and CPUtestfe006...; all618 source and protected native unchanged. Private wheel eb041946ea51a1927a9fa9c62fab8d71ac51c8f5fc3c23d402d009734367fd08 in native65-single-present-private-wheel-root-1, same4 native bytes/23licenses/550package. Repack writer verification first failed due sharing mutable ZipInfo offsets; fresh independent-handle verify_private_wheel2 validates all entries/RECORD and ONLYQt+RECORD differences, basewheel unchanged, no new failed wheel deletion or false writer-success claim.
+
+Private frozen diagnostic native65-single-present-benchmark-prep-root-1: first37124 terminal1 after BASELINE measured all1000/1100 frames but old outer harness incorrectly demanded cumulative deferred_frames==0 at shutdown (actual3). Native compiled telemetry declares deferred_frames NOT a gauge and runtime only increments it. correct_shutdown2 retains that history, checks9 REAL live gauges (adds pending_draws+pending_timestamp_frames) instead, preserves failed baseline, no frozen benchmark/gate/renderer edits. Negative startup CPU proof passes. New session75989 terminal0, both baseline/private fresh externalCP3128/NumPy246 roles measured100warm/1000/queue3 exactly,1100 wholeQt scopes/1000 unique owned samples, all unattributed counters0,9shutdown live gauges0, all package/native/process proofs and physical env/cache cleanup. audit2 actualexit0 ROOT_AUDITED_BASE_AND_PRIVATE_FROZEN_QT_DIAGNOSTICS,3 full1024² captures arrayidentical/3145728pixels/0error. Actual baseline→private counts: application presents2000→1000,Dawn submits2000→1000,Vulkan submits4000→2000; median latency2.96665→1.9155ms is DIAGNOSTIC ONLY, not qualified comparative speedup. No extra-paint cause proven, no scientific binding or five valid pairs for private.
+
+Private lifecycle stress native65-single-present-qt-stress-prep-root-1 uses exact public2 tests/25-cycle wrapper and same3 hashed binding profiles, explicit private manifest flag,9 live-gauge shutdown checks with cumulative history retained. Actual74975 terminal0; audit1 actualexit0 ROOT_AUDITED_PRIVATE_SINGLE_PRESENT_THREE_QT_BINDINGS_STRESS,75 cases/150 original calls/25 explicit losses per binding, full red readbacks/native origins/package550/whole-session loss checks, owned env/cache gone. proposal-admission1.json ROOT_ADMITTED_PRIVATE_SINGLE_PRESENT_PROPOSAL_FOR_FUTURE_SOURCE_PROMOTION joins actual21CPU+1000base/private diagnostic+75Qt, root review NOT independent. Next meaningful implementation work: review/promote this staged Qt+CPUtest candidate into a formal next epoch with exact source/format-equivalence evidence, rerun required build/wheel/science/timing and preserve full original13. It is not yet canonical or published. All local sessions listed here are terminal; do not replay exclusive-output actors.
+
+Publication fulfilled for tested65 source increment: git push fast-forward a8373d913→284512868bb559ef50df9a048b51842532ed9b61 succeeded. Existing PR1 remains DRAFT, title now WIP: Vulkan backend with owned uploads and Qt lifecycle fixes, body describes actual47native/75Qt/17+24science/18publicationCPU and incomplete performance/marker/smooth/platform/hardware scope. GitHub connector edit403 Resource not accessible by integration; authenticated gh CLI edit succeeds, connector read independently verifies head/title/body/draft, all618 publication production files byteexact to65, checkout clean. Last observed CI runs39938393331/39938393422 queued. Redundant later gitlsremote while recording fails Connection reset; no push failure/retry. remote-snapshot2.json and pushed3.json use already successful push+independent actual remote read. AGPL-3.0-only and unchanged originalBSD/copyright/23license payloads preserved. No private prototype/binaries/build junk pushed, no activation or cybersecurity work.
+
+
+Continuation checkpoint, 2026-10-23: Native66 guarded freeze is still
+live (actual20396; second dependency verifier launcher58588), source snapshot52
+and ownership captured, final frozen-input receipt pending. Existing controllers
+84514/68940/61734/35085 remain serially bound. New performance continuation99659
+waits on scientific-controller63008 before current-runtime CPU controls, raw
+scientific admission recomputation and the original first five-pair collection.
+Prepared66 adapter and pair-controller CPU controls PASS; measurement arguments,
+source provenance and nested exception restoration remain checked. No frozen
+benchmark, quality threshold, frame attribution or workload changed.
+
+Downloaded and audited three completed published65 CI artifacts from run39938393331:
+Linux CP31019/CP3138 and macOS arm64 CP3128, each1018 pytest cases (56 guards,
+858 scientific/consumer CPU,104 original/helper) plus42 native CPU CTests, zero
+failures/errors/skips. Actual checkout101bb32a1b8238cbfe061d8e42523a707dead742
+is GitHub's PR merge commit with parent284512868; its complete tree equals the
+published head tree. Raw metadata, JUnit, JSON, native test logs and file digests
+are retained in build/native65-ci-observation-root-1/audit1.json. These are
+published65 CPU-only results, NOT Native66/Metal/Vulkan hardware qualification.
+Remaining20-cell matrix jobs are active or queued, not all passed.
+
+Continuation checkpoint, 2026-10-23: The same Native66 freezer20396 completed;
+freeze1.json records actual waited exit0. Its original controller automatically
+launched build1 (52476/59876); no stage was restarted. Source snapshot52 and
+618/4141 inventories are now frozen. No native47/wheel/Qt66/GPU result yet.
+Root review of the exact canonical-vs-published Qt diff found no new required
+change; final token restoration, final present after alpha-clear and legacy swap
+sequence remain covered by the22 current CPU cases. Source and tests unchanged.
+
+WSL capability was actually probed through terminal `vulkaninfo --summary`:
+only llvmpipe/LLVM20.1.2/Mesa25.2.8, PHYSICAL_DEVICE_TYPE_CPU, vendor0x10005,
+device0. /dev/dxg and renderD128 exist but do not by themselves prove hardware
+Vulkan. Raw output/error and exact waited CLI receipt are retained under
+build/native66-wsl-capability-root-1/observation1.json. No drivers/system settings
+changed. This supports planning software-Linux tests, not a hardware admission;
+native Linux hardware and macOS Metal requirements remain open.
+
+Continuation checkpoint, 2026-10-23: Published65 hosted CPU coverage increased to
+TEN artifact-audited cells: Linux all five CPython versions3.10.19/3.11.14/3.12.8/
+3.13.8/3.14.0, Windows3.10.19/3.11.14/3.12.8/3.14.0, macOS arm64 3.12.8.
+Each actual job passed56 epoch/license regressions,858 scientific/consumer CPU
+cases,104 original/helper Python cases and42 native CPU CTests, zero skips.
+Each CMakeCache proves CPU_CONTRACTS_ONLY=ON and BUILD_CONTRACT_TESTS=ON.
+Raw completed-job artifacts, run2 metadata and per-file digests are retained in
+build/native65-ci-observation-root-1/audit2.json. Synthetic PR merge-tree equality
+with published284512868 is rechecked. Remaining matrix cells, native66 artifact
+validation and actual graphics/Metal hardware admission remain incomplete.
+Native66 build controller is the same live actual59876, still in its guarded
+dependency preflight; verifier actual30940 has increasing CPU. No restart.
+
+Continuation checkpoint, 2026-10-23: Native66 CMake configuration PASSED with
+MSVC19.44.35225/CP3128, all10 immutable dependency origins and213 SDK files
+verified. All44 requested target output names appeared in the fresh build log.
+Actual ctest.xml contains exactly the required47 unique cases, all status=run,
+zero failures/errors/skips/disabled; ctest.log reports100% passed out of47.
+The original build process59876 is still running its post-build dependency
+verifier86956/26612. Build1/pipeline/terminal audit receipts are not yet terminal;
+keep waiting on84514/52476, never restart because output is quiet.
+
+Prepared Native66 cleanup_native_objects1.ps1 and cleanup_wheel_objects1.ps1
+from the successful65 versions. Both parse, and cleanup-preparation1.json pins
+their hashes. Each refuses until actual47 terminal audit (and wheel-origin audit
+for wheel objects), validates its exact workspace subtree/reparse-free inventory,
+removes only .obj once, and hashes retained binaries/libraries. Neither cleanup
+has run; active objects remain while compilation/final build validation finish.
+
+Platform follow-up research: Mesa documents selecting a local driver through
+VK_DRIVER_FILES (https://docs.mesa3d.org/install.html), which permits isolated
+future Linux driver tests. Current WSL has D3D12/dxcore runtime libraries, but
+no installed Dozen ICD or Meson/DirectX-header build prerequisites. Its actual
+vulkaninfo observation remains software-only. This does not establish a working
+hardware path. GitHub's runner reference describes macOS VM resources
+(https://docs.github.com/en/actions/reference/runners/github-hosted-runners);
+it does not establish Metal availability in our CPU job. Historical maintainer
+report https://github.com/actions/runner-images/issues/7085 describes GPU-access
+limitations. A future exact-device enumeration plus actual rendering is needed;
+Mac hardware remains unqualified. These notes are planning evidence, not runtime
+qualification or a request to pay for additional runners.
+
+Continuation checkpoint, 2026-10-23: Native66 pipeline84514 actually exited0.
+Build receipt SHA476ddcd72e50ca03aac6bd6e58d02372e22db2f8bb1a460285e47647a6179f4c;
+terminal47 audit SHA82bbf78b81be554c81b323600aa5ef4ff312119146da6e3626c617ebc72c259b.
+Compiler policy, frozen618/4141, installed Native58 and original BSD/AGPL/license
+bytes all verified unchanged. Fresh66 wheel builder is now active under
+68940/31988, uv93300. Do not relaunch exclusive-output actors.
+
+Executed owned native-object cleanup exactly once after terminal47 audit:
+cleanup-native-objects1.json PASS,107 .obj files/163269556bytes physically removed;
+60 binaries/libraries retained with unchanged hashes. Sources, frozen packets,
+logs, raw test evidence and receipts remain. Wheel objects and its active cache
+remain owned by the running wheel stage; cleanup waits for that stage/audit.
+
+GitHub connector independently observed completed Windows CP3138 job and
+artifact12496304473. Downloaded archive matches published GitHub digest
+3e2229aa740497d131e750b77c19031e711e9cb7ddea8f3769fc6a18ef87b1d9.
+windows-cp313-audit1.json verifies actual1018 Python +42 native CPU tests, zero
+skips, correct PR merge checkout and CPU-only CMake mode. Combined with audit2,
+all five Windows and all five Linux Python3.10-3.14 cells plus macOS arm64 CP312
+are now artifact-audited (11/20 cells). Remaining macOS jobs remain incomplete;
+this does not qualify hardware graphics or the unpublished Native66 source.
+
+Continuation checkpoint, 2026-10-23: New66 wheel ea48141c... and native-origin
+audit161ddfa985e95e05ebf9a0c475d1e18e7242d4845eac18a9c0176107b6731372
+PASSED. Native/wheel chain68940 ended0. Qt75 chain61734 ended0; audit
+fb26906ab426ac403bd3a90b84affe432158053a42d1cc0fe2bc7e326804df1f
+verifies all3 bindings,25 losses/readbacks each,550 exact package members,
+whole-session recovery invariant, nine zero live gauges and removed owned roots.
+Wheel UV cache is physically absent. Executed wheel-object cleanup once:
+24 objects26702855bytes removed,12 native outputs retained hash-exact. Combined
+native+wheel cleanup removed131 objects189972411bytes. No old denied cleanup
+path was retried.
+
+Scientific17 completed successfully against exactly this66 wheel:
+small-controls-final-admission2.json ROOT_ADMITTED_NATIVE66_SEVENTEEN_SCIENTIFIC_VOLUME_CONTROLS,
+17 complete96-square frames/156672pixels, maxchannelerror0, zero exclusions,
+all actual workers terminal, external environment/cache/cwd physically removed.
+The earlier65 external RPC stall did not recur in this fresh run; no cause/cure
+claim. Large24's actual CPU corpus/assertion/executor-binding controls passed,
+finalize/bind/admit stages passed, and large runner29512 is now active. Chain35085
+and performance wait99659 remain incomplete; no current66 large/performance pass.
+
+Independent saved-marker CPU work is retained in build/native66-marker-midpoint-root-1:
+analysis1 uses exact rational RNE intervals on400 pairs; float32 reciprocal step
+is incompatible globally even with hidden pair bases, exact1/14 is compatible
+with each pair. This necessary condition does not derive the unknown bases.
+precision2 tests40 shared higher-precision base models; mixed_precision3 tests
+144 shared setup/base/step-precision models. Neither explains all12544 coordinate
+channels from6272 saved pixels. No renderer, image data, tolerance, benchmark or
+production source was modified. Further Y-phase data is still useful; no new GPU
+marker probe ran while the serial qualification pipeline owns the GPU.
+
+Continuation checkpoint, 2026-10-23: Fresh66 scientific41 is fully admitted.
+Large24 final admission verifies96 complete frames/251658240pixels, maxerror1,
+zero exclusions and removed owned environments/cache/cwd. Producer4 recomputed
+actual17+24 raw results and produced24 current scientific admissions accepted by
+the unchanged frozen benchmark. Qualification SHA
+4ca68018717a093b3a9715772a79d27572ebc30f329380471759ce50708cba97.
+
+First current66 timing collection is COMPLETE, not performance-qualified:
+build/native66-volume-five-pairs-run-root-1/manifest.json status=unqualified,
+collection_status=complete, all10 actual workers terminal, external environments
+and cache absent. Root saved re-audit first-five-pairs-audit1.json reran original
+raw-sample/counter verification, all5 paired-image comparisons (15 frames),
+changed-frame discrimination, hardware and scientific gates, and reproduced the
+original UNPROVEN release gate with its instrumentation gaps intact. Every run
+has100warm/1000measured/1100 completion+GPU maps, zero unattributed Python work;
+each candidate records1000 app/Dawn presents,2000 actual Vulkan submits,0finish/
+completion waits. Missing measurements are input-to-visible scanout and complete
+driver/allocator peaks. Raw medians are descriptive only (upstream run-median
+median16.59945ms; candidate2.77295ms); no speedup or release claim. Full24 timing,
+remaining visual/platform/hardware requirements remain open. The wrapper's
+initial GPU_used=False is an incomplete default on exit2, explained by immutable
+controller-observation-note1.json; actual GPU evidence and cleanup are verified.
+
+New edge_precision4 tests270 higher-precision, floor/ceil/nearest reciprocal
+and edge-origin physical models on the same saved32 GL sprites. No full X, Y or
+combined exact model; retain the result as a rejection, not a rendering fix.
+Source/thresholds unchanged. Next marker work still needs broader controlled
+Y-phase captures and a derived general algorithm, not fitted per-point data.
+
+Publication checkpoint, 2026-10-23: Tested Qt single-final-present fix is pushed
+as60b30d7ca08dbf15ec6de1232cca26b468ddc236 on work/qt-single-present. Draft PR2
+https://github.com/bipxx/vispy_vulkan/pull/2 is stacked on the existing
+work/volume-admission-ci-paths branch so old macOS CI is not canceled. Connector
+independently confirms draft/head/base; remote ref equals local commit. All618
+committed production Git blobs were SHA256-compared to the tested66 manifest;
+all match, including unchanged AGPL/BSD/license files. Prior branch stays284512868.
+
+The publication diff is deliberately small:9 production lines,60 regression-test
+lines,40 current-checkpoint lines,3 files/109 additions. The first copied test/
+plan introduced line-ending/history churn; corrected before commit. Test LF
+format retains all original18 cases byte-exact and identical AST with locations
+and marshalled compiled code to the tested22-case canonical CRLF file. Actual
+publication-copy CPU run passed22 before formatting; code equivalence proves
+formatting unchanged. Qt production bytes remain exact9285db9c... . Publication
+plan prepends a concise current checkpoint while preserving the ENTIRE prior
+published historical body byte-exact; do not overwrite it later with the large
+canonical agent-history file. Receipts are under build/native66-publication-root-1:
+publication-format1.json, publication-plan2.json, publication-result1.json.
+Checkout clean after push; no built binaries/raw captures/temp caches committed.
+
+Current66 local evidence remains22 CPU/47 native/75 Qt/17scientific+24large and
+one complete five-pair timing collection with15 image comparisons and zero
+unattributed Python work. Performance remains UNPROVEN due mandatory scanout/
+complete driver-allocator gaps; full24 timing and remaining marker/smooth/host/
+platform/hardware requirements are not complete. All local pipeline actors are
+terminal. No identical benchmark retry or threshold change is authorized by
+these results alone; next work should supply actual missing evidence or fix a
+remaining implementation gap. Goal remains active/incomplete.

@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "PASS_EIGHT_LEGACY_CLEANUP_HASH_AUDITS_NOT_ADMITTED",
+  "verification": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\mandatory-legacy-retention-529\\verification.json",
+    "sha256": "13dc759b3b20c9942e8c06ba5f33222b887d146828ff0aceffb894f7dcece275"
+  },
+  "original_inputs": 957,
+  "rows": 8,
+  "explicit_legacy_inputs": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\mandatory-legacy-retention-529\\legacy-inputs.json",
+    "sha256": "06733914ecb1f27f1d3cf95d14cae0b8a7f35f6277dc87c78d95ebd258afbf5c"
+  },
+  "unchanged_verifier_refusal": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\mandatory-retention-audit-528\\terminal-failure.json",
+    "sha256": "73c69de1ffe3320cc28f0bc28d27c40fc896c9da260105f3508298bf9f789654"
+  },
+  "qualification_index_retention_acceptance": false,
+  "release_approved": false,
+  "scope": "Original cleanup records and retained-input hashes or exact archive reconstructions. Eighteen pinned historical control/Qt-input paths remain at their original origins outside secondary-v1; no replacement, relocation, selector broadening, or verifier change. Final independent release review remains required."
+}

@@ -10,6 +10,7 @@ from pathlib import Path, PurePosixPath
 import posixpath
 import shutil
 import signal
+import stat
 import subprocess
 import sys
 import tarfile
@@ -129,6 +130,43 @@ def retain_library_file(library, store):
     return retained
 
 
+def live_scratch_bytes(root):
+    """Sample active compiler files; terminal cleanup still uses strict snapshots."""
+    total = 0
+    def walk_error(error):
+        if not isinstance(error, FileNotFoundError):
+            raise error
+    for folder, children, names in os.walk(root, followlinks=False, onerror=walk_error):
+        folder = no_alias(Path(folder))
+        if folder.name.lower() == '.git':
+            raise ValueError('.git content is not disposable scratch')
+        for child in children:
+            no_alias(folder / child)
+        for name in names:
+            try:
+                path = no_alias(folder / name)
+                info = path.lstat()
+            except FileNotFoundError:
+                # Ninja can remove/replace a dependency file after enumeration.
+                continue
+            if name.lower() == '.git' or not stat.S_ISREG(info.st_mode) or info.st_nlink != 1:
+                raise ValueError('Only ordinary unlinked scratch files are admitted: ' + str(path))
+            total += info.st_size
+    return total
+
+
+def check_live_space(context, scratch, run_id, owner, expected_peak):
+    context.admitted()
+    if context.scratch(run_id) != scratch:
+        raise ValueError('source-build scratch identity changed')
+    context.marker(scratch, run_id, owner)
+    context.check_capacity(0, 0)
+    if live_scratch_bytes(context.work) > context.limit:
+        raise RuntimeError('source build exceeds managed scratch budget')
+    if live_scratch_bytes(scratch) > expected_peak:
+        raise RuntimeError('source build exceeds its bounded profile')
+
+
 def build(run_id, owner, output, *, workspace=ROOT, fetch=False, library_store=None):
     if sys.platform != 'linux':
         raise ValueError('software Vulkan source production requires Linux')
@@ -157,7 +195,7 @@ def build(run_id, owner, output, *, workspace=ROOT, fetch=False, library_store=N
         return item
 
     def guard():
-        context.preflight(SimpleNamespace(run_id=run_id, owner=owner, expected_peak_bytes=0, register=False))
+        check_live_space(context, scratch, run_id, owner, pin['expected_peak_bytes'])
         for base in (context.workspace, *context.capacity):
             if os.statvfs(base).f_flag & os.ST_RDONLY:
                 raise RuntimeError('source-build filesystem is read-only: ' + str(base))
@@ -165,10 +203,6 @@ def build(run_id, owner, output, *, workspace=ROOT, fetch=False, library_store=N
             other = ROOT / 'build/work'
             if other.exists() and any(other.iterdir()):
                 raise RuntimeError('another coordinator scratch root became active')
-        used = sum((Path(folder) / name).lstat().st_size
-                   for folder, _, names in os.walk(scratch) for name in names)
-        if used > pin['expected_peak_bytes']:
-            raise RuntimeError('source build exceeds its bounded profile')
 
     env = os.environ.copy()
     for name in ('tmp', 'cache'):

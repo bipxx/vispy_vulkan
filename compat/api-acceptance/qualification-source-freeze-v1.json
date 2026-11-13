@@ -1,0 +1,42 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "FROZEN_QUALIFICATION_HEAD_INSTALLED_AND_HOSTED_CI_PENDING",
+  "qualification_head": "152183d0e3d737bf036d0baad2c0981ab6fe981c",
+  "runtime_source_commit": "b38c4f9068d6a425eef43b62313f0f4cf37f57d9",
+  "branch": "refs/heads/wip/qualification-reviewed-492",
+  "source_file_count": 5924,
+  "runtime_references": 608,
+  "changed_files": 136,
+  "owner_index_unchanged": true,
+  "source_freeze": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\qualification-source-freeze-492\\source-freeze.json",
+    "sha256": "9c3d69b45071f6114a9fd6ea1ecc0d0bb250ed5884f5da9b3817a5f52f55d4b1"
+  },
+  "source_delta": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\qualification-source-freeze-492\\qualification-delta-and-licenses.zip",
+    "sha256": "9362253204d09fc294bbd726a0ec9729f9e2ba306bcebb2092a1c3a2610c5141",
+    "bytes": 1243897
+  },
+  "subject_head_validation": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\qualification-source-freeze-492\\subject-head-validation.json",
+    "sha256": "581c327b37aeb200ad8f727655049633959ddfa91e811ca6ed0c6b93d0a6498f"
+  },
+  "initial_failure": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\qualification-source-freeze-492\\failure-commit.txt",
+    "sha256": "a5a3688a2ec98ebca8ee3189be9cd6724ce687fb94242253d432cca056292de2"
+  },
+  "actual_process_records": [
+    "freeze-process.json",
+    "verify-process.json",
+    "git-processes.json"
+  ],
+  "proof_overlay": "Current subject head, later installed rows and proof receipts are detached evidence; the frozen source CI preparation remains source-only.",
+  "artifact_admitted": false,
+  "required_ci_passed": false,
+  "remaining": [
+    "Publish qualification branch and retain full required head CI history.",
+    "Installed row pytest/distribution/gate joins and complete attempt/retention bindings.",
+    "Independent promotion/impact basis review and release integration."
+  ]
+}

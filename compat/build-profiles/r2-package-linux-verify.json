@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "name": "r2-package-linux-verify",
+  "owner": "root-r2-package-linux",
+  "purpose": "Assemble and exercise the Linux successor with unchanged audited native leaves",
+  "storage_workspace": "/home/heq/vispy-vulkan-managed",
+  "expected_peak_bytes": 2147483648,
+  "aggregate_max_scratch_bytes": 21474836480,
+  "min_free_bytes": 10737418240,
+  "parallel_jobs": 1,
+  "disk_guard_seconds": 30,
+  "reuse": "Retained source packet from run288 and original Linux wheel/provenance from286; existing CPython3.12.8, uv, hash-locked cache and pinned system lavapipe",
+  "consumer": "One disposable locked consumer; preserve all admitted/pinned environments and dependency origins",
+  "constraints": "Windows scratch stays empty; guest registry inherits all Windows protected/blocked paths. Check guest and /mnt/c read/write state and reserve. No native/SDK build, system install, downloads, unpinned dependency resolution or verifier relaxation",
+  "source": "Package/test/helper sources only; one extra existing Linux CPU control source from the exact candidate commit. No vendor or history snapshot",
+  "terminal_cleanup": "Wait owned processes, normalize only documented uv-produced scratch aliases, retain source/evidence/licenses/failure reproducers, inspect/apply managed cleanup and rehash retained content",
+  "scope": "Local WSL software Vulkan evidence; not native Linux GPU, strict host admission, source CI, promotion or publication"
+}

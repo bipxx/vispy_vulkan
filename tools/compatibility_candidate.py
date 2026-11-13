@@ -33,6 +33,7 @@ PREPARATION_TOOLS = (
     'tools/qualification_artifact.py', 'tools/repackage_python_wheel.py', 'compat/qualification-artifact.schema.json',
     'compat/qualification-producers.json', 'cmake/native_sdk.py',
     'tools/qualification_native.py', 'tools/qualification_linux_native.py',
+    'tools/retained_evidence.py',
     'compat/qualification-native.schema.json', 'tools/native_epoch.py',
     'tools/run_linux_native_contracts.py', 'tools/audit_linux_wheel.py',
     'tools/linux_ci_lifecycle.py', 'tools/reuse_linux_ci.py', 'compat/linux-ci-reuse.json',

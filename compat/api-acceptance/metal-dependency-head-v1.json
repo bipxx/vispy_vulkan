@@ -1,0 +1,59 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "PUSHED_REVIEWED_REVISION8_HEAD_CI_PENDING",
+  "candidate": "tk-state-resource-8",
+  "qualification_head": "3ada644e85248bcae214e7e487b4b1684336fd8f",
+  "source_freeze": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\metal-dependency-freeze-522\\source-freeze.json",
+    "sha256": "6e8467eea80d71fe3089d6e72954b8f12985ca0416b03dd50a14329c0546b2cf"
+  },
+  "head_ci": {
+    "qualification_head": "3ada644e85248bcae214e7e487b4b1684336fd8f",
+    "runs": [
+      {
+        "id": 43408364371,
+        "path": ".github/workflows/metal-wheel.yml",
+        "status": "in_progress",
+        "conclusion": null,
+        "url": "https://github.com/bipxx/vispy_vulkan/actions/runs/43408364371",
+        "head": "3ada644e85248bcae214e7e487b4b1684336fd8f"
+      },
+      {
+        "id": 43408361735,
+        "path": ".github/workflows/linux-vulkan.yml",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/bipxx/vispy_vulkan/actions/runs/43408361735",
+        "head": "3ada644e85248bcae214e7e487b4b1684336fd8f"
+      },
+      {
+        "id": 43408358689,
+        "path": ".github/workflows/cpu-contract.yml",
+        "status": "queued",
+        "conclusion": null,
+        "url": "https://github.com/bipxx/vispy_vulkan/actions/runs/43408358689",
+        "head": "3ada644e85248bcae214e7e487b4b1684336fd8f"
+      }
+    ],
+    "required_jobs": 23,
+    "required_ci_passed": false,
+    "native_mode": "reuse"
+  },
+  "runtime_references_unchanged": 608,
+  "owner_index_unchanged": true,
+  "native_mode": "reuse",
+  "source_contract_passes": 1117,
+  "separate_reference_checks": 18,
+  "source_review": "compat/api-acceptance/successor-peer-review-v5.json",
+  "artifact_admitted": false,
+  "required_ci_passed": false,
+  "previous_installed_subject_proved_criteria": 128,
+  "previous_subject_head": "9cf488acdae59ae3b80310ab2a19b5bcc4915a54",
+  "pending": [
+    "All23 required jobs at this exact reviewed head",
+    "Revision8/final-head installed-subject renewal",
+    "Independent impact/promotion review",
+    "Promotion/integration/publication"
+  ]
+}

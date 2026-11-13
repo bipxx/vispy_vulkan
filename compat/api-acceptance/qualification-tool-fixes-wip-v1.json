@@ -1,0 +1,107 @@
+{
+  "schema": 1,
+  "status": "PASS_PEER_FINDING_FIXES_SOURCE_TESTED_RE_REVIEW_PENDING",
+  "review": {
+    "path": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\compat\\api-acceptance\\qualification-tools-review-v1.json",
+    "sha256": "ec4bf49053bfcb286f84d0e5a0a910f921091c62b68cbaacacff3ac611e2a06b"
+  },
+  "findings": [
+    {
+      "finding": "R1",
+      "status": "FIXED_SOURCE_TESTED",
+      "change": "Per-workflow second validation retains profile/wheel context; a resolved early failure followed by a success is representable."
+    },
+    {
+      "finding": "R2",
+      "status": "FIXED_SOURCE_AND_ORIGINAL_INPUTS_CHECKED",
+      "change": "Native/archive fields are projected according to their owning validator namespace. Linux captures are read in their selected store. Store policy is a current declaration, not a historical raw input. Synthetic full subject joins reject missing/wrong-namespace raw inputs."
+    },
+    {
+      "finding": "R3",
+      "status": "FIXED_SOURCE_TESTED",
+      "change": "Store-mode source-local refs use the same retained-file scratch exclusion as secondary refs."
+    },
+    {
+      "finding": "R4",
+      "status": "FIXED_SOURCE_TESTED",
+      "change": "Optional explicit workflow attribution is part of history and resolution digests. Failed reports without observed workflow can be retained; observed identities must agree and unknown candidate workflows are refused."
+    },
+    {
+      "finding": "R5",
+      "status": "FIXED_SOURCE_AND_ORIGINAL_RETENTION_CHECKED",
+      "change": "Store apply views must hash-bind original process and result files and exactly match original exit, wait, argv and result. All80 real WSL cleanup inputs still validate."
+    },
+    {
+      "finding": "R6",
+      "status": "DELIVERY_DECISION_RECORDED_CI_WIRING_PENDING",
+      "change": "Required source-head CI validates the frozen tools and source-only preparation templates. Store-backed positive installed rows are a local proof overlay bound by the qualification subject and independent promotion; do not make hosted runners resolve the local C:/D: policy roots."
+    },
+    {
+      "finding": "R7",
+      "status": "SCOPE_CLARIFIED",
+      "change": "Exact archive reconstruction may preserve any retained input role, not only docs. Archive references are hash-checked outside scratch; this asserts surviving exact bytes, never that the later archive existed at the original cleanup."
+    },
+    {
+      "finding": "R8",
+      "status": "TESTS_STRENGTHENED",
+      "change": "Positive control for original functional mappings, precise mixed-root error matches, both recorded host path views, and failed-terminal repro-role controls added."
+    }
+  ],
+  "tests": {
+    "passed": 372,
+    "log": {
+      "path": "D:\\vispy-vulkan-managed\\build\\runs\\qualification-tool-fixes-487\\contracts.log",
+      "sha256": "6a5455c518e481e2cf80784b3ee20686289557f8f02fd3491b872c1742ae1a59"
+    },
+    "process": {
+      "path": "D:\\vispy-vulkan-managed\\build\\runs\\qualification-tool-fixes-487\\contracts-process.json",
+      "sha256": "9b5a33c17ccb972d952183250bc28adeb28ff415fd3def3eb126ef89bca775ac"
+    }
+  },
+  "followup": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\qualification-tool-fixes-487\\followup-test-result.json",
+    "sha256": "374cf110e53d2e0251d3b79b92885d1d5a37274582b0a4892afbba92518c0ea3"
+  },
+  "original_report_normalization": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\qualification-tool-fixes-487\\retained-report-validation.json",
+    "sha256": "9ccab74298de6cac2017ad853b17d21bc17e9b56ffe4a16552d973ef1224b807"
+  },
+  "original_retention": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\qualification-tool-fixes-487\\reconstructed-retention-validation.json",
+    "sha256": "73ceef9f20cdae781f72adb28382bebd265099bfb6d1546bb460a33ff96723b6"
+  },
+  "native_input_namespaces": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\qualification-tool-fixes-487\\native-input-namespace-validation.json",
+    "sha256": "b4cfecdab4e70e26751b8a102b83ebc1f3c746bd519b3e95e9b49aaf9727bb4f"
+  },
+  "ci_delivery_decision": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\qualification-tool-fixes-487\\ci-evidence-delivery-decision.json",
+    "sha256": "639664ee20e2075b7df85337a9ffff6b98f73170f039eefaa56006e10783bdb3"
+  },
+  "source_archive": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\qualification-tool-fixes-487\\source-and-licenses.zip",
+    "sha256": "c7ef8814785216130c2b16319b333068f74131d317f19b9f3bdd94e4b272826a"
+  },
+  "current_tools": {
+    "tools/qualification_index.py": "fd47e6af121203cccb597f79adc6791cccfc38d4d87a63aa672a7ed046de0db8",
+    "tools/retained_evidence.py": "bad34bf324daf3de5bbde52311889093aae2cd2980f49f790dbaf243a6a5c49b",
+    "tools/compatibility_inventory.py": "6b4a08b9172558b2c520273d7acd55e6b5f8ff6a7ed4b50c2f2e32e1db9dde15",
+    "tools/compatibility_evidence.py": "c261f7431eae27b930ec84d4a5121bbbc7968b19df12b3955d84743eea3456a3",
+    "compat/qualification-index.schema.json": "65f6fe88a62def126e6a564a180416051b30f507bd81588e86f603da27a932de",
+    "tests/contract/test_qualification_index.py": "f6fd0cf67b8a38d182b932d2a91d0384832ec4a28ea2bc6ac85e999656a466d7",
+    "tests/contract/test_retained_evidence.py": "08c9426b813355c8369713eb5ca526cfa8d76b16995a4c79c020f23f12de1553",
+    "tests/contract/test_compatibility_inventory.py": "8dc384ffef25f0fd961a297294133169ad5dc3c3a3c26919f1f58b961972a4b8"
+  },
+  "independent_approval": false,
+  "candidate_renewed": false,
+  "artifact_admitted": false,
+  "shipping_runtime_changed": false,
+  "native_build": false,
+  "scratch_created": false,
+  "remaining": [
+    "Follow-up independent review of the changed exact tool bytes.",
+    "Freeze qualification implementation and renew candidate/tool/review bindings.",
+    "Bind complete workflow histories, installed pytest/distribution receipts and terminal retention for both platforms.",
+    "Wire successor preparation into required CI, retain real source/attempt identities, then complete independent promotion, integration and publication."
+  ]
+}

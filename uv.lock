@@ -3521,7 +3521,7 @@ wheels = [
 
 [[package]]
 name = "vispy"
-version = "0.17.0+vulkan.1"
+version = "0.17.0+vulkan.2"
 source = { editable = "." }
 dependencies = [
     { name = "freetype-py" },

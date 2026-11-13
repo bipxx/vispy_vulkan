@@ -1,0 +1,56 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "PASS_ALL_THREE_NATIVE_REUSE_HEAD_JOBS",
+  "qualification_head": "3ada644e85248bcae214e7e487b4b1684336fd8f",
+  "jobs": [
+    {
+      "id": 131828242586,
+      "name": "software-vulkan",
+      "run_id": 43408361735,
+      "conclusion": "success"
+    },
+    {
+      "id": 131828251875,
+      "name": "Metal wheel arm64 CPython 3.12.8",
+      "run_id": 43408364371,
+      "conclusion": "success"
+    },
+    {
+      "id": 131828252174,
+      "name": "Metal wheel x86_64 CPython 3.12.8",
+      "run_id": 43408364371,
+      "conclusion": "success"
+    }
+  ],
+  "original_run_and_jobs": [
+    {
+      "path": "D:\\vispy-vulkan-managed\\build\\runs\\revision8-native-ci-526\\43408361735-run.json",
+      "sha256": "789329a5bcbf35e85d85566ab569c3cb2590055bc329b2346a378bfcc633c6ef"
+    },
+    {
+      "path": "D:\\vispy-vulkan-managed\\build\\runs\\revision8-native-ci-526\\43408361735-jobs.json",
+      "sha256": "adca8ba76a8c409110d61e53a154d37a6da65a7f9b7f9c539fdafbefe6be0e8c"
+    },
+    {
+      "path": "D:\\vispy-vulkan-managed\\build\\runs\\revision8-native-ci-526\\43408361735-artifacts.json",
+      "sha256": "60f7d9e5c478189246900e2dd6f95ff7dca5cef05f5b3c8e8afb149126ac2b59"
+    },
+    {
+      "path": "D:\\vispy-vulkan-managed\\build\\runs\\revision8-native-ci-526\\43408364371-run.json",
+      "sha256": "5d2bdc3c6110a3880913563afd17af7774d097c4d7bb324ce80baac2b55f8fd3"
+    },
+    {
+      "path": "D:\\vispy-vulkan-managed\\build\\runs\\revision8-native-ci-526\\43408364371-jobs.json",
+      "sha256": "73b192b0678d9da8e35c1bfcafc5beabd208f58b51ea1791d2b781ca7a6a5bd6"
+    },
+    {
+      "path": "D:\\vispy-vulkan-managed\\build\\runs\\revision8-native-ci-526\\43408364371-artifacts.json",
+      "sha256": "06b0aeb0730f9081f57d6b2d463433181a4ee28a37f2bd5f3c0f7b345eedc21a"
+    }
+  ],
+  "scope": "Linux software Vulkan reuse and both actual macOS Metal build-only/CPU-import reuse jobs. No Metal GPU or physical Linux GPU qualification.",
+  "required_ci_passed": false,
+  "remaining_required_cpu_jobs": 20,
+  "artifact_admitted": false
+}

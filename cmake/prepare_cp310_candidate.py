@@ -111,7 +111,7 @@ def main():
                                "metadata_source": str(compiler_file), "metadata_sha256": sha(compiler_file)}
     record["expected_native_module"] = "_dawn.cp310-win_amd64.pyd"
     record["expected_sdf_module"] = "_sdf_cpu.cp310-win_amd64.pyd"
-    record["expected_wheel"] = "vispy-0.17.0+vulkan.1-cp310-cp310-win_amd64.whl"
+    record["expected_wheel"] = f"vispy-{project['project']['version']}-cp310-cp310-win_amd64.whl"
     (evidence / "preparation.json").write_text(json.dumps(record, indent=2, sort_keys=True) + "\n")
     print(json.dumps({"requirements": str(requirements), "packages": len(selected),
                       "environment_prepared": "installed_environment" in record, "wheel_built": False}))

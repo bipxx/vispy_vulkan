@@ -44,14 +44,14 @@
     {
       "id": "windows-gpu-tk86-cp312-development",
       "description": "Selected execution profile windows-gpu-tk86-cp312-development; concrete observation pinned by preparation, not installed admission.",
-      "admitted": false,
-      "environment_sha256": null
+      "admitted": true,
+      "environment_sha256": "a0b9b508d6eb6a41db207288299a5392092696a7ab93a2f45683160b89551279"
     },
     {
       "id": "wsl-software-tk90-cp31213-development",
       "description": "Selected execution profile wsl-software-tk90-cp31213-development; concrete observation pinned by preparation, not installed admission.",
-      "admitted": false,
-      "environment_sha256": null
+      "admitted": true,
+      "environment_sha256": "63da9afb161a94081be6d24a56e3f0bac865e70f9fcb066f8ebcf52a2e3dceac"
     }
   ],
   "features": [
@@ -5124,8 +5124,8 @@
     {
       "feature": "tk.readback.crop-formats",
       "profile": "windows-gpu-tk86-cp312-development",
-      "state": "implemented-untested",
-      "outcome": "not-run",
+      "state": "qualified",
+      "outcome": "passed",
       "workflow": {
         "id": "tk-capture-formats",
         "scenario": "script",
@@ -5150,16 +5150,24 @@
           "expected": "ordinary: Independent RGBA8 byte and normalized-float32 crop(3,4,131,69) on257x129 target preserves orientation/alpha and every pixel."
         }
       ],
-      "identity": null,
-      "receipt": null,
-      "blocker": "New execution identity has no transferred receipt; source/scope review and installed proof remain pending.",
-      "next_action": "Obtain bound reviews, then exact same-profile product/workflow evidence under the existing auditors."
+      "identity": {
+        "source_commit": "0a521bb108b7016b6619591e6806fe84b68fad43",
+        "patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "profile_sha256": "a0b9b508d6eb6a41db207288299a5392092696a7ab93a2f45683160b89551279",
+        "wheel_sha256": "5c7142f38b0867fc744a7fe6025b8397f1bada46641b6d05da0d54dadbfab29e"
+      },
+      "receipt": {
+        "path": "build/runs/r2-installed-318/windows/tk-capture-1/tk.readback.crop-formats.receipt.json",
+        "sha256": "8724fb7b96f39349846da44d4800ce802f074934cbd430102e0e425ef4ecaca8"
+      },
+      "blocker": "Installed selected Windows workflow proved; scoped artifact promotion remains pending.",
+      "next_action": "Retain all attempts, bind producer/archive/terminal evidence and obtain final current-head promotion review."
     },
     {
       "feature": "tk.readback.crop-formats",
       "profile": "wsl-software-tk90-cp31213-development",
-      "state": "implemented-untested",
-      "outcome": "not-run",
+      "state": "qualified",
+      "outcome": "passed",
       "workflow": {
         "id": "tk-capture-formats",
         "scenario": "script",
@@ -5184,10 +5192,18 @@
           "expected": "ordinary: Independent RGBA8 byte and normalized-float32 crop(3,4,131,69) on257x129 target preserves orientation/alpha and every pixel."
         }
       ],
-      "identity": null,
-      "receipt": null,
-      "blocker": "New execution identity has no transferred receipt; source/scope review and installed proof remain pending.",
-      "next_action": "Obtain bound reviews, then exact same-profile product/workflow evidence under the existing auditors."
+      "identity": {
+        "source_commit": "0a521bb108b7016b6619591e6806fe84b68fad43",
+        "patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "profile_sha256": "63da9afb161a94081be6d24a56e3f0bac865e70f9fcb066f8ebcf52a2e3dceac",
+        "wheel_sha256": "66f35ab0dae878af1744f2061be1042bd2c5abfd24d3192c7456865f2c6fd3f7"
+      },
+      "receipt": {
+        "path": "build/runs/r2-installed-318/linux/tk-capture-1/tk.readback.crop-formats.receipt.json",
+        "sha256": "b1b9fa34fe87097011ea45d3b3e541bf44487c11d63eadf928ef6895d1af7ae3"
+      },
+      "blocker": "Installed selected WSL software Vulkan workflow proved; scoped artifact promotion remains pending.",
+      "next_action": "Retain all attempts, bind producer/archive/terminal evidence and obtain final current-head promotion review."
     }
   ],
   "applicability": [
@@ -10928,7 +10944,7 @@
       "profile": "windows-gpu-tk86-cp312-development",
       "status": "required",
       "rationale": "Selected additive scope; original parents remain required.",
-      "reviewed": false,
+      "reviewed": true,
       "dependencies": []
     },
     {
@@ -10936,7 +10952,7 @@
       "profile": "wsl-software-tk90-cp31213-development",
       "status": "required",
       "rationale": "Selected additive scope; original parents remain required.",
-      "reviewed": false,
+      "reviewed": true,
       "dependencies": []
     }
   ]

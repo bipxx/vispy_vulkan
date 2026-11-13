@@ -1,0 +1,98 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "PASS_INSTALLED_CRITERION_PHASE_RECEIPTS",
+  "source_commit": "b38c4f9068d6a425eef43b62313f0f4cf37f57d9",
+  "candidate": "tk-state-resource-6",
+  "scope": "Two exact mapped raster Tk fixtures per platform, using existing test dependencies; no observer/profile/release admission.",
+  "platforms": {
+    "windows": {
+      "wheel": {
+        "path": "build/artifacts/a86b030b005cba455f46ccaeffc56bf3f438142e490999f88156370e6093fb6c/vispy-0.17.0+vulkan.2-cp312-cp312-win_amd64.whl",
+        "sha256": "a86b030b005cba455f46ccaeffc56bf3f438142e490999f88156370e6093fb6c"
+      },
+      "pytest": {
+        "path": "D:\\vispy-vulkan-managed\\build\\runs\\installed-criterion-phases-491\\windows-pytest.json",
+        "sha256": "dd455bb598a9ac7c6481902f8f8907b4ab03ca33c6babad883735f5c1254fc0a"
+      },
+      "installed_audit": {
+        "path": "D:\\vispy-vulkan-managed\\build\\runs\\installed-criterion-phases-491\\windows-installed-audit.json",
+        "sha256": "e85bac6fb1404d63c24eb17f14a15f6c874faf510abf2583628f26093a8f8240"
+      },
+      "cases": 2,
+      "phases": 6,
+      "installed_members_verified": 537,
+      "source_overrides": 0
+    },
+    "linux": {
+      "wheel": {
+        "path": "build/artifacts/48164e052ddc3d8e5376a3a1f13fa652583142f4634438ae9067e204aab8b6ce/vispy-0.17.0+vulkan.2-cp312-cp312-manylinux_2_39_x86_64.whl",
+        "sha256": "48164e052ddc3d8e5376a3a1f13fa652583142f4634438ae9067e204aab8b6ce"
+      },
+      "pytest": {
+        "path": "D:\\vispy-vulkan-managed\\build\\runs\\installed-criterion-phases-491\\linux-pytest.json",
+        "sha256": "8f574911790b9c35fb4a84a60dc7860d0ad14217911b1e71ca98b0945f322ee2"
+      },
+      "installed_audit": {
+        "path": "D:\\vispy-vulkan-managed\\build\\runs\\installed-criterion-phases-491\\linux-installed-audit.json",
+        "sha256": "6ba136161a8121edbae5cb419dc3b4520b12b2447a36d664f84d0c7b4b221741"
+      },
+      "cases": 2,
+      "phases": 6,
+      "installed_members_verified": 537,
+      "source_overrides": 0
+    }
+  },
+  "processes": [
+    {
+      "label": "windows",
+      "argv": [
+        "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\.venv\\Scripts\\python.exe",
+        "-I",
+        "-S",
+        "-B",
+        "D:\\vispy-vulkan-managed\\build\\runs\\installed-criterion-phases-491\\check.py"
+      ],
+      "actual_exit": 0,
+      "child_pid": 46300,
+      "child_waited": true,
+      "seconds": 8.187000000005355,
+      "guard_failure": null
+    },
+    {
+      "label": "linux",
+      "argv": [
+        "wsl.exe",
+        "-d",
+        "Ubuntu",
+        "--exec",
+        "env",
+        "PYTHONDONTWRITEBYTECODE=1",
+        "PYTEST_DISABLE_PLUGIN_AUTOLOAD=1",
+        "TMPDIR=/mnt/d/vispy-vulkan-managed/build/work/installed-criterion-phases-491/temp",
+        "XDG_CACHE_HOME=/mnt/d/vispy-vulkan-managed/build/work/installed-criterion-phases-491/cache",
+        "LP_NUM_THREADS=4",
+        "VK_DRIVER_FILES=/mnt/c/Users/HEQ/Projects/vispy_vulkan/build/runs/external-driver-origin-71/external-icd.json",
+        "VK_ICD_FILENAMES=/mnt/c/Users/HEQ/Projects/vispy_vulkan/build/runs/external-driver-origin-71/external-icd.json",
+        "/home/heq/.local/share/uv/python/cpython-3.12.13-linux-x86_64-gnu/bin/python3.12",
+        "-I",
+        "-S",
+        "-B",
+        "/mnt/d/vispy-vulkan-managed/build/runs/installed-criterion-phases-491/check.py"
+      ],
+      "actual_exit": 0,
+      "child_pid": 45612,
+      "child_waited": true,
+      "seconds": 23.546999999991385,
+      "guard_failure": null
+    }
+  ],
+  "artifact_admitted": false,
+  "native_build": false,
+  "environment_created": false,
+  "limits": [
+    "Existing WindowsCP3128Tk86 and WSLCP31213Tk90 test dependencies reused.",
+    "WSL software Vulkan only.",
+    "Observer gates, distribution identity receipt joins, cleanup and complete attempt history remain separate requirements."
+  ]
+}

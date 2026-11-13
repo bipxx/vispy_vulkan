@@ -1,0 +1,46 @@
+{
+  "schema": 1,
+  "feature": "tk.timer.once",
+  "profile": "windows-gpu-tk86-cp312-development",
+  "identity": {
+    "source_commit": "b38c4f9068d6a425eef43b62313f0f4cf37f57d9",
+    "patch_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "profile_sha256": "fb42039cceb60b610c5ff0f3c9bd3837aa68b4c259224e6d982024d1f0481715",
+    "wheel_sha256": "a86b030b005cba455f46ccaeffc56bf3f438142e490999f88156370e6093fb6c"
+  },
+  "phase": "qualified",
+  "exit_code": 0,
+  "child_waited": true,
+  "requirements": [
+    "TK-2",
+    "TK-4"
+  ],
+  "pytest": {
+    "path": "@evidence/build/runs/installed-criterion-phases-491/windows-pytest.json",
+    "sha256": "dd455bb598a9ac7c6481902f8f8907b4ab03ca33c6babad883735f5c1254fc0a"
+  },
+  "installed_origin_verified": true,
+  "distribution_audit": {
+    "path": "@evidence/build/runs/installed-proof-bindings-512/windows-distribution-audit.json",
+    "sha256": "b9eff672895c1b47309fe59f95093e34872ad9afd5f1ac035487202b9c5cd655"
+  },
+  "gates": {
+    "dependency-closure": {
+      "path": "@evidence/build/runs/installed-proof-bindings-512/gates/windows-gpu-tk86-cp312-development/tk-state-resource-failures/dependency-closure.json",
+      "sha256": "0568440d9ded9ef39721a5cc131429f64e0d7e3fc0ef6bcfed12543b15e5af94"
+    },
+    "startup-transient-loads": {
+      "path": "@evidence/build/runs/installed-proof-bindings-512/gates/windows-gpu-tk86-cp312-development/tk-state-resource-failures/startup-transient-loads.json",
+      "sha256": "c410fd08bd78a347e00d7193bb31041f0824bd14d48998cbda7da85d007c8e9e"
+    },
+    "execution-api": {
+      "path": "@evidence/build/runs/installed-proof-bindings-512/gates/windows-gpu-tk86-cp312-development/tk-state-resource-failures/execution-api.json",
+      "sha256": "62fa62d565c017d82a68b1124d1b041472e5cd6ca074b9e44c2b5c159fb9ef5a"
+    }
+  },
+  "evidence_store": {
+    "path": "compat/evidence-stores/secondary-v1.json",
+    "sha256": "b164e3fdc85863a2327b508ea60f8d3068f740cfe90f665aa52905e28bfb3ca5"
+  },
+  "scope": "Finite selected installed workflow row. Three original strict gates and separately retained same-wheel pytest phases; no full inventory, published wheel or release admission."
+}

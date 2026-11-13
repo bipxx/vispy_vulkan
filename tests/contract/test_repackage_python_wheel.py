@@ -11,6 +11,22 @@ from tools.repackage_python_wheel import repackage, repackage_from_source
 from test_qualification_artifact import sample, wheel_bytes
 
 
+@pytest.mark.parametrize('platform', ['win32', 'linux', 'darwin'])
+def test_successor_repackage_uses_explicit_version_record(platform):
+    version = '0.17.0+vulkan.2'
+    dist = qa.distribution_directory(version)
+    entries, inputs = sample(platform, version=version)
+    original = wheel_bytes(entries, dist=dist)
+    replacement = b'# Successor pure source\n'
+    output, report = repackage(original, {'vispy/__init__.py': replacement}, **inputs)
+    with zipfile.ZipFile(io.BytesIO(original)) as old, zipfile.ZipFile(io.BytesIO(output)) as new:
+        assert set(old.namelist()) == set(new.namelist())
+        assert {n for n in old.namelist() if old.read(n) != new.read(n)} == {
+            'vispy/__init__.py', dist + '/RECORD'}
+        qa.check_record(new, set(new.namelist()), dist=dist)
+    assert report['artifact_admitted'] is False and report['native_rebuilt'] is False
+
+
 @pytest.mark.parametrize('platform', ['win32', 'linux'])
 def test_source_update_preserves_all_other_members_and_record_is_valid(platform):
     entries, inputs = sample(platform)
@@ -96,7 +112,9 @@ def source_case(tmp_path):
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_bytes(payload)
     (source / 'README.md').write_bytes(b'Synthetic original README\n')
-    (source / 'pyproject.toml').write_bytes(b'license-files = ["LICENSE", "LICENSE-BSD", "LICENSING.md"]\n')
+    (source / 'pyproject.toml').write_bytes(
+        b'[project]\nversion = "0.17.0+vulkan.1"\n'
+        b'license-files = ["LICENSE", "LICENSE-BSD", "LICENSING.md"]\n')
     before = {p.relative_to(source).as_posix(): qa.sha(p.read_bytes()) for p in source.rglob('*') if p.is_file()}
     return source, entries, inputs, before
 
@@ -112,6 +130,42 @@ def test_source_package_route_changes_python_with_frozen_metadata_and_notices(so
     assert report['unchanged_metadata_inputs']['README.md'] == before['README.md']
     with zipfile.ZipFile(io.BytesIO(output)) as archive:
         assert archive.read('vispy/__init__.py') == b'# Fixed Python\n'
+
+
+@pytest.mark.parametrize('keep_description', [False, True])
+def test_successor_source_route_uses_frozen_project_version(source_case, keep_description):
+    source, entries, inputs, before = source_case
+    version = '0.17.0+vulkan.2'
+    dist = qa.distribution_directory(version)
+    entries = {n.replace(qa.DIST + '/', dist + '/', 1): data for n, data in entries.items()}
+    entries[dist + '/METADATA'] = entries[dist + '/METADATA'].replace(
+        b'Version: 0.17.0+vulkan.1', ('Version: ' + version).encode())
+    project = source / 'pyproject.toml'
+    project.write_bytes(project.read_bytes().replace(b'vulkan.1', b'vulkan.2'))
+    before['pyproject.toml'] = qa.sha(project.read_bytes())
+    (source / 'src/vispy/__init__.py').write_bytes(b'# Successor Python\n')
+    if keep_description:
+        (source / 'README.md').write_bytes(b'New repository description\n')
+    original = wheel_bytes(entries, dist=dist)
+    output, report = repackage_from_source(original, source, before, inputs['native_hashes'],
+        platform='linux', suffix=inputs['suffix'], tag=inputs['tag'],
+        keep_original_description=keep_description)
+    with zipfile.ZipFile(io.BytesIO(original)) as old, zipfile.ZipFile(io.BytesIO(output)) as new:
+        assert set(old.namelist()) == set(new.namelist())
+        assert {n for n in old.namelist() if old.read(n) != new.read(n)} == {
+            'vispy/__init__.py', dist + '/RECORD'}
+        qa.check_record(new, set(new.namelist()), dist=dist)
+    assert report['artifact_admitted'] is False
+
+
+def test_source_route_does_not_infer_version_from_archive(source_case):
+    source, entries, inputs, before = source_case
+    project = source / 'pyproject.toml'
+    project.write_bytes(project.read_bytes().replace(b'vulkan.1', b'vulkan.2'))
+    before['pyproject.toml'] = qa.sha(project.read_bytes())
+    with pytest.raises(ValueError):
+        repackage_from_source(wheel_bytes(entries), source, before, inputs['native_hashes'],
+            platform='linux', suffix=inputs['suffix'], tag=inputs['tag'])
 
 
 @pytest.mark.parametrize('name', ['README.md', 'pyproject.toml', 'compat/runtime-package.json',

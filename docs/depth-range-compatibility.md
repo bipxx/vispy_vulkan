@@ -1,9 +1,9 @@
 # Depth-range conversion and explicit fragment depth
 
-This source packet implements STATE-1/2/3/5's reversed-depth-range path. It
+This implementation packet implements STATE-1/2/3/5's reversed-depth-range path. It
 retains original GL clip inclusion and per-draw state while using ascending Dawn
-viewport depths. Native binary/installed qualification and the independent
-implementation review remain separate gates.
+viewport depths. Current installed functional observations are recorded below. Independent
+implementation review and strict observer/profile admission remain separate gates.
 
 ## Decision and representation
 
@@ -72,7 +72,7 @@ Final affected regressions pass 421 Windows and 407 WSL software cases, plus
 contracts. Both native profiles report nine zero shutdown gauges. All 224
 Windows SDK members are unchanged. The Linux leaf recompiles all first-party
 units against unchanged retained libraries and remains experimental provenance.
-No installed wheel or shipping profile was qualified.
+That historical source packet qualified no installed wheel or shipping profile.
 
 Dither enable, multisample disable on multisample storage, fractional/out-of-range
 polygon-offset units, mixed blend-constant domains, additional enum/format and
@@ -80,3 +80,23 @@ shader forms, full inventory, independent review and exact installed/observer
 qualification remain open. Existing Linux scissor/toolkit, threedee and Tcl
 shutdown restrictions are not closed by this packet. Historical source receipts
 remain attached to their original product/native identities.
+
+## Current v2 installed functional acceptance, 2026-11-07
+
+All 30 cases in `tests/native/test_reversed_depth_range.py` pass without skips
+on each exact current wheel: Windows CPython 3.12.8 / RTX 4090 Vulkan and WSL
+CPython 3.12.13 / pinned Mesa 26.1.8 software Vulkan. The
+[installed acceptance packet](../compat/api-acceptance/reversed-depth-v1.json)
+binds the wheel identities, test hash, individual case families, device records,
+JUnit output and post-cleanup receipts. It preserves every historical receipt.
+
+Both processes verify all 537 installed package members and every loaded VisPy
+module origin (56 Windows / 55 WSL), assert analytic pixel/depth values including
+forced device-loss recovery, then retire all ten tracked shutdown gauges to
+zero. No native build or new environment was needed. Both installed scratch
+targets are removed and retained evidence rehashed.
+
+This closes the finite installed-proof action STA-02. It does not approve a
+strict shipping profile or the cumulative implementation. Additional shader
+forms, nonfinite inputs, attachment formats, early-test side effects and
+performance claims retain their existing boundaries.

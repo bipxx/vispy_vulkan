@@ -1,0 +1,63 @@
+{
+  "schema": 1,
+  "status": "PASS_REVIEWED_CAPTURE_RECIPE_WINDOWS_OBSERVATION",
+  "candidate": "tk-state-resource-5",
+  "source_commit": "b38c4f9068d6a425eef43b62313f0f4cf37f57d9",
+  "wheel": {
+    "path": "build/artifacts/a86b030b005cba455f46ccaeffc56bf3f438142e490999f88156370e6093fb6c/vispy-0.17.0+vulkan.2-cp312-cp312-win_amd64.whl",
+    "sha256": "a86b030b005cba455f46ccaeffc56bf3f438142e490999f88156370e6093fb6c"
+  },
+  "workflow": "tk-capture-formats",
+  "features": [
+    "tk.application.manual",
+    "tk.backend.raster",
+    "tk.canvas.basic",
+    "tk.context.current",
+    "tk.readback.crop-formats"
+  ],
+  "report": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\windows-capture-rebind-481\\tk-capture-formats\\replay-0.json",
+    "sha256": "b0616da188535ae10fd495441f2ffb30f068c70826aa761e4d01ab4cd79eac65"
+  },
+  "worker": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\windows-capture-rebind-481\\tk-capture-formats\\replay-0.worker.json",
+    "sha256": "0b64889bd0500152319e0f7affc4d7df0137abfd1f6bef95ab44d48c0514b2da"
+  },
+  "functional_validation": {
+    "schema": 1,
+    "contract": "tk-capture-1",
+    "status": "PASS_FUNCTIONAL_RESULT",
+    "branch_ids": [
+      "capture.invalid-viewport",
+      "capture.ordinary",
+      "capture.resize",
+      "capture.retry"
+    ],
+    "qualified": false
+  },
+  "installed_members_verified": 537,
+  "shutdown_gauges": {
+    "pending_tickets": 0,
+    "queued_frames": 0,
+    "live_buffer_bytes": 0,
+    "live_cpu_buffer_bytes": 0,
+    "live_texture_bytes": 0,
+    "canvas_texture_bytes": 0,
+    "transient_buffer_bytes": 0,
+    "line_resource_pool_busy_slots": 0,
+    "line_resource_pool_bytes": 0
+  },
+  "environment_id": "e8d549837b3ff194ff24a8d8fd83f0805878929ef30130a443ccfa92d35eea19",
+  "controller": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\windows-capture-rebind-481\\controller-process.json",
+    "sha256": "75ef83bf2c1fdb14dcce9e80bf5b857fbcbc55e6499c376940ceba8e252bbfda"
+  },
+  "processes": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\windows-capture-rebind-481\\processes.json",
+    "sha256": "a7920842a608c12ff577ce99a250114931a973e00132c00aa9eccba41b4ee37c"
+  },
+  "remaining_capture_replays": 1,
+  "artifact_admitted": false,
+  "execution_attempt_bound": false,
+  "native_build": false
+}

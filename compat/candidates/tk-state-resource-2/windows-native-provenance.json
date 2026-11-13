@@ -1,0 +1,1548 @@
+{
+  "schema": 1,
+  "kind": "native-leaf-provenance",
+  "candidate": {
+    "path": "compat/candidates/tk-state-resource-2/candidate.json",
+    "sha256": "86b2062963d0bd1bbd6dcad54d8f1794c45976656955c36b433dfcac36803d3c"
+  },
+  "recipe": {
+    "path": "build/runs/windows-secondary-native-374/recipe.json",
+    "sha256": "e0def75505c56321d2b945eb34e862375a029217d86a3cbbf5f0a4869ff98af5"
+  },
+  "sdk": {
+    "path": "build/runs/successor-native-339/sdk-record.json",
+    "sha256": "1590193d05c1401018dba8d4bab998c7ea58a292371ae848e9a993a67b9bc5ae"
+  },
+  "preparation": {
+    "path": "compat/cp312-candidate/preparation.json",
+    "sha256": "b3916829a85afff36230700d1d5d7ea262677a22dc6658e59c0551b9e9e57f52"
+  },
+  "result": {
+    "path": "build/runs/windows-secondary-native-374/raw-result.json",
+    "sha256": "c28b47d07ac03dc1309f26b8479413c5447cd2f31526581b4e59e27c4ab19e3b"
+  },
+  "source_before": {
+    "path": "build/runs/windows-secondary-native-374/source-before.json",
+    "sha256": "97a3c47119366c1ac86cf390c67dacb6d1e94577b21f3e0eb3720efbcafb2774"
+  },
+  "source_after": {
+    "path": "build/runs/windows-secondary-native-374/source-after.json",
+    "sha256": "97a3c47119366c1ac86cf390c67dacb6d1e94577b21f3e0eb3720efbcafb2774"
+  },
+  "cache_before": {
+    "path": "build/runs/windows-secondary-native-374/cache-before.txt",
+    "sha256": "66cf9a23566c612f6ed3d0ef305562f5938d6bae2cca2c92ac74461203c30424"
+  },
+  "cache_after": {
+    "path": "build/runs/windows-secondary-native-374/cache-after.txt",
+    "sha256": "66cf9a23566c612f6ed3d0ef305562f5938d6bae2cca2c92ac74461203c30424"
+  },
+  "ctest": {
+    "path": "build/runs/windows-secondary-native-374/ctest.xml",
+    "sha256": "1de8fee346a4a507c8bf1f4fc3dd581ca080ac4ca0561924fcfe89f4b7f1c7ac"
+  },
+  "projects": [
+    {
+      "target": "VkLayer_vispy_submit",
+      "before": {
+        "path": "build/runs/windows-secondary-native-374/projects-before/VkLayer_vispy_submit.vcxproj",
+        "sha256": "40edcf70d12917e7eff47b2fb4fc52ae30f6602f38eb546f7bd6d39ab1af55a1"
+      },
+      "after": {
+        "path": "build/runs/windows-secondary-native-374/projects-after/VkLayer_vispy_submit.vcxproj",
+        "sha256": "40edcf70d12917e7eff47b2fb4fc52ae30f6602f38eb546f7bd6d39ab1af55a1"
+      }
+    },
+    {
+      "target": "_dawn",
+      "before": {
+        "path": "build/runs/windows-secondary-native-374/projects-before/_dawn.vcxproj",
+        "sha256": "4f121396884d0ee9db931b08d0ccdc68363063a3491cb5c539a3c61322cb09ce"
+      },
+      "after": {
+        "path": "build/runs/windows-secondary-native-374/projects-after/_dawn.vcxproj",
+        "sha256": "4f121396884d0ee9db931b08d0ccdc68363063a3491cb5c539a3c61322cb09ce"
+      }
+    },
+    {
+      "target": "_sdf_cpu",
+      "before": {
+        "path": "build/runs/windows-secondary-native-374/projects-before/_sdf_cpu.vcxproj",
+        "sha256": "15582e8221b148a8e92514703948f3c05830adf882dddf0e32a8095d8a63c7f3"
+      },
+      "after": {
+        "path": "build/runs/windows-secondary-native-374/projects-after/_sdf_cpu.vcxproj",
+        "sha256": "15582e8221b148a8e92514703948f3c05830adf882dddf0e32a8095d8a63c7f3"
+      }
+    },
+    {
+      "target": "artifact_consumer_contract",
+      "before": {
+        "path": "build/runs/windows-secondary-native-374/projects-before/artifact_consumer_contract.vcxproj",
+        "sha256": "90c2855f24dfe7eb92bee335019775468cd10dac58e4e7bf411a6f4c0b35360c"
+      },
+      "after": {
+        "path": "build/runs/windows-secondary-native-374/projects-after/artifact_consumer_contract.vcxproj",
+        "sha256": "90c2855f24dfe7eb92bee335019775468cd10dac58e4e7bf411a6f4c0b35360c"
+      }
+    },
+    {
+      "target": "artifact_contract",
+      "before": {
+        "path": "build/runs/windows-secondary-native-374/projects-before/artifact_contract.vcxproj",
+        "sha256": "9024ec32eb2a0226c787b9dd151fd7fea9378d28187e990ec86ecf435fd9320b"
+      },
+      "after": {
+        "path": "build/runs/windows-secondary-native-374/projects-after/artifact_contract.vcxproj",
+        "sha256": "9024ec32eb2a0226c787b9dd151fd7fea9378d28187e990ec86ecf435fd9320b"
+      }
+    },
+    {
+      "target": "batch_identity_contract",
+      "before": {
+        "path": "build/runs/windows-secondary-native-374/projects-before/batch_identity_contract.vcxproj",
+        "sha256": "3851eba5416fac831d3a63b1872c43adc3007c54c13c15c9f85afebc628da3ea"
+      },
+      "after": {
+        "path": "build/runs/windows-secondary-native-374/projects-after/batch_identity_contract.vcxproj",
+        "sha256": "3851eba5416fac831d3a63b1872c43adc3007c54c13c15c9f85afebc628da3ea"
+      }
+    },
+    {
+      "target": "frame_lifecycle_contract",
+      "before": {
+        "path": "build/runs/windows-secondary-native-374/projects-before/frame_lifecycle_contract.vcxproj",
+        "sha256": "d1be387d24d4d72b5c0830f05d34b54e78ef83d38d4a4b5b9e7a31387f3385ce"
+      },
+      "after": {
+        "path": "build/runs/windows-secondary-native-374/projects-after/frame_lifecycle_contract.vcxproj",
+        "sha256": "d1be387d24d4d72b5c0830f05d34b54e78ef83d38d4a4b5b9e7a31387f3385ce"
+      }
+    },
+    {
+      "target": "framebuffer_configuration_contract",
+      "before": {
+        "path": "build/runs/windows-secondary-native-374/projects-before/framebuffer_configuration_contract.vcxproj",
+        "sha256": "f8d9f2ec7addbb9f271543b43e75990a174311206bd6706fadb94c005f32d733"
+      },
+      "after": {
+        "path": "build/runs/windows-secondary-native-374/projects-after/framebuffer_configuration_contract.vcxproj",
+        "sha256": "f8d9f2ec7addbb9f271543b43e75990a174311206bd6706fadb94c005f32d733"
+      }
+    },
+    {
+      "target": "input_batch_cache_contract",
+      "before": {
+        "path": "build/runs/windows-secondary-native-374/projects-before/input_batch_cache_contract.vcxproj",
+        "sha256": "7da7bd8c8e253115a75cff571b823d06ef57b27fc63c84911ff9d3e063727b58"
+      },
+      "after": {
+        "path": "build/runs/windows-secondary-native-374/projects-after/input_batch_cache_contract.vcxproj",
+        "sha256": "7da7bd8c8e253115a75cff571b823d06ef57b27fc63c84911ff9d3e063727b58"
+      }
+    },
+    {
+      "target": "input_batch_capacity_contract",
+      "before": {
+        "path": "build/runs/windows-secondary-native-374/projects-before/input_batch_capacity_contract.vcxproj",
+        "sha256": "3ab3f55162f58538d0cb044c9ca6aef13258239e4dd24dc6fc3998f7265f7a96"
+      },
+      "after": {
+        "path": "build/runs/windows-secondary-native-374/projects-after/input_batch_capacity_contract.vcxproj",
+        "sha256": "3ab3f55162f58538d0cb044c9ca6aef13258239e4dd24dc6fc3998f7265f7a96"
+      }
+    },
+    {
+      "target": "input_batch_contract",
+      "before": {
+        "path": "build/runs/windows-secondary-native-374/projects-before/input_batch_contract.vcxproj",
+        "sha256": "312e48ae06f8887832eb330b175a4abf58cbee95e288557adaf12f80663935f7"
+      },
+      "after": {
+        "path": "build/runs/windows-secondary-native-374/projects-after/input_batch_contract.vcxproj",
+        "sha256": "312e48ae06f8887832eb330b175a4abf58cbee95e288557adaf12f80663935f7"
+      }
+    },
+    {
+      "target": "input_batch_owner_contract",
+      "before": {
+        "path": "build/runs/windows-secondary-native-374/projects-before/input_batch_owner_contract.vcxproj",
+        "sha256": "f5236401efdd68d968188ed3a8f90d8fb46f2c324b7eefac0ca889dd65d9a47f"
+      },
+      "after": {
+        "path": "build/runs/windows-secondary-native-374/projects-after/input_batch_owner_contract.vcxproj",
+        "sha256": "f5236401efdd68d968188ed3a8f90d8fb46f2c324b7eefac0ca889dd65d9a47f"
+      }
+    },
+    {
+      "target": "input_batch_routing_contract",
+      "before": {
+        "path": "build/runs/windows-secondary-native-374/projects-before/input_batch_routing_contract.vcxproj",
+        "sha256": "1bac5b728b9dfbe6f7da0cea6cca200f4849ff1cbe4b3d0719ab6cd02e2088c2"
+      },
+      "after": {
+        "path": "build/runs/windows-secondary-native-374/projects-after/input_batch_routing_contract.vcxproj",
+        "sha256": "1bac5b728b9dfbe6f7da0cea6cca200f4849ff1cbe4b3d0719ab6cd02e2088c2"
+      }
+    },
+    {
+      "target": "input_batch_topology_contract",
+      "before": {
+        "path": "build/runs/windows-secondary-native-374/projects-before/input_batch_topology_contract.vcxproj",
+        "sha256": "3d01e84d86f4117977fc216803454ea8d5bd339218bbf79ed4473e8eff952dd5"
+      },
+      "after": {
+        "path": "build/runs/windows-secondary-native-374/projects-after/input_batch_topology_contract.vcxproj",
+        "sha256": "3d01e84d86f4117977fc216803454ea8d5bd339218bbf79ed4473e8eff952dd5"
+      }
+    },
+    {
+      "target": "integer_sampler_snapshot_contract",
+      "before": {
+        "path": "build/runs/windows-secondary-native-374/projects-before/integer_sampler_snapshot_contract.vcxproj",
+        "sha256": "ff0779230ff8a13b82fcd7c3d052476fe6b7ae36ff7f51326852fec11c10c487"
+      },
+      "after": {
+        "path": "build/runs/windows-secondary-native-374/projects-after/integer_sampler_snapshot_contract.vcxproj",
+        "sha256": "ff0779230ff8a13b82fcd7c3d052476fe6b7ae36ff7f51326852fec11c10c487"
+      }
+    },
+    {
+      "target": "integer_sampling_artifact_contract",
+      "before": {
+        "path": "build/runs/windows-secondary-native-374/projects-before/integer_sampling_artifact_contract.vcxproj",
+        "sha256": "6030962d2733354c82416765b365fea9b7e49844a4e4af8f58f654b0fc3aa4b9"
+      },
+      "after": {
+        "path": "build/runs/windows-secondary-native-374/projects-after/integer_sampling_artifact_contract.vcxproj",
+        "sha256": "6030962d2733354c82416765b365fea9b7e49844a4e4af8f58f654b0fc3aa4b9"
+      }
+    },
+    {
+      "target": "integer_sampling_boundary_contract",
+      "before": {
+        "path": "build/runs/windows-secondary-native-374/projects-before/integer_sampling_boundary_contract.vcxproj",
+        "sha256": "e1479d69d212337cdbee5b4e02f1f178622e261c80e3a1e98b339217c77f06fb"
+      },
+      "after": {
+        "path": "build/runs/windows-secondary-native-374/projects-after/integer_sampling_boundary_contract.vcxproj",
+        "sha256": "e1479d69d212337cdbee5b4e02f1f178622e261c80e3a1e98b339217c77f06fb"
+      }
+    },
+    {
+      "target": "integer_sampling_contract",
+      "before": {
+        "path": "build/runs/windows-secondary-native-374/projects-before/integer_sampling_contract.vcxproj",
+        "sha256": "b057fbd6a2415c47cc576e493e43fa8b96b165a80f95e7b89fb0cc1dfd975e62"
+      },
+      "after": {
+        "path": "build/runs/windows-secondary-native-374/projects-after/integer_sampling_contract.vcxproj",
+        "sha256": "b057fbd6a2415c47cc576e493e43fa8b96b165a80f95e7b89fb0cc1dfd975e62"
+      }
+    },
+    {
+      "target": "line_batch_contract",
+      "before": {
+        "path": "build/runs/windows-secondary-native-374/projects-before/line_batch_contract.vcxproj",
+        "sha256": "e74fa97b8cc99eb29fb2c6418ff2826fb5c95c68bc20d07fc020a9758dad4c8c"
+      },
+      "after": {
+        "path": "build/runs/windows-secondary-native-374/projects-after/line_batch_contract.vcxproj",
+        "sha256": "e74fa97b8cc99eb29fb2c6418ff2826fb5c95c68bc20d07fc020a9758dad4c8c"
+      }
+    },
+    {
+      "target": "line_capture_contract",
+      "before": {
+        "path": "build/runs/windows-secondary-native-374/projects-before/line_capture_contract.vcxproj",
+        "sha256": "d4bd193a8be8c86f0f47cac441a401a5d63a58c15e96569ec55955991fa90dd0"
+      },
+      "after": {
+        "path": "build/runs/windows-secondary-native-374/projects-after/line_capture_contract.vcxproj",
+        "sha256": "d4bd193a8be8c86f0f47cac441a401a5d63a58c15e96569ec55955991fa90dd0"
+      }
+    },
+    {
+      "target": "line_consumer_generated_contract",
+      "before": {
+        "path": "build/runs/windows-secondary-native-374/projects-before/line_consumer_generated_contract.vcxproj",
+        "sha256": "cd472eac95fd1163361f45de3faa7fa2d8fdabdf996a895c21bf9d6537c4a423"
+      },
+      "after": {
+        "path": "build/runs/windows-secondary-native-374/projects-after/line_consumer_generated_contract.vcxproj",
+        "sha256": "cd472eac95fd1163361f45de3faa7fa2d8fdabdf996a895c21bf9d6537c4a423"
+      }
+    },
+    {
+      "target": "line_consumer_resource_contract",
+      "before": {
+        "path": "build/runs/windows-secondary-native-374/projects-before/line_consumer_resource_contract.vcxproj",
+        "sha256": "63b51e36ab0d56aa5d63b140fa24be521938ae2c97752d5f7c2200ffe2239430"
+      },
+      "after": {
+        "path": "build/runs/windows-secondary-native-374/projects-after/line_consumer_resource_contract.vcxproj",
+        "sha256": "63b51e36ab0d56aa5d63b140fa24be521938ae2c97752d5f7c2200ffe2239430"
+      }
+    },
+    {
+      "target": "line_contract",
+      "before": {
+        "path": "build/runs/windows-secondary-native-374/projects-before/line_contract.vcxproj",
+        "sha256": "64cf33274c58ca5bfc421803e7abc101ee73d5e4dd37cd4c02a8f07d7661302c"
+      },
+      "after": {
+        "path": "build/runs/windows-secondary-native-374/projects-after/line_contract.vcxproj",
+        "sha256": "64cf33274c58ca5bfc421803e7abc101ee73d5e4dd37cd4c02a8f07d7661302c"
+      }
+    },
+    {
+      "target": "line_evaluator_contract",
+      "before": {
+        "path": "build/runs/windows-secondary-native-374/projects-before/line_evaluator_contract.vcxproj",
+        "sha256": "c644efe87e05dedf5fe36e2b5193759b02f58453dfd1da8933700c021e1c2509"
+      },
+      "after": {
+        "path": "build/runs/windows-secondary-native-374/projects-after/line_evaluator_contract.vcxproj",
+        "sha256": "c644efe87e05dedf5fe36e2b5193759b02f58453dfd1da8933700c021e1c2509"
+      }
+    },
+    {
+      "target": "line_ownership_contract",
+      "before": {
+        "path": "build/runs/windows-secondary-native-374/projects-before/line_ownership_contract.vcxproj",
+        "sha256": "1cbf0321e6e69e4237f35358b64a8350173bf683a7ae19da0ac2989239e40a6d"
+      },
+      "after": {
+        "path": "build/runs/windows-secondary-native-374/projects-after/line_ownership_contract.vcxproj",
+        "sha256": "1cbf0321e6e69e4237f35358b64a8350173bf683a7ae19da0ac2989239e40a6d"
+      }
+    },
+    {
+      "target": "line_pool_contract",
+      "before": {
+        "path": "build/runs/windows-secondary-native-374/projects-before/line_pool_contract.vcxproj",
+        "sha256": "93c466b0b3cf912487ca54dbaf37d118fde956c9950537edc327a7b6eb745185"
+      },
+      "after": {
+        "path": "build/runs/windows-secondary-native-374/projects-after/line_pool_contract.vcxproj",
+        "sha256": "93c466b0b3cf912487ca54dbaf37d118fde956c9950537edc327a7b6eb745185"
+      }
+    },
+    {
+      "target": "line_pool_inspection_contract",
+      "before": {
+        "path": "build/runs/windows-secondary-native-374/projects-before/line_pool_inspection_contract.vcxproj",
+        "sha256": "7b38d1e96943932247bbacdf5e741676ec3fcb88442da260750e6454c5a7a645"
+      },
+      "after": {
+        "path": "build/runs/windows-secondary-native-374/projects-after/line_pool_inspection_contract.vcxproj",
+        "sha256": "7b38d1e96943932247bbacdf5e741676ec3fcb88442da260750e6454c5a7a645"
+      }
+    },
+    {
+      "target": "nanobind-static",
+      "before": {
+        "path": "build/runs/windows-secondary-native-374/projects-before/nanobind-static.vcxproj",
+        "sha256": "99c633087168235b86a2447370695b95bff9c781ccfd4d681b534d6fb70fb0c1"
+      },
+      "after": {
+        "path": "build/runs/windows-secondary-native-374/projects-after/nanobind-static.vcxproj",
+        "sha256": "99c633087168235b86a2447370695b95bff9c781ccfd4d681b534d6fb70fb0c1"
+      }
+    },
+    {
+      "target": "native_contract",
+      "before": {
+        "path": "build/runs/windows-secondary-native-374/projects-before/native_contract.vcxproj",
+        "sha256": "9fbc60ed2a19ff1112f2739bbc90b653698f1f2a7efb5c3cfaad9de9503f77d9"
+      },
+      "after": {
+        "path": "build/runs/windows-secondary-native-374/projects-after/native_contract.vcxproj",
+        "sha256": "9fbc60ed2a19ff1112f2739bbc90b653698f1f2a7efb5c3cfaad9de9503f77d9"
+      }
+    },
+    {
+      "target": "native_library_fixture",
+      "before": {
+        "path": "build/runs/windows-secondary-native-374/projects-before/native_library_fixture.vcxproj",
+        "sha256": "6fe25c161cb658d84440429c978e235cb4c7195f72af4b7af30e728cd4e6afae"
+      },
+      "after": {
+        "path": "build/runs/windows-secondary-native-374/projects-after/native_library_fixture.vcxproj",
+        "sha256": "6fe25c161cb658d84440429c978e235cb4c7195f72af4b7af30e728cd4e6afae"
+      }
+    },
+    {
+      "target": "ordered_strip_runtime_contract",
+      "before": {
+        "path": "build/runs/windows-secondary-native-374/projects-before/ordered_strip_runtime_contract.vcxproj",
+        "sha256": "d83fa8ad6d68a6404d1008674405be4217ff3fbb54a8cac9658e7ccd32b912bc"
+      },
+      "after": {
+        "path": "build/runs/windows-secondary-native-374/projects-after/ordered_strip_runtime_contract.vcxproj",
+        "sha256": "d83fa8ad6d68a6404d1008674405be4217ff3fbb54a8cac9658e7ccd32b912bc"
+      }
+    },
+    {
+      "target": "ordinary_line_runtime_contract",
+      "before": {
+        "path": "build/runs/windows-secondary-native-374/projects-before/ordinary_line_runtime_contract.vcxproj",
+        "sha256": "fc6cdcbc32679843821a2b007b680e96cd63a582ff1159b194e62c8880e23614"
+      },
+      "after": {
+        "path": "build/runs/windows-secondary-native-374/projects-after/ordinary_line_runtime_contract.vcxproj",
+        "sha256": "fc6cdcbc32679843821a2b007b680e96cd63a582ff1159b194e62c8880e23614"
+      }
+    },
+    {
+      "target": "owned_texture_contract",
+      "before": {
+        "path": "build/runs/windows-secondary-native-374/projects-before/owned_texture_contract.vcxproj",
+        "sha256": "538808de4130c5a71becc20a7dce4c9435577cbcdecaeba5adc3ad16df8e08b0"
+      },
+      "after": {
+        "path": "build/runs/windows-secondary-native-374/projects-after/owned_texture_contract.vcxproj",
+        "sha256": "538808de4130c5a71becc20a7dce4c9435577cbcdecaeba5adc3ad16df8e08b0"
+      }
+    },
+    {
+      "target": "owned_upload_contract",
+      "before": {
+        "path": "build/runs/windows-secondary-native-374/projects-before/owned_upload_contract.vcxproj",
+        "sha256": "a1463f2c3f58e5ea645e3faa9a4c662e394a95e9af5fecbb12c12015d168063a"
+      },
+      "after": {
+        "path": "build/runs/windows-secondary-native-374/projects-after/owned_upload_contract.vcxproj",
+        "sha256": "a1463f2c3f58e5ea645e3faa9a4c662e394a95e9af5fecbb12c12015d168063a"
+      }
+    },
+    {
+      "target": "point_batch_contract",
+      "before": {
+        "path": "build/runs/windows-secondary-native-374/projects-before/point_batch_contract.vcxproj",
+        "sha256": "bb30e67d44b429e65064b2787efaa7ba79db0b455416d6677cb17f45b81a660d"
+      },
+      "after": {
+        "path": "build/runs/windows-secondary-native-374/projects-after/point_batch_contract.vcxproj",
+        "sha256": "bb30e67d44b429e65064b2787efaa7ba79db0b455416d6677cb17f45b81a660d"
+      }
+    },
+    {
+      "target": "point_contract",
+      "before": {
+        "path": "build/runs/windows-secondary-native-374/projects-before/point_contract.vcxproj",
+        "sha256": "313d5ed587b461145a77a57a2afa7e838393554c11ee36215545ff981e3a1604"
+      },
+      "after": {
+        "path": "build/runs/windows-secondary-native-374/projects-after/point_contract.vcxproj",
+        "sha256": "313d5ed587b461145a77a57a2afa7e838393554c11ee36215545ff981e3a1604"
+      }
+    },
+    {
+      "target": "point_partition_contract",
+      "before": {
+        "path": "build/runs/windows-secondary-native-374/projects-before/point_partition_contract.vcxproj",
+        "sha256": "5c2ef53cae99659047744055eb1b69ae6c91f9ab62f9859ceac8c497442ec00b"
+      },
+      "after": {
+        "path": "build/runs/windows-secondary-native-374/projects-after/point_partition_contract.vcxproj",
+        "sha256": "5c2ef53cae99659047744055eb1b69ae6c91f9ab62f9859ceac8c497442ec00b"
+      }
+    },
+    {
+      "target": "readback_contract",
+      "before": {
+        "path": "build/runs/windows-secondary-native-374/projects-before/readback_contract.vcxproj",
+        "sha256": "3038d2fd8238d574ef3af26c7fe2aaf46e6dbeefa5ce843f5c3d14a96caa4c67"
+      },
+      "after": {
+        "path": "build/runs/windows-secondary-native-374/projects-after/readback_contract.vcxproj",
+        "sha256": "3038d2fd8238d574ef3af26c7fe2aaf46e6dbeefa5ce843f5c3d14a96caa4c67"
+      }
+    },
+    {
+      "target": "runtime_line_consumer_accounting_contract",
+      "before": {
+        "path": "build/runs/windows-secondary-native-374/projects-before/runtime_line_consumer_accounting_contract.vcxproj",
+        "sha256": "98e63d3576e8ec0e34646d0de5d459fd732a8bc0cddd4fd2422c55181fac2b00"
+      },
+      "after": {
+        "path": "build/runs/windows-secondary-native-374/projects-after/runtime_line_consumer_accounting_contract.vcxproj",
+        "sha256": "98e63d3576e8ec0e34646d0de5d459fd732a8bc0cddd4fd2422c55181fac2b00"
+      }
+    },
+    {
+      "target": "runtime_line_consumer_policy_contract",
+      "before": {
+        "path": "build/runs/windows-secondary-native-374/projects-before/runtime_line_consumer_policy_contract.vcxproj",
+        "sha256": "090d31ff0a00cf1105f6f079d9f3bc1023656bb19488b26ac14764dbecbc8746"
+      },
+      "after": {
+        "path": "build/runs/windows-secondary-native-374/projects-after/runtime_line_consumer_policy_contract.vcxproj",
+        "sha256": "090d31ff0a00cf1105f6f079d9f3bc1023656bb19488b26ac14764dbecbc8746"
+      }
+    },
+    {
+      "target": "runtime_line_variants_contract",
+      "before": {
+        "path": "build/runs/windows-secondary-native-374/projects-before/runtime_line_variants_contract.vcxproj",
+        "sha256": "74daad2f201799da95a2a912d1a19dd9b77825c2cd8b94bf0b11728ff4242be3"
+      },
+      "after": {
+        "path": "build/runs/windows-secondary-native-374/projects-after/runtime_line_variants_contract.vcxproj",
+        "sha256": "74daad2f201799da95a2a912d1a19dd9b77825c2cd8b94bf0b11728ff4242be3"
+      }
+    },
+    {
+      "target": "shader_contract",
+      "before": {
+        "path": "build/runs/windows-secondary-native-374/projects-before/shader_contract.vcxproj",
+        "sha256": "ed1eb9f00fb101161b4f4998ae2f1a9fc8328788cd3cc48c80e0fc1465ed477d"
+      },
+      "after": {
+        "path": "build/runs/windows-secondary-native-374/projects-after/shader_contract.vcxproj",
+        "sha256": "ed1eb9f00fb101161b4f4998ae2f1a9fc8328788cd3cc48c80e0fc1465ed477d"
+      }
+    },
+    {
+      "target": "state_contract",
+      "before": {
+        "path": "build/runs/windows-secondary-native-374/projects-before/state_contract.vcxproj",
+        "sha256": "e615d50d53f6fd9cb0a6c49167ab73668f75db647a7e102498367c474c1a23e5"
+      },
+      "after": {
+        "path": "build/runs/windows-secondary-native-374/projects-after/state_contract.vcxproj",
+        "sha256": "e615d50d53f6fd9cb0a6c49167ab73668f75db647a7e102498367c474c1a23e5"
+      }
+    },
+    {
+      "target": "texture_contract",
+      "before": {
+        "path": "build/runs/windows-secondary-native-374/projects-before/texture_contract.vcxproj",
+        "sha256": "2fe32303bad1a2f32b5aa4b948ec2a71834896f172860c26c799d917057cee1f"
+      },
+      "after": {
+        "path": "build/runs/windows-secondary-native-374/projects-after/texture_contract.vcxproj",
+        "sha256": "2fe32303bad1a2f32b5aa4b948ec2a71834896f172860c26c799d917057cee1f"
+      }
+    },
+    {
+      "target": "timestamp_contract",
+      "before": {
+        "path": "build/runs/windows-secondary-native-374/projects-before/timestamp_contract.vcxproj",
+        "sha256": "e62d5750febc376771ae096ef085d1ba4e336e746423f037ce1263f3c2544287"
+      },
+      "after": {
+        "path": "build/runs/windows-secondary-native-374/projects-after/timestamp_contract.vcxproj",
+        "sha256": "e62d5750febc376771ae096ef085d1ba4e336e746423f037ce1263f3c2544287"
+      }
+    },
+    {
+      "target": "typed_sampling_contract",
+      "before": {
+        "path": "build/runs/windows-secondary-native-374/projects-before/typed_sampling_contract.vcxproj",
+        "sha256": "93b726a8ecec1906df63ec35e686135419331187f297040bd6f0a3ed0b639bda"
+      },
+      "after": {
+        "path": "build/runs/windows-secondary-native-374/projects-after/typed_sampling_contract.vcxproj",
+        "sha256": "93b726a8ecec1906df63ec35e686135419331187f297040bd6f0a3ed0b639bda"
+      }
+    },
+    {
+      "target": "uniform_updates_contract",
+      "before": {
+        "path": "build/runs/windows-secondary-native-374/projects-before/uniform_updates_contract.vcxproj",
+        "sha256": "29d102adb8cdc0fe7514581003be77d3ab66c842ab2b1fb2705de7c01d22dff7"
+      },
+      "after": {
+        "path": "build/runs/windows-secondary-native-374/projects-after/uniform_updates_contract.vcxproj",
+        "sha256": "29d102adb8cdc0fe7514581003be77d3ab66c842ab2b1fb2705de7c01d22dff7"
+      }
+    },
+    {
+      "target": "vk_layer_contract",
+      "before": {
+        "path": "build/runs/windows-secondary-native-374/projects-before/vk_layer_contract.vcxproj",
+        "sha256": "c0b9ae42a3a042ad3b00114308cf7bd3ee37ea5f668f70e0e8d0911a9b12a8e4"
+      },
+      "after": {
+        "path": "build/runs/windows-secondary-native-374/projects-after/vk_layer_contract.vcxproj",
+        "sha256": "c0b9ae42a3a042ad3b00114308cf7bd3ee37ea5f668f70e0e8d0911a9b12a8e4"
+      }
+    }
+  ],
+  "outputs": [
+    {
+      "member": "vispy/_dawn.cp312-win_amd64.pyd",
+      "file": {
+        "path": "build/artifacts/ee12139b500016416e3ab042c9d001f6df69fc1cd3f39e786ce25c5ed06ed83e/_dawn.cp312-win_amd64.pyd",
+        "sha256": "ee12139b500016416e3ab042c9d001f6df69fc1cd3f39e786ce25c5ed06ed83e"
+      }
+    },
+    {
+      "member": "vispy/visuals/text/_sdf_cpu.cp312-win_amd64.pyd",
+      "file": {
+        "path": "build/artifacts/3f3d7573693e130b3efdd8b0c4ac343df9a09e5f81a580105101527e48654b1c/_sdf_cpu.cp312-win_amd64.pyd",
+        "sha256": "3f3d7573693e130b3efdd8b0c4ac343df9a09e5f81a580105101527e48654b1c"
+      }
+    },
+    {
+      "member": "vispy/VkLayer_vispy_submit.dll",
+      "file": {
+        "path": "build/artifacts/d57f83c2cd273401c5a0d147a6fc8be5101901876debd12318a54a2cc3c3971d/VkLayer_vispy_submit.dll",
+        "sha256": "d57f83c2cd273401c5a0d147a6fc8be5101901876debd12318a54a2cc3c3971d"
+      }
+    },
+    {
+      "member": "vispy/VkLayer_vispy_submit.json",
+      "file": {
+        "path": "build/artifacts/7323cea73a46efcba615ca452d2b0235e3741109628c4bf2979c105e6ae69d56/VkLayer_vispy_submit.json",
+        "sha256": "7323cea73a46efcba615ca452d2b0235e3741109628c4bf2979c105e6ae69d56"
+      }
+    }
+  ],
+  "source_inputs": [
+    {
+      "path": "cpp/bindings/command_decode.hpp",
+      "file": {
+        "path": "build/artifacts/15a9f9c2b11f63ea3b0b5c6c5bf5fd119ff1b01b50a4cc07ea57951b57e993e6/command_decode.hpp",
+        "sha256": "15a9f9c2b11f63ea3b0b5c6c5bf5fd119ff1b01b50a4cc07ea57951b57e993e6"
+      }
+    },
+    {
+      "path": "cpp/bindings/module.cpp",
+      "file": {
+        "path": "build/artifacts/92b84f1f8b76ffa6a31705d741d74d4116f3e65aabfd5409a04e353107cbe61b/module.cpp",
+        "sha256": "92b84f1f8b76ffa6a31705d741d74d4116f3e65aabfd5409a04e353107cbe61b"
+      }
+    },
+    {
+      "path": "cpp/bindings/owned_payload.hpp",
+      "file": {
+        "path": "build/artifacts/b1d6cc12f927bdeca1c06d315a9c75da22b35dd3372d975d8fb54b0e858e1713/owned_payload.hpp",
+        "sha256": "b1d6cc12f927bdeca1c06d315a9c75da22b35dd3372d975d8fb54b0e858e1713"
+      }
+    },
+    {
+      "path": "cpp/bindings/python_buffer_capture.hpp",
+      "file": {
+        "path": "build/artifacts/07814aa590ad737c6b940cf236829a1b9a003d4e4482be31757a028578250a82/python_buffer_capture.hpp",
+        "sha256": "07814aa590ad737c6b940cf236829a1b9a003d4e4482be31757a028578250a82"
+      }
+    },
+    {
+      "path": "cpp/platform/native_library.cpp",
+      "file": {
+        "path": "build/artifacts/956262ccb0bcd0eba8707ae5ea1cfc5ed2f23fdfcaee87094483a15bda1f6e01/native_library.cpp",
+        "sha256": "956262ccb0bcd0eba8707ae5ea1cfc5ed2f23fdfcaee87094483a15bda1f6e01"
+      }
+    },
+    {
+      "path": "cpp/platform/native_library.hpp",
+      "file": {
+        "path": "build/artifacts/85e1a657df842f9df98a5b677b842031c6255002f35c07584e2640f12e7b6210/native_library.hpp",
+        "sha256": "85e1a657df842f9df98a5b677b842031c6255002f35c07584e2640f12e7b6210"
+      }
+    },
+    {
+      "path": "cpp/platform/native_surface.hpp",
+      "file": {
+        "path": "build/artifacts/d3ef7c8cf95619a030892d5d8e7b3105ac555d7745c63a888e1a8c4b31ddc358/native_surface.hpp",
+        "sha256": "d3ef7c8cf95619a030892d5d8e7b3105ac555d7745c63a888e1a8c4b31ddc358"
+      }
+    },
+    {
+      "path": "cpp/platform/surface_metal.mm",
+      "file": {
+        "path": "build/artifacts/a9614d0e8373e9449a3aeccd03d9f5696c6e8e07510aba303e2c4f611b5de134/surface_metal.mm",
+        "sha256": "a9614d0e8373e9449a3aeccd03d9f5696c6e8e07510aba303e2c4f611b5de134"
+      }
+    },
+    {
+      "path": "cpp/platform/surface_win32.cpp",
+      "file": {
+        "path": "build/artifacts/7109a1b88f675917f9d038e2c2a13c4d808f8d0c40c2786ebaccf8347fe9b04a/surface_win32.cpp",
+        "sha256": "7109a1b88f675917f9d038e2c2a13c4d808f8d0c40c2786ebaccf8347fe9b04a"
+      }
+    },
+    {
+      "path": "cpp/platform/surface_x11.cpp",
+      "file": {
+        "path": "build/artifacts/ad8c6e72e95cc02b1ec65751de8c1e40b89a6eaad78a68b84523d4439788f66a/surface_x11.cpp",
+        "sha256": "ad8c6e72e95cc02b1ec65751de8c1e40b89a6eaad78a68b84523d4439788f66a"
+      }
+    },
+    {
+      "path": "cpp/platform/vk_layer.cpp",
+      "file": {
+        "path": "build/artifacts/9ce7f3ae573f9367bd54d51c49bf2d71a0e7458431d631f242906b9d65622061/vk_layer.cpp",
+        "sha256": "9ce7f3ae573f9367bd54d51c49bf2d71a0e7458431d631f242906b9d65622061"
+      }
+    },
+    {
+      "path": "cpp/platform/vk_layer_telemetry.hpp",
+      "file": {
+        "path": "build/artifacts/5aa439452b8317b58822c1a9202969782706c927d748c98146cd6b3f008ad018/vk_layer_telemetry.hpp",
+        "sha256": "5aa439452b8317b58822c1a9202969782706c927d748c98146cd6b3f008ad018"
+      }
+    },
+    {
+      "path": "cpp/runtime.cpp",
+      "file": {
+        "path": "cpp/runtime.cpp",
+        "sha256": "020e267244b506bd5043f7a619e2741a53cf178befaf5dc8369a1c34461da12c"
+      }
+    },
+    {
+      "path": "cpp/runtime.hpp",
+      "file": {
+        "path": "build/artifacts/f5071ee542f06c5d7450dfc3e31085966051902092eb10dd7bc4bb2916613127/runtime.hpp",
+        "sha256": "f5071ee542f06c5d7450dfc3e31085966051902092eb10dd7bc4bb2916613127"
+      }
+    },
+    {
+      "path": "cpp/runtime_batch_cache.hpp",
+      "file": {
+        "path": "build/artifacts/936cf5d94d5b6d86ad5c0b4544385d8e47efeea61a925bcbfe6f56a4c874dcae/runtime_batch_cache.hpp",
+        "sha256": "936cf5d94d5b6d86ad5c0b4544385d8e47efeea61a925bcbfe6f56a4c874dcae"
+      }
+    },
+    {
+      "path": "cpp/runtime_batch_capacity.hpp",
+      "file": {
+        "path": "build/artifacts/2428de457e084701d66e408caa517f640b774526bfb5853c2438dec69734174c/runtime_batch_capacity.hpp",
+        "sha256": "2428de457e084701d66e408caa517f640b774526bfb5853c2438dec69734174c"
+      }
+    },
+    {
+      "path": "cpp/runtime_batch_owner.hpp",
+      "file": {
+        "path": "build/artifacts/f7fd01d5b1d67c0432ad384388f558f2c5847de322f16d451059a1c3a63e7a20/runtime_batch_owner.hpp",
+        "sha256": "f7fd01d5b1d67c0432ad384388f558f2c5847de322f16d451059a1c3a63e7a20"
+      }
+    },
+    {
+      "path": "cpp/runtime_batch_plan.hpp",
+      "file": {
+        "path": "build/artifacts/bd33bcd12f37ef81e349f6350b490e45951ef119b9534d2f46ce869fda1ee897/runtime_batch_plan.hpp",
+        "sha256": "bd33bcd12f37ef81e349f6350b490e45951ef119b9534d2f46ce869fda1ee897"
+      }
+    },
+    {
+      "path": "cpp/runtime_batch_strip.hpp",
+      "file": {
+        "path": "build/artifacts/a444e95bb7d2135bfdf2104e116813837b0542e89064b618c87cae224ef6ccda/runtime_batch_strip.hpp",
+        "sha256": "a444e95bb7d2135bfdf2104e116813837b0542e89064b618c87cae224ef6ccda"
+      }
+    },
+    {
+      "path": "cpp/runtime_batch_topology.hpp",
+      "file": {
+        "path": "build/artifacts/4ed18090fb6ce3067c89d10f5a005939531a9b7bf08c5d9111c45f0da574e604/runtime_batch_topology.hpp",
+        "sha256": "4ed18090fb6ce3067c89d10f5a005939531a9b7bf08c5d9111c45f0da574e604"
+      }
+    },
+    {
+      "path": "cpp/runtime_frame_lifecycle.hpp",
+      "file": {
+        "path": "build/artifacts/730ec494aa2e31a2bddd9cf49ab2f9a0b78822565d87592b6afcf4d8b429b88e/runtime_frame_lifecycle.hpp",
+        "sha256": "730ec494aa2e31a2bddd9cf49ab2f9a0b78822565d87592b6afcf4d8b429b88e"
+      }
+    },
+    {
+      "path": "cpp/runtime_framebuffer_config.hpp",
+      "file": {
+        "path": "build/artifacts/27e43caf92009cb40331b6a88317e5b67d5d10ecdfb47a17c550ee50c93f2cd3/runtime_framebuffer_config.hpp",
+        "sha256": "27e43caf92009cb40331b6a88317e5b67d5d10ecdfb47a17c550ee50c93f2cd3"
+      }
+    },
+    {
+      "path": "cpp/runtime_line.hpp",
+      "file": {
+        "path": "build/artifacts/1a7f8f2cb0a47898f386c8893552d48d8a29a56cf6c21af55bfe8f129dc7aae0/runtime_line.hpp",
+        "sha256": "1a7f8f2cb0a47898f386c8893552d48d8a29a56cf6c21af55bfe8f129dc7aae0"
+      }
+    },
+    {
+      "path": "cpp/runtime_line_batch.hpp",
+      "file": {
+        "path": "build/artifacts/c4a61a7312c3f9260716688833f574dd6778f63f34a88f9be4d31caa12af547e/runtime_line_batch.hpp",
+        "sha256": "c4a61a7312c3f9260716688833f574dd6778f63f34a88f9be4d31caa12af547e"
+      }
+    },
+    {
+      "path": "cpp/runtime_line_cache.hpp",
+      "file": {
+        "path": "build/artifacts/87e0c12fa64b26db7dc7d9f7c81278b329dc1d2d12981958ec3b2c7abb243446/runtime_line_cache.hpp",
+        "sha256": "87e0c12fa64b26db7dc7d9f7c81278b329dc1d2d12981958ec3b2c7abb243446"
+      }
+    },
+    {
+      "path": "cpp/runtime_line_capture.hpp",
+      "file": {
+        "path": "build/artifacts/2f29366a24fbff96037e9f9d12c1336e2e1952b2b49d9aaf2e15e963d288228e/runtime_line_capture.hpp",
+        "sha256": "2f29366a24fbff96037e9f9d12c1336e2e1952b2b49d9aaf2e15e963d288228e"
+      }
+    },
+    {
+      "path": "cpp/runtime_line_consumer.hpp",
+      "file": {
+        "path": "build/artifacts/d28e9e1322db45393ef45da4d043944c31c1e1318a48d5a4baa6142552f2bb51/runtime_line_consumer.hpp",
+        "sha256": "d28e9e1322db45393ef45da4d043944c31c1e1318a48d5a4baa6142552f2bb51"
+      }
+    },
+    {
+      "path": "cpp/runtime_line_consumer_accounting.hpp",
+      "file": {
+        "path": "build/artifacts/67bdd2a2fa851cbbabf613a1da5becd4d358430a59a6cca9ae5829ff04eb100a/runtime_line_consumer_accounting.hpp",
+        "sha256": "67bdd2a2fa851cbbabf613a1da5becd4d358430a59a6cca9ae5829ff04eb100a"
+      }
+    },
+    {
+      "path": "cpp/runtime_line_ownership.hpp",
+      "file": {
+        "path": "build/artifacts/e8c3461f1390b8a92b3e95ba364cdb131dda9e727ba067e035e6753044d9fa02/runtime_line_ownership.hpp",
+        "sha256": "e8c3461f1390b8a92b3e95ba364cdb131dda9e727ba067e035e6753044d9fa02"
+      }
+    },
+    {
+      "path": "cpp/runtime_line_pool.hpp",
+      "file": {
+        "path": "build/artifacts/c6b23d76a766f0077543db1e676c96ea5e0d6c8a6e25a91caab00dc911c73c7c/runtime_line_pool.hpp",
+        "sha256": "c6b23d76a766f0077543db1e676c96ea5e0d6c8a6e25a91caab00dc911c73c7c"
+      }
+    },
+    {
+      "path": "cpp/runtime_line_resources.hpp",
+      "file": {
+        "path": "build/artifacts/0554c89c8c2314bb580155eee85b9788d8ec1770ae36ef1ea1af492832d5fa23/runtime_line_resources.hpp",
+        "sha256": "0554c89c8c2314bb580155eee85b9788d8ec1770ae36ef1ea1af492832d5fa23"
+      }
+    },
+    {
+      "path": "cpp/runtime_line_variants.hpp",
+      "file": {
+        "path": "build/artifacts/0b2126073a527d262f8d93d92c75475695054ef3fb069703512a676ff095a791/runtime_line_variants.hpp",
+        "sha256": "0b2126073a527d262f8d93d92c75475695054ef3fb069703512a676ff095a791"
+      }
+    },
+    {
+      "path": "cpp/runtime_owned_texture.hpp",
+      "file": {
+        "path": "build/artifacts/c525a09371a3069219400066a6fb94c36d107e4932c719bbd2288fb334c3eb1d/runtime_owned_texture.hpp",
+        "sha256": "c525a09371a3069219400066a6fb94c36d107e4932c719bbd2288fb334c3eb1d"
+      }
+    },
+    {
+      "path": "cpp/runtime_point.hpp",
+      "file": {
+        "path": "build/artifacts/8e13a39989913be6cde5e383ac8b68dd44458246a50fb2bed10addca0cf19ef5/runtime_point.hpp",
+        "sha256": "8e13a39989913be6cde5e383ac8b68dd44458246a50fb2bed10addca0cf19ef5"
+      }
+    },
+    {
+      "path": "cpp/runtime_point_batch.hpp",
+      "file": {
+        "path": "build/artifacts/ea761895fa7ceaacda83f9bb60cbc666e6f824e750b0555eb981b780c31a2b2a/runtime_point_batch.hpp",
+        "sha256": "ea761895fa7ceaacda83f9bb60cbc666e6f824e750b0555eb981b780c31a2b2a"
+      }
+    },
+    {
+      "path": "cpp/runtime_point_batch_owner.hpp",
+      "file": {
+        "path": "build/artifacts/77edeb88358cbfbf6bc73d97444a9d814c0e9d34e22fc1ff742f950482f24412/runtime_point_batch_owner.hpp",
+        "sha256": "77edeb88358cbfbf6bc73d97444a9d814c0e9d34e22fc1ff742f950482f24412"
+      }
+    },
+    {
+      "path": "cpp/runtime_point_partition.hpp",
+      "file": {
+        "path": "build/artifacts/62894aca73e83ea980762d86c01d70fe80bae1df345761b003bcbf31956465ce/runtime_point_partition.hpp",
+        "sha256": "62894aca73e83ea980762d86c01d70fe80bae1df345761b003bcbf31956465ce"
+      }
+    },
+    {
+      "path": "cpp/runtime_query_timing.hpp",
+      "file": {
+        "path": "build/artifacts/c63474aa388065c4c7e6263eba2792f6693d09d53cb3280b7dacb4a2e19841af/runtime_query_timing.hpp",
+        "sha256": "c63474aa388065c4c7e6263eba2792f6693d09d53cb3280b7dacb4a2e19841af"
+      }
+    },
+    {
+      "path": "cpp/runtime_readback.hpp",
+      "file": {
+        "path": "build/artifacts/b47c1bb160ff9c42d9002f5d35431c60913147b26c8ddcc312aa1112fcccf701/runtime_readback.hpp",
+        "sha256": "b47c1bb160ff9c42d9002f5d35431c60913147b26c8ddcc312aa1112fcccf701"
+      }
+    },
+    {
+      "path": "cpp/runtime_render_semantics.hpp",
+      "file": {
+        "path": "build/artifacts/ca556739f3a95ac19f92e5ea699969891efe607c9d822fee07466d8fe2c72999/runtime_render_semantics.hpp",
+        "sha256": "ca556739f3a95ac19f92e5ea699969891efe607c9d822fee07466d8fe2c72999"
+      }
+    },
+    {
+      "path": "cpp/runtime_state.hpp",
+      "file": {
+        "path": "build/artifacts/5616b4d7843ecc4cd0fd345d4e4eca725832570325742f169cd53ce2c9a480b2/runtime_state.hpp",
+        "sha256": "5616b4d7843ecc4cd0fd345d4e4eca725832570325742f169cd53ce2c9a480b2"
+      }
+    },
+    {
+      "path": "cpp/runtime_state_query.hpp",
+      "file": {
+        "path": "build/artifacts/982b5afb1636b010f13738a386f5b11bf4eaef9b262d73ca92d94c867d9e75c2/runtime_state_query.hpp",
+        "sha256": "982b5afb1636b010f13738a386f5b11bf4eaef9b262d73ca92d94c867d9e75c2"
+      }
+    },
+    {
+      "path": "cpp/runtime_texture.hpp",
+      "file": {
+        "path": "build/artifacts/6b06c598bc8c09ac878039bf25fe9eb819f3accf9f5916515f4509482a3a76fe/runtime_texture.hpp",
+        "sha256": "6b06c598bc8c09ac878039bf25fe9eb819f3accf9f5916515f4509482a3a76fe"
+      }
+    },
+    {
+      "path": "cpp/runtime_uniform_updates.hpp",
+      "file": {
+        "path": "build/artifacts/15302bc25aec806465449ef72b7fba3f5d042f2a9d69abe7a705bb4a2caa8377/runtime_uniform_updates.hpp",
+        "sha256": "15302bc25aec806465449ef72b7fba3f5d042f2a9d69abe7a705bb4a2caa8377"
+      }
+    },
+    {
+      "path": "cpp/shader/artifact.hpp",
+      "file": {
+        "path": "build/artifacts/044b8d2b8ad9db28295af298e27ef3c1a91b85c14a5f079682070d611eca027a/artifact.hpp",
+        "sha256": "044b8d2b8ad9db28295af298e27ef3c1a91b85c14a5f079682070d611eca027a"
+      }
+    },
+    {
+      "path": "cpp/shader/glslang_spv.cpp",
+      "file": {
+        "path": "build/artifacts/8fcea6182c5e76ba70b81ae3558d0a21c34b23d01222c9b4e0fd69cccd8de082/glslang_spv.cpp",
+        "sha256": "8fcea6182c5e76ba70b81ae3558d0a21c34b23d01222c9b4e0fd69cccd8de082"
+      }
+    },
+    {
+      "path": "cpp/shader/glslang_spv.hpp",
+      "file": {
+        "path": "build/artifacts/7445354eb363b2fd605ebde5a0b952c0114e4dba922c04185048871817ef57ac/glslang_spv.hpp",
+        "sha256": "7445354eb363b2fd605ebde5a0b952c0114e4dba922c04185048871817ef57ac"
+      }
+    },
+    {
+      "path": "cpp/shader/integer_sampling.cpp",
+      "file": {
+        "path": "build/artifacts/b41d167a8eb8afb58e6fb55d8271a46dc88774a5782d34bcade70803762cc649/integer_sampling.cpp",
+        "sha256": "b41d167a8eb8afb58e6fb55d8271a46dc88774a5782d34bcade70803762cc649"
+      }
+    },
+    {
+      "path": "cpp/shader/integer_sampling.hpp",
+      "file": {
+        "path": "build/artifacts/ae356ab0af99249448a2169c2261b32cfd85aaa38b34fef76baf2e9525386053/integer_sampling.hpp",
+        "sha256": "ae356ab0af99249448a2169c2261b32cfd85aaa38b34fef76baf2e9525386053"
+      }
+    },
+    {
+      "path": "cpp/shader/line_consumer.cpp",
+      "file": {
+        "path": "build/artifacts/a3c121cdeacf5042edf2dad7f486cebec75bd11179453491aa1bbd2b4904c1d1/line_consumer.cpp",
+        "sha256": "a3c121cdeacf5042edf2dad7f486cebec75bd11179453491aa1bbd2b4904c1d1"
+      }
+    },
+    {
+      "path": "cpp/shader/line_consumer.hpp",
+      "file": {
+        "path": "build/artifacts/ec9cf3f755aa4fe378b453d5ca3e1dc0f267a494c7f1c86a4ba2e1b51eced4ee/line_consumer.hpp",
+        "sha256": "ec9cf3f755aa4fe378b453d5ca3e1dc0f267a494c7f1c86a4ba2e1b51eced4ee"
+      }
+    },
+    {
+      "path": "cpp/shader/line_evaluator.cpp",
+      "file": {
+        "path": "build/artifacts/e0ba87a8367f447214bbd29e72a16d90f0ada73d0a43fe796e0e6c7c43dd85a4/line_evaluator.cpp",
+        "sha256": "e0ba87a8367f447214bbd29e72a16d90f0ada73d0a43fe796e0e6c7c43dd85a4"
+      }
+    },
+    {
+      "path": "cpp/shader/line_evaluator.hpp",
+      "file": {
+        "path": "build/artifacts/b90cf8e25a5be737e9ff115ce7eca154532fba40ac2160ed589516443637ed52/line_evaluator.hpp",
+        "sha256": "b90cf8e25a5be737e9ff115ce7eca154532fba40ac2160ed589516443637ed52"
+      }
+    },
+    {
+      "path": "cpp/shader/normalize.cpp",
+      "file": {
+        "path": "build/artifacts/c51342bdb142c6c3868959719ee528b6b2d9c592d0ee5576ca55d0dd1aaac2d2/normalize.cpp",
+        "sha256": "c51342bdb142c6c3868959719ee528b6b2d9c592d0ee5576ca55d0dd1aaac2d2"
+      }
+    },
+    {
+      "path": "cpp/shader/normalize.hpp",
+      "file": {
+        "path": "build/artifacts/fde90410fb3f5fd3bafe04ee232034c2d0a96a8dba075c53bb8d65a32871f5df/normalize.hpp",
+        "sha256": "fde90410fb3f5fd3bafe04ee232034c2d0a96a8dba075c53bb8d65a32871f5df"
+      }
+    },
+    {
+      "path": "cpp/runtime_byte_recycler.hpp",
+      "file": {
+        "path": "build/artifacts/4a90a338fd8833e387a7591f9c82fe955909a31118f641e1debd18296475eb80/runtime_byte_recycler.hpp",
+        "sha256": "4a90a338fd8833e387a7591f9c82fe955909a31118f641e1debd18296475eb80"
+      }
+    },
+    {
+      "path": "cpp/runtime_host_block.hpp",
+      "file": {
+        "path": "build/artifacts/49c1d8045c66a63f52e943eb9028eff10224a3b28cf4d10553ce7137cb17177f/runtime_host_block.hpp",
+        "sha256": "49c1d8045c66a63f52e943eb9028eff10224a3b28cf4d10553ce7137cb17177f"
+      }
+    },
+    {
+      "path": "cmake/dependency_origins.py",
+      "file": {
+        "path": "build/artifacts/923772347aa1e658a2d64180bdbfbbfe42075ae8af0d32fbc9a2e709b56e0541/dependency_origins.py",
+        "sha256": "923772347aa1e658a2d64180bdbfbbfe42075ae8af0d32fbc9a2e709b56e0541"
+      }
+    },
+    {
+      "path": "cmake/native_sdk.py",
+      "file": {
+        "path": "build/artifacts/b86fece76b81c2e9429fd49f9468a0d735dfaff8ffe00f821635c90a69019601/native_sdk.py",
+        "sha256": "b86fece76b81c2e9429fd49f9468a0d735dfaff8ffe00f821635c90a69019601"
+      }
+    },
+    {
+      "path": "cmake/NativeSDK.cmake",
+      "file": {
+        "path": "build/artifacts/8774893d8c1aebf2226e725d0797ecac1f8e33078dd47cbc0d5856df2bf416ea/NativeSDK.cmake",
+        "sha256": "8774893d8c1aebf2226e725d0797ecac1f8e33078dd47cbc0d5856df2bf416ea"
+      }
+    },
+    {
+      "path": "cmake/RefreshNativeSDKPackage.cmake",
+      "file": {
+        "path": "build/artifacts/12b0a76d303b795620bfb550540be0087bc7af3696c212a8245aaab7fa03f534/RefreshNativeSDKPackage.cmake",
+        "sha256": "12b0a76d303b795620bfb550540be0087bc7af3696c212a8245aaab7fa03f534"
+      }
+    },
+    {
+      "path": "cmake/runtime_package.py",
+      "file": {
+        "path": "build/artifacts/b232799722f56f833c130e8110d97ab1d6459e841c884a9bc588837bb38d5f39/runtime_package.py",
+        "sha256": "b232799722f56f833c130e8110d97ab1d6459e841c884a9bc588837bb38d5f39"
+      }
+    },
+    {
+      "path": "cmake/verify_dependencies.py",
+      "file": {
+        "path": "build/artifacts/40b95837957d65e3a45d867a3bb5524929b5ca13f58d3c3bc38203fdb9d19e9d/verify_dependencies.py",
+        "sha256": "40b95837957d65e3a45d867a3bb5524929b5ca13f58d3c3bc38203fdb9d19e9d"
+      }
+    },
+    {
+      "path": "cmake/VispyNativeSDKConfig.cmake.in",
+      "file": {
+        "path": "build/artifacts/f0f77f0e89c144089fd3f6c4566dd3359b0d48a0a824c2dfaeb67265591d1f26/VispyNativeSDKConfig.cmake.in",
+        "sha256": "f0f77f0e89c144089fd3f6c4566dd3359b0d48a0a824c2dfaeb67265591d1f26"
+      }
+    },
+    {
+      "path": "cmake/WindowsCompilerPolicy.cmake",
+      "file": {
+        "path": "build/artifacts/fa97a81716b2c19a08f3d6cf810890a4246940220f0907e8ee75d125ff998aad/WindowsCompilerPolicy.cmake",
+        "sha256": "fa97a81716b2c19a08f3d6cf810890a4246940220f0907e8ee75d125ff998aad"
+      }
+    },
+    {
+      "path": "CMakeLists.txt",
+      "file": {
+        "path": "build/artifacts/6fcbcc1e5d3cc891cb7d30dfb7cc3ca038809a9486e09e24c4a282e27d0216b2/CMakeLists.txt",
+        "sha256": "6fcbcc1e5d3cc891cb7d30dfb7cc3ca038809a9486e09e24c4a282e27d0216b2"
+      }
+    },
+    {
+      "path": "pyproject.toml",
+      "file": {
+        "path": "pyproject.toml",
+        "sha256": "587f43a10d314081f088efccad38206a2ba12401a6fb15ededca3dd97986aaef"
+      }
+    },
+    {
+      "path": "src/vispy/visuals/text/_sdf_cpu.pyx",
+      "file": {
+        "path": "build/artifacts/ca63c4ae088737d8e1045ba3fc65e70a10334de0db18cf8c51097794897310d1/_sdf_cpu.pyx",
+        "sha256": "ca63c4ae088737d8e1045ba3fc65e70a10334de0db18cf8c51097794897310d1"
+      }
+    },
+    {
+      "path": "uv.lock",
+      "file": {
+        "path": "uv.lock",
+        "sha256": "d6dd851b6c4ec1d32c5920895b25a80dea30597c7b953181b270559d1f89ae32"
+      }
+    },
+    {
+      "path": "cmake/dependencies.lock.json",
+      "file": {
+        "path": "build/artifacts/67e06976a2612e554990775ae1a88848e6621e1831b40931dcc53c3c34b74cea/dependencies.lock.json",
+        "sha256": "67e06976a2612e554990775ae1a88848e6621e1831b40931dcc53c3c34b74cea"
+      }
+    },
+    {
+      "path": "tests/shaders/artifact_contract.cpp",
+      "file": {
+        "path": "build/artifacts/9bb76c789324a4030e587faa184485512a8925ebdaf8079f7f755568f5dfd633/artifact_contract.cpp",
+        "sha256": "9bb76c789324a4030e587faa184485512a8925ebdaf8079f7f755568f5dfd633"
+      }
+    },
+    {
+      "path": "tests/shaders/corpus/volume-iso.frag",
+      "file": {
+        "path": "build/artifacts/1cd0b52056605147ac153c8d47b42dedc931af907eaa502a861c87b7cb50cb2d/volume-iso.frag",
+        "sha256": "1cd0b52056605147ac153c8d47b42dedc931af907eaa502a861c87b7cb50cb2d"
+      }
+    },
+    {
+      "path": "tests/input_layout/batch_planner_contract.cpp",
+      "file": {
+        "path": "build/artifacts/ac2551e7707c64cb2f60b1651d719affc70a5c378e6518c16569d29dc1bc7112/batch_planner_contract.cpp",
+        "sha256": "ac2551e7707c64cb2f60b1651d719affc70a5c378e6518c16569d29dc1bc7112"
+      }
+    },
+    {
+      "path": "tests/shaders/uniform_updates_contract.cpp",
+      "file": {
+        "path": "build/artifacts/0af8bf0b1b3abbd5058dcaf46ba4b92039d6e675820ad74ab6a7c968d17a0b66/uniform_updates_contract.cpp",
+        "sha256": "0af8bf0b1b3abbd5058dcaf46ba4b92039d6e675820ad74ab6a7c968d17a0b66"
+      }
+    },
+    {
+      "path": "tests/input_layout/runtime_batch_cache_contract.cpp",
+      "file": {
+        "path": "build/artifacts/5444e0c8163fd7866c85f1e7d40a5d3b045ba37a26f4503464fd013e236f9a85/runtime_batch_cache_contract.cpp",
+        "sha256": "5444e0c8163fd7866c85f1e7d40a5d3b045ba37a26f4503464fd013e236f9a85"
+      }
+    },
+    {
+      "path": "tests/platform/vk_layer_contract.cpp",
+      "file": {
+        "path": "build/artifacts/72acdf0f5713c13485011103f0267508ddbefb316a5f1f7a5e1d7e19a17dc31e/vk_layer_contract.cpp",
+        "sha256": "72acdf0f5713c13485011103f0267508ddbefb316a5f1f7a5e1d7e19a17dc31e"
+      }
+    },
+    {
+      "path": "tests/shaders/corpus/volume-iso.vert",
+      "file": {
+        "path": "build/artifacts/3c4297807484b04759e72ffacd2c9df83b4a3ff0862bdfa4bfa70eb226a65d3f/volume-iso.vert",
+        "sha256": "3c4297807484b04759e72ffacd2c9df83b4a3ff0862bdfa4bfa70eb226a65d3f"
+      }
+    },
+    {
+      "path": "tests/platform/library_fixture.cpp",
+      "file": {
+        "path": "build/artifacts/c95f75ea257f97c8b122a65a1275ad7f21c288ea72b07544f9d7b56cf6a07346/library_fixture.cpp",
+        "sha256": "c95f75ea257f97c8b122a65a1275ad7f21c288ea72b07544f9d7b56cf6a07346"
+      }
+    },
+    {
+      "path": "tests/shaders/artifact_consumer_policy_contract.cpp",
+      "file": {
+        "path": "build/artifacts/18d9014cf8f3c0f8a341979abc0ca5ff586b74898cbca7c547d088e676c00f95/artifact_consumer_policy_contract.cpp",
+        "sha256": "18d9014cf8f3c0f8a341979abc0ca5ff586b74898cbca7c547d088e676c00f95"
+      }
+    },
+    {
+      "path": "tests/input_layout/ordered_strip_runtime_contract.cpp",
+      "file": {
+        "path": "build/artifacts/4f621cc013e0002034c9444ddff711f0c5c2ec21546cfa4bc7800840c598a6da/ordered_strip_runtime_contract.cpp",
+        "sha256": "4f621cc013e0002034c9444ddff711f0c5c2ec21546cfa4bc7800840c598a6da"
+      }
+    },
+    {
+      "path": "tests/input_layout/batch_capacity_contract.cpp",
+      "file": {
+        "path": "build/artifacts/005965929eaff8ce1cb6b42ccbf165e6cf94b8afbfb4b8adb82234d522fabb02/batch_capacity_contract.cpp",
+        "sha256": "005965929eaff8ce1cb6b42ccbf165e6cf94b8afbfb4b8adb82234d522fabb02"
+      }
+    },
+    {
+      "path": "tests/input_layout/ordinary_line_runtime_contract.cpp",
+      "file": {
+        "path": "build/artifacts/95e043470e6a3390b178c2d4b1e29110576ff06e3fc02781904f4298ce90295d/ordinary_line_runtime_contract.cpp",
+        "sha256": "95e043470e6a3390b178c2d4b1e29110576ff06e3fc02781904f4298ce90295d"
+      }
+    },
+    {
+      "path": "tests/shaders/artifact_consumer_contract.cpp",
+      "file": {
+        "path": "build/artifacts/c59ead2d001463f49e1387a1fcd1bff607dfc2af22db618f4eae2e83ed1aba7b/artifact_consumer_contract.cpp",
+        "sha256": "c59ead2d001463f49e1387a1fcd1bff607dfc2af22db618f4eae2e83ed1aba7b"
+      }
+    },
+    {
+      "path": "tests/shaders/runtime_line_variants_contract.cpp",
+      "file": {
+        "path": "build/artifacts/f0ffa56d42fb896294f092eb108155d368d4274574859578137537299b3fa323/runtime_line_variants_contract.cpp",
+        "sha256": "f0ffa56d42fb896294f092eb108155d368d4274574859578137537299b3fa323"
+      }
+    },
+    {
+      "path": "tests/lines/line_pool_contract.cpp",
+      "file": {
+        "path": "build/artifacts/ccf3e369773de73e3f93b9211a7824fa5e93dfc3bd3c0dcf9d07c5571ef3fc51/line_pool_contract.cpp",
+        "sha256": "ccf3e369773de73e3f93b9211a7824fa5e93dfc3bd3c0dcf9d07c5571ef3fc51"
+      }
+    },
+    {
+      "path": "tests/lines/line_evaluator_contract.cpp",
+      "file": {
+        "path": "build/artifacts/27ec6214d26166928a5d24c9e516cd6aa08f7fcafac8cfbb539a727be108be04/line_evaluator_contract.cpp",
+        "sha256": "27ec6214d26166928a5d24c9e516cd6aa08f7fcafac8cfbb539a727be108be04"
+      }
+    },
+    {
+      "path": "tests/shaders/corpus/volume-mip.frag",
+      "file": {
+        "path": "build/artifacts/8f3d4bc0895f7902031cb1ee5d39b77bbff91fd40afe16b503a3c3b6a7dad7d2/volume-mip.frag",
+        "sha256": "8f3d4bc0895f7902031cb1ee5d39b77bbff91fd40afe16b503a3c3b6a7dad7d2"
+      }
+    },
+    {
+      "path": "tests/benchmarks/frame_lifecycle_contract.cpp",
+      "file": {
+        "path": "build/artifacts/c287ece62a3dc5fb749b3d2c8ff708a50e4411df1c047d20e93acebace1b6ea7/frame_lifecycle_contract.cpp",
+        "sha256": "c287ece62a3dc5fb749b3d2c8ff708a50e4411df1c047d20e93acebace1b6ea7"
+      }
+    },
+    {
+      "path": "tests/input_layout/batch_owner_contract.cpp",
+      "file": {
+        "path": "build/artifacts/e8d51dadc128d0088d73d9ecef125cbabc38861930bab02a712ed173321adca2/batch_owner_contract.cpp",
+        "sha256": "e8d51dadc128d0088d73d9ecef125cbabc38861930bab02a712ed173321adca2"
+      }
+    },
+    {
+      "path": "tests/markers/point_contract.cpp",
+      "file": {
+        "path": "build/artifacts/f6e144c0fc6cd9fe1a9dcc233ec856c29efc4de192ee6f4e5a93782006706125/point_contract.cpp",
+        "sha256": "f6e144c0fc6cd9fe1a9dcc233ec856c29efc4de192ee6f4e5a93782006706125"
+      }
+    },
+    {
+      "path": "tests/shaders/runtime_line_consumer_policy_contract.cpp",
+      "file": {
+        "path": "build/artifacts/6e0cf38342c7a969585dd8c8ad236de9c1149260d2b46de3e1db2e5a195e5841/runtime_line_consumer_policy_contract.cpp",
+        "sha256": "6e0cf38342c7a969585dd8c8ad236de9c1149260d2b46de3e1db2e5a195e5841"
+      }
+    },
+    {
+      "path": "tests/textures/texture_preparation_legacy_reference.hpp",
+      "file": {
+        "path": "build/artifacts/7c6d035be6f25c5c9042242f7da2eb19753eefe19f301b6f4b136d7ab82a1af1/texture_preparation_legacy_reference.hpp",
+        "sha256": "7c6d035be6f25c5c9042242f7da2eb19753eefe19f301b6f4b136d7ab82a1af1"
+      }
+    },
+    {
+      "path": "tests/bindings/owned_upload_contract.cpp",
+      "file": {
+        "path": "build/artifacts/215c7a1eaef8f5b28f06c71ca09a49af419290654d354c356b73db5504f1bfba/owned_upload_contract.cpp",
+        "sha256": "215c7a1eaef8f5b28f06c71ca09a49af419290654d354c356b73db5504f1bfba"
+      }
+    },
+    {
+      "path": "tests/shaders/batch_identity_contract.cpp",
+      "file": {
+        "path": "build/artifacts/eed3109dec513194522c118002609cd1ce246f88a87039c6514234814e09a2ee/batch_identity_contract.cpp",
+        "sha256": "eed3109dec513194522c118002609cd1ce246f88a87039c6514234814e09a2ee"
+      }
+    },
+    {
+      "path": "tests/shaders/vertex_input_span_contract.hpp",
+      "file": {
+        "path": "build/artifacts/31254aad7d149e790c62e7974072285be24b170155f6294b873c6d49426ffc6f/vertex_input_span_contract.hpp",
+        "sha256": "31254aad7d149e790c62e7974072285be24b170155f6294b873c6d49426ffc6f"
+      }
+    },
+    {
+      "path": "tests/shaders/integer_sampling_boundary_contract.cpp",
+      "file": {
+        "path": "build/artifacts/f3cdccab482f42f48abb3f2e77abb8fcbf58f00257946c117a479b8e46245516/integer_sampling_boundary_contract.cpp",
+        "sha256": "f3cdccab482f42f48abb3f2e77abb8fcbf58f00257946c117a479b8e46245516"
+      }
+    },
+    {
+      "path": "tests/shaders/normalization_contract.cpp",
+      "file": {
+        "path": "build/artifacts/f4b7593897f83e6a53c5856e23841fa447cf22c48eee095b9a883488c2b0df90/normalization_contract.cpp",
+        "sha256": "f4b7593897f83e6a53c5856e23841fa447cf22c48eee095b9a883488c2b0df90"
+      }
+    },
+    {
+      "path": "tests/textures/texture_conversion_corpus.cpp",
+      "file": {
+        "path": "build/artifacts/9974708d26d5f52d19608e9c287487fa4e00122254e9487f19abf7df0d2a028c/texture_conversion_corpus.cpp",
+        "sha256": "9974708d26d5f52d19608e9c287487fa4e00122254e9487f19abf7df0d2a028c"
+      }
+    },
+    {
+      "path": "tests/shaders/corpus/volume-translucent.frag",
+      "file": {
+        "path": "build/artifacts/e22b4f4e4e2c52567466236a2a8c05c8ab62414ff4005f12f71ce0697f1d6c15/volume-translucent.frag",
+        "sha256": "e22b4f4e4e2c52567466236a2a8c05c8ab62414ff4005f12f71ce0697f1d6c15"
+      }
+    },
+    {
+      "path": "tests/shaders/corpus/image-scalar.vert",
+      "file": {
+        "path": "build/artifacts/d079c6bc08ab3001e5b4e03e662c45cb115e7a8653e1f45e768d108e77488f0d/image-scalar.vert",
+        "sha256": "d079c6bc08ab3001e5b4e03e662c45cb115e7a8653e1f45e768d108e77488f0d"
+      }
+    },
+    {
+      "path": "tests/shaders/corpus/function-blue.vert",
+      "file": {
+        "path": "build/artifacts/f90eb8605caa544ace1e5e57ab3c9bd57000885c2eb5d212912f1b3d1f12d917/function-blue.vert",
+        "sha256": "f90eb8605caa544ace1e5e57ab3c9bd57000885c2eb5d212912f1b3d1f12d917"
+      }
+    },
+    {
+      "path": "tests/shaders/integer_sampling_contract.cpp",
+      "file": {
+        "path": "build/artifacts/59c83622aecd4706fc047ebee9f95196b2dac67304a900de99d11cf7e0891be2/integer_sampling_contract.cpp",
+        "sha256": "59c83622aecd4706fc047ebee9f95196b2dac67304a900de99d11cf7e0891be2"
+      }
+    },
+    {
+      "path": "tests/textures/owned_texture_contract.cpp",
+      "file": {
+        "path": "build/artifacts/1dc8c64bf8a739b3f59a18a745c0d84498b07ff7f4a3f18af197280313b51c2c/owned_texture_contract.cpp",
+        "sha256": "1dc8c64bf8a739b3f59a18a745c0d84498b07ff7f4a3f18af197280313b51c2c"
+      }
+    },
+    {
+      "path": "tests/lines/line_capture_contract.cpp",
+      "file": {
+        "path": "build/artifacts/e087c1aa08a24ce1183900ae3843c7f29453eacc5b7c782170df56bcedcb71a2/line_capture_contract.cpp",
+        "sha256": "e087c1aa08a24ce1183900ae3843c7f29453eacc5b7c782170df56bcedcb71a2"
+      }
+    },
+    {
+      "path": "tests/shaders/corpus/volume-translucent.vert",
+      "file": {
+        "path": "build/artifacts/3c4297807484b04759e72ffacd2c9df83b4a3ff0862bdfa4bfa70eb226a65d3f/volume-translucent.vert",
+        "sha256": "3c4297807484b04759e72ffacd2c9df83b4a3ff0862bdfa4bfa70eb226a65d3f"
+      }
+    },
+    {
+      "path": "tests/lines/line_contract.cpp",
+      "file": {
+        "path": "build/artifacts/54c0c63770afeb9e8819d3b1a628ea9f5cea752fe2a142dbcdad62d30e69d9ee/line_contract.cpp",
+        "sha256": "54c0c63770afeb9e8819d3b1a628ea9f5cea752fe2a142dbcdad62d30e69d9ee"
+      }
+    },
+    {
+      "path": "tests/platform/native_contract.cpp",
+      "file": {
+        "path": "build/artifacts/8cbf90f791df7a164fecfce97601f8a0c56957ce2e59d64a81071789b8262555/native_contract.cpp",
+        "sha256": "8cbf90f791df7a164fecfce97601f8a0c56957ce2e59d64a81071789b8262555"
+      }
+    },
+    {
+      "path": "tests/shaders/runtime_line_consumer_accounting_contract.cpp",
+      "file": {
+        "path": "build/artifacts/75519dbf7ea3d446c0f5f39945ba827d849c97514f9da77353234e5a1b8b0ec6/runtime_line_consumer_accounting_contract.cpp",
+        "sha256": "75519dbf7ea3d446c0f5f39945ba827d849c97514f9da77353234e5a1b8b0ec6"
+      }
+    },
+    {
+      "path": "tests/native/framebuffer_configuration_contract.cpp",
+      "file": {
+        "path": "build/artifacts/15649ae9bc510ef41b9747a3b233b680d4823950a110de43201ec3c6b41e98ee/framebuffer_configuration_contract.cpp",
+        "sha256": "15649ae9bc510ef41b9747a3b233b680d4823950a110de43201ec3c6b41e98ee"
+      }
+    },
+    {
+      "path": "tests/markers/point_partition_contract.cpp",
+      "file": {
+        "path": "build/artifacts/632b7dfd97ef4ffe7e650a01a787af9fbdf17e6ec2390a868eeda89fdefcb847/point_partition_contract.cpp",
+        "sha256": "632b7dfd97ef4ffe7e650a01a787af9fbdf17e6ec2390a868eeda89fdefcb847"
+      }
+    },
+    {
+      "path": "tests/shaders/integer_sampling_artifact_contract.cpp",
+      "file": {
+        "path": "build/artifacts/6b04303421bcd784691658e16c76ddcfe19c29d8e82b40165b04d23c8de8d6ac/integer_sampling_artifact_contract.cpp",
+        "sha256": "6b04303421bcd784691658e16c76ddcfe19c29d8e82b40165b04d23c8de8d6ac"
+      }
+    },
+    {
+      "path": "tests/textures/texture_contract.cpp",
+      "file": {
+        "path": "build/artifacts/9926db268355bc5651b20b35689195a4be6f909a976be707a000ce704175660f/texture_contract.cpp",
+        "sha256": "9926db268355bc5651b20b35689195a4be6f909a976be707a000ce704175660f"
+      }
+    },
+    {
+      "path": "tests/markers/point_batch_contract.cpp",
+      "file": {
+        "path": "build/artifacts/c568f7012383e6725b8d58a248168eebbd21399b064b4421110dd1d0aaacf68c/point_batch_contract.cpp",
+        "sha256": "c568f7012383e6725b8d58a248168eebbd21399b064b4421110dd1d0aaacf68c"
+      }
+    },
+    {
+      "path": "tests/shaders/corpus/image-rgba.vert",
+      "file": {
+        "path": "build/artifacts/d079c6bc08ab3001e5b4e03e662c45cb115e7a8653e1f45e768d108e77488f0d/image-rgba.vert",
+        "sha256": "d079c6bc08ab3001e5b4e03e662c45cb115e7a8653e1f45e768d108e77488f0d"
+      }
+    },
+    {
+      "path": "tests/lines/line_consumer_resource_contract.cpp",
+      "file": {
+        "path": "build/artifacts/948cb4ee4679ff3e87d971930572973e9a1fecd28fc9068da2c552cf0e99bf57/line_consumer_resource_contract.cpp",
+        "sha256": "948cb4ee4679ff3e87d971930572973e9a1fecd28fc9068da2c552cf0e99bf57"
+      }
+    },
+    {
+      "path": "tests/state/state_contract.cpp",
+      "file": {
+        "path": "build/artifacts/906b19e5fad91a15cc66439f619ada00d8e480e724528aca19950fa8144b98f7/state_contract.cpp",
+        "sha256": "906b19e5fad91a15cc66439f619ada00d8e480e724528aca19950fa8144b98f7"
+      }
+    },
+    {
+      "path": "tests/textures/integer_sampler_snapshot_contract.cpp",
+      "file": {
+        "path": "build/artifacts/a4504fd878a9a56aa53c8be8b1a625b42c0d46301119e1d8c1226cb192395ab7/integer_sampler_snapshot_contract.cpp",
+        "sha256": "a4504fd878a9a56aa53c8be8b1a625b42c0d46301119e1d8c1226cb192395ab7"
+      }
+    },
+    {
+      "path": "tests/lines/line_consumer_generated_contract.cpp",
+      "file": {
+        "path": "build/artifacts/e814649714bace9cb112608f5f69f0eb86219a2c01bd446e687a39b62c02da0a/line_consumer_generated_contract.cpp",
+        "sha256": "e814649714bace9cb112608f5f69f0eb86219a2c01bd446e687a39b62c02da0a"
+      }
+    },
+    {
+      "path": "tests/lines/line_pool_inspection_contract.cpp",
+      "file": {
+        "path": "build/artifacts/a4d66084e904f5eb47afa42fbefaf5295fe06255bbd55bbfa61883a075045c9c/line_pool_inspection_contract.cpp",
+        "sha256": "a4d66084e904f5eb47afa42fbefaf5295fe06255bbd55bbfa61883a075045c9c"
+      }
+    },
+    {
+      "path": "tests/shaders/corpus/function-blue.frag",
+      "file": {
+        "path": "build/artifacts/827132b1dfaca00a6243c38a2964ed0948ef0e09f9d58b80a521dfd1092050a7/function-blue.frag",
+        "sha256": "827132b1dfaca00a6243c38a2964ed0948ef0e09f9d58b80a521dfd1092050a7"
+      }
+    },
+    {
+      "path": "tests/input_layout/batch_topology_contract.cpp",
+      "file": {
+        "path": "build/artifacts/f63e87eb4c20b68bf5e3895c397d2d364b8c0a8b98ad49115171cd74592181e6/batch_topology_contract.cpp",
+        "sha256": "f63e87eb4c20b68bf5e3895c397d2d364b8c0a8b98ad49115171cd74592181e6"
+      }
+    },
+    {
+      "path": "tests/shaders/corpus/volume-mip.vert",
+      "file": {
+        "path": "build/artifacts/3c4297807484b04759e72ffacd2c9df83b4a3ff0862bdfa4bfa70eb226a65d3f/volume-mip.vert",
+        "sha256": "3c4297807484b04759e72ffacd2c9df83b4a3ff0862bdfa4bfa70eb226a65d3f"
+      }
+    },
+    {
+      "path": "tests/lines/line_batch_contract.cpp",
+      "file": {
+        "path": "build/artifacts/584949467e9e2116d9785aefd1f08aaebb30bbd5bfa6b8db9166b22d14823464/line_batch_contract.cpp",
+        "sha256": "584949467e9e2116d9785aefd1f08aaebb30bbd5bfa6b8db9166b22d14823464"
+      }
+    },
+    {
+      "path": "tests/lines/line_ownership_contract.cpp",
+      "file": {
+        "path": "build/artifacts/69076a2dea2f740764c33e0bad1fb942304bf94cd707700278d0451f85a9d078/line_ownership_contract.cpp",
+        "sha256": "69076a2dea2f740764c33e0bad1fb942304bf94cd707700278d0451f85a9d078"
+      }
+    },
+    {
+      "path": "tests/native/upload_cache_shutdown/shutdown_contract.cpp",
+      "file": {
+        "path": "tests/native/upload_cache_shutdown/shutdown_contract.cpp",
+        "sha256": "540799422a6bcc3bc3f919bc8ad47dd718ebb5a93f5b21c9b4e5e65343bfa330"
+      }
+    },
+    {
+      "path": "tests/shaders/typed_sampling_contract.cpp",
+      "file": {
+        "path": "build/artifacts/a28279a8ac96a6dafafbc9a1707fb8464194229d92516a9182dd4141070c2dae/typed_sampling_contract.cpp",
+        "sha256": "a28279a8ac96a6dafafbc9a1707fb8464194229d92516a9182dd4141070c2dae"
+      }
+    },
+    {
+      "path": "tests/shaders/corpus/image-scalar.frag",
+      "file": {
+        "path": "build/artifacts/8e6905a64b92260c67519091ac38279805673dea6554f0afe9bba62b1e56301e/image-scalar.frag",
+        "sha256": "8e6905a64b92260c67519091ac38279805673dea6554f0afe9bba62b1e56301e"
+      }
+    },
+    {
+      "path": "tests/input_layout/batch_routing_contract.cpp",
+      "file": {
+        "path": "build/artifacts/0c1116d72f1f796a7b00fc0e22e9108f765942432d254d80bfdc7cf83a5e73f1/batch_routing_contract.cpp",
+        "sha256": "0c1116d72f1f796a7b00fc0e22e9108f765942432d254d80bfdc7cf83a5e73f1"
+      }
+    },
+    {
+      "path": "tests/shaders/corpus/image-rgba.frag",
+      "file": {
+        "path": "build/artifacts/dae779795a1b1e82b277638535bb14b9c9598d5087bc81667e77f7f293502de2/image-rgba.frag",
+        "sha256": "dae779795a1b1e82b277638535bb14b9c9598d5087bc81667e77f7f293502de2"
+      }
+    },
+    {
+      "path": "tests/shaders/attribute_binding_contract.hpp",
+      "file": {
+        "path": "build/artifacts/00d8f1734ab47c7af50a3250e947eaaf1338b90669c22f578f21fc224bbf01a2/attribute_binding_contract.hpp",
+        "sha256": "00d8f1734ab47c7af50a3250e947eaaf1338b90669c22f578f21fc224bbf01a2"
+      }
+    },
+    {
+      "path": "tests/textures/texture_full_upload_contract.hpp",
+      "file": {
+        "path": "build/artifacts/259c2da619ee2192111ca2b43e15ef652704a219c5bad53c5b16188752e598ef/texture_full_upload_contract.hpp",
+        "sha256": "259c2da619ee2192111ca2b43e15ef652704a219c5bad53c5b16188752e598ef"
+      }
+    },
+    {
+      "path": "tests/benchmarks/timestamp_contract.cpp",
+      "file": {
+        "path": "build/artifacts/e4ec4595816b14e03750bec7aeae55465c923c31903618afbd44cb9e1fdbf8c3/timestamp_contract.cpp",
+        "sha256": "e4ec4595816b14e03750bec7aeae55465c923c31903618afbd44cb9e1fdbf8c3"
+      }
+    },
+    {
+      "path": "tests/capture/readback_contract.cpp",
+      "file": {
+        "path": "build/artifacts/343bcf47fc3f49d65dd37a44951cef780f0fa9236e4015fd595a0f1161df3249/readback_contract.cpp",
+        "sha256": "343bcf47fc3f49d65dd37a44951cef780f0fa9236e4015fd595a0f1161df3249"
+      }
+    }
+  ],
+  "reuse": {
+    "candidate_scope_sha256": "a765c7b0ffebbbdf18dd36c3f7f316876dfcf7d4440aca51060cbbc55bebf7db",
+    "profile": "windows-gpu-tk86-cp312-development",
+    "recipe_sha256": "3795cbfb89ae929a8458ba447175c5108304fb6651f9b8082b5831cb0feb0b74",
+    "production_sha256": "2756c139d986439d7781d22868906c2312720310c5d6ecf8efe36213549f2f25",
+    "evidence_store": {
+      "path": "compat/evidence-stores/secondary-v1.json",
+      "sha256": "b164e3fdc85863a2327b508ea60f8d3068f740cfe90f665aa52905e28bfb3ca5"
+    },
+    "impact": "Fresh Windows native374 matches current v2 production bytes; retain original C source/SDK/tool origins and D proof bytes. Draft exact successor reuse; independent reviews pending."
+  }
+}

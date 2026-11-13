@@ -1,0 +1,44 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "PASS_FROZEN_ORACLE_PRODUCER_BINDING",
+  "reference_cases": 18,
+  "original_cpu_group_passed": 512,
+  "original_oracle_and_collector_inputs_unchanged": {
+    "tools/oracle_capture.py": "995ec2a480ab00d49500484198e0911f1194c45889a3dc3cf612467c6f35f7ff",
+    "tests/reference/buffer-ordering-opengl/authoring-sources/oracle_capture.py": "66ae25247831c184f38f2c7a2ff151b940013087104907523b11e1ed2b9b151a",
+    "tests/reference/opengl/manifest.json": "78e788f34fd7aa230f9b01fe52a4a7cce06f7d5498afba7ca8cd40df625474f7",
+    "LICENSE": "0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0",
+    "LICENSE-BSD": "a28bb857d763513c810ca843558c12cf97f64b990b855c1ce7f5e291e52fc25c",
+    "LICENSING.md": "e8a28d2d2c78d86fa2b6f83284e8f1a32237f87bfd417fd1cdfc84c8f3ce37f5"
+  },
+  "current_test_sha256": "227eadceed92490fb26068e51dd371ca914a8641656b17ec5eebe728cf8fbbe2",
+  "runtime_references_rehashed": 608,
+  "candidate_preparation_tools_unchanged": true,
+  "original_cpu_process": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\head-ci-final-assertions-515\\original-cpu-process.json",
+    "sha256": "bce9d13501dc4a43d4d48088694c87e7fd831a4370ae6692eda3dfd019f924b9"
+  },
+  "reference_process": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\head-ci-final-assertions-515\\reference-check-process.json",
+    "sha256": "3af6c34c1aeacb83809e797034bd4128b1f223f42215cdf3732882c212200cc7"
+  },
+  "preserved_failures": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\head-ci-final-assertions-515\\failure-summary.json",
+    "sha256": "fc9a13421593ad3497c57a36fdd5d3b71e98c2fd5d2b642a360aa3c11a354ed6"
+  },
+  "review_pending": true,
+  "required_ci_passed": false,
+  "artifact_admitted": false,
+  "native_build": false,
+  "scratch_created": false,
+  "verification": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\head-ci-final-assertions-515\\verification.json",
+    "sha256": "10c447d42d641d939585d7521ebe4f49b5fa510961f58b1184a934870053bb77"
+  },
+  "delta": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\head-ci-final-assertions-515\\source-delta.patch",
+    "sha256": "e3713ed17b28b01b8c88618ede9b96edc28fd609e58928bea5a0a5a11be1da4d"
+  },
+  "scope": "Historical oracle provenance binds its byte-exact existing frozen authoring source. Current collector failure regressions remain separate; oracle datasets and historical provenance are unchanged. New head CI and independent review pending."
+}

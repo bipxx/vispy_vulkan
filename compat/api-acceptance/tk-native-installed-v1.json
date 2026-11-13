@@ -1,0 +1,209 @@
+{
+  "schema": 1,
+  "status": "PASS_FINITE_INSTALLED_SCOPE_REVIEW_AND_QUALIFICATION_PENDING",
+  "source_commit": "b38c4f9068d6a425eef43b62313f0f4cf37f57d9",
+  "version": "0.17.0+vulkan.2",
+  "windows": {
+    "wheel": {
+      "path": "build/artifacts/a86b030b005cba455f46ccaeffc56bf3f438142e490999f88156370e6093fb6c/vispy-0.17.0+vulkan.2-cp312-cp312-win_amd64.whl",
+      "sha256": "a86b030b005cba455f46ccaeffc56bf3f438142e490999f88156370e6093fb6c"
+    },
+    "pytest_cases": 186,
+    "experimental_native_cases": 8,
+    "existing_raster_cases": 122,
+    "state_capture_cases": 56,
+    "skips": 0,
+    "installed_members": 537,
+    "source_overrides": 0,
+    "run": "tk-native-installed-windows-448"
+  },
+  "wsl": {
+    "wheel": {
+      "path": "build/artifacts/48164e052ddc3d8e5376a3a1f13fa652583142f4634438ae9067e204aab8b6ce/vispy-0.17.0+vulkan.2-cp312-cp312-manylinux_2_39_x86_64.whl",
+      "sha256": "48164e052ddc3d8e5376a3a1f13fa652583142f4634438ae9067e204aab8b6ce"
+    },
+    "pytest_cases": 186,
+    "experimental_native_cases": 8,
+    "existing_raster_cases": 122,
+    "state_capture_cases": 56,
+    "skips": 0,
+    "installed_members": 537,
+    "source_overrides": 0,
+    "pytest_run": "tk-native-installed-wsl-451",
+    "capture_run": "tk-native-capture-wsl-452",
+    "driver_scope": "Existing system Mesa25 for X11/native; existing patched headless Mesa26 for raster state/capture, selected per child."
+  },
+  "capture": {
+    "positive_branches_per_platform": 4,
+    "active_corruption_controls_per_platform": 5,
+    "expected_positive_exit": 0,
+    "expected_negative_exit": 1
+  },
+  "packaging": {
+    "changed_members": [
+      "vispy/app/backends/_dawn_tk.py",
+      "RECORD"
+    ],
+    "native_binaries_unchanged": true,
+    "original_notices_unchanged": true,
+    "native_build": false,
+    "environment_created": false
+  },
+  "preparation": {
+    "candidates": [
+      "tk-state-resource-4",
+      "tk-capture-4"
+    ],
+    "criteria": 128,
+    "mandatory_host_rows": 8,
+    "previous_json_records_preserved": 112,
+    "proved_obligations": 0
+  },
+  "independently_reviewed": false,
+  "qualified": false,
+  "published": false,
+  "failures_preserved": [
+    "446 missing notice binding: original archive audited before supplementing bindings in447.",
+    "449 system Mesa25 MSAA raster mismatch; tolerance unchanged.",
+    "451 capture harness old wheel identity failure before mutation; not accepted as negative controls; corrected rerun452."
+  ],
+  "cleanup": {
+    "owned_scratch_absent": true,
+    "all_six_run_receipts_rehashed": true
+  },
+  "evidence": [
+    {
+      "path": "D:\\vispy-vulkan-managed\\build\\runs\\tk-native-package-446\\source-freeze.json",
+      "sha256": "e3892ec6ac99f9be3aac1adb36ba17e8f0c8883adbf70d6586fe20f6fcb747aa"
+    },
+    {
+      "path": "D:\\vispy-vulkan-managed\\build\\runs\\tk-native-package-446\\post-cleanup.json",
+      "sha256": "d836e68c3b376c8d0a0cf08d0ab4dbfe70081f4060765df649c14be5c441241a"
+    },
+    {
+      "path": "D:\\vispy-vulkan-managed\\build\\runs\\tk-native-package-447\\windows-wheel.json",
+      "sha256": "59bc01f61137a1dae63f686f25d14b204a6d812c8f7f3306ffab111776e9b48a"
+    },
+    {
+      "path": "D:\\vispy-vulkan-managed\\build\\runs\\tk-native-package-447\\linux-wheel.json",
+      "sha256": "8effd1993e620e57561a3c5b1bc07ffdeb2e72410e6066bdc5123e5f822dff2f"
+    },
+    {
+      "path": "D:\\vispy-vulkan-managed\\build\\runs\\tk-native-package-447\\windows-audit.json",
+      "sha256": "54b26149971b95c45fd384da4dfada71ae71cbbd386fa0a72a3d6b4998d2f5e6"
+    },
+    {
+      "path": "D:\\vispy-vulkan-managed\\build\\runs\\tk-native-package-447\\linux-audit.json",
+      "sha256": "adca12531d33e8e2195463e44857d34c1650c2baab466110da9ab2f3dd53a495"
+    },
+    {
+      "path": "D:\\vispy-vulkan-managed\\build\\runs\\tk-native-package-447\\post-cleanup.json",
+      "sha256": "4cfe0fe88eac75dfd1b7ed6c13dc0c15005f3e2ad94f4cf19ac438436c3c8958"
+    },
+    {
+      "path": "D:\\vispy-vulkan-managed\\build\\runs\\tk-native-installed-windows-448\\acceptance-report.json",
+      "sha256": "6b072284e4bcaf6d4ec51de2b98db3ba9d906429f038776a9c481dcf43187e79"
+    },
+    {
+      "path": "D:\\vispy-vulkan-managed\\build\\runs\\tk-native-installed-windows-448\\inputs.xml",
+      "sha256": "95bd23a2093cab1cb23927f53dec383ffc1fbfa9c8ae830820112ccdd49ce12d"
+    },
+    {
+      "path": "D:\\vispy-vulkan-managed\\build\\runs\\tk-native-installed-windows-448\\state.xml",
+      "sha256": "f821fb621f5d84c64c7ab9fab821212f62629ed92c4fd7ee5b46174b3cf4102d"
+    },
+    {
+      "path": "D:\\vispy-vulkan-managed\\build\\runs\\tk-native-installed-windows-448\\controller-processes.json",
+      "sha256": "4b4345ce31da38d42d98a63e8fbf42a1f2e7c732aa5004d7971ef170dcc3ce4d"
+    },
+    {
+      "path": "D:\\vispy-vulkan-managed\\build\\runs\\tk-native-installed-windows-448\\post-cleanup.json",
+      "sha256": "7141e53e8ddf052fa89a4e7241fcc5bee673c7d1be6b8c33c223a5db182bbfcd"
+    },
+    {
+      "path": "D:\\vispy-vulkan-managed\\build\\runs\\tk-native-installed-wsl-449\\summary-correction.json",
+      "sha256": "224ad221fafa84169482e9b24f99d834a7574e2a31545f3c50fda6f392a3cdd2"
+    },
+    {
+      "path": "D:\\vispy-vulkan-managed\\build\\runs\\tk-native-installed-wsl-449\\state.xml",
+      "sha256": "0dc7cbd75aba120cff547d2e385f5f18e5ac145422d0395f9e33d38ec2e524ae"
+    },
+    {
+      "path": "D:\\vispy-vulkan-managed\\build\\runs\\tk-native-installed-wsl-449\\post-cleanup.json",
+      "sha256": "21212c2636168a2c0f9ace56bdc1bd647abac4fc50ce932da472f7abe7ba2cde"
+    },
+    {
+      "path": "D:\\vispy-vulkan-managed\\build\\runs\\tk-native-installed-wsl-451\\input-result.json",
+      "sha256": "09dc88c6939abd46a7c8d03285f536ecfb0ff4f41c14dcc8df11b01a95168427"
+    },
+    {
+      "path": "D:\\vispy-vulkan-managed\\build\\runs\\tk-native-installed-wsl-451\\state-result.json",
+      "sha256": "a79937324d7ddc1c2511335996314e3b229586bf26e9b740e5abdd838dcc63ae"
+    },
+    {
+      "path": "D:\\vispy-vulkan-managed\\build\\runs\\tk-native-installed-wsl-451\\inputs.xml",
+      "sha256": "80458534ae9ead28aa2f8ddac4cfb60529d7391dea63e43dbef9f2ea798e637b"
+    },
+    {
+      "path": "D:\\vispy-vulkan-managed\\build\\runs\\tk-native-installed-wsl-451\\state.xml",
+      "sha256": "054081616fcc802853af96e9a2b9c6a8b2b5a24284484d8d834141994d02b779"
+    },
+    {
+      "path": "D:\\vispy-vulkan-managed\\build\\runs\\tk-native-installed-wsl-451\\summary-correction.json",
+      "sha256": "f01507cb83922cc8b4668e01c9a48664ee47eb1f964709be9099b2db89c9a7e9"
+    },
+    {
+      "path": "D:\\vispy-vulkan-managed\\build\\runs\\tk-native-installed-wsl-451\\controller-processes.json",
+      "sha256": "582501a8975b9eb0ca347366e9cb91dd005f107bdac32d9e1aff372f67901092"
+    },
+    {
+      "path": "D:\\vispy-vulkan-managed\\build\\runs\\tk-native-installed-wsl-451\\driver-origin.json",
+      "sha256": "9f690ff794c28331e14a20e2a65f04f2846187ee03cfadf9a42b777ada62782e"
+    },
+    {
+      "path": "D:\\vispy-vulkan-managed\\build\\runs\\tk-native-installed-wsl-451\\raster-driver-origin.json",
+      "sha256": "8d17c2329d41124cfd5f9b171a1784b43788b095fc24702662cc0cc31620b41a"
+    },
+    {
+      "path": "D:\\vispy-vulkan-managed\\build\\runs\\tk-native-installed-wsl-451\\post-cleanup.json",
+      "sha256": "2358b78b6f62d74ed0ac93374ad2e57a17a308799a664253a31143894d9a6746"
+    },
+    {
+      "path": "D:\\vispy-vulkan-managed\\build\\runs\\tk-native-capture-wsl-452\\verification.json",
+      "sha256": "b6ce0418c5bbe04c4e5ce8d3db853593bac8c211ac248093bad0f22a469735cd"
+    },
+    {
+      "path": "D:\\vispy-vulkan-managed\\build\\runs\\tk-native-capture-wsl-452\\controller-processes.json",
+      "sha256": "16c828387c965d2eec5ee076d84dcd1596f94614c536d56053a849adefaabc19"
+    },
+    {
+      "path": "D:\\vispy-vulkan-managed\\build\\runs\\tk-native-capture-wsl-452\\post-cleanup.json",
+      "sha256": "37399b8d03e998234400fd6ee5b119adb33998ad2a29f4ee759204efe50853c4"
+    },
+    {
+      "path": "D:\\vispy-vulkan-managed\\build\\runs\\tk-native-record-renewal-450\\primary-review.json",
+      "sha256": "ffdc90324136b87867cd086abbbbd72c359139a17bcd828085d6fb70cf209786"
+    },
+    {
+      "path": "D:\\vispy-vulkan-managed\\build\\runs\\tk-native-record-renewal-450\\verification.json",
+      "sha256": "f92c4244fb00c8c2f4093865073c7161c5e2f77fdaf3637b5cbe35a81eb45cad"
+    },
+    {
+      "path": "D:\\vispy-vulkan-managed\\build\\runs\\tk-native-record-renewal-450\\windows-process.json",
+      "sha256": "84177f09e1083996478256b5899bd87f58bdfc8451cbe80cdf1458dfcb0ef68a"
+    },
+    {
+      "path": "D:\\vispy-vulkan-managed\\build\\runs\\tk-native-record-renewal-450\\wsl-process.json",
+      "sha256": "0a2025003423c16c4063bbd79aa7873542c34026ae7f76e6f4cb006db356b488"
+    },
+    {
+      "path": "D:\\vispy-vulkan-managed\\build\\runs\\tk-native-record-renewal-450\\linux-joined-observation.json",
+      "sha256": "ea38deedc4d5ec34f7e07e4e6202a118541e419431d412542becc9c983018064"
+    }
+  ],
+  "limits": [
+    "Finite Tk proof, not full VisPy parity or strict installed/profile qualification.",
+    "Earlier sampler/uniform/attribute/event/depth results retain their original wheel identities.",
+    "Published v1 unchanged; Metal experimental; native Linux physical GPU unqualified."
+  ]
+}

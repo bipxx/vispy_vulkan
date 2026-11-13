@@ -100,6 +100,52 @@ def test_budget_guard_stops_and_waits_for_its_owned_child(prepared, monkeypatch)
     lifecycle.finish(prepared)
 
 
+@pytest.mark.parametrize('over_budget', [False, True])
+def test_live_space_sampling_tolerates_concurrent_producer_cleanup(prepared, monkeypatch, over_budget):
+    state, context = lifecycle.load(prepared)
+    scratch = Path(state['scratch'])
+    removed = scratch/'producer-removed.object'
+    removed.write_bytes(b'being cleaned by the child')
+    (scratch/'resident.object').write_bytes(b'x'*2048)
+    walk = lifecycle.os.walk
+
+    def producer_cleanup_between_enumeration_and_stat(*args, **kwargs):
+        entries = list(walk(*args, **kwargs))
+        removed.unlink()
+        yield from entries
+
+    with monkeypatch.context() as patch:
+        patch.setattr(lifecycle.os, 'walk', producer_cleanup_between_enumeration_and_stat)
+        if over_budget:
+            patch.setattr(context, 'limit', 1024)
+            with pytest.raises(ValueError, match='shared budget'):
+                lifecycle.check_space(context)
+        else:
+            lifecycle.check_space(context)
+    assert not removed.exists()
+    command(prepared)
+    lifecycle.finish(prepared)
+
+
+def test_live_space_sampling_preserves_other_io_errors(prepared, monkeypatch):
+    state, context = lifecycle.load(prepared)
+    unreadable = Path(state['scratch'])/'unreadable.object'
+    unreadable.write_bytes(b'explicit synthetic I/O failure')
+    lstat = Path.lstat
+
+    def fail_only_the_sampled_file(path, *args, **kwargs):
+        if path == unreadable:
+            raise PermissionError('synthetic sampler I/O error')
+        return lstat(path, *args, **kwargs)
+
+    with monkeypatch.context() as patch:
+        patch.setattr(Path, 'lstat', fail_only_the_sampled_file)
+        with pytest.raises(PermissionError, match='synthetic sampler I/O error'):
+            lifecycle.check_space(context)
+    command(prepared)
+    lifecycle.finish(prepared)
+
+
 def test_build_outputs_survive_cleanup_by_hash(prepared):
     state = json.loads(prepared.read_bytes())
     build = Path(state['scratch'])/'native'; build.mkdir()

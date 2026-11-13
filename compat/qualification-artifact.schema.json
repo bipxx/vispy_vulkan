@@ -134,6 +134,9 @@
               }
             }
           }
+        },
+        "evidence_store": {
+          "$ref": "#/$defs/retained-store-ref"
         }
       }
     },
@@ -207,6 +210,23 @@
               "pattern": "^[0-9a-f]{64}$"
             }
           }
+        }
+      }
+    },
+    "retained-store-ref": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "const": "compat/evidence-stores/secondary-v1.json"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
         }
       }
     }

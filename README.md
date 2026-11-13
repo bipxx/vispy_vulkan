@@ -8,13 +8,13 @@ The [offline CPython 3.12 installation guide](docs/offline-install-cp312.md) des
 
 ## Install
 
-The first public release provides CPython 3.12 wheels for Windows x86_64 and Linux x86_64:
+The qualified successor release provides CPython 3.12 wheels for Windows x86_64 and Linux x86_64. See the [GitHub Release](https://github.com/bipxx/vispy_vulkan/releases/tag/v0.17.0-vulkan.2) for asset availability and delivery checks:
 
 ```sh
-pip install "vispy==0.17.0+vulkan.1" --extra-index-url https://bipxx.github.io/vispy_vulkan/simple/
+pip install "vispy==0.17.0+vulkan.2" --extra-index-url https://bipxx.github.io/vispy_vulkan/simple/
 ```
 
-Pin the exact local version so a PyPI VisPy release cannot take precedence. See the [release notes](docs/release-0.17.0-vulkan.1.md) for wheel hashes, qualified platforms and limits.
+Pin the exact local version so a PyPI VisPy release cannot take precedence. See the [release notes](docs/release-0.17.0-vulkan.2.md) for wheel hashes, qualified platforms and limits.
 
 ## Build
 

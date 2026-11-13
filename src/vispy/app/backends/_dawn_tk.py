@@ -1,8 +1,8 @@
 # SPDX-License-Identifier: AGPL-3.0-only
-"""Tk widgets with Vulkan rendering and Tk raster presentation.
+"""Tk widgets with Vulkan rendering and raster or experimental native presentation.
 
-No pyopengltk, OpenGL context or native Vulkan window surface is used. Tk owns
-the displayed RGB image; framebuffer capture retains the renderer's RGBA data.
+Raster is the default: Tk owns the displayed RGB image. Opt-in native mode
+attaches a Vulkan surface to a Tk frame on Windows/X11. Neither uses OpenGL.
 """
 import sys
 import threading
@@ -22,7 +22,7 @@ else:
     available, testable, why_not = True, True, None
 which = 'Tkinter raster' if tk is None else 'Tkinter %s raster' % tk.TkVersion
 
-capability = dict(title=True, size=True, position=True, show=True, vsync=False,
+capability = dict(title=True, size=True, position=True, show=True, vsync=True,
                   resizable=True, decorate=True, fullscreen=True, context=True,
                   multi_window=True, scroll=True, parent=True, always_on_top=True)
 _KEYS = {name: getattr(keys, name.upper()) for name in
@@ -50,7 +50,17 @@ def _ui_thread_only(method):
     return checked
 
 
+def _presentation(kwargs):
+    value = kwargs.get('presentation', 'raster')
+    if value not in ('raster', 'native'):
+        raise ValueError('Tk presentation must be raster or native')
+    if value == 'native' and not (sys.platform == 'win32' or sys.platform.startswith('linux')):
+        raise RuntimeError('Tk native presentation is experimental on Windows/X11 only')
+    return value
+
+
 def _validate_request(context, kwargs):
+    presentation = _presentation(kwargs)
     config = context.config
     for key, maximum in (('red_size', 8), ('green_size', 8), ('blue_size', 8),
                          ('alpha_size', 8), ('depth_size', 24), ('stencil_size', 8)):
@@ -65,11 +75,11 @@ def _validate_request(context, kwargs):
         raise RuntimeError('Tk raster configuration stereo=True is unsupported')
     # The upstream default is a legacy GL window hint. An explicit native
     # double-buffer request cannot be satisfied by Tk image presentation.
-    if config['double_buffer'] and 'double_buffer' in context._requested_config:
+    if presentation == 'raster' and config['double_buffer'] and 'double_buffer' in context._requested_config:
         raise RuntimeError('Tk raster configuration double_buffer=True is unsupported; use False')
     if not isinstance(kwargs['fullscreen'], bool):
         raise RuntimeError('Tk fullscreen supports bool only; monitor-index selection is unsupported')
-    if kwargs['vsync']:
+    if kwargs['vsync'] and presentation == 'raster':
         raise RuntimeError('Tk raster vsync is unsupported')
     if kwargs['parent'] is not None:
         for key, requested in (('position', kwargs['position'] is not None),
@@ -92,6 +102,18 @@ def _exists(widget):
         return bool(widget.winfo_exists())
     except tk.TclError:
         return False
+
+
+if tk is not None:
+    class _NativeFrame(tk.Frame):
+        """Retire the borrowed surface before Python destroys its Tk window."""
+        _before_destroy = None
+
+        def destroy(self):
+            if self._before_destroy is not None:
+                self._before_destroy()
+            if _exists(self):
+                super().destroy()
 
 
 _root_states = {}
@@ -428,6 +450,7 @@ class ApplicationBackend(BaseApplicationBackend):
 class CanvasBackend(BaseCanvasBackend):
     def __init__(self, vispy_canvas, **kwargs):
         _validate_request(kwargs['context'], kwargs)
+        self._presentation = _presentation(kwargs)
         super().__init__(vispy_canvas)
         p = self._process_backend_kwargs(kwargs)
         self._application = vispy_canvas.app._backend
@@ -450,15 +473,26 @@ class CanvasBackend(BaseCanvasBackend):
         self._top = None
         self._widget = None
         self._dawn_canvas_id = 0
+        self._surface_window = 0
         from vispy import _dawn
         try:
             self._top = tk.Toplevel(root) if p.parent is None else None
             if self._top is not None:
                 self._top.withdraw()
             parent = self._top if self._top is not None else p.parent
-            self._widget = tk.Canvas(parent, width=self._size[0], height=self._size[1],
+            widget_class = _NativeFrame if self._presentation == 'native' else tk.Canvas
+            self._widget = widget_class(parent, width=self._size[0], height=self._size[1],
                                      highlightthickness=0, borderwidth=0, takefocus=True)
-            self._image_item = self._widget.create_image(0, 0, anchor='nw')
+            if self._presentation == 'native':
+                expected = 'win32' if sys.platform == 'win32' else 'x11'
+                if root.tk.call('tk', 'windowingsystem') != expected:
+                    raise RuntimeError('Tk native presentation requires %s' % expected)
+                self._widget._before_destroy = self._before_native_destroy
+                self._bind('<Map>', self._on_map, add='+')
+                self._bind('<Unmap>', self._on_unmap, add='+')
+                self._image_item = None
+            else:
+                self._image_item = self._widget.create_image(0, 0, anchor='nw')
             self._bind('<Destroy>', self._on_destroy, add='+')
             self._bind('<Configure>', self._on_resize, add='+')
             self._bind('<Expose>', lambda event: self._vispy_update(), add='+')
@@ -469,7 +503,7 @@ class CanvasBackend(BaseCanvasBackend):
             self._bind('<MouseWheel>', self._on_wheel)
             self._bind('<KeyPress>', lambda event: self._on_key(event, True))
             self._bind('<KeyRelease>', lambda event: self._on_key(event, False))
-            self._dawn_canvas_id = int(_dawn.register_canvas(*self._size, self._samples, False))
+            self._dawn_canvas_id = int(_dawn.register_canvas(*self._size, self._samples, bool(p.vsync)))
             p.context.shared.add_ref('dawn-tk', self)
             from ...gloo.dawn_parser import install_gl_queries
             install_gl_queries()
@@ -511,7 +545,11 @@ class CanvasBackend(BaseCanvasBackend):
             return
         from vispy import _dawn, gloo
         self._vispy_canvas.set_current()
+        if self._presentation == 'native' and not self._native_surface():
+            return
         _dawn.present(self._dawn_canvas_id)
+        if self._presentation == 'native':
+            return
         # Explicit viewport makes capture independent of the application's last
         # viewport/scissor selection. PPM uses top-down RGB, as read_pixels does.
         image = gloo.read_pixels((0, 0, *self._size), alpha=False)
@@ -521,6 +559,53 @@ class CanvasBackend(BaseCanvasBackend):
         self._application._root_state._owned_images.add(photo)
         self._widget.itemconfigure(self._image_item, image=photo)
         self._photo = photo  # Keep the Tcl image alive until it is replaced.
+
+    def _native_surface(self):
+        if (self._closed or self._closing or not self._dawn_canvas_id or
+                not _exists(self._widget) or not self._widget.winfo_viewable()):
+            return False
+        from vispy import _dawn
+        window = int(self._widget.winfo_id())
+        if window != self._surface_window:
+            if sys.platform == 'win32':
+                _dawn.set_surface_win32(self._dawn_canvas_id, window, 0)
+            else:
+                # The renderer validates the XID on a separate X connection.
+                # Finish Tk's pending window creation/display work first.
+                self._widget.update_idletasks()
+                # Host idle callbacks can close/hide this widget. Do not use
+                # a handle captured before that reentrant boundary.
+                if (self._closed or self._closing or not self._dawn_canvas_id or
+                        not _exists(self._widget) or not self._widget.winfo_viewable()):
+                    return False
+                window = int(self._widget.winfo_id())
+                _dawn.set_surface_x11(self._dawn_canvas_id, 0, window, True)
+            if not _dawn.benchmark_surface_info(self._dawn_canvas_id)['attached']:
+                raise RuntimeError('Tk native surface attachment failed')
+            self._surface_window = window
+            _dawn.update_surface_scale(self._dawn_canvas_id, 1.0)
+        return True
+
+    def _on_map(self, event):
+        if event.widget is self._widget and not self._closed and self._dawn_canvas_id:
+            from vispy import _dawn
+            _dawn.configure_canvas(self._dawn_canvas_id, *self._size, self._samples)
+            self._native_surface()
+            self._vispy_update()
+
+    def _on_unmap(self, event):
+        if event.widget is self._widget and not self._closed and self._dawn_canvas_id:
+            from vispy import _dawn
+            _dawn.clear_surface(self._dawn_canvas_id)
+            self._surface_window = 0
+            _dawn.configure_canvas(self._dawn_canvas_id, 0, 0, self._samples)
+
+    def _before_native_destroy(self):
+        if not self._closing:
+            if self._vispy_canvas._closed:
+                self._vispy_close()
+            else:
+                self._vispy_canvas.close()
 
     @_ui_thread_only
     def _vispy_update(self):
@@ -534,6 +619,8 @@ class CanvasBackend(BaseCanvasBackend):
     def _draw(self):
         self._draw_job = None
         if self._closed or self._drawing:
+            return
+        if self._presentation == 'native' and not self._widget.winfo_viewable():
             return
         from vispy import _dawn
         state = self._application._root_state
@@ -774,6 +861,7 @@ class CanvasBackend(BaseCanvasBackend):
             from vispy import _dawn
             _dawn.destroy_canvas(self._dawn_canvas_id)
             self._dawn_canvas_id = 0
+            self._surface_window = 0
 
         try:
             if self._draw_job is not None:
@@ -782,9 +870,10 @@ class CanvasBackend(BaseCanvasBackend):
                 cleanup.run(retire_native)
             self._photo = None
             self._application._canvases.discard(self)
-            if _exists(self._widget):
+            keep_native_window = self._presentation == 'native' and self._dawn_canvas_id
+            if _exists(self._widget) and not keep_native_window:
                 cleanup.run(self._widget.destroy)
-            if _exists(self._top):
+            if _exists(self._top) and not keep_native_window:
                 cleanup.run(self._top.destroy)
             if self._dawn_canvas_id or self._draw_job is not None or _exists(self._widget) or _exists(self._top):
                 self._application._pending_closes.add(self)

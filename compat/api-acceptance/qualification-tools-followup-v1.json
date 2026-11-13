@@ -1,0 +1,41 @@
+{
+  "schema": 1,
+  "status": "APPROVED_FOR_CANDIDATE_RENEWAL_ONLY",
+  "date": "2026-11-13",
+  "independent": true,
+  "reviewer": "Claude CLI peer review",
+  "qualification_tools": {
+    "tools/qualification_index.py": "fd47e6af121203cccb597f79adc6791cccfc38d4d87a63aa672a7ed046de0db8",
+    "tools/retained_evidence.py": "bad34bf324daf3de5bbde52311889093aae2cd2980f49f790dbaf243a6a5c49b",
+    "tools/compatibility_inventory.py": "6b4a08b9172558b2c520273d7acd55e6b5f8ff6a7ed4b50c2f2e32e1db9dde15",
+    "tools/compatibility_evidence.py": "c261f7431eae27b930ec84d4a5121bbbc7968b19df12b3955d84743eea3456a3",
+    "compat/qualification-index.schema.json": "65f6fe88a62def126e6a564a180416051b30f507bd81588e86f603da27a932de",
+    "tests/contract/test_qualification_index.py": "f6fd0cf67b8a38d182b932d2a91d0384832ec4a28ea2bc6ac85e999656a466d7",
+    "tests/contract/test_retained_evidence.py": "08c9426b813355c8369713eb5ca526cfa8d76b16995a4c79c020f23f12de1553",
+    "tests/contract/test_compatibility_inventory.py": "8dc384ffef25f0fd961a297294133169ad5dc3c3a3c26919f1f58b961972a4b8"
+  },
+  "runtime_source_commit": "b38c4f9068d6a425eef43b62313f0f4cf37f57d9",
+  "runtime_inputs_unchanged": true,
+  "review_response": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\qualification-tools-followup-488\\review-response.md",
+    "sha256": "38e325afc9c9b41a3ad67e9b0e11f8cb110b989c70b10a8382f94c037d038655"
+  },
+  "process": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\qualification-tools-followup-488\\review-process.json",
+    "sha256": "36291bfec9c80ae9076cf776dd2d2b02fa9c100c327d9afb599134ef73dba236"
+  },
+  "source_archive": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\qualification-tools-followup-488\\source-and-licenses.zip",
+    "sha256": "c7ef8814785216130c2b16319b333068f74131d317f19b9f3bdd94e4b272826a"
+  },
+  "coordinator_rehashed": true,
+  "artifact_admitted": false,
+  "remaining": [
+    "Renew source candidate and explicit source/scope decisions; do not transfer revision5 approvals.",
+    "Wire new candidate preparation CLI arguments into CI and add test_retained_evidence.py; renew workflow policy hash.",
+    "Bind subject evidence_store selector, complete workflow histories and installed receipts.",
+    "Prove retention of real producer inputs including source-local references; resolving hashes alone is insufficient.",
+    "Preserve known low limits: Windows transitive command-log retention not enumerated by index, reviewer checks early-failure workflow attribution, incomplete workflow selections fail closed, focused test discrimination limits.",
+    "Required source-head CI and independent promotion remain pending."
+  ]
+}

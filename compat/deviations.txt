@@ -1,6 +1,9 @@
 # Files in src/vispy that differ from VisPy 0.17.0 commit 117b054598f4758b598f4b8f48feea48c11fe7b0.
 # The parity checkout is third_party/parity/vispy.
 version.py
+# Public module descriptions reflect the Dawn fork and its bounded compatibility.
+__init__.py
+gloo/__init__.py
 gloo/context.py
 gloo/wrappers.py
 gloo/dawn_parser.py
@@ -54,3 +57,8 @@ gloo/buffer.py
 
 # W15: no PyOpenGL import; the legacy GL parser's 3D-texture path fails clearly instead.
 gloo/glir.py
+
+# Public visual/widget descriptions and the actual ViewBox default camera.
+visuals/__init__.py
+scene/widgets/__init__.py
+scene/widgets/viewbox.py

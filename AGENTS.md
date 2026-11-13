@@ -39,3 +39,13 @@ User instructions take precedence over these project defaults. Follow existing
 ownership boundaries and preserve other agents' edits. Hygiene work does not
 authorize unrelated deployment, messaging, cybersecurity work or release-scope
 changes.
+
+# Coverage tracking
+
+- Maintain `docs/coverage-checklist.md` as the live coverage worklist. Update
+  affected IDs in the same change as implementation, verification, review or
+  release work, with the date, evidence link and exact source/artifact/profile
+  scope. Record partial progress and failures as well as completed items.
+- Keep source-tested, installed/release-qualified, historical and deferred
+  coverage distinct. Do not promote a source fix to published-wheel coverage or
+  broaden a finite pass to full API parity. Preserve authoritative frozen records.

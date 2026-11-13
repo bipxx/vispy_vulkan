@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "name": "windows-dynamic-package-secondary-v1",
+  "owner": "root-windows-dynamic-package",
+  "storage_workspace": "D:/vispy-vulkan-managed",
+  "source_workspace": "C:/Users/HEQ/Projects/vispy_vulkan",
+  "expected_peak_bytes": 536870912,
+  "aggregate_max_scratch_bytes": 21474836480,
+  "min_free_bytes": 10737418240,
+  "disk_guard_seconds": 30,
+  "purpose": "Backend-only Windows successor wheel assembly and installed verification for the dynamic explicit sampler implementation; no native compilation.",
+  "reuse": "Use the original prepared CPython 3.12.8/scikit-build-core 0.11.6 and existing dependency environment. Reuse the exact four outputs and successful native join from dynamic-sampler-native-402. Keep original SDK/dependency/source origins unchanged. No new environment, SDK, dependency install or network fallback.",
+  "budget_basis": "The earlier backend-only assembly and target install fit below 64 MiB. The existing 512 MiB allocation covers the shipping projection, one wheel, one offline copied target and bounded tests under the unchanged shared cap/reserve.",
+  "checks": "Bind source members, metadata and original licenses to the frozen commit. Supply its version explicitly to license staging and archive audit. Verify all installed members and loaded module origins. Run upload/shutdown, state/capture, maintained examples, sampler acceptance and active capture controls against the actual wheel, with real exits and shutdown gauges.",
+  "cleanup": "Await children; retain exact wheel, source/license reconstruction references and focused evidence. Inspect and apply strict cleanup with the inherited protected/blocked registry, then rehash retained data and verify scratch absence.",
+  "scope": "Unreleased local artifact and functional observations only. No independent review, strict observer/profile admission, hardware qualification or release promotion is supplied. Original v2 artifacts and approvals retain their identities."
+}

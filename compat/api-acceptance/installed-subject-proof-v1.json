@@ -1,0 +1,44 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "PASS_128_SELECTED_SUBJECT_CRITERIA_NOT_ADMITTED",
+  "subject_sha256": "d5b81dceb460d756f6df0e1c9978ebd6ffaa609f2405c4fc4ff42258d6fa9686",
+  "proved_criteria": 128,
+  "missing": 0,
+  "blocked": 0,
+  "result": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\installed-subject-assembly-514\\subject-result.json",
+    "sha256": "4127ab52fd086de6c4ec977a45f7cf33e73a5fa5e36218c0bdb7d5e2820f6890"
+  },
+  "subject": {
+    "path": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\compat\\candidates\\tk-state-resource-7\\installed-proofs-512\\qualification-subject.json",
+    "sha256": "ba655d385245ab38d39199b9541958c1ca29ce6a3ff81b2a58df9a68068f24da"
+  },
+  "materialization": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\installed-subject-assembly-514\\materialization.json",
+    "sha256": "a184548dbb7a3c6809efcb46c1d8567b424c27bfa602503d9caddedcf40a1804"
+  },
+  "restoration": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\installed-subject-assembly-514\\restoration.json",
+    "sha256": "9ac75bebad85efab06a788c1a8ffe37cd9591c49485f0335d58604cf9f6c61fb"
+  },
+  "actual_process": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\installed-subject-assembly-514\\assembly-process.json",
+    "sha256": "f4af3d9e677e53102146142c33dd3e98d83b49d90bede6b07d09007aa16ca898"
+  },
+  "contributing_retention": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\installed-proof-retention-513\\post-cleanup.json",
+    "sha256": "a19a52762a9aa9f31e925983ad631e78ce84766e4f970e9f2ba9eb66840b3bc4"
+  },
+  "source_implementation_head": "9cf488acdae59ae3b80310ab2a19b5bcc4915a54",
+  "canonical_preparation_restored": true,
+  "replay_scope": "Reconstruct the reviewed selected-row overlay for validation, then restore the exact frozen preparation. No verifier edits, native rebuild or full source/environment copy.",
+  "artifact_admitted": false,
+  "required_ci_passed": false,
+  "full_inventory_complete": false,
+  "pending": [
+    "Diagnose/fix current-head final CPU assertion failures; all23 required jobs must pass",
+    "Independent change-impact and promotion-basis review",
+    "Promotion/integration/publication"
+  ]
+}

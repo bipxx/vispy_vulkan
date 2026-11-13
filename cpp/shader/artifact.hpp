@@ -54,6 +54,7 @@ inline std::string portable_shader_identity(const std::string& vertex, const std
     identity += options.base_level_sampling ? "base=1;" : "base=0;";
     identity += options.reverse_depth ? "depth=reverse-clip-v1;" : "depth=forward-clip-v1;";
     identity += "fragment-depth=window-coordinate-v1;";
+    identity += "dynamic-samplers=explicit-static-switch-zero-oob-v1;";
     identity += options.point_sprites ? "points=1;point-id=std430-uint32x2-instance-major;" : "points=0;";
     identity += "vertex-id=" + std::to_string(static_cast<uint32_t>(options.vertex_identity)) + ";std430-uint32;";
     if (batch_identity_policy(options.vertex_identity)) {

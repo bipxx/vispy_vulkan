@@ -7,7 +7,7 @@
   "workflows": [
     {
       "path": ".github/workflows/cpu-contract.yml",
-      "sha256": "fc90d204ed8e4ab00b774635d590d2c1fbe81a7412064e146f65f57740c9a339",
+      "sha256": "fab7e22cd42acddbf73dd45d22fd54c8a1be6231043e2f993f340dd4baa25136",
       "job_key": "cpu",
       "jobs": [
         "CPU linux-x86_64 CPython 3.10.19",
@@ -34,7 +34,7 @@
     },
     {
       "path": ".github/workflows/linux-vulkan.yml",
-      "sha256": "844ddd2c232f699f198751074a59abccec1c6a0a0c58460c77be9be6d75ac038",
+      "sha256": "7fc072af9739e8d37fba5f0d20b7175e6a72c027102f402d09d7d36173fef2c5",
       "job_key": "software-vulkan",
       "jobs": [
         "software-vulkan"
@@ -42,7 +42,7 @@
     },
     {
       "path": ".github/workflows/metal-wheel.yml",
-      "sha256": "714f1f8b90d0aad61bd68e5f8373266c5f673c23415ea810924bbb576c5436db",
+      "sha256": "6c051d233db4752d8cda90545398f51d678e55e4737626fbce5a8a4f634b8a97",
       "job_key": "build",
       "jobs": [
         "Metal wheel arm64 CPython 3.12.8",

@@ -1,0 +1,35 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "APPROVED_REVISION8_SUBJECT_CHANGE_IMPACT",
+  "subject_sha256": "d65bb7804f6e2ccc16bda47497d9e12e0aaf54a79b4ddb8e7628e2473d3f0374",
+  "qualification_head": "3ada644e85248bcae214e7e487b4b1684336fd8f",
+  "review": {
+    "path": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\compat\\candidates\\tk-state-resource-8\\installed-proofs-524\\change-impact-review.json",
+    "sha256": "b35b02cfa7b6b53a747061c9c8741021ee031a766f5218341e23ca5ed9115245"
+  },
+  "raw_response": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\revision8-impact-peer-525\\review-response.json",
+    "sha256": "03007055f5d585da9a08b8dc472112d7d7dee0b9c728752fc18754d8e92ce52c"
+  },
+  "response": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\revision8-impact-peer-525\\review-response.md",
+    "sha256": "fb7685d9f279b70ef6c135ee086ae2b6897eace135db4ff42565d4669b70f2b0"
+  },
+  "actual_process": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\revision8-impact-peer-525\\review-process.json",
+    "sha256": "9020d96995ed69c13948ebaad33c7776945e787aee4ff13c400292a32bb28337"
+  },
+  "measured_source_audit": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\revision8-impact-peer-525\\post-head-source-audit.json",
+    "sha256": "b44e0a64f17b83a41ced1d6ff501088f0d0683d68d3d5f4199da2998d2cb6607"
+  },
+  "artifact_admitted": false,
+  "required_ci_passed": false,
+  "pending": [
+    "Complete23job CI bundle with fresh original per-job identities",
+    "Independent promotion-basis review",
+    "Strict admission and controlled integration/publication"
+  ],
+  "limits": "Exact subject/head change impact only; no CI, promotion, full inventory, Metal GPU or physical Linux GPU approval. Reporting-helper failure is declared, not an original process capture."
+}

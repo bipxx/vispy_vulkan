@@ -317,6 +317,64 @@ def test_gate_normalization_cli_writes_separate_records_and_never_overwrites(exa
     assert (root / 'normalized.json').read_bytes() == before
 
 
+@pytest.mark.parametrize('fault', [None, 'missing-selector', 'changed-raw', 'changed-source', 'receipt-selector'])
+def test_secondary_store_normalization_replays_original_gates(example, monkeypatch, fault):
+    import os
+    from tools import retained_evidence as stores
+    root, ledger = example
+    receipt = promote(root, ledger, 'qualified')
+    row = ledger['rows'][0]
+    raw = inventory.read_json(root / receipt['gates'][inventory.GATES[0]]['path'])['raw_reports']
+    external = root.parent / (root.name + '-evidence')
+    external.mkdir()
+    profile = inventory.read_json(ROOT / stores.PROFILE)
+    host = 'windows' if os.name == 'nt' else 'posix'
+    view = dict(source_workspace='C:/unit-source' if host == 'windows' else '/unit-source',
+                storage_workspace='D:/unit-evidence' if host == 'windows' else '/unit-evidence')
+    profile['hosts'][host] = view
+    mounts = {view['source_workspace']: root, view['storage_workspace']: external}
+    monkeypatch.setattr(stores, 'Path', lambda value: mounts.get(str(value), Path(value)))
+    selector = write_json(root, stores.PROFILE, profile)
+    def move_reference(reference):
+        # Synthetic tiny files only: prove that selected-store bytes, rather
+        # than a source-local file with the same name, are actually checked.
+        target = external / reference['path']
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_bytes((root / reference['path']).read_bytes())
+        return dict(reference, path=stores.EVIDENCE_PREFIX+reference['path'])
+    for key in set(raw) - {'control_reports'}:
+        raw[key] = move_reference(raw[key])
+    raw['control_reports'] = {k: move_reference(v) for k, v in raw['control_reports'].items()}
+    raw['evidence_store'] = selector
+    if fault == 'missing-selector':
+        del raw['evidence_store']
+    elif fault == 'changed-raw':
+        (external / raw['worker']['path'].removeprefix(stores.EVIDENCE_PREFIX)).write_text('{}', encoding='utf-8')
+    elif fault == 'changed-source':
+        (root / 'tests/scenario.py').write_text('# changed source', encoding='utf-8')
+    if fault in ('missing-selector', 'changed-raw', 'changed-source'):
+        with pytest.raises(inventory.InventoryError):normalize(root, row, raw)
+        return
+    gates = normalize(root, row, raw)
+    receipt['evidence_store'] = selector
+    receipt['pytest'] = move_reference(receipt['pytest'])
+    receipt['distribution_audit'] = move_reference(receipt['distribution_audit'])
+    receipt['gates'] = {gate: write_json(root, 'evidence/secondary-'+gate+'.json', output)
+                        for gate, output in gates.items()}
+    if fault == 'receipt-selector':
+        # Local references allow reaching the exact receipt/raw selector join.
+        receipt['pytest']['path'] = receipt['pytest']['path'].removeprefix(stores.EVIDENCE_PREFIX)
+        receipt['distribution_audit']['path'] = receipt['distribution_audit']['path'].removeprefix(stores.EVIDENCE_PREFIX)
+        del receipt['evidence_store']
+    row['receipt'] = write_json(root, 'evidence/receipt.json', receipt)
+    if fault:
+        with pytest.raises(inventory.InventoryError, match='store bindings differ'):
+            inventory.validate(ledger, root)
+    else:
+        assert inventory.validate(ledger, root)['status'] == 'VALID_INCOMPLETE'
+        assert set(gates) == set(inventory.GATES)
+
+
 @pytest.mark.parametrize('change, message', [
     (lambda x: x['rows'].append(deepcopy(x['rows'][0])), 'duplicate feature/profile'),
     (lambda x: x['features'].append(deepcopy(x['features'][0])), 'duplicate feature'),
@@ -1014,14 +1072,16 @@ def test_candidate_pins_objective_cpp_surface_inputs(example, change):
         validate_candidate(candidate, root)
 
 
-def test_current_candidate_preparation_preserves_full_unqualified_scope():
+def test_historical_candidate_preserves_scope_but_rejects_current_toolset():
     from tools.compatibility_candidate import DEFAULT, validate_candidate
+    before = DEFAULT.read_bytes()
     candidate = inventory.read_json(DEFAULT)
-    result = validate_candidate(candidate)
-    assert result['proposed_pairs'] == 30 and result['canonical_required_pairs_preserved'] == 142
-    assert result['workflows'] == 3
-    assert result['reviewed'] is all(candidate['reviews'].values())
-    assert not result['qualified'] and not result['installable']
+    assert len(candidate['pairs']) == 30 and len(candidate['workflows']) == 3
+    baseline = inventory.read_json(ROOT / candidate['ledger']['path'])
+    assert len([p for p in baseline['applicability'] if p['status'] == 'required']) == 142
+    with pytest.raises(inventory.InventoryError, match='incomplete preparation verifier/tool identities'):
+        validate_candidate(candidate)
+    assert DEFAULT.read_bytes() == before
 
 
 @pytest.mark.parametrize('change,message', [
@@ -1321,16 +1381,16 @@ def test_scope_review_binds_candidate_and_coverage_without_hash_cycle(example):
         validate_coverage(record, root, require_reviewed=True)
 
 
-def test_current_coverage_proposal_maps_all_composite_branches_without_qualification():
+def test_historical_coverage_keeps_all_branches_without_approving_current_tools():
     from tools.compatibility_coverage import DEFAULT, validate_coverage
     record = inventory.read_json(DEFAULT)
-    result = validate_coverage(record, require_script_ready=True)
-    assert result['criteria'] == 60 and result['profile_bindings'] == 120
-    assert result['script_ready_bindings'] == 120 and not result['unmapped_observation_bindings']
-    assert result['original_required_pairs_retained'] == 142 and result['originals_discharged'] == 0
-    candidate = inventory.read_json(ROOT / record['candidate']['path'])
-    assert result['reviewed'] is all(candidate['reviews'].values())
-    assert not result['qualified']
+    before = DEFAULT.read_bytes()
+    assert len(record['criteria']) == 60 and len(record['bindings']) == 120
+    assert len(record['origin_dispositions']) == 142
+    assert all(binding['scenario'] is not None for binding in record['bindings'])
+    with pytest.raises(inventory.InventoryError, match='incomplete preparation verifier/tool identities'):
+        validate_coverage(record, require_script_ready=True)
+    assert DEFAULT.read_bytes() == before
 
 
 def test_unseeded_methods_stay_new_requirements_without_inventing_origins(example):
@@ -1544,19 +1604,20 @@ def test_execution_materialization_is_explicit_nonoverwriting_and_read_only_by_d
     assert not (root / 'fresh/other.json').exists()
 
 
-def test_current_execution_preparation_preserves_all_original_obligations():
+def test_historical_execution_keeps_obligations_without_approving_current_tools():
     from tools.compatibility_execution import DEFAULT, validate_execution
     record = inventory.read_json(DEFAULT)
-    result = validate_execution(record)
-    assert result['selected_pairs'] == 30 and result['criterion_bindings'] == 120
-    assert result['original_required_pairs_retained'] == 142 and result['originals_discharged'] == 0
+    before = DEFAULT.read_bytes()
+    assert len(record['mappings']) == 120
     candidate = inventory.read_json(ROOT / record['candidate']['path'])
     ledger = inventory.read_json(ROOT / record['execution']['path'])
     selected = {(pair['feature'], pair['profile']) for pair in candidate['pairs']}
-    applied = all(pair['reviewed'] for pair in ledger['applicability']
-                  if (pair['feature'], pair['profile']) in selected)
-    assert result['reviewed'] is (all(candidate['reviews'].values()) and applied)
-    assert not result['qualified'] and not result['installable']
+    assert len(selected) == 30
+    assert len(inventory.read_json(ROOT / record['baseline']['path'])['applicability']) >= 142
+    assert len([row for row in ledger['rows'] if (row['feature'], row['profile']) in selected]) == 30
+    with pytest.raises(inventory.InventoryError, match='incomplete preparation verifier/tool identities'):
+        validate_execution(record)
+    assert DEFAULT.read_bytes() == before
 
 
 def test_execution_conserves_required_same_profile_dependencies(example):
@@ -1765,10 +1826,21 @@ def test_preparation_freezes_functional_collector_sources(example, path):
         validate_candidate(candidate, root)
 
 
-def test_execution_rejects_an_existing_but_wrong_functional_branch_assignment():
+def test_execution_rejects_an_existing_but_wrong_functional_branch_assignment(monkeypatch):
+    from tools import compatibility_execution as execution
     from tools.compatibility_execution import DEFAULT, seal, validate_execution
     from tools.no_opengl.functional import criterion_binding
     record = inventory.read_json(DEFAULT)
+    candidate = inventory.read_json(ROOT / record['candidate']['path'])
+    coverage = inventory.read_json(ROOT / record['coverage']['path'])
+    baseline = inventory.read_json(ROOT / record['baseline']['path'])
+    # Isolate the functional mapping join from the deliberately stale tool pins
+    # in this preserved revision-1 packet. The historical tests above require
+    # that normal entry points reject those pins; no file is rewritten here.
+    monkeypatch.setattr(execution, 'load_inputs', lambda *args: (candidate, coverage, baseline))
+    # Positive control for the exact comparison that must reject the mutation:
+    # the unmodified historical mappings still equal today's generated map.
+    assert record['mappings'] == execution.template(candidate, coverage, baseline)[1]
     mapping = next(m for m in record['mappings'] if m['criterion'] == 'tk.gl.flush.failure')
     assert mapping['functional_result'] == criterion_binding('tk.gl.flush', 'failure')
     # These gloo branches really exist in the same result, but cannot substitute

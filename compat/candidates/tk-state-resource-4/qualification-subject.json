@@ -1,0 +1,49 @@
+{
+  "schema": 1,
+  "kind": "qualification-subject",
+  "manifest_sha256": "ab501dbcd8ba0542cd072722b96ebfcef0d9884133c850e86a0cf1da164c972d",
+  "product_source_commit": "b38c4f9068d6a425eef43b62313f0f4cf37f57d9",
+  "qualification_head": null,
+  "candidate": {
+    "path": "compat/candidates/tk-state-resource-4/candidate.json",
+    "sha256": "41c148deb6efe71d42cb0de076376bc0d2a978c8908ef8ff9597cd94dec2a59b"
+  },
+  "selection": {
+    "path": "compat/candidates/tk-state-resource-4/admission-selection.json",
+    "sha256": "fd92e72212bf7a6868d69f15fc035d5e140af40d754b88bb129c32d918572e52"
+  },
+  "execution": {
+    "path": "compat/candidates/tk-state-resource-4/execution.json",
+    "sha256": "10467c51955e490c0525431f95f4f6a8e8bf2c79a515dfd9cdafd75c8ff2e295"
+  },
+  "ledger": {
+    "path": "compat/candidates/tk-state-resource-4/execution-ledger.json",
+    "sha256": "9e861e07f80eb70d9d6f7ae6b246039bf1c2c5c1238d1b35aa5179e2df9802de"
+  },
+  "profiles": [
+    {
+      "profile": "windows-gpu-tk86-cp312-development",
+      "archive": {
+        "path": "compat/candidates/tk-state-resource-4/windows-archive.json",
+        "sha256": "33515d3da9b0be0632c223c3c24c02ffadfe348cdba289c753bc1d8329d0579c"
+      },
+      "producer": null,
+      "producer_retention": null,
+      "attempts": [],
+      "selected_attempt": null,
+      "attempt_history": null
+    },
+    {
+      "profile": "wsl-software-tk90-cp31213-development",
+      "archive": {
+        "path": "compat/candidates/tk-state-resource-4/linux-archive.json",
+        "sha256": "be64758de0693cdc22fd12ea729149d6ab621511b3d6544ec50d21e90e9fa2ed"
+      },
+      "producer": null,
+      "producer_retention": null,
+      "attempts": [],
+      "selected_attempt": null,
+      "attempt_history": null
+    }
+  ]
+}

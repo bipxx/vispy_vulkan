@@ -487,6 +487,52 @@ void multidimensional_sampler_arrays() {
     }
 }
 
+void dynamic_explicit_sampler_arrays() {
+    for (const std::string type : {"sampler1D", "sampler2D", "sampler3D", "samplerCube", "isampler2D", "usampler2D"}) {
+        const std::string coordinate = type == "sampler1D" ? ".5" :
+            type == "sampler3D" || type == "samplerCube" ? "vec3(.5)" : "vec2(.5)";
+        for (const std::string index : {"selector", "int(gl_FragCoord.x)%2", "uint(selector)"}) {
+            auto normalized = normalize_program(vertex,
+                "uniform " + type + " images[2];uniform int selector;void main(){gl_FragColor=vec4(textureLod(images[" +
+                index + "]," + coordinate + ",0.));}");
+            compile_and_reflect(normalized);
+            require(normalized.samplers.size() == 2, "dynamic selection retains two static resource pairs");
+            require(normalized.fragment.find("switch(index)") != std::string::npos,
+                "explicit sample selection uses typed switch helpers");
+            require(normalized.fragment.find("default: return") != std::string::npos,
+                "runtime out-of-range selection has a defined zero result");
+        }
+    }
+    for (const std::string type : {"sampler1D", "sampler2D", "sampler3D", "isampler2D", "usampler2D"}) {
+        const std::string coordinate = type == "sampler1D" ? "0" : type == "sampler3D" ? "ivec3(0)" : "ivec2(0)";
+        auto normalized = normalize_program(vertex,
+            "uniform " + type + " images[2];uniform int selector;void main(){gl_FragColor=vec4(texelFetch(images[selector]," +
+            coordinate + ",0));}");
+        compile_and_reflect(normalized);
+    }
+    auto invalid = normalize_program(vertex,
+        "uniform sampler2D images[2];void main(){gl_FragColor=textureLod(images[.5+0.],vec2(.5),0.);}");
+    require(invalid.error.empty(), invalid.error);
+    auto compilation = compile_vulkan_glsl(invalid.vertex, invalid.fragment);
+    require(!compilation.ok, "float index must not be silently converted to integer");
+    for (const std::string prefix : {
+            "float vispy_dynamic_sample_0(float x){return x;}\n",
+            "#define vispy_dynamic_sample_0 unexpected_macro_name\n"}) {
+        auto collision = normalize_program(vertex, prefix +
+            "uniform sampler2D images[2];uniform int selector;void main(){"
+            "gl_FragColor=textureLod(images[selector],vec2(.5),0.);}");
+        compile_and_reflect(collision);
+        require(collision.fragment.find("vec4 vispy_dynamic_sample_1(") != std::string::npos,
+            "generated selection helper avoids user declarations and macro identifiers");
+    }
+    auto nested = normalize_program(vertex,
+        "uniform sampler2D images[2];uniform int selector;void main(){gl_FragColor="
+        "textureLod(images[selector],vec2(textureLod(images[selector],vec2(.5),0.).r),0.);}");
+    compile_and_reflect(nested);
+    require(nested.fragment.find("vispy_dynamic_sample_1") != std::string::npos,
+        "nested explicit samples each receive an independent generated helper");
+}
+
 void literal_sampler_arrays() {
     const std::string fragment = "uniform sampler2D images[2]; void main(){gl_FragColor="
         "texture2D(images[0],vec2(.25))+texture2D(images[1],vec2(.75));}";
@@ -794,6 +840,7 @@ int main(int argc, char** argv) {
         coordinate_entry();
         one_dimensional_sampling();
         multidimensional_varyings(); sampling_policy(); literal_sampler_arrays(); multidimensional_sampler_arrays(); explicit_single_level_sampling();
+        dynamic_explicit_sampler_arrays();
         composer_diagnostics();
         composed_parameter_qualifiers();
         composed_sampler_parameters();

@@ -2,8 +2,10 @@
 """Draft Linux transport controls; synthetic records grant no admission."""
 import copy
 import hashlib
+import io
 import json
 from pathlib import Path
+import zipfile
 
 import pytest
 
@@ -122,6 +124,22 @@ def test_complete_synthetic_native_join(full_capture):
     assert set(result['native_output_hashes']) == set(native.MEMBERS)
 
 
+@pytest.mark.parametrize('name', ['tools/linux_ci_lifecycle.py', 'tools/audit_linux_wheel.py'])
+def test_unknown_protocol_rejected_even_with_consistent_source_and_retention(full_capture, name):
+    fixture = full_capture
+    original = fixture.data[str(fixture.evidence / 'source-inputs.zip')]
+    payload = b'# Unknown protocol implementation\n'
+    stream = io.BytesIO()
+    with zipfile.ZipFile(io.BytesIO(original)) as source, zipfile.ZipFile(stream, 'w') as target:
+        for info in source.infolist():
+            target.writestr(info, payload if info.filename == name else source.read(info.filename))
+    fixture.put('source-inputs.zip', stream.getvalue())
+    for source_map in ('source-before.json', 'source-after.json'):
+        fixture.edit(source_map, lambda value: value.update({name: native.sha(payload)}))
+    with pytest.raises(ValueError, match='unsupported original Linux capture protocol: ' + name):
+        native.validate_capture(fixture.finish(), fixture.production, fixture.root)
+
+
 def test_complete_native_fixture_needs_no_optional_yaml(tmp_path,monkeypatch):
     import sys
     monkeypatch.setitem(sys.modules,'yaml',None)
@@ -233,10 +251,10 @@ def test_native_dispatch_keeps_legacy_linux_policy_blocked(tmp_path):
 
 
 def test_real_native_route_requires_actual_review_before_capture(monkeypatch, without_current_reviews):
-    without_current_reviews(native)
+    selected = without_current_reviews(native)
     from tools.qualification_native import validate_record
     project=Path(__file__).resolve().parents[2]
-    path='compat/candidates/tk-state-resource-1/candidate.json'
+    path=selected.relative_to(project).as_posix()
     candidate=dict(path=path,sha256=native.sha((project/path).read_bytes()))
     capture=dict(path='must-not-read-an-unapproved-capture.json',sha256='0'*64)
     record=dict(schema=1,kind='original-linux-ci-native-reuse',candidate=candidate,capture=capture,

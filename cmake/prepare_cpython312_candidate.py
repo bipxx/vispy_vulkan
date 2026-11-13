@@ -139,7 +139,7 @@ def main() -> None:
               "planned_configuration": "Release", "root_protected_binaries_before": before,
               "expected_native_module": f"_dawn.{abi}-win_amd64.pyd",
               "expected_sdf_module": f"_sdf_cpu.{abi}-win_amd64.pyd",
-              "expected_wheel": f"vispy-0.17.0+vulkan.1-{abi}-{abi}-win_amd64.whl",
+              "expected_wheel": f"vispy-{tomllib.loads((ROOT / 'pyproject.toml').read_text())['project']['version']}-{abi}-{abi}-win_amd64.whl",
               "native_dependency_reuse": "Verified source trees only; prebuilt Dawn imports are not implemented",
               "remaining_gates": ["Build from a stable frozen source snapshot in a reserved native build slot",
                                   "Installed compiled SDF/native/assets/licenses external consumer and rollback",

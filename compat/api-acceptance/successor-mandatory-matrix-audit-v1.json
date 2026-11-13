@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "PASS_EIGHT_MANDATORY_OBSERVATIONS_NOT_ADMITTED",
+  "draft": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\successor-mandatory-matrix-527\\successor-matrix-draft.json",
+    "sha256": "2fe76f3cec55d2173728e73d4fd52e72c85c46e19fb1d16879f934cd104a0d4d"
+  },
+  "verification": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\successor-mandatory-matrix-527\\verification.json",
+    "sha256": "01390b93325ab702ad43d1a86acad3fd19a427d1a536febdd2aa20b40529e457"
+  },
+  "rows": 8,
+  "gate_checks": 24,
+  "canonical_matrix_modified": false,
+  "artifact_admitted": false,
+  "release_approved": false,
+  "remaining": "Final independent release/promotion review must cover these8rows separately from the finite128criterion Tk subject."
+}

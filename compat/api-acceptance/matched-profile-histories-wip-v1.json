@@ -1,0 +1,104 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "EXACT_PROFILE_HISTORIES_AND_THREE_RETENTION_JOINS_VALIDATED_RESOLUTION_PENDING",
+  "candidate": "tk-state-resource-7",
+  "verification": {
+    "status": "PASS_EXACT_PROFILE_HISTORY_AND_RETENTION_DRAFTS",
+    "profiles": [
+      {
+        "profile": "windows-gpu-tk86-cp312-development",
+        "environment_id": "fb42039cceb60b610c5ff0f3c9bd3837aa68b4c259224e6d982024d1f0481715",
+        "attempts": 3,
+        "passed": 2,
+        "pending_resolutions": 1,
+        "selected": [
+          {
+            "workflow": "tk-capture-formats",
+            "attempt": "windows-matched-cohort-504-tk-capture-formats-replay-0"
+          },
+          {
+            "workflow": "tk-state-resource-failures",
+            "attempt": "windows-matched-cohort-504-tk-state-resource-failures-replay-1"
+          }
+        ],
+        "history": {
+          "path": "@evidence/build/runs/matched-profile-histories-506/windows-history.json",
+          "sha256": "a8a9150d0914e8033c487c303ae50a662260c2f99a58e30e2621df74ef7ad5df"
+        }
+      },
+      {
+        "profile": "wsl-software-tk90-cp31213-development",
+        "environment_id": "2c8ae25cec2e37f8b1fc5cb9ae38d05e6a73d5f39ee13f83b9433f39f7df4c39",
+        "attempts": 3,
+        "passed": 3,
+        "pending_resolutions": 0,
+        "selected": [
+          {
+            "workflow": "tk-capture-formats",
+            "attempt": "wsl-matched-cohort-505-tk-capture-formats-replay-0"
+          },
+          {
+            "workflow": "tk-state-resource-failures",
+            "attempt": "wsl-matched-cohort-505-tk-state-resource-failures-replay-0"
+          }
+        ],
+        "history": {
+          "path": "@evidence/build/runs/matched-profile-histories-506/linux-history.json",
+          "sha256": "9e65dbeba505b5cd6c6d5f39b744b4be71dbc8ce9d725754541fea83730c03ac"
+        }
+      }
+    ],
+    "retentions": {
+      "windows-matched-cohort-504": {
+        "reference": {
+          "path": "@evidence/build/runs/matched-profile-histories-506/windows-retention.json",
+          "sha256": "7725a7334bc538b2edb1c80b133865fe0303926fed5db95d611d693af302ed65"
+        },
+        "covered": 62
+      },
+      "wsl-matched-cohort-505": {
+        "reference": {
+          "path": "@evidence/build/runs/matched-profile-histories-506/linux-retention.json",
+          "sha256": "6ab0070818db4ec22148f98c08ffeaf74ab62cab5b65b9c532b432d5c3fa32d2"
+        },
+        "covered": 94
+      },
+      "wsl-capture-rebind-483": {
+        "reference": {
+          "path": "@evidence/build/runs/matched-profile-histories-506/linux-previous-retention.json",
+          "sha256": "0618d14cfe14fcff90693a0644475e9498e21e161a04c7b2dd22e86aea73e2bd"
+        },
+        "covered": 80
+      }
+    },
+    "total_attempts": 6,
+    "selected_workflows": 4,
+    "independent_failure_resolutions_pending": 1,
+    "scope": "Strict replay requires a dependencies receipt; discovery-only runs are preserved separately, not silently promoted. Exact environment plus wheel defines the selected installed profile. Historical different-environment reports remain listed.",
+    "historical_variant_reports": 17,
+    "explicit_other_workflow_reports": 8,
+    "unattributed_current_wheel_reports": 0,
+    "source_reports_changed": false,
+    "subject_bound": false,
+    "artifact_admitted": false
+  },
+  "json_files_scanned": 15217,
+  "strict_controllers_examined": 60,
+  "history_scope": "Exact installed environment fingerprint plus selected wheel and candidate workflows. Seventeen historical environment-variant reports and eight explicit other-workflow reports remain disclosed in the scan, not promoted or silently dropped.",
+  "scan": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\matched-profile-histories-506\\scan.json",
+    "sha256": "ca95a21d52685f5d9a1936a2e4e79ffa2ee7381c25e21585831d6348b743642f"
+  },
+  "draft_resolution": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\matched-profile-histories-506\\windows-resolution-draft.json",
+    "sha256": "ccedc178c56abc9568a218d55dd87224c45846968a708d43fb313dc91a5f51b0"
+  },
+  "artifact_admitted": false,
+  "subject_bound": false,
+  "remaining": [
+    "Independent resolution approval for the Windows UNVERIFIED receipt-refresh attempt.",
+    "Final profile/distribution receipts and original producer retention.",
+    "Renew affected preparation/reuse policies,review,source-head CI and promotion."
+  ]
+}

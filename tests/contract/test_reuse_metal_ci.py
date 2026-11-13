@@ -60,7 +60,7 @@ def original(tmp_path, monkeypatch, request):
                 controlled_stripped_sha256=checksum, otool_dependencies='synthetic:\n /usr/lib/libSystem.B.dylib (compatibility version 1.0)')
     put(prefix+'wheels/'+wheel_name, wheel_path.read_bytes())
     monkeypatch.setattr(runtime_package, 'wheel_package_hashes', lambda *a, **kw: hashes)
-    identity = dict(repository=pin['repository'], run_id=123, attempt=1, source_head='a'*40,
+    identity = dict(repository=pin['repository'], run_id=123, attempt=1, source_head='a'*40, event='pull_request',
         checked_head='b'*40, parents=['a'*40], job_key='build', job_name='Metal wheel '+arch+' CPython 3.12.8',
         workflow=dict(path='.github/workflows/metal-wheel.yml', sha256='c'*64))
     documents = {}
@@ -97,6 +97,48 @@ def test_complete_build_only_join_preserves_original_records(original):
     assert result['archive']['source_revision'] == pin['checked_head']
     assert result['archive']['wheel'] == str(result['wheel'])
     assert snapshot == {row['member']: (root/row['path']).read_bytes() for row in inventory['members']}
+
+
+@pytest.mark.parametrize('mutation', [None, 'cache', 'raw', 'layout'])
+def test_managed_transport_keeps_original_hash_bound_inputs(original, mutation):
+    root, source, pin, arch, inventory, docs = original
+    pin['layout'] = 'managed-v1'
+    old = 'metal-evidence-'+arch+'/'
+    new = 'runs/metal-ci-123-1-'+arch+'/'
+    for row in inventory['members']:
+        if row['member'].startswith(old):
+            row['member'] = new+row['member'][len(old):]
+        elif row['member'].startswith('metal-native-'+arch+'/'):
+            row['member'] = 'artifacts/'+row['sha256']+'/'+Path(row['member']).name
+    if mutation == 'cache':
+        row = next(r for r in inventory['members'] if r['member'].endswith('/CMakeCache.txt'))
+        row['member'] = 'artifacts/'+'0'*64+'/CMakeCache.txt'
+    elif mutation == 'raw':
+        row = next(r for r in inventory['members'] if r['member'].startswith('artifacts/') and r['member'].endswith('/_dawn.cpython-312-darwin.so'))
+        row['member'] = row['member'].replace(row['sha256'], '0'*64)
+    elif mutation == 'layout':pin['layout'] = 'unknown'
+    if mutation:
+        with pytest.raises(ValueError, match='cache|Missing original|layout'):
+            metal.validate_inputs(inventory, pin, arch, source, root)
+    else:
+        assert metal.validate_inputs(inventory, pin, arch, source, root)['archive']['artifact_admitted'] is False
+
+
+@pytest.mark.parametrize('event', ['push', 'workflow_dispatch', 'pull_request'])
+def test_direct_checkout_is_valid_for_supported_events(original, event):
+    root, source, pin, arch, inventory, docs = original
+    pin['source_head'] = pin['checked_head']
+    rewrite(root, inventory, 'metal-evidence-'+arch+'/ci-identity.json',
+            lambda value: value.update(event=event, source_head=pin['source_head'], parents=['c'*40]))
+    assert metal.validate_inputs(inventory, pin, arch, source, root)['archive']['GPU_qualified'] is False
+
+
+@pytest.mark.parametrize('event', ['push', 'workflow_dispatch', 'schedule', None])
+def test_merge_parent_cannot_substitute_for_direct_checkout_or_unknown_event(original, event):
+    root, source, pin, arch, inventory, docs = original
+    rewrite(root, inventory, 'metal-evidence-'+arch+'/ci-identity.json', lambda value: value.update(event=event))
+    with pytest.raises(ValueError, match='CI identity'):
+        metal.validate_inputs(inventory, pin, arch, source, root)
 
 
 @pytest.mark.parametrize('mutation,match', [
@@ -165,7 +207,8 @@ def python_original(original, monkeypatch):
                           'uv.lock': b'synthetic', 'README.md': b'Original README\n',
                           'cpp/render.cpp': b'original native',
                           'tools/audit_metal_wheel.py': b'synthetic auditor',
-                          'pyproject.toml': b'license-files = ["LICENSE", "LICENSE-BSD", "LICENSING.md"]\n'}.items():
+                          'pyproject.toml': ('[project]\nname = "vispy"\nversion = "' + qa.VERSION +
+                                             '"\nlicense-files = ["LICENSE", "LICENSE-BSD", "LICENSING.md"]\n').encode()}.items():
         path = source / name
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_bytes(payload)

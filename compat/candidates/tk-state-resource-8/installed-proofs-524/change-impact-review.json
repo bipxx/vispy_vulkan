@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "kind": "change-impact",
+  "status": "APPROVED",
+  "independent": true,
+  "reviewer": "Claude peer review claude-fable-5-2; run525response-sha256:fb7685d9f279b70ef6c135ee086ae2b6897eace135db4ff42565d4669b70f2b0",
+  "subject_sha256": "d65bb7804f6e2ccc16bda47497d9e12e0aaf54a79b4ddb8e7628e2473d3f0374",
+  "qualification_head": "3ada644e85248bcae214e7e487b4b1684336fd8f"
+}

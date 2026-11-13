@@ -7,6 +7,12 @@ They cover every current canonical feature key plus the first 15 additive candid
 keys. The inventory remains the authority for requirements and applicability;
 this document creates no new completeness denominator and discharges no parent.
 
+2026-11-07 companion: [method, alias and workflow reconciliation](api-method-reconciliation.md)
+records the current source discovery and concrete example/test bindings. The four
+namespace reviews account for the original parent keys at source-route scope.
+The companion's discovered operations remain unreviewed for acceptance; these
+engineering routes do not become new artifact qualifications.
+
 ## How to choose the easiest faithful route
 
 First reuse the existing Python API and native GLIR mechanism, then fix the

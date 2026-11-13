@@ -1,0 +1,190 @@
+{
+  "schema": 1,
+  "status": "PASS_WSL_PYQT5_CURRENT_WHEEL_OBSERVATION_RELEASE_ADMISSION_PENDING",
+  "row": "wsl-linux-lavapipe-x11-qwidget-pyqt5",
+  "source_commit": "b38c4f9068d6a425eef43b62313f0f4cf37f57d9",
+  "wheel": {
+    "path": "build/artifacts/48164e052ddc3d8e5376a3a1f13fa652583142f4634438ae9067e204aab8b6ce/vispy-0.17.0+vulkan.2-cp312-cp312-manylinux_2_39_x86_64.whl",
+    "sha256": "48164e052ddc3d8e5376a3a1f13fa652583142f4634438ae9067e204aab8b6ce"
+  },
+  "functional": {
+    "stages": [
+      "exact_installed_artifact",
+      "device_and_qt_binding",
+      "qwidget_show_parent_resize",
+      "qwidget_capture_update_and_image_ownership",
+      "qwidget_overlay_interaction_hide_restore",
+      "qwidget_device_loss_recovery",
+      "qwidget_close"
+    ],
+    "functional_sha256": "74c67a230238215c502c7ad9b996ecd5eabd65bb8d131f01fd758c1829465952"
+  },
+  "feature_labels": [
+    "launch",
+    "initial-render",
+    "update",
+    "interaction",
+    "capture-export",
+    "recovery",
+    "close"
+  ],
+  "installed_members_verified": 537,
+  "source_overrides": 0,
+  "device": {
+    "backend": "Vulkan",
+    "adapter_type": "cpu",
+    "vendor": "mesa",
+    "device": "llvmpipe (LLVM 18.1.3, 256 bits)",
+    "driver": "llvmpipe: Mesa 26.1.8 (LLVM 18.1.3)",
+    "vendor_id": 65541,
+    "device_id": 0,
+    "max_texture_dimension_1d": 16384,
+    "max_texture_dimension_2d": 16384,
+    "max_texture_dimension_3d": 4096,
+    "max_vertex_attributes": 30,
+    "max_vertex_buffers": 8,
+    "max_vertex_buffer_array_stride": 2048,
+    "max_storage_buffers_per_shader_stage": 16,
+    "max_uniform_buffers_per_shader_stage": 12,
+    "max_inter_stage_shader_variables": 30,
+    "max_storage_buffer_binding_size": 134217728,
+    "max_bindings_per_bind_group": 1000,
+    "max_compute_invocations_per_workgroup": 1024,
+    "max_compute_workgroup_size_x": 1024,
+    "max_compute_workgroups_per_dimension": 65535,
+    "max_point_vertex_attributes": 30,
+    "core_features_and_limits": true,
+    "point_input_limit_scope": "all active user point inputs share one vertex buffer; exact vertex/instance identities use read-only vertex storage without reserving a user attribute; actual granted attribute/stride/storage/allocation limits apply",
+    "max_samplers_per_shader_stage": 16,
+    "max_sampled_textures_per_shader_stage": 48,
+    "max_buffer_size": 4294967295,
+    "max_uniform_buffer_binding_size": 65536,
+    "software": true,
+    "float32_filterable": true,
+    "unorm16_texture_formats": true,
+    "bresenham_lines": true,
+    "last_vertex_provoking": true,
+    "timestamp_query": true,
+    "timestamp_quantization_ns": 65536,
+    "host_mapped_pointer": true,
+    "host_import_limit": 536870912,
+    "depth_stencil_storage": "depth24_unorm_stencil8",
+    "ok": true,
+    "error": "",
+    "loss_count": 0,
+    "revision": "117b054598f4758b598f4b8f48feea48c11fe7b0+dawn-499e5c6ff9b37d5de70c6493fb74c251e0d35c1c"
+  },
+  "shutdown_gauges": {
+    "pending_tickets": 0,
+    "queued_frames": 0,
+    "live_buffer_bytes": 0,
+    "live_cpu_buffer_bytes": 0,
+    "live_texture_bytes": 0,
+    "canvas_texture_bytes": 0,
+    "transient_buffer_bytes": 0,
+    "line_resource_pool_busy_slots": 0,
+    "line_resource_pool_bytes": 0
+  },
+  "environment_id": "0dbf6f34c3f2d4fd787369c5292ec197f22849aa7955aaf604cc68b86f3725c5",
+  "report": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-pyqt5-row-475\\reports\\replay-0.json",
+    "sha256": "347c9484b856f72d087ca82cba377149afb8ed2ff32d5c5670201c23c6df74c0"
+  },
+  "worker": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-pyqt5-row-475\\reports\\replay-0.worker.json",
+    "sha256": "eafb64f485344b3e1386a388713d56f914554a01b6613516ba9049b3600100e2"
+  },
+  "receipt": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-pyqt5-row-475\\reports\\receipt-0.json",
+    "sha256": "bacdcdbdce17b0c74fe25164372cc28f5ba4952786a9ad1a92caa6a26f6e55a6"
+  },
+  "functional_report": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-pyqt5-row-475\\reports\\replay-0-features\\functional.json",
+    "sha256": "74c67a230238215c502c7ad9b996ecd5eabd65bb8d131f01fd758c1829465952"
+  },
+  "binding_info": [
+    "PyQt5",
+    "5.15.11",
+    "5.15.19"
+  ],
+  "qt_runtime_version": "5.15.19",
+  "qt_platform": "xcb",
+  "matrix_reference": {
+    "path": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\compat\\no-opengl-matrix.json",
+    "sha256": "230b12f3d4ed418cde3b0313fbdea36557b02a61c80a1cf637699d7a9bc50fc4"
+  },
+  "borrowed_origins": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-pyqt5-row-475\\borrowed-origins.json",
+    "sha256": "3481dab6d1549aa32e48f2d07896252104dc77d7a2a0ef57c26429456acfe43d"
+  },
+  "borrowed_dependencies": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-pyqt5-row-475\\borrowed-dependencies.json",
+    "sha256": "449b24cca41f7b6ad41075b775f104510810cd57e173c4e02f0f85e5e5b8dba7"
+  },
+  "storage_plan": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-pyqt5-row-475\\storage-plan.json",
+    "sha256": "b69a8aef7c8831c2e4bff473efccb5e22b6aeadda20cceb9d5980a63dd660e62"
+  },
+  "dependency_notices": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-pyqt5-row-475\\dependency-licenses.json",
+    "sha256": "ac4fbfd7cb009e5fdb5137935babe962a4f463fc763fd64c7407921186ff9edc"
+  },
+  "shared_source": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\windows-headless-row-466\\source-and-licenses.zip",
+    "sha256": "1efd5ebb167ff4a85a41cf05df909b717e7191967d5836b8110bb827867a8157"
+  },
+  "source_inputs": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\windows-headless-row-466\\source-inputs.json",
+    "sha256": "5d552a4c04b27afdabdc041afa9d5e5d046fdaaaaacb2952b2f707a1ba3f8cd5"
+  },
+  "probe_source": {
+    "path": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\tools\\no_opengl_host_probe.py",
+    "sha256": "ff0e93ccedbf2883eba8a0feb304042a6c849cd914a05e0ba8baf4d55069eeff"
+  },
+  "xvfb_origin": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-pyqt5-row-475\\xvfb-origin.json",
+    "sha256": "3a16f6c9f6976b640aec2ae69db8697c0c1ebbdefab326f954666407e548eaab"
+  },
+  "collector_reference": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-pyqt5-row-475\\collector-reference.json",
+    "sha256": "85b0b6aa1d09e635f903cf88f813df9cf7ccc40e3075fd89e8bbfa03673288fe"
+  },
+  "processes": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-pyqt5-row-475\\processes.json",
+    "sha256": "1502c29a539d18ed054f5ac98db3eebc7309bdb5f994091e298c8204187bd19a"
+  },
+  "controller": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-pyqt5-row-475\\controller-process.json",
+    "sha256": "ec2eb61d8e9e49d67e42d275f3be37cb6187df9a9a0648892bad7fdd2987efdb"
+  },
+  "setup_failures": [
+    {
+      "run": "wsl-pyqt5-row-474",
+      "failure": {
+        "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-pyqt5-row-474\\failure.txt",
+        "sha256": "05e32046bcdf21a883da28778fa22461d97d2ee423c6764ee4b743b7530d48d4"
+      },
+      "cleanup": {
+        "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-pyqt5-row-474\\post-cleanup.json",
+        "sha256": "90c2bf8ffa93f4b448f6b3accd77384f4688964c6e68938c1c07fe35be4632ea"
+      }
+    }
+  ],
+  "historical_row_artifact": "66f35ab0dae878af1744f2061be1042bd2c5abfd24d3192c7456865f2c6fd3f7",
+  "canonical_matrix_modified": false,
+  "mandatory_rows_observed_in_this_packet": 1,
+  "total_current_row_observations": 6,
+  "remaining_row_observations": 2,
+  "mandatory_rows_admitted": 0,
+  "independently_reviewed": false,
+  "artifact_admitted": false,
+  "native_build": false,
+  "dependencies_downloaded": false,
+  "dependency_strategy": "Retained matching dependencies are borrowed as read-only lower; selected wheel is normally installed into a bounded private overlay under the consumer prefix.",
+  "limits": [
+    "WSL software Vulkan only; no native Linux hardware claim.",
+    "The frozen QWidget probe is unmodified. All seven stages cover rendering/capture ownership, overlays/input, resize/hide/restore, device recovery and close.",
+    "Original rootfs/dependency fingerprints verified unchanged after the private namespace exits.",
+    "Canonical matrix and previous qualifications unchanged; independent review, remaining two WSL Qt row observations, attempt/subject/CI/promotion joins remain pending."
+  ]
+}

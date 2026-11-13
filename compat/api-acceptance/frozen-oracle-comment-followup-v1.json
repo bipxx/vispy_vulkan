@@ -1,0 +1,37 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "COMMENT_CORRECTED_CHECKS_PASS_INDEPENDENT_FOLLOWUP_AUTH_FAILED",
+  "test_sha256": "bb9fba0cedbccac122ee7999bd8d7e39eecc709f0db60f734fda283967352db5",
+  "comment_only_ast_identical": true,
+  "current_reference_passes": 18,
+  "previous_ast_identical_cpu_group_passes": 512,
+  "corrected_reason": "Live collector changes candidate-version resolution only. The frozen upstream collector already contains failure/stale-record handling.",
+  "independent_approval": false,
+  "prior_assertions_review": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\frozen-oracle-peer-516\\review-response.md",
+    "sha256": "61e2c7fbbff1d7f8b8fcffe1b18c76ea1cbeac82d449a2b5c9cea0985df76eb3"
+  },
+  "followup_process": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\frozen-oracle-followup-517\\review-process.json",
+    "sha256": "0cb506ae136137536b4629610c7bb2c688536b756e371a8225b4d5cfc295ca11"
+  },
+  "followup_response": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\frozen-oracle-followup-517\\review-response.json",
+    "sha256": "8c26db38df584e5e6e4dd215d01ad4ea1bbcc04a981d8a6300d490aa91c9dc76"
+  },
+  "current_checks": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\frozen-oracle-followup-517\\reference-check-process.json",
+    "sha256": "9e3070e95860ea4ee1672e95f26c499a1d489a5ea3a1b360a807300a8b7d22e5"
+  },
+  "ast_check": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\frozen-oracle-followup-517\\comment-only-verification.json",
+    "sha256": "3c4d85d3a256497461d16e3d92ea421ab9bd0eeacfcb6f817358df1fc0a11468"
+  },
+  "pending": [
+    "Independent exact-byte follow-up or final impact/promotion review",
+    "New-head23-job CI",
+    "Final-head subject renewal and promotion"
+  ],
+  "artifact_admitted": false
+}

@@ -1,0 +1,44 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "kind": "independent-mandatory-observation-review",
+  "mandatory_observation_decision": "approved",
+  "legacy_retention_decision": "approved_at_disclosed_manual_scope",
+  "qualification_head": "3ada644e85248bcae214e7e487b4b1684336fd8f",
+  "product_source": "b38c4f9068d6a425eef43b62313f0f4cf37f57d9",
+  "wheels": [
+    "a86b030b005cba455f46ccaeffc56bf3f438142e490999f88156370e6093fb6c",
+    "48164e052ddc3d8e5376a3a1f13fa652583142f4634438ae9067e204aab8b6ce"
+  ],
+  "matrix_sha256": "230b12f3d4ed418cde3b0313fbdea36557b02a61c80a1cf637699d7a9bc50fc4",
+  "observation_audit_sha256": "01390b93325ab702ad43d1a86acad3fd19a427d1a536febdd2aa20b40529e457",
+  "legacy_retention_audit_sha256": "13dc759b3b20c9942e8c06ba5f33222b887d146828ff0aceffb894f7dcece275",
+  "independent": true,
+  "reviewer": "Claude read-only peer review, CLI model recorded in raw response",
+  "raw_response": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\mandatory-release-peer-532\\review-response.json",
+    "sha256": "5580c97823c30da167e1c0db78ba563cdae25f66bff509dbc6ab338ee7cc614d"
+  },
+  "response": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\mandatory-release-peer-532\\review-response.md",
+    "sha256": "487475d1b51a644b5c3d942e28d65bbd3edfb94e55e7f33465c53688e61193e2"
+  },
+  "process": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\mandatory-release-peer-532\\review-process.json",
+    "sha256": "604ce39481f1aa86b96e12e3f198290ab6f3a965c4d89534cce20f68a0914788"
+  },
+  "input_hashes": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\mandatory-release-peer-532\\inputs.json",
+    "sha256": "12d57dabd3e8b4e93ec06a1fb4afb3c3c5184f7666087de2a001b7d6b1629a54"
+  },
+  "qualification_index_retention_acceptance": false,
+  "artifact_admitted": false,
+  "release_approved": false,
+  "followup": [
+    "Bind additional runner/shutdown/profile references and fixed Qt-stage/binding/science counts",
+    "Disclose binding-neutral filename in PyQt6 setup",
+    "Retain exact-profile strict histories and receipt-free discovery separately",
+    "Confirm or add successor-registry protection without mutating frozen registry bytes"
+  ],
+  "scope": "Independent observation/manual-legacy-retention approval only. Original two-root verifier rejection remains. Final same-head23CI, exact promotion review, strict Tk admission, mandatory successor admission and release integration remain separate."
+}

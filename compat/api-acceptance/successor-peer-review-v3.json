@@ -1,0 +1,53 @@
+{
+  "schema": 1,
+  "status": "APPROVED_RENEWED_SOURCE_AND_SCOPE_INSTALLED_QUALIFICATION_PENDING",
+  "date": "2026-11-13",
+  "independent": true,
+  "reviewer": "Claude peer review (claude-fable-5-2), run490",
+  "candidate": "tk-state-resource-6",
+  "bindings": {
+    "candidate_scope_sha256": "9dc339f3fefe29dafaea81fc127f4e03d441741707c081cf66e927f7fa5dc193",
+    "coverage_map_sha256": "2b3abc388b83be1e14580b1d2faf7bc86c2f2c3d2aeca7528b95e5c04f909d67",
+    "execution_map_sha256": "a2e0e99500dc714e8cafe9eb68db9de15264194c95955ef3b96bf3d64a222727",
+    "admission_scope_sha256": "6bb5be4eceffc569350f6866c17fb2a8396f0e82f107664ec83e0b441298f0cd",
+    "native_reuse_links": [
+      "0bacdcba3487532be18ce797ba7eec825f535c5bfbec71413d55373e3623c46f",
+      "0cdb710a0f4395689b0391a53be186a81101fb0d7b64563d49fc388ee416665a"
+    ]
+  },
+  "review_response": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\qualification-candidate-peer-490\\review-response.md",
+    "sha256": "539e6ef93ea6ea6318ee6799bc26047897c3f923abbdfa76d80718bfc789ee0f"
+  },
+  "review_process": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\qualification-candidate-peer-490\\review-process.json",
+    "sha256": "c940d6344655c9c5ea214905d57d3181a610262bb71b32f95deef70105b6db1f"
+  },
+  "binding_verification": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\qualification-candidate-peer-490\\binding-verification.json",
+    "sha256": "64f69525245e6fd905b7ee03d1851863c7652f7e3ef3a23268245ffcd0b40bc0"
+  },
+  "delta_verification": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\qualification-candidate-peer-490\\delta-verification.json",
+    "sha256": "028c71346cba6e0558421e14eeb79cc8b06bd45fe606ebbb29b32bff0b80e321"
+  },
+  "source_archive": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\qualification-candidate-peer-490\\source-and-licenses.zip",
+    "sha256": "35197b19904e3243c433224eaa23f2ae17f1b07ed94d8014891c736d91c4a536"
+  },
+  "coordinator_rehashed": true,
+  "source_scope_approvals_transferred": 0,
+  "artifact_admitted": false,
+  "subject_proved": 0,
+  "limitations": [
+    "Index does not enumerate Windows transitive raw command logs; bind them explicitly in contributing cleanup proof.",
+    "Reviewers must check history-bound workflow attribution for pre-observation failures.",
+    "Incomplete workflow selections fail closed; they are not missing-proof success.",
+    "Source-local producer inputs require retained-byte proof; hash resolution alone is insufficient."
+  ],
+  "remaining": [
+    "Qualification Git head including CI-named tests and qualification_gate.py.",
+    "Installed row pytest/distribution/gate joins, complete attempt histories and original retention.",
+    "Required hosted head CI and detached promotion."
+  ]
+}

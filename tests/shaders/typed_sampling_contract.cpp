@@ -155,10 +155,17 @@ void stage_and_type_controls() {
             require(sampler.sample_scalar==(type=="usampler2D" ? ShaderScalarType::Uint : ShaderScalarType::Sint) &&
                     sampler.texture_stage_mask==2, "typed array leaves preserve their integer scalar domain and fragment liveness");
     }
-    const auto dynamic = normalize_program(vertex,
-        "uniform usampler2D words[2];uniform int index;void main(){gl_FragColor=vec4(texelFetch(words[index],ivec2(0),0));}");
-    require(dynamic.error.find("literal nonnegative")!=std::string::npos,
-        "dynamic typed sampler indexing remains an explicit separate refusal");
+    const auto dynamic = vispy::shader::build_portable_shader(vertex,
+        "uniform usampler2D words[2];uniform int index;void main(){gl_FragColor=vec4(texelFetch(words[index],ivec2(0),0));}",
+        {}, "typed-dynamic-explicit-controls");
+    require(dynamic->ok, dynamic->error);
+    require(dynamic->samplers.size()==2 && dynamic->samplers[0].texture_stage_mask==2 &&
+            dynamic->samplers[1].texture_stage_mask==2,
+        "dynamic explicit fetch preserves both live typed resource leaves");
+    const auto implicit = normalize_program(vertex,
+        "uniform usampler2D words[2];uniform int index;void main(){gl_FragColor=vec4(texture(words[index],vec2(.5)));}");
+    require(implicit.error.find("literal nonnegative")!=std::string::npos,
+        "dynamic implicit sampling retains its independent derivative-policy refusal");
     auto output = normalize_program(vertex,
         "uniform isampler2D words;void bad(out isampler2D image){}void main(){bad(words);gl_FragColor=vec4(1);}");
     require(output.error.find("named scalar input") != std::string::npos, "typed opaque output parameters are rejected before compilation");

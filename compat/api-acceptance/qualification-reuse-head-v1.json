@@ -1,0 +1,54 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "PUSHED_REVIEWED_REUSE_HEAD_REQUIRED_CI_RUNNING",
+  "qualification_head": "9cf488acdae59ae3b80310ab2a19b5bcc4915a54",
+  "source_freeze": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\qualification-reuse-freeze-511\\source-freeze.json",
+    "sha256": "ce42558e152425ce262d9d045c1929605ab2118270e5a2991f8b703dd91929bd"
+  },
+  "head_ci": {
+    "qualification_head": "9cf488acdae59ae3b80310ab2a19b5bcc4915a54",
+    "runs": [
+      {
+        "id": 43400158627,
+        "path": ".github/workflows/metal-wheel.yml",
+        "status": "queued",
+        "conclusion": null,
+        "url": "https://github.com/bipxx/vispy_vulkan/actions/runs/43400158627",
+        "head": "9cf488acdae59ae3b80310ab2a19b5bcc4915a54"
+      },
+      {
+        "id": 43400153578,
+        "path": ".github/workflows/linux-vulkan.yml",
+        "status": "in_progress",
+        "conclusion": null,
+        "url": "https://github.com/bipxx/vispy_vulkan/actions/runs/43400153578",
+        "head": "9cf488acdae59ae3b80310ab2a19b5bcc4915a54"
+      },
+      {
+        "id": 43400135712,
+        "path": ".github/workflows/cpu-contract.yml",
+        "status": "queued",
+        "conclusion": null,
+        "url": "https://github.com/bipxx/vispy_vulkan/actions/runs/43400135712",
+        "head": "9cf488acdae59ae3b80310ab2a19b5bcc4915a54"
+      }
+    ],
+    "required_jobs": 23,
+    "required_ci_passed": false,
+    "native_mode": "reuse"
+  },
+  "runtime_references_unchanged": 608,
+  "owner_index_unchanged": true,
+  "native_mode": "reuse",
+  "source_contract_passes": 1117,
+  "source_review": "../compat/api-acceptance/successor-peer-review-v4.json",
+  "artifact_admitted": false,
+  "required_ci_passed": false,
+  "pending": [
+    "Complete23 required head CI jobs",
+    "Bind final installed profile/receipt/history/retention proofs",
+    "Promotion and integration"
+  ]
+}

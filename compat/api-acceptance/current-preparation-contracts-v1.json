@@ -1,0 +1,23 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "PASS_CURRENT_PREPARATION_SOURCE_CONTRACTS_REVISION7_REVIEW_PENDING",
+  "candidate": "tk-state-resource-7",
+  "profile": "Windows CPython3.12.8 existing .venv",
+  "passed": 1088,
+  "process": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\current-preparation-contracts-501\\contracts-process.json",
+    "sha256": "2a8f8e0c93aec5195da3f5f531272b771b0ea61010f74edd5103f47c2a7ea0f1"
+  },
+  "log": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\current-preparation-contracts-501\\contracts.log",
+    "sha256": "c11e7505dbe787d4ad231fa731f3c42536c9d70cf264236ae7ff8c117fd33821"
+  },
+  "source_reference": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\ci-source-grouping-repair-499\\source-and-licenses.zip",
+    "sha256": "6054da607ec1e71ea97e0d7f8e945948d8d8b8260c552c439c37380547d2c89f"
+  },
+  "source_guard_scope": "Current preparation fixture follows explicit CI declarations; prior default refusal and all positive/negative selection controls retained.",
+  "artifact_admitted": false,
+  "required_ci_passed": false
+}

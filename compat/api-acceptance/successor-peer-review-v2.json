@@ -1,0 +1,40 @@
+{
+  "schema": 1,
+  "status": "PASS_REVISED_SOURCE_SCOPE_APPROVALS_BOUND",
+  "candidate": "tk-state-resource-5",
+  "source_commit": "b38c4f9068d6a425eef43b62313f0f4cf37f57d9",
+  "review": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\successor-scope-review-480\\review-response.md",
+    "sha256": "a56ad3ec714a1799c485c54af67c9da98a2e8e6a920b8a17ae34176783c24855"
+  },
+  "raw_response": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\successor-scope-review-480\\review-response.json",
+    "sha256": "53f1cf3163fe017d8f56c2648cfa4978572a458263785ea3cea295cb2541a98c"
+  },
+  "process": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\successor-scope-review-480\\review-process.json",
+    "sha256": "a59e1bc9b7983c68d54ff10b3d71a1f2a311c152445248309dd2112052c87409"
+  },
+  "verification": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\successor-scope-review-480\\binding-verification.json",
+    "sha256": "ed354e635a510c98f269774dde9aa13579e88bb0a5ed9dbb33135d7b0834526f"
+  },
+  "source_review": {
+    "path": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\compat\\candidates\\tk-state-resource-5\\source-review.json",
+    "sha256": "c0940223f32afd21275e8b6c8bf1ae60e1c6001fa5c87e05bd08631c5755f24b"
+  },
+  "scope_review": {
+    "path": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\compat\\candidates\\tk-state-resource-5\\scope-review.json",
+    "sha256": "1e9d737c6d7170a7d65023be1d3503592c8c9c7d3860a98136bd5b10971a1030"
+  },
+  "source_approved": true,
+  "scope_approved": true,
+  "capture_replays_required": 2,
+  "artifact_admitted": false,
+  "native_build": false,
+  "limits": [
+    "Review approvals bind exact revision5 scope and reuse digests; no release approval.",
+    "Two fresh capture replays, execution attempts/subjects, required CI and promotion remain pending.",
+    "Reviewer inspection limitations and low non-blocking notes are retained in the complete response."
+  ]
+}

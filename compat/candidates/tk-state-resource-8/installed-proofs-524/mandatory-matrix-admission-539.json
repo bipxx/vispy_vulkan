@@ -1,0 +1,323 @@
+{
+  "schema": 1,
+  "kind": "reviewed-successor-mandatory-matrix-admission",
+  "status": "SCOPED_ADMISSION_PASS",
+  "original_observation_manifest": {
+    "path": "compat/api-acceptance/mandatory-current-wheels-observations-v2.json",
+    "sha256": "fe05fac63dbc49531c825046c0385913982f079bb71f3ae7fdea6b44cf926b59"
+  },
+  "selected_wheels": [
+    "48164e052ddc3d8e5376a3a1f13fa652583142f4634438ae9067e204aab8b6ce",
+    "a86b030b005cba455f46ccaeffc56bf3f438142e490999f88156370e6093fb6c"
+  ],
+  "protected_legacy_inputs": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\mandatory-legacy-retention-529\\legacy-inputs.json",
+    "sha256": "06733914ecb1f27f1d3cf95d14cae0b8a7f35f6277dc87c78d95ebd258afbf5c"
+  },
+  "successor_registry": {
+    "path": "D:\\vispy-vulkan-managed\\build\\.hygiene\\registry-mandatory-successor-535.json",
+    "sha256": "1c78cc057cae33b4a97d1b24bd3e0db14879c27051a62c2d669182c4c36540c6"
+  },
+  "qualification_head": "3ada644e85248bcae214e7e487b4b1684336fd8f",
+  "product_source_commit": "b38c4f9068d6a425eef43b62313f0f4cf37f57d9",
+  "requirements_matrix": {
+    "path": "compat/no-opengl-matrix.json",
+    "sha256": "230b12f3d4ed418cde3b0313fbdea36557b02a61c80a1cf637699d7a9bc50fc4"
+  },
+  "rows": [
+    {
+      "id": "windows-vulkan-headless",
+      "status": "SCOPED_ADMISSION_PASS",
+      "wheel_sha256": "a86b030b005cba455f46ccaeffc56bf3f438142e490999f88156370e6093fb6c",
+      "environment_id": "456103ef0056eae45fecb3c66fa08bfd3b53a3aefda8e01aa94295ecb3109dcb",
+      "features": [
+        "clear",
+        "image",
+        "labels",
+        "volume",
+        "markers",
+        "mesh",
+        "compiled-text",
+        "depth-order",
+        "shader-arrays-attributes-lod",
+        "multisample-lines",
+        "recovery",
+        "shutdown-zero-resources"
+      ],
+      "packet": {
+        "path": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\compat\\api-acceptance\\mandatory-windows-headless-v2.json",
+        "sha256": "9062f026faff46543c23d206bf884df70e2884dad8d466d4d0bad817ce154cb7"
+      },
+      "report": {
+        "path": "D:\\vispy-vulkan-managed\\build\\runs\\windows-headless-row-467\\replay-0.json",
+        "sha256": "1ab177ce836e04ce34e7e0e164eef2694ac127c23411faad3e3cc6674fb487fb"
+      },
+      "worker": {
+        "path": "D:\\vispy-vulkan-managed\\build\\runs\\windows-headless-row-467\\replay-0.worker.json",
+        "sha256": "38a87d38e44692a7b03f260faa5e97d07b633f77652ed01ee668f68b015041c6"
+      },
+      "receipt": {
+        "path": "D:\\vispy-vulkan-managed\\build\\runs\\windows-headless-row-467\\receipt-0.json",
+        "sha256": "07790c741266d7163cb3e131b6b051bd304930856863c129c92447deeae0296e"
+      }
+    },
+    {
+      "id": "windows-vulkan-qwidget-pyqt5",
+      "status": "SCOPED_ADMISSION_PASS",
+      "wheel_sha256": "a86b030b005cba455f46ccaeffc56bf3f438142e490999f88156370e6093fb6c",
+      "environment_id": "7cb92533cf7a51d2df73d557d613725bd4161531153e5d657f26deee5bcb790d",
+      "features": [
+        "launch",
+        "initial-render",
+        "update",
+        "interaction",
+        "capture-export",
+        "recovery",
+        "close"
+      ],
+      "packet": {
+        "path": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\compat\\api-acceptance\\mandatory-windows-pyqt5-v2.json",
+        "sha256": "504ff543ed1cca5f1119dedb4a3032ce96dde36fafdd1daa3c7021ea63b90ce1"
+      },
+      "report": {
+        "path": "D:\\vispy-vulkan-managed\\build\\runs\\windows-pyqt5-row-471\\replay-0.json",
+        "sha256": "da7c71f686fedd59913b2bf5f0ec51997bfb1a35e19417d14b2699e0a6fcf624"
+      },
+      "worker": {
+        "path": "D:\\vispy-vulkan-managed\\build\\runs\\windows-pyqt5-row-471\\replay-0.worker.json",
+        "sha256": "88a9f2c1fc8b5409f9be8fd9ff776abdf0537912fdc4800118ce8fff6a29c4cb"
+      },
+      "receipt": {
+        "path": "D:\\vispy-vulkan-managed\\build\\runs\\windows-pyqt5-row-471\\receipt-0.json",
+        "sha256": "75e0105fed540e0b37020a039b5244397372aeb76fc728f19914c4c926d916fd"
+      }
+    },
+    {
+      "id": "windows-vulkan-qwidget-pyqt6",
+      "status": "SCOPED_ADMISSION_PASS",
+      "wheel_sha256": "a86b030b005cba455f46ccaeffc56bf3f438142e490999f88156370e6093fb6c",
+      "environment_id": "613aa43ad400beccd5c265b4f1d69532932463d0e7e09174d36da8fbc785a5d2",
+      "features": [
+        "launch",
+        "initial-render",
+        "update",
+        "interaction",
+        "capture-export",
+        "recovery",
+        "close"
+      ],
+      "packet": {
+        "path": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\compat\\api-acceptance\\mandatory-windows-pyqt6-v2.json",
+        "sha256": "8da0507abb0dc484aa2284e3cdaffa0bb4a4c6a6e2aa986f6b8e6ddfa23a2c36"
+      },
+      "report": {
+        "path": "D:\\vispy-vulkan-managed\\build\\runs\\windows-pyqt6-row-472\\replay-0.json",
+        "sha256": "ed9fa18808eadd152c4a068db149ea654bf47dc5c50f1b6aa27afc0b6e7bff6b"
+      },
+      "worker": {
+        "path": "D:\\vispy-vulkan-managed\\build\\runs\\windows-pyqt6-row-472\\replay-0.worker.json",
+        "sha256": "9077ee5aea2d394a3b7cbb6c4bdbaf471c035741cdb71a4f71bcc748575b378a"
+      },
+      "receipt": {
+        "path": "D:\\vispy-vulkan-managed\\build\\runs\\windows-pyqt6-row-472\\receipt-0.json",
+        "sha256": "2a9f22faa484ce11428d3763de0ad5d3e39d428c10b2107ccb27a62fb3b15d07"
+      }
+    },
+    {
+      "id": "windows-vulkan-qwidget-pyside6",
+      "status": "SCOPED_ADMISSION_PASS",
+      "wheel_sha256": "a86b030b005cba455f46ccaeffc56bf3f438142e490999f88156370e6093fb6c",
+      "environment_id": "07f6ff2f5edc70041c353d7351d2d10dc360f6e3b246e3bd3e5abb4360e11ed9",
+      "features": [
+        "launch",
+        "initial-render",
+        "update",
+        "interaction",
+        "capture-export",
+        "recovery",
+        "close"
+      ],
+      "packet": {
+        "path": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\compat\\api-acceptance\\mandatory-windows-pyside6-v2.json",
+        "sha256": "a6079d914d15be4b2f47a866f1e362134ac73838bf7173a433653362da4e3fce"
+      },
+      "report": {
+        "path": "D:\\vispy-vulkan-managed\\build\\runs\\windows-pyside6-row-473\\replay-0.json",
+        "sha256": "b9c349ce3a8d1405633de528c69c6f4dff96bb4c4f1290a26150a95424f0e424"
+      },
+      "worker": {
+        "path": "D:\\vispy-vulkan-managed\\build\\runs\\windows-pyside6-row-473\\replay-0.worker.json",
+        "sha256": "c6365fb140dd1aedc338140b7b90f1f5356c22dbdcfdcb601183eb22beb9fb66"
+      },
+      "receipt": {
+        "path": "D:\\vispy-vulkan-managed\\build\\runs\\windows-pyside6-row-473\\receipt-0.json",
+        "sha256": "32c4a8614295dea6fc28c788c45fa7de49a4acbabba42dd45342b087a95b7dba"
+      }
+    },
+    {
+      "id": "wsl-linux-lavapipe-x11-headless",
+      "status": "SCOPED_ADMISSION_PASS",
+      "wheel_sha256": "48164e052ddc3d8e5376a3a1f13fa652583142f4634438ae9067e204aab8b6ce",
+      "environment_id": "fe8d5deec75c10de29caf1b62abbaa2cb0fa2313714fd8d64de501163dbb1805",
+      "features": [
+        "clear",
+        "image",
+        "labels",
+        "volume",
+        "markers",
+        "mesh",
+        "compiled-text",
+        "depth-order",
+        "shader-arrays-attributes-lod",
+        "multisample-lines",
+        "recovery",
+        "shutdown-zero-resources"
+      ],
+      "packet": {
+        "path": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\compat\\api-acceptance\\mandatory-wsl-headless-v2.json",
+        "sha256": "3b9894add4f53f83b81102f1cd072269bce28015170f45ddba63495c08de8144"
+      },
+      "report": {
+        "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-headless-row-470\\reports\\replay-0.json",
+        "sha256": "764f06b1028e11a541e979db08eb7793f26064b4e5841f3103e2aea16a294c3d"
+      },
+      "worker": {
+        "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-headless-row-470\\reports\\replay-0.worker.json",
+        "sha256": "595e329b9c2641c270b3c6292c8676c45e8eee65c2d5de683fad4c827e8bad4b"
+      },
+      "receipt": {
+        "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-headless-row-470\\reports\\receipt-0.json",
+        "sha256": "0dbfb043f6fd18caf5748b1d34b32a645e561e9d33f50c98e45446dac96fea73"
+      }
+    },
+    {
+      "id": "wsl-linux-lavapipe-x11-qwidget-pyqt5",
+      "status": "SCOPED_ADMISSION_PASS",
+      "wheel_sha256": "48164e052ddc3d8e5376a3a1f13fa652583142f4634438ae9067e204aab8b6ce",
+      "environment_id": "0dbf6f34c3f2d4fd787369c5292ec197f22849aa7955aaf604cc68b86f3725c5",
+      "features": [
+        "launch",
+        "initial-render",
+        "update",
+        "interaction",
+        "capture-export",
+        "recovery",
+        "close"
+      ],
+      "packet": {
+        "path": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\compat\\api-acceptance\\mandatory-wsl-pyqt5-v2.json",
+        "sha256": "302c4ea7a5cf44f825a40f5a9a7e13628c0d639ebb5cdef85359c1f4b5f1290d"
+      },
+      "report": {
+        "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-pyqt5-row-475\\reports\\replay-0.json",
+        "sha256": "347c9484b856f72d087ca82cba377149afb8ed2ff32d5c5670201c23c6df74c0"
+      },
+      "worker": {
+        "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-pyqt5-row-475\\reports\\replay-0.worker.json",
+        "sha256": "eafb64f485344b3e1386a388713d56f914554a01b6613516ba9049b3600100e2"
+      },
+      "receipt": {
+        "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-pyqt5-row-475\\reports\\receipt-0.json",
+        "sha256": "bacdcdbdce17b0c74fe25164372cc28f5ba4952786a9ad1a92caa6a26f6e55a6"
+      }
+    },
+    {
+      "id": "wsl-linux-lavapipe-x11-qwidget-pyqt6",
+      "status": "SCOPED_ADMISSION_PASS",
+      "wheel_sha256": "48164e052ddc3d8e5376a3a1f13fa652583142f4634438ae9067e204aab8b6ce",
+      "environment_id": "39813d78601ce0bd7d188fa3c6cda32124bb44eadb31902ff1890e7bb94c190d",
+      "features": [
+        "launch",
+        "initial-render",
+        "update",
+        "interaction",
+        "capture-export",
+        "recovery",
+        "close"
+      ],
+      "packet": {
+        "path": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\compat\\api-acceptance\\mandatory-wsl-pyqt6-v2.json",
+        "sha256": "d603626b1bab902b1a058dbc3a772b00ab853bd91089bde5881efc26b5fb100a"
+      },
+      "report": {
+        "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-pyqt6-row-476\\reports\\replay-0.json",
+        "sha256": "6a23ac61ec4fbd94718af715783e320bc6eea00ba2f7b8e279773d40579999c0"
+      },
+      "worker": {
+        "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-pyqt6-row-476\\reports\\replay-0.worker.json",
+        "sha256": "0fe306ec66b92252341c620e65a6d50100539fcb9c683a7983a69e25a540c4c1"
+      },
+      "receipt": {
+        "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-pyqt6-row-476\\reports\\receipt-0.json",
+        "sha256": "0af56b103304bc5770ad6f700f1fef1aae98209bae8e070d89d2277331342f88"
+      }
+    },
+    {
+      "id": "wsl-linux-lavapipe-x11-qwidget-pyside6",
+      "status": "SCOPED_ADMISSION_PASS",
+      "wheel_sha256": "48164e052ddc3d8e5376a3a1f13fa652583142f4634438ae9067e204aab8b6ce",
+      "environment_id": "ad36e6249113f14a770ada348d7cee50fda81baccdd4f8d71ae1222406275efe",
+      "features": [
+        "launch",
+        "initial-render",
+        "update",
+        "interaction",
+        "capture-export",
+        "recovery",
+        "close"
+      ],
+      "packet": {
+        "path": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\compat\\api-acceptance\\mandatory-wsl-pyside6-v2.json",
+        "sha256": "78af36c32fb787b841688df45a45292ca5402b00a302d446651740ef481a6f32"
+      },
+      "report": {
+        "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-pyside6-row-477\\reports\\replay-0.json",
+        "sha256": "2dbd337ea225795eace57525648f0c8ed68e66bd93789ec9888861a34dc1f283"
+      },
+      "worker": {
+        "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-pyside6-row-477\\reports\\replay-0.worker.json",
+        "sha256": "404f506b8ce6a51d1915833c71e667328af46889038f1a4fda13aee1da56c2d4"
+      },
+      "receipt": {
+        "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-pyside6-row-477\\reports\\receipt-0.json",
+        "sha256": "2a17f0b7b57afaac71087ba19aca0d62cdd5ef5614a4f92cb6b528417b071700"
+      }
+    }
+  ],
+  "required_rows": 8,
+  "admitted_rows": 8,
+  "independent_final_review": {
+    "path": "@evidence/build/runs/final-promotion-peer-538/decision.json",
+    "sha256": "f480cc3e435cae2b1572979917f5a6410c643b3e9e27d40a5132ce0871566c6d"
+  },
+  "promotion_basis": {
+    "path": "compat/candidates/tk-state-resource-8/installed-proofs-524/promotion-basis-537.json",
+    "sha256": "deaced78d2c44d18ce0a937bdfa9f6b52a3b4d4cc58f1b09246b9905f4c305f6"
+  },
+  "tk_strict_result": {
+    "path": "@evidence/build/runs/final-scoped-admission-539/strict-admission-result.json",
+    "sha256": "ba4a72bf370599047c4312d608f9011a7e471e107eb0bb0c4baba6d1bc5d6591"
+  },
+  "observation_audit": {
+    "path": "@evidence/build/runs/successor-mandatory-matrix-527/verification.json",
+    "sha256": "01390b93325ab702ad43d1a86acad3fd19a427d1a536febdd2aa20b40529e457"
+  },
+  "legacy_retention_audit": {
+    "path": "@evidence/build/runs/mandatory-legacy-retention-529/verification.json",
+    "sha256": "13dc759b3b20c9942e8c06ba5f33222b887d146828ff0aceffb894f7dcece275"
+  },
+  "unchanged_generic_verifier_refusal": {
+    "path": "@evidence/build/runs/mandatory-retention-audit-528/terminal-failure.json",
+    "sha256": "73c69de1ffe3320cc28f0bc28d27c40fc896c9da260105f3508298bf9f789654"
+  },
+  "review_followup": {
+    "path": "@evidence/build/runs/mandatory-review-followup-535/verification.json",
+    "sha256": "0ab75432310c43ae43003e97b7fc4c65f71d59423b81a11ad886c434e985bc74"
+  },
+  "qualification_index_retention_acceptance": false,
+  "canonical_historical_matrix_modified": false,
+  "artifact_admitted": true,
+  "release_complete": false,
+  "full_inventory_complete": false,
+  "scope": "Exact eight selected VisPy-only Windows Vulkan/WSL software Vulkan headless/plain-QWidget profiles and two CP312x86_64 wheels. Independent manual legacy retention scope remains distinct from generic-verifier-accepted Tk contributing retention. No host/full API/Metal graphics/physical Linux GPU admission or publication claim."
+}

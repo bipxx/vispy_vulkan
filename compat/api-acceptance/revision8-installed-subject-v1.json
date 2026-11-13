@@ -1,0 +1,44 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "PASS_128_SELECTED_SUBJECT_CRITERIA_NOT_ADMITTED",
+  "subject_sha256": "d65bb7804f6e2ccc16bda47497d9e12e0aaf54a79b4ddb8e7628e2473d3f0374",
+  "proved_criteria": 128,
+  "missing": 0,
+  "blocked": 0,
+  "result": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\revision8-installed-subject-524\\subject-result.json",
+    "sha256": "fc24a77472e8cd65497610f6177e0c0fdf4684efddde09c4acd6d165913a138f"
+  },
+  "subject": {
+    "path": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\compat\\candidates\\tk-state-resource-8\\installed-proofs-524\\qualification-subject.json",
+    "sha256": "162db03f89a36e6382f8d180b2dc9236089f14ee5267ff2ac4e74aaea9d2bada"
+  },
+  "materialization": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\revision8-installed-subject-524\\materialization.json",
+    "sha256": "982313f1b42f845baae23884d4f01a33795f4b6003e4c7a9f5f71b32ff206a2d"
+  },
+  "restoration": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\revision8-installed-subject-524\\restoration.json",
+    "sha256": "46ecaa5f8da37faf4c03015611b92eae3fcf28e14a37a12a1628a36a459a4c1b"
+  },
+  "actual_process": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\revision8-installed-subject-524\\assembly-process.json",
+    "sha256": "962de6040fbcd558d0974a8521cff59610660f87016f1b64401ab626890c0fe7"
+  },
+  "contributing_retention": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\revision8-proof-retention-523\\post-cleanup.json",
+    "sha256": "b9d46531f23e3e54d1d89edf93352c561a0870611baede5f6d26f73e5b84b2d8"
+  },
+  "source_implementation_head": "3ada644e85248bcae214e7e487b4b1684336fd8f",
+  "canonical_preparation_restored": true,
+  "replay_scope": "Reconstruct the reviewed selected-row overlay for validation, then restore the exact frozen preparation. No verifier edits, native rebuild or full source/environment copy.",
+  "artifact_admitted": false,
+  "required_ci_passed": false,
+  "full_inventory_complete": false,
+  "pending": [
+    "Complete all23 required jobs at reviewed head3ada; all3native jobs have passed",
+    "Independent change-impact and promotion-basis review",
+    "Promotion/integration/publication"
+  ]
+}

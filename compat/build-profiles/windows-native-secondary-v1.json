@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "kind": "windows-native-secondary-storage-v1",
+  "source_workspace": "C:/Users/HEQ/Projects/vispy_vulkan",
+  "storage_workspace": "D:/vispy-vulkan-managed",
+  "sdk_origin": "C:/Users/HEQ/Projects/vispy_vulkan/build/native-sdk/windows-x64-release-3",
+  "owner": "root-windows-secondary-v1",
+  "expected_peak_bytes": 805306368,
+  "aggregate_max_scratch_bytes": 21474836480,
+  "min_free_bytes": 10737418240,
+  "purpose": "Reuse the measured 768 MiB SDK-linked leaf profile on the coordinator-selected D: workspace. Keep source, SDK, prepared interpreter/compiler and dependency origins unchanged on C:; no source clone, SDK rebuild or environment installation.",
+  "guard": "Register one D: run with the inherited protected/blocked registry; enforce this allocation, the shared 20 GiB limit and 10 GiB reserve every 30 seconds. TEMP/TMP and all compiler/build/test outputs use that run. Check actual source and origin bytes before/after, and await owned children on any failure.",
+  "retention": "Retain original commands/exits/waits, source and dependency/SDK identities, cache/project snapshots, all 44 CTests, outputs and licenses outside scratch. Generate/inspect/apply the unchanged registry-aware cleanup and rehash retained files before another experiment. Keep admitted v1 policy bytes immutable; issue a successor for changes.",
+  "scope": "Native leaf storage placement only. No source/SDK/tool relocation, verifier waiver, artifact admission, hardware qualification or release promotion. Cross-store admission records remain a separate requirement."
+}

@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "name": "shutdown-package",
+  "owner": "root-shutdown-package",
+  "purpose": "Assemble the shutdown successor native leaf into an unreleased Windows wheel and verify actual installed renderer teardown",
+  "storage_workspace": "C:/Users/HEQ/Projects/vispy_vulkan",
+  "expected_peak_bytes": 2147483648,
+  "aggregate_max_scratch_bytes": 21474836480,
+  "min_free_bytes": 10737418240,
+  "parallel_jobs": 1,
+  "disk_guard_seconds": 30,
+  "reuse": "Hash-retained native outputs from shutdown-native-325 and the existing prepared cp312 packaging backend. Reuse existing dependency site-packages through an isolated -I -S consumer; no new environment, dependency installation or download",
+  "source": "Stage only declared package members, metadata and original AGPL/BSD notices. Verify source hashes against reviewed candidate b5fbe5917bcd5f6fb21cfda425980a12a8af34f1; retain the separately added native regression by hash",
+  "constraints": "No native or SDK compilation, system changes, verifier relaxation, historical approval transfer, release overwrite or publication. The existing development wheel version is a hash-identified unreleased candidate, separate from the published v1 wheel",
+  "terminal_cleanup": "Await all children; retain the exact wheel, source deltas/licenses, commands, archive join, installed member identities, renderer teardown/readback results and failure reproducer when necessary. Inspect and apply registry-aware cleanup before the next experiment",
+  "scope": "Local Windows installed-artifact verification only. Linux production, matching qualification records, required CI, merge and release are separate exit conditions"
+}

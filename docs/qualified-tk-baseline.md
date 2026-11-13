@@ -6,7 +6,30 @@ claimed workflows preserve familiar calls, data, events and observable behavior.
 Intentional differences and improvements must be documented and tested. Full
 upstream API, backend and pixel parity are not release requirements.
 
-## Verified milestones
+## Current successor admission — 2026-11-13
+
+The reviewed successor `tk-state-resource-8` admits the combined 128 selected Tk
+criteria on these exact CPython 3.12 x86_64 wheels:
+
+| Platform | Wheel SHA256 |
+| --- | --- |
+| Windows Vulkan | `a86b030b005cba455f46ccaeffc56bf3f438142e490999f88156370e6093fb6c` |
+| WSL software Vulkan, manylinux_2_39 | `48164e052ddc3d8e5376a3a1f13fa652583142f4634438ae9067e204aab8b6ce` |
+
+All23required CI jobs pass at qualification head
+`3ada644e85248bcae214e7e487b4b1684336fd8f`; independent final review and
+the unchanged strict admission verifier passed. Eight selected VisPy-only
+headless/plain-QWidget profiles have separate scoped successor admission.
+See [exact proof and reconstruction](../compat/api-acceptance/revision8-final-admission-v1.json)
+and the [successor release notes](release-0.17.0-vulkan.2.md) for profile,
+dependency, delivery and licensing limits. This does not admit optional hosts
+or the142broader compatibility obligations. Public delivery is verified
+separately on the linked GitHub Release.
+
+The milestone tables below are historical; their artifacts and separate
+admissions are preserved, rather than transferred to the successor.
+
+## Historical verified milestones
 
 | Milestone | Published source | Evidence boundary |
 | --- | --- | --- |
@@ -29,7 +52,7 @@ wheel zoom and orthographic Turntable yaw tests are published in
 and all eleven required source-merge checks passed. They are finite source
 tests, not installed camera qualification or whole-image parity.
 
-## Exact admitted wheels and profiles
+## Historical admitted wheels and profiles
 
 | Profile | Wheel | SHA-256 |
 | --- | --- | --- |

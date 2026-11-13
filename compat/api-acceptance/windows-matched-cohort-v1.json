@@ -1,0 +1,113 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "PASS_MATCHED_WINDOWS_COHORT_BINDINGS_PENDING",
+  "wheel": {
+    "path": "build/artifacts/a86b030b005cba455f46ccaeffc56bf3f438142e490999f88156370e6093fb6c/vispy-0.17.0+vulkan.2-cp312-cp312-win_amd64.whl",
+    "sha256": "a86b030b005cba455f46ccaeffc56bf3f438142e490999f88156370e6093fb6c"
+  },
+  "source_commit": "b38c4f9068d6a425eef43b62313f0f4cf37f57d9",
+  "candidate": "tk-state-resource-7",
+  "environment_id": "fb42039cceb60b610c5ff0f3c9bd3837aa68b4c259224e6d982024d1f0481715",
+  "workflows": [
+    {
+      "candidate": "tk-state-resource-7",
+      "workflow": "tk-state-resource-failures",
+      "status": "PASS_ALL_NO_OPENGL_GATES",
+      "report": "D:\\vispy-vulkan-managed\\build\\runs\\windows-matched-cohort-504\\tk-state-resource-failures\\replay-1.json",
+      "sha256": "d58126e90dd75523dfb123d785b2415e0195190d9411d832b79c9a14fa10b331",
+      "receipt": "D:\\vispy-vulkan-managed\\build\\runs\\windows-matched-cohort-504\\tk-state-resource-failures\\receipt-after-replay-0.json",
+      "environment_id": "fb42039cceb60b610c5ff0f3c9bd3837aa68b4c259224e6d982024d1f0481715",
+      "worker": {
+        "path": "@evidence/build/runs/windows-matched-cohort-504/tk-state-resource-failures/replay-1.worker.json",
+        "sha256": "135641cb9eb8bc4661ed96a74eddd3ca12494b67adf0995e43edd9b4e0fe6fbc"
+      },
+      "inventory": {
+        "path": "@evidence/build/runs/windows-matched-cohort-504/tk-state-resource-failures/receipt.inventory.json",
+        "sha256": "a55739787bb69c0580e29d7cde5ac4709bcebf786c472cac9a74605ea0d78d56"
+      },
+      "functional_validation": {
+        "contract": "tk-state-resource-1",
+        "schema": 1,
+        "status": "PASS_FUNCTIONAL_RESULT",
+        "branch_ids": [
+          "ordinary.state",
+          "progress.draw",
+          "progress.poll",
+          "resource.upload-recovery",
+          "submission.gloo.delayed",
+          "submission.gloo.immediate",
+          "submission.raw.delayed",
+          "submission.raw.immediate"
+        ],
+        "qualified": false
+      },
+      "shutdown_gauges": {
+        "pending_tickets": 0,
+        "queued_frames": 0,
+        "live_buffer_bytes": 0,
+        "live_cpu_buffer_bytes": 0,
+        "live_texture_bytes": 0,
+        "canvas_texture_bytes": 0,
+        "transient_buffer_bytes": 0,
+        "line_resource_pool_busy_slots": 0,
+        "line_resource_pool_bytes": 0
+      }
+    },
+    {
+      "candidate": "tk-state-resource-7",
+      "workflow": "tk-capture-formats",
+      "status": "PASS_ALL_NO_OPENGL_GATES",
+      "report": "D:\\vispy-vulkan-managed\\build\\runs\\windows-matched-cohort-504\\tk-capture-formats\\replay-0.json",
+      "sha256": "4fd175169259ad877970b340ed073aab735b4e4640476a72c262ebeeb6b76688",
+      "receipt": "D:\\vispy-vulkan-managed\\build\\runs\\windows-matched-cohort-504\\tk-capture-formats\\receipt.json",
+      "environment_id": "fb42039cceb60b610c5ff0f3c9bd3837aa68b4c259224e6d982024d1f0481715",
+      "worker": {
+        "path": "@evidence/build/runs/windows-matched-cohort-504/tk-capture-formats/replay-0.worker.json",
+        "sha256": "3f3e651f534f191125b012d61dbc1198a7b445891647e207b185214839a1aa88"
+      },
+      "inventory": {
+        "path": "@evidence/build/runs/windows-matched-cohort-504/tk-capture-formats/receipt.inventory.json",
+        "sha256": "a55739787bb69c0580e29d7cde5ac4709bcebf786c472cac9a74605ea0d78d56"
+      },
+      "functional_validation": {
+        "schema": 1,
+        "contract": "tk-capture-1",
+        "status": "PASS_FUNCTIONAL_RESULT",
+        "branch_ids": [
+          "capture.invalid-viewport",
+          "capture.ordinary",
+          "capture.resize",
+          "capture.retry"
+        ],
+        "qualified": false
+      },
+      "shutdown_gauges": {
+        "pending_tickets": 0,
+        "queued_frames": 0,
+        "live_buffer_bytes": 0,
+        "live_cpu_buffer_bytes": 0,
+        "live_texture_bytes": 0,
+        "canvas_texture_bytes": 0,
+        "transient_buffer_bytes": 0,
+        "line_resource_pool_busy_slots": 0,
+        "line_resource_pool_bytes": 0
+      }
+    }
+  ],
+  "feature_profile_joins": 16,
+  "gate_checks": 48,
+  "installed_members_verified": 537,
+  "unverified_receipt_refresh_attempts": 1,
+  "failed_or_partial_attempts_preserved": true,
+  "consumer_environment_identical_across_workflows": true,
+  "source_overrides": 0,
+  "native_build": false,
+  "qualified_rows_written": 0,
+  "artifact_admitted": false,
+  "remaining": [
+    "Complete WSL matched cohort.",
+    "Bind final profiles,receipts,histories and original/contributing retention.",
+    "Revision7review,required source-head CI and promotion."
+  ]
+}

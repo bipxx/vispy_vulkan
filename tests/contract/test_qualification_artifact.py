@@ -14,7 +14,7 @@ import pytest
 from tools import qualification_artifact as qa
 
 
-def sample(platform='win32', arch='arm64'):
+def sample(platform='win32', arch='arm64', version='0.17.0+vulkan.1'):
     manifest = {'schema': 1, 'profile': 'dawn-no-opengl-runtime', 'files': ['__init__.py'],
                 'excluded_files': [], 'compatibility_aliases': [],
                 'notice_files': ['LICENSE', 'LICENSE-BSD', 'LICENSING.md', 'vispy-LICENSE.txt'],
@@ -49,6 +49,12 @@ def sample(platform='win32', arch='arm64'):
               'notices': notices, 'distribution_licenses': licenses,
               'native_hashes': {n: qa.sha(d) for n, d in native.items()},
               'suffix': suffix, 'platform': platform, 'tag': tag}
+    if version != '0.17.0+vulkan.1':
+        dist = 'vispy-' + version + '.dist-info'
+        entries = {n.replace(qa.DIST + '/', dist + '/', 1): d for n, d in entries.items()}
+        entries[dist + '/METADATA'] = entries[dist + '/METADATA'].replace(b'Version: 0.17.0+vulkan.1', ('Version: '+version).encode())
+        inputs['distribution_licenses'] = {n.replace(qa.DIST + '/', dist + '/', 1): d for n, d in licenses.items()}
+        inputs['version'] = version
     return entries, inputs
 
 
@@ -79,18 +85,18 @@ def test_metal_archive_rejects_incompatible_tag_or_macho_header(mutation):
         qa.audit_archive(wheel_bytes(entries), **inputs)
 
 
-def wheel_bytes(entries, change_record=None):
+def wheel_bytes(entries, change_record=None, dist=qa.DIST):
     entries = dict(entries)
     rows = []
     for name, data in sorted(entries.items()):
         digest = base64.urlsafe_b64encode(hashlib.sha256(data).digest()).rstrip(b'=').decode()
         rows.append([name, 'sha256=' + digest, str(len(data))])
-    rows.append([qa.DIST + '/RECORD', '', ''])
+    rows.append([dist + '/RECORD', '', ''])
     if change_record:
         change_record(rows)
     record = io.StringIO(newline='')
     csv.writer(record).writerows(rows)
-    entries[qa.DIST + '/RECORD'] = record.getvalue().encode()
+    entries[dist + '/RECORD'] = record.getvalue().encode()
     result = io.BytesIO()
     with zipfile.ZipFile(result, 'w') as archive:
         for name, data in entries.items(): archive.writestr(name, data)
@@ -106,6 +112,57 @@ def test_complete_synthetic_archive_never_admits_native_or_installed_origin(plat
     assert not result['installed_origin_verified']
     assert result['package_hashes'] == {**inputs['pure_hashes'], **inputs['native_hashes'],
                                        **{n: qa.sha(d) for n, d in inputs['notices'].items()}}
+
+
+@pytest.mark.parametrize('platform', ['win32', 'linux', 'darwin'])
+def test_explicit_successor_version_preserves_original_license_and_record_joins(platform):
+    version = '0.17.0+vulkan.2'
+    dist = 'vispy-' + version + '.dist-info'
+    entries, inputs = sample(platform, version=version)
+    result = qa.audit_archive(wheel_bytes(entries, dist=dist), **inputs)
+    assert result['status'] == 'PASS_EXACT_ARCHIVE_PREREQUISITE' and not result['artifact_admitted']
+    for name in ('LICENSE', 'LICENSE-BSD', 'LICENSING.md'):
+        assert entries[dist+'/licenses/'+name] == inputs['notices']['vispy/_licenses/'+name]
+    # Successor support must not silently infer authority from archive metadata.
+    inputs.pop('version')
+    with pytest.raises(ValueError):
+        qa.audit_archive(wheel_bytes(entries, dist=dist), **inputs)
+
+
+@pytest.mark.parametrize('mutation', ['wrong-version', 'duplicate-version', 'wrong-license'])
+def test_successor_archive_rejects_metadata_inconsistent_with_expected_source(mutation):
+    entries, inputs = sample(version='0.17.0+vulkan.2')
+    dist = 'vispy-0.17.0+vulkan.2.dist-info'
+    field = dist+'/METADATA'
+    if mutation == 'wrong-version':
+        entries[field] = entries[field].replace(b'Version: 0.17.0+vulkan.2', b'Version: 0.17.0+vulkan.1')
+    elif mutation == 'duplicate-version':entries[field] = b'Version: 0.17.0+vulkan.2\n' + entries[field]
+    else:entries[field] = entries[field].replace(b'AGPL-3.0-only', b'BSD-3-Clause')
+    with pytest.raises(ValueError):
+        qa.audit_archive(wheel_bytes(entries, dist=dist), **inputs)
+
+
+def test_successor_distribution_notices_keep_original_bytes():
+    notices = qa.source_notices(qa.ROOT)
+    copies = qa.source_distribution_licenses(qa.ROOT, version='0.17.0+vulkan.2')
+    for name in ('LICENSE', 'LICENSE-BSD', 'LICENSING.md'):
+        assert copies['vispy-0.17.0+vulkan.2.dist-info/licenses/'+name] == notices['vispy/_licenses/'+name]
+
+
+@pytest.mark.parametrize('body,expected', [
+    ('[project]\nname="vispy"\nversion="0.17.0+vulkan.2"\n[tool.other]\nversion="9.0"\n', '0.17.0+vulkan.2'),
+    ('[project]\nname="vispy"\ndynamic=["version"]\n', None),
+    ('[project]\nversion="0.17.0+vulkan.1"\nversion="0.17.0+vulkan.2"\n', None),
+    ('[project]\nversion="not-a-version"\n', None),
+    ('[project]\nversion="v0.17.0+vulkan.2"\n', None),
+])
+def test_expected_version_comes_from_explicit_source_project_metadata(monkeypatch, body, expected):
+    path = qa.ROOT/'pyproject.toml'
+    read = type(path).read_text
+    monkeypatch.setattr(type(path), 'read_text', lambda self, *a, **kw: body if self == path else read(self, *a, **kw))
+    if expected is None:
+        with pytest.raises(ValueError):qa.source_version(qa.ROOT)
+    else:assert qa.source_version(qa.ROOT) == expected
 
 
 @pytest.mark.parametrize('platform', ['win32', 'linux'])

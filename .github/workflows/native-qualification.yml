@@ -103,6 +103,7 @@ jobs:
           from pathlib import Path
           import sys
           from packaging.utils import parse_wheel_filename
+          from tools.qualification_artifact import source_version
           directory = Path(os.environ['EVIDENCE'])
           wheels = list((directory / 'wheels').glob('*.whl'))
           assert len(wheels) == 1, wheels
@@ -110,7 +111,7 @@ jobs:
           assert wheel.stat().st_size <= 100 * 1024 * 1024, 'Compressed wheel exceeds the v1 100 MiB budget'
           name, version, _, tags = parse_wheel_filename(wheel.name)
           expected = f'cp{sys.version_info.major}{sys.version_info.minor}'
-          assert name == 'vispy' and str(version) == '0.17.0+vulkan.1'
+          assert name == 'vispy' and str(version) == source_version(Path.cwd())
           assert tags and all(tag.interpreter == expected and tag.abi == expected for tag in tags), tags
           requirements = directory / 'wheel.txt'
           requirements.write_text(f'vispy @ {wheel.as_uri()} --hash=sha256:{hashlib.sha256(wheel.read_bytes()).hexdigest()}\n')

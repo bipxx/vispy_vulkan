@@ -39,7 +39,29 @@ POLICY = 'compat/qualification-producers.json'
 SCHEMA = 'compat/qualification-artifact.schema.json'
 SDK_SHA = '7ace20d9c52d2e8eaaf40cb4138637e3b3a1f56bcec89ffef64b604a3b9875c2'
 COMPILER_SHA = '824f0234b667847befd7e3ff258822bfe557b540959ff042caaec6844b709a11'
-DIST = 'vispy-0.17.0+vulkan.1.dist-info'
+VERSION = '0.17.0+vulkan.1'
+DIST = 'vispy-' + VERSION + '.dist-info'
+
+
+def distribution_directory(version):
+    from packaging.version import InvalidVersion, Version
+    check(isinstance(version, str), 'expected package version must be a string')
+    try:
+        normalized = str(Version(version))
+    except InvalidVersion as error:
+        raise InventoryError('invalid expected package version') from error
+    check(normalized == version, 'expected package version must be normalized')
+    return 'vispy-' + version + '.dist-info'
+
+
+def source_version(root):
+    text = (Path(root) / 'pyproject.toml').read_text(encoding='utf-8')
+    project = re.search(r'(?ms)^\[project\]\s*\n(.*?)(?=^\[|\Z)', text)
+    check(project is not None, 'source project metadata missing')
+    versions = re.findall(r'''(?m)^version\s*=\s*["']([^"']+)["']\s*$''', project.group(1))
+    check(len(versions) == 1, 'source must declare one explicit package version')
+    distribution_directory(versions[0])
+    return versions[0]
 
 
 def sha(data):
@@ -76,8 +98,9 @@ def source_notices(root):
     return result
 
 
-def source_distribution_licenses(root):
+def source_distribution_licenses(root, *, version=VERSION):
     root = Path(root)
+    dist = distribution_directory(version)
     text = (root / 'pyproject.toml').read_text(encoding='utf-8')
     match = re.search(r'^license-files = (\[.*\])$', text, re.M)
     check(match is not None, 'source license-file contract missing')
@@ -88,19 +111,19 @@ def source_distribution_licenses(root):
         files = sorted(p for p in root.glob(pattern) if p.is_file())
         check(files, 'source license pattern matches no files')
         for file in files:
-            result[DIST + '/licenses/' + file.relative_to(root).as_posix()] = file.read_bytes()
-    check(all(DIST + '/licenses/' + name in result for name in ('LICENSE', 'LICENSE-BSD', 'LICENSING.md')),
+            result[dist + '/licenses/' + file.relative_to(root).as_posix()] = file.read_bytes()
+    check(all(dist + '/licenses/' + name in result for name in ('LICENSE', 'LICENSE-BSD', 'LICENSING.md')),
           'original license copies missing from distribution')
     return result
 
 
-def check_record(archive, names):
-    rows = list(csv.reader(io.StringIO(archive.read(DIST + '/RECORD').decode('utf-8'))))
+def check_record(archive, names, *, dist=DIST):
+    rows = list(csv.reader(io.StringIO(archive.read(dist + '/RECORD').decode('utf-8'))))
     check(all(len(row) == 3 for row in rows), 'malformed wheel RECORD row')
     indexed = unique_by(rows, lambda row: row[0], 'wheel RECORD member')
     check(set(indexed) == names, 'wheel RECORD inventory differs from archive')
     for name, row in indexed.items():
-        if name == DIST + '/RECORD':
+        if name == dist + '/RECORD':
             check(row[1:] == ['', ''], 'wheel RECORD must not hash itself')
             continue
         data = archive.read(name)
@@ -109,12 +132,16 @@ def check_record(archive, names):
 
 
 def audit_archive(data, *, manifest_data, pure_hashes, notices, distribution_licenses,
-                  native_hashes, suffix, platform, tag):
+                  native_hashes, suffix, platform, tag, version=VERSION):
     """Pure archive join. Expected inputs come from frozen sources/output files.
 
     In-memory synthetic tests use this function without fabricating producer or
     installed receipts. Native hash equality alone does not prove a build.
     """
+    # The expected version is supplied by the frozen source/record context,
+    # never inferred from an archive that is being checked. The legacy default
+    # keeps existing v1 callers and original retained audits unchanged.
+    dist = distribution_directory(version)
     manifest = runtime_package.validate_manifest(json.loads(manifest_data))
     check(platform in ('win32', 'linux', 'darwin'), 'archive architecture policy is not implemented for this platform')
     if platform == 'darwin':
@@ -129,8 +156,8 @@ def audit_archive(data, *, manifest_data, pure_hashes, notices, distribution_lic
     expected_notices = {'vispy/_licenses/' + name for name in manifest['notice_files']}
     check(set(notices) == expected_notices, 'incomplete original notice inputs')
     for name in ('LICENSE', 'LICENSE-BSD', 'LICENSING.md'):
-        check(DIST + '/licenses/' + name in distribution_licenses
-              and distribution_licenses[DIST + '/licenses/' + name] == notices.get('vispy/_licenses/' + name),
+        check(dist + '/licenses/' + name in distribution_licenses
+              and distribution_licenses[dist + '/licenses/' + name] == notices.get('vispy/_licenses/' + name),
               'missing/different original distribution license copies')
     expected_native = runtime_package.expected_members(manifest, suffix=suffix, platform=platform) - expected_pure - expected_notices
     check(set(native_hashes) == expected_native, 'incomplete native output inventory')
@@ -144,7 +171,7 @@ def audit_archive(data, *, manifest_data, pure_hashes, notices, distribution_lic
                   and path.as_posix() == name, 'noncanonical wheel member')
             if not info.is_dir():
                 names.add(info.filename)
-        expected = set(hashes) | set(distribution_licenses) | {DIST + '/' + name for name in ('METADATA', 'WHEEL', 'RECORD')}
+        expected = set(hashes) | set(distribution_licenses) | {dist + '/' + name for name in ('METADATA', 'WHEEL', 'RECORD')}
         check(names == expected, 'distribution archive has missing/unexpected members')
         check(archive.read(runtime_package.MEMBER) == manifest_data, 'wheel shipping contract differs from source')
         for name, expected_hash in {**pure_hashes, **native_hashes}.items():
@@ -167,25 +194,30 @@ def audit_archive(data, *, manifest_data, pure_hashes, notices, distribution_lic
                   'native archive architecture differs from profile: ' + name)
         for name, expected_bytes in {**notices, **distribution_licenses}.items():
             check(archive.read(name) == expected_bytes, 'original license/notice bytes differ: ' + name)
-        metadata = BytesParser().parsebytes(archive.read(DIST + '/METADATA'))
-        for field, value in {'Name': 'vispy', 'Version': '0.17.0+vulkan.1', 'License-Expression': 'AGPL-3.0-only',
+        metadata = BytesParser().parsebytes(archive.read(dist + '/METADATA'))
+        for field, value in {'Name': 'vispy', 'Version': version, 'License-Expression': 'AGPL-3.0-only',
                              'Description-Content-Type': 'text/markdown'}.items():
             check(metadata.get_all(field) == [value], 'wrong/duplicate wheel metadata: ' + field)
-        wheel = BytesParser().parsebytes(archive.read(DIST + '/WHEEL'))
+        wheel = BytesParser().parsebytes(archive.read(dist + '/WHEEL'))
         for field, value in {'Wheel-Version': '1.0', 'Root-Is-Purelib': 'false', 'Tag': tag}.items():
             check(wheel.get_all(field) == [value], 'wrong/duplicate wheel ABI metadata: ' + field)
-        check_record(archive, names)
+        check_record(archive, names, dist=dist)
     return {'status': 'PASS_EXACT_ARCHIVE_PREREQUISITE', 'wheel_sha256': sha(data),
             'package_hashes': hashes, 'distribution_members': len(names),
             'producer_admitted': False, 'artifact_admitted': False, 'installed_origin_verified': False}
 
 
 def validate_archive(record, root=ROOT):
+    try:
+        from .retained_evidence import evidence_root
+    except ImportError:
+        from retained_evidence import evidence_root
     root = Path(root)
     validate_shape(record, 'archive', root)
     validate_policy(root)
     candidate = read_json(local_file(root, record['candidate']['path']))
     validate_candidate(candidate, root)
+    version = source_version(root)
     check(scope_digest(candidate) == record['candidate']['scope_sha256'], 'archive candidate scope changed')
     profiles = {p['id']: p for p in candidate['profiles']}
     check(record['profile'] in profiles, 'archive profile is not selected')
@@ -199,14 +231,15 @@ def validate_archive(record, root=ROOT):
     # D35: the Linux release wheel carries auditwheel's verdict, manylinux_2_39, retagged before qualification.
     platform_tag = 'win_amd64' if windows else 'manylinux_2_39_x86_64'
     suffix = '.' + abi + '-win_amd64.pyd' if windows else '.cpython-' + abi[2:] + '-x86_64-linux-gnu.so'
-    wheel = retained_file(root, record['wheel'])
-    check(wheel.name == 'vispy-0.17.0+vulkan.1-' + abi + '-' + abi + '-' + platform_tag + '.whl', 'wrong wheel filename/profile ABI')
+    evidence = evidence_root(root, record.get('evidence_store'))
+    wheel = retained_file(evidence, record['wheel'])
+    check(wheel.name == 'vispy-' + version + '-' + abi + '-' + abi + '-' + platform_tag + '.whl', 'wrong wheel filename/profile ABI')
     outputs = unique_by(record['native_outputs'], lambda r: r['member'], 'native output member')
-    native_hashes = {name: sha(retained_file(root, ref['file']).read_bytes()) for name, ref in outputs.items()}
+    native_hashes = {name: sha(retained_file(evidence, ref['file']).read_bytes()) for name, ref in outputs.items()}
     result = audit_archive(wheel.read_bytes(), manifest_data=(root / 'compat/runtime-package.json').read_bytes(),
                            pure_hashes=runtime_package.source_package_hashes(root), notices=source_notices(root),
-                           distribution_licenses=source_distribution_licenses(root), native_hashes=native_hashes,
-                           suffix=suffix, platform=platform, tag=abi + '-' + abi + '-' + platform_tag)
+                           distribution_licenses=source_distribution_licenses(root, version=version), native_hashes=native_hashes,
+                           suffix=suffix, platform=platform, tag=abi + '-' + abi + '-' + platform_tag, version=version)
     return {**result, 'profile': record['profile'], 'source_commit': candidate['product_source_commit'],
             'missing': ['native-leaf-producer-admission', 'installed-functional-and-absence-gates',
                         'terminal-retention', 'promotion-basis-review']}

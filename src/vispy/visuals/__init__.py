@@ -6,9 +6,13 @@ This module provides a library of Visual classes, which are drawable objects
 intended to encapsulate simple graphic objects such as lines, meshes, points,
 2D shapes, images, text, etc.
 
-These classes define only the OpenGL machinery and connot be used directly in
-a scenegraph. For scenegraph use, see the complementary Visual+Node classes
-defined in vispy.scene.
+These classes define drawable geometry and shader programs. This fork executes
+the supported rendering operations through gloo/GLIR and Dawn. For scenegraph
+use, see the complementary Visual+Node classes defined in vispy.scene.
+
+Supported shader forms, formats and platform profiles are described in the
+fork compatibility documentation. Class availability does not establish support
+for every upstream method or value.
 """
 
 from .axis import AxisVisual  # noqa

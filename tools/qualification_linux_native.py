@@ -26,10 +26,10 @@ except ImportError:
 
 SCHEMA = 'compat/qualification-native.schema.json'
 PROTOCOL = {
-    'tools/linux_ci_lifecycle.py': 'c5cc6aac71160ca1d3f784cb6988a95c2ce6313ea25079163380f1b99875c53f',
+    'tools/linux_ci_lifecycle.py': 'e21fcbef8b92bc85611050dcde059a4a73fb9690b89f2fc5f5869bd8666b5ea1',
     'tools/build_hygiene.py': '0a4f8cbc161afa39dfaf25e840bb0c788fda4f709b84f7440bd52102f847fa84',
     'tools/run_linux_native_contracts.py': 'e07e6aede2b8f35b0c75533606f59f0669783c1b9822c59534d62d6ffee5caca',
-    'tools/audit_linux_wheel.py': '551e565c4e1e2ccd1c98f2bfcef1fd9b5db2252af6b1a9a42515d781ae93ad3a',
+    'tools/audit_linux_wheel.py': '449c1920f3256449e11513e4c1bf485b67a1b382cf3ac9231188ea72372de3e0',
     '.github/workflows/qualification_gate.py': '26969e912f921cc57200f66d62a6b17194541006a11b9d5b0bda95c63ac51e92',
     '.github/workflows/linux-vulkan.yml': '844ddd2c232f699f198751074a59abccec1c6a0a0c58460c77be9be6d75ac038',
 }
@@ -38,6 +38,12 @@ WORKFLOW_PATH = '.github/workflows/linux-vulkan.yml'
 # adds bounded reuse; original build records are never rewritten as reuse runs.
 # Unknown collector revisions remain unsupported.
 LEGACY_COLLECTOR_SHA256 = '3d5bc8eb9f5fdcc52a390d57a29fc26107b73679253545504587efe3648480cc'
+# The published v1 producer predates the live-sampling ENOENT fix. Its original
+# receipts and source bytes remain valid under their exact collector identity.
+PREVIOUS_COLLECTOR_SHA256 = 'c5cc6aac71160ca1d3f784cb6988a95c2ce6313ea25079163380f1b99875c53f'
+# Earlier producers audited the fixed v1 package identity. Retain their exact
+# auditor authority while the successor binds that identity to frozen sources.
+PREVIOUS_ARCHIVE_AUDITOR_SHA256 = '551e565c4e1e2ccd1c98f2bfcef1fd9b5db2252af6b1a9a42515d781ae93ad3a'
 LEGACY_WORKFLOW_SHA256 = 'd1af4af2d0171452ef5519e9bb5893e64b206fa35c6ad07a18e8aeaa67201860'
 MEMBERS = {
     'vispy/_dawn.cpython-312-x86_64-linux-gnu.so': '_dawn.cpython-312-x86_64-linux-gnu.so',
@@ -170,9 +176,10 @@ def capture_from_inventory(inventory, root=ROOT):
                 cleanup=reference(prefix+'cleanup-result.json'), files=files)
 
 
-def validate_capture(capture, expected_production, root=ROOT):
+def validate_capture(capture, expected_production, root=ROOT, *, evidence_root=None):
     """Original v1 protocol join. A positive result never admits an artifact."""
     root = Path(root)
+    evidence_root = root if evidence_root is None else Path(evidence_root)
     definitions = read_json(root/SCHEMA)['$defs']
     shape(capture, definitions['linux-capture'], definitions)
     cache = {}
@@ -180,7 +187,7 @@ def validate_capture(capture, expected_production, root=ROOT):
     def data(ref):
         key = (ref['path'], ref['sha256'])
         if key not in cache:
-            cache[key] = retained_file(root, ref).read_bytes()
+            cache[key] = retained_file(evidence_root, ref).read_bytes()
         return cache[key]
 
     state = decode(data(capture['state']))
@@ -227,7 +234,10 @@ def validate_capture(capture, expected_production, root=ROOT):
         for name, checksum in PROTOCOL.items():
             accepted = {checksum}
             if name == WORKFLOW_PATH: accepted.add(LEGACY_WORKFLOW_SHA256)
-            if name == 'tools/linux_ci_lifecycle.py': accepted.add(LEGACY_COLLECTOR_SHA256)
+            if name == 'tools/linux_ci_lifecycle.py':
+                accepted.update((LEGACY_COLLECTOR_SHA256, PREVIOUS_COLLECTOR_SHA256))
+            if name == 'tools/audit_linux_wheel.py':
+                accepted.add(PREVIOUS_ARCHIVE_AUDITOR_SHA256)
             check(before.get(name) in accepted, 'unsupported original Linux capture protocol: '+name)
         policy_bytes = archive.read('compat/build-hygiene.json')
         workflow = archive.read('.github/workflows/linux-vulkan.yml').decode()
@@ -287,7 +297,8 @@ def validate_capture(capture, expected_production, root=ROOT):
     check(all(type(row['bytes']) is int and row['bytes'] >= 0 for row in plan['snapshot']['files'])
           and sum(row['bytes'] for row in plan['snapshot']['files']) <= policy['max_scratch_bytes'],
           'Linux original scratch exceeded its budget')
-    check(not (root/'build/work'/run_id).exists(), 'Linux imported scratch is still present')
+    check(all(not (workspace/'build/work'/run_id).exists() for workspace in (root, evidence_root)),
+          'Linux imported scratch is still present')
 
     receipts = {}
     for ref in state['commands']:
@@ -458,6 +469,10 @@ def validate_capture(capture, expected_production, root=ROOT):
 
 
 def validate_record(record, root=ROOT):
+    try:
+        from .retained_evidence import evidence_root
+    except ImportError:
+        from retained_evidence import evidence_root
     root = Path(root)
     definitions = read_json(root/SCHEMA)['$defs']
     shape(record, definitions['linux-record'], definitions)
@@ -478,7 +493,12 @@ def validate_record(record, root=ROOT):
         check(type(approval.get('native_reuse_links')) is list and digest(reuse) in approval['native_reuse_links'],
               'Linux reuse lacks exact independent review')
     inputs = read_json(retained_file(root, candidate['runtime_inputs']))
-    result, environment = validate_capture(read_json(retained_file(root, record['capture'])), production_inputs(inputs), root)
+    evidence = evidence_root(root, reuse.get('evidence_store'))
+    capture = read_json(retained_file(evidence, record['capture']))
+    if 'evidence_store' in reuse:
+        result, environment = validate_capture(capture, production_inputs(inputs), root, evidence_root=evidence)
+    else:
+        result, environment = validate_capture(capture, production_inputs(inputs), root)
     expected_abi = dict(tag='cp312', build_version=environment['python'].split()[0],
                         build_python_sha256=environment['python_executable_sha256'],
                         consumer_version=profile['python_version'].split()[0],

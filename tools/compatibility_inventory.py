@@ -128,8 +128,16 @@ def fixture_exists(root, nodeid):
         nodes = matches[0].body
 
 
-def passed_pytest(root, reference, fixtures):
-    report = read_json(file_ref(root, reference))
+def passed_pytest(root, reference, fixtures, evidence_store=None):
+    if evidence_store is None:
+        path = file_ref(root, reference)
+    else:
+        try:
+            from .retained_evidence import evidence_file
+        except ImportError:
+            from retained_evidence import evidence_file
+        path = evidence_file(root, reference, evidence_store)
+    report = read_json(path)
     check(type(report.get('exit_code')) is int and report['exit_code'] == 0, 'functional receipt did not exit successfully')
     collected = report.get('collected', [])
     check(collected and len(set(collected)) == len(collected), 'missing or duplicate collected tests')
@@ -252,11 +260,22 @@ def validate(ledger, root=ROOT, require_complete=False):
             check(set(features[feature_id]['requirements']) <= set(receipt.get('requirements', [])), 'receipt lacks required contract mapping')
             if 'observation' in receipt:
                 source_observation(root, receipt, row)
-            passed_pytest(root, receipt['pytest'], row['fixtures'])
+            selector = receipt.get('evidence_store')
+            try:
+                from .retained_evidence import evidence_file, evidence_root
+            except ImportError:
+                from retained_evidence import evidence_file, evidence_root
+            if selector is not None:
+                evidence_root(root, selector)
+            read_evidence = lambda reference: read_json(evidence_file(root, reference, selector))
+            if selector is None:
+                passed_pytest(root, receipt['pytest'], row['fixtures'])
+            else:
+                passed_pytest(root, receipt['pytest'], row['fixtures'], selector)
             if row['state'] in ('wheel-tested', 'qualified'):
                 check(row['identity']['wheel_sha256'] is not None, 'installed claim lacks wheel identity')
                 check(receipt.get('installed_origin_verified') is True, 'installed origin not verified')
-                audit = read_json(file_ref(root, receipt['distribution_audit']))
+                audit = read_evidence(receipt['distribution_audit'])
                 check(audit.get('status') == 'PASS' and audit.get('identity') == row['identity'], 'missing matching distribution audit')
             if row['state'] == 'qualified':
                 check(set(receipt.get('gates', {})) == set(GATES), 'missing qualification gate')
@@ -266,12 +285,14 @@ def validate(ledger, root=ROOT, require_complete=False):
                     from compatibility_evidence import normalize
                 normalized, raw_reports = None, None
                 for gate in GATES:
-                    output = read_json(file_ref(root, receipt['gates'][gate]))
+                    output = read_evidence(receipt['gates'][gate])
                     check(output.get('status') == 'PASS' and output.get('identity') == row['identity']
                           and output.get('controls_passed') is True and output.get('gate') == gate,
                           f'failed/stale/uncontrolled gate: {gate}')
                     if normalized is None:
                         raw_reports = output.get('raw_reports', {})
+                        check(raw_reports.get('evidence_store') == selector,
+                              'receipt and raw evidence store bindings differ')
                         normalized = normalize(root, row, raw_reports)
                     check(output.get('raw_reports') == raw_reports and output == normalized[gate],
                           f'gate does not match raw workflow-bound evidence: {gate}')

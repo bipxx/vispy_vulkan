@@ -1,0 +1,72 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "APPROVED_REVISION8_SOURCE_AND_SCOPE",
+  "candidate_scope_sha256": "c68e3eaaf4da4683bf90dd593ec4cc50a21dd270943ceb078f4071a12b6cdbd7",
+  "source_review": {
+    "schema": 1,
+    "status": "APPROVED",
+    "kind": "source",
+    "independent": true,
+    "reviewer": "Claude peer review (claude-fable-5-2), revision8 run521",
+    "candidate_scope_sha256": "c68e3eaaf4da4683bf90dd593ec4cc50a21dd270943ceb078f4071a12b6cdbd7",
+    "native_reuse_links": [
+      "80a1bf4537e6e1c6d330cb306462e2c21421130dd4deb45d66803c285e2e0550",
+      "811d72c992561613030bf25e2d350d1a58cbb1be31d1a6362cca6709c00ec159"
+    ],
+    "evidence": {
+      "path": "D:\\vispy-vulkan-managed\\build\\runs\\metal-dependency-peer-521\\review-response.md",
+      "sha256": "5658a488e6710a1d68100fceb2f5469489ed28a65e3a3a5cbdd81b5e2cdb1de9"
+    },
+    "raw_response": {
+      "path": "D:\\vispy-vulkan-managed\\build\\runs\\metal-dependency-peer-521\\review-response.json",
+      "sha256": "d2b638295755fd47a81ad3f265e40e6d04cee166bcc2ae82c32baf6966808399"
+    },
+    "limitations": "Finite raster Tk scope on the two bound CPython profiles. No proof completeness, installed admission, required hosted CI or promotion approved. Index does not enumerate Windows transitive raw command logs; bind them explicitly in contributing cleanup proof. Reviewers must check history-bound workflow attribution for pre-observation failures. Incomplete workflow selections fail closed; they are not missing-proof success. Source-local producer inputs require retained-byte proof; hash resolution alone is insufficient. CI-named tests and qualification_gate.py must be bound by the frozen qualification head; hosted failures block admission without waiver."
+  },
+  "scope_review": {
+    "schema": 1,
+    "status": "APPROVED",
+    "kind": "scope",
+    "independent": true,
+    "reviewer": "Claude peer review (claude-fable-5-2), revision8 run521",
+    "candidate_scope_sha256": "c68e3eaaf4da4683bf90dd593ec4cc50a21dd270943ceb078f4071a12b6cdbd7",
+    "native_reuse_links": [
+      "80a1bf4537e6e1c6d330cb306462e2c21421130dd4deb45d66803c285e2e0550",
+      "811d72c992561613030bf25e2d350d1a58cbb1be31d1a6362cca6709c00ec159"
+    ],
+    "coverage_map_sha256": "aece6fc341cdcfed66c738dbdf917a682307417158d3ae56de49f044e3714a22",
+    "execution_map_sha256": "064c73e2d134e4ddbdb742847bc908e4d5b48310c13208342a22569a9ffa5090",
+    "admission_scope_sha256": "90aeed54b74f61f714d2834fdf3c43e2398ca698a03e0721d2d5a88f340e8452",
+    "evidence": {
+      "path": "D:\\vispy-vulkan-managed\\build\\runs\\metal-dependency-peer-521\\review-response.md",
+      "sha256": "5658a488e6710a1d68100fceb2f5469489ed28a65e3a3a5cbdd81b5e2cdb1de9"
+    },
+    "raw_response": {
+      "path": "D:\\vispy-vulkan-managed\\build\\runs\\metal-dependency-peer-521\\review-response.json",
+      "sha256": "d2b638295755fd47a81ad3f265e40e6d04cee166bcc2ae82c32baf6966808399"
+    },
+    "limitations": "Finite raster Tk scope on the two bound CPython profiles. No proof completeness, installed admission, required hosted CI or promotion approved. Index does not enumerate Windows transitive raw command logs; bind them explicitly in contributing cleanup proof. Reviewers must check history-bound workflow attribution for pre-observation failures. Incomplete workflow selections fail closed; they are not missing-proof success. Source-local producer inputs require retained-byte proof; hash resolution alone is insufficient. CI-named tests and qualification_gate.py must be bound by the frozen qualification head; hosted failures block admission without waiver."
+  },
+  "binding_verification": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\metal-dependency-peer-521\\binding-verification.json",
+    "sha256": "6ab2d90c723982711619f0cf453434afa4f10e2405d24fc91a99182a55b247f0"
+  },
+  "review_process": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\metal-dependency-peer-521\\review-process.json",
+    "sha256": "d88d9f2449daa09c661e759b4426dea9d9c9dc16386f9e81696ab63629e4dcab"
+  },
+  "source_scope_approvals_transferred": 0,
+  "corrected_oracle_test_independently_approved": true,
+  "current_reference_checks": 18,
+  "separate_compatibility_contract_passes": 1117,
+  "workflow_execution_scope": "The isolated Windows dependency probe is not execution of the actual macOS workflow. Both Metal jobs at the new head must still pass.",
+  "artifact_admitted": false,
+  "required_ci_passed": false,
+  "native_build": false,
+  "pending": [
+    "Freeze reviewed head and complete23required jobs",
+    "Rebind/revalidate installed subject to revision8and final head",
+    "Independent impact/promotion review; integrate"
+  ]
+}

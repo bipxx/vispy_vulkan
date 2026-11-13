@@ -1,0 +1,215 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "CORRECTED_HEAD_PASSES_COMPATIBILITY_STEP_SCIENTIFIC_GROUPING_FAILS",
+  "qualification_head": "340499b0ff81ca12dddf04b763477c93737fde89",
+  "summary": [
+    {
+      "id": 43384550407,
+      "path": ".github/workflows/metal-wheel.yml",
+      "status": "queued",
+      "conclusion": null,
+      "jobs": [
+        {
+          "id": 131749854279,
+          "name": "Metal wheel x86_64 CPython 3.12.8",
+          "status": "queued",
+          "conclusion": null,
+          "failed_steps": []
+        },
+        {
+          "id": 131749854702,
+          "name": "Metal wheel arm64 CPython 3.12.8",
+          "status": "queued",
+          "conclusion": null,
+          "failed_steps": []
+        }
+      ]
+    },
+    {
+      "id": 43384546649,
+      "path": ".github/workflows/linux-vulkan.yml",
+      "status": "in_progress",
+      "conclusion": null,
+      "jobs": [
+        {
+          "id": 131749842516,
+          "name": "software-vulkan",
+          "status": "in_progress",
+          "conclusion": null,
+          "failed_steps": []
+        }
+      ]
+    },
+    {
+      "id": 43384543107,
+      "path": ".github/workflows/cpu-contract.yml",
+      "status": "queued",
+      "conclusion": null,
+      "jobs": [
+        {
+          "id": 131749830887,
+          "name": "CPU windows-x86_64 CPython 3.10.19",
+          "status": "in_progress",
+          "conclusion": null,
+          "failed_steps": []
+        },
+        {
+          "id": 131749830999,
+          "name": "CPU macos-x86_64 CPython 3.10.19",
+          "status": "in_progress",
+          "conclusion": null,
+          "failed_steps": []
+        },
+        {
+          "id": 131749831017,
+          "name": "CPU linux-x86_64 CPython 3.13.8",
+          "status": "in_progress",
+          "conclusion": null,
+          "failed_steps": []
+        },
+        {
+          "id": 131749831026,
+          "name": "CPU macos-x86_64 CPython 3.13.8",
+          "status": "in_progress",
+          "conclusion": null,
+          "failed_steps": []
+        },
+        {
+          "id": 131749831041,
+          "name": "CPU windows-x86_64 CPython 3.12.8",
+          "status": "in_progress",
+          "conclusion": null,
+          "failed_steps": []
+        },
+        {
+          "id": 131749831053,
+          "name": "CPU macos-x86_64 CPython 3.12.8",
+          "status": "in_progress",
+          "conclusion": null,
+          "failed_steps": []
+        },
+        {
+          "id": 131749831056,
+          "name": "CPU windows-x86_64 CPython 3.14.0",
+          "status": "in_progress",
+          "conclusion": null,
+          "failed_steps": []
+        },
+        {
+          "id": 131749831057,
+          "name": "CPU macos-arm64 CPython 3.11.14",
+          "status": "queued",
+          "conclusion": null,
+          "failed_steps": []
+        },
+        {
+          "id": 131749831058,
+          "name": "CPU linux-x86_64 CPython 3.12.8",
+          "status": "in_progress",
+          "conclusion": null,
+          "failed_steps": []
+        },
+        {
+          "id": 131749831091,
+          "name": "CPU macos-arm64 CPython 3.10.19",
+          "status": "queued",
+          "conclusion": null,
+          "failed_steps": []
+        },
+        {
+          "id": 131749831099,
+          "name": "CPU macos-arm64 CPython 3.12.8",
+          "status": "queued",
+          "conclusion": null,
+          "failed_steps": []
+        },
+        {
+          "id": 131749831116,
+          "name": "CPU linux-x86_64 CPython 3.10.19",
+          "status": "completed",
+          "conclusion": "failure",
+          "failed_steps": [
+            "Verify immutable scientific references and isolated consumer controls without graphics"
+          ]
+        },
+        {
+          "id": 131749831144,
+          "name": "CPU macos-x86_64 CPython 3.11.14",
+          "status": "in_progress",
+          "conclusion": null,
+          "failed_steps": []
+        },
+        {
+          "id": 131749831152,
+          "name": "CPU macos-arm64 CPython 3.13.8",
+          "status": "queued",
+          "conclusion": null,
+          "failed_steps": []
+        },
+        {
+          "id": 131749831156,
+          "name": "CPU macos-arm64 CPython 3.14.0",
+          "status": "queued",
+          "conclusion": null,
+          "failed_steps": []
+        },
+        {
+          "id": 131749831185,
+          "name": "CPU macos-x86_64 CPython 3.14.0",
+          "status": "in_progress",
+          "conclusion": null,
+          "failed_steps": []
+        },
+        {
+          "id": 131749831268,
+          "name": "CPU windows-x86_64 CPython 3.11.14",
+          "status": "in_progress",
+          "conclusion": null,
+          "failed_steps": []
+        },
+        {
+          "id": 131749831326,
+          "name": "CPU linux-x86_64 CPython 3.14.0",
+          "status": "in_progress",
+          "conclusion": null,
+          "failed_steps": []
+        },
+        {
+          "id": 131749831337,
+          "name": "CPU linux-x86_64 CPython 3.11.14",
+          "status": "in_progress",
+          "conclusion": null,
+          "failed_steps": []
+        },
+        {
+          "id": 131749831357,
+          "name": "CPU windows-x86_64 CPython 3.13.8",
+          "status": "in_progress",
+          "conclusion": null,
+          "failed_steps": []
+        }
+      ]
+    }
+  ],
+  "job_id": 131749831116,
+  "profile": "Linux CPython3.10.19",
+  "failed_step": "Verify immutable scientific references and isolated consumer controls without graphics",
+  "scientific_batch": {
+    "passed": 1305,
+    "failed": 2,
+    "teardown_errors": 1,
+    "causes": [
+      "Metrics no-provider assertion shares a process with tests that import vispy legitimately.",
+      "test_event_values contract module is absent from explicit CI selection and curated classification."
+    ]
+  },
+  "log": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\qualification-ci-observation-498\\job-131749831116.log",
+    "sha256": "809d4e658949c70ab1c1011e2e6704f1a64feee9bde24d8cbc551986c2f4e370"
+  },
+  "decision": "Keep strict import guards. Run benchmark/metrics files in their own fresh pytest process and add finite event-value CPU fixtures to CI; renew affected workflow/policy/candidate pins.",
+  "required_ci_passed": false,
+  "artifact_admitted": false,
+  "native_builds_in_progress": true
+}

@@ -134,7 +134,13 @@ def check_space(context):
     total = 0
     for folder, directories, files in os.walk(context.work, followlinks=False):
         for name in files:
-            info = (Path(folder)/name).lstat()
+            try:
+                info = (Path(folder)/name).lstat()
+            except FileNotFoundError:
+                # A producer can finish its own cleanup between enumeration
+                # and this live sample. Deleted entries occupy no scratch;
+                # strict terminal snapshots/deletion still validate all paths.
+                continue
             total += info.st_size
     if total > context.limit:
         raise ValueError('Managed scratch exceeded its shared budget')

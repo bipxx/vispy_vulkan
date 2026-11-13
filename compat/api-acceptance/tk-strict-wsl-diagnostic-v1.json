@@ -1,0 +1,47 @@
+{
+  "schema": 1,
+  "status": "DIAGNOSTIC_COMPARISON_ONLY_COLLECTOR_ISSUE_OPEN",
+  "strict_workflows_qualified_by_this_comparison": 0,
+  "artifact_admitted": false,
+  "current_scope": {
+    "path": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\compat\\api-acceptance\\tk-strict-wsl-v1.json",
+    "sha256": "1efd61b49bc152934ad5399bdc710defd66c7ea94336724eb6a6e22bfa2de92b"
+  },
+  "minimal_trials": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-collector-diagnostic-461\\result.json",
+    "sha256": "a9aae9d4d673b3388f27d104c1b18c9a3908a431ce147ac9cd1bcd6004176372"
+  },
+  "stress_trials": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-collector-stress-diagnostic-462\\diagnostic-result.json",
+    "sha256": "3c1c0ff0af79be6dc49e433bfa7b716d7c4afd90080665e6313df0df9a0a4d53"
+  },
+  "diagnostic_tool": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-collector-diagnostic-461\\diagnostic-tool.json",
+    "sha256": "93b9fa7cbb059c682118d8f14ab508997c74392be6987512370213abfc7a76b7"
+  },
+  "diagnostic_source": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-collector-diagnostic-461\\debugger-diagnostic.c",
+    "sha256": "054eb7955e8072c80a4a9474706908a176773be25c6b73b8e45c2acdf5109892"
+  },
+  "observations": [
+    {
+      "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-collector-stress-diagnostic-462\\reports\\diagnostic-0\\observation.json",
+      "sha256": "dafacb3947a4ef8c5fc631d0d04fc4dbfbcf5af1a4e05991b7660d90efecde2f"
+    },
+    {
+      "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-collector-stress-diagnostic-462\\reports\\diagnostic-1\\observation.json",
+      "sha256": "e386621f6e4e57f1828566a4f2b7f878e81d54f4e0f5a2988dfbad77d748fb4d"
+    },
+    {
+      "path": "D:\\vispy-vulkan-managed\\build\\runs\\wsl-collector-stress-diagnostic-462\\reports\\diagnostic-2\\observation.json",
+      "sha256": "117c49e813a2c5f8294268e8203d661c7570fb43e3e581a8b6dcc366eca8fa73"
+    }
+  ],
+  "findings": [
+    "Two minimal ldconfig trials each with original and diagnostic collectors passed; static helper alone did not reproduce the error.",
+    "Three full failure/recovery flows completed under the diagnostic collector with runtime execution/load gates PASS, but no installed receipt was supplied; all remained UNVERIFIED.",
+    "The original collector failed two stress attempts. Diagnostic counters expose otherwise silent error increments, but no increment occurred in these diagnostic trials.",
+    "No shipping source, qualified collector, candidate record or original dependent source was replaced."
+  ],
+  "next_action": "Compare qualified collector source/toolchain provenance and isolate its intermittent error; validate any successor collector with independent controls before collecting/admitting a replacement strict replay."
+}

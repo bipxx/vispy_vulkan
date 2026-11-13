@@ -1,0 +1,49 @@
+{
+  "schema": 1,
+  "status": "REVIEWED_SCOPE_INSTALLED_QUALIFICATION_PENDING",
+  "source_commit": "b38c4f9068d6a425eef43b62313f0f4cf37f57d9",
+  "previous_candidate": {
+    "path": "compat/candidates/tk-state-resource-7/candidate.json",
+    "sha256": "94ebf13acbe11080294b5f3da33a0e124f9afaeea211cbb9545042850c20d848"
+  },
+  "tool_approval": {
+    "path": "compat/api-acceptance/qualification-tools-followup-v1.json",
+    "sha256": "7718e4c6a87da71ec2d8d16bceff0004e30c3ec6a5fa7fdcbac0aca3c1cc8175"
+  },
+  "candidate_file": {
+    "path": "compat/candidates/tk-state-resource-8/candidate.json",
+    "sha256": "471ac8cd2252117eeb1bcd6fe8def58fe6d59312b8bdc979420332c0b5a13a83"
+  },
+  "candidate_scope_sha256": "c68e3eaaf4da4683bf90dd593ec4cc50a21dd270943ceb078f4071a12b6cdbd7",
+  "coverage_map_sha256": "aece6fc341cdcfed66c738dbdf917a682307417158d3ae56de49f044e3714a22",
+  "execution_map_sha256": "064c73e2d134e4ddbdb742847bc908e4d5b48310c13208342a22569a9ffa5090",
+  "admission_scope_sha256": "90aeed54b74f61f714d2834fdf3c43e2398ca698a03e0721d2d5a88f340e8452",
+  "native_reuse_links": [
+    "80a1bf4537e6e1c6d330cb306462e2c21421130dd4deb45d66803c285e2e0550",
+    "811d72c992561613030bf25e2d350d1a58cbb1be31d1a6362cca6709c00ec159"
+  ],
+  "required_kinds": [
+    "source",
+    "scope"
+  ],
+  "approvals_present": true,
+  "pending_subject": {
+    "path": "compat/candidates/tk-state-resource-8/qualification-subject.json",
+    "sha256": "888fd9d23a2ff3132664cc9e8e7fca62422f791dd56811caf5b031549a35308a"
+  },
+  "ci_policy": {
+    "path": "compat/qualification-ci.json",
+    "sha256": "18c3df1327251b5a488f9e7dccf76d0e558b0813bf1d244881a70451cf2d0b37"
+  },
+  "source_head_ci_passed": false,
+  "delta": "Metal reuse prepares packaging26.3 from the existing uv.lock, pruning unrelated runtime packages and preserving require-hashes/only-binary. Source version validation succeeds with the existing129956-byte wheel in an isolated no-site probe. Historical oracle checks bind an existing byte-exact original producer; candidate-version resolution is the actual live collector delta. Existing assertions were independently approved in substance, comment fixed; exact follow-up failed authentication. No validator or runtime edits. Revision8 requires new source/scope decisions; no transferred approval.",
+  "source_approvals_transferred": 0,
+  "artifact_admitted": false,
+  "native_build": false,
+  "retention_limits": [
+    "Index does not enumerate Windows transitive raw command logs; bind them explicitly in contributing cleanup proof.",
+    "Reviewers must check history-bound workflow attribution for pre-observation failures.",
+    "Incomplete workflow selections fail closed; they are not missing-proof success.",
+    "Source-local producer inputs require retained-byte proof; hash resolution alone is insufficient."
+  ]
+}

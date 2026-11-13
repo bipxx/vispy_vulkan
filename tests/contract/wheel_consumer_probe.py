@@ -20,7 +20,7 @@ assert not prefix.is_relative_to(repository)
 assert all(not Path(path).resolve().is_relative_to(repository / "src") for path in sys.path if path)
 distribution = metadata.distribution("vispy")
 assert distribution.metadata["Name"].lower() == "vispy"
-assert distribution.version == vispy.__version__ == "0.17.0+vulkan.1"
+assert distribution.version == vispy.__version__ == sys.argv[2]
 for module in (vispy, _dawn, _sdf_cpu):
     assert Path(module.__file__).resolve().is_relative_to(prefix), module.__file__
 for module in (_dawn, _sdf_cpu):

@@ -1,0 +1,156 @@
+{
+  "schema": 1,
+  "status": "PASS_WINDOWS_PYQT6_CURRENT_WHEEL_OBSERVATION_RELEASE_ADMISSION_PENDING",
+  "row": "windows-vulkan-qwidget-pyqt6",
+  "source_commit": "b38c4f9068d6a425eef43b62313f0f4cf37f57d9",
+  "wheel": {
+    "path": "build/artifacts/a86b030b005cba455f46ccaeffc56bf3f438142e490999f88156370e6093fb6c/vispy-0.17.0+vulkan.2-cp312-cp312-win_amd64.whl",
+    "sha256": "a86b030b005cba455f46ccaeffc56bf3f438142e490999f88156370e6093fb6c"
+  },
+  "functional": {
+    "stages": [
+      "exact_installed_artifact",
+      "device_and_qt_binding",
+      "qwidget_show_parent_resize",
+      "qwidget_capture_update_and_image_ownership",
+      "qwidget_overlay_interaction_hide_restore",
+      "qwidget_device_loss_recovery",
+      "qwidget_close"
+    ],
+    "functional_sha256": "198a39c254e921275efe86e5c450c1a3ad244a300e150f036a1ac859b58db0f8"
+  },
+  "feature_labels": [
+    "launch",
+    "initial-render",
+    "update",
+    "interaction",
+    "capture-export",
+    "recovery",
+    "close"
+  ],
+  "installed_members_verified": 537,
+  "source_overrides": 0,
+  "device": {
+    "backend": "Vulkan",
+    "adapter_type": "discrete",
+    "vendor": "nvidia",
+    "device": "NVIDIA GeForce RTX 4090",
+    "driver": "NVIDIA: 610.88 610.88.0.0",
+    "vendor_id": 4318,
+    "device_id": 9860,
+    "max_texture_dimension_1d": 32768,
+    "max_texture_dimension_2d": 32768,
+    "max_texture_dimension_3d": 16384,
+    "max_vertex_attributes": 30,
+    "max_vertex_buffers": 8,
+    "max_vertex_buffer_array_stride": 2048,
+    "max_storage_buffers_per_shader_stage": 16,
+    "max_uniform_buffers_per_shader_stage": 12,
+    "max_inter_stage_shader_variables": 30,
+    "max_storage_buffer_binding_size": 2147483644,
+    "max_bindings_per_bind_group": 1000,
+    "max_compute_invocations_per_workgroup": 1024,
+    "max_compute_workgroup_size_x": 1024,
+    "max_compute_workgroups_per_dimension": 65535,
+    "max_point_vertex_attributes": 30,
+    "core_features_and_limits": true,
+    "point_input_limit_scope": "all active user point inputs share one vertex buffer; exact vertex/instance identities use read-only vertex storage without reserving a user attribute; actual granted attribute/stride/storage/allocation limits apply",
+    "max_samplers_per_shader_stage": 16,
+    "max_sampled_textures_per_shader_stage": 48,
+    "max_buffer_size": 1099511627776,
+    "max_uniform_buffer_binding_size": 65536,
+    "software": false,
+    "float32_filterable": true,
+    "unorm16_texture_formats": true,
+    "bresenham_lines": true,
+    "last_vertex_provoking": true,
+    "timestamp_query": true,
+    "timestamp_quantization_ns": 65536,
+    "host_mapped_pointer": true,
+    "host_import_limit": 536870912,
+    "depth_stencil_storage": "depth24_unorm_stencil8",
+    "ok": true,
+    "error": "",
+    "loss_count": 0,
+    "revision": "117b054598f4758b598f4b8f48feea48c11fe7b0+dawn-499e5c6ff9b37d5de70c6493fb74c251e0d35c1c"
+  },
+  "shutdown_gauges": {
+    "pending_tickets": 0,
+    "queued_frames": 0,
+    "live_buffer_bytes": 0,
+    "live_cpu_buffer_bytes": 0,
+    "live_texture_bytes": 0,
+    "canvas_texture_bytes": 0,
+    "transient_buffer_bytes": 0,
+    "line_resource_pool_busy_slots": 0,
+    "line_resource_pool_bytes": 0
+  },
+  "environment_id": "613aa43ad400beccd5c265b4f1d69532932463d0e7e09174d36da8fbc785a5d2",
+  "report": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\windows-pyqt6-row-472\\replay-0.json",
+    "sha256": "ed9fa18808eadd152c4a068db149ea654bf47dc5c50f1b6aa27afc0b6e7bff6b"
+  },
+  "worker": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\windows-pyqt6-row-472\\replay-0.worker.json",
+    "sha256": "9077ee5aea2d394a3b7cbb6c4bdbaf471c035741cdb71a4f71bcc748575b378a"
+  },
+  "receipt": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\windows-pyqt6-row-472\\receipt-0.json",
+    "sha256": "2a9f22faa484ce11428d3763de0ad5d3e39d428c10b2107ccb27a62fb3b15d07"
+  },
+  "functional_report": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\windows-pyqt6-row-472\\replay-0-features\\functional.json",
+    "sha256": "198a39c254e921275efe86e5c450c1a3ad244a300e150f036a1ac859b58db0f8"
+  },
+  "binding_info": [
+    "PyQt6",
+    "6.11.0",
+    "6.11.0"
+  ],
+  "qt_runtime_version": "6.11.2",
+  "qt_platform": "windows",
+  "profile_inputs": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\windows-pyqt6-row-472\\profile-inputs.json",
+    "sha256": "5b1d124cfe2ca9f0b625be2578f2cdfd3cf370933c18b209ee5f0b762e2bfd3c"
+  },
+  "matrix_reference": {
+    "path": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\compat\\no-opengl-matrix.json",
+    "sha256": "230b12f3d4ed418cde3b0313fbdea36557b02a61c80a1cf637699d7a9bc50fc4"
+  },
+  "dependency_licenses": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\windows-pyqt6-row-472\\dependency-licenses.json",
+    "sha256": "95c2c43194aab5e98d6eff8ca931ff3f6ab9d8b0bda8ee336dd2b318fe69dc4e"
+  },
+  "source_and_licenses": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\windows-headless-row-466\\source-and-licenses.zip",
+    "sha256": "1efd5ebb167ff4a85a41cf05df909b717e7191967d5836b8110bb827867a8157"
+  },
+  "source_inputs": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\windows-headless-row-466\\source-inputs.json",
+    "sha256": "5d552a4c04b27afdabdc041afa9d5e5d046fdaaaaacb2952b2f707a1ba3f8cd5"
+  },
+  "runner_binding_patch": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\windows-headless-row-466\\runner-binding.patch",
+    "sha256": "c29f8d094bdcd7d54a2d424a0ebb40ad40f0f588379b397336264aedf3baee24"
+  },
+  "processes": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\windows-pyqt6-row-472\\processes.json",
+    "sha256": "231936b950b10473e0479d8924a1d5c1130d3edba1fcad6c9c53c1d33bda636e"
+  },
+  "controller": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\windows-pyqt6-row-472\\controller-process.json",
+    "sha256": "71b25f999cb4054b89a787dca060fe9226daed83e53c82c34d39e5f782e47b0f"
+  },
+  "historical_row_artifact": "5c7142f38b0867fc744a7fe6025b8397f1bada46641b6d05da0d54dadbfab29e",
+  "canonical_matrix_modified": false,
+  "mandatory_rows_observed_in_this_packet": 1,
+  "mandatory_rows_admitted": 0,
+  "independently_reviewed": false,
+  "artifact_admitted": false,
+  "native_build": false,
+  "limits": [
+    "Finite QWidget lifecycle, rendering, input, capture ownership, overlay, hide/restore and device-loss checks on this exact wheel; no universal VisPy coverage claim.",
+    "The current frozen no_opengl_host_probe.py runs unmodified with the retained selected PyQt6 profile; no source overrides or native builds.",
+    "Canonical eight-row matrix keeps its historical qualifications; independent review, row/attempt/CI/promotion joins and remaining four row observations remain open."
+  ]
+}

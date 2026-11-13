@@ -58,13 +58,22 @@ def validate_inputs(inventory, pin, arch, source, workspace, *, package_current_
         row = members[name]; path = workspace/row['path']
         require(transport.digest(path) == row['sha256'], 'Changed original Metal input: '+name)
         return path
-    prefix = 'metal-evidence-'+arch+'/'
+    layout = pin.get('layout', 'legacy-v1')
+    require(layout in ('legacy-v1', 'managed-v1'), 'Unknown original Metal layout')
+    prefix = ('runs/metal-ci-'+str(pin['run_id'])+'-'+str(pin['attempt'])+'-'+arch+'/'
+              if layout == 'managed-v1' else 'metal-evidence-'+arch+'/')
     document = lambda name: transport.read(retained(prefix+name))
     identity = document('ci-identity.json')
+    event = identity.get('event')
+    checkout_matches = (identity['checked_head'] == pin['source_head']
+                        if event in ('push', 'workflow_dispatch') else
+                        (identity['checked_head'] == pin['source_head']
+                         or pin['source_head'] in identity['parents'])
+                        if event == 'pull_request' else False)
     require(identity['repository'] == pin['repository'] and identity['run_id'] == pin['run_id']
             and identity['attempt'] == pin['attempt'] and identity['source_head'] == pin['source_head']
             and identity['checked_head'] == pin['checked_head']
-            and pin['source_head'] in identity['parents']
+            and checkout_matches
             and identity['job_key'] == 'build'
             and identity['job_name'] == 'Metal wheel '+arch+' CPython 3.12.8'
             and identity['workflow'] == dict(path='.github/workflows/metal-wheel.yml',
@@ -82,7 +91,14 @@ def validate_inputs(inventory, pin, arch, source, workspace, *, package_current_
     require(wheel_name.endswith('-cp312-cp312-macosx_13_0_'+arch+'.whl'), 'Original Metal wheel tag differs')
     wheel = retained(prefix+'wheels/'+wheel_name)
     require(transport.digest(wheel) == archive['wheel_sha256'], 'Original Metal wheel digest differs')
-    cache = parse_cache(retained('metal-native-'+arch+'/CMakeCache.txt').read_text())
+    if layout == 'managed-v1':
+        caches = [row for row in inventory['members']
+                  if row['member'] == 'artifacts/'+row['sha256']+'/CMakeCache.txt']
+        require(len(caches) == 1, 'Original Metal managed cache missing/ambiguous')
+        cache_member = caches[0]['member']
+    else:
+        cache_member = 'metal-native-'+arch+'/CMakeCache.txt'
+    cache = parse_cache(retained(cache_member).read_text())
     for key, value in dict(VISPY_CPU_CONTRACTS_ONLY='OFF', VISPY_INPLACE='OFF',
             VISPY_VERIFY_DEPENDENCIES='ON', DAWN_ENABLE_METAL='ON', DAWN_ENABLE_VULKAN='OFF',
             DAWN_ENABLE_NULL='OFF', CMAKE_OSX_ARCHITECTURES=arch, CMAKE_OSX_DEPLOYMENT_TARGET='13.0').items():
@@ -97,7 +113,9 @@ def validate_inputs(inventory, pin, arch, source, workspace, *, package_current_
     with zipfile.ZipFile(wheel) as stream:
         for name in native:
             record = archive['native'][name]
-            raw = retained('metal-native-'+arch+'/'+PurePosixPath(name).name)
+            raw_member = ('artifacts/'+record['raw_sha256']+'/'+PurePosixPath(name).name
+                          if layout == 'managed-v1' else 'metal-native-'+arch+'/'+PurePosixPath(name).name)
+            raw = retained(raw_member)
             stripped = retained(prefix+'native-origin/'+name)
             require(transport.digest(raw) == record['raw_sha256'], 'Original Metal raw leaf differs')
             require(transport.digest(stripped) == hashes[name] == record['wheel_sha256']

@@ -1,0 +1,29 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "PASS_ALL23_REQUIRED_EXACT_HEAD_JOBS",
+  "qualification_head": "3ada644e85248bcae214e7e487b4b1684336fd8f",
+  "original_join": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\final-head-ci-534\\required-ci-result.json",
+    "sha256": "a8926706693a8d88e5e61772a3ebb3e225458cadaf7c4494f288b7b6e6947eb7"
+  },
+  "bundle": {
+    "path": "compat/candidates/tk-state-resource-8/installed-proofs-524/ci-534/required-ci.json",
+    "sha256": "a895b1e8ff3d73b6b93b892f1c6c86425f3bcdde44423be063854b433d1b616a"
+  },
+  "transport_and_identity_provenance": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\final-head-ci-534\\verification.json",
+    "sha256": "22a114c7bddc6928241a8c6127f046dfa563d6f331641e0a1dc0e38257549b53"
+  },
+  "cleanup": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\final-head-ci-534\\post-cleanup.json",
+    "sha256": "dcf125e9837414e94bbabf7635a09d4cc1fd818a3df44c5a37d06e30aa353956"
+  },
+  "promotion_basis": {
+    "path": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\compat\\candidates\\tk-state-resource-8\\installed-proofs-524\\promotion-basis-537.json",
+    "sha256": "deaced78d2c44d18ce0a937bdfa9f6b52a3b4d4cc58f1b09246b9905f4c305f6"
+  },
+  "artifact_admitted": false,
+  "release_complete": false,
+  "scope": "All20CPU jobs across CPython3.10.19\u20133.14.0 and four OS/architecture targets, Linux software Vulkan, both Metal build/CPU-import jobs; complete raw run history, terminal run/jobs objects and original checkout identities validate under unchanged policy. No Metal graphics or physical Linux GPU admission."
+}

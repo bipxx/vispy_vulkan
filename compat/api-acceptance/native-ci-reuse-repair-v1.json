@@ -1,0 +1,43 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "PASS_SOURCE_REUSE_REPAIR_REVIEW_AND_HOSTED_CI_PENDING",
+  "candidate": "tk-state-resource-7",
+  "profile": "Windows CPython3.12.8 existing .venv; read-only original Linux/Metal CI artifacts",
+  "passed_source_contracts": 1117,
+  "contracts_process": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\native-ci-reuse-repair-509\\contracts-process.json",
+    "sha256": "1a6f395a586937c0a4be8522dbc7208c4c839a3fa3d0ca7fd16a0e8f29dd4e23"
+  },
+  "contracts_log": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\native-ci-reuse-repair-509\\contracts.log",
+    "sha256": "c8ba4bef98a7fc7c42b0b3a178da72ba79d22162a9e08fb4802d6257b6155781"
+  },
+  "native_inputs": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\native-ci-reuse-repair-509\\verified-native-inputs.json",
+    "sha256": "c807f32c32ef63699c7b0d73ceef05873945f15bc150492a9bfd1c9fc42e1e07"
+  },
+  "preparation": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\native-ci-reuse-repair-509\\verification.json",
+    "sha256": "a1451f41a9da1f59e0375bd0a005e3f3c8a70f1ca248459b32fa72fe1803c03e"
+  },
+  "transport_cleanup": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\current-native-ci-inputs-508\\post-cleanup.json",
+    "sha256": "0e0ebfce66b50dad618a0b6c0779c85e7570909fe28f62516ce9f13de2f8549c"
+  },
+  "focused_reuse_passes": 116,
+  "preserved_failure": "First focused run:107 passed,1 failed because a test double did not accept the new keyword. Original log/process retained; fixed double then116 passed.",
+  "changes": [
+    "Linux explicit successor requires full reviewed candidate validation; omitted argument preserves legacy selection.",
+    "Linux validates against source schema with explicit evidence store; existing store schemas are untouched.",
+    "Metal event-aware checkout and exact managed artifact layout; original native/package/identity checks retained.",
+    "CPU event values execute after compilation; benchmark metrics retain their separate provider-free process.",
+    "Reuse pins reference three verified successful head340 native CI artifacts; no native rebuild."
+  ],
+  "source_review_pending": true,
+  "required_ci_passed": false,
+  "artifact_admitted": false,
+  "published_wheels_changed": false,
+  "native_build": false,
+  "scratch_created": false
+}

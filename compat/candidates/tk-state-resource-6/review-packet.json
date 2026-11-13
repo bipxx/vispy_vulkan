@@ -1,0 +1,48 @@
+{
+  "schema": 1,
+  "status": "REVIEWED_SCOPE_INSTALLED_QUALIFICATION_PENDING",
+  "source_commit": "b38c4f9068d6a425eef43b62313f0f4cf37f57d9",
+  "previous_candidate": {
+    "path": "compat/candidates/tk-state-resource-5/candidate.json",
+    "sha256": "56c3c3568f5fc44a04401e8bea663cc84fd47583633e50dbb99e33a0a3e6fa5a"
+  },
+  "tool_approval": {
+    "path": "compat/api-acceptance/qualification-tools-followup-v1.json",
+    "sha256": "7718e4c6a87da71ec2d8d16bceff0004e30c3ec6a5fa7fdcbac0aca3c1cc8175"
+  },
+  "candidate_file": {
+    "path": "compat/candidates/tk-state-resource-6/candidate.json",
+    "sha256": "bbda34df6ebeaaa02a78dc4ce3809df70f8541a77308125ee210c4f749f1e04c"
+  },
+  "candidate_scope_sha256": "9dc339f3fefe29dafaea81fc127f4e03d441741707c081cf66e927f7fa5dc193",
+  "coverage_map_sha256": "2b3abc388b83be1e14580b1d2faf7bc86c2f2c3d2aeca7528b95e5c04f909d67",
+  "execution_map_sha256": "a2e0e99500dc714e8cafe9eb68db9de15264194c95955ef3b96bf3d64a222727",
+  "admission_scope_sha256": "6bb5be4eceffc569350f6866c17fb2a8396f0e82f107664ec83e0b441298f0cd",
+  "native_reuse_links": [
+    "0bacdcba3487532be18ce797ba7eec825f535c5bfbec71413d55373e3623c46f",
+    "0cdb710a0f4395689b0391a53be186a81101fb0d7b64563d49fc388ee416665a"
+  ],
+  "required_kinds": [
+    "source",
+    "scope"
+  ],
+  "approvals_present": true,
+  "pending_subject": {
+    "path": "compat/candidates/tk-state-resource-6/qualification-subject.json",
+    "sha256": "e7026d0e284e49786ebb6224c416e40248ce2847d13feacaaa8ac418c8317dbd"
+  },
+  "ci_policy": {
+    "path": "compat/qualification-ci.json",
+    "sha256": "966d8d2264d5dfb6675f0b84479e1378a2b0150ab5d9b3d833c3cd3e15b93914"
+  },
+  "source_head_ci_passed": false,
+  "source_approvals_transferred": 0,
+  "artifact_admitted": false,
+  "native_build": false,
+  "retention_limits": [
+    "Index does not enumerate Windows transitive raw command logs; bind them explicitly in contributing cleanup proof.",
+    "Reviewers must check history-bound workflow attribution for pre-observation failures.",
+    "Incomplete workflow selections fail closed; they are not missing-proof success.",
+    "Source-local producer inputs require retained-byte proof; hash resolution alone is insufficient."
+  ]
+}

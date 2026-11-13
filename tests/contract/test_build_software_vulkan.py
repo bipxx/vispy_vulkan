@@ -10,6 +10,130 @@ import pytest
 from tools import build_software_vulkan as driver
 
 
+@pytest.fixture
+def live_context(tmp_path):
+    policy = tmp_path / 'policy.json'
+    policy.write_text(json.dumps(dict(schema=1, managed_root='build/work', max_scratch_bytes=1024 * 1024,
+                                     min_free_bytes=0)))
+    context = driver.Context(tmp_path, policy, None)
+    context.preflight(driver.SimpleNamespace(run_id='live', owner='test',
+        expected_peak_bytes=1024, register=True))
+    return context, context.scratch('live')
+
+
+@pytest.mark.parametrize('over_budget', [False, True])
+def test_live_guard_tolerates_disappearing_compiler_file_but_keeps_profile_limit(live_context, monkeypatch, over_budget):
+    context, scratch = live_context
+    vanished = scratch / 'temporary.o.d'
+    vanished.write_bytes(b'transient')
+    (scratch / 'resident.o').write_bytes(b'x' * 512)
+    original = Path.lstat
+    def stat(path, *args, **kwargs):
+        if path == vanished:
+            raise FileNotFoundError(str(path))
+        return original(path, *args, **kwargs)
+    monkeypatch.setattr(Path, 'lstat', stat)
+    if over_budget:
+        with pytest.raises(RuntimeError, match='bounded profile'):
+            driver.check_live_space(context, scratch, 'live', 'test', 256)
+    else:
+        driver.check_live_space(context, scratch, 'live', 'test', 1024)
+
+
+def test_live_guard_preserves_other_io_errors(live_context, monkeypatch):
+    context, scratch = live_context
+    denied = scratch / 'denied.o'
+    denied.write_bytes(b'object')
+    original = Path.lstat
+    def stat(path, *args, **kwargs):
+        if path == denied:
+            raise PermissionError(str(path))
+        return original(path, *args, **kwargs)
+    monkeypatch.setattr(Path, 'lstat', stat)
+    with pytest.raises(PermissionError):
+        driver.check_live_space(context, scratch, 'live', 'test', 1024)
+
+
+def test_live_guard_enforces_aggregate_budget(live_context):
+    context, scratch = live_context
+    other = context.work / 'another-live-owner'
+    other.mkdir()
+    (other / 'resident.o').write_bytes(b'x' * (1024 * 1024))
+    with pytest.raises(RuntimeError, match='managed scratch budget'):
+        driver.check_live_space(context, scratch, 'live', 'test', 2 * 1024 * 1024)
+
+
+def test_live_guard_keeps_owner_check(live_context):
+    context, scratch = live_context
+    with pytest.raises(ValueError, match='owner/identity'):
+        driver.check_live_space(context, scratch, 'live', 'wrong-owner', 1024)
+
+
+def test_terminal_snapshot_still_refuses_a_disappearing_file(live_context, monkeypatch):
+    context, scratch = live_context
+    vanished = scratch / 'temporary.o.d'
+    vanished.write_bytes(b'transient')
+    lstat, stat = Path.lstat, Path.stat
+    def disappearing(original):
+        def sample(path, *args, **kwargs):
+            if path == vanished:
+                raise FileNotFoundError(str(path))
+            return original(path, *args, **kwargs)
+        return sample
+    monkeypatch.setattr(Path, 'lstat', disappearing(lstat))
+    monkeypatch.setattr(Path, 'stat', disappearing(stat))
+    driver.check_live_space(context, scratch, 'live', 'test', 1024)
+    with pytest.raises(FileNotFoundError):
+        context.snapshot(scratch)
+
+
+@pytest.mark.parametrize('old_guard', [False, True])
+def test_build_entry_uses_live_guard_before_compiler_work(tmp_path, monkeypatch, old_guard):
+    """Exercise the actual nested guard, stopping before any compiler process."""
+    policy = tmp_path / 'policy.json'
+    policy.write_text(json.dumps(dict(schema=1, managed_root='build/work',
+        max_scratch_bytes=8 * 1024**3, min_free_bytes=0)))
+    context = driver.Context(tmp_path, policy, None)
+    args = driver.SimpleNamespace(run_id='live', owner='test', expected_peak_bytes=0, register=True)
+    context.preflight(args)
+    scratch = context.scratch('live')
+    vanished = scratch / 'temporary.o.d'
+    vanished.write_bytes(b'transient')
+    def disappear(original):
+        def sample(path, *a, **kw):
+            if path == vanished:
+                raise FileNotFoundError(str(path))
+            return original(path, *a, **kw)
+        return sample
+    monkeypatch.setattr(Path, 'lstat', disappear(Path.lstat))
+    monkeypatch.setattr(Path, 'stat', disappear(Path.stat))
+    monkeypatch.setattr(driver, 'Context', lambda *a, **kw: context)
+    monkeypatch.setattr(driver.sys, 'platform', 'linux')
+    if not hasattr(driver.os, 'statvfs'):
+        monkeypatch.setattr(driver.os, 'statvfs', lambda path: driver.SimpleNamespace(f_flag=0), raising=False)
+    if not hasattr(driver.os, 'ST_RDONLY'):
+        monkeypatch.setattr(driver.os, 'ST_RDONLY', 1, raising=False)
+    if old_guard:
+        monkeypatch.setattr(driver, 'check_live_space', lambda *a: context.preflight(
+            driver.SimpleNamespace(run_id='live', owner='test', expected_peak_bytes=0, register=False)))
+    class BeforeCompiler(RuntimeError):
+        pass
+    original_digest = driver.digest
+    reached = []
+    def digest(path):
+        if Path(path).as_posix() == '/usr/bin/cc':
+            reached.append('compiler-origin')
+            raise BeforeCompiler('No compiler or native producer command executed')
+        return original_digest(path)
+    monkeypatch.setattr(driver, 'digest', digest)
+    expected = FileNotFoundError if old_guard else BeforeCompiler
+    with pytest.raises(expected):
+        driver.build('live', 'test', tmp_path / 'producer.json', workspace=tmp_path)
+    assert reached == ([] if old_guard else ['compiler-origin'])
+    record = json.loads((tmp_path / 'producer.json').read_bytes())
+    assert record['commands'] == [] and record['qualified'] is False
+
+
 def source_tar(path, entries):
     with tarfile.open(path, 'w') as archive:
         for name, data, link in entries:

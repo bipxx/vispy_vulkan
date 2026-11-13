@@ -1,0 +1,46 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "PASS_REVIEWED_SCOPED_SUCCESSOR_ADMISSION",
+  "qualification_head": "3ada644e85248bcae214e7e487b4b1684336fd8f",
+  "product_source_commit": "b38c4f9068d6a425eef43b62313f0f4cf37f57d9",
+  "strict_tk_criteria_admitted": 128,
+  "mandatory_rows_admitted": 8,
+  "actual_verification": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\final-scoped-admission-539\\verification.json",
+    "sha256": "96816e2e574b168d14d861e1dc1b2a364419f192fe2a0f372ec4bd909c4f01fa"
+  },
+  "strict_tk_result": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\final-scoped-admission-539\\strict-admission-result.json",
+    "sha256": "ba4a72bf370599047c4312d608f9011a7e471e107eb0bb0c4baba6d1bc5d6591"
+  },
+  "mandatory_admission": {
+    "path": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\compat\\candidates\\tk-state-resource-8\\installed-proofs-524\\mandatory-matrix-admission-539.json",
+    "sha256": "484623256d64f39211d43d7b9ed68b3a3f2531784592c4ea6b1375dcd0ca1e27"
+  },
+  "restoration": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\final-scoped-admission-539\\restoration.json",
+    "sha256": "b78aa28333a9da12f8425434041d53888b12ce15845b4ce8ff448164521bfd0f"
+  },
+  "materialization": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\final-scoped-admission-539\\materialization.json",
+    "sha256": "982313f1b42f845baae23884d4f01a33795f4b6003e4c7a9f5f71b32ff206a2d"
+  },
+  "overlay": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\installed-proof-bindings-512\\selected-row-overlay.json",
+    "sha256": "bffeb59e5a6cde1bf51a13ee5b0e29444db84134ccd2bf0fd21428af31266aec"
+  },
+  "final_independent_review": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\final-promotion-peer-538\\decision.json",
+    "sha256": "f480cc3e435cae2b1572979917f5a6410c643b3e9e27d40a5132ce0871566c6d"
+  },
+  "cleanup": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\final-scoped-admission-539\\post-cleanup.json",
+    "sha256": "43ae2bd6f30628490a6ef20eab57aa8986296502229058235d0ce383d215f99c"
+  },
+  "artifact_admitted": true,
+  "release_complete": false,
+  "full_inventory_complete": false,
+  "protected_integration_complete": false,
+  "scope": "Two exact CP312x86_64 Windows Vulkan/WSL software Vulkan wheels, finite128Tk criteria and eight selected VisPy-only mandatory profiles. Mandatory legacy retention uses explicitly approved manual scope and preserves its generic-verifier refusal; Tk599-input contributing retention passes the unchanged verifier. Canonical preparation remains frozen and must be overlaid only for guarded replay."
+}

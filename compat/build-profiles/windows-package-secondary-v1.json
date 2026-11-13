@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "name": "windows-package-secondary-v1",
+  "owner": "root-windows-v2-package",
+  "storage_workspace": "D:/vispy-vulkan-managed",
+  "source_workspace": "C:/Users/HEQ/Projects/vispy_vulkan",
+  "expected_peak_bytes": 536870912,
+  "aggregate_max_scratch_bytes": 21474836480,
+  "min_free_bytes": 10737418240,
+  "disk_guard_seconds": 30,
+  "purpose": "Assemble and verify the current Windows v2 wheel using the retained SDK-linked native leaf, with all new scratch and outputs on D:.",
+  "budget_basis": "The earlier Windows backend-only assembly and installed target cleaned approximately 30 MiB. A 512 MiB allocation covers one declared shipping projection, archive, no-deps copied target and test temporary files without a native build, environment copy or SDK. Enforce the measured allocation and the shared 20 GiB/10 GiB limits; stop on excess rather than enlarging it silently.",
+  "reuse": "Original C: prepared CPython 3.12.8/scikit-build-core 0.11.6, existing development dependency site and system Vulkan/Tk. Reuse hash-retained native outputs from windows-secondary-native-374. No new environment, native compilation, SDK build, dependency installation or network fallback.",
+  "source": "Verify shipping members, metadata and original AGPL/BSD/dependency notices against the frozen source commit. Reuse retained preferred native sources and the existing current pure-source delta archive by hash, with explicit mapping to the current package. Preserve the exact current source for any new harness/profile.",
+  "checks": "Backend-only wheel.cmake=false assembly, exact archive/native/source/license/RECORD join, one offline no-deps copy-mode target install, per-child member identities, upload/shutdown and Tk state/capture/examples, unchanged functional validators and active capture rejection controls. Record actual device, toolkit, module origins and exits/waits. Set TEMP/TMP/cache paths to the registered D: run before launching children.",
+  "cleanup": "Wait for owned children, retain exact wheel, commands, failures/reproducer and required source/license references outside scratch, inspect/apply the unchanged inherited-registry cleanup plan, then rehash retained files and verify scratch absence before another experiment.",
+  "scope": "Local Windows package and installed observations only. Cross-store provenance admission, independent reviews, strict profiles, complete CI, merge and release remain separate. Historical records are immutable."
+}

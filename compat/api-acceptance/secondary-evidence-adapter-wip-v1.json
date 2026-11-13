@@ -1,0 +1,80 @@
+{
+  "schema": 1,
+  "status": "PASS_SOURCE_ADAPTER_CONTRACTS_AND_ORIGINAL_WSL_EVIDENCE_JOINS",
+  "runtime_source_commit": "b38c4f9068d6a425eef43b62313f0f4cf37f57d9",
+  "broad_contracts": {
+    "passed": 344,
+    "process": {
+      "path": "D:\\vispy-vulkan-managed\\build\\runs\\secondary-evidence-adapter-485\\contracts-final-process.json",
+      "sha256": "ba2433385d6f08ae0e5a60a52332cb5d00b286ec80f7805da8d1f5428f2704a5"
+    },
+    "log": {
+      "path": "D:\\vispy-vulkan-managed\\build\\runs\\secondary-evidence-adapter-485\\contracts-final.log",
+      "sha256": "ca43646835d951f047aeb800984363fb9ab04c06f81453eab261aae275fb0a3c"
+    }
+  },
+  "followup_contracts": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\secondary-evidence-adapter-485\\followup-test-results.json",
+    "sha256": "94486eeae04fd1716409a3c1e95240dbe4c617fcf65040c730827019468c4613"
+  },
+  "initial_failures": {
+    "passed": 339,
+    "failed": 4,
+    "deselected": 1,
+    "process": {
+      "path": "D:\\vispy-vulkan-managed\\build\\runs\\secondary-evidence-adapter-485\\contracts-process.json",
+      "sha256": "ee8b75c61d0b3343e2395c1648ab35851fc99532ce92cdb4e81c10b8f28f02bb"
+    },
+    "log": {
+      "path": "D:\\vispy-vulkan-managed\\build\\runs\\secondary-evidence-adapter-485\\contracts.log",
+      "sha256": "e7afdeb0058b3ac72ff385a90d0e9dce99e579df44c17be4b72d5d48ca36142e"
+    },
+    "resolution": "Frozen revision1 preparation/coverage/execution/subject tests now preserve exact scope and assert rejection by current tools. Functional branch substitution still independently reaches and fails its semantic join."
+  },
+  "original_report_validation": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\secondary-evidence-adapter-485\\retained-report-validation.json",
+    "sha256": "9ccab74298de6cac2017ad853b17d21bc17e9b56ffe4a16552d973ef1224b807"
+  },
+  "original_retention_validation": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\secondary-evidence-adapter-485\\original-retention-validation.json",
+    "sha256": "966cf5952ef312f11977e9cbd5d4191efe35ca3f3af398080cb3ca59eabeb302"
+  },
+  "reconstructed_retention_validation": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\secondary-evidence-adapter-485\\reconstructed-retention-validation.json",
+    "sha256": "29cfca2a00babeaa7b6fa0f84920cb26225e79cb3bffdd12d067a07355e37eaa"
+  },
+  "source_archive": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\secondary-evidence-adapter-485\\source-and-licenses.zip",
+    "sha256": "a77caea125abc1466ec7d2e2a27e4de850b506fa55eae59d329a692f1b19dfe9"
+  },
+  "source_inputs": {
+    "tools/retained_evidence.py": "ddea867957986c08f9154914d32336e186d0202faec468544cc4ef07934f5943",
+    "tools/compatibility_evidence.py": "c261f7431eae27b930ec84d4a5121bbbc7968b19df12b3955d84743eea3456a3",
+    "tools/compatibility_inventory.py": "6b4a08b9172558b2c520273d7acd55e6b5f8ff6a7ed4b50c2f2e32e1db9dde15",
+    "tools/qualification_index.py": "07a98b99cb080b4032804aff20c023265bb5d0debdc9c477c02615faef056481",
+    "compat/qualification-index.schema.json": "f38ad0d0e26dfc11154737b55bd5d419843b3e7e3c0e87c41a7a837b568e5727",
+    "tests/contract/test_retained_evidence.py": "992e4089b6b2da7c93383981d4a424d2d5cdfb4f35ad663b8d4d42270b4a780a",
+    "tests/contract/test_qualification_index.py": "c5a72b5c94c12d84b6affd1169d4faa638c163eec4a22bab172905fe2342f170",
+    "tests/contract/test_compatibility_inventory.py": "4f00eb94e6f76dd7cf87e4f1d54252f92320e8240dc41433ad520d6fe4c3f884"
+  },
+  "verified_scope": [
+    "Source-local file resolution stays unchanged. @evidence/ references require the exact hashed secondary-store policy.",
+    "Original WSL state/resource and capture reports normalize all three gates in place; no report copies or raw byte edits.",
+    "Mixed source/store cleanup validates original owner, run, actual exit/wait, apply command, snapshot count, retained roles and hashes.",
+    "Four changed historical documents are reconstructed from exact pinned archive members; all80 original WSL cleanup inputs validate.",
+    "Unselected roots, scratch evidence, missing selectors, changed raw/source/member bytes, mismatched store bindings and partial cleanup remain rejected."
+  ],
+  "qualified_rows_written": 0,
+  "artifact_admitted": false,
+  "independent_tool_review": false,
+  "shipping_runtime_changed": false,
+  "native_build": false,
+  "environment_created": false,
+  "scratch_created": false,
+  "remaining": [
+    "Review/freeze the changed qualification tools and renew candidate source/tool references.",
+    "Complete per-workflow attempts, distribution/pytest receipts and terminal-retention bindings for both platforms.",
+    "Keep external dependency origins pinned. Paths outside the selected roots still require explicit retained-byte reconstruction rather than arbitrary absolute-path resolution.",
+    "Complete required CI, independent impact/promotion reviews, integration and publication."
+  ]
+}

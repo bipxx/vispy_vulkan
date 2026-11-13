@@ -88,6 +88,13 @@ jobs:
           python3 -B tools/linux_ci_lifecycle.py --state "$CI_STATE" run --phase prepare --script-stdin <<'PHASE'
           uv python install '3.12.8'
           uv venv "$BUILD_ENV" --python '3.12.8' --managed-python
+          if [[ "$NATIVE_MODE" == 'reuse' ]]; then
+            uv export --locked --no-default-groups --no-emit-project \
+              --prune numpy --prune freetype-py --prune hsluv --prune kiwisolver \
+              --output-file "$EVIDENCE/reuse-requirements.txt" > /dev/null
+            uv pip install --python "$BUILD_ENV" --require-hashes --only-binary :all: \
+              --requirements "$EVIDENCE/reuse-requirements.txt"
+          fi
           echo "$BUILD_ENV/bin" >> "$GITHUB_PATH"
           uv --version > "$EVIDENCE/uv-version.txt"
           git rev-parse HEAD > "$EVIDENCE/source-revision.txt"

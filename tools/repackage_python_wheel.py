@@ -43,7 +43,8 @@ def repackage(data, replacements, **original_inputs):
                           wheel_sha256=archive_audit.sha(data), artifact_admitted=False,
                           audit=original)
 
-    record_name = archive_audit.DIST + '/RECORD'
+    dist = archive_audit.distribution_directory(original_inputs.get('version', archive_audit.VERSION))
+    record_name = dist + '/RECORD'
     result = io.BytesIO()
     rows = []
     with zipfile.ZipFile(io.BytesIO(data)) as source, zipfile.ZipFile(result, 'w') as target:
@@ -83,6 +84,8 @@ def repackage_from_source(data, source, original_sources, native_hashes, *, plat
     and the current pure sources before assembling a successor.
     """
     source = Path(source)
+    version = archive_audit.source_version(source)
+    dist = archive_audit.distribution_directory(version)
     manifest = archive_audit.runtime_package.load_manifest(source)
     current = archive_audit.runtime_package.source_package_hashes(source)
     origins = {member: ('compat/runtime-package.json' if member == archive_audit.runtime_package.MEMBER
@@ -99,7 +102,7 @@ def repackage_from_source(data, source, original_sources, native_hashes, *, plat
                     or any(c not in '0123456789abcdef' for c in original_hash)):
                 raise ValueError('Missing original README description source binding')
             with zipfile.ZipFile(io.BytesIO(data)) as archive:
-                metadata_bytes = archive.read(archive_audit.DIST + '/METADATA')
+                metadata_bytes = archive.read(dist + '/METADATA')
             boundaries = [(metadata_bytes.find(separator), separator)
                           for separator in (b'\n\n', b'\r\n\r\n') if separator in metadata_bytes]
             if not boundaries:
@@ -124,8 +127,8 @@ def repackage_from_source(data, source, original_sources, native_hashes, *, plat
     result, report = repackage(data, replacements,
         manifest_data=(source / 'compat/runtime-package.json').read_bytes(), pure_hashes=original,
         notices=archive_audit.source_notices(source),
-        distribution_licenses=archive_audit.source_distribution_licenses(source),
-        native_hashes=native_hashes, platform=platform, suffix=suffix, tag=tag)
+        distribution_licenses=archive_audit.source_distribution_licenses(source, version=version),
+        native_hashes=native_hashes, platform=platform, suffix=suffix, tag=tag, version=version)
     if archive_audit.runtime_package.source_package_hashes(source) != current:
         raise ValueError('Source package changed during archive assembly')
     report.update(current_source_hashes=current, original_source_hashes=original,
