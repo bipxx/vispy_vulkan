@@ -9,8 +9,6 @@ rebuild the wheels. Full upstream VisPy parity is not the release target.
 
 ## Install
 
-After publication:
-
 ```sh
 pip install "vispy==0.17.0+vulkan.2" --extra-index-url https://bipxx.github.io/vispy_vulkan/simple/
 ```
@@ -20,7 +18,7 @@ uses SHA256 fragments for each GitHub Release asset.
 
 ## Exact assets
 
-Both wheels require CPython 3.12 and x86_64. The intended release tag is
+Both wheels require CPython 3.12 and x86_64. The release tag is
 `v0.17.0-vulkan.2`.
 
 | Wheel | Bytes | SHA256 |
@@ -98,3 +96,13 @@ materialization and the retained overlay. Canonical preparation remains frozen;
 directly validating it does not replay the installed proof. Maintainer replay
 uses the guarded materializer and then re-hashes the restored ledger and subject.
 Raw local evidence is separate from the normal wheel/source checkout.
+
+
+## Public channel verification — 2026-11-13
+
+The release and index are public. Both actual installs verify all 537 VisPy
+members against the exact released wheels with zero source overrides. Windows
+also passes a 64×64 Vulkan clear/readback; Linux passes native binary import,
+without a new GPU-rendering claim. All temporary installs are removed.
+The [delivery record](../compat/api-acceptance/successor-public-delivery-v1.json)
+retains the exact scopes, process receipts, recoveries and cleanup.

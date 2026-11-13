@@ -2,15 +2,14 @@
 
 ## Current execution status — 2026-11-13
 
-Reviewed implementation `3ada644e85248bcae214e7e487b4b1684336fd8f` has completed its qualification gates. Product source remains `b38c4f9068d6a425eef43b62313f0f4cf37f57d9`; all 608 runtime/build/lock/license references and both selected CPython 3.12 wheels are unchanged.
+The selected `0.17.0+vulkan.2` release is published and its public delivery checks pass. [GitHub Release](https://github.com/bipxx/vispy_vulkan/releases/tag/v0.17.0-vulkan.2), [PEP503 index](https://bipxx.github.io/vispy_vulkan/simple/), [exact delivery evidence](../compat/api-acceptance/successor-public-delivery-v1.json).
 
-- **FIX-04/FIX-06 — Scoped admission passed:** all 128 Tk criteria and eight mandatory Windows/WSL headless/plain-QWidget profiles are admitted at their exact reviewed scope. [Actual strict result, eight-row admission and restoration](../compat/api-acceptance/revision8-final-admission-v1.json).
-- **Required CI passed:** all 23 jobs join complete original history, terminal results and checkout identities at head 3ada. [Original evidence](../compat/api-acceptance/revision8-required-ci-v1.json).
-- **Independent promotion approved:** exact basis 82f01bd8… and the eight mandatory rows have approved final decisions. [Exact bindings](../compat/api-acceptance/revision8-promotion-review-v1.json). No approval was transferred from an older candidate/head.
-- **Evidence boundaries preserved:** original 142 broader obligations remain; mandatory 957-input retention has explicit manual review and its original two-root verifier refusal, distinct from the Tk 599-input contributing retention that passes the unchanged verifier. The 18 legacy inputs are protected at their original paths in the additive successor registry. [Scope and follow-up](../compat/api-acceptance/mandatory-review-followup-v1.json).
-- **Still open:** complete protected source integration, publish the unchanged two wheels and four-link index, then verify actual public-channel installs. [Local release preview](../compat/api-acceptance/successor-release-preview-v1.json). Publication is not yet complete.
+- **FIX-04 — Integrated:** PR75 merged as `fc3b9734bbaf2af801e7b3bc81bbc352e5525708` after all eleven protected integration checks passed. Its tree preserves the qualified runtime, tools, workflows and policies; the other owner's index is unchanged.
+- **FIX-06 — Qualified and delivered:** all 128 selected Tk criteria, eight mandatory VisPy-only Windows/WSL profiles, all 23 required jobs at implementation head `3ada644e85248bcae214e7e487b4b1684336fd8f`, independent final promotion and strict admission pass. Product source remains `b38c4f9068d6a425eef43b62313f0f4cf37f57d9` and the two exact wheels are unchanged. [Admission](../compat/api-acceptance/revision8-final-admission-v1.json).
+- **Actual public channel:** Windows verifies 537 members, zero source overrides and an exact 64×64 Vulkan clear. Linux verifies 537 members, zero source overrides and native ABI import; its delivery smoke makes no new GPU claim. The four-link index preserves both vulkan.1 assets. AGPL, original BSD and dependency notices remain attached.
+- **Hygiene and failures:** temporary installs are removed; 167,250,056 bytes reclaimed and 44 retained files rehashed. The draft lookup 404, connector 403 and Linux receipt collision remain recorded with their recoveries. The 18 legacy inputs remain protected at original origins; the manually reviewed mandatory retention boundary and its unchanged generic-verifier refusal are preserved separately from the Tk 599-input verified retention.
 
-Frozen preparation was restored byte for byte; replay requires the retained overlay and guarded materializer linked by the admission record. No Metal graphics, physical Linux GPU, optional host, full API/raster parity or laboratory latency claim is introduced. No new native build or SDK/environment clone was required for these qualification records.
+This closes the selected successor release, not all 142 broader compatibility obligations. Optional API/rendering/host/platform breadth remains explicitly tracked below. Metal graphics, physical Linux GPUs, other ABIs/architectures, full API/raster parity and laboratory latency remain outside the accepted release claim. See the [completion audit](selected-release-completion-audit.md).
 
 ## Historical progress checkpoints
 
@@ -529,8 +528,7 @@ Authority: [capture coverage map](../compat/candidates/tk-capture-1/coverage.jso
   [recorded pytest result](../build/runs/shutdown-fix-322/pytest-final.log).
 - [x] **FIX-03 — Current progress summary:** the consolidated plan identifies the
   published wheels, current mandatory rows and the unreleased source fix separately.
-- [ ] **FIX-04 — Review and integrate the source fix:** complete the applicable
-  source checks and normal review/merge path; retain exact source identity.
+- [x] **FIX-04 — Review and integrate the source fix (2026-11-13):** reviewed source/impact/promotion, exact128-criterion admission and protectedPR75merge pass; source merge `fc3b9734…`. [Actual release evidence](../compat/api-acceptance/successor-public-delivery-v1.json). Earlier readiness checkpoints below remain historical.
   **Current readiness, 2026-11-08:** the cumulative source/evidence packet is
   prepared. All 57 native C++ inputs match both retained producers and all 362
   Python members per current wheel match source. Both old v2 candidate validators
@@ -659,9 +657,7 @@ Authority: [capture coverage map](../compat/candidates/tk-capture-1/coverage.jso
   1, not waived). [Guest source-test cleanup](../build/runs/collector-protocol-331/post-cleanup.json)
   is complete. The Windows-mounted verifier attempts' capture/timeout failures and
   unknown original child wait are preserved and are not passing gates.
-- [ ] **FIX-06 — Patch qualification and publication:** renew affected records and
-  mandatory rows on those artifacts, satisfy required CI/promotion, and publish only
-  through the authorized release process. Existing v1 wheels do not contain FIX-01.
+- [x] **FIX-06 — Patch qualification and publication (2026-11-13):** exactvulkan.2wheels,128Tk criteria, eight mandatory rows,23same-head CI jobs, independent promotion, protected integration, public release/index and actual Windows/Linux channel checks pass. [Delivery](../compat/api-acceptance/successor-public-delivery-v1.json). Originalv1records remain frozen;142broader obligations are not discharged.
 - [x] **FIX-06-RECORDS — Current unreviewed successor record renewal:**
   development candidates `tk-state-resource-3` / `tk-capture-3`, shared
   `tk-v2-current`, bind production source `603ac73a`, current wheels
@@ -1355,29 +1351,11 @@ criteria; software timestamps do not establish physical display scanout latency.
 
 ## Next work order
 
-Close one item at a time: record its source/artifact scope, run its acceptance
-checks, retain the result and clean its scratch before moving on. A prerequisite
-may be worked within the active item, but the checkbox stays open until every
-exit condition is satisfied. Optional or deferred items are selected by need.
+The selected successor release is complete at the [audited finite scope](selected-release-completion-audit.md). The broader worklist remains a claim-driven backlog.
 
-1. The event/input/depth refresh is complete: all 126 original cases pass on each
-   current wheel, with one installation per platform and both targets cleaned.
-   SHD-05-BOUNDARIES and current literal-sampler regressions are also complete at
-   their finite scopes. Proceed with independent review and installed/profile
-   qualification, or select the next bounded scene/lifecycle workflow.
-2. FIX-04: use the now-verified FIX-05 Windows/Linux artifacts to renew their
-   source/runtime/candidate/native/coverage/selection records and bound reviews.
-   Rerun applicable source checks, then complete the normal merge. Preserve the
-   original producer identities; no native rebuild is needed for record/doc-only
-   changes. Do not mark FIX-04 complete while its evidence pins are failing.
-3. FIX-06: renew the selected mandatory qualification rows, required CI/promotion
-   and release metadata, then publish through the authorized process. Local
-   artifact verification does not transfer the v1 admissions to these wheels.
-4. BUG-01: keep recurrence evidence/cause work focused; follow D33 if it recurs.
-5. API-01–API-06 and SCI-05: reconcile breadth and stale dispositions before
-   expanding support claims or proposing broad implementation work.
-6. Select optional rendering, lifecycle, host, platform or tooling work by need.
-   Deferred scope does not become a release requirement merely by appearing here.
+1. Preserve D33 recurrence evidence if the known Windows startup stall recurs; recurrence blocks promotion again.
+2. Before expanding API claims, reconcile API-05/API-06 breadth and SCI-05 stale dispositions against exact newer evidence.
+3. Select further rendering, lifecycle, host, platform or performance work only when required by a product claim. Deferred hardware and full upstream parity do not become release requirements merely by appearing here.
 
 ## Change log
 
