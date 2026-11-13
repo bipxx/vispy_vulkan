@@ -16,15 +16,16 @@ criteria on these exact CPython 3.12 x86_64 wheels:
 | Windows Vulkan | `a86b030b005cba455f46ccaeffc56bf3f438142e490999f88156370e6093fb6c` |
 | WSL software Vulkan, manylinux_2_39 | `48164e052ddc3d8e5376a3a1f13fa652583142f4634438ae9067e204aab8b6ce` |
 
-All23required CI jobs pass at qualification head
+All 23 required CI jobs pass at qualification head
 `3ada644e85248bcae214e7e487b4b1684336fd8f`; independent final review and
 the unchanged strict admission verifier passed. Eight selected VisPy-only
 headless/plain-QWidget profiles have separate scoped successor admission.
 See [exact proof and reconstruction](../compat/api-acceptance/revision8-final-admission-v1.json)
 and the [successor release notes](release-0.17.0-vulkan.2.md) for profile,
 dependency, delivery and licensing limits. This does not admit optional hosts
-or the142broader compatibility obligations. Public delivery is verified
-separately on the linked GitHub Release.
+or the 142 broader compatibility obligations. The public release/index and
+Windows Vulkan-clear/Linux ABI-import delivery checks now pass; see the
+[exact delivery record](../compat/api-acceptance/successor-public-delivery-v1.json).
 
 The milestone tables below are historical; their artifacts and separate
 admissions are preserved, rather than transferred to the successor.

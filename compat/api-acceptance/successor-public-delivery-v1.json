@@ -1,0 +1,102 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "PASS_SELECTED_VULKAN2_PUBLIC_DELIVERY",
+  "version": "0.17.0+vulkan.2",
+  "release_url": "https://github.com/bipxx/vispy_vulkan/releases/tag/v0.17.0-vulkan.2",
+  "index_url": "https://bipxx.github.io/vispy_vulkan/simple/",
+  "product_source_commit": "b38c4f9068d6a425eef43b62313f0f4cf37f57d9",
+  "qualification_head": "3ada644e85248bcae214e7e487b4b1684336fd8f",
+  "release_source_merge": "fc3b9734bbaf2af801e7b3bc81bbc352e5525708",
+  "wheels": [
+    {
+      "name": "vispy-0.17.0+vulkan.2-cp312-cp312-win_amd64.whl",
+      "bytes": 6811895,
+      "sha256": "a86b030b005cba455f46ccaeffc56bf3f438142e490999f88156370e6093fb6c",
+      "url": "https://github.com/bipxx/vispy_vulkan/releases/download/v0.17.0-vulkan.2/vispy-0.17.0%2Bvulkan.2-cp312-cp312-win_amd64.whl"
+    },
+    {
+      "name": "vispy-0.17.0+vulkan.2-cp312-cp312-manylinux_2_39_x86_64.whl",
+      "bytes": 10560735,
+      "sha256": "48164e052ddc3d8e5376a3a1f13fa652583142f4634438ae9067e204aab8b6ce",
+      "url": "https://github.com/bipxx/vispy_vulkan/releases/download/v0.17.0-vulkan.2/vispy-0.17.0%2Bvulkan.2-cp312-cp312-manylinux_2_39_x86_64.whl"
+    }
+  ],
+  "admitted_tk_criteria": 128,
+  "admitted_mandatory_vispy_profiles": 8,
+  "required_qualification_ci_jobs": 23,
+  "windows_channel": {
+    "verified_members": 537,
+    "source_overrides": 0,
+    "python": "3.12.8",
+    "vulkan_clear_exact": true,
+    "frame_size": [
+      64,
+      64
+    ],
+    "expected_rgba": [
+      17,
+      33,
+      65,
+      255
+    ]
+  },
+  "linux_channel": {
+    "verified_members": 537,
+    "source_overrides": 0,
+    "python": "3.12.13",
+    "native_abi_import": true,
+    "gpu_rendered_in_delivery_smoke": false
+  },
+  "licensing": {
+    "implementation": "AGPL-3.0-only",
+    "original_vispy_bsd_attached_unchanged": true,
+    "third_party_notices_attached": true
+  },
+  "index_asset_links": 4,
+  "previous_version_links_preserved": 2,
+  "temporary_channel_installs_removed": true,
+  "channel_scratch_reclaimed_bytes": 167250056,
+  "selected_artifact_delivery_complete": true,
+  "full_inventory_complete": false,
+  "scope": "Exact CPython3.12x86_64 Windows Vulkan/WSL software Vulkan artifacts and selected profiles. Delivery smoke is separate from the full128criterion/eight-profile qualification. Metal graphics, physical Linux GPUs, other ABIs/architectures, optional hosts, full API/raster parity and laboratory scanout latency are not newly claimed. Original142broader obligations remain conserved backlog.",
+  "legacy_retention_boundary": "Mandatory-row957input retention has explicit independent manual review and retains its original generic two-root verifier refusal. The Tk599input contributing retention passes the unchanged verifier.",
+  "raw_evidence": {
+    "channel": {
+      "path": "D:\\vispy-vulkan-managed\\build\\runs\\public-channel-checks-544\\verification-final.json",
+      "sha256": "17e57d481901d4c0b82bc1290ddb052d9464a19b1e2a1ae10f84ed9d976ec28f"
+    },
+    "channel_cleanup": {
+      "path": "D:\\vispy-vulkan-managed\\build\\runs\\public-channel-checks-544\\post-cleanup-final.json",
+      "sha256": "dac9be5c36ff3139ea4757eab36652a6e841be71dc00dd9353b0d5acbc0ed58e"
+    },
+    "publication": {
+      "path": "D:\\vispy-vulkan-managed\\build\\runs\\successor-publication-recovery-545\\verification.json",
+      "sha256": "a5c1510b8757ac2ca30155028c56eda449cf2197ef008e45d749553e2d24b1b6"
+    },
+    "publication_cleanup": {
+      "path": "D:\\vispy-vulkan-managed\\build\\runs\\successor-publication-recovery-545\\post-cleanup.json",
+      "sha256": "c33ac0c69afa0ab5d6ad89076642a4a68c2485127b7ad2bb4253b2ae894b1d9b"
+    },
+    "strict_tk": {
+      "path": "D:\\vispy-vulkan-managed\\build\\runs\\final-scoped-admission-539\\verification.json",
+      "sha256": "96816e2e574b168d14d861e1dc1b2a364419f192fe2a0f372ec4bd909c4f01fa"
+    },
+    "final_review": {
+      "path": "D:\\vispy-vulkan-managed\\build\\runs\\final-promotion-peer-538\\decision.json",
+      "sha256": "f480cc3e435cae2b1572979917f5a6410c643b3e9e27d40a5132ce0871566c6d"
+    },
+    "original_lookup_failure": {
+      "path": "D:\\vispy-vulkan-managed\\build\\runs\\successor-publication-543\\create-failure.txt",
+      "sha256": "3897b6b89e32867119f91cc65853536c136a1163d9655a03939aee0278858447"
+    },
+    "connector_permission_failure": {
+      "path": "D:\\vispy-vulkan-managed\\build\\runs\\successor-publication-recovery-545\\pages-blob-result.json",
+      "sha256": "6782bf95d96001be9f7342941f25bc4d6b7d30f3781dfaaa14389315c3fecf6e"
+    },
+    "linux_receipt_resolution": {
+      "path": "D:\\vispy-vulkan-managed\\build\\runs\\public-channel-checks-544\\linux-receipt-resolution.json",
+      "sha256": "fdccc1cab81d4ddd9e16638a98d3e97ddedf25f9dfe7a906c6cd9f75ac03dbc0"
+    }
+  }
+}

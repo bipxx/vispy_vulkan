@@ -7,8 +7,8 @@ parity. Qualification below applies only to the exact selected artifacts and pro
 Successor update, 2026-11-13: exact revision 8 admission now passes all 128 Tk
 criteria on the selected vulkan.2 CPython 3.12 Windows/WSL wheels, together with
 separate admission of the eight mandatory VisPy-only profiles and all 23 required
-same-head CI jobs. Independent final promotion is approved; protected
-integration and public delivery are separate checks. [Exact admission](../compat/api-acceptance/revision8-final-admission-v1.json),
+same-head CI jobs. Independent final promotion, protected integration and
+actual public-channel delivery checks now pass. [Delivery evidence](../compat/api-acceptance/successor-public-delivery-v1.json). [Exact admission](../compat/api-acceptance/revision8-final-admission-v1.json),
 [release scope](release-0.17.0-vulkan.2.md). The 142 broader obligations remain
 backlog; optional hosts and experimental Metal graphics are not newly admitted.
 
