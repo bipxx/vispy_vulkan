@@ -63,6 +63,17 @@ to bypass an earlier refusal. A separate WSL workspace needs its own native-path
 registry and backing-volume entry; the coordinator also accounts for combined
 Windows/guest allocations rather than treating their budgets as independent.
 
+Retained registry files are input identities. To add protections, create a
+successor registry containing every predecessor protected/blocked entry and the
+new pinned paths; preserve the predecessor bytes. Explicitly pass `--registry`
+on all subsequent preflight, plan and apply commands. Do not silently fall back
+to an older registry or overwrite a registry cited by retained qualification.
+The current coordinator selection is recorded in
+[mandatory review follow-up](../compat/api-acceptance/mandatory-review-followup-v1.json):
+`D:/vispy-vulkan-managed/build/.hygiene/registry-mandatory-successor-535.json`.
+Its 18 added legacy inputs remain at their original paths; they are protected
+from cleanup, not adopted as scratch or relocated into the evidence store.
+
 ## Required lifecycle
 
 1. Reuse an existing artifact when native inputs and configuration match. Before

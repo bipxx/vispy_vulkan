@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "PASS_LOCAL_REVIEWABLE_PREVIEW_NOT_PUBLISHED",
+  "preview": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\successor-release-preview-540\\verification.json",
+    "sha256": "8f61f998706a53775a5bcc8a109d07ea2a26ab2293cfa347ea0f25e5bf5ba909"
+  },
+  "cleanup": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\successor-release-preview-540\\post-cleanup.json",
+    "sha256": "20d1e6c562fed5956399ee62fad87a748d85439d2f874796e7a292f9cbe04303"
+  },
+  "github_release_created": false,
+  "pages_pushed": false,
+  "release_complete": false
+}

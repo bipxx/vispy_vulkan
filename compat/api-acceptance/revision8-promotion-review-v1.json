@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "APPROVED_EXACT_PROMOTION_BASIS_AND_EIGHT_ROWS",
+  "decision": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\final-promotion-peer-538\\decision.json",
+    "sha256": "f480cc3e435cae2b1572979917f5a6410c643b3e9e27d40a5132ce0871566c6d"
+  },
+  "review": {
+    "path": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\compat\\candidates\\tk-state-resource-8\\installed-proofs-524\\promotion-review-538.json",
+    "sha256": "40549cdbeaaa8aca3dbaab85bbdc807eec1304ae1fd5e6eb8e6ba4474a88b9ed"
+  },
+  "qualification_head": "3ada644e85248bcae214e7e487b4b1684336fd8f",
+  "promotion_basis_sha256": "82f01bd819aee70d4661cc802cb4d06ca7a261c80febeab6a433fb7bda504e9f",
+  "subject_sha256": "d65bb7804f6e2ccc16bda47497d9e12e0aaf54a79b4ddb8e7628e2473d3f0374",
+  "artifact_admitted": false,
+  "release_complete": false,
+  "remaining": "Execute unchanged strict admission, restore/re-audit canonical preparation, complete protected integration and authorized publication/channel checks."
+}

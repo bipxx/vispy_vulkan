@@ -2,14 +2,15 @@
 
 ## Current execution status — 2026-11-13
 
-Revision8 is the current **independently reviewed preparation**:32 selected feature/profile pairs,64 criteria/128 bindings, and all142 original requirements conserved. Its 1,117 compatibility contracts pass locally on Windows CPython3.12.8;608 runtime/build/lock/license references and both selected wheels are unchanged. [Preparation and checks](../compat/api-acceptance/metal-dependency-preparation-v1.json). Independent revision8source/scope decisions are bound ([exact decision](../compat/api-acceptance/successor-peer-review-v5.json)); revision7reviews remain frozen and were not transferred. The prior head9cf subject proved128/128 criteria with zero missing/blocked joins; revision8/final-head binding is still pending. [Prior installed proof](../compat/api-acceptance/installed-subject-proof-v1.json).
+Reviewed implementation `3ada644e85248bcae214e7e487b4b1684336fd8f` has completed its qualification gates. Product source remains `b38c4f9068d6a425eef43b62313f0f4cf37f57d9`; all 608 runtime/build/lock/license references and both selected CPython 3.12 wheels are unchanged.
 
-1. **Done:** exact revision8source/scope decisions approve the locked Metal `packaging` setup and current corrected oracle test. The earlier authentication failure remains retained; the new review completed independently and resolves that follow-up gap.
-2. Freeze the approved state with a private Git index, wait for commit completion, then push and dispatch all23 required jobs. Reuse the successful head340native artifacts; no SDK or wheel rebuild is justified by these changes.
-3. After the implementation head is final, reconstruct the32-row overlay for revision8, bind complete six-attempt histories and actual contributing retention, and revalidate128criteria against that same head. Use a new managed run; restore the frozen preparation afterwards.
-4. Join the complete source-head CI bundle, obtain independent change-impact and final promotion-basis decisions, and run strict admission. Only then integrate/merge and publish the agreed repository artifacts.
+- **FIX-04/FIX-06 — Scoped admission passed:** all 128 Tk criteria and eight mandatory Windows/WSL headless/plain-QWidget profiles are admitted at their exact reviewed scope. [Actual strict result, eight-row admission and restoration](../compat/api-acceptance/revision8-final-admission-v1.json).
+- **Required CI passed:** all 23 jobs join complete original history, terminal results and checkout identities at head 3ada. [Original evidence](../compat/api-acceptance/revision8-required-ci-v1.json).
+- **Independent promotion approved:** exact basis 82f01bd8… and the eight mandatory rows have approved final decisions. [Exact bindings](../compat/api-acceptance/revision8-promotion-review-v1.json). No approval was transferred from an older candidate/head.
+- **Evidence boundaries preserved:** original 142 broader obligations remain; mandatory 957-input retention has explicit manual review and its original two-root verifier refusal, distinct from the Tk 599-input contributing retention that passes the unchanged verifier. The 18 legacy inputs are protected at their original paths in the additive successor registry. [Scope and follow-up](../compat/api-acceptance/mandatory-review-followup-v1.json).
+- **Still open:** complete protected source integration, publish the unchanged two wheels and four-link index, then verify actual public-channel installs. [Local release preview](../compat/api-acceptance/successor-release-preview-v1.json). Publication is not yet complete.
 
-Use a **new** registered run for overlay reconstruction or review. Do not rerun terminal drivers in place. The explicit D:store selector and original producer/cleanup records remain authoritative; retain by hash rather than copying SDKs, environments or old build trees. Selected-row proof fields may be materialized only for validation and must be restored with the recorded hash guard.
+Frozen preparation was restored byte for byte; replay requires the retained overlay and guarded materializer linked by the admission record. No Metal graphics, physical Linux GPU, optional host, full API/raster parity or laboratory latency claim is introduced. No new native build or SDK/environment clone was required for these qualification records.
 
 ## Historical progress checkpoints
 

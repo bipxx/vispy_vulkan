@@ -2,9 +2,15 @@
 
 ## Current execution status — 2026-11-13
 
-Revision8 is the current **independently reviewed preparation**:32 selected feature/profile pairs,64 criteria/128 bindings, and all142 original requirements conserved. Its 1,117 compatibility contracts pass locally on Windows CPython3.12.8;608 runtime/build/lock/license references and both selected wheels are unchanged. [Preparation and checks](../compat/api-acceptance/metal-dependency-preparation-v1.json). Independent revision8source/scope decisions are bound ([exact decision](../compat/api-acceptance/successor-peer-review-v5.json)); revision7reviews remain frozen and were not transferred. The prior head9cf subject proved128/128 criteria with zero missing/blocked joins; revision8/final-head binding is still pending. [Prior installed proof](../compat/api-acceptance/installed-subject-proof-v1.json).
+Reviewed implementation `3ada644e85248bcae214e7e487b4b1684336fd8f` has completed its qualification gates. Product source remains `b38c4f9068d6a425eef43b62313f0f4cf37f57d9`; all 608 runtime/build/lock/license references and both selected CPython 3.12 wheels are unchanged.
 
-**FIX-04/FIX-06:** revision8source/scope is approved; head-bound CI/subject renewal, final impact/promotion review and integration are open. **TOOL-01:** source transport/layout checks pass; the missing Metal environment dependency is fixed/probed locally, with hosted verification pending. Use the [remaining-gaps checklist](remaining-gaps-checklist.md) for the current execution order. Windows/WSL remain the supported target; Metal graphics and full upstream parity remain outside the admitted claim.
+- **FIX-04/FIX-06 — Scoped admission passed:** all 128 Tk criteria and eight mandatory Windows/WSL headless/plain-QWidget profiles are admitted at their exact reviewed scope. [Actual strict result, eight-row admission and restoration](../compat/api-acceptance/revision8-final-admission-v1.json).
+- **Required CI passed:** all 23 jobs join complete original history, terminal results and checkout identities at head 3ada. [Original evidence](../compat/api-acceptance/revision8-required-ci-v1.json).
+- **Independent promotion approved:** exact basis 82f01bd8… and the eight mandatory rows have approved final decisions. [Exact bindings](../compat/api-acceptance/revision8-promotion-review-v1.json). No approval was transferred from an older candidate/head.
+- **Evidence boundaries preserved:** original 142 broader obligations remain; mandatory 957-input retention has explicit manual review and its original two-root verifier refusal, distinct from the Tk 599-input contributing retention that passes the unchanged verifier. The 18 legacy inputs are protected at their original paths in the additive successor registry. [Scope and follow-up](../compat/api-acceptance/mandatory-review-followup-v1.json).
+- **Still open:** complete protected source integration, publish the unchanged two wheels and four-link index, then verify actual public-channel installs. [Local release preview](../compat/api-acceptance/successor-release-preview-v1.json). Publication is not yet complete.
+
+Frozen preparation was restored byte for byte; replay requires the retained overlay and guarded materializer linked by the admission record. No Metal graphics, physical Linux GPU, optional host, full API/raster parity or laboratory latency claim is introduced. No new native build or SDK/environment clone was required for these qualification records.
 
 ## Historical progress checkpoints
 
@@ -244,9 +250,7 @@ the selected release. An unreviewed API is not automatically an unimplemented AP
   Broad contracts: 344 pass; archive follow-up: 99 pass; final opt-in guard: 2 pass.
   Frozen-record tests retain scope and now reject stale current-tool claims.
   These are source-tool and retained-evidence joins, not artifact admission.
-- [ ] **FIX-06-EVIDENCE-BINDINGS:** bind complete profile/workflow histories,
-  pytest/distribution receipts and cleanup evidence for both selected wheels.
-  Preserve original origins; unselected paths need exact retained-byte bindings.
+- [x] **FIX-06-EVIDENCE-BINDINGS (2026-11-13):** finite revision8 Tk subject binds complete six-attempt histories, separate installed pytest phases, distribution receipts and599-input contributing retention for the selected wheels. [Exact128-criterion proof](../compat/api-acceptance/revision8-installed-subject-v1.json). No full inventory or release admission.
 - [x] **FIX-06-TOOL-REVIEW-FIXES-SOURCE (2026-11-13):** resolved-failure
   profile/wheel context, native/store namespaces and source-side scratch handling
   are fixed. Early failures have history-bound workflow attribution; derived
@@ -261,9 +265,7 @@ the selected release. An unreviewed API is not automatically an unimplemented AP
   validates revision6 preparation, coverage, execution and admission selection;
   retained-evidence tests are included and exact policy hash renewed. Five CLIs
   pass locally, 102 CI/retention contracts pass; all 23 required jobs are preserved.
-- [ ] **FIX-06-CI-EVIDENCE-DELIVERY:** run required CI at the frozen qualification
-  head; local store-backed positive proof remains an explicit subject overlay.
-  Local CLI checks do not supply hosted CI or installed admission.
+- [x] **FIX-06-CI-EVIDENCE-DELIVERY (2026-11-13):** all23required jobs at head3ada validate against complete original history/run/jobs/checkout identities. [Evidence](../compat/api-acceptance/revision8-required-ci-v1.json). Independent final promotion and strict admission remain separate.
 - [x] **FIX-06-QUALIFICATION-TOOL-REVIEW (2026-11-13):** exact tool follow-up
   and renewed revision6 source/scope decisions approved; new candidate identities
   and native joins validate. Revision5 approvals retain their original scope.
@@ -274,8 +276,7 @@ the selected release. An unreviewed API is not automatically an unimplemented AP
   freezes tools, CI and tests; 5,924 source-file blobs verified, 608 runtime refs
   unchanged, original index preserved. Subject head bound; hosted CI still pending.
   [Freeze evidence](../compat/api-acceptance/qualification-source-freeze-v1.json).
-- [ ] **FIX-06-INSTALLED-ROW-JOINS:** bind the new phase receipts and original
-  observer gates to same-profile identities and complete histories/retention.
+- [x] **FIX-06-INSTALLED-ROW-JOINS (2026-11-13):** all32selected Tk rows/96raw gate joins and128criteria prove at head3ada, using exact matched platform fingerprints and complete retained histories. [Proof](../compat/api-acceptance/revision8-installed-subject-v1.json). Eight mandatory matrix observations and final admission remain separately scoped.
 
 - [x] **FIX-06-REVIEW-SCOPE-REPAIR:** merged capture into
   `tk-state-resource-5` with an enforced current-target prerequisite chain;
@@ -1335,8 +1336,10 @@ criteria; software timestamps do not establish physical display scanout latency.
   layout and valid dispatch/direct checkout joins pass against both original
   head340 Metal artifacts; 116 focused reuse controls and the broader source
   suite pass. [Evidence](../compat/api-acceptance/native-ci-reuse-repair-v1.json).
-  Independent review and hosted reuse CI remain release prerequisites; no Metal
-  GPU qualification or published-wheel coverage is claimed.
+  Revision8source/scope review is bound; actual hosted Linux and both Metal
+  reuse/build/CPU-import jobs now pass at head3ada ([API evidence](../compat/api-acceptance/revision8-native-ci-v1.json)).
+  Required20-job CPU CI and final promotion remain separate; no Metal GPU
+  qualification or published-wheel coverage is claimed.
 - [ ] **TOOL-02 — Compiler-output caching / B13 — Optional:** select only a cache
   design that preserves input/toolchain identities and the shared disk budget.
 - [ ] **TOOL-03 — Legacy cleanup receipt / B17:** audit/reconcile the missing

@@ -1,0 +1,186 @@
+{
+  "schema": 1,
+  "kind": "qualification-subject",
+  "manifest_sha256": "d65bb7804f6e2ccc16bda47497d9e12e0aaf54a79b4ddb8e7628e2473d3f0374",
+  "product_source_commit": "b38c4f9068d6a425eef43b62313f0f4cf37f57d9",
+  "qualification_head": "3ada644e85248bcae214e7e487b4b1684336fd8f",
+  "candidate": {
+    "path": "compat/candidates/tk-state-resource-8/candidate.json",
+    "sha256": "471ac8cd2252117eeb1bcd6fe8def58fe6d59312b8bdc979420332c0b5a13a83"
+  },
+  "selection": {
+    "path": "compat/candidates/tk-state-resource-8/admission-selection.json",
+    "sha256": "87a106525a2d43a6d8c2d680d956ec45e952ea1eb441ada2f4d5ee8a1d6ae615"
+  },
+  "execution": {
+    "path": "compat/candidates/tk-state-resource-8/execution.json",
+    "sha256": "2d9bedd1ecb7a04af947faa18386702653731134aee00d100283cd224070f2f1"
+  },
+  "ledger": {
+    "path": "compat/candidates/tk-state-resource-8/execution-ledger.json",
+    "sha256": "9a0a7dd8064cb828c2965e9801c897d7848a9c7395090a8943446aba21a137ad"
+  },
+  "evidence_store": {
+    "path": "compat/evidence-stores/secondary-v1.json",
+    "sha256": "b164e3fdc85863a2327b508ea60f8d3068f740cfe90f665aa52905e28bfb3ca5"
+  },
+  "profiles": [
+    {
+      "profile": "windows-gpu-tk86-cp312-development",
+      "archive": {
+        "path": "compat/candidates/tk-state-resource-8/windows-archive.json",
+        "sha256": "ad0de1d983494b5e97badb72abb4121010919dec19f5fc819b517e22f994c848"
+      },
+      "producer": {
+        "path": "compat/candidates/tk-state-resource-8/windows-native-provenance.json",
+        "sha256": "9e5efd480f2c97cf094bf8b58393c00f2fdccd6e2eaa2dadea37d158c3600432"
+      },
+      "producer_retention": {
+        "path": "@evidence/build/runs/revision8-proof-retention-523/retention-record.json",
+        "sha256": "e674100e460bb2defdfe4d0feb3cbe6ec238853c05751f43eda0e6f04049b373"
+      },
+      "attempts": [
+        {
+          "id": "windows-matched-cohort-504-tk-state-resource-failures-replay-0",
+          "sequence": 1,
+          "outcome": "failed",
+          "report": {
+            "path": "@evidence/build/runs/windows-matched-cohort-504/tk-state-resource-failures/replay-0.json",
+            "sha256": "6fc918d55bee3f7999118c82cfc6d8c99a8b8401477189b4c6430aa28c77f2c1"
+          },
+          "workflow": "tk-state-resource-failures",
+          "retention": {
+            "path": "@evidence/build/runs/matched-profile-histories-506/windows-retention.json",
+            "sha256": "7725a7334bc538b2edb1c80b133865fe0303926fed5db95d611d693af302ed65"
+          },
+          "resolution": {
+            "path": "@evidence/build/runs/qualification-candidate-peer-510/windows-attempt-resolution.json",
+            "sha256": "af3afcacf70757f9e2ce049edf9c84aa710ca51637ed4a7c7ab0d09be1002768"
+          }
+        },
+        {
+          "id": "windows-matched-cohort-504-tk-state-resource-failures-replay-1",
+          "sequence": 2,
+          "outcome": "passed",
+          "report": {
+            "path": "@evidence/build/runs/windows-matched-cohort-504/tk-state-resource-failures/replay-1.json",
+            "sha256": "d58126e90dd75523dfb123d785b2415e0195190d9411d832b79c9a14fa10b331"
+          },
+          "workflow": "tk-state-resource-failures",
+          "retention": {
+            "path": "@evidence/build/runs/revision8-proof-retention-523/retention-record.json",
+            "sha256": "e674100e460bb2defdfe4d0feb3cbe6ec238853c05751f43eda0e6f04049b373"
+          },
+          "resolution": null
+        },
+        {
+          "id": "windows-matched-cohort-504-tk-capture-formats-replay-0",
+          "sequence": 3,
+          "outcome": "passed",
+          "report": {
+            "path": "@evidence/build/runs/windows-matched-cohort-504/tk-capture-formats/replay-0.json",
+            "sha256": "4fd175169259ad877970b340ed073aab735b4e4640476a72c262ebeeb6b76688"
+          },
+          "workflow": "tk-capture-formats",
+          "retention": {
+            "path": "@evidence/build/runs/revision8-proof-retention-523/retention-record.json",
+            "sha256": "e674100e460bb2defdfe4d0feb3cbe6ec238853c05751f43eda0e6f04049b373"
+          },
+          "resolution": null
+        }
+      ],
+      "selected_attempt": null,
+      "attempt_history": {
+        "path": "@evidence/build/runs/matched-profile-histories-506/windows-history.json",
+        "sha256": "a8a9150d0914e8033c487c303ae50a662260c2f99a58e30e2621df74ef7ad5df"
+      },
+      "selected_workflow_attempts": [
+        {
+          "workflow": "tk-capture-formats",
+          "attempt": "windows-matched-cohort-504-tk-capture-formats-replay-0"
+        },
+        {
+          "workflow": "tk-state-resource-failures",
+          "attempt": "windows-matched-cohort-504-tk-state-resource-failures-replay-1"
+        }
+      ]
+    },
+    {
+      "profile": "wsl-software-tk90-cp31213-development",
+      "archive": {
+        "path": "compat/candidates/tk-state-resource-8/linux-archive.json",
+        "sha256": "5fd7b0890df6c182df966dc080eff9bcc1291220817c42e5032255a8285a63d0"
+      },
+      "producer": {
+        "path": "compat/candidates/tk-state-resource-8/linux-native-provenance.json",
+        "sha256": "e5499db29a6d0e69c92c58c7167c2812675e85cf3bcac66404a914c53d2a8f82"
+      },
+      "producer_retention": {
+        "path": "@evidence/build/runs/revision8-proof-retention-523/retention-record.json",
+        "sha256": "e674100e460bb2defdfe4d0feb3cbe6ec238853c05751f43eda0e6f04049b373"
+      },
+      "attempts": [
+        {
+          "id": "wsl-capture-rebind-483-tk-capture-formats-replay-0",
+          "sequence": 1,
+          "outcome": "passed",
+          "report": {
+            "path": "@evidence/build/runs/wsl-capture-rebind-483/reports/tk-capture-formats/replay-0.json",
+            "sha256": "8fb5c6d0b5f395ed1afaa78bbb98aba2d4c2ce4395fb3bc121657cbded4a013e"
+          },
+          "workflow": "tk-capture-formats",
+          "retention": {
+            "path": "@evidence/build/runs/matched-profile-histories-506/linux-previous-retention.json",
+            "sha256": "0618d14cfe14fcff90693a0644475e9498e21e161a04c7b2dd22e86aea73e2bd"
+          },
+          "resolution": null
+        },
+        {
+          "id": "wsl-matched-cohort-505-tk-state-resource-failures-replay-0",
+          "sequence": 2,
+          "outcome": "passed",
+          "report": {
+            "path": "@evidence/build/runs/wsl-matched-cohort-505/reports/tk-state-resource-failures/replay-0.json",
+            "sha256": "18212989d15b20eb8e57e1c9d063dae8d1ca1d36a81090e44389fe268fb9571f"
+          },
+          "workflow": "tk-state-resource-failures",
+          "retention": {
+            "path": "@evidence/build/runs/revision8-proof-retention-523/retention-record.json",
+            "sha256": "e674100e460bb2defdfe4d0feb3cbe6ec238853c05751f43eda0e6f04049b373"
+          },
+          "resolution": null
+        },
+        {
+          "id": "wsl-matched-cohort-505-tk-capture-formats-replay-0",
+          "sequence": 3,
+          "outcome": "passed",
+          "report": {
+            "path": "@evidence/build/runs/wsl-matched-cohort-505/reports/tk-capture-formats/replay-0.json",
+            "sha256": "e695b843e58af49df26d14de3d3408f5e310db8d958a05c02e7544ea6fa01477"
+          },
+          "workflow": "tk-capture-formats",
+          "retention": {
+            "path": "@evidence/build/runs/revision8-proof-retention-523/retention-record.json",
+            "sha256": "e674100e460bb2defdfe4d0feb3cbe6ec238853c05751f43eda0e6f04049b373"
+          },
+          "resolution": null
+        }
+      ],
+      "selected_attempt": null,
+      "attempt_history": {
+        "path": "@evidence/build/runs/matched-profile-histories-506/linux-history.json",
+        "sha256": "9e65dbeba505b5cd6c6d5f39b744b4be71dbc8ce9d725754541fea83730c03ac"
+      },
+      "selected_workflow_attempts": [
+        {
+          "workflow": "tk-capture-formats",
+          "attempt": "wsl-matched-cohort-505-tk-capture-formats-replay-0"
+        },
+        {
+          "workflow": "tk-state-resource-failures",
+          "attempt": "wsl-matched-cohort-505-tk-state-resource-failures-replay-0"
+        }
+      ]
+    }
+  ]
+}

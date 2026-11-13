@@ -1,0 +1,8 @@
+{
+  "schema": 1,
+  "kind": "promotion",
+  "status": "APPROVED",
+  "independent": true,
+  "reviewer": "Claude read-only peer review claude-fable-5-2; run538response-sha256:79cc17b4cdd60d41649b56cab0f004765c47c555698a74dd379118a4e81e4460",
+  "promotion_basis_sha256": "82f01bd819aee70d4661cc802cb4d06ca7a261c80febeab6a433fb7bda504e9f"
+}
