@@ -193,23 +193,26 @@ class BaseGlooFunctions(object):
         color : bool | str | tuple | instance of Color
             Clear the color buffer bit. If not bool, ``set_clear_color`` will
             be used to set the color clear value.
-        depth : bool | float
+        depth : bool | float | None
             Clear the depth buffer bit. If float, ``set_clear_depth`` will
-            be used to set the depth clear value.
-        stencil : bool | int
+            be used to set the depth clear value. Numeric zero clears to
+            zero; False or None leaves the depth buffer unchanged.
+        stencil : bool | int | None
             Clear the stencil buffer bit. If int, ``set_clear_stencil`` will
-            be used to set the stencil clear index.
+            be used to set the stencil clear index. Numeric zero clears to
+            zero; False or None leaves the stencil buffer unchanged.
         """
         bits = 0
         if isinstance(color, np.ndarray) or bool(color):
             if not isinstance(color, bool):
                 self.set_clear_color(color)
             bits |= gl.GL_COLOR_BUFFER_BIT
-        if depth:
+        # Zero is a numeric clear value, distinct from a disabled boolean bit.
+        if depth is not None and (not isinstance(depth, (bool, np.bool_)) or depth):
             if not isinstance(depth, bool):
                 self.set_clear_depth(depth)
             bits |= gl.GL_DEPTH_BUFFER_BIT
-        if stencil:
+        if stencil is not None and (not isinstance(stencil, (bool, np.bool_)) or stencil):
             if not isinstance(stencil, bool):
                 self.set_clear_stencil(stencil)
             bits |= gl.GL_STENCIL_BUFFER_BIT

@@ -12,6 +12,7 @@ import pytest
 from tools import qualification_linux_native as native
 from tools.native_epoch import EpochError
 from linux_native_fixture import Capture
+from test_compatibility_inventory import example, candidate_case, write_json
 
 
 @pytest.fixture
@@ -124,7 +125,7 @@ def test_complete_synthetic_native_join(full_capture):
     assert set(result['native_output_hashes']) == set(native.MEMBERS)
 
 
-@pytest.mark.parametrize('name', ['tools/linux_ci_lifecycle.py', 'tools/audit_linux_wheel.py'])
+@pytest.mark.parametrize('name', ['tools/linux_ci_lifecycle.py', 'tools/audit_linux_wheel.py', native.WORKFLOW_PATH])
 def test_unknown_protocol_rejected_even_with_consistent_source_and_retention(full_capture, name):
     fixture = full_capture
     original = fixture.data[str(fixture.evidence / 'source-inputs.zip')]
@@ -138,6 +139,46 @@ def test_unknown_protocol_rejected_even_with_consistent_source_and_retention(ful
         fixture.edit(source_map, lambda value: value.update({name: native.sha(payload)}))
     with pytest.raises(ValueError, match='unsupported original Linux capture protocol: ' + name):
         native.validate_capture(fixture.finish(), fixture.production, fixture.root)
+
+
+def replace_workflow_source(fixture, payload):
+    original = fixture.data[str(fixture.evidence / 'source-inputs.zip')]
+    stream = io.BytesIO()
+    with zipfile.ZipFile(io.BytesIO(original)) as source, zipfile.ZipFile(stream, 'w') as target:
+        for info in source.infolist():
+            target.writestr(info, payload if info.filename == native.WORKFLOW_PATH else source.read(info.filename))
+    fixture.put('source-inputs.zip', stream.getvalue())
+    for name in ('source-before.json', 'source-after.json'):
+        fixture.edit(name, lambda value: value.update({native.WORKFLOW_PATH: native.sha(payload)}))
+    fixture.edit('ci-identity.json',
+                 lambda value: value['workflow'].update(sha256=native.sha(payload)))
+
+
+def selector_workflow_payload():
+    """Reconstruct this historical authority independently of live CI edits."""
+    project = Path(__file__).resolve().parents[2]
+    needle = b'--keep-original-description \\\n              --candidate compat/candidates/tk-state-resource-8/candidate.json'
+    original = (project/'tests/contract/data/linux-native-production-workflow.yml').read_bytes()
+    assert original.count(b'--keep-original-description') == 1
+    payload = original.replace(b'--keep-original-description', needle)
+    assert native.sha(payload) == native.REUSE_SELECTOR_WORKFLOW_SHA256
+    assert payload.replace(needle, b'--keep-original-description') == original
+    return payload
+
+
+def test_exact_inactive_reuse_selector_preserves_fresh_production_join(full_capture):
+    payload = selector_workflow_payload()
+    replace_workflow_source(full_capture, payload)
+    result, _ = native.validate_capture(full_capture.finish(), full_capture.production, full_capture.root)
+    assert result['status'] == 'PASS_ORIGINAL_LINUX_NATIVE_JOIN'
+    assert result['native_build_verified'] and not result['artifact_admitted']
+
+
+def test_modified_selector_workflow_is_not_implicitly_trusted(full_capture):
+    payload = selector_workflow_payload() + b'\n# unreviewed change\n'
+    replace_workflow_source(full_capture, payload)
+    with pytest.raises(ValueError, match='unsupported original Linux capture protocol: '):
+        native.validate_capture(full_capture.finish(), full_capture.production, full_capture.root)
 
 
 def test_complete_native_fixture_needs_no_optional_yaml(tmp_path,monkeypatch):
@@ -250,12 +291,18 @@ def test_native_dispatch_keeps_legacy_linux_policy_blocked(tmp_path):
         validate_record(record,tmp_path)
 
 
-def test_real_native_route_requires_actual_review_before_capture(monkeypatch, without_current_reviews):
-    selected = without_current_reviews(native)
+def test_real_native_route_requires_actual_review_before_capture(monkeypatch, example):
+    # Reuse the small, internally consistent source fixture. Never bind this
+    # control to a historical candidate whose source/tools change during WIP.
+    # The real candidate validator runs in full; no review or identity seam.
+    project, candidate_value = candidate_case(example)
+    for name in ('qualification-native.schema.json', 'qualification-artifact.schema.json',
+                 'qualification-producers.json'):
+        (project/'compat'/name).write_bytes((native.ROOT/'compat'/name).read_bytes())
+    preparation = native.validate_candidate(candidate_value, project)
+    assert not preparation['reviewed'] and not preparation['qualified']
+    candidate = write_json(project, 'candidate/unreviewed.json', candidate_value)
     from tools.qualification_native import validate_record
-    project=Path(__file__).resolve().parents[2]
-    path=selected.relative_to(project).as_posix()
-    candidate=dict(path=path,sha256=native.sha((project/path).read_bytes()))
     capture=dict(path='must-not-read-an-unapproved-capture.json',sha256='0'*64)
     record=dict(schema=1,kind='original-linux-ci-native-reuse',candidate=candidate,capture=capture,
         reuse=dict(profile='not-selected',candidate_scope_sha256='0'*64,capture_sha256='0'*64,
@@ -264,7 +311,20 @@ def test_real_native_route_requires_actual_review_before_capture(monkeypatch, wi
                      consumer_version='3.12.13',consumer_python_sha256='0'*64)))
     monkeypatch.setattr(native,'validate_capture',lambda *a,**kw:pytest.fail('unreviewed candidate reached capture'))
     with pytest.raises(ValueError,match='candidate source and scope review remain pending'):
-        validate_record(record)
+        validate_record(record, project)
+
+
+def test_changed_candidate_tool_identity_is_rejected_before_review(example):
+    """An unreviewed candidate must still pass source/tool identity first."""
+    project, candidate = candidate_case(example)
+    reference = next(r for r in candidate['preparation_tools']
+                     if r['path'] == 'tools/qualification_linux_native.py')
+    path = project/reference['path']
+    path.write_bytes(path.read_bytes() + b'\n# changed after candidate was sealed\n')
+    assert native.sha(path.read_bytes()) != reference['sha256']
+    with pytest.raises(ValueError) as error:
+        native.validate_candidate(candidate, project, require_reviewed=True)
+    assert str(error.value) == 'changed evidence: ' + str(path)
 
 
 @pytest.fixture

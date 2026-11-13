@@ -2,6 +2,20 @@
 
 ## Current execution status — 2026-11-13
 
+SCI-06 source investigation, 2026-11-13: [eight Windows](../compat/api-acceptance/stencil-public-routes-source-v1.json) and [eight WSL software-Vulkan](../compat/api-acceptance/stencil-public-routes-wsl-source-v1.json) cases pass. Four public stencil forms return exact reference values/crops/types and mutate; four raw calls are explicitly refused and recover through the wrapper. All cases assert nine zero gauges. [Disposition](stencil-wrapper-disposition.md) preserves all eight stock failures without treating them as eight Vulkan defects. Renderer unchanged; installed acceptance remains pending. Minor protocol-test review follow-up also passes90contracts. Both runs are cleaned (45,498,943 bytes reclaimed); managed scratch is empty.
+
+Latest completed gates, 2026-11-13: [90 source contracts](../compat/api-acceptance/linux-protocol-contracts-source-v1.json), [independent protocol review](../compat/api-acceptance/linux-protocol-peer-source-v1.json), [original Linux native/archive proof](../compat/api-acceptance/linux-original-native-archive-v1.json), and [13 current WSL source passes](../compat/api-acceptance/qt-lifecycle-wsl-current-source-v1.json). This advances API-05/06, LIF-01–04 and SCI-06 for the exact selected software-Vulkan profile; parents stay open. No installed successor or release admission. Runs570–573 are cleaned, reclaiming32,221,412 bytes; all managed scratch is empty. Earlier pending/failure notes retain their historical scope. Next are the minor review follow-up, owned-source integration and installed qualification, plus separate investigation of broader public-wrapper gaps.
+
+Latest source gate, 2026-11-13: [90 Linux validation contracts pass](../compat/api-acceptance/linux-protocol-contracts-source-v1.json), including the actual review gate on a consistent minimal source fixture and exact changed-tool refusal. Run570 cleanup reclaimed7,811,625 bytes and rehashed seven retained files. Earlier failing runs remain historical. Review and original retained-capture validation are next; no Linux runtime/installed coverage is promoted.
+
+Protocol source follow-up, 2026-11-13: [88 contract passes / one retained failure](../compat/api-acceptance/linux-protocol-contracts-wip-v1.json). The positive workflow fixture now renews its CI identity consistently. Next repair the historical review-gate fixture's source/tool scope without bypassing the real validator, then obtain review and validate the original retained Linux capture. No artifact admission or new runtime pass is claimed. Run569 scratch is now cleaned: 16,886,403 bytes reclaimed, 13 retained files rehashed.
+
+Planning checkpoint, 2026-11-13: follow the [active investigation queue](superpowers/plans/2026-11-13-remaining-gap-closure.md#active-investigation-queue--2026-11-13) before the older phase order below. First resolve two run569 contract failures (87 pass), review bounded protocol support and validate the retained Linux artifact; then run selected WSL cases, investigate the eight public-wrapper failures and stale fixtures, and select further lifecycle/scientific/rendering cases. Run569 scratch cleanup is pending; earlier all-clean statements predate it. This is a documentation-only plan update, with no new pass, closed capability, artifact admission or release claim. Source, installed and delivered coverage remain distinct.
+
+Latest Linux status: fresh CI43471568101 passed and all166original artifact members are retained. [The native verifier's exact workflow-authority refusal is preserved](../compat/api-acceptance/qt-linux-protocol-equivalence-v1.json): only an inactive reuse-arm candidate selector differs, with fresh producer code byte-identical. Review/implement bounded authority support, then validate the original capture and run WSL cases; no new native build is needed. No Linux source-runtime or installed qualification is promoted from a green CI job alone. All local scratch is cleaned.
+
+Linux renewal is now [actually dispatched on isolated source head82ee](../compat/api-acceptance/qt-lifecycle-source-ci-v1.json), run43471568101. Wait for the existing fresh producer and then test its exact native artifact under WSL; do not rerun Windows compilation or treat queued/running CI as qualification. The published release remains unchanged.
+
 Current native follow-up: [44native CTests and3Windows Vulkan source cases pass](../compat/api-acceptance/qt-lifecycle-windows-native-v1.json). The parsed-DELETE retirement defect is resolved on the rebuilt Windows leaf: live and pending-snapshot shared-peer cases both render exact pixels and end with all nine zero gauges. Build and GPU scratch is cleaned. Linux native renewal, successor installed qualification and broader lifecycle boundaries remain open.
 
 Latest follow-up: [53CPU checks pass](../compat/api-acceptance/qt-lifecycle-review-followup-v1.json), including first-show initialize/resize ordering and pending callback-error identity. Independent review accepts the native parsed-DELETE cleanup for bounded compilation; it is not yet compiled. The pending peer-snapshot GPU test is added, not passed. Keep native/installed, embedded-parent, actual loss and broader lifecycle items open.
@@ -512,6 +526,12 @@ explicit boundary; implementing every possible form is not required.
 - [ ] **API-06 — Selected API acceptance:** for each claimed subset, record
   inputs/values, expected output, ordinary/mutation/failure/recovery behavior,
   exact installed artifact and explicit unsupported cases.
+  Source progress, 2026-11-13: [numeric-zero clear acceptance](../compat/api-acceptance/gloo-clear-zero-source-v1.json)
+  covers ordinary flags, numeric-zero mutation, NaN refusal/recovery and cleanup
+  in9Windows rendered cases. The Python correction remains unpushed and has no
+  successor installed qualification yet. [Nine current WSL source cases also pass](../compat/api-acceptance/qt-lifecycle-wsl-current-source-v1.json)
+  using verified Linux native module5740b28a on Mesa25.2.8 software Vulkan;
+  this is a source overlay, not the CI wheel's wrapper bytes.
 - [ ] **SCI-01 — Indexed/instanced points:** rendered source-ID, divisor,
   constant-input and ordered-revision combinations.
 - [ ] **SCI-02 — Mesh filters:** enumerate supported filters/compositions and
@@ -524,6 +544,13 @@ explicit boundary; implementing every possible form is not required.
   and H03 against newer evidence before changing their status.
 - [ ] **SCI-06 — Stencil wrapper:** resolve the upstream acceptance gap
   independently of already-passing native stencil capture cases.
+  Selected source investigation is complete: [Windows/WSL route disposition](stencil-wrapper-disposition.md)
+  verifies four improved public forms and four explicit raw-refusal/recovery
+  forms. Original stock failures remain failed; installed acceptance is pending.
+  Source improvement, 2026-11-13: numeric stencil0/depth0.0 now clear rather
+  than skip;9rendered cases pass after5failures/4controls. This intentional
+  correction does not admit the original8stock wrapper/facade failures.
+  [Exact scope](../compat/api-acceptance/gloo-clear-zero-source-v1.json).
 
 ## Lifecycle, capture, input and known issues
 
@@ -535,6 +562,12 @@ explicit boundary; implementing every possible form is not required.
   the original failure. Linux and broader fault/memory cases remain open.
 - [ ] **LIF-02 — Reparenting:** selected real layout reparenting, WinIdChange,
   surface ownership and shared-resource lifetimes.
+  Source progress, 2026-11-13: [Windows PyQt6 readback](../compat/api-acceptance/qt-layout-reparent-source-v1.json)
+  passes two active layout moves, old-parent deletion after the move, actual
+  WinIdChange, continued exact pixels and all nine zero shutdown gauges.
+  No renderer change/rebuild; initial fixture QApplication-order failures are
+  preserved. The same case now [passes on current WSL software Vulkan](../compat/api-acceptance/qt-lifecycle-wsl-current-source-v1.json).
+  Installed, native-WSI and embedded-parent destruction remain open.
 - [ ] **LIF-03 — Zero/minimized windows:** prove no-submit behavior and restoration
   beyond screenshots or overlay observations.
   Source progress, 2026-11-13: window-state events now suspend/restore without
@@ -552,7 +585,8 @@ explicit boundary; implementing every possible form is not required.
   once, including callback-error cleanup. Shared-peer green pixels pass on
   Windows; rebuilt native final buffer retirement and pending-peer-snapshot
   preservation now pass ([evidence](../compat/api-acceptance/qt-lifecycle-windows-native-v1.json)).
-  Linux, embedded-parent lifecycle and actual surface loss remain open.
+  Both shared-close cases now [pass on the verified current Linux native payload under WSL](../compat/api-acceptance/qt-lifecycle-wsl-current-source-v1.json),
+  including all nine zero gauges. Installed, embedded-parent lifecycle and actual surface loss remain open.
 - [ ] **LIF-05 — MSAA capture:** disposition broader depth/stencil and
   format/feature combinations separately from existing color-resolve evidence.
 - [ ] **LIF-06 — Input forwarding:** selected Qt keyboard, wheel, focus, mouse,

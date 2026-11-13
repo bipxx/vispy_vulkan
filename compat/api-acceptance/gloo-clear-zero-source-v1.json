@@ -1,0 +1,75 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "PASS_PUBLIC_NUMERIC_ZERO_CLEAR_SOURCE_IMPROVEMENT",
+  "coverage_ids": [
+    "SCI-06",
+    "API-06"
+  ],
+  "source_only": true,
+  "installed_qualified": false,
+  "source_pushed": false,
+  "actual_exit": 0,
+  "child_waited": true,
+  "source_inputs": {
+    "cpp/runtime.cpp": "f344107e03ff6ce8b4302d8d681739ac9a4c813b3236daafb9d74cff43446fad",
+    "src/vispy/app/backends/_qt.py": "38c9971b2096ddafdf3de42609bff576ce9b39fa4bf2a63ebff1fcb6785ce6ce",
+    "tests/qt/test_native_close_gpu.py": "db3cfc877645ed99a1e55372416159c0cf7532ccc802384cc95f543af15d5c10",
+    "tests/qt/test_window_state_gpu.py": "42632b9cf033f53fad253e6b03eea17317a745f635a6e636c594719483f58980",
+    "src/vispy/gloo/wrappers.py": "498b5cd003edc941da975c5e97fb1eed7d7ffc24981c69dbb2176d8b100a2bf9",
+    "tests/gloo/test_clear_zero_gpu.py": "664d68fbc27bd53ff8472a5ca2b8d79d9c69f92cc1de1a6158450d5db4399c0d"
+  },
+  "native_outputs": [
+    {
+      "member": "vispy/_dawn.cp312-win_amd64.pyd",
+      "file": {
+        "path": "build/artifacts/6dc06d2c7c67f3de1f24f0aa496fc833afa2bb11fd05990d7e0656e744927473/_dawn.cp312-win_amd64.pyd",
+        "sha256": "6dc06d2c7c67f3de1f24f0aa496fc833afa2bb11fd05990d7e0656e744927473"
+      }
+    },
+    {
+      "member": "vispy/VkLayer_vispy_submit.dll",
+      "file": {
+        "path": "build/artifacts/ce85e1bf6add749f5289f041b0753f7eb23552fa8813ce85a41ccffc91f150f6/VkLayer_vispy_submit.dll",
+        "sha256": "ce85e1bf6add749f5289f041b0753f7eb23552fa8813ce85a41ccffc91f150f6"
+      }
+    },
+    {
+      "member": "vispy/VkLayer_vispy_submit.json",
+      "file": {
+        "path": "build/artifacts/7323cea73a46efcba615ca452d2b0235e3741109628c4bf2979c105e6ae69d56/VkLayer_vispy_submit.json",
+        "sha256": "7323cea73a46efcba615ca452d2b0235e3741109628c4bf2979c105e6ae69d56"
+      }
+    }
+  ],
+  "profile": "Windows CPython3.12.8 headless Vulkan RTX4090,4x4 single-sample depth24plus-stencil8; depth/full8bit stencil writes enabled",
+  "before": {
+    "report": "D:\\vispy-vulkan-managed\\build\\runs\\gloo-clear-zero-before-566\\verification.json",
+    "sha256": "05bc814a33921852902ce9aac0f658c1690a3bcc9ef99a7f4d6d59e9834642ae",
+    "failed": 5,
+    "passed_controls": 4
+  },
+  "after": {
+    "passed": 9,
+    "failed": 0,
+    "tests_unchanged": true,
+    "native_payload_unchanged": true
+  },
+  "proved": [
+    "Numeric depth0.0 and stencil0 clear their selected attachment, including NumPy numeric zeros",
+    "False/None/True and NumPyFalse controls preserve their selected existing behavior",
+    "Unselected color/depth/stencil values stay unchanged",
+    "NaN refusal preserves prior depth and a valid zero clear recovers"
+  ],
+  "shutdown": "Each of9cases asserts all9native owned-resource gauges are zero at fixture teardown; values not separately serialized",
+  "limitations": [
+    "Not published Vulkan.2 behavior or a current Linux result",
+    "No arbitrary mask/MSAA/type-combination claim",
+    "Original8upstream wrapper/facade failures and broader SCI-06 admission remain open"
+  ],
+  "evidence_root": "D:\\vispy-vulkan-managed\\build\\runs\\gloo-clear-zero-after-567",
+  "sdk_rebuilt": false,
+  "new_environment": false,
+  "native_rebuilt": false,
+  "next": "Reuse completed Linux native artifact for this separate Python-source case; integrate wrapper/tests/docs and qualify successor installed artifacts"
+}

@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "name": "lifecycle-package-secondary-v1",
+  "owner": "root-lifecycle-package",
+  "storage_workspace": "D:/vispy-vulkan-managed",
+  "source_workspace": "C:/Users/HEQ/Projects/vispy_vulkan",
+  "expected_peak_bytes": 536870912,
+  "aggregate_max_scratch_bytes": 21474836480,
+  "min_free_bytes": 10737418240,
+  "disk_guard_seconds": 30,
+  "purpose": "Sequential local Windows/WSL successor wheel assembly and installed acceptance for Qt lifecycle and public clear/stencil source work; no native compilation.",
+  "reuse": "Windows: original prepared CPython3.12.8/scikit-build-core0.11.6 backend and four verified outputs from qt-delete-retirement-native-560. Linux: original audited CI43471568101 wheel/source from linux-original-validation-572, updating only changed pure members with tools/repackage_python_wheel.py. Reuse existing Windows/WSL consumer dependencies. No new SDK, environment, dependency install, source-history clone or network fallback.",
+  "budget_basis": "The existing512MiB package budget covers one declared shipping projection, candidate wheel, offline copied install target and bounded tests. Execute platforms sequentially under one shared20GiB scratch cap and10GiB reserve. Check guest and backing volume before WSL work; stop on refusal rather than increase limits.",
+  "source": "Freeze the owned source commit and exact shipping/build/license inputs before assembly. Validate native input identities against the retained producers; reuse source/native archives by hash. Preserve unchanged metadata/version/tags and AGPL/original BSD/dependency notices. Keep candidates separate by content hash from published Vulkan.2 bytes; publication/version selection requires a separate release decision.",
+  "checks": "Windows backend-only wheel.cmake=false assembly; Linux audited pure-member repackaging. Verify complete archive/native/source/license/RECORD joins. Offline no-deps target installation using existing tools, with all shipped members and loaded runtime origins matched before and after each selected lifecycle/clear/stencil acceptance process. Use tests outside package import paths, reject source overrides, record real exits/waits, environment/device fingerprints and required shutdown gauges. Existing native/installed/review/promotion verifiers remain unchanged.",
+  "cleanup": "Register each uniquely owned run, await children, retain exact wheel and minimal source/license/failure reconstruction inputs outside scratch; inspect/apply cleanup with the explicit inherited successor registry and rehash retained data before the next experiment.",
+  "scope": "Unreleased local candidate and exact installed observations only. Candidate reviews, mandatory profile/observer qualification, final-head CI, protected integration and delivery remain separate. No full parity, physical Linux GPU or Metal graphics claim. Frozen historical artifacts and approvals remain unchanged."
+}

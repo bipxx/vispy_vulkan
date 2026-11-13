@@ -45,6 +45,10 @@ PREVIOUS_COLLECTOR_SHA256 = 'c5cc6aac71160ca1d3f784cb6988a95c2ce6313ea2507916338
 # auditor authority while the successor binds that identity to frozen sources.
 PREVIOUS_ARCHIVE_AUDITOR_SHA256 = '551e565c4e1e2ccd1c98f2bfcef1fd9b5db2252af6b1a9a42515d781ae93ad3a'
 LEGACY_WORKFLOW_SHA256 = 'd1af4af2d0171452ef5519e9bb5893e64b206fa35c6ad07a18e8aeaa67201860'
+# This exact revision adds only the candidate selector to the inactive reuse
+# arm. Its fresh producer steps are byte-identical to PROTOCOL[WORKFLOW_PATH].
+# Keep the old authority and all unknown-revision refusals unchanged.
+REUSE_SELECTOR_WORKFLOW_SHA256 = '7fc072af9739e8d37fba5f0d20b7175e6a72c027102f402d09d7d36173fef2c5'
 MEMBERS = {
     'vispy/_dawn.cpython-312-x86_64-linux-gnu.so': '_dawn.cpython-312-x86_64-linux-gnu.so',
     'vispy/visuals/text/_sdf_cpu.cpython-312-x86_64-linux-gnu.so': '_sdf_cpu.cpython-312-x86_64-linux-gnu.so',
@@ -233,7 +237,8 @@ def validate_capture(capture, expected_production, root=ROOT, *, evidence_root=N
             check(sha(archive.read(name)) == before[name], 'Linux preferred source bytes differ: '+name)
         for name, checksum in PROTOCOL.items():
             accepted = {checksum}
-            if name == WORKFLOW_PATH: accepted.add(LEGACY_WORKFLOW_SHA256)
+            if name == WORKFLOW_PATH:
+                accepted.update((LEGACY_WORKFLOW_SHA256, REUSE_SELECTOR_WORKFLOW_SHA256))
             if name == 'tools/linux_ci_lifecycle.py':
                 accepted.update((LEGACY_COLLECTOR_SHA256, PREVIOUS_COLLECTOR_SHA256))
             if name == 'tools/audit_linux_wheel.py':

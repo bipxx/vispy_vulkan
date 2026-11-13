@@ -349,3 +349,11 @@ and the same 512 MiB/20 GiB/10 GiB budgets. It does not rewrite the older profil
 or permit a new native build, SDK or environment. Record the exact assembled
 wheel and source/native joins, verify a normal offline target, then retain and
 clean it. Its functional observations confer no independent/profile admission.
+
+The [lifecycle package profile](../compat/build-profiles/lifecycle-package-secondary-v1.json)
+keeps the same512MiB package budget and shared limits. It reuses Windows native
+producer560 and the verified original Linux CI43471568101 wheel, executing the
+two local package/installed checks sequentially. Windows assembly disables CMake;
+Linux changes only audited pure members. Neither route permits a native rebuild,
+new SDK/environment, source-history copy or source override in an installed
+acceptance process. These are unreleased candidate observations, not promotion.

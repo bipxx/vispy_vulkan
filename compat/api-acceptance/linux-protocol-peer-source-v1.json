@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "SOURCE_REVIEW_READY_FOR_ORIGINAL_CAPTURE_VALIDATION",
+  "independent": true,
+  "reviewer": "Claude read-only CLI",
+  "actual_exit": 0,
+  "child_waited": true,
+  "source_inputs": {
+    "tools/qualification_linux_native.py": "05cfecfc2e752be3beabd7599567fc9f57fab0cfaf530bf358efbea80d068ba3",
+    "tests/contract/test_qualification_linux_native.py": "5017417c71f773154ae9e50ab189f5f196c51a157fc56c1f21fc23f1567b7467",
+    "tests/contract/test_compatibility_inventory.py": "8dc384ffef25f0fd961a297294133169ad5dc3c3a3c26919f1f58b961972a4b8",
+    ".github/workflows/linux-vulkan.yml": "7fc072af9739e8d37fba5f0d20b7175e6a72c027102f402d09d7d36173fef2c5"
+  },
+  "evidence_root": "D:\\vispy-vulkan-managed\\build\\runs\\linux-protocol-peer-571",
+  "artifact_admitted": false,
+  "installed_qualified": false,
+  "limitation": "Reviewer could not recompute hashes with read-only tools; exact byte equivalence separately computed and contract-tested by coordinator",
+  "followup": "Non-blocking: isolate historical protocol test payload from future live workflow edits",
+  "next": "Validate retained original capture/archive in a new run, preserving original run568 refusal"
+}

@@ -1,11 +1,195 @@
 # Remaining-gap investigation and closure plan
 
+## Active investigation queue — 2026-11-13
+
+Latest executed gates (supersede pending descriptions below):
+
+- [x] Review's minor workflow-test coupling fixed using pinned data;90contracts pass.
+- [x] SCI-06's eight historical failure routes investigated: [eight Windows cases](../../../compat/api-acceptance/stencil-public-routes-source-v1.json)
+  and [eight WSL source cases](../../../compat/api-acceptance/stencil-public-routes-wsl-source-v1.json)
+  pass exact public-wrapper capture/mutation or explicit raw-refusal/recovery,
+  with all nine zero shutdown gauges in each case. No renderer change/rebuild.
+  [Disposition](../../stencil-wrapper-disposition.md) preserves original stock
+  failures and leaves installed acceptance open. Runs574/575 are cleaned,
+  reclaiming45,498,943 bytes and rehashing30 retained inputs.
+
+- [x] 90 source contracts and the real review/identity refusal controls pass;
+  [exact source scope](../../../compat/api-acceptance/linux-protocol-contracts-source-v1.json).
+- [x] [Independent bounded protocol review](../../../compat/api-acceptance/linux-protocol-peer-source-v1.json)
+  permits original capture validation. Non-blocking follow-up: construct the
+  historical workflow test from pinned data instead of the live workflow.
+- [x] [Original Linux native capture and wheel archive validate](../../../compat/api-acceptance/linux-original-native-archive-v1.json)
+  at head82ee, without rewriting run568. Current Python wrapper is explicitly
+  different from the original wheel; no admission is conferred.
+- [x] [All13 selected WSL source cases pass](../../../compat/api-acceptance/qt-lifecycle-wsl-current-source-v1.json)
+  on PyQt6 xcb/WSLg readback and Mesa25.2.8 software Vulkan, using the verified
+  native payload: four lifecycle cases plus nine numeric-zero clear cases.
+- [x] Runs570–573 retention/cleanup completes; 32,221,412 bytes reclaimed,
+  47 retained-file rehash checks, no managed scratch remains.
+- [ ] Minor review follow-up, cumulative owned-source integration and installed
+  successor qualification. Broader public-wrapper, lifecycle, scientific and
+  rendering investigations below remain open, with the same deferred boundaries.
+
+This section supersedes the execution order and pending-work descriptions in
+the historical checkpoints below. The user requested an investigation plan;
+this update makes no implementation, artifact-admission or release claim.
+The objective is useful, bounded VisPy compatibility with explicit differences,
+not full API or pixel parity. Work sequentially through the gates below; do not
+start parallel native builds or another startup campaign.
+
+### 1. Finish the current provenance investigation
+
+Affected IDs: API-05/06, LIF-01–04 and qualification tooling.
+
+Current source gate: [90 contracts pass](../../../compat/api-acceptance/linux-protocol-contracts-source-v1.json).
+The existing minimal synthetic candidate fixture executes the real full candidate
+validator and native review-before-capture route, with a separate changed-tool
+identity refusal. This avoids a historical source snapshot. Run570 is cleaned;
+independent protocol review and original artifact validation remain pending.
+
+Follow-up: [88 contracts pass, one remains failed](../../../compat/api-acceptance/linux-protocol-contracts-wip-v1.json).
+The workflow fixture CI identity is corrected; historical candidate/source/tool
+scope is the remaining fixture problem. The earlier 87/2 checkpoint below is
+preserved as history, not the current test result. Review/admission remain pending.
+Run569 retention/cleanup completed with 16,886,403 bytes reclaimed and 13 retained
+files rehashed; the earlier pending-cleanup checkpoint below is historical.
+
+- [ ] Reconcile the exact WIP before another experiment: branch head `82ee789e…`
+  contains the lifecycle implementation; the layout test, numeric-zero wrapper
+  correction and protocol-support WIP are later local changes. Record their
+  exact file hashes separately from the CI wheel's Python members.
+- [ ] Inspect the two retained contract failures in
+  `D:/vispy-vulkan-managed/build/runs/linux-protocol-source-569/after.log`.
+  The suite currently has 87 passes and two failures; protocol support is not
+  yet verified. The positive fixture changes workflow bytes without renewing
+  its CI identity hash. The real review-gate fixture uses an old candidate
+  against changed live source/tools and therefore fails before the intended
+  review gate. Neither failure establishes a renderer defect.
+- [ ] Correct fixture identities, using a minimal immutable historical source
+  view for the historical candidate if needed. Do not weaken production
+  identity checks, skip a refusal test or accept arbitrary workflow revisions.
+  Preserve before/after receipts and the original run568 protocol refusal.
+- [ ] Require positive historical/current exact-protocol controls, unknown
+  protocol rejection, identity-tampering rejection and actual unreviewed
+  candidate refusal before capture. Obtain independent review of the bounded
+  workflow-authority change before consuming it as admission evidence.
+- [ ] Validate the original retained CI capture and archive from run568 using
+  a new report, without rewriting the original failed report. Check source,
+  production, native outputs, wheel members and license joins. Require the
+  known Python-wrapper delta to be explicit; current local Python source is
+  not the Python source packaged by head82ee.
+- [ ] Finish run569 retention and managed cleanup before the next experiment.
+  Its source-test scratch remains pending cleanup at this planning checkpoint;
+  earlier claims that all scratch is clean predate this run.
+
+Exit: both contract failures resolved for the intended reasons, review recorded,
+and the exact retained Linux native artifact verified. A green hosted build by
+itself does not satisfy this gate. Reuse CI43471568101; no native rebuild.
+
+### 2. Verify the existing fixes on WSL
+
+Affected IDs: API-05/06, LIF-01–04, SCI-06.
+
+- [ ] Reuse the existing WSL Python/PyQt6 environment and the verified CI native
+  payload with both submission-layer sidecars. Check guest/backing-volume health
+  and storage budget; register one bounded run. Use direct pytest logging to
+  avoid the already-diagnosed DrvFs capture failure.
+- [ ] Run the four selected lifecycle cases: minimize/restore with no submission
+  while minimized; native close with a live shared peer; pending peer snapshot
+  after parsed DELETE; and actual layout reparent/WinIdChange.
+- [ ] Run the nine numeric-zero/flag/refusal/recovery clear cases against the
+  current source wrapper. Verify expected color/depth/stencil values and all
+  nine shutdown gauges where required by the fixture.
+- [ ] Classify any failure as environment/fixture, public Python route, native
+  runtime or unsupported profile before editing implementation. Preserve the
+  first useful reproducer; do not rerun unchanged failures indefinitely.
+
+Exit: exact source/artifact/profile receipts for the selected cases, or a
+reproduced bounded failure with a next action. WSL software Vulkan remains
+distinct from physical Linux GPU coverage and installed-wheel acceptance.
+
+### 3. Investigate the remaining public-route gaps
+
+Use existing tests and retained evidence first; select the smallest useful
+case before adding implementation. Each investigation ends as verified support,
+confirmed defect, stale evidence, explicit unsupported boundary or deferred work.
+
+| Order / IDs | First investigation | Completion evidence |
+| --- | --- | --- |
+| A — SCI-06, API-05/06 | Recover the eight historical stock wrapper/facade failures; map each public call and expected value to its actual route. Separate upstream limitations from Vulkan regressions. Numeric-zero acceptance does not settle these eight cases. | Per-case disposition; for confirmed defects, a failing public-route regression followed by a passing fix and failure/recovery control. |
+| B — SCI-05, TOOL-03 | Reconcile U05, E03, E04, Q11–Q13 and H03 against newer exact-scope evidence. Search for the historical compiler-cache cleanup receipt once; if absent, retain an explicit missing-record disposition. | Evidence links and scope for every selected stale item; no recreated claim of a past cleanup event. |
+| C — LIF-01–06 | Audit untested zero-size, embedded-parent destruction, actual surface loss, fault acquisition, MSAA depth/stencil and Qt input paths. Choose one real application transition at a time. | Observable rendering/event behavior, expected submission or refusal, recovery and resource retirement. Mocked loss is identified separately from actual loss. |
+| D — SCI-01–04 | Select one small point, mesh-filter, camera/depth and volume workflow from the inventory. Reuse current tests before inventing a new harness. | Meaningful expected output and mutation/recovery for the named subset; performance/quality claims separately measured. |
+| E — SHD-06, STA-01, TEX-01, LIN-01, SHD-01–05 | Resolve the Mesa clipping evidence join first; then investigate only rendering forms required by selected workflows. Document supported types/limits and application rewrites where appropriate. | Exact installed-profile join or focused positive/boundary/refusal/recovery cases; no general raster or shader-equivalence claim. |
+
+### 4. Qualify and integrate one bounded change set
+
+- [ ] Review the cumulative owned delta and selected scope after source gates
+  pass. Preserve the publication checkout's other-owner index and edits.
+- [ ] Reuse verified native outputs when inputs match. Package current Python
+  changes once; renew candidate/tool identities and reviews without changing
+  frozen historical records. Do not create a native build for Python/doc edits.
+- [ ] Verify exact installed Windows/WSL wheel members with zero source overrides,
+  then run affected lifecycle/public-route acceptance and required CI on the
+  frozen integration head. Source passes cannot substitute for this check.
+- [ ] Update affected live checklist IDs in the same change, retaining partial,
+  failed, installed and delivered scopes separately. Merge through the existing
+  protected path; publish only a concrete qualified successor when warranted.
+- [ ] Retain reconstruction inputs, AGPL/original BSD/dependency notices and
+  actual process exits; inspect/apply cleanup plans and report reclaimed bytes.
+
+Exit: selected claims match merged source and, if published, delivered bytes.
+Unselected parents remain open; the known-good Vulkan.2 release stays distinct.
+
+### Stop rules and deferred scope
+
+BUG-01/02 retain their exhausted diagnostic history. Reopen only for a new
+recurrence or a specific new hypothesis with a predeclared bounded experiment;
+the older first-startup packet below is not authorization to repeat it now.
+Optional hosts, ABIs, performance/cache work and broader shader forms need a
+concrete use case or measured bottleneck before entering this queue. Metal
+graphics remains experimental; physical Linux GPU, native Wayland, fractional
+DPI and laboratory latency retain their documented boundaries. No new hardware
+is assumed. A failed gate stops promotion, not unrelated read-only diagnosis.
+
+## Historical execution checkpoints
+
+Latest Linux status, 2026-11-13: CI43471568101 passed; all166original members
+were retained and artifact digest checked. The unchanged native verifier refuses
+current workflow authority `7fc072af…`. [Exact comparison](../../../compat/api-acceptance/qt-linux-protocol-equivalence-v1.json)
+proves that only a candidate8selector in the inactive reuse arm changed; fresh
+code is byte-identical. Next: review/support exactly this authority while
+preserving unknown-protocol rejection and the original refusal; validate the
+retained capture, then WSL-test lifecycle/reparent/numeric-zero cases. Do not
+rerun native production. No Linux runtime/installed claim is made yet.
+
+SCI-06 / API-06 progress, 2026-11-13: [numeric-zero clear semantics](../../../compat/api-acceptance/gloo-clear-zero-source-v1.json)
+now have9rendered Windows source passes after5failures/4controls, using
+unchanged tests/native payload. The separate Python wrapper correction keeps
+False/None behavior and validates failure/recovery; no native rebuild or
+installed claim. The original8upstream-wrapper failures remain open. Add this
+case to WSL verification of the completed native artifact and the next source
+integration; the running CI head remains immutable.
+
+LIF-02 source progress, 2026-11-13: one [active Windows readback layout case](../../../compat/api-acceptance/qt-layout-reparent-source-v1.json)
+passes two parent moves, deletion of the old parents, real WinIdChange,
+continued rendering and nine zero shutdown gauges. Renderer/native inputs are
+unchanged; only the new Python test was added. Two fixture-order failures were
+diagnosed and retained; all scratch was cleaned. Linux and installed coverage,
+native WSI loss and deleting a parent still owning a live canvas stay open.
+
 Latest execution checkpoint, 2026-11-13: the native cleanup patch is compiled
 and passes44original native CTests plus all three [Windows Vulkan source lifecycle cases](../../../compat/api-acceptance/qt-lifecycle-windows-native-v1.json).
 Both shared-close cases have all nine zero shutdown gauges; SDK was reused
 and294,738,856scratch bytes removed. Next: changed Linux native verification,
 then successor installed qualification/integration. Earlier checkpoint details
 below retain their original scope; current source is not a published wheel.
+
+The19owned changes are now pushed on `wip/qt-lifecycle-native-562` at
+`82ee789e0fc096e88f7b37537889a2b2407941ef`; [Linux fresh CI43471568101](../../../compat/api-acceptance/qt-lifecycle-source-ci-v1.json)
+is active. Reuse its actual completed artifact for WSL verification; poll the
+same run rather than restarting a live build. Source and private-index cleanup
+are retained; no PR merge, installed qualification or new release is claimed.
 
 Date: 2026-11-13. Status: in progress. LIF-03 has a source-tested window-state
 fix ([CPU evidence](../../../compat/api-acceptance/qt-window-state-source-v1.json))
