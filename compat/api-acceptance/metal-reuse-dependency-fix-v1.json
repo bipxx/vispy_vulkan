@@ -1,0 +1,36 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "PASS_LOCKED_MINIMAL_DEPENDENCY_REPRO_AND_FIX",
+  "verification": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\metal-reuse-head-failure-519\\verification.json",
+    "sha256": "323738b86b12b1fe8bdfe3280b186bbf06bd9e22f861311659843c8921ac81e7"
+  },
+  "failed_job": {
+    "run_id": 43404597011,
+    "job_id": 131815731558,
+    "artifact_id": 14026627488,
+    "head": "4c39ff7f4d3b51c1a9f4c52475924f9c1a781b27"
+  },
+  "original_failure": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\metal-reuse-head-failure-519\\retained-reuse.log",
+    "sha256": "bc3b8928a9a25c68764f53c1eae5f71d374405f2eb956bf9cc6f32b7e2ec46f3"
+  },
+  "delta": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\metal-reuse-head-failure-519\\source-delta.patch",
+    "sha256": "3d9c403a7f8986f997cfc0db4a37c0041ac460620786fc59ebc33bcd727f6c0d"
+  },
+  "runtime_references_unchanged": 608,
+  "dependency": "packaging==26.3",
+  "existing_129956_byte_wheel_reused": true,
+  "source_validation": "Isolated Python -I -S reproduces ModuleNotFoundError before the locked pure dependency is installed into managed scratch; the same source_version call passes afterwards.",
+  "native_build": false,
+  "new_virtual_environment": false,
+  "artifact_admitted": false,
+  "required_ci_passed": false,
+  "pending": [
+    "Renew preparation/policy/workflow hashes in successor revision without transferring reviews",
+    "Independent exact source/scope review",
+    "Required new-head CI and promotion"
+  ]
+}

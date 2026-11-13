@@ -1,0 +1,40 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "PASS_REVISION8_PREPARATION_CONTRACTS_REVIEW_PENDING",
+  "candidate": "tk-state-resource-8",
+  "source_contract_passes": 1117,
+  "profile": "Windows CPython3.12.8 existing .venv",
+  "preparation": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\metal-dependency-preparation-520\\verification.json",
+    "sha256": "5fc5929c5e511a791c7e9432c3f074d06378a04e0120358139ef8de5359aa75c"
+  },
+  "contracts_process": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\metal-dependency-preparation-520\\contracts-process.json",
+    "sha256": "1afacd196d892d0056d6fd8c84a5614684b532c93f38ced5570918e27925fcf9"
+  },
+  "contracts_log": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\metal-dependency-preparation-520\\contracts.log",
+    "sha256": "4a9f41d0731199b5431cf9077ae0ac83c5685675e509e8153f923b781e7a979a"
+  },
+  "review_packet": {
+    "path": "compat/candidates/tk-state-resource-8/review-packet.json",
+    "sha256": "809085061cf5da3fa2dd6522e88bc9c1a84f56016ec35a1423a6be082a55109f"
+  },
+  "preserved_candidate_files": 210,
+  "runtime_references_unchanged": 608,
+  "original_required_pairs_preserved": 142,
+  "originals_discharged": 0,
+  "source_scope_approvals_transferred": 0,
+  "native_build": false,
+  "new_virtual_environment": false,
+  "scratch_created": false,
+  "artifact_admitted": false,
+  "required_ci_passed": false,
+  "pending": [
+    "Independent revision8source/scope decisions",
+    "Freeze reviewed head and complete23 CI jobs using existing native inputs",
+    "Renew/revalidate installed subject for same final head",
+    "Independent impact and promotion reviews; integrate"
+  ]
+}

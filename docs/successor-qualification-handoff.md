@@ -1,5 +1,24 @@
 # Successor qualification handoff
 
+## Current execution status — 2026-11-13
+
+Revision8 is the current **independently reviewed preparation**:32 selected feature/profile pairs,64 criteria/128 bindings, and all142 original requirements conserved. Its 1,117 compatibility contracts pass locally on Windows CPython3.12.8;608 runtime/build/lock/license references and both selected wheels are unchanged. [Preparation and checks](../compat/api-acceptance/metal-dependency-preparation-v1.json). Independent revision8source/scope decisions are bound ([exact decision](../compat/api-acceptance/successor-peer-review-v5.json)); revision7reviews remain frozen and were not transferred. The prior head9cf subject proved128/128 criteria with zero missing/blocked joins; revision8/final-head binding is still pending. [Prior installed proof](../compat/api-acceptance/installed-subject-proof-v1.json).
+
+1. **Done:** exact revision8source/scope decisions approve the locked Metal `packaging` setup and current corrected oracle test. The earlier authentication failure remains retained; the new review completed independently and resolves that follow-up gap.
+2. Freeze the approved state with a private Git index, wait for commit completion, then push and dispatch all23 required jobs. Reuse the successful head340native artifacts; no SDK or wheel rebuild is justified by these changes.
+3. After the implementation head is final, reconstruct the32-row overlay for revision8, bind complete six-attempt histories and actual contributing retention, and revalidate128criteria against that same head. Use a new managed run; restore the frozen preparation afterwards.
+4. Join the complete source-head CI bundle, obtain independent change-impact and final promotion-basis decisions, and run strict admission. Only then integrate/merge and publish the agreed repository artifacts.
+
+Use a **new** registered run for overlay reconstruction or review. Do not rerun terminal drivers in place. The explicit D:store selector and original producer/cleanup records remain authoritative; retain by hash rather than copying SDKs, environments or old build trees. Selected-row proof fields may be materialized only for validation and must be restored with the recorded hash guard.
+
+## Historical progress checkpoints
+
+These checkpoints retain their original source, artifact and review scope; the current status above supersedes their pending-work descriptions.
+
+Metal reuse dependency fix (2026-11-13; TOOL-01 / FIX-04): arm64 CI reached repackaging but lacked the pure Python version validator `packaging`. An isolated no-site probe reproduces the failure; the existing129,956-byte locked packaging26.3wheel fixes it. The reuse workflow now exports/installs only that dependency, preserving hashed installation and the1GiB reuse budget. [Evidence](../compat/api-acceptance/metal-reuse-dependency-fix-v1.json). No wheel/SDK rebuild or new venv. All608runtime references remain unchanged. Successor preparation/policy renewal, independent reviews, CI and promotion remain pending; old reviewed records stay frozen. No admission.
+
+Oracle-provenance head (2026-11-13; FIX-04): corrected test pushed as `4c39ff7f4d3b51c1a9f4c52475924f9c1a781b27`; the original capture producer is confirmed tracked byte-exact, all608runtime references and the other owner's index unchanged. Required reuse CI dispatched: CPU43404591396, Linux43404594197, Metal43404597011. [Freeze and CI evidence](../compat/api-acceptance/oracle-provenance-head-v1.json). The existing128-criterion subject proof remains scoped to head9cf; final-head renewal, independent follow-up/impact/promotion review and CI completion remain open. No admission.
+
 Oracle comment correction (2026-11-13; FIX-04): independent review confirmed the provenance assertions preserve acceptance, but requested a comment correction. The actual collector change is candidate-version resolution; historical failure handling was already present. Corrected bytes pass18checks and have an identical executable AST to the512-case passing version. The exact-byte follow-up failed authentication (403), not a test or approval decision; no approval transferred. [Evidence](../compat/api-acceptance/frozen-oracle-comment-followup-v1.json). Branch CI may proceed; independent follow-up/final impact review and promotion remain pending.
 
 Hosted CPU failure isolated (2026-11-13; FIX-04): Linux/macOS final-step logs show one historical oracle producer-hash mismatch (508 passes). The reference check now binds the existing byte-exact frozen capture authoring source rather than the newer live collector; all original oracle/provenance bytes remain unchanged. Eighteen reference checks, including three relabelling/source-tampering controls, and the full 512-case final CPU group pass locally on Windows CPython3.12.8. [Evidence](../compat/api-acceptance/frozen-oracle-producer-fix-v1.json). All 608 runtime references and candidate preparation tools remain unchanged; independent test-delta review and new-head CI remain pending. No artifact admitted.
@@ -163,7 +182,7 @@ per platform, 537 member checks, zero source overrides and zero shutdown gauges.
 pytest-report format; qualified row/retention joins remain pending.
 
 
-### Current preparation — 2026-11-13
+### Historical preparation — revision6 (2026-11-13)
 
 `tk-state-resource-6` renews the independently approved qualification-tool
 identities. Its 64 criteria / 128 profile bindings and prerequisite closure
@@ -391,23 +410,15 @@ actual exits/waits, then generate, inspect and apply the managed cleanup plan
 before another experiment. No new environments, SDKs or history clones are
 needed merely to request review.
 
-## Read-only gate checks
+## Current read-only gate checks
 
-From the source root, repeat these for `tk-state-resource-4` and `tk-capture-4`:
+The current preparation is revision8. These commands validate preparation without graphics:
 
 ```powershell
-.venv\Scripts\python.exe -B tools\compatibility_candidate.py --candidate compat/candidates/tk-state-resource-4/candidate.json
-.venv\Scripts\python.exe -B tools\compatibility_candidate.py --candidate compat/candidates/tk-state-resource-4/candidate.json --require-reviewed
+.venv\Scripts\python.exe -B tools\compatibility_candidate.py --candidate compat/candidates/tk-state-resource-8/candidate.json
+.venv\Scripts\python.exe -B tools\compatibility_coverage.py --map compat/candidates/tk-state-resource-8/coverage.json --require-script-ready
+.venv\Scripts\python.exe -B tools\compatibility_execution.py --map compat/candidates/tk-state-resource-8/execution.json
+.venv\Scripts\python.exe -B tools\compatibility_qualification.py --selection compat/candidates/tk-state-resource-8/admission-selection.json
 ```
 
-Preparation currently succeeds; the review-required command must exit 1 with
-`candidate source and scope review remain pending`. That refusal is expected
-until actual decisions are recorded. It is not a graphics test failure or a
-reason to weaken the verifier.
-
-Use `tools/qualification_artifact.py --archive <platform-archive.json>` for
-archive prerequisites. Archive success alone does not admit a native producer,
-strict environment, execution subject or release. The
-[observer guide](../tools/no_opengl/README.md) defines discovery/inventory/replay
-and the three graphics gates. Metal remains experimental; no native Linux
-physical GPU qualification is claimed.
+Add `--require-reviewed` to require the now-bound revision8source/scope decisions. Preparation success still grants no installed or release admission. Archive/preparation success alone never admits native outputs, profiles or releases. Historical revisions require their original frozen tools and inputs. Metal remains experimental/build-and-CPU-import only; WSL software Vulkan is not physical Linux GPU qualification.

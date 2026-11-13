@@ -1,5 +1,19 @@
 # VisPy Vulkan coverage checklist
 
+## Current execution status — 2026-11-13
+
+Revision8 is the current **independently reviewed preparation**:32 selected feature/profile pairs,64 criteria/128 bindings, and all142 original requirements conserved. Its 1,117 compatibility contracts pass locally on Windows CPython3.12.8;608 runtime/build/lock/license references and both selected wheels are unchanged. [Preparation and checks](../compat/api-acceptance/metal-dependency-preparation-v1.json). Independent revision8source/scope decisions are bound ([exact decision](../compat/api-acceptance/successor-peer-review-v5.json)); revision7reviews remain frozen and were not transferred. The prior head9cf subject proved128/128 criteria with zero missing/blocked joins; revision8/final-head binding is still pending. [Prior installed proof](../compat/api-acceptance/installed-subject-proof-v1.json).
+
+**FIX-04/FIX-06:** revision8source/scope is approved; head-bound CI/subject renewal, final impact/promotion review and integration are open. **TOOL-01:** source transport/layout checks pass; the missing Metal environment dependency is fixed/probed locally, with hosted verification pending. Use the [remaining-gaps checklist](remaining-gaps-checklist.md) for the current execution order. Windows/WSL remain the supported target; Metal graphics and full upstream parity remain outside the admitted claim.
+
+## Historical progress checkpoints
+
+These checkpoints retain their original source, artifact and review scope; the current status above supersedes their pending-work descriptions.
+
+Metal reuse dependency fix (2026-11-13; TOOL-01 / FIX-04): arm64 CI reached repackaging but lacked the pure Python version validator `packaging`. An isolated no-site probe reproduces the failure; the existing129,956-byte locked packaging26.3wheel fixes it. The reuse workflow now exports/installs only that dependency, preserving hashed installation and the1GiB reuse budget. [Evidence](../compat/api-acceptance/metal-reuse-dependency-fix-v1.json). No wheel/SDK rebuild or new venv. All608runtime references remain unchanged. Successor preparation/policy renewal, independent reviews, CI and promotion remain pending; old reviewed records stay frozen. No admission.
+
+Oracle-provenance head (2026-11-13; FIX-04): corrected test pushed as `4c39ff7f4d3b51c1a9f4c52475924f9c1a781b27`; the original capture producer is confirmed tracked byte-exact, all608runtime references and the other owner's index unchanged. Required reuse CI dispatched: CPU43404591396, Linux43404594197, Metal43404597011. [Freeze and CI evidence](../compat/api-acceptance/oracle-provenance-head-v1.json). The existing128-criterion subject proof remains scoped to head9cf; final-head renewal, independent follow-up/impact/promotion review and CI completion remain open. No admission.
+
 Oracle comment correction (2026-11-13; FIX-04): independent review confirmed the provenance assertions preserve acceptance, but requested a comment correction. The actual collector change is candidate-version resolution; historical failure handling was already present. Corrected bytes pass18checks and have an identical executable AST to the512-case passing version. The exact-byte follow-up failed authentication (403), not a test or approval decision; no approval transferred. [Evidence](../compat/api-acceptance/frozen-oracle-comment-followup-v1.json). Branch CI may proceed; independent follow-up/final impact review and promotion remain pending.
 
 Hosted CPU failure isolated (2026-11-13; FIX-04): Linux/macOS final-step logs show one historical oracle producer-hash mismatch (508 passes). The reference check now binds the existing byte-exact frozen capture authoring source rather than the newer live collector; all original oracle/provenance bytes remain unchanged. Eighteen reference checks, including three relabelling/source-tampering controls, and the full 512-case final CPU group pass locally on Windows CPython3.12.8. [Evidence](../compat/api-acceptance/frozen-oracle-producer-fix-v1.json). All 608 runtime references and candidate preparation tools remain unchanged; independent test-delta review and new-head CI remain pending. No artifact admitted.
@@ -163,7 +177,7 @@ per platform, 537 member checks, zero source overrides and zero shutdown gauges.
 pytest-report format; qualified row/retention joins remain pending.
 
 
-### Current preparation — 2026-11-13
+### Historical preparation — revision6 (2026-11-13)
 
 `tk-state-resource-6` renews the independently approved qualification-tool
 identities. Its 64 criteria / 128 profile bindings and prerequisite closure

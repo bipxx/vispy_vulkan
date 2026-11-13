@@ -1,0 +1,62 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "PUSHED_ORACLE_PROVENANCE_HEAD_CI_AND_REVIEW_PENDING",
+  "qualification_head": "4c39ff7f4d3b51c1a9f4c52475924f9c1a781b27",
+  "source_freeze": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\oracle-source-freeze-518\\source-freeze.json",
+    "sha256": "1bbc17ed030cab4c0bc5dc9c0947d0037a3c0aab085a74a9ca5e7ce87a42ce6c"
+  },
+  "head_ci": {
+    "qualification_head": "4c39ff7f4d3b51c1a9f4c52475924f9c1a781b27",
+    "runs": [
+      {
+        "id": 43404597011,
+        "path": ".github/workflows/metal-wheel.yml",
+        "status": "in_progress",
+        "conclusion": null,
+        "url": "https://github.com/bipxx/vispy_vulkan/actions/runs/43404597011",
+        "head": "4c39ff7f4d3b51c1a9f4c52475924f9c1a781b27"
+      },
+      {
+        "id": 43404594197,
+        "path": ".github/workflows/linux-vulkan.yml",
+        "status": "in_progress",
+        "conclusion": null,
+        "url": "https://github.com/bipxx/vispy_vulkan/actions/runs/43404594197",
+        "head": "4c39ff7f4d3b51c1a9f4c52475924f9c1a781b27"
+      },
+      {
+        "id": 43404591396,
+        "path": ".github/workflows/cpu-contract.yml",
+        "status": "queued",
+        "conclusion": null,
+        "url": "https://github.com/bipxx/vispy_vulkan/actions/runs/43404591396",
+        "head": "4c39ff7f4d3b51c1a9f4c52475924f9c1a781b27"
+      }
+    ],
+    "required_jobs": 23,
+    "required_ci_passed": false,
+    "native_mode": "reuse"
+  },
+  "runtime_references_unchanged": 608,
+  "owner_index_unchanged": true,
+  "native_mode": "reuse",
+  "latest_exact_reference_checks": 18,
+  "previous_ast_identical_cpu_group_passes": 512,
+  "tracked_original_producer": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\oracle-source-freeze-518\\tracked-producer.json",
+    "sha256": "0a424ec59f55f3509feb933f299fc5afcd923e394dc6e8282acddd5c6897df4c"
+  },
+  "pending_followup": "Independent assertions review requested comment correction, now AST-identical and checked; exact-byte follow-up failed authentication. No approval transferred.",
+  "existing_subject_proved_criteria": 128,
+  "existing_subject_head": "9cf488acdae59ae3b80310ab2a19b5bcc4915a54",
+  "artifact_admitted": false,
+  "required_ci_passed": false,
+  "pending": [
+    "All23 required new-head CI jobs",
+    "Renew subject qualification head with unchanged product/tool/proof scope",
+    "Independent impact/promotion review",
+    "Promotion/integration/publication"
+  ]
+}

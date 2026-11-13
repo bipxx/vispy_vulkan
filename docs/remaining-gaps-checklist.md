@@ -1,5 +1,24 @@
 # Remaining gaps checklist
 
+## Current execution status — 2026-11-13
+
+Revision8 is the current **independently reviewed preparation**:32 selected feature/profile pairs,64 criteria/128 bindings, and all142 original requirements conserved. Its 1,117 compatibility contracts pass locally on Windows CPython3.12.8;608 runtime/build/lock/license references and both selected wheels are unchanged. [Preparation and checks](../compat/api-acceptance/metal-dependency-preparation-v1.json). Independent revision8source/scope decisions are bound ([exact decision](../compat/api-acceptance/successor-peer-review-v5.json)); revision7reviews remain frozen and were not transferred. The prior head9cf subject proved128/128 criteria with zero missing/blocked joins; revision8/final-head binding is still pending. [Prior installed proof](../compat/api-acceptance/installed-subject-proof-v1.json).
+
+Latest published implementation head: `4c39ff7f4d3b51c1a9f4c52475924f9c1a781b27`. Its Linux Vulkan reuse job passed; CPU remains pending and Metal exposed the missing version-validation dependency. The isolated dependency fix passes using the existing129,956-byte locked wheel. [Metal reproducer/fix](../compat/api-acceptance/metal-reuse-dependency-fix-v1.json). No current source-head CI or release admission is claimed.
+
+1. **Done:** exact revision8source/scope decisions approve the locked Metal `packaging` setup and current corrected oracle test. The earlier authentication failure remains retained; the new review completed independently and resolves that follow-up gap.
+2. Freeze the approved state with a private Git index, wait for commit completion, then push and dispatch all23 required jobs. Reuse the successful head340native artifacts; no SDK or wheel rebuild is justified by these changes.
+3. After the implementation head is final, reconstruct the32-row overlay for revision8, bind complete six-attempt histories and actual contributing retention, and revalidate128criteria against that same head. Use a new managed run; restore the frozen preparation afterwards.
+4. Join the complete source-head CI bundle, obtain independent change-impact and final promotion-basis decisions, and run strict admission. Only then integrate/merge and publish the agreed repository artifacts.
+
+## Historical progress checkpoints
+
+These checkpoints retain their original source, artifact and review scope; the current status above supersedes their pending-work descriptions.
+
+Metal reuse dependency fix (2026-11-13; TOOL-01 / FIX-04): arm64 CI reached repackaging but lacked the pure Python version validator `packaging`. An isolated no-site probe reproduces the failure; the existing129,956-byte locked packaging26.3wheel fixes it. The reuse workflow now exports/installs only that dependency, preserving hashed installation and the1GiB reuse budget. [Evidence](../compat/api-acceptance/metal-reuse-dependency-fix-v1.json). No wheel/SDK rebuild or new venv. All608runtime references remain unchanged. Successor preparation/policy renewal, independent reviews, CI and promotion remain pending; old reviewed records stay frozen. No admission.
+
+Oracle-provenance head (2026-11-13; FIX-04): corrected test pushed as `4c39ff7f4d3b51c1a9f4c52475924f9c1a781b27`; the original capture producer is confirmed tracked byte-exact, all608runtime references and the other owner's index unchanged. Required reuse CI dispatched: CPU43404591396, Linux43404594197, Metal43404597011. [Freeze and CI evidence](../compat/api-acceptance/oracle-provenance-head-v1.json). The existing128-criterion subject proof remains scoped to head9cf; final-head renewal, independent follow-up/impact/promotion review and CI completion remain open. No admission.
+
 Oracle comment correction (2026-11-13; FIX-04): independent review confirmed the provenance assertions preserve acceptance, but requested a comment correction. The actual collector change is candidate-version resolution; historical failure handling was already present. Corrected bytes pass18checks and have an identical executable AST to the512-case passing version. The exact-byte follow-up failed authentication (403), not a test or approval decision; no approval transferred. [Evidence](../compat/api-acceptance/frozen-oracle-comment-followup-v1.json). Branch CI may proceed; independent follow-up/final impact review and promotion remain pending.
 
 Hosted CPU failure isolated (2026-11-13; FIX-04): Linux/macOS final-step logs show one historical oracle producer-hash mismatch (508 passes). The reference check now binds the existing byte-exact frozen capture authoring source rather than the newer live collector; all original oracle/provenance bytes remain unchanged. Eighteen reference checks, including three relabelling/source-tampering controls, and the full 512-case final CPU group pass locally on Windows CPython3.12.8. [Evidence](../compat/api-acceptance/frozen-oracle-producer-fix-v1.json). All 608 runtime references and candidate preparation tools remain unchanged; independent test-delta review and new-head CI remain pending. No artifact admitted.
@@ -163,7 +182,7 @@ per platform, 537 member checks, zero source overrides and zero shutdown gauges.
 pytest-report format; qualified row/retention joins remain pending.
 
 
-### Current preparation — 2026-11-13
+### Historical preparation — revision6 (2026-11-13)
 
 `tk-state-resource-6` renews the independently approved qualification-tool
 identities. Its 64 criteria / 128 profile bindings and prerequisite closure
@@ -439,58 +458,12 @@ Optional scope below does not become a release requirement by appearing here.
 
 ## Successor release completion
 
-- [ ] **FIX-04 — Cumulative independent source and scope review.** Review the
-  current cumulative implementation, including dynamic explicit sampler
-  lowering and optional native Tk lifetime/X11 handling. Resolve findings and
-  bind the exact source.
-  Earlier source reviews do not approve later native changes. The last peer
-  review attempt was unavailable because of a provider usage limit; it did not
-  produce an approval. **Preparation complete, 2026-11-08:** current source and
-  exact artifact/evidence packet assembled, matching native/pure bytes verified.
-  Reported reviewer reset: November 9 at 21:00 Eastern; no retry or approval.
-  [Readiness, expected validator refusals and renewal order](successor-review-readiness.md).
-- [ ] **FIX-04 / FIX-06 — Renew candidate provenance.** Join the selected current
-  source, original native producers, runtime inputs, wheels, coverage maps,
-  observations and selection records. Existing v2 candidate preparation is
-  anchored to exact source/artifacts and must not silently inherit current
-  approvals. **Progress:** new `tk-state-resource-4` / `tk-capture-4` preparation
-  records bind the current wheels and original producers without changing prior
-  packets; Windows/WSL preparation and four archive prerequisites pass. Independent
-  reviews, installed observer/strict-profile and final qualification bindings
-  remain open. [Current request](../compat/candidates/tk-v2-native/review-packet.json).
-  **Exit:** unchanged validators accept all selected identities at the claimed
-  admission level, with real required reviews and profile evidence.
-- [ ] **FIX-06 — Renew observer and strict-profile evidence.** Run the applicable
-  functional lifecycle and all three strict gates on the exact selected
-  installed artifacts. Renew the eight mandatory Windows/WSL headless and
-  PyQt5/PyQt6/PySide6 rows; keep Tk candidate admission distinct from these rows.
-  **Readiness audited:** all eight rows still bind older artifacts, so none
-  supplies strict admission for the selected wheels. The
-  [qualification handoff](successor-qualification-handoff.md) records exact
-  artifacts, review bindings, workflow templates and the shortest execution order.
-  **Windows/WSL Tk progress:** all four pinned candidate workflows now pass the
-  three graphics gates on each platform in fresh exact-wheel replays. Their subjects
-  remain pending; do not count these as the separate mandatory headless/Qt rows.
-  **Mandatory-row progress:** Windows and WSL headless now have current-wheel
-  functional, installed inventory and fresh three-gate replay evidence. Windows
-  PyQt5/PyQt6/PySide6 now also pass on both platforms. All eight row observations
-  are collected. None is
-  newly admitted until the required review/CI/promotion joins pass.
-- [ ] **FIX-06 — Required CI and independent promotion.** Complete the selected
-  source/attempt-bound CI checks and required independent candidate reviews.
-  The successful Linux native producer and local functional suites are inputs,
-  not a substitute for this release-wide validation.
-- [ ] **FIX-04 — Integrate the validated source.** Resolve applicable source
-  checks and complete review/merge against the intended branch. Preserve the
-  other owner's dirty publication checkout and index.
-- [ ] **FIX-06 — Publish the successor.** After the preceding gates pass, publish
-  the approved wheels, hashes, release notes and package index, then verify a
-  clean channel installation. Preserve published v1 assets and their admissions.
-  Keep AGPL-3.0-only fork licensing and original BSD/dependency notices attached.
-
-The successor version decision and current Windows/Linux local packaging are
-already complete. Do not rebuild native artifacts for record, test or document
-changes alone. Rebuild only when native inputs actually change.
+- [x] **FIX-04-REVIEW — Independent source/scope review:** exact revision8digests and both native-reuse links are bound. [Decision](../compat/api-acceptance/successor-peer-review-v5.json). Corrected oracle test is independently approved; no transferred approvals or proof/admission claim.
+- [ ] **FIX-04 / FIX-06 — Final provenance/subject binding:** preparation validates128criteria; rebind the previously proved32-row installed overlay and complete histories to reviewed revision8and its final implementation head. Original producer revisions, SDK origins, raw failures and notices stay intact.
+- [x] **FIX-06-OBS — Current mandatory-profile observations collected:** all8Windows/WSL headless/PyQt5/PyQt6/PySide6 observations exist on the selected wheels. [Exact observation scope](../compat/api-acceptance/mandatory-current-wheels-observations-v2.json). These observations are not newly admitted release rows.
+- [x] **FIX-04-PROOF — Prior finite installed subject proved:** head9cf/revision7has128provedcriteria, zero missing/blocked joins, six complete attempts and601contributing retained inputs. [Proof](../compat/api-acceptance/installed-subject-proof-v1.json). Final-head/revision8renewal is the remaining binding step; no fresh graphics replay is justified without changed critical inputs.
+- [ ] **FIX-06 — Required CI and promotion:** all23jobs must pass on the same final head; retain complete attempt-bound results. Then obtain independent impact/promotion approvals and strict scoped admission. No CI waiver or all-API claim.
+- [ ] **FIX-04 — Integrate:** complete the authorized review/merge path after the gates pass, preserving the other owner's checkout/index and AGPL plus original BSD/dependency notices.
 
 ## Rendering and shader scope
 

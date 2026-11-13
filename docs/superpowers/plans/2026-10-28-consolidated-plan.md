@@ -1,5 +1,20 @@
 # Consolidated plan
 
+## Current execution status — 2026-11-13
+
+Revision8 is the current **independently reviewed preparation**:32 selected feature/profile pairs,64 criteria/128 bindings, and all142 original requirements conserved. Its 1,117 compatibility contracts pass locally on Windows CPython3.12.8;608 runtime/build/lock/license references and both selected wheels are unchanged. [Preparation and checks](../../../compat/api-acceptance/metal-dependency-preparation-v1.json). Independent revision8source/scope decisions are bound ([exact decision](../../../compat/api-acceptance/successor-peer-review-v5.json)); revision7reviews remain frozen and were not transferred. The prior head9cf subject proved128/128 criteria with zero missing/blocked joins; revision8/final-head binding is still pending. [Prior installed proof](../../../compat/api-acceptance/installed-subject-proof-v1.json).
+
+1. **Done:** exact revision8source/scope decisions approve the locked Metal `packaging` setup and current corrected oracle test. The earlier authentication failure remains retained; the new review completed independently and resolves that follow-up gap.
+2. Freeze the approved state with a private Git index, wait for commit completion, then push and dispatch all23 required jobs. Reuse the successful head340native artifacts; no SDK or wheel rebuild is justified by these changes.
+3. After the implementation head is final, reconstruct the32-row overlay for revision8, bind complete six-attempt histories and actual contributing retention, and revalidate128criteria against that same head. Use a new managed run; restore the frozen preparation afterwards.
+4. Join the complete source-head CI bundle, obtain independent change-impact and final promotion-basis decisions, and run strict admission. Only then integrate/merge and publish the agreed repository artifacts.
+
+See the [live remaining-gaps checklist](../../remaining-gaps-checklist.md) for exact FIX-04/FIX-06states. Shared storage remains D:/vispy-vulkan-managed with the versioned20GiB scratch cap and10GiB reserve. Register a unique owner/run before scratch, retain actual exits/waits and failure reproducers, plan/apply cleanup and rehash before the next experiment. Source/test/report changes reuse native wheels, SDKs, locked inputs and preferred sources. No unmanaged build roots, environment clones, origin relocation, rejected-target retry or budget override.
+
+## Historical progress checkpoints
+
+These checkpoints retain their original source, artifact and review scope; the current status above supersedes their pending-work descriptions.
+
 Exact-profile histories (2026-11-13): scan of15,217retained JSON files finds
 6strict attempts for the selected wheels, exact matched fingerprints and candidate
 workflows, with0unattributed current-wheel reports. Four latest workflow selections
@@ -149,7 +164,7 @@ per platform, 537 member checks, zero source overrides and zero shutdown gauges.
 pytest-report format; qualified row/retention joins remain pending.
 
 
-### Current preparation — 2026-11-13
+### Historical preparation — revision6 (2026-11-13)
 
 `tk-state-resource-6` renews the independently approved qualification-tool
 identities. Its 64 criteria / 128 profile bindings and prerequisite closure
