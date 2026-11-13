@@ -140,12 +140,12 @@ def test_capture_decoder_rejects_semantic_corruption(payload, change):
         f.validate_capture_result(payload)
 
 
-def test_prepared_capture_candidate_maps_four_modes_on_both_profiles():
+def test_prepared_capture_candidate_maps_four_modes_on_both_profiles(current_preparation):
     from tools import compatibility_coverage as coverage
     from tools import compatibility_execution as execution
     from tools import compatibility_qualification as selection
     root = Path(__file__).resolve().parents[2]
-    base = root/'compat/candidates/tk-state-resource-6'
+    base = current_preparation['candidate'].parent
     mapped = json.loads((base/'execution.json').read_bytes())
     coverage_state = coverage.validate_coverage(json.loads((base/'coverage.json').read_bytes()))
     execution.validate_execution(mapped)
@@ -161,10 +161,10 @@ def test_prepared_capture_candidate_maps_four_modes_on_both_profiles():
 
 
 @pytest.mark.parametrize('fault', ['unknown-contract', 'old-contract', 'wrong-branch', 'missing-binding'])
-def test_resealed_capture_mapping_rejects_wrong_semantics(fault):
+def test_resealed_capture_mapping_rejects_wrong_semantics(fault, current_preparation):
     from tools import compatibility_execution as execution
     root = Path(__file__).resolve().parents[2]
-    record = json.loads((root/'compat/candidates/tk-state-resource-6/execution.json').read_bytes())
+    record = json.loads(current_preparation['execution'].read_bytes())
     execution.validate_execution(record)  # Positive control before changing the selected branch.
     mapping = next(m for m in record['mappings'] if m['criterion'].startswith('tk.readback.crop-formats.'))
     binding = mapping['functional_result']

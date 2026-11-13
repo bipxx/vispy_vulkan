@@ -38,6 +38,39 @@ def test_description_selection_cannot_bypass_native_only_route(tmp_path):
         reuse.validate_inputs(None, None, tmp_path, tmp_path, keep_original_description=True)
 
 
+@pytest.mark.parametrize('name', ['../candidate.json', '/candidate.json', 'C:/candidate.json',
+                                  'compat\\candidate.json', 'compat/./candidate.json'])
+def test_explicit_candidate_requires_canonical_source_path(tmp_path, name):
+    with pytest.raises(ValueError, match='canonical source-relative'):
+        reuse.reuse_candidate(tmp_path, name)
+
+
+def test_successor_candidate_requires_full_review_validation(tmp_path, monkeypatch):
+    from tools import compatibility_candidate as candidate_tool
+    path = tmp_path/'compat/new/candidate.json'; path.parent.mkdir(parents=True)
+    value = {'runtime_inputs': {'path': 'current-runtime.json'}}
+    path.write_text(json.dumps(value))
+    calls = []
+    def validate(document, root, require_reviewed):
+        calls.append((document, root, require_reviewed))
+        raise ValueError('successor review missing')
+    monkeypatch.setattr(candidate_tool, 'validate_candidate', validate)
+    with pytest.raises(ValueError, match='successor review missing'):
+        reuse.reuse_candidate(tmp_path, 'compat/new/candidate.json')
+    assert calls == [(value, tmp_path, True)]
+    monkeypatch.setattr(candidate_tool, 'validate_candidate',
+                        lambda document, root, require_reviewed: {'reviewed': True})
+    assert reuse.reuse_candidate(tmp_path, 'compat/new/candidate.json') == value
+
+
+def test_omitted_candidate_keeps_historical_runtime_selection(tmp_path):
+    path = tmp_path/'compat/candidates/tk-state-resource-1/candidate.json'
+    path.parent.mkdir(parents=True)
+    value = {'runtime_inputs': {'path': 'original-runtime.json'}}
+    path.write_text(json.dumps(value))
+    assert reuse.reuse_candidate(tmp_path) == value
+
+
 def test_description_cli_rejects_option_before_allocating_or_downloading(tmp_path, monkeypatch):
     monkeypatch.setattr(sys, 'argv', ['reuse', '--workspace', str(tmp_path), '--run-id', 'unit',
                                      '--keep-original-description'])
@@ -184,7 +217,8 @@ def test_current_input_changes_stop_reuse_before_consumer_install(tmp_path, monk
         name: before[name] for name in ('cpp/renderer.cpp', 'tests/contract.cpp')})
     monkeypatch.setattr(reuse.native, 'production_inputs', lambda *a: {})
     checks = []
-    def validate(*args):
+    def validate(*args, **kwargs):
+        assert args[2] == source and kwargs == {'evidence_root': workspace}
         checks.append('native')
         return {'production_sha256': 'a'*64, 'artifact_admitted': False}, {}
     monkeypatch.setattr(reuse.native, 'validate_capture', validate)
@@ -228,7 +262,7 @@ def test_candidate_rejection_still_retains_original_transport(tmp_path, monkeypa
         def check_capacity(self, *args): pass
     monkeypatch.setattr(reuse, 'Context', Context)
     monkeypatch.setattr(reuse, 'import_archive', lambda *a, **kw: inventory)
-    def reject(*args): raise ValueError('Changed native input')
+    def reject(*args, **kwargs): raise ValueError('Changed native input')
     monkeypatch.setattr(reuse, 'validate_inputs', reject)
     monkeypatch.setattr(sys, 'argv', ['reuse', '--workspace', str(workspace),
         '--run-id', 'unit', '--archive', 'explicit-synthetic-transport', '--metadata-only'])

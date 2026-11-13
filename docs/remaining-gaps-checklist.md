@@ -1,5 +1,96 @@
 # Remaining gaps checklist
 
+Independent review (2026-11-13; FIX-04 / TOOL-01): revision7 source and finite scope are independently approved, including native CI reuse. The Windows receipt-refresh failure has an approved disposition and remains failed/UNVERIFIED in its complete history; the flagged inventory files are byte-identical. The fully reviewed Linux reuse path and original driver now validate, with zero Python reassembly changes. [Decision and exact bindings](../compat/api-acceptance/successor-peer-review-v4.json). Final installed bindings, frozen-head 23-job CI and promotion remain pending; no artifact admitted.
+
+CI reuse repair (2026-11-13; TOOL-01 / FIX-04, source-tested): 1,117 compatibility contracts pass on Windows CPython 3.12.8. The three successful head340 native artifacts validate against current inputs and are pinned for reuse; Metal dispatch/managed-layout checks and reviewed-successor Linux selection have 116 focused passes. CPU event values now run after compilation. Transport cleanup removed 92,206,020 bytes and rehashed 286 retained files. [Evidence](../compat/api-acceptance/native-ci-reuse-repair-v1.json). Revision7 remains unreviewed; source-head CI, final installed bindings and promotion are pending. No native rebuild or artifact admission.
+
+Exact-profile histories (2026-11-13): scan of15,217retained JSON files finds
+6strict attempts for the selected wheels, exact matched fingerprints and candidate
+workflows, with0unattributed current-wheel reports. Four latest workflow selections
+and3contributing retention envelopes validate (62/94/80retained inputs).
+[Evidence](../compat/api-acceptance/matched-profile-histories-wip-v1.json). One Windows UNVERIFIED receipt-refresh attempt
+still needs independent disposition. Historical variants/other workflows stay
+disclosed. Profile/receipt bindings, producer retention, review/CI and promotion
+remain pending; no row or artifact admitted.
+
+
+Matched WSL cohort (2026-11-13): state/failure and capture pass strict replay
+in one identical consumer fingerprint, with537verified members, zero overlays
+and9zero gauges. All16feature joins/48gate checks validate ([evidence](../compat/api-acceptance/wsl-matched-cohort-v1.json)).
+Both platforms now have matched pairs (32joins/96checks) without collapsing
+the old mismatched environments. Existing Python/driver/dependency sources were
+borrowed read-only; no wheel/SDK build. Final profile/receipt/history/retention
+bindings, revised review, head CI and promotion remain pending; no admission.
+
+
+Matched Windows cohort (2026-11-13): state/failure and capture both pass strict
+three-gate replay in one identical consumer fingerprint, with537verified members,
+zero overrides and9zero shutdown gauges. All16Windows feature joins/48gate
+checks validate ([evidence](../compat/api-acceptance/windows-matched-cohort-v1.json)). The intermediate unverified
+receipt-refresh attempt is preserved. The original handle baseline remains in
+place; its exact bytes/origin are retained in a small input archive. No SDK or
+wheel was rebuilt, and no row admitted. WSL matching, final profile/history/
+retention bindings, source/scope review, required CI and promotion remain open.
+
+
+Provisional installed joins (2026-11-13): all32feature/profile pairs validate
+three original observer gates and their installed pytest fixtures (96gate checks,
+4original bundles). [Evidence](../compat/api-acceptance/installed-proof-joins-wip-v1.json). No rows/profiles admitted:
+Windows state/capture use builds26200/26300; WSL kernels6.18.54/6.18.58 differ and
+capture has5extra Python distributions. Replay each pair in one matched consumer
+per platform rather than collapse distinct fingerprints. Raw reports and both
+existing byte-identical inventory origins remain untouched. Complete histories,
+retention, final profile/receipt bindings, review/CI and promotion stay pending.
+
+
+Current-preparation verification (2026-11-13): all1,088 compatibility-contract
+cases pass locally on WindowsCPython3.12.8 with the new fixture resolving the
+explicit revision7CI selection. [Evidence](../compat/api-acceptance/current-preparation-contracts-v1.json). Historical
+default refusal and strict review/scope controls remain intact; revision7
+approvals, source-head CI and installed proof joins remain pending.
+
+
+Compiler follow-up (2026-11-13): the existing CMake/MSVC profile passes the
+real CPU cache shutdown-wrapper contract. Configure, build and executable exits
+are0 and awaited; sources, commands and licenses are retained under a128MiB
+managed lease ([evidence](../compat/api-acceptance/upload-shutdown-compiler-v1.json)). This closes run499s local
+missing-PATH/compiler check; its902source passes and this1native pass remain
+separate receipts. No installed graphics/native artifact qualification is claimed.
+Revision7review, current-preparation contracts and hosted CI are still pending.
+
+
+CI source grouping repair (2026-11-13): six benchmark files now run in a
+separate provider-free process; all434cases pass with the strict import guard
+unchanged. Scientific/event selection has902passes and1 local compiler-profile
+setup failure (existing CMake is not on PATH). CPU event values are explicitly
+classified in CI. Test fixtures resolve the explicit CI preparation rather than
+hardcode a historical revision. Revision7preparation/128closure validates with
+all164prior candidate records unchanged; independent revised approvals and
+compatibility rerun are pending. [Partial evidence](../compat/api-acceptance/ci-source-grouping-repair-wip-v1.json).
+The compiler contract needs managed existing-toolchain verification before a
+full scientific pass claim; no runtime, wheel or artifact admission changed.
+
+
+Hosted CI grouping findings (2026-11-13): corrected head340499b0 passes the
+compatibility step on observed LinuxCPython3.10.19, then reports1,305 scientific
+passes,2 failures and1 teardown error. Metrics import-isolation guards share a
+process with legitimate provider-import tests; test_event_values is missing
+from CI classification. [Failure evidence](../compat/api-acceptance/qualification-ci-grouping-failure-v1.json). Split those
+processes, keep import guards, add CPU event fixtures and renew affected pins.
+Native fresh builds are ongoing; no admission is claimed.
+
+
+Corrected qualification head (2026-11-13): `340499b0ff81ca12dddf04b763477c93737fde89`
+is frozen, pushed and bound by the detached subject. All23 required jobs are
+dispatched on this exact head; Linux and experimental Metal use their existing
+explicit fresh6GiB production profiles because original native inputs differ.
+[Head, requests and run identities](../compat/api-acceptance/qualification-ci-correction-v1.json). Only tests, docs and
+evidence changed since `152183d0…`; reviewed tools, candidate scope, all608 runtime
+references and selected wheels are unchanged. Local WindowsCPU selection passes
+1,088 cases; hosted results, installed proof joins and promotion remain pending.
+Earlier failed-head evidence is preserved and does not qualify the corrected head.
+
+
 CI fixture repairs (2026-11-13): the full compatibility-contract file selection
 from the CPU workflow passes 1,088 cases locally on WindowsCPython3.12.8.
 Current selection/review-gate/capture tests use revision6; frozen defaults retain

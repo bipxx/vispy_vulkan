@@ -1,0 +1,32 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "PASS_EXISTING_PROFILE_CPU_SHUTDOWN_COMPILER_CONTRACT",
+  "scope": "Actual production shutdown wrapper with real CPU cache pools and simulated engine teardown; no Dawn/graphics, installed-wheel or release claim.",
+  "source_commit": "b38c4f9068d6a425eef43b62313f0f4cf37f57d9",
+  "process": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\upload-shutdown-compiler-check-500\\compiler-check-process.json",
+    "sha256": "da6d9dcf505bb81d71a54a835189842214439f0e2e0a491b31f8682090971a52"
+  },
+  "commands": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\upload-shutdown-compiler-check-500\\compiler-commands.json",
+    "sha256": "beb3b11750be1f69a220d849f1edb334182cf6d138be76645c2021682770ff72"
+  },
+  "pytest": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\upload-shutdown-compiler-check-500\\pytest.json",
+    "sha256": "0791e4eb36e4267554c4be552fb56d3fce2a7d701d34a9e8889d0c87255a2c29"
+  },
+  "source": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\upload-shutdown-compiler-check-500\\source-and-licenses.zip",
+    "sha256": "7e48e13b73c8352e08cc05003e566935010bf9790d7c3afee0becfbd666f019a"
+  },
+  "cmake": {
+    "path": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\.venv\\Scripts\\cmake.exe",
+    "sha256": "1e674896f8f86f334dc1f95eae884fdecbc50675db418409cebe26e90d89d6c1"
+  },
+  "cases_passed": 1,
+  "compile_steps_passed": 2,
+  "execution_steps_passed": 1,
+  "installed_artifact_admitted": false,
+  "scope_limit": "This closes the missing local compiler-profile check from run499. Its902 passing source scientific cases and this one native contract are separate invocations, not a fabricated full903-case receipt."
+}

@@ -135,8 +135,26 @@ def import_archive(archive_path, pin, workspace, *, available=()):
     return dict(run_id=pin['run_id'],artifact_id=pin['artifact_id'],members=rows)
 
 
+def reuse_candidate(source, candidate_path=None):
+    """Keep legacy selection immutable; explicit successors require full review."""
+    if candidate_path is None:
+        return read(source/'compat/candidates/tk-state-resource-1/candidate.json')
+    name = PurePosixPath(str(candidate_path))
+    if (name.is_absolute() or '..' in name.parts or '\\' in str(candidate_path)
+            or ':' in str(candidate_path) or str(name) != str(candidate_path)):
+        raise ValueError('Candidate must be a canonical source-relative file')
+    path = no_alias(source/name)
+    candidate = read(path)
+    try:
+        from .compatibility_candidate import validate_candidate
+    except ImportError:
+        from compatibility_candidate import validate_candidate
+    validate_candidate(candidate, source, require_reviewed=True)
+    return candidate
+
+
 def validate_inputs(inventory, pin, source, workspace, *, package_current_python=False,
-                    keep_original_description=False):
+                    keep_original_description=False, candidate_path=None):
     """Current source/package plus unchanged original native and harness proof."""
     if keep_original_description and not package_current_python:
         raise ValueError('Original description selection requires current Python packaging')
@@ -146,19 +164,13 @@ def validate_inputs(inventory, pin, source, workspace, *, package_current_python
         from qualification_native import source_inputs
     sys.path.insert(0,str(source/'cmake'))
     from runtime_package import wheel_package_hashes
-    schema=workspace/native.SCHEMA
-    schema.parent.mkdir(parents=True,exist_ok=True)
-    expected=(source/native.SCHEMA).read_bytes()
-    if schema.exists():
-        if schema.read_bytes()!=expected:raise ValueError('Reuse validation schema differs')
-    else:
-        with schema.open('xb') as stream:stream.write(expected)
+    schema=source/native.SCHEMA
     capture=native.capture_from_inventory(inventory,workspace)
     state=read(workspace/capture['state']['path'])
     objects={row['origin']:workspace/row['file']['path'] for row in capture['files']}
     original=lambda name: objects[str(PurePosixPath(state['evidence'])/name)]
     before=read(original('source-before.json'))
-    candidate=read(source/'compat/candidates/tk-state-resource-1/candidate.json')
+    candidate=reuse_candidate(source, candidate_path)
     runtime=read(source/candidate['runtime_inputs']['path'])
     required=source_inputs(runtime,source)
     if not package_current_python:
@@ -169,7 +181,8 @@ def validate_inputs(inventory, pin, source, workspace, *, package_current_python
     for name, checksum in required.items():
         if before.get(name)!=checksum or digest(source/name)!=checksum:
             raise ValueError('Changed native/harness/package input; explicit production/package decision required: '+name)
-    result,environment=native.validate_capture(capture,native.production_inputs(runtime),workspace)
+    result,environment=native.validate_capture(capture,native.production_inputs(runtime),source,
+                                                evidence_root=workspace)
     if result['production_sha256']!=pin['production_sha256']:
         raise ValueError('Original native production identity differs')
     audit=read(original('archive.json'));wheel=objects[audit['wheel']]
@@ -314,6 +327,7 @@ def main():
     parser.add_argument('--reference',type=Path,default=REFERENCE)
     parser.add_argument('--archive',type=Path)
     parser.add_argument('--available-index',type=Path)
+    parser.add_argument('--candidate', help='Reviewed source-relative successor candidate; omission preserves the original selection')
     parser.add_argument('--metadata-only',action='store_true')
     parser.add_argument('--package-current-python',action='store_true',
                         help='Audit and assemble current pure sources around unchanged proved native outputs')
@@ -335,7 +349,8 @@ def main():
     original_inputs=transport_retention(inventory,workspace,evidence)
     if args.package_current_python:
         checked=validate_inputs(inventory,pin,ROOT,workspace,package_current_python=True,
-                                keep_original_description=args.keep_original_description)
+                                keep_original_description=args.keep_original_description,
+                                candidate_path=args.candidate)
         original_wheel=checked['wheel']
         if checked['package_report']['changed_members']:
             output=checked['package_bytes'];checksum=hashlib.sha256(output).hexdigest()
@@ -351,7 +366,7 @@ def main():
               assembled_wheel=dict(path=str(checked['wheel']),sha256=digest(checked['wheel'])),
               production_sha256=checked['native']['production_sha256']))
     else:
-        checked=validate_inputs(inventory,pin,ROOT,workspace)
+        checked=validate_inputs(inventory,pin,ROOT,workspace,candidate_path=args.candidate)
     write(evidence/'reuse-original-capture.json',checked['capture'])
     write(evidence/'reuse-native-result.json',checked['native'])
     wheel_requirement(checked['wheel'],evidence)

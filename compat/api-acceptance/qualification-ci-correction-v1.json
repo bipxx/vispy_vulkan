@@ -1,0 +1,78 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "CORRECTED_FROZEN_HEAD_PUSHED_CI_PENDING",
+  "qualification_head": "340499b0ff81ca12dddf04b763477c93737fde89",
+  "parent": "152183d0e3d737bf036d0baad2c0981ab6fe981c",
+  "runtime_source_commit": "b38c4f9068d6a425eef43b62313f0f4cf37f57d9",
+  "branch": "refs/heads/wip/qualification-reviewed-492",
+  "source_files": 5930,
+  "changed_files": 19,
+  "source_freeze": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\qualification-ci-correction-497\\source-freeze.json",
+    "sha256": "147d9f4f5c5aa3a4a5367b3d64ae810e99c85b2ad927e92388456237ae44e90b"
+  },
+  "source_delta": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\qualification-ci-correction-497\\source-delta-and-licenses.zip",
+    "sha256": "27271b710d356b2675a5174a454bd377eab559a66bba8b3ba5680e038c138b76"
+  },
+  "subject_head_validation": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\qualification-ci-correction-497\\subject-head-validation.json",
+    "sha256": "45130aa15cda6d1fe4057ed51bc96f76dff544296596cd1694f72f03a14dff01"
+  },
+  "dispatch_processes": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\qualification-ci-correction-497\\processes.json",
+    "sha256": "25120f7e222ba1d2b4a9dd96573075d0db58c1bc63d40fdbe86d9be44acd1e88"
+  },
+  "original_head_run_history": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\qualification-ci-correction-497\\new-head-runs.json",
+    "sha256": "46d5846ec67d8571e37d2c3d567a728b9a47bba391ee6351116d1f6e84fb6981"
+  },
+  "required_jobs": 23,
+  "runs": [
+    {
+      "id": 43384550407,
+      "run_attempt": 1,
+      "path": ".github/workflows/metal-wheel.yml",
+      "head_sha": "340499b0ff81ca12dddf04b763477c93737fde89",
+      "status": "queued",
+      "conclusion": null,
+      "html_url": "https://github.com/bipxx/vispy_vulkan/actions/runs/43384550407"
+    },
+    {
+      "id": 43384546649,
+      "run_attempt": 1,
+      "path": ".github/workflows/linux-vulkan.yml",
+      "head_sha": "340499b0ff81ca12dddf04b763477c93737fde89",
+      "status": "in_progress",
+      "conclusion": null,
+      "html_url": "https://github.com/bipxx/vispy_vulkan/actions/runs/43384546649"
+    },
+    {
+      "id": 43384543107,
+      "run_attempt": 1,
+      "path": ".github/workflows/cpu-contract.yml",
+      "head_sha": "340499b0ff81ca12dddf04b763477c93737fde89",
+      "status": "queued",
+      "conclusion": null,
+      "html_url": "https://github.com/bipxx/vispy_vulkan/actions/runs/43384543107"
+    }
+  ],
+  "linux_native_mode": "fresh",
+  "metal_native_mode": "fresh",
+  "fresh_mode_decisions": [
+    "compat/api-acceptance/linux-ci-fresh-decision-v1.json",
+    "compat/api-acceptance/metal-ci-fresh-decision-v1.json"
+  ],
+  "local_source_contract_cases_passed": 1088,
+  "reviewed_tools_rehashed_unchanged": true,
+  "runtime_references_unchanged": 608,
+  "owner_index_unchanged": true,
+  "artifact_admitted": false,
+  "required_ci_passed": false,
+  "remaining": [
+    "Monitor exact current head runs; preserve full job and attempt histories and collector identities.",
+    "Complete installed pytest/distribution/gate rows, workflow histories and original retention joins.",
+    "Independent promotion/impact review and integration after required gates."
+  ]
+}

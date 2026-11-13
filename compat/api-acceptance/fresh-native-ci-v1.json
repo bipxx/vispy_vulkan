@@ -1,0 +1,130 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "THREE_FRESH_NATIVE_HEAD_JOBS_SUCCEEDED_CPU_FIXES_PENDING",
+  "qualification_head": "340499b0ff81ca12dddf04b763477c93737fde89",
+  "runs": [
+    {
+      "id": 43384546649,
+      "path": ".github/workflows/linux-vulkan.yml",
+      "status": "completed",
+      "conclusion": "success",
+      "jobs": [
+        {
+          "id": 131749842516,
+          "name": "software-vulkan",
+          "status": "completed",
+          "conclusion": "success",
+          "active_steps": [],
+          "failed_steps": []
+        }
+      ]
+    },
+    {
+      "id": 43384550407,
+      "path": ".github/workflows/metal-wheel.yml",
+      "status": "completed",
+      "conclusion": "success",
+      "jobs": [
+        {
+          "id": 131749854279,
+          "name": "Metal wheel x86_64 CPython 3.12.8",
+          "status": "completed",
+          "conclusion": "success",
+          "active_steps": [],
+          "failed_steps": []
+        },
+        {
+          "id": 131749854702,
+          "name": "Metal wheel arm64 CPython 3.12.8",
+          "status": "completed",
+          "conclusion": "success",
+          "active_steps": [],
+          "failed_steps": []
+        }
+      ]
+    }
+  ],
+  "artifacts": {
+    "43384546649": {
+      "total_count": 1,
+      "artifacts": [
+        {
+          "id": 14019361713,
+          "node_id": "MDg6QXJ0aWZhY3QxNDAxOTM2MTcxMw==",
+          "name": "linux-software-vulkan-wheel-cp312",
+          "size_in_bytes": 43083455,
+          "url": "https://api.github.com/repos/bipxx/vispy_vulkan/actions/artifacts/14019361713",
+          "archive_download_url": "https://api.github.com/repos/bipxx/vispy_vulkan/actions/artifacts/14019361713/zip",
+          "expired": false,
+          "digest": "sha256:fd9067d2e141cf902d3ece3ac5f52281b24fadf8284eded262c53a606a733d1a",
+          "created_at": "2026-11-13T07:45:18Z",
+          "updated_at": "2026-11-13T07:45:18Z",
+          "expires_at": "2027-02-11T07:16:20Z",
+          "workflow_run": {
+            "id": 43384546649,
+            "repository_id": 1427785983,
+            "head_repository_id": 1427785983,
+            "head_branch": "wip/qualification-reviewed-492",
+            "head_sha": "340499b0ff81ca12dddf04b763477c93737fde89"
+          }
+        }
+      ]
+    },
+    "43384550407": {
+      "total_count": 2,
+      "artifacts": [
+        {
+          "id": 14020592138,
+          "node_id": "MDg6QXJ0aWZhY3QxNDAyMDU5MjEzOA==",
+          "name": "metal-wheel-x86_64-cp312",
+          "size_in_bytes": 25542817,
+          "url": "https://api.github.com/repos/bipxx/vispy_vulkan/actions/artifacts/14020592138",
+          "archive_download_url": "https://api.github.com/repos/bipxx/vispy_vulkan/actions/artifacts/14020592138/zip",
+          "expired": false,
+          "digest": "sha256:6d8000592b4a28b59862da90ba175fc84044339872c34e11833e8f7192bccda7",
+          "created_at": "2026-11-13T08:01:27Z",
+          "updated_at": "2026-11-13T08:01:27Z",
+          "expires_at": "2027-02-11T07:16:22Z",
+          "workflow_run": {
+            "id": 43384550407,
+            "repository_id": 1427785983,
+            "head_repository_id": 1427785983,
+            "head_branch": "wip/qualification-reviewed-492",
+            "head_sha": "340499b0ff81ca12dddf04b763477c93737fde89"
+          }
+        },
+        {
+          "id": 14019940710,
+          "node_id": "MDg6QXJ0aWZhY3QxNDAxOTk0MDcxMA==",
+          "name": "metal-wheel-arm64-cp312",
+          "size_in_bytes": 23579660,
+          "url": "https://api.github.com/repos/bipxx/vispy_vulkan/actions/artifacts/14019940710",
+          "archive_download_url": "https://api.github.com/repos/bipxx/vispy_vulkan/actions/artifacts/14019940710/zip",
+          "expired": false,
+          "digest": "sha256:e9804206c0ce31b772441cc45ad4f18fd1ada43b9c6244ecc543b9bffaff94e7",
+          "created_at": "2026-11-13T07:47:51Z",
+          "updated_at": "2026-11-13T07:47:51Z",
+          "expires_at": "2027-02-11T07:16:22Z",
+          "workflow_run": {
+            "id": 43384550407,
+            "repository_id": 1427785983,
+            "head_repository_id": 1427785983,
+            "head_branch": "wip/qualification-reviewed-492",
+            "head_sha": "340499b0ff81ca12dddf04b763477c93737fde89"
+          }
+        }
+      ]
+    }
+  },
+  "scope": "Linux software Vulkan native production plus both experimental Metal build-only architectures. Metal graphics/hardware qualification is not claimed.",
+  "all_required_ci_passed": false,
+  "cpu_grouping_failures_not_waived": true,
+  "selected_local_wheels_unchanged": true,
+  "artifact_admitted": false,
+  "next": [
+    "Verify/import exact successful native archives and refresh explicit reuse references.",
+    "Use current reviewed runtime inputs and correct dispatch identity rules; do not rebuild native inputs for CI grouping/test changes.",
+    "Renew source-head review/CI and finish installed proof/promotion."
+  ]
+}

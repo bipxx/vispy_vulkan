@@ -1,0 +1,119 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "PASS_MATCHED_WSL_COHORT_BINDINGS_PENDING",
+  "wheel": {
+    "path": "build/artifacts/48164e052ddc3d8e5376a3a1f13fa652583142f4634438ae9067e204aab8b6ce/vispy-0.17.0+vulkan.2-cp312-cp312-manylinux_2_39_x86_64.whl",
+    "sha256": "48164e052ddc3d8e5376a3a1f13fa652583142f4634438ae9067e204aab8b6ce"
+  },
+  "source_commit": "b38c4f9068d6a425eef43b62313f0f4cf37f57d9",
+  "candidate": "tk-state-resource-7",
+  "environment_id": "2c8ae25cec2e37f8b1fc5cb9ae38d05e6a73d5f39ee13f83b9433f39f7df4c39",
+  "workflows": [
+    {
+      "workflow": "tk-state-resource-failures",
+      "status": "PASS_ALL_NO_OPENGL_GATES",
+      "report": {
+        "path": "@evidence/build/runs/wsl-matched-cohort-505/reports/tk-state-resource-failures/replay-0.json",
+        "sha256": "18212989d15b20eb8e57e1c9d063dae8d1ca1d36a81090e44389fe268fb9571f"
+      },
+      "worker": {
+        "path": "@evidence/build/runs/wsl-matched-cohort-505/reports/tk-state-resource-failures/replay-0.worker.json",
+        "sha256": "7e5ed6251b9cfe6b4fff9c412c320fae4affcb763dd2f2996748f58b3db90b08"
+      },
+      "receipt": {
+        "path": "@evidence/build/runs/wsl-matched-cohort-505/reports/tk-state-resource-failures/receipt.json",
+        "sha256": "e867deb1efae1bd15b24550230f206dd6e27b9aa5332f1fdb56efeb7715a753e"
+      },
+      "inventory": {
+        "path": "@evidence/build/runs/wsl-matched-cohort-505/reports/tk-state-resource-failures/receipt.inventory.json",
+        "sha256": "3df3e79e2fb72a86d2c27c13e442c5111d91eefd07f515a64add8cf81b4e007b"
+      },
+      "environment_id": "2c8ae25cec2e37f8b1fc5cb9ae38d05e6a73d5f39ee13f83b9433f39f7df4c39",
+      "functional_validation": {
+        "contract": "tk-state-resource-1",
+        "schema": 1,
+        "status": "PASS_FUNCTIONAL_RESULT",
+        "branch_ids": [
+          "ordinary.state",
+          "progress.draw",
+          "progress.poll",
+          "resource.upload-recovery",
+          "submission.gloo.delayed",
+          "submission.gloo.immediate",
+          "submission.raw.delayed",
+          "submission.raw.immediate"
+        ],
+        "qualified": false
+      },
+      "shutdown_gauges": {
+        "pending_tickets": 0,
+        "queued_frames": 0,
+        "live_buffer_bytes": 0,
+        "live_cpu_buffer_bytes": 0,
+        "live_texture_bytes": 0,
+        "canvas_texture_bytes": 0,
+        "transient_buffer_bytes": 0,
+        "line_resource_pool_busy_slots": 0,
+        "line_resource_pool_bytes": 0
+      }
+    },
+    {
+      "workflow": "tk-capture-formats",
+      "status": "PASS_ALL_NO_OPENGL_GATES",
+      "report": {
+        "path": "@evidence/build/runs/wsl-matched-cohort-505/reports/tk-capture-formats/replay-0.json",
+        "sha256": "e695b843e58af49df26d14de3d3408f5e310db8d958a05c02e7544ea6fa01477"
+      },
+      "worker": {
+        "path": "@evidence/build/runs/wsl-matched-cohort-505/reports/tk-capture-formats/replay-0.worker.json",
+        "sha256": "50bba9d473f647e03304c37d4d2ca4c9ec5e5472b19e16dc25ae00fe9e8a9fb5"
+      },
+      "receipt": {
+        "path": "@evidence/build/runs/wsl-matched-cohort-505/reports/tk-capture-formats/receipt.json",
+        "sha256": "36ea2776e3865e4611470b95cb8b875d6a1969b71a6ecfed225afc30ed9b67e8"
+      },
+      "inventory": {
+        "path": "@evidence/build/runs/wsl-matched-cohort-505/reports/tk-capture-formats/receipt.inventory.json",
+        "sha256": "3df3e79e2fb72a86d2c27c13e442c5111d91eefd07f515a64add8cf81b4e007b"
+      },
+      "environment_id": "2c8ae25cec2e37f8b1fc5cb9ae38d05e6a73d5f39ee13f83b9433f39f7df4c39",
+      "functional_validation": {
+        "schema": 1,
+        "contract": "tk-capture-1",
+        "status": "PASS_FUNCTIONAL_RESULT",
+        "branch_ids": [
+          "capture.invalid-viewport",
+          "capture.ordinary",
+          "capture.resize",
+          "capture.retry"
+        ],
+        "qualified": false
+      },
+      "shutdown_gauges": {
+        "pending_tickets": 0,
+        "queued_frames": 0,
+        "live_buffer_bytes": 0,
+        "live_cpu_buffer_bytes": 0,
+        "live_texture_bytes": 0,
+        "canvas_texture_bytes": 0,
+        "transient_buffer_bytes": 0,
+        "line_resource_pool_busy_slots": 0,
+        "line_resource_pool_bytes": 0
+      }
+    }
+  ],
+  "feature_profile_joins": 16,
+  "gate_checks": 48,
+  "installed_members_verified": 537,
+  "consumer_environment_identical_across_workflows": true,
+  "source_overrides": 0,
+  "native_build": false,
+  "qualified_rows_written": 0,
+  "artifact_admitted": false,
+  "scope": "WSL software Vulkan only; no physical Linux GPU or Metal graphics claim.",
+  "remaining": [
+    "Final profile/distribution receipts,complete original attempt histories and contributing retention.",
+    "Revision7source/scope review,required head CI and promotion."
+  ]
+}

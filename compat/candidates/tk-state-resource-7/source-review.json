@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "status": "APPROVED",
+  "kind": "source",
+  "independent": true,
+  "reviewer": "Claude peer review (claude-fable-5-2), revision7 run510",
+  "candidate_scope_sha256": "e753601edf723f793c89c1feb121694e44174b51735b86420388554b391334b1",
+  "native_reuse_links": [
+    "0b318213871a74b49dc68966dda0b0218258d1e75a5b0d80ce6a304f661b89a5",
+    "79dde9fde3f4095368d11641117bb06603f927f72635f097dfdde214d6a97831"
+  ],
+  "evidence": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\qualification-candidate-peer-510\\review-response-utf8.md",
+    "sha256": "2fc517ff4dab89ceabc60e838c786f5c549adaebee4e53df1cdc8fb7ea4240c8"
+  },
+  "raw_response": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\qualification-candidate-peer-510\\review-response.json",
+    "sha256": "f492a620003cbb916a8f0956a1dba6cd987d43a422e0388a8f653542b2f190da"
+  },
+  "limitations": "Finite Tk scope and source/native CI reuse only. No installed proof completeness, qualification head, hosted CI, GPU Metal or promotion approved. Index does not enumerate Windows transitive raw command logs; bind them explicitly in contributing cleanup proof. Reviewers must check history-bound workflow attribution for pre-observation failures. Incomplete workflow selections fail closed; they are not missing-proof success. Source-local producer inputs require retained-byte proof; hash resolution alone is insufficient."
+}

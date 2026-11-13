@@ -1,0 +1,92 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "PROVISIONAL_INSTALLED_JOINS_VALID_ENVIRONMENT_MATCHING_PENDING",
+  "candidate": "tk-state-resource-7",
+  "feature_profile_joins": 32,
+  "gate_validations": 96,
+  "original_workflow_bundles": 4,
+  "verification": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\installed-proof-join-draft-503\\verification.json",
+    "sha256": "3cd3b66de1bd8fb4b4baf2287356419eb45507ccaa7e0d597fd7db629f888fe0"
+  },
+  "process": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\installed-proof-join-draft-503\\join-process.json",
+    "sha256": "adbed0615b247104a91eb139d0c92a0e9055f84c8a5b4e2947c17e52e0edadf4"
+  },
+  "profiles": [
+    {
+      "profile": "windows-gpu-tk86-cp312-development",
+      "environment_ids": {
+        "state": "7693f3ee9e19e5b3d8a0ed2ed886d87e801714d34a58461a87c2d0eacd947f47",
+        "capture": "e8d549837b3ff194ff24a8d8fd83f0805878929ef30130a443ccfa92d35eea19"
+      },
+      "equal_core_fields": {
+        "python": true,
+        "platform": true,
+        "os_version": false,
+        "executable_sha256": true,
+        "wheel_sha256": true,
+        "distributions": true
+      },
+      "source_profile_vs_installed_fixture": {
+        "python": true,
+        "device": true,
+        "toolkit_binding": true
+      },
+      "materialized_environments_identical": false,
+      "profile_admitted": false
+    },
+    {
+      "profile": "wsl-software-tk90-cp31213-development",
+      "environment_ids": {
+        "state": "c5bfc9933fd629b75e19053f628f58e7fd7492ada4467ec10697aca96c6455ee",
+        "capture": "2c8ae25cec2e37f8b1fc5cb9ae38d05e6a73d5f39ee13f83b9433f39f7df4c39"
+      },
+      "equal_core_fields": {
+        "python": true,
+        "platform": true,
+        "os_version": false,
+        "executable_sha256": true,
+        "wheel_sha256": true,
+        "distributions": false
+      },
+      "source_profile_vs_installed_fixture": {
+        "python": true,
+        "device": true,
+        "toolkit_binding": true
+      },
+      "materialized_environments_identical": false,
+      "profile_admitted": false
+    }
+  ],
+  "environment_differences": {
+    "windows": {
+      "state_build": 26200,
+      "capture_build": 26300,
+      "distributions_equal": true
+    },
+    "wsl": {
+      "state_kernel": "6.18.54.1-microsoft-standard-WSL2",
+      "capture_kernel": "6.18.58.1-microsoft-standard-WSL2",
+      "extra_capture_distributions": [
+        "Pygments",
+        "iniconfig",
+        "pillow",
+        "pluggy",
+        "pytest"
+      ]
+    }
+  },
+  "decision": "Retain the96 passing provisional gate checks and original pytest joins, but do not collapse distinct environment fingerprints. Replay state/failure and capture together in one matched consumer per platform before positive row binding.",
+  "raw_reports_changed": false,
+  "qualified_rows_written": 0,
+  "profiles_admitted": 0,
+  "artifact_admitted": false,
+  "initial_failure_preserved": "initial-failure.txt: two byte-identical retained inventories now have explicit equivalent-path records; neither origin was moved, replaced or deleted.",
+  "remaining": [
+    "Matched Windows and WSL workflow cohorts with current exact wheel/member checks.",
+    "Final profile/distribution receipts, complete attempt histories and contributing retention.",
+    "Revision7 reviews and required head CI, then detached promotion."
+  ]
+}

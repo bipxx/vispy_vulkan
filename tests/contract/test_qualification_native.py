@@ -158,8 +158,8 @@ def test_actual_production_changes_invalidate_reuse_identity(change):
     assert qn.production_identity(recipe, outputs) != original
 
 
-def test_unrelated_preparation_and_qualification_changes_do_not_change_compiler_inputs():
-    candidate = qn.read_json(qn.ROOT / 'compat/candidates/tk-state-resource-6/candidate.json')
+def test_unrelated_preparation_and_qualification_changes_do_not_change_compiler_inputs(current_preparation):
+    candidate = qn.read_json(current_preparation['candidate'])
     runtime = qn.read_json(qn.ROOT / candidate['runtime_inputs']['path'])
     original = qn.production_inputs(runtime)
     changed = deepcopy(runtime)
@@ -172,8 +172,8 @@ def test_unrelated_preparation_and_qualification_changes_do_not_change_compiler_
     assert qn.production_inputs(changed) != original
 
 
-def test_real_native_input_scope_includes_cpp_harness_and_shader_corpus():
-    candidate = qn.read_json(qn.ROOT / 'compat/candidates/tk-state-resource-6/candidate.json')
+def test_real_native_input_scope_includes_cpp_harness_and_shader_corpus(current_preparation):
+    candidate = qn.read_json(current_preparation['candidate'])
     runtime = qn.read_json(qn.ROOT / candidate['runtime_inputs']['path'])
     inputs = qn.source_inputs(runtime)
     for name in ('cpp/runtime.cpp', 'src/vispy/visuals/text/_sdf_cpu.pyx',
@@ -193,8 +193,7 @@ def record_stub(candidate):
 
 
 def test_real_candidate_cannot_reach_sdk_or_proofs_without_review(monkeypatch, without_current_reviews):
-    without_current_reviews(qn)
-    path = qn.ROOT / 'compat/candidates/tk-state-resource-6/candidate.json'
+    path = without_current_reviews(qn)
     ref = {'path': path.relative_to(qn.ROOT).as_posix(), 'sha256': qn.sha(path.read_bytes())}
     monkeypatch.setattr(qn, 'validate_sdk', lambda *args: pytest.fail('unreviewed producer reached SDK verifier'))
     with pytest.raises(qn.InventoryError, match='source and scope review remain pending'):
