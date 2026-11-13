@@ -97,6 +97,24 @@ def test_detached_widget_close_has_no_canvas_to_release(closing_widget):
     assert calls == [] and errors == []
 
 
+def test_accepted_qt_close_without_event_still_closes_canvas(closing_widget, monkeypatch):
+    widget, canvas, calls, errors = closing_widget
+    # A native QWindow with no platform window can accept close without
+    # delivering QWidget.closeEvent. Keep Canvas ownership independent of it.
+    monkeypatch.setattr(QT.QWidget, 'close', lambda self: True)
+    assert widget.close()
+    assert canvas._closed and widget._dawn_closed
+    assert calls == [('close-event',), ('destroy', 7)] and not errors
+
+
+def test_rejected_qt_close_without_event_preserves_canvas(closing_widget, monkeypatch):
+    widget, canvas, calls, errors = closing_widget
+    monkeypatch.setattr(QT.QWidget, 'close', lambda self: False)
+    assert widget.close() is False
+    assert not canvas._closed and not widget._dawn_closed
+    assert not calls and not errors
+
+
 def test_pending_callback_error_survives_nested_close_event_pump(closing_widget):
     widget, canvas, calls, errors = closing_widget
     original = ValueError('previous completion callback failure')
@@ -109,3 +127,30 @@ def test_pending_callback_error_survives_nested_close_event_pump(closing_widget)
     assert canvas._closed and widget._dawn_closed
     assert calls == [('close-event',), ('destroy', 7)]
     assert errors == [(original, 'closeEvent')]
+
+
+def test_close_pump_can_deliver_another_canvas_close(closing_widget):
+    widget, canvas, calls, errors = closing_widget
+    peer = type(widget)()
+    peer._dawn_canvas_id = 8
+    peer_canvas = Canvas.__new__(Canvas)
+    peer_canvas._backend, peer_canvas._closed = peer, False
+    peer_canvas._app = canvas._app
+    peer_canvas.events = SimpleNamespace(close=lambda: calls.append(
+        ('peer-close', canvas._closed, widget._dawn_closed)))
+    peer._vispy_canvas = peer_canvas
+    canvas._app.process_events = QT.QApplication.instance().processEvents
+    try:
+        QT.QtCore.QTimer.singleShot(0, peer.close)
+        assert widget.close()
+        assert canvas._closed and peer_canvas._closed
+        assert widget._dawn_closed and peer._dawn_closed
+        assert calls.count(('destroy', 7)) == calls.count(('destroy', 8)) == 1
+        assert calls.count(('close-event',)) == 1
+        assert ('peer-close', True, True) in calls and not errors
+    finally:
+        peer._dawn_closed = True
+        peer._vispy_canvas = None
+        peer.close()
+        peer.deleteLater()
+        QT.QApplication.instance().sendPostedEvents(None, QT.QtCore.QEvent.Type.DeferredDelete)

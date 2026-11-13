@@ -797,15 +797,25 @@ class CanvasBackendDesktop(QtBaseCanvasBackend, QWidget):
         if self._vispy_canvas is not None:
             self._vispy_canvas.app.process_events()
 
-    def closeEvent(self, event):
-        # A window-manager close does not call Canvas.close() automatically.
-        # Enter its callback/resource ownership path before Qt hides the widget.
-        # Programmatic close already sets _dawn_closed before calling close().
+    def _close_dawn_canvas(self, callback):
         if self._vispy_canvas is not None and not getattr(self, '_dawn_closed', False):
             try:
                 self._vispy_canvas.close()
             except Exception as error:
-                self._record_dawn_callback_error(error, 'closeEvent')
+                self._record_dawn_callback_error(error, callback)
+
+    def close(self):
+        accepted = QWidget.close(self)
+        if accepted:
+            # Qt can accept a never-shown native QWindow's close without
+            # delivering closeEvent. Still retire the owning Canvas once.
+            self._close_dawn_canvas('close')
+        return accepted
+
+    def closeEvent(self, event):
+        # A window-manager close enters Canvas ownership before Qt hides the
+        # top-level widget. Programmatic Canvas.close sets _dawn_closed first.
+        self._close_dawn_canvas('closeEvent')
         QWidget.closeEvent(self, event)
 
     def _vispy_set_current(self):
@@ -883,7 +893,7 @@ class CanvasBackendDesktop(QtBaseCanvasBackend, QWidget):
             # resize event. Suspend the drawable on minimize and configure it
             # again before requesting the first restored frame.
             try:
-                self.resizeGL(self.width(), self.height())
+                self._configure_dawn_drawable(self.width(), self.height())
                 if not self.isMinimized() and self.width() > 0 and self.height() > 0:
                     self.update()
             except Exception as error:
@@ -907,9 +917,9 @@ class CanvasBackendDesktop(QtBaseCanvasBackend, QWidget):
             self.resized.emit()
         return QWidget.resizeEvent(self, event)
 
-    def resizeGL(self, w, h):
+    def _configure_dawn_drawable(self, w, h):
         if self._vispy_canvas is None or getattr(self, '_dawn_closed', False):
-            return
+            return None
         ratio = self._ratio()
         physical_w = int(round(w * ratio))
         physical_h = int(round(h * ratio))
@@ -921,8 +931,14 @@ class CanvasBackendDesktop(QtBaseCanvasBackend, QWidget):
         else:
             _dawn.configure_canvas(int(self._dawn_canvas_id), physical_w, physical_h,
                                    int(self._vispy_canvas.context.config.get('samples', 0) or 0))
+        return physical_w, physical_h
+
+    def resizeGL(self, w, h):
+        physical_size = self._configure_dawn_drawable(w, h)
+        if physical_size is None:
+            return
         self._vispy_canvas.events.resize(size=(self.width(), self.height()),
-                                         physical_size=(physical_w, physical_h))
+                                         physical_size=physical_size)
 
     def paintEvent(self, event):
         if (self._vispy_canvas is None or getattr(self, '_dawn_closed', False) or

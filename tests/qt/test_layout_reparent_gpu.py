@@ -1,5 +1,6 @@
 """Active readback canvas ownership survives real Qt layout and window changes."""
 
+import os
 import time
 
 import numpy as np
@@ -10,9 +11,11 @@ pytestmark = pytest.mark.gpu
 
 def test_active_canvas_moves_layouts_survives_old_parent_deletion_and_winid_change():
     from PyQt6 import QtCore, QtWidgets, sip
-    from vispy import _dawn, app, gloo
+    from vispy import _dawn, app, gloo, config
 
     application = app.use_app('pyqt6')
+    assert os.environ.get('VISPY_QT_PRESENTATION', config['qt_presentation']).lower() == 'readback', (
+        'select readback explicitly before allocating this bounded fixture')
     qt_application = application.native
     assert QtWidgets.QApplication.instance() is qt_application
     hosts = [QtWidgets.QWidget() for _ in range(3)]
@@ -26,7 +29,6 @@ def test_active_canvas_moves_layouts_survives_old_parent_deletion_and_winid_chan
     canvas = app.Canvas(app='pyqt6', parent=hosts[0], size=(40, 30), show=False, vsync=False)
     widget = canvas.native
     identifier = int(widget._dawn_canvas_id)
-    assert widget._dawn_presentation == 'readback', 'select readback explicitly for this bounded case'
     layouts[0].addWidget(widget)
     program = gloo.Program(
         'attribute vec2 a_position; void main() { gl_Position=vec4(a_position,0.,1.); }',
@@ -76,6 +78,7 @@ def test_active_canvas_moves_layouts_survives_old_parent_deletion_and_winid_chan
         assert not canvas._closed and not widget._dawn_closed and not closes
 
     try:
+        assert widget._dawn_presentation == 'readback'
         hosts[0].show()
         canvas.show()
         pump_until(lambda: bool(draws))

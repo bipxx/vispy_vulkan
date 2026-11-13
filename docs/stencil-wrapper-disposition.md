@@ -6,6 +6,22 @@ Installed successor qualification remains pending.
 [Windows source scope](../compat/api-acceptance/stencil-public-routes-source-v1.json),
 [WSL source scope](../compat/api-acceptance/stencil-public-routes-wsl-source-v1.json).
 
+These eight cases also pass on the exact unreleased Windows wheel977357ad within
+[21 selected installed checks](../compat/api-acceptance/lifecycle-windows-installed-selected-v1.json),
+with537package members verified and zero source overrides. Linux installed
+acceptance and formal successor qualification remain pending.
+
+The same eight stencil cases now pass on the exact [Linux candidate8a793196 installed target](../compat/api-acceptance/lifecycle-linux-installed-selected-v1.json),
+within21selected checks, with537members verified,zero overlays and ten zero final
+gauges. Both local installed observations are complete. Formal admission and
+delivery remain pending; earlier pending-Linux descriptions are historical.
+
+The exact [manylinux candidate30a40dcb matched-driver installation](../compat/api-acceptance/lifecycle-linux-manylinux-installed-v1.json)
+now also passes all eight stencil cases within21selected checks, alongside56Tk
+baseline tests and recovery in a separate process on the same target. Both final
+gauge sets are zero; archive metadata and installer RECORD also verify. This
+adds exact retagged-artifact evidence, not formal profile admission or stock parity.
+
 The historical eight failures describe stock VisPy 0.17.0, not eight confirmed
 defects in the Vulkan renderer. The original manifest and failed process records
 remain unchanged in `tests/reference/depth-capture-opengl`.

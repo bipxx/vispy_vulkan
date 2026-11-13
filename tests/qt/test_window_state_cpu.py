@@ -32,6 +32,7 @@ def state_backend(monkeypatch):
         update=lambda: calls.append(('update',)),
         _record_dawn_callback_error=lambda error, callback: errors.append((error, callback)))
     backend.resizeGL = lambda w, h: QT.CanvasBackendDesktop.resizeGL(backend, w, h)
+    backend._configure_dawn_drawable = lambda w, h: QT.CanvasBackendDesktop._configure_dawn_drawable(backend, w, h)
     return backend, native, state, calls, errors
 
 
@@ -61,6 +62,21 @@ def test_zero_drawable_state_change_stays_suspended(state_backend, width, height
     change(backend)
     assert ('configure', 7, 0, 0, 0) in calls
     assert ('update',) not in calls
+
+
+def test_state_only_changes_do_not_emit_user_resize_callbacks(state_backend):
+    backend, _, state, calls, errors = state_backend
+    for minimized in (True, False):
+        state['minimized'] = minimized
+        change(backend)
+    # Maximize/fullscreen can deliver a state change before the actual size.
+    change(backend)
+    assert not [c for c in calls if c[0] == 'resize']
+    state.update(width=80, height=60)
+    backend.resizeGL(80, 60)
+    assert [c for c in calls if c[0] == 'resize'] == [
+        ('resize', dict(size=(80, 60), physical_size=(120, 90)))]
+    assert not errors
 
 
 @pytest.mark.parametrize('attribute,value', [('_initialized', False), ('_dawn_closed', True),
@@ -174,6 +190,7 @@ def test_real_qt_minimize_restore_delivers_state_without_size_change(monkeypatch
 
 def test_first_maximized_show_initializes_before_any_resize(monkeypatch):
     calls, errors = [], []
+    user_sizes, actual_resizes = [], []
     monkeypatch.setattr(vispy, '_dawn', SimpleNamespace(
         update_surface_scale=lambda *args: None,
         configure_canvas=lambda *args: calls.append('configure')), raising=False)
@@ -191,8 +208,13 @@ def test_first_maximized_show_initializes_before_any_resize(monkeypatch):
             self._vispy_canvas = SimpleNamespace(
                 context=SimpleNamespace(config={'samples': 0}),
                 events=SimpleNamespace(initialize=lambda: calls.append('initialize'),
-                                       resize=lambda **kw: calls.append('resize')))
+                                       resize=lambda **kw: (calls.append('resize'), user_sizes.append(kw['size']))))
             self._initialized = True
+
+        def resizeEvent(self, event):
+            if getattr(self, '_dawn_shown', False):
+                actual_resizes.append((event.size().width(), event.size().height()))
+            return QT.CanvasBackendDesktop.resizeEvent(self, event)
 
         def _dawn_surface(self):
             calls.append('surface')
@@ -214,6 +236,14 @@ def test_first_maximized_show_initializes_before_any_resize(monkeypatch):
         assert calls.index('initialize') < calls.index('configure')
         assert calls.index('initialize') < calls.index('resize')
         assert errors == []
+        calls.clear()
+        user_sizes.clear()
+        actual_resizes.clear()
+        widget.showNormal()
+        application.processEvents()
+        widget.showMaximized()
+        application.processEvents()
+        assert user_sizes == actual_resizes
     finally:
         widget._dawn_closed = True
         widget._vispy_canvas = None

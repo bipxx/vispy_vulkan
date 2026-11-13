@@ -86,9 +86,11 @@ def test_native_window_close_releases_owner_and_preserves_shared_peer():
     print('native close callback once; late events ignored; shared peer green; shutdown gauges', gauges)
 
 
-def test_pending_peer_snapshot_survives_parsed_deletes_and_other_window_close():
+@pytest.mark.parametrize('presentation', ['readback', 'native'])
+def test_pending_peer_snapshot_survives_parsed_deletes_and_other_window_close(monkeypatch, presentation):
     from vispy import _dawn, app, gloo
 
+    monkeypatch.setenv('VISPY_QT_PRESENTATION', presentation)
     application = app.use_app('pyqt6')
     first = app.Canvas(app='pyqt6', size=(24, 18), show=False)
     peer = app.Canvas(app='pyqt6', size=(24, 18), shared=first, show=False)
@@ -109,7 +111,8 @@ def test_pending_peer_snapshot_survives_parsed_deletes_and_other_window_close():
         program.delete()
         vertices.delete()
         peer.context.flush_commands()
-        assert first.native.close()
+        # Isolate native DELETE retirement from Qt's close-event delivery.
+        first.close()
         assert first._closed and first.native._dawn_closed
         _dawn.present(peer.native._dawn_canvas_id)
         _dawn.finish(peer.native._dawn_canvas_id)
@@ -127,3 +130,32 @@ def test_pending_peer_snapshot_survives_parsed_deletes_and_other_window_close():
         'line_resource_pool_busy_slots', 'line_resource_pool_bytes')}
     assert not any(gauges.values()), gauges
     print('pending peer snapshot survives parsed DELETE and native close; exact green pixels; gauges', gauges)
+
+
+@pytest.mark.parametrize('presentation', ['readback', 'native'])
+def test_never_shown_widget_close_retires_canvas_in_selected_mode(monkeypatch, presentation):
+    from vispy import _dawn, app
+
+    monkeypatch.setenv('VISPY_QT_PRESENTATION', presentation)
+    application = app.use_app('pyqt6')
+    canvas = app.Canvas(app='pyqt6', size=(24, 18), show=False)
+    widget = canvas.native
+    closes = []
+    canvas.events.close.connect(lambda event: closes.append(True))
+    try:
+        assert widget._dawn_presentation == presentation
+        assert not widget.isVisible()
+        assert widget.close()
+        assert canvas._closed and widget._dawn_closed and closes == [True]
+        assert widget.close()
+        canvas.close()
+        assert closes == [True]
+    finally:
+        canvas.close()
+        application.process_events()
+        _dawn.process_events()
+    gauges = {name: _dawn.probe()[name] for name in (
+        'pending_tickets', 'queued_frames', 'live_buffer_bytes', 'live_cpu_buffer_bytes',
+        'live_texture_bytes', 'canvas_texture_bytes', 'transient_buffer_bytes',
+        'line_resource_pool_busy_slots', 'line_resource_pool_bytes')}
+    assert not any(gauges.values()), gauges

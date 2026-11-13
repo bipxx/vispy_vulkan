@@ -42,6 +42,9 @@ def seeded_canvas():
     pytest.param(None, None, .75, 7, id='none-preserves-both'),
     pytest.param(True, True, .75, 7, id='true-uses-current-values'),
     pytest.param(np.bool_(False), np.bool_(False), .75, 7, id='numpy-false-preserves-both'),
+    # Preserve the pre-existing NumPyTrue numeric-setting behavior.
+    pytest.param(np.bool_(True), np.bool_(True), 1., 1, id='numpy-true-sets-one'),
+    pytest.param(0, False, 0., 7, id='integer-depth-zero'),
     pytest.param(0., False, 0., 7, id='numeric-depth-zero'),
     pytest.param(False, 0, .75, 0, id='numeric-stencil-zero'),
     pytest.param(0., 0, 0., 0, id='both-numeric-zero'),

@@ -4,6 +4,71 @@
 
 Latest executed gates (supersede pending descriptions below):
 
+- [x] [Independent review588 completed with CHANGES_REQUIRED](../../../compat/api-acceptance/lifecycle-cumulative-review-required-v1.json);
+  preparation9/current reuse digests remain unapproved.
+- [x] Hidden native QWidget accepted close now reaches Canvas cleanup; state
+  changes reconfigure without duplicate user resize events. [57CPU checks pass](../../../compat/api-acceptance/qt-close-state-review-source-v1.json)
+  after three before regressions and a retained intermediate refactor abort.
+- [x] [26Windows](../../../compat/api-acceptance/qt-close-state-windows-source-v1.json)
+  and [26WSL source cases](../../../compat/api-acceptance/qt-close-state-wsl-source-v1.json)
+  pass with existing native modules. Mode-declared hidden close is separate
+  from programmatic DELETE retirement; layout refusal cleans up; integer0 and
+  legacy NumPyTrue controls are covered. No broad WSI/embedding/binding claim.
+  Runs588–591 cleaned:37,687,548bytes,59retained-file rehashes.
+- [ ] Apply next-revision CI selectors BEFORE computing preparation tool/scope/
+  reuse digests. Freeze/push corrected Python source, repackage existing native
+  outputs, renew preparation/installed checks and obtain follow-up review of
+  unread conservation/scope records. Old preparation9/wheel passes remain at
+  sourcef93d80b; no approvals transfer.
+
+- [x] [Current preparation9 native proof bindings](../../../compat/api-acceptance/lifecycle-producer-bindings-wip-v1.json)
+  revalidate Windows560/Linux43471568101; real review gates remain closed.
+- [x] [Current auditwheel verdict and Linux archive prerequisite](../../../compat/api-acceptance/lifecycle-linux-manylinux-archive-v1.json)
+  pass, changing only WHEEL/RECORD to the required manylinux_2_39 tag.
+- [x] Exact wheel30a40dcb [passes21selected+56baseline cases and composite recovery](../../../compat/api-acceptance/lifecycle-linux-manylinux-installed-v1.json)
+  on one matched patched-Mesa installed target, with537runtime members,
+  561archive members excluding installer RECORD,566installer RECORD entries,
+  zero overlays and ten zero gauges per process. SystemMesa failure stays failed.
+  Runs585–587 cleaned:52,668,442bytes reclaimed,69retained-file rehashes.
+- [ ] Cumulative independent source/scope/native-reuse review; current CI
+  selection and required head checks; strict qualification/profile bindings and
+  protected integration. No approval, admission or delivery is inferred above.
+
+- [x] Fresh baseline Tk observations on both current installed wheels:56tests
+  and composite recovery pass on Windows and the existing exact patched Mesa
+  Linux profile, with537members,zero overlays and zero shutdown gauges.
+  SystemMesa25.2.8 remains failed at one MSAA capture case; do not collapse
+  its55passes/1failure with the patched-driver result.
+- [x] [Unreviewed preparation9 validates](../../../compat/api-acceptance/lifecycle-preparation9-wip-v1.json),
+  with fresh runtime/tool/profile bindings,128selected criteria and142original
+  obligations preserved;260historical records unchanged. No approval transfers.
+  Runs580–584 cleaned:105,929,160bytes reclaimed,95retained-file rehashes.
+- [ ] Build exact current native/archive reuse records; obtain cumulative
+  independent review, then update explicit CI selection and run required head
+  checks before protected integration. CI still selects8; preparation9 is local
+  and NOT_QUALIFIED, not a release or formal installed-profile admission.
+
+- [x] [Linux candidate8a793196 passes21selected installed cases](../../../compat/api-acceptance/lifecycle-linux-installed-selected-v1.json)
+  at sourcef93d80b:537members,57loaded origins,zero source overlays and ten zero
+  shutdown gauges. Only the wrapper Python member changed; verified native
+  output, metadata and notices reused. Run579 is cleaned (29,081,532bytes),
+  with26retained inputs rehashed. Initial zero-delete live-PID refusal and its
+  successful unchanged-plan follow-up are preserved.
+- [ ] Renew current candidate/tool/source bindings and cumulative independent
+  review; execute affected required final-head CI and protected integration.
+  Exact local installed passes do not supply formal qualification or delivery.
+
+- [x] [Owned sourcef93d80b pushed](../../../compat/api-acceptance/lifecycle-owned-source-head-v1.json)
+  on the existing WIP branch with the other-owner index untouched.
+- [x] [21 selected Windows installed tests pass](../../../compat/api-acceptance/lifecycle-windows-installed-selected-v1.json)
+  on exact candidate977357ad:537package members,58loaded origins,zero source
+  overrides and ten zero gauges. The first native-mode controller mismatch
+  remains failed; the same wheel passes explicit readback. No native rebuild.
+  Runs576–578 are cleaned;75,535,236 bytes reclaimed and184retained-file rehashes.
+- [ ] Linux audited pure-member repackaging and selected installed acceptance;
+  candidate reviews, required final-head CI and protected integration. Local
+  installed acceptance does not confer strict profile or release admission.
+
 - [x] Review's minor workflow-test coupling fixed using pinned data;90contracts pass.
 - [x] SCI-06's eight historical failure routes investigated: [eight Windows cases](../../../compat/api-acceptance/stencil-public-routes-source-v1.json)
   and [eight WSL source cases](../../../compat/api-acceptance/stencil-public-routes-wsl-source-v1.json)
