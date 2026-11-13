@@ -1,0 +1,39 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "PASS_FINITE_WINDOWS_SOURCE_VULKAN_LIFECYCLE",
+  "coverage_ids": [
+    "LIF-03"
+  ],
+  "source_only": true,
+  "installed_qualification": false,
+  "actual_exit": 0,
+  "child_waited": true,
+  "tests_passed": 1,
+  "source_inputs": {
+    "src/vispy/app/backends/_qt.py": "12d3895497a42465c8d85ba31c5324e855cc5284668af726d5a522ad5fcb3883",
+    "tests/qt/test_window_state_gpu.py": "42632b9cf033f53fad253e6b03eea17317a745f635a6e636c594719483f58980"
+  },
+  "native_wheel_sha256": "a86b030b005cba455f46ccaeffc56bf3f438142e490999f88156370e6093fb6c",
+  "native_inputs": {
+    "_dawn.cp312-win_amd64.pyd": "8b93326abbc14d28fe6743bc3571d5dbb83edb5e75c8c91535294ab5da0398e2",
+    "VkLayer_vispy_submit.dll": "050a86a3550aaed01e5a66a15fb44a313af83f816586c2119a7d14f57fb9e37b",
+    "VkLayer_vispy_submit.json": "7323cea73a46efcba615ca452d2b0235e3741109628c4bf2979c105e6ae69d56"
+  },
+  "evidence_root": "D:\\vispy-vulkan-managed\\build\\runs\\qt-window-state-matched-550",
+  "profile": "Windows CPython3.12.8 / PyQt6 / QWidget readback / NVIDIA RTX4090 Vulkan driver610.88; source Python and explicit native payload from qualified wheel",
+  "proved": [
+    "Exact red pixels before minimize",
+    "Minimized redraw requests do not draw, present or submit",
+    "Pending tickets and queued frames zero while minimized",
+    "Restoration keeps physical size, recreates drawable, presents exact green pixels",
+    "Pending tickets and queued frames zero after close"
+  ],
+  "limitations": [
+    "Source checkout with explicit qualified-native selection, not installed wheel",
+    "No WSL result, native WSI result or cross-monitor/DPI claim",
+    "Physical zero-size windows and broader memory-accounting still need their own evidence"
+  ],
+  "previous_failure": "../qt-window-state-gpu-549/verification.json",
+  "next": "WSL source verification and successor artifact qualification; keep LIF-03 partial"
+}

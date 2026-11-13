@@ -1,0 +1,38 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "PASS_CUMULATIVE_QT_SOURCE_CPU_CHECKS",
+  "coverage_ids": [
+    "API-05",
+    "LIF-02",
+    "LIF-03",
+    "LIF-04"
+  ],
+  "source_only": true,
+  "installed_qualification": false,
+  "source_inputs": {
+    "src/vispy/app/backends/_qt.py": "1002d70a39ee4261b8a880cbf9776270880060875f2a90159eda01eba7782eb9",
+    "tests/qt/test_native_close_cpu.py": "8e004bcf20db7f788670cf47aad99fcade5579706bbcc1613dbe1b239fbab7e1",
+    "tests/qt/test_window_state_cpu.py": "012071f7af7528f13ab573fa7c3b353df1dabf6d3bbd7636b3bfc15e45a318ac",
+    "tests/qt/test_paint_scope_cpu.py": "5c2808ff57c245006bcbc5b77dbf96d026896f4d1b2de23a41bc1b42490c7c78",
+    "LICENSE": "0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0",
+    "LICENSE-BSD": "a28bb857d763513c810ca843558c12cf97f64b990b855c1ce7f5e291e52fc25c",
+    "LICENSING.md": "e8a28d2d2c78d86fa2b6f83284e8f1a32237f87bfd417fd1cdfc84c8f3ce37f5"
+  },
+  "evidence_root": "D:\\vispy-vulkan-managed\\build\\runs\\qt-sharing-source-556",
+  "before": {
+    "actual_exit": 1,
+    "result": "3 legacy sharing failures, 47 passed"
+  },
+  "after": {
+    "actual_exit": 0,
+    "child_waited": true,
+    "result": "50 passed"
+  },
+  "scope": "Windows CPython3.12.8/PyQt6 CPU doubles and real offscreen Qt event dispatch; context-sharing capability no longer depends on legacy GL opt-in",
+  "limitations": [
+    "No installed artifact claim",
+    "Real shared-peer rendering exposed final pending-delete retirement in run557; native fix uncompiled",
+    "Reparenting, in-flight close and actual surface loss remain separate open coverage"
+  ]
+}

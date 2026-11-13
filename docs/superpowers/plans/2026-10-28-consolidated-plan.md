@@ -2,6 +2,8 @@
 
 ## Current execution status — 2026-11-13
 
+The post-release execution order is the [remaining-gap investigation and closure plan](2026-11-13-remaining-gap-closure.md). Start with bounded BUG-01/02 diagnosis, then selected lifecycle and scientific workflows. Its per-ID acceptance and storage controls govern new work; historical checkpoints below retain their original scope. This is planning, not additional coverage admission.
+
 The selected `0.17.0+vulkan.2` release is published and its public delivery checks pass. [GitHub Release](https://github.com/bipxx/vispy_vulkan/releases/tag/v0.17.0-vulkan.2), [PEP503 index](https://bipxx.github.io/vispy_vulkan/simple/), [exact delivery evidence](../../../compat/api-acceptance/successor-public-delivery-v1.json).
 
 - **FIX-04 — Integrated:** PR75 merged as `fc3b9734bbaf2af801e7b3bc81bbc352e5525708` after all eleven protected integration checks passed. Its tree preserves the qualified runtime, tools, workflows and policies; the other owner's index is unchanged.

@@ -1,0 +1,42 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "SOURCE_TESTED_PARTIAL_LIF_04",
+  "coverage_ids": [
+    "LIF-04"
+  ],
+  "source_inputs": {
+    "src/vispy/app/backends/_qt.py": "e997df7e36397c85093ddeadc2d8f74122a234093d0c54137f6808d25c5cb0ca",
+    "src/vispy/app/canvas.py": "00a98debb5519d344c9c9e9ee0f838eb9bfae784cd7c36eb86581076fcec310f",
+    "tests/qt/test_native_close_cpu.py": "0f4f5bc4c70da6dc44654cb709a73d447c2df4781cbd2e837bed3eb707d9df6b"
+  },
+  "source_only": true,
+  "installed_qualification": false,
+  "before": {
+    "actual_exit": 1,
+    "result": "2 failed, 2 passed on corrected fixture",
+    "initial_fixture_error": "First run lacked backend_name in fake app; its extra failing control remains retained"
+  },
+  "after": {
+    "actual_exit": 0,
+    "child_waited": true,
+    "result": "47 passed: 4 close, 14 window-state and 29 paint-scope cases"
+  },
+  "proved": [
+    "Native QWidget close enters actual Canvas.close, emits callback and destroys renderer canvas once",
+    "Programmatic close and repeated/late native closes do not reenter callbacks",
+    "Application close callback failure still cleans up and is contained at Qt boundary"
+  ],
+  "profile": "Windows CPython3.12.8 PyQt6 real offscreen QWidget dispatch with native CPU double",
+  "evidence_root": "D:\\vispy-vulkan-managed\\build\\runs\\qt-native-close-554",
+  "limitations": [
+    "No GPU/installed result in this packet",
+    "In-flight close, surface loss and broader recovery remain open"
+  ],
+  "hygiene": {
+    "scratch_created": false,
+    "cleanup_required": false,
+    "new_environment": false,
+    "native_build": false
+  }
+}

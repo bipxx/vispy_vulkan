@@ -1171,6 +1171,14 @@ struct Engine {
         native = nullptr;
     }
 
+    void retire_deleted_objects() {
+        // DELETE removes namespace ownership at the next interpreter boundary.
+        // Immutable draw snapshots and submitted Tickets retain their own
+        // selected revisions, just as when another command batch arrives.
+        for (int id : drop_next) objects.erase(id);
+        drop_next.clear();
+    }
+
     bool memory_window_idle() {
         update_work_peaks();
         if (probe.pending_tickets || probe.queued_frames || probe.pending_draws || probe.pending_timestamp_frames) return false;
@@ -7241,6 +7249,10 @@ void destroy_canvas(int canvas_id) {
         frame->finalized = true;
     }
     if (!eng.tickets.empty() && eng.queue) eng.wait_queue();
+    // There may never be another command batch after the last window closes.
+    // Release pending DELETE owners here without touching still-live shared
+    // objects used by other canvases.
+    eng.retire_deleted_objects();
     eng.retire_surface(it->second);
     it->second.alive = false;
     it->second.pending.clear();
@@ -7343,8 +7355,7 @@ static void execute_commands_impl(int canvas_id, const std::vector<Command>& com
     ++eng.probe.native_batches;
     if (!eng.init_device()) throw std::runtime_error(eng.info.error);
     eng.poll();
-    for (int id : eng.drop_next) eng.objects.erase(id);
-    eng.drop_next.clear();
+    eng.retire_deleted_objects();
     eng.deleted_now.clear();
     auto& canvas = eng.canvas(canvas_id);
     for (size_t command_index = 0; command_index < commands.size(); ++command_index) {

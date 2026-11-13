@@ -1,0 +1,125 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "coverage_ids": [
+    "LIF-03"
+  ],
+  "source_only": true,
+  "installed_qualification": false,
+  "status": "PASS_FINITE_WSL_SOURCE_VULKAN_LIFECYCLE",
+  "actual_exit": 0,
+  "child_waited": true,
+  "evidence_root": "D:\\vispy-vulkan-managed\\build\\runs\\qt-window-state-wsl-553",
+  "tests_passed": 1,
+  "profile": "WSL Ubuntu CPython3.12.13 PyQt6 xcb/WSLg readback, explicit software Vulkan ICD",
+  "inputs": {
+    "wheel": {
+      "path": "/mnt/d/vispy-vulkan-managed/build/artifacts/48164e052ddc3d8e5376a3a1f13fa652583142f4634438ae9067e204aab8b6ce/vispy-0.17.0+vulkan.2-cp312-cp312-manylinux_2_39_x86_64.whl",
+      "sha256": "48164e052ddc3d8e5376a3a1f13fa652583142f4634438ae9067e204aab8b6ce"
+    },
+    "native": {
+      "member": "vispy/_dawn.cpython-312-x86_64-linux-gnu.so",
+      "sha256": "6c4e3beaaaf922160d9392fb12213b60911585eeca09b18ec07d4ac67fa5e286"
+    },
+    "native_payload": {
+      "VkLayer_vispy_submit.json": "e0762acec9e2df811cbb67e1c25e5c82d9fb76def0101f54fd737464c76786c2",
+      "VkLayer_vispy_submit.so": "95907606472ffe51bec021d4b28e4717472e40f2cef34cd2590d172575c113d4",
+      "_dawn.cpython-312-x86_64-linux-gnu.so": "6c4e3beaaaf922160d9392fb12213b60911585eeca09b18ec07d4ac67fa5e286"
+    },
+    "source": {
+      "src/vispy/app/backends/_qt.py": "12d3895497a42465c8d85ba31c5324e855cc5284668af726d5a522ad5fcb3883",
+      "tests/qt/test_window_state_gpu.py": "42632b9cf033f53fad253e6b03eea17317a745f635a6e636c594719483f58980"
+    },
+    "python": {
+      "path": "/home/heq/.local/share/uv/python/cpython-3.12.13-linux-x86_64-gnu/bin/python3.12",
+      "sha256": "339de109f072e52523066d97a2b3372e358a10cc00c6a9df62c28a6618061900"
+    },
+    "borrowed_pcre": {
+      "path": "/home/heq/vispy-opengl-removal-python-hosts-rootfs-2/rootfs/usr/lib/x86_64-linux-gnu/libpcre2-16.so.0.11.2",
+      "sha256": "4dfa8a4023270763b8ca1654dc4f59f835393b1ae78085a19369228f8109a671"
+    },
+    "icd": {
+      "path": "/usr/share/vulkan/icd.d/lvp_icd.json",
+      "sha256": "70d49f7fd41a7593a4e283543ed4855c139c700e5c1b31792f56e9576ede2398"
+    },
+    "donor": "/home/heq/vispy-opengl-removal-python-hosts-rootfs-2/rootfs/opt/gui-pyqt6-consumer1/lib/python3.12/site-packages",
+    "deps": {
+      "/home/heq/vispy-opengl-removal-python-hosts-rootfs-2/rootfs/opt/gui-pyqt6-consumer1/lib/python3.12/site-packages/freetype_py-2.5.1.dist-info/METADATA": "b4f89f738588fd0aed895c612068c41cdde93f79f1832b80dbd11c07cae26c1c",
+      "/home/heq/vispy-opengl-removal-python-hosts-rootfs-2/rootfs/opt/gui-pyqt6-consumer1/lib/python3.12/site-packages/packaging-26.3.dist-info/METADATA": "70fdb89fc4d4a9a043bf7372b8972bcc883fddff34ab55e9cf80d73875384763",
+      "/home/heq/vispy-opengl-removal-python-hosts-rootfs-2/rootfs/opt/gui-pyqt6-consumer1/lib/python3.12/site-packages/pyqt6_sip-13.13.0.dist-info/METADATA": "db00a90846e1e869a9bf3f73e9eb9d1d14b058872ab9330432cf457bfa0b6ec5",
+      "/home/heq/vispy-opengl-removal-python-hosts-rootfs-2/rootfs/opt/gui-pyqt6-consumer1/lib/python3.12/site-packages/pygments-2.21.0.dist-info/METADATA": "1dde075570136774c706bf0009183a793fe0ee262e4a5590cc6eff8453eedd43",
+      "/home/heq/vispy-opengl-removal-python-hosts-rootfs-2/rootfs/opt/gui-pyqt6-consumer1/lib/python3.12/site-packages/PyQt6/QtCore.abi3.so": "68d07f960374f94ffda3bd6c1da078b978c28370e3c33afbdcf2bdd713018a8f",
+      "/home/heq/vispy-opengl-removal-python-hosts-rootfs-2/rootfs/opt/gui-pyqt6-consumer1/lib/python3.12/site-packages/PyQt6/QtGui.abi3.so": "c1cedb4fb4ca0ced9f3c18a253f480714ef0d4111c559324d86c290e788ea45c",
+      "/home/heq/vispy-opengl-removal-python-hosts-rootfs-2/rootfs/opt/gui-pyqt6-consumer1/lib/python3.12/site-packages/PyQt6/QtWidgets.abi3.so": "be4fe8ce1ea12c59f88dc814d0d7208e410b0cda69677cf0ad2914e424fac379",
+      "/home/heq/vispy-opengl-removal-python-hosts-rootfs-2/rootfs/opt/gui-pyqt6-consumer1/lib/python3.12/site-packages/kiwisolver-1.5.1.dist-info/METADATA": "f07b7b6c0c9c2a624c8a31f931e16712f2cf3490e7dfd51643d68e9d42d4b2c9",
+      "/home/heq/vispy-opengl-removal-python-hosts-rootfs-2/rootfs/opt/gui-pyqt6-consumer1/lib/python3.12/site-packages/pillow-12.3.0.dist-info/METADATA": "8fc07146cab33ef7582361dab6eac596d340b03ec648f18217da7894f73838c8",
+      "/home/heq/vispy-opengl-removal-python-hosts-rootfs-2/rootfs/opt/gui-pyqt6-consumer1/lib/python3.12/site-packages/pyqt6-6.11.0+vispynogl.1.dist-info/METADATA": "c453da2cf0421fdc64edc3d4ce240b1a5c15d584b359af7a9e81dcf684ee787e",
+      "/home/heq/vispy-opengl-removal-python-hosts-rootfs-2/rootfs/opt/gui-pyqt6-consumer1/lib/python3.12/site-packages/pyqt6_qt6-6.11.2+vispynogl.1.dist-info/METADATA": "36ba2420c8c20b99e4bdbceb0ddc987dda75ccab15d5e3023beaff2e9a517b65",
+      "/home/heq/vispy-opengl-removal-python-hosts-rootfs-2/rootfs/opt/gui-pyqt6-consumer1/lib/python3.12/site-packages/pluggy-1.6.0.dist-info/METADATA": "7438c35ee25a095eb7416f84b461c2d74425c5e734ad54c3912453c65244e01c",
+      "/home/heq/vispy-opengl-removal-python-hosts-rootfs-2/rootfs/opt/gui-pyqt6-consumer1/lib/python3.12/site-packages/vispy-0.17.0+vulkan.1.dist-info/METADATA": "37b36ae0f790b8dd895377285824ae883b85f7f1742092c3ea0ca40d145b1700",
+      "/home/heq/vispy-opengl-removal-python-hosts-rootfs-2/rootfs/opt/gui-pyqt6-consumer1/lib/python3.12/site-packages/pytest-9.1.1.dist-info/METADATA": "c5d032518012789cabc870d46589aca3aeda36cf9fa4399ee88bda3d10438451",
+      "/home/heq/vispy-opengl-removal-python-hosts-rootfs-2/rootfs/opt/gui-pyqt6-consumer1/lib/python3.12/site-packages/iniconfig-2.3.1.dist-info/METADATA": "47c2c35d936f5c649d8074c6464719a42966a67b5cebad01e3e5784cf090cfb6",
+      "/home/heq/vispy-opengl-removal-python-hosts-rootfs-2/rootfs/opt/gui-pyqt6-consumer1/lib/python3.12/site-packages/numpy-2.5.3.dist-info/METADATA": "451a9b8028000588e66b0b415587b6aef0bbc51a96d8e8a0cba0dc23acf64f99",
+      "/home/heq/vispy-opengl-removal-python-hosts-rootfs-2/rootfs/opt/gui-pyqt6-consumer1/lib/python3.12/site-packages/hsluv-5.0.4.dist-info/METADATA": "9c0b2ac7125aa5bec9f37cdb434a2226f45d91a55c27a467d3557c3a9c0c59d4"
+    }
+  },
+  "limitations": [
+    "Not an installed artifact",
+    "No physical Linux GPU, Wayland or native WSI claim",
+    "Broader zero-size/resource cases and successor qualification remain pending"
+  ],
+  "device": {
+    "backend": "Vulkan",
+    "adapter_type": "cpu",
+    "vendor": "mesa",
+    "device": "llvmpipe (LLVM 20.1.2, 256 bits)",
+    "driver": "llvmpipe: Mesa 25.2.8-0ubuntu0.24.04.2 (LLVM 20.1.2)",
+    "vendor_id": 65541,
+    "device_id": 0,
+    "max_texture_dimension_1d": 16384,
+    "max_texture_dimension_2d": 16384,
+    "max_texture_dimension_3d": 4096,
+    "max_vertex_attributes": 30,
+    "max_vertex_buffers": 8,
+    "max_vertex_buffer_array_stride": 2048,
+    "max_storage_buffers_per_shader_stage": 16,
+    "max_uniform_buffers_per_shader_stage": 12,
+    "max_inter_stage_shader_variables": 30,
+    "max_storage_buffer_binding_size": 134217728,
+    "max_bindings_per_bind_group": 1000,
+    "max_compute_invocations_per_workgroup": 1024,
+    "max_compute_workgroup_size_x": 1024,
+    "max_compute_workgroups_per_dimension": 65535,
+    "max_point_vertex_attributes": 30,
+    "core_features_and_limits": true,
+    "point_input_limit_scope": "all active user point inputs share one vertex buffer; exact vertex/instance identities use read-only vertex storage without reserving a user attribute; actual granted attribute/stride/storage/allocation limits apply",
+    "max_samplers_per_shader_stage": 16,
+    "max_sampled_textures_per_shader_stage": 48,
+    "max_buffer_size": 4294967295,
+    "max_uniform_buffer_binding_size": 65536,
+    "software": true,
+    "float32_filterable": true,
+    "unorm16_texture_formats": true,
+    "bresenham_lines": true,
+    "last_vertex_provoking": true,
+    "timestamp_query": true,
+    "timestamp_quantization_ns": 65536,
+    "host_mapped_pointer": true,
+    "host_import_limit": 536870912,
+    "depth_stencil_storage": "depth24_unorm_stencil8",
+    "ok": true,
+    "error": "",
+    "loss_count": 0,
+    "revision": "117b054598f4758b598f4b8f48feea48c11fe7b0+dawn-499e5c6ff9b37d5de70c6493fb74c251e0d35c1c"
+  },
+  "proved": [
+    "Exact red pixels before minimize",
+    "No draw, present or Dawn submission on minimized redraw requests",
+    "Same physical size and exact green pixels after restore",
+    "Zero pending tickets and queued frames after close"
+  ],
+  "previous_attempts": [
+    "qt-window-state-wsl-551",
+    "qt-window-state-wsl-552"
+  ]
+}

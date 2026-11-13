@@ -1,0 +1,33 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "NATIVE_COMPILE_READY_WITH_QT_CORRECTIONS_AND_GPU_TESTS_REQUIRED",
+  "coverage_ids": [
+    "API-05",
+    "LIF-01",
+    "LIF-02",
+    "LIF-03",
+    "LIF-04"
+  ],
+  "source_inputs": {
+    "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\src\\vispy\\app\\backends\\_qt.py": "1002d70a39ee4261b8a880cbf9776270880060875f2a90159eda01eba7782eb9",
+    "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\cpp\\runtime.cpp": "f344107e03ff6ce8b4302d8d681739ac9a4c813b3236daafb9d74cff43446fad",
+    "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\src\\vispy\\app\\canvas.py": "00a98debb5519d344c9c9e9ee0f838eb9bfae784cd7c36eb86581076fcec310f",
+    "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\tests\\qt\\test_native_close_cpu.py": "8e004bcf20db7f788670cf47aad99fcade5579706bbcc1613dbe1b239fbab7e1",
+    "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\tests\\qt\\test_native_close_gpu.py": "973431f926517750cae7462762a250f27abed555ce715c8681900cddf94e81d7",
+    "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\tests\\qt\\test_window_state_cpu.py": "012071f7af7528f13ab573fa7c3b353df1dabf6d3bbd7636b3bfc15e45a318ac",
+    "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\tests\\qt\\test_window_state_gpu.py": "42632b9cf033f53fad253e6b03eea17317a745f635a6e636c594719483f58980"
+  },
+  "source_only": true,
+  "native_compiled": false,
+  "installed_qualified": false,
+  "evidence_root": "D:\\vispy-vulkan-managed\\build\\runs\\qt-lifecycle-peer-558",
+  "required": [
+    "Guard pre-show window-state notifications and prove initialize-before-resize on first maximized/fullscreen show",
+    "Add stored callback-error close control",
+    "Prove pending immutable peer draw survives parsed resource DELETE and another canvas close",
+    "Run all nine unchanged zero gauges on rebuilt leaf",
+    "Scope evidence to top-level PyQt6; embedded-parent lifecycle and DELETE queued only after last close remain open"
+  ],
+  "native_review": "Only parsed DELETE ids are erased under existing mutex; immutable snapshot/Ticket revision owners remain alive. Runtime change is uncompiled; no qualification approval."
+}

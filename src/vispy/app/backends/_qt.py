@@ -204,14 +204,13 @@ def message_handler(*args):
 
 
 def use_shared_contexts():
-    """Enable context sharing for PyQt5 5.4+ API applications.
+    """Dawn resources support the public Canvas(shared=...) API.
 
-    This is disabled by default for PyQt5 5.4+ due to occasional segmentation
-    faults and other issues when contexts are shared.
-
+    The legacy VISPY_PYQT5_SHARE_CONTEXT opt-in governed Qt OpenGL contexts.
+    Dawn sharing uses the common resource namespace without creating those
+    contexts, so it is available for every supported binding.
     """
-    forced_env_var = os.getenv('VISPY_PYQT5_SHARE_CONTEXT', 'false').lower() == 'true'
-    return not (QT5_NEW_API or PYSIDE6_API or PYQT6_API) or forced_env_var
+    return True
 
 
 try:
@@ -798,6 +797,17 @@ class CanvasBackendDesktop(QtBaseCanvasBackend, QWidget):
         if self._vispy_canvas is not None:
             self._vispy_canvas.app.process_events()
 
+    def closeEvent(self, event):
+        # A window-manager close does not call Canvas.close() automatically.
+        # Enter its callback/resource ownership path before Qt hides the widget.
+        # Programmatic close already sets _dawn_closed before calling close().
+        if self._vispy_canvas is not None and not getattr(self, '_dawn_closed', False):
+            try:
+                self._vispy_canvas.close()
+            except Exception as error:
+                self._record_dawn_callback_error(error, 'closeEvent')
+        QWidget.closeEvent(self, event)
+
     def _vispy_set_current(self):
         return
 
@@ -858,11 +868,26 @@ class CanvasBackendDesktop(QtBaseCanvasBackend, QWidget):
 
     def event(self, ev):
         kind = ev.type()
-        winid_change = getattr(getattr(QtCore.QEvent, 'Type', QtCore.QEvent), 'WinIdChange', None)
+        event_types = getattr(QtCore.QEvent, 'Type', QtCore.QEvent)
+        winid_change = getattr(event_types, 'WinIdChange', None)
         if winid_change is None:
             winid_change = QtCore.QEvent.WinIdChange
         if kind == winid_change and getattr(self, '_initialized', False):
             self._dawn_surface()
+        if (kind == event_types.WindowStateChange and getattr(self, '_initialized', False)
+                and getattr(self, '_dawn_shown', False)
+                and not getattr(self, '_dawn_closed', False)
+                and not getattr(self, '_dawn_callback_failed', False)
+                and self._vispy_canvas is not None):
+            # Minimize/restore may preserve the QWidget size and deliver no
+            # resize event. Suspend the drawable on minimize and configure it
+            # again before requesting the first restored frame.
+            try:
+                self.resizeGL(self.width(), self.height())
+                if not self.isMinimized() and self.width() > 0 and self.height() > 0:
+                    self.update()
+            except Exception as error:
+                self._record_dawn_callback_error(error, 'window state change')
         return QtBaseCanvasBackend.event(self, ev)
 
     def showEvent(self, event):
@@ -874,8 +899,12 @@ class CanvasBackendDesktop(QtBaseCanvasBackend, QWidget):
             self.resizeGL(self.width(), self.height())
 
     def resizeEvent(self, event):
-        self.resizeGL(event.size().width(), event.size().height())
-        self.resized.emit()
+        # Qt sends the initial resize before showEvent, including a first
+        # maximized/fullscreen show. showEvent emits initialize then that
+        # first resize; do not configure or notify user code prematurely.
+        if getattr(self, '_dawn_shown', False):
+            self.resizeGL(event.size().width(), event.size().height())
+            self.resized.emit()
         return QWidget.resizeEvent(self, event)
 
     def resizeGL(self, w, h):

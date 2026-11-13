@@ -2,6 +2,14 @@
 
 ## Current execution status — 2026-11-13
 
+Current native follow-up: [44native CTests and3Windows Vulkan source cases pass](../compat/api-acceptance/qt-lifecycle-windows-native-v1.json). The parsed-DELETE retirement defect is resolved on the rebuilt Windows leaf: live and pending-snapshot shared-peer cases both render exact pixels and end with all nine zero gauges. Build and GPU scratch is cleaned. Linux native renewal, successor installed qualification and broader lifecycle boundaries remain open.
+
+Latest follow-up: [53CPU checks pass](../compat/api-acceptance/qt-lifecycle-review-followup-v1.json), including first-show initialize/resize ordering and pending callback-error identity. Independent review accepts the native parsed-DELETE cleanup for bounded compilation; it is not yet compiled. The pending peer-snapshot GPU test is added, not passed. Keep native/installed, embedded-parent, actual loss and broader lifecycle items open.
+
+Post-release source work is in progress: [native-close/shared-context CPU follow-up](../compat/api-acceptance/qt-lifecycle-source-followup-v1.json) passes50cases. Windows GPU shared-peer recovery renders correctly but exposes24CPU/GPU-buffer bytes retained after explicit deletion/last close; the pending-DELETE cleanup patch is uncompiled and under review. This updates API-05/LIF-01–04 partially; it does not extend the published wheel's claims or close the parents.
+
+Next work is organized in the [remaining-gap investigation and closure plan](superpowers/plans/2026-11-13-remaining-gap-closure.md): bounded startup diagnosis, lifecycle reliability, selected scientific workflows, then rendering breadth. Planning does not change any open coverage status or require full parity.
+
 The selected `0.17.0+vulkan.2` release is published and its public delivery checks pass. [GitHub Release](https://github.com/bipxx/vispy_vulkan/releases/tag/v0.17.0-vulkan.2), [PEP503 index](https://bipxx.github.io/vispy_vulkan/simple/), [exact delivery evidence](../compat/api-acceptance/successor-public-delivery-v1.json).
 
 - **FIX-04 — Integrated:** PR75 merged as `fc3b9734bbaf2af801e7b3bc81bbc352e5525708` after all eleven protected integration checks passed. Its tree preserves the qualified runtime, tools, workflows and policies; the other owner's index is unchanged.
@@ -521,12 +529,30 @@ explicit boundary; implementing every possible form is not required.
 
 - [ ] **LIF-01 — Fault coverage:** audit acquisition failures, fault injection
   and physical-memory-accounting evidence; retain unresolved cases explicitly.
+  New source failure, 2026-11-13: run557retains24CPU-buffer and24GPU-buffer
+  bytes after final explicit deletion/close. The rebuilt native leaf resolves
+  that exact case with all nine zero gauges on Windows (runs560/561); retain
+  the original failure. Linux and broader fault/memory cases remain open.
 - [ ] **LIF-02 — Reparenting:** selected real layout reparenting, WinIdChange,
   surface ownership and shared-resource lifetimes.
 - [ ] **LIF-03 — Zero/minimized windows:** prove no-submit behavior and restoration
   beyond screenshots or overlay observations.
+  Source progress, 2026-11-13: window-state events now suspend/restore without
+  resize; real offscreen Qt before/after control and 43 CPU cases pass.
+  [Evidence](../compat/api-acceptance/qt-window-state-source-v1.json). Physical
+  Windows readback rendering now also passes no-submit while minimized,
+  exact restored pixels and zero ticket/queue gauges after close
+  ([source Vulkan evidence](../compat/api-acceptance/qt-window-state-windows-source-v1.json)).
+  The same finite case also passes on [WSL software Vulkan](../compat/api-acceptance/qt-window-state-wsl-source-v1.json).
+  Broader zero-size/resource cases and changed-artifact qualification remain
+  open; the local-native and WSL bootstrap failures are retained separately.
 - [ ] **LIF-04 — Close/loss:** selected in-flight close, actual surface loss,
   multicanvas recovery and resource retirement.
+  Source progress, 2026-11-13: native QWidget close now invokes Canvas.close
+  once, including callback-error cleanup. Shared-peer green pixels pass on
+  Windows; rebuilt native final buffer retirement and pending-peer-snapshot
+  preservation now pass ([evidence](../compat/api-acceptance/qt-lifecycle-windows-native-v1.json)).
+  Linux, embedded-parent lifecycle and actual surface loss remain open.
 - [ ] **LIF-05 — MSAA capture:** disposition broader depth/stencil and
   format/feature combinations separately from existing color-resolve evidence.
 - [ ] **LIF-06 — Input forwarding:** selected Qt keyboard, wheel, focus, mouse,
