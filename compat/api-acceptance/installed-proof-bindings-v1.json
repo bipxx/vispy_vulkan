@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "PASS_EXACT_INSTALLED_ROWS_IN_RECONSTRUCTIBLE_OVERLAY",
+  "candidate": "tk-state-resource-7",
+  "feature_profile_rows": 32,
+  "criterion_bindings": 128,
+  "gate_checks": 96,
+  "verification": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\installed-proof-bindings-512\\verification.json",
+    "sha256": "0cd3f0fd08af6dff4171dc060d69456b98a897b57a372a72de311dc2ee31b3f3"
+  },
+  "overlay": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\installed-proof-bindings-512\\selected-row-overlay.json",
+    "sha256": "bffeb59e5a6cde1bf51a13ee5b0e29444db84134ccd2bf0fd21428af31266aec"
+  },
+  "actual_processes": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\installed-proof-bindings-512\\process-observations.json",
+    "sha256": "690384f69cebf5e3c1d1fc1d5e45b097d63395f28322861de5362df11c223884"
+  },
+  "canonical_ledger_changed": false,
+  "artifact_admitted": false,
+  "required_ci_passed": false,
+  "original_required_rows_still_incomplete": 142,
+  "scope": "Actual matched Windows/WSL strict environments; separate same-wheel installed pytest phases explicitly disclosed. No full API parity, Metal GPU qualification or release admission.",
+  "pending": [
+    "Contributing producer/attempt retention joins",
+    "Subject materialization and independent proof review",
+    "Required head CI and promotion"
+  ]
+}

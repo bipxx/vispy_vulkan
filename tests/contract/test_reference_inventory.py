@@ -19,10 +19,34 @@ from tools.fixture_revisions import CASES as REVISION_CASES, assert_expected as 
 
 ROOT = Path(__file__).resolve().parents[2]
 REFERENCE = ROOT / "tests/reference/opengl"
+# The live collector later changed candidate-version resolution. Recorded
+# upstream oracles bind the byte-exact authoring source retained with the
+# historical references.
+FROZEN_CAPTURE = ROOT / "tests/reference/buffer-ordering-opengl/authoring-sources/oracle_capture.py"
+FROZEN_CAPTURE_SHA256 = "66ae25247831c184f38f2c7a2ff151b940013087104907523b11e1ed2b9b151a"
 
 
 def sha256(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def assert_historical_capture_source(provenance, source=FROZEN_CAPTURE):
+    assert provenance["capture_source_sha256"] == FROZEN_CAPTURE_SHA256
+    assert sha256(source) == FROZEN_CAPTURE_SHA256
+
+
+@pytest.mark.parametrize("mutation", ["record", "source", "both"])
+def test_historical_capture_source_rejects_relabelled_or_modified_producers(tmp_path, mutation):
+    provenance = json.loads((REFERENCE / "manifest.json").read_text(encoding="utf-8"))["provenance"]
+    source = tmp_path / "original_capture.py"
+    source.write_bytes(FROZEN_CAPTURE.read_bytes())
+    assert_historical_capture_source(provenance, source)
+    if mutation in ("source", "both"):
+        source.write_bytes(source.read_bytes() + b"\n# altered producer\n")
+    if mutation in ("record", "both"):
+        provenance["capture_source_sha256"] = sha256(source if mutation == "both" else ROOT / "tools/oracle_capture.py")
+    with pytest.raises(AssertionError):
+        assert_historical_capture_source(provenance, source)
 
 
 @pytest.mark.parametrize("failure", ["stale_record", "nonzero_after_record"])
@@ -89,7 +113,7 @@ def test_every_oracle_has_independent_provenance_and_reproducible_artifacts():
     assert provenance["renderer"]["version"].startswith("4.")
     assert provenance["environment"]["QT_QPA_PLATFORM"] != "offscreen"
     assert provenance["fixture_source_sha256"] == sha256(ROOT / "tools/fixture_gloo.py")
-    assert provenance["capture_source_sha256"] == sha256(ROOT / "tools/oracle_capture.py")
+    assert_historical_capture_source(provenance)
     assert provenance["requirements_sha256"] == sha256(ROOT / "tools/oracle_requirements.txt")
     pinned = json.loads((ROOT / "compat/upstream_manifest.json").read_text(encoding="utf-8"))
     for path, actual in provenance["source_sha256"].items():
@@ -107,6 +131,8 @@ def test_every_oracle_has_independent_provenance_and_reproducible_artifacts():
             file = REFERENCE / entry["file"]
             assert file.is_file(), file
             assert sha256(file) == entry["sha256"], file
+        captured = json.loads((REFERENCE / fixture["capture"]["file"]).read_text(encoding="utf-8"))
+        assert_historical_capture_source(captured["provenance"])
         image = np.load(REFERENCE / fixture["rgba"]["file"], allow_pickle=False)
         assert image.shape == tuple(fixture["shape"])
         assert_expected_regions(name, image)
