@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "PARTIAL_BINDING_REFUSED_MISSING_MAP_HASHES",
+  "actual_exit": 1,
+  "child_waited": true,
+  "coverage_ids": [
+    "FIX-04",
+    "FIX-06",
+    "API-06"
+  ],
+  "cause": "Generated scope-review omitted coverage_map_sha256, execution_map_sha256 and admission_scope_sha256; coverage require-reviewed guard refused as intended",
+  "candidate_scope_unchanged": "0b66899655d9092c079826290c5d7138199ddeeb55f6dc3b1edfd3d3fff587e3",
+  "independent_review_approved": true,
+  "strict_profile_admitted": false,
+  "artifact_admitted": false,
+  "scratch_created": false,
+  "evidence_root": "D:\\vispy-vulkan-managed\\build\\runs\\preparation10-approval-bindings-611",
+  "next": "Bind unchanged maps already hashed/read by peer609, then rerun strict reviewed validators without modifying any validator"
+}

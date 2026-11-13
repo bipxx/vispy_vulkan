@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "name": "strict-current-wsl-v1",
+  "owner": "root-strict-wsl-current",
+  "storage_workspace": "D:/vispy-vulkan-managed",
+  "source_workspace": "C:/Users/HEQ/Projects/vispy_vulkan",
+  "registry": "D:/vispy-vulkan-managed/build/.hygiene/registry-preparation10-successor-613.json",
+  "expected_peak_bytes": 536870912,
+  "regular_visible_limit_bytes": 251658240,
+  "temporary_filesystems": {"reports_bytes": 67108864, "temp_bytes": 67108864, "dependency_overlay_bytes": 67108864, "readonly_runtime_directory_bytes": 4096},
+  "aggregate_max_scratch_bytes": 21474836480,
+  "min_free_bytes": 10737418240,
+  "budget_basis": "The512MiB declaration covers a conservative240MiB visible-file bound,192MiB+4KiB bounded temporary filesystems and at most64MiB report retention during teardown, with margin. It does not increase the shared20GiB cap or10GiB reserve.",
+  "reuse": "Existing read-only rootfs1, CPython3.12.13, locked donor dependencies, LLVM18, patched Mesa9c5, original native audit/debugger tools and source/license records. Install only exact wheelb728b575 into a private overlay. No rootfs/environment/SDK copy, native compilation, source clone, dependency refresh or network fallback.",
+  "isolation": "Use a private mount namespace and chroot with original roots bound read-only. Bounded writable mounts and copied collector executable stay in the registered run. Xvfb is an owned temporary child with recorded origin/readiness/exit. Copy only new raw reports out before the namespace exits; preserve every original report.",
+  "guards": "Check writable guest filesystem and C:/D: backing capacity before registration and execution. Translate and preserve all coordinator protected/blocked paths in the guest registry, retaining prior guest protections. Bound child time and visible files; tolerate only files disappearing during sampling. No mutation of borrowed roots, dependencies, driver or runtime libraries.",
+  "checks": "The same two selected strict workflows must pass all actual gates and share one exact installed environment fingerprint. Retain discovery and receipt-extension histories. No UNVERIFIED result becomes passing by relabelling. Current pytest phases, subject/profile joins, mandatory rows, CI and promotion remain separate.",
+  "cleanup": "Await all owned children and namespace teardown. Retain originals, actual process receipts, source/licenses and failure reproducers, then inspect/apply the exact Windows-view cleanup plan using registry613; verify retained hashes and scratch absence. Preserve all original pinned origins."
+}

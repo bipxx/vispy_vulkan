@@ -69,10 +69,18 @@ new pinned paths; preserve the predecessor bytes. Explicitly pass `--registry`
 on all subsequent preflight, plan and apply commands. Do not silently fall back
 to an older registry or overwrite a registry cited by retained qualification.
 The current coordinator selection is recorded in
-[mandatory review follow-up](../compat/api-acceptance/mandatory-review-followup-v1.json):
-`D:/vispy-vulkan-managed/build/.hygiene/registry-mandatory-successor-535.json`.
-Its 18 added legacy inputs remain at their original paths; they are protected
-from cleanup, not adopted as scratch or relocated into the evidence store.
+[preparation10 source-local binding](../compat/api-acceptance/preparation10-source-local-binding-v1.json):
+`D:/vispy-vulkan-managed/build/.hygiene/registry-preparation10-successor-613.json`
+(SHA256 `68377cfaafdcb279072f4d6066d0790e9ef0624588891a65279383059165d5f0`).
+Pass this registry explicitly on subsequent managed preflight, plan and apply
+commands. It preserves every protected, blocked, legacy and capacity entry from
+`registry-mandatory-successor-535.json`; that predecessor remains unchanged and
+records the [18 original legacy inputs](../compat/api-acceptance/mandatory-review-followup-v1.json).
+The successor also protects both retained project `runtime.cpp` source origins
+and checks C: capacity. One 521,666-byte source-local snapshot is required by the
+unchanged native-provenance verifier; its original D: bytes remain retained.
+Scratch stays under the shared D: root and budget. These protected source and
+dependency origins are not adopted as scratch or relocated.
 
 ## Required lifecycle
 

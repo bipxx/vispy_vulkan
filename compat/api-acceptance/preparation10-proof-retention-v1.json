@@ -1,0 +1,38 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "PASS_CURRENT_CONTRIBUTING_RETENTION_NOT_SUBJECT_ADMISSION",
+  "coverage_ids": [
+    "FIX-04",
+    "FIX-06",
+    "API-06",
+    "SHD-06",
+    "TOOL-01"
+  ],
+  "candidate": "tk-state-resource-10",
+  "source_commit": "99719f1f7bdbb320318cf1ccd0eed39f336c7cce",
+  "retention_record": {
+    "path": "@evidence/build/runs/preparation10-proof-retention-623/retention-record.json",
+    "sha256": "bb39dc13b5b012640f7fbe816b567f67d031f46b7835ccc2d1ba742e8e4accd5"
+  },
+  "post_cleanup": {
+    "path": "@evidence/build/runs/preparation10-proof-retention-623/post-cleanup.json",
+    "sha256": "b43e01c7a92f9d58aa9198bf8dc0d80af876573dca3cfcd4711e8ea0004781ab"
+  },
+  "retained_inputs": 791,
+  "both_native_and_archives_validated": true,
+  "selected_rows": 32,
+  "exact_strict_attempts": 6,
+  "failed_attempts_preserved": 2,
+  "actual_exit": 0,
+  "child_waited": true,
+  "scratch_absent": true,
+  "native_rebuilt": false,
+  "artifact_admitted": false,
+  "subject_bound": false,
+  "scope": "New contributing retention event references original immutable inputs in place, including original run cleanup records. It does not reconstruct or impersonate a historical cleanup. Exact draft histories, independent resolutions, row/gate/pytest/raw proofs and licenses retained; canonical execution ledger excluded for guarded materialization.",
+  "remaining": [
+    "Guarded installed subject proof and exact admission basis",
+    "Eight mandatory profile rows, final-head23-job CI, protected integration and delivery"
+  ]
+}

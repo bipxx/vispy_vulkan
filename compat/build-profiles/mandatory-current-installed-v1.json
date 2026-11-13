@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "name": "mandatory-current-installed-v1",
+  "owner": "root-mandatory-current",
+  "storage_workspace": "D:/vispy-vulkan-managed",
+  "source_workspace": "C:/Users/HEQ/Projects/vispy_vulkan",
+  "registry": "D:/vispy-vulkan-managed/build/.hygiene/registry-preparation10-successor-613.json",
+  "expected_peak_bytes": 402653184,
+  "aggregate_max_scratch_bytes": 21474836480,
+  "min_free_bytes": 10737418240,
+  "purpose": "Sequential current-wheel mandatory profile observations, starting with Windows PyQt6; no native production.",
+  "consumer": "One isolated clean installed consumer in registered scratch, using existing CPython and retained core/filtered Qt profile wheels. Install exact hash-locked dependencies and the already assembled current candidate offline in copy mode. No dependency refresh, SDK build, clone, or existing environment mutation.",
+  "budget_basis": "The prior Windows Qt row used this384MiB budget for its consumer, bounded package cache and scenarios. Reuse the same dependency payload; run rows sequentially under the shared20GiB cap and10GiB reserve. Do not increase this profile silently for other binding closures.",
+  "checks": "Retain current collector/scenario/source hashes before execution. Use original seven-stage plain QWidget functional scenario: exact installed artifact, binding/device, parent/show/resize, capture/update/image ownership, overlay/hide/restore, injected device-loss recovery and close. Discover, inventory and strict replay; preserve all attempts and allow at most two receipt extensions only for newly observed files. Keep installed/profile/release claims distinct.",
+  "guards": "Check source/backing/store reserves and shared managed scratch. Continuous child guards tolerate only disappearing test-owned files, enforce declared scratch and wall limits, terminate/wait only owned children, and preserve failures. WSL rows additionally require guest/backing checks and their selected driver/rootfs inputs.",
+  "cleanup": "Retain actual exits/waits, all reports/traces, source and original licenses plus exact immutable dependency/artifact references outside scratch. Clean producer-owned cache through its supported command; inspect/apply the bounded managed cleanup using registry613 and report results before the next row.",
+  "scope": "Current mandatory-row observation only. No prior-wheel admission transfer, eight-row admission, final-head CI, protected integration, release or hardware/full-parity claim. Existing frozen preparations and failures remain authoritative."
+}

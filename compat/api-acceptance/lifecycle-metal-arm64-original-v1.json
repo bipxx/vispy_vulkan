@@ -1,0 +1,43 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "PASS_ORIGINAL_ARM64_BUILD_CPU_AND_CLEANUP_NOT_GPU",
+  "source_commit": "99719f1f7bdbb320318cf1ccd0eed39f336c7cce",
+  "artifact": {
+    "run_id": 43495769632,
+    "artifact_id": 14071998833,
+    "artifact_bytes": 23608095,
+    "artifact_sha256": "8115da9c1eff44efd292e25907454c6f08e9de12e0b59d00cdda19044a5962a6",
+    "max_expanded_bytes": 100663296,
+    "recovered_members": []
+  },
+  "wheel_sha256": "773a0610f4bd429a4ad53d9e96ef6fb539128168ebd5c6a6e8a2b06be639ef02",
+  "original_cleanup": {
+    "status": "PASS_APPLY",
+    "deleted": 9705,
+    "scratch_root": "/Users/runner/work/_temp/vispy-metal-43495769632-1-arm64/build/work/metal-ci-43495769632-1-arm64",
+    "retained_verified": 94
+  },
+  "native_inputs_match_current": true,
+  "source_inventory_sha256": "67e319066dafead9640785427030029cb14769c2ef19126baf784672a39a58b7",
+  "pending": "x86_64 and whole-run completion; production Metal reuse pin not changed",
+  "artifact_admitted": false,
+  "GPU_qualified": false,
+  "coverage_ids": [
+    "TOOL-01",
+    "PLAT-04",
+    "FIX-04",
+    "FIX-06"
+  ],
+  "evidence_root": "D:\\vispy-vulkan-managed\\build\\runs\\metal-current-originals-596",
+  "local_cleanup": {
+    "date": "2026-11-13",
+    "status": "PASS_APPLY",
+    "actual_exit": 0,
+    "command_waited": true,
+    "deleted": 2,
+    "bytes_reclaimed": 23608182,
+    "retained_verified": 113,
+    "scratch_root": "D:/vispy-vulkan-managed/build/work/metal-current-originals-596"
+  }
+}

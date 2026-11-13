@@ -1,0 +1,109 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "PASS_H03_HISTORICAL_UPSTREAM_DISPOSITION_ONLY",
+  "coverage_ids": [
+    "SCI-05",
+    "HOST-06"
+  ],
+  "fixture_id": "H03",
+  "scope": "Existing Windows CPython3.12.8/PyQt6 NVIDIA RTX4090 upstream0.17.0 corrected Glue FRB invalidation-before-update protocol; not current candidate host acceptance",
+  "validated_sources": {
+    "compat/qualifications/glue_vispy_viewers/windows/3.12.8/pyqt6/admission.json": "00b4bc20dfd621bfb83238fa63a253e5c460ff60ded4fcd861a0d5b3ace5bc2b",
+    "tests/reference/glue-cache-update-opengl/manifest.json": "f94a245c2f4607b2ad6b2c9962363ee4793174e95173472a8b0eb9e99e0c2405",
+    "tools/oracle_glue_requirements.txt": "6dbfd71fd13b1a76dd33012027355cd482984b416f07b1b405a1fa4e3b7467ff",
+    "tests/hosts/test_glue_wheel_parity.py": "1601dfe8410f5085154d6f15e5f2df5924663547fe4a1b503c5d87ab637b5883",
+    "tools/fixture_glue_extensions.py": "c17a1fe9266137b334b27ccc718172824fc62ef1e406ebc4341d9bd459ef93c8",
+    "tests/reference/glue-opengl/manifest.json": "1df82c2886606f864afcff7ec055451dd0d46fe0377e2ca1bc1423cab604080b"
+  },
+  "verified_reference_members": [
+    {
+      "path": "tests/reference/glue-cache-update-opengl/scatter.shaders.json",
+      "sha256": "39a1cb7a2d740a4181b32a089ed996af840d02040393ea94b4314b62cab75c68"
+    },
+    {
+      "path": "tests/reference/glue-cache-update-opengl/scatter.commands.json",
+      "sha256": "5468e1cad6c656fcf42ac17e774c7ad24be74c9636f7500a96447be3fc013a4f"
+    },
+    {
+      "path": "tests/reference/glue-cache-update-opengl/scatter.parameters.json",
+      "sha256": "480ad50dc2b5eb2f4be98d3f62a38191e4ee30348f9a279096cbbec3db24664b"
+    },
+    {
+      "path": "tests/reference/glue-cache-update-opengl/scatter.rgba.npy",
+      "sha256": "c20738dfe3f1478e9a0f8e0273230d9684e6d9fcf6dfd3c5b0b6d2266056ef59"
+    },
+    {
+      "path": "tests/reference/glue-cache-update-opengl/scatter_axes.shaders.json",
+      "sha256": "9927ca1a066348b3474b537a095ff279f78e02be429c23ecd94662d5d517c2e1"
+    },
+    {
+      "path": "tests/reference/glue-cache-update-opengl/scatter_axes.commands.json",
+      "sha256": "290d55969ba425ffbc67452d3808760b62670fc8b174903af3bc6e8630b4158e"
+    },
+    {
+      "path": "tests/reference/glue-cache-update-opengl/scatter_axes.parameters.json",
+      "sha256": "09d8caf4abfb14ed43ce8deed2bd5c41f86445c68a504caa7517e4be1ee760ed"
+    },
+    {
+      "path": "tests/reference/glue-cache-update-opengl/scatter_axes.rgba.npy",
+      "sha256": "ae646b650ce3145a08fc4ff633ee2fc6035f2ebc40f378970a8a3b64faaee6cc"
+    },
+    {
+      "path": "tests/reference/glue-cache-update-opengl/scatter_edit.shaders.json",
+      "sha256": "39a1cb7a2d740a4181b32a089ed996af840d02040393ea94b4314b62cab75c68"
+    },
+    {
+      "path": "tests/reference/glue-cache-update-opengl/scatter_edit.commands.json",
+      "sha256": "7f1ad672127d70e1869f913fe364c9f8ecf31a7bff85b311d5b754482b8bfc23"
+    },
+    {
+      "path": "tests/reference/glue-cache-update-opengl/scatter_edit.parameters.json",
+      "sha256": "ea913042e21fca48debf74868883b963f25881f35f46b52b9816c0f2dff31a7c"
+    },
+    {
+      "path": "tests/reference/glue-cache-update-opengl/scatter_edit.rgba.npy",
+      "sha256": "abff74a56c4cbb32bcbdfc53196ce1c7a081838aeba7ca8dcd840ade9cb18e78"
+    },
+    {
+      "path": "tests/reference/glue-cache-update-opengl/volume.shaders.json",
+      "sha256": "67107cedf1e465a26d5d58aabff45c0fa1e2d6764f3d136c69f027957221c7aa"
+    },
+    {
+      "path": "tests/reference/glue-cache-update-opengl/volume.commands.json",
+      "sha256": "4aad5df7b8a9a8e24de9d8c4a156bfd772b1d2c6e417256fe6ee3d25774b6def"
+    },
+    {
+      "path": "tests/reference/glue-cache-update-opengl/volume.parameters.json",
+      "sha256": "fbd41a11a8064a948613d2f7f279cfbc3849fc9a623ed2b5fb1df97ec515bc22"
+    },
+    {
+      "path": "tests/reference/glue-cache-update-opengl/volume.rgba.npy",
+      "sha256": "967163f3ac46541990eabbcbfdfd3d84175a2efbabde4492b5c7ef0f68855318"
+    },
+    {
+      "path": "tests/reference/glue-cache-update-opengl/volume_edit.shaders.json",
+      "sha256": "95463802e0777be0695f9ac0ab8e7107dcb6dad12694f9851e99335f691031f2"
+    },
+    {
+      "path": "tests/reference/glue-cache-update-opengl/volume_edit.commands.json",
+      "sha256": "e3a39f5ebb657f4fc56195e1bde2dd53fa407acc1af56e8a01b29f0f0c0d1173"
+    },
+    {
+      "path": "tests/reference/glue-cache-update-opengl/volume_edit.parameters.json",
+      "sha256": "1dcf2a955103d81a1cffcb2b810e29b4b3d3c7ae0772d395eecd69af17f092ac"
+    },
+    {
+      "path": "tests/reference/glue-cache-update-opengl/volume_edit.rgba.npy",
+      "sha256": "7f5f0ed2247e9627277a3d97434dd156dcd92d1fa52d10438251842e5b0c86b9"
+    }
+  ],
+  "original_failure_preserved": true,
+  "corrected_upstream_admitted": true,
+  "current_candidate_qualified": false,
+  "release_qualified": false,
+  "rendering_performed": false,
+  "package_installed": false,
+  "scratch_created": false,
+  "next": "Keep current HOST-06 qualification open; if selecting Glue on source99719f1 successor, rerun all required fresh-original and installed-candidate workflows without adopting failed original frames"
+}

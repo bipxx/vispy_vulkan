@@ -1,0 +1,56 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "APPROVED_EXACT_FAILED_ATTEMPT_DISPOSITIONS_ONLY",
+  "coverage_ids": [
+    "FIX-04",
+    "FIX-06",
+    "API-06",
+    "TOOL-01"
+  ],
+  "source_commit": "99719f1f7bdbb320318cf1ccd0eed39f336c7cce",
+  "candidate": "tk-state-resource-10",
+  "resolutions": [
+    {
+      "path": "@evidence/build/runs/preparation10-failure-review-621/attempt-resolution-de06f29e1d416cfbc146ed1abf753e57e0f4f1b81c5eafe2b1bf173c14e9f858.json",
+      "sha256": "ae164f701f6b0834ba8d0e5f8851a8aeb981ee355bb6e01ea830fcd4902275f6"
+    },
+    {
+      "path": "@evidence/build/runs/preparation10-failure-review-621/attempt-resolution-616232fc82a076b18833ecb6260a8153d4bd5628d07ccbcdb3d49d1553b2b437.json",
+      "sha256": "6a201de804f68b73a56e8e083435faa3220cb89c4caaac464cf11215f3396f90"
+    }
+  ],
+  "reviewer_models": [
+    "claude-fable-5-2"
+  ],
+  "review_turns": 21,
+  "decision": {
+    "path": "@evidence/build/runs/preparation10-failure-review-621/decision.json",
+    "sha256": "cfd89ce0d83d24b613eccba275890752418e47bee819f77d7d1eb684c88ac982"
+  },
+  "raw_response": {
+    "path": "@evidence/build/runs/preparation10-failure-review-621/review-response.json",
+    "sha256": "0fae3a7960971242d52dbe0a67e1eefa60bd0e2fb83f1a15f7cec8804fba64b6"
+  },
+  "history_scope_correction": {
+    "path": "@evidence/build/runs/preparation10-failure-review-621/history-scope-correction.json",
+    "sha256": "c7b3ba1b3f72d9763dc6a78f3fe0d23a76779d6944486480d2c7c0cc8b2aa9af"
+  },
+  "actual_exit": 0,
+  "child_waited": true,
+  "withheld": [
+    "Contributing terminal retention bindings, subject admission, promotion, mandatory rows, final-head CI, release and delivery: not reviewed and not approved",
+    "preparation10-proof-retention-622 (already present, contains audit.py): not read",
+    "Non-blocking wording defect not corrected by this review: 620 verification.json scope says discovery attempts are 'explicitly inventoried in scan', but scan.json excludes them; scan.py would also silently drop a strict report lacking both worker and receipt (none found)",
+    "Finite scan scope: only the two build/runs roots, JSON files only, at review time; my re-enumeration skipped 385 JSON files over 4 MB (receipt-sized) for the controller test; other drives, build/work, deleted scratch and non-JSON traces were not searched; my search for other invocations matched the wheel hash or the 593 wheel record only; not a full machine forensic audit",
+    "Attempts that crashed before writing a report elsewhere cannot be excluded beyond run 614's processes.json and the absence of failure.txt there",
+    "Native observer event lists, receipt edge/unresolved/optional-dependency content, loader traces and per-binary hashes were not re-derived from the machine; the consumer environment was cleaned, so environment_id and the 537-member verification were taken from retained reports, not recomputed",
+    "Wheel build provenance, source commit 99719f1f content (source directory is not a git checkout here), candidate/scope/source-review records and compat/evidence-stores/secondary-v1.json: hashes only or unread",
+    "qi.validate_workflow_attempts and the scan/draft scripts were read, not re-executed; cleanup-plan.json (604 KB) not read beyond cleanup-result.json",
+    "WSL run 616 checked only at report/worker/receipt binding and process-exit level",
+    "Load-set nondeterminism: each PASS is a single observed replay; no claim of load-set stability, complete OS extension closure, full API parity or physical-hardware parity; no cybersecurity analysis performed"
+  ],
+  "artifact_admitted": false,
+  "subject_bound": false,
+  "scope": "Both original Windows UNVERIFIED attempts remain failed. Exact independent dispositions permit later successful workflow selections; no retention/subject/promotion/CI/mandatory-row/release approval."
+}

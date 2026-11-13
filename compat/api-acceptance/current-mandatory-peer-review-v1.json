@@ -1,0 +1,57 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "APPROVED_CURRENT_MANDATORY_PRE_ADMISSION_SCOPE",
+  "coverage_ids": [
+    "FIX-06",
+    "API-06",
+    "PLAT-08",
+    "TOOL-01"
+  ],
+  "runtime_source_commit": "99719f1f7bdbb320318cf1ccd0eed39f336c7cce",
+  "candidate": "tk-state-resource-10",
+  "reviewer_models": [
+    "claude-fable-5-2"
+  ],
+  "review_turns": 21,
+  "decision": {
+    "path": "@evidence/build/runs/current-mandatory-peer-review-638/decision.json",
+    "sha256": "511624fcd39287bd2989ff05d4fefcf6eb0f3123c959855f8210cdba11402b96"
+  },
+  "raw_response": {
+    "path": "@evidence/build/runs/current-mandatory-peer-review-638/review-response.json",
+    "sha256": "00abfff45e0117769fe4667effad2cce389346c827ffc6bd9fa7ec63ccce4dba"
+  },
+  "review_packet": {
+    "path": "@evidence/build/runs/current-mandatory-peer-review-638/review-packet.json",
+    "sha256": "9cdbac7acaa4a8bb63d85a336ebf799fcbcee542f88f879c743cea0725b34cad"
+  },
+  "reviewed_inputs": {
+    "path": "@evidence/build/runs/current-mandatory-peer-review-638/inputs.json",
+    "sha256": "9e5510c86a298795b90a8ae8126695169a7072e7b39aaa8ab10b985f6e8fb768"
+  },
+  "actual_exit": 0,
+  "child_waited": true,
+  "required_changes": [],
+  "withheld": [
+    "Final-head 23-job CI",
+    "Owned integration and final-head freeze",
+    "Independent final promotion basis",
+    "Matrix and Tk admission (rows_admitted stays 0, artifact_admitted false)",
+    "Delivery or release approval",
+    "Generic qualification_index retention acceptance for the eight original row envelopes",
+    "Any transfer from published vulkan.2 observations, physical Linux GPU, Metal, full API parity, scientific-quality or performance claims",
+    "Execution of the 624 subject validation (not run; retained proof and restoration records read only)",
+    "All-time or out-of-root history: only JSON under the two build/runs roots at cutoff 2026-11-13T23:14:33Z"
+  ],
+  "qualification_index_retention_acceptance": false,
+  "artifact_admitted": false,
+  "required_ci_complete": false,
+  "release_approved": false,
+  "scope": "Exact current eight-row observation/binding/fixture reuse/manual original-retention/finite retained-history review only. Generic Tk contributing-retention/subject proof stays separate. No final matrix/Tk admission, CI, promotion, hardware/full-API or delivery approval.",
+  "remaining": [
+    "Resolve any required review changes before qualification source freeze",
+    "Owned final-head freeze and required23-job CI",
+    "Exact matrix/Tk admission and independent promotion basis, protected integration and delivery"
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "APPROVED_SOURCE_SCOPE_REUSE_ONLY",
+  "coverage_ids": [
+    "FIX-04",
+    "FIX-06",
+    "API-05",
+    "API-06",
+    "LIF-01",
+    "LIF-02",
+    "LIF-03",
+    "LIF-04",
+    "SCI-01",
+    "SCI-02",
+    "SCI-03",
+    "SCI-05",
+    "SCI-06"
+  ],
+  "runtime_source_commit": "99719f1f7bdbb320318cf1ccd0eed39f336c7cce",
+  "candidate_scope_sha256": "0b66899655d9092c079826290c5d7138199ddeeb55f6dc3b1edfd3d3fff587e3",
+  "native_reuse_links": [
+    "34cb3fef762c268a0a71788841d279a7c96b79e1477b22a982da7c19d006a444",
+    "114cdf84085c7b846be920d8ae4a72f0a05cb9ee9baeeb4a5fc7cd261876ddbd"
+  ],
+  "source_decision": "APPROVED",
+  "scope_decision": "APPROVED",
+  "required_changes": [],
+  "reviewer_models": [
+    "claude-fable-5-2"
+  ],
+  "review_turns": 46,
+  "actual_exit": 0,
+  "child_waited": true,
+  "independent_decisions_present": true,
+  "bound_approvals": false,
+  "artifact_admitted": false,
+  "strict_profile_admitted": false,
+  "published": false,
+  "evidence_root": "D:\\vispy-vulkan-managed\\build\\runs\\lifecycle-preparation10-peer-609",
+  "decision_file": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\lifecycle-preparation10-peer-609\\decision.json",
+    "sha256": "779399a9bed969fb6564eb6258c82e71d1056893d9338eec66449b6ad8a65ac5"
+  },
+  "raw_response": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\lifecycle-preparation10-peer-609\\review-response.json",
+    "sha256": "f44ead0ca644301e434fd8c073aabe4e43b1ba173e5f5e8ba2493ca8a996277d"
+  },
+  "withheld": [
+    "execution.json execution.scope_sha256 673bad47: not reproduced with the two digest forms tried",
+    "production_sha256 for both platforms and the Windows recipe hash derivation: taken from run 608, not recomputed (would need the validators)",
+    "Frozen comparison criteria inside tools/fixture_mesh_layout_extensions.compare: file hash checked, logic not read",
+    "Stencil public-route, paint-scope and point-identity test sources: not read",
+    "Any runtime behaviour: nothing executed; Qt close and resize reasoning is from reading"
+  ],
+  "coordinator_execution_scope": {
+    "status": "PASS_COORDINATOR_EXECUTION_SCOPE_REPRODUCTION",
+    "execution_scope_sha256": "673bad47ee19974b4fb9e1f44d1c1fdd3546f17fa716303c412deb576c9a9c74",
+    "method": "Normalize only selected profile admission/environment fields, selected applicability reviewed flags and selected-row proof state; retain all baseline/history/unselected declarations. This is tools/compatibility_execution.py execution_scope projection, not whole-ledger hash.",
+    "independent_peer_reproduced": false,
+    "peer_withheld_preserved": true
+  },
+  "low_priority_followups": [
+    "Real ignored closeEvent/event-filter control",
+    "Callback error through fallback close label",
+    "Hidden resize followed by offscreen render remains untested boundary",
+    "Test inequalities vs observed pending2-to4 and controller final zero-gauge assertions must stay distinct",
+    "Document two selected wrapper features as additive new scope, not parent subsets"
+  ],
+  "next": "Bind exact independent source/scope/reuse approvals without changing candidate scope; then strict installed profiles, required final-head CI and protected integration"
+}

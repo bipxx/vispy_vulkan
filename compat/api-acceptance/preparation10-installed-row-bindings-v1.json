@@ -1,0 +1,48 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "PASS_CURRENT_32_SELECTED_INSTALLED_ROW_BINDINGS_NOT_ADMITTED",
+  "coverage_ids": [
+    "FIX-04",
+    "FIX-06",
+    "API-06",
+    "SHD-06",
+    "TOOL-01"
+  ],
+  "source_commit": "99719f1f7bdbb320318cf1ccd0eed39f336c7cce",
+  "candidate": "tk-state-resource-10",
+  "selected_rows": 32,
+  "distinct_criteria": 64,
+  "criterion_profile_bindings": 128,
+  "raw_gate_checks": 96,
+  "original_required_rows_incomplete": 142,
+  "canonical_preparation_files_unchanged": 14,
+  "overlay": {
+    "path": "@evidence/build/runs/preparation10-installed-bindings-619/selected-row-overlay.json",
+    "sha256": "54475b22363513e68633e9e1d6d3cc2cb2854c5f50a0ac862416637a2c72d316"
+  },
+  "verification": {
+    "path": "@evidence/build/runs/preparation10-installed-bindings-619/verification.json",
+    "sha256": "b79137d392eef5521c92491b5537ec982bc80d68a7424996ab307375e6805feb"
+  },
+  "windows_environment": "d664beb3d72c4e06688a76b903564badfa5758241c29fbbdb2107b826b723ec6",
+  "wsl_environment": "423ba184ed8deea3f2a603a56b96bfe1b0170c1480adfd268f3e4313f6e6ad78",
+  "actual_exit": 0,
+  "child_waited": true,
+  "scratch_created": false,
+  "cleanup": "No scratch, native build or environment created; only retained JSON proofs and scripts.",
+  "artifact_admitted": false,
+  "subject_bound": false,
+  "required_ci_passed": false,
+  "partial_failure": {
+    "run": "preparation10-installed-bindings-618",
+    "actual_exit": 1,
+    "reason": "Inventory row receipt must be source-local; attempted secondary-store path refused by unchanged validator.",
+    "reproducer_retained": true
+  },
+  "remaining": [
+    "Complete exact attempt histories including failed strict replays and independent resolutions",
+    "Contributing retention envelopes and subject proof/admission",
+    "Eight mandatory profile rows, final-head23-job CI, protected integration and delivery"
+  ]
+}

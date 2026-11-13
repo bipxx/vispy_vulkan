@@ -1,0 +1,43 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "PASS_CURRENT_EXACT_ATTEMPT_HISTORY_DRAFTS_NOT_ADMITTED",
+  "coverage_ids": [
+    "FIX-04",
+    "FIX-06",
+    "API-06",
+    "TOOL-01"
+  ],
+  "candidate": "tk-state-resource-10",
+  "source_commit": "99719f1f7bdbb320318cf1ccd0eed39f336c7cce",
+  "verification": {
+    "path": "@evidence/build/runs/preparation10-attempt-histories-620/verification.json",
+    "sha256": "c4ef819c39b69d69e1751d75fe5dc1732d95153453d97a711f1a17f6f0e4e651"
+  },
+  "scan": {
+    "path": "@evidence/build/runs/preparation10-attempt-histories-620/scan.json",
+    "sha256": "a515a582c8258d4c9538f846a3fae44ee30a24873de2249abd881a0045ed2515"
+  },
+  "json_files_scanned": 16617,
+  "strict_controllers": 66,
+  "exact_attempts": 6,
+  "windows_attempts": 4,
+  "wsl_attempts": 2,
+  "failed_attempts_preserved": 2,
+  "selected_workflows": 4,
+  "unattributed_current_wheel_reports": 0,
+  "independent_resolutions_pending": 2,
+  "contributing_retention_pending": true,
+  "actual_exit": 0,
+  "child_waited": true,
+  "scratch_created": false,
+  "cleanup": "Source-only retained scripts/JSON; no scratch, build, dependency installation or environment created.",
+  "artifact_admitted": false,
+  "subject_bound": false,
+  "scope": "Exact current wheel plus strict environment replay history. Discovery-only and different-environment reports remain separately inventoried; neither is silently promoted or deleted.",
+  "remaining": [
+    "Independent review of both Windows UNVERIFIED replay dispositions",
+    "Contributing terminal retention bindings and subject proof/admission",
+    "Eight mandatory profile rows, final-head CI, protected integration and delivery"
+  ]
+}

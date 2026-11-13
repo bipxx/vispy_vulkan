@@ -1,0 +1,68 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "PASS_BOTH_ORIGINAL_METAL_BUILD_CPU_PRODUCERS_PIN_RENEWED",
+  "coverage_ids": [
+    "TOOL-01",
+    "PLAT-04",
+    "FIX-04",
+    "FIX-06"
+  ],
+  "run_id": 43495769632,
+  "source_commit": "99719f1f7bdbb320318cf1ccd0eed39f336c7cce",
+  "source_inventory_sha256": "67e319066dafead9640785427030029cb14769c2ef19126baf784672a39a58b7",
+  "architectures": {
+    "arm64": {
+      "artifact": {
+        "artifact_id": 14071998833,
+        "artifact_bytes": 23608095,
+        "artifact_sha256": "8115da9c1eff44efd292e25907454c6f08e9de12e0b59d00cdda19044a5962a6",
+        "max_expanded_bytes": 100663296,
+        "recovered_members": []
+      },
+      "original_archive_sha256": "586671f51a5a6c67a1097e09612d949a54b0dd546629d865e5aaacdfbb43ce18",
+      "original_consumer_sha256": "d2b695f71a3383f880d934479606761f6ec9ddc7d9d046784db03561dacde305",
+      "wheel_sha256": "773a0610f4bd429a4ad53d9e96ef6fb539128168ebd5c6a6e8a2b06be639ef02",
+      "producer_cleanup": {
+        "status": "PASS_APPLY",
+        "deleted": 9705,
+        "scratch_root": "/Users/runner/work/_temp/vispy-metal-43495769632-1-arm64/build/work/metal-ci-43495769632-1-arm64",
+        "retained_verified": 94
+      },
+      "member_count": 97,
+      "GPU_qualified": false
+    },
+    "x86_64": {
+      "artifact": {
+        "artifact_id": 14075000995,
+        "artifact_bytes": 25561678,
+        "artifact_sha256": "36390c31bcd7d6b5390eb23c3f8fbd439c1f0cf478caa929b40c8290189c2286",
+        "max_expanded_bytes": 100663296,
+        "recovered_members": []
+      },
+      "original_archive_sha256": "3dd859fe76b1bf0ed679ac8d406e33a08dc25c956685042a43946d654ca91d6c",
+      "original_consumer_sha256": "27a27d4c48f7ef2b2d819240213f2412b203c783ccfe8b9c2bb09e9bdef6a014",
+      "wheel_sha256": "4b0c2e1674767dc2226be51ec9d284e8d3f63b3b2facdb4994eff4ddd4174ba1",
+      "producer_cleanup": {
+        "status": "PASS_APPLY",
+        "deleted": 9705,
+        "scratch_root": "/Users/runner/work/_temp/vispy-metal-43495769632-1-x86_64/build/work/metal-ci-43495769632-1-x86_64",
+        "retained_verified": 94
+      },
+      "member_count": 97,
+      "GPU_qualified": false
+    }
+  },
+  "reuse_pin": {
+    "path": "compat/metal-ci-reuse.json",
+    "sha256": "9bbab91f030d0a8d447162c02152cc35be179358110b8f14eedf97c142e63577"
+  },
+  "previous_pin_sha256": "b42196328280bb8abf36c22a7fb783f959fb33563b7cad40e66248dde45f1598",
+  "current_native_inputs_match": true,
+  "whole_run_success": true,
+  "GPU_qualified": false,
+  "artifact_admitted": false,
+  "review_approved": false,
+  "evidence_root": "D:\\vispy-vulkan-managed\\build\\runs\\metal-current-x64-originals-606",
+  "next": "Freeze preparation10 using these final reuse inputs; source/scope/reuse review and current required-head CI remain mandatory"
+}

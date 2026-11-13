@@ -1,5 +1,366 @@
 # Remaining-gap investigation and closure plan
 
+## Current investigation plan — 2026-11-13
+
+This is the authoritative next-work order. All older queues and pending notes
+below are historical checkpoints; consult the linked receipts before repeating
+work. The goal is a documented, useful Windows/WSL Vulkan subset with intentional
+improvements, not full VisPy parity. This planning update launches no tests,
+builds, CI or publication and grants no new coverage admission.
+
+### Verified baseline and actual blockers
+
+Packet3 review checkpoint: [independent638pre-admission approval](../../../compat/api-acceptance/current-mandatory-peer-review-v1.json)
+covers all8row bindings, locked fixture reuse, manual original-retention and finite
+history scope, with no required changes. It rehashes1050inputs/945retained entries
+and492fixture archive members (487RECORD payload hashes), verifies24gates and the
+original functional outcomes, and independently searches current-wheel workers.
+Its narrative/JSON limitations are retained: no subject624execution,623retention
+rehash, rendering-native/member-list recomputation, original466JUnit comparison or
+full logs/mounts/outside-root history audit. Receipt/discovery links and distinct
+guest/coordinator registry identities remain explicit. No final admission/CI or
+promotion approval is conferred. Cleanup removed89bytes/verified1062inputs.
+Next: freeze/push only owned current source/metadata through a private Git index,
+preserving the other owner's index and frozen preparations; run required23-job
+CI with original Linux/Metal reuse. Then exact admission/promotion/protected
+integration/delivery. No native rebuild for this metadata/test/doc integration.
+
+Packet3 binding checkpoint: [current dossier636/history637](../../../compat/api-acceptance/current-mandatory-bindings-v1.json)
+validates all8rows/24gates and945original managed cleanup input hashes. All15foreign
+origins remain protected under registry613; the original-envelope manual audit
+stays distinct from generic qualification-index retention acceptance. Fixture
+archive492members and the two metadata-only wrapper label changes verify. Current
+history has8strict passes and8separate discoveries, zero unattributed controllers
+or later failures within the explicit two-root/cutoff/literal-key-prefilter scope.
+The scan parsed304of16,910JSON files, avoiding repeated parsing/hashing of unrelated
+historical records. Source-only schema/namespace setup failures634/635remain
+retained; no verifier/runtime report changed and no scratch/build was created.
+All14frozen preparation files remain unchanged. Next: independent cumulative
+row/fixture-copy/retention review, owned final-head freeze and23-job CI, then exact
+matrix/Tk admission and promotion/protected integration/delivery.
+
+Packet3 observation milestone: [all8current mandatory rows](../../../compat/api-acceptance/mandatory-current-wheels-observations-v3.json)
+now pass on exact current Windows/WSL wheels; the canonical matrix is unchanged.
+Headless632/633each pass original95GPU cases, rendering checks,4096marker smoke and
+36scientific cases in discovery and first strict replay,537installed-member/origin
+checks and ten zero final gauges. Windows reuses only five locked fixture
+distributions (492RECORD-verified files), with minimal source/license archive and
+no whole environment copy or version refresh; only two stale wrapper provenance
+labels change. WSL uses its original read-only headless dependency lower and
+patched Mesa/private Xvfb. No native build. Both runs are cleaned:
+161,779,696bytes/2141files removed,446retained inputs verified.
+Next: assemble exact current eight-row admission bindings, review the cumulative
+qualification/fixture-copy basis, freeze the owned final head and complete23-job
+CI, then independent promotion/protected integration/delivery. Eight observations
+do not themselves admit rows or close broader API/science/performance/hardware scope.
+
+Packet3 Qt milestone: [all six Qt observations](../../../compat/api-acceptance/mandatory-current-qt-observations-v1.json)
+now pass across Windows/WSL PyQt5, PyQt6 and PySide6 on the exact current wheels.
+WSL629–631reuse separate original read-only dependency roots, patched Mesa9c5 and
+private owned Xvfb; each passes seven QWidget stages/first strict replay,537member
+and origin checks and ten zero gauges. Original tracked inputs rehash and mount/
+process exit checks pass. Source-only setup failure629remains retained. Storage
+policyv2clarifies matching roots with the same512MiB budget, preservingv1.
+Cleanup removed277,768,283bytes/36files and verified305inputs; no native build or
+environment/rootfs copy. Current mandatory observations are6/8. Next: verify the
+retained offline headless/pytest dependencies, renew Windows and WSL headless,
+then exact matrix admission and final-head CI/promotion/integration/delivery.
+These observations do not close broader lifecycle/input or hardware scope.
+
+Packet3 Windows Qt checkpoint: [all three binding observations](../../../compat/api-acceptance/mandatory-current-windows-qt-v1.json)
+pass on exact current wheel6de6d77f with distinct locked PyQt5/PyQt6/PySide6
+environments. New627/628each pass seven original QWidget stages and first strict
+replay,537installed members/origins and ten zero gauges. Both consumers are cleaned:
+248,752,405bytes/4341files removed,128retained inputs verified. Shared source archives
+and offline dependency packages were reused; no native build. Current mandatory
+observations are3/8. Next: WSL profile prerequisite/guest/backing checks and exact
+binding renewals; verify retained offline pytest closure before Windows headless
+renewal. Then exact mandatory admission, owned head freeze/23-job CI, independent
+promotion basis, protected integration and delivery. Do not repeat passed bindings
+without changed critical inputs; broader lifecycle/input parents remain open.
+
+Packet3 observation checkpoint: [audit625](../../../compat/api-acceptance/mandatory-current-gap-audit-v1.json)
+finds all8historical mandatory rows tied to older wheels; none transfers to current
+native cleanup/Qt-wrapper inputs. [Windows PyQt6 row626](../../../compat/api-acceptance/mandatory-current-windows-pyqt6-v1.json)
+now passes seven original plain-QWidget stages and its first strict replay on
+current wheel6de6d77f, with537members/installed origins and ten zero final gauges.
+Locked dependencies were reused offline; no native build. Its pre-runtime generator
+failure is preserved. Cleanup reclaimed129,750,985bytes/verified66inputs.
+Current mandatory observations are1/8; remaining seven rows, admission, final-head
+CI, promotion review, protected integration and delivery remain next. Renew the
+other Windows binding rows with their original locked closures, then WSL profiles;
+headless renewal additionally needs the retained functional/pytest closure verified
+offline before execution. Do not repeat the PyQt6 row without changed inputs.
+
+Packet2 proof checkpoint: [subject624](../../../compat/api-acceptance/preparation10-installed-subject-v1.json)
+proves128selected criterion/profile bindings (64distinct criteria), zero missing or
+blocked joins, using the unchanged subject validator. All14canonical preparation
+files are restored. [Independent failure dispositions621](../../../compat/api-acceptance/preparation10-failure-dispositions-v1.json)
+bind both original Windows UNVERIFIED attempts without relabeling them. Reviewer
+limitations and the corrected separate discovery index are retained;620is unchanged.
+[Contributing retention623](../../../compat/api-acceptance/preparation10-proof-retention-v1.json)
+validates791inputs. The failed622post-cleanup namespace validation is preserved:
+its additional external baseline remains pinned, and is excluded only from the new
+selected-root manifest. Both actual cleanup events passed; no verifier changed.
+Runs621–623 cleaned274bytes/1646input verifications;624created no scratch.
+Next is packet3: mandatory-eight-row renewal/admission, owned final-head freeze,
+23-job CI, independent exact promotion basis, protected integration and delivery.
+This does not close the142original obligations or broader feature parents.
+
+Packet2 history checkpoint: [run620 exact history drafts](../../../compat/api-acceptance/preparation10-attempt-history-drafts-v1.json)
+scan16,617retained JSON files and identify6exact-profile replay attempts with zero
+unattributed current-wheel reports. Windows retains two UNVERIFIED replays and
+two later passes; WSL has two first-replay passes. Complete ordered histories and
+four latest-workflow selections validate. Both failed-attempt dispositions still
+need independent approval; contributing retention and subject proof remain next.
+No reports were rewritten and no scratch/build/environment was created.
+
+Packet2 progress: [current selected-row overlay619](../../../compat/api-acceptance/preparation10-installed-row-bindings-v1.json)
+validates32rows/128criterion-profile bindings/96raw gate checks through the unchanged
+inventory validator, with all14frozen preparation files/scope unchanged. The failed
+618secondary-store receipt path remains retained; new source-local receipts meet
+the existing validator's storage requirement. Neither run created scratch. Next:
+complete exact attempt histories, independent failed-attempt resolutions and
+contributing retention before subject proof/admission. All142original obligations
+remain required and incomplete; no published-wheel or hardware coverage transfer.
+
+Execution checkpoint: [packet1 completed in run617](../../../compat/api-acceptance/preparation10-wsl-criterion-phases-v1.json).
+Both current installed WSL pytest nodes/all6phases pass and satisfy all16selected
+Linux fixture rows. Installed members/origins, metadata/RECORD and ten zero final
+gauges verify. The process exited0/was awaited; cleanup removed570files and
+verified26retained inputs. No native build or strict environment/admission claim.
+This supersedes the WSL-pytest pending sentence below. Packet2's exact joins are next.
+
+- Runtime source is `99719f1`; current wheels are Windows `6de6d77f…` and Linux
+  `b728b575…`. Both have local installed acceptance. Reuse these artifacts and
+  their existing native producers unless an investigation changes critical inputs.
+- Preparation10 scope `0b668996…` has approved source/scope/reuse bindings and
+  passing prerequisite validators. Its finite scope is **64 distinct criteria /
+  128 profile bindings**, while all142 original obligations remain required.
+- [Windows strict observations](../../../compat/api-acceptance/preparation10-windows-strict-cohort-v1.json)
+  and [WSL strict observations](../../../compat/api-acceptance/preparation10-wsl-strict-cohort-v1.json)
+  each validate16feature joins/48gate checks on those exact wheels. WSL uses
+  patched Mesa software Vulkan, environment `423ba184…`; it is not physical
+  Linux GPU coverage. Run616 exited0, its child was awaited, and managed cleanup
+  passed with120retained inputs verified.
+- [Windows genuine pytest phases](../../../compat/api-acceptance/preparation10-windows-criterion-phases-v1.json)
+  pass the two selected nodes/all6phases. Equivalent current WSL pytest evidence
+  is still missing. These separate pytest processes do not inherit strict
+  observer environment fingerprints.
+- Selected point/filter/scene observations exist; they do not close their broad
+  API parents. New tests and evidence/docs still need owned integration.
+- Current subject admission, eight mandatory profile rows, final-head23-job CI,
+  protected integration and successor delivery remain open. The published
+  Vulkan.2 qualification is historical and cannot be transferred.
+
+### Ordered investigation packets
+
+Finish and clean one packet before starting the next writable experiment.
+Investigate existing support before implementing anything; classify each missing
+claim as an evidence join, reproducible defect, intentional boundary or deferred
+scope. A boundary disposition closes the investigation, not the capability.
+
+| Order / coverage IDs | Smallest investigation and easiest path | Completion evidence / decision |
+| --- | --- | --- |
+| 1 — FIX-04/06, API-06, TOOL-01 | Reuse the exact Linux wheel, existing Python/test dependencies and patched driver. Run the two genuine Tk state/capture pytest nodes through the existing qualification runner. Check all setup/call/teardown phases and `passed_pytest` acceptance for the16selected Linux row fixtures. | Two cases/six phases pass,537installed members/origins verify, no source overlays, shutdown gauges zero; retain real failure phases if any. Record its own environment; do not reuse strict fingerprint423ba184. No native build. |
+| 2 — FIX-04/06, API-06, SHD-06 | Use unchanged validators to join both platforms' strict observations, separate pytest receipts, exact wheel/profile/workflow identities, discovery/replay histories and contributing retention. Inspect the first missing join before rerunning a workflow. | Exact32selected rows/128criterion-profile bindings accounted for against64criteria; guarded subject proof/admission with exact review basis, or a named failed join and minimal correction. Preserve142original obligations and all failed attempts. Source approval alone is insufficient. |
+| 3 — FIX-04/06, TOOL-01, PLAT-08 | Renew only missing/invalidated mandatory profile observations for the current wheels; inspect existing eight-row evidence before choosing reruns. Assemble the owned cumulative delta using a private Git index, freeze its final head and run the required23-job CI. Reuse original Linux/Metal producers where valid. | Eight mandatory rows have exact current qualification, final-head CI passes, independent promotion review names the exact basis, and protected integration/delivery checks pass. Any critical input change gets an impact assessment before reuse. Preserve the other owner's index and all licenses. |
+| 4 — API-05/06, SCI-05 | Reconcile U05/E03/E04/Q11–Q13/H03 against existing tests and receipts. Build a compact route/value/evidence/disposition table in the live checklist; do not create another tracking system. Correct stale statements before adding tests. | Each selected route has exact artifact/profile scope, supported values, missing assertion or explicit boundary and reopening trigger. U05/filter passes and corrected historical Glue references must not be rerun merely because an old checklist says pending. |
+| 5 — LIF-01–06 | Start with parent destruction while it still owns a canvas; moved-away-parent tests are insufficient. Next select zero-size/restore, a named acquisition failure, and a real supported loss/recovery injection. Investigate ignored native close/error callbacks from review609. Add only claimed Qt input routes that lack evidence. | Minimal before/after reproducer for each actual defect; callback order/counts, submit/no-submit behavior, observable pixels/refusal, shared-peer recovery where relevant and final resource retirement. Distinguish native WSI/readback, toolkit-generated/physical input and counters/physical memory. Unavailable injection stays explicit. |
+| 6 — SCI-01–04/06, SHD-01–05, STA-01, TEX-01, LIN-01 | First extend the existing two-scene fixture with one camera mutation and one selected depth/stencil/plane interaction. Then inventory mesh-filter compositions beyond the four proved revisions. Inspect existing Q11–Q13 volume protocols before selecting one small mode/mutation workflow. Expand shader/texture/line forms only when those workflows require them. | Analytic/frozen-reference values or pixels, mutation, meaningful boundary/refusal and recovery on an exact installed wheel. Record finite mode/shape/format limits. Keep volume quality, large-data performance and broad renderer semantics separate; no automatic full inventory matrix. |
+| 7 — HOST-03–06, PLAT-02/04/08, PERF-02–04, TOOL-02/03 | Pursue only a named application, distribution requirement, reproducible bottleneck or specific missing historical record. Search once for the historical cleanup receipt; a new cleanup cannot recreate it. | Rendered host acceptance for host claims, measured bottleneck for optimization, or an explicit deferral with trigger. Extra ABIs/drivers, optional compiler cache and hardware-dependent checks are not prerequisites for the selected first usable version. |
+
+### Execution rules and finish line
+
+For every selected child task, record its coverage ID, public route/values,
+existing evidence, smallest missing assertion, exact source/wheel/profile,
+reproducer command, expected result, outcome and next decision. Update both live
+checklists in the same change. Never convert source/local passes into installed,
+strict, merged or delivered claims without their own evidence.
+
+Start with one bounded reproducer. Fix a demonstrated defect at the narrowest
+route; fix evidence joins without renderer changes. Repeat or broaden tests only
+for new changes, failures or unresolved concerns. BUG-01/02 campaigns stay closed
+to repetition unless a new recurrence or causal hypothesis appears.
+
+Use the shared D: hygiene root and current successor613 registry, register scratch
+before writes and check guest plus Windows backing capacity for WSL. Reuse locked
+dependencies, wheels, SDKs and original producers. Retain actual exits/waits,
+failures, source/licenses and necessary evidence, then inspect/apply cleanup and
+report it before the next experiment. Planning needs no build lease, clone or
+environment. Keep AGPL and original BSD/dependency notices attached.
+
+The first milestone is current qualification/integration (packets1–3). Remaining
+selected feature investigations then close one by one; broad parents remain open
+where only a subset is proved. Metal graphics stays experimental. Physical Linux
+GPU, native Wayland, extra architectures/ABIs, cross-monitor/fractional DPI and
+laboratory latency remain deferred unless explicitly selected. No cybersecurity
+work is included.
+
+## Earlier plan and execution checkpoints
+
+## Revised investigation and closure order — 2026-11-13
+
+This section is the active plan and supersedes older next-step descriptions below.
+The target is a useful, explicitly supported VisPy Vulkan subset, with intentional
+improvements allowed. Full VisPy/OpenGL parity is not an exit criterion.
+This update is planning only; it does not execute tests or promote coverage.
+
+Execution update after planning: [Windows current-wheel acceptance](../../../compat/api-acceptance/lifecycle-current-windows-installed-v1.json)
+and [Linux current-wheel acceptance](../../../compat/api-acceptance/lifecycle-current-linux-installed-v1.json)
+each pass26selected tests,56Tk baseline tests and composite recovery on source99719f1,
+with537runtime members, installed origins, zero overlays and ten zero shutdown
+gauges per process. Linux also verifies561archive members and566installer RECORD
+entries. Runs593–595 are cleaned (47,766,619bytes;72retained-input verifications).
+This completes packet1's local installed acceptance; strict qualification,
+preparation10, review and integration stay open. Starting-point pending notes
+below describe the state before these executed gates.
+
+### Established starting point
+
+Current Windows installed checkpoint: [strict cohort614](../../../compat/api-acceptance/preparation10-windows-strict-cohort-v1.json)
+passes both selected observer workflows in one fingerprintd664beb3 on wheel6de6d77f,
+with16feature joins/48raw gate checks. [Genuine pytest phase615](../../../compat/api-acceptance/preparation10-windows-criterion-phases-v1.json)
+passes the two selected nodes/all6phases and all16Windows row fixture checks.
+It is a separate same-wheel test process with borrowed test dependencies, not
+the strict observer fingerprint. All537runtime members/installed origins and
+required shutdown gauges verify; no source overlays. A clean strict consumer
+was needed because earlier targets were cleaned; existing base Python and
+locked dependency wheels were reused offline under the new storage-only
+strict-current-installed-v1 profile. No native build or existing-environment mutation.
+Both receipt-extension histories stay retained. Runs614/615 cleaned80,802,081bytes
+and verified95inputs. Next: current WSL matched strict observations and genuine
+pytest phase, then subject/profile/history/retention bindings, all8mandatory
+rows, required final-head CI and protected integration. No admission yet.
+
+Latest reviewed checkpoint: [peer609 approves source/scope and both exact reuse edges](../../../compat/api-acceptance/preparation10-peer-review-v1.json)
+at scope0b668996, independently confirming142original obligations,158baseline rows,
+272prior files and64distinct criteria/128profile bindings. Its withheld computations
+and unread files stay explicit. Coordinator separately reproduces the documented
+execution-scope projection. [All full reviewed prerequisite gates now pass](../../../compat/api-acceptance/preparation10-approved-bindings-v1.json)
+after retaining611's missing-map-reference refusal and612's source-local join refusal.
+The latter needs one521,666-byte exact project-source snapshot at the unchanged
+verifier's required source-local path. [Registry613](../../../compat/api-acceptance/preparation10-source-local-binding-v1.json)
+preserves535's protections and adds both source origins/C: capacity; use it explicitly
+for all subsequent managed operations. Runtime, candidate scope and reuse digests
+are unchanged; no validator was relaxed and no native build occurred.
+
+[282source reuse/qualification contracts pass](../../../compat/api-acceptance/preparation10-reuse-contracts-v1.json).
+Runs609/610/613 cleaned8,945,534bytes/verified38inputs;611/612are source-only failures
+with no scratch. Next: strict current installed profiles and required frozen-head
+CI before protected integration. No artifact/strict-profile/release admission.
+Of16selected features,14are bounded subsets and2wrapper features are additive new
+scope (8criteria); no original parent is discharged. Low-priority review followups
+remain outside these passes: a real ignored closeEvent/event-filter control,
+fallback-close callback error control and hidden-resize/offscreen-render boundary.
+Mesh tests assert positive/increasing pending draws;2→4and ten final zero gauges
+are exact recorded observations/controller checks, not additional test assertions.
+
+Current qualification checkpoint: [both Metal originals validate](../../../compat/api-acceptance/lifecycle-metal-current-originals-v1.json)
+and whole run43495769632 succeeds; the current reuse pin is renewed before
+[preparation10's scope freeze](../../../compat/api-acceptance/lifecycle-preparation10-wip-v1.json).
+Scope0b668996 preserves272prior records/142original dispositions and64criteria
+with128profile bindings. [Both native and both archive prerequisites validate](../../../compat/api-acceptance/lifecycle-preparation10-bindings-v1.json);
+both actual review gates still refuse admission. Next: independent cumulative
+source/scope/reuse review, strict profiles, final-head CI and protected integration.
+No review/qualification transfers. Source-only runs607/608 create no scratch.
+
+Science progress: [WSL pending-filter cases](../../../compat/api-acceptance/mesh-filter-pending-linux-v1.json)
+match Windows's four actual-pending revisions and exact6,144analytic pixels;
+[two current Windows scene references](../../../compat/api-acceptance/scene-state-current-windows-v1.json)
+pass71,680pixels with max error0. Full filter inventory, camera mutation and
+broader depth/stencil/plane/platform claims stay open. Runs604–606 cleaned
+73,387,744bytes and verified221retained inputs. New test sources remain uncommitted.
+
+Mesh-filter investigation executed: [four native-pending Windows cases](../../../compat/api-acceptance/mesh-filter-pending-windows-v1.json)
+pass texture replacement/enabled, plane count+values and detach on exact wheel6de6d77f.
+The new uncommitted test9ac765ab observes pending_draws2before mutation and4before
+captures, with exact6,144analytic pixels and ten final zero gauges. Two initial
+test setup failures (constructor format and unbound read target) are retained;
+no renderer change was needed. Runs600–603 cleaned71,604,957bytes/101retained
+input verifications. Next science work: the same selected WSL check and finite
+E04 scene/camera/state interactions; full mesh-filter inventory remains open.
+
+Latest executed reconciliation: [WSL U05 installed acceptance](../../../compat/api-acceptance/point-identity-current-linux-v1.json)
+now matches Windows's ten unchanged tests/eight exact rendered cases on wheelb728b575
+and patched Mesa9c5, including installed origins, metadata/RECORD and ten final zero
+gauges. Run598 cleanup reclaimed30,007,097bytes/verified27inputs after waiting for
+an unrelated process that reused the original awaited child's PID; refusal retained,
+child identity and verifier unchanged. [H03 upstream disposition](../../../compat/api-acceptance/h03-upstream-disposition-v1.json)
+also verifies the existing corrected Glue cache-invalidation admission and20reference
+members; original failure remains failed. This source-only check created no scratch
+and grants no current-wheel host qualification. E03/E04/Q11–Q13, broader scientific
+workflow acceptance and current candidate qualification remain open.
+
+Further executed progress: [Metal arm64 originals](../../../compat/api-acceptance/lifecycle-metal-arm64-original-v1.json)
+validate current source/archive/native/installed CPU/producer cleanup without
+changing the production reuse pin. The existing x86_64 job remains live; collect
+its originals after success and require whole-run success before pin renewal.
+While waiting, [U05 Windows installed acceptance](../../../compat/api-acceptance/point-identity-current-windows-v1.json)
+passes eight unchanged rendered reference cases plus two controls on wheel6de6d77f,
+with exact6,144pixels and ten zero final gauges. This resolves the stale
+no-candidate description for that finite Windows subset; broader SCI-01 and
+current WSL point acceptance remain open. Runs596/597 are cleaned, reclaiming
+41,646,492bytes and verifying137retained inputs. No native rebuild or admission.
+
+- Corrected source is pushed at `99719f1f7bdbb320318cf1ccd0eed39f336c7cce`.
+  CI selectors now name preparation10; preparation10 must be materialized and
+  reviewed before dispatching its CPU/Linux reuse workflows.
+- Current source has57CPU,26Windows and26WSL selected passes. These observations
+  are limited to their recorded source, profiles and modes.
+- [Current candidate archives](../../../compat/api-acceptance/lifecycle-qt-repackage-v1.json)
+  contain the corrected Qt member: Windows `6de6d77f…`, Linux
+  `b728b575…`. Native payloads, licenses and tags are reused unchanged.
+  Installed acceptance for these exact archives is still pending.
+- Review588 requires changes; corrected source has no transferred approval.
+  Preparation9 and previous installed results remain historical at their own hashes.
+- Metal run43495769632 was last recorded in progress. Query that same run;
+  a saved status is not a live completion claim. Only build/CPU acceptance is
+  intended; physical Metal graphics remain experimental.
+- Run593 has a successful awaited process and retained terminal record, but no
+  cleanup result was present at this planning inspection. Resolve its lease and
+  cleanup before the next experiment. Do not infer cleanup from process success.
+
+### Ordered work packets
+
+| Order / IDs | Investigation and cheapest path | Evidence and exit gate |
+| --- | --- | --- |
+| 1. Finish current candidate — FIX-04/06, API-05/06, LIF-01–04, SCI-06 | First finish run593 cleanup. Install each current wheel once in registered scratch, using existing dependencies. Run26selected cases and56Tk baseline cases plus composite recovery in separate processes against that same installation. Windows uses its recorded Vulkan profile; WSL uses the exact patched Mesa profile. Reuse native560/Linux572; no native rebuild for Qt Python changes. | Verify installed file hashes/origins, zero source overrides, exact profile and zero shutdown gauges. Preserve failures separately, including the existing system-Mesa MSAA failure. Do not borrow prior-wheel acceptance. |
+| 2. Finish provenance, review and integration — FIX-04/06, SHD-06, PLAT-08, TOOL-01 | Collect the existing Metal run's original results and cleanup evidence. Renew its reuse pin before freezing preparation10 tool/scope hashes. Materialize preparation10 and native/archive bindings once. Obtain follow-up review of corrections, all relevant failures including577, coverage, execution and ledger records. | Independently account for128selected criteria,142original obligations and unchanged historical records; approval must name exact scope/reuse digests. Complete required23-job head CI, affected strict installed profiles and protected integration. Keep the published Vulkan.2 release unchanged until a separately qualified successor is ready. |
+| 3. Reconcile remaining routes — API-05/06, SCI-05, TOOL-03 | Create a small route-to-evidence table from the existing inventory. Start with U05, E03, E04, Q11–Q13 and H03. Check source, values, expected output and artifact/profile identity before writing code. Search for the missing historical cleanup receipt once; never recreate an event from newer cleanup evidence. | Each selected route is verified existing support, a reproducible defect, an intentional unsupported boundary or deferred with a reopening trigger. Stale fixture disposition does not erase its original failure or close a whole API parent. |
+| 4. Lifecycle reliability — LIF-01–07 | Begin with destruction of a parent still owning a canvas; current moved-away-parent tests do not cover it. Then examine explicit zero-size/restore, one named acquisition failure and actual loss/recovery through existing injection hooks. Add selected Qt keyboard/wheel/focus/mouse/timer/coordinate checks only where a claimed route lacks evidence. | For each transition require callback order/counts, observable rendering or expected refusal, submit behavior, shared-peer recovery where relevant and resource retirement. Separate readback from native WSI and toolkit-generated from physical input. Unsupported/unavailable loss paths remain open. |
+| 5. Scientific workflows — SCI-01–04/06 | Select one small indexed/instanced point workflow, one mesh-filter composition, one3D scene/camera interaction and one bounded volume mode. Exercise existing routes first; correct the narrow public wrapper before changing the renderer. Reuse the eight stencil-route cases rather than treating upstream stock failures as eight new Vulkan defects. | Each selected workflow has meaningful reference values/pixels, mutation, boundary/failure and recovery checks on an exact installed wheel. Volume quality, large-data performance and general mode support remain separate claims. |
+| 6. Rendering dependencies — SHD-01–06, STA-01, TEX-01, LIN-01 | Expand only forms required by the selected scientific workflow. Investigate sampler/array shape and indexing, attribute/divisor updates, state and typed-texture boundaries, then line chunk/endpoint ordering. For geometry consumers prefer existing compute/instanced expansion or an explicit application rewrite. | Each added form needs a positive case, a meaningful boundary/refusal and recovery. Preserve derivative/uniformity, binding/resource-limit and unsupported raster semantics. The patched-driver profile must remain distinct from failing system Mesa. |
+| 7. Optional breadth — HOST-03–06, PLAT-02/08, PERF-02–04, TOOL-02 | Select only when a named application, required distribution or measured bottleneck needs it. Reuse existing host environments and artifacts. Measure before optimizing or adding compiler caches. | Rendered application acceptance is required for host claims; import success is insufficient. Additional ABIs/drivers require their own installed qualification. Otherwise leave these items explicitly unselected. |
+
+### Investigation contract and stop rules
+
+For each selected child task, record: stable coverage ID; exact public route and
+supported values; current evidence; smallest missing assertion; source/wheel/profile;
+reproducer command; expected output and cleanup; outcome; next action/reopening trigger.
+Use the existing live checklist rather than introducing another coverage database.
+
+Start with one minimal reproducer and existing tests. A demonstrated defect gets a
+focused before/after regression; an evidence mismatch gets a corrected join, not a
+renderer rewrite. If no defect reproduces, record the bounded result and choose the
+next task. BUG-01/02 campaigns are exhausted: reopen only on new recurrence or a
+specific new causal hypothesis; recurrence in a release profile follows D33.
+
+Complete and clean one packet before creating the next writable experiment.
+Read the hygiene policy, use the shared coordinator root/budget and mandatory
+registry, register unique scratch, retain source/licenses/failures/actual exits and
+child waits, then inspect/apply the exact cleanup plan and report its result.
+Never move identity-pinned origins or retry automatic-review-rejected cleanup.
+Documentation and small source checks do not justify a new wheel, SDK or environment.
+
+Update affected IDs in both live checklists in the same implementation/verification
+change. Keep source-tested, installed-qualified, merged and delivered states distinct.
+A disposition closes the investigation task, not an unsupported capability.
+
+Physical Linux GPUs, physical Metal graphics, native Wayland, additional architectures/
+ABIs, fractional/cross-monitor DPI, laboratory latency and full parity remain deferred
+unless explicitly selected later. No cybersecurity work is included.
+
 ## Active investigation queue — 2026-11-13
 
 Latest executed gates (supersede pending descriptions below):
