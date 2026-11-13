@@ -6,6 +6,8 @@ import pytest
 
 from tools import compatibility_qualification as q
 
+CURRENT = q.ROOT / 'compat/candidates/tk-state-resource-6/admission-selection.json'
+
 
 def current_review_applied(execution, candidate):
     """A bound approval alone does not apply scoped ledger review flags."""
@@ -85,9 +87,9 @@ def test_semantic_selection_controls(change, message):
 
 
 def test_current_selection_is_incomplete_and_preserves_both_profiles():
-    record = q.read_json(q.DEFAULT)
+    record = q.read_json(CURRENT)
     result = q.validate_selection(record)
-    assert len(result['requested']) == len(result['closure']) == 120
+    assert len(result['requested']) == len(result['closure']) == 128
     assert len({key['profile'] for key in result['closure']}) == 2
     execution = q.read_json(q.ROOT / record['execution_map']['path'])
     candidate, _, _ = q.load_inputs(execution, q.ROOT)
@@ -103,7 +105,7 @@ def test_current_selection_is_incomplete_and_preserves_both_profiles():
 
 @pytest.mark.parametrize('change', ['omit-recovery', 'wrong-profile', 'stale-map', 'unknown-field'])
 def test_resealed_real_selection_rejects_scope_changes(change):
-    record = deepcopy(q.read_json(q.DEFAULT))
+    record = deepcopy(q.read_json(CURRENT))
     if change == 'omit-recovery':
         record['closure'].pop()
     elif change == 'wrong-profile':
@@ -117,22 +119,31 @@ def test_resealed_real_selection_rejects_scope_changes(change):
         q.validate_selection(record)
 
 
-def test_default_cli_does_not_write_and_strict_review_validates_actual_approvals(capsys):
-    before = q.DEFAULT.read_bytes()
-    record = q.read_json(q.DEFAULT)
+def test_current_cli_does_not_write_and_strict_review_validates_actual_approvals(capsys):
+    before = CURRENT.read_bytes()
+    record = q.read_json(CURRENT)
     execution = q.read_json(q.ROOT / record['execution_map']['path'])
     candidate, _, _ = q.load_inputs(execution, q.ROOT)
     expected_review = current_review_applied(execution, candidate)
-    assert q.main([]) == 0
-    assert q.main(['--require-reviewed']) == (0 if expected_review else 1)
-    assert q.DEFAULT.read_bytes() == before
+    assert q.main(['--selection', str(CURRENT)]) == 0
+    assert q.main(['--selection', str(CURRENT), '--require-reviewed']) == (0 if expected_review else 1)
+    assert CURRENT.read_bytes() == before
     assert ('"reviewed": true' if expected_review else 'review remains pending') in capsys.readouterr().out
+
+
+def test_historical_default_is_immutable_and_rejects_current_tool_claims(capsys):
+    before = q.DEFAULT.read_bytes()
+    with pytest.raises(q.InventoryError, match='incomplete preparation verifier/tool identities'):
+        q.validate_selection(q.read_json(q.DEFAULT))
+    assert q.main([]) == 1
+    assert 'incomplete preparation verifier/tool identities' in capsys.readouterr().out
+    assert q.DEFAULT.read_bytes() == before
 
 
 @pytest.mark.parametrize('binding', ['exact', 'wrong', 'absent'])
 def test_selection_binding_extends_existing_scope_approval(monkeypatch, binding):
     # Synthetic existing-review disposition only; never a real approval record.
-    record = q.read_json(q.DEFAULT)
+    record = q.read_json(CURRENT)
     execution = q.read_json(q.ROOT / record['execution_map']['path'])
     candidate, coverage, baseline = q.load_inputs(execution, q.ROOT)
     candidate = deepcopy(candidate)

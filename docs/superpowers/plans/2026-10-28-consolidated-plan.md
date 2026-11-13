@@ -1,5 +1,51 @@
 # Consolidated plan
 
+CI fixture repairs (2026-11-13): the full compatibility-contract file selection
+from the CPU workflow passes 1,088 cases locally on WindowsCPython3.12.8.
+Current selection/review-gate/capture tests use revision6; frozen defaults retain
+an explicit stale-tool refusal. Metal synthetic metadata declares project/version.
+Capture corruption cases have a positive control first. All164 candidate JSON
+records, validators and runtime bytes are unchanged. [Evidence](../../../compat/api-acceptance/ci-contract-fixture-fixes-v1.json).
+The first focused run retained312passes/1missed old-runtime failure before its
+correction. Hosted validation on the corrected head remains pending; fresh Linux
+and experimental Metal production decisions are recorded separately.
+
+
+Linux CI reuse disposition (2026-11-13): hash-verified artifact diagnostics
+confirm the guard correctly refuses changed `cpp/runtime.cpp` bytes. The next
+corrected source head will use the existing explicit `native_mode=fresh` route
+(6GiB declared peak, managed lifecycle), not alter historical pins or relax reuse.
+[Changed-input decision](../../../compat/api-acceptance/linux-ci-fresh-decision-v1.json). This is hosted source-head CI;
+selected local wheels and their native producers remain unchanged. Fresh CI
+execution and source-head success are still pending.
+
+
+Required head CI findings (2026-11-13): Linux CPython3.12.8 reports 1,078
+contract passes and 16 failures: nine stale candidate expectations, six incomplete
+Metal metadata fixtures and one native-input pin expectation. Software Vulkan
+also fails in original-native reuse; its retained child details need inspection.
+[Failure evidence](../../../compat/api-acceptance/qualification-ci-failures-v1.json). Other jobs are still pending in this
+snapshot. These failures block required CI; no job or validator is waived.
+
+
+Required qualification CI dispatch (2026-11-13): reviewed head `152183d0…` was
+pushed to `wip/qualification-reviewed-492`; all three policy workflows are
+authoritatively queued/running with exact head and attempt identities retained
+([runs](../../../compat/api-acceptance/qualification-head-ci-wip-v1.json)). All 23 jobs remain required. Dispatch is not a
+passing CI result or artifact admission; preserve failures and rerun histories.
+
+
+Qualification implementation freeze (2026-11-13): `152183d0e3d737bf036d0baad2c0981ab6fe981c`
+binds 5,924 source files, including the reviewed tools, CI workflows, named tests
+and qualification collector. All 608 runtime/build/lock/license references retain
+product source `b38c4f9068d6a425eef43b62313f0f4cf37f57d9`. The subject is
+now bound to this head as a detached local proof overlay. [Evidence](../../../compat/api-acceptance/qualification-source-freeze-v1.json).
+The other checkout/index was preserved; only a private index was used. Initial
+Windows argv-limit verification failure is retained; bounded-prefix verification
+passes against the existing commit. Required hosted CI and installed proof joins
+remain pending; no artifact is admitted.
+
+
 Revision6 source/scope review (2026-11-13): independent decisions are approved
 and bound to candidate, coverage, execution, admission closure and both native
 reuse digests. [Decision](../../../compat/api-acceptance/successor-peer-review-v3.json). All four preparation validators

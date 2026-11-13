@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "ORIGINAL_NATIVE_REUSE_CORRECTLY_REFUSED_CHANGED_INPUT",
+  "qualification_head": "152183d0e3d737bf036d0baad2c0981ab6fe981c",
+  "run_id": 43382329885,
+  "attempt": 1,
+  "artifact_id": 14017845162,
+  "artifact_sha256": "e9a62e1a9d2e95c18c3605e3b848d248f4ed217e4fecc0b39ef75ab1bcfc42fc",
+  "changed_input": {
+    "path": "cpp/runtime.cpp",
+    "expected_by_historical_reuse_candidate": "1a60c94d157e27184d893d10207408c8fa1557277f642ed1e0b490b34ca8c33a",
+    "current_source_sha256": "020e267244b506bd5043f7a619e2741a53cf178befaf5dc8369a1c34461da12c"
+  },
+  "failure_log": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\linux-reuse-failure-detail-496\\4-reuse.log",
+    "sha256": "583d55b9dceff731a415c0f32fb90e818dc7165368cb83862e6361c1b0103208"
+  },
+  "decision": {
+    "native_mode": "fresh",
+    "reason": "Current native source differs from the historical original-native reuse input; the existing workflow requires an explicit changed-input production decision.",
+    "workflow": ".github/workflows/linux-vulkan.yml",
+    "profile": "Existing fresh branch:6442450944-byte declared peak,90-minute job timeout,parallel3; managed lifecycle and20GiB/10GiB shared policy unchanged.",
+    "scope": "Hosted source-head CI only; reuses committed dependency source and existing documented fresh production route. Does not rebuild local selected wheels or transfer qualification."
+  },
+  "validator_weakened": false,
+  "old_pins_rewritten": false,
+  "required_ci_passed": false,
+  "artifact_admitted": false
+}

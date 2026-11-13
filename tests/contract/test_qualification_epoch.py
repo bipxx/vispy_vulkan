@@ -92,7 +92,7 @@ def test_original_record_needs_review_before_any_old_origin_is_consumed(monkeypa
     # Exercise the real gate with reviews removed only from its in-memory input.
     without_current_reviews(qe)
     ref = {'path': 'unit-only-unused.json', 'sha256': '0' * 64}
-    candidate = qe.ROOT / 'compat/candidates/tk-state-resource-1/candidate.json'
+    candidate = qe.ROOT / 'compat/candidates/tk-state-resource-6/candidate.json'
     record = {'schema': 1, 'kind': 'original-native-epoch-reuse',
               'reuse': {'candidate_scope_sha256': '0' * 64, 'profile': 'unit', 'ownership_sha256': '0' * 64,
                         'frozen_sha256': '0' * 64, 'outputs_sha256': '0' * 64, 'impact': 'unit only'}}

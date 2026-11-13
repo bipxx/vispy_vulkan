@@ -254,7 +254,7 @@ def test_real_native_route_requires_actual_review_before_capture(monkeypatch, wi
     without_current_reviews(native)
     from tools.qualification_native import validate_record
     project=Path(__file__).resolve().parents[2]
-    path='compat/candidates/tk-state-resource-1/candidate.json'
+    path='compat/candidates/tk-state-resource-6/candidate.json'
     candidate=dict(path=path,sha256=native.sha((project/path).read_bytes()))
     capture=dict(path='must-not-read-an-unapproved-capture.json',sha256='0'*64)
     record=dict(schema=1,kind='original-linux-ci-native-reuse',candidate=candidate,capture=capture,

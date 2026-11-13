@@ -165,7 +165,8 @@ def python_original(original, monkeypatch):
                           'uv.lock': b'synthetic', 'README.md': b'Original README\n',
                           'cpp/render.cpp': b'original native',
                           'tools/audit_metal_wheel.py': b'synthetic auditor',
-                          'pyproject.toml': b'license-files = ["LICENSE", "LICENSE-BSD", "LICENSING.md"]\n'}.items():
+                          'pyproject.toml': ('[project]\nname = "vispy"\nversion = "' + qa.VERSION +
+                                             '"\nlicense-files = ["LICENSE", "LICENSE-BSD", "LICENSING.md"]\n').encode()}.items():
         path = source / name
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_bytes(payload)

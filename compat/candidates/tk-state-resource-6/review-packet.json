@@ -29,7 +29,7 @@
   "approvals_present": true,
   "pending_subject": {
     "path": "compat/candidates/tk-state-resource-6/qualification-subject.json",
-    "sha256": "398220fc160fd4925dc07ac672b1f4addecb9ed3636dcd87f365c6cad2003014"
+    "sha256": "72dd756b381e561aea60e5f47cb4663c5da722c9999895e05d3268f53746bed1"
   },
   "ci_policy": {
     "path": "compat/qualification-ci.json",

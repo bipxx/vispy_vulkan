@@ -1,0 +1,227 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "REQUIRED_HEAD_CI_FAILURES_RETAINED_FIXES_PENDING",
+  "qualification_head": "152183d0e3d737bf036d0baad2c0981ab6fe981c",
+  "summary": [
+    {
+      "id": 43382332610,
+      "path": ".github/workflows/metal-wheel.yml",
+      "status": "queued",
+      "conclusion": null,
+      "jobs": [
+        {
+          "id": 131742780969,
+          "name": "Metal wheel arm64 CPython 3.12.8",
+          "status": "queued",
+          "conclusion": null
+        },
+        {
+          "id": 131742781328,
+          "name": "Metal wheel x86_64 CPython 3.12.8",
+          "status": "queued",
+          "conclusion": null
+        }
+      ]
+    },
+    {
+      "id": 43382329885,
+      "path": ".github/workflows/linux-vulkan.yml",
+      "status": "completed",
+      "conclusion": "failure",
+      "jobs": [
+        {
+          "id": 131742772513,
+          "name": "software-vulkan",
+          "status": "completed",
+          "conclusion": "failure"
+        }
+      ]
+    },
+    {
+      "id": 43382327218,
+      "path": ".github/workflows/cpu-contract.yml",
+      "status": "queued",
+      "conclusion": null,
+      "jobs": [
+        {
+          "id": 131742763726,
+          "name": "CPU linux-x86_64 CPython 3.10.19",
+          "status": "completed",
+          "conclusion": "failure"
+        },
+        {
+          "id": 131742763940,
+          "name": "CPU macos-arm64 CPython 3.11.14",
+          "status": "queued",
+          "conclusion": null
+        },
+        {
+          "id": 131742763957,
+          "name": "CPU linux-x86_64 CPython 3.12.8",
+          "status": "completed",
+          "conclusion": "failure"
+        },
+        {
+          "id": 131742763965,
+          "name": "CPU macos-arm64 CPython 3.12.8",
+          "status": "queued",
+          "conclusion": null
+        },
+        {
+          "id": 131742763985,
+          "name": "CPU macos-arm64 CPython 3.14.0",
+          "status": "queued",
+          "conclusion": null
+        },
+        {
+          "id": 131742763986,
+          "name": "CPU macos-arm64 CPython 3.13.8",
+          "status": "queued",
+          "conclusion": null
+        },
+        {
+          "id": 131742763997,
+          "name": "CPU linux-x86_64 CPython 3.13.8",
+          "status": "completed",
+          "conclusion": "failure"
+        },
+        {
+          "id": 131742764023,
+          "name": "CPU macos-x86_64 CPython 3.10.19",
+          "status": "in_progress",
+          "conclusion": null
+        },
+        {
+          "id": 131742764033,
+          "name": "CPU windows-x86_64 CPython 3.14.0",
+          "status": "in_progress",
+          "conclusion": null
+        },
+        {
+          "id": 131742764035,
+          "name": "CPU windows-x86_64 CPython 3.12.8",
+          "status": "in_progress",
+          "conclusion": null
+        },
+        {
+          "id": 131742764044,
+          "name": "CPU macos-x86_64 CPython 3.12.8",
+          "status": "in_progress",
+          "conclusion": null
+        },
+        {
+          "id": 131742764061,
+          "name": "CPU windows-x86_64 CPython 3.11.14",
+          "status": "in_progress",
+          "conclusion": null
+        },
+        {
+          "id": 131742764075,
+          "name": "CPU macos-x86_64 CPython 3.14.0",
+          "status": "in_progress",
+          "conclusion": null
+        },
+        {
+          "id": 131742764101,
+          "name": "CPU macos-x86_64 CPython 3.11.14",
+          "status": "in_progress",
+          "conclusion": null
+        },
+        {
+          "id": 131742764111,
+          "name": "CPU macos-x86_64 CPython 3.13.8",
+          "status": "in_progress",
+          "conclusion": null
+        },
+        {
+          "id": 131742764114,
+          "name": "CPU linux-x86_64 CPython 3.14.0",
+          "status": "completed",
+          "conclusion": "failure"
+        },
+        {
+          "id": 131742764128,
+          "name": "CPU windows-x86_64 CPython 3.10.19",
+          "status": "in_progress",
+          "conclusion": null
+        },
+        {
+          "id": 131742764131,
+          "name": "CPU macos-arm64 CPython 3.10.19",
+          "status": "queued",
+          "conclusion": null
+        },
+        {
+          "id": 131742764154,
+          "name": "CPU linux-x86_64 CPython 3.11.14",
+          "status": "completed",
+          "conclusion": "failure"
+        },
+        {
+          "id": 131742764156,
+          "name": "CPU windows-x86_64 CPython 3.13.8",
+          "status": "in_progress",
+          "conclusion": null
+        }
+      ]
+    }
+  ],
+  "cpu_diagnostic": {
+    "job_id": 131742763957,
+    "platform": "Linux CPython3.12.8",
+    "passed": 1078,
+    "failed": 16,
+    "failures": [
+      "FAILED tests/contract/test_compatibility_qualification.py::test_current_selection_is_incomplete_and_preserves_both_profiles - tools.compatibility_inventory.InventoryError: incomplete preparation verifier/tool identities",
+      "FAILED tests/contract/test_compatibility_qualification.py::test_default_cli_does_not_write_and_strict_review_validates_actual_approvals - tools.compatibility_inventory.InventoryError: incomplete preparation verifier/tool identities",
+      "FAILED tests/contract/test_compatibility_qualification.py::test_selection_binding_extends_existing_scope_approval[exact] - tools.compatibility_inventory.InventoryError: incomplete preparation verifier/tool identities",
+      "FAILED tests/contract/test_compatibility_qualification.py::test_selection_binding_extends_existing_scope_approval[wrong] - tools.compatibility_inventory.InventoryError: incomplete preparation verifier/tool identities",
+      "FAILED tests/contract/test_compatibility_qualification.py::test_selection_binding_extends_existing_scope_approval[absent] - tools.compatibility_inventory.InventoryError: incomplete preparation verifier/tool identities",
+      "FAILED tests/contract/test_qualification_native.py::test_real_native_input_scope_includes_cpp_harness_and_shader_corpus - AssertionError: assert '1a60c94d157e...490b34ca8c33a' == '020e267244b5...a1c34461da12c'",
+      "FAILED tests/contract/test_qualification_native.py::test_real_candidate_cannot_reach_sdk_or_proofs_without_review - AssertionError: Regex pattern did not match.",
+      "FAILED tests/contract/test_qualification_linux_native.py::test_real_native_route_requires_actual_review_before_capture - AssertionError: Regex pattern did not match.",
+      "FAILED tests/contract/test_reuse_metal_ci.py::test_explicit_metal_python_change_preserves_original_native_and_history[arm64] - tools.compatibility_inventory.InventoryError: source project metadata missing",
+      "FAILED tests/contract/test_reuse_metal_ci.py::test_explicit_metal_python_change_preserves_original_native_and_history[x86_64] - tools.compatibility_inventory.InventoryError: source project metadata missing",
+      "FAILED tests/contract/test_reuse_metal_ci.py::test_explicit_metal_readme_change_keeps_original_description_and_all_other_wheel_bytes[arm64] - tools.compatibility_inventory.InventoryError: source project metadata missing",
+      "FAILED tests/contract/test_reuse_metal_ci.py::test_explicit_metal_readme_change_keeps_original_description_and_all_other_wheel_bytes[x86_64] - tools.compatibility_inventory.InventoryError: source project metadata missing",
+      "FAILED tests/contract/test_reuse_metal_ci.py::test_metal_cli_installs_and_retains_current_wheel_without_relabelling_original[arm64] - tools.compatibility_inventory.InventoryError: source project metadata missing",
+      "FAILED tests/contract/test_reuse_metal_ci.py::test_metal_cli_installs_and_retains_current_wheel_without_relabelling_original[x86_64] - tools.compatibility_inventory.InventoryError: source project metadata missing",
+      "FAILED tests/contract/test_qualification_epoch.py::test_original_record_needs_review_before_any_old_origin_is_consumed - AssertionError: Regex pattern did not match.",
+      "FAILED tests/no_opengl/test_capture_results.py::test_prepared_capture_candidate_maps_four_modes_on_both_profiles - tools.compatibility_inventory.InventoryError: incomplete preparation verifier/tool identities"
+    ],
+    "log": {
+      "path": "D:\\vispy-vulkan-managed\\build\\runs\\qualification-ci-observation-494\\job-131742763957.log",
+      "sha256": "9363b2bee0b2afc3dc06c4a3051890552761ff5875657d97a050a0929c0c547a"
+    }
+  },
+  "software_vulkan_diagnostic": {
+    "job_id": 131742772513,
+    "status": "FAILED_PRESERVED_REUSE_PHASE",
+    "log": {
+      "path": "D:\\vispy-vulkan-managed\\build\\runs\\qualification-ci-observation-494\\job-131742772513.log",
+      "sha256": "18476391ebaeaaf567768bffcdb28caa9891f4d32f0e1804e127b052a7bf7085"
+    },
+    "artifact_inventory": {
+      "path": "D:\\vispy-vulkan-managed\\build\\runs\\qualification-ci-observation-494\\linux-artifacts.json",
+      "sha256": "2e8e377c0d156325289fd0ba8ccb8cc85c2d8daf67edd7ca3102190b7845a573"
+    },
+    "child_failure_detail_pending": true
+  },
+  "classification": [
+    "Nine historical-candidate tests expect current validation despite stale preparation tool identities; preserve frozen records and test their original scope or fresh synthetic identities.",
+    "Six Metal packaging fixtures lack the explicit project/version metadata now required by the validator.",
+    "One native input-scope test compares historical recorded pins against current source; investigate exact mismatch rather than rewrite old pins.",
+    "Software Vulkan original-native reuse failed; retrieve retained child evidence to determine the exact changed-input decision needed."
+  ],
+  "required_ci_passed": false,
+  "artifact_admitted": false,
+  "ci_jobs_waived": 0,
+  "remaining_jobs_not_complete": true,
+  "next": [
+    "Fix stale source tests without weakening validators or rewriting frozen records.",
+    "Inspect retained native-reuse child evidence; use explicit reviewed current-native production if original inputs differ.",
+    "Freeze corrected qualification head and renew affected source/scope bindings as required.",
+    "Retain failed and later run histories; run all23 required jobs again on exact corrected head."
+  ]
+}

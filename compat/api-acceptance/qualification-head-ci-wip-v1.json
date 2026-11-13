@@ -1,0 +1,54 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "REQUIRED_HEAD_CI_DISPATCHED_NOT_PASSED",
+  "repository": "bipxx/vispy_vulkan",
+  "qualification_head": "152183d0e3d737bf036d0baad2c0981ab6fe981c",
+  "branch": "wip/qualification-reviewed-492",
+  "required_jobs": 23,
+  "runs": [
+    {
+      "id": 43382332610,
+      "run_attempt": 1,
+      "path": ".github/workflows/metal-wheel.yml",
+      "status": "queued",
+      "conclusion": null,
+      "head_sha": "152183d0e3d737bf036d0baad2c0981ab6fe981c",
+      "html_url": "https://github.com/bipxx/vispy_vulkan/actions/runs/43382332610"
+    },
+    {
+      "id": 43382329885,
+      "run_attempt": 1,
+      "path": ".github/workflows/linux-vulkan.yml",
+      "status": "in_progress",
+      "conclusion": null,
+      "head_sha": "152183d0e3d737bf036d0baad2c0981ab6fe981c",
+      "html_url": "https://github.com/bipxx/vispy_vulkan/actions/runs/43382329885"
+    },
+    {
+      "id": 43382327218,
+      "run_attempt": 1,
+      "path": ".github/workflows/cpu-contract.yml",
+      "status": "queued",
+      "conclusion": null,
+      "head_sha": "152183d0e3d737bf036d0baad2c0981ab6fe981c",
+      "html_url": "https://github.com/bipxx/vispy_vulkan/actions/runs/43382327218"
+    }
+  ],
+  "original_run_history": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\qualification-head-ci-493\\dispatch-runs.json",
+    "sha256": "85584f2c53badf1f54a69be0678a0d8446f41e210453472caa6f02b0037d8390"
+  },
+  "processes": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\qualification-head-ci-493\\processes.json",
+    "sha256": "3a4e84b79b2476c28f4eb8e2a25b90330687b8593d7a20bf5e3c6464f272ee26"
+  },
+  "owner_index_unchanged": true,
+  "required_ci_passed": false,
+  "artifact_admitted": false,
+  "remaining": [
+    "Poll exact run identities; retain every attempt and full job list plus source/collector identity artifacts.",
+    "Treat failed required jobs as blocking; no waivers.",
+    "Installed row/history/retention and detached promotion remain pending."
+  ]
+}

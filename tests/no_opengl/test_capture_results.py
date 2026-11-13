@@ -145,15 +145,16 @@ def test_prepared_capture_candidate_maps_four_modes_on_both_profiles():
     from tools import compatibility_execution as execution
     from tools import compatibility_qualification as selection
     root = Path(__file__).resolve().parents[2]
-    base = root/'compat/candidates/tk-capture-1'
+    base = root/'compat/candidates/tk-state-resource-6'
     mapped = json.loads((base/'execution.json').read_bytes())
     coverage_state = coverage.validate_coverage(json.loads((base/'coverage.json').read_bytes()))
     execution.validate_execution(mapped)
     selection.validate_selection(json.loads((base/'admission-selection.json').read_bytes()))
     assert coverage_state['original_required_pairs_retained'] == 142
     assert coverage_state['originals_discharged'] == 0
-    assert len(mapped['mappings']) == 8
-    for mapping in mapped['mappings']:
+    capture_mappings = [m for m in mapped['mappings'] if m['criterion'].startswith('tk.readback.crop-formats.')]
+    assert len(capture_mappings) == 8
+    for mapping in capture_mappings:
         kind = mapping['criterion'].rsplit('.', 1)[1]
         assert mapping['functional_result'] == dict(
             schema=1, contract=f.CAPTURE_CONTRACT, branch_ids=[f.CAPTURE_BRANCHES[kind]])
@@ -163,8 +164,10 @@ def test_prepared_capture_candidate_maps_four_modes_on_both_profiles():
 def test_resealed_capture_mapping_rejects_wrong_semantics(fault):
     from tools import compatibility_execution as execution
     root = Path(__file__).resolve().parents[2]
-    record = json.loads((root/'compat/candidates/tk-capture-1/execution.json').read_bytes())
-    binding = record['mappings'][0]['functional_result']
+    record = json.loads((root/'compat/candidates/tk-state-resource-6/execution.json').read_bytes())
+    execution.validate_execution(record)  # Positive control before changing the selected branch.
+    mapping = next(m for m in record['mappings'] if m['criterion'].startswith('tk.readback.crop-formats.'))
+    binding = mapping['functional_result']
     if fault == 'unknown-contract':
         binding['contract'] = 'tk-capture-2'
     elif fault == 'old-contract':
@@ -172,7 +175,7 @@ def test_resealed_capture_mapping_rejects_wrong_semantics(fault):
     elif fault == 'wrong-branch':
         binding['branch_ids'] = ['ordinary.state']
     else:
-        record['mappings'][0].pop('functional_result')
+        mapping.pop('functional_result')
     execution.seal(record)
     with pytest.raises(ValueError):
         execution.validate_execution(record)

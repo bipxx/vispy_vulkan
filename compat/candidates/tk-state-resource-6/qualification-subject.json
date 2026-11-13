@@ -1,9 +1,9 @@
 {
   "schema": 1,
   "kind": "qualification-subject",
-  "manifest_sha256": "237cd9b75157bad9070437c8eb7df60644efaee90b75a65b9894b6d09ffe9dc8",
+  "manifest_sha256": "833820b1d6a5f6c09a44db42a64ee899455210719982edf8dbe7c7ea08094af2",
   "product_source_commit": "b38c4f9068d6a425eef43b62313f0f4cf37f57d9",
-  "qualification_head": null,
+  "qualification_head": "152183d0e3d737bf036d0baad2c0981ab6fe981c",
   "candidate": {
     "path": "compat/candidates/tk-state-resource-6/candidate.json",
     "sha256": "bbda34df6ebeaaa02a78dc4ce3809df70f8541a77308125ee210c4f749f1e04c"

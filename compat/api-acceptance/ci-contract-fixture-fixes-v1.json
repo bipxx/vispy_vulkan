@@ -1,0 +1,77 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "SOURCE_TEST_FIXTURES_REPAIRED_HOSTED_VALIDATION_PENDING",
+  "source_test_profile": "Windows CPython3.12.8 existing .venv; no native build/install/environment creation",
+  "full_ci_contract_cases_passed": 1088,
+  "ci_file_selection": [
+    "tests/contract/test_compatibility_inventory.py",
+    "tests/contract/test_compatibility_qualification.py",
+    "tests/contract/test_qualification_ci.py",
+    "tests/contract/test_qualification_artifact.py",
+    "tests/contract/test_repackage_python_wheel.py",
+    "tests/contract/test_qualification_native.py",
+    "tests/contract/test_qualification_linux_native.py",
+    "tests/contract/test_linux_native_contracts.py",
+    "tests/contract/test_linux_ci_lifecycle.py",
+    "tests/contract/test_reuse_linux_ci.py",
+    "tests/contract/test_reuse_metal_ci.py",
+    "tests/contract/test_qualification_epoch.py",
+    "tests/contract/test_qualification_index.py",
+    "tests/contract/test_retained_evidence.py",
+    "tests/contract/test_prepare_software_vulkan.py",
+    "tests/contract/test_build_software_vulkan.py",
+    "tests/contract/test_dawn_submission_contract.py",
+    "tests/contract/test_dawn_state_query_contract.py",
+    "tests/no_opengl/test_probe_failures.py",
+    "tests/no_opengl/test_functional_results.py",
+    "tests/no_opengl/test_capture_results.py"
+  ],
+  "process": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\ci-contract-fixture-fixes-495\\full-ci-contracts-process.json",
+    "sha256": "81a3ac3e53282b7e133e684f5c114724a2b08d80dfd39e670a0ac358390a7a8c"
+  },
+  "log": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\ci-contract-fixture-fixes-495\\full-ci-contracts.log",
+    "sha256": "2ceed0dcfe2e8c88a1984528c55756f63d7ab5347091d99358825cd4f42f45d5"
+  },
+  "changed_test_files": {
+    "tests/contract/conftest.py": "f7c412bcf3cd8be2785fc27d03b6c2a88065571228813c202a46f77d63748589",
+    "tests/contract/test_compatibility_qualification.py": "c94cdb560b7c69945b202bf37a8fc075395f27ff328b947111559f771696b33e",
+    "tests/contract/test_qualification_native.py": "a4de57bf56c170656c7cd4a16b25793fbd5ab4831bffcd8cc3e538ffadf09fb0",
+    "tests/contract/test_qualification_linux_native.py": "58d303e60838c929c92b9ee651f5bf1b7735bb9868e16e1cb1c75b97907a1c8a",
+    "tests/contract/test_qualification_epoch.py": "ac5baff8d45a9f7f65a02265c92e2d02d35c68faa7a75eba53e3e0d90fe7f397",
+    "tests/contract/test_reuse_metal_ci.py": "6b7176a35526c3d89a34db8239d1dabf89a14c9e7170bd2d6e1a2630f4c3f485",
+    "tests/no_opengl/test_capture_results.py": "720aabe175e549389c1c7078bb84625134755df7e26d54502fbf20f8d32aa9dd"
+  },
+  "candidate_records_preserved": 164,
+  "candidate_record_hashes": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\ci-contract-fixture-fixes-495\\preserved-candidates.json",
+    "sha256": "a5ec2f202f0111db9bc0de2c906620d5b28f7624622e21689b2d1a4de0f21a1e"
+  },
+  "source_archive": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\ci-contract-fixture-fixes-495\\source-after-and-licenses.zip",
+    "sha256": "d99cede8a9ecc210e18214b9acd8bfdbbfcbb6c116c90082352a742b192d6267"
+  },
+  "failed_focused_run": {
+    "passed": 312,
+    "failed": 1,
+    "process": {
+      "path": "D:\\vispy-vulkan-managed\\build\\runs\\ci-contract-fixture-fixes-495\\focused-process.json",
+      "sha256": "03f2725d9750167c5d9b3a93b37c330b2c9f67da7cd8c17f1c4d8579e591903e"
+    },
+    "reproducer": {
+      "path": "D:\\vispy-vulkan-managed\\build\\runs\\ci-contract-fixture-fixes-495\\focused-failure-reproducer.json",
+      "sha256": "fff12ef08ce763cb3c5e92ca5e68d80d39baef88cc0b5684683117502eedf871"
+    }
+  },
+  "validators_changed": false,
+  "runtime_changed": false,
+  "artifact_admitted": false,
+  "required_ci_passed": false,
+  "remaining": [
+    "Freeze test-only corrected qualification head.",
+    "Dispatch all23 required head jobs with explicit existing fresh modes for Linux and Metal.",
+    "Installed row/history/retention joins and detached promotion."
+  ]
+}

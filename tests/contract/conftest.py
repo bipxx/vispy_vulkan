@@ -10,7 +10,7 @@ import pytest
 def without_current_reviews(monkeypatch):
     """Remove reviews only from an in-memory candidate; retain the real verifier."""
     from tools.compatibility_candidate import seal, scope_digest
-    candidate_path = Path(__file__).resolve().parents[2] / 'compat/candidates/tk-state-resource-1/candidate.json'
+    candidate_path = Path(__file__).resolve().parents[2] / 'compat/candidates/tk-state-resource-6/candidate.json'
 
     def isolate(module):
         original = module.read_json
