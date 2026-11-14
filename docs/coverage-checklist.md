@@ -2,6 +2,153 @@
 
 ## Latest checkpoint — 2026-11-14
 
+**Expanded source/evidence batch approved — 2026-11-14:**
+[825](../compat/api-acceptance/current-installed-source-review-v1.json) approves
+exact13-file delta `9bb9fe55` on actual26e9ea5f/tree3c39641e, no required changes.
+All1,314inputs reverified; reviewer records unread material/no independent hash
+recomputation. This covers the changed focus test and finite73case/2refusal
+installed observations per profile, not strict/profile/artifact admission.
+Review scratch cleaned96bytes/38retained verified. Previous review-pending
+labels and old receipts' WSL-pending fields are historical; preserve those bytes.
+Next final14path freeze with permitted own-review/additive docs, actual-head
+joins/73case collection and normal fresh protectedCI. Track PanZoom retention
+separately as LIF-06-PANZOOM-RETIREMENT below; baseline restoration does not fix it.
+Read-only admission audit826 confirms reviewed preparation but32installed rows/
+128criterion-profile bindings still need exactcurrent selected workflow evidence.
+
+**Current wheels pass matching installed selection — 2026-11-14:**
+[822/823 Windows and824 WSL](../compat/api-acceptance/qt-callback-installed-v1.json)
+each pass73cases (47CPU callback contracts,26rendered), with537members/zero
+overlays,47isolated CPU origin proofs and ten zero process-shutdown gauges.
+Windows18e11361/Linux9efb556e retain original native bytes; focused resource
+entry/exit gauges and event/color proofs verify on both profiles. Two deliberately
+retained-canvas cases are refused on each profile; older820failures and822partial
+control remain unchanged. WSL borrowed origins stay unchanged; all six processes
+are awaited, negativecontrol exit1 as expected/other five0, private Xvfb0.
+WSL target cleaned29,872,635bytes/33retained verifications. Earlier matching-WSL
+pending labels are superseded. Next fresh cumulative source/evidence review,
+including changed focus GPU bytes, then protected integration and applicable
+artifact/profile admission. Passing73cases is not fullprofile/release approval.
+[PR82's actual integration](../compat/api-acceptance/qt-focus-protected-integration-v1.json)
+remains separately verified; no source approval is transferred to new test bytes.
+
+**Windows focus-baseline validation complete — 2026-11-14:**
+[821–823 evidence](../compat/api-acceptance/qt-focus-resource-baseline-v1.json)
+joins unchanged new-wheel runtime to73installed Windows passes and two reliable
+retained-canvas refusals. Module-owned controls retain11,520then23,040canvas
+texture bytes and both fail the exact gauge-restoration assertion; final global
+shutdown is zero. The earlier1of2negative result remains preserved, not relabeled.
+All821–823scratch cleaned71,606,279bytes. Matching WSL and fresh review/integration
+of the changed focus test remain next; prior811/816approval and old83b9GPU results
+do not cover its new bytes. Unrelated entry resources remain an acknowledged
+ownership boundary; no global pre-focus retirement or artifact admission claim.
+
+**Focus resource ownership correction in progress — 2026-11-14:**
+Managed821 reproduces the same PanZoom-to-focus failure on original9e4 and
+candidate18e11361 (identical704buffer/936CPU/691200texture bytes at focus entry);
+fresh-process candidate focus passes twice with zero entry/exit gauges. This
+does not implicate the callback-wrapper change. Revised focus test requires
+quiescent work and restores all ten entry gauges, allowing unrelated scenes to
+retain resources; fresh zero-baseline runs still require zero at teardown.
+Windows822 passes73installed cases/537members/no overlays/47CPU origins and
+ten zero process-shutdown gauges. Its deliberately added-canvas control rejects
+only1of2: an earlier unretained control object can be collected, so the control
+needs explicit cross-case ownership before acceptance. Preserve820/821/822 raw
+outcomes.821/822 scratch cleaned35,802,016/17,902,134bytes,27/29retained verified.
+Matching WSL, corrected control and fresh review of the changed focus test remain
+pending. Review816 covers the earlier eight-file clip/blend delta only; it does
+not approve this additional test change or artifact admission.
+
+**PR82 integration verified; installed composition failure retained — 2026-11-14:**
+Managed `focus-protected-integration-818/verification.json` verifies actual
+merge `26e9ea5f`, parents `a69505ce`/`2f07a13f`, tree `3c39641e` equal to the
+tested merge, all 16 blobs/510 runtime members/810 guards and 11 required checks.
+Later clip/blend work and foreign HEAD/index are preserved. LIF-06-QT-FOCUS's
+finite source/test-record integration is complete; older pending labels below
+are historical. New Qt-file CI collection and changed-wheel acceptance remain
+separate. Installed Windows820 on candidate18e11361 verifies 537 members/zero
+overlays and 47 CPU child origins, but records 71 passes and two focus global
+resource-gauge failures after earlier scene cases. Nonzero gauges were buffer704,
+CPU936 and texture691200 bytes; final global shutdown has ten zero gauges.
+Causality is unproved. Preserve `callback-installed-windows-820/failure-disposition.json`;
+next minimal old/new-wheel PanZoom-to-focus and fresh-process controls, with no
+weakened gauges. Failed scratch cleaned17,902,126bytes/25retained verifications.
+No 73-pass, installed qualification, profile admission or release claim.
+
+**Current-wrapper candidate wheels assembled — 2026-11-14:**
+Managed run `callback-python-package-819/verification.json` records unreleased
+Windows `18e11361` and Linux `9efb556e` wheels for runtime already merged in
+PR81 (`a69505ce`). Both original native provenance validators pass again;
+existing repackaging/source/archive checks and 510 current-member joins pass.
+Only `_qt.py` and RECORD differ from original 9e4/a271 wheels; native payload,
+metadata/version/tags and notices stay unchanged. The original description is
+preserved through the existing explicit source-hash checks. Initial coordinator
+hash-versus-notice-bytes assertion failure is retained; the corrected diagnostic
+does not alter the archive verifier. Scratch cleaned 17,376,340 bytes, 30 retained
+files/artifacts verified. No installation, environment, native build, artifact
+admission or publication. API-06/LIF-06 changed-artifact acceptance remains open;
+PR82/test-record integration is separate from this already-merged runtime.
+
+**Delivery impact audited — 2026-11-14:** API-06 changed-wrapper delivery remains
+open. Read-only run `delivery-package-impact-audit-817/verification.json`
+under the managed evidence root audits the exact original 9e4/a271 archives
+against frozen preparation12's 510 pure members, retained native output maps
+and current matching notices, explicitly using version `0.17.0+vulkan.2`.
+Current preparation13 differs in exactly `_qt.py`; no native rebuild, artifact,
+environment or scratch was created. This is an archive prerequisite/impact
+audit, not current production re-approval or changed-artifact qualification.
+Next use the existing audited pure-member repackaging path, zero-overlay
+installed acceptance and applicable profile/admission review after source
+integration; preserve existing published assets and delivery identities.
+
+**Clipped blending source/evidence approved — 2026-11-14:**
+[816 review](../compat/api-acceptance/mesh-clip-blend-review-v1.json) approves
+exact eight-file delta `b44c8d71` on reviewed PR82 head `2f07a13f`, no required
+changes. Coordinator reverified 1,287 inputs; reviewer records unread material
+and no independent hash recomputation. Invalid-alpha coverage is exception plus
+immediate valid recovery, never an atomic setter rollback guarantee. Original
+814/815 receipts stay unchanged; their installed observations remain finite.
+Review child exits 0/awaited; saved UTF8 response precedes a retained GBK console
+printing failure. Managed cleanup removes 89 bytes, verifies 38 retained files.
+Next verify actual PR82 merge/tree, freeze permitted metadata, join actual-head
+inputs/collect three cases and perform fresh protected integration. No broader
+SCI-02, newer-wrapper artifact, CI-collection or release claim.
+
+**Matching clipped blending verified — 2026-11-14:**
+[Windows814](../compat/api-acceptance/mesh-clip-blend-windows-v1.json) and
+[WSL815](../compat/api-acceptance/mesh-clip-blend-wsl-v1.json) each pass three
+installed cases on runtime `2b8bccd`/wheels `9e4e30cc` and `a2715d26`, 537
+members/zero overlays/ten zero final gauges per profile. All pixel/revision
+metrics match: zero maximum error, 576 changed pixels, queued counts 2/4/6 and
+exact restoration. WSL uses pinned software Vulkan/private Xvfb; borrowed
+origins unchanged, four processes exit 0/awaited. Both targets cleaned
+47,778,839 bytes with 25/28 retained-file verifications. The finite installed
+observation is complete; independent review/source integration and newer-wrapper
+artifact admission remain separate. Broad SCI-02 stays partial.
+
+**Clipped alpha blending: Windows finite observation passes — 2026-11-14:**
+[814](../compat/api-acceptance/mesh-clip-blend-windows-v1.json) passes three cases
+on retained runtime `2b8bccd`/Windows wheel `9e4e30cc`, 537 members verified and
+zero overlays. Alpha mutation, zero alpha and invalid-number refusal/immediate
+valid replacement preserve queued counts 2/4/6, exact restoration, 576 changed
+pixels and exact clipped blue/opaque alpha. Observed maximum channel error is
+zero (allowed one UNORM unit). Ten shutdown gauges zero; scratch cleaned
+17,904,165 bytes, 25 retained files verified. SCI-02-CLIP-ALPHA-BLEND stays open
+for matching WSL, review/integration; no newer-wrapper artifact/admission claim.
+PR82 software-Vulkan CI passes; ten required CPU jobs remain active.
+
+**Focus batch submitted as PR82 — 2026-11-14:**
+[813 source-head receipt](../compat/api-acceptance/qt-focus-source-head-v1.json)
+records exact 16-file commit `2f07a13f`, tree `3c39641e`, on `a69505ce`.
+All 510 runtime members and CPU/GPU source inputs join the retained 809/810 and
+806/807 evidence under review 811; collection-only finds both GPU cases.
+Private-index scratch cleaned 15,135,281 bytes, 134 retained files verified;
+the staging-path failure and corrected driver remain retained. Foreign index
+and HEAD are unchanged. [PR82](https://github.com/bipxx/vispy_vulkan/pull/82)
+has head-pinned normal protected auto-merge enabled; required CI and actual
+merge remain pending. Later head/CI/merge records stay outside the frozen batch.
+No runtime, candidate, workflow or artifact change; no new CI collection claim.
+
 **Focus amendment approved — 2026-11-14:**
 [811 review](../compat/api-acceptance/qt-focus-amendment-review-v1.json)
 approves exact 15-file source delta `86afc518fd9604837752082d8962d0e6d3c0700709083ab8b2e1df2c69dc74bb`
@@ -2048,6 +2195,18 @@ broad claims and stale dispositions without duplicating that table.
   internal queue case only; WSL/broader layouts and strict admission stay open.
 - [ ] **SCI-02 — Mesh filters / E03:** enumerate filters and supported compositions,
   then verify mutations and meaningful outputs for the selected combinations.
+- [ ] **SCI-02-CLIP-ALPHA-BLEND — Selected investigation, 2026-11-14:**
+  `tests/visuals/test_mesh_clip_blend_gpu.py` adds three source cases:
+  alpha mutation, zero alpha and invalid-value recovery with clipping, texture,
+  tint and straight-alpha blending over opaque blue. Three queued revisions
+  must preserve before/change/restored output, exact clipped pixels and opaque
+  alpha; blended RGB allows one UNORM rounding unit. Existing composition tests
+  disable blending and do not prove this interaction.
+  [Windows814](../compat/api-acceptance/mesh-clip-blend-windows-v1.json) passes
+  all three on installed 9e4/runtime2b8, no overlays/ten zero gauges and cleaned
+  scratch. [WSL815](../compat/api-acceptance/mesh-clip-blend-wsl-v1.json) now
+  matches all three metrics on installed a271/software Vulkan, no overlays/ten
+  zero gauges and cleaned scratch. Independent review and integration pending.
 - [x] **SCI-02-COLOR-ALPHA-COMPOSITION — Selected six cases, 2026-11-14:**
   [Windows712](../compat/api-acceptance/mesh-color-alpha-windows-v1.json) and
   [WSL713](../compat/api-acceptance/mesh-color-alpha-wsl-v1.json) pass exact literal
@@ -2173,6 +2332,25 @@ observations on each claimed profile, not just a successful screenshot.
   Native display/HID/DPI, other cameras and parent admission remain separate.
 - [ ] **LIF-06 — Input forwarding / Q13:** selected keyboard, wheel, touch, focus,
   mouse, timer and coordinate semantics beyond the currently proved workflows.
+- [x] **LIF-06-QT-FOCUS-RESOURCE-BASELINE — Finite installed observation:**
+  2026-11-14, [current receipt](../compat/api-acceptance/qt-callback-installed-v1.json)
+  records73cases per Windows18e11361/WSL9efb556e profile, no overlays/537members.
+  Focus restores all ten quiescent entry gauges, with matching input/color
+  observations; two live module-owned canvas controls per profile are refused.
+  Process shutdown is zero. Unrelated prior scene resources are not proved
+  retired. New source review/integration and strict/profile/release admission
+  remain open; original failures and old source-epoch proofs stay historical.
+- [ ] **LIF-06-PANZOOM-RETIREMENT — Unresolved retained resources:**
+  2026-11-14, [825 finding F1](../compat/api-acceptance/current-installed-source-review-v1.json)
+  and managed821 per-test observations show each closed PanZoom scene retains
+  352buffer/468CPU/345,600texture bytes; two scenes accumulate704/936/691,200.
+  Old9e4 and new18e11361 wheels match; resources disappear at process shutdown.
+  Cause is not established: test-held references versus runtime ownership/
+  retirement. Next use weak references and explicit owned Qt-object destruction
+  with before/after gauges to distinguish those causes, then fix the responsible
+  fixture or runtime path and rerun the minimal sequence. Global focus-baseline
+  equality and final shutdown zero do not close this item. No physical-memory
+  or universal Canvas.close leak diagnosis is inferred from these finite gauges.
 - [ ] **LIF-06-QT-FOCUS — Selected next interaction:** prove two-canvas focus
   switching and host text-entry isolation/recovery through the host QWindow,
   with expected recipient/payload and rendered response. Existing direct-widget

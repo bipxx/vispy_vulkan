@@ -1,0 +1,554 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "coverage_ids": [
+    "API-06",
+    "LIF-06",
+    "LIF-06-QT-FOCUS",
+    "LIF-06-QT-FOCUS-RESOURCE-BASELINE",
+    "SCI-02-CLIP-ALPHA-BLEND"
+  ],
+  "status": "PASS_SELECTED_CURRENT_WHEEL_INSTALLED_ACCEPTANCE_WINDOWS_WSL_NOT_ADMITTED",
+  "runtime_source_commit": "a69505ceb10c2f10c0354b902211132b91f4e91f",
+  "qt_source_sha256": "1c68488e862cb1d8b573641a16a6894a97ac434f915773f12ce3708cae85a4cc",
+  "assembly": {
+    "path": "@evidence/build/runs/callback-python-package-819/verification.json",
+    "sha256": "ed2633ebd621e0a88dfa6844796e18c8873f0ec6a6ecf29219ff55b3b751127f"
+  },
+  "assembly_source_archive": {
+    "path": "@evidence/build/runs/callback-python-package-819/source-reproducer-and-licenses.zip",
+    "sha256": "c6590617eecec58a5844675205b11f3c2f4304e16761176a9824dc33e25ed26b"
+  },
+  "profiles": {
+    "windows": {
+      "wheel": {
+        "path": "build/artifacts/18e113616b36f56294987c316a1a43f6e3ec2f6a391378d14d1bc01839845404/vispy-0.17.0+vulkan.2-cp312-cp312-win_amd64.whl",
+        "sha256": "18e113616b36f56294987c316a1a43f6e3ec2f6a391378d14d1bc01839845404"
+      },
+      "verification": {
+        "path": "@evidence/build/runs/callback-installed-windows-revised-822/verification.json",
+        "sha256": "cd57551efc6b6871c5b521e6c907f2d338e1f482e2c9f2e25a736f21f4f596e8"
+      },
+      "installed_cases": 73,
+      "cpu_child_origin_proofs": 47,
+      "rendered_cases": 26,
+      "installed_members_verified": 537,
+      "source_overrides": 0,
+      "shutdown_gauges": {
+        "pending_tickets": 0,
+        "queued_frames": 0,
+        "live_buffer_bytes": 0,
+        "live_cpu_buffer_bytes": 0,
+        "live_texture_bytes": 0,
+        "canvas_texture_bytes": 0,
+        "transient_buffer_bytes": 0,
+        "line_resource_pool_busy_slots": 0,
+        "line_resource_pool_bytes": 0,
+        "host_import_pinned_bytes": 0
+      },
+      "focus_proofs": [
+        {
+          "flow": "canvases",
+          "focus": [
+            "canvas_a",
+            "canvas_b",
+            "canvas_a"
+          ],
+          "observations": [
+            {
+              "focus": "canvas_a",
+              "canvas_colors": [
+                [
+                  0,
+                  255,
+                  0,
+                  255
+                ],
+                [
+                  0,
+                  0,
+                  255,
+                  255
+                ]
+              ],
+              "events": 2,
+              "entry_text": ""
+            },
+            {
+              "focus": "canvas_b",
+              "canvas_colors": [
+                [
+                  0,
+                  255,
+                  0,
+                  255
+                ],
+                [
+                  0,
+                  255,
+                  0,
+                  255
+                ]
+              ],
+              "events": 4,
+              "entry_text": ""
+            },
+            {
+              "focus": "canvas_a",
+              "canvas_colors": [
+                [
+                  255,
+                  255,
+                  0,
+                  255
+                ],
+                [
+                  0,
+                  255,
+                  0,
+                  255
+                ]
+              ],
+              "events": 6,
+              "entry_text": ""
+            }
+          ],
+          "presses": [
+            2,
+            1
+          ],
+          "baseline_gauges": {
+            "pending_tickets": 0,
+            "queued_frames": 0,
+            "live_buffer_bytes": 704,
+            "live_cpu_buffer_bytes": 936,
+            "live_texture_bytes": 691200,
+            "canvas_texture_bytes": 0,
+            "transient_buffer_bytes": 0,
+            "line_resource_pool_busy_slots": 0,
+            "line_resource_pool_bytes": 0,
+            "host_import_pinned_bytes": 0
+          },
+          "teardown_gauges": {
+            "pending_tickets": 0,
+            "queued_frames": 0,
+            "live_buffer_bytes": 704,
+            "live_cpu_buffer_bytes": 936,
+            "live_texture_bytes": 691200,
+            "canvas_texture_bytes": 0,
+            "transient_buffer_bytes": 0,
+            "line_resource_pool_busy_slots": 0,
+            "line_resource_pool_bytes": 0,
+            "host_import_pinned_bytes": 0
+          },
+          "resource_gauges_restored": true,
+          "oracle": "2x2 internal framebuffer readback; no Vulkan WSI surface",
+          "activation": "controlled QApplication focus; QtTest fixed host QWindow"
+        },
+        {
+          "flow": "host_entry",
+          "focus": [
+            "canvas_a",
+            "host_entry",
+            "canvas_a"
+          ],
+          "observations": [
+            {
+              "focus": "canvas_a",
+              "canvas_colors": [
+                [
+                  0,
+                  255,
+                  0,
+                  255
+                ],
+                [
+                  0,
+                  0,
+                  255,
+                  255
+                ]
+              ],
+              "events": 2,
+              "entry_text": ""
+            },
+            {
+              "focus": "host_entry",
+              "canvas_colors": [
+                [
+                  0,
+                  255,
+                  0,
+                  255
+                ],
+                [
+                  0,
+                  0,
+                  255,
+                  255
+                ]
+              ],
+              "events": 2,
+              "entry_text": "k"
+            },
+            {
+              "focus": "canvas_a",
+              "canvas_colors": [
+                [
+                  255,
+                  255,
+                  0,
+                  255
+                ],
+                [
+                  0,
+                  0,
+                  255,
+                  255
+                ]
+              ],
+              "events": 4,
+              "entry_text": "k"
+            }
+          ],
+          "presses": [
+            2,
+            0
+          ],
+          "baseline_gauges": {
+            "pending_tickets": 0,
+            "queued_frames": 0,
+            "live_buffer_bytes": 704,
+            "live_cpu_buffer_bytes": 936,
+            "live_texture_bytes": 691200,
+            "canvas_texture_bytes": 0,
+            "transient_buffer_bytes": 0,
+            "line_resource_pool_busy_slots": 0,
+            "line_resource_pool_bytes": 0,
+            "host_import_pinned_bytes": 0
+          },
+          "teardown_gauges": {
+            "pending_tickets": 0,
+            "queued_frames": 0,
+            "live_buffer_bytes": 704,
+            "live_cpu_buffer_bytes": 936,
+            "live_texture_bytes": 691200,
+            "canvas_texture_bytes": 0,
+            "transient_buffer_bytes": 0,
+            "line_resource_pool_busy_slots": 0,
+            "line_resource_pool_bytes": 0,
+            "host_import_pinned_bytes": 0
+          },
+          "resource_gauges_restored": true,
+          "oracle": "2x2 internal framebuffer readback; no Vulkan WSI surface",
+          "activation": "controlled QApplication focus; QtTest fixed host QWindow"
+        }
+      ],
+      "test_sources": {
+        "src/vispy/app/backends/_qt.py": "1c68488e862cb1d8b573641a16a6894a97ac434f915773f12ce3708cae85a4cc",
+        "tests/qt/test_callback_errors.py": "47687ca256dbc041b3cf1f05d7983ec814a6a31d4e02cf4469c7805fd0f98109",
+        "tests/qt/test_focus_routing_gpu.py": "a42c1438ba6af3c8d1fa7cf7d0a61155d7c27d33d5f1b8043429502939593c40",
+        "tests/qt/test_input_callback_errors_cpu.py": "bd1be64df0afd4f49d4171eb9c5b3821f794c813705b9d04f821dfc5b5acd03d",
+        "tests/qt/test_input_callback_recovery_gpu.py": "fd48849b77a1f27701594088d3723d6233344bac13dc8a538085c5516692e97c",
+        "tests/qt/test_input_delivery_gpu.py": "1cb94719bd6574378adc8cb81510c02ab0897a6dadd61a1698ec94c277094c8e",
+        "tests/qt/test_panzoom_input_gpu.py": "9ab7931737264d97c3cfe533b8267a7caaeef233bdd9ef8bd17718385c185054",
+        "tests/visuals/test_mesh_clip_blend_gpu.py": "e5467bee2f00a5c17a04d578e1c026b64e34a269980b6c8387ff69eb0190d741"
+      },
+      "retention_control": {
+        "path": "@evidence/build/runs/focus-retained-canvas-control-823/verification.json",
+        "sha256": "1cfcbab8895d7fbd21f2f9235e4685bdf2f7a47cbb9e841eeb2d515c14733577"
+      },
+      "retention_refusals": 2,
+      "cleanup": {
+        "receipt": {
+          "path": "@evidence/build/runs/callback-installed-windows-revised-822/cleanup-apply.log",
+          "sha256": "26f42006faff499e2b489b8b1da85334ea8e5dbc04cb62b8852459ce9e68078f"
+        },
+        "reclaimed_bytes": 17902134,
+        "scratch_absent": true
+      }
+    },
+    "wsl": {
+      "wheel": {
+        "path": "build/artifacts/9efb556e971acc7408f5706b0c143adb0232f2e484cecdf270e6af2c9ee8b9a8/vispy-0.17.0+vulkan.2-cp312-cp312-manylinux_2_39_x86_64.whl",
+        "sha256": "9efb556e971acc7408f5706b0c143adb0232f2e484cecdf270e6af2c9ee8b9a8"
+      },
+      "verification": {
+        "path": "@evidence/build/runs/callback-installed-wsl-824/verification.json",
+        "sha256": "72361785844768398df7510f8d7c2457d68e5f6517fae7503367a7b23c52c921"
+      },
+      "installed_cases": 73,
+      "cpu_child_origin_proofs": 47,
+      "rendered_cases": 26,
+      "installed_members_verified": 537,
+      "source_overrides": 0,
+      "shutdown_gauges": {
+        "pending_tickets": 0,
+        "queued_frames": 0,
+        "live_buffer_bytes": 0,
+        "live_cpu_buffer_bytes": 0,
+        "live_texture_bytes": 0,
+        "canvas_texture_bytes": 0,
+        "transient_buffer_bytes": 0,
+        "line_resource_pool_busy_slots": 0,
+        "line_resource_pool_bytes": 0,
+        "host_import_pinned_bytes": 0
+      },
+      "focus_proofs": [
+        {
+          "flow": "canvases",
+          "focus": [
+            "canvas_a",
+            "canvas_b",
+            "canvas_a"
+          ],
+          "observations": [
+            {
+              "focus": "canvas_a",
+              "canvas_colors": [
+                [
+                  0,
+                  255,
+                  0,
+                  255
+                ],
+                [
+                  0,
+                  0,
+                  255,
+                  255
+                ]
+              ],
+              "events": 2,
+              "entry_text": ""
+            },
+            {
+              "focus": "canvas_b",
+              "canvas_colors": [
+                [
+                  0,
+                  255,
+                  0,
+                  255
+                ],
+                [
+                  0,
+                  255,
+                  0,
+                  255
+                ]
+              ],
+              "events": 4,
+              "entry_text": ""
+            },
+            {
+              "focus": "canvas_a",
+              "canvas_colors": [
+                [
+                  255,
+                  255,
+                  0,
+                  255
+                ],
+                [
+                  0,
+                  255,
+                  0,
+                  255
+                ]
+              ],
+              "events": 6,
+              "entry_text": ""
+            }
+          ],
+          "presses": [
+            2,
+            1
+          ],
+          "baseline_gauges": {
+            "pending_tickets": 0,
+            "queued_frames": 0,
+            "live_buffer_bytes": 704,
+            "live_cpu_buffer_bytes": 936,
+            "live_texture_bytes": 691200,
+            "canvas_texture_bytes": 0,
+            "transient_buffer_bytes": 0,
+            "line_resource_pool_busy_slots": 0,
+            "line_resource_pool_bytes": 0,
+            "host_import_pinned_bytes": 0
+          },
+          "teardown_gauges": {
+            "pending_tickets": 0,
+            "queued_frames": 0,
+            "live_buffer_bytes": 704,
+            "live_cpu_buffer_bytes": 936,
+            "live_texture_bytes": 691200,
+            "canvas_texture_bytes": 0,
+            "transient_buffer_bytes": 0,
+            "line_resource_pool_busy_slots": 0,
+            "line_resource_pool_bytes": 0,
+            "host_import_pinned_bytes": 0
+          },
+          "resource_gauges_restored": true,
+          "oracle": "2x2 internal framebuffer readback; no Vulkan WSI surface",
+          "activation": "controlled QApplication focus; QtTest fixed host QWindow"
+        },
+        {
+          "flow": "host_entry",
+          "focus": [
+            "canvas_a",
+            "host_entry",
+            "canvas_a"
+          ],
+          "observations": [
+            {
+              "focus": "canvas_a",
+              "canvas_colors": [
+                [
+                  0,
+                  255,
+                  0,
+                  255
+                ],
+                [
+                  0,
+                  0,
+                  255,
+                  255
+                ]
+              ],
+              "events": 2,
+              "entry_text": ""
+            },
+            {
+              "focus": "host_entry",
+              "canvas_colors": [
+                [
+                  0,
+                  255,
+                  0,
+                  255
+                ],
+                [
+                  0,
+                  0,
+                  255,
+                  255
+                ]
+              ],
+              "events": 2,
+              "entry_text": "k"
+            },
+            {
+              "focus": "canvas_a",
+              "canvas_colors": [
+                [
+                  255,
+                  255,
+                  0,
+                  255
+                ],
+                [
+                  0,
+                  0,
+                  255,
+                  255
+                ]
+              ],
+              "events": 4,
+              "entry_text": "k"
+            }
+          ],
+          "presses": [
+            2,
+            0
+          ],
+          "baseline_gauges": {
+            "pending_tickets": 0,
+            "queued_frames": 0,
+            "live_buffer_bytes": 704,
+            "live_cpu_buffer_bytes": 936,
+            "live_texture_bytes": 691200,
+            "canvas_texture_bytes": 0,
+            "transient_buffer_bytes": 0,
+            "line_resource_pool_busy_slots": 0,
+            "line_resource_pool_bytes": 0,
+            "host_import_pinned_bytes": 0
+          },
+          "teardown_gauges": {
+            "pending_tickets": 0,
+            "queued_frames": 0,
+            "live_buffer_bytes": 704,
+            "live_cpu_buffer_bytes": 936,
+            "live_texture_bytes": 691200,
+            "canvas_texture_bytes": 0,
+            "transient_buffer_bytes": 0,
+            "line_resource_pool_busy_slots": 0,
+            "line_resource_pool_bytes": 0,
+            "host_import_pinned_bytes": 0
+          },
+          "resource_gauges_restored": true,
+          "oracle": "2x2 internal framebuffer readback; no Vulkan WSI surface",
+          "activation": "controlled QApplication focus; QtTest fixed host QWindow"
+        }
+      ],
+      "test_sources": {
+        "src/vispy/app/backends/_qt.py": "1c68488e862cb1d8b573641a16a6894a97ac434f915773f12ce3708cae85a4cc",
+        "tests/qt/test_callback_errors.py": "47687ca256dbc041b3cf1f05d7983ec814a6a31d4e02cf4469c7805fd0f98109",
+        "tests/qt/test_focus_routing_gpu.py": "a42c1438ba6af3c8d1fa7cf7d0a61155d7c27d33d5f1b8043429502939593c40",
+        "tests/qt/test_input_callback_errors_cpu.py": "bd1be64df0afd4f49d4171eb9c5b3821f794c813705b9d04f821dfc5b5acd03d",
+        "tests/qt/test_input_callback_recovery_gpu.py": "fd48849b77a1f27701594088d3723d6233344bac13dc8a538085c5516692e97c",
+        "tests/qt/test_input_delivery_gpu.py": "1cb94719bd6574378adc8cb81510c02ab0897a6dadd61a1698ec94c277094c8e",
+        "tests/qt/test_panzoom_input_gpu.py": "9ab7931737264d97c3cfe533b8267a7caaeef233bdd9ef8bd17718385c185054",
+        "tests/visuals/test_mesh_clip_blend_gpu.py": "e5467bee2f00a5c17a04d578e1c026b64e34a269980b6c8387ff69eb0190d741"
+      },
+      "retention_control": {
+        "path": "@evidence/build/runs/callback-installed-wsl-824/verification.json",
+        "sha256": "72361785844768398df7510f8d7c2457d68e5f6517fae7503367a7b23c52c921"
+      },
+      "retention_refusals": 2,
+      "cleanup": {
+        "receipt": {
+          "path": "@evidence/build/runs/callback-installed-wsl-824/cleanup-apply.log",
+          "sha256": "2e0b926cb8b06c1ecc11ebe1f44c59b0546ec937e41512cca13950c1410209b5"
+        },
+        "reclaimed_bytes": 29872635,
+        "scratch_absent": true
+      }
+    }
+  },
+  "source_and_focus_event_proofs_match": true,
+  "older_failure": {
+    "path": "@evidence/build/runs/callback-installed-windows-820/failure-disposition.json",
+    "sha256": "53c9f9f93fd4d60cd764aa63a3f8c78876b13958b7f106e2080de117c1b9df08"
+  },
+  "old_new_control": {
+    "path": "@evidence/build/runs/callback-resource-controls-windows-821/verification.json",
+    "sha256": "7129649ddc5e7f12e562391653a185ed2b2bc83eadbe9f5cd09328b4d6a4a453"
+  },
+  "partial_negative_preserved": {
+    "path": "@evidence/build/runs/callback-installed-windows-revised-822/verification.json",
+    "sha256": "cd57551efc6b6871c5b521e6c907f2d338e1f482e2c9f2e25a736f21f4f596e8"
+  },
+  "corrected_windows_negative": {
+    "path": "@evidence/build/runs/focus-retained-canvas-control-823/verification.json",
+    "sha256": "1cfcbab8895d7fbd21f2f9235e4685bdf2f7a47cbb9e841eeb2d515c14733577"
+  },
+  "original_wheels_unchanged": true,
+  "native_rebuilt": false,
+  "new_environment_created": false,
+  "source_review_approved": false,
+  "protected_source_integration_complete": false,
+  "strict_profile_admitted": false,
+  "artifact_admitted": false,
+  "published": false,
+  "ci_coverage_claimed": false,
+  "limits": [
+    "Finite73cases each:47CPU callback virtuals/parent replay plus26rendered cases (2drawerrors,9inputcallbackrecovery,8ordinaryinput,2PanZoom,2focus,3clippedblend).",
+    "New uninstalled-at-creation wheels819 are now installed-tested, not current full profile/admission/release qualified; old published assets are untouched.",
+    "Focus compares all10quiescent-entry gauges to postteardown values; unrelated pre-existing scene resources are not proved retired. Process shutdown has10zero gauges.",
+    "Windows candidate18e11361 uses original6dc native; WSLcandidate9efb556e uses original5740/softwareMesa/privateXvfb. No physical Linux GPU or native Wayland/Metal qualification.",
+    "Source test bytes and new receipt integration/review remain pending. Frozen prior approvals are not transferred to changed GPU focus source.",
+    "No physicalHID/OS-widefocus/native-presented/optical/fractionalDPI/fullparity claim; no new test CIcollection."
+  ]
+}

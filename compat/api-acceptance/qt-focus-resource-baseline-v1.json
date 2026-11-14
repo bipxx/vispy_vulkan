@@ -1,0 +1,284 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "coverage_ids": [
+    "LIF-06",
+    "LIF-06-QT-FOCUS",
+    "LIF-06-QT-FOCUS-RESOURCE-BASELINE",
+    "API-06"
+  ],
+  "status": "WINDOWS_INSTALLED73_PASS_AND_TWO_REFUSALS_SOURCE_REVIEW_PENDING",
+  "test_source": {
+    "path": "tests/qt/test_focus_routing_gpu.py",
+    "sha256": "a42c1438ba6af3c8d1fa7cf7d0a61155d7c27d33d5f1b8043429502939593c40"
+  },
+  "original_test_sha256": "83b92823cb92e464a283dd518dc67df4d32f9df21eef44db02caea2137c694b7",
+  "diagnosis": {
+    "path": "@evidence/build/runs/callback-resource-controls-windows-821/verification.json",
+    "sha256": "7129649ddc5e7f12e562391653a185ed2b2bc83eadbe9f5cd09328b4d6a4a453"
+  },
+  "original_installed_failure": {
+    "path": "@evidence/build/runs/callback-installed-windows-820/failure-disposition.json",
+    "sha256": "53c9f9f93fd4d60cd764aa63a3f8c78876b13958b7f106e2080de117c1b9df08"
+  },
+  "windows_installed": {
+    "path": "@evidence/build/runs/callback-installed-windows-revised-822/verification.json",
+    "sha256": "cd57551efc6b6871c5b521e6c907f2d338e1f482e2c9f2e25a736f21f4f596e8"
+  },
+  "retained_canvas_refusals": {
+    "path": "@evidence/build/runs/focus-retained-canvas-control-823/verification.json",
+    "sha256": "1cfcbab8895d7fbd21f2f9235e4685bdf2f7a47cbb9e841eeb2d515c14733577"
+  },
+  "wheel": {
+    "path": "build/artifacts/18e113616b36f56294987c316a1a43f6e3ec2f6a391378d14d1bc01839845404/vispy-0.17.0+vulkan.2-cp312-cp312-win_amd64.whl",
+    "sha256": "18e113616b36f56294987c316a1a43f6e3ec2f6a391378d14d1bc01839845404"
+  },
+  "installed_cases_passed": 73,
+  "cpu_child_origin_proofs": 47,
+  "installed_members_verified": 537,
+  "source_overrides": 0,
+  "focus_proofs": [
+    {
+      "flow": "canvases",
+      "focus": [
+        "canvas_a",
+        "canvas_b",
+        "canvas_a"
+      ],
+      "observations": [
+        {
+          "focus": "canvas_a",
+          "canvas_colors": [
+            [
+              0,
+              255,
+              0,
+              255
+            ],
+            [
+              0,
+              0,
+              255,
+              255
+            ]
+          ],
+          "events": 2,
+          "entry_text": ""
+        },
+        {
+          "focus": "canvas_b",
+          "canvas_colors": [
+            [
+              0,
+              255,
+              0,
+              255
+            ],
+            [
+              0,
+              255,
+              0,
+              255
+            ]
+          ],
+          "events": 4,
+          "entry_text": ""
+        },
+        {
+          "focus": "canvas_a",
+          "canvas_colors": [
+            [
+              255,
+              255,
+              0,
+              255
+            ],
+            [
+              0,
+              255,
+              0,
+              255
+            ]
+          ],
+          "events": 6,
+          "entry_text": ""
+        }
+      ],
+      "presses": [
+        2,
+        1
+      ],
+      "baseline_gauges": {
+        "pending_tickets": 0,
+        "queued_frames": 0,
+        "live_buffer_bytes": 704,
+        "live_cpu_buffer_bytes": 936,
+        "live_texture_bytes": 691200,
+        "canvas_texture_bytes": 0,
+        "transient_buffer_bytes": 0,
+        "line_resource_pool_busy_slots": 0,
+        "line_resource_pool_bytes": 0,
+        "host_import_pinned_bytes": 0
+      },
+      "teardown_gauges": {
+        "pending_tickets": 0,
+        "queued_frames": 0,
+        "live_buffer_bytes": 704,
+        "live_cpu_buffer_bytes": 936,
+        "live_texture_bytes": 691200,
+        "canvas_texture_bytes": 0,
+        "transient_buffer_bytes": 0,
+        "line_resource_pool_busy_slots": 0,
+        "line_resource_pool_bytes": 0,
+        "host_import_pinned_bytes": 0
+      },
+      "resource_gauges_restored": true,
+      "oracle": "2x2 internal framebuffer readback; no Vulkan WSI surface",
+      "activation": "controlled QApplication focus; QtTest fixed host QWindow"
+    },
+    {
+      "flow": "host_entry",
+      "focus": [
+        "canvas_a",
+        "host_entry",
+        "canvas_a"
+      ],
+      "observations": [
+        {
+          "focus": "canvas_a",
+          "canvas_colors": [
+            [
+              0,
+              255,
+              0,
+              255
+            ],
+            [
+              0,
+              0,
+              255,
+              255
+            ]
+          ],
+          "events": 2,
+          "entry_text": ""
+        },
+        {
+          "focus": "host_entry",
+          "canvas_colors": [
+            [
+              0,
+              255,
+              0,
+              255
+            ],
+            [
+              0,
+              0,
+              255,
+              255
+            ]
+          ],
+          "events": 2,
+          "entry_text": "k"
+        },
+        {
+          "focus": "canvas_a",
+          "canvas_colors": [
+            [
+              255,
+              255,
+              0,
+              255
+            ],
+            [
+              0,
+              0,
+              255,
+              255
+            ]
+          ],
+          "events": 4,
+          "entry_text": "k"
+        }
+      ],
+      "presses": [
+        2,
+        0
+      ],
+      "baseline_gauges": {
+        "pending_tickets": 0,
+        "queued_frames": 0,
+        "live_buffer_bytes": 704,
+        "live_cpu_buffer_bytes": 936,
+        "live_texture_bytes": 691200,
+        "canvas_texture_bytes": 0,
+        "transient_buffer_bytes": 0,
+        "line_resource_pool_busy_slots": 0,
+        "line_resource_pool_bytes": 0,
+        "host_import_pinned_bytes": 0
+      },
+      "teardown_gauges": {
+        "pending_tickets": 0,
+        "queued_frames": 0,
+        "live_buffer_bytes": 704,
+        "live_cpu_buffer_bytes": 936,
+        "live_texture_bytes": 691200,
+        "canvas_texture_bytes": 0,
+        "transient_buffer_bytes": 0,
+        "line_resource_pool_busy_slots": 0,
+        "line_resource_pool_bytes": 0,
+        "host_import_pinned_bytes": 0
+      },
+      "resource_gauges_restored": true,
+      "oracle": "2x2 internal framebuffer readback; no Vulkan WSI surface",
+      "activation": "controlled QApplication focus; QtTest fixed host QWindow"
+    }
+  ],
+  "shutdown_gauges": {
+    "pending_tickets": 0,
+    "queued_frames": 0,
+    "live_buffer_bytes": 0,
+    "live_cpu_buffer_bytes": 0,
+    "live_texture_bytes": 0,
+    "canvas_texture_bytes": 0,
+    "transient_buffer_bytes": 0,
+    "line_resource_pool_busy_slots": 0,
+    "line_resource_pool_bytes": 0,
+    "host_import_pinned_bytes": 0
+  },
+  "deliberate_retention_refusals": 2,
+  "prior_partial_negative_preserved": true,
+  "cleanup": {
+    "callback-resource-controls-windows-821": {
+      "receipt": {
+        "path": "@evidence/build/runs/callback-resource-controls-windows-821/cleanup-apply.log",
+        "sha256": "70b1b1685b4e466e385ed43618ba36a4e782009f121b3ca8bff10ce30cbb1398"
+      },
+      "reclaimed_bytes": 35802016,
+      "scratch_absent": true
+    },
+    "callback-installed-windows-revised-822": {
+      "receipt": {
+        "path": "@evidence/build/runs/callback-installed-windows-revised-822/cleanup-apply.log",
+        "sha256": "26f42006faff499e2b489b8b1da85334ea8e5dbc04cb62b8852459ce9e68078f"
+      },
+      "reclaimed_bytes": 17902134,
+      "scratch_absent": true
+    },
+    "focus-retained-canvas-control-823": {
+      "receipt": {
+        "path": "@evidence/build/runs/focus-retained-canvas-control-823/cleanup-apply.log",
+        "sha256": "dbe9d02fd2bd76203d60824e0e9bc3a3eac573a7eff1f0afa06fecb23bb958cf"
+      },
+      "reclaimed_bytes": 17902129,
+      "scratch_absent": true
+    }
+  },
+  "source_review_approved": false,
+  "protected_integration_complete": false,
+  "matching_wsl_complete": false,
+  "artifact_admitted": false,
+  "release_qualified": false,
+  "scope": "Original/new wheels reproduce identical unrelated resources at focus entry afterPanZoom. Revised focus fixture requires quiescent queued work and restores all10entrygauges; does not prove unrelated resources have retired. Windows installed73pass, globalprocessshutdown10zero, and2module-owned deliberately rendered retained canvases are refused. The earlier oneof2mutation result is preserved; controlownership corrected without changing maintainedtest again. Newfocusbytes need WSL and fresh review; previous811/816approvals and oldGPUevidence are not transferred. Not fullparity, CIcollection, physicalinput or artifact/profile/release admission."
+}

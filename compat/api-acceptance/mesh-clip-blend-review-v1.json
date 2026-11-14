@@ -1,0 +1,144 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "coverage_ids": [
+    "SCI-02",
+    "SCI-02-CLIP-ALPHA-BLEND",
+    "API-06"
+  ],
+  "status": "APPROVED_EXACT_SOURCE_DELTA_WITH_CONDITIONS",
+  "delta_sha256": "b44c8d712375dd8ffb3a905192e36ec69c530dea17f96c61ce6f4ce2aba410db",
+  "base": {
+    "commit": "2f07a13f5df71d718e72b9c615a4945ee589865c",
+    "tree": "3c39641e43f97aa626a27e5732954a04ecd74217",
+    "actual_main_observed_by_packet": "a69505ce (PR82 not merged; protected integration NOT complete)"
+  },
+  "reviewed_paths": 8,
+  "frozen_inputs_reverified": 1287,
+  "decision": {
+    "path": "@evidence/build/runs/clip-blend-source-peer-review-816/decision.json",
+    "sha256": "9d2cfe9abab4b3d836ca231b805e333c99e7693b7338495a61c9faf52a594bd3"
+  },
+  "coordinator_disposition": {
+    "path": "@evidence/build/runs/clip-blend-source-peer-review-816/coordinator-disposition.json",
+    "sha256": "3d0f044e8a99a46481d3135e4e3354d7f5ee66bf8bb688b7c1135e65f5f45733"
+  },
+  "source_archive": {
+    "path": "@evidence/build/runs/clip-blend-source-peer-review-816/owned-delta-and-licenses.zip",
+    "sha256": "971418ade4e036b93948da98ba9074210aa799416adbce565cc5760dbfc14e80"
+  },
+  "review_process": {
+    "argv": [
+      "C:/Users/HEQ/.local/bin/claude.exe",
+      "-p",
+      "--output-format",
+      "stream-json",
+      "--verbose",
+      "--no-session-persistence",
+      "--tools",
+      "Read,Glob,Grep",
+      "--allowedTools",
+      "Read,Glob,Grep",
+      "--disable-slash-commands",
+      "--strict-mcp-config",
+      "--mcp-config",
+      "D:\\vispy-vulkan-managed\\build\\runs\\clip-blend-source-peer-review-816\\empty-mcp.json",
+      "--add-dir",
+      "D:\\vispy-vulkan-managed",
+      "--max-turns",
+      "30"
+    ],
+    "actual_exit": 0,
+    "child_pid": 44644,
+    "child_waited": true,
+    "seconds": 139.64100000000326,
+    "guard_failure": null
+  },
+  "controller_output_failure": {
+    "path": "@evidence/build/runs/clip-blend-source-peer-review-816/controller-output-failure.json",
+    "sha256": "2f90d2403c410249fa2fe81f7b6df949b1b1e910c18714efc043310b573d6586"
+  },
+  "cleanup": {
+    "receipt": {
+      "path": "@evidence/build/runs/clip-blend-source-peer-review-816/cleanup-apply.log",
+      "sha256": "8968c7fa4a3b905a357d087a760547a1dd1fa25f7225b732547f4304338bd6df"
+    },
+    "reclaimed_bytes": 89,
+    "retained_verified": 38,
+    "scratch_absent": true
+  },
+  "required_changes": [],
+  "advisory_findings": [
+    {
+      "severity": "low",
+      "path": "tests/visuals/test_mesh_clip_blend_gpu.py:773-776 with src/vispy/visuals/filters/color.py:127-129",
+      "finding": "Alpha setter assigns _alpha before float() raises; invalid case shows only exception isolation from queued draws plus immediate valid recovery (alpha.npz == invalid_alpha.npz per profile). Disclosed; must never be described as atomic refusal."
+    },
+    {
+      "severity": "low",
+      "path": "compat/api-acceptance/mesh-clip-blend-windows-v1.json remaining[0]",
+      "finding": "Stale 'Matching WSL installed observation' entry, superseded by 815; optional, any edit needs re-freeze."
+    },
+    {
+      "severity": "info",
+      "path": "docs/superpowers/plans/2026-11-14-gap-investigation-next.md; docs/remaining-gaps-checklist.md",
+      "finding": "Superseded draft sentence (explicitly flagged) and 'exact analytic pixels' meaning observed error 0 under a +/-1 allowance."
+    },
+    {
+      "severity": "info",
+      "path": "D:/vispy-vulkan-managed/build/runs/clip-blend-source-peer-review-816/parent-and-preservation-check.json",
+      "finding": "Status label says PR81 parent; base is PR82 head 2f07a13f. Packet metadata only."
+    }
+  ],
+  "integration_conditions": [
+    "Verify actual PR82 merge: merge commit parent/tree; merged tree must equal 3c39641e (or identical content to 2f07a13f tree); otherwise stop and run an impact review of any drift before integrating this delta",
+    "Freeze the actual final payload byte-for-byte to this delta (8 paths, blobs per delta.json); verify parent old blobs c419d055/ac972345/a9ee7f2d/4f7346d6 for the four docs and absence of the four new paths in the parent",
+    "Re-verify source guards: 1287 frozen inputs, 810 critical guards, 414 historical candidate JSONs, 510 runtime Python members unchanged; no runtime/native/workflow/candidate/lock/license change; original AGPL/BSD/dependency notices preserved",
+    "Foreign HEAD and index unchanged; private index only, within the 32 MiB limit; managed scratch cleaned with receipt",
+    "Normal protected PR with fresh required CI (all 11 existing required checks incl. 10 CPU jobs plus software Vulkan) passing on the actual head; no admin bypass, no force push, no weakened verifier",
+    "Actual head/CI/merge receipts recorded outside the frozen commit"
+  ],
+  "metadata_followup_conditions": [
+    "Allowed: one external review receipt for this review and purely additive dated checkpoints in the four changed docs only",
+    "All test bytes and the 814/815 acceptance/evidence receipt bytes unchanged; any other change voids this approval",
+    "Coordinator audits and re-freezes the final payload after metadata additions"
+  ],
+  "actual_head_test_reuse_decision": "REUSE_PERMITTED_CONDITIONAL: 814/815 executions may be reused at the eventual head with no GPU rerun for doc/review metadata, only if the test blob c33cded9 / sha256 e5467bee is unchanged, the source-audit set is still that single file, wheels 9e4e30cc and a2715d26 with their 537 verified members and profile joins (native 6dc06d2c / 5740b28a) are exact, all runtime is unchanged, and a collection-only run at the actual head finds exactly the 3 parametrized cases. Any drift requires an impact review and possibly a rerun.",
+  "limits": [
+    "Finite observation: one 32x24 single-sample RGBA8 setup, one plane, one texture/tint, three alpha transitions; +/-1 UNORM allowance on blended RGB (observed 0)",
+    "Original runtime 2b8bccd0 / wheels 9e4e30cc, a2715d26 only; does not qualify the newer Qt wrapper artifact 1c68488e or the full runtime head",
+    "No MSAA, depth, culling, arbitrary filter ordering, premultiplied alpha, full parity, admission or public release claim; broad SCI-02 stays partial",
+    "No guarantee about getter state after an invalid assignment",
+    "Existing CI selectors do not collect the new GPU file; CI passing does not run these cases",
+    "Exit 0 alone is not approval; reviewer did not recompute any hash (Read/Glob/Grep only)"
+  ],
+  "withheld": [
+    "Any claim that PR82 or this delta is merged or protected-integrated",
+    "Changed-wrapper/installed-artifact admission, CI coverage of the new test, public release qualification",
+    "Closing SCI-02 broadly"
+  ],
+  "evidence_checked": {
+    "read": [
+      "clip-blend-source-peer-review-816/review-packet.json, delta.json, semantic.diff (full), parent-and-preservation-check.json, freeze-observation.json",
+      "tests/visuals/test_mesh_clip_blend_gpu.py (full, via semantic.diff)",
+      "compat/api-acceptance/mesh-clip-blend-windows-v1.json, mesh-clip-blend-wsl-v1.json (full); qt-focus-source-head-v1.json (via diff)",
+      "changed doc sections in the four docs (via diff)",
+      "mesh-clip-blend-windows-814: selected.xml, verification.json, check_selected.py, selected-tests-process.json, outer-process.json, controller-processes.json, source-audit.json, cleanup-inspection.json, cleanup-apply.log, terminal.json",
+      "mesh-clip-blend-wsl-815: selected.xml, terminal.json, borrowed-inputs.json, source-archive-reference.json, cleanup-inspection.json, cleanup-apply.log",
+      "src/vispy/visuals/filters/color.py (Alpha/ColorFilter), clipping_planes.py (discard logic), mesh.py (TextureFilter multiply)",
+      "tests/visuals/test_mesh_color_alpha_composition_gpu.py (blend=False at line 42)"
+    ],
+    "unread": [
+      "Contents of owned-delta-and-licenses.zip, test-source-and-licenses.zip, controller-source.zip",
+      "Contents of the .npz frame files (only the retained hashes compared)",
+      "812/813 evidence behind qt-focus-source-head-v1.json",
+      "Full historical docs beyond the changed sections",
+      "selected-tests.log, WSL linux.py/outer.py/check_selected.py, inputs.json, hygiene.py, freeze.py, storage observations, review-events.jsonl"
+    ],
+    "independent_hash_recompute": false
+  },
+  "protected_integration_complete": false,
+  "ci_coverage_claimed": false,
+  "installed_new_wrapper_qualified": false,
+  "public_release_qualified": false
+}

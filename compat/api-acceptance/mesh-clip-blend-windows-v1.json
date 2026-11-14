@@ -1,0 +1,188 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "status": "PASS_THREE_INSTALLED_WINDOWS_CLIP_ALPHA_BLEND_CASES_NOT_ADMITTED",
+  "coverage_ids": [
+    "SCI-02",
+    "SCI-02-CLIP-ALPHA-BLEND",
+    "API-06"
+  ],
+  "runtime_source_commit": "2b8bccd0ac886f771c3e37255a3d5559c254b3cd",
+  "qualification_head": "55fd4e82e1a1d7bcb9d3c93a5e66c1bc825b09a1",
+  "test_source": {
+    "path": "tests/visuals/test_mesh_clip_blend_gpu.py",
+    "sha256": "e5467bee2f00a5c17a04d578e1c026b64e34a269980b6c8387ff69eb0190d741"
+  },
+  "wheel": {
+    "path": "build/artifacts/9e4e30cc50d49a759ea42cd7915cc2544a42d2af869d505e3ef5290d47617286/vispy-0.17.0+vulkan.2-cp312-cp312-win_amd64.whl",
+    "sha256": "9e4e30cc50d49a759ea42cd7915cc2544a42d2af869d505e3ef5290d47617286"
+  },
+  "device": {
+    "backend": "Vulkan",
+    "adapter_type": "discrete",
+    "vendor": "nvidia",
+    "device": "NVIDIA GeForce RTX 4090",
+    "driver": "NVIDIA: 610.88 610.88.0.0",
+    "vendor_id": 4318,
+    "device_id": 9860,
+    "max_texture_dimension_1d": 32768,
+    "max_texture_dimension_2d": 32768,
+    "max_texture_dimension_3d": 16384,
+    "max_vertex_attributes": 30,
+    "max_vertex_buffers": 8,
+    "max_vertex_buffer_array_stride": 2048,
+    "max_storage_buffers_per_shader_stage": 16,
+    "max_uniform_buffers_per_shader_stage": 12,
+    "max_inter_stage_shader_variables": 30,
+    "max_storage_buffer_binding_size": 2147483644,
+    "max_bindings_per_bind_group": 1000,
+    "max_compute_invocations_per_workgroup": 1024,
+    "max_compute_workgroup_size_x": 1024,
+    "max_compute_workgroups_per_dimension": 65535,
+    "max_point_vertex_attributes": 30,
+    "core_features_and_limits": true,
+    "point_input_limit_scope": "all active user point inputs share one vertex buffer; exact vertex/instance identities use read-only vertex storage without reserving a user attribute; actual granted attribute/stride/storage/allocation limits apply",
+    "max_samplers_per_shader_stage": 16,
+    "max_sampled_textures_per_shader_stage": 48,
+    "max_buffer_size": 1099511627776,
+    "max_uniform_buffer_binding_size": 65536,
+    "software": false,
+    "float32_filterable": true,
+    "unorm16_texture_formats": true,
+    "bresenham_lines": true,
+    "last_vertex_provoking": true,
+    "timestamp_query": true,
+    "timestamp_quantization_ns": 65536,
+    "host_mapped_pointer": true,
+    "host_import_limit": 536870912,
+    "depth_stencil_storage": "depth24_unorm_stencil8",
+    "ok": true,
+    "error": "",
+    "loss_count": 0,
+    "revision": "117b054598f4758b598f4b8f48feea48c11fe7b0+dawn-499e5c6ff9b37d5de70c6493fb74c251e0d35c1c"
+  },
+  "passed": 3,
+  "metrics": {
+    "alpha": {
+      "pending_draws": [
+        2,
+        4,
+        6
+      ],
+      "maximum_channel_error": 0,
+      "restored_exact": true,
+      "changed_pixels": 576,
+      "baseline_rgba": [
+        48,
+        64,
+        161,
+        255
+      ],
+      "changed_rgba": [
+        96,
+        128,
+        67,
+        255
+      ],
+      "clipped_rgba": [
+        0,
+        0,
+        255,
+        255
+      ]
+    },
+    "alpha_zero": {
+      "pending_draws": [
+        2,
+        4,
+        6
+      ],
+      "maximum_channel_error": 0,
+      "restored_exact": true,
+      "changed_pixels": 576,
+      "baseline_rgba": [
+        48,
+        64,
+        161,
+        255
+      ],
+      "changed_rgba": [
+        0,
+        0,
+        255,
+        255
+      ],
+      "clipped_rgba": [
+        0,
+        0,
+        255,
+        255
+      ]
+    },
+    "invalid_alpha": {
+      "pending_draws": [
+        2,
+        4,
+        6
+      ],
+      "maximum_channel_error": 0,
+      "restored_exact": true,
+      "changed_pixels": 576,
+      "baseline_rgba": [
+        48,
+        64,
+        161,
+        255
+      ],
+      "changed_rgba": [
+        96,
+        128,
+        67,
+        255
+      ],
+      "clipped_rgba": [
+        0,
+        0,
+        255,
+        255
+      ]
+    }
+  },
+  "installed_members_verified": 537,
+  "source_overrides": 0,
+  "shutdown_gauges": {
+    "pending_tickets": 0,
+    "queued_frames": 0,
+    "live_buffer_bytes": 0,
+    "live_cpu_buffer_bytes": 0,
+    "live_texture_bytes": 0,
+    "canvas_texture_bytes": 0,
+    "transient_buffer_bytes": 0,
+    "line_resource_pool_busy_slots": 0,
+    "line_resource_pool_bytes": 0,
+    "host_import_pinned_bytes": 0
+  },
+  "actual_exit": 0,
+  "child_waited": true,
+  "native_rebuilt": false,
+  "artifact_admitted": false,
+  "scope": "Finite clipped texture/tint/Alpha composition with straight-alpha RGB and separate alpha blend factors over opaque blue;32x24single-sample RGBA8. Three queued revisions per case, alpha.4to.8/zero and invalid-number refusal immediately followed by valid replacement. OneUNORM rounding unit allowed for blended RGB; clipped pixels/opaque alpha/exact restoration asserted. No atomic invalid-setter state guarantee, MSAA/depth/generalordering, newer callback artifact/CI/admission/release claim.",
+  "evidence": {
+    "path": "@evidence/build/runs/mesh-clip-blend-windows-814/verification.json",
+    "sha256": "e3ea53021e64ef7c3e429fbb07c35496653c9303ef7e5e57cf695e341102b5f0"
+  },
+  "cleanup": {
+    "reclaimed_bytes": 17904165,
+    "retained_verified": 25,
+    "scratch_absent": true,
+    "receipt": {
+      "path": "@evidence/build/runs/mesh-clip-blend-windows-814/cleanup-apply.log",
+      "sha256": "6176a69a146afa5df7cfb119a3984130e6b9edd57e50b9641d2161d965591e89"
+    }
+  },
+  "remaining": [
+    "Matching WSL installed observation",
+    "Independent review and protected source/evidence integration",
+    "Changed-wrapper package admission remains separate"
+  ]
+}

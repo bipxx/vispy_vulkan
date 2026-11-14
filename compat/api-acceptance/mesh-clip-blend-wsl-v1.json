@@ -1,0 +1,267 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "status": "PASS_THREE_INSTALLED_WSL_CLIP_ALPHA_BLEND_CASES_NOT_ADMITTED",
+  "coverage_ids": [
+    "SCI-02",
+    "SCI-02-CLIP-ALPHA-BLEND",
+    "API-06"
+  ],
+  "runtime_source_commit": "2b8bccd0ac886f771c3e37255a3d5559c254b3cd",
+  "qualification_head": "55fd4e82e1a1d7bcb9d3c93a5e66c1bc825b09a1",
+  "test_source": {
+    "path": "tests/visuals/test_mesh_clip_blend_gpu.py",
+    "sha256": "e5467bee2f00a5c17a04d578e1c026b64e34a269980b6c8387ff69eb0190d741"
+  },
+  "wheel": {
+    "path": "build/artifacts/a2715d2659f0caf8c01d430c34ba1dc2d5f9b520b6c36ce85a0c75328556fe56/vispy-0.17.0+vulkan.2-cp312-cp312-manylinux_2_39_x86_64.whl",
+    "sha256": "a2715d2659f0caf8c01d430c34ba1dc2d5f9b520b6c36ce85a0c75328556fe56"
+  },
+  "device": {
+    "backend": "Vulkan",
+    "adapter_type": "cpu",
+    "vendor": "mesa",
+    "device": "llvmpipe (LLVM 18.1.3, 256 bits)",
+    "driver": "llvmpipe: Mesa 26.1.8 (LLVM 18.1.3)",
+    "vendor_id": 65541,
+    "device_id": 0,
+    "max_texture_dimension_1d": 16384,
+    "max_texture_dimension_2d": 16384,
+    "max_texture_dimension_3d": 4096,
+    "max_vertex_attributes": 30,
+    "max_vertex_buffers": 8,
+    "max_vertex_buffer_array_stride": 2048,
+    "max_storage_buffers_per_shader_stage": 16,
+    "max_uniform_buffers_per_shader_stage": 12,
+    "max_inter_stage_shader_variables": 30,
+    "max_storage_buffer_binding_size": 134217728,
+    "max_bindings_per_bind_group": 1000,
+    "max_compute_invocations_per_workgroup": 1024,
+    "max_compute_workgroup_size_x": 1024,
+    "max_compute_workgroups_per_dimension": 65535,
+    "max_point_vertex_attributes": 30,
+    "core_features_and_limits": true,
+    "point_input_limit_scope": "all active user point inputs share one vertex buffer; exact vertex/instance identities use read-only vertex storage without reserving a user attribute; actual granted attribute/stride/storage/allocation limits apply",
+    "max_samplers_per_shader_stage": 16,
+    "max_sampled_textures_per_shader_stage": 48,
+    "max_buffer_size": 4294967295,
+    "max_uniform_buffer_binding_size": 65536,
+    "software": true,
+    "float32_filterable": true,
+    "unorm16_texture_formats": true,
+    "bresenham_lines": true,
+    "last_vertex_provoking": true,
+    "timestamp_query": true,
+    "timestamp_quantization_ns": 65536,
+    "host_mapped_pointer": true,
+    "host_import_limit": 536870912,
+    "depth_stencil_storage": "depth24_unorm_stencil8",
+    "ok": true,
+    "error": "",
+    "loss_count": 0,
+    "revision": "117b054598f4758b598f4b8f48feea48c11fe7b0+dawn-499e5c6ff9b37d5de70c6493fb74c251e0d35c1c"
+  },
+  "passed": 3,
+  "metrics": {
+    "alpha": {
+      "pending_draws": [
+        2,
+        4,
+        6
+      ],
+      "maximum_channel_error": 0,
+      "restored_exact": true,
+      "changed_pixels": 576,
+      "baseline_rgba": [
+        48,
+        64,
+        161,
+        255
+      ],
+      "changed_rgba": [
+        96,
+        128,
+        67,
+        255
+      ],
+      "clipped_rgba": [
+        0,
+        0,
+        255,
+        255
+      ]
+    },
+    "alpha_zero": {
+      "pending_draws": [
+        2,
+        4,
+        6
+      ],
+      "maximum_channel_error": 0,
+      "restored_exact": true,
+      "changed_pixels": 576,
+      "baseline_rgba": [
+        48,
+        64,
+        161,
+        255
+      ],
+      "changed_rgba": [
+        0,
+        0,
+        255,
+        255
+      ],
+      "clipped_rgba": [
+        0,
+        0,
+        255,
+        255
+      ]
+    },
+    "invalid_alpha": {
+      "pending_draws": [
+        2,
+        4,
+        6
+      ],
+      "maximum_channel_error": 0,
+      "restored_exact": true,
+      "changed_pixels": 576,
+      "baseline_rgba": [
+        48,
+        64,
+        161,
+        255
+      ],
+      "changed_rgba": [
+        96,
+        128,
+        67,
+        255
+      ],
+      "clipped_rgba": [
+        0,
+        0,
+        255,
+        255
+      ]
+    }
+  },
+  "installed_members_verified": 537,
+  "source_overrides": 0,
+  "shutdown_gauges": {
+    "pending_tickets": 0,
+    "queued_frames": 0,
+    "live_buffer_bytes": 0,
+    "live_cpu_buffer_bytes": 0,
+    "live_texture_bytes": 0,
+    "canvas_texture_bytes": 0,
+    "transient_buffer_bytes": 0,
+    "line_resource_pool_busy_slots": 0,
+    "line_resource_pool_bytes": 0,
+    "host_import_pinned_bytes": 0
+  },
+  "actual_exit": 0,
+  "child_waited": true,
+  "native_rebuilt": false,
+  "artifact_admitted": false,
+  "scope": "Finite clipped texture/tint/Alpha composition with straight-alpha RGB and separate alpha blend factors over opaque blue;32x24single-sample RGBA8. Three queued revisions per case, alpha.4to.8/zero and invalid-number refusal immediately followed by valid replacement. OneUNORM rounding unit allowed for blended RGB; clipped pixels/opaque alpha/exact restoration asserted. No atomic invalid-setter state guarantee, MSAA/depth/generalordering, newer callback artifact/CI/admission/release claim.",
+  "matching_windows_metrics": true,
+  "borrowed_input_hashes_unchanged": true,
+  "processes": {
+    "install-process.json": {
+      "argv": [
+        "/home/heq/.local/bin/uv",
+        "--no-cache",
+        "pip",
+        "install",
+        "--python",
+        "/home/heq/.local/share/uv/python/cpython-3.12.13-linux-x86_64-gnu/bin/python3.12",
+        "--target",
+        "/mnt/d/vispy-vulkan-managed/build/work/mesh-clip-blend-wsl-815/linux",
+        "--no-deps",
+        "--no-index",
+        "--link-mode",
+        "copy",
+        "/mnt/d/vispy-vulkan-managed/build/artifacts/a2715d2659f0caf8c01d430c34ba1dc2d5f9b520b6c36ce85a0c75328556fe56/vispy-0.17.0+vulkan.2-cp312-cp312-manylinux_2_39_x86_64.whl"
+      ],
+      "actual_exit": 0,
+      "child_pid": 389,
+      "child_waited": true,
+      "seconds": 8.286790637
+    },
+    "selected-tests-process.json": {
+      "argv": [
+        "/home/heq/.local/share/uv/python/cpython-3.12.13-linux-x86_64-gnu/bin/python3.12",
+        "-I",
+        "-S",
+        "-B",
+        "/mnt/d/vispy-vulkan-managed/build/runs/mesh-clip-blend-wsl-815/check_selected.py"
+      ],
+      "actual_exit": 0,
+      "child_pid": 421,
+      "child_waited": true,
+      "seconds": 7.882614937
+    },
+    "xvfb-process.json": {
+      "argv": [
+        "/usr/bin/Xvfb",
+        "-displayfd",
+        "1",
+        "-screen",
+        "0",
+        "800x600x24",
+        "-nolisten",
+        "tcp",
+        "-nolisten",
+        "unix",
+        "-listen",
+        "local",
+        "-noreset"
+      ],
+      "actual_exit": 0,
+      "child_pid": 418,
+      "child_waited": true,
+      "display": ":0"
+    },
+    "outer-process.json": {
+      "argv": [
+        "wsl",
+        "-d",
+        "Ubuntu",
+        "--exec",
+        "/home/heq/.local/share/uv/python/cpython-3.12.13-linux-x86_64-gnu/bin/python3.12",
+        "-I",
+        "-B",
+        "/mnt/d/vispy-vulkan-managed/build/runs/mesh-clip-blend-wsl-815/linux.py"
+      ],
+      "actual_exit": 0,
+      "child_pid": 35224,
+      "child_waited": true,
+      "seconds": 35.73399999999674
+    }
+  },
+  "source_archive_reference": {
+    "path": "/mnt/d/vispy-vulkan-managed/build/runs/mesh-clip-blend-windows-814/test-source-and-licenses.zip",
+    "sha256": "c0664ea2887442002f4286b4e37556a275f917f3094bc92fc354742b514ab329",
+    "scope": "Exact current clipped blending test and original licenses retained814. Reuse archive without copying."
+  },
+  "evidence": {
+    "path": "@evidence/build/runs/mesh-clip-blend-wsl-815/verification.json",
+    "sha256": "a1ade036f4330fb909f9027bb6f2c138372f9c1e6c877ec2065b1ed60e07b170"
+  },
+  "cleanup": {
+    "reclaimed_bytes": 29874674,
+    "retained_verified": 28,
+    "scratch_absent": true,
+    "receipt": {
+      "path": "@evidence/build/runs/mesh-clip-blend-wsl-815/cleanup-apply.log",
+      "sha256": "637b498ce7a9a6b7d3ab2d20d063b5ab8263710ec931315489622cbc73c580f7"
+    }
+  },
+  "remaining": [
+    "Independent review and protected source/evidence integration",
+    "Changed-wrapper package admission remains separate"
+  ]
+}
