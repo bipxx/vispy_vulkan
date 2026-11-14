@@ -1,6 +1,47 @@
 # Remaining-gap investigation and closure plan
 
+## Current execution pointer — 2026-11-14
+
+[Review 811](../../../compat/api-acceptance/qt-focus-amendment-review-v1.json)
+approves the amended 15-file focus/record delta `86afc518` on `a69505ce` with no
+required changes. Coordinator reverified 1,315 inputs; 7,604 bytes of reviewer
+scratch cleaned and 40 retained files verified. Revised WSL/destruction/cleanup
+and independent review are complete; earlier pending wording below is historical.
+Next freeze permitted own-review/additive checkpoints, verify actual-head joins
+and collect both GPU cases, then normal protected integration. Existing tests
+and other receipts must stay unchanged; no native build or new environment.
+
+Focus follow-up: review 808 requires observable destruction rather than the old
+CPU fixture's constant teardown flag. Revised Windows 809 and WSL 810 each pass
+two source-only cases with matching four-object destruction/event proofs; the
+missing-deletion control is rejected. Both scratch roots are cleaned and
+[v2 evidence](../../../compat/api-acceptance/qt-focus-source-tests-v2.json)
+supersedes the teardown claim while preserving v1/raw records. Re-review and
+protected integration remain pending; rendered 806/807 evidence is unchanged.
+
+PR81 is merged as `a69505ce`; its [protected-integration proof](../../../compat/api-acceptance/qt-callback-protected-integration-v1.json)
+verifies the reviewed 49-file tree and all 11 required checks. The later record
+audit and two focus-routing tests pass their named source/overlay checks but
+remain separate work awaiting review and integration. Use the
+[current compact plan](2026-11-14-gap-investigation-next.md) for the next action.
+Earlier queues and pending labels below retain their historical scope; no
+new installed-wheel, profile-admission or release claim follows from this pointer.
+
 ## Investigation and closure queue — 2026-11-14 current revision
+
+**Reviewed callback source submitted as PR81, 2026-11-14:**
+[800source push](../../../compat/api-acceptance/qt-callback-source-head-v1.json) publishes exactfinalhead`a9b60236`/tree`4c27b9c1`,
+49reviewedsource/metadata paths onverifiedbase`bff61230`; runtimecommit`2c609627`
+remainsreachablefirstparent. [PR81](https://github.com/bipxx/vispy_vulkan/pull/81)
+hashead-pinned normalprotected auto-merge enabled. Actualfinalhead tests798/799
+each pass49cases(47CPUinput+2rendereddrawerror); bothoriginalnativeproofs and
+LinuxCIreuse input/capture/packagevalidation pass. No missingpaint-scopejoin is
+claimed. All795–799scratch cleaned62,908,825bytes; frozen49filebytes/source
+ancestryandforeignindexverified. CurrentLinuxCI passednative-reuse step and
+CPUjobsareactive; requiredchecks/actualmerge stillpending. Connectormutation
+403s retained; authorizedCLIcreatedPRandheadpinnedauto-merge. Thislaterreceipt/
+livecheckpoint staysoutsidefrozen49filePR. Source/overlay results remainfinite;
+no newtestCIcoverage, strictprofile/admission/publicwheel/release/fullparentclaim.
 
 **Expanded source/scope/reuse review bound, 2026-11-14:**
 [795/796review and bindings](../../../compat/api-acceptance/qt-callback-preparation13-review-bindings-v1.json) approve exact46-file delta

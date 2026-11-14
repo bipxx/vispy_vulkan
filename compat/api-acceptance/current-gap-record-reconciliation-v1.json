@@ -1,0 +1,178 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "coverage_ids": [
+    "API-06",
+    "SCI-05",
+    "SCI-06",
+    "LIF-05",
+    "LIF-06"
+  ],
+  "status": "PASS_FINITE_RECORD_RECONCILIATION_NO_NEW_RENDERING",
+  "runtime_source_commit": "2b8bccd0ac886f771c3e37255a3d5559c254b3cd",
+  "installed_observations": [
+    {
+      "run": "qt-parent-installed-windows-664",
+      "wheel": {
+        "path": "build/artifacts/9e4e30cc50d49a759ea42cd7915cc2544a42d2af869d505e3ef5290d47617286/vispy-0.17.0+vulkan.2-cp312-cp312-win_amd64.whl",
+        "sha256": "9e4e30cc50d49a759ea42cd7915cc2544a42d2af869d505e3ef5290d47617286"
+      },
+      "selected_junit": {
+        "path": "D:\\vispy-vulkan-managed\\build\\runs\\qt-parent-installed-windows-664\\selected.xml",
+        "sha256": "8a90cbbeb1aab74e10198c5f0ce3f9a4d90479bfd4f1862fbe7e8c2fd6c8a08a"
+      },
+      "counts": {
+        "tests.qt.test_window_state_gpu": 1,
+        "tests.qt.test_native_close_gpu": 5,
+        "tests.qt.test_layout_reparent_gpu": 1,
+        "tests.qt.test_parent_destruction_gpu": 2,
+        "tests.gloo.test_clear_zero_gpu": 11,
+        "tests.gloo.test_stencil_public_routes_gpu": 8,
+        "tests.parity.test_point_identity_parity": 10,
+        "tests.visuals.test_mesh_filter_pending_gpu": 4,
+        "tests.visuals.test_scene_state_reference_gpu": 2
+      },
+      "source_overrides": 0,
+      "package_members": 537,
+      "shutdown_gauges": {
+        "pending_tickets": 0,
+        "queued_frames": 0,
+        "live_buffer_bytes": 0,
+        "live_cpu_buffer_bytes": 0,
+        "live_texture_bytes": 0,
+        "canvas_texture_bytes": 0,
+        "transient_buffer_bytes": 0,
+        "line_resource_pool_busy_slots": 0,
+        "line_resource_pool_bytes": 0,
+        "host_import_pinned_bytes": 0
+      }
+    },
+    {
+      "run": "qt-parent-installed-wsl-665",
+      "wheel": {
+        "path": "build/artifacts/a2715d2659f0caf8c01d430c34ba1dc2d5f9b520b6c36ce85a0c75328556fe56/vispy-0.17.0+vulkan.2-cp312-cp312-manylinux_2_39_x86_64.whl",
+        "sha256": "a2715d2659f0caf8c01d430c34ba1dc2d5f9b520b6c36ce85a0c75328556fe56"
+      },
+      "selected_junit": {
+        "path": "D:\\vispy-vulkan-managed\\build\\runs\\qt-parent-installed-wsl-665\\selected.xml",
+        "sha256": "aecc737575d23b0d7041e91a41384f7d71a200d3fc983949b4be725d47cf2389"
+      },
+      "counts": {
+        "tests.qt.test_window_state_gpu": 1,
+        "tests.qt.test_native_close_gpu": 5,
+        "tests.qt.test_layout_reparent_gpu": 1,
+        "tests.qt.test_parent_destruction_gpu": 2,
+        "tests.gloo.test_clear_zero_gpu": 11,
+        "tests.gloo.test_stencil_public_routes_gpu": 8,
+        "tests.parity.test_point_identity_parity": 10,
+        "tests.visuals.test_mesh_filter_pending_gpu": 4,
+        "tests.visuals.test_scene_state_reference_gpu": 2
+      },
+      "source_overrides": 0,
+      "package_members": 537,
+      "shutdown_gauges": {
+        "pending_tickets": 0,
+        "queued_frames": 0,
+        "live_buffer_bytes": 0,
+        "live_cpu_buffer_bytes": 0,
+        "live_texture_bytes": 0,
+        "canvas_texture_bytes": 0,
+        "transient_buffer_bytes": 0,
+        "line_resource_pool_busy_slots": 0,
+        "line_resource_pool_bytes": 0,
+        "host_import_pinned_bytes": 0
+      }
+    }
+  ],
+  "other_observations": [
+    {
+      "kind": "panzoom",
+      "receipt": "qt-panzoom-windows-v2",
+      "test_count": 2,
+      "wheel": {
+        "path": "build/artifacts/9e4e30cc50d49a759ea42cd7915cc2544a42d2af869d505e3ef5290d47617286/vispy-0.17.0+vulkan.2-cp312-cp312-win_amd64.whl",
+        "sha256": "9e4e30cc50d49a759ea42cd7915cc2544a42d2af869d505e3ef5290d47617286"
+      },
+      "evidence_root": "@evidence/build/runs/qt-panzoom-windows-755",
+      "source_overrides": 0,
+      "source_evidence_integrated_in_pr": 80
+    },
+    {
+      "kind": "panzoom",
+      "receipt": "qt-panzoom-wsl-v2",
+      "test_count": 2,
+      "wheel": {
+        "path": "build/artifacts/a2715d2659f0caf8c01d430c34ba1dc2d5f9b520b6c36ce85a0c75328556fe56/vispy-0.17.0+vulkan.2-cp312-cp312-manylinux_2_39_x86_64.whl",
+        "sha256": "a2715d2659f0caf8c01d430c34ba1dc2d5f9b520b6c36ce85a0c75328556fe56"
+      },
+      "evidence_root": "@evidence/build/runs/qt-panzoom-wsl-756",
+      "source_overrides": 0,
+      "source_evidence_integrated_in_pr": 80
+    },
+    {
+      "kind": "msaa-depth-stencil",
+      "receipt": "msaa-depth-stencil-windows-v2",
+      "test_count": 16,
+      "wheel": {
+        "path": "build/artifacts/9e4e30cc50d49a759ea42cd7915cc2544a42d2af869d505e3ef5290d47617286/vispy-0.17.0+vulkan.2-cp312-cp312-win_amd64.whl",
+        "sha256": "9e4e30cc50d49a759ea42cd7915cc2544a42d2af869d505e3ef5290d47617286"
+      },
+      "evidence_root": "@evidence/build/runs/msaa-depth-stencil-windows-748",
+      "source_overrides": 0,
+      "source_evidence_integrated_in_pr": 80
+    },
+    {
+      "kind": "msaa-depth-stencil",
+      "receipt": "msaa-depth-stencil-wsl-v2",
+      "test_count": 16,
+      "wheel": {
+        "path": "build/artifacts/a2715d2659f0caf8c01d430c34ba1dc2d5f9b520b6c36ce85a0c75328556fe56/vispy-0.17.0+vulkan.2-cp312-cp312-manylinux_2_39_x86_64.whl",
+        "sha256": "a2715d2659f0caf8c01d430c34ba1dc2d5f9b520b6c36ce85a0c75328556fe56"
+      },
+      "evidence_root": "@evidence/build/runs/msaa-depth-stencil-wsl-749",
+      "source_overrides": 0,
+      "source_evidence_integrated_in_pr": 80
+    }
+  ],
+  "protected_integrations": {
+    "79": {
+      "merge": "96b1187e43984532cad8409103078af61f2074d0",
+      "tree": "49af60ac51b950b04a20df21c69b7c27d616504b",
+      "required_success": 11,
+      "source_record": "qt-input-protected-integration-v1"
+    },
+    "80": {
+      "merge": "bff61230a87e9a887700604109cf93e4bbc3199c",
+      "tree": "7abcfdbc2d76fd00e5a17a8c536f1cb5f75e4f7a",
+      "required_success": 11,
+      "source_record": "lifecycle-panzoom-protected-integration-v1"
+    }
+  },
+  "closed_finite_items": [
+    "API-06-CLEAR-ZERO-INSTALLED",
+    "SCI-06-PUBLIC-ROUTES-INSTALLED"
+  ],
+  "corrected_stale_descriptions": [
+    "API-06 numeric-zero installed-pending",
+    "SCI-06 eight-route installed-pending",
+    "LIF-06 Qt8 Windows/WSL review/integration-pending",
+    "LIF-06 PanZoom2 review/integration-pending",
+    "LIF-05 default16 capture review/integration-pending"
+  ],
+  "parents_remain_partial": [
+    "API-06",
+    "SCI-06",
+    "LIF-05",
+    "LIF-06"
+  ],
+  "no_new_rendering": true,
+  "no_new_install": true,
+  "no_native_build": true,
+  "scratch_created": false,
+  "artifact_admitted": false,
+  "ci_coverage_claimed": false,
+  "scope": "Existing2b8runtime/exact9e4Windows/a271WSL installed observations plus separately verifiedPR79/80source integration. Original stock stencil/raw failures and all frozen records remain unchanged. Does not qualify newer1c68callbacksource, PR81, arbitraryformats/MSAA/inputs or fullVisPy parity. New source/artifact/profile claims need separate acceptance.",
+  "evidence_root": "@evidence/build/runs/current-gap-record-reconciliation-801",
+  "audit_actual_exit": 0,
+  "audit_child_waited": true
+}

@@ -1,7 +1,233 @@
 # Remaining-gap investigation: next execution plan
 
-Planning date: 2026-11-14. This is a proposed execution order, not evidence that
-tests, integration or release steps have completed. Preserve the frozen reviewed
+Planning date: 2026-11-14. Results below are limited to their linked evidence.
+PR81's reviewed 49-file tree is frozen separately; later live worklist edits
+remain outside that PR and must not be staged into it silently.
+
+## Active investigation and closure queue — 2026-11-14
+
+[811 independent review](../../../compat/api-acceptance/qt-focus-amendment-review-v1.json)
+approves exact amended 15-file delta `86afc518` on `a69505ce`, no required changes.
+Coordinator reverified 1,315 inputs; prior 808 negative review and v1 raw records
+remain preserved. Reviewer scratch cleaned 7,604 bytes, 40 retained files
+verified. Thus revised Windows/WSL execution, terminal cleanup and re-review are
+complete, superseding pending labels below. Next freeze the permitted receipt
+and additive checkpoints, verify actual parent/final bytes and actual-head test
+joins (including collection-only two GPU cases), then normal protected CI/merge.
+The 809/810 CPU and 806/807 rendered evidence stays finite source/overlay proof;
+changed-artifact admission and broader parent coverage remain separate.
+
+Execution checkpoint: [source evidence v2](../../../compat/api-acceptance/qt-focus-source-tests-v2.json)
+now records both revised CPU cases passing on Windows 809 and WSL 810, identical
+event/destruction proofs and the missing-deletion control. Managed cleanup
+completed for both roots, verifying 14/16 retained files and removing 85/76 bytes.
+Thus step 1's CPU execution, superseding evidence and terminal cleanup are done;
+independent re-review and protected integration remain next. The earlier v1/raw
+records are unchanged. No GPU evidence was rerun or broadened.
+
+This queue supersedes earlier next-action wording below. The finish line is a
+bounded, useful Windows/PyQt6 and WSL/X11 Vulkan version, with acknowledged
+compatibility limits. Full VisPy parity, cybersecurity work and unavailable
+hardware qualification are excluded. No new execution is implied by this plan.
+
+### 1. Finish the existing focus change before opening another experiment
+
+- **LIF-06-QT-FOCUS:** review 808 returned `CHANGES_REQUIRED`: the CPU fixture's
+  `teardown_drained=True` was constant, so its old destruction claim was not
+  established. Preserve the old results and negative review.
+- Run 809 observes destruction of the host, entry and both canvas doubles using
+  destroyed signals and `sip.isdeleted`. Both revised Windows cases pass.
+  Its control reproduces the old false positive when deletion is omitted;
+  the revised control rejects that omission. These are test-oracle corrections,
+  not evidence of a production renderer defect.
+- First inspect and finish 809's managed cleanup. Its cleanup plan exited 0;
+  apply completion has not been established at this planning checkpoint.
+- Reuse the existing WSL offscreen environment for the same two revised CPU
+  cases. Join the test and four runtime-module hashes to Windows 809. No GPU,
+  native build, package installation or new environment is needed.
+- Add a superseding CPU evidence receipt and correct live destruction claims;
+  retain v1 and its raw proof unchanged. Reuse rendered runs 806/807 only while
+  their exact test, Qt wrapper, native payload and profile identities match.
+- Obtain independent re-review of the amended test/record delta. Then verify
+  the current parent and owned bytes, integrate through normal protected CI,
+  and retain actual-head/merge evidence separately. Existing CI selectors do
+  not collect the new focus tests; do not claim otherwise.
+
+**Done:** two revised CPU cases per profile prove all four objects destroyed;
+rendered focus evidence has exact joins; review and protected integration pass;
+owned scratch is cleaned. LIF-06 remains partial beyond this finite case.
+
+Evidence: managed runs `focus-record-peer-review-808/decision.json` and
+`focus-teardown-controls-windows-809/verification.json` under
+`D:/vispy-vulkan-managed/build/runs/`. The revised test SHA256 is
+`49b7e983e63cafa45cf2df13b2ca507ba954a15ea916115447614778726634ae`.
+
+### 2. Audit remaining claims once, before choosing more implementation
+
+Use the existing live coverage checklist; do not create another inventory.
+For API-05/06, SCI-02/03/05/06, STA-01 and LIF-01–05, record the public route,
+supported values, newest matching test/receipt, source or installed scope,
+remaining assertion and disposition. Audit clear/stencil, parent destruction,
+zero/minimized windows and MSAA wording against retained evidence first.
+
+Classify each selected item as already proved, reproducible defect, missing
+observation, intentional refusal or deferred. Correct stale wording without a
+test run. Preserve historical failures and keep broad parent IDs partial.
+
+**Done:** every item selected for this milestone has either one concrete next
+assertion or an explicit supported boundary and reopening trigger. A long list
+of unchecked optional items is not a requirement to implement them all.
+
+### 3. Close the highest-value uncovered behavior, one case at a time
+
+Select one public mesh-filter/blending or camera/clipping/depth composition
+from step 2 only if a useful supported workflow lacks proof. Start with a tiny
+deterministic source fixture; compare before/change/restored output, peer
+isolation and invalid-value refusal/recovery. Fix the Python wrapper first when
+the reproduced defect is there. Use the established readback and resource
+retirement checks for matching Windows/WSL rendered acceptance.
+
+For lifecycle faults and mixed-sample capture, first establish a controllable
+failure or discriminating image oracle. Submission injection cannot establish
+surface acquisition/loss. If the necessary control is absent, document the
+boundary rather than launching repeated campaigns. Reopen BUG-01/02 only for
+recurrence or a new causal hypothesis.
+
+**Done:** the selected finite case passes its output, recovery and retirement
+assertions, or has a precise documented exclusion. Broader combinations remain
+outside that result. Do not select the next case until evidence and cleanup
+for the current case are complete.
+
+### 4. Verify delivery separately from source coverage
+
+After the selected source changes are integrated, audit the exact current
+candidate and changed artifact members. Reuse unchanged qualified native
+payloads and dependency origins. Package current Python bytes only when needed
+to deliver the fix; no Dawn/Qt rebuild is justified by a test/report change.
+Run selected installed Windows/WSL acceptance with zero source overlays, verify
+license/notices and artifact hashes, and complete the applicable review and
+admission gates before claiming a new qualified or published package. Preserve
+existing preview/stable assets and identities.
+
+**Done:** the delivered artifact contains the accepted source and passes its
+named installed checks on the selected profiles. Existing source-overlay
+results and the older published preview cannot substitute for this step.
+
+### Budget, stopping rules and acknowledged boundaries
+
+Reuse existing environments, archives and evidence. Register bounded scratch
+under the shared managed root before experiments; keep the 20 GiB aggregate
+cap and 10 GiB reserve, including WSL backing-volume checks. Retain reproducer,
+results and licenses, inspect cleanup plans, apply eligible cleanup and record
+the result before another experiment. Planning/documentation edits need no
+native build or scratch lease.
+
+Keep Metal experimental, physical Linux GPU qualification unavailable, native
+Wayland unsupported, and additional ABIs, bindings, hosts, GPU families,
+fractional DPI, optical latency and optional performance work deferred unless
+a concrete supported product claim requires them. Acknowledge these limits in
+the milestone report; do not turn them into full-parity blockers.
+
+## PR81 integration verified — 2026-11-14
+
+[805 protected-integration proof](../../../compat/api-acceptance/qt-callback-protected-integration-v1.json)
+verifies actual merge `a69505ce`, tree `4c27b9c1` equal to the tested/frozen
+49-file head, retained runtime ancestry and all 11 required checks. Source review
+and protected integration are complete. Installed/release qualification of the
+changed wrapper remains separate; no new Qt test CI-collection claim is made.
+The later record audit and focus tests are preserved outside that merge.
+Proceed with the real-canvas focus acceptance specified below.
+
+## Current disposition of previously pending records
+
+[Record audit 801](../../../compat/api-acceptance/current-gap-record-reconciliation-v1.json)
+rehashes the original results and artifacts without rendering or installing:
+
+| Item | Verified disposition | Remaining boundary |
+|---|---|---|
+| API-06 clear values | Eleven numeric-zero/flag/refusal/recovery cases per installed Windows/WSL profile. | Other values/routes and the newer callback artifact need their own evidence. |
+| SCI-06 stencil wrapper | Eight installed cases per profile: four public forms plus four raw-refusal/public-recovery cases. | Original stock failures stay historical; other formats/MSAA and strict admission remain separate. |
+| LIF-06 ordinary Qt input | Eight cases per profile; source/evidence integration verified in PR79. | Focus, physical input and additional bindings are not proved by these cases. |
+| LIF-06 PanZoom | Two installed cases per profile; review and integration verified in PR80. | Other cameras and native presentation remain outside scope. |
+| LIF-05 default capture | Sixteen installed depth/stencil cases per profile; review and integration verified in PR80. | Mixed-sample edges and broader formats/features remain open. |
+
+These installed observations apply to runtime `2b8bccd` and exact wheels
+`9e4e30cc` / `a2715d26`. They do not qualify the newer callback wrapper or claim
+all VisPy coverage. Broader parent IDs stay partial. Reuse this evidence before
+selecting another experiment; insert future checkpoints at paragraph boundaries.
+
+### Next selected interaction: LIF-06-QT-FOCUS
+
+The existing `test_input_delivery_gpu.py` explicitly excludes focus routing:
+it sends events directly to the chosen widget and checks emitter isolation.
+The [802 Windows offscreen source prototype](../../../compat/api-acceptance/qt-focus-source-prototype-v1.json)
+now verifies the QWindow route and A/B/A/host-entry/B focus transitions with
+production key handlers, exact event payload/order and no attempted native API
+calls. It bypasses renderer initialization and painting. Its process exits 0;
+source/licenses/results are retained and scratch is cleaned.
+[Two maintained source tests](../../../compat/api-acceptance/qt-focus-source-tests-v1.json)
+passed on both Windows and WSL offscreen Qt, with identical source/event proofs,
+same-canvas return from the host entry and no attempted native calls. Their drain
+was invoked but destruction was not asserted: v1's constant success flag was
+found insufficient in review 808. The superseding v2 receipt above records actual
+four-object destruction in revised runs 809/810. All four runs are retained and
+cleaned; the older raw proofs remain unchanged.
+[806 Windows](../../../compat/api-acceptance/qt-focus-rendered-windows-v1.json) and
+[807 WSL](../../../compat/api-acceptance/qt-focus-rendered-wsl-v1.json) additionally
+pass the two real-Dawn-canvas cases below: matching focus/event/literal-color
+proofs, 2×2 internal readback, no WSI surface and ten zero gauges per case/parent.
+Both profiles verify all 537 original members before one merged-Qt overlay;
+536 members/native stay unchanged. All processes are awaited, borrowed WSL
+origins stay unchanged, private Xvfb exits 0 and both targets are cleaned
+(47,774,751 bytes). No runtime fix, native build or new environment was needed.
+This closes the selected rendered observation; independent review/integration
+of the new tests/records remains next. Installed/profile/release admission and
+physical/OS-wide focus stay separate. These later changes are outside PR81.
+The executed contract was:
+
+1. Put two canvases in one real Qt host layout. Switch application focus from
+   canvas A to B and back. Observe `QApplication.focusWidget()` before each key,
+   then generate the key through the host's `QWindow` using QtTest. Do not choose
+   the receiving canvas in the key injection. Assert the exact recipient,
+   key/text payload and delivery count; the unfocused peer receives nothing.
+2. Switch from a canvas to a host `QLineEdit`, then back. A generated key edits
+   the entry without a VisPy callback; restored canvas focus delivers the next
+   key once, without replaying the host entry's input.
+
+Use existing PyQt6/QtTest and environments. Start with a small real-Qt source
+fixture to verify routing, then reuse the native wheels with the exact current
+Qt wrapper for rendered acceptance. The chosen canvas changes a literal color;
+the peer keeps its expected color. Reuse the established 2×2 internal-framebuffer
+readback oracle and ten zero shutdown gauges. Catch fixture assertion errors
+inside callbacks and assert them after Qt returns. Close both canvases before
+destroying the host and drain deferred deletion.
+
+Run matching Windows and WSL/X11 profiles, retaining the actual source/head,
+native hashes, event/focus observations, exits and cleanup. A source overlay stays
+source acceptance. If activation is unavailable, record that environment boundary
+instead of replacing this with direct emitter delivery. No physical HID, OS-wide
+focus, native display pixels, gestures or fractional-DPI claim is intended. Fix
+the adapter only for a reproduced defect; otherwise this is a focused test and
+evidence change after PR81 integration, with no native build or new environment.
+The source-only preparation above proceeded independently while PR81 CI ran.
+Verify its actual merged parent before integrating this later test/evidence batch.
+
+## Callback integration checkpoints
+
+**Reviewed callback source submitted as PR81, 2026-11-14:**
+[800source push](../../../compat/api-acceptance/qt-callback-source-head-v1.json) publishes exactfinalhead`a9b60236`/tree`4c27b9c1`,
+49reviewedsource/metadata paths onverifiedbase`bff61230`; runtimecommit`2c609627`
+remainsreachablefirstparent. [PR81](https://github.com/bipxx/vispy_vulkan/pull/81)
+hashead-pinned normalprotected auto-merge enabled. Actualfinalhead tests798/799
+each pass49cases(47CPUinput+2rendereddrawerror); bothoriginalnativeproofs and
+LinuxCIreuse input/capture/packagevalidation pass. No missingpaint-scopejoin is
+claimed. All795–799scratch cleaned62,908,825bytes; frozen49filebytes/source
+ancestryandforeignindexverified. CurrentLinuxCI passednative-reuse step and
+CPUjobsareactive; requiredchecks/actualmerge stillpending. Connectormutation
+403s retained; authorizedCLIcreatedPRandheadpinnedauto-merge. Thislaterreceipt/
+livecheckpoint staysoutsidefrozen49filePR. Source/overlay results remainfinite;
+no newtestCIcoverage, strictprofile/admission/publicwheel/release/fullparentclaim.
+
 **Expanded source/scope/reuse review bound, 2026-11-14:**
 [795/796review and bindings](../../../compat/api-acceptance/qt-callback-preparation13-review-bindings-v1.json) approve exact46-file delta
 `e4dff5132f3439c967249b82666d2ed375caba80ff465b148fea9c0ac018067c` and the twoexactnative-reuse
@@ -16,10 +242,6 @@ at exactfinalhead beforepush, not a fabricatedpaint-scopejoin. Next retain2c
 asfirstcommit, appendone reviewedmetadatafollowup and requirefresh protectedCI.
 Source/scope/reuseapproval only: no finalhead/CI/merge/installed/admission/
 publicwheel/release or fullparent claim; LIF-06/API-06 remainpartial.
-
-28-file packet and the existing live worklists while its integration is pending.
-This separate plan is outside that packet; it must not be silently staged as an
-approved review follow-up.
 
 ## Finish line and starting evidence
 

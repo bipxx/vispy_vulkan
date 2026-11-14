@@ -2,6 +2,51 @@
 
 ## Latest checkpoint — 2026-11-14
 
+**Focus test/record amendment approved — 2026-11-14:**
+[811](../compat/api-acceptance/qt-focus-amendment-review-v1.json) approves exact
+15-file delta `86afc518` on verified parent `a69505ce`, no required changes.
+Observed destruction/omitted-deletion refusal resolve 808F1; original negative
+review and v1 raw records remain. All 1,315 frozen inputs reverified; review
+scratch cleaned 7,604 bytes, 40 retained files verified. Earlier revised-WSL,
+cleanup and re-review pending wording is superseded. Next freeze permitted
+additive metadata, join tests to the actual head and integrate through normal
+protected CI. No broader parent, installed, CI-collection or release claim.
+
+**Current queue supersedes older next-action wording:** PR81 is merged, as
+recorded by [805](../compat/api-acceptance/qt-callback-protected-integration-v1.json).
+LIF-06-QT-FOCUS still needs the revised CPU test's WSL verification, truthful
+superseding teardown evidence, re-review and integration. Review 808 found a
+constant teardown-success flag; Windows 809 now verifies four actual widget
+destructions and a missing-deletion refusal. Its cleanup apply remains to be
+verified. Retain original v1 proofs; rendered Windows/WSL evidence 806/807 stays
+reusable only for matching inputs. Then audit remaining claims before selecting
+one useful rendering/lifecycle case, and keep changed-artifact acceptance
+separate. See the [ordered active plan](superpowers/plans/2026-11-14-gap-investigation-next.md#active-investigation-and-closure-queue--2026-11-14).
+No full-parity, new CI collection or new installed/public-wheel claim is made.
+
+**Focus CPU follow-up completed — 2026-11-14:**
+[v2 evidence](../compat/api-acceptance/qt-focus-source-tests-v2.json) records
+two revised passing cases each on Windows 809 and WSL 810, matching event/focus
+and observed four-object destruction proofs, plus the missing-deletion control.
+Both scratch roots are cleaned; 14/16 retained files verified. The WSL/cleanup
+actions in the preceding checkpoint are complete. Next is re-review and
+integration of this finite source test/record batch. Preserve v1 as historical;
+its constant flag did not establish destruction. Parent LIF-06 stays partial.
+
+**Reviewed callback source submitted as PR81, 2026-11-14:**
+[800source push](../compat/api-acceptance/qt-callback-source-head-v1.json) publishes exactfinalhead`a9b60236`/tree`4c27b9c1`,
+49reviewedsource/metadata paths onverifiedbase`bff61230`; runtimecommit`2c609627`
+remainsreachablefirstparent. [PR81](https://github.com/bipxx/vispy_vulkan/pull/81)
+hashead-pinned normalprotected auto-merge enabled. Actualfinalhead tests798/799
+each pass49cases(47CPUinput+2rendereddrawerror); bothoriginalnativeproofs and
+LinuxCIreuse input/capture/packagevalidation pass. No missingpaint-scopejoin is
+claimed. All795–799scratch cleaned62,908,825bytes; frozen49filebytes/source
+ancestryandforeignindexverified. CurrentLinuxCI passednative-reuse step and
+CPUjobsareactive; requiredchecks/actualmerge stillpending. Connectormutation
+403s retained; authorizedCLIcreatedPRandheadpinnedauto-merge. Thislaterreceipt/
+livecheckpoint staysoutsidefrozen49filePR. Source/overlay results remainfinite;
+no newtestCIcoverage, strictprofile/admission/publicwheel/release/fullparentclaim.
+
 **Expanded source/scope/reuse review bound, 2026-11-14:**
 [795/796review and bindings](../compat/api-acceptance/qt-callback-preparation13-review-bindings-v1.json) approve exact46-file delta
 `e4dff5132f3439c967249b82666d2ed375caba80ff465b148fea9c0ac018067c` and the twoexactnative-reuse
@@ -1221,12 +1266,14 @@ explicit boundary; implementing every possible form is not required.
 - [ ] **API-06 — Selected API acceptance:** for each claimed subset, record
   inputs/values, expected output, ordinary/mutation/failure/recovery behavior,
   exact installed artifact and explicit unsupported cases.
-  Source progress, 2026-11-13: [numeric-zero clear acceptance](../compat/api-acceptance/gloo-clear-zero-source-v1.json)
-  covers ordinary flags, numeric-zero mutation, NaN refusal/recovery and cleanup
-  in9Windows rendered cases. The Python correction remains unpushed and has no
-  successor installed qualification yet. [Nine current WSL source cases also pass](../compat/api-acceptance/qt-lifecycle-wsl-current-source-v1.json)
-  using verified Linux native module5740b28a on Mesa25.2.8 software Vulkan;
-  this is a source overlay, not the CI wheel's wrapper bytes.
+- [x] **API-06-CLEAR-ZERO-INSTALLED — Eleven finite cases per profile:**
+  [Record audit, 2026-11-14](../compat/api-acceptance/current-gap-record-reconciliation-v1.json)
+  rechecks the original 664/665 JUnit and result hashes: numeric-zero depth and
+  stencil clears, Python/NumPy flags, mutation and invalid-depth recovery pass
+  on runtime `2b8bccd`, Windows `9e4e30cc` and WSL `a2715d26`, with 537 members,
+  no overlays and ten zero gauges. The older nine-case source packets remain
+  historical. This closes installed observation for these values, not broader
+  API acceptance or qualification of the newer callback wrapper.
 - [ ] **SCI-01 — Indexed/instanced points:** rendered source-ID, divisor,
   constant-input and ordered-revision combinations.
 - [ ] **SCI-02 — Mesh filters:** enumerate supported filters/compositions and
@@ -1258,15 +1305,18 @@ explicit boundary; implementing every possible form is not required.
   identify exact current/historical/open scope and reopening triggers for all
   seven rows. Record classification is complete; capability parents and final
   admission/public delivery remain partial. No broad source-route review inferred.
-- [ ] **SCI-06 — Stencil wrapper:** resolve the upstream acceptance gap
-  independently of already-passing native stencil capture cases.
-  Selected source investigation is complete: [Windows/WSL route disposition](stencil-wrapper-disposition.md)
-  verifies four improved public forms and four explicit raw-refusal/recovery
-  forms. Original stock failures remain failed; installed acceptance is pending.
-  Source improvement, 2026-11-13: numeric stencil0/depth0.0 now clear rather
-  than skip;9rendered cases pass after5failures/4controls. This intentional
-  correction does not admit the original8stock wrapper/facade failures.
-  [Exact scope](../compat/api-acceptance/gloo-clear-zero-source-v1.json).
+- [ ] **SCI-06 — Stencil wrapper:** track additional selected formats and
+  compatibility boundaries separately from native capture. Original stock
+  failures remain historical failures; complete stock parity is not required.
+- [x] **SCI-06-PUBLIC-ROUTES-INSTALLED — Eight finite cases per profile:**
+  [801 record audit](../compat/api-acceptance/current-gap-record-reconciliation-v1.json)
+  verifies four public value/type/crop/mutation forms and four raw-read
+  refusal/public-wrapper recovery cases in the original 664/665 installed
+  reports. Scope: runtime `2b8bccd`, exact Windows `9e4e30cc` / WSL `a2715d26`,
+  no overlays and ten zero gauges. [Route disposition](stencil-wrapper-disposition.md)
+  retains the eight original stock failures and unsupported raw operation.
+  Other formats/MSAA, formal profile admission and the new callback artifact
+  remain separate; this is an evidence reconciliation, not a new rendering run.
 
 ## Lifecycle, capture, input and known issues
 
@@ -1319,26 +1369,34 @@ explicit boundary; implementing every possible form is not required.
   same default target/sample/type/crop/mutation/refusal/restoration cases pass
   current wheels, color preserved BEFOREredraw,537members/no overlays/ten zero gauges;
   cleaned. Uniform
-  samples only; mixed-edge/other-format/feature and review/integration scope open.
+  samples only. Independent review and evidence integration are complete in
+  [PR80](../compat/api-acceptance/lifecycle-panzoom-protected-integration-v1.json);
+  mixed-edge selection, other formats/features and broader admission stay open.
 - [ ] **LIF-05 — MSAA capture:** disposition broader depth/stencil and
   format/feature combinations separately from existing color-resolve evidence.
 - [x] **LIF-06-QT-WINDOWS — Finite8case installed PyQt6 subset:**
   [736](../compat/api-acceptance/qt-input-windows-v1.json),2026-11-14:
   generated key/wheel/mouse payload/rendering/handled-state/target-isolation
   cases pass Windows9e4e30cc, no overlays/ten zero gauges; scratch cleaned.
-  WSL, integration, focus/physicalHID and broader parent scope remain open.
+  The matching WSL subset is recorded below. Evidence integration is complete
+  in [PR79](../compat/api-acceptance/qt-input-protected-integration-v1.json);
+  focus/physical HID, broader parent and profile admission remain separate.
 - [x] **LIF-06-QT-WSL — Matching8case installed PyQt6 subset:**
   [738](../compat/api-acceptance/qt-input-wsl-v1.json),2026-11-14:
   exact same736source passes currenta2715d26/softwareVulkan/privateXvfb,537members,
   no overlays/ten zero gauges; borrowed origins and cleanup verify.737dependency
-  failure retained. Broad parent, other bindings, review/integration and CI open.
+  failure retained. Evidence integration is complete in
+  [PR79](../compat/api-acceptance/qt-input-protected-integration-v1.json).
+  Broad parent/other bindings and new-test CI coverage remain outside the proof.
 - [x] **LIF-06-QT-PANZOOM — Finite2-case installed scene-response subset:**
   [755](../compat/api-acceptance/qt-panzoom-windows-v2.json)/
   [756](../compat/api-acceptance/qt-panzoom-wsl-v2.json),2026-11-14:
   generated Qt PanZoom gestures drive literal rect/marker changes and exact
   restoration on current Windows/WSL wheels,537members/no overlays/ten zero
   gauges; cleaned. Explicit-size render, not native display/HID/focus/DPI.
-  Review/integration and broader camera/parent scope open.
+  Independent review and evidence integration are complete in
+  [PR80](../compat/api-acceptance/lifecycle-panzoom-protected-integration-v1.json).
+  Broader camera/parent and profile-admission scope remain open.
 - [x] **LIF-06-QT-INPUT-CALLBACK-SOURCE — Revised Windows/WSL PyQt6 CPU subset, 2026-11-14:**
   [782Windows](../compat/api-acceptance/qt-input-callback-windows-source-v4.json)/
   [783WSL](../compat/api-acceptance/qt-input-callback-wsl-source-v4.json) each93pass:
@@ -1347,6 +1405,11 @@ explicit boundary; implementing every possible form is not required.
   new1c68runtime preserveshostacceptedstate/guards privatekeydispatch/consumes
   suspendedreplay. Closed/post-C++-destroyed parent lookups not separately observed.
   Exactsource re-review/integration and installed qualification remain pending.
+  Update, 2026-11-14: [PR81 integration verified](../compat/api-acceptance/qt-callback-protected-integration-v1.json)
+  closes source review/protected integration at merge `a69505ce`, exact tested
+  49-file tree and 11 required checks. Final-head callback fallback tests pass
+  49 cases per profile. Installed/release qualification of the changed wrapper
+  and other bindings remain separate; the original source observations stay finite.
 - [x] **LIF-06-QT-INPUT-CALLBACK-RENDERED-WINDOWS — Revised finite overlay subset, 2026-11-14:**
   [784](../compat/api-acceptance/qt-input-callback-rendered-windows-v3.json)
   passes21cases(6defaultpeer/3hostsamecanvas/12controls),9isolated origin/nativeSHA/
@@ -1359,9 +1422,42 @@ explicit boundary; implementing every possible form is not required.
   transientPID-livenessplan refusal resolved with unchangedmanifest/verifier.
   Source re-review/protectedintegration, otherbindings/fullnapari, changed-wrapper
   installed/public admission and broader-parent scope remain open.
+  Update: source re-review and protected integration are complete in PR81 above.
+  Other bindings, hosts and changed-wrapper installed/public admission stay open.
 - [ ] **LIF-06 — Input forwarding:** selected Qt keyboard, wheel, focus, mouse,
   timer and coordinate delivery beyond the finite Tk subset. Touch, stylus,
   gestures and additional layouts need their own selected scope.
+- [ ] **LIF-06-QT-FOCUS — Next selected interaction:** two canvases plus a host
+  text entry, QWindow key routing, focus isolation/recovery and a finite rendered
+  response. The [execution contract](superpowers/plans/2026-11-14-gap-investigation-next.md#next-selected-interaction-lif-06-qt-focus)
+  distinguishes this from existing direct-widget event delivery. The source
+  prototype, maintained CPU tests and real-canvas cases below pass. Review and
+  integration of the new tests/records remain pending; installed admission is separate.
+- [x] **LIF-06-QT-FOCUS-RENDERED-WINDOWS — Two finite cases:**
+  [806](../compat/api-acceptance/qt-focus-rendered-windows-v1.json) proves actual
+  A/B/A and A/host-entry/A routing through one QWindow, key payload/order and
+  literal 2×2 framebuffer colors with peer/entry isolation and recovery.
+  Ten zero gauges per case and parent; unchanged qualified native plus exactly
+  one Qt Python overlay matching merged `a69505ce`. No physical/display claim.
+- [x] **LIF-06-QT-FOCUS-RENDERED-WSL — Matching two cases:**
+  [807](../compat/api-acceptance/qt-focus-rendered-wsl-v1.json) has identical
+  source and proofs on private Xvfb/software Vulkan; borrowed origins unchanged,
+  all children awaited and ten gauges zero per case/parent. Both targets cleaned.
+  This is source-overlay acceptance, not a new installed-wheel or CI claim.
+- [x] **LIF-06-QT-FOCUS-SOURCE-TESTS — Two tests each on Windows/WSL:**
+  [809/810 v2](../compat/api-acceptance/qt-focus-source-tests-v2.json) verify A/B/A
+  and A/host-entry/A with fixed host QWindow injection, exact key payload/order,
+  isolation and restored delivery. Matching source/proofs observe all four owned
+  widgets destroyed; the missing-deletion control is rejected. Old 803/804/v1
+  records remain historical; their constant flag did not prove destruction.
+  Native calls are forbidden. Offscreen QWidget doubles only, no Dawn canvas.
+  Both targets cleaned; new source/evidence remain outside PR81 and CI claims.
+- [x] **LIF-06-QT-FOCUS-SOURCE-PROTOTYPE — Finite Windows offscreen protocol:**
+  [802](../compat/api-acceptance/qt-focus-source-prototype-v1.json) routes fixed
+  host QWindow input through actual A/B/A/host-entry/B focus. Eight canvas key
+  events, entry isolation and restored delivery pass with production key handlers;
+  native setup/painting are bypassed and native calls forbidden. Exit 0/awaited,
+  seven retained files verified, scratch absent. No rendered/WSL/installed claim.
 - [ ] **LIF-07 — Tk extensions:** decide camera/DPI/physical-input claims beyond
   the proved raster/manual-pump and toolkit-generated input cases.
   The opt-in native presentation prototype now has finite source-functional

@@ -1,0 +1,41 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "coverage_ids": [
+    "FIX-04",
+    "API-06",
+    "LIF-06"
+  ],
+  "status": "PASS_REVIEWED_FINAL_SOURCE_PUSH_PR_AUTO_MERGE_ENABLED",
+  "head": "a9b60236c6247aaf4ab9f3d5a61537c0066b8f5c",
+  "tree": "4c27b9c16babf624815c73c50e01fd6cf52ef697",
+  "runtime_source_commit": "2c6096275ccd7c0fd663f59660e4782db6116834",
+  "base": "bff61230a87e9a887700604109cf93e4bbc3199c",
+  "branch": "wip/qt-key-parent-787",
+  "source_files": 49,
+  "pr_number": 81,
+  "pr_url": "https://github.com/bipxx/vispy_vulkan/pull/81",
+  "auto_merge_enabled": true,
+  "merged": false,
+  "required_ci_complete": false,
+  "actual_head_callback_cases_per_profile": 49,
+  "ci_coverage_claimed": false,
+  "artifact_admitted": false,
+  "force": false,
+  "admin_bypass": false,
+  "scratch_created": false,
+  "scope": "Exactreviewed49-file/two-commit sourcehead pushed. Normalprotectedrequiredchecks pending; final local49casecallbackacceptance perprofile is sourceoverlayonly, notCI/release/installedqualification. GitHubconnectorPRcreate403retained; existingauthorizedCLIcreatesPRandenablesheadpinnedmergeauto.",
+  "source_freeze": {
+    "path": "@evidence/build/runs/callback-preparation13-final-commit-797/source-freeze.json",
+    "sha256": "ccf4bcb4c1c3d983ede911cc0eeaf4cdae229d5f9e84325ad225a8d019b65329"
+  },
+  "final_head_acceptance": "compat/api-acceptance/qt-callback-final-head-v1.json",
+  "source_scope_review": "compat/api-acceptance/qt-callback-preparation13-review-bindings-v1.json",
+  "evidence_root": "@evidence/build/runs/qt-callback-protected-source-push-800",
+  "workflow_runs": {
+    "cpu": 43589982209,
+    "linux": 43589982185,
+    "metal": 43589982188
+  },
+  "metadata_observation": "LinuxsoftwareVulkan job has passed originalnative-reuse step and is exercisingexternalinstalledwheel. CPUjobsactive; no requiredCIcompletion/mergeclaim. Observations are snapshots, not futurestate."
+}

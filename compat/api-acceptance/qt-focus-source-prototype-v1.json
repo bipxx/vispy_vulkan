@@ -1,0 +1,51 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "coverage_ids": [
+    "LIF-06",
+    "LIF-06-QT-FOCUS",
+    "LIF-06-QT-FOCUS-SOURCE-PROTOTYPE"
+  ],
+  "status": "PASS_WINDOWS_OFFSCREEN_SOURCE_PROTOTYPE_NOT_RENDERED",
+  "runtime_qt_sha256": "1c68488e862cb1d8b573641a16a6894a97ac434f915773f12ce3708cae85a4cc",
+  "result": {
+    "path": "@evidence/build/runs/qt-focus-source-prototype-802/result.json",
+    "sha256": "b15fe289695e999bbb91ff0135fc55d7db0400996003098171a92463e558cc76"
+  },
+  "source_archive": {
+    "path": "@evidence/build/runs/qt-focus-source-prototype-802/prototype-source-and-licenses.zip",
+    "sha256": "d541444d32e2c0d8e005f7938e84d5b9840a01400c45f822bdc021c017bb0bd0"
+  },
+  "focus_observations": [
+    "canvas_a",
+    "canvas_b",
+    "canvas_a",
+    "host_entry",
+    "canvas_b"
+  ],
+  "canvas_key_event_count": 8,
+  "host_entry_text": "k",
+  "native_calls_attempted": [],
+  "platform": "offscreen",
+  "qt_version": "6.11.0",
+  "binding_version": "6.11.0",
+  "actual_exit": 0,
+  "child_waited": true,
+  "cleanup": {
+    "status": "PASS_APPLY",
+    "reclaimed_bytes": 79,
+    "retained_verified": 7,
+    "scratch_absent": true
+  },
+  "rendered": false,
+  "installed_qualified": false,
+  "wsl_verified": false,
+  "integrated": false,
+  "ci_coverage_claimed": false,
+  "evidence_root": "@evidence/build/runs/qt-focus-source-prototype-802",
+  "scope": "One real offscreenQt protocol with production key handlers and QWidget doubles bypassing native setup/painting. A fixedhostQWindow receives every injectedkey; actualQApplicationfocus chooses canvasA/B/A, hostentry andB. Exactkey/text/order and peer/entryisolation/restored delivery pass. RendererAPIcalls are forbidden by a module double; no realDawncanvas/GPU/rendered/installed/physicalHID/nativepresentation proof.",
+  "remaining": [
+    "Implement maintained two-case realcanvas renderedacceptance after PR81integration.",
+    "Matching Windows/WSLX11 source/native/profile observations, teardown and independent review/integration."
+  ]
+}

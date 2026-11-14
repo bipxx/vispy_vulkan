@@ -1,0 +1,203 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "coverage_ids": [
+    "LIF-06",
+    "LIF-06-QT-FOCUS",
+    "LIF-06-QT-FOCUS-SOURCE-TESTS"
+  ],
+  "status": "PASS_REVISED_SOURCE_FOCUS_AND_OBSERVED_DESTRUCTION_WINDOWS_WSL",
+  "supersedes": {
+    "path": "compat/api-acceptance/qt-focus-source-tests-v1.json",
+    "sha256": "855e497f1b1224af434f60b8711db316cfd89b141a05071255191fe5f81a3cd8",
+    "reason": "The v1 teardown flag was constant; it proved neither destruction nor completed retirement. Original event observations and raw records are preserved."
+  },
+  "review_finding": {
+    "path": "@evidence/build/runs/focus-record-peer-review-808/decision.json",
+    "sha256": "d67c20cdc629c4d11c1b65d8c6267de882a260396fa7d0a25303d7b6c00252e6"
+  },
+  "test_source": {
+    "path": "tests/qt/test_focus_routing_cpu.py",
+    "sha256": "49b7e983e63cafa45cf2df13b2ca507ba954a15ea916115447614778726634ae"
+  },
+  "profiles": {
+    "windows": {
+      "test_count": 2,
+      "verification": {
+        "path": "@evidence/build/runs/focus-teardown-controls-windows-809/verification.json",
+        "sha256": "160293ea83ff602bc8da00ed8c372f713423a65794218ed117bd6c81b464c124"
+      },
+      "source_inputs": {
+        "tests/qt/test_focus_routing_cpu.py": "49b7e983e63cafa45cf2df13b2ca507ba954a15ea916115447614778726634ae",
+        "src/vispy/app/backends/_qt.py": "1c68488e862cb1d8b573641a16a6894a97ac434f915773f12ce3708cae85a4cc",
+        "src/vispy/app/backends/_pyqt6.py": "7bd04d76bdd54f670ea124beb8bf2dad78d92dfeb53e9dc26ae2b14776863f6a",
+        "src/vispy/util/event.py": "eecbc1379d85036481762cabc1ac4320a7b340bf7644e3f78ee693a018f252ff",
+        "src/vispy/app/canvas.py": "dd1173d41033a2715f6b5546428089d59737343edf8b374b507bbf1c9db8a929"
+      },
+      "platform": "offscreen",
+      "rendered": false,
+      "cleanup": {
+        "receipt": {
+          "path": "@evidence/build/runs/focus-teardown-controls-windows-809/cleanup-apply.log",
+          "sha256": "02a47e7aedfafc8066bf7e97e49a90ba2c2cd732764f5b92b6390697bd936927"
+        },
+        "scratch_absent": true
+      }
+    },
+    "wsl": {
+      "test_count": 2,
+      "verification": {
+        "path": "@evidence/build/runs/focus-teardown-wsl-cpu-810/verification.json",
+        "sha256": "eddb2ad692ba1dc20e55488fa3091adeb6bf12d8dd3c41038357a5e8fba2e38a"
+      },
+      "source_inputs": {
+        "tests/qt/test_focus_routing_cpu.py": "49b7e983e63cafa45cf2df13b2ca507ba954a15ea916115447614778726634ae",
+        "src/vispy/app/backends/_qt.py": "1c68488e862cb1d8b573641a16a6894a97ac434f915773f12ce3708cae85a4cc",
+        "src/vispy/app/backends/_pyqt6.py": "7bd04d76bdd54f670ea124beb8bf2dad78d92dfeb53e9dc26ae2b14776863f6a",
+        "src/vispy/util/event.py": "eecbc1379d85036481762cabc1ac4320a7b340bf7644e3f78ee693a018f252ff",
+        "src/vispy/app/canvas.py": "dd1173d41033a2715f6b5546428089d59737343edf8b374b507bbf1c9db8a929"
+      },
+      "platform": "offscreen",
+      "rendered": false,
+      "cleanup": {
+        "receipt": {
+          "path": "@evidence/build/runs/focus-teardown-wsl-cpu-810/cleanup-apply.log",
+          "sha256": "d93a4714ce2db223d0ebb069f4a174f3511ddaa79bbceb3391f5e0e6b75597ca"
+        },
+        "scratch_absent": true
+      }
+    }
+  },
+  "matching_proofs": [
+    {
+      "flow": "canvases",
+      "focus": [
+        "canvas_a",
+        "canvas_b",
+        "canvas_a"
+      ],
+      "events": [
+        {
+          "target": "canvas_a",
+          "type": "key_press",
+          "key": "<Key 'K'>",
+          "text": "k"
+        },
+        {
+          "target": "canvas_a",
+          "type": "key_release",
+          "key": "<Key 'K'>",
+          "text": "k"
+        },
+        {
+          "target": "canvas_b",
+          "type": "key_press",
+          "key": "<Key 'K'>",
+          "text": "k"
+        },
+        {
+          "target": "canvas_b",
+          "type": "key_release",
+          "key": "<Key 'K'>",
+          "text": "k"
+        },
+        {
+          "target": "canvas_a",
+          "type": "key_press",
+          "key": "<Key 'K'>",
+          "text": "k"
+        },
+        {
+          "target": "canvas_a",
+          "type": "key_release",
+          "key": "<Key 'K'>",
+          "text": "k"
+        }
+      ],
+      "qt_source_sha256": "1c68488e862cb1d8b573641a16a6894a97ac434f915773f12ce3708cae85a4cc",
+      "native_calls": [],
+      "destroyed_objects": [
+        "canvas_a",
+        "canvas_b",
+        "host",
+        "host_entry"
+      ],
+      "deleted_wrappers": {
+        "host": true,
+        "canvas_a": true,
+        "canvas_b": true,
+        "host_entry": true
+      },
+      "teardown_drained": true
+    },
+    {
+      "flow": "host_entry",
+      "focus": [
+        "canvas_a",
+        "host_entry",
+        "canvas_a"
+      ],
+      "events": [
+        {
+          "target": "canvas_a",
+          "type": "key_press",
+          "key": "<Key 'K'>",
+          "text": "k"
+        },
+        {
+          "target": "canvas_a",
+          "type": "key_release",
+          "key": "<Key 'K'>",
+          "text": "k"
+        },
+        {
+          "target": "canvas_a",
+          "type": "key_press",
+          "key": "<Key 'K'>",
+          "text": "k"
+        },
+        {
+          "target": "canvas_a",
+          "type": "key_release",
+          "key": "<Key 'K'>",
+          "text": "k"
+        }
+      ],
+      "qt_source_sha256": "1c68488e862cb1d8b573641a16a6894a97ac434f915773f12ce3708cae85a4cc",
+      "native_calls": [],
+      "destroyed_objects": [
+        "canvas_a",
+        "canvas_b",
+        "host",
+        "host_entry"
+      ],
+      "deleted_wrappers": {
+        "host": true,
+        "canvas_a": true,
+        "canvas_b": true,
+        "host_entry": true
+      },
+      "teardown_drained": true
+    }
+  ],
+  "negative_control": {
+    "verification": {
+      "path": "@evidence/build/runs/focus-teardown-controls-windows-809/verification.json",
+      "sha256": "160293ea83ff602bc8da00ed8c372f713423a65794218ed117bd6c81b464c124"
+    },
+    "old_without_delete_exit": 0,
+    "old_all_four_still_alive": true,
+    "revised_without_delete_expected_exit": 1,
+    "revised_without_delete_refused": true
+  },
+  "source_review_approved": false,
+  "protected_integration_complete": false,
+  "ci_coverage_claimed": false,
+  "installed_artifact_qualified": false,
+  "limits": [
+    "Source-only production Qt key routing with widget doubles; renderer initialization and painting are bypassed.",
+    "Controlled QApplication focus and QtTest input through host QWindow; no physical HID or OS-wide focus claim.",
+    "No native build, new environment, GPU run, public wheel or release admission.",
+    "Rendered runs 806/807 remain separately scoped; broad LIF-06 and API-06 parents remain partial."
+  ]
+}
