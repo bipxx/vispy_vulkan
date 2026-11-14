@@ -1,0 +1,84 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "coverage_ids": [
+    "FIX-04",
+    "API-06",
+    "LIF-06"
+  ],
+  "status": "PASS_PR81_NORMAL_PROTECTED_MERGE_EXACT_TESTED_TREE",
+  "pr_url": "https://github.com/bipxx/vispy_vulkan/pull/81",
+  "head": "a9b60236c6247aaf4ab9f3d5a61537c0066b8f5c",
+  "parent": "bff61230a87e9a887700604109cf93e4bbc3199c",
+  "runtime_source_commit": "2c6096275ccd7c0fd663f59660e4782db6116834",
+  "merge_commit": "a69505ceb10c2f10c0354b902211132b91f4e91f",
+  "merged_at": "2026-11-14T11:57:58Z",
+  "tested_pr_merge": "e59675dbd4c26361b76488359416c4c5918390fd",
+  "actual_tree": "4c27b9c16babf624815c73c50e01fd6cf52ef697",
+  "tested_tree": "4c27b9c16babf624815c73c50e01fd6cf52ef697",
+  "required_success": 11,
+  "required_checks": [
+    "CPU windows-x86_64 CPython 3.10.19",
+    "CPU windows-x86_64 CPython 3.11.14",
+    "CPU windows-x86_64 CPython 3.12.8",
+    "CPU windows-x86_64 CPython 3.13.8",
+    "CPU windows-x86_64 CPython 3.14.0",
+    "CPU linux-x86_64 CPython 3.10.19",
+    "CPU linux-x86_64 CPython 3.11.14",
+    "CPU linux-x86_64 CPython 3.12.8",
+    "CPU linux-x86_64 CPython 3.13.8",
+    "CPU linux-x86_64 CPython 3.14.0",
+    "software-vulkan"
+  ],
+  "total_checks": 23,
+  "optional_pending": [
+    "CPU macos-x86_64 CPython 3.10.19",
+    "CPU macos-x86_64 CPython 3.11.14",
+    "CPU macos-arm64 CPython 3.12.8",
+    "CPU macos-x86_64 CPython 3.12.8",
+    "CPU macos-arm64 CPython 3.13.8",
+    "CPU macos-x86_64 CPython 3.13.8",
+    "CPU macos-arm64 CPython 3.14.0",
+    "CPU macos-x86_64 CPython 3.14.0"
+  ],
+  "merged_source_files": 49,
+  "exact_merged_delta_blobs_matched": 49,
+  "committed_parent_inputs_verified": 702,
+  "reviewed_parent_input_replacements": [
+    ".github/workflows/cpu-contract.yml",
+    ".github/workflows/linux-vulkan.yml",
+    "compat/qualification-ci.json",
+    "src/vispy/app/backends/_qt.py"
+  ],
+  "critical_original_guards_unchanged": 806,
+  "reviewed_critical_drift": [
+    ".github/workflows/cpu-contract.yml",
+    ".github/workflows/linux-vulkan.yml",
+    "compat/qualification-ci.json",
+    "src/vispy/app/backends/_qt.py"
+  ],
+  "historical_candidate_records_unchanged": 414,
+  "later_live_docs_preserved": {
+    "docs/coverage-checklist.md": "655b5a8e8d406338093022a8208b9bbe314be623a4222aed5521dba1c46052d0",
+    "docs/remaining-gaps-checklist.md": "93136b1572dd808df96670ff1b2ab28f77b4b48bdcf1b85f77e26a3c28ea18c6",
+    "docs/superpowers/plans/2026-11-13-remaining-gap-closure.md": "da1dd21db4a602fdf8e61e85658f828d9ddc7a6fc2e468f49be0bc375f7616f7",
+    "docs/superpowers/plans/2026-11-14-gap-investigation-next.md": "5f7e6f77c59dafc2b0f98472e3ecdfc1b7280a1a08f84577a4f940a9074d93ac"
+  },
+  "later_focus_test_preserved": {
+    "path": "tests/qt/test_focus_routing_cpu.py",
+    "sha256": "223d97e4d3f56e5b1a4a817993be63b6d1bd543511d829e25663cd01d176e4b6"
+  },
+  "foreign_head_index_unchanged": true,
+  "normal_merge_request_sent": false,
+  "normal_merge_request_exit": null,
+  "force": false,
+  "admin_bypass": false,
+  "scratch_created": false,
+  "ci_new_qt_test_coverage_claimed": false,
+  "artifact_admitted": false,
+  "release_complete": false,
+  "evidence_root": "@evidence/build/runs/qt-callback-protected-integration-805",
+  "scope": "Actual protectedPR81merge equals testedmerge and frozen49file tree; both2c andfinala9heads remain reachable. All11requiredchecks pass, optionalMacCPUjobs may remain active. Currentnative-source/runtime13approval is separate from installed/strict/admission/publicwheel/release qualification. Later record reconciliation/focus source tests remain outside thismergedsnapshot and are preserved.",
+  "actual_exit": 0,
+  "child_waited": true
+}

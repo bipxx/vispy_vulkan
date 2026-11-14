@@ -1,0 +1,519 @@
+{
+  "scope": "ProgrammaticQtapplicationfocus and fixedhostQWindow input; realDawncanvases, literal2x2internalreadback and10zerogauges percase+parent. NoW SIsurface; no physicalHID/display/installedqualification/CI/admission/release claim.",
+  "wheel": {
+    "path": "build/artifacts/9e4e30cc50d49a759ea42cd7915cc2544a42d2af869d505e3ef5290d47617286/vispy-0.17.0+vulkan.2-cp312-cp312-win_amd64.whl",
+    "sha256": "9e4e30cc50d49a759ea42cd7915cc2544a42d2af869d505e3ef5290d47617286"
+  },
+  "source_hashes": {
+    "src/vispy/app/backends/_qt.py": "1c68488e862cb1d8b573641a16a6894a97ac434f915773f12ce3708cae85a4cc",
+    "tests/qt/test_focus_routing_gpu.py": "83b92823cb92e464a283dd518dc67df4d32f9df21eef44db02caea2137c694b7"
+  },
+  "test_targets": [
+    "tests/qt/test_focus_routing_gpu.py"
+  ],
+  "python": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\.venv\\Scripts\\python.exe",
+  "python_version": "3.12.8 (main, Dec 19 2024, 14:41:01) [MSC v.1942 64 bit (AMD64)]",
+  "device": {
+    "backend": "Vulkan",
+    "adapter_type": "discrete",
+    "vendor": "nvidia",
+    "device": "NVIDIA GeForce RTX 4090",
+    "driver": "NVIDIA: 610.88 610.88.0.0",
+    "vendor_id": 4318,
+    "device_id": 9860,
+    "max_texture_dimension_1d": 32768,
+    "max_texture_dimension_2d": 32768,
+    "max_texture_dimension_3d": 16384,
+    "max_vertex_attributes": 30,
+    "max_vertex_buffers": 8,
+    "max_vertex_buffer_array_stride": 2048,
+    "max_storage_buffers_per_shader_stage": 16,
+    "max_uniform_buffers_per_shader_stage": 12,
+    "max_inter_stage_shader_variables": 30,
+    "max_storage_buffer_binding_size": 2147483644,
+    "max_bindings_per_bind_group": 1000,
+    "max_compute_invocations_per_workgroup": 1024,
+    "max_compute_workgroup_size_x": 1024,
+    "max_compute_workgroups_per_dimension": 65535,
+    "max_point_vertex_attributes": 30,
+    "core_features_and_limits": true,
+    "point_input_limit_scope": "all active user point inputs share one vertex buffer; exact vertex/instance identities use read-only vertex storage without reserving a user attribute; actual granted attribute/stride/storage/allocation limits apply",
+    "max_samplers_per_shader_stage": 16,
+    "max_sampled_textures_per_shader_stage": 48,
+    "max_buffer_size": 1099511627776,
+    "max_uniform_buffer_binding_size": 65536,
+    "software": false,
+    "float32_filterable": true,
+    "unorm16_texture_formats": true,
+    "bresenham_lines": true,
+    "last_vertex_provoking": true,
+    "timestamp_query": true,
+    "timestamp_quantization_ns": 65536,
+    "host_mapped_pointer": true,
+    "host_import_limit": 536870912,
+    "depth_stencil_storage": "depth24_unorm_stencil8",
+    "ok": true,
+    "error": "",
+    "loss_count": 0,
+    "revision": "117b054598f4758b598f4b8f48feea48c11fe7b0+dawn-499e5c6ff9b37d5de70c6493fb74c251e0d35c1c"
+  },
+  "original_members_verified_before_overlay": 537,
+  "unchanged_members_verified": 536,
+  "source_overrides": 1,
+  "overlay_member": "vispy/app/backends/_qt.py",
+  "overlay_sha256": "1c68488e862cb1d8b573641a16a6894a97ac434f915773f12ce3708cae85a4cc",
+  "native_sha256": "6dc06d2c7c67f3de1f24f0aa496fc833afa2bb11fd05990d7e0656e744927473",
+  "toolkit": {
+    "qt_version": "6.11.0",
+    "binding_version": "6.11.0",
+    "binding_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\.venv\\Lib\\site-packages\\PyQt6\\QtCore.pyd",
+    "binding_sha256": "91dd5166110b88a4f4d3acda6fe6c10ed699882dd3602328a59e9f656cc766b1"
+  },
+  "pytest_exit": 0,
+  "shutdown_gauges": {
+    "pending_tickets": 0,
+    "queued_frames": 0,
+    "live_buffer_bytes": 0,
+    "live_cpu_buffer_bytes": 0,
+    "live_texture_bytes": 0,
+    "canvas_texture_bytes": 0,
+    "transient_buffer_bytes": 0,
+    "line_resource_pool_busy_slots": 0,
+    "line_resource_pool_bytes": 0,
+    "host_import_pinned_bytes": 0
+  },
+  "loaded_modules": {
+    "vispy.version": {
+      "path": "D:\\vispy-vulkan-managed\\build\\work\\qt-focus-rendered-windows-806\\windows\\vispy\\version.py",
+      "sha256": "183d760cbae857c0c309877b5d6704a1c19e3f04b1951dd55ce14a90c0ccae95"
+    },
+    "vispy.util.logs": {
+      "path": "D:\\vispy-vulkan-managed\\build\\work\\qt-focus-rendered-windows-806\\windows\\vispy\\util\\logs.py",
+      "sha256": "f0b90719b609c09268c81156c965e516582c7c35c35d4226d0a6134e0fcbebe0"
+    },
+    "vispy.util.event": {
+      "path": "D:\\vispy-vulkan-managed\\build\\work\\qt-focus-rendered-windows-806\\windows\\vispy\\util\\event.py",
+      "sha256": "eecbc1379d85036481762cabc1ac4320a7b340bf7644e3f78ee693a018f252ff"
+    },
+    "vispy.util.config": {
+      "path": "D:\\vispy-vulkan-managed\\build\\work\\qt-focus-rendered-windows-806\\windows\\vispy\\util\\config.py",
+      "sha256": "91bd1f03e053a7a4f9f23ab96b417a8f0b0f70d126b6c6ed73846533160e8c71"
+    },
+    "vispy.util.fetching": {
+      "path": "D:\\vispy-vulkan-managed\\build\\work\\qt-focus-rendered-windows-806\\windows\\vispy\\util\\fetching.py",
+      "sha256": "de58bb164692c2d8b126d051fa485d3b3d66fcd9fa8a1157ac6cd976d9accaad"
+    },
+    "vispy.util.frozen": {
+      "path": "D:\\vispy-vulkan-managed\\build\\work\\qt-focus-rendered-windows-806\\windows\\vispy\\util\\frozen.py",
+      "sha256": "0dc827dbc5180c06149a40e06fba5c3244133b7503eed72e2c194fcdbfe94ed6"
+    },
+    "vispy.util.fonts._vispy_fonts": {
+      "path": "D:\\vispy-vulkan-managed\\build\\work\\qt-focus-rendered-windows-806\\windows\\vispy\\util\\fonts\\_vispy_fonts.py",
+      "sha256": "c5a5ea3f050a6b712b56d124db99fc879095d8c7628c001b33cec4b804974cbe"
+    },
+    "vispy.ext": {
+      "path": "D:\\vispy-vulkan-managed\\build\\work\\qt-focus-rendered-windows-806\\windows\\vispy\\ext\\__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "vispy.ext.gdi32plus": {
+      "path": "D:\\vispy-vulkan-managed\\build\\work\\qt-focus-rendered-windows-806\\windows\\vispy\\ext\\gdi32plus.py",
+      "sha256": "542c1aad3b9ec9dacf5c212a426a492c9729e9a7d4525a4a26d36555430605d1"
+    },
+    "vispy.util.fonts._win32": {
+      "path": "D:\\vispy-vulkan-managed\\build\\work\\qt-focus-rendered-windows-806\\windows\\vispy\\util\\fonts\\_win32.py",
+      "sha256": "331302547d7bed63ccf6f08085764e616c71dfb6c210b4d78738b75e05fcb423"
+    },
+    "vispy.util.fonts._freetype": {
+      "path": "D:\\vispy-vulkan-managed\\build\\work\\qt-focus-rendered-windows-806\\windows\\vispy\\util\\fonts\\_freetype.py",
+      "sha256": "cb27216ae8d3456172d3c093eee851acb49615fc2e0fbfe70953a7eb4edf6538"
+    },
+    "vispy.util.fonts._triage": {
+      "path": "D:\\vispy-vulkan-managed\\build\\work\\qt-focus-rendered-windows-806\\windows\\vispy\\util\\fonts\\_triage.py",
+      "sha256": "6912f9943fac154c34b143339fb184e482f79e582534bc90e9ee742b059fb3b9"
+    },
+    "vispy.util.fonts": {
+      "path": "D:\\vispy-vulkan-managed\\build\\work\\qt-focus-rendered-windows-806\\windows\\vispy\\util\\fonts\\__init__.py",
+      "sha256": "461b1648f8c88a4cff1c1f2d97488da464863bb512737ac30d9a175862223b20"
+    },
+    "vispy.util.transforms": {
+      "path": "D:\\vispy-vulkan-managed\\build\\work\\qt-focus-rendered-windows-806\\windows\\vispy\\util\\transforms.py",
+      "sha256": "2c02206b3611c68e6b9707cf9e187b86686adc44519ce09b46bcd96972d04de1"
+    },
+    "vispy.util.wrappers": {
+      "path": "D:\\vispy-vulkan-managed\\build\\work\\qt-focus-rendered-windows-806\\windows\\vispy\\util\\wrappers.py",
+      "sha256": "42cdf8ed8de7018a480977fa720ec46733cd8d2554ac43f17c0aa65a6f5341bc"
+    },
+    "vispy.util.bunch": {
+      "path": "D:\\vispy-vulkan-managed\\build\\work\\qt-focus-rendered-windows-806\\windows\\vispy\\util\\bunch.py",
+      "sha256": "d4ab5a405292d8b5b1cdaeb4bb4594db244caac23b4cb8879e84b59a79ce2197"
+    },
+    "vispy.util": {
+      "path": "D:\\vispy-vulkan-managed\\build\\work\\qt-focus-rendered-windows-806\\windows\\vispy\\util\\__init__.py",
+      "sha256": "87c66b58882addc55b33cac259c176491589374453c2e0b7bc26bccb86a07be2"
+    },
+    "vispy.util.keys": {
+      "path": "D:\\vispy-vulkan-managed\\build\\work\\qt-focus-rendered-windows-806\\windows\\vispy\\util\\keys.py",
+      "sha256": "b1f44e7f6cdc9fbbfc65adb0efa586d585644c14c1b5742b9703cdfcb1d8e52b"
+    },
+    "vispy": {
+      "path": "D:\\vispy-vulkan-managed\\build\\work\\qt-focus-rendered-windows-806\\windows\\vispy\\__init__.py",
+      "sha256": "d110064302e90724faad9a164bb254b1d72bfa086f8489c0e32b516db3785690"
+    },
+    "vispy._dawn": {
+      "path": "D:\\vispy-vulkan-managed\\build\\work\\qt-focus-rendered-windows-806\\windows\\vispy\\_dawn.cp312-win_amd64.pyd",
+      "sha256": "6dc06d2c7c67f3de1f24f0aa496fc833afa2bb11fd05990d7e0656e744927473"
+    },
+    "vispy.app.backends": {
+      "path": "D:\\vispy-vulkan-managed\\build\\work\\qt-focus-rendered-windows-806\\windows\\vispy\\app\\backends\\__init__.py",
+      "sha256": "b40767f4912a2c4440edf4c4047286a57412fd6d99f20fab78a58a2168654cbd"
+    },
+    "vispy.app.base": {
+      "path": "D:\\vispy-vulkan-managed\\build\\work\\qt-focus-rendered-windows-806\\windows\\vispy\\app\\base.py",
+      "sha256": "30fc071772ca917548a28ebced100baeddf0566c264e6c8fac4043217123f6b7"
+    },
+    "vispy.app._detect_eventloop": {
+      "path": "D:\\vispy-vulkan-managed\\build\\work\\qt-focus-rendered-windows-806\\windows\\vispy\\app\\_detect_eventloop.py",
+      "sha256": "87b20cb12657b88033f4cddb7b307f801d8142a71f88f71da68e6f027f1c77b6"
+    },
+    "vispy.app.application": {
+      "path": "D:\\vispy-vulkan-managed\\build\\work\\qt-focus-rendered-windows-806\\windows\\vispy\\app\\application.py",
+      "sha256": "9e97d71d40b3b5a0332f8f89f9fdf528cf417ffabf2c77470f22e47e5949b71c"
+    },
+    "vispy.app._default_app": {
+      "path": "D:\\vispy-vulkan-managed\\build\\work\\qt-focus-rendered-windows-806\\windows\\vispy\\app\\_default_app.py",
+      "sha256": "00295d6507caee7976cc6227b8906c0a6d6c7c529913e50506049e6af1bc815a"
+    },
+    "vispy.util.ptime": {
+      "path": "D:\\vispy-vulkan-managed\\build\\work\\qt-focus-rendered-windows-806\\windows\\vispy\\util\\ptime.py",
+      "sha256": "649d22a6b2205fc93e5a2f33c0f82d4eb126ccc423a9d51bf3d88af924d4bd5d"
+    },
+    "vispy.util.dpi._win32": {
+      "path": "D:\\vispy-vulkan-managed\\build\\work\\qt-focus-rendered-windows-806\\windows\\vispy\\util\\dpi\\_win32.py",
+      "sha256": "1cb1adccc6fe6c16e11883b316da04444fbd1f87d1ce213f42de3da23a2bac47"
+    },
+    "vispy.util.dpi": {
+      "path": "D:\\vispy-vulkan-managed\\build\\work\\qt-focus-rendered-windows-806\\windows\\vispy\\util\\dpi\\__init__.py",
+      "sha256": "45aa2632746e822d7cf153a7aa98ebb7c9d0831d2198856acc59322116810ab4"
+    },
+    "vispy.gloo.gl._constants": {
+      "path": "D:\\vispy-vulkan-managed\\build\\work\\qt-focus-rendered-windows-806\\windows\\vispy\\gloo\\gl\\_constants.py",
+      "sha256": "bcfbe5d767ffb392a1ae7d0309728daa858193c6df3f5c8949a1fd565235e68b"
+    },
+    "vispy.gloo.gl._proxy": {
+      "path": "D:\\vispy-vulkan-managed\\build\\work\\qt-focus-rendered-windows-806\\windows\\vispy\\gloo\\gl\\_proxy.py",
+      "sha256": "29e96154282b5f333c0590d14cd6948164ff46e3e2da76ac698429488de5c5e4"
+    },
+    "vispy.gloo.gl.dawn": {
+      "path": "D:\\vispy-vulkan-managed\\build\\work\\qt-focus-rendered-windows-806\\windows\\vispy\\gloo\\gl\\dawn.py",
+      "sha256": "73c88fe98b0da67eb42cb4d4ae76f6350c7e5256125b04ff3abb2c6069110b17"
+    },
+    "vispy.gloo.gl": {
+      "path": "D:\\vispy-vulkan-managed\\build\\work\\qt-focus-rendered-windows-806\\windows\\vispy\\gloo\\gl\\__init__.py",
+      "sha256": "61071119c2d595f75362f58261b63f2b9472ba8c6036a9cdb99c6e20845422d6"
+    },
+    "vispy.color._color_dict": {
+      "path": "D:\\vispy-vulkan-managed\\build\\work\\qt-focus-rendered-windows-806\\windows\\vispy\\color\\_color_dict.py",
+      "sha256": "4ea959a1669e3b775d5b09b9ecc686aaaa220d4e6ad0e981071a73840733fa23"
+    },
+    "vispy.color.color_space": {
+      "path": "D:\\vispy-vulkan-managed\\build\\work\\qt-focus-rendered-windows-806\\windows\\vispy\\color\\color_space.py",
+      "sha256": "8749ed0db4f83d361a0987f66c41916d5288fc78dbc90db3b854b001eb7d1100"
+    },
+    "vispy.color.color_array": {
+      "path": "D:\\vispy-vulkan-managed\\build\\work\\qt-focus-rendered-windows-806\\windows\\vispy\\color\\color_array.py",
+      "sha256": "282395c6bfeabcd7e065023a9491dec885677b731e600131eadd15dc38458c06"
+    },
+    "vispy.ext.cubehelix": {
+      "path": "D:\\vispy-vulkan-managed\\build\\work\\qt-focus-rendered-windows-806\\windows\\vispy\\ext\\cubehelix.py",
+      "sha256": "b9b0c4a04a1cd3898ab94f2ca846628ec8cf6b27d98d88a2207602ca248c77d7"
+    },
+    "vispy.util.check_environment": {
+      "path": "D:\\vispy-vulkan-managed\\build\\work\\qt-focus-rendered-windows-806\\windows\\vispy\\util\\check_environment.py",
+      "sha256": "4a3861d3e93766317915e4f3a44321d58c6383e4353961d2ab4501d0390d70e3"
+    },
+    "vispy.color.colormap": {
+      "path": "D:\\vispy-vulkan-managed\\build\\work\\qt-focus-rendered-windows-806\\windows\\vispy\\color\\colormap.py",
+      "sha256": "c03b6ff337d19533f21f7576e4f91b40f576e46fa1a7d727d3892e821739db7d"
+    },
+    "vispy.color": {
+      "path": "D:\\vispy-vulkan-managed\\build\\work\\qt-focus-rendered-windows-806\\windows\\vispy\\color\\__init__.py",
+      "sha256": "dc83cf3d3ba215619f56684505293940270da7ef3fa5a8fc1cfacb9a091214f6"
+    },
+    "vispy.gloo.wrappers": {
+      "path": "D:\\vispy-vulkan-managed\\build\\work\\qt-focus-rendered-windows-806\\windows\\vispy\\gloo\\wrappers.py",
+      "sha256": "498b5cd003edc941da975c5e97fb1eed7d7ffc24981c69dbb2176d8b100a2bf9"
+    },
+    "vispy.gloo.glir": {
+      "path": "D:\\vispy-vulkan-managed\\build\\work\\qt-focus-rendered-windows-806\\windows\\vispy\\gloo\\glir.py",
+      "sha256": "620dd9f0bc26bd41f8c41dc6cdc8f6fc2b79db8933c5585cb9dd8132cd07073d"
+    },
+    "vispy.gloo.dawn_parser": {
+      "path": "D:\\vispy-vulkan-managed\\build\\work\\qt-focus-rendered-windows-806\\windows\\vispy\\gloo\\dawn_parser.py",
+      "sha256": "2a52bca0510dce264a15d961c1168a455fef1648c9042b83368ccfd05d641854"
+    },
+    "vispy.gloo.context": {
+      "path": "D:\\vispy-vulkan-managed\\build\\work\\qt-focus-rendered-windows-806\\windows\\vispy\\gloo\\context.py",
+      "sha256": "2b228c50da13c32e5fe29216866307148de4e6542f5726c8e140e49fe4f6f2ab"
+    },
+    "vispy.gloo.globject": {
+      "path": "D:\\vispy-vulkan-managed\\build\\work\\qt-focus-rendered-windows-806\\windows\\vispy\\gloo\\globject.py",
+      "sha256": "78c929159aea258487c7c0398f5947fae733a9993e217d9961befb13e6f50ce3"
+    },
+    "vispy.gloo.buffer": {
+      "path": "D:\\vispy-vulkan-managed\\build\\work\\qt-focus-rendered-windows-806\\windows\\vispy\\gloo\\buffer.py",
+      "sha256": "653c1ccbbd73dc8a0b70e70934b2bc6188cb10d048c07d34a5a237aa15b5d92d"
+    },
+    "vispy.gloo.util": {
+      "path": "D:\\vispy-vulkan-managed\\build\\work\\qt-focus-rendered-windows-806\\windows\\vispy\\gloo\\util.py",
+      "sha256": "b02d4e33e2f4898df2989214e1e34e93ff61cc329954d88a2873814ffea6e74d"
+    },
+    "vispy.gloo.texture": {
+      "path": "D:\\vispy-vulkan-managed\\build\\work\\qt-focus-rendered-windows-806\\windows\\vispy\\gloo\\texture.py",
+      "sha256": "6d78a96ebdc214f2b338e121c780a8f6ad4e6ed496de992c443d93b277a738d8"
+    },
+    "vispy.glsl": {
+      "path": "D:\\vispy-vulkan-managed\\build\\work\\qt-focus-rendered-windows-806\\windows\\vispy\\glsl\\__init__.py",
+      "sha256": "d1a5eb03bef4854feb08ab75a6c9398125248788d418985b592208b79a3189ad"
+    },
+    "vispy.gloo.preprocessor": {
+      "path": "D:\\vispy-vulkan-managed\\build\\work\\qt-focus-rendered-windows-806\\windows\\vispy\\gloo\\preprocessor.py",
+      "sha256": "94ca763b10b26436f98322d460adea2cc852b6b99bc888275589e69e25abfb01"
+    },
+    "vispy.gloo.program": {
+      "path": "D:\\vispy-vulkan-managed\\build\\work\\qt-focus-rendered-windows-806\\windows\\vispy\\gloo\\program.py",
+      "sha256": "9e3fe2db42b395eddcfa2bd9a148022a8d5442f46f0d4157d7a512d2fbed6118"
+    },
+    "vispy.gloo.framebuffer": {
+      "path": "D:\\vispy-vulkan-managed\\build\\work\\qt-focus-rendered-windows-806\\windows\\vispy\\gloo\\framebuffer.py",
+      "sha256": "ac6d1f70cd8d9040fd8c517e185934bc10d97eaae23fadd6f15483af481c5673"
+    },
+    "vispy.gloo": {
+      "path": "D:\\vispy-vulkan-managed\\build\\work\\qt-focus-rendered-windows-806\\windows\\vispy\\gloo\\__init__.py",
+      "sha256": "4c180e3058dc6fb96827e4b4054eed40f6d6c3b362d076dfd2a97cd0e7c6969a"
+    },
+    "vispy.app.canvas": {
+      "path": "D:\\vispy-vulkan-managed\\build\\work\\qt-focus-rendered-windows-806\\windows\\vispy\\app\\canvas.py",
+      "sha256": "dd1173d41033a2715f6b5546428089d59737343edf8b374b507bbf1c9db8a929"
+    },
+    "vispy.app.timer": {
+      "path": "D:\\vispy-vulkan-managed\\build\\work\\qt-focus-rendered-windows-806\\windows\\vispy\\app\\timer.py",
+      "sha256": "41129507f231e2deed48570557572fcc3fe60cb10d4d46e13dee8b94f5dfec75"
+    },
+    "vispy.app": {
+      "path": "D:\\vispy-vulkan-managed\\build\\work\\qt-focus-rendered-windows-806\\windows\\vispy\\app\\__init__.py",
+      "sha256": "34386f5653e94549b9ce47ece0bd55c1b744d47860edd184908dbc4581f62933"
+    },
+    "vispy.app.backends._qt": {
+      "path": "D:\\vispy-vulkan-managed\\build\\work\\qt-focus-rendered-windows-806\\windows\\vispy\\app\\backends\\_qt.py",
+      "sha256": "1c68488e862cb1d8b573641a16a6894a97ac434f915773f12ce3708cae85a4cc"
+    },
+    "vispy.app.backends._pyqt6": {
+      "path": "D:\\vispy-vulkan-managed\\build\\work\\qt-focus-rendered-windows-806\\windows\\vispy\\app\\backends\\_pyqt6.py",
+      "sha256": "7bd04d76bdd54f670ea124beb8bf2dad78d92dfeb53e9dc26ae2b14776863f6a"
+    }
+  },
+  "actual_exit": 0,
+  "schema": 1,
+  "date": "2026-11-14",
+  "coverage_ids": [
+    "LIF-06",
+    "LIF-06-QT-FOCUS",
+    "LIF-06-QT-FOCUS-RENDERED-WINDOWS"
+  ],
+  "status": "PASS_TWO_WINDOWS_REAL_CANVAS_FOCUS_CASES_SOURCE_OVERLAY",
+  "test_count": 2,
+  "focus_proofs": [
+    {
+      "flow": "canvases",
+      "focus": [
+        "canvas_a",
+        "canvas_b",
+        "canvas_a"
+      ],
+      "observations": [
+        {
+          "focus": "canvas_a",
+          "canvas_colors": [
+            [
+              0,
+              255,
+              0,
+              255
+            ],
+            [
+              0,
+              0,
+              255,
+              255
+            ]
+          ],
+          "events": 2,
+          "entry_text": ""
+        },
+        {
+          "focus": "canvas_b",
+          "canvas_colors": [
+            [
+              0,
+              255,
+              0,
+              255
+            ],
+            [
+              0,
+              255,
+              0,
+              255
+            ]
+          ],
+          "events": 4,
+          "entry_text": ""
+        },
+        {
+          "focus": "canvas_a",
+          "canvas_colors": [
+            [
+              255,
+              255,
+              0,
+              255
+            ],
+            [
+              0,
+              255,
+              0,
+              255
+            ]
+          ],
+          "events": 6,
+          "entry_text": ""
+        }
+      ],
+      "presses": [
+        2,
+        1
+      ],
+      "shutdown_gauges": {
+        "pending_tickets": 0,
+        "queued_frames": 0,
+        "live_buffer_bytes": 0,
+        "live_cpu_buffer_bytes": 0,
+        "live_texture_bytes": 0,
+        "canvas_texture_bytes": 0,
+        "transient_buffer_bytes": 0,
+        "line_resource_pool_busy_slots": 0,
+        "line_resource_pool_bytes": 0,
+        "host_import_pinned_bytes": 0
+      },
+      "oracle": "2x2 internal framebuffer readback; no Vulkan WSI surface",
+      "activation": "controlled QApplication focus; QtTest fixed host QWindow"
+    },
+    {
+      "flow": "host_entry",
+      "focus": [
+        "canvas_a",
+        "host_entry",
+        "canvas_a"
+      ],
+      "observations": [
+        {
+          "focus": "canvas_a",
+          "canvas_colors": [
+            [
+              0,
+              255,
+              0,
+              255
+            ],
+            [
+              0,
+              0,
+              255,
+              255
+            ]
+          ],
+          "events": 2,
+          "entry_text": ""
+        },
+        {
+          "focus": "host_entry",
+          "canvas_colors": [
+            [
+              0,
+              255,
+              0,
+              255
+            ],
+            [
+              0,
+              0,
+              255,
+              255
+            ]
+          ],
+          "events": 2,
+          "entry_text": "k"
+        },
+        {
+          "focus": "canvas_a",
+          "canvas_colors": [
+            [
+              255,
+              255,
+              0,
+              255
+            ],
+            [
+              0,
+              0,
+              255,
+              255
+            ]
+          ],
+          "events": 4,
+          "entry_text": "k"
+        }
+      ],
+      "presses": [
+        2,
+        0
+      ],
+      "shutdown_gauges": {
+        "pending_tickets": 0,
+        "queued_frames": 0,
+        "live_buffer_bytes": 0,
+        "live_cpu_buffer_bytes": 0,
+        "live_texture_bytes": 0,
+        "canvas_texture_bytes": 0,
+        "transient_buffer_bytes": 0,
+        "line_resource_pool_busy_slots": 0,
+        "line_resource_pool_bytes": 0,
+        "host_import_pinned_bytes": 0
+      },
+      "oracle": "2x2 internal framebuffer readback; no Vulkan WSI surface",
+      "activation": "controlled QApplication focus; QtTest fixed host QWindow"
+    }
+  ],
+  "merged_runtime": {
+    "merge_commit": "a69505ceb10c2f10c0354b902211132b91f4e91f",
+    "qt_sha256": "1c68488e862cb1d8b573641a16a6894a97ac434f915773f12ce3708cae85a4cc",
+    "actual_exit": 0,
+    "child_pid": 45828,
+    "child_waited": true,
+    "test_source_unmerged": true
+  },
+  "verification": {
+    "path": "@evidence/build/runs/qt-focus-rendered-windows-806/verification.json",
+    "sha256": "1fbb65135d5a346053b8b486a98f3fd344f645cf359c0ac007dc35d82803336c"
+  },
+  "cleanup": {
+    "status": "PASS_APPLY",
+    "reclaimed_bytes": 17902121,
+    "retained_verified": 22,
+    "scratch_absent": true
+  },
+  "evidence_root": "@evidence/build/runs/qt-focus-rendered-windows-806",
+  "integrated": false,
+  "ci_coverage_claimed": false,
+  "artifact_admitted": false
+}

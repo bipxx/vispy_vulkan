@@ -1,0 +1,111 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "coverage_ids": [
+    "LIF-06",
+    "LIF-06-QT-FOCUS",
+    "LIF-06-QT-FOCUS-SOURCE-TESTS",
+    "API-06"
+  ],
+  "status": "APPROVED_EXACT_SOURCE_DELTA_ONLY",
+  "base": "a69505ceb10c2f10c0354b902211132b91f4e91f",
+  "delta_sha256": "86afc518fd9604837752082d8962d0e6d3c0700709083ab8b2e1df2c69dc74bb",
+  "reviewed_paths": 15,
+  "frozen_inputs": 1315,
+  "decision": {
+    "path": "@evidence/build/runs/focus-amendment-peer-review-811/decision.json",
+    "sha256": "f78c19bb8ae0be86ff8a85a64637803af2f1faf2c46393876740695bf8bccca1"
+  },
+  "coordinator_disposition": {
+    "path": "@evidence/build/runs/focus-amendment-peer-review-811/coordinator-disposition.json",
+    "sha256": "4345d01d434f2a82cc39faf597c88b44af6558b8a596fddda3d72f42ed9f92e3"
+  },
+  "reviewed_delta": {
+    "path": "@evidence/build/runs/focus-amendment-peer-review-811/delta.json",
+    "sha256": "86afc518fd9604837752082d8962d0e6d3c0700709083ab8b2e1df2c69dc74bb"
+  },
+  "source_archive": {
+    "path": "@evidence/build/runs/focus-amendment-peer-review-811/owned-delta-and-licenses.zip",
+    "sha256": "315a4a5559ff32c72006e318b78521b4d3de5615ca3f9169d59fb33371922474"
+  },
+  "process": {
+    "argv": [
+      "C:/Users/HEQ/.local/bin/claude.exe",
+      "-p",
+      "--output-format",
+      "stream-json",
+      "--verbose",
+      "--no-session-persistence",
+      "--tools",
+      "Read,Glob,Grep",
+      "--allowedTools",
+      "Read,Glob,Grep",
+      "--disable-slash-commands",
+      "--strict-mcp-config",
+      "--mcp-config",
+      "D:\\vispy-vulkan-managed\\build\\runs\\focus-amendment-peer-review-811\\empty-mcp.json",
+      "--add-dir",
+      "D:\\vispy-vulkan-managed",
+      "--max-turns",
+      "30"
+    ],
+    "actual_exit": 0,
+    "child_pid": 41708,
+    "child_waited": true,
+    "seconds": 164.89100000000326,
+    "guard_failure": null
+  },
+  "cleanup": {
+    "receipt": {
+      "path": "@evidence/build/runs/focus-amendment-peer-review-811/cleanup-apply.log",
+      "sha256": "028290003e33508c654c292a34f033be2a40b43815f3e9a48f010461e18d4d7c"
+    },
+    "reclaimed_bytes": 7604,
+    "retained_verified": 40,
+    "scratch_absent": true
+  },
+  "required_changes": [],
+  "integration_conditions": [
+    "Freeze the exact final delta (15 reviewed paths plus, if added, one own review receipt and additive doc checkpoints); immediately before staging verify the exact changed paths/bytes, parent old blobs and new-path absence, and audit actual parent drift against a69505ce; any drift needs an impact review.",
+    "Coordinator verification of 1315 frozen inputs, 810 critical guards, 414 historical candidate JSONs and 510 runtime Python members unchanged must still hold at the staging point.",
+    "Use a private index (32 MiB limit); foreign HEAD and index preserved; no checkout/reset/clean, no force, no admin bypass.",
+    "Normal protected PR with fresh required existing CI (11 required checks) at the actual PR head; workflows, qualification-ci and candidate 13 unchanged; ci_coverage_claimed stays false because no CI selector collects tests/qt/test_focus_routing_cpu.py or tests/qt/test_focus_routing_gpu.py.",
+    "No native build, wheel rebuild, package install or new environment for this test/record change.",
+    "Retain actual-head, CI and merge evidence outside the commit; preserve 808 decision/disposition, 803/804/v1 raw records and 809/810 evidence unchanged."
+  ],
+  "metadata_followup_conditions": [
+    "Permitted after coordinator rehash: one own external review receipt plus purely additive factual checkpoints at paragraph boundaries in docs/coverage-checklist.md, docs/remaining-gaps-checklist.md, docs/superpowers/plans/2026-11-13-remaining-gap-closure.md and docs/superpowers/plans/2026-11-14-gap-investigation-next.md.",
+    "Both test files and the nine other new receipts stay byte-identical; no candidate-13, binding-field, workflow or runtime change; no installed/CI/admission/release wording added.",
+    "Optional tidy-up in those additive checkpoints: note that earlier same-delta 'WSL pending'/'cleanup apply unverified' wording is superseded; do not rewrite the earlier paragraphs.",
+    "Coordinator audits the insertions as additive-only and refreezes the final path set before staging."
+  ],
+  "actual_head_test_reuse_decision": "CPU: 809 Windows and 810 WSL results join the eventual actual head without rerun if all five source hashes match (tests/qt/test_focus_routing_cpu.py 49b7e983, _qt.py 1c68488e, _pyqt6.py 7bd04d76, util/event.py eecbc137, app/canvas.py dd1173d4), other runtime Python members remain unchanged from a69505ce, and the same offscreen PyQt6 environments apply; any mismatch requires a named fresh two-case run per profile. GPU: 806/807 reuse is permitted by exact join of test 83b92823 (blob 77c47570), _qt.py 1c68488e, native 6dc06d2c/5740b28a, wheels 9e4e30cc/a2715d26 and the same profiles, plus an actual-head collection-only check showing exactly the two parametrized cases; no GPU rerun. These remain source-overlay observations, not an a695 full-source or installed run.",
+  "limits": [
+    "CPU tests: offscreen QWidget doubles with production key handlers; renderer init/painting bypassed; native calls forbidden; not real Dawn canvases.",
+    "Controlled QApplication focus and QtTest injection into a fixed host QWindow; no physical HID, OS-wide focus, native display pixels or WSI-presented proof.",
+    "Rendered 806/807: qualified native payload plus one Qt Python overlay; WSL is private Xvfb with software Mesa llvmpipe, not native Linux hardware.",
+    "801 reconciliation closes only API-06-CLEAR-ZERO-INSTALLED and SCI-06-PUBLIC-ROUTES-INSTALLED on runtime 2b8bccd with wheels 9e4e30cc/a2715d26; API-06, SCI-06, LIF-05, LIF-06 parents remain partial; changed-wrapper installed/public release separate; Metal experimental; full VisPy parity not the finish line.",
+    "Negative destruction controls ran on Windows canvases flow only; 809 verification.json control names are argv slices, disambiguated by labeled process/log files."
+  ],
+  "withheld": [
+    "No artifact, profile admission, installed qualification, CI coverage, release or full-parent approval.",
+    "No transfer of 795/796 or any earlier approval; 808 CHANGES_REQUIRED preserved as the prior negative decision.",
+    "Approval does not cover any bytes beyond the exact 15-path delta 86afc518 except the permitted additive metadata follow-up."
+  ],
+  "evidence_checked": [
+    "focus-amendment-peer-review-811: review-packet.json, delta.json, parent-and-preservation-check.json, review-request.txt, semantic.diff lines 1-968, 1370-2689 (all receipts except WSL rendered module list, all four doc hunks, both test diffs)",
+    "Working tree tests/qt/test_focus_routing_cpu.py and tests/qt/test_focus_routing_gpu.py (full; visually match semantic.diff)",
+    "focus-record-peer-review-808: decision.json, coordinator-disposition.json",
+    "focus-teardown-controls-windows-809: verification.json, check.py, old-without-delete.log, new-without-delete.log, selected.xml, cleanup-apply.log, process exits via grep (controller, revised-tests, both controls, cleanup plan/apply)",
+    "focus-teardown-wsl-cpu-810: verification.json, selected.xml, test.log, cleanup-apply.log, process exits via grep (test, outer, cleanup plan/apply)",
+    "build/work glob: no focus-teardown-* or qt-focus-* scratch present",
+    "qt-focus-rendered-wsl-807: merged-runtime-join.json, inputs.json (GPU test hash); 806/807 run directory listings",
+    ".github/workflows grep for tests/qt selectors; cpu-contract.yml lines 84-115; pyproject.toml pytest config",
+    "NOT read: semantic.diff 969-1369; unchanged remainder of both checklists and 2026-11-13 plan; 801 evidence; 806/807 verification/process files beyond join/inputs; 810 launch.py/linux.py/borrowed-inputs/source-origin; hygiene scripts; zip archives; freeze logs",
+    "No hashes independently recomputed (Read/Glob/Grep only)"
+  ],
+  "protected_integration_complete": false,
+  "ci_coverage_claimed": false,
+  "installed_artifact_qualified": false,
+  "public_release_qualified": false
+}

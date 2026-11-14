@@ -1,0 +1,67 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "coverage_ids": [
+    "FIX-04",
+    "API-06",
+    "LIF-06"
+  ],
+  "status": "PASS_FINAL_COMBINED_HEAD_WINDOWS_WSL_CALLBACK_FALLBACK",
+  "commit": "a9b60236c6247aaf4ab9f3d5a61537c0066b8f5c",
+  "tree": "4c27b9c16babf624815c73c50e01fd6cf52ef697",
+  "runtime_source_commit": "2c6096275ccd7c0fd663f59660e4782db6116834",
+  "base": "bff61230a87e9a887700604109cf93e4bbc3199c",
+  "branch": "wip/qt-key-parent-787",
+  "source_files": 49,
+  "profiles": {
+    "windows": {
+      "cases": 49,
+      "cpu_input": 47,
+      "draw_errors": 2,
+      "native_sha256": "6dc06d2c7c67f3de1f24f0aa496fc833afa2bb11fd05990d7e0656e744927473",
+      "source_overrides": 1,
+      "original_members_verified": 537,
+      "unchanged_members_verified": 536,
+      "verification": {
+        "path": "@evidence/build/runs/callback-final-head-windows-798/verification.json",
+        "sha256": "afa15db418d91ecf40f615f138be6cb41bcbed242c9d391c52d8917f8959e4e2"
+      },
+      "head_join": {
+        "path": "@evidence/build/runs/callback-final-head-windows-798/head-join.json",
+        "sha256": "34e299a902454a0dc610a85f09ed1c9603a4d2f4c3c3f5b341ee1eca2e99b584"
+      },
+      "cleanup_reclaimed_bytes": 17902130
+    },
+    "wsl": {
+      "cases": 49,
+      "cpu_input": 47,
+      "draw_errors": 2,
+      "native_sha256": "5740b28ad4dc9024f1a2af21ee3f7dbef15a7e72379c91d0f6e4023716e6a9b2",
+      "source_overrides": 1,
+      "original_members_verified": 537,
+      "unchanged_members_verified": 536,
+      "verification": {
+        "path": "@evidence/build/runs/callback-final-head-wsl-799/verification.json",
+        "sha256": "0629157d984643d5a802ef81df975d458e28baddf00fd79a4e47869d567ca926"
+      },
+      "head_join": {
+        "path": "@evidence/build/runs/callback-final-head-wsl-799/head-join.json",
+        "sha256": "34e299a902454a0dc610a85f09ed1c9603a4d2f4c3c3f5b341ee1eca2e99b584"
+      },
+      "cleanup_reclaimed_bytes": 29872639
+    }
+  },
+  "test_reuse_disposition": "Executed795explicitfallback instead of claiming absent788/789paintscopejoin.47CPUinput+2drawerror tests perprofile at actualfinalhead; paintscope bytes joined but not executed here.",
+  "reviewed_delta_sha256": "e4dff5132f3439c967249b82666d2ed375caba80ff465b148fea9c0ac018067c",
+  "source_freeze": {
+    "path": "@evidence/build/runs/callback-preparation13-final-commit-797/source-freeze.json",
+    "sha256": "ccf4bcb4c1c3d983ede911cc0eeaf4cdae229d5f9e84325ad225a8d019b65329"
+  },
+  "pushed": false,
+  "integrated": false,
+  "ci_coverage_claimed": false,
+  "artifact_admitted": false,
+  "published": false,
+  "evidence_root": "@evidence/build/runs/callback-final-head-wsl-799",
+  "scope": "Actual49file finalsourcehead withreachable2c runtimeparent; conditional795review metadata bound796. CurrentCPU/drawsource acceptance only on originalnative payload plus1QtPythonoverlay; no publicwheel/strictprofile/admission/release claim. Thisreceipt remains outsidefrozen49filecommit."
+}

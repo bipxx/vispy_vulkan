@@ -1,0 +1,157 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "coverage_ids": [
+    "LIF-06",
+    "LIF-06-QT-FOCUS",
+    "LIF-06-QT-FOCUS-SOURCE-TESTS"
+  ],
+  "status": "PASS_TWO_SOURCE_FOCUS_TESTS_WINDOWS_AND_WSL",
+  "test_source": {
+    "path": "tests/qt/test_focus_routing_cpu.py",
+    "sha256": "223d97e4d3f56e5b1a4a817993be63b6d1bd543511d829e25663cd01d176e4b6"
+  },
+  "qt_source_sha256": "1c68488e862cb1d8b573641a16a6894a97ac434f915773f12ce3708cae85a4cc",
+  "profiles": {
+    "windows": {
+      "test_count": 2,
+      "verification": {
+        "path": "@evidence/build/runs/qt-focus-windows-cpu-803/verification.json",
+        "sha256": "6f44ee8d76bb5e9d4da9f5bf0b35a04f8135f0b87a40c8ab021d0caf7524c747"
+      },
+      "input_hashes": {
+        "tests/qt/test_focus_routing_cpu.py": "223d97e4d3f56e5b1a4a817993be63b6d1bd543511d829e25663cd01d176e4b6",
+        "src/vispy/app/backends/_qt.py": "1c68488e862cb1d8b573641a16a6894a97ac434f915773f12ce3708cae85a4cc",
+        "src/vispy/app/backends/_pyqt6.py": "7bd04d76bdd54f670ea124beb8bf2dad78d92dfeb53e9dc26ae2b14776863f6a",
+        "src/vispy/util/event.py": "eecbc1379d85036481762cabc1ac4320a7b340bf7644e3f78ee693a018f252ff",
+        "src/vispy/app/canvas.py": "dd1173d41033a2715f6b5546428089d59737343edf8b374b507bbf1c9db8a929"
+      },
+      "cleanup": {
+        "reclaimed_bytes": 74,
+        "retained_verified": 7,
+        "scratch_absent": true
+      },
+      "platform": "offscreen",
+      "rendered": false
+    },
+    "wsl": {
+      "test_count": 2,
+      "verification": {
+        "path": "@evidence/build/runs/qt-focus-wsl-cpu-804/verification.json",
+        "sha256": "a026d7c9af36b3c9efe50eabb269a5b152795707803207ce3954cf86fb3a5896"
+      },
+      "input_hashes": {
+        "tests/qt/test_focus_routing_cpu.py": "223d97e4d3f56e5b1a4a817993be63b6d1bd543511d829e25663cd01d176e4b6",
+        "src/vispy/app/backends/_qt.py": "1c68488e862cb1d8b573641a16a6894a97ac434f915773f12ce3708cae85a4cc",
+        "src/vispy/app/backends/_pyqt6.py": "7bd04d76bdd54f670ea124beb8bf2dad78d92dfeb53e9dc26ae2b14776863f6a",
+        "src/vispy/util/event.py": "eecbc1379d85036481762cabc1ac4320a7b340bf7644e3f78ee693a018f252ff",
+        "src/vispy/app/canvas.py": "dd1173d41033a2715f6b5546428089d59737343edf8b374b507bbf1c9db8a929"
+      },
+      "cleanup": {
+        "reclaimed_bytes": 70,
+        "retained_verified": 16,
+        "scratch_absent": true
+      },
+      "platform": "offscreen",
+      "rendered": false
+    }
+  },
+  "matching_proofs": [
+    {
+      "flow": "canvases",
+      "focus": [
+        "canvas_a",
+        "canvas_b",
+        "canvas_a"
+      ],
+      "events": [
+        {
+          "target": "canvas_a",
+          "type": "key_press",
+          "key": "<Key 'K'>",
+          "text": "k"
+        },
+        {
+          "target": "canvas_a",
+          "type": "key_release",
+          "key": "<Key 'K'>",
+          "text": "k"
+        },
+        {
+          "target": "canvas_b",
+          "type": "key_press",
+          "key": "<Key 'K'>",
+          "text": "k"
+        },
+        {
+          "target": "canvas_b",
+          "type": "key_release",
+          "key": "<Key 'K'>",
+          "text": "k"
+        },
+        {
+          "target": "canvas_a",
+          "type": "key_press",
+          "key": "<Key 'K'>",
+          "text": "k"
+        },
+        {
+          "target": "canvas_a",
+          "type": "key_release",
+          "key": "<Key 'K'>",
+          "text": "k"
+        }
+      ],
+      "qt_source_sha256": "1c68488e862cb1d8b573641a16a6894a97ac434f915773f12ce3708cae85a4cc",
+      "native_calls": [],
+      "teardown_drained": true
+    },
+    {
+      "flow": "host_entry",
+      "focus": [
+        "canvas_a",
+        "host_entry",
+        "canvas_a"
+      ],
+      "events": [
+        {
+          "target": "canvas_a",
+          "type": "key_press",
+          "key": "<Key 'K'>",
+          "text": "k"
+        },
+        {
+          "target": "canvas_a",
+          "type": "key_release",
+          "key": "<Key 'K'>",
+          "text": "k"
+        },
+        {
+          "target": "canvas_a",
+          "type": "key_press",
+          "key": "<Key 'K'>",
+          "text": "k"
+        },
+        {
+          "target": "canvas_a",
+          "type": "key_release",
+          "key": "<Key 'K'>",
+          "text": "k"
+        }
+      ],
+      "qt_source_sha256": "1c68488e862cb1d8b573641a16a6894a97ac434f915773f12ce3708cae85a4cc",
+      "native_calls": [],
+      "teardown_drained": true
+    }
+  ],
+  "rendered": false,
+  "installed_qualified": false,
+  "integrated": false,
+  "ci_coverage_claimed": false,
+  "evidence_root": "@evidence/build/runs/qt-focus-wsl-cpu-804",
+  "scope": "Two isolated offscreen realQt tests perWindows/WSLhost with production keyhandlers and QWidgetdoubles bypassing native setup/painting. Invariant hostQWindow receives allkeyinjections; actualQtapplicationfocus selectsA/B/A orA/hostentry/A. Exactkey/text/order, peer/hostisolation, sametargetrecovery, deferreddelete and emptyapplicationerrorqueue pass; native calls forbidden andnoneattempted. No realDawncanvas/rendered/installed/physicalHID/nativepresentation/OS-widefocus claim. OutsidefrozenPR81source.",
+  "remaining": [
+    "Two realcanvas rendered cases with exact source/native/profile joins on Windows/WSLX11.",
+    "Independent source/evidence review and protectedintegration of thisnewtest and laterrecordreconciliation."
+  ]
+}
