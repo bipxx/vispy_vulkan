@@ -36,6 +36,38 @@ experimental build/CPU-only support.
 
 ### Ordered closure packets
 
+Packet4 failure/review checkpoint: original646c986d Linux/Metal2jobs pass, but
+CPUcuration omitted the new orphan-contract module. [901](../../../compat/api-acceptance/orphan-release-curated-ci-fix-v1.json)
+reproduces the registry failure, then passes12new protocol cases+registration
+with two test-only edits; full local curated suite stays435pass/1CMake-profile
+failure. [902](../../../compat/api-acceptance/orphan-release-curated-ci-review-v1.json)
+freshly approves diff66e3ffc7, no workflow/pin/runtime/15scope changes. Also
+preserves/audits the full-run Git fixture mistake:2owned fake clones, exact
+bundles and reviewed whole-clone retirement58860bytes, then managed cleanup
+1106368bytes/617files/72retained verified. Original local tool/preflight refusals
+and post-cleanup reporting failure remain distinct from successful child cleanup.
+No901/902scratch remains; no future full local curated run without planned Git
+fixture disposition and compiler profile. Next freeze the reviewed causal fix
+on PR84and require all23corrected-head checks; do not retry old failing head or
+promote old native-job passes to a new whole-head CI pass. All later promotion/
+merge/matrix/strict admission/delivery gates stay open.
+
+
+Packet 4 source freeze complete, required CI active: [899/900](../../../compat/api-acceptance/orphan-release-qualification-source-freeze-v1.json)
+freezes154owned paths at646c986d after exact892allowance audit (145reviewed plus9
+own additions,4metadata changes/3insert-only dated docs). Actual-head847source
+joins include133native/628Metalinputs and both537member release wheels/notices.
+Foreign HEAD/index unchanged;15156947bytes private-index scratch cleaned and357
+retained verified. [PR84](https://github.com/bipxx/vispy_vulkan/pull/84) is open.
+Original workflows43646024484CPU/43646024476Linux/43646024486Metal are live with
+23required jobs (initial16running/7queued), no terminal outcome yet. Observe the
+same handles without redispatch; any real failure needs original logs/reproducer
+and causal triage. No new native producer, renderer or test run locally. After
+exact-head CI, proceed to independent impact/promotion and protected integration/
+matrix/strict admission/distinct delivery. This checkpoint is detached evidence,
+not another qualification-head mutation or CI/admission claim.
+
+
 Packet 3 complete at current subject scope: [896 retention](../../../compat/api-acceptance/orphan-release-preparation15-proof-retention-v1.json)
 passes1324contributing inputs, original32receipts/5strict attempts and exact15
 native/archive declarations. [895 failed collector](../../../compat/api-acceptance/orphan-release-preparation15-retention-failure-v1.json)

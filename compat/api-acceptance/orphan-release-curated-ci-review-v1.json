@@ -1,0 +1,100 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "status": "APPROVED_EXACT_TWO_TEST_CURATION_AND_OWNED_FIXTURE_RETIREMENT_ONLY",
+  "review_packet_sha256": "e19c28dc28f334634af560244608b912a2ae7be92ff26f7951ba6022ac016e61",
+  "source_diff_sha256": "66e3ffc775195612226603748b8bf3c632de2dda70205ad893883755c18fb3a2",
+  "source_inputs": {
+    "tests/contract/curated_contracts.py": "db37cb78f3366fada7e49ea1cb63063b833e06f4f27c897ee15e16831986460e",
+    "tests/contract/test_dawn_orphan_retirement_contract.py": "7139aff83501328662783478d89a6ffe62217f87b8c7bf3d82492e95669ee24a"
+  },
+  "fixture_plan_sha256": "5eb0fc97250191dd16dc877d184a420286cf07a70b9070bb4aef58723f5480a2",
+  "fixture_apply_sha256": "895ba2786a95a7778c2fecc53c56657d4cd79c769877b3300fa915d0e0075832",
+  "findings": [
+    {
+      "id": "F1",
+      "severity": "info",
+      "ref": "tests/contract/curated_contracts.py:13-25,40-45,48-53",
+      "text": "The fix is correct and minimal. The module is added to MODULES as the docstring at lines 4-6 requires. NOT_IN_CI and every assertion are unchanged. No workflow names tests/contract/test_dawn_orphan_retirement_contract.py, so the module runs once through the existing curated entry (cpu-contract.yml:96). Line 52 enforces that it is never also named directly. No YAML or pin change is needed."
+    },
+    {
+      "id": "F2",
+      "severity": "info",
+      "ref": "tests/contract/test_dawn_orphan_retirement_contract.py:111",
+      "text": "`__all__ = [name for name in globals() if name.startswith('test_')]` is safe on CPython 3.10-3.14. globals() returns the module namespace even inside a comprehension that is not inlined (3.10/3.11), unlike dir()/locals(). It exports the 8 test functions (12 cases with parametrization) and not the helper native_module. The parametrize marks stay on the function objects and monkeypatch still resolves when the functions are re-exported. Grep found no other definitions of these 8 names under tests/, and the import guard in curated_contracts.py at line 43 would raise ImportError on any shadowing."
+    },
+    {
+      "id": "F3",
+      "severity": "low",
+      "ref": "src/vispy/gloo/dawn_parser.py imports (operator, numpy, .glir); test module lines 11-27",
+      "text": "The test imports nothing native at module level and uses a mocked vispy._dawn, so it should work in the 20 CPU jobs. It has not run on hosted runners yet. The local pass is Windows-only, so the full 23-job CI on the corrected head is still the gate."
+    },
+    {
+      "id": "F4",
+      "severity": "info",
+      "ref": "run901 green.xml (tests=436 failures=1 errors=0 skipped=0)",
+      "text": "The totals match the reported 435 pass / 1 fail. The remaining failure, test_upload_cache_shutdown, was reported as cmake not on PATH; I did not read the green log. This must not be relabelled a full-suite pass."
+    },
+    {
+      "id": "F5",
+      "severity": "medium",
+      "ref": "tests/contract/test_publication_drift.py:22-29; tools/build_hygiene.py:199",
+      "text": "Process gap, not a source defect in this diff: published_and_local runs `git init`/commit under tmp_path. Any future full curated run whose pytest basetemp is inside build/work will create .git clones again and block managed cleanup. Before the next local full-curated run, plan for these two fixtures up front or choose a reviewed basetemp disposition. Do not weaken the guard. Changing the producer is outside the approved scope."
+    },
+    {
+      "id": "F6",
+      "severity": "info",
+      "ref": "run901 fixture-retirement-plan.json; Glob **/.git/HEAD under build/work/orphan-release-curated-ci-fix-901",
+      "text": "Ownership is confirmed. Exactly two .git roots exist, both at <pytest case>/clone made by the producer at lines 23-29. Status and remotes are empty. Both bundle-verify texts record a complete one-commit history at the planned heads (8b289c10\u2026, 88f8f394\u2026). The plan inventories every file and directory, including the empty objects/info, objects/pack and refs/tags."
+    },
+    {
+      "id": "F7",
+      "severity": "low",
+      "ref": "run901 retire_fixtures.py:8-32",
+      "text": "The apply gates are adequate. It requires an APPROVE decision whose hashes equal the plan and script, matches the registry hash, checks the owner marker and the exact root set, and runs clean_target (no .git ancestor of the clone root; no overlap with protected or blocked paths). It then re-checks every file and directory for exact membership, identity, mtime, size, sha, nlink==1 and no_alias (which refuses reparse points), plus the bundle hashes. Only after that does Remove-Item -LiteralPath run, behind a canonical-path guard. Remaining risks: (a) there is a small time-of-check/time-of-use window before Remove-Item; (b) the bundles are checked by hash only and not re-verified with git; (c) Windows PowerShell 5.1's Remove-Item -Recurse has a history of trouble with junctions. The per-entry reparse check just before deletion mitigates (c), and all of these are acceptable for owned, current-run scratch. The script writes its log with mode 'xb' and records the actual exit and wait. The pytest case parent directories stay in place for the ordinary managed cleanup."
+    },
+    {
+      "id": "F8",
+      "severity": "info",
+      "ref": "run901 cleanup-plan.log; recovery-review-context.json",
+      "text": "The original refusal ('.git content is not disposable scratch', deleted 0) is a local verifier refusal, not an automatic-review rejection, so this targeted retirement is not a forbidden retry. That refusal record and the 902 preflight refusal must stay immutable. A new terminal manifest and a new ordinary managed cleanup plan for the rest of run 901 must follow, as proposed."
+    }
+  ],
+  "unread_evidence": [
+    "902: review.py, hygiene.py, inputs.json, review-request.txt, storage-observation.json, preflight.log/process, spawn.json, review-events.jsonl, review-stderr.log, empty-mcp.json",
+    "901: run.py, red/green logs and process files, red.xml, verification.json, before-hashes.json, frozen-preparation.json, original-two-tests-and-licenses.zip, original-source-processes.json, fixture-audit-processes.json, the drift/directories head/tree/refs/count/tracked/top/bundle texts (only the bundle-verify, drift-status and directories-remotes texts were read), the bundle binaries, preflight files",
+    "registry-preparation10-successor-613.json contents; compat/build-hygiene.json; docs/build-hygiene.md",
+    "the full omitted workflow lines (only the test paths were extracted); the other 3 workflows apart from the grep; the hosted PR84 job logs; the 628 Metal and 133 native input lists; the 11 preparation and 15 JSON hashes",
+    "No tests, hashes or git commands were run by this reviewer; every hash above is from the coordinator's packet"
+  ],
+  "allowed_followup": [
+    "Commit only these two test files (exact hashes above) as a new causal PR84 commit, plus additive own evidence and bounded dated docs/coverage-checklist entries. No runtime, native, workflow, pin, preparation, validator or scope edits. The final source freeze must show every other one of the 899 blobs unchanged.",
+    "Run all 23 required hosted jobs on the corrected head. Reuse native artifacts and the current 15 only after the unchanged validators pass. Preserve and review any real failure of a changed input or validator.",
+    "Write decision.json with these exact hashes, then run retire_fixtures.py once. Retain its log, process file and result, and the actual exit and wait. If it fails, do not retry with altered gates or another path; preserve the failure and bring it back for review.",
+    "Then issue a new terminal retention manifest that references the original refusal, both bundles and the retirement result. Then generate, inspect and apply a new ordinary managed cleanup plan for the remaining run 901 scratch, and report the result.",
+    "Before any future local full-curated run, settle the publication-drift Git fixture disposition (F5) up front.",
+    "This approval grants no release, matrix, promotion or admission, and no physical-GPU, HID or full-parity claim. The Metal build remains CPU-only scope."
+  ],
+  "reviewer_models": [
+    "claude-opus-5-5"
+  ],
+  "actual_exit": 0,
+  "child_waited": true,
+  "new902scratch_created": false,
+  "review_used_existing901_lease": true,
+  "preflight902_refusal_preserved": true,
+  "artifact_admitted": false,
+  "scope": "Exact2test fix and producer-specific retirement only. Original local full-suite1failure and managed/preflight refusals preserved. All23hosted jobs on corrected head remain required;no source/native/CI/pin/preparation/validator scope widened.",
+  "decision": {
+    "path": "@evidence/build/runs/orphan-release-curated-fix-review-902/decision.json",
+    "sha256": "6784fe8ea5ee056a15d95b6b6362dd55fe4c1c369fdb2b3e2a56c909685a6147"
+  },
+  "raw_review": {
+    "path": "@evidence/build/runs/orphan-release-curated-fix-review-902/review-response.json",
+    "sha256": "b3b82b6818099aad69af80ba8e30331f25c4668a46091f66bbce3087d16918d5"
+  },
+  "recovery_cleanup": {
+    "path": "@evidence/build/runs/orphan-release-curated-ci-fix-901/cleanup-result.json",
+    "sha256": "adda16ce3c67de2e39d67eb63a21d5fa65e998762446fb9940bb11fbf1dbbe79"
+  }
+}

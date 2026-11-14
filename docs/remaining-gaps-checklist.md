@@ -2,6 +2,51 @@
 
 ## Latest checkpoint — 2026-11-14
 
+**CPU curation gap reproduced and fix reviewed — 2026-11-14:**
+Original PR84/head646c986d Linux and both Metal jobs pass; CPU jobs fail at the
+curated scientific-contract step. The retained Linux CP310log identifies missing
+registration of test_dawn_orphan_retirement_contract. [901](../compat/api-acceptance/orphan-release-curated-ci-fix-v1.json)
+reproduces it before the fix. Two test-only edits add that module to MODULES and
+export its8functions/12parametrized cases through __all__; no exemption or
+assertion change. All12new cases and registration pass locally; full curated
+run remains435pass/1failure because this shell lacks the existing CMake profile.
+[902](../compat/api-acceptance/orphan-release-curated-ci-review-v1.json) freshly
+approves exact source diff66e3ffc7 plus audited fixture cleanup, with reviewer
+limits explicit. All11preparation15JSONs and runtime/native/workflow/pin/validator
+inputs remain unchanged, so no successor preparation or renderer rebuild.
+The broad local run created2one-commit/no-remote publication test clones, which
+correctly blocked managed cleanup. Original refusal and902structural preflight
+refusal remain; read-only recovery review used the existing901lease. Verified
+bundles/exact approved whole-clone retirement remove58860bytes; successor ordinary
+managed cleanup removes1106368bytes/617files and verifies72retained inputs.
+A post-cleanup wrapper print fails separately; actual cleanup child exits0/waits
+and scratch is absent, with no cleanup rerun. See the dated hygiene note before
+any future full local curated run. TOOL-01/04,FIX-04/06 and API-06 advance at
+reviewed test-integration scope only. Next causal corrected PR84head freeze and
+all23required hosted checks, then impact/promotion/protected integration/admission/
+delivery. Original CPU failure and local full-suite failure are not relabeled.
+
+
+**Qualification source frozen and PR84 CI started — 2026-11-14:**
+[899/900](../compat/api-acceptance/orphan-release-qualification-source-freeze-v1.json)
+freezes reviewed145paths plus9permitted own review/evidence additions as154files,
+qualification head646c986dc67289beaeae46bd4d8af3e114d316f3/tree75193706,
+baseactualmain7209f119. Only approved4metadata changes/3insert-only dated docs
+changed after892review;488historical candidates unchanged. Actual Git blobs join
+847source files,133native/628Metalinputs and both exact537member Windows4f/
+Linuxdfe release wheels, including510pure members and original notices. No tests,
+renderer, SDK or wheel rebuilt. Foreign HEAD/index unchanged. Private-index
+scratch cleaned15156947bytes/357retained verified. [PR84](https://github.com/bipxx/vispy_vulkan/pull/84)
+opens after verified normal push; connector403integration refusal is retained,
+existing authorized CLI fallback succeeds. Original required runs43646024484CPU,
+43646024476Linux and43646024486Metal contain23jobs: initial snapshot16running/
+7queued, none complete. Observe these same handles; do not redispatch on delay.
+TOOL-01/04,FIX-04/06,API-06,PLAT-04/08 advance at exact-source/content-join scope;
+CI/impact/promotion/protected integration/matrix/strict admission/delivery remain
+open. No release/Metalgraphics/full-parity admission. This dated checkpoint is
+detached progress evidence; frozen qualification commit remains646c986d.
+
+
 **Reviewed15 current retention and exact subject pass — 2026-11-14:**
 [895 failure](../compat/api-acceptance/orphan-release-preparation15-retention-failure-v1.json)
 remains failed: an untyped collector treated an upstream-manifest member path as

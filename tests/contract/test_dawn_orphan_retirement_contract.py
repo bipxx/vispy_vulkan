@@ -106,3 +106,6 @@ def test_retirement_failure_does_not_replace_original_execution_error(monkeypatc
     with pytest.raises(RuntimeError, match='missing canvas 0') as caught:
         DawnGlirParser().parse([('DELETE', 9)])
     assert isinstance(caught.value.__cause__, ValueError)
+
+
+__all__ = [name for name in globals() if name.startswith('test_')]

@@ -91,6 +91,22 @@ unchanged native-provenance verifier; its original D: bytes remain retained.
 Scratch stays under the shared D: root and budget. These protected source and
 dependency origins are not adopted as scratch or relocated.
 
+## Local curated contract runs — 2026-11-14
+
+The full `tests/contract/curated_contracts.py` entry includes
+`test_publication_drift.py`, whose `tmp_path` fixtures create Git repositories.
+It also includes a cache contract requiring the existing CMake/compiler profile.
+A blanket local `--basetemp build/work/<run>/...` therefore conflicts with the
+no-Git-in-scratch rule even when the relevant source-only cases pass.
+
+Use the existing hosted CI entry for the complete compiler-backed suite. For a
+local diagnosis, select the relevant source-only nodes and keep the full-suite
+requirement separate. Before another full local curated campaign, establish a
+reviewed fixture-storage/retirement design and the required compiler profile;
+do not discover Git fixture ownership at terminal cleanup or weaken `.git`,
+alias, protected-path or blocked-path guards. The 901 failure, 902 review and
+exact owned-fixture recovery are recorded in the live coverage checklist.
+
 ## Required lifecycle
 
 1. Reuse an existing artifact when native inputs and configuration match. Before
