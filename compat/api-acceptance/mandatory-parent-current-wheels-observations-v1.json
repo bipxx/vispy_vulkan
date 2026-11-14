@@ -1,0 +1,396 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "PASS_EIGHT_CURRENT_PARENT_WHEEL_OBSERVATIONS_ADMISSION_PENDING",
+  "source_commit": "2b8bccd0ac886f771c3e37255a3d5559c254b3cd",
+  "rows": [
+    {
+      "row": "windows-vulkan-qwidget-pyqt6",
+      "platform": "windows",
+      "binding": "pyqt6",
+      "packet": {
+        "path": "compat/api-acceptance/mandatory-parent-windows-pyqt6-v1.json",
+        "sha256": "af6b28044d48f58e22d92584a2d9880ab0288f086ad961fadc8dc674143b5715"
+      },
+      "wheel": {
+        "path": "build/artifacts/9e4e30cc50d49a759ea42cd7915cc2544a42d2af869d505e3ef5290d47617286/vispy-0.17.0+vulkan.2-cp312-cp312-win_amd64.whl",
+        "sha256": "9e4e30cc50d49a759ea42cd7915cc2544a42d2af869d505e3ef5290d47617286"
+      },
+      "report": {
+        "path": "@evidence/build/runs/mandatory-parent-windows-pyqt6-685/replay-0.json",
+        "sha256": "de6f1688977a80a962fdb80d336587397de7eca8bf07de30d2acad66763f77e8"
+      },
+      "worker": {
+        "path": "@evidence/build/runs/mandatory-parent-windows-pyqt6-685/replay-0.worker.json",
+        "sha256": "3779cd042bacb10605afd6ffe2f6b123ff44860d4786baed3e158b9d95220ed3"
+      },
+      "receipt": {
+        "path": "@evidence/build/runs/mandatory-parent-windows-pyqt6-685/receipt-0.json",
+        "sha256": "82bcb76aa7e4b5a752e32851308c05540e3b0d303f7f946c59d601b88d9f2f8e"
+      },
+      "functional_result": {
+        "path": "@evidence/build/runs/mandatory-parent-windows-pyqt6-685/replay-0-features/functional.json",
+        "sha256": "20eec171dabc20868e2ad19daee64aa01ce1dc85fb0f4f396bdc706a13d76396"
+      },
+      "environment_id": "347d1db6e1068cfebade6245627718414da814e06880ef57aca3247177161911",
+      "cleanup": {
+        "path": "@evidence/build/runs/mandatory-parent-windows-pyqt6-685/cleanup-result.json",
+        "sha256": "d0520221430ede5f947b1a33941f754bbecf3d37157fe62e79bf3eca86354d54"
+      },
+      "reclaimed_bytes": 129752954
+    },
+    {
+      "row": "windows-vulkan-qwidget-pyqt5",
+      "platform": "windows",
+      "binding": "pyqt5",
+      "packet": {
+        "path": "compat/api-acceptance/mandatory-parent-windows-pyqt5-v1.json",
+        "sha256": "a552653d7edef0eafb233d25ff84f59a7d1b869b4d369bcb644714470d6bd7cc"
+      },
+      "wheel": {
+        "path": "build/artifacts/9e4e30cc50d49a759ea42cd7915cc2544a42d2af869d505e3ef5290d47617286/vispy-0.17.0+vulkan.2-cp312-cp312-win_amd64.whl",
+        "sha256": "9e4e30cc50d49a759ea42cd7915cc2544a42d2af869d505e3ef5290d47617286"
+      },
+      "report": {
+        "path": "@evidence/build/runs/mandatory-parent-windows-pyqt5-686/replay-0.json",
+        "sha256": "8bde1e18471984e1a36f4770df8625c21ed7c23dc285ac8fcb1dfa7add362a3f"
+      },
+      "worker": {
+        "path": "@evidence/build/runs/mandatory-parent-windows-pyqt5-686/replay-0.worker.json",
+        "sha256": "d4e5dd3400eabb7207d38d0c6cfd4d2196de5ecdfc74179720d353f3aa597e83"
+      },
+      "receipt": {
+        "path": "@evidence/build/runs/mandatory-parent-windows-pyqt5-686/receipt-0.json",
+        "sha256": "34a7f253516e02bb8aedfb10ce17142ca2faf6cae95074e1a9e230a67e08a40c"
+      },
+      "functional_result": {
+        "path": "@evidence/build/runs/mandatory-parent-windows-pyqt5-686/replay-0-features/functional.json",
+        "sha256": "e86083289be60a866b117ec1d18313994baa148f65bf4760c17c14e861cc928c"
+      },
+      "environment_id": "4476a4646b460fd7259a0e7ec16a443e44cb7a58380e69780a21cec552202a96",
+      "cleanup": {
+        "path": "@evidence/build/runs/mandatory-parent-windows-pyqt5-686/cleanup-result.json",
+        "sha256": "94a6595189b08e87eb32bd29f581d88cc18d897c80cdec1d9b4cfe1062b2814a"
+      },
+      "reclaimed_bytes": 113809395
+    },
+    {
+      "row": "windows-vulkan-qwidget-pyside6",
+      "platform": "windows",
+      "binding": "pyside6",
+      "packet": {
+        "path": "compat/api-acceptance/mandatory-parent-windows-pyside6-v1.json",
+        "sha256": "dfd2074a028a62ce0e6b0381b3b4c765b708c31ff9a2d0cc6a36ee88888dab50"
+      },
+      "wheel": {
+        "path": "build/artifacts/9e4e30cc50d49a759ea42cd7915cc2544a42d2af869d505e3ef5290d47617286/vispy-0.17.0+vulkan.2-cp312-cp312-win_amd64.whl",
+        "sha256": "9e4e30cc50d49a759ea42cd7915cc2544a42d2af869d505e3ef5290d47617286"
+      },
+      "report": {
+        "path": "@evidence/build/runs/mandatory-parent-windows-pyside6-687/replay-0.json",
+        "sha256": "5e14d69be51e0c4293f4c789ad36b28f52940dd9509c7d7ad29eae381771e908"
+      },
+      "worker": {
+        "path": "@evidence/build/runs/mandatory-parent-windows-pyside6-687/replay-0.worker.json",
+        "sha256": "2af96562ea8731c41f858830c67c1381ea4cb12a3223a16af3b3846ebc62c326"
+      },
+      "receipt": {
+        "path": "@evidence/build/runs/mandatory-parent-windows-pyside6-687/receipt-0.json",
+        "sha256": "b12159d1c8a0c2c3fe09e986120aad45937326e4f6a1a3b3dc6fe85dc803908e"
+      },
+      "functional_result": {
+        "path": "@evidence/build/runs/mandatory-parent-windows-pyside6-687/replay-0-features/functional.json",
+        "sha256": "b339bfc4c8e909a03fe20d00aa70b075eba04c5b0ebb1a2cf3b0b18f0d6e9e4e"
+      },
+      "environment_id": "f5b1216fe43714ce5965c08ff930c7f2c29b87254088b12515d4f5ca55af3b48",
+      "cleanup": {
+        "path": "@evidence/build/runs/mandatory-parent-windows-pyside6-687/cleanup-result.json",
+        "sha256": "8c6d97a68df44baca9e37b2e9d148c06a36c9ac03960482cabec9675f9213fcb"
+      },
+      "reclaimed_bytes": 134946948
+    },
+    {
+      "row": "windows-vulkan-headless",
+      "platform": "windows",
+      "binding": "headless",
+      "packet": {
+        "path": "compat/api-acceptance/mandatory-parent-windows-headless-v1.json",
+        "sha256": "126661eec260c1010748f8f740b9b5ba993a6525b32925202113da8600d35f21"
+      },
+      "wheel": {
+        "path": "build/artifacts/9e4e30cc50d49a759ea42cd7915cc2544a42d2af869d505e3ef5290d47617286/vispy-0.17.0+vulkan.2-cp312-cp312-win_amd64.whl",
+        "sha256": "9e4e30cc50d49a759ea42cd7915cc2544a42d2af869d505e3ef5290d47617286"
+      },
+      "report": {
+        "path": "@evidence/build/runs/mandatory-parent-windows-headless-688/replay-1.json",
+        "sha256": "a1eec854d4d2a835d6caec9ff64136185f2efd1344d5bf2d49058b9e1529955c"
+      },
+      "worker": {
+        "path": "@evidence/build/runs/mandatory-parent-windows-headless-688/replay-1.worker.json",
+        "sha256": "ac43c2cc6c0c676f550aa15689c823c9bd2b4557968396e451bb1b7c251d453e"
+      },
+      "receipt": {
+        "path": "@evidence/build/runs/mandatory-parent-windows-headless-688/receipt-1.json",
+        "sha256": "3cb6700c59840f8c8cd0df5be8b864822999bfe464b0fb6ade71fb560a88f982"
+      },
+      "functional_result": {
+        "path": "@evidence/build/runs/mandatory-parent-windows-headless-688/replay-1-features/result1.json",
+        "sha256": "0717733ad8257804f7f480dd88c9ffebcfdb48d318590cbf5160ef7fced7a0d1"
+      },
+      "environment_id": "10e7b1b193a401a57ad5a7090a712b0293eb24d7eb88ff0f08dc7c0a045e953f",
+      "cleanup": {
+        "path": "@evidence/build/runs/mandatory-parent-windows-headless-688/cleanup-result.json",
+        "sha256": "abb057a99888dca5a5322d014c4822f720aac146de53e7ad2fe6a6197cb774fd"
+      },
+      "reclaimed_bytes": 69192235
+    },
+    {
+      "row": "wsl-linux-lavapipe-x11-qwidget-pyqt6",
+      "platform": "wsl",
+      "binding": "pyqt6",
+      "packet": {
+        "path": "compat/api-acceptance/mandatory-parent-wsl-pyqt6-v1.json",
+        "sha256": "cbc7a73cd73cf8158ab33da92d2175e606060fb606c368a573e4084c19de77e8"
+      },
+      "wheel": {
+        "path": "build/artifacts/a2715d2659f0caf8c01d430c34ba1dc2d5f9b520b6c36ce85a0c75328556fe56/vispy-0.17.0+vulkan.2-cp312-cp312-manylinux_2_39_x86_64.whl",
+        "sha256": "a2715d2659f0caf8c01d430c34ba1dc2d5f9b520b6c36ce85a0c75328556fe56"
+      },
+      "report": {
+        "path": "@evidence/build/runs/mandatory-parent-wsl-pyqt6-689/reports/replay-0.json",
+        "sha256": "5f3f640bdafd2a75e9b11a74b434f2dd4c44bb42ac7f0e6093d89dc89422e86b"
+      },
+      "worker": {
+        "path": "@evidence/build/runs/mandatory-parent-wsl-pyqt6-689/reports/replay-0.worker.json",
+        "sha256": "18a93333369f08d50a87a92c0eb80a56a819677653e525ea0e13f86c7850494f"
+      },
+      "receipt": {
+        "path": "@evidence/build/runs/mandatory-parent-wsl-pyqt6-689/reports/receipt-0.json",
+        "sha256": "a3ecbc9991b26ba95d67ff8c96498c3d2faca708adbd8e715d95d619ccd47919"
+      },
+      "functional_result": {
+        "path": "@evidence/build/runs/mandatory-parent-wsl-pyqt6-689/reports/replay-0-features/functional.json",
+        "sha256": "4312daa3e1d9544c201e532c0580f6911f80d4b6302e075408e7d0a19de3520f"
+      },
+      "environment_id": "9759484092e5fe93dacdfff0c8b9fbc6d6804c0de33a8c20ddf6c31c8c8c99b2",
+      "cleanup": {
+        "path": "@evidence/build/runs/mandatory-parent-wsl-pyqt6-689/cleanup-result.json",
+        "sha256": "daaa9bbfb2d0b2c61b19b203edbefda5c852dbdceecda51f88df45b82a611485"
+      },
+      "reclaimed_bytes": 92589426
+    },
+    {
+      "row": "wsl-linux-lavapipe-x11-qwidget-pyqt5",
+      "platform": "wsl",
+      "binding": "pyqt5",
+      "packet": {
+        "path": "compat/api-acceptance/mandatory-parent-wsl-pyqt5-v1.json",
+        "sha256": "6cfb7c1ab1d8fe0d521727c2899270a78099772cfa92ba0f6f5f83edfa187e7c"
+      },
+      "wheel": {
+        "path": "build/artifacts/a2715d2659f0caf8c01d430c34ba1dc2d5f9b520b6c36ce85a0c75328556fe56/vispy-0.17.0+vulkan.2-cp312-cp312-manylinux_2_39_x86_64.whl",
+        "sha256": "a2715d2659f0caf8c01d430c34ba1dc2d5f9b520b6c36ce85a0c75328556fe56"
+      },
+      "report": {
+        "path": "@evidence/build/runs/mandatory-parent-wsl-pyqt5-690/reports/replay-0.json",
+        "sha256": "e7ff2a9c79b0d2e5aeb3296c552fe752e801bf890baf2d358fb27d980b4b2aec"
+      },
+      "worker": {
+        "path": "@evidence/build/runs/mandatory-parent-wsl-pyqt5-690/reports/replay-0.worker.json",
+        "sha256": "82264eed9d54aa2f61124234191ceb4d2a440f47efa7235c01b59a85710b65ad"
+      },
+      "receipt": {
+        "path": "@evidence/build/runs/mandatory-parent-wsl-pyqt5-690/reports/receipt-0.json",
+        "sha256": "c7ed334ae0263f074775fd5895dc31cc7e10be68f21843b6a0186ed20e4c3181"
+      },
+      "functional_result": {
+        "path": "@evidence/build/runs/mandatory-parent-wsl-pyqt5-690/reports/replay-0-features/functional.json",
+        "sha256": "c80ae0a8e71be27afacdaadf3687f4fa4267b3e81ef50b3daa2f091d9041a30a"
+      },
+      "environment_id": "d03c0f8c2959f7185a10d9eb33b9bec80664e2ad6ac34411a5645cc65d2916f6",
+      "cleanup": {
+        "path": "@evidence/build/runs/mandatory-parent-wsl-pyqt5-690/cleanup-result.json",
+        "sha256": "66c2c63ecdf780e4b5ed6d2fff578b0320a0c76d05fcaf981e1bd1726f747331"
+      },
+      "reclaimed_bytes": 92589426
+    },
+    {
+      "row": "wsl-linux-lavapipe-x11-qwidget-pyside6",
+      "platform": "wsl",
+      "binding": "pyside6",
+      "packet": {
+        "path": "compat/api-acceptance/mandatory-parent-wsl-pyside6-v1.json",
+        "sha256": "a9033746a445087e1e6fb1bf5fda66a4b723456f8412c465bd2c81f922776e51"
+      },
+      "wheel": {
+        "path": "build/artifacts/a2715d2659f0caf8c01d430c34ba1dc2d5f9b520b6c36ce85a0c75328556fe56/vispy-0.17.0+vulkan.2-cp312-cp312-manylinux_2_39_x86_64.whl",
+        "sha256": "a2715d2659f0caf8c01d430c34ba1dc2d5f9b520b6c36ce85a0c75328556fe56"
+      },
+      "report": {
+        "path": "@evidence/build/runs/mandatory-parent-wsl-pyside6-691/reports/replay-0.json",
+        "sha256": "cdd32d2fd948ae91fe8902b9c10721ab13a7329a8fdd85a6a5da48e323310617"
+      },
+      "worker": {
+        "path": "@evidence/build/runs/mandatory-parent-wsl-pyside6-691/reports/replay-0.worker.json",
+        "sha256": "991609b0104172032272d9900f7ef2882133f3f205f2846eb8c61dc7f8011de6"
+      },
+      "receipt": {
+        "path": "@evidence/build/runs/mandatory-parent-wsl-pyside6-691/reports/receipt-0.json",
+        "sha256": "52f93fda54fcfc036c5234b0cb82c9fa8d53f9964e67dd16c0b70cd53ad491eb"
+      },
+      "functional_result": {
+        "path": "@evidence/build/runs/mandatory-parent-wsl-pyside6-691/reports/replay-0-features/functional.json",
+        "sha256": "5a652cd985a7657813c966e4425a122d94536a30a5bb651cb13fafd010e9de02"
+      },
+      "environment_id": "6deb0cadfae3663662f06e233f64e44fbc448e791e582084374ca9522a1ce535",
+      "cleanup": {
+        "path": "@evidence/build/runs/mandatory-parent-wsl-pyside6-691/cleanup-result.json",
+        "sha256": "67bdd4fe30eaf9e639638af4164b90bc812eb7bd51620ba7b9542336eb943228"
+      },
+      "reclaimed_bytes": 92589428
+    },
+    {
+      "row": "wsl-linux-lavapipe-x11-headless",
+      "platform": "wsl",
+      "binding": "headless",
+      "packet": {
+        "path": "compat/api-acceptance/mandatory-parent-wsl-headless-v1.json",
+        "sha256": "d1c6f1db7a572385e1cd66db6e7360f6928571c9afafd6cc94409933a156ed0a"
+      },
+      "wheel": {
+        "path": "build/artifacts/a2715d2659f0caf8c01d430c34ba1dc2d5f9b520b6c36ce85a0c75328556fe56/vispy-0.17.0+vulkan.2-cp312-cp312-manylinux_2_39_x86_64.whl",
+        "sha256": "a2715d2659f0caf8c01d430c34ba1dc2d5f9b520b6c36ce85a0c75328556fe56"
+      },
+      "report": {
+        "path": "@evidence/build/runs/mandatory-parent-wsl-headless-692/reports/replay-0.json",
+        "sha256": "e980789678a4969ec401730e8e64d731efc49197fc385ee378ed348618c43cee"
+      },
+      "worker": {
+        "path": "@evidence/build/runs/mandatory-parent-wsl-headless-692/reports/replay-0.worker.json",
+        "sha256": "0219d7186f25b855c9c51540b14e68178e86e67088247ca44cfddd0f8da9fdf6"
+      },
+      "receipt": {
+        "path": "@evidence/build/runs/mandatory-parent-wsl-headless-692/reports/receipt-0.json",
+        "sha256": "6c180f547ddfa561efc114fbd2004448ea0eb9bb0e563935ad6d78a9fce56c8b"
+      },
+      "functional_result": {
+        "path": "@evidence/build/runs/mandatory-parent-wsl-headless-692/reports/replay-0-features/result1.json",
+        "sha256": "5c7e7359017d0cb925a5b5c6fa61b8bd19918f3245ba391910598d0418febc83"
+      },
+      "environment_id": "fac83191e6d45061c7f8a02287cea092b0120e4b91fcc07d8b7311fcdce771a9",
+      "cleanup": {
+        "path": "@evidence/build/runs/mandatory-parent-wsl-headless-692/cleanup-result.json",
+        "sha256": "4e5e8e0732aab51914a5a8987b406222a99ea74d63d0d1e3f2846fe8778cc004"
+      },
+      "reclaimed_bytes": 92589429
+    }
+  ],
+  "strict_attempt_inventory": [
+    {
+      "row": "windows-vulkan-qwidget-pyqt6",
+      "report": {
+        "path": "@evidence/build/runs/mandatory-parent-windows-pyqt6-685/replay-0.json",
+        "sha256": "de6f1688977a80a962fdb80d336587397de7eca8bf07de30d2acad66763f77e8"
+      },
+      "status": "PASS_ALL_NO_OPENGL_GATES",
+      "process_exit": 0,
+      "child_waited": true
+    },
+    {
+      "row": "windows-vulkan-qwidget-pyqt5",
+      "report": {
+        "path": "@evidence/build/runs/mandatory-parent-windows-pyqt5-686/replay-0.json",
+        "sha256": "8bde1e18471984e1a36f4770df8625c21ed7c23dc285ac8fcb1dfa7add362a3f"
+      },
+      "status": "PASS_ALL_NO_OPENGL_GATES",
+      "process_exit": 0,
+      "child_waited": true
+    },
+    {
+      "row": "windows-vulkan-qwidget-pyside6",
+      "report": {
+        "path": "@evidence/build/runs/mandatory-parent-windows-pyside6-687/replay-0.json",
+        "sha256": "5e14d69be51e0c4293f4c789ad36b28f52940dd9509c7d7ad29eae381771e908"
+      },
+      "status": "PASS_ALL_NO_OPENGL_GATES",
+      "process_exit": 0,
+      "child_waited": true
+    },
+    {
+      "row": "windows-vulkan-headless",
+      "report": {
+        "path": "@evidence/build/runs/mandatory-parent-windows-headless-688/replay-0.json",
+        "sha256": "beaad75d711e7dd55e8c27a5fd779ede8ab7a6cf27c0e81aca3b811840f5d81e"
+      },
+      "status": "UNVERIFIED",
+      "process_exit": 0,
+      "child_waited": true
+    },
+    {
+      "row": "windows-vulkan-headless",
+      "report": {
+        "path": "@evidence/build/runs/mandatory-parent-windows-headless-688/replay-1.json",
+        "sha256": "a1eec854d4d2a835d6caec9ff64136185f2efd1344d5bf2d49058b9e1529955c"
+      },
+      "status": "PASS_ALL_NO_OPENGL_GATES",
+      "process_exit": 0,
+      "child_waited": true
+    },
+    {
+      "row": "wsl-linux-lavapipe-x11-qwidget-pyqt6",
+      "report": {
+        "path": "@evidence/build/runs/mandatory-parent-wsl-pyqt6-689/reports/replay-0.json",
+        "sha256": "5f3f640bdafd2a75e9b11a74b434f2dd4c44bb42ac7f0e6093d89dc89422e86b"
+      },
+      "status": "PASS_ALL_NO_OPENGL_GATES",
+      "process_exit": 0,
+      "child_waited": true
+    },
+    {
+      "row": "wsl-linux-lavapipe-x11-qwidget-pyqt5",
+      "report": {
+        "path": "@evidence/build/runs/mandatory-parent-wsl-pyqt5-690/reports/replay-0.json",
+        "sha256": "e7ff2a9c79b0d2e5aeb3296c552fe752e801bf890baf2d358fb27d980b4b2aec"
+      },
+      "status": "PASS_ALL_NO_OPENGL_GATES",
+      "process_exit": 0,
+      "child_waited": true
+    },
+    {
+      "row": "wsl-linux-lavapipe-x11-qwidget-pyside6",
+      "report": {
+        "path": "@evidence/build/runs/mandatory-parent-wsl-pyside6-691/reports/replay-0.json",
+        "sha256": "cdd32d2fd948ae91fe8902b9c10721ab13a7329a8fdd85a6a5da48e323310617"
+      },
+      "status": "PASS_ALL_NO_OPENGL_GATES",
+      "process_exit": 0,
+      "child_waited": true
+    },
+    {
+      "row": "wsl-linux-lavapipe-x11-headless",
+      "report": {
+        "path": "@evidence/build/runs/mandatory-parent-wsl-headless-692/reports/replay-0.json",
+        "sha256": "e980789678a4969ec401730e8e64d731efc49197fc385ee378ed348618c43cee"
+      },
+      "status": "PASS_ALL_NO_OPENGL_GATES",
+      "process_exit": 0,
+      "child_waited": true
+    }
+  ],
+  "mandatory_current_observed": 8,
+  "mandatory_total": 8,
+  "original_failed_strict_attempts_preserved": 1,
+  "independent_failure_disposition_pending": "Windows headless688replay0 UNVERIFIED; one newly observed file then expanded receipt replay1PASS. No previous disposition transferred.",
+  "scratch_absent": true,
+  "reclaimed_bytes": 818059241,
+  "frozen_preparation_files_unchanged": 14,
+  "artifact_admitted": false,
+  "matrix_modified": false,
+  "required_final_head_ci_passed": false,
+  "remaining": [
+    "Complete exact eight-row bindings and histories",
+    "Independent688failed-attempt disposition and exact admission/promotion review",
+    "Owned final qualification head and23-job CI identities/history",
+    "Protected integration and successor delivery; publishedVulkan.2assets immutable"
+  ]
+}

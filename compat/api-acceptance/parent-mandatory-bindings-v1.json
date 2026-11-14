@@ -1,0 +1,57 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "PASS_EIGHT_CURRENT_MANDATORY_BINDINGS_AND_HISTORIES_NOT_ADMITTED",
+  "coverage_ids": [
+    "FIX-06",
+    "API-06",
+    "PLAT-08",
+    "TOOL-01"
+  ],
+  "source_commit": "2b8bccd0ac886f771c3e37255a3d5559c254b3cd",
+  "candidate": "tk-state-resource-12",
+  "matrix_draft": {
+    "path": "@evidence/build/runs/parent-mandatory-bindings-693/matrix-draft.json",
+    "sha256": "998e2e7d21ef1fecd13f97f63307e8535cb33f44d5663ee504d20453108e80c5"
+  },
+  "binding_verification": {
+    "path": "@evidence/build/runs/parent-mandatory-bindings-693/verification.json",
+    "sha256": "1827f51e1c6157f570a58cda939557ee8ca7bfa4872ac897f371c495aa77e69c"
+  },
+  "history_verification": {
+    "path": "@evidence/build/runs/parent-mandatory-histories-694/verification.json",
+    "sha256": "18a965eff5bd526d13dd648890c7d27f5b91ba1460a154298e43dbf68a848c0c"
+  },
+  "histories": {
+    "path": "@evidence/build/runs/parent-mandatory-histories-694/histories.json",
+    "sha256": "2bcf265c67cf5c12470ca794f6b24307811b53111e016675de1fdf640009b003"
+  },
+  "rows": 8,
+  "gate_checks": 24,
+  "installed_members_per_row": 537,
+  "zero_gauges_per_row": 10,
+  "retained_input_checks": 1036,
+  "foreign_retained_origins_protected": 15,
+  "fixture_archive_files_verified": 492,
+  "strict_attempts": 9,
+  "separate_discoveries": 8,
+  "original_failed_attempts_preserved": 1,
+  "independent_failure_disposition_pending": true,
+  "unattributed_controllers": 0,
+  "later_failures": 0,
+  "canonical_preparation_files_unchanged": 14,
+  "actual_exit": 0,
+  "child_waited": true,
+  "scratch_created": false,
+  "qualification_index_retention_acceptance": false,
+  "artifact_admitted": false,
+  "required_ci_complete": false,
+  "release_approved": false,
+  "scope": "Current exact eight-row observation and original managed cleanup hash audit only;15foreign dependency origins remain unchanged and protected. Generic qualification-index retention acceptance is not claimed for these original row envelopes. Finite retained-history scope and its literal collector-key prefilter are explicit; no all-time machine, full API, hardware or release admission.",
+  "remaining": [
+    "Exact688Windows headless failed-attempt disposition",
+    "Independent cumulative review of current row/fixture-copy/retention scope",
+    "Owned final-head freeze and required23-job CI",
+    "Exact matrix/Tk admission and promotion basis, protected integration and delivery"
+  ]
+}

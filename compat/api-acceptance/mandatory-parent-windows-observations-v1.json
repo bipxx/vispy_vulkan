@@ -1,0 +1,35 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "PASS_FOUR_CURRENT_WINDOWS_MANDATORY_OBSERVATIONS_NOT_ADMITTED",
+  "source_commit": "2b8bccd0ac886f771c3e37255a3d5559c254b3cd",
+  "wheel_sha256": "9e4e30cc50d49a759ea42cd7915cc2544a42d2af869d505e3ef5290d47617286",
+  "qt": {
+    "path": "compat/api-acceptance/mandatory-parent-windows-qt-observations-v1.json",
+    "sha256": "ff183e3996de17506ff888eb778d2addf2a7d6c196e5de223881c28c1f19ab92"
+  },
+  "headless": {
+    "path": "compat/api-acceptance/mandatory-parent-windows-headless-v1.json",
+    "sha256": "126661eec260c1010748f8f740b9b5ba993a6525b32925202113da8600d35f21"
+  },
+  "headless_attempts": {
+    "path": "@evidence/build/runs/mandatory-parent-windows-headless-688/attempt-summary.json",
+    "sha256": "43751ffc391262fdbd84b7bcc79d0f38300ce7c87a6fff0cdb02864d5f6b84b2"
+  },
+  "headless_cleanup": {
+    "path": "@evidence/build/runs/mandatory-parent-windows-headless-688/cleanup-result.json",
+    "sha256": "abb057a99888dca5a5322d014c4822f720aac146de53e7ad2fe6a6197cb774fd"
+  },
+  "mandatory_current_observed": 4,
+  "mandatory_total": 8,
+  "scratch_absent": true,
+  "reclaimed_bytes": 447701532,
+  "artifact_admitted": false,
+  "matrix_modified": false,
+  "remaining": [
+    "Four current WSL mandatory profiles",
+    "Exact independent disposition of Windows headless688UNVERIFIED receipt extension",
+    "Final qualification head/required23-job CI",
+    "Exact reviewed admission/promotion, protected integration and delivery"
+  ]
+}

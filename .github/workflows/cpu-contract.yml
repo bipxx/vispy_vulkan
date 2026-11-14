@@ -83,10 +83,10 @@ jobs:
         run: |
           "$CI_PYTHON" -B tools/qualification_ci.py --capture --workflow .github/workflows/cpu-contract.yml --job-name "CPU ${{ matrix.target.name }} CPython ${{ matrix.python }}" --output "$EVIDENCE/ci-identity.json"
           "$CI_PYTHON" -B tools/compatibility_inventory.py
-          "$CI_PYTHON" -B tools/compatibility_candidate.py --candidate compat/candidates/tk-state-resource-10/candidate.json
-          "$CI_PYTHON" -B tools/compatibility_coverage.py --map compat/candidates/tk-state-resource-10/coverage.json --require-script-ready
-          "$CI_PYTHON" -B tools/compatibility_execution.py --map compat/candidates/tk-state-resource-10/execution.json
-          "$CI_PYTHON" -B tools/compatibility_qualification.py --selection compat/candidates/tk-state-resource-10/admission-selection.json
+          "$CI_PYTHON" -B tools/compatibility_candidate.py --candidate compat/candidates/tk-state-resource-12/candidate.json
+          "$CI_PYTHON" -B tools/compatibility_coverage.py --map compat/candidates/tk-state-resource-12/coverage.json --require-script-ready
+          "$CI_PYTHON" -B tools/compatibility_execution.py --map compat/candidates/tk-state-resource-12/execution.json
+          "$CI_PYTHON" -B tools/compatibility_qualification.py --selection compat/candidates/tk-state-resource-12/admission-selection.json
           "$CI_PYTHON" -B .github/workflows/qualification_gate.py pytest --output "$EVIDENCE/compatibility-inventory.json" -- -q -p no:cacheprovider tests/contract/test_compatibility_inventory.py tests/contract/test_compatibility_qualification.py tests/contract/test_qualification_ci.py tests/contract/test_qualification_artifact.py tests/contract/test_repackage_python_wheel.py tests/contract/test_qualification_native.py tests/contract/test_qualification_linux_native.py tests/contract/test_linux_native_contracts.py tests/contract/test_linux_ci_lifecycle.py tests/contract/test_reuse_linux_ci.py tests/contract/test_reuse_metal_ci.py tests/contract/test_qualification_epoch.py tests/contract/test_qualification_index.py tests/contract/test_retained_evidence.py tests/contract/test_prepare_software_vulkan.py tests/contract/test_build_software_vulkan.py tests/contract/test_dawn_submission_contract.py tests/contract/test_dawn_state_query_contract.py tests/no_opengl/test_probe_failures.py tests/no_opengl/test_functional_results.py tests/no_opengl/test_capture_results.py --junitxml="$EVIDENCE/compatibility-inventory.xml"
       - name: Verify benchmark metrics without importing a renderer or provider
         run: |

@@ -1,0 +1,57 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "PASS_128_CURRENT_SELECTED_SUBJECT_BINDINGS_NOT_ADMITTED",
+  "coverage_ids": [
+    "FIX-04",
+    "FIX-06",
+    "API-06",
+    "SHD-06",
+    "TOOL-01"
+  ],
+  "source_implementation_head": "2b8bccd0ac886f771c3e37255a3d5559c254b3cd",
+  "candidate": "tk-state-resource-12",
+  "subject_sha256": "2a7e16eccc06d9432d18f866c588998a36546c6667fcdb61e28cf35192cd1395",
+  "subject": {
+    "path": "@evidence/build/runs/preparation12-installed-subject-684/qualification-subject.json",
+    "sha256": "9d2adb84587248232f1e2574fc9a67ec1c1277b582b950a3e3a6e25e40334b92"
+  },
+  "result": {
+    "path": "@evidence/build/runs/preparation12-installed-subject-684/subject-result.json",
+    "sha256": "34a35de7e5d35defccec4f8f215295e0437d2099b3099051e2c7de907faf9c5a"
+  },
+  "materialization": {
+    "path": "@evidence/build/runs/preparation12-installed-subject-684/materialization.json",
+    "sha256": "72f6baa8c280feade3f11f79e30e5d94d70b8879b64224387a301f017b80cc34"
+  },
+  "restoration": {
+    "path": "@evidence/build/runs/preparation12-installed-subject-684/restoration.json",
+    "sha256": "e07ea2a2e52590020b305b1628bd0d48277eef69888077eebf84032ce11559f2"
+  },
+  "actual_process": {
+    "path": "@evidence/build/runs/preparation12-installed-subject-684/assembly-process.json",
+    "sha256": "43081924009ea4a58b1c6535540259a97c0208ffd664b6aa0773f58e48871cc3"
+  },
+  "proved_criterion_profile_bindings": 128,
+  "distinct_criteria": 64,
+  "missing": 0,
+  "blocked": 0,
+  "exact_strict_attempts": 5,
+  "original_failed_attempts_preserved": 1,
+  "contributing_retained_inputs": 782,
+  "canonical_preparation_files_restored": 14,
+  "actual_exit": 0,
+  "child_waited": true,
+  "scratch_created": false,
+  "native_rebuilt": false,
+  "artifact_admitted": false,
+  "required_ci_passed": false,
+  "release_complete": false,
+  "scope": "Exact preparation12 finite installed subject proof using32selected rows, original native/archive data, separate strict/pytest consumers, five original replay histories and approved failure dispositions. All14frozen canonical JSON files restored. No original142-obligation, mandatory-eight-row, final-head CI, protected integration or public delivery transfer.",
+  "remaining": [
+    "Renew/admit the eight mandatory profiles for current wheels",
+    "Integrate owned current source/tests/evidence and freeze final qualification head",
+    "Required23-job final-head CI",
+    "Independent exact promotion/change-impact basis, protected integration and successor delivery"
+  ]
+}

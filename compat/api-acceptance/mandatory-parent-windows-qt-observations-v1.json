@@ -1,0 +1,67 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "PASS_THREE_CURRENT_WINDOWS_QT_OBSERVATIONS_NOT_ADMITTED",
+  "coverage_ids": [
+    "FIX-06",
+    "LIF-02",
+    "LIF-04",
+    "API-06",
+    "PLAT-08",
+    "TOOL-01"
+  ],
+  "source_commit": "2b8bccd0ac886f771c3e37255a3d5559c254b3cd",
+  "rows": [
+    {
+      "binding": "pyqt6",
+      "observation": {
+        "path": "compat/api-acceptance/mandatory-parent-windows-pyqt6-v1.json",
+        "sha256": "af6b28044d48f58e22d92584a2d9880ab0288f086ad961fadc8dc674143b5715"
+      },
+      "cleanup": {
+        "path": "@evidence/build/runs/mandatory-parent-windows-pyqt6-685/cleanup-result.json",
+        "sha256": "d0520221430ede5f947b1a33941f754bbecf3d37157fe62e79bf3eca86354d54"
+      },
+      "reclaimed_bytes": 129752954
+    },
+    {
+      "binding": "pyqt5",
+      "observation": {
+        "path": "compat/api-acceptance/mandatory-parent-windows-pyqt5-v1.json",
+        "sha256": "a552653d7edef0eafb233d25ff84f59a7d1b869b4d369bcb644714470d6bd7cc"
+      },
+      "cleanup": {
+        "path": "@evidence/build/runs/mandatory-parent-windows-pyqt5-686/cleanup-result.json",
+        "sha256": "94a6595189b08e87eb32bd29f581d88cc18d897c80cdec1d9b4cfe1062b2814a"
+      },
+      "reclaimed_bytes": 113809395
+    },
+    {
+      "binding": "pyside6",
+      "observation": {
+        "path": "compat/api-acceptance/mandatory-parent-windows-pyside6-v1.json",
+        "sha256": "dfd2074a028a62ce0e6b0381b3b4c765b708c31ff9a2d0cc6a36ee88888dab50"
+      },
+      "cleanup": {
+        "path": "@evidence/build/runs/mandatory-parent-windows-pyside6-687/cleanup-result.json",
+        "sha256": "8c6d97a68df44baca9e37b2e9d148c06a36c9ac03960482cabec9675f9213fcb"
+      },
+      "reclaimed_bytes": 134946948
+    }
+  ],
+  "mandatory_current_observed": 3,
+  "mandatory_total": 8,
+  "strict_replays_passed": 3,
+  "source_overrides": 0,
+  "frozen_preparation_files_unchanged": 14,
+  "scratch_absent": true,
+  "reclaimed_bytes": 378509297,
+  "native_rebuilt": false,
+  "artifact_admitted": false,
+  "matrix_modified": false,
+  "remaining": [
+    "Current Windows headless profile",
+    "Current WSL headless/PyQt5/PyQt6/PySide6 profiles",
+    "Exact final-head CI and reviewed admission/promotion/integration/delivery"
+  ]
+}

@@ -60,6 +60,8 @@ def test_parent_deletion_retires_owner_and_shared_peer_keeps_rendering(close_bef
         QtCore.QCoreApplication.sendPostedEvents(None, QtCore.QEvent.Type.DeferredDelete)
         assert sip.isdeleted(widget) and destroyed == [True]
         assert first._closed and first._backend is None and closed == [True]
+        first.create_native()
+        first.update()
         first.close()
         expect([0, 255, 0, 255])
         paint(peer, (0., 0., 1., 1.))

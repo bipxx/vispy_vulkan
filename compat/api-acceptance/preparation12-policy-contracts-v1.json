@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "PASS_326_SOURCE_POLICY_AND_NATIVE_REUSE_CONTRACTS",
+  "coverage_ids": [
+    "FIX-04",
+    "FIX-06",
+    "API-06",
+    "TOOL-01"
+  ],
+  "candidate": "compat/candidates/tk-state-resource-12/candidate.json",
+  "candidate_scope_sha256": "4c2295f596f9b947fa27a67c21d500b6defced62a6b394c97abf2d78ca1ec1f8",
+  "passed": 326,
+  "failed": 0,
+  "source_reuse_native_cases": 282,
+  "ci_policy_cases": 44,
+  "cross_workflow_selector_regression_passed": true,
+  "required_ci_jobs_unchanged": 23,
+  "actual_exit": 0,
+  "child_waited": true,
+  "native_rebuilt": false,
+  "artifact_admitted": false,
+  "scope": "Source contracts only, including required policy hashes and actual CPU/Linux candidate selector consistency. Synthetic CI cases do not establish actual hosted CI/profile/hardware/admission."
+}

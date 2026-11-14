@@ -1,0 +1,35 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "INCOMPLETE_STRUCTURED_REVIEW_OUTPUT_NO_APPROVAL_BOUND",
+  "coverage_ids": [
+    "FIX-04",
+    "FIX-06",
+    "API-06",
+    "TOOL-01"
+  ],
+  "candidate_scope_sha256": "4c2295f596f9b947fa27a67c21d500b6defced62a6b394c97abf2d78ca1ec1f8",
+  "process": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\preparation12-peer-review-673\\process.json",
+    "sha256": "349c5cf55c816566d4a3b3c1df282f2a84e7c54757f8b0fdadc6fac8d3fc5950"
+  },
+  "raw_response": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\preparation12-peer-review-673\\review-response.json",
+    "sha256": "e2da128cc3e3998ac2a8afd62864778949d15e04bfe625a328e62e8b3356e2d0"
+  },
+  "disposition": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\preparation12-peer-review-673\\structured-output-disposition.json",
+    "sha256": "694a3fc6dafa5bc6f88486a6b5cad3e56ef6b979bbea706ed99c3050ce7d95e0"
+  },
+  "task_output": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\preparation12-peer-review-673\\peer-task-output.log",
+    "sha256": "0e76e25510e27cc071f63ec3573b8c7c40026a4f44695d8a36412fe37deabcf6"
+  },
+  "actual_exit": 0,
+  "child_waited": true,
+  "source_guards_verified": true,
+  "approvals_bound": false,
+  "artifact_admitted": false,
+  "scope": "CLI returned only result_index1 task notification referring to an earlier decision, without original structured full hashes/limits. Final note is preserved but not promoted to exact approval. No persisted session file found; need complete standalone decision on unchanged inputs.",
+  "next": "Fresh bounded read-only decision capture using stream-json/verbose to retain every result; restrict tools to Read/Glob/Grep and prohibit background shell commands."
+}

@@ -1,0 +1,47 @@
+{
+  "schema": 1,
+  "kind": "archive-prerequisite",
+  "candidate": {
+    "path": "compat/candidates/tk-state-resource-11/candidate.json",
+    "scope_sha256": "5dd73de0b6a677d619e8df2755202c07e574942d9beda6b8e754f0672d2e3fde"
+  },
+  "profile": "wsl-software-tk90-cp31213-development",
+  "evidence_store": {
+    "path": "compat/evidence-stores/secondary-v1.json",
+    "sha256": "b164e3fdc85863a2327b508ea60f8d3068f740cfe90f665aa52905e28bfb3ca5"
+  },
+  "wheel": {
+    "path": "build/artifacts/a2715d2659f0caf8c01d430c34ba1dc2d5f9b520b6c36ce85a0c75328556fe56/vispy-0.17.0+vulkan.2-cp312-cp312-manylinux_2_39_x86_64.whl",
+    "sha256": "a2715d2659f0caf8c01d430c34ba1dc2d5f9b520b6c36ce85a0c75328556fe56"
+  },
+  "native_outputs": [
+    {
+      "member": "vispy/_dawn.cpython-312-x86_64-linux-gnu.so",
+      "file": {
+        "path": "build/artifacts/5740b28ad4dc9024f1a2af21ee3f7dbef15a7e72379c91d0f6e4023716e6a9b2/_dawn.cpython-312-x86_64-linux-gnu.so",
+        "sha256": "5740b28ad4dc9024f1a2af21ee3f7dbef15a7e72379c91d0f6e4023716e6a9b2"
+      }
+    },
+    {
+      "member": "vispy/visuals/text/_sdf_cpu.cpython-312-x86_64-linux-gnu.so",
+      "file": {
+        "path": "build/artifacts/1e508269c6d8c4a0f9ed041987237c6fef5768eeb1e8174ed1e8eb29f8f7162f/_sdf_cpu.cpython-312-x86_64-linux-gnu.so",
+        "sha256": "1e508269c6d8c4a0f9ed041987237c6fef5768eeb1e8174ed1e8eb29f8f7162f"
+      }
+    },
+    {
+      "member": "vispy/VkLayer_vispy_submit.so",
+      "file": {
+        "path": "build/artifacts/95907606472ffe51bec021d4b28e4717472e40f2cef34cd2590d172575c113d4/VkLayer_vispy_submit.so",
+        "sha256": "95907606472ffe51bec021d4b28e4717472e40f2cef34cd2590d172575c113d4"
+      }
+    },
+    {
+      "member": "vispy/VkLayer_vispy_submit.json",
+      "file": {
+        "path": "build/runs/linux-lifecycle-artifact-568/original-ci/runs/native-ci-43471568101-1/native-origin/vispy/VkLayer_vispy_submit.json",
+        "sha256": "e0762acec9e2df811cbb67e1c25e5c82d9fb76def0101f54fd737464c76786c2"
+      }
+    }
+  ]
+}

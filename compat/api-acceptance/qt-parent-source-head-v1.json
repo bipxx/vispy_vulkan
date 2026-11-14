@@ -1,0 +1,46 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "PASS_REVIEWED_PARENT_SOURCE_PUSHED_QUALIFICATION_PENDING",
+  "coverage_ids": [
+    "FIX-04",
+    "FIX-06",
+    "LIF-02",
+    "LIF-04",
+    "API-06"
+  ],
+  "source_commit": "2b8bccd0ac886f771c3e37255a3d5559c254b3cd",
+  "parent_commit": "6d6b233fe80f19887726c6b91a247aa863f6dfee",
+  "branch": "wip/qt-lifecycle-native-562",
+  "changed_files": 22,
+  "changed_bytes": 610003,
+  "changed_runtime_inputs": [
+    "src/vispy/app/backends/_qt.py",
+    "src/vispy/app/canvas.py"
+  ],
+  "runtime_build_license_inputs_unchanged": 606,
+  "native_source_commit": "99719f1f7bdbb320318cf1ccd0eed39f336c7cce",
+  "source_freeze": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\qt-parent-source-freeze-661\\source-freeze.json",
+    "sha256": "d2c90912f5dccb84b215ac6ad7eff4471402a4b4580ac6c7bfd70cc5df7afa9c"
+  },
+  "push": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\qt-parent-source-freeze-661\\push-result.json",
+    "sha256": "ca36b495a3d80ae2e9cca31f8267d1d5aca4abb4c8dc272b1af1152673222398"
+  },
+  "source_review": {
+    "path": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\compat\\api-acceptance\\qt-parent-review-approved-v1.json",
+    "sha256": "3d9aaaa3ab9aa78390c512f84ab10ea0d02c9668ce01aaf32e68d433f2033d01"
+  },
+  "owner_index_sha256": "e1cceed6fee9132b8ac7a015527239f16234dbe016c392992884336c53490aa7",
+  "owner_index_unchanged": true,
+  "actual_exit": 0,
+  "child_waited": true,
+  "scratch_bytes": 15100800,
+  "declared_scratch_peak_bytes": 33554432,
+  "native_rebuilt": false,
+  "required_ci_passed": false,
+  "installed_qualified": false,
+  "artifact_admitted": false,
+  "scope": "Owned22-file reviewed two-Python-runtime/test/evidence/docs delta committed and fast-forward pushed without checkout/force/other-owner index changes. Native/build/locks/licenses unchanged. Exact successor Python package/installed/profile/head qualification and integration remain pending; old6d6b233CI is historical to its own source."
+}

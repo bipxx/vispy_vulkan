@@ -1,0 +1,56 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "PASS_THREE_CURRENT_WSL_QT_OBSERVATIONS_NOT_ADMITTED",
+  "source_commit": "2b8bccd0ac886f771c3e37255a3d5559c254b3cd",
+  "rows": [
+    {
+      "binding": "pyqt6",
+      "observation": {
+        "path": "compat/api-acceptance/mandatory-parent-wsl-pyqt6-v1.json",
+        "sha256": "cbc7a73cd73cf8158ab33da92d2175e606060fb606c368a573e4084c19de77e8"
+      },
+      "cleanup": {
+        "path": "@evidence/build/runs/mandatory-parent-wsl-pyqt6-689/cleanup-result.json",
+        "sha256": "daaa9bbfb2d0b2c61b19b203edbefda5c852dbdceecda51f88df45b82a611485"
+      },
+      "reclaimed_bytes": 92589426
+    },
+    {
+      "binding": "pyqt5",
+      "observation": {
+        "path": "compat/api-acceptance/mandatory-parent-wsl-pyqt5-v1.json",
+        "sha256": "6cfb7c1ab1d8fe0d521727c2899270a78099772cfa92ba0f6f5f83edfa187e7c"
+      },
+      "cleanup": {
+        "path": "@evidence/build/runs/mandatory-parent-wsl-pyqt5-690/cleanup-result.json",
+        "sha256": "66c2c63ecdf780e4b5ed6d2fff578b0320a0c76d05fcaf981e1bd1726f747331"
+      },
+      "reclaimed_bytes": 92589426
+    },
+    {
+      "binding": "pyside6",
+      "observation": {
+        "path": "compat/api-acceptance/mandatory-parent-wsl-pyside6-v1.json",
+        "sha256": "a9033746a445087e1e6fb1bf5fda66a4b723456f8412c465bd2c81f922776e51"
+      },
+      "cleanup": {
+        "path": "@evidence/build/runs/mandatory-parent-wsl-pyside6-691/cleanup-result.json",
+        "sha256": "67bdd4fe30eaf9e639638af4164b90bc812eb7bd51620ba7b9542336eb943228"
+      },
+      "reclaimed_bytes": 92589428
+    }
+  ],
+  "mandatory_current_observed": 7,
+  "mandatory_total": 8,
+  "scratch_absent": true,
+  "reclaimed_bytes": 277768280,
+  "artifact_admitted": false,
+  "matrix_modified": false,
+  "remaining": [
+    "Current WSL headless profile",
+    "Exact688Windows headless failed-attempt disposition",
+    "Final qualification head/23-job CI",
+    "Reviewed admission/promotion/integration/delivery"
+  ]
+}

@@ -1,0 +1,124 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "PASS_CURRENT_WINDOWS_HEADLESS_MANDATORY_ROW_OBSERVATION_NOT_ADMITTED",
+  "coverage_ids": [
+    "FIX-06",
+    "LIF-02",
+    "LIF-04",
+    "PLAT-08",
+    "TOOL-01"
+  ],
+  "row": "windows-vulkan-headless",
+  "source_commit": "2b8bccd0ac886f771c3e37255a3d5559c254b3cd",
+  "wheel": {
+    "path": "build/artifacts/9e4e30cc50d49a759ea42cd7915cc2544a42d2af869d505e3ef5290d47617286/vispy-0.17.0+vulkan.2-cp312-cp312-win_amd64.whl",
+    "sha256": "9e4e30cc50d49a759ea42cd7915cc2544a42d2af869d505e3ef5290d47617286"
+  },
+  "report": {
+    "path": "@evidence/build/runs/mandatory-parent-windows-headless-688/replay-1.json",
+    "sha256": "a1eec854d4d2a835d6caec9ff64136185f2efd1344d5bf2d49058b9e1529955c"
+  },
+  "worker": {
+    "path": "@evidence/build/runs/mandatory-parent-windows-headless-688/replay-1.worker.json",
+    "sha256": "ac43c2cc6c0c676f550aa15689c823c9bd2b4557968396e451bb1b7c251d453e"
+  },
+  "receipt": {
+    "path": "@evidence/build/runs/mandatory-parent-windows-headless-688/receipt-1.json",
+    "sha256": "3cb6700c59840f8c8cd0df5be8b864822999bfe464b0fb6ade71fb560a88f982"
+  },
+  "functional_result": {
+    "path": "@evidence/build/runs/mandatory-parent-windows-headless-688/replay-1-features/result1.json",
+    "sha256": "0717733ad8257804f7f480dd88c9ffebcfdb48d318590cbf5160ef7fced7a0d1"
+  },
+  "functional_bundle": {
+    "gpu_tests": 95,
+    "rendering_status": "PASS_INSTALLED_ABI_RENDERBUFFER_CLEAR_SMOOTH_TEXT",
+    "markers": 4096,
+    "science_cases": 36,
+    "bundle_sha256": "0717733ad8257804f7f480dd88c9ffebcfdb48d318590cbf5160ef7fced7a0d1"
+  },
+  "gpu_cases_passed": 95,
+  "scientific_cases_passed": 36,
+  "markers": 4096,
+  "device": {
+    "backend": "Vulkan",
+    "adapter_type": "discrete",
+    "vendor": "nvidia",
+    "device": "NVIDIA GeForce RTX 4090",
+    "driver": "NVIDIA: 610.88 610.88.0.0",
+    "vendor_id": 4318,
+    "device_id": 9860,
+    "max_texture_dimension_1d": 32768,
+    "max_texture_dimension_2d": 32768,
+    "max_texture_dimension_3d": 16384,
+    "max_vertex_attributes": 30,
+    "max_vertex_buffers": 8,
+    "max_vertex_buffer_array_stride": 2048,
+    "max_storage_buffers_per_shader_stage": 16,
+    "max_uniform_buffers_per_shader_stage": 12,
+    "max_inter_stage_shader_variables": 30,
+    "max_storage_buffer_binding_size": 2147483644,
+    "max_bindings_per_bind_group": 1000,
+    "max_compute_invocations_per_workgroup": 1024,
+    "max_compute_workgroup_size_x": 1024,
+    "max_compute_workgroups_per_dimension": 65535,
+    "max_point_vertex_attributes": 30,
+    "core_features_and_limits": true,
+    "point_input_limit_scope": "all active user point inputs share one vertex buffer; exact vertex/instance identities use read-only vertex storage without reserving a user attribute; actual granted attribute/stride/storage/allocation limits apply",
+    "max_samplers_per_shader_stage": 16,
+    "max_sampled_textures_per_shader_stage": 48,
+    "max_buffer_size": 1099511627776,
+    "max_uniform_buffer_binding_size": 65536,
+    "software": false,
+    "float32_filterable": true,
+    "unorm16_texture_formats": true,
+    "bresenham_lines": true,
+    "last_vertex_provoking": true,
+    "timestamp_query": true,
+    "timestamp_quantization_ns": 65536,
+    "host_mapped_pointer": true,
+    "host_import_limit": 536870912,
+    "depth_stencil_storage": "depth24_unorm_stencil8",
+    "ok": true,
+    "error": "",
+    "loss_count": 0,
+    "revision": "117b054598f4758b598f4b8f48feea48c11fe7b0+dawn-499e5c6ff9b37d5de70c6493fb74c251e0d35c1c"
+  },
+  "fixture_versions": {
+    "pytest": "9.1.1",
+    "pluggy": "1.6.0",
+    "iniconfig": "2.3.1",
+    "pygments": "2.21.0",
+    "colorama": "0.4.6"
+  },
+  "fixture_source_archive": {
+    "path": "@evidence/build/runs/mandatory-current-windows-headless-633/fixture-sources-and-licenses.zip",
+    "sha256": "cc65c764356ce0c0dba7a3fc4b7ab9d1e629ceb2c1b69e8ab2ca91fc9391289f"
+  },
+  "environment_id": "10e7b1b193a401a57ad5a7090a712b0293eb24d7eb88ff0f08dc7c0a045e953f",
+  "installed_members_verified": 537,
+  "source_overrides": 0,
+  "shutdown_gauges": {
+    "pending_tickets": 0,
+    "queued_frames": 0,
+    "live_buffer_bytes": 0,
+    "live_cpu_buffer_bytes": 0,
+    "live_texture_bytes": 0,
+    "canvas_texture_bytes": 0,
+    "transient_buffer_bytes": 0,
+    "line_resource_pool_busy_slots": 0,
+    "line_resource_pool_bytes": 0,
+    "host_import_pinned_bytes": 0
+  },
+  "actual_exit": 0,
+  "child_waited": true,
+  "artifact_admitted": false,
+  "mandatory_rows_current_observed": 4,
+  "scope": "Exact Windows CPython3.12.8 RTX4090 Vulkan headless observation: original95GPU cases, rendering checks,4096marker smoke and36scientific cases. Selected strict replay passes; discovery and all prior attempts remain retained. Locked fixture distributions are RECORD-verified selected copies, not an environment or dependency-version refresh. No broad API/scientific-quality/performance, other-profile or release transfer.",
+  "remaining": [
+    "Four current WSL mandatory profile observations",
+    "Exact eight-row matrix admission and required final-head CI",
+    "Independent promotion basis, protected integration and delivery"
+  ]
+}

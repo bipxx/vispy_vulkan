@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "name": "mandatory-parent-wsl-v2",
+  "owner": "root-mandatory-wsl",
+  "storage_workspace": "D:/vispy-vulkan-managed",
+  "source_workspace": "C:/Users/HEQ/Projects/vispy_vulkan",
+  "registry": "D:/vispy-vulkan-managed/build/.hygiene/registry-preparation10-successor-613.json",
+  "expected_peak_bytes": 536870912,
+  "aggregate_max_scratch_bytes": 21474836480,
+  "min_free_bytes": 10737418240,
+  "regular_visible_limit_bytes": 251658240,
+  "tmpfs_reports_bytes": 67108864,
+  "tmpfs_temp_bytes": 67108864,
+  "tmpfs_dependency_overlay_bytes": 67108864,
+  "report_retention_copy_bytes": 67108864,
+  "purpose": "Sequential current-wheel WSL software-Vulkan mandatory observations with the original matching headless or Qt binding profile; no native production.",
+  "reuse": "Borrow the original matching PyQt5, PyQt6 or PySide6 rootfs and its locked dependency site read-only (rootfs2 for PyQt6; original separate final-profile roots for PyQt5/PySide6). Reuse standalone CPython3.12.13, patched Mesa9c5, LLVM, qualified native collectors and exact Linuxa2715d26 wheel. No SDK/environment/rootfs/history copy, dependency refresh or network fallback.",
+  "consumer": "Private mount namespace with read-only source/store/rootfs/Python/driver/runtime inputs. A small copied venv and64MiB tmpfs overlay install only the selected wheel over the original read-only dependency lower. Reports and POSIX temp each have64MiB tmpfs limits; private Xvfb ownership/readiness and actual exit/wait are recorded.",
+  "budget_basis": "Reuse the512MiB installed WSL observation envelope. New regular visible files are capped240MiB, three tmpfs mounts192MiB and report retention copy64MiB, leaving16MiB margin. Borrowed read-only dependency lower is excluded from new-allocation accounting; the upper remains kernel-limited. Shared20GiB scratch and10GiB reserve stay unchanged.",
+  "checks": "Current collector/scenario/source hashes; original seven-stage QWidget behavior; exact installed wheel/origins, discovery, dependency inventory and strict replay. Preserve every failed/UNVERIFIED attempt and bounded receipt extension. Rehash borrowed inputs after namespace exit. No transfer across bindings or to physical GPU/Metal qualification.",
+  "guards": "Preflight guest filesystem plus C:/D: backing capacity and inherit all coordinator and previous guest protected/blocked paths. Inner periodic guards check guest/source/store reserves and bounded new writable files, tolerating only disappearing test-owned entries. Stop/wait owned children on timeout/capacity failure.",
+  "cleanup": "Retain actual exits/waits, original reports/traces, preferred source/archive references, exact dependency/runtime identities and original licenses. Check host namespace has no remaining run mounts, rehash original debugger/driver/LLVM and load guest protected/blocked registry before managed Windows cleanup. Inspect/apply with registry613 and report results before the next row. Failed runs retain a reproducer.",
+  "predecessor": {
+    "path": "compat/build-profiles/mandatory-current-wsl-v2.json",
+    "sha256": "8d6855ba6cdc88cc196d586fd4e91c20bedca3dd2f881c212f10b99f8a08f2e5"
+  },
+  "change_basis": "Same512MiB/kernel tmpfs limits and original binding-specific roots; selects a271candidate and reuses verified notices without copies."
+}
