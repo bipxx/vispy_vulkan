@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "EXACT_WINDOWS_CANDIDATE_INSTALLED_ACCEPTANCE_FAILED",
+  "coverage_ids": [
+    "API-05",
+    "API-06",
+    "LIF-01",
+    "LIF-02",
+    "LIF-03",
+    "LIF-04",
+    "SCI-06"
+  ],
+  "source_commit": "f93d80b211c29c1481228455f7a064a74ce8c4f1",
+  "wheel": {
+    "path": "build/artifacts/977357ad5a760f6eec327f025f858e6cef4a557cdaf455d533a661f43d3d6e5b/vispy-0.17.0+vulkan.2-cp312-cp312-win_amd64.whl",
+    "sha256": "977357ad5a760f6eec327f025f858e6cef4a557cdaf455d533a661f43d3d6e5b"
+  },
+  "native_production_sha256": "9a32173c0f7960e3a0cab9b68f5e160fb433f75145d74e8e7f8d6536935a29af",
+  "archive_exact": true,
+  "installed_members_verified": 537,
+  "actual_exit": 1,
+  "child_waited": true,
+  "installed_qualified": false,
+  "artifact_admitted": false,
+  "outcome": "19passed,2failed,10teardown errors; original run remains failed",
+  "mismatch": "Controller cleared VISPY variables without explicitly selecting the required PyQt6 readback profile; actual presentation was native",
+  "resource_failure": "14,400 live/canvas texture bytes observed after early lifecycle failures; final shutdown retained its actual report",
+  "next": "Fresh bounded install of the same retained wheel with QT_API=pyqt6 and VISPY_QT_PRESENTATION=readback; no rebuild",
+  "evidence_root": "D:\\vispy-vulkan-managed\\build\\runs\\lifecycle-windows-package-577"
+}

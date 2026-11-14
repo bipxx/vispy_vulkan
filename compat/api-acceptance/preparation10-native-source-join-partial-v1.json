@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "REVIEW_MAPS_PASS_NATIVE_SOURCE_LOCAL_JOIN_MISSING",
+  "coverage_ids": [
+    "FIX-04",
+    "FIX-06",
+    "API-06"
+  ],
+  "actual_exit": 1,
+  "child_waited": true,
+  "cause": "Full Windows provenance record resolves source_inputs under source workspace; new project cpp/runtime.cpp f344 snapshot exists in managed D store, but source-local build/artifacts/f344.../runtime.cpp is missing. Lower-level native production proof remains valid.",
+  "candidate_scope_sha256": "0b66899655d9092c079826290c5d7138199ddeeb55f6dc3b1edfd3d3fff587e3",
+  "coverage_execution_selection_reviewed": true,
+  "native_record_validation_complete": false,
+  "artifact_admitted": false,
+  "scratch_created": false,
+  "evidence_root": "D:\\vispy-vulkan-managed\\build\\runs\\preparation10-approval-completion-612",
+  "next": "Retain exact verified project source at protocol-required source-local path with recorded dual-root reconstruction; preserve original D source and all pinned dependency origins; rerun unchanged full validators"
+}

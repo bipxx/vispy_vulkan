@@ -1,0 +1,58 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "SOURCE_APPROVED_SCOPE_AND_REUSE_CHANGES_REQUIRED",
+  "coverage_ids": [
+    "FIX-04",
+    "FIX-06",
+    "API-06",
+    "TOOL-01"
+  ],
+  "candidate_scope_sha256": "5dd73de0b6a677d619e8df2755202c07e574942d9beda6b8e754f0672d2e3fde",
+  "source_decision": "APPROVED",
+  "scope_decision": "CHANGES_REQUIRED",
+  "native_reuse_links_approved": [],
+  "required_changes": [
+    "Update the cpu-contract.yml sha256 in compat/qualification-ci.json to the live bytes so validate_policy and every workflow's --capture step can pass; confirm with tests/contract/test_qualification_ci.py.",
+    "Resolve linux-vulkan.yml:98: point --candidate at the candidate whose pins match the head tree (11, once reviewed) and re-pin the workflow hash in the CI policy, or document a mechanism by which the reuse job passes unchanged at head.",
+    "Regenerate preparation_tools pins, candidate seal and scope digest, coverage, execution, selection, both native provenance records and both archive records under the new digest, as a successor or regenerated preparation, without touching the 318 historical files.",
+    "Re-present the new scope digest and the two new reuse digests for review; add policy-to-workflow consistency and seal checks to the helper."
+  ],
+  "decision": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\preparation11-peer-review-669\\decision.json",
+    "sha256": "f4f0976e7ca7b4d249889f6d14b9e993394a733dda878d83fca91a46e4280fa0"
+  },
+  "response": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\preparation11-peer-review-669\\review-response.json",
+    "sha256": "52ad58844dca2fe7327358757ac26d7f2b4d002df04f4d2373738b5509688a12"
+  },
+  "inputs": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\preparation11-peer-review-669\\inputs.json",
+    "sha256": "48fe041220c6d3acbc8ef8dfc426509067d495ddec133198502c69674d9f9538"
+  },
+  "process": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\preparation11-peer-review-669\\process.json",
+    "sha256": "bdbc4c1820cf5ac9056bf23003bc9d55367cf255481a913163befe8ddc0319e2"
+  },
+  "reviewer_limits": [
+    "No tests, builds, project imports, native code, graphics, network or Git executed; F1 and F2 are static readings plus hash arithmetic, not observed CI failures.",
+    "Read in full: review-packet, inputs, helper, review.py, candidate.json, both state profiles, both archive records, linux-native-provenance, the 660 approval, findings and runtime.patch, 667 bind.py, 666 renew.py, the GPU test. Coverage, execution, execution-ledger, admission-selection, runtime-inputs and windows-native-provenance were fully parsed and checked programmatically with samples printed, not read line by line.",
+    "Linux production identity 6c34f9b6\u2026 was not recomputed from the capture, and its 161 capture files, the CI run 43471568101 / head 82ee identity and the 43-case claim were not verified; only cross-record equality.",
+    "SDK, cache, dependency and source origins were not hashed beyond the references listed; correspondence between cpp/runtime.cpp and the retained binaries was not verified.",
+    "'318 preserved byte-for-byte' is relative to the manifest written by run 666; no earlier independent snapshot was compared and historical contents were not opened.",
+    "Live _qt.py was not re-read; reliance is on hash equality with the 660-reviewed bytes plus the patch. The 656/658/659 CPU runs and 668's 282 passes were read from records only (tests.log tail for 668).",
+    "RECORD row hashes were not individually recomputed; the 537-member and loaded-origin audits and the 561/566 metadata counts were read, not regenerated.",
+    "Metal reuse inputs and the Metal workflow were not analysed beyond hash equality with preparation 10; no physical Mac, Linux GPU, Wayland, extra ABI or full VisPy parity is implied.",
+    "PyQt5/PySide6 remain Windows CPU native-double evidence only; fresh installed strict proofs, current-head CI and matrix admission remain not done."
+  ],
+  "withheld": [
+    "Scope approval of 5dd73de0\u2026 (F1, F2).",
+    "Both native reuse link hashes: bound to a scope that must be renewed (F3).",
+    "Any installed, strict-profile, CI, admission, artifact or parity approval; any discharge of the 142 original obligations.",
+    "Any transfer from preparation 10 or from the 609/651/660 decisions, which stand as recorded."
+  ],
+  "actual_exit": 0,
+  "child_waited": true,
+  "artifact_admitted": false,
+  "next": "Correct coupled CPU/Linux selectors and required workflow hashes, run CI policy contracts, freeze successor preparation and re-present exact scope/reuse hashes. Preserve preparation11 and318prior records."
+}

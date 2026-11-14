@@ -1,15 +1,15 @@
 {
   "schema": 1,
   "repository": "bipxx/vispy_vulkan",
-  "run_id": 43384550407,
+  "run_id": 43495769632,
   "attempt": 1,
-  "source_head": "340499b0ff81ca12dddf04b763477c93737fde89",
-  "checked_head": "340499b0ff81ca12dddf04b763477c93737fde89",
-  "original_workflow_sha256": "714f1f8b90d0aad61bd68e5f8373266c5f673c23415ea810924bbb576c5436db",
+  "source_head": "99719f1f7bdbb320318cf1ccd0eed39f336c7cce",
+  "checked_head": "99719f1f7bdbb320318cf1ccd0eed39f336c7cce",
+  "original_workflow_sha256": "6c051d233db4752d8cda90545398f51d678e55e4737626fbce5a8a4f634b8a97",
   "source_inventory_origin": {
-    "run_id": 43384550407,
-    "member": "runs/metal-ci-43384550407-1-arm64/source-before.json",
-    "sha256": "f1974ccf9dc549b8cf7bd3cb022ed374d2f2e8dd018acd970b4cb2fba5824149"
+    "run_id": 43495769632,
+    "member": "runs/metal-ci-43495769632-1-arm64/source-before.json",
+    "sha256": "67e319066dafead9640785427030029cb14769c2ef19126baf784672a39a58b7"
   },
   "source_inputs": {
     "CMakeLists.txt": "6fcbcc1e5d3cc891cb7d30dfb7cc3ca038809a9486e09e24c4a282e27d0216b2",
@@ -48,7 +48,7 @@
     "cpp/platform/vk_layer_telemetry.hpp": "5aa439452b8317b58822c1a9202969782706c927d748c98146cd6b3f008ad018",
     "cpp/platform/VkLayer_vispy_submit.json": "c44eec804d458fcb8783ae2fd03dd5104db464007f01de669a4ff17aa33a56aa",
     "cpp/platform/VkLayer_vispy_submit.json.in": "ca054e841a8e99a1db5c9edd453372749f8955b9e8ab8f31ecfedff07e550f92",
-    "cpp/runtime.cpp": "020e267244b506bd5043f7a619e2741a53cf178befaf5dc8369a1c34461da12c",
+    "cpp/runtime.cpp": "f344107e03ff6ce8b4302d8d681739ac9a4c813b3236daafb9d74cff43446fad",
     "cpp/runtime.hpp": "f5071ee542f06c5d7450dfc3e31085966051902092eb10dd7bc4bb2916613127",
     "cpp/runtime_batch_cache.hpp": "936cf5d94d5b6d86ad5c0b4544385d8e47efeea61a925bcbfe6f56a4c874dcae",
     "cpp/runtime_batch_capacity.hpp": "2428de457e084701d66e408caa517f640b774526bfb5853c2438dec69734174c",
@@ -113,7 +113,7 @@
     "src/vispy/app/backends/_pyside.py": "ce58dcb545cf0130718263180af9e26d128df8e402fe53966460539926102280",
     "src/vispy/app/backends/_pyside2.py": "a99a416c4566aeaeae5edcbc7e7f9c9a2b56409ca13e9ba80180be302e370a78",
     "src/vispy/app/backends/_pyside6.py": "e8d567c49bac585682400aac92aa591897f1d4905e9ea15815b54c8c536ecce9",
-    "src/vispy/app/backends/_qt.py": "da2f311cffc644424fe66c0b1f61a02138a37ccff367027a5963c668d585f27f",
+    "src/vispy/app/backends/_qt.py": "dc896132f59a227bd403b41a40541d6cf347eb2062f2c80678820818e3341992",
     "src/vispy/app/backends/_sdl2.py": "e9a778bedaaf0e53e91d390761eccbd2da628312678734d5ab5f1de7ecfb983a",
     "src/vispy/app/backends/_template.py": "cc5cf273be181f23af20bdbacf3da76f5e4cdbb389fe2bac4d54e4505ffcdf90",
     "src/vispy/app/backends/_test.py": "243cd95be6aafb578e335ebbce97f969659e227da5c3a17e93845c0e5ef03361",
@@ -208,7 +208,7 @@
     "src/vispy/gloo/tests/test_wrappers.py": "c4419b191b60b6dcd8a727bbd692e2cf5d39ce6a4c202f3e0622b3fec9eebefd",
     "src/vispy/gloo/texture.py": "6d78a96ebdc214f2b338e121c780a8f6ad4e6ed496de992c443d93b277a738d8",
     "src/vispy/gloo/util.py": "b02d4e33e2f4898df2989214e1e34e93ff61cc329954d88a2873814ffea6e74d",
-    "src/vispy/gloo/wrappers.py": "b32d9c2fa85f0de707dd88739f8f3e7c6ee0fcbb127ca4fb103ad9b1521496d6",
+    "src/vispy/gloo/wrappers.py": "498b5cd003edc941da975c5e97fb1eed7d7ffc24981c69dbb2176d8b100a2bf9",
     "src/vispy/glsl/__init__.py": "d1a5eb03bef4854feb08ab75a6c9398125248788d418985b592208b79a3189ad",
     "src/vispy/glsl/antialias/antialias.glsl": "52bdd6320ff49108c906b7c2ff75ef5ee03c3168c0c52c8e06f396082a803b71",
     "src/vispy/glsl/antialias/cap-butt.glsl": "f25cbb28f8424dcd21d4c369bf68a8d3b93a7806aebd2ab4cf31740425cdec28",
@@ -643,22 +643,22 @@
   },
   "architectures": {
     "arm64": {
-      "artifact_id": 14019940710,
-      "artifact_sha256": "e9804206c0ce31b772441cc45ad4f18fd1ada43b9c6244ecc543b9bffaff94e7",
-      "artifact_bytes": 23579660,
+      "artifact_id": 14071998833,
+      "artifact_bytes": 23608095,
+      "artifact_sha256": "8115da9c1eff44efd292e25907454c6f08e9de12e0b59d00cdda19044a5962a6",
       "max_expanded_bytes": 100663296,
       "recovered_members": []
     },
     "x86_64": {
-      "artifact_id": 14020592138,
-      "artifact_sha256": "6d8000592b4a28b59862da90ba175fc84044339872c34e11833e8f7192bccda7",
-      "artifact_bytes": 25542817,
+      "artifact_id": 14075000995,
+      "artifact_bytes": 25561678,
+      "artifact_sha256": "36390c31bcd7d6b5390eb23c3f8fbd439c1f0cf478caa929b40c8290189c2286",
       "max_expanded_bytes": 100663296,
       "recovered_members": []
     }
   },
   "package_metadata_inputs": {
-    "README.md": "8a484a3516fc0560406f78fc6d8bee77cf6f9ec07e545be00fb23134a8e9fe9a"
+    "README.md": "f6495489f4cd7873513142f019645de1375be07e31faa1384603c3cec07bcc1e"
   },
   "layout": "managed-v1"
 }

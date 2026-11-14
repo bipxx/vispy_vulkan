@@ -1,0 +1,130 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "PASS_FINITE_WINDOWS_ACTIVE_LAYOUT_REPARENT",
+  "coverage_ids": [
+    "LIF-02"
+  ],
+  "source_only": true,
+  "installed_qualified": false,
+  "actual_exit": 0,
+  "child_waited": true,
+  "gpu_tests_passed": 1,
+  "source_inputs": {
+    "cpp/runtime.cpp": "f344107e03ff6ce8b4302d8d681739ac9a4c813b3236daafb9d74cff43446fad",
+    "src/vispy/app/backends/_qt.py": "38c9971b2096ddafdf3de42609bff576ce9b39fa4bf2a63ebff1fcb6785ce6ce",
+    "tests/qt/test_native_close_gpu.py": "db3cfc877645ed99a1e55372416159c0cf7532ccc802384cc95f543af15d5c10",
+    "tests/qt/test_window_state_gpu.py": "42632b9cf033f53fad253e6b03eea17317a745f635a6e636c594719483f58980",
+    "tests/qt/test_layout_reparent_gpu.py": "08aea0db04ed4dd789bf9cc34756425822e7c11252ee95e664989716ccddbc23"
+  },
+  "native_outputs": [
+    {
+      "member": "vispy/_dawn.cp312-win_amd64.pyd",
+      "file": {
+        "path": "build/artifacts/6dc06d2c7c67f3de1f24f0aa496fc833afa2bb11fd05990d7e0656e744927473/_dawn.cp312-win_amd64.pyd",
+        "sha256": "6dc06d2c7c67f3de1f24f0aa496fc833afa2bb11fd05990d7e0656e744927473"
+      }
+    },
+    {
+      "member": "vispy/VkLayer_vispy_submit.dll",
+      "file": {
+        "path": "build/artifacts/ce85e1bf6add749f5289f041b0753f7eb23552fa8813ce85a41ccffc91f150f6/VkLayer_vispy_submit.dll",
+        "sha256": "ce85e1bf6add749f5289f041b0753f7eb23552fa8813ce85a41ccffc91f150f6"
+      }
+    },
+    {
+      "member": "vispy/VkLayer_vispy_submit.json",
+      "file": {
+        "path": "build/artifacts/7323cea73a46efcba615ca452d2b0235e3741109628c4bf2979c105e6ae69d56/VkLayer_vispy_submit.json",
+        "sha256": "7323cea73a46efcba615ca452d2b0235e3741109628c4bf2979c105e6ae69d56"
+      }
+    }
+  ],
+  "device": {
+    "backend": "Vulkan",
+    "adapter_type": "discrete",
+    "vendor": "nvidia",
+    "device": "NVIDIA GeForce RTX 4090",
+    "driver": "NVIDIA: 610.88 610.88.0.0",
+    "vendor_id": 4318,
+    "device_id": 9860,
+    "max_texture_dimension_1d": 32768,
+    "max_texture_dimension_2d": 32768,
+    "max_texture_dimension_3d": 16384,
+    "max_vertex_attributes": 30,
+    "max_vertex_buffers": 8,
+    "max_vertex_buffer_array_stride": 2048,
+    "max_storage_buffers_per_shader_stage": 16,
+    "max_uniform_buffers_per_shader_stage": 12,
+    "max_inter_stage_shader_variables": 30,
+    "max_storage_buffer_binding_size": 2147483644,
+    "max_bindings_per_bind_group": 1000,
+    "max_compute_invocations_per_workgroup": 1024,
+    "max_compute_workgroup_size_x": 1024,
+    "max_compute_workgroups_per_dimension": 65535,
+    "max_point_vertex_attributes": 30,
+    "core_features_and_limits": true,
+    "point_input_limit_scope": "all active user point inputs share one vertex buffer; exact vertex/instance identities use read-only vertex storage without reserving a user attribute; actual granted attribute/stride/storage/allocation limits apply",
+    "max_samplers_per_shader_stage": 16,
+    "max_sampled_textures_per_shader_stage": 48,
+    "max_buffer_size": 1099511627776,
+    "max_uniform_buffer_binding_size": 65536,
+    "software": false,
+    "float32_filterable": true,
+    "unorm16_texture_formats": true,
+    "bresenham_lines": true,
+    "last_vertex_provoking": true,
+    "timestamp_query": true,
+    "timestamp_quantization_ns": 65536,
+    "host_mapped_pointer": true,
+    "host_import_limit": 536870912,
+    "depth_stencil_storage": "depth24_unorm_stencil8",
+    "ok": true,
+    "error": "",
+    "loss_count": 0,
+    "revision": "117b054598f4758b598f4b8f48feea48c11fe7b0+dawn-499e5c6ff9b37d5de70c6493fb74c251e0d35c1c"
+  },
+  "implementation_source_head": "82ee789e0fc096e88f7b37537889a2b2407941ef",
+  "test_source_pushed": false,
+  "evidence_root": "D:\\vispy-vulkan-managed\\build\\runs\\qt-layout-corrected-565",
+  "profile": "Windows CPython3.12.8 PyQt6 readback RTX4090 Vulkan610.88; existing rebuilt native leaf reused",
+  "proved": [
+    "Two real layout reparent operations preserve the canvas identifier and usable program/buffer bindings",
+    "Deleting each old parent after reparent does not close the moved canvas",
+    "Red/green/blue pixel expectations pass before and after moves",
+    "Destroying/recreating the Qt native window produces a real WinIdChange; readback keeps Vulkan WSI detached and renders again",
+    "Exactly one explicit Canvas.close and all nine zero shutdown gauges"
+  ],
+  "shutdown_gauges": {
+    "pending_tickets": 0,
+    "queued_frames": 0,
+    "live_buffer_bytes": 0,
+    "live_cpu_buffer_bytes": 0,
+    "live_texture_bytes": 0,
+    "canvas_texture_bytes": 0,
+    "transient_buffer_bytes": 0,
+    "line_resource_pool_busy_slots": 0,
+    "line_resource_pool_bytes": 0
+  },
+  "prior_attempts": [
+    {
+      "run": "qt-layout-reparent-563",
+      "actual_exit": 3221226505,
+      "disposition": "Test setup error, diagnosed separately"
+    },
+    {
+      "run": "qt-layout-diagnostic-564",
+      "actual_exit": 3221226505,
+      "disposition": "Direct stderr proves QWidget was constructed before QApplication; test initialization corrected"
+    }
+  ],
+  "limitations": [
+    "No Linux or installed artifact result in this packet",
+    "No native WSI surface-loss claim",
+    "Deleting a parent while it still owns a live canvas is not this case",
+    "No cross-monitor/fractional-DPI or arbitrary geometry/mutation coverage"
+  ],
+  "sdk_rebuilt": false,
+  "new_environment": false,
+  "next": "Retain/clean, then apply same case to completed Linux artifact and include new test in integration"
+}

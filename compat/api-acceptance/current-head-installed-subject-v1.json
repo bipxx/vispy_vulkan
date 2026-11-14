@@ -1,0 +1,62 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "PASS_128_FROZEN_HEAD_SUBJECT_BINDINGS_NOT_ADMITTED",
+  "coverage_ids": [
+    "FIX-04",
+    "FIX-06",
+    "API-06",
+    "SHD-06",
+    "TOOL-01"
+  ],
+  "qualification_head": "6d6b233fe80f19887726c6b91a247aa863f6dfee",
+  "runtime_source_commit": "99719f1f7bdbb320318cf1ccd0eed39f336c7cce",
+  "candidate": "tk-state-resource-10",
+  "subject_sha256": "ab95c68ef2da5125f0a1a36c29e5504ce3b6b82e7e6a8df661e0da82ac295429",
+  "subject": {
+    "path": "@evidence/build/runs/current-head-installed-subject-642/qualification-subject.json",
+    "sha256": "4a3320b3018722b8bf3481db42298b22c99c12ab821debd4cbd3994c2fccf14d"
+  },
+  "result": {
+    "path": "@evidence/build/runs/current-head-installed-subject-642/subject-result.json",
+    "sha256": "5c8a2e34ac20e83b91c67d5759e34dbc259de99adeedf22f06878268bc87be33"
+  },
+  "materialization": {
+    "path": "@evidence/build/runs/current-head-installed-subject-642/materialization.json",
+    "sha256": "296fb97973d7090800c8e0e8a72b6135025bd6f6e626c5af3240becfb436674c"
+  },
+  "restoration": {
+    "path": "@evidence/build/runs/current-head-installed-subject-642/restoration.json",
+    "sha256": "60d43357a743fb96c4cdf3a0bf41f3b3b410451152c3707e4fcd9f6906f7b01d"
+  },
+  "actual_process": {
+    "path": "@evidence/build/runs/current-head-installed-subject-642/assembly-process.json",
+    "sha256": "226faeed3193e44446404901d0bac4df1f4998cf77384a7739a69776c22eb982"
+  },
+  "proved_criterion_profile_bindings": 128,
+  "distinct_criteria": 64,
+  "missing": 0,
+  "blocked": 0,
+  "exact_strict_attempts": 6,
+  "original_failed_attempts_preserved": 2,
+  "contributing_retained_inputs": 791,
+  "canonical_preparation_files_restored": 14,
+  "actual_exit": 0,
+  "child_waited": true,
+  "scratch_created": false,
+  "native_rebuilt": false,
+  "artifact_admitted": false,
+  "required_ci_passed": false,
+  "release_complete": false,
+  "scope": "Exact preparation10 finite installed subject proof using32selected rows, original native/archive data, separate strict/pytest consumers, six original replay histories and approved failure dispositions. All14frozen canonical JSON files restored. No original142-obligation, mandatory-eight-row, final-head CI, protected integration or public delivery transfer.",
+  "remaining": [
+    "Exact eight-row matrix admission using current reviewed observations",
+    "Required23-job CI at frozen6d6b233",
+    "Independent exact promotion/change-impact basis, protected integration and delivery"
+  ],
+  "committed_inputs": {
+    "path": "@evidence/build/runs/current-head-installed-subject-642/committed-inputs.json",
+    "sha256": "5e7ae892871ee36b073de305cd62dec20117e70ff91a240878e3a70231c2b60d"
+  },
+  "qualification_head_only_renewal": true
+}

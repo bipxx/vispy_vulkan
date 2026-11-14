@@ -1,0 +1,62 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "APPROVED_CURRENT_MANDATORY_PRE_ADMISSION_SCOPE",
+  "coverage_ids": [
+    "FIX-06",
+    "API-06",
+    "PLAT-08",
+    "TOOL-01"
+  ],
+  "runtime_source_commit": "2b8bccd0ac886f771c3e37255a3d5559c254b3cd",
+  "candidate": "tk-state-resource-12",
+  "reviewer_models": [
+    "claude-fable-5-2"
+  ],
+  "review_turns": 73,
+  "decision": {
+    "path": "@evidence/build/runs/parent-mandatory-peer-review-695/decision.json",
+    "sha256": "b307500c7f9d6d434468f483eec38ce7707677674ba3b6f265b5f2f0f44d1dff"
+  },
+  "raw_response": {
+    "path": "@evidence/build/runs/parent-mandatory-peer-review-695/review-response.json",
+    "sha256": "3b631caa0181af11124d2253fa164c7ca94c2fe61b564507b06dbc599c8acbbd"
+  },
+  "review_packet": {
+    "path": "@evidence/build/runs/parent-mandatory-peer-review-695/review-packet.json",
+    "sha256": "3a87c3537c4aa4741f73f80dac50d3903c4e286e7938b802547a84da39c568f6"
+  },
+  "reviewed_inputs": {
+    "path": "@evidence/build/runs/parent-mandatory-peer-review-695/inputs.json",
+    "sha256": "59db60fca2645a6470c9c9aed4e49ddd9f5b1deb0a7859cdbb1da035a2896c6d"
+  },
+  "actual_exit": 0,
+  "child_waited": true,
+  "required_changes": [],
+  "withheld": [
+    "Independent computation of any SHA-256, including the attempt digest, all 1143 bound inputs, wheels, receipts, inventories and the 633 fixture archive; all digest equalities are textual comparisons or coordinator reliance",
+    "Inspection or recomputation of ZIP contents (fixture archive 492 members, wheel 537 members, notice archives)",
+    "Direct inspection of rows 685, 686, 687, 689, 691 and of 692 reports; JUnit XML 95-case counts, 36 science case lists and patched Mesa 9c5 identity rest on audit.py and the coordinator",
+    "Unread ranges: 695/inputs.json lines 205-1148 except 593-600; 693/verification.json lines 200-1035; 693/matrix-draft.json lines 331-end; 694/histories.json lines 141-end except grep hits; 688/fixture-copy.json lines 61-end; most of the 688 receipts, reports and workers; all inventories",
+    "Whether rg default ignore/hidden filtering excluded any JSON from the 694 enumeration or prefilter; scans were not rerun",
+    "Origin of the cmd.exe child in replay-0 (no parent or command line recorded)",
+    "Windows Qt 384 MiB budget (mandatory-current-installed-v1.json not opened) and Tk 683 / 684 unadmitted status and 14 restored canonical files beyond terminal states and the finish.py assertion",
+    "Generic qualification_index retention acceptance, final qualification-head 23-job CI, exact matrix/Tk admission, promotion, integration, delivery, full API parity, physical Linux/Metal graphics, any machine or all-time history completeness claim"
+  ],
+  "failed_attempt_resolutions": [
+    {
+      "path": "@evidence/build/runs/parent-mandatory-peer-review-695/attempt-resolution-3567ee41f26ff8991c1a448efb103f8306a7e24678ade55fa55b17b34328fb7b.json",
+      "sha256": "374e621577924b671736b1e699e673fee166370e53327b0a76b54339c030e695"
+    }
+  ],
+  "qualification_index_retention_acceptance": false,
+  "artifact_admitted": false,
+  "required_ci_complete": false,
+  "release_approved": false,
+  "scope": "Exact current eight-row observation/binding/fixture reuse/manual original-retention/finite retained-history review only. Generic Tk contributing-retention/subject proof stays separate. No final matrix/Tk admission, CI, promotion, hardware/full-API or delivery approval.",
+  "remaining": [
+    "Resolve any required review changes before qualification source freeze",
+    "Owned final-head freeze and required23-job CI",
+    "Exact matrix/Tk admission and independent promotion basis, protected integration and delivery"
+  ]
+}

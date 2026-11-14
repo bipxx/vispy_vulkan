@@ -1,0 +1,233 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "PASS_STENCIL_PUBLIC_SOURCE_AND_BOUNDARY_DISPOSITION",
+  "coverage_ids": [
+    "SCI-06",
+    "API-05",
+    "API-06"
+  ],
+  "passed": 8,
+  "protocol_contracts_passed": 90,
+  "failed": 0,
+  "actual_exit": 0,
+  "child_waited": true,
+  "source_only": true,
+  "installed_qualified": false,
+  "artifact_admitted": false,
+  "stock_failures_preserved": [
+    {
+      "historical_case": "stencil_crop_float",
+      "stock_status": "FAILED_UNCHANGED",
+      "stock_error": "GL_STENCIL_INDEX8",
+      "current_disposition": "public-wrapper source support",
+      "installed_qualified": false
+    },
+    {
+      "historical_case": "stencil_float",
+      "stock_status": "FAILED_UNCHANGED",
+      "stock_error": "GL_STENCIL_INDEX8",
+      "current_disposition": "public-wrapper source support",
+      "installed_qualified": false
+    },
+    {
+      "historical_case": "stencil_gl_crop_float",
+      "stock_status": "FAILED_UNCHANGED",
+      "stock_error": "6401",
+      "current_disposition": "explicit raw refusal with public-wrapper recovery",
+      "installed_qualified": false
+    },
+    {
+      "historical_case": "stencil_gl_float",
+      "stock_status": "FAILED_UNCHANGED",
+      "stock_error": "6401",
+      "current_disposition": "explicit raw refusal with public-wrapper recovery",
+      "installed_qualified": false
+    },
+    {
+      "historical_case": "stencil_gl_noalpha_u8",
+      "stock_status": "FAILED_UNCHANGED",
+      "stock_error": "6401",
+      "current_disposition": "explicit raw refusal with public-wrapper recovery",
+      "installed_qualified": false
+    },
+    {
+      "historical_case": "stencil_gl_u8",
+      "stock_status": "FAILED_UNCHANGED",
+      "stock_error": "6401",
+      "current_disposition": "explicit raw refusal with public-wrapper recovery",
+      "installed_qualified": false
+    },
+    {
+      "historical_case": "stencil_noalpha_u8",
+      "stock_status": "FAILED_UNCHANGED",
+      "stock_error": "GL_STENCIL_INDEX8",
+      "current_disposition": "public-wrapper source support",
+      "installed_qualified": false
+    },
+    {
+      "historical_case": "stencil_u8",
+      "stock_status": "FAILED_UNCHANGED",
+      "stock_error": "GL_STENCIL_INDEX8",
+      "current_disposition": "public-wrapper source support",
+      "installed_qualified": false
+    }
+  ],
+  "source_inputs": {
+    "src/vispy/gloo/wrappers.py": "498b5cd003edc941da975c5e97fb1eed7d7ffc24981c69dbb2176d8b100a2bf9",
+    "src/vispy/gloo/gl/dawn.py": "73c88fe98b0da67eb42cb4d4ae76f6350c7e5256125b04ff3abb2c6069110b17",
+    "tests/gloo/test_stencil_public_routes_gpu.py": "26727a0d44405b43786210e3ae9f741e8d4f5efe06e39b10720aee2dfacb1857",
+    "tests/contract/test_qualification_linux_native.py": "ce4a171aed61ae052ca5e0fa0a3413e7011693284ab866b0bf712d2fe8ff9cb4",
+    "tools/qualification_linux_native.py": "05cfecfc2e752be3beabd7599567fc9f57fab0cfaf530bf358efbea80d068ba3",
+    "docs/stencil-wrapper-disposition.md": "9c611fd36329820168d78af5f95b7595e180b9c47a2687577b79f04b27f11e97",
+    "LICENSE": "0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0",
+    "LICENSE-BSD": "a28bb857d763513c810ca843558c12cf97f64b990b855c1ce7f5e291e52fc25c",
+    "LICENSING.md": "e8a28d2d2c78d86fa2b6f83284e8f1a32237f87bfd417fd1cdfc84c8f3ce37f5"
+  },
+  "native_outputs": [
+    {
+      "member": "vispy/_dawn.cp312-win_amd64.pyd",
+      "file": {
+        "path": "build/artifacts/6dc06d2c7c67f3de1f24f0aa496fc833afa2bb11fd05990d7e0656e744927473/_dawn.cp312-win_amd64.pyd",
+        "sha256": "6dc06d2c7c67f3de1f24f0aa496fc833afa2bb11fd05990d7e0656e744927473"
+      }
+    },
+    {
+      "member": "vispy/VkLayer_vispy_submit.dll",
+      "file": {
+        "path": "build/artifacts/ce85e1bf6add749f5289f041b0753f7eb23552fa8813ce85a41ccffc91f150f6/VkLayer_vispy_submit.dll",
+        "sha256": "ce85e1bf6add749f5289f041b0753f7eb23552fa8813ce85a41ccffc91f150f6"
+      }
+    },
+    {
+      "member": "vispy/VkLayer_vispy_submit.json",
+      "file": {
+        "path": "build/artifacts/7323cea73a46efcba615ca452d2b0235e3741109628c4bf2979c105e6ae69d56/VkLayer_vispy_submit.json",
+        "sha256": "7323cea73a46efcba615ca452d2b0235e3741109628c4bf2979c105e6ae69d56"
+      }
+    }
+  ],
+  "original_records": [
+    {
+      "path": "tests/reference/depth-capture-opengl/manifest.json",
+      "sha256": "7e9e31c9d883a71c903161a79279f1bbac4f2b4d9d282c3417d3a0de4ce9c024"
+    },
+    {
+      "path": "tests/reference/depth-capture-opengl/stencil_crop_float.stdout.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "tests/reference/depth-capture-opengl/stencil_crop_float.stderr.log",
+      "sha256": "bb8f57ea81d39ff9cc9f4b30709a6c59101f6a8bcbb3f3b09455c57f3fc45e56"
+    },
+    {
+      "path": "tests/reference/depth-capture-opengl/stencil_float.stdout.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "tests/reference/depth-capture-opengl/stencil_float.stderr.log",
+      "sha256": "bb8f57ea81d39ff9cc9f4b30709a6c59101f6a8bcbb3f3b09455c57f3fc45e56"
+    },
+    {
+      "path": "tests/reference/depth-capture-opengl/stencil_gl_crop_float.stdout.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "tests/reference/depth-capture-opengl/stencil_gl_crop_float.stderr.log",
+      "sha256": "3ca217c69e7792759b69092ff4a87db0d65cece0a6fa1169e0f7a283b5394d37"
+    },
+    {
+      "path": "tests/reference/depth-capture-opengl/stencil_gl_float.stdout.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "tests/reference/depth-capture-opengl/stencil_gl_float.stderr.log",
+      "sha256": "3ca217c69e7792759b69092ff4a87db0d65cece0a6fa1169e0f7a283b5394d37"
+    },
+    {
+      "path": "tests/reference/depth-capture-opengl/stencil_gl_noalpha_u8.stdout.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "tests/reference/depth-capture-opengl/stencil_gl_noalpha_u8.stderr.log",
+      "sha256": "3ca217c69e7792759b69092ff4a87db0d65cece0a6fa1169e0f7a283b5394d37"
+    },
+    {
+      "path": "tests/reference/depth-capture-opengl/stencil_gl_u8.stdout.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "tests/reference/depth-capture-opengl/stencil_gl_u8.stderr.log",
+      "sha256": "3ca217c69e7792759b69092ff4a87db0d65cece0a6fa1169e0f7a283b5394d37"
+    },
+    {
+      "path": "tests/reference/depth-capture-opengl/stencil_noalpha_u8.stdout.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "tests/reference/depth-capture-opengl/stencil_noalpha_u8.stderr.log",
+      "sha256": "bb8f57ea81d39ff9cc9f4b30709a6c59101f6a8bcbb3f3b09455c57f3fc45e56"
+    },
+    {
+      "path": "tests/reference/depth-capture-opengl/stencil_u8.stdout.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "tests/reference/depth-capture-opengl/stencil_u8.stderr.log",
+      "sha256": "bb8f57ea81d39ff9cc9f4b30709a6c59101f6a8bcbb3f3b09455c57f3fc45e56"
+    }
+  ],
+  "device": {
+    "backend": "Vulkan",
+    "adapter_type": "discrete",
+    "vendor": "nvidia",
+    "device": "NVIDIA GeForce RTX 4090",
+    "driver": "NVIDIA: 610.88 610.88.0.0",
+    "vendor_id": 4318,
+    "device_id": 9860,
+    "max_texture_dimension_1d": 32768,
+    "max_texture_dimension_2d": 32768,
+    "max_texture_dimension_3d": 16384,
+    "max_vertex_attributes": 30,
+    "max_vertex_buffers": 8,
+    "max_vertex_buffer_array_stride": 2048,
+    "max_storage_buffers_per_shader_stage": 16,
+    "max_uniform_buffers_per_shader_stage": 12,
+    "max_inter_stage_shader_variables": 30,
+    "max_storage_buffer_binding_size": 2147483644,
+    "max_bindings_per_bind_group": 1000,
+    "max_compute_invocations_per_workgroup": 1024,
+    "max_compute_workgroup_size_x": 1024,
+    "max_compute_workgroups_per_dimension": 65535,
+    "max_point_vertex_attributes": 30,
+    "core_features_and_limits": true,
+    "point_input_limit_scope": "all active user point inputs share one vertex buffer; exact vertex/instance identities use read-only vertex storage without reserving a user attribute; actual granted attribute/stride/storage/allocation limits apply",
+    "max_samplers_per_shader_stage": 16,
+    "max_sampled_textures_per_shader_stage": 48,
+    "max_buffer_size": 1099511627776,
+    "max_uniform_buffer_binding_size": 65536,
+    "software": false,
+    "float32_filterable": true,
+    "unorm16_texture_formats": true,
+    "bresenham_lines": true,
+    "last_vertex_provoking": true,
+    "timestamp_query": true,
+    "timestamp_quantization_ns": 65536,
+    "host_mapped_pointer": true,
+    "host_import_limit": 536870912,
+    "depth_stencil_storage": "depth24_unorm_stencil8",
+    "ok": true,
+    "error": "",
+    "loss_count": 0,
+    "revision": "117b054598f4758b598f4b8f48feea48c11fe7b0+dawn-499e5c6ff9b37d5de70c6493fb74c251e0d35c1c"
+  },
+  "profile": "Windows CPython3.12.8 RTX4090 Vulkan610.88, headless single-sample8x6 packed depth/stencil",
+  "shutdown": "All nine gauges asserted zero in every selected case",
+  "evidence_root": "D:\\vispy-vulkan-managed\\build\\runs\\stencil-public-routes-574",
+  "limits": [
+    "No unchanged-stock-wrapper admission or raw glReadPixels implementation",
+    "No arbitrary format/mask/MSAA claim; WSL and installed acceptance pending for this new test"
+  ],
+  "minor_review_followup": "Historical workflow payload reconstructed from pinned fixture and asserted against accepted hash; no live-workflow coupling",
+  "next": "Run same eight source cases under WSL using verified existing Linux native, then integrate and installed-qualify selected changes"
+}

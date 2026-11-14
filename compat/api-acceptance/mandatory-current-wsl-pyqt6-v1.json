@@ -1,0 +1,115 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "PASS_CURRENT_WSL_PYQT6_MANDATORY_ROW_OBSERVATION_NOT_ADMITTED",
+  "coverage_ids": [
+    "FIX-06",
+    "LIF-02",
+    "LIF-04",
+    "PLAT-08",
+    "TOOL-01"
+  ],
+  "row": "wsl-linux-lavapipe-x11-qwidget-pyqt6",
+  "source_commit": "99719f1f7bdbb320318cf1ccd0eed39f336c7cce",
+  "wheel": {
+    "path": "build/artifacts/b728b57541a387385fee588d81cb41402890a64489a7d91a3f2fb22b3e2df7c0/vispy-0.17.0+vulkan.2-cp312-cp312-manylinux_2_39_x86_64.whl",
+    "sha256": "b728b57541a387385fee588d81cb41402890a64489a7d91a3f2fb22b3e2df7c0"
+  },
+  "report": {
+    "path": "@evidence/build/runs/mandatory-current-wsl-pyqt6-629/reports/replay-0.json",
+    "sha256": "ad848d27acb5c345197ed71c596f8cbc5c99616ed94649e2ef6b8f65b82a3151"
+  },
+  "worker": {
+    "path": "@evidence/build/runs/mandatory-current-wsl-pyqt6-629/reports/replay-0.worker.json",
+    "sha256": "38b7974a90da4b564103500148c96d26277162247c6ec86151db7d42257fe6de"
+  },
+  "receipt": {
+    "path": "@evidence/build/runs/mandatory-current-wsl-pyqt6-629/reports/receipt-0.json",
+    "sha256": "5b7f846e74b2603af5bb3094815ff732f279f2840cf969edae022890a8c996d7"
+  },
+  "functional_result": {
+    "path": "@evidence/build/runs/mandatory-current-wsl-pyqt6-629/reports/replay-0-features/functional.json",
+    "sha256": "c08d86ea0be757c7b8be92831ad7976dcb4478605157f0bcb95059a1c9e20cce"
+  },
+  "functional_stages": [
+    "exact_installed_artifact",
+    "device_and_qt_binding",
+    "qwidget_show_parent_resize",
+    "qwidget_capture_update_and_image_ownership",
+    "qwidget_overlay_interaction_hide_restore",
+    "qwidget_device_loss_recovery",
+    "qwidget_close"
+  ],
+  "device": {
+    "backend": "Vulkan",
+    "adapter_type": "cpu",
+    "vendor": "mesa",
+    "device": "llvmpipe (LLVM 18.1.3, 256 bits)",
+    "driver": "llvmpipe: Mesa 26.1.8 (LLVM 18.1.3)",
+    "vendor_id": 65541,
+    "device_id": 0,
+    "max_texture_dimension_1d": 16384,
+    "max_texture_dimension_2d": 16384,
+    "max_texture_dimension_3d": 4096,
+    "max_vertex_attributes": 30,
+    "max_vertex_buffers": 8,
+    "max_vertex_buffer_array_stride": 2048,
+    "max_storage_buffers_per_shader_stage": 16,
+    "max_uniform_buffers_per_shader_stage": 12,
+    "max_inter_stage_shader_variables": 30,
+    "max_storage_buffer_binding_size": 134217728,
+    "max_bindings_per_bind_group": 1000,
+    "max_compute_invocations_per_workgroup": 1024,
+    "max_compute_workgroup_size_x": 1024,
+    "max_compute_workgroups_per_dimension": 65535,
+    "max_point_vertex_attributes": 30,
+    "core_features_and_limits": true,
+    "point_input_limit_scope": "all active user point inputs share one vertex buffer; exact vertex/instance identities use read-only vertex storage without reserving a user attribute; actual granted attribute/stride/storage/allocation limits apply",
+    "max_samplers_per_shader_stage": 16,
+    "max_sampled_textures_per_shader_stage": 48,
+    "max_buffer_size": 4294967295,
+    "max_uniform_buffer_binding_size": 65536,
+    "software": true,
+    "float32_filterable": true,
+    "unorm16_texture_formats": true,
+    "bresenham_lines": true,
+    "last_vertex_provoking": true,
+    "timestamp_query": true,
+    "timestamp_quantization_ns": 65536,
+    "host_mapped_pointer": true,
+    "host_import_limit": 536870912,
+    "depth_stencil_storage": "depth24_unorm_stencil8",
+    "ok": true,
+    "error": "",
+    "loss_count": 0,
+    "revision": "117b054598f4758b598f4b8f48feea48c11fe7b0+dawn-499e5c6ff9b37d5de70c6493fb74c251e0d35c1c"
+  },
+  "binding": "pyqt6",
+  "qt_runtime_version": "6.11.2",
+  "qt_platform": "xcb",
+  "environment_id": "4f4ccc2ccb73da1a270e7899b8c16dda91e7b73c799e10125e85eb7e6cc65c4a",
+  "installed_members_verified": 537,
+  "source_overrides": 0,
+  "shutdown_gauges": {
+    "pending_tickets": 0,
+    "queued_frames": 0,
+    "live_buffer_bytes": 0,
+    "live_cpu_buffer_bytes": 0,
+    "live_texture_bytes": 0,
+    "canvas_texture_bytes": 0,
+    "transient_buffer_bytes": 0,
+    "line_resource_pool_busy_slots": 0,
+    "line_resource_pool_bytes": 0,
+    "host_import_pinned_bytes": 0
+  },
+  "actual_exit": 0,
+  "child_waited": true,
+  "xvfb_exited": true,
+  "artifact_admitted": false,
+  "mandatory_rows_current_observed": 4,
+  "scope": "Exact WSL CPython3.12.13/filtered PyQt6 private Xvfb X11 with original patched Mesa9c5 software Vulkan and read-only rootfs/dependency lower. Seven finite QWidget stages and first strict replay pass. Discovery stays UNVERIFIED; no physical Linux GPU, Metal, other-binding, broad API or release transfer.",
+  "remaining": [
+    "Four other mandatory row renewals",
+    "Independent exact admission/promotion basis, final-head CI, protected integration and delivery"
+  ]
+}

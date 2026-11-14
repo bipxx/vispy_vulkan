@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "FAILED_MISMATCHED_LOCAL_NATIVE_BEFORE_LIFECYCLE_ASSERTIONS",
+  "coverage_ids": [
+    "LIF-03"
+  ],
+  "actual_exit": 1,
+  "child_waited": true,
+  "source_only": true,
+  "installed_qualified": false,
+  "cause": "Local native binary lacks submission-contract glFlush support required by current Python parser; original strict guard refused it",
+  "native_sha256": "28e202e45b2975d71688196352035fd39fa73a09186d297169a4b102343b083f",
+  "evidence_root": "D:\\vispy-vulkan-managed\\build\\runs\\qt-window-state-gpu-549",
+  "next": "Reuse exact qualified wheel native payload without modifying the local binary or weakening the guard"
+}

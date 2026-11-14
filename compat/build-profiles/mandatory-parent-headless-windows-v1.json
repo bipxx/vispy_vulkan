@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "name": "mandatory-parent-headless-windows-v1",
+  "owner": "root-mandatory-current",
+  "storage_workspace": "D:/vispy-vulkan-managed",
+  "source_workspace": "C:/Users/HEQ/Projects/vispy_vulkan",
+  "registry": "D:/vispy-vulkan-managed/build/.hygiene/registry-preparation10-successor-613.json",
+  "expected_peak_bytes": 268435456,
+  "aggregate_max_scratch_bytes": 21474836480,
+  "min_free_bytes": 10737418240,
+  "purpose": "Renew current Windows headless mandatory observation with original95GPU/rendering/4096marker/36science assertions; no native production.",
+  "consumer": "One isolated clean CPython3.12.8 consumer in registered scratch. Install five existing hash-locked core wheels and Windows9e4e30cc wheel offline. Reuse only the five locked pytest-related distributions (pytest9.1.1, pluggy1.6.0, iniconfig2.3.1, Pygments2.21.0, colorama0.4.6) from existing project .venv by copying RECORD-listed non-bytecode files with source RECORD hash/size verification. This is a selected fixture-package closure, never an environment tree copy. Preserve metadata/licenses; entry-point launchers are copied as recorded but not invoked: original bundle calls pytest.main through the clean Python.",
+  "budget_basis": "Prior Windows headless row used256MiB. No Qt or SDK installed, no copied dependency cache/history; runtime wheels and selected pure-Python fixture files fit the same bounded consumer/cache/temp budget. Shared20GiB scratch and10GiB reserve unchanged.",
+  "checks": "Original95GPU cases/JUnit, ABI/renderbuffer/clear/smooth text,4096marker and36scientific checks, same-process installed537members/origins and zero final gauges; discovery/inventory/strict replay. Record exact selected fixture versions, RECORD/source hashes and unchanged test inputs. Only stale source/producer labels in a copied GPU wrapper may be corrected; expectations/assertions unchanged.",
+  "guards": "Check source/backing/store reserves and shared managed scratch. Continuous child guards tolerate only disappearing test-owned files, enforce declared scratch and wall limits, terminate/wait only owned children, and preserve failures. WSL rows additionally require guest/backing checks and their selected driver/rootfs inputs.",
+  "cleanup": "Retain actual exits/waits, all reports/traces, source and original licenses plus exact immutable dependency/artifact references outside scratch. Clean producer-owned cache through its supported command; inspect/apply the bounded managed cleanup using registry613 and report results before the next row.",
+  "scope": "Current Windows headless finite authored observation only. No fixture entry-point launcher, performance, all-API, matrix/release or other-profile admission. Existing cache has pytest9.2.0 only; do not substitute it for the recorded9.1.1 installation. Successor changes only selected candidate wheel and retained fixture-archive reuse; budget, versions and expectations unchanged.",
+  "predecessor": {
+    "path": "compat/build-profiles/mandatory-current-headless-windows-v1.json",
+    "sha256": "fb12055746220318a32dde4c25f547088d2840f234ef9f11326997727454f797"
+  }
+}

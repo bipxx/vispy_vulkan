@@ -1,0 +1,36 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "FAILED_TEST_SETUP_NOT_RENDERER_EVIDENCE",
+  "coverage_ids": [
+    "SCI-02",
+    "SCI-05"
+  ],
+  "fixture_id": "E03",
+  "runtime_source_commit": "99719f1f7bdbb320318cf1ccd0eed39f336c7cce",
+  "test_sha256": "a15d63f251ff2427a621963af67335d5eb95e8856fffd47dd8c9e0393d83c33c",
+  "wheel": {
+    "path": "build/artifacts/6de6d77fadd69e0e6c4c5ef0ce8cf63f8c0a680c4c3d0ca5c9550e911ddab7f5/vispy-0.17.0+vulkan.2-cp312-cp312-win_amd64.whl",
+    "sha256": "6de6d77fadd69e0e6c4c5ef0ce8cf63f8c0a680c4c3d0ca5c9550e911ddab7f5"
+  },
+  "passed": 0,
+  "failed": 4,
+  "actual_exit": 1,
+  "child_waited": true,
+  "cause": "New test used unsupported RenderBuffer format string rgba; public constructor accepts color/depth/stencil. Failure precedes pending-draw assertions.",
+  "scope": "Initial source-test fixture attempt on exact Windows installed candidate; no renderer defect or filter acceptance established",
+  "shutdown_gauges": {
+    "pending_tickets": 0,
+    "queued_frames": 0,
+    "live_buffer_bytes": 0,
+    "live_cpu_buffer_bytes": 0,
+    "live_texture_bytes": 0,
+    "canvas_texture_bytes": 0,
+    "transient_buffer_bytes": 0,
+    "line_resource_pool_busy_slots": 0,
+    "line_resource_pool_bytes": 0,
+    "host_import_pinned_bytes": 0
+  },
+  "evidence_root": "D:\\vispy-vulkan-managed\\build\\runs\\mesh-filter-current-windows-600",
+  "next": "Use documented color format and fixture-scoped canvas cleanup, then a separately registered new test run"
+}

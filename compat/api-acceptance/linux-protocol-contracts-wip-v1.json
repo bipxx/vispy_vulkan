@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "PARTIAL_PROTOCOL_SOURCE_CONTRACTS",
+  "passed": 88,
+  "failed": 1,
+  "actual_exit": 1,
+  "child_waited": true,
+  "source_only": true,
+  "artifact_admitted": false,
+  "native_build_join_verified": false,
+  "remaining_failure": "Historical candidate/tool identities differ from live source before intended review gate",
+  "correction": "Workflow replacement fixture now updates CI workflow SHA as well as source maps/archive",
+  "evidence_root": "D:\\vispy-vulkan-managed\\build\\runs\\linux-protocol-source-569",
+  "source_sha256": {
+    "tools/qualification_linux_native.py": "05cfecfc2e752be3beabd7599567fc9f57fab0cfaf530bf358efbea80d068ba3",
+    "tests/contract/test_qualification_linux_native.py": "ac7867f8cbf32fe1c9935127c3013d7fbc710f22babedd7b0f85209551f7ffc4"
+  },
+  "next": "Repair historical review-gate fixture without bypassing the real candidate validator; independent protocol review and original capture validation remain pending"
+}

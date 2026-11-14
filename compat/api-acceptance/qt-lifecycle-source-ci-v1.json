@@ -1,0 +1,66 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "WIP_SOURCE_PUBLISHED_LINUX_FRESH_CI_PENDING",
+  "coverage_ids": [
+    "API-05",
+    "LIF-01",
+    "LIF-02",
+    "LIF-03",
+    "LIF-04",
+    "TOOL-01"
+  ],
+  "source_commit": "82ee789e0fc096e88f7b37537889a2b2407941ef",
+  "tree": "21bf607cdae9db5e2f4b301835550b198ced93e0",
+  "branch": "wip/qt-lifecycle-native-562",
+  "changed_files": 19,
+  "cpp_sha256": "f344107e03ff6ce8b4302d8d681739ac9a4c813b3236daafb9d74cff43446fad",
+  "qt_sha256": "38c9971b2096ddafdf3de42609bff576ce9b39fa4bf2a63ebff1fcb6785ce6ce",
+  "windows_source_validation": "53CPU checks,44native CTests and3Vulkan lifecycle cases; both close scenarios nine zero gauges",
+  "linux_ci": {
+    "id": 43471568101,
+    "url": "https://github.com/bipxx/vispy_vulkan/actions/runs/43471568101",
+    "status": "in_progress",
+    "conclusion": null,
+    "job_id": 132044531036,
+    "job_status": "in_progress"
+  },
+  "linux_production_decision": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\qt-lifecycle-source-ci-562\\linux-production-decision.json",
+    "sha256": "70fa850a1e0215e057e4e998925968c475f2f0fc4c6e9c7fc4b4ac0344591557"
+  },
+  "cleanup": {
+    "status": "PASS_APPLY_AND_RETAINED_REHASH",
+    "scratch_absent": true,
+    "deleted": 2,
+    "retained_verified": 115,
+    "reclaimed_bytes": 15078029
+  },
+  "owner_index_unchanged": true,
+  "installed_qualified": false,
+  "artifact_admitted": false,
+  "limits": "No current Linux pass until actual fresh producer completes and its exact artifact is tested in WSL. Published Vulkan.2 wheels remain their historical identities.",
+  "evidence_root": "D:\\vispy-vulkan-managed\\build\\runs\\qt-lifecycle-source-ci-562",
+  "poll_processes": [
+    {
+      "argv": [
+        "gh",
+        "api",
+        "repos/bipxx/vispy_vulkan/actions/runs/43471568101"
+      ],
+      "actual_exit": 0,
+      "child_pid": 14008,
+      "child_waited": true
+    },
+    {
+      "argv": [
+        "gh",
+        "api",
+        "repos/bipxx/vispy_vulkan/actions/runs/43471568101/jobs"
+      ],
+      "actual_exit": 0,
+      "child_pid": 31040,
+      "child_waited": true
+    }
+  ]
+}

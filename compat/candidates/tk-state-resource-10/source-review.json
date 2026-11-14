@@ -1,0 +1,41 @@
+{
+  "schema": 1,
+  "status": "APPROVED",
+  "kind": "source",
+  "independent": true,
+  "reviewer": "Claude peer review (claude-fable-5-2), preparation10 run609",
+  "candidate_scope_sha256": "0b66899655d9092c079826290c5d7138199ddeeb55f6dc3b1edfd3d3fff587e3",
+  "native_reuse_links": [
+    "34cb3fef762c268a0a71788841d279a7c96b79e1477b22a982da7c19d006a444",
+    "114cdf84085c7b846be920d8ae4a72f0a05cb9ee9baeeb4a5fc7cd261876ddbd"
+  ],
+  "evidence": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\lifecycle-preparation10-peer-609\\review-response.md",
+    "sha256": "3fe779a0a178d6f4bd8f5f35fee167e7f725dbf5fda009cc34536b067d6d25bc"
+  },
+  "raw_response": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\lifecycle-preparation10-peer-609\\review-response.json",
+    "sha256": "f44ead0ca644301e434fd8c073aabe4e43b1ba173e5f5e8ba2493ca8a996277d"
+  },
+  "decision": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\lifecycle-preparation10-peer-609\\decision.json",
+    "sha256": "779399a9bed969fb6564eb6258c82e71d1056893d9338eec66449b6ad8a65ac5"
+  },
+  "limitations": [
+    "Read-only review; only audit_readonly.py and standard-library JSON/hash arithmetic were run",
+    "Approval covers source, scope and the two exact reuse digests only; no installed, strict-profile, CI, merge, GPU or release promotion and no artifact admission",
+    "Qt claims are top-level PyQt6 windows only; embedded parents, PyQt5, PySide6 and broad WSI remain unclaimed",
+    "System Mesa 25.2.8 MSAA4 stays failed; the selected WSL profile uses patched driver 9c5c41b3; physical Linux GPU and Metal graphics remain unqualified",
+    "128 means 64 distinct criteria across 2 profiles, all script-ready and unexecuted in preparation 10; all 142 original obligations remain required and incomplete",
+    "New science tests and the Metal pin are uncommitted; scene-state evidence is Windows only",
+    "Any change to the candidate, the workflow selector or the listed inputs supersedes this scope hash and both digests"
+  ],
+  "withheld": [
+    "execution.json execution.scope_sha256 673bad47: not reproduced with the two digest forms tried",
+    "production_sha256 for both platforms and the Windows recipe hash derivation: taken from run 608, not recomputed (would need the validators)",
+    "Frozen comparison criteria inside tools/fixture_mesh_layout_extensions.compare: file hash checked, logic not read",
+    "Stencil public-route, paint-scope and point-identity test sources: not read",
+    "Any runtime behaviour: nothing executed; Qt close and resize reasoning is from reading"
+  ],
+  "qualification_approved": false
+}

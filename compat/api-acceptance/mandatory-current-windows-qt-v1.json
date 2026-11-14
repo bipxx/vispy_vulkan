@@ -1,0 +1,73 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "PASS_THREE_CURRENT_WINDOWS_QT_MANDATORY_OBSERVATIONS_NOT_ADMITTED",
+  "coverage_ids": [
+    "FIX-06",
+    "LIF-02",
+    "LIF-04",
+    "PLAT-08",
+    "TOOL-01"
+  ],
+  "source_commit": "99719f1f7bdbb320318cf1ccd0eed39f336c7cce",
+  "rows": [
+    {
+      "row": "windows-vulkan-qwidget-pyqt5",
+      "packet": {
+        "path": "compat/api-acceptance/mandatory-current-windows-pyqt5-v1.json",
+        "sha256": "18be2afb8e63774c478cdb54a3b9e2a9bbfe3ca7237d74c2cf9f330d2e0486a9"
+      },
+      "wheel": {
+        "path": "build/artifacts/6de6d77fadd69e0e6c4c5ef0ce8cf63f8c0a680c4c3d0ca5c9550e911ddab7f5/vispy-0.17.0+vulkan.2-cp312-cp312-win_amd64.whl",
+        "sha256": "6de6d77fadd69e0e6c4c5ef0ce8cf63f8c0a680c4c3d0ca5c9550e911ddab7f5"
+      },
+      "environment_id": "142354974cfba6e001babe4f4f9887cfa486d973a12c70c66f4975ece1870db8",
+      "binding": "pyqt5",
+      "qt_runtime_version": "5.15.2",
+      "functional_stages": 7
+    },
+    {
+      "row": "windows-vulkan-qwidget-pyqt6",
+      "packet": {
+        "path": "compat/api-acceptance/mandatory-current-windows-pyqt6-v1.json",
+        "sha256": "c5d909929478c032d0a516f390e8247775d409f40c011df9ee726a0cb34789db"
+      },
+      "wheel": {
+        "path": "build/artifacts/6de6d77fadd69e0e6c4c5ef0ce8cf63f8c0a680c4c3d0ca5c9550e911ddab7f5/vispy-0.17.0+vulkan.2-cp312-cp312-win_amd64.whl",
+        "sha256": "6de6d77fadd69e0e6c4c5ef0ce8cf63f8c0a680c4c3d0ca5c9550e911ddab7f5"
+      },
+      "environment_id": "95bae638f9058b7eed537bc8adce515e7d2ce5fbfd3a6d25c80002acac393d56",
+      "binding": "pyqt6",
+      "qt_runtime_version": "6.11.2",
+      "functional_stages": 7
+    },
+    {
+      "row": "windows-vulkan-qwidget-pyside6",
+      "packet": {
+        "path": "compat/api-acceptance/mandatory-current-windows-pyside6-v1.json",
+        "sha256": "ee386d4d148f6537e006694711277f0f83493b91c35aae99b3d906dfca1d36ae"
+      },
+      "wheel": {
+        "path": "build/artifacts/6de6d77fadd69e0e6c4c5ef0ce8cf63f8c0a680c4c3d0ca5c9550e911ddab7f5/vispy-0.17.0+vulkan.2-cp312-cp312-win_amd64.whl",
+        "sha256": "6de6d77fadd69e0e6c4c5ef0ce8cf63f8c0a680c4c3d0ca5c9550e911ddab7f5"
+      },
+      "environment_id": "1c4a9064576f523abc3224d13ad3eefa8b16f9324d8c1a4d4f7b3fcf584acb18",
+      "binding": "pyside6",
+      "qt_runtime_version": "6.12.0",
+      "functional_stages": 7
+    }
+  ],
+  "current_mandatory_observations": 3,
+  "total_mandatory_rows": 8,
+  "rows_remaining": 5,
+  "actual_exit": 0,
+  "child_waited": true,
+  "scratch_created": false,
+  "artifact_admitted": false,
+  "remaining": [
+    "Windows headless",
+    "WSL headless, PyQt5, PyQt6 and PySide6",
+    "Independent exact admission and promotion basis, final-head CI, protected integration and delivery"
+  ],
+  "scope": "Three distinct locked Windows plain-QWidget profiles on the exact current wheel. No transfer across bindings or to other lifecycle/input modes, physical Linux GPU/Metal graphics, full parity or release."
+}

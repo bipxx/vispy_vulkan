@@ -1,0 +1,325 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "PASS_EIGHT_CURRENT_WHEEL_OBSERVATIONS_ADMISSION_PENDING",
+  "source_commit": "99719f1f7bdbb320318cf1ccd0eed39f336c7cce",
+  "rows": [
+    {
+      "row": "windows-vulkan-headless",
+      "packet": {
+        "path": "compat/api-acceptance/mandatory-current-windows-headless-v1.json",
+        "sha256": "310b7bc5559d9e6acc2c413d3e360659cb22d97aa05445b1b5b55e68e3d018d4"
+      },
+      "wheel": {
+        "path": "build/artifacts/6de6d77fadd69e0e6c4c5ef0ce8cf63f8c0a680c4c3d0ca5c9550e911ddab7f5/vispy-0.17.0+vulkan.2-cp312-cp312-win_amd64.whl",
+        "sha256": "6de6d77fadd69e0e6c4c5ef0ce8cf63f8c0a680c4c3d0ca5c9550e911ddab7f5"
+      },
+      "report": {
+        "path": "@evidence/build/runs/mandatory-current-windows-headless-633/replay-0.json",
+        "sha256": "0b0af4bf0b6a7b3c2bd927fb1a7547873d529ebf51e1090f1fd0b99d6564f9bc"
+      },
+      "worker": {
+        "path": "@evidence/build/runs/mandatory-current-windows-headless-633/replay-0.worker.json",
+        "sha256": "3752f68fe2eb487470741a097d9d84f9e77b4d4d67d0c78b6fa7ce1db4926b56"
+      },
+      "receipt": {
+        "path": "@evidence/build/runs/mandatory-current-windows-headless-633/receipt-0.json",
+        "sha256": "96ce8a5e6436c96c4c985bc815385e9edd8a732f7e90b9bcb49375e40e13355d"
+      },
+      "graphics_gates": "PASS_ALL_NO_OPENGL_GATES",
+      "installed_members_verified": 537,
+      "zero_shutdown_gauges": 10,
+      "environment_id": "7335bb0023926c62bb7bf4c355fb8a531d844b4cee2fa435d2fc0e9ed83e7a9f",
+      "functional_summary": {
+        "gpu_tests": 95,
+        "rendering_status": "PASS_INSTALLED_ABI_RENDERBUFFER_CLEAR_SMOOTH_TEXT",
+        "markers": 4096,
+        "science_cases": 36,
+        "bundle_sha256": "bf93bea79f1c1552437dc898f8bc445ca3f90f7b00f9b2df3d71f2d212426313"
+      },
+      "artifact_admitted": false
+    },
+    {
+      "row": "windows-vulkan-qwidget-pyqt5",
+      "packet": {
+        "path": "compat/api-acceptance/mandatory-current-windows-pyqt5-v1.json",
+        "sha256": "18be2afb8e63774c478cdb54a3b9e2a9bbfe3ca7237d74c2cf9f330d2e0486a9"
+      },
+      "wheel": {
+        "path": "build/artifacts/6de6d77fadd69e0e6c4c5ef0ce8cf63f8c0a680c4c3d0ca5c9550e911ddab7f5/vispy-0.17.0+vulkan.2-cp312-cp312-win_amd64.whl",
+        "sha256": "6de6d77fadd69e0e6c4c5ef0ce8cf63f8c0a680c4c3d0ca5c9550e911ddab7f5"
+      },
+      "report": {
+        "path": "@evidence/build/runs/mandatory-current-windows-pyqt5-627/replay-0.json",
+        "sha256": "6a500024e33404aa401404a9896516a07f863316c6d222b11f0ddb5a952c9472"
+      },
+      "worker": {
+        "path": "@evidence/build/runs/mandatory-current-windows-pyqt5-627/replay-0.worker.json",
+        "sha256": "072e776a10e0dfac66ee56fd8a6664c4c0380fc27073a1eaea1645b5190db742"
+      },
+      "receipt": {
+        "path": "@evidence/build/runs/mandatory-current-windows-pyqt5-627/receipt-0.json",
+        "sha256": "62b3e0e9d5d6892b7a673d00b9742bf38f2a3cfa5000a147adade600a5e9f659"
+      },
+      "graphics_gates": "PASS_ALL_NO_OPENGL_GATES",
+      "installed_members_verified": 537,
+      "zero_shutdown_gauges": 10,
+      "environment_id": "142354974cfba6e001babe4f4f9887cfa486d973a12c70c66f4975ece1870db8",
+      "functional_summary": {
+        "stages": [
+          "exact_installed_artifact",
+          "device_and_qt_binding",
+          "qwidget_show_parent_resize",
+          "qwidget_capture_update_and_image_ownership",
+          "qwidget_overlay_interaction_hide_restore",
+          "qwidget_device_loss_recovery",
+          "qwidget_close"
+        ]
+      },
+      "artifact_admitted": false
+    },
+    {
+      "row": "windows-vulkan-qwidget-pyqt6",
+      "packet": {
+        "path": "compat/api-acceptance/mandatory-current-windows-pyqt6-v1.json",
+        "sha256": "c5d909929478c032d0a516f390e8247775d409f40c011df9ee726a0cb34789db"
+      },
+      "wheel": {
+        "path": "build/artifacts/6de6d77fadd69e0e6c4c5ef0ce8cf63f8c0a680c4c3d0ca5c9550e911ddab7f5/vispy-0.17.0+vulkan.2-cp312-cp312-win_amd64.whl",
+        "sha256": "6de6d77fadd69e0e6c4c5ef0ce8cf63f8c0a680c4c3d0ca5c9550e911ddab7f5"
+      },
+      "report": {
+        "path": "@evidence/build/runs/mandatory-current-windows-pyqt6-626/replay-0.json",
+        "sha256": "390b6a89648bcaf8b2ba9bb0420c55a9c0a99fd2f28dfefff9b00c697223e438"
+      },
+      "worker": {
+        "path": "@evidence/build/runs/mandatory-current-windows-pyqt6-626/replay-0.worker.json",
+        "sha256": "af8c09fdec534154a0b73c889a827e65ce77e1bacba987c8158b6aee35869ba0"
+      },
+      "receipt": {
+        "path": "@evidence/build/runs/mandatory-current-windows-pyqt6-626/receipt-0.json",
+        "sha256": "123da0c09d8369dc8d81916e23f7996f44c0243444da54ebb6805b6663c8347a"
+      },
+      "graphics_gates": "PASS_ALL_NO_OPENGL_GATES",
+      "installed_members_verified": 537,
+      "zero_shutdown_gauges": 10,
+      "environment_id": "95bae638f9058b7eed537bc8adce515e7d2ce5fbfd3a6d25c80002acac393d56",
+      "functional_summary": {
+        "stages": [
+          "exact_installed_artifact",
+          "device_and_qt_binding",
+          "qwidget_show_parent_resize",
+          "qwidget_capture_update_and_image_ownership",
+          "qwidget_overlay_interaction_hide_restore",
+          "qwidget_device_loss_recovery",
+          "qwidget_close"
+        ]
+      },
+      "artifact_admitted": false
+    },
+    {
+      "row": "windows-vulkan-qwidget-pyside6",
+      "packet": {
+        "path": "compat/api-acceptance/mandatory-current-windows-pyside6-v1.json",
+        "sha256": "ee386d4d148f6537e006694711277f0f83493b91c35aae99b3d906dfca1d36ae"
+      },
+      "wheel": {
+        "path": "build/artifacts/6de6d77fadd69e0e6c4c5ef0ce8cf63f8c0a680c4c3d0ca5c9550e911ddab7f5/vispy-0.17.0+vulkan.2-cp312-cp312-win_amd64.whl",
+        "sha256": "6de6d77fadd69e0e6c4c5ef0ce8cf63f8c0a680c4c3d0ca5c9550e911ddab7f5"
+      },
+      "report": {
+        "path": "@evidence/build/runs/mandatory-current-windows-pyside6-628/replay-0.json",
+        "sha256": "2045abbd8cd870bbb00d00f7a026aed110f6bdf547711134a6c996b733c7fe8a"
+      },
+      "worker": {
+        "path": "@evidence/build/runs/mandatory-current-windows-pyside6-628/replay-0.worker.json",
+        "sha256": "ffee0bab092a5e7ecc7549fee6d41f9e049359d9f2bee3ab095d19b87749c466"
+      },
+      "receipt": {
+        "path": "@evidence/build/runs/mandatory-current-windows-pyside6-628/receipt-0.json",
+        "sha256": "172640594b60f03f207cf08bc83d79acbfa6e57cda45d8ca388f5a453ffb089d"
+      },
+      "graphics_gates": "PASS_ALL_NO_OPENGL_GATES",
+      "installed_members_verified": 537,
+      "zero_shutdown_gauges": 10,
+      "environment_id": "1c4a9064576f523abc3224d13ad3eefa8b16f9324d8c1a4d4f7b3fcf584acb18",
+      "functional_summary": {
+        "stages": [
+          "exact_installed_artifact",
+          "device_and_qt_binding",
+          "qwidget_show_parent_resize",
+          "qwidget_capture_update_and_image_ownership",
+          "qwidget_overlay_interaction_hide_restore",
+          "qwidget_device_loss_recovery",
+          "qwidget_close"
+        ]
+      },
+      "artifact_admitted": false
+    },
+    {
+      "row": "wsl-linux-lavapipe-x11-headless",
+      "packet": {
+        "path": "compat/api-acceptance/mandatory-current-wsl-headless-v1.json",
+        "sha256": "32cf55a0e9231be05d272afb259d510eb2ba1a1e5d7520ddae69428aeb62f9bf"
+      },
+      "wheel": {
+        "path": "build/artifacts/b728b57541a387385fee588d81cb41402890a64489a7d91a3f2fb22b3e2df7c0/vispy-0.17.0+vulkan.2-cp312-cp312-manylinux_2_39_x86_64.whl",
+        "sha256": "b728b57541a387385fee588d81cb41402890a64489a7d91a3f2fb22b3e2df7c0"
+      },
+      "report": {
+        "path": "@evidence/build/runs/mandatory-current-wsl-headless-632/reports/replay-0.json",
+        "sha256": "f73de6470d311a8e25ede41e3cb1c8935d7a5b88bc01dff452037a9ac796aeed"
+      },
+      "worker": {
+        "path": "@evidence/build/runs/mandatory-current-wsl-headless-632/reports/replay-0.worker.json",
+        "sha256": "fb7c5f6429b7b05817182448801a94b0b87b8c73fc1b5b778135b74fe2c50f89"
+      },
+      "receipt": {
+        "path": "@evidence/build/runs/mandatory-current-wsl-headless-632/reports/receipt-0.json",
+        "sha256": "40ce09f5d2e7615e4c087cc34c7d648179d2cb280e819b594a5b258ca134655e"
+      },
+      "graphics_gates": "PASS_ALL_NO_OPENGL_GATES",
+      "installed_members_verified": 537,
+      "zero_shutdown_gauges": 10,
+      "environment_id": "423ba184ed8deea3f2a603a56b96bfe1b0170c1480adfd268f3e4313f6e6ad78",
+      "functional_summary": {
+        "gpu_tests": 95,
+        "rendering_status": "PASS_INSTALLED_LINUX_SOFTWARE_RENDERBUFFER_CLEAR_SMOOTH_TEXT",
+        "markers": 4096,
+        "science_cases": 36,
+        "bundle_sha256": "b31a8d8dce46e57170aa43c55302d6d314584b25add71199662bda282a8c9e6c"
+      },
+      "artifact_admitted": false
+    },
+    {
+      "row": "wsl-linux-lavapipe-x11-qwidget-pyqt5",
+      "packet": {
+        "path": "compat/api-acceptance/mandatory-current-wsl-pyqt5-v1.json",
+        "sha256": "591e4b8f3d8873fc4bf99456ae1cfc8b83c9d6ada002127978641f78243c1cd8"
+      },
+      "wheel": {
+        "path": "build/artifacts/b728b57541a387385fee588d81cb41402890a64489a7d91a3f2fb22b3e2df7c0/vispy-0.17.0+vulkan.2-cp312-cp312-manylinux_2_39_x86_64.whl",
+        "sha256": "b728b57541a387385fee588d81cb41402890a64489a7d91a3f2fb22b3e2df7c0"
+      },
+      "report": {
+        "path": "@evidence/build/runs/mandatory-current-wsl-pyqt5-630/reports/replay-0.json",
+        "sha256": "c308cf32bc63313dea11e8da7dd3f8379aa7e9e9e25ae3be776eed8980d5d1e6"
+      },
+      "worker": {
+        "path": "@evidence/build/runs/mandatory-current-wsl-pyqt5-630/reports/replay-0.worker.json",
+        "sha256": "195b6e9b92bd47b8c230b2feb628489b3e60625c249b51abda15b4dd88649a0d"
+      },
+      "receipt": {
+        "path": "@evidence/build/runs/mandatory-current-wsl-pyqt5-630/reports/receipt-0.json",
+        "sha256": "2d6966b37ddfc5f24188a0a7832562be265b6ce4ee5a875b8d094cda68a34cbe"
+      },
+      "graphics_gates": "PASS_ALL_NO_OPENGL_GATES",
+      "installed_members_verified": 537,
+      "zero_shutdown_gauges": 10,
+      "environment_id": "e7c1812e3b7185d186b55836ff72d21ee81ca7ea32119e395862ab953782b092",
+      "functional_summary": {
+        "stages": [
+          "exact_installed_artifact",
+          "device_and_qt_binding",
+          "qwidget_show_parent_resize",
+          "qwidget_capture_update_and_image_ownership",
+          "qwidget_overlay_interaction_hide_restore",
+          "qwidget_device_loss_recovery",
+          "qwidget_close"
+        ]
+      },
+      "artifact_admitted": false
+    },
+    {
+      "row": "wsl-linux-lavapipe-x11-qwidget-pyqt6",
+      "packet": {
+        "path": "compat/api-acceptance/mandatory-current-wsl-pyqt6-v1.json",
+        "sha256": "eecae8a90b0daf086de76b65e80d55c1872c59acdf74326421922eb8f6876bcd"
+      },
+      "wheel": {
+        "path": "build/artifacts/b728b57541a387385fee588d81cb41402890a64489a7d91a3f2fb22b3e2df7c0/vispy-0.17.0+vulkan.2-cp312-cp312-manylinux_2_39_x86_64.whl",
+        "sha256": "b728b57541a387385fee588d81cb41402890a64489a7d91a3f2fb22b3e2df7c0"
+      },
+      "report": {
+        "path": "@evidence/build/runs/mandatory-current-wsl-pyqt6-629/reports/replay-0.json",
+        "sha256": "ad848d27acb5c345197ed71c596f8cbc5c99616ed94649e2ef6b8f65b82a3151"
+      },
+      "worker": {
+        "path": "@evidence/build/runs/mandatory-current-wsl-pyqt6-629/reports/replay-0.worker.json",
+        "sha256": "38b7974a90da4b564103500148c96d26277162247c6ec86151db7d42257fe6de"
+      },
+      "receipt": {
+        "path": "@evidence/build/runs/mandatory-current-wsl-pyqt6-629/reports/receipt-0.json",
+        "sha256": "5b7f846e74b2603af5bb3094815ff732f279f2840cf969edae022890a8c996d7"
+      },
+      "graphics_gates": "PASS_ALL_NO_OPENGL_GATES",
+      "installed_members_verified": 537,
+      "zero_shutdown_gauges": 10,
+      "environment_id": "4f4ccc2ccb73da1a270e7899b8c16dda91e7b73c799e10125e85eb7e6cc65c4a",
+      "functional_summary": {
+        "stages": [
+          "exact_installed_artifact",
+          "device_and_qt_binding",
+          "qwidget_show_parent_resize",
+          "qwidget_capture_update_and_image_ownership",
+          "qwidget_overlay_interaction_hide_restore",
+          "qwidget_device_loss_recovery",
+          "qwidget_close"
+        ]
+      },
+      "artifact_admitted": false
+    },
+    {
+      "row": "wsl-linux-lavapipe-x11-qwidget-pyside6",
+      "packet": {
+        "path": "compat/api-acceptance/mandatory-current-wsl-pyside6-v1.json",
+        "sha256": "c5c0114930572d8258d4527932e898b2ccfef71086378df0ad4f2dd766ad03e9"
+      },
+      "wheel": {
+        "path": "build/artifacts/b728b57541a387385fee588d81cb41402890a64489a7d91a3f2fb22b3e2df7c0/vispy-0.17.0+vulkan.2-cp312-cp312-manylinux_2_39_x86_64.whl",
+        "sha256": "b728b57541a387385fee588d81cb41402890a64489a7d91a3f2fb22b3e2df7c0"
+      },
+      "report": {
+        "path": "@evidence/build/runs/mandatory-current-wsl-pyside6-631/reports/replay-0.json",
+        "sha256": "a1c2d021879d0fe618ee47a685f40af2bb8cf7bfe16edf5853c8e0ed015c87f3"
+      },
+      "worker": {
+        "path": "@evidence/build/runs/mandatory-current-wsl-pyside6-631/reports/replay-0.worker.json",
+        "sha256": "d4892a13ffc65a58fe98c128170c95a4a6420971f811948d1c356949b1c707fa"
+      },
+      "receipt": {
+        "path": "@evidence/build/runs/mandatory-current-wsl-pyside6-631/reports/receipt-0.json",
+        "sha256": "3a4b51ddbea468183d300d82d46c3306a284f5129398eaee8758a64301a2f73a"
+      },
+      "graphics_gates": "PASS_ALL_NO_OPENGL_GATES",
+      "installed_members_verified": 537,
+      "zero_shutdown_gauges": 10,
+      "environment_id": "f7cf5e714d29335368ab552be579ac028e473f46e6bb5dca42f2ae7bc62732ed",
+      "functional_summary": {
+        "stages": [
+          "exact_installed_artifact",
+          "device_and_qt_binding",
+          "qwidget_show_parent_resize",
+          "qwidget_capture_update_and_image_ownership",
+          "qwidget_overlay_interaction_hide_restore",
+          "qwidget_device_loss_recovery",
+          "qwidget_close"
+        ]
+      },
+      "artifact_admitted": false
+    }
+  ],
+  "rows_observed": 8,
+  "rows_remaining_to_observe": 0,
+  "rows_newly_admitted": 0,
+  "canonical_matrix": {
+    "path": "compat/no-opengl-matrix.json",
+    "sha256": "230b12f3d4ed418cde3b0313fbdea36557b02a61c80a1cf637699d7a9bc50fc4"
+  },
+  "canonical_matrix_modified": false,
+  "independent_reviews_complete": false,
+  "qualification_bindings_complete": false,
+  "required_ci_complete": false,
+  "release_approved": false,
+  "scope": "Exact finite authored headless and plain-QWidget observations on current Windows and WSL software Vulkan wheels. Original published qualification remains historical; no full upstream API, scientific-quality/performance, physical Linux GPU or Metal qualification transfer. Windows headless used five RECORD-verified locked pytest fixture distributions, not a version refresh or environment tree copy."
+}

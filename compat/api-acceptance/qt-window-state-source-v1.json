@@ -1,0 +1,71 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "SOURCE_TESTED_PARTIAL_LIF_03",
+  "coverage_ids": [
+    "LIF-03"
+  ],
+  "investigated_ids": [
+    "BUG-01",
+    "BUG-02"
+  ],
+  "source_files": {
+    "src/vispy/app/backends/_qt.py": "12d3895497a42465c8d85ba31c5324e855cc5284668af726d5a522ad5fcb3883",
+    "tests/qt/test_window_state_cpu.py": "012071f7af7528f13ab573fa7c3b353df1dabf6d3bbd7636b3bfc15e45a318ac",
+    "tests/qt/test_paint_scope_cpu.py": "5c2808ff57c245006bcbc5b77dbf96d026896f4d1b2de23a41bc1b42490c7c78",
+    "docs/threedee-startup-diagnosis.md": "1a09470487a34fb1b87dc1dcc147cec9a8461724b2a73b979b6d0f82628ba755"
+  },
+  "python": "3.12.8",
+  "pyqt": "6.11.0",
+  "qt": "6.11.0",
+  "before": {
+    "cpu_cases": "5 failed, 5 passed",
+    "actual_exit": 1,
+    "original_backend_sha256": "da2f311cffc644424fe66c0b1f61a02138a37ccff367027a5963c668d585f27f"
+  },
+  "real_qt_before": {
+    "result": "1 failed at missing minimize configuration",
+    "actual_exit": 1,
+    "method": "Original event method compiled from retained pre-change source; checkout unmodified",
+    "exercised_event_source_sha256": "da2f311cffc644424fe66c0b1f61a02138a37ccff367027a5963c668d585f27f"
+  },
+  "after": {
+    "result": "43 passed",
+    "actual_exit": 0,
+    "child_waited": true,
+    "scope": "14 window-state cases plus 29 existing paint-scope cases; real offscreen Qt event dispatch and native CPU doubles"
+  },
+  "proved": [
+    "Window-state change suspends minimized/zero drawable and restores scaled dimensions/samples without a resize event",
+    "Real Qt minimize/restore emits the required state events with unchanged resize count",
+    "Minimized/zero-size paint does not reach native paint calls",
+    "Closed/uninitialized/failed/detached canvases ignore state changes",
+    "Configuration exception is contained at Qt event callback boundary"
+  ],
+  "not_proved": [
+    "GPU submission/retirement",
+    "physical Windows minimize/restore",
+    "WSL installed artifact",
+    "published-wheel support",
+    "full LIF-03 closure"
+  ],
+  "startup_disposition": "Historical review only: prior campaign exhausted retry budget; no new hypothesis or recurrence; BUG-01/02 remain open, no launches repeated",
+  "evidence_root": "D:\\vispy-vulkan-managed\\build\\runs\\qt-window-state-548",
+  "records": [
+    "before-process.json",
+    "before.log",
+    "real-before-process.json",
+    "real-before.log",
+    "after-final-process.json",
+    "after-final.log"
+  ],
+  "hygiene": {
+    "scratch_created": false,
+    "cleanup_required": false,
+    "reclaimed_bytes": 0,
+    "native_build": false,
+    "package_install": false,
+    "new_environment": false
+  },
+  "next": "Verify source change with real rendering/retirement on selected profiles, then qualify changed Python packaging in a successor artifact; do not rebuild unchanged native SDKs"
+}

@@ -23,6 +23,7 @@ import functools
 import math
 import os
 import sys
+import weakref
 from packaging.version import Version
 
 from ...util import logger
@@ -204,14 +205,13 @@ def message_handler(*args):
 
 
 def use_shared_contexts():
-    """Enable context sharing for PyQt5 5.4+ API applications.
+    """Dawn resources support the public Canvas(shared=...) API.
 
-    This is disabled by default for PyQt5 5.4+ due to occasional segmentation
-    faults and other issues when contexts are shared.
-
+    The legacy VISPY_PYQT5_SHARE_CONTEXT opt-in governed Qt OpenGL contexts.
+    Dawn sharing uses the common resource namespace without creating those
+    contexts, so it is available for every supported binding.
     """
-    forced_env_var = os.getenv('VISPY_PYQT5_SHARE_CONTEXT', 'false').lower() == 'true'
-    return not (QT5_NEW_API or PYSIDE6_API or PYQT6_API) or forced_env_var
+    return True
 
 
 try:
@@ -252,13 +252,31 @@ def _set_config(c):
 _dawn_canvas_releases = {}
 
 
-def _release_dawn_canvas(releases, destroy, canvas_id, _obj=None):
+def _release_dawn_canvas(releases, destroy, canvas_id, _obj=None, *, widget_ref=None):
     releases.pop(canvas_id, None)
-    destroy(canvas_id)
+    # Parent deletion need not send closeEvent. The C++ widget is already gone;
+    # only Python attributes on its wrapper may be used from this signal.
+    widget = widget_ref() if widget_ref is not None else None
+    try:
+        if widget is not None:
+            widget._dawn_closed = True
+            widget._dawn_paint_deferred = False
+            widget._dawn_poll_timer = None
+            canvas = getattr(widget, '_vispy_canvas', None)
+            if canvas is not None:
+                canvas._backend_destroyed()
+    except BaseException as error:
+        _record_dawn_application_error(canvas_id, error, 'destroyed')
+    finally:
+        try:
+            destroy(canvas_id)
+        except BaseException as error:
+            _record_dawn_application_error(canvas_id, error, 'destroyed release')
 
 
 def _connect_dawn_canvas_release(widget, canvas_id, destroy):
-    release = functools.partial(_release_dawn_canvas, _dawn_canvas_releases, destroy, canvas_id)
+    release = functools.partial(_release_dawn_canvas, _dawn_canvas_releases, destroy, canvas_id,
+                                widget_ref=weakref.ref(widget))
     _dawn_canvas_releases[canvas_id] = release
     widget.destroyed.connect(release)
 
@@ -271,6 +289,19 @@ def _select_dawn_presentation(value, platform):
 
 
 # ------------------------------------------------------------- application ---
+
+def _record_dawn_application_error(canvas_id, error, callback):
+    """Contain a callback error without touching a possibly deleted widget."""
+    application = QApplication.instance()
+    if application is not None:
+        if getattr(application, '_vispy_dawn_callback_error', None) is None:
+            application._vispy_dawn_callback_error = error
+    logger.error('Dawn Qt %s failed on canvas %s: %s', callback,
+                 canvas_id, error,
+                 exc_info=(type(error), error, error.__traceback__))
+    if application is not None:
+        application.exit(1)
+
 
 def _raise_dawn_callback_error(app):
     """Raise a callback failure after returning across Qt's C++ boundary."""
@@ -798,6 +829,27 @@ class CanvasBackendDesktop(QtBaseCanvasBackend, QWidget):
         if self._vispy_canvas is not None:
             self._vispy_canvas.app.process_events()
 
+    def _close_dawn_canvas(self, callback):
+        if self._vispy_canvas is not None and not getattr(self, '_dawn_closed', False):
+            try:
+                self._vispy_canvas.close()
+            except Exception as error:
+                self._record_dawn_callback_error(error, callback)
+
+    def close(self):
+        accepted = QWidget.close(self)
+        if accepted:
+            # Qt can accept a never-shown native QWindow's close without
+            # delivering closeEvent. Still retire the owning Canvas once.
+            self._close_dawn_canvas('close')
+        return accepted
+
+    def closeEvent(self, event):
+        # A window-manager close enters Canvas ownership before Qt hides the
+        # top-level widget. Programmatic Canvas.close sets _dawn_closed first.
+        self._close_dawn_canvas('closeEvent')
+        QWidget.closeEvent(self, event)
+
     def _vispy_set_current(self):
         return
 
@@ -845,24 +897,33 @@ class CanvasBackendDesktop(QtBaseCanvasBackend, QWidget):
         timer = getattr(self, '_dawn_poll_timer', None)
         if timer is not None:
             timer.stop()
-        application = QApplication.instance()
-        if getattr(application, '_vispy_dawn_callback_error', None) is None:
-            application._vispy_dawn_callback_error = error
-        logger.error('Dawn Qt %s failed on canvas %s: %s', callback,
-                     self._dawn_canvas_id, error,
-                     exc_info=(type(error), error, error.__traceback__))
-        application.exit(1)
+        _record_dawn_application_error(self._dawn_canvas_id, error, callback)
 
     def _vispy_get_fb_bind_location(self):
         return 0
 
     def event(self, ev):
         kind = ev.type()
-        winid_change = getattr(getattr(QtCore.QEvent, 'Type', QtCore.QEvent), 'WinIdChange', None)
+        event_types = getattr(QtCore.QEvent, 'Type', QtCore.QEvent)
+        winid_change = getattr(event_types, 'WinIdChange', None)
         if winid_change is None:
             winid_change = QtCore.QEvent.WinIdChange
         if kind == winid_change and getattr(self, '_initialized', False):
             self._dawn_surface()
+        if (kind == event_types.WindowStateChange and getattr(self, '_initialized', False)
+                and getattr(self, '_dawn_shown', False)
+                and not getattr(self, '_dawn_closed', False)
+                and not getattr(self, '_dawn_callback_failed', False)
+                and self._vispy_canvas is not None):
+            # Minimize/restore may preserve the QWidget size and deliver no
+            # resize event. Suspend the drawable on minimize and configure it
+            # again before requesting the first restored frame.
+            try:
+                self._configure_dawn_drawable(self.width(), self.height())
+                if not self.isMinimized() and self.width() > 0 and self.height() > 0:
+                    self.update()
+            except Exception as error:
+                self._record_dawn_callback_error(error, 'window state change')
         return QtBaseCanvasBackend.event(self, ev)
 
     def showEvent(self, event):
@@ -874,13 +935,17 @@ class CanvasBackendDesktop(QtBaseCanvasBackend, QWidget):
             self.resizeGL(self.width(), self.height())
 
     def resizeEvent(self, event):
-        self.resizeGL(event.size().width(), event.size().height())
-        self.resized.emit()
+        # Qt sends the initial resize before showEvent, including a first
+        # maximized/fullscreen show. showEvent emits initialize then that
+        # first resize; do not configure or notify user code prematurely.
+        if getattr(self, '_dawn_shown', False):
+            self.resizeGL(event.size().width(), event.size().height())
+            self.resized.emit()
         return QWidget.resizeEvent(self, event)
 
-    def resizeGL(self, w, h):
+    def _configure_dawn_drawable(self, w, h):
         if self._vispy_canvas is None or getattr(self, '_dawn_closed', False):
-            return
+            return None
         ratio = self._ratio()
         physical_w = int(round(w * ratio))
         physical_h = int(round(h * ratio))
@@ -892,8 +957,14 @@ class CanvasBackendDesktop(QtBaseCanvasBackend, QWidget):
         else:
             _dawn.configure_canvas(int(self._dawn_canvas_id), physical_w, physical_h,
                                    int(self._vispy_canvas.context.config.get('samples', 0) or 0))
+        return physical_w, physical_h
+
+    def resizeGL(self, w, h):
+        physical_size = self._configure_dawn_drawable(w, h)
+        if physical_size is None:
+            return
         self._vispy_canvas.events.resize(size=(self.width(), self.height()),
-                                         physical_size=(physical_w, physical_h))
+                                         physical_size=physical_size)
 
     def paintEvent(self, event):
         if (self._vispy_canvas is None or getattr(self, '_dawn_closed', False) or

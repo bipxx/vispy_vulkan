@@ -1,0 +1,89 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "FAIL_CONFIRMED_PARENT_OWNED_DESTRUCTION_PYTHON_CANVAS_REMAINS_OPEN",
+  "coverage_ids": [
+    "LIF-02",
+    "LIF-04",
+    "API-06"
+  ],
+  "source_inputs": {
+    "tests\\qt\\test_parent_destruction_cpu.py": "afa9851833301f0b246a7529e94ec79cc135b38f4fcd24eb3ec6c0a5b601d705",
+    "src\\vispy\\app\\backends\\_qt.py": "dc896132f59a227bd403b41a40541d6cf347eb2062f2c80678820818e3341992",
+    "src\\vispy\\app\\canvas.py": "00a98debb5519d344c9c9e9ee0f838eb9bfae784cd7c36eb86581076fcec310f"
+  },
+  "runtime_source_commit": "99719f1f7bdbb320318cf1ccd0eed39f336c7cce",
+  "qualification_head_unchanged": "6d6b233fe80f19887726c6b91a247aa863f6dfee",
+  "evidence": {
+    "command.json": {
+      "path": "D:\\vispy-vulkan-managed\\build\\runs\\qt-parent-destruction-source-644\\command.json",
+      "sha256": "3f8cf8ba0f0cc83b3adca8d59eb2d23ad00ec091b1660da96a7387f0527fe97e"
+    },
+    "process.json": {
+      "path": "D:\\vispy-vulkan-managed\\build\\runs\\qt-parent-destruction-source-644\\process.json",
+      "sha256": "7922318e80e8ab88cf003a344628819cffd8da5f68e29778de6ccee35dab14bc"
+    },
+    "junit.xml": {
+      "path": "D:\\vispy-vulkan-managed\\build\\runs\\qt-parent-destruction-source-644\\junit.xml",
+      "sha256": "7f420b0794c7e4aecf480b93f968df46fad4d44871e40624a5d06fbf2c413c88"
+    },
+    "stdout.log": {
+      "path": "D:\\vispy-vulkan-managed\\build\\runs\\qt-parent-destruction-source-644\\stdout.log",
+      "sha256": "14ee86afe488958882d4f333da26589424ca363241b3eaadac2485d44f513767"
+    },
+    "stderr.log": {
+      "path": "D:\\vispy-vulkan-managed\\build\\runs\\qt-parent-destruction-source-644\\stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "test_parent_destruction_cpu.py": {
+      "path": "D:\\vispy-vulkan-managed\\build\\runs\\qt-parent-destruction-source-644\\test_parent_destruction_cpu.py",
+      "sha256": "afa9851833301f0b246a7529e94ec79cc135b38f4fcd24eb3ec6c0a5b601d705"
+    }
+  },
+  "actual_exit": 1,
+  "child_waited": true,
+  "scratch_created": false,
+  "native_rebuilt": false,
+  "installed_qualified": false,
+  "observations": [
+    "Real offscreen PyQt6 deferred parent deletion destroys the owned child QWidget.",
+    "Native destroy double runs and canvas7001 leaves release registry.",
+    "Actual Python Canvas remains _closed=False; close-event ownership remains unsettled."
+  ],
+  "limits": [
+    "CPU native-resource double, no rendered/shared-peer or physical WSI proof.",
+    "No runtime change; frozen source and running CI unchanged."
+  ],
+  "next": [
+    "Settle Python ownership without calling deleted Qt methods.",
+    "Preserve module-rooted GC-safe release lifetime and callback-error containment.",
+    "Verify idempotence, callback failure, collected-owner and surviving-peer cases before installed acceptance."
+  ],
+  "preferred_runtime_source": {
+    "repository": "https://github.com/bipxx/vispy_vulkan",
+    "commit": "99719f1f7bdbb320318cf1ccd0eed39f336c7cce",
+    "paths": [
+      "src/vispy/app/backends/_qt.py",
+      "src/vispy/app/canvas.py"
+    ]
+  },
+  "licenses": [
+    {
+      "path": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\LICENSE",
+      "sha256": "0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0"
+    },
+    {
+      "path": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\LICENSE-BSD",
+      "sha256": "a28bb857d763513c810ca843558c12cf97f64b990b855c1ce7f5e291e52fc25c"
+    }
+  ],
+  "cleanup": {
+    "required": false,
+    "reason": "Existing .venv reused; bytecode/cache/plugin autoload disabled; no scratch allocated."
+  },
+  "metadata_setup_failure": {
+    "actual_exit": 1,
+    "tool_chunk": "5f40b2",
+    "reason": "Retention adapter assumed LICENSE.txt; actual root licenses are LICENSE and LICENSE-BSD. Runtime test outcome unaffected."
+  }
+}

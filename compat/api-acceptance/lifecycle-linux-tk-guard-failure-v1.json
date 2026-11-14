@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "LINUX_TK_BASELINE_GUARD_ABORTED",
+  "coverage_ids": [
+    "FIX-06",
+    "API-06"
+  ],
+  "actual_exit": 1,
+  "child_waited": true,
+  "test_child_exit": -9,
+  "guard_failure": "FileNotFoundError(2, 'No such file or directory')",
+  "wheel": {
+    "path": "build/artifacts/8a793196eba73a31d27855a55509678ea5d6dfecbc386793f2c1fbd5a344e06b/vispy-0.17.0+vulkan.2-cp312-cp312-linux_x86_64.whl",
+    "sha256": "8a793196eba73a31d27855a55509678ea5d6dfecbc386793f2c1fbd5a344e06b"
+  },
+  "source_commit": "f93d80b211c29c1481228455f7a064a74ce8c4f1",
+  "completed_acceptance": false,
+  "artifact_admitted": false,
+  "strict_profile_admitted": false,
+  "diagnosis": "Storage guard scans p.is_file then p.stat while test removes temporary files; disappearing path aborts controller at first30second guard and owned test process is killed",
+  "next": "Use existing Windows guard pattern: walk and ignore only FileNotFoundError for transient entries, preserving capacity/readonly/budget checks; fresh same-wheel run",
+  "evidence_root": "D:\\vispy-vulkan-managed\\build\\runs\\lifecycle-linux-tk-581"
+}

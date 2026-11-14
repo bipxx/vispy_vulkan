@@ -1,0 +1,189 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "PASS_THREE_QT_BINDINGS_FINITE_PARENT_OWNERSHIP_CPU_SOURCE_SCOPE",
+  "coverage_ids": [
+    "LIF-02",
+    "LIF-04",
+    "API-06"
+  ],
+  "rows": [
+    {
+      "binding": "pyqt5",
+      "binding_version": "5.15.11",
+      "qt_version": "5.15.2",
+      "passed": 11,
+      "source_inputs": {
+        "src/vispy/app/backends/_qt.py": "16fec18d9346aeb03a560c7e5e3569eead864e60b362a682709749413dab8997",
+        "src/vispy/app/canvas.py": "dd1173d41033a2715f6b5546428089d59737343edf8b374b507bbf1c9db8a929",
+        "tests/qt/test_parent_destruction_cpu.py": "ff2ff54bbe6b575d800ef1191c51d23482da0fa9ef2c64ce037eadc85cd56061",
+        "LICENSE": "0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0",
+        "LICENSE-BSD": "a28bb857d763513c810ca843558c12cf97f64b990b855c1ce7f5e291e52fc25c"
+      },
+      "evidence": {
+        "inputs.json": {
+          "path": "D:\\vispy-vulkan-managed\\build\\runs\\qt-parent-pyqt5-cpu-656\\inputs.json",
+          "sha256": "8969e8a603ddcfccd100cf6305c38b1bba54f158062cb5662c55043cf834ca5b"
+        },
+        "result.json": {
+          "path": "D:\\vispy-vulkan-managed\\build\\runs\\qt-parent-pyqt5-cpu-656\\result.json",
+          "sha256": "a9020363071e05f29f0ecbd6f566de746d87b3793bb8898898608d9d12be209b"
+        },
+        "junit.xml": {
+          "path": "D:\\vispy-vulkan-managed\\build\\runs\\qt-parent-pyqt5-cpu-656\\junit.xml",
+          "sha256": "34f81e6e47486dcc368c462220384c99cf3e8d8b37b471a4a0524db799fe120f"
+        },
+        "cpu.log": {
+          "path": "D:\\vispy-vulkan-managed\\build\\runs\\qt-parent-pyqt5-cpu-656\\cpu.log",
+          "sha256": "a4ee315d47f8e086f8ba58566255769cb2584a22f3c7199d0146ea12ebfaced7"
+        },
+        "cpu-process.json": {
+          "path": "D:\\vispy-vulkan-managed\\build\\runs\\qt-parent-pyqt5-cpu-656\\cpu-process.json",
+          "sha256": "8ceb8ace2e12a4ec9ce9b2801a99298949934bfcf9db9477ce89f96c5aadd5af"
+        },
+        "focused-sources-and-licenses.zip": {
+          "path": "D:\\vispy-vulkan-managed\\build\\runs\\qt-parent-pyqt5-cpu-656\\focused-sources-and-licenses.zip",
+          "sha256": "aa6c33ab6b4f055cfc9ac4cfc1f3f749a5b1b0426c0372e8f41d2d7701d63c17"
+        },
+        "terminal.json": {
+          "path": "D:\\vispy-vulkan-managed\\build\\runs\\qt-parent-pyqt5-cpu-656\\terminal.json",
+          "sha256": "d3d12b3522a06f4e784ee0f14d8f5036438c9db6f91bbe6711d14fa016f6badd"
+        },
+        "cleanup-result.json": {
+          "path": "D:\\vispy-vulkan-managed\\build\\runs\\qt-parent-pyqt5-cpu-656\\cleanup-result.json",
+          "sha256": "e6472363abfe3ef14fe33c9ef11067c9139cbba72e591f0979274ed6de1f9323"
+        },
+        "cleanup-process.json": {
+          "path": "D:\\vispy-vulkan-managed\\build\\runs\\qt-parent-pyqt5-cpu-656\\cleanup-process.json",
+          "sha256": "5e6e814dd58dbbc3c20bde2866a1968cd4c5955aedf5877ca03342289d5a2fea"
+        }
+      },
+      "actual_exit": 0,
+      "child_waited": true,
+      "scratch_absent": true
+    },
+    {
+      "binding": "pyside6",
+      "binding_version": "6.12.0",
+      "qt_version": "6.12.0",
+      "passed": 11,
+      "source_inputs": {
+        "src/vispy/app/backends/_qt.py": "16fec18d9346aeb03a560c7e5e3569eead864e60b362a682709749413dab8997",
+        "src/vispy/app/canvas.py": "dd1173d41033a2715f6b5546428089d59737343edf8b374b507bbf1c9db8a929",
+        "tests/qt/test_parent_destruction_cpu.py": "ff2ff54bbe6b575d800ef1191c51d23482da0fa9ef2c64ce037eadc85cd56061",
+        "LICENSE": "0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0",
+        "LICENSE-BSD": "a28bb857d763513c810ca843558c12cf97f64b990b855c1ce7f5e291e52fc25c"
+      },
+      "evidence": {
+        "inputs.json": {
+          "path": "D:\\vispy-vulkan-managed\\build\\runs\\qt-parent-pyside6-cpu-658\\inputs.json",
+          "sha256": "c67294327a3cf9bfad52e7389a34786ec6c1e26a48505db27a014ee5e4074992"
+        },
+        "result.json": {
+          "path": "D:\\vispy-vulkan-managed\\build\\runs\\qt-parent-pyside6-cpu-658\\result.json",
+          "sha256": "a9b83c366e9b42f531f02e14cf214b26dcb3092ab0084c0521022a98f128409a"
+        },
+        "junit.xml": {
+          "path": "D:\\vispy-vulkan-managed\\build\\runs\\qt-parent-pyside6-cpu-658\\junit.xml",
+          "sha256": "439d7e9b8fc840437ccb7da7672992ba15f695aed3d9766b58669b6b5431c75c"
+        },
+        "cpu.log": {
+          "path": "D:\\vispy-vulkan-managed\\build\\runs\\qt-parent-pyside6-cpu-658\\cpu.log",
+          "sha256": "06d44271957542ea2ba780ade0ef05ef26658f79bd36c8a01220d8d676d5a773"
+        },
+        "cpu-process.json": {
+          "path": "D:\\vispy-vulkan-managed\\build\\runs\\qt-parent-pyside6-cpu-658\\cpu-process.json",
+          "sha256": "f25b4bf98e78b16dfdfc90f0fc915dbacef51c7eb3d9923b89baa0539049017a"
+        },
+        "focused-sources-and-licenses.zip": {
+          "path": "D:\\vispy-vulkan-managed\\build\\runs\\qt-parent-pyside6-cpu-658\\focused-sources-and-licenses.zip",
+          "sha256": "32318408492c97c188d5345915457e34b2dd21bba9e8ee7090daf9be5c175c99"
+        },
+        "terminal.json": {
+          "path": "D:\\vispy-vulkan-managed\\build\\runs\\qt-parent-pyside6-cpu-658\\terminal.json",
+          "sha256": "5985ca02ca175f1a1e1c0985cbee78a47bbf941225ab18ddc92b105bd7650db9"
+        },
+        "cleanup-result.json": {
+          "path": "D:\\vispy-vulkan-managed\\build\\runs\\qt-parent-pyside6-cpu-658\\cleanup-result.json",
+          "sha256": "2bff29e474fa9555d9e6bb2635235f086f2c05b31074685fdeb1ef756eaa00d6"
+        },
+        "cleanup-process.json": {
+          "path": "D:\\vispy-vulkan-managed\\build\\runs\\qt-parent-pyside6-cpu-658\\cleanup-process.json",
+          "sha256": "5e6e814dd58dbbc3c20bde2866a1968cd4c5955aedf5877ca03342289d5a2fea"
+        }
+      },
+      "actual_exit": 0,
+      "child_waited": true,
+      "scratch_absent": true
+    },
+    {
+      "binding": "pyqt6",
+      "passed": 68,
+      "parent_ownership_cases": 11,
+      "actual_exit": 0,
+      "child_waited": true,
+      "source_inputs": {
+        "tests/qt/test_parent_destruction_cpu.py": "ff2ff54bbe6b575d800ef1191c51d23482da0fa9ef2c64ce037eadc85cd56061",
+        "tests/qt/test_native_close_cpu.py": "dd27b66be6589d36c9df4fead392a52a4ea7b8a07035ba23356a7a9075c1d109",
+        "tests/qt/test_paint_scope_cpu.py": "5c2808ff57c245006bcbc5b77dbf96d026896f4d1b2de23a41bc1b42490c7c78",
+        "tests/qt/test_window_state_cpu.py": "515b21844606d80e2515d3edc2e114dec7f493821f7be90612cf7c604f1643d0",
+        "src/vispy/app/backends/_qt.py": "16fec18d9346aeb03a560c7e5e3569eead864e60b362a682709749413dab8997",
+        "src/vispy/app/canvas.py": "dd1173d41033a2715f6b5546428089d59737343edf8b374b507bbf1c9db8a929"
+      },
+      "terminal": {
+        "path": "D:\\vispy-vulkan-managed\\build\\runs\\qt-parent-pyqt6-current-cpu-659\\terminal-source-only.json",
+        "sha256": "49f118fc88affa1f94dee87b2d84e488a4dd60f6d7fef8e46cb9ff0240744de5"
+      },
+      "scratch_created": false
+    }
+  ],
+  "scopes": [
+    "Windows source-only CPU controls with native resource doubles, not rendered/installed/profile/admission coverage for PyQt5/PySide6.",
+    "PyQt6 cumulative68CPU cases include the same11parent controls; current Windows/WSL rendered8cases remain separately scoped in qt-parent-followup-rendered-v1.json.",
+    "Bindings run in separate processes from original locked Qt distributions, no whole environment copy, package refresh or native build."
+  ],
+  "preserved_failure": {
+    "disposition": {
+      "path": "D:\\vispy-vulkan-managed\\build\\runs\\qt-parent-pyside6-cpu-657\\failure-disposition.json",
+      "sha256": "b776b3708a4f21e22ffeb3754d3ad1c5e86a9d9022c7d9808ef538b12811cb6e"
+    },
+    "junit": {
+      "path": "D:\\vispy-vulkan-managed\\build\\runs\\qt-parent-pyside6-cpu-657\\junit.xml",
+      "sha256": "6eea17e92464c6e15b78ac24ab9f0aa8b751e6207f8b8bc6a14a38a2e906f9ce"
+    },
+    "process": {
+      "path": "D:\\vispy-vulkan-managed\\build\\runs\\qt-parent-pyside6-cpu-657\\cpu-process.json",
+      "sha256": "cf9f2c0dcd1e6a15456b58e9eeaea914848ba37826bde0cc53250d3ef9b4a732"
+    },
+    "cleanup": {
+      "path": "D:\\vispy-vulkan-managed\\build\\runs\\qt-parent-pyside6-cpu-657\\cleanup-result.json",
+      "sha256": "74a28e88107630e3d9e11342ebb3d02dc4d454f5f191d6eec7430302633ab437"
+    },
+    "functional_cases_passed": 11,
+    "overall_actual_exit": 1
+  },
+  "pyside_origin_audit": {
+    "report": {
+      "path": "D:\\vispy-vulkan-managed\\build\\runs\\qt-parent-pyside6-cpu-658\\module-origins-verified.json",
+      "sha256": "6eb7e5b9c4542078ed9a4797cbe341a53a042944cb42263ccb88db33e0ee329a"
+    },
+    "real_loaded_members_hashed": 7,
+    "exact_virtual_aliases": 12,
+    "classification": "All actual loaded binding files match members of exact locked dependency wheels. Exactly12known generated support aliases have non-file paths and are recorded separately; no wildcard exclusion. No project verifier changed."
+  },
+  "cleanup": {
+    "reclaimed_bytes": 194984317,
+    "files_deleted": 1431,
+    "retained_inputs_verified": 50,
+    "all_scratch_absent": true
+  },
+  "actual_exit": 0,
+  "child_waited": true,
+  "native_rebuilt": false,
+  "artifact_admitted": false,
+  "review_approved": false,
+  "remaining": [
+    "Renew independent source review on corrected runtime plus current generic fixture/binding/rendered evidence.",
+    "Exact changed-Python packages, installed/strict profile/head qualification, protected integration and delivery."
+  ]
+}

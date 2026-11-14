@@ -1,0 +1,101 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "PASS_CORRECTED_CI_COUPLING_PREPARATION12_UNREVIEWED",
+  "coverage_ids": [
+    "FIX-04",
+    "FIX-06",
+    "API-06",
+    "TOOL-01"
+  ],
+  "source_commit": "2b8bccd0ac886f771c3e37255a3d5559c254b3cd",
+  "candidate_scope_sha256": "4c2295f596f9b947fa27a67c21d500b6defced62a6b394c97abf2d78ca1ec1f8",
+  "native_reuse_links": [
+    "f2f2d8d4ef35caf89f1ca854a3a03bbecf829c3b21e9de00833340e458c74257",
+    "0523133aefe32b0239518924cd6eacfa7c60411237d89acece796007a3b68dec"
+  ],
+  "scope_approved": false,
+  "native_reuse_approved": false,
+  "prior_review": {
+    "path": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\compat\\api-acceptance\\preparation11-peer-review-v1.json",
+    "sha256": "76c54d5d14ca54ea9325b446602ec90894bb2c02272b5df205d333c1b30ac8cf"
+  },
+  "evidence": {
+    "coupling-verification.json": {
+      "path": "D:\\vispy-vulkan-managed\\build\\runs\\preparation12-ci-coupling-670\\coupling-verification.json",
+      "sha256": "52cc3129d1e4423b17d2efe568ed65257a418a2d417d77fd87efe25982c7bde2"
+    },
+    "policy-before-process.json": {
+      "path": "D:\\vispy-vulkan-managed\\build\\runs\\preparation12-ci-coupling-670\\policy-before-process.json",
+      "sha256": "b6cc69758211fca77912a36e892fe4f294d0df991ca2378d302f2a873caa86d8"
+    },
+    "policy-before-stderr.log": {
+      "path": "D:\\vispy-vulkan-managed\\build\\runs\\preparation12-ci-coupling-670\\policy-before-stderr.log",
+      "sha256": "58ca68d5340016cca0e22d8c9bf1399735e5317789ca553a37311d21b2830060"
+    },
+    "selector-before-process.json": {
+      "path": "D:\\vispy-vulkan-managed\\build\\runs\\preparation12-ci-coupling-670\\selector-before-process.json",
+      "sha256": "f10a1d52b5295cca19f0bc22fca2477a15fd7450bec8066492b025371cce415b"
+    },
+    "selector-before.xml": {
+      "path": "D:\\vispy-vulkan-managed\\build\\runs\\preparation12-ci-coupling-670\\selector-before.xml",
+      "sha256": "e5598bc4e3f944b75e272c10fcb137a00ca55b9212f5d2f6b6f5dd598116627d"
+    },
+    "policy-after-process.json": {
+      "path": "D:\\vispy-vulkan-managed\\build\\runs\\preparation12-ci-coupling-670\\policy-after-process.json",
+      "sha256": "c6308b4ff4a7665d67c272b01fb5a8aad2e1b017d4562fb6e867207f7388dbe2"
+    },
+    "selector-after-process.json": {
+      "path": "D:\\vispy-vulkan-managed\\build\\runs\\preparation12-ci-coupling-670\\selector-after-process.json",
+      "sha256": "96e3f3ff0d5e5ef3cefd3b7b2bc0a84fb1e2b33a01c7319fccdf70ea8a047b6d"
+    },
+    "selector-after.xml": {
+      "path": "D:\\vispy-vulkan-managed\\build\\runs\\preparation12-ci-coupling-670\\selector-after.xml",
+      "sha256": "ec9d592199df8a4f40b4865cee1d874602eb90743d231f88edcd175ab805e366"
+    },
+    "verification.json": {
+      "path": "D:\\vispy-vulkan-managed\\build\\runs\\preparation12-ci-coupling-670\\verification.json",
+      "sha256": "e4f6234ab6ad35879453984631fb4a53e5d58043eb3da0e49b4dd47d473a2ad2"
+    },
+    "terminal-source-only.json": {
+      "path": "D:\\vispy-vulkan-managed\\build\\runs\\preparation12-ci-coupling-670\\terminal-source-only.json",
+      "sha256": "f6f73fba90ebceae4359d9a61d4d9cc7fbaac787c6663f25e4645f8880d80c98"
+    }
+  },
+  "bindings": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\preparation12-bindings-671\\verification.json",
+    "sha256": "3f7fd883f8e528b019d33e0dd2f9d9695c17a886b49e541142ab261169a84ff8"
+  },
+  "contracts": {
+    "path": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\compat\\api-acceptance\\preparation12-policy-contracts-v1.json",
+    "sha256": "02ecca343a7221b8a708449edb4256980dc7550f501f19f6a76f374a3e3d9f24"
+  },
+  "contract_cleanup": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\preparation12-policy-contracts-672\\cleanup-result.json",
+    "sha256": "3c09b8af7732f769026e631e6f293c9ecc87144e91d8f696f81fe72f0a3a5192"
+  },
+  "before_after": "Policy validation refused stale workflow hashes and cross-selector test failed before. After selector/hash repair, policy validates all23unchanged jobs and selector regression passes; new preparation12/native/archive bindings validate,326source contracts pass.",
+  "history": "Preparation11remains unapproved; all330preparation11-and-earlier JSONs unchanged. New scopes/digests cannot inherit669scope/reuse approval, which was withheld.",
+  "changes": [
+    "CPU four candidate selector paths now12.",
+    "Linux reuse candidate selector now12.",
+    "Required-CI policy hashes match all three actual workflows; jobs/collector unchanged.",
+    "New cross-workflow selector regression added to existing qualification_ci contract suite."
+  ],
+  "actual_exit": 0,
+  "child_waited": true,
+  "scratch_created": false,
+  "native_rebuilt": false,
+  "artifact_admitted": false,
+  "cleanup": {
+    "contract_scratch_bytes_removed": 8945392,
+    "contract_files_deleted": 4930,
+    "contract_retained_inputs_verified": 8,
+    "peer_review_scratch_bytes_removed": 85,
+    "peer_retained_inputs_verified": 18
+  },
+  "remaining": [
+    "Re-present exact preparation12source/scope/reuse hashes with CI consistency and manifest-seal checks to independent review.",
+    "Bind approved records, then renew strict observations/fixtures, mandatory profiles and final-head CI/integration."
+  ]
+}

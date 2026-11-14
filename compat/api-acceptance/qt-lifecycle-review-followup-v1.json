@@ -1,0 +1,53 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "PASS_SOURCE_REVIEW_FOLLOWUP_NATIVE_COMPILE_PENDING",
+  "coverage_ids": [
+    "API-05",
+    "LIF-01",
+    "LIF-02",
+    "LIF-03",
+    "LIF-04"
+  ],
+  "source_only": true,
+  "installed_qualification": false,
+  "native_compiled": false,
+  "source_inputs": {
+    "src/vispy/app/backends/_qt.py": "38c9971b2096ddafdf3de42609bff576ce9b39fa4bf2a63ebff1fcb6785ce6ce",
+    "cpp/runtime.cpp": "f344107e03ff6ce8b4302d8d681739ac9a4c813b3236daafb9d74cff43446fad",
+    "tests/qt/test_native_close_cpu.py": "027c4b5505812774b06be49e4735b7f766f0aba544cfdde868a17797d7cc90b3",
+    "tests/qt/test_native_close_gpu.py": "db3cfc877645ed99a1e55372416159c0cf7532ccc802384cc95f543af15d5c10",
+    "tests/qt/test_window_state_cpu.py": "d64a848365e7b428aa135b3c4f3251c83b9739b4c7ad678c6353103da7a8e05f",
+    "tests/qt/test_window_state_gpu.py": "42632b9cf033f53fad253e6b03eea17317a745f635a6e636c594719483f58980"
+  },
+  "evidence_root": "D:\\vispy-vulkan-managed\\build\\runs\\qt-first-show-source-559",
+  "before": {
+    "actual_exit": 1,
+    "result": "2 failed, 51 passed: pre-show state and initialize-before-resize"
+  },
+  "after": {
+    "actual_exit": 0,
+    "child_waited": true,
+    "result": "53 passed"
+  },
+  "intermediate_failure": "After source fix, one test incorrectly required a single early surface notification; Qt may emit multiple WinIdChanges. Final test requires initialize before every configure/resize, retains original failure report.",
+  "cpu_followups_completed": [
+    "No state configure/resize before first show",
+    "Real Qt first maximized show initializes before every configure and resize",
+    "Pending callback error keeps original identity through nested close event pump"
+  ],
+  "gpu_control_added_not_executed": "Pending immutable peer snapshot must survive parsed program/buffer DELETE and native close of another canvas, then exact pixels and all nine zero gauges",
+  "native_patch_review": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\qt-lifecycle-peer-558\\decision.json",
+    "sha256": "4458d465fefffa6f4e310f74e1777ca099d2c9e966a8945bc2895469476e49c5",
+    "reviewed_cpp_unchanged": true,
+    "ready_for_bounded_compile": true
+  },
+  "scope": "Top-level PyQt6 windows only; CPU doubles and real offscreen Qt dispatch",
+  "limitations": [
+    "Native cleanup patch not compiled or GPU-tested",
+    "Current source has not been packaged or installed-qualified",
+    "Embedded-parent lifecycle, in-flight/surface loss and DELETE queued after last close remain open"
+  ],
+  "next": "Use original Windows SDK in place, native leaf profile768MiB, existing402producer updated with explicit successor registry and current runtime source; run44Ctests then3GPUcases, retaining all nine gauges"
+}

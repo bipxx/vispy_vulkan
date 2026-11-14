@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "EXPLICIT_METAL_CHANGED_NATIVE_INPUT_FRESH_DECISION",
+  "previous_native_cpp_sha256": "020e267244b506bd5043f7a619e2741a53cf178befaf5dc8369a1c34461da12c",
+  "current_native_cpp_sha256": "f344107e03ff6ce8b4302d8d681739ac9a4c813b3236daafb9d74cff43446fad",
+  "prior_pin_sha256": "b42196328280bb8abf36c22a7fb783f959fb33563b7cad40e66248dde45f1598",
+  "matching_retained_metal_sdk_identified": false,
+  "policy": "compat/build-profiles/metal-ci-native.json",
+  "policy_sha256": "e047235e1b04c93d87d3a9b36e902075038d1bbdbf1ace9306dc03badcf9a8de",
+  "route": "Existing workflow_dispatch native_mode=fresh for both required Metal build/CPU-import architectures; no graphics claim",
+  "expected_peak_bytes": 6442450944,
+  "aggregate_limit_bytes": 21474836480,
+  "min_reserve_bytes": 10737418240,
+  "rationale": "Native parsed-DELETE retirement changed; the previous Metal wheel cannot be relabelled as current compiled code. Windows/Linux matching native outputs are reused. Metadata-only subsequent CI must reuse the new verified Metal producer.",
+  "artifact_admitted": false,
+  "metal_graphics_qualified": false
+}

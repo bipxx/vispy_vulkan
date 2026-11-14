@@ -1,0 +1,62 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "APPROVED_EXACT_FAILED_ATTEMPT_DISPOSITIONS_ONLY",
+  "coverage_ids": [
+    "FIX-04",
+    "FIX-06",
+    "API-06",
+    "TOOL-01"
+  ],
+  "source_commit": "2b8bccd0ac886f771c3e37255a3d5559c254b3cd",
+  "candidate": "tk-state-resource-12",
+  "resolutions": [
+    {
+      "path": "@evidence/build/runs/preparation12-failure-review-682/attempt-resolution-fc8a7dd9270d3bbfc8391a6841043bce3c075bdb41ecfc89762077428f407d7c.json",
+      "sha256": "d91bab86bc6232420cbd6c303460f2aaf6c4ca89344bf04b958a05c1816a3506"
+    }
+  ],
+  "reviewer_models": [
+    "claude-fable-5-2"
+  ],
+  "review_turns": 61,
+  "decision": {
+    "path": "@evidence/build/runs/preparation12-failure-review-682/decision.json",
+    "sha256": "d653cefe9c775d30e0e520a426ffb4744484a275c77a5d22bd9b08fbaec8a0b1"
+  },
+  "raw_response": {
+    "path": "@evidence/build/runs/preparation12-failure-review-682/review-response.json",
+    "sha256": "403dbe24327361c466034e7b68e45d09e466eaf8934ba37c0a704b97e4bc52f8"
+  },
+  "history_scope_correction": {
+    "path": "@evidence/build/runs/preparation12-failure-review-682/history-scope-correction.json",
+    "sha256": "d1b86f7d3014587c0d214cd25ccc079025103c1fb0bda59a97e190cfb04bd224"
+  },
+  "actual_exit": 0,
+  "child_waited": true,
+  "withheld": [
+    "Independent recomputation of any SHA-256 or attempt digest; all hash agreement is textual comparison of recorded values, and coordinator arithmetic is relied on",
+    "Unread ranges: replay-0.json lines 1819-5149 and 5230-5379, replay-1.json lines 1834-5789, and nearly all of both receipts and inventories (grep only)",
+    "Independent set comparison of replay-1 loaded files against the expanded receipt; relied on the tool-reported empty outside-receipt list plus confirmation of the six paths",
+    "Cause of the discovery run not loading the six WMI/AMSI/Defender files",
+    "tk-capture-formats reports, receipts and workers; all WSL 678 originals; linux history and drafts; 676 verify.py, retain.py, outer.py, raw bundles, cleanup plan/result; 682 review.py",
+    "Correctness of tools/audit_no_opengl.py, tools/no_opengl/*, tools/qualification_index.py and the scenario scripts; no source was read and nothing was executed",
+    "Other candidate12 files (runtime-inputs, state profiles, reviews, ledgers) and the frozen-hash binding from run 675",
+    "Completeness beyond the finite scan: *.json under two build/runs roots at scan time, mtime ordering, attempts that left no report outside run 676; no whole-machine or forensic claim",
+    "Contributing retention, subject proof, admission, promotion, release, CI and the eight mandatory profile rows",
+    "Full API parity, physical-hardware coverage, private or statically linked GL implementations, and complete OS extension closure (the receipts state these limits themselves)",
+    "Any new native build, install, test or graphics replay; none was run and none is requested"
+  ],
+  "artifact_admitted": false,
+  "subject_bound": false,
+  "scope": "The original Windows UNVERIFIED attempt remains failed. Exact independent dispositions permit later successful workflow selections; no retention/subject/promotion/CI/mandatory-row/release approval.",
+  "cleanup": {
+    "status": "PASS_APPLY",
+    "deleted": 1,
+    "retained_verified": 122,
+    "reclaimed_bytes": 88,
+    "scratch_absent": true,
+    "actual_exit": 0,
+    "child_waited": true
+  }
+}

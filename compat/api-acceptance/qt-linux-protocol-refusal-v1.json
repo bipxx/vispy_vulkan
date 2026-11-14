@@ -1,0 +1,29 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "CI_SUCCESS_ORIGINAL_NATIVE_PROTOCOL_REFUSED",
+  "coverage_ids": [
+    "LIF-01",
+    "LIF-02",
+    "LIF-03",
+    "LIF-04",
+    "TOOL-01"
+  ],
+  "ci_run": 43471568101,
+  "artifact_id": 14063506426,
+  "source_commit": "82ee789e0fc096e88f7b37537889a2b2407941ef",
+  "original_archive_sha256": "427b897d7cb73ac1019e31a8bcb7b37b78c6e1b9bb1293d0db7f7e822c93c060",
+  "original_members_retained": 166,
+  "expanded_bytes": 113485324,
+  "previous_workflow_sha256": "844ddd2c232f699f198751074a59abccec1c6a0a0c58460c77be9be6d75ac038",
+  "current_workflow_sha256": "7fc072af9739e8d37fba5f0d20b7175e6a72c027102f402d09d7d36173fef2c5",
+  "native_verifier_sha256": "12acc5e39ac298655362b9ec15e4432b17f8da39faa3e975a7a9ea68f920bd3f",
+  "actual_exit": 1,
+  "child_waited": true,
+  "native_build_join_verified": false,
+  "installed_qualified": false,
+  "artifact_admitted": false,
+  "evidence_root": "D:\\vispy-vulkan-managed\\build\\runs\\linux-lifecycle-artifact-568",
+  "meaning": "Original CI job is green and artifact digest/member hashes verified; unchanged native verifier refuses this new workflow authority. No broad producer qualification or Linux runtime pass is claimed.",
+  "next": "Review exact workflow-authority delta and author explicit bounded protocol support preserving unknown-protocol rejection; no fresh build needed"
+}

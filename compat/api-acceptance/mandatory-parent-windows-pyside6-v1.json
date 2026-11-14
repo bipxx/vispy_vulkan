@@ -1,0 +1,114 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "PASS_CURRENT_WINDOWS_PYSIDE6_MANDATORY_ROW_OBSERVATION_NOT_ADMITTED",
+  "coverage_ids": [
+    "FIX-06",
+    "LIF-02",
+    "LIF-04",
+    "PLAT-08",
+    "TOOL-01"
+  ],
+  "row": "windows-vulkan-qwidget-pyside6",
+  "source_commit": "2b8bccd0ac886f771c3e37255a3d5559c254b3cd",
+  "wheel": {
+    "path": "build/artifacts/9e4e30cc50d49a759ea42cd7915cc2544a42d2af869d505e3ef5290d47617286/vispy-0.17.0+vulkan.2-cp312-cp312-win_amd64.whl",
+    "sha256": "9e4e30cc50d49a759ea42cd7915cc2544a42d2af869d505e3ef5290d47617286"
+  },
+  "report": {
+    "path": "@evidence/build/runs/mandatory-parent-windows-pyside6-687/replay-0.json",
+    "sha256": "5e14d69be51e0c4293f4c789ad36b28f52940dd9509c7d7ad29eae381771e908"
+  },
+  "worker": {
+    "path": "@evidence/build/runs/mandatory-parent-windows-pyside6-687/replay-0.worker.json",
+    "sha256": "2af96562ea8731c41f858830c67c1381ea4cb12a3223a16af3b3846ebc62c326"
+  },
+  "receipt": {
+    "path": "@evidence/build/runs/mandatory-parent-windows-pyside6-687/receipt-0.json",
+    "sha256": "b12159d1c8a0c2c3fe09e986120aad45937326e4f6a1a3b3dc6fe85dc803908e"
+  },
+  "functional_result": {
+    "path": "@evidence/build/runs/mandatory-parent-windows-pyside6-687/replay-0-features/functional.json",
+    "sha256": "b339bfc4c8e909a03fe20d00aa70b075eba04c5b0ebb1a2cf3b0b18f0d6e9e4e"
+  },
+  "functional_stages": [
+    "exact_installed_artifact",
+    "device_and_qt_binding",
+    "qwidget_show_parent_resize",
+    "qwidget_capture_update_and_image_ownership",
+    "qwidget_overlay_interaction_hide_restore",
+    "qwidget_device_loss_recovery",
+    "qwidget_close"
+  ],
+  "device": {
+    "backend": "Vulkan",
+    "adapter_type": "discrete",
+    "vendor": "nvidia",
+    "device": "NVIDIA GeForce RTX 4090",
+    "driver": "NVIDIA: 610.88 610.88.0.0",
+    "vendor_id": 4318,
+    "device_id": 9860,
+    "max_texture_dimension_1d": 32768,
+    "max_texture_dimension_2d": 32768,
+    "max_texture_dimension_3d": 16384,
+    "max_vertex_attributes": 30,
+    "max_vertex_buffers": 8,
+    "max_vertex_buffer_array_stride": 2048,
+    "max_storage_buffers_per_shader_stage": 16,
+    "max_uniform_buffers_per_shader_stage": 12,
+    "max_inter_stage_shader_variables": 30,
+    "max_storage_buffer_binding_size": 2147483644,
+    "max_bindings_per_bind_group": 1000,
+    "max_compute_invocations_per_workgroup": 1024,
+    "max_compute_workgroup_size_x": 1024,
+    "max_compute_workgroups_per_dimension": 65535,
+    "max_point_vertex_attributes": 30,
+    "core_features_and_limits": true,
+    "point_input_limit_scope": "all active user point inputs share one vertex buffer; exact vertex/instance identities use read-only vertex storage without reserving a user attribute; actual granted attribute/stride/storage/allocation limits apply",
+    "max_samplers_per_shader_stage": 16,
+    "max_sampled_textures_per_shader_stage": 48,
+    "max_buffer_size": 1099511627776,
+    "max_uniform_buffer_binding_size": 65536,
+    "software": false,
+    "float32_filterable": true,
+    "unorm16_texture_formats": true,
+    "bresenham_lines": true,
+    "last_vertex_provoking": true,
+    "timestamp_query": true,
+    "timestamp_quantization_ns": 65536,
+    "host_mapped_pointer": true,
+    "host_import_limit": 536870912,
+    "depth_stencil_storage": "depth24_unorm_stencil8",
+    "ok": true,
+    "error": "",
+    "loss_count": 0,
+    "revision": "117b054598f4758b598f4b8f48feea48c11fe7b0+dawn-499e5c6ff9b37d5de70c6493fb74c251e0d35c1c"
+  },
+  "binding": "pyside6",
+  "qt_runtime_version": "6.12.0",
+  "qt_platform": "windows",
+  "environment_id": "f5b1216fe43714ce5965c08ff930c7f2c29b87254088b12515d4f5ca55af3b48",
+  "installed_members_verified": 537,
+  "source_overrides": 0,
+  "shutdown_gauges": {
+    "pending_tickets": 0,
+    "queued_frames": 0,
+    "live_buffer_bytes": 0,
+    "live_cpu_buffer_bytes": 0,
+    "live_texture_bytes": 0,
+    "canvas_texture_bytes": 0,
+    "transient_buffer_bytes": 0,
+    "line_resource_pool_busy_slots": 0,
+    "line_resource_pool_bytes": 0,
+    "host_import_pinned_bytes": 0
+  },
+  "actual_exit": 0,
+  "child_waited": true,
+  "artifact_admitted": false,
+  "mandatory_rows_current_observed": 3,
+  "scope": "Exact Windows CPython3.12.8/filtered PySide6 RTX4090 Vulkan plain QWidget seven-stage observation. Selected strict replay passed; discovery and all earlier attempts remain retained. No transfer to other bindings, WSL, physical input, full API parity, matrix admission or release.",
+  "remaining": [
+    "Five other mandatory row renewals",
+    "Independent exact admission/promotion review, final-head CI, protected integration and delivery"
+  ]
+}

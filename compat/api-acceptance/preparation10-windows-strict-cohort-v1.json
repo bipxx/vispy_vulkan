@@ -1,0 +1,132 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "PASS_CURRENT_WINDOWS_STRICT_MATCHED_COHORT",
+  "coverage_ids": [
+    "FIX-04",
+    "FIX-06",
+    "API-06",
+    "TOOL-01"
+  ],
+  "wheel": {
+    "path": "build/artifacts/6de6d77fadd69e0e6c4c5ef0ce8cf63f8c0a680c4c3d0ca5c9550e911ddab7f5/vispy-0.17.0+vulkan.2-cp312-cp312-win_amd64.whl",
+    "sha256": "6de6d77fadd69e0e6c4c5ef0ce8cf63f8c0a680c4c3d0ca5c9550e911ddab7f5"
+  },
+  "source_commit": "99719f1f7bdbb320318cf1ccd0eed39f336c7cce",
+  "candidate": "tk-state-resource-10",
+  "candidate_scope_sha256": "0b66899655d9092c079826290c5d7138199ddeeb55f6dc3b1edfd3d3fff587e3",
+  "environment_id": "d664beb3d72c4e06688a76b903564badfa5758241c29fbbdb2107b826b723ec6",
+  "workflows": [
+    {
+      "workflow": "tk-state-resource-failures",
+      "status": "PASS_ALL_NO_OPENGL_GATES",
+      "report": {
+        "path": "@evidence/build/runs/windows-current-strict-614/tk-state-resource-failures/replay-1.json",
+        "sha256": "a92bbc8473fbfea053be89c4fc099525f78100a2c35401985e1acd436bce90c6"
+      },
+      "worker": {
+        "path": "@evidence/build/runs/windows-current-strict-614/tk-state-resource-failures/replay-1.worker.json",
+        "sha256": "a5a14f379cdc1661759e5a8c010640dcf77afdc71283511b8cb576ad44b5c5eb"
+      },
+      "receipt": {
+        "path": "@evidence/build/runs/windows-current-strict-614/tk-state-resource-failures/receipt-after-replay-0.json",
+        "sha256": "b15307a7a0376559ee5f316977f3e728ff8e1dd73c992f8b68a9c4147b1f83c9"
+      },
+      "inventory": {
+        "path": "@evidence/build/runs/windows-current-strict-614/tk-state-resource-failures/receipt.inventory.json",
+        "sha256": "df308e75ba22e24c370aa1017a6d770a5938e7aac374fc7c25fc086e6d700b91"
+      },
+      "environment_id": "d664beb3d72c4e06688a76b903564badfa5758241c29fbbdb2107b826b723ec6",
+      "functional_validation": {
+        "contract": "tk-state-resource-1",
+        "schema": 1,
+        "status": "PASS_FUNCTIONAL_RESULT",
+        "branch_ids": [
+          "ordinary.state",
+          "progress.draw",
+          "progress.poll",
+          "resource.upload-recovery",
+          "submission.gloo.delayed",
+          "submission.gloo.immediate",
+          "submission.raw.delayed",
+          "submission.raw.immediate"
+        ],
+        "qualified": false
+      },
+      "shutdown_gauges": {
+        "pending_tickets": 0,
+        "queued_frames": 0,
+        "live_buffer_bytes": 0,
+        "live_cpu_buffer_bytes": 0,
+        "live_texture_bytes": 0,
+        "canvas_texture_bytes": 0,
+        "transient_buffer_bytes": 0,
+        "line_resource_pool_busy_slots": 0,
+        "line_resource_pool_bytes": 0
+      }
+    },
+    {
+      "workflow": "tk-capture-formats",
+      "status": "PASS_ALL_NO_OPENGL_GATES",
+      "report": {
+        "path": "@evidence/build/runs/windows-current-strict-614/tk-capture-formats/replay-1.json",
+        "sha256": "7ecdb65d565e52d85f64c1ed8f7e6dc518b4097e18ede5c2b71d68abb24bd41c"
+      },
+      "worker": {
+        "path": "@evidence/build/runs/windows-current-strict-614/tk-capture-formats/replay-1.worker.json",
+        "sha256": "93d522105704f9318f72da939e6a180b06b2124f6614c7cead45ac592ff0c9e8"
+      },
+      "receipt": {
+        "path": "@evidence/build/runs/windows-current-strict-614/tk-capture-formats/receipt-after-replay-0.json",
+        "sha256": "c0a9ac0fccab3d78f39c8e2e2c971f9a72b3d18e6ae40804971495d9e704f733"
+      },
+      "inventory": {
+        "path": "@evidence/build/runs/windows-current-strict-614/tk-capture-formats/receipt.inventory.json",
+        "sha256": "df308e75ba22e24c370aa1017a6d770a5938e7aac374fc7c25fc086e6d700b91"
+      },
+      "environment_id": "d664beb3d72c4e06688a76b903564badfa5758241c29fbbdb2107b826b723ec6",
+      "functional_validation": {
+        "schema": 1,
+        "contract": "tk-capture-1",
+        "status": "PASS_FUNCTIONAL_RESULT",
+        "branch_ids": [
+          "capture.invalid-viewport",
+          "capture.ordinary",
+          "capture.resize",
+          "capture.retry"
+        ],
+        "qualified": false
+      },
+      "shutdown_gauges": {
+        "pending_tickets": 0,
+        "queued_frames": 0,
+        "live_buffer_bytes": 0,
+        "live_cpu_buffer_bytes": 0,
+        "live_texture_bytes": 0,
+        "canvas_texture_bytes": 0,
+        "transient_buffer_bytes": 0,
+        "line_resource_pool_busy_slots": 0,
+        "line_resource_pool_bytes": 0
+      }
+    }
+  ],
+  "feature_profile_joins": 16,
+  "gate_checks": 48,
+  "installed_members_verified": 537,
+  "source_overrides": 0,
+  "actual_exit": 0,
+  "child_waited": true,
+  "qualified_rows_written": 0,
+  "artifact_admitted": false,
+  "strict_selection_admitted": false,
+  "native_rebuilt": false,
+  "scope": "Windows CPython3.12.8 RTX4090 Vulkan610.88 Tk raster; two strict workflows share one exact installed environment. No Linux/mandatory-eight-row/CI/release transfer.",
+  "remaining": [
+    "Fresh selected installed pytest node receipts",
+    "Current WSL strict matched cohort",
+    "Subject/profile/history/retention bindings",
+    "Eight mandatory rows and required final-head CI",
+    "Independent promotion and protected integration"
+  ],
+  "evidence_root": "D:\\vispy-vulkan-managed\\build\\runs\\windows-current-strict-614"
+}

@@ -1,0 +1,74 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "PASS_LOCAL_INSTALLED_ACCEPTANCE_REVIEW_AND_QUALIFICATION_PENDING",
+  "source_commit": "99719f1f7bdbb320318cf1ccd0eed39f336c7cce",
+  "windows_receipt": "compat/api-acceptance/lifecycle-current-windows-installed-v1.json",
+  "linux_receipt": "compat/api-acceptance/lifecycle-current-linux-installed-v1.json",
+  "coverage_ids": [
+    "API-05",
+    "API-06",
+    "LIF-01",
+    "LIF-02",
+    "LIF-03",
+    "LIF-04",
+    "SCI-06",
+    "SHD-06",
+    "PLAT-08",
+    "FIX-06"
+  ],
+  "cleanup": {
+    "runs": [
+      593,
+      594,
+      595
+    ],
+    "bytes_reclaimed": 47766619,
+    "retained_inputs_verified": 72,
+    "results": [
+      "D:/vispy-vulkan-managed/build/runs/lifecycle-python-repackage-593/cleanup-result.json",
+      "D:/vispy-vulkan-managed/build/runs/lifecycle-current-windows-installed-594/cleanup-result.json",
+      "D:/vispy-vulkan-managed/build/runs/lifecycle-current-linux-installed-595/cleanup-result.json"
+    ]
+  },
+  "metal": {
+    "run_id": 43495769632,
+    "source_commit": "99719f1f7bdbb320318cf1ccd0eed39f336c7cce",
+    "last_observed_jobs": [
+      {
+        "id": 132128351381,
+        "name": "Metal wheel arm64 CPython 3.12.8",
+        "status": "completed",
+        "conclusion": "success",
+        "active_steps": []
+      },
+      {
+        "id": 132128351944,
+        "name": "Metal wheel x86_64 CPython 3.12.8",
+        "status": "in_progress",
+        "conclusion": null,
+        "active_steps": [
+          {
+            "name": "Build and audit explicit fresh Metal wheel",
+            "status": "in_progress",
+            "conclusion": null,
+            "number": 10
+          }
+        ]
+      }
+    ],
+    "restart_required": false,
+    "graphics_qualified": false
+  },
+  "pending": [
+    "Collect existing Metal original artifacts and cleanup; renew reuse pin before preparation10 scope freeze",
+    "Materialize preparation10 and current native/archive bindings",
+    "Independent follow-up source/scope/reuse/conservation review",
+    "Strict installed profiles and required final-head CI",
+    "Protected integration; separately decide successor delivery"
+  ],
+  "strict_profile_admitted": false,
+  "artifact_admitted": false,
+  "merged": false,
+  "published": false
+}

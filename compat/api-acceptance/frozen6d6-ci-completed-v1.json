@@ -1,0 +1,56 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "PASS_THREE_ORIGINAL_RUNS_23_JOBS_OBSERVED_METADATA_ONLY",
+  "source_commit": "6d6b233fe80f19887726c6b91a247aa863f6dfee",
+  "rows": [
+    {
+      "run_id": 43530224577,
+      "workflow": ".github/workflows/cpu-contract.yml",
+      "head_sha": "6d6b233fe80f19887726c6b91a247aa863f6dfee",
+      "jobs_succeeded": 20,
+      "run": {
+        "path": "D:\\vispy-vulkan-managed\\build\\runs\\current-head-ci-status-641\\final-run-20261114T011753Z-43530224577.json",
+        "sha256": "d2f50fb469ae6dd9847afa5ae7c67e1edeaf8d19416899024c1f7ab7b216e8e8"
+      },
+      "jobs": {
+        "path": "D:\\vispy-vulkan-managed\\build\\runs\\current-head-ci-status-641\\final-jobs-20261114T011753Z-43530224577.json",
+        "sha256": "254e7c6bba166c4d68aaf4e5e53748dc93f329067205eef52340f64d7c40b40f"
+      }
+    },
+    {
+      "run_id": 43530227494,
+      "workflow": ".github/workflows/linux-vulkan.yml",
+      "head_sha": "6d6b233fe80f19887726c6b91a247aa863f6dfee",
+      "jobs_succeeded": 1,
+      "run": {
+        "path": "D:\\vispy-vulkan-managed\\build\\runs\\current-head-ci-status-641\\final-run-20261114T011753Z-43530227494.json",
+        "sha256": "37e68259260e9acb638804e7aabb68def769d9b8bd5c052d68dd6e701ad72758"
+      },
+      "jobs": {
+        "path": "D:\\vispy-vulkan-managed\\build\\runs\\current-head-ci-status-641\\final-jobs-20261114T011753Z-43530227494.json",
+        "sha256": "e9a1310d5528942585aabc505174e9ecd48fe987ea4914ee00d901e7d5e94c6f"
+      }
+    },
+    {
+      "run_id": 43530230265,
+      "workflow": ".github/workflows/metal-wheel.yml",
+      "head_sha": "6d6b233fe80f19887726c6b91a247aa863f6dfee",
+      "jobs_succeeded": 2,
+      "run": {
+        "path": "D:\\vispy-vulkan-managed\\build\\runs\\current-head-ci-status-641\\final-run-20261114T011753Z-43530230265.json",
+        "sha256": "810146ce723602b8769dba6d59b48ddcc69370b337e81f89bd0055920c558245"
+      },
+      "jobs": {
+        "path": "D:\\vispy-vulkan-managed\\build\\runs\\current-head-ci-status-641\\final-jobs-20261114T011753Z-43530230265.json",
+        "sha256": "d96d38db1136f27a12ecc0f353c0f7c7bdbdee8a261c4fbca3469a7cb5d8e952"
+      }
+    }
+  ],
+  "actual_exit": 0,
+  "child_waited": true,
+  "scratch_created": false,
+  "required_ci_bundle_validated": false,
+  "artifact_admitted": false,
+  "scope": "Original run/job API payloads all completed success, attempt1, exact frozen6d6b233. Checkout identities/artifacts/full histories not yet joined by required-CI validator. No transfer to later2b8bccd or parent-fix wheels."
+}

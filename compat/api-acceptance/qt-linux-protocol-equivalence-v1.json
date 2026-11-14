@@ -1,0 +1,40 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "FRESH_CI_SUCCESS_EXACT_INACTIVE_WORKFLOW_DELTA_PENDING_PROTOCOL_SUPPORT",
+  "coverage_ids": [
+    "LIF-01",
+    "LIF-02",
+    "LIF-03",
+    "LIF-04",
+    "TOOL-01"
+  ],
+  "ci_run": 43471568101,
+  "source_commit": "82ee789e0fc096e88f7b37537889a2b2407941ef",
+  "artifact_id": 14063506426,
+  "original_archive_sha256": "427b897d7cb73ac1019e31a8bcb7b37b78c6e1b9bb1293d0db7f7e822c93c060",
+  "original_members_retained": 166,
+  "native_build_join_verified": false,
+  "installed_qualified": false,
+  "artifact_admitted": false,
+  "original_refusal": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\linux-lifecycle-artifact-568\\verification.json",
+    "sha256": "0d6f243a1e3b8eda4c1251bab4837797fe5f0bee0bab532de185b6d22cda8751"
+  },
+  "equivalence": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\linux-lifecycle-artifact-568\\workflow-equivalence.json",
+    "sha256": "f03369ec1b412039bbf5d16e8814ae96111013b19f084ef72f5725d386b2a0aa"
+  },
+  "current_workflow_sha256": "7fc072af9739e8d37fba5f0d20b7175e6a72c027102f402d09d7d36173fef2c5",
+  "original_verifier_sha256": "12acc5e39ac298655362b9ec15e4432b17f8da39faa3e975a7a9ea68f920bd3f",
+  "finding": "The only workflow change is an explicit candidate8argument in the inactive reuse arm. Normalizing exactly that one argument reproduces the supported workflow byte-for-byte; all fresh producer steps are identical.",
+  "next": "Independently review bounded exact-workflow authority support, preserve unknown-protocol rejection and the original refusal, then validate retained capture and test native payload under WSL. No new native build.",
+  "cleanup": {
+    "status": "PASS_APPLY_AND_RETAINED_REHASH",
+    "deleted": 2,
+    "retained_verified": 189,
+    "scratch_absent": true,
+    "reclaimed_bytes": 43095509
+  },
+  "evidence_root": "D:\\vispy-vulkan-managed\\build\\runs\\linux-lifecycle-artifact-568"
+}

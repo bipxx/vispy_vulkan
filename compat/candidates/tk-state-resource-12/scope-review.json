@@ -1,0 +1,47 @@
+{
+  "schema": 1,
+  "status": "APPROVED",
+  "kind": "scope",
+  "independent": true,
+  "reviewer": "Claude peer review (claude-fable-5-2), preparation12 run674",
+  "candidate_scope_sha256": "4c2295f596f9b947fa27a67c21d500b6defced62a6b394c97abf2d78ca1ec1f8",
+  "native_reuse_links": [
+    "f2f2d8d4ef35caf89f1ca854a3a03bbecf829c3b21e9de00833340e458c74257",
+    "0523133aefe32b0239518924cd6eacfa7c60411237d89acece796007a3b68dec"
+  ],
+  "evidence": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\preparation12-review-capture-674\\review-response.md",
+    "sha256": "d6ccfe83cc04ccd159a594912824383cfde98c7318b38eda0c6aa0c3556b31e2"
+  },
+  "raw_response": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\preparation12-review-capture-674\\review-response.json",
+    "sha256": "159fcecb1ef050064ca80b42f527daa5b677267271191c5b794df9b10a0359fa"
+  },
+  "decision": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\preparation12-review-capture-674\\decision.json",
+    "sha256": "3be6329449afe410bb8ad91f377aee168e118960afdba92b6be35eafedf43d02"
+  },
+  "limitations": [
+    "No arithmetic was executed. The scope digest, both reuse digests, the four manifest seals, the execution scope, the 142 origin digests, all file hashes (33 inputs, pins, runtime inputs, 330 preserved files) and the byte-level workflow diff rest on the coordinator's run of audit_readonly.py and the 670/671/672 runs. The coordinator is not an independent reviewer. I checked that the same strings recur consistently across independently written records and that the helper's assertions test what is claimed.",
+    "The two reuse link hashes f2f2d8d4... and 0523133a... were not recomputed from the reuse objects. They appear identically in the review packet, the coordinator result and the 670 report. Because both validators recompute digest(reuse) and the scope digest at bind time, a wrong string would be refused there rather than admitted.",
+    "Source approval is by reliance, not a fresh reading. _qt.py, canvas.py, the CPU test and cpp/runtime.cpp were not opened; reliance is on full-hash equality with the 660-reviewed inputs and the 669 source binding. The GPU test was inspected only at lines 63-64 and not diffed against the 660 version; reliance for the rest of that file is on the 669 reviewer's reading. Read first-hand: the new regression test, the conftest fixture, the workflow selector lines and the cited tool functions.",
+    "Partially read: runtime-inputs.json (lines 1-1267 of 3977), windows-native-provenance.json (lines 1-967 and 1537-1548 of 1549), qt-parent-preparation12-bindings-v1.json (lines 1-346 plus status and tail fields of 1172). Inspected by targeted search only: coverage.json, execution.json, both state profiles, qt-parent-current-installed-v1.json. Not opened: execution-ledger.json. The 64-criteria, 128-binding and ledger-additivity counts are therefore from the helper and the 670 report, apart from the 142 dispositions and the 128 requested and closure rows read directly.",
+    "Not opened: 671 preserved-records.json, 670 preserved-candidates.json, 672 inputs.json, retained zips, compat/metal-ci-reuse.json, metal-wheel.yml beyond one grep line, the retained recipe, raw result, ctest.xml and capture files, both wheels, SDK, cache and dependency origins, and the reuse_linux_ci.py logic. The 44 CTest cases, 43 Linux cases, 537 members and origins, zero overlays, ten zero gauges and 561/566 metadata counts are from records or the request. Correspondence between cpp/runtime.cpp and the retained binaries was not verified.",
+    "'330 historical JSONs unchanged' is relative to the manifest renew.py wrote after it edited the workflows and before it created preparation 12; no earlier independent snapshot was compared. The 671 figure of 338 is those 330 plus the 8 files created in 670.",
+    "The project directory is not a Git repository in this session, so commit 2b8bccd0ac886f771c3e37255a3d5559c254b3cd and 'no code or test changes since 660/664/665' could not be checked against history; they rest on recorded hashes.",
+    "The regression test ties the Linux selector to whatever the CPU workflow selects; it does not assert that the selection is the newest preparation. That is acceptable as a coupling control, and it is not a hosted-CI observation. No CI was run on these bytes.",
+    "Cleanup of managed consumers and contract scratch was read from report fields (672 cleanup hash and 670 cleanup counts), not checked on disk."
+  ],
+  "withheld": [
+    "Any package, wheel, archive-as-artifact, installed, strict-profile, mandatory-profile, CI, final-head, identity, history, admission, promotion, merge, integration or release approval. The archive records and 664/665 installed observations were read for consistency only.",
+    "Any discharge of the 142 original required obligations. All remain required and incomplete; the 64 new criteria cover only the finite 16 features (14 subsets plus 2 additive wrapper features with 8 new-requirement criteria).",
+    "Full VisPy or API parity, and any rendered or WSL claim for PyQt5/PySide6 (Windows CPU doubles only). Metal (experimental build/import), native Linux GPU, Wayland and extra ABIs remain deferred.",
+    "Any transfer from preparations 10 or 11, from the 609/651/660/669 decisions, or from the old 6d6 23-job CI success. Preparation 11 scope 5dd73de0b6a677d619e8df2755202c07e574942d9beda6b8e754f0672d2e3fde stays unapproved.",
+    "Approval of any reuse object, candidate or scope whose bytes or digest differ from the exact strings above, and any approval drawn from the unbound 673 artifact.",
+    "660 limits F4 (live-native accessors unavailable during parent destruction) and F5 (logger and finalization failures not universally contained) remain limits, not resolved findings."
+  ],
+  "qualification_approved": false,
+  "coverage_map_sha256": "05c405957ad1f7d0aa4b81bc06188fdb09a7ffe3f681a0a51aabb82baa9675af",
+  "execution_map_sha256": "70db2831e0c7da3c5145c47d0b8b42af3f80c10e9c2bff02ee3ee66ce94ed80f",
+  "admission_scope_sha256": "24f3a05e424d390da9b2a9a3ffe86fb706578e4f4c04bd9c533fdc0194727ea8"
+}

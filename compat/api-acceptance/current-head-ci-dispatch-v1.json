@@ -1,0 +1,56 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "DISPATCHED_CURRENT_HEAD_23_REQUIRED_JOBS_NOT_PASSED",
+  "coverage_ids": [
+    "FIX-04",
+    "FIX-06",
+    "TOOL-01"
+  ],
+  "qualification_head": "6d6b233fe80f19887726c6b91a247aa863f6dfee",
+  "runtime_source_commit": "99719f1f7bdbb320318cf1ccd0eed39f336c7cce",
+  "branch": "wip/qt-lifecycle-native-562",
+  "workflow_handles": [
+    {
+      "id": 43530224577,
+      "workflow_id": 391223840,
+      "path": ".github/workflows/cpu-contract.yml",
+      "head_sha": "6d6b233fe80f19887726c6b91a247aa863f6dfee",
+      "run_attempt": 1,
+      "status": "queued",
+      "conclusion": null,
+      "html_url": "https://github.com/bipxx/vispy_vulkan/actions/runs/43530224577"
+    },
+    {
+      "id": 43530227494,
+      "workflow_id": 394336982,
+      "path": ".github/workflows/linux-vulkan.yml",
+      "head_sha": "6d6b233fe80f19887726c6b91a247aa863f6dfee",
+      "run_attempt": 1,
+      "status": "in_progress",
+      "conclusion": null,
+      "html_url": "https://github.com/bipxx/vispy_vulkan/actions/runs/43530227494"
+    },
+    {
+      "id": 43530230265,
+      "workflow_id": 394185908,
+      "path": ".github/workflows/metal-wheel.yml",
+      "head_sha": "6d6b233fe80f19887726c6b91a247aa863f6dfee",
+      "run_attempt": 1,
+      "status": "queued",
+      "conclusion": null,
+      "html_url": "https://github.com/bipxx/vispy_vulkan/actions/runs/43530230265"
+    }
+  ],
+  "required_jobs": 23,
+  "native_mode": "reuse",
+  "actual_exit": 0,
+  "child_waited": true,
+  "required_ci_passed": false,
+  "artifact_admitted": false,
+  "source_result": {
+    "path": "@evidence/build/runs/current-head-ci-dispatch-640/dispatch-result.json",
+    "sha256": "5cb4ea6f10c5edcb6a31705b23a0517915323107c55305021c9e68e6a3ff30cf"
+  },
+  "scope": "Only authenticated dispatch and observed exact-head run handles.20CPU contracts plus Linux software Vulkan and2Metal build/CPU-import jobs. Existing Linux/Metal producers explicitly reused; no physical Metal graphics or release admission. Poll these handles rather than dispatching duplicates."
+}

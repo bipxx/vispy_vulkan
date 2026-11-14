@@ -1,0 +1,29 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "PASS_PROTOCOL_SOURCE_CONTRACTS",
+  "passed": 90,
+  "failed": 0,
+  "actual_exit": 0,
+  "child_waited": true,
+  "source_only": true,
+  "artifact_admitted": false,
+  "native_build_join_verified": false,
+  "source_sha256": {
+    "tools/qualification_linux_native.py": "05cfecfc2e752be3beabd7599567fc9f57fab0cfaf530bf358efbea80d068ba3",
+    "tools/compatibility_candidate.py": "c9844124107bc84aa0213c4315a58639a506e50594015fb94f1787453cec577f",
+    "tests/contract/test_qualification_linux_native.py": "5017417c71f773154ae9e50ab189f5f196c51a157fc56c1f21fc23f1567b7467",
+    "tests/contract/test_compatibility_inventory.py": "8dc384ffef25f0fd961a297294133169ad5dc3c3a3c26919f1f58b961972a4b8",
+    "tests/contract/conftest.py": "0f29b8756f875f233022ec63023c874ee48b8afbdd223252d4a235ee47b6a786",
+    "tests/conftest.py": "f42451edb211225fad0363ec184708e30e5ed3e680a8b32d3fdd2ce516f9ddff",
+    "tests/contract/data/linux-native-production-workflow.yml": "844ddd2c232f699f198751074a59abccec1c6a0a0c58460c77be9be6d75ac038",
+    ".github/workflows/linux-vulkan.yml": "7fc072af9739e8d37fba5f0d20b7175e6a72c027102f402d09d7d36173fef2c5",
+    "LICENSE": "0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0",
+    "LICENSE-BSD": "a28bb857d763513c810ca843558c12cf97f64b990b855c1ce7f5e291e52fc25c",
+    "LICENSING.md": "e8a28d2d2c78d86fa2b6f83284e8f1a32237f87bfd417fd1cdfc84c8f3ce37f5"
+  },
+  "evidence_root": "D:\\vispy-vulkan-managed\\build\\runs\\linux-protocol-fixtures-570",
+  "review_gate": "Internally consistent minimal synthetic source fixture exercises the real candidate validator in full, then real native outer route refuses missing reviews before capture; changed-tool control separately requires exact identity refusal",
+  "historical_failure": "linux-protocol-source-569 remains failed and unchanged",
+  "next": "Independent bounded protocol review, then original retained Linux capture/archive validation and WSL source checks"
+}

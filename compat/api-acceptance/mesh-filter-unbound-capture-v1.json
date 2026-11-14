@@ -1,0 +1,36 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "FAILED_UNBOUND_CAPTURE_SETUP_NOT_RENDERER_EVIDENCE",
+  "coverage_ids": [
+    "SCI-02",
+    "SCI-05"
+  ],
+  "fixture_id": "E03",
+  "runtime_source_commit": "99719f1f7bdbb320318cf1ccd0eed39f336c7cce",
+  "test_sha256": "9d24c4630280a9d0ff17cd41ad7fdd7cdbdc69beb1568fb49d4fa1e056eb4c8f",
+  "wheel": {
+    "path": "build/artifacts/6de6d77fadd69e0e6c4c5ef0ce8cf63f8c0a680c4c3d0ca5c9550e911ddab7f5/vispy-0.17.0+vulkan.2-cp312-cp312-win_amd64.whl",
+    "sha256": "6de6d77fadd69e0e6c4c5ef0ce8cf63f8c0a680c4c3d0ca5c9550e911ddab7f5"
+  },
+  "passed": 0,
+  "failed": 4,
+  "actual_exit": 1,
+  "child_waited": true,
+  "cause": "The test reads after pop_fbo without rebinding either target; FrameBuffer.read reads the active framebuffer. Both captures therefore sample the untouched canvas backbuffer, returning transparent zeros.",
+  "scope": "Initial source-test fixture attempt on exact Windows installed candidate; no renderer defect or filter acceptance established",
+  "shutdown_gauges": {
+    "pending_tickets": 0,
+    "queued_frames": 0,
+    "live_buffer_bytes": 0,
+    "live_cpu_buffer_bytes": 0,
+    "live_texture_bytes": 0,
+    "canvas_texture_bytes": 0,
+    "transient_buffer_bytes": 0,
+    "line_resource_pool_busy_slots": 0,
+    "line_resource_pool_bytes": 0,
+    "host_import_pinned_bytes": 0
+  },
+  "evidence_root": "D:\\vispy-vulkan-managed\\build\\runs\\mesh-filter-current-windows-601",
+  "next": "Bind each target during its dependent capture, preserving both draws before either read; rerun separately."
+}

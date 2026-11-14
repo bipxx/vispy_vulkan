@@ -1,0 +1,103 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "EIGHT_MANDATORY_ROWS_REQUIRE_CURRENT_WHEEL_RENEWAL",
+  "coverage_ids": [
+    "FIX-06",
+    "PLAT-08",
+    "TOOL-01"
+  ],
+  "source_commit": "99719f1f7bdbb320318cf1ccd0eed39f336c7cce",
+  "rows": [
+    {
+      "row": "windows-vulkan-headless",
+      "historical_wheel": "a86b030b005cba455f46ccaeffc56bf3f438142e490999f88156370e6093fb6c",
+      "current_wheel": {
+        "path": "build/artifacts/6de6d77fadd69e0e6c4c5ef0ce8cf63f8c0a680c4c3d0ca5c9550e911ddab7f5/vispy-0.17.0+vulkan.2-cp312-cp312-win_amd64.whl",
+        "sha256": "6de6d77fadd69e0e6c4c5ef0ce8cf63f8c0a680c4c3d0ca5c9550e911ddab7f5"
+      },
+      "status": "CURRENT_OBSERVATION_REQUIRED",
+      "reason": "Native cleanup and public Qt/clear wrapper inputs changed. Historical qualification stays valid at its own bytes; no current-wheel transfer."
+    },
+    {
+      "row": "windows-vulkan-qwidget-pyqt5",
+      "historical_wheel": "a86b030b005cba455f46ccaeffc56bf3f438142e490999f88156370e6093fb6c",
+      "current_wheel": {
+        "path": "build/artifacts/6de6d77fadd69e0e6c4c5ef0ce8cf63f8c0a680c4c3d0ca5c9550e911ddab7f5/vispy-0.17.0+vulkan.2-cp312-cp312-win_amd64.whl",
+        "sha256": "6de6d77fadd69e0e6c4c5ef0ce8cf63f8c0a680c4c3d0ca5c9550e911ddab7f5"
+      },
+      "status": "CURRENT_OBSERVATION_REQUIRED",
+      "reason": "Native cleanup and public Qt/clear wrapper inputs changed. Historical qualification stays valid at its own bytes; no current-wheel transfer."
+    },
+    {
+      "row": "windows-vulkan-qwidget-pyqt6",
+      "historical_wheel": "a86b030b005cba455f46ccaeffc56bf3f438142e490999f88156370e6093fb6c",
+      "current_wheel": {
+        "path": "build/artifacts/6de6d77fadd69e0e6c4c5ef0ce8cf63f8c0a680c4c3d0ca5c9550e911ddab7f5/vispy-0.17.0+vulkan.2-cp312-cp312-win_amd64.whl",
+        "sha256": "6de6d77fadd69e0e6c4c5ef0ce8cf63f8c0a680c4c3d0ca5c9550e911ddab7f5"
+      },
+      "status": "CURRENT_OBSERVATION_REQUIRED",
+      "reason": "Native cleanup and public Qt/clear wrapper inputs changed. Historical qualification stays valid at its own bytes; no current-wheel transfer."
+    },
+    {
+      "row": "windows-vulkan-qwidget-pyside6",
+      "historical_wheel": "a86b030b005cba455f46ccaeffc56bf3f438142e490999f88156370e6093fb6c",
+      "current_wheel": {
+        "path": "build/artifacts/6de6d77fadd69e0e6c4c5ef0ce8cf63f8c0a680c4c3d0ca5c9550e911ddab7f5/vispy-0.17.0+vulkan.2-cp312-cp312-win_amd64.whl",
+        "sha256": "6de6d77fadd69e0e6c4c5ef0ce8cf63f8c0a680c4c3d0ca5c9550e911ddab7f5"
+      },
+      "status": "CURRENT_OBSERVATION_REQUIRED",
+      "reason": "Native cleanup and public Qt/clear wrapper inputs changed. Historical qualification stays valid at its own bytes; no current-wheel transfer."
+    },
+    {
+      "row": "wsl-linux-lavapipe-x11-headless",
+      "historical_wheel": "48164e052ddc3d8e5376a3a1f13fa652583142f4634438ae9067e204aab8b6ce",
+      "current_wheel": {
+        "path": "build/artifacts/b728b57541a387385fee588d81cb41402890a64489a7d91a3f2fb22b3e2df7c0/vispy-0.17.0+vulkan.2-cp312-cp312-manylinux_2_39_x86_64.whl",
+        "sha256": "b728b57541a387385fee588d81cb41402890a64489a7d91a3f2fb22b3e2df7c0"
+      },
+      "status": "CURRENT_OBSERVATION_REQUIRED",
+      "reason": "Native cleanup and public Qt/clear wrapper inputs changed. Historical qualification stays valid at its own bytes; no current-wheel transfer."
+    },
+    {
+      "row": "wsl-linux-lavapipe-x11-qwidget-pyqt5",
+      "historical_wheel": "48164e052ddc3d8e5376a3a1f13fa652583142f4634438ae9067e204aab8b6ce",
+      "current_wheel": {
+        "path": "build/artifacts/b728b57541a387385fee588d81cb41402890a64489a7d91a3f2fb22b3e2df7c0/vispy-0.17.0+vulkan.2-cp312-cp312-manylinux_2_39_x86_64.whl",
+        "sha256": "b728b57541a387385fee588d81cb41402890a64489a7d91a3f2fb22b3e2df7c0"
+      },
+      "status": "CURRENT_OBSERVATION_REQUIRED",
+      "reason": "Native cleanup and public Qt/clear wrapper inputs changed. Historical qualification stays valid at its own bytes; no current-wheel transfer."
+    },
+    {
+      "row": "wsl-linux-lavapipe-x11-qwidget-pyqt6",
+      "historical_wheel": "48164e052ddc3d8e5376a3a1f13fa652583142f4634438ae9067e204aab8b6ce",
+      "current_wheel": {
+        "path": "build/artifacts/b728b57541a387385fee588d81cb41402890a64489a7d91a3f2fb22b3e2df7c0/vispy-0.17.0+vulkan.2-cp312-cp312-manylinux_2_39_x86_64.whl",
+        "sha256": "b728b57541a387385fee588d81cb41402890a64489a7d91a3f2fb22b3e2df7c0"
+      },
+      "status": "CURRENT_OBSERVATION_REQUIRED",
+      "reason": "Native cleanup and public Qt/clear wrapper inputs changed. Historical qualification stays valid at its own bytes; no current-wheel transfer."
+    },
+    {
+      "row": "wsl-linux-lavapipe-x11-qwidget-pyside6",
+      "historical_wheel": "48164e052ddc3d8e5376a3a1f13fa652583142f4634438ae9067e204aab8b6ce",
+      "current_wheel": {
+        "path": "build/artifacts/b728b57541a387385fee588d81cb41402890a64489a7d91a3f2fb22b3e2df7c0/vispy-0.17.0+vulkan.2-cp312-cp312-manylinux_2_39_x86_64.whl",
+        "sha256": "b728b57541a387385fee588d81cb41402890a64489a7d91a3f2fb22b3e2df7c0"
+      },
+      "status": "CURRENT_OBSERVATION_REQUIRED",
+      "reason": "Native cleanup and public Qt/clear wrapper inputs changed. Historical qualification stays valid at its own bytes; no current-wheel transfer."
+    }
+  ],
+  "first_row": "windows-vulkan-qwidget-pyqt6",
+  "storage_profile": {
+    "path": "compat/build-profiles/mandatory-current-installed-v1.json",
+    "sha256": "def8574c28d1a42d628aed7acc4be8dac6b47110f3a40f831751ae69d700a1b7"
+  },
+  "actual_exit": 0,
+  "child_waited": true,
+  "scratch_created": false,
+  "artifact_admitted": false,
+  "scope": "Source-only identity audit; does not execute profile observations or invalidate the historical published release."
+}

@@ -50,6 +50,15 @@ well as checking the guest workspace; free space in a virtual ext4 volume alone
 does not prove backing-disk capacity. Do not change filesystem, driver or system
 settings as a substitute for cleanup.
 
+Private Git indexes cover the full base tree, even when only a small source
+delta is committed. Size their allocation from a matching measured full index
+plus delta/archive overhead, rather than the changed-file bytes alone. Source
+freeze639 estimated8MiB but its terminal private index/marker used15,098,948bytes;
+the excess estimate and actual cleanup are retained in its budget observation.
+The shared20GiB cap and10GiB reserve were not exceeded. Do not rewrite that
+preflight or silently increase an active run's estimate. Record the miss, clean
+the owned scratch, and use the measured basis for the next source-index run.
+
 An exclusive `.build-hygiene-owner.json` marker binds each run ID to one owner.
 The tool does not adopt an existing unregistered directory. In the local
 registry, `legacy_roots` enumerates the existing top-level build entries and
@@ -69,10 +78,18 @@ new pinned paths; preserve the predecessor bytes. Explicitly pass `--registry`
 on all subsequent preflight, plan and apply commands. Do not silently fall back
 to an older registry or overwrite a registry cited by retained qualification.
 The current coordinator selection is recorded in
-[mandatory review follow-up](../compat/api-acceptance/mandatory-review-followup-v1.json):
-`D:/vispy-vulkan-managed/build/.hygiene/registry-mandatory-successor-535.json`.
-Its 18 added legacy inputs remain at their original paths; they are protected
-from cleanup, not adopted as scratch or relocated into the evidence store.
+[preparation10 source-local binding](../compat/api-acceptance/preparation10-source-local-binding-v1.json):
+`D:/vispy-vulkan-managed/build/.hygiene/registry-preparation10-successor-613.json`
+(SHA256 `68377cfaafdcb279072f4d6066d0790e9ef0624588891a65279383059165d5f0`).
+Pass this registry explicitly on subsequent managed preflight, plan and apply
+commands. It preserves every protected, blocked, legacy and capacity entry from
+`registry-mandatory-successor-535.json`; that predecessor remains unchanged and
+records the [18 original legacy inputs](../compat/api-acceptance/mandatory-review-followup-v1.json).
+The successor also protects both retained project `runtime.cpp` source origins
+and checks C: capacity. One 521,666-byte source-local snapshot is required by the
+unchanged native-provenance verifier; its original D: bytes remain retained.
+Scratch stays under the shared D: root and budget. These protected source and
+dependency origins are not adopted as scratch or relocated.
 
 ## Required lifecycle
 
@@ -349,3 +366,11 @@ and the same 512 MiB/20 GiB/10 GiB budgets. It does not rewrite the older profil
 or permit a new native build, SDK or environment. Record the exact assembled
 wheel and source/native joins, verify a normal offline target, then retain and
 clean it. Its functional observations confer no independent/profile admission.
+
+The [lifecycle package profile](../compat/build-profiles/lifecycle-package-secondary-v1.json)
+keeps the same512MiB package budget and shared limits. It reuses Windows native
+producer560 and the verified original Linux CI43471568101 wheel, executing the
+two local package/installed checks sequentially. Windows assembly disables CMake;
+Linux changes only audited pure members. Neither route permits a native rebuild,
+new SDK/environment, source-history copy or source override in an installed
+acceptance process. These are unreleased candidate observations, not promotion.

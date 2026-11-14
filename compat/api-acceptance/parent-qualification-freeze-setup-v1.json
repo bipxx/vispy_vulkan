@@ -1,0 +1,29 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "FAILED_FREEZE_CALLER_SETUP_NO_SOURCE_COMMIT",
+  "actual_exit": 1,
+  "child_waited": true,
+  "failure": "validate_policy accepts root only; caller supplied policy and root",
+  "reproducer": {
+    "path": "@evidence/build/runs/parent-qualification-source-freeze-696/reproduce.py",
+    "sha256": "05883058ce4cb894cfab5fa7f332a66af4a42c76de597674bf188dc27bd96f61"
+  },
+  "traceback": {
+    "path": "@evidence/build/runs/parent-qualification-source-freeze-696/failure-audit.txt",
+    "sha256": "20bcec6d8f2dd111d57701131f42acb18400563243fa70b18ea0db836b8b8ac9"
+  },
+  "cleanup": {
+    "status": "PASS_APPLY",
+    "deleted": 2,
+    "retained_verified": 17,
+    "reclaimed_bytes": 15100811,
+    "scratch_absent": true,
+    "actual_exit": 0,
+    "child_waited": true
+  },
+  "branch_changed": false,
+  "commit_created": false,
+  "owner_index_unchanged": true,
+  "corrective_action": "New run with inspected ci.validate_policy(S); original verifier and failed run remain unchanged"
+}

@@ -1,0 +1,75 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "PASS_68_CPU_REENTRANT_PARENT_DESTRUCTION_SOURCE_FOLLOWUP",
+  "coverage_ids": [
+    "LIF-02",
+    "LIF-04",
+    "API-06"
+  ],
+  "review": {
+    "path": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\compat\\api-acceptance\\qt-parent-destruction-peer-review-v1.json",
+    "sha256": "123f392f25eccf70326c5c773cb820ab06228e1262b8ad963c060e6a70587db4"
+  },
+  "attempts": [
+    {
+      "run": "qt-parent-reentrancy-before-652",
+      "passed": 8,
+      "failed": 3,
+      "actual_exit": 1,
+      "child_waited": true,
+      "terminal": {
+        "path": "D:\\vispy-vulkan-managed\\build\\runs\\qt-parent-reentrancy-before-652\\terminal-source-only.json",
+        "sha256": "3efd184af1ecf0c302bff59760674afb072f4d3cdf9b3ba8c7a4c561a33b71b1"
+      }
+    },
+    {
+      "run": "qt-parent-reentrancy-after-653",
+      "passed": 68,
+      "failed": 0,
+      "actual_exit": 0,
+      "child_waited": true,
+      "terminal": {
+        "path": "D:\\vispy-vulkan-managed\\build\\runs\\qt-parent-reentrancy-after-653\\terminal-source-only.json",
+        "sha256": "5c5a0d9fd92ce532e162796f719f9b33787a5fda2be3b4ecc6d7ac59820ea051"
+      }
+    }
+  ],
+  "source_inputs": {
+    "tests/qt/test_parent_destruction_cpu.py": "6f9e9abb260b84a89d936955a6d5471621ba03197391053173a605cd13f1e129",
+    "tests/qt/test_native_close_cpu.py": "dd27b66be6589d36c9df4fead392a52a4ea7b8a07035ba23356a7a9075c1d109",
+    "tests/qt/test_paint_scope_cpu.py": "5c2808ff57c245006bcbc5b77dbf96d026896f4d1b2de23a41bc1b42490c7c78",
+    "tests/qt/test_window_state_cpu.py": "515b21844606d80e2515d3edc2e114dec7f493821f7be90612cf7c604f1643d0",
+    "src/vispy/app/backends/_qt.py": "16fec18d9346aeb03a560c7e5e3569eead864e60b362a682709749413dab8997",
+    "src/vispy/app/canvas.py": "dd1173d41033a2715f6b5546428089d59737343edf8b374b507bbf1c9db8a929",
+    "tests/qt/test_parent_destruction_gpu.py": "73bf7ef50b0bc1a8b508605269a5a65f5be937b1f2e6f3ce47580ab373425d78"
+  },
+  "actual_exit": 0,
+  "child_waited": true,
+  "scratch_created": false,
+  "native_rebuilt": false,
+  "installed_qualified": false,
+  "artifact_admitted": false,
+  "fixed": [
+    "F1: close re-reads backend after callback in normal and error cleanup branches; reentrant deletion does not cause a secondary error.",
+    "F2: create_native returns for a closed canvas; no recreation attempt after toolkit deletion."
+  ],
+  "controls": [
+    "Real offscreen PyQt6 close callback synchronously deletes parent, both normal and raising forms.",
+    "Original raising-handler exception identity preserved; no secondary cleanup failure log.",
+    "Real parent deletion followed by late create_native/update no-ops.",
+    "Real explicit close followed by parent deletion emits close event once; destroy double receives both calls.",
+    "All previous close/paint/window-state CPU cases retained."
+  ],
+  "limits": [
+    "PyQt6 source-only controls, not PyQt5/PySide6 qualification.",
+    "Expanded two-order GPU test is authored, not run on these new hashes. Prior648/650rendered passes retain their older source scope.",
+    "Post-destruction live-native properties/methods are unavailable; only close/update/create_native no-op behavior is claimed.",
+    "Recorder failures during logging/interpreter finalization remain a noted limitation, no universal Qt-exception containment claim."
+  ],
+  "remaining": [
+    "Rerun eight rendered cases on Windows/WSL, including explicit close then parent deletion with live shared peer.",
+    "Selected PyQt5/PySide6 controls before claiming those bindings for this fix.",
+    "Renew exact review, Python package/installed acceptance, final-head CI and integration."
+  ]
+}

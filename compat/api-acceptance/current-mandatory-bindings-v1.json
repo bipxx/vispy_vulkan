@@ -1,0 +1,66 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "PASS_EIGHT_CURRENT_MANDATORY_BINDINGS_AND_HISTORIES_NOT_ADMITTED",
+  "coverage_ids": [
+    "FIX-06",
+    "API-06",
+    "PLAT-08",
+    "TOOL-01"
+  ],
+  "source_commit": "99719f1f7bdbb320318cf1ccd0eed39f336c7cce",
+  "candidate": "tk-state-resource-10",
+  "matrix_draft": {
+    "path": "@evidence/build/runs/current-mandatory-bindings-636/matrix-draft.json",
+    "sha256": "2f1fb14a854fa07604a7bb6211299f258b08069644668fb0bf572aa2a03615d6"
+  },
+  "binding_verification": {
+    "path": "@evidence/build/runs/current-mandatory-bindings-636/verification.json",
+    "sha256": "759a0366ff5b6cf4d14d82e3f98c5c4954ab9028788b9214657dac29196ee558"
+  },
+  "history_verification": {
+    "path": "@evidence/build/runs/current-mandatory-histories-637/verification.json",
+    "sha256": "4da5e367e3ad38814df30c20d4d18a65afc6d59cb5df09c6179e2ed746f8af4c"
+  },
+  "histories": {
+    "path": "@evidence/build/runs/current-mandatory-histories-637/histories.json",
+    "sha256": "a2525675b8892fb12573c560683ff57fc7208e09f1b22578f4803e6cca5e2849"
+  },
+  "rows": 8,
+  "gate_checks": 24,
+  "installed_members_per_row": 537,
+  "zero_gauges_per_row": 10,
+  "retained_input_checks": 945,
+  "foreign_retained_origins_protected": 15,
+  "fixture_archive_files_verified": 492,
+  "strict_attempts": 8,
+  "separate_discoveries": 8,
+  "unattributed_controllers": 0,
+  "later_failures": 0,
+  "canonical_preparation_files_unchanged": 14,
+  "actual_exit": 0,
+  "child_waited": true,
+  "scratch_created": false,
+  "qualification_index_retention_acceptance": false,
+  "artifact_admitted": false,
+  "required_ci_complete": false,
+  "release_approved": false,
+  "partial_failures": [
+    {
+      "run": "current-mandatory-bindings-634",
+      "actual_exit": 1,
+      "reason": "Rendering helper has member/native-origin fields, not a top-level wheel hash."
+    },
+    {
+      "run": "current-mandatory-bindings-635",
+      "actual_exit": 1,
+      "reason": "Fixture-copy archive records an absolute origin, not a source-relative reference."
+    }
+  ],
+  "scope": "Current exact eight-row observation and original managed cleanup hash audit only;15foreign dependency origins remain unchanged and protected. Generic qualification-index retention acceptance is not claimed for these original row envelopes. Finite retained-history scope and its literal collector-key prefilter are explicit; no all-time machine, full API, hardware or release admission.",
+  "remaining": [
+    "Independent cumulative review of current row/fixture-copy/retention scope",
+    "Owned final-head freeze and required23-job CI",
+    "Exact matrix/Tk admission and promotion basis, protected integration and delivery"
+  ]
+}

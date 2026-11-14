@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "name": "strict-current-installed-v1",
+  "owner": "root-strict-current",
+  "storage_workspace": "D:/vispy-vulkan-managed",
+  "source_workspace": "C:/Users/HEQ/Projects/vispy_vulkan",
+  "registry": "D:/vispy-vulkan-managed/build/.hygiene/registry-preparation10-successor-613.json",
+  "expected_peak_bytes": 268435456,
+  "aggregate_max_scratch_bytes": 21474836480,
+  "min_free_bytes": 10737418240,
+  "purpose": "Current exact-wheel installed qualification using unchanged collectors and functional scenarios; no native production.",
+  "reuse": "Reuse reviewed Windows6de6d77f/Linuxb728b575 wheels, existing CPython base interpreters, retained hash-locked dependency wheels, original handle-fidelity controls and patched Mesa9c5. Do not rebuild native code or SDKs, refresh dependency versions, clone sources or copy old environments/history.",
+  "consumer": "One isolated consumer per registered platform run is necessary because prior disposable installs were cleaned and the strict launcher invokes an isolated installed Python. Create it only inside registered build/work/<run-id>, install the selected wheel and retained locked runtime closure offline in copy mode, then run both selected workflows in that same environment. Do not modify an existing pinned environment.",
+  "checks": "Discovery, actual runtime/absence gates, exact installed inventory/dependency receipt, then replay with the bound receipt. Keep every attempt; at most two receipt extensions for genuinely newly loaded files, with all other gates passing. Require identical environment fingerprints across state/resource/failure and capture workflows. Never promote UNVERIFIED, failure, or another wheel/profile.",
+  "guards": "Check shared scratch and declared additional allocation plus C:/D: capacity with registry613. WSL also checks guest filesystem and backing volume. Tolerate only disappearing test-owned files during size sampling. Stop owned child on capacity, timeout or I/O failure; record actual exit and wait.",
+  "cleanup": "Retain exact producer/scenario/controller inputs, immutable dependency references, source/licenses, all failed reports and a reproducer. Preserve runtime/receipt/worker/native-trace originals outside scratch. Inspect and apply exact bounded cleanup plan, rehash retained files and report reclaimed bytes before the next experiment.",
+  "scope": "Local strict observations only. Candidate source/scope/reuse approval is already bound; strict subject/profile joins, eight mandatory rows, required frozen-head CI, independent promotion, protected integration and delivery remain separate gates. Physical Linux GPU/Metal graphics and full parity remain unqualified."
+}

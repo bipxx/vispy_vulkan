@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "PASS_SOURCE_REUSE_QUALIFICATION_CONTRACTS",
+  "coverage_ids": [
+    "TOOL-01",
+    "FIX-04",
+    "FIX-06"
+  ],
+  "candidate": "compat/candidates/tk-state-resource-10/candidate.json",
+  "candidate_scope_sha256": "0b66899655d9092c079826290c5d7138199ddeeb55f6dc3b1edfd3d3fff587e3",
+  "passed": 282,
+  "failed": 0,
+  "actual_exit": 0,
+  "child_waited": true,
+  "targets": [
+    "tests/contract/test_reuse_metal_ci.py",
+    "tests/contract/test_reuse_linux_ci.py",
+    "tests/contract/test_qualification_native.py",
+    "tests/contract/test_qualification_linux_native.py"
+  ],
+  "scope": "Source CPU/native-evidence contract tests only; not native compilation, GPU/installed/strict-profile/CI/release qualification",
+  "native_rebuilt": false,
+  "evidence_root": "D:\\vispy-vulkan-managed\\build\\runs\\preparation10-reuse-contracts-610"
+}

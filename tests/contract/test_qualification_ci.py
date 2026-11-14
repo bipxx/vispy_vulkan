@@ -3,6 +3,7 @@
 from copy import deepcopy
 import io
 import json
+import shlex
 
 import pytest
 
@@ -10,6 +11,15 @@ from tools import qualification_ci as ci
 
 HEAD = 'a' * 40
 MERGE = 'b' * 40
+
+
+def test_linux_reuse_selects_the_current_preparation(current_preparation):
+    lines = (ci.ROOT / ci.LINUX).read_text(encoding='utf-8').splitlines()
+    commands = [shlex.split(line) for line in lines if '--candidate ' in line]
+    assert len(commands) == 1
+    command = commands[0]
+    selected = command[command.index('--candidate') + 1]
+    assert (ci.ROOT / selected).resolve() == current_preparation['candidate']
 
 
 def fixture():
