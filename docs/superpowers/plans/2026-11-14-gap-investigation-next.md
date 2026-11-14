@@ -1,10 +1,476 @@
 # Remaining-gap investigation: next execution plan
 
+## Current investigation queue — 2026-11-14
+
+This is the authoritative next-work queue. Sections below are historical planning
+records, including their superseded pending/running statements. This update is
+planning only: no build, test, CI dispatch, merge or publication was performed.
+
+The milestone is useful Windows/WSL Vulkan support with explicit partial VisPy
+compatibility. Full upstream parity, cybersecurity work, physical input/display
+timing and physical Linux GPU qualification are outside scope. Metal remains
+experimental build/CPU-only support.
+
+### Verified baseline and open questions
+
+- [889 source checks](../../../compat/api-acceptance/orphan-release-preparation15-contracts-v1.json):
+  850 passing cases under preparation 15; no test changes to obtain this result.
+- [878 mandatory observations](../../../compat/api-acceptance/orphan-release-mandatory-observations-v1.json)
+  and [880 reviewed basis](../../../compat/api-acceptance/orphan-release-mandatory-review-v1.json):
+  all eight finite Windows/WSL headless and Qt profile observations pass. Their
+  evidence basis is reviewed; current release/matrix admission is still open.
+- [886 Metal reuse pin](../../../compat/api-acceptance/orphan-release-metal-reuse-pin-v1.json):
+  both architectures completed successfully in run 43634581736. No job remains
+  running and no replacement build is planned. These results prove build/CPU
+  checks, not Metal rendering.
+- [888 preparation 15](../../../compat/api-acceptance/orphan-release-preparation15-v1.json)
+  is an additive metadata successor awaiting fresh review. Preparation 14 and
+  [887's seven stale-pin guard failures](../../../compat/api-acceptance/orphan-release-final-contracts-v1.json)
+  remain historical and unchanged; its old approvals do not transfer.
+- [890 receipt equality](../../../compat/api-acceptance/orphan-release-preparation15-proof-reuse-v1.json)
+  confirms that 32 original receipts / 128 bindings / 96 raw gates can be reused
+  without new graphics runs. It is a preflight, not current-subject admission.
+- Exact observed wheels remain Windows `4f537748` and Linux manylinux_2_39
+  `dfe1033f`, with runtime source `275888b5`. The 142 original inventory rows
+  are not 142 demonstrated defects, nor a demand for full parity.
+
+### Ordered closure packets
+
+Packet 3 complete at current subject scope: [896 retention](../../../compat/api-acceptance/orphan-release-preparation15-proof-retention-v1.json)
+passes1324contributing inputs, original32receipts/5strict attempts and exact15
+native/archive declarations. [895 failed collector](../../../compat/api-acceptance/orphan-release-preparation15-retention-failure-v1.json)
+remains failed, with exact namespace correction independently approved in
+[897](../../../compat/api-acceptance/orphan-release-retention-namespace-review-v1.json)
+before execution; no verifier or product change. All three scratch runs cleaned
+102/101/102bytes and29/45/1324retained inputs verified. Strict4pass/1nonpass
+counts are separate from the collector failure. [898 guarded subject](../../../compat/api-acceptance/orphan-release-preparation15-installed-subject-v1.json)
+proves128selected bindings,0missing/blocked, all11canonical files restored,
+no scratch or new graphics runs. admitted=false. Next packet4: exact reviewed
+owned-source freeze and23required qualification-head jobs; then independent
+impact/promotion, protected integration, matrix/strict admission and distinct
+delivery. Historical14subject869is not promoted; current15subject898supersedes
+its next-action role, preserving original failure/history scopes.
+
+
+Packets 2 and reviewed metadata portion of 3 completed: [892 fresh combined
+review](../../../compat/api-acceptance/orphan-release-combined-review-v1.json)
+approves exact145path delta and preparation15scope/native-reuse edges without
+blocking changes; original reviewer limitations remain. [893](../../../compat/api-acceptance/orphan-release-preparation15-reviewed-bindings-v1.json)
+applies only the permitted review metadata and passes both full native/archive
+validators plus actual current Linux and both Metal reuse paths. Scope/maps/reuse
+blocks and488historical JSONs unchanged; review/binding scratch cleaned90/92bytes,
+210/175retained verified. [894](../../../compat/api-acceptance/orphan-release-preparation15-installed-bindings-v1.json)
+reuses32original receipts/128bindings/96normalized gates in reviewed15overlay;
+zero newreceipts, all11canonical files unchanged, no scratch or rendering run.
+Four reviewed documentation versions retained by hash before dated updates.
+F1 wording clarification: host-import cleanup can run at an event boundary with
+open canvases too, whenever no Ticket is outstanding. No implementation change
+is required. Next renew contributing retention and guard the current15subject,
+then final-source freeze/required CI/impact/promotion/protected integration/
+admission/distinct delivery. No installed subject or release is admitted yet.
+
+
+Packet 1 checkpoint: [891 ownership/claim triage](../../../compat/api-acceptance/orphan-release-final-source-inventory-v1.json)
+records 144 proposed owned files and 110 preserved generated/unrelated changes,
+actual remote main7209f119, unchanged foreign HEAD/index, and six bounded claim
+groups. No new functional defect established, but no exhaustive defect-free claim.
+The inventory predates its own acceptance wrapper and this dated worklist update;
+include those mechanical additions when preparing the combined review packet.
+Next packet 2; no staging, source freeze or approval has occurred.
+
+
+| Order | Investigation and easiest closure path | Required result and stop condition |
+| --- | --- | --- |
+| 1. Refresh ownership and claims | Refresh 883's now-stale owned-path inventory against the actual remote main. Include preparation 15, current reuse pins, CI selectors, reader/test changes and current documentation. Reconcile API-05/06, STA-01, SCI-02/03/05/06 and LIF-01–06 using the triage table below. Leave generated outputs and unrelated provenance outside the proposed delta; preserve the foreign checkout/index. | Exact path/hash inventory plus one disposition per selected claim. A real in-scope defect returns to a focused fix before freezing; a broad parent checkbox alone does not create a defect. |
+| 2. Fresh combined review | Review the owned runtime/test/reader/CI/preparation-15 delta together, including exact candidate scope and both native-reuse digests. Use existing runtime review and finite installed proofs as evidence, not inherited preparation approval. Identify permitted subsequent mechanical metadata edits explicitly. | Fresh source/scope/native-reuse approval, or actionable findings. Do not apply preparation-14 approvals to preparation 15. |
+| 3. Bind current subject | Apply only approved review metadata through existing tools. Run unchanged full Windows/Linux native/archive and Linux/Metal reuse validators. Reuse all 32 original receipts, attempt histories and the approved failed-attempt resolution; renew retention for new declarations. Validate a guarded preparation-15 subject and verify canonical restoration. | All 128 selected bindings proved, no selected missing/blocked obligation, exact artifacts/origins and terminal retention joins; admitted=false until final gates. Stop on any identity, normalization, restoration or retention mismatch. |
+| 4. Freeze and required CI | Freeze only reviewed owned paths. Run the current policy's 23 required jobs on the exact qualification head, reusing valid native producers. Check that current installed evidence remains applicable to the final source delta. | Exact-head required CI passes, source-to-artifact impact is justified, and review covers final bytes or its explicit mechanical allowance. Functional edits invalidate affected evidence and require focused renewal. |
+| 5. Promotion and integration | Obtain independent impact/promotion review and use existing subject/envelope and eight-profile matrix admission paths in their required dependency order. Preserve the historical matrix and separate finite observations from admission. Use protected integration; verify the actual merged head and required checks. | All existing release/admission requirements pass against the required head. Do not substitute the Tk subject for eight-profile matrix admission or transfer approval across unreviewed merge changes. |
+| 6. Distinct delivery | Publish through a distinct tag/channel/path, preserve the older preview, and verify actual asset hashes and the documented exact-wheel installation route. Keep AGPL implementation licensing and original BSD/third-party notices attached. | Published bytes match admitted artifacts and installation guidance selects them despite equal package-version strings. Update coverage to delivered scope only after verification. |
+
+### Bounded feature-gap investigation
+
+Create a small claim table during packet 1; do not duplicate the existing large
+coverage inventory. Each entry must name the public route/values, supported
+claim, exact source/wheel/profile evidence, missing assertion, user impact,
+disposition and next command or documentation edit.
+
+| Coverage IDs | Investigate | Shortest acceptable closure |
+| --- | --- | --- |
+| API-05/06, STA-01 | Which method/value/state claims are actually promised, and which have only parent-level or historical proof? | Bind existing evidence to each selected claim; document unsupported combinations. Add one discriminating test only for a concrete missing promised behavior. |
+| SCI-02/03 | Mesh-filter composition and scene/camera interactions, including clip/alpha/blend work recorded on older wheels. | Establish exact test/source and artifact applicability first. Reuse a justified unchanged proof or renew only the affected installed cases; fix a reproduced mismatch. Keep untested compositions explicit. |
+| SCI-05/06 | Stale fixture dispositions and host/application claims versus current delivered scope. | Reconcile the fixture and host records by exact version/profile; retain historical results as historical and bound unsupported host/version combinations. |
+| LIF-01–06 | Distinguish injected failures, toolkit events and finite retirement/capture checks from actual device/surface loss, native reparenting and physical input. | Reuse exact applicable finite proofs; reproduce and fix any supported-route defect. Keep physical/device and arbitrary-format boundaries explicit rather than expanding the milestone. |
+| PLAT-04/08, TOOL-01/04 | Build-only Metal status, Windows/WSL profile scope, current evidence and cleanup joins. | Renew metadata/admission bindings using current originals. No new Metal graphics or physical Linux qualification. Verify terminal cleanup before another experiment. |
+
+Classify each claim as **reproduced defect**, **missing evidence**, **stale claim**
+or **compatibility boundary**. A boundary may close a chosen release decision,
+but does not mark a broad feature parent fully implemented. If packet 1 finds no
+new supported-route defect, proceed directly to review and release gates.
+
+### Efficiency, hygiene and completion
+
+- Reuse the current wheels, environments, SDKs, source archives and original
+  reports. A documentation or metadata edit alone does not justify rebuilding
+  native wheels, rerunning all graphics tests or copying receipt payloads.
+- Investigate validity before execution: check producer reuse predicates,
+  changed inputs and exact policy obligations first. Do not redispatch completed
+  Metal run 43634581736 or repeat successful eight-profile observations without
+  an identified invalidation reason.
+- Before writable scratch, follow [build hygiene](../../build-hygiene.md): register
+  a unique run under the shared managed root, keep the 20 GiB aggregate cap and
+  10 GiB reserve, check WSL guest/backing volumes where applicable, preserve
+  actual failures/exits/waits, inspect the exact cleanup plan and report cleanup
+  before the next experiment. No new environment is needed for this plan.
+- Update affected IDs in [the live checklist](../../coverage-checklist.md) in the
+  same change, distinguishing source-tested, installed, admitted, historical and
+  delivered evidence. Reopen only the affected packet when evidence changes.
+
+Completion means bounded supported claims, current subject and release gates,
+verified protected integration and distinct checked delivery. Test counts do not
+establish full API parity or a reliable percentage complete.
+
+## Historical remaining-gap plan — 2026-11-14
+
+This section is retained as historical context; the current queue above
+supersedes its next-action instructions. Scope is useful Windows and WSL Vulkan support, with documented partial
+VisPy compatibility. Full parity, cybersecurity work, new hardware procurement
+and macOS qualification are outside this milestone; Metal remains experimental.
+
+### Starting evidence
+
+- Windows: the matching development wheel passed nine lifetime controls and
+  73 affected regressions in separate runs, with two expected resource-control
+  refusals. See the linked 837–841 receipts below.
+- Linux: the existing fresh producer run
+  [43615452982](https://github.com/bipxx/vispy_vulkan/actions/runs/43615452982)
+  completed successfully for source `275888b5`. Its exact wheel is
+  `e99616e126299e45b5ee9418873c919ab44768fb5dd48f431537a519b7f8ccc3`.
+  [845 capture validation](D:/vispy-vulkan-managed/build/runs/orphan-linux-artifact-845/native-capture-validation.json)
+  records the original capture join; do not redispatch or rebuild for metadata.
+- [848 installed WSL verification](D:/vispy-vulkan-managed/build/runs/orphan-current-wsl-848/verification.json)
+  records 82 passes, two expected retained-canvas refusals, 47 CPU child-origin
+  proofs and nine lifetime controls with all ten gauges zero before shutdown.
+  This is finite software-Vulkan evidence, not physical Linux GPU coverage.
+- [847 reader review](D:/vispy-vulkan-managed/build/runs/linux-candidate13-reader-review-847/coordinator-disposition.json)
+  approved the exact reader-only change. It adds one workflow digest, not a
+  general allowance for changed producer workflows. Its 130 synthetic passes
+  and actual capture validation have different scopes.
+- Run 848's terminal cleanup removed 29,879,831 bytes / 570 files and verified
+  all 38 retained files. No installed qualification or public delivery follows
+  from these development observations.
+
+### Ordered investigation and closure checklist
+
+Selected release-observation gate completed at [863–865](../../../compat/api-acceptance/orphan-release-installed-row-bindings-v1.json):
+actual manylinux_2_39ABI audit and metadata-only Linux retag dfe1033f, followed
+by exact-artifact WSL strict workflows/two acceptance nodes, then all32rows/
+128bindings/96raw gates with Windows4f537748. Windows16receipts/audit/gates are
+reused; only16new Linux receipts generated. Canonical14files and execution
+scope unchanged;142original required rows still incomplete.860setup failure is
+retained and cleaned;861/862raw-artifact passes are historical, not transferred.
+All terminal scratch through864is cleaned;865is metadata-only/no scratch.
+Immediate next: exact attempt history/resolutions and contributing retention,
+artifact/row/profile subject and independent promotion basis, then final combined
+source/required-release CI/protected integration/admission and distinct delivery.
+
+Windows strict observations completed in [859](../../../compat/api-acceptance/orphan-current-windows-strict-v1.json):
+two selected workflows/16feature-profile joins/48raw gates share one exact
+installed environment; both selected acceptance nodes pass,537members/no
+overlays/ten zero final gauges. All attempts and initial metadata setup failure
+retained. Consumer cleaned62,913,430bytes/83retained verified. Immediate next:
+matching WSL strict cohort/two nodes under the versioned bounded profile, then
+bind all32rows128criteria to the exact artifact subject and remaining release
+gates. No formal row/profile admission follows from the Windows observation.
+
+Preparation gate complete at [857/858](../../../compat/api-acceptance/orphan-preparation14-reviewed-native-bindings-v1.json):
+fresh exact16path/scope d1133224 approval applied under its narrow metadata
+allowance; both FULL original native records and actual current Linux CI
+input/capture/driver/current-package path pass unchanged. Only32selected ledger
+review flags changed; no strict row admitted. Next execute the selected two
+observer workflows and two acceptance nodes on each exact profile, retaining
+all discovery/inventory/replay attempts. Earlier review/pin-pending checkpoints
+below are historical. Final combined source/required-release CI, protected
+integration, strict admission and distinct delivery remain separate.
+
+Current next action after [855 pin correction](../../../compat/api-acceptance/orphan-preparation14-linux-ci-pin-v1.json):
+recheck affected candidate/Linux-reuse contracts, then obtain fresh review of
+the corrected16path preparation/reader/CI-pin delta.854approved only the prior
+scope; its two review records were never applied and may not be inherited.
+The original Linux CI config still selected old568native bytes even though the
+candidate used845;855now points to actual43615452982/artifact14122723473 and
+renewed scope links. Runtime/profile/criterion/selected execution edges remain
+unchanged. After fresh approval, bind only its permitted metadata and require
+unchanged full Windows/Linux native record validators before strict execution.
+
+Step 1 completed at development-evidence scope: immutable
+[producer](../../../compat/api-acceptance/orphan-current-linux-producer-v1.json),
+[reader review](../../../compat/api-acceptance/linux-candidate13-reader-review-v1.json)
+and [WSL](../../../compat/api-acceptance/orphan-current-wsl-v1.json) receipts now
+pin the terminal records and verified cleanup. This does not close later gates.
+
+Step 3's finite baseline completed: [850/851](../../../compat/api-acceptance/orphan-current-tk-baselines-v1.json)
+pass56Tk cases plus direct failure/recovery on each current exact wheel, no
+overlays,537members/ten zero final gauges. Both targets are cleaned and24+27
+retained inventories verified (47,787,129 bytes removed). The remaining step3
+dependency/environment joins needed by strict observers must be renewed under
+their original protocol; baseline success does not supply those reports.
+Next prepare additive14 and run the declared missing observers; no new native
+build is justified by these metadata/qualification changes alone. Step2's
+broader per-ID claim audit remains partial, not silently completed by the baseline.
+
+Step 4 preparation is now materialized in [852](../../../compat/api-acceptance/orphan-preparation14-bindings-v1.json):
+additive14 validates, original current native producers recheck, historical
+records/142dispositions/128bindings are preserved and selectors agree on14.
+Source/scope/native-reuse reviews remain unset; no approval is inherited.
+Source contracts and independent review are next, followed by strict observer
+environment joins and the declared workflows. The development candidate is
+NOT_QUALIFIED. Scratch cleaned89bytes/19retained verified; no native rebuild.
+
+| Step | Investigation and easiest path | Exit condition |
+| --- | --- | --- |
+| 1. Reconcile evidence | Add small immutable receipts for 845, 847 and 848; update the live coverage IDs, preserving earlier pending/failure snapshots. Bind each receipt to exact source, wheel, native payload, tests and profile. | LIF-06-PANZOOM-RETIREMENT, LIF-06-HOST-IMPORT-RETIREMENT, LIF-06-QT-FOCUS and SCI-02-CLIP-ALPHA-BLEND distinguish current Windows/WSL observations from integration and release coverage. No remaining “running CI” statement is treated as current. |
+| 2. Audit actual functional gaps | Inspect API-05/06, SCI-02/03/05/06, STA-01 and LIF-01–06 individually. For each missing assertion, record the public route, supported values, existing evidence, exact missing behavior and user impact. Classify it as reproduced defect, missing evidence, stale claim or explicit compatibility boundary. | Every in-scope missing behavior has one discriminating reproducer and a closure assertion. Evidence-only gaps proceed without renderer edits; unsupported parity becomes an explicit boundary. Parent IDs stay partial where their scope is broader. |
+| 3. Check current Tk profiles cheaply | Reuse the exact Windows `4f537748` and Linux `e99616e1` wheels and existing locked Tk 8.6 / Tk 9.0 environments. Verify dependency/environment receipts against the current native payloads; run the selected installed baseline without source overlays. Inspect actual parameter collection before estimating case counts. | Both profile baselines pass with exact installed origins, or each failure has retained evidence and a focused fix decision. Do not substitute the Qt 82-case selection for Tk evidence. |
+| 4. Renew candidate bindings | Create additive preparation 14 from preserved preparation 13. Renew runtime inputs, native provenance, profile/source/scope reviews, coverage, execution ledger and selection bindings for the changed C++ source. Use the existing schemas and validators. | The successor joins the current artifacts and exact source. Old candidate approvals are neither overwritten nor silently reused for new native inputs. No strict admission claim yet. |
+| 5. Run only required Tk observations | Follow the [selected-edge audit](../../../compat/api-acceptance/preparation14-execution-path-audit-v1.json): two selected workflows and two selected acceptance nodes per profile, in one exact installed environment per profile. Each logical workflow retains discovery, inventory and bound replay; preserve any required receipt extensions. The composite already runs both canvas ownership modes. The earlier849count of seven modes/ten nodes described all declarations, not the selected execution edges. | All 32 installed rows / 128 criterion-profile bindings have the required exact-artifact observations, acceptance results and attempt/failure/retention history. Composite binds60criteria and capture4per profile only through unchanged strict normalization. No row, assertion or original obligation is removed. |
+| 6. Review and integrate final source | Review the combined runtime/test/reader/candidate/CI delta, including exact artifact impact and any changed workflow selector authority. Freeze owned paths, preserve foreign checkout/index changes, run required CI and use normal protected auto-merge. | Actual merge commit/tree, required checks and owned source-to-artifact joins verify. Any producer-affecting change invalidates the relevant old evidence; metadata alone does not justify a native rebuild. |
+| 7. Admit and deliver distinctly | Run exact-head release-policy checks and detached promotion-basis review, then strict admission. Choose a distinct delivery identity for the new artifacts; retain AGPL implementation licensing and original BSD/third-party notices. | Published hashes and installation route verify against the admitted artifacts. Existing preview assets remain unchanged. |
+
+Work one blocking item at a time. Start with steps 1–3; do not launch the full
+qualification campaign until those establish which observations are missing.
+If a current behavior fails, first run its smallest source/contract control,
+then the affected installed case on each relevant profile. Broaden testing only
+for a new failure, changed behavior or explicitly required gate. Advisory cases
+such as late interpreter shutdown or physical GPU timing become required only
+when a supported claim or reproduced failure makes them necessary.
+
+### Per-ID investigation decisions — 2026-11-14
+
+This is a claim audit, not new execution or permission to transfer an old wheel's
+results. Current evidence means 837–851 at runtime275888b5; older scientific
+receipts retain their recorded runtime2b8bccd/9e4e30cc/a2715d26 scope.
+
+| ID | Public route / values to keep explicit | Evidence and next missing assertion | Disposition for this milestone |
+| --- | --- | --- | --- |
+| API-05 | Public methods, exports, aliases and value dispatch | The [method reconciliation](../../api-method-reconciliation.md) retains a discovery inventory, not a fully reviewed method catalog. | Keep parent partial. Review routes selected by the four Tk workflows; do not require a fresh whole-VisPy method audit for this bounded release. |
+| API-06 | Tk/state/capture routes and selected Qt input/focus/callback routes | Current56Tk cases and82Qt/lifetime cases per platform establish their named vectors; required strict observer/worker/collector bindings remain missing. | Evidence/admission work next; no new API defect follows from missing qualification. |
+| STA-01 | Typed state queries, queued state, rectangle defaults, blend/stencil selectors, scissor, sample count0/4 | 850/851 include signed stencil masks, queued state without implicit submission, query failure preservation and selected mutations. This does not render every fractional polygon-offset or mixed blend/stencil combination. | Qualify the selected workflows; acknowledge broader combinations rather than claiming complete raster-state coverage. |
+| SCI-02 | TextureFilter, PlanesClipper, ColorFilter/Alpha and selected clipped blending | Older four pending-revision/six color-alpha proofs retain their old artifact scope; current affected clipped-blend cases are in841/848. | Preserve exact scopes. Renew additional scientific cases only before making their current-artifact claim; general filter ordering is outside this selected Tk admission. |
+| SCI-03 | TurntableCamera azimuth/center mutation, planes/depth/polygon offset | Older two changed-pose controls are metamorphic; only baseline/restoration uses the independent frozen oracle. They are not renewed by the current PanZoom lifetime cases. | Keep other cameras/fov/state interactions partial. Do not infer Turntable correctness from PanZoom retirement. |
+| SCI-05 | U05/E03/E04/Q11–Q13/H03 disposition records | Existing seven-row reconciliation already distinguishes finite/current-at-the-time, historical and open records. | No duplicate reconciliation campaign. Reopen only the row whose route, artifact/profile or chosen product claim changes. |
+| SCI-06 | `gloo.read_pixels(mode='stencil', out_type='float'/'unsigned_byte')`; raw stencil reads | [Stencil disposition](../../stencil-wrapper-disposition.md) distinguishes the improved public wrapper from unsupported raw `glReadPixels`; original stock failures remain. | Retain the boundary and old artifact scope. Additional formats/MSAA need their own selected assertion, not stock parity. |
+| LIF-01 | Query/submit refusal and recovery; direct resource upload failure | 850/851 reproduce four immediate/delayed gloo/raw capacity recovery branches;838/848 cover cleanup-submission faults. Real surface acquisition and physical memory remain different assertions. | Run required strict failure/recovery observers. Do not substitute logical gauges for physical residency or actual surface loss. |
+| LIF-02 | Qt layout moves/WinIdChange and shared ownership | Earlier source/overlay proofs do not qualify current installed native-WSI reparenting. | Keep broader Qt/native-WSI claim open. Do not add it to the selected raster Tk release implicitly. |
+| LIF-03 | Tk hide/zero-configure/show-resize and queued readback | Current56case baseline includes hide/zero/restore and odd-quadrant resize/loss at samples0/4. Physical Qt minimization has a separate older source record. | Bind the current Tk observations; retain explicit Qt/native-surface limits. |
+| LIF-04 | Canvas close with pending work, live peer, held context, deferred readiness | Current nine lifetime controls plus Tk close-during-readiness prove named retirement paths. Actual platform surface loss is not established by injected device loss. | Integrate the fixed retirement contract and qualify selected Tk recovery; preserve the actual-surface boundary. |
+| LIF-05 | Color capture, odd quadrants, crop/alpha and sample count0/4 | Current850/851 color baseline is separate from older748/749 depth/stencil16case proofs. Mixed samples/arbitrary formats are unproved. | Complete declared Tk capture observer. Do not transfer the old depth/stencil artifact claim or expand the format matrix. |
+| LIF-06 | PyQt6 QWindow focus A/B/A and A/entry/A, delivered callback recovery, PanZoom and host-import retirement | Current841/848 installed observations and negative controls pass; protected integration and strict admission remain open. Physical HID/touch/stylus/gestures/other bindings are separate. | Close integration/qualification work for selected paths; keep the broader input parent partial. |
+
+No new reproduced runtime defect was found by this record/collection audit.
+The immediate blockers are exact preparation review, strict installed evidence,
+integration and delivery. A new functional failure takes priority over those
+administrative steps and must retain its original reproducer and artifact.
+
+### Storage and stopping rules (execution)
+
+Use `D:/vispy-vulkan-managed`, the pinned successor-613 registry, the shared
+20 GiB scratch cap and 10 GiB free reserve. Register each writable run; check
+WSL guest and Windows backing capacity. Reuse existing wheels, SDKs, source
+archives and environments. Retain small reports, exact hashes, reproducers and
+original licenses; inspect and apply each terminal cleanup plan before another
+experiment. Stop on a budget failure or invalid source/artifact join. Never
+weaken a verifier to close a row. Planning changes create no new build lease,
+native build, environment or source snapshot.
+
+The milestone closes when selected functionality is supported or explicitly
+bounded, the required installed bindings pass, protected integration is verified
+and the distinct admitted delivery is checked. No percentage or full-parity
+claim is inferred from test counts.
+
 Planning date: 2026-11-14. Results below are limited to their linked evidence.
 PR81's reviewed 49-file tree is frozen separately; later live worklist edits
 remain outside that PR and must not be staged into it silently.
 
 ## Active investigation and closure queue — 2026-11-14
+
+### Current execution plan: investigate, fix, then qualify
+
+**Reader authority preflight846 — 2026-11-14:**
+[Exact706a9d26 support](../../../compat/api-acceptance/linux-candidate13-protocol-source-v1.json)
+is source-tested: original reader refuses the current CI workflow; byte proof
+shows only the candidate13selector in inactive reuse differs from pinned fresh
+authority. One exact allowlist entry, no wildcard/normalization;130synthetic
+contracts preserve unknown-selector/fresh/capacity/condition/comment rejection.
+9060242byte scratch cleaned/19retained verified. Independently review this bounded
+reader change before real capture validation. The already running43615452982
+source/workflow/runtime stays unchanged; preserve original capture/refusal and
+do not rebuild merely for reader support. WSL/current qualification remain open.
+
+**Exact source freeze/push843/844 complete — 2026-11-14:**
+[275888b5/treeb939a659](../../../compat/api-acceptance/orphan-lifetime-source-head-v1.json)
+contains permitted23paths on7209f119.510runtime/133native/537members/alltests/
+mutant match committed blobs;82+2collect without native import. Private index
+cleaned15137954bytes/104retained verified; foreign HEAD/index preserved. Source
+is pushed only to unmerged `wip/orphan-retirement-linux-843`. Exactly one fresh
+Linux run43615452982 (job132509393392) is in progress at pinned software Vulkan
+repair, under the existing6GiB remote workflow lease and always-finish lifecycle.
+Next poll that same handle; retain original artifacts/source/provenance/attempts
+and cleanup, then execute WSL acceptance without another local dependency build.
+Do not restart on observation delay. Main/PR/integration, successor bindings,
+32Tkrows128bindings and release gates remain open. This later metadata remains
+outside frozen23path source; matching Windows evidence keeps its finite scope.
+
+**Source review842 approved — 2026-11-14:**
+[Exact22path delta4fec1545](../../../compat/api-acceptance/orphan-lifetime-source-review-v1.json)
+on7209f119 has no required changes. Reviewer approved only an unmerged source
+branch for fresh Linux CI and listed unread execution material; coordinator
+reverified920inputs,133native sources/proofs, whole4farchive and raw9+73passes/
+2refusals/47origins.94byte scratch cleaned/62retained verified. Freeze allowed
+23paths (one own receipt and additive dated checkpoints), verify actual-head
+runtime/native/test/artifact joins, collect82+2without native import, then push
+that unmerged branch and dispatch the existing fresh Linux producer. Preserve
+all advisory/source-scope limits. Current WSL proof, successor native/candidate
+bindings, protected integration,32Tkrows128bindings and release gates stay open.
+
+**Windows execution checkpoint837–841 — 2026-11-14:**
+[Nine lifetime cases](../../../compat/api-acceptance/host-import-retirement-windows-v1.json)
+and[73affected regressions/two refusals](../../../compat/api-acceptance/orphan-current-windows-v1.json)
+pass on exact4f537748/native057d13e6;44native CTests,537archive/installed members
+and47CPUchild origins verify. The1MiB host-import failure is fixed with one
+event-boundary empty submission using existing failure-safe Ticket ownership;
+orphan finalizers retain no-init/no-submit semantics. Entry normalization fixes
+the now-stale focus baseline, preserving exact equality and refusal controls.
+835/840failures remain.837/838/840/841 cleaned359881092bytes, retained files
+verified. Next independently review/freeze the exact changed runtime/tests and
+records, then obtain a fresh Linux producer and run matching WSL observations.
+Read-only839 finds no Linux SDK in known retained roots; guest/backing volumes
+are writable with reserve. Inspect for any qualified SDK record before deciding;
+if absent, use the existing documented fresh-mode Linux CI producer on the exact
+reviewed unmerged source, retaining provenance and reusing its wheel in WSL.
+Do not duplicate that with a local dependency rebuild. Default native-reuse CI
+must receive successor bindings for changed C++ inputs before integration.
+After both platforms, continue the32row/128binding gates below. This finite
+Windows checkpoint does not close WSL, integration or artifact/publication work.
+
+**Step1 complete — 2026-11-14:**
+[830](../../../compat/api-acceptance/current-installed-protected-integration-v1.json)
+verifies actual PR83 merge7209f119/tree457bfb57,11required checks,14frozen blobs
+and517runtime/test joins. Later WIP/foreign index preserved; no scratch created.
+Proceed to step2. Older pending integration checkpoints below remain historical.
+
+This ordered plan supersedes older next-action instructions below. It is a
+planning update, not new execution or qualification evidence. Use the live
+[coverage checklist](../../coverage-checklist.md) as the single item inventory.
+The milestone is useful Windows/WSL Vulkan support with explicit compatibility
+limits; full VisPy parity and cybersecurity work are outside scope. Metal stays
+experimental because no Mac is available.
+
+| Order | Work and easiest next action | Completion evidence |
+| --- | --- | --- |
+| 1 | Verify PR83's current required checks and actual protected merge; reuse its frozen source and installed evidence while exact identities match. | Actual merge commit/tree, required-check results, and unchanged owned/foreign source identities. Until observed, integration remains pending. |
+| 2 | Close **LIF-06-PANZOOM-RETIREMENT** using the focused investigation below. Do this before another artifact qualification campaign. | A discriminating regression, safe runtime fix, matching Windows/WSL installed results, review and protected integration. |
+| 3 | Audit the bounded milestone's remaining API-05/06, SCI-02/03/05/06, STA-01 and LIF-01–06 claims against existing receipts. Correct stale wording first; select a new case only for a concrete supported workflow with missing evidence or a reproduced defect. | Each selected item has a public route, supported values, exact source/artifact/profile evidence, remaining assertion, and disposition. Broad parent IDs remain partial where appropriate. |
+| 4 | Qualify the final changed artifacts against the existing candidate's selected Tk workflows. Audit826 identifies **32 installed rows / 128 criterion-profile bindings / four workflows on two profiles**. Reuse matching immutable prerequisites; run only missing or invalidated observations. | Complete workflow observations and attempt/failure/retention histories bound to exact archives, producers and profiles; additive row bindings pass unchanged strict validators. The 73 Qt cases are separate evidence. |
+| 5 | Finish release qualification and delivery after artifact bytes settle. Establish an explicit new delivery identity before publication; preserve the existing preview and original licenses. | Exact qualification-head release-policy CI, source-to-artifact impact review, detached promotion-basis review, strict admission, then verified published hashes and installation route. Ordinary branch CI alone is insufficient. |
+
+#### Focused investigation: orphaned GLIR deletion
+
+**Native834 / installed835 checkpoint — 2026-11-14:**
+[44native CTests and6of7Windows controls pass](../../../compat/api-acceptance/orphan-retirement-windows-v1.json).
+The large host-import control leaves1MiB pinned, all other gauges zero. Both
+runs cleaned324069472bytes,145/39retained verified. Next close the explicit
+LIF-06-HOST-IMPORT-RETIREMENT failure before WSL or qualification campaigns.
+Source inspection points to released imports waiting for a future engine Ticket
+that never arrives after close. Inspect pinned Dawn's Vulkan deletion serials
+before changing this watermark: an already-completed queue fence alone may not
+prove pending Vulkan memory deletion. Preserve the failing artifact and exact
+assertion; require bounded event-driven retirement without another canvas or
+global shutdown, plus failure-safe submission ownership if a cleanup barrier
+is necessary. Six Windows passes do not close the parent lifetime gap.
+
+**Step2 source progress833 — 2026-11-14:**
+[33source-only controls pass](../../../compat/api-acceptance/orphan-retirement-source-controls-v1.json)
+for the new dedicated retirement API contract, orphaned/late DELETE handling,
+association transfer and failed packing/execution ownership. Preserve the
+original13failure control and the broad selection's two guarded native-import
+failures. Native implementation remains uncompiled and no current wheel is
+fixed. Next write native no-device/idempotence/live-peer/queued-snapshot,
+helper-thread-GC and host-import controls; reuse existing SDK-linked recipes
+for matching leaf builds; then installed Windows/WSL PanZoom and affected
+callback/focus validation. Peer831 recommends the orphaned flag rather than
+historical CREATE tracking to handle832's order. Its unknown thread/host-import
+claims need proof; no extra probe counter/revision change was required for the
+source patch. Peer scratch cleaned85bytes/19retained verified;833 used no scratch.
+
+**Additional design control832:**
+[source-only finalizer probe](../../../compat/api-acceptance/orphan-queue-finalizer-order-v1.json)
+observes shared-queue finalization before GLObject DELETE emission in a cyclic
+owner graph. A finalizer that only drains already queued DELETE commands is
+insufficient. Include submitted ownership transfer and this exact ordering in
+the regression/design; no installed/native fix follows from the probe.
+
+Starting evidence is [diagnosis829](../../../compat/api-acceptance/panzoom-retirement-diagnosis-v1.json):
+scene, camera, canvas and Qt-widget weakrefs die, but native resources remain;
+retained contexts expose queued DELETE commands whose flush fails with
+`missing canvas 0`. Current wheels are not fixed. Do not repeat this diagnosis
+without a changed hypothesis.
+
+1. **Trace the safe retirement boundary before editing.** Inspect queue
+   association/last-owner destruction, parser logging wrappers, native resource
+   ownership, outstanding draw snapshots and host-exporter callbacks. Establish
+   whether Python finalization can re-enter native code while the engine mutex
+   is held. Decide between direct retirement and deferred safe-boundary draining
+   from that evidence; record the ownership and locking contract.
+2. **Add a regression that fails for the diagnosed cause.** Repeat creation,
+   rendering, close and collection of small PanZoom scenes in one live process.
+   After the documented normal event/drain boundary, all ten logical resource
+   gauges must return to the quiescent entry baseline, without global shutdown
+   or a hidden maintenance canvas. Keep a peer scene alive and verify its
+   pixels/resources survive. Include associated queues and pending draw
+   snapshots so premature deletion cannot satisfy the resource assertion.
+3. **Implement the smallest safe frontend/native contract.** Retire only
+   abandoned deletion work, preserving live aliases and in-flight ownership.
+   Require no surviving canvas, device resurrection or reentrant lock
+   acquisition. Cover repeated deletion and shutdown behavior. Ordinary
+   rendering commands with missing/invalid canvases must continue to fail;
+   older native payloads must not silently claim the new contract.
+4. **Validate cheaply, then build once per affected profile.** Run focused
+   source/contract checks first. Audit existing SDK and leaf-build recipes,
+   measure the required scratch peak, and register within the shared budget.
+   Reuse immutable dependencies and locked environments. Build matching native
+   leaves for Windows and WSL; do not rebuild Dawn/Qt or clone source history
+   merely because this fix changes the leaf extension.
+5. **Prove installed behavior and integrate.** Verify archive members and
+   origins with no overlays; run the new lifetime/peer/pending-work controls
+   and affected callback/focus/PanZoom selection on both profiles. Preserve a
+   failing control or exact old-artifact reproduction. Refresh native
+   provenance, candidate and CI bindings affected by changed C++ inputs rather
+   than reusing old native approvals. Review the exact delta, integrate through
+   protected CI, and update LIF-06-PANZOOM-RETIREMENT with finite scope.
+
+**Stop/decision rules:** A failed ownership or locking control returns to the
+contract design; do not mask it with shutdown or weaken a verifier. A missing
+optional hardware capability becomes an explicit boundary. A disk-budget
+failure stops new execution. Do not start the next campaign until the current
+run's children have exited, evidence/reproducer is retained, and its exact
+cleanup plan has been inspected, applied and verified.
+
+**Storage for every execution:** use the existing coordinator-selected managed
+root and protected/blocked registry, one registered owner/run under
+`build/work/<run-id>`, the shared 20 GiB scratch cap and 10 GiB free reserve.
+Check both WSL guest and Windows backing volumes. Retain small reports,
+preferred sources, patches, licenses and hash references outside scratch;
+keep one copy of each distinct artifact. Planning/source-only checks need no
+new native build, environment or source snapshot.
+
+[PR83 source push](../../../compat/api-acceptance/current-installed-source-head-v1.json)
+records6a4d0f11/tree457bfb57,14paths on26e9ea5f, exact runtime/test/wheel/control
+joins and73+2case collection withoutnativeimport. Private-index scratch cleaned
+15,136,356bytes/79retained verified; foreign HEAD/index preserved. Normal protected
+head-pinned auto-merge enabled; fresh requiredCI/actualmerge remain pending. Keep
+this later metadata outside frozenPR83. WhileCI runs, investigate explicit
+LIF-06-PANZOOM-RETIREMENT; then selectedcurrentTk/profile/admission work remains.
 
 [Expanded825 approval](../../../compat/api-acceptance/current-installed-source-review-v1.json)
 covers exact13file delta9bb9fe55 on actual26e9ea5f/tree3c39641e with no required
@@ -182,6 +648,25 @@ scene/canvas/native objects and explicit destruction of only test-owned closed
 Qt widgets, observing before/after gauges without global shutdown. Distinguish
 test-held references from runtime ownership/queued deletion before changing code;
 fix that responsible path and verify minimal accumulation/recovery on both profiles.
+
+Diagnosis update829: [staged weak-reference results](../../../compat/api-acceptance/panzoom-retirement-diagnosis-v1.json)
+show canvas/widget/camera/scene/context objects collected normally, but native
+resources remain. Keeping only contexts reveals10queuedDELETEs percontext;
+postclose flush fails `missing canvas 0` before deletion. Native execution
+unconditionally resolves a canvas before even resource deletion. Original
+objects are not merely held by the test. Target cleaned17,902,134bytes/22retained.
+
+Implement against this causal boundary: provide native retirement that can
+process only orphaned resource deletions without a live canvas or device
+resurrection; let the frontend retain/drain final DELETE ownership when a queue
+loses its last owner. Preserve live shared queues and immutable pending snapshots,
+reject mixed render work against absent canvases, and do not allocate a hidden
+maintenance canvas or call global shutdown to make gauges pass. Add positive
+last-owner/alias-queue and no-canvas/after-shutdown controls, repeated closed-scene
+accumulation and live-peer/pending-frame recovery. A native contract change needs
+matching Windows/WSL payloads and renewed production/candidate/CI evidence; reuse
+the immutable SDK/dependencies and a bounded native-leaf build profile, not a
+Dawn/Qt/source-history rebuild. Old18e/9efb artifacts remain explicitly unfixed.
 
 Matching execution complete: [current-wheel installed receipt](../../../compat/api-acceptance/qt-callback-installed-v1.json)
 binds73cases on each Windows18e11361/WSL9efb556e wheel, zerooverlays/537members,

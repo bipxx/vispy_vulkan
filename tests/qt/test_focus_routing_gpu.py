@@ -25,7 +25,21 @@ def test_host_window_focus_routes_input_and_rendering_without_peer_leakage(flow)
     native_application = application.native
     # Other scenes may still own buffers/textures on the shared device. Require
     # quiescent work, then prove this host returns every gauge to its entry value.
-    baseline = {name: _dawn.probe()[name] for name in GAUGES}
+    # Collect unreachable prior scenes before the baseline: teardown collection
+    # must not be the first chance for their newly working retirement to run.
+    gc.collect()
+    QtCore.QCoreApplication.sendPostedEvents(None, QtCore.QEvent.Type.DeferredDelete)
+    deadline = time.monotonic() + 5
+    while True:
+        application.process_events()
+        _dawn.process_events()
+        probe = _dawn.probe()
+        if all(probe[name] == 0 for name in (
+                'pending_tickets', 'queued_frames', 'line_resource_pool_busy_slots')):
+            break
+        assert time.monotonic() < deadline, 'entry resources did not quiesce'
+        time.sleep(.001)
+    baseline = {name: probe[name] for name in GAUGES}
     assert all(baseline[name] == 0 for name in (
         'pending_tickets', 'queued_frames', 'line_resource_pool_busy_slots')), baseline
     host = QtWidgets.QWidget()

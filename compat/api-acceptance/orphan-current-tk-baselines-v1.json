@@ -1,0 +1,233 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "status": "PASS_CURRENT_INSTALLED_WINDOWS_WSL_TK_BASELINES",
+  "coverage_ids": [
+    "API-06",
+    "STA-01",
+    "LIF-01",
+    "LIF-05",
+    "LIF-07"
+  ],
+  "profiles": {
+    "windows": {
+      "schema": 1,
+      "date": "2026-11-14",
+      "status": "PASS_CURRENT_INSTALLED_TK_BASELINE_56_AND_FAILURE_RECOVERY",
+      "source_commit": "275888b5a46647a6ff59c7474f96dd5def2b6f75",
+      "wheel": {
+        "path": "build/artifacts/4f537748c74689ed4d55ee2e3f8e3d9f1c1cfdf0803d1b72c4169217c74291d8/vispy-0.17.0+vulkan.2-cp312-cp312-win_amd64.whl",
+        "sha256": "4f537748c74689ed4d55ee2e3f8e3d9f1c1cfdf0803d1b72c4169217c74291d8"
+      },
+      "native_sha256": "057d13e62ac520fbf7fe7b62a3059588bb477e24a0061d087bcc50edd44a12ea",
+      "cases": 56,
+      "passed": 56,
+      "installed_members_verified": 537,
+      "source_overrides": 0,
+      "source_hashes": {
+        "tests/native/test_dawn_state_queries.py": "db757c684658992374487052cc9ce4a0e2efe990547994a09709f258df992dcf",
+        "tests/native/test_tkinter_capture.py": "4ef4007edaad375833f2a87cec40129b8f2391f6551fbb3f14ebfcfacadcfa9e",
+        "tools/tkinter_failure_scenario.py": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21",
+        "tools/tkinter_resource_scenario.py": "e7a9f4be5322c72cb83e382547ab23db831142141f10dbf01643d82aecf715be",
+        "tools/tkinter_state_scenario.py": "31932928dae83902fa88d10e1e5afd9920e7d0496c6f0b5c7d9478d48d448310"
+      },
+      "toolkit": {
+        "tk_version": 8.6,
+        "tcl_version": 8.6,
+        "binding_origin": "C:\\Users\\HEQ\\AppData\\Roaming\\uv\\python\\cpython-3.12.8-windows-x86_64-none\\DLLs\\_tkinter.pyd",
+        "binding_sha256": "38453f6aff3f3a3ef0017c00bfee2f403ca0aeaf92b8b5c56d05460fd6dbbdf9"
+      },
+      "device": {
+        "backend": "Vulkan",
+        "adapter_type": "discrete",
+        "vendor": "nvidia",
+        "device": "NVIDIA GeForce RTX 4090",
+        "driver": "NVIDIA: 610.88 610.88.0.0",
+        "vendor_id": 4318,
+        "device_id": 9860,
+        "max_texture_dimension_1d": 32768,
+        "max_texture_dimension_2d": 32768,
+        "max_texture_dimension_3d": 16384,
+        "max_vertex_attributes": 30,
+        "max_vertex_buffers": 8,
+        "max_vertex_buffer_array_stride": 2048,
+        "max_storage_buffers_per_shader_stage": 16,
+        "max_uniform_buffers_per_shader_stage": 12,
+        "max_inter_stage_shader_variables": 30,
+        "max_storage_buffer_binding_size": 2147483644,
+        "max_bindings_per_bind_group": 1000,
+        "max_compute_invocations_per_workgroup": 1024,
+        "max_compute_workgroup_size_x": 1024,
+        "max_compute_workgroups_per_dimension": 65535,
+        "max_point_vertex_attributes": 30,
+        "core_features_and_limits": true,
+        "point_input_limit_scope": "all active user point inputs share one vertex buffer; exact vertex/instance identities use read-only vertex storage without reserving a user attribute; actual granted attribute/stride/storage/allocation limits apply",
+        "max_samplers_per_shader_stage": 16,
+        "max_sampled_textures_per_shader_stage": 48,
+        "max_buffer_size": 1099511627776,
+        "max_uniform_buffer_binding_size": 65536,
+        "software": false,
+        "float32_filterable": true,
+        "unorm16_texture_formats": true,
+        "bresenham_lines": true,
+        "last_vertex_provoking": true,
+        "timestamp_query": true,
+        "timestamp_quantization_ns": 65536,
+        "host_mapped_pointer": true,
+        "host_import_limit": 536870912,
+        "depth_stencil_storage": "depth24_unorm_stencil8",
+        "ok": true,
+        "error": "",
+        "loss_count": 0,
+        "revision": "117b054598f4758b598f4b8f48feea48c11fe7b0+dawn-499e5c6ff9b37d5de70c6493fb74c251e0d35c1c"
+      },
+      "shutdown_gauges": {
+        "pending_tickets": 0,
+        "queued_frames": 0,
+        "live_buffer_bytes": 0,
+        "live_cpu_buffer_bytes": 0,
+        "live_texture_bytes": 0,
+        "canvas_texture_bytes": 0,
+        "transient_buffer_bytes": 0,
+        "line_resource_pool_busy_slots": 0,
+        "line_resource_pool_bytes": 0,
+        "host_import_pinned_bytes": 0
+      },
+      "functional_status": "PASS",
+      "submission_failure_recovery_cases": 4,
+      "actual_exit": 0,
+      "child_waited": true,
+      "artifact_admitted": false,
+      "published": false,
+      "scope": "Current installed finite Tk baseline and direct failure/recovery in existing locked environment. No observer/worker/collector or strict row/profile admission. Candidate14 remains uncreated.",
+      "evidence": {
+        "path": "@evidence/build/runs/orphan-current-tk-windows-850/verification.json",
+        "sha256": "6640d7ec86a5767f63eb2feb95de0a57f015fcfa945453a018604aa997a9f2fd"
+      },
+      "cleanup": {
+        "status": "PASS_APPLY",
+        "bytes_removed": 17907295,
+        "files_removed": 568,
+        "retained_verified": 24,
+        "evidence": {
+          "path": "@evidence/build/runs/orphan-current-tk-windows-850/cleanup-apply.log",
+          "sha256": "6e9eb6c5cc9b890c01d09d5b7ba178fea045cc1eec1cf46cab5e5bd651998a2b"
+        }
+      }
+    },
+    "wsl": {
+      "schema": 1,
+      "date": "2026-11-14",
+      "status": "PASS_CURRENT_INSTALLED_TK_BASELINE_56_AND_FAILURE_RECOVERY",
+      "source_commit": "275888b5a46647a6ff59c7474f96dd5def2b6f75",
+      "wheel": {
+        "path": "build/artifacts/e99616e126299e45b5ee9418873c919ab44768fb5dd48f431537a519b7f8ccc3/vispy-0.17.0+vulkan.2-cp312-cp312-linux_x86_64.whl",
+        "sha256": "e99616e126299e45b5ee9418873c919ab44768fb5dd48f431537a519b7f8ccc3"
+      },
+      "native_sha256": "fcf0c5a81a6e6a0c1bd218687878ed8d2d32492768fabbb635c7b47ed9da03ef",
+      "cases": 56,
+      "passed": 56,
+      "installed_members_verified": 537,
+      "source_overrides": 0,
+      "source_hashes": {
+        "tests/native/test_dawn_state_queries.py": "db757c684658992374487052cc9ce4a0e2efe990547994a09709f258df992dcf",
+        "tests/native/test_tkinter_capture.py": "4ef4007edaad375833f2a87cec40129b8f2391f6551fbb3f14ebfcfacadcfa9e",
+        "tools/tkinter_failure_scenario.py": "65825f8ff00f6364eee6d88924d817a4012f4debbccdca16814d62b4c4718d21",
+        "tools/tkinter_resource_scenario.py": "e7a9f4be5322c72cb83e382547ab23db831142141f10dbf01643d82aecf715be",
+        "tools/tkinter_state_scenario.py": "31932928dae83902fa88d10e1e5afd9920e7d0496c6f0b5c7d9478d48d448310"
+      },
+      "toolkit": {
+        "tk_version": 9.0,
+        "tcl_version": 9.0,
+        "binding_origin": "/home/heq/.local/share/uv/python/cpython-3.12.13-linux-x86_64-gnu/lib/python3.12/lib-dynload/_tkinter.cpython-312-x86_64-linux-gnu.so",
+        "binding_sha256": "0240658571f1531461f4a7178c454795c55fe0f5723eebeda0b5de2f4aeee303"
+      },
+      "device": {
+        "backend": "Vulkan",
+        "adapter_type": "cpu",
+        "vendor": "mesa",
+        "device": "llvmpipe (LLVM 18.1.3, 256 bits)",
+        "driver": "llvmpipe: Mesa 26.1.8 (LLVM 18.1.3)",
+        "vendor_id": 65541,
+        "device_id": 0,
+        "max_texture_dimension_1d": 16384,
+        "max_texture_dimension_2d": 16384,
+        "max_texture_dimension_3d": 4096,
+        "max_vertex_attributes": 30,
+        "max_vertex_buffers": 8,
+        "max_vertex_buffer_array_stride": 2048,
+        "max_storage_buffers_per_shader_stage": 16,
+        "max_uniform_buffers_per_shader_stage": 12,
+        "max_inter_stage_shader_variables": 30,
+        "max_storage_buffer_binding_size": 134217728,
+        "max_bindings_per_bind_group": 1000,
+        "max_compute_invocations_per_workgroup": 1024,
+        "max_compute_workgroup_size_x": 1024,
+        "max_compute_workgroups_per_dimension": 65535,
+        "max_point_vertex_attributes": 30,
+        "core_features_and_limits": true,
+        "point_input_limit_scope": "all active user point inputs share one vertex buffer; exact vertex/instance identities use read-only vertex storage without reserving a user attribute; actual granted attribute/stride/storage/allocation limits apply",
+        "max_samplers_per_shader_stage": 16,
+        "max_sampled_textures_per_shader_stage": 48,
+        "max_buffer_size": 4294967295,
+        "max_uniform_buffer_binding_size": 65536,
+        "software": true,
+        "float32_filterable": true,
+        "unorm16_texture_formats": true,
+        "bresenham_lines": true,
+        "last_vertex_provoking": true,
+        "timestamp_query": true,
+        "timestamp_quantization_ns": 65536,
+        "host_mapped_pointer": true,
+        "host_import_limit": 536870912,
+        "depth_stencil_storage": "depth24_unorm_stencil8",
+        "ok": true,
+        "error": "",
+        "loss_count": 0,
+        "revision": "117b054598f4758b598f4b8f48feea48c11fe7b0+dawn-499e5c6ff9b37d5de70c6493fb74c251e0d35c1c"
+      },
+      "shutdown_gauges": {
+        "pending_tickets": 0,
+        "queued_frames": 0,
+        "live_buffer_bytes": 0,
+        "live_cpu_buffer_bytes": 0,
+        "live_texture_bytes": 0,
+        "canvas_texture_bytes": 0,
+        "transient_buffer_bytes": 0,
+        "line_resource_pool_busy_slots": 0,
+        "line_resource_pool_bytes": 0,
+        "host_import_pinned_bytes": 0
+      },
+      "functional_status": "PASS",
+      "submission_failure_recovery_cases": 4,
+      "actual_exit": 0,
+      "child_waited": true,
+      "artifact_admitted": false,
+      "published": false,
+      "scope": "Current installed finite Tk baseline and direct failure/recovery in existing locked environment. No observer/worker/collector or strict row/profile admission. Candidate14 remains uncreated.",
+      "evidence": {
+        "path": "@evidence/build/runs/orphan-current-tk-wsl-851/verification.json",
+        "sha256": "9038963d9d5cb31cdecaaf270c5773e571fc6b07580727aa80412910cf18c2f8"
+      },
+      "cleanup": {
+        "status": "PASS_APPLY",
+        "bytes_removed": 29879834,
+        "files_removed": 570,
+        "retained_verified": 27,
+        "evidence": {
+          "path": "@evidence/build/runs/orphan-current-tk-wsl-851/cleanup-apply.log",
+          "sha256": "b804d0fd6d9c91f0344d5728b3fe9e4e8fae2e060231fcf76d4c8cfda58e53ed"
+        }
+      }
+    }
+  },
+  "same_maintained_test_sources": true,
+  "artifact_admitted": false,
+  "published": false,
+  "scope": "56 installed Tk state/capture cases plus direct failure/recovery per profile, current exact development wheels and no source overlays. Does not substitute for four-workflow observers, worker/collector criteria,128bindings or strict admission.",
+  "remaining": [
+    "Create additive preparation14 with exact current native/runtime/profile/source bindings",
+    "Run declared seven observer-mode runs per profile and acceptance nodes with original protocols",
+    "Complete strict installed rows, combined review/protected integration, release-policy CI, admission and distinct delivery"
+  ]
+}

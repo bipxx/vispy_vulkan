@@ -453,6 +453,8 @@ class _GlirQueueShare(object):
     def __init__(self, queue):
         self._commands = []  # local commands
         self._verbose = False
+        self._retire = None
+        self._orphaned = False
         # queues that have been merged with this one
         self._associations = weakref.WeakKeyDictionary({queue: None})
 
@@ -460,7 +462,26 @@ class _GlirQueueShare(object):
         """Send a command. See the command spec at:
         https://github.com/vispy/vispy/wiki/Spec.-Gloo-IR
         """
+        if self._orphaned:
+            # Cyclic GC can finalize this queue before GLObject.__del__ emits
+            # its DELETE. Earlier rendering work is abandoned, so only this
+            # late deletion may still be delivered.
+            if len(args) == 2 and args[0] == 'DELETE' and self._retire is not None:
+                self._retire([args[1]])
+            return
         self._commands.append(args)
+
+    def __del__(self):
+        self._orphaned = True
+        commands = getattr(self, '_commands', ())
+        self._commands = []
+        retire = getattr(self, '_retire', None)
+        if retire is not None:
+            ids = [c[1] for c in commands if len(c) == 2 and c[0] == 'DELETE']
+            if ids:
+                # The captured hook needs no import, canvas or device setup.
+                # Errors remain observable through Python's unraisable hook.
+                retire(ids)
 
     def set_verbose(self, verbose):
         """Set verbose or not. If True, the GLIR commands are printed right before they get parsed.
@@ -500,6 +521,9 @@ class _GlirQueueShare(object):
 
     def flush(self, parser):
         """Flush all current commands to the GLIR interpreter."""
+        retire = getattr(parser, 'retire_orphaned', None)
+        if callable(retire):
+            self._retire = retire
         if self._verbose:
             show = self._verbose if isinstance(self._verbose, str) else None
             self.show(show)
@@ -572,6 +596,8 @@ class GlirQueue(object):
         # merge commands
         self._shared._commands.extend(queue.clear())
         self._shared._verbose |= queue._shared._verbose
+        if self._shared._retire is None:
+            self._shared._retire = queue._shared._retire
         self._shared._associations[queue] = None
         # update queue and all related queues to use the same _shared object
         for ch in queue._shared._associations:

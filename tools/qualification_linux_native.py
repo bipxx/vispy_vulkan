@@ -49,6 +49,10 @@ LEGACY_WORKFLOW_SHA256 = 'd1af4af2d0171452ef5519e9bb5893e64b206fa35c6ad07a18e8ae
 # arm. Its fresh producer steps are byte-identical to PROTOCOL[WORKFLOW_PATH].
 # Keep the old authority and all unknown-revision refusals unchanged.
 REUSE_SELECTOR_WORKFLOW_SHA256 = '7fc072af9739e8d37fba5f0d20b7175e6a72c027102f402d09d7d36173fef2c5'
+# Exact candidate13 selector in the same inactive reuse arm. The full fresh
+# producer body and capacity policy are byte-identical to the pinned authority;
+# other selectors or edits remain unsupported, including future candidate14.
+CANDIDATE13_SELECTOR_WORKFLOW_SHA256 = '706a9d266d0efa28fefc54b86039a0bec88856cc50263b72dafa02e74b77192b'
 MEMBERS = {
     'vispy/_dawn.cpython-312-x86_64-linux-gnu.so': '_dawn.cpython-312-x86_64-linux-gnu.so',
     'vispy/visuals/text/_sdf_cpu.cpython-312-x86_64-linux-gnu.so': '_sdf_cpu.cpython-312-x86_64-linux-gnu.so',
@@ -238,7 +242,8 @@ def validate_capture(capture, expected_production, root=ROOT, *, evidence_root=N
         for name, checksum in PROTOCOL.items():
             accepted = {checksum}
             if name == WORKFLOW_PATH:
-                accepted.update((LEGACY_WORKFLOW_SHA256, REUSE_SELECTOR_WORKFLOW_SHA256))
+                accepted.update((LEGACY_WORKFLOW_SHA256, REUSE_SELECTOR_WORKFLOW_SHA256,
+                                 CANDIDATE13_SELECTOR_WORKFLOW_SHA256))
             if name == 'tools/linux_ci_lifecycle.py':
                 accepted.update((LEGACY_COLLECTOR_SHA256, PREVIOUS_COLLECTOR_SHA256))
             if name == 'tools/audit_linux_wheel.py':

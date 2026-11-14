@@ -1,0 +1,56 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "status": "APPROVED_CURRENT_EIGHT_ROW_OBSERVATION_RETENTION_BASIS_ONLY",
+  "coverage_ids": [
+    "FIX-06",
+    "LIF-02",
+    "LIF-04",
+    "API-06",
+    "PLAT-08",
+    "TOOL-01"
+  ],
+  "source_commit": "275888b5a46647a6ff59c7474f96dd5def2b6f75",
+  "reviewed_basis": {
+    "path": "@evidence/build/runs/orphan-release-mandatory-review-880/matrix-basis.json",
+    "sha256": "880969fc1bb47ec20bf9f754989c2a4c47a02a21cb3e043ce510795bc6f55988"
+  },
+  "decision": {
+    "path": "@evidence/build/runs/orphan-release-mandatory-review-880/decision.json",
+    "sha256": "1375d7e330aa5bb4835ad1ba3abc5b70ad738e1ae989b97165856fd87fc01966"
+  },
+  "raw_review": {
+    "path": "@evidence/build/runs/orphan-release-mandatory-review-880/review-response.json",
+    "sha256": "0c88e60760b27be6175b3a590ce9161ad57ca6fad6a227a71ac5ecc61dde71f1"
+  },
+  "retention_audit": {
+    "path": "@evidence/build/runs/orphan-release-mandatory-retention-879/verification.json",
+    "sha256": "646588c0d84790eacdac78c8969f961124374c7fd2132b2a75d0a03a60239ec9"
+  },
+  "unique_retained_inputs": 949,
+  "generic_retention_passes": 4,
+  "generic_retention_refusals_preserved": 4,
+  "foreign_origins_used": 15,
+  "reviewer_models": [
+    "claude-opus-5-5"
+  ],
+  "review_turns": 57,
+  "withheld": [
+    "CI 23-job final qualification-head run",
+    "Final combined-source review/freeze and exact final qualification head",
+    "Independent change-impact/promotion",
+    "Actual matrix admission, strict release admission, protected integration and delivery",
+    "Full VisPy API parity, physical Linux GPU, Metal graphics qualification, physical HID input, actual surface/device-loss qualification",
+    "Independent hash recomputation by this reviewer"
+  ],
+  "disclosures": [
+    "Windows generic validation stops at the foreign-root boundary. Later generic checks did not execute; only the explicitly reviewed manual current audit covers those rows.",
+    "875 resolver/retry helper invocations lack separate per-script process JSON; exit/wait and earlier conhost observation are described in recovery JSON/tool output, not a raw CIM capture. Original controller, cleanup plan/apply process records and unchanged PID guard remain retained.",
+    "Reviewer recomputed no hashes and did not read all raw records; exact read/unread ranges remain in the retained raw response. Coordinator independently verifies current inputs."
+  ],
+  "actual_exit": 0,
+  "child_waited": true,
+  "artifact_admitted": false,
+  "matrix_admitted": false,
+  "scope": "Fresh exact current eight-row observation/attempt/retention basis only. Manual scope limited to exact original protected foreign hashes; four unchanged generic refusals preserved. Final qualification-head CI, combined-source/impact/promotion and actual admission remain open."
+}

@@ -1,0 +1,76 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "status": "APPROVED_EXACT_TWO_FILE_READER_AUTHORITY_EXTENSION_SOURCE_ONLY",
+  "coverage_ids": [
+    "LIF-06-LINUX-PRODUCER"
+  ],
+  "base": "275888b5a46647a6ff59c7474f96dd5def2b6f75",
+  "delta_sha256": "e613b6efbaf00abaeb9ef12e00945940368d848a2090869bab8162754f1e5765",
+  "source_hashes": {
+    "tools/qualification_linux_native.py": "238fe81f32804029f9f15b6ba598a052d20bc55beb1218bcf701e07dea27b839",
+    "tests/contract/test_qualification_linux_native.py": "d4ecd7e487f47033401591da2361761876b326971e67929b4ae382b9d60ef4ec",
+    "tests/contract/linux_native_fixture.py": "da126cb60760f98f35576f1b3db2fb991367c770690123778bb0fdf85c81fe42",
+    "tests/contract/test_linux_native_contracts.py": "59f810db60414f98aff17bbdda16655c0004c2e7546153aca553224f2fd063fa",
+    "tests/contract/data/linux-native-production-workflow.yml": "844ddd2c232f699f198751074a59abccec1c6a0a0c58460c77be9be6d75ac038",
+    ".github/workflows/linux-vulkan.yml": "706a9d266d0efa28fefc54b86039a0bec88856cc50263b72dafa02e74b77192b",
+    "compat/qualification-native.schema.json": "e0921de4269b1f9ca39d484d410e915710c7fe0737f8a1e1fa101e5d2def18d0",
+    "compat/build-hygiene.json": "a66d8d72ef266b56f375c7919605c2d92c5873c333c204606123d3a569ae5f81"
+  },
+  "decision": {
+    "decision": "APPROVE",
+    "base": "275888b5a46647a6ff59c7474f96dd5def2b6f75",
+    "delta_sha256": "e613b6efbaf00abaeb9ef12e00945940368d848a2090869bab8162754f1e5765",
+    "required_changes": [],
+    "findings": [
+      {
+        "severity": "low",
+        "ref": "tests/contract/test_qualification_linux_native.py:184-191",
+        "summary": "candidate13_workflow_payload omits the single-occurrence assertion present in selector_workflow_payload (:162); redundant given the exact hash pin and the same fixture, consistency nit only"
+      },
+      {
+        "severity": "info",
+        "ref": "tools/qualification_linux_native.py:55; tests/contract/test_qualification_linux_native.py:190,215",
+        "summary": "Hash literal intentionally duplicated in the test as an independent pin; both must change together"
+      },
+      {
+        "severity": "info",
+        "ref": "tools/qualification_linux_native.py:242-251",
+        "summary": "Acceptance is one exact added hash for WORKFLOW_PATH only; all prior authorities and the unknown-protocol refusal are unchanged; no normalization or wildcard"
+      },
+      {
+        "severity": "info",
+        "ref": "tests/contract/data/linux-native-production-workflow.yml vs .github/workflows/linux-vulkan.yml",
+        "summary": "Line-by-line read shows only line 97 continuation plus inserted line 98 (--candidate tk-state-resource-13) inside the reuse-only step; fresh, capacity, cleanup and upload bytes identical as read"
+      }
+    ],
+    "unread_evidence": [
+      "No independent hash computation (delta_sha256, file sha256s, 706a9d26..., 844ddd2c..., fixture bytes)",
+      "Tests not executed; 130-pass claim not verified",
+      "linux-candidate13-protocol-846: before/after XML, logs, *-process.json, before/after-inputs.json, verification.json, terminal.json, cleanup-plan/apply logs and process records, preflight records, prepare/check/hygiene/retain.py, original-qualification-linux-native.py, reader-test-delta-and-original-licenses.zip",
+      "Scratch cleanup figures (9060242 bytes cleaned, 19 retained) not verified",
+      "Live CI producer 43615452982 and its capture not inspected",
+      "Rest of linux_native_fixture.py beyond line 60 and remainder of validate_capture not read in full"
+    ],
+    "conditional_reuse": "Approval covers only this exact two-file source delta at the stated base and delta_sha256, conditional on coordinator recheck of all hashes and the unchanged contract tests passing. It grants no capture pass, artifact or native admission, WSL, Tk profile, CI integration, release or full-parity claim; the renderer source branch remains frozen and unmerged; later source integration needs its own combined evidence and CI scope."
+  },
+  "inputs_reverified": 17,
+  "source_tests_reverified": 130,
+  "evidence": {
+    "path": "@evidence/build/runs/linux-candidate13-reader-review-847/coordinator-disposition.json",
+    "sha256": "94b1591215232a4b61463ce7a4df425afdece5cfbc814fcb735157061cf8979d"
+  },
+  "cleanup": {
+    "status": "PASS_APPLY",
+    "bytes_removed": 91,
+    "files_removed": 1,
+    "retained_verified": 27,
+    "evidence": {
+      "path": "@evidence/build/runs/linux-candidate13-reader-review-847/cleanup-apply.log",
+      "sha256": "ee806cdc61844be9a1c257b87a48071015d08da3ae3f57844c1163e087adb032"
+    }
+  },
+  "artifact_admitted": false,
+  "published": false,
+  "scope": "Exact two-file source reader extension may validate the original capture; no native/artifact/WSL or source-integration approval. Later combined source/CI and qualification gates remain."
+}

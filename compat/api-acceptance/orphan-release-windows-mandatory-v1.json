@@ -1,0 +1,123 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "status": "PASS_FOUR_RELEASE_WINDOWS_MANDATORY_OBSERVATIONS_NOT_ADMITTED",
+  "coverage_ids": [
+    "FIX-06",
+    "LIF-02",
+    "LIF-04",
+    "API-06",
+    "PLAT-08",
+    "TOOL-01"
+  ],
+  "source_commit": "275888b5a46647a6ff59c7474f96dd5def2b6f75",
+  "wheel_sha256": "4f537748c74689ed4d55ee2e3f8e3d9f1c1cfdf0803d1b72c4169217c74291d8",
+  "rows": [
+    {
+      "row": "windows-vulkan-headless",
+      "observation": {
+        "path": "compat/api-acceptance/orphan-release-windows-headless-v1.json",
+        "sha256": "364e8aad49204be9147afa90ab13868946263ee3124c6c0d85029e2630f12be7"
+      },
+      "cleanup": {
+        "path": "@evidence/build/runs/orphan-release-windows-headless-870/cleanup-result.json",
+        "sha256": "c2884ee0601d466bea57a40822daec4ef7192c04f2ce845d9e9d756a2ce74427"
+      },
+      "environment_id": "3efc332615e437d90dc25cdaba7d363faaf5b5773ca8e72a9fe1e0004077c3cf",
+      "reclaimed_bytes": 69199553
+    },
+    {
+      "row": "windows-vulkan-qwidget-pyqt6",
+      "observation": {
+        "path": "compat/api-acceptance/orphan-release-windows-pyqt6-v1.json",
+        "sha256": "efe77e2a74bc26baaf36a52a180835a3ce6cc4c952b2ffb87cc4b0a2e469f2cc"
+      },
+      "cleanup": {
+        "path": "@evidence/build/runs/orphan-release-windows-pyqt6-871/cleanup-result.json",
+        "sha256": "4f0ca53031f336ab1e5ac70bd5e63ed24abd088617faa4033a6eaae1cde88051"
+      },
+      "environment_id": "021594e7ecf408b3b5022d18ef71a84135ba388884ed0beb7b64ea334f63a844",
+      "reclaimed_bytes": 129760272
+    },
+    {
+      "row": "windows-vulkan-qwidget-pyqt5",
+      "observation": {
+        "path": "compat/api-acceptance/orphan-release-windows-pyqt5-v1.json",
+        "sha256": "3db754471eb1ec2b321c4b36865fc1b93e8bfdda4e3e49734e1c8b3fba2d7012"
+      },
+      "cleanup": {
+        "path": "@evidence/build/runs/orphan-release-windows-pyqt5-872/cleanup-result.json",
+        "sha256": "850a15c2befd89cfe89f93b08001c5569a1859c0f49e936a13ec004d7170fc13"
+      },
+      "environment_id": "4133b6e4c77cf8c0fae7757f1e50542a7be44cefb3388ea306bb4913500e2709",
+      "reclaimed_bytes": 113816713
+    },
+    {
+      "row": "windows-vulkan-qwidget-pyside6",
+      "observation": {
+        "path": "compat/api-acceptance/orphan-release-windows-pyside6-v1.json",
+        "sha256": "e5ec825c1aeaa0995ee338714122ad97ed90750308731ecfbc870791854b3fc1"
+      },
+      "cleanup": {
+        "path": "@evidence/build/runs/orphan-release-windows-pyside6-873/cleanup-result.json",
+        "sha256": "d792c32f034c542fc60b0e38d82b7cb65def5af3a02315766386189a3bb2f2c6"
+      },
+      "environment_id": "1cbccab35636829cbd18f7abf928bf3cd78521b8795ea3c480fd0607ae500b13",
+      "reclaimed_bytes": 134954266
+    }
+  ],
+  "strict_attempts": [
+    {
+      "report": {
+        "path": "@evidence/build/runs/orphan-release-windows-headless-870/replay-0.json",
+        "sha256": "d1ade701caf9967f2958b77f0552c0f3fca65cf75af5386497a1c4a2e88bbc71"
+      },
+      "status": "PASS_ALL_NO_OPENGL_GATES",
+      "scenario_exit": 0,
+      "child_waited": true
+    },
+    {
+      "report": {
+        "path": "@evidence/build/runs/orphan-release-windows-pyqt6-871/replay-0.json",
+        "sha256": "6a68ca87331a8b263d4ec8b06e255c35cab540dbfed28f3d32c5f227a30b4093"
+      },
+      "status": "PASS_ALL_NO_OPENGL_GATES",
+      "scenario_exit": 0,
+      "child_waited": true
+    },
+    {
+      "report": {
+        "path": "@evidence/build/runs/orphan-release-windows-pyqt5-872/replay-0.json",
+        "sha256": "7404c2bd2d14e07e868d0cf61c82871441183e2f22b1d50c1818a139b1daa3c3"
+      },
+      "status": "PASS_ALL_NO_OPENGL_GATES",
+      "scenario_exit": 0,
+      "child_waited": true
+    },
+    {
+      "report": {
+        "path": "@evidence/build/runs/orphan-release-windows-pyside6-873/replay-0.json",
+        "sha256": "ed289c8c58a2225a1768208259d5de10b00c055aa56ea165df89bea85439f7e7"
+      },
+      "status": "PASS_ALL_NO_OPENGL_GATES",
+      "scenario_exit": 0,
+      "child_waited": true
+    }
+  ],
+  "mandatory_current_observed": 4,
+  "mandatory_total": 8,
+  "scratch_absent": true,
+  "reclaimed_bytes": 447730804,
+  "source_overrides": 0,
+  "native_rebuilt": false,
+  "canonical14files_unchanged": true,
+  "artifact_admitted": false,
+  "matrix_modified": false,
+  "remaining": [
+    "Four exactdfe1033f WSL mandatory observations",
+    "Complete mandatory attempt/retention review and exact matrix admission",
+    "Final combined source review/freeze/current-head23-job CI",
+    "Independent impact/promotion, protected integration and distinct delivery"
+  ],
+  "scope": "Finite exact-release Windows headless and three Qt QWidget observations only. Historical matrix and older artifact proofs unchanged; no full API, physical input, WSL or release admission transfer."
+}

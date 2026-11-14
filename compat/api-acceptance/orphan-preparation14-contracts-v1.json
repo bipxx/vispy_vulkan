@@ -1,0 +1,47 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "status": "PASS_768_SOURCE_CONTRACTS_CURRENT_PREPARATION14",
+  "cases": 768,
+  "passed": 768,
+  "actual_exit": 0,
+  "child_waited": true,
+  "sampled_peak_bytes": 1406828,
+  "declared_peak_bytes": 33554432,
+  "source_inputs": {
+    "tests/contract/test_compatibility_inventory.py": "0db5dd87068aa205d37fb18ec35e1c115e9b8bbf05bef3bef1dfff60d0e02d4e",
+    "tests/contract/test_compatibility_qualification.py": "3cc532d7bbfc38bf5c581c9f15bea5b32f2582cdd98f582c1ddd50aa146200ea",
+    "tests/contract/test_qualification_ci.py": "ff3940b6b8c8b24b34923d23ec28eb2717b03dc64d179350201e3e45228de549",
+    "tests/contract/test_qualification_artifact.py": "a3cab7a1010eff97a8695b01803feced4c6deebd7178884f3be5d1ca73aa23b5",
+    "tests/contract/test_qualification_native.py": "7e3c10fe40d0259594cdb812e6ddd88e1d2f3f28575ff843ede490b78911e009",
+    "tests/contract/test_qualification_linux_native.py": "d4ecd7e487f47033401591da2361761876b326971e67929b4ae382b9d60ef4ec",
+    "tests/contract/test_reuse_linux_ci.py": "8bc1390388566fe0879993ec87f0cb7191e01c17f420efe689e6d29474a8e1fe",
+    "tests/contract/test_qualification_epoch.py": "3ef8cac701de7d324840f5fdeeddd73aa1984af09c1ed8534c1d522e5f2ce56a",
+    "tests/contract/test_qualification_index.py": "f6fd0cf67b8a38d182b932d2a91d0384832ec4a28ea2bc6ac85e999656a466d7",
+    "tests/contract/test_retained_evidence.py": "08c9426b813355c8369713eb5ca526cfa8d76b16995a4c79c020f23f12de1553",
+    "tests/contract/test_repackage_python_wheel.py": "b1480dcb20723ad03275b1554514eaf1a2e6cc3ac4c310994892acc45b6c434a",
+    "compat/candidates/tk-state-resource-14/admission-selection.json": "f86b50790e0d27f3d3ab116bbc719f9e4cbc1d189e44a4f355c6a4945df48509",
+    "compat/candidates/tk-state-resource-14/candidate.json": "2c5b1b860af1dd3d46aba0702b25861050a7a3d99506937fb0f73b3ea8443737",
+    "compat/candidates/tk-state-resource-14/coverage.json": "c6a618d46149760096c9128033810e36695c06fdab29890745447223539d3559",
+    "compat/candidates/tk-state-resource-14/execution-ledger.json": "7270497700c9f9b5773b69b723c4ad321ccf9e8bc4035fa7447961a8e2c1e043",
+    "compat/candidates/tk-state-resource-14/execution.json": "08686a3ffc94a01fb86b3fccab0bb93eb90dee9fabb73038262ef57921eeb0aa",
+    "compat/candidates/tk-state-resource-14/linux-native-provenance.json": "530b5fc51b0fd75fd4c29a6283cd0e26b4fff2d36dffee66ced0dd4751a292fa",
+    "compat/candidates/tk-state-resource-14/linux-state-profile.json": "b0bcf1e986affae04d2398634ce0dd10843fd5cb20fe5f08769b316f2f484b2a",
+    "compat/candidates/tk-state-resource-14/runtime-inputs.json": "4f9a630386abf2506f11c7ef2e8a5efd96c62e53cac56caa10c6f50bce3ad351",
+    "compat/candidates/tk-state-resource-14/windows-native-provenance.json": "50f1314b2d1874ca44f48b4d03991d9aff32636f49d52db25305ec70240dca37",
+    "compat/candidates/tk-state-resource-14/windows-state-profile.json": "0187c0d162fe014711161e49a61495d0c4ab349923e9b76daaa4d732fb2b51d8"
+  },
+  "warning": "Deliberately duplicated ZIP member same in ambiguous-transport rejection control; all assertions pass.",
+  "scope": "Source-only candidate/coverage/execution/qualification/native/CI/evidence contracts; no independent review or installed/strict/artifact admission.",
+  "artifact_admitted": false,
+  "published": false,
+  "evidence": {
+    "path": "@evidence/build/runs/orphan-preparation14-contracts-853/verification.json",
+    "sha256": "0a1c305b7f3cf6e4479f49de4cd0f5f4b165fde0d003474ee516866d0bbac910"
+  },
+  "cleanup": {
+    "status": "PASS_APPLY",
+    "bytes_removed": 1406334,
+    "retained_verified": 9
+  }
+}

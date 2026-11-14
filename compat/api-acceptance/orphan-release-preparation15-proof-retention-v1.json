@@ -1,0 +1,34 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "status": "PASS_RELEASE_CONTRIBUTING_RETENTION_NOT_SUBJECT_ADMISSION",
+  "coverage_ids": [
+    "FIX-04",
+    "FIX-06",
+    "API-06",
+    "SHD-06",
+    "TOOL-01"
+  ],
+  "candidate": "tk-state-resource-15",
+  "source_commit": "275888b5a46647a6ff59c7474f96dd5def2b6f75",
+  "retention_record": {
+    "path": "@evidence/build/runs/orphan-release-preparation15-retention-896/retention-record.json",
+    "sha256": "0e9525da041ad9e3159517407eaa57a986249151ab9c816f34c5af261ebf89ba"
+  },
+  "post_cleanup": {
+    "path": "@evidence/build/runs/orphan-release-preparation15-retention-896/post-cleanup.json",
+    "sha256": "f388de05e6aba8c7b1650aa09b5a1af59e808310001c9488fdd595920ad4eca7"
+  },
+  "retained_inputs": 1324,
+  "both_native_and_archives_validated": true,
+  "selected_rows": 32,
+  "exact_strict_attempts": 5,
+  "failed_attempts_preserved": 1,
+  "actual_exit": 0,
+  "child_waited": true,
+  "scratch_absent": true,
+  "native_rebuilt": false,
+  "artifact_admitted": false,
+  "subject_bound": false,
+  "scope": "Contributing immutable inputs reverified in place, including original terminal/cleanup, raw proofs, histories, independent resolution and licenses. Canonical ledger excluded for guarded materialization. No historical retention event invented."
+}

@@ -1,0 +1,71 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "status": "PASS_CURRENT_EXACT_ARCHIVE_PREREQUISITES_AUDITED_LINUX_RELEASE_TAG",
+  "candidate_scope_sha256": "d1133224a54c0733bd59a8618fcd4c6844f23d552b4697e02190b954dde594e3",
+  "archive_records": {
+    "windows": {
+      "path": "compat/candidates/tk-state-resource-14/windows-archive.json",
+      "sha256": "5bcc1e77fec2d15c62c79fa8c8a189445cdfaaa076eeb05f20554718b3d5c123"
+    },
+    "linux": {
+      "path": "compat/candidates/tk-state-resource-14/linux-archive.json",
+      "sha256": "a60337dacae6113988660c005eea955187f7ff5c0e2b932aaaf0ccce688a109c"
+    }
+  },
+  "retag": {
+    "status": "PASS_MANYLINUX_2_39_RETAG",
+    "source": {
+      "name": "vispy-0.17.0+vulkan.2-cp312-cp312-linux_x86_64.whl",
+      "sha256": "e99616e126299e45b5ee9418873c919ab44768fb5dd48f431537a519b7f8ccc3"
+    },
+    "wheel": {
+      "name": "vispy-0.17.0+vulkan.2-cp312-cp312-manylinux_2_39_x86_64.whl",
+      "sha256": "dfe1033fc90b9d6bd575c8988cc51544be47d71225509244e69be1ea91a42715",
+      "size_bytes": 10564725
+    },
+    "auditwheel_show": [
+      "vispy-0.17.0+vulkan.2-cp312-cp312-linux_x86_64.whl is consistent with",
+      "the following platform tag: \"manylinux_2_39_x86_64\".",
+      "",
+      "The wheel references external versioned symbols in these",
+      "system-provided shared libraries: libgcc_s.so.1 with versions",
+      "{'GCC_3.4', 'GCC_3.0'}, libc.so.6 with versions {'GLIBC_2.32',",
+      "'GLIBC_2.34', 'GLIBC_2.2.5', 'GLIBC_2.38', 'GLIBC_2.14', 'GLIBC_2.16',",
+      "'GLIBC_2.33', 'GLIBC_2.17', 'GLIBC_2.4', 'GLIBC_2.3.4'},",
+      "libstdc++.so.6 with versions {'GLIBCXX_3.4.22', 'GLIBCXX_3.4.28',",
+      "'CXXABI_1.3.7', 'GLIBCXX_3.4.15', 'GLIBCXX_3.4.19', 'GLIBCXX_3.4.18',",
+      "'GLIBCXX_3.4.17', 'CXXABI_1.3.5', 'GLIBCXX_3.4.11', 'GLIBCXX_3.4.14',",
+      "'GLIBCXX_3.4', 'GLIBCXX_3.4.29', 'GLIBCXX_3.4.21', 'GLIBCXX_3.4.31',",
+      "'GLIBCXX_3.4.9', 'GLIBCXX_3.4.20', 'GLIBCXX_3.4.26', 'CXXABI_1.3.11',",
+      "'GLIBCXX_3.4.30', 'CXXABI_1.3.3', 'CXXABI_1.3.9', 'CXXABI_1.3.13',",
+      "'CXXABI_1.3.8', 'CXXABI_1.3'}, libm.so.6 with versions {'GLIBC_2.27',",
+      "'GLIBC_2.2.5', 'GLIBC_2.29'}",
+      "",
+      "This constrains the platform tag to \"manylinux_2_39_x86_64\". In order",
+      "to achieve a more compatible tag, you would need to recompile a new",
+      "wheel from source on a system with earlier versions of these",
+      "libraries, such as a recent manylinux image."
+    ],
+    "changed_members": [
+      "vispy-0.17.0+vulkan.2.dist-info/RECORD",
+      "vispy-0.17.0+vulkan.2.dist-info/WHEEL"
+    ],
+    "unchanged_members": 560,
+    "tag": "cp312-cp312-manylinux_2_39_x86_64"
+  },
+  "source_commit": "275888b5a46647a6ff59c7474f96dd5def2b6f75",
+  "runtime_native_license_members_unchanged": true,
+  "artifact_admitted": false,
+  "installed_release_wheel_observed": false,
+  "scope": "Actual auditwheel6.8.2verdict and wheel0.48metadata-only tag update, unchanged native/runtime/licenses; both release archive prerequisites pass. Prior e996installed observations remain raw-artifact scope; new release-wheel strict checks, subject/admission/finalCI/integration/delivery remain required.",
+  "evidence": {
+    "path": "@evidence/build/runs/orphan-current-linux-retag-863/verification.json",
+    "sha256": "36dbb406f35ca69a2cca919e28eb937590466a6494bbf751ef602b3869606912"
+  },
+  "cleanup": {
+    "status": "PASS_APPLY",
+    "bytes_removed": 22806983,
+    "retained_verified": 33
+  }
+}

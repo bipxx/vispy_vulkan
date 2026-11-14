@@ -1,0 +1,35 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "status": "CURRENT_OWNERSHIP_AND_CLAIM_TRIAGE_REVIEW_PENDING",
+  "base": "7209f1199564909c4839dcccd19da965d55954f5",
+  "owned_files": 144,
+  "preserved_outside_scope": 110,
+  "foreign_head_index_unchanged": true,
+  "scratch_created": false,
+  "source_only": true,
+  "admitted": false,
+  "evidence": [
+    {
+      "path": "@evidence/build/runs/orphan-release-final-source-inventory-891/inventory.json",
+      "sha256": "bcc1f1a3c72e818112ed7f83d9ae85fe40144cab3bd0801e50ee930fcd262e58"
+    },
+    {
+      "path": "@evidence/build/runs/orphan-release-final-source-inventory-891/proposed-owned-scope.json",
+      "sha256": "dceb8c392eea257e156894a135ab99ab943e356d3af63bc5a516b2fdf478e547"
+    },
+    {
+      "path": "@evidence/build/runs/orphan-release-final-source-inventory-891/claim-triage.json",
+      "sha256": "fb8cdb5ce0c5bbeb2590a5fe2515dc2806e68b748e5fec243a258375156c1dd8"
+    },
+    {
+      "path": "@evidence/build/runs/orphan-release-final-source-inventory-891/coordinator-commands.json",
+      "sha256": "e53483fa2d587a4625c6facec57be86b74f18e70689f4690ef1cff2d6655bf6a"
+    },
+    {
+      "path": "@evidence/build/runs/orphan-release-final-source-inventory-891/terminal-source-only.json",
+      "sha256": "669a5af79c6b923e8d1a0e34b9ba49c25618d5aef7723d870c24279cc1ebe97b"
+    }
+  ],
+  "scope": "Document/evidence triage, not an exhaustive API audit, test execution or independent approval. No new functional defect established by this packet; not a claim that none exists. All parent coverage IDs retain their prior state."
+}

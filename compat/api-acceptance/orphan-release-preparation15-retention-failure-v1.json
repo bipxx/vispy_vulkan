@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "status": "FAILED_UNTYPED_RETENTION_COLLECTOR_ORIGINAL_OUTCOME_PRESERVED",
+  "actual_exit": 1,
+  "child_waited": true,
+  "failure": {
+    "path": "@evidence/build/runs/orphan-release-preparation15-retention-895/failure-disposition.json",
+    "sha256": "cee127fa8df844477b5e75eedd8c31b8be2fe40a5f0e1b4aab7b9b0ef8da715a"
+  },
+  "original_log": {
+    "path": "@evidence/build/runs/orphan-release-preparation15-retention-895/audit.log",
+    "sha256": "6181760775ce3a0853104c39d10d90df47eff102af88ebabb4091366f15a0c0e"
+  },
+  "process": {
+    "path": "@evidence/build/runs/orphan-release-preparation15-retention-895/audit-process.json",
+    "sha256": "8d7cc36773a49fcf7d2a6d95ab163f318d54f0f3f967193b38ce16e4e8162799"
+  },
+  "terminal": {
+    "path": "@evidence/build/runs/orphan-release-preparation15-retention-895/terminal.json",
+    "sha256": "68eab553efb173597398cc8043b42c2b4894a241ac3b3a114501847ba046d4c5"
+  },
+  "cleanup": {
+    "path": "@evidence/build/runs/orphan-release-preparation15-retention-895/cleanup-result.json",
+    "sha256": "81ffa0fe546510612491fb7114c2533e89194857c0448f37ffacca02509b3fdc"
+  },
+  "scratch_absent": true,
+  "artifact_admitted": false,
+  "scope": "Original source/store namespace failure remains failed; cleanup102bytes/29inputs. Current correction is separately reviewed897and executed896. This historical failure retention includes then-current canonical ledger and is not promoted to current-subject retention."
+}

@@ -1,0 +1,116 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "status": "APPROVED_EXACT_PREPARATION14_PENDING_FULL_NATIVE_VALIDATION",
+  "decision": {
+    "decision": "APPROVE",
+    "base": "275888b5a46647a6ff59c7474f96dd5def2b6f75",
+    "delta_sha256": "e3e5c3053d110c24cd0f799e1655273185d2c9ac8edbc31e7a7f64acf8321d51",
+    "candidate_scope_sha256": "a0caa4fad63961e3b3a2fa289381cf02cb38b36773d8220079232ef12b27fc71",
+    "native_reuse_links": {
+      "windows": "6a5f1faffbabf0724d34057c817041765d5e923b4372d4ea28b0b4c071856eaf",
+      "linux": "60ce3b332aea8a244938f7ea4fe81bdcc70ca4ca6a65c619e836dff9e2eb7430"
+    },
+    "scope_of_approval": "Exact 15-path additive preparation14 and the two native-reuse edges (Windows837 leaf producer, Linux845 original CI43615452982 capture) for unchanged strict validation and required CI only. Not strict observer/worker/collector, profile, 32-row/128-binding, artifact admission, combined-source integration, release or publication approval.",
+    "required_changes": [],
+    "findings": [
+      {
+        "severity": "medium",
+        "ref": "D:/vispy-vulkan-managed/build/runs/orphan-preparation14-bindings-852/check.py:14-24 vs tools/qualification_native.py:252-325 and tools/qualification_linux_native.py:481-519",
+        "issue": "The 852 producer recheck runs validate_recipe/validate_proofs and validate_capture plus toolchain hashes, but not the full validate_record. Windows checks not run: python/base-python vs profile (287-288), native_epoch.check_preparation (292-302), validate_sdk and SDK origin/location (303-312), command-log retention (313-314). Linux checks not run: linux_scope policy (489-490), ABI equality vs profile (512-517). I checked by reading: recipe-837 python 4025e2a6/base 71b986e8 equal windows-state-profile interpreter/base hashes; record sdk 1590193d and preparation b3916829 equal recipe sdk_record_sha256/preparation_sha256; Linux abi is derived from the 845 environment and the 851 profile in renew.py:102, and build_python_sha256 is asserted by check.py:24.",
+        "action": "Condition, not a change: after the two review records are added, run the unchanged full qualification_native.validate_record on both provenance records and the candidate with require_reviewed=True. Any failure means a fresh review, not an in-place fix."
+      },
+      {
+        "severity": "medium",
+        "ref": "compat/api-acceptance/orphan-lifetime-source-review-v1.json:4-13,55-69",
+        "issue": "The runtime source approval is 'APPROVED_EXACT_SOURCE_FOR_UNMERGED_FRESH_LINUX_CI_ONLY' at base 7209f119/delta 4fec1545 (22 owned paths). Its conditional reuse needs committed-blob identity of the 5 production files and 4 tests, and its exclusions forbid substituting for Tk observers/strict qualification/admission. Preparation14 relies on that source being exactly what 275888b5 contains. I could not check blob identity (no shell/git).",
+        "action": "Condition: the combined-source review/CI must confirm the 842 delta blobs equal 275888b5 for cpp/bindings/module.cpp, cpp/runtime.cpp, cpp/runtime.hpp, src/vispy/gloo/glir.py, src/vispy/gloo/dawn_parser.py. The 842 advisories (glir _orphaned permanence, dawn_parser __cause__ overwrite, helper-thread/atexit evidence gap) remain open and are not discharged here."
+      },
+      {
+        "severity": "low",
+        "ref": ".github/workflows/linux-vulkan.yml:98; tools/qualification_linux_native.py:51-55,242-246",
+        "issue": "The workflow now hashes to b3c15f70, which is not in the reader's accepted workflow set (protocol / legacy / 7fc072af / 706a9d26). That is intentional: the 845 capture records the 706a9d26 candidate13 workflow and validates under the 847-reviewed reader. Any fresh-mode Linux producer run on the final head would be refused, so required CI must use the reuse arm only.",
+        "action": "No change. Producer authority for the 14 selector, or any later fresh Linux producer, needs a new exact authority review. Do not add b3c15f70 to the accepted set under this approval."
+      },
+      {
+        "severity": "low",
+        "ref": "D:/vispy-vulkan-managed/build/runs/orphan-preparation14-bindings-852/renew.py:83-95; required-source-origins.json",
+        "issue": "The three changed native source origins are written into repo-local C:/Users/HEQ/Projects/vispy_vulkan/build/artifacts/<sha>/ (module.cpp, runtime.cpp, runtime.hpp), alongside the 130 unchanged origins, because the root-local retained_file resolver needs them there. They are hash-addressed and verified, but this is working-tree storage, not the managed evidence store.",
+        "action": "Retention note only: keep these three exact origins, and do not deduplicate, move or clean them, while the Windows reuse record is live. SDK/toolchain origins were correctly left untouched."
+      },
+      {
+        "severity": "low",
+        "ref": "compat/candidates/tk-state-resource-14/execution-ledger.json (32 rows reviewed true->false); execution.json execution.scope_sha256 673bad47 unchanged",
+        "issue": "Reviewed flags were reset to false while the execution scope digest stayed the same. That is consistent with flags being outside the scope digest and with candidate review=null. Approvals from 13 do not carry over.",
+        "action": "Re-set the flags only with the existing tool after both 14 reviews are bound."
+      },
+      {
+        "severity": "info",
+        "ref": "candidate.json reviews/blockers/profiles; windows-/linux-state-profile.json limitations",
+        "issue": "Scope is conserved: 142 original dispositions, 64 criteria/128 bindings and 128 requested selections are unchanged (renew.py:104-105). originals_discharged=0, wheel=null, previous_qualified_wheel unchanged, release_status NOT_QUALIFIED, approvals_present/artifact_admitted/published false. Phase 'source-functional' and the limitations explicitly deny strict admission. Blockers keep full parity, physical Linux GPU, HID/optical, other Qt bindings and Metal out of scope.",
+        "action": "None."
+      },
+      {
+        "severity": "info",
+        "ref": "preparation.diff; delta.json; runtime-inputs.json",
+        "issue": "Runtime input changes are exactly: native module.cpp/runtime.cpp/runtime.hpp, python glir.py/dawn_parser.py; build/locks/licenses unchanged (852 verification.json:1346-1359). _qt.py stays 1c68488e. CPU workflow selectors changed in exactly 4 places (cpu-contract.yml:86-89) and the Linux reuse selector in 1 (linux-vulkan.yml:98). The reuse impact text accurately states that historical approvals do not transfer.",
+        "action": "None."
+      }
+    ],
+    "unread_evidence": [
+      "I executed and hashed nothing. All hashes, test counts (768 contracts at 853, 44 CTest, 56-case 850/851 baselines, 82 WSL / 9+73 Windows lifetime cases) and PASS statuses come from the coordinator's records, not my own runs.",
+      "Byte content of .github/workflows/cpu-contract.yml and linux-vulkan.yml beyond the selector lines and the 60-130 reuse/fresh region; compat/qualification-ci.json; tools/qualification_linux_native.py beyond 51-55, 187 (signature), 242-250 and 470-519; tests/contract/test_qualification_linux_native.py (relied on the 847 approval).",
+      "orphan-lifetime-source-review-v1.json lines 397-733; 842 semantic.diff and the current five source files; 837 raw-result/ctest.xml/sdk-consumer/cache files; 845 original-capture.json, native-capture-validation.json, linux-wheel.json; 850/851 baseline-result.json and verification.json.",
+      "original-selector-policy-and-licenses.zip, new-bindings-and-original-licenses.zip, source-controls-and-original-licenses.zip (not opened); 853 contracts.xml/log; 852/853 cleanup plans/logs and terminal.json.",
+      "Full candidate.json/coverage.json/execution-ledger.json bodies outside the diff hunks; inputs.json lines 320-727; the 426 preserved historical candidate files (relied on renew.py:18-19,106 assertion)."
+    ],
+    "conditional_reuse": {
+      "allowed_followup": [
+        "Add exactly two own review records (kind source and scope), schema 1, status APPROVED, independent true, reviewer non-empty. Each binds candidate_scope_sha256 a0caa4fa...fc71 and native_reuse_links [6a5f1faf...6eaf, 60ce3b33...7430], and records this review's findings/unread evidence.",
+        "Add their refs to candidate.json reviews and reseal manifest_sha256. scope_digest must stay a0caa4fa...fc71.",
+        "Update ONLY candidate.path/sha256 in windows-native-provenance.json and linux-native-provenance.json. The reuse objects and their digests must stay byte-identical.",
+        "Apply the selected execution-ledger reviewed flags using the existing tool after both approvals; re-seal/refresh coverage, execution and admission-selection metadata bindings only through the existing validators.",
+        "Additive evidence/checklist checkpoints (docs/coverage-checklist.md) may describe the observed results, kept distinct as source-tested vs installed vs historical. They confer no extra scope."
+      ],
+      "conditions": [
+        "All 15 delta paths stay byte-identical to delta.json, except the candidate/provenance/ledger/metadata refreshes listed above.",
+        "Unchanged full validate_record (Windows and Linux) and validate_candidate(require_reviewed=True) pass after the reviews are bound. A failure needs a fresh review.",
+        "The combined-source review confirms 275888b5 blob identity with the 842-approved source delta, and the native inputs equal 837 source-after and the 845 capture production inputs.",
+        "The three repo-local hash-addressed source origins and the 837/845 retained evidence stay intact while the reuse records are live.",
+        "No change to original dispositions, criteria, bindings, requested selections, profiles or historical candidate files. No widening of the reader's accepted workflow set."
+      ],
+      "excluded": [
+        "Any other source, scope, workflow, policy, tool or native-reuse change, including recomputing reuse digests: fresh review required.",
+        "Fresh Linux producer authority for the 14 selector (b3c15f70).",
+        "Strict Tk observer/worker/collector results, 32-row/128-binding admission, artifact/profile admission, final combined-source integration, required/release-policy CI on the final head, delivery/publication: these keep their separate review and CI gates.",
+        "Treating the 850/851 source-functional baselines or the 842/838-841 finite lifetime cases as parity, strict-profile or installed-artifact qualification."
+      ],
+      "remaining_blocking_conditions": [
+        "Two independent review records bound and the full native validators passing.",
+        "Combined-source review and final-head required CI.",
+        "Strict observations for the 4 workflows / 32 rows / 128 bindings on both profiles.",
+        "Exact-artifact subject, promotion-basis review and terminal retention, per the selection's 'missing' list (852 verification.json:1335-1342)."
+      ]
+    }
+  },
+  "inputs_reverified": 724,
+  "source_contracts_reverified": 768,
+  "reviewer_executed_tests": false,
+  "full_native_record_validation_complete": false,
+  "selected_execution_path": "Separate read-only selected-edge audit finds2selected workflows/2nodes per profile, not four distinct observer workflows or seven mode processes; all32rows/128bindings stay required. Reviewer approval does not grant any strict observation.",
+  "artifact_admitted": false,
+  "published": false,
+  "scope": "Historical approval of exact pre-correction scope. Never applied or transferred; coordinator later found stale CI producer config, requiring fresh independent review of corrected scope.",
+  "evidence": {
+    "path": "@evidence/build/runs/orphan-preparation14-peer-review-854/coordinator-disposition.json",
+    "sha256": "6d6e993e7b46492abf62c34c067b7bf447741c517b9306c528c44d8cf16da87a"
+  },
+  "cleanup": {
+    "status": "PASS_APPLY",
+    "bytes_removed": 92,
+    "retained_verified": 21
+  },
+  "approval_applied": false,
+  "current_scope_approved": false,
+  "superseded_for_current_preparation_by": "compat/api-acceptance/orphan-preparation14-linux-ci-pin-v1.json"
+}

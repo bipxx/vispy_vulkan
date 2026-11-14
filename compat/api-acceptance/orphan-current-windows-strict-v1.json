@@ -1,0 +1,164 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "status": "PASS_CURRENT_WINDOWS_STRICT_MATCHED_COHORT_AND_TWO_INSTALLED_CRITERION_NODES",
+  "coverage_ids": [
+    "FIX-04",
+    "FIX-06",
+    "API-06",
+    "LIF-01",
+    "LIF-05",
+    "LIF-07"
+  ],
+  "wheel": {
+    "path": "build/artifacts/4f537748c74689ed4d55ee2e3f8e3d9f1c1cfdf0803d1b72c4169217c74291d8/vispy-0.17.0+vulkan.2-cp312-cp312-win_amd64.whl",
+    "sha256": "4f537748c74689ed4d55ee2e3f8e3d9f1c1cfdf0803d1b72c4169217c74291d8"
+  },
+  "source_commit": "275888b5a46647a6ff59c7474f96dd5def2b6f75",
+  "candidate": "tk-state-resource-14",
+  "candidate_scope_sha256": "d1133224a54c0733bd59a8618fcd4c6844f23d552b4697e02190b954dde594e3",
+  "environment_id": "5536e3765fd1ea8bfa32f0d189a817a0a21d727c2ffe90f00c58949f8ba3d033",
+  "workflows": [
+    {
+      "workflow": "tk-state-resource-failures",
+      "status": "PASS_ALL_NO_OPENGL_GATES",
+      "report": {
+        "path": "@evidence/build/runs/orphan-current-windows-strict-859/tk-state-resource-failures/replay-1.json",
+        "sha256": "4eb638f082b98116d3696bcc2edebd30490f6d4597b9e8a1a9d86070cc300d68"
+      },
+      "worker": {
+        "path": "@evidence/build/runs/orphan-current-windows-strict-859/tk-state-resource-failures/replay-1.worker.json",
+        "sha256": "8ffc97b0a99310efa092efec5dc24193168b4e98e1b3adcd4c4566ae39db50d3"
+      },
+      "receipt": {
+        "path": "@evidence/build/runs/orphan-current-windows-strict-859/tk-state-resource-failures/receipt-after-replay-0.json",
+        "sha256": "fa6c90205865a3d60906833c458f75c56745ff3bcef0ccea09c2777a1a04760a"
+      },
+      "inventory": {
+        "path": "@evidence/build/runs/orphan-current-windows-strict-859/tk-state-resource-failures/receipt.inventory.json",
+        "sha256": "0dad35497649c5365a7734680adac94382159e2e71ccbe1c42623a5e2ffa90ec"
+      },
+      "environment_id": "5536e3765fd1ea8bfa32f0d189a817a0a21d727c2ffe90f00c58949f8ba3d033",
+      "functional_validation": {
+        "contract": "tk-state-resource-1",
+        "schema": 1,
+        "status": "PASS_FUNCTIONAL_RESULT",
+        "branch_ids": [
+          "ordinary.state",
+          "progress.draw",
+          "progress.poll",
+          "resource.upload-recovery",
+          "submission.gloo.delayed",
+          "submission.gloo.immediate",
+          "submission.raw.delayed",
+          "submission.raw.immediate"
+        ],
+        "qualified": false
+      },
+      "shutdown_gauges": {
+        "pending_tickets": 0,
+        "queued_frames": 0,
+        "live_buffer_bytes": 0,
+        "live_cpu_buffer_bytes": 0,
+        "live_texture_bytes": 0,
+        "canvas_texture_bytes": 0,
+        "transient_buffer_bytes": 0,
+        "line_resource_pool_busy_slots": 0,
+        "line_resource_pool_bytes": 0
+      }
+    },
+    {
+      "workflow": "tk-capture-formats",
+      "status": "PASS_ALL_NO_OPENGL_GATES",
+      "report": {
+        "path": "@evidence/build/runs/orphan-current-windows-strict-859/tk-capture-formats/replay-0.json",
+        "sha256": "8ba3f917e2526b193dd9312ef777e3ea93ff59cc3cc60d24affd073f23d8b8bd"
+      },
+      "worker": {
+        "path": "@evidence/build/runs/orphan-current-windows-strict-859/tk-capture-formats/replay-0.worker.json",
+        "sha256": "0739e0f7ffdb9dda9df8f630993dfa6ccd91123af52a6be1a13e04e30cc3bdbb"
+      },
+      "receipt": {
+        "path": "@evidence/build/runs/orphan-current-windows-strict-859/tk-capture-formats/receipt.json",
+        "sha256": "c8db250deb0f86445b2c3d461b031b9afe918eabc657d9763de3507ba6ce5e88"
+      },
+      "inventory": {
+        "path": "@evidence/build/runs/orphan-current-windows-strict-859/tk-capture-formats/receipt.inventory.json",
+        "sha256": "0dad35497649c5365a7734680adac94382159e2e71ccbe1c42623a5e2ffa90ec"
+      },
+      "environment_id": "5536e3765fd1ea8bfa32f0d189a817a0a21d727c2ffe90f00c58949f8ba3d033",
+      "functional_validation": {
+        "schema": 1,
+        "contract": "tk-capture-1",
+        "status": "PASS_FUNCTIONAL_RESULT",
+        "branch_ids": [
+          "capture.invalid-viewport",
+          "capture.ordinary",
+          "capture.resize",
+          "capture.retry"
+        ],
+        "qualified": false
+      },
+      "shutdown_gauges": {
+        "pending_tickets": 0,
+        "queued_frames": 0,
+        "live_buffer_bytes": 0,
+        "live_cpu_buffer_bytes": 0,
+        "live_texture_bytes": 0,
+        "canvas_texture_bytes": 0,
+        "transient_buffer_bytes": 0,
+        "line_resource_pool_busy_slots": 0,
+        "line_resource_pool_bytes": 0
+      }
+    }
+  ],
+  "feature_profile_joins": 16,
+  "gate_checks": 48,
+  "installed_members_verified": 537,
+  "source_overrides": 0,
+  "selected_acceptance_nodes": [
+    "tests/native/test_tkinter_state_scenario.py::test_composite_observed_failure_and_recovery_scenario",
+    "tests/native/test_tkinter_capture_scenario.py::test_real_tk_capture_observer_scenario"
+  ],
+  "selected_acceptance_cases": 2,
+  "acceptance_shutdown_gauges": {
+    "pending_tickets": 0,
+    "queued_frames": 0,
+    "live_buffer_bytes": 0,
+    "live_cpu_buffer_bytes": 0,
+    "live_texture_bytes": 0,
+    "canvas_texture_bytes": 0,
+    "transient_buffer_bytes": 0,
+    "line_resource_pool_busy_slots": 0,
+    "line_resource_pool_bytes": 0,
+    "host_import_pinned_bytes": 0
+  },
+  "actual_exit": 0,
+  "child_waited": true,
+  "qualified_rows_written": 0,
+  "artifact_admitted": false,
+  "strict_selection_admitted": false,
+  "native_rebuilt": false,
+  "preserved_setup_failure": "acceptance-setup-failure.json",
+  "scope": "Finite current Windows CPython3.12.8 RTX4090 Vulkan610.88 Tk8.6 raster development qualification observations. Two strict workflows share one exact minimal installed environment; two separate installed pytest acceptance nodes reuse its unchanged package with existing external pytest tooling. No WSL, strict subject/profile admission, finalCI/integration/promotion/publication transfer.",
+  "remaining": [
+    "Matching current WSL strict cohort and selected acceptance nodes",
+    "Bind32rows/128criteria to exact current artifact subject/profile/retention histories",
+    "Final combined source/release-policy CI, promotion review, protected integration/admission and distinct delivery"
+  ],
+  "evidence": {
+    "path": "@evidence/build/runs/orphan-current-windows-strict-859/verification.json",
+    "sha256": "d5f89e3322d670889c650d443fe82dbd299597b3551f89b57837b79dd6fcf018"
+  },
+  "cleanup": {
+    "status": "PASS_APPLY",
+    "bytes_removed": 62913430,
+    "files_removed": 1636,
+    "retained_verified": 83
+  },
+  "setup_failure": {
+    "path": "@evidence/build/runs/orphan-current-windows-strict-859/acceptance-setup-failure.json",
+    "sha256": "94043b28474dce942420d82c3ccb38d45323d13fe5553df70d858863929e2b26"
+  },
+  "build_profile": "compat/build-profiles/orphan-current-strict-installed-v1.json"
+}

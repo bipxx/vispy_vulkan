@@ -1,0 +1,37 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "status": "PASS_FINAL_PREPARATION_AND_METAL_PIN_SOURCE_CONTRACTS",
+  "coverage_ids": [
+    "TOOL-01",
+    "FIX-04",
+    "FIX-06",
+    "API-06"
+  ],
+  "source_commit": "275888b5a46647a6ff59c7474f96dd5def2b6f75",
+  "source_tests": 850,
+  "results": {
+    "failure": 0,
+    "error": 0,
+    "skipped": 0
+  },
+  "source_suites": 12,
+  "raw_junit": {
+    "path": "@evidence/build/runs/orphan-release-preparation15-contracts-889/contracts.xml",
+    "sha256": "e76da327ec11b1ee5cf1d526c2205ead51ce462ea05b74ef6a75821da218ec98"
+  },
+  "process": {
+    "path": "@evidence/build/runs/orphan-release-preparation15-contracts-889/contracts-process.json",
+    "sha256": "8821c9913d5a358bc06501998e9dee0ac4574ebe18114d520e5acf057b0f5945"
+  },
+  "inputs": {
+    "path": "@evidence/build/runs/orphan-release-preparation15-contracts-889/inputs.json",
+    "sha256": "75be86be6c1e7de9b2bef2eb8059f05da805d077ef41026dfb07b254dc14528a"
+  },
+  "frozen_source_inputs_unchanged": true,
+  "actual_exit": 0,
+  "child_waited": true,
+  "native_rebuilt": false,
+  "artifact_admitted": false,
+  "scope": "Current unreviewed metadata preparation15/native reader/reuse/archive/retention/index contracts plus Metal reuse source controls after exact pin renewal. Source-only check on existing locked Python; no native wheel, SDK or environment build, installed/profile admission or final-head hosted CI claim."
+}
