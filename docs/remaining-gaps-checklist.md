@@ -2,6 +2,117 @@
 
 ## Latest checkpoint — 2026-11-14
 
+**Combined integration amendment approved, 2026-11-14:**
+[758review](../compat/api-acceptance/lifecycle-panzoom-combined-review-v1.json) approves the exact
+19-file composition `4b85c65c` on actual PR79merge `96b1187e`, with no required
+changes. It explicitly replaces754's separate750merge prerequisite with one
+protected PR, keeping exact parent/file/810guard checks and fresh required CI.
+The strengthened PanZoom delivery witness is independently reviewed; prior750
+non-doc results and754v1receipts stay unchanged. Coordinator checks702committed
+parent inputs and prior approved doc text; only the reviewed PanZoom child moves
+to v2evidence. Next stage the approved bytes plus this permitted review receipt
+and additive checkpoints through a32MiB private index. No branch/head/CI pass,
+new GPU-test CI coverage, admission, release or full-parent closure is claimed.
+
+**Current investigation plan refreshed, 2026-11-14:**
+[Ordered closure packets](superpowers/plans/2026-11-13-remaining-gap-closure.md#investigation-and-closure-queue--2026-11-14-current-revision)
+now prioritize completed-work integration, stale-record reconciliation, Qt callback
+exception handling, ordinary Qt routing and one useful rendering combination.
+[PR79 actual merge `96b1187e`](../compat/api-acceptance/qt-input-protected-integration-v1.json) is verified by retained753 (11 required checks,
+matching tested tree,810 unchanged guards/foreign index). Strengthened PanZoom
+[755Windows](../compat/api-acceptance/qt-panzoom-windows-v2.json)/
+[756WSL](../compat/api-acceptance/qt-panzoom-wsl-v2.json) pass2cases each with an
+explicit post-release move-delivery witness;756cleanup reclaimed29,870,467bytes,
+24retained checks/scratch absent. Review750's approved lifecycle/MSAA batch and
+strengthened PanZoom still need guarded integration; combining them requires an
+explicit review amendment to754's sequential-merge condition. No new experiment,
+build, CI-test coverage, public-wheel qualification or full-parent closure is
+claimed by this planning change. Older pending labels below are historical;
+source/local-installed/merged/public-delivered scopes remain distinct.
+
+**Qt input now reaches a real scene camera at finite installed scope:**
+[751](../compat/api-acceptance/qt-panzoom-windows-v1.json)/[752](../compat/api-acceptance/qt-panzoom-wsl-v1.json)
+each pass2same-source PanZoom pan/release/recovery and cursor-wheel/reverse cases
+with literal world rectangles,3x3marker centers and image-exact restoration in
+explicit240x180SceneCanvasrender.537members/no overlays/ten zero gauges,
+awaited exits, WSL Xvfb0/borrowed origins unchanged.47,770,425bytes cleaned/
+42retained checks, no new build/environment. Later WIP outside PR79/750approval;
+review/integration next. No native-display/optical/HID/focus/DPI/other-camera or
+broad LIF-06/SCI-03/API-06 claim.
+
+**Combined evidence/test delta approved for guarded integration:**
+[750](../compat/api-acceptance/lifecycle-msaa-review-v1.json) approves amended
+12-file scope with conditions/no required changes,810guards/823review inputs.
+Color-before-redraw assertion and stale WSL row corrections are confirmed;
+16strengthened capture cases and11original submission-fault cases pass per
+profile at their exact recorded hashes. All eight result receipts stay unchanged.
+Reviewer exits0/awaited,91bytes/839inputs cleaned/verified, no scratch/build/env.
+Next protected PR79merge, actual-parent join and exact approved delta/private
+index/fresh checks; no new branch or CI/admission/full-parent coverage claimed.
+
+**Review follow-up now tested:**
+[748](../compat/api-acceptance/msaa-depth-stencil-windows-v2.json)/[749](../compat/api-acceptance/msaa-depth-stencil-wsl-v2.json)
+pass16matching cases each with exact color checked after mutation capture and
+BEFORE redraw,537members/no overlays/ten zero gauges. Both targets cleaned
+47,770,447bytes/39retained checks, actual exits0/awaited and WSL origins unchanged.
+No native build/environment. Original745/746results stay frozen; their color
+observation was after redraw.747approved original10-file scope with conditions
+and noted this improvement plus stale Windows-child WSL wording; both corrected.
+Amended source/v2receipts await a focused amendment review, not transferred
+approval. Existing parent/edge/format/surface/physical-memory/CI limits remain.
+
+**Default depth/stencil MSAA capture subset verified:**
+[745](../compat/api-acceptance/msaa-depth-stencil-windows-v1.json)/[746](../compat/api-acceptance/msaa-depth-stencil-wsl-v1.json)
+each pass16same-source cases: samples0/4, depth/stencil float/byte, full/crop,
+analytic values, mutation/refusal/restoration and color preservation on current
+wheels/runtime2b8. Actual sample allocation checked,537members/no overlays/ten
+zero gauges; awaited exits and WSL origin checks pass.47,770,447scratch bytes
+cleaned/39retained verifications, no native build/new environment/display server.
+Depth-float tolerance1e-6; other/restored output exact. Uniform samples do not
+prove mixed-sample edge selection. New test/records are outside PR79; next
+review/integrate alongside later bounded records. LIF-05/SCI-06/API-06 stay
+partial; real surface acquisition/physical-memory and other format/feature cells
+remain open, with no deterministic existing native acquisition control found.
+
+**Qt input follow-up submitted as PR79:**
+[743](../compat/api-acceptance/qt-input-source-head-v1.json) pushes434f1326with
+exact9approved files on verifiedbf1e4212parent; test hash joins736/738installed
+results,810guards/702parent inputs verify. Frozen approved snapshots are staged,
+newer live fault/merge worklist changes and foreign index preserved. PR79normal
+protected auto-merge enabled; original CPU43571683051/Linux43571683050checks
+live, no CI-coverage/profile claim for new test.15,126,858private-index bytes
+cleaned/87retained inputs, scratch absent. Next actual required checks/merge;
+submission-fault records and later live checkpoints remain separate WIP.
+
+**PR78 merged under normal protection:**
+[742](../compat/api-acceptance/post-preview-protected-integration-v1.json)
+verifies bf1e4212at actualheada2dbe39a, merge treef3a86179equal testedPRtree and
+all11required checks successful. Optional macOS CPU jobs stilllive/queued;
+no all21-job claim.810source guards/foreign index unchanged, no admin/force/
+checkout/scratch. A racing already-merged precheck sent no additional merge
+request. Next the exact739approved Qt snapshot, preserving later fault records
+and live-worklist edits outside that reviewed delta.
+
+**Submission-fault subset complete at local installed scope:**
+[740](../compat/api-acceptance/submission-fault-windows-v1.json)/[741](../compat/api-acceptance/submission-fault-wsl-v1.json)
+each pass11identical-source pre/post-submit/query-frame failure/recovery,
+ticket-retention/non-replay and retirement cases on current wheels/runtime2b8.
+537members/no overlays/ten zero gauges each, actual children0/awaited, WSL
+borrowed origins unchanged.47,770,449scratch bytes removed/40retained checks;
+no new test code/environment/native build. Real surface-acquisition failure,
+physical-memory accounting and broad LIF-01/API-06 remain open. New records/docs
+are outside PR78/739Qt approval; their future evidence integration is separate.
+
+**Next native-fault evidence subset passes Windows:**
+[740](../compat/api-acceptance/submission-fault-windows-v1.json) passes11existing
+pre/post-submit/query-frame failure cases, with ticket retention, no replay,
+explicit recovery and ownership retirement on current9e4/runtime2b8.537members/
+no overlays/ten zero gauges; actual exit0/awaited.17,899,970scratch bytes removed/
+20retained checks. No new test code/native build/environment. Next same WSL
+subset; actual surface acquisition and physical-memory accounting stay open.
+New740records/worklist edits are outside PR78/739Qt delta; approved739metadata
+sources are retained for exact staging without adopting this later WIP.
+
 **Qt input review complete; protected integration remains:**
 [739](../compat/api-acceptance/qt-input-review-v1.json) approves exact8-file scope
 with conditions/no required changes.810source guards/818frozen inputs, reviewer
@@ -962,6 +1073,16 @@ explicit boundary; implementing every possible form is not required.
 
 ## Lifecycle, capture, input and known issues
 
+- [x] **LIF-01-SUBMISSION-WINDOWS — Finite11-case installed subset:**
+  [740](../compat/api-acceptance/submission-fault-windows-v1.json),2026-11-14:
+  selected existing gloo/raw pre/post-submit/query-frame failure/recovery and
+  retirement cases pass9e4e30cc,537members/no overlays/ten zero gauges; cleaned.
+  Surface-acquisition, physical-memory and full-parent/integration scope open.
+- [x] **LIF-01-SUBMISSION-WSL — Matching11-case installed subset:**
+  [741](../compat/api-acceptance/submission-fault-wsl-v1.json),2026-11-14:
+  exact740source/cases passa2715d26/softwareVulkan,537members/no overlays/ten
+  zero gauges; unchanged borrowed origins, awaited exits, cleaned target.
+  Actual surface, physical-memory and broader-parent/evidence integration open.
 - [ ] **LIF-01 — Fault coverage:** audit acquisition failures, fault injection
   and physical-memory-accounting evidence; retain unresolved cases explicitly.
   New source failure, 2026-11-13: run557retains24CPU-buffer and24GPU-buffer
@@ -995,6 +1116,13 @@ explicit boundary; implementing every possible form is not required.
   preservation now pass ([evidence](../compat/api-acceptance/qt-lifecycle-windows-native-v1.json)).
   Both shared-close cases now [pass on the verified current Linux native payload under WSL](../compat/api-acceptance/qt-lifecycle-wsl-current-source-v1.json),
   including all nine zero gauges. Installed, embedded-parent lifecycle and actual surface loss remain open.
+- [x] **LIF-05-DEFAULT-DEPTH-STENCIL — Finite16case local installed subset:**
+  [748](../compat/api-acceptance/msaa-depth-stencil-windows-v2.json)/
+  [749](../compat/api-acceptance/msaa-depth-stencil-wsl-v2.json),2026-11-14:
+  same default target/sample/type/crop/mutation/refusal/restoration cases pass
+  current wheels, color preserved BEFOREredraw,537members/no overlays/ten zero gauges;
+  cleaned. Uniform
+  samples only; mixed-edge/other-format/feature and review/integration scope open.
 - [ ] **LIF-05 — MSAA capture:** disposition broader depth/stencil and
   format/feature combinations separately from existing color-resolve evidence.
 - [x] **LIF-06-QT-WINDOWS — Finite8case installed PyQt6 subset:**
@@ -1007,6 +1135,13 @@ explicit boundary; implementing every possible form is not required.
   exact same736source passes currenta2715d26/softwareVulkan/privateXvfb,537members,
   no overlays/ten zero gauges; borrowed origins and cleanup verify.737dependency
   failure retained. Broad parent, other bindings, review/integration and CI open.
+- [x] **LIF-06-QT-PANZOOM — Finite2-case installed scene-response subset:**
+  [755](../compat/api-acceptance/qt-panzoom-windows-v2.json)/
+  [756](../compat/api-acceptance/qt-panzoom-wsl-v2.json),2026-11-14:
+  generated Qt PanZoom gestures drive literal rect/marker changes and exact
+  restoration on current Windows/WSL wheels,537members/no overlays/ten zero
+  gauges; cleaned. Explicit-size render, not native display/HID/focus/DPI.
+  Review/integration and broader camera/parent scope open.
 - [ ] **LIF-06 — Input forwarding:** selected Qt keyboard, wheel, focus, mouse,
   timer and coordinate delivery beyond the finite Tk subset. Touch, stylus,
   gestures and additional layouts need their own selected scope.

@@ -1,0 +1,53 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "coverage_ids": [
+    "FIX-04",
+    "API-06",
+    "LIF-01",
+    "LIF-05",
+    "LIF-06",
+    "SCI-03"
+  ],
+  "status": "APPROVED_COMBINED_EXACT_DELTA_WITH_CONDITIONS",
+  "review_delta_sha256": "4b85c65c6defd56f7fc3950b73d35af5da471bfbff45738299e147e73838dd85",
+  "review_decision_sha256": "e6a3940f14f916a57d4c04266ef11bae9e407b86b1727c24e78d7cd796870129",
+  "base": "96b1187e43984532cad8409103078af61f2074d0",
+  "reviewed_files": 19,
+  "critical_source_guards_unchanged": 810,
+  "committed_parent_inputs_matched": 702,
+  "reviewer_actual_exit": 0,
+  "reviewer_child_waited": true,
+  "required_changes": [],
+  "superseded_conditions": [
+    "754 IC1 (no branch/PR until the 750 batch merges separately; overlay only after both) is replaced by: one protected PR on actual base 96b1187e containing exactly the 19 delta paths. PR79 merge is satisfied by retained 753, not waived.",
+    "Only as a necessary consequence of IC1: 754 IC2's prospective parent pins (doc blobs e286d26c/6b34f726/6c0629a3, snapshot c8a97bae) are replaced by actual-parent pins 630eb122/7f0fafc7/e387b9bb (the 750-stated blobs), with the 16 added paths absent at 96b1187e.",
+    "Only as a necessary consequence of IC1: 754 IC4's six-blob pin is replaced by the 19-path pins in delta 4b85c65c. The v1 receipts stay 816da5c8/dd9dab65. The test changes from 569fd41c to 9ab79317 (blob f6ade21e) and is approved here on its own merits, not by transfer from 754.",
+    "750's 12-path staging scope becomes its 10 unchanged non-doc paths, plus its permitted own receipt lifecycle-msaa-review-v1.json (a82f71d9), plus the 3 combined doc blobs. All other 747/750/754 conditions and withheld scopes stay in force."
+  ],
+  "integration_conditions": [
+    "Stage exactly the 19 paths with the SHA-256/blob values in R/delta.json (total 917759 bytes) through the private index (32 MiB limit). Any byte drift needs re-review.",
+    "Immediately before staging, re-run ls-remote and require main == 96b1187e. If main has moved, stop and do an impact check. If the protected PR later needs a base update, only a conflict-free update that leaves all 19 paths byte-identical and the 810 guards re-verified is acceptable; anything else needs re-review.",
+    "Re-verify with a hashing tool: all 810 critical guards (including tests/native/test_public_submission.py = parent blob f7d5ce38), the three parent doc blobs, and foreign HEAD f640057d / index e1cceed6 unchanged. No checkout/reset/clean/force/admin bypass and no mutation of the other owner's index.",
+    "Confirm the combined doc blobs contain the 750-approved doc insertions and the 754 v1 PanZoom paragraphs as unchanged text (diff against approved-metadata-source.zip and 754's docs). Only additions are allowed, apart from the LIF-06-QT-PANZOOM rows, which this review approves as pointing to v2 evidence.",
+    "Fresh normal required checks on the actual PR head. Do not transfer 747/750/754 review, the 740/741/745-749/751/752/755/756 test results, the 55fd/9e4e30cc/a2715d26/runtime2b8 qualification, or CI coverage. ci_coverage_claimed=false stays until a separately reviewed workflow change collects either GPU test.",
+    "No native build, wheel rebuild, admission or release. Record the actual head, CI and merge receipts outside the commit, with no self-reference."
+  ],
+  "metadata_followup_conditions": [
+    "Allowed: one own review receipt for this 758 decision, plus purely additive factual top-checkpoint paragraphs in the 3 already-changed docs. They cite only the external 758 decision and delta hash 4b85c65c, and make no own-head/CI claim. Audit them as insertions only; the coordinator recomputes the delta hash.",
+    "All tests and all existing receipts (the 8 from 750 data, 750's own, PanZoom v1/v2, PR79) stay byte-identical. Do not rewrite older pending or 'requires amendment' paragraphs; supersede them additively.",
+    "LIF-01/05/06, SCI-03 and API-06 stay partial. Also still open: native-presented/optical display, HID, focus, fractional DPI, other cameras/bindings, full PanZoom parity, mixed-sample edge selection, other formats, real surface acquisition and physical-memory accounting.",
+    "Optional wording fix: 'realQt delivery' -> 'generated Qt events' in the coverage-checklist LIF-06-QT-PANZOOM row. This changes the delta, so it needs a recomputed hash and an insertion/edit audit."
+  ],
+  "withheld": [
+    "No hashes computed by me. Delta 4b85c65c, all per-path SHA-256/blob values, the 810 guards, the 830 frozen inputs, foreign HEAD/index and the 750 own receipt's identity come from the packet, receipts and coordinator.",
+    "Not read: raw combined.diff, owned-delta-and-licenses.zip, inputs.json, prepare.py/log, 750 approved-metadata-source.zip and metadata-followup-audit.json, receipt middles (about lines 9-780), full doc files outside the diff hunks, other 753 files (main-protection, rollup), and the full workflow files beyond the grep.",
+    "The v1-to-v2 test difference was not compared byte-for-byte. That the other assertions are unchanged relies on 754's review plus the 288-byte size increase and the receipts.",
+    "The equality of the 750-era doc paragraphs with the 750-approved bytes was not verified; it is an integration condition.",
+    "This review grants no tests, build, CI coverage, admission, qualification, merge or release, and ran no shell, network, tests or edits."
+  ],
+  "integrated": false,
+  "ci_coverage_claimed": false,
+  "evidence_root": "@evidence/build/runs/lifecycle-panzoom-combined-review-758",
+  "scope": "Exact combined review of unchanged750lifecycle/MSAA plus independently strengthenedPanZoom and currentdocs on actualPR79merge. One protected PR permitted with exact parent/files/guards and fresh checks. No new tests/build/admission/release or broad-parent claim; futurehead/CI/merge evidence stays external."
+}
