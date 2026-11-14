@@ -1,0 +1,120 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "status": "APPROVED_EXACT78_DELTA_COMMIT_A_LOCAL_NOT_PUSHED_OR_INTEGRATED",
+  "coverage_ids": [
+    "FIX-04",
+    "FIX-06",
+    "API-06",
+    "SCI-02",
+    "SCI-03"
+  ],
+  "reviewed_commit_a": "63abac6b8a6317766ee1b0a8cfa72da135f2c906",
+  "reviewed_commit_a_tree": "cc9671063d513685296c80a4b6a4dc38e0834bdf",
+  "integration_parent": "ba49b468c50fa74e5176194d09b784a9ce75c6b1",
+  "branch": "wip/preview-coverage-followup-732",
+  "reviewed_files": 78,
+  "delta": {
+    "path": "@evidence/build/runs/post-preview-impact-review-731/delta.json",
+    "sha256": "f9adae89de29c4b97dc15547b5869a8899ef619161f401d8779b87fcdc922238"
+  },
+  "decision": {
+    "path": "@evidence/build/runs/post-preview-impact-review-731/decision.json",
+    "sha256": "16d415a07733bd9436aad720e4d4c5afb5472af235e877f2339336a8c20578ac",
+    "value": "APPROVED_EXACT_DELTA_WITH_CONDITIONS"
+  },
+  "required_changes": [],
+  "integration_conditions": [
+    "Before staging, recompute SHA256 and Git blob ID for all 78 paths and require equality with R/delta.json; the staged path set must equal exactly those 78 paths (F2).",
+    "Re-verify all 810 guards of parent-head-impact-review-702 and the 702 committed blobs immediately before commit; any mismatch voids this approval.",
+    "Confirm the actual remote main is still ba49b468 at branch creation; if it moved, re-run the delta/guard join against the actual parent and re-review if any of the 78 paths or guarded inputs differ.",
+    "Use a new owned branch with a private index and explicit path list; no checkout/reset/clean/force, no admin bypass; the foreign publication index e1cceed6 stays untouched and is re-hashed afterwards.",
+    "Record the actual integration head SHA and actual required-check results; never label it 55fd, and do not transfer the 55fd 23-job CI, the 702 approval or the 718 admission to it. Qualification reuse is limited to the byte-identical runtime/build/license inputs and the two exact wheel hashes.",
+    "Make no CI-coverage claim for the 8 new nodes at the integration head: existing workflows do not collect tests/visuals/test_camera_mutation_gpu.py or test_mesh_color_alpha_composition_gpu.py (F7). Local collection may be joined only after both test hashes match 53bc6b50 and 1e9d239f at that head.",
+    "Verify at the staged tree that every compat/api-acceptance record linked from the changed docs but outside the 78-file delta exists in the parent tree; I could not confirm this (see withheld).",
+    "Keep the frozen snapshot records unmodified (F1, F4) and keep installed 705/706/712/713 results labelled as local, unadmitted observations."
+  ],
+  "metadata_followup_conditions": [
+    "Allowed additions: one new own review/commit receipt, plus top checkpoint paragraphs in already-changed docs limited to actual review decision, commit SHA, CI status and evidence boundaries.",
+    "The checkpoint text should state that the 717 notes hash 4f94e51d identifies the retained pre-publication notes, not the current docs/qt-lifecycle-preview.md (F1), and should cite 810 guards / 885 frozen review inputs correctly (F3).",
+    "Runtime, tools, workflows, canonical candidate files, both new tests and all other reviewed data must stay hash-identical; an independent audit must show the doc diff contains nothing beyond those boundaries.",
+    "Prefer two commits: A = exact 78 reviewed blobs; B = metadata citing A's SHA and this decision by external path and hash. B must not cite its own SHA or CI; its merge receipt stays external, with no further commit.",
+    "No promotion wording such as CI-qualified, admitted, strict or parity for the new tests or the integration head; any other delta requires re-review."
+  ],
+  "withheld": [
+    "No hash was independently computed (no computing tool); every hash statement is a textual comparison between recorded values, including delta_sha256 and the archive hash.",
+    "No Git access: the parent ba49b468, tree equality, previous_blob values, current remote main and branch protection are taken from records. 729/base-tree.out is binary and unsearchable, so presence of doc-linked records outside the delta in the parent tree is unconfirmed.",
+    "Unread: docs/coverage-checklist.md after line 70 (links listed by grep only), docs/remaining-gaps-checklist.md after line 45, the gap-closure plan after line 45, docs/stencil-wrapper-disposition.md, most of docs/api-method-reconciliation.md and docs/visual-coverage-review.md; stale or overreaching text there is not excluded.",
+    "Unread delta records: all 38 installed-proofs-680 files, admission-guard-review, admission-source-guard, camera-mutation-wsl, mesh-color-alpha-windows, candidate12-review-transition, parent-cpu/native-ci-identities, parent-final-head-ci, parent-head-*, parent-index-preview, parent-promotion-*, parent-qualification-source-head, preview-channel-adapter-failure, preview-draft-*, preview-notice-placement, preview-release-draft, scientific-current-dispositions-v2.",
+    "Unread: owned-delta-and-licenses.zip, the 730 collection.log, and the published release body bytes; no tests, builds, shell or network were run.",
+    "This approval is neither the integration itself nor qualification, CI or admission of any new source head."
+  ],
+  "critical_source_guards_unchanged": 810,
+  "frozen_review_inputs": 885,
+  "committed_qualification_inputs_matched": 702,
+  "staged_paths_and_blobs_exact": true,
+  "linked_api_records_verified": 216,
+  "local_collected_nodes": 8,
+  "local_collection_joined_by_exact_test_blobs": true,
+  "ci_coverage_claimed": false,
+  "pushed": false,
+  "integrated": false,
+  "native_rebuilt": false,
+  "review_process": {
+    "argv": [
+      "C:/Users/HEQ/.local/bin/claude.exe",
+      "-p",
+      "--output-format",
+      "stream-json",
+      "--verbose",
+      "--no-session-persistence",
+      "--tools",
+      "Read,Glob,Grep",
+      "--allowedTools",
+      "Read,Glob,Grep",
+      "--disable-slash-commands",
+      "--strict-mcp-config",
+      "--mcp-config",
+      "D:\\vispy-vulkan-managed\\build\\runs\\post-preview-impact-review-731\\empty-mcp.json",
+      "--add-dir",
+      "D:\\vispy-vulkan-managed",
+      "--max-turns",
+      "60"
+    ],
+    "actual_exit": 0,
+    "child_pid": 26776,
+    "child_waited": true,
+    "seconds": 222.71900000004098,
+    "guard_failure": null
+  },
+  "review_cleanup": {
+    "status": "PASS_APPLY",
+    "deleted_files": 1,
+    "reclaimed_bytes": 86,
+    "retained_verified": 900,
+    "scratch_absent": true,
+    "actual_exit": 0,
+    "child_waited": true
+  },
+  "commit_a_cleanup": {
+    "status": "PASS_APPLY",
+    "deleted_files": 2,
+    "reclaimed_bytes": 15126048,
+    "retained_verified": 51,
+    "scratch_absent": true,
+    "actual_exit": 0,
+    "child_waited": true
+  },
+  "prepublication_notes_identity": {
+    "scope": "717notes hash identifies retained pre-publication notes, not current docs/qt-lifecycle-preview.md.",
+    "notes": {
+      "path": "docs/qt-lifecycle-preview.md",
+      "sha256": "4f94e51d4f73d7f5001dbe1bddd775e9e1adc588da40f2749e7a4174479b379c"
+    },
+    "retained_notes": {
+      "path": "D:\\vispy-vulkan-managed\\build\\runs\\preview-publication-corrections-717\\corrected-release-notes.md",
+      "sha256": "4f94e51d4f73d7f5001dbe1bddd775e9e1adc588da40f2749e7a4174479b379c"
+    }
+  },
+  "scope": "Ownreview/commitAreceipt allowed by731conditions. No own metadata-commit identity or future CI result. Actual metadata-head CI/merge results remain in external evidence or hosting record; no self-referential follow-up commit required. Existing55fdqualification/admission is not transferred to this head."
+}

@@ -2,6 +2,20 @@
 
 ## Latest checkpoint — 2026-11-14
 
+**Later-WIP reviewed; exact commit A created locally:**
+[731/732receipt](../compat/api-acceptance/post-preview-reviewed-commit-v1.json)
+records independent exact78-file approval with conditions/no required changes,
+and commit A `63abac6b8a6317766ee1b0a8cfa72da135f2c906` on parentba49b468.
+All staged paths/blobs match the reviewed delta;810source guards/702committed
+inputs verify,885frozen review inputs remain the review scope. Changed-doc API
+links resolve in the staged tree; foreign index unchanged.8local collected cases
+join by exact test blobs, without CI or new qualification/admission claims.
+Review cleanup86bytes/900inputs and private-index cleanup15,126,048bytes/51inputs
+pass, scratch absent. Commit A is not pushed or integrated; the permitted separate
+metadata checkpoint and actual branch-protection/integration remain pending.
+The717notes hash identifies retained pre-publication notes, not the current
+`docs/qt-lifecycle-preview.md`; frozen snapshot records are unchanged.
+
 **FIX-04/06, API-06 later-WIP audit/collection complete:**
 [730](../compat/api-acceptance/post-preview-delta-audit-v1.json) identifies77
 owned-scope changed/new records/docs/two tests (1,226,284bytes at audit snapshot).

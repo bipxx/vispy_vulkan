@@ -2,6 +2,18 @@
 
 ## Latest checkpoint — 2026-11-14
 
+**Independent impact review and local commit A complete:**
+[731/732](../compat/api-acceptance/post-preview-reviewed-commit-v1.json) approves
+the exact78-file delta with conditions/no required changes and records local
+commit `63abac6b8a6317766ee1b0a8cfa72da135f2c906`.810source guards/702Git inputs,
+885frozen review inputs, exact staged blobs/path set and doc API links verify;
+foreign index unchanged.8local collected nodes join by exact test bytes, not CI
+coverage or new qualification/admission. Review/private-index scratch removed
+15,126,134bytes total;900/51inputs verified. Next the allowed metadata checkpoint,
+then push/PR and actual protected checks/merge. No push/integration result yet.
+717notes hash refers to retained pre-publication notes, not the current doc;
+prior snapshot receipts stay unchanged.
+
 **Later-WIP inventory verified; review/integration remain:**
 [730](../compat/api-acceptance/post-preview-delta-audit-v1.json) checks the77-file
 owned delta snapshot,810unchanged source guards and702matching frozen committed

@@ -28,6 +28,19 @@ full VisPy parity is not the finish line.
 
 ### Ordered closure checklist
 
+Order3 exact review/commit progress, 2026-11-14:
+[731/732](../../../compat/api-acceptance/post-preview-reviewed-commit-v1.json)
+approves the78-file delta with conditions/no required changes; exact staged
+commit A is `63abac6b8a6317766ee1b0a8cfa72da135f2c906`, parentba49b468.
+810source guards,702committed inputs and885frozen review inputs are distinct;
+staged paths/blobs and doc API links verify, foreign index unchanged.8local
+collected cases join by exact test blobs, without CI/new-head qualification.
+Review/private-index scratch cleaned15,126,134bytes,900/51inputs verified.
+Next one permitted metadata commit, then push/PR/actual branch protection;
+commit A is local only. Metadata must not cite its own commit/CI, and its eventual
+merge result stays external, avoiding another self-referential commit.
+717notes hash identifies retained pre-publication notes, not the current doc.
+
 Order3 source audit/collection progress, 2026-11-14:
 [730](../../../compat/api-acceptance/post-preview-delta-audit-v1.json) verifies
 the77-file owned snapshot,810unchanged source guards and702frozen committed
