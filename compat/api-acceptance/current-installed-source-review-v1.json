@@ -1,0 +1,157 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "coverage_ids": [
+    "LIF-06",
+    "LIF-06-QT-FOCUS",
+    "LIF-06-QT-FOCUS-RESOURCE-BASELINE",
+    "API-06",
+    "SCI-02-CLIP-ALPHA-BLEND"
+  ],
+  "status": "APPROVED_EXACT13FILE_SOURCE_EVIDENCE_DELTA_ONLY",
+  "delta_sha256": "9bb9fe5512a4300f864b91c559f5854a3a7b17b8ed02c0e904e2ebf94cf26619",
+  "base": {
+    "commit": "26e9ea5f82478ed8db79df93e8ec9faf3b250bad",
+    "tree": "3c39641e43f97aa626a27e5732954a04ecd74217",
+    "paths": 13
+  },
+  "reviewed_paths": 13,
+  "frozen_inputs_reverified": 1314,
+  "decision": {
+    "path": "@evidence/build/runs/current-installed-source-peer-review-825/decision.json",
+    "sha256": "c6eacb64fff3a7e6a2665e1d4494ee2c706a563fab003b122b31f8d937f6d717"
+  },
+  "coordinator_disposition": {
+    "path": "@evidence/build/runs/current-installed-source-peer-review-825/coordinator-disposition.json",
+    "sha256": "648c6bbb54ac5d1334252b67c559f12584863d7a1fe7c3b88923e528444e8b98"
+  },
+  "source_archive": {
+    "path": "@evidence/build/runs/current-installed-source-peer-review-825/owned-delta-and-licenses.zip",
+    "sha256": "e0d0c126b8fbd75731cf5bf6227343023f904ce0dab5152aae73764fab1dcac8"
+  },
+  "review_process": {
+    "argv": [
+      "C:/Users/HEQ/.local/bin/claude.exe",
+      "-p",
+      "--output-format",
+      "stream-json",
+      "--verbose",
+      "--no-session-persistence",
+      "--tools",
+      "Read,Glob,Grep",
+      "--allowedTools",
+      "Read,Glob,Grep",
+      "--disable-slash-commands",
+      "--strict-mcp-config",
+      "--mcp-config",
+      "D:\\vispy-vulkan-managed\\build\\runs\\current-installed-source-peer-review-825\\empty-mcp.json",
+      "--add-dir",
+      "D:\\vispy-vulkan-managed",
+      "--max-turns",
+      "30"
+    ],
+    "actual_exit": 0,
+    "child_pid": 47068,
+    "child_waited": true,
+    "seconds": 139.420999999973,
+    "guard_failure": null
+  },
+  "cleanup": {
+    "receipt": {
+      "path": "@evidence/build/runs/current-installed-source-peer-review-825/cleanup-apply.log",
+      "sha256": "590a3774352fa8820238214e907e4884ee7fd5a257003115aa4706c332d77d71"
+    },
+    "reclaimed_bytes": 96,
+    "retained_verified": 38,
+    "scratch_absent": true
+  },
+  "required_changes": [],
+  "advisory_findings": [
+    {
+      "severity": "medium",
+      "id": "F1",
+      "finding": "PanZoom cases each retain 352/468/345600 bytes, which accumulate until process shutdown (821 per-test gauges, identical on old and new wheels). Root cause not found. The revised focus check tolerates it by design. Track it as an explicit open item, separate from focus coverage."
+    },
+    {
+      "severity": "low",
+      "id": "F2",
+      "finding": "Exact equality between the entry gauges and the post-teardown gauges is appropriate for this finite fixture. Masking would need exact cancellation on several gauges at once, and the 823/824 controls are refused even from a non-zero entry reading. The entry reading is taken without a prior gc.collect()/process_events(). Possible later hardening: weak references proving the owned canvases and host are gone, or an in-test reading showing owned bytes were counted. Not required now; changing the test cancels reuse."
+    },
+    {
+      "severity": "low",
+      "id": "F3",
+      "finding": "The negative control adds a retained canvas after teardown. It proves the gauges notice retained canvases, not a fault inside the fixture's own teardown."
+    },
+    {
+      "severity": "info",
+      "id": "F4",
+      "finding": "Stale labels: coverage-checklist SCI-02-CLIP-ALPHA-BLEND row says review pending (816 approved); qt-focus-resource-baseline-v1.json says matching_wsl_complete=false and source_review_approved=false; the Windows clip/blend receipt keeps its 'Matching WSL' remaining entry. Fix with additive doc checkpoints only."
+    },
+    {
+      "severity": "info",
+      "id": "F5",
+      "finding": "Candidates 18e11361/9efb556e have the same version and filenames as the original 9e4/a271 wheels. They need a separate delivery identity before any index publication."
+    },
+    {
+      "severity": "info",
+      "id": "F6",
+      "finding": "Clip/blend expected values check out analytically: 48,64,161 / 96,128,67 / blue, alpha 255, 576 changed pixels."
+    }
+  ],
+  "integration_conditions": [
+    "Before staging, verify parent 26e9ea5f, tree 3c39641e, the parent's old doc blobs c419d055/ac972345/a9ee7f2d/4f7346d6 and test blob 77c47570, and that the 8 new paths are absent from the parent",
+    "Freeze the final payload byte for byte: this delta plus only the permitted metadata (14 paths)",
+    "Re-verify 1314 frozen inputs, 810 critical guards, 414 historical candidate JSONs and 510 runtime Python members unchanged; no runtime/native/workflow/candidate/lock/license changes; original AGPL/BSD/dependency notices preserved",
+    "Foreign HEAD and index unchanged; private index under 32 MiB; no reset/checkout/clean/force/admin bypass",
+    "Normal protected PR with fresh runs of all 11 required checks passing on the actual head; ci_coverage_claimed=false (workflows do not collect the new tests)",
+    "Record the actual head, CI and merge outside the frozen commit; scratch cleaned with a receipt"
+  ],
+  "metadata_followup_conditions": [
+    "Allowed: one external receipt for this review, plus purely additive, dated factual checkpoints in the 4 changed docs only",
+    "Those checkpoints should open an explicit item for the PanZoom resource retention (F1) and update the stale review-pending wording (F4) without rewriting history",
+    "Both test files and the other 7 receipts stay byte-identical; any other change voids this approval",
+    "The coordinator audits and re-freezes the final 14 paths"
+  ],
+  "actual_head_test_reuse_decision": "REUSE_PERMITTED_CONDITIONAL: the 822/823/824 installed proofs may stand for the eventual head with no GPU rerun for docs/review-metadata changes only, if: all 7 test files plus _qt.py match the hashes in qt-callback-installed-v1.json (focus a42c1438, clip/blend e5467bee, Qt 1c68488e); the 823 mutant d1fbfcc2 is derived from a42c1438; the 510 runtime members equal merged runtime a695; wheels 18e11361/9efb556e match with 537 members, native 6dc06d2c/5740b28a and the profile joins; and a collection-only run at the actual head finds exactly 73 selections (47 CPU + 26 rendered, including 2 focus and 3 clip/blend cases). Any drift requires an impact review and possibly a rerun. Old-focus evidence 806/807 (83b9) is history only.",
+  "limits": [
+    "Finite: 73 selected cases per profile; Windows RTX 4090 and WSL software Mesa/private Xvfb only; no physical Linux GPU, native WSI/Wayland/Metal, HID/OS-wide focus or fractional-DPI coverage",
+    "The focus check proves restoration of the entry gauges, not retirement of unrelated earlier resources, physical memory, identities or concurrent background work",
+    "Clip/blend: one 32x24 single-sample setup, +/-1 UNORM allowance on blended RGB (observed 0); invalid-alpha case is exception plus immediate valid recovery, not atomic rollback; no new raw NPZ for the 73-case runs",
+    "No strict-profile, artifact admission, CI collection, full parity or release claim",
+    "Read/Glob/Grep only; no hashes independently recomputed; exit 0 alone is not approval"
+  ],
+  "withheld": [
+    "Strict-profile/artifact admission of 18e11361/9efb556e and their separate delivery identity",
+    "Publication or release qualification",
+    "CI coverage of the new GPU tests",
+    "Closing SCI-02 broadly or LIF-06 beyond the finite rows",
+    "Any claim that this delta is merged"
+  ],
+  "evidence_checked": {
+    "read": [
+      "825 review-packet.json, delta.json, parent-and-preservation-check.json, full semantic.diff",
+      "Full tests/qt/test_focus_routing_gpu.py and tests/visuals/test_mesh_clip_blend_gpu.py",
+      "820 failure-disposition.json; 821 verification.json",
+      "822 verification.json, check_selected.py, negative_focus.py, JUnit summaries",
+      "823 verification.json, the tail of negative_focus.py, full negative.xml",
+      "824 verification.json, selected.xml and negative.xml summaries, testcase names for 822/824"
+    ],
+    "unread": [
+      "Contents of zip archives (owned-delta, harness, controller source)",
+      "819 package reports and source archives",
+      "818 integration evidence beyond the receipt",
+      "Selected-test and controller logs",
+      "Cleanup logs and inspections",
+      "Storage observations, inputs.json, borrowed-inputs, Xvfb logs",
+      "The full historical docs beyond the changed sections",
+      "freeze-observation.json"
+    ],
+    "independent_hash_recompute": false
+  },
+  "open_followup": "LIF-06-PANZOOM-RETIREMENT",
+  "protected_integration_complete": false,
+  "strict_profile_admitted": false,
+  "artifact_admitted": false,
+  "published": false,
+  "ci_coverage_claimed": false
+}

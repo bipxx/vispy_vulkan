@@ -23,6 +23,11 @@ def test_host_window_focus_routes_input_and_rendering_without_peer_leakage(flow)
     assert os.environ.get('VISPY_QT_PRESENTATION') == 'readback'
     application = app.use_app('pyqt6')
     native_application = application.native
+    # Other scenes may still own buffers/textures on the shared device. Require
+    # quiescent work, then prove this host returns every gauge to its entry value.
+    baseline = {name: _dawn.probe()[name] for name in GAUGES}
+    assert all(baseline[name] == 0 for name in (
+        'pending_tickets', 'queued_frames', 'line_resource_pool_busy_slots')), baseline
     host = QtWidgets.QWidget()
     host.setObjectName('focus_host')
     layout = QtWidgets.QVBoxLayout(host)
@@ -153,10 +158,11 @@ def test_host_window_focus_routes_input_and_rendering_without_peer_leakage(flow)
         gc.collect()
         _dawn.process_events()
     gauges = {name: _dawn.probe()[name] for name in GAUGES}
-    assert not any(gauges.values()), gauges
+    assert gauges == baseline, dict(before=baseline, after=gauges)
     assert getattr(native_application, '_vispy_dawn_callback_error', None) is None
     print('focus rendered proof', json.dumps(dict(
         flow=flow, focus=focus_trace, observations=observations,
-        presses=presses, shutdown_gauges=gauges,
+        presses=presses, baseline_gauges=baseline, teardown_gauges=gauges,
+        resource_gauges_restored=(gauges == baseline),
         oracle='2x2 internal framebuffer readback; no Vulkan WSI surface',
         activation='controlled QApplication focus; QtTest fixed host QWindow')))

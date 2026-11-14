@@ -6,6 +6,29 @@ remain outside that PR and must not be staged into it silently.
 
 ## Active investigation and closure queue — 2026-11-14
 
+[Expanded825 approval](../../../compat/api-acceptance/current-installed-source-review-v1.json)
+covers exact13file delta9bb9fe55 on actual26e9ea5f/tree3c39641e with no required
+changes.1,314frozen inputs reverified;96byte scratch cleaned/38retained verified.
+Next freeze permitted14paths (one own review receipt plus additive checkpoints),
+join exactactualhead test/runtime/wheel inputs and collect73cases, then normal
+fresh protectedCI/integration. Older review/WSL-pending snapshots remain unchanged.
+This approval is source/evidence only, not current profile/admission/publication.
+
+Predecessor integration gate complete: managed818 verifies actual PR82 merge
+`26e9ea5f`, tree `3c39641e` equal to the reviewed/tested head, parents a695/2f07,
+all11requiredchecks,16blobs/510runtime/810guards and unchanged later WIP/index.
+The approved clip/blend batch can now use this actual parent after final-byte
+checks. Keep its test and three existing receipts unchanged and use the latest
+permitted additive-metadata audit; actual integration evidence remains external.
+
+[PR82 source push](../../../compat/api-acceptance/qt-focus-source-head-v1.json)
+now records `2f07a13f`/tree `3c39641e`, 16 paths on verified `a69505ce`.
+All 510 runtime members and CPU/rendered evidence inputs join the actual head;
+both GPU cases collect. Private-index scratch cleaned 15,135,281 bytes and 134
+retained files verified, including the initial staging-path failure/reproducer.
+Head-pinned normal protected auto-merge is enabled; required CI/actual merge
+remain next. Keep this later checkpoint outside the frozen PR82 source tree.
+
 [811 independent review](../../../compat/api-acceptance/qt-focus-amendment-review-v1.json)
 approves exact amended 15-file delta `86afc518` on `a69505ce`, no required changes.
 Coordinator reverified 1,315 inputs; prior 808 negative review and v1 raw records
@@ -80,6 +103,45 @@ of unchecked optional items is not a requirement to implement them all.
 
 ### 3. Close the highest-value uncovered behavior, one case at a time
 
+[Review816](../../../compat/api-acceptance/mesh-clip-blend-review-v1.json)
+approves exact eight-file clip/blend batch `b44c8d71` on PR82 source head `2f07a13f`,
+no required changes. 1,287 inputs reverified; 89-byte scratch cleaned/38 retained
+files verified. Both installed profiles and independent source review are now
+complete. Preserve original receipts and the output-encoding failure; invalid
+alpha is immediately replaced, with no atomic-state-refusal claim. Next verify
+actual PR82 merge/tree before staging, freeze permitted additive metadata, join
+the actual head and collect all three cases, then fresh protected integration.
+
+Matching observation complete: [WSL815](../../../compat/api-acceptance/mesh-clip-blend-wsl-v1.json)
+passes the same three cases and exact Windows814 pixel/revision metrics on the
+original a271 wheel, no overlays/537 members/ten zero gauges. Borrowed inputs
+unchanged, install/tests/private Xvfb/controller exit 0/awaited; target cleaned
+29,874,674 bytes, 28 retained files verified. Total 814/815 cleanup is 47,778,839
+bytes. Independent review and source integration remain; current wrapper/artifact
+admission is not established by the older installed runtime observations.
+
+Execution checkpoint: [Windows814](../../../compat/api-acceptance/mesh-clip-blend-windows-v1.json)
+passes all three selected cases on installed 9e4/runtime2b8 with zero overlays,
+537 verified members and ten zero shutdown gauges. Pending draws 2/4/6, 576
+changed pixels, exact restoration and maximum channel error zero per case.
+Scratch cleaned 17,904,165 bytes, 25 retained files verified. No runtime change
+was needed. Matching WSL, independent review and integration remain pending;
+the draft/unexecuted wording below describes the earlier starting checkpoint.
+
+Selected after inspecting existing fixtures: **SCI-02-CLIP-ALPHA-BLEND**.
+The existing color/alpha/texture/clip fixture disables blending, whereas camera
+azimuth/center mutation already has matching installed results 705/706. Add
+three cases for alpha .4 to .8, .4 to zero, and invalid-number refusal followed
+by .8 recovery, restoring .4 in each case. Composite tinted textured RGB
+(120,160,20) over opaque blue with separate straight-alpha factors: expected
+baseline (48,64,161,255), changed .8 (96,128,67,255), zero (0,0,255,255).
+Allow one UNORM rounding unit for blended channels only; clipped pixels and
+opaque alpha remain exact, restoration matches baseline exactly, and all three
+draws remain queued before any readback. Run the selected installed tests on
+existing Windows/WSL wheels, with member/origin verification and ten zero final
+gauges. This is a new finite observation on the older runtime, not qualification
+of the newer callback wrapper. Draft source parses; execution/review pending.
+
 Select one public mesh-filter/blending or camera/clipping/depth composition
 from step 2 only if a useful supported workflow lacks proof. Start with a tiny
 deterministic source fixture; compare before/change/restored output, peer
@@ -99,6 +161,94 @@ outside that result. Do not select the next case until evidence and cleanup
 for the current case are complete.
 
 ### 4. Verify delivery separately from source coverage
+
+Read-only admission audit826 (`current-artifact-admission-audit-826/verification.json`)
+passes current reviewed candidate/coverage/execution/selection preparation but
+finds32selected installed rows still implemented-untested,128criterion/profile
+bindings and4declaredTkworkflows on2profiles. Qt73case acceptance cannot replace
+those selected Tk observers. Bind exactcurrent archives/producers; capture those
+workflow/profile observations with complete attempt/retention histories; create
+additive installed bindings/subject, then exact qualification-head release-policy
+CI and independent impact/promotion-basis reviews under unchanged strict gates.
+Do not expand to full142origin obligations/allVisPyparity. Choose an explicit
+separate delivery identity before publishing same-version candidates; existing
+stable/qt-lifecycle preview assets remain unchanged.
+
+**LIF-06-PANZOOM-RETIREMENT remains open (825F1):** each minimal PanZoom case
+leaves352buffer/468CPU/345600texture bytes after close; old/new wheels match and
+shutdown frees them. The source resource-baseline correction tolerates these
+unrelated entry resources and does not repair their lifetime. Use weakrefs of
+scene/canvas/native objects and explicit destruction of only test-owned closed
+Qt widgets, observing before/after gauges without global shutdown. Distinguish
+test-held references from runtime ownership/queued deletion before changing code;
+fix that responsible path and verify minimal accumulation/recovery on both profiles.
+
+Matching execution complete: [current-wheel installed receipt](../../../compat/api-acceptance/qt-callback-installed-v1.json)
+binds73cases on each Windows18e11361/WSL9efb556e wheel, zerooverlays/537members,
+47CPU origin proofs and ten zero process-shutdown gauges. Same newfocus source
+and event/color observations; two explicit retained-canvas refusals per profile.
+WSL824 borrowed origins unchanged, six children awaited (one expected negative1,
+five0), private Xvfb0; target cleaned29,872,635bytes/33retained verifications.
+Older failure/partial-control records remain unchanged. Next review the expanded
+test/evidence delta, including the changed focus GPU file; old811/816 approvals
+do not transfer. Keep installed observation distinct from current artifact/
+strictprofile/admission/public-release gates. No native rebuild was required.
+
+Windows correction verified: [resource-baseline receipt](../../../compat/api-acceptance/qt-focus-resource-baseline-v1.json)
+joins822's73positive passes with823'stwo intended refusals. Explicitly retained
+module-owned canvases grow control bytes11,520to23,040 and both unchanged gauge
+assertions reject them. Keep822'spartial control as history; no rerun of the
+positive source was needed because maintainedtest bytes stayed identical.
+All821–823targets cleaned71,606,279bytes. Next matching WSL for the new GPU test
+and installed selection, then fresh review of the expanded source/evidence
+batch before protected integration. Do not transfer811/816approval or oldGPU
+test results to changed bytes; current installed observations are not admission.
+
+Diagnosis821: original9e4 and new18e11361 reproduce identical PanZoom-to-focus
+entry gauges (704/936/691200bytes), while fresh focus2passes on the new wheel.
+The global-zero assumption in the focus fixture was unsuitable for other scenes
+in the same process. Source test now asserts no queued/busy work at entry and
+restoration of all ten entry gauges. Windows822 passes73cases/537members/no
+overlays/47CPU origins/final process gaugeszero. Its extra-canvas mutation has
+1refusal/1pass because deliberately leaked objects are not explicitly retained
+across cases; keep this partial outcome and correct the control ownership, not
+the test oracle. Both821/822 targets cleaned53,704,150bytes. Matching WSL and
+fresh review of the expanded focus-test/source-evidence batch remain pending;
+816's earlier clip/blend approval alone cannot cover the additional file change.
+
+Installed820 failure retained: candidateWindows18e11361's combined73case run
+verifies537members/no overlays/47isolated CPU origins but yields71pass/2focus
+global-gauge failures after earlier SceneCanvas/PanZoom tests. Final global
+shutdown is zero; causality remains unproved. Preserve the original JUnit,
+logs and `callback-installed-windows-820/failure-disposition.json`. Failed target
+cleaned17,902,126bytes/25retained verifications. Next minimally compare
+PanZoom-to-focus on old/new wheels and fresh-process focus. Do not relax the
+gauge oracle, reorder merely to hide it, or promote71passes to artifact admission.
+
+Assembly checkpoint819 (`callback-python-package-819/verification.json`):
+the runtime is already merged in PR81/a695, so non-publishing package preparation
+can proceed independently of PR82 and the later test/record batch. Existing
+native validators and `repackage_from_source` pass for Windows18e11361 and
+Linux9efb556e candidates. Original metadata/source bindings come from577 plus
+663's exact current-source map; no binding is inferred from an archive being
+checked. Only `_qt.py` and RECORD change versus9e4/a271; version/tags/native/
+notices stay unchanged. Scratch cleaned17,376,340bytes/30retained verifications.
+The diagnostic hash-versus-bytes failure is retained and corrected without
+changing verifiers. Next zero-overlay installed callback/input/focus and teardown
+checks on both profiles, then exact artifact/profile review and admission.
+Candidates are unreleased/uninstalled; no new environment or native build.
+
+Read-only impact audit 817 (`delivery-package-impact-audit-817/verification.json`
+under the managed runs root) passes original Windows9e4/WSLa271 archive audits
+against frozen preparation12 pure members, retained native output maps and
+matching licenses/notices, explicitly passing package version `0.17.0+vulkan.2`
+instead of the auditor's legacy default. Exactly one of 510 current pure members
+differs: `_qt.py`. No artifact, environment or scratch was created. Use the
+existing `repackage_from_source` path after revalidating production/reuse joins;
+it retains metadata/native/notices and regenerates RECORD. Keep the original
+README description only through its explicit hash-checked option. New archive
+audit, zero-overlay installed acceptance, profile/admission review and explicit
+separate delivery identity remain necessary; preserve existing published assets.
 
 After the selected source changes are integrated, audit the exact current
 candidate and changed artifact members. Reuse unchanged qualified native

@@ -1,0 +1,73 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "coverage_ids": [
+    "LIF-06",
+    "LIF-06-QT-FOCUS",
+    "API-06"
+  ],
+  "status": "PASS_PR82_NORMAL_PROTECTED_MERGE_EXACT_TESTED_TREE",
+  "pr_url": "https://github.com/bipxx/vispy_vulkan/pull/82",
+  "head": "2f07a13f5df71d718e72b9c615a4945ee589865c",
+  "parent": "a69505ceb10c2f10c0354b902211132b91f4e91f",
+  "merge_commit": "26e9ea5f82478ed8db79df93e8ec9faf3b250bad",
+  "merged_at": "2026-11-14T13:15:42Z",
+  "tested_merge": "36788a8a3fb730da6bc9a24ed5d0ab9b2f9aca3a",
+  "actual_tree": "3c39641e43f97aa626a27e5732954a04ecd74217",
+  "required_success": 11,
+  "required_checks": [
+    "CPU windows-x86_64 CPython 3.10.19",
+    "CPU windows-x86_64 CPython 3.11.14",
+    "CPU windows-x86_64 CPython 3.12.8",
+    "CPU windows-x86_64 CPython 3.13.8",
+    "CPU windows-x86_64 CPython 3.14.0",
+    "CPU linux-x86_64 CPython 3.10.19",
+    "CPU linux-x86_64 CPython 3.11.14",
+    "CPU linux-x86_64 CPython 3.12.8",
+    "CPU linux-x86_64 CPython 3.13.8",
+    "CPU linux-x86_64 CPython 3.14.0",
+    "software-vulkan"
+  ],
+  "optional_pending": [
+    "CPU macos-arm64 CPython 3.10.19",
+    "CPU macos-x86_64 CPython 3.10.19",
+    "CPU macos-arm64 CPython 3.11.14",
+    "CPU macos-x86_64 CPython 3.11.14",
+    "CPU macos-arm64 CPython 3.12.8",
+    "CPU macos-x86_64 CPython 3.12.8",
+    "CPU macos-arm64 CPython 3.13.8",
+    "CPU macos-x86_64 CPython 3.13.8",
+    "CPU macos-arm64 CPython 3.14.0",
+    "CPU macos-x86_64 CPython 3.14.0"
+  ],
+  "merged_source_files": 16,
+  "merged_runtime_members": 510,
+  "critical_guards_verified": 810,
+  "historical_candidates_unchanged": 414,
+  "later_source_preserved": {
+    "docs/coverage-checklist.md": "e757b696c88229656e46be6984f34247dfdb658998768d7cd87732fe2b1a4d1c",
+    "docs/remaining-gaps-checklist.md": "02bf8bd5b190ce578d5333c18fa4f011a36101170053f78c00f0796806bb9b14",
+    "docs/superpowers/plans/2026-11-13-remaining-gap-closure.md": "a2fa8c87a44375155b501288fe21ff2c99b6a530508b468b034e091b90498da5",
+    "docs/superpowers/plans/2026-11-14-gap-investigation-next.md": "fd47d10d124d85f78a42208d0ea19626b9576c2e9a4413f656ef6dc78c99d504",
+    "tests/visuals/test_mesh_clip_blend_gpu.py": "e5467bee2f00a5c17a04d578e1c026b64e34a269980b6c8387ff69eb0190d741"
+  },
+  "foreign_head_index_unchanged": true,
+  "normal_merge_requested": true,
+  "normal_merge_request_exit": 0,
+  "force": false,
+  "admin_bypass": false,
+  "scratch_created": false,
+  "ci_new_test_coverage_claimed": false,
+  "artifact_admitted": false,
+  "release_complete": false,
+  "evidence_root": "@evidence/build/runs/focus-protected-integration-818",
+  "scope": "Exact reviewed focus test/records integrated; source/overlay evidence remains finite. Later clipblend source batch stays outside this merge. No installed/new-wrapper/profile/release coverage transfer.",
+  "evidence": {
+    "path": "@evidence/build/runs/focus-protected-integration-818/verification.json",
+    "sha256": "bf85be52644646dffa1964f850842ebb079439d3a0a0636aa04eaffc4275ce15"
+  },
+  "process_receipt": {
+    "path": "@evidence/build/runs/focus-protected-integration-818/attempt-6/processes.json",
+    "sha256": "e6779b80b767db9f2c501a67fda7aa77ee4f8ee85ff9662cce7cd8b394e8fd50"
+  }
+}

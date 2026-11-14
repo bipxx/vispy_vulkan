@@ -2,6 +2,55 @@
 
 ## Current execution pointer — 2026-11-14
 
+[Review825](../../../compat/api-acceptance/current-installed-source-review-v1.json)
+approves exact13file9bb9fe55 on26e9ea5f.1,314inputs reverified;96byte scratch
+cleaned/38retained verified. Next final14path metadata freeze/actual-head joins/
+73case collection and protectedintegration. Keep LIF-06-PANZOOM-RETIREMENT open:
+352/468/345600bytes per closed scene remain until shutdown; cause not diagnosed.
+Audit826 identifies32installed rows/128bindings across4Tkworkflows×2profiles for
+strict current-artifact admission, separate from Qt73case acceptance. Prior
+pending snapshots remain historical; no profile/public-release approval transfer.
+
+[Current installed selection](../../../compat/api-acceptance/qt-callback-installed-v1.json)
+now passes73cases per Windows/WSL profile on unreleased18e11361/9efb556e wheels,
+no overlays/537members/47CPU origins/final gaugeszero. Both explicit retained
+canvas controls per profile are refused; earlier negatives remain preserved.
+WSL824 target cleaned29,872,635bytes/33retained files verified. PR82 merge is
+[separately proved](../../../compat/api-acceptance/qt-focus-protected-integration-v1.json).
+Next fresh cumulative review of the additional focus-test change and evidence,
+protected source integration, then applicable artifact/profile admission. No
+source-overlay approval or old qualification transfers to new artifact bytes.
+
+PR82 is merged26e9ea5f/tree3c39641e: managed818 verifies tested/actual tree,
+parents,11requiredchecks,16blobs/510runtime/810guards and later WIP/index preservation.
+Clip/blend source integration can now proceed on the verified parent. Separate
+installed820 records71pass/2focus global-gauge failures on newWindowswheel;
+cause unproved pending minimal sequence/baseline controls. Its final shutdown
+gaugeszero and failed scratch cleaned17,902,126bytes/25retained verifications.
+Keep new-wheel acceptance open; no production/fixture diagnosis inferred yet.
+
+[Clip/blend review816](../../../compat/api-acceptance/mesh-clip-blend-review-v1.json)
+approves exact eight-file batch `b44c8d71` on reviewed PR82 source head `2f07a13f`.
+No required changes; 1,287 inputs reverified, 89-byte scratch cleaned and 38
+retained files verified. Both installed profiles and source review complete;
+actual predecessor merge/tree, actual-head joins/three-case collection and
+fresh protected integration remain pending. Keep finite original-wheel scope
+and invalid-setter immediate recovery distinct from new artifact admission.
+
+SCI-02-CLIP-ALPHA-BLEND: [Windows814](../../../compat/api-acceptance/mesh-clip-blend-windows-v1.json)
+and [WSL815](../../../compat/api-acceptance/mesh-clip-blend-wsl-v1.json) each pass
+three finite installed cases with matching exact pixels/revisions, 537 verified
+members, no overlays and ten zero final gauges on original 9e4/a271/runtime2b8.
+Both scratch targets cleaned 47,778,839 bytes. Next independent review and
+source integration; no broad filter/state or newer artifact qualification.
+
+[PR82 source head](../../../compat/api-acceptance/qt-focus-source-head-v1.json)
+is now pushed at `2f07a13f` (16 paths, tree `3c39641e`). Actual-head runtime/test
+joins and two-case GPU collection pass under review 811. Private-index scratch
+cleaned 15,135,281 bytes; foreign HEAD/index unchanged. Required CI and actual
+protected merge remain pending with head-pinned auto-merge enabled. This later
+checkpoint/receipt stays outside the frozen batch; no installed/release claim.
+
 [Review 811](../../../compat/api-acceptance/qt-focus-amendment-review-v1.json)
 approves the amended 15-file focus/record delta `86afc518` on `a69505ce` with no
 required changes. Coordinator reverified 1,315 inputs; 7,604 bytes of reviewer

@@ -1,0 +1,48 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "coverage_ids": [
+    "LIF-06-QT-FOCUS",
+    "LIF-06",
+    "API-06"
+  ],
+  "status": "REVIEWED_SOURCE_PUSHED_PROTECTED_CI_PENDING",
+  "commit": "2f07a13f5df71d718e72b9c615a4945ee589865c",
+  "tree": "3c39641e43f97aa626a27e5732954a04ecd74217",
+  "base": "a69505ceb10c2f10c0354b902211132b91f4e91f",
+  "pr_number": 82,
+  "url": "https://github.com/bipxx/vispy_vulkan/pull/82",
+  "auto_merge_enabled": true,
+  "source_files": 16,
+  "source_freeze": {
+    "path": "@evidence/build/runs/focus-reviewed-source-commit-812/source-freeze.json",
+    "sha256": "944bf2d94a7aac0f303aacc8d2d24e5beb40c728b5c3104f3086563583bca883"
+  },
+  "actual_head_acceptance": {
+    "path": "@evidence/build/runs/focus-reviewed-source-commit-812/actual-head-acceptance.json",
+    "sha256": "36118a117fdd3cc99d383eb3ea9891f0be2f619fb4ef1381ee4c2a748d071817"
+  },
+  "push_verification": {
+    "path": "@evidence/build/runs/focus-protected-source-push-813/push-verification.json",
+    "sha256": "8df0c4b514cf3e14ff4cc6d933ed09a088164e0768c7c6fc717f01b1e24df7ea"
+  },
+  "ci_observation": {
+    "path": "@evidence/build/runs/focus-protected-source-push-813/ci-observation-1.json",
+    "sha256": "7cdd2f909c8bd1f676dda2458b01e3b7ba60565dc2117c5bb2ad6d8484764f60"
+  },
+  "cleanup": {
+    "receipt": {
+      "path": "@evidence/build/runs/focus-reviewed-source-commit-812/cleanup-apply.log",
+      "sha256": "8455dc6536656e41bbefa4482c9a20e36d4947d867fc7bb8894899a690d9b2d1"
+    },
+    "reclaimed_bytes": 15135281,
+    "retained_verified": 134,
+    "scratch_absent": true
+  },
+  "required_ci_complete": false,
+  "actual_merge_verified": false,
+  "ci_coverage_claimed": false,
+  "installed_artifact_qualified": false,
+  "public_release_qualified": false,
+  "scope": "Exact reviewed16file source/test/records batch plus permitted additive metadata. Actual-head CPU/rendered evidence joined under811conditions; two GPU cases collection-only. No runtime/native/workflow/candidate/lock/license changes. Later head/CI/merge records remain outside frozen PR82."
+}
