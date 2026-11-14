@@ -1,0 +1,4261 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "status": "PASS_702_EXACT_SOURCE_COMMIT_BLOBS_FOREIGN_CHECKOUT_UNCHANGED",
+  "coverage_ids": [
+    "FIX-04",
+    "FIX-06",
+    "API-06",
+    "TOOL-01"
+  ],
+  "qualification_head": "55fd4e82e1a1d7bcb9d3c93a5e66c1bc825b09a1",
+  "source_workspace": "C:\\Users\\HEQ\\Projects\\vispy_vulkan",
+  "source_has_git_metadata": false,
+  "object_store_checkout": "C:\\Users\\HEQ\\Projects\\vispy_vulkan-publication",
+  "foreign_checkout_head": "f640057d831344a06040379c55334741c2752eba",
+  "owned_ref_head": "55fd4e82e1a1d7bcb9d3c93a5e66c1bc825b09a1",
+  "remote_owned_ref_head": "55fd4e82e1a1d7bcb9d3c93a5e66c1bc825b09a1",
+  "foreign_index_before_sha256": "e1cceed6fee9132b8ac7a015527239f16234dbe016c392992884336c53490aa7",
+  "foreign_index_after_sha256": "e1cceed6fee9132b8ac7a015527239f16234dbe016c392992884336c53490aa7",
+  "git_blob_inputs_verified": 702,
+  "git_blob_inputs": [
+    {
+      "path": ".github/workflows/cpu-contract.yml",
+      "git_blob": "f50294287e71788296a9ee9b5f492ef14c7a949f",
+      "bytes": 10485,
+      "sha256": "4c80541ce91d2362f248bbd5185f44a3fc968ddcb9ef9e7ac9252abdd1a46c53"
+    },
+    {
+      "path": ".github/workflows/linux-vulkan.yml",
+      "git_blob": "4edf97438cb765df78a9ffb7c2050cc88633c140",
+      "bytes": 10560,
+      "sha256": "64c2e91296258f40c272c4fa10fb4eac40f415053435b107b8ab8338fce09296"
+    },
+    {
+      "path": ".github/workflows/metal-wheel.yml",
+      "git_blob": "4303cef4099399a85c2773cb892044947217dc01",
+      "bytes": 8238,
+      "sha256": "6c051d233db4752d8cda90545398f51d678e55e4737626fbce5a8a4f634b8a97"
+    },
+    {
+      "path": "CMakeLists.txt",
+      "git_blob": "037d22b854a1b38faa6c5e027d797b3c4dca085e",
+      "bytes": 29633,
+      "sha256": "6fcbcc1e5d3cc891cb7d30dfb7cc3ca038809a9486e09e24c4a282e27d0216b2"
+    },
+    {
+      "path": "LICENSE",
+      "git_blob": "be3f7b28e564e7dd05eaf59d64adba1a4065ac0e",
+      "bytes": 34523,
+      "sha256": "0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0"
+    },
+    {
+      "path": "LICENSE-BSD",
+      "git_blob": "9838afc55e243203cee05a6e27f0465ba07dc6b8",
+      "bytes": 1810,
+      "sha256": "a28bb857d763513c810ca843558c12cf97f64b990b855c1ce7f5e291e52fc25c"
+    },
+    {
+      "path": "LICENSING.md",
+      "git_blob": "9c72b5156b46f9ae18aaece61ec36a552411bfad",
+      "bytes": 729,
+      "sha256": "e8a28d2d2c78d86fa2b6f83284e8f1a32237f87bfd417fd1cdfc84c8f3ce37f5"
+    },
+    {
+      "path": "cmake/NativeSDK.cmake",
+      "git_blob": "962ffebf6e4a9d3f32dac7c76b684aca1efae758",
+      "bytes": 7892,
+      "sha256": "8774893d8c1aebf2226e725d0797ecac1f8e33078dd47cbc0d5856df2bf416ea"
+    },
+    {
+      "path": "cmake/RefreshNativeSDKPackage.cmake",
+      "git_blob": "50ba161cc018eaf8f0b7355e1225e8252f97be1f",
+      "bytes": 522,
+      "sha256": "12b0a76d303b795620bfb550540be0087bc7af3696c212a8245aaab7fa03f534"
+    },
+    {
+      "path": "cmake/VispyNativeSDKConfig.cmake.in",
+      "git_blob": "462d78bc0dd985ab8c6974cb5c6e20a8e52ea9a6",
+      "bytes": 225,
+      "sha256": "f0f77f0e89c144089fd3f6c4566dd3359b0d48a0a824c2dfaeb67265591d1f26"
+    },
+    {
+      "path": "cmake/WindowsCompilerPolicy.cmake",
+      "git_blob": "ba634b232290b5d0225660a13fda789c951e901c",
+      "bytes": 967,
+      "sha256": "fa97a81716b2c19a08f3d6cf810890a4246940220f0907e8ee75d125ff998aad"
+    },
+    {
+      "path": "cmake/dependencies.lock.json",
+      "git_blob": "989ff3c5bdf94f026c11370634713f85a5801715",
+      "bytes": 4375,
+      "sha256": "67e06976a2612e554990775ae1a88848e6621e1831b40931dcc53c3c34b74cea"
+    },
+    {
+      "path": "cmake/dependency_origins.py",
+      "git_blob": "2489d399aa0dd12cc686fe7c4ffe5b6a0406017a",
+      "bytes": 14439,
+      "sha256": "923772347aa1e658a2d64180bdbfbbfe42075ae8af0d32fbc9a2e709b56e0541"
+    },
+    {
+      "path": "cmake/native_sdk.py",
+      "git_blob": "080cb1361b85bf7b3667c8170199033fc203bf3e",
+      "bytes": 9628,
+      "sha256": "b86fece76b81c2e9429fd49f9468a0d735dfaff8ffe00f821635c90a69019601"
+    },
+    {
+      "path": "cmake/prepare_cp310_candidate.py",
+      "git_blob": "2ab6b40080a933743b807e64c57bf62b76bf939c",
+      "bytes": 7659,
+      "sha256": "ee4d4e3cf490c41226ddc40499d3c3a23f8baf5c6ad4b5f98dbf8b7665908d6e"
+    },
+    {
+      "path": "cmake/prepare_cp311_candidate.py",
+      "git_blob": "a97b47e0b951e7973a3e8fa1065a63faba23a6bc",
+      "bytes": 7427,
+      "sha256": "70053aebc2cf6947ff20af8450a1447c6b487d5896e71c589eec8393a0081c5c"
+    },
+    {
+      "path": "cmake/prepare_cpython312_candidate.py",
+      "git_blob": "06212977a969634280d2f540ba3c51c0a34f221d",
+      "bytes": 10761,
+      "sha256": "889fef94c6b9725845321c0dabfd029e796670b1b3c13623d85057e9f2df37bd"
+    },
+    {
+      "path": "cmake/prepare_newer_candidates.py",
+      "git_blob": "e05729fe1cc4993a60e794439b0a8c3e88b1daec",
+      "bytes": 10594,
+      "sha256": "a90a4b0bc83c0daabd3ffc58a4bd04ba3161a2d4cb4c4c684c45ff77638af2c2"
+    },
+    {
+      "path": "cmake/runtime_package.py",
+      "git_blob": "9a75b963622b8311aa1d24ceb487f873ccb2c03e",
+      "bytes": 4122,
+      "sha256": "b232799722f56f833c130e8110d97ab1d6459e841c884a9bc588837bb38d5f39"
+    },
+    {
+      "path": "cmake/snapshot_wheel_sources.py",
+      "git_blob": "01fe26c1644a196f3ae11b9091258d39e6956a3e",
+      "bytes": 5744,
+      "sha256": "1d341e1ade7b2d7eed44636ceff6ad3f1e4c163f65e470e0d390c9fdfb5e780d"
+    },
+    {
+      "path": "cmake/verify_dependencies.py",
+      "git_blob": "8a572cca969a1950226fd117a0f87518b336804d",
+      "bytes": 7397,
+      "sha256": "40b95837957d65e3a45d867a3bb5524929b5ca13f58d3c3bc38203fdb9d19e9d"
+    },
+    {
+      "path": "compat/build-hygiene.json",
+      "git_blob": "229e2992352dfd3e7e96ab7ee052dbd7306d61b2",
+      "bytes": 119,
+      "sha256": "a66d8d72ef266b56f375c7919605c2d92c5873c333c204606123d3a569ae5f81"
+    },
+    {
+      "path": "compat/build-profiles/metal-ci-native.json",
+      "git_blob": "3e96a2ba446ce19814bb1de6131edf13961d6c8e",
+      "bytes": 1153,
+      "sha256": "e047235e1b04c93d87d3a9b36e902075038d1bbdbf1ace9306dc03badcf9a8de"
+    },
+    {
+      "path": "compat/candidates/tk-state-resource-12/admission-selection.json",
+      "git_blob": "00bb2aa953382d3e6caa885dffc1ce46fd425594",
+      "bytes": 41774,
+      "sha256": "8c86a9dc9fc6add46709522b7f85749e689c2417252346a67d57606e09476fd2"
+    },
+    {
+      "path": "compat/candidates/tk-state-resource-12/candidate.json",
+      "git_blob": "2968211c0b21af682688d3e30f02546e3ad99115",
+      "bytes": 56387,
+      "sha256": "f931132e5e512bb1e0cce35920c73f579a8a6861f57b06d2803384d174e3de43"
+    },
+    {
+      "path": "compat/candidates/tk-state-resource-12/coverage.json",
+      "git_blob": "3e2851c3df773bd6b9182ed7d43ba1d60dabafc7",
+      "bytes": 230038,
+      "sha256": "db43fee6f3493847d763ff0fee3b342830846166b34b989ba165377e3215886a"
+    },
+    {
+      "path": "compat/candidates/tk-state-resource-12/execution-ledger.json",
+      "git_blob": "0b39410a59480cbabdf6191eadd773f9e5dcc2ea",
+      "bytes": 553699,
+      "sha256": "3c5248a2f3a265e7d646f8e1a79dfa9e0844f3fc5a0565d4dce607d123cc868f"
+    },
+    {
+      "path": "compat/candidates/tk-state-resource-12/execution.json",
+      "git_blob": "85329182375c2aad737e5b5104926b7eb083918a",
+      "bytes": 69502,
+      "sha256": "4a353b777dfcf150e4d06caf1f3046ff82d61613d8db36235da154186ca631d2"
+    },
+    {
+      "path": "compat/candidates/tk-state-resource-12/linux-archive.json",
+      "git_blob": "e9d966fa6604931cd7ada0d68feeb154d2275551",
+      "bytes": 2055,
+      "sha256": "a4b6d2edd844476413535fc4c3785dce42e71ca57371e2e5da7833f80a853955"
+    },
+    {
+      "path": "compat/candidates/tk-state-resource-12/linux-native-provenance.json",
+      "git_blob": "682e83dcdb86b0343ae94c82e33e04cc61902664",
+      "bytes": 1606,
+      "sha256": "85a77c19aec76599add3102d3db8c7872c6453098213192f41463e0cd81731a8"
+    },
+    {
+      "path": "compat/candidates/tk-state-resource-12/linux-state-profile.json",
+      "git_blob": "26abe683a88b98c0ee28325637b25bba74183755",
+      "bytes": 4871,
+      "sha256": "b21ad2fa4a406b7d4f3b0ca1ca33421c88b9aee40bbb8f3c64662bdfa9798adb"
+    },
+    {
+      "path": "compat/candidates/tk-state-resource-12/runtime-inputs.json",
+      "git_blob": "900ba037d4240086b8a88530c26ab1be33278444",
+      "bytes": 135184,
+      "sha256": "610938160412047c730a40f767463cb6f3c263c6705b25f42034716231c905f7"
+    },
+    {
+      "path": "compat/candidates/tk-state-resource-12/scope-review.json",
+      "git_blob": "79c828fe593741f68a533ae7718809abbee87804",
+      "bytes": 6165,
+      "sha256": "c2c3aba2b594bb877db917768e29c9503d30f79ab10830c8b5c5604465f50cc1"
+    },
+    {
+      "path": "compat/candidates/tk-state-resource-12/source-review.json",
+      "git_blob": "51da5ea55491acae85a411e6e85c95483e3207f9",
+      "bytes": 5880,
+      "sha256": "8492c000ed3e7941ae3b71f71a02dce77a06cccd22f1a9bb7ec77c958865d9b7"
+    },
+    {
+      "path": "compat/candidates/tk-state-resource-12/windows-archive.json",
+      "git_blob": "6e9384773854372ed4faefb506bfca75eb4cae76",
+      "bytes": 1974,
+      "sha256": "a6499a4b801e7fe3896a7411af7ef8603d8224abd4ea4c7e71c99d7fc24af41b"
+    },
+    {
+      "path": "compat/candidates/tk-state-resource-12/windows-native-provenance.json",
+      "git_blob": "86782021abf0f2d2952efe0f6c947b5bafe7eb20",
+      "bytes": 68530,
+      "sha256": "abb9aee76820ca5cc6ab1851873aabaf59b0ae68ef3f0a8201ec2ee3012fa552"
+    },
+    {
+      "path": "compat/candidates/tk-state-resource-12/windows-state-profile.json",
+      "git_blob": "6d58be4b591303c4a2d39bceea20b1fd77837630",
+      "bytes": 4288,
+      "sha256": "7c7a4c3ff51032d9d56f1c2497db20bc8072dbfc99340b7bd03d19cb2eb207fb"
+    },
+    {
+      "path": "compat/linux-ci-reuse.json",
+      "git_blob": "594817fa0455a98342297e72b6754881f51a0f06",
+      "bytes": 653,
+      "sha256": "ede3473f01a10c16b9fcf913c8e6c8c7590f2838822849a86a288de31060fcf8"
+    },
+    {
+      "path": "compat/mesa-build-requirements.txt",
+      "git_blob": "f194628fd3ac6ab158df79f00081ee1229779510",
+      "bytes": 465,
+      "sha256": "f4b215d3ae6959a70e978877c4fe6bd41e751787730dafcdf49a3dd42976f20d"
+    },
+    {
+      "path": "compat/metal-ci-reuse.json",
+      "git_blob": "bdb8178ae6570d77bfbd4fe126028256bf41dc5c",
+      "bytes": 71339,
+      "sha256": "9bbab91f030d0a8d447162c02152cc35be179358110b8f14eedf97c142e63577"
+    },
+    {
+      "path": "compat/patches/mesa-26.1.8-noperspective-axis.patch",
+      "git_blob": "2e02cb7d6ac236919004584729872d28428519e5",
+      "bytes": 906,
+      "sha256": "3cfc4b5411f17afcdb66cbb0f410c62c1434b193be345e0ce979711b59caea11"
+    },
+    {
+      "path": "compat/patches/mesa-draw-clip-LICENSE.txt",
+      "git_blob": "506f7a0e5734e6f9d2681b3e67ee0add7b8743f5",
+      "bytes": 1408,
+      "sha256": "b74d0f8fa257bb1e1dcbfb57e2bef33f303bd8416c8999dcd6c6612cff209fb6"
+    },
+    {
+      "path": "compat/qualification-artifact.schema.json",
+      "git_blob": "49609cb2dd81e8f7256fc243fb9c9a815836f171",
+      "bytes": 5699,
+      "sha256": "56daf9f7c69ca235249c0c7960e9fd02442486ce60692ed498ae95254c5bee4d"
+    },
+    {
+      "path": "compat/qualification-ci.json",
+      "git_blob": "2b5b61467f3517b3e7f9f70f8bae49b562dd2449",
+      "bytes": 1904,
+      "sha256": "3d0a836368481c3be8157d578a0f518c7d6f3fe29df899033ad27a65fa6d4c1b"
+    },
+    {
+      "path": "compat/qualification-ci.schema.json",
+      "git_blob": "c6c7070e4b3042c44ad2ada14b74f5c1ce2f58f0",
+      "bytes": 7920,
+      "sha256": "ebb3a28deae29cd4634bac5d66174febe5f074eada4b50b53960851e5c7e700b"
+    },
+    {
+      "path": "compat/qualification-epoch.schema.json",
+      "git_blob": "795fb791aa49727a3b7b5065c16469623a647f72",
+      "bytes": 10804,
+      "sha256": "e6c58e2241622f0090c19ae4fe883d44e6f59b5663aaec925a17e41dea4e50de"
+    },
+    {
+      "path": "compat/qualification-index.schema.json",
+      "git_blob": "ff342dbdb48ba4ea99bd6f53c4e56d650c57ea81",
+      "bytes": 21919,
+      "sha256": "65f6fe88a62def126e6a564a180416051b30f507bd81588e86f603da27a932de"
+    },
+    {
+      "path": "compat/qualification-native.schema.json",
+      "git_blob": "04ae8c60eba80add519230109718afac9134ba46",
+      "bytes": 24757,
+      "sha256": "e0921de4269b1f9ca39d484d410e915710c7fe0737f8a1e1fa101e5d2def18d0"
+    },
+    {
+      "path": "compat/qualification-producers.json",
+      "git_blob": "8f291eec621382ffe059f44d6793f5f6c3400fb2",
+      "bytes": 441,
+      "sha256": "466c6a20eedee0f3a755a5518d5782032ad250225be600a4e85d04f6329e7b4a"
+    },
+    {
+      "path": "compat/runtime-package.json",
+      "git_blob": "6520796fe8860ce1ba8c7edebe678ac7a5829512",
+      "bytes": 20488,
+      "sha256": "0d650208cd1e5fcb3419fe8ba35dcef6b7a08ee2719d34785aa434023a23a005"
+    },
+    {
+      "path": "compat/software-vulkan-build.json",
+      "git_blob": "fed3de9ac67d097952c27882c52e437ce4cbc648",
+      "bytes": 1500,
+      "sha256": "46c952cbdeb4de964b6ca127d2b5d7c71b9a566d98e225984059cb123d4c9980"
+    },
+    {
+      "path": "compat/software-vulkan-driver-clip-repair.json",
+      "git_blob": "f86de99c7839f3b781b0e33ccefb3813cc383aa0",
+      "bytes": 1785,
+      "sha256": "ffcbc02a798aabfac0f85dad9000654a7b16a1923e0de996f6eef75bc0ab8a2c"
+    },
+    {
+      "path": "compat/vispy-admission-selection.schema.json",
+      "git_blob": "567a4294af485e70bdaafff8144750bc5fbdec3a",
+      "bytes": 1779,
+      "sha256": "fba1dc14d08c20c40159636ca10cf524d3a0ffd32725c16c4f389569c08645cf"
+    },
+    {
+      "path": "compat/vispy-candidate.schema.json",
+      "git_blob": "2a1177087b7917a772c2347f8fc934630cbaf73e",
+      "bytes": 7948,
+      "sha256": "06e7dba560b6b1545edb0e0eb2d46fa6eedfe9eca8dfbb414c9ab4b97a56197e"
+    },
+    {
+      "path": "compat/vispy-compatibility-v3.schema.json",
+      "git_blob": "5f8b8c771c6a2518e3a9c1199e054051a4a14dd6",
+      "bytes": 11064,
+      "sha256": "56f3fa5ed0a4aae83f4643b2c8ddd44f241688d55529887ff7f4854dd692abdc"
+    },
+    {
+      "path": "compat/vispy-compatibility.schema.json",
+      "git_blob": "f49eba26cae518ecd5f1ff2a0a47a65ac97f8a57",
+      "bytes": 5662,
+      "sha256": "0f4ca09ce598e9e763245fd48b9d0ab46bc2080947220cb9c211fc8f5a132b26"
+    },
+    {
+      "path": "compat/vispy-coverage.schema.json",
+      "git_blob": "e614b0d69431373810e5a020e36ddeee6699542c",
+      "bytes": 6411,
+      "sha256": "2195ab0d7102eda01ecf40bfbe9aa5b1b32f39483ce9fe00cd88b3aca2394d50"
+    },
+    {
+      "path": "compat/vispy-execution.schema.json",
+      "git_blob": "656926c6a92abade083ce1b30801d87a603fe2a5",
+      "bytes": 3128,
+      "sha256": "c4b20847c483a530b37c76aeec4e4ab057b5336e33cbfd15bdb0b17e4b0fd17b"
+    },
+    {
+      "path": "cpp/bindings/command_decode.hpp",
+      "git_blob": "8527623d39edc3349bb8c174db35478192d4d0c6",
+      "bytes": 5993,
+      "sha256": "15a9f9c2b11f63ea3b0b5c6c5bf5fd119ff1b01b50a4cc07ea57951b57e993e6"
+    },
+    {
+      "path": "cpp/bindings/module.cpp",
+      "git_blob": "d8cc28c8c7f9c6aab86e516e758f5402b5577f87",
+      "bytes": 55217,
+      "sha256": "92b84f1f8b76ffa6a31705d741d74d4116f3e65aabfd5409a04e353107cbe61b"
+    },
+    {
+      "path": "cpp/bindings/owned_payload.hpp",
+      "git_blob": "3898b5a1e031dd5342c357c4bead793ae9d744b7",
+      "bytes": 5046,
+      "sha256": "b1d6cc12f927bdeca1c06d315a9c75da22b35dd3372d975d8fb54b0e858e1713"
+    },
+    {
+      "path": "cpp/bindings/python_buffer_capture.hpp",
+      "git_blob": "a69f2c0c4c149c677ae4c130ac5b857979f3d281",
+      "bytes": 1886,
+      "sha256": "07814aa590ad737c6b940cf236829a1b9a003d4e4482be31757a028578250a82"
+    },
+    {
+      "path": "cpp/platform/native_library.cpp",
+      "git_blob": "53e45377353f8a3096aa83433f592c9d753181c6",
+      "bytes": 9373,
+      "sha256": "956262ccb0bcd0eba8707ae5ea1cfc5ed2f23fdfcaee87094483a15bda1f6e01"
+    },
+    {
+      "path": "cpp/platform/native_library.hpp",
+      "git_blob": "c4001dfdd6cd0f5759578b1aa386aa0a48a51a20",
+      "bytes": 1573,
+      "sha256": "85e1a657df842f9df98a5b677b842031c6255002f35c07584e2640f12e7b6210"
+    },
+    {
+      "path": "cpp/platform/native_surface.hpp",
+      "git_blob": "bfefb55d58aae814cdc0874e36aa8730134bd4ca",
+      "bytes": 3778,
+      "sha256": "d3ef7c8cf95619a030892d5d8e7b3105ac555d7745c63a888e1a8c4b31ddc358"
+    },
+    {
+      "path": "cpp/platform/surface_metal.mm",
+      "git_blob": "522cf27789e54cda171b025ca2c9502b52c86881",
+      "bytes": 5036,
+      "sha256": "a9614d0e8373e9449a3aeccd03d9f5696c6e8e07510aba303e2c4f611b5de134"
+    },
+    {
+      "path": "cpp/platform/surface_win32.cpp",
+      "git_blob": "e0f10fa6eb3b1df464bac8175deade0bfdebc37f",
+      "bytes": 3981,
+      "sha256": "7109a1b88f675917f9d038e2c2a13c4d808f8d0c40c2786ebaccf8347fe9b04a"
+    },
+    {
+      "path": "cpp/platform/surface_x11.cpp",
+      "git_blob": "2714585a53f03b2395133c073de650fc7567f641",
+      "bytes": 4182,
+      "sha256": "ad8c6e72e95cc02b1ec65751de8c1e40b89a6eaad78a68b84523d4439788f66a"
+    },
+    {
+      "path": "cpp/platform/vk_layer.cpp",
+      "git_blob": "eb21b8b4673fb0007fbb3c8f8f0317fc46543757",
+      "bytes": 36664,
+      "sha256": "9ce7f3ae573f9367bd54d51c49bf2d71a0e7458431d631f242906b9d65622061"
+    },
+    {
+      "path": "cpp/platform/vk_layer_telemetry.hpp",
+      "git_blob": "9842ec6062fdd6e3c8d11c8bbebb65bb9748fcd5",
+      "bytes": 10028,
+      "sha256": "5aa439452b8317b58822c1a9202969782706c927d748c98146cd6b3f008ad018"
+    },
+    {
+      "path": "cpp/runtime.cpp",
+      "git_blob": "5325f45aea3e5740950e14674a480243a02684db",
+      "bytes": 521666,
+      "sha256": "f344107e03ff6ce8b4302d8d681739ac9a4c813b3236daafb9d74cff43446fad"
+    },
+    {
+      "path": "cpp/runtime.hpp",
+      "git_blob": "595690012780a535f2d406a66ae1d8319d866807",
+      "bytes": 16944,
+      "sha256": "f5071ee542f06c5d7450dfc3e31085966051902092eb10dd7bc4bb2916613127"
+    },
+    {
+      "path": "cpp/runtime_batch_cache.hpp",
+      "git_blob": "a117e8e7d7b860de2f275ffa4a50281e4f7ef93b",
+      "bytes": 3070,
+      "sha256": "936cf5d94d5b6d86ad5c0b4544385d8e47efeea61a925bcbfe6f56a4c874dcae"
+    },
+    {
+      "path": "cpp/runtime_batch_capacity.hpp",
+      "git_blob": "1af2fd601e8ff56baf916d41391b171a5e85640c",
+      "bytes": 4154,
+      "sha256": "2428de457e084701d66e408caa517f640b774526bfb5853c2438dec69734174c"
+    },
+    {
+      "path": "cpp/runtime_batch_owner.hpp",
+      "git_blob": "c1539fa79a53bb0ecceb8612153da263acb26bfa",
+      "bytes": 16900,
+      "sha256": "f7fd01d5b1d67c0432ad384388f558f2c5847de322f16d451059a1c3a63e7a20"
+    },
+    {
+      "path": "cpp/runtime_batch_plan.hpp",
+      "git_blob": "c502f209e4b1bc1bc1203720a355606ded8daf7f",
+      "bytes": 20268,
+      "sha256": "bd33bcd12f37ef81e349f6350b490e45951ef119b9534d2f46ce869fda1ee897"
+    },
+    {
+      "path": "cpp/runtime_batch_strip.hpp",
+      "git_blob": "4976467565a15c4e9b7f7eac373533d7bce2d4ff",
+      "bytes": 8714,
+      "sha256": "a444e95bb7d2135bfdf2104e116813837b0542e89064b618c87cae224ef6ccda"
+    },
+    {
+      "path": "cpp/runtime_batch_topology.hpp",
+      "git_blob": "3351e505152746dad1799becc1fae80baa6438c8",
+      "bytes": 18893,
+      "sha256": "4ed18090fb6ce3067c89d10f5a005939531a9b7bf08c5d9111c45f0da574e604"
+    },
+    {
+      "path": "cpp/runtime_byte_recycler.hpp",
+      "git_blob": "ec3cac36e3676b11b5b317fe6afe801c5d5e2e55",
+      "bytes": 3240,
+      "sha256": "4a90a338fd8833e387a7591f9c82fe955909a31118f641e1debd18296475eb80"
+    },
+    {
+      "path": "cpp/runtime_frame_lifecycle.hpp",
+      "git_blob": "6e01d13d7806db2ffe2aae2c3a10be1e5524a6e8",
+      "bytes": 5926,
+      "sha256": "730ec494aa2e31a2bddd9cf49ab2f9a0b78822565d87592b6afcf4d8b429b88e"
+    },
+    {
+      "path": "cpp/runtime_framebuffer_config.hpp",
+      "git_blob": "87ee0f3e50ecdaee2aaf2f3851e1a66c1e53c0aa",
+      "bytes": 3827,
+      "sha256": "27e43caf92009cb40331b6a88317e5b67d5d10ecdfb47a17c550ee50c93f2cd3"
+    },
+    {
+      "path": "cpp/runtime_host_block.hpp",
+      "git_blob": "f49504f78e3b2e45898319d513a7432e1a78a61a",
+      "bytes": 7726,
+      "sha256": "49c1d8045c66a63f52e943eb9028eff10224a3b28cf4d10553ce7137cb17177f"
+    },
+    {
+      "path": "cpp/runtime_line.hpp",
+      "git_blob": "780ad40e51dfdcc02c2b6414c7827165d5086dd2",
+      "bytes": 20283,
+      "sha256": "1a7f8f2cb0a47898f386c8893552d48d8a29a56cf6c21af55bfe8f129dc7aae0"
+    },
+    {
+      "path": "cpp/runtime_line_batch.hpp",
+      "git_blob": "6bd0edc9d22f82ee6133ca7149ecb2a4e6af98d3",
+      "bytes": 8679,
+      "sha256": "c4a61a7312c3f9260716688833f574dd6778f63f34a88f9be4d31caa12af547e"
+    },
+    {
+      "path": "cpp/runtime_line_cache.hpp",
+      "git_blob": "dcef0a19c2a5f9d1a4da879128c68ea7ef5588da",
+      "bytes": 5381,
+      "sha256": "87e0c12fa64b26db7dc7d9f7c81278b329dc1d2d12981958ec3b2c7abb243446"
+    },
+    {
+      "path": "cpp/runtime_line_capture.hpp",
+      "git_blob": "2b54e90af3c92f2b7ca1eb6bb4ebddc0777bfeaf",
+      "bytes": 9605,
+      "sha256": "2f29366a24fbff96037e9f9d12c1336e2e1952b2b49d9aaf2e15e963d288228e"
+    },
+    {
+      "path": "cpp/runtime_line_consumer.hpp",
+      "git_blob": "1644314c8843c5c95f8e34732a924a46abe2bdb5",
+      "bytes": 11690,
+      "sha256": "d28e9e1322db45393ef45da4d043944c31c1e1318a48d5a4baa6142552f2bb51"
+    },
+    {
+      "path": "cpp/runtime_line_consumer_accounting.hpp",
+      "git_blob": "0c1b6196aa2f78be74a4fbd5504a136fdf86eb0f",
+      "bytes": 6423,
+      "sha256": "67bdd2a2fa851cbbabf613a1da5becd4d358430a59a6cca9ae5829ff04eb100a"
+    },
+    {
+      "path": "cpp/runtime_line_ownership.hpp",
+      "git_blob": "298c26039a8b38d671cfbafcab6086f7a87ff4a0",
+      "bytes": 14615,
+      "sha256": "e8c3461f1390b8a92b3e95ba364cdb131dda9e727ba067e035e6753044d9fa02"
+    },
+    {
+      "path": "cpp/runtime_line_pool.hpp",
+      "git_blob": "b15ab468680fd2d0e204f62e8991eacf77e90caf",
+      "bytes": 30510,
+      "sha256": "c6b23d76a766f0077543db1e676c96ea5e0d6c8a6e25a91caab00dc911c73c7c"
+    },
+    {
+      "path": "cpp/runtime_line_resources.hpp",
+      "git_blob": "0471749010cec218359660ec06116b22b2f192dc",
+      "bytes": 11723,
+      "sha256": "0554c89c8c2314bb580155eee85b9788d8ec1770ae36ef1ea1af492832d5fa23"
+    },
+    {
+      "path": "cpp/runtime_line_variants.hpp",
+      "git_blob": "f767518accbd690d18af8bc4627b6a49ae775237",
+      "bytes": 3029,
+      "sha256": "0b2126073a527d262f8d93d92c75475695054ef3fb069703512a676ff095a791"
+    },
+    {
+      "path": "cpp/runtime_owned_texture.hpp",
+      "git_blob": "3770dc143041175c813654f550bfa6e8ab42b3ff",
+      "bytes": 2778,
+      "sha256": "c525a09371a3069219400066a6fb94c36d107e4932c719bbd2288fb334c3eb1d"
+    },
+    {
+      "path": "cpp/runtime_point.hpp",
+      "git_blob": "ffd2f3f48bb9fe5ef9dd4c6fd26ac177c0711e11",
+      "bytes": 51072,
+      "sha256": "8e13a39989913be6cde5e383ac8b68dd44458246a50fb2bed10addca0cf19ef5"
+    },
+    {
+      "path": "cpp/runtime_point_batch.hpp",
+      "git_blob": "213655796a692f88a870c714536e76b7991b294b",
+      "bytes": 14069,
+      "sha256": "ea761895fa7ceaacda83f9bb60cbc666e6f824e750b0555eb981b780c31a2b2a"
+    },
+    {
+      "path": "cpp/runtime_point_batch_owner.hpp",
+      "git_blob": "2b237f7c085b18b5d032a7e27e0017ca7b9dbec4",
+      "bytes": 11794,
+      "sha256": "77edeb88358cbfbf6bc73d97444a9d814c0e9d34e22fc1ff742f950482f24412"
+    },
+    {
+      "path": "cpp/runtime_point_partition.hpp",
+      "git_blob": "68875db22e39c2abcc25d8be67856e86b69477e2",
+      "bytes": 3717,
+      "sha256": "62894aca73e83ea980762d86c01d70fe80bae1df345761b003bcbf31956465ce"
+    },
+    {
+      "path": "cpp/runtime_query_timing.hpp",
+      "git_blob": "ce1f62279043e737acfec77456a3f205113b6e19",
+      "bytes": 6746,
+      "sha256": "c63474aa388065c4c7e6263eba2792f6693d09d53cb3280b7dacb4a2e19841af"
+    },
+    {
+      "path": "cpp/runtime_readback.hpp",
+      "git_blob": "86ecf972707cd6d68d1958431398800a61612eea",
+      "bytes": 6606,
+      "sha256": "b47c1bb160ff9c42d9002f5d35431c60913147b26c8ddcc312aa1112fcccf701"
+    },
+    {
+      "path": "cpp/runtime_render_semantics.hpp",
+      "git_blob": "7677365ed07c49bc6d736ed92c53c550e5352837",
+      "bytes": 816,
+      "sha256": "ca556739f3a95ac19f92e5ea699969891efe607c9d822fee07466d8fe2c72999"
+    },
+    {
+      "path": "cpp/runtime_state.hpp",
+      "git_blob": "ea657501f0799d6bd76e78f3b8bf39632334e29e",
+      "bytes": 28826,
+      "sha256": "5616b4d7843ecc4cd0fd345d4e4eca725832570325742f169cd53ce2c9a480b2"
+    },
+    {
+      "path": "cpp/runtime_state_query.hpp",
+      "git_blob": "cfebe40870d64d6c5865ee6a6d148677f3218500",
+      "bytes": 6427,
+      "sha256": "982b5afb1636b010f13738a386f5b11bf4eaef9b262d73ca92d94c867d9e75c2"
+    },
+    {
+      "path": "cpp/runtime_texture.hpp",
+      "git_blob": "e94b82e30c1da530d68f40a033894cc01d6ccd6a",
+      "bytes": 42365,
+      "sha256": "6b06c598bc8c09ac878039bf25fe9eb819f3accf9f5916515f4509482a3a76fe"
+    },
+    {
+      "path": "cpp/runtime_uniform_updates.hpp",
+      "git_blob": "84d60341e819aadb2d14503fa9dbadeb8ac7ac98",
+      "bytes": 1092,
+      "sha256": "15302bc25aec806465449ef72b7fba3f5d042f2a9d69abe7a705bb4a2caa8377"
+    },
+    {
+      "path": "cpp/shader/artifact.hpp",
+      "git_blob": "14195445254a6389d9c1ef89f3c6dc96ca404e63",
+      "bytes": 60765,
+      "sha256": "1a2a6fe6857c23c03b0fbe65421d0f2ecbc7d607308a3fd39b79637d4443549c"
+    },
+    {
+      "path": "cpp/shader/glslang_spv.cpp",
+      "git_blob": "e7e504c07feb5aa114088d0011ee446ee0cf69f8",
+      "bytes": 62479,
+      "sha256": "8fcea6182c5e76ba70b81ae3558d0a21c34b23d01222c9b4e0fd69cccd8de082"
+    },
+    {
+      "path": "cpp/shader/glslang_spv.hpp",
+      "git_blob": "ee6203ecd6c7f1990e8bd42afb767fc409e8996b",
+      "bytes": 5233,
+      "sha256": "7445354eb363b2fd605ebde5a0b952c0114e4dba922c04185048871817ef57ac"
+    },
+    {
+      "path": "cpp/shader/integer_sampling.cpp",
+      "git_blob": "40f6fee5538143d385b38e8a794c4581beacbffe",
+      "bytes": 16768,
+      "sha256": "b41d167a8eb8afb58e6fb55d8271a46dc88774a5782d34bcade70803762cc649"
+    },
+    {
+      "path": "cpp/shader/integer_sampling.hpp",
+      "git_blob": "238854430a22023edd3bd2189c5a2882aecc38dd",
+      "bytes": 2763,
+      "sha256": "ae356ab0af99249448a2169c2261b32cfd85aaa38b34fef76baf2e9525386053"
+    },
+    {
+      "path": "cpp/shader/line_consumer.cpp",
+      "git_blob": "7951807339421f15d4cd4b498766e811602a111d",
+      "bytes": 58275,
+      "sha256": "a3c121cdeacf5042edf2dad7f486cebec75bd11179453491aa1bbd2b4904c1d1"
+    },
+    {
+      "path": "cpp/shader/line_consumer.hpp",
+      "git_blob": "ddc9d392ae831aa40efbca64e08ddfdee7a2a500",
+      "bytes": 26540,
+      "sha256": "ec9cf3f755aa4fe378b453d5ca3e1dc0f267a494c7f1c86a4ba2e1b51eced4ee"
+    },
+    {
+      "path": "cpp/shader/line_evaluator.cpp",
+      "git_blob": "47e4e2c52b045046dde963f77cb4028d38d6bf01",
+      "bytes": 17460,
+      "sha256": "e0ba87a8367f447214bbd29e72a16d90f0ada73d0a43fe796e0e6c7c43dd85a4"
+    },
+    {
+      "path": "cpp/shader/line_evaluator.hpp",
+      "git_blob": "1f02525ee1e377175ca9497fd8e56f4e718bf10c",
+      "bytes": 2761,
+      "sha256": "b90cf8e25a5be737e9ff115ce7eca154532fba40ac2160ed589516443637ed52"
+    },
+    {
+      "path": "cpp/shader/normalize.cpp",
+      "git_blob": "99e8cfc3131b7d905c5b4dd645cc3902ad96b1b8",
+      "bytes": 84689,
+      "sha256": "a88992a174b52689509f677c3b98211aa355f91eee1ec5e73459e61f208523c8"
+    },
+    {
+      "path": "cpp/shader/normalize.hpp",
+      "git_blob": "8eb3d6b19f6e823aa43cfb26d6b0340069196079",
+      "bytes": 6482,
+      "sha256": "fde90410fb3f5fd3bafe04ee232034c2d0a96a8dba075c53bb8d65a32871f5df"
+    },
+    {
+      "path": "docs/superpowers/specs/2026-10-24-vispy-compatibility-gap-closure.md",
+      "git_blob": "d33c78968f7c4073a030f7257121274d6545f6b4",
+      "bytes": 154804,
+      "sha256": "0eed6c6d80ac0be9ad92ce6072134f9a215f392abc589879302a2759c3b5fe75"
+    },
+    {
+      "path": "pyproject.toml",
+      "git_blob": "a9f1b5f67008496b02cd970ec4a532fd5522bcee",
+      "bytes": 3922,
+      "sha256": "587f43a10d314081f088efccad38206a2ba12401a6fb15ededca3dd97986aaef"
+    },
+    {
+      "path": "src/vispy/__init__.py",
+      "git_blob": "63dea69dfb73e54c3e8e36348c2fd66ddfca11d4",
+      "bytes": 1108,
+      "sha256": "d110064302e90724faad9a164bb254b1d72bfa086f8489c0e32b516db3785690"
+    },
+    {
+      "path": "src/vispy/app/__init__.py",
+      "git_blob": "20b5377c8c24846fd373c727396d4d9f8decdcfa",
+      "bytes": 640,
+      "sha256": "34386f5653e94549b9ce47ece0bd55c1b744d47860edd184908dbc4581f62933"
+    },
+    {
+      "path": "src/vispy/app/_default_app.py",
+      "git_blob": "16b0a224840bd62909a5034f1be4ed94ba4e4e8b",
+      "bytes": 2497,
+      "sha256": "00295d6507caee7976cc6227b8906c0a6d6c7c529913e50506049e6af1bc815a"
+    },
+    {
+      "path": "src/vispy/app/_detect_eventloop.py",
+      "git_blob": "9fc0e27923a47a5a0f908aa7ec7921b24ea0aa78",
+      "bytes": 6622,
+      "sha256": "87b20cb12657b88033f4cddb7b307f801d8142a71f88f71da68e6f027f1c77b6"
+    },
+    {
+      "path": "src/vispy/app/application.py",
+      "git_blob": "3369b131d645df3eba750d4fc54ce6ff8e3da934",
+      "bytes": 11693,
+      "sha256": "9e97d71d40b3b5a0332f8f89f9fdf528cf417ffabf2c77470f22e47e5949b71c"
+    },
+    {
+      "path": "src/vispy/app/backends/__init__.py",
+      "git_blob": "e09a79346933ea50d28d2783e3abfc3bd3343933",
+      "bytes": 1814,
+      "sha256": "b40767f4912a2c4440edf4c4047286a57412fd6d99f20fab78a58a2168654cbd"
+    },
+    {
+      "path": "src/vispy/app/backends/_dawn_headless.py",
+      "git_blob": "f58518cdd099d7e8ae2bba301b220277ae830a69",
+      "bytes": 4733,
+      "sha256": "e6c0857d9435886ac19ce5c5af137811f79c5da440b29c1e6e0bc63c8a4c1d5d"
+    },
+    {
+      "path": "src/vispy/app/backends/_dawn_tk.py",
+      "git_blob": "c70520c0856feb1f7303ff4432a37c6c28cff45d",
+      "bytes": 39386,
+      "sha256": "e1e68c39d8038591d605e4cbb3e1f91f5e9e031006574d957f592a75cda4ca19"
+    },
+    {
+      "path": "src/vispy/app/backends/_jupyter_rfb.py",
+      "git_blob": "e400b4be20edb88aa3ae87a31eb673bb93ab945b",
+      "bytes": 10863,
+      "sha256": "ec3259360b540a37c51099ee99ba32b4348f73ef16a6faaae24a16aeec9d5c41"
+    },
+    {
+      "path": "src/vispy/app/backends/_offscreen_util.py",
+      "git_blob": "f6d93c8dc0a1b245a4a47c3b8f6c61b5a0ac5fa0",
+      "bytes": 2766,
+      "sha256": "052ccbf699551554191d15e5848ed6c9483caf8e860b7f2ffc874bed2ef97226"
+    },
+    {
+      "path": "src/vispy/app/backends/_pyqt5.py",
+      "git_blob": "f5fa38e2c6fea35f4a4b8a2f147a98f2e6d7f56f",
+      "bytes": 1205,
+      "sha256": "748abadfa2606daa04b68475ec15e92c02dab3644d0b7f51dde64a52de6f016b"
+    },
+    {
+      "path": "src/vispy/app/backends/_pyqt6.py",
+      "git_blob": "1f7b1f0a68fcc1c817eb140d2fd91830008df35e",
+      "bytes": 1315,
+      "sha256": "7bd04d76bdd54f670ea124beb8bf2dad78d92dfeb53e9dc26ae2b14776863f6a"
+    },
+    {
+      "path": "src/vispy/app/backends/_pyside6.py",
+      "git_blob": "101e0bbd8c30eb5a4e3cfcbe41ecf426cfda5450",
+      "bytes": 1720,
+      "sha256": "e8d567c49bac585682400aac92aa591897f1d4905e9ea15815b54c8c536ecce9"
+    },
+    {
+      "path": "src/vispy/app/backends/_qt.py",
+      "git_blob": "82133bc075957b02414c54fd9f7c6d88a55fbe41",
+      "bytes": 44701,
+      "sha256": "16fec18d9346aeb03a560c7e5e3569eead864e60b362a682709749413dab8997"
+    },
+    {
+      "path": "src/vispy/app/backends/_template.py",
+      "git_blob": "65a527e0efc47245d8b78c11a8d1dfa19c5ba7ac",
+      "bytes": 8197,
+      "sha256": "cc5cf273be181f23af20bdbacf3da76f5e4cdbb389fe2bac4d54e4505ffcdf90"
+    },
+    {
+      "path": "src/vispy/app/backends/_test.py",
+      "git_blob": "42e84463aab4ac0e2aaadc2467bdf720525c1c10",
+      "bytes": 259,
+      "sha256": "243cd95be6aafb578e335ebbce97f969659e227da5c3a17e93845c0e5ef03361"
+    },
+    {
+      "path": "src/vispy/app/backends/tests/__init__.py",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "src/vispy/app/backends/tests/test_offscreen_util.py",
+      "git_blob": "41b3ea572b8ef95c861557a78e31ba26b4968f32",
+      "bytes": 1286,
+      "sha256": "f9a86873faa34228f5732247af6753a4d72aaffd68409348afceaca8db557e1d"
+    },
+    {
+      "path": "src/vispy/app/backends/tests/test_rfb.py",
+      "git_blob": "97f34f9d725be49318eace99c8ea188a91649bdc",
+      "bytes": 2390,
+      "sha256": "b3339db1d2ac272eff7459c9780a6ed4075ce0c424d2290d1ab2cec1462e4d7d"
+    },
+    {
+      "path": "src/vispy/app/base.py",
+      "git_blob": "51d652acc45fc6100c7f0a33ee94114a8b5b7ad2",
+      "bytes": 10879,
+      "sha256": "30fc071772ca917548a28ebced100baeddf0566c264e6c8fac4043217123f6b7"
+    },
+    {
+      "path": "src/vispy/app/canvas.py",
+      "git_blob": "3ee8c7192b8934a19396ab57c38ced927e78279b",
+      "bytes": 32011,
+      "sha256": "dd1173d41033a2715f6b5546428089d59737343edf8b374b507bbf1c9db8a929"
+    },
+    {
+      "path": "src/vispy/app/qt.py",
+      "git_blob": "08a2e6752542e21b849b983e11fcc09796a2cb29",
+      "bytes": 3503,
+      "sha256": "ef2a2cd63783c2cfd2a9475d2f339f1f890ab5a52462a0ae340ee04be741881f"
+    },
+    {
+      "path": "src/vispy/app/tests/__init__.py",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "src/vispy/app/tests/qt-designer.ui",
+      "git_blob": "a115c895fdcee3cd910a2c1ceff11075d73059c6",
+      "bytes": 1602,
+      "sha256": "15ec134209db6e4bc534e05b468833de1b173cbd87f68a2ef7f1893495a128bf"
+    },
+    {
+      "path": "src/vispy/app/tests/test_app.py",
+      "git_blob": "ccc3000bb3f433582f010687f88e86cca0e7c671",
+      "bytes": 16655,
+      "sha256": "3f25930f3bf5fbdefadb3b6a06161141e2049731f9a36db68b5a0aad58e89037"
+    },
+    {
+      "path": "src/vispy/app/tests/test_backends.py",
+      "git_blob": "db3bfd590e7e57b0f7d2a9a1f5bc0256ce775bf5",
+      "bytes": 6558,
+      "sha256": "898ac1ae19cbe895cd366c51810bb60f014f05af7b0c3d0f44135faa23ae550a"
+    },
+    {
+      "path": "src/vispy/app/tests/test_canvas.py",
+      "git_blob": "2715f2fc7841b925ded096a7bfd8759ef4ad162a",
+      "bytes": 4443,
+      "sha256": "4947c4a5346e1b656ef3e3ec42d7ddc3068d9c13bfca010b27dce75b7d8d5e1c"
+    },
+    {
+      "path": "src/vispy/app/tests/test_context.py",
+      "git_blob": "5a6f7e3c707e69868910716ba32679848e2ff6af",
+      "bytes": 4085,
+      "sha256": "8f2b73ce23490dd0ac34ce2db38b018f3e809bf041ae3403f845a184de2ed311"
+    },
+    {
+      "path": "src/vispy/app/tests/test_qt.py",
+      "git_blob": "f89d63d871f048e026adfb6c2f62fb09e329546d",
+      "bytes": 1332,
+      "sha256": "5ec4c3ee81c680971053ed39c9c52bc6f619ade4522db2288dcdce8457b40f3e"
+    },
+    {
+      "path": "src/vispy/app/tests/test_qt_mouse_buttons.py",
+      "git_blob": "218d4cdad69aaffb0e140db4172cfda1f6999680",
+      "bytes": 5220,
+      "sha256": "c4ab6ba477a1b94ba76472f031297b4301f36950714d28bcf2e8e00ca05a883e"
+    },
+    {
+      "path": "src/vispy/app/tests/test_simultaneous.py",
+      "git_blob": "813512121fba749ebe16ab2476930fe52c74dbb3",
+      "bytes": 4661,
+      "sha256": "4b490a1e1000b563aa8c2b5a3fe835006e903b2e4de6f35a1896d8092440e264"
+    },
+    {
+      "path": "src/vispy/app/timer.py",
+      "git_blob": "12330d0642ed6309f1f20b4569f97cdce51274f1",
+      "bytes": 6243,
+      "sha256": "41129507f231e2deed48570557572fcc3fe60cb10d4d46e13dee8b94f5dfec75"
+    },
+    {
+      "path": "src/vispy/color/__init__.py",
+      "git_blob": "68c224b5164a7e92894833dce3997e482bd2dd05",
+      "bytes": 661,
+      "sha256": "dc83cf3d3ba215619f56684505293940270da7ef3fa5a8fc1cfacb9a091214f6"
+    },
+    {
+      "path": "src/vispy/color/_color_dict.py",
+      "git_blob": "a33fa774da14514701e37b48273d968626c599b0",
+      "bytes": 5417,
+      "sha256": "4ea959a1669e3b775d5b09b9ecc686aaaa220d4e6ad0e981071a73840733fa23"
+    },
+    {
+      "path": "src/vispy/color/color_array.py",
+      "git_blob": "4ca0e2e7d8530292af02e486b7dafe379cedc90c",
+      "bytes": 14860,
+      "sha256": "282395c6bfeabcd7e065023a9491dec885677b731e600131eadd15dc38458c06"
+    },
+    {
+      "path": "src/vispy/color/color_space.py",
+      "git_blob": "b69e7c215f01631e15dfadb5157775e3444fd5b1",
+      "bytes": 6232,
+      "sha256": "8749ed0db4f83d361a0987f66c41916d5288fc78dbc90db3b854b001eb7d1100"
+    },
+    {
+      "path": "src/vispy/color/colormap.py",
+      "git_blob": "6fd95ceccf75302fdd170d78fd4ae1f12f243a3c",
+      "bytes": 46963,
+      "sha256": "c03b6ff337d19533f21f7576e4f91b40f576e46fa1a7d727d3892e821739db7d"
+    },
+    {
+      "path": "src/vispy/color/tests/__init__.py",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "src/vispy/color/tests/test_color.py",
+      "git_blob": "6d7e0c31b3d7d3bb886512f80bf6b2039fa8d12f",
+      "bytes": 14092,
+      "sha256": "87332ba6d9a54398debb577ec4852967b64e32b427d223a4d6a47a7f1c1e3330"
+    },
+    {
+      "path": "src/vispy/conftest.py",
+      "git_blob": "e9ff404b942e30d1af1b886c69a79521519a75d5",
+      "bytes": 501,
+      "sha256": "49434852c9fba3e7106b4983300871a32794fc43598ea3b907fc53252362fb24"
+    },
+    {
+      "path": "src/vispy/ext/__init__.py",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "src/vispy/ext/cocoapy.py",
+      "git_blob": "c3e27d73b188bd8aee943131114113fdf0873668",
+      "bytes": 55136,
+      "sha256": "7c96d0e2914100c548f75baa9d39b48f92605ebf12a9369d971d8ce621745459"
+    },
+    {
+      "path": "src/vispy/ext/cubehelix.py",
+      "git_blob": "e2123e258041043b043e240c9efa67f27516c7e4",
+      "bytes": 5478,
+      "sha256": "b9b0c4a04a1cd3898ab94f2ca846628ec8cf6b27d98d88a2207602ca248c77d7"
+    },
+    {
+      "path": "src/vispy/ext/fontconfig.py",
+      "git_blob": "c02f77227e3bf306191927e79f2534d9c8f0dd28",
+      "bytes": 4354,
+      "sha256": "0c0181bc0d66374464290fd0211635ad688fb13ec70b0c698269f8c6d82f8324"
+    },
+    {
+      "path": "src/vispy/ext/gdi32plus.py",
+      "git_blob": "f5d64216feaec65a906799c3cf746296f4466665",
+      "bytes": 6823,
+      "sha256": "542c1aad3b9ec9dacf5c212a426a492c9729e9a7d4525a4a26d36555430605d1"
+    },
+    {
+      "path": "src/vispy/geometry/__init__.py",
+      "git_blob": "4ffcea2362fcda03e2b859e03f3c525a615e57dd",
+      "bytes": 1103,
+      "sha256": "8607bfff00f296f810b39e288cf719b90e20086f17e76aa5414ddce2159abdfb"
+    },
+    {
+      "path": "src/vispy/geometry/_triangulation_debugger.py",
+      "git_blob": "da45cd4c89c77ec8e6d224d6ba92daad17fbb3ab",
+      "bytes": 5301,
+      "sha256": "98e82733a946547d8f77055f94fca1ef035200174007010c0c593566cef2d009"
+    },
+    {
+      "path": "src/vispy/geometry/calculations.py",
+      "git_blob": "6eb722f504eb29b8c57647bb960b81dc8fde4ab0",
+      "bytes": 5331,
+      "sha256": "192c10cc43b496dd81bc3b7408253b77e9b529dacfaf95018a39867e5f7a77d4"
+    },
+    {
+      "path": "src/vispy/geometry/curves.py",
+      "git_blob": "7fe1f70c422fa53bb88678c1ad6fa3b6b092449a",
+      "bytes": 13544,
+      "sha256": "69ab4197c02b375cff46e98f1d2e199424d73d43ce87c98627e8de289e8ba575"
+    },
+    {
+      "path": "src/vispy/geometry/generation.py",
+      "git_blob": "c914e1e6408b9c3f50514db624501d98f56cfb7b",
+      "bytes": 21584,
+      "sha256": "782273645241cfc746c2c3e237e67376aeafb8fe494455219653d76b296330a8"
+    },
+    {
+      "path": "src/vispy/geometry/isocurve.py",
+      "git_blob": "37d562d168661066bfa4335127ace76d0ec5263d",
+      "bytes": 5971,
+      "sha256": "2cd1f20a92839adcc84cfd64bca410be1983fff3dbdb95580e7d1f5dbb49413b"
+    },
+    {
+      "path": "src/vispy/geometry/isosurface.py",
+      "git_blob": "b7f3eddb27f272787f9ba7a73976f4ed09edf532",
+      "bytes": 21116,
+      "sha256": "357598d14444650a1361ee1150fb145839f9a9d99d3c74cf869282891d47cab9"
+    },
+    {
+      "path": "src/vispy/geometry/meshdata.py",
+      "git_blob": "2ebc9bc92715958eceb2b7add5ea8eea5d548447",
+      "bytes": 27686,
+      "sha256": "73238e4bc7fcfbbccfef352170c5255271fbd963a9c542f3735fc1ac2ed1b622"
+    },
+    {
+      "path": "src/vispy/geometry/normals.py",
+      "git_blob": "e0f2dbbfe04a2758e8618f076ae4b67703e36c41",
+      "bytes": 2514,
+      "sha256": "1352c5e60d4f7fef5876f78aff7f397892e660216312fb21acb552777b348e57"
+    },
+    {
+      "path": "src/vispy/geometry/parametric.py",
+      "git_blob": "b6e5fd40049dd168cfdec0d936eecb261d00b6f1",
+      "bytes": 1996,
+      "sha256": "d4ad8ca01c0925b58be3a8aa13754cd8bae006a8b4f015bcaf6aac3289a5aeee"
+    },
+    {
+      "path": "src/vispy/geometry/polygon.py",
+      "git_blob": "d3842cb91b2c8223c78b4283815c88f85d4f15e4",
+      "bytes": 4338,
+      "sha256": "54082c12be0dee2d6384252aeca0659b58ee8ae79ab8dce1e9af52f56852bb11"
+    },
+    {
+      "path": "src/vispy/geometry/rect.py",
+      "git_blob": "f47db0eb75e9768be74ba6fd4af85d681a5ed56b",
+      "bytes": 5894,
+      "sha256": "9b8ac39d74fde27c6080e1a0768be01b56b0aa3ce7b5aa0c1e5b1aff12ee5537"
+    },
+    {
+      "path": "src/vispy/geometry/tests/__init__.py",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "src/vispy/geometry/tests/test_calculations.py",
+      "git_blob": "ffe5f867f6e04822b5338d41d748268e6328b4ac",
+      "bytes": 1061,
+      "sha256": "bc8b246c39be2c990d13ba50d4883c76ad506234b891aea682c9ee18d7653d90"
+    },
+    {
+      "path": "src/vispy/geometry/tests/test_generation.py",
+      "git_blob": "81ad029414f9bd9cae3997b8385da0b0da5e6f7c",
+      "bytes": 2166,
+      "sha256": "197644dd4f56edf67bc28c378f645770d18357d172b51bdbeb244f12b285df07"
+    },
+    {
+      "path": "src/vispy/geometry/tests/test_meshdata.py",
+      "git_blob": "3a97ecd8a02bb6aa86cbeac1c3d2b189d13efd9e",
+      "bytes": 4335,
+      "sha256": "6b0018d55983f351c75c8a31f9b1af48f46cef59c20a1386219094c1393ea518"
+    },
+    {
+      "path": "src/vispy/geometry/tests/test_triangulation.py",
+      "git_blob": "825c4c7dd089654e0748c04f101f56f200b1d76b",
+      "bytes": 15089,
+      "sha256": "44b8fc8952f809ee2c387ae0c534d8d584523d493313f307e1fe5386ccb001df"
+    },
+    {
+      "path": "src/vispy/geometry/torusknot.py",
+      "git_blob": "7d45f7a8c025bde430f4304c193e062620cbaa76",
+      "bytes": 4404,
+      "sha256": "88841e21d9315731093ecea5c7a6b7dc2f9396ee5e170a33800e855db06fcc0e"
+    },
+    {
+      "path": "src/vispy/geometry/triangulation.py",
+      "git_blob": "5201147fb8172553cc9c45a526bb4c73fc361fbb",
+      "bytes": 32784,
+      "sha256": "222251d449ac1812a6a32cbe4fe2a0f400c86995df881670847f77bd54762b18"
+    },
+    {
+      "path": "src/vispy/gloo/__init__.py",
+      "git_blob": "efe3751820922dc39e242ca9f7c26c69c445a006",
+      "bytes": 1771,
+      "sha256": "4c180e3058dc6fb96827e4b4054eed40f6d6c3b362d076dfd2a97cd0e7c6969a"
+    },
+    {
+      "path": "src/vispy/gloo/buffer.py",
+      "git_blob": "31c2ab75a6718513d74d3f12352fa30b9687b345",
+      "bytes": 20333,
+      "sha256": "653c1ccbbd73dc8a0b70e70934b2bc6188cb10d048c07d34a5a237aa15b5d92d"
+    },
+    {
+      "path": "src/vispy/gloo/context.py",
+      "git_blob": "f53b3187f23df681c06c695c251ac7be0996dbd6",
+      "bytes": 9560,
+      "sha256": "2b228c50da13c32e5fe29216866307148de4e6542f5726c8e140e49fe4f6f2ab"
+    },
+    {
+      "path": "src/vispy/gloo/dawn_parser.py",
+      "git_blob": "f4342df42fa55ac3e85588ad61fbef34078565a9",
+      "bytes": 13510,
+      "sha256": "2a52bca0510dce264a15d961c1168a455fef1648c9042b83368ccfd05d641854"
+    },
+    {
+      "path": "src/vispy/gloo/framebuffer.py",
+      "git_blob": "ab059b97e064e597312a9e534de871eb624af87a",
+      "bytes": 9607,
+      "sha256": "ac6d1f70cd8d9040fd8c517e185934bc10d97eaae23fadd6f15483af481c5673"
+    },
+    {
+      "path": "src/vispy/gloo/gl/__init__.py",
+      "git_blob": "e1efa4665fbae7a43ea497dfa4dd1f36b36066f6",
+      "bytes": 6216,
+      "sha256": "61071119c2d595f75362f58261b63f2b9472ba8c6036a9cdb99c6e20845422d6"
+    },
+    {
+      "path": "src/vispy/gloo/gl/_constants.py",
+      "git_blob": "5326c811c44a5215cab9e89a4e2cf32c42681dbd",
+      "bytes": 17101,
+      "sha256": "bcfbe5d767ffb392a1ae7d0309728daa858193c6df3f5c8949a1fd565235e68b"
+    },
+    {
+      "path": "src/vispy/gloo/gl/_es2.py",
+      "git_blob": "563eae255a1f42348388e135d3d1be91a0fe2a29",
+      "bytes": 39293,
+      "sha256": "40347200124c08c4073d27c899f9d44e7abffb0847afa732366de6649bfc7d34"
+    },
+    {
+      "path": "src/vispy/gloo/gl/_gl2.py",
+      "git_blob": "623e3a95206b6738c2f901ee2c0c9c8355ef2491",
+      "bytes": 55890,
+      "sha256": "8d9fd8dd6550bec4ac4a226c8135b34a10954d482aae291bb96b2a942b655693"
+    },
+    {
+      "path": "src/vispy/gloo/gl/_proxy.py",
+      "git_blob": "dea50ee07be7c5be4cdb602973cc74501bfaa86e",
+      "bytes": 15204,
+      "sha256": "29e96154282b5f333c0590d14cd6948164ff46e3e2da76ac698429488de5c5e4"
+    },
+    {
+      "path": "src/vispy/gloo/gl/dawn.py",
+      "git_blob": "dc19ce93baa9e027070b3e38f9f9267c973c799c",
+      "bytes": 3816,
+      "sha256": "73c88fe98b0da67eb42cb4d4ae76f6350c7e5256125b04ff3abb2c6069110b17"
+    },
+    {
+      "path": "src/vispy/gloo/gl/dummy.py",
+      "git_blob": "3ee3f96f9f5676eec3436880ab4dffcde39ad259",
+      "bytes": 761,
+      "sha256": "5078ee3d8b9549404842c7bb34b8f9b3d4fa60903b6ce90a945d8e20e502578a"
+    },
+    {
+      "path": "src/vispy/gloo/gl/gl2.py",
+      "git_blob": "eed21f4fbe3f5a7106a1dbd820cbe39edfc5d47a",
+      "bytes": 332,
+      "sha256": "97a5d4ea0a4a37344e74cec0653202c72d7a30b15ebf97b82b5b747daeac6997"
+    },
+    {
+      "path": "src/vispy/gloo/gl/glplus.py",
+      "git_blob": "eed21f4fbe3f5a7106a1dbd820cbe39edfc5d47a",
+      "bytes": 332,
+      "sha256": "97a5d4ea0a4a37344e74cec0653202c72d7a30b15ebf97b82b5b747daeac6997"
+    },
+    {
+      "path": "src/vispy/gloo/gl/tests/__init__.py",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "src/vispy/gloo/gl/tests/test_basics.py",
+      "git_blob": "7296889e40b87c0b271c46c03caefe3bf420d485",
+      "bytes": 9505,
+      "sha256": "42132169eb1688e733a55a15f13dcf3b3b25b6bdd6ecc8b09c83045747af1fb7"
+    },
+    {
+      "path": "src/vispy/gloo/gl/tests/test_functionality.py",
+      "git_blob": "89cfeec6b922adf91d2457f24d770baa22e1c418",
+      "bytes": 17901,
+      "sha256": "d742b53b80b87b33c42d9d08cdcd99032b07b053f313a0a5e858be75c2f6838a"
+    },
+    {
+      "path": "src/vispy/gloo/gl/tests/test_names.py",
+      "git_blob": "6a2036d64425727386dc8b13cdcf206480475da0",
+      "bytes": 11396,
+      "sha256": "6fd673783b23f5994754828df2798d8ba193b545d117d6cffd0b9dfee3978179"
+    },
+    {
+      "path": "src/vispy/gloo/gl/tests/test_use.py",
+      "git_blob": "033d7db7e9c000c275d5e12093998c936880bf86",
+      "bytes": 1909,
+      "sha256": "90c8d6a2fd9c809b4ccb0cb7563b60173ea430d4340fef9392902c371dec1627"
+    },
+    {
+      "path": "src/vispy/gloo/glir.py",
+      "git_blob": "dd738329416d9a02e426c5f8ee3d09e6073b5bdf",
+      "bytes": 68658,
+      "sha256": "620dd9f0bc26bd41f8c41dc6cdc8f6fc2b79db8933c5585cb9dd8132cd07073d"
+    },
+    {
+      "path": "src/vispy/gloo/globject.py",
+      "git_blob": "1ea70ea8eb97c8bab5d03d50d03f9ed2aabf2537",
+      "bytes": 4013,
+      "sha256": "78c929159aea258487c7c0398f5947fae733a9993e217d9961befb13e6f50ce3"
+    },
+    {
+      "path": "src/vispy/gloo/preprocessor.py",
+      "git_blob": "b5c0597317c5a89d0a3c056dbac4944d2d1420e4",
+      "bytes": 2358,
+      "sha256": "94ca763b10b26436f98322d460adea2cc852b6b99bc888275589e69e25abfb01"
+    },
+    {
+      "path": "src/vispy/gloo/program.py",
+      "git_blob": "3f10bdb790bc27c4cff22b9de27a6c794de10498",
+      "bytes": 30733,
+      "sha256": "9e3fe2db42b395eddcfa2bd9a148022a8d5442f46f0d4157d7a512d2fbed6118"
+    },
+    {
+      "path": "src/vispy/gloo/tests/__init__.py",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "src/vispy/gloo/tests/test_buffer.py",
+      "git_blob": "cd2ed66683a5b0431d7ba10f4ecfc30b336f8fb9",
+      "bytes": 20377,
+      "sha256": "b002a0f953507952afc7b9629138137d212892bb30ac7163e6bde5cb7b9ad811"
+    },
+    {
+      "path": "src/vispy/gloo/tests/test_context.py",
+      "git_blob": "22fca30c96e49841148ea473b39b96c6ab3556bf",
+      "bytes": 3135,
+      "sha256": "c3539510c2eed6ccd7c8b2bb53c7fb8191485c59619e0b77548aed496497030e"
+    },
+    {
+      "path": "src/vispy/gloo/tests/test_framebuffer.py",
+      "git_blob": "909f4263e278d5b6590afbdaff50f33a9b0b4aaa",
+      "bytes": 5677,
+      "sha256": "5aca11e337081311addcaa7e440f640a442a71605914cfc53b7035380ae130b2"
+    },
+    {
+      "path": "src/vispy/gloo/tests/test_glir.py",
+      "git_blob": "2a723e1934ac9c9f14c0a0d17419522894b8f65d",
+      "bytes": 9951,
+      "sha256": "7dffb80c89957c216ae05b3fc81e7916069dc76a7f045c1fa2739f1d3a90c096"
+    },
+    {
+      "path": "src/vispy/gloo/tests/test_globject.py",
+      "git_blob": "22a7427f355ce5c1a1fc8c8a203adeb1e26db4c1",
+      "bytes": 1121,
+      "sha256": "bb543f13287b2d7be8f45dfb9cbcf6e4738cc3d451377bcb74225a0bbb43a1e9"
+    },
+    {
+      "path": "src/vispy/gloo/tests/test_program.py",
+      "git_blob": "fde0329194da26824806dccc2afb14e8c0f7a9c6",
+      "bytes": 11986,
+      "sha256": "76ebc476af4ccc9c7731c4f312b8b8638f62364b574540a0953be0c708e5b958"
+    },
+    {
+      "path": "src/vispy/gloo/tests/test_texture.py",
+      "git_blob": "e3d76c49ff74a8794480f5a022c328f8b0b239cd",
+      "bytes": 25392,
+      "sha256": "d162ef9c5f7579a18fb2f4d49dbbf0867a06262527f54f7a12b98a1b71eb43e7"
+    },
+    {
+      "path": "src/vispy/gloo/tests/test_use_gloo.py",
+      "git_blob": "1327e4ab9b3ead8fc050cff1e37b0dbffdc44129",
+      "bytes": 6682,
+      "sha256": "acc80d8b31a01d2329642097c09036b0b2f86f2c69368699c42e5b7e1d030df3"
+    },
+    {
+      "path": "src/vispy/gloo/tests/test_util.py",
+      "git_blob": "978c7db8d58e6954995db0aece3dc1ef01d36e39",
+      "bytes": 1973,
+      "sha256": "a357ae3de2139e8c468dc78e5557768c40a6cd07bfe95b1747d646a11806b673"
+    },
+    {
+      "path": "src/vispy/gloo/tests/test_wrappers.py",
+      "git_blob": "db0351336f31bec5be4c8bb5132a1bf75e7c29a6",
+      "bytes": 8950,
+      "sha256": "c4419b191b60b6dcd8a727bbd692e2cf5d39ce6a4c202f3e0622b3fec9eebefd"
+    },
+    {
+      "path": "src/vispy/gloo/texture.py",
+      "git_blob": "fdcf8be09a695f16cf5eb95dac3de12209cc5ac4",
+      "bytes": 44752,
+      "sha256": "6d78a96ebdc214f2b338e121c780a8f6ad4e6ed496de992c443d93b277a738d8"
+    },
+    {
+      "path": "src/vispy/gloo/util.py",
+      "git_blob": "d7396ad59bec8460745a1d852c669016dd6bdf5c",
+      "bytes": 4548,
+      "sha256": "b02d4e33e2f4898df2989214e1e34e93ff61cc329954d88a2873814ffea6e74d"
+    },
+    {
+      "path": "src/vispy/gloo/wrappers.py",
+      "git_blob": "a71079097ddd630fb947f97585395b2dfef7db64",
+      "bytes": 24479,
+      "sha256": "498b5cd003edc941da975c5e97fb1eed7d7ffc24981c69dbb2176d8b100a2bf9"
+    },
+    {
+      "path": "src/vispy/glsl/__init__.py",
+      "git_blob": "4d6513a445eabc4a5a55d04716e71aae890412db",
+      "bytes": 1239,
+      "sha256": "d1a5eb03bef4854feb08ab75a6c9398125248788d418985b592208b79a3189ad"
+    },
+    {
+      "path": "src/vispy/glsl/antialias/antialias.glsl",
+      "git_blob": "22b1a99d51474dc79675d74171414a7aebe83a02",
+      "bytes": 375,
+      "sha256": "52bdd6320ff49108c906b7c2ff75ef5ee03c3168c0c52c8e06f396082a803b71"
+    },
+    {
+      "path": "src/vispy/glsl/antialias/cap-butt.glsl",
+      "git_blob": "38b36f33a1cf44d3f0091c7fa793d94f73506783",
+      "bytes": 1001,
+      "sha256": "f25cbb28f8424dcd21d4c369bf68a8d3b93a7806aebd2ab4cf31740425cdec28"
+    },
+    {
+      "path": "src/vispy/glsl/antialias/cap-round.glsl",
+      "git_blob": "79bd968d72702e949fa1772cceb68966c5673d0a",
+      "bytes": 955,
+      "sha256": "780c7932b83a80da2d6b8546a6dea4de8eb16979c94a0930d1ac36a86166ecea"
+    },
+    {
+      "path": "src/vispy/glsl/antialias/cap-square.glsl",
+      "git_blob": "f9670413e7de5c3534bae7c5004c8d65077fc852",
+      "bytes": 1000,
+      "sha256": "8bc561a02dbaca54d34df07d86426901ff6aa78b3d2cd0315e7df160690f5ca8"
+    },
+    {
+      "path": "src/vispy/glsl/antialias/cap-triangle-in.glsl",
+      "git_blob": "99b34d323e6fa7e143b13fc4128ba11bd81af090",
+      "bytes": 1032,
+      "sha256": "18c8e0916257aef7cd7958df344f6291e0813d77961d9d9a989ad45b8dede32f"
+    },
+    {
+      "path": "src/vispy/glsl/antialias/cap-triangle-out.glsl",
+      "git_blob": "d0a7f7a7ca8a62616055223464f4456ae96491b6",
+      "bytes": 1024,
+      "sha256": "0fe9f2205dff9a1a517edc9d01d1053152f5927a10b7cb035d25cff15661b282"
+    },
+    {
+      "path": "src/vispy/glsl/antialias/cap.glsl",
+      "git_blob": "1b426ef053c80a500125dbf86cd4b922cea3bb48",
+      "bytes": 1778,
+      "sha256": "573088574440212455d045e98a77de485edbcacbb1f139f018da8b26030d330d"
+    },
+    {
+      "path": "src/vispy/glsl/antialias/caps.glsl",
+      "git_blob": "1b426ef053c80a500125dbf86cd4b922cea3bb48",
+      "bytes": 1778,
+      "sha256": "573088574440212455d045e98a77de485edbcacbb1f139f018da8b26030d330d"
+    },
+    {
+      "path": "src/vispy/glsl/antialias/filled.glsl",
+      "git_blob": "20cee61ca6c70229d3a8133864b455e5ebbb2328",
+      "bytes": 1297,
+      "sha256": "3756afa19199675661bcc530835173f5f87eabf60f21fb203108c80e86436220"
+    },
+    {
+      "path": "src/vispy/glsl/antialias/outline.glsl",
+      "git_blob": "f42e21e50ea9939e1a9b98d1ad6b43653c8be9d3",
+      "bytes": 1355,
+      "sha256": "62d9f7a7954e81ff93fff6b2ce36b0bc5b24cdb0bc7f79253f6cc574eeb13136"
+    },
+    {
+      "path": "src/vispy/glsl/antialias/stroke.glsl",
+      "git_blob": "49bbb185e102cc3e285c83ef1778b0d6c7b38e59",
+      "bytes": 1376,
+      "sha256": "84a59a636fe08b89939caa97d5a5c4fd1bac8d112346ca9f9f553a326f55dbc2"
+    },
+    {
+      "path": "src/vispy/glsl/arrowheads/angle.glsl",
+      "git_blob": "d7ef609f24b77cea0960d1dab0c6026777d9127a",
+      "bytes": 2773,
+      "sha256": "e1674cd7d0e85907b503265eff2f48b608324a70837f1c8b72ac0f0a2bfa5a76"
+    },
+    {
+      "path": "src/vispy/glsl/arrowheads/arrowheads.frag",
+      "git_blob": "657fd564d90669e7e7985930be8ded41f3b062fa",
+      "bytes": 1881,
+      "sha256": "7e039c7f9a0c137f8d43f18c9c3dbeb21dc941c2ddeb3efcd5c46f0dbdc2c055"
+    },
+    {
+      "path": "src/vispy/glsl/arrowheads/arrowheads.glsl",
+      "git_blob": "2cc9aef00d82c3882c337c8a0a62502177b4634f",
+      "bytes": 489,
+      "sha256": "884055ab6af972c429cf2fd0abbf870b2ddb541f94c10950f64bd74532f0f5c9"
+    },
+    {
+      "path": "src/vispy/glsl/arrowheads/arrowheads.vert",
+      "git_blob": "39a338c5ff8c3f5ad6112b155f03697f52ebc190",
+      "bytes": 2251,
+      "sha256": "fb9596f5d6091fa1f17a475c694d2c9ae5ca69606f60561b3daf16e355ed5267"
+    },
+    {
+      "path": "src/vispy/glsl/arrowheads/curved.glsl",
+      "git_blob": "d53543e8a358849104b88d7098c79b10293bb23c",
+      "bytes": 1277,
+      "sha256": "08f624d20e2fc400be59e6039b9260ae39ca5bde4eb4d7e50bd612fce266c96e"
+    },
+    {
+      "path": "src/vispy/glsl/arrowheads/inhibitor.glsl",
+      "git_blob": "d47493f1304488ce13a6bd6864b0d2030a823359",
+      "bytes": 691,
+      "sha256": "809740cf90887b86489842215ab433f9426ad674a319565cb0a5c4c92eda54c2"
+    },
+    {
+      "path": "src/vispy/glsl/arrowheads/stealth.glsl",
+      "git_blob": "c91f0dbbe10870d36e4887a9ca71b46a4e8b2919",
+      "bytes": 1300,
+      "sha256": "bd101a5cf04b47a36c905080d90a5c122e5bde0fa0b5bce5e4591f0fe264f521"
+    },
+    {
+      "path": "src/vispy/glsl/arrowheads/triangle.glsl",
+      "git_blob": "e7b19fa9de7a911ee5c5294e0c0f4f032e450705",
+      "bytes": 2578,
+      "sha256": "3b8fc28ac5d448c4b382c4b9ddf63e14f835b2d8e950c49eb20084e3da18d939"
+    },
+    {
+      "path": "src/vispy/glsl/arrowheads/util.glsl",
+      "git_blob": "d4fb9c8ddcd74f0ab1f1be2ec4af0da390237666",
+      "bytes": 446,
+      "sha256": "79d21a736d970c216e6e9e63fdb443d552b836e617923fbf6dcb1a3732eb7bec"
+    },
+    {
+      "path": "src/vispy/glsl/arrows/angle-30.glsl",
+      "git_blob": "9f3f148414cfcb73dee7b4c39312335fc607d361",
+      "bytes": 523,
+      "sha256": "1e3d32bdf3539e9a55d600c95ba15789d8c1fbaea21e275fc6df08de84102030"
+    },
+    {
+      "path": "src/vispy/glsl/arrows/angle-60.glsl",
+      "git_blob": "ac33d8c92795649d548bd828aacf82a693dff179",
+      "bytes": 522,
+      "sha256": "82664e5481803093af90e8ec34df86430ea32591df50ffa79cd1e6012be64d25"
+    },
+    {
+      "path": "src/vispy/glsl/arrows/angle-90.glsl",
+      "git_blob": "e67144cd3af4ce85f78fb1a897204a289a1c8b1d",
+      "bytes": 522,
+      "sha256": "3f5bfdfd098a74e47b3ef85c622d6e799cd0db99ef0a7600a2b4a3732a33bde7"
+    },
+    {
+      "path": "src/vispy/glsl/arrows/arrow.frag",
+      "git_blob": "425b24b12e4095227daac59b8418ebb61af1041d",
+      "bytes": 1487,
+      "sha256": "f57195c2321ddcc4323564c3d4be3f03e48e12f310589fecf7fafff835027b76"
+    },
+    {
+      "path": "src/vispy/glsl/arrows/arrow.vert",
+      "git_blob": "dc8a6dae95c83ba1dfc770599b4d5d4409ae39de",
+      "bytes": 1449,
+      "sha256": "c4652b47d81611d402726d9ca7b9bfdc1d89ef25c4263d5ce96860a1a2b89f25"
+    },
+    {
+      "path": "src/vispy/glsl/arrows/arrows.glsl",
+      "git_blob": "cd9071516c287e45ec1750a47f9c6738f2f64027",
+      "bytes": 579,
+      "sha256": "4e1325bdee3ed970b6f25144e8b3c194b0cb44f504c1e34dd5ff9fe4067665f9"
+    },
+    {
+      "path": "src/vispy/glsl/arrows/common.glsl",
+      "git_blob": "a688f1a70f796564570b9d3ed5d6c5073e2dbd2a",
+      "bytes": 6584,
+      "sha256": "a984f363e5332d7634d2d8d752480d261d4d21462d654e18a13122ec80f2db10"
+    },
+    {
+      "path": "src/vispy/glsl/arrows/curved.glsl",
+      "git_blob": "d86a7688e55bcaad381918fea95734440d56cdf6",
+      "bytes": 2146,
+      "sha256": "d42e5b3713a84193181c30bd362cd33b120fa951925b2c12ab190492f4ab7239"
+    },
+    {
+      "path": "src/vispy/glsl/arrows/stealth.glsl",
+      "git_blob": "b242cbc2bba783dc4cae0832daad609c6f7477ca",
+      "bytes": 1812,
+      "sha256": "8b4962cc7ea32ec0a1883e086e67fdfc10698f03eb37d1b86342c58b90c074ed"
+    },
+    {
+      "path": "src/vispy/glsl/arrows/triangle-30.glsl",
+      "git_blob": "b6a4bf0bd7a1a7ee1a8f3993e81237c3a0318df6",
+      "bytes": 535,
+      "sha256": "3a8630edb633d277a8b39425637a67da678d82845da99c8748ea8f00d585aef8"
+    },
+    {
+      "path": "src/vispy/glsl/arrows/triangle-60.glsl",
+      "git_blob": "157e22ebf1030be06a432be2e6ede697627daac5",
+      "bytes": 534,
+      "sha256": "ce59635880d9d006fb1439245ffe88a49275984371112b9257f7346cd5f3c8ae"
+    },
+    {
+      "path": "src/vispy/glsl/arrows/triangle-90.glsl",
+      "git_blob": "e44116b3549467825507cf8695199c95bc335c5c",
+      "bytes": 534,
+      "sha256": "64a9e101a7725ea5b09e8dd95fc76696add54793dab7032e1efbe91616d92fce"
+    },
+    {
+      "path": "src/vispy/glsl/arrows/util.glsl",
+      "git_blob": "5939f59328bc1bd3b17227ff3d363fad93f921b8",
+      "bytes": 3344,
+      "sha256": "5cc1076d4cbd8f8d29e85735aa04f32c3a35436b9f8ecbd035755de81d736167"
+    },
+    {
+      "path": "src/vispy/glsl/build_spatial_filters.py",
+      "git_blob": "47fa091b5c1159a537e63fb699314223f2eb7130",
+      "bytes": 19464,
+      "sha256": "3de5955540bbdb5f6e65f4854974c9955ab9e025fd972c7c871378158b87a7db"
+    },
+    {
+      "path": "src/vispy/glsl/collections/agg-fast-path.frag",
+      "git_blob": "449abee71894738492219ec0bece6fff15ee2314",
+      "bytes": 658,
+      "sha256": "60594f09cb6c2da226c0048a8611e5005584eae33bb8086d13ccaad62579a0d8"
+    },
+    {
+      "path": "src/vispy/glsl/collections/agg-fast-path.vert",
+      "git_blob": "30ca1394c41524627ecaf43c2f44c5b9ae287556",
+      "bytes": 2502,
+      "sha256": "b2b3121de4ca221c6fa8956bfd7b08ef7e6080b27c997b0129c0fa4aebdc5940"
+    },
+    {
+      "path": "src/vispy/glsl/collections/agg-glyph.frag",
+      "git_blob": "f96c9776918d7e48b4b9a9f2a62f2fe8a2c3fe41",
+      "bytes": 1808,
+      "sha256": "430598a78b97c4bff28ef913846f11d9ef1434ea535ee13ee7be817eecbb7d7d"
+    },
+    {
+      "path": "src/vispy/glsl/collections/agg-glyph.vert",
+      "git_blob": "0d2be4b2f954dd7c177fce9623471f424659dc59",
+      "bytes": 936,
+      "sha256": "a9a1086d3091ee0b54dcf47edae96b1ef3d0446f128cfd6314f40fcb9a51adf0"
+    },
+    {
+      "path": "src/vispy/glsl/collections/agg-marker.frag",
+      "git_blob": "048c0dcf35bc1b2e298c17ad4ef50729c1d6833b",
+      "bytes": 1441,
+      "sha256": "5e77507cf61a19c7cb995f05633c097bf87f9bc540ee3b682857e5f60f9abda4"
+    },
+    {
+      "path": "src/vispy/glsl/collections/agg-marker.vert",
+      "git_blob": "138df250f4f5e44fd758ab1a7787ca8fff27c45a",
+      "bytes": 1373,
+      "sha256": "7cd59b6812f0908ec95f59df6d8852d2d5d53c623b68904d79c0965b70b12bf6"
+    },
+    {
+      "path": "src/vispy/glsl/collections/agg-path.frag",
+      "git_blob": "b69a213b4e595c00b4cd25bc41da6c6ef6f32caf",
+      "bytes": 1901,
+      "sha256": "9ee43e6d5269fb656c68948c6a54261758697e00690f6491999e571d1e59d1ac"
+    },
+    {
+      "path": "src/vispy/glsl/collections/agg-path.vert",
+      "git_blob": "417041c5d801d8a844665f5c1f745d473d96aae0",
+      "bytes": 5153,
+      "sha256": "f264dd2d918402c184ef56583b10e9417ecb051c45cfe4d4ca04aee25912eec5"
+    },
+    {
+      "path": "src/vispy/glsl/collections/agg-point.frag",
+      "git_blob": "eb162882fd8b9f2860b93ee0c5b550f6bd34a149",
+      "bytes": 728,
+      "sha256": "afe8712810cf646e3847ec055371e7673f1e62abb2a79d110a8255d585912719"
+    },
+    {
+      "path": "src/vispy/glsl/collections/agg-point.vert",
+      "git_blob": "8db1b8481abec8cf57d55c5894381531679a74d4",
+      "bytes": 960,
+      "sha256": "fd60d8a3f4ff5d1c7ba1e6d1fffeb6a51cd20b24af59160b5445605488d9917f"
+    },
+    {
+      "path": "src/vispy/glsl/collections/agg-segment.frag",
+      "git_blob": "686a241da1d05126a57cb3696097c4c98fdf008b",
+      "bytes": 1115,
+      "sha256": "cde2577700410481079d26cc063bc7d82f2abcba6527d4d4a813895751d7d06a"
+    },
+    {
+      "path": "src/vispy/glsl/collections/agg-segment.vert",
+      "git_blob": "8777193ff002e7fec16c7c8ca92d36a5faf16ed6",
+      "bytes": 2150,
+      "sha256": "d7dfb454d47044fbc7955f25d7edc6d41fca672b7578e14205681f715eb450b5"
+    },
+    {
+      "path": "src/vispy/glsl/collections/marker.frag",
+      "git_blob": "453c6e8022c86764a0285ece03670126e8658be3",
+      "bytes": 1503,
+      "sha256": "5d33a9d669aad33c19b3e1816eb44101591c3b0f9f83fe9a45ef83bfb8307424"
+    },
+    {
+      "path": "src/vispy/glsl/collections/marker.vert",
+      "git_blob": "985c063fcb3d3266398a61c3c91d164bf2dbddb1",
+      "bytes": 1394,
+      "sha256": "3517d3eb1a488b9b6d4f7accc8aa744e1ca5cc1221b9a63c3182be9cd3f7e6ab"
+    },
+    {
+      "path": "src/vispy/glsl/collections/raw-path.frag",
+      "git_blob": "ea185ad2f849525bdd1a3622fabeb99af990cbd9",
+      "bytes": 452,
+      "sha256": "803488e9b72e5981ec3b800dc96e14beb2b52d71e6178769c8b20a2239b58e2e"
+    },
+    {
+      "path": "src/vispy/glsl/collections/raw-path.vert",
+      "git_blob": "9501be15406eb393a33878ddd25595d868f60668",
+      "bytes": 706,
+      "sha256": "e8f9ed930ed8d7e33bf04b37db2989d7b25f99f9ebf36948d2eab7fc8ca0c806"
+    },
+    {
+      "path": "src/vispy/glsl/collections/raw-point.frag",
+      "git_blob": "c31dd455556929338fb392a8e05c412a6fa6a32b",
+      "bytes": 429,
+      "sha256": "79c12b7620fbcec5c684454b0baa3950ee27318b4bd6f8ca168d106373c67acf"
+    },
+    {
+      "path": "src/vispy/glsl/collections/raw-point.vert",
+      "git_blob": "b48cf86521d16672a38701900bb2e19ab1ded288",
+      "bytes": 766,
+      "sha256": "073060b498fd6a5bc25cf38105bbdeaa4c6ae7f0c88df079e061970e8aebf2ba"
+    },
+    {
+      "path": "src/vispy/glsl/collections/raw-segment.frag",
+      "git_blob": "1ed30b90a657a7434073580ca96c4d1ae739cf35",
+      "bytes": 487,
+      "sha256": "a2a00e90d01ad2c0d20d1191ea3bedb86d28fb84ef24111ea591a8e2c171c6a3"
+    },
+    {
+      "path": "src/vispy/glsl/collections/raw-segment.vert",
+      "git_blob": "730a2e31503ccd66db7ae1699584f90af9f27147",
+      "bytes": 735,
+      "sha256": "01020c01debe9c4f3f5d8484f11f54046bea08d2f87bf8665e60881a60fff638"
+    },
+    {
+      "path": "src/vispy/glsl/collections/raw-triangle.frag",
+      "git_blob": "db034c6d3d792e0617deafaf8774d6aa1e4fe5c1",
+      "bytes": 405,
+      "sha256": "9b35f7efc26cd54fc9698640b8efbb0a5d2586df2dcbadfeac0dee8fc2367f5c"
+    },
+    {
+      "path": "src/vispy/glsl/collections/raw-triangle.vert",
+      "git_blob": "cbd9ca7ab819e2e3aa8116eed0f88b556e55523c",
+      "bytes": 684,
+      "sha256": "ca831df65ca89deb6cbf32708ba956ea92c27692e416102d77b8e239d00fbed1"
+    },
+    {
+      "path": "src/vispy/glsl/collections/sdf-glyph-ticks.vert",
+      "git_blob": "585ecc001e4413d1c00d88dda2c520bcb1f071f1",
+      "bytes": 2091,
+      "sha256": "721213f219f63abb4a5febd452ef347e7ffd5af05ee7ee24384b31ec194e99e9"
+    },
+    {
+      "path": "src/vispy/glsl/collections/sdf-glyph.frag",
+      "git_blob": "ca27f36608fd8ec3927dc96679df5c678efdc015",
+      "bytes": 2456,
+      "sha256": "b6024e4cadc11f40546c75f518cb96d507f39406683c410a5439a243a02a97e5"
+    },
+    {
+      "path": "src/vispy/glsl/collections/sdf-glyph.vert",
+      "git_blob": "5718614bccd90a469a9896045ec268406d78736e",
+      "bytes": 1733,
+      "sha256": "a59b085f6087e46081a1b11a7c3e7314504703b83a42b41cf639222442c74d7f"
+    },
+    {
+      "path": "src/vispy/glsl/collections/tick-labels.vert",
+      "git_blob": "724b87806b2d4d1d619d6f315bed9ce4ce4a216d",
+      "bytes": 2415,
+      "sha256": "bc54593ade8dc4b84a51181e8d9c6430556150b438555a2f021a4ce33cf26958"
+    },
+    {
+      "path": "src/vispy/glsl/colormaps/autumn.glsl",
+      "git_blob": "83c2258bd0d133fe0fd3e3dfa2311b9e39ad4e38",
+      "bytes": 671,
+      "sha256": "82baa3b8a373212bd75c11dde8a9a377c75601b69ab2386469981e296860ec49"
+    },
+    {
+      "path": "src/vispy/glsl/colormaps/blues.glsl",
+      "git_blob": "0fc463ad5641f0bea7764a1801a936f06c99b311",
+      "bytes": 654,
+      "sha256": "e0b51a70f08c9169110328d2e84c5692d4fdfc6a5cff5b73c62cbdccdb581a79"
+    },
+    {
+      "path": "src/vispy/glsl/colormaps/color-space.glsl",
+      "git_blob": "2db16b7629480efc9957ecbd703c9f796e5edef9",
+      "bytes": 570,
+      "sha256": "bf511e9bfd19352c4173eb163f802abdebce533f3db29e86bc0a25ed056451dd"
+    },
+    {
+      "path": "src/vispy/glsl/colormaps/colormaps.glsl",
+      "git_blob": "1fe71d217243f71fbf21e54a7f055c34b9611501",
+      "bytes": 805,
+      "sha256": "50e45c936a768bb3beac867a6fed2415505bc20cb37e2362ba670f129aa0bb20"
+    },
+    {
+      "path": "src/vispy/glsl/colormaps/cool.glsl",
+      "git_blob": "e612e8c04b8c317f9dcf858f8903d81c76daf71c",
+      "bytes": 661,
+      "sha256": "56bdb125121fb7750032a9f777d5b4289326a31893a5c1468afe0e9919149db6"
+    },
+    {
+      "path": "src/vispy/glsl/colormaps/fire.glsl",
+      "git_blob": "eadd4bff5d9f121ba1580d67776f2b79954c8cf7",
+      "bytes": 709,
+      "sha256": "48d99fab182c53da9d8c361526ce70f6625a29fc4aa4f43884e33e80068b7039"
+    },
+    {
+      "path": "src/vispy/glsl/colormaps/gray.glsl",
+      "git_blob": "41a4fdbb42156bc1c7fc52e37243e2e93a9bb868",
+      "bytes": 624,
+      "sha256": "915e2dd653b486ea6f330105cecbb629cd43e370d13930ba9db107a2d7e1e473"
+    },
+    {
+      "path": "src/vispy/glsl/colormaps/greens.glsl",
+      "git_blob": "06e840dd4e17a72504336087e0b8c5ea752da20b",
+      "bytes": 659,
+      "sha256": "e94f64adb481e1ad2d0e507ba84294bc03b0f3fc534e0588ef5ead8c92edcf69"
+    },
+    {
+      "path": "src/vispy/glsl/colormaps/hot.glsl",
+      "git_blob": "aed2b1e76dd5075ac1a6a3fc9b76c03ada7c9aff",
+      "bytes": 743,
+      "sha256": "036b49b0b5071fc856e0bf80faef4b097cedf77219bdd9a42630d79b7d5ad71d"
+    },
+    {
+      "path": "src/vispy/glsl/colormaps/ice.glsl",
+      "git_blob": "d90834271d388aefbeff44a9b5e8d0c0fdd00be4",
+      "bytes": 626,
+      "sha256": "9d0b8c863f18666dcc0ee00bdd7a12705236fb8adb15a76e138632269556b11c"
+    },
+    {
+      "path": "src/vispy/glsl/colormaps/icefire.glsl",
+      "git_blob": "ad92e89b0a67ba946c1a8b3ad8f77db9423e9f02",
+      "bytes": 821,
+      "sha256": "60163ce3b4ecef354eb02b6ae4fa1a561bb24e21f8eea01257a146d57a5d2ff1"
+    },
+    {
+      "path": "src/vispy/glsl/colormaps/parse.py",
+      "git_blob": "2427fadd818465cc3629cae38e11b742b9e88a25",
+      "bytes": 1134,
+      "sha256": "d77505f229f6da6f6717dd7a1489ff8b38066e5d367fc346d86bb6a51c9c111b"
+    },
+    {
+      "path": "src/vispy/glsl/colormaps/reds.glsl",
+      "git_blob": "0e6c410a09d0fda9d696c91de779b8abeef02bff",
+      "bytes": 649,
+      "sha256": "25db422d731b4330581ed281daec5e3990d03bc0d5f9713d401ab00ca35780a3"
+    },
+    {
+      "path": "src/vispy/glsl/colormaps/spring.glsl",
+      "git_blob": "e1b038074fe2c3f30fee4064503b99e8b6ee86db",
+      "bytes": 671,
+      "sha256": "65b3ea125cdde7709037a046c908c088d8b01d0d2cd08beebb98d65316e3549c"
+    },
+    {
+      "path": "src/vispy/glsl/colormaps/summer.glsl",
+      "git_blob": "41d2f5e3523b0d9dbfe486da97df202e802bf02e",
+      "bytes": 671,
+      "sha256": "0ebaf99f94c3f4d3fc40f156940c4a93bf14d35fc99f5c6f6576b5ba80571dc0"
+    },
+    {
+      "path": "src/vispy/glsl/colormaps/user.glsl",
+      "git_blob": "c611104e5a7b11440a6e03b88328ccb814bc1e75",
+      "bytes": 674,
+      "sha256": "725e136f064713935587482046cd1854bfbf9e59b9802ede157ba1be1166acd7"
+    },
+    {
+      "path": "src/vispy/glsl/colormaps/util.glsl",
+      "git_blob": "87b5c0e2b06a2319269c492087240b46ca39f49a",
+      "bytes": 1039,
+      "sha256": "7c5d6c1f7ba4f7ceeafa1b3e9f955e5dcf96cdaee514588e115bebd6872daa31"
+    },
+    {
+      "path": "src/vispy/glsl/colormaps/wheel.glsl",
+      "git_blob": "e4f7e0ee7f81ecdd38464d93464250c8f4252dc1",
+      "bytes": 740,
+      "sha256": "4a197d31af6cef35e24f64ce571c40bd7557f784e55bf5d01e5cd26d3a6ceb6c"
+    },
+    {
+      "path": "src/vispy/glsl/colormaps/winter.glsl",
+      "git_blob": "6fd9509b718b103494a954cc3e8e7b12e9e0e281",
+      "bytes": 677,
+      "sha256": "33642cbb076f2171bcfde298d2a3317b528d75033498d8bc754cbd65a813e4e5"
+    },
+    {
+      "path": "src/vispy/glsl/lines/agg.frag",
+      "git_blob": "d4bef826ee03e0c284463fe3644c287067bb7da7",
+      "bytes": 10207,
+      "sha256": "a046a6eec2f7b6277524e73b01719b0d8109268799ddd51466e512ccaf6ad9a7"
+    },
+    {
+      "path": "src/vispy/glsl/lines/agg.vert",
+      "git_blob": "eaf25f3f86bb05b067b230a25d18632242aa3743",
+      "bytes": 7861,
+      "sha256": "ca598aedee20e02569b566b4dc59697fe0eef499bf3bf2113e430c2f8a719a61"
+    },
+    {
+      "path": "src/vispy/glsl/markers/arrow.glsl",
+      "git_blob": "3f9089249a57e2982fd8e60a2dbeb5b6aee6bbc4",
+      "bytes": 530,
+      "sha256": "f197cf01bc1f72938d1a434b88255a9c9372302b13638b84eca3f693e96ef30e"
+    },
+    {
+      "path": "src/vispy/glsl/markers/asterisk.glsl",
+      "git_blob": "2d02570f96aec2b228b94173b65ecbbb24343a95",
+      "bytes": 711,
+      "sha256": "3ffa452e38e2248118f3618555516eff829c82ab0ee14f825e7b35668f3f2b58"
+    },
+    {
+      "path": "src/vispy/glsl/markers/chevron.glsl",
+      "git_blob": "b5b9f2f8399375bca970dd9182431dce66e072ad",
+      "bytes": 615,
+      "sha256": "633759cd92cdad908922ad4cd598a1e4cfa4c33ea2e4a8a5ac392b5a0fc67c62"
+    },
+    {
+      "path": "src/vispy/glsl/markers/clover.glsl",
+      "git_blob": "d987fa5836e521e0d7debcffb5e6ddfa2001d114",
+      "bytes": 787,
+      "sha256": "0b69d11214eb630b6db670a697141b9032758d61116fb79462b8e2753cc36d64"
+    },
+    {
+      "path": "src/vispy/glsl/markers/club.glsl",
+      "git_blob": "552929c7cf526a8fe5ab1ea52333074b56e24810",
+      "bytes": 1175,
+      "sha256": "55beb3a7fcccdc60e8f55c56476d741272baa3d4c4ea7aeafe6ce5ba96d629ba"
+    },
+    {
+      "path": "src/vispy/glsl/markers/cross.glsl",
+      "git_blob": "f92a4c41b4a1bd72c8f10ef46123452d2d972670",
+      "bytes": 662,
+      "sha256": "ef279f222d55a92752bf99766e4cf58bab80cd31fab880619ce3991630c7c2bd"
+    },
+    {
+      "path": "src/vispy/glsl/markers/diamond.glsl",
+      "git_blob": "b24e77463da05b1831c13ac5352f87bdaf3eaed4",
+      "bytes": 491,
+      "sha256": "2646c092250d09d1259310aafb919b1109d57c6ad7ac16948f579eeb7261eec2"
+    },
+    {
+      "path": "src/vispy/glsl/markers/disc.glsl",
+      "git_blob": "7515c129eadca6d9e115480e7be7148102966b2a",
+      "bytes": 354,
+      "sha256": "2ebf81d82ab2af20d8ee9cf519228a099bea2af8ec88d6358d2c50e9329f73d3"
+    },
+    {
+      "path": "src/vispy/glsl/markers/ellipse.glsl",
+      "git_blob": "461f7243329404479325f5d60eb5810f716089c3",
+      "bytes": 1960,
+      "sha256": "ce5fe24884c2c3fea7655b4b538196b168f38bfdb110a8ba92835d402791a383"
+    },
+    {
+      "path": "src/vispy/glsl/markers/hbar.glsl",
+      "git_blob": "90295c3a6c74303407dbe8022e1d4faaadd188bf",
+      "bytes": 378,
+      "sha256": "e2ed93bb8c4af69c73dff7f74b7555d0f23c7b14edc08904d7fefa2ddd0616a1"
+    },
+    {
+      "path": "src/vispy/glsl/markers/heart.glsl",
+      "git_blob": "b0ac37c0177336b4f0787a4d5db9d7834d869c32",
+      "bytes": 663,
+      "sha256": "3739ca774ce1c4c30836fbe101c6c31527d458ae8ed62f5ccd1b0d93deb9c1a9"
+    },
+    {
+      "path": "src/vispy/glsl/markers/infinity.glsl",
+      "git_blob": "1581c731050e0bc2877d1e38defe670537c57f92",
+      "bytes": 637,
+      "sha256": "b086665542d6b76f36828ea34824518721ae98417f32d45b321da01e457c46ab"
+    },
+    {
+      "path": "src/vispy/glsl/markers/marker-sdf.frag",
+      "git_blob": "a2a597542ae69fc91325daa2c9dbfbf4e84369bd",
+      "bytes": 3010,
+      "sha256": "ce6178c0ae34988632d2a82b5d895c3e68b92b805b59d995175a28fdcc3a109b"
+    },
+    {
+      "path": "src/vispy/glsl/markers/marker-sdf.vert",
+      "git_blob": "a83bac14370f59ebcda7fd19facd16ed4de7ef9a",
+      "bytes": 1215,
+      "sha256": "807a4684e2ea9b0be6e0f632e3d5f8fa65de2a1dcfd73ef9be52eef9e7fbf2a6"
+    },
+    {
+      "path": "src/vispy/glsl/markers/marker.frag",
+      "git_blob": "d18feb745f0ccd5c294191be69bdaba86eb959d7",
+      "bytes": 1474,
+      "sha256": "dcb2ca269fae0ae4fe578419160bfc62067195b0288bec6c8f9a5c5c1ff6f647"
+    },
+    {
+      "path": "src/vispy/glsl/markers/marker.vert",
+      "git_blob": "1a5834121c3b1c3226373b5ceca5a07584c54503",
+      "bytes": 1376,
+      "sha256": "1030168d7bbf84aaa888aae00e519936ed75e207695a1681d7985c117971b1dc"
+    },
+    {
+      "path": "src/vispy/glsl/markers/markers.glsl",
+      "git_blob": "05fb067bb8e4e91c4aa867ec95e76f96422ad0ec",
+      "bytes": 873,
+      "sha256": "47dfe9d507a87f732eb91f310d3b8bf6764cfe0858a67d278457e67048e24e2d"
+    },
+    {
+      "path": "src/vispy/glsl/markers/pin.glsl",
+      "git_blob": "74124f43314841a2282565818a2416272666da88",
+      "bytes": 665,
+      "sha256": "2d59390bcd343cea80e17dccd0aaabdf7b07968064e4cae29dd583ccaace3b81"
+    },
+    {
+      "path": "src/vispy/glsl/markers/ring.glsl",
+      "git_blob": "e2c7079bd136d92fe4ee6a4a5da8af4ad164aa15",
+      "bytes": 420,
+      "sha256": "15e8702449b603504efa9120db87082bc3ef822503b1184a32db7b1efc1dbe16"
+    },
+    {
+      "path": "src/vispy/glsl/markers/spade.glsl",
+      "git_blob": "c7252b4b85b852a0040a52ab50c4d5b82b7460c8",
+      "bytes": 1069,
+      "sha256": "155cb347f3dcaeb9e4fd52f6508cdd3d4f8e28c49471863479e9eeaccdb324fe"
+    },
+    {
+      "path": "src/vispy/glsl/markers/square.glsl",
+      "git_blob": "a6e728d432ad4e9c7a252f0ca8e275e43430ec7e",
+      "bytes": 403,
+      "sha256": "8e1a973f2b6414103d9f97eb194652f7f83d9d4f9f4c5ea7804b266388beb361"
+    },
+    {
+      "path": "src/vispy/glsl/markers/tag.glsl",
+      "git_blob": "7b63b2e4854a138f48c3d7b8a39f06fad10daa7d",
+      "bytes": 458,
+      "sha256": "f71e4cbfd7885c376d2cc182249d9b5fee9dc711dc6e12eee050b48f6e16c018"
+    },
+    {
+      "path": "src/vispy/glsl/markers/triangle.glsl",
+      "git_blob": "b3e0f02042598291c970c037110e8f59c4d0b3b5",
+      "bytes": 569,
+      "sha256": "c09fe18803543795858c2d5c28d33e839d22919b6971b4ba00d4fad493d988f8"
+    },
+    {
+      "path": "src/vispy/glsl/markers/vbar.glsl",
+      "git_blob": "a313fa160cc96e371d850a3209a87c54ade56274",
+      "bytes": 378,
+      "sha256": "e882e807fa7b360afaf281baa79d4f496e3a3d6584720935e8118616600351b5"
+    },
+    {
+      "path": "src/vispy/glsl/math/circle-through-2-points.glsl",
+      "git_blob": "32d01447a5975e18ce4a0e1abe7a4d7262869565",
+      "bytes": 975,
+      "sha256": "87aded53ba617f4fe2692c78c28d4011e7ebe1ba85b5bb2c556d32e5630d5959"
+    },
+    {
+      "path": "src/vispy/glsl/math/constants.glsl",
+      "git_blob": "c3c2b6ae61b89235f345bb92ada4966d1dfcd110",
+      "bytes": 1729,
+      "sha256": "7466774e9f8ae3cc1c3b0c87383e647bcc1180e187326377304ec2aefec5b552"
+    },
+    {
+      "path": "src/vispy/glsl/math/double.glsl",
+      "git_blob": "e1d794035858bb5df9b6ad7a3c1189666e77cacf",
+      "bytes": 3159,
+      "sha256": "434796f32ab422b31cf337d3a8134ad6d55650e6911891db03a7ad15da52e627"
+    },
+    {
+      "path": "src/vispy/glsl/math/functions.glsl",
+      "git_blob": "c329c9fcffda1064c1e930eb071668c58df104aa",
+      "bytes": 698,
+      "sha256": "73a4f6e0a55b608749252aac5aff911bef2c4bcfb3c86f5ec0e79295e766a0f5"
+    },
+    {
+      "path": "src/vispy/glsl/math/point-to-line-distance.glsl",
+      "git_blob": "598cc42b1bd3a85a8732668a4b8907a82316e0d6",
+      "bytes": 948,
+      "sha256": "c7ceeb96b924aaebf5948559576618132fc07038800d6ded0f329633b9baf6b2"
+    },
+    {
+      "path": "src/vispy/glsl/math/point-to-line-projection.glsl",
+      "git_blob": "f1cec307668114b9d369a48fb021c4254002634b",
+      "bytes": 932,
+      "sha256": "423b5621c450309822f5d4dbcf9bf7855700e9a5c75d5abd8584b303f45b2e03"
+    },
+    {
+      "path": "src/vispy/glsl/math/signed-line-distance.glsl",
+      "git_blob": "abb35990799badf88b7b7e8dd08f304028f6d4ed",
+      "bytes": 839,
+      "sha256": "56b870fbcff3e91805ceafe1e24f7bf8dbe8bf653390ab7eac56c4433fe01657"
+    },
+    {
+      "path": "src/vispy/glsl/math/signed-segment-distance.glsl",
+      "git_blob": "2de6773422d4173b30882525b01f4c843717ffb4",
+      "bytes": 954,
+      "sha256": "07d23cc0f51792c9d78c7584707dc1aa3d86b9b919d3c4353115d38bd9735c76"
+    },
+    {
+      "path": "src/vispy/glsl/misc/regular-grid.frag",
+      "git_blob": "f4db6b4d496836c6ae277c32050050e6de1f998a",
+      "bytes": 7072,
+      "sha256": "643e6c400f54b42f4595e617f858d537987676091147ff238f7490a3cd1464d9"
+    },
+    {
+      "path": "src/vispy/glsl/misc/spatial-filters.frag",
+      "git_blob": "ef3649e1e31229b6ec151f2fad1391d61fa1c0ee",
+      "bytes": 76618,
+      "sha256": "f0f4efced224fe99d21771d2cc0c7029ffcf03ba48b9c538e0b55d22f6db6467"
+    },
+    {
+      "path": "src/vispy/glsl/misc/viewport-NDC.glsl",
+      "git_blob": "b296645fe7b635a591aa519dec0c6b737006c6a4",
+      "bytes": 654,
+      "sha256": "54aef8cce5a433a4bc76978db6be1292c7e81a6088e59e105fe7fe177b74dcf2"
+    },
+    {
+      "path": "src/vispy/glsl/transforms/azimuthal-equal-area.glsl",
+      "git_blob": "438e63efc0796a400d0e3361f1da3bc464e305f3",
+      "bytes": 1264,
+      "sha256": "2e53a0e1d5cd6e3e897c3b9ec969ec99c632f7c7c03005f7d3ba408eea0d292d"
+    },
+    {
+      "path": "src/vispy/glsl/transforms/azimuthal-equidistant.glsl",
+      "git_blob": "406c51a395b8ec204259c8519d9e61d17752e5be",
+      "bytes": 1324,
+      "sha256": "95a190468e73f7bd284640b2b71d3b0d9ac855afd27bb4388b6d028681c0f148"
+    },
+    {
+      "path": "src/vispy/glsl/transforms/hammer.glsl",
+      "git_blob": "05d8c887a1a795dae5e951468a422e263b8714b7",
+      "bytes": 1671,
+      "sha256": "848bb7c16b7351e7f15829345ba166f48ffd5a77a08eafe710ba26c525ee867f"
+    },
+    {
+      "path": "src/vispy/glsl/transforms/identity.glsl",
+      "git_blob": "c942c2ae317184f77435161851b1b3f486d00f71",
+      "bytes": 362,
+      "sha256": "f367534d5370fdba99879f9a23807482106bee77304681c28ad7015f24cbed73"
+    },
+    {
+      "path": "src/vispy/glsl/transforms/identity_forward.glsl",
+      "git_blob": "9e7b419cdcb3f636f937141934faf97205a610d3",
+      "bytes": 665,
+      "sha256": "d289b9881d1666cb12dcd341b1e620910e35917f274a64f65a93a62c6d7692a2"
+    },
+    {
+      "path": "src/vispy/glsl/transforms/identity_inverse.glsl",
+      "git_blob": "89f4391a099a7292f75fb4aa5f77dcd70e44180c",
+      "bytes": 666,
+      "sha256": "28ed2ed6862cb431be29360eafe57b41f4fe065189e22a6e1d9ad4e4d57372fd"
+    },
+    {
+      "path": "src/vispy/glsl/transforms/linear-scale.glsl",
+      "git_blob": "3ade504cfd8c78042c444991b4abb2465c4a339e",
+      "bytes": 3521,
+      "sha256": "1c66be9ce1122bcc8a475d781c884fc787546c6ff998151da02de5d925d0388b"
+    },
+    {
+      "path": "src/vispy/glsl/transforms/log-scale.glsl",
+      "git_blob": "53f30ea3b645b5074cdecd835d93656a09cfe88b",
+      "bytes": 3387,
+      "sha256": "69856b9c69567d388095ee407967f84c9c3c695a6a0b45b746f0ca09c45c0f5e"
+    },
+    {
+      "path": "src/vispy/glsl/transforms/mercator-transverse-forward.glsl",
+      "git_blob": "b3f3d92d9bfefb40913691996ff1c77972d8dc76",
+      "bytes": 1155,
+      "sha256": "ca5ad8facc6344744b1dc8c0f46d71bdee9b45f6e0549608d8a0b47f4228214f"
+    },
+    {
+      "path": "src/vispy/glsl/transforms/mercator-transverse-inverse.glsl",
+      "git_blob": "437532ec1688906e3dd32624fbdb186c5f253ecf",
+      "bytes": 1196,
+      "sha256": "5468cf98edcdf7f02c60c2552273ccaa8b5bf0393933717554fe0511dd440c22"
+    },
+    {
+      "path": "src/vispy/glsl/transforms/panzoom.glsl",
+      "git_blob": "accc9a5d6f509cfc91d670a4c63c2a73354bed48",
+      "bytes": 451,
+      "sha256": "446c062c9683854ef7fbaa1e7d42c58886d86aa26970f84f91d16e76d877f133"
+    },
+    {
+      "path": "src/vispy/glsl/transforms/polar.glsl",
+      "git_blob": "11eb27239e81cc37e33e7b83f0791087acde5111",
+      "bytes": 1712,
+      "sha256": "66ef8a8fdce38e9ed67af5b9a99696fbf662934aa61b803f92099499300e587d"
+    },
+    {
+      "path": "src/vispy/glsl/transforms/position.glsl",
+      "git_blob": "afe496a8f1ee3522dd12ba6e212714d02b2ebcaf",
+      "bytes": 816,
+      "sha256": "82243fec8eb006783bcce4263d65b9eda4548e7566339610e4991609cea23090"
+    },
+    {
+      "path": "src/vispy/glsl/transforms/power-scale.glsl",
+      "git_blob": "f2e083ff13cfac74fa78c52733d0a16836a0c2c1",
+      "bytes": 4055,
+      "sha256": "6c07da14c65751022659e3f454007f24b6b56b8d8f05e95ccdf296185b54540a"
+    },
+    {
+      "path": "src/vispy/glsl/transforms/projection.glsl",
+      "git_blob": "61c33373b0ef79fcf5a1ea3ae9a0285990888364",
+      "bytes": 127,
+      "sha256": "b4f0b31af086c07938df1b7c64c964ce7a3057a2877d8a98d1471a1adde40a37"
+    },
+    {
+      "path": "src/vispy/glsl/transforms/pvm.glsl",
+      "git_blob": "5d165038ad0b98225d405d60d61f22cbf1c4acc0",
+      "bytes": 424,
+      "sha256": "25285858acb685df29e8c62cb8408acec0a6ed189badad789f3628b9634d4636"
+    },
+    {
+      "path": "src/vispy/glsl/transforms/rotate.glsl",
+      "git_blob": "72115037ed0da9afa6aca3817dff489e36e791dd",
+      "bytes": 1184,
+      "sha256": "e880b9741682eac988afbab81fd705bd637710e2be23f1214745890f60371f2d"
+    },
+    {
+      "path": "src/vispy/glsl/transforms/trackball.glsl",
+      "git_blob": "c820e5880c350fcefa4a303ca9a4c5f9af91bbfb",
+      "bytes": 524,
+      "sha256": "3e6c3c26f21a8f94950b24fe5067c9c2488948e321e10e1b685d8d527b1c87cf"
+    },
+    {
+      "path": "src/vispy/glsl/transforms/translate.glsl",
+      "git_blob": "792ff463fd04d4060c3763187a696b3b2177887f",
+      "bytes": 1055,
+      "sha256": "b4219f3f5008de9383e028758aeb617f4a90f8dc7f2d9b4dd99169ea56cc5068"
+    },
+    {
+      "path": "src/vispy/glsl/transforms/transverse_mercator.glsl",
+      "git_blob": "b92b2cf3aa4c4423983cf02340ba1340241b9539",
+      "bytes": 1446,
+      "sha256": "82546833107a2701b90a43f0865184c928312c169248429f86f7f94ae186d97a"
+    },
+    {
+      "path": "src/vispy/glsl/transforms/viewport-clipping.glsl",
+      "git_blob": "919f49ab66f40272a66ad847a0961a3ea5d1ca4e",
+      "bytes": 639,
+      "sha256": "bd27cd3fb318b3c8232959d846d9d1403abc41172827221499a8f5a9d475aae4"
+    },
+    {
+      "path": "src/vispy/glsl/transforms/viewport-transform.glsl",
+      "git_blob": "fabf9f82acb4ee5374293f839c30ff7d63f70983",
+      "bytes": 756,
+      "sha256": "94049120a95c5dd11908f75840e07c0a0dfa3840fb652d1d3d24fcd898541eac"
+    },
+    {
+      "path": "src/vispy/glsl/transforms/viewport.glsl",
+      "git_blob": "7bada03f99978c203f8e7f06849a925731f6d768",
+      "bytes": 1856,
+      "sha256": "8ea69e1ae46787ee8dc63cb9ef8f474031ff868ac196b7c8f68a5306beb66442"
+    },
+    {
+      "path": "src/vispy/glsl/transforms/x.glsl",
+      "git_blob": "2759ea40a831f0d5426c7c4267af6198124e877a",
+      "bytes": 467,
+      "sha256": "227e716841e4b780100d0c0895e4dacc99ed854205e7432540c5c8ef1e365ee3"
+    },
+    {
+      "path": "src/vispy/glsl/transforms/y.glsl",
+      "git_blob": "407127cea7b99da546cb179db3799895ef644342",
+      "bytes": 422,
+      "sha256": "d3992521d7bc3cd7feaa1ea7a1c0f77c0a856c26f4b54c9299b5957fd259c0a6"
+    },
+    {
+      "path": "src/vispy/glsl/transforms/z.glsl",
+      "git_blob": "b998d2345324317d727c5aa43e250578262add3e",
+      "bytes": 374,
+      "sha256": "59a14c46356f0b73bf1853611fa1bb0283e466c70871a99a37e1edbd35cbd9f8"
+    },
+    {
+      "path": "src/vispy/io/__init__.py",
+      "git_blob": "3cd24fe8fbe4418ee0fa8c9262e364b7c4d30377",
+      "bytes": 816,
+      "sha256": "b01e4d1499ef0ff8e9138b4e9fef9ee495d5c15fdd706ff0a8c7b3d7136f01a6"
+    },
+    {
+      "path": "src/vispy/io/_data/spatial-filters.npy",
+      "git_blob": "50829102f015c91858517639ca2fe2203f703514",
+      "bytes": 65664,
+      "sha256": "fbdb2395275ce1c5e2e6f7856d78fa8ba78f902ba9c71893f86e5eb03eae124e"
+    },
+    {
+      "path": "src/vispy/io/datasets.py",
+      "git_blob": "4cc26944e02f4a09b4b5e5479d746080b098e510",
+      "bytes": 2579,
+      "sha256": "2d05b3b11de425f95ff37c3b00868db3908214797f89cbc74f1022cd55d75eac"
+    },
+    {
+      "path": "src/vispy/io/image.py",
+      "git_blob": "b86349693fbbb872e01d6e8f754cbeef5a758257",
+      "bytes": 6410,
+      "sha256": "25e2363ac937eb71e6bac90a3363e7a8ebd5dbd08352e25c0ea5d54e6e778630"
+    },
+    {
+      "path": "src/vispy/io/mesh.py",
+      "git_blob": "9d524b79ed3218697babe91bd4435ace7b2ed38b",
+      "bytes": 3681,
+      "sha256": "edef4a7adea6159fc02af43f7bfe8a7bc7ac9859281693bd3dd5b119c73a5058"
+    },
+    {
+      "path": "src/vispy/io/stl.py",
+      "git_blob": "364306ea6d05ce27f3ca5d2c42f03188f98d31de",
+      "bytes": 6100,
+      "sha256": "b3c0316e77d8e4a5603d8b4056481d7ec5641084a9c5027b5080d2cf5de2e606"
+    },
+    {
+      "path": "src/vispy/io/tests/__init__.py",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "src/vispy/io/tests/test_image.py",
+      "git_blob": "6a51a8073561c4e2f59d8e28efb32deb45804a7e",
+      "bytes": 1604,
+      "sha256": "6b7b6b69c4a73a25f908d7f478b5ba5e9ba1f83d3167fb73fd85f476173aaf43"
+    },
+    {
+      "path": "src/vispy/io/tests/test_io.py",
+      "git_blob": "704fcdf1dc8326ab4541c26598545b99d36fc38c",
+      "bytes": 4344,
+      "sha256": "3e50140fd1265782711b8fc3aaeee1edfda9a2832824e314f397ecc69962f6be"
+    },
+    {
+      "path": "src/vispy/io/wavefront.py",
+      "git_blob": "2071adcbdb450eef6b275fd98031e9dd683b0066",
+      "bytes": 12635,
+      "sha256": "1ef4593a91807aa9eb610a2292067d924374d8a19b8c79d631bd69903b651faf"
+    },
+    {
+      "path": "src/vispy/plot/__init__.py",
+      "git_blob": "177cc8ef1959a64fd756432f040549745cfe46de",
+      "bytes": 1039,
+      "sha256": "ef6af035e77264bade0708411b5da2df78b99f3befbe725b306bfb6d5665de05"
+    },
+    {
+      "path": "src/vispy/plot/fig.py",
+      "git_blob": "4ae75b5ab033e4eba99a6f4449153547029d270d",
+      "bytes": 1791,
+      "sha256": "32beed6b73dc783ef04461abe454b56ed8aec533e3f0bec447f11c0edfed9542"
+    },
+    {
+      "path": "src/vispy/plot/plotwidget.py",
+      "git_blob": "2088672a782c0621076a6f51ebb2f3ff1bfe225d",
+      "bytes": 19120,
+      "sha256": "c818ef811442d865dbfc8c2162bd538f4bb5c9a450683ffbd14efb7bf59dc670"
+    },
+    {
+      "path": "src/vispy/plot/tests/__init__.py",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "src/vispy/plot/tests/test_plot.py",
+      "git_blob": "7e6ed68ba35dcf54528e3e248b1707bb31fd6846",
+      "bytes": 1760,
+      "sha256": "29960f4110bd772afa98979b0d2984b56fe6cd3e6074bba16461e9bf507d8f76"
+    },
+    {
+      "path": "src/vispy/scene/__init__.py",
+      "git_blob": "99ff8355d7bcf05541f22ea2a356a8d612d5822e",
+      "bytes": 1530,
+      "sha256": "c7cc5175ecca22dd072afaa311b30691ca59e591ac17f6ad86d1c6d1deda3ab4"
+    },
+    {
+      "path": "src/vispy/scene/cameras/__init__.py",
+      "git_blob": "a66a019244d1653ddad6a62c577f27e2d6d65535",
+      "bytes": 1271,
+      "sha256": "61e6e7ca779af96a14ceb83bd92eacf51561d8e91763716560ec48ebf115d9b9"
+    },
+    {
+      "path": "src/vispy/scene/cameras/_base.py",
+      "git_blob": "b09cf35fe319c622727192b08930abc805b4adde",
+      "bytes": 1315,
+      "sha256": "08a46c428ec1b544e442729c4a02f6a9b212e45b6c1b33ba64d156011ae1e006"
+    },
+    {
+      "path": "src/vispy/scene/cameras/arcball.py",
+      "git_blob": "224c06e353b6e83b40d437fc41669be49f8ede7d",
+      "bytes": 3723,
+      "sha256": "db82228916ff2acd33179197fb284075a102e44afbef4b28dab1daa24b1be3b6"
+    },
+    {
+      "path": "src/vispy/scene/cameras/base_camera.py",
+      "git_blob": "680f12ddd0876694c78c0b02c4d2375c82ace31f",
+      "bytes": 19968,
+      "sha256": "fa93697ff791b24c657c78420365e6460cd1b73efa57b43562a12900e2a84b93"
+    },
+    {
+      "path": "src/vispy/scene/cameras/fly.py",
+      "git_blob": "9dace3336cc36e83373fd263bc212f4fc099943e",
+      "bytes": 16817,
+      "sha256": "6a555a8dd6c69772ea0650bbfa3e7878ebb92379ac5d8bd4b6c6677dc55ff185"
+    },
+    {
+      "path": "src/vispy/scene/cameras/magnify.py",
+      "git_blob": "8807768f0d5092ec2c4d8d01f92546ec0bb7dc88",
+      "bytes": 5550,
+      "sha256": "d52c165b7c80e8e5e7bbe16372e3d8fe4f365eab9a5c8e0f57cfd775c9c276fb"
+    },
+    {
+      "path": "src/vispy/scene/cameras/panzoom.py",
+      "git_blob": "d48cbedd1e3a1211f99d13beeba59c17570f438f",
+      "bytes": 11386,
+      "sha256": "6cb92f82e5075a8a374122ebed6c9910ba77590b9ee9a0efd4f02db8c51853c2"
+    },
+    {
+      "path": "src/vispy/scene/cameras/perspective.py",
+      "git_blob": "0a8495de1be181bd1b5ee9854cfb81e42e7303a2",
+      "bytes": 12338,
+      "sha256": "dd43cc06fd520ba535bb50cf5d3d84bbffe4d96c5cac6adc68665e65507ee54b"
+    },
+    {
+      "path": "src/vispy/scene/cameras/tests/__init__.py",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "src/vispy/scene/cameras/tests/test_cameras.py",
+      "git_blob": "dcdec822cccfd5122fea525964e0a065bf2ba711",
+      "bytes": 1095,
+      "sha256": "2093549209a62d2b200e4e3c869d4c39ebe77abfde40db3bb2ddf6e09b028cde"
+    },
+    {
+      "path": "src/vispy/scene/cameras/tests/test_link.py",
+      "git_blob": "2b4ea4d7b4749e6441d37b3b1e7a5fb5f5d99d7a",
+      "bytes": 1665,
+      "sha256": "1cb41a04fca30abc97948243eb784a912040fae6c4ce88db99ab50a871818bd2"
+    },
+    {
+      "path": "src/vispy/scene/cameras/tests/test_perspective.py",
+      "git_blob": "5b63b019ec3fa4802abbb90ad0259db6b259e76c",
+      "bytes": 4451,
+      "sha256": "0335e859577473ced1c64d65ed824d3fdc8e176a7a111a7b13e1005bb7819450"
+    },
+    {
+      "path": "src/vispy/scene/cameras/turntable.py",
+      "git_blob": "be6b15d01087299953b8da694bbfcdbdca28e1f0",
+      "bytes": 6162,
+      "sha256": "91abdb5eb523c52a85e378655c9fde58304ea4631151095b53ff1bc7bb204785"
+    },
+    {
+      "path": "src/vispy/scene/canvas.py",
+      "git_blob": "0a220fe310d10f4587710a6922227030a068bbed",
+      "bytes": 23857,
+      "sha256": "d404365a8183d4fe6ee4a10212ee75d7417a4273d9ce441e46930d6dc1490b6e"
+    },
+    {
+      "path": "src/vispy/scene/events.py",
+      "git_blob": "3c6079400f3b5498ff0ad8f76da0e3a30597a8df",
+      "bytes": 2781,
+      "sha256": "5d8362f30b2ec799e6ec8f5194c3010b39be4bb1e3867169c8ce1c8717965fa1"
+    },
+    {
+      "path": "src/vispy/scene/node.py",
+      "git_blob": "d9fec23ff58c976fd8472f2e1cebb78a322398a8",
+      "bytes": 20312,
+      "sha256": "534a393b3940ab2c7da3e4670cba108a320d7e59c1c58c997667afe3850010cc"
+    },
+    {
+      "path": "src/vispy/scene/subscene.py",
+      "git_blob": "1204cd4a21d1c2e01b5f423825be7ef4cd8fb571",
+      "bytes": 584,
+      "sha256": "b883da2ea5691f178ad18c9c396c6b75c352ad8e2ddca918aa3e81724092f0ed"
+    },
+    {
+      "path": "src/vispy/scene/tests/__init__.py",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "src/vispy/scene/tests/test_canvas.py",
+      "git_blob": "a3bd2305fad52f6ed9ec5f36eb0267b908eb8df4",
+      "bytes": 4277,
+      "sha256": "aaca4145bca11111d1e47e008f179aa061c6676b87d0a5701bbd558fedc36ffa"
+    },
+    {
+      "path": "src/vispy/scene/tests/test_node.py",
+      "git_blob": "f3320f2471d23f6eb3f3b80e344b95969a958175",
+      "bytes": 5078,
+      "sha256": "76b2d970c40dad2f1e86c9b99d527fc865781c02713b367e3fcf7ee2c8844f03"
+    },
+    {
+      "path": "src/vispy/scene/tests/test_viewbox.py",
+      "git_blob": "19b47c1e86dbe9ac02846fd7d0861c28855cc40b",
+      "bytes": 680,
+      "sha256": "f526a8cf06e521ae759980914dd7b7dabb75ca4d2de10ae6de65dca9f6cc073e"
+    },
+    {
+      "path": "src/vispy/scene/tests/test_visuals.py",
+      "git_blob": "9358f7b5896c95d9077da22429fe76a8a2751c0b",
+      "bytes": 4506,
+      "sha256": "b7606086fda77de7ed9e9754d4da83361bf1e6da426d046f79d559469d42654d"
+    },
+    {
+      "path": "src/vispy/scene/visuals.py",
+      "git_blob": "45f499b8822de1af6db964be7b0badd39a1818ff",
+      "bytes": 10212,
+      "sha256": "fac65fa79c5d981d2d4bcbfc64424668fe8a63514847869ef25fbece7ce533d3"
+    },
+    {
+      "path": "src/vispy/scene/widgets/__init__.py",
+      "git_blob": "40339d881b5b5478598c865c48488704d4adf7d0",
+      "bytes": 713,
+      "sha256": "6c5cb69da8383eefb759ac4bd4bad2cc2e366bf8ce05d244082b49b889fed76f"
+    },
+    {
+      "path": "src/vispy/scene/widgets/anchor.py",
+      "git_blob": "07b718112ff8ec741bfab1b23b0a9fb74f9842d3",
+      "bytes": 899,
+      "sha256": "107b8c51c751ec76583657e0330b91ccff1b0fae445c4945f00557c69b6c8bba"
+    },
+    {
+      "path": "src/vispy/scene/widgets/axis.py",
+      "git_blob": "b6e0761dcc42ff09c6d1a412d2c598a21075e680",
+      "bytes": 3042,
+      "sha256": "aefd84826d45ba4c9b9b4f26fbe183ab1b08964f7eaa45073d25ad00948cdc3a"
+    },
+    {
+      "path": "src/vispy/scene/widgets/colorbar.py",
+      "git_blob": "70b43c8493804124fd280d7340fbe813dffcbfee",
+      "bytes": 6334,
+      "sha256": "90680dbf8830ccb7d7a633aef2864d4b5917a331f4d8bef299e1d6ca6ec4aa61"
+    },
+    {
+      "path": "src/vispy/scene/widgets/console.py",
+      "git_blob": "3713dac7077dfdb2a7154338408b742da6d77905",
+      "bytes": 14364,
+      "sha256": "36a33fe64f7ba3065f1a282d9d3464a297f2f4fcccd3aed25b46341cc6e61c62"
+    },
+    {
+      "path": "src/vispy/scene/widgets/grid.py",
+      "git_blob": "3a2ffe98b81db233a4ab183c2e9d8943fcb77579",
+      "bytes": 25429,
+      "sha256": "a90e092fea28a7f9e46bc9a023478808d91105cee4a4b853c5acfdef39c1a051"
+    },
+    {
+      "path": "src/vispy/scene/widgets/label.py",
+      "git_blob": "0dcc3c940e7a270279ee3c55c03e2c14c9f2bbb8",
+      "bytes": 1358,
+      "sha256": "b7f52e1e8a9ecc025903b1d91df73344867462ed9b8ef40b7bd002b1fc9f9afb"
+    },
+    {
+      "path": "src/vispy/scene/widgets/tests/__init__.py",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "src/vispy/scene/widgets/tests/test_colorbar.py",
+      "git_blob": "d461eb7a5e8626704bd832a06bb679e74927ccf1",
+      "bytes": 1409,
+      "sha256": "7f515eb8e457ea034096938cf14c134e36cfd568f84fd717dd6deaeb539690ec"
+    },
+    {
+      "path": "src/vispy/scene/widgets/viewbox.py",
+      "git_blob": "f73b7d1612b9f1f8c71ff10782f55f5637bad4e5",
+      "bytes": 7879,
+      "sha256": "05d743186810a1472138e30a9f045d571ee909cad0f762e2436b4ec3fdb5d92c"
+    },
+    {
+      "path": "src/vispy/scene/widgets/widget.py",
+      "git_blob": "2a145bfbde37378877620f357fc07b2e29b76dba",
+      "bytes": 14615,
+      "sha256": "c2888d20a9e806080a51002f5c52ce955a6c9c190a977e85696ef6a2bbd91ad1"
+    },
+    {
+      "path": "src/vispy/testing/__init__.py",
+      "git_blob": "90ee673127a4041c2d43be59ba5517248832dd95",
+      "bytes": 2488,
+      "sha256": "bb40ae1be5ed186b0e530cc280c7faa3b88ba3e0d5463a831857a4d411953b77"
+    },
+    {
+      "path": "src/vispy/testing/_runners.py",
+      "git_blob": "6fed168659b5bc9260fb8b90b7add77f9e4ad146",
+      "bytes": 16519,
+      "sha256": "47ad08b5381866d2816a50a27cdd931897c157f30f7edb7a3f078458431d103f"
+    },
+    {
+      "path": "src/vispy/testing/_testing.py",
+      "git_blob": "6c1475f7b7f534b614081240da3dfb670d976b6e",
+      "bytes": 12718,
+      "sha256": "3428a1fcfc612cfc6c524678a824aab4fb288775898fafe24dc6afc75e488b35"
+    },
+    {
+      "path": "src/vispy/testing/image_tester.py",
+      "git_blob": "c77346b61911c461517136c7b1d1b03af1cfdb7a",
+      "bytes": 18504,
+      "sha256": "07bd05d3398ecf70a62b4fb105e8235beacebe81eb2ea088c240ae15ce207da0"
+    },
+    {
+      "path": "src/vispy/testing/rendered_array_tester.py",
+      "git_blob": "1f16890135aa0755c4beee2554c83f3341d021ec",
+      "bytes": 2855,
+      "sha256": "c000bb5cdfa6387ae00da41fa6262217b90d0331d4345ec081a540c9f77d053d"
+    },
+    {
+      "path": "src/vispy/testing/tests/__init__.py",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "src/vispy/testing/tests/test_testing.py",
+      "git_blob": "9ff8e9cd84aaa6f5024577dbd59f799f81e45498",
+      "bytes": 805,
+      "sha256": "47660658abe3d272bbad6583b29e41523d7c937787d8599680eeea7a35a7b361"
+    },
+    {
+      "path": "src/vispy/util/__init__.py",
+      "git_blob": "68215a78fee2803f11e54f82a781e1bd86e9155f",
+      "bytes": 1321,
+      "sha256": "87c66b58882addc55b33cac259c176491589374453c2e0b7bc26bccb86a07be2"
+    },
+    {
+      "path": "src/vispy/util/bunch.py",
+      "git_blob": "dce9f88f52445b913c251716091ee430a3b0b3bb",
+      "bytes": 445,
+      "sha256": "d4ab5a405292d8b5b1cdaeb4bb4594db244caac23b4cb8879e84b59a79ce2197"
+    },
+    {
+      "path": "src/vispy/util/check_environment.py",
+      "git_blob": "8d8eb55f86fe7f5c64c8bb4ad0b938f43c2bc9e4",
+      "bytes": 1811,
+      "sha256": "4a3861d3e93766317915e4f3a44321d58c6383e4353961d2ab4501d0390d70e3"
+    },
+    {
+      "path": "src/vispy/util/config.py",
+      "git_blob": "ff5600839f5aac05ec4b82b77312c5cc7d5a3eab",
+      "bytes": 16020,
+      "sha256": "91bd1f03e053a7a4f9f23ab96b417a8f0b0f70d126b6c6ed73846533160e8c71"
+    },
+    {
+      "path": "src/vispy/util/dpi/__init__.py",
+      "git_blob": "49b46643ec770841bf908516377487da4abc53c4",
+      "bytes": 738,
+      "sha256": "45aa2632746e822d7cf153a7aa98ebb7c9d0831d2198856acc59322116810ab4"
+    },
+    {
+      "path": "src/vispy/util/dpi/_linux.py",
+      "git_blob": "c0144dc6ddc7e46cab9f00424f4eb2705c802a67",
+      "bytes": 2107,
+      "sha256": "f21efdadff4ede7ba6d921f305ea97b1661ff41c4d8fef1689f2c2b39c138665"
+    },
+    {
+      "path": "src/vispy/util/dpi/_quartz.py",
+      "git_blob": "4e8b105231cdba3ec1c216cf8d1656ade1a87579",
+      "bytes": 855,
+      "sha256": "479ddc1ab6ec160110a7479467387687c3a622e3e5b78c4d13315df2fca44c6f"
+    },
+    {
+      "path": "src/vispy/util/dpi/_win32.py",
+      "git_blob": "aeedc2bfef20b593d58365cb427a413e490093d1",
+      "bytes": 1160,
+      "sha256": "1cb1adccc6fe6c16e11883b316da04444fbd1f87d1ce213f42de3da23a2bac47"
+    },
+    {
+      "path": "src/vispy/util/dpi/tests/__init__.py",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "src/vispy/util/dpi/tests/test_dpi.py",
+      "git_blob": "19b058dca3d2dbd8b270804a329780dc249afaaa",
+      "bytes": 396,
+      "sha256": "30295fdd52044718cf1c868adfadb271698470ba0d02ff5873d32558198beab5"
+    },
+    {
+      "path": "src/vispy/util/eq.py",
+      "git_blob": "1a3aac9e21f334d486f456f6f871ff0022505205",
+      "bytes": 1141,
+      "sha256": "7b82e6d21c7aa146a3898f201a14de15640d7402a922ce04cf28da2d62802538"
+    },
+    {
+      "path": "src/vispy/util/event.py",
+      "git_blob": "80186ecc4b239df39578359c90d194e981df390c",
+      "bytes": 29985,
+      "sha256": "eecbc1379d85036481762cabc1ac4320a7b340bf7644e3f78ee693a018f252ff"
+    },
+    {
+      "path": "src/vispy/util/fetching.py",
+      "git_blob": "4ed485f09a2acc1e2b51cd22da43081c7db0e749",
+      "bytes": 10580,
+      "sha256": "de58bb164692c2d8b126d051fa485d3b3d66fcd9fa8a1157ac6cd976d9accaad"
+    },
+    {
+      "path": "src/vispy/util/filter.py",
+      "git_blob": "4e846a38987b7cc7764d37268be9e4e873e86f47",
+      "bytes": 1441,
+      "sha256": "c4de8d60a405b222eb68a649f5d25ee9c6f27671dda8dfc5e699e294cb108cc2"
+    },
+    {
+      "path": "src/vispy/util/fonts/__init__.py",
+      "git_blob": "e2e208ff9af8688a2bae231a71240b88dc972b32",
+      "bytes": 605,
+      "sha256": "461b1648f8c88a4cff1c1f2d97488da464863bb512737ac30d9a175862223b20"
+    },
+    {
+      "path": "src/vispy/util/fonts/_freetype.py",
+      "git_blob": "046b86d7e8838e2ccee7bfde574e15aeec72fc0a",
+      "bytes": 2717,
+      "sha256": "cb27216ae8d3456172d3c093eee851acb49615fc2e0fbfe70953a7eb4edf6538"
+    },
+    {
+      "path": "src/vispy/util/fonts/_quartz.py",
+      "git_blob": "9dad65bf9a39cf02bb64cee84176d472f4906d3f",
+      "bytes": 8396,
+      "sha256": "ec2eda0bb13a043988a2674e9c54b385b45db52ea4f10b78e517377befecefa2"
+    },
+    {
+      "path": "src/vispy/util/fonts/_triage.py",
+      "git_blob": "b2cc9dee9b3495f590d178ac5ddf34fa60c53890",
+      "bytes": 1160,
+      "sha256": "6912f9943fac154c34b143339fb184e482f79e582534bc90e9ee742b059fb3b9"
+    },
+    {
+      "path": "src/vispy/util/fonts/_vispy_fonts.py",
+      "git_blob": "58fd89e4aa076f650fbfab5d909c72fb89931301",
+      "bytes": 1076,
+      "sha256": "c5a5ea3f050a6b712b56d124db99fc879095d8c7628c001b33cec4b804974cbe"
+    },
+    {
+      "path": "src/vispy/util/fonts/_win32.py",
+      "git_blob": "d46cb13a27f19ca6e77eebb7295396f404cc90a6",
+      "bytes": 4619,
+      "sha256": "331302547d7bed63ccf6f08085764e616c71dfb6c210b4d78738b75e05fcb423"
+    },
+    {
+      "path": "src/vispy/util/fonts/data/OpenSans-Bold.ttf",
+      "git_blob": "fd79d43bea0293ac1b20e8aca1142627983d2c07",
+      "bytes": 224592,
+      "sha256": "5894a3649b213cf5b2d673b6e7a871815fd1d120fa68a463592f27db14eae323"
+    },
+    {
+      "path": "src/vispy/util/fonts/data/OpenSans-BoldItalic.ttf",
+      "git_blob": "9bc800958a421d937fc392e00beaef4eea76dc71",
+      "bytes": 213292,
+      "sha256": "3ca680f2444cc9e50447d057c006464566e92f2e77b0b6e26491e5bd757ed4e7"
+    },
+    {
+      "path": "src/vispy/util/fonts/data/OpenSans-Italic.ttf",
+      "git_blob": "c90da48ff3b8ad6167236d70c48df4d7b5de3bbb",
+      "bytes": 212896,
+      "sha256": "a54dc8488f8193bf30c3820cf6f261f911f9d328d699e1a1b8042641554cec70"
+    },
+    {
+      "path": "src/vispy/util/fonts/data/OpenSans-Regular.ttf",
+      "git_blob": "db433349b7047f72f40072630c1bc110620bf09e",
+      "bytes": 217360,
+      "sha256": "e64e508b2aa2880f907e470c4550980ec4c0694d103a43f36150ac3f93189bee"
+    },
+    {
+      "path": "src/vispy/util/fonts/tests/__init__.py",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "src/vispy/util/fonts/tests/test_font.py",
+      "git_blob": "04698f28a21214a2a575b67b55ee2fd3b813324f",
+      "bytes": 1520,
+      "sha256": "d67ad3529825aad3277e0311a08a6038d3c1d88d27752a2cd734a69d13c58e0f"
+    },
+    {
+      "path": "src/vispy/util/fourier.py",
+      "git_blob": "e2680844205666e1889aea04571bedbea376b659",
+      "bytes": 2036,
+      "sha256": "f286b0ff99d7637a0480d58c42eaf164289709f26bbeae7ee1f6ebd318ae3587"
+    },
+    {
+      "path": "src/vispy/util/frozen.py",
+      "git_blob": "6a27c59437adaf65f04975c3f2bdf0b65c3cbb04",
+      "bytes": 916,
+      "sha256": "0dc827dbc5180c06149a40e06fba5c3244133b7503eed72e2c194fcdbfe94ed6"
+    },
+    {
+      "path": "src/vispy/util/gallery_scraper.py",
+      "git_blob": "5899f8f4320c3b767113cc5552b56940df818668",
+      "bytes": 10316,
+      "sha256": "1a7284881f81cc467ff1baccd42526788409ee62e525e1b87488cadd2ca5f4bd"
+    },
+    {
+      "path": "src/vispy/util/keys.py",
+      "git_blob": "65f9995058c47aeb1e2a6434db3343bcb7a4ff5f",
+      "bytes": 2534,
+      "sha256": "b1f44e7f6cdc9fbbfc65adb0efa586d585644c14c1b5742b9703cdfcb1d8e52b"
+    },
+    {
+      "path": "src/vispy/util/logs.py",
+      "git_blob": "f7511e1787c20b0d8a47ccb348125cf79e9c6327",
+      "bytes": 13167,
+      "sha256": "f0b90719b609c09268c81156c965e516582c7c35c35d4226d0a6134e0fcbebe0"
+    },
+    {
+      "path": "src/vispy/util/profiler.py",
+      "git_blob": "8977d81f2dd99fca83a083e0cf63f65c338f3aeb",
+      "bytes": 4830,
+      "sha256": "493d701fc32a455d1cea3d6668b5dcb422ba5d19c512080a52785eaa44d5f508"
+    },
+    {
+      "path": "src/vispy/util/ptime.py",
+      "git_blob": "4f0f39e6cef814230f5bafcfe38dc949b8cf60ab",
+      "bytes": 509,
+      "sha256": "649d22a6b2205fc93e5a2f33c0f82d4eb126ccc423a9d51bf3d88af924d4bd5d"
+    },
+    {
+      "path": "src/vispy/util/quaternion.py",
+      "git_blob": "72cbff292dc8b79bd9fd681dfd1c1e3d592f6607",
+      "bytes": 7005,
+      "sha256": "b5da0ead1cd20311b20cccecb9d955ae947b08f21bca598ca1661ec89ae522f4"
+    },
+    {
+      "path": "src/vispy/util/svg/__init__.py",
+      "git_blob": "9aba0441eb860b81a6870dd6d27023bb5118f736",
+      "bytes": 691,
+      "sha256": "249de581768f1cc2a21bf5ae65d13bf5d85064fcf4319e8e2a2a6a86ad3e29bd"
+    },
+    {
+      "path": "src/vispy/util/svg/base.py",
+      "git_blob": "7cc46e3b950d03b2e3fb62a9aa495408fe43b4d6",
+      "bytes": 820,
+      "sha256": "cd6a88465d323066e0f8ec57463346d1db9e93e7dbe7c266aad8ab0d6b7e2642"
+    },
+    {
+      "path": "src/vispy/util/svg/color.py",
+      "git_blob": "2771e5408d226d499cce23d7b5b315b1dfb4a473",
+      "bytes": 7146,
+      "sha256": "8d81cf6ee8b3ceb7b6bdc7380bd221de916dc0b9473b88f6e4181d9a55cc0383"
+    },
+    {
+      "path": "src/vispy/util/svg/element.py",
+      "git_blob": "9ec8b39bd0a664708d17f3d8118092a34f6dabd3",
+      "bytes": 1463,
+      "sha256": "f1dd45806a54f411f643928a3903c55df00ba4dc3c3b80adf50204c599a1a6c0"
+    },
+    {
+      "path": "src/vispy/util/svg/geometry.py",
+      "git_blob": "b9480ff7600167a909850d8de9031b378a62de16",
+      "bytes": 16231,
+      "sha256": "5c677168dafafac9d744d40beaca97bbe8044658cee6767c3354517032dee180"
+    },
+    {
+      "path": "src/vispy/util/svg/group.py",
+      "git_blob": "24cda310febe8e8779baa217b1a33e0c941f5983",
+      "bytes": 1963,
+      "sha256": "ab9f9f22e40ac2e06283dd9c12e1ab6cd2f8514d8569bc9d7a4ed06a275604b5"
+    },
+    {
+      "path": "src/vispy/util/svg/length.py",
+      "git_blob": "4677488faf229144850273296287875e548c65c8",
+      "bytes": 2392,
+      "sha256": "1ad9ee36bdff8fa0d8770389cc692594e3230b143f4b32a8b8dfd491d700d6db"
+    },
+    {
+      "path": "src/vispy/util/svg/number.py",
+      "git_blob": "5e110135e01f2fb62ebcabc0a2a77fb1930aa40a",
+      "bytes": 701,
+      "sha256": "048c9c608f26a217e0e5aa21d15d00c8d76e83736ba91940c0a4dee6c07e5e07"
+    },
+    {
+      "path": "src/vispy/util/svg/path.py",
+      "git_blob": "0e07de77bc31c4a027033c0361972e136ae27e11",
+      "bytes": 11072,
+      "sha256": "f6c2208c9f5e73c1dfac9be04d5903159cbe583d292858ff8e022976416282e8"
+    },
+    {
+      "path": "src/vispy/util/svg/shapes.py",
+      "git_blob": "9fa29daa689e1e78ddc45bbd5037abcf76cbb192",
+      "bytes": 1251,
+      "sha256": "aed42cb1e5a0903d379004251bf83c5bef6538c6dc0b650a866739558182500e"
+    },
+    {
+      "path": "src/vispy/util/svg/style.py",
+      "git_blob": "d48e72bb419c98ff694c53c7dd8f58e58191a256",
+      "bytes": 1739,
+      "sha256": "5d690ee4df09b54481d5fee566f776affaf52e39f434de32caf0596f63193995"
+    },
+    {
+      "path": "src/vispy/util/svg/svg.py",
+      "git_blob": "4698e2997c498dde68cb8581584896a67cae3475",
+      "bytes": 1118,
+      "sha256": "df1e56b2e3b11581d46f9fda411af1f7b9149a45caf7f1d517e5ac8169b21b10"
+    },
+    {
+      "path": "src/vispy/util/svg/transform.py",
+      "git_blob": "2dc799bff98bba544916af7edb1dc134e3875d13",
+      "bytes": 7146,
+      "sha256": "d895963838b0ae79d4fd3b7e09f424e1a2c95dacf30d2407f6ce99e4fc04d2ba"
+    },
+    {
+      "path": "src/vispy/util/svg/transformable.py",
+      "git_blob": "15f393a7bdb82ba8fcc2c59d2b2adfb337ae2a39",
+      "bytes": 1045,
+      "sha256": "2d6939237987da835df030a35c550a2f6a80aa55a0fe6636190245583af67ec4"
+    },
+    {
+      "path": "src/vispy/util/svg/viewport.py",
+      "git_blob": "127ec781a57c377bd67dda78d88255453746ea4d",
+      "bytes": 2090,
+      "sha256": "0d2c404aee702d45bedd069b5c35888be13345efc649cefa15bcaa3e2166cea8"
+    },
+    {
+      "path": "src/vispy/util/tests/__init__.py",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "src/vispy/util/tests/test_config.py",
+      "git_blob": "e617b0d9b35b4afa5ab40241f5e0664e8b72903c",
+      "bytes": 2252,
+      "sha256": "5345e387c5067e322bceea0c3e419c7d7efdfba3f90a1082b50e130cbd79c857"
+    },
+    {
+      "path": "src/vispy/util/tests/test_docstring_parameters.py",
+      "git_blob": "e6ecf3eae8301aedbef06f870fb67004abc8c197",
+      "bytes": 4435,
+      "sha256": "fbae78df93db2b242e02cedc8427f59aebca1a9b0c448c27d34a17734959b993"
+    },
+    {
+      "path": "src/vispy/util/tests/test_emitter_group.py",
+      "git_blob": "37c939f2b362638afa05a6f0c42253b71b947b52",
+      "bytes": 8192,
+      "sha256": "345d3dba8cf5179c8f5c9b14850de9b0dd95c9228771577947ce65e814c0c719"
+    },
+    {
+      "path": "src/vispy/util/tests/test_event_emitter.py",
+      "git_blob": "2538089ac53663cea9f625d80545205787d9ee10",
+      "bytes": 20710,
+      "sha256": "c8823936bbfaf9fac6c15e2f018fe5bec298d6a84d1d05177238a1b189a708bc"
+    },
+    {
+      "path": "src/vispy/util/tests/test_fourier.py",
+      "git_blob": "fe498c5f31aabd100bc9928360e4e175077830d0",
+      "bytes": 1308,
+      "sha256": "c846be5715a515891b3ad5401e4dcc52de606e2f596ae2d70afe7849908a41d4"
+    },
+    {
+      "path": "src/vispy/util/tests/test_gallery_scraper.py",
+      "git_blob": "9488e55db6eae829edd5ce5f0d88434bb08d1d40",
+      "bytes": 3892,
+      "sha256": "467eb5169a619e703c28204b8feb7d78fca995c44f0217f50d65e70dc38f490e"
+    },
+    {
+      "path": "src/vispy/util/tests/test_import.py",
+      "git_blob": "3e93a0209f0ab0b52bd0c2194565cb44c5adbb5f",
+      "bytes": 4842,
+      "sha256": "646f49f4ef9d80aed675d384f1225d991b34b84812af3d56327e56d0634b92f6"
+    },
+    {
+      "path": "src/vispy/util/tests/test_key.py",
+      "git_blob": "47912c87884869671f316af2cb4632b87a40564a",
+      "bytes": 673,
+      "sha256": "c98b7735e4bec1ad53eade7db1f38702ceb8b742907ffa0d75e07cf5d1800d6d"
+    },
+    {
+      "path": "src/vispy/util/tests/test_logging.py",
+      "git_blob": "8f929e71cd958d07ea3cc333bbc5087619c5a657",
+      "bytes": 1574,
+      "sha256": "f838a19fea85975d92c9f1b847a7c6ce50c49786d0f6b5ca6f96deae43c09ecc"
+    },
+    {
+      "path": "src/vispy/util/tests/test_run.py",
+      "git_blob": "1d5b133bef2df5d2f2572947d2ef0a6fe403c36b",
+      "bytes": 438,
+      "sha256": "9b830efc7ca017f9a4fda14ae73329fb91036b145c10225e45673fc7c06fd629"
+    },
+    {
+      "path": "src/vispy/util/tests/test_transforms.py",
+      "git_blob": "3819a13c13032feee6bbe78f0857370d80ff2f78",
+      "bytes": 1554,
+      "sha256": "2cf5fc02007ae4b54efac6362b1801383cddfc698b0ccc01a58e1c8e4b35ec60"
+    },
+    {
+      "path": "src/vispy/util/tests/test_vispy.py",
+      "git_blob": "6b054abea7bb3f26191b80231bc5d813711890e6",
+      "bytes": 1542,
+      "sha256": "6a508f9b83dcd291f284b2eb95f9619925595873418d9f0b571f1080e4d691be"
+    },
+    {
+      "path": "src/vispy/util/transforms.py",
+      "git_blob": "faa92309dde0030c1aab76a558a0110a8091287e",
+      "bytes": 5515,
+      "sha256": "2c02206b3611c68e6b9707cf9e187b86686adc44519ce09b46bcd96972d04de1"
+    },
+    {
+      "path": "src/vispy/util/wrappers.py",
+      "git_blob": "ce41842b8e8814b284e5f0009aad578d917839aa",
+      "bytes": 4166,
+      "sha256": "42cdf8ed8de7018a480977fa720ec46733cd8d2554ac43f17c0aa65a6f5341bc"
+    },
+    {
+      "path": "src/vispy/version.py",
+      "git_blob": "51ea13434af86c417fb15ffbb698537e57846336",
+      "bytes": 137,
+      "sha256": "183d760cbae857c0c309877b5d6704a1c19e3f04b1951dd55ce14a90c0ccae95"
+    },
+    {
+      "path": "src/vispy/visuals/__init__.py",
+      "git_blob": "c73ab3f393e34e58b5dbac4fba9668e9413f7452",
+      "bytes": 2524,
+      "sha256": "3dcd668099634b67e18ce5165f958ed9aac2f13ec6fd601bc45d25d390f05787"
+    },
+    {
+      "path": "src/vispy/visuals/_scalable_textures.py",
+      "git_blob": "436a8b74107bb2bba1a316fdf4f551aa65a3bb41",
+      "bytes": 20235,
+      "sha256": "0ac2389093cfa551dd1cdc35fc84a025819dfaa25403710230fa95586ed6540e"
+    },
+    {
+      "path": "src/vispy/visuals/axis.py",
+      "git_blob": "23c5c0de2c7db178bb66b597743f0f9bc696bbc7",
+      "bytes": 24250,
+      "sha256": "0ff91d658279b735f534eaf2c119f9ee232288e2c92db0b9f4d5be75a6c5837d"
+    },
+    {
+      "path": "src/vispy/visuals/border.py",
+      "git_blob": "2f3fd1716f8d407c378fb5ec1c24b838b3ec9c06",
+      "bytes": 7085,
+      "sha256": "a1ff7dea5bdafad35afa445be78e085a4ceb70ff9856d1c61193cc8f182cda52"
+    },
+    {
+      "path": "src/vispy/visuals/box.py",
+      "git_blob": "fa859ba6e592183ce1e0ca2a8027eaced3962fc3",
+      "bytes": 2906,
+      "sha256": "da7a10597c2308f96ecb460bcebba0a1e57ebca7d239245a6ec00aac9555fd3e"
+    },
+    {
+      "path": "src/vispy/visuals/collections/__init__.py",
+      "git_blob": "30bdc17b8d74c01c178e1630fc66c28211f86ea4",
+      "bytes": 1157,
+      "sha256": "b6e6a758c0033ed5178a35dd07b30d84759b9df70a01c7ed7476aa5fb3d47e73"
+    },
+    {
+      "path": "src/vispy/visuals/collections/agg_fast_path_collection.py",
+      "git_blob": "ae525e2b8df4039afd434f7c541a1b5ea612eb61",
+      "bytes": 7863,
+      "sha256": "6f5fdbf720ce31d23f4baca51b8337a016d3227fe69785b7b1b50724181aec22"
+    },
+    {
+      "path": "src/vispy/visuals/collections/agg_path_collection.py",
+      "git_blob": "0b0fbec14dac4d55cc99b047e4cfc9a423297e27",
+      "bytes": 6899,
+      "sha256": "1aad8c0ec1412f9717afa6c215ed64b8005dd4bee3cd56e1d8e95674e02b2eb8"
+    },
+    {
+      "path": "src/vispy/visuals/collections/agg_point_collection.py",
+      "git_blob": "c729c8037db19915c7c0c2d30550dea0784d0c0e",
+      "bytes": 1766,
+      "sha256": "9fc0272b145eb113176238cded41d55cbf2f17f055417806d7e8704a0efc8e8e"
+    },
+    {
+      "path": "src/vispy/visuals/collections/agg_segment_collection.py",
+      "git_blob": "cae58cdc09a19a3373f55c6bbd0a3b4c63a318c1",
+      "bytes": 4852,
+      "sha256": "4bb036c82953b0c53b1b0ce9f28166fde8141b485cb6442c2399133f7ef2b9d3"
+    },
+    {
+      "path": "src/vispy/visuals/collections/array_list.py",
+      "git_blob": "30c2be95aeb301ba908395ac62f180f65c120186",
+      "bytes": 14451,
+      "sha256": "814579f4ea4b0a4fcac8c9173918865175f9c5a920d7e87d56fa71e5d17d6c4c"
+    },
+    {
+      "path": "src/vispy/visuals/collections/base_collection.py",
+      "git_blob": "71b40947953a1ed5f65fd094e133515e7b4e92b4",
+      "bytes": 17221,
+      "sha256": "2d8bfcca3c9c8a4ed2a339c5e0e4f7039431da575707e14b99d825938e85a2c5"
+    },
+    {
+      "path": "src/vispy/visuals/collections/collection.py",
+      "git_blob": "d0e08b33a8821b9ca111fa3d9b50824d80cda19d",
+      "bytes": 9177,
+      "sha256": "f8fb5a96f7aae6316791d2ca415bde41d1015acd0150b58c2aa45db0752da735"
+    },
+    {
+      "path": "src/vispy/visuals/collections/path_collection.py",
+      "git_blob": "dff6b2c4db740edcb984f1b47b8c755ad6049e26",
+      "bytes": 1015,
+      "sha256": "f028507bc713b9c5ecae8386a504065b35645ebcf5ff0ac8db8f89f534410efd"
+    },
+    {
+      "path": "src/vispy/visuals/collections/point_collection.py",
+      "git_blob": "ba6280883c69b5258882a4ac9652829874ece241",
+      "bytes": 759,
+      "sha256": "b7e1dfb14893503dbfe3ed9207f12dbbc0131a8e33ba86ef5fdac59b031ee791"
+    },
+    {
+      "path": "src/vispy/visuals/collections/polygon_collection.py",
+      "git_blob": "13a46390456d1fdfee0bcc6ec84a15777ef43f72",
+      "bytes": 1075,
+      "sha256": "9442796783112325a5c2ae36ab867ba632339b504576f969987ee92a100f2915"
+    },
+    {
+      "path": "src/vispy/visuals/collections/raw_path_collection.py",
+      "git_blob": "4a381d63352db9eaf098f5a8f168fb6f839dd6bf",
+      "bytes": 4245,
+      "sha256": "79958a3b16c75d003442dad1e46cefced97988bccf7cd46774c089a38b73fee9"
+    },
+    {
+      "path": "src/vispy/visuals/collections/raw_point_collection.py",
+      "git_blob": "009a24abadfacdb7f870fa827946c3bec85265fb",
+      "bytes": 3695,
+      "sha256": "c41421e6ea4b0e54d2f09f580d213d27087f1b1b77fab7c9272f306747cd2372"
+    },
+    {
+      "path": "src/vispy/visuals/collections/raw_polygon_collection.py",
+      "git_blob": "7b6076ec0b5ad664196cbd65df7f81039c80e123",
+      "bytes": 2749,
+      "sha256": "5fb9ba086c545903ae4fb28605b8a6d814e37e2c55b7b5069d1384dba6855e5c"
+    },
+    {
+      "path": "src/vispy/visuals/collections/raw_segment_collection.py",
+      "git_blob": "6c8749e5701af1630112c1cec3eec453b1e063ce",
+      "bytes": 3618,
+      "sha256": "f529f7f16ba374717cefd7ad51e10485d10df063ff3c2d64d5302872854f1e27"
+    },
+    {
+      "path": "src/vispy/visuals/collections/raw_triangle_collection.py",
+      "git_blob": "8b8371715adb56b81998a5d56a1e26e73520bc7f",
+      "bytes": 2682,
+      "sha256": "2e6c5e70598c54de0f6fc4103364e8299bdd6129c3592726bb31556911f8ab21"
+    },
+    {
+      "path": "src/vispy/visuals/collections/segment_collection.py",
+      "git_blob": "a2040a3a6d12449f3f0deee6d2246a5d9f9fcafe",
+      "bytes": 816,
+      "sha256": "f457aed731604e69ec9ec3081d225e098f26133f3ae270fd741922fc6953a31b"
+    },
+    {
+      "path": "src/vispy/visuals/collections/triangle_collection.py",
+      "git_blob": "011f2a3817885da3bc1004b30ef06a15af152a1d",
+      "bytes": 641,
+      "sha256": "8671150e1f1f99db9379db5dc2a02fe81d7330b40c02444d080639281023e613"
+    },
+    {
+      "path": "src/vispy/visuals/collections/util.py",
+      "git_blob": "db374c086635449069d0adacb18d05c57191a090",
+      "bytes": 5391,
+      "sha256": "6b55485c270b428fac8113896919927bb25a72756822b9050ffa805a0fc99337"
+    },
+    {
+      "path": "src/vispy/visuals/colorbar.py",
+      "git_blob": "1641fc85397c0a4073402fffbf76de27c855744d",
+      "bytes": 24459,
+      "sha256": "fb5b1a50321e3fc8e31bc2e0900ba06285a8c87bc8d26d74ff1358e3971e6a98"
+    },
+    {
+      "path": "src/vispy/visuals/conftest.py",
+      "git_blob": "f151093fcaa79da7d8b25f120987bf3f0753ca92",
+      "bytes": 666,
+      "sha256": "f1f2416beb6409513fc46df96d4183f9910b506ccfff580f3671dd8a65a090db"
+    },
+    {
+      "path": "src/vispy/visuals/cube.py",
+      "git_blob": "8fa4af5d3b1835a64cdb6bba9a2e4ef0cb9fb0a7",
+      "bytes": 1764,
+      "sha256": "73f620373e04ba1296e73fc7e58976cc83a99b074953ae07dfbf11664b960d20"
+    },
+    {
+      "path": "src/vispy/visuals/ellipse.py",
+      "git_blob": "3c6215462fa5482a070041af6403c15a07619ff2",
+      "bytes": 5236,
+      "sha256": "baab12c542fbe22d9a8b05c61f3bb06c66dd9e32de2809616a0792a6373499dc"
+    },
+    {
+      "path": "src/vispy/visuals/filters/__init__.py",
+      "git_blob": "5987daefbb232d57f91eddfa37ec1a40a8e98d0b",
+      "bytes": 556,
+      "sha256": "0666cb97cc3d64e11d454f1f872707427ed31f953e62f2464ad77e1d4ba4ed25"
+    },
+    {
+      "path": "src/vispy/visuals/filters/base_filter.py",
+      "git_blob": "1cab15cc6306638e9ced348e69a384622bf3c4e8",
+      "bytes": 7766,
+      "sha256": "c241f9412cebf44721147f4610c0cd833e49db0383d3d28fd0277f1d7db97106"
+    },
+    {
+      "path": "src/vispy/visuals/filters/clipper.py",
+      "git_blob": "b67f7a2d18dfdcf2361838ad2e004cf944105c60",
+      "bytes": 1801,
+      "sha256": "4b83bc0c4d16d8cae7d3bd116bccbdc1e17262b7e48feacc4c39f12870a75c3e"
+    },
+    {
+      "path": "src/vispy/visuals/filters/clipping_planes.py",
+      "git_blob": "ab71c667c3555a90203cd99355c4a5fc870c8765",
+      "bytes": 4649,
+      "sha256": "c72668a63db383abcad48871c0644af8fcb106556214bca30261f6c78d412dcd"
+    },
+    {
+      "path": "src/vispy/visuals/filters/color.py",
+      "git_blob": "f56588d83bd4dfa21d816d8ff291e7f6b20bb48d",
+      "bytes": 5230,
+      "sha256": "33f685f93342b700e37efa5bb631fad93a1508dadf30a103301fe4831477ea4b"
+    },
+    {
+      "path": "src/vispy/visuals/filters/markers.py",
+      "git_blob": "f0085c03783aa4963dea6077f0940f3e966f35a1",
+      "bytes": 1101,
+      "sha256": "1011423557481aacf902bcc354ff7a6b691534236ccf4b168081802610165a08"
+    },
+    {
+      "path": "src/vispy/visuals/filters/mesh.py",
+      "git_blob": "61cb52033a2917f67f3350b1651ee248c75754db",
+      "bytes": 28643,
+      "sha256": "5bf7815ad1bffa381fdbbc549a7a7441fd6a312ec110a9589bac26a264121ac1"
+    },
+    {
+      "path": "src/vispy/visuals/filters/picking.py",
+      "git_blob": "5a47dce095c02c1d2b8937a7350d1cace6e8f645",
+      "bytes": 1597,
+      "sha256": "e38f580cd658475e23b7a28c873b38d70cf596c8a4ec5d29d9868c667c85647a"
+    },
+    {
+      "path": "src/vispy/visuals/filters/tests/__init__.py",
+      "git_blob": "8f3b20f99af8904c6c053474511aa6515abdfa49",
+      "bytes": 163,
+      "sha256": "ca10dec745c39f44887aa469f107b324f277ba817a5c4e138c8222e6cbb2554d"
+    },
+    {
+      "path": "src/vispy/visuals/filters/tests/test_primitive_picking_filters.py",
+      "git_blob": "c31b909d5ebe7d216f099ea494f4fcedf00612a0",
+      "bytes": 2301,
+      "sha256": "3baa2b700ef147a341b034611b1868a46fb42c8327a2142a0c5e42b3599e00f6"
+    },
+    {
+      "path": "src/vispy/visuals/filters/tests/test_texture_filter.py",
+      "git_blob": "a25f0d8e89799f4c2548b398d4eb022bf24eb94d",
+      "bytes": 9062,
+      "sha256": "d9ddcf4c34b1e6d89fc07b8aa10d66fdc68d65c487f499f3aad3445d0f1920f8"
+    },
+    {
+      "path": "src/vispy/visuals/filters/tests/test_wireframe_filter.py",
+      "git_blob": "f0f471dc13db4c7c488eaf25dd8c60d7ac645f64",
+      "bytes": 507,
+      "sha256": "369637d9947b690188263e4d1554c3d8e0b6abecce65de1ed126458b07fb3263"
+    },
+    {
+      "path": "src/vispy/visuals/glsl/__init__.py",
+      "git_blob": "d93a4b45815d7eac6c714d96b06d3d31d279f108",
+      "bytes": 44,
+      "sha256": "5c745a5892c4f277b007b27f0c619e8579fad9e63b9511feec9e60ab1ba5b936"
+    },
+    {
+      "path": "src/vispy/visuals/glsl/antialiasing.py",
+      "git_blob": "7795545e7f6c08afa154afeffffb9cc045919c93",
+      "bytes": 3328,
+      "sha256": "6883fe2a2933482c2a4686e089218bfc69e37ca9a86e2cd2b07183f9e7760aa8"
+    },
+    {
+      "path": "src/vispy/visuals/glsl/color.py",
+      "git_blob": "49080c3b5752f0b74bc54fd4cd3ad6eec449a2c4",
+      "bytes": 1728,
+      "sha256": "b4c7757bdcbe24cca44ccfc4b8ac7f3cba64df32a68d4908c6ba0d12f018c93d"
+    },
+    {
+      "path": "src/vispy/visuals/graphs/__init__.py",
+      "git_blob": "48d7ecc9ce443f51d1f2e92f508f843e8ebd51a9",
+      "bytes": 40,
+      "sha256": "3ea6386c4a4d745533b5f77643293d5d895f1fe3c87addd110f06e0e2ae56dd5"
+    },
+    {
+      "path": "src/vispy/visuals/graphs/graph.py",
+      "git_blob": "96aff4e82fd7ea62c707e0e7193f128527b9606a",
+      "bytes": 8100,
+      "sha256": "b33f7bf74ca7cba727ef5c9b6c8fa328fc806ec49a825f30609c8fcd4524e10c"
+    },
+    {
+      "path": "src/vispy/visuals/graphs/layouts/__init__.py",
+      "git_blob": "5fefa719e14357ca87e045445051cc5b9d686d2f",
+      "bytes": 1521,
+      "sha256": "52716509af3c467f35de7cb172c3adcbdd502781d0a18a9dba9ef030f9afe356"
+    },
+    {
+      "path": "src/vispy/visuals/graphs/layouts/circular.py",
+      "git_blob": "3d223df999cdad3de7f274ceca58e873190405c3",
+      "bytes": 1608,
+      "sha256": "668544c2cc9a2b4b6e8324fbee82e97cb836e952a1825260197ad0071d4bc52f"
+    },
+    {
+      "path": "src/vispy/visuals/graphs/layouts/force_directed.py",
+      "git_blob": "cf033e072418716f1541f5eefc154c961ee249a5",
+      "bytes": 7595,
+      "sha256": "f0ef7e90d5cb043a9f23ae06a4582fea382aacd1a979abe4b8513772ddb20790"
+    },
+    {
+      "path": "src/vispy/visuals/graphs/layouts/networkx_layout.py",
+      "git_blob": "c311cd063145a9f0e03c3c2b2be76ce37eeeb4e1",
+      "bytes": 3653,
+      "sha256": "fa1eb70edc4675bb94faddef187f2b238347a34f7ec0623e42b4bfcfb600ed04"
+    },
+    {
+      "path": "src/vispy/visuals/graphs/layouts/random.py",
+      "git_blob": "6b5a28c4bd2c910a6cdc7163439b4f273babb4c5",
+      "bytes": 1726,
+      "sha256": "f2a7d12635918e23d150e749fc915a2286e5d4d4afd4fb17376425a33b6924d8"
+    },
+    {
+      "path": "src/vispy/visuals/graphs/tests/__init__.py",
+      "git_blob": "613fd1e19009e8329e34c98d2b9757bd4d411174",
+      "bytes": 22,
+      "sha256": "587a4ae3485c83da37961397ec32406811ec5863974f2f73044628b244e64289"
+    },
+    {
+      "path": "src/vispy/visuals/graphs/tests/test_layouts.py",
+      "git_blob": "8e1f97364a9ab7a958420e29fb0de4ae23a6d107",
+      "bytes": 5342,
+      "sha256": "01f78e0f4237346f1c20d30f88bcbea00fc05e14e8eda8f03e482edf1739fee8"
+    },
+    {
+      "path": "src/vispy/visuals/graphs/tests/test_networkx_layout.py",
+      "git_blob": "d69c36cc403423945329f7185f14ca7202812000",
+      "bytes": 1564,
+      "sha256": "da6f6f87d166908e1d8464bf2f2d325342ba563ef06c712ffdfe4865e00ab103"
+    },
+    {
+      "path": "src/vispy/visuals/graphs/util.py",
+      "git_blob": "8b9e7bf4a5b5f6162cb2f52df71a1c78c624f05a",
+      "bytes": 3362,
+      "sha256": "bf75d20f0b9c7a0865113c4a7211f5e4b436aa96040aa8d3a3e4a858ef5babf8"
+    },
+    {
+      "path": "src/vispy/visuals/gridlines.py",
+      "git_blob": "03e3e60ddc944820fae10611fcf341826affc870",
+      "bytes": 5420,
+      "sha256": "24d294babd3918429d6554eb1cd0ade9c4ec47619433e3dbecc8dd45eb3d980a"
+    },
+    {
+      "path": "src/vispy/visuals/gridmesh.py",
+      "git_blob": "636f54b47e5a72818de1d7081227a81d2159891a",
+      "bytes": 3444,
+      "sha256": "33d08182e527165f7b17e90db5c85d9215d2b6e28f2307c94f589dba0c55f57a"
+    },
+    {
+      "path": "src/vispy/visuals/histogram.py",
+      "git_blob": "9e24ff76fcdfd62b7d81ea8cf2c6402eab605121",
+      "bytes": 2122,
+      "sha256": "2da4c0494323d57247c5320bf6d4804ee14f2148ad231c940caa9fa5066a56dd"
+    },
+    {
+      "path": "src/vispy/visuals/image.py",
+      "git_blob": "9dbfff3ed64195ccbb04ac09b7f92d8d317894b4",
+      "bytes": 28161,
+      "sha256": "e37a5fdedd3c51c290c96774c36b7cd80f52e86d6fa504af088eadeab045a3d0"
+    },
+    {
+      "path": "src/vispy/visuals/image_complex.py",
+      "git_blob": "a1289f47399fc0bb52ac99e45c59d4ef0f3acf42",
+      "bytes": 5403,
+      "sha256": "18fce50b9ef33fa5230155d0bd6f2450501f5b6ec0a862c0ce63e7326e374ba9"
+    },
+    {
+      "path": "src/vispy/visuals/infinite_line.py",
+      "git_blob": "dccc611ee88683a657002e8c7de71e7eaf7ce032",
+      "bytes": 6205,
+      "sha256": "bce2ac6f07b4028cad287ca707808cf51b4713b85696176c7b48f42b39415fba"
+    },
+    {
+      "path": "src/vispy/visuals/instanced_mesh.py",
+      "git_blob": "c0b3f3da72134423e3abad45c753026c637b33d0",
+      "bytes": 8311,
+      "sha256": "3e53887d5e8a2fb8e9ebf01d347a211c7a67f93ad40e202c738c18e28d202e30"
+    },
+    {
+      "path": "src/vispy/visuals/isocurve.py",
+      "git_blob": "383e940b18cd835397854d4e16d2c07f5544f89e",
+      "bytes": 8133,
+      "sha256": "e6c4d3a8af37c37ac16775c6ee89704884595c71e358da53dd2c44847365c691"
+    },
+    {
+      "path": "src/vispy/visuals/isoline.py",
+      "git_blob": "b02b25c282ad3221190b429fd796d7b2d6d5704e",
+      "bytes": 8749,
+      "sha256": "43acb9db8c6e1546875d35d7855c79d813c4795698b16d117b46538e535ed480"
+    },
+    {
+      "path": "src/vispy/visuals/isosurface.py",
+      "git_blob": "0d57a7d70a1231614e77031bd63b903056fd6121",
+      "bytes": 4013,
+      "sha256": "071710470f67d297729ef8a707f5aaa45089cde5470bc46719ee0225b824894c"
+    },
+    {
+      "path": "src/vispy/visuals/line/__init__.py",
+      "git_blob": "bcac9c221778b667b25bc9f5acbdaf80eebc11de",
+      "bytes": 242,
+      "sha256": "293b4f4f84f189d2041c9d8d23ea80cc8f0945e0e00d5722bc9d34af04ddfa0d"
+    },
+    {
+      "path": "src/vispy/visuals/line/arrow.py",
+      "git_blob": "c8abdcf952ce5ca6ef1066ab671c69d61a7bc01e",
+      "bytes": 10439,
+      "sha256": "ed3c77bb9e15a3630ef04f3f51b6138f45d51e345b7d7bd51fff740469c63140"
+    },
+    {
+      "path": "src/vispy/visuals/line/dash_atlas.py",
+      "git_blob": "8a5029be3f471929c6024b618794f70114a7d675",
+      "bytes": 3065,
+      "sha256": "16042c7096af6fa98057db7cb9cc9fc234be1762eb7811dcaf84c9d4dd1e1b90"
+    },
+    {
+      "path": "src/vispy/visuals/line/line.py",
+      "git_blob": "7394c916a7a0d37b181be2d18b94545c12563375",
+      "bytes": 19987,
+      "sha256": "027dde892f0590da192168481d227f8654a40e199c05b89ba0615f79edcaeec6"
+    },
+    {
+      "path": "src/vispy/visuals/line_plot.py",
+      "git_blob": "82e7546bff0b445fd35e78ab82a82d6258f6be5c",
+      "bytes": 5017,
+      "sha256": "5bdc194c035f574ff41036da0a1e2b083339c4e9fd54688b1aa53a8ee7affa45"
+    },
+    {
+      "path": "src/vispy/visuals/linear_region.py",
+      "git_blob": "519df754eaa682981e66669c435b5b589ed5eef4",
+      "bytes": 6813,
+      "sha256": "e4245de3736457f86fdab503420ba61f24fbbe0a5685b2b9c114796a66a04e4d"
+    },
+    {
+      "path": "src/vispy/visuals/markers.py",
+      "git_blob": "b098cb056c62f2d6b8e33b9821c5d013e0151c15",
+      "bytes": 38778,
+      "sha256": "84990f7b14ff92a4acfcccf39bcc8c788b7c9df76e75e85fc8c4e4e102b119c3"
+    },
+    {
+      "path": "src/vispy/visuals/mesh.py",
+      "git_blob": "01364406191466fcdcbb2993315bba6b44ce92b9",
+      "bytes": 12960,
+      "sha256": "920cdf5a3780f5bce5f93114bed83abbdbf605e33cc9f1cb8010227b845c1f7d"
+    },
+    {
+      "path": "src/vispy/visuals/mesh_normals.py",
+      "git_blob": "aa745a1aac31b45ab40971ea75a19349dfba7510",
+      "bytes": 6513,
+      "sha256": "98b65decea6cd7d33646a0b34531dade8eb5ce1bf0bb6ba613bb9de20aaf91ac"
+    },
+    {
+      "path": "src/vispy/visuals/plane.py",
+      "git_blob": "08cd19d163c4148cccc20759742e72f0f1377851",
+      "bytes": 2257,
+      "sha256": "53f148f32e417a3b634e7ae819e29890e4ce7503d250bd4894ed5955775f6fe2"
+    },
+    {
+      "path": "src/vispy/visuals/polygon.py",
+      "git_blob": "03b8d44217306d742a81e19d91f10f90429c2b13",
+      "bytes": 4755,
+      "sha256": "9d015cc84c68cbf412d0417d5e8c39351c172d8b6a0bab5977f29565f06d160c"
+    },
+    {
+      "path": "src/vispy/visuals/rectangle.py",
+      "git_blob": "3acc1063a0cef0fd7678922fa88c5a49e2c91374",
+      "bytes": 6860,
+      "sha256": "076f697be5521e6737a2086590e61a1780c76eb7c18703ef1acbf0343515aad8"
+    },
+    {
+      "path": "src/vispy/visuals/regular_polygon.py",
+      "git_blob": "4719a762535f4b821bafd4158d8561e49a38d40c",
+      "bytes": 1877,
+      "sha256": "ddc928507b798f58eb16b7a53377b743f89e115e7c99879885bc7439045ed8d9"
+    },
+    {
+      "path": "src/vispy/visuals/scrolling_lines.py",
+      "git_blob": "6ffdc1c17eedde47123ddc35ba60a206fd43a0d9",
+      "bytes": 7262,
+      "sha256": "3e4c69f09b87ff815b77db4c72d64dd56e413642383582920ac1987bfc843d89"
+    },
+    {
+      "path": "src/vispy/visuals/shaders/__init__.py",
+      "git_blob": "82b4045147ef067bb8246e9a21819e848340f710",
+      "bytes": 691,
+      "sha256": "8f67ae47333e39f6580b72f9cbcf0ff21e5e06b071625356f66f10972961a70d"
+    },
+    {
+      "path": "src/vispy/visuals/shaders/compiler.py",
+      "git_blob": "9db354541e4a85e985f2cda2b12adff11ab67ffc",
+      "bytes": 7506,
+      "sha256": "106f50bfecd92cdec27f3512c3f9b27128f17dfc4aa3dbf39c69f4a862598461"
+    },
+    {
+      "path": "src/vispy/visuals/shaders/expression.py",
+      "git_blob": "dca3d8bbf01caa7dfa17fe6e7def10e44358f7a0",
+      "bytes": 2874,
+      "sha256": "4db064b670293e1c50f8d5befd589599e4da057a83c059d1528dabcb54da9064"
+    },
+    {
+      "path": "src/vispy/visuals/shaders/function.py",
+      "git_blob": "c07a04737b3de082b0706c10d656f29737cd41b1",
+      "bytes": 27173,
+      "sha256": "54ab8f13df5c1360648e42697dbb24fe6e551b38590fb0a1d1ce4085ba6b4150"
+    },
+    {
+      "path": "src/vispy/visuals/shaders/multiprogram.py",
+      "git_blob": "d055ced5bd45c6dcc08eaa14676e5776149be6e1",
+      "bytes": 4561,
+      "sha256": "1d47904f95eb33fe978c79d14a300a76f848ff0d52f5ec797be64fd8cecf5409"
+    },
+    {
+      "path": "src/vispy/visuals/shaders/parsing.py",
+      "git_blob": "100679f550cb5b6c2320a224fde29d24d11345f7",
+      "bytes": 4740,
+      "sha256": "eb24a61c7066b94fd78d9443f3ead6fd624f31c212d8b63e2e44d52a6d6329e9"
+    },
+    {
+      "path": "src/vispy/visuals/shaders/program.py",
+      "git_blob": "d09595e7fff69e084fd96c3865e9cf61a1f58dc3",
+      "bytes": 5722,
+      "sha256": "892052764618b4f8550643d320dd880dafed7dde4398428f84f1e7dd6247443e"
+    },
+    {
+      "path": "src/vispy/visuals/shaders/shader_object.py",
+      "git_blob": "1497959228082bfe88d039aea7a3b298069f3161",
+      "bytes": 5933,
+      "sha256": "937c273146ba5a38d2f7dd6f05a532fbe8b19ca35c35014aedb73f73def3f716"
+    },
+    {
+      "path": "src/vispy/visuals/shaders/tests/__init__.py",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "src/vispy/visuals/shaders/tests/test_function.py",
+      "git_blob": "fc4dfc347743a206ea88eb0171c3649bd73c6a9f",
+      "bytes": 13767,
+      "sha256": "d1b10a12788abc7ebc7a050cc30526ea8ec2e252b723da0fd53f3b26af950943"
+    },
+    {
+      "path": "src/vispy/visuals/shaders/tests/test_multiprogram.py",
+      "git_blob": "016cc15bbbe44a0bbfa172d116f6d5e714c43b7d",
+      "bytes": 2312,
+      "sha256": "95ff7344f0a65a14351de2d5cf855f8b9a8111f1665d1e8655ad39033262e9a9"
+    },
+    {
+      "path": "src/vispy/visuals/shaders/tests/test_parsing.py",
+      "git_blob": "e0208d0ac1146a5dcf40db9a32d2d757401b0dc3",
+      "bytes": 1529,
+      "sha256": "281100ab2cbb387f3b0e7c9f84b20c076ece338741c0a8d3c8a034064596ccce"
+    },
+    {
+      "path": "src/vispy/visuals/shaders/variable.py",
+      "git_blob": "aa0af0aa41118458958a6303022a1b7665e0ee5a",
+      "bytes": 15270,
+      "sha256": "968ea731a1672fbf7624780fa2cde15f922db5808debdb8b8a5a57a247a6da3e"
+    },
+    {
+      "path": "src/vispy/visuals/spectrogram.py",
+      "git_blob": "1d9f724a5835a8219444e95f7e420180d1cc8bbb",
+      "bytes": 5109,
+      "sha256": "0e1a3cfe63b1bf14fc43375421b52a38635d48986d7f821e663c95369d59b593"
+    },
+    {
+      "path": "src/vispy/visuals/sphere.py",
+      "git_blob": "d0c33706e5227dedcfde0b31fe6f30b0925ae6dc",
+      "bytes": 3171,
+      "sha256": "d8932c9a8ca342f3ba17b1be5b5060db0014423cb27a84cf5823d342cd380755"
+    },
+    {
+      "path": "src/vispy/visuals/surface_plot.py",
+      "git_blob": "ed40d263f6a3ed23e134540e5e45173edd36f1bb",
+      "bytes": 7523,
+      "sha256": "920fdef544401b11ff8a9a56cabc46cca5e20af94a4adad633e37e335b35a962"
+    },
+    {
+      "path": "src/vispy/visuals/tests/__init__.py",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "src/vispy/visuals/tests/test_arrows.py",
+      "git_blob": "96cc4114298d153e481a178b5a5125cf659c781c",
+      "bytes": 3671,
+      "sha256": "1d0b40a6d9432dd56becac9c84185c3c5213ec1480d26aa78caf2896b0cb256f"
+    },
+    {
+      "path": "src/vispy/visuals/tests/test_axis.py",
+      "git_blob": "a613a277cde593491859eae8e05ae39730ea9d25",
+      "bytes": 4445,
+      "sha256": "af9af085751e03748144c80745c013d78090d46ea1ac0914d2ce38ba1d7ed694"
+    },
+    {
+      "path": "src/vispy/visuals/tests/test_collections.py",
+      "git_blob": "6202ada7040fa7b7ac4ec9e368f007c95ca406bf",
+      "bytes": 582,
+      "sha256": "8d5ef40646dc6d213f3f7b73b0d68ab53405e543977883062599b95c58fa1a06"
+    },
+    {
+      "path": "src/vispy/visuals/tests/test_colorbar.py",
+      "git_blob": "c5ed718f9de45ccc2fbc6a2e11c40c6e30fe739e",
+      "bytes": 6166,
+      "sha256": "68adf200ca912b1c061a48df42b07d1d9200f4ffbe2f3ea09c2790e87868712c"
+    },
+    {
+      "path": "src/vispy/visuals/tests/test_colormap.py",
+      "git_blob": "d065d05e6f3fea2ddbf03b4281177dedbb6e778b",
+      "bytes": 3838,
+      "sha256": "9931eeaee1cf027995043f03fbcd75161688ed23146dd061eae634af8f9d80b9"
+    },
+    {
+      "path": "src/vispy/visuals/tests/test_ellipse.py",
+      "git_blob": "a72990b838a5e71ce52104703b037a6d14c22b4d",
+      "bytes": 5067,
+      "sha256": "fefbf7c2757a93fa53e5c0d004ac24fb8a8aa9d7629b6345794e362ba14b318c"
+    },
+    {
+      "path": "src/vispy/visuals/tests/test_gridlines.py",
+      "git_blob": "784d4ce44e0ea78f85b03a68112ca543f8c3beea",
+      "bytes": 2529,
+      "sha256": "debf6e19eb75bead0472942f1ef0acffdd52beda292c21ee58883c7d85d57f29"
+    },
+    {
+      "path": "src/vispy/visuals/tests/test_histogram.py",
+      "git_blob": "a5d3e34ff48a0819bc823ff75add464a9fbb1923",
+      "bytes": 838,
+      "sha256": "c7c92eaf278440fcbcc993c418748f520c279ed9f8959439e7a45a8f2f4d9714"
+    },
+    {
+      "path": "src/vispy/visuals/tests/test_image.py",
+      "git_blob": "3b88d2d1015c583a98bcb437c4c5b1fab77a304b",
+      "bytes": 31133,
+      "sha256": "33debe1c407ba82dd66580a21d92260fa3849b3a2144619a4006f5c01cb5a134"
+    },
+    {
+      "path": "src/vispy/visuals/tests/test_image_complex.py",
+      "git_blob": "2aee2077af17e788e68f628eb31906836493af50",
+      "bytes": 1487,
+      "sha256": "f31a02ef55b2f6dd726f9068b74d821073209902451873cb085af9237667c2d1"
+    },
+    {
+      "path": "src/vispy/visuals/tests/test_infinite_line.py",
+      "git_blob": "18984f2cc34c0f3ee180bad030eb731bff8906e7",
+      "bytes": 1989,
+      "sha256": "3e7c8127d74a985c0f9689f6adf136dce49e2e2387eb99a664a80376559581ce"
+    },
+    {
+      "path": "src/vispy/visuals/tests/test_instanced_mesh.py",
+      "git_blob": "cd3b2428b9dbee191601df2c0613328528d8c1ef",
+      "bytes": 20278,
+      "sha256": "789c4da45c73fcf127e512d69d75d557830364249ad7ae9d4d7911974e1d2d0c"
+    },
+    {
+      "path": "src/vispy/visuals/tests/test_isocurve.py",
+      "git_blob": "60003b72929e6fdb823b52e8a21f3615af87f32f",
+      "bytes": 7353,
+      "sha256": "c4ab09b56dbc8943539206711f724876fa76162ef1521c95545d51c4bd728b9a"
+    },
+    {
+      "path": "src/vispy/visuals/tests/test_isosurface.py",
+      "git_blob": "192da16141afc83b348d9158cf498df494ce9cb7",
+      "bytes": 491,
+      "sha256": "dad7cf756c73878664d3d0e6c4b8c63b954a1b68080b337973eb8bcacdc963f6"
+    },
+    {
+      "path": "src/vispy/visuals/tests/test_linear_region.py",
+      "git_blob": "443047d337afc839366c3d39b7a1f83a66625908",
+      "bytes": 6368,
+      "sha256": "aa1fdab94511c773d51d2d0f4c5db867560a6d5405b9cef7bc73de8ceba30017"
+    },
+    {
+      "path": "src/vispy/visuals/tests/test_markers.py",
+      "git_blob": "5d62b355eb4729d35793d44072c43c7302b06ebb",
+      "bytes": 4721,
+      "sha256": "c9961970b7bcf6b1d3b27ffe55432def925a3ae116380b71ead06203b679d5d3"
+    },
+    {
+      "path": "src/vispy/visuals/tests/test_mesh.py",
+      "git_blob": "de9f4ec6b7ad0d61ddeb5d0a18306d43c482edb9",
+      "bytes": 17439,
+      "sha256": "5fbff14281364c36809120c5168b6f066676cbd04359d2c29227587e96563244"
+    },
+    {
+      "path": "src/vispy/visuals/tests/test_mesh_normals.py",
+      "git_blob": "a8d605eebbf41b85df46296dc8ae27ed27991309",
+      "bytes": 8901,
+      "sha256": "e8bdbc3094939f752ad1f0e728ff7dfd06ba7174e03f9bf17ffa763996da4afa"
+    },
+    {
+      "path": "src/vispy/visuals/tests/test_polygon.py",
+      "git_blob": "946be208f18f95ebc266a84f838df278d4d7cff6",
+      "bytes": 4269,
+      "sha256": "0bfb60ff0aa1386ca97da47f3a02864a8bdb3757bddaebc0afcb748bc96b2b75"
+    },
+    {
+      "path": "src/vispy/visuals/tests/test_rectangle.py",
+      "git_blob": "f18945d653567d7534d53687791af7ee07a6ea2e",
+      "bytes": 6821,
+      "sha256": "237bca9e36860de4e8103a1c2cf83c6569b6453d8b68c89db54b1913b7e96221"
+    },
+    {
+      "path": "src/vispy/visuals/tests/test_regular_polygon.py",
+      "git_blob": "069d2763d9c3be9f7a9eafd6cbb1bd1037422de8",
+      "bytes": 4942,
+      "sha256": "a5036405e5c5a8f720a6e3c831dc4665075ec396e7c9ab1f7b05f042792e217a"
+    },
+    {
+      "path": "src/vispy/visuals/tests/test_scalable_textures.py",
+      "git_blob": "ac4fccb932ce9ee23e518d2e78089a9a545950c8",
+      "bytes": 5885,
+      "sha256": "c3069774c1f875ec53a14f77d5192e0f1cb1c5b02a52979ea5d46fffe37de128"
+    },
+    {
+      "path": "src/vispy/visuals/tests/test_sdf.py",
+      "git_blob": "f651d0c47fc1109d471ec6d35b859fed721ab44b",
+      "bytes": 3010,
+      "sha256": "3169418ba51fb56471d1319cbe7aed2dc518d59692ced47981303d180f245868"
+    },
+    {
+      "path": "src/vispy/visuals/tests/test_spectrogram.py",
+      "git_blob": "c671d2007b7ca98a28c98d5c961a79eaa38f708a",
+      "bytes": 1376,
+      "sha256": "a1d2be9f59d833ec01cb61f767d7f9624878c819b14fd1d007b13e0b9ddccd2c"
+    },
+    {
+      "path": "src/vispy/visuals/tests/test_surface_plot.py",
+      "git_blob": "adf1a62c692962fc98a8cd84f3f2aa250c68eba0",
+      "bytes": 1819,
+      "sha256": "c5dd01ac6872b080f3b751292ccddfeb6248844d40c3f25f5de0b7069d4bcdb7"
+    },
+    {
+      "path": "src/vispy/visuals/tests/test_text.py",
+      "git_blob": "726ea0f631c706c143e886fb360365baf033d433",
+      "bytes": 2895,
+      "sha256": "c1e6df5ad25c4a05248f7401b59e24820aece4e76419919bd1bc987389adada3"
+    },
+    {
+      "path": "src/vispy/visuals/tests/test_volume.py",
+      "git_blob": "5d9a67b9d998cd791b3011828d7323190b0166b8",
+      "bytes": 34690,
+      "sha256": "fef6b88080a1339768cda3c22465f9bbb9ef08a88031693c3c416ebc61261515"
+    },
+    {
+      "path": "src/vispy/visuals/tests/test_windbarb.py",
+      "git_blob": "3f8c4de8465cb2b4fdabec7416b79febe2fb2252",
+      "bytes": 1135,
+      "sha256": "72a1047009cf31fdbd665a0bd9f589a36374e25ac98264270fe2adf265d61100"
+    },
+    {
+      "path": "src/vispy/visuals/text/__init__.py",
+      "git_blob": "3caa970d93600100d9724ad70cbd28483a109180",
+      "bytes": 364,
+      "sha256": "a968060ca47e7b31f8673cc629fb3bd92ff339ab950e7e6c9c9e6e1e762fe8b1"
+    },
+    {
+      "path": "src/vispy/visuals/text/_sdf_cpu.py",
+      "git_blob": "4416673231101f8e3b03964ae86a7f747081a955",
+      "bytes": 3250,
+      "sha256": "3907450d9e0721e0eeebe0d6f006b640e2698381b19031f01864ba6a5eb0219f"
+    },
+    {
+      "path": "src/vispy/visuals/text/_sdf_cpu.pyx",
+      "git_blob": "64420d6c5cf137336d1b06c22288c6ce7050a2dc",
+      "bytes": 3922,
+      "sha256": "ca63c4ae088737d8e1045ba3fc65e70a10334de0db18cf8c51097794897310d1"
+    },
+    {
+      "path": "src/vispy/visuals/text/_sdf_gpu.py",
+      "git_blob": "b7ada9708da5636f0da629846b7ff951f7e55c8f",
+      "bytes": 10796,
+      "sha256": "5d6e672a2be6bd4c7bb40f0b79b0bbbbb377ed041f05c31252b74fbe41bd254f"
+    },
+    {
+      "path": "src/vispy/visuals/text/text.py",
+      "git_blob": "e0f940146947e136a8353a52f8c9521c363b54a3",
+      "bytes": 30047,
+      "sha256": "fe5c158542148db82add500c6e436e6822f377c468419e842fc0b64bb73070e4"
+    },
+    {
+      "path": "src/vispy/visuals/transforms/__init__.py",
+      "git_blob": "76f8a23f4f772baf7c53d4298e43587b22545217",
+      "bytes": 1264,
+      "sha256": "04d6d53b41960684194a18af63f443ad11dc7b2fb33a6428175038ee15e0b9ae"
+    },
+    {
+      "path": "src/vispy/visuals/transforms/_util.py",
+      "git_blob": "9c19f47831647038732f23e59030af62198579e5",
+      "bytes": 5770,
+      "sha256": "b4ad020e013022c5a621a26e34dd79f0817dc0d94e01cbbd6ae1daf06432acc7"
+    },
+    {
+      "path": "src/vispy/visuals/transforms/base_transform.py",
+      "git_blob": "cbbd681e82e203792d7feb6c3410aeaf1bb36509",
+      "bytes": 7715,
+      "sha256": "3921c5deefc832bea7691787138aeb64520374ea7ebcdda61debf69eb66d1612"
+    },
+    {
+      "path": "src/vispy/visuals/transforms/chain.py",
+      "git_blob": "836eea2071e9c1b241caffcbd042277debb5b860",
+      "bytes": 9199,
+      "sha256": "1fd4c4dce12f64ba2d9cf9adb16e5f8ff24b628ad55adb72cdd8b01de4dba45f"
+    },
+    {
+      "path": "src/vispy/visuals/transforms/interactive.py",
+      "git_blob": "13c676827b8f542e82d55848677ee9d6fbe570fd",
+      "bytes": 2868,
+      "sha256": "20d56dac30d81138aa3f619552fb18115f4bfcfaf3d8e95aaab4572f43bc4d5e"
+    },
+    {
+      "path": "src/vispy/visuals/transforms/linear.py",
+      "git_blob": "eb2ef870f25b627fd5a991c8a3d119b7f900dfb6",
+      "bytes": 16253,
+      "sha256": "ea098d54ea8fb4968a1876bf5b07d30623008abe3792693bd1d183c6e071452d"
+    },
+    {
+      "path": "src/vispy/visuals/transforms/nonlinear.py",
+      "git_blob": "ae9cb4b92359b389b46e94596de90a94508e4e92",
+      "bytes": 12936,
+      "sha256": "a221c386aa0cf44e2b046326a99b5548956ca6dd458193918a0e93a799cf3bbc"
+    },
+    {
+      "path": "src/vispy/visuals/transforms/tests/__init__.py",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "src/vispy/visuals/transforms/tests/test_transforms.py",
+      "git_blob": "bbba63c3df2e29216e70a30f0f8f484853d8fdbb",
+      "bytes": 7114,
+      "sha256": "41b028d08de0e5591a433cec674df392d3fe81ed8989741e0f6aea57afcb2bba"
+    },
+    {
+      "path": "src/vispy/visuals/transforms/transform_system.py",
+      "git_blob": "36dbea4c98e22a7629a77498edd758cc0cc8cdda",
+      "bytes": 14098,
+      "sha256": "74a44c89dd469b46e187d2bfbf54620bec716e6405eb5387cffd14afc19d3265"
+    },
+    {
+      "path": "src/vispy/visuals/tube.py",
+      "git_blob": "af1de4d42d0b384e0de56610423db953e542afcd",
+      "bytes": 6158,
+      "sha256": "02db679f70edb9ed214e638d6f77434f4039e93000907a15ba648c9b6e93c8df"
+    },
+    {
+      "path": "src/vispy/visuals/visual.py",
+      "git_blob": "a9dcd65f94b7b750778e8cc1fe9e84a04f2feb6c",
+      "bytes": 30728,
+      "sha256": "00bcf1087d6120f948768e4f467c109bf42ec46aac31c3eaff3c8d904f79aec4"
+    },
+    {
+      "path": "src/vispy/visuals/volume.py",
+      "git_blob": "9579a989ec4419f50506e2565e06d98d6a833691",
+      "bytes": 53591,
+      "sha256": "e7967043adaa6919564543c0600178100e357a92039bb1eca51c90bd6e697cf4"
+    },
+    {
+      "path": "src/vispy/visuals/windbarb.py",
+      "git_blob": "5b718b2fe793c90c156f96a68edea907e0ab6552",
+      "bytes": 9597,
+      "sha256": "f26808313973b29db412763cfd98d7fe3500c9c8aed44ad763e4dad84736149a"
+    },
+    {
+      "path": "src/vispy/visuals/xyz_axis.py",
+      "git_blob": "98d6e3f7f65dc9db32189ceb15776c1048de3212",
+      "bytes": 991,
+      "sha256": "d77362dd03bc35842c0795334174d963b985fd3810b24cce6533cb2ac1d9203c"
+    },
+    {
+      "path": "third_party/licenses/OpenSans-Apache-2.0.txt",
+      "git_blob": "5f1cb8a9cbe7937856e60acb14d7f6c53bcf9dd2",
+      "bytes": 11564,
+      "sha256": "f54fff0b905df5b3464527c652a30e903b172d6dcab4d89b5e6f105d5e4a4603"
+    },
+    {
+      "path": "third_party/licenses/THIRD-PARTY-NOTICES.txt",
+      "git_blob": "d9142f17306c15ed1863cc62e63754e23655ac76",
+      "bytes": 949,
+      "sha256": "5d0535f3b27d7fbe0326ef150f705a8c2e71c39e2ebea87fd0bf949859279333"
+    },
+    {
+      "path": "third_party/licenses/abseil-LICENSE.txt",
+      "git_blob": "5f1cb8a9cbe7937856e60acb14d7f6c53bcf9dd2",
+      "bytes": 11564,
+      "sha256": "f54fff0b905df5b3464527c652a30e903b172d6dcab4d89b5e6f105d5e4a4603"
+    },
+    {
+      "path": "third_party/licenses/dawn-LICENSE.txt",
+      "git_blob": "08e7ccc4f95d780198170d8fa50aece5826b71c7",
+      "bytes": 11829,
+      "sha256": "0493f897193af1796d5054659f45ec7d4c5af648fa67a99f01d30e55cc805abc"
+    },
+    {
+      "path": "third_party/licenses/glslang-LICENSE.txt",
+      "git_blob": "8c9ab0ea642e2498518dd2ea5ce979e88f4eeaaf",
+      "bytes": 55628,
+      "sha256": "7d4c1655be3a4d99e8a4859335e28c8950f2e7f72dcf3eed3379846120f5bf47"
+    },
+    {
+      "path": "third_party/licenses/manifest.json",
+      "git_blob": "0b9d0930269cef67552859d0979c423859d5de5b",
+      "bytes": 1897,
+      "sha256": "6aca7efb598d33d28f5258db3825796db5ee199959610bd570734439a16de149"
+    },
+    {
+      "path": "third_party/licenses/nanobind-LICENSE.txt",
+      "git_blob": "3d3426d400064d53d291c028457f699b3edf9b7c",
+      "bytes": 1521,
+      "sha256": "f305091a4e57805870b217a28ea4b1f16610eece8457d2370f822a9696b75836"
+    },
+    {
+      "path": "third_party/licenses/robin-map-LICENSE.txt",
+      "git_blob": "0ec8e29bdb98f260cc2ecafe1ef1d87c730c6dd2",
+      "bytes": 1123,
+      "sha256": "1b69097c95e2fa5b011cd3754fa35e10f5ce68172877bc59b89523bcb1b9f951"
+    },
+    {
+      "path": "third_party/licenses/spirv-headers-LICENSE.txt",
+      "git_blob": "15a6602d829aa8a2702bbd7b18be084240271cbd",
+      "bytes": 24005,
+      "sha256": "841a6e68e16bfc98db8eca98d7002d4f2b508c56ce865fd6f1726be30ed489eb"
+    },
+    {
+      "path": "third_party/licenses/spirv-headers-MIT.txt",
+      "git_blob": "fe73b46ced21328d5aaf0e81d960cf6f6e004215",
+      "bytes": 1105,
+      "sha256": "e841940147d59e33874ee623a6a3ca0574364de359297fbc427b5824cde30957"
+    },
+    {
+      "path": "third_party/licenses/spirv-tools-LICENSE.txt",
+      "git_blob": "75b52484ea471f882c29e02693b4f02dba175b5e",
+      "bytes": 11560,
+      "sha256": "3ddf9be5c28fe27dad143a5dc76eea25222ad1dd68934a047064e56ed2fa40c5"
+    },
+    {
+      "path": "third_party/licenses/vispy-LICENSE.txt",
+      "git_blob": "9838afc55e243203cee05a6e27f0465ba07dc6b8",
+      "bytes": 1810,
+      "sha256": "a28bb857d763513c810ca843558c12cf97f64b990b855c1ce7f5e291e52fc25c"
+    },
+    {
+      "path": "third_party/licenses/vulkan-headers-Apache-2.0.txt",
+      "git_blob": "75b52484ea471f882c29e02693b4f02dba175b5e",
+      "bytes": 11560,
+      "sha256": "3ddf9be5c28fe27dad143a5dc76eea25222ad1dd68934a047064e56ed2fa40c5"
+    },
+    {
+      "path": "third_party/licenses/vulkan-headers-LICENSE.txt",
+      "git_blob": "bf81f3dfdea49b8e2fb59b9ed84a85da378fcdc3",
+      "bytes": 514,
+      "sha256": "a2d4407962c909f84807774cbfe9fad05a1ebe972472c08ed5ad43d482afd288"
+    },
+    {
+      "path": "third_party/licenses/vulkan-headers-MIT.txt",
+      "git_blob": "75192b630d2e4123b58ca639504f39d2c36eafeb",
+      "bytes": 1093,
+      "sha256": "051daae2dae99c2b0fc9d8363cf704b9456ae0e3c89589ac755d506a0b2c10c3"
+    },
+    {
+      "path": "third_party/licenses/vulkan-loader-LICENSE.txt",
+      "git_blob": "8a57f91d3b5455e8223661ac12811195383444ab",
+      "bytes": 11868,
+      "sha256": "557bd2cc07eff373f3f26c8d5726fefe8e7fc4add97796c2fbf24f74a200214a"
+    },
+    {
+      "path": "third_party/licenses/vulkan-utility-libraries-Apache-2.0.txt",
+      "git_blob": "75b52484ea471f882c29e02693b4f02dba175b5e",
+      "bytes": 11560,
+      "sha256": "3ddf9be5c28fe27dad143a5dc76eea25222ad1dd68934a047064e56ed2fa40c5"
+    },
+    {
+      "path": "third_party/licenses/vulkan-utility-libraries-CC-BY-4.0.txt",
+      "git_blob": "ac354f4cd1008bf46233aed5312cb3d7acb4f910",
+      "bytes": 17179,
+      "sha256": "4500200b91acb1324538d8e8f9665d5f4142d3f1c5cd9730564cf1895b6170f7"
+    },
+    {
+      "path": "third_party/licenses/vulkan-utility-libraries-LICENSE.txt",
+      "git_blob": "44609e0ad09d8704c68479fe3887c8c3358b7239",
+      "bytes": 315,
+      "sha256": "fb0245cd3d866045abba509dc85905a7c2cd1f6642d679d9857e85deb82bfcd5"
+    },
+    {
+      "path": "third_party/licenses/webgpu-headers-LICENSE.txt",
+      "git_blob": "05ed58c17c87ee7dbe872809c4fda627bdf48481",
+      "bytes": 1563,
+      "sha256": "55fdaed683a2d7330a4102faf61f45ec12a0526aada329c4f89f7df0a523116a"
+    },
+    {
+      "path": "tools/audit_linux_wheel.py",
+      "git_blob": "9cabe4e90bc37a9448748bdd9d01f46d2fde2c66",
+      "bytes": 12255,
+      "sha256": "449c1920f3256449e11513e4c1bf485b67a1b382cf3ac9231188ea72372de3e0"
+    },
+    {
+      "path": "tools/audit_no_opengl.py",
+      "git_blob": "4c4179af6bee3129ae737fabe1cd70a071bb6ccc",
+      "bytes": 13248,
+      "sha256": "3af4099be8418863162039b2638111173685aee6ddf9aee7b4154b4a96b6afbe"
+    },
+    {
+      "path": "tools/build_hygiene.py",
+      "git_blob": "016fbb2b648628075a91eac3aba5e6f024148bc2",
+      "bytes": 21097,
+      "sha256": "0a4f8cbc161afa39dfaf25e840bb0c788fda4f709b84f7440bd52102f847fa84"
+    },
+    {
+      "path": "tools/build_software_vulkan.py",
+      "git_blob": "3f3b8df33e43652fca463fafda4006a6b29366c7",
+      "bytes": 21858,
+      "sha256": "b9acec6b81284abfe8b2a7f67bac3a529a942c13ed38b49567bb9f235c10defe"
+    },
+    {
+      "path": "tools/compatibility_candidate.py",
+      "git_blob": "9da8ca3960ec0ce87eab8b65ffc55103f2b5b107",
+      "bytes": 17797,
+      "sha256": "c9844124107bc84aa0213c4315a58639a506e50594015fb94f1787453cec577f"
+    },
+    {
+      "path": "tools/compatibility_conservation.py",
+      "git_blob": "b78c86b8932e17db80ece615f3b34175c7774fe8",
+      "bytes": 8466,
+      "sha256": "def99e8cb4053ee3d3c3b635ae5191abc4f1b1769d7de4eac61f738921f308b7"
+    },
+    {
+      "path": "tools/compatibility_coverage.py",
+      "git_blob": "4d67b9b85ddaee264cbfffbd0e6312c4de10644e",
+      "bytes": 8392,
+      "sha256": "b13d3f12661b010d092306e7b4584ec1964ded91dd3a7ea007bd7663cda73831"
+    },
+    {
+      "path": "tools/compatibility_evidence.py",
+      "git_blob": "2904afade93279e6ec6bc189a881fc14cf4d0f58",
+      "bytes": 13665,
+      "sha256": "c261f7431eae27b930ec84d4a5121bbbc7968b19df12b3955d84743eea3456a3"
+    },
+    {
+      "path": "tools/compatibility_execution.py",
+      "git_blob": "3c52ca741be28e0acac2d36f785dc00dc52dc7ae",
+      "bytes": 17402,
+      "sha256": "4b90a052b21a41db375cbaa550a790bfea370e9219bfc8078a91381c8e429bb9"
+    },
+    {
+      "path": "tools/compatibility_inventory.py",
+      "git_blob": "2009ee2cd1eef55893bb709a9503b828bc5e6942",
+      "bytes": 19714,
+      "sha256": "6b4a08b9172558b2c520273d7acd55e6b5f8ff6a7ed4b50c2f2e32e1db9dde15"
+    },
+    {
+      "path": "tools/compatibility_qualification.py",
+      "git_blob": "e0a9a8b0a1b75392068bfb91b545b6c1f83b90b4",
+      "bytes": 7464,
+      "sha256": "9782bbbe35ba26700001c66c5c030f6d6e90652dfeb894cf1f515cbf3a87aa6d"
+    },
+    {
+      "path": "tools/linux_ci_lifecycle.py",
+      "git_blob": "7655d9d46888dd5e0c1e59edf275999943776574",
+      "bytes": 23390,
+      "sha256": "e21fcbef8b92bc85611050dcde059a4a73fb9690b89f2fc5f5869bd8666b5ea1"
+    },
+    {
+      "path": "tools/mesh_layout_process.py",
+      "git_blob": "1ca85358281771946e18dc7ab9314bea3ef83bae",
+      "bytes": 6990,
+      "sha256": "129628ca97afc62755c109db6219d987766b702265c4ca23c21105ad5bd2ae1b"
+    },
+    {
+      "path": "tools/native_epoch.py",
+      "git_blob": "498b65ce1f22bf87caa6053e76a0ea9014f8099e",
+      "bytes": 45004,
+      "sha256": "5fe67d61d6dd7d13ec60e7a45eca204c99d6e89201c9868520e925db1c04e3dd"
+    },
+    {
+      "path": "tools/no_opengl/__init__.py",
+      "git_blob": "d422d169fb0c3244037684ab39d95f1e244cb2fc",
+      "bytes": 79,
+      "sha256": "5a4759bf2aea12ef05b110531a61211f22fc81d433d77a45847abd4402968458"
+    },
+    {
+      "path": "tools/no_opengl/debugger_linux.c",
+      "git_blob": "cf22fe86785a4915abac22939246b0c801748a63",
+      "bytes": 26397,
+      "sha256": "3de2b562eb75c254a4034c278cdec752588cec44cc725fc1100ff3c33791c857"
+    },
+    {
+      "path": "tools/no_opengl/dependencies.py",
+      "git_blob": "4aba605b5b8249b60215d059b1fbf65fde935cfc",
+      "bytes": 12440,
+      "sha256": "af1a0446ddb678175c762c4f2eaadebd98dc89f29c596c0c55a51bdb8d2eac8a"
+    },
+    {
+      "path": "tools/no_opengl/functional.py",
+      "git_blob": "405b34d21757ffae74dfd4be289a23940c9c0539",
+      "bytes": 25841,
+      "sha256": "a85df7954fbf9e84cec523d3cee8d095b7e0ebbf1c0c93dc8e5d3313ad9702c2"
+    },
+    {
+      "path": "tools/no_opengl/handle_negative_probe_windows.c",
+      "git_blob": "d067ca0d97e57d2605b20705f4b18461f6ab89e8",
+      "bytes": 3081,
+      "sha256": "509e7b27d3daa078e1ff903d0032d19bd0d939ac7eb7e69ba7704ebc7ef7ae1f"
+    },
+    {
+      "path": "tools/no_opengl/inventory.py",
+      "git_blob": "71396397dc0f750bd5bf6b30e5e66d1fbfd9d86d",
+      "bytes": 6482,
+      "sha256": "ec6b2978e2699e243c9b8ed43cd4b5a9a5ef924af31614b6d4fd6c27bcc3a043"
+    },
+    {
+      "path": "tools/no_opengl/linux.py",
+      "git_blob": "049fad4d85b0b4d29aa3df704d9fe508ccc4ec28",
+      "bytes": 6542,
+      "sha256": "e106dab04f4947b9007edd7833423bf40796aa2783dd9f4d3573d34431e3c775"
+    },
+    {
+      "path": "tools/no_opengl/loader_audit_linux.c",
+      "git_blob": "b2c01c91cc946a8e3b8dc1096b6ca1e18fff415c",
+      "bytes": 4182,
+      "sha256": "ab045f08942d3b303f99506f4e0e2e0e75779f5a4b623e4781a63a515b82154e"
+    },
+    {
+      "path": "tools/no_opengl/native_surface_probe.py",
+      "git_blob": "c41e65f43752b43f6be32c6fce9b217bdf96902e",
+      "bytes": 4275,
+      "sha256": "cf9533dc2ab57ab947406c8a2320923af3b71095a92da028f7f8b91499934f71"
+    },
+    {
+      "path": "tools/no_opengl/negative_controls.py",
+      "git_blob": "f5bf063a209adb7d54f5b2d6a8a08f1ad0dfa07b",
+      "bytes": 8686,
+      "sha256": "90fce090dd1b39fa78b8d212b490fc96b536c3132d48e5de889c16ea3935acb4"
+    },
+    {
+      "path": "tools/no_opengl/negative_probe.c",
+      "git_blob": "d90e8900b6cdb9d7225865990682a01d3ca767ef",
+      "bytes": 1021,
+      "sha256": "0c607b2c127fe71bfa698954e3b54f63450f12b85ab9d4df2dc3df341a8a9264"
+    },
+    {
+      "path": "tools/no_opengl/policy.py",
+      "git_blob": "39d5c54b95067d4bbb72cecf4ff1aa101a7b0c43",
+      "bytes": 3580,
+      "sha256": "b2fbf966d92e62520d982c96eeb946a332fc00db454e6c5e8c8da0b34b0206d8"
+    },
+    {
+      "path": "tools/no_opengl/probe.py",
+      "git_blob": "b0979ab605386ba96f16f23afe5c767f3b1a1678",
+      "bytes": 10505,
+      "sha256": "ee5dc9acec5c1acdb05ba90e459de11e02d795fc0fd7d9cdbf80a843fe09b048"
+    },
+    {
+      "path": "tools/no_opengl/qt_linux_profile.py",
+      "git_blob": "9dc59928a221cb14a820e758717062b664728f63",
+      "bytes": 8352,
+      "sha256": "7e88a2f348b424ba593d418f2365d6d5310f3c58aaa760a8a8219e4dc46f7dc5"
+    },
+    {
+      "path": "tools/no_opengl/qt_profile.py",
+      "git_blob": "b87fd030ef518c5a1bcc941bfea0ef4c38d7a965",
+      "bytes": 9629,
+      "sha256": "e1fcca7604d0f9a74e29cfab57680dd424ce855f8271c7510287f956ed62e46c"
+    },
+    {
+      "path": "tools/no_opengl/qt_profile_smoke.py",
+      "git_blob": "00c76fadf9cf876e73a5de4bc9b0270c09be8a54",
+      "bytes": 4017,
+      "sha256": "041c814e20cbc2ea6f5b0c772525948f5fd3e8a0a4429858a3e4a41d3e857a7a"
+    },
+    {
+      "path": "tools/no_opengl/receipt.py",
+      "git_blob": "b5411b5483bcece6320de488ef674a1f8ef567cf",
+      "bytes": 5483,
+      "sha256": "0745c1902334d0f14f163a85210d8f37481b023505bee776823d012ba6a8e2c9"
+    },
+    {
+      "path": "tools/no_opengl/resolver_race_probe_windows.c",
+      "git_blob": "55d9412dbaccc45cf9eb8715e9b58600f6d9d5a1",
+      "bytes": 3514,
+      "sha256": "cb2fb35ac37528ac9d401075a1f62350c40f441c38a45ed80c451b829db129ae"
+    },
+    {
+      "path": "tools/no_opengl/script_cleanup_probe.py",
+      "git_blob": "5c957c940ce75f0891c2047f0ecfb39d8390bb16",
+      "bytes": 2412,
+      "sha256": "d9a165096cd0dbbb723db291e25b5efc702fd7e769afddb2d043fb189ced819c"
+    },
+    {
+      "path": "tools/no_opengl/static_negative_probe.c",
+      "git_blob": "5403ee5be67922d7ffe0899ecf6e565bf57cb2c5",
+      "bytes": 655,
+      "sha256": "f09b3e942d8ec17cbb63fb9764d5ef405375bd6f644d303bc0fd8d1b2f38921e"
+    },
+    {
+      "path": "tools/no_opengl/tbb_profile.py",
+      "git_blob": "ddb1f243ee4086e3160152941c97f04c51ffe184",
+      "bytes": 5128,
+      "sha256": "86a46beed66299d9f8695af98d2204dec03d28a5a3c95a2fb104b3b7d0862d78"
+    },
+    {
+      "path": "tools/no_opengl/tbb_runtime_bootstrap.py",
+      "git_blob": "b3c84a72403f9d377eeb0c2b6c8b52172a62006f",
+      "bytes": 321,
+      "sha256": "e395dc678d5e2b49cdd10f5d9e6f64549662c6dcec77a5e9b84e0cb143a17e7d"
+    },
+    {
+      "path": "tools/no_opengl/venv_launcher_control.py",
+      "git_blob": "5e3bab65ac8f95aa161ca88bfa72d548b0a21684",
+      "bytes": 3219,
+      "sha256": "266c04af246526ebb70108a4b06f5fc87fa165eb1655b61851b86d45aaae6999"
+    },
+    {
+      "path": "tools/no_opengl/windows.py",
+      "git_blob": "1102177dbc645a30c1e37cc6218e5c34f3296c13",
+      "bytes": 27671,
+      "sha256": "c97829ac6007508941f8435bf864d2d0cc7b898f129acb355381981ca36bf84e"
+    },
+    {
+      "path": "tools/no_opengl/windows_contracts.py",
+      "git_blob": "889cbe17836beafa80bbe83d19d8fb49591c491a",
+      "bytes": 6890,
+      "sha256": "ef2e13fd767ab59f012f7a33cb83ce2dbf8adcef9f7c4e4abb7b717d7bf6d414"
+    },
+    {
+      "path": "tools/no_opengl/windows_handle_controls.py",
+      "git_blob": "c90cedf3eea4d6133e268680573b98b314f90a69",
+      "bytes": 4018,
+      "sha256": "3ad4b8eccb8f11033b9d7f53a6ebc63f6992a207151f1b05f40fb97b3c9308ef"
+    },
+    {
+      "path": "tools/no_opengl/windows_resolver_controls.py",
+      "git_blob": "3d03d5c920c47629124dbaa0862c43feac54cbd3",
+      "bytes": 4381,
+      "sha256": "7fc3ba79fbaf62f10d8582c8faac13024900d8c74e41a69370c4039141ff297e"
+    },
+    {
+      "path": "tools/no_opengl/windows_stack.py",
+      "git_blob": "fed5eead10e618495335f0cca8609d473e44a584",
+      "bytes": 4182,
+      "sha256": "3d04eadbfc66d82c334ff40e3f5f9bc21f66f9586c979d0f11818228007b3e30"
+    },
+    {
+      "path": "tools/no_opengl/workflow.py",
+      "git_blob": "4d6171c7788ea3d1df96b173b7f25c33388022c9",
+      "bytes": 1661,
+      "sha256": "8f18ec3f27007e1a4ffc6b333def2c93c5190958084e96b50f2377bacb205fe0"
+    },
+    {
+      "path": "tools/prepare_software_vulkan.py",
+      "git_blob": "c03514da466ef41081d4e26f5748d21353ae2058",
+      "bytes": 6940,
+      "sha256": "766a0053255c634c152d06ae818f9dcf5d8bfbd88af63c0f3c4310ffe6e8e8b0"
+    },
+    {
+      "path": "tools/qualification_artifact.py",
+      "git_blob": "7bbcc33e362f162fbae1586c3bdb69cb0cb2c48c",
+      "bytes": 15546,
+      "sha256": "f3e54cbc84df17461ee163a2d8e209e9791fca96661342e56df1f39c06ea2279"
+    },
+    {
+      "path": "tools/qualification_ci.py",
+      "git_blob": "2695e574c08131bd252b653e7f83ffab34e9ff1b",
+      "bytes": 13735,
+      "sha256": "d16bc66a51e8381296e77e2c3bea6e63a2ffa186bb38fd2f7f51c80e41437cc0"
+    },
+    {
+      "path": "tools/qualification_epoch.py",
+      "git_blob": "daaba481b8eeb4ab579f942c351973187d798f37",
+      "bytes": 12986,
+      "sha256": "e6816d4d333c2496f3d40ef2edfebfccc1eb5c8a10e7f590e141221d7b1aee14"
+    },
+    {
+      "path": "tools/qualification_index.py",
+      "git_blob": "db8b02d77a487e822b0a1cc055eb8889ce6d2a93",
+      "bytes": 34270,
+      "sha256": "fd47e6af121203cccb597f79adc6791cccfc38d4d87a63aa672a7ed046de0db8"
+    },
+    {
+      "path": "tools/qualification_linux_native.py",
+      "git_blob": "af2f41f5d26f5469902f9d625b0fea7f17f2b119",
+      "bytes": 32945,
+      "sha256": "05cfecfc2e752be3beabd7599567fc9f57fab0cfaf530bf358efbea80d068ba3"
+    },
+    {
+      "path": "tools/qualification_native.py",
+      "git_blob": "a8d5aaad1296d1e1b6eea07406b04370504b6c8e",
+      "bytes": 21650,
+      "sha256": "aae46f9ea4370758a21715292e3caf80ef05baa79ea8c2d8c3023338e6c3ad2e"
+    },
+    {
+      "path": "tools/repackage_python_wheel.py",
+      "git_blob": "46ccaedd3d916b05913f82976ba19497125d0b81",
+      "bytes": 7858,
+      "sha256": "7e1e9b4cba168d218183fe4581f4c62960c2ecee6b7602ed0eaa9a80a828aaf2"
+    },
+    {
+      "path": "tools/retained_evidence.py",
+      "git_blob": "502d5c015d8e817b9d4d0c202463e0b8d8c81325",
+      "bytes": 6093,
+      "sha256": "bad34bf324daf3de5bbde52311889093aae2cd2980f49f790dbaf243a6a5c49b"
+    },
+    {
+      "path": "tools/reuse_linux_ci.py",
+      "git_blob": "2d41742e9193a213e35cc340a4e76293c7b90a9f",
+      "bytes": 21844,
+      "sha256": "bc29696c8fb0d6005a9a319410c42fa85b10653f8a1244dd76f16b19c089c753"
+    },
+    {
+      "path": "tools/reuse_metal_ci.py",
+      "git_blob": "a45cb9f34bdfd9833542624aa781eaefa6c2167e",
+      "bytes": 14106,
+      "sha256": "a5189753c99b2015c891597cf61780a587f6c2867231972d601f803eb3e6f3fe"
+    },
+    {
+      "path": "tools/run_linux_native_contracts.py",
+      "git_blob": "dac64acdf7398e6d69b7b9bbbcbdd89c7ce72faa",
+      "bytes": 8924,
+      "sha256": "e07e6aede2b8f35b0c75533606f59f0669783c1b9822c59534d62d6ffee5caca"
+    },
+    {
+      "path": "uv.lock",
+      "git_blob": "1c929b337282cc152c89a93bbe15bd9cd587ea56",
+      "bytes": 733859,
+      "sha256": "d6dd851b6c4ec1d32c5920895b25a80dea30597c7b953181b270559d1f89ae32"
+    }
+  ],
+  "temporary_ledger": {
+    "path": "compat/candidates/tk-state-resource-12/execution-ledger.json",
+    "committed_canonical_sha256": "3c5248a2f3a265e7d646f8e1a79dfa9e0844f3fc5a0565d4dce607d123cc868f",
+    "approved_positive_sha256": "487168c368d26b08bfb65370fb397724f9948c328197b9c253de7fed3a5770db"
+  },
+  "actual_git_child": {
+    "argv": [
+      "git",
+      "-C",
+      "C:\\Users\\HEQ\\Projects\\vispy_vulkan-publication",
+      "cat-file",
+      "--batch"
+    ],
+    "actual_exit": 0,
+    "child_pid": 48844,
+    "child_waited": true
+  },
+  "scratch_created": false,
+  "artifact_admitted": false,
+  "proposed_guard_sequence": [
+    "Immediately before materialization: require local/remote owned ref55fd and702current-source hashes equal the55fdGit blobs; preserve foreign HEAD/index.",
+    "During unchanged validate_envelope(strict=True):701non-ledger inputs remain equal to55fd; the sole canonical ledger path must equal the approved positive487168c3hash.",
+    "In finally: restore exact original ledger and all14canonical hashes, then require all702inputs equal55fdagain and foreign HEAD/index unchanged.",
+    "Any unexpected drift, failure or interruption leaves admission unclaimed; do not change foreign checkout HEAD or weaken any validator."
+  ],
+  "scope": "Coordinator audit only; explicit clarification of714F4requested before actual admission. Source workspace has no Git checkout; foreign publication checkout HEAD is not the qualification ref. The ledger is the one already-approved temporary proof overlay, not an unreviewed source drift. No checkout/index/ref mutation, cloning, native build or admission."
+}

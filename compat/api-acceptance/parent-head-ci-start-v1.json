@@ -1,0 +1,53 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "PASS_DRAFT_PR_AND_EXACT_HEAD_AUTOMATIC_CI_HANDLES",
+  "repository": "bipxx/vispy_vulkan",
+  "pull_request": 77,
+  "url": "https://github.com/bipxx/vispy_vulkan/pull/77",
+  "draft": true,
+  "qualification_head": "55fd4e82e1a1d7bcb9d3c93a5e66c1bc825b09a1",
+  "required_jobs": 23,
+  "workflow_handles": [
+    {
+      "id": 43554619087,
+      "workflow_id": 391223840,
+      "path": ".github/workflows/cpu-contract.yml",
+      "head_sha": "55fd4e82e1a1d7bcb9d3c93a5e66c1bc825b09a1",
+      "run_attempt": 1,
+      "event": "pull_request",
+      "status": "queued",
+      "conclusion": null,
+      "html_url": "https://github.com/bipxx/vispy_vulkan/actions/runs/43554619087"
+    },
+    {
+      "id": 43554619080,
+      "workflow_id": 394185908,
+      "path": ".github/workflows/metal-wheel.yml",
+      "head_sha": "55fd4e82e1a1d7bcb9d3c93a5e66c1bc825b09a1",
+      "run_attempt": 1,
+      "event": "pull_request",
+      "status": "in_progress",
+      "conclusion": null,
+      "html_url": "https://github.com/bipxx/vispy_vulkan/actions/runs/43554619080"
+    },
+    {
+      "id": 43554619086,
+      "workflow_id": 394336982,
+      "path": ".github/workflows/linux-vulkan.yml",
+      "head_sha": "55fd4e82e1a1d7bcb9d3c93a5e66c1bc825b09a1",
+      "run_attempt": 1,
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/bipxx/vispy_vulkan/actions/runs/43554619086"
+    }
+  ],
+  "manual_dispatches": 0,
+  "duplicate_runs_started": false,
+  "native_mode": "reuse",
+  "required_ci_passed": false,
+  "artifact_admitted": false,
+  "scratch_created": false,
+  "connector_write_fallback": "Integration403; existing authorized CLI created draft. Original schema/integration errors retained."
+}

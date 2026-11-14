@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "PASS_OWNED_QUALIFICATION_SOURCE_PUSH_NOT_ADMITTED",
+  "commit": "55fd4e82e1a1d7bcb9d3c93a5e66c1bc825b09a1",
+  "branch": "wip/qt-lifecycle-native-562",
+  "parent": "2b8bccd0ac886f771c3e37255a3d5559c254b3cd",
+  "owned_files": 110,
+  "owned_bytes": 3738502,
+  "runtime_build_license_inputs_unchanged": 608,
+  "native_rebuilt": false,
+  "owner_index_unchanged": true,
+  "cleanup": {
+    "status": "PASS_APPLY",
+    "deleted": 2,
+    "retained_verified": 51,
+    "reclaimed_bytes": 15115728,
+    "scratch_absent": true,
+    "actual_exit": 0,
+    "child_waited": true
+  },
+  "prior_setup_failure": "compat/api-acceptance/parent-qualification-freeze-setup-v1.json",
+  "required_final_head_ci_passed": false,
+  "artifact_admitted": false,
+  "evidence_root": "D:\\vispy-vulkan-managed\\build\\runs\\parent-qualification-source-freeze-697"
+}

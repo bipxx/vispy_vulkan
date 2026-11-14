@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "kind": "change-impact",
+  "status": "APPROVED",
+  "independent": true,
+  "reviewer": "Independent Claude CLI702; actual models: claude-fable-5-2",
+  "subject_sha256": "86efb22be0d0646a7f11b6ab43b10833d90359d89d615d3763e802bfa98fab18",
+  "qualification_head": "55fd4e82e1a1d7bcb9d3c93a5e66c1bc825b09a1"
+}

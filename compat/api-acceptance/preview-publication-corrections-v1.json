@@ -1,0 +1,47 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "status": "PASS_PREPUBLICATION_F2_F3_CORRECTIONS_NOT_PUBLISHED",
+  "coverage_ids": [
+    "FIX-04",
+    "FIX-06"
+  ],
+  "original_proposal": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\parent-publication-draft-701\\publication-proposal.json",
+    "sha256": "d4f79ac2d146cdcbc40d36949e3dacff0a1cd278cfd7803b41ef188f5ac8759c"
+  },
+  "final_review": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\parent-final-promotion-review-714\\decision.json",
+    "sha256": "deee7623c71ea9ec093e6c21dd6e56395c1b8a73f23542e7f7ac3b4ca2f663bb"
+  },
+  "tag": "qt-lifecycle-55fd4e8",
+  "tag_target_commit": "55fd4e82e1a1d7bcb9d3c93a5e66c1bc825b09a1",
+  "prerelease": true,
+  "namespace": "previews/qt-lifecycle-55fd4e8/simple/vispy/",
+  "notes": {
+    "path": "docs/qt-lifecycle-preview.md",
+    "sha256": "4f94e51d4f73d7f5001dbe1bddd775e9e1adc588da40f2749e7a4174479b379c"
+  },
+  "retained_notes": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\preview-publication-corrections-717\\corrected-release-notes.md",
+    "sha256": "4f94e51d4f73d7f5001dbe1bddd775e9e1adc588da40f2749e7a4174479b379c"
+  },
+  "installed_member_identifiers": {
+    "vispy/app/backends/_qt.py": "16fec18d9346aeb03a560c7e5e3569eead864e60b362a682709749413dab8997",
+    "vispy/app/canvas.py": "dd1173d41033a2715f6b5546428089d59737343edf8b374b507bbf1c9db8a929"
+  },
+  "assets_unchanged": [
+    {
+      "filename": "vispy-0.17.0+vulkan.2-cp312-cp312-win_amd64.whl",
+      "sha256": "9e4e30cc50d49a759ea42cd7915cc2544a42d2af869d505e3ef5290d47617286"
+    },
+    {
+      "filename": "vispy-0.17.0+vulkan.2-cp312-cp312-manylinux_2_39_x86_64.whl",
+      "sha256": "a2715d2659f0caf8c01d430c34ba1dc2d5f9b520b6c36ce85a0c75328556fe56"
+    }
+  ],
+  "scratch_created": false,
+  "remote_writes": false,
+  "artifact_admitted": false,
+  "scope": "714F2/F3publication prerequisites clarified without altering frozen701proposal/notes or714review. Exact tag target, generated-index status, no combined indexes, direct hash URLs with no-index/no-deps/force-reinstall and actual installed-member identification. Actual admission/protected integration/delivery remain pending."
+}

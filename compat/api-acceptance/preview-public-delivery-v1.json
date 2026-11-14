@@ -1,0 +1,101 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "status": "PASS_PUBLIC_PREVIEW_BYTES_INDEX_AND_EXACT_DRAFT_SMOKE_JOIN",
+  "release_url": "https://github.com/bipxx/vispy_vulkan/releases/tag/qt-lifecycle-55fd4e8",
+  "tag": "qt-lifecycle-55fd4e8",
+  "tag_commit": "55fd4e82e1a1d7bcb9d3c93a5e66c1bc825b09a1",
+  "runtime_source_commit": "2b8bccd0ac886f771c3e37255a3d5559c254b3cd",
+  "package_version": "0.17.0+vulkan.2",
+  "wheels": [
+    {
+      "url": "https://github.com/bipxx/vispy_vulkan/releases/download/qt-lifecycle-55fd4e8/vispy-0.17.0%2Bvulkan.2-cp312-cp312-manylinux_2_39_x86_64.whl",
+      "http_status": 200,
+      "bytes": 10562027,
+      "sha256": "a2715d2659f0caf8c01d430c34ba1dc2d5f9b520b6c36ce85a0c75328556fe56",
+      "unauthenticated": true,
+      "content_type": "application/octet-stream",
+      "asset_id": 746530111,
+      "installed_members_verified": 537,
+      "license_members_verified": 22,
+      "notice_inputs_verified": 23,
+      "source_overrides": 0,
+      "installed_smoke_scope": "WSL native ABI import only",
+      "installed_smoke_reused_by_exact_sha256": true
+    },
+    {
+      "url": "https://github.com/bipxx/vispy_vulkan/releases/download/qt-lifecycle-55fd4e8/vispy-0.17.0%2Bvulkan.2-cp312-cp312-win_amd64.whl",
+      "http_status": 200,
+      "bytes": 6813298,
+      "sha256": "9e4e30cc50d49a759ea42cd7915cc2544a42d2af869d505e3ef5290d47617286",
+      "unauthenticated": true,
+      "content_type": "application/octet-stream",
+      "asset_id": 746530107,
+      "installed_members_verified": 537,
+      "license_members_verified": 22,
+      "notice_inputs_verified": 23,
+      "source_overrides": 0,
+      "installed_smoke_scope": "Windows Vulkan clear",
+      "installed_smoke_reused_by_exact_sha256": true
+    }
+  ],
+  "pages": [
+    {
+      "url": "https://bipxx.github.io/vispy_vulkan/previews/qt-lifecycle-55fd4e8/simple/index.html",
+      "http_status": 200,
+      "bytes": 85,
+      "unauthenticated": true,
+      "content_type": "text/html; charset=utf-8",
+      "sha256": "98884fb3870a3f246e3ae56ab366d208261d9ea4e0f7f43a90fd68743921b030"
+    },
+    {
+      "url": "https://bipxx.github.io/vispy_vulkan/previews/qt-lifecycle-55fd4e8/simple/vispy/index.html",
+      "http_status": 200,
+      "bytes": 678,
+      "unauthenticated": true,
+      "content_type": "text/html; charset=utf-8",
+      "sha256": "093fbc14611d37f8f60eb701fda9d9af19cc2d3ceb7c8574e56121811d35c611"
+    },
+    {
+      "url": "https://bipxx.github.io/vispy_vulkan/simple/index.html",
+      "http_status": 200,
+      "bytes": 85,
+      "unauthenticated": true,
+      "content_type": "text/html; charset=utf-8",
+      "sha256": "98884fb3870a3f246e3ae56ab366d208261d9ea4e0f7f43a90fd68743921b030"
+    },
+    {
+      "url": "https://bipxx.github.io/vispy_vulkan/simple/vispy/index.html",
+      "http_status": 200,
+      "bytes": 1290,
+      "unauthenticated": true,
+      "content_type": "text/html; charset=utf-8",
+      "sha256": "12cc93147748b965ccf851780a95c189921e29414d624eafa402aecbb935aeb6"
+    }
+  ],
+  "preview_index_url": "https://bipxx.github.io/vispy_vulkan/previews/qt-lifecycle-55fd4e8/simple/",
+  "stable_channel_unchanged": true,
+  "public_channel_verified": true,
+  "installed_smokes_reused_by_exact_public_byte_equality": true,
+  "scope": "Exact two public preview wheels and four public HTML pages. Windows clear and Linux ABI-only channel checks reused by exact SHA256; original GPU/128-binding/eight-row qualification remains separate. Not a stable-version upgrade, new hardware or full API parity claim.",
+  "cleanup": {
+    "status": "PASS_APPLY",
+    "deleted_files": 5,
+    "reclaimed_bytes": 2225,
+    "retained_verified": 17,
+    "scratch_absent": true,
+    "actual_exit": 0,
+    "child_waited": true
+  },
+  "evidence_root": "@evidence/build/runs/preview-public-readback-728",
+  "coverage_ids": [
+    "FIX-04",
+    "FIX-06",
+    "API-06"
+  ],
+  "public_wheel_receipt_reference": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\preview-public-readback-727\\closed-wheel-byte-verification.json",
+    "sha256": "c333a824f653c4c9969290621bd82bd3358740aa0856389a24ba32c9021ad554",
+    "scope": "Both actual public wheel downloads rehashed after closed output in727. Reused without a second download;727 HTML adapter failure remains failed."
+  }
+}

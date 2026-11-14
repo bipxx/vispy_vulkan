@@ -1,5 +1,38 @@
 # API method, alias and workflow reconciliation
 
+## Current seven-row reconciliation — 2026-11-13
+
+[Audit708](../compat/api-acceptance/scientific-current-dispositions-v2.json)
+checks the two current44-case JUnit reports, both camera packets, six current
+Qt rows and their original seven-stage functional/collector/worker reports.
+It verifies33input hashes without running graphics or reinstalling packages.
+Scope is runtime `2b8bccd`, Windows `9e4e30cc…`, WSL `a2715d26…`; these are
+local installed observations, not final admission/public delivery. The initial
+707audit adapter expected the wrong literal collector status; its exit1and
+reproducer remain retained.708checks the inspected exact collector and worker
+statuses and exits0/awaited. No runtime failure or verifier change is implied.
+
+E03addition, 2026-11-14: the six new color/alpha composition cases below are
+separately evidenced by712/713, not retroactively included in708's earlier
+record-only audit. Both new test consumers use unchanged current wheel/runtime
+bytes; their post-head test source has no final CI/admission transfer.
+
+| Row | Public route / selected behavior | Current disposition and next missing claim |
+| --- | --- | --- |
+| U05 | Indexed/instanced `Program.draw`, source IDs, divisors and revisions | Eight rendered point references plus two controls pass per current wheel. Seven rendered routes are public; `nonzero_first_queue` is explicitly internal. Additional layouts/types/divisors/mutations stay open. |
+| E03 | TextureFilter / PlanesClipper revisions; Alpha / ColorFilter composition | Four original pending-filter revision cases plus six selected color/alpha/texture/clip cases pass per current wheel. [Windows712](../compat/api-acceptance/mesh-color-alpha-windows-v1.json), [WSL713](../compat/api-acceptance/mesh-color-alpha-wsl-v1.json). General ordering, blending, MSAA and other supported compositions remain open. |
+| E04 | Two fixed3Dscene controls; public TurntableCamera azimuth/center setters | Both fixed scenes and two mutation/restoration cases pass per wheel. Independent upstream reference covers the original/restored pose; fresh-scene equivalence covers changed poses. Other cameras/fov/events/plane/depth/stencil interactions remain open. |
+| Q11 | MSAA capture format/sample/depth/stencil cells | Open LIF-05capability scope. Existing color resolve is not broad depth/stencil capture. Select named cells; this is not a volume row. |
+| Q12 | Plain QWidget show/parent/resize, capture/update/ownership, hide/restore, injected recovery and close | Six current Windows/WSL PyQt5/PyQt6/PySide6 observations pass seven stages each. Final exact CI/profile admission/integration/delivery remain separate. No physical Linux GPU or Metal graphics transfer. |
+| Q13 | Toolkit event/coordinate forwarding | QWidget overlay interaction alone does not qualify all keys, wheel, focus, mouse or timers. Select missing delivered-event routes under LIF-06; physical HID/touch/stylus/gestures/layout breadth remains separate. Not a volume row. |
+| H03 | Glue invalidation-before-update protocol | Corrected upstream reference admission is historical. Renew only for a selected exact current host/version/binding rendered-mutation workflow under HOST-06. |
+
+This closes the seven-row record reconciliation task. It does not close the
+underlying broad API/scientific/host obligations. The142original obligations,
+984unreviewed operation groups, original stock failures and frozen historical
+admissions remain unchanged. Reopen a disposition when its route, values,
+artifact/profile or chosen product claim changes.
+
 Discovery checkpoint: 2026-11-07, source base `02a3839f` plus three docstring corrections.
 This extends the [implementation routes](api-implementation-routes.md) and four
 namespace reviews. **API-05 remains open.** The source snapshot discovers

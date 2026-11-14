@@ -1,0 +1,74 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "PASS_THREE_CURRENT_PR_NATIVE_CHECKOUT_IDENTITIES_NOT_ALL_CI",
+  "coverage_ids": [
+    "FIX-04",
+    "FIX-06",
+    "TOOL-01"
+  ],
+  "qualification_head": "55fd4e82e1a1d7bcb9d3c93a5e66c1bc825b09a1",
+  "verification": {
+    "path": "@evidence/build/runs/parent-native-ci-identities-700/verification.json",
+    "sha256": "1a8cd010a4868fc2469db5b26ad690e39556a2f0dd04935a3d7bf85e002ac9a9"
+  },
+  "identities": [
+    {
+      "run_id": 43554619086,
+      "job_id": 132324539536,
+      "job_name": "software-vulkan",
+      "report": {
+        "path": "compat/candidates/tk-state-resource-12/installed-proofs-680/ci-native-700/132324539536-identity.json",
+        "sha256": "9501282ebd335a00b90c169c5c2907100b7aed3eec3cc3a889697ddf2471d02e"
+      },
+      "checked_head": "37e718a1196253ef958c96ff42efd0b9e3a12006",
+      "parents": [
+        "7c7a39f6bc341abb6b3ee6d417843892b0e29e8f",
+        "55fd4e82e1a1d7bcb9d3c93a5e66c1bc825b09a1"
+      ]
+    },
+    {
+      "run_id": 43554619080,
+      "job_id": 132324539815,
+      "job_name": "Metal wheel arm64 CPython 3.12.8",
+      "report": {
+        "path": "compat/candidates/tk-state-resource-12/installed-proofs-680/ci-native-700/132324539815-identity.json",
+        "sha256": "95c15819ea9fd88405a273ee1acc9ba65d7e4803e9fea6834c439e6fe41bd2c9"
+      },
+      "checked_head": "37e718a1196253ef958c96ff42efd0b9e3a12006",
+      "parents": [
+        "7c7a39f6bc341abb6b3ee6d417843892b0e29e8f",
+        "55fd4e82e1a1d7bcb9d3c93a5e66c1bc825b09a1"
+      ]
+    },
+    {
+      "run_id": 43554619080,
+      "job_id": 132324539548,
+      "job_name": "Metal wheel x86_64 CPython 3.12.8",
+      "report": {
+        "path": "compat/candidates/tk-state-resource-12/installed-proofs-680/ci-native-700/132324539548-identity.json",
+        "sha256": "4a2979da94b4718dd19162a1e37ac5ccb007576e966712bd685f08722ff69bb2"
+      },
+      "checked_head": "37e718a1196253ef958c96ff42efd0b9e3a12006",
+      "parents": [
+        "7c7a39f6bc341abb6b3ee6d417843892b0e29e8f",
+        "55fd4e82e1a1d7bcb9d3c93a5e66c1bc825b09a1"
+      ]
+    }
+  ],
+  "transport_bytes": 202057916,
+  "cleanup": {
+    "status": "PASS_APPLY",
+    "deleted": 4,
+    "retained_verified": 36,
+    "reclaimed_bytes": 202058005,
+    "scratch_absent": true,
+    "actual_exit": 0,
+    "child_waited": true
+  },
+  "native_payloads_extracted": false,
+  "new_native_build": false,
+  "required_ci_complete": false,
+  "artifact_admitted": false,
+  "scope": "Original successful Linux/Metal PR attempt1checkout identities and exact source/merge-parent/workflow/collector joins only; all20CPUidentities and full23-job/history bundle remain pending. Metal remains build/import-only experimental."
+}

@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "status": "FAILED_SMOKE_ADAPTER_NOTICE_DIRECTORY_COUNT",
+  "coverage_ids": [
+    "FIX-06"
+  ],
+  "actual_exit": 1,
+  "child_waited": true,
+  "artifact_changed": false,
+  "native_import_performed": false,
+  "published": false,
+  "transport": {
+    "path": "@evidence/build/runs/preview-draft-windows-channel-722/transport-verification.json",
+    "sha256": "0e31e0556488ccbdbbc27a61b5254a70d19644c2c4cbe29c235a7687ff64a670"
+  },
+  "notice_placement_audit": "compat/api-acceptance/preview-notice-placement-v1.json",
+  "cleanup": {
+    "status": "PASS_APPLY",
+    "deleted_files": 569,
+    "reclaimed_bytes": 24713237,
+    "retained_verified": 18,
+    "scratch_absent": true,
+    "actual_exit": 0,
+    "child_waited": true
+  },
+  "scope": "Authenticated download and offline install succeeded. Verifier stopped before native import because it counted23dist-info texts instead of22. All23source-defined notice inputs(including metadata manifest) verified separately723. No missing notice/artifact change; original failure/reproducer retained; successor reuses existing transport receipt and qualified wheel."
+}

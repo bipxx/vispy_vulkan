@@ -1,0 +1,29 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "status": "FAILED_PREMUTATION_STABLE_ASSET_SHAPE_ASSUMPTION",
+  "coverage_ids": [
+    "FIX-06"
+  ],
+  "actual_exit": 1,
+  "child_waited": true,
+  "remote_writes": false,
+  "published": false,
+  "reason": "Stable release has delivery.json plus the two correct wheel assets. Adapter incorrectly treated all assets as wheels; no create/upload ran.",
+  "failure": {
+    "path": "@evidence/build/runs/preview-release-draft-720/failure-disposition.json",
+    "sha256": "bcf887bbd87bf50bdee39f6b4356e8fcf61a1836206b6f7f966313a0eadbdd4f"
+  },
+  "cleanup": {
+    "status": "PASS_APPLY",
+    "deleted_files": 1,
+    "reclaimed_bytes": 85,
+    "retained_verified": 15,
+    "scratch_absent": true,
+    "actual_exit": 0,
+    "child_waited": true
+  },
+  "cleanup_refusal_preserved": "Duplicate retained path; original plan refused with0deletion. Corrected new manifest combines roles, same strict tool/registry, successful85bytecleanup.",
+  "native_rebuilt": false,
+  "scope": "Source/metadata adapter failure only; original stable assets unchanged. Correct successor checks exactly two wheel hashes while preserving all stable assets including delivery.json."
+}

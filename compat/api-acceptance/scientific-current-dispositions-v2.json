@@ -1,0 +1,299 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "PASS_SEVEN_CURRENT_ROW_DISPOSITIONS_SOURCE_AUDIT_ONLY",
+  "coverage_ids": [
+    "SCI-05",
+    "API-05",
+    "API-06",
+    "SCI-03",
+    "LIF-05",
+    "LIF-06",
+    "HOST-06"
+  ],
+  "runtime_source_commit": "2b8bccd0ac886f771c3e37255a3d5559c254b3cd",
+  "qualification_head": "55fd4e82e1a1d7bcb9d3c93a5e66c1bc825b09a1",
+  "wheels": {
+    "windows": "9e4e30cc50d49a759ea42cd7915cc2544a42d2af869d505e3ef5290d47617286",
+    "wsl": "a2715d2659f0caf8c01d430c34ba1dc2d5f9b520b6c36ce85a0c75328556fe56"
+  },
+  "scientific": [
+    {
+      "platform": "windows",
+      "wheel_sha256": "9e4e30cc50d49a759ea42cd7915cc2544a42d2af869d505e3ef5290d47617286",
+      "selected_junit": {
+        "path": "D:\\vispy-vulkan-managed\\build\\runs\\qt-parent-installed-windows-664\\selected.xml",
+        "sha256": "8a90cbbeb1aab74e10198c5f0ce3f9a4d90479bfd4f1862fbe7e8c2fd6c8a08a"
+      },
+      "selected_scientific_case_ids": {
+        "tests.parity.test_point_identity_parity": [
+          "test_point_inputs_reject_rank_identity_and_preserve_divisor_ranges",
+          "test_point_reference_origins_criteria_driver_state_and_hashes",
+          "test_point_identity_and_instances_match_fixed_independent_opengl[indexed_uint8]",
+          "test_point_identity_and_instances_match_fixed_independent_opengl[indexed_uint16]",
+          "test_point_identity_and_instances_match_fixed_independent_opengl[indexed_uint32]",
+          "test_point_identity_and_instances_match_fixed_independent_opengl[instanced_divisor1]",
+          "test_point_identity_and_instances_match_fixed_independent_opengl[instanced_divisor2]",
+          "test_point_identity_and_instances_match_fixed_independent_opengl[ordered_revisions]",
+          "test_point_identity_and_instances_match_fixed_independent_opengl[nonzero_first_queue]",
+          "test_point_identity_and_instances_match_fixed_independent_opengl[large_uint32_constant_geometry]"
+        ],
+        "tests.visuals.test_mesh_filter_pending_gpu": [
+          "test_mesh_filter_revision_preserves_earlier_target[texture]",
+          "test_mesh_filter_revision_preserves_earlier_target[enabled]",
+          "test_mesh_filter_revision_preserves_earlier_target[planes]",
+          "test_mesh_filter_revision_preserves_earlier_target[detach]"
+        ],
+        "tests.visuals.test_scene_state_reference_gpu": [
+          "test_selected_scene_camera_depth_state_matches_frozen_upstream[mesh_perspective]",
+          "test_selected_scene_camera_depth_state_matches_frozen_upstream[mesh_polygon_offset]"
+        ],
+        "tests.gloo.test_stencil_public_routes_gpu": [
+          "test_public_stencil_capture_values_crop_type_and_mutation[stencil_float]",
+          "test_public_stencil_capture_values_crop_type_and_mutation[stencil_u8]",
+          "test_public_stencil_capture_values_crop_type_and_mutation[stencil_crop_float]",
+          "test_public_stencil_capture_values_crop_type_and_mutation[stencil_noalpha_u8]",
+          "test_raw_stencil_read_refuses_then_public_wrapper_recovers[stencil_float]",
+          "test_raw_stencil_read_refuses_then_public_wrapper_recovers[stencil_u8]",
+          "test_raw_stencil_read_refuses_then_public_wrapper_recovers[stencil_crop_float]",
+          "test_raw_stencil_read_refuses_then_public_wrapper_recovers[stencil_noalpha_u8]"
+        ]
+      }
+    },
+    {
+      "platform": "wsl",
+      "wheel_sha256": "a2715d2659f0caf8c01d430c34ba1dc2d5f9b520b6c36ce85a0c75328556fe56",
+      "selected_junit": {
+        "path": "D:\\vispy-vulkan-managed\\build\\runs\\qt-parent-installed-wsl-665\\selected.xml",
+        "sha256": "aecc737575d23b0d7041e91a41384f7d71a200d3fc983949b4be725d47cf2389"
+      },
+      "selected_scientific_case_ids": {
+        "tests.parity.test_point_identity_parity": [
+          "test_point_inputs_reject_rank_identity_and_preserve_divisor_ranges",
+          "test_point_reference_origins_criteria_driver_state_and_hashes",
+          "test_point_identity_and_instances_match_fixed_independent_opengl[indexed_uint8]",
+          "test_point_identity_and_instances_match_fixed_independent_opengl[indexed_uint16]",
+          "test_point_identity_and_instances_match_fixed_independent_opengl[indexed_uint32]",
+          "test_point_identity_and_instances_match_fixed_independent_opengl[instanced_divisor1]",
+          "test_point_identity_and_instances_match_fixed_independent_opengl[instanced_divisor2]",
+          "test_point_identity_and_instances_match_fixed_independent_opengl[ordered_revisions]",
+          "test_point_identity_and_instances_match_fixed_independent_opengl[nonzero_first_queue]",
+          "test_point_identity_and_instances_match_fixed_independent_opengl[large_uint32_constant_geometry]"
+        ],
+        "tests.visuals.test_mesh_filter_pending_gpu": [
+          "test_mesh_filter_revision_preserves_earlier_target[texture]",
+          "test_mesh_filter_revision_preserves_earlier_target[enabled]",
+          "test_mesh_filter_revision_preserves_earlier_target[planes]",
+          "test_mesh_filter_revision_preserves_earlier_target[detach]"
+        ],
+        "tests.visuals.test_scene_state_reference_gpu": [
+          "test_selected_scene_camera_depth_state_matches_frozen_upstream[mesh_perspective]",
+          "test_selected_scene_camera_depth_state_matches_frozen_upstream[mesh_polygon_offset]"
+        ],
+        "tests.gloo.test_stencil_public_routes_gpu": [
+          "test_public_stencil_capture_values_crop_type_and_mutation[stencil_float]",
+          "test_public_stencil_capture_values_crop_type_and_mutation[stencil_u8]",
+          "test_public_stencil_capture_values_crop_type_and_mutation[stencil_crop_float]",
+          "test_public_stencil_capture_values_crop_type_and_mutation[stencil_noalpha_u8]",
+          "test_raw_stencil_read_refuses_then_public_wrapper_recovers[stencil_float]",
+          "test_raw_stencil_read_refuses_then_public_wrapper_recovers[stencil_u8]",
+          "test_raw_stencil_read_refuses_then_public_wrapper_recovers[stencil_crop_float]",
+          "test_raw_stencil_read_refuses_then_public_wrapper_recovers[stencil_noalpha_u8]"
+        ]
+      }
+    }
+  ],
+  "camera": [
+    {
+      "platform": "windows",
+      "packet": {
+        "path": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\compat\\api-acceptance\\camera-mutation-windows-v1.json",
+        "sha256": "3ffd8ed025a9b2aafebbb9f29cfc50cc77ff63d7d62dda4f5387c73c27c3ec72"
+      },
+      "test_source_post_head": true
+    },
+    {
+      "platform": "wsl",
+      "packet": {
+        "path": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\compat\\api-acceptance\\camera-mutation-wsl-v1.json",
+        "sha256": "679028567295b44dbe86aa29d13d7e501f7bfec899cc7574ee98ee877f5ff883"
+      },
+      "test_source_post_head": true
+    }
+  ],
+  "current_qt_rows": [
+    {
+      "row": "windows-vulkan-qwidget-pyqt6",
+      "packet": {
+        "path": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\compat\\api-acceptance\\mandatory-parent-windows-pyqt6-v1.json",
+        "sha256": "af6b28044d48f58e22d92584a2d9880ab0288f086ad961fadc8dc674143b5715"
+      },
+      "wheel_sha256": "9e4e30cc50d49a759ea42cd7915cc2544a42d2af869d505e3ef5290d47617286",
+      "environment_id": "347d1db6e1068cfebade6245627718414da814e06880ef57aca3247177161911",
+      "stages": [
+        "exact_installed_artifact",
+        "device_and_qt_binding",
+        "qwidget_show_parent_resize",
+        "qwidget_capture_update_and_image_ownership",
+        "qwidget_overlay_interaction_hide_restore",
+        "qwidget_device_loss_recovery",
+        "qwidget_close"
+      ]
+    },
+    {
+      "row": "windows-vulkan-qwidget-pyqt5",
+      "packet": {
+        "path": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\compat\\api-acceptance\\mandatory-parent-windows-pyqt5-v1.json",
+        "sha256": "a552653d7edef0eafb233d25ff84f59a7d1b869b4d369bcb644714470d6bd7cc"
+      },
+      "wheel_sha256": "9e4e30cc50d49a759ea42cd7915cc2544a42d2af869d505e3ef5290d47617286",
+      "environment_id": "4476a4646b460fd7259a0e7ec16a443e44cb7a58380e69780a21cec552202a96",
+      "stages": [
+        "exact_installed_artifact",
+        "device_and_qt_binding",
+        "qwidget_show_parent_resize",
+        "qwidget_capture_update_and_image_ownership",
+        "qwidget_overlay_interaction_hide_restore",
+        "qwidget_device_loss_recovery",
+        "qwidget_close"
+      ]
+    },
+    {
+      "row": "windows-vulkan-qwidget-pyside6",
+      "packet": {
+        "path": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\compat\\api-acceptance\\mandatory-parent-windows-pyside6-v1.json",
+        "sha256": "dfd2074a028a62ce0e6b0381b3b4c765b708c31ff9a2d0cc6a36ee88888dab50"
+      },
+      "wheel_sha256": "9e4e30cc50d49a759ea42cd7915cc2544a42d2af869d505e3ef5290d47617286",
+      "environment_id": "f5b1216fe43714ce5965c08ff930c7f2c29b87254088b12515d4f5ca55af3b48",
+      "stages": [
+        "exact_installed_artifact",
+        "device_and_qt_binding",
+        "qwidget_show_parent_resize",
+        "qwidget_capture_update_and_image_ownership",
+        "qwidget_overlay_interaction_hide_restore",
+        "qwidget_device_loss_recovery",
+        "qwidget_close"
+      ]
+    },
+    {
+      "row": "wsl-linux-lavapipe-x11-qwidget-pyqt6",
+      "packet": {
+        "path": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\compat\\api-acceptance\\mandatory-parent-wsl-pyqt6-v1.json",
+        "sha256": "cbc7a73cd73cf8158ab33da92d2175e606060fb606c368a573e4084c19de77e8"
+      },
+      "wheel_sha256": "a2715d2659f0caf8c01d430c34ba1dc2d5f9b520b6c36ce85a0c75328556fe56",
+      "environment_id": "9759484092e5fe93dacdfff0c8b9fbc6d6804c0de33a8c20ddf6c31c8c8c99b2",
+      "stages": [
+        "exact_installed_artifact",
+        "device_and_qt_binding",
+        "qwidget_show_parent_resize",
+        "qwidget_capture_update_and_image_ownership",
+        "qwidget_overlay_interaction_hide_restore",
+        "qwidget_device_loss_recovery",
+        "qwidget_close"
+      ]
+    },
+    {
+      "row": "wsl-linux-lavapipe-x11-qwidget-pyqt5",
+      "packet": {
+        "path": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\compat\\api-acceptance\\mandatory-parent-wsl-pyqt5-v1.json",
+        "sha256": "6cfb7c1ab1d8fe0d521727c2899270a78099772cfa92ba0f6f5f83edfa187e7c"
+      },
+      "wheel_sha256": "a2715d2659f0caf8c01d430c34ba1dc2d5f9b520b6c36ce85a0c75328556fe56",
+      "environment_id": "d03c0f8c2959f7185a10d9eb33b9bec80664e2ad6ac34411a5645cc65d2916f6",
+      "stages": [
+        "exact_installed_artifact",
+        "device_and_qt_binding",
+        "qwidget_show_parent_resize",
+        "qwidget_capture_update_and_image_ownership",
+        "qwidget_overlay_interaction_hide_restore",
+        "qwidget_device_loss_recovery",
+        "qwidget_close"
+      ]
+    },
+    {
+      "row": "wsl-linux-lavapipe-x11-qwidget-pyside6",
+      "packet": {
+        "path": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\compat\\api-acceptance\\mandatory-parent-wsl-pyside6-v1.json",
+        "sha256": "a9033746a445087e1e6fb1bf5fda66a4b723456f8412c465bd2c81f922776e51"
+      },
+      "wheel_sha256": "a2715d2659f0caf8c01d430c34ba1dc2d5f9b520b6c36ce85a0c75328556fe56",
+      "environment_id": "6deb0cadfae3663662f06e233f64e44fbc448e791e582084374ca9522a1ce535",
+      "stages": [
+        "exact_installed_artifact",
+        "device_and_qt_binding",
+        "qwidget_show_parent_resize",
+        "qwidget_capture_update_and_image_ownership",
+        "qwidget_overlay_interaction_hide_restore",
+        "qwidget_device_loss_recovery",
+        "qwidget_close"
+      ]
+    }
+  ],
+  "dispositions": {
+    "U05": {
+      "outcome": "CURRENT_FINITE_INSTALLED_SUBSET",
+      "evidence": "664/665: eight rendered point references plus two controls per platform",
+      "remaining": "Additional layouts/formats/divisors/constant and ordered mutations. Seven rendered cases use public Program.draw; nonzero_first_queue is internal, not a public-method claim."
+    },
+    "E03": {
+      "outcome": "CURRENT_FINITE_INSTALLED_SUBSET",
+      "evidence": "664/665: texture/enabled/planes/detach pending-filter revision cases per platform",
+      "remaining": "Full implemented-filter and supported-composition inventory; four cases are not all filter combinations."
+    },
+    "E04": {
+      "outcome": "CURRENT_FINITE_INSTALLED_SUBSET",
+      "evidence": "664/665: two fixed scene controls each;705/706: two public TurntableCamera mutations/restoration each",
+      "remaining": "Other cameras/fov/events and plane/depth/stencil/state combinations. Changed-pose camera oracle is fresh-scene equivalence; independent upstream oracle covers original/restored pose only."
+    },
+    "Q11": {
+      "outcome": "OPEN_CAPABILITY_SCOPE",
+      "evidence": "No new broader MSAA evidence is supplied by this reconciliation",
+      "remaining": "LIF-05: select actual depth/stencil, format and sample-count cells. Do not classify Q11 as volume SCI-04."
+    },
+    "Q12": {
+      "outcome": "SIX_CURRENT_QT_OBSERVATIONS_NOT_ADMITTED",
+      "evidence": "685-687/689-691: exact current PyQt5/PyQt6/PySide6 Windows/WSL rows, seven stages each",
+      "remaining": "Exact final CI and reviewed profile admission/integration/delivery; no physical Linux GPU or Metal graphics transfer."
+    },
+    "Q13": {
+      "outcome": "OPEN_CAPABILITY_SCOPE",
+      "evidence": "QWidget overlay interaction is a selected stage, not complete input qualification",
+      "remaining": "LIF-06: select missing delivered keyboard/wheel/focus/mouse/timer/coordinate routes. Physical HID/touch/stylus/gestures/layout breadth is not inferred. Not a volume row."
+    },
+    "H03": {
+      "outcome": "HISTORICAL_UPSTREAM_DISPOSITION_ONLY",
+      "evidence": "Original corrected Glue upstream reference admission remains historical",
+      "remaining": "HOST-06: select exact current host/version/binding rendered-mutation workflow before claiming renewed candidate support."
+    }
+  },
+  "historical_h03": {
+    "path": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\compat\\api-acceptance\\h03-upstream-disposition-v1.json",
+    "sha256": "33cf278d3b7dde5b06ec1a3800ec0098673920e0e1714513246c3f092ab14463"
+  },
+  "limitations": [
+    "Metadata/hash/JUnit/stage audit only; no new rendering or installed replay.",
+    "Does not independently revalidate all transitive source/native/reference/dependency/retention inputs.",
+    "Original frozen stock failures, histories,142obligations and984unreviewed operation groups unchanged.",
+    "Closes seven-row record reconciliation, not all underlying capability gaps, admission, CI, promotion or delivery."
+  ],
+  "scratch_created": false,
+  "native_rebuilt": false,
+  "artifact_admitted": false,
+  "actual_exit": 0,
+  "child_waited": true,
+  "evidence": {
+    "path": "@evidence/build/runs/scientific-current-dispositions-708/verification.json",
+    "sha256": "55c55ad04fd239a23d508e43bf03e463fbab75ba881ed0968a2e6fac2c8e176d"
+  },
+  "execution": {
+    "path": "@evidence/build/runs/scientific-current-dispositions-708/terminal-source-only.json",
+    "sha256": "c2dec494b0fcfca4522b6087fe652508077754aac4268f2a0974f38a834ea3be"
+  },
+  "reviewed_inputs": {
+    "path": "@evidence/build/runs/scientific-current-dispositions-708/inputs.json",
+    "sha256": "f189797e8abf2f270438a81990fb78ce417035396d4ebec1b060ed77cb6482a7"
+  },
+  "prior_setup_failure": "@evidence/build/runs/scientific-current-dispositions-707/failure-disposition.json"
+}

@@ -1,0 +1,32 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "status": "PASS_DETACHED_BASIS_ALL23_CI_JOIN_NOT_PROMOTION_APPROVED",
+  "coverage_ids": [
+    "FIX-04",
+    "FIX-06",
+    "API-06",
+    "SHD-06",
+    "TOOL-01"
+  ],
+  "basis": {
+    "path": "compat/candidates/tk-state-resource-12/installed-proofs-680/promotion-basis-711.json",
+    "sha256": "8d88769910f2744df84a8364f79fc6da164c696fef2cdb45a0b55eaf2f0bab6d"
+  },
+  "basis_manifest_sha256": "1e92e7de779a5b845c7921a12dac1ab5bc08f446b5ae9fb713b8e42f3ebeeb24",
+  "subject_manifest_sha256": "86efb22be0d0646a7f11b6ab43b10833d90359d89d615d3763e802bfa98fab18",
+  "qualification_head": "55fd4e82e1a1d7bcb9d3c93a5e66c1bc825b09a1",
+  "original_subject": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\parent-head-installed-subject-699\\qualification-subject.json",
+    "sha256": "dfdc90e60395d41d904ba156ca9be7b8d3379eda85b2a0e248595789e57cbca0"
+  },
+  "source_local_subject": {
+    "path": "compat/candidates/tk-state-resource-12/installed-proofs-680/qualification-subject-699.json",
+    "sha256": "dfdc90e60395d41d904ba156ca9be7b8d3379eda85b2a0e248595789e57cbca0"
+  },
+  "committed_inputs_unchanged": 702,
+  "independent_final_promotion_approved": false,
+  "artifact_admitted": false,
+  "scratch_created": false,
+  "scope": "Exact detached promotion basis after complete current-head CI and cleanup. Independent exact-basis/eight-row/channel review and guarded strict admission/restoration remain required. No source-head substitution, broad parity or public delivery."
+}

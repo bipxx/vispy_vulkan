@@ -1,0 +1,902 @@
+{
+  "schema": 1,
+  "scope": "Mandatory initial qualification rows; pending entries are requirements, never claims of completed ports.",
+  "shipping_contract": "compat/runtime-package.json",
+  "host_pins": "compat/hosts.lock.toml",
+  "binding_pins": "uv.lock",
+  "same_artifact_required": true,
+  "metal_status": "EXPERIMENTAL_NOT_QUALIFIED",
+  "linux_hardware_status": "NOT_QUALIFIED_WSL_SOFTWARE_ONLY",
+  "feature_inventory": [
+    "clear",
+    "image",
+    "labels",
+    "volume",
+    "markers",
+    "mesh",
+    "compiled-text",
+    "depth-order",
+    "shader-arrays-attributes-lod",
+    "multisample-lines",
+    "recovery",
+    "shutdown-zero-resources"
+  ],
+  "rows": [
+    {
+      "id": "windows-vulkan-headless",
+      "platform": "windows-vulkan",
+      "application": "headless",
+      "binding": null,
+      "mandatory": true,
+      "status": "QUALIFIED",
+      "artifact_sha256": "9e4e30cc50d49a759ea42cd7915cc2544a42d2af869d505e3ef5290d47617286",
+      "environment_id": "10e7b1b193a401a57ad5a7090a712b0293eb24d7eb88ff0f08dc7c0a045e953f",
+      "features": [
+        "clear",
+        "image",
+        "labels",
+        "volume",
+        "markers",
+        "mesh",
+        "compiled-text",
+        "depth-order",
+        "shader-arrays-attributes-lod",
+        "multisample-lines",
+        "recovery",
+        "shutdown-zero-resources"
+      ],
+      "gates": {
+        "no_gl_execution": "PASS",
+        "no_gl_loads": "PASS",
+        "no_gl_install_link_requirement": "PASS"
+      },
+      "evidence": [
+        {
+          "path": "compat/api-acceptance/mandatory-parent-windows-headless-v1.json",
+          "sha256": "126661eec260c1010748f8f740b9b5ba993a6525b32925202113da8600d35f21"
+        },
+        {
+          "path": "@evidence/build/runs/mandatory-parent-windows-headless-688/replay-1.json",
+          "sha256": "a1eec854d4d2a835d6caec9ff64136185f2efd1344d5bf2d49058b9e1529955c"
+        },
+        {
+          "path": "@evidence/build/runs/mandatory-parent-windows-headless-688/replay-1.worker.json",
+          "sha256": "ac43c2cc6c0c676f550aa15689c823c9bd2b4557968396e451bb1b7c251d453e"
+        },
+        {
+          "path": "@evidence/build/runs/mandatory-parent-windows-headless-688/receipt-1.json",
+          "sha256": "3cb6700c59840f8c8cd0df5be8b864822999bfe464b0fb6ade71fb560a88f982"
+        },
+        {
+          "path": "@evidence/build/runs/mandatory-parent-windows-headless-688/receipt-0.inventory.json",
+          "sha256": "63ab702acb60785f25aae9fc5930550e5213595bf8a3f50ddfa063ac835e04cc"
+        },
+        {
+          "path": "@evidence/build/runs/mandatory-parent-windows-headless-688/replay-1-features/result1.json",
+          "sha256": "0717733ad8257804f7f480dd88c9ffebcfdb48d318590cbf5160ef7fced7a0d1"
+        },
+        {
+          "path": "@evidence/build/runs/mandatory-parent-windows-headless-688/replay-1-features/rendering/result1.json",
+          "sha256": "bb0fd36c9f13af0e101470531575012ed5f5aca9e6aa52fa35db4cfb71e3d4d1"
+        },
+        {
+          "path": "@evidence/build/runs/mandatory-parent-windows-headless-688/replay-1-features/markers/result.json",
+          "sha256": "116a7817df4d50b8dff6135212888d6e9f7e119f2f4c4ab4182c646e950045ac"
+        },
+        {
+          "path": "@evidence/build/runs/mandatory-parent-windows-headless-688/replay-1-features/science/result1.json",
+          "sha256": "65b225158a1e0ebe8c7ac314c0f05cc33361c236cabefee44e3743a44e5945a3"
+        },
+        {
+          "path": "@evidence/build/runs/mandatory-parent-windows-headless-688/replay-1-features/gpu95/gpu1.xml",
+          "sha256": "4f23ab8e616066664c9843caea9672248b990410cd5447f5ac2ee3918309419e"
+        },
+        {
+          "path": "@evidence/build/runs/mandatory-parent-windows-headless-688/replay-1-features/gpu95/gpu-shutdown1.json",
+          "sha256": "7a3b4a66832ad53ba8165d708a785484fa404f46f8b8fe82df64b1b8aac51911"
+        },
+        {
+          "path": "@evidence/build/runs/parent-final-promotion-review-714/decision.json",
+          "sha256": "deee7623c71ea9ec093e6c21dd6e56395c1b8a73f23542e7f7ac3b4ca2f663bb"
+        },
+        {
+          "path": "@evidence/build/runs/parent-scoped-admission-718/strict-admission-result.json",
+          "sha256": "18890553a0251b87a70c12ceb95add7a30baa256d6d8445e201f02f10b856caa"
+        }
+      ],
+      "qualification_scope": "Current selected VisPy-only observation/binding set from693/695; exact537members and ten zero final gauges. Windows Vulkan or WSL pinned software Vulkan scope only; manual original-envelope retention, not generic foreign-retention acceptance. Historical optional rows are not renewed."
+    },
+    {
+      "id": "windows-vulkan-qwidget-pyqt5",
+      "platform": "windows-vulkan",
+      "application": "qwidget",
+      "binding": "pyqt5",
+      "mandatory": true,
+      "status": "QUALIFIED",
+      "artifact_sha256": "9e4e30cc50d49a759ea42cd7915cc2544a42d2af869d505e3ef5290d47617286",
+      "environment_id": "4476a4646b460fd7259a0e7ec16a443e44cb7a58380e69780a21cec552202a96",
+      "features": [
+        "launch",
+        "initial-render",
+        "update",
+        "interaction",
+        "capture-export",
+        "recovery",
+        "close"
+      ],
+      "gates": {
+        "no_gl_execution": "PASS",
+        "no_gl_loads": "PASS",
+        "no_gl_install_link_requirement": "PASS"
+      },
+      "evidence": [
+        {
+          "path": "compat/api-acceptance/mandatory-parent-windows-pyqt5-v1.json",
+          "sha256": "a552653d7edef0eafb233d25ff84f59a7d1b869b4d369bcb644714470d6bd7cc"
+        },
+        {
+          "path": "@evidence/build/runs/mandatory-parent-windows-pyqt5-686/replay-0.json",
+          "sha256": "8bde1e18471984e1a36f4770df8625c21ed7c23dc285ac8fcb1dfa7add362a3f"
+        },
+        {
+          "path": "@evidence/build/runs/mandatory-parent-windows-pyqt5-686/replay-0.worker.json",
+          "sha256": "d4e5dd3400eabb7207d38d0c6cfd4d2196de5ecdfc74179720d353f3aa597e83"
+        },
+        {
+          "path": "@evidence/build/runs/mandatory-parent-windows-pyqt5-686/receipt-0.json",
+          "sha256": "34a7f253516e02bb8aedfb10ce17142ca2faf6cae95074e1a9e230a67e08a40c"
+        },
+        {
+          "path": "@evidence/build/runs/mandatory-parent-windows-pyqt5-686/receipt-0.inventory.json",
+          "sha256": "c39d62b012031cdec39a50881db3d03cc37bb01ff86c3c48447f68ff80ae7125"
+        },
+        {
+          "path": "@evidence/build/runs/mandatory-parent-windows-pyqt5-686/replay-0-features/functional.json",
+          "sha256": "e86083289be60a866b117ec1d18313994baa148f65bf4760c17c14e861cc928c"
+        },
+        {
+          "path": "@evidence/build/runs/parent-final-promotion-review-714/decision.json",
+          "sha256": "deee7623c71ea9ec093e6c21dd6e56395c1b8a73f23542e7f7ac3b4ca2f663bb"
+        },
+        {
+          "path": "@evidence/build/runs/parent-scoped-admission-718/strict-admission-result.json",
+          "sha256": "18890553a0251b87a70c12ceb95add7a30baa256d6d8445e201f02f10b856caa"
+        }
+      ],
+      "qualification_scope": "Current selected VisPy-only observation/binding set from693/695; exact537members and ten zero final gauges. Windows Vulkan or WSL pinned software Vulkan scope only; manual original-envelope retention, not generic foreign-retention acceptance. Historical optional rows are not renewed."
+    },
+    {
+      "id": "windows-vulkan-qwidget-pyqt6",
+      "platform": "windows-vulkan",
+      "application": "qwidget",
+      "binding": "pyqt6",
+      "mandatory": true,
+      "status": "QUALIFIED",
+      "artifact_sha256": "9e4e30cc50d49a759ea42cd7915cc2544a42d2af869d505e3ef5290d47617286",
+      "environment_id": "347d1db6e1068cfebade6245627718414da814e06880ef57aca3247177161911",
+      "features": [
+        "launch",
+        "initial-render",
+        "update",
+        "interaction",
+        "capture-export",
+        "recovery",
+        "close"
+      ],
+      "gates": {
+        "no_gl_execution": "PASS",
+        "no_gl_loads": "PASS",
+        "no_gl_install_link_requirement": "PASS"
+      },
+      "evidence": [
+        {
+          "path": "compat/api-acceptance/mandatory-parent-windows-pyqt6-v1.json",
+          "sha256": "af6b28044d48f58e22d92584a2d9880ab0288f086ad961fadc8dc674143b5715"
+        },
+        {
+          "path": "@evidence/build/runs/mandatory-parent-windows-pyqt6-685/replay-0.json",
+          "sha256": "de6f1688977a80a962fdb80d336587397de7eca8bf07de30d2acad66763f77e8"
+        },
+        {
+          "path": "@evidence/build/runs/mandatory-parent-windows-pyqt6-685/replay-0.worker.json",
+          "sha256": "3779cd042bacb10605afd6ffe2f6b123ff44860d4786baed3e158b9d95220ed3"
+        },
+        {
+          "path": "@evidence/build/runs/mandatory-parent-windows-pyqt6-685/receipt-0.json",
+          "sha256": "82bcb76aa7e4b5a752e32851308c05540e3b0d303f7f946c59d601b88d9f2f8e"
+        },
+        {
+          "path": "@evidence/build/runs/mandatory-parent-windows-pyqt6-685/receipt-0.inventory.json",
+          "sha256": "39cd05f0b4947ecde3f5cd28050728ed0fff04787ecaf742bebbc4f4f864a71b"
+        },
+        {
+          "path": "@evidence/build/runs/mandatory-parent-windows-pyqt6-685/replay-0-features/functional.json",
+          "sha256": "20eec171dabc20868e2ad19daee64aa01ce1dc85fb0f4f396bdc706a13d76396"
+        },
+        {
+          "path": "@evidence/build/runs/parent-final-promotion-review-714/decision.json",
+          "sha256": "deee7623c71ea9ec093e6c21dd6e56395c1b8a73f23542e7f7ac3b4ca2f663bb"
+        },
+        {
+          "path": "@evidence/build/runs/parent-scoped-admission-718/strict-admission-result.json",
+          "sha256": "18890553a0251b87a70c12ceb95add7a30baa256d6d8445e201f02f10b856caa"
+        }
+      ],
+      "qualification_scope": "Current selected VisPy-only observation/binding set from693/695; exact537members and ten zero final gauges. Windows Vulkan or WSL pinned software Vulkan scope only; manual original-envelope retention, not generic foreign-retention acceptance. Historical optional rows are not renewed."
+    },
+    {
+      "id": "windows-vulkan-qwidget-pyside6",
+      "platform": "windows-vulkan",
+      "application": "qwidget",
+      "binding": "pyside6",
+      "mandatory": true,
+      "status": "QUALIFIED",
+      "artifact_sha256": "9e4e30cc50d49a759ea42cd7915cc2544a42d2af869d505e3ef5290d47617286",
+      "environment_id": "f5b1216fe43714ce5965c08ff930c7f2c29b87254088b12515d4f5ca55af3b48",
+      "features": [
+        "launch",
+        "initial-render",
+        "update",
+        "interaction",
+        "capture-export",
+        "recovery",
+        "close"
+      ],
+      "gates": {
+        "no_gl_execution": "PASS",
+        "no_gl_loads": "PASS",
+        "no_gl_install_link_requirement": "PASS"
+      },
+      "evidence": [
+        {
+          "path": "compat/api-acceptance/mandatory-parent-windows-pyside6-v1.json",
+          "sha256": "dfd2074a028a62ce0e6b0381b3b4c765b708c31ff9a2d0cc6a36ee88888dab50"
+        },
+        {
+          "path": "@evidence/build/runs/mandatory-parent-windows-pyside6-687/replay-0.json",
+          "sha256": "5e14d69be51e0c4293f4c789ad36b28f52940dd9509c7d7ad29eae381771e908"
+        },
+        {
+          "path": "@evidence/build/runs/mandatory-parent-windows-pyside6-687/replay-0.worker.json",
+          "sha256": "2af96562ea8731c41f858830c67c1381ea4cb12a3223a16af3b3846ebc62c326"
+        },
+        {
+          "path": "@evidence/build/runs/mandatory-parent-windows-pyside6-687/receipt-0.json",
+          "sha256": "b12159d1c8a0c2c3fe09e986120aad45937326e4f6a1a3b3dc6fe85dc803908e"
+        },
+        {
+          "path": "@evidence/build/runs/mandatory-parent-windows-pyside6-687/receipt-0.inventory.json",
+          "sha256": "6b8a4b304c219dabfd0ec8716541258835ac9be14af6dc12b9f0255a80b74837"
+        },
+        {
+          "path": "@evidence/build/runs/mandatory-parent-windows-pyside6-687/replay-0-features/functional.json",
+          "sha256": "b339bfc4c8e909a03fe20d00aa70b075eba04c5b0ebb1a2cf3b0b18f0d6e9e4e"
+        },
+        {
+          "path": "@evidence/build/runs/parent-final-promotion-review-714/decision.json",
+          "sha256": "deee7623c71ea9ec093e6c21dd6e56395c1b8a73f23542e7f7ac3b4ca2f663bb"
+        },
+        {
+          "path": "@evidence/build/runs/parent-scoped-admission-718/strict-admission-result.json",
+          "sha256": "18890553a0251b87a70c12ceb95add7a30baa256d6d8445e201f02f10b856caa"
+        }
+      ],
+      "qualification_scope": "Current selected VisPy-only observation/binding set from693/695; exact537members and ten zero final gauges. Windows Vulkan or WSL pinned software Vulkan scope only; manual original-envelope retention, not generic foreign-retention acceptance. Historical optional rows are not renewed."
+    },
+    {
+      "id": "windows-vulkan-napari-pyqt6",
+      "platform": "windows-vulkan",
+      "application": "napari",
+      "binding": "pyqt6",
+      "mandatory": false,
+      "features": [
+        "launch",
+        "initial-render",
+        "update",
+        "interaction",
+        "capture-export",
+        "recovery",
+        "close"
+      ],
+      "status": "QUALIFIED",
+      "artifact_sha256": "62df5e4c31bf9a1bb1bea47fd68d50e4198d6ec13d2551c991da1e7f30a2b38f",
+      "environment_id": "eb23d7f0396b5e9b7c02b53d9e3e90bbfcc8953464d3fd1555ea9a82bd5f731d",
+      "gates": {
+        "no_gl_execution": "PASS",
+        "no_gl_loads": "PASS",
+        "no_gl_install_link_requirement": "PASS"
+      },
+      "evidence": [
+        {
+          "workspace": "vispy_vulkan",
+          "path": "build/runs/napari-010-strict-305/summary.json",
+          "sha256": "4f5a3a56e73cceaf902a43947c4f601988a63d037ef32eaa66039b48f9abf26d"
+        },
+        {
+          "workspace": "vispy_vulkan",
+          "path": "build/runs/napari-010-strict-305/windows-reports/napari-qualified2.json",
+          "sha256": "09766b35d1edc3694738903ab254ed20764192fa54f49fb44d9d96203dfdef23"
+        },
+        {
+          "workspace": "vispy_vulkan",
+          "path": "build/runs/napari-010-strict-305/windows-reports/napari-qualified2.worker.json",
+          "sha256": "ad2c30ac273fc53caece809a375343265ba5466c8d314efc897af084c3cdab50"
+        },
+        {
+          "workspace": "vispy_vulkan",
+          "path": "build/runs/napari-010-strict-305/windows-receipt.zip",
+          "sha256": "451a39f2c4770ab6dbd4c3ed299a09ba0326c92c03b94496cef4a074944e89a2"
+        },
+        {
+          "workspace": "vispy_vulkan",
+          "path": "build/runs/napari-010-strict-305/windows-reports/napari-qualified2-functional/functional.json",
+          "sha256": "c5998b3f10030e8e6e66d44a2ab5b2834191dccf262e11c59617c386b7de69ed"
+        },
+        {
+          "workspace": "vispy_vulkan",
+          "path": "compat/no-opengl-napari-0.10.0.json",
+          "sha256": "a724432bb7b29de635d46eef4f694e6673ecf9ab84d12c535e1caee8d099f349"
+        }
+      ],
+      "qualification_scope": "Selected pyqt6 profile; exact installed536memberartifact and pinned host bytes; complete observed fixture lifecycle/interaction/capture/recovery/close; global ninezero shutdown; scoped to this same-artifact environment; napari 0.10.0 with the 0.10.0 strict patch (D31 Phase 5b)"
+    },
+    {
+      "id": "windows-vulkan-glue-vispy-viewers-pyqt6",
+      "platform": "windows-vulkan",
+      "application": "glue-vispy-viewers",
+      "binding": "pyqt6",
+      "mandatory": false,
+      "status": "QUALIFIED",
+      "artifact_sha256": "62df5e4c31bf9a1bb1bea47fd68d50e4198d6ec13d2551c991da1e7f30a2b38f",
+      "environment_id": "8c73fcfde8c30508e0acddf6b8c65ab281546a28decfa2cb9c9201ef270b9c97",
+      "features": [
+        "launch",
+        "initial-render",
+        "update",
+        "interaction",
+        "capture-export",
+        "recovery",
+        "close"
+      ],
+      "gates": {
+        "no_gl_execution": "PASS",
+        "no_gl_loads": "PASS",
+        "no_gl_install_link_requirement": "PASS"
+      },
+      "evidence": [
+        {
+          "workspace": "vispy_vulkan-opengl-python",
+          "path": "build/no-opengl-windows-finalrenderer1/summary1.json",
+          "sha256": "44eb93c486d03407e3e01db9795339defc86e4c6276e7dc5d5311bb0c8f9df8c"
+        },
+        {
+          "workspace": "vispy_vulkan-opengl-python",
+          "path": "build/no-opengl-windows-finalrenderer1/pyqt6-glue/glue-qualified2.json",
+          "sha256": "c9ebd4d81334b13e4e159d50a023582547780d6b5ea1d6846cffb542c7ed3f08"
+        },
+        {
+          "workspace": "vispy_vulkan-opengl-python",
+          "path": "build/no-opengl-windows-finalrenderer1/pyqt6-glue/glue-qualified2.worker.json",
+          "sha256": "1eee664b2117c510dd45005d5c41058fba82a1e2facb6d6f37c8ac7a55e16b9b"
+        },
+        {
+          "workspace": "vispy_vulkan-opengl-python",
+          "path": "build/no-opengl-windows-finalrenderer1/pyqt6-glue/receipt1.json",
+          "sha256": "1e96751f1f19cc890e3117f20bc2d69c955b365b1b986e471352a3bcd85ef317"
+        },
+        {
+          "workspace": "vispy_vulkan-opengl-python",
+          "path": "build/no-opengl-windows-finalrenderer1/pyqt6-glue/glue-qualified2-functional/functional.json",
+          "sha256": "0c843511889d85d08e6f747d78ba4ba12eca4a56cf2edb7b9fef0e6b94999fe5"
+        }
+      ],
+      "qualification_scope": "Selected pyqt6 profile; exact installed536memberartifact and pinned host bytes; complete observed fixture lifecycle/interaction/capture/recovery/close; global ninezero shutdown; scoped to this same-artifact environment"
+    },
+    {
+      "id": "windows-vulkan-napari-threedee-pyqt6",
+      "platform": "windows-vulkan",
+      "application": "napari-threedee",
+      "binding": "pyqt6",
+      "mandatory": false,
+      "features": [
+        "launch",
+        "initial-render",
+        "update",
+        "interaction",
+        "capture-export",
+        "recovery",
+        "close"
+      ],
+      "status": "QUALIFIED",
+      "artifact_sha256": "62df5e4c31bf9a1bb1bea47fd68d50e4198d6ec13d2551c991da1e7f30a2b38f",
+      "environment_id": "eb23d7f0396b5e9b7c02b53d9e3e90bbfcc8953464d3fd1555ea9a82bd5f731d",
+      "gates": {
+        "no_gl_execution": "PASS",
+        "no_gl_loads": "PASS",
+        "no_gl_install_link_requirement": "PASS"
+      },
+      "evidence": [
+        {
+          "workspace": "vispy_vulkan",
+          "path": "build/runs/napari-010-strict-305/summary.json",
+          "sha256": "4f5a3a56e73cceaf902a43947c4f601988a63d037ef32eaa66039b48f9abf26d"
+        },
+        {
+          "workspace": "vispy_vulkan",
+          "path": "build/runs/napari-010-strict-305/windows-reports/threedee-qualified2.json",
+          "sha256": "c41b87309cf59513f666a40b6db602d002692bceb97715c594f13c7481314408"
+        },
+        {
+          "workspace": "vispy_vulkan",
+          "path": "build/runs/napari-010-strict-305/windows-reports/threedee-qualified2.worker.json",
+          "sha256": "5334381ed812cbaf8e7dfed9c3203b549a09506653a439896e44d0dd01178d4f"
+        },
+        {
+          "workspace": "vispy_vulkan",
+          "path": "build/runs/napari-010-strict-305/windows-receipt.zip",
+          "sha256": "451a39f2c4770ab6dbd4c3ed299a09ba0326c92c03b94496cef4a074944e89a2"
+        },
+        {
+          "workspace": "vispy_vulkan",
+          "path": "build/runs/napari-010-strict-305/windows-reports/threedee-qualified2-functional/functional.json",
+          "sha256": "434cc3e49be51c40d01bedacc04ac3566d9b1332c897b809b5a620fb134d6d96"
+        },
+        {
+          "workspace": "vispy_vulkan",
+          "path": "compat/no-opengl-napari-0.10.0.json",
+          "sha256": "a724432bb7b29de635d46eef4f694e6673ecf9ab84d12c535e1caee8d099f349"
+        }
+      ],
+      "qualification_scope": "Selected pyqt6 profile; exact installed536memberartifact and pinned host bytes; complete observed fixture lifecycle/interaction/capture/recovery/close; global ninezero shutdown; scoped to this same-artifact environment; napari 0.10.0 with the 0.10.0 strict patch (D31 Phase 5b)"
+    },
+    {
+      "id": "wsl-linux-lavapipe-x11-headless",
+      "platform": "wsl-linux-lavapipe-x11",
+      "application": "headless",
+      "binding": null,
+      "mandatory": true,
+      "status": "QUALIFIED",
+      "artifact_sha256": "a2715d2659f0caf8c01d430c34ba1dc2d5f9b520b6c36ce85a0c75328556fe56",
+      "environment_id": "fac83191e6d45061c7f8a02287cea092b0120e4b91fcc07d8b7311fcdce771a9",
+      "features": [
+        "clear",
+        "image",
+        "labels",
+        "volume",
+        "markers",
+        "mesh",
+        "compiled-text",
+        "depth-order",
+        "shader-arrays-attributes-lod",
+        "multisample-lines",
+        "recovery",
+        "shutdown-zero-resources"
+      ],
+      "gates": {
+        "no_gl_execution": "PASS",
+        "no_gl_loads": "PASS",
+        "no_gl_install_link_requirement": "PASS"
+      },
+      "evidence": [
+        {
+          "path": "compat/api-acceptance/mandatory-parent-wsl-headless-v1.json",
+          "sha256": "d1c6f1db7a572385e1cd66db6e7360f6928571c9afafd6cc94409933a156ed0a"
+        },
+        {
+          "path": "@evidence/build/runs/mandatory-parent-wsl-headless-692/reports/replay-0.json",
+          "sha256": "e980789678a4969ec401730e8e64d731efc49197fc385ee378ed348618c43cee"
+        },
+        {
+          "path": "@evidence/build/runs/mandatory-parent-wsl-headless-692/reports/replay-0.worker.json",
+          "sha256": "0219d7186f25b855c9c51540b14e68178e86e67088247ca44cfddd0f8da9fdf6"
+        },
+        {
+          "path": "@evidence/build/runs/mandatory-parent-wsl-headless-692/reports/receipt-0.json",
+          "sha256": "6c180f547ddfa561efc114fbd2004448ea0eb9bb0e563935ad6d78a9fce56c8b"
+        },
+        {
+          "path": "@evidence/build/runs/mandatory-parent-wsl-headless-692/reports/receipt-0.inventory.json",
+          "sha256": "67eca56eeb0622d73e3e579168bdb221b9a76e99d9a6d1b81dd48bcdab34501c"
+        },
+        {
+          "path": "@evidence/build/runs/mandatory-parent-wsl-headless-692/reports/replay-0-features/result1.json",
+          "sha256": "5c7e7359017d0cb925a5b5c6fa61b8bd19918f3245ba391910598d0418febc83"
+        },
+        {
+          "path": "@evidence/build/runs/mandatory-parent-wsl-headless-692/reports/replay-0-features/rendering/result1.json",
+          "sha256": "6b141c00f4e1bf50450abae1cb64afc7f4229f1db7bf391444658f930999ee0a"
+        },
+        {
+          "path": "@evidence/build/runs/mandatory-parent-wsl-headless-692/reports/replay-0-features/markers/result.json",
+          "sha256": "884c6fd23fdc38ab15f8145e0bb0a8f8c7ce31e1432008b4ce451a3d7c6e29e2"
+        },
+        {
+          "path": "@evidence/build/runs/mandatory-parent-wsl-headless-692/reports/replay-0-features/science/result1.json",
+          "sha256": "c104da3eec3f65793de26346798a089c0e7eb83f1e6f60e0b9d26dc9c1a057c9"
+        },
+        {
+          "path": "@evidence/build/runs/mandatory-parent-wsl-headless-692/reports/replay-0-features/gpu95/gpu.xml",
+          "sha256": "c826ad3e8174130e740cccaf0fc9e961440bc5e618d6a0c0284af9b5c15e22fc"
+        },
+        {
+          "path": "@evidence/build/runs/mandatory-parent-wsl-headless-692/reports/replay-0-features/gpu95/functional.json",
+          "sha256": "7364f8c716a6752f20ae1440b451a4993e5e502374ea446359a97b48dd866853"
+        },
+        {
+          "path": "@evidence/build/runs/parent-final-promotion-review-714/decision.json",
+          "sha256": "deee7623c71ea9ec093e6c21dd6e56395c1b8a73f23542e7f7ac3b4ca2f663bb"
+        },
+        {
+          "path": "@evidence/build/runs/parent-scoped-admission-718/strict-admission-result.json",
+          "sha256": "18890553a0251b87a70c12ceb95add7a30baa256d6d8445e201f02f10b856caa"
+        }
+      ],
+      "qualification_scope": "Current selected VisPy-only observation/binding set from693/695; exact537members and ten zero final gauges. Windows Vulkan or WSL pinned software Vulkan scope only; manual original-envelope retention, not generic foreign-retention acceptance. Historical optional rows are not renewed."
+    },
+    {
+      "id": "wsl-linux-lavapipe-x11-qwidget-pyqt5",
+      "platform": "wsl-linux-lavapipe-x11",
+      "application": "qwidget",
+      "binding": "pyqt5",
+      "mandatory": true,
+      "status": "QUALIFIED",
+      "artifact_sha256": "a2715d2659f0caf8c01d430c34ba1dc2d5f9b520b6c36ce85a0c75328556fe56",
+      "environment_id": "d03c0f8c2959f7185a10d9eb33b9bec80664e2ad6ac34411a5645cc65d2916f6",
+      "features": [
+        "launch",
+        "initial-render",
+        "update",
+        "interaction",
+        "capture-export",
+        "recovery",
+        "close"
+      ],
+      "gates": {
+        "no_gl_execution": "PASS",
+        "no_gl_loads": "PASS",
+        "no_gl_install_link_requirement": "PASS"
+      },
+      "evidence": [
+        {
+          "path": "compat/api-acceptance/mandatory-parent-wsl-pyqt5-v1.json",
+          "sha256": "6cfb7c1ab1d8fe0d521727c2899270a78099772cfa92ba0f6f5f83edfa187e7c"
+        },
+        {
+          "path": "@evidence/build/runs/mandatory-parent-wsl-pyqt5-690/reports/replay-0.json",
+          "sha256": "e7ff2a9c79b0d2e5aeb3296c552fe752e801bf890baf2d358fb27d980b4b2aec"
+        },
+        {
+          "path": "@evidence/build/runs/mandatory-parent-wsl-pyqt5-690/reports/replay-0.worker.json",
+          "sha256": "82264eed9d54aa2f61124234191ceb4d2a440f47efa7235c01b59a85710b65ad"
+        },
+        {
+          "path": "@evidence/build/runs/mandatory-parent-wsl-pyqt5-690/reports/receipt-0.json",
+          "sha256": "c7ed334ae0263f074775fd5895dc31cc7e10be68f21843b6a0186ed20e4c3181"
+        },
+        {
+          "path": "@evidence/build/runs/mandatory-parent-wsl-pyqt5-690/reports/receipt-0.inventory.json",
+          "sha256": "8f54739a69b49a3c0553deb526255eefa60795b71f3cc997e64467a927dbd6f4"
+        },
+        {
+          "path": "@evidence/build/runs/mandatory-parent-wsl-pyqt5-690/reports/replay-0-features/functional.json",
+          "sha256": "c80ae0a8e71be27afacdaadf3687f4fa4267b3e81ef50b3daa2f091d9041a30a"
+        },
+        {
+          "path": "@evidence/build/runs/parent-final-promotion-review-714/decision.json",
+          "sha256": "deee7623c71ea9ec093e6c21dd6e56395c1b8a73f23542e7f7ac3b4ca2f663bb"
+        },
+        {
+          "path": "@evidence/build/runs/parent-scoped-admission-718/strict-admission-result.json",
+          "sha256": "18890553a0251b87a70c12ceb95add7a30baa256d6d8445e201f02f10b856caa"
+        }
+      ],
+      "qualification_scope": "Current selected VisPy-only observation/binding set from693/695; exact537members and ten zero final gauges. Windows Vulkan or WSL pinned software Vulkan scope only; manual original-envelope retention, not generic foreign-retention acceptance. Historical optional rows are not renewed.",
+      "provider_profile": {
+        "path": "compat/qt/linux-pyqt5-no-opengl.json",
+        "sha256": "5b574cbad9621af480a76a1805f6e8b8f999627ec3023e40ba8bbb5193bddb59"
+      }
+    },
+    {
+      "id": "wsl-linux-lavapipe-x11-qwidget-pyqt6",
+      "platform": "wsl-linux-lavapipe-x11",
+      "application": "qwidget",
+      "binding": "pyqt6",
+      "mandatory": true,
+      "status": "QUALIFIED",
+      "artifact_sha256": "a2715d2659f0caf8c01d430c34ba1dc2d5f9b520b6c36ce85a0c75328556fe56",
+      "environment_id": "9759484092e5fe93dacdfff0c8b9fbc6d6804c0de33a8c20ddf6c31c8c8c99b2",
+      "features": [
+        "launch",
+        "initial-render",
+        "update",
+        "interaction",
+        "capture-export",
+        "recovery",
+        "close"
+      ],
+      "gates": {
+        "no_gl_execution": "PASS",
+        "no_gl_loads": "PASS",
+        "no_gl_install_link_requirement": "PASS"
+      },
+      "evidence": [
+        {
+          "path": "compat/api-acceptance/mandatory-parent-wsl-pyqt6-v1.json",
+          "sha256": "cbc7a73cd73cf8158ab33da92d2175e606060fb606c368a573e4084c19de77e8"
+        },
+        {
+          "path": "@evidence/build/runs/mandatory-parent-wsl-pyqt6-689/reports/replay-0.json",
+          "sha256": "5f3f640bdafd2a75e9b11a74b434f2dd4c44bb42ac7f0e6093d89dc89422e86b"
+        },
+        {
+          "path": "@evidence/build/runs/mandatory-parent-wsl-pyqt6-689/reports/replay-0.worker.json",
+          "sha256": "18a93333369f08d50a87a92c0eb80a56a819677653e525ea0e13f86c7850494f"
+        },
+        {
+          "path": "@evidence/build/runs/mandatory-parent-wsl-pyqt6-689/reports/receipt-0.json",
+          "sha256": "a3ecbc9991b26ba95d67ff8c96498c3d2faca708adbd8e715d95d619ccd47919"
+        },
+        {
+          "path": "@evidence/build/runs/mandatory-parent-wsl-pyqt6-689/reports/receipt-0.inventory.json",
+          "sha256": "e94deaa669224982ccf20473b889a24db9e45a4fe9c47d22beb1365b2e89f1b7"
+        },
+        {
+          "path": "@evidence/build/runs/mandatory-parent-wsl-pyqt6-689/reports/replay-0-features/functional.json",
+          "sha256": "4312daa3e1d9544c201e532c0580f6911f80d4b6302e075408e7d0a19de3520f"
+        },
+        {
+          "path": "@evidence/build/runs/parent-final-promotion-review-714/decision.json",
+          "sha256": "deee7623c71ea9ec093e6c21dd6e56395c1b8a73f23542e7f7ac3b4ca2f663bb"
+        },
+        {
+          "path": "@evidence/build/runs/parent-scoped-admission-718/strict-admission-result.json",
+          "sha256": "18890553a0251b87a70c12ceb95add7a30baa256d6d8445e201f02f10b856caa"
+        }
+      ],
+      "qualification_scope": "Current selected VisPy-only observation/binding set from693/695; exact537members and ten zero final gauges. Windows Vulkan or WSL pinned software Vulkan scope only; manual original-envelope retention, not generic foreign-retention acceptance. Historical optional rows are not renewed."
+    },
+    {
+      "id": "wsl-linux-lavapipe-x11-qwidget-pyside6",
+      "platform": "wsl-linux-lavapipe-x11",
+      "application": "qwidget",
+      "binding": "pyside6",
+      "mandatory": true,
+      "status": "QUALIFIED",
+      "artifact_sha256": "a2715d2659f0caf8c01d430c34ba1dc2d5f9b520b6c36ce85a0c75328556fe56",
+      "environment_id": "6deb0cadfae3663662f06e233f64e44fbc448e791e582084374ca9522a1ce535",
+      "features": [
+        "launch",
+        "initial-render",
+        "update",
+        "interaction",
+        "capture-export",
+        "recovery",
+        "close"
+      ],
+      "gates": {
+        "no_gl_execution": "PASS",
+        "no_gl_loads": "PASS",
+        "no_gl_install_link_requirement": "PASS"
+      },
+      "evidence": [
+        {
+          "path": "compat/api-acceptance/mandatory-parent-wsl-pyside6-v1.json",
+          "sha256": "a9033746a445087e1e6fb1bf5fda66a4b723456f8412c465bd2c81f922776e51"
+        },
+        {
+          "path": "@evidence/build/runs/mandatory-parent-wsl-pyside6-691/reports/replay-0.json",
+          "sha256": "cdd32d2fd948ae91fe8902b9c10721ab13a7329a8fdd85a6a5da48e323310617"
+        },
+        {
+          "path": "@evidence/build/runs/mandatory-parent-wsl-pyside6-691/reports/replay-0.worker.json",
+          "sha256": "991609b0104172032272d9900f7ef2882133f3f205f2846eb8c61dc7f8011de6"
+        },
+        {
+          "path": "@evidence/build/runs/mandatory-parent-wsl-pyside6-691/reports/receipt-0.json",
+          "sha256": "52f93fda54fcfc036c5234b0cb82c9fa8d53f9964e67dd16c0b70cd53ad491eb"
+        },
+        {
+          "path": "@evidence/build/runs/mandatory-parent-wsl-pyside6-691/reports/receipt-0.inventory.json",
+          "sha256": "caf8fc20d6b7453d692be997668666ec2552ce0dc9672be7b6012f83c5156062"
+        },
+        {
+          "path": "@evidence/build/runs/mandatory-parent-wsl-pyside6-691/reports/replay-0-features/functional.json",
+          "sha256": "5a652cd985a7657813c966e4425a122d94536a30a5bb651cb13fafd010e9de02"
+        },
+        {
+          "path": "@evidence/build/runs/parent-final-promotion-review-714/decision.json",
+          "sha256": "deee7623c71ea9ec093e6c21dd6e56395c1b8a73f23542e7f7ac3b4ca2f663bb"
+        },
+        {
+          "path": "@evidence/build/runs/parent-scoped-admission-718/strict-admission-result.json",
+          "sha256": "18890553a0251b87a70c12ceb95add7a30baa256d6d8445e201f02f10b856caa"
+        }
+      ],
+      "qualification_scope": "Current selected VisPy-only observation/binding set from693/695; exact537members and ten zero final gauges. Windows Vulkan or WSL pinned software Vulkan scope only; manual original-envelope retention, not generic foreign-retention acceptance. Historical optional rows are not renewed.",
+      "provider_profile": {
+        "path": "compat/qt/linux-pyside6-no-opengl.json",
+        "sha256": "ce209059472f57221b03c13a44fb09331ff926edfa42e9b196b9eb659fb8a454"
+      }
+    },
+    {
+      "id": "wsl-linux-lavapipe-x11-napari-pyqt6",
+      "platform": "wsl-linux-lavapipe-x11",
+      "application": "napari",
+      "binding": "pyqt6",
+      "mandatory": false,
+      "features": [
+        "launch",
+        "initial-render",
+        "update",
+        "interaction",
+        "capture-export",
+        "recovery",
+        "close"
+      ],
+      "status": "QUALIFIED",
+      "artifact_sha256": "374a74ea9787ccccc643e0ac7e45d9f704a41d046465828736158ac94398c4a3",
+      "environment_id": "1285f0a0940926fcf5ffcfa4ab97b220cc730d52522c3325a0e6f7651a8e9282",
+      "gates": {
+        "no_gl_execution": "PASS",
+        "no_gl_loads": "PASS",
+        "no_gl_install_link_requirement": "PASS"
+      },
+      "evidence": [
+        {
+          "workspace": "vispy_vulkan",
+          "path": "build/runs/napari-010-strict-305/summary.json",
+          "sha256": "4f5a3a56e73cceaf902a43947c4f601988a63d037ef32eaa66039b48f9abf26d"
+        },
+        {
+          "workspace": "vispy_vulkan",
+          "path": "build/runs/napari-010-strict-305/linux-reports/napari-qualified2.json",
+          "sha256": "81cf1d7636470644ebc27ed9f43e3e174e940e93652b23a9778c93eba97595d6"
+        },
+        {
+          "workspace": "vispy_vulkan",
+          "path": "build/runs/napari-010-strict-305/linux-reports/napari-qualified2.worker.json",
+          "sha256": "d379a90442a12af166d7711a19c24cb6f29ad381ea7e9fcfff8acbb9689d92ec"
+        },
+        {
+          "workspace": "vispy_vulkan",
+          "path": "build/runs/napari-010-strict-305/linux-reports/receipt1.json",
+          "sha256": "656958648553986ad5c484559b124d923f2d4ed987937eadc017095b22cba4bb"
+        },
+        {
+          "workspace": "vispy_vulkan",
+          "path": "build/runs/napari-010-strict-305/linux-reports/napari-qualified2-functional/functional.json",
+          "sha256": "cf7660d4b1ee5a0f3645134200f28c05f2e86dc8bbef5523f2c0bddd77a242d7"
+        },
+        {
+          "workspace": "vispy_vulkan",
+          "path": "compat/no-opengl-napari-0.10.0.json",
+          "sha256": "a724432bb7b29de635d46eef4f694e6673ecf9ab84d12c535e1caee8d099f349"
+        }
+      ],
+      "qualification_scope": "Mapped X11 source-built PyQt6; explicit Lavapipe software; exact536installedmembers and pinned host payload; full observed lifecycle/interaction/capture/recovery/close and ninezero shutdown; no nativeLinuxhardwareclaim; napari 0.10.0 with the 0.10.0 strict patch (D31 Phase 5b)"
+    },
+    {
+      "id": "wsl-linux-lavapipe-x11-glue-vispy-viewers-pyqt6",
+      "platform": "wsl-linux-lavapipe-x11",
+      "application": "glue-vispy-viewers",
+      "binding": "pyqt6",
+      "mandatory": false,
+      "status": "QUALIFIED",
+      "artifact_sha256": "374a74ea9787ccccc643e0ac7e45d9f704a41d046465828736158ac94398c4a3",
+      "environment_id": "9f324bae6cd38d6a5739947fa7dc209fe9eacb5c1463f2e2ad31147fb7056988",
+      "features": [
+        "launch",
+        "initial-render",
+        "update",
+        "interaction",
+        "capture-export",
+        "recovery",
+        "close"
+      ],
+      "gates": {
+        "no_gl_execution": "PASS",
+        "no_gl_loads": "PASS",
+        "no_gl_install_link_requirement": "PASS"
+      },
+      "evidence": [
+        {
+          "workspace": "vispy_vulkan-opengl-python",
+          "path": "build/no-opengl-linux-finalrenderer1/summary1.json",
+          "sha256": "6c1a22f285be9b2aa590669fb8b74f12270beb29e69040fbed69f6dfdeb444a8"
+        },
+        {
+          "workspace": "vispy_vulkan-opengl-python",
+          "path": "build/no-opengl-linux-finalrenderer1/glue/glue-qualified2.json",
+          "sha256": "3cce0da57d1f61dc3a8d996470fad95b6c62552f0b5f25d59be86cb40f11fef3"
+        },
+        {
+          "workspace": "vispy_vulkan-opengl-python",
+          "path": "build/no-opengl-linux-finalrenderer1/glue/glue-qualified2.worker.json",
+          "sha256": "5fa3c17f3aed9337d3bc18f55ef88787e85411e5a180e6b5ddf399971d87fb76"
+        },
+        {
+          "workspace": "vispy_vulkan-opengl-python",
+          "path": "build/no-opengl-linux-finalrenderer1/glue/receipt1.json",
+          "sha256": "ddd7fff4214f2dc9a4c9ad82a8750477ccc0e73847c6b79bf91fb726aa69ba8c"
+        },
+        {
+          "workspace": "vispy_vulkan-opengl-python",
+          "path": "build/no-opengl-linux-finalrenderer1/glue/glue-qualified2-functional/functional.json",
+          "sha256": "9c66e239b2649f8dbbef046321aca7d54a9edc937ef60c5d9b67a78af3239661"
+        }
+      ],
+      "qualification_scope": "Mapped X11 source-built PyQt6; explicit Lavapipe software; exact536installedmembers and pinned host payload; full observed lifecycle/interaction/capture/recovery/close and ninezero shutdown; no nativeLinuxhardwareclaim"
+    },
+    {
+      "id": "wsl-linux-lavapipe-x11-napari-threedee-pyqt6",
+      "platform": "wsl-linux-lavapipe-x11",
+      "application": "napari-threedee",
+      "binding": "pyqt6",
+      "mandatory": false,
+      "features": [
+        "launch",
+        "initial-render",
+        "update",
+        "interaction",
+        "capture-export",
+        "recovery",
+        "close"
+      ],
+      "status": "QUALIFIED",
+      "artifact_sha256": "374a74ea9787ccccc643e0ac7e45d9f704a41d046465828736158ac94398c4a3",
+      "environment_id": "1285f0a0940926fcf5ffcfa4ab97b220cc730d52522c3325a0e6f7651a8e9282",
+      "gates": {
+        "no_gl_execution": "PASS",
+        "no_gl_loads": "PASS",
+        "no_gl_install_link_requirement": "PASS"
+      },
+      "evidence": [
+        {
+          "workspace": "vispy_vulkan",
+          "path": "build/runs/napari-010-strict-305/summary.json",
+          "sha256": "4f5a3a56e73cceaf902a43947c4f601988a63d037ef32eaa66039b48f9abf26d"
+        },
+        {
+          "workspace": "vispy_vulkan",
+          "path": "build/runs/napari-010-strict-305/linux-reports/threedee-qualified2.json",
+          "sha256": "0fa1e8301522ed9f450f8de71249d63d79e1951953c545d8908963539f74f6c7"
+        },
+        {
+          "workspace": "vispy_vulkan",
+          "path": "build/runs/napari-010-strict-305/linux-reports/threedee-qualified2.worker.json",
+          "sha256": "736e22d250a777b4376ee4b88990b043888042b8af26662d6eb6466efed94b3b"
+        },
+        {
+          "workspace": "vispy_vulkan",
+          "path": "build/runs/napari-010-strict-305/linux-reports/receipt1.json",
+          "sha256": "656958648553986ad5c484559b124d923f2d4ed987937eadc017095b22cba4bb"
+        },
+        {
+          "workspace": "vispy_vulkan",
+          "path": "build/runs/napari-010-strict-305/linux-reports/threedee-qualified2-functional/functional.json",
+          "sha256": "fadd3fa4d849a0a8f6a294b959906594909959df7f2226a8fd36fea9402a129a"
+        },
+        {
+          "workspace": "vispy_vulkan",
+          "path": "compat/no-opengl-napari-0.10.0.json",
+          "sha256": "a724432bb7b29de635d46eef4f694e6673ecf9ab84d12c535e1caee8d099f349"
+        }
+      ],
+      "qualification_scope": "Mapped X11 source-built PyQt6; explicit Lavapipe software; exact536installedmembers and pinned host payload; full observed lifecycle/interaction/capture/recovery/close and ninezero shutdown; no nativeLinuxhardwareclaim; napari 0.10.0 with the 0.10.0 strict patch (D31 Phase 5b)"
+    },
+    {
+      "id": "dive-admission",
+      "application": "dive",
+      "mandatory": false,
+      "status": "NOT_ADMITTED",
+      "reason": "Source/import inventory only in compat/hosts.lock.toml; no upstream rendering fixture admitted."
+    },
+    {
+      "id": "visbrain-admission",
+      "application": "visbrain",
+      "mandatory": false,
+      "status": "NOT_ADMITTED",
+      "reason": "Source/import inventory only in compat/hosts.lock.toml; no upstream rendering fixture admitted."
+    }
+  ]
+}

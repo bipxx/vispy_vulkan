@@ -1,0 +1,677 @@
+{
+  "status": "PASS_ALL23_REQUIRED_SAME_HEAD_CI_JOBS",
+  "qualification_head": "55fd4e82e1a1d7bcb9d3c93a5e66c1bc825b09a1",
+  "bundle": {
+    "path": "compat/candidates/tk-state-resource-12/installed-proofs-680/ci-final-709/required-ci.json",
+    "sha256": "c88ccc219e5f12087c720b577665be7ffec2b5df64376c8a2557ee9ac7e8b01d"
+  },
+  "identities": [
+    {
+      "run_id": 43554619087,
+      "job_id": 132324539966,
+      "job_name": "CPU windows-x86_64 CPython 3.14.0",
+      "identity": {
+        "path": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\compat\\candidates\\tk-state-resource-12\\installed-proofs-680\\ci-cpu-704\\132324539966-identity.json",
+        "sha256": "95392060571c77bb788a5300c39375995f874cbcb11191b6a6d4a603e644b199"
+      },
+      "artifact": {
+        "id": 14098905883,
+        "node_id": "MDg6QXJ0aWZhY3QxNDA5ODkwNTg4Mw==",
+        "name": "cpu-windows-x86_64-3.14.0",
+        "size_in_bytes": 201093,
+        "url": "https://api.github.com/repos/bipxx/vispy_vulkan/actions/artifacts/14098905883",
+        "archive_download_url": "https://api.github.com/repos/bipxx/vispy_vulkan/actions/artifacts/14098905883/zip",
+        "expired": false,
+        "digest": "sha256:7f8b67de731d96ac5ea6166b3007f5ceaa557362b69c7c829fe7788e6ec26e99",
+        "created_at": "2026-11-14T04:24:13Z",
+        "updated_at": "2026-11-14T04:24:13Z",
+        "expires_at": "2027-02-12T04:02:17Z",
+        "workflow_run": {
+          "id": 43554619087,
+          "repository_id": 1427785983,
+          "head_repository_id": 1427785983,
+          "head_branch": "wip/qt-lifecycle-native-562",
+          "head_sha": "55fd4e82e1a1d7bcb9d3c93a5e66c1bc825b09a1"
+        }
+      },
+      "member": "evidence/ci-identity.json",
+      "archive_sha256": "7f8b67de731d96ac5ea6166b3007f5ceaa557362b69c7c829fe7788e6ec26e99",
+      "archive_bytes": 201093
+    },
+    {
+      "run_id": 43554619087,
+      "job_id": 132324539889,
+      "job_name": "CPU macos-x86_64 CPython 3.10.19",
+      "identity": {
+        "path": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\compat\\candidates\\tk-state-resource-12\\installed-proofs-680\\ci-cpu-704\\132324539889-identity.json",
+        "sha256": "694a42173cb3f3e07798ca4cc85324043c8602c7993e5f56c3ed5dc2d209e717"
+      },
+      "artifact": {
+        "id": 14098898813,
+        "node_id": "MDg6QXJ0aWZhY3QxNDA5ODg5ODgxMw==",
+        "name": "cpu-macos-x86_64-3.10.19",
+        "size_in_bytes": 202702,
+        "url": "https://api.github.com/repos/bipxx/vispy_vulkan/actions/artifacts/14098898813",
+        "archive_download_url": "https://api.github.com/repos/bipxx/vispy_vulkan/actions/artifacts/14098898813/zip",
+        "expired": false,
+        "digest": "sha256:e2c01af8cc13ee185ab4bce78da8fe8759321f89532896cc84841d31a24277ca",
+        "created_at": "2026-11-14T04:41:57Z",
+        "updated_at": "2026-11-14T04:41:57Z",
+        "expires_at": "2027-02-12T04:02:17Z",
+        "workflow_run": {
+          "id": 43554619087,
+          "repository_id": 1427785983,
+          "head_repository_id": 1427785983,
+          "head_branch": "wip/qt-lifecycle-native-562",
+          "head_sha": "55fd4e82e1a1d7bcb9d3c93a5e66c1bc825b09a1"
+        }
+      },
+      "member": "evidence/ci-identity.json",
+      "archive_sha256": "e2c01af8cc13ee185ab4bce78da8fe8759321f89532896cc84841d31a24277ca",
+      "archive_bytes": 202702
+    },
+    {
+      "run_id": 43554619087,
+      "job_id": 132324539942,
+      "job_name": "CPU macos-arm64 CPython 3.13.8",
+      "identity": {
+        "path": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\compat\\candidates\\tk-state-resource-12\\installed-proofs-680\\ci-cpu-704\\132324539942-identity.json",
+        "sha256": "726e44c67491bfa9a4e61d1c383db63c215f01b7c1d9f5edd9f204bebec7a778"
+      },
+      "artifact": {
+        "id": 14098831589,
+        "node_id": "MDg6QXJ0aWZhY3QxNDA5ODgzMTU4OQ==",
+        "name": "cpu-macos-arm64-3.13.8",
+        "size_in_bytes": 201976,
+        "url": "https://api.github.com/repos/bipxx/vispy_vulkan/actions/artifacts/14098831589",
+        "archive_download_url": "https://api.github.com/repos/bipxx/vispy_vulkan/actions/artifacts/14098831589/zip",
+        "expired": false,
+        "digest": "sha256:c9f0af17584c997e719f4efce8547947459368b648e7c5854347086b1bed0628",
+        "created_at": "2026-11-14T04:25:52Z",
+        "updated_at": "2026-11-14T04:25:52Z",
+        "expires_at": "2027-02-12T04:02:17Z",
+        "workflow_run": {
+          "id": 43554619087,
+          "repository_id": 1427785983,
+          "head_repository_id": 1427785983,
+          "head_branch": "wip/qt-lifecycle-native-562",
+          "head_sha": "55fd4e82e1a1d7bcb9d3c93a5e66c1bc825b09a1"
+        }
+      },
+      "member": "evidence/ci-identity.json",
+      "archive_sha256": "c9f0af17584c997e719f4efce8547947459368b648e7c5854347086b1bed0628",
+      "archive_bytes": 201976
+    },
+    {
+      "run_id": 43554619087,
+      "job_id": 132324539933,
+      "job_name": "CPU linux-x86_64 CPython 3.10.19",
+      "identity": {
+        "path": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\compat\\candidates\\tk-state-resource-12\\installed-proofs-680\\ci-cpu-704\\132324539933-identity.json",
+        "sha256": "9ae767b251d5eac4a84b7f2fa282c11a44a22ec88274639436a800504e21dd66"
+      },
+      "artifact": {
+        "id": 14098831450,
+        "node_id": "MDg6QXJ0aWZhY3QxNDA5ODgzMTQ1MA==",
+        "name": "cpu-linux-x86_64-3.10.19",
+        "size_in_bytes": 200490,
+        "url": "https://api.github.com/repos/bipxx/vispy_vulkan/actions/artifacts/14098831450",
+        "archive_download_url": "https://api.github.com/repos/bipxx/vispy_vulkan/actions/artifacts/14098831450/zip",
+        "expired": false,
+        "digest": "sha256:6b4db94e38c0c14ddfb1cfb1f75368646316b2c9da2425c3958a31be3e5cd054",
+        "created_at": "2026-11-14T04:25:00Z",
+        "updated_at": "2026-11-14T04:25:00Z",
+        "expires_at": "2027-02-12T04:02:17Z",
+        "workflow_run": {
+          "id": 43554619087,
+          "repository_id": 1427785983,
+          "head_repository_id": 1427785983,
+          "head_branch": "wip/qt-lifecycle-native-562",
+          "head_sha": "55fd4e82e1a1d7bcb9d3c93a5e66c1bc825b09a1"
+        }
+      },
+      "member": "evidence/ci-identity.json",
+      "archive_sha256": "6b4db94e38c0c14ddfb1cfb1f75368646316b2c9da2425c3958a31be3e5cd054",
+      "archive_bytes": 200490
+    },
+    {
+      "run_id": 43554619087,
+      "job_id": 132324539952,
+      "job_name": "CPU macos-arm64 CPython 3.11.14",
+      "identity": {
+        "path": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\compat\\candidates\\tk-state-resource-12\\installed-proofs-680\\ci-cpu-704\\132324539952-identity.json",
+        "sha256": "59f5afeef907b5e16fb86225ff78552947c48262f657703e01e80d4cebbb2c7f"
+      },
+      "artifact": {
+        "id": 14098745532,
+        "node_id": "MDg6QXJ0aWZhY3QxNDA5ODc0NTUzMg==",
+        "name": "cpu-macos-arm64-3.11.14",
+        "size_in_bytes": 201330,
+        "url": "https://api.github.com/repos/bipxx/vispy_vulkan/actions/artifacts/14098745532",
+        "archive_download_url": "https://api.github.com/repos/bipxx/vispy_vulkan/actions/artifacts/14098745532/zip",
+        "expired": false,
+        "digest": "sha256:ca8964978abcb104fd1cafc75767400e3606ffd5450aa5c3b55d6885b2108b99",
+        "created_at": "2026-11-14T04:18:40Z",
+        "updated_at": "2026-11-14T04:18:40Z",
+        "expires_at": "2027-02-12T04:02:17Z",
+        "workflow_run": {
+          "id": 43554619087,
+          "repository_id": 1427785983,
+          "head_repository_id": 1427785983,
+          "head_branch": "wip/qt-lifecycle-native-562",
+          "head_sha": "55fd4e82e1a1d7bcb9d3c93a5e66c1bc825b09a1"
+        }
+      },
+      "member": "evidence/ci-identity.json",
+      "archive_sha256": "ca8964978abcb104fd1cafc75767400e3606ffd5450aa5c3b55d6885b2108b99",
+      "archive_bytes": 201330
+    },
+    {
+      "run_id": 43554619087,
+      "job_id": 132324539975,
+      "job_name": "CPU macos-arm64 CPython 3.10.19",
+      "identity": {
+        "path": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\compat\\candidates\\tk-state-resource-12\\installed-proofs-680\\ci-cpu-704\\132324539975-identity.json",
+        "sha256": "c79a9e05983f6b5f56d009f13a98024ca57221b65ab50eadb5723da727c46387"
+      },
+      "artifact": {
+        "id": 14098591028,
+        "node_id": "MDg6QXJ0aWZhY3QxNDA5ODU5MTAyOA==",
+        "name": "cpu-macos-arm64-3.10.19",
+        "size_in_bytes": 202618,
+        "url": "https://api.github.com/repos/bipxx/vispy_vulkan/actions/artifacts/14098591028",
+        "archive_download_url": "https://api.github.com/repos/bipxx/vispy_vulkan/actions/artifacts/14098591028/zip",
+        "expired": false,
+        "digest": "sha256:6813558e4a5b8c4ec387b8be04d27d75d991a72af4921909f071c15df1620a29",
+        "created_at": "2026-11-14T04:20:38Z",
+        "updated_at": "2026-11-14T04:20:38Z",
+        "expires_at": "2027-02-12T04:02:17Z",
+        "workflow_run": {
+          "id": 43554619087,
+          "repository_id": 1427785983,
+          "head_repository_id": 1427785983,
+          "head_branch": "wip/qt-lifecycle-native-562",
+          "head_sha": "55fd4e82e1a1d7bcb9d3c93a5e66c1bc825b09a1"
+        }
+      },
+      "member": "evidence/ci-identity.json",
+      "archive_sha256": "6813558e4a5b8c4ec387b8be04d27d75d991a72af4921909f071c15df1620a29",
+      "archive_bytes": 202618
+    },
+    {
+      "run_id": 43554619087,
+      "job_id": 132324539919,
+      "job_name": "CPU windows-x86_64 CPython 3.13.8",
+      "identity": {
+        "path": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\compat\\candidates\\tk-state-resource-12\\installed-proofs-680\\ci-cpu-704\\132324539919-identity.json",
+        "sha256": "1dbd2b6d7434e918d1b593a92d07b9d720b1913f84c19c1b679ade35a0aeb1fe"
+      },
+      "artifact": {
+        "id": 14098563156,
+        "node_id": "MDg6QXJ0aWZhY3QxNDA5ODU2MzE1Ng==",
+        "name": "cpu-windows-x86_64-3.13.8",
+        "size_in_bytes": 201606,
+        "url": "https://api.github.com/repos/bipxx/vispy_vulkan/actions/artifacts/14098563156",
+        "archive_download_url": "https://api.github.com/repos/bipxx/vispy_vulkan/actions/artifacts/14098563156/zip",
+        "expired": false,
+        "digest": "sha256:20dd3d304fbfda2cca1521c99a33f37e4738c28d111bb60f2f8d414a0a63d1a8",
+        "created_at": "2026-11-14T04:33:09Z",
+        "updated_at": "2026-11-14T04:33:09Z",
+        "expires_at": "2027-02-12T04:02:17Z",
+        "workflow_run": {
+          "id": 43554619087,
+          "repository_id": 1427785983,
+          "head_repository_id": 1427785983,
+          "head_branch": "wip/qt-lifecycle-native-562",
+          "head_sha": "55fd4e82e1a1d7bcb9d3c93a5e66c1bc825b09a1"
+        }
+      },
+      "member": "evidence/ci-identity.json",
+      "archive_sha256": "20dd3d304fbfda2cca1521c99a33f37e4738c28d111bb60f2f8d414a0a63d1a8",
+      "archive_bytes": 201606
+    },
+    {
+      "run_id": 43554619087,
+      "job_id": 132324539932,
+      "job_name": "CPU macos-arm64 CPython 3.14.0",
+      "identity": {
+        "path": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\compat\\candidates\\tk-state-resource-12\\installed-proofs-680\\ci-cpu-704\\132324539932-identity.json",
+        "sha256": "50d2f30d3d832e792408e410ceeed2d0e239894c428dec088130222541038d1f"
+      },
+      "artifact": {
+        "id": 14098559826,
+        "node_id": "MDg6QXJ0aWZhY3QxNDA5ODU1OTgyNg==",
+        "name": "cpu-macos-arm64-3.14.0",
+        "size_in_bytes": 201720,
+        "url": "https://api.github.com/repos/bipxx/vispy_vulkan/actions/artifacts/14098559826",
+        "archive_download_url": "https://api.github.com/repos/bipxx/vispy_vulkan/actions/artifacts/14098559826/zip",
+        "expired": false,
+        "digest": "sha256:d45c4994a46bcec3445db7e4b298057a31eeb5772c40ad9ef55205f498383aab",
+        "created_at": "2026-11-14T04:43:13Z",
+        "updated_at": "2026-11-14T04:43:13Z",
+        "expires_at": "2027-02-12T04:02:17Z",
+        "workflow_run": {
+          "id": 43554619087,
+          "repository_id": 1427785983,
+          "head_repository_id": 1427785983,
+          "head_branch": "wip/qt-lifecycle-native-562",
+          "head_sha": "55fd4e82e1a1d7bcb9d3c93a5e66c1bc825b09a1"
+        }
+      },
+      "member": "evidence/ci-identity.json",
+      "archive_sha256": "d45c4994a46bcec3445db7e4b298057a31eeb5772c40ad9ef55205f498383aab",
+      "archive_bytes": 201720
+    },
+    {
+      "run_id": 43554619087,
+      "job_id": 132324539960,
+      "job_name": "CPU linux-x86_64 CPython 3.14.0",
+      "identity": {
+        "path": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\compat\\candidates\\tk-state-resource-12\\installed-proofs-680\\ci-cpu-704\\132324539960-identity.json",
+        "sha256": "4e349594bab4be66588e646cd3c95c18cf220eb10621bc67ccc2ea3598684fdb"
+      },
+      "artifact": {
+        "id": 14098323062,
+        "node_id": "MDg6QXJ0aWZhY3QxNDA5ODMyMzA2Mg==",
+        "name": "cpu-linux-x86_64-3.14.0",
+        "size_in_bytes": 200110,
+        "url": "https://api.github.com/repos/bipxx/vispy_vulkan/actions/artifacts/14098323062",
+        "archive_download_url": "https://api.github.com/repos/bipxx/vispy_vulkan/actions/artifacts/14098323062/zip",
+        "expired": false,
+        "digest": "sha256:24eec7838f8a6847b031593bfcfef25f072dd7737c5a5ce292594d9d211e8e73",
+        "created_at": "2026-11-14T04:24:29Z",
+        "updated_at": "2026-11-14T04:24:29Z",
+        "expires_at": "2027-02-12T04:02:17Z",
+        "workflow_run": {
+          "id": 43554619087,
+          "repository_id": 1427785983,
+          "head_repository_id": 1427785983,
+          "head_branch": "wip/qt-lifecycle-native-562",
+          "head_sha": "55fd4e82e1a1d7bcb9d3c93a5e66c1bc825b09a1"
+        }
+      },
+      "member": "evidence/ci-identity.json",
+      "archive_sha256": "24eec7838f8a6847b031593bfcfef25f072dd7737c5a5ce292594d9d211e8e73",
+      "archive_bytes": 200110
+    },
+    {
+      "run_id": 43554619087,
+      "job_id": 132324540016,
+      "job_name": "CPU linux-x86_64 CPython 3.12.8",
+      "identity": {
+        "path": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\compat\\candidates\\tk-state-resource-12\\installed-proofs-680\\ci-cpu-704\\132324540016-identity.json",
+        "sha256": "5654154b127981292bfc6e4db3e9970423a07802c0851c6b3dea7415c3d38e2a"
+      },
+      "artifact": {
+        "id": 14098292717,
+        "node_id": "MDg6QXJ0aWZhY3QxNDA5ODI5MjcxNw==",
+        "name": "cpu-linux-x86_64-3.12.8",
+        "size_in_bytes": 200216,
+        "url": "https://api.github.com/repos/bipxx/vispy_vulkan/actions/artifacts/14098292717",
+        "archive_download_url": "https://api.github.com/repos/bipxx/vispy_vulkan/actions/artifacts/14098292717/zip",
+        "expired": false,
+        "digest": "sha256:d5ccaca6de1bf96f8d84870363465e5da1313867c6cda04fc8e1f5017fdc2cf4",
+        "created_at": "2026-11-14T04:21:04Z",
+        "updated_at": "2026-11-14T04:21:04Z",
+        "expires_at": "2027-02-12T04:02:17Z",
+        "workflow_run": {
+          "id": 43554619087,
+          "repository_id": 1427785983,
+          "head_repository_id": 1427785983,
+          "head_branch": "wip/qt-lifecycle-native-562",
+          "head_sha": "55fd4e82e1a1d7bcb9d3c93a5e66c1bc825b09a1"
+        }
+      },
+      "member": "evidence/ci-identity.json",
+      "archive_sha256": "d5ccaca6de1bf96f8d84870363465e5da1313867c6cda04fc8e1f5017fdc2cf4",
+      "archive_bytes": 200216
+    },
+    {
+      "run_id": 43554619087,
+      "job_id": 132324539955,
+      "job_name": "CPU windows-x86_64 CPython 3.12.8",
+      "identity": {
+        "path": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\compat\\candidates\\tk-state-resource-12\\installed-proofs-680\\ci-cpu-704\\132324539955-identity.json",
+        "sha256": "e565acb002fe930b0a79e3c9d5b6551a023c60f7e6d024304820f0b784f31dfa"
+      },
+      "artifact": {
+        "id": 14098187956,
+        "node_id": "MDg6QXJ0aWZhY3QxNDA5ODE4Nzk1Ng==",
+        "name": "cpu-windows-x86_64-3.12.8",
+        "size_in_bytes": 201460,
+        "url": "https://api.github.com/repos/bipxx/vispy_vulkan/actions/artifacts/14098187956",
+        "archive_download_url": "https://api.github.com/repos/bipxx/vispy_vulkan/actions/artifacts/14098187956/zip",
+        "expired": false,
+        "digest": "sha256:7f11180d722f61360c42dd2667aa1795020acaab44b7dfb6d1c7e8f657fcd97f",
+        "created_at": "2026-11-14T04:28:59Z",
+        "updated_at": "2026-11-14T04:28:59Z",
+        "expires_at": "2027-02-12T04:02:17Z",
+        "workflow_run": {
+          "id": 43554619087,
+          "repository_id": 1427785983,
+          "head_repository_id": 1427785983,
+          "head_branch": "wip/qt-lifecycle-native-562",
+          "head_sha": "55fd4e82e1a1d7bcb9d3c93a5e66c1bc825b09a1"
+        }
+      },
+      "member": "evidence/ci-identity.json",
+      "archive_sha256": "7f11180d722f61360c42dd2667aa1795020acaab44b7dfb6d1c7e8f657fcd97f",
+      "archive_bytes": 201460
+    },
+    {
+      "run_id": 43554619087,
+      "job_id": 132324539908,
+      "job_name": "CPU linux-x86_64 CPython 3.13.8",
+      "identity": {
+        "path": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\compat\\candidates\\tk-state-resource-12\\installed-proofs-680\\ci-cpu-704\\132324539908-identity.json",
+        "sha256": "8fde96be24e24c2db7e40a1104037a5bf9aae4447edde3ca0f9588ab207b2ae7"
+      },
+      "artifact": {
+        "id": 14097943812,
+        "node_id": "MDg6QXJ0aWZhY3QxNDA5Nzk0MzgxMg==",
+        "name": "cpu-linux-x86_64-3.13.8",
+        "size_in_bytes": 199722,
+        "url": "https://api.github.com/repos/bipxx/vispy_vulkan/actions/artifacts/14097943812",
+        "archive_download_url": "https://api.github.com/repos/bipxx/vispy_vulkan/actions/artifacts/14097943812/zip",
+        "expired": false,
+        "digest": "sha256:f9ffec6f37d0e4a811016960808513b3fadbfbe9fdd65e6ecf59b41cb7cf2aa7",
+        "created_at": "2026-11-14T04:17:39Z",
+        "updated_at": "2026-11-14T04:17:39Z",
+        "expires_at": "2027-02-12T04:02:17Z",
+        "workflow_run": {
+          "id": 43554619087,
+          "repository_id": 1427785983,
+          "head_repository_id": 1427785983,
+          "head_branch": "wip/qt-lifecycle-native-562",
+          "head_sha": "55fd4e82e1a1d7bcb9d3c93a5e66c1bc825b09a1"
+        }
+      },
+      "member": "evidence/ci-identity.json",
+      "archive_sha256": "f9ffec6f37d0e4a811016960808513b3fadbfbe9fdd65e6ecf59b41cb7cf2aa7",
+      "archive_bytes": 199722
+    },
+    {
+      "run_id": 43554619087,
+      "job_id": 132324540007,
+      "job_name": "CPU linux-x86_64 CPython 3.11.14",
+      "identity": {
+        "path": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\compat\\candidates\\tk-state-resource-12\\installed-proofs-680\\ci-cpu-704\\132324540007-identity.json",
+        "sha256": "0a86d5796fc794e984fcbbc18248d53996b78bc6680ec5a9062910481fde16cc"
+      },
+      "artifact": {
+        "id": 14097943479,
+        "node_id": "MDg6QXJ0aWZhY3QxNDA5Nzk0MzQ3OQ==",
+        "name": "cpu-linux-x86_64-3.11.14",
+        "size_in_bytes": 199610,
+        "url": "https://api.github.com/repos/bipxx/vispy_vulkan/actions/artifacts/14097943479",
+        "archive_download_url": "https://api.github.com/repos/bipxx/vispy_vulkan/actions/artifacts/14097943479/zip",
+        "expired": false,
+        "digest": "sha256:be8614cea2b5e89d8d891612c5fa25cb957b5fe19d2421bce75fe37e57add2e2",
+        "created_at": "2026-11-14T04:15:33Z",
+        "updated_at": "2026-11-14T04:15:33Z",
+        "expires_at": "2027-02-12T04:02:17Z",
+        "workflow_run": {
+          "id": 43554619087,
+          "repository_id": 1427785983,
+          "head_repository_id": 1427785983,
+          "head_branch": "wip/qt-lifecycle-native-562",
+          "head_sha": "55fd4e82e1a1d7bcb9d3c93a5e66c1bc825b09a1"
+        }
+      },
+      "member": "evidence/ci-identity.json",
+      "archive_sha256": "be8614cea2b5e89d8d891612c5fa25cb957b5fe19d2421bce75fe37e57add2e2",
+      "archive_bytes": 199610
+    },
+    {
+      "run_id": 43554619087,
+      "job_id": 132324539870,
+      "job_name": "CPU windows-x86_64 CPython 3.11.14",
+      "identity": {
+        "path": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\compat\\candidates\\tk-state-resource-12\\installed-proofs-680\\ci-cpu-704\\132324539870-identity.json",
+        "sha256": "1b4c535ae2c88c1d1de0f6a9ca4439bd7f9fcd63a4f0060597142c65f10540c2"
+      },
+      "artifact": {
+        "id": 14097869127,
+        "node_id": "MDg6QXJ0aWZhY3QxNDA5Nzg2OTEyNw==",
+        "name": "cpu-windows-x86_64-3.11.14",
+        "size_in_bytes": 201639,
+        "url": "https://api.github.com/repos/bipxx/vispy_vulkan/actions/artifacts/14097869127",
+        "archive_download_url": "https://api.github.com/repos/bipxx/vispy_vulkan/actions/artifacts/14097869127/zip",
+        "expired": false,
+        "digest": "sha256:b2112562becedb7b1ef9c5926c635b7d5cc01222f2de37ca17e09aba2ef4b6ce",
+        "created_at": "2026-11-14T04:29:49Z",
+        "updated_at": "2026-11-14T04:29:49Z",
+        "expires_at": "2027-02-12T04:02:17Z",
+        "workflow_run": {
+          "id": 43554619087,
+          "repository_id": 1427785983,
+          "head_repository_id": 1427785983,
+          "head_branch": "wip/qt-lifecycle-native-562",
+          "head_sha": "55fd4e82e1a1d7bcb9d3c93a5e66c1bc825b09a1"
+        }
+      },
+      "member": "evidence/ci-identity.json",
+      "archive_sha256": "b2112562becedb7b1ef9c5926c635b7d5cc01222f2de37ca17e09aba2ef4b6ce",
+      "archive_bytes": 201639
+    },
+    {
+      "run_id": 43554619087,
+      "job_id": 132324539714,
+      "job_name": "CPU windows-x86_64 CPython 3.10.19",
+      "identity": {
+        "path": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\compat\\candidates\\tk-state-resource-12\\installed-proofs-680\\ci-cpu-704\\132324539714-identity.json",
+        "sha256": "f024cb3fb9b94f91d6cee8714bbecc4f86744d2d24ce1cb61b1403ba3b9677b0"
+      },
+      "artifact": {
+        "id": 14097758286,
+        "node_id": "MDg6QXJ0aWZhY3QxNDA5Nzc1ODI4Ng==",
+        "name": "cpu-windows-x86_64-3.10.19",
+        "size_in_bytes": 201227,
+        "url": "https://api.github.com/repos/bipxx/vispy_vulkan/actions/artifacts/14097758286",
+        "archive_download_url": "https://api.github.com/repos/bipxx/vispy_vulkan/actions/artifacts/14097758286/zip",
+        "expired": false,
+        "digest": "sha256:98c3ccfed97e30b8b4d01daeb1c87563b47ad5a6320f01857319df4b331e3162",
+        "created_at": "2026-11-14T04:20:21Z",
+        "updated_at": "2026-11-14T04:20:21Z",
+        "expires_at": "2027-02-12T04:02:17Z",
+        "workflow_run": {
+          "id": 43554619087,
+          "repository_id": 1427785983,
+          "head_repository_id": 1427785983,
+          "head_branch": "wip/qt-lifecycle-native-562",
+          "head_sha": "55fd4e82e1a1d7bcb9d3c93a5e66c1bc825b09a1"
+        }
+      },
+      "member": "evidence/ci-identity.json",
+      "archive_sha256": "98c3ccfed97e30b8b4d01daeb1c87563b47ad5a6320f01857319df4b331e3162",
+      "archive_bytes": 201227
+    },
+    {
+      "run_id": 43554619087,
+      "job_id": 132324540038,
+      "job_name": "CPU macos-x86_64 CPython 3.11.14",
+      "identity": {
+        "path": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\compat\\candidates\\tk-state-resource-12\\installed-proofs-680\\ci-final-709\\132324540038-identity.json",
+        "sha256": "fc3a6b509a67e7dff40dd34169bcb759d3d1ef7be90562ebdded80bb3edf72e5"
+      },
+      "artifact": {
+        "id": 14101211191,
+        "node_id": "MDg6QXJ0aWZhY3QxNDEwMTIxMTE5MQ==",
+        "name": "cpu-macos-x86_64-3.11.14",
+        "size_in_bytes": 203230,
+        "url": "https://api.github.com/repos/bipxx/vispy_vulkan/actions/artifacts/14101211191",
+        "archive_download_url": "https://api.github.com/repos/bipxx/vispy_vulkan/actions/artifacts/14101211191/zip",
+        "expired": false,
+        "digest": "sha256:89281e218a4bb56faee3c752b058e2a97bd3c82fb80a56aeecfb0e693be434f3",
+        "created_at": "2026-11-14T05:40:19Z",
+        "updated_at": "2026-11-14T05:40:19Z",
+        "expires_at": "2027-02-12T04:02:17Z",
+        "workflow_run": {
+          "id": 43554619087,
+          "repository_id": 1427785983,
+          "head_repository_id": 1427785983,
+          "head_branch": "wip/qt-lifecycle-native-562",
+          "head_sha": "55fd4e82e1a1d7bcb9d3c93a5e66c1bc825b09a1"
+        }
+      },
+      "member": "evidence/ci-identity.json"
+    },
+    {
+      "run_id": 43554619087,
+      "job_id": 132324539997,
+      "job_name": "CPU macos-arm64 CPython 3.12.8",
+      "identity": {
+        "path": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\compat\\candidates\\tk-state-resource-12\\installed-proofs-680\\ci-final-709\\132324539997-identity.json",
+        "sha256": "11bb37260c789aabcfad9fe42f98f6fafcae2fabc80de3f38a5f5c13d077b7f5"
+      },
+      "artifact": {
+        "id": 14099956719,
+        "node_id": "MDg6QXJ0aWZhY3QxNDA5OTk1NjcxOQ==",
+        "name": "cpu-macos-arm64-3.12.8",
+        "size_in_bytes": 201153,
+        "url": "https://api.github.com/repos/bipxx/vispy_vulkan/actions/artifacts/14099956719",
+        "archive_download_url": "https://api.github.com/repos/bipxx/vispy_vulkan/actions/artifacts/14099956719/zip",
+        "expired": false,
+        "digest": "sha256:d27221982fd98661c76bc09d30f917a6bcfc5e2a390c8067f467f71149c8682e",
+        "created_at": "2026-11-14T04:58:44Z",
+        "updated_at": "2026-11-14T04:58:44Z",
+        "expires_at": "2027-02-12T04:02:17Z",
+        "workflow_run": {
+          "id": 43554619087,
+          "repository_id": 1427785983,
+          "head_repository_id": 1427785983,
+          "head_branch": "wip/qt-lifecycle-native-562",
+          "head_sha": "55fd4e82e1a1d7bcb9d3c93a5e66c1bc825b09a1"
+        }
+      },
+      "member": "evidence/ci-identity.json"
+    },
+    {
+      "run_id": 43554619087,
+      "job_id": 132324540032,
+      "job_name": "CPU macos-x86_64 CPython 3.14.0",
+      "identity": {
+        "path": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\compat\\candidates\\tk-state-resource-12\\installed-proofs-680\\ci-final-709\\132324540032-identity.json",
+        "sha256": "5b0c9a191cc355c03024cac96ad636310611cfc97ef50e6a80b8219ef995c8f5"
+      },
+      "artifact": {
+        "id": 14099905925,
+        "node_id": "MDg6QXJ0aWZhY3QxNDA5OTkwNTkyNQ==",
+        "name": "cpu-macos-x86_64-3.14.0",
+        "size_in_bytes": 202086,
+        "url": "https://api.github.com/repos/bipxx/vispy_vulkan/actions/artifacts/14099905925",
+        "archive_download_url": "https://api.github.com/repos/bipxx/vispy_vulkan/actions/artifacts/14099905925/zip",
+        "expired": false,
+        "digest": "sha256:6de36f26358e6ea7fac33e25fce57c44ee019a014d1ef799e699dd2b2694d3e9",
+        "created_at": "2026-11-14T04:53:04Z",
+        "updated_at": "2026-11-14T04:53:04Z",
+        "expires_at": "2027-02-12T04:02:17Z",
+        "workflow_run": {
+          "id": 43554619087,
+          "repository_id": 1427785983,
+          "head_repository_id": 1427785983,
+          "head_branch": "wip/qt-lifecycle-native-562",
+          "head_sha": "55fd4e82e1a1d7bcb9d3c93a5e66c1bc825b09a1"
+        }
+      },
+      "member": "evidence/ci-identity.json"
+    },
+    {
+      "run_id": 43554619087,
+      "job_id": 132324539924,
+      "job_name": "CPU macos-x86_64 CPython 3.12.8",
+      "identity": {
+        "path": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\compat\\candidates\\tk-state-resource-12\\installed-proofs-680\\ci-final-709\\132324539924-identity.json",
+        "sha256": "0246eb86e76fb5cdcaf261f534469a3914c9d6e946dcfd747f9f9b02a7a1c5c5"
+      },
+      "artifact": {
+        "id": 14099687184,
+        "node_id": "MDg6QXJ0aWZhY3QxNDA5OTY4NzE4NA==",
+        "name": "cpu-macos-x86_64-3.12.8",
+        "size_in_bytes": 203596,
+        "url": "https://api.github.com/repos/bipxx/vispy_vulkan/actions/artifacts/14099687184",
+        "archive_download_url": "https://api.github.com/repos/bipxx/vispy_vulkan/actions/artifacts/14099687184/zip",
+        "expired": false,
+        "digest": "sha256:4e7d1e42e25a952af62daef4467d224fd0a4bfbbcfeb50e8d56fcd5be6348dc5",
+        "created_at": "2026-11-14T05:07:00Z",
+        "updated_at": "2026-11-14T05:07:00Z",
+        "expires_at": "2027-02-12T04:02:17Z",
+        "workflow_run": {
+          "id": 43554619087,
+          "repository_id": 1427785983,
+          "head_repository_id": 1427785983,
+          "head_branch": "wip/qt-lifecycle-native-562",
+          "head_sha": "55fd4e82e1a1d7bcb9d3c93a5e66c1bc825b09a1"
+        }
+      },
+      "member": "evidence/ci-identity.json"
+    },
+    {
+      "run_id": 43554619087,
+      "job_id": 132324539978,
+      "job_name": "CPU macos-x86_64 CPython 3.13.8",
+      "identity": {
+        "path": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\compat\\candidates\\tk-state-resource-12\\installed-proofs-680\\ci-final-709\\132324539978-identity.json",
+        "sha256": "17c8d9572b37c0516a4920fabd1163027a133862294f66c1ddc0c9e51088e32f"
+      },
+      "artifact": {
+        "id": 14099476885,
+        "node_id": "MDg6QXJ0aWZhY3QxNDA5OTQ3Njg4NQ==",
+        "name": "cpu-macos-x86_64-3.13.8",
+        "size_in_bytes": 202740,
+        "url": "https://api.github.com/repos/bipxx/vispy_vulkan/actions/artifacts/14099476885",
+        "archive_download_url": "https://api.github.com/repos/bipxx/vispy_vulkan/actions/artifacts/14099476885/zip",
+        "expired": false,
+        "digest": "sha256:dafb37ce99b4372e411f0d10b6f9d40d89fde8e5d197613468870c8754381342",
+        "created_at": "2026-11-14T04:59:40Z",
+        "updated_at": "2026-11-14T04:59:40Z",
+        "expires_at": "2027-02-12T04:02:17Z",
+        "workflow_run": {
+          "id": 43554619087,
+          "repository_id": 1427785983,
+          "head_repository_id": 1427785983,
+          "head_branch": "wip/qt-lifecycle-native-562",
+          "head_sha": "55fd4e82e1a1d7bcb9d3c93a5e66c1bc825b09a1"
+        }
+      },
+      "member": "evidence/ci-identity.json"
+    }
+  ],
+  "native_original_identities": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\parent-native-ci-identities-700\\verification.json",
+    "sha256": "1a8cd010a4868fc2469db5b26ad690e39556a2f0dd04935a3d7bf85e002ac9a9"
+  },
+  "reused_cpu_identity_count": 15,
+  "downloaded_cpu_identity_count": 5,
+  "new_transport_bytes": 1012805,
+  "prior_cpu_verification": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\parent-cpu-identities-704\\verification.json",
+    "sha256": "0bda66b63066d75c302e8fb385b54bf4d09fbbdc4967d898512195ae2196db14"
+  },
+  "artifact_admitted": false,
+  "hardware_qualified": false,
+  "schema": 1,
+  "date": "2026-11-14",
+  "coverage_ids": [
+    "FIX-04",
+    "FIX-06",
+    "API-06",
+    "TOOL-01"
+  ],
+  "actual_exit": 0,
+  "child_waited": true,
+  "cleanup": {
+    "status": "PASS_APPLY",
+    "deleted_files": 6,
+    "reclaimed_bytes": 1012877,
+    "retained_verified": 84,
+    "scratch_absent": true,
+    "actual_exit": 0,
+    "child_waited": true
+  },
+  "required_ci_jobs": 23,
+  "evidence": {
+    "path": "@evidence/build/runs/parent-final-ci-709/verification.json",
+    "sha256": "d9e95ff4917ae07fe14addb06c939ba3ef74247d8e841deecec3a356f3d9358a"
+  }
+}

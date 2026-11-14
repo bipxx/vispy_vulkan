@@ -1,0 +1,47 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "status": "APPROVED_EXACT_SOURCE_VIEW_AND_SINGLE_LEDGER_OVERLAY_NOT_EXECUTED",
+  "coverage_ids": [
+    "FIX-04",
+    "FIX-06",
+    "API-06",
+    "TOOL-01"
+  ],
+  "decision": {
+    "path": "@evidence/build/runs/admission-guard-peer-716/decision.json",
+    "sha256": "6010221477807cfd5264b8a376840c2af69a575ee951155c9f945d9dfdaf96f0"
+  },
+  "raw_response": {
+    "path": "@evidence/build/runs/admission-guard-peer-716/review-response.json",
+    "sha256": "c69e61b99baeea8b58a8743cd2a17b1148bf07a49a2107c92c46d92caf01765a"
+  },
+  "reviewed_inputs": {
+    "path": "@evidence/build/runs/admission-guard-peer-716/inputs.json",
+    "sha256": "64239f32608a9b94f0fcefae5c65046464f6f5c69ce40bb21dc8e76f214afe60"
+  },
+  "actual_exit": 0,
+  "child_waited": true,
+  "required_changes": [],
+  "accepted_guard_sequence": [
+    "Interpretation of 714 F4: 'checkout head 55fd4e82' is satisfied by an exact-source view: source workspace S has no Git metadata, and all 702 committed inputs in S are byte-equal to the blobs of commit 55fd4e82e1a1d7bcb9d3c93a5e66c1bc825b09a1 read through read-only git cat-file from the publication checkout's object store. Records must say this and must not state that S or the publication checkout has head 55fd.",
+    "Interpretation of 714 F4: 'all 702 hash-verified immediately before and after validate_envelope' means all 702 at 55fd immediately before materialization and after restoration; across the call itself, the 701 non-ledger inputs at 55fd and the sole path compat/candidates/tk-state-resource-12/execution-ledger.json at exactly 487168c368d26b08bfb65370fb397724f9948c328197b9c253de7fed3a5770db.",
+    "A. Immediately before materialization: local and remote owned ref wip/qt-lifecycle-native-562 equal 55fd4e82 (an unreachable or failed remote check is a guard failure); all 702 S files equal the 55fd blobs and the frozen 699 committed-input hashes; all 14 canonical files equal the 675/684 backup with the ledger at 3c5248a2f3a265e7d646f8e1a79dfa9e0844f3fc5a0565d4dce607d123cc868f; record foreign HEAD f640057d831344a06040379c55334741c2752eba and the foreign index hash. Read-only Git only: no clone, checkout, reset, clean, index refresh or ref change.",
+    "B1. Materialize only the approved overlay: selected-row-overlay.json must hash 5c0c773ced4447802a77ed3ee795d076d9a9592b8243de0e27011a4c967b15c6 and the frozen archive 82846f886720f5874575d71fa032baf366fa976a01bc0e50b6dab2ab02df49e0; overlay base_ledger must equal the on-disk 3c5248a2 ledger; apply only the 32 selected rows and two profile flags with execution scope unchanged; the written ledger must hash exactly 487168c3. No other committed input is written.",
+    "B2. Immediately before and immediately after the unchanged qi.validate_envelope(strict=True): 701 non-ledger inputs equal 55fd, ledger equals 487168c3, the other 13 canonical entries unchanged, owned refs 55fd, foreign HEAD and index unchanged. The envelope and promotion-review record are new post-head files outside the 702 and the 14 canonical paths, created exclusively, carrying promotion_basis_sha256 1e92e7de.",
+    "C. In finally: restore the ledger to 3c5248a2 only if it is exactly 487168c3 (leave it if already 3c5248a2; any other bytes are preserved, not overwritten, and are a failure); then verify all 14 canonical files, all 702 inputs at 55fd, owned refs 55fd and foreign HEAD/index unchanged.",
+    "Any guard, validation or restoration failure, or a change in the foreign checkout by its owner, means stop with a failure record and reproducer and no admission claim; nothing is done to the foreign checkout. A hard kill is not covered by finally: restore and re-audit before any continuation.",
+    "D. All other 714 conditions are unchanged: exact subject, basis and head, the 23 original CI jobs, existing validators unmodified, manual foreign-retention scope, F1 matrix derivation, and separate delta/impact and branch-protection checks for later data, docs and tests."
+  ],
+  "withheld": [
+    "Read-only review with Read/Glob/Grep. I ran no command and computed no SHA-256 or Git blob; every identity is a textual comparison. final_review_sha256 and source_guard_audit_sha256 match the 716 inputs.json entries for 714 decision.json and 715 verification.json; promotion_basis and subject hashes match the 714 decision text.",
+    "I did not re-run 715. Its PASS rests on audit.py as read, audit.log, the terminal record (exit 0) and the verification header and tail. Git object-store integrity (no fsck) and the ls-remote result are coordinator reliance.",
+    "Unread: 715 verification.json lines 121-4224 except the ledger row (179-182); 716 inputs.json except grep hits; 699 committed-inputs.json, assemble.py and prepare.py; the overlay body beyond its first matches; the frozen archive; the 675/684 backup; qualification_index.py outside lines 440-539 and the ledger grep.",
+    "The actual guard script does not exist yet and was not reviewed; this approves the sequence, not an implementation. An implementation that differs from the accepted sequence is not covered.",
+    "Not approved: the actual strict admission result, post-admission matrix bytes, any other Git head, any changed shipping, runtime, native, lock, CI or tool bytes, generic acceptance of foreign retention, broad coverage, integration, tag, release or publication.",
+    "Not established: that S contains no files beyond the 702 inputs, hard-kill safety, and detection of a same-commit branch switch in the foreign checkout (only rev-parse HEAD and the index hash are compared).",
+    "compat/api-acceptance/admission-source-guard-v1.json written by 715 is post-head data and awaits the later delta/impact check; no coverage-checklist update was reviewed."
+  ],
+  "artifact_admitted": false,
+  "scope": "Focused clarification of714F4 only. Exact702source-to55fdGit blobs without pretending source has checkout metadata;701nonledger inputs plus exact approved positive ledger during validation; all702restored afterward. Existing overlay/archive hashes, all714conditions/CI/manual retention remain mandatory. Actual implementation/admission not reviewed or executed."
+}
