@@ -6,6 +6,159 @@ remain outside that PR and must not be staged into it silently.
 
 ## Active investigation and closure queue — 2026-11-14
 
+### Current execution plan: investigate, fix, then qualify
+
+**Source review842 approved — 2026-11-14:**
+[Exact22path delta4fec1545](../../../compat/api-acceptance/orphan-lifetime-source-review-v1.json)
+on7209f119 has no required changes. Reviewer approved only an unmerged source
+branch for fresh Linux CI and listed unread execution material; coordinator
+reverified920inputs,133native sources/proofs, whole4farchive and raw9+73passes/
+2refusals/47origins.94byte scratch cleaned/62retained verified. Freeze allowed
+23paths (one own receipt and additive dated checkpoints), verify actual-head
+runtime/native/test/artifact joins, collect82+2without native import, then push
+that unmerged branch and dispatch the existing fresh Linux producer. Preserve
+all advisory/source-scope limits. Current WSL proof, successor native/candidate
+bindings, protected integration,32Tkrows128bindings and release gates stay open.
+
+**Windows execution checkpoint837–841 — 2026-11-14:**
+[Nine lifetime cases](../../../compat/api-acceptance/host-import-retirement-windows-v1.json)
+and[73affected regressions/two refusals](../../../compat/api-acceptance/orphan-current-windows-v1.json)
+pass on exact4f537748/native057d13e6;44native CTests,537archive/installed members
+and47CPUchild origins verify. The1MiB host-import failure is fixed with one
+event-boundary empty submission using existing failure-safe Ticket ownership;
+orphan finalizers retain no-init/no-submit semantics. Entry normalization fixes
+the now-stale focus baseline, preserving exact equality and refusal controls.
+835/840failures remain.837/838/840/841 cleaned359881092bytes, retained files
+verified. Next independently review/freeze the exact changed runtime/tests and
+records, then obtain a fresh Linux producer and run matching WSL observations.
+Read-only839 finds no Linux SDK in known retained roots; guest/backing volumes
+are writable with reserve. Inspect for any qualified SDK record before deciding;
+if absent, use the existing documented fresh-mode Linux CI producer on the exact
+reviewed unmerged source, retaining provenance and reusing its wheel in WSL.
+Do not duplicate that with a local dependency rebuild. Default native-reuse CI
+must receive successor bindings for changed C++ inputs before integration.
+After both platforms, continue the32row/128binding gates below. This finite
+Windows checkpoint does not close WSL, integration or artifact/publication work.
+
+**Step1 complete — 2026-11-14:**
+[830](../../../compat/api-acceptance/current-installed-protected-integration-v1.json)
+verifies actual PR83 merge7209f119/tree457bfb57,11required checks,14frozen blobs
+and517runtime/test joins. Later WIP/foreign index preserved; no scratch created.
+Proceed to step2. Older pending integration checkpoints below remain historical.
+
+This ordered plan supersedes older next-action instructions below. It is a
+planning update, not new execution or qualification evidence. Use the live
+[coverage checklist](../../coverage-checklist.md) as the single item inventory.
+The milestone is useful Windows/WSL Vulkan support with explicit compatibility
+limits; full VisPy parity and cybersecurity work are outside scope. Metal stays
+experimental because no Mac is available.
+
+| Order | Work and easiest next action | Completion evidence |
+| --- | --- | --- |
+| 1 | Verify PR83's current required checks and actual protected merge; reuse its frozen source and installed evidence while exact identities match. | Actual merge commit/tree, required-check results, and unchanged owned/foreign source identities. Until observed, integration remains pending. |
+| 2 | Close **LIF-06-PANZOOM-RETIREMENT** using the focused investigation below. Do this before another artifact qualification campaign. | A discriminating regression, safe runtime fix, matching Windows/WSL installed results, review and protected integration. |
+| 3 | Audit the bounded milestone's remaining API-05/06, SCI-02/03/05/06, STA-01 and LIF-01–06 claims against existing receipts. Correct stale wording first; select a new case only for a concrete supported workflow with missing evidence or a reproduced defect. | Each selected item has a public route, supported values, exact source/artifact/profile evidence, remaining assertion, and disposition. Broad parent IDs remain partial where appropriate. |
+| 4 | Qualify the final changed artifacts against the existing candidate's selected Tk workflows. Audit826 identifies **32 installed rows / 128 criterion-profile bindings / four workflows on two profiles**. Reuse matching immutable prerequisites; run only missing or invalidated observations. | Complete workflow observations and attempt/failure/retention histories bound to exact archives, producers and profiles; additive row bindings pass unchanged strict validators. The 73 Qt cases are separate evidence. |
+| 5 | Finish release qualification and delivery after artifact bytes settle. Establish an explicit new delivery identity before publication; preserve the existing preview and original licenses. | Exact qualification-head release-policy CI, source-to-artifact impact review, detached promotion-basis review, strict admission, then verified published hashes and installation route. Ordinary branch CI alone is insufficient. |
+
+#### Focused investigation: orphaned GLIR deletion
+
+**Native834 / installed835 checkpoint — 2026-11-14:**
+[44native CTests and6of7Windows controls pass](../../../compat/api-acceptance/orphan-retirement-windows-v1.json).
+The large host-import control leaves1MiB pinned, all other gauges zero. Both
+runs cleaned324069472bytes,145/39retained verified. Next close the explicit
+LIF-06-HOST-IMPORT-RETIREMENT failure before WSL or qualification campaigns.
+Source inspection points to released imports waiting for a future engine Ticket
+that never arrives after close. Inspect pinned Dawn's Vulkan deletion serials
+before changing this watermark: an already-completed queue fence alone may not
+prove pending Vulkan memory deletion. Preserve the failing artifact and exact
+assertion; require bounded event-driven retirement without another canvas or
+global shutdown, plus failure-safe submission ownership if a cleanup barrier
+is necessary. Six Windows passes do not close the parent lifetime gap.
+
+**Step2 source progress833 — 2026-11-14:**
+[33source-only controls pass](../../../compat/api-acceptance/orphan-retirement-source-controls-v1.json)
+for the new dedicated retirement API contract, orphaned/late DELETE handling,
+association transfer and failed packing/execution ownership. Preserve the
+original13failure control and the broad selection's two guarded native-import
+failures. Native implementation remains uncompiled and no current wheel is
+fixed. Next write native no-device/idempotence/live-peer/queued-snapshot,
+helper-thread-GC and host-import controls; reuse existing SDK-linked recipes
+for matching leaf builds; then installed Windows/WSL PanZoom and affected
+callback/focus validation. Peer831 recommends the orphaned flag rather than
+historical CREATE tracking to handle832's order. Its unknown thread/host-import
+claims need proof; no extra probe counter/revision change was required for the
+source patch. Peer scratch cleaned85bytes/19retained verified;833 used no scratch.
+
+**Additional design control832:**
+[source-only finalizer probe](../../../compat/api-acceptance/orphan-queue-finalizer-order-v1.json)
+observes shared-queue finalization before GLObject DELETE emission in a cyclic
+owner graph. A finalizer that only drains already queued DELETE commands is
+insufficient. Include submitted ownership transfer and this exact ordering in
+the regression/design; no installed/native fix follows from the probe.
+
+Starting evidence is [diagnosis829](../../../compat/api-acceptance/panzoom-retirement-diagnosis-v1.json):
+scene, camera, canvas and Qt-widget weakrefs die, but native resources remain;
+retained contexts expose queued DELETE commands whose flush fails with
+`missing canvas 0`. Current wheels are not fixed. Do not repeat this diagnosis
+without a changed hypothesis.
+
+1. **Trace the safe retirement boundary before editing.** Inspect queue
+   association/last-owner destruction, parser logging wrappers, native resource
+   ownership, outstanding draw snapshots and host-exporter callbacks. Establish
+   whether Python finalization can re-enter native code while the engine mutex
+   is held. Decide between direct retirement and deferred safe-boundary draining
+   from that evidence; record the ownership and locking contract.
+2. **Add a regression that fails for the diagnosed cause.** Repeat creation,
+   rendering, close and collection of small PanZoom scenes in one live process.
+   After the documented normal event/drain boundary, all ten logical resource
+   gauges must return to the quiescent entry baseline, without global shutdown
+   or a hidden maintenance canvas. Keep a peer scene alive and verify its
+   pixels/resources survive. Include associated queues and pending draw
+   snapshots so premature deletion cannot satisfy the resource assertion.
+3. **Implement the smallest safe frontend/native contract.** Retire only
+   abandoned deletion work, preserving live aliases and in-flight ownership.
+   Require no surviving canvas, device resurrection or reentrant lock
+   acquisition. Cover repeated deletion and shutdown behavior. Ordinary
+   rendering commands with missing/invalid canvases must continue to fail;
+   older native payloads must not silently claim the new contract.
+4. **Validate cheaply, then build once per affected profile.** Run focused
+   source/contract checks first. Audit existing SDK and leaf-build recipes,
+   measure the required scratch peak, and register within the shared budget.
+   Reuse immutable dependencies and locked environments. Build matching native
+   leaves for Windows and WSL; do not rebuild Dawn/Qt or clone source history
+   merely because this fix changes the leaf extension.
+5. **Prove installed behavior and integrate.** Verify archive members and
+   origins with no overlays; run the new lifetime/peer/pending-work controls
+   and affected callback/focus/PanZoom selection on both profiles. Preserve a
+   failing control or exact old-artifact reproduction. Refresh native
+   provenance, candidate and CI bindings affected by changed C++ inputs rather
+   than reusing old native approvals. Review the exact delta, integrate through
+   protected CI, and update LIF-06-PANZOOM-RETIREMENT with finite scope.
+
+**Stop/decision rules:** A failed ownership or locking control returns to the
+contract design; do not mask it with shutdown or weaken a verifier. A missing
+optional hardware capability becomes an explicit boundary. A disk-budget
+failure stops new execution. Do not start the next campaign until the current
+run's children have exited, evidence/reproducer is retained, and its exact
+cleanup plan has been inspected, applied and verified.
+
+**Storage for every execution:** use the existing coordinator-selected managed
+root and protected/blocked registry, one registered owner/run under
+`build/work/<run-id>`, the shared 20 GiB scratch cap and 10 GiB free reserve.
+Check both WSL guest and Windows backing volumes. Retain small reports,
+preferred sources, patches, licenses and hash references outside scratch;
+keep one copy of each distinct artifact. Planning/source-only checks need no
+new native build, environment or source snapshot.
+
+[PR83 source push](../../../compat/api-acceptance/current-installed-source-head-v1.json)
+records6a4d0f11/tree457bfb57,14paths on26e9ea5f, exact runtime/test/wheel/control
+joins and73+2case collection withoutnativeimport. Private-index scratch cleaned
+15,136,356bytes/79retained verified; foreign HEAD/index preserved. Normal protected
+head-pinned auto-merge enabled; fresh requiredCI/actualmerge remain pending. Keep
+this later metadata outside frozenPR83. WhileCI runs, investigate explicit
+LIF-06-PANZOOM-RETIREMENT; then selectedcurrentTk/profile/admission work remains.
+
 [Expanded825 approval](../../../compat/api-acceptance/current-installed-source-review-v1.json)
 covers exact13file delta9bb9fe55 on actual26e9ea5f/tree3c39641e with no required
 changes.1,314frozen inputs reverified;96byte scratch cleaned/38retained verified.
@@ -182,6 +335,25 @@ scene/canvas/native objects and explicit destruction of only test-owned closed
 Qt widgets, observing before/after gauges without global shutdown. Distinguish
 test-held references from runtime ownership/queued deletion before changing code;
 fix that responsible path and verify minimal accumulation/recovery on both profiles.
+
+Diagnosis update829: [staged weak-reference results](../../../compat/api-acceptance/panzoom-retirement-diagnosis-v1.json)
+show canvas/widget/camera/scene/context objects collected normally, but native
+resources remain. Keeping only contexts reveals10queuedDELETEs percontext;
+postclose flush fails `missing canvas 0` before deletion. Native execution
+unconditionally resolves a canvas before even resource deletion. Original
+objects are not merely held by the test. Target cleaned17,902,134bytes/22retained.
+
+Implement against this causal boundary: provide native retirement that can
+process only orphaned resource deletions without a live canvas or device
+resurrection; let the frontend retain/drain final DELETE ownership when a queue
+loses its last owner. Preserve live shared queues and immutable pending snapshots,
+reject mixed render work against absent canvases, and do not allocate a hidden
+maintenance canvas or call global shutdown to make gauges pass. Add positive
+last-owner/alias-queue and no-canvas/after-shutdown controls, repeated closed-scene
+accumulation and live-peer/pending-frame recovery. A native contract change needs
+matching Windows/WSL payloads and renewed production/candidate/CI evidence; reuse
+the immutable SDK/dependencies and a bounded native-leaf build profile, not a
+Dawn/Qt/source-history rebuild. Old18e/9efb artifacts remain explicitly unfixed.
 
 Matching execution complete: [current-wheel installed receipt](../../../compat/api-acceptance/qt-callback-installed-v1.json)
 binds73cases on each Windows18e11361/WSL9efb556e wheel, zerooverlays/537members,

@@ -2,6 +2,91 @@
 
 ## Latest checkpoint — 2026-11-14
 
+**Independent source review approved for Linux CI branch — 2026-11-14:**
+[842](../compat/api-acceptance/orphan-lifetime-source-review-v1.json) approves
+exact22path4fec1545 delta on7209f119, no required changes. Coordinator rechecks
+920inputs/native/wholearchive and9+73positive/2negative/47origin raw results;
+reviewer did not read the execution evidence.94byte scratch cleaned/62retained
+verified. Next permitted23path freeze/actual-head joins, unmerged fresh Linux CI
+producer and WSL acceptance; protected integration and32row/128binding artifact
+qualification remain open. Advisory boundaries stay recorded; no release claim.
+
+**Current Windows candidate passes82selected positives — 2026-11-14:**
+[9lifetime cases](../compat/api-acceptance/host-import-retirement-windows-v1.json)
+and[73regressions/two resource refusals](../compat/api-acceptance/orphan-current-windows-v1.json)
+match4f537748/native057d13e6,537members/no overlays.44native CTests pass. The
+host-import pin is fixed through event-boundary retirement; failure recovery
+submits once. Preserve835's1MiB failure and840's72/73stale-baseline attempt.
+Amended focus entry collects/drains before its baseline; all ten exit gauges
+still equal entry, and both deliberate retained canvases are refused. Four
+latest scratch roots cleaned359881092bytes/146+38+28+32retained verified.
+Next exact-delta review/source freeze, fresh matching Linux producer and WSL
+acceptance, protected integration and successor32row/128binding qualification.
+Known SDK roots839 contain only Windows SDKs; WSL/backing volumes are writable
+and have reserve. Keep LIF-06 parent/subitems partial beyond this Windows scope.
+
+**Windows installed lifetime controls:6pass/1failure — 2026-11-14:**
+[834/835](../compat/api-acceptance/orphan-retirement-windows-v1.json) verifies
+44native CTests and537installed members for26017072/native33a96aff. Repeated
+PanZoom, live-peer/helper-thread, pending-snapshot, held-context and unknown-ID
+controls pass before shutdown. The large host-import case leaves1MiB pinned;
+track LIF-06-HOST-IMPORT-RETIREMENT next, retaining the failing wheel/assertion.
+Both scratch roots cleaned324069472bytes/145+39retained verified. WSL, fresh
+review/integration and strict successor qualification remain open; no release
+coverage or seven-case pass is claimed.
+
+**Orphan retirement patch source-tested, native validation open — 2026-11-14:**
+[833](../compat/api-acceptance/orphan-retirement-source-controls-v1.json) passes
+33CPU/protocol cases for orphan/late DELETE, association and failed-flush
+ownership, preserving lazy uploads and primary errors. Original13failure
+control and guarded backend-selection failure remain retained. New native API
+is uncompiled; current wheels remain unfixed. Next add native live-peer,
+pending-snapshot/helper-thread/host-import controls, reuse immutable SDKs for
+matching leaf builds, and prove installed Windows/WSL retirement before review,
+integration and successor strict qualification. Peer831 scratch cleaned85bytes,
+19retained verified;833 had no scratch. LIF-06-PANZOOM-RETIREMENT stays open.
+
+**Orphan-retirement design constraint verified — 2026-11-14:**
+[832](../compat/api-acceptance/orphan-queue-finalizer-order-v1.json) demonstrates
+shared-queue finalization before GLObject DELETE emission in an unreachable
+cycle. A pending-DELETE-only finalizer would miss this case. Preserve ownership
+across finalizer order/queue merges in the fix, then validate native and installed
+behavior. Source-only probe exit0/waited, no scratch; LIF-06 remains open.
+
+**PR83 merge gate complete — 2026-11-14:**
+[830](../compat/api-acceptance/current-installed-protected-integration-v1.json)
+verifies actual7209f119/tree457bfb57,11required checks,14frozen source blobs and
+517runtime/test joins, preserving later WIP and foreign HEAD/index. No scratch
+was created. Continue with LIF-06-PANZOOM-RETIREMENT; source integration does not
+close the32installed rows/128bindings or artifact/publication gates.
+
+**Updated closure order — 2026-11-14 (planning only):**
+Follow the [current execution plan](superpowers/plans/2026-11-14-gap-investigation-next.md#current-execution-plan-investigate-fix-then-qualify):
+verify PR83 integration; investigate safe orphan deletion and close
+LIF-06-PANZOOM-RETIREMENT with matching Windows/WSL native and installed proof;
+audit remaining bounded claims; qualify the final artifacts against the 32
+selected installed rows/128 bindings; complete release review/admission and
+distinct delivery. Explicit completion tests and storage stop rules are in the
+plan. This update adds no execution evidence or full-parity requirement.
+
+**PanZoom lifetime diagnosis complete, fix open — 2026-11-14:**
+[829](../compat/api-acceptance/panzoom-retirement-diagnosis-v1.json) excludes
+retained scene/widget/camera/canvas objects: weakrefs die afterGC but native
+gauges remain704/936/691200bytes. Two retained contexts expose10DELETEs each,
+then fail `missing canvas 0` while flushing after canvas removal. Next implement
+safe context-independent orphan deletion, preserving shared/pending resources,
+and validate Windows/WSL with matching native builds/proofs. No current wheel is
+claimed fixed. Diagnostic target cleaned17,902,134bytes/22retained verified.
+
+**PR83 pushed with protected auto-merge — 2026-11-14:**
+[828](../compat/api-acceptance/current-installed-source-head-v1.json) records
+14reviewed/permitted paths at6a4d0f11/tree457bfb57 on26e9ea5f. Exactcurrenthead
+joins510runtime/all7tests/Qt/wheels/mutant;73+2cases collect without nativeimport.
+Private index cleaned15,136,356bytes/79retained verified, foreign index preserved.
+RequiredCI/actualmerge pending. Next diagnose PanZoom ownership/retirement and
+renew exactcurrent selectedTk installed proofs/admission;73Qtcase passes do not
+close those gates. This later receipt/checkpoint stays outside frozenPR83.
+
 **Expanded source review complete — 2026-11-14:**
 [825 approval](../compat/api-acceptance/current-installed-source-review-v1.json)
 covers exact13file delta9bb9fe55 on26e9ea5f, no required changes.1,314inputs

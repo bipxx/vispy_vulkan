@@ -1,0 +1,68 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "status": "PASS_NINE_INSTALLED_WINDOWS_ORPHAN_AND_HOST_IMPORT_CONTROLS",
+  "coverage_ids": [
+    "LIF-06-PANZOOM-RETIREMENT",
+    "LIF-06-HOST-IMPORT-RETIREMENT"
+  ],
+  "wheel": {
+    "path": "build/artifacts/4f537748c74689ed4d55ee2e3f8e3d9f1c1cfdf0803d1b72c4169217c74291d8/vispy-0.17.0+vulkan.2-cp312-cp312-win_amd64.whl",
+    "sha256": "4f537748c74689ed4d55ee2e3f8e3d9f1c1cfdf0803d1b72c4169217c74291d8"
+  },
+  "native_sha256": "057d13e62ac520fbf7fe7b62a3059588bb477e24a0061d087bcc50edd44a12ea",
+  "installed_members_verified": 537,
+  "source_overrides": 0,
+  "case_count": 9,
+  "passed": 9,
+  "failed": 0,
+  "case_proofs": "case-proofs.json",
+  "source_hashes": {
+    "tests/native/test_orphan_retirement_dawn.py": "2707289b3f67324bcb40ad811e3180a671609fd64527894cc033e4f439e6263a",
+    "tests/qt/test_panzoom_input_gpu.py": "9ab7931737264d97c3cfe533b8267a7caaeef233bdd9ef8bd17718385c185054"
+  },
+  "actual_exit": 0,
+  "child_waited": true,
+  "parent_shutdown_gauges": {
+    "pending_tickets": 0,
+    "queued_frames": 0,
+    "live_buffer_bytes": 0,
+    "live_cpu_buffer_bytes": 0,
+    "live_texture_bytes": 0,
+    "canvas_texture_bytes": 0,
+    "transient_buffer_bytes": 0,
+    "line_resource_pool_busy_slots": 0,
+    "line_resource_pool_bytes": 0,
+    "host_import_pinned_bytes": 0
+  },
+  "before_shutdown": "All ten logical gauges equal zero entry baseline in every fresh child; no shutdown used to satisfy retirement assertions",
+  "cleanup_submission": "Exactly one real empty command-buffer submission per large-host case; before-submit and callback-registration failures recover without duplicate successful Submit",
+  "worker_instrumentation": "Temporarily wraps only native retire_objects to record calling thread and real native returned count; delegates to the unchanged native function; automatic main-thread cyclic GC disabled for this child",
+  "native_inputs": "d1a2bf168781aaf05779016c1ab82b053968636a8026a35dcde9cbd53c656081",
+  "profile": "compat/build-profiles/orphan-retirement-package-v1.json",
+  "source_commit": null,
+  "base_source_commit": "7209f1199564909c4839dcccd19da965d55954f5",
+  "artifact_admitted": false,
+  "published": false,
+  "preserved_failure": "@evidence/build/runs/orphan-retirement-windows-package-835/verification.json",
+  "scope": "Finite exact installed Windows development wheel, all537members and loaded origins checked before/after; no WSL, broad API, physical residency, optics, integration or release claim.",
+  "evidence": {
+    "path": "@evidence/build/runs/host-import-retirement-windows-838/verification.json",
+    "sha256": "79ddffc383f6e449ec17652be82c22ee654c425538a888337f36264b42dfa727"
+  },
+  "native_build": {
+    "path": "@evidence/build/runs/host-import-retirement-native-837/verification.json",
+    "sha256": "4f1a0bb5ea6c8297e9661f447ec7402e8a2cd3c9db02dbbe76d7d70ce3a90f6d",
+    "ctests_passed": 44,
+    "compiled": true,
+    "sdk_rebuilt": false
+  },
+  "cleanup": {
+    "native_bytes": 281486506,
+    "native_retained_verified": 146,
+    "installed_bytes": 42579990,
+    "installed_retained_verified": 38,
+    "status": "PASS_APPLY_BOTH"
+  },
+  "disposal_basis": "@evidence/build/runs/host-import-retirement-source-836/verification.json"
+}

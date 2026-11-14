@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "name": "orphan-retirement-package-v1",
+  "owner": "root-orphan-retirement-package",
+  "storage_workspace": "D:/vispy-vulkan-managed",
+  "source_workspace": "C:/Users/HEQ/Projects/vispy_vulkan",
+  "expected_peak_bytes": 536870912,
+  "aggregate_max_scratch_bytes": 21474836480,
+  "min_free_bytes": 10737418240,
+  "disk_guard_seconds": 30,
+  "purpose": "Sequential Windows package assembly and exact installed orphan-retirement development controls using the fresh verified SDK-linked native producer; no native compilation in this package run.",
+  "budget_basis": "Reuse the existing 512 MiB package/install/test envelope. One shipping projection, one wheel, one offline copied installation and bounded test children; all mutable cache/temp output stays in the registered run. No environment, SDK, dependency installation or source-history copy.",
+  "source": "For development observation, freeze exact current shipping/native/test/profile/license hashes and the known base commit, explicitly recording uncommitted changes and source_commit=null. Retain preferred sources and a small delta by hash. This is not committed-source, strict artifact or release admission. Before promotion, independently bind every shipped member to the reviewed exact implementation head and renew native/candidate proofs under unchanged verifiers.",
+  "checks": "Validate the fresh native producer and immutable SDK/toolchain origins. Assemble with the existing locked scikit-build-core backend and wheel.cmake=false. Audit every source/native/notice/license/archive/RECORD member. Install offline without dependencies into registered scratch, run isolated matching-native children, verify all shipped and loaded origins before/after. Retirement assertions precede global shutdown. Preserve actual failures, exits, waits, unraisable errors and control instrumentation scope.",
+  "retention": "Retain wheel and necessary sources/licenses once per content hash, command/results and reconstruction references outside scratch. Await children; generate, inspect and apply the exact cleanup plan using the current protected/blocked registry before the next experiment. Stop on storage refusal; no force or limit increase.",
+  "scope": "Unreleased content-addressed local development candidate only. Preserve existing public assets and AGPL/original BSD/dependency notices. Review/integration, successor profile qualification and a distinct verified delivery identity remain separate. WSL execution requires its own documented matching leaf/package profile plus guest/backing-volume guards. No full parity, physical Linux GPU or Metal qualification claim."
+}

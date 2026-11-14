@@ -305,6 +305,9 @@ void configure_canvas(int canvas_id, int width, int height, int samples);
 // The caller must first flush pending GLIR state into execute_commands().
 FramebufferConfiguration framebuffer_config(int canvas_id);
 void destroy_canvas(int canvas_id);
+// Delete namespace owners only: no canvas, device initialization or submission.
+// Binding callers retain the GIL; runtime owners contain no Python references.
+uint64_t retire_objects(const std::vector<int>& ids);
 void set_surface(int canvas_id, std::uintptr_t hwnd, std::uintptr_t hinstance);
 void set_surface_x11(int canvas_id, std::uintptr_t display, uint64_t window, bool owned_display);
 void set_surface_metal_view(int canvas_id, std::uintptr_t view);

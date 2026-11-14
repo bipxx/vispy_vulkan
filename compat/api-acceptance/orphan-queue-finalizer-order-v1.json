@@ -1,0 +1,37 @@
+{
+  "status": "OBSERVED_SOURCE_QUEUE_FINALIZER_ORDER",
+  "object_id": 1,
+  "collected": 15,
+  "events": [
+    {
+      "kind": "shared_queue_finalizer",
+      "commands": [
+        [
+          "CREATE",
+          1,
+          "DummyGlirType"
+        ]
+      ]
+    },
+    {
+      "kind": "object_finalizer",
+      "id": 1
+    }
+  ],
+  "delete_visible_at_queue_finalization": false,
+  "source_inputs": {
+    "src/vispy/gloo/glir.py": "620dd9f0bc26bd41f8c41dc6cdc8f6fc2b79db8933c5585cb9dd8132cd07073d",
+    "src/vispy/gloo/globject.py": "78c929159aea258487c7c0398f5947fae733a9993e217d9961befb13e6f50ce3"
+  },
+  "scope": "Instrumented source-only unreachable owner/GLObject/shared-queue cycle. No production changes, native calls or artifact qualification. Illustrates finalization ordering; not a GPU retirement test.",
+  "scratch_created": false,
+  "date": "2026-11-14",
+  "coverage_ids": [
+    "LIF-06-PANZOOM-RETIREMENT"
+  ],
+  "evidence": {
+    "path": "@evidence/build/runs/orphan-queue-finalizer-order-832/verification.json",
+    "sha256": "9aa43de654bffb181bc082a9702f62ff0a5355b0a0804924b3353e2959127a8f"
+  },
+  "disposition": "A finalizer which drains only queued DELETEs is insufficient for observed cyclic finalization order. Preserve submitted ownership across queue merges and finalization, or establish an equally discriminating safe mechanism. No production fix or installed coverage."
+}

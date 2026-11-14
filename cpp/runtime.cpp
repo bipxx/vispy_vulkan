@@ -1179,6 +1179,20 @@ struct Engine {
         drop_next.clear();
     }
 
+    void mark_deleted(int id) {
+        discard_point_geometry(id);
+        auto it = objects.find(id);
+        if (it != objects.end()) {
+            it->second.alive = false;
+            if (it->second.class_name == "Program") {
+                // Immutable snapshots/Tickets retain their selected revisions.
+                it->second.input_current.clear();
+                it->second.input_oversized.clear();
+                it->second.input_geometry_cache.reset();
+            }
+        }
+    }
+
     bool memory_window_idle() {
         update_work_peaks();
         if (probe.pending_tickets || probe.queued_frames || probe.pending_draws || probe.pending_timestamp_frames) return false;
@@ -5239,6 +5253,26 @@ struct Vertex { @builtin(position) position: vec4f, @location(0) uv: vec2f }
         probe.host_import_pinned_bytes = pool.pinned_bytes();
     }
 
+    void submit_idle_host_retirement() {
+        if (!device_ready || device_lost || !device || !queue ||
+                !tickets.empty() || released_host_imports.empty()) return;
+        // Vulkan frees an imported buffer's memory at the pending queue serial,
+        // not merely at the serial which was complete when Destroy was called.
+        // If no later frame arrives, provide one real, empty submission. The
+        // existing Ticket fence then proves that the deletion serial passed.
+        // This runs only at an explicit event boundary, never in a finalizer,
+        // and neither creates a canvas nor initializes/resurrects a device.
+        auto encoder = device.CreateCommandEncoder();
+        ++probe.command_encoders;
+        auto commands = encoder.Finish();
+        auto ticket = std::make_shared<Ticket>();
+        submit_ticket_commands(ticket, commands);
+        // A failure after Submit keeps its real owner; poll retries completion
+        // registration without replaying this cleanup submission.
+        track_submission(ticket);
+        log("HOST_IMPORT retirement ticket=" + std::to_string(ticket->id));
+    }
+
     // Releases idle imports (no frame holds their blocks), least recently used first, until the live imports and
     // `needed` more bytes fit within the limit.
     void release_host_imports_over_limit(uint64_t needed, const Ticket* current) {
@@ -7271,6 +7305,23 @@ void destroy_canvas(int canvas_id) {
     eng.log("destroy canvas " + std::to_string(canvas_id));
 }
 
+uint64_t retire_objects(const std::vector<int>& ids) {
+    auto& eng = engine();
+    std::lock_guard<std::mutex> lock(eng.mu);
+    // No polling, init_device, surface access or Python callback here. This is
+    // a namespace boundary; queued snapshots keep independent revision owners.
+    uint64_t retired = 0;
+    for (int id : ids) {
+        if (eng.objects.find(id) == eng.objects.end()) continue;
+        eng.mark_deleted(id);
+        eng.objects.erase(id);
+        eng.drop_next.erase(id);
+        ++retired;
+    }
+    if (eng.canvases.empty() && eng.tickets.empty()) eng.release_dropped_host_imports();
+    return retired;
+}
+
 static void install_native_surface(int canvas_id, const vispy::platform::NativeSurfaceDescriptor& descriptor) {
     auto& eng = engine();
     std::lock_guard<std::mutex> lock(eng.mu);
@@ -7396,19 +7447,7 @@ static void execute_commands_impl(int canvas_id, const std::vector<Command>& com
         if (cmd.op == "DELETE") {
             int id = arg_id(cmd, 0);
             eng.deleted_now.insert(id);
-            eng.discard_point_geometry(id);
-            auto it = eng.objects.find(id);
-            if (it != eng.objects.end()) {
-                it->second.alive = false;
-                if (it->second.class_name == "Program") {
-                    // Object removal is delayed until the next parse. Release
-                    // this Program's ordinary owners now; immutable snapshots
-                    // and Tickets keep their already-selected records alive.
-                    it->second.input_current.clear();
-                    it->second.input_oversized.clear();
-                    it->second.input_geometry_cache.reset();
-                }
-            }
+            eng.mark_deleted(id);
             eng.log("DELETE id=" + std::to_string(id));
             continue;
         }
@@ -8590,6 +8629,7 @@ bool process_events() {
             throw;
         }
     }
+    eng.submit_idle_host_retirement();
     eng.poll_query_results();
     return !eng.tickets.empty() || !eng.query_segments.empty() || !eng.query_frames.empty() ||
         std::any_of(eng.canvases.begin(), eng.canvases.end(), [](const auto& item) { return item.second.deferred_present; });

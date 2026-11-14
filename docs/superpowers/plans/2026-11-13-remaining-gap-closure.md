@@ -2,6 +2,35 @@
 
 ## Current execution pointer — 2026-11-14
 
+[842 exact-source approval](../../../compat/api-acceptance/orphan-lifetime-source-review-v1.json)
+now covers22path4fec1545 on7209f119, no required changes; coordinator reverified
+920inputs plus native/wholearchive/raw Windows results. Reviewer unread evidence
+and advisory limits remain explicit. Scratch cleaned94bytes/62retained verified.
+Next permitted23path freeze with one own receipt/additive checkpoints, committed
+runtime/native/test joins and82+2collection, then unmerged fresh Linux CI and WSL.
+Do not run default native reuse with stale candidate13proofs or claim protected
+integration/strict32row128binding qualification/publication complete.
+
+**Current pointer supersedes older pending wording:** PR83 actual merge7209f119
+is verified in830, all11required checks. The orphan-deletion fix now has44native
+CTests and[9Windows lifetime passes](../../../compat/api-acceptance/host-import-retirement-windows-v1.json),
+including host-import cleanup/failure recovery, plus[73regressions and2refusals](../../../compat/api-acceptance/orphan-current-windows-v1.json)
+on matching4f537748/native057d13e6.835host-import and840stale-focus-baseline
+failures remain preserved; focus entry normalization keeps exact ten-gauge
+equality. Latest four scratch roots cleaned359881092bytes, retained verified.
+Next review/freeze exact source, obtain matching fresh Linux producer/WSL proof,
+renew successor native/candidate/CI bindings and integrate.32installed Tk rows/
+128bindings, release qualification/admission and distinct delivery remain open;
+82selected Windows positives do not substitute for them. See the
+[active ordered plan](2026-11-14-gap-investigation-next.md#current-execution-plan-investigate-fix-then-qualify).
+
+[PR83 source head](../../../compat/api-acceptance/current-installed-source-head-v1.json)
+is6a4d0f11/tree457bfb57 with14reviewed/permitted paths. Exacthead runtime/test/
+wheel/controljoins and73+2collection pass; privateindex cleaned15,136,356bytes,
+foreign index unchanged. Normal protectedauto-merge enabled, requiredCI/merge
+pending. PanZoomretention and currentselectedTk/admission remain explicit open
+work. This later checkpoint/receipt stays outside the frozen source batch.
+
 [Review825](../../../compat/api-acceptance/current-installed-source-review-v1.json)
 approves exact13file9bb9fe55 on26e9ea5f.1,314inputs reverified;96byte scratch
 cleaned/38retained verified. Next final14path metadata freeze/actual-head joins/

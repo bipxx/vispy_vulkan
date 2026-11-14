@@ -1,0 +1,81 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "coverage_ids": [
+    "LIF-06",
+    "LIF-06-PANZOOM-RETIREMENT"
+  ],
+  "status": "DIAGNOSED_RESOURCE_RETIREMENT_WITHOUT_LIVE_CANVAS_NOT_FIXED",
+  "wheel": {
+    "path": "build/artifacts/18e113616b36f56294987c316a1a43f6e3ec2f6a391378d14d1bc01839845404/vispy-0.17.0+vulkan.2-cp312-cp312-win_amd64.whl",
+    "sha256": "18e113616b36f56294987c316a1a43f6e3ec2f6a391378d14d1bc01839845404"
+  },
+  "diagnosis": {
+    "path": "@evidence/build/runs/panzoom-retention-diagnosis-windows-829/causal-disposition.json",
+    "sha256": "990979e6b1c8b1703365b58e12d10d22c63cee0150dffc171fd5f021646434f5"
+  },
+  "staged_results": {
+    "path": "@evidence/build/runs/panzoom-retention-diagnosis-windows-829/verification.json",
+    "sha256": "ef203cf900c17f1e96c67984284142ba25f97fe92d405b9ec43bdd23571a6509"
+  },
+  "source_archive": {
+    "path": "@evidence/build/runs/panzoom-retention-diagnosis-windows-829/diagnostic-source-and-licenses.zip",
+    "sha256": "fb43e030a95a8ac1b7b51f225294f16a9b6d7610596b8d630f278492729a168d"
+  },
+  "observed_resources": {
+    "buffer_bytes": 704,
+    "cpu_bytes": 936,
+    "texture_bytes": 691200
+  },
+  "held_context_queues": [
+    {
+      "index": 0,
+      "queued_command_kinds": {
+        "FRAMEBUFFER": 1,
+        "FUNC": 1,
+        "DELETE": 10
+      },
+      "flushed": false,
+      "error": "RuntimeError('missing canvas 0')"
+    },
+    {
+      "index": 1,
+      "queued_command_kinds": {
+        "FRAMEBUFFER": 1,
+        "FUNC": 1,
+        "DELETE": 10
+      },
+      "flushed": false,
+      "error": "RuntimeError('missing canvas 0')"
+    }
+  ],
+  "code_sources": {
+    "cpp/runtime.cpp": "f344107e03ff6ce8b4302d8d681739ac9a4c813b3236daafb9d74cff43446fad",
+    "cpp/bindings/module.cpp": "92b84f1f8b76ffa6a31705d741d74d4116f3e65aabfd5409a04e353107cbe61b",
+    "src/vispy/gloo/glir.py": "620dd9f0bc26bd41f8c41dc6cdc8f6fc2b79db8933c5585cb9dd8132cd07073d",
+    "src/vispy/gloo/context.py": "2b228c50da13c32e5fe29216866307148de4e6542f5726c8e140e49fe4f6f2ab",
+    "src/vispy/gloo/dawn_parser.py": "2a52bca0510dce264a15d961c1168a455fef1648c9042b83368ccfd05d641854",
+    "src/vispy/gloo/globject.py": "78c929159aea258487c7c0398f5947fae733a9993e217d9961befb13e6f50ce3"
+  },
+  "source_or_runtime_changes": false,
+  "ordinary_objects_collected": true,
+  "cleanup": {
+    "receipt": {
+      "path": "@evidence/build/runs/panzoom-retention-diagnosis-windows-829/cleanup-apply.log",
+      "sha256": "0d8a67fb3c93f250441bb5f8725d6153e8948997e1cb0ff1f56a020b5d41a945"
+    },
+    "reclaimed_bytes": 17902134,
+    "retained_verified": 22,
+    "scratch_absent": true
+  },
+  "remaining": [
+    "Define safe context-independent orphan DELETE retirement, preserving live shared resources and pending snapshots.",
+    "Add frontend/native contracts and validate the actual fix on Windows/WSL with matching native payloads; old18e/9efb wheels remain old behavior.",
+    "Revalidate impacted candidate/CI/native reuse and artifact admission instead of transferring old proofs."
+  ],
+  "fixed": false,
+  "source_review_approved": false,
+  "artifact_admitted": false,
+  "published": false,
+  "scope": "Two diagnostic modes each execute unchanged2PanZoomassertions on Windows18e/native6dc. AfterGC allscene/canvas/widget/camera weakrefs dead, resourcesstilllive. Context-only retention exposes10DELETE commands perqueue; flushingaftercanvasdestruction throwsmissingcanvas0 beforeDELETE. No globalshutdown workaround/hiddenmaintenancecanvas/productionfix is introduced. Finite logical gauges, not physicalmemory or allplatforms."
+}

@@ -434,6 +434,7 @@ static nb::dict memory_window_dict(const VulkanMemoryWindow& window) {
 
 NB_MODULE(_dawn, m) {
     m.attr("submission_contract_version") = 1;
+    m.attr("object_retirement_contract_version") = 1;
     m.attr("state_query_contract_version") = 1;
     m.def("_capture_upload", &vispy_binding::capture_upload);
     m.def("revision", &runtime_revision);
@@ -476,6 +477,9 @@ NB_MODULE(_dawn, m) {
         return out;
     }, nb::arg("canvas_id"));
     m.def("destroy_canvas", &destroy_canvas);
+    // Keep the GIL: no Python finalizer may re-enter while eng.mu is held.
+    // Conversion of the vector happens before the runtime acquires that mutex.
+    m.def("retire_objects", &retire_objects, nb::arg("ids"));
     m.def("set_surface", &set_surface);
     m.def("set_surface_win32", &set_surface);
     m.def("set_surface_x11", &set_surface_x11, nb::arg("canvas_id"), nb::arg("display"),

@@ -2,6 +2,117 @@
 
 ## Latest checkpoint — 2026-11-14
 
+**Lifetime source review complete — 2026-11-14:**
+[842 source-only approval](../compat/api-acceptance/orphan-lifetime-source-review-v1.json)
+covers exact22path delta4fec1545 on7209f119, no required changes. Reviewer
+explicitly left execution records unread; coordinator independently reverified
+920inputs,133native sources/proofs, whole4f537748archive and raw9+73passes/
+2refusals/47CPUorigins. Advisory limits remain in the receipt. Review scratch
+cleaned94bytes/62retained verified. Next freeze permitted23paths (one own review
+receipt plus additive checkpoints), join exact committed sources to Windows
+evidence and collect82+2cases without native import, then push an unmerged branch
+for fresh Linux CI. WSL, protected integration,32Tkrows/128bindings and strict
+admission/delivery remain open; source approval grants no artifact/release scope.
+
+**Windows lifetime fix and affected regressions pass — 2026-11-14:**
+[837/838 lifetime proof](../compat/api-acceptance/host-import-retirement-windows-v1.json)
+compiles44native CTests and passes all9installed lifetime cases on4f537748/
+native057d13e6,537members/no overlays. All ten gauges restore before shutdown;
+the1MiB host import now retires through one empty GPU submission at explicit
+event processing, with before-submit/callback-registration failure recovery and
+no duplicate successful Submit. Direct orphan retirement still submits no work
+and creates no canvas/device. Keep835's original failure unchanged.
+[840/841 regressions](../compat/api-acceptance/orphan-current-windows-v1.json)
+preserve72pass/1stale-focus-baseline failure, then pass73selected cases/47CPU
+origin proofs after entry GC/deferred deletion/event quiescence. Exact ten-gauge
+teardown equality remains; both new retained-canvas mutations fail the resource
+assertion. Total82distinct selected positives across matching-wheel runs, not
+one universal suite. Focus test is nowfb916c45, mutant2b2e6074; olda42/d1proofs
+remain historical.837/838/840/841 scratch cleaned359881092bytes,146/38/28/32
+retained verified. LIF-06-PANZOOM-RETIREMENT and LIF-06-HOST-IMPORT-RETIREMENT are
+Windows-observed at this finite development scope, still open for matching WSL,
+fresh review/integration and strict qualification. No public wheel was replaced.
+
+**LIF-06 Windows native/installed progress, host-import failure open — 2026-11-14:**
+[834/835](../compat/api-acceptance/orphan-retirement-windows-v1.json) compiles the
+SDK-linked native leaf with44passing CTests, then audits/installs exact26017072
+wheel/native33a96aff with537members/no overlays. Six installed controls pass:
+unknown IDs, live peer, helper-thread collection (real retirement calls observed
+on that thread), queued snapshot, held-context refusal/cleanup and repeated
+PanZoom retirement. Before shutdown all ten gauges restore in those six cases.
+The seventh, large host import, fails:1048576host bytes remain pinned while the
+other nine gauges are zero. Preserve that failure/artifact and investigate
+**LIF-06-HOST-IMPORT-RETIREMENT**; do not call the whole lifetime gap closed.
+WSL/review/integration and successor artifact qualification remain open. Both
+scratch runs cleaned324069472bytes total;145/39retained files verified. Existing
+uncompiled checkpoints below are historical; neither existing public wheel is
+fixed or requalified by this local development candidate.
+
+**LIF-06-PANZOOM-RETIREMENT source implementation partial — 2026-11-14:**
+[833 controls](../compat/api-acceptance/orphan-retirement-source-controls-v1.json)
+records33source-only passes after an original13failure/3pass control. The patch
+adds a versioned no-canvas native retirement API, orphaned-queue/late-DELETE
+handling, association hook transfer and failed packing/execution retirement.
+List-tail DELETEs survive early packing errors; lazy iterable capture and the
+primary error are preserved. Two backend-dependent tests in an initial broad
+selection were blocked by the native-import guard; that failed attempt remains
+retained, and the explicit CPU selection passes. Native code is **uncompiled**;
+no wheel is claimed fixed. Next native/peer/snapshot/thread/host-import controls,
+matching SDK-linked Windows/WSL leaf builds and installed retirement evidence,
+then review/integration and successor qualification. Peer831 advice is advisory;
+its85byte scratch marker was cleaned/19retained files verified. Source checks
+created no scratch; exact sources and original licenses retained.
+
+**LIF-06-PANZOOM-RETIREMENT finalizer-order control — 2026-11-14:**
+[832 source-only probe](../compat/api-acceptance/orphan-queue-finalizer-order-v1.json)
+observes the shared queue finalizer before the GLObject finalizer in a small
+unreachable ownership cycle: CREATE is visible, DELETE is not yet queued. This
+rules out draining only visible DELETEs as a complete fix. Submitted ownership
+must survive this order and queue association. No production/native changes or
+installed proof; reproducer retained, exit0/waited, no scratch created.
+
+**PR83 integration verified — 2026-11-14:**
+[830 actual-merge audit](../compat/api-acceptance/current-installed-protected-integration-v1.json)
+verifies merge7209f119/tree457bfb57, all11required checks, all14frozen owned blobs
+and517runtime/test input joins (510runtime members). Later live docs and foreign
+HEAD/index remain unchanged. No writable scratch was created. Source integration
+is complete; PanZoom orphan retirement and strict installed/artifact admission
+remain open. These branch workflows do not establish collection of the new tests.
+
+**Investigation and closure plan refreshed — 2026-11-14 (planning only):**
+The [ordered active plan](superpowers/plans/2026-11-14-gap-investigation-next.md#current-execution-plan-investigate-fix-then-qualify)
+prioritizes PR83 integration verification, LIF-06-PANZOOM-RETIREMENT ownership/
+locking investigation and a discriminating regression, matching native leaf
+builds and installed Windows/WSL proof, then the bounded claim audit and strict
+artifact qualification. The 32 installed rows/128 bindings remain open; no new
+test, artifact, merge or published coverage is claimed. Existing diagnosis829
+and frozen records remain authoritative within their original scope.
+
+**PanZoom retention cause narrowed — 2026-11-14:**
+[829 diagnosis](../compat/api-acceptance/panzoom-retirement-diagnosis-v1.json)
+shows all canvas/widget/camera/scene weakrefs dead after ordinary GC, while
+704buffer/936CPU/691200texture bytes remain. Keeping only the two contexts
+preserves10DELETE commands each; flushing fails `missing canvas 0` before those
+commands execute. Source audit confirms native execution resolves a canvas even
+for deletion. This excludes observed test-held scene references as the cause,
+and points to orphaned deletion queues/native context requirements. No fix is
+implemented. Both2case diagnostic bodies pass; failed cleanup calls stay in the
+report. Scratch cleaned17,902,134bytes/22retained verified. Next design safe
+context-independent retirement, protecting live shared resources/queued snapshots;
+validate matching native/frontend contracts on Windows/WSL before qualification.
+
+**Reviewed installed-evidence batch submitted as PR83 — 2026-11-14:**
+[828 source-head receipt](../compat/api-acceptance/current-installed-source-head-v1.json)
+records14file commit6a4d0f11/tree457bfb57 on verified26e9ea5f. Actual-head joins
+cover510runtime members/all7tests/Qt/bothwheel hashes/control variant; collection
+finds73selections+2controls without a native import. Private-index scratch
+cleaned15,136,356bytes/79retained verifications; foreign HEAD/index unchanged.
+[PR83](https://github.com/bipxx/vispy_vulkan/pull/83) has normal head-pinned
+protected auto-merge enabled; requiredCI/actualmerge remain pending. Later head/
+CI/merge records stay outside the frozen batch. PanZoom retention and32installed
+rows/128bindings for strict artifact admission remain open; no new CI collection
+or public-release claim is added.
+
 **Expanded source/evidence batch approved — 2026-11-14:**
 [825](../compat/api-acceptance/current-installed-source-review-v1.json) approves
 exact13-file delta `9bb9fe55` on actual26e9ea5f/tree3c39641e, no required changes.
@@ -2345,10 +2456,11 @@ observations on each claimed profile, not just a successful screenshot.
   and managed821 per-test observations show each closed PanZoom scene retains
   352buffer/468CPU/345,600texture bytes; two scenes accumulate704/936/691,200.
   Old9e4 and new18e11361 wheels match; resources disappear at process shutdown.
-  Cause is not established: test-held references versus runtime ownership/
-  retirement. Next use weak references and explicit owned Qt-object destruction
-  with before/after gauges to distinguish those causes, then fix the responsible
-  fixture or runtime path and rerun the minimal sequence. Global focus-baseline
+  [829 diagnosis](../compat/api-acceptance/panzoom-retirement-diagnosis-v1.json)
+  now shows scene/canvas/widget/camera weakrefs dead but resources retained;
+  context-only retention exposes queued DELETEs rejected after canvas removal.
+  Next fix safe orphaned queue/native deletion retirement and rerun the minimal
+  accumulation/live-peer/pending-work sequence on Windows/WSL. Global focus-baseline
   equality and final shutdown zero do not close this item. No physical-memory
   or universal Canvas.close leak diagnosis is inferred from these finite gauges.
 - [ ] **LIF-06-QT-FOCUS — Selected next interaction:** prove two-canvas focus

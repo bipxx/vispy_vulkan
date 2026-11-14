@@ -1,0 +1,57 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "status": "PASS_PR83_PROTECTED_MERGE_EXACT_REVIEWED_TREE",
+  "pr_url": "https://github.com/bipxx/vispy_vulkan/pull/83",
+  "head": "6a4d0f118a8eba827f511fb99f2714804795052b",
+  "parent": "26e9ea5f82478ed8db79df93e8ec9faf3b250bad",
+  "merge_commit": "7209f1199564909c4839dcccd19da965d55954f5",
+  "merged_at": "2026-11-14T14:43:39Z",
+  "tree": "457bfb57d7a36284d230f1b25a62eff809e6c3f2",
+  "required_success": 11,
+  "required_checks": [
+    "CPU windows-x86_64 CPython 3.10.19",
+    "CPU windows-x86_64 CPython 3.11.14",
+    "CPU windows-x86_64 CPython 3.12.8",
+    "CPU windows-x86_64 CPython 3.13.8",
+    "CPU windows-x86_64 CPython 3.14.0",
+    "CPU linux-x86_64 CPython 3.10.19",
+    "CPU linux-x86_64 CPython 3.11.14",
+    "CPU linux-x86_64 CPython 3.12.8",
+    "CPU linux-x86_64 CPython 3.13.8",
+    "CPU linux-x86_64 CPython 3.14.0",
+    "software-vulkan"
+  ],
+  "merged_owned_blobs": 14,
+  "joined_inputs": 517,
+  "runtime_members_joined": 510,
+  "later_live_files_preserved": {
+    "compat/api-acceptance/current-installed-source-review-v1.json": "a1bba1fd44727602a17c5c317f48a08d147d19f3c6220f8a2a768e2a94fe416a",
+    "compat/api-acceptance/mesh-clip-blend-review-v1.json": "d4b04ed2d95b9911b02ed42e091c3caa70fff5b42c9a98bfa9cff2b0d096cd1a",
+    "compat/api-acceptance/mesh-clip-blend-windows-v1.json": "a788cf3541a3d326952871e268863040f3c9d86d9a7c14476aa00595a7ec7d72",
+    "compat/api-acceptance/mesh-clip-blend-wsl-v1.json": "2af64efb77f6c9b744f88c1317d6bd237ff006a38c87082289448ecb7da28695",
+    "compat/api-acceptance/qt-callback-installed-v1.json": "1b134e62671806d25db791e19496a06529be4f72b3ce44ac8190823133651be0",
+    "compat/api-acceptance/qt-focus-protected-integration-v1.json": "a53a862f2c5955fa97f1e38f9108dfed98eb046355a3967ae56e063705e18ed5",
+    "compat/api-acceptance/qt-focus-resource-baseline-v1.json": "2bcbb5f88913737712d19efaffe6f314b1d5ef4ca35c70d593fd21ae1ee75c1e",
+    "compat/api-acceptance/qt-focus-source-head-v1.json": "34862392585569338155c377dc0f76eaaf6a73c35ec3c61808033809eb441037",
+    "docs/coverage-checklist.md": "692dfeeaf1a384630ef7f963511c290c3ccbaa7fe4ee07b43d5df754d35740c6",
+    "docs/remaining-gaps-checklist.md": "16bc1ebce052acfac98d2a4b86c55e4fd2228baf304b2aaa2adbfa1589ed18cd",
+    "docs/superpowers/plans/2026-11-13-remaining-gap-closure.md": "9c9f6032829bd27b0a515528a8eea7e21a81fc11ae0f5bbe16cf333fcddbd507",
+    "docs/superpowers/plans/2026-11-14-gap-investigation-next.md": "d53a5222e0f4e57cd870452324a77aa8d3bf1ce0c83782cfcdcf579a9f9d51e1",
+    "tests/qt/test_focus_routing_gpu.py": "a42c1438ba6af3c8d1fa7cf7d0a61155d7c27d33d5f1b8043429502939593c40",
+    "tests/visuals/test_mesh_clip_blend_gpu.py": "e5467bee2f00a5c17a04d578e1c026b64e34a269980b6c8387ff69eb0190d741"
+  },
+  "foreign_head_index_unchanged": true,
+  "scratch_created": false,
+  "artifact_admitted": false,
+  "published": false,
+  "scope": "Actual PR83 merge has frozen reviewed14-file tree and exact runtime/test joins. Required branch CI passes; new tests are not claimed collected by these workflows. Installed observations and strict artifact admission remain separate.",
+  "evidence": {
+    "path": "@evidence/build/runs/current-installed-protected-integration-830/verification.json",
+    "sha256": "2fd77856fc0212be0a5f9bb1103c2166dc7ea53e90f6349c7ca6e47ba71ad9b9"
+  },
+  "coverage_ids": [
+    "LIF-06",
+    "SCI-02-CLIP-ALPHA-BLEND"
+  ]
+}

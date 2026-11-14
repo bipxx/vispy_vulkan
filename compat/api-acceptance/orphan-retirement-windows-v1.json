@@ -1,0 +1,71 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "status": "PARTIAL_INSTALLED_WINDOWS_SIX_PASS_HOST_IMPORT_PIN_FAILURE",
+  "coverage_ids": [
+    "LIF-06-PANZOOM-RETIREMENT"
+  ],
+  "wheel": {
+    "path": "build/artifacts/26017072f14eb72e6ede76b686562da8029feb8829772e0f1fbdc7d60d6ba92f/vispy-0.17.0+vulkan.2-cp312-cp312-win_amd64.whl",
+    "sha256": "26017072f14eb72e6ede76b686562da8029feb8829772e0f1fbdc7d60d6ba92f"
+  },
+  "native_sha256": "33a96aff53b91ed47f8b89b85fb3d2c9fe35597863c00a62b86ed477d8c90095",
+  "installed_members_verified": 537,
+  "source_overrides": 0,
+  "case_count": 7,
+  "passed": 6,
+  "failed": [
+    "test_orphan_retirement_preserves_owners_and_restores_resources[host-import]"
+  ],
+  "case_proofs": "case-proofs.json",
+  "source_hashes": {
+    "tests/native/test_orphan_retirement_dawn.py": "23b3dee1c88b7a38e9f27006a55bea276343f405b0243061fe13611b0277b5f0",
+    "tests/qt/test_panzoom_input_gpu.py": "9ab7931737264d97c3cfe533b8267a7caaeef233bdd9ef8bd17718385c185054"
+  },
+  "actual_exit": 1,
+  "child_waited": true,
+  "parent_shutdown_gauges": {
+    "pending_tickets": 0,
+    "queued_frames": 0,
+    "live_buffer_bytes": 0,
+    "live_cpu_buffer_bytes": 0,
+    "live_texture_bytes": 0,
+    "canvas_texture_bytes": 0,
+    "transient_buffer_bytes": 0,
+    "line_resource_pool_busy_slots": 0,
+    "line_resource_pool_bytes": 0,
+    "host_import_pinned_bytes": 0
+  },
+  "remaining_failure": {
+    "case": "host-import",
+    "host_import_pinned_bytes": 1048576,
+    "other_nine_logical_gauges": 0,
+    "when": "After close, collection and normal event processing; before global shutdown",
+    "disposition": "Trace imported block disposal watermark; preserve assertion and failing artifact. No blanket retirement closure."
+  },
+  "native_inputs_unchanged": "67ea59bcfc80a217dbe2c1f6f23dabc94c5fb5337b7eebfefdd560adc5568a2d",
+  "profile": "compat/build-profiles/orphan-retirement-package-v1.json",
+  "source_commit": null,
+  "base_source_commit": "7209f1199564909c4839dcccd19da965d55954f5",
+  "artifact_admitted": false,
+  "published": false,
+  "scope": "Finite installed Windows development candidate, all members/origins checked before/after; source+native match. Six passing cases are not seven, WSL or release qualification.",
+  "native_build": {
+    "path": "@evidence/build/runs/orphan-retirement-windows-native-834/verification.json",
+    "sha256": "5fb5b910c8b1fbaa59b1912c9b360a1fb89836a63b70d82a33ce39350d6f59b4",
+    "ctests_passed": 44,
+    "compiled": true,
+    "sdk_rebuilt": false
+  },
+  "evidence": {
+    "path": "@evidence/build/runs/orphan-retirement-windows-package-835/verification.json",
+    "sha256": "dfde247932e9a1e6a0e772794f468bd759c98ff2e455fd21f59107a273f3986d"
+  },
+  "cleanup": {
+    "native_bytes": 281491080,
+    "native_retained_verified": 145,
+    "installed_bytes": 42578392,
+    "installed_retained_verified": 39,
+    "status": "PASS_APPLY_BOTH"
+  }
+}
