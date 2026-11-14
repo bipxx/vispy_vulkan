@@ -1,0 +1,80 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "status": "APPROVED_AMENDED_LIFECYCLE_MSAA_DELTA_WAITING_PR79_MERGE",
+  "coverage_ids": [
+    "LIF-01",
+    "LIF-05",
+    "SCI-06",
+    "API-06"
+  ],
+  "base": "434f13266fc1c3d29dc1cdacd912d4f9b36e7dd6",
+  "reviewed_files": 12,
+  "delta": {
+    "path": "@evidence/build/runs/lifecycle-msaa-amendment-review-750/delta.json",
+    "sha256": "fab35ae16449530552c93fee79392656dcbdda22e7a49c0af43e825702ef97c2"
+  },
+  "decision": {
+    "path": "@evidence/build/runs/lifecycle-msaa-amendment-review-750/decision.json",
+    "sha256": "490a2b1f8bd39a4e51f8f9b36bdcba501c8c886deb3873582e7b89a8e6ab029d",
+    "value": "APPROVED_AMENDED_EXACT_DELTA_WITH_CONDITIONS"
+  },
+  "prior_review": {
+    "path": "@evidence/build/runs/lifecycle-msaa-impact-review-747/decision.json",
+    "sha256": "678eff524245a0a75b4d8ee95ef49d28a84d3542801792fb6f8fb06d53bd75bb",
+    "scope": "Original10file approval; F1/F2 addressed by amended source/v2data. Original745/746source/results remain frozen; no approval transfer to changedbytes without750."
+  },
+  "required_changes": [],
+  "integration_conditions": [
+    "This approval covers only the exact 12-file delta fab35ae1 (689882 bytes); any byte drift needs re-review.",
+    "All 747 integration conditions carry over: wait for the actual protected PR79 merge before branching, with no duplicate CI. The actual merged parent must match the 747-stated doc blobs (630eb122, 7f0fafc7, e387b9bb), the 810 critical guards must equal base 434f1326, and tests/native/test_public_submission.py must equal parent blob f7d5ce38. Otherwise audit the drift and do not restage.",
+    "Stage only the 12 delta paths with their exact amended blobs through the private index (32 MiB limit) under normal fresh branch protection. No checkout/reset/clean/force/admin bypass, no mutation of another owner's index; preserve later live work.",
+    "No native build, wheel rebuild or qualification/admission/release transfer: the 55fd scope and wheels 9e4e30cc/a2715d26/runtime2b8 stay at their exact old scope. The 6 existing receipts stay byte-identical.",
+    "No CI-coverage claim for test_msaa_depth_stencil_capture.py; both v2 receipts correctly say ci_coverage_claimed=false and integrated=false.",
+    "Record the future actual head/CI/merge receipts outside the commit, with no self-reference."
+  ],
+  "metadata_followup_conditions": [
+    "Allowed: 1 new receipt for this review plus purely additive top-checkpoint paragraphs in the 3 already-changed docs, recording only the external 750 decision/hash and actual scope. No own-commit/CI self-reference. Audit every insertion. The test and all 8 receipts (6 old + 2 v2) stay byte-identical after this review.",
+    "Do not rewrite the existing 'amendment review pending' paragraphs; supersede them with the additive paragraph. Any other edit needs re-review.",
+    "Keep open: mixed-sample edge/sample-zero selection, other formats/features, real surface-acquisition faults, physical-memory accounting, presented display, and the parent rows LIF-01/LIF-05/SCI-06/API-06."
+  ],
+  "withheld": [
+    "No independent hash computation: the delta, test source 54cd958e, wheel, archive 88d19cb3 and blob identities rely on the packet, the receipts and the coordinator.",
+    "Not read: the amended delta.json/per-path blobs (if one exists), loaded_modules maps and device-limit blocks, receipt middles (lines 41-295/297), checkers, source archives, full historical doc text, and the 6 old receipts (unchanged status accepted as stated).",
+    "Not verified: PR79 merge state, current CI, the actual merged parent, or the workflow file list.",
+    "This review grants no tests, build, CI coverage, admission, qualification or merge."
+  ],
+  "critical_source_guards": 810,
+  "frozen_review_inputs": 823,
+  "installed_cases_per_platform": {
+    "submission_fault": 11,
+    "strengthened_capture": 16
+  },
+  "test_source_sha256": "54cd958ea1a43166c9117bb2158ac77ef23388f99f03c087f781d3e26812b4c1",
+  "branch_created": false,
+  "integrated": false,
+  "ci_coverage_claimed": false,
+  "actual_parent_verified": false,
+  "reviewer_models": [
+    "claude-opus-5-5"
+  ],
+  "review_cleanup": {
+    "status": "PASS_APPLY",
+    "deleted_files": 1,
+    "reclaimed_bytes": 91,
+    "retained_verified": 839,
+    "scratch_absent": true,
+    "actual_exit": 0,
+    "child_waited": true
+  },
+  "prior_review_cleanup": {
+    "status": "PASS_APPLY",
+    "deleted_files": 1,
+    "reclaimed_bytes": 88,
+    "retained_verified": 838,
+    "scratch_absent": true,
+    "actual_exit": 0,
+    "child_waited": true
+  },
+  "scope": "Explicit amended12file test/evidence/docs impact approval only. Stronger capturechecks colorbefore redraw; old6receipts unchanged. WaitprotectedPR79merge/actualparentjoin, then13paths includingthis permitted ownreviewreceipt via privateindex32MiB/normal fresh branchchecks. Actualfuturehead/CI/merge stays external. No nativebuild/newqualification/admission or fullparent/realWSI/physicalmemory/mixededge/format claim."
+}

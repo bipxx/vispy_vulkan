@@ -1,0 +1,41 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "coverage_ids": [
+    "LIF-06",
+    "API-06"
+  ],
+  "status": "PASS_APPROVED_QT_INPUT_NINE_FILE_PUSH_PR_AUTO_MERGE_ENABLED",
+  "head": "434f13266fc1c3d29dc1cdacd912d4f9b36e7dd6",
+  "tree": "49af60ac51b950b04a20df21c69b7c27d616504b",
+  "parent": "bf1e42120e1775634bd0f0b23ae7d634aa1c16ab",
+  "branch": "wip/qt-input-acceptance-743",
+  "pr_number": 79,
+  "pr_url": "https://github.com/bipxx/vispy_vulkan/pull/79",
+  "source_files": 9,
+  "critical_source_guards_unchanged": 810,
+  "committed_parent_inputs_matched": 702,
+  "owner_index_unchanged": true,
+  "later_live_docs_preserved": true,
+  "new_test_ci_coverage_claimed": false,
+  "auto_merge_enabled": true,
+  "merged": false,
+  "required_ci_complete": false,
+  "scratch_bytes": 15126858,
+  "force": false,
+  "admin_bypass": false,
+  "scope": "Actual Qt source/evidence head from exact approved archive+metadata snapshots; later fault/live-source edits excluded. Normal protected required checks remain pending. Local8case/profile observations are not CI/admission of this head.",
+  "cleanup": {
+    "status": "PASS_APPLY",
+    "deleted_files": 2,
+    "reclaimed_bytes": 15126858,
+    "retained_verified": 87,
+    "scratch_absent": true,
+    "actual_exit": 0,
+    "child_waited": true
+  },
+  "evidence_root": "@evidence/build/runs/qt-input-source-push-743",
+  "local_installed_test_sha256_joined_to_committed_blob": true,
+  "new_test_sha256": "1cb94719bd6574378adc8cb81510c02ab0897a6dadd61a1698ec94c277094c8e",
+  "new_test_blob": "c3edfa9dd7f500828c54b8122c184036798ea7e5"
+}
