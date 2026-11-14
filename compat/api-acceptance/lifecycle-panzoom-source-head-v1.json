@@ -1,0 +1,41 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "coverage_ids": [
+    "LIF-01",
+    "LIF-05",
+    "LIF-06",
+    "SCI-03",
+    "API-06"
+  ],
+  "status": "PASS_APPROVED_COMBINED_TWENTY_FILE_PUSH_PR_AUTO_MERGE_ENABLED",
+  "head": "af21f74ce05500c9b907042468fadfb4e41c2390",
+  "tree": "7abcfdbc2d76fd00e5a17a8c536f1cb5f75e4f7a",
+  "parent": "96b1187e43984532cad8409103078af61f2074d0",
+  "branch": "wip/lifecycle-panzoom-759",
+  "pr_number": 80,
+  "pr_url": "https://github.com/bipxx/vispy_vulkan/pull/80",
+  "source_files": 20,
+  "critical_source_guards_unchanged": 810,
+  "committed_parent_inputs_matched": 702,
+  "owner_index_unchanged": true,
+  "later_live_docs_preserved": true,
+  "new_test_ci_coverage_claimed": false,
+  "auto_merge_enabled": true,
+  "merged": false,
+  "required_ci_complete": false,
+  "scratch_bytes": 15128875,
+  "force": false,
+  "admin_bypass": false,
+  "scope": "Actual combined20-file source/evidence head from exact758approved archives+metadata. Normal protected required checks remain pending. Local11fault/16MSAA/2PanZoom cases per profile are not CI/admission of this head; no runtime/native/release change.",
+  "cleanup": {
+    "status": "PASS_APPLY",
+    "deleted_files": 2,
+    "reclaimed_bytes": 15128875,
+    "retained_verified": 111,
+    "scratch_absent": true,
+    "actual_exit": 0,
+    "child_waited": true
+  },
+  "evidence_root": "@evidence/build/runs/lifecycle-panzoom-source-push-759"
+}

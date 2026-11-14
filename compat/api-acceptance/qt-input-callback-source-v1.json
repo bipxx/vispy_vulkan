@@ -1,0 +1,51 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "status": "PASS_67_WINDOWS_PYQT6_SOURCE_CPU_QT_INPUT_BOUNDARY_CASES",
+  "coverage_ids": [
+    "LIF-06",
+    "API-06"
+  ],
+  "new_input_cases": 21,
+  "existing_paint_and_window_cases": 46,
+  "total_passed": 67,
+  "source_hashes": {
+    "src/vispy/app/backends/_qt.py": "a47a5d5accb50d80a701b3aa655ba2d43a84526c6ce78139a3cdad66fdfeefcc",
+    "tests/qt/test_input_callback_errors_cpu.py": "0f0aafedaf89a9599c99aa07b2d2ff455620160c6d1faae909e81bae7ecd3483",
+    "tests/qt/test_paint_scope_cpu.py": "5c2808ff57c245006bcbc5b77dbf96d026896f4d1b2de23a41bc1b42490c7c78",
+    "tests/qt/test_window_state_cpu.py": "515b21844606d80e2515d3edc2e114dec7f493821f7be90612cf7c604f1643d0",
+    "LICENSE": "0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0",
+    "LICENSE-BSD": "a28bb857d763513c810ca843558c12cf97f64b990b855c1ce7f5e291e52fc25c",
+    "LICENSING.md": "e8a28d2d2c78d86fa2b6f83284e8f1a32237f87bfd417fd1cdfc84c8f3ce37f5"
+  },
+  "critical_guard_drift": [
+    "src/vispy/app/backends/_qt.py"
+  ],
+  "original_source_hash": "16fec18d9346aeb03a560c7e5e3569eead864e60b362a682709749413dab8997",
+  "baseline_child_exit": 3221226505,
+  "baseline_run": "qt-input-callback-reproducer-761",
+  "fixture_failure_run": "qt-input-callback-reproducer-760",
+  "actual_exit": 0,
+  "child_waited": true,
+  "source_only": true,
+  "gpu_canvas_allocated": false,
+  "integrated": false,
+  "installed_qualification_claimed": false,
+  "ci_coverage_claimed": false,
+  "scope": "Real offscreen PyQt6 QWidget production input virtuals/common mouse bookkeeping/VisPy emitters with fake canvas allocation. Seven handlers defer original nonignored callback exceptions to process_events/run, report once, suspend failed widget, ignore triggering event, permit peer delivery; ignored errors permit same-widget later delivery.67source CPU cases, no rendered output/nativecanvas/nativebuild/wheel/admission/release claim. Runtimewrapper WIP outside frozenPR80.",
+  "cleanup": {
+    "status": "PASS_APPLY",
+    "reclaimed_bytes": 85,
+    "retained_verified": 20,
+    "scratch_absent": true,
+    "actual_exit": 0,
+    "child_waited": true
+  },
+  "evidence_root": "@evidence/build/runs/qt-input-callback-source-762",
+  "pending": [
+    "WSL/source counterpart",
+    "real Dawn canvas/rendered recovery regression",
+    "independent review and protected source integration",
+    "exact changed-wrapper installed artifact acceptance before release claims"
+  ]
+}

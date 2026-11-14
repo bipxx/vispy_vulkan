@@ -1,0 +1,45 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "coverage_ids": [
+    "LIF-06",
+    "API-06"
+  ],
+  "status": "APPROVED_AMENDED_EXACT_SOURCE_DELTA_WITH_CONDITIONS",
+  "review_delta_sha256": "ca51efbd7cfed3bdfac674e62cb715dc7e706b5c5530bacd6dcf3f0a90a08105",
+  "review_decision_sha256": "ed09957133dcfc9e9c15990e1a1778eb608c5ae7f167045b2da530f22bc936e1",
+  "base": "bff61230a87e9a887700604109cf93e4bbc3199c",
+  "reviewed_files": 28,
+  "reviewer_actual_exit": 0,
+  "reviewer_child_waited": true,
+  "required_changes": [],
+  "integration_conditions": [
+    "Integrate exactly these 28 files on actual parent bff61230 (tree 7abcfdbc), preserving parent/old-blob/new-path-absence pins and all 809 unchanged critical guards; the only allowed critical drift is src/vispy/app/backends/_qt.py at sha256 1c68488e (blob e4adaa93). Any byte or parent drift needs a fresh impact review.",
+    "After the exact local commit and before push, run tests/qt/test_input_callback_errors_cpu.py and tests/qt/test_callback_errors.py (or a larger selected suite) at the actual head, using the qualified native payload plus exact source overlay, with recorded commit/blob joins; keep actual-head test, CI and merge receipts outside the delta.",
+    "Normal protected merge with fresh required CI; ci_coverage_claimed stays false because existing workflow selectors do not collect the new CPU/GPU files; no CI rewrite implied.",
+    "No transfer of 55fd/current-wheel qualification, PR80 admission, or 771/779/780 decisions; source release/admission is a separate step."
+  ],
+  "metadata_followup_conditions": [
+    "Allowed: one external review receipt for this decision, plus purely additive factual top-checkpoint paragraphs in docs/coverage-checklist.md, docs/remaining-gaps-checklist.md and docs/superpowers/plans/2026-11-13-remaining-gap-closure.md that cite only this decision and the delta hash, with no future own-head CI claim. Source, tests and all 20 existing receipts must remain byte-identical; recompute the delta/packet hashes after the insertions and audit that only those paragraphs changed.",
+    "Keep 771/780 CHANGES_REQUIRED, the 781 405f reproducer (2 callbacks/2 hooks per key), 773 premature host-loop exit, 761 default abort, 760/763/764 fixture/capture/diagnostic records, 767 origin rejection, 776 quit-fixture failure and the 769 cleanup-ordering disclosure as recorded negatives or history; 774/775/777/778 stay historical 405f-only evidence.",
+    "Keep the 785 cleanup as recorded: initial plan refused for a live PID; same PID/manifest/registry/verifier later returned not-live; the v2 plan/apply then succeeded. Do not restate this as a perfect process claim.",
+    "Keep these scope limits explicit: failed keys are consumed by _keyEvent; the closed/detached branches are untested defensive code; no protection is claimed for hosts dereferencing a destroyed Canvas.native; no full napari, PyQt5/PySide6, BaseException, gesture/focus/touch, paint-host-hook, native presentation/HID/fractional-DPI, CI, admission or public wheel claim; rendered fixtures have no forwarding parent."
+  ],
+  "withheld": [
+    "No hash recomputed; all sha256/blob/member/guard counts are taken from packet files and receipts.",
+    "Not read: semantic.diff docs hunks beyond line 631 (other than the grep), tests/qt/test_input_callback_recovery_gpu.py in full (only the amendment hunk), the two Windows rendered receipts, the 15 earlier receipts, JUnit/selected.xml/verification.json, the source archive, the 781 test.log and the cleanup records.",
+    "No tests were run; behaviour conclusions come from reading the code plus the recorded 781-785 results.",
+    "No full napari workflow, other Qt bindings, CI collection, wheel, admission or release qualification is assessed."
+  ],
+  "critical_guards": 810,
+  "unchanged_critical_guards": 809,
+  "intentional_critical_drift": [
+    "src/vispy/app/backends/_qt.py"
+  ],
+  "source_qt_sha256": "1c68488e862cb1d8b573641a16a6894a97ac434f915773f12ce3708cae85a4cc",
+  "integrated": false,
+  "ci_coverage_claimed": false,
+  "public_wheel_qualification_claimed": false,
+  "evidence_root": "@evidence/build/runs/qt-key-parent-amendment-review-786",
+  "scope": "Exact amended source delta only; actual-head tests, protected integration and changed-artifact acceptance remain separate. No approval transfer from historical negative reviews or frozen release qualification."
+}

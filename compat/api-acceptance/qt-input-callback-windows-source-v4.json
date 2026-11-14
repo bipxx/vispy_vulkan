@@ -1,0 +1,46 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "status": "PASS_93_WINDOWS_SOURCE_CPU_INPUT_AND_PARENT_FORWARDING",
+  "coverage_ids": [
+    "LIF-06",
+    "API-06"
+  ],
+  "total_passed": 93,
+  "input_cases": 47,
+  "existing_paint_window_cases": 46,
+  "parent_route_cases": 12,
+  "source_hashes": {
+    "src/vispy/app/backends/_qt.py": "1c68488e862cb1d8b573641a16a6894a97ac434f915773f12ce3708cae85a4cc",
+    "tests/qt/test_input_callback_errors_cpu.py": "bd1be64df0afd4f49d4171eb9c5b3821f794c813705b9d04f821dfc5b5acd03d",
+    "tests/qt/test_paint_scope_cpu.py": "fed0772735b5c97cc9700a31356bee5ee46004e0ffc8f1b4f54f94f2ded8ea43",
+    "tests/qt/test_window_state_cpu.py": "515b21844606d80e2515d3edc2e114dec7f493821f7be90612cf7c604f1643d0",
+    "LICENSE": "0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0",
+    "LICENSE-BSD": "a28bb857d763513c810ca843558c12cf97f64b990b855c1ce7f5e291e52fc25c",
+    "LICENSING.md": "e8a28d2d2c78d86fa2b6f83284e8f1a32237f87bfd417fd1cdfc84c8f3ce37f5"
+  },
+  "actual_exit": 0,
+  "child_waited": true,
+  "source_only": true,
+  "gpu_canvas_allocated": false,
+  "integrated": false,
+  "installed_qualification_claimed": false,
+  "ci_coverage_claimed": false,
+  "scope": "Revised1c68488eQt wrapper preserves nativeacceptedstate when hosthook succeeds; private_keyEvent delegates guarded delivery and consumes failed/closed backend keyreplays.47inputcases including12key press/release xcanvas/privateparent xdefault/host/brokenhook routes, onecallback/onehook ororiginaldeferrederror, noerrorreplay/abort;46paint/windowcases.781realQtbaseline405f produces2callbacks/2hooks, confirms780F1. Parentdefault/brokenhook bypass also exercised post-fix; notjust documentedF2limit. No renderer/fullnapari/otherbinding/newwheel/CI/admission claim; amendedsource reviewpending.",
+  "evidence_root": "@evidence/build/runs/qt-key-parent-windows-782",
+  "cleanup": {
+    "status": "PASS_APPLY",
+    "reclaimed_bytes": 82,
+    "retained_verified": 11,
+    "scratch_absent": true,
+    "actual_exit": 0,
+    "child_waited": true
+  },
+  "pending_independent_amendment_review": true,
+  "scope_limits": [
+    "Only valid bound backend/Qt input events and named routes tested; no full napari workflow qualification.",
+    "Private closed/detached guard is defensive code; twelve parent cases explicitly observe active and failed/suspended backends, not post-C++-destruction host dereferences.",
+    "PyQt5/PySide6 policy changes remain unqualified; BaseException/native gestures/focus/touch outside the selected input boundary.",
+    "Paint-path host-hook policy remains a separate follow-up."
+  ]
+}

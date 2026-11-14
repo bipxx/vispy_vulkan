@@ -325,8 +325,12 @@ def test_dawn_canvas_release_stays_reachable_and_runs_once_on_destroy():
     import gc
     from PyQt6 import QtCore, QtWidgets
     app = QtWidgets.QApplication.instance() or QtWidgets.QApplication([])
+    assert getattr(app, '_vispy_dawn_callback_error', None) is None
     released = []
     widget = QtWidgets.QWidget()
+    # A real canvas backend always owns this Python attribute. Without it,
+    # getattr falls through to Qt's already-deleted C++ object in the slot.
+    widget._vispy_canvas = None
     QT._connect_dawn_canvas_release(widget, 7, released.append)
     gc.collect()
     slot = QT._dawn_canvas_releases[7]
@@ -335,3 +339,4 @@ def test_dawn_canvas_release_stays_reachable_and_runs_once_on_destroy():
     widget.deleteLater()
     app.sendPostedEvents(None, QtCore.QEvent.Type.DeferredDelete.value)
     assert released == [7] and 7 not in QT._dawn_canvas_releases
+    assert getattr(app, '_vispy_dawn_callback_error', None) is None

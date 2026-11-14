@@ -1,0 +1,34 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "coverage_ids": [
+    "LIF-06",
+    "API-06"
+  ],
+  "status": "FAIL_CHILD_IMPORT_ORIGIN_AND_EDITABLE_NATIVE_MISMATCH",
+  "passed": 10,
+  "failed": 8,
+  "new_child_origin_rejections": 6,
+  "older_draw_child_native_contract_failures": 2,
+  "actual_exit": 1,
+  "child_waited": true,
+  "source_hashes": {
+    "tests/qt/test_input_callback_recovery_gpu.py": "25ff9cd421b1a1d20a863cd14ba5a156c324a42c4e816a694c8d0611b3da011a",
+    "tests/qt/test_input_delivery_gpu.py": "1cb94719bd6574378adc8cb81510c02ab0897a6dadd61a1698ec94c277094c8e",
+    "tests/qt/test_panzoom_input_gpu.py": "9ab7931737264d97c3cfe533b8267a7caaeef233bdd9ef8bd17718385c185054",
+    "tests/qt/test_callback_errors.py": "38a52e42e072d04fc56fc00a500eaae441dfb6944ea064cfd81fcbf596df5575",
+    "src/vispy/app/backends/_qt.py": "a47a5d5accb50d80a701b3aa655ba2d43a84526c6ce78139a3cdad66fdfeefcc"
+  },
+  "cleanup": {
+    "status": "PASS_APPLY",
+    "reclaimed_bytes": 17901044,
+    "deleted_files": 568,
+    "retained_verified": 19,
+    "scratch_absent": true,
+    "actual_exit": 0,
+    "child_waited": true
+  },
+  "evidence_root": "@evidence/build/runs/qt-input-callback-rendered-windows-767",
+  "reproducer_archive_sha256": "be33ac8c41b885c2a661f150836b3a6e3cc8732133f27df27d715ccf7b39b30c",
+  "scope": "Parent exact537originalmembers/536unchanged+1sourceoverlay and zero gauges pass; childsitehooks escaped into editable source.6neworigin guards correctlyreject beforegraphics;2oldfixture children report native-contractmismatch. Notcurrentwheel callbackfailure/admission. Retainedfailure;768uses-I-S exactparentpaths inbothfixtures, preserving origin guard and unchanged functionalassertions."
+}

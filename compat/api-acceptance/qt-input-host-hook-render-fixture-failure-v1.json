@@ -1,0 +1,33 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "coverage_ids": [
+    "LIF-06",
+    "API-06"
+  ],
+  "status": "FAIL_HOST_REDRAW_AFTER_FIXTURE_APPLICATION_QUIT",
+  "passed": 18,
+  "failed": 3,
+  "source_hashes": {
+    "tests/qt/test_input_callback_recovery_gpu.py": "b6db30a014ad297d3dc4fd6953d2687dad85009cde0fd0c4149240ca7ec1ac92",
+    "tests/qt/test_input_delivery_gpu.py": "1cb94719bd6574378adc8cb81510c02ab0897a6dadd61a1698ec94c277094c8e",
+    "tests/qt/test_panzoom_input_gpu.py": "9ab7931737264d97c3cfe533b8267a7caaeef233bdd9ef8bd17718385c185054",
+    "tests/qt/test_callback_errors.py": "47687ca256dbc041b3cf1f05d7983ec814a6a31d4e02cf4469c7805fd0f98109",
+    "src/vispy/app/backends/_qt.py": "405f766fb49ee43e6546aafac146034078afa813f552ffa3e2be60bcc1e56030"
+  },
+  "actual_exit": 1,
+  "child_waited": true,
+  "cleanup": {
+    "status": "PASS_APPLY",
+    "reclaimed_bytes": 17901622,
+    "deleted_files": 568,
+    "retained_verified": 19,
+    "scratch_absent": true,
+    "actual_exit": 0,
+    "child_waited": true
+  },
+  "reproducer_archive_sha256": "20b59a72d0d370e285b3eccfa7fd2c0eef4b669d3920c54526a51d622b7b474c",
+  "evidence_root": "@evidence/build/runs/qt-input-host-hook-rendered-windows-776",
+  "reference": "https://github.com/qt/qtbase/blob/v6.11.0/src/widgets/kernel/qapplication.cpp#L1554",
+  "scope": "3newhostcases passed hookidentity/no-failed/noqueuederror assertions then timedoutredraw after fixtureQApplication.quit closedwindows.18default/controls pass.777replacesfixturequit with exit0+explicitopen checks and retains allpixel/recovery/native/gauge assertions;405f runtime unchanged. Originalfailure retained, notrelabeledpassed."
+}

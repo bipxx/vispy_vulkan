@@ -1,0 +1,44 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "coverage_ids": [
+    "LIF-06",
+    "API-06"
+  ],
+  "status": "CHANGES_REQUIRED_405F_PARENT_KEY_REPLAY_REPRODUCED",
+  "approved": false,
+  "review_delta_sha256": "90eb4b0d277d4650bd4ac990702095551e606d80d9e9ae349a3feefff195cecf",
+  "review_decision_sha256": "a767f4ef99e559ea8c2824935e4922d76c573d3e8041732d5e400c384baef4ef",
+  "reviewer_actual_exit": 0,
+  "reviewer_child_waited": true,
+  "required_changes": [
+    "src/vispy/app/backends/_qt.py _guard_dawn_input_callback: do not call event.ignore() when a non-default sys.excepthook returns normally; leave the Qt event's accepted state as the callback left it, as on the PR80 parent where PyQt calls the host hook. Minimal form: move event.ignore() so it runs only just before self._record_dawn_callback_error(...). Reason: napari QtViewer (qt_viewer.py:216, :1199-1227) and qt_main_window.py:559-583 forward ignored key events to the unguarded _keyEvent, so the failing callback runs twice and napari's hook reports it twice.",
+    "tests/qt/test_input_callback_errors_cpu.py: in the host case, assert native_events[0].isAccepted(); add a real-Qt PyQt6 case with a napari-style parent whose keyPressEvent/keyReleaseEvent forwards to the backend _keyEvent, asserting one callback call, one hook call with the original (type, error, traceback), no queued application error, no failed flag, and an exec() result of 0.",
+    "tests/qt/test_input_callback_recovery_gpu.py: make the events[0].isAccepted() assertion depend on the policy (accepted under the host policy, unchanged under the default policy).",
+    "Re-run the CPU (Windows and WSL) and GPU (Windows and WSL) same-source suites on the fixed wrapper; add new receipts and keep the 774-778 receipts as historical evidence for 405f only."
+  ],
+  "baseline_source_hashes": {
+    "src/vispy/app/backends/_qt.py": "405f766fb49ee43e6546aafac146034078afa813f552ffa3e2be60bcc1e56030",
+    "tests/qt/test_input_callback_errors_cpu.py": "bd1be64df0afd4f49d4171eb9c5b3821f794c813705b9d04f821dfc5b5acd03d",
+    "LICENSE": "0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0",
+    "LICENSE-BSD": "a28bb857d763513c810ca843558c12cf97f64b990b855c1ce7f5e291e52fc25c",
+    "LICENSING.md": "e8a28d2d2c78d86fa2b6f83284e8f1a32237f87bfd417fd1cdfc84c8f3ce37f5"
+  },
+  "observed_callback_calls": 2,
+  "observed_parent_forwards": 1,
+  "observed_hook_calls": 2,
+  "baseline_child_exit": 1,
+  "baseline_pytest_exit": 1,
+  "baseline_cleanup": {
+    "status": "PASS_APPLY",
+    "reclaimed_bytes": 92,
+    "retained_verified": 8,
+    "scratch_absent": true,
+    "actual_exit": 0,
+    "child_waited": true
+  },
+  "evidence_root": "@evidence/build/runs/qt-key-parent-replay-reproducer-781",
+  "review_evidence_root": "@evidence/build/runs/qt-input-host-hook-amendment-review-780",
+  "failed_packet_preparation_root": "@evidence/build/runs/qt-input-host-hook-amendment-review-779",
+  "scope": "780negativeverdict, not approval.781realQt forwardingparent reproduces2callbacks/2hooks for1key at405f. Revised1c68keeps hostacceptedstate; private_keyEvent guarded delivery/failed-key consumption additionally addresses revieweddefault/brokenparentbypass for12postfixroutes. No pre-fix defaultparent abort experiment claimed; original761defaultabort remains distinct.405freceipts stayhistorical/narrow, not runtimeapproval. New93CPU/21rendered perprofile need exactre-review;779packet-helperfailure cleaned/no reviewer/noapproval, preferred23files retainedbyhash."
+}

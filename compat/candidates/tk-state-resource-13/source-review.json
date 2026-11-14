@@ -1,0 +1,38 @@
+{
+  "schema": 1,
+  "status": "APPROVED",
+  "kind": "source",
+  "independent": true,
+  "reviewer": "Claude peer review (claude-opus-5-5), expanded source run795",
+  "candidate_scope_sha256": "5d627983bd11e78ab61854e01fcbd3c8c71f402367fc7288de2c867674f0a030",
+  "native_reuse_links": [
+    "51e0af48ac9408c868ff195f8c0c292e196d796b21a9cd5907780cffabf719e7",
+    "6117001cecb0b31bbf70bbf8f6b0673570c3f0c972d06ee0c3abf391283dc361"
+  ],
+  "evidence": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\callback-preparation13-peer-review-795\\review-response.md",
+    "sha256": "013bea6fc972cfbdf4dfa005c6517fa336ad9b56fc7a98b464f7066c5000e7f3"
+  },
+  "raw_response": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\callback-preparation13-peer-review-795\\review-response.json",
+    "sha256": "c56cc7d96d7a9171ce951426d3af583711da5383f381caa84f43bfa8be693739"
+  },
+  "decision": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\callback-preparation13-peer-review-795\\decision.json",
+    "sha256": "ed517a03dabd15cc30a0f0db496b33d644ee341d75a40d1bd0de7343675e5dc9"
+  },
+  "limitations": [
+    "Approval is of source and scope only: no installed-artifact, new wheel, strict profile, archive, admission, publication or release qualification; release_status stays NOT_QUALIFIED.",
+    "Tk 56-case Windows/WSL baselines are source-functional observations on qualified native 9e4/a271 with exactly one QtPython overlay, not Qt, MSAA or all-host qualification.",
+    "Qt behaviour is proven for PyQt6 Windows/WSL source overlay only; no PyQt5/PySide6, full napari, BaseException, gesture/focus/touch, physical HID, native presentation or fractional DPI; failed keys are consumed; closed/detached branches are untested defensive code; LIF-06/API-06 stay partial.",
+    "Native reuse approval covers unchanged native/build/lock/license/harness inputs behind the two exact reuse digests; the original producer proofs were not re-executed in 793 and must be validated by the existing tools after approval.",
+    "Contracts: 760 broad passes plus 10 targeted fixture-control passes; there is no fresh full 762-case pass. Physical Linux GPU and Metal (experimental) are outside this proof."
+  ],
+  "withheld": [
+    "No hashes computed: every sha256, blob, digest(reuse) value and guard/member count is taken from the packet, delta, audit and receipt files.",
+    "Read only partially: candidate13 candidate.json (lines 1-120 and 1295-1649), windows-native-provenance.json (reuse block only, compared with preparation12), semantic.diff (workflow, receipt, provenance, policy, _qt.py, test and first coverage-checklist hunks), plan grep, compatibility tool excerpts.",
+    "Not read: coverage.json, execution.json, execution-ledger.json and runtime-inputs.json bodies, both state profiles, renew.py, 790/791 baseline-result.json, 791 verification.json, contracts.xml/all.xml/failed.xml, contract-budget-failure.json, remaining-gaps-checklist and 2026-11-13 plan hunks beyond the grep, the source archive, and the full new Qt test files (relied on the 786 review of identical blobs).",
+    "No tests, CI or validators were run."
+  ],
+  "qualification_approved": false
+}

@@ -1,0 +1,123 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "coverage_ids": [
+    "FIX-04",
+    "FIX-06",
+    "API-06",
+    "LIF-06",
+    "TOOL-01"
+  ],
+  "status": "CURRENT_PREPARATION13_VALID_INDEPENDENT_REVIEW_PENDING",
+  "runtime_source_commit": "2c6096275ccd7c0fd663f59660e4782db6116834",
+  "candidate": {
+    "path": "compat/candidates/tk-state-resource-13/candidate.json",
+    "sha256": "54f7e5f2ffa15ca8b8b1daaccf7eaa2103b21c98bd763aeed464878b633a2dcf",
+    "scope_sha256": "5d627983bd11e78ab61854e01fcbd3c8c71f402367fc7288de2c867674f0a030"
+  },
+  "created_candidate_files": {
+    "compat/candidates/tk-state-resource-13/admission-selection.json": "da4e2b9cb8782868750561ec8732b6de68115139f6866bc459e9115ba32b15c8",
+    "compat/candidates/tk-state-resource-13/candidate.json": "54f7e5f2ffa15ca8b8b1daaccf7eaa2103b21c98bd763aeed464878b633a2dcf",
+    "compat/candidates/tk-state-resource-13/coverage.json": "ccfca40ed765d195873d8ba665bddb95a4cb03158385822c0358ec395883771f",
+    "compat/candidates/tk-state-resource-13/execution-ledger.json": "7270497700c9f9b5773b69b723c4ad321ccf9e8bc4035fa7447961a8e2c1e043",
+    "compat/candidates/tk-state-resource-13/execution.json": "cc90bc17acb118b5bbb8c582e2a9000db4f51fcc47b1d4de60d7e5a000cf5aae",
+    "compat/candidates/tk-state-resource-13/linux-native-provenance.json": "732ad4e174826dd5b8795d08098a1f5dbcc42bf4cc2ac261937a02a5d5c2d040",
+    "compat/candidates/tk-state-resource-13/linux-state-profile.json": "76a7cd4e0e0cba05407ebf2b0065eca8a98352f1a2c2b820a9cbed26d9c82df1",
+    "compat/candidates/tk-state-resource-13/runtime-inputs.json": "53724d277bebe0397e9394ce550e5b5aec556820eef5e7855391194014b80662",
+    "compat/candidates/tk-state-resource-13/windows-native-provenance.json": "95cff1366a309245384f222b43424995c0eb297fb59d333945f6a0dbad5c721e",
+    "compat/candidates/tk-state-resource-13/windows-state-profile.json": "1faee393eaf2b05f62d31f38a7631d79cfdde92e010efa35ef35c464f4b85be9"
+  },
+  "historical_records_unchanged": 414,
+  "runtime_changed_members": [
+    "vispy/app/backends/_qt.py"
+  ],
+  "changed_critical_guards": [
+    ".github/workflows/cpu-contract.yml",
+    ".github/workflows/linux-vulkan.yml",
+    "compat/qualification-ci.json",
+    "src/vispy/app/backends/_qt.py"
+  ],
+  "additional_test_change": "tests/contract/test_compatibility_inventory.py",
+  "additional_test_sha256": "0db5dd87068aa205d37fb18ec35e1c115e9b8bbf05bef3bef1dfff60d0e02d4e",
+  "source_functional_profiles": {
+    "windows": {
+      "cases": 56,
+      "report": "@evidence/build/runs/callback-candidate-windows-source-790/baseline-result.json",
+      "source_overrides": 1,
+      "installed_qualified": false
+    },
+    "wsl": {
+      "cases": 56,
+      "report": "@evidence/build/runs/callback-candidate-wsl-source-791/baseline-result.json",
+      "source_overrides": 1,
+      "installed_qualified": false
+    }
+  },
+  "distinct_selected_criteria": 64,
+  "selected_bindings": 128,
+  "origin_dispositions_preserved": 142,
+  "native_reuse_binding_audit": {
+    "path": "@evidence/build/runs/callback-preparation13-contracts-793/native-reuse-binding-audit.json",
+    "sha256": "630e412d834c94f64137eb312c5bd4e78633418090e1f5a442312233b130c934",
+    "actual_review_gates_closed": 3
+  },
+  "contracts": {
+    "broad_run": {
+      "path": "@evidence/build/runs/callback-preparation13-contracts-793/verification.json",
+      "sha256": "37c762ac1efba34a7feaf59041953f102b15f139928a068c8507cb2531726b9f",
+      "passed": 760,
+      "failed_setup": 2
+    },
+    "fixture_fix": {
+      "path": "@evidence/build/runs/callback-store-fixture-controls-794/verification.json",
+      "sha256": "3deb09e47ff5bb1821e7196d1fc184df2c407c261bd9144fc5e3eafd6e63189e",
+      "cases": 10,
+      "retention_modes": [
+        "all",
+        "failed"
+      ],
+      "assertions_unchanged": true
+    },
+    "budget_stop": {
+      "path": "@evidence/build/runs/callback-preparation13-source-792/contract-budget-failure.json",
+      "sha256": "c9833190ea6aaa727d234f4ecc9eca5c7949bdd39694402d57dc048d57ee83b9"
+    },
+    "scope": "760broad passes and10targeted corrected fixture controls remain separate; no new full762suite pass. Initial32MiBestimate exceeded; actual47.3MBretained/cleaned; failed-onlyretirement sampled1.9MBpeak on bounded rerun."
+  },
+  "cleanup": {
+    "callback-candidate-windows-source-790": {
+      "path": "@evidence/build/runs/callback-candidate-windows-source-790/cleanup-apply.log",
+      "sha256": "6499e7fcdf050a34a1c892cff5e6a2e614c2411ac4ef6f95aa63ea3f73952288",
+      "reclaimed_bytes": 17902136
+    },
+    "callback-candidate-wsl-source-791": {
+      "path": "@evidence/build/runs/callback-candidate-wsl-source-791/cleanup-apply.log",
+      "sha256": "302a33c5a426df3901d6325c24fda73b61a594cbaa175a00d485669585039597",
+      "reclaimed_bytes": 29872645
+    },
+    "callback-preparation13-source-792": {
+      "path": "@evidence/build/runs/callback-preparation13-source-792/cleanup-apply.log",
+      "sha256": "7f4db5257512a202addc811bd18818f6d7a074ab4b8ea8bbb8eb8ab1942cedaa",
+      "reclaimed_bytes": 47274232
+    },
+    "callback-preparation13-contracts-793": {
+      "path": "@evidence/build/runs/callback-preparation13-contracts-793/cleanup-apply.log",
+      "sha256": "9e7b2ff88ce6651e9ea1be975bea358c65e3b570099fca5560763be8eb6da2cc",
+      "reclaimed_bytes": 1856206
+    },
+    "callback-store-fixture-controls-794": {
+      "path": "@evidence/build/runs/callback-store-fixture-controls-794/cleanup-apply.log",
+      "sha256": "66c78435a518894064725bab30d8c45d7bce21bbe66c58018a7a1303d0ef8a1c",
+      "reclaimed_bytes": 1275276
+    }
+  },
+  "total_reclaimed_bytes": 98180495,
+  "approvals_present": false,
+  "integrated": false,
+  "pushed": false,
+  "ci_coverage_claimed": false,
+  "artifact_admitted": false,
+  "qualification_claimed": false,
+  "evidence_root": "@evidence/build/runs/callback-preparation13-source-792",
+  "scope": "Unreviewed preparation13 and selector/policy coupling for current1c68QtPython.510runtime members bound; source-functional native-reuse evidence only. All414historical candidateJSON records unchanged. Expanded source/scope/native-reuse review and exact combined-head protectedCI needed before source push; installed artifact/release qualification separate."
+}
