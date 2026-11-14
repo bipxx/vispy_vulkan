@@ -1,0 +1,45 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "status": "PASS_67_WSL_PYQT6_SOURCE_CPU_CASES_WITH_EXISTING_FIXTURE_DIAGNOSTIC",
+  "coverage_ids": [
+    "LIF-06",
+    "API-06"
+  ],
+  "total_passed": 67,
+  "new_input_cases": 21,
+  "existing_paint_window_cases": 46,
+  "source_hashes": {
+    "src/vispy/app/backends/_qt.py": "a47a5d5accb50d80a701b3aa655ba2d43a84526c6ce78139a3cdad66fdfeefcc",
+    "tests/qt/test_input_callback_errors_cpu.py": "0f0aafedaf89a9599c99aa07b2d2ff455620160c6d1faae909e81bae7ecd3483",
+    "tests/qt/test_paint_scope_cpu.py": "5c2808ff57c245006bcbc5b77dbf96d026896f4d1b2de23a41bc1b42490c7c78",
+    "tests/qt/test_window_state_cpu.py": "515b21844606d80e2515d3edc2e114dec7f493821f7be90612cf7c604f1643d0",
+    "LICENSE": "0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0",
+    "LICENSE-BSD": "a28bb857d763513c810ca843558c12cf97f64b990b855c1ce7f5e291e52fc25c",
+    "LICENSING.md": "e8a28d2d2c78d86fa2b6f83284e8f1a32237f87bfd417fd1cdfc84c8f3ce37f5"
+  },
+  "qt_version": "6.11.2",
+  "binding_version": "6.11.0",
+  "borrowed_inputs_unchanged": true,
+  "actual_exit": 0,
+  "child_waited": true,
+  "source_only": true,
+  "gpu_canvas_allocated": false,
+  "integrated": false,
+  "installed_qualification_claimed": false,
+  "ci_coverage_claimed": false,
+  "diagnostics": [
+    "Existing test_dawn_canvas_release_stays_reachable_and_runs_once_on_destroy uses a bare QWidget without _vispy_canvas; after C++ deletion getattr fallback logs wrapped C/C++ object deleted and queues an application error. The test checks release count but not this queued error.21new input cases run isolated children and pass; do not infer all67cases have no diagnostics. Strengthen this old fixture separately.",
+    "Other paint/abort/completion-error logs are deliberate failure-path tests."
+  ],
+  "scope": "Same source as Windows762; WSL existing filteredPyQt6/offscreen Qt with no renderer/native allocation. Input21cases pass, existing46cases pass with noted release-fixture diagnostic.763fdcapturefailedbeforecollection;764uses-s/no-capture only. No hardware/rendered/release or broader callback claim.",
+  "cleanup": {
+    "status": "PASS_APPLY",
+    "reclaimed_bytes": 89,
+    "retained_verified": 16,
+    "scratch_absent": true,
+    "actual_exit": 0,
+    "child_waited": true
+  },
+  "evidence_root": "@evidence/build/runs/qt-input-callback-wsl-source-764"
+}

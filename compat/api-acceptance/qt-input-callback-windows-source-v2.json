@@ -1,0 +1,37 @@
+{
+  "status": "PASS_67_WINDOWS_SOURCE_CPU_WITH_RELEASE_FIXTURE_ERROR_ASSERTION",
+  "total_passed": 67,
+  "new_input_cases": 21,
+  "source_hashes": {
+    "src/vispy/app/backends/_qt.py": "a47a5d5accb50d80a701b3aa655ba2d43a84526c6ce78139a3cdad66fdfeefcc",
+    "tests/qt/test_input_callback_errors_cpu.py": "0f0aafedaf89a9599c99aa07b2d2ff455620160c6d1faae909e81bae7ecd3483",
+    "tests/qt/test_paint_scope_cpu.py": "fed0772735b5c97cc9700a31356bee5ee46004e0ffc8f1b4f54f94f2ded8ea43",
+    "tests/qt/test_window_state_cpu.py": "515b21844606d80e2515d3edc2e114dec7f493821f7be90612cf7c604f1643d0",
+    "LICENSE": "0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0",
+    "LICENSE-BSD": "a28bb857d763513c810ca843558c12cf97f64b990b855c1ce7f5e291e52fc25c",
+    "LICENSING.md": "e8a28d2d2c78d86fa2b6f83284e8f1a32237f87bfd417fd1cdfc84c8f3ce37f5"
+  },
+  "release_fixture_asserts_no_application_error": true,
+  "source_only": true,
+  "actual_exit": 0,
+  "child_waited": true,
+  "scope": "Same input21cases/runtimea47a as762; release fixture now initializes _vispy_canvas like actualbackend and asserts no queuedapplicationerror before/after destroy. No renderer/nativecanvas/wheel qualification.",
+  "schema": 1,
+  "date": "2026-11-14",
+  "coverage_ids": [
+    "LIF-06",
+    "API-06"
+  ],
+  "cleanup": {
+    "status": "PASS_APPLY",
+    "reclaimed_bytes": 92,
+    "retained_verified": 8,
+    "scratch_absent": true,
+    "actual_exit": 0,
+    "child_waited": true
+  },
+  "evidence_root": "@evidence/build/runs/qt-input-callback-clean-windows-765",
+  "integrated": false,
+  "installed_qualification_claimed": false,
+  "ci_coverage_claimed": false
+}

@@ -392,6 +392,36 @@ def _buttonmap_to_list(buttons) -> list[int]:
     return mouse_buttons
 
 
+def _guard_dawn_input_callback(callback):
+    """Honor a host error hook, or defer input errors until outside Qt."""
+    @functools.wraps(callback)
+    def guarded(self, event, *args, **kwargs):
+        if (self._vispy_canvas is None or getattr(self, '_dawn_closed', False)
+                or getattr(self, '_dawn_callback_failed', False)):
+            event.ignore()
+            return
+        try:
+            return callback(self, event, *args, **kwargs)
+        except Exception as error:
+            # Embedding hosts (for example napari) own their native event loop
+            # and install a notification hook. Keep their recovery policy.
+            hook = sys.excepthook
+            if hook is not sys.__excepthook__:
+                try:
+                    hook(type(error), error, error.__traceback__)
+                except Exception:
+                    # A broken hook must not escape the C++ virtual either.
+                    # Preserve the original callback error for safe deferral.
+                    logger.error('Dawn Qt input exception hook failed', exc_info=True)
+                else:
+                    return
+            # PyQt may abort if an exception reaches its default hook. Suspend
+            # this canvas and raise the original error from process_events/run.
+            event.ignore()
+            self._record_dawn_callback_error(error, callback.__name__)
+    return guarded
+
+
 class QtBaseCanvasBackend(BaseCanvasBackend):
     """Base functionality of Qt backend. No OpenGL Stuff."""
 
@@ -522,6 +552,7 @@ class QtBaseCanvasBackend(BaseCanvasBackend):
     def sizeHint(self):
         return self.size()
 
+    @_guard_dawn_input_callback
     def mousePressEvent(self, ev):
         if self._vispy_canvas is None:
             return
@@ -537,6 +568,7 @@ class QtBaseCanvasBackend(BaseCanvasBackend):
         if not vispy_event.handled:
             ev.ignore()
 
+    @_guard_dawn_input_callback
     def mouseReleaseEvent(self, ev):
         if self._vispy_canvas is None:
             return
@@ -551,6 +583,7 @@ class QtBaseCanvasBackend(BaseCanvasBackend):
         if not vispy_event.handled:
             ev.ignore()
 
+    @_guard_dawn_input_callback
     def mouseDoubleClickEvent(self, ev):
         if self._vispy_canvas is None:
             return
@@ -565,6 +598,7 @@ class QtBaseCanvasBackend(BaseCanvasBackend):
         if not vispy_event.handled:
             ev.ignore()
 
+    @_guard_dawn_input_callback
     def mouseMoveEvent(self, ev):
         if self._vispy_canvas is None:
             return
@@ -582,6 +616,7 @@ class QtBaseCanvasBackend(BaseCanvasBackend):
             # the mouse move events, including those that VisPy ignores
             ev.ignore()
 
+    @_guard_dawn_input_callback
     def wheelEvent(self, ev):
         if self._vispy_canvas is None:
             return
@@ -608,9 +643,11 @@ class QtBaseCanvasBackend(BaseCanvasBackend):
         if not vispy_event.handled:
             ev.ignore()
 
+    @_guard_dawn_input_callback
     def keyPressEvent(self, ev):
         self._keyEvent(self._vispy_canvas.events.key_press, ev)
 
+    @_guard_dawn_input_callback
     def keyReleaseEvent(self, ev):
         self._keyEvent(self._vispy_canvas.events.key_release, ev)
 
@@ -702,6 +739,16 @@ class QtBaseCanvasBackend(BaseCanvasBackend):
         return out
 
     def _keyEvent(self, func, ev):
+        # Hosts also call this entry from their own parent Qt virtuals. Do not
+        # let forwarding bypass the input boundary or replay a suspended key.
+        if (self._vispy_canvas is None or getattr(self, '_dawn_closed', False)
+                or getattr(self, '_dawn_callback_failed', False)):
+            ev.accept()
+            return
+        return self._deliver_key_event(ev, func)
+
+    @_guard_dawn_input_callback
+    def _deliver_key_event(self, ev, func):
         # evaluates the keycode of qt, and transform to vispy key.
         key = int(ev.key())
         if key in KEYMAP:

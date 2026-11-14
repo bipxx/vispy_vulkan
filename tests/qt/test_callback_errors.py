@@ -12,8 +12,11 @@ import pytest
 @pytest.mark.parametrize('event_entry', ['process_events', 'run'])
 def test_native_draw_failure_survives_qt_callback_boundary(event_entry):
     # A child lets pytest report the Windows PyQt process-abort regression.
+    import vispy
     code = r'''
 import json
+import vispy
+assert str(__import__('pathlib').Path(vispy.__file__).resolve()) == EXPECTED_VISPY
 from vispy import _dawn, app, gloo
 api = __import__('os').environ.get('QT_API', 'pyqt6')
 application = app.use_app(api)
@@ -61,8 +64,13 @@ application.process_events()
 print('callback boundary proof', json.dumps({'entry': ENTRY, 'error': seen, 'new_canvas': 'green'}))
 '''
     environment = dict(os.environ, QT_API=os.environ.get('QT_API', 'pyqt6'))
+    # Keep installed/source-overlay observations in the parent's exact import
+    # closure. Editable .pth hooks must not substitute a different native leaf.
+    setup = (f'import sys\nsys.path[:0] = {sys.path!r}\n'
+             f'EXPECTED_VISPY = {str(Path(vispy.__file__).resolve())!r}\n'
+             f'ENTRY = {event_entry!r}\n')
     result = subprocess.run(
-        [sys.executable, '-X', 'faulthandler', '-c', f'ENTRY = {event_entry!r}\n' + code],
+        [sys.executable, '-I', '-S', '-B', '-X', 'faulthandler', '-c', setup + code],
         cwd=Path(__file__).resolve().parents[2], env=environment,
         text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, timeout=60,
     )

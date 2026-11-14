@@ -2,6 +2,160 @@
 
 ## Latest checkpoint — 2026-11-14
 
+**Qt key-parent amendment reviewed, 2026-11-14:**
+[786 independent review](../compat/api-acceptance/qt-key-parent-amendment-review-v1.json) approves the exact28-file source delta
+`ca51efbd7cfed3bdfac674e62cb715dc7e706b5c5530bacd6dcf3f0a90a08105`
+with conditions and no required changes. This is source-review approval only;
+LIF-06/API-06 remain partial. Exact local-head tests before push, normal protected
+integration and separate changed-artifact acceptance remain required. The review
+recomputed no hashes and assessed only the evidence listed in its decision;
+prior negative decisions and all withheld scope remain preserved. No current
+head, CI, admission, published-wheel or full-parent coverage is claimed.
+
+**Parent key replay fixed and verified at source scope, 2026-11-14:**
+[780/781gap](../compat/api-acceptance/qt-key-parent-replay-gap-v1.json) records a second CHANGES_REQUIRED
+verdict and empirical405fregression:1key causes2callbacks/2hook reports through
+oneparentforward. No approval is transferred. Revised `1c68488e` leaves native
+acceptedstate unchanged after a workinghosthook; private_keyEvent delegates to
+guarded delivery and consumes suspended-key replay instead of bypassing safety.
+[782Windows](../compat/api-acceptance/qt-input-callback-windows-source-v4.json)/
+[783WSL](../compat/api-acceptance/qt-input-callback-wsl-source-v4.json) each pass93CPUcases:47input,
+including12keypress/release xcanvas/privateparent xdefault/host/brokenhook routes,
+plus46paint/window. Cases verify onecallback/error report, no replay/abort,
+originalerror/hook identity, laterdelivery and native-loop survival as applicable.
+[784Windows](../compat/api-acceptance/qt-input-callback-rendered-windows-v3.json)/
+[785WSL](../compat/api-acceptance/qt-input-callback-rendered-wsl-v3.json) each pass21same-source rendered
+cases:6default-peer/3host-samecanvas/12controls;9childorigin/nativeSHA/10zero-gauge
+proofs, parent10zero. Host/default acceptedstate is asserted separately.537original
+members verify before1QtPythonoverlay;536/native unchanged. ExistingfilteredQt/
+9c5softwaredriver unchanged/Xvfb0; all5WSLprocesses0awaited. Parent-rendered cases
+remain parentless; the12parent-forwarding paths are CPU/realQt evidence, notfull
+napari qualification. Privateclosed/post-C++-destruction host lookups are not
+separately covered. PyQt5/PySide6, BaseException, otherinput and paint-hosthook
+limits remain open. All7owned779–785scratch roots cleaned; renderedtargets remove
+47,774,775bytes.785initialreadonlyplan refused a livePID; same PID/manifest/verifier
+later reportsnotlive and v2plan/apply succeeds. No kill, skippedPIDcheck, changed
+registry or deletionretry after reviewrejection; original refusal is retained.
+Next exactcumulative re-review, then actualhead source tests and normalprotected
+integration. Source-only/source-overlay evidence, no CI/wheel/admission/release
+or fullparent claim. Older405f/a47areceipts remain historicalfinite passes.
+
+**Host-hook correction now passes matching source suites, 2026-11-14:**
+[774Windows](../compat/api-acceptance/qt-input-callback-windows-source-v3.json)/
+[775WSL](../compat/api-acceptance/qt-input-callback-wsl-source-v3.json) each pass81CPUcases(35input,
+including7working-host/native-loop and7broken-hook cases;46paint/window).
+[777Windows](../compat/api-acceptance/qt-input-callback-rendered-windows-v2.json)/
+[778WSL](../compat/api-acceptance/qt-input-callback-rendered-wsl-v2.json) each pass21rendered cases:
+6default-error peer recovery,3custom-host same-canvas redraw/peer recovery,
+12ordinaryinput/PanZoom/draw controls. All9children verify origin/nativeSHA and
+10zero gauges; parent10zero. Exactly1QtPythonoverlay on unchanged536/native,
+all537original members verify first; existing Qt/WSL9c5driver unchanged/Xvfb0.
+Same runtime `405f766f` on both profiles. [771/773gap](../compat/api-acceptance/qt-input-host-hook-gap-v1.json)
+records CHANGES_REQUIRED/noapproval for oldera47a: nativehostloop prematurely
+exits1 despite customhook. Revisedguard invokes workinghosthook without stopping
+canvas/loop; brokenhook falls back to originalsafe deferral. Olda47areceipts
+remain historicalfinitepasses, not approval. [776failure](../compat/api-acceptance/qt-input-host-hook-render-fixture-failure-v1.json)
+retains3redrawtimeouts after fixturequitclosedwindows;777exit0+keptopen checks
+fix the fixture without relaxing pixels/recovery/native/gauge assertions.
+Allowned770/771/773–778scratch cleaned; rendered776/777/778remove65,675,375bytes,
+retained19/18/26checks. Earlier769cleanup ordering defect stays recorded;
+subsequent applies require separate successful inspection. No new build/wheel/
+environment. Commonpolicy affects allQtbindings, but PyQt5/PySide6changes remain
+unqualified; BaseException is not contained. Closed/detachedinput now ignored
+and may propagate to parents. Paint-path customhook behavior is separateopen
+work, not fixed here. Source405f/tests/newreceipts need exactamendmentreview and
+protectedintegration; no CI/fullnapari/public-wheel/full-parent claim.
+
+**PR80integration verified separately:**
+[772](../compat/api-acceptance/lifecycle-panzoom-protected-integration-v1.json) verifies normalprotected
+merge `bff61230`, tree `7abcfdbc` equal testedmerge/sourcefreeze, all11required
+checks and20delta blobs;702committed frozeninputs match, old16feQt reconstructed
+from retainedsource. ForeignHEAD/index and then-current825localWIP inputs stay
+unchanged. OptionalMacCPUjobs were pending; no all21job claim. The callbackpatch
+was not included. Future source integration uses this actualparent after drift
+checks; prior55fd/currentwheel qualification is not transferred.
+
+**Matching WSL rendered callback recovery passes, 2026-11-14:**
+[769](../compat/api-acceptance/qt-input-callback-rendered-wsl-v1.json) passes18same-source cases as
+[768Windows](../compat/api-acceptance/qt-input-callback-rendered-windows-v1.json):6isolated key/mouse/
+wheel error-recovery proofs plus12ordinaryinput/PanZoom/draw-callback cases.
+Child import/nativeSHA, original exception identity, failed-canvas no-redraw,
+peer green/blue recovery after close and10zero gauges pass in all6children;
+parent10gauges zero.537original members verify before1Qtwrapper overlay,
+536/native unchanged after; filteredQt/9c5softwareVulkan origins stay unchanged.
+All5processes0/awaited, privateXvfb0. Scratch570files/29,871,553bytes removed,
+26retained hashes verified; no build/environment/newwheel. Cleanup ordering
+mistake is explicitly retained: coordinator's prefix inspection missed2declared
+Mesa cache files and failed, but following apply stillran; tool independently
+validated exact owned target/registry/hashes. Post-apply snapshot audit confirms
+only ownedlinux/cache files/marker. Future apply requires a successful separate
+inspection step; no deletion was retried or protected origin targeted.
+Next independent cumulative source/fixture/evidence review and protected source
+integration; changed-wrapper installed/public admission remains separate. Source
+WIP is outside frozenPR80; no broader parent/CI/physicalhardware claim.
+
+**Windows real-canvas callback recovery verified at source-overlay scope, 2026-11-14:**
+[768](../compat/api-acceptance/qt-input-callback-rendered-windows-v1.json) passes18cases:6newkey/mouse/
+wheel error cases across process_events/run plus8ordinaryinput,2PanZoom and2draw
+callback cases. Each new child verifies exact parent import origin/nativeSHA,
+original exception identity, failed-canvas no-redraw, peer green thenblue after
+failed-canvas close and ten zero shutdown gauges. Parent gauges also zero.
+537original wheel members verify BEFORE exactlyoneQtwrapper source overlay;
+536members/native remain unchanged, no wheel/build/admission claim. Both child
+fixtures now use-I-S plus explicit parent paths: [767failure](../compat/api-acceptance/qt-input-callback-child-origin-failure-v1.json)
+retains6origin rejections/2editable native mismatches and10ordinary passes;
+no runtime/native rebuild or relaxed origin assertion resolved it. Both Windows
+targets cleaned35,802,088bytes total,19/18retained checks; CPU763–766cleanup and
+old diagnostics remain separately recorded. Source WIP remains outside PR80.
+Next matching WSL rendered recovery, independent cumulative source/fixture review,
+protected integration and exact changed-wrapper installed acceptance as needed.
+LIF-06/API-06 remain partial; no HID/native-presented/optical/other-binding/full
+parity/CI/public-wheel claim.
+
+**Callback source CPU acceptance now matches Windows/WSL, 2026-11-14:**
+[765Windows](../compat/api-acceptance/qt-input-callback-windows-source-v2.json)/
+[766WSL](../compat/api-acceptance/qt-input-callback-wsl-source-v2.json) pass67same-source cases each,
+including21newinput cases. The release fixture now initializes _vispy_canvas
+like a real backend and asserts no queued application error before/after destroy;
+766has no deleted-widget diagnostic. Earlier764also passed67but logged that
+fixture diagnostic; its [v1record](../compat/api-acceptance/qt-input-callback-wsl-source-v1.json) stays
+qualified accordingly.763failed before collection due DrvFS fd capture;764/766
+use existing-s/no-capture convention, not weakened assertions. Borrowed WSL
+Qt/Python origins and source hashes stay unchanged; all children0/awaited.
+Scratch markers763–766cleaned358bytes, retained15/16/8/16records respectively.
+No renderer/GPU allocation, build or environment install. Next real Dawn-canvas
+rendered recovery, then independent review/integration and changed-wrapper
+installed acceptance. CPU passes are not public-wheel/CI/other-binding/full-parent
+coverage. Source WIP remains outside frozen PR80.
+
+**Qt input callback abort reproduced and source fix verified, 2026-11-14:**
+[762source CPU acceptance](../compat/api-acceptance/qt-input-callback-source-v1.json) passes67Windows/
+PyQt6cases:21new real offscreen Qt-dispatch cases and46existing paint/window
+checks. Seven mouse/wheel/key virtuals now contain ordinary callback exceptions,
+ignore the triggering event, suspend the failed canvas and preserve the original
+exception for process_events()/run(); errors surface once, peer delivery and
+ignored-error same-widget recovery pass.761baseline key callback aborts child
+3221226505;760earlier fixture weakref error is separate and both remain retained.
+No GPU/native canvas was allocated. All3scratch markers cleaned263bytes total;
+762verifies20retained records. This is source-only wrapper WIP outside frozen
+PR80: `_qt.py` is the sole intentional drift among810prior guards; prior source
+receipts stay unchanged. Next WSL counterpart and actual Dawn-canvas recovery,
+then review/integration and exact changed-wrapper installed acceptance as needed.
+No new wheel/build, current PR80 result, CI coverage, other-binding or full-parent
+claim is made. LIF-06/API-06 remain partial.
+
+**Reviewed combined batch submitted as PR80, 2026-11-14:**
+[759source head](../compat/api-acceptance/lifecycle-panzoom-source-head-v1.json) records
+`af21f74c` on verified parent `96b1187e`, exact20approved source/evidence/metadata
+files.810critical guards/702committed parent inputs match; originalfaulttest and
+foreign HEAD/index stay unchanged. Archived approved bytes were staged, with no
+checkout/reset/force/admin bypass. [PR80](https://github.com/bipxx/vispy_vulkan/pull/80)
+has normal protected auto-merge enabled; fresh required checks/actual merge are
+pending. Private index/marker cleaned15,128,875bytes,111retained inputs verified,
+scratch absent. No new runtime/native build, wheel release, test CI coverage or
+admission claim. This later checkpoint/source-head receipt stays outside PR80's
+frozen20-file snapshot; do not amend it merely to record its own CI status.
+
 **Combined integration amendment approved, 2026-11-14:**
 [758review](../compat/api-acceptance/lifecycle-panzoom-combined-review-v1.json) approves the exact
 19-file composition `4b85c65c` on actual PR79merge `96b1187e`, with no required
@@ -1142,6 +1296,26 @@ explicit boundary; implementing every possible form is not required.
   restoration on current Windows/WSL wheels,537members/no overlays/ten zero
   gauges; cleaned. Explicit-size render, not native display/HID/focus/DPI.
   Review/integration and broader camera/parent scope open.
+- [x] **LIF-06-QT-INPUT-CALLBACK-SOURCE — Revised Windows/WSL PyQt6 CPU subset, 2026-11-14:**
+  [782Windows](../compat/api-acceptance/qt-input-callback-windows-source-v4.json)/
+  [783WSL](../compat/api-acceptance/qt-input-callback-wsl-source-v4.json) each93pass:
+  47input/46paint-window,12parent key routes with default/working/broken hooks.
+  780negative review and781doublecallback/doublehook reproducer retained;
+  new1c68runtime preserveshostacceptedstate/guards privatekeydispatch/consumes
+  suspendedreplay. Closed/post-C++-destroyed parent lookups not separately observed.
+  Exactsource re-review/integration and installed qualification remain pending.
+- [x] **LIF-06-QT-INPUT-CALLBACK-RENDERED-WINDOWS — Revised finite overlay subset, 2026-11-14:**
+  [784](../compat/api-acceptance/qt-input-callback-rendered-windows-v3.json)
+  passes21cases(6defaultpeer/3hostsamecanvas/12controls),9isolated origin/nativeSHA/
+  zero-gauge proofs at1c68, host/defaultacceptedstate explicit.9e4native/536members
+  unchanged,1QtPythonoverlay. Parent-forwarding evidence is the separateCPUsubset.
+- [x] **LIF-06-QT-INPUT-CALLBACK-RENDERED-WSL — Matching revised overlay subset, 2026-11-14:**
+  [785](../compat/api-acceptance/qt-input-callback-rendered-wsl-v3.json) same21cases/
+  sourcehashes as784,9childzero-gauge proofs; a271native/536members unchanged,
+  1QtPythonoverlay, borrowedQt/9c5driver unchanged/privateXvfb0; cleaned after
+  transientPID-livenessplan refusal resolved with unchangedmanifest/verifier.
+  Source re-review/protectedintegration, otherbindings/fullnapari, changed-wrapper
+  installed/public admission and broader-parent scope remain open.
 - [ ] **LIF-06 — Input forwarding:** selected Qt keyboard, wheel, focus, mouse,
   timer and coordinate delivery beyond the finite Tk subset. Touch, stylus,
   gestures and additional layouts need their own selected scope.

@@ -1,0 +1,41 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "coverage_ids": [
+    "LIF-06",
+    "API-06"
+  ],
+  "status": "CHANGES_REQUIRED_A47A_HOST_HOOK_REGRESSION_REPRODUCED",
+  "review_delta_sha256": "676f3591b7df855111b3c61e4509ff3b3b8c075fd2a79de56e2264b5b9cc486a",
+  "review_decision_sha256": "c1b8d30596d88b94d023fa76af052fa46ee2b22d577248dcb8990effdb1cf73c",
+  "required_changes": [
+    "src/vispy/app/backends/_qt.py _guard_dawn_input_callback: when sys.excepthook is not sys.__excepthook__, call sys.excepthook(type(error), error, error.__traceback__) after event.ignore() and return without _record_dawn_callback_error (no canvas suspension, no queued application error, no application.exit(1)); keep the current deferral under the default hook. Reason: napari sets ignore_callback_errors=False (napari/_vispy/canvas.py:236) and runs app.exec_ inside notification_manager, which installs sys.excepthook (qt_event_loop.py:440-445); the current guard turns a recoverable notification into a permanently suspended canvas and an exit of napari's event loop.",
+    "tests/qt/test_input_callback_errors_cpu.py: add a real-Qt PyQt6 child case with a custom sys.excepthook asserting the hook receives the original exception exactly once, _dawn_callback_failed stays False, no application error is queued and no exit is requested, and a later delivery to the same widget succeeds.",
+    "New Windows and WSL same-source evidence (CPU selection plus the 6 rendered input-recovery children) at the new _qt.py hash, in new receipts; the 8 existing receipts stay byte-identical as history for a47a5d5a, and the a47a5d5a source is recorded as superseded, not relabelled."
+  ],
+  "reviewer_actual_exit": 0,
+  "reviewer_child_waited": true,
+  "approved": false,
+  "baseline_runtime_sha256": "a47a5d5accb50d80a701b3aa655ba2d43a84526c6ce78139a3cdad66fdfeefcc",
+  "baseline_child_exit": 1,
+  "baseline_pytest_exit": 1,
+  "baseline_source_hashes": {
+    "src/vispy/app/backends/_qt.py": "a47a5d5accb50d80a701b3aa655ba2d43a84526c6ce78139a3cdad66fdfeefcc",
+    "tests/qt/test_input_callback_errors_cpu.py": "294fa41c8dfeb3048f482d7cbd4d6eb2d91b26dc78972c81796801b40b6fbbf3",
+    "LICENSE": "0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0",
+    "LICENSE-BSD": "a28bb857d763513c810ca843558c12cf97f64b990b855c1ce7f5e291e52fc25c",
+    "LICENSING.md": "e8a28d2d2c78d86fa2b6f83284e8f1a32237f87bfd417fd1cdfc84c8f3ce37f5"
+  },
+  "baseline_cleanup": {
+    "status": "PASS_APPLY",
+    "reclaimed_bytes": 90,
+    "retained_verified": 8,
+    "scratch_absent": true,
+    "actual_exit": 0,
+    "child_waited": true
+  },
+  "evidence_root": "@evidence/build/runs/qt-input-host-hook-reproducer-773",
+  "review_evidence_root": "@evidence/build/runs/qt-input-callback-impact-review-771",
+  "failed_launch_evidence_root": "@evidence/build/runs/qt-input-callback-impact-review-770",
+  "scope": "Review771execution0butnegativecodeverdict.773realPyQt6 nativeQApplicationloop withcustomhook exits1beforelaterdelivery at a47a; original761default-hook processabort remainsdistinct. a47a source is superseded, receipts remainhistoricalfinitepasses, noapprovaltransfer. Revised405f source/default-vs-hostpolicy/new81CPU+21rendered observations require exactamendmentreview.770launchfailed before anyreview, unknownCLIexit/wait disclosed, no approval; cleaned."
+}
