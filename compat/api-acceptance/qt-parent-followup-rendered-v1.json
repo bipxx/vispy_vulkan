@@ -1,0 +1,294 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "PASS_EIGHT_RENDERED_CASES_PER_WINDOWS_WSL_PYQT6_SOURCE_PROFILE",
+  "coverage_ids": [
+    "LIF-02",
+    "LIF-04",
+    "API-06"
+  ],
+  "rows": [
+    {
+      "run": "qt-parent-followup-windows-654",
+      "wheel": {
+        "path": "build/artifacts/6de6d77fadd69e0e6c4c5ef0ce8cf63f8c0a680c4c3d0ca5c9550e911ddab7f5/vispy-0.17.0+vulkan.2-cp312-cp312-win_amd64.whl",
+        "sha256": "6de6d77fadd69e0e6c4c5ef0ce8cf63f8c0a680c4c3d0ca5c9550e911ddab7f5"
+      },
+      "device": {
+        "backend": "Vulkan",
+        "adapter_type": "discrete",
+        "vendor": "nvidia",
+        "device": "NVIDIA GeForce RTX 4090",
+        "driver": "NVIDIA: 610.88 610.88.0.0",
+        "vendor_id": 4318,
+        "device_id": 9860,
+        "max_texture_dimension_1d": 32768,
+        "max_texture_dimension_2d": 32768,
+        "max_texture_dimension_3d": 16384,
+        "max_vertex_attributes": 30,
+        "max_vertex_buffers": 8,
+        "max_vertex_buffer_array_stride": 2048,
+        "max_storage_buffers_per_shader_stage": 16,
+        "max_uniform_buffers_per_shader_stage": 12,
+        "max_inter_stage_shader_variables": 30,
+        "max_storage_buffer_binding_size": 2147483644,
+        "max_bindings_per_bind_group": 1000,
+        "max_compute_invocations_per_workgroup": 1024,
+        "max_compute_workgroup_size_x": 1024,
+        "max_compute_workgroups_per_dimension": 65535,
+        "max_point_vertex_attributes": 30,
+        "core_features_and_limits": true,
+        "point_input_limit_scope": "all active user point inputs share one vertex buffer; exact vertex/instance identities use read-only vertex storage without reserving a user attribute; actual granted attribute/stride/storage/allocation limits apply",
+        "max_samplers_per_shader_stage": 16,
+        "max_sampled_textures_per_shader_stage": 48,
+        "max_buffer_size": 1099511627776,
+        "max_uniform_buffer_binding_size": 65536,
+        "software": false,
+        "float32_filterable": true,
+        "unorm16_texture_formats": true,
+        "bresenham_lines": true,
+        "last_vertex_provoking": true,
+        "timestamp_query": true,
+        "timestamp_quantization_ns": 65536,
+        "host_mapped_pointer": true,
+        "host_import_limit": 536870912,
+        "depth_stencil_storage": "depth24_unorm_stencil8",
+        "ok": true,
+        "error": "",
+        "loss_count": 0,
+        "revision": "117b054598f4758b598f4b8f48feea48c11fe7b0+dawn-499e5c6ff9b37d5de70c6493fb74c251e0d35c1c"
+      },
+      "source_inputs": {
+        "src/vispy/app/backends/_qt.py": "16fec18d9346aeb03a560c7e5e3569eead864e60b362a682709749413dab8997",
+        "src/vispy/app/canvas.py": "dd1173d41033a2715f6b5546428089d59737343edf8b374b507bbf1c9db8a929",
+        "tests/qt/test_parent_destruction_gpu.py": "73bf7ef50b0bc1a8b508605269a5a65f5be937b1f2e6f3ce47580ab373425d78",
+        "tests/qt/test_native_close_gpu.py": "4927939a30c62d3125a03b0c2274d1dad8f7fd9d6b7caa21a3dade782ed5ba73",
+        "tests/qt/test_layout_reparent_gpu.py": "e0536ae6846ea56de2ef5083ff2d4dbb69f9c2501f88f32507ad5c6acd5d547c",
+        "LICENSE": "0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0",
+        "LICENSE-BSD": "a28bb857d763513c810ca843558c12cf97f64b990b855c1ce7f5e291e52fc25c"
+      },
+      "source_overlays": {
+        "vispy/app/backends/_qt.py": "16fec18d9346aeb03a560c7e5e3569eead864e60b362a682709749413dab8997",
+        "vispy/app/canvas.py": "dd1173d41033a2715f6b5546428089d59737343edf8b374b507bbf1c9db8a929"
+      },
+      "passed": 8,
+      "package_members_verified": 537,
+      "shutdown_gauges": {
+        "pending_tickets": 0,
+        "queued_frames": 0,
+        "live_buffer_bytes": 0,
+        "live_cpu_buffer_bytes": 0,
+        "live_texture_bytes": 0,
+        "canvas_texture_bytes": 0,
+        "transient_buffer_bytes": 0,
+        "line_resource_pool_busy_slots": 0,
+        "line_resource_pool_bytes": 0,
+        "host_import_pinned_bytes": 0
+      },
+      "actual_exit": 0,
+      "child_waited": true,
+      "evidence": {
+        "result.json": {
+          "path": "D:\\vispy-vulkan-managed\\build\\runs\\qt-parent-followup-windows-654\\result.json",
+          "sha256": "3b15d0cc1bcc209341f9c58318db477d2eae4c19f26ea8bc30443fb9aa10567a"
+        },
+        "junit.xml": {
+          "path": "D:\\vispy-vulkan-managed\\build\\runs\\qt-parent-followup-windows-654\\junit.xml",
+          "sha256": "f7354437f53b040624f81bbfe8c9f6cc6edc248b8fefe2dfa2f46949e864ac18"
+        },
+        "gpu.log": {
+          "path": "D:\\vispy-vulkan-managed\\build\\runs\\qt-parent-followup-windows-654\\gpu.log",
+          "sha256": "cf4accb116a7e441ddf6792d969592bbfaea41e5015a84e81077c815fc7e7b7a"
+        },
+        "gpu-process.json": {
+          "path": "D:\\vispy-vulkan-managed\\build\\runs\\qt-parent-followup-windows-654\\gpu-process.json",
+          "sha256": "10af9800ec9a094a80738513b9b850bda27498f21acb59a79de01168d91dfd7e"
+        },
+        "inputs.json": {
+          "path": "D:\\vispy-vulkan-managed\\build\\runs\\qt-parent-followup-windows-654\\inputs.json",
+          "sha256": "103d9c3079418167e14f69515d7b5a3c09c95ca70bdd21d2f9228ecdf1d051d1"
+        },
+        "focused-sources-and-licenses.zip": {
+          "path": "D:\\vispy-vulkan-managed\\build\\runs\\qt-parent-followup-windows-654\\focused-sources-and-licenses.zip",
+          "sha256": "87ddb0bddd2a804f8e90ac165b44ff5d25a4d8972a22611e25dda0962226db33"
+        },
+        "terminal.json": {
+          "path": "D:\\vispy-vulkan-managed\\build\\runs\\qt-parent-followup-windows-654\\terminal.json",
+          "sha256": "69ad7a4b258d1953a6c22bd86900f4bdae752c5c01e67d052ea6be32b3c1b0a0"
+        },
+        "cleanup-plan.json": {
+          "path": "D:\\vispy-vulkan-managed\\build\\runs\\qt-parent-followup-windows-654\\cleanup-plan.json",
+          "sha256": "8f1c669687cc59360255fe4f55d5a33263ab313feef1d5a44bcd2f34b353a83c"
+        },
+        "cleanup-result.json": {
+          "path": "D:\\vispy-vulkan-managed\\build\\runs\\qt-parent-followup-windows-654\\cleanup-result.json",
+          "sha256": "bceccadff5af6771d19869ebe5e2faf46b3a7f7e7638c5245e2ccb00be534a96"
+        },
+        "cleanup-process.json": {
+          "path": "D:\\vispy-vulkan-managed\\build\\runs\\qt-parent-followup-windows-654\\cleanup-process.json",
+          "sha256": "5e6e814dd58dbbc3c20bde2866a1968cd4c5955aedf5877ca03342289d5a2fea"
+        }
+      },
+      "cleanup": {
+        "reclaimed_bytes": 17899975,
+        "deleted": 568,
+        "retained_verified": 13,
+        "scratch_absent": true
+      }
+    },
+    {
+      "run": "qt-parent-followup-wsl-655",
+      "wheel": {
+        "path": "build/artifacts/b728b57541a387385fee588d81cb41402890a64489a7d91a3f2fb22b3e2df7c0/vispy-0.17.0+vulkan.2-cp312-cp312-manylinux_2_39_x86_64.whl",
+        "sha256": "b728b57541a387385fee588d81cb41402890a64489a7d91a3f2fb22b3e2df7c0"
+      },
+      "device": {
+        "backend": "Vulkan",
+        "adapter_type": "cpu",
+        "vendor": "mesa",
+        "device": "llvmpipe (LLVM 18.1.3, 256 bits)",
+        "driver": "llvmpipe: Mesa 26.1.8 (LLVM 18.1.3)",
+        "vendor_id": 65541,
+        "device_id": 0,
+        "max_texture_dimension_1d": 16384,
+        "max_texture_dimension_2d": 16384,
+        "max_texture_dimension_3d": 4096,
+        "max_vertex_attributes": 30,
+        "max_vertex_buffers": 8,
+        "max_vertex_buffer_array_stride": 2048,
+        "max_storage_buffers_per_shader_stage": 16,
+        "max_uniform_buffers_per_shader_stage": 12,
+        "max_inter_stage_shader_variables": 30,
+        "max_storage_buffer_binding_size": 134217728,
+        "max_bindings_per_bind_group": 1000,
+        "max_compute_invocations_per_workgroup": 1024,
+        "max_compute_workgroup_size_x": 1024,
+        "max_compute_workgroups_per_dimension": 65535,
+        "max_point_vertex_attributes": 30,
+        "core_features_and_limits": true,
+        "point_input_limit_scope": "all active user point inputs share one vertex buffer; exact vertex/instance identities use read-only vertex storage without reserving a user attribute; actual granted attribute/stride/storage/allocation limits apply",
+        "max_samplers_per_shader_stage": 16,
+        "max_sampled_textures_per_shader_stage": 48,
+        "max_buffer_size": 4294967295,
+        "max_uniform_buffer_binding_size": 65536,
+        "software": true,
+        "float32_filterable": true,
+        "unorm16_texture_formats": true,
+        "bresenham_lines": true,
+        "last_vertex_provoking": true,
+        "timestamp_query": true,
+        "timestamp_quantization_ns": 65536,
+        "host_mapped_pointer": true,
+        "host_import_limit": 536870912,
+        "depth_stencil_storage": "depth24_unorm_stencil8",
+        "ok": true,
+        "error": "",
+        "loss_count": 0,
+        "revision": "117b054598f4758b598f4b8f48feea48c11fe7b0+dawn-499e5c6ff9b37d5de70c6493fb74c251e0d35c1c"
+      },
+      "source_inputs": {
+        "src/vispy/app/backends/_qt.py": "16fec18d9346aeb03a560c7e5e3569eead864e60b362a682709749413dab8997",
+        "src/vispy/app/canvas.py": "dd1173d41033a2715f6b5546428089d59737343edf8b374b507bbf1c9db8a929",
+        "tests/qt/test_parent_destruction_gpu.py": "73bf7ef50b0bc1a8b508605269a5a65f5be937b1f2e6f3ce47580ab373425d78",
+        "tests/qt/test_native_close_gpu.py": "4927939a30c62d3125a03b0c2274d1dad8f7fd9d6b7caa21a3dade782ed5ba73",
+        "tests/qt/test_layout_reparent_gpu.py": "e0536ae6846ea56de2ef5083ff2d4dbb69f9c2501f88f32507ad5c6acd5d547c",
+        "LICENSE": "0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0",
+        "LICENSE-BSD": "a28bb857d763513c810ca843558c12cf97f64b990b855c1ce7f5e291e52fc25c"
+      },
+      "source_overlays": {
+        "vispy/app/backends/_qt.py": "16fec18d9346aeb03a560c7e5e3569eead864e60b362a682709749413dab8997",
+        "vispy/app/canvas.py": "dd1173d41033a2715f6b5546428089d59737343edf8b374b507bbf1c9db8a929"
+      },
+      "passed": 8,
+      "package_members_verified": 537,
+      "shutdown_gauges": {
+        "pending_tickets": 0,
+        "queued_frames": 0,
+        "live_buffer_bytes": 0,
+        "live_cpu_buffer_bytes": 0,
+        "live_texture_bytes": 0,
+        "canvas_texture_bytes": 0,
+        "transient_buffer_bytes": 0,
+        "line_resource_pool_busy_slots": 0,
+        "line_resource_pool_bytes": 0,
+        "host_import_pinned_bytes": 0
+      },
+      "actual_exit": 0,
+      "child_waited": true,
+      "evidence": {
+        "result.json": {
+          "path": "D:\\vispy-vulkan-managed\\build\\runs\\qt-parent-followup-wsl-655\\result.json",
+          "sha256": "f0e3256b9785880413c1fe798d23301144e9f4c676aae9bf73b076fd0133999e"
+        },
+        "junit.xml": {
+          "path": "D:\\vispy-vulkan-managed\\build\\runs\\qt-parent-followup-wsl-655\\junit.xml",
+          "sha256": "3998528327324fcb914f85c7af4b195d8aeea618f8361a2fb003787c6f1af170"
+        },
+        "gpu.log": {
+          "path": "D:\\vispy-vulkan-managed\\build\\runs\\qt-parent-followup-wsl-655\\gpu.log",
+          "sha256": "0d9b1c735bb72e9cbd7660cea93c35838e5a2deb8dca774fc158959005b170ee"
+        },
+        "gpu-process.json": {
+          "path": "D:\\vispy-vulkan-managed\\build\\runs\\qt-parent-followup-wsl-655\\gpu-process.json",
+          "sha256": "495e67758b442213c3ca4994e7c789cbfe66051cb4a2178b3f1474f7e5d8b84a"
+        },
+        "inputs.json": {
+          "path": "D:\\vispy-vulkan-managed\\build\\runs\\qt-parent-followup-wsl-655\\inputs.json",
+          "sha256": "5bccd9e77c8e0cc1acbf5971541ae67b63607c48ebb434892f9a229b38ce1e5c"
+        },
+        "focused-sources-and-licenses.zip": {
+          "path": "D:\\vispy-vulkan-managed\\build\\runs\\qt-parent-followup-wsl-655\\focused-sources-and-licenses.zip",
+          "sha256": "83f668601fa5939d79abf2f3af086f0cfd1ad71bae386191bddb1333ca710bc9"
+        },
+        "terminal.json": {
+          "path": "D:\\vispy-vulkan-managed\\build\\runs\\qt-parent-followup-wsl-655\\terminal.json",
+          "sha256": "853ddddc39ac9bee3174e6769c5d30330f7a461adf29c76a87675a802654e061"
+        },
+        "cleanup-plan.json": {
+          "path": "D:\\vispy-vulkan-managed\\build\\runs\\qt-parent-followup-wsl-655\\cleanup-plan.json",
+          "sha256": "afafbe4f61c0d1d51f8f6e00326e6913ddc8bab67f5eba211a11de0cccf9c8a5"
+        },
+        "cleanup-result.json": {
+          "path": "D:\\vispy-vulkan-managed\\build\\runs\\qt-parent-followup-wsl-655\\cleanup-result.json",
+          "sha256": "4893396dd41e0e0721bb4390ad94dcde2f60ff15ddaac69e7d5c25e5cd55d985"
+        },
+        "cleanup-process.json": {
+          "path": "D:\\vispy-vulkan-managed\\build\\runs\\qt-parent-followup-wsl-655\\cleanup-process.json",
+          "sha256": "5e6e814dd58dbbc3c20bde2866a1968cd4c5955aedf5877ca03342289d5a2fea"
+        }
+      },
+      "cleanup": {
+        "reclaimed_bytes": 29870484,
+        "deleted": 570,
+        "retained_verified": 21,
+        "scratch_absent": true
+      }
+    }
+  ],
+  "cpu_followup": {
+    "path": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\compat\\api-acceptance\\qt-parent-destruction-reentrant-source-v1.json",
+    "sha256": "2d99c7d8e2953845ef8d2e57f1cce9e2ef395d90f4a28d264fab99a4da6ebc20"
+  },
+  "source_review": {
+    "path": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\compat\\api-acceptance\\qt-parent-destruction-peer-review-v1.json",
+    "sha256": "123f392f25eccf70326c5c773cb820ab06228e1262b8ad963c060e6a70587db4"
+  },
+  "scope": "Current two-Python-file correction plus retained native wheel: eight GPU cases per platform, two parent-deletion orders, pending and subsequent shared-peer pixels; source-only overlays.",
+  "actual_exit": 0,
+  "child_waited": true,
+  "native_rebuilt": false,
+  "installed_qualified": false,
+  "artifact_admitted": false,
+  "review_approved": false,
+  "binding_scope": "PyQt6 only. Current Windows .venv has PyQt6, but PyQt5/PySide6/shiboken6 are absent; no package install attempted. Original locked dependency closures remain the reuse path for selected further binding checks.",
+  "remaining": [
+    "Renew independent exact source review using653/654/655evidence and preserved651findings.",
+    "Selected PyQt5/PySide6 checks before extending this fix to those binding claims.",
+    "Changed Python wheel packaging, installed/strict/head qualification and integration; earlier frozen6d6b233 CI remains scoped to its own inputs."
+  ],
+  "limits": [
+    "Actual new parent deletion cases are hidden/readback; existing native close controls do not imply full native WSI-loss support.",
+    "Per-platform8GPU cases do not establish all API, lifecycle, input or parity claims.",
+    "Only exact changed-source/base-wheel member checks, not unchanged installed-wheel coverage."
+  ]
+}

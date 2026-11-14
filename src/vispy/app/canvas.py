@@ -229,7 +229,7 @@ class Canvas(object):
         """Create the native widget if not already done so. If the widget
         is already created, this function does nothing.
         """
-        if self._backend is not None:
+        if self._backend is not None or self._closed:
             return
         validate = getattr(self._app._backend, '_vispy_validate_canvas', None)
         if validate is not None:
@@ -488,12 +488,30 @@ class Canvas(object):
                     self.events.close()
                 except BaseException:
                     try:
-                        self._backend._vispy_close()
+                        backend = self._backend
+                        if backend is not None:
+                            backend._vispy_close()
                     except BaseException:
                         logger.error('Canvas cleanup after close callback failure failed', exc_info=True)
                     raise
                 else:
-                    self._backend._vispy_close()
+                    # A close callback can synchronously destroy its parent.
+                    backend = self._backend
+                    if backend is not None:
+                        backend._vispy_close()
+        finally:
+            forget_canvas(self)
+
+    def _backend_destroyed(self):
+        """Settle ownership after the toolkit has already deleted the backend."""
+        # close() queries the backend's thread guard. A deleted Qt wrapper can
+        # raise even during that attribute lookup, so detach it first and do
+        # not ask it to close a second time.
+        self._backend = None
+        try:
+            if not self._closed:
+                self._closed = True
+                self.events.close()
         finally:
             forget_canvas(self)
 

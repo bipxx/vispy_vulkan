@@ -10,6 +10,150 @@ builds, CI or publication and grants no new coverage admission.
 
 ### Verified baseline and actual blockers
 
+### Next investigation and closure sequence — planning refresh
+
+Latest priority5 review milestone: [660approval](../../../compat/api-acceptance/qt-parent-review-approved-v1.json)
+accepts exact inspected source/tests with no required changes, resolving651F1–F3
+and reading native duplicate-destroy logic. Read-only/no-recomputation/unread
+evidence limits remain; coordinator guards verify exact inputs. Review scratch
+84bytes cleaned/17inputs verified; existing source/license archives reused.
+Next freeze/push only owned reviewed changes through a full-index-sized private
+index, package changed Python members around the retained natives, and renew
+exact installed/strict/candidate/head qualification before integration/delivery.
+No native rebuild or prior6d6b233CI transfer. Include recommended real-Canvas
+create_native/update no-op assertions during installed GPU acceptance. Other
+binding evidence remains CPU only; prefix-filtered .py/.pyd origin checks do not
+qualify Qt DLLs or absence of a second binding. Destruction callback accessors
+that require a live native backend remain unavailable.651stays CHANGES_REQUIRED.
+
+Latest binding checkpoint: [656/658/659](../../../compat/api-acceptance/qt-parent-binding-source-v1.json)
+passes11Windows CPU parent controls each on PyQt5/PySide6 and cumulative68on
+PyQt6, with original locked filtered dependency wheels and current generic
+fixture.657functional11pass/post-test origin failure is retained;658binds exactly
+12generated virtual aliases and7actual loaded wheel-member hashes. No wildcard
+exclusion, existing verifier change, version refresh or native build. Managed
+targets cleaned194,984,317bytes;659source check uses no scratch. This is finite
+CPU/native-double coverage only; rendered other-binding claims remain separate.
+Exact read-only review660is active against current source, prior findings,
+654/655rendered and656/658/659binding evidence. After its result, address required
+findings before changed-Python package/head qualification and integration.
+
+Latest priority5 verification: [654/655](../../../compat/api-acceptance/qt-parent-followup-rendered-v1.json)
+each pass8rendered cases on corrected653Python source. Both parent-deletion
+orders preserve pending green and subsequent blue shared-peer pixels;537package/
+overlay hashes and ten zero gauges verify. All children/owned Xvfb awaited;
+47,770,459bytes cleaned, no scratch or native build. This is PyQt6-only source
+evidence, not a wheel/strict/new-head admission. Current Windows .venv lacks
+PyQt5/PySide6; reuse their original locked closures rather than upgrade/install
+new versions for selected checks. Next renew exact source review with preserved
+651findings and653/654/655evidence, complete selected binding checks, then package
+the changed Python bytes around the retained natives and qualify/integrate.
+
+Latest review checkpoint: [651](../../../compat/api-acceptance/qt-parent-destruction-peer-review-v1.json)
+returns CHANGES_REQUIRED. [652/653](../../../compat/api-acceptance/qt-parent-destruction-reentrant-source-v1.json)
+reproduce3failures then pass68CPU cases after fixing reentrant backend detachment
+and closed-canvas recreation. Real explicit-close-then-delete, late update and
+original callback exception controls are included. Eight-case two-order GPU
+test is authored, not rerun;648/650source hashes are historical to this follow-up.
+Next rerun Windows/WSL overlays, then selected PyQt5/PySide6 controls and renewed
+exact review before packaging. Only PyQt6 is currently tested for the fix.
+Live-native accessors after destruction are unavailable; close/update/create_native
+no-op behavior alone is claimed. Review cleanup removed86bytes/verified14inputs;
+CPU source checks allocate no scratch. No approval or admission is conferred.
+
+Latest priority5 milestone: [WSL650](../../../compat/api-acceptance/qt-parent-destruction-wsl-source-v1.json)
+passes the same7rendered cases as Windows648with two explicit Python overlays,
+retained Linux native payload and patched Mesa software Vulkan/private Xvfb.
+Pending green/subsequent blue each4x4RGBA exact,537member/overlay hashes and ten
+zero gauges verify. Borrowed origins unchanged, controller/Xvfb exited/awaited.
+Initial649setup failed before GPU; existing629abstract-local transport flags
+resolved it without system changes. Both attempts cleaned57,643,258bytes; failed
+history retained. Next: independent review, selected binding controls and new
+Python package/installed/head qualification. Do not transfer frozen6d6b233CI.
+
+Latest rendered result: [Windows648](../../../compat/api-acceptance/qt-parent-destruction-windows-source-v1.json)
+passes7GPU cases, including actual parent-owned deletion, pending shared-peer
+green and subsequent blue readback (4x4RGBA each exact), and existing close/layout
+controls. Base-wheel/native payload is reused with exactly two Python overlays;
+537members/overlay hashes and ten final zero gauges verify. Cleanup removed
+17,899,700bytes/568files, verified12retained inputs; scratch absent. No native build.
+Next: same WSL source investigation, independent review, then changed-Python
+packaging and exact installed/head qualification. No prior frozen6d6b233CI transfer.
+
+Latest priority5 progress: [source fix647](../../../compat/api-acceptance/qt-parent-destruction-source-fix-v1.json)
+passes64CPU controls, including real parent deletion, callback/error preservation,
+weak-owner collection, native release failure and close idempotence. Initial644
+and intermediate645failures remain retained. `_qt.py` plus `canvas.py` now differ
+from frozen6d6b233; its running CI and existing wheels remain evidence only for
+their original inputs. Before promoting the cumulative implementation, review
+the new fix, verify rendered parent deletion/shared-peer recovery on Windows/WSL,
+and renew exact Python package/installed/head bindings. Native inputs are unchanged;
+reuse the verified native payload. No scratch or native build for these CPU runs.
+
+Priority5 now has a confirmed [parent-owned destruction failure644](../../../compat/api-acceptance/qt-parent-destruction-source-failure-v1.json):
+real offscreen Qt deletion destroys the child and invokes the native release
+double, but leaves the actual Python Canvas open. One CPU test fails, actual
+exit1/awaited, no runtime change/scratch/native build. Preserve frozen6d6b233CI.
+Next implement Python ownership settlement without accessing deleted QWidget
+methods; preserve module-rooted GC-safe release and contained callback errors.
+Prove idempotence, callback failure, collected-owner and shared-peer behavior
+before claiming installed closure. Native release alone is insufficient.
+
+Source-only [reconciliation643](../../../compat/api-acceptance/scientific-stale-row-reconciliation-v1.json)
+corrects the fixture mapping: Q11 is MSAA depth/stencil (LIF-05), Q12 is
+binding/platform coverage, and Q13 is input forwarding (LIF-06). Volume workflows
+are V01–V09. Six exact current Qt packet/hash joins verify seven stages each,
+537members, zero overlays and ten zero gauges; this audit replays no runtime and
+grants no admission. Q12 remains partial; Q11 and broader Q13 remain open.
+
+This sequence supersedes completed prerequisites in the older packet table.
+[Head-bound proof642](../../../compat/api-acceptance/current-head-installed-subject-v1.json)
+now proves128selected bindings/64criteria at `6d6b233`, zero missing/blocked.
+The audit joins702committed inputs, including608runtime/build/license inputs
+unchanged from tested99719f1. All14canonical files are restored; the original
+107,624-byte frozen archive is reused. All eight mandatory observations and
+review638 already exist. Admission, integration and public delivery remain open.
+
+| Priority / IDs | Investigation and easiest closure path | Required result / stop rule |
+| --- | --- | --- |
+| 1 — FIX-04/06, TOOL-01 | Refresh existing CPU43530224577, Linux43530227494 and Metal43530230265 at6d6b233. Retained641poll4 has Linux success and CPU/Metal queued; workflow and job states can differ. Inspect the first failing job if any, preserving all attempts. | Original checkout identities, full run/job/attempt histories and all23required results pass the unchanged CI validator. Queue delay does not justify redispatch or native rebuild. |
+| 2 — FIX-06, API-06, SHD-06 | Join proof642, eight-row dossier636/637, reviews609/621/638 and final CI. Inspect a failed field before rerunning tests. Keep Tk retention623 validation separate from the mandatory rows' scoped original-envelope audit. | Independently reviewed exact admission basis for32selected Tk rows/128bindings and eight mandatory rows. Preserve14frozen files, historical matrix, failed attempts and142original obligations. Stop at unresolved joins; do not weaken validators. |
+| 3 — FIX-04/06 | Query current main/branch state, review the owned delta and integrate through the protected path, preserving the other owner's checkout/index. Decide whether source integration alone or a successor release is warranted. | Merged source matches admitted scope. If publishing, use successor versioned artifacts and verify delivered bytes; never replace existing Vulkan.2 assets. A source merge alone is not public wheel delivery. |
+| 4 — API-05/06, SCI-05 | Reconcile U05/E03/E04/Q11–Q13/H03 in one public-route/value/evidence table in the existing checklist. Reuse current point/filter/scene passes and the historical Glue disposition before adding assertions. | Each selected route has exact source/wheel/profile, existing proof, smallest missing assertion, disposition and reopening trigger. Distinguish stale wording from real defects; reuse only matching inputs/scope. |
+| 5 — LIF-01–06 | First delete a parent that still owns a live canvas, retaining a shared peer. Inspect Qt destruction callbacks and existing close fixtures. Then select zero-size/restore, one named acquisition failure and a supported loss injection, one at a time. | Bounded reproducer verifies callback count/order, submit behavior, peer pixels/recovery and final resource gauges. Fix only a demonstrated defect. Unavailable WSI injection stays explicit; readback does not prove physical surface loss. |
+| 6 — SCI-02/03/04/06, API-06 | Extend the existing two-scene fixture with one camera mutation, then one required plane/depth/stencil interaction. Inventory filter compositions and V01–V09 volume protocols before selecting another small workflow. | Analytic/frozen-reference output before/after mutation, relevant refusal/recovery, exact installed artifact and finite limits. Reuse current wheels if runtime inputs match. A demonstrated failing route determines wrapper versus native changes. |
+| 7 — SHD/STA/TEX/LIN; optional HOST/PLAT/PERF/TOOL | Expand renderer forms only for a named workflow above. Search once for the historical cleanup receipt. Other hosts, ABIs, GPU vendors and optimization require a concrete claim or measured bottleneck. | Named positive/boundary/recovery cases close only their selected subsets. Otherwise record an explicit boundary/deferral and reopening trigger. Optional hardware and full parity do not block the Windows/WSL milestone. |
+
+Before each experiment, record its hypothesis, exact command, expected observable
+result and bounded attempt/time/storage budget. Produce verified existing support,
+a confirmed defect/regression, an explicit boundary or a deferred dependency.
+Update both live checklists; keep broader parents open. Do not repeat exhausted
+BUG-01/02 campaigns without a new recurrence or causal hypothesis.
+
+Immediate next action is refreshing the same three CI handles and collecting
+original evidence when complete. Source-only reconciliation may proceed while
+CI queues without advancing its frozen branch head. Use registry613 and shared
+20GiB scratch/10GiB reserve; size future Git budgets from the measured full index.
+Reuse wheels, locked dependencies and SDKs. Retain actual exits/waits, failures,
+sources/licenses and evidence; inspect/apply cleanup before the next writable
+experiment. This planning refresh creates no scratch and launches no tests,
+builds, CI, publication or cybersecurity work.
+
+Packet3 source/CI checkpoint: [owned freeze639](../../../compat/api-acceptance/current-qualification-source-head-v1.json)
+pushes109files/2,338,177bytes as `6d6b233`, with608runtime/build/license references
+unchanged from tested99719and the other owner's index untouched. No native build.
+[CI640](../../../compat/api-acceptance/current-head-ci-dispatch-v1.json) dispatches
+23required jobs with original native reuse. Retained poll641: Linux43530227494
+SUCCESS, CPU43530224577and Metal43530230265QUEUED. Re-poll those exact handles;
+do not redispatch on queue delay. Local source/dispatch scratch is cleaned:
+15,099,032bytes removed/289retained-input verifications. The8MiB private-index
+estimate missed the15,098,948-byte full-tree index; the actual overrun is retained,
+old preflight unchanged, and hygiene policy now requires measured full-index sizing.
+Next: renew qualification-head metadata/proof against frozen6d6b233without replaying
+unchanged runtime observations, collect complete23-job evidence, then exact matrix/
+Tk admission and independent promotion/protected integration/delivery. Broader
+API/lifecycle/science parents remain bounded open work, not silently closed.
+
 Packet3 review checkpoint: [independent638pre-admission approval](../../../compat/api-acceptance/current-mandatory-peer-review-v1.json)
 covers all8row bindings, locked fixture reuse, manual original-retention and finite
 history scope, with no required changes. It rehashes1050inputs/945retained entries
@@ -167,7 +311,7 @@ scope. A boundary disposition closes the investigation, not the capability.
 | 3 — FIX-04/06, TOOL-01, PLAT-08 | Renew only missing/invalidated mandatory profile observations for the current wheels; inspect existing eight-row evidence before choosing reruns. Assemble the owned cumulative delta using a private Git index, freeze its final head and run the required23-job CI. Reuse original Linux/Metal producers where valid. | Eight mandatory rows have exact current qualification, final-head CI passes, independent promotion review names the exact basis, and protected integration/delivery checks pass. Any critical input change gets an impact assessment before reuse. Preserve the other owner's index and all licenses. |
 | 4 — API-05/06, SCI-05 | Reconcile U05/E03/E04/Q11–Q13/H03 against existing tests and receipts. Build a compact route/value/evidence/disposition table in the live checklist; do not create another tracking system. Correct stale statements before adding tests. | Each selected route has exact artifact/profile scope, supported values, missing assertion or explicit boundary and reopening trigger. U05/filter passes and corrected historical Glue references must not be rerun merely because an old checklist says pending. |
 | 5 — LIF-01–06 | Start with parent destruction while it still owns a canvas; moved-away-parent tests are insufficient. Next select zero-size/restore, a named acquisition failure, and a real supported loss/recovery injection. Investigate ignored native close/error callbacks from review609. Add only claimed Qt input routes that lack evidence. | Minimal before/after reproducer for each actual defect; callback order/counts, submit/no-submit behavior, observable pixels/refusal, shared-peer recovery where relevant and final resource retirement. Distinguish native WSI/readback, toolkit-generated/physical input and counters/physical memory. Unavailable injection stays explicit. |
-| 6 — SCI-01–04/06, SHD-01–05, STA-01, TEX-01, LIN-01 | First extend the existing two-scene fixture with one camera mutation and one selected depth/stencil/plane interaction. Then inventory mesh-filter compositions beyond the four proved revisions. Inspect existing Q11–Q13 volume protocols before selecting one small mode/mutation workflow. Expand shader/texture/line forms only when those workflows require them. | Analytic/frozen-reference values or pixels, mutation, meaningful boundary/refusal and recovery on an exact installed wheel. Record finite mode/shape/format limits. Keep volume quality, large-data performance and broad renderer semantics separate; no automatic full inventory matrix. |
+| 6 — SCI-01–04/06, SHD-01–05, STA-01, TEX-01, LIN-01 | First extend the existing two-scene fixture with one camera mutation and one selected depth/stencil/plane interaction. Then inventory mesh-filter compositions beyond the four proved revisions. Inspect existing V01–V09 volume protocols before selecting one small mode/mutation workflow. Expand shader/texture/line forms only when those workflows require them. | Analytic/frozen-reference values or pixels, mutation, meaningful boundary/refusal and recovery on an exact installed wheel. Record finite mode/shape/format limits. Keep volume quality, large-data performance and broad renderer semantics separate; no automatic full inventory matrix. |
 | 7 — HOST-03–06, PLAT-02/04/08, PERF-02–04, TOOL-02/03 | Pursue only a named application, distribution requirement, reproducible bottleneck or specific missing historical record. Search once for the historical cleanup receipt; a new cleanup cannot recreate it. | Rendered host acceptance for host claims, measured bottleneck for optimization, or an explicit deferral with trigger. Extra ABIs/drivers, optional compiler cache and hardware-dependent checks are not prerequisites for the selected first usable version. |
 
 ### Execution rules and finish line

@@ -1,0 +1,84 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "PASS_64_CPU_PARENT_DESTRUCTION_AND_QT_REGRESSIONS_SOURCE_ONLY",
+  "coverage_ids": [
+    "LIF-02",
+    "LIF-04",
+    "API-06"
+  ],
+  "source_base_commit": "99719f1f7bdbb320318cf1ccd0eed39f336c7cce",
+  "source_inputs": {
+    "tests/qt/test_parent_destruction_cpu.py": "2fcdddf7d7a50b51bf431a8ed804d3559822bd335d0b83433bfbe936901e740a",
+    "tests/qt/test_native_close_cpu.py": "dd27b66be6589d36c9df4fead392a52a4ea7b8a07035ba23356a7a9075c1d109",
+    "tests/qt/test_paint_scope_cpu.py": "5c2808ff57c245006bcbc5b77dbf96d026896f4d1b2de23a41bc1b42490c7c78",
+    "tests/qt/test_window_state_cpu.py": "515b21844606d80e2515d3edc2e114dec7f493821f7be90612cf7c604f1643d0",
+    "src/vispy/app/backends/_qt.py": "16fec18d9346aeb03a560c7e5e3569eead864e60b362a682709749413dab8997",
+    "src/vispy/app/canvas.py": "c2c3356dcbd84b71da209635fde2ab6c62e8fa0d76a4a592792265d8a3176efe"
+  },
+  "changed_runtime_paths": [
+    "src/vispy/app/backends/_qt.py",
+    "src/vispy/app/canvas.py"
+  ],
+  "prior_failure": {
+    "path": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\compat\\api-acceptance\\qt-parent-destruction-source-failure-v1.json",
+    "sha256": "b539946acea0aa784a6ba2d3c6d866444d55e73dfb249fe8bf10a839150c0f22"
+  },
+  "attempts": [
+    {
+      "run": "qt-parent-destruction-fix-645",
+      "passed": 59,
+      "failed": 4,
+      "actual_exit": 1,
+      "child_waited": true,
+      "terminal": {
+        "path": "D:\\vispy-vulkan-managed\\build\\runs\\qt-parent-destruction-fix-645\\terminal-source-only.json",
+        "sha256": "cf9cc75d8464e2dabc39abe20d0f12add3970722c1578b9d4c1566737617c40d"
+      }
+    },
+    {
+      "run": "qt-parent-destruction-fix-646",
+      "passed": 63,
+      "failed": 0,
+      "actual_exit": 0,
+      "child_waited": true,
+      "terminal": {
+        "path": "D:\\vispy-vulkan-managed\\build\\runs\\qt-parent-destruction-fix-646\\terminal-source-only.json",
+        "sha256": "089cf33f364fca4867fa8c688739a840bfd1c782161225b6fd572745fab1657f"
+      }
+    },
+    {
+      "run": "qt-parent-destruction-fix-647",
+      "passed": 64,
+      "failed": 0,
+      "actual_exit": 0,
+      "child_waited": true,
+      "terminal": {
+        "path": "D:\\vispy-vulkan-managed\\build\\runs\\qt-parent-destruction-fix-647\\terminal-source-only.json",
+        "sha256": "24a0299dd4f3a814e2fe825c30e76dc2287a85ebb5b97f2ecf1dc7b6d98a8377"
+      }
+    }
+  ],
+  "controls": [
+    "Four actual offscreen Qt parent-deletion cases with close-callback/pending-error combinations.",
+    "Canvas detaches deleted backend, closes once, and repeated close is safe.",
+    "Module-rooted slot holds only a weak reference to owner; collected owner still releases native double.",
+    "Native release exception contained and re-raised after Qt boundary.",
+    "Notification after explicit close is idempotent.",
+    "Existing native-close, paint-scope and window-state CPU controls retained."
+  ],
+  "preserved_failure": "645: calling Canvas.close from destroyed still touched deleted wrapper during thread-guard lookup; four failed/59passed. Corrected by explicit backend-destroyed ownership path.",
+  "actual_exit": 0,
+  "child_waited": true,
+  "scratch_created": false,
+  "native_rebuilt": false,
+  "installed_qualified": false,
+  "artifact_admitted": false,
+  "required_ci_passed": false,
+  "qualification_impact": "Frozen6d6b233 CI and old wheel proof remain exact to their unchanged inputs. This new two-Python-file fix is outside that source/wheel scope; do not promote its coverage from those results. Native inputs unchanged; reuse verified native payload for successor Python packaging after review.",
+  "remaining": [
+    "Rendered parent-owned destruction and surviving shared-peer verification on Windows/WSL.",
+    "Binding-specific review/controls as required for PyQt5/PySide6 claims.",
+    "Source review, exact successor package/installed acceptance, critical-input impact analysis and final-head CI/integration."
+  ]
+}

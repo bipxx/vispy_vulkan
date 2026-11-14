@@ -1,0 +1,32 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "PASS_OWNED_QUALIFICATION_HEAD_PUSHED_CI_PENDING",
+  "coverage_ids": [
+    "FIX-04",
+    "FIX-06",
+    "API-06",
+    "TOOL-01"
+  ],
+  "qualification_head": "6d6b233fe80f19887726c6b91a247aa863f6dfee",
+  "runtime_source_commit": "99719f1f7bdbb320318cf1ccd0eed39f336c7cce",
+  "branch": "wip/qt-lifecycle-native-562",
+  "changed_files": 109,
+  "changed_bytes": 2338177,
+  "runtime_references_unchanged": 608,
+  "source_freeze": {
+    "path": "@evidence/build/runs/current-qualification-source-freeze-639/source-freeze.json",
+    "sha256": "c21d3ec0a5e1dd2ea931ff4d30a3f9a1a99b4df1c9d799b8ba80e98518c2ab90"
+  },
+  "push": {
+    "path": "@evidence/build/runs/current-qualification-source-freeze-639/push-result.json",
+    "sha256": "94eb8b4a6f440f300618400ab85142582a76fd8ec3279b9c282073f1e023c7f6"
+  },
+  "owner_index_unchanged": true,
+  "actual_exit": 0,
+  "child_waited": true,
+  "native_rebuilt": false,
+  "required_ci_passed": false,
+  "artifact_admitted": false,
+  "scope": "Owned109-file qualification/test/doc follow-up committed through private index and fast-forward pushed to existing WIP branch. All608runtime/build/license inputs remain byte-identical to tested99719; other owner index/worktree untouched. No merge, final CI, promotion, artifact admission or delivery claim."
+}

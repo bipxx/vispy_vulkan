@@ -1,0 +1,91 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "APPROVED_EXACT_PARENT_DESTRUCTION_SOURCE_TESTS_ONLY",
+  "coverage_ids": [
+    "LIF-02",
+    "LIF-04",
+    "API-06"
+  ],
+  "decision": "APPROVED",
+  "required_changes": [],
+  "scope": "Exact inspected source and tests only: src/vispy/app/backends/_qt.py and src/vispy/app/canvas.py changed regions as in R/runtime.patch, tests/qt/test_parent_destruction_cpu.py, tests/qt/test_parent_destruction_gpu.py, and cpp/runtime.cpp register_canvas/destroy_canvas. No packaging, installed-wheel, profile, release, admission or parity approval.",
+  "inputs": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\qt-parent-review-renewal-660\\inputs.json",
+    "sha256": "39503094899bf20d158ef87f31ae3721788d52fc5532d28c055cef6ec8fa3265"
+  },
+  "findings": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\qt-parent-review-renewal-660\\review-findings.json",
+    "sha256": "f69f05f2ae8ddcb1e55cdd7be6827b95225e418416ca48b632efe20a667d9f9d"
+  },
+  "raw_response": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\qt-parent-review-renewal-660\\review-response.json",
+    "sha256": "1b9c8a4a534bb004eee506cd8fe588d5536604e078711eb78c588c76da7debd1"
+  },
+  "narrative": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\qt-parent-review-renewal-660\\review-response.md",
+    "sha256": "aa0225fb73d0e4929f3dabf153d38ea1747142daedc77032b01b5a601ca92141"
+  },
+  "process": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\qt-parent-review-renewal-660\\process.json",
+    "sha256": "31fecf757c5df83439893b67c40a37756dfd11eba77406ef39a729f45cf7020c"
+  },
+  "source_references": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\qt-parent-review-renewal-660\\retained-source-references.json",
+    "sha256": "38d400dc706b026b6573e3f95ded8e0d8ebd6953b6412c0f6fffc81d37c0d879"
+  },
+  "terminal": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\qt-parent-review-renewal-660\\terminal.json",
+    "sha256": "aaca3bf5cd4caa532df2663aaa45bbc7b98113389b236708ed244e433db87935"
+  },
+  "cleanup": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\qt-parent-review-renewal-660\\cleanup-result.json",
+    "sha256": "54f4fa16ee1284d4cf6b009accb026608cd1ca3fc8472ec3fb33ca5d5b0551a3"
+  },
+  "actual_exit": 0,
+  "child_waited": true,
+  "scratch_absent": true,
+  "source_guards_verified": true,
+  "source_archives_reused": true,
+  "native_rebuilt": false,
+  "installed_qualified": false,
+  "candidate_scope_approved": false,
+  "artifact_admitted": false,
+  "required_ci_passed": false,
+  "finding_dispositions": {
+    "F1": "RESOLVED - canvas.py:487-501 re-reads backend in both branches; Control A passes on PyQt5 (656), PySide6 (658), and is in the PyQt6 68-case run (659).",
+    "F2": "RESOLVED - canvas.py:232 returns when _closed; Control C passes on PyQt5 and PySide6; 652 reproduction is a test-double AttributeError rather than the production TypeError (N1).",
+    "F3": "RESOLVED - Controls A/B/C present; rendered close-then-delete with live shared peer passes on Windows 654 and WSL 655; PyQt5/PySide6 limited to CPU doubles in manifests.",
+    "F4": "RETAINED_LIMIT - only close/update/create_native no-op after destruction; other accessors and __enter__ raise AttributeError (N3).",
+    "F5": "RETAINED_LIMIT - recorder/logging/finalization failures can escape; BaseException deferred or only logged without QApplication; no universal containment claim.",
+    "native_duplicate_destroy": "VERIFIED_BY_SOURCE - runtime.cpp:7244-7245 early return on absent id; runtime.cpp:7108-7109 monotonic ids under mutex, no reuse; exercised natively by GPU case [True] in 654/655."
+  },
+  "reviewer_limits": [
+    "Read/Glob/Grep only: nothing executed; no SHA-256 recomputed; all hashes, the 537 member checks and the overlay hashes were read from manifests and result files.",
+    "JUnit was read, not regenerated, for 652, 654, 655, 656 and 658; the 659 JUnit was not opened beyond a non-informative count and its 68 passes come from stdout.log; 653 pass count comes from its manifest and terminal record.",
+    "Cleanup was read from cleanup-result.json for 655, 657 and 658 only (PASS_APPLY); scratch absence was not checked on disk; 654 and 656 cleanup results and the aggregate reclaimed-byte totals were not read or recomputed.",
+    "The 653-to-current test difference was established by reading both files, not by a byte diff.",
+    "Correspondence between the inspected cpp/runtime.cpp and the native binaries inside the retained wheels was not verified; the double-destroy conclusion for those binaries rests on the 654/655 runs.",
+    "656 check.py/result.json, 657 diagnostics, 655 result.json and controller scripts, 654 drive/overlay scripts, test_native_close_*/test_layout_reparent_gpu/test_paint_scope/test_window_state sources and src/vispy/util/event.py were not read.",
+    "PyQt5/PySide6 evidence is Windows CPU with native-resource doubles only; no rendered, WSL, installed or profile claim for those bindings.",
+    "New parent-deletion GPU cases are hidden/readback only; WSL is llvmpipe under Xvfb; no native WSI-loss, Metal or physical Linux GPU claim.",
+    "Deleting a widget from inside its own closeEvent or paintEvent was not assessed.",
+    "The changed Python bytes are uncommitted relative to frozen 6d6b233 and the published wheels; prior CI does not qualify them and exact package/head qualification is still required.",
+    "No full API, hardware, physical-event or VisPy parity is implied."
+  ],
+  "non_blocking_recommendations": [
+    "N1: add first.create_native(); first.update() after parent deletion in the GPU test for a real-Canvas Control C.",
+    "N2: state in qt-parent-binding-source-v1.json that the origin audit is prefix-filtered, .py/.pyd only, and does not hash loaded Qt DLLs or exclude a co-loaded second binding.",
+    "N3: extend the F4 limit text: close handlers run on parent deletion with _backend None before native destroy; accessor use there is a recorded callback error with exit(1) under raw dispatch."
+  ],
+  "additional_scope_notes": [
+    "Binding origin audit is prefix-filtered to binding Python modules; actual-file hashing covers .py/.pyd members only. It does not hash loaded Qt DLLs or prove absence of a co-loaded second binding.",
+    "During parent deletion, close handlers run after the Python backend is detached and before native destruction. Live-native accessor use there can raise AttributeError, become the retained callback error and request application exit1 under raw Qt dispatch. Only close/update/create_native no-op behavior is promised after destruction.",
+    "659 CPU Control C uses actual Canvas plus native doubles. A real-Canvas rendered create_native/update no-op control is recommended for future installed qualification; source approval does not imply it already ran."
+  ],
+  "remaining": [
+    "Freeze and push only owned reviewed source/metadata via bounded private index while preserving the other owner index.",
+    "Package changed pure Python members around verified retained native payloads, no native rebuild.",
+    "Exact installed/strict/candidate/head qualification, protected integration and delivery."
+  ]
+}

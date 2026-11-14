@@ -1,0 +1,173 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "PASS_SOURCE_ONLY_STALE_ROW_RECONCILIATION_NOT_ADMISSION",
+  "coverage_ids": [
+    "API-05",
+    "API-06",
+    "SCI-05",
+    "LIF-05",
+    "LIF-06"
+  ],
+  "runtime_source_commit": "99719f1f7bdbb320318cf1ccd0eed39f336c7cce",
+  "qualification_head": "6d6b233fe80f19887726c6b91a247aa863f6dfee",
+  "qt_aggregate": {
+    "path": "compat/api-acceptance/mandatory-current-qt-observations-v1.json",
+    "sha256": "bcee3157a653036f934baf5d8b46f519468b6c89366d797abdd77814b191c2d1"
+  },
+  "verified_qt_rows": [
+    {
+      "row": "windows-vulkan-qwidget-pyqt5",
+      "packet": {
+        "path": "compat/api-acceptance/mandatory-current-windows-pyqt5-v1.json",
+        "sha256": "18be2afb8e63774c478cdb54a3b9e2a9bbfe3ca7237d74c2cf9f330d2e0486a9"
+      },
+      "wheel_sha256": "6de6d77fadd69e0e6c4c5ef0ce8cf63f8c0a680c4c3d0ca5c9550e911ddab7f5",
+      "environment_id": "142354974cfba6e001babe4f4f9887cfa486d973a12c70c66f4975ece1870db8",
+      "stages": [
+        "exact_installed_artifact",
+        "device_and_qt_binding",
+        "qwidget_show_parent_resize",
+        "qwidget_capture_update_and_image_ownership",
+        "qwidget_overlay_interaction_hide_restore",
+        "qwidget_device_loss_recovery",
+        "qwidget_close"
+      ]
+    },
+    {
+      "row": "windows-vulkan-qwidget-pyqt6",
+      "packet": {
+        "path": "compat/api-acceptance/mandatory-current-windows-pyqt6-v1.json",
+        "sha256": "c5d909929478c032d0a516f390e8247775d409f40c011df9ee726a0cb34789db"
+      },
+      "wheel_sha256": "6de6d77fadd69e0e6c4c5ef0ce8cf63f8c0a680c4c3d0ca5c9550e911ddab7f5",
+      "environment_id": "95bae638f9058b7eed537bc8adce515e7d2ce5fbfd3a6d25c80002acac393d56",
+      "stages": [
+        "exact_installed_artifact",
+        "device_and_qt_binding",
+        "qwidget_show_parent_resize",
+        "qwidget_capture_update_and_image_ownership",
+        "qwidget_overlay_interaction_hide_restore",
+        "qwidget_device_loss_recovery",
+        "qwidget_close"
+      ]
+    },
+    {
+      "row": "windows-vulkan-qwidget-pyside6",
+      "packet": {
+        "path": "compat/api-acceptance/mandatory-current-windows-pyside6-v1.json",
+        "sha256": "ee386d4d148f6537e006694711277f0f83493b91c35aae99b3d906dfca1d36ae"
+      },
+      "wheel_sha256": "6de6d77fadd69e0e6c4c5ef0ce8cf63f8c0a680c4c3d0ca5c9550e911ddab7f5",
+      "environment_id": "1c4a9064576f523abc3224d13ad3eefa8b16f9324d8c1a4d4f7b3fcf584acb18",
+      "stages": [
+        "exact_installed_artifact",
+        "device_and_qt_binding",
+        "qwidget_show_parent_resize",
+        "qwidget_capture_update_and_image_ownership",
+        "qwidget_overlay_interaction_hide_restore",
+        "qwidget_device_loss_recovery",
+        "qwidget_close"
+      ]
+    },
+    {
+      "row": "wsl-linux-lavapipe-x11-qwidget-pyqt5",
+      "packet": {
+        "path": "compat/api-acceptance/mandatory-current-wsl-pyqt5-v1.json",
+        "sha256": "591e4b8f3d8873fc4bf99456ae1cfc8b83c9d6ada002127978641f78243c1cd8"
+      },
+      "wheel_sha256": "b728b57541a387385fee588d81cb41402890a64489a7d91a3f2fb22b3e2df7c0",
+      "environment_id": "e7c1812e3b7185d186b55836ff72d21ee81ca7ea32119e395862ab953782b092",
+      "stages": [
+        "exact_installed_artifact",
+        "device_and_qt_binding",
+        "qwidget_show_parent_resize",
+        "qwidget_capture_update_and_image_ownership",
+        "qwidget_overlay_interaction_hide_restore",
+        "qwidget_device_loss_recovery",
+        "qwidget_close"
+      ]
+    },
+    {
+      "row": "wsl-linux-lavapipe-x11-qwidget-pyqt6",
+      "packet": {
+        "path": "compat/api-acceptance/mandatory-current-wsl-pyqt6-v1.json",
+        "sha256": "eecae8a90b0daf086de76b65e80d55c1872c59acdf74326421922eb8f6876bcd"
+      },
+      "wheel_sha256": "b728b57541a387385fee588d81cb41402890a64489a7d91a3f2fb22b3e2df7c0",
+      "environment_id": "4f4ccc2ccb73da1a270e7899b8c16dda91e7b73c799e10125e85eb7e6cc65c4a",
+      "stages": [
+        "exact_installed_artifact",
+        "device_and_qt_binding",
+        "qwidget_show_parent_resize",
+        "qwidget_capture_update_and_image_ownership",
+        "qwidget_overlay_interaction_hide_restore",
+        "qwidget_device_loss_recovery",
+        "qwidget_close"
+      ]
+    },
+    {
+      "row": "wsl-linux-lavapipe-x11-qwidget-pyside6",
+      "packet": {
+        "path": "compat/api-acceptance/mandatory-current-wsl-pyside6-v1.json",
+        "sha256": "c5c0114930572d8258d4527932e898b2ccfef71086378df0ad4f2dd766ad03e9"
+      },
+      "wheel_sha256": "b728b57541a387385fee588d81cb41402890a64489a7d91a3f2fb22b3e2df7c0",
+      "environment_id": "f7cf5e714d29335368ab552be579ac028e473f46e6bb5dca42f2ae7bc62732ed",
+      "stages": [
+        "exact_installed_artifact",
+        "device_and_qt_binding",
+        "qwidget_show_parent_resize",
+        "qwidget_capture_update_and_image_ownership",
+        "qwidget_overlay_interaction_hide_restore",
+        "qwidget_device_loss_recovery",
+        "qwidget_close"
+      ]
+    }
+  ],
+  "referenced_evidence": {
+    "point-identity-current-windows-v1.json": {
+      "path": "compat/api-acceptance/point-identity-current-windows-v1.json",
+      "sha256": "7a48129b35ec6d3e0c65e8019ce951f8a9104bb28399a4c1fb90b62c8bdb298c"
+    },
+    "point-identity-current-linux-v1.json": {
+      "path": "compat/api-acceptance/point-identity-current-linux-v1.json",
+      "sha256": "16d1d0e87be3c5f44e19a27f07cfd51376649d34c01ac9a03f450893fe0e6d51"
+    },
+    "mesh-filter-pending-windows-v1.json": {
+      "path": "compat/api-acceptance/mesh-filter-pending-windows-v1.json",
+      "sha256": "3f7d07d9c6d228d5bb7d27d994ccdd2d3f68fac26f7e1b25107c5db9e29015c7"
+    },
+    "mesh-filter-pending-linux-v1.json": {
+      "path": "compat/api-acceptance/mesh-filter-pending-linux-v1.json",
+      "sha256": "2229b7d7ae269ba2c1aae5f2604b2370768834b1c28aabd8faa3d22bc18883bb"
+    },
+    "scene-state-current-windows-v1.json": {
+      "path": "compat/api-acceptance/scene-state-current-windows-v1.json",
+      "sha256": "b4edaa381818f89c5fe1b92b4bf7b2eed9b646f3e74e05e997972fa4d6a61e12"
+    },
+    "h03-upstream-disposition-v1.json": {
+      "path": "compat/api-acceptance/h03-upstream-disposition-v1.json",
+      "sha256": "33cf278d3b7dde5b06ec1a3800ec0098673920e0e1714513246c3f092ab14463"
+    }
+  },
+  "dispositions": {
+    "U05": "Current Windows/WSL finite point subset passes; broad layouts open.",
+    "E03": "Current Windows/WSL four pending-filter revisions pass; full composition inventory open.",
+    "E04": "Current Windows two fixed scenes pass; camera mutation and other profiles open.",
+    "Q11": "MSAA depth/stencil and full format/feature breadth remain open; separate LIF-05 from volume SCI-04.",
+    "Q12": "Six current installed Qt observations/7 stages each, not admission or Metal graphics/physical Linux GPU.",
+    "Q13": "No physical keyboard/wheel/touch/focus/mouse/timer completeness follows from QWidget overlay interaction. Select explicit LIF-06 event cases.",
+    "H03": "Historical upstream Glue invalidation protocol disposition only; no current host acceptance."
+  },
+  "limitations": [
+    "Source-only packet integrity and metadata audit; no new runtime test or replay.",
+    "Q11/Q12/Q13 are capture/platform/input rows, not volume protocols; volume rows are V01-V09.",
+    "Referenced point/filter/scene/Glue manifests are pinned here, not their entire transitive evidence independently revalidated.",
+    "Original frozen records and failed histories remain unchanged; broader parents remain open."
+  ],
+  "actual_exit": 0,
+  "child_waited": true,
+  "scratch_created": false,
+  "artifact_admitted": false
+}

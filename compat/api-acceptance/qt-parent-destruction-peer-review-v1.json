@@ -1,0 +1,58 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "CHANGES_REQUIRED_PARENT_DESTRUCTION_SOURCE_REVIEW",
+  "coverage_ids": [
+    "LIF-02",
+    "LIF-04",
+    "API-06"
+  ],
+  "decision": "CHANGES_REQUIRED",
+  "required_changes": [
+    "F1: guard the post-callback backend call in Canvas.close (both branches).",
+    "F2: make create_native a no-op on a closed canvas.",
+    "Control A (CPU, real offscreen PyQt6): Canvas.close() whose close handler calls sip.delete(parent); assert no exception, one close event, one destroy, _backend is None; add a raising-handler variant asserting the original error propagates with no cleanup-failed log.",
+    "Control B (CPU real Qt, plus one GPU case with a live shared peer): explicit Canvas.close() then parent deletion; assert one close event, peer still renders, gauges zero; this is the only native check of the double destroy_canvas(id).",
+    "Control C: create_native() and a late update() after destruction are no-ops.",
+    "Before any PyQt5/PySide6 claim: run the parent-deletion and Control A cases under each binding; otherwise state PyQt6-only scope in the manifests.",
+    "Re-run the CPU suite and the Windows/WSL overlays on the new hashes; 647/648/650 do not cover the changed canvas.py."
+  ],
+  "scope": "Independent read-only two-runtime-file/CPU-GPU evidence review; no packaging or release approval.",
+  "inputs": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\qt-parent-destruction-peer-651\\inputs.json",
+    "sha256": "1a8d7bad0853413b1ad130490065967467b639c9a9dd9af3a938598408d48aca"
+  },
+  "findings": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\qt-parent-destruction-peer-651\\review-findings.json",
+    "sha256": "63e08ca2ce71f59cfe8aa403d49882ec59a811ccd0c3203416ee8383db3d46f6"
+  },
+  "raw_response": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\qt-parent-destruction-peer-651\\review-response.json",
+    "sha256": "a6f210768d77e1d3d24df49cb18c01c224421c2249e0784821feb6631626088d"
+  },
+  "narrative": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\qt-parent-destruction-peer-651\\review-response.md",
+    "sha256": "b501924852d91d445edd901d9e77fd2e628f0f5b581d10250c34797b83d7af33"
+  },
+  "process": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\qt-parent-destruction-peer-651\\process.json",
+    "sha256": "3f1490a42de9d3f2d85ba9a9eb367e857a418e872479851ca1b86ce419bd36ae"
+  },
+  "cleanup": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\qt-parent-destruction-peer-651\\cleanup-result.json",
+    "sha256": "76739a6bf8766bdef99d5c1b3b60a5bc2edb069f8ff5614784544d7632a7d9a5"
+  },
+  "actual_exit": 0,
+  "child_waited": true,
+  "scratch_absent": true,
+  "reviewer_limits": [
+    "Read-only: nothing executed, no hashes recomputed, F1/F2 derived by code trace and not reproduced.",
+    "runtime.patch is a whole-file rewrite; the changed regions were reviewed in current source, not byte-diffed against frozen.",
+    "Native destroy_canvas idempotence and id reuse were not inspected (no native source found under src/); the double-release tolerance is assumed from existing behaviour.",
+    "PyQt5 and PySide6 behaviour is unverified; conclusions about them are by reasoning only.",
+    "Deleting a widget from inside its own closeEvent or paintEvent is Qt-level undefined behaviour and was not assessed.",
+    "The _qt.py BSD header is present in the patch; the canvas.py header, LICENSE and LICENSE-BSD contents were not read. test_window_state_cpu.py, test_layout_reparent_gpu.py, junit files and run 649 were not read.",
+    "No approval is given for packaging, installed-wheel qualification, native WSI, Metal, physical Linux GPU or VisPy parity."
+  ],
+  "followup": "652 reproduces three failures;653 fixes two runtime correctness findings and passes68CPU cases. Expanded rendered controls and renewed review remain pending."
+}

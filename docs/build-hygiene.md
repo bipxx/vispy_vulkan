@@ -50,6 +50,15 @@ well as checking the guest workspace; free space in a virtual ext4 volume alone
 does not prove backing-disk capacity. Do not change filesystem, driver or system
 settings as a substitute for cleanup.
 
+Private Git indexes cover the full base tree, even when only a small source
+delta is committed. Size their allocation from a matching measured full index
+plus delta/archive overhead, rather than the changed-file bytes alone. Source
+freeze639 estimated8MiB but its terminal private index/marker used15,098,948bytes;
+the excess estimate and actual cleanup are retained in its budget observation.
+The shared20GiB cap and10GiB reserve were not exceeded. Do not rewrite that
+preflight or silently increase an active run's estimate. Record the miss, clean
+the owned scratch, and use the measured basis for the next source-index run.
+
 An exclusive `.build-hygiene-owner.json` marker binds each run ID to one owner.
 The tool does not adopt an existing unregistered directory. In the local
 registry, `legacy_roots` enumerates the existing top-level build entries and
