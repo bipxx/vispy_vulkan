@@ -1,0 +1,45 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "PASS_CANDIDATE_REVIEW_REFERENCE_TRANSITION_ONLY",
+  "coverage_ids": [
+    "FIX-04",
+    "FIX-06",
+    "TOOL-01"
+  ],
+  "candidate": "compat/candidates/tk-state-resource-12/candidate.json",
+  "before_sha256": "b7458444a9fcde6e87913ff72b98e982747c45fef1eb4437abc01d48d51acad3",
+  "after_sha256": "f931132e5e512bb1e0cce35920c73f579a8a6861f57b06d2803384d174e3de43",
+  "changed_keys": [
+    "manifest_sha256",
+    "reviews"
+  ],
+  "candidate_scope_sha256": "4c2295f596f9b947fa27a67c21d500b6defced62a6b394c97abf2d78ca1ec1f8",
+  "original_archive": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\preparation12-review-capture-674\\reviewed-input-metadata.zip",
+    "sha256": "b616f753e08b1016a800f4cd1589623a4272418e6eb6de6bc509f7afe0f8bafb"
+  },
+  "archive_member": "compat/candidates/tk-state-resource-12/candidate.json",
+  "original_binding_script": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\preparation12-approval-bindings-675\\apply.py",
+    "sha256": "4bf73288918c46b6b13092a71bbce7c7d586c1103bdc96ef7d15e56ed07568bf"
+  },
+  "original_before_hashes": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\preparation12-approval-bindings-675\\before-file-hashes.json",
+    "sha256": "47b4e2a966f4075534360ef0fd098928b984463d3a278ac2fe22e9455071cdb1"
+  },
+  "reviews": {
+    "source": {
+      "path": "compat/candidates/tk-state-resource-12/source-review.json",
+      "sha256": "8492c000ed3e7941ae3b71f71a02dce77a06cccd22f1a9bb7ec77c958865d9b7"
+    },
+    "scope": {
+      "path": "compat/candidates/tk-state-resource-12/scope-review.json",
+      "sha256": "c2c3aba2b594bb877db917768e29c9503d30f79ab10830c8b5c5604465f50cc1"
+    }
+  },
+  "scope": "Coordinator source-only supplement for reviewer702 F4: only review references and candidate seal changed after674; semantic scope unchanged. Original reviewer limits/decision unchanged. No new review, CI, rendering, retention admission or release approval.",
+  "scratch_created": false,
+  "native_rebuilt": false,
+  "artifact_admitted": false
+}

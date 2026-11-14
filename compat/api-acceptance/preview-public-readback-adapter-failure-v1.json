@@ -1,0 +1,56 @@
+{
+  "status": "FAILED_READBACK_ADAPTER_BUFFERED_HTML_HASH",
+  "actual_exit": 1,
+  "child_waited": true,
+  "public_preview_root_bytes_sha256": "98884fb3870a3f246e3ae56ab366d208261d9ea4e0f7f43a90fd68743921b030",
+  "expected_sha256": "98884fb3870a3f246e3ae56ab366d208261d9ea4e0f7f43a90fd68743921b030",
+  "public_preview_root_bytes_match": true,
+  "cause": "Adapter hashed small HTML output before closing/flushing its buffered file. Actual saved85bytes match reviewed output. Both public wheel downloads and their full hashes already passed; no publication/asset/index defect demonstrated.",
+  "next_action": "Close response/output file before computing SHA256. Retain this failed attempt; reuse completed public wheel hash receipts and check all four small HTML pages with corrected adapter.",
+  "cleanup": {
+    "status": "PASS_APPLY",
+    "deleted_files": 4,
+    "reclaimed_bytes": 17375497,
+    "retained_verified": 14,
+    "scratch_absent": true,
+    "actual_exit": 0,
+    "child_waited": true
+  },
+  "public_wheel_checks": {
+    "status": "PASS_BOTH_PUBLIC_WHEELS_REHASHED_AFTER_CLOSED_OUTPUT",
+    "wheels": [
+      {
+        "url": "https://github.com/bipxx/vispy_vulkan/releases/download/qt-lifecycle-55fd4e8/vispy-0.17.0%2Bvulkan.2-cp312-cp312-manylinux_2_39_x86_64.whl",
+        "http_status": 200,
+        "bytes": 10562027,
+        "sha256": "a2715d2659f0caf8c01d430c34ba1dc2d5f9b520b6c36ce85a0c75328556fe56",
+        "unauthenticated": true,
+        "content_type": "application/octet-stream",
+        "asset_id": 746530111,
+        "installed_members_verified": 537,
+        "license_members_verified": 22,
+        "notice_inputs_verified": 23,
+        "source_overrides": 0,
+        "installed_smoke_scope": "WSL native ABI import only",
+        "installed_smoke_reused_by_exact_sha256": true
+      },
+      {
+        "url": "https://github.com/bipxx/vispy_vulkan/releases/download/qt-lifecycle-55fd4e8/vispy-0.17.0%2Bvulkan.2-cp312-cp312-win_amd64.whl",
+        "http_status": 200,
+        "bytes": 6813298,
+        "sha256": "9e4e30cc50d49a759ea42cd7915cc2544a42d2af869d505e3ef5290d47617286",
+        "unauthenticated": true,
+        "content_type": "application/octet-stream",
+        "asset_id": 746530107,
+        "installed_members_verified": 537,
+        "license_members_verified": 22,
+        "notice_inputs_verified": 23,
+        "source_overrides": 0,
+        "installed_smoke_scope": "Windows Vulkan clear",
+        "installed_smoke_reused_by_exact_sha256": true
+      }
+    ],
+    "unauthenticated": true
+  },
+  "evidence_root": "@evidence/build/runs/preview-public-readback-727"
+}

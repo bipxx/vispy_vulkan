@@ -64,11 +64,20 @@ exists, followed by the acceptance work that its existence alone does not prove.
 
 ## Filters
 
+Selected installed update, 2026-11-14: [Windows712](../compat/api-acceptance/mesh-color-alpha-windows-v1.json)
+and [WSL713](../compat/api-acceptance/mesh-color-alpha-wsl-v1.json) each pass six
+Alpha+ColorFilter+TextureFilter+PlanesClipper composition cases on runtime2b8bccd/
+current9e4e30cc/a2715d26wheels. Three queued revisions preserve exact literal
+RGBA values through alpha/color mutation, detach/reattach, zero alpha and valid
+replacement after invalid input. This finite blend-disabled/single-sample
+composition does not qualify general hook ordering, all14exports or final
+release admission. No filter implementation or native payload changed.
+
 | Parent | Source route and behavior | Acceptance boundary / remaining work |
 | --- | --- | --- |
-| `visuals.filters.alpha` | `filters/color.py:Alpha`; fragment hook multiplies alpha; property updates its shader variable. | CPU mutation passes; blend/order and multi-filter rendered behavior remain separate. |
+| `visuals.filters.alpha` | `filters/color.py:Alpha`; fragment hook multiplies alpha; property updates its shader variable. | CPU mutation and the six selected composition cases above pass. General blend/order/composition behavior remains separate. |
 | `visuals.filters.clipper` | `filters/clipper.py:Clipper`; normalizes bounds to a `Rect` and discards fragments outside transformed framebuffer coordinates. | CPU bounds normalization passes. Shader coordinates, edges, nested clips and updates need pixels. |
-| `visuals.filters.colorfilter` | `filters/color.py:ColorFilter`; fragment color multiplier. | Hook order, component values, alpha/blending and updates need finite cases. |
+| `visuals.filters.colorfilter` | `filters/color.py:ColorFilter`; fragment color multiplier. | The six selected composition cases above cover named component values, updates and detach/reattach. General hook order, alpha/blending and other values remain open. |
 | `visuals.filters.facepickingfilter` | `filters/mesh.py:FacePickingFilter`; repeats one ID across each triangle's vertices via PrimitivePickingFilter. | Geometry/data updates and byte-exact face IDs need rendered picking; alpha encodes ID bits, so blending must be disabled. |
 | `visuals.filters.filter` | `filters/base_filter.py:Filter`; inserts/removes vertex/fragment expressions at ordered hooks. | Per-visual/view attachment, detach/re-attach, duplicates and hook composition need lifecycle cases. |
 | `visuals.filters.instancedshadingfilter` | `filters/mesh.py:InstancedShadingFilter`; extends mesh shading for instance transforms. | Normal matrices, instance colors and attribute/divisor layout need shader/rendered cases. |

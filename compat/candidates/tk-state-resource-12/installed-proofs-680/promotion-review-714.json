@@ -1,0 +1,8 @@
+{
+  "schema": 1,
+  "kind": "promotion",
+  "status": "APPROVED",
+  "independent": true,
+  "reviewer": "Independent read-only Claude CLI714; actual models: claude-fable-5-2; response-sha256:f89e93ba3c7431c07226a8fc30ba8fedd77048e6e3475ab1ba549cdc197e9a08",
+  "promotion_basis_sha256": "1e92e7de779a5b845c7921a12dac1ab5bc08f446b5ae9fb713b8e42f3ebeeb24"
+}

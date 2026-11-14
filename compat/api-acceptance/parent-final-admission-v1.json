@@ -1,0 +1,59 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "status": "PASS128_TK_BINDINGS_EIGHT_CURRENT_MANDATORY_ROWS",
+  "coverage_ids": [
+    "FIX-04",
+    "FIX-06",
+    "API-06",
+    "SHD-06",
+    "TOOL-01"
+  ],
+  "qualification_head": "55fd4e82e1a1d7bcb9d3c93a5e66c1bc825b09a1",
+  "runtime_source_commit": "2b8bccd0ac886f771c3e37255a3d5559c254b3cd",
+  "promotion_basis_sha256": "1e92e7de779a5b845c7921a12dac1ab5bc08f446b5ae9fb713b8e42f3ebeeb24",
+  "strict_result": {
+    "path": "@evidence/build/runs/parent-scoped-admission-718/strict-admission-result.json",
+    "sha256": "18890553a0251b87a70c12ceb95add7a30baa256d6d8445e201f02f10b856caa"
+  },
+  "mandatory_admission": {
+    "path": "compat/candidates/tk-state-resource-12/installed-proofs-680/mandatory-matrix-admission-718.json",
+    "sha256": "c1961edfabd7ba67a68e648a1dc2b21c3befcf5470b13026981c02fe45f97b90"
+  },
+  "current_matrix_view": {
+    "path": "compat/candidates/tk-state-resource-12/installed-proofs-680/mandatory-current-matrix-view-718.json",
+    "sha256": "e1efb9ad45ddabda1e5bfb1bef2b3b2c74eb09f651abc0cb18bff4bd6a144c1b"
+  },
+  "restoration": {
+    "path": "@evidence/build/runs/parent-scoped-admission-718/restoration.json",
+    "sha256": "6e997a1e34800328b577d63318405f4d876e2187b4a957d0d6593894e8dcde4b"
+  },
+  "materialization": {
+    "path": "@evidence/build/runs/parent-scoped-admission-718/materialization.json",
+    "sha256": "47d82d2c782edcea0d78201ce36e246cb32e7507b0d112158981e60453dbe9f4"
+  },
+  "artifact_admitted": true,
+  "release_complete": false,
+  "ready_for_protected_integration": true,
+  "source_view_has_git_metadata": false,
+  "foreign_checkout_head": "f640057d831344a06040379c55334741c2752eba",
+  "foreign_index_unchanged": true,
+  "full_inventory_complete": false,
+  "qualification_index_foreign_retention_acceptance": false,
+  "scope": "Actual unchanged strict128binding admission plus eight reviewed manual-retention mandatory rows; exact55fdsource-byte view with one approved temporary ledger and full restoration. Protected integration/public delivery and broader capabilities remain separate.",
+  "actual_exit": 0,
+  "child_waited": true,
+  "cleanup": {
+    "status": "PASS_APPLY",
+    "deleted_files": 1,
+    "reclaimed_bytes": 87,
+    "retained_verified": 44,
+    "scratch_absent": true,
+    "actual_exit": 0,
+    "child_waited": true
+  },
+  "evidence": {
+    "path": "@evidence/build/runs/parent-scoped-admission-718/verification.json",
+    "sha256": "5332583b45765531f4afcb496fbddb1e36a72eb9df530c9731da9d038f5ae167"
+  }
+}

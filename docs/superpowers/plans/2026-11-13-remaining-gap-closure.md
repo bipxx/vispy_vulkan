@@ -1,5 +1,407 @@
 # Remaining-gap investigation and closure plan
 
+## Authoritative next actions — 2026-11-14
+
+This queue supersedes all older next-action instructions below. Older dated
+checkpoints remain evidence history, including failures; their pending labels
+are not current blockers. The original planning revision ran no experiments;
+subsequent execution updates below distinguish actual delivery from remaining work.
+
+### Starting point and finish line
+
+The selected 128-binding subject and eight mandatory profile rows were admitted
+in [718](../../../compat/api-acceptance/parent-final-admission-v1.json).
+Protected PR77 integration completed in [719](../../../compat/api-acceptance/parent-protected-integration-v1.json),
+with the same tree as the 23-job tested PR tree. Do not repeat those gates for
+unchanged inputs. Release target remains exact `55fd4e8`, runtime `2b8bccd`;
+later records and two regression tests are a separate integration delta.
+
+The current preview is public and delivery-verified by
+[728](../../../compat/api-acceptance/preview-public-delivery-v1.json) after
+[726publication](../../../compat/api-acceptance/preview-publication-v1.json).
+Windows draft smoke
+[724](../../../compat/api-acceptance/preview-draft-windows-channel-v1.json)
+passes on wheel `9e4e30cc…`; Linux candidate is `a2715d26…`.
+The next milestone is integration of the later owned records/tests. Broader parents close
+only for explicitly selected capabilities or documented support boundaries;
+full VisPy parity is not the finish line.
+
+### Ordered closure checklist
+
+Order3 exact review/commit progress, 2026-11-14:
+[731/732](../../../compat/api-acceptance/post-preview-reviewed-commit-v1.json)
+approves the78-file delta with conditions/no required changes; exact staged
+commit A is `63abac6b8a6317766ee1b0a8cfa72da135f2c906`, parentba49b468.
+810source guards,702committed inputs and885frozen review inputs are distinct;
+staged paths/blobs and doc API links verify, foreign index unchanged.8local
+collected cases join by exact test blobs, without CI/new-head qualification.
+Review/private-index scratch cleaned15,126,134bytes,900/51inputs verified.
+Next one permitted metadata commit, then push/PR/actual branch protection;
+commit A is local only. Metadata must not cite its own commit/CI, and its eventual
+merge result stays external, avoiding another self-referential commit.
+717notes hash identifies retained pre-publication notes, not the current doc.
+
+Order3 source audit/collection progress, 2026-11-14:
+[730](../../../compat/api-acceptance/post-preview-delta-audit-v1.json) verifies
+the77-file owned snapshot,810unchanged source guards and702frozen committed
+Git inputs; foreign index unchanged.8newtests collect locally, not CI/GPU
+execution. Failed729namespace assumption is preserved; corrected730uses the
+authoritative699committed map. No scratch/build/install. Next refresh/freeze
+the explicit delta including this new receipt and docs, obtain independent
+impact review, commit/push only owned files and require actual branch protection.
+Any critical change invalidates the unchanged-input path. Do not claim this
+collection at a future integration head until its exact file hashes are joined.
+
+Order2 complete, 2026-11-14:726publishes exact reviewed prerelease/tag and two
+separate index paths without changing stable release/index/latest.728verifies
+both public wheel hashes via727closed-output receipts and all four public HTML
+pages. Exact bytes join724Windows clear/725WSL ABI-only smokes.727buffered-file
+hash checker failure stays retained; the corrected adapter changes no release
+content. Actual children awaited;726–728scratch cleaned17,377,805bytes, scratch
+absent. Proceed to order3; unchanged bytes need no new native build/install replay.
+
+Order1 completed at finite draft-channel scope, 2026-11-14:
+[725](../../../compat/api-acceptance/preview-draft-wsl-channel-v1.json)
+passes actual Linux asset hash/size, 537 installed members, 23 notice inputs,
+22 license texts and native ABI import, with zero source overlays. Guest and
+backing-volume checks pass, existing dependencies reused, actual exits0/awaited.
+Managed cleanup removes569files and verifies28retained inputs; scratch absent.
+This does not add GPU or public-channel coverage. Proceed to order2, preserving
+Windows724/Linux725 exact-byte smoke receipts and the unchanged stable channel.
+
+| Order / tracking IDs | Investigation and easiest path | Done when |
+|---|---|---|
+| 1. FIX-06: Linux draft delivery | Reuse the qualified Linux wheel, existing WSL Python/dependencies and corrected 724 adapter. Check guest filesystem/backing-volume health, download the authenticated draft asset once, verify SHA256/size, install offline into one registered scratch target. | Exact 537 runtime members, 23 source notice inputs and 22 dist-info notice texts match; all imports originate in the target; native ABI imports successfully. Retain actual exits/waits and cleanup result. This channel smoke is ABI-only, not another GPU qualification. |
+| 2. FIX-06: public preview | Reuse draft 721 and generated index 710. Recheck reviewed tag target and two asset hashes, publish the prerelease, then add only the two preview-index paths. Keep stable release assets and stable index bytes unchanged. | Public tag resolves to exact 55fd source; actual public wheel bytes match both qualified hashes; public index bytes/links match the reviewed files. Same-version installation instructions use a separate channel/direct hashes. Public bytes may reuse draft installed-smoke evidence only after exact hash equality. |
+| 3. FIX-04/06, API-06: later WIP integration | Enumerate owned post-55fd changes: records/docs, camera-mutation test and color/alpha composition test. Compare runtime/native/build/lock/workflow/tool inputs explicitly; preserve foreign edits and frozen records. | An explicit delta/impact assessment supports evidence reuse, selected tests are actually collected at the new head, required branch protection passes and the owned delta merges normally. Do not label the new head 55fd or transfer its approval automatically. |
+| 4. API-05/06, SCI-05/06, SHD-06, LIF-01–04: record audit | Join each open row to its newest exact evidence before selecting another experiment. Start with stale stencil, minimized-window, parent-destruction, clipping and admission wording. Reuse 664/665, 708 and 718 rather than replaying them. | Each selected row names the supported route/values, exact profile/artifact, evidence level and genuinely missing behavior. Close only matching finite items; retain historical upstream/driver failures. An evidence-only wording fix requires no native rebuild. |
+| 5. LIF-06 / API-06: Qt input | First inspect delivered-event fixtures for keyboard, wheel, focus, mouse, timer and coordinate routing. Select one missing ordinary public interaction; do not expand to physical HID or gestures. | A focused toolkit-delivered event produces the expected payload/coordinate and response, with focus isolation, mutation/recovery where applicable, and teardown on Windows/WSL. Mock dispatch alone is labelled source-tested. |
+| 6. SCI-03 / STA-01: camera and state | Preserve completed azimuth/center mutations. Audit remaining camera projection, clipping-plane and depth/stencil interactions; select one useful uncovered combination with an analytic or frozen oracle. | Before/change/restored pixels, state isolation and cleanup prove the named combination on both current installed profiles. Fresh-scene equivalence is labelled metamorphic rather than an independent upstream oracle. |
+| 7. SCI-02: filter breadth | Compare implemented filter routes against the six completed color/alpha composition cases. Select one useful missing ordering or blending interaction, not a Cartesian product of every filter. | Deterministic expected pixels, queued before/change/restored revisions, detach/reattach and invalid-input recovery cover the selected composition. Unselected filters, blending and MSAA remain explicit boundaries. |
+| 8. LIF-01–05: lifecycle and capture | Audit actual acquisition/fault/surface-loss evidence and MSAA depth/stencil cells. Choose one missing failure or format cell only after distinguishing it from completed minimize/reparent/close controls. | A real selected failure/capture case verifies recovery or explicit refusal, shared-peer behavior and resource retirement. Driver-specific outcomes stay pinned to their driver; no physical-GPU claim from WSL. |
+| 9. SHD-01–05, TEX-01, LIN-01, SCI-01/04: rendering breadth | For each parent, map implemented forms, intentional refusals and existing rendered evidence. Prioritize a concrete application need; use supported forms before changing compiler/native code. | One named type/layout/index/LOD/line/volume case has a deterministic oracle, mutation, limit/refusal/recovery and exact installed scope, or its support boundary is documented without claiming implementation. Large-volume quality and performance remain separate claims. |
+
+Orders 1–4 complete delivery and establish the trustworthy remaining feature
+queue. Orders 5–9 are a proposed priority, not a requirement to implement every
+variant. After each packet, select the next demonstrated user-visible gap from
+the audit; skip a packet whose exact behavior already has adequate evidence.
+
+### Per-gap investigation contract
+
+1. Write a small claim record under the existing checklist ID: public API and
+   values, desired behavior, current source route, latest evidence and one
+   missing observation. Classify it as defect, missing test, stale wording,
+   intentional improvement/refusal or deferred scope.
+2. Inspect source and existing tests first. For a defect, retain a bounded
+   failing reproducer and expected oracle before changing code. For missing
+   evidence, test the existing implementation. For stale wording, update the
+   record without running graphics or building a wheel.
+3. Fix the smallest responsible layer. Reuse native payloads when their inputs
+   match; changed Python packaging does not by itself require a native rebuild.
+   Record any source-only result separately from installed qualification.
+4. Verify the named ordinary/mutation/failure/recovery cases as applicable.
+   Run broader tests only when changed dependencies or an observed failure
+   justify them. Preserve failed attempts; do not weaken a verifier.
+5. Update both live checklists with date, evidence, source/artifact/profile and
+   exact boundaries. Retain actual exit/child-wait records and finish managed
+   cleanup before starting the next experiment or handing off.
+
+Use `docs/build-hygiene.md`, `compat/build-hygiene.json`, the coordinator-selected
+managed root and current protected/blocked registry. Register before writable
+scratch; one experiment at a time, declared peak budget, no new unmanaged build
+trees/environments or copied evidence histories. Budget/filesystem failures stop
+allocation. Preserve source, original notices, minimal reproducers and current
+qualification evidence; retain small reconstruction references for superseded
+successes. Unknown-owner files and identity-pinned origins are not cleanup targets.
+
+BUG-01/02 receive a new campaign only for recurrence or a new causal hypothesis;
+record the known unresolved boundary otherwise. Optional hosts, new ABIs/GPU
+families, cache/performance projects and historical cleanup receipt audits are
+separate follow-ups, not automatic delivery blockers. Native physical Linux,
+Metal graphics, Wayland, ARM/free-threaded Python, fractional DPI and generated-line
+MSAA keep their existing unavailable/deferred scope. No cybersecurity work or
+full-parity requirement is introduced. No universal coverage percentage is valid.
+
+## Historical execution checkpoints
+
+Windows draft smoke724passed, 2026-11-14:
+[record](../../../compat/api-acceptance/preview-draft-windows-channel-v1.json)
+verifies537members/23source notice inputs/22dist-info texts, no overlays, exact
+64x64Vulkan clear and ten zero gauges. Reuses722transport/current original9e4
+bytes without redownload; preserves the earlier verifier failure. All exits
+awaited, target cleaned. Next WSL draft download/installed ABI-only check, then
+actual public prerelease/separate index/byte readback. No native rebuild needed.
+
+Draft Windows smoke722adapter failure, 2026-11-14:
+[receipt](../../../compat/api-acceptance/preview-channel-adapter-failure-v1.json)
+records successful authenticated transport/installation, then an assertion before
+native import. [723](../../../compat/api-acceptance/preview-notice-placement-v1.json)
+verifies23source-defined notice inputs(all exact) and22dist-info notice texts;
+the extra input is metadata manifest.json in vispy/_licenses. Correct only the
+adapter namespace/count, not wheels or validators. Failed exit1/awaited;
+24,713,237bytes cleaned/18inputs verified. Reuse original9e4wheel and exact722
+download receipt for the successor smoke; do not download it again solely for
+this verifier correction. Later public-byte readback still remains required.
+
+Delivery draft721created, 2026-11-14:
+[record](../../../compat/api-acceptance/preview-release-draft-v1.json) verifies
+draft prerelease445068448at exact55fdand two unchanged wheel digests/sizes.
+Stable delivery.json/two wheels and two index blobs untouched. Actual exits0/
+awaited;85bytes cleaned/30inputs verified. Next one bounded draft-asset download/
+isolated install at a time: Windows exact537members/Vulkan clear, WSL537members/
+native ABI import. Clean each before the next. Only then publish exact prerelease,
+add the two reviewed preview-index paths without stable changes and verify
+actual public bytes/index; retain explicit Linux channel ABI-only scope.
+
+Delivery preflight720failed before remote mutation, 2026-11-14:
+[record](../../../compat/api-acceptance/preview-draft-precheck-failure-v1.json)
+shows the stable release has delivery.json as well as two correct wheel hashes.
+Correct successor must filter exactly the two wheels and preserve all three
+assets, not overwrite/remove the receipt. Actual exit1/awaited; original cleanup
+duplicate-path refusal0deletion preserved, corrected new manifest/unchanged
+tool cleans85bytes and verifies15inputs. No release/native/qualification change.
+
+Packet3protected source integration complete, 2026-11-14:
+[719](../../../compat/api-acceptance/parent-protected-integration-v1.json) verifies
+PR77mergeba49b468tree4260039fequals the exact23-job tested PR tree37e718a1.
+Exact55fdsource head pinned, required checks pass, no force/admin bypass or
+shared checkout/index change; source702hashes remain unchanged. Connector ready
+permission failure is retained; existing authorized CLI completes protected
+auto-merge, actual exits awaited, no scratch. Next publish only the reviewed
+exact55fdcommit-stamped prerelease/preview namespace after draft-asset/install
+checks, then public byte/channel readback. Later post-head records/docs/two
+tests require separate explicit delta/impact/protected integration; do not
+label their future head55fd or transfer the old review to new critical bytes.
+
+Packet2actual admission complete, 2026-11-14:
+[718](../../../compat/api-acceptance/parent-final-admission-v1.json) passes
+unchanged strict128-binding admission plus8current mandatory rows at reviewed
+manual-retention scope. Exact guard sequence716runs before/after materialization,
+immediately around validation and after matrix derivation; all14canonical/
+702committed files restore and foreign HEAD/index stay unchanged. New derived
+matrix viewe1efb9ad…preserves original230b12f3and all8other rows(6optional
+historical/2NOT_ADMITTED). Actual exit0/awaited;87bytes cleaned/44inputs verified.
+Next packet3: fresh protected PR77state/source identity audit and authorized
+integration, separate delta/impact check for later data/docs/two tests, exact
+55fdpreview tag/prerelease, draft-asset byte/install checks and public channel
+readback.714/716conditions and717notes/tag corrections remain binding. Broader
+API/hardware/optional-host work is not discharged by this selected admission.
+
+Packet2final review approved, 2026-11-14:
+[714](../../../compat/api-acceptance/parent-promotion-review-v1.json) approves
+exact basis/eight manual-retention rows/commit-preview scope, preserving all
+conditions and limits.89scratch bytes cleaned/886inputs verified, actual exit0/
+awaited. Before admission, resolve F4precisely: source workspace has no.git and
+all702inputs include the one intentionally overlaid ledger. [715](../../../compat/api-acceptance/admission-source-guard-v1.json)
+proves all702actual files equal55fdGit blobs without changing foreign HEAD/index;
+focused716review now assesses the exact701-nonledger/positive-ledger guard and
+full702restoration sequence. No actual admission yet. [717](../../../compat/api-acceptance/preview-publication-corrections-v1.json)
+addresses F2/F3notes/tag prerequisites as new records, preserving frozen701/714.
+Then derive the new current-row matrix identity while leaving the historical
+matrix/six optional/two NOT_ADMITTED rows unchanged, execute actual guarded
+admission and complete protected integration/delivery. No verifier is weakened.
+
+Packet2actual basis/review progress, 2026-11-14:
+[711](../../../compat/api-acceptance/parent-promotion-basis-v1.json) seals exact
+basis1e92e7de…for subject86efb22b…/head55fd4e8with full709CI/impact702.702committed
+inputs unchanged; byte-identical small subject copy satisfies the outer source-
+local reference namespace, preserving transitive origins. Actual assembly exit0/
+awaited, no scratch. Read-only714final review is now active with871input guards;
+separate basis/eight-row/channel decisions required. Guarded actual admission/
+restoration, protected integration and delivery remain future gates. Older
+prepared/unexecuted and live-CPU snapshots below are historical.
+
+Packet1complete, 2026-11-14: [709](../../../compat/api-acceptance/parent-final-head-ci-v1.json)
+passes unchanged full23-job original CI/history/attempt/checkout validation at
+55fd4e8.15CPU/3native reports reused; only5small CPUarchives downloaded. Actual
+exits0/awaited;1,012,877bytes cleaned/84inputs verified, scratch absent. Proceed
+to711exact basis and714independent final review, then actual guarded admission/
+restoration, protected integration and delivery. Earlier live-job snapshots
+below are historical; no CI/admission claim is transferred to another head.
+
+Packet6SCI-02selected composition subset complete, 2026-11-14:
+[Windows712](../../../compat/api-acceptance/mesh-color-alpha-windows-v1.json) and
+[WSL713](../../../compat/api-acceptance/mesh-color-alpha-wsl-v1.json) each pass
+six Alpha/ColorFilter/TextureFilter/PlanesClipper cases. Literal32x24pixels match
+for all three queued revisions(pending2/4/6), including detach/reattach, zero
+alpha and invalid-input recovery. Both targets cleaned47,787,437bytes/1,150files,
+68retained-input verifications; exits awaited and native inputs unchanged.
+BroaderSCI-02stays partial. Original CPU43554619087still19success/1active in the
+latest verified poll; return to its completion and final709/711gates. Post-head
+tests do not change the frozen-head qualification claim.
+
+Packet6SCI-02composition progress, 2026-11-14:
+[Windows712](../../../compat/api-acceptance/mesh-color-alpha-windows-v1.json)
+passes six Alpha/ColorFilter/TextureFilter/PlanesClipper mutation cases with
+literal32x24pixels, three queued snapshots(pending2/4/6), detach/reattach, zero
+alpha and immediate recovery after invalid input. Existing wheel/runtime reused,
+no native change. Actual exit0/awaited;17,908,464bytes cleaned/33inputs verified.
+Next run only this finite counterpart on WSL, then return to original CI/final
+admission. General filter ordering/compositions/blending/MSAA remain open.
+
+Packet3local delivery preparation, 2026-11-14:
+[preview710](../../../compat/api-acceptance/parent-index-preview-v1.json) generates
+two separate763-byte-total package-index pages using the unchanged generator.
+The proposed commit-stamped prerelease namespace links exact existing wheel
+bytes; stable four-link index blobs are fetched/verified and untouched. No
+scratch/native build/remote write; actual exit0/awaited. This proposal still
+requires final review acceptance and complete CI/admission/protected integration
+before publication and actual channel checks. Same version is not a stable upgrade.
+
+Latest continuation checkpoint, 2026-11-14: original CPU43554619087has19passes
+and1active macOS x86_64 CPython3.11.14build, no observed failures. Final collector709is prepared
+and syntax-checked but unexecuted/unregistered; it reuses704's15CPU reports and
+700's3native reports, downloads only five missing small archives and requires
+all23original jobs/history before creating a valid bundle. No scratch allocated
+for this preparation. Continue the same handles, then exact promotion-basis
+review and scoped admission.708completes seven-row record reconciliation only.
+
+Promotion-basis assembler711is also prepared/syntax-checked, not executed. It
+requires709complete validation and cleanup, rechecks702committed input hashes,
+materializes only the necessary small immutable subject JSON in the outer
+envelope's source-local namespace and preserves all transitive evidence origins.
+Only then may it seal the exact basis for independent final review. No gate
+or verifier is changed and no scratch is allocated by this preparation.
+
+Final review-packet builder714is prepared/syntax-checked, not executed. It
+requires actual709CI/711basis outputs, freezes original run/jobs/identity/history
+objects and exact eight-row/manual-retention evidence, includes the concrete
+701/710preview proposal and explicitly withholds broad API/hardware claims.
+It requests separate exact promotion/eight-row/channel decisions and later
+controlled-integration conditions. Original CPU run remains19pass/1active at
+the latest verified poll; do not register or launch review before prerequisites.
+
+## Next investigation queue — 2026-11-13 planning revision
+
+This queue supersedes older next-action instructions below. This revision is
+planning only: no CI refresh, experiments, admission or publication was run.
+Recorded CI snapshots are historical until refreshed. Do not repeat already
+completed preparation, installed observations or parent-destruction fixes.
+
+### Starting evidence and scope
+
+The [head-bound subject](../../../compat/api-acceptance/parent-head-installed-subject-v1.json)
+records 128 proved criterion/profile bindings across 64 criteria at qualification
+head `55fd4e82e1a1d7bcb9d3c93a5e66c1bc825b09a1`, runtime `2b8bccd`,
+Windows wheel `9e4e30cc…` and Linux wheel `a2715d26…`. This is finite installed
+proof, not admission. [All eight mandatory observations](../../../compat/api-acceptance/mandatory-parent-current-wheels-observations-v1.json)
+and their [pre-admission review](../../../compat/api-acceptance/parent-mandatory-peer-review-v1.json)
+already exist. [Three native CI identities](../../../compat/api-acceptance/parent-native-ci-identities-v1.json)
+are verified; the complete final-head 23-job evidence remains unverified in the
+records inspected for this revision. Published Vulkan.2 remains a separate,
+immutable release. None of these counts measures full VisPy parity.
+
+### Ordered packets and finish conditions
+
+Packet4seven-row record reconciliation complete, 2026-11-13:
+[708](../../../compat/api-acceptance/scientific-current-dispositions-v2.json)
+verifies33input hashes, both44-case JUnits, both camera packets and six current
+Qt rows' original seven-stage reports. The existing method-reconciliation
+document now maps U05/E03/E04/Q11–Q13/H03to exact current, historical or open
+scope and next claims.707adapter failure is retained; corrected708exits0/awaited,
+no replay/install/scratch. Broad API/capability review and admission remain open.
+
+Packet1latest verified wait, 2026-11-13: original CPU43554619087poll5has
+16success/4in-progress/no failures. All702committed qualification inputs still
+rehash unchanged after separate camera tests. Reuse15CPU/3native retained
+identities; final full23-job/history validation remains pending.
+
+Packet6selected camera-mutation subset complete at local installed scope,
+2026-11-13: [Windows705](../../../compat/api-acceptance/camera-mutation-windows-v1.json)
+and [WSL706](../../../compat/api-acceptance/camera-mutation-wsl-v1.json) each pass
+2public TurntableCamera azimuth/center mutations with exact fresh-scene changed
+poses, visible-change controls, peer-scene closure and independent frozen-pose
+restoration. Current wheels/runtime unchanged; post-head test is not final CI
+or admission proof. Ten zero gauges each; all exits awaited. Both temporary
+targets cleaned47,787,811bytes/65retained-input verifications. SCI-03 remains
+partial for other cameras, projection/event and plane/depth/stencil interactions.
+
+Packet6bounded progress during original CI wait, 2026-11-13:
+[Windows camera705](../../../compat/api-acceptance/camera-mutation-windows-v1.json)
+passes public TurntableCamera azimuth/center mutation, fresh-scene equivalence,
+peer-scene closure and exact frozen-pose restoration on the existing wheel.
+Two tests are post-head source, no runtime/native changes. Changed poses have
+metamorphic, not independent upstream, oracles.537members/zero overlays/ten zero
+gauges; exit0/awaited;17,908,651bytes cleaned/32inputs verified. Next renew this
+same finite case on WSL; broader3Dstate combinations and final release gates
+remain separate. Original CI was verified live before choosing this task.
+
+Packet1partial completion, 2026-11-13: [704](../../../compat/api-acceptance/parent-cpu-ci-identities-v1.json)
+verifies15completed CPU identities against original attempt1/run43554619087
+metadata, artifact byte counts/digests and exact source/PRcheckout/workflow pins.
+Five CPU jobs remain pending in the retained snapshot. Final collection must
+reuse704's15reports and700's3native reports, download only missing identities,
+refresh all original run/jobs/history and validate the unchanged23-job bundle.
+Collector exits0/awaited;3,017,597bytes cleaned/83inputs verified, no scratch.
+
+Latest packet1wait, 2026-11-13: original CPU43554619087poll4verifies15success/
+5in-progress/0queued, no failures. Keep the same live handles. No all23-job
+bundle or final admission/promotion is inferred from this snapshot.
+
+Packet2 supplement, 2026-11-13: [audit703](../../../compat/api-acceptance/candidate12-review-transition-v1.json)
+checks702F4against the original674candidate archive and675before-hashes. Only
+review references and the seal change; both scope digests and approval hashes
+verify. Coordinator source-only evidence does not broaden the independent
+review. Actual exit0/awaited, no scratch/build or new admission.
+
+Packets1–2 checkpoint, 2026-11-13: [impact review702](../../../compat/api-acceptance/parent-head-change-impact-v1.json)
+approves exact subject86efb22b/head55fd4e8 reuse only, with no required changes;
+read/hash-reliance limits and later-head exclusion remain attached. Reviewer
+exit0/awaited;8,908scratch bytes removed,828inputs verified. Original CPU
+run43554619087poll3has14success/5running/1queued, no failures; remaining work is
+macOS CPU builds/vendor restoration. Complete the same handles'23-job identity
+and history bundle, then obtain exact promotion-basis review. Do not transfer
+this approval to new source commits or skip guarded ledger restoration.
+
+| Order / IDs | Question and cheapest first action | Required result / stop rule |
+| --- | --- | --- |
+| 1. FIX-04/06, TOOL-01 | Refresh PR77, its exact head and the existing CPU43554619087, Linux43554619086 and Metal43554619080 attempts. Inspect any incomplete change-impact review registration before resuming or creating scratch. | Record current state, not an inferred pass. Collect missing CPU identities and complete original run/job/attempt histories; reuse the three verified native identities. Validate all23 jobs at the exact head. Queue delay alone never triggers redispatch or rebuilding. A failure gets one diagnosis and a minimal reproducer before a retry. |
+| 2. FIX-04/06, API-06, SHD-06 | Join the head-bound subject, eight-row dossier, exact failure dispositions and complete CI. Identify the first invalid field before repeating a graphics test. | Exact source-to-artifact impact review, then exact promotion-basis review and unchanged scoped admission validators. Keep generic Tk retention separate from the mandatory rows' manual foreign-origin audit. Preserve all14 canonical files and original failures. Missing joins remain open. |
+| 3. FIX-04/06 | Review the owned delta and current main; inspect the existing publication proposal before selecting a delivery identity. | Protected integration, then actual delivered-byte and isolated channel-install checks if publishing. Resolve the current wheels' unchanged `0.17.0+vulkan.2` version versus different published bytes explicitly: never overwrite stable assets or invent a version by renaming a wheel. A preview proposal is not an approved or completed delivery. Preserve AGPL, original BSD and dependency notices. |
+| 4. API-05/06, SCI-05/06 | Reconcile U05/E03/E04/Q11–Q13/H03 and numeric-zero/stencil wording against current evidence. Use the existing method catalog and public-route documents, not a fresh full inventory. | A compact route/value/evidence table in the live checklist: source, artifact/profile, observed behavior, missing assertion, disposition and reopening trigger. Q11 is MSAA depth/stencil; Q13 is input, not volume coverage. Correct stale statements without promoting historical/source proof to current installed admission. |
+| 5. LIF-01–06 | Audit existing real-toolkit reparent, parent deletion, minimize/restore, close and injected-loss checks. Select the first missing observable transition, not an entire lifecycle rewrite. | One finite case with callback/order, no-submit or exact peer output, failure/recovery and final resource gauges as relevant. Keep toolkit/readback evidence separate from physical WSI loss. Add a runtime fix only after a demonstrated failure. |
+| 6. SCI-01–04, STA-01 | Rank point, filter, camera and volume combinations by an actual supported workflow. Begin with a public camera mutation in the existing two-scene fixture if reconciliation finds no smaller confirmed gap. | One analytic or frozen-reference before/after result, relevant boundary/recovery case and exact profile. Reuse existing point/filter passes; select volume quality, modes and performance separately. Do not turn every possible combination into a required test. |
+| 7. SHD-01–06, TEX-01, LIN-01, LIF-05–07 | Expand shader, texture, line, MSAA or input forms only when packets4–6 identify a needed route. Start with parser/refusal and retained driver/profile evidence. | Named supported values, positive result, boundary/refusal and recovery. A documented restriction closes only its disposition task. Broad parent capability remains partial where appropriate. |
+| 8. BUG-01/02, HOST/PLAT/PERF/TOOL backlog | Inspect existing startup campaigns and historical receipts first. Select optional hosts or optimization only for an actual application claim or measured bottleneck. | Startup investigation requires recurrence or a new causal hypothesis; bounded non-recurrence does not prove a fix. Search once for missing historical cleanup proof; never recreate it through another deletion. Unselected work remains deferred with a reopening trigger. |
+
+### One-gap execution protocol
+
+Packet4 partial progress, 2026-11-13: both664/665selected JUnit files were
+rehashed against the current installed packet and their44case IDs/results
+compared. Stencil and live-checklist wording now records the existing local
+installed11clear/8stencil/10point/4filter/2scene/9Qt cases per platform.
+No runtime replay or broader admission follows. Remaining reconciliation must
+still distinguish Q11 MSAA, Q13 input, H03 historical host scope and the specific
+uncovered camera/filter/point combinations.
+
+1. State the public route, selected values/profile and exact missing observation.
+   Classify the item as a confirmed defect, evidence gap, stale record, explicit
+   restriction or deferred scope. Record the cheapest falsifying check.
+2. Read existing evidence before running anything. Start with source-only checks
+   in the existing environment. For an experiment, predeclare attempt/time/storage
+   bounds in its run manifest; stop on the first useful failure or budget limit.
+3. Fix only the demonstrated route. Add a regression that distinguishes the old
+   and corrected behavior. Rebuild native code only when native inputs changed;
+   qualify only artifacts/profiles affected by the change-impact assessment.
+4. Update the affected IDs in both live checklists with date, source/artifact,
+   profile, result, evidence and remaining boundary. Keep source-tested,
+   installed-qualified, admitted and publicly delivered states separate.
+5. Retain failures, sources/notices and actual exit/child wait. Inspect/apply the
+   managed cleanup plan and record its result before the next experiment.
+
+Use the coordinator storage root and current protected/blocked registry under
+[build hygiene](../../build-hygiene.md), with one registered run per writable
+scratch allocation. Do not copy environments, SDKs or evidence histories. This
+planning revision creates no scratch, build assets or temporary environment.
+
+The immediate milestone is completion of packets1–3 for the selected successor,
+followed by one selected feature gap at a time. The142 original obligations and
+984 unreviewed operation groups are inventories, not confirmed defects or a new
+full-parity target. Windows/WSL remain the practical target; Metal graphics stays
+experimental, with physical Linux GPUs, Wayland, other ABIs/architectures,
+fractional DPI and lab scanout measurements retaining their existing boundaries.
+Cybersecurity work is excluded.
+
 ## Active investigation and closure queue — 2026-11-13
 
 This section supersedes the older next-work instructions below; their evidence
@@ -23,6 +425,16 @@ updating both live checklists with the exact result before starting the next.
   immutable. Keep AGPL and original BSD/dependency notices attached.
 
 ### Release-critical sequence
+
+Current CI wait: original CPU43554619087poll2has2pass/13running/5queued, no failures. Same-handle continuation only; Linux/Metal3identities retained700, native transport cleaned. Next CPUcompletion/20identities/full23-job-history join, then exact admission/promotion/integration.
+
+Step4 [700native identities](../../../compat/api-acceptance/parent-native-ci-identities-v1.json)verifies3successful original Linux/Metal PR job checkout/source-parent/workflow/collector joins at55fd.202,057,916transport bytes hash-verified, only identity/member metadata retained;202,058,005bytes cleaned/36inputs verified. No native extraction/build. Next original CPU43554619087completion,20CPUidentities and full23-job/history validation, then exact promotion/admission/integration.
+
+Step4 [699exact55fd subject](../../../compat/api-acceptance/parent-head-installed-subject-v1.json)renews128bindings/zero missing-blocked,702committed input joins; all14files restored using684archive, no scratch/native build, owner index unchanged.698poll1hasLinux1/Metal2jobsSUCCESS,CPU15running/5queued. Next same-handle CI completion plus all identity/artifact/history joins, exact promotion/admission and PR77protected integration/delivery.
+
+Step4 [698draftPR77/CI](../../../compat/api-acceptance/parent-head-ci-start-v1.json)starts exact55fd PR attempt1handles CPU43554619087/Metal43554619080/Linux43554619086, zero duplicate manual dispatches. Snapshot:LinuxSUCCESS(metadata only),CPUqueued,Metalin progress.23jobs/identities/full histories still required. No scratch. Next guarded55fd subject renewal while polling these original handles; no merge/admission yet.
+
+Step4 [697owned head](../../../compat/api-acceptance/parent-qualification-source-head-v1.json)pushed55fd4e8:110files/3,738,502bytes, all608runtime/build/license inputs unchanged, other-owner index preserved.15,115,728bytes cleaned/51inputs verified; failed696caller setup preserved/cleaned separately. Next exact55fd CI23jobs, avoiding duplicate PR/manual dispatch; guarded head proof and final admission/integration remain open.
 
 Step3 [695independent pre-admission review](../../../compat/api-acceptance/parent-mandatory-peer-review-v1.json)approved exact current bindings/fixtures/manual retention/finite history and688failure disposition, no required changes. Read-range/hash-reliance/unread-row/unknown-child limits retained; original failed status unchanged.88bytes cleaned/1156inputs verified,14canonical files unchanged. Next step4owned final head/23-job CI and head-proof renewal, then exact admission/promotion/integration/delivery; no release approval.
 

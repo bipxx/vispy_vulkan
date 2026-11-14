@@ -1,6 +1,207 @@
 # Remaining gaps checklist
 
+## Latest checkpoint — 2026-11-14
+
+**Independent impact review and local commit A complete:**
+[731/732](../compat/api-acceptance/post-preview-reviewed-commit-v1.json) approves
+the exact78-file delta with conditions/no required changes and records local
+commit `63abac6b8a6317766ee1b0a8cfa72da135f2c906`.810source guards/702Git inputs,
+885frozen review inputs, exact staged blobs/path set and doc API links verify;
+foreign index unchanged.8local collected nodes join by exact test bytes, not CI
+coverage or new qualification/admission. Review/private-index scratch removed
+15,126,134bytes total;900/51inputs verified. Next the allowed metadata checkpoint,
+then push/PR and actual protected checks/merge. No push/integration result yet.
+717notes hash refers to retained pre-publication notes, not the current doc;
+prior snapshot receipts stay unchanged.
+
+**Later-WIP inventory verified; review/integration remain:**
+[730](../compat/api-acceptance/post-preview-delta-audit-v1.json) checks the77-file
+owned delta snapshot,810unchanged source guards and702matching frozen committed
+Git inputs; foreign index unchanged.8newcamera/filter cases collect locally,
+exit0/awaited, without execution or CI claims.729wrong source-versus-Git namespace
+adapter failure is retained; corrected730uses the authoritative committed map.
+No environment/native build/scratch or cleanup target created. Next freeze the
+updated owned delta including this receipt, obtain explicit independent impact
+review and integrate normally under branch protection. The77count describes
+the audit snapshot, not subsequent documentation/receipt additions.
+
+**Public preview delivery closed; later-WIP integration next:**
+[726publication](../compat/api-acceptance/preview-publication-v1.json) and
+[728readback](../compat/api-acceptance/preview-public-delivery-v1.json) prove
+exact55fd prerelease/two preview paths, both public wheel hashes and all four
+served HTML pages. Stable assets/latest/index unchanged. Windows clear/WSL
+ABI-only smokes join by exact bytes, not another GPU qualification.727buffered
+HTML checker failure stays failed; corrected adapter changes no published content.
+All children awaited;17,377,805scratch bytes cleaned across726–728, scratch absent.
+Next review/integrate later records/docs/two tests at their actual new head,
+then audit stale feature rows before choosing another behavior gap.
+
+**Linux draft smoke complete:** [725](../compat/api-acceptance/preview-draft-wsl-channel-v1.json)
+passes authenticated a2715d26 download hash/size, offline isolated install,
+537members/23notice inputs/22notice texts and native ABI import with no overlays.
+Guest/backing-volume checks pass, existing WSL dependencies unchanged, all
+processes exit0/awaited.569scratch files removed/28retained inputs verified;
+no scratch remains. Scope is ABI-only, not GPU or public delivery. Both draft
+smokes now pass; next public prerelease, separate preview index and actual
+public-byte/channel readback, then later-WIP integration.
+
+**Current investigation order — planning only:** follow the
+[authoritative closure queue](superpowers/plans/2026-11-13-remaining-gap-closure.md#authoritative-next-actions--2026-11-14).
+Next: FIX-06 WSL draft ABI check, public prerelease/index and public-byte readback;
+then FIX-04/06/API-06 later-WIP delta review and protected integration. Audit
+API/SCI/lifecycle/clipping rows against newer evidence before running more tests.
+After that, select finite Qt input, camera/state, filter, lifecycle/capture or
+rendering cases in that proposed order, skipping already-proved behavior.
+Admitted/merged 718/719 work is not repeated. Broader parents stay partial and
+hardware/full-parity boundaries remain unchanged. No execution or new pass claimed.
+
+**Windows authenticated draft smoke complete:** [724](../compat/api-acceptance/preview-draft-windows-channel-v1.json)
+passes exact537members/23notice inputs/22notice texts and64x64Vulkan clear,
+zero overlays/ten zero gauges on the current9e4wheel.722successful transport
+is reused; original adapter failure is not relabelled. Exits0/awaited and target
+cleaned. WSL ABI transport/install, public prerelease/index and public-byte
+readback remain next; this is not yet public delivery.
+
+**Windows draft delivery adapter failure retained:** [722](../compat/api-acceptance/preview-channel-adapter-failure-v1.json)
+downloads/installs exact draft9e4bytes but stops before native import on a wrong
+license-directory count. [723](../compat/api-acceptance/preview-notice-placement-v1.json)
+proves all23source notice inputs/22notice texts per wheel; manifest.json is
+metadata and is packaged under vispy/_licenses. No license/artifact is missing.
+24,713,237bytes/18inputs cleaned/verified, failed exit1awaited. Next corrected
+smoke reuses the authenticated receipt and immutable original without redownload.
+
+**Draft preview ready for delivery smokes:** [721](../compat/api-acceptance/preview-release-draft-v1.json)
+retains draft release445068448, exact55fdtarget and two uploaded current wheel
+SHA256/size matches. Stable delivery.json/two wheels/index untouched; not public.
+All children exit0/awaited,85bytes cleaned/30inputs verified. Next draft-asset
+download/install checks Windows/WSL, then reviewed public prerelease/index and
+public byte/channel readback. No new native build or artifact qualification.
+
+**Delivery precheck correction needed:** [720](../compat/api-acceptance/preview-draft-precheck-failure-v1.json)
+retains an adapter assertion before any release mutation: stable assets include
+delivery.json plus the two expected wheels. All remain unchanged. Failed exit1/
+awaited; duplicate-retained-path cleanup refusal0deletions preserved, corrected
+new manifest succeeds85bytes/15inputs. Next successor checks only exact wheel
+digests and preserves the complete stable-asset baseline; no native rebuild.
+
+**Protected PR77source merge complete:** [719](../compat/api-acceptance/parent-protected-integration-v1.json)
+records mergeba49b468with tree4260039fidentical to the23-job tested PR tree.
+Exact55fdhead pin/required checks pass; no protection bypass, force or shared
+checkout/index changes. Connector ready permission error retained; authorized
+existing CLI performs ready/body/auto-merge and verifies actual merge. No
+scratch. Next exact55fdprerelease/tag, separate preview-index delivery and
+isolated delivered-byte/channel checks; later records/docs/two tests still
+require their own explicit delta/impact/protected integration.
+
+**Selected successor admitted; integration/delivery remain:**
+[718](../compat/api-acceptance/parent-final-admission-v1.json) passes actual
+strict128-binding admission and all8reviewed current mandatory rows. Source
+view equals55fdGit blobs; all14canonical/702committed inputs restore exactly,
+foreign checkout/index unchanged. New matrix viewe1efb9ad…preserves the original
+230b12f3matrix, six optional historical and two NOT_ADMITTED rows; manual foreign
+retention stays separate from generic Tk retention. Actual exit0/awaited;
+87scratch bytes removed/44inputs verified. Next protected integration and
+delivery under714/716conditions, with separate delta/impact check for post-head
+data/docs/tests. This does not close broader capability parents or publish assets.
+
+**Exact final review approved; execution guards pending clarification:**
+[714](../compat/api-acceptance/parent-promotion-review-v1.json) approves exact
+basis/eight manual-retention rows/preview scope; conditions and unread/hash-
+reliance limits retained. Actual exit0/awaited;89bytes cleaned/886inputs verified.
+[715](../compat/api-acceptance/admission-source-guard-v1.json) proves702source
+files equal55fdGit blobs without changing foreign checkout HEAD/index. Focused
+716review is active for that topology and the sole temporary ledger exception;
+actual admission is still unexecuted. [717](../compat/api-acceptance/preview-publication-corrections-v1.json)
+records exact55fdtag target, separate-index/direct-hash installation and installed
+byte identification notes. No publication, artifact change or stable upgrade.
+
+**Exact basis711sealed; final independent review714active:**
+[Basis711](../compat/api-acceptance/parent-promotion-basis-v1.json) binds full709CI,
+exact impact702and subject86efb22b/head55fd4e8as basis1e92e7de…. All702committed
+inputs unchanged, small subject copy byte-identical, no origin moves or scratch;
+assembly exit0/awaited. Read-only reviewer714has871frozen inputs and requests
+separate exact basis/eight-row/preview-channel decisions. Final admission,
+protected integration and delivery are still pending; review is not approval.
+
+**All23final-head CI jobs validated:** [709](../compat/api-acceptance/parent-final-head-ci-v1.json)
+joins all20CPU/Linux/twoMetal jobs at55fd4e8with original histories, attempts
+and checkout identities through the unchanged validator.15CPU/3native reports
+reused, only5small archives downloaded(1,012,805bytes). Actual exits0/awaited;
+cleanup removes1,012,877bytes/6files, verifies84inputs, scratch absent. Next
+seal exact basis, obtain final independent review, execute guarded scoped
+admission/restoration, then protected integration/delivery. This is not admission.
+
+**SCI-02-COLOR-ALPHA-COMPOSITION installed subset complete:** [Windows712](../compat/api-acceptance/mesh-color-alpha-windows-v1.json)
+and [WSL713](../compat/api-acceptance/mesh-color-alpha-wsl-v1.json) each pass six
+Alpha/ColorFilter/TextureFilter/PlanesClipper cases on current9e4e30cc/a2715d26/
+runtime2b8bccd. All before/change/restored32x24RGBA frames match literal expected
+values; all three revisions stay queued(pending2/4/6). Includes detach/reattach,
+zero alpha and valid replacement after invalid-alpha ValueError.537members/
+zero overlays/ten zero gauges each; controller/Xvfb exits0/awaited, borrowed
+WSL origins unchanged. Both targets cleaned47,787,437bytes/1,150files and
+68retained-input verifications. Post-head tests do not broaden frozen55fdCI or
+admission; general filter ordering/compositions/blending/MSAA stay open.
+
+**SCI-02/API-06 Windows composition subset:** [712](../compat/api-acceptance/mesh-color-alpha-windows-v1.json)
+passes six Alpha+ColorFilter+TextureFilter+PlanesClipper cases on runtime2b8bccd/
+wheel9e4e30cc. Literal32x24RGBA frames match exactly for before/change/restoration;
+pending draws remain2/4/6 before any read. Covers alpha/color updates,
+detach/reattach, zero alpha and valid replacement after invalid-alpha ValueError.
+537members/no overlays/ten zero gauges; actual exit0/awaited.17,908,464scratch
+bytes removed/33inputs verified. WSL, broader composition/order/blending/MSAA
+and final review/integration/admission remain separate; test source is post-head.
+
+[Local package-index preview710](../compat/api-acceptance/parent-index-preview-v1.json)
+is now concrete: two exact current-wheel links in the proposed separate
+`previews/qt-lifecycle-55fd4e8/simple/` namespace, generated by the unchanged
+package-index tool. Both stable index blobs were fetched and byte/hash-checked;
+their four asset links remain untouched. Preview files total763bytes. Actual
+preparation exit0/awaited; no scratch/native build/remote write. This remains an
+unapproved channel proposal, not publication or a stable-version upgrade. Final
+review must accept its scope after complete CI/admission and protected integration.
+
+The original CPU run43554619087completed20/20successfully.709validates all23jobs/
+history, reusing15CPU/3native identities and downloading only five missing
+archives. Collection scratch is removed. Final promotion/admission remains pending.
+The seven-row SCI-05record reconciliation is complete at the finite scope
+[recorded by708](../compat/api-acceptance/scientific-current-dispositions-v2.json);
+broader API/capability obligations remain open.
+
+Promotion-basis assembly711has completed after full709CI validation and cleanup.
+Independent final review714is active; guarded scoped admission/restoration
+remains separate. Earlier19pass/1active snapshots are historical.
+
 ## Current execution status — 2026-11-13
+
+**SCI-05 seven-row reconciliation completed (2026-11-13; API-05/06 partial):** [708](../compat/api-acceptance/scientific-current-dispositions-v2.json) verifies33input hashes, both current44-case JUnits, two camera packets and six current Qt rows' seven-stage functional/collector/worker reports. [Route/value table](api-method-reconciliation.md#current-seven-row-reconciliation--2026-11-13) classifies U05/E03/E04as finite current installed subsets, Q12as six current observations awaiting admission, Q11/Q13as open capture/input scope and H03as historical upstream-only. Runtime2b8bccd/current9e4e30cc/a2715d26scope; no stock failure,142-obligation or984-operation promotion. Initial707adapter's wrong literal status assertion remains exit1/reproducer;708checks actual exact tokens, exits0/awaited. No new graphics/install/scratch/native build. This closes record reconciliation only; broad capability/release gates stay open.
+
+**Current qualification inputs preserved; original CPU CI live (2026-11-13; FIX-04/06, TOOL-01):** After adding the separate camera tests, all702committed qualification inputs still match699hashes exactly. Original CPU43554619087poll5has16SUCCESS/4in-progress/no failures; same handles continue. Retained704identities still cover15CPUjobs, with remaining identities/full23-job bundle/history required at completion. New camera observations do not alter the frozen subject or grant final admission.
+
+**SCI-03 camera-mutation subset now installed-tested on both platforms (2026-11-13):** [Windows705](../compat/api-acceptance/camera-mutation-windows-v1.json) and [WSL706](../compat/api-acceptance/camera-mutation-wsl-v1.json) each pass2azimuth/center mutation/restoration cases on runtime2b8bccd/current9e4e30cc/a2715d26wheels. Both show4,032/2,969changed pixels, exact fresh-scene changed-pose equivalence, exact frozen baseline/restoration and comparison-peer closure isolation.537members/zero overlays/ten zero gauges verify per profile. WSL pinned software Vulkan/private Xvfb and borrowed origins verify; actual controller/Xvfb exits0/awaited. All new scratch removed:47,787,811bytes/1,142files,65retained-input verifications. Test source is post-head55fd; no final-head CI, admission or independent changed-pose upstream oracle is claimed. Broader camera/state combinations stay open.
+
+**SCI-03/API-06 selected Windows camera mutation gap closed at local installed scope (2026-11-13):** [705](../compat/api-acceptance/camera-mutation-windows-v1.json) passes two public TurntableCamera mutations (`azimuth=80`, `center=(.3,-.2,0)`) on current Windows9e4e30cc/runtime2b8bccd. Both visibly change the scene(4,032/2,969pixels), exactly match a fresh scene at the changed pose, survive comparison-peer closure and restore the original frozen upstream image exactly. Changed-pose oracle is fresh-construction equivalence, not an independent upstream reference.537members/zero overlays/ten zero shutdown gauges verify; actual exit0/awaited. New test source is post-head55fd, without runtime changes or transferred CI/admission. Cleanup removes17,908,651bytes/570files and verifies32inputs. WSL counterpart and broader camera/plane/depth/stencil combinations remain open.
+
+**Fifteen completed CPU checkout identities verified (2026-11-13; FIX-04/06, TOOL-01 partial):** [704](../compat/api-acceptance/parent-cpu-ci-identities-v1.json) retains original run/jobs/artifact metadata and15completed CPU job identities for55fd4e8/run43554619087attempt1. Artifact byte counts/SHA256, exact successful job joins, PR checked-head/source-parent, workflow/collector pins and schema verify. Five CPU jobs remain live in that snapshot; this is not complete23-job CI/history validation. Reuse these15reports plus native700reports when collecting the remaining5; no second download of completed transports. Actual collector/download exits0/awaited; managed cleanup removes3,017,597bytes/16files and verifies83inputs, scratch absent. No wheel/SDK extraction or native rebuild.
+
+**Original final-head CI live, latest poll4 (2026-11-13; FIX-04/06, TOOL-01):** CPU43554619087now15SUCCESS/5in-progress/0queued, no failures. Three native identities remain verified separately. Continue these same handles; full23-job original identities/history and final scoped admission/promotion are still required. No redispatch or build allocation.
+
+**Candidate review-reference transition verified (2026-11-13; FIX-04/06, TOOL-01):** [Source-only audit703](../compat/api-acceptance/candidate12-review-transition-v1.json) compares the original674archived candidate b7458444with current f931132eand original675before-hashes. Only `reviews` and `manifest_sha256` differ; both scopes recompute to4c2295f5and bound review hashes/statuses verify. This supplies coordinator evidence for702nonblocking F4 without changing the independent review or its limits. Actual exit0/awaited; no scratch/build/replay. Final CI/admission/promotion remains pending.
+
+**Exact-head change-impact review approved (2026-11-13; FIX-04/06, API-06, SHD-06, TOOL-01 partial):** [Review702](../compat/api-acceptance/parent-head-change-impact-v1.json) approves reuse only for subject86efb22b/head55fd4e8/runtime2b8bccd; required changes empty. Complete read-only decision and its unread/hash-reliance limits remain retained. Admission must re-materialize the proved ledger under the existing guard and restore all14files; approval does not cover a new head containing later receipts. No CI, matrix/Tk admission, promotion or delivery approval. Actual reviewer exit0/awaited; managed cleanup removes8,908bytes/2files and verifies828inputs, scratch absent. Latest original CPU43554619087poll3has14SUCCESS/5running/1queued, no failures; unfinished jobs are macOS CPU builds/vendor restoration, not Metal graphics qualification. Continue original handles; collect full23-job identities/history before final promotion review.
+
+**Stale installed-scope wording reconciled (2026-11-13; API-06, SCI-01/02/03/05/06):** Re-read both current664/665selected JUnit reports, verified their hashes against [the current installed packet](../compat/api-acceptance/qt-parent-current-installed-v1.json), and confirmed44matching no-failure/no-error/no-skip cases each at runtime2b8bccd/Windows9e4e30cc/Linuxa2715d26. Each includes11numeric-zero/flag/recovery cases,8stencil routes,10point controls(8rendered reference cases),4pending-filter revisions and2fixed scenes, alongside9Qt lifecycle cases. Earlier "unpassed/unpushed/installed pending" descriptions are historical checkpoints. [Stencil disposition](stencil-wrapper-disposition.md) now states the exact current scope. This closes a stale-record task only: camera mutation, broader filter/layout/format combinations, original stock failures, final admission and public delivery remain open; no rendering replay, build or scratch allocation.
+
+**Investigation plan refreshed (2026-11-13; FIX-04/06, API-05/06, SCI-05, LIF/SCI backlog):** The [next investigation queue](superpowers/plans/2026-11-13-remaining-gap-closure.md#next-investigation-queue--2026-11-13-planning-revision) starts with refreshing the original final-head CI handles and completing exact admission/integration/delivery gates, then reconciles stale public-route records before selecting one lifecycle or scientific gap. Baseline is subject699/head55fd4e8/runtime2b8bccd, wheels9e4e30cc/a2715d26,128bindings/64criteria, eight observations and three verified native CI identities. CI was not refreshed by this planning change. Existing parent-destruction observations are reused rather than repeated. Each packet has a finish condition, evidence-first path and stop rule; full parity and cybersecurity work remain excluded. No capability, admission or delivery status changes; no tests, scratch, builds or publication.
+
+**Original CPU CI still progressing (2026-11-13; FIX-04/06, TOOL-01 pending):** Retained698job poll2for original CPU43554619087has2SUCCESS/13in-progress/5queued,20jobs total, no failures. Linux1/Metal2successful job checkout identities are separately verified by [700](../compat/api-acceptance/parent-native-ci-identities-v1.json); no all23-job bundle/history/admission or merge claim. Continue these same handles without redispatch. Local native-identity transport scratch is absent after202,058,005bytes cleaned/36inputs verified; no SDK extraction/build.
+
+**Three current native CI checkout identities verified (2026-11-13; FIX-04/06, TOOL-01 partial):** [700](../compat/api-acceptance/parent-native-ci-identities-v1.json) retains original Linux43554619086and Metal43554619080attempt1job/identity evidence for source55fd4e8, successful job IDs and actual PR checked-head/source-parent joins, exact workflow/collector hashes. Three artifact transports match API byte counts/digests(total202,057,916bytes); only small ci-identity JSONs/member lists retained, no SDK/wheel/native payload extraction or rebuild. Actual collector/download exits0/awaited; cleanup removes202,058,005bytes/4files, verifies36inputs, scratch absent. This verifies3native-job identities, not the required23-job complete bundle/history or hardware/release admission. Continue same CPU43554619087handle, then collect20CPUidentities/fullhistory and exact promotion/admission/integration/delivery. Original14preparation files and other-owner index remain unchanged.
+
+**Final-head installed subject renewed; CI still active (2026-11-13; FIX-04/06, API-06, SHD-06, TOOL-01 partial):** [699](../compat/api-acceptance/parent-head-installed-subject-v1.json) proves128selected criterion/profile bindings/64criteria at qualification head55fd4e8and runtime2b8bccd, zero missing/blocked, using original current wheels, five strict Tk attempts/approved failure disposition and782-input retention.702committed input joins verify(608runtime/build/license,83preparation tools,14canonical files with overlaps). All14files restore against675hashes; original684frozen archive reused, no scratch/environment/native build. Copied prepare console's old624label is separately disclosed; actual materialization/restoration references684correctly. Other-owner index unchanged. [PR77](https://github.com/bipxx/vispy_vulkan/pull/77) stays draft. Retained698job poll1records Linux1/Metal2jobsSUCCESS andCPU20jobs15running/5queued; no observed failures, no full23-job/checkout-artifact/history/admission claim. Next poll same handles, collect complete exact CI basis, final reviewed matrix/Tk admission/promotion and protected integration/delivery.
+
+**DraftPR77 and exact-head automatic CI are live (2026-11-13; FIX-04/06, API-06, TOOL-01 partial):** [698](../compat/api-acceptance/parent-head-ci-start-v1.json) opens [PR77](https://github.com/bipxx/vispy_vulkan/pull/77) draft at55fd4e82e1a1d7bcb9d3c93a5e66c1bc825b09a1and retains three original pull_request attempt1handles: CPU43554619087queued, Metal43554619080in progress, Linux43554619086completed SUCCESS in the latest snapshot.23jobs remain required; no full CI/admission result is inferred. Linux/Metal use existing workflow reuse defaults; zero manual dispatches/duplicate runs. Connector PR creation first rejects a caller field then integration403; both errors retained, authorized existing CLI creates the draft and readback verifies exact head/base. No local consumer/cache/index/scratch allocated; actual CLI exits/waits and raw API metadata retained. Poll these same handles, retain jobs/artifact/checkout identities and complete histories; next guarded head-proof renewal and exact promotion/admission/integration/delivery. PR stays draft pending gates.
+
+**Owned final qualification head pushed (2026-11-13; FIX-04/06, API-06, TOOL-01 partial):** [697](../compat/api-acceptance/parent-qualification-source-head-v1.json) commits/pushes110owned files/3,738,502bytes as55fd4e82e1a1d7bcb9d3c93a5e66c1bc825b09a1on the existing WIP branch. All608runtime/build/license inputs are byte-identical to tested2b8bccd; no native rebuild, force push, checkout, deletion or other-owner index change. Includes approved preparation12/current row proofs, synchronized CPU/Linux selectors+policy hashes, regression test and two installed GPU no-op assertions. Correct root-only policy call passes; failed696remains retained. Private-index cleanup removes15,115,728bytes/2files and verifies51inputs within32MiB budget; scratch absent. Next exact-head23-job CI (avoid duplicate PR/manual runs), guarded head-proof renewal, exact admission/promotion and protected integration/delivery; not yet admitted or merged.
 
 **Final freeze adapter setup failure retained (2026-11-13; FIX-04/06 partial):** [696](../compat/api-acceptance/parent-qualification-freeze-setup-v1.json) exits1before commit/ref updates because the caller passes two arguments to unchanged validate_policy(root). Original adapter/traceback/minimal reproducer and actual exit/wait retained. Cleanup removes15,100,811bytes/2files and verifies17inputs; other-owner index unchanged. Correct successor will use the inspected root-only signature; no runtime/qualification failure or approval/admission change.
 
@@ -686,12 +887,33 @@ explicit boundary; implementing every possible form is not required.
   constant-input and ordered-revision combinations.
 - [ ] **SCI-02 — Mesh filters:** enumerate supported filters/compositions and
   prove meaningful output plus mutation behavior for selected combinations.
+- [x] **SCI-02-COLOR-ALPHA-COMPOSITION — Finite installed subset, 2026-11-14:**
+  Six exact-pixel queued-revision/mutation/boundary/recovery cases pass per
+  current Windows/WSL wheel, with explicit single-sample/blend-disabled scope.
+  [Windows](../compat/api-acceptance/mesh-color-alpha-windows-v1.json),
+  [WSL](../compat/api-acceptance/mesh-color-alpha-wsl-v1.json). Other filters,
+  composition ordering, blending/MSAA and final review/integration/admission
+  of the post-head test remain separate; SCI-02 stays partial.
 - [ ] **SCI-03 — Scenes/cameras:** reconcile selected 3D cameras, planes,
   depth/stencil and polygon-offset interactions.
+- [x] **SCI-03-CAMERA-MUTATION — Finite local installed subset, 2026-11-13:**
+  Public TurntableCamera azimuth/center mutation, fresh-construction equivalence,
+  comparison-peer closure and frozen-pose restoration pass2cases per current
+  Windows9e4e30cc/WSLa2715d26wheel, runtime2b8bccd. [Windows](../compat/api-acceptance/camera-mutation-windows-v1.json),
+  [WSL](../compat/api-acceptance/camera-mutation-wsl-v1.json). Changed-pose
+  equivalence is metamorphic; baseline/restoration has the independent frozen
+  reference. Broader3Dstate/fov/event/other-camera combinations and final
+  review/integration/admission of the post-head test remain separate.
 - [ ] **SCI-04 — Large volumes:** separate scientific quality, mode, performance,
   platform and artifact claims; extend only the selected bounded workflow.
 - [ ] **SCI-05 — Stale fixture dispositions:** reconcile U05, E03, E04, Q11–Q13
   and H03 against newer evidence before changing their status.
+- [x] **SCI-05-RECONCILIATION — Seven-row disposition audit, 2026-11-13:**
+  [708](../compat/api-acceptance/scientific-current-dispositions-v2.json) and the
+  [route/value table](api-method-reconciliation.md#current-seven-row-reconciliation--2026-11-13)
+  identify exact current/historical/open scope and reopening triggers for all
+  seven rows. Record classification is complete; capability parents and final
+  admission/public delivery remain partial. No broad source-route review inferred.
 - [ ] **SCI-06 — Stencil wrapper:** resolve the upstream acceptance gap
   independently of already-passing native stencil capture cases.
   Selected source investigation is complete: [Windows/WSL route disposition](stencil-wrapper-disposition.md)

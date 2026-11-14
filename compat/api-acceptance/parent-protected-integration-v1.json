@@ -1,0 +1,34 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "status": "PASS_PROTECTED_PR77_MERGE_EXACT_TESTED_TREE",
+  "coverage_ids": [
+    "FIX-04",
+    "FIX-06",
+    "API-06",
+    "TOOL-01"
+  ],
+  "pull_request": 77,
+  "url": "https://github.com/bipxx/vispy_vulkan/pull/77",
+  "qualification_head": "55fd4e82e1a1d7bcb9d3c93a5e66c1bc825b09a1",
+  "merge_commit": "ba49b468c50fa74e5176194d09b784a9ce75c6b1",
+  "tested_merge_commit": "37e718a1196253ef958c96ff42efd0b9e3a12006",
+  "merged_tree": "4260039f0f6d80ed10d5783066623a083a82932f",
+  "tested_tree": "4260039f0f6d80ed10d5783066623a083a82932f",
+  "merge_parents": [
+    "7c7a39f6bc341abb6b3ee6d417843892b0e29e8f",
+    "55fd4e82e1a1d7bcb9d3c93a5e66c1bc825b09a1"
+  ],
+  "all23checks_passed": true,
+  "server_required_checks_passed": true,
+  "expected_head_pinned": true,
+  "force_or_admin_bypass": false,
+  "foreign_checkout_and_index_unchanged": true,
+  "committed_inputs_unchanged": 702,
+  "artifact_admitted": true,
+  "release_complete": false,
+  "scratch_created": false,
+  "actual_exit": 0,
+  "child_waited": true,
+  "scope": "Protected source PR77merge at exact qualified55fdhead; actual merge tree equals full23-job tested PR tree. Later detached records/docs/two diagnostic tests are not part of this merge and still need separate explicit delta/impact/protection checks. Preview assets/index/channel checks not yet published or delivered."
+}

@@ -1,0 +1,51 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "status": "PASS_POST_PREVIEW_EXPLICIT_SOURCE_DELTA_AND_LOCAL_COLLECTION",
+  "base": "55fd4e82e1a1d7bcb9d3c93a5e66c1bc825b09a1",
+  "remote_main_observed": "ba49b468c50fa74e5176194d09b784a9ce75c6b1",
+  "delta_files": 77,
+  "delta_bytes": 1226284,
+  "critical_source_inputs_unchanged": 810,
+  "critical_git_blobs_matched": 702,
+  "owner_index_unchanged": true,
+  "delta_sha256": "e84703915d353f8907a7cb7f2f755f18011f0fb65b8d9ca33633448c89fea618",
+  "collected_nodes": [
+    "tests/visuals/test_camera_mutation_gpu.py::test_public_camera_mutation_matches_fresh_scene_and_restores[azimuth-80]",
+    "tests/visuals/test_camera_mutation_gpu.py::test_public_camera_mutation_matches_fresh_scene_and_restores[center-value1]",
+    "tests/visuals/test_mesh_color_alpha_composition_gpu.py::test_color_alpha_texture_clip_preserves_queued_revisions[alpha]",
+    "tests/visuals/test_mesh_color_alpha_composition_gpu.py::test_color_alpha_texture_clip_preserves_queued_revisions[color]",
+    "tests/visuals/test_mesh_color_alpha_composition_gpu.py::test_color_alpha_texture_clip_preserves_queued_revisions[detach_alpha]",
+    "tests/visuals/test_mesh_color_alpha_composition_gpu.py::test_color_alpha_texture_clip_preserves_queued_revisions[detach_tint]",
+    "tests/visuals/test_mesh_color_alpha_composition_gpu.py::test_color_alpha_texture_clip_preserves_queued_revisions[alpha_zero]",
+    "tests/visuals/test_mesh_color_alpha_composition_gpu.py::test_color_alpha_texture_clip_preserves_queued_revisions[invalid_alpha]"
+  ],
+  "tests_executed": false,
+  "ci_coverage_claimed": false,
+  "native_rebuilt": false,
+  "scratch_created": false,
+  "scope": "Explicit source-only impact inventory and local pytest collection. No new head, branch protection, independent approval or qualification granted; installed camera/filter evidence remains at its original exact source/wheel scope.",
+  "evidence_root": "@evidence/build/runs/post-preview-delta-audit-730",
+  "coverage_ids": [
+    "FIX-04",
+    "FIX-06",
+    "API-06",
+    "SCI-02",
+    "SCI-03"
+  ],
+  "inventory": {
+    "path": "@evidence/build/runs/post-preview-delta-audit-729/audit.json",
+    "sha256": "e84703915d353f8907a7cb7f2f755f18011f0fb65b8d9ca33633448c89fea618"
+  },
+  "prior_adapter_failure": {
+    "path": "@evidence/build/runs/post-preview-delta-audit-729/failure-disposition.json",
+    "sha256": "2944a508ca2ddfa58d7784f38e3ba492172692a82a59985a8493a9bcfaed3cdc"
+  },
+  "collection": {
+    "actual_exit": 0,
+    "child_waited": true,
+    "scope": "Local source collection only;8tests not executed by this check; no CI claim."
+  },
+  "independent_review_complete": false,
+  "integrated": false
+}

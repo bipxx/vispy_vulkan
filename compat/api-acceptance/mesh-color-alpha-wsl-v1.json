@@ -1,0 +1,250 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "status": "PASS_SIX_INSTALLED_WSL_COLOR_ALPHA_COMPOSITIONS_NOT_ADMITTED",
+  "coverage_ids": [
+    "SCI-02",
+    "API-06"
+  ],
+  "runtime_source_commit": "2b8bccd0ac886f771c3e37255a3d5559c254b3cd",
+  "qualification_head": "55fd4e82e1a1d7bcb9d3c93a5e66c1bc825b09a1",
+  "test_source_post_head": true,
+  "test_source": {
+    "path": "tests/visuals/test_mesh_color_alpha_composition_gpu.py",
+    "sha256": "1e9d239f978c69d834c63826b08c70c293e6d903e544ff964c8e03a51e30cb9b"
+  },
+  "wheel": {
+    "path": "build/artifacts/a2715d2659f0caf8c01d430c34ba1dc2d5f9b520b6c36ce85a0c75328556fe56/vispy-0.17.0+vulkan.2-cp312-cp312-manylinux_2_39_x86_64.whl",
+    "sha256": "a2715d2659f0caf8c01d430c34ba1dc2d5f9b520b6c36ce85a0c75328556fe56"
+  },
+  "device": {
+    "backend": "Vulkan",
+    "adapter_type": "cpu",
+    "vendor": "mesa",
+    "device": "llvmpipe (LLVM 18.1.3, 256 bits)",
+    "driver": "llvmpipe: Mesa 26.1.8 (LLVM 18.1.3)",
+    "vendor_id": 65541,
+    "device_id": 0,
+    "max_texture_dimension_1d": 16384,
+    "max_texture_dimension_2d": 16384,
+    "max_texture_dimension_3d": 4096,
+    "max_vertex_attributes": 30,
+    "max_vertex_buffers": 8,
+    "max_vertex_buffer_array_stride": 2048,
+    "max_storage_buffers_per_shader_stage": 16,
+    "max_uniform_buffers_per_shader_stage": 12,
+    "max_inter_stage_shader_variables": 30,
+    "max_storage_buffer_binding_size": 134217728,
+    "max_bindings_per_bind_group": 1000,
+    "max_compute_invocations_per_workgroup": 1024,
+    "max_compute_workgroup_size_x": 1024,
+    "max_compute_workgroups_per_dimension": 65535,
+    "max_point_vertex_attributes": 30,
+    "core_features_and_limits": true,
+    "point_input_limit_scope": "all active user point inputs share one vertex buffer; exact vertex/instance identities use read-only vertex storage without reserving a user attribute; actual granted attribute/stride/storage/allocation limits apply",
+    "max_samplers_per_shader_stage": 16,
+    "max_sampled_textures_per_shader_stage": 48,
+    "max_buffer_size": 4294967295,
+    "max_uniform_buffer_binding_size": 65536,
+    "software": true,
+    "float32_filterable": true,
+    "unorm16_texture_formats": true,
+    "bresenham_lines": true,
+    "last_vertex_provoking": true,
+    "timestamp_query": true,
+    "timestamp_quantization_ns": 65536,
+    "host_mapped_pointer": true,
+    "host_import_limit": 536870912,
+    "depth_stencil_storage": "depth24_unorm_stencil8",
+    "ok": true,
+    "error": "",
+    "loss_count": 0,
+    "revision": "117b054598f4758b598f4b8f48feea48c11fe7b0+dawn-499e5c6ff9b37d5de70c6493fb74c251e0d35c1c"
+  },
+  "passed": 6,
+  "metrics": {
+    "alpha": {
+      "pending_draws": [
+        2,
+        4,
+        6
+      ],
+      "before_exact": true,
+      "changed_exact": true,
+      "restored_exact": true,
+      "changed_rgba": [
+        120,
+        160,
+        20,
+        204
+      ],
+      "clipped_rgba": [
+        0,
+        0,
+        0,
+        255
+      ]
+    },
+    "alpha_zero": {
+      "pending_draws": [
+        2,
+        4,
+        6
+      ],
+      "before_exact": true,
+      "changed_exact": true,
+      "restored_exact": true,
+      "changed_rgba": [
+        120,
+        160,
+        20,
+        0
+      ],
+      "clipped_rgba": [
+        0,
+        0,
+        0,
+        255
+      ]
+    },
+    "color": {
+      "pending_draws": [
+        2,
+        4,
+        6
+      ],
+      "before_exact": true,
+      "changed_exact": true,
+      "restored_exact": true,
+      "changed_rgba": [
+        60,
+        80,
+        80,
+        102
+      ],
+      "clipped_rgba": [
+        0,
+        0,
+        0,
+        255
+      ]
+    },
+    "detach_alpha": {
+      "pending_draws": [
+        2,
+        4,
+        6
+      ],
+      "before_exact": true,
+      "changed_exact": true,
+      "restored_exact": true,
+      "changed_rgba": [
+        120,
+        160,
+        20,
+        255
+      ],
+      "clipped_rgba": [
+        0,
+        0,
+        0,
+        255
+      ]
+    },
+    "detach_tint": {
+      "pending_draws": [
+        2,
+        4,
+        6
+      ],
+      "before_exact": true,
+      "changed_exact": true,
+      "restored_exact": true,
+      "changed_rgba": [
+        240,
+        160,
+        80,
+        102
+      ],
+      "clipped_rgba": [
+        0,
+        0,
+        0,
+        255
+      ]
+    },
+    "invalid_alpha": {
+      "pending_draws": [
+        2,
+        4,
+        6
+      ],
+      "before_exact": true,
+      "changed_exact": true,
+      "restored_exact": true,
+      "changed_rgba": [
+        120,
+        160,
+        20,
+        204
+      ],
+      "clipped_rgba": [
+        0,
+        0,
+        0,
+        255
+      ]
+    }
+  },
+  "installed_members_verified": 537,
+  "source_overrides": 0,
+  "shutdown_gauges": {
+    "pending_tickets": 0,
+    "queued_frames": 0,
+    "live_buffer_bytes": 0,
+    "live_cpu_buffer_bytes": 0,
+    "live_texture_bytes": 0,
+    "canvas_texture_bytes": 0,
+    "transient_buffer_bytes": 0,
+    "line_resource_pool_busy_slots": 0,
+    "line_resource_pool_bytes": 0,
+    "host_import_pinned_bytes": 0
+  },
+  "actual_exit": 0,
+  "child_waited": true,
+  "native_rebuilt": false,
+  "artifact_admitted": false,
+  "scope": "Finite public Alpha+ColorFilter+TextureFilter+PlanesClipper composition,32x24single-sample RGBA8 readback,blend/depth/culling disabled. Literal expected before/changed/restored frames with three pending revisions; alpha/color updates, detach/reattach, zero alpha and immediate valid replacement after invalid alpha ValueError. No atomic invalid-setter getter guarantee, general filter ordering/compositions, blending/MSAA or admission/final-head CI transfer.",
+  "remaining": [
+    "Other filters/compositions remain selected-claim backlog",
+    "Original final-head CI/admission/integration remain separate"
+  ],
+  "xvfb_exit": 0,
+  "xvfb_waited": true,
+  "borrowed_inputs": {
+    "/home/heq/vispy-opengl-removal-python-hosts-rootfs-2/rootfs/usr/lib/x86_64-linux-gnu/libpcre2-16.so.0.11.2": "4dfa8a4023270763b8ca1654dc4f59f835393b1ae78085a19369228f8109a671",
+    "/mnt/c/Users/HEQ/Projects/vispy_vulkan/build/runs/external-driver-origin-71/external-icd.json": "900eaa3231581579c1b11ba63ed29a39b53b70287fc2c67b09b52cc395036bb0",
+    "/home/heq/vispy-vulkan-managed/build/artifacts/9c5c41b3a7b9d759b0960c868f10375281798ad084150716d6d122c8789b9e12/libvulkan_lvp.so": "9c5c41b3a7b9d759b0960c868f10375281798ad084150716d6d122c8789b9e12",
+    "/usr/lib/llvm-18/lib/libLLVM.so.1": "5c3a63957e28c15cdf1503892074f032d29b72e36a9824a77dfa87e48a0dafb0",
+    "/home/heq/.local/share/uv/python/cpython-3.12.13-linux-x86_64-gnu/bin/python3.12": "339de109f072e52523066d97a2b3372e358a10cc00c6a9df62c28a6618061900",
+    "/usr/bin/Xvfb": "6b27845931670c8c9b3ce7423696a452ce3cab1c7f316ce5f7ea7f1297fa2f84"
+  },
+  "source_archive_reference": {
+    "path": "/mnt/d/vispy-vulkan-managed/build/runs/mesh-color-alpha-windows-712/test-source-and-licenses.zip",
+    "sha256": "6d2821af487cf459bdf651a9f1e61ed326efd6849ca69c7ce79bba89a899afab",
+    "scope": "Exact current color/alpha composition test and original licenses retained712. Reuse archive without copying."
+  },
+  "cleanup": {
+    "status": "PASS_APPLY",
+    "deleted_files": 576,
+    "reclaimed_bytes": 29878973,
+    "retained_verified": 35,
+    "scratch_absent": true,
+    "actual_exit": 0,
+    "child_waited": true
+  },
+  "evidence": {
+    "path": "@evidence/build/runs/mesh-color-alpha-wsl-713/verification.json",
+    "sha256": "285400e4841c30d5aaa17e30e8e0cf98f1ebffc4ef420fe4f2481341fd21802f"
+  }
+}

@@ -1,0 +1,227 @@
+{
+  "schema": 1,
+  "kind": "reviewed-current-mandatory-matrix-admission",
+  "status": "SCOPED_ADMISSION_PASS",
+  "qualification_head": "55fd4e82e1a1d7bcb9d3c93a5e66c1bc825b09a1",
+  "product_source_commit": "2b8bccd0ac886f771c3e37255a3d5559c254b3cd",
+  "requirements_prestate": {
+    "path": "compat/no-opengl-matrix.json",
+    "sha256": "230b12f3d4ed418cde3b0313fbdea36557b02a61c80a1cf637699d7a9bc50fc4"
+  },
+  "current_matrix_view": {
+    "path": "compat/candidates/tk-state-resource-12/installed-proofs-680/mandatory-current-matrix-view-718.json",
+    "sha256": "e1efb9ad45ddabda1e5bfb1bef2b3b2c74eb09f651abc0cb18bff4bd6a144c1b"
+  },
+  "current_matrix_sha256": "e1efb9ad45ddabda1e5bfb1bef2b3b2c74eb09f651abc0cb18bff4bd6a144c1b",
+  "draft": {
+    "path": "@evidence/build/runs/parent-mandatory-bindings-693/matrix-draft.json",
+    "sha256": "998e2e7d21ef1fecd13f97f63307e8535cb33f44d5663ee504d20453108e80c5"
+  },
+  "observations": {
+    "path": "compat/api-acceptance/mandatory-parent-current-wheels-observations-v1.json",
+    "sha256": "6323ddc9980088deb7e154c1b66eb187f8f9aefd29a1515f07104b2424058d4f"
+  },
+  "rows": [
+    {
+      "id": "windows-vulkan-headless",
+      "status": "SCOPED_ADMISSION_PASS",
+      "artifact_sha256": "9e4e30cc50d49a759ea42cd7915cc2544a42d2af869d505e3ef5290d47617286",
+      "environment_id": "10e7b1b193a401a57ad5a7090a712b0293eb24d7eb88ff0f08dc7c0a045e953f",
+      "binding": {
+        "path": "compat/api-acceptance/mandatory-parent-windows-headless-v1.json",
+        "sha256": "126661eec260c1010748f8f740b9b5ba993a6525b32925202113da8600d35f21"
+      },
+      "report": {
+        "path": "@evidence/build/runs/mandatory-parent-windows-headless-688/replay-1.json",
+        "sha256": "a1eec854d4d2a835d6caec9ff64136185f2efd1344d5bf2d49058b9e1529955c"
+      },
+      "worker": {
+        "path": "@evidence/build/runs/mandatory-parent-windows-headless-688/replay-1.worker.json",
+        "sha256": "ac43c2cc6c0c676f550aa15689c823c9bd2b4557968396e451bb1b7c251d453e"
+      },
+      "receipt": {
+        "path": "@evidence/build/runs/mandatory-parent-windows-headless-688/receipt-1.json",
+        "sha256": "3cb6700c59840f8c8cd0df5be8b864822999bfe464b0fb6ade71fb560a88f982"
+      }
+    },
+    {
+      "id": "windows-vulkan-qwidget-pyqt5",
+      "status": "SCOPED_ADMISSION_PASS",
+      "artifact_sha256": "9e4e30cc50d49a759ea42cd7915cc2544a42d2af869d505e3ef5290d47617286",
+      "environment_id": "4476a4646b460fd7259a0e7ec16a443e44cb7a58380e69780a21cec552202a96",
+      "binding": {
+        "path": "compat/api-acceptance/mandatory-parent-windows-pyqt5-v1.json",
+        "sha256": "a552653d7edef0eafb233d25ff84f59a7d1b869b4d369bcb644714470d6bd7cc"
+      },
+      "report": {
+        "path": "@evidence/build/runs/mandatory-parent-windows-pyqt5-686/replay-0.json",
+        "sha256": "8bde1e18471984e1a36f4770df8625c21ed7c23dc285ac8fcb1dfa7add362a3f"
+      },
+      "worker": {
+        "path": "@evidence/build/runs/mandatory-parent-windows-pyqt5-686/replay-0.worker.json",
+        "sha256": "d4e5dd3400eabb7207d38d0c6cfd4d2196de5ecdfc74179720d353f3aa597e83"
+      },
+      "receipt": {
+        "path": "@evidence/build/runs/mandatory-parent-windows-pyqt5-686/receipt-0.json",
+        "sha256": "34a7f253516e02bb8aedfb10ce17142ca2faf6cae95074e1a9e230a67e08a40c"
+      }
+    },
+    {
+      "id": "windows-vulkan-qwidget-pyqt6",
+      "status": "SCOPED_ADMISSION_PASS",
+      "artifact_sha256": "9e4e30cc50d49a759ea42cd7915cc2544a42d2af869d505e3ef5290d47617286",
+      "environment_id": "347d1db6e1068cfebade6245627718414da814e06880ef57aca3247177161911",
+      "binding": {
+        "path": "compat/api-acceptance/mandatory-parent-windows-pyqt6-v1.json",
+        "sha256": "af6b28044d48f58e22d92584a2d9880ab0288f086ad961fadc8dc674143b5715"
+      },
+      "report": {
+        "path": "@evidence/build/runs/mandatory-parent-windows-pyqt6-685/replay-0.json",
+        "sha256": "de6f1688977a80a962fdb80d336587397de7eca8bf07de30d2acad66763f77e8"
+      },
+      "worker": {
+        "path": "@evidence/build/runs/mandatory-parent-windows-pyqt6-685/replay-0.worker.json",
+        "sha256": "3779cd042bacb10605afd6ffe2f6b123ff44860d4786baed3e158b9d95220ed3"
+      },
+      "receipt": {
+        "path": "@evidence/build/runs/mandatory-parent-windows-pyqt6-685/receipt-0.json",
+        "sha256": "82bcb76aa7e4b5a752e32851308c05540e3b0d303f7f946c59d601b88d9f2f8e"
+      }
+    },
+    {
+      "id": "windows-vulkan-qwidget-pyside6",
+      "status": "SCOPED_ADMISSION_PASS",
+      "artifact_sha256": "9e4e30cc50d49a759ea42cd7915cc2544a42d2af869d505e3ef5290d47617286",
+      "environment_id": "f5b1216fe43714ce5965c08ff930c7f2c29b87254088b12515d4f5ca55af3b48",
+      "binding": {
+        "path": "compat/api-acceptance/mandatory-parent-windows-pyside6-v1.json",
+        "sha256": "dfd2074a028a62ce0e6b0381b3b4c765b708c31ff9a2d0cc6a36ee88888dab50"
+      },
+      "report": {
+        "path": "@evidence/build/runs/mandatory-parent-windows-pyside6-687/replay-0.json",
+        "sha256": "5e14d69be51e0c4293f4c789ad36b28f52940dd9509c7d7ad29eae381771e908"
+      },
+      "worker": {
+        "path": "@evidence/build/runs/mandatory-parent-windows-pyside6-687/replay-0.worker.json",
+        "sha256": "2af96562ea8731c41f858830c67c1381ea4cb12a3223a16af3b3846ebc62c326"
+      },
+      "receipt": {
+        "path": "@evidence/build/runs/mandatory-parent-windows-pyside6-687/receipt-0.json",
+        "sha256": "b12159d1c8a0c2c3fe09e986120aad45937326e4f6a1a3b3dc6fe85dc803908e"
+      }
+    },
+    {
+      "id": "wsl-linux-lavapipe-x11-headless",
+      "status": "SCOPED_ADMISSION_PASS",
+      "artifact_sha256": "a2715d2659f0caf8c01d430c34ba1dc2d5f9b520b6c36ce85a0c75328556fe56",
+      "environment_id": "fac83191e6d45061c7f8a02287cea092b0120e4b91fcc07d8b7311fcdce771a9",
+      "binding": {
+        "path": "compat/api-acceptance/mandatory-parent-wsl-headless-v1.json",
+        "sha256": "d1c6f1db7a572385e1cd66db6e7360f6928571c9afafd6cc94409933a156ed0a"
+      },
+      "report": {
+        "path": "@evidence/build/runs/mandatory-parent-wsl-headless-692/reports/replay-0.json",
+        "sha256": "e980789678a4969ec401730e8e64d731efc49197fc385ee378ed348618c43cee"
+      },
+      "worker": {
+        "path": "@evidence/build/runs/mandatory-parent-wsl-headless-692/reports/replay-0.worker.json",
+        "sha256": "0219d7186f25b855c9c51540b14e68178e86e67088247ca44cfddd0f8da9fdf6"
+      },
+      "receipt": {
+        "path": "@evidence/build/runs/mandatory-parent-wsl-headless-692/reports/receipt-0.json",
+        "sha256": "6c180f547ddfa561efc114fbd2004448ea0eb9bb0e563935ad6d78a9fce56c8b"
+      }
+    },
+    {
+      "id": "wsl-linux-lavapipe-x11-qwidget-pyqt5",
+      "status": "SCOPED_ADMISSION_PASS",
+      "artifact_sha256": "a2715d2659f0caf8c01d430c34ba1dc2d5f9b520b6c36ce85a0c75328556fe56",
+      "environment_id": "d03c0f8c2959f7185a10d9eb33b9bec80664e2ad6ac34411a5645cc65d2916f6",
+      "binding": {
+        "path": "compat/api-acceptance/mandatory-parent-wsl-pyqt5-v1.json",
+        "sha256": "6cfb7c1ab1d8fe0d521727c2899270a78099772cfa92ba0f6f5f83edfa187e7c"
+      },
+      "report": {
+        "path": "@evidence/build/runs/mandatory-parent-wsl-pyqt5-690/reports/replay-0.json",
+        "sha256": "e7ff2a9c79b0d2e5aeb3296c552fe752e801bf890baf2d358fb27d980b4b2aec"
+      },
+      "worker": {
+        "path": "@evidence/build/runs/mandatory-parent-wsl-pyqt5-690/reports/replay-0.worker.json",
+        "sha256": "82264eed9d54aa2f61124234191ceb4d2a440f47efa7235c01b59a85710b65ad"
+      },
+      "receipt": {
+        "path": "@evidence/build/runs/mandatory-parent-wsl-pyqt5-690/reports/receipt-0.json",
+        "sha256": "c7ed334ae0263f074775fd5895dc31cc7e10be68f21843b6a0186ed20e4c3181"
+      }
+    },
+    {
+      "id": "wsl-linux-lavapipe-x11-qwidget-pyqt6",
+      "status": "SCOPED_ADMISSION_PASS",
+      "artifact_sha256": "a2715d2659f0caf8c01d430c34ba1dc2d5f9b520b6c36ce85a0c75328556fe56",
+      "environment_id": "9759484092e5fe93dacdfff0c8b9fbc6d6804c0de33a8c20ddf6c31c8c8c99b2",
+      "binding": {
+        "path": "compat/api-acceptance/mandatory-parent-wsl-pyqt6-v1.json",
+        "sha256": "cbc7a73cd73cf8158ab33da92d2175e606060fb606c368a573e4084c19de77e8"
+      },
+      "report": {
+        "path": "@evidence/build/runs/mandatory-parent-wsl-pyqt6-689/reports/replay-0.json",
+        "sha256": "5f3f640bdafd2a75e9b11a74b434f2dd4c44bb42ac7f0e6093d89dc89422e86b"
+      },
+      "worker": {
+        "path": "@evidence/build/runs/mandatory-parent-wsl-pyqt6-689/reports/replay-0.worker.json",
+        "sha256": "18a93333369f08d50a87a92c0eb80a56a819677653e525ea0e13f86c7850494f"
+      },
+      "receipt": {
+        "path": "@evidence/build/runs/mandatory-parent-wsl-pyqt6-689/reports/receipt-0.json",
+        "sha256": "a3ecbc9991b26ba95d67ff8c96498c3d2faca708adbd8e715d95d619ccd47919"
+      }
+    },
+    {
+      "id": "wsl-linux-lavapipe-x11-qwidget-pyside6",
+      "status": "SCOPED_ADMISSION_PASS",
+      "artifact_sha256": "a2715d2659f0caf8c01d430c34ba1dc2d5f9b520b6c36ce85a0c75328556fe56",
+      "environment_id": "6deb0cadfae3663662f06e233f64e44fbc448e791e582084374ca9522a1ce535",
+      "binding": {
+        "path": "compat/api-acceptance/mandatory-parent-wsl-pyside6-v1.json",
+        "sha256": "a9033746a445087e1e6fb1bf5fda66a4b723456f8412c465bd2c81f922776e51"
+      },
+      "report": {
+        "path": "@evidence/build/runs/mandatory-parent-wsl-pyside6-691/reports/replay-0.json",
+        "sha256": "cdd32d2fd948ae91fe8902b9c10721ab13a7329a8fdd85a6a5da48e323310617"
+      },
+      "worker": {
+        "path": "@evidence/build/runs/mandatory-parent-wsl-pyside6-691/reports/replay-0.worker.json",
+        "sha256": "991609b0104172032272d9900f7ef2882133f3f205f2846eb8c61dc7f8011de6"
+      },
+      "receipt": {
+        "path": "@evidence/build/runs/mandatory-parent-wsl-pyside6-691/reports/receipt-0.json",
+        "sha256": "52f93fda54fcfc036c5234b0cb82c9fa8d53f9964e67dd16c0b70cd53ad491eb"
+      }
+    }
+  ],
+  "required_rows": 8,
+  "admitted_rows": 8,
+  "historical_optional_rows_preserved": 6,
+  "not_admitted_rows_preserved": 2,
+  "original_canonical_matrix_unchanged": true,
+  "other_rows_historical_only": true,
+  "manual_retention_audit": {
+    "path": "@evidence/build/runs/parent-mandatory-bindings-693/verification.json",
+    "sha256": "1827f51e1c6157f570a58cda939557ee8ca7bfa4872ac897f371c495aa77e69c"
+  },
+  "distinct_bound_inputs_rehashed": 1031,
+  "foreign_origins_protected": 15,
+  "qualification_index_retention_acceptance": false,
+  "independent_final_review": {
+    "path": "@evidence/build/runs/parent-final-promotion-review-714/decision.json",
+    "sha256": "deee7623c71ea9ec093e6c21dd6e56395c1b8a73f23542e7f7ac3b4ca2f663bb"
+  },
+  "guard_review": {
+    "path": "@evidence/build/runs/admission-guard-peer-716/decision.json",
+    "sha256": "6010221477807cfd5264b8a376840c2af69a575ee951155c9f945d9dfdaf96f0"
+  },
+  "artifact_admitted": true,
+  "release_complete": false,
+  "full_inventory_complete": false,
+  "scope": "Current admission covers exactly the eight mandatory VisPy-only rows on9e4e30cc/a2715d26. The full derived view preserves six optional historical and two NOT_ADMITTED rows; it does not renew those rows or claim current host/full-API/hardware support. Original frozen matrix remains unchanged."
+}

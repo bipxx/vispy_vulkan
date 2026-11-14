@@ -1,0 +1,113 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "PASS_TWO_INSTALLED_WINDOWS_CAMERA_MUTATIONS_NOT_ADMITTED",
+  "coverage_ids": [
+    "SCI-03",
+    "API-06"
+  ],
+  "runtime_source_commit": "2b8bccd0ac886f771c3e37255a3d5559c254b3cd",
+  "qualification_head": "55fd4e82e1a1d7bcb9d3c93a5e66c1bc825b09a1",
+  "test_source_post_head": true,
+  "test_source_sha256": "53bc6b503dc4c5c456f915360e10fb207e36fcd3ebb20a5c256392419fb0503e",
+  "wheel": {
+    "path": "build/artifacts/9e4e30cc50d49a759ea42cd7915cc2544a42d2af869d505e3ef5290d47617286/vispy-0.17.0+vulkan.2-cp312-cp312-win_amd64.whl",
+    "sha256": "9e4e30cc50d49a759ea42cd7915cc2544a42d2af869d505e3ef5290d47617286"
+  },
+  "device": {
+    "backend": "Vulkan",
+    "adapter_type": "discrete",
+    "vendor": "nvidia",
+    "device": "NVIDIA GeForce RTX 4090",
+    "driver": "NVIDIA: 610.88 610.88.0.0",
+    "vendor_id": 4318,
+    "device_id": 9860,
+    "max_texture_dimension_1d": 32768,
+    "max_texture_dimension_2d": 32768,
+    "max_texture_dimension_3d": 16384,
+    "max_vertex_attributes": 30,
+    "max_vertex_buffers": 8,
+    "max_vertex_buffer_array_stride": 2048,
+    "max_storage_buffers_per_shader_stage": 16,
+    "max_uniform_buffers_per_shader_stage": 12,
+    "max_inter_stage_shader_variables": 30,
+    "max_storage_buffer_binding_size": 2147483644,
+    "max_bindings_per_bind_group": 1000,
+    "max_compute_invocations_per_workgroup": 1024,
+    "max_compute_workgroup_size_x": 1024,
+    "max_compute_workgroups_per_dimension": 65535,
+    "max_point_vertex_attributes": 30,
+    "core_features_and_limits": true,
+    "point_input_limit_scope": "all active user point inputs share one vertex buffer; exact vertex/instance identities use read-only vertex storage without reserving a user attribute; actual granted attribute/stride/storage/allocation limits apply",
+    "max_samplers_per_shader_stage": 16,
+    "max_sampled_textures_per_shader_stage": 48,
+    "max_buffer_size": 1099511627776,
+    "max_uniform_buffer_binding_size": 65536,
+    "software": false,
+    "float32_filterable": true,
+    "unorm16_texture_formats": true,
+    "bresenham_lines": true,
+    "last_vertex_provoking": true,
+    "timestamp_query": true,
+    "timestamp_quantization_ns": 65536,
+    "host_mapped_pointer": true,
+    "host_import_limit": 536870912,
+    "depth_stencil_storage": "depth24_unorm_stencil8",
+    "ok": true,
+    "error": "",
+    "loss_count": 0,
+    "revision": "117b054598f4758b598f4b8f48feea48c11fe7b0+dawn-499e5c6ff9b37d5de70c6493fb74c251e0d35c1c"
+  },
+  "passed": 2,
+  "metrics": {
+    "azimuth": {
+      "changed_pixels": 4032,
+      "fresh_scene_max_channel_difference": 0,
+      "restored_exact": true,
+      "baseline_max_channel_difference": 0
+    },
+    "center": {
+      "changed_pixels": 2969,
+      "fresh_scene_max_channel_difference": 0,
+      "restored_exact": true,
+      "baseline_max_channel_difference": 0
+    }
+  },
+  "installed_members_verified": 537,
+  "source_overrides": 0,
+  "shutdown_gauges": {
+    "pending_tickets": 0,
+    "queued_frames": 0,
+    "live_buffer_bytes": 0,
+    "live_cpu_buffer_bytes": 0,
+    "live_texture_bytes": 0,
+    "canvas_texture_bytes": 0,
+    "transient_buffer_bytes": 0,
+    "line_resource_pool_busy_slots": 0,
+    "line_resource_pool_bytes": 0,
+    "host_import_pinned_bytes": 0
+  },
+  "actual_exit": 0,
+  "child_waited": true,
+  "native_rebuilt": false,
+  "artifact_admitted": false,
+  "scope": "Public TurntableCamera.azimuth=80 and center=(.3,-.2,0) mutation on retained mesh_perspective scene. Initial/restored pose uses independent frozen upstream reference; changed pose uses fresh-construction comparison, visible-change/nonblank controls and peer-scene close isolation. No independent upstream changed-pose oracle, arbitrary camera/event/state combinations, WSL or final admission/CI qualification of this post-head test.",
+  "remaining": [
+    "Matching WSL selected observation",
+    "Broader camera/plane/depth/stencil combinations remain claim-driven",
+    "Final original-head CI/admission/integration remains separate"
+  ],
+  "cleanup": {
+    "status": "PASS_APPLY",
+    "deleted_files": 570,
+    "reclaimed_bytes": 17908651,
+    "retained_verified": 32,
+    "scratch_absent": true,
+    "actual_exit": 0,
+    "child_waited": true
+  },
+  "evidence": {
+    "path": "@evidence/build/runs/camera-mutation-windows-705/verification.json",
+    "sha256": "9edd12fb10c3ac12db83094799defe0bf4549a28de9af1743bf62b1f546630e8"
+  }
+}

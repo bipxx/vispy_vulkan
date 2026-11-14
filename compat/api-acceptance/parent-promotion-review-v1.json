@@ -1,0 +1,70 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "status": "APPROVED_EXACT_BASIS_EIGHT_ROWS_PREVIEW_SCOPE_NOT_ADMITTED",
+  "coverage_ids": [
+    "FIX-04",
+    "FIX-06",
+    "API-06",
+    "SHD-06",
+    "TOOL-01"
+  ],
+  "qualification_head": "55fd4e82e1a1d7bcb9d3c93a5e66c1bc825b09a1",
+  "runtime_source_commit": "2b8bccd0ac886f771c3e37255a3d5559c254b3cd",
+  "subject_sha256": "86efb22be0d0646a7f11b6ab43b10833d90359d89d615d3763e802bfa98fab18",
+  "promotion_basis_sha256": "1e92e7de779a5b845c7921a12dac1ab5bc08f446b5ae9fb713b8e42f3ebeeb24",
+  "final_promotion_decision": "APPROVED",
+  "mandatory_admission_decision": "APPROVED_EXACT_EIGHT_ROWS_MANUAL_RETENTION_SCOPE",
+  "channel_decision": "APPROVED_COMMIT_PREVIEW_ONLY",
+  "decision": {
+    "path": "@evidence/build/runs/parent-final-promotion-review-714/decision.json",
+    "sha256": "deee7623c71ea9ec093e6c21dd6e56395c1b8a73f23542e7f7ac3b4ca2f663bb"
+  },
+  "raw_response": {
+    "path": "@evidence/build/runs/parent-final-promotion-review-714/review-response.json",
+    "sha256": "ac564335c2ae83d276ff2ac7f9d16a9f7a3ca91a8072a7126a15bfc1c3b49b14"
+  },
+  "review_packet": {
+    "path": "@evidence/build/runs/parent-final-promotion-review-714/review-packet.json",
+    "sha256": "b50e554086d3f2ed01b4c2a674925db4c3add5e9e913fcae159f523a1a00b73e"
+  },
+  "reviewed_inputs": {
+    "path": "@evidence/build/runs/parent-final-promotion-review-714/inputs.json",
+    "sha256": "4d7f30337038f3b9eb233d12c33cb8a3afbbb95f8ab71e8b4f77f39e7b3f0003"
+  },
+  "promotion_review": {
+    "path": "compat/candidates/tk-state-resource-12/installed-proofs-680/promotion-review-714.json",
+    "sha256": "7a6f25fa2f4b4c54875b105d4619533944d5891caf9d168b4be0fa36579ea914"
+  },
+  "required_changes": [],
+  "controlled_integration_conditions": [
+    "F1: mandatory_matrix_sha256 230b12f3 is the required PRE-admission state of compat/no-opengl-matrix.json (rows bound to 5c7142f3/66f35ab0). Guarded admission must derive the eight rows from matrix-draft 998e2e7d21ef1fecd13f97f63307e8535cb33f44d5663ee504d20453108e80c5 and observations 6323ddc9, leave the six optional and two NOT_ADMITTED rows unchanged, and record the resulting matrix hash as a new identity. Any other row content needs new review.",
+    "F4: strict admission runs only with checkout head 55fd4e82 and all 702 committed inputs hash-verified immediately before and after unchanged validate_envelope(strict=True); re-materialize ledger 487168c3 under guard from overlay 5c0c773c and frozen archive 82846f88, then restore and rehash all 14 canonical files with ledger 3c5248a2. Any failure or hard kill means stop and restore, with no admission claim.",
+    "The envelope promotion review record must carry promotion_basis_sha256 1e92e7de and this reviewer identity; it does not transfer to another basis, subject or head.",
+    "Mandatory-row approval is manual original-envelope retention scope and finite history only (695 limits attached). The 688 replay-0 UNVERIFIED attempt and the 676 replay-0 failure stay recorded as failed. No generic qualification-index retention acceptance; optional hosts are not mandatory rows.",
+    "Post-head data, docs and the two GPU tests may be integrated only through a separate explicit delta/impact check and real branch-protection checks on the integration head. No shipping runtime, native, lock, workflow or tool bytes may change. No checkout/reset/clean/force or protection bypass; preserve the other owner's dirty publication index. The integration head is never labelled 55fd, and the 702 approval stays 55fd-only.",
+    "F6: the camera (705/706) and colour/alpha (712/713) tests remain local installed observations. They are not 55fd CI, not strict admission criteria, and carry no CI-coverage claim unless a job on the integration head actually collects them.",
+    "If any critical input changes (608 runtime/build/license inputs, 83 preparation tools, 14 canonical entries, workflows, CI policy, collector), stop and require new impact review and qualification.",
+    "F3: tag qt-lifecycle-55fd4e8 must target exactly 55fd4e82 as a GitHub prerelease, with exactly the two wheels 9e4e30cc and a2715d26 and unchanged filenames.",
+    "F2: before publication, update the release notes to cover the generated preview index, forbid combining it with the stable index, keep hash-pinned direct URL or sole --index-url with --force-reinstall --no-deps in a prepared matching dependency profile, and state how to identify the installed bytes.",
+    "Channel approval is the preview-only namespace previews/qt-lifecycle-55fd4e8/simple/. Stable release v0.17.0-vulkan.2 (a86b030b/48164e05) and stable index blobs 95296115/e1a5ba58 must be verified byte-identical before and after. This is not a stable upgrade and not Vulkan.3; a new stable version needs its own artifact identities and qualification.",
+    "No publication until actual strict and matrix admission, protected integration, and isolated delivered-byte and channel-install checks pass."
+  ],
+  "withheld": [
+    "Independent computation of any SHA-256, manifest seal or Git blob: all identities are textual comparisons against coordinator-rehashed values. I did not run validate_bundle, validate_subject or validate_envelope; I read their code and recorded results only.",
+    "Unread: the three *-jobs.json bodies (conclusion grep preview only) and the three *-run.json files; 20 of 23 identity files; 700 and 704 verification.json; 709 cleanup, process and storage files and collect.log.",
+    "Unread: inputs.json lines 121-654; subject-result.json lines 1566-1899; 699 assemble/prepare/run/finish scripts and committed-inputs.json; all candidate-12 files, archives, native provenance, retention record 683, attempt histories 681 and resolution 682.",
+    "Unread: the eight mandatory-parent row packets, all 685-692 reports, receipts and workers, 693 verification lines 200-1035, the matrix-draft body, 694 histories.json, the 695 response and inputs; wheel and ZIP contents, the 537 members and 23 license members, fixture archive.",
+    "Unread: tools/wheel_index.py, 710 prepare.py and stable-file-*.json, camera-mutation-windows and mesh-color-alpha-wsl packets, 705/706/712/713 run evidence, three omitted long cpu-contract.yml lines, qualification schemas, docs/coverage-checklist.md.",
+    "Any post-admission matrix bytes, actual strict admission result, protected merge, tag or release creation, gh-pages change, delivered-byte or channel-install check: all are future actions, not approved results.",
+    "Discharge of the 142 original obligations; anything beyond 32 rows / 64 criteria / 128 bindings; generic acceptance of foreign retention; origin of the 688 cmd.exe child; universal hard-kill safety; atomic invalid-alpha getter guarantee; the 984 operation-group inventory.",
+    "Full VisPy parity, physical Linux GPU, Metal beyond build/import, optional hosts, stable upgrade or Vulkan.3, any head other than 55fd4e82."
+  ],
+  "actual_exit": 0,
+  "child_waited": true,
+  "required_ci_complete": true,
+  "qualification_index_foreign_retention_acceptance": false,
+  "artifact_admitted": false,
+  "release_complete": false,
+  "scope": "Exact final basis/head and separately identified eight manual-retention mandatory rows/commit-stamped preview proposal decisions only. Actual guarded strict/matrix admission/restoration, protected integration and delivered-byte/channel checks remain required. No broad API/hardware/full-parity transfer."
+}

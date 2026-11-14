@@ -1,0 +1,52 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "APPROVED_EXACT_SUBJECT_HEAD_CHANGE_IMPACT_ONLY",
+  "coverage_ids": [
+    "FIX-04",
+    "FIX-06",
+    "API-06",
+    "SHD-06",
+    "TOOL-01"
+  ],
+  "qualification_head": "55fd4e82e1a1d7bcb9d3c93a5e66c1bc825b09a1",
+  "runtime_source_commit": "2b8bccd0ac886f771c3e37255a3d5559c254b3cd",
+  "subject_sha256": "86efb22be0d0646a7f11b6ab43b10833d90359d89d615d3763e802bfa98fab18",
+  "reviewer_models": [
+    "claude-fable-5-2"
+  ],
+  "review_turns": 62,
+  "decision": {
+    "path": "@evidence/build/runs/parent-head-impact-review-702/decision.json",
+    "sha256": "8321325f37fd6969a8256d2d31a1fbc829db7145d16781939629a06a2f01f121"
+  },
+  "raw_response": {
+    "path": "@evidence/build/runs/parent-head-impact-review-702/review-response.json",
+    "sha256": "1ab8d8289ff1285c0e36ce814c2111cc32d01a7849aab257684ad2b0a36880fb"
+  },
+  "reviewed_inputs": {
+    "path": "@evidence/build/runs/parent-head-impact-review-702/inputs.json",
+    "sha256": "3ca5a3904c5ee1069b39a24819b2eacfd7abae776dd5d16127d5a30ff4f78ca9"
+  },
+  "impact": {
+    "path": "compat/candidates/tk-state-resource-12/installed-proofs-680/change-impact-review-702.json",
+    "sha256": "9813ecd3f79a4f7a1208cb1b38c0b2a92db405f8eb60f1f17899a159f479ac5a"
+  },
+  "required_changes": [],
+  "withheld": [
+    "CI approval: CPU 20-job run incomplete; complete 23-job evidence at 55fd4e82 required before admission/promotion",
+    "Admission, promotion, protected integration, publication; current publication proposal excluded; published vulkan.2 wheels and their admission untouched",
+    "Any discharge of the 142 original obligations or transfer beyond the 32 selected rows / 128 bindings",
+    "Mandatory eight-row admission and generic qualification-index acceptance of foreign retention (695 is manual envelope audit only); 688 UNVERIFIED and its child origin remain withheld",
+    "Treating the 680 overlay ledger 487168c3 as a committed or permanent ledger; promotion must re-materialize under guard (F1)",
+    "Any head other than 55fd4e82, including one that commits post-head receipts or ci-native-700 files (F2); later doc/planning edits",
+    "Failed preparation 11; 660 limits F4/F5 (live-native accessors, callback-error recorder/finalization) remain limits",
+    "Independent hash computation, unread ranges and unopened files listed above; full upstream parity, optional hardware, Metal beyond build/import"
+  ],
+  "actual_exit": 0,
+  "child_waited": true,
+  "required_ci_complete": false,
+  "artifact_admitted": false,
+  "release_approved": false,
+  "scope": "Exact finite subject/head change-impact review only; final full CI, promotion-basis review, matrix/Tk admission, integration and delivery remain separate."
+}

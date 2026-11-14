@@ -1,5 +1,16 @@
 # Stencil capture and historical stock failures
 
+Current installed checkpoint, 2026-11-13: all eight selected stencil cases pass
+in the [current parent-wheel acceptance](../compat/api-acceptance/qt-parent-current-installed-v1.json)
+on source `2b8bccd`, Windows `9e4e30cc…` and WSL Linux `a2715d26…`.
+Each retained 44-case selected JUnit report has no failures, errors or skips;
+its hash matches that packet. The same selection includes eleven numeric-zero
+clear/flag/refusal-recovery cases, ten point controls (eight rendered reference
+cases), four pending-filter revisions and two fixed scenes per platform.
+These are local installed observations, with zero overlays and ten final zero
+gauges, not final admission or published coverage. Older pending-installed
+statements below describe their own earlier checkpoints.
+
 Status, 2026-11-13: the same eight current source cases pass on Windows Vulkan
 (native leaf `6dc06d2c…`) and WSL Mesa25.2.8 software Vulkan (native `5740b28a…`).
 Installed successor qualification remains pending.
@@ -41,8 +52,9 @@ orientation without invoking OpenGL in the candidate process.
 
 Every new case explicitly deletes its program, vertex buffer, framebuffer and
 attachments and asserts all nine owned-resource gauges are zero after close.
-This does not establish arbitrary masks/formats, multisample or installed-wheel
-coverage. It also does not make the unchanged stock wrapper pass. Q08/B10's
+The source cases alone do not establish arbitrary masks/formats, multisample or
+installed-wheel coverage; the finite installed checkpoint above is separate.
+It also does not make the unchanged stock wrapper pass. Q08/B10's
 historical upstream admission remains unachieved; the practical disposition is
 an improved public wrapper plus an explicit raw-GL boundary. SCI-06's selected
 source investigation is recorded separately from installed acceptance.
