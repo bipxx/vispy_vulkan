@@ -28,6 +28,44 @@ full VisPy parity is not the finish line.
 
 ### Ordered closure checklist
 
+Order5 independent review complete, 2026-11-14:
+[739](../../../compat/api-acceptance/qt-input-review-v1.json) approves exact8-file
+delta with conditions/no required changes.810source guards/818frozen inputs;
+reviewer exit0/awaited,82bytes cleaned/835inputs verified. Preserve test/four
+receipts unchanged.736/738visible/rendered response is2x2origin internal
+framebuffer readback after a draw, not optical/presented-display/whole-canvas
+proof; restoration is green after reconnect, target isolation is emitter
+cross-wiring rather than focus routing. WSL driver identity is the retained Mesa
+artifact9c5c41b3a7b9d759b0960c868f10375281798ad084150716d6d122c8789b9e12;
+prior original/patched wording changes no driver bytes. Application exceptions
+in Qt input virtuals with ignore_callback_errors=False remain outside proved
+abort-safety. Wait for protected PR78merge, join actual parent tree, then explicit
+owned delta/private index/fresh branch protection. No new branch or test CI/
+profile/full-parent coverage claim. Actual eventual head/CI/merge stays external.
+
+Order5 Windows/WSL local installed subset complete, 2026-11-14:
+[736](../../../compat/api-acceptance/qt-input-windows-v1.json)/[738](../../../compat/api-acceptance/qt-input-wsl-v1.json)
+each pass8identical-source Qt-generated input cases, exact payload/rendering/
+handled-state/disconnect-reconnect/target-isolation behavior,537members/no
+overlays/ten zero gauges.738borrows retained filtered GUI PyQt6 profile/private
+Xvfb/software driver, checks original wheel module bytes and unchanged origins,
+all children exit0/awaited.737headless-dependency selection failure stays failed;
+corrected738prechecks binding import. Both WSL targets cleaned59,740,928bytes/
+48retained verifications; all735–738scratch cleaned95,540,838bytes. No new
+environment or native build. Next review/integration of this new test/records
+after PR78's existing checks; no claim for physicalHID/focus/trackpad/gestures/
+fractionalDPI/other bindings/CI/profile admission or broader LIF-06 closure.
+
+Order5 Windows subset progress, 2026-11-14:
+[736](../../../compat/api-acceptance/qt-input-windows-v1.json) passes8installed
+PyQt6generated key/wheel/mouse payload/rendering/handled-state/target-isolation
+cases,537members/no overlays/ten zero gauges, actual exit0/awaited.735fixture
+ndarray assertion/Qt callback abort stays failed with source and no teardown
+claim; corrected test safely reports assertions after dispatch. Both temporary
+targets cleaned35,799,910bytes/40retained verifications. Next the same finite
+WSL counterpart and later review/integration. These additions are outside the
+already-pushed PR78head; no focus routing/HID/CI/profile or broad LIF-06 claim.
+
 Order3 exact review/commit progress, 2026-11-14:
 [731/732](../../../compat/api-acceptance/post-preview-reviewed-commit-v1.json)
 approves the78-file delta with conditions/no required changes; exact staged

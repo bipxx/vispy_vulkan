@@ -1,0 +1,40 @@
+{
+  "status": "FAILED_WSL_CONSUMER_DEPENDENCY_SELECTION_BEFORE_COLLECTION",
+  "actual_exit": 1,
+  "child_waited": true,
+  "tests_collected": 0,
+  "shutdown_gauges_verified": false,
+  "cause": "Reused headless consumer dependency directory has noPyQt6. Native import/device initialized, then dependency import failed before pytest collection. No test assertion/product failure proved.",
+  "next_action": "Reuse retained existing PyQt6profile/wheels from prior689QWidget qualification; check binding import before installed selected test. No new environment/native build required.",
+  "xvfb": {
+    "argv": [
+      "/usr/bin/Xvfb",
+      "-displayfd",
+      "1",
+      "-screen",
+      "0",
+      "800x600x24",
+      "-nolisten",
+      "tcp",
+      "-nolisten",
+      "unix",
+      "-listen",
+      "local",
+      "-noreset"
+    ],
+    "actual_exit": 0,
+    "child_pid": 425,
+    "child_waited": true,
+    "display": ":0"
+  },
+  "cleanup": {
+    "status": "PASS_APPLY",
+    "deleted_files": 570,
+    "reclaimed_bytes": 29870464,
+    "retained_verified": 21,
+    "scratch_absent": true,
+    "actual_exit": 0,
+    "child_waited": true
+  },
+  "evidence_root": "@evidence/build/runs/qt-input-wsl-737"
+}

@@ -1,0 +1,21 @@
+{
+  "status": "FAILED_TEST_ADAPTER_ARRAY_ASSERTION_QT_CALLBACK_ABORT",
+  "actual_exit": 1,
+  "child_waited": true,
+  "selected_child_exit": 3221226505,
+  "observed_keyboard_dots": 4,
+  "junit_complete": false,
+  "shutdown_gauges_verified": false,
+  "cause": "Test compared ndarray wheel.delta to tuple using scalar assert, raising ambiguous-truth ValueError inside a Qt virtual callback. Qt terminated the process; no product defect proved.",
+  "next_action": "Use array equality; catch validation exceptions in callback and assert/report them after sendEvent returns. Retain failed exact source/actual process receipts; clean before successor.",
+  "evidence_root": "@evidence/build/runs/qt-input-windows-735",
+  "cleanup": {
+    "status": "PASS_APPLY",
+    "deleted_files": 568,
+    "reclaimed_bytes": 17899955,
+    "retained_verified": 19,
+    "scratch_absent": true,
+    "actual_exit": 0,
+    "child_waited": true
+  }
+}

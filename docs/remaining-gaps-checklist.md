@@ -2,6 +2,42 @@
 
 ## Latest checkpoint — 2026-11-14
 
+**Qt input review complete; protected integration remains:**
+[739](../compat/api-acceptance/qt-input-review-v1.json) approves exact8-file scope
+with conditions/no required changes.810source guards/818frozen inputs, reviewer
+exit0/awaited, cleanup82bytes/835inputs verified. Test/four receipts unchanged.
+"Visible/rendered" in736/738means2x2origin internal framebuffer readback after
+an actual draw, not optical/presented-display/whole-canvas proof; restoration
+means green after reconnect. Target isolation tests emitter cross-wiring, not
+focus routing. The original/patched driver wording refers to one retained Mesa
+artifact `9c5c41b3a7b9d759b0960c868f10375281798ad084150716d6d122c8789b9e12`.
+Application input-callback abort-safety with ignore_callback_errors=False stays
+open. Next wait for protected PR78merge, join actual parent and integrate with
+fresh required checks; no new branch, CI coverage, profile or full-parent claim.
+
+**Selected Qt input acceptance complete on Windows/WSL:**
+[736](../compat/api-acceptance/qt-input-windows-v1.json)/[738](../compat/api-acceptance/qt-input-wsl-v1.json)
+each pass8identical-source payload/render/handled-state/disconnect-reconnect/
+target-isolation cases,537members/no overlays/ten zero gauges on current wheels.
+WSL uses retained filtered PyQt6 and original software driver/private Xvfb;
+borrowed origins unchanged, all children exit0/awaited.737wrong dependency path
+fails before collection and stays retained;738selects existing GUI dependencies
+with an import precheck.59,740,928WSLscratch bytes removed/48retained checks;
+95,540,838bytes cleaned across735–738. No new environment/native build.
+Next review/integrate the new Qt test/records after PR78's existing checks;
+no source change to its pushed head. LIF-06/API-06 stay partial beyond the named
+subset; no physicalHID/focus/gesture/trackpad/DPI/other-binding/CI/admission claim.
+
+**Next behavior gap partially closed on Windows:**
+[736](../compat/api-acceptance/qt-input-windows-v1.json) passes8PyQt6generated
+key/wheel/mouse cases with exact public payloads, rendered response, handled/
+ignored behavior, disconnect/reconnect and target isolation on9e4e30cc/runtime2b8.
+537members/no overlays/ten zero gauges, exits0/awaited.735fixture ndarray/Qt
+callback abort remains failed with source/reproducer; corrected validation runs
+outside Qt callback dispatch. Both targets cleaned35,799,910bytes/40retained
+verifications. New test/receipts are outside PR78. Next WSL counterpart, then
+review/integration; LIF-06/API-06 stay partial, no focus/HID/CI/admission claim.
+
 **Independent impact review and local commit A complete:**
 [731/732](../compat/api-acceptance/post-preview-reviewed-commit-v1.json) approves
 the exact78-file delta with conditions/no required changes and records local
@@ -961,6 +997,16 @@ explicit boundary; implementing every possible form is not required.
   including all nine zero gauges. Installed, embedded-parent lifecycle and actual surface loss remain open.
 - [ ] **LIF-05 — MSAA capture:** disposition broader depth/stencil and
   format/feature combinations separately from existing color-resolve evidence.
+- [x] **LIF-06-QT-WINDOWS — Finite8case installed PyQt6 subset:**
+  [736](../compat/api-acceptance/qt-input-windows-v1.json),2026-11-14:
+  generated key/wheel/mouse payload/rendering/handled-state/target-isolation
+  cases pass Windows9e4e30cc, no overlays/ten zero gauges; scratch cleaned.
+  WSL, integration, focus/physicalHID and broader parent scope remain open.
+- [x] **LIF-06-QT-WSL — Matching8case installed PyQt6 subset:**
+  [738](../compat/api-acceptance/qt-input-wsl-v1.json),2026-11-14:
+  exact same736source passes currenta2715d26/softwareVulkan/privateXvfb,537members,
+  no overlays/ten zero gauges; borrowed origins and cleanup verify.737dependency
+  failure retained. Broad parent, other bindings, review/integration and CI open.
 - [ ] **LIF-06 — Input forwarding:** selected Qt keyboard, wheel, focus, mouse,
   timer and coordinate delivery beyond the finite Tk subset. Touch, stylus,
   gestures and additional layouts need their own selected scope.
