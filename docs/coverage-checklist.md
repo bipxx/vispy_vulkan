@@ -2,6 +2,55 @@
 
 ## Latest checkpoint — 2026-11-14
 
+**Qt input delta independently approved; integration pending:**
+[739review](../compat/api-acceptance/qt-input-review-v1.json) approves the exact
+8-file follow-up with conditions/no required changes,810source guards/818frozen
+review inputs; actual reviewer exit0/awaited,82scratch bytes removed/835inputs
+verified. Test and four result/failure receipts remain byte-identical. In736/738,
+"visible/rendered response" means2x2origin internal Dawn framebuffer readback
+after an actual draw, not optical/presented-display/whole-canvas proof;
+"restoration" means green again after reconnect. Peer isolation checks emitter
+cross-wiring, not focus routing. Both WSL driver descriptions identify the same
+retained Mesa software-driver artifact `9c5c41b3a7b9d759b0960c868f10375281798ad084150716d6d122c8789b9e12`
+(`libvulkan_lvp.so`,external-driver-origin-71ICD); no driver bytes changed.
+Application input-callback exceptions with ignore_callback_errors=False remain
+outside the proved abort-safety scope. Wait for protected PR78merge/actual-parent
+join before a new branch; fresh actual-head branch checks remain required.
+No new test CI coverage, profile admission or broad LIF-06/API-06 closure.
+
+**LIF-06 selected Qt input subset passes both installed profiles:**
+[Windows736](../compat/api-acceptance/qt-input-windows-v1.json) and
+[WSL738](../compat/api-acceptance/qt-input-wsl-v1.json) each pass the same8cases
+with identical test-source hash: key/text/modifiers, angular wheel deltas,
+logical mouse/button payloads, handled/ignored delivery, disconnect/reconnect,
+exact visible response and target isolation.537members/no overlays/ten zero
+gauges each on9e4e30cc/a2715d26/runtime2b8bccd. WSL reuses retained filtered
+PyQt6 6.11.0/Qt6.11.2 and patched software driver; binding modules match original
+filtered wheel, borrowed origins unchanged, private Xvfb exit0/awaited.
+[737dependency failure](../compat/api-acceptance/qt-input-wsl-dependency-failure-v1.json)
+stops before collection on the wrong headless dependency path; failure/source
+retained, corrected738selects the existing GUI profile with an import precheck.
+Both WSL targets cleaned59,740,928bytes/48retained verifications; no scratch.
+No new environment/native build. All four735–738runs cleaned95,540,838bytes.
+This closes finite local installed acceptance only; new test/records are outside
+PR78, with review/integration pending. PhysicalHID/focus routing/trackpad pixel
+deltas/gestures/fractionalDPI/other bindings and CI/profile admission stay open.
+
+**LIF-06 Windows PyQt6 input subset passed:**
+[736](../compat/api-acceptance/qt-input-windows-v1.json) passes8toolkit-generated
+key press/release(letter/left), angular wheel(vertical/horizontal) and left mouse
+press/release cases on installed9e4e30cc/runtime2b8bccd. Public text/key/modifiers,
+logical coordinates, buttons/deltas, exact green/blue rendering, handled/ignored
+delivery, disconnect/reconnect and independent target isolation verify.537members,
+zero source overlays and ten zero shutdown gauges; actual exits0/awaited.
+[735failure](../compat/api-acceptance/qt-input-adapter-failure-v1.json) retains an
+ndarray assertion escaping Qt and aborting the child before completed teardown;
+corrected test uses array comparison and reports callback assertions outside
+Qt dispatch. No runtime fix or relaxed product assertion. Both targets cleaned
+35,799,910bytes/40retained-input verifications, scratch absent. New test/receipts
+are later WIP, outside PR78; WSL, independent review/integration and broader
+LIF-06 remain open. No physical HID, focus routing or new CI/profile claim.
+
 **Later-WIP reviewed; exact commit A created locally:**
 [731/732receipt](../compat/api-acceptance/post-preview-reviewed-commit-v1.json)
 records independent exact78-file approval with conditions/no required changes,
@@ -1669,6 +1718,18 @@ observations on each claimed profile, not just a successful screenshot.
   surface loss, multicanvas recovery and owned-resource retirement.
 - [ ] **LIF-05 — MSAA capture / Q11:** broader depth/stencil and format/feature
   matrix; single-sample and asymmetric color-resolve proofs remain separate.
+- [x] **LIF-06-QT-WINDOWS — Finite8-case installed PyQt6 input subset:**
+  2026-11-14, [736](../compat/api-acceptance/qt-input-windows-v1.json) verifies
+  toolkit-generated payload/rendering/handled-state/target-isolation cases on
+  Windows9e4e30cc.537members/no overlays/ten zero gauges; failed735retained,
+  both targets cleaned. This is local installed evidence, not WSL, focus/HID,
+  CI, integration or profile admission; parent LIF-06 stays partial.
+- [x] **LIF-06-QT-WSL — Matching8-case installed PyQt6 subset:**2026-11-14,
+  [738](../compat/api-acceptance/qt-input-wsl-v1.json) passes byte-identical
+  Windows736test on a2715d26/retained filtered PyQt6/private Xvfb/softwareVulkan.
+  537members/no overlays/ten zero gauges; actual controller/Xvfb exits0/awaited,
+  borrowed origins unchanged,737failure retained and both WSL targets cleaned.
+  Local installed evidence only; broad LIF-06, review/integration and CI stay open.
 - [ ] **LIF-06 — Input forwarding / Q13:** selected keyboard, wheel, touch, focus,
   mouse, timer and coordinate semantics beyond the currently proved workflows.
 - [x] **LIF-06-TK — Finite installed Tk input acceptance:** 39 cases pass without

@@ -1,0 +1,82 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "status": "APPROVED_EXACT_QT_INPUT_DELTA_WAITING_FOR_PR78_MERGE",
+  "coverage_ids": [
+    "LIF-06",
+    "API-06"
+  ],
+  "reviewed_delta": {
+    "path": "@evidence/build/runs/qt-input-impact-review-739/delta.json",
+    "sha256": "855236329e77e22e0070004e990634e6457406c5e8775f334a273be0e90e702a",
+    "files": 8,
+    "base": "a2dbe39a1ae25369be28c94a613ef9607494a8d6"
+  },
+  "decision": {
+    "path": "@evidence/build/runs/qt-input-impact-review-739/decision.json",
+    "sha256": "39a9c70012650a2e87ae454bf67dee5f7c0cc6931561b7171cf9815f39b17a91",
+    "value": "APPROVED_EXACT_DELTA_WITH_CONDITIONS",
+    "models": [
+      "claude-fable-5-2"
+    ]
+  },
+  "required_changes": [],
+  "integration_conditions": [
+    "Wait for the protected PR78 merge; open no branch or PR before it, to avoid duplicate runs.",
+    "Confirm the actual merged parent tree equals reviewed base a2dbe39a1ae25369be28c94a613ef9607494a8d6 for all 8 delta paths, the 810 source guards and the runtime inputs; otherwise re-audit the relevant paths and guards before integrating.",
+    "Integrate only the 8 owned paths, with blob identities as in delta.json (test c3edfa9d, receipts 8dc6f867/1258bd1b/8c1a8583/83e00b77, docs 7cc7861d/76bad085/e1ef632b), through a private index within 32MiB; no checkout, reset, clean, force or change to another owner's index.",
+    "Require fresh normal branch protection and CI at the new head; this review is not that CI, not integration and not admission.",
+    "Label no source head as 55fd; the frozen 55fd qualification, admission and delivery stay 55fd-only.",
+    "Reuse wheels 9e4e30cc and a2715d26 and runtime 2b8bccd only while runtime inputs are unchanged; no native rebuild, new environment, strict profile or full-parity admission.",
+    "Make no CI coverage claim for tests/qt/test_input_delivery_gpu.py: no workflow collects it.",
+    "Keep parent LIF-06 and API-06 partial; keep 735 and 737 recorded as failed with their retained packets.",
+    "Any byte change to the test or the four receipts voids this approval and the 736/738 evidence link (test hash 1cb94719bd6574378adc8cb81510c02ab0897a6dadd61a1698ec94c277094c8e)."
+  ],
+  "metadata_followup_conditions": [
+    "Permitted: exactly one new own review receipt plus inserted factual top-checkpoint paragraphs in docs/coverage-checklist.md, docs/remaining-gaps-checklist.md and docs/superpowers/plans/2026-11-13-remaining-gap-closure.md; pure insertions, all other reviewed bytes preserved, exact insertions audited.",
+    "The insertions may cite this external decision and delta hash 8552\u2026702a; they must not cite their own commit, head or CI. The future head, merge and CI record stays external on the hosting side; no third self-referential commit.",
+    "F1: state that 'visible/rendered response' in the 736/738 records means 2x2 origin internal Dawn framebuffer readback after an actual draw, not optical, presented-display or whole-canvas proof; 'restoration' means green again after reconnect.",
+    "F2: resolve 'patched' (coverage-checklist.md:12) versus 'original' (remaining-gaps-checklist.md:9) for the WSL software driver by naming artifact 9c5c41b3a7b9d759b0960c868f10375281798ad084150716d6d122c8789b9e12 with the one descriptor the retained record supports.",
+    "Optional (F3): note as open under parent LIF-06 that application exceptions inside Qt input virtuals with ignore_callback_errors=False are not abort-guarded, unlike the paint path.",
+    "Any other delta (test, receipts, non-top doc bytes, runtime, native, tools, workflows, locks, licenses) needs a new review."
+  ],
+  "withheld": [
+    "No independent SHA256 or blob computation: the delta hash, file hashes, blob ids, the 810/818 counts and base identity are taken from the packet, delta.json and receipts.",
+    "The working-tree files in S were read, not git blobs; byte equality with the delta blobs was not verified, and the three docs were not diffed against their previous blobs.",
+    "Unread: R/review.py, review-request.txt, base-tree.out, base-tree-process.json, owned-delta-and-licenses.zip, storage-observation.json, review logs, and inputs.json beyond line 60.",
+    "Unread: all doc content outside the ranges listed, including historical snapshots; no claim about them.",
+    "Unread: R738 linux.py and outer.py (three grep lines only), borrowed-inputs.json, logs, xvfb-process.json, selected-result.json; R736 drive.py, check_selected.py, selected-result.json, cleanup-result.json; the R735 and R737 directories. The three-binding match to the filtered wheel, the borrowed-input rehash and licence retention rest on the receipts and the user's statement.",
+    "The origin of 'test_count': 8 in the receipts was not traced; both selected.xml files corroborate it.",
+    "cpu-contract.yml long lines were not read in full; the absence of tests/qt collection rests on a negative grep.",
+    "PR78 state, merge parent, branch protection and CI were not checked (no network or shell); this is not integration, new-head CI or admission.",
+    "Nothing was run: no tests, builds or hardware checks; F2 is unresolved by this review."
+  ],
+  "critical_source_guards": 810,
+  "frozen_review_inputs": 818,
+  "local_installed_tests_per_platform": 8,
+  "test_sha256": "1cb94719bd6574378adc8cb81510c02ab0897a6dadd61a1698ec94c277094c8e",
+  "ci_coverage_claimed": false,
+  "integrated": false,
+  "branch_created": false,
+  "claim_clarification": "Rendered/visible response means2x2origininternalDawnframebufferreadbackafteractualdraw; notoptical/presented-display/whole-canvasproof. Restoration meansgreenagainafterreconnect. Targetisolation meansnoemittercross-wiring, notfocusrouting.",
+  "driver_clarification": {
+    "descriptor": "retained Mesa software-driver artifact",
+    "library": "libvulkan_lvp.so",
+    "sha256": "9c5c41b3a7b9d759b0960c868f10375281798ad084150716d6d122c8789b9e12",
+    "icd": "build/runs/external-driver-origin-71/external-icd.json",
+    "scope": "Earlier original/patched descriptions identify the same retained artifact; no change to system Mesa or driver bytes."
+  },
+  "open_boundary": "Application exceptions in Qt input virtuals with ignore_callback_errors=False have no input abort guard proven; fixture validation exceptions are caught and asserted aftersendEvent. No claim for application callback abort-safety.",
+  "actual_exit": 0,
+  "child_waited": true,
+  "cleanup": {
+    "status": "PASS_APPLY",
+    "deleted_files": 1,
+    "reclaimed_bytes": 82,
+    "retained_verified": 835,
+    "scratch_absent": true,
+    "actual_exit": 0,
+    "child_waited": true
+  },
+  "scope": "Independent exact source/test/evidence impact approval with read/hash-reliance limits. Wait for protectedPR78merge and actualparenttree join; actualnewhead/CI/merge evidence stays external. Not runtime/admission/fullparity approval."
+}
