@@ -7,7 +7,7 @@
   "workflows": [
     {
       "path": ".github/workflows/cpu-contract.yml",
-      "sha256": "4c80541ce91d2362f248bbd5185f44a3fc968ddcb9ef9e7ac9252abdd1a46c53",
+      "sha256": "624ab81d98f8282747a2642fa6636f7a2b948dee37a6e1e82672dd298dd00429",
       "job_key": "cpu",
       "jobs": [
         "CPU linux-x86_64 CPython 3.10.19",
@@ -34,7 +34,7 @@
     },
     {
       "path": ".github/workflows/linux-vulkan.yml",
-      "sha256": "64c2e91296258f40c272c4fa10fb4eac40f415053435b107b8ab8338fce09296",
+      "sha256": "706a9d266d0efa28fefc54b86039a0bec88856cc50263b72dafa02e74b77192b",
       "job_key": "software-vulkan",
       "jobs": [
         "software-vulkan"

@@ -1,0 +1,107 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "coverage_ids": [
+    "LIF-06",
+    "API-06",
+    "LIF-06-QT-INPUT-CALLBACK-SOURCE",
+    "LIF-06-QT-INPUT-CALLBACK-RENDERED-WINDOWS",
+    "LIF-06-QT-INPUT-CALLBACK-RENDERED-WSL"
+  ],
+  "status": "PASS_ACTUAL_LOCAL_HEAD_WINDOWS_WSL_SOURCE_OVERLAY_NOT_PUSHED",
+  "commit": "2c6096275ccd7c0fd663f59660e4782db6116834",
+  "tree": "8a481453d86b449575a86f51d110c943d22c10c2",
+  "parent": "bff61230a87e9a887700604109cf93e4bbc3199c",
+  "branch": "wip/qt-key-parent-787",
+  "source_files": 29,
+  "profiles": {
+    "windows": {
+      "verification": {
+        "path": "@evidence/build/runs/qt-key-parent-head-windows-788/verification.json",
+        "sha256": "50c7b5cbb80e0249b7ee368d158e803a054e35fb5a1f14114dc8070acab76cdd"
+      },
+      "cases": 68,
+      "cpu_input": 47,
+      "rendered": 21,
+      "cpu_child_origins": 47,
+      "rendered_recovery_proofs": 9,
+      "source_overrides": 1,
+      "original_members_verified": 537,
+      "unchanged_members_verified": 536,
+      "native_sha256": "6dc06d2c7c67f3de1f24f0aa496fc833afa2bb11fd05990d7e0656e744927473",
+      "shutdown_gauges": {
+        "pending_tickets": 0,
+        "queued_frames": 0,
+        "live_buffer_bytes": 0,
+        "live_cpu_buffer_bytes": 0,
+        "live_texture_bytes": 0,
+        "canvas_texture_bytes": 0,
+        "transient_buffer_bytes": 0,
+        "line_resource_pool_busy_slots": 0,
+        "line_resource_pool_bytes": 0,
+        "host_import_pinned_bytes": 0
+      },
+      "cleanup": {
+        "path": "@evidence/build/runs/qt-key-parent-head-windows-788/cleanup-apply.log",
+        "sha256": "e68a528063847b33c5add13bc66053421efbce128597c0ea904f4364ea6e2314",
+        "reclaimed_bytes": 17902129
+      }
+    },
+    "wsl": {
+      "verification": {
+        "path": "@evidence/build/runs/qt-key-parent-head-wsl-789/verification.json",
+        "sha256": "67d9ec9ce27f48b0748ac3aee7b2418953bdf318c66ddf94dabfac8d38574930"
+      },
+      "cases": 68,
+      "cpu_input": 47,
+      "rendered": 21,
+      "cpu_child_origins": 47,
+      "rendered_recovery_proofs": 9,
+      "source_overrides": 1,
+      "original_members_verified": 537,
+      "unchanged_members_verified": 536,
+      "native_sha256": "5740b28ad4dc9024f1a2af21ee3f7dbef15a7e72379c91d0f6e4023716e6a9b2",
+      "shutdown_gauges": {
+        "pending_tickets": 0,
+        "queued_frames": 0,
+        "live_buffer_bytes": 0,
+        "live_cpu_buffer_bytes": 0,
+        "live_texture_bytes": 0,
+        "canvas_texture_bytes": 0,
+        "transient_buffer_bytes": 0,
+        "line_resource_pool_busy_slots": 0,
+        "line_resource_pool_bytes": 0,
+        "host_import_pinned_bytes": 0
+      },
+      "cleanup": {
+        "path": "@evidence/build/runs/qt-key-parent-head-wsl-789/cleanup-apply.log",
+        "sha256": "04543c2f5ac89936e27eb0985b74b5b526b0d47b0da621c88c724dad7f88c8cb",
+        "reclaimed_bytes": 29872638
+      }
+    }
+  },
+  "source_freeze": {
+    "path": "@evidence/build/runs/qt-key-parent-source-commit-787/source-freeze.json",
+    "sha256": "78432698f39f0bedcb231d10259f384e2f74d880fff9e14865814418f79d74a6"
+  },
+  "candidate_ci_impact": {
+    "path": "@evidence/build/runs/qt-key-parent-head-windows-788/candidate-ci-impact.json",
+    "sha256": "1c7be417db4514f311a492e5939a2490232fdbcafe971e167f225b4fc197d839",
+    "runtime_members": 510,
+    "mismatches": [
+      "vispy/app/backends/_qt.py"
+    ]
+  },
+  "pushed": false,
+  "integrated": false,
+  "ci_coverage_claimed": false,
+  "artifact_admitted": false,
+  "public_wheel_qualification_claimed": false,
+  "evidence_root": "@evidence/build/runs/qt-key-parent-head-wsl-789",
+  "scope": "Actual29-file local head joined to6Qt/test source blobs; unchanged tests with external isolated child bootstrap remove editable import ambiguity. ExactlyoneQt Python overlay per unchanged qualified native payload. No native build/new wheel/environment; toolkit-generated/readback only. This receipt and subsequent live checklist paragraphs remain outside that frozen local commit.",
+  "remaining": [
+    "Required CI selects frozenpreparation12, which correctly refuses changed Qt source identity. Renew a successor/current CI binding and independently review expanded delta before push; do not alter historical candidate or weaken verifier.",
+    "Changed-artifact installed/release acceptance remains separate.",
+    "No full napari/otherQtbindings/BaseException/gesture/focus/touch/physicalHID/nativepresentation/optical/fractionalDPI/fullparent coverage."
+  ]
+}

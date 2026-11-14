@@ -318,15 +318,16 @@ def test_gate_normalization_cli_writes_separate_records_and_never_overwrites(exa
 
 
 @pytest.mark.parametrize('fault', [None, 'missing-selector', 'changed-raw', 'changed-source', 'receipt-selector'])
-def test_secondary_store_normalization_replays_original_gates(example, monkeypatch, fault):
+def test_secondary_store_normalization_replays_original_gates(example, monkeypatch, fault, tmp_path_factory):
     import os
     from tools import retained_evidence as stores
     root, ledger = example
     receipt = promote(root, ledger, 'qualified')
     row = ledger['rows'][0]
     raw = inventory.read_json(root / receipt['gates'][inventory.GATES[0]]['path'])['raw_reports']
-    external = root.parent / (root.name + '-evidence')
-    external.mkdir()
+    # Passed tmp_path fixtures may be retired and their basenames reused.
+    # Keep this separate store unique within the same session scratch root.
+    external = tmp_path_factory.mktemp('secondary-store-evidence')
     profile = inventory.read_json(ROOT / stores.PROFILE)
     host = 'windows' if os.name == 'nt' else 'posix'
     view = dict(source_workspace='C:/unit-source' if host == 'windows' else '/unit-source',

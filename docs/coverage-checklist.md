@@ -2,6 +2,49 @@
 
 ## Latest checkpoint — 2026-11-14
 
+**Expanded source/scope/reuse review bound, 2026-11-14:**
+[795/796review and bindings](../compat/api-acceptance/qt-callback-preparation13-review-bindings-v1.json) approve exact46-file delta
+`e4dff5132f3439c967249b82666d2ed375caba80ff465b148fea9c0ac018067c` and the twoexactnative-reuse
+digests. Candidate13source/scope refs, reviewonlyledgerflags and nativecandidate
+hashpointers are bound without changing scope/maps/reuseobjects. Both original
+nativeproofvalidators and actualLinuxCI input/capture/currentPythonpackage
+validation pass unchanged; transientpackagebytes are discarded, notadmitted.
+414historicalcandidateJSONs and all23existingAPIreceipts remain unchanged.
+Reviewer recomputed nohashes; coordinator verifies1,286frozeninputs and records
+its receiptcount/test-join errata. Use permittedfallback: namedQtCPU/drawtests
+at exactfinalhead beforepush, not a fabricatedpaint-scopejoin. Next retain2c
+asfirstcommit, appendone reviewedmetadatafollowup and requirefresh protectedCI.
+Source/scope/reuseapproval only: no finalhead/CI/merge/installed/admission/
+publicwheel/release or fullparent claim; LIF-06/API-06 remainpartial.
+
+**Current candidate/CI successor prepared, 2026-11-14:**
+[790–794source work](../compat/api-acceptance/qt-callback-preparation13-wip-v1.json) creates unreviewedpreparation13 and couples
+CPU/Linux selectors and policydigests to it.510Pythonmembers bind current1c68Qt;
+native/build/lock/license inputs unchanged,414historicalcandidateJSONs preserved,
+64criteria/128bindings/142origin dispositions retained. Fresh56caseTk baselines
++failure/recovery pass Windows/WSL with1QtPythonoverlay, notnewwheelqualification.
+Native133input maps match retainedproduction; all3actualreview gates stayclosed.
+Contracts793:760pass/2setupfailures from reusedtmp names; unique factory-owned
+sibling fix passesall5variants underbothretentionmodes (10targetedcases). No new
+full762suitepass.792budgetguard stop47.3MB is retained; failed-onlytmp retention
+reduces793sampledpeak to1.9MB. All790–794scratch cleaned98,180,495bytes, including
+failedruns. Next independent expandedsource/scope/reuse review, then actual
+combined-head acceptance/protectedCI. Sourcepush/merge/release remainpending;
+LIF-06/API-06 remainpartial and no historicalqualification transfers.
+
+**Qt callback exact local-head acceptance, 2026-11-14:**
+[788Windows/789WSL](../compat/api-acceptance/qt-key-parent-actual-head-v1.json) each pass68cases at localcommit
+`2c609627`:47CPU input +21rendered, with47isolatedCPU origin/native proofs and
+9rendered recovery proofs per profile;537original members checked before1Qt
+overlay,536/native unchanged and tenzero shutdown gauges. This is source-overlay
+acceptance, not a new qualified wheel. Both targets cleaned47,774,767bytes;
+787private index also cleaned15,131,785bytes. Allactualchildren exited0/awaited.
+Push is held: requiredCI selects frozenpreparation12, which rejects exactlythe
+changedQt wrapper among510Pythonmembers. Next create/review a truthful successor
+and coupledCI binding without altering historical qualification/verifier policy.
+No push/merge/CI/publicwheel claim; LIF-06/API-06 stay partial. This receipt and
+later livecheckpoints remain outside the frozen29-file localcommit.
+
 **Qt key-parent amendment reviewed, 2026-11-14:**
 [786 independent review](../compat/api-acceptance/qt-key-parent-amendment-review-v1.json) approves the exact28-file source delta
 `ca51efbd7cfed3bdfac674e62cb715dc7e706b5c5530bacd6dcf3f0a90a08105`
