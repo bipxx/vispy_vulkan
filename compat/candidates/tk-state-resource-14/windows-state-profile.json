@@ -1,0 +1,98 @@
+{
+  "schema": 1,
+  "id": "windows-gpu-tk86-cp312-development",
+  "phase": "source-functional",
+  "product_runtime_source_commit": "275888b5a46647a6ff59c7474f96dd5def2b6f75",
+  "kind": "windows-gpu",
+  "architecture": "x86_64",
+  "python_abi": "cp312",
+  "python_version": "3.12.8 (main, Dec 19 2024, 14:41:01) [MSC v.1942 64 bit (AMD64)]",
+  "interpreter": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\.venv\\Scripts\\python.exe",
+  "interpreter_sha256": "4025e2a6d8fc90d053a8405e81f008cbd8ee45b582e2d77480341501f4aeda73",
+  "base_interpreter": {
+    "path": "C:\\Users\\HEQ\\AppData\\Roaming\\uv\\python\\cpython-3.12.8-windows-x86_64-none\\python.exe",
+    "sha256": "71b986e874ae1382c434f95852f5670e6d87576db2861cd03737dd4bce9d69ed"
+  },
+  "os_identity": "Windows-11-10.0.26300-SP0",
+  "toolkit": {
+    "tk_version": 8.6,
+    "tcl_version": 8.6,
+    "binding_origin": "C:\\Users\\HEQ\\AppData\\Roaming\\uv\\python\\cpython-3.12.8-windows-x86_64-none\\DLLs\\_tkinter.pyd",
+    "binding_sha256": "38453f6aff3f3a3ef0017c00bfee2f403ca0aeaf92b8b5c56d05460fd6dbbdf9"
+  },
+  "display_mode": "tk-raster",
+  "device": {
+    "backend": "Vulkan",
+    "adapter_type": "discrete",
+    "vendor": "nvidia",
+    "device": "NVIDIA GeForce RTX 4090",
+    "driver": "NVIDIA: 610.88 610.88.0.0",
+    "vendor_id": 4318,
+    "device_id": 9860,
+    "max_texture_dimension_1d": 32768,
+    "max_texture_dimension_2d": 32768,
+    "max_texture_dimension_3d": 16384,
+    "max_vertex_attributes": 30,
+    "max_vertex_buffers": 8,
+    "max_vertex_buffer_array_stride": 2048,
+    "max_storage_buffers_per_shader_stage": 16,
+    "max_uniform_buffers_per_shader_stage": 12,
+    "max_inter_stage_shader_variables": 30,
+    "max_storage_buffer_binding_size": 2147483644,
+    "max_bindings_per_bind_group": 1000,
+    "max_compute_invocations_per_workgroup": 1024,
+    "max_compute_workgroup_size_x": 1024,
+    "max_compute_workgroups_per_dimension": 65535,
+    "max_point_vertex_attributes": 30,
+    "core_features_and_limits": true,
+    "point_input_limit_scope": "all active user point inputs share one vertex buffer; exact vertex/instance identities use read-only vertex storage without reserving a user attribute; actual granted attribute/stride/storage/allocation limits apply",
+    "max_samplers_per_shader_stage": 16,
+    "max_sampled_textures_per_shader_stage": 48,
+    "max_buffer_size": 1099511627776,
+    "max_uniform_buffer_binding_size": 65536,
+    "software": false,
+    "float32_filterable": true,
+    "unorm16_texture_formats": true,
+    "bresenham_lines": true,
+    "last_vertex_provoking": true,
+    "timestamp_query": true,
+    "timestamp_quantization_ns": 65536,
+    "host_mapped_pointer": true,
+    "host_import_limit": 536870912,
+    "depth_stencil_storage": "depth24_unorm_stencil8",
+    "ok": true,
+    "error": "",
+    "loss_count": 0,
+    "revision": "117b054598f4758b598f4b8f48feea48c11fe7b0+dawn-499e5c6ff9b37d5de70c6493fb74c251e0d35c1c"
+  },
+  "native_sha256": "057d13e62ac520fbf7fe7b62a3059588bb477e24a0061d087bcc50edd44a12ea",
+  "observed_module_origin": "D:\\vispy-vulkan-managed\\build\\work\\orphan-current-tk-windows-850\\windows\\vispy\\_dawn.cp312-win_amd64.pyd",
+  "native_inputs_sha256": "93241ed251ce3d75d9c346ea7abcf02c51cc7c4ac0450921e5e4489cd078e4af",
+  "evidence_store": {
+    "path": "compat/evidence-stores/secondary-v1.json",
+    "sha256": "b164e3fdc85863a2327b508ea60f8d3068f740cfe90f665aa52905e28bfb3ca5"
+  },
+  "source_observation": {
+    "cases": 56,
+    "report": {
+      "path": "build/runs/orphan-current-tk-windows-850/baseline-result.json",
+      "sha256": "23b42c206cad4370cf63d1434740513ecf41bdbd462d77d00d2437430b65f802"
+    },
+    "shutdown_gauges": {
+      "pending_tickets": 0,
+      "queued_frames": 0,
+      "live_buffer_bytes": 0,
+      "live_cpu_buffer_bytes": 0,
+      "live_texture_bytes": 0,
+      "canvas_texture_bytes": 0,
+      "transient_buffer_bytes": 0,
+      "line_resource_pool_busy_slots": 0,
+      "line_resource_pool_bytes": 0
+    }
+  },
+  "limitations": [
+    "Preparation schema source-functional phase conservatively binds actual installed development baseline,537members/no overlays; it does not grant strict profile admission.",
+    "Borrowed environment and exact wheel/native identities are retained; recorded module origin lies in terminal cleaned scratch, not a reusable dependency origin.",
+    "Four workflow observer/worker/collector criteria,32selected rows/128bindings, independent review, final CI/integration/admission and distinct delivery remain open."
+  ]
+}

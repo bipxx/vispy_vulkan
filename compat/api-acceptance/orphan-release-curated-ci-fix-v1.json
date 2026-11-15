@@ -1,0 +1,43 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "status": "PASS_TARGETED_REGISTRATION_AND12_NEW_CASES_FULL_CURATED_INCOMPLETE_LOCAL_CMAKE_PROFILE",
+  "original_head": "646c986dc67289beaeae46bd4d8af3e114d316f3",
+  "red_actual_exit": 1,
+  "red_expected_registration_failure": true,
+  "full_curated_actual_exit": 1,
+  "total_cases": 436,
+  "passed": 435,
+  "failed": 1,
+  "new_orphan_cases": 12,
+  "new_orphan_cases_passed": 12,
+  "registration_case_passed": true,
+  "local_failure_node": "test_shutdown_releases_warm_and_engine_owned_upload_caches",
+  "local_failure": "Existing CMake/compiler build profile required;shutil.which(cmake) returned None before any build.",
+  "preparation11files_unchanged": true,
+  "source_inputs": {
+    "tests/contract/curated_contracts.py": "db37cb78f3366fada7e49ea1cb63063b833e06f4f27c897ee15e16831986460e",
+    "tests/contract/test_dawn_orphan_retirement_contract.py": "7139aff83501328662783478d89a6ffe62217f87b8c7bf3d82492e95669ee24a"
+  },
+  "runtime_native_workflow_pin_or_validator_changed": false,
+  "artifact_admitted": false,
+  "review_pending": false,
+  "scope": "Two-test curation wiring only;no exclusions or assertion weakening. Original CI failure reproduced before fix;12new protocol controls and registration pass after. Full local suite remains failed1/436 due unavailable CMake;no environment install/native build attempted. Needs fresh review and full hosted CI on corrected head.",
+  "source_review": {
+    "path": "@evidence/build/runs/orphan-release-curated-fix-review-902/decision.json",
+    "sha256": "6784fe8ea5ee056a15d95b6b6362dd55fe4c1c369fdb2b3e2a56c909685a6147"
+  },
+  "cleanup": {
+    "path": "@evidence/build/runs/orphan-release-curated-ci-fix-901/cleanup-result.json",
+    "sha256": "adda16ce3c67de2e39d67eb63a21d5fa65e998762446fb9940bb11fbf1dbbe79"
+  },
+  "fixture_retirement": {
+    "path": "@evidence/build/runs/orphan-release-curated-ci-fix-901/fixture-retirement-result.json",
+    "sha256": "64fa3b24e74d0f3aabe60758cd76eaa797f6f22a8163891342a79c8eb2f36083"
+  },
+  "retention": {
+    "path": "@evidence/build/runs/orphan-release-curated-ci-fix-901/retention-record.json",
+    "sha256": "4d961cfa1ba0bed45bcbd82afe0dd4ff9779f11b8342207b5f8ba84875769cb8"
+  },
+  "full_hosted_CI_on_corrected_head_required": true
+}

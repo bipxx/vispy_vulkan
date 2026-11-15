@@ -1,0 +1,93 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "status": "PASS_CURRENT_WINDOWS_73_REGRESSIONS_TWO_REFUSALS_PLUS_MATCHING_NINE_LIFETIME_CASES",
+  "coverage_ids": [
+    "LIF-06-QT-FOCUS",
+    "LIF-06-PANZOOM-RETIREMENT",
+    "LIF-06-HOST-IMPORT-RETIREMENT",
+    "SCI-02-CLIP-ALPHA-BLEND"
+  ],
+  "wheel": {
+    "path": "build/artifacts/4f537748c74689ed4d55ee2e3f8e3d9f1c1cfdf0803d1b72c4169217c74291d8/vispy-0.17.0+vulkan.2-cp312-cp312-win_amd64.whl",
+    "sha256": "4f537748c74689ed4d55ee2e3f8e3d9f1c1cfdf0803d1b72c4169217c74291d8"
+  },
+  "native_sha256": "057d13e62ac520fbf7fe7b62a3059588bb477e24a0061d087bcc50edd44a12ea",
+  "cases": 73,
+  "passed": 73,
+  "cpu_child_origin_proofs": 47,
+  "lifetime_cases_separate_matching_wheel": 9,
+  "total_distinct_selected_positive_cases": 82,
+  "retained_canvas_refusals": 2,
+  "installed_members_verified": 537,
+  "source_overrides": 0,
+  "source_hashes": {
+    "src/vispy/app/backends/_qt.py": "1c68488e862cb1d8b573641a16a6894a97ac434f915773f12ce3708cae85a4cc",
+    "tests/qt/test_callback_errors.py": "47687ca256dbc041b3cf1f05d7983ec814a6a31d4e02cf4469c7805fd0f98109",
+    "tests/qt/test_focus_routing_gpu.py": "fb916c45c7ebbe21bc92d0a2058a9b65303bf9f29fe36ff63566237b29f5bbc8",
+    "tests/qt/test_input_callback_errors_cpu.py": "bd1be64df0afd4f49d4171eb9c5b3821f794c813705b9d04f821dfc5b5acd03d",
+    "tests/qt/test_input_callback_recovery_gpu.py": "fd48849b77a1f27701594088d3723d6233344bac13dc8a538085c5516692e97c",
+    "tests/qt/test_input_delivery_gpu.py": "1cb94719bd6574378adc8cb81510c02ab0897a6dadd61a1698ec94c277094c8e",
+    "tests/qt/test_panzoom_input_gpu.py": "9ab7931737264d97c3cfe533b8267a7caaeef233bdd9ef8bd17718385c185054",
+    "tests/visuals/test_mesh_clip_blend_gpu.py": "e5467bee2f00a5c17a04d578e1c026b64e34a269980b6c8387ff69eb0190d741"
+  },
+  "actual_exit": 0,
+  "child_waited": true,
+  "negative_actual_exit": 1,
+  "mutation": {
+    "maintained_test": "tests/qt/test_focus_routing_gpu.py",
+    "maintained_sha256": "fb916c45c7ebbe21bc92d0a2058a9b65303bf9f29fe36ff63566237b29f5bbc8",
+    "mutant_sha256": "2b2e60743d9081e34e2220cb22e2f593b4de4cf7d38e45801b1d30ca9e37fb8b",
+    "insertion_sha256": "22739b3db301d40e98d659f9f9d23ceb6a02bfc3fde66736525203de33b5a0df",
+    "insertion_source": "D:\\vispy-vulkan-managed\\build\\runs\\focus-retained-canvas-control-823\\negative_focus.py",
+    "scope": "Only module-global retained owner list and exact previous post-teardown foreign-canvas insertion added to current maintained test; fixture teardown/assertion intact."
+  },
+  "shutdown_gauges": {
+    "pending_tickets": 0,
+    "queued_frames": 0,
+    "live_buffer_bytes": 0,
+    "live_cpu_buffer_bytes": 0,
+    "live_texture_bytes": 0,
+    "canvas_texture_bytes": 0,
+    "transient_buffer_bytes": 0,
+    "line_resource_pool_busy_slots": 0,
+    "line_resource_pool_bytes": 0,
+    "host_import_pinned_bytes": 0
+  },
+  "negative_shutdown_gauges": {
+    "pending_tickets": 0,
+    "queued_frames": 0,
+    "live_buffer_bytes": 0,
+    "live_cpu_buffer_bytes": 0,
+    "live_texture_bytes": 0,
+    "canvas_texture_bytes": 0,
+    "transient_buffer_bytes": 0,
+    "line_resource_pool_busy_slots": 0,
+    "line_resource_pool_bytes": 0,
+    "host_import_pinned_bytes": 0
+  },
+  "focus_entry_change": "Collect unreachable prior objects and process deferred deletion/events to quiescence before a single entry probe; exact ten-gauge exit-equals-entry assertion unchanged. Prior strong owners remain alive.",
+  "preserved_attempt": "@evidence/build/runs/orphan-current-windows-regressions-840/verification.json",
+  "lifetime_evidence": "@evidence/build/runs/host-import-retirement-windows-838/verification.json",
+  "warning": "Temporary negative file lies outside project pytest config and emits one UnknownMarkWarning; both refusals are the required resource assertion, not warning failures.",
+  "artifact_admitted": false,
+  "published": false,
+  "scope": "Finite Windows development archive only. 73-regression run and nine lifetime cases are separate matching-wheel executions. Neither strict Tk row renewal, WSL, review/integration nor release qualification is established.",
+  "evidence": {
+    "path": "@evidence/build/runs/orphan-current-windows-841/verification.json",
+    "sha256": "c5ec23e8e1e56296fa60537c22f8ed1bca5b5ccae75ea6f2fbdb6fae8f7775d6"
+  },
+  "cleanup": {
+    "failed_regression_bytes": 17907304,
+    "failed_regression_retained_verified": 28,
+    "revised_regression_bytes": 17907292,
+    "revised_regression_retained_verified": 32,
+    "status": "PASS_APPLY_BOTH"
+  },
+  "native_and_lifetime_receipt": "compat/api-acceptance/host-import-retirement-windows-v1.json",
+  "remaining": [
+    "Matching fresh Linux native producer and exact installed WSL tests",
+    "Independent exact-delta review, actual-head joins and protected integration",
+    "Successor candidate/provenance/CI bindings;32Tk installed rows/128bindings, release-policy CI, strict admission and distinct verified delivery"
+  ]
+}

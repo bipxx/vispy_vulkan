@@ -1,0 +1,76 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "status": "APPROVED_EXACT_RETENTION_COLLECTOR_NAMESPACE_CORRECTION_ONLY",
+  "collector_sha256": "c42ca506b87cab5d572c2a45d2c31432b5096b40f186afd8101b76caebda1e92",
+  "findings": [
+    {
+      "id": "N1",
+      "severity": "info",
+      "detail": "upstream_sources are checked against compat/upstream_manifest.json by exact membership and digest, matching compatibility_candidate.py:206-207 (adds a stricter exact-key check). Removed only from a deepcopy; 16 bindings match the 16 single-source proposals; never mapped to fork src/vispy or searched on the filesystem; validate_candidate(require_reviewed=True) also runs."
+    },
+    {
+      "id": "N2",
+      "severity": "info",
+      "detail": "All other candidate references (ledger, matrix, runtime_inputs, profile observations, reviews, workflow scripts/acceptance sources, preparation_tools) still go through the unchanged source/store lookup; a real miss still stops and writes failure.txt."
+    },
+    {
+      "id": "N3",
+      "severity": "info",
+      "detail": "Skipping the generic scan for native/archive records drops nothing: qi.proof_input_references collects every field (typed store fields plus ordinary references), and the full qa/qn validators run first, unchanged."
+    },
+    {
+      "id": "N4",
+      "severity": "info",
+      "detail": "source-review.json and scope-review.json each contain exactly the three absolute run-892 references the collector requires; keep() checks the hashes and allowed roots."
+    },
+    {
+      "id": "N5",
+      "severity": "low",
+      "detail": "896 excludes execution-ledger.json and qualification-subject.json. The already-retained 895 failure terminal lists execution-ledger.json (3c5248a2...) as a repro input; 896 keeps that terminal file unchanged. Treat 895 retention as historical after ledger materialization, like 892/893; do not expect it to pass a current rehash."
+    },
+    {
+      "id": "N6",
+      "severity": "info",
+      "detail": "The diff matches the original 895 audit.py. Run 895 is added only as an immutable origin; it is not edited or rerun."
+    },
+    {
+      "id": "N7",
+      "severity": "low",
+      "detail": "finish.py post writes one new create-only evidence receipt under compat/api-acceptance (allowed by 892 condition 5). selected_rows/exact_strict_attempts/failed_attempts_preserved are typed-in constants; only rows==32 is asserted, the count of 5 strict attempts is not. failed_attempts_preserved does not refer to the 895 collector failure."
+    }
+  ],
+  "unread_evidence": [
+    "Bodies of coverage.json, execution.json, admission-selection.json, execution-ledger.json, windows/linux native-provenance and archive records",
+    "compat/upstream_manifest.json body (membership of the 16 paths not independently confirmed)",
+    "895 finish.py/hygiene.py/run.py (not compared to 896 copies), cleanup-plan/apply logs, audit.log",
+    "897 review.py, inputs.json, hygiene.py, spawn/preflight/event logs",
+    "Contents of runs 884-894, the 894 overlay, the 32 receipts, Metal inventories and reviewed-documentation-context.json",
+    "Validator internals beyond compatibility_candidate.py:85-263 excerpts and qualification_index.py:53-150"
+  ],
+  "allowed_followup": [
+    "Run 896 exactly once with this collector (sha c42ca506...1e92 as provided by the coordinator, not recomputed here) through the existing unchanged validators: run.py, finish.py retain, hygiene.py plan/apply, finish.py post (validate_retention), each with its real exit and child wait recorded.",
+    "Only if every step really passes: attempt the guarded current-15 subject using existing unchanged validators.",
+    "Any validator, identity, hash or membership failure stops work, keeps the reproducer and terminal, runs managed cleanup, and needs a fresh review; no in-place retry, path remapping or validator relaxation.",
+    "Not approved: release, admission, promotion, full parity, Metal graphics, physical GPU or HID claims; any change to product, test, CI, pin, scope, the scope digest e6acf758..., the 892/893/894 records or the 895 failure outcome."
+  ],
+  "reviewer_models": [
+    "claude-opus-5-5"
+  ],
+  "actual_exit": 0,
+  "child_waited": true,
+  "artifact_admitted": false,
+  "scope": "Exact896collector only, before execution;895failure immutable. No change to validators/product/CI/candidate/scope or outcomes. Fresh approval permits one896attempt, then guarded15subject only after all gates pass.",
+  "decision": {
+    "path": "@evidence/build/runs/orphan-release-retention-namespace-review-897/decision.json",
+    "sha256": "bf7e3025222badf1ee469f077ca46bbc63b07f7d8700128430b35605d2b5eef0"
+  },
+  "raw_review": {
+    "path": "@evidence/build/runs/orphan-release-retention-namespace-review-897/review-response.json",
+    "sha256": "f4f0189a66085ea8118a66003796a379637270022848991d245959e0fa3e5d6e"
+  },
+  "cleanup": {
+    "path": "@evidence/build/runs/orphan-release-retention-namespace-review-897/cleanup-result.json",
+    "sha256": "a531bf09acbb5302d21856471973d8c4044958f5de876c52b9eb4bb673d7132f"
+  }
+}

@@ -2,6 +2,53 @@
 
 ## Current execution pointer — 2026-11-14
 
+[846 reader preflight](../../../compat/api-acceptance/linux-candidate13-protocol-source-v1.json)
+finds current706a9d26 workflow is an exact inactive candidate13selector variation
+of the pinned producer. Original refusal retained; exact digest support passes
+130synthetic controls while unknown revisions still fail.9060242byte scratch
+cleaned/19retained verified. Next independently review this reader-only delta,
+then validate the actual same43615452982 CI capture when terminal; no rerun or
+native/workflow change. WSL, current qualification and integration remain open.
+
+[843/844 source push](../../../compat/api-acceptance/orphan-lifetime-source-head-v1.json)
+now records275888b5/treeb939a659,23paths, exact runtime/native/wheel/test/mutation
+joins and82+2collection.15137954byte private index cleaned/104retained verified;
+foreign checkout/index preserved. One fresh Linux CI run43615452982 is live at
+pinned software-Vulkan repair. Poll that handle, retain its actual producer and
+cleanup evidence, then WSL acceptance using its wheel. Do not duplicate a local
+native build or redispatch for observation delays. PR/protected integration,
+successor32row128binding qualification and delivery remain open. Later checkpoint
+is outside the frozen23path branch; no source/runtime change is implied.
+
+[842 exact-source approval](../../../compat/api-acceptance/orphan-lifetime-source-review-v1.json)
+now covers22path4fec1545 on7209f119, no required changes; coordinator reverified
+920inputs plus native/wholearchive/raw Windows results. Reviewer unread evidence
+and advisory limits remain explicit. Scratch cleaned94bytes/62retained verified.
+Next permitted23path freeze with one own receipt/additive checkpoints, committed
+runtime/native/test joins and82+2collection, then unmerged fresh Linux CI and WSL.
+Do not run default native reuse with stale candidate13proofs or claim protected
+integration/strict32row128binding qualification/publication complete.
+
+**Current pointer supersedes older pending wording:** PR83 actual merge7209f119
+is verified in830, all11required checks. The orphan-deletion fix now has44native
+CTests and[9Windows lifetime passes](../../../compat/api-acceptance/host-import-retirement-windows-v1.json),
+including host-import cleanup/failure recovery, plus[73regressions and2refusals](../../../compat/api-acceptance/orphan-current-windows-v1.json)
+on matching4f537748/native057d13e6.835host-import and840stale-focus-baseline
+failures remain preserved; focus entry normalization keeps exact ten-gauge
+equality. Latest four scratch roots cleaned359881092bytes, retained verified.
+Next review/freeze exact source, obtain matching fresh Linux producer/WSL proof,
+renew successor native/candidate/CI bindings and integrate.32installed Tk rows/
+128bindings, release qualification/admission and distinct delivery remain open;
+82selected Windows positives do not substitute for them. See the
+[active ordered plan](2026-11-14-gap-investigation-next.md#current-execution-plan-investigate-fix-then-qualify).
+
+[PR83 source head](../../../compat/api-acceptance/current-installed-source-head-v1.json)
+is6a4d0f11/tree457bfb57 with14reviewed/permitted paths. Exacthead runtime/test/
+wheel/controljoins and73+2collection pass; privateindex cleaned15,136,356bytes,
+foreign index unchanged. Normal protectedauto-merge enabled, requiredCI/merge
+pending. PanZoomretention and currentselectedTk/admission remain explicit open
+work. This later checkpoint/receipt stays outside the frozen source batch.
+
 [Review825](../../../compat/api-acceptance/current-installed-source-review-v1.json)
 approves exact13file9bb9fe55 on26e9ea5f.1,314inputs reverified;96byte scratch
 cleaned/38retained verified. Next final14path metadata freeze/actual-head joins/

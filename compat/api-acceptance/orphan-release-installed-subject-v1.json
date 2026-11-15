@@ -1,0 +1,45 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "status": "PASS_EXACT_RELEASE_SUBJECT_128_BINDINGS_NOT_ADMITTED",
+  "coverage_ids": [
+    "FIX-04",
+    "FIX-06",
+    "API-06",
+    "SHD-06",
+    "TOOL-01"
+  ],
+  "candidate": "tk-state-resource-14",
+  "source_commit": "275888b5a46647a6ff59c7474f96dd5def2b6f75",
+  "qualification_subject": {
+    "path": "@evidence/build/runs/orphan-release-installed-subject-869/qualification-subject.json",
+    "sha256": "de74e3a5665ddfa6c7d00a973fdb9cacd04fdafc666ff812f8c8d21d04bf49f0"
+  },
+  "result": {
+    "path": "@evidence/build/runs/orphan-release-installed-subject-869/subject-result.json",
+    "sha256": "a1f2704b2ec38b42bdcbfa60ab9f9343db91c92dd677efb456c016b22dc9bb06"
+  },
+  "terminal": {
+    "path": "@evidence/build/runs/orphan-release-installed-subject-869/terminal-source-only.json",
+    "sha256": "6a63a668eaaf512e1f355b079dbedd2d9e03244f28950f618245cb0e7f4973ce"
+  },
+  "restoration": {
+    "path": "@evidence/build/runs/orphan-release-installed-subject-869/restoration.json",
+    "sha256": "def4333c166074944af3788dde297673f555b0a06b76d666fde9e6e949e8e5fb"
+  },
+  "remaining_release_obligations": {
+    "path": "@evidence/build/runs/orphan-release-installed-subject-869/remaining-release-obligations.json",
+    "sha256": "c5a1a14367c940ee85e5cfd942be120f6a91796de842b6053bfee2a170a0d4cf"
+  },
+  "proved_bindings": 128,
+  "selected_rows": 32,
+  "strict_attempts": 5,
+  "retained_inputs": 870,
+  "canonical14files_restored": true,
+  "actual_exit": 0,
+  "child_waited": true,
+  "scratch_created": false,
+  "artifact_admitted": false,
+  "release_complete": false,
+  "scope": "Exact Windows4f537748/Linuxdfe1033f subject proves the selected 128 bindings under a guarded, restored ledger overlay. Current complete source qualification-head CI/promotion, eight mandatory rows, protected integration and distinct delivery remain open."
+}

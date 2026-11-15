@@ -1,0 +1,66 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "status": "PASS_ORIGINAL_X86_64_BUILD_CPU_SOURCE_CLEANUP_NOT_GPU",
+  "source_commit": "275888b5a46647a6ff59c7474f96dd5def2b6f75",
+  "artifact": {
+    "run_id": 43634581736,
+    "artifact_id": 14130679438,
+    "artifact_bytes": 25607133,
+    "artifact_sha256": "5f417f234ebd8c66adfa12c379a71c0e3f0c33353beacb2d9fe9a8733f0868aa",
+    "max_expanded_bytes": 100663296,
+    "recovered_members": []
+  },
+  "wheel_sha256": "bcf224094ac6e15dff0894725d79b5563191c5b4e9e5582c857a9420066d53e3",
+  "native_inputs_match_current": true,
+  "source_inputs": 628,
+  "package_changed_members": [],
+  "original_cleanup": {
+    "status": "PASS_APPLY",
+    "deleted": 9705,
+    "scratch_root": "/Users/runner/work/_temp/vispy-metal-43634581736-1-x86_64/build/work/metal-ci-43634581736-1-x86_64",
+    "retained_verified": 94
+  },
+  "original_commands": [
+    {
+      "path": "@evidence/build/artifacts/3ee46065ed514eb0ce8dc4b1df9e357dce2ea0142c013aa1273bbe914ef1f0d6/prepare-process.json",
+      "sha256": "3ee46065ed514eb0ce8dc4b1df9e357dce2ea0142c013aa1273bbe914ef1f0d6"
+    },
+    {
+      "path": "@evidence/build/artifacts/0d40a773d88db9c52d0865ce3d975f537165e5efdb65989f26394c871895b6e3/dependency-before-process.json",
+      "sha256": "0d40a773d88db9c52d0865ce3d975f537165e5efdb65989f26394c871895b6e3"
+    },
+    {
+      "path": "@evidence/build/artifacts/c519834bb8533eea28f32794397ea85c05c532d8bbb2bb8dac9f61601fb881b2/build-tools-process.json",
+      "sha256": "c519834bb8533eea28f32794397ea85c05c532d8bbb2bb8dac9f61601fb881b2"
+    },
+    {
+      "path": "@evidence/build/artifacts/f6f735630757d057c26971a4706d0af5a45fce33388b1634b6ec0c7df3455091/wheel-build-process.json",
+      "sha256": "f6f735630757d057c26971a4706d0af5a45fce33388b1634b6ec0c7df3455091"
+    },
+    {
+      "path": "@evidence/build/artifacts/280345ecb694388e9f4ab6a4dee2574d8312c1c0852b1baa85e6a2f4c0eee2d1/archive-process.json",
+      "sha256": "280345ecb694388e9f4ab6a4dee2574d8312c1c0852b1baa85e6a2f4c0eee2d1"
+    },
+    {
+      "path": "@evidence/build/artifacts/b1f29e412075fc937355f12b6cf696963d6c3c2fd3cca1c6fb13b0890b5d6404/consumer-process.json",
+      "sha256": "b1f29e412075fc937355f12b6cf696963d6c3c2fd3cca1c6fb13b0890b5d6404"
+    },
+    {
+      "path": "@evidence/build/artifacts/e16dd1ff14670228c09455f72e7c45cce6e805b98ca39cc72386e209b9c11009/dependency-after-process.json",
+      "sha256": "e16dd1ff14670228c09455f72e7c45cce6e805b98ca39cc72386e209b9c11009"
+    },
+    {
+      "path": "@evidence/build/artifacts/1c67e96c3d6c5b5b9783d7cd40f8652f095a0ffe87dadcff31b4252f6212793d/cache-clean-process.json",
+      "sha256": "1c67e96c3d6c5b5b9783d7cd40f8652f095a0ffe87dadcff31b4252f6212793d"
+    }
+  ],
+  "original_terminal": {
+    "path": "@evidence/build/artifacts/d56656dcf2da9d4aefc48f36d1f8ae46612748e6f762edf3345b5bd92a29a72c/terminal.json",
+    "sha256": "d56656dcf2da9d4aefc48f36d1f8ae46612748e6f762edf3345b5bd92a29a72c"
+  },
+  "artifact_admitted": false,
+  "GPU_qualified": false,
+  "production_pin_modified": false,
+  "pending": "Combine exact retained arm64/x86_64 originals and verify whole-run completion before renewing the production pin."
+}

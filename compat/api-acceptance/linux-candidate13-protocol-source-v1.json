@@ -1,0 +1,55 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "status": "PASS_EXACT_CANDIDATE13_AUTHORITY_SOURCE_CONTROLS_PENDING_REVIEW",
+  "before": {
+    "cases": 1,
+    "actual_exit": 1,
+    "refusal": "unsupported original Linux capture protocol: .github/workflows/linux-vulkan.yml"
+  },
+  "after": {
+    "cases": 130,
+    "actual_exit": 0
+  },
+  "source_inputs": {
+    "tools/qualification_linux_native.py": "238fe81f32804029f9f15b6ba598a052d20bc55beb1218bcf701e07dea27b839",
+    "tests/contract/test_qualification_linux_native.py": "d4ecd7e487f47033401591da2361761876b326971e67929b4ae382b9d60ef4ec",
+    "tests/contract/linux_native_fixture.py": "da126cb60760f98f35576f1b3db2fb991367c770690123778bb0fdf85c81fe42",
+    "tests/contract/test_linux_native_contracts.py": "59f810db60414f98aff17bbdda16655c0004c2e7546153aca553224f2fd063fa",
+    "tests/contract/data/linux-native-production-workflow.yml": "844ddd2c232f699f198751074a59abccec1c6a0a0c58460c77be9be6d75ac038"
+  },
+  "workflow_equivalence": {
+    "status": "EXACT_CANDIDATE13_SELECTOR_ONLY_IN_INACTIVE_REUSE_ARM",
+    "previous_sha256": "844ddd2c232f699f198751074a59abccec1c6a0a0c58460c77be9be6d75ac038",
+    "current_sha256": "706a9d266d0efa28fefc54b86039a0bec88856cc50263b72dafa02e74b77192b",
+    "current_source_commit": "275888b5a46647a6ff59c7474f96dd5def2b6f75",
+    "only_changed_argument": "--candidate compat/candidates/tk-state-resource-13/candidate.json",
+    "fresh_bytes_unchanged": true,
+    "all_other_bytes_unchanged": true,
+    "original_verifier_sha256": "05cfecfc2e752be3beabd7599567fc9f57fab0cfaf530bf358efbea80d068ba3",
+    "artifact_admitted": false
+  },
+  "reader_change": "Add only exact706a9d26 candidate13-selector workflow digest. Old authorities/checks retained; unknown candidate14, fresh-body/capacity/condition/comment changes rejected.",
+  "runtime_or_workflow_changed": false,
+  "native_rebuilt": false,
+  "synthetic_only": true,
+  "actual_fresh_capture_validated": false,
+  "review_complete": false,
+  "artifact_admitted": false,
+  "published": false,
+  "scratch_bytes": 9060242,
+  "scope": "Source-only original-transport/native-contract regression fixtures; does not grant original CI capture or installed/release approval. Retained old reader/refusal and immutable workflow fixture supply reconstruction.",
+  "coverage_ids": [
+    "LIF-06-LINUX-PRODUCER"
+  ],
+  "evidence": {
+    "path": "@evidence/build/runs/linux-candidate13-protocol-846/verification.json",
+    "sha256": "9db9ad7ef95e468fabde6bcbd9c53662dd775e77788cf9d2e5d890fcc91d6aca"
+  },
+  "cleanup": {
+    "status": "PASS_APPLY",
+    "bytes": 9060242,
+    "files": 3909,
+    "retained_verified": 19
+  }
+}

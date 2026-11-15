@@ -1,0 +1,158 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "status": "PASS_CURRENT_WSL_STRICT_MATCHED_COHORT_AND_TWO_INSTALLED_CRITERION_NODES",
+  "coverage_ids": [
+    "FIX-04",
+    "FIX-06",
+    "API-06",
+    "LIF-01",
+    "LIF-05",
+    "LIF-07"
+  ],
+  "wheel": {
+    "path": "build/artifacts/e99616e126299e45b5ee9418873c919ab44768fb5dd48f431537a519b7f8ccc3/vispy-0.17.0+vulkan.2-cp312-cp312-linux_x86_64.whl",
+    "sha256": "e99616e126299e45b5ee9418873c919ab44768fb5dd48f431537a519b7f8ccc3"
+  },
+  "source_commit": "275888b5a46647a6ff59c7474f96dd5def2b6f75",
+  "candidate": "tk-state-resource-14",
+  "candidate_scope_sha256": "d1133224a54c0733bd59a8618fcd4c6844f23d552b4697e02190b954dde594e3",
+  "environment_id": "f17b9ab25b22b0059bd95ce11d1963b9a6a031dd6a12cd5e17d4c3ef04bfcbf1",
+  "workflows": [
+    {
+      "workflow": "tk-state-resource-failures",
+      "status": "PASS_ALL_NO_OPENGL_GATES",
+      "report": {
+        "path": "@evidence/build/runs/orphan-current-wsl-strict-revised-861/reports/tk-state-resource-failures/replay-0.json",
+        "sha256": "652a90a8d78426fbf8bc2b5dae54a56e250c78da20790e6d6bbdf9ad4c4b3ab7"
+      },
+      "worker": {
+        "path": "@evidence/build/runs/orphan-current-wsl-strict-revised-861/reports/tk-state-resource-failures/replay-0.worker.json",
+        "sha256": "a5e17e466b2486c8961f737d482950f5edfe9ed3b4f94de4e199b18cbc30343b"
+      },
+      "receipt": {
+        "path": "@evidence/build/runs/orphan-current-wsl-strict-revised-861/reports/tk-state-resource-failures/receipt.json",
+        "sha256": "6fb8acfefce0328bd52bc80d91c5d69c4b3b81cffba5f9e77d0d0c9b65c01bb5"
+      },
+      "inventory": {
+        "path": "@evidence/build/runs/orphan-current-wsl-strict-revised-861/reports/tk-state-resource-failures/receipt.inventory.json",
+        "sha256": "c129e39b2d94aea9d040d618032d346824024509fb375341c3194f51320bce3a"
+      },
+      "environment_id": "f17b9ab25b22b0059bd95ce11d1963b9a6a031dd6a12cd5e17d4c3ef04bfcbf1",
+      "functional_validation": {
+        "contract": "tk-state-resource-1",
+        "schema": 1,
+        "status": "PASS_FUNCTIONAL_RESULT",
+        "branch_ids": [
+          "ordinary.state",
+          "progress.draw",
+          "progress.poll",
+          "resource.upload-recovery",
+          "submission.gloo.delayed",
+          "submission.gloo.immediate",
+          "submission.raw.delayed",
+          "submission.raw.immediate"
+        ],
+        "qualified": false
+      },
+      "shutdown_gauges": {
+        "pending_tickets": 0,
+        "queued_frames": 0,
+        "live_buffer_bytes": 0,
+        "live_cpu_buffer_bytes": 0,
+        "live_texture_bytes": 0,
+        "canvas_texture_bytes": 0,
+        "transient_buffer_bytes": 0,
+        "line_resource_pool_busy_slots": 0,
+        "line_resource_pool_bytes": 0
+      }
+    },
+    {
+      "workflow": "tk-capture-formats",
+      "status": "PASS_ALL_NO_OPENGL_GATES",
+      "report": {
+        "path": "@evidence/build/runs/orphan-current-wsl-strict-revised-861/reports/tk-capture-formats/replay-0.json",
+        "sha256": "847b461f12a3a3de45376acc689b9654b3fa5fbd594249bc91c26c17464dddce"
+      },
+      "worker": {
+        "path": "@evidence/build/runs/orphan-current-wsl-strict-revised-861/reports/tk-capture-formats/replay-0.worker.json",
+        "sha256": "f26fe30eeaad26c0428fd6ee4294bcca310e46b6b0f0a96ac6a3abcb86458c45"
+      },
+      "receipt": {
+        "path": "@evidence/build/runs/orphan-current-wsl-strict-revised-861/reports/tk-capture-formats/receipt.json",
+        "sha256": "e19947fb01db960636e118a6e3a9999ee53aa4e67c7bca2430f81150d55d76c0"
+      },
+      "inventory": {
+        "path": "@evidence/build/runs/orphan-current-wsl-strict-revised-861/reports/tk-capture-formats/receipt.inventory.json",
+        "sha256": "c129e39b2d94aea9d040d618032d346824024509fb375341c3194f51320bce3a"
+      },
+      "environment_id": "f17b9ab25b22b0059bd95ce11d1963b9a6a031dd6a12cd5e17d4c3ef04bfcbf1",
+      "functional_validation": {
+        "schema": 1,
+        "contract": "tk-capture-1",
+        "status": "PASS_FUNCTIONAL_RESULT",
+        "branch_ids": [
+          "capture.invalid-viewport",
+          "capture.ordinary",
+          "capture.resize",
+          "capture.retry"
+        ],
+        "qualified": false
+      },
+      "shutdown_gauges": {
+        "pending_tickets": 0,
+        "queued_frames": 0,
+        "live_buffer_bytes": 0,
+        "live_cpu_buffer_bytes": 0,
+        "live_texture_bytes": 0,
+        "canvas_texture_bytes": 0,
+        "transient_buffer_bytes": 0,
+        "line_resource_pool_busy_slots": 0,
+        "line_resource_pool_bytes": 0
+      }
+    }
+  ],
+  "feature_profile_joins": 16,
+  "gate_checks": 48,
+  "installed_members_verified": 537,
+  "source_overrides": 0,
+  "selected_acceptance_nodes": [
+    "tests/native/test_tkinter_state_scenario.py::test_composite_observed_failure_and_recovery_scenario",
+    "tests/native/test_tkinter_capture_scenario.py::test_real_tk_capture_observer_scenario"
+  ],
+  "selected_acceptance_cases": 2,
+  "acceptance_shutdown_gauges": {
+    "pending_tickets": 0,
+    "queued_frames": 0,
+    "live_buffer_bytes": 0,
+    "live_cpu_buffer_bytes": 0,
+    "live_texture_bytes": 0,
+    "canvas_texture_bytes": 0,
+    "transient_buffer_bytes": 0,
+    "line_resource_pool_busy_slots": 0,
+    "line_resource_pool_bytes": 0,
+    "host_import_pinned_bytes": 0
+  },
+  "actual_exit": 0,
+  "child_waited": true,
+  "xvfb_exit": 0,
+  "qualified_rows_written": 0,
+  "artifact_admitted": false,
+  "strict_selection_admitted": false,
+  "native_rebuilt": false,
+  "preserved_setup_failure": "@evidence/build/runs/orphan-current-wsl-strict-860/verification.json",
+  "scope": "Finite current WSL CPython3.12.13 Tk9 raster with original patched Mesa9c5 software Vulkan and read-only borrowed namespace roots. Two selected strict workflows share one exact installed environment; two acceptance nodes reuse its same consumer package. No physical Linux GPU/Metal, formal row/profile admission, finalCI/integration/promotion/publication transfer.",
+  "remaining": [
+    "Bind32Windows/WSLrows and128criteria to current exact artifact subject/profile/retention histories",
+    "Final combined source/release-policy CI, promotion review, protected integration/admission and distinct delivery"
+  ],
+  "evidence": {
+    "path": "@evidence/build/runs/orphan-current-wsl-strict-revised-861/verification.json",
+    "sha256": "01044d9eb8b3cc18f4dfdf09dc3c78f4e5e203e345d8d41c6e44f6a18bf786b2"
+  },
+  "cleanup": {
+    "status": "PASS_APPLY",
+    "bytes_removed": 92589438,
+    "retained_verified": 139
+  }
+}

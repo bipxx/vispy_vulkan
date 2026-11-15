@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "status": "PASS_EXACT_HISTORY_AUDIT_NOT_ADMITTED",
+  "strict_attempts": 5,
+  "discovery_reports": 4,
+  "separate_context_records": 5,
+  "audit": {
+    "path": "@evidence/build/runs/orphan-release-attempt-histories-866/history-audit.json",
+    "sha256": "5a03708f4c16ec44f010a45ad0574b0dfbf62bf84ea95e16bdd805f9d6aa1388"
+  },
+  "terminal": {
+    "path": "@evidence/build/runs/orphan-release-attempt-histories-866/terminal-source-only.json",
+    "sha256": "e54c35183d694b6f79c30458f5b6aa4e374eaaca02165e8a7869f953d19968cc"
+  },
+  "scope": "Original strict/discovery/setup/ancestor outcomes and identities preserved. Discovery correction is additive. No admission."
+}

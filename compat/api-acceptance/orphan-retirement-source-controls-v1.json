@@ -1,0 +1,84 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "coverage_ids": [
+    "LIF-06-PANZOOM-RETIREMENT"
+  ],
+  "status": "PASS_SOURCE_CONTROLS_NATIVE_IMPLEMENTATION_UNCOMPILED",
+  "source_inputs": {
+    "src/vispy/gloo/glir.py": "f82c411ac884228ed97c19cfe707e1ff9eedd1d86653f0bf789324f2301a036c",
+    "src/vispy/gloo/dawn_parser.py": "a61a6cfcb383ff5bc01fddd2eb0c5dad3047354fbec395789c522c42125072bc",
+    "cpp/runtime.cpp": "fe5db1abb5d8543f97435c5c395442c68113b61d29cb6c1dd2148499f8ee8166",
+    "cpp/runtime.hpp": "7f17d7bff94afca9ff3c76a3a52f9e2062c74e6ea04a0758c0b2374ed4e66704",
+    "cpp/bindings/module.cpp": "2e900d97eda5500ae1826591601024497c0b10cffed978d247280ae80dd910d7",
+    "tests/gloo/test_glir_orphan_retirement.py": "1aee319417f8788a4f9c4b913b5e39ab707753034fab85b7507daa220b5a0bd3",
+    "tests/contract/test_dawn_orphan_retirement_contract.py": "103e3497a6481e0ccca0ca8bc1199aa68b3026447cbb6242fcf6ae4c7123b8e5",
+    "tests/contract/test_dawn_submission_contract.py": "780baf5e51baea92a5cdf24fe7aebb4d9610c969c2950eebb6eea3edfe8c7d77",
+    "tests/gloo/test_canvas_parser_activation.py": "9568b338b87df9928b1eb5bf6f7030ae75cd4a217e86fc03eaf5c4cf6a81e0aa",
+    "src/vispy/gloo/tests/test_glir.py::test_queue": "7dffb80c89957c216ae05b3fc81e7916069dc76a7f045c1fa2739f1d3a90c096"
+  },
+  "source_archive": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\orphan-retirement-source-controls-833\\source-and-original-licenses.zip",
+    "sha256": "42b4dddf4a01862579343b4dfd2a038eccde1cc4dbb1833675844761308d8e76"
+  },
+  "before": {
+    "cases": 16,
+    "failures": 13,
+    "errors": 0,
+    "skipped": 0
+  },
+  "after": {
+    "cases": 33,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "actual_exit": 0,
+  "child_waited": true,
+  "native_import_forbidden": true,
+  "production_changed": [
+    "src/vispy/gloo/glir.py",
+    "src/vispy/gloo/dawn_parser.py",
+    "cpp/runtime.cpp",
+    "cpp/runtime.hpp",
+    "cpp/bindings/module.cpp"
+  ],
+  "implemented": [
+    "Dedicated no-init/no-canvas retire_objects native API and version gate; normal execute validation unchanged.",
+    "Orphaned queue flag drains existing and later DELETEs without replaying other commands; hook transfers on association.",
+    "Failed packing/execution retires consumed deletion ownership; list tails survive early packing errors; generic iterable array capture stays lazy.",
+    "Original execution failure remains primary when retirement also fails; cached index conversion avoids shutdown-time module lookup."
+  ],
+  "preserved_failure": {
+    "label": "after",
+    "actual_exit": 1,
+    "passed": 35,
+    "failed": [
+      "test_log_parser",
+      "test_capabilities"
+    ],
+    "reason": "Broad source-only selection included two backend-dependent tests; native-import guard refused their attempted imports. No native execution. Corrected explicit CPU selection passes."
+  },
+  "not_verified": [
+    "Native compilation and leaf CTests",
+    "Native no-device/idempotence, helper-thread GC, queued snapshot, live peer and host-import controls",
+    "Installed Windows and WSL PanZoom retirement and affected callback/focus acceptance",
+    "Independent patch review and protected integration",
+    "Successor candidate/provenance/CI bindings, strict artifact admission and delivery"
+  ],
+  "current_wheels_fixed": false,
+  "old_native_approval_reused": false,
+  "scratch_created": false,
+  "cleanup_required": false,
+  "scope": "33 selected source-only cases with fake native protocol, plus original queue/submission/activation coverage. Does not prove compiled native or installed resource retirement.",
+  "evidence": {
+    "path": "@evidence/build/runs/orphan-retirement-source-controls-833/verification.json",
+    "sha256": "e5c4cc1c77a92f406ee84a9c600096fd922750a56ba737c8c356d561e2455b7d"
+  },
+  "peer_plan": {
+    "path": "@evidence/build/runs/orphan-retirement-peer-plan-831/coordinator-disposition.json",
+    "sha256": "1b913a40e89cf9456ee6c1f4d7ef41c815c77f9778f541b59bbfd32b1961be45",
+    "advisory_only": true,
+    "scratch_cleanup": "PASS_APPLY_1_FILE_85_BYTES_19_RETAINED_VERIFIED"
+  }
+}

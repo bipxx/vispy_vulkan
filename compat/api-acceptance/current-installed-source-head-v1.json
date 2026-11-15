@@ -1,0 +1,54 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "coverage_ids": [
+    "LIF-06",
+    "LIF-06-QT-FOCUS",
+    "LIF-06-QT-FOCUS-RESOURCE-BASELINE",
+    "API-06",
+    "SCI-02-CLIP-ALPHA-BLEND"
+  ],
+  "status": "REVIEWED14FILE_SOURCE_PUSHED_PROTECTED_CI_PENDING",
+  "commit": "6a4d0f118a8eba827f511fb99f2714804795052b",
+  "tree": "457bfb57d7a36284d230f1b25a62eff809e6c3f2",
+  "base": "26e9ea5f82478ed8db79df93e8ec9faf3b250bad",
+  "pr_number": 83,
+  "url": "https://github.com/bipxx/vispy_vulkan/pull/83",
+  "auto_merge_enabled": true,
+  "source_files": 14,
+  "source_freeze": {
+    "path": "@evidence/build/runs/current-installed-source-commit-827/source-freeze.json",
+    "sha256": "48d86ec2c3fda533073e831a1165f2dd713691e6bfa8e0cd611ab59413f8897b"
+  },
+  "actual_head_acceptance": {
+    "path": "@evidence/build/runs/current-installed-source-commit-827/actual-head-acceptance.json",
+    "sha256": "90725f5e363d1fc7c54082cb2661024c799adafe37a6eca54e345b7dbc4d3a94"
+  },
+  "push_verification": {
+    "path": "@evidence/build/runs/current-installed-protected-source-push-828/push-verification.json",
+    "sha256": "3f1b2c31d14a7f58a8fc0532fad71b639a78ab783b3d05c5fcc4f2f22c566311"
+  },
+  "ci_observation": {
+    "path": "@evidence/build/runs/current-installed-protected-source-push-828/ci-observation-1.json",
+    "sha256": "f14bf4d33606cd6e6f9ba7a989617f590c68d71ae45241da67a94f7c44660ef5"
+  },
+  "cleanup": {
+    "receipt": {
+      "path": "@evidence/build/runs/current-installed-source-commit-827/cleanup-apply.log",
+      "sha256": "5f08b1309c108464e4f12393600ab0eaa5cc5f3c87930138099356a42cfe481a"
+    },
+    "reclaimed_bytes": 15136356,
+    "retained_verified": 79,
+    "scratch_absent": true
+  },
+  "required_ci_complete": false,
+  "actual_merge_verified": false,
+  "ci_coverage_claimed": false,
+  "artifact_admitted": false,
+  "published": false,
+  "open_followups": [
+    "LIF-06-PANZOOM-RETIREMENT",
+    "CurrentTkselectedobserverproofs/128bindings and artifactprofileadmission"
+  ],
+  "scope": "Exact825approved13files+permitted metadata14pathhead. 822/823/824proofs reused under exactactualhead joins; collection73+2withoutnativeimport. Actualhead/CI/merge metadata remains outsidePR83. No runtime/native/selector/candidate/lock/license change or publicassetmutation."
+}

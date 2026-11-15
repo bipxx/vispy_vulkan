@@ -1,0 +1,130 @@
+{
+  "schema": 1,
+  "status": "APPROVED",
+  "kind": "source",
+  "independent": true,
+  "reviewer": "Claude peer review, exact corrected preparation run857",
+  "candidate_scope_sha256": "d1133224a54c0733bd59a8618fcd4c6844f23d552b4697e02190b954dde594e3",
+  "reviewed_delta_sha256": "a185f826b41b8ea77348fb3f9f8254233b96035c48d654264749c29e901eaac3",
+  "native_reuse_links": [
+    "7d669d88ff2cd4b91fcaa3a88fd5b4d8e5b8640f1cfa7c0db348fd3066ce3565",
+    "1691d5e2abd834f67c1da66830282c079657e705d2a10ebcf59e7c6133adb903"
+  ],
+  "evidence": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\orphan-current-ci-pin-peer-review-857\\review-response.md",
+    "sha256": "e762f9e9c4e213c9b8eda6d433efc4f46b2459163b5c70ed27cb067b7bff7160"
+  },
+  "raw_response": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\orphan-current-ci-pin-peer-review-857\\review-response.json",
+    "sha256": "a070e7afa120ecdd746c87c85482265dda48d0a834fb0e0ea88421d38d540f5d"
+  },
+  "decision": {
+    "path": "D:\\vispy-vulkan-managed\\build\\runs\\orphan-current-ci-pin-peer-review-857\\decision.json",
+    "sha256": "3e4bf4938f4ee596eed4975e58e2f4fb21c83867bf0a4a7c85b2f526324c24c6"
+  },
+  "findings": [
+    {
+      "severity": "low",
+      "title": "Required CI reuse arm cannot pass until both reviews are applied",
+      "refs": [
+        ".github/workflows/linux-vulkan.yml:35,91-98",
+        "tools/reuse_linux_ci.py:138-153,173"
+      ],
+      "detail": "NATIVE_MODE defaults to reuse. reuse_candidate runs validate_candidate(require_reviewed=True) on tk-state-resource-14, but candidate.json:1304-1306 has both reviews null. Expected ordering, not a defect: run required CI only after the follow-up below. A failure before that is not evidence against the producer."
+    },
+    {
+      "severity": "low",
+      "title": "856 contract receipt does not bind 3 of the 6 non-candidate delta files",
+      "refs": [
+        "D:/vispy-vulkan-managed/build/runs/orphan-current-ci-pin-contracts-856/verification.json:7-30"
+      ],
+      "detail": "source_inputs binds tests/contract/test_qualification_linux_native.py (d4ecd7e4), the 10 candidate files and compat/linux-ci-reuse.json. It does not bind .github/workflows/cpu-contract.yml, .github/workflows/linux-vulkan.yml, compat/qualification-ci.json or tools/qualification_linux_native.py. delta.json and candidate preparation_tools do bind them, and qualification-ci.json:9-10,36-37 pins 8ae89e72/b3c15f70, so this is a traceability gap only. Required CI on the final head is the real gate for those files."
+    },
+    {
+      "severity": "low",
+      "title": "preparation.diff covers only the 10 candidate JSONs",
+      "refs": [
+        "D:/vispy-vulkan-managed/build/runs/orphan-current-ci-pin-peer-review-857/prepare.py:15-18"
+      ],
+      "detail": "The other 6 delta files were not diffed. I checked them by targeted reads: the 4 + 1 selector occurrences (cpu-contract.yml:86-89, linux-vulkan.yml:98), the full linux-ci-reuse.json, the qualification-ci.json workflow pins, and the reader constants in qualification_linux_native.py:47-55, including CANDIDATE13_SELECTOR_WORKFLOW_SHA256=706a9d26 and the comment refusing a future candidate14. I did not do a full before/after diff of these files."
+    },
+    {
+      "severity": "info",
+      "title": "New Linux CI pin matches the original 845 metadata exports",
+      "refs": [
+        "compat/linux-ci-reuse.json",
+        "orphan-linux-artifact-845/artifact-metadata.json",
+        "orphan-linux-artifact-845/run.json",
+        "orphan-linux-artifact-845/native-capture-validation.json",
+        "orphan-linux-artifact-845/ci-retained-members.json",
+        "orphan-current-linux-reuse-pin-855/detected-stale-pin.json"
+      ],
+      "detail": "run_id, attempt=1, head_sha=275888b5, workflow path, completed/success, artifact id, size, digest and expired=false all match the fields download() checks (reuse_linux_ci.py:84-91). production 84214270 matches the 845 validation file and linux-native-provenance reuse.production_sha256. Driver hash, driver pin hash and expansion limit are byte-identical to the old pin. 166 retained members; expanded 113575200 is within 134217728; exactly one libvulkan_lvp.so member has 9c5c41b3, as driver_inputs requires. The stale 43471568101/6c34f9b6 pin is recorded as detected and corrected, not silently replaced."
+    },
+    {
+      "severity": "info",
+      "title": "Native-reuse records are consistent with producers and the source review",
+      "refs": [
+        "compat/candidates/tk-state-resource-14/windows-native-provenance.json",
+        "compat/candidates/tk-state-resource-14/linux-native-provenance.json",
+        "compat/api-acceptance/orphan-lifetime-source-review-v1.json:83-98",
+        "tools/qualification_native.py:252-325",
+        "tools/qualification_linux_native.py:481-519"
+      ],
+      "detail": "Windows recipe a953a105 and production a7096895 equal the 842 native join. Only module.cpp, runtime.cpp and runtime.hpp changed in source_inputs, matching runtime-inputs.json. Linux capture is 845 original-capture 812c7b2d, and the producer ran under workflow 706a9d26 (845 ci-identity.json:15-17). Both validators require digest(reuse) in both reviews' native_reuse_links and run the unchanged capture/proof validators. No verifier was weakened in what I read."
+    },
+    {
+      "severity": "info",
+      "title": "Scope stays conservative; no transfer or discharge",
+      "refs": [
+        "candidate.json:1304-1314",
+        "855 verification.json:26-59,1346-1377",
+        "linux-state-profile.json and windows-state-profile.json limitations"
+      ],
+      "detail": "Reviews are null; blockers say historical approvals do not transfer; release_status is NOT_QUALIFIED; wheel is null. Coverage and execution report 142 original pairs retained and 0 discharged. Selection still lists missing items including exact-artifact-subject, required-head-ci and bound-source-and-selection-scope-review. Profile limitations say the source-functional phase is not strict admission, and that observed_module_origin is in cleaned scratch and is not a reusable origin."
+    },
+    {
+      "severity": "info",
+      "title": "842 source review is narrower than native admission",
+      "refs": [
+        "compat/api-acceptance/orphan-lifetime-source-review-v1.json:4,714"
+      ],
+      "detail": "Status is APPROVED_EXACT_SOURCE_FOR_UNMERGED_FRESH_LINUX_CI_ONLY, and the reviewer explicitly did not read execution evidence. This approval does not upgrade it. The finite Windows/WSL lifetime and regression cases remain finite source and installed evidence, not parity or strict Tk qualification."
+    }
+  ],
+  "withheld": [
+    "Nothing was executed or hashed. All sha256 values, including delta_sha256, candidate_scope_sha256, both reuse digests and every file hash, are taken from coordinator records and file contents, not computed by me.",
+    "Full before/after diffs of the 6 non-candidate delta files (targeted reads only).",
+    "856 contracts.xml, contracts-process.json, committed-core-join.json and the JUnit content; the 768-pass result is the coordinator's claim.",
+    "852 producer-recheck.json, check.py and required-source-origins.json; 837 recipe, raw-result, CTest XML, project files and reconstruction; 845 original-capture.json body, archive-audit.json and linux-wheel.json.",
+    "850/851 baseline-result.json and verification.json (56-case and gauge claims unverified).",
+    "842 semantic.diff and the five current source files (C++ retirement logic not re-reviewed here).",
+    "compat/api-acceptance/preparation14-execution-path-audit-v1.json and the full coverage.json/execution.json mapping content (the 120+8 binding split was not checked by me).",
+    "The 166 ci-retained-members hashes against on-disk bytes, and the 133 Windows source_inputs entries apart from those shown in the diff.",
+    "854 decision.json (intentionally not inherited)."
+  ],
+  "conditions": {
+    "allowed_follow_up": [
+      "Add exactly two own source/scope review records. Each binds candidate_scope_sha256 d1133224\u2026, delta a185f826\u2026, native_reuse_links [7d669d88\u2026, 1691d5e2\u2026], and (scope record) coverage_map_sha256 fa144a6e\u2026, execution_map_sha256 b8c23bf5\u2026, admission_scope_sha256 878703f1\u2026.",
+      "Add their refs to candidate.json reviews and reseal. scope_sha256 must stay d1133224\u2026; only manifest/file sha may change.",
+      "In windows-native-provenance.json and linux-native-provenance.json, update ONLY candidate.sha256 to the resealed candidate. The reuse blocks, and therefore both reuse digests, stay unchanged.",
+      "Apply the selected execution-ledger reviewed flags with the existing tool; execution scope_sha256 673bad47 must stay unchanged.",
+      "Refresh only the metadata bindings that depend on candidate/ledger file hashes, using the existing validators.",
+      "Additive evidence/checklist checkpoints may describe observed results; they confer no scope."
+    ],
+    "post_approval_gates_before_required_ci": [
+      "Unchanged reuse_linux_ci.validate_inputs on 845 ci-retained-members.json with the CURRENT compat/linux-ci-reuse.json, package_current_python=True, keep_original_description=True, candidate_path=compat/candidates/tk-state-resource-14/candidate.json; discard transient package bytes; no artifact admission.",
+      "Unchanged driver_inputs/pin checks implied by the reuse arm (driver 9c5c41b3, pin 46c952cb).",
+      "qualification_native.validate_record for the Windows and Linux records, and validate_candidate(require_reviewed=True), all pass unchanged.",
+      "Any genuine failure: keep a reproducer, stop, and get a fresh review. Never edit a verifier to make it pass."
+    ],
+    "requires_fresh_review": [
+      "Any change to source, runtime inputs, the native reuse blocks, compat/linux-ci-reuse.json, the workflows, qualification-ci.json, tools, coverage/execution mappings, criteria, the selection or blockers beyond the allowance above.",
+      "Any fresh Linux producer run under the candidate14 workflow b3c15f70, which is not in reader authority."
+    ],
+    "not_granted": [
+      "Strict observer/worker/collector observations, the 32-row/128-binding profile or row admission, artifact or wheel admission, release or publication, final combined-source integration, full VisPy parity, physical Linux GPU, Metal, or other Qt bindings/hosts. Their separate review and CI gates remain."
+    ]
+  },
+  "qualification_approved": false
+}

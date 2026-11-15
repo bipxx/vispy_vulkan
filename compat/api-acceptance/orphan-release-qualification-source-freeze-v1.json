@@ -1,0 +1,54 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "status": "PASS_FROZEN_QUALIFICATION_HEAD_PR84_REQUIRED_CI_RUNNING",
+  "qualification_head": "646c986dc67289beaeae46bd4d8af3e114d316f3",
+  "tree": "751937062a7b93509142fd469ab8a23dd9aec03c",
+  "base": "7209f1199564909c4839dcccd19da965d55954f5",
+  "branch": "wip/orphan-release-qualified-899",
+  "pull_request": "https://github.com/bipxx/vispy_vulkan/pull/84",
+  "source_paths": 154,
+  "actual_head_joined_sources": 847,
+  "native_source_inputs": 133,
+  "metal_source_inputs": 628,
+  "release_wheels": [
+    "4f537748c74689ed4d55ee2e3f8e3d9f1c1cfdf0803d1b72c4169217c74291d8",
+    "dfe1033fc90b9d6bd575c8988cc51544be47d71225509244e69be1ea91a42715"
+  ],
+  "source_freeze": {
+    "path": "@evidence/build/runs/orphan-release-source-freeze-899/source-freeze.json",
+    "sha256": "1ec217c7e272b3d2c56207a09cc81553e07b87043fc4a4b60943329619ed8fc6"
+  },
+  "metadata_audit": {
+    "path": "@evidence/build/runs/orphan-release-source-freeze-899/metadata-followup-audit.json",
+    "sha256": "8cefa758a8e966dbb8094cd65c1210476a0ae6837c44af57fd9271525cd3836d"
+  },
+  "actual_head_acceptance": {
+    "path": "@evidence/build/runs/orphan-release-source-freeze-899/actual-head-acceptance.json",
+    "sha256": "d8fa8a406ae2715a656e344f4750a8b2df066dc3c48e4bdd858e2f9a3e2535a1"
+  },
+  "cleanup": {
+    "path": "@evidence/build/runs/orphan-release-source-freeze-899/cleanup-result.json",
+    "sha256": "7504ab2d6dfa4f8a8e6c440018bc5aa8c5ee1d9d3d1a49797ae4a025644628ed"
+  },
+  "workflow_handles": {
+    "path": "@evidence/build/runs/orphan-release-qualification-ci-900/workflow-handles.json",
+    "sha256": "59f92908fc076fe870997d3205f8858f5c57e85fdf66d30362f444ca02929f06"
+  },
+  "job_snapshot": {
+    "path": "@evidence/build/runs/orphan-release-qualification-ci-900/jobs-poll0-summary.json",
+    "sha256": "38850046a54d03cd3adb0fb54ca26b87140e59ae8087a99f812e0c4427682a67"
+  },
+  "required_jobs": 23,
+  "foreign_head_index_unchanged": true,
+  "connector_403_preserved": {
+    "path": "@evidence/build/runs/orphan-release-qualification-ci-900/connector-pr-create-refusal.json",
+    "sha256": "a9ef633f348183d9f623a91293c6980b87b7c89bb7eedc574bddece2d25e19ce"
+  },
+  "fallback": "Existing authorized GitHub CLI created PR84;head verified.",
+  "required_CI_complete": false,
+  "protected_merge_complete": false,
+  "artifact_admitted": false,
+  "published": false,
+  "scope": "Reviewed154path source freeze and actual-head content joins pass;15,156,947bytes scratch cleaned/357retained. Three original PR workflows live with23jobs. No new native producer dispatch;default reuse. CI/impact/promotion/protected integration/matrix/strict admission/distinct delivery remain gates."
+}

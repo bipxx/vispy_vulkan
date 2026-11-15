@@ -1,0 +1,97 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "status": "PASS_REVIEWED_SOURCE_PUSH_AND_SINGLE_FRESH_LINUX_DISPATCH",
+  "head": "275888b5a46647a6ff59c7474f96dd5def2b6f75",
+  "tree": "b939a659ef4311912d80606edee08e6e0719af92",
+  "base": "7209f1199564909c4839dcccd19da965d55954f5",
+  "branch": "wip/orphan-retirement-linux-843",
+  "branch_url": "https://github.com/bipxx/vispy_vulkan/tree/wip/orphan-retirement-linux-843",
+  "source_paths": 23,
+  "actual_head_joins": true,
+  "collection_cases": 82,
+  "negative_collection_cases": 2,
+  "run_id": 43615452982,
+  "run_url": "https://github.com/bipxx/vispy_vulkan/actions/runs/43615452982",
+  "run_status": "queued",
+  "run_conclusion": null,
+  "native_mode": "fresh",
+  "dispatch_count": 1,
+  "pr_created": false,
+  "protected_integration_complete": false,
+  "main_unchanged": true,
+  "foreign_head_index_unchanged": true,
+  "scratch_created": false,
+  "artifact_admitted": false,
+  "published": false,
+  "scope": "Exact reviewed source only, unmerged. Linux producer is a specific observed workflow handle; completion and artifacts still need verification, then WSL/current candidate/profile/CI renewal and normal protected integration.",
+  "observed_run": {
+    "observed_at": "2026-11-14T16:28:46.235319+00:00",
+    "run_id": 43615452982,
+    "source_commit": "275888b5a46647a6ff59c7474f96dd5def2b6f75",
+    "run_attempt": 1,
+    "status": "in_progress",
+    "conclusion": null,
+    "url": "https://github.com/bipxx/vispy_vulkan/actions/runs/43615452982",
+    "jobs": [
+      {
+        "id": 132509393392,
+        "name": "software-vulkan",
+        "status": "in_progress",
+        "conclusion": null,
+        "active_steps": [
+          "Build and verify pinned software Vulkan clipping repair"
+        ]
+      }
+    ],
+    "processes": [
+      {
+        "argv": [
+          "gh",
+          "api",
+          "repos/bipxx/vispy_vulkan/actions/runs/43615452982"
+        ],
+        "actual_exit": 0,
+        "child_pid": 41904,
+        "child_waited": true
+      },
+      {
+        "argv": [
+          "gh",
+          "api",
+          "repos/bipxx/vispy_vulkan/actions/runs/43615452982/jobs"
+        ],
+        "actual_exit": 0,
+        "child_pid": 41080,
+        "child_waited": true
+      }
+    ],
+    "dispatch_count": 1,
+    "scratch_created": false
+  },
+  "evidence": {
+    "path": "@evidence/build/runs/orphan-lifetime-linux-source-push-844/verification.json",
+    "sha256": "1bc4446404816ac472c9dce7b22e7f546bbafe2562d7edcf7d5a4ad1e856a06c"
+  },
+  "source_freeze": {
+    "path": "@evidence/build/runs/orphan-lifetime-source-commit-843/source-freeze.json",
+    "sha256": "5674830651dc5c37b675d3870ea9c60d9361e8715f78c9ebb64268c32085680b"
+  },
+  "actual_head_acceptance": {
+    "path": "@evidence/build/runs/orphan-lifetime-source-commit-843/actual-head-acceptance.json",
+    "sha256": "c3f375f4210495d23942b2673783717bba6309cddad8c8eb20c9085be05e69a3",
+    "runtime_members": 510,
+    "native_source_inputs": 133,
+    "installed_members": 537,
+    "joined_source_inputs": 677,
+    "selection_collection": 82,
+    "negative_collection": 2,
+    "native_imported": false
+  },
+  "private_index_cleanup": {
+    "status": "PASS_APPLY",
+    "bytes": 15137954,
+    "retained_verified": 104
+  },
+  "frozen_branch_note": "This receipt and subsequent live documentation checkpoints are outside the frozen23path source branch. No source or workflow changes, PR, main update, native qualification or public artifact delivery follows from dispatch."
+}

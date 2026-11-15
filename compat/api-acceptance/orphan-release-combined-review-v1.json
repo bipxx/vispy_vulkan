@@ -1,0 +1,152 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "status": "APPROVED_COMBINED_SOURCE_SCOPE_NATIVE_REUSE_ONLY",
+  "base": "7209f1199564909c4839dcccd19da965d55954f5",
+  "reviewed_delta_sha256": "3e9a3fef9e8d920cf0fddd4b274a2584114911be55e6a7be716926f3fbf38550",
+  "candidate_scope_sha256": "e6acf75832da588261ce80fe6736e41caa71f75be553774733f51f8c57d61c8d",
+  "native_reuse_digests": {
+    "windows": "55cf95975bc27b6703f5ff78a3099a1817501362e43f14009ff64d9f09dc834d",
+    "linux": "5fc4a1a499b5a507926606ce8b0a6aa4803119911e5a74b0b6872389f038fef8"
+  },
+  "owned_files": 145,
+  "decision": {
+    "path": "@evidence/build/runs/orphan-release-combined-review-892/decision.json",
+    "sha256": "a7925889484ed74c7dc5cb9b67664a6a7251f4337d5e3fec77f14d78aa8593a5"
+  },
+  "raw_review": {
+    "path": "@evidence/build/runs/orphan-release-combined-review-892/review-response.json",
+    "sha256": "33aacc5aa73e7a179455d4a4423d045f103385c7d7601a1aeb00d9b68416d395"
+  },
+  "review_packet": {
+    "path": "@evidence/build/runs/orphan-release-combined-review-892/review-packet.json",
+    "sha256": "ada0728b9aadd098970b3a34ab06307ecb89474f3591ad7524aa8be169dec6cc"
+  },
+  "binding_checks": {
+    "base": true,
+    "delta_sha256": true,
+    "candidate_scope_sha256": true,
+    "native_reuse_digests": true
+  },
+  "reviewer_models": [
+    "claude-opus-5-5"
+  ],
+  "review_turns": 52,
+  "required_changes": [],
+  "findings": [
+    {
+      "id": "F1",
+      "severity": "low",
+      "refs": [
+        "cpp/runtime.cpp:5256-5274",
+        "cpp/runtime.cpp:8632"
+      ],
+      "detail": "The idle empty cleanup submission also runs when canvases are open, not only with no canvas: one extra Submit per release round and process_events() returns true until it retires. Correct and harmless; the claims should describe it as event-boundary cleanup whenever no Ticket is outstanding."
+    },
+    {
+      "id": "F2",
+      "severity": "info",
+      "refs": [
+        "cpp/bindings/module.cpp:480-482",
+        "cpp/bindings/owned_payload.hpp"
+      ],
+      "detail": "No GIL release anywhere in the bindings and no Python references in the runtime, so a finalizer calling retire_objects cannot re-enter or deadlock on eng.mu; helper-thread GC stays serialized."
+    },
+    {
+      "id": "F3",
+      "severity": "info",
+      "refs": [
+        "cpp/runtime.cpp:1714-1858",
+        "cpp/runtime.cpp:5220-5254"
+      ],
+      "detail": "Failure before Submit removes the Ticket and retries later; failure registering the completion callback after Submit keeps the Ticket and poll() retries only registration; no duplicate successful Submit."
+    },
+    {
+      "id": "F4",
+      "severity": "info",
+      "refs": [
+        "cpp/runtime.cpp:7308-7323",
+        "cpp/runtime.cpp:7406-7411",
+        "src/vispy/gloo/glir.py:461-485,524-526,599-600",
+        "src/vispy/gloo/dawn_parser.py:249-309"
+      ],
+      "detail": "Delete ordering, live-peer queues, version gating and failure-path retirement are consistent; no double erase or lost delete found."
+    },
+    {
+      "id": "F5",
+      "severity": "low",
+      "refs": [
+        "src/vispy/gloo/dawn_parser.py:293-297"
+      ],
+      "detail": "'raise error from retirement_error' replaces any existing __cause__ on the original error. Diagnostics only; not blocking."
+    },
+    {
+      "id": "F6",
+      "severity": "info",
+      "refs": [
+        "tools/qualification_linux_native.py:51-55,1525-1526",
+        "tests/contract/test_qualification_linux_native.py:452-486",
+        "compat/qualification-ci.json",
+        "compat/linux-ci-reuse.json"
+      ],
+      "detail": "The reader accepts exactly one more original-capture workflow hash (706a9d26); unknown or mutated revisions, including a candidate14 selector, are still rejected; the current workflow d5f9 is pinned only as required-CI policy."
+    },
+    {
+      "id": "F7",
+      "severity": "info",
+      "refs": [
+        "tools/compatibility_candidate.py:64-70,248-260",
+        "tools/qualification_native.py:267-277",
+        "tools/qualification_linux_native.py:494-504",
+        "tools/compatibility_coverage.py:109",
+        "tools/compatibility_execution.py:169",
+        "tools/compatibility_qualification.py:110"
+      ],
+      "detail": "Adding reviews and resealing changes only the candidate file hash and the provenance pointers; the scope digest, map bindings and both reuse digests are unaffected. Not circular."
+    },
+    {
+      "id": "F8",
+      "severity": "low",
+      "refs": [
+        "docs/coverage-checklist.md (documentation.diff:8-20, 914-924)"
+      ],
+      "detail": "The dated preparation14 'gap closed' checkpoint is historical and superseded by later 'no transfer' text; the 891 inventory counts 144 owned files against 145 because of its own wrapper. The final freeze must use the exact 145 plus the allowed additions."
+    },
+    {
+      "id": "F9",
+      "severity": "info",
+      "refs": [
+        "891 claim-triage.json"
+      ],
+      "detail": "All six dispositions are conservative; no added doc text found that promotes a finite or historical proof to release qualification (diff partially read)."
+    }
+  ],
+  "unread_evidence": [
+    "Full ci-reader.diff body of compat/metal-ci-reuse.json (whole-file replacement) and the Metal intake records 884/885/886",
+    "Most of documentation.diff, remaining-gaps-checklist.md and both plan documents",
+    "Most compat/api-acceptance/* records (orphan-current-windows-v1, orphan-current-wsl-v1, orphan-lifetime-source-review-v1 for review 842, 866-880, preparation15-v1 and contracts)",
+    "Full coverage/execution/execution-ledger/admission-selection mapping bodies and the 64-criterion/128-binding split",
+    "Bodies of the 845 capture, 837 recipe/raw result, SDK records and the Windows source_inputs entries",
+    "Contents of the 32 retained receipts and pytest files referenced by 890"
+  ],
+  "withheld": [
+    "No independent hashing or execution: delta_sha256, candidate_scope_sha256, both reuse digests, the map manifests and all file hashes come from coordinator records and file contents.",
+    "Test results (850 passed / 0 failed, 843 passed / 7 failed, 73 Windows / 82 WSL, 8 mandatory observations) and CI/Metal run facts are relied on, not verified.",
+    "No release, matrix, installed-subject, promotion, artifact, Metal graphics, physical Linux GPU, physical input/display or full-parity approval.",
+    "Not an exhaustive read of all 145 files."
+  ],
+  "allowed_followup": [
+    "Add exactly two own records, compat/candidates/tk-state-resource-15/source-review.json and scope-review.json: status APPROVED, independent true, candidate_scope_sha256 e6acf758..., reviewed_delta_sha256 3e9a3fef..., native_reuse_links [55cf9597..., 5fc4a1a4...]; the scope record also carries coverage_map_sha256 a4f48b27..., execution_map_sha256 5371782f..., admission_scope_sha256 f2287228....",
+    "Set candidate.json reviews.source and reviews.scope to those records and reseal; scope_digest must remain e6acf758.... Do not change profiles, runtime_inputs, proposals, blockers, release_status or preparation_tools.",
+    "In windows-native-provenance.json and linux-native-provenance.json change ONLY candidate.sha256 to the resealed candidate; reuse blocks byte-identical, so both reuse digests stay unchanged.",
+    "Apply the source/selection review flags with the existing execution CLI only; execution-ledger scope 673bad47... and the execution, coverage and admission manifests stay unchanged.",
+    "Produce derived installed-overlay, retention, subject, CI, impact, promotion-input and admission-input evidence and bounded dated checklist checkpoints through the existing unchanged validators. These are gates, not approvals: any failure stops work, keeps a reproducer and needs a fresh review. Promotion and strict admission still need their own independent reviews. No parent coverage ID is closed and no outcome is relabeled.",
+    "The final source freeze compares the exact 145 owned input hashes from delta.json plus only the additions above; any other change to production, test, reader, workflow, policy, pin, scope, criterion, mapping, reuse block or evidence outcome needs a fresh review."
+  ],
+  "actual_exit": 0,
+  "child_waited": true,
+  "artifact_admitted": false,
+  "matrix_admitted": false,
+  "published": false,
+  "scope": "Combined exact145owned-source/preparation15/native-reuse reading only. Coordinator hashes/tests distinct from reviewer reading. Raw limitations preserved. Review metadata not yet applied; current subject/retention/final-head CI/impact/promotion/protected integration/admission and distinct delivery remain gates."
+}

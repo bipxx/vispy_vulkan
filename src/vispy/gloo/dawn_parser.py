@@ -236,6 +236,7 @@ class DawnGlirParser(BaseGlirParser):
     def __init__(self):
         super().__init__()
         self.canvas_id = 0
+        self._native_retire = None
         self.capabilities = dict(gl_version="Dawn Vulkan", max_texture_size=None)
 
     @property
@@ -248,6 +249,15 @@ class DawnGlirParser(BaseGlirParser):
     def parse(self, commands):
         from vispy import _dawn
 
+        retire = getattr(_dawn, 'retire_objects', None)
+        self._native_retire = (retire if callable(retire) and
+                               getattr(_dawn, 'object_retirement_contract_version', 0) == 1
+                               else None)
+        # A queue has already surrendered its complete list. Even DELETEs
+        # after a packing failure must survive. General iterables remain lazy.
+        streaming_deletes = not isinstance(commands, (list, tuple))
+        delete_ids = ([] if streaming_deletes else
+                      [c[1] for c in commands if len(c) == 2 and c[0] == 'DELETE'])
         if getattr(_dawn, 'submission_contract_version', 0) < 1:
             original_commands = commands
             def guarded_commands():
@@ -258,19 +268,45 @@ class DawnGlirParser(BaseGlirParser):
                     yield command
             commands = guarded_commands()
 
-        if hasattr(_dawn, "_capture_upload") and hasattr(_dawn, "_execute_owned"):
-            stats = dict(captures=0, bytes=0, fallback_dtypes=0, fallback_exports=0)
-            packed, arrays = pack_commands(commands, native_capture=_dawn._capture_upload,
-                                           capture_stats=stats)
-            _dawn._execute_owned(int(self.canvas_id), packed, arrays, stats)
-        else:
-            packed, arrays = pack_commands(commands)
-            _dawn.execute(int(self.canvas_id), packed, arrays)
+        # Observe while packing, rather than materializing the iterable before
+        # uploads are captured: callers may mutate an array between yields.
+        source_commands = commands
+
+        def tracked_commands():
+            for command in source_commands:
+                if streaming_deletes and len(command) == 2 and command[0] == 'DELETE':
+                    delete_ids.append(command[1])
+                yield command
+
+        try:
+            if hasattr(_dawn, "_capture_upload") and hasattr(_dawn, "_execute_owned"):
+                stats = dict(captures=0, bytes=0, fallback_dtypes=0, fallback_exports=0)
+                packed, arrays = pack_commands(tracked_commands(), native_capture=_dawn._capture_upload,
+                                               capture_stats=stats)
+                _dawn._execute_owned(int(self.canvas_id), packed, arrays, stats)
+            else:
+                packed, arrays = pack_commands(tracked_commands())
+                _dawn.execute(int(self.canvas_id), packed, arrays)
+        except BaseException as error:
+            # The queue was consumed before parse; neither a missing canvas nor
+            # a partially executed batch may silently lose its DELETE owners.
+            try:
+                self.retire_orphaned(delete_ids)
+            except BaseException as retirement_error:
+                raise error from retirement_error
+            raise
         info = _dawn.device_info()
         if info.get("max_texture_dimension_2d"):
             self.capabilities["max_texture_size"] = int(info["max_texture_dimension_2d"])
         if info.get("backend"):
             self.capabilities["gl_version"] = "Dawn " + info["backend"]
+
+    def retire_orphaned(self, ids, _index=operator.index):
+        """Retire abandoned DELETEs with the already imported matching native API."""
+        if ids and self._native_retire is not None:
+            # Keep the conversion callable alive without consulting module
+            # globals during interpreter finalization.
+            self._native_retire([_index(i) for i in ids])
 
 
 def read_pixels_dawn(viewport, alpha, mode, out_type="unsigned_byte", copy=True):

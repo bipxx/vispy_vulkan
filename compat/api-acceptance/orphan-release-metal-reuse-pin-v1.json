@@ -1,0 +1,95 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "status": "PASS_EXACT_TWO_ARCH_METAL_NATIVE_REUSE_PIN_RENEWAL_NOT_GPU",
+  "coverage_ids": [
+    "TOOL-01",
+    "TOOL-04",
+    "PLAT-04"
+  ],
+  "source_commit": "275888b5a46647a6ff59c7474f96dd5def2b6f75",
+  "run_id": 43634581736,
+  "attempt": 1,
+  "source_inputs": 628,
+  "architectures": [
+    {
+      "architecture": "arm64",
+      "artifact": {
+        "artifact_id": 14130247526,
+        "artifact_bytes": 23646817,
+        "artifact_sha256": "66c83af2565ba13ced047950bf805ccc346dcaa9c316dca1c9e7c4b21585db7a",
+        "max_expanded_bytes": 100663296,
+        "recovered_members": []
+      },
+      "wheel_sha256": "8f6f4f8fdb23eea42bb4be0c6ee65d5ecf6a18fa01ea34da436462517e00e730",
+      "source_inventory_origin": {
+        "run_id": 43634581736,
+        "member": "runs/metal-ci-43634581736-1-arm64/source-before.json",
+        "sha256": "07d8fc724b3f8e0d0309a787a41e2414e254fd7aa143b1c6aadb6c88abef8446"
+      },
+      "original_validation": {
+        "path": "@evidence/build/runs/orphan-release-metal-originals-884/verification.json",
+        "sha256": "bfb731db275ed8dde9e02d64622fe896dbc9093f840dabad813718380974d438"
+      },
+      "cleanup": {
+        "path": "@evidence/build/runs/orphan-release-metal-originals-884/cleanup-result.json",
+        "sha256": "bf890f48df20d44f8e8dbcbad0175312662e72406c9c9345c29b45f73df9b39f"
+      },
+      "installed_cpu_controls": true,
+      "package_changed_members": [],
+      "GPU_qualified": false
+    },
+    {
+      "architecture": "x86_64",
+      "artifact": {
+        "artifact_id": 14130679438,
+        "artifact_bytes": 25607133,
+        "artifact_sha256": "5f417f234ebd8c66adfa12c379a71c0e3f0c33353beacb2d9fe9a8733f0868aa",
+        "max_expanded_bytes": 100663296,
+        "recovered_members": []
+      },
+      "wheel_sha256": "bcf224094ac6e15dff0894725d79b5563191c5b4e9e5582c857a9420066d53e3",
+      "source_inventory_origin": {
+        "run_id": 43634581736,
+        "member": "runs/metal-ci-43634581736-1-x86_64/source-before.json",
+        "sha256": "07d8fc724b3f8e0d0309a787a41e2414e254fd7aa143b1c6aadb6c88abef8446"
+      },
+      "original_validation": {
+        "path": "@evidence/build/runs/orphan-release-metal-x64-originals-885/verification.json",
+        "sha256": "42946d29aa05a4ab41ac272f7a5d75503ea672da82f8c88466325352bf9f3c76"
+      },
+      "cleanup": {
+        "path": "@evidence/build/runs/orphan-release-metal-x64-originals-885/cleanup-result.json",
+        "sha256": "9eee288b1d68182918f81a6f2d68608d9ed0077a7a68e0b29d9273d357ec6d89"
+      },
+      "installed_cpu_controls": true,
+      "package_changed_members": [],
+      "GPU_qualified": false
+    }
+  ],
+  "whole_run": {
+    "path": "@evidence/build/runs/orphan-release-metal-pin-renewal-886/whole-run.json",
+    "sha256": "59db24838ca0d6f98febf162ae6e62666c35a37bffc5c73c8d77d7a4909ff950"
+  },
+  "original_pin": {
+    "path": "@evidence/build/runs/orphan-release-metal-pin-renewal-886/metal-ci-reuse-before.json",
+    "sha256": "9bbab91f030d0a8d447162c02152cc35be179358110b8f14eedf97c142e63577"
+  },
+  "current_pin": {
+    "path": "compat/metal-ci-reuse.json",
+    "sha256": "44b5810b02668674330ad72595f6686cd36ee30284ff8f1409f8ace4f714b61e"
+  },
+  "source_inventory_origin": {
+    "run_id": 43634581736,
+    "member": "runs/metal-ci-43634581736-1-arm64/source-before.json",
+    "sha256": "07d8fc724b3f8e0d0309a787a41e2414e254fd7aa143b1c6aadb6c88abef8446"
+  },
+  "original_workflow_unchanged": true,
+  "workflow_sha256": "6c051d233db4752d8cda90545398f51d678e55e4737626fbce5a8a4f634b8a97",
+  "native_rebuilt_locally": false,
+  "verifier_changed": false,
+  "Windows_Linux_release_artifacts_changed": false,
+  "artifact_admitted": false,
+  "GPU_qualified": false,
+  "scope": "Both original fresh build/installed CPU/native/archive/package/source/cleanup records validate under unchanged reuse readers. Only the Metal original-production reference is renewed; whole-run success checked. Current Windows4f/Linuxdfe qualifications and canonical preparation remain unchanged. Final combined-source review/CI/impact/promotion/integration/admission/delivery remain pending."
+}

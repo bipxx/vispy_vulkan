@@ -1,0 +1,43 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "status": "FAILED_ACCEPTANCE_SETUP_AFTER_TWO_OBSERVER_RESULTS",
+  "actual_exit": 1,
+  "child_waited": true,
+  "raw_observer_results": [
+    {
+      "candidate": "tk-state-resource-14",
+      "workflow": "tk-state-resource-failures",
+      "status": "PASS_ALL_NO_OPENGL_GATES",
+      "report": "/work/reports/tk-state-resource-failures/replay-0.json",
+      "sha256": "08ba47515fcf91811bb8bb265804253723eec81e1afbb5ef59fc7ebcb8a95b1b",
+      "receipt": "/work/reports/tk-state-resource-failures/receipt.json",
+      "environment_id": "f17b9ab25b22b0059bd95ce11d1963b9a6a031dd6a12cd5e17d4c3ef04bfcbf1"
+    },
+    {
+      "candidate": "tk-state-resource-14",
+      "workflow": "tk-capture-formats",
+      "status": "PASS_ALL_NO_OPENGL_GATES",
+      "report": "/work/reports/tk-capture-formats/replay-0.json",
+      "sha256": "55c03ff23d3975282d9eededf223d3ffa87da02733774bae63630457c0127671",
+      "receipt": "/work/reports/tk-capture-formats/receipt.json",
+      "environment_id": "f17b9ab25b22b0059bd95ce11d1963b9a6a031dd6a12cd5e17d4c3ef04bfcbf1"
+    }
+  ],
+  "selected_acceptance_started": false,
+  "setup_failure": "preparation-failure.json",
+  "guest_cleanup_precheck": "PASS_GUEST_CLEANUP_PRECHECK",
+  "xvfb_exit": 0,
+  "artifact_admitted": false,
+  "published": false,
+  "scope": "Failed combined run: both observer raw results are retained, but acceptance script was absent and no complete cohort/admission claim is made. Correct harness inputs and rerun in a fresh registered owner after cleanup.",
+  "evidence": {
+    "path": "@evidence/build/runs/orphan-current-wsl-strict-860/verification.json",
+    "sha256": "33e207fe9bd6d01d26432e2b137b96e538a5cd6bfe8f339c37a90c523714beca"
+  },
+  "cleanup": {
+    "status": "PASS_APPLY",
+    "bytes_removed": 94686590,
+    "retained_verified": 111
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "status": "PASS_CURRENT_LINUX_NATIVE_PRODUCER_AND_EXACT_ARCHIVE",
+  "coverage_ids": [
+    "LIF-06-LINUX-PRODUCER"
+  ],
+  "source_commit": "275888b5a46647a6ff59c7474f96dd5def2b6f75",
+  "ci_run": 43615452982,
+  "artifact_id": 14122723473,
+  "wheel": {
+    "path": "build/artifacts/e99616e126299e45b5ee9418873c919ab44768fb5dd48f431537a519b7f8ccc3/vispy-0.17.0+vulkan.2-cp312-cp312-linux_x86_64.whl",
+    "sha256": "e99616e126299e45b5ee9418873c919ab44768fb5dd48f431537a519b7f8ccc3"
+  },
+  "preferred_source": {
+    "path": "build/artifacts/b37ad8f19eb60c4ba5ec3ad5229bf96dddfe28f496462f05b59add0a77758417/source-inputs.zip",
+    "sha256": "b37ad8f19eb60c4ba5ec3ad5229bf96dddfe28f496462f05b59add0a77758417"
+  },
+  "native_validation": {
+    "status": "PASS_ORIGINAL_LINUX_NATIVE_JOIN",
+    "production_sha256": "8421427008f18bce9d657f77b87c903d25f793c5896d6517883102ca1a39a8a0",
+    "native_output_hashes": {
+      "vispy/_dawn.cpython-312-x86_64-linux-gnu.so": "fcf0c5a81a6e6a0c1bd218687878ed8d2d32492768fabbb635c7b47ed9da03ef",
+      "vispy/visuals/text/_sdf_cpu.cpython-312-x86_64-linux-gnu.so": "1e508269c6d8c4a0f9ed041987237c6fef5768eeb1e8174ed1e8eb29f8f7162f",
+      "vispy/VkLayer_vispy_submit.so": "95907606472ffe51bec021d4b28e4717472e40f2cef34cd2590d172575c113d4",
+      "vispy/VkLayer_vispy_submit.json": "e0762acec9e2df811cbb67e1c25e5c82d9fb76def0101f54fd737464c76786c2"
+    },
+    "native_build_verified": true,
+    "artifact_admitted": false,
+    "hardware_qualified": false
+  },
+  "evidence": {
+    "path": "@evidence/build/runs/orphan-linux-artifact-845/linux-wheel.json",
+    "sha256": "5b428d54bd2897a5861d587a0f44b0c8df30ee70b2b4ae29f4609fe700f7beb8"
+  },
+  "original_capture": {
+    "path": "@evidence/build/runs/orphan-linux-artifact-845/original-capture.json",
+    "sha256": "812c7b2d140b2d9e6d0754317e2482975e875ff31587e5adc094b3873a90a89c"
+  },
+  "original_reader_refusal": {
+    "path": "@evidence/build/runs/orphan-linux-artifact-845/original-reader-refusal.json",
+    "sha256": "f712b3b4367ad609c8d9fa6798ec6d8ad4bcda72a92e725fbcd4b256f185ef5d"
+  },
+  "reader_review": "compat/api-acceptance/linux-candidate13-reader-review-v1.json",
+  "cleanup": {
+    "status": "PASS_APPLY",
+    "bytes_removed": 43149020,
+    "files_removed": 2,
+    "retained_verified": 190,
+    "evidence": {
+      "path": "@evidence/build/runs/orphan-linux-artifact-845/cleanup-apply.log",
+      "sha256": "15619d10170d291f6e44dadba82d9f084133da164bcfefc7b68ccbb8aaaee67a"
+    }
+  },
+  "artifact_admitted": false,
+  "published": false,
+  "scope": "Exact original fresh Linux CI capture and archive prerequisite. No installed, physical GPU, protected-integration or release claim."
+}

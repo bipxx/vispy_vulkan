@@ -1,0 +1,51 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "status": "APPROVED_EXACT_FAILED_ATTEMPT_DISPOSITION_ONLY",
+  "coverage_ids": [
+    "FIX-04",
+    "FIX-06",
+    "API-06",
+    "TOOL-01"
+  ],
+  "source_commit": "275888b5a46647a6ff59c7474f96dd5def2b6f75",
+  "candidate": "tk-state-resource-14",
+  "resolutions": [
+    {
+      "path": "@evidence/build/runs/orphan-release-attempt-review-867/attempt-resolution-9cbb2846c7e48a56ccaf5eb57199ee92a2c3c9a77c2c07b7e888cf6c0cfc8f74.json",
+      "sha256": "0c9eb28f8dcd1b2a96b557b30f4ed2bbeb42e99f73bf17054d7387082c7b71df"
+    }
+  ],
+  "reviewer_models": [
+    "claude-opus-5-5"
+  ],
+  "review_turns": 50,
+  "decision": {
+    "path": "@evidence/build/runs/orphan-release-attempt-review-867/decision.json",
+    "sha256": "2e10f275359c1c4f2d21d9a65fe7c8e99a3c2bb52cb219d6fe58bed563dd9a4a"
+  },
+  "raw_response": {
+    "path": "@evidence/build/runs/orphan-release-attempt-review-867/review-response.json",
+    "sha256": "86e90a49a5d076b51a1ada1eb536c70d0a5f2086ca9d4e34b2503df2dc2ba93a"
+  },
+  "actual_exit": 0,
+  "child_waited": true,
+  "withheld": [
+    "No SHA-256 recomputed by this reviewer; all digests (including attempt_sha256 9cbb2846\u2026, report/worker/receipt/inventory hashes, payload hashes) are recorded or coordinator-supplied values relied upon",
+    "Coordinator closure join (six newly loaded paths present in expanded receipt closure, expanded_inventory_matches_receipt_hash) relied upon beyond the reviewer's own count (+6) and path-presence checks",
+    "WSL orphan-release-wsl-strict-864 original reports/workers/receipts not read; WSL passes accepted from history-audit/scan metadata only",
+    "tk-capture-formats Windows evidence not inspected beyond recorded status/hashes",
+    "Scan completeness limited to rg --files *.json under D:/vispy-vulkan-managed/build/runs and C:/Users/HEQ/Projects/vispy_vulkan/build/runs at scan time (rg default skips hidden/ignored paths); no whole-machine or later-time claim about omitted failures",
+    "No execution, test, build, install, replay or network action performed",
+    "Contributing retention, subject proof, profile/mandatory-row admission, release, CI, promotion and delivery are outside this review and not approved",
+    "Non-blocking: final resolution record should state collector exit 2 for replay-0 alongside scenario process_exit 0; 859 verification.json cites receipt.inventory.json for replay-1 where the receipt names receipt-after-replay-0.inventory.json (same recorded hash 0dad3549\u2026)",
+    "No component-specific cybersecurity analysis of the six loaded OS files; treated solely as dependency-inventory facts"
+  ],
+  "artifact_admitted": false,
+  "subject_bound": false,
+  "scope": "Exact failed-attempt review only. The original UNVERIFIED attempt remains failed. No retention, subject, profile, promotion, CI, release or full parity approval.",
+  "cleanup": {
+    "path": "@evidence/build/runs/orphan-release-attempt-review-867/post-cleanup.json",
+    "sha256": "f80623257fae259612b7df875232a69a26708678f49588634a50c9e24a15eebc"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "name": "orphan-current-strict-installed-v1",
+  "storage_workspace": "D:/vispy-vulkan-managed",
+  "source_workspace": "C:/Users/HEQ/Projects/vispy_vulkan",
+  "registry": "D:/vispy-vulkan-managed/build/.hygiene/registry-preparation10-successor-613.json",
+  "aggregate_max_scratch_bytes": 21474836480,
+  "min_free_bytes": 10737418240,
+  "windows_expected_peak_bytes": 268435456,
+  "wsl_expected_peak_bytes": 536870912,
+  "purpose": "Exact current4f537748Windows/e99616e1Linux installed Tk qualification after reviewed preparation14/full native and actual CI reuse validation858. No native/SDK production.",
+  "reuse": "Reuse original837/845 native outputs and current wheels, existing CPython base interpreters/Tk runtimes, exact retained offline dependency wheels, original controls and immutable driver9c5. Never copy old environments/build trees or refresh dependency versions.",
+  "consumer": "Earlier disposable targets were cleaned; existing development/host environments are not the selected minimal strict installed prefix. Create only one isolated consumer inside each registered build/work/run-id and reuse it for both selected logical workflows and installed acceptance. Do not modify pinned environments. Install retained hash-locked runtime closure offline in copy mode, retain evidence, then clean the owned consumer.",
+  "selected_execution": "Two logical workflows per profile: tk-state-resource-failures and tk-capture-formats. Composite already includes embedded/standalone ownership modes. Keep all32rows/128bindings; use unchanged normalization and selected-edge audit. Selected acceptance nodes are the composite observed failure/recovery and real capture observer tests, separately recorded.",
+  "checks": "Per workflow retain discovery, exact installed dependency inventory and bound replay. Permit at most two receipt extensions only for newly loaded files with all other gates passing. Preserve every attempt. Require identical installed environment identity across both workflows; never promote UNVERIFIED/failure or another artifact/profile. Use original collector controls only when their exact source identities and retained reports match.",
+  "guards": "Periodic shared scratch/C:/D: capacity and owned phase timeout guards. WSL additionally checks guest filesystem/backing volume, uses isolated read-only rootfs and borrowed origins, waits for children and releases mounts before cleanup. No force or budget increase.",
+  "cleanup": "Retain exact source/artifact/dependency/controller identities, all meaningful failures, original licenses and reproducer outside scratch. Inspect/apply exact managed cleanup after actual child wait; verify retained bytes before starting another experiment.",
+  "scope": "Local strict observations only. Source/scope/native-reuse approval858 grants no row/profile/artifact admission, promotion, final-head CI/integration or delivery. Physical Linux GPU, Metal graphics and full VisPy parity remain outside this proof."
+}

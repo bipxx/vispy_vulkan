@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "kind": "original-linux-ci-native-reuse",
+  "candidate": {
+    "path": "compat/candidates/tk-state-resource-14/candidate.json",
+    "sha256": "5a4919abb97f45e432732ce7c1209052bf851fc97f7df7ddc487d22970ec1c40"
+  },
+  "capture": {
+    "path": "build/runs/orphan-linux-artifact-845/original-capture.json",
+    "sha256": "812c7b2d140b2d9e6d0754317e2482975e875ff31587e5adc094b3873a90a89c"
+  },
+  "reuse": {
+    "candidate_scope_sha256": "d1133224a54c0733bd59a8618fcd4c6844f23d552b4697e02190b954dde594e3",
+    "profile": "wsl-software-tk90-cp31213-development",
+    "capture_sha256": "812c7b2d140b2d9e6d0754317e2482975e875ff31587e5adc094b3873a90a89c",
+    "production_sha256": "8421427008f18bce9d657f77b87c903d25f793c5896d6517883102ca1a39a8a0",
+    "evidence_store": {
+      "path": "compat/evidence-stores/secondary-v1.json",
+      "sha256": "b164e3fdc85863a2327b508ea60f8d3068f740cfe90f665aa52905e28bfb3ca5"
+    },
+    "impact": "Fresh original CI43615452982 at runtime275888b5 with exact e99616e1 archive/current installed Tk851. Current native inputs differ from historical preparation13; retain reviewed exact candidate13 producer authority reader support and original refusal. Independent current reuse/source/scope review required; no approval/admission transfer.",
+    "abi": {
+      "tag": "cp312",
+      "build_version": "3.12.8",
+      "build_python_sha256": "0dc3a692fa85fcdb7f1a5877d2adf179809ac417a07ffde2373c832863800a15",
+      "consumer_version": "3.12.13",
+      "consumer_python_sha256": "339de109f072e52523066d97a2b3372e358a10cc00c6a9df62c28a6618061900"
+    }
+  }
+}
