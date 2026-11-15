@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "kind": "readback-integer-source-review-rejection",
+  "status": "REJECT_AS_FROZEN_PENDING_LINE_ENDING_RECONCILIATION",
+  "source_changed": false,
+  "published_artifact_changed": false,
+  "decision": {
+    "path": "@evidence/build/runs/gap-readback-int-review-928/decision.json",
+    "sha256": "3471d8f945e3d3cd62d1844eb90b05a1d0318497a6d99124b244ebe1bf3f5da9"
+  },
+  "cleanup": {
+    "path": "@evidence/build/runs/gap-readback-int-review-928/cleanup-result.json",
+    "sha256": "3194f0e0bec23919e26ac3a99ce549a63879c617a924d5adfce7bc99359bfded"
+  }
+}

@@ -1,0 +1,179 @@
+{
+  "schema": 1,
+  "date": "2026-11-15",
+  "status": "PASS_READBACK_WSL_STRICT_MATCHED_COHORT_AND_JOINED_943_ACCEPTANCE",
+  "coverage_ids": [
+    "FIX-04",
+    "FIX-06",
+    "API-06",
+    "LIF-01",
+    "LIF-05",
+    "LIF-07"
+  ],
+  "wheel": {
+    "path": "build/artifacts/e600b29e5259b896cc9d0fe36bbb5760260946aef53c013f8fc74e2fd0153007/vispy-0.17.0+vulkan.2-cp312-cp312-manylinux_2_39_x86_64.whl",
+    "sha256": "e600b29e5259b896cc9d0fe36bbb5760260946aef53c013f8fc74e2fd0153007"
+  },
+  "native_sha256": "fcf0c5a81a6e6a0c1bd218687878ed8d2d32492768fabbb635c7b47ed9da03ef",
+  "source_commit": "613cacfb73b1b4424dc098241c1eaf7553746c90",
+  "candidate": "tk-state-resource-16",
+  "candidate_scope_sha256": "e466af2caa2011e2881401df5dab7c7ecf77603eb6cc9d5a8030041230ee2338",
+  "environment_id": "29e6bb238d341f472197c948cb8e18d0d155b578ec4dc1fea2fdc1a56f00bd49",
+  "workflows": [
+    {
+      "workflow": "tk-state-resource-failures",
+      "status": "PASS_ALL_NO_OPENGL_GATES",
+      "report": {
+        "path": "@evidence/build/runs/readback-wsl-strict-945/reports/tk-state-resource-failures/replay-0.json",
+        "sha256": "67fb185bf57b543eaa033e22149cc44b79b11cb560d00482012a435ba67894a3"
+      },
+      "worker": {
+        "path": "@evidence/build/runs/readback-wsl-strict-945/reports/tk-state-resource-failures/replay-0.worker.json",
+        "sha256": "6036b5318bd0d3297471883164e6d2c1d2902dee8201da91b29ebeebdb87ca2f"
+      },
+      "receipt": {
+        "path": "@evidence/build/runs/readback-wsl-strict-945/reports/tk-state-resource-failures/receipt.json",
+        "sha256": "dcf937bda4e4f76b150e27a47e9b186af8d74a29a26b0cada3e77b51a0ca943e"
+      },
+      "inventory": {
+        "path": "@evidence/build/runs/readback-wsl-strict-945/reports/tk-state-resource-failures/receipt.inventory.json",
+        "sha256": "aa9b3aa63b86122867722f6f4a72f0bae319fcc09b2a9274dd8faee5c26f1795"
+      },
+      "environment_id": "29e6bb238d341f472197c948cb8e18d0d155b578ec4dc1fea2fdc1a56f00bd49",
+      "functional_validation": {
+        "contract": "tk-state-resource-1",
+        "schema": 1,
+        "status": "PASS_FUNCTIONAL_RESULT",
+        "branch_ids": [
+          "ordinary.state",
+          "progress.draw",
+          "progress.poll",
+          "resource.upload-recovery",
+          "submission.gloo.delayed",
+          "submission.gloo.immediate",
+          "submission.raw.delayed",
+          "submission.raw.immediate"
+        ],
+        "qualified": false
+      },
+      "shutdown_gauges": {
+        "pending_tickets": 0,
+        "queued_frames": 0,
+        "live_buffer_bytes": 0,
+        "live_cpu_buffer_bytes": 0,
+        "live_texture_bytes": 0,
+        "canvas_texture_bytes": 0,
+        "transient_buffer_bytes": 0,
+        "line_resource_pool_busy_slots": 0,
+        "line_resource_pool_bytes": 0
+      }
+    },
+    {
+      "workflow": "tk-capture-formats",
+      "status": "PASS_ALL_NO_OPENGL_GATES",
+      "report": {
+        "path": "@evidence/build/runs/readback-wsl-strict-945/reports/tk-capture-formats/replay-0.json",
+        "sha256": "986c46a2479ef3db1f6e4458a9bea45ad22f7f08c5a32b54954c282d32a36558"
+      },
+      "worker": {
+        "path": "@evidence/build/runs/readback-wsl-strict-945/reports/tk-capture-formats/replay-0.worker.json",
+        "sha256": "f2c4174cc9becf293a22900acd335a14e9d10b1a4cb1ad6e04082087ed8e2baa"
+      },
+      "receipt": {
+        "path": "@evidence/build/runs/readback-wsl-strict-945/reports/tk-capture-formats/receipt.json",
+        "sha256": "5e249c3e240c22be16052f4ec521161715e7c64572e9f0258abba3ea5e26ff4a"
+      },
+      "inventory": {
+        "path": "@evidence/build/runs/readback-wsl-strict-945/reports/tk-capture-formats/receipt.inventory.json",
+        "sha256": "aa9b3aa63b86122867722f6f4a72f0bae319fcc09b2a9274dd8faee5c26f1795"
+      },
+      "environment_id": "29e6bb238d341f472197c948cb8e18d0d155b578ec4dc1fea2fdc1a56f00bd49",
+      "functional_validation": {
+        "schema": 1,
+        "contract": "tk-capture-1",
+        "status": "PASS_FUNCTIONAL_RESULT",
+        "branch_ids": [
+          "capture.invalid-viewport",
+          "capture.ordinary",
+          "capture.resize",
+          "capture.retry"
+        ],
+        "qualified": false
+      },
+      "shutdown_gauges": {
+        "pending_tickets": 0,
+        "queued_frames": 0,
+        "live_buffer_bytes": 0,
+        "live_cpu_buffer_bytes": 0,
+        "live_texture_bytes": 0,
+        "canvas_texture_bytes": 0,
+        "transient_buffer_bytes": 0,
+        "line_resource_pool_busy_slots": 0,
+        "line_resource_pool_bytes": 0
+      }
+    }
+  ],
+  "feature_profile_joins": 16,
+  "gate_checks": 48,
+  "installed_members_verified": 537,
+  "source_overrides": 0,
+  "declared_acceptance_run": "@evidence/build/runs/readback-acceptance-wsl-943/verification.json",
+  "declared_acceptance_nodes": [
+    "tests/native/test_tkinter_state_scenario.py::test_composite_observed_failure_and_recovery_scenario",
+    "tests/native/test_tkinter_capture_scenario.py::test_real_tk_capture_observer_scenario"
+  ],
+  "declared_acceptance_cases": 2,
+  "declared_acceptance_shutdown_gauges": {
+    "pending_tickets": 0,
+    "queued_frames": 0,
+    "live_buffer_bytes": 0,
+    "live_cpu_buffer_bytes": 0,
+    "live_texture_bytes": 0,
+    "canvas_texture_bytes": 0,
+    "transient_buffer_bytes": 0,
+    "line_resource_pool_busy_slots": 0,
+    "line_resource_pool_bytes": 0,
+    "host_import_pinned_bytes": 0
+  },
+  "actual_exit": 0,
+  "child_waited": true,
+  "xvfb_exit": 0,
+  "qualified_rows_written": 0,
+  "artifact_admitted": false,
+  "strict_selection_admitted": false,
+  "native_rebuilt": false,
+  "preserved_capacity_refusal": "@evidence/build/runs/readback-wsl-strict-945-capacity-refusal/verification.json",
+  "scope": "Finite current WSL CPython3.12.13 Tk9.0 raster with pinned patched Mesa 9c5c41b3 software Vulkan and read-only borrowed namespace roots on exact e600b29e wheel, joined without rerunning pytest to exact declared acceptance run 943. Two strict workflows share one exact minimal installed environment (no source overlays, 537 members); 943 acceptance also verified 537 members and 10 zero shutdown gauges on the same wheel. No physical Linux GPU/Metal, strict subject/profile admission, final CI/integration/promotion/publication transfer.",
+  "evidence": {
+    "path": "@evidence/build/runs/readback-wsl-strict-945/verification.json",
+    "sha256": "e466cf7bd1d36a8513ec8fa0f20e1b9dd7eced2ed9bc860c9507083e854c0eb3"
+  },
+  "manifest": {
+    "path": "@evidence/build/runs/readback-wsl-strict-945/manifest.json",
+    "sha256": "a538396a82e3468d792f0673a6320e41c58d67582d4cfd2973c783d8ed045314"
+  },
+  "cleanup": {
+    "status": "PASS_APPLY",
+    "bytes_removed": 92589425,
+    "files_removed": 12,
+    "retained_verified": 151,
+    "plan": {
+      "path": "@evidence/build/runs/readback-wsl-strict-945/cleanup-plan.json",
+      "sha256": "7e4ce296ff6a835b43b8fa51d584c5fa01ad8a03002b0d1ab4a81e5f20a6fc1a"
+    },
+    "apply_log": {
+      "path": "@evidence/build/runs/readback-wsl-strict-945/cleanup-apply.log",
+      "sha256": "cd0c4321d9b4f14da5c5ea2430a1d4a61554f0b63a1bcc7d09561552ba50be09"
+    },
+    "result": {
+      "path": "@evidence/build/runs/readback-wsl-strict-945/cleanup-result.json",
+      "sha256": "a401d7f1fecfaed8f99942a59a432d6acf26bd22b25ae458d3cec7bc8d15317b"
+    }
+  },
+  "remaining": [
+    "Eight mandatory host-profile rows on exact new wheels 9919a280 and e600b29e plus mandatory index",
+    "32-row / 128-criterion bindings and attempt-history review (including 944 tk-state-resource-failures replay-0)",
+    "Contributing proof retention audit (14 canonical JSONs in tk-state-resource-16)",
+    "Final-head 23-job CI, independent source/subject/impact/promotion reviews, guarded scoped admission, protected integration and distinct public delivery"
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "kind": "readback-candidate-tk-functional",
+  "status": "PASS_WSL_CANDIDATE_TK14_PLUS_FAILURE_RECOVERY",
+  "source_commit": "613cacfb73b1b4424dc098241c1eaf7553746c90",
+  "wheel": {
+    "path": "build/artifacts/e600b29e5259b896cc9d0fe36bbb5760260946aef53c013f8fc74e2fd0153007/vispy-0.17.0+vulkan.2-cp312-cp312-manylinux_2_39_x86_64.whl",
+    "sha256": "e600b29e5259b896cc9d0fe36bbb5760260946aef53c013f8fc74e2fd0153007"
+  },
+  "tests": {
+    "tests": 14,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "source_overrides": 0,
+  "verification": {
+    "path": "@evidence/build/runs/readback-tk-wsl-937/verification.json",
+    "sha256": "042e2be46825edf983e459fee3c81cfdf650cdb6a7dd028fefd9d810e97704e1"
+  },
+  "cleanup": {
+    "path": "@evidence/build/runs/readback-tk-wsl-937/cleanup-result.json",
+    "sha256": "a27ff70cf17fd95a49f30dba2ba4178b2f045c75d05ddfbfae8a1d05125a7e04"
+  },
+  "artifact_admitted": false,
+  "published": false
+}

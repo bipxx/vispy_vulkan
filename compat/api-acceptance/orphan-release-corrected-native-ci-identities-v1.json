@@ -1,0 +1,114 @@
+{
+  "status": "PASS_THREE_CORRECTED_HEAD_ORIGINAL_NATIVE_CHECKOUT_IDENTITIES",
+  "qualification_head": "90348a8064b1091eb989bb8d0fbf787b6afc4f43",
+  "identities": [
+    {
+      "run_id": 43648741629,
+      "job_id": 132612247223,
+      "job_name": "software-vulkan",
+      "identity": {
+        "path": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\compat\\candidates\\tk-state-resource-15\\installed-proofs-906\\ci-native\\132612247223-identity.json",
+        "sha256": "28915023d1b3890fbd6ee567117b5b6e851371b7712135c23fbab1fd903b60bf"
+      },
+      "artifact": {
+        "id": 14134992460,
+        "node_id": "MDg6QXJ0aWZhY3QxNDEzNDk5MjQ2MA==",
+        "name": "linux-software-vulkan-wheel-cp312",
+        "size_in_bytes": 118791422,
+        "url": "https://api.github.com/repos/bipxx/vispy_vulkan/actions/artifacts/14134992460",
+        "archive_download_url": "https://api.github.com/repos/bipxx/vispy_vulkan/actions/artifacts/14134992460/zip",
+        "expired": false,
+        "digest": "sha256:0c9ca89d222cd6b3acc1334791ee04907ff1ed32fb3833afa2c8a7dc03af9d96",
+        "created_at": "2026-11-14T22:36:21Z",
+        "updated_at": "2026-11-14T22:36:21Z",
+        "expires_at": "2027-02-12T22:33:46Z",
+        "workflow_run": {
+          "id": 43648741629,
+          "repository_id": 1427785983,
+          "head_repository_id": 1427785983,
+          "head_branch": "wip/orphan-release-qualified-899",
+          "head_sha": "90348a8064b1091eb989bb8d0fbf787b6afc4f43"
+        }
+      },
+      "member": "runs/native-ci-43648741629-1/ci-identity.json",
+      "archive_sha256": "0c9ca89d222cd6b3acc1334791ee04907ff1ed32fb3833afa2c8a7dc03af9d96",
+      "archive_bytes": 118791422
+    },
+    {
+      "run_id": 43648741524,
+      "job_id": 132612246799,
+      "job_name": "Metal wheel x86_64 CPython 3.12.8",
+      "identity": {
+        "path": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\compat\\candidates\\tk-state-resource-15\\installed-proofs-906\\ci-native\\132612246799-identity.json",
+        "sha256": "483d251b01ac8397e253326c1ac87e8d23f81edd89843e1a6fe2f38a4bb66723"
+      },
+      "artifact": {
+        "id": 14135616440,
+        "node_id": "MDg6QXJ0aWZhY3QxNDEzNTYxNjQ0MA==",
+        "name": "metal-wheel-x86_64-cp312",
+        "size_in_bytes": 30296368,
+        "url": "https://api.github.com/repos/bipxx/vispy_vulkan/actions/artifacts/14135616440",
+        "archive_download_url": "https://api.github.com/repos/bipxx/vispy_vulkan/actions/artifacts/14135616440/zip",
+        "expired": false,
+        "digest": "sha256:008289c54bf1f5dc30dfc48c9f7e9046d0a80aef90e2c7ea1daccee00b85af6a",
+        "created_at": "2026-11-14T22:37:37Z",
+        "updated_at": "2026-11-14T22:37:37Z",
+        "expires_at": "2027-02-12T22:33:46Z",
+        "workflow_run": {
+          "id": 43648741524,
+          "repository_id": 1427785983,
+          "head_repository_id": 1427785983,
+          "head_branch": "wip/orphan-release-qualified-899",
+          "head_sha": "90348a8064b1091eb989bb8d0fbf787b6afc4f43"
+        }
+      },
+      "member": "runs/metal-ci-43648741524-1-x86_64/ci-identity.json",
+      "archive_sha256": "008289c54bf1f5dc30dfc48c9f7e9046d0a80aef90e2c7ea1daccee00b85af6a",
+      "archive_bytes": 30296368
+    },
+    {
+      "run_id": 43648741524,
+      "job_id": 132612247130,
+      "job_name": "Metal wheel arm64 CPython 3.12.8",
+      "identity": {
+        "path": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\compat\\candidates\\tk-state-resource-15\\installed-proofs-906\\ci-native\\132612247130-identity.json",
+        "sha256": "81d483d77bc500ceae887d82b8303cb94bfd0669abaf3d47f2d3204f09118579"
+      },
+      "artifact": {
+        "id": 14135616196,
+        "node_id": "MDg6QXJ0aWZhY3QxNDEzNTYxNjE5Ng==",
+        "name": "metal-wheel-arm64-cp312",
+        "size_in_bytes": 28335583,
+        "url": "https://api.github.com/repos/bipxx/vispy_vulkan/actions/artifacts/14135616196",
+        "archive_download_url": "https://api.github.com/repos/bipxx/vispy_vulkan/actions/artifacts/14135616196/zip",
+        "expired": false,
+        "digest": "sha256:d1b504e82053a9f4f358724b24271b3f575c5a963a605bb01f7a4be40e226a23",
+        "created_at": "2026-11-14T22:36:08Z",
+        "updated_at": "2026-11-14T22:36:08Z",
+        "expires_at": "2027-02-12T22:33:46Z",
+        "workflow_run": {
+          "id": 43648741524,
+          "repository_id": 1427785983,
+          "head_repository_id": 1427785983,
+          "head_branch": "wip/orphan-release-qualified-899",
+          "head_sha": "90348a8064b1091eb989bb8d0fbf787b6afc4f43"
+        }
+      },
+      "member": "runs/metal-ci-43648741524-1-arm64/ci-identity.json",
+      "archive_sha256": "d1b504e82053a9f4f358724b24271b3f575c5a963a605bb01f7a4be40e226a23",
+      "archive_bytes": 28335583
+    }
+  ],
+  "required_ci_complete": false,
+  "transport_bytes": 177423373,
+  "native_payloads_extracted": false,
+  "new_native_build": false,
+  "artifact_admitted": false,
+  "cleanup": {
+    "path": "@evidence/build/runs/orphan-release-corrected-native-identities-906/cleanup-result.json",
+    "sha256": "8c837d0fffd7f4bb1dbe10fe28cf5e77745db96074917424cd74eebe167bda47"
+  },
+  "marker_bytes": 104,
+  "total_reclaimed_bytes": 177423477,
+  "scope": "Three original corrected90348a8native-job checkout identities only;all transport sizes/digests verified. Native payloads never extracted,SDK/env/wheels not duplicated.23jobCIjoin/finalpromotion/admission remain separate gates."
+}

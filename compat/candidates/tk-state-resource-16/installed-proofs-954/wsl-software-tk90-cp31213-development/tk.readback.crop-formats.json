@@ -1,0 +1,46 @@
+{
+  "schema": 1,
+  "feature": "tk.readback.crop-formats",
+  "profile": "wsl-software-tk90-cp31213-development",
+  "identity": {
+    "source_commit": "613cacfb73b1b4424dc098241c1eaf7553746c90",
+    "patch_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "profile_sha256": "29e6bb238d341f472197c948cb8e18d0d155b578ec4dc1fea2fdc1a56f00bd49",
+    "wheel_sha256": "e600b29e5259b896cc9d0fe36bbb5760260946aef53c013f8fc74e2fd0153007"
+  },
+  "phase": "qualified",
+  "exit_code": 0,
+  "child_waited": true,
+  "requirements": [
+    "TK-7",
+    "STATE-3"
+  ],
+  "pytest": {
+    "path": "@evidence/build/runs/readback-acceptance-wsl-943/pytest.json",
+    "sha256": "8f574911790b9c35fb4a84a60dc7860d0ad14217911b1e71ca98b0945f322ee2"
+  },
+  "installed_origin_verified": true,
+  "distribution_audit": {
+    "path": "@evidence/build/runs/readback-installed-bindings-954/linux-distribution-audit.json",
+    "sha256": "144615c179eeddcd5d4c8f964fe76836efddcd1f7ba59c3bea36f62c46cc9d48"
+  },
+  "gates": {
+    "dependency-closure": {
+      "path": "@evidence/build/runs/readback-installed-bindings-954/gates/wsl-software-tk90-cp31213-development/tk-capture-formats/dependency-closure.json",
+      "sha256": "70b815d45a176f87fb643bed6f0b6536957167c8356cf5f5526a966419e5428f"
+    },
+    "startup-transient-loads": {
+      "path": "@evidence/build/runs/readback-installed-bindings-954/gates/wsl-software-tk90-cp31213-development/tk-capture-formats/startup-transient-loads.json",
+      "sha256": "1cf2aed2adadab04fb0d0e2ce4cee0355a1c0a803d418968e8ea721a22d60785"
+    },
+    "execution-api": {
+      "path": "@evidence/build/runs/readback-installed-bindings-954/gates/wsl-software-tk90-cp31213-development/tk-capture-formats/execution-api.json",
+      "sha256": "c0a069044b0119eadc4b69883d6a8cbf26e22010f298848ebb7301ce5f38431c"
+    }
+  },
+  "evidence_store": {
+    "path": "compat/evidence-stores/secondary-v1.json",
+    "sha256": "b164e3fdc85863a2327b508ea60f8d3068f740cfe90f665aa52905e28bfb3ca5"
+  },
+  "scope": "Finite selected installed workflow row on tk-state-resource-16 candidate wheel. Three original strict gates and separately retained same-wheel pytest phases; no full inventory, published wheel or release admission."
+}

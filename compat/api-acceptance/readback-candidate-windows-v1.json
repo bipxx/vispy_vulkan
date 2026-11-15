@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "kind": "readback-candidate-installed-windows",
+  "status": "PASS_WINDOWS_CANDIDATE_56_QUERY_READBACK_ZERO_OVERLAY",
+  "verification": {
+    "path": "@evidence/build/runs/readback-candidate-windows-933/verification.json",
+    "sha256": "c94bb49b9c1fb05b1a10a4e592549e0d85d7fcfe386894c239df7a9d6271bb72"
+  },
+  "cleanup": {
+    "path": "@evidence/build/runs/readback-candidate-windows-933/cleanup-result.json",
+    "sha256": "9f621e09722c1f08f351014c5906ff5e5fb990e2d4cc3c66ab505bad67856f15"
+  },
+  "artifact_admitted": false,
+  "published": false,
+  "wheel": {
+    "path": "build/artifacts/9919a280a5de2c4bec45837078cb1d405e7169933ddcfb0758aa7d6a82722d39/vispy-0.17.0+vulkan.2-cp312-cp312-win_amd64.whl",
+    "sha256": "9919a280a5de2c4bec45837078cb1d405e7169933ddcfb0758aa7d6a82722d39"
+  },
+  "source_commit": "613cacfb73b1b4424dc098241c1eaf7553746c90",
+  "source_overrides": 0,
+  "tests": {
+    "tests": 56,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  }
+}

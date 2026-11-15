@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "kind": "change-impact",
+  "status": "APPROVED",
+  "independent": true,
+  "reviewer": "Claude peer change-impact review907;read-only exact subject/head judgment",
+  "subject_sha256": "334e726daa1c9969e753e0c0ba11221846f2f7104062997626597e888afeca93",
+  "qualification_head": "90348a8064b1091eb989bb8d0fbf787b6afc4f43"
+}

@@ -1,0 +1,35 @@
+{
+  "schema": 1,
+  "status": "APPROVED",
+  "kind": "source",
+  "independent": true,
+  "reviewer": "Claude read-only peer review940 corrected exact preparation16 bindings",
+  "candidate_scope_sha256": "e466af2caa2011e2881401df5dab7c7ecf77603eb6cc9d5a8030041230ee2338",
+  "reviewed_delta_sha256": "53ae6c2676bd317ad1b10d31cee5cb952bd293fc72beebcb4cdad20f9e73839c",
+  "native_reuse_links": [
+    "25cf77af304c79fedf191dcde1f7aede6fad84d72ecdf88bbd4e7607bafe8af2",
+    "c33077a61f92bb2d22be6e967881294dcd88d2414ef7143fd20db0c3352c31e6"
+  ],
+  "evidence": {
+    "path": "@evidence/build/runs/readback-preparation16-correction-review-940/review-response.md",
+    "sha256": "6773425d407f7e423c4ebe1f0cd44c1932696e009812cc215a57d129c14ff0a7"
+  },
+  "raw_response": {
+    "path": "@evidence/build/runs/readback-preparation16-correction-review-940/review-response.json",
+    "sha256": "1956b3b2491e4eb4fee5d757b7e7ffa485bdb9228d6e256a73f3c3461b5555d5"
+  },
+  "decision": {
+    "path": "@evidence/build/runs/readback-preparation16-correction-review-940/decision.json",
+    "sha256": "e6c3f6c7934430f3a618261f1b27d529736c64577b06b2a9fe8225614c854a70"
+  },
+  "scope": "Exact whole prepared source/scope/native-reuse declarations. Raw code930 approval is separate. No strict installed/profile/artifact, CI/integration/publication admission.",
+  "conditions": [
+    "Add only candidate16source/scope-review records with list-formnative_reuse_links and exact approved semantic digests/reviewed_delta.",
+    "Set candidate.reviews refs and reseal; candidate scopee466 must stay unchanged.",
+    "Update only candidate.sha256 in the two native provenance records; reuse blocks/link digests unchanged.",
+    "Apply review flags only through existingexecutionCLI; ledger_scope and coverage/execution/admission semanticmanifests unchanged.",
+    "Run authoritative candidate/coverage/execution/selection/native/installed/retention/host validators; preserve any failure and do not bypass.",
+    "Declared capture-scenario script/acceptance node still required on both exactnewwheel profiles. No strict/artifact/profile/CI/integration/delivery approval."
+  ],
+  "qualification_approved": false
+}

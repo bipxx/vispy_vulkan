@@ -34,6 +34,15 @@ keep set and its reason instead of retaining every historical working tree.
 
 ## Budget and ownership
 
+For source deltas on Windows, compare the raw Git blob and working-file bytes
+and write retained patches as bytes. Universal-newline reads or platform-default
+text writes can expand a mixed-ending baseline into apparent unrelated changes.
+Check original blob hashes and reconstruct the exact current files from the patch
+before interpreting line-ending churn as a source change. Preserve a failed
+patch/review and add a corrected record rather than rewriting that history.
+If current source hashes are unchanged, reuse the matching test evidence; a
+corrected patch presentation alone does not justify another install or build.
+
 The default policy permits **20 GiB of managed scratch in aggregate** and keeps
 **10 GiB free** after the declared additional peak allocation. All agents use the
 same coordinator-selected workspace; three agents do not get three independent

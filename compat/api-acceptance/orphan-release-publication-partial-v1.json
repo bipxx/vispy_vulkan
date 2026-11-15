@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "kind": "distinct-publication-with-preserved-delivery-origin-failure",
+  "status": "PUBLISHED12_HASHED_ASSETS_CHANNEL_VERIFICATION_PENDING",
+  "release_url": "https://github.com/bipxx/vispy_vulkan/releases/tag/v0.17.0-vulkan.2-orphan-retirement-90348a8",
+  "source_merge": "76cc5e8c04c9747b3f0485c4ac2e6a4f56b7f0b6",
+  "release_id": 445706472,
+  "anonymous_asset_hashes_passed": 12,
+  "old_releases_unchanged": 4,
+  "failure": {
+    "path": "@evidence/build/runs/orphan-release-public-delivery-917/failure-disposition.json",
+    "sha256": "7e18cc82dd31e686ce36c7407f73d6c87ca412d62348faa05bae06b48bda3702"
+  },
+  "cleanup": {
+    "path": "@evidence/build/runs/orphan-release-public-delivery-917/cleanup-result.json",
+    "sha256": "37d93f8260310aa410b1eaf6895c1b2c9c10f4c5f0eff0f7da1d63c2bde7e0ed"
+  },
+  "delivery_verified": false
+}

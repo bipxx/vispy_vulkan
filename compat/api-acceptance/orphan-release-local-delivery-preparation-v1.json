@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "kind": "orphan-release-local-delivery-preparation",
+  "status": "LOCAL_DRAFT_HASH_AND_LICENSE_CHECKS_PASS_NOT_PUBLISHED",
+  "qualification_head": "90348a8064b1091eb989bb8d0fbf787b6afc4f43",
+  "draft": {
+    "path": "@evidence/build/runs/orphan-release-delivery-preparation-910/delivery-draft.json",
+    "sha256": "4a7b605494697fabdb82c377e0372ca4abd5e4367aec1b3e6bcfd68020c3fc6a"
+  },
+  "terminal": {
+    "path": "@evidence/build/runs/orphan-release-delivery-preparation-910/terminal-source-only.json",
+    "sha256": "63a5afb11ae01864fcb86e6b39b6b4975aac4df5cd9f912cfed0d25f716aa8eb"
+  },
+  "admitted": false,
+  "published": false
+}

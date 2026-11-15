@@ -1,0 +1,33 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "kind": "readback-geometry-windows-source-overlay",
+  "status": "PASS_WINDOWS_MATCHING_NATIVE_SOURCE_OVERLAY_11_RECOVERY_CASES",
+  "coverage_ids": [
+    "API-06-READBACK-GEOMETRY",
+    "LIF-05"
+  ],
+  "verification": {
+    "path": "@evidence/build/runs/gap-readback-windows-922/verification.json",
+    "sha256": "cb82453f51be39045cc58588e4d403b0eaf77bdecf01123adbdae04ef0f32203"
+  },
+  "cleanup": {
+    "path": "@evidence/build/runs/gap-readback-windows-922/cleanup-result.json",
+    "sha256": "3fb334f3b68076b124f8849328f1f82021759dd902aaa33a4299b09fd0f04061"
+  },
+  "source_overrides": 1,
+  "tests": {
+    "tests": 11,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "installed_release_qualified": false,
+  "published_artifact_changed": false,
+  "pending": [
+    "WSL functional verification",
+    "new-artifact qualification",
+    "independent review and integration",
+    "delivery"
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "status": "PASS_CORRECTED_QUALIFICATION_HEAD_SUBJECT_128_BINDINGS_NOT_ADMITTED",
+  "coverage_ids": [
+    "FIX-04",
+    "FIX-06",
+    "API-06",
+    "LIF-06",
+    "TOOL-01",
+    "TOOL-04"
+  ],
+  "candidate": "tk-state-resource-15",
+  "qualification_head": "90348a8064b1091eb989bb8d0fbf787b6afc4f43",
+  "preferred_restoration_archive_reused": true,
+  "source_commit": "275888b5a46647a6ff59c7474f96dd5def2b6f75",
+  "qualification_subject": {
+    "path": "@evidence/build/runs/orphan-release-corrected-head-subject-905/qualification-subject.json",
+    "sha256": "18dd4e5c8b663661c93de72566a9c5720a375cdf9cfbb64ca2aae4f4b5e6f83c"
+  },
+  "result": {
+    "path": "@evidence/build/runs/orphan-release-corrected-head-subject-905/subject-result.json",
+    "sha256": "129d3a2b938c1369fb969e4f561b0e8254659d50e50e67d199512d280446f500"
+  },
+  "terminal": {
+    "path": "@evidence/build/runs/orphan-release-corrected-head-subject-905/terminal-source-only.json",
+    "sha256": "1d822d3840c4e02c8a15f22f8b68ba5511acf1a8e2a116c10ab00f3ab3646ba1"
+  },
+  "restoration": {
+    "path": "@evidence/build/runs/orphan-release-corrected-head-subject-905/restoration.json",
+    "sha256": "fdb464461fa2ea351a5f6290d5867461db0fece81e33eb35520fbe3b912019b7"
+  },
+  "retention": {
+    "path": "@evidence/build/runs/orphan-release-preparation15-retention-896/retention-record.json",
+    "sha256": "0e9525da041ad9e3159517407eaa57a986249151ab9c816f34c5af261ebf89ba"
+  },
+  "proved_bindings": 128,
+  "selected_rows": 32,
+  "strict_attempts": 5,
+  "retained_inputs": 1324,
+  "canonical11files_restored": true,
+  "actual_exit": 0,
+  "child_waited": true,
+  "scratch_created": false,
+  "artifact_admitted": false,
+  "release_complete": false,
+  "scope": "Fresh reviewed15source/scope/native-reuse and original Windows4f537748/Linuxdfe1033f receipts prove128selected bindings with new1324-input retention and preserved strict failure/collector895failure. Eight mandatory observations/basis880 remain separate; final-source freeze/current-head23-job CI/impact/promotion/protected integration/matrix/strict admission and distinct delivery remain required."
+}

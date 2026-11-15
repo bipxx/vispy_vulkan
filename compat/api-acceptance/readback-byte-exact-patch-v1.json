@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "kind": "readback-byte-exact-source-patch",
+  "status": "PASS_BASELINE_MIXED_EOL_PREEXISTS_CORRECTED_PATCH_NO_SOURCE_CHANGE",
+  "source_changed": false,
+  "published_artifact_changed": false,
+  "verification": {
+    "path": "@evidence/build/runs/gap-readback-normalization-929/verification.json",
+    "sha256": "97b3bf072308d65f4b52878d03f5e56160680806e97b17c77c592a5a704de66f"
+  },
+  "preferred_patch": {
+    "path": "@evidence/build/runs/gap-readback-normalization-929/source-byte-exact.patch",
+    "sha256": "49785cbbbe63cfff69cb7579c62a759293b91b0c68f5f584958fafd7d809698d"
+  },
+  "reconstruction": {
+    "path": "@evidence/build/runs/gap-readback-normalization-929/patch-reconstruction.json",
+    "sha256": "d93e622d1cbbed7197f7121a479d4fc2dbf8ffda156b9ab198441b900e165bc4"
+  }
+}

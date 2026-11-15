@@ -1,0 +1,65 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "status": "PASS_REVIEWED_TEST_FIX_QUALIFICATION_HEAD_PR84_CORRECTED_CI_RUNNING",
+  "qualification_head": "90348a8064b1091eb989bb8d0fbf787b6afc4f43",
+  "tree": "9ff4c6d52a28d6c5a76c7e847add3e850aa01db8",
+  "parent": "646c986dc67289beaeae46bd4d8af3e114d316f3",
+  "pull_request": "https://github.com/bipxx/vispy_vulkan/pull/84",
+  "owned_source_paths": 159,
+  "changed_child_paths": 9,
+  "reviewed_test_files": 2,
+  "actual_head_joined_sources": 852,
+  "native_source_inputs": 133,
+  "metal_source_inputs": 628,
+  "source_freeze": {
+    "path": "@evidence/build/runs/orphan-release-curated-source-freeze-903/source-freeze.json",
+    "sha256": "bf007e3764f9f06425faec4101a6539ab3d7c02425f809b51828ae8340eba63d"
+  },
+  "metadata_audit": {
+    "path": "@evidence/build/runs/orphan-release-curated-source-freeze-903/metadata-followup-audit.json",
+    "sha256": "44e020a6bfe0d107633918fb65a51106da3a35c5a5848b80e1e509a7166cb82b"
+  },
+  "actual_head_acceptance": {
+    "path": "@evidence/build/runs/orphan-release-curated-source-freeze-903/actual-head-acceptance.json",
+    "sha256": "486e74e08cfb2361eca7fbd7215902455187a9b173c2da30a86579798e143ac9"
+  },
+  "source_cleanup": {
+    "path": "@evidence/build/runs/orphan-release-curated-source-freeze-903/cleanup-result.json",
+    "sha256": "f475ecd43c1202804900b7b5603f993b9f4aaa4d1bf3326a30d67ab034125518"
+  },
+  "local_fix_evidence": {
+    "path": "@evidence/build/runs/orphan-release-curated-ci-fix-901/verification.json",
+    "sha256": "7966135502803e614fe689cbe71ae00e5cc0b63d9b6e0892366350410a236882"
+  },
+  "local_cleanup": {
+    "path": "@evidence/build/runs/orphan-release-curated-ci-fix-901/cleanup-result.json",
+    "sha256": "adda16ce3c67de2e39d67eb63a21d5fa65e998762446fb9940bb11fbf1dbbe79"
+  },
+  "fresh_review": {
+    "path": "@evidence/build/runs/orphan-release-curated-fix-review-902/decision.json",
+    "sha256": "6784fe8ea5ee056a15d95b6b6362dd55fe4c1c369fdb2b3e2a56c909685a6147"
+  },
+  "original_head_outcomes": {
+    "path": "@evidence/build/runs/orphan-release-corrected-qualification-ci-904/previous-head-summary.json",
+    "sha256": "fdb40a0a0de81539a5bac37d028de4b42f96702a5450d0a10429e053bc3c34b4"
+  },
+  "workflow_handles": {
+    "path": "@evidence/build/runs/orphan-release-corrected-qualification-ci-904/workflow-handles.json",
+    "sha256": "c3ead96bb1e780f43fac1cb8cf61daa5a5057caed03be43535637ac432d3d152"
+  },
+  "job_snapshot": {
+    "path": "@evidence/build/runs/orphan-release-corrected-qualification-ci-904/jobs-poll0-summary.json",
+    "sha256": "56037ed1f175d53015475f24a33a254e4da8a9133b2641dfd2b0c05449718acc"
+  },
+  "initial_observer_mismatch": {
+    "path": "@evidence/build/runs/orphan-release-corrected-qualification-ci-904/initial-pr-cache-observation.json",
+    "sha256": "531d10bba9e25fa8733011b8057d3ef33ddc616a5a334667c4cdf391d29ded7e"
+  },
+  "required_jobs": 23,
+  "required_CI_complete": false,
+  "protected_merge_complete": false,
+  "artifact_admitted": false,
+  "published": false,
+  "scope": "Exact902reviewed2test curation fix plus bounded docs/evidence;current15/native/runtime/workflows/pins unchanged. Originalhead646CPU20fail/native3pass preserved. Local12new cases+registration pass;fullcurated435pass1CMakefailure remainsfailed. Exact fixture+managedcleanup and159path child source freeze/852joins pass;sourceindex15157347bytes/68retained cleaned. REST PR84andnormalremote ref verify90348a8;3neworiginal PR workflows live with23jobs. Initial stale GraphQL snapshot is observation-only,not retried push. All current-head CI/impact/promotion/protected integration/matrix/strict admission/distinct delivery remain gates."
+}

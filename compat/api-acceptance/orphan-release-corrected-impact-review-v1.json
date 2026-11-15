@@ -1,0 +1,105 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "status": "APPROVED_EXACT_HEAD_SUBJECT_CHANGE_IMPACT_ONLY",
+  "qualification_head": "90348a8064b1091eb989bb8d0fbf787b6afc4f43",
+  "product_source_commit": "275888b5a46647a6ff59c7474f96dd5def2b6f75",
+  "subject_sha256": "334e726daa1c9969e753e0c0ba11221846f2f7104062997626597e888afeca93",
+  "impact_record": {
+    "path": "compat/candidates/tk-state-resource-15/installed-proofs-905/change-impact-review-907.json",
+    "sha256": "1c5052f7de783b498359550c1b4ce688d3bf4a3b4399ba4e5ffd9f8e871858be"
+  },
+  "subject": {
+    "path": "compat/candidates/tk-state-resource-15/installed-proofs-905/qualification-subject.json",
+    "sha256": "18dd4e5c8b663661c93de72566a9c5720a375cdf9cfbb64ca2aae4f4b5e6f83c"
+  },
+  "decision": {
+    "path": "@evidence/build/runs/orphan-release-corrected-impact-review-907/decision.json",
+    "sha256": "7961c225124eac525a25bd8327e0ab58d4c941684fc0621f005041e92911517e"
+  },
+  "raw_review": {
+    "path": "@evidence/build/runs/orphan-release-corrected-impact-review-907/review-response.json",
+    "sha256": "595143205e97813a85495913c84a19ee4f33ba88342401f6a73dc739aa6634af"
+  },
+  "foreign_originals_reaudit": {
+    "path": "@evidence/build/runs/orphan-release-corrected-impact-review-907/foreign-originals-reaudit.json",
+    "sha256": "33192ddae0187438e8a27ded4c02453436fa3853cb30710e544e120c1baa5039"
+  },
+  "finite_mandatory_basis_reuse": "FINITE_BASIS_REUSE_ACCEPTABLE",
+  "findings": [
+    {
+      "id": "F1",
+      "severity": "info",
+      "text": "Subject seal, head, product source and scope e6acf758 match the 907 packet. 905 subject-result VALID: 128 proved, 0 blocked, 0 missing, admitted false. 5 strict attempts: 4 passed; the Windows tk-state-resource-failures replay-0 keeps outcome 'failed' and is resolved by 867."
+    },
+    {
+      "id": "F2",
+      "severity": "info",
+      "text": "903 actual-head-acceptance PASS: 852 joined inputs, 133 native and 628 Metal inputs. Windows 4f537748 and Linux dfe1033f: 537 members (510 pure, 4 native), original notices exact. AGPL LICENSE, LICENSE-BSD and LICENSING.md joined and retained. No new tests or graphics runs; artifact_admitted false."
+    },
+    {
+      "id": "F3",
+      "severity": "info",
+      "text": "The subject ledger 1ee58c46 is the positive overlay ledger (materialization.json, overlay 894 854a54ed). The canonical ledger 3c5248a2 was restored (restoration.json PASS, all 11 files unchanged, reused 898 backup 3933abc1). Not a proof gap."
+    },
+    {
+      "id": "F4",
+      "severity": "info",
+      "text": "cpp/runtime.cpp:5256-5274: idle host-import retirement returns early while any Ticket is outstanding, while the device is lost or not ready, or when nothing has been released. It runs only at event boundaries. A post-Submit failure keeps the Ticket and the retry only re-registers completion, with no duplicate Submit. Consistent with 892 F1/F3."
+    },
+    {
+      "id": "F5",
+      "severity": "info",
+      "text": "902 curation (MODULES + __all__) is test wiring only, with no exemptions or assertion changes. The curated run stays 435 pass / 1 fail (test_upload_cache_shutdown, CMake not on PATH) and the failure stays recorded as failed."
+    },
+    {
+      "id": "F6",
+      "severity": "low",
+      "text": "906 identities: all 3 CI jobs record head_sha 90348a80; exit 0, child waited. verification.json transport_bytes is 177423373 but cleanup reclaimed_bytes is 177423477. The 104-byte gap is most likely the run's own small scratch files. Not material, but 177423477 should not be cited as the transport size. Metal is a CPU-only build, not graphics qualification."
+    },
+    {
+      "id": "F7",
+      "severity": "info",
+      "text": "880 matrix-basis.json binds exactly wheels 4f537748 and dfe1033f with qualification_head null. The 903 join binds those same wheel contents to head 90348a80, so the finite eight-row basis (870-877) can be reused for this head with its 880 limits unchanged. The actual eight-row admission join is left to final promotion."
+    },
+    {
+      "id": "F8",
+      "severity": "info",
+      "text": "907 foreign-originals-reaudit PASS: 18 original-path rehashes, 15 used, 4 generic Windows refusals preserved, no relocation, deduplication or generic exception."
+    },
+    {
+      "id": "F9",
+      "severity": "info",
+      "text": "CPU CI run 43648741602 poll2 snapshot: 20 jobs, none failed, cancelled or timed out. This is a snapshot, not a 23-job pass."
+    }
+  ],
+  "unread_evidence": [
+    "903: actual-head-acceptance.json lines 335-857 (per-file hashes) and 882-1840 (process argv lists); source-freeze.json; the blob/commit/tree outputs; source-delta zip",
+    "905: subject-result.json lines 1566-1889 (the rest of the proved list; the visible start, the end and the 128 count are consistent); frozen-inputs.json; qualification-subject.json copy; terminal-source-only.json",
+    "880: review-response, functional summary and per-row verification bodies (only decision.json and the wheel/head lines of matrix-basis.json were read)",
+    "870-879 observation, index and audit records; 875 helper-process records; 867 resolution body; 866 histories; 896 retention record (1324 inputs); 894 overlay; 898 backup contents",
+    "892: implementation.diff, ci-reader.diff, preparation.diff, documentation.diff (only decision.json and runtime.cpp:5215-5279 were read); the other four changed runtime files",
+    "902: source.diff body; 901 logs and XML",
+    "904/906: native/Metal job logs, members.json bodies, the CI identity JSONs, poll2 per-job step detail",
+    "registry 613 content; compat/build-hygiene.json; docs/build-hygiene.md",
+    "No hashes recomputed, nothing executed, no network access: every hash comes from the coordinator's records"
+  ],
+  "conditions": [
+    "Permitted: exactly one schema-conforming 7-field change-impact approval record bound to subject 334e726d\u2026 and head 90348a80\u2026, plus this review's own review/checklist records. No production, test, CI, pin, scope, mapping or outcome edits.",
+    "The complete 23-job CI on head 90348a80 must pass before promotion. The live CPU run and the 3 native successes are not a substitute.",
+    "Final promotion must independently review the actual eight-row admission join to the 903 wheel contents. This approval does not admit any row.",
+    "All failure and refusal records stay as recorded: 646 head CI failures, Windows strict replay-0, 4 generic foreign-root refusals, 8 UNVERIFIED discovery reports, 875 PID-reuse refusal, curated CMake-profile failure.",
+    "Protected integration, strict and matrix admission, and distinct delivery remain separate mandatory gates.",
+    "No release, full inventory, full upstream parity, physical Linux GPU, HID or display-timing, Metal graphics, physical memory or universal device-loss claim. Historical 9e4/a271/2b8 approvals are not reused.",
+    "Keep the original licences: AGPL implementation plus BSD and third-party notices."
+  ],
+  "reviewer_models": [
+    "claude-opus-5-5"
+  ],
+  "actual_exit": 0,
+  "child_waited": true,
+  "required_CI_complete": false,
+  "artifact_admitted": false,
+  "matrix_admitted": false,
+  "scope": "Fresh impact approval forhead90348a8/subject334e only;finite880basis reuse acceptable with all limits/refusals retained. Current23job CI,actual8rowadmission final review,promotion/protected integration/strict admission/distinct delivery remain mandatory. No release/fullinventory/physicalGPU/HID/Metalgraphics approval."
+}

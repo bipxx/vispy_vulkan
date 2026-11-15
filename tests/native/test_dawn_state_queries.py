@@ -253,3 +253,45 @@ def test_default_readback_resolves_native_queued_viewport(canvas):
     actual = gloo.read_pixels(alpha=True)
     assert actual.shape == (5, 7, 4)
     np.testing.assert_array_equal(actual, np.full((5, 7, 4), [0, 255, 0, 255], np.uint8))
+
+
+@pytest.mark.parametrize('viewport,message', [
+    ((-1, 0, 3, 4), 'rectangle exceeds target bounds'),
+    ((0, -1, 3, 4), 'rectangle exceeds target bounds'),
+    ((0, 0, -1, 4), 'empty target'),
+    ((0, 0, 3, -1), 'empty target'),
+    ((0, 0, 0, 4), 'empty target'),
+    ((0, 0, 3, 0), 'empty target'),
+])
+def test_invalid_readback_geometry_preserves_queue_and_recovers(canvas, viewport, message):
+    gloo.set_viewport(0, 0, 16, 12)
+    gloo.clear(color=(1, 0, 0, 1))
+    pending = canvas.context.glir._shared._commands
+    snapshot = list(pending)
+    assert snapshot
+    with pytest.raises(RuntimeError, match=message):
+        gloo.read_pixels(viewport=viewport)
+    assert canvas.context.glir._shared._commands is pending
+    assert pending == snapshot
+    actual = gloo.read_pixels((0, 0, 16, 12), alpha=True)
+    np.testing.assert_array_equal(actual, np.full((12, 16, 4), [255, 0, 0, 255], np.uint8))
+
+
+@pytest.mark.parametrize('axis', range(4))
+@pytest.mark.parametrize('value', [-(2**31) - 1, 2**31])
+def test_readback_native_integer_overflow_preserves_queue_and_recovers(canvas, axis, value):
+    gloo.set_viewport(0, 0, 16, 12)
+    gloo.clear(color=(1., 0., 0., 1.))
+    queue = canvas.context.glir._shared
+    pending = queue._commands
+    snapshot = list(pending)
+    assert snapshot
+    viewport = [0, 0, 3, 4]
+    viewport[axis] = value
+    with pytest.raises(TypeError):
+        gloo.read_pixels(viewport=viewport)
+    assert queue._commands is pending
+    assert pending == snapshot
+    actual = gloo.read_pixels((0, 0, 16, 12), alpha=True)
+    assert actual.shape == (12, 16, 4)
+    np.testing.assert_array_equal(actual, np.full((12, 16, 4), [255, 0, 0, 255], np.uint8))

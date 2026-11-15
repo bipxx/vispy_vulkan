@@ -1,0 +1,23 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "kind": "readback-native-int-range-final-source-review",
+  "status": "ACCEPT_EXACT_READBACK_SOURCE_FIX_B1_WITHDRAWN",
+  "decision": {
+    "path": "@evidence/build/runs/gap-readback-correction-review-930/decision.json",
+    "sha256": "c916d6cb38b30306ca04f7247fa60f23969d7a41bffe9ebba9a3b8b978661b60"
+  },
+  "cleanup": {
+    "path": "@evidence/build/runs/gap-readback-correction-review-930/cleanup-result.json",
+    "sha256": "bfd086a22474ba50cab0735f2260806e88ac04eda66e678359665226d41b1ac9"
+  },
+  "source_hashes": {
+    "src/vispy/gloo/dawn_parser.py": "1dc10e29175393a5bf825459eee8756d85c0ea4886b16c172c0fe9593dc13e7f",
+    "tests/contract/test_dawn_state_query_contract.py": "aa20ba7388f26579211c3fe9d9e0256d360ff4be74fa22ce8f1301323317cc92",
+    "tests/native/test_dawn_state_queries.py": "fcbe65163aa58453275c9404449a0469518cda6d1a4172ef9fb2b311105f4220",
+    "cpp/runtime.cpp": "b09ae8e6b62c3832e5ffbab0171a4e6c79ac1b7234a7c4cc18a8a1663f351037",
+    "cpp/bindings/module.cpp": "2e900d97eda5500ae1826591601024497c0b10cffed978d247280ae80dd910d7"
+  },
+  "artifact_admitted": false,
+  "published_artifact_changed": false
+}

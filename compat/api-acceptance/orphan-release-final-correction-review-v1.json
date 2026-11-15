@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "kind": "final-reviewed-admission-driver-correction",
+  "status": "APPROVED_EXACT915_CORRECTION_AND_SAME_FINAL_BASIS_EXECUTION_PENDING",
+  "qualification_head": "90348a8064b1091eb989bb8d0fbf787b6afc4f43",
+  "promotion_basis_sha256": "e1fcc058ce5c6b079972f7bdf348fba5d1efab6e74c72c2613c798b5f35c0a7e",
+  "verification": {
+    "path": "@evidence/build/runs/orphan-release-admission-correction-review-914/verification.json",
+    "sha256": "ccdf40e8b93e4106fd70ef5c3c4a88a1d2363d56f9de6f4319048ce11b0310a3"
+  },
+  "artifact_admitted": false,
+  "integration_verified": false,
+  "delivered": false,
+  "full_inventory_complete": false,
+  "prior913failure_preserved": true
+}

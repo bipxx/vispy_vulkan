@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "kind": "source-readback-geometry-validation",
+  "status": "SOURCE_FIXED_45_CPU_CONTRACTS_PASS_INSTALLED_PENDING",
+  "date": "2026-11-14",
+  "coverage_ids": [
+    "API-06-READBACK-GEOMETRY",
+    "LIF-05"
+  ],
+  "source_hashes": {
+    "src/vispy/gloo/dawn_parser.py": "613a3a12a189801f0a6d0ad557957175bfd925fea802a4ce5229e86be95a91cc",
+    "tests/contract/test_dawn_state_query_contract.py": "6e4e909a01b1384068bf5f1003e2e497f99a80a245ab1edb82d225746d0f6c4d",
+    "tests/native/test_dawn_state_queries.py": "391a4995e83ea8565cb8d68183a9f62111e37d6e0fa1aef1cbf94eda57ffadd3"
+  },
+  "verification": {
+    "path": "@evidence/build/runs/gap-readback-validation-921/verification.json",
+    "sha256": "0d3a16bb69e5264785bcd50034afcf31f2d4f23d4e54c2a3483a73107e8664ab"
+  },
+  "installed_artifact_verified": false,
+  "published_artifact_changed": false
+}

@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "kind": "readback-exact-declared-acceptance",
+  "status": "PASS_WSL_DECLARED_ACCEPTANCE_TWO_TESTS_SIX_PHASES",
+  "source_commit": "613cacfb73b1b4424dc098241c1eaf7553746c90",
+  "wheel": {
+    "path": "build/artifacts/e600b29e5259b896cc9d0fe36bbb5760260946aef53c013f8fc74e2fd0153007/vispy-0.17.0+vulkan.2-cp312-cp312-manylinux_2_39_x86_64.whl",
+    "sha256": "e600b29e5259b896cc9d0fe36bbb5760260946aef53c013f8fc74e2fd0153007"
+  },
+  "verification": {
+    "path": "@evidence/build/runs/readback-acceptance-wsl-943/verification.json",
+    "sha256": "324e2f412b776ba58f8b1d43cc866913746bf5952703a591de94f401731e1c51"
+  },
+  "pytest": {
+    "path": "@evidence/build/runs/readback-acceptance-wsl-943/pytest.json",
+    "sha256": "8f574911790b9c35fb4a84a60dc7860d0ad14217911b1e71ca98b0945f322ee2"
+  },
+  "cleanup": {
+    "path": "@evidence/build/runs/readback-acceptance-wsl-943/cleanup-result.json",
+    "sha256": "2723cda95d73f46ad2a16d7469e627f973b9b8db15012b6f30a04af35fe1be21"
+  },
+  "artifact_admitted": false,
+  "strict_observer_profile_admitted": false
+}

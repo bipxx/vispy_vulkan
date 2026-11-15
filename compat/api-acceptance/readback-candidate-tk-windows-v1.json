@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "kind": "readback-candidate-tk-functional",
+  "status": "PASS_WINDOWS_CANDIDATE_TK14_PLUS_FAILURE_RECOVERY",
+  "source_commit": "613cacfb73b1b4424dc098241c1eaf7553746c90",
+  "wheel": {
+    "path": "build/artifacts/9919a280a5de2c4bec45837078cb1d405e7169933ddcfb0758aa7d6a82722d39/vispy-0.17.0+vulkan.2-cp312-cp312-win_amd64.whl",
+    "sha256": "9919a280a5de2c4bec45837078cb1d405e7169933ddcfb0758aa7d6a82722d39"
+  },
+  "tests": {
+    "tests": 14,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "source_overrides": 0,
+  "verification": {
+    "path": "@evidence/build/runs/readback-tk-windows-936/verification.json",
+    "sha256": "f7bcd553acd5e1d0438a1cef25217209d212186be61b0be26d367031dcede542"
+  },
+  "cleanup": {
+    "path": "@evidence/build/runs/readback-tk-windows-936/cleanup-result.json",
+    "sha256": "8795a5a872dae97af9ea06dc778d213305e7022cb2bb6e7e3991f92ed6f240ff"
+  },
+  "artifact_admitted": false,
+  "published": false
+}

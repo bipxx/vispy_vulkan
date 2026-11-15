@@ -1,0 +1,40 @@
+{
+  "schema": 1,
+  "kind": "current-scoped-public-delivery",
+  "status": "PASS_SCOPED_PUBLIC_DELIVERY",
+  "release_url": "https://github.com/bipxx/vispy_vulkan/releases/tag/v0.17.0-vulkan.2-orphan-retirement-90348a8",
+  "public_delivery_report": {
+    "url": "https://github.com/bipxx/vispy_vulkan/releases/download/v0.17.0-vulkan.2-orphan-retirement-90348a8/delivery.json",
+    "sha256": "8c04c395cc8e5ed1c2ab13a8ac9b85318d097d93753e7b4765fed585e81bc9c1",
+    "bytes": 9670
+  },
+  "source_merge": "76cc5e8c04c9747b3f0485c4ac2e6a4f56b7f0b6",
+  "qualification_head": "90348a8064b1091eb989bb8d0fbf787b6afc4f43",
+  "product_source_commit": "275888b5a46647a6ff59c7474f96dd5def2b6f75",
+  "admitted_selected_bindings": 128,
+  "admitted_profiles": 8,
+  "windows_members": 537,
+  "wsl_members": 537,
+  "source_overrides": 0,
+  "windows_vulkan_clear": true,
+  "wsl_delivery_smoke": "native ABI/import only",
+  "same_version_force_upgrade_verified_both": true,
+  "temporary_delivery_installs_removed": true,
+  "reclaimed_delivery_scratch_bytes": 81029222,
+  "older_releases_preserved": 4,
+  "selected_release_delivery_complete": true,
+  "full_inventory_complete": false,
+  "physical_linux_gpu_qualified": false,
+  "metal_graphics_qualified": false,
+  "preserved_failed_attempts": [
+    913,
+    917,
+    918,
+    919
+  ],
+  "unknown_initial919launcher_exit_preserved": true,
+  "verification": {
+    "path": "@evidence/build/runs/orphan-release-delivery-completion-920/final-public-delivery-verification.json",
+    "sha256": "f9cc952bd6ebe8eef79d3509dc59ed7d7c2511483f8d14a25d0a0d2b264b7058"
+  }
+}

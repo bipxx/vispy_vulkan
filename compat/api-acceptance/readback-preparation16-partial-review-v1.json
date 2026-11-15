@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "kind": "readback-preparation16-partial-review",
+  "status": "PARTIAL_SCOPE_APPROVAL_BINDING_BLOCKED_PACKET_CORRECTION_REQUIRED",
+  "decision": {
+    "path": "@evidence/build/runs/readback-preparation16-review-939/decision.json",
+    "sha256": "e27105e7dc1f28141cf0a7b804036df5d659987f74141b491e0a1a08d8eab4f8"
+  },
+  "cleanup": {
+    "path": "@evidence/build/runs/readback-preparation16-review-939/cleanup-result.json",
+    "sha256": "4aa4f796343e52c2283e6196b80c6219e1eaa46eeff8e5b917dd112abe977ee5"
+  },
+  "bindings_applied": false,
+  "source_or_metadata_changed": false,
+  "artifact_admitted": false
+}

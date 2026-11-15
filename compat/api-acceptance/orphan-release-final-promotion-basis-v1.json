@@ -1,0 +1,12 @@
+{
+  "schema": 1,
+  "kind": "current-head-detached-final-promotion-basis",
+  "status": "PASS_DETACHED_BASIS_ALL23_CI_JOIN",
+  "qualification_head": "90348a8064b1091eb989bb8d0fbf787b6afc4f43",
+  "verification": {
+    "path": "@evidence/build/runs/orphan-release-promotion-basis-911/verification.json",
+    "sha256": "c8f550ebfadfca720377ad72005c1da19e92520c7b35b029f3c45ab019a9491a"
+  },
+  "artifact_admitted": false,
+  "published": false
+}

@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "kind": "readback-source-freeze",
+  "status": "PASS_REVIEWED_READBACK_LOCAL_SOURCE_FREEZE",
+  "verification": {
+    "path": "@evidence/build/runs/readback-source-freeze-932/source-freeze.json",
+    "sha256": "22d7ae0bfd9ecfec77b2d3efea7e7c5ad30f00e09696bdd0e8b637e0a05132fd"
+  },
+  "cleanup": {
+    "path": "@evidence/build/runs/readback-source-freeze-932/cleanup-result.json",
+    "sha256": "98a2ee2873f2242cc9dcb883923b6367184aeee76e95aedfc83036f7d515735d"
+  },
+  "artifact_admitted": false,
+  "published": false
+}

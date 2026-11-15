@@ -1,6 +1,454 @@
 # VisPy Vulkan coverage checklist
 
-## Latest checkpoint — 2026-11-14
+## Latest checkpoint — 2026-11-15
+
+**Legacy cleanup 945 and WSL strict cohort 945 pass — 2026-11-15:**
+`legacy-project-cleanup-945` (`D:/vispy-vulkan-managed/build/runs/legacy-project-cleanup-945/`,
+plan `8cc281b505ec32b9cba85bed03d505cb0b8aca6856fbdde36a82d147192b4e2e`,
+result `5d9b772d7121b538854dafdd6eebc8a894291312f55503c373bdf5bebc0a0fd9`,
+verification `f9de0fc380e41d39e6af889dc91ce626aced2922cf7661637919e918ae81f045`) removed
+9,655 unreferenced clutter files (9.1424 GiB logical / 7.9153 GiB physical; 7.94 GiB
+`C:\` reclaimed) and 4,984 empty directories with 0 overlaps across all registries,
+audits, and retained references, restoring `C:\` reserve. [WSL945](../compat/api-acceptance/readback-wsl-strict-v1.json)
+(`29bce237…`, `PASS_READBACK_WSL_STRICT_MATCHED_COHORT_AND_JOINED_943_ACCEPTANCE`) then
+passed on exact Linux wheel `e600b29e…` (`_dawn` `fcf0c5a8…`) and source `613cacfb…`
+(CPython 3.12.13, Tk 9.0 raster, pinned patched Mesa `9c5c41b3`, Xvfb, 537 members,
+0 source overrides, 16 Linux feature-profile joins / 48 strict raw gates across
+`tk-state-resource-failures` and `tk-capture-formats` both passing on `replay-0` with
+0 shutdown gauges and `actual_exit=0`), joined without rerunning pytest to exact
+declared acceptance `943` (`324e2f41…`); scratch cleaned (`12` files / `92,589,425`
+bytes reclaimed, `151` retained inputs verified, `D:/vispy-vulkan-managed/build/work == ['p']`,
+WSL `build/work == []`; `readback-wsl-strict-945-capacity-refusal` preserved; no
+row/artifact/strict-selection admission claimed).
+
+**Windows strict cohort 944 passes; WSL strict 945 stopped at C:\ disk-reserve preflight — 2026-11-15:**
+[Windows944](../compat/api-acceptance/readback-windows-strict-v1.json) passes
+the current Windows CPython 3.12.8 / RTX 4090 / Tk 8.6 strict runtime-observer
+cohort on exact wheel `9919a280…` and source `613cacf…` (16 feature-profile
+joins, 48 strict raw gates across `tk-state-resource-failures` replay-1 and
+`tk-capture-formats` replay-0, zero source overrides, 537 installed members,
+nine zero workflow shutdown gauges), joined without rerunning pytest to exact
+declared acceptance `942` (2 tests / 6 pytest phases, 10 zero shutdown gauges);
+scratch cleaned (`62,914,104` bytes / `1,636` files removed, `77` retained inputs
+verified; no row/artifact admission; `944` `tk-state-resource-failures` `replay-0`
+attempt retained for attempt-history review). Pre-registration
+`tools/build_hygiene.py preflight` for `readback-wsl-strict-945` (`512 MiB`
+peak, `--registry registry-preparation10-successor-613.json`) refused with
+exit 2 (`Expected peak would cross minimum disk reserve at C:\`, retained at
+`D:/vispy-vulkan-managed/build/runs/readback-wsl-strict-945-capacity-refusal/verification.json`,
+zero scratch created) because external concurrent workstation activity reduced
+`C:\` free space below the `10 GiB` reserve while `D:\` retains ~`273.96 GiB`
+free; new scratch work stopped per `AGENTS.md` disk-budget rule.
+
+**Declared acceptance fixtures pass on both new wheels — 2026-11-14:**
+[Windows942](../compat/api-acceptance/readback-declared-acceptance-windows-v1.json)
+and [WSL943](../compat/api-acceptance/readback-declared-acceptance-wsl-v1.json)
+each execute the exact composite failure/recovery and real capture-scenario
+acceptance nodes declared by preparation16. The existing qualification-gate
+pytest collector records two tests/all six setup/call/teardown phases; unchanged
+`passed_pytest` validates both receipts. This resolves939M1's missing declared
+fixture execution at installed-functional scope. Exact9919/e600wheels and source
+613cacf, 537 package members before/after, zero source overrides, ten zero
+shutdown gauges and actual successful exits/waits are retained. Both scratch
+roots are absent after cleanup: 17,908,009/29,880,780 bytes reclaimed, 32/46
+retained inputs verified. These acceptance observations do not replace strict
+runtime-observer/dependency receipts, host-profile admission, terminal contributing
+retention, final-head CI, protected integration or verified delivery. Source/scope
+and both original native joins remain validated under940/941; no native rebuild.
+
+**Preparation16 review bound; both native producers validate — 2026-11-14:**
+[940 corrected review](../compat/api-acceptance/readback-preparation16-reviewed-scope-v1.json)
+approves exact source/scope/maps/selection/native reuse; [941 binding](../compat/api-acceptance/readback-preparation16-bound-v1.json)
+adds only the two review records, reseals review references and applies selected
+review flags through the existing CLI. Candidate scope `e466af2c…`, ledger scope,
+coverage/execution/selection manifests and both reuse digests remain unchanged.
+Full unchanged validators pass candidate, coverage, execution, selection, both
+new archives and both original native producer joins. All 537 historical candidate
+JSONs remain exact. Actual binding subprocess exits0/waited; source-only snapshots
+and licenses retained, no scratch/build/env. This authorizes no artifact/profile
+admission. Declared capture-scenario acceptance/strict receipts, host observations,
+retention, final-head CI, protected integration and delivery remain open.
+
+**Tk proofs renewed and preparation16 validates without admission — 2026-11-14:**
+[Windows936](../compat/api-acceptance/readback-candidate-tk-windows-v1.json)
+and [WSL937](../compat/api-acceptance/readback-candidate-tk-wsl-v1.json) each pass
+all 14 actual Tk display/capture cases plus the four direct failure/recovery
+phases on exact new wheels `9919a280…`/`e600b29e…`, with zero source overrides,
+537 members before/after and ten zero shutdown gauges. These are separate from
+the matching 56-case headless runs933/935, not a fabricated combined execution.
+Both targets are cleaned: 17,908,001/29,880,772 bytes reclaimed and 31/45 retained
+inputs verified. Tk8.6/9.0 and actual interpreter/native/device origins are recorded.
+[938 preparation16](../compat/api-acceptance/readback-preparation16-v1.json)
+adds 12 source records for current runtime/profile/archive identities, conserving
+all 142 original obligations, 64 selected criteria/128 bindings and eight required
+host rows. All 537 historical candidate JSONs remain byte-exact; no old approval
+or strict receipt transfers. CPU/Linux workflow selectors now point to16 and the
+CI policy hashes renew without reducing any of 23 jobs. Both archive joins pass,
+all 44 CI policy contracts pass, and the strict selection gate correctly refuses
+unreviewed16 (actual exit1/waited). Native provenance is schema-valid only at this
+stage. Fresh independent source/scope/native-reuse review, installed strict
+workflow/host evidence, final-head CI, integration and delivery remain pending.
+938 is source-only: no scratch, build, SDK, new environment or test installation.
+
+[939 partial review](../compat/api-acceptance/readback-preparation16-partial-review-v1.json)
+accepts the source/scope/native-reuse intent but blocks binding until the packet
+names execution-map, coverage-map and reviewed-subject digests explicitly.
+Corrected940 packet is under fresh review; source and all12prepared records
+remain unchanged. The declared capture-scenario acceptance node/script still
+needs its actual strict execution on both profiles; the14Tk cases do not replace it.
+939 scratch is cleaned (89 bytes/27 retained inputs verified); no binding or
+artifact/profile admission is inferred from the partial verdict.
+
+**Both new readback wheels pass installed acceptance — 2026-11-14:**
+[Windows933](../compat/api-acceptance/readback-candidate-windows-v1.json)
+and [WSL935](../compat/api-acceptance/readback-candidate-wsl-v1.json) each install
+the new Python-only candidate offline and pass all 56 state/query/readback tests
+(including the 19 readback/recovery cases), with zero source overrides and all
+537 package members checked before/after. Source is frozen at `613cacf…`;
+Windows wheel `9919a280…` and Linux wheel `e600b29e…` retain exact original
+native, metadata, tag and AGPL/original BSD/third-party notice bytes. Ten shutdown
+gauges are zero per platform; actual installer, worker/controller and launcher
+exits/waits are retained. Windows observes RTX4090/NVIDIA610.88 Vulkan; WSL
+observes pinned9c5 llvmpipe/Mesa26.1.8/LLVM18.1.3, not a physical Linux GPU.
+935 cleanup removes 27,783,492 bytes/569 files and verifies 104 retained inputs;
+933 cleanup removes 17,908,008 bytes/568 files with 37 retained. Both targets
+are absent. Original931 precommit and934 launcher failures stay failed and cleaned.
+Source review930 remains accepted. Independent artifact/profile admission,
+new exact qualification metadata, final-head CI, integration and delivery remain.
+
+**Reviewed source frozen; Windows candidate installed without overlays — 2026-11-14:**
+[932 local freeze](../compat/api-acceptance/readback-source-freeze-v1.json)
+pins reviewed readback source/tests and the new bounded packaging profile at
+`613cacfb73b1b4424dc098241c1eaf7553746c90`, parent `90348a8`.
+Only the parser differs among original packaging inputs; all 133 native source
+inputs match the qualified producer. The foreign checkout HEAD/index are unchanged.
+931 stopped before index/commit writes because remote merge76cc was absent from
+the local object database; its failure is retained. 932 uses the already retained
+qualification parent instead of fetching history and cleans 15,157,462 bytes.
+[933 Windows candidate](../compat/api-acceptance/readback-candidate-windows-v1.json)
+assembles wheel `9919a280…` with only the parser plus RECORD changed, preserving
+all native/metadata/tag/license bytes. Offline installation passes all 56 native
+state/query/readback tests, 537 members before/after, zero source overrides and
+ten zero shutdown gauges on the observed RTX4090/Vulkan profile. Cleanup removes
+17,908,008 bytes and verifies 37 retained inputs. Linux candidate `e600b29e…`
+is assembled; 934 failed before starting WSL because wrapper logs collided.
+That failure is retained and scratch cleaned (87 bytes). Fresh935 reuses the
+exact candidate with distinct logs; installed WSL verification is running.
+These are local candidate observations, not new artifact/profile admission,
+final-head CI, protected integration or delivery.
+
+**Final readback source accepted; artifact/release work remains — 2026-11-14:**
+[930 independent review](../compat/api-acceptance/readback-native-int-range-source-review-v1.json)
+accepts exact parser `1dc10e29…`, CPU tests `aa20ba73…` and native tests
+`fcbe6516…`. It withdraws 928's line-ending finding after
+[929 byte-exact reconciliation](../compat/api-acceptance/readback-byte-exact-patch-v1.json)
+proves the Git baseline already had mixed EOL and reconstructs the unchanged
+tested files. The original expanded patch and rejection stay retained; 929's
+corrected patch is preferred. All 57 related CPU and 19 Windows/19 WSL overlay
+cases remain applicable without reruns because the source hashes are identical.
+NumPy 2.x and finite diagnostic boundaries stay explicit. Review scratch is
+cleaned (90 bytes/33 retained inputs verified). Updated wheels, zero-overlay
+installed qualification, artifact/profile admission, integration and delivery
+remain pending; the broad 44-workstream goal stays active.
+
+**Native-int readback overflow fixed and rendered on both profiles — 2026-11-14:**
+[925 source proof](../compat/api-acceptance/readback-native-int-range-source-v1.json)
+retains eight failing overflow cases plus four passing representable-boundary
+controls. All four rectangle values must fit signed native 32-bit integers before
+explicit finish; overflow raises TypeError without consuming GLIR. Negative-size/
+origin diagnostics follow that conversion guard. Target-dependent upper bounds
+still reach native after finish. All 38 query/readback and 57 related CPU contracts
+pass (57 includes 38). [Windows926](../compat/api-acceptance/readback-native-int-range-windows-overlay-v1.json)
+and [WSL927](../compat/api-acceptance/readback-native-int-range-wsl-overlay-v1.json)
+each pass 19 rendered/recovery cases on unchanged qualified natives plus one
+declared parser override, 536 other members unchanged and ten shutdown gauges zero.
+Actual exits/waits are retained. Cleanup removes 45,690,778 bytes combined,
+verifies 30/91 retained inputs and confirms both owned scratch roots absent.
+No native build, new environment or release-wheel qualification. Final-source
+independent review928 rejected the frozen patch for EOL churn. Raw baseline929
+proves mixed EOL predates this change; a corrected byte-exact patch reconstructs
+the same tested source. Fresh correction review930 accepts the unchanged exact source; no approval is
+transferred from924 or inferred from928's acceptance of the logic.
+
+**Readback recovery verified on Windows and WSL — 2026-11-14:**
+[923 WSL evidence](../compat/api-acceptance/readback-geometry-wsl-overlay-v1.json)
+passes the same 11 rendered/recovery tests as Windows922, including six static
+geometry refusals followed by valid capture. Exact Linux dfe wheel extraction
+checks all 537 members before one declared parser override; 536/native fcf stay
+unchanged. The pinned patched Mesa 9c5 driver and locked borrowed dependencies
+run in a private read-only rootfs namespace; no native build or new environment.
+Ten shutdown gauges are zero; controller and worker exit 0/waited. Cleanup removes
+27,782,406 bytes/564 files, verifies 91 retained inputs and confirms scratch absent.
+Combined 922/923 cleanup reclaims 45,690,038 bytes. This is source-overlay
+functional evidence only; independent review, zero-overlay artifact qualification,
+integration and delivery remain pending. API-06/LIF-05 broader scope stays open.
+
+**Comprehensive gap list and Windows readback follow-through — 2026-11-14:**
+The [current register](remaining-gaps-checklist.md#complete-list-at-a-glance)
+lists all 44 workstreams across eight areas, plus two named subcases, with
+remaining scope and completion conditions. This is a mixture of partial behavior,
+verification gaps, hardware limits and optional work, not 44 missing features.
+[922 Windows evidence](../compat/api-acceptance/readback-geometry-windows-overlay-v1.json)
+verifies API-06-READBACK-GEOMETRY with 11 rendering/recovery cases on the matching
+Windows native plus one Python override; 536 other members unchanged, ten zero
+shutdown gauges, actual exit 0 and child waited. This is source-overlay functional
+evidence, not newly qualified released-wheel coverage. WSL, artifact renewal,
+review/integration and delivery remain pending. Cleanup removes 17,907,632 bytes
+across 568 files, verifies 29 retained inputs and confirms scratch absent. No
+native build, new environment or published artifact change.
+
+**Remaining-gap goal active; readback geometry source fix — 2026-11-14:**
+[921 source evidence](../compat/api-acceptance/readback-geometry-source-v1.json)
+adds API-06-READBACK-GEOMETRY under API-06/LIF-05. Six CPU controls reproduce
+queued-command draining for explicit negative-origin/nonpositive-size reads
+before the fix; valid-read ordering passes. Validation now rejects those inputs
+before finish, preserving native RuntimeError diagnostics. All26query/readback
+contracts and45related contracts (including those26) pass, actual exits/waits
+retained. Six real native/rendered recovery cases are added but unexecuted.
+Source hashes and903baseline/three-file patch retained; no scratch/native build/
+environment/install. Published4f/dfe wheels remain unchanged; independent review,
+matching installed validation and batch source/artifact renewal remain open.
+The new goal targets the complete remaining register; broad parents stay open,
+hardware limits remain explicit and historical startup campaigns are not repeated
+without recurrence or new causal evidence.
+
+**Comprehensive current gap register reconciled — 2026-11-14:**
+The [current register](remaining-gaps-checklist.md#comprehensive-current-gap-register)
+consolidates44broader workstreams plus the SCI-02 clipping/blending subcase,
+with gap type, exact remaining scope and completion evidence. It covers API,
+shader/state/texture/line, scientific, lifecycle/input, host, platform, known
+bug, optional performance/tooling and historical-evidence work. The selected
+PanZoom/host-import retirement and Qt focus headings now reflect actual delivered
+closure; their earlier paragraphs remain historical. Current source275888b5,
+qualifier90348a8, merge76cc5e8c and Windows4f/Linuxdfe release scope are unchanged.
+The patched Mesa9c5 profile and both Metal build/CPU jobs are complete at their
+named scopes; wider drivers/Metal graphics remain open. No new implementation,
+rendering, admission, native build, package install or cleanup was performed.
+
+**Final selected-milestone audit passes — 2026-11-14:**
+[920 requirement audit](../compat/api-acceptance/orphan-release-completion-audit-v1.json)
+checks13explicit requirements against current source, unchanged validators,
+exact CI/independent review/admission/restoration, protected source integration,
+public assets/licensing, actual install workers and cleanup. All13pass; no
+selected requirement remains. Both wheels match all510current shipped source
+members and537package members; all323tools,488historical candidate JSONs and18
+protected originals remain exact. Only permitted live-documentation checkpoints
+differ from the852input source freeze. Actual source-only audit exits0/waits;
+foreign HEAD/index unchanged and all owned scratch absent. Broader API/state/
+scientific/lifecycle/hardware parents remain partial or deferred; fullinventory
+false. This completes the agreed finite Windows/WSL milestone, with original
+failures/unknown exits and Metal experimental scope preserved.
+
+**Bounded Windows/WSL public release delivered — 2026-11-14:**
+[Final delivery](../compat/api-acceptance/orphan-release-public-delivery-v1.json)
+and its [public report](https://github.com/bipxx/vispy_vulkan/releases/download/v0.17.0-vulkan.2-orphan-retirement-90348a8/delivery.json)
+verify distinct release445706472/tagv0.17.0-vulkan.2-orphan-retirement-90348a8,
+source merge76cc5e8c/tree9ff4c6d5, qualifier90348a8/product275888b5. All23CI,
+reviewed128selected bindings/eight profiles and protected integration pass.
+Windows4f/native057d: actual public same-version replacement,537members/zero
+overlays, exact64x64Vulkan clear and ten zero shutdown gauges. WSLdfe/nativefcf:
+actual public replacement,537members/zerooverlays/locked dependencies and ABI
+import, ten zero gauges. Three guest installer subprocesses exit0/waited; a
+same-target follow-up worker AND launcher exit0/waited. Original919monitor
+controller staysfailed/initial launcher exitunknown;917origin/918owner failures
+and913admission precondition failure remain unchanged.920report-join key failure
+is retained separately, corrected source-only report build exits0/waits. No GPU
+claim is added by WSL delivery smoke.13public assets include exact AGPL/original
+BSD/third-party notices; final report anonymously downloads byte-exact. All4old
+releases/assets and source275reachable ref remain. Delivery scratch cleanup
+removes81029222bytes across917–919; all owned targets absent, unownedp preserved.
+FIX-04/06, selected API-06/LIF-06, PLAT-08 and TOOL-01/04 close at this finite
+integrated/admitted/delivered scope. API-05, STA-01, SCI-02/03/05/06 and broader
+LIF/platform parents remain partial. Fullinventory/parity false; Metal graphics,
+physical Linux GPU/HID/display, native surface/reparenting and arbitrary format/
+composition coverage remain explicit boundaries. No new SDK/native build/env.
+
+**Windows public delivery passes; WSL owner refusal retained — 2026-11-14:**
+[918 Windows subphase](../compat/api-acceptance/orphan-release-windows-public-channel-v1.json)
+uses no-site startup/explicit existing locked dependencies: publicURL/hash force
+reinstall replaces same-version9e4with4f,537members/zerooverlays/native057d match,
+64x64Vulkan clear exact, ten shutdown gauges zero. Controller remainsfailed:
+WSLguard retains a copied917owner ID and refuses before guest writes/installation.
+Actual controller exit1/waited, logs/repro retained; cleanup removes17907561bytes/
+569files and verifies44retained. No package/env/verifier changes. FIX-06/PLAT-04/08/
+TOOL-04 are Windows-delivery complete only. New919will run only WSL with its
+registered exactowner; preserve917/918failedcontrollers and reuse Windows proof.
+
+**Distinct release published; delivery harness failure preserved — 2026-11-14:**
+[917 partial publication](../compat/api-acceptance/orphan-release-publication-partial-v1.json)
+creates distinct prereleasev0.17.0-vulkan.2-orphan-retirement-90348a8/id445706472,
+actualtag76cc5e8c;12anonymous asset hashes/AGPL-originalBSD-notices pass, all4old
+releases unchanged. ExactURL/hash forced Windows install replaces9e4same-version
+seed with4f successfully. Smoke then exits1/waited at source-origin assertion:
+existing scikit-build editable finder intercepts import before native/rendering.
+Read-only diagnosis confirms sourcepackage/no nativeimport. Originalfailedrun,
+commands/repro and12download results retained; cleanup removes35338947bytes/
+579files and verifies65retained, scratch absent. No product/verifier/environment
+mutation. FIX-06/PLAT-04/08/TOOL-04 remain delivery-pending: next use isolated
+no-site startup plus explicit retained dependencies in a separate bounded run,
+then actual Windows clear/WSL ABI and537member checks. No success relabeling.
+
+**Protected PR84 integration verified — 2026-11-14:**
+[916 actual integration](../compat/api-acceptance/orphan-release-protected-integration-v1.json)
+normal protected auto-merge succeeds as76cc5e8c04c9747b3f0485c4ac2e6a4f56b7f0b6.
+Actualmain equals this merge, and its fulltree9ff4c6d5equals qualification90348a8
+exactly.11branch-required checks and all23release-policy jobs pass;128bindings/
+eight rows are admitted under914/915. Foreign checkout HEAD/index unchanged;
+no scratch, force, bypass, source/runtime change or branch deletion. FIX-04 and
+TOOL-01 advance at integrated-source scope; FIX-06/PLAT-04/08/TOOL-04 still need
+distinct actualasset publication, hash-specific installation and checked delivery.
+Older assets and source275reachable reference must remain. No fullparity claim.
+
+**Current128-binding and eight-row admission passes — 2026-11-14:**
+[914 fresh correction review](../compat/api-acceptance/orphan-release-final-correction-review-v1.json)
+approves exact915driverf8d96ea1/basise1fcc058; only ZIP basename lookup and
+successor identities changed.467inputs, backup3933abc1, selectorb164e3fd and323
+actual903Gittool blobs pass immediate checks. Review scratch cleaned102bytes/
+485retained. [915 actual admission](../compat/api-acceptance/orphan-release-current-scoped-admission-v1.json)
+exits0/waited via existing interpreter: unchanged strict validator admits128
+selected bindings; separate independently reviewed sidecar admits eight exact
+Windows4f/WSLdfe profiles. All11canonical files restore byte-exact; frozen matrix
+unchanged. Four genericforeign refusals/eightUNVERIFIEDdiscovery/875limits remain;
+manualforeignretention acceptance staysfalse. No scratch/environment/build.
+Original913failedattempt and912approval remain immutable and are not reused;
+915uses914approvalonly. FIX-04/06,API-06,finiteLIF-02/04/06,PLAT-04/08,TOOL-01/04
+advance at scoped admission only. All23CI passes; protected integration and
+distinct actualasset delivery remain open. Fullinventory/release/parity false.
+
+**Final review approved; admission precondition failed unchanged — 2026-11-14:**
+Fresh912review approves exacte1fcc058basis/128bindings/eight rows, with retained
+unread/condition limits. All431inputs rehash and323committed tools modules match
+903head byte-exact. Review scratch cleaned97bytes/451retained. The exact reviewed
+913driver then exits1/waited before canonical writes: it used repository-relative
+member names in898backup, which stores11basenames. [Original failure](../compat/api-acceptance/orphan-release-admission-precondition-failure-v1.json)
+retains repro/log/process; all11canonical hashes and backup3933abc1 remain exact,
+no scratch/environment/validator change. No admission is claimed. TOOL-01/04,
+FIX-04/06,API-06 and finiteLIF-06 require a narrow successor-driver review before
+another admission attempt; all23CI remains valid, integration/delivery open.
+
+**All23CI and exact detached promotion basis pass — 2026-11-14:**
+[908 completed CI](../compat/api-acceptance/orphan-release-complete-required-ci-v1.json)
+validates all23original same-head90348a8 jobs, complete run/job/history exports,
+20CPU plus3native checkout identities with unchanged policy.20CPU transports
+use4050273bytes; managed cleanup removes4050356bytes/21files and verifies119
+retained inputs, scratch absent. [911 basis](../compat/api-acceptance/orphan-release-final-promotion-basis-v1.json)
+now binds exact905subject334e726d,907impact and complete908CI. Actual children
+exit0/waited; no native wheel, SDK or environment rebuilt. TOOL-01/PLAT-04/08
+advance at completeCI/basis scope; API-06/FIX-04/06/LIF-06 still require fresh
+final912review, guarded128-binding/eight-row admission, protected integration
+and distinct verified delivery. No final approval, admission or publication yet.
+
+**Required CI advances to22/23 — 2026-11-14:**
+Original CPU run43648741602/head90348a8 poll31 records CPython3.10.19 job
+132612247914 completing successfully:19/20CPU plus3native required checks pass,
+0failures. Only132612248003(CP3.13.8) remains running. Original exports and
+actual child exits/waits stay in managed run904. TOOL-01/PLAT-04/08 advance at
+observed CI scope only. Collector908 awaits the completed full run; no redispatch,
+admission, build, scratch or publication.
+
+**Required CI advances to21/23 — 2026-11-14:**
+Original CPU run43648741602/head90348a8 poll17 records CPython3.12.8 job
+132612247880 completing successfully. Poll18 confirms18/20CPU successes plus
+three previously verified native jobs:21/23required checks pass,0failures;
+132612247914(CP3.10.19) and132612248003(CP3.13.8) remain running. Original raw
+job exports/actual exits/waits are retained in managed run904. TOOL-01/PLAT-04/08
+advance at observed CI scope only. Collector908 remains unexecuted until the
+full run succeeds; no redispatch, admission, scratch, build or publication.
+
+**Final gate drivers prepared — 2026-11-14:**
+[911/913 preparation](../compat/api-acceptance/orphan-release-prepared-gate-drivers-v1.json)
+provides syntax-checked scripts for the exact905subject/907impact/908CI detached
+basis and guarded128-binding/eight-row admission. Neither script executed.
+913requires a fresh912independent final review of its exact bytes, final basis
+and actual909raw joins; it rehashes original observations/foreign protections,
+checks all11frozen canonical files and restores them after strict validation.
+No old538approval is reused. TOOL-01/04,FIX-04/06,API-06 and finiteLIF-06 advance
+at preparation scope only; no admission/merge/delivery. Actual904poll11 confirms
+17CPU+3native successes and the same3CPUjobs still compiling on90348a8, no
+failures or redispatch. No scratch, environment or native build was created.
+
+**Local delivery packet prepared — 2026-11-14:**
+[910 draft preparation](../compat/api-acceptance/orphan-release-local-delivery-preparation-v1.json)
+rehashes exact Windows4f537748/Linuxdfe1033f wheels and checks all four original
+license/notice sources in both runtime and dist-info locations (eight joins per
+wheel;537runtime/562total members). Draft release notes and hash-pinned platform
+requirements use a proposed distinct tag; no tag/release/install exists yet.
+The first draft auditor failed by conflating runtime and total member counts;
+original exit1/reproducer stays retained, corrected source-only child exits0/waits.
+No product or qualification validator changed. TOOL-04/PLAT-04/08 advance at
+local preparation scope only; admission/merge/published hashes/install smoke
+remain open. No scratch or disposable assets created; cleanup not required.
+
+**Remaining-gap investigation plan refreshed — 2026-11-14 (planning only):**
+The [ordered investigation queue](superpowers/plans/2026-11-14-gap-investigation-next.md#planning-refresh-investigate-and-close-the-remaining-gaps--2026-11-14)
+now separates six delivery gates from concrete behavior investigations: existing
+exact-head CI, complete CI collection, final promotion review, guarded scoped
+admission/restoration, protected integration and distinct verified delivery.
+API-05/06, STA-01, SCI-02/03/05/06, LIF-01–06, FIX-04/06, PLAT-04/08 and
+TOOL-01/04 retain their existing partial/source/installed/historical scopes.
+Baseline: qualification head90348a8/product275888b5; 905 proves128bindings,
+907 approves finite impact reuse, 909 joins eight observations/admitted_rows=0.
+Last retained904poll8 is20/23successful with3unfinished CPU jobs; no fresh live
+status is claimed. No tests, scratch, build, CI dispatch, admission, merge or
+publication occurred in this planning change. Full parity remains outside scope.
+
+**CI readiness checkpoint — 2026-11-14:** 904poll7 verifies17CPU+3native
+successes (20of23),0failures,3live Mac Intel CPU jobs132612247880(CP3.12.8),
+132612247914(CP3.10.19),132612248003(CP3.13.8). Their original run remains
+43648741602/head90348a8; no restart/redispatch. The908collector is prepared to
+retain the20original CPU checkout identities and complete original same-head
+history/jobs, reuse906's3native identities, then call the unchanged23-job CI
+validator. It has not executed or allocated scratch while CI is incomplete.
+Next fullCIjoin, detached promotion basis/final independent review of909's eight
+rows, guarded strict/matrix admission, protected integration and distinct delivery.
+TOOL-01/PLAT-04/08 advance at observed CI scope only; no admission or full-API/
+Metalgraphics claim. All owned906/907scratch stays absent; no new local build.
+
+
+**Exact-head subject/impact and matrix review inputs ready — 2026-11-14:**
+[905](../compat/api-acceptance/orphan-release-corrected-head-installed-subject-v1.json)
+binds head90348a8/subject334e726d:128proved/0missing/blocked,1324retained inputs,
+all11canonical files restored. Existing898backup reused, no duplicate archive.
+[906](../compat/api-acceptance/orphan-release-corrected-native-ci-identities-v1.json)
+retains3original native-job checkout identities for903;177423373transport bytes
+plus104marker bytes cleaned (177423477total),29retained verified;no native
+payload extraction. [907](../compat/api-acceptance/orphan-release-corrected-impact-review-v1.json)
+freshly approves exact-head/subject impact and finite880basis reuse,with original
+limits/refusals;18foreign origins rehashed/protected,15used,none relocated.
+Bare7fieldapproval created; review scratch cleaned98bytes/236retained verified.
+Reviewer read/unread/hash reliance retained; F6byte wording clarified from actual
+snapshot, no old record changed. [909](../compat/api-acceptance/orphan-release-mandatory-prepromotion-join-v1.json)
+checks8raw worker/report/receipt/wheel/environment/feature joins,537members/no
+source overrides/nine worker+ten APIzero gauges;admitted_rows=0. CI904poll5has
+14CPU+3native successes (17of23),5running/1queued,no failures. Follow same3runs.
+FIX-04/06,API-06,LIF-02/04/06,PLAT-04/08,TOOL-01/04advance only at finite reviewed
+proof/source/CI-input scope. Next complete23-job join,detached promotion basis/
+independent final eight-row review,strict/matrix admission,protected integration
+and distinct delivery. Full inventory/parity/physicalGPU/HID/Metalgraphics remain
+outside these claims. No renderer or SDK rebuild, no writable scratch remains.
+
+
+**Reviewed CPU curation fix pushed; corrected-head CI active — 2026-11-14:**
+[903/904](../compat/api-acceptance/orphan-release-corrected-qualification-source-freeze-v1.json)
+creates normal child90348a8064b1091eb989bb8d0fbf787b6afc4f43/tree9ff4c6d5on
+PR84after902review.9changed paths give159combined owned paths:2test-only curation
+edits,4raw-byte-verified insert-only dated docs,3own evidence records. Every other
+899blob and all11current15declarations stay unchanged. Actual852source joins
+include133native/628Metalinputs and both537member release wheels/notices; no
+runtime/workflow/pin/scope/validator change or SDK/wheel rebuild. Source-index
+scratch cleaned15157347bytes/68retained verified;901fixture+managed cleanup is
+separately verified and902had no new scratch. Preparation observer UTF8/newline
+mistakes are retained; only own doc insertion corrected to preserve old endings.
+Normal push and REST PR84verify90348a8; immediate stale GraphQL observation is
+preserved, with no repeat push. Original646head finishes20CPUfail/3nativepass;
+none are relabeled as corrected-head success. New original runs43648741602CPU,
+43648741629Linux,43648741524Metal have23jobs (initial16running/7queued/no failures).
+Follow these handles without redispatch. Local12new cases+registration pass,
+full local435pass/1CMake-profile failure staysfailed. TOOL-01/04,FIX-04/06,API-06
+advance at reviewed test integration/frozen-source scope only. Current-head CI,
+impact/promotion, protected merge, matrix/strict admission and distinct delivery
+remain open. This detached checkpoint does not mutate frozen head90348a8.
+
 
 **CPU curation gap reproduced and fix reviewed — 2026-11-14:**
 Original PR84/head646c986d Linux and both Metal jobs pass; CPU jobs fail at the
@@ -2621,6 +3069,67 @@ the [consolidated plan](superpowers/plans/2026-10-28-consolidated-plan.md).
   landmark, update/rejection and delivered drag/quarter-yaw cases. It does not
   establish every acceptance mode for every example, all methods, full DPI/input,
   large volumes or other profiles. Their source-discovery catalog remains unchanged.
+- [ ] **API-06-READBACK-GEOMETRY — Source fixed; candidate installs verified; release pending:**
+  2026-11-14: explicit negative origins and nonpositive extents now fail before
+  queued GLIR submission. Six failing reproductions,26passing query/readback
+  contracts and45passing related CPU contracts are retained in
+  [921](../compat/api-acceptance/readback-geometry-source-v1.json).
+  [Windows922](../compat/api-acceptance/readback-geometry-windows-overlay-v1.json)
+  and [WSL923](../compat/api-acceptance/readback-geometry-wsl-overlay-v1.json)
+  execute all six new recovery cases plus five existing controls per profile,
+  with one declared Python override, unchanged native and ten zero shutdown gauges.
+  [Independent924review](../compat/api-acceptance/readback-geometry-source-peer-review-v1.json)
+  accepts that finite source change; low diagnostic differences remain recorded.
+  [Successor925](../compat/api-acceptance/readback-native-int-range-source-v1.json)
+  additionally fixes native-int conversion overflow before submission: eight
+  genuine failures/four representable-boundary controls; 38 query and 57 related
+  CPU contracts pass. Earlier overlays/review remain scoped to predecessor source.
+  [Windows926](../compat/api-acceptance/readback-native-int-range-windows-overlay-v1.json)
+  and [WSL927](../compat/api-acceptance/readback-native-int-range-wsl-overlay-v1.json)
+  each pass 19 actual rendering/recovery cases for the successor source; all
+  scratch cleaned, ten gauges zero. Final-source review928 rejected patch presentation; corrected929packet
+  preserves identical tested source and fresh correction review930 accepts the unchanged exact source. Updated
+  artifact qualification, integration and delivery remain open.
+  [Windows933](../compat/api-acceptance/readback-candidate-windows-v1.json)
+  and [WSL935](../compat/api-acceptance/readback-candidate-wsl-v1.json)
+  now install updated wheels `9919a280…`/`e600b29e…` and pass all 56 state/query/
+  readback cases each with zero overlays, 537 members and ten zero gauges. Both
+  scratch targets are cleaned. Artifact/profile admission, final CI and delivered
+  coverage remain separate; the previously published4f/dfe artifacts stay unchanged.
+  Default viewport state
+  still resolves after queued application; target-dependent upper bounds remain
+  native checks. Published wheels are unchanged; successor artifact qualification and
+  integration/delivery of this source change remain open.
+  2026-11-15 update: [Windows944](../compat/api-acceptance/readback-windows-strict-v1.json)
+  passes the current Windows CPython 3.12.8 / RTX 4090 / Tk 8.6 strict
+  runtime-observer cohort on exact wheel `9919a280…` and source `613cacf…`
+  (16 feature-profile joins, 48 strict raw gates across
+  `tk-state-resource-failures` replay-1 and `tk-capture-formats` replay-0,
+  zero source overrides, 537 installed members, nine zero workflow shutdown
+  gauges), joined without rerunning pytest to exact declared acceptance `942`
+  (2 tests / 6 pytest phases, 10 zero shutdown gauges); scratch cleaned
+  (`62,914,104` bytes / `1,636` files removed, `77` retained inputs verified;
+  no row/artifact admission; `replay-0` attempt retained for attempt-history
+  review). Pre-registration `tools/build_hygiene.py preflight` for
+  `readback-wsl-strict-945` (`512 MiB` peak) refused with exit 2
+  (`Expected peak would cross minimum disk reserve at C:\`, retained at
+  `D:/vispy-vulkan-managed/build/runs/readback-wsl-strict-945-capacity-refusal/verification.json`,
+  zero scratch created) because external workstation activity reduced `C:\`
+  free space below the `10 GiB` reserve while `D:\` retains ~`273.96 GiB`
+  free; new scratch work stopped per `AGENTS.md` disk-budget rule.
+  Subsequently (`legacy-project-cleanup-945`: `8cc281b5…` / `5d9b772d…` /
+  `f9de0fc3…`, 9,655 files / 7.9153 GiB physical / 7.94 GiB `C:\` reclaimed,
+  4,984 empty dirs removed, 0 overlaps), [WSL945](../compat/api-acceptance/readback-wsl-strict-v1.json)
+  (`29bce237…`, `PASS_READBACK_WSL_STRICT_MATCHED_COHORT_AND_JOINED_943_ACCEPTANCE`)
+  passed on exact Linux wheel `e600b29e…` (`_dawn` `fcf0c5a8…`) and source
+  `613cacfb…` (CPython 3.12.13, Tk 9.0 raster, pinned patched Mesa `9c5c41b3`,
+  Xvfb, 537 members, 0 source overrides, 16 Linux feature-profile joins / 48
+  strict raw gates across `tk-state-resource-failures` and `tk-capture-formats`
+  on `replay-0`, 0 shutdown gauges, `actual_exit=0`), joined without rerunning
+  pytest to `943` (`324e2f41…`); scratch cleaned (`12` files / `92,589,425`
+  bytes reclaimed, `151` retained inputs verified, `T\build\work == ['p']`,
+  WSL `build/work == []`; no row/artifact/strict-selection admission claimed).
+
 - [x] **API-06-CLEAR-ZERO-INSTALLED — Eleven finite cases per profile:**
   [801 record reconciliation](../compat/api-acceptance/current-gap-record-reconciliation-v1.json),
   2026-11-14, rechecks original 664/665 JUnit/result hashes for numeric-zero
@@ -2725,8 +3234,10 @@ preserved. Required acceptance detail: SH-1–SH-5 in the
   15/17 retained entries rehashed. The old disk-preflight refusal launched no
   tests and remains separate. [Exact scope and evidence](../compat/api-acceptance/line-side-effect-boundaries-v1.json).
   Parent SHD-05 and independent/profile/release admission remain open.
-- [ ] **SHD-06 — Mesa clipping preparation:** integrate the reviewed clip-axis repair
-  into the relevant prepared/installed CI profile before generalizing its evidence.
+- [ ] **SHD-06 — Broader Mesa driver portability:** the patched Mesa9c5 profile
+  is admitted for the selected Windows/WSL release. Wider system-driver claims
+  still need exact artifact/driver observations; historical Mesa25.2.8 failures
+  keep their original wheel scope. [Current scoped admission](../compat/api-acceptance/orphan-release-current-scoped-admission-v1.json).
 - [ ] **STA-01 — Legal raster state / B4:** reconcile dither, disabled multisampling,
   fractional polygon offset, mixed constant blending and stencil combinations.
 - [x] **STA-02 — Reversed depth, finite installed proof:** all 30 existing
@@ -2773,7 +3284,13 @@ broad claims and stale dispositions without duplicating that table.
   internal queue case only; WSL/broader layouts and strict admission stay open.
 - [ ] **SCI-02 — Mesh filters / E03:** enumerate filters and supported compositions,
   then verify mutations and meaningful outputs for the selected combinations.
-- [ ] **SCI-02-CLIP-ALPHA-BLEND — Selected investigation, 2026-11-14:**
+- [ ] **SCI-02-CLIP-ALPHA-BLEND — Broader composition and claim mapping:**
+  Current status, 2026-11-14: maintained test sourcee5467bee is included in
+  qualification90348a8/merged76cc5e8c and the current functional regression
+  packets ([Windows](../compat/api-acceptance/orphan-current-windows-v1.json),
+  [WSL](../compat/api-acceptance/orphan-current-wsl-v1.json)). Finite source
+  integration/observations exist; broader composition and exact scientific
+  claim/profile mapping remain under SCI-02/API-06. Historical initial packets:
   `tests/visuals/test_mesh_clip_blend_gpu.py` adds three source cases:
   alpha mutation, zero alpha and invalid-value recovery with clipping, texture,
   tint and straight-alpha blending over opaque blue. Three queued revisions
@@ -2918,7 +3435,11 @@ observations on each claimed profile, not just a successful screenshot.
   Process shutdown is zero. Unrelated prior scene resources are not proved
   retired. New source review/integration and strict/profile/release admission
   remain open; original failures and old source-epoch proofs stay historical.
-- [ ] **LIF-06-PANZOOM-RETIREMENT — Installed fix observed; integration open:**
+- [x] **LIF-06-PANZOOM-RETIREMENT — Selected contract integrated, admitted and delivered:**
+  Current completion, 2026-11-14: the selected finite contract is integrated,
+  admitted and delivered at source275888b5/qualifier90348a8/merge76cc5e8c,
+  Windows4f537748 and Linuxdfe1033f. [Final release evidence](../compat/api-acceptance/orphan-release-public-delivery-v1.json).
+  The following progress paragraphs retain their earlier evidence stages.
   Current 2026-11-14 evidence: [Windows](../compat/api-acceptance/host-import-retirement-windows-v1.json)
   and [WSL](../compat/api-acceptance/orphan-current-wsl-v1.json) pass the nine
   exact lifetime controls on4f537748/e99616e1 and native057d13e6/fcf0c5a8,
@@ -2938,14 +3459,22 @@ observations on each claimed profile, not just a successful screenshot.
   Global focus-baseline equality and final shutdown zero alone do not close this
   item. No physical-memory
   or universal Canvas.close leak diagnosis is inferred from these finite gauges.
-- [ ] **LIF-06-HOST-IMPORT-RETIREMENT — Installed fix observed; integration open:**
+- [x] **LIF-06-HOST-IMPORT-RETIREMENT — Selected contract integrated, admitted and delivered:**
+  Current completion, 2026-11-14: the selected finite contract is integrated,
+  admitted and delivered at source275888b5/qualifier90348a8/merge76cc5e8c,
+  Windows4f537748 and Linuxdfe1033f. [Final release evidence](../compat/api-acceptance/orphan-release-public-delivery-v1.json).
+  The following progress paragraphs retain their earlier evidence stages.
   2026-11-14, the same current Windows/WSL receipts prove large host-import
   retirement before shutdown through one event-boundary cleanup submission,
   including before-submit and callback-registration failure recovery without
   duplicate successful Submit. Keep835's original1MiB pinned failure unchanged.
   This is logical pin lifetime evidence, not physical GPU memory accounting.
   Combined integration, strict Tk/profile admission and delivery remain open.
-- [ ] **LIF-06-QT-FOCUS — Selected next interaction:** prove two-canvas focus
+- [x] **LIF-06-QT-FOCUS — Selected contract integrated, admitted and delivered:**
+  Current completion, 2026-11-14: the selected finite contract is integrated,
+  admitted and delivered at source275888b5/qualifier90348a8/merge76cc5e8c,
+  Windows4f537748 and Linuxdfe1033f. [Final release evidence](../compat/api-acceptance/orphan-release-public-delivery-v1.json).
+  The following progress paragraphs retain their earlier evidence stages.
   switching and host text-entry isolation/recovery through the host QWindow,
   with expected recipient/payload and rendered response. Existing direct-widget
   input cases do not prove this. See the
@@ -3078,6 +3607,10 @@ claims and must not borrow each other's gates.
   complete installed graphics/lifecycle/gates on it before making this claim.
 - [ ] **PLAT-04 — macOS Metal — Experimental:** build/CPU CI does not establish
   real Metal graphics, interaction or shutdown qualification; physical Mac needed.
+  Current completion, 2026-11-14: both arm64 and x86_64 Metal build/CPU
+  jobs pass on qualifier90348a8. Graphics remains experimental and unqualified.
+  [Completed required CI](../compat/api-acceptance/orphan-release-complete-required-ci-v1.json).
+  Historical producer checkpoint follows; its pending statements are superseded.
   2026-11-14 [current arm64 build/CPU evidence](../compat/api-acceptance/orphan-release-metal-arm64-original-v1.json)
   validates exact source275888b5/wheel8f6f4f8f. Current x86_64 producer remains
   active; neither this finite pass nor future build reuse grants graphics support.
@@ -3115,7 +3648,10 @@ criteria; software timestamps do not establish physical display scanout latency.
   reuse/build/CPU-import jobs now pass at head3ada ([API evidence](../compat/api-acceptance/revision8-native-ci-v1.json)).
   Required20-job CPU CI and final promotion remain separate; no Metal GPU
   qualification or published-wheel coverage is claimed.
-  2026-11-14 current native inputs require a fresh producer: arm64 source275888b5
+  Current completion: both hosted Metal jobs and the renewed reuse pin are
+  complete at build/CPU scope. [CI](../compat/api-acceptance/orphan-release-complete-required-ci-v1.json),
+  [reuse pin](../compat/api-acceptance/orphan-release-metal-reuse-pin-v1.json).
+  Historical producer checkpoint: on2026-11-14, then-current native inputs required a fresh producer: arm64 source275888b5
   validates in [884](../compat/api-acceptance/orphan-release-metal-arm64-original-v1.json),
   while x86_64/whole-run completion and a renewed exact two-architecture reuse
   pin remain pending. Earlier head340/head3ada results keep their original scope.
@@ -3131,7 +3667,9 @@ criteria; software timestamps do not establish physical display scanout latency.
   [source tests 331](../build/runs/collector-protocol-331/post-cleanup.json).
   Meaningful failed attempts, original sources/notices, actual exits/waits and
   current proof/artifact identities remain retained; unknown waits are not passes.
-  2026-11-14 [arm64 intake884 cleanup](D:/vispy-vulkan-managed/build/runs/orphan-release-metal-originals-884/cleanup-result.json)
+  Current owned delivery cleanup removes81,029,222bytes; all selected targets
+  are absent. [Final delivery](../compat/api-acceptance/orphan-release-public-delivery-v1.json).
+  Historical checkpoint, 2026-11-14: [arm64 intake884 cleanup](D:/vispy-vulkan-managed/build/runs/orphan-release-metal-originals-884/cleanup-result.json)
   removes23646911bytes and verifies116retained inputs. x86_64 remote compilation
   is active, not represented as a terminal/cleaned run.
 

@@ -1,0 +1,34 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "kind": "readback-geometry-wsl-source-overlay",
+  "status": "PASS_WSL_PINNED_DRIVER_SOURCE_OVERLAY_11_RECOVERY_CASES",
+  "coverage_ids": [
+    "API-06-READBACK-GEOMETRY",
+    "LIF-05"
+  ],
+  "verification": {
+    "path": "@evidence/build/runs/gap-readback-wsl-923/verification.json",
+    "sha256": "843f9065f3f83ff85501f85bc5e56bbfe5b7901f4c71fb5d2a5978d6a55692d3"
+  },
+  "cleanup": {
+    "path": "@evidence/build/runs/gap-readback-wsl-923/cleanup-result.json",
+    "sha256": "77e309be8221f702d6326c7eaa5b7b161d389f5ee4b25b76d4b40a909f6ac602"
+  },
+  "source_overrides": 1,
+  "tests": {
+    "tests": 11,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "driver_sha256": "9c5c41b3a7b9d759b0960c868f10375281798ad084150716d6d122c8789b9e12",
+  "installed_release_qualified": false,
+  "published_artifact_changed": false,
+  "pending": [
+    "independent source review",
+    "new-artifact qualification",
+    "integration",
+    "delivery"
+  ]
+}
