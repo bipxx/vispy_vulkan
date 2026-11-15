@@ -95,7 +95,9 @@
   "test_modules": [
     {
       "path": "tests/contract/test_subpackages_api05_contract.py",
-      "sha256": "713100cfdd2c82e31d2cac3a26590e3dc69250e078e21512a1b5943f2025bf15",
+      "sha256": "e48d6e6c53d62f2a5a4d80f148bc7ede149dfd47f7c9715327e9a9590ced2b40",
+      "executed_in_run_sha256": "713100cfdd2c82e31d2cac3a26590e3dc69250e078e21512a1b5943f2025bf15",
+      "post_run_revision_note": "Pure-CPU CPython 3.10 / NumPy <2.3 binary STL guard adjusted from >=2.0 to >=(2,3) for PR #86 CI; GPU module e0834c97... and wheel runtime unchanged.",
       "cases": {
         "passed": 12,
         "skipped": 0,

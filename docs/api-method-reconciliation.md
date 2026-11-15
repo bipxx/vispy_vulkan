@@ -4,13 +4,13 @@
 
 - **W3-3 (`API-05` / `API-06`):** Reconciled `vispy.{color,geometry,io,glsl,testing,util,plot}` and
   `vispy.visuals.{transforms,filters,collections}` in `tests/contract/test_subpackages_api05_contract.py`
-  (`713100cf…`, 12 pure-CPU CPython 3.10–3.14 contracts) and `tests/visuals/test_plot_transforms_filters_gpu.py`
+  (`e48d6e6c…`, 12 pure-CPU CPython 3.10–3.14 contracts) and `tests/visuals/test_plot_transforms_filters_gpu.py`
   (`e0834c97…`, 4 installed-wheel GPU tests). Verified at `installed-functional` tier on current wheels
   `9919a280…` (Windows RTX 4090, `gap-w3-3-api-plot-windows-989`, `16/16` pass, `537` members, `0` overrides,
   `10` zero Dawn shutdown gauges, [api05-plot-transforms-windows](../compat/api-acceptance/api05-plot-transforms-windows-v1.json)
-  `54d99133…`) and `e600b29e…` (WSL Xvfb + Mesa `9c5c41b3…`, `gap-w3-3-api-plot-wsl-990`, `16/16` pass,
+  `4278e1bd…`) and `e600b29e…` (WSL Xvfb + Mesa `9c5c41b3…`, `gap-w3-3-api-plot-wsl-990`, `16/16` pass,
   `537` members, `0` overrides, `10` zero gauges, [api05-plot-transforms-wsl](../compat/api-acceptance/api05-plot-transforms-wsl-v1.json)
-  `b25da28f…`).
+  `6cd157b0…`).
 - **`vispy.visuals.collections` Dawn Vulkan runtime matrix (6 rendered, 3 documented upstream bounds):**
   6 rendered (`TriangleCollection` `raw`/`local`, `PolygonCollection` `raw`/`local`, `PointCollection`
   `raw`/`local`, `SegmentCollection` `agg`/`global`, `SegmentCollection` `agg`/`shared` float32 uniform

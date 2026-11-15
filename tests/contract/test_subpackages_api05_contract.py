@@ -478,7 +478,7 @@ def test_api05_subpkg_io_png_image_mesh_and_offline_bounds(tmp_path):
         vio.read_mesh(str(short_stl_file))
 
     # Full >=84-byte binary STL hits np.fromstring(bytes, dtype=...) in upstream stl.py:
-    # on NumPy >= 2.0 this raises ValueError; on NumPy 1.x it returns the triangle mesh.
+    # on NumPy >= 2.3 this raises ValueError; on NumPy < 2.3 (e.g. 2.2.x on Python 3.10) it warns and returns the mesh.
     bin_stl_path = tmp_path / 'single_tri.stl'
     bin_header = b'vispy binary stl'.ljust(80, b'\x00') + struct.pack('<I', 1)
     bin_tri = struct.pack(
@@ -490,12 +490,17 @@ def test_api05_subpkg_io_png_image_mesh_and_offline_bounds(tmp_path):
         0,
     )
     bin_stl_path.write_bytes(bin_header + bin_tri)
-    np_major = int(np.__version__.split('.')[0])
-    if np_major >= 2:
+    np_ver = tuple(
+        int(''.join(ch for ch in part if ch.isdigit()) or '0')
+        for part in np.__version__.split('.')[:2]
+    )
+    if np_ver >= (2, 3):
         with pytest.raises(ValueError, match='fromstring'):
             vio.read_mesh(str(bin_stl_path))
     else:
-        bv, bf, bn, _ = vio.read_mesh(str(bin_stl_path))
+        with warnings.catch_warnings():
+            warnings.simplefilter('ignore', DeprecationWarning)
+            bv, bf, bn, _ = vio.read_mesh(str(bin_stl_path))
         np.testing.assert_allclose(bv, [[0, 0, 0], [1, 0, 0], [0, 1, 0]])
         np.testing.assert_array_equal(bf, [[0, 1, 2]])
         assert bn.shape == (1, 3)
