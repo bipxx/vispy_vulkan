@@ -1,0 +1,189 @@
+{
+  "schema": 1,
+  "acceptance_id": "api05-plot-transforms-wsl-v1",
+  "date": "2026-11-15",
+  "slice": "W3-3",
+  "evidence_tier": "installed-functional",
+  "platform": "wsl-ubuntu24.04-x86_64-vulkan-lavapipe-mesa-26.1.8-9c5",
+  "run_id": "gap-w3-3-api-plot-wsl-990",
+  "source_commit": "613cacfb73b1b4424dc098241c1eaf7553746c90",
+  "evidence_store": {
+    "path": "compat/evidence-stores/secondary-v1.json",
+    "sha256": "b164e3fdc85863a2327b508ea60f8d3068f740cfe90f665aa52905e28bfb3ca5"
+  },
+  "wheel": {
+    "path": "build/artifacts/e600b29e5259b896cc9d0fe36bbb5760260946aef53c013f8fc74e2fd0153007/vispy-0.17.0+vulkan.2-cp312-cp312-manylinux_2_39_x86_64.whl",
+    "sha256": "e600b29e5259b896cc9d0fe36bbb5760260946aef53c013f8fc74e2fd0153007"
+  },
+  "driver_artifact": {
+    "path": "/home/heq/vispy-vulkan-managed/build/artifacts/9c5c41b3a7b9d759b0960c868f10375281798ad084150716d6d122c8789b9e12/libvulkan_lvp.so",
+    "sha256": "9c5c41b3a7b9d759b0960c868f10375281798ad084150716d6d122c8789b9e12"
+  },
+  "device": {
+    "backend": "Vulkan",
+    "adapter_type": "cpu",
+    "device": "llvmpipe (LLVM 18.1.3, 256 bits)",
+    "driver": "llvmpipe: Mesa 26.1.8 (LLVM 18.1.3)",
+    "software": true
+  },
+  "source_overrides": 0,
+  "installed_members_verified": 537,
+  "shutdown_gauges": {
+    "pending_tickets": 0,
+    "queued_frames": 0,
+    "live_buffer_bytes": 0,
+    "live_cpu_buffer_bytes": 0,
+    "live_texture_bytes": 0,
+    "canvas_texture_bytes": 0,
+    "transient_buffer_bytes": 0,
+    "line_resource_pool_busy_slots": 0,
+    "line_resource_pool_bytes": 0,
+    "host_import_pinned_bytes": 0
+  },
+  "actual_exit": 0,
+  "child_waited": true,
+  "xvfb_pid": 428,
+  "xvfb_exit": 0,
+  "xvfb_waited": true,
+  "wsl_outer_pid": 21672,
+  "wsl_outer_exit": 0,
+  "wsl_outer_waited": true,
+  "scratch_absent_after_cleanup": true,
+  "wsl_guest_build_work": [],
+  "cleanup_deleted_files": 581,
+  "cleanup_retained_verified": 35,
+  "junit_summary": {
+    "total": 16,
+    "passed": 16,
+    "skipped": 0,
+    "failures": 0,
+    "errors": 0
+  },
+  "verification": {
+    "path": "@evidence/build/runs/gap-w3-3-api-plot-wsl-990/verification.json",
+    "sha256": "79905cedc0d48f18361dacd4d31d1b36d321c1b56e11d6dbb9035dd80cadeadd"
+  },
+  "worker": {
+    "path": "@evidence/build/runs/gap-w3-3-api-plot-wsl-990/worker.json",
+    "sha256": "727be67f3d140cd9726edfba782df03918c11ffcb505b48a6bc6f8e15fe59449"
+  },
+  "pytest_report": {
+    "path": "@evidence/build/runs/gap-w3-3-api-plot-wsl-990/pytest.json",
+    "sha256": "ad96f83083fb77a4e8a2ac010ee6344602d71c39a9577761e38e9b3283cb6c7b"
+  },
+  "junit_xml": {
+    "path": "@evidence/build/runs/gap-w3-3-api-plot-wsl-990/selected.xml",
+    "sha256": "7d86869ade95f775db32730f21b6af3bdd89a297d4daae9dc3b732710bdb60e9"
+  },
+  "collections_telemetry": {
+    "path": "@evidence/build/runs/gap-w3-3-api-plot-wsl-990/collections-telemetry.json",
+    "sha256": "934ed0048531d3515168aeced696dee5dda65c6cc4151b00a47306973afc3c87"
+  },
+  "borrowed_inputs": {
+    "path": "@evidence/build/runs/gap-w3-3-api-plot-wsl-990/borrowed-inputs.json",
+    "sha256": "244862b3077449d9afa336c62cc20ea9227c8379dfe75e310f894b39302a6488"
+  },
+  "processes": {
+    "path": "@evidence/build/runs/gap-w3-3-api-plot-wsl-990/processes.json",
+    "sha256": "d36ac35913fd543404aec98303f95ea8caed8f44bd4312b00a301d68a684aa47"
+  },
+  "controller_process": {
+    "path": "@evidence/build/runs/gap-w3-3-api-plot-wsl-990/controller-process.json",
+    "sha256": "aac1cb963e5ebe752695c947d60f89f2a65dfb3699b06f7f400ff109cb36520f"
+  },
+  "xvfb_process": {
+    "path": "@evidence/build/runs/gap-w3-3-api-plot-wsl-990/xvfb-process.json",
+    "sha256": "765686f701d70209fdfa9edf385a274ec56a32bec36c52fe337fdd67a3a3701a"
+  },
+  "terminal": {
+    "path": "@evidence/build/runs/gap-w3-3-api-plot-wsl-990/terminal.json",
+    "sha256": "b9d5ad5aafbbadb4a8d3a6ef2cc59a6ff72f703b5434066ee44c5d793ac492fc"
+  },
+  "cleanup_plan": {
+    "path": "@evidence/build/runs/gap-w3-3-api-plot-wsl-990/cleanup-plan.json",
+    "sha256": "fa983a9a68bed762e91e426407f169a1d3311d15407888762d221a74759baa8f"
+  },
+  "cleanup_apply_process": {
+    "path": "@evidence/build/runs/gap-w3-3-api-plot-wsl-990/cleanup-apply-process.json",
+    "sha256": "5a4964fe557013b5007aef70e89a0b73c3ff084b27a07d23e7060227742fd983"
+  },
+  "scoped_admitted": false,
+  "artifact_admitted": false,
+  "publicly_delivered": false,
+  "published": false,
+  "status": "PASS_INSTALLED_FUNCTIONAL_W3_3_API05_SUBPACKAGES_PLOT_TRANSFORMS_FILTERS_WSL",
+  "coverage_ids": [
+    "API-05",
+    "API-06"
+  ],
+  "test_modules": [
+    {
+      "path": "tests/contract/test_subpackages_api05_contract.py",
+      "sha256": "e48d6e6c53d62f2a5a4d80f148bc7ede149dfd47f7c9715327e9a9590ced2b40",
+      "executed_in_run_sha256": "713100cfdd2c82e31d2cac3a26590e3dc69250e078e21512a1b5943f2025bf15",
+      "post_run_revision_note": "Pure-CPU CPython 3.10 / NumPy <2.3 binary STL guard adjusted from >=2.0 to >=(2,3) for PR #86 CI; GPU module e0834c97... and wheel runtime unchanged.",
+      "cases": {
+        "passed": 12,
+        "skipped": 0,
+        "failed": 0
+      }
+    },
+    {
+      "path": "tests/visuals/test_plot_transforms_filters_gpu.py",
+      "sha256": "e0834c97f2c5fea75cc025626bdf62628148ef209e67a0a0b6944bc6e6d8091a",
+      "cases": {
+        "passed": 4,
+        "skipped": 0,
+        "failed": 0
+      }
+    }
+  ],
+  "collections_runtime_matrix": {
+    "TriangleCollection_raw_local": {
+      "status": "rendered",
+      "lit_pixels": 1812,
+      "uses_shared_utype": false
+    },
+    "PolygonCollection_raw_local": {
+      "status": "rendered",
+      "lit_pixels": 2304,
+      "uses_shared_utype": false
+    },
+    "PointCollection_raw_local": {
+      "status": "rendered",
+      "lit_pixels": 243,
+      "uses_shared_utype": false
+    },
+    "SegmentCollection_agg_global": {
+      "status": "rendered",
+      "lit_pixels": 576,
+      "uses_shared_utype": false
+    },
+    "SegmentCollection_agg_shared": {
+      "status": "rendered",
+      "lit_pixels": 140,
+      "uses_shared_utype": true
+    },
+    "PathCollection_agg_global": {
+      "status": "rendered",
+      "lit_pixels": 634,
+      "uses_shared_utype": false
+    },
+    "PointCollection_agg_local": {
+      "status": "error",
+      "error_type": "RuntimeError",
+      "bound": "Dawn WGSL pipeline link validation rejects unused varyings (v_linewidth, v_antialias) vs gl_PointCoord fragment input location in upstream collections/agg-point.{vert,frag}"
+    },
+    "SegmentCollection_raw_shared": {
+      "status": "error",
+      "error_type": "TypeError",
+      "bound": "Upstream RawSegmentCollection.append uses Python 3 float division itemcount = len(P0) / itemsize in np.empty(...)"
+    },
+    "PathCollection_raw": {
+      "status": "error",
+      "error_type": "TypeError",
+      "bound": "Upstream RawPathCollection.__init__ attempts NullTransform() + str"
+    }
+  },
+  "scope": "Installed-wheel functional execution on WSL Ubuntu 24.04 Xvfb + headless-repair Mesa 26.1.8 Lavapipe 9c5 (wheel e600b29e..., 537 members verified before/after, 0 source overrides, 10 zero Dawn shutdown gauges, awaited worker/Xvfb/wsl.exe exits) covering API-05/API-06 public subpackage contracts (vispy.color, vispy.geometry, vispy.io, vispy.glsl, vispy.testing, vispy.util, vispy.visuals.transforms, vispy.visuals.filters, vispy.visuals.collections, vispy.plot) plus GPU Fig/PlotWidget 2D+3D subplots (.plot line & scatter, .image + .colorbar, .histogram, .mesh, titles/axes, lossless write_png/read_png RGBA roundtrip), GPU PolarTransform/LogTransform/ChainTransform pixel displacement, GPU Alpha/ColorFilter/Clipper/WireframeFilter/IsolineFilter attach-update-detach pixel deltas, and truthful vispy.visuals.collections runtime behavior on Dawn Vulkan (6 rendered configurations including shared float32 uniform texture fetch + 3 documented upstream runtime bounds). Recorded at installed-functional tier only; distinct from tk-state-resource-16 scoped admission and native Linux hardware claims."
+}

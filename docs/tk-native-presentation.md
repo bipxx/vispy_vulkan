@@ -37,6 +37,36 @@ forwards the vsync request to the existing renderer; compositor scheduling and
 physical scanout timing are not certified here. Native failures are explicit;
 there is no silent switch to raster after a native request.
 
+When embedding a `vispy.scene.SceneCanvas` inside a multi-widget
+`tkinter.Frame` (`Label`, `Button`, sibling controls), note that
+`vispy.app.Canvas` accepts `backend_kwargs` directly whereas upstream
+`SceneCanvas.__init__` does not include `backend_kwargs` in its signature.
+Configure native presentation before native widget creation:
+
+```python
+import tkinter as tk
+from vispy import app, scene
+
+application = app.use_app('tkinter')
+root = tk.Tk()
+frame = tk.Frame(root)
+frame.pack(fill='both', expand=True)
+tk.Label(frame, text='Header').pack(side='top', fill='x')
+
+canvas = scene.SceneCanvas(
+    app=application,
+    parent=frame,
+    size=(640, 480),
+    show=False,
+    create_native=False,
+)
+canvas._backend_kwargs.update({'presentation': 'native'})
+canvas.create_native()
+canvas.set_current()
+canvas.native.pack(side='top', fill='both', expand=True)
+canvas.show()
+```
+
 ## Implementation
 
 - Native mode uses a dedicated Tk frame and the renderer's existing Win32/Xlib
@@ -110,3 +140,57 @@ RECORD changed; native binaries and original license notices are unchanged.
 The [new candidate packet](../compat/candidates/tk-v2-native/review-packet.json)
 renews preparation for these artifacts. Existing approvals do not transfer;
 independent review and strict installed/profile admission remain open.
+
+## Current-wheel renewal (`0.17.0+vulkan.2`, 2026-11-15)
+
+Workstream W3-1 (`LIF-07` & `LIF-07-NATIVE-ADMISSION`) renews experimental
+opt-in native Tk WSI presentation against the current `0.17.0+vulkan.2` wheels
+(`source_commit` `613cacfb73b1b4424dc098241c1eaf7553746c90`, `release_tag`
+`v0.17.0-vulkan.2-readback-geometry-f5c00c9`) without modifying the historical
+`b38c4f90` [installed-wheel packet](../compat/api-acceptance/tk-native-installed-v1.json).
+
+[`tests/experimental/test_tk_native_camera_embed_gpu.py`](../tests/experimental/test_tk_native_camera_embed_gpu.py)
+adds three installed-wheel GPU cases alongside the eight prototype cases in
+[`tests/experimental/test_tkinter_native_presentation.py`](../tests/experimental/test_tkinter_native_presentation.py)
+(11 experimental native Tk cases total):
+
+1. Multi-widget `tkinter.Frame` embedding (`Label`, `Button`, native
+   `SceneCanvas` with `attached is True` and `_photo is None`), `PanZoomCamera`
+   zoom/pan + sibling `Button` camera reset, and `Line` & `Markers` explicit
+   `canvas.render()` (`read_pixels`) pixel verification across camera updates
+   plus clean `canvas.close()` / `root.destroy()` teardown while preserving the
+   parent `Frame` until root destruction.
+2. Multi-widget `tkinter.Frame` embedding with `TurntableCamera` azimuth/elevation
+   orbit, `scale_factor` zoom, explicit canvas resize, `Line` & `Markers`
+   visuals, zero `PhotoImage` allocation, and non-trivial `canvas.render()`
+   pixel deltas across camera updates.
+3. `app.Timer` firing inside the native Tk event loop to drive rendered visual
+   updates, paired with raster default isolation (`app.Canvas(app='tkinter')`
+   retains `default_presentation == 'raster'` and `attached is False`).
+
+Both current-wheel runs pass `11/11` experimental cases (`0` skips, `0`
+failures) from offline copy-installed environments with all `537` wheel members
+verified before and after execution, `0` source overrides, and all `10` Dawn
+shutdown gauges equal to `0`:
+
+- **Windows (`gap-w3-1-tk-native-windows-985`)**: wheel `9919a280…`
+  (`vispy-0.17.0+vulkan.2-cp312-cp312-win_amd64.whl`), NVIDIA GeForce RTX 4090
+  (Vulkan discrete, driver `610.88`), Tk/Tcl `8.6`. An initial test-only
+  assertion mismatch in `test_tk_native_camera_embed_gpu.py` (`pack(fill='both',
+  expand=True)` geometry expansion and `winfo_exists()` `TclError` after
+  `destroy()`) is preserved in `attempt1-*` receipts before the test-only fix
+  and passing rerun.
+- **WSL Linux/X11 (`gap-w3-1-tk-native-wsl-986`)**: wheel `e600b29e…`
+  (`vispy-0.17.0+vulkan.2-cp312-cp312-manylinux_2_39_x86_64.whl`) under
+  `xvfb-run -a` X11 with the explicitly hashed system `mesa-vulkan-drivers`
+  `25.2.8-0ubuntu0.24.04.2` X11 WSI ICD (`/usr/share/vulkan/icd.d/lvp_icd.json`
+  `70d49f7f…`, `/usr/lib/x86_64-linux-gnu/libvulkan_lvp.so` `9d69cae2…`), Tk/Tcl
+  `9.0`. The headless raster/clipping Mesa `26.1.8` build (`9c5c41b3…`,
+  `-Dplatforms=[]`) remains strictly separate (`used_in_run: false`) in
+  `raster-driver-origin.json`.
+
+Exact current-wheel hashes, process exits, shutdown gauges, preserved attempt-1
+failure records, and scratch cleanup receipts are bound in
+[`compat/api-acceptance/tk-native-current-wheels-v1.json`](../compat/api-acceptance/tk-native-current-wheels-v1.json).
+Default Tk presentation remains `'raster'`, and native Tk remains outside
+mandatory matrix admission (`native_admitted_mandatory_matrix: false`).

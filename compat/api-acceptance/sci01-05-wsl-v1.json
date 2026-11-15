@@ -1,0 +1,188 @@
+{
+  "schema": 1,
+  "date": "2026-11-15",
+  "status": "PASS_INSTALLED_FUNCTIONAL_W2_4_SCI01_05_PERF01_API05_WSL",
+  "evidence_tier": "installed-functional",
+  "platform": "wsl-ubuntu24.04-x86_64-vulkan-lavapipe-mesa-26.1.8-9c5",
+  "coverage_ids": [
+    "SCI-01",
+    "SCI-02",
+    "SCI-02-CLIP-ALPHA-BLEND",
+    "SCI-03",
+    "SCI-04",
+    "SCI-05",
+    "PERF-01",
+    "API-05"
+  ],
+  "source_commit": "613cacfb73b1b4424dc098241c1eaf7553746c90",
+  "wheel": {
+    "path": "build/artifacts/e600b29e5259b896cc9d0fe36bbb5760260946aef53c013f8fc74e2fd0153007/vispy-0.17.0+vulkan.2-cp312-cp312-manylinux_2_39_x86_64.whl",
+    "sha256": "e600b29e5259b896cc9d0fe36bbb5760260946aef53c013f8fc74e2fd0153007"
+  },
+  "device": {
+    "backend": "Vulkan",
+    "adapter_type": "cpu",
+    "device": "llvmpipe (LLVM 18.1.3, 256 bits)",
+    "driver": "llvmpipe: Mesa 26.1.8 (LLVM 18.1.3)",
+    "software": true
+  },
+  "source_overrides": 0,
+  "installed_members_verified": 537,
+  "junit_summary": {
+    "total": 24,
+    "passed": 24,
+    "skipped": 0,
+    "failures": 0,
+    "errors": 0,
+    "per_module": {
+      "test_point_divisor_revisions_gpu": {
+        "passed": 5,
+        "skipped": 0,
+        "failed": 0
+      },
+      "test_mesh_filter_order_picking_gpu": {
+        "passed": 4,
+        "skipped": 0,
+        "failed": 0
+      },
+      "test_camera_fov_planes_gpu": {
+        "passed": 5,
+        "skipped": 0,
+        "failed": 0
+      },
+      "test_volume_bounded_modes_gpu": {
+        "passed": 6,
+        "skipped": 0,
+        "failed": 0
+      },
+      "test_scene_widget_api05_contract": {
+        "passed": 4,
+        "skipped": 0,
+        "failed": 0
+      }
+    }
+  },
+  "perf01_telemetry": {
+    "frames_compared": 4,
+    "pending_draws_trace": [
+      4,
+      8,
+      12,
+      16
+    ],
+    "batched_encode_seconds": 0.006838,
+    "batched_total_seconds": 0.073018,
+    "immediate_total_seconds": 0.016137,
+    "live_buffer_bytes": 880,
+    "live_texture_bytes": 94208,
+    "optical_display_timing_claimed": false
+  },
+  "optical_display_timing_claimed": false,
+  "shutdown_gauges": {
+    "pending_tickets": 0,
+    "queued_frames": 0,
+    "live_buffer_bytes": 0,
+    "live_cpu_buffer_bytes": 0,
+    "live_texture_bytes": 0,
+    "canvas_texture_bytes": 0,
+    "transient_buffer_bytes": 0,
+    "line_resource_pool_busy_slots": 0,
+    "line_resource_pool_bytes": 0,
+    "host_import_pinned_bytes": 0
+  },
+  "actual_exit": 0,
+  "child_waited": true,
+  "xvfb_waited": true,
+  "wsl_outer_waited": true,
+  "scratch_absent_after_cleanup": true,
+  "test_modules": [
+    {
+      "path": "tests/markers/test_point_divisor_revisions_gpu.py",
+      "sha256": "46108b6a47dc9feaca35a995290d239e073c4d3ea1ad6e0da5a4edefa6f0d0a0",
+      "cases": {
+        "passed": 5,
+        "skipped": 0,
+        "failed": 0
+      }
+    },
+    {
+      "path": "tests/visuals/test_mesh_filter_order_picking_gpu.py",
+      "sha256": "7b5fb8daf9d88b48355b78d8de06816a57be6130cb85fd427f006446610dd7b3",
+      "cases": {
+        "passed": 4,
+        "skipped": 0,
+        "failed": 0
+      }
+    },
+    {
+      "path": "tests/visuals/test_camera_fov_planes_gpu.py",
+      "sha256": "5cacdd16e453a87f07c168f3094bff777d3151a51e329f65ceed036d53b606aa",
+      "cases": {
+        "passed": 5,
+        "skipped": 0,
+        "failed": 0
+      }
+    },
+    {
+      "path": "tests/visuals/test_volume_bounded_modes_gpu.py",
+      "sha256": "cd3c576460855a4b4339039e50e253b9767d7ae4ea5a240faa62844ccd45201d",
+      "cases": {
+        "passed": 6,
+        "skipped": 0,
+        "failed": 0
+      }
+    },
+    {
+      "path": "tests/contract/test_scene_widget_api05_contract.py",
+      "sha256": "369e5c262377b40f8f8fe0a90d5a03b4f6c2075814e258997fe70d73f65e5b5f",
+      "cases": {
+        "passed": 4,
+        "skipped": 0,
+        "failed": 0
+      }
+    }
+  ],
+  "verification": {
+    "path": "@evidence/build/runs/gap-w2-4-wsl-975/verification.json",
+    "sha256": "155ada9d74e8109652e7044d4908a34cbafe6917dce6b3117982d1a221792791"
+  },
+  "worker": {
+    "path": "@evidence/build/runs/gap-w2-4-wsl-975/worker.json",
+    "sha256": "76022b306831d415330ded971697732ee3cfff81f7c0f453d786a0038740eb86"
+  },
+  "pytest_report": {
+    "path": "@evidence/build/runs/gap-w2-4-wsl-975/pytest.json",
+    "sha256": "70facd6ce9cd4fa013d095005d28b418ae22198252b4a22660783f2a97aa36b2"
+  },
+  "junit_xml": {
+    "path": "@evidence/build/runs/gap-w2-4-wsl-975/selected.xml",
+    "sha256": "09a802fc855a9450361096229de3a5db46c9602cc7c3a952dba50da6e81a92b2"
+  },
+  "perf01_telemetry_artifact": {
+    "path": "@evidence/build/runs/gap-w2-4-wsl-975/perf01-telemetry.json",
+    "sha256": "4b9baa9c6e5a6dbd230ca4f26e122ccfe3827663c502ff23050e68e8a8603713"
+  },
+  "xvfb_process": {
+    "path": "@evidence/build/runs/gap-w2-4-wsl-975/xvfb-process.json",
+    "sha256": "ca5d552a7c8516d7e001c54ac7e71d6c7fb6b8f348fb7d8cfa858d54dc2a9563"
+  },
+  "controller_process": {
+    "path": "@evidence/build/runs/gap-w2-4-wsl-975/controller-process.json",
+    "sha256": "006f2b53816dafd6b939926c336e4186804ccf1175c9a4becea79952c86d4a18"
+  },
+  "terminal": {
+    "path": "@evidence/build/runs/gap-w2-4-wsl-975/terminal.json",
+    "sha256": "d82fed69c92953b5a5d66db4678f574ee39ee0b14843e1de260a275a030d70e1"
+  },
+  "cleanup_plan": {
+    "path": "@evidence/build/runs/gap-w2-4-wsl-975/cleanup-plan.json",
+    "sha256": "8e4ea49792ae497d2966d6dba160dc8aa481ef98f256897243134fb8f469f462"
+  },
+  "cleanup_apply_process": {
+    "path": "@evidence/build/runs/gap-w2-4-wsl-975/cleanup-apply-process.json",
+    "sha256": "c05089dd5187571ea1e7451a8a1454b965a677ccfed49a4b504665e3ff3ad27a"
+  },
+  "scoped_admitted": false,
+  "publicly_delivered": false,
+  "scope": "Installed-wheel functional execution on WSL Ubuntu 24.04 Xvfb + pinned Mesa 26.1.8 Lavapipe 9c5 (wheel e600b29e..., 537 members, 0 source overlays, 10 zero shutdown gauges, awaited child + Xvfb + wsl.exe exits) covering SCI-01/SCI-05(U05) indexed uint8/uint16/uint32 point IDs, divisors 1/2/3, scalar constants & queued Marker revisions; SCI-02/SCI-02-CLIP-ALPHA-BLEND/SCI-05(E03) PlanesClipper+Clipper+ColorFilter+Alpha translucent blending, non-commutative fpos filter ordering, and PickingFilter uint32 ID decoding under 1x/4x MSAA; SCI-03/SCI-05(E04) Turntable/Arcball FOV extremes (0/25/60/110), FlyCamera occlusion, polygon_offset decal stability, and Magnify/Magnify1D lenses; SCI-04/SCI-05/PERF-01 bounded 16^3 VolumeVisual mip/attenuated_mip/iso/translucent/plane modes, queued set_data revisions, and bounded CPU/queue batching telemetry (no optical display-timing claim); plus API-05 ViewBox, Grid, Camera, and all 37 scene.visuals wrapper contracts. Recorded at installed-functional tier only; distinct from tk-state-resource-16 scoped admission."
+}

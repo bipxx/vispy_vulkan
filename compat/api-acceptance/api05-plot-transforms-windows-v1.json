@@ -1,0 +1,165 @@
+{
+  "schema": 1,
+  "acceptance_id": "api05-plot-transforms-windows-v1",
+  "date": "2026-11-15",
+  "slice": "W3-3",
+  "evidence_tier": "installed-functional",
+  "platform": "windows-x86_64-vulkan-rtx4090",
+  "run_id": "gap-w3-3-api-plot-windows-989",
+  "source_commit": "613cacfb73b1b4424dc098241c1eaf7553746c90",
+  "evidence_store": {
+    "path": "compat/evidence-stores/secondary-v1.json",
+    "sha256": "b164e3fdc85863a2327b508ea60f8d3068f740cfe90f665aa52905e28bfb3ca5"
+  },
+  "wheel": {
+    "path": "build/artifacts/9919a280a5de2c4bec45837078cb1d405e7169933ddcfb0758aa7d6a82722d39/vispy-0.17.0+vulkan.2-cp312-cp312-win_amd64.whl",
+    "sha256": "9919a280a5de2c4bec45837078cb1d405e7169933ddcfb0758aa7d6a82722d39"
+  },
+  "device": {
+    "backend": "Vulkan",
+    "adapter_type": "discrete",
+    "device": "NVIDIA GeForce RTX 4090",
+    "driver": "NVIDIA: 610.88 610.88.0.0",
+    "software": false
+  },
+  "source_overrides": 0,
+  "installed_members_verified": 537,
+  "shutdown_gauges": {
+    "pending_tickets": 0,
+    "queued_frames": 0,
+    "live_buffer_bytes": 0,
+    "live_cpu_buffer_bytes": 0,
+    "live_texture_bytes": 0,
+    "canvas_texture_bytes": 0,
+    "transient_buffer_bytes": 0,
+    "line_resource_pool_busy_slots": 0,
+    "line_resource_pool_bytes": 0,
+    "host_import_pinned_bytes": 0
+  },
+  "actual_exit": 0,
+  "child_waited": true,
+  "scratch_absent_after_cleanup": true,
+  "cleanup_deleted_files": 602,
+  "junit_summary": {
+    "total": 16,
+    "passed": 16,
+    "skipped": 0,
+    "failures": 0,
+    "errors": 0
+  },
+  "verification": {
+    "path": "@evidence/build/runs/gap-w3-3-api-plot-windows-989/verification.json",
+    "sha256": "8237a4f6a24bc71d567bb55669788907d68a79a062cef84768b8bfc818a415ac"
+  },
+  "worker": {
+    "path": "@evidence/build/runs/gap-w3-3-api-plot-windows-989/worker.json",
+    "sha256": "c8ed5a541d27600d95451762b35f445c75659d72031dfe245dd30b5809d84af5"
+  },
+  "pytest_report": {
+    "path": "@evidence/build/runs/gap-w3-3-api-plot-windows-989/pytest.json",
+    "sha256": "a1c274518fb48f38f10737e87e1b4fb32a865bfbfdc3435af8dd24f257723e59"
+  },
+  "junit_xml": {
+    "path": "@evidence/build/runs/gap-w3-3-api-plot-windows-989/selected.xml",
+    "sha256": "69e7812a679b25f60905956908cfa6845d053f241ec0c94ee68bcbb172d272c8"
+  },
+  "collections_telemetry": {
+    "path": "@evidence/build/runs/gap-w3-3-api-plot-windows-989/collections-telemetry.json",
+    "sha256": "3d8de476081ca9e81c1ab1e8f8399738d42d05c9f72c48e7fae31a46a090cb8b"
+  },
+  "processes": {
+    "path": "@evidence/build/runs/gap-w3-3-api-plot-windows-989/processes.json",
+    "sha256": "5b91bccc8b13b401cd77a501db4b52198b0ba1f6515761c74bf571b66e0199a3"
+  },
+  "terminal": {
+    "path": "@evidence/build/runs/gap-w3-3-api-plot-windows-989/terminal.json",
+    "sha256": "34ae92e638c81e22c3bf0a91b6bd0c0879174051b5aa3016819d58b1ada178e4"
+  },
+  "cleanup_plan": {
+    "path": "@evidence/build/runs/gap-w3-3-api-plot-windows-989/cleanup-plan.json",
+    "sha256": "f0b99b21497a125516bf91c7842d7b21be34cb1811ea4fda7b536e5a2d17b863"
+  },
+  "cleanup_apply_process": {
+    "path": "@evidence/build/runs/gap-w3-3-api-plot-windows-989/cleanup-apply-process.json",
+    "sha256": "da7ea6c1685f78c23252825a6e2687068b2bf83f488e885ff3077ca682959d6d"
+  },
+  "scoped_admitted": false,
+  "artifact_admitted": false,
+  "publicly_delivered": false,
+  "published": false,
+  "status": "PASS_INSTALLED_FUNCTIONAL_W3_3_API05_SUBPACKAGES_PLOT_TRANSFORMS_FILTERS_WINDOWS",
+  "coverage_ids": [
+    "API-05",
+    "API-06"
+  ],
+  "test_modules": [
+    {
+      "path": "tests/contract/test_subpackages_api05_contract.py",
+      "sha256": "e48d6e6c53d62f2a5a4d80f148bc7ede149dfd47f7c9715327e9a9590ced2b40",
+      "executed_in_run_sha256": "713100cfdd2c82e31d2cac3a26590e3dc69250e078e21512a1b5943f2025bf15",
+      "post_run_revision_note": "Pure-CPU CPython 3.10 / NumPy <2.3 binary STL guard adjusted from >=2.0 to >=(2,3) for PR #86 CI; GPU module e0834c97... and wheel runtime unchanged.",
+      "cases": {
+        "passed": 12,
+        "skipped": 0,
+        "failed": 0
+      }
+    },
+    {
+      "path": "tests/visuals/test_plot_transforms_filters_gpu.py",
+      "sha256": "e0834c97f2c5fea75cc025626bdf62628148ef209e67a0a0b6944bc6e6d8091a",
+      "cases": {
+        "passed": 4,
+        "skipped": 0,
+        "failed": 0
+      }
+    }
+  ],
+  "collections_runtime_matrix": {
+    "TriangleCollection_raw_local": {
+      "status": "rendered",
+      "lit_pixels": 1812,
+      "uses_shared_utype": false
+    },
+    "PolygonCollection_raw_local": {
+      "status": "rendered",
+      "lit_pixels": 2304,
+      "uses_shared_utype": false
+    },
+    "PointCollection_raw_local": {
+      "status": "rendered",
+      "lit_pixels": 243,
+      "uses_shared_utype": false
+    },
+    "SegmentCollection_agg_global": {
+      "status": "rendered",
+      "lit_pixels": 576,
+      "uses_shared_utype": false
+    },
+    "SegmentCollection_agg_shared": {
+      "status": "rendered",
+      "lit_pixels": 140,
+      "uses_shared_utype": true
+    },
+    "PathCollection_agg_global": {
+      "status": "rendered",
+      "lit_pixels": 634,
+      "uses_shared_utype": false
+    },
+    "PointCollection_agg_local": {
+      "status": "error",
+      "error_type": "RuntimeError",
+      "bound": "Dawn WGSL pipeline link validation rejects unused varyings (v_linewidth, v_antialias) vs gl_PointCoord fragment input location in upstream collections/agg-point.{vert,frag}"
+    },
+    "SegmentCollection_raw_shared": {
+      "status": "error",
+      "error_type": "TypeError",
+      "bound": "Upstream RawSegmentCollection.append uses Python 3 float division itemcount = len(P0) / itemsize in np.empty(...)"
+    },
+    "PathCollection_raw": {
+      "status": "error",
+      "error_type": "TypeError",
+      "bound": "Upstream RawPathCollection.__init__ attempts NullTransform() + str"
+    }
+  },
+  "scope": "Installed-wheel functional execution on Windows RTX 4090 (wheel 9919a280..., 537 members verified before/after, 0 source overrides, 10 zero Dawn shutdown gauges) covering API-05/API-06 public subpackage contracts (vispy.color, vispy.geometry, vispy.io, vispy.glsl, vispy.testing, vispy.util, vispy.visuals.transforms, vispy.visuals.filters, vispy.visuals.collections, vispy.plot) plus GPU Fig/PlotWidget 2D+3D subplots (.plot line & scatter, .image + .colorbar, .histogram, .mesh, titles/axes, lossless write_png/read_png RGBA roundtrip), GPU PolarTransform/LogTransform/ChainTransform pixel displacement, GPU Alpha/ColorFilter/Clipper/WireframeFilter/IsolineFilter attach-update-detach pixel deltas, and truthful vispy.visuals.collections runtime behavior on Dawn Vulkan (6 rendered configurations including shared float32 uniform texture fetch + 3 documented upstream runtime bounds). Recorded at installed-functional tier only; distinct from tk-state-resource-16 scoped admission."
+}

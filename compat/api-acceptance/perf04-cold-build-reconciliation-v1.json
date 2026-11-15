@@ -1,0 +1,118 @@
+{
+  "schema": 1,
+  "date": "2026-11-15",
+  "gap_id": "PERF-04",
+  "backlog_id": "B14",
+  "status": "RECONCILED_UNDER_WHEEL_REUSE_WORKFLOW",
+  "historical_16_review_findings": [
+    {
+      "index": 1,
+      "finding": "Invalid pipeline success",
+      "original_step": "Steps 2 and 4",
+      "reconciliation": "Covered by pipeline validation/refusal & shader contract suites (W2-3 / tk-state-resource-16)"
+    },
+    {
+      "index": 2,
+      "finding": "Unsafe callback lifetime",
+      "original_step": "Step 3",
+      "reconciliation": "Covered by orphan-retirement & callback lifecycle controls (orphan-release-public-delivery-v1.json)"
+    },
+    {
+      "index": 3,
+      "finding": "Completed submission retention",
+      "original_step": "Step 3",
+      "reconciliation": "Covered by 9/10 zero shutdown gauges in 933/935/942/943/944/945"
+    },
+    {
+      "index": 4,
+      "finding": "GPU waits in interactive frames",
+      "original_step": "Steps 3 and 7",
+      "reconciliation": "Reconciled by performance-report.md (PERF-01 closed) and P2/P4 pacing"
+    },
+    {
+      "index": 5,
+      "finding": "Lost clear ordering and target",
+      "original_step": "Step 5",
+      "reconciliation": "Covered by gloo-clear-zero-source-v1.json and readback/state suites"
+    },
+    {
+      "index": 6,
+      "finding": "Ignored viewport/state",
+      "original_step": "Step 5",
+      "reconciliation": "Covered by state/readback suites and W2-2 STA-01 expansion"
+    },
+    {
+      "index": 7,
+      "finding": "Ignored index selection/topology",
+      "original_step": "Step 6",
+      "reconciliation": "Covered by attributes-v1.json and W2-3 LIN-01"
+    },
+    {
+      "index": 8,
+      "finding": "Ignored vertex stride/offset/divisor",
+      "original_step": "Steps 4 and 6",
+      "reconciliation": "Covered by attributes-v1.json and W2-3 SHD-03"
+    },
+    {
+      "index": 9,
+      "finding": "Partial texture replacement",
+      "original_step": "Step 6",
+      "reconciliation": "Covered by B18/B20 staged patch fixes and W2-2 TEX-01"
+    },
+    {
+      "index": 10,
+      "finding": "Float texture clamping/quantization",
+      "original_step": "Step 6",
+      "reconciliation": "Covered by W1 float32_filterable gate and W2-2 TEX-01"
+    },
+    {
+      "index": 11,
+      "finding": "Incorrect device limits",
+      "original_step": "Step 2",
+      "reconciliation": "Covered by dawn_parser / device_info contracts"
+    },
+    {
+      "index": 12,
+      "finding": "Broken resident program recovery",
+      "original_step": "Steps 4 and 7",
+      "reconciliation": "Covered by 56-case readback/recovery suites in 933/935"
+    },
+    {
+      "index": 13,
+      "finding": "Incorrect matrix/array packing",
+      "original_step": "Step 4",
+      "reconciliation": "Covered by uniform-arrays-v1.json / uniform-arrays-windows-v1.json and W2-3 SHD-02"
+    },
+    {
+      "index": 14,
+      "finding": "Invalid boolean lowering",
+      "original_step": "Step 4",
+      "reconciliation": "Covered by WGSL translator/preprocessor CPU contracts"
+    },
+    {
+      "index": 15,
+      "finding": "Missing independent screenshot oracle",
+      "original_step": "Steps 1 and 8",
+      "reconciliation": "Covered by D5/D6/D9-D19 oracle fixtures and documented outcomes"
+    },
+    {
+      "index": 16,
+      "finding": "Incorrect CPU SDF fallback",
+      "original_step": "Step 8",
+      "reconciliation": "Covered by _sdf_cpu native module and text rendering contracts"
+    }
+  ],
+  "cold_build_and_peak_memory_reconciliation": {
+    "native_inputs_unchanged": true,
+    "native_inputs_count": 133,
+    "native_inputs_sha256": "93241ed251ce3d75d9c346ea7abcf02c51cc7c4ac0450921e5e4489cd078e4af",
+    "windows_native_module_reused": "057d13e62ac520fbf7fe7b62a3059588bb477e24a0061d087bcc50edd44a12ea",
+    "linux_native_module_reused": "fcf0c5a81a6e6a0c1bd218687878ed8d2d32492768fabbb635c7b47ed9da03ef",
+    "ci_mode": "1 GiB reuse mode (cpu-contract.yml + linux-vulkan.yml + metal-wheel.yml), avoiding 6 GiB cold C++ builds",
+    "disposition": "Reconciled: historical 16 review findings are not active unaddressed runtime regressions; cold-build/peak-memory measurement remains unselected while native wheel reuse is active."
+  },
+  "references": {
+    "completion_plan_sha256": "9803f724475c0c0199d5e9828be6b8c6dc4d3a1343a532d8aa3b2313229589c0",
+    "qualification_ci_sha256": "ce789d69999363f097af2229f0eac301d056cabb971a5b26ba2fd0df4341dd41"
+  }
+}

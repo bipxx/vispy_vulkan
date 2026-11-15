@@ -1,0 +1,400 @@
+{
+  "schema": 1,
+  "acceptance_id": "tk-native-current-wheels-v1",
+  "date": "2026-11-15",
+  "slice": "W3-1",
+  "evidence_tier": "installed-experimental",
+  "status": "PASS_TK_NATIVE_CURRENT_WHEELS_EXPERIMENTAL_RENEWAL",
+  "coverage_ids": [
+    "LIF-07",
+    "LIF-07-NATIVE-ADMISSION"
+  ],
+  "runtime_version": "0.17.0+vulkan.2",
+  "version": "0.17.0+vulkan.2",
+  "source_commit": "613cacfb73b1b4424dc098241c1eaf7553746c90",
+  "release_tag": "v0.17.0-vulkan.2-readback-geometry-f5c00c9",
+  "default_presentation": "raster",
+  "native_admitted_mandatory_matrix": false,
+  "scoped_admitted": false,
+  "artifact_admitted": false,
+  "publicly_delivered": false,
+  "published": false,
+  "independently_reviewed": false,
+  "qualified": false,
+  "no_opengl_matrix_modified": false,
+  "evidence_store": {
+    "path": "compat/evidence-stores/secondary-v1.json",
+    "sha256": "b164e3fdc85863a2327b508ea60f8d3068f740cfe90f665aa52905e28bfb3ca5"
+  },
+  "historical_records_preserved": {
+    "installed_packet": {
+      "path": "compat/api-acceptance/tk-native-installed-v1.json",
+      "sha256": "a28f459d08b293bc6213982da0a515390e764fbb0ef9012a68907fb17fef6473"
+    },
+    "installed_packet_source_commit": "b38c4f9068d6a425eef43b62313f0f4cf37f57d9",
+    "prototype_packet": {
+      "path": "compat/api-acceptance/tk-native-prototype-v1.json",
+      "sha256": "36ee7eafba447153db253bee4fa7fb97e795ed00abb9aa91b46f60b494541b27"
+    },
+    "pre_edit_doc_sha256": "282d1bbe79ca349065622d71a6571e1d13cd4468acbf2a24a5e63db62436d6e6"
+  },
+  "claim_separation": {
+    "default_tk_presentation": "raster",
+    "native_tk_presentation_opt_in": "backend_kwargs={'presentation': 'native'}",
+    "scene_canvas_forwarding": "vispy.app.Canvas accepts backend_kwargs directly; upstream vispy.scene.SceneCanvas.__init__ omits backend_kwargs (TypeError), so embedded SceneCanvas callers instantiate with create_native=False, update canvas._backend_kwargs={'presentation': 'native'}, and call canvas.create_native().",
+    "native_admitted_mandatory_matrix": false,
+    "raster_default_isolation_verified": true,
+    "photoimage_allocated_on_native_path": false,
+    "wsl_x11_wsi_driver_separate_from_headless_mesa_9c5": true
+  },
+  "test_modules": [
+    {
+      "path": "tests/experimental/test_tkinter_native_presentation.py",
+      "sha256": "d30b42833d9f7182da56bfee9d4e7a57c4540d49b02957d604a4df63dd26f852",
+      "cases": {
+        "passed": 8,
+        "skipped": 0,
+        "failed": 0
+      }
+    },
+    {
+      "path": "tests/experimental/test_tk_native_camera_embed_gpu.py",
+      "sha256": "6b681ba563f70b301eeac5ee281f48c411d787ac9107e18b2d3a827e9800e62b",
+      "cases": {
+        "passed": 3,
+        "skipped": 0,
+        "failed": 0
+      }
+    }
+  ],
+  "platforms": {
+    "windows": {
+      "run_id": "gap-w3-1-tk-native-windows-985",
+      "platform": "windows-x86_64-vulkan-rtx4090",
+      "status": "PASS_INSTALLED_WHEEL_W3_1_TK_NATIVE_WINDOWS_GPU",
+      "wheel": {
+        "path": "@evidence/build/artifacts/9919a280a5de2c4bec45837078cb1d405e7169933ddcfb0758aa7d6a82722d39/vispy-0.17.0+vulkan.2-cp312-cp312-win_amd64.whl",
+        "sha256": "9919a280a5de2c4bec45837078cb1d405e7169933ddcfb0758aa7d6a82722d39"
+      },
+      "wheel_sha256": "9919a280a5de2c4bec45837078cb1d405e7169933ddcfb0758aa7d6a82722d39",
+      "dawn_binary_sha256": "057d13e62ac520fbf7fe7b62a3059588bb477e24a0061d087bcc50edd44a12ea",
+      "installed_members_verified_before": 537,
+      "installed_members_verified_after": 537,
+      "wheel_members_verified": 537,
+      "source_overrides": 0,
+      "vispy_file": "D:\\vispy-vulkan-managed\\build\\work\\gap-w3-1-tk-native-windows-985\\venv\\site-packages\\vispy\\__init__.py",
+      "device": {
+        "backend": "Vulkan",
+        "adapter_type": "discrete",
+        "device": "NVIDIA GeForce RTX 4090",
+        "driver": "NVIDIA: 610.88 610.88.0.0",
+        "software": false
+      },
+      "toolkits": {
+        "tkinter": {
+          "tk_version": 8.6,
+          "tcl_version": 8.6,
+          "binding_origin": "C:\\Users\\HEQ\\AppData\\Roaming\\uv\\python\\cpython-3.12.8-windows-x86_64-none\\DLLs\\_tkinter.pyd",
+          "binding_sha256": "38453f6aff3f3a3ef0017c00bfee2f403ca0aeaf92b8b5c56d05460fd6dbbdf9"
+        }
+      },
+      "junit_summary": {
+        "total": 11,
+        "passed": 11,
+        "skipped": 0,
+        "failures": 0,
+        "errors": 0,
+        "per_module": {
+          "test_tkinter_native_presentation": {
+            "passed": 8,
+            "skipped": 0,
+            "failed": 0
+          },
+          "test_tk_native_camera_embed_gpu": {
+            "passed": 3,
+            "skipped": 0,
+            "failed": 0
+          }
+        }
+      },
+      "shutdown_gauges": {
+        "pending_tickets": 0,
+        "queued_frames": 0,
+        "live_buffer_bytes": 0,
+        "live_cpu_buffer_bytes": 0,
+        "live_texture_bytes": 0,
+        "canvas_texture_bytes": 0,
+        "transient_buffer_bytes": 0,
+        "line_resource_pool_busy_slots": 0,
+        "line_resource_pool_bytes": 0,
+        "host_import_pinned_bytes": 0
+      },
+      "actual_exit": 0,
+      "child_waited": true,
+      "scratch_cleaned": true,
+      "scratch_absent_verified": true,
+      "cleanup_deleted_files": 568,
+      "cleanup_reclaimed_bytes": 17908009,
+      "cleanup_retained_verified": 22,
+      "verification_sha256": "39d2ff0d7a9631c6b2d1f47c28d3968598f6e8497c8e99d147422898ff694e02",
+      "terminal_sha256": "1d7b8a5fb44672ab0c4558d11a46e60f80147d2d77932f5b9786b303217ec4ac",
+      "worker_sha256": "1a210714e60e051d5a62e35809e8c27a10ace2e00a82151e7ab9ed39f9f8c968",
+      "pytest_json_sha256": "9d280416b3287b8ecb43feaceca370e6c61a6092950d5629cc637004b2f1b1f8",
+      "junit_xml_sha256": "e5b544bb72b04272fc11e1aeeddf1fcb9c9656cab04a01f15bed27ef33f6652b",
+      "processes_sha256": "006c3d8e98eeeeb36ba70b38c07005a41dae0cc4630557417dbb97a8bb11603e",
+      "cleanup_plan_sha256": "8576dad0c864388e8dd7bc6ca2da762dcb2dd88fdccff77759adc8cc1f30c7b3",
+      "cleanup_result_sha256": "9b02ffae3f5fa642afa5bb8e7eaa9455e1f895737e14637175a717740e3006d4",
+      "preserved_attempt1_test_assertion_failure": {
+        "note": "Attempt 1 failed on two test-only assertions in test_tk_native_camera_embed_gpu.py (pack(fill='both', expand=True) expanding canvas to (260, 183) vs expected (180, 132), and host_root.winfo_exists() raising TclError after host_root.destroy()). Preserved in attempt1-* receipts before test-only fix and rerun.",
+        "failure_note_sha256": "cd73eddac5a7d8a9b122d3e415a0bdc43dbc42c90018d1bb1d63be0440b4612d",
+        "gpu_tests_log_sha256": "85e2b6a2f4ea9f175038b15668e0e4437a25844a63727795ee63dc8d4cdde68a",
+        "processes_sha256": "e236a62c7204fac27c19d2c63b756b4419a5303786d1f5e9eb5403ee3a6769b4",
+        "worker_sha256": "4dc98d1a2d6724c4db7a51e915905cb54a54a6f82d3909708d4b6555db18bcda"
+      }
+    },
+    "wsl": {
+      "run_id": "gap-w3-1-tk-native-wsl-986",
+      "platform": "wsl-ubuntu24.04-x86_64-xvfb-x11-mesa-25.2.8-wsi",
+      "status": "PASS_INSTALLED_WHEEL_W3_1_TK_NATIVE_WSL_GPU",
+      "wheel": {
+        "path": "@evidence/build/artifacts/e600b29e5259b896cc9d0fe36bbb5760260946aef53c013f8fc74e2fd0153007/vispy-0.17.0+vulkan.2-cp312-cp312-manylinux_2_39_x86_64.whl",
+        "sha256": "e600b29e5259b896cc9d0fe36bbb5760260946aef53c013f8fc74e2fd0153007"
+      },
+      "wheel_sha256": "e600b29e5259b896cc9d0fe36bbb5760260946aef53c013f8fc74e2fd0153007",
+      "dawn_binary_sha256": "fcf0c5a81a6e6a0c1bd218687878ed8d2d32492768fabbb635c7b47ed9da03ef",
+      "installed_members_verified_before": 537,
+      "installed_members_verified_after": 537,
+      "wheel_members_verified": 537,
+      "source_overrides": 0,
+      "vispy_file": "/home/heq/vispy-vulkan-managed/build/work/gap-w3-1-tk-native-wsl-986/venv/site-packages/vispy/__init__.py",
+      "display_server": "/usr/bin/xvfb-run -a -s \"-screen 0 1280x1024x24 -nolisten tcp -noreset\"",
+      "device": {
+        "backend": "Vulkan",
+        "adapter_type": "cpu",
+        "device": "llvmpipe (LLVM 20.1.2, 256 bits)",
+        "driver": "llvmpipe: Mesa 25.2.8-0ubuntu0.24.04.2 (LLVM 20.1.2)",
+        "software": true
+      },
+      "driver_origin": {
+        "icd": "/usr/share/vulkan/icd.d/lvp_icd.json",
+        "icd_sha256": "70d49f7fd41a7593a4e283543ed4855c139c700e5c1b31792f56e9576ede2398",
+        "library": "/usr/lib/x86_64-linux-gnu/libvulkan_lvp.so",
+        "library_sha256": "9d69cae2004b16572acca424741109be37c4ffc759c2461af69d75f7d1c6c139",
+        "package_query": "mesa-vulkan-drivers 25.2.8-0ubuntu0.24.04.2",
+        "license": "/usr/share/doc/mesa-vulkan-drivers/copyright",
+        "license_sha256": "cbf3d2eb38998daf390f52d49969d1be5607a6aee138351e161c12a6976ba49e",
+        "used_in_run": true,
+        "scope": "System Mesa 25.2.8 X11 WSI llvmpipe ICD selected via VK_ICD_FILENAMES and VK_DRIVER_FILES for experimental native Tk X11 WSI presentation tests."
+      },
+      "separate_headless_driver_origin": {
+        "icd": "/mnt/c/Users/HEQ/Projects/vispy_vulkan/build/runs/external-driver-origin-71/external-icd.json",
+        "icd_sha256": "900eaa3231581579c1b11ba63ed29a39b53b70287fc2c67b09b52cc395036bb0",
+        "library": "/home/heq/vispy-vulkan-managed/build/artifacts/9c5c41b3a7b9d759b0960c868f10375281798ad084150716d6d122c8789b9e12/libvulkan_lvp.so",
+        "library_sha256": "9c5c41b3a7b9d759b0960c868f10375281798ad084150716d6d122c8789b9e12",
+        "used_in_run": false,
+        "scope": "Raster state/capture only; built with -Dplatforms=[] (no X11 WSI). Native Tk X11 WSI presentation tests use the separate system Mesa 25.2.8 X11 WSI driver."
+      },
+      "toolkits": {
+        "tkinter": {
+          "tk_version": 9.0,
+          "tcl_version": 9.0,
+          "binding_origin": "/home/heq/.local/share/uv/python/cpython-3.12.13-linux-x86_64-gnu/lib/python3.12/lib-dynload/_tkinter.cpython-312-x86_64-linux-gnu.so",
+          "binding_sha256": "0240658571f1531461f4a7178c454795c55fe0f5723eebeda0b5de2f4aeee303"
+        }
+      },
+      "junit_summary": {
+        "total": 11,
+        "passed": 11,
+        "skipped": 0,
+        "failures": 0,
+        "errors": 0,
+        "per_module": {
+          "test_tkinter_native_presentation": {
+            "passed": 8,
+            "skipped": 0,
+            "failed": 0
+          },
+          "test_tk_native_camera_embed_gpu": {
+            "passed": 3,
+            "skipped": 0,
+            "failed": 0
+          }
+        }
+      },
+      "shutdown_gauges": {
+        "pending_tickets": 0,
+        "queued_frames": 0,
+        "live_buffer_bytes": 0,
+        "live_cpu_buffer_bytes": 0,
+        "live_texture_bytes": 0,
+        "canvas_texture_bytes": 0,
+        "transient_buffer_bytes": 0,
+        "line_resource_pool_busy_slots": 0,
+        "line_resource_pool_bytes": 0,
+        "host_import_pinned_bytes": 0
+      },
+      "actual_exit": 0,
+      "child_waited": true,
+      "xvfb_waited": true,
+      "wsl_outer_exit": 0,
+      "wsl_outer_waited": true,
+      "scratch_cleaned": true,
+      "scratch_absent_verified": true,
+      "wsl_guest_build_work": [],
+      "cleanup_deleted_files": 606,
+      "cleanup_reclaimed_bytes": 29206373,
+      "cleanup_retained_verified": 30,
+      "verification_sha256": "8974db277f2d3c7877bd91ba76de5abb34502655c74e4884e3b0a25fa7a54c97",
+      "terminal_sha256": "f6f58b739a576b2f7ac88ce0deae2eca9cec467bda3f97ae124d7bb44759cf8a",
+      "worker_sha256": "d3b926d3e0b06661440a9cd75b5339b474b1e0fda2b0eb33f878dae28dbbe0b4",
+      "pytest_json_sha256": "fd4ae1a92e735f959ba6cab2460456d6c86898dd1e556434b796ef18dd0b542c",
+      "junit_xml_sha256": "ec43ef42a21e91f9cc418c1a78d6555a563fc00828707a769606caa67a560a45",
+      "processes_sha256": "4aaadb0109ef0cc5c34d74d4456da0a611ef3c61e7dfc1a9e1d380267ece1906",
+      "controller_process_sha256": "6178876125349749753c1ffad786deae4016aa87d48d8a775e152b3c7fb86178",
+      "driver_origin_sha256": "969581a5eff27f4363d86f92d40ee6b1e4188d391d38d7b3b08113559180e03b",
+      "raster_driver_origin_sha256": "76e28fa8b3cbd8fc0da35b9ced0e6662e112eb235b2d382a50e2590d6324436e",
+      "cleanup_plan_sha256": "272bee174f91b12dae22056ab8c784e4f4e5001451002eb6eb0c3d98e1439a60",
+      "cleanup_result_sha256": "a4ef429a56a1c086b2a307f6b6e21038ba5fc11fe64bd3ca169dfebc2c61e95c"
+    }
+  },
+  "evidence": [
+    {
+      "path": "@evidence/build/runs/gap-w3-1-tk-native-windows-985/verification.json",
+      "sha256": "39d2ff0d7a9631c6b2d1f47c28d3968598f6e8497c8e99d147422898ff694e02"
+    },
+    {
+      "path": "@evidence/build/runs/gap-w3-1-tk-native-windows-985/terminal.json",
+      "sha256": "1d7b8a5fb44672ab0c4558d11a46e60f80147d2d77932f5b9786b303217ec4ac"
+    },
+    {
+      "path": "@evidence/build/runs/gap-w3-1-tk-native-windows-985/worker.json",
+      "sha256": "1a210714e60e051d5a62e35809e8c27a10ace2e00a82151e7ab9ed39f9f8c968"
+    },
+    {
+      "path": "@evidence/build/runs/gap-w3-1-tk-native-windows-985/pytest.json",
+      "sha256": "9d280416b3287b8ecb43feaceca370e6c61a6092950d5629cc637004b2f1b1f8"
+    },
+    {
+      "path": "@evidence/build/runs/gap-w3-1-tk-native-windows-985/selected.xml",
+      "sha256": "e5b544bb72b04272fc11e1aeeddf1fcb9c9656cab04a01f15bed27ef33f6652b"
+    },
+    {
+      "path": "@evidence/build/runs/gap-w3-1-tk-native-windows-985/processes.json",
+      "sha256": "006c3d8e98eeeeb36ba70b38c07005a41dae0cc4630557417dbb97a8bb11603e"
+    },
+    {
+      "path": "@evidence/build/runs/gap-w3-1-tk-native-windows-985/candidate-wheel.json",
+      "sha256": "fa04bd9e42d3adb9e0664578546eecededffff991db246ae816525ea8b431f86"
+    },
+    {
+      "path": "@evidence/build/runs/gap-w3-1-tk-native-windows-985/preflight-process.json",
+      "sha256": "87349ae71746177a29722a964b0c80cf71118cae490e5b430382fd6cd7b20395"
+    },
+    {
+      "path": "@evidence/build/runs/gap-w3-1-tk-native-windows-985/cleanup-plan.json",
+      "sha256": "8576dad0c864388e8dd7bc6ca2da762dcb2dd88fdccff77759adc8cc1f30c7b3"
+    },
+    {
+      "path": "@evidence/build/runs/gap-w3-1-tk-native-windows-985/cleanup-plan-process.json",
+      "sha256": "576495b827a99eb5a1a0daed4b381e7984bf1e53626c62a9e371d51c6d5c03db"
+    },
+    {
+      "path": "@evidence/build/runs/gap-w3-1-tk-native-windows-985/cleanup-apply-process.json",
+      "sha256": "551a62ebb91e68463b171b1a7b364233b3898b270ff36cfaf18c7c842d8cc064"
+    },
+    {
+      "path": "@evidence/build/runs/gap-w3-1-tk-native-windows-985/cleanup-result.json",
+      "sha256": "9b02ffae3f5fa642afa5bb8e7eaa9455e1f895737e14637175a717740e3006d4"
+    },
+    {
+      "path": "@evidence/build/runs/gap-w3-1-tk-native-windows-985/attempt1-failure.txt",
+      "sha256": "cd73eddac5a7d8a9b122d3e415a0bdc43dbc42c90018d1bb1d63be0440b4612d"
+    },
+    {
+      "path": "@evidence/build/runs/gap-w3-1-tk-native-windows-985/attempt1-gpu-tests.log",
+      "sha256": "85e2b6a2f4ea9f175038b15668e0e4437a25844a63727795ee63dc8d4cdde68a"
+    },
+    {
+      "path": "@evidence/build/runs/gap-w3-1-tk-native-windows-985/attempt1-processes.json",
+      "sha256": "e236a62c7204fac27c19d2c63b756b4419a5303786d1f5e9eb5403ee3a6769b4"
+    },
+    {
+      "path": "@evidence/build/runs/gap-w3-1-tk-native-windows-985/attempt1-worker.json",
+      "sha256": "4dc98d1a2d6724c4db7a51e915905cb54a54a6f82d3909708d4b6555db18bcda"
+    },
+    {
+      "path": "@evidence/build/runs/gap-w3-1-tk-native-wsl-986/verification.json",
+      "sha256": "8974db277f2d3c7877bd91ba76de5abb34502655c74e4884e3b0a25fa7a54c97"
+    },
+    {
+      "path": "@evidence/build/runs/gap-w3-1-tk-native-wsl-986/terminal.json",
+      "sha256": "f6f58b739a576b2f7ac88ce0deae2eca9cec467bda3f97ae124d7bb44759cf8a"
+    },
+    {
+      "path": "@evidence/build/runs/gap-w3-1-tk-native-wsl-986/worker.json",
+      "sha256": "d3b926d3e0b06661440a9cd75b5339b474b1e0fda2b0eb33f878dae28dbbe0b4"
+    },
+    {
+      "path": "@evidence/build/runs/gap-w3-1-tk-native-wsl-986/pytest.json",
+      "sha256": "fd4ae1a92e735f959ba6cab2460456d6c86898dd1e556434b796ef18dd0b542c"
+    },
+    {
+      "path": "@evidence/build/runs/gap-w3-1-tk-native-wsl-986/selected.xml",
+      "sha256": "ec43ef42a21e91f9cc418c1a78d6555a563fc00828707a769606caa67a560a45"
+    },
+    {
+      "path": "@evidence/build/runs/gap-w3-1-tk-native-wsl-986/processes.json",
+      "sha256": "4aaadb0109ef0cc5c34d74d4456da0a611ef3c61e7dfc1a9e1d380267ece1906"
+    },
+    {
+      "path": "@evidence/build/runs/gap-w3-1-tk-native-wsl-986/controller-process.json",
+      "sha256": "6178876125349749753c1ffad786deae4016aa87d48d8a775e152b3c7fb86178"
+    },
+    {
+      "path": "@evidence/build/runs/gap-w3-1-tk-native-wsl-986/candidate-wheel.json",
+      "sha256": "b156145d7753a25fe22bec4e249b157cd62cbfb29cc4e8d6d346ef3bc8c85a8f"
+    },
+    {
+      "path": "@evidence/build/runs/gap-w3-1-tk-native-wsl-986/borrowed-inputs.json",
+      "sha256": "e5a2e2f914d5eb02906240e1fa59d7b61c83d961e995684937824440508f084e"
+    },
+    {
+      "path": "@evidence/build/runs/gap-w3-1-tk-native-wsl-986/driver-origin.json",
+      "sha256": "969581a5eff27f4363d86f92d40ee6b1e4188d391d38d7b3b08113559180e03b"
+    },
+    {
+      "path": "@evidence/build/runs/gap-w3-1-tk-native-wsl-986/raster-driver-origin.json",
+      "sha256": "76e28fa8b3cbd8fc0da35b9ced0e6662e112eb235b2d382a50e2590d6324436e"
+    },
+    {
+      "path": "@evidence/build/runs/gap-w3-1-tk-native-wsl-986/preflight-process.json",
+      "sha256": "fd5996011e5bb8179bc7c0a51b7585b479f4198094e5fe79f305a99e94edcb47"
+    },
+    {
+      "path": "@evidence/build/runs/gap-w3-1-tk-native-wsl-986/cleanup-plan.json",
+      "sha256": "272bee174f91b12dae22056ab8c784e4f4e5001451002eb6eb0c3d98e1439a60"
+    },
+    {
+      "path": "@evidence/build/runs/gap-w3-1-tk-native-wsl-986/cleanup-plan-process.json",
+      "sha256": "dac270060328a2da41080394c5ef15c86bc70ae9dba1b61849b702a22f17f872"
+    },
+    {
+      "path": "@evidence/build/runs/gap-w3-1-tk-native-wsl-986/cleanup-apply-process.json",
+      "sha256": "71819ba98842a5a60286ee4b2f0b3b53a4a561d1a77733c1038a5938020b0d6f"
+    },
+    {
+      "path": "@evidence/build/runs/gap-w3-1-tk-native-wsl-986/cleanup-result.json",
+      "sha256": "a4ef429a56a1c086b2a307f6b6e21038ba5fc11fe64bd3ca169dfebc2c61e95c"
+    }
+  ],
+  "boundaries": {
+    "LIF-07": "Default Tkinter presentation remains raster ('raster', PhotoImage); opt-in native WSI presentation preserves raster default isolation (app.Canvas(app='tkinter') has attached=false).",
+    "LIF-07-NATIVE-ADMISSION": "Opt-in experimental native Tk WSI swapchain presentation (backend_kwargs={'presentation': 'native'}) renewed on current 0.17.0+vulkan.2 Windows (9919a280...) and Linux (e600b29e...) wheels across 11 experimental GPU cases (8 in test_tkinter_native_presentation.py + 3 embedded SceneCanvas/camera/timer cases in test_tk_native_camera_embed_gpu.py) with 0 skips, 537 verified wheel members, 0 source overrides, and 10 zero Dawn shutdown gauges; native Tk remains outside mandatory matrix admission (native_admitted_mandatory_matrix=false)."
+  },
+  "limits": [
+    "Finite experimental native Tk WSI renewal on 0.17.0+vulkan.2, not mandatory matrix admission, strict installed/profile qualification, or public release.",
+    "Default Tk presentation remains raster; native Tk requires explicit backend_kwargs={'presentation': 'native'}.",
+    "WSL X11 WSI tests use explicitly hashed system mesa-vulkan-drivers 25.2.8-0ubuntu0.24.04.2 and do not inherit clipping claims from headless Mesa 26.1.8 (9c5c41b3...) or qualify physical Linux GPU hardware.",
+    "Historical installed-wheel packet compat/api-acceptance/tk-native-installed-v1.json (source b38c4f90) and prototype packet compat/api-acceptance/tk-native-prototype-v1.json remain preserved unchanged."
+  ]
+}

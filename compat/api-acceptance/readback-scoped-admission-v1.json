@@ -1,0 +1,64 @@
+{
+  "schema": 1,
+  "status": "SCOPED_ADMISSION_PASS",
+  "date": "2026-11-15",
+  "qualification_head": "f5c00c99d3ac88a691931ade8b3bd7bdd0dc7b16",
+  "subject_manifest_sha256": "bd14e959e9a2de3f958b7d83dd6d9eb38b7a94d0ca4c5feb669d500d3e0b9545",
+  "proved_bindings": 128,
+  "admitted_rows": 8,
+  "full_inventory_complete": false,
+  "artifacts": {
+    "967_basis": {
+      "path": "compat/candidates/tk-state-resource-16/installed-proofs-963/promotion-basis-967.json",
+      "sha256": "f9c752a7a7423331f7dad0a19ce5d32ea7e0d6d9ab6c78b25162c0795bd5dcb3"
+    },
+    "967_verification": {
+      "path": "D:/vispy-vulkan-managed/build/runs/readback-promotion-basis-967/verification.json",
+      "sha256": "80ea5b76e885abe0aba15454392596e1d2d81756be8f37fcd071a6b3621cef9c"
+    },
+    "967r_decision": {
+      "path": "D:/vispy-vulkan-managed/build/runs/readback-final-promotion-review-967r/decision.json",
+      "sha256": "ef5c50f4c14ed5e4399a6c7b6c5ab2934dce063efd7dcac48d5693875cca500d"
+    },
+    "967r_inputs": {
+      "path": "D:/vispy-vulkan-managed/build/runs/readback-final-promotion-review-967r/inputs.json",
+      "sha256": "c0db0fb6f49ba3131cf2f29fb74a57f57ae0ef9290f02c6d69308bd288a0c031"
+    },
+    "967r_review": {
+      "path": "compat/candidates/tk-state-resource-16/installed-proofs-963/promotion-review-967r.json",
+      "sha256": "d2d2237b6b790628f676578450571f8d96dc3436372d1896d7815d1c33381396"
+    },
+    "968_admit": {
+      "path": "D:/vispy-vulkan-managed/build/runs/readback-scoped-admission-968/admit.py",
+      "sha256": "9b57d10d9fb9d607693341e2ad7245c532e7c615c59571006eda76191c78bb47"
+    },
+    "968_preexec": {
+      "path": "D:/vispy-vulkan-managed/build/runs/readback-scoped-admission-968/immediate-preexecution-audit.json",
+      "sha256": "dbaf5a4969737d9b5baa4f76962209d924667d0696c4ef6a627051edd51523c9"
+    },
+    "968_result": {
+      "path": "D:/vispy-vulkan-managed/build/runs/readback-scoped-admission-968/strict-admission-result.json",
+      "sha256": "7f804f0e5d9676c9a73b7ec69c6ad6c11e2ae818bf1e70f831e4381ef31b5b3d"
+    },
+    "968_restoration": {
+      "path": "D:/vispy-vulkan-managed/build/runs/readback-scoped-admission-968/restoration.json",
+      "sha256": "27a30800fafe2623c8c91d1363105a8a709cb716306b98bb728da8cb3e62afd9"
+    },
+    "968_admission": {
+      "path": "compat/candidates/tk-state-resource-16/installed-proofs-963/mandatory-matrix-admission-968.json",
+      "sha256": "c1c14320f80b756ea488081ce450f73e41c8ae955f126ccbf45c329dda4fc8b9"
+    },
+    "968_envelope": {
+      "path": "compat/candidates/tk-state-resource-16/installed-proofs-963/promotion-envelope-968.json",
+      "sha256": "3933afd01be71ba0cc23e8f99889a1012e1329fb514ca437e7ec4f41ff9e85cb"
+    },
+    "968_verification": {
+      "path": "D:/vispy-vulkan-managed/build/runs/readback-scoped-admission-968/verification.json",
+      "sha256": "423a7f1226b03795e764985ab086240a8e6fc361f575b1260872c7c8b8c0910a"
+    },
+    "968_terminal": {
+      "path": "D:/vispy-vulkan-managed/build/runs/readback-scoped-admission-968/terminal-source-only.json",
+      "sha256": "b9826eec12ada4f47ab00b208a6fb218baa71ada477765d300f5c96539f3e92e"
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "schema": 1,
+  "kind": "promotion",
+  "status": "APPROVED",
+  "independent": true,
+  "reviewer": "Independent swarm reviewer (967r); exact 968 driver, 23 same-head CI jobs, finite 128 Tk bindings, and exact 8 Windows/WSL mandatory rows",
+  "promotion_basis_sha256": "2a2d7d7c267337a3a16a9b3508fc98b19605cd159d0c4e6da745a5df71f95ba0"
+}

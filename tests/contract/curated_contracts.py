@@ -22,7 +22,10 @@ MODULES = ('test_hot_swap_policy', 'test_napari_vector_layers_reference', 'test_
            'test_napari_plugin_wheel_suite_successor', 'test_napari_wheel_suite_successors',
            'test_no_opengl_napari_successor', 'test_volume_scientific_admission_successor',
            'test_upload_cache_shutdown', 'test_application_backend_boundaries',
-           'test_dawn_orphan_retirement_contract')
+           'test_dawn_orphan_retirement_contract', 'test_scene_widget_api05_contract',
+           'test_app_timer_context_api05_contract',
+           'test_subpackages_api05_contract',
+           'test_optional_hosts_current_wheel_renewal')
 # Contract modules that no workflow runs, with the reason. A new module goes in MODULES or here.
 NOT_IN_CI = {
     **dict.fromkeys(('test_color_volume_linux_wheel_parity', 'test_color_volume_wheel_parity',
@@ -39,7 +42,7 @@ NOT_IN_CI = {
 
 for _name in MODULES:
     _module = importlib.import_module(_name)
-    for _test in _module.__all__:
+    for _test in getattr(_module, '__all__', [n for n in vars(_module) if n.startswith('test_')]):
         if _test in globals():  # a shadowed test would silently never run
             raise ImportError('%s.%s is already curated' % (_name, _test))
         globals()[_test] = getattr(_module, _test)

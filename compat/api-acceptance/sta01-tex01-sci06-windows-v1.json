@@ -1,0 +1,103 @@
+{
+  "schema": 1,
+  "date": "2026-11-15",
+  "evidence_tier": "installed-functional",
+  "platform": "windows-x86_64-vulkan-rtx4090",
+  "source_commit": "613cacfb73b1b4424dc098241c1eaf7553746c90",
+  "wheel": {
+    "path": "build/artifacts/9919a280a5de2c4bec45837078cb1d405e7169933ddcfb0758aa7d6a82722d39/vispy-0.17.0+vulkan.2-cp312-cp312-win_amd64.whl",
+    "sha256": "9919a280a5de2c4bec45837078cb1d405e7169933ddcfb0758aa7d6a82722d39"
+  },
+  "device": {
+    "backend": "Vulkan",
+    "adapter_type": "discrete",
+    "device": "NVIDIA GeForce RTX 4090",
+    "driver": "NVIDIA: 610.88 610.88.0.0",
+    "software": false
+  },
+  "source_overrides": 0,
+  "installed_members_verified": 537,
+  "shutdown_gauges": {
+    "pending_tickets": 0,
+    "queued_frames": 0,
+    "live_buffer_bytes": 0,
+    "live_cpu_buffer_bytes": 0,
+    "live_texture_bytes": 0,
+    "canvas_texture_bytes": 0,
+    "transient_buffer_bytes": 0,
+    "line_resource_pool_busy_slots": 0,
+    "line_resource_pool_bytes": 0,
+    "host_import_pinned_bytes": 0
+  },
+  "actual_exit": 0,
+  "child_waited": true,
+  "scratch_absent_after_cleanup": true,
+  "verification": {
+    "path": "@evidence/build/runs/gap-w2-2-3-windows-972/verification.json",
+    "sha256": "3a73317c81e37e0a053f524b0bd57cb04cbbd8426c7a9e0c50a211f8801eb1bf"
+  },
+  "worker": {
+    "path": "@evidence/build/runs/gap-w2-2-3-windows-972/worker.json",
+    "sha256": "4c9547979de906f7dcf6435ed6d8ba4305d8372961788f6ab1ae7caec79506d2"
+  },
+  "pytest_report": {
+    "path": "@evidence/build/runs/gap-w2-2-3-windows-972/pytest.json",
+    "sha256": "55b02730cec81c78af860eeb93bd8c7af43b1909d5aae4295b7158f279f6d235"
+  },
+  "junit_xml": {
+    "path": "@evidence/build/runs/gap-w2-2-3-windows-972/selected.xml",
+    "sha256": "2f0c8f96b72c9eae0891a7e4167d0dadb7c567fcd4b92902df2e9a20d6c41efa"
+  },
+  "terminal": {
+    "path": "@evidence/build/runs/gap-w2-2-3-windows-972/terminal.json",
+    "sha256": "9c9285a895c51e80247d69199f4e9a8e9986664cbb998ff97501c05404b9d2e7"
+  },
+  "cleanup_plan": {
+    "path": "@evidence/build/runs/gap-w2-2-3-windows-972/cleanup-plan.json",
+    "sha256": "4a13399357197bec417d2dc22d21a70a764063fcffa9105cda529e0c2d506680"
+  },
+  "cleanup_apply_process": {
+    "path": "@evidence/build/runs/gap-w2-2-3-windows-972/cleanup-apply-process.json",
+    "sha256": "7684b2654d9e7e3c776bcbc15f414f3316ec4eddb6a0fe48038af96935d588b6"
+  },
+  "scoped_admitted": false,
+  "publicly_delivered": false,
+  "status": "PASS_INSTALLED_FUNCTIONAL_W2_2_RASTER_TYPED_TEXTURES_STENCIL_MSAA_WINDOWS",
+  "coverage_ids": [
+    "STA-01",
+    "STA-02",
+    "TEX-01",
+    "SCI-06",
+    "API-05"
+  ],
+  "test_modules": [
+    {
+      "path": "tests/state/test_raster_state_combinations_gpu.py",
+      "sha256": "88fc9b6216ffb3f2458455925adc5bb3f10a890b08b2a958db3e27850284f99f",
+      "cases": {
+        "passed": 4,
+        "skipped": 0,
+        "failed": 0
+      }
+    },
+    {
+      "path": "tests/textures/test_typed_sampling_nan_gpu.py",
+      "sha256": "098ff7399bb00b471aa1f27ad202c1e8fbd569f9ea5c7b6498981418d06820c4",
+      "cases": {
+        "passed": 4,
+        "skipped": 0,
+        "failed": 0
+      }
+    },
+    {
+      "path": "tests/gloo/test_stencil_msaa_boundaries_gpu.py",
+      "sha256": "a7fd5856e7ea3e67774e6f9cbaf0f470ae480848835b61bcdf7518b5f8c60ade",
+      "cases": {
+        "passed": 3,
+        "skipped": 0,
+        "failed": 0
+      }
+    }
+  ],
+  "scope": "Installed-wheel functional execution on Windows RTX 4090 (wheel 9919a280..., 537 members, 0 source overlays, 10 zero shutdown gauges) covering STA-01/STA-02 pairwise depth/blend/cull/polygon_offset/color_mask/scissor raster state combinations, TEX-01 non-normalized signed/unsigned integer & float32/NaN/Inf/3D/depth24-compare sampling, SCI-06 stencil write/read/op boundaries + 4x MSAA resolve, and API-05 gloo capability/state boundaries. Recorded at installed-functional tier only; distinct from tk-state-resource-16 scoped admission."
+}

@@ -1,0 +1,324 @@
+{
+  "schema": 1,
+  "date": "2026-11-15",
+  "gap_id": "TOOL-03",
+  "backlog_id": "B17",
+  "status": "PASS_HISTORICAL_RECEIPT_RECONCILED_NO_CLAIMED_SAVINGS",
+  "candidate_inventory": {
+    "path": "build/opengl-removal-execution-root-1/compiler-retention67-candidate-files.json",
+    "sha256": "100a056d7dcf9759be913692088c6ec6c23342b86ef5c44104cdc56a420e0a87",
+    "entry_count": 12134,
+    "logical_bytes": 2825459986,
+    "estimated_recoverable_allocated_bytes": 1711778872,
+    "extensions": {
+      ".obj": 2138,
+      ".tlog": 9996
+    }
+  },
+  "verification": {
+    "retained_count": 12134,
+    "missing_count": 0,
+    "size_mismatch_count": 0,
+    "hash_mismatch_count": 0,
+    "all_12134_retained_byte_exact": true
+  },
+  "missing_historical_receipt": {
+    "script_path": "build/opengl-removal-execution-root-1/apply-compiler-retirement69.ps1",
+    "script_sha256": "b4d0f77e5a842a73d9fc2683a3640e7b5df39ba1239bd23c39de6d5633a7f577",
+    "expected_receipt_path": "build/opengl-removal-execution-root-1/compiler-retirement69-result.json",
+    "expected_receipt_exists": false,
+    "disposition": "missing-historical-unpromoted",
+    "reclaimed_bytes_claimed": 0,
+    "do_not_repeat_blindly": true
+  },
+  "integrity_guards": {
+    "hygiene70_integrity_path": "build/opengl-removal-execution-root-1/hygiene70-integrity.json",
+    "hygiene70_integrity_sha256": "24b5e45bf74091087385ede7c8c62c69d6a7500b31f7f44c2ebdf1c53d21719a",
+    "verify_hygiene70_executed": false,
+    "build_hygiene_py_sha256": "0a4f8cbc161afa39dfaf25e840bb0c788fda4f709b84f7440bd52102f847fa84",
+    "build_hygiene_weakened": false,
+    "legacy_project_cleanup_945_verification_sha256": "f9de0fc380e41d39e6af889dc91ce626aced2922cf7661637919e918ae81f045",
+    "overlaps_with_945_cleanup": 0
+  },
+  "root_dispositions": [
+    {
+      "root": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\native-pass24-sdk",
+      "candidate_files": 212,
+      "retained_files": 212,
+      "missing_files": 0,
+      "mismatched_files": 0,
+      "logical_bytes": 33206799,
+      "retained_manifest_sha256": "7d327f36c6bc5e42789dca1ffce58ece349f5404f3de1fde139831698f43d0cc"
+    },
+    {
+      "root": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\native-pass25-sdk",
+      "candidate_files": 212,
+      "retained_files": 212,
+      "missing_files": 0,
+      "mismatched_files": 0,
+      "logical_bytes": 33909211,
+      "retained_manifest_sha256": "55e6ed98c2019f22229bd86e6e6a910e1c62525a4ae2ca1e0f648e7ce20e1943"
+    },
+    {
+      "root": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\native-pass26-sdk",
+      "candidate_files": 212,
+      "retained_files": 212,
+      "missing_files": 0,
+      "mismatched_files": 0,
+      "logical_bytes": 35700958,
+      "retained_manifest_sha256": "89a449cf1220df736ada4e760e60a78f1f8c716f92164956d8e06d245fff5613"
+    },
+    {
+      "root": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\native-pass27-sdk",
+      "candidate_files": 224,
+      "retained_files": 224,
+      "missing_files": 0,
+      "mismatched_files": 0,
+      "logical_bytes": 36532449,
+      "retained_manifest_sha256": "3e3149d3909ad77f8b5d79b5d57e00b7bc44f8fa2313ef6b29a188a3ea672e4f"
+    },
+    {
+      "root": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\native-pass28-sdk",
+      "candidate_files": 224,
+      "retained_files": 224,
+      "missing_files": 0,
+      "mismatched_files": 0,
+      "logical_bytes": 36607610,
+      "retained_manifest_sha256": "ac8675f38bc88f5b4b0f78b065a9fa160aa835fa68324670a2e94c586057114a"
+    },
+    {
+      "root": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\native-pass29-sdk",
+      "candidate_files": 224,
+      "retained_files": 224,
+      "missing_files": 0,
+      "mismatched_files": 0,
+      "logical_bytes": 37372370,
+      "retained_manifest_sha256": "098718c4437a2bbc2fd9d7ede5987c2ad259362eba53f4256b6a0ea48271bc6d"
+    },
+    {
+      "root": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\native-pass30-sdk",
+      "candidate_files": 236,
+      "retained_files": 236,
+      "missing_files": 0,
+      "mismatched_files": 0,
+      "logical_bytes": 39262104,
+      "retained_manifest_sha256": "f16edaeac65e0c43059806dfbb7f8914e709d741aab0034782bad89c8b76f1e9"
+    },
+    {
+      "root": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\native-pass31-sdk",
+      "candidate_files": 264,
+      "retained_files": 264,
+      "missing_files": 0,
+      "mismatched_files": 0,
+      "logical_bytes": 53802619,
+      "retained_manifest_sha256": "9b9f287f8099524c73565210f6373f15aa238ab2c8105db34f579a6a555010cf"
+    },
+    {
+      "root": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\native-pass32-sdk",
+      "candidate_files": 264,
+      "retained_files": 264,
+      "missing_files": 0,
+      "mismatched_files": 0,
+      "logical_bytes": 53934174,
+      "retained_manifest_sha256": "a1fc978b6f07eb04cc56a8a943c1ba5191e4da64f7e92d50fc723ee729755c28"
+    },
+    {
+      "root": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\native-pass33-sdk",
+      "candidate_files": 288,
+      "retained_files": 288,
+      "missing_files": 0,
+      "mismatched_files": 0,
+      "logical_bytes": 56980540,
+      "retained_manifest_sha256": "9e098aab64664a4d6c8c0b0164181fb5e2c4afd1e14d37b6848c9a32d4488381"
+    },
+    {
+      "root": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\native-pass34-sdk",
+      "candidate_files": 288,
+      "retained_files": 288,
+      "missing_files": 0,
+      "mismatched_files": 0,
+      "logical_bytes": 56980175,
+      "retained_manifest_sha256": "a168b26b49cdf5d0a0c42aa5261e59599c12426de3d3ed66c649f4382015c260"
+    },
+    {
+      "root": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\native-pass37-sdk",
+      "candidate_files": 368,
+      "retained_files": 368,
+      "missing_files": 0,
+      "mismatched_files": 0,
+      "logical_bytes": 83123601,
+      "retained_manifest_sha256": "119f3bb565d4cff52d22614105b9f0dba3ec3922cdf273c1cfec0ab9b3005181"
+    },
+    {
+      "root": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\native-pass38-sdk",
+      "candidate_files": 368,
+      "retained_files": 368,
+      "missing_files": 0,
+      "mismatched_files": 0,
+      "logical_bytes": 83364440,
+      "retained_manifest_sha256": "d32eb4cdffa7669191300a4586d6b24a20a395b8fa698fe68a351af4c467b2aa"
+    },
+    {
+      "root": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\native-pass40-sdk",
+      "candidate_files": 368,
+      "retained_files": 368,
+      "missing_files": 0,
+      "mismatched_files": 0,
+      "logical_bytes": 83520968,
+      "retained_manifest_sha256": "53d27dd0a310ab80e51f302b69068d385ed7aab8c856ce8df72ac3efc0165d45"
+    },
+    {
+      "root": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\native-pass41-sdk",
+      "candidate_files": 368,
+      "retained_files": 368,
+      "missing_files": 0,
+      "mismatched_files": 0,
+      "logical_bytes": 83594799,
+      "retained_manifest_sha256": "9ab11ac2f93f16afbcfb050a0848546f71c359765e5b71f0700b7a009187730f"
+    },
+    {
+      "root": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\native-pass42-sdk",
+      "candidate_files": 368,
+      "retained_files": 368,
+      "missing_files": 0,
+      "mismatched_files": 0,
+      "logical_bytes": 83616336,
+      "retained_manifest_sha256": "390958369aa14c25170b536493fd4510b1f16975c55ad6ad931d0702f0f0824b"
+    },
+    {
+      "root": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\native-pass43-sdk",
+      "candidate_files": 368,
+      "retained_files": 368,
+      "missing_files": 0,
+      "mismatched_files": 0,
+      "logical_bytes": 83616265,
+      "retained_manifest_sha256": "b0e7b92b5f70cbef1344983bad77f16191f270be87bce17cde8b56fe12d4c95e"
+    },
+    {
+      "root": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\native-pass44-sdk",
+      "candidate_files": 369,
+      "retained_files": 369,
+      "missing_files": 0,
+      "mismatched_files": 0,
+      "logical_bytes": 85988811,
+      "retained_manifest_sha256": "78082d45abdf50a4557a5c965ead7e10cdaceae38fd641ddbbe0d6c9c28fe306"
+    },
+    {
+      "root": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\native-pass45-sdk",
+      "candidate_files": 369,
+      "retained_files": 369,
+      "missing_files": 0,
+      "mismatched_files": 0,
+      "logical_bytes": 86035835,
+      "retained_manifest_sha256": "5fff2a8ac77bbd54f3bac1a8a2d25cabb558cfd49e7b0ad3bcf543d820362fb3"
+    },
+    {
+      "root": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\native-pass46-sdk",
+      "candidate_files": 369,
+      "retained_files": 369,
+      "missing_files": 0,
+      "mismatched_files": 0,
+      "logical_bytes": 87450917,
+      "retained_manifest_sha256": "c7a8a3e0200fc80abcd5edaca201ec711184594f1ee309d8e74bf3e12e5d65a8"
+    },
+    {
+      "root": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\native-pass47-sdk",
+      "candidate_files": 383,
+      "retained_files": 383,
+      "missing_files": 0,
+      "mismatched_files": 0,
+      "logical_bytes": 95533584,
+      "retained_manifest_sha256": "1ccb1771b59a2a754a278920210a4076fc4329db72db5c1b16d5e7314a3b74df"
+    },
+    {
+      "root": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\native-pass48-sdk",
+      "candidate_files": 469,
+      "retained_files": 469,
+      "missing_files": 0,
+      "mismatched_files": 0,
+      "logical_bytes": 111369277,
+      "retained_manifest_sha256": "03e6ce7b09f348c09aadd22eb6351fd0f71b7d6d511d4a778d801f3d3ea491c6"
+    },
+    {
+      "root": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\native-pass49-sdk",
+      "candidate_files": 535,
+      "retained_files": 535,
+      "missing_files": 0,
+      "mismatched_files": 0,
+      "logical_bytes": 144474686,
+      "retained_manifest_sha256": "4e888444e3d1efa47d8407e2f7dc1458aeb507743c37acff6e82a25b1e60dd1c"
+    },
+    {
+      "root": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\native-pass50-sdk",
+      "candidate_files": 547,
+      "retained_files": 547,
+      "missing_files": 0,
+      "mismatched_files": 0,
+      "logical_bytes": 146880770,
+      "retained_manifest_sha256": "af2e06ac20d8c5e090febe6df3da6d0db1049de12423d3dd67504edc358fff56"
+    },
+    {
+      "root": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\native-pass51-sdk",
+      "candidate_files": 595,
+      "retained_files": 595,
+      "missing_files": 0,
+      "mismatched_files": 0,
+      "logical_bytes": 152243955,
+      "retained_manifest_sha256": "e23c087349aa56fa3a762581670ef2c70bcb7c96bd0469215fba11d507fd5c6b"
+    },
+    {
+      "root": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\native-pass52-sdk",
+      "candidate_files": 607,
+      "retained_files": 607,
+      "missing_files": 0,
+      "mismatched_files": 0,
+      "logical_bytes": 154693332,
+      "retained_manifest_sha256": "788984f7c83fa3715b18eb95133ace02e2e4e908cbca25cde903bde02a6ddd2e"
+    },
+    {
+      "root": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\native-pass53-sdk",
+      "candidate_files": 607,
+      "retained_files": 607,
+      "missing_files": 0,
+      "mismatched_files": 0,
+      "logical_bytes": 154693735,
+      "retained_manifest_sha256": "4de5ae061af92bea583829ed3998c4b13b15762424b6e31855f088436aa68105"
+    },
+    {
+      "root": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\native-pass54-sdk",
+      "candidate_files": 607,
+      "retained_files": 607,
+      "missing_files": 0,
+      "mismatched_files": 0,
+      "logical_bytes": 154833947,
+      "retained_manifest_sha256": "cbab9dc014bd3c10990ad2262e99feb9501dbb3cfa8feb37da581448e86dc589"
+    },
+    {
+      "root": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\native-pass55-sdk",
+      "candidate_files": 607,
+      "retained_files": 607,
+      "missing_files": 0,
+      "mismatched_files": 0,
+      "logical_bytes": 154888805,
+      "retained_manifest_sha256": "ba9da34ae4af705adfd5d4a853c40bdd29f4db30a8456f9b4df1bb62f6f36f72"
+    },
+    {
+      "root": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\native-pass56-sdk",
+      "candidate_files": 607,
+      "retained_files": 607,
+      "missing_files": 0,
+      "mismatched_files": 0,
+      "logical_bytes": 155143335,
+      "retained_manifest_sha256": "900ebec8a7a5260833e3392c2c7fa5e4e478b83780251766eb2e3ce403883dd0"
+    },
+    {
+      "root": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\build\\native-pass57-sdk",
+      "candidate_files": 607,
+      "retained_files": 607,
+      "missing_files": 0,
+      "mismatched_files": 0,
+      "logical_bytes": 166103579,
+      "retained_manifest_sha256": "41ca732441bb55f2cedf30fb8a63b16b80c950b454e391aebdc6fa41793c0a39"
+    }
+  ]
+}

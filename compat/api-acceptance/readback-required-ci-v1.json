@@ -1,0 +1,43 @@
+{
+  "schema": 1,
+  "status": "PASS_REQUIRED_CI_965_966",
+  "date": "2026-11-15",
+  "qualification_head": "f5c00c99d3ac88a691931ade8b3bd7bdd0dc7b16",
+  "tree": "4fba35934d0b4ca1da8bd34f82bd015108936081",
+  "runs": {
+    "43698951369": "20/20 success",
+    "43698951274": "1/1 success",
+    "43698951281": "2/2 success"
+  },
+  "total_jobs": 23,
+  "artifacts": {
+    "965_verification": {
+      "path": "D:/vispy-vulkan-managed/build/runs/readback-native-identities-965/verification.json",
+      "sha256": "82adf54bb60c39f81e9daa339f88f927987962ad9932ebf831de6faee07af5e7"
+    },
+    "965_terminal": {
+      "path": "D:/vispy-vulkan-managed/build/runs/readback-native-identities-965/terminal.json",
+      "sha256": "1a972d9552ecc8cf7963ce2d1d5feff33a19ef63a3319bb2737dbea7152055a0"
+    },
+    "965_cleanup": {
+      "path": "D:/vispy-vulkan-managed/build/runs/readback-native-identities-965/cleanup-result.json",
+      "sha256": "71e83e5bd7a3485e42318cbde65159cf42d6ed798bab18e19334fa56eef5d383"
+    },
+    "966_required_ci": {
+      "path": "compat/candidates/tk-state-resource-16/installed-proofs-963/ci-966/required-ci.json",
+      "sha256": "0ee835368dd322387ecb07aa0ef155d35ea14966d40691fa39b2035e3f28994b"
+    },
+    "966_verification": {
+      "path": "D:/vispy-vulkan-managed/build/runs/readback-required-ci-966/verification.json",
+      "sha256": "68425aa10411c85885a740c2f0fbadb4e51c7507388aeb9d6d73a81494a6b849"
+    },
+    "966_terminal": {
+      "path": "D:/vispy-vulkan-managed/build/runs/readback-required-ci-966/terminal.json",
+      "sha256": "47ae04b96811a68b1d7e0ec65a46ccd893dd09521568e7c63fcabf06a689b8b9"
+    },
+    "966_cleanup": {
+      "path": "D:/vispy-vulkan-managed/build/runs/readback-required-ci-966/cleanup-result.json",
+      "sha256": "433ae618c9741389b6c5e954f0fe9f474f5f33e224bd09f0c69ab7da0560d8e0"
+    }
+  }
+}

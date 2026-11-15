@@ -1,0 +1,86 @@
+{
+  "schema": 1,
+  "status": "PASS_PUBLIC_DELIVERY_COMPLETE",
+  "date": "2026-11-15",
+  "pr_number": 85,
+  "merged_commit": "38753fc03c2a15b2138120439a492a9cbac6832f",
+  "qualification_head": "f5c00c99d3ac88a691931ade8b3bd7bdd0dc7b16",
+  "tree": "4fba35934d0b4ca1da8bd34f82bd015108936081",
+  "release_tag": "v0.17.0-vulkan.2-readback-geometry-f5c00c9",
+  "release_url": "https://github.com/bipxx/vispy_vulkan/releases/tag/v0.17.0-vulkan.2-readback-geometry-f5c00c9",
+  "wheels": {
+    "windows_cp312": "9919a280a5de2c4bec45837078cb1d405e7169933ddcfb0758aa7d6a82722d39",
+    "linux_cp312": "e600b29e5259b896cc9d0fe36bbb5760260946aef53c013f8fc74e2fd0153007"
+  },
+  "full_inventory_complete": false,
+  "artifacts": {
+    "969_verification": {
+      "path": "D:/vispy-vulkan-managed/build/runs/readback-protected-integration-969/verification.json",
+      "sha256": "ad513985bb858c8c179ab0ee34b6ed5371bebade3718437fc0107c5c950c9d07"
+    },
+    "969_terminal": {
+      "path": "D:/vispy-vulkan-managed/build/runs/readback-protected-integration-969/terminal-source-only.json",
+      "sha256": "15b7ad202fc1d709e866c6528bd4157e957a77f1b018828053e75dc060040383"
+    },
+    "970_channel": {
+      "path": "D:/vispy-vulkan-managed/build/runs/readback-public-delivery-970/windows-channel.json",
+      "sha256": "75a089ec68fa809811e555277a31020a982a0589493a11313b5104c0805d3384"
+    },
+    "970_verification": {
+      "path": "D:/vispy-vulkan-managed/build/runs/readback-public-delivery-970/verification.json",
+      "sha256": "8fcfdbcd8169ce5b661e973afd12b41ff9cb578bbab501eee11161559e0b549f"
+    },
+    "970_cleanup": {
+      "path": "D:/vispy-vulkan-managed/build/runs/readback-public-delivery-970/cleanup-result.json",
+      "sha256": "3a28909f7001b161e61f244d4db5a0244f7d2815ad8bd777ad873a7e595fb9b5"
+    },
+    "980_terminal_preserved_failure": {
+      "path": "D:/vispy-vulkan-managed/build/runs/readback-public-wsl-delivery-980/terminal.json",
+      "sha256": "6f283692ff293d01c96770476dc27d139ee5bb118776cb07f105858a15bcfa7f"
+    },
+    "980_cleanup": {
+      "path": "D:/vispy-vulkan-managed/build/runs/readback-public-wsl-delivery-980/cleanup-result.json",
+      "sha256": "7a38c576298c8fb93c3758bfeb73811a31432762a9125923ff33570b3ef3b83b"
+    },
+    "981_channel": {
+      "path": "D:/vispy-vulkan-managed/build/runs/readback-public-wsl-delivery-981/linux-channel.json",
+      "sha256": "f62ec6348e08741c8ebb694b565e4110a059508e886755feba14ff69521b151d"
+    },
+    "981_verification": {
+      "path": "D:/vispy-vulkan-managed/build/runs/readback-public-wsl-delivery-981/verification.json",
+      "sha256": "63ff50cd7ffd6e16f1335199ba297f3da0b97cdc65a4e296cf95ac6937cd5ece"
+    },
+    "981_terminal": {
+      "path": "D:/vispy-vulkan-managed/build/runs/readback-public-wsl-delivery-981/terminal.json",
+      "sha256": "72cfff3fb09472f7082d3dcb338345c3db1ffdebb48aaabf17b0f003c7847889"
+    },
+    "981_cleanup": {
+      "path": "D:/vispy-vulkan-managed/build/runs/readback-public-wsl-delivery-981/cleanup-result.json",
+      "sha256": "c9659aa2bffbd912991484528666058232c464b36154e71ed846235fdebfdf1c"
+    },
+    "971_terminal_preserved_pre_report": {
+      "path": "D:/vispy-vulkan-managed/build/runs/readback-delivery-completion-971/terminal-source-only.json",
+      "sha256": "e2fb9d0852c4d8bc97f37f1253a2366faa9558493a922b498f65c3678bf78f89"
+    },
+    "982_delivery": {
+      "path": "D:/vispy-vulkan-managed/build/runs/readback-delivery-completion-982/delivery.json",
+      "sha256": "a4737a3188ebc6cb5a4dcf96e92781271cd26af6330aec262923ed27c813b199"
+    },
+    "983_final_public": {
+      "path": "D:/vispy-vulkan-managed/build/runs/readback-delivery-completion-audit-983/final-public-delivery-verification.json",
+      "sha256": "7a2ff890b085f7b1dd75c68399db5e7b7da9307faf46b0f3e537655c94e09a4e"
+    },
+    "983_audit": {
+      "path": "D:/vispy-vulkan-managed/build/runs/readback-delivery-completion-audit-983/completion-audit.json",
+      "sha256": "92b932ea1dc9a457c045033bfb9e8967cc4dc347ce82287d2cc4bf1728dfccb8"
+    },
+    "983_verification": {
+      "path": "D:/vispy-vulkan-managed/build/runs/readback-delivery-completion-audit-983/verification.json",
+      "sha256": "cf05e5ba2f3f2aa7d6688eaf7d4dd7bc3a95317042d13546d45edfdda2363924"
+    },
+    "983_terminal": {
+      "path": "D:/vispy-vulkan-managed/build/runs/readback-delivery-completion-audit-983/terminal-source-only.json",
+      "sha256": "060b34d72cd8d8c0e53cfee0b45b081ca1c58805e7a2a2143d9b5a3f11f9030d"
+    }
+  }
+}
