@@ -1,0 +1,259 @@
+{
+  "schema": 1,
+  "date": "2026-11-15",
+  "evidence_tier": "installed-functional",
+  "platform": "windows-x86_64-vulkan-rtx4090",
+  "status": "PASS_INSTALLED_FUNCTIONAL_W3_2_QT_MULTIBINDING_CALLBACKS_HIDPI_WINDOWS",
+  "coverage_ids": [
+    "LIF-02",
+    "LIF-03",
+    "LIF-04",
+    "LIF-06",
+    "LIF-08"
+  ],
+  "source_commit": "613cacfb73b1b4424dc098241c1eaf7553746c90",
+  "wheel": {
+    "path": "build/artifacts/9919a280a5de2c4bec45837078cb1d405e7169933ddcfb0758aa7d6a82722d39/vispy-0.17.0+vulkan.2-cp312-cp312-win_amd64.whl",
+    "sha256": "9919a280a5de2c4bec45837078cb1d405e7169933ddcfb0758aa7d6a82722d39"
+  },
+  "device": {
+    "backend": "Vulkan",
+    "adapter_type": "discrete",
+    "device": "NVIDIA GeForce RTX 4090",
+    "driver": "NVIDIA: 610.88 610.88.0.0",
+    "software": false
+  },
+  "toolkits": {
+    "pyqt5": {
+      "binding": "pyqt5",
+      "package": "PyQt5",
+      "qt_version": "5.15.2",
+      "binding_version": "5.15.11",
+      "locked_profile_requirements": "C:\\Users\\HEQ\\Projects\\vispy_vulkan-opengl-validation\\build\\no-opengl\\windows-other-qt-profiles1\\pyqt5-wheels2\\requirements.txt",
+      "locked_profile_requirements_sha256": "f090671d0c6c82b5da311b53372ec676c193c8f566b7a7ef294e6881940556f2",
+      "binding_sha256": "d6e45fd8c3b3f93f52c4d1b6f9e3ee220454a73f80f65f3d70504bd55415ea37"
+    },
+    "pyqt6": {
+      "binding": "pyqt6",
+      "package": "PyQt6",
+      "qt_version": "6.11.0",
+      "binding_version": "6.11.0",
+      "locked_profile_requirements": "C:\\Users\\HEQ\\Projects\\vispy_vulkan-opengl-validation\\build\\no-opengl\\windows-qt-profile1\\wheels3\\requirements.txt",
+      "locked_profile_requirements_sha256": "1da82bc355e9f3abd901d13f3df0e1224ad02816bef04ff8587b9be6a37376f6",
+      "binding_sha256": "91dd5166110b88a4f4d3acda6fe6c10ed699882dd3602328a59e9f656cc766b1"
+    },
+    "pyside6": {
+      "binding": "pyside6",
+      "package": "PySide6",
+      "qt_version": "6.12.0",
+      "binding_version": "6.12.0",
+      "locked_profile_requirements": "C:\\Users\\HEQ\\Projects\\vispy_vulkan-opengl-validation\\build\\no-opengl\\windows-other-qt-profiles1\\pyside6-wheels2\\requirements.txt",
+      "locked_profile_requirements_sha256": "8f2a159b91d31abf4b10b679001c7d8c9b8cf59385af79f712dcc313163be088",
+      "binding_sha256": "6486f6f0a2fec42fc8c652c0b76bb3ad0d44eaccad9c72e577116a075681eebb"
+    }
+  },
+  "source_overrides": 0,
+  "installed_members_verified": 537,
+  "physical_multimonitor_claimed": false,
+  "physical_hid_claimed": false,
+  "junit_summary": {
+    "total": 12,
+    "passed": 12,
+    "skipped": 0,
+    "failures": 0,
+    "errors": 0,
+    "per_binding": {
+      "pyqt5": {
+        "total": 4,
+        "passed": 4,
+        "skipped": 0,
+        "failures": 0,
+        "errors": 0
+      },
+      "pyqt6": {
+        "total": 4,
+        "passed": 4,
+        "skipped": 0,
+        "failures": 0,
+        "errors": 0
+      },
+      "pyside6": {
+        "total": 4,
+        "passed": 4,
+        "skipped": 0,
+        "failures": 0,
+        "errors": 0
+      }
+    }
+  },
+  "per_binding": {
+    "pyqt5": {
+      "actual_exit": 0,
+      "child_pid": 19540,
+      "child_waited": true,
+      "source_overrides": 0,
+      "installed_members_verified_before_after": 537,
+      "competing_qt_modules": [],
+      "shutdown_gauges": {
+        "pending_tickets": 0,
+        "queued_frames": 0,
+        "live_buffer_bytes": 0,
+        "live_cpu_buffer_bytes": 0,
+        "live_texture_bytes": 0,
+        "canvas_texture_bytes": 0,
+        "transient_buffer_bytes": 0,
+        "line_resource_pool_busy_slots": 0,
+        "line_resource_pool_bytes": 0,
+        "host_import_pinned_bytes": 0
+      },
+      "worker": {
+        "path": "@evidence/build/runs/gap-w3-2-qt-bindings-windows-987/worker-pyqt5.json",
+        "sha256": "26fb63a62dd7aea87a1cf56a7f35d6cb3023e7789cdd9c046ceadb4f6ec5b20f"
+      },
+      "pytest_report": {
+        "path": "@evidence/build/runs/gap-w3-2-qt-bindings-windows-987/pytest-pyqt5.json",
+        "sha256": "18b5c66c2afb550f1755e38dbbc061412a6d0f8d5f4a4d9c53093431ae227002"
+      },
+      "junit_xml": {
+        "path": "@evidence/build/runs/gap-w3-2-qt-bindings-windows-987/junit-pyqt5.xml",
+        "sha256": "21d9215c4180d4d5dd81473ec60634e4ed523140fd9cc90d8762be4be987f64d"
+      }
+    },
+    "pyqt6": {
+      "actual_exit": 0,
+      "child_pid": 54804,
+      "child_waited": true,
+      "source_overrides": 0,
+      "installed_members_verified_before_after": 537,
+      "competing_qt_modules": [],
+      "shutdown_gauges": {
+        "pending_tickets": 0,
+        "queued_frames": 0,
+        "live_buffer_bytes": 0,
+        "live_cpu_buffer_bytes": 0,
+        "live_texture_bytes": 0,
+        "canvas_texture_bytes": 0,
+        "transient_buffer_bytes": 0,
+        "line_resource_pool_busy_slots": 0,
+        "line_resource_pool_bytes": 0,
+        "host_import_pinned_bytes": 0
+      },
+      "worker": {
+        "path": "@evidence/build/runs/gap-w3-2-qt-bindings-windows-987/worker-pyqt6.json",
+        "sha256": "9200b5d8edbe621abe931986b5b2419e7cd1bb424ce8c4d51476e050c1cd167d"
+      },
+      "pytest_report": {
+        "path": "@evidence/build/runs/gap-w3-2-qt-bindings-windows-987/pytest-pyqt6.json",
+        "sha256": "18b5c66c2afb550f1755e38dbbc061412a6d0f8d5f4a4d9c53093431ae227002"
+      },
+      "junit_xml": {
+        "path": "@evidence/build/runs/gap-w3-2-qt-bindings-windows-987/junit-pyqt6.xml",
+        "sha256": "972f19866e0601218fb0a56904b7023509838949c1c3b5fd5e8f12e74ce3e22a"
+      }
+    },
+    "pyside6": {
+      "actual_exit": 0,
+      "child_pid": 22360,
+      "child_waited": true,
+      "source_overrides": 0,
+      "installed_members_verified_before_after": 537,
+      "competing_qt_modules": [],
+      "shutdown_gauges": {
+        "pending_tickets": 0,
+        "queued_frames": 0,
+        "live_buffer_bytes": 0,
+        "live_cpu_buffer_bytes": 0,
+        "live_texture_bytes": 0,
+        "canvas_texture_bytes": 0,
+        "transient_buffer_bytes": 0,
+        "line_resource_pool_busy_slots": 0,
+        "line_resource_pool_bytes": 0,
+        "host_import_pinned_bytes": 0
+      },
+      "worker": {
+        "path": "@evidence/build/runs/gap-w3-2-qt-bindings-windows-987/worker-pyside6.json",
+        "sha256": "9d879a47fd900679115d4883c81916a71d29de7bff7280233bd324b78ce0040d"
+      },
+      "pytest_report": {
+        "path": "@evidence/build/runs/gap-w3-2-qt-bindings-windows-987/pytest-pyside6.json",
+        "sha256": "18b5c66c2afb550f1755e38dbbc061412a6d0f8d5f4a4d9c53093431ae227002"
+      },
+      "junit_xml": {
+        "path": "@evidence/build/runs/gap-w3-2-qt-bindings-windows-987/junit-pyside6.xml",
+        "sha256": "d442755341b1680005bc3eeec523ce3b4e8cfbb93b56907c0e16e35982e2c057"
+      }
+    }
+  },
+  "shutdown_gauges": {
+    "pending_tickets": 0,
+    "queued_frames": 0,
+    "live_buffer_bytes": 0,
+    "live_cpu_buffer_bytes": 0,
+    "live_texture_bytes": 0,
+    "canvas_texture_bytes": 0,
+    "transient_buffer_bytes": 0,
+    "line_resource_pool_busy_slots": 0,
+    "line_resource_pool_bytes": 0,
+    "host_import_pinned_bytes": 0
+  },
+  "actual_exit": 0,
+  "child_waited": true,
+  "scratch_absent_after_cleanup": true,
+  "test_modules": [
+    {
+      "path": "tests/qt/test_qt_multibinding_callbacks_hidpi_gpu.py",
+      "sha256": "97bd28eeb5ed89035a9d2434baf047ad3d557c29463ed8a055d3f55aa212d692",
+      "cases_per_binding": 4,
+      "bindings_executed": [
+        "pyqt5",
+        "pyqt6",
+        "pyside6"
+      ],
+      "cases": {
+        "passed": 12,
+        "skipped": 0,
+        "failed": 0
+      }
+    }
+  ],
+  "boundaries": {
+    "LIF-02": "Embedded QWidget setParent() (WinIdChange / ParentChange) reparenting across two QFrame hosts verified across isolated PyQt5, PyQt6, and PySide6 subprocesses.",
+    "LIF-03": "Zero-size (0, 0) collapse and minimized WindowStateChange zero-submit suppression with subsequent (160, 120) restore and GPU readback verified across PyQt5, PyQt6, and PySide6.",
+    "LIF-04": "Parent QWidget deleteLater() + processEvents() destruction of one shared-context SceneCanvas while surviving peer SceneCanvas continues rendering across PyQt5, PyQt6, and PySide6.",
+    "LIF-06": "Toolkit-synthesized Qt input callbacks (spontaneous() == False), callback exception containment in mouse_press, custom _vispy_mouse_release hook + raising sys.excepthook containment, parent QWidget key-replay guard, and embedded multi-SceneCanvas + QLineEdit programmatic focus routing across PyQt5, PyQt6, and PySide6; physical HID hardware is not claimed (physical_hid_claimed = false).",
+    "LIF-08": "Programmatic single-display fractional HiDPI scale (QT_SCALE_FACTOR=1.5, pixel_scale == 1.5, physical_size == (240, 180), full 4-quadrant physical viewport readback without quarter-screen clip, and logical mouse/wheel coordinate routing) across PyQt5, PyQt6, and PySide6; physical multi-monitor window drags are not claimed (physical_multimonitor_claimed = false)."
+  },
+  "scope": "Installed-wheel multi-binding Qt functional execution on Windows RTX 4090 (wheel 9919a280..., 537 members verified before and after in each binding worker, 0 source overrides, 0 competing Qt packages in sys.modules, 12/12 cases passed across isolated PyQt5 5.15.11 + PyQt6 6.11.0 + PySide6 6.12.0 subprocesses, 10 zero Dawn shutdown gauges per binding subprocess) covering LIF-02, LIF-03, LIF-04, LIF-06, and programmatic single-display LIF-08. Recorded at installed-functional tier only; physical_multimonitor_claimed = false and physical_hid_claimed = false; distinct from tk-state-resource-16 scoped admission and public delivery.",
+  "verification": {
+    "path": "@evidence/build/runs/gap-w3-2-qt-bindings-windows-987/verification.json",
+    "sha256": "255ec7842d43b786b81766f05e2bbe23dc10c726b0966f342417a0d020e99f77"
+  },
+  "qt_profile_inputs": {
+    "path": "@evidence/build/runs/gap-w3-2-qt-bindings-windows-987/qt-profile-inputs.json",
+    "sha256": "8a80b59c336b386da42e76fd51991f52b260d366ed2cedad82f7e2af9cc786ad"
+  },
+  "processes": {
+    "path": "@evidence/build/runs/gap-w3-2-qt-bindings-windows-987/processes.json",
+    "sha256": "0724758870b40fbd98da117072fe286aa54db3f98690ac5bb23864ac3b840072"
+  },
+  "terminal": {
+    "path": "@evidence/build/runs/gap-w3-2-qt-bindings-windows-987/terminal.json",
+    "sha256": "01e4167b2604b46a32feb0ea72bd2bf05e7e13b030b02cee4860deef63a3ed50"
+  },
+  "cleanup_plan": {
+    "path": "@evidence/build/runs/gap-w3-2-qt-bindings-windows-987/cleanup-plan.json",
+    "sha256": "bd4bd38258bbb0b8967818297dbcb422dfcbb42a13e899d2c3926384252c5a29"
+  },
+  "cleanup_apply_process": {
+    "path": "@evidence/build/runs/gap-w3-2-qt-bindings-windows-987/cleanup-apply-process.json",
+    "sha256": "36ccf68b9e56007944b0e09e698e97676aaddb122ceeab09547ca7e41bc71dce"
+  },
+  "cleanup_result": {
+    "path": "@evidence/build/runs/gap-w3-2-qt-bindings-windows-987/cleanup-result.json",
+    "sha256": "b9f6ff1f93a37f13113d0e3c5035d7f2fd99b4e30c6a1c0d34dc9b8349a63904"
+  },
+  "scoped_admitted": false,
+  "artifact_admitted": false,
+  "publicly_delivered": false,
+  "published": false
+}

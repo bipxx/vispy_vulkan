@@ -1,0 +1,278 @@
+{
+  "schema": 1,
+  "date": "2026-11-15",
+  "evidence_tier": "installed-functional",
+  "platform": "wsl-ubuntu24.04-x86_64-vulkan-lavapipe-mesa-26.1.8-9c5",
+  "status": "PASS_INSTALLED_FUNCTIONAL_W3_2_QT_MULTIBINDING_CALLBACKS_HIDPI_WSL",
+  "coverage_ids": [
+    "LIF-02",
+    "LIF-03",
+    "LIF-04",
+    "LIF-06",
+    "LIF-08"
+  ],
+  "source_commit": "613cacfb73b1b4424dc098241c1eaf7553746c90",
+  "wheel": {
+    "path": "build/artifacts/e600b29e5259b896cc9d0fe36bbb5760260946aef53c013f8fc74e2fd0153007/vispy-0.17.0+vulkan.2-cp312-cp312-manylinux_2_39_x86_64.whl",
+    "sha256": "e600b29e5259b896cc9d0fe36bbb5760260946aef53c013f8fc74e2fd0153007"
+  },
+  "device": {
+    "backend": "Vulkan",
+    "adapter_type": "cpu",
+    "device": "llvmpipe (LLVM 18.1.3, 256 bits)",
+    "driver": "llvmpipe: Mesa 26.1.8 (LLVM 18.1.3)",
+    "software": true
+  },
+  "driver_artifact": {
+    "path": "/home/heq/vispy-vulkan-managed/build/artifacts/9c5c41b3a7b9d759b0960c868f10375281798ad084150716d6d122c8789b9e12/libvulkan_lvp.so",
+    "sha256": "9c5c41b3a7b9d759b0960c868f10375281798ad084150716d6d122c8789b9e12"
+  },
+  "toolkits": {
+    "pyqt5": {
+      "binding": "pyqt5",
+      "package": "PyQt5",
+      "qt_version": "5.15.19",
+      "binding_version": "5.15.11",
+      "binding_origin": "/home/heq/vispy-opengl-removal-python-pyqt5-rootfs-1/rootfs/opt/pyqt5-final-consumer1/lib/python3.12/site-packages/PyQt5/QtCore.abi3.so",
+      "binding_sha256": "e8a4a6e1dbaaf09dd94401057a9abbde1575b316f4b899affdc08d9c22660f9c"
+    },
+    "pyqt6": {
+      "binding": "pyqt6",
+      "package": "PyQt6",
+      "qt_version": "6.11.2",
+      "binding_version": "6.11.0",
+      "binding_origin": "/home/heq/vispy-opengl-removal-python-hosts-rootfs-2/rootfs/opt/gui-pyqt6-consumer1/lib/python3.12/site-packages/PyQt6/QtCore.abi3.so",
+      "binding_sha256": "68d07f960374f94ffda3bd6c1da078b978c28370e3c33afbdcf2bdd713018a8f"
+    },
+    "pyside6": {
+      "binding": "pyside6",
+      "package": "PySide6",
+      "qt_version": "6.12.0",
+      "binding_version": "6.12.0",
+      "binding_origin": "/home/heq/vispy-opengl-removal-python-pyside6-rootfs-1/rootfs/opt/pyside6-final-consumer1/lib/python3.12/site-packages/PySide6/QtCore.abi3.so",
+      "binding_sha256": "1bca0fbcc5d5451b7915f58c7376161b41fabca3d47f66062723c09726ea4eb7"
+    }
+  },
+  "source_overrides": 0,
+  "installed_members_verified": 537,
+  "physical_multimonitor_claimed": false,
+  "physical_hid_claimed": false,
+  "junit_summary": {
+    "total": 12,
+    "passed": 12,
+    "skipped": 0,
+    "failures": 0,
+    "errors": 0,
+    "per_binding": {
+      "pyqt5": {
+        "total": 4,
+        "passed": 4,
+        "skipped": 0,
+        "failures": 0,
+        "errors": 0
+      },
+      "pyqt6": {
+        "total": 4,
+        "passed": 4,
+        "skipped": 0,
+        "failures": 0,
+        "errors": 0
+      },
+      "pyside6": {
+        "total": 4,
+        "passed": 4,
+        "skipped": 0,
+        "failures": 0,
+        "errors": 0
+      }
+    }
+  },
+  "per_binding": {
+    "pyqt5": {
+      "actual_exit": 0,
+      "child_pid": 1343,
+      "child_waited": true,
+      "source_overrides": 0,
+      "installed_members_verified_before_after": 537,
+      "competing_qt_modules": [],
+      "shutdown_gauges": {
+        "pending_tickets": 0,
+        "queued_frames": 0,
+        "live_buffer_bytes": 0,
+        "live_cpu_buffer_bytes": 0,
+        "live_texture_bytes": 0,
+        "canvas_texture_bytes": 0,
+        "transient_buffer_bytes": 0,
+        "line_resource_pool_busy_slots": 0,
+        "line_resource_pool_bytes": 0,
+        "host_import_pinned_bytes": 0
+      },
+      "worker": {
+        "path": "@evidence/build/runs/gap-w3-2-qt-bindings-wsl-988/worker-pyqt5.json",
+        "sha256": "8a4cf544d26314f7b243c3fc80cad038fb1f4674f837915b66542398242d84cf"
+      },
+      "pytest_report": {
+        "path": "@evidence/build/runs/gap-w3-2-qt-bindings-wsl-988/pytest-pyqt5.json",
+        "sha256": "409bc5f93197b8b13b95268fa5a5babfc82fdbb3f8b9dd3d9be29e63b0ad93a3"
+      },
+      "junit_xml": {
+        "path": "@evidence/build/runs/gap-w3-2-qt-bindings-wsl-988/junit-pyqt5.xml",
+        "sha256": "1fead155a77766b755a013e06d974a3aa8d4b40a53a5d63d4c4a8ff8185e95a0"
+      }
+    },
+    "pyqt6": {
+      "actual_exit": 0,
+      "child_pid": 1421,
+      "child_waited": true,
+      "source_overrides": 0,
+      "installed_members_verified_before_after": 537,
+      "competing_qt_modules": [],
+      "shutdown_gauges": {
+        "pending_tickets": 0,
+        "queued_frames": 0,
+        "live_buffer_bytes": 0,
+        "live_cpu_buffer_bytes": 0,
+        "live_texture_bytes": 0,
+        "canvas_texture_bytes": 0,
+        "transient_buffer_bytes": 0,
+        "line_resource_pool_busy_slots": 0,
+        "line_resource_pool_bytes": 0,
+        "host_import_pinned_bytes": 0
+      },
+      "worker": {
+        "path": "@evidence/build/runs/gap-w3-2-qt-bindings-wsl-988/worker-pyqt6.json",
+        "sha256": "de11d791fcd01d2cbcb5c16d717528ba993c5abdcd318864c0cffd88d6cdfbf8"
+      },
+      "pytest_report": {
+        "path": "@evidence/build/runs/gap-w3-2-qt-bindings-wsl-988/pytest-pyqt6.json",
+        "sha256": "409bc5f93197b8b13b95268fa5a5babfc82fdbb3f8b9dd3d9be29e63b0ad93a3"
+      },
+      "junit_xml": {
+        "path": "@evidence/build/runs/gap-w3-2-qt-bindings-wsl-988/junit-pyqt6.xml",
+        "sha256": "5cbb39dc292f2fa569bae69a170b1f3893e8c87698a52121779cf89264eff4d7"
+      }
+    },
+    "pyside6": {
+      "actual_exit": 0,
+      "child_pid": 1502,
+      "child_waited": true,
+      "source_overrides": 0,
+      "installed_members_verified_before_after": 537,
+      "competing_qt_modules": [],
+      "shutdown_gauges": {
+        "pending_tickets": 0,
+        "queued_frames": 0,
+        "live_buffer_bytes": 0,
+        "live_cpu_buffer_bytes": 0,
+        "live_texture_bytes": 0,
+        "canvas_texture_bytes": 0,
+        "transient_buffer_bytes": 0,
+        "line_resource_pool_busy_slots": 0,
+        "line_resource_pool_bytes": 0,
+        "host_import_pinned_bytes": 0
+      },
+      "worker": {
+        "path": "@evidence/build/runs/gap-w3-2-qt-bindings-wsl-988/worker-pyside6.json",
+        "sha256": "951bbee17d3af8c1d74476c6660e14c6d17c59f0435b1ae90094505113b762cb"
+      },
+      "pytest_report": {
+        "path": "@evidence/build/runs/gap-w3-2-qt-bindings-wsl-988/pytest-pyside6.json",
+        "sha256": "409bc5f93197b8b13b95268fa5a5babfc82fdbb3f8b9dd3d9be29e63b0ad93a3"
+      },
+      "junit_xml": {
+        "path": "@evidence/build/runs/gap-w3-2-qt-bindings-wsl-988/junit-pyside6.xml",
+        "sha256": "8a08f3d7f90f8bcc623bf2ef686bc3f8d418d173cdce1df3d924b2391f999391"
+      }
+    }
+  },
+  "shutdown_gauges": {
+    "pending_tickets": 0,
+    "queued_frames": 0,
+    "live_buffer_bytes": 0,
+    "live_cpu_buffer_bytes": 0,
+    "live_texture_bytes": 0,
+    "canvas_texture_bytes": 0,
+    "transient_buffer_bytes": 0,
+    "line_resource_pool_busy_slots": 0,
+    "line_resource_pool_bytes": 0,
+    "host_import_pinned_bytes": 0
+  },
+  "actual_exit": 0,
+  "child_waited": true,
+  "xvfb_pid": 1340,
+  "xvfb_exit": 0,
+  "xvfb_waited": true,
+  "wsl_outer_pid": 43864,
+  "wsl_outer_exit": 0,
+  "wsl_outer_waited": true,
+  "scratch_absent_after_cleanup": true,
+  "test_modules": [
+    {
+      "path": "tests/qt/test_qt_multibinding_callbacks_hidpi_gpu.py",
+      "sha256": "97bd28eeb5ed89035a9d2434baf047ad3d557c29463ed8a055d3f55aa212d692",
+      "cases_per_binding": 4,
+      "bindings_executed": [
+        "pyqt5",
+        "pyqt6",
+        "pyside6"
+      ],
+      "cases": {
+        "passed": 12,
+        "skipped": 0,
+        "failed": 0
+      }
+    }
+  ],
+  "boundaries": {
+    "LIF-02": "Embedded QWidget setParent() (WinIdChange / ParentChange) reparenting across two QFrame hosts under Xvfb XCB verified across isolated PyQt5, PyQt6, and PySide6 subprocesses.",
+    "LIF-03": "Zero-size (0, 0) collapse and minimized WindowStateChange zero-submit suppression with subsequent (160, 120) restore and GPU readback under Xvfb verified across PyQt5, PyQt6, and PySide6.",
+    "LIF-04": "Parent QWidget deleteLater() + processEvents() destruction of one shared-context SceneCanvas while surviving peer SceneCanvas continues rendering under Xvfb across PyQt5, PyQt6, and PySide6.",
+    "LIF-06": "Toolkit-synthesized Qt input callbacks (spontaneous() == False), callback exception containment in mouse_press, custom _vispy_mouse_release hook + raising sys.excepthook containment, parent QWidget key-replay guard, and embedded multi-SceneCanvas + QLineEdit programmatic focus routing under Xvfb across PyQt5, PyQt6, and PySide6; physical HID hardware is not claimed (physical_hid_claimed = false).",
+    "LIF-08": "Programmatic single-display fractional HiDPI scale (QT_SCALE_FACTOR=1.5 on 96-DPI Xvfb, pixel_scale == 1.5, physical_size == (240, 180), full 4-quadrant physical viewport readback without quarter-screen clip, and logical mouse/wheel coordinate routing) across PyQt5, PyQt6, and PySide6; physical multi-monitor window drags are not claimed (physical_multimonitor_claimed = false)."
+  },
+  "scope": "Installed-wheel multi-binding Qt functional execution on WSL Ubuntu 24.04 Xvfb + headless-repair Mesa 26.1.8 Lavapipe 9c5 (wheel e600b29e..., 537 members verified before and after in each symlink-free private overlay over read-only borrowed PyQt5/PyQt6/PySide6 rootfses, 0 source overrides, 0 competing Qt packages in sys.modules, 12/12 cases passed across isolated PyQt5 5.15.11 + PyQt6 6.11.0 + PySide6 6.12.0 subprocesses, 10 zero Dawn shutdown gauges per binding subprocess, awaited worker/Xvfb/wsl.exe exits) covering LIF-02, LIF-03, LIF-04, LIF-06, and programmatic single-display LIF-08. Recorded at installed-functional tier only; physical_multimonitor_claimed = false and physical_hid_claimed = false; distinct from tk-state-resource-16 scoped admission and public delivery.",
+  "verification": {
+    "path": "@evidence/build/runs/gap-w3-2-qt-bindings-wsl-988/verification.json",
+    "sha256": "ffc94cc5c708b16acacaa1a7ef6289fab053bce38fb5decf6b3a3eddf6e40560"
+  },
+  "borrowed_inputs": {
+    "path": "@evidence/build/runs/gap-w3-2-qt-bindings-wsl-988/borrowed-inputs.json",
+    "sha256": "2262158183ee8fb6b5f619c7003393ca0268a2ed02d09a965fa13e1a2ef4267b"
+  },
+  "copied_rootfs_runtime_libs": {
+    "path": "@evidence/build/runs/gap-w3-2-qt-bindings-wsl-988/copied-rootfs-runtime-libs.json",
+    "sha256": "44b9aecaf8854aee929fa04e312785dda2ea1a5f9057ccd533ccf10b38209ca3"
+  },
+  "processes": {
+    "path": "@evidence/build/runs/gap-w3-2-qt-bindings-wsl-988/processes.json",
+    "sha256": "fecd1ea80d649cf839aa8e3141e0d30e133dab895a8a6e46fcc39f9ac624c23d"
+  },
+  "controller_process": {
+    "path": "@evidence/build/runs/gap-w3-2-qt-bindings-wsl-988/controller-process.json",
+    "sha256": "117ba35a6082ac58904b541820a3d2610c69a2103606dda3078271b466bfd6cf"
+  },
+  "xvfb_process": {
+    "path": "@evidence/build/runs/gap-w3-2-qt-bindings-wsl-988/xvfb-process.json",
+    "sha256": "ec5a0d56c3bfffcdf362d2679b48392ec4d24d8a76b77c8b44c8b5bae8521572"
+  },
+  "terminal": {
+    "path": "@evidence/build/runs/gap-w3-2-qt-bindings-wsl-988/terminal.json",
+    "sha256": "30472fb75a0cede41085641ad052ef27c0d0e3f3d3076919f7eaab8ad748c6e4"
+  },
+  "cleanup_plan": {
+    "path": "@evidence/build/runs/gap-w3-2-qt-bindings-wsl-988/cleanup-plan.json",
+    "sha256": "35a27965782e6aee40afc8cc91614d7deaa9a0bf50ccb4c56fcdc2ec0e7c87d5"
+  },
+  "cleanup_apply_process": {
+    "path": "@evidence/build/runs/gap-w3-2-qt-bindings-wsl-988/cleanup-apply-process.json",
+    "sha256": "c6d17f245e0a5ed915f553359fb7127f0fbccbbe937384e986ba3df4438b3492"
+  },
+  "cleanup_result": {
+    "path": "@evidence/build/runs/gap-w3-2-qt-bindings-wsl-988/cleanup-result.json",
+    "sha256": "9f052814534dd9d4e62c9cc5401698f79aac5bed24228fdc72d3569f5ae04936"
+  },
+  "scoped_admitted": false,
+  "artifact_admitted": false,
+  "publicly_delivered": false,
+  "published": false
+}

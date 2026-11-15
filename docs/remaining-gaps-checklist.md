@@ -2,6 +2,12 @@
 
 ## Comprehensive current gap register
 
+**Wave 3 installed-experimental (`W3-1`), installed-functional (`W3-2`/`W3-3`), & additive `W3-4a` update — 2026-11-15:**
+- `W3-1` (`LIF-07`, `LIF-07-NATIVE-ADMISSION`): [tk-native-current-wheels](../compat/api-acceptance/tk-native-current-wheels-v1.json) (`224701fe…`, `985`/`986`, `11/11` pass/platform); installed-experimental on `9919a280`/`e600b29e` (`Windows RTX 4090` / `WSL Xvfb` + system Mesa `25.2.8`); `default_presentation: "raster"`, `native_admitted_mandatory_matrix: false`, `scoped_admitted: false`; no full upstream parity claim.
+- `W3-2` (`LIF-02`/`03`/`04`/`06`, programmatic single-display `LIF-08`): [lif02-08-qt-multibinding-windows](../compat/api-acceptance/lif02-08-qt-multibinding-windows-v1.json) (`9001513c…`, `987`) & [lif02-08-qt-multibinding-wsl](../compat/api-acceptance/lif02-08-qt-multibinding-wsl-v1.json) (`5fb417d3…`, `988`, `12/12` pass/platform across PyQt5/PyQt6/PySide6); installed-functional on `9919a280`/`e600b29e` (`Windows RTX 4090` / `WSL Xvfb` + Mesa `9c5`); `physical_multimonitor_claimed: false`, `physical_hid_claimed: false`, `scoped_admitted: false`; no full upstream parity claim.
+- `W3-3` (`API-05`/`06`): [api05-plot-transforms-windows](../compat/api-acceptance/api05-plot-transforms-windows-v1.json) (`54d99133…`, `989`) & [api05-plot-transforms-wsl](../compat/api-acceptance/api05-plot-transforms-wsl-v1.json) (`b25da28f…`, `990`, `16/16` pass/platform) (6 rendered collections + 3 documented upstream bounds: `PointCollection` agg/local WGSL link, `SegmentCollection` raw/shared Py3 float division, `PathCollection` raw `NullTransform() + str`); installed-functional on `9919a280`/`e600b29e` (`Windows RTX 4090` / `WSL Xvfb` + Mesa `9c5`); `scoped_admitted: false`; no full upstream parity claim.
+- `W3-4a` (`HOST-03`): [no-opengl-optional-hosts-current-v1.json](../compat/no-opengl-optional-hosts-current-v1.json) (`0f7159d7…`); additive current-wheel optional-host view on `9919a280`/`e600b29e` (preserving `no-opengl-matrix.json` `230b12f3…` untouched without `r1`, and `no-opengl-napari-0.10.0.json` `a724432b…` row `windows-vulkan-napari-threedee-pyqt6` `r1 == "open"`); not scoped-admitted, not delivered, no full upstream parity claim. Hardware-blocked (`PLAT-03/04/05`, physical `LIF-06`/`LIF-08`), `PERF-01` optical timing, `DIVE` Qt6, and upstream collections bounds remain open.
+
 As of 2026-11-14, the selected Windows/WSL release is delivered. Its exact
 artifacts are Windows `4f537748…` and Linux `dfe1033f…`, qualified at `90348a8`
 and merged as `76cc5e8c` from runtime source `275888b5`.
@@ -22,6 +28,16 @@ it must not turn a boundary into an implementation claim. No new feature or
 hardware campaign is selected by listing it here. Cybersecurity work is excluded.
 
 ### Complete list at a glance
+
+2026-11-15 (Post-971 consolidation): `API-06-READBACK-GEOMETRY` / `tk-state-resource-16`
+(`128` bindings / `8` mandatory rows, `full_inventory_complete=false`) is `scoped-admitted`
++ `publicly-delivered` (`965`–`971`/`980`–`983`, release `v0.17.0-vulkan.2-readback-geometry-f5c00c9`,
+PR #85 `38753fc0…`, `delivery.json` `a4737a31…`, `completion-audit.json` `92b932ea…`).
+`installed-functional` on `9919a280`/`e600b29e` (`Windows RTX 4090` + `WSL Xvfb Mesa 9c5`):
+`W2-2/W2-3` (`972`/`973`/`973r` `ef86bcbb…`; [sta01-tex01-sci06-windows](../compat/api-acceptance/sta01-tex01-sci06-windows-v1.json), [sta01-tex01-sci06-wsl](../compat/api-acceptance/sta01-tex01-sci06-wsl-v1.json), [shd01-06-lin01-windows](../compat/api-acceptance/shd01-06-lin01-windows-v1.json), [shd01-06-lin01-wsl](../compat/api-acceptance/shd01-06-lin01-wsl-v1.json)), `W2-4` (`974`/`975`/`975r` `f21aa13f…`; [sci01-05-windows](../compat/api-acceptance/sci01-05-windows-v1.json), [sci01-05-wsl](../compat/api-acceptance/sci01-05-wsl-v1.json)),
+`W2-5` (`976`/`977`/`977r` `863bcb65…`; [lif01-07-windows](../compat/api-acceptance/lif01-07-windows-v1.json), [lif01-07-wsl](../compat/api-acceptance/lif01-07-wsl-v1.json)), `W2-6` (`978` `4dc8b6d5…`/`979` `d7576be2…`/`979r` decision `56c8b9a4…`, [host01-06-current-wheels](../compat/api-acceptance/host01-06-current-wheels-v1.json) `e36a08c2…`). `historical-reconciled`: `W2-1` (`959` `af7cc83d…`/`959r` decision `b7ed4d1c…`, `dba78b6f…`). Remaining `excluded/deferred/hardware-bounded` (16 items):
+`MAC-01..03`, physical Linux GPU/HID/Wayland, physical optical timing, cybersecurity skipped,
+and broader upstream API parity (`full_inventory_complete=false`).
 
 2026-11-15: `legacy-project-cleanup-945` (`8cc281b5…` / `5d9b772d…` / `f9de0fc3…`)
 reclaimed 7.9153 GiB physical (7.94 GiB `C:\`; 9,655 files, 4,984 empty dirs, 0
@@ -2348,23 +2364,29 @@ For each open parent, first select a finite supported subset or document an
 explicit boundary; implementing every possible form is not required.
 
 - [ ] **SHD-01 — Sampler breadth:** decide multidimensional runtime indexing,
+  2026-11-15: [shd01-06-lin01-windows](../compat/api-acceptance/shd01-06-lin01-windows-v1.json), [shd01-06-lin01-wsl](../compat/api-acceptance/shd01-06-lin01-wsl-v1.json): installed-functional on `9919a280`/`e600b29e` (`Windows RTX 4090` / `WSL Xvfb Mesa 9c5`); not scoped-admitted, not delivered, no full parity.
   implicit-derivative/uniformity rules, additional preprocessor/helper forms,
   multilevel mip chains and wider filtering/LOD combinations. The proved path
   is direct explicit selection over one-dimensional arrays; retain intentional
   refusals and add value, binding-limit and recovery tests for any expansion.
 - [ ] **SHD-02 — Array breadth:** settle remaining storage/interface classes,
+  2026-11-15: [shd01-06-lin01-windows](../compat/api-acceptance/shd01-06-lin01-windows-v1.json), [shd01-06-lin01-wsl](../compat/api-acceptance/shd01-06-lin01-wsl-v1.json): installed-functional on `9919a280`/`e600b29e` (`Windows RTX 4090` / `WSL Xvfb Mesa 9c5`); not scoped-admitted, not delivered, no full parity.
   shape/type combinations, indexing, partial updates, reflection and shader-cache
   identity beyond the installed numeric uniform subset.
 - [ ] **SHD-03 — Attribute breadth:** disposition constants, additional formats,
+  2026-11-15: [shd01-06-lin01-windows](../compat/api-acceptance/shd01-06-lin01-windows-v1.json), [shd01-06-lin01-wsl](../compat/api-acceptance/shd01-06-lin01-wsl-v1.json): installed-functional on `9919a280`/`e600b29e` (`Windows RTX 4090` / `WSL Xvfb Mesa 9c5`); not scoped-admitted, not delivered, no full parity.
   shapes/divisors and mutation combinations beyond the finite matrix/array
   evidence. Retain route-specific raster versus generated-line input limits.
 - [ ] **SHD-04 — Geometry consumers:** select supported compute/instanced
+  2026-11-15: [shd01-06-lin01-windows](../compat/api-acceptance/shd01-06-lin01-windows-v1.json), [shd01-06-lin01-wsl](../compat/api-acceptance/shd01-06-lin01-wsl-v1.json): installed-functional on `9919a280`/`e600b29e` (`Windows RTX 4090` / `WSL Xvfb Mesa 9c5`); not scoped-admitted, not delivered, no full parity.
   expansion or an explicit application rewrite; prove topology, interpolation,
   clipping, depth and mutation/loss for that subset.
 - [ ] **SHD-05 — Broader line semantics:** beyond the seven proved boundary cases above,
+  2026-11-15: [shd01-06-lin01-windows](../compat/api-acceptance/shd01-06-lin01-windows-v1.json), [shd01-06-lin01-wsl](../compat/api-acceptance/shd01-06-lin01-wsl-v1.json): installed-functional on `9919a280`/`e600b29e` (`Windows RTX 4090` / `WSL Xvfb Mesa 9c5`); not scoped-admitted, not delivered, no full parity.
   decide any additional builtin, external-storage and early/late-depth support.
   Unsupported semantics must keep explicit diagnostics and recovery behavior.
 - [ ] **SHD-06 — Broader Mesa driver portability:** the patched Mesa9c5
+  2026-11-15: [shd01-06-lin01-windows](../compat/api-acceptance/shd01-06-lin01-windows-v1.json), [shd01-06-lin01-wsl](../compat/api-acceptance/shd01-06-lin01-wsl-v1.json): installed-functional on `9919a280`/`e600b29e` (`Windows RTX 4090` / `WSL Xvfb Mesa 9c5`); not scoped-admitted, not delivered, no full parity.
   profile is admitted for the selected release. Wider system-driver support
   needs its own exact current artifact/driver observations. Historical
   pre-qualification checkpoint follows; it does not reopen current admission.
@@ -2373,20 +2395,26 @@ explicit boundary; implementing every possible form is not required.
   fails the four-sample quadrant case on the identical wheel/tests. Preparation9
   binds the actual patched driver; strict profile/CI joins remain pending.
 - [ ] **STA-01 — Raster-state combinations:** reconcile dither, disabled
+  2026-11-15: [sta01-tex01-sci06-windows](../compat/api-acceptance/sta01-tex01-sci06-windows-v1.json), [sta01-tex01-sci06-wsl](../compat/api-acceptance/sta01-tex01-sci06-wsl-v1.json): installed-functional on `9919a280`/`e600b29e` (`Windows RTX 4090` / `WSL Xvfb Mesa 9c5`); not scoped-admitted, not delivered, no full parity.
   multisampling, fractional polygon offset, mixed constant blending and stencil.
   Keep the already-proved reversed-depth subset separate.
 - [ ] **TEX-01 — Typed sampling:** disposition Uint/Sint, unfilterable float,
+  2026-11-15: [sta01-tex01-sci06-windows](../compat/api-acceptance/sta01-tex01-sci06-windows-v1.json), [sta01-tex01-sci06-wsl](../compat/api-acceptance/sta01-tex01-sci06-wsl-v1.json): installed-functional on `9919a280`/`e600b29e` (`Windows RTX 4090` / `WSL Xvfb Mesa 9c5`); not scoped-admitted, not delivered, no full parity.
   comparison sampling, half precision and NaN behavior on claimed layouts.
 - [ ] **LIN-01 — Line partitioning:** bind chunk boundaries, endpoint carry,
+  2026-11-15: [shd01-06-lin01-windows](../compat/api-acceptance/shd01-06-lin01-windows-v1.json), [shd01-06-lin01-wsl](../compat/api-acceptance/shd01-06-lin01-wsl-v1.json): installed-functional on `9919a280`/`e600b29e` (`Windows RTX 4090` / `WSL Xvfb Mesa 9c5`); not scoped-admitted, not delivered, no full parity.
   topology, resource limits and ordering to selected rendered acceptance cases.
 
 ## Scientific workflows and API reconciliation
 
 - [ ] **API-05 — Methods, routes and aliases:** reconcile remaining public
+  2026-11-15: [api05-plot-transforms-windows](../compat/api-acceptance/api05-plot-transforms-windows-v1.json) (`54d99133…`, `989`) & [api05-plot-transforms-wsl](../compat/api-acceptance/api05-plot-transforms-wsl-v1.json) (`b25da28f…`, `990`, `16/16` pass/platform): installed-functional on `9919a280`/`e600b29e` (`Windows RTX 4090` / `WSL Xvfb` + Mesa `9c5`); `scoped_admitted: false`; no full upstream parity claim.
+  2026-11-15: [sta01-tex01-sci06-windows](../compat/api-acceptance/sta01-tex01-sci06-windows-v1.json), [shd01-06-lin01-windows](../compat/api-acceptance/shd01-06-lin01-windows-v1.json), [sci01-05-windows](../compat/api-acceptance/sci01-05-windows-v1.json), [lif01-07-windows](../compat/api-acceptance/lif01-07-windows-v1.json): installed-functional on `9919a280`/`e600b29e` (`Windows RTX 4090` / `WSL Xvfb Mesa 9c5`); not scoped-admitted, not delivered, no full parity.
   methods, wildcard exports, aliases and value-dependent dispatch with actual
   source routes. Parent-level app/gloo/scene/visual reviews are already recorded;
   the canonical inventory is still not a fully reviewed method inventory.
 - [ ] **API-06 — Selected API acceptance:** for each claimed subset, record
+  2026-11-15: [api05-plot-transforms-windows](../compat/api-acceptance/api05-plot-transforms-windows-v1.json) (`54d99133…`, `989`) & [api05-plot-transforms-wsl](../compat/api-acceptance/api05-plot-transforms-wsl-v1.json) (`b25da28f…`, `990`, `16/16` pass/platform): installed-functional on `9919a280`/`e600b29e` (`Windows RTX 4090` / `WSL Xvfb` + Mesa `9c5`); `scoped_admitted: false`; no full upstream parity claim.
   inputs/values, expected output, ordinary/mutation/failure/recovery behavior,
   exact installed artifact and explicit unsupported cases.
 - [x] **API-06-CLEAR-ZERO-INSTALLED — Eleven finite cases per profile:**
@@ -2398,8 +2426,10 @@ explicit boundary; implementing every possible form is not required.
   historical. This closes installed observation for these values, not broader
   API acceptance or qualification of the newer callback wrapper.
 - [ ] **SCI-01 — Indexed/instanced points:** rendered source-ID, divisor,
+  2026-11-15: [sci01-05-windows](../compat/api-acceptance/sci01-05-windows-v1.json), [sci01-05-wsl](../compat/api-acceptance/sci01-05-wsl-v1.json): installed-functional on `9919a280`/`e600b29e` (`Windows RTX 4090` / `WSL Xvfb Mesa 9c5`); not scoped-admitted, not delivered, no full parity.
   constant-input and ordered-revision combinations.
 - [ ] **SCI-02 — Mesh filters:** enumerate supported filters/compositions and
+  2026-11-15: [sci01-05-windows](../compat/api-acceptance/sci01-05-windows-v1.json), [sci01-05-wsl](../compat/api-acceptance/sci01-05-wsl-v1.json): installed-functional on `9919a280`/`e600b29e` (`Windows RTX 4090` / `WSL Xvfb Mesa 9c5`); not scoped-admitted, not delivered, no full parity.
   prove meaningful output plus mutation behavior for selected combinations.
 - [x] **SCI-02-COLOR-ALPHA-COMPOSITION — Finite installed subset, 2026-11-14:**
   Six exact-pixel queued-revision/mutation/boundary/recovery cases pass per
@@ -2409,6 +2439,7 @@ explicit boundary; implementing every possible form is not required.
   composition ordering, blending/MSAA and final review/integration/admission
   of the post-head test remain separate; SCI-02 stays partial.
 - [ ] **SCI-03 — Scenes/cameras:** reconcile selected 3D cameras, planes,
+  2026-11-15: [sci01-05-windows](../compat/api-acceptance/sci01-05-windows-v1.json), [sci01-05-wsl](../compat/api-acceptance/sci01-05-wsl-v1.json): installed-functional on `9919a280`/`e600b29e` (`Windows RTX 4090` / `WSL Xvfb Mesa 9c5`); not scoped-admitted, not delivered, no full parity.
   depth/stencil and polygon-offset interactions.
 - [x] **SCI-03-CAMERA-MUTATION — Finite local installed subset, 2026-11-13:**
   Public TurntableCamera azimuth/center mutation, fresh-construction equivalence,
@@ -2419,8 +2450,10 @@ explicit boundary; implementing every possible form is not required.
   reference. Broader3Dstate/fov/event/other-camera combinations and final
   review/integration/admission of the post-head test remain separate.
 - [ ] **SCI-04 — Large volumes:** separate scientific quality, mode, performance,
+  2026-11-15: [sci01-05-windows](../compat/api-acceptance/sci01-05-windows-v1.json), [sci01-05-wsl](../compat/api-acceptance/sci01-05-wsl-v1.json): installed-functional on `9919a280`/`e600b29e` (`Windows RTX 4090` / `WSL Xvfb Mesa 9c5`); not scoped-admitted, not delivered, no full parity.
   platform and artifact claims; extend only the selected bounded workflow.
 - [ ] **SCI-05 — Stale fixture dispositions:** reconcile U05, E03, E04, Q11–Q13
+  2026-11-15: [sci01-05-windows](../compat/api-acceptance/sci01-05-windows-v1.json), [sci01-05-wsl](../compat/api-acceptance/sci01-05-wsl-v1.json): installed-functional on `9919a280`/`e600b29e` (`Windows RTX 4090` / `WSL Xvfb Mesa 9c5`); not scoped-admitted, not delivered, no full parity.
   and H03 against newer evidence before changing their status.
 - [x] **SCI-05-RECONCILIATION — Seven-row disposition audit, 2026-11-13:**
   [708](../compat/api-acceptance/scientific-current-dispositions-v2.json) and the
@@ -2429,6 +2462,7 @@ explicit boundary; implementing every possible form is not required.
   seven rows. Record classification is complete; capability parents and final
   admission/public delivery remain partial. No broad source-route review inferred.
 - [ ] **SCI-06 — Stencil wrapper:** track additional selected formats and
+  2026-11-15: [sta01-tex01-sci06-windows](../compat/api-acceptance/sta01-tex01-sci06-windows-v1.json), [sta01-tex01-sci06-wsl](../compat/api-acceptance/sta01-tex01-sci06-wsl-v1.json): installed-functional on `9919a280`/`e600b29e` (`Windows RTX 4090` / `WSL Xvfb Mesa 9c5`); not scoped-admitted, not delivered, no full parity.
   compatibility boundaries separately from native capture. Original stock
   failures remain historical failures; complete stock parity is not required.
 - [x] **SCI-06-PUBLIC-ROUTES-INSTALLED — Eight finite cases per profile:**
@@ -2454,12 +2488,15 @@ explicit boundary; implementing every possible form is not required.
   zero gauges; unchanged borrowed origins, awaited exits, cleaned target.
   Actual surface, physical-memory and broader-parent/evidence integration open.
 - [ ] **LIF-01 — Fault coverage:** audit acquisition failures, fault injection
+  2026-11-15: [lif01-07-windows](../compat/api-acceptance/lif01-07-windows-v1.json), [lif01-07-wsl](../compat/api-acceptance/lif01-07-wsl-v1.json): installed-functional on `9919a280`/`e600b29e` (`Windows RTX 4090` / `WSL Xvfb Mesa 9c5`); not scoped-admitted, not delivered, no full parity.
   and physical-memory-accounting evidence; retain unresolved cases explicitly.
   New source failure, 2026-11-13: run557retains24CPU-buffer and24GPU-buffer
   bytes after final explicit deletion/close. The rebuilt native leaf resolves
   that exact case with all nine zero gauges on Windows (runs560/561); retain
   the original failure. Linux and broader fault/memory cases remain open.
 - [ ] **LIF-02 — Reparenting:** selected real layout reparenting, WinIdChange,
+  2026-11-15: [lif02-08-qt-multibinding-windows](../compat/api-acceptance/lif02-08-qt-multibinding-windows-v1.json) (`9001513c…`, `987`) & [lif02-08-qt-multibinding-wsl](../compat/api-acceptance/lif02-08-qt-multibinding-wsl-v1.json) (`5fb417d3…`, `988`, `12/12` pass/platform across PyQt5/PyQt6/PySide6): installed-functional on `9919a280`/`e600b29e` (`Windows RTX 4090` / `WSL Xvfb` + Mesa `9c5`); `physical_multimonitor_claimed: false`, `physical_hid_claimed: false`, `scoped_admitted: false`; no full upstream parity claim.
+  2026-11-15: [lif01-07-windows](../compat/api-acceptance/lif01-07-windows-v1.json), [lif01-07-wsl](../compat/api-acceptance/lif01-07-wsl-v1.json): installed-functional on `9919a280`/`e600b29e` (`Windows RTX 4090` / `WSL Xvfb Mesa 9c5`); not scoped-admitted, not delivered, no full parity.
   surface ownership and shared-resource lifetimes.
   Source progress, 2026-11-13: [Windows PyQt6 readback](../compat/api-acceptance/qt-layout-reparent-source-v1.json)
   passes two active layout moves, old-parent deletion after the move, actual
@@ -2468,6 +2505,8 @@ explicit boundary; implementing every possible form is not required.
   preserved. The same case now [passes on current WSL software Vulkan](../compat/api-acceptance/qt-lifecycle-wsl-current-source-v1.json).
   Installed, native-WSI and embedded-parent destruction remain open.
 - [ ] **LIF-03 — Zero/minimized windows:** prove no-submit behavior and restoration
+  2026-11-15: [lif02-08-qt-multibinding-windows](../compat/api-acceptance/lif02-08-qt-multibinding-windows-v1.json) (`9001513c…`, `987`) & [lif02-08-qt-multibinding-wsl](../compat/api-acceptance/lif02-08-qt-multibinding-wsl-v1.json) (`5fb417d3…`, `988`, `12/12` pass/platform across PyQt5/PyQt6/PySide6): installed-functional on `9919a280`/`e600b29e` (`Windows RTX 4090` / `WSL Xvfb` + Mesa `9c5`); `physical_multimonitor_claimed: false`, `physical_hid_claimed: false`, `scoped_admitted: false`; no full upstream parity claim.
+  2026-11-15: [lif01-07-windows](../compat/api-acceptance/lif01-07-windows-v1.json), [lif01-07-wsl](../compat/api-acceptance/lif01-07-wsl-v1.json): installed-functional on `9919a280`/`e600b29e` (`Windows RTX 4090` / `WSL Xvfb Mesa 9c5`); not scoped-admitted, not delivered, no full parity.
   beyond screenshots or overlay observations.
   Source progress, 2026-11-13: window-state events now suspend/restore without
   resize; real offscreen Qt before/after control and 43 CPU cases pass.
@@ -2479,6 +2518,8 @@ explicit boundary; implementing every possible form is not required.
   Broader zero-size/resource cases and changed-artifact qualification remain
   open; the local-native and WSL bootstrap failures are retained separately.
 - [ ] **LIF-04 — Close/loss:** selected in-flight close, actual surface loss,
+  2026-11-15: [lif02-08-qt-multibinding-windows](../compat/api-acceptance/lif02-08-qt-multibinding-windows-v1.json) (`9001513c…`, `987`) & [lif02-08-qt-multibinding-wsl](../compat/api-acceptance/lif02-08-qt-multibinding-wsl-v1.json) (`5fb417d3…`, `988`, `12/12` pass/platform across PyQt5/PyQt6/PySide6): installed-functional on `9919a280`/`e600b29e` (`Windows RTX 4090` / `WSL Xvfb` + Mesa `9c5`); `physical_multimonitor_claimed: false`, `physical_hid_claimed: false`, `scoped_admitted: false`; no full upstream parity claim.
+  2026-11-15: [lif01-07-windows](../compat/api-acceptance/lif01-07-windows-v1.json), [lif01-07-wsl](../compat/api-acceptance/lif01-07-wsl-v1.json): installed-functional on `9919a280`/`e600b29e` (`Windows RTX 4090` / `WSL Xvfb Mesa 9c5`); not scoped-admitted, not delivered, no full parity.
   multicanvas recovery and resource retirement.
   Source progress, 2026-11-13: native QWidget close now invokes Canvas.close
   once, including callback-error cleanup. Shared-peer green pixels pass on
@@ -2496,6 +2537,7 @@ explicit boundary; implementing every possible form is not required.
   [PR80](../compat/api-acceptance/lifecycle-panzoom-protected-integration-v1.json);
   mixed-edge selection, other formats/features and broader admission stay open.
 - [ ] **LIF-05 — MSAA capture:** disposition broader depth/stencil and
+  2026-11-15: [lif01-07-windows](../compat/api-acceptance/lif01-07-windows-v1.json), [lif01-07-wsl](../compat/api-acceptance/lif01-07-wsl-v1.json): installed-functional on `9919a280`/`e600b29e` (`Windows RTX 4090` / `WSL Xvfb Mesa 9c5`); not scoped-admitted, not delivered, no full parity.
   format/feature combinations separately from existing color-resolve evidence.
 - [x] **LIF-06-QT-WINDOWS — Finite8case installed PyQt6 subset:**
   [736](../compat/api-acceptance/qt-input-windows-v1.json),2026-11-14:
@@ -2548,6 +2590,8 @@ explicit boundary; implementing every possible form is not required.
   Update: source re-review and protected integration are complete in PR81 above.
   Other bindings, hosts and changed-wrapper installed/public admission stay open.
 - [ ] **LIF-06 — Input forwarding:** selected Qt keyboard, wheel, focus, mouse,
+  2026-11-15: [lif02-08-qt-multibinding-windows](../compat/api-acceptance/lif02-08-qt-multibinding-windows-v1.json) (`9001513c…`, `987`) & [lif02-08-qt-multibinding-wsl](../compat/api-acceptance/lif02-08-qt-multibinding-wsl-v1.json) (`5fb417d3…`, `988`, `12/12` pass/platform across PyQt5/PyQt6/PySide6): installed-functional on `9919a280`/`e600b29e` (`Windows RTX 4090` / `WSL Xvfb` + Mesa `9c5`); `physical_multimonitor_claimed: false`, `physical_hid_claimed: false`, `scoped_admitted: false`; no full upstream parity claim.
+  2026-11-15: [lif01-07-windows](../compat/api-acceptance/lif01-07-windows-v1.json), [lif01-07-wsl](../compat/api-acceptance/lif01-07-wsl-v1.json): installed-functional on `9919a280`/`e600b29e` (`Windows RTX 4090` / `WSL Xvfb Mesa 9c5`); not scoped-admitted, not delivered, no full parity; no physical-HID claim.
   timer and coordinate delivery beyond the finite Tk subset. Touch, stylus,
   gestures and additional layouts need their own selected scope.
 - [x] **LIF-06-QT-FOCUS — Selected interaction integrated, admitted and delivered:**
@@ -2591,6 +2635,8 @@ explicit boundary; implementing every possible form is not required.
   native setup/painting are bypassed and native calls forbidden. Exit 0/awaited,
   seven retained files verified, scratch absent. No rendered/WSL/installed claim.
 - [ ] **LIF-07 — Tk extensions:** decide camera/DPI/physical-input claims beyond
+  2026-11-15: [tk-native-current-wheels](../compat/api-acceptance/tk-native-current-wheels-v1.json) (`224701fe…`, `985`/`986`, `11/11` pass/platform, `default_presentation: "raster"`): installed-experimental on `9919a280`/`e600b29e` (`Windows RTX 4090` / `WSL Xvfb` + system Mesa `25.2.8`); `default_presentation: "raster"`, `native_admitted_mandatory_matrix: false`, `scoped_admitted: false`; no full upstream parity claim.
+  2026-11-15: [lif01-07-windows](../compat/api-acceptance/lif01-07-windows-v1.json), [lif01-07-wsl](../compat/api-acceptance/lif01-07-wsl-v1.json): installed-functional on `9919a280`/`e600b29e` (`Windows RTX 4090` / `WSL Xvfb Mesa 9c5`); not scoped-admitted, not delivered, no full parity.
   the proved raster/manual-pump and toolkit-generated input cases.
   The opt-in native presentation prototype now has finite source-functional
   proof; it does not close DPI, physical-input or release/profile obligations.
@@ -2605,12 +2651,17 @@ explicit boundary; implementing every possible form is not required.
 Select these only when needed for a product claim.
 
 - [ ] **HOST-03:** renew optional strict napari/Glue/napari-threedee rows if
+  2026-11-15: [no-opengl-optional-hosts-current-v1.json](../compat/no-opengl-optional-hosts-current-v1.json) (`0f7159d7…`): additive current-wheel optional-host view on `9919a280`/`e600b29e` (preserving `no-opengl-matrix.json` `230b12f3…` untouched without `r1`, and `no-opengl-napari-0.10.0.json` `a724432b…` row `windows-vulkan-napari-threedee-pyqt6` `r1 == "open"`); not scoped-admitted, not delivered, no full upstream parity claim.
+  2026-11-15: [host01-06-current-wheels](../compat/api-acceptance/host01-06-current-wheels-v1.json): installed-functional on `9919a280`/`e600b29e` (`Windows RTX 4090` / `WSL Xvfb Mesa 9c5`); not scoped-admitted, not delivered, no full parity; HOST-01 is hot-swap only.
   claiming them on the successor artifact; old host qualifications do not transfer.
 - [ ] **HOST-04:** resolve DIVE's supported binding/API and upstream baseline
+  2026-11-15: [host01-06-current-wheels](../compat/api-acceptance/host01-06-current-wheels-v1.json): installed-functional on `9919a280`/`e600b29e` (`Windows RTX 4090` / `WSL Xvfb Mesa 9c5`); not scoped-admitted, not delivered, no full parity; HOST-04 is NOT_ADMITTED.
   before claiming rendered workflows; PySide2 remains excluded.
 - [ ] **HOST-05:** select rendered Visbrain/other-application workflows rather
+  2026-11-15: [host01-06-current-wheels](../compat/api-acceptance/host01-06-current-wheels-v1.json): installed-functional on `9919a280`/`e600b29e` (`Windows RTX 4090` / `WSL Xvfb Mesa 9c5`); not scoped-admitted, not delivered, no full parity; Visbrain is NOT_ADMITTED, phylib is import-only.
   than treating imports or inventories as application acceptance.
 - [ ] **HOST-06:** reconcile Glue's older volume-mutation gap with newer workflow
+  2026-11-15: [host01-06-current-wheels](../compat/api-acceptance/host01-06-current-wheels-v1.json): installed-functional on `9919a280`/`e600b29e` (`Windows RTX 4090` / `WSL Xvfb Mesa 9c5`); not scoped-admitted, not delivered, no full parity.
   results while preserving each evidence epoch.
 - [ ] **PLAT-02:** produce and qualify other CPython ABI wheels only if selected;
   the current release claim is CPython 3.12 x86_64.

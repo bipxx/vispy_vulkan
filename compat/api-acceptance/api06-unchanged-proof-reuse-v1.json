@@ -1,0 +1,245 @@
+{
+  "schema": 1,
+  "date": "2026-11-15",
+  "gap_id": "API-06",
+  "status": "PASS_BYTE_LEVEL_CAUSAL_INPUT_HASH_AUDIT",
+  "wheels": {
+    "windows_candidate": "9919a280a5de2c4bec45837078cb1d405e7169933ddcfb0758aa7d6a82722d39",
+    "windows_prior_release": "4f537748c74689ed4d55ee2e3f8e3d9f1c1cfdf0803d1b72c4169217c74291d8",
+    "windows_ba8a54c5": "ba8a54c5b7ede9387d62ff72b1269602d61c0bdc61c77928ee52a7e37107bf24",
+    "windows_5cb463cd": "5cb463cd5e5c889af8b5c8d605bd6f60fe33d1bbeed521443d4f0966788017f9",
+    "linux_candidate": "e600b29e5259b896cc9d0fe36bbb5760260946aef53c013f8fc74e2fd0153007",
+    "linux_prior_release": "dfe1033fc90b9d6bd575c8988cc51544be47d71225509244e69be1ea91a42715",
+    "linux_4bc3cd77": "4bc3cd778990a35a3ff3e72f68fc8905e74804cb78b1d7091adbdc1b1fbfcdc8",
+    "linux_b4c72484": "b4c724842cbb8bfadb2097a025acd30cbdce006bad2b27b3b62b149cda398b69"
+  },
+  "wheel_member_diffs": {
+    "windows_9919a280_vs_4f537748": {
+      "total_members_a": 562,
+      "total_members_b": 562,
+      "runtime_members_a": 537,
+      "only_in_a": [],
+      "only_in_b": [],
+      "non_dist_info_changed": [
+        "vispy/gloo/dawn_parser.py"
+      ],
+      "dist_info_changed": [
+        "vispy-0.17.0+vulkan.2.dist-info/RECORD"
+      ]
+    },
+    "linux_e600b29e_vs_dfe1033f": {
+      "total_members_a": 562,
+      "total_members_b": 562,
+      "runtime_members_a": 537,
+      "only_in_a": [],
+      "only_in_b": [],
+      "non_dist_info_changed": [
+        "vispy/gloo/dawn_parser.py"
+      ],
+      "dist_info_changed": [
+        "vispy-0.17.0+vulkan.2.dist-info/RECORD"
+      ]
+    },
+    "windows_9919a280_vs_ba8a54c5": {
+      "total_members_a": 562,
+      "total_members_b": 562,
+      "runtime_members_a": 537,
+      "only_in_a": [],
+      "only_in_b": [],
+      "non_dist_info_changed": [
+        "vispy/VkLayer_vispy_submit.dll",
+        "vispy/_dawn.cp312-win_amd64.pyd",
+        "vispy/app/backends/_dawn_tk.py",
+        "vispy/app/backends/_qt.py",
+        "vispy/app/canvas.py",
+        "vispy/gloo/dawn_parser.py",
+        "vispy/gloo/glir.py",
+        "vispy/gloo/wrappers.py",
+        "vispy/visuals/text/_sdf_cpu.cp312-win_amd64.pyd"
+      ],
+      "dist_info_changed": [
+        "vispy-0.17.0+vulkan.2.dist-info/METADATA",
+        "vispy-0.17.0+vulkan.2.dist-info/RECORD"
+      ]
+    },
+    "linux_e600b29e_vs_4bc3cd77": {
+      "total_members_a": 562,
+      "total_members_b": 562,
+      "runtime_members_a": 537,
+      "only_in_a": [],
+      "only_in_b": [],
+      "non_dist_info_changed": [
+        "vispy/_dawn.cpython-312-x86_64-linux-gnu.so",
+        "vispy/app/backends/_dawn_tk.py",
+        "vispy/app/backends/_qt.py",
+        "vispy/app/canvas.py",
+        "vispy/gloo/dawn_parser.py",
+        "vispy/gloo/glir.py",
+        "vispy/gloo/wrappers.py"
+      ],
+      "dist_info_changed": [
+        "vispy-0.17.0+vulkan.2.dist-info/METADATA",
+        "vispy-0.17.0+vulkan.2.dist-info/RECORD"
+      ]
+    }
+  },
+  "workstream_reuse_table": [
+    {
+      "workstream": "SHD-01",
+      "packets": [
+        "compat/api-acceptance/sampler-arrays-v1.json",
+        "compat/api-acceptance/dynamic-explicit-samplers-wip.json"
+      ],
+      "prior_wheels": [
+        "5cb463cd5e5c889a",
+        "b4c724842cbb8bfa"
+      ],
+      "causal_modules": [
+        "vispy/_dawn*",
+        "vispy/gloo/dawn_parser.py",
+        "vispy/gloo/glir.py",
+        "vispy/gloo/wrappers.py"
+      ],
+      "causal_inputs_unchanged": false,
+      "disposition": "requires-fresh-installed-execution",
+      "reason": "Native _dawn module, dawn_parser.py, glir.py, and wrappers.py changed between 5cb463cd/b4c72484 and 9919a280/e600b29e (deferred to Slice W2-3)."
+    },
+    {
+      "workstream": "SHD-02",
+      "packets": [
+        "compat/api-acceptance/uniform-arrays-windows-v1.json",
+        "compat/api-acceptance/uniform-arrays-v1.json"
+      ],
+      "prior_wheels": [
+        "ba8a54c5b7ede938",
+        "4bc3cd778990a35a"
+      ],
+      "causal_modules": [
+        "vispy/_dawn*",
+        "vispy/gloo/dawn_parser.py",
+        "vispy/gloo/glir.py",
+        "vispy/gloo/wrappers.py"
+      ],
+      "causal_inputs_unchanged": false,
+      "disposition": "requires-fresh-installed-execution",
+      "reason": "Native _dawn module, dawn_parser.py, glir.py, and wrappers.py changed between ba8a54c5/4bc3cd77 and 9919a280/e600b29e (deferred to Slice W2-3)."
+    },
+    {
+      "workstream": "SHD-03",
+      "packets": [
+        "compat/api-acceptance/attributes-v1.json"
+      ],
+      "prior_wheels": [
+        "ba8a54c5b7ede938",
+        "4bc3cd778990a35a"
+      ],
+      "causal_modules": [
+        "vispy/_dawn*",
+        "vispy/gloo/dawn_parser.py",
+        "vispy/gloo/glir.py",
+        "vispy/gloo/wrappers.py"
+      ],
+      "causal_inputs_unchanged": false,
+      "disposition": "requires-fresh-installed-execution",
+      "reason": "Native _dawn module, dawn_parser.py, glir.py, and wrappers.py changed between ba8a54c5/4bc3cd77 and 9919a280/e600b29e (deferred to Slice W2-3)."
+    },
+    {
+      "workstream": "SHD-05",
+      "packets": [
+        "compat/api-acceptance/line-side-effect-boundaries-v1.json"
+      ],
+      "prior_wheels": [
+        "ba8a54c5b7ede938",
+        "4bc3cd778990a35a"
+      ],
+      "causal_modules": [
+        "vispy/_dawn*",
+        "vispy/gloo/dawn_parser.py",
+        "vispy/gloo/glir.py",
+        "vispy/gloo/wrappers.py"
+      ],
+      "causal_inputs_unchanged": false,
+      "disposition": "requires-fresh-installed-execution",
+      "reason": "Native _dawn module, dawn_parser.py, glir.py, and wrappers.py changed between ba8a54c5/4bc3cd77 and 9919a280/e600b29e (deferred to Slice W2-3)."
+    },
+    {
+      "workstream": "STA-02",
+      "packets": [
+        "compat/api-acceptance/reversed-depth-v1.json",
+        "compat/api-acceptance/current-event-input-depth-v1.json"
+      ],
+      "prior_wheels": [
+        "5cb463cd5e5c889a",
+        "b4c724842cbb8bfa",
+        "ba8a54c5b7ede938",
+        "4bc3cd778990a35a"
+      ],
+      "causal_modules": [
+        "vispy/_dawn*",
+        "vispy/gloo/dawn_parser.py",
+        "vispy/gloo/glir.py",
+        "vispy/gloo/wrappers.py"
+      ],
+      "causal_inputs_unchanged": false,
+      "disposition": "requires-fresh-installed-execution",
+      "reason": "Depth/viewport state execution routes through _dawn, dawn_parser.py, glir.py, and wrappers.py which changed since ba8a54c5/4bc3cd77 (deferred to Slice W2-2)."
+    },
+    {
+      "workstream": "API-05-EVENT-VALUES (pure CPU subset)",
+      "packets": [
+        "compat/api-acceptance/event-values-v1.json"
+      ],
+      "prior_wheels": [
+        "5cb463cd5e5c889a",
+        "b4c724842cbb8bfa",
+        "ba8a54c5b7ede938",
+        "4bc3cd778990a35a"
+      ],
+      "causal_modules": [
+        "vispy/util/event.py",
+        "vispy/util/keys.py",
+        "vispy/scene/events.py"
+      ],
+      "causal_inputs_unchanged": true,
+      "disposition": "reusable-by-input-hash",
+      "reason": "vispy/util/event.py, vispy/util/keys.py, and vispy/scene/events.py are byte-identical across 5cb463cd/b4c72484, ba8a54c5/4bc3cd77, 4f537748/dfe1033f, and 9919a280/e600b29e; canvas.py-dependent subset remains requires-fresh-installed-execution."
+    },
+    {
+      "workstream": "LIF-06-TK",
+      "packets": [
+        "compat/api-acceptance/tk-input-v1.json",
+        "compat/api-acceptance/current-event-input-depth-v1.json"
+      ],
+      "prior_wheels": [
+        "5cb463cd5e5c889a",
+        "b4c724842cbb8bfa",
+        "ba8a54c5b7ede938",
+        "4bc3cd778990a35a"
+      ],
+      "causal_modules": [
+        "vispy/app/backends/_dawn_tk.py",
+        "vispy/app/canvas.py",
+        "vispy/_dawn*"
+      ],
+      "causal_inputs_unchanged": false,
+      "disposition": "requires-fresh-installed-execution",
+      "reason": "_dawn_tk.py, canvas.py, and _dawn changed between ba8a54c5/4bc3cd77 and 9919a280/e600b29e; tk-state-resource-16 subset already re-verified in 936/937/942/943/944/945."
+    },
+    {
+      "workstream": "ORPHAN-RELEASE non-dawn_parser proofs",
+      "packets": [
+        "compat/api-acceptance/host-import-retirement-windows-v1.json"
+      ],
+      "prior_wheels": [
+        "4f537748c74689ed4d55ee2e3f8e3d9f1c1cfdf0803d1b72c4169217c74291d8",
+        "dfe1033fc90b9d6bd575c8988cc51544be47d71225509244e69be1ea91a42715"
+      ],
+      "causal_modules": [
+        "536 of 537 runtime members excluding vispy/gloo/dawn_parser.py"
+      ],
+      "causal_inputs_unchanged": true,
+      "disposition": "reusable-by-input-hash",
+      "reason": "536 of 537 runtime members are byte-identical between 4f537748/dfe1033f and 9919a280/e600b29e; only vispy/gloo/dawn_parser.py changed."
+    }
+  ]
+}

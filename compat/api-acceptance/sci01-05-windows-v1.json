@@ -1,0 +1,178 @@
+{
+  "schema": 1,
+  "date": "2026-11-15",
+  "status": "PASS_INSTALLED_FUNCTIONAL_W2_4_SCI01_05_PERF01_API05_WINDOWS",
+  "evidence_tier": "installed-functional",
+  "platform": "windows-x86_64-vulkan-rtx4090",
+  "coverage_ids": [
+    "SCI-01",
+    "SCI-02",
+    "SCI-02-CLIP-ALPHA-BLEND",
+    "SCI-03",
+    "SCI-04",
+    "SCI-05",
+    "PERF-01",
+    "API-05"
+  ],
+  "source_commit": "613cacfb73b1b4424dc098241c1eaf7553746c90",
+  "wheel": {
+    "path": "build/artifacts/9919a280a5de2c4bec45837078cb1d405e7169933ddcfb0758aa7d6a82722d39/vispy-0.17.0+vulkan.2-cp312-cp312-win_amd64.whl",
+    "sha256": "9919a280a5de2c4bec45837078cb1d405e7169933ddcfb0758aa7d6a82722d39"
+  },
+  "device": {
+    "backend": "Vulkan",
+    "adapter_type": "discrete",
+    "device": "NVIDIA GeForce RTX 4090",
+    "driver": "NVIDIA: 610.88 610.88.0.0",
+    "software": false
+  },
+  "source_overrides": 0,
+  "installed_members_verified": 537,
+  "junit_summary": {
+    "total": 24,
+    "passed": 24,
+    "skipped": 0,
+    "failures": 0,
+    "errors": 0,
+    "per_module": {
+      "test_point_divisor_revisions_gpu": {
+        "passed": 5,
+        "skipped": 0,
+        "failed": 0
+      },
+      "test_mesh_filter_order_picking_gpu": {
+        "passed": 4,
+        "skipped": 0,
+        "failed": 0
+      },
+      "test_camera_fov_planes_gpu": {
+        "passed": 5,
+        "skipped": 0,
+        "failed": 0
+      },
+      "test_volume_bounded_modes_gpu": {
+        "passed": 6,
+        "skipped": 0,
+        "failed": 0
+      },
+      "test_scene_widget_api05_contract": {
+        "passed": 4,
+        "skipped": 0,
+        "failed": 0
+      }
+    }
+  },
+  "perf01_telemetry": {
+    "frames_compared": 4,
+    "pending_draws_trace": [
+      4,
+      8,
+      12,
+      16
+    ],
+    "batched_encode_seconds": 0.007573,
+    "batched_total_seconds": 0.021309,
+    "immediate_total_seconds": 0.016853,
+    "live_buffer_bytes": 880,
+    "live_texture_bytes": 94208,
+    "optical_display_timing_claimed": false
+  },
+  "optical_display_timing_claimed": false,
+  "shutdown_gauges": {
+    "pending_tickets": 0,
+    "queued_frames": 0,
+    "live_buffer_bytes": 0,
+    "live_cpu_buffer_bytes": 0,
+    "live_texture_bytes": 0,
+    "canvas_texture_bytes": 0,
+    "transient_buffer_bytes": 0,
+    "line_resource_pool_busy_slots": 0,
+    "line_resource_pool_bytes": 0,
+    "host_import_pinned_bytes": 0
+  },
+  "actual_exit": 0,
+  "child_waited": true,
+  "scratch_absent_after_cleanup": true,
+  "test_modules": [
+    {
+      "path": "tests/markers/test_point_divisor_revisions_gpu.py",
+      "sha256": "46108b6a47dc9feaca35a995290d239e073c4d3ea1ad6e0da5a4edefa6f0d0a0",
+      "cases": {
+        "passed": 5,
+        "skipped": 0,
+        "failed": 0
+      }
+    },
+    {
+      "path": "tests/visuals/test_mesh_filter_order_picking_gpu.py",
+      "sha256": "7b5fb8daf9d88b48355b78d8de06816a57be6130cb85fd427f006446610dd7b3",
+      "cases": {
+        "passed": 4,
+        "skipped": 0,
+        "failed": 0
+      }
+    },
+    {
+      "path": "tests/visuals/test_camera_fov_planes_gpu.py",
+      "sha256": "5cacdd16e453a87f07c168f3094bff777d3151a51e329f65ceed036d53b606aa",
+      "cases": {
+        "passed": 5,
+        "skipped": 0,
+        "failed": 0
+      }
+    },
+    {
+      "path": "tests/visuals/test_volume_bounded_modes_gpu.py",
+      "sha256": "cd3c576460855a4b4339039e50e253b9767d7ae4ea5a240faa62844ccd45201d",
+      "cases": {
+        "passed": 6,
+        "skipped": 0,
+        "failed": 0
+      }
+    },
+    {
+      "path": "tests/contract/test_scene_widget_api05_contract.py",
+      "sha256": "369e5c262377b40f8f8fe0a90d5a03b4f6c2075814e258997fe70d73f65e5b5f",
+      "cases": {
+        "passed": 4,
+        "skipped": 0,
+        "failed": 0
+      }
+    }
+  ],
+  "verification": {
+    "path": "@evidence/build/runs/gap-w2-4-windows-974/verification.json",
+    "sha256": "9bd9bcd3bc9f153981feb002140458d819ae40475177fbfe344b5800e663d427"
+  },
+  "worker": {
+    "path": "@evidence/build/runs/gap-w2-4-windows-974/worker.json",
+    "sha256": "81d36018fdd74f16b99395d14b7358bdd10fc8b5b1fdef763704c220ca5e2b92"
+  },
+  "pytest_report": {
+    "path": "@evidence/build/runs/gap-w2-4-windows-974/pytest.json",
+    "sha256": "eec99daebb8847b4ac93a64427026a1aa84a6cbc7f81e11f1163aac4771b66ab"
+  },
+  "junit_xml": {
+    "path": "@evidence/build/runs/gap-w2-4-windows-974/selected.xml",
+    "sha256": "44cb1a910d615e61b4ff39a6848a13916f891744af505385470b9b72edf281a8"
+  },
+  "perf01_telemetry_artifact": {
+    "path": "@evidence/build/runs/gap-w2-4-windows-974/perf01-telemetry.json",
+    "sha256": "a12d410a021db82339ba45be96142af981ac108bff92c6ae2c48cc12516077e9"
+  },
+  "terminal": {
+    "path": "@evidence/build/runs/gap-w2-4-windows-974/terminal.json",
+    "sha256": "beffabf4a7737a2338f7c4914807b55c3649626f1cf614ba847dcda33147cbb0"
+  },
+  "cleanup_plan": {
+    "path": "@evidence/build/runs/gap-w2-4-windows-974/cleanup-plan.json",
+    "sha256": "e2d92b7c0ddaac78ca1a5094111a973c2f1e138555dc91fc6a197e2aae305c6f"
+  },
+  "cleanup_apply_process": {
+    "path": "@evidence/build/runs/gap-w2-4-windows-974/cleanup-apply-process.json",
+    "sha256": "3cf53d6b2d3e058cefb4607ac09b00e2e61af4593da6665bcf8e718158c63197"
+  },
+  "scoped_admitted": false,
+  "publicly_delivered": false,
+  "scope": "Installed-wheel functional execution on Windows RTX 4090 (wheel 9919a280..., 537 members, 0 source overlays, 10 zero shutdown gauges) covering SCI-01/SCI-05(U05) indexed uint8/uint16/uint32 point IDs, divisors 1/2/3, scalar constants & queued Marker revisions; SCI-02/SCI-02-CLIP-ALPHA-BLEND/SCI-05(E03) PlanesClipper+Clipper+ColorFilter+Alpha translucent blending, non-commutative fpos filter ordering, and PickingFilter uint32 ID decoding under 1x/4x MSAA; SCI-03/SCI-05(E04) Turntable/Arcball FOV extremes (0/25/60/110), FlyCamera occlusion, polygon_offset decal stability, and Magnify/Magnify1D lenses; SCI-04/SCI-05/PERF-01 bounded 16^3 VolumeVisual mip/attenuated_mip/iso/translucent/plane modes, queued set_data revisions, and bounded CPU/queue batching telemetry (no optical display-timing claim); plus API-05 ViewBox, Grid, Camera, and all 37 scene.visuals wrapper contracts. Recorded at installed-functional tier only; distinct from tk-state-resource-16 scoped admission."
+}

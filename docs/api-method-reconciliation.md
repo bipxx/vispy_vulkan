@@ -1,5 +1,40 @@
 # API method, alias and workflow reconciliation
 
+## Wave 3 subpackage, transform/filter/plot, and host/lifecycle reconciliation — 2026-11-15
+
+- **W3-3 (`API-05` / `API-06`):** Reconciled `vispy.{color,geometry,io,glsl,testing,util,plot}` and
+  `vispy.visuals.{transforms,filters,collections}` in `tests/contract/test_subpackages_api05_contract.py`
+  (`713100cf…`, 12 pure-CPU CPython 3.10–3.14 contracts) and `tests/visuals/test_plot_transforms_filters_gpu.py`
+  (`e0834c97…`, 4 installed-wheel GPU tests). Verified at `installed-functional` tier on current wheels
+  `9919a280…` (Windows RTX 4090, `gap-w3-3-api-plot-windows-989`, `16/16` pass, `537` members, `0` overrides,
+  `10` zero Dawn shutdown gauges, [api05-plot-transforms-windows](../compat/api-acceptance/api05-plot-transforms-windows-v1.json)
+  `54d99133…`) and `e600b29e…` (WSL Xvfb + Mesa `9c5c41b3…`, `gap-w3-3-api-plot-wsl-990`, `16/16` pass,
+  `537` members, `0` overrides, `10` zero gauges, [api05-plot-transforms-wsl](../compat/api-acceptance/api05-plot-transforms-wsl-v1.json)
+  `b25da28f…`).
+- **`vispy.visuals.collections` Dawn Vulkan runtime matrix (6 rendered, 3 documented upstream bounds):**
+  6 rendered (`TriangleCollection` `raw`/`local`, `PolygonCollection` `raw`/`local`, `PointCollection`
+  `raw`/`local`, `SegmentCollection` `agg`/`global`, `SegmentCollection` `agg`/`shared` float32 uniform
+  texture fetch, `PathCollection` `agg`/`global`); 3 upstream bounds (`PointCollection` `agg`/`local`
+  Dawn WGSL link rejection of unused varyings `v_linewidth`/`v_antialias` vs `gl_PointCoord` in
+  `collections/agg-point.{vert,frag}`; `SegmentCollection` `raw`/`shared` Python 3 float division
+  `TypeError` in `RawSegmentCollection.append`; `PathCollection` `raw` `NullTransform() + str` `TypeError`
+  in `RawPathCollection.__init__`).
+- **W3-1 (`LIF-07` / `LIF-07-NATIVE-ADMISSION`, `evidence_tier: "installed-experimental"`) & W3-2 (`LIF-02`/`03`/`04`/`06` + programmatic single-display `LIF-08`, `evidence_tier: "installed-functional"`):**
+  [tk-native-current-wheels](../compat/api-acceptance/tk-native-current-wheels-v1.json) (`224701fe…`, `985`/`986`,
+  `11/11` pass/platform on `9919a280…`/`e600b29e…`, `default_presentation: "raster"`,
+  `native_admitted_mandatory_matrix: false`) and [lif02-08-qt-multibinding-windows](../compat/api-acceptance/lif02-08-qt-multibinding-windows-v1.json)
+  (`9001513c…`, `987`) / [lif02-08-qt-multibinding-wsl](../compat/api-acceptance/lif02-08-qt-multibinding-wsl-v1.json)
+  (`5fb417d3…`, `988`), `12/12` pass/platform across `PyQt5`+`PyQt6`+`PySide6` (`QT_SCALE_FACTOR=1.5`
+  programmatic single-display fractional HiDPI; `physical_multimonitor_claimed: false`,
+  `physical_hid_claimed: false`).
+- **W3-4a (`HOST-03`):** [no-opengl-optional-hosts-current-v1.json](../compat/no-opengl-optional-hosts-current-v1.json)
+  (`0f7159d7…`) and `tests/contract/test_optional_hosts_current_wheel_renewal.py` (`1f68b8eb…`) add an
+  additive current-wheel view while preserving `compat/no-opengl-matrix.json` (`230b12f3…` untouched without `r1`) and
+  `compat/no-opengl-napari-0.10.0.json` (`a724432b…`, row `windows-vulkan-napari-threedee-pyqt6` `r1 == "open"`).
+  Wave 3 evidence is `installed-experimental` (`W3-1`) or `installed-functional` (`W3-2`/`W3-3`) with `scoped_admitted: false`,
+  plus additive view `W3-4a` (`claim_separation.additive_view_only: true`, `claim_separation.artifact_admitted_to_no_opengl_matrix: false`),
+  all with no full upstream parity claim.
+
 ## Readback rectangle route reconciliation — 2026-11-14
 
 Declared workflow acceptance also passes: [Windows942](../compat/api-acceptance/readback-declared-acceptance-windows-v1.json)

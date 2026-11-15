@@ -1,0 +1,114 @@
+{
+  "schema": 1,
+  "date": "2026-11-15",
+  "evidence_tier": "installed-functional",
+  "platform": "windows-x86_64-vulkan-rtx4090",
+  "source_commit": "613cacfb73b1b4424dc098241c1eaf7553746c90",
+  "wheel": {
+    "path": "build/artifacts/9919a280a5de2c4bec45837078cb1d405e7169933ddcfb0758aa7d6a82722d39/vispy-0.17.0+vulkan.2-cp312-cp312-win_amd64.whl",
+    "sha256": "9919a280a5de2c4bec45837078cb1d405e7169933ddcfb0758aa7d6a82722d39"
+  },
+  "device": {
+    "backend": "Vulkan",
+    "adapter_type": "discrete",
+    "device": "NVIDIA GeForce RTX 4090",
+    "driver": "NVIDIA: 610.88 610.88.0.0",
+    "software": false
+  },
+  "source_overrides": 0,
+  "installed_members_verified": 537,
+  "shutdown_gauges": {
+    "pending_tickets": 0,
+    "queued_frames": 0,
+    "live_buffer_bytes": 0,
+    "live_cpu_buffer_bytes": 0,
+    "live_texture_bytes": 0,
+    "canvas_texture_bytes": 0,
+    "transient_buffer_bytes": 0,
+    "line_resource_pool_busy_slots": 0,
+    "line_resource_pool_bytes": 0,
+    "host_import_pinned_bytes": 0
+  },
+  "actual_exit": 0,
+  "child_waited": true,
+  "scratch_absent_after_cleanup": true,
+  "verification": {
+    "path": "@evidence/build/runs/gap-w2-2-3-windows-972/verification.json",
+    "sha256": "3a73317c81e37e0a053f524b0bd57cb04cbbd8426c7a9e0c50a211f8801eb1bf"
+  },
+  "worker": {
+    "path": "@evidence/build/runs/gap-w2-2-3-windows-972/worker.json",
+    "sha256": "4c9547979de906f7dcf6435ed6d8ba4305d8372961788f6ab1ae7caec79506d2"
+  },
+  "pytest_report": {
+    "path": "@evidence/build/runs/gap-w2-2-3-windows-972/pytest.json",
+    "sha256": "55b02730cec81c78af860eeb93bd8c7af43b1909d5aae4295b7158f279f6d235"
+  },
+  "junit_xml": {
+    "path": "@evidence/build/runs/gap-w2-2-3-windows-972/selected.xml",
+    "sha256": "2f0c8f96b72c9eae0891a7e4167d0dadb7c567fcd4b92902df2e9a20d6c41efa"
+  },
+  "terminal": {
+    "path": "@evidence/build/runs/gap-w2-2-3-windows-972/terminal.json",
+    "sha256": "9c9285a895c51e80247d69199f4e9a8e9986664cbb998ff97501c05404b9d2e7"
+  },
+  "cleanup_plan": {
+    "path": "@evidence/build/runs/gap-w2-2-3-windows-972/cleanup-plan.json",
+    "sha256": "4a13399357197bec417d2dc22d21a70a764063fcffa9105cda529e0c2d506680"
+  },
+  "cleanup_apply_process": {
+    "path": "@evidence/build/runs/gap-w2-2-3-windows-972/cleanup-apply-process.json",
+    "sha256": "7684b2654d9e7e3c776bcbc15f414f3316ec4eddb6a0fe48038af96935d588b6"
+  },
+  "scoped_admitted": false,
+  "publicly_delivered": false,
+  "status": "PASS_INSTALLED_FUNCTIONAL_W2_3_SHADERS_AND_LINE_PARTITION_WINDOWS",
+  "coverage_ids": [
+    "LIN-01",
+    "SHD-01",
+    "SHD-02",
+    "SHD-03",
+    "SHD-04",
+    "SHD-05",
+    "SHD-06"
+  ],
+  "test_modules": [
+    {
+      "path": "tests/shaders/test_sampler_mip_derivative_gpu.py",
+      "sha256": "9d95594129e63c8051e3fedfd9f69eb2c3ebee6adcc63155ce407c9da73dca7a",
+      "cases": {
+        "passed": 3,
+        "skipped": 0,
+        "failed": 0
+      }
+    },
+    {
+      "path": "tests/shaders/test_shader_cache_partial_updates_gpu.py",
+      "sha256": "04ecd2f0441927812b69f993fa7adf6580e164d1e49791bef35e7bf514ec1f66",
+      "cases": {
+        "passed": 2,
+        "skipped": 0,
+        "failed": 0
+      }
+    },
+    {
+      "path": "tests/shaders/test_attribute_divisor_limits_gpu.py",
+      "sha256": "88625a941015a4cfd8908f4df3c11e33055a476d51376c8793b57e31ccfc52b3",
+      "cases": {
+        "passed": 2,
+        "skipped": 0,
+        "failed": 0
+      }
+    },
+    {
+      "path": "tests/lines/test_line_partition_boundaries_gpu.py",
+      "sha256": "4e12f31c2e55821cd7134a193b4014ba83491f3f0f36c3bb50c2e16e36457073",
+      "cases": {
+        "passed": 3,
+        "skipped": 0,
+        "failed": 0
+      }
+    }
+  ],
+  "scope": "Installed-wheel functional execution on Windows RTX 4090 (wheel 9919a280..., 537 members, 0 source overlays, 10 zero shutdown gauges) covering SHD-01/SHD-06 sampler repeat/clamp/mirrored_repeat + explicit textureLod mip selection + dFdx/dFdy/fwidth screen-space derivatives, SHD-02 ShaderObject/MultiProgram hook mutation & partial VertexBuffer/Texture2D subdata updates, SHD-03 instanced divisor {0,1,2,4} & 16-attribute limits, and LIN-01/SHD-04/SHD-05 >65535-vertex wide-line chunking (65536/65537/131073 strip & segments with NaN/turn/join seam continuity + deterministic >64 MiB resident pool budget refusal & recovery). Recorded at installed-functional tier only; distinct from tk-state-resource-16 scoped admission."
+}

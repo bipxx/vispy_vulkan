@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "kind": "change-impact",
+  "status": "APPROVED",
+  "independent": true,
+  "reviewer": "Independent swarm reviewer961r (gemini-4-carbon-high fallback while Claude Opus 5.5 pool at 1% quota); read-only Python verification",
+  "subject_sha256": "bd14e959e9a2de3f958b7d83dd6d9eb38b7a94d0ca4c5feb669d500d3e0b9545",
+  "qualification_head": "f5c00c99d3ac88a691931ade8b3bd7bdd0dc7b16"
+}

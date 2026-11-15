@@ -1,0 +1,105 @@
+{
+  "schema": 1,
+  "date": "2026-11-15",
+  "evidence_tier": "installed-functional",
+  "platform": "wsl-ubuntu24.04-x86_64-vulkan-lavapipe-mesa-26.1.8-9c5",
+  "source_commit": "613cacfb73b1b4424dc098241c1eaf7553746c90",
+  "wheel": {
+    "path": "build/artifacts/e600b29e5259b896cc9d0fe36bbb5760260946aef53c013f8fc74e2fd0153007/vispy-0.17.0+vulkan.2-cp312-cp312-manylinux_2_39_x86_64.whl",
+    "sha256": "e600b29e5259b896cc9d0fe36bbb5760260946aef53c013f8fc74e2fd0153007"
+  },
+  "device": {
+    "backend": "Vulkan",
+    "adapter_type": "cpu",
+    "device": "llvmpipe (LLVM 18.1.3, 256 bits)",
+    "driver": "llvmpipe: Mesa 26.1.8 (LLVM 18.1.3)",
+    "software": true
+  },
+  "source_overrides": 0,
+  "installed_members_verified": 537,
+  "shutdown_gauges": {
+    "pending_tickets": 0,
+    "queued_frames": 0,
+    "live_buffer_bytes": 0,
+    "live_cpu_buffer_bytes": 0,
+    "live_texture_bytes": 0,
+    "canvas_texture_bytes": 0,
+    "transient_buffer_bytes": 0,
+    "line_resource_pool_busy_slots": 0,
+    "line_resource_pool_bytes": 0,
+    "host_import_pinned_bytes": 0
+  },
+  "actual_exit": 0,
+  "child_waited": true,
+  "xvfb_waited": true,
+  "wsl_outer_waited": true,
+  "scratch_absent_after_cleanup": true,
+  "verification": {
+    "path": "@evidence/build/runs/gap-w2-2-3-wsl-973/verification.json",
+    "sha256": "bbf82e0e7fdb4efd912ff7babe55c649419e9dfaa344b711b726e32496b2d5b9"
+  },
+  "worker": {
+    "path": "@evidence/build/runs/gap-w2-2-3-wsl-973/worker.json",
+    "sha256": "265a804846ccb97fa59732ed944ab1f3f1eeb4e7c1f224fda4fe059b5400bc4d"
+  },
+  "pytest_report": {
+    "path": "@evidence/build/runs/gap-w2-2-3-wsl-973/pytest.json",
+    "sha256": "c819ee6d9204674430fc9659f3d2cd19e38d8f4c862840c38e5ec17d660b8c32"
+  },
+  "junit_xml": {
+    "path": "@evidence/build/runs/gap-w2-2-3-wsl-973/selected.xml",
+    "sha256": "07d1d9f95bf6cbb6ddda5e1f8bc705ca2cd6688507d6625f74247772d3ed2997"
+  },
+  "terminal": {
+    "path": "@evidence/build/runs/gap-w2-2-3-wsl-973/terminal.json",
+    "sha256": "7c303b59a8ae2f0c62c0a97ae445a7e9758fd21df743fd2c58abceaf55ec4933"
+  },
+  "cleanup_plan": {
+    "path": "@evidence/build/runs/gap-w2-2-3-wsl-973/cleanup-plan.json",
+    "sha256": "42bcabd27734357255edb9f08f74b778d27d537659e658cb9f9cae16a9815ec7"
+  },
+  "cleanup_apply_process": {
+    "path": "@evidence/build/runs/gap-w2-2-3-wsl-973/cleanup-apply-process.json",
+    "sha256": "e21565fbd904881318b8f2051f3c889c2d6277b663a40c4930af71d94923d57a"
+  },
+  "scoped_admitted": false,
+  "publicly_delivered": false,
+  "status": "PASS_INSTALLED_FUNCTIONAL_W2_2_RASTER_TYPED_TEXTURES_STENCIL_MSAA_WSL",
+  "coverage_ids": [
+    "STA-01",
+    "STA-02",
+    "TEX-01",
+    "SCI-06",
+    "API-05"
+  ],
+  "test_modules": [
+    {
+      "path": "tests/state/test_raster_state_combinations_gpu.py",
+      "sha256": "88fc9b6216ffb3f2458455925adc5bb3f10a890b08b2a958db3e27850284f99f",
+      "cases": {
+        "passed": 4,
+        "skipped": 0,
+        "failed": 0
+      }
+    },
+    {
+      "path": "tests/textures/test_typed_sampling_nan_gpu.py",
+      "sha256": "098ff7399bb00b471aa1f27ad202c1e8fbd569f9ea5c7b6498981418d06820c4",
+      "cases": {
+        "passed": 4,
+        "skipped": 0,
+        "failed": 0
+      }
+    },
+    {
+      "path": "tests/gloo/test_stencil_msaa_boundaries_gpu.py",
+      "sha256": "a7fd5856e7ea3e67774e6f9cbaf0f470ae480848835b61bcdf7518b5f8c60ade",
+      "cases": {
+        "passed": 3,
+        "skipped": 0,
+        "failed": 0
+      }
+    }
+  ],
+  "scope": "Installed-wheel functional execution on WSL Ubuntu 24.04 Xvfb + pinned Mesa 26.1.8 Lavapipe 9c5 (wheel e600b29e..., 537 members, 0 source overlays, 10 zero shutdown gauges) covering STA-01/STA-02 dither/disabled-MSAA/polygon_offset/blend_color/two-sided stencil/reversed-depth raster state truth tables, TEX-01 r32i/r32ui/r32f NaN/Inf/-0.0/rgba16f/depth_component/Texture3D/TextureCube/TextureEmulated3D sampling, SCI-06 stencil/MSAA crop + RenderBuffer resize + raw gloo.gl refusals, and API-05 gloo capability/state boundaries. Recorded at installed-functional tier only; distinct from tk-state-resource-16 scoped admission."
+}

@@ -37,3 +37,11 @@ record the removal of 9,655 unreferenced build/cache clutter files (9.1424 GiB l
 7.9153 GiB physical; 7.94 GiB reclaimed on `C:\`) and 4,984 empty directories with 0 overlaps
 against all protected/blocked registries, `compiler-retention67`, `legacy-retirement68`,
 and current matrix/bundle/run references.
+
+Wave 2A/2B & public delivery (`2026-11-15`): `965` (`82adf54b…`, `202,307,433` B reclaimed),
+`966` (`68425aa1…`, `4,066,208` B reclaimed), `970` (`8fcfdbcd…`, `35,339,966` B reclaimed),
+`980`/`981` (`7a38c576…`/`c9659aa2…`, `29,880,809` B each reclaimed), `982`/`983` (`a4737a31…`/`cf05e5ba…`),
+and Track B `972`–`979` all cleaned to `D:/vispy-vulkan-managed/build/work == ['p']`, WSL `build/work == []`,
+and `0` `__pycache__`/`.pytest_cache` in `S`.
+
+Wave 3 (`2026-11-15`): `985` (`9b02ffae…`, `17,908,009` B reclaimed), `986` (`a4ef429a…`, WSL cleaned), `987` (`b9f6ff1f…`, `207,698,078` B reclaimed), `988` (`9f052814…`, `179,748,316` B reclaimed), `989` (`da7ea6c1…`, `602` files deleted), `990` (`5a4964fe…`, `581` files deleted), and consolidation `991` (`0` B scratch) all verified at `D:/vispy-vulkan-managed/build/work == ['p']`, WSL `build/work == []`, and `0` `__pycache__`/`.pytest_cache` in `S`.

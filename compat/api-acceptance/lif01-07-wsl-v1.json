@@ -1,0 +1,186 @@
+{
+  "schema": 1,
+  "date": "2026-11-15",
+  "evidence_tier": "installed-functional",
+  "platform": "wsl-ubuntu24.04-x86_64-vulkan-lavapipe-mesa-26.1.8-9c5",
+  "status": "PASS_INSTALLED_FUNCTIONAL_W2_5_LIFECYCLE_INPUT_QT_TK_MSAA_WSL",
+  "coverage_ids": [
+    "LIF-01",
+    "LIF-02",
+    "LIF-03",
+    "LIF-04",
+    "LIF-05",
+    "LIF-06",
+    "LIF-07",
+    "API-05"
+  ],
+  "source_commit": "613cacfb73b1b4424dc098241c1eaf7553746c90",
+  "wheel": {
+    "path": "build/artifacts/e600b29e5259b896cc9d0fe36bbb5760260946aef53c013f8fc74e2fd0153007/vispy-0.17.0+vulkan.2-cp312-cp312-manylinux_2_39_x86_64.whl",
+    "sha256": "e600b29e5259b896cc9d0fe36bbb5760260946aef53c013f8fc74e2fd0153007"
+  },
+  "device": {
+    "backend": "Vulkan",
+    "adapter_type": "cpu",
+    "device": "llvmpipe (LLVM 18.1.3, 256 bits)",
+    "driver": "llvmpipe: Mesa 26.1.8 (LLVM 18.1.3)",
+    "software": true
+  },
+  "toolkits": {
+    "pyqt6": {
+      "qt_version": "6.11.2",
+      "binding_version": "6.11.0",
+      "binding_origin": "/home/heq/vispy-opengl-removal-python-hosts-rootfs-2/rootfs/opt/gui-pyqt6-consumer1/lib/python3.12/site-packages/PyQt6/QtCore.abi3.so",
+      "binding_sha256": "68d07f960374f94ffda3bd6c1da078b978c28370e3c33afbdcf2bdd713018a8f"
+    },
+    "tkinter": {
+      "tk_version": 9.0,
+      "tcl_version": 9.0,
+      "binding_origin": "/home/heq/.local/share/uv/python/cpython-3.12.13-linux-x86_64-gnu/lib/python3.12/lib-dynload/_tkinter.cpython-312-x86_64-linux-gnu.so",
+      "binding_sha256": "0240658571f1531461f4a7178c454795c55fe0f5723eebeda0b5de2f4aeee303"
+    }
+  },
+  "source_overrides": 0,
+  "installed_members_verified": 537,
+  "junit_summary": {
+    "total": 19,
+    "passed": 19,
+    "skipped": 0,
+    "failures": 0,
+    "errors": 0,
+    "per_module": {
+      "test_qt_state_reparent_multicanvas_gpu": {
+        "passed": 4,
+        "skipped": 0,
+        "failed": 0
+      },
+      "test_qt_timer_wheel_coords_gpu": {
+        "passed": 3,
+        "skipped": 0,
+        "failed": 0
+      },
+      "test_msaa_mixed_edge_capture_gpu": {
+        "passed": 3,
+        "skipped": 0,
+        "failed": 0
+      },
+      "test_tk_timer_camera_contracts": {
+        "passed": 3,
+        "skipped": 0,
+        "failed": 0
+      },
+      "test_app_timer_context_api05_contract": {
+        "passed": 6,
+        "skipped": 0,
+        "failed": 0
+      }
+    }
+  },
+  "shutdown_gauges": {
+    "pending_tickets": 0,
+    "queued_frames": 0,
+    "live_buffer_bytes": 0,
+    "live_cpu_buffer_bytes": 0,
+    "live_texture_bytes": 0,
+    "canvas_texture_bytes": 0,
+    "transient_buffer_bytes": 0,
+    "line_resource_pool_busy_slots": 0,
+    "line_resource_pool_bytes": 0,
+    "host_import_pinned_bytes": 0
+  },
+  "actual_exit": 0,
+  "child_waited": true,
+  "xvfb_waited": true,
+  "wsl_outer_waited": true,
+  "scratch_absent_after_cleanup": true,
+  "test_modules": [
+    {
+      "path": "tests/qt/test_qt_state_reparent_multicanvas_gpu.py",
+      "sha256": "38cf5b47c65de0f681d322c1e69cced10ad9a54a6797709872c90fcb7a7d696c",
+      "cases": {
+        "passed": 4,
+        "skipped": 0,
+        "failed": 0
+      }
+    },
+    {
+      "path": "tests/qt/test_qt_timer_wheel_coords_gpu.py",
+      "sha256": "aa6c5b5a56a7369d9f74478d3847302a3459b27b5dfd410e4fe7628504a66d73",
+      "cases": {
+        "passed": 3,
+        "skipped": 0,
+        "failed": 0
+      }
+    },
+    {
+      "path": "tests/native/test_msaa_mixed_edge_capture_gpu.py",
+      "sha256": "381798abf679f0ecfc77008cbd41dd762e62f35f33d42776f7efdcfa72700ad7",
+      "cases": {
+        "passed": 3,
+        "skipped": 0,
+        "failed": 0
+      }
+    },
+    {
+      "path": "tests/native/test_tk_timer_camera_contracts.py",
+      "sha256": "b1427ad2fc8d0eea3c3bebfb3b77e503b143aab9c10e9c506804c53b01b7ac40",
+      "cases": {
+        "passed": 3,
+        "skipped": 0,
+        "failed": 0
+      }
+    },
+    {
+      "path": "tests/contract/test_app_timer_context_api05_contract.py",
+      "sha256": "bbf44ba23111c2b3410a59fe94c77bc42ea38e3931bc12e70d221604ce60eb6b",
+      "cases": {
+        "passed": 6,
+        "skipped": 0,
+        "failed": 0
+      }
+    }
+  ],
+  "boundaries": {
+    "LIF-01": "Deterministic simulated device loss (_dawn.lose_device) and submission-stage fault injection (_dawn.diagnostic_submission_controls) under Qt readback presentation on headless-repair Mesa 9c5 (libvulkan_lvp.so intentionally omits VK_KHR_xlib_surface; hardware Win32 WSI swapchain detach/reattach is covered in lif01-07-windows-v1.json; uncontrolled hardware TDR storms remain outside synthetic qualification).",
+    "LIF-06": "Toolkit-synthesized Qt QWheelEvent/QKeyEvent/QMouseEvent (spontaneous() == False), QTimer callbacks, logical vs 2x scale coordinates, and PanZoom/Turntable camera routes under Xvfb; physical HID hardware remains out of scope.",
+    "LIF-07": "Supported raster-present Tkinter PhotoImage backend (_dawn_tk) timer, embedded host Frame ownership, FocusOut drag cancellation, and PanZoom/Turntable camera routes under Xvfb; native Tk WSI swapchain admission (LIF-07-NATIVE-ADMISSION) remains strictly separate.",
+    "LIF-08": "Cross-monitor fractional DPI live window drags remain deferred outside single-display automation."
+  },
+  "scope": "Installed-wheel functional execution on WSL Ubuntu 24.04 Xvfb + pinned Mesa 26.1.8 Lavapipe 9c5 (wheel e600b29e..., 537 members, 0 source overlays, 19/19 cases passed, 10 zero shutdown gauges, awaited worker/Xvfb/wsl.exe exits) covering LIF-01..07 and API-05 (Application/use_app/Canvas/Timer/GLContext/GLShared contracts, Qt simulated device-loss & fault recovery, Qt reparenting/WinIdChange, minimized & 0x0 zero-submit suppression/recovery, multi-canvas parent destruction with surviving shared siblings, samples=1 vs samples=4 offscreen/onscreen diagonal resolve & cropped capture, Qt QTimer/wheel/modifier/camera routes, and raster-present Tk timer/event/camera routes). Recorded at installed-functional tier only; distinct from tk-state-resource-16 scoped admission and public delivery.",
+  "verification": {
+    "path": "@evidence/build/runs/gap-w2-5-wsl-977/verification.json",
+    "sha256": "26cb780957d4c45cc627f7856c9ae409eb3e5d6374b1e18ce7532828fa8858f6"
+  },
+  "worker": {
+    "path": "@evidence/build/runs/gap-w2-5-wsl-977/worker.json",
+    "sha256": "340cdf18b13eb858774f251ca03b84ef88c6ec55659fc307090bba483700bbef"
+  },
+  "pytest_report": {
+    "path": "@evidence/build/runs/gap-w2-5-wsl-977/pytest.json",
+    "sha256": "12c71d4cf6b7c15c6b9deb260b5bd0c4cff6941298e5d001610cabb627b863b6"
+  },
+  "junit_xml": {
+    "path": "@evidence/build/runs/gap-w2-5-wsl-977/selected.xml",
+    "sha256": "864ec83473c6ec13210d12227d95b766072c29dbfe8dfef3cf49182b01f4ea03"
+  },
+  "terminal": {
+    "path": "@evidence/build/runs/gap-w2-5-wsl-977/terminal.json",
+    "sha256": "41a25694ae45e6b124647c6123f5d5d7019a96844a76582711d8d3d04e76fe82"
+  },
+  "cleanup_plan": {
+    "path": "@evidence/build/runs/gap-w2-5-wsl-977/cleanup-plan.json",
+    "sha256": "9003b3c1c2dbe9d06cee8dbe47104272991b9f428022a324d321f25dda652949"
+  },
+  "cleanup_apply_process": {
+    "path": "@evidence/build/runs/gap-w2-5-wsl-977/cleanup-apply-process.json",
+    "sha256": "ba4aee42c01cec5439ef623efc2bb79eb8a8ede1d7174cf5640f54e3a9fac8d5"
+  },
+  "preflight_refusal_note": {
+    "path": "@evidence/build/runs/gap-w2-5-wsl-977/preflight-refusal-note.json",
+    "sha256": "df54a72db5c7f43ad9644d489f44f4b10cf5fa359371618f1bfbf757e45043d2"
+  },
+  "scoped_admitted": false,
+  "artifact_admitted": false,
+  "publicly_delivered": false,
+  "published": false
+}

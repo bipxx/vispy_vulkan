@@ -1,0 +1,400 @@
+{
+  "schema": 1,
+  "manifest_id": "no-opengl-optional-hosts-current-v1",
+  "date": "2026-11-15",
+  "slice": "W3-4a",
+  "coverage_ids": [
+    "HOST-01",
+    "HOST-02",
+    "HOST-03",
+    "HOST-04",
+    "HOST-05",
+    "HOST-06"
+  ],
+  "runtime_version": "0.17.0+vulkan.2",
+  "status": "PASS_ADDITIVE_OPTIONAL_HOSTS_CURRENT_WHEEL_VIEW",
+  "evidence_store": {
+    "path": "compat/evidence-stores/secondary-v1.json",
+    "sha256": "b164e3fdc85863a2327b508ea60f8d3068f740cfe90f665aa52905e28bfb3ca5"
+  },
+  "scope": "Additive current-wheel (vispy 0.17.0+vulkan.2) optional downstream host view joining compat/api-acceptance/host01-06-current-wheels-v1.json (runs gap-w2-6-windows-978 and gap-w2-6-wsl-979) with compat/no-opengl-matrix.json and compat/no-opengl-napari-0.10.0.json without modifying frozen qualification matrix bytes or closing historical R1.",
+  "preserved_frozen_records": {
+    "no_opengl_matrix": {
+      "path": "compat/no-opengl-matrix.json",
+      "sha256": "230b12f3d4ed418cde3b0313fbdea36557b02a61c80a1cf637699d7a9bc50fc4",
+      "modified": false
+    },
+    "no_opengl_napari_0_10_0": {
+      "path": "compat/no-opengl-napari-0.10.0.json",
+      "sha256": "a724432bb7b29de635d46eef4f694e6673ecf9ab84d12c535e1caee8d099f349",
+      "modified": false,
+      "windows_threedee_r1": "open"
+    },
+    "host01_06_current_wheels_receipt": {
+      "path": "compat/api-acceptance/host01-06-current-wheels-v1.json",
+      "sha256": "e36a08c2006d8268a2285972f3b66e08fd23bb379f6a3d3aa209cdcdab115679"
+    },
+    "h03_upstream_disposition": {
+      "path": "compat/api-acceptance/h03-upstream-disposition-v1.json",
+      "sha256": "33cf278d3b7dde5b06ec1a3800ec0098673920e0e1714513246c3f092ab14463"
+    },
+    "host_workflow_dispositions_doc": {
+      "path": "docs/host-workflow-dispositions.md"
+    }
+  },
+  "claim_separation": {
+    "additive_view_only": true,
+    "no_opengl_matrix_modified": false,
+    "no_opengl_napari_0_10_0_modified": false,
+    "artifact_admitted_to_no_opengl_matrix": false,
+    "stock_hot_swap_qualifies_strict_no_opengl": false,
+    "stock_hot_swap_verdict": "PASS_HOT_SWAP_GATES",
+    "stock_hot_swap_scope": "hot-swap profile only; never a strict no-OpenGL qualification",
+    "patched_strict_no_opengl_verdict": "PASS_ALL_NO_OPENGL_GATES",
+    "patched_strict_no_opengl_scope": "All three gates require same-artifact installed runtime and environment evidence; source probes never establish artifact qualification."
+  },
+  "current_wheels": {
+    "windows": {
+      "run_id": "gap-w2-6-windows-978",
+      "platform": "windows-x86_64-vulkan-rtx4090",
+      "path": "build/artifacts/9919a280a5de2c4bec45837078cb1d405e7169933ddcfb0758aa7d6a82722d39/vispy-0.17.0+vulkan.2-cp312-cp312-win_amd64.whl",
+      "sha256": "9919a280a5de2c4bec45837078cb1d405e7169933ddcfb0758aa7d6a82722d39",
+      "wheel_members_verified": 537,
+      "verification_sha256": "4dc8b6d504c375711506184828dca6d3fad6eefc0b59e63f86cdabcff90ea864",
+      "terminal_sha256": "dfe4e38f8e912727136f70aa6868971fb4df5e5dff9c0b1eb0f7312c1813abd2",
+      "scratch_absent_verified": true
+    },
+    "wsl": {
+      "run_id": "gap-w2-6-wsl-979",
+      "platform": "linux-x86_64-wsl2-xvfb-mesa-9c5",
+      "path": "build/artifacts/e600b29e5259b896cc9d0fe36bbb5760260946aef53c013f8fc74e2fd0153007/vispy-0.17.0+vulkan.2-cp312-cp312-manylinux_2_39_x86_64.whl",
+      "sha256": "e600b29e5259b896cc9d0fe36bbb5760260946aef53c013f8fc74e2fd0153007",
+      "wheel_members_verified": 537,
+      "mesa_lvp_sha256": "9c5c41b3a7b9d759b0960c868f10375281798ad084150716d6d122c8789b9e12",
+      "xvfb_owned_and_waited": true,
+      "wsl_exe_waited": true,
+      "verification_sha256": "d7576be24ccd16b41f1399581d33aa228cf740737ba3633ae632b3a4a2e88678",
+      "terminal_sha256": "d06c9f06d6fb10381eee354fbb35b1c70a432e39480fdbaffbd6c769ad2daf09",
+      "scratch_absent_verified": true
+    }
+  },
+  "optional_strict_rows": [
+    {
+      "id": "windows-vulkan-napari-pyqt6",
+      "platform": "windows-vulkan",
+      "application": "napari",
+      "host_version": "0.10.0",
+      "binding": "pyqt6",
+      "mandatory": false,
+      "matrix_pinned_artifact_sha256": "62df5e4c31bf9a1bb1bea47fd68d50e4198d6ec13d2551c991da1e7f30a2b38f",
+      "matrix_environment_id": "eb23d7f0396b5e9b7c02b53d9e3e90bbfcc8953464d3fd1555ea9a82bd5f731d",
+      "current_wheel_sha256": "9919a280a5de2c4bec45837078cb1d405e7169933ddcfb0758aa7d6a82722d39",
+      "current_run_id": "gap-w2-6-windows-978",
+      "current_status": "PASS_ALL_NO_OPENGL_GATES",
+      "artifact_admitted_to_no_opengl_matrix": false,
+      "process_exit": 0,
+      "child_waited": true,
+      "wheel_members_verified": 537,
+      "gates": {
+        "no_gl_execution": "PASS",
+        "no_gl_loads": "PASS",
+        "no_gl_install_link_requirement": "PASS"
+      },
+      "after_shutdown": {
+        "pending_tickets": 0,
+        "queued_frames": 0,
+        "live_buffer_bytes": 0,
+        "live_cpu_buffer_bytes": 0,
+        "live_texture_bytes": 0,
+        "canvas_texture_bytes": 0,
+        "transient_buffer_bytes": 0,
+        "line_resource_pool_busy_slots": 0,
+        "line_resource_pool_bytes": 0,
+        "host_import_pinned_bytes": 0
+      },
+      "report": "@evidence/build/runs/gap-w2-6-windows-978/reports/strict-napari-qualified.json",
+      "report_sha256": "9c599c3938dd4f70fbe834723227bbccf8f98166cffd0cf62ed77b07d392989c",
+      "worker_sha256": "3c4bed30c3817e39436cb80270d174f2d94b2111e387b45646d3fa060ff88060",
+      "functional_sha256": "162c22f1a26ce4e1287d0b01a409aeaee9e33b0737681fdd0c6644fda2b541c7"
+    },
+    {
+      "id": "windows-vulkan-glue-vispy-viewers-pyqt6",
+      "platform": "windows-vulkan",
+      "application": "glue-vispy-viewers",
+      "host_version": "1.4.0",
+      "binding": "pyqt6",
+      "mandatory": false,
+      "matrix_pinned_artifact_sha256": "62df5e4c31bf9a1bb1bea47fd68d50e4198d6ec13d2551c991da1e7f30a2b38f",
+      "matrix_environment_id": "8c73fcfde8c30508e0acddf6b8c65ab281546a28decfa2cb9c9201ef270b9c97",
+      "current_wheel_sha256": "9919a280a5de2c4bec45837078cb1d405e7169933ddcfb0758aa7d6a82722d39",
+      "current_run_id": "gap-w2-6-windows-978",
+      "current_status": "PASS_ALL_NO_OPENGL_GATES",
+      "artifact_admitted_to_no_opengl_matrix": false,
+      "process_exit": 0,
+      "child_waited": true,
+      "wheel_members_verified": 537,
+      "gates": {
+        "no_gl_execution": "PASS",
+        "no_gl_loads": "PASS",
+        "no_gl_install_link_requirement": "PASS"
+      },
+      "after_shutdown": {
+        "pending_tickets": 0,
+        "queued_frames": 0,
+        "live_buffer_bytes": 0,
+        "live_cpu_buffer_bytes": 0,
+        "live_texture_bytes": 0,
+        "canvas_texture_bytes": 0,
+        "transient_buffer_bytes": 0,
+        "line_resource_pool_busy_slots": 0,
+        "line_resource_pool_bytes": 0,
+        "host_import_pinned_bytes": 0
+      },
+      "report": "@evidence/build/runs/gap-w2-6-windows-978/reports/strict-glue-qualified.json",
+      "report_sha256": "1f09969c5b092723219cf523a845dc532e05e5e34e1f30d8e1c2d286ac0c45f7",
+      "worker_sha256": "a42420261e67fe8983c47c9a10ef8321ea7e30f0373b2b90923b51b79fc9f82b",
+      "functional_sha256": "d5f198443b68f668bdbe1d9254ef4008f4c2f4128c87984f66c68cc1b603b442"
+    },
+    {
+      "id": "windows-vulkan-napari-threedee-pyqt6",
+      "platform": "windows-vulkan",
+      "application": "napari-threedee",
+      "host_version": "0.0.29",
+      "binding": "pyqt6",
+      "mandatory": false,
+      "matrix_pinned_artifact_sha256": "62df5e4c31bf9a1bb1bea47fd68d50e4198d6ec13d2551c991da1e7f30a2b38f",
+      "matrix_environment_id": "eb23d7f0396b5e9b7c02b53d9e3e90bbfcc8953464d3fd1555ea9a82bd5f731d",
+      "current_wheel_sha256": "9919a280a5de2c4bec45837078cb1d405e7169933ddcfb0758aa7d6a82722d39",
+      "current_run_id": "gap-w2-6-windows-978",
+      "current_status": "PASS_ALL_NO_OPENGL_GATES",
+      "artifact_admitted_to_no_opengl_matrix": false,
+      "r1": "open",
+      "r1_note": "Passed on its one attempt in gap-w2-6-windows-978, but historical R1 stays open pending root-cause proof and deterministic regression test for the 2026-10-23 Windows OLE startup stall; a passing run never closes R1.",
+      "process_exit": 0,
+      "child_waited": true,
+      "wheel_members_verified": 537,
+      "gates": {
+        "no_gl_execution": "PASS",
+        "no_gl_loads": "PASS",
+        "no_gl_install_link_requirement": "PASS"
+      },
+      "after_shutdown": {
+        "pending_tickets": 0,
+        "queued_frames": 0,
+        "live_buffer_bytes": 0,
+        "live_cpu_buffer_bytes": 0,
+        "live_texture_bytes": 0,
+        "canvas_texture_bytes": 0,
+        "transient_buffer_bytes": 0,
+        "line_resource_pool_busy_slots": 0,
+        "line_resource_pool_bytes": 0,
+        "host_import_pinned_bytes": 0
+      },
+      "report": "@evidence/build/runs/gap-w2-6-windows-978/reports/strict-threedee-qualified.json",
+      "report_sha256": "7467d6a3eeeee754606a94a9e844d2c2382ec98c5ba60fd0a5b2ad04e8145cc4",
+      "worker_sha256": "38765a83d1ff75f6b5406ed45cd2ce18deeb88cfd0186cb41cfc7ae4f03a04bf",
+      "functional_sha256": "4b74d10021a45cfc9a0c446f49e772e9184cd8672c99eb19e4d9049699650b80"
+    },
+    {
+      "id": "wsl-linux-lavapipe-x11-napari-pyqt6",
+      "platform": "wsl-linux-lavapipe-x11",
+      "application": "napari",
+      "host_version": "0.10.0",
+      "binding": "pyqt6",
+      "mandatory": false,
+      "matrix_pinned_artifact_sha256": "374a74ea9787ccccc643e0ac7e45d9f704a41d046465828736158ac94398c4a3",
+      "matrix_environment_id": "1285f0a0940926fcf5ffcfa4ab97b220cc730d52522c3325a0e6f7651a8e9282",
+      "current_wheel_sha256": "e600b29e5259b896cc9d0fe36bbb5760260946aef53c013f8fc74e2fd0153007",
+      "current_run_id": "gap-w2-6-wsl-979",
+      "current_status": "PASS_ALL_NO_OPENGL_GATES",
+      "artifact_admitted_to_no_opengl_matrix": false,
+      "process_exit": 0,
+      "child_waited": true,
+      "wheel_members_verified": 537,
+      "gates": {
+        "no_gl_execution": "PASS",
+        "no_gl_loads": "PASS",
+        "no_gl_install_link_requirement": "PASS"
+      },
+      "after_shutdown": {
+        "pending_tickets": 0,
+        "queued_frames": 0,
+        "live_buffer_bytes": 0,
+        "live_cpu_buffer_bytes": 0,
+        "live_texture_bytes": 0,
+        "canvas_texture_bytes": 0,
+        "transient_buffer_bytes": 0,
+        "line_resource_pool_busy_slots": 0,
+        "line_resource_pool_bytes": 0,
+        "host_import_pinned_bytes": 0
+      },
+      "report": "@evidence/build/runs/gap-w2-6-wsl-979/reports/wsl-strict-napari-qualified.json",
+      "report_sha256": "aa6b9d52c69fac70b01149f125ea6c8268c27e699d4c74717a9c6dd887a0d96c",
+      "worker_sha256": "0f34e10aa601576a35fdb9c6b237dab3b1ba1a9ded273ba8e1cceae1f5f03d91",
+      "functional_sha256": "f028ae007d0ca8d3c73693b3787e1225bc1bbe6686ab3e8a23e8645fa0fd0d40"
+    },
+    {
+      "id": "wsl-linux-lavapipe-x11-glue-vispy-viewers-pyqt6",
+      "platform": "wsl-linux-lavapipe-x11",
+      "application": "glue-vispy-viewers",
+      "host_version": "1.4.0",
+      "binding": "pyqt6",
+      "mandatory": false,
+      "matrix_pinned_artifact_sha256": "374a74ea9787ccccc643e0ac7e45d9f704a41d046465828736158ac94398c4a3",
+      "matrix_environment_id": "9f324bae6cd38d6a5739947fa7dc209fe9eacb5c1463f2e2ad31147fb7056988",
+      "current_wheel_sha256": "e600b29e5259b896cc9d0fe36bbb5760260946aef53c013f8fc74e2fd0153007",
+      "current_run_id": "gap-w2-6-wsl-979",
+      "current_status": "PASS_ALL_NO_OPENGL_GATES",
+      "artifact_admitted_to_no_opengl_matrix": false,
+      "process_exit": 0,
+      "child_waited": true,
+      "wheel_members_verified": 537,
+      "gates": {
+        "no_gl_execution": "PASS",
+        "no_gl_loads": "PASS",
+        "no_gl_install_link_requirement": "PASS"
+      },
+      "after_shutdown": {
+        "pending_tickets": 0,
+        "queued_frames": 0,
+        "live_buffer_bytes": 0,
+        "live_cpu_buffer_bytes": 0,
+        "live_texture_bytes": 0,
+        "canvas_texture_bytes": 0,
+        "transient_buffer_bytes": 0,
+        "line_resource_pool_busy_slots": 0,
+        "line_resource_pool_bytes": 0,
+        "host_import_pinned_bytes": 0
+      },
+      "report": "@evidence/build/runs/gap-w2-6-wsl-979/reports/wsl-strict-glue-qualified.json",
+      "report_sha256": "7bb7aa0bf31548f7fbb27ea82ff3b53ed503155ef7ff80ed9551f74e7080e1cd",
+      "worker_sha256": "bf6e6309fb4b4f30691589e8cf713bcfc940f3f2861a55e7e4b0d53b71adaf0c",
+      "functional_sha256": "a44a4917ff2144bf9733e6a8237caeac9961026f2dc599766e3fc9ab3832042d"
+    },
+    {
+      "id": "wsl-linux-lavapipe-x11-napari-threedee-pyqt6",
+      "platform": "wsl-linux-lavapipe-x11",
+      "application": "napari-threedee",
+      "host_version": "0.0.29",
+      "binding": "pyqt6",
+      "mandatory": false,
+      "matrix_pinned_artifact_sha256": "374a74ea9787ccccc643e0ac7e45d9f704a41d046465828736158ac94398c4a3",
+      "matrix_environment_id": "1285f0a0940926fcf5ffcfa4ab97b220cc730d52522c3325a0e6f7651a8e9282",
+      "current_wheel_sha256": "e600b29e5259b896cc9d0fe36bbb5760260946aef53c013f8fc74e2fd0153007",
+      "current_run_id": "gap-w2-6-wsl-979",
+      "current_status": "PASS_ALL_NO_OPENGL_GATES",
+      "artifact_admitted_to_no_opengl_matrix": false,
+      "process_exit": 0,
+      "child_waited": true,
+      "wheel_members_verified": 537,
+      "gates": {
+        "no_gl_execution": "PASS",
+        "no_gl_loads": "PASS",
+        "no_gl_install_link_requirement": "PASS"
+      },
+      "after_shutdown": {
+        "pending_tickets": 0,
+        "queued_frames": 0,
+        "live_buffer_bytes": 0,
+        "live_cpu_buffer_bytes": 0,
+        "live_texture_bytes": 0,
+        "canvas_texture_bytes": 0,
+        "transient_buffer_bytes": 0,
+        "line_resource_pool_busy_slots": 0,
+        "line_resource_pool_bytes": 0,
+        "host_import_pinned_bytes": 0
+      },
+      "report": "@evidence/build/runs/gap-w2-6-wsl-979/reports/wsl-strict-threedee-qualified.json",
+      "report_sha256": "306d97704a0b7a83f9d37015dbf39f1d5af7e16c3fa084e5909e88325e92a826",
+      "worker_sha256": "6c577f5a99205656767be5e7b7ce66ef310ad8904ad50d58b8342cd68510aab2",
+      "functional_sha256": "9369d1679722cebfe62d24266958f23a1902133065ad52ee9108e34c875264af"
+    }
+  ],
+  "non_admitted_and_bounded_hosts": {
+    "dive-admission": {
+      "id": "dive-admission",
+      "host_id": "HOST-04",
+      "application": "dive",
+      "mandatory": false,
+      "status": "NOT_ADMITTED",
+      "pyside2_legacy_excluded": true,
+      "qt6_port_blocker": "AttributeError: module 'PySide6.QtWidgets' has no attribute 'QAction' / 'QActionGroup'",
+      "investigation_record": "compat/host-environments/dive-pyside6-investigation.json"
+    },
+    "visbrain-admission": {
+      "id": "visbrain-admission",
+      "host_id": "HOST-06",
+      "application": "visbrain",
+      "mandatory": false,
+      "status": "NOT_ADMITTED",
+      "rendering_qualified_for_visbrain_host": false,
+      "unmodified_cp312_import_blocked": true,
+      "unmodified_cp312_blocker": "ModuleNotFoundError: No module named 'PyQt5'",
+      "primitive_equivalent_scope": "vispy_primitive_equivalent_only_not_visbrain_host_admission",
+      "windows_primitive_report_sha256": "6569bd1fcc53e9098161606454fe474c1bed2aa243f3ecce8b2406b44f4f17b8",
+      "wsl_primitive_report_sha256": "ef27a0f8819a2c366542f3a14a66686aa6752a5ba63dca5ca26163d10e8fd8cc"
+    },
+    "phylib-import-only": {
+      "id": "phylib-import-only",
+      "host_id": "HOST-06",
+      "application": "phylib",
+      "version": "2.7.1",
+      "mandatory": false,
+      "status": "IMPORT_ONLY_CPU_CAPABILITY",
+      "scope": "import_only_cpu_co_resident_with_current_wheel",
+      "rendering_qualified": false,
+      "modules_imported_count": 12,
+      "package_tree_sha256": "3db4814e19aa3a6f9e477a7ae7a5472d1d86237b566088ecf521cbfb2e3c2a98",
+      "windows_report_sha256": "00eba9b65a970c2ce902d3283d47b6b6e528b0187333edafd06a196984f23b84",
+      "wsl_report_sha256": "732f382ede2a493df3e6c4436af270a949b6e06c733c3997f6a39664a3b3356b"
+    },
+    "glue-h03-reconciliation": {
+      "id": "glue-h03-reconciliation",
+      "host_id": "HOST-06",
+      "application": "glue-vispy-viewers",
+      "version": "1.4.0",
+      "disposition_manifest": "compat/api-acceptance/h03-upstream-disposition-v1.json",
+      "disposition_status": "PASS_H03_HISTORICAL_UPSTREAM_DISPOSITION_ONLY",
+      "stale_without_invalidation_reproduced": true,
+      "distinct_with_invalidation_before_update": true,
+      "windows_report_sha256": "4e4a7d94bb41466bfbc343638e283c6381af173799c22fa18de771b0574086bf",
+      "wsl_report_sha256": "2a407fd3746e7c0ef320b3e2f2397b80d96f0ce7aa912a6d050a5fee619b1856"
+    }
+  },
+  "stock_hot_swap_profiles": {
+    "strict_no_opengl_qualified": false,
+    "scope": "hot-swap profile only; never a strict no-OpenGL qualification",
+    "windows": {
+      "stock_napari_0_10_0": {
+        "status": "PASS_HOT_SWAP_GATES",
+        "renderer_gl_events": 0,
+        "unattributed_gl_events": 0,
+        "host_gl_events": 24,
+        "report_sha256": "c67c0d5d37f8f23d33b9105ad8da3642360f8663ba7f4856252c07859cbdb0b7"
+      },
+      "stock_glue_1_4_0": {
+        "status": "PASS_HOT_SWAP_GATES",
+        "renderer_gl_events": 0,
+        "unattributed_gl_events": 0,
+        "host_gl_events": 11,
+        "report_sha256": "1dbcc5dbfc2bc1b80562efa4b0aef681ce7a71369dde83fd5146c0788f7ce376"
+      }
+    },
+    "wsl": {
+      "stock_napari_0_10_0": {
+        "status": "PASS_HOT_SWAP_GATES",
+        "renderer_gl_events": 0,
+        "unattributed_gl_events": 0,
+        "host_gl_events": 80,
+        "report_sha256": "ef408e308a25dfe633b5f705f4c9f40cdabf0f6d51a7f6c8bfd10052eadf3841"
+      },
+      "stock_glue_1_4_0": {
+        "status": "PASS_HOT_SWAP_GATES",
+        "renderer_gl_events": 0,
+        "unattributed_gl_events": 0,
+        "host_gl_events": 56,
+        "report_sha256": "7bf3e956b4bab4a7a641790d4a7e2183995eff53999f32598e09e52e411fb034"
+      }
+    }
+  }
+}

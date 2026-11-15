@@ -1,0 +1,23 @@
+{
+  "schema": 1,
+  "kind": "promotion-basis",
+  "subject": {
+    "path": "compat/candidates/tk-state-resource-16/installed-proofs-963/qualification-subject.json",
+    "sha256": "a10b03e8359785ea1fdfca6e240135f43e517186105e265187f956150bf1b760"
+  },
+  "qualification_head": "f5c00c99d3ac88a691931ade8b3bd7bdd0dc7b16",
+  "repository": "bipxx/vispy_vulkan",
+  "policy": {
+    "path": "compat/qualification-ci.json",
+    "sha256": "ce789d69999363f097af2229f0eac301d056cabb971a5b26ba2fd0df4341dd41"
+  },
+  "ci": {
+    "path": "compat/candidates/tk-state-resource-16/installed-proofs-963/ci-966/required-ci.json",
+    "sha256": "0ee835368dd322387ecb07aa0ef155d35ea14966d40691fa39b2035e3f28994b"
+  },
+  "impact": {
+    "path": "compat/candidates/tk-state-resource-16/installed-proofs-963/change-impact-review-961r.json",
+    "sha256": "1f5ab41396d3922a0e3b39312f24900497f7fb1aa6f584c00ff7cea18e126fb8"
+  },
+  "manifest_sha256": "2a2d7d7c267337a3a16a9b3508fc98b19605cd159d0c4e6da745a5df71f95ba0"
+}

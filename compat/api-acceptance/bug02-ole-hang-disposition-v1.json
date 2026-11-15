@@ -1,0 +1,41 @@
+{
+  "schema": 1,
+  "date": "2026-11-15",
+  "gap_id": "BUG-02",
+  "backlog_id": "B12",
+  "status": "DISPOSITION_SEPARATE_HISTORICAL_UNREPRODUCED_PRESERVED",
+  "classification": {
+    "bug02_historical_pyqt5_ole_hang": {
+      "profile": "Historical Windows PyQt5 (including concurrent repro5 QWidget stall and earlier Qt5 OLE lifecycle hang)",
+      "signature": "Main thread blocked inside OLE RegisterDragDrop (InternalRegisterWindowPropInterface2 -> RoGetAgileReference -> ALPC / RPCSS)",
+      "disposition": "separate-historical-unreproduced-preserved",
+      "related_symptom_family": "Shares OLE RegisterDragDrop/RPC wait symptom with BUG-01 (B22), but distinct from the Windows native observer INT3 resolver-ownership race (fixed in build/no-opengl/windows-resolver-race3/controls.json)."
+    },
+    "cold_import_stall_and_bug01": {
+      "bug01_backlog_id": "B22",
+      "cause_identified_for_bug01": "Loss of default thread-pool worker-factory handle early in process startup (closing entity still unidentified; 0 in 733 unprotected / 1,995 detectable trials).",
+      "policy": "D33 watcher-only (tools/pool_watch_external.py); non-blocking unless reproduced."
+    }
+  },
+  "preserved_evidence_refs": [
+    {
+      "path": "docs/threedee-startup-diagnosis.md",
+      "sha256": "1a09470487a34fb1b87dc1dcc147cec9a8461724b2a73b979b6d0f82628ba755",
+      "notes": "Records 300s RegisterDragDrop/OLE/RPC timeout, Qt5 repro5 stall, diagnostics 49-51, sequence-contention-201, and worker-factory handle-loss analysis."
+    },
+    {
+      "path": "docs/opengl-removal-status.md",
+      "sha256": "b1df5d7804ebeda8ef19c041037b735e2689f0a22945fc12774526b4ea074b72",
+      "notes": "Distinguishes the proved/fixed Windows resolver INT3 ownership race from the earlier intermittent Qt5 OLE lifecycle hang and preserved RegisterDragDrop timeout."
+    },
+    {
+      "path": "docs/superpowers/plans/2026-10-28-consolidated-plan.md",
+      "sha256": "7ff27df20b71b22cb3a4719f653d9b3d2c61c89bfba54d0145a19e6bd55e699c",
+      "notes": "Tracks B12 (historical PyQt5 OLE hang) separately from R1/B22 and records native65 iso_categorical_fast RegisterDragDrop/RpcSs wait."
+    }
+  ],
+  "current_candidate_relevance": {
+    "tk_state_resource_16_pyqt5_status": "No PyQt5 OLE hang observed in readback-windows-strict-944 or readback-wsl-strict-945; mandatory PyQt5 rows scheduled in Step A1.",
+    "blocks_tk_state_resource_16": false
+  }
+}

@@ -1,0 +1,180 @@
+{
+  "schema": 1,
+  "date": "2026-11-15",
+  "evidence_tier": "installed-functional",
+  "platform": "windows-x86_64-vulkan-rtx4090",
+  "status": "PASS_INSTALLED_FUNCTIONAL_W2_5_LIFECYCLE_INPUT_QT_TK_MSAA_WINDOWS",
+  "coverage_ids": [
+    "LIF-01",
+    "LIF-02",
+    "LIF-03",
+    "LIF-04",
+    "LIF-05",
+    "LIF-06",
+    "LIF-07",
+    "API-05"
+  ],
+  "source_commit": "613cacfb73b1b4424dc098241c1eaf7553746c90",
+  "wheel": {
+    "path": "build/artifacts/9919a280a5de2c4bec45837078cb1d405e7169933ddcfb0758aa7d6a82722d39/vispy-0.17.0+vulkan.2-cp312-cp312-win_amd64.whl",
+    "sha256": "9919a280a5de2c4bec45837078cb1d405e7169933ddcfb0758aa7d6a82722d39"
+  },
+  "device": {
+    "backend": "Vulkan",
+    "adapter_type": "discrete",
+    "device": "NVIDIA GeForce RTX 4090",
+    "driver": "NVIDIA: 610.88 610.88.0.0",
+    "software": false
+  },
+  "toolkits": {
+    "pyqt6": {
+      "qt_version": "6.11.0",
+      "binding_version": "6.11.0",
+      "binding_origin": "C:\\Users\\HEQ\\Projects\\vispy_vulkan\\.venv\\Lib\\site-packages\\PyQt6\\QtCore.pyd",
+      "binding_sha256": "91dd5166110b88a4f4d3acda6fe6c10ed699882dd3602328a59e9f656cc766b1"
+    },
+    "tkinter": {
+      "tk_version": 8.6,
+      "tcl_version": 8.6,
+      "binding_origin": "C:\\Users\\HEQ\\AppData\\Roaming\\uv\\python\\cpython-3.12.8-windows-x86_64-none\\DLLs\\_tkinter.pyd",
+      "binding_sha256": "38453f6aff3f3a3ef0017c00bfee2f403ca0aeaf92b8b5c56d05460fd6dbbdf9"
+    }
+  },
+  "source_overrides": 0,
+  "installed_members_verified": 537,
+  "junit_summary": {
+    "total": 19,
+    "passed": 19,
+    "skipped": 0,
+    "failures": 0,
+    "errors": 0,
+    "per_module": {
+      "test_qt_state_reparent_multicanvas_gpu": {
+        "passed": 4,
+        "skipped": 0,
+        "failed": 0
+      },
+      "test_qt_timer_wheel_coords_gpu": {
+        "passed": 3,
+        "skipped": 0,
+        "failed": 0
+      },
+      "test_msaa_mixed_edge_capture_gpu": {
+        "passed": 3,
+        "skipped": 0,
+        "failed": 0
+      },
+      "test_tk_timer_camera_contracts": {
+        "passed": 3,
+        "skipped": 0,
+        "failed": 0
+      },
+      "test_app_timer_context_api05_contract": {
+        "passed": 6,
+        "skipped": 0,
+        "failed": 0
+      }
+    }
+  },
+  "shutdown_gauges": {
+    "pending_tickets": 0,
+    "queued_frames": 0,
+    "live_buffer_bytes": 0,
+    "live_cpu_buffer_bytes": 0,
+    "live_texture_bytes": 0,
+    "canvas_texture_bytes": 0,
+    "transient_buffer_bytes": 0,
+    "line_resource_pool_busy_slots": 0,
+    "line_resource_pool_bytes": 0,
+    "host_import_pinned_bytes": 0
+  },
+  "actual_exit": 0,
+  "child_waited": true,
+  "scratch_absent_after_cleanup": true,
+  "test_modules": [
+    {
+      "path": "tests/qt/test_qt_state_reparent_multicanvas_gpu.py",
+      "sha256": "38cf5b47c65de0f681d322c1e69cced10ad9a54a6797709872c90fcb7a7d696c",
+      "cases": {
+        "passed": 4,
+        "skipped": 0,
+        "failed": 0
+      }
+    },
+    {
+      "path": "tests/qt/test_qt_timer_wheel_coords_gpu.py",
+      "sha256": "aa6c5b5a56a7369d9f74478d3847302a3459b27b5dfd410e4fe7628504a66d73",
+      "cases": {
+        "passed": 3,
+        "skipped": 0,
+        "failed": 0
+      }
+    },
+    {
+      "path": "tests/native/test_msaa_mixed_edge_capture_gpu.py",
+      "sha256": "381798abf679f0ecfc77008cbd41dd762e62f35f33d42776f7efdcfa72700ad7",
+      "cases": {
+        "passed": 3,
+        "skipped": 0,
+        "failed": 0
+      }
+    },
+    {
+      "path": "tests/native/test_tk_timer_camera_contracts.py",
+      "sha256": "b1427ad2fc8d0eea3c3bebfb3b77e503b143aab9c10e9c506804c53b01b7ac40",
+      "cases": {
+        "passed": 3,
+        "skipped": 0,
+        "failed": 0
+      }
+    },
+    {
+      "path": "tests/contract/test_app_timer_context_api05_contract.py",
+      "sha256": "bbf44ba23111c2b3410a59fe94c77bc42ea38e3931bc12e70d221604ce60eb6b",
+      "cases": {
+        "passed": 6,
+        "skipped": 0,
+        "failed": 0
+      }
+    }
+  ],
+  "boundaries": {
+    "LIF-01": "Deterministic simulated device loss (_dawn.lose_device), submission-stage fault injection (_dawn.diagnostic_submission_controls), and Win32 WSI surface detach/reattach; uncontrolled hardware TDR storms remain outside synthetic qualification.",
+    "LIF-06": "Toolkit-synthesized Qt QWheelEvent/QKeyEvent/QMouseEvent (spontaneous() == False), QTimer callbacks, logical vs 2x scale coordinates, and PanZoom/Turntable camera routes; physical HID hardware remains out of scope.",
+    "LIF-07": "Supported raster-present Tkinter PhotoImage backend (_dawn_tk) timer, embedded host Frame ownership, FocusOut drag cancellation, and PanZoom/Turntable camera routes; native Tk WSI swapchain admission (LIF-07-NATIVE-ADMISSION) remains strictly separate.",
+    "LIF-08": "Cross-monitor fractional DPI live window drags remain deferred outside single-display automation."
+  },
+  "scope": "Installed-wheel functional execution on Windows RTX 4090 (wheel 9919a280..., 537 members, 0 source overlays, 19/19 cases passed, 10 zero shutdown gauges) covering LIF-01..07 and API-05 (Application/use_app/Canvas/Timer/GLContext/GLShared contracts, Qt simulated device-loss & Win32 WSI surface recovery, Qt reparenting/WinIdChange, minimized & 0x0 zero-submit suppression/recovery, multi-canvas parent destruction with surviving shared siblings, samples=1 vs samples=4 offscreen/onscreen diagonal resolve & cropped capture, Qt QTimer/wheel/modifier/camera routes, and raster-present Tk timer/event/camera routes). Recorded at installed-functional tier only; distinct from tk-state-resource-16 scoped admission and public delivery.",
+  "verification": {
+    "path": "@evidence/build/runs/gap-w2-5-windows-976/verification.json",
+    "sha256": "5eea29632f05a1d06d52c9481ef394c633b7c5b6fb6016637993994c6bd1ab10"
+  },
+  "worker": {
+    "path": "@evidence/build/runs/gap-w2-5-windows-976/worker.json",
+    "sha256": "772d4a7e61ac0f602aa3b05e8fbfc90cb884fa980792fbda8188c540466fef86"
+  },
+  "pytest_report": {
+    "path": "@evidence/build/runs/gap-w2-5-windows-976/pytest.json",
+    "sha256": "0128ccdb66477b1772624f826e78b70df17900eec54be7fa54329fdd9891d9d3"
+  },
+  "junit_xml": {
+    "path": "@evidence/build/runs/gap-w2-5-windows-976/selected.xml",
+    "sha256": "3a220a961cd2071dee655b8e3faaa796ded2f5ec8cfcd6e232fef1a1a132a870"
+  },
+  "terminal": {
+    "path": "@evidence/build/runs/gap-w2-5-windows-976/terminal.json",
+    "sha256": "5862bbd84757b8c5b9d9f68dd35a4444886ec25df872134626a132b23c89779b"
+  },
+  "cleanup_plan": {
+    "path": "@evidence/build/runs/gap-w2-5-windows-976/cleanup-plan.json",
+    "sha256": "2856c082ab8dc45f367fa4d8562757463d9b7d6978e0454a3387327e0bec6f6d"
+  },
+  "cleanup_apply_process": {
+    "path": "@evidence/build/runs/gap-w2-5-windows-976/cleanup-apply-process.json",
+    "sha256": "7fd34c73144c0a1b0fb2dcb5aa93d447ae9f9c946b7a3971a263d37afd95ea97"
+  },
+  "scoped_admitted": false,
+  "artifact_admitted": false,
+  "publicly_delivered": false,
+  "published": false
+}
