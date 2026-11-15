@@ -1,0 +1,32 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "kind": "readback-native-int-range-windows-overlay",
+  "status": "PASS_WINDOWS_MATCHING_NATIVE_SOURCE_OVERLAY_19_RECOVERY_CASES",
+  "coverage_ids": [
+    "API-06-READBACK-GEOMETRY",
+    "LIF-05"
+  ],
+  "source_hashes": {
+    "src/vispy/gloo/dawn_parser.py": "1dc10e29175393a5bf825459eee8756d85c0ea4886b16c172c0fe9593dc13e7f",
+    "tests/contract/test_dawn_state_query_contract.py": "aa20ba7388f26579211c3fe9d9e0256d360ff4be74fa22ce8f1301323317cc92",
+    "tests/native/test_dawn_state_queries.py": "fcbe65163aa58453275c9404449a0469518cda6d1a4172ef9fb2b311105f4220"
+  },
+  "verification": {
+    "path": "@evidence/build/runs/gap-readback-windows-926/verification.json",
+    "sha256": "b34b91c19fbf6b26c31888fc508905f5f58e3f4dada5e0be8ab4971bfaf7e83c"
+  },
+  "cleanup": {
+    "path": "@evidence/build/runs/gap-readback-windows-926/cleanup-result.json",
+    "sha256": "881d04a6a3ff1545dc41a920818b2b5b025940ed04e40faf3216a2c1a1c1d3da"
+  },
+  "tests": {
+    "tests": 19,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "source_overrides": 1,
+  "installed_release_qualified": false,
+  "published_artifact_changed": false
+}

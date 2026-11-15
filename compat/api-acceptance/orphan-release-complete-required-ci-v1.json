@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "kind": "current-head-complete-required-ci",
+  "status": "PASS_ALL23_REQUIRED_SAME_HEAD_CI_JOBS",
+  "qualification_head": "90348a8064b1091eb989bb8d0fbf787b6afc4f43",
+  "verification": {
+    "path": "@evidence/build/runs/orphan-release-required-ci-908/verification.json",
+    "sha256": "228de795ef0e49e5a17027cc6278bd6505b9cb0e256987e02d97022dfbe9701b"
+  },
+  "artifact_admitted": false,
+  "published": false,
+  "cleanup": {
+    "path": "@evidence/build/runs/orphan-release-required-ci-908/cleanup-result.json",
+    "sha256": "8f9d9dd8802be34d70ea60ca63788561b1ce02a185f7e06e51fd083abcaa8bd1"
+  }
+}

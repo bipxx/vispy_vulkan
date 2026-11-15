@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "kind": "readback-candidate-installed-wsl",
+  "status": "PASS_WSL_CANDIDATE_56_QUERY_READBACK_ZERO_OVERLAY",
+  "verification": {
+    "path": "@evidence/build/runs/readback-candidate-wsl-935/verification.json",
+    "sha256": "426f70e057b7ccdc807c12346edd1256730c3a0fd3dc04004832e6a64fee7b38"
+  },
+  "cleanup": {
+    "path": "@evidence/build/runs/readback-candidate-wsl-935/cleanup-result.json",
+    "sha256": "42d08cbd3e2ce89b585ef87ae23f58fdb756f2aee8f6d70a72673649511b890c"
+  },
+  "wheel": {
+    "path": "build/artifacts/e600b29e5259b896cc9d0fe36bbb5760260946aef53c013f8fc74e2fd0153007/vispy-0.17.0+vulkan.2-cp312-cp312-manylinux_2_39_x86_64.whl",
+    "sha256": "e600b29e5259b896cc9d0fe36bbb5760260946aef53c013f8fc74e2fd0153007"
+  },
+  "source_commit": "613cacfb73b1b4424dc098241c1eaf7553746c90",
+  "source_overrides": 0,
+  "tests": {
+    "tests": 56,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "artifact_admitted": false,
+  "published": false
+}

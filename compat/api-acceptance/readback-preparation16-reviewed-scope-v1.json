@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "kind": "readback-preparation16-review",
+  "status": "APPROVE_CORRECTED_PREPARATION16_SOURCE_SCOPE_NATIVE_REUSE_BINDING",
+  "artifact_admitted": false,
+  "qualified": false,
+  "decision": {
+    "path": "@evidence/build/runs/readback-preparation16-correction-review-940/decision.json",
+    "sha256": "e6c3f6c7934430f3a618261f1b27d529736c64577b06b2a9fe8225614c854a70"
+  },
+  "cleanup": {
+    "path": "@evidence/build/runs/readback-preparation16-correction-review-940/cleanup-result.json",
+    "sha256": "901f35eabae8544ba3d8b5f18abe1a23893d5525e416be6c38c5e04a3f004602"
+  }
+}

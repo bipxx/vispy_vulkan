@@ -1,0 +1,169 @@
+{
+  "schema": 1,
+  "date": "2026-11-15",
+  "status": "PASS_READBACK_WINDOWS_STRICT_MATCHED_COHORT_AND_JOINED_942_ACCEPTANCE",
+  "coverage_ids": [
+    "FIX-04",
+    "FIX-06",
+    "API-06",
+    "LIF-01",
+    "LIF-05",
+    "LIF-07"
+  ],
+  "wheel": {
+    "path": "build/artifacts/9919a280a5de2c4bec45837078cb1d405e7169933ddcfb0758aa7d6a82722d39/vispy-0.17.0+vulkan.2-cp312-cp312-win_amd64.whl",
+    "sha256": "9919a280a5de2c4bec45837078cb1d405e7169933ddcfb0758aa7d6a82722d39"
+  },
+  "source_commit": "613cacfb73b1b4424dc098241c1eaf7553746c90",
+  "candidate": "tk-state-resource-16",
+  "candidate_scope_sha256": "e466af2caa2011e2881401df5dab7c7ecf77603eb6cc9d5a8030041230ee2338",
+  "environment_id": "a27d1f4aa54143b8d7faadd61427f61eb777ac3dff01c099ef52d55ffb8ac3d3",
+  "workflows": [
+    {
+      "workflow": "tk-state-resource-failures",
+      "status": "PASS_ALL_NO_OPENGL_GATES",
+      "report": {
+        "path": "@evidence/build/runs/readback-windows-strict-944/tk-state-resource-failures/replay-1.json",
+        "sha256": "93703502b81be084e1f590d5796ff75a65c51bccd96a509b0888c32cd66cf542"
+      },
+      "worker": {
+        "path": "@evidence/build/runs/readback-windows-strict-944/tk-state-resource-failures/replay-1.worker.json",
+        "sha256": "161487ea2758e16e4759b9743426c6d47f6b2421e9503da11d1d317042a3ede0"
+      },
+      "receipt": {
+        "path": "@evidence/build/runs/readback-windows-strict-944/tk-state-resource-failures/receipt-after-replay-0.json",
+        "sha256": "b1fab96748a822d763228737fc10c84c50bf02aa6aafe4b26bc7991d1907eb90"
+      },
+      "inventory": {
+        "path": "@evidence/build/runs/readback-windows-strict-944/tk-state-resource-failures/receipt.inventory.json",
+        "sha256": "06debcfce69778a689405d700e7170eedb92c49db2405c41a0e2bd5f56df2bb6"
+      },
+      "environment_id": "a27d1f4aa54143b8d7faadd61427f61eb777ac3dff01c099ef52d55ffb8ac3d3",
+      "functional_validation": {
+        "contract": "tk-state-resource-1",
+        "schema": 1,
+        "status": "PASS_FUNCTIONAL_RESULT",
+        "branch_ids": [
+          "ordinary.state",
+          "progress.draw",
+          "progress.poll",
+          "resource.upload-recovery",
+          "submission.gloo.delayed",
+          "submission.gloo.immediate",
+          "submission.raw.delayed",
+          "submission.raw.immediate"
+        ],
+        "qualified": false
+      },
+      "shutdown_gauges": {
+        "pending_tickets": 0,
+        "queued_frames": 0,
+        "live_buffer_bytes": 0,
+        "live_cpu_buffer_bytes": 0,
+        "live_texture_bytes": 0,
+        "canvas_texture_bytes": 0,
+        "transient_buffer_bytes": 0,
+        "line_resource_pool_busy_slots": 0,
+        "line_resource_pool_bytes": 0
+      }
+    },
+    {
+      "workflow": "tk-capture-formats",
+      "status": "PASS_ALL_NO_OPENGL_GATES",
+      "report": {
+        "path": "@evidence/build/runs/readback-windows-strict-944/tk-capture-formats/replay-0.json",
+        "sha256": "21f3efe760fe5481bee89fec50db1cb3ffbfba4a801c5e0adea6034c18345bf6"
+      },
+      "worker": {
+        "path": "@evidence/build/runs/readback-windows-strict-944/tk-capture-formats/replay-0.worker.json",
+        "sha256": "6681a0be33993a9778acada22bddfaca17217ae25bbedbe7857b065abf230c26"
+      },
+      "receipt": {
+        "path": "@evidence/build/runs/readback-windows-strict-944/tk-capture-formats/receipt.json",
+        "sha256": "56b89df6a12683f3734097dada7375c4c10855e5f4bf140def2cdaf29f082acc"
+      },
+      "inventory": {
+        "path": "@evidence/build/runs/readback-windows-strict-944/tk-capture-formats/receipt.inventory.json",
+        "sha256": "06debcfce69778a689405d700e7170eedb92c49db2405c41a0e2bd5f56df2bb6"
+      },
+      "environment_id": "a27d1f4aa54143b8d7faadd61427f61eb777ac3dff01c099ef52d55ffb8ac3d3",
+      "functional_validation": {
+        "schema": 1,
+        "contract": "tk-capture-1",
+        "status": "PASS_FUNCTIONAL_RESULT",
+        "branch_ids": [
+          "capture.invalid-viewport",
+          "capture.ordinary",
+          "capture.resize",
+          "capture.retry"
+        ],
+        "qualified": false
+      },
+      "shutdown_gauges": {
+        "pending_tickets": 0,
+        "queued_frames": 0,
+        "live_buffer_bytes": 0,
+        "live_cpu_buffer_bytes": 0,
+        "live_texture_bytes": 0,
+        "canvas_texture_bytes": 0,
+        "transient_buffer_bytes": 0,
+        "line_resource_pool_busy_slots": 0,
+        "line_resource_pool_bytes": 0
+      }
+    }
+  ],
+  "feature_profile_joins": 16,
+  "gate_checks": 48,
+  "installed_members_verified": 537,
+  "source_overrides": 0,
+  "declared_acceptance_run": "@evidence/build/runs/readback-acceptance-windows-942/verification.json",
+  "declared_acceptance_nodes": [
+    "tests/native/test_tkinter_state_scenario.py::test_composite_observed_failure_and_recovery_scenario",
+    "tests/native/test_tkinter_capture_scenario.py::test_real_tk_capture_observer_scenario"
+  ],
+  "declared_acceptance_cases": 2,
+  "declared_acceptance_shutdown_gauges": {
+    "pending_tickets": 0,
+    "queued_frames": 0,
+    "live_buffer_bytes": 0,
+    "live_cpu_buffer_bytes": 0,
+    "live_texture_bytes": 0,
+    "canvas_texture_bytes": 0,
+    "transient_buffer_bytes": 0,
+    "line_resource_pool_busy_slots": 0,
+    "line_resource_pool_bytes": 0,
+    "host_import_pinned_bytes": 0
+  },
+  "actual_exit": 0,
+  "child_waited": true,
+  "qualified_rows_written": 0,
+  "artifact_admitted": false,
+  "strict_selection_admitted": false,
+  "native_rebuilt": false,
+  "scope": "Finite current Windows CPython3.12.8 RTX4090 Vulkan610.88 Tk8.6 raster strict matched cohort on exact 9919a280 wheel, joined without rerunning pytest to exact declared acceptance run 942. Two strict workflows share one exact minimal installed environment (no overlays, 537 members); 942 acceptance also verified 537 members and 10 zero shutdown gauges on the same wheel. No WSL, strict subject/profile admission, final CI/integration/promotion/publication transfer.",
+  "evidence": {
+    "path": "@evidence/build/runs/readback-windows-strict-944/verification.json",
+    "sha256": "e42eeb23651ff53d9e2c97223e457f042ffabaa04341fd396c45f60ac32b6ba6"
+  },
+  "cleanup": {
+    "status": "PASS_APPLY",
+    "bytes_removed": 62914104,
+    "files_removed": 1636,
+    "retained_verified": 77,
+    "plan": {
+      "path": "@evidence/build/runs/readback-windows-strict-944/cleanup-plan.json",
+      "sha256": "e9aba4c3e3dfd5a7fc3cbfe8528b35442e5506a765139980c7fbf208f3e20edd"
+    },
+    "apply_log": {
+      "path": "@evidence/build/runs/readback-windows-strict-944/cleanup-apply.log",
+      "sha256": "efacb556e55bbadf82a82616cd0957ed23563b49ceb1924fb04b705f0fc313f3"
+    }
+  },
+  "remaining": [
+    "Matching WSL strict runtime-observer cohort and declared acceptance join (readback-wsl-strict-945)",
+    "Eight mandatory host-profile rows on exact new wheels 9919a280 and e600b29e plus mandatory index",
+    "32-row / 128-criterion bindings and attempt-history review (including 944 tk-state-resource-failures replay-0)",
+    "Contributing proof retention audit (14 canonical JSONs in tk-state-resource-16)",
+    "Final-head 23-job CI, independent source/subject/impact/promotion reviews, guarded scoped admission, protected integration and distinct public delivery"
+  ]
+}

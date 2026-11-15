@@ -1,0 +1,47 @@
+{
+  "schema": 1,
+  "date": "2026-11-15",
+  "status": "PASS_PREPARATION16_EXACT_SUBJECT_128_BINDINGS_NOT_ADMITTED",
+  "coverage_ids": [
+    "FIX-04",
+    "FIX-06",
+    "API-06",
+    "LIF-01",
+    "LIF-05",
+    "LIF-07",
+    "TOOL-01"
+  ],
+  "candidate": "tk-state-resource-16",
+  "source_commit": "613cacfb73b1b4424dc098241c1eaf7553746c90",
+  "qualification_subject": {
+    "path": "@evidence/build/runs/readback-preparation16-subject-957/qualification-subject.json",
+    "sha256": "18e6ae49abb677b79f4b31efb0b2154505d16bf68d73bbdf9a9193f828bc99f8"
+  },
+  "result": {
+    "path": "@evidence/build/runs/readback-preparation16-subject-957/subject-result.json",
+    "sha256": "37c5d664a97455bd381851d5ded7dbc6a588c7f1d5af00b2cb669bebb7b75401"
+  },
+  "terminal": {
+    "path": "@evidence/build/runs/readback-preparation16-subject-957/terminal-source-only.json",
+    "sha256": "abe9cd5603b162d141ede39823ca1ad9cfda8345281ba0b86d5c374b1237a204"
+  },
+  "restoration": {
+    "path": "@evidence/build/runs/readback-preparation16-subject-957/restoration.json",
+    "sha256": "a322d34c2d5e1062bf658c09918f3b0a1a3e427c9448617085834901acaf8efb"
+  },
+  "retention": {
+    "path": "@evidence/build/runs/readback-preparation16-retention-956/retention-record.json",
+    "sha256": "0714ab73727eedd26af041be96bd97370d5401b0f8365861671893edf613f590"
+  },
+  "proved_bindings": 128,
+  "selected_rows": 32,
+  "strict_attempts": 5,
+  "retained_inputs": 1657,
+  "canonical14files_restored": true,
+  "actual_exit": 0,
+  "child_waited": true,
+  "scratch_created": false,
+  "artifact_admitted": false,
+  "release_complete": false,
+  "scope": "Reviewed tk-state-resource-16 declarations and exact Windows 9919a280 / Linux e600b29e installed receipts prove all 128 selected bindings under qualification_index.validate_subject with current contributing proof retention (956) and Gate A2 resolution (955r), restoring all 14 canonical preparation JSONs byte-for-byte. Curated qualification branch freeze, same-head 23-job CI, promotion review, scoped admission and verified public delivery remain separate."
+}

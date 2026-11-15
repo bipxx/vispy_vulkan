@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "kind": "readback-six-case-source-peer-review",
+  "status": "ACCEPT_SCOPED_SIX_CASE_SOURCE_FIX",
+  "decision": {
+    "path": "@evidence/build/runs/gap-readback-peer-review-924/decision.json",
+    "sha256": "563d8475975b33d10bef6319a3b47c4bf37cc688fd3af52a8dbcf5fd13a062b5"
+  },
+  "cleanup": {
+    "path": "@evidence/build/runs/gap-readback-peer-review-924/cleanup-result.json",
+    "sha256": "f606c58a2b471b55ac5fa35c1224b9034728c776f58af48187048de9b1a867b2"
+  },
+  "scope": "Predecessor921/922/923 source613a; does not review successor925 native-int range change",
+  "artifact_admitted": false,
+  "published_artifact_changed": false
+}

@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "kind": "readback-native-integer-range-source",
+  "status": "SOURCE_FIXED_57_CPU_CONTRACTS_PASS_MATCHING_OVERLAYS_PENDING",
+  "coverage_ids": [
+    "API-06-READBACK-GEOMETRY",
+    "LIF-05"
+  ],
+  "source_hashes": {
+    "src/vispy/gloo/dawn_parser.py": "1dc10e29175393a5bf825459eee8756d85c0ea4886b16c172c0fe9593dc13e7f",
+    "tests/contract/test_dawn_state_query_contract.py": "aa20ba7388f26579211c3fe9d9e0256d360ff4be74fa22ce8f1301323317cc92",
+    "tests/native/test_dawn_state_queries.py": "fcbe65163aa58453275c9404449a0469518cda6d1a4172ef9fb2b311105f4220"
+  },
+  "verification": {
+    "path": "@evidence/build/runs/gap-readback-int-range-925/verification.json",
+    "sha256": "d0207a90e480b4d09f0aed1112fe720188b4fdb0c4547797de41e3c6dbe954e8"
+  },
+  "installed_release_qualified": false,
+  "published_artifact_changed": false
+}

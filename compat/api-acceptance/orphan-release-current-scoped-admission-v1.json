@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "kind": "current128-binding-eight-profile-scoped-admission",
+  "status": "PASS128_SELECTED_BINDINGS_AND_EIGHT_REVIEWED_ROWS",
+  "qualification_head": "90348a8064b1091eb989bb8d0fbf787b6afc4f43",
+  "promotion_basis_sha256": "e1fcc058ce5c6b079972f7bdf348fba5d1efab6e74c72c2613c798b5f35c0a7e",
+  "verification": {
+    "path": "@evidence/build/runs/orphan-release-scoped-admission-915/verification.json",
+    "sha256": "e5178573a11006a2a5019a59ee072021812e3fda680e29fa3484c64b02545451"
+  },
+  "artifact_admitted": true,
+  "integration_verified": false,
+  "delivered": false,
+  "full_inventory_complete": false,
+  "prior913failure_preserved": true
+}

@@ -1,5 +1,76 @@
 # API method, alias and workflow reconciliation
 
+## Readback rectangle route reconciliation — 2026-11-14
+
+Declared workflow acceptance also passes: [Windows942](../compat/api-acceptance/readback-declared-acceptance-windows-v1.json)
+and [WSL943](../compat/api-acceptance/readback-declared-acceptance-wsl-v1.json)
+execute `test_composite_observed_failure_and_recovery_scenario` and
+`test_real_tk_capture_observer_scenario` on exact9919/e600candidate wheels.
+Both genuine pytest receipts include all six phases and validate through the
+existing checker; zero overlays, 537 installed members and ten zero shutdown
+gauges verify. Scratch is cleaned. Prepared source/scope and native reuse now
+validate under940/941; strict observer/profile/host gates, retention, final CI,
+integration and delivery remain separate. Earlier14Tk cases are a different
+finite observation, not substitutes for these declared acceptance fixtures.
+
+Latest artifact scope: [Windows933](../compat/api-acceptance/readback-candidate-windows-v1.json)
+and [WSL935](../compat/api-acceptance/readback-candidate-wsl-v1.json) each install
+new wheels `9919a280…`/`e600b29e…` with zero source overrides and pass the complete
+56-case state/query/readback file, including all 19 rendered readback/recovery
+cases listed below. All 537 package members and ten zero shutdown gauges match
+per platform. Source commit is `613cacf…`; native binaries/licenses/metadata/tags
+are preserved. Source review930 is accepted. Both scratch targets are cleaned;
+artifact/profile admission, final CI, integration and delivery remain pending.
+Earlier overlay-only checkpoints below retain their narrower historical scope.
+
+Public route: `vispy.gloo.read_pixels` delegates Dawn capture to
+`vispy.gloo.dawn_parser.read_pixels_dawn`. This reconciles a finite value subset
+under API-05/API-06-READBACK-GEOMETRY and LIF-05; it does not complete either parent.
+
+| Selected input/behavior | Verified result | Evidence scope |
+| --- | --- | --- |
+| Explicit negative x or y | RuntimeError with the native bounds diagnostic; pending GLIR remains intact, then a valid read renders the queued red clear. | Two new cases per Windows/WSL overlay. |
+| Explicit zero or negative width or height | RuntimeError with the native empty-target diagnostic; pending GLIR remains intact and valid capture recovers. | Four new cases per Windows/WSL overlay. |
+| Malformed rectangle array shape | Refusal preserves queued work and a subsequent valid read succeeds. | Four existing cases per Windows/WSL overlay. |
+| `viewport=None` following a queued viewport change | Finish applies the queued viewport before resolving the default region. | One existing rendered positive control per Windows/WSL overlay. |
+| Valid explicit rectangle, `copy=False` | Finish precedes native capture exactly once; the native array is returned without a wrapper copy. | CPU double only; no broad GPU zero-copy claim. |
+| Any rectangle coordinate below signed-int32 minimum or above maximum | TypeError before explicit finish, with queued work intact and subsequent valid capture recovering. | Eight successor cases per Windows926/WSL927 overlay. |
+| Positive native-int32 maximum in any coordinate | Reaches native after finish; target-dependent bounds remain native diagnostics. | Four successor CPU controls only. |
+
+[921 source proof](../compat/api-acceptance/readback-geometry-source-v1.json)
+retains the six genuine pre-fix failures and 45 related CPU passes, including
+the 26 query/readback contracts. [922 Windows](../compat/api-acceptance/readback-geometry-windows-overlay-v1.json)
+and [923 WSL](../compat/api-acceptance/readback-geometry-wsl-overlay-v1.json)
+each pass 11 rendered/recovery cases on exact qualified native bytes plus one
+declared Python override. WSL uses the pinned patched Mesa 9c5 software driver.
+These are functional source-overlay observations, not qualification of newly
+published wheels. Each run has zero shutdown gauges and completed scratch cleanup.
+
+Target-dependent upper bounds stay native checks after queued framebuffer
+selection is applied; this fix does not promise queue preservation for every
+out-of-bounds read. Additional output type, depth/stencil, MSAA, crop, framebuffer
+and host combinations remain under API-06/LIF-05. Independent review, updated
+artifact qualification, integration and delivery are separate pending steps.
+
+Successor [925 source proof](../compat/api-acceptance/readback-native-int-range-source-v1.json)
+extends that predecessor with native-int representability validation: eight real
+failures before the fix, 38 query/readback and 57 related CPU passes afterwards.
+[Windows926](../compat/api-acceptance/readback-native-int-range-windows-overlay-v1.json)
+and [WSL927](../compat/api-acceptance/readback-native-int-range-wsl-overlay-v1.json)
+each execute all 19 selected rendered/recovery cases on the successor source
+(eight overflow plus the original eleven). Each still has one declared override,
+unchanged native, ten zero gauges and completed cleanup. Source review928 rejected
+the frozen patch presentation; raw baseline929 proves the inherited mixed EOL
+predates this change, and a corrected patch reconstructs identical tested bytes.
+Fresh correction review930 accepts the unchanged exact source; predecessor924 acceptance does not review
+this added guard. TypeError
+text for overflow is now an explicit wrapper diagnostic; combined invalid-owner/
+attachment and invalid-geometry precedence is not promised to match native.
+The TypeError observations use the locked NumPy 2.x profiles. Existing NumPy
+coercion still runs first: values outside platform integer storage can raise
+OverflowError before finish, including signed-int32 overflow on Windows with
+NumPy 1.x. No broader dependency/version claim follows from these finite tests.
+
 ## Current seven-row reconciliation — 2026-11-13
 
 [Audit708](../compat/api-acceptance/scientific-current-dispositions-v2.json)

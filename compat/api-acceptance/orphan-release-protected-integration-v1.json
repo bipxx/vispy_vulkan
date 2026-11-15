@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "kind": "current-scoped-release-protected-integration",
+  "status": "PASS_PROTECTED_PR84_MERGE_EXACT_QUALIFIED_TREE",
+  "pr_url": "https://github.com/bipxx/vispy_vulkan/pull/84",
+  "qualification_head": "90348a8064b1091eb989bb8d0fbf787b6afc4f43",
+  "actual_merge_commit": "76cc5e8c04c9747b3f0485c4ac2e6a4f56b7f0b6",
+  "tree_oid": "9ff4c6d52a28d6c5a76c7e847add3e850aa01db8",
+  "verification": {
+    "path": "@evidence/build/runs/orphan-release-protected-integration-916/verification.json",
+    "sha256": "f568ac2cb827e5e525068e182abfc87fe2f96729ad028f6f63c4c166ffe0c608"
+  },
+  "delivered": false,
+  "full_inventory_complete": false
+}

@@ -328,10 +328,21 @@ def read_pixels_dawn(viewport, alpha, mode, out_type="unsigned_byte", copy=True)
     viewport = np.asarray(viewport, dtype=int)
     if viewport.ndim != 1 or viewport.size != 4:
         raise ValueError("viewport should be a 1D four-element array")
-    if not use_current_viewport:
-        # Explicit viewport coercion/shape errors must precede submission.
-        canvas.context.finish()
+    # The native entry point accepts C++ int coordinates. Reject conversion
+    # overflow before finish consumes the queue, including negative overflow
+    # before the ordinary geometry diagnostics below.
+    if any(value < -(2**31) or value >= 2**31 for value in viewport):
+        raise TypeError("read_pixels viewport values must fit a signed 32-bit integer")
     x, y, width, height = viewport
+    # Reject statically invalid rectangles before draining queued GLIR. Keep
+    # the native error types/messages; target-dependent upper bounds remain
+    # native checks after the queued framebuffer selection has been applied.
+    if width <= 0 or height <= 0:
+        raise RuntimeError("empty target")
+    if x < 0 or y < 0:
+        raise RuntimeError("read_pixels rectangle exceeds target bounds")
+    if not use_current_viewport:
+        canvas.context.finish()
     canvas_id = int(getattr(canvas._backend, "_dawn_canvas_id", 0) or 0)
     image = _dawn.read_pixels(canvas_id, x, y, width, height, bool(alpha),
                               out_type in ("float", np.float32), mode)

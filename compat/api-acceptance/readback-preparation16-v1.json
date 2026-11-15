@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "kind": "readback-unreviewed-qualification-successor",
+  "status": "VALID_READBACK_PREPARATION16_REVIEW_PENDING",
+  "source_commit": "613cacfb73b1b4424dc098241c1eaf7553746c90",
+  "candidate_scope_sha256": "e466af2caa2011e2881401df5dab7c7ecf77603eb6cc9d5a8030041230ee2338",
+  "verification": {
+    "path": "@evidence/build/runs/readback-preparation16-938/verification.json",
+    "sha256": "4feeaf39967872a8fc4fa0c104ca15bc63a6d4d70b769a21ab54116783e21b97"
+  },
+  "checks": {
+    "path": "@evidence/build/runs/readback-preparation16-938/checks.json",
+    "sha256": "7278cc35827a8116f8c677d5913548a75c14c36d0ae8c6936ed533dd09984346"
+  },
+  "prepared_snapshot": {
+    "path": "@evidence/build/runs/readback-preparation16-938/prepared-snapshot.json",
+    "sha256": "3bb8a68175c2ce0004937959329cc84971b677a1dc3aea524072ceacb31bf759"
+  },
+  "source_only": true,
+  "scratch_created": false,
+  "artifact_admitted": false,
+  "qualified": false
+}

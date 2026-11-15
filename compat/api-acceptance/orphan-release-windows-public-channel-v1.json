@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "kind": "windows-public-channel-subphase",
+  "status": "PASS_PUBLIC_WINDOWS_VULKAN_CLEAR",
+  "source_merge": "76cc5e8c04c9747b3f0485c4ac2e6a4f56b7f0b6",
+  "worker": {
+    "path": "@evidence/build/runs/orphan-release-public-channel-correction-918/windows-channel.json",
+    "sha256": "60eccddd5e93a2513ed0ae1e8428ec1531c1806f56221504b699cbda335d2ce6"
+  },
+  "failed_controller_preserved": true,
+  "linux_delivery_verified": false,
+  "cleanup": {
+    "path": "@evidence/build/runs/orphan-release-public-channel-correction-918/cleanup-result.json",
+    "sha256": "a3fbb932245fb8aca83f614ba4614ca9789212049896323ef0b48580402d9b6a"
+  }
+}

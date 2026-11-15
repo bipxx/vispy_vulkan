@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "kind": "readback-preparation16-binding",
+  "status": "PASS_PREPARATION16_REVIEW_BINDING_AND_BOTH_NATIVE_ARCHIVE_JOINS",
+  "artifact_admitted": false,
+  "qualified": false,
+  "verification": {
+    "path": "@evidence/build/runs/readback-preparation16-binding-941/verification.json",
+    "sha256": "8f3e58239fe78a456c0bc32c293ac344539c7c535bd75b2fa8f24ea274a78b9b"
+  },
+  "snapshot": {
+    "path": "@evidence/build/runs/readback-preparation16-binding-941/bound-snapshot.json",
+    "sha256": "73b88538e583f9fe5603d1da40c16f21536883a56acc88a87fd152111535d62e"
+  },
+  "source_only": true,
+  "scratch_created": false
+}

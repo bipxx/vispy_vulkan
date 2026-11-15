@@ -1,0 +1,11 @@
+{
+  "schema": 1,
+  "kind": "reviewed-admission-driver-failure",
+  "status": "FAILED_ARCHIVE_MEMBER_NAMESPACE_PRECONDITION_NO_CANONICAL_WRITE",
+  "failure": {
+    "path": "@evidence/build/runs/orphan-release-scoped-admission-913/failure-and-restoration.json",
+    "sha256": "83970026a9d09512c3601136fd34c2722d4f456b78becac41a8c83d6583b918d"
+  },
+  "qualification_head": "90348a8064b1091eb989bb8d0fbf787b6afc4f43",
+  "artifact_admitted": false
+}

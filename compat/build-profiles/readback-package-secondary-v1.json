@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "name": "readback-package-secondary-v1",
+  "owner": "root-readback-package",
+  "storage_workspace": "D:/vispy-vulkan-managed",
+  "source_workspace": "C:/Users/HEQ/Projects/vispy_vulkan",
+  "expected_peak_bytes": 134217728,
+  "aggregate_max_scratch_bytes": 21474836480,
+  "min_free_bytes": 10737418240,
+  "purpose": "Sequential Windows and WSL candidate wheel assembly and zero-overlay readback acceptance; Python source replacement only, no native compilation.",
+  "reuse": "Reuse the publicly delivered Windows4f537748 and Linuxdfe1033f Vulkan.2 wheels and their exact native outputs. tools/repackage_python_wheel.py audits original source/native/notice/metadata/RECORD joins, changes only the reviewed existing parser member, and regenerates RECORD. Original native production and profile admission remain separate immutable inputs.",
+  "budget_basis": "128MiB per sequential platform covers an original wheel referenced in place, one successor wheel, an offline copied install target and bounded test temporary files. Source Git index freezing is a separate registered32MiB run based on the measured15MiB full index. No SDK, environment, source-history clone or network package fallback.",
+  "source": "Freeze the reviewed runtime/test source in an owned local commit using an isolated index, preserving the foreign checkout and index. Join each original wheel to its immutable qualification source90348a8 and native output hashes before replacing pure source. The preferred929byte-exact patch and930source review remain retained. Preserve version0.17.0+vulkan.2, archive tags, metadata and all AGPL/originalBSD/third-party notices. Keep candidates separate by content hash; they are not yet publicly delivered artifacts.",
+  "checks": "Audit complete source/native/archive/license/RECORD membership before and after packaging. Install offline without dependencies into registered scratch using existing tools/dependencies; assert isolated package/native origins, all537package members and zero source overrides before and after actual readback tests. Run all56state/query/readback native cases including the19readback/recovery cases where available, with actual exits/waits and ten zero shutdown gauges. WSL checks guest filesystem and Windows backing capacity, reusing the pinned patched Mesa9c5profile and read-only dependency/rootfs origins. No source overlay is allowed in these candidate acceptance processes.",
+  "cleanup": "Register a unique owner/run before scratch, monitor the shared budget/reserve, await owned children, retain source/patch/command/results/licenses and the content-addressed candidate once, inspect and apply the registry613cleanup plan, then verify retained hashes and scratch absence before the next platform experiment.",
+  "scope": "Unreleased candidate packaging and finite installed functional proof only. Independent artifact/reuse review, exact candidate/profile admission, final-head CI, protected integration and verified distinct delivery remain separate. No full VisPy parity, physical Linux GPU or Metal graphics claim; original published wheels and historical failures stay unchanged."
+}

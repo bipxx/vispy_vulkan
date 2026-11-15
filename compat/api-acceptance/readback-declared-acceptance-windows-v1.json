@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "kind": "readback-exact-declared-acceptance",
+  "status": "PASS_WINDOWS_DECLARED_ACCEPTANCE_TWO_TESTS_SIX_PHASES",
+  "source_commit": "613cacfb73b1b4424dc098241c1eaf7553746c90",
+  "wheel": {
+    "path": "build/artifacts/9919a280a5de2c4bec45837078cb1d405e7169933ddcfb0758aa7d6a82722d39/vispy-0.17.0+vulkan.2-cp312-cp312-win_amd64.whl",
+    "sha256": "9919a280a5de2c4bec45837078cb1d405e7169933ddcfb0758aa7d6a82722d39"
+  },
+  "verification": {
+    "path": "@evidence/build/runs/readback-acceptance-windows-942/verification.json",
+    "sha256": "b7fcfc8966b5e866a6e4e3ab4f2b8ee1b349d1ddfcb15a287030925502bb2b2d"
+  },
+  "pytest": {
+    "path": "@evidence/build/runs/readback-acceptance-windows-942/pytest.json",
+    "sha256": "dd455bb598a9ac7c6481902f8f8907b4ab03ca33c6babad883735f5c1254fc0a"
+  },
+  "cleanup": {
+    "path": "@evidence/build/runs/readback-acceptance-windows-942/cleanup-result.json",
+    "sha256": "47c6be968951d4392d65b5c4988a64186fab0feeb5a45d4ab659dd5188c16482"
+  },
+  "artifact_admitted": false,
+  "strict_observer_profile_admitted": false
+}
