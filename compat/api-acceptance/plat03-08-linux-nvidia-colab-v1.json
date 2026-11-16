@@ -1,0 +1,1823 @@
+{
+  "schema": 1,
+  "acceptance_id": "plat03-08-linux-nvidia-colab-v1",
+  "date": "2026-11-15",
+  "slice": "W4",
+  "evidence_tier": "installed-functional",
+  "evidence_tier_note": "Mandatory core and GUI suites on NVIDIA Tesla T4 (gap-w4-1-colab-t4-core-998 117/117 + gap-w4-2-colab-t4-gui-999 31/31) and NVIDIA L4 (gap-w4-3-colab-l4-1000 136/136) are recorded at evidence_tier 'installed-functional'. The separate W3-1 native Tk X11 WSI probe on Tesla T4 (w3_1_tk_native_wsi_probe, 11/11 in 999) is strictly 'installed-experimental' (native_admitted_mandatory_matrix=false, default_presentation='raster', wsi_boundary_observed=false).",
+  "status": "PASS_INSTALLED_FUNCTIONAL_LINUX_PHYSICAL_NVIDIA_T4_L4_COLAB",
+  "runtime_version": "0.17.0+vulkan.2",
+  "version": "0.17.0+vulkan.2",
+  "release_tag": "v0.17.0-vulkan.2-readback-geometry-f5c00c9",
+  "source_commit": "613cacfb73b1b4424dc098241c1eaf7553746c90",
+  "repo_main_base": "3ba0cd50215bd69271ca77243a5bdde5bafda2c7",
+  "evidence_store": {
+    "path": "compat/evidence-stores/secondary-v1.json",
+    "sha256": "b164e3fdc85863a2327b508ea60f8d3068f740cfe90f665aa52905e28bfb3ca5"
+  },
+  "wheel": {
+    "path": "build/artifacts/e600b29e5259b896cc9d0fe36bbb5760260946aef53c013f8fc74e2fd0153007/vispy-0.17.0+vulkan.2-cp312-cp312-manylinux_2_39_x86_64.whl",
+    "sha256": "e600b29e5259b896cc9d0fe36bbb5760260946aef53c013f8fc74e2fd0153007"
+  },
+  "wheel_artifact": {
+    "path": "@evidence/build/artifacts/e600b29e5259b896cc9d0fe36bbb5760260946aef53c013f8fc74e2fd0153007/vispy-0.17.0+vulkan.2-cp312-cp312-manylinux_2_39_x86_64.whl",
+    "sha256": "e600b29e5259b896cc9d0fe36bbb5760260946aef53c013f8fc74e2fd0153007"
+  },
+  "wheel_sha256": "e600b29e5259b896cc9d0fe36bbb5760260946aef53c013f8fc74e2fd0153007",
+  "dawn_binary_sha256": "fcf0c5a81a6e6a0c1bd218687878ed8d2d32492768fabbb635c7b47ed9da03ef",
+  "installed_members_verified": 537,
+  "source_overrides": 0,
+  "default_presentation": "raster",
+  "native_admitted_mandatory_matrix": false,
+  "w3_1_tk_native_wsi_probe_tier": "installed-experimental",
+  "wsi_boundary_observed": false,
+  "default_sessions_unchanged": true,
+  "scoped_admitted": false,
+  "artifact_admitted": false,
+  "publicly_delivered": false,
+  "published": false,
+  "full_inventory_complete": false,
+  "physical_hid_claimed": false,
+  "physical_multimonitor_claimed": false,
+  "physical_display_scanout_claimed": false,
+  "wayland_claimed": false,
+  "non_nvidia_linux_gpus_claimed": false,
+  "os_provenance": {
+    "linux_platform_common": "Linux-6.6.159+-x86_64-with-glibc2.39",
+    "kernel_common": "6.6.159+",
+    "glibc_common": "glibc 2.39",
+    "os_release_pretty_name": "Ubuntu 24.04.4 LTS",
+    "os_release_observed_in": "gap-w4-1-colab-t4-core-998",
+    "os_release_observed_field": "gpu_environment.os_pretty_name",
+    "runs_999_and_1000_os_evidence": "Directly captured as glibc_str='glibc 2.39' and uname kernel '6.6.159+' x86_64 in remote-report.json plus os_identity='Linux-6.6.159+-x86_64-with-glibc2.39' in worker-*.json; /etc/os-release was captured only in gap-w4-1-colab-t4-core-998."
+  },
+  "coverage_ids": [
+    "PLAT-01",
+    "PLAT-03",
+    "PLAT-08",
+    "API-05",
+    "API-06",
+    "API-06-READBACK-GEOMETRY",
+    "STA-01",
+    "TEX-01",
+    "SCI-06",
+    "SHD-01",
+    "SHD-02",
+    "SHD-03",
+    "SHD-04",
+    "SHD-05",
+    "SHD-06",
+    "LIN-01",
+    "SCI-01",
+    "SCI-02",
+    "SCI-03",
+    "SCI-04",
+    "SCI-05",
+    "LIF-01",
+    "LIF-02",
+    "LIF-03",
+    "LIF-04",
+    "LIF-05",
+    "LIF-06",
+    "LIF-07",
+    "LIF-07-NATIVE-ADMISSION",
+    "LIF-08"
+  ],
+  "suite_coverage_mapping": {
+    "w1_readback_query": {
+      "slice": "W1",
+      "evidence_tier": "installed-functional",
+      "coverage_ids": [
+        "PLAT-01",
+        "PLAT-03",
+        "PLAT-08",
+        "API-06",
+        "API-06-READBACK-GEOMETRY"
+      ],
+      "expected_cases": 56,
+      "cells_passed": {
+        "cell_1_tesla_t4": 56,
+        "cell_2_nvidia_l4": 56
+      },
+      "modules": [
+        "tests/native/test_dawn_state_queries.py"
+      ]
+    },
+    "w2_2_state_tex_stencil": {
+      "slice": "W2-2",
+      "evidence_tier": "installed-functional",
+      "coverage_ids": [
+        "PLAT-01",
+        "PLAT-03",
+        "PLAT-08",
+        "STA-01",
+        "TEX-01",
+        "SCI-06"
+      ],
+      "expected_cases": 11,
+      "cells_passed": {
+        "cell_1_tesla_t4": 11,
+        "cell_2_nvidia_l4": 11
+      },
+      "modules": [
+        "tests/state/test_raster_state_combinations_gpu.py",
+        "tests/textures/test_typed_sampling_nan_gpu.py",
+        "tests/gloo/test_stencil_msaa_boundaries_gpu.py"
+      ]
+    },
+    "w2_3_shaders_lines": {
+      "slice": "W2-3",
+      "evidence_tier": "installed-functional",
+      "coverage_ids": [
+        "PLAT-01",
+        "PLAT-03",
+        "PLAT-08",
+        "SHD-01",
+        "SHD-02",
+        "SHD-03",
+        "SHD-04",
+        "SHD-05",
+        "SHD-06",
+        "LIN-01"
+      ],
+      "expected_cases": 10,
+      "cells_passed": {
+        "cell_1_tesla_t4": 10,
+        "cell_2_nvidia_l4": 10
+      },
+      "modules": [
+        "tests/shaders/test_sampler_mip_derivative_gpu.py",
+        "tests/shaders/test_shader_cache_partial_updates_gpu.py",
+        "tests/shaders/test_attribute_divisor_limits_gpu.py",
+        "tests/lines/test_line_partition_boundaries_gpu.py"
+      ]
+    },
+    "w2_4_scientific_scene": {
+      "slice": "W2-4",
+      "evidence_tier": "installed-functional",
+      "coverage_ids": [
+        "PLAT-01",
+        "PLAT-03",
+        "PLAT-08",
+        "SCI-01",
+        "SCI-02",
+        "SCI-03",
+        "SCI-04",
+        "SCI-05",
+        "API-05"
+      ],
+      "expected_cases": 24,
+      "cells_passed": {
+        "cell_1_tesla_t4": 24,
+        "cell_2_nvidia_l4": 24
+      },
+      "modules": [
+        "tests/markers/test_point_divisor_revisions_gpu.py",
+        "tests/visuals/test_mesh_filter_order_picking_gpu.py",
+        "tests/visuals/test_camera_fov_planes_gpu.py",
+        "tests/visuals/test_volume_bounded_modes_gpu.py",
+        "tests/contract/test_scene_widget_api05_contract.py"
+      ]
+    },
+    "w3_3_plot_transforms_collections": {
+      "slice": "W3-3",
+      "evidence_tier": "installed-functional",
+      "coverage_ids": [
+        "PLAT-01",
+        "PLAT-03",
+        "PLAT-08",
+        "API-05",
+        "API-06"
+      ],
+      "expected_cases": 16,
+      "cells_passed": {
+        "cell_1_tesla_t4": 16,
+        "cell_2_nvidia_l4": 16
+      },
+      "modules": [
+        "tests/contract/test_subpackages_api05_contract.py",
+        "tests/visuals/test_plot_transforms_filters_gpu.py"
+      ]
+    },
+    "w2_5_qt6_tk_msaa": {
+      "slice": "W2-5",
+      "evidence_tier": "installed-functional",
+      "coverage_ids": [
+        "PLAT-01",
+        "PLAT-03",
+        "PLAT-08",
+        "API-05",
+        "LIF-01",
+        "LIF-02",
+        "LIF-03",
+        "LIF-04",
+        "LIF-05",
+        "LIF-06",
+        "LIF-07",
+        "LIF-08"
+      ],
+      "expected_cases": 19,
+      "cells_passed": {
+        "cell_1_tesla_t4": 19,
+        "cell_2_nvidia_l4": 19
+      },
+      "modules": [
+        "tests/qt/test_qt_state_reparent_multicanvas_gpu.py",
+        "tests/qt/test_qt_timer_wheel_coords_gpu.py",
+        "tests/native/test_msaa_mixed_edge_capture_gpu.py",
+        "tests/native/test_tk_timer_camera_contracts.py",
+        "tests/contract/test_app_timer_context_api05_contract.py"
+      ]
+    },
+    "w3_2_qt_multibinding": {
+      "slice": "W3-2",
+      "evidence_tier": "installed-functional",
+      "coverage_ids": [
+        "PLAT-01",
+        "PLAT-03",
+        "PLAT-08",
+        "LIF-02",
+        "LIF-03",
+        "LIF-04",
+        "LIF-06",
+        "LIF-08"
+      ],
+      "expected_cases": 12,
+      "per_binding_expected_cases": {
+        "pyqt5": 4,
+        "pyqt6": 4,
+        "pyside6": 4
+      },
+      "cells_passed": {
+        "cell_1_tesla_t4": 12,
+        "cell_2_nvidia_l4": 0
+      },
+      "modules": [
+        "tests/qt/test_qt_multibinding_callbacks_hidpi_gpu.py"
+      ]
+    },
+    "w3_1_tk_native_wsi_probe": {
+      "slice": "W3-1",
+      "evidence_tier": "installed-experimental",
+      "native_admitted_mandatory_matrix": false,
+      "default_presentation": "raster",
+      "wsi_boundary_observed": false,
+      "coverage_ids": [
+        "PLAT-03",
+        "PLAT-08",
+        "LIF-07",
+        "LIF-07-NATIVE-ADMISSION"
+      ],
+      "expected_cases": 11,
+      "cells_passed": {
+        "cell_1_tesla_t4": 11,
+        "cell_2_nvidia_l4": 0
+      },
+      "modules": [
+        "tests/experimental/test_tkinter_native_presentation.py",
+        "tests/experimental/test_tk_native_camera_embed_gpu.py"
+      ]
+    }
+  },
+  "test_modules": [
+    {
+      "path": "tests/native/test_dawn_state_queries.py",
+      "sha256": "fcbe65163aa58453275c9404449a0469518cda6d1a4172ef9fb2b311105f4220",
+      "suite": "w1_readback_query",
+      "evidence_tier": "installed-functional",
+      "coverage_ids": [
+        "PLAT-01",
+        "PLAT-03",
+        "PLAT-08",
+        "API-06",
+        "API-06-READBACK-GEOMETRY"
+      ],
+      "cell_1_tesla_t4_cases": {
+        "passed": 56,
+        "skipped": 0,
+        "failed": 0
+      },
+      "cell_2_nvidia_l4_cases": {
+        "passed": 56,
+        "skipped": 0,
+        "failed": 0,
+        "executed": true
+      }
+    },
+    {
+      "path": "tests/state/test_raster_state_combinations_gpu.py",
+      "sha256": "88fc9b6216ffb3f2458455925adc5bb3f10a890b08b2a958db3e27850284f99f",
+      "suite": "w2_2_state_tex_stencil",
+      "evidence_tier": "installed-functional",
+      "coverage_ids": [
+        "PLAT-01",
+        "PLAT-03",
+        "PLAT-08",
+        "STA-01"
+      ],
+      "cell_1_tesla_t4_cases": {
+        "passed": 4,
+        "skipped": 0,
+        "failed": 0
+      },
+      "cell_2_nvidia_l4_cases": {
+        "passed": 4,
+        "skipped": 0,
+        "failed": 0,
+        "executed": true
+      }
+    },
+    {
+      "path": "tests/textures/test_typed_sampling_nan_gpu.py",
+      "sha256": "098ff7399bb00b471aa1f27ad202c1e8fbd569f9ea5c7b6498981418d06820c4",
+      "suite": "w2_2_state_tex_stencil",
+      "evidence_tier": "installed-functional",
+      "coverage_ids": [
+        "PLAT-01",
+        "PLAT-03",
+        "PLAT-08",
+        "TEX-01"
+      ],
+      "cell_1_tesla_t4_cases": {
+        "passed": 4,
+        "skipped": 0,
+        "failed": 0
+      },
+      "cell_2_nvidia_l4_cases": {
+        "passed": 4,
+        "skipped": 0,
+        "failed": 0,
+        "executed": true
+      }
+    },
+    {
+      "path": "tests/gloo/test_stencil_msaa_boundaries_gpu.py",
+      "sha256": "a7fd5856e7ea3e67774e6f9cbaf0f470ae480848835b61bcdf7518b5f8c60ade",
+      "suite": "w2_2_state_tex_stencil",
+      "evidence_tier": "installed-functional",
+      "coverage_ids": [
+        "PLAT-01",
+        "PLAT-03",
+        "PLAT-08",
+        "SCI-06"
+      ],
+      "cell_1_tesla_t4_cases": {
+        "passed": 3,
+        "skipped": 0,
+        "failed": 0
+      },
+      "cell_2_nvidia_l4_cases": {
+        "passed": 3,
+        "skipped": 0,
+        "failed": 0,
+        "executed": true
+      }
+    },
+    {
+      "path": "tests/shaders/test_sampler_mip_derivative_gpu.py",
+      "sha256": "9d95594129e63c8051e3fedfd9f69eb2c3ebee6adcc63155ce407c9da73dca7a",
+      "suite": "w2_3_shaders_lines",
+      "evidence_tier": "installed-functional",
+      "coverage_ids": [
+        "PLAT-01",
+        "PLAT-03",
+        "PLAT-08",
+        "SHD-01",
+        "SHD-02",
+        "SHD-04"
+      ],
+      "cell_1_tesla_t4_cases": {
+        "passed": 3,
+        "skipped": 0,
+        "failed": 0
+      },
+      "cell_2_nvidia_l4_cases": {
+        "passed": 3,
+        "skipped": 0,
+        "failed": 0,
+        "executed": true
+      }
+    },
+    {
+      "path": "tests/shaders/test_shader_cache_partial_updates_gpu.py",
+      "sha256": "04ecd2f0441927812b69f993fa7adf6580e164d1e49791bef35e7bf514ec1f66",
+      "suite": "w2_3_shaders_lines",
+      "evidence_tier": "installed-functional",
+      "coverage_ids": [
+        "PLAT-01",
+        "PLAT-03",
+        "PLAT-08",
+        "SHD-03"
+      ],
+      "cell_1_tesla_t4_cases": {
+        "passed": 2,
+        "skipped": 0,
+        "failed": 0
+      },
+      "cell_2_nvidia_l4_cases": {
+        "passed": 2,
+        "skipped": 0,
+        "failed": 0,
+        "executed": true
+      }
+    },
+    {
+      "path": "tests/shaders/test_attribute_divisor_limits_gpu.py",
+      "sha256": "88625a941015a4cfd8908f4df3c11e33055a476d51376c8793b57e31ccfc52b3",
+      "suite": "w2_3_shaders_lines",
+      "evidence_tier": "installed-functional",
+      "coverage_ids": [
+        "PLAT-01",
+        "PLAT-03",
+        "PLAT-08",
+        "SHD-05"
+      ],
+      "cell_1_tesla_t4_cases": {
+        "passed": 2,
+        "skipped": 0,
+        "failed": 0
+      },
+      "cell_2_nvidia_l4_cases": {
+        "passed": 2,
+        "skipped": 0,
+        "failed": 0,
+        "executed": true
+      }
+    },
+    {
+      "path": "tests/lines/test_line_partition_boundaries_gpu.py",
+      "sha256": "4e12f31c2e55821cd7134a193b4014ba83491f3f0f36c3bb50c2e16e36457073",
+      "suite": "w2_3_shaders_lines",
+      "evidence_tier": "installed-functional",
+      "coverage_ids": [
+        "PLAT-01",
+        "PLAT-03",
+        "PLAT-08",
+        "SHD-06",
+        "LIN-01"
+      ],
+      "cell_1_tesla_t4_cases": {
+        "passed": 3,
+        "skipped": 0,
+        "failed": 0
+      },
+      "cell_2_nvidia_l4_cases": {
+        "passed": 3,
+        "skipped": 0,
+        "failed": 0,
+        "executed": true
+      }
+    },
+    {
+      "path": "tests/markers/test_point_divisor_revisions_gpu.py",
+      "sha256": "46108b6a47dc9feaca35a995290d239e073c4d3ea1ad6e0da5a4edefa6f0d0a0",
+      "suite": "w2_4_scientific_scene",
+      "evidence_tier": "installed-functional",
+      "coverage_ids": [
+        "PLAT-01",
+        "PLAT-03",
+        "PLAT-08",
+        "SCI-01"
+      ],
+      "cell_1_tesla_t4_cases": {
+        "passed": 5,
+        "skipped": 0,
+        "failed": 0
+      },
+      "cell_2_nvidia_l4_cases": {
+        "passed": 5,
+        "skipped": 0,
+        "failed": 0,
+        "executed": true
+      }
+    },
+    {
+      "path": "tests/visuals/test_mesh_filter_order_picking_gpu.py",
+      "sha256": "7b5fb8daf9d88b48355b78d8de06816a57be6130cb85fd427f006446610dd7b3",
+      "suite": "w2_4_scientific_scene",
+      "evidence_tier": "installed-functional",
+      "coverage_ids": [
+        "PLAT-01",
+        "PLAT-03",
+        "PLAT-08",
+        "SCI-02"
+      ],
+      "cell_1_tesla_t4_cases": {
+        "passed": 4,
+        "skipped": 0,
+        "failed": 0
+      },
+      "cell_2_nvidia_l4_cases": {
+        "passed": 4,
+        "skipped": 0,
+        "failed": 0,
+        "executed": true
+      }
+    },
+    {
+      "path": "tests/visuals/test_camera_fov_planes_gpu.py",
+      "sha256": "5cacdd16e453a87f07c168f3094bff777d3151a51e329f65ceed036d53b606aa",
+      "suite": "w2_4_scientific_scene",
+      "evidence_tier": "installed-functional",
+      "coverage_ids": [
+        "PLAT-01",
+        "PLAT-03",
+        "PLAT-08",
+        "SCI-03"
+      ],
+      "cell_1_tesla_t4_cases": {
+        "passed": 5,
+        "skipped": 0,
+        "failed": 0
+      },
+      "cell_2_nvidia_l4_cases": {
+        "passed": 5,
+        "skipped": 0,
+        "failed": 0,
+        "executed": true
+      }
+    },
+    {
+      "path": "tests/visuals/test_volume_bounded_modes_gpu.py",
+      "sha256": "cd3c576460855a4b4339039e50e253b9767d7ae4ea5a240faa62844ccd45201d",
+      "suite": "w2_4_scientific_scene",
+      "evidence_tier": "installed-functional",
+      "coverage_ids": [
+        "PLAT-01",
+        "PLAT-03",
+        "PLAT-08",
+        "SCI-04"
+      ],
+      "cell_1_tesla_t4_cases": {
+        "passed": 6,
+        "skipped": 0,
+        "failed": 0
+      },
+      "cell_2_nvidia_l4_cases": {
+        "passed": 6,
+        "skipped": 0,
+        "failed": 0,
+        "executed": true
+      }
+    },
+    {
+      "path": "tests/contract/test_scene_widget_api05_contract.py",
+      "sha256": "369e5c262377b40f8f8fe0a90d5a03b4f6c2075814e258997fe70d73f65e5b5f",
+      "suite": "w2_4_scientific_scene",
+      "evidence_tier": "installed-functional",
+      "coverage_ids": [
+        "PLAT-01",
+        "PLAT-03",
+        "PLAT-08",
+        "SCI-05",
+        "API-05"
+      ],
+      "cell_1_tesla_t4_cases": {
+        "passed": 4,
+        "skipped": 0,
+        "failed": 0
+      },
+      "cell_2_nvidia_l4_cases": {
+        "passed": 4,
+        "skipped": 0,
+        "failed": 0,
+        "executed": true
+      }
+    },
+    {
+      "path": "tests/contract/test_subpackages_api05_contract.py",
+      "sha256": "e48d6e6c53d62f2a5a4d80f148bc7ede149dfd47f7c9715327e9a9590ced2b40",
+      "suite": "w3_3_plot_transforms_collections",
+      "evidence_tier": "installed-functional",
+      "coverage_ids": [
+        "PLAT-01",
+        "PLAT-03",
+        "PLAT-08",
+        "API-05",
+        "API-06"
+      ],
+      "cell_1_tesla_t4_cases": {
+        "passed": 12,
+        "skipped": 0,
+        "failed": 0
+      },
+      "cell_2_nvidia_l4_cases": {
+        "passed": 12,
+        "skipped": 0,
+        "failed": 0,
+        "executed": true
+      }
+    },
+    {
+      "path": "tests/visuals/test_plot_transforms_filters_gpu.py",
+      "sha256": "e0834c97f2c5fea75cc025626bdf62628148ef209e67a0a0b6944bc6e6d8091a",
+      "suite": "w3_3_plot_transforms_collections",
+      "evidence_tier": "installed-functional",
+      "coverage_ids": [
+        "PLAT-01",
+        "PLAT-03",
+        "PLAT-08",
+        "API-05",
+        "API-06"
+      ],
+      "cell_1_tesla_t4_cases": {
+        "passed": 4,
+        "skipped": 0,
+        "failed": 0
+      },
+      "cell_2_nvidia_l4_cases": {
+        "passed": 4,
+        "skipped": 0,
+        "failed": 0,
+        "executed": true
+      }
+    },
+    {
+      "path": "tests/qt/test_qt_state_reparent_multicanvas_gpu.py",
+      "sha256": "38cf5b47c65de0f681d322c1e69cced10ad9a54a6797709872c90fcb7a7d696c",
+      "suite": "w2_5_qt6_tk_msaa",
+      "evidence_tier": "installed-functional",
+      "coverage_ids": [
+        "PLAT-01",
+        "PLAT-03",
+        "PLAT-08",
+        "LIF-02",
+        "LIF-03"
+      ],
+      "cell_1_tesla_t4_cases": {
+        "passed": 4,
+        "skipped": 0,
+        "failed": 0
+      },
+      "cell_2_nvidia_l4_cases": {
+        "passed": 4,
+        "skipped": 0,
+        "failed": 0,
+        "executed": true
+      }
+    },
+    {
+      "path": "tests/qt/test_qt_timer_wheel_coords_gpu.py",
+      "sha256": "aa6c5b5a56a7369d9f74478d3847302a3459b27b5dfd410e4fe7628504a66d73",
+      "suite": "w2_5_qt6_tk_msaa",
+      "evidence_tier": "installed-functional",
+      "coverage_ids": [
+        "PLAT-01",
+        "PLAT-03",
+        "PLAT-08",
+        "LIF-04",
+        "LIF-06",
+        "LIF-08"
+      ],
+      "cell_1_tesla_t4_cases": {
+        "passed": 3,
+        "skipped": 0,
+        "failed": 0
+      },
+      "cell_2_nvidia_l4_cases": {
+        "passed": 3,
+        "skipped": 0,
+        "failed": 0,
+        "executed": true
+      }
+    },
+    {
+      "path": "tests/native/test_msaa_mixed_edge_capture_gpu.py",
+      "sha256": "381798abf679f0ecfc77008cbd41dd762e62f35f33d42776f7efdcfa72700ad7",
+      "suite": "w2_5_qt6_tk_msaa",
+      "evidence_tier": "installed-functional",
+      "coverage_ids": [
+        "PLAT-01",
+        "PLAT-03",
+        "PLAT-08",
+        "LIF-05"
+      ],
+      "cell_1_tesla_t4_cases": {
+        "passed": 3,
+        "skipped": 0,
+        "failed": 0
+      },
+      "cell_2_nvidia_l4_cases": {
+        "passed": 3,
+        "skipped": 0,
+        "failed": 0,
+        "executed": true
+      }
+    },
+    {
+      "path": "tests/native/test_tk_timer_camera_contracts.py",
+      "sha256": "b1427ad2fc8d0eea3c3bebfb3b77e503b143aab9c10e9c506804c53b01b7ac40",
+      "suite": "w2_5_qt6_tk_msaa",
+      "evidence_tier": "installed-functional",
+      "coverage_ids": [
+        "PLAT-01",
+        "PLAT-03",
+        "PLAT-08",
+        "LIF-01",
+        "LIF-07"
+      ],
+      "cell_1_tesla_t4_cases": {
+        "passed": 3,
+        "skipped": 0,
+        "failed": 0
+      },
+      "cell_2_nvidia_l4_cases": {
+        "passed": 3,
+        "skipped": 0,
+        "failed": 0,
+        "executed": true
+      }
+    },
+    {
+      "path": "tests/contract/test_app_timer_context_api05_contract.py",
+      "sha256": "bbf44ba23111c2b3410a59fe94c77bc42ea38e3931bc12e70d221604ce60eb6b",
+      "suite": "w2_5_qt6_tk_msaa",
+      "evidence_tier": "installed-functional",
+      "coverage_ids": [
+        "PLAT-01",
+        "PLAT-03",
+        "PLAT-08",
+        "API-05",
+        "LIF-01",
+        "LIF-06"
+      ],
+      "cell_1_tesla_t4_cases": {
+        "passed": 6,
+        "skipped": 0,
+        "failed": 0
+      },
+      "cell_2_nvidia_l4_cases": {
+        "passed": 6,
+        "skipped": 0,
+        "failed": 0,
+        "executed": true
+      }
+    },
+    {
+      "path": "tests/qt/test_qt_multibinding_callbacks_hidpi_gpu.py",
+      "sha256": "97bd28eeb5ed89035a9d2434baf047ad3d557c29463ed8a055d3f55aa212d692",
+      "suite": "w3_2_qt_multibinding",
+      "evidence_tier": "installed-functional",
+      "coverage_ids": [
+        "PLAT-01",
+        "PLAT-03",
+        "PLAT-08",
+        "LIF-02",
+        "LIF-03",
+        "LIF-04",
+        "LIF-06",
+        "LIF-08"
+      ],
+      "cell_1_tesla_t4_cases": {
+        "passed": 12,
+        "skipped": 0,
+        "failed": 0
+      },
+      "cell_2_nvidia_l4_cases": {
+        "passed": 0,
+        "skipped": 0,
+        "failed": 0,
+        "executed": false
+      },
+      "per_binding_cases_on_t4": {
+        "pyqt5": {
+          "passed": 4,
+          "skipped": 0,
+          "failed": 0
+        },
+        "pyqt6": {
+          "passed": 4,
+          "skipped": 0,
+          "failed": 0
+        },
+        "pyside6": {
+          "passed": 4,
+          "skipped": 0,
+          "failed": 0
+        }
+      }
+    },
+    {
+      "path": "tests/experimental/test_tkinter_native_presentation.py",
+      "sha256": "d30b42833d9f7182da56bfee9d4e7a57c4540d49b02957d604a4df63dd26f852",
+      "suite": "w3_1_tk_native_wsi_probe",
+      "evidence_tier": "installed-experimental",
+      "coverage_ids": [
+        "PLAT-03",
+        "PLAT-08",
+        "LIF-07",
+        "LIF-07-NATIVE-ADMISSION"
+      ],
+      "cell_1_tesla_t4_cases": {
+        "passed": 8,
+        "skipped": 0,
+        "failed": 0
+      },
+      "cell_2_nvidia_l4_cases": {
+        "passed": 0,
+        "skipped": 0,
+        "failed": 0,
+        "executed": false
+      }
+    },
+    {
+      "path": "tests/experimental/test_tk_native_camera_embed_gpu.py",
+      "sha256": "6b681ba563f70b301eeac5ee281f48c411d787ac9107e18b2d3a827e9800e62b",
+      "suite": "w3_1_tk_native_wsi_probe",
+      "evidence_tier": "installed-experimental",
+      "coverage_ids": [
+        "PLAT-03",
+        "PLAT-08",
+        "LIF-07",
+        "LIF-07-NATIVE-ADMISSION"
+      ],
+      "cell_1_tesla_t4_cases": {
+        "passed": 3,
+        "skipped": 0,
+        "failed": 0
+      },
+      "cell_2_nvidia_l4_cases": {
+        "passed": 0,
+        "skipped": 0,
+        "failed": 0,
+        "executed": false
+      }
+    }
+  ],
+  "cells": {
+    "cell_1_tesla_t4": {
+      "cell_id": "linux-x86_64-glibc2.39-nvidia-580.82.07-tesla-t4-xvfb",
+      "architecture": "Turing",
+      "gpu_model": "Tesla T4",
+      "driver": "NVIDIA 580.82.07",
+      "driver_version_vulkan": "580.82.7.0",
+      "vulkan_api_version": "1.4.312",
+      "os_platform": "Linux-6.6.159+-x86_64-with-glibc2.39",
+      "kernel": "6.6.159+",
+      "glibc": "glibc 2.39",
+      "os_release_pretty_name_in_998": "Ubuntu 24.04.4 LTS",
+      "os_release_observed_in": "gap-w4-1-colab-t4-core-998",
+      "os_evidence": "gap-w4-1-colab-t4-core-998 directly captured gpu_environment.os_pretty_name='Ubuntu 24.04.4 LTS', kernel '6.6.159+', and 'glibc 2.39'; separate VM session gap-w4-2-colab-t4-gui-999 directly captured os_identity='Linux-6.6.159+-x86_64-with-glibc2.39', uname kernel '6.6.159+', and glibc_str='glibc 2.39' (/etc/os-release not queried in 999).",
+      "python_version": "3.12.3",
+      "display_server": "Xvfb :99",
+      "winning_vulkan_tier": "tier1_premounted:libGLX_nvidia.so.0",
+      "device_info": {
+        "backend": "Vulkan",
+        "adapter_type": "discrete",
+        "vendor": "nvidia",
+        "device": "Tesla T4",
+        "driver": "NVIDIA: 580.82.07 580.82.7.0",
+        "vendor_id": 4318,
+        "device_id": 7864,
+        "max_texture_dimension_1d": 32768,
+        "max_texture_dimension_2d": 32768,
+        "max_texture_dimension_3d": 16384,
+        "max_vertex_attributes": 30,
+        "max_vertex_buffers": 8,
+        "max_vertex_buffer_array_stride": 2048,
+        "max_storage_buffers_per_shader_stage": 16,
+        "max_uniform_buffers_per_shader_stage": 12,
+        "max_inter_stage_shader_variables": 30,
+        "max_storage_buffer_binding_size": 2147483644,
+        "max_bindings_per_bind_group": 1000,
+        "max_compute_invocations_per_workgroup": 1024,
+        "max_compute_workgroup_size_x": 1024,
+        "max_compute_workgroups_per_dimension": 65535,
+        "max_point_vertex_attributes": 30,
+        "core_features_and_limits": true,
+        "point_input_limit_scope": "all active user point inputs share one vertex buffer; exact vertex/instance identities use read-only vertex storage without reserving a user attribute; actual granted attribute/stride/storage/allocation limits apply",
+        "max_samplers_per_shader_stage": 16,
+        "max_sampled_textures_per_shader_stage": 48,
+        "max_buffer_size": 1099511627776,
+        "max_uniform_buffer_binding_size": 65536,
+        "software": false,
+        "float32_filterable": true,
+        "unorm16_texture_formats": true,
+        "bresenham_lines": true,
+        "last_vertex_provoking": true,
+        "timestamp_query": true,
+        "timestamp_quantization_ns": 65536,
+        "host_mapped_pointer": true,
+        "host_import_limit": 536870912,
+        "depth_stencil_storage": "depth24_unorm_stencil8",
+        "ok": true,
+        "error": "",
+        "loss_count": 0,
+        "revision": "117b054598f4758b598f4b8f48feea48c11fe7b0+dawn-499e5c6ff9b37d5de70c6493fb74c251e0d35c1c"
+      },
+      "installed_functional_totals": {
+        "core_998_passed": 117,
+        "core_998_expected": 117,
+        "gui_999_passed": 31,
+        "gui_999_expected": 31,
+        "combined_functional_passed": 148,
+        "combined_functional_expected": 148,
+        "skipped": 0,
+        "failures": 0,
+        "errors": 0
+      },
+      "installed_experimental_totals": {
+        "w3_1_tk_native_wsi_probe_passed": 11,
+        "w3_1_tk_native_wsi_probe_expected": 11,
+        "skipped": 0,
+        "failures": 0,
+        "errors": 0,
+        "native_admitted_mandatory_matrix": false,
+        "default_presentation": "raster",
+        "wsi_boundary_observed": false
+      },
+      "runs": {
+        "gap-w4-1-colab-t4-core-998": {
+          "run_id": "gap-w4-1-colab-t4-core-998",
+          "owner": "colab-core-998",
+          "session_name": "vispy-vulkan-w4-core-998",
+          "evidence_tier": "installed-functional",
+          "status": "PASS_COLAB_T4_CORE_117",
+          "os_release_pretty_name": "Ubuntu 24.04.4 LTS",
+          "kernel": "6.6.159+",
+          "glibc": "glibc 2.39",
+          "isolated_workers_count": 5,
+          "worker_invocation_flags": [
+            "-B",
+            "-I"
+          ],
+          "installed_members_verified_before": 537,
+          "installed_members_verified_after": 537,
+          "source_overrides": 0,
+          "all_workers_zero_dawn_gauges": true,
+          "shutdown_gauges_each_worker": {
+            "pending_tickets": 0,
+            "queued_frames": 0,
+            "live_buffer_bytes": 0,
+            "live_cpu_buffer_bytes": 0,
+            "live_texture_bytes": 0,
+            "canvas_texture_bytes": 0,
+            "transient_buffer_bytes": 0,
+            "line_resource_pool_busy_slots": 0,
+            "line_resource_pool_bytes": 0,
+            "host_import_pinned_bytes": 0
+          },
+          "junit_summary": {
+            "total": 117,
+            "passed": 117,
+            "skipped": 0,
+            "failures": 0,
+            "errors": 0
+          },
+          "suite_counts": {
+            "w1_readback_query": 56,
+            "w2_2_state_tex_stencil": 11,
+            "w2_3_shaders_lines": 10,
+            "w2_4_scientific_scene": 24,
+            "w3_3_plot_transforms_collections": 16
+          },
+          "xvfb_waited": true,
+          "xvfb_exit": 0,
+          "vm_teardown": {
+            "isolated_config_used": true,
+            "session_stopped_in_finally": true,
+            "stop_session_pid": 37784,
+            "stop_session_returncode": 0,
+            "stop_session_child_waited": true,
+            "scratch_active_sessions_after_stop": [],
+            "default_sessions_unchanged": true
+          },
+          "cleanup": {
+            "status": "PASS_CLEANUP",
+            "deleted_files": 4,
+            "reclaimed_bytes": 975190,
+            "retained_verified": 27
+          },
+          "artifacts": {
+            "verification": {
+              "path": "@evidence/build/runs/gap-w4-1-colab-t4-core-998/verification.json",
+              "sha256": "1bbfe27564d7fe422cefb21744921bc1ad2619de7d6a26980a60cf3e68fe4c92"
+            },
+            "processes": {
+              "path": "@evidence/build/runs/gap-w4-1-colab-t4-core-998/processes.json",
+              "sha256": "451317ad65fb9aede19300496cebba3e04ccc1669813f5170e7f75e9a30b3a88"
+            },
+            "remote_report": {
+              "path": "@evidence/build/runs/gap-w4-1-colab-t4-core-998/remote-report.json",
+              "sha256": "aa3097c19dc61cafb4b6133a5892d5d0d74e5bb5ca730016d6a615cd80e911ef"
+            },
+            "bundle_manifest": {
+              "path": "@evidence/build/runs/gap-w4-1-colab-t4-core-998/bundle-manifest.json",
+              "sha256": "0a30be5d1988d444149726ddb14ef65bdae0620b481d37ab730b862df5f7551f"
+            },
+            "terminal": {
+              "path": "@evidence/build/runs/gap-w4-1-colab-t4-core-998/terminal.json",
+              "sha256": "45ee84c74ab1a0be56a55e6e577307acdd283a196f1520657141c0cda0e84b81"
+            },
+            "cleanup_plan": {
+              "path": "@evidence/build/runs/gap-w4-1-colab-t4-core-998/cleanup-plan.json",
+              "sha256": "61c0b82aeab47cc80f6bfb2f80cbd9a6b09980c454abce7207684606c40f876e"
+            },
+            "cleanup_result": {
+              "path": "@evidence/build/runs/gap-w4-1-colab-t4-core-998/cleanup-result.json",
+              "sha256": "f38e4fd2afc371c3d25508ce298fc425466ca60b2669f1741ee4164f36657af9"
+            },
+            "junits": {
+              "w1_readback_query": {
+                "path": "@evidence/build/runs/gap-w4-1-colab-t4-core-998/junit-w1_readback_query.xml",
+                "sha256": "9fb50b24d934227a820737826c82ac4736b7405067c2087f74de7880ef4d1dca"
+              },
+              "w2_2_state_tex_stencil": {
+                "path": "@evidence/build/runs/gap-w4-1-colab-t4-core-998/junit-w2_2_state_tex_stencil.xml",
+                "sha256": "e7d2424c82776fccfd121b0c5106b9ceae8372f7a11196c91d3228c011b1f5c6"
+              },
+              "w2_3_shaders_lines": {
+                "path": "@evidence/build/runs/gap-w4-1-colab-t4-core-998/junit-w2_3_shaders_lines.xml",
+                "sha256": "108309e3ad944dd0fca64a124798fd027d3bbed5869658f2fe3c3c94acedd077"
+              },
+              "w2_4_scientific_scene": {
+                "path": "@evidence/build/runs/gap-w4-1-colab-t4-core-998/junit-w2_4_scientific_scene.xml",
+                "sha256": "c65b163479bd05a6b6190ed7ef20104edac06e7193e4aa6da5a75caab1458f93"
+              },
+              "w3_3_plot_transforms_collections": {
+                "path": "@evidence/build/runs/gap-w4-1-colab-t4-core-998/junit-w3_3_plot_transforms_collections.xml",
+                "sha256": "ad0ce96e3309fb5276c10d2ece783437eb025d7ba3677990ddd6aa6a205658db"
+              }
+            }
+          }
+        },
+        "gap-w4-2-colab-t4-gui-999": {
+          "run_id": "gap-w4-2-colab-t4-gui-999",
+          "owner": "colab-gui-999",
+          "session_name": "vispy-vulkan-w4-gui-999",
+          "status": "PASS_COLAB_T4_XVFB_GUI_31_OF_31",
+          "os_identity": "Linux-6.6.159+-x86_64-with-glibc2.39",
+          "kernel": "6.6.159+",
+          "glibc": "glibc 2.39",
+          "os_release_captured": false,
+          "mandatory_evidence_tier": "installed-functional",
+          "mandatory_isolated_workers_count": 4,
+          "worker_invocation_flags": [
+            "-B",
+            "-I"
+          ],
+          "installed_members_verified_before": 537,
+          "installed_members_verified_after": 537,
+          "source_overrides": 0,
+          "competing_qt_modules_count": 0,
+          "all_workers_zero_dawn_gauges": true,
+          "shutdown_gauges_each_worker": {
+            "pending_tickets": 0,
+            "queued_frames": 0,
+            "live_buffer_bytes": 0,
+            "live_cpu_buffer_bytes": 0,
+            "live_texture_bytes": 0,
+            "canvas_texture_bytes": 0,
+            "transient_buffer_bytes": 0,
+            "line_resource_pool_busy_slots": 0,
+            "line_resource_pool_bytes": 0,
+            "host_import_pinned_bytes": 0
+          },
+          "toolkits": {
+            "pyqt5": {
+              "binding": "pyqt5",
+              "package": "PyQt5",
+              "qt_version": "5.15.14",
+              "binding_version": "5.15.11",
+              "binding_origin": "/tmp/venv_w3_2_pyqt5/lib/python3.12/site-packages/PyQt5/QtCore.abi3.so",
+              "binding_sha256": "10001b2a0b56ddba45ef33c713516efde275d2664e4c3c712d4e0450372f52e1"
+            },
+            "pyqt6": {
+              "binding": "pyqt6",
+              "package": "PyQt6",
+              "qt_version": "6.12.0",
+              "binding_version": "6.12.1",
+              "binding_origin": "/tmp/venv_w2_5_qt6_tk_msaa/lib/python3.12/site-packages/PyQt6/QtCore.abi3.so",
+              "binding_sha256": "b2cbe3a96d9c92d1df358f4522f11f4bbf3dcc63f21b5d701e2fb8f3f96e5bda"
+            },
+            "pyside6": {
+              "binding": "pyside6",
+              "package": "PySide6",
+              "qt_version": "6.12.0",
+              "binding_version": "6.12.0",
+              "binding_origin": "/tmp/venv_w3_2_pyside6/lib/python3.12/site-packages/PySide6/QtCore.abi3.so",
+              "binding_sha256": "c69ab7ddf99eaf37df6c9ed9498bba9f3678d8544de3921c13d046c31f0d484b"
+            },
+            "tkinter": {
+              "tk_version": 8.6,
+              "tcl_version": 8.6,
+              "binding_origin": "/usr/lib/python3.12/lib-dynload/_tkinter.cpython-312-x86_64-linux-gnu.so",
+              "binding_sha256": "4f85f5ceabd5b9b728035204307ecbf4dc4baa536c8b944c01de4e9681ef0910"
+            }
+          },
+          "programmatic_hidpi_scale_tested": 1.5,
+          "mandatory_junit_summary": {
+            "total": 31,
+            "passed": 31,
+            "skipped": 0,
+            "failures": 0,
+            "errors": 0,
+            "suites": {
+              "w2_5_qt6_tk_msaa": 19,
+              "w3_2_pyqt5": 4,
+              "w3_2_pyqt6": 4,
+              "w3_2_pyside6": 4
+            }
+          },
+          "experimental_w3_1_tk_native_wsi_probe": {
+            "evidence_tier": "installed-experimental",
+            "status": "PASS_EXPERIMENTAL_DIAGNOSTIC_W3_1_TK_NATIVE_WSI_PROBE",
+            "native_admitted_mandatory_matrix": false,
+            "default_presentation": "raster",
+            "wsi_boundary_observed": false,
+            "junit_summary": {
+              "total": 11,
+              "passed": 11,
+              "skipped": 0,
+              "failures": 0,
+              "errors": 0
+            },
+            "all_gauges_zero": true,
+            "shutdown_gauges": {
+              "pending_tickets": 0,
+              "queued_frames": 0,
+              "live_buffer_bytes": 0,
+              "live_cpu_buffer_bytes": 0,
+              "live_texture_bytes": 0,
+              "canvas_texture_bytes": 0,
+              "transient_buffer_bytes": 0,
+              "line_resource_pool_busy_slots": 0,
+              "line_resource_pool_bytes": 0,
+              "host_import_pinned_bytes": 0
+            }
+          },
+          "xvfb_waited": true,
+          "xvfb_exit": 0,
+          "vm_teardown": {
+            "isolated_config_used": true,
+            "stop_session_pid": 42176,
+            "stop_session_returncode": 0,
+            "stop_session_child_waited": true,
+            "scratch_active_sessions_after_stop": [],
+            "default_sessions_unchanged": true
+          },
+          "cleanup": {
+            "status": "PASS_APPLY",
+            "deleted_files": 5,
+            "reclaimed_bytes": 984886,
+            "retained_verified": 37
+          },
+          "artifacts": {
+            "verification": {
+              "path": "@evidence/build/runs/gap-w4-2-colab-t4-gui-999/verification.json",
+              "sha256": "c6aec5e3a349fdbac8227b175d05d575bcd118e9ab8087afe598ec2b121214bc"
+            },
+            "processes": {
+              "path": "@evidence/build/runs/gap-w4-2-colab-t4-gui-999/processes.json",
+              "sha256": "ab75ee665c5aa384466a4f3b7195af07c9e73d7e1faf10ecd8ddf03fdc91d6b5"
+            },
+            "remote_report": {
+              "path": "@evidence/build/runs/gap-w4-2-colab-t4-gui-999/remote-report.json",
+              "sha256": "82954c4bd3d1c0318e8586d53603b0c001d7e63ff61110c51e8c7b64b0d45cf4"
+            },
+            "bundle_manifest": {
+              "path": "@evidence/build/runs/gap-w4-2-colab-t4-gui-999/bundle-manifest.json",
+              "sha256": "14e7db02066b13af90df6e5e26efd9dc78399bfecafbf3e895724556a678eb1e"
+            },
+            "terminal": {
+              "path": "@evidence/build/runs/gap-w4-2-colab-t4-gui-999/terminal.json",
+              "sha256": "4aca99f0e34377de7eae621e7ea30f6843efcb27f8fa16d06adf380d637cc707"
+            },
+            "cleanup_plan": {
+              "path": "@evidence/build/runs/gap-w4-2-colab-t4-gui-999/cleanup-plan.json",
+              "sha256": "fd3b4b851315378939ccdecd5a554e373e007fc0738de0b306a34ceb0d585530"
+            },
+            "cleanup_result": {
+              "path": "@evidence/build/runs/gap-w4-2-colab-t4-gui-999/cleanup-result.json",
+              "sha256": "d4547626f63e4908dd224a87ef7c965bb0cf773eddb22e72fb65dd6dd84442ee"
+            },
+            "junits": {
+              "w2_5_qt6_tk_msaa": {
+                "path": "@evidence/build/runs/gap-w4-2-colab-t4-gui-999/junit-w2_5_qt6_tk_msaa.xml",
+                "sha256": "a2dee7ef950c09df2b3b8f6b1c9d2fffd8ec1a6946e67dec50eecd7c74d4c5da"
+              },
+              "w3_2_pyqt5": {
+                "path": "@evidence/build/runs/gap-w4-2-colab-t4-gui-999/junit-w3_2_pyqt5.xml",
+                "sha256": "44945db4deab2624d806a09ef677c43ac649e29eb31d0ec1a6452cd9cc6be121"
+              },
+              "w3_2_pyqt6": {
+                "path": "@evidence/build/runs/gap-w4-2-colab-t4-gui-999/junit-w3_2_pyqt6.xml",
+                "sha256": "91e8cbd02bdacb922e28354ea7ba4876d87aecffb566a070e152f0edebb94d70"
+              },
+              "w3_2_pyside6": {
+                "path": "@evidence/build/runs/gap-w4-2-colab-t4-gui-999/junit-w3_2_pyside6.xml",
+                "sha256": "99248bb059385ed5dddeffe3ceb7729928f8227f77ebbbefdb5c38815ee3c34a"
+              },
+              "w3_1_tk_native_wsi_probe": {
+                "path": "@evidence/build/runs/gap-w4-2-colab-t4-gui-999/junit-w3_1_tk_native_wsi_probe.xml",
+                "sha256": "bb491cbf6d720e87dbbe856de9f10af49dbf5aa67342adc7b0a31fc6d5e904ee"
+              }
+            },
+            "workers": {
+              "w2_5_qt6_tk_msaa": {
+                "path": "@evidence/build/runs/gap-w4-2-colab-t4-gui-999/worker-w2_5_qt6_tk_msaa.json",
+                "sha256": "c96d4e3c0cd5814c44ec1b2b27852ab7e9cb23430a54ae7791766bcea4df5509"
+              },
+              "w3_2_pyqt5": {
+                "path": "@evidence/build/runs/gap-w4-2-colab-t4-gui-999/worker-w3_2_pyqt5.json",
+                "sha256": "c79d9074c8884bc4f33484cba3d9280f552d86b82907c30e34bb16a1303e4102"
+              },
+              "w3_2_pyqt6": {
+                "path": "@evidence/build/runs/gap-w4-2-colab-t4-gui-999/worker-w3_2_pyqt6.json",
+                "sha256": "fe2d58a10895d4a1503f6ffdc114b281043ae6cbd386987fe3ecd3179913c32f"
+              },
+              "w3_2_pyside6": {
+                "path": "@evidence/build/runs/gap-w4-2-colab-t4-gui-999/worker-w3_2_pyside6.json",
+                "sha256": "da8aa8cb12a4f93d1cf01d239ed7fc51817f74d04818a300cbc8309ddc4ef663"
+              },
+              "w3_1_tk_native_wsi_probe": {
+                "path": "@evidence/build/runs/gap-w4-2-colab-t4-gui-999/worker-w3_1_tk_native_wsi_probe.json",
+                "sha256": "1fdddde7f46b20a9f52f62d79444018b4daa9b5236f4ebbc6ccadc64534e9c83"
+              }
+            },
+            "pytest_reports": {
+              "w2_5_qt6_tk_msaa": {
+                "path": "@evidence/build/runs/gap-w4-2-colab-t4-gui-999/pytest-w2_5_qt6_tk_msaa.json",
+                "sha256": "294e13b1ab0aafaa08069a8629cc40ba015a0d6d298a560f37bb9a8dc986e0c5"
+              },
+              "w3_2_pyqt5": {
+                "path": "@evidence/build/runs/gap-w4-2-colab-t4-gui-999/pytest-w3_2_pyqt5.json",
+                "sha256": "d2484060d44b4a18217a2992e3d4d4d8d67a03a7aae5ffbcd6901b239fcb9e4b"
+              },
+              "w3_2_pyqt6": {
+                "path": "@evidence/build/runs/gap-w4-2-colab-t4-gui-999/pytest-w3_2_pyqt6.json",
+                "sha256": "e42a745958715261324cd50989e8d1360b2a50ec1f173b5cd3c6b0ee51f7dce6"
+              },
+              "w3_2_pyside6": {
+                "path": "@evidence/build/runs/gap-w4-2-colab-t4-gui-999/pytest-w3_2_pyside6.json",
+                "sha256": "fdf2e3b1adb1f0f19910e1c2025fd5ddb741ec91a62ecec763173cdd71003c83"
+              },
+              "w3_1_tk_native_wsi_probe": {
+                "path": "@evidence/build/runs/gap-w4-2-colab-t4-gui-999/pytest-w3_1_tk_native_wsi_probe.json",
+                "sha256": "d0706e19ab0aa4f465f7ac41560921697dd2ec1f3644b7687c997736801ae23c"
+              }
+            }
+          }
+        }
+      }
+    },
+    "cell_2_nvidia_l4": {
+      "cell_id": "linux-x86_64-glibc2.39-nvidia-580.82.07-nvidia-l4-xvfb",
+      "architecture": "Ada Lovelace",
+      "gpu_model": "NVIDIA L4",
+      "driver": "NVIDIA 580.82.07",
+      "driver_version_vulkan": "580.82.7.0",
+      "vulkan_api_version": "1.4.312",
+      "os_platform": "Linux-6.6.159+-x86_64-with-glibc2.39",
+      "kernel": "6.6.159+",
+      "glibc": "glibc 2.39",
+      "os_release_captured": false,
+      "os_evidence": "Directly captured in gap-w4-3-colab-l4-1000 remote-report.json (uname kernel '6.6.159+' x86_64, glibc_str='glibc 2.39') and worker-*.json (os_identity='Linux-6.6.159+-x86_64-with-glibc2.39'); /etc/os-release was captured only in gap-w4-1-colab-t4-core-998.",
+      "python_version": "3.12.3",
+      "display_server": "Xvfb :99",
+      "winning_vulkan_tier": "tier1_premounted:libGLX_nvidia.so.0",
+      "fallback_to_t4_used": false,
+      "device_info": {
+        "backend": "Vulkan",
+        "adapter_type": "discrete",
+        "vendor": "nvidia",
+        "device": "NVIDIA L4",
+        "driver": "NVIDIA: 580.82.07 580.82.7.0",
+        "vendor_id": 4318,
+        "device_id": 10168,
+        "max_texture_dimension_1d": 32768,
+        "max_texture_dimension_2d": 32768,
+        "max_texture_dimension_3d": 16384,
+        "max_vertex_attributes": 30,
+        "max_vertex_buffers": 8,
+        "max_vertex_buffer_array_stride": 2048,
+        "max_storage_buffers_per_shader_stage": 16,
+        "max_uniform_buffers_per_shader_stage": 12,
+        "max_inter_stage_shader_variables": 30,
+        "max_storage_buffer_binding_size": 2147483644,
+        "max_bindings_per_bind_group": 1000,
+        "max_compute_invocations_per_workgroup": 1024,
+        "max_compute_workgroup_size_x": 1024,
+        "max_compute_workgroups_per_dimension": 65535,
+        "max_point_vertex_attributes": 30,
+        "core_features_and_limits": true,
+        "point_input_limit_scope": "all active user point inputs share one vertex buffer; exact vertex/instance identities use read-only vertex storage without reserving a user attribute; actual granted attribute/stride/storage/allocation limits apply",
+        "max_samplers_per_shader_stage": 16,
+        "max_sampled_textures_per_shader_stage": 48,
+        "max_buffer_size": 1099511627776,
+        "max_uniform_buffer_binding_size": 65536,
+        "software": false,
+        "float32_filterable": true,
+        "unorm16_texture_formats": true,
+        "bresenham_lines": true,
+        "last_vertex_provoking": true,
+        "timestamp_query": true,
+        "timestamp_quantization_ns": 65536,
+        "host_mapped_pointer": true,
+        "host_import_limit": 536870912,
+        "depth_stencil_storage": "depth24_unorm_stencil8",
+        "ok": true,
+        "error": "",
+        "loss_count": 0,
+        "revision": "117b054598f4758b598f4b8f48feea48c11fe7b0+dawn-499e5c6ff9b37d5de70c6493fb74c251e0d35c1c"
+      },
+      "installed_functional_totals": {
+        "passed": 136,
+        "expected": 136,
+        "skipped": 0,
+        "failures": 0,
+        "errors": 0
+      },
+      "runs": {
+        "gap-w4-3-colab-l4-1000": {
+          "run_id": "gap-w4-3-colab-l4-1000",
+          "owner": "colab-l4-1000",
+          "session_name": "vispy-vulkan-w4-l4-1000",
+          "os_identity": "Linux-6.6.159+-x86_64-with-glibc2.39",
+          "kernel": "6.6.159+",
+          "glibc": "glibc 2.39",
+          "os_release_captured": false,
+          "evidence_tier": "installed-functional",
+          "status": "PASS_COLAB_L4_GPU_136_OF_136",
+          "isolated_workers_count": 6,
+          "worker_invocation_flags": [
+            "-B",
+            "-I"
+          ],
+          "installed_members_verified_before": 537,
+          "installed_members_verified_after": 537,
+          "source_overrides": 0,
+          "all_workers_zero_dawn_gauges": true,
+          "shutdown_gauges_each_worker": {
+            "pending_tickets": 0,
+            "queued_frames": 0,
+            "live_buffer_bytes": 0,
+            "live_cpu_buffer_bytes": 0,
+            "live_texture_bytes": 0,
+            "canvas_texture_bytes": 0,
+            "transient_buffer_bytes": 0,
+            "line_resource_pool_busy_slots": 0,
+            "line_resource_pool_bytes": 0,
+            "host_import_pinned_bytes": 0
+          },
+          "toolkits": {
+            "pyqt6": {
+              "binding": "pyqt6",
+              "package": "PyQt6",
+              "qt_version": "6.12.0",
+              "binding_version": "6.12.1",
+              "binding_origin": "/tmp/venv_l4_qt6/lib/python3.12/site-packages/PyQt6/QtCore.abi3.so",
+              "binding_sha256": "b2cbe3a96d9c92d1df358f4522f11f4bbf3dcc63f21b5d701e2fb8f3f96e5bda"
+            },
+            "tkinter": {
+              "tk_version": 8.6,
+              "tcl_version": 8.6,
+              "binding_origin": "/usr/lib/python3.12/lib-dynload/_tkinter.cpython-312-x86_64-linux-gnu.so",
+              "binding_sha256": "4f85f5ceabd5b9b728035204307ecbf4dc4baa536c8b944c01de4e9681ef0910"
+            }
+          },
+          "junit_summary": {
+            "total": 136,
+            "passed": 136,
+            "skipped": 0,
+            "failures": 0,
+            "errors": 0
+          },
+          "suite_counts": {
+            "w1_readback_query": 56,
+            "w2_2_state_tex_stencil": 11,
+            "w2_3_shaders_lines": 10,
+            "w2_4_scientific_scene": 24,
+            "w3_3_plot_transforms_collections": 16,
+            "w2_5_qt6_tk_msaa": 19
+          },
+          "xvfb_waited": true,
+          "xvfb_exit": 0,
+          "vm_teardown": {
+            "isolated_config_used": true,
+            "stop_session_pid": 44804,
+            "stop_session_returncode": 0,
+            "stop_session_child_waited": true,
+            "scratch_active_sessions_after_stop": [],
+            "zero_leaked_sessions": true,
+            "default_sessions_unchanged": true
+          },
+          "cleanup": {
+            "status": "PASS_APPLY",
+            "deleted_files": 5,
+            "reclaimed_bytes": 994437,
+            "retained_verified": 32
+          },
+          "artifacts": {
+            "verification": {
+              "path": "@evidence/build/runs/gap-w4-3-colab-l4-1000/verification.json",
+              "sha256": "747a7b0cf756c5dad1fd12b867fd82101f154530dbfeb71dd569d6a76f276775"
+            },
+            "processes": {
+              "path": "@evidence/build/runs/gap-w4-3-colab-l4-1000/processes.json",
+              "sha256": "2eb06d8880f47773f4349f5b02a5b26af51096400876a697fb7757dcec62f6b0"
+            },
+            "remote_report": {
+              "path": "@evidence/build/runs/gap-w4-3-colab-l4-1000/remote-report.json",
+              "sha256": "eae247fc79ab19a6bc422c7d48c383602a724184b722c5c149891b739ddb79c3"
+            },
+            "bundle_manifest": {
+              "path": "@evidence/build/runs/gap-w4-3-colab-l4-1000/bundle-manifest.json",
+              "sha256": "4374e79172ef6edf5871e5f7870491ffbbdb2f3e2ec06b1a38b4f07bf6ae0c41"
+            },
+            "terminal": {
+              "path": "@evidence/build/runs/gap-w4-3-colab-l4-1000/terminal.json",
+              "sha256": "97232ae1aa89720ecd6af3f9b4bdd968e74ec9f40ff12239549af9d976bea78d"
+            },
+            "cleanup_plan": {
+              "path": "@evidence/build/runs/gap-w4-3-colab-l4-1000/cleanup-plan.json",
+              "sha256": "ae247c0dd08b383c2b1521adc47f509f71606111d2e0c17f58c285d3c0ec0cf3"
+            },
+            "cleanup_result": {
+              "path": "@evidence/build/runs/gap-w4-3-colab-l4-1000/cleanup-result.json",
+              "sha256": "7013e067aed547016ce71defa7d7b45393cc82fc6e828c8ccd7219603780cb63"
+            },
+            "junits": {
+              "w1_readback_query": {
+                "path": "@evidence/build/runs/gap-w4-3-colab-l4-1000/junit-w1_readback_query.xml",
+                "sha256": "dd501b73342ffbb7ce010ada45e2f71ac77b8e956b9ae788922fb76792c4a85d"
+              },
+              "w2_2_state_tex_stencil": {
+                "path": "@evidence/build/runs/gap-w4-3-colab-l4-1000/junit-w2_2_state_tex_stencil.xml",
+                "sha256": "216f741ac6c97b83cfcfa5672ce0bfa5b4d3baa668debc16e68aea52bdf8b168"
+              },
+              "w2_3_shaders_lines": {
+                "path": "@evidence/build/runs/gap-w4-3-colab-l4-1000/junit-w2_3_shaders_lines.xml",
+                "sha256": "ae2583e959baf521c14beb985fe0c415f1639037423703b1730bcb3c07e9dd98"
+              },
+              "w2_4_scientific_scene": {
+                "path": "@evidence/build/runs/gap-w4-3-colab-l4-1000/junit-w2_4_scientific_scene.xml",
+                "sha256": "6d522b25a7350013ead0249669c95f462370073ae140ceba43619f789e13197b"
+              },
+              "w3_3_plot_transforms_collections": {
+                "path": "@evidence/build/runs/gap-w4-3-colab-l4-1000/junit-w3_3_plot_transforms_collections.xml",
+                "sha256": "6934b5062c587a3dc43baa07a0d1831c24c132ad77545f842dbac158f9cb3065"
+              },
+              "w2_5_qt6_tk_msaa": {
+                "path": "@evidence/build/runs/gap-w4-3-colab-l4-1000/junit-w2_5_qt6_tk_msaa.xml",
+                "sha256": "e7be1b030c526aa15575a77a8ba39ff0451415238ee9b3dadcaf089ab4ba31c5"
+              }
+            },
+            "workers": {
+              "w1_readback_query": {
+                "path": "@evidence/build/runs/gap-w4-3-colab-l4-1000/worker-w1_readback_query.json",
+                "sha256": "e3d7d60d2f8f065439205bf2f075364d67b5345bf3a438f587b11d07e1eaa477"
+              },
+              "w2_2_state_tex_stencil": {
+                "path": "@evidence/build/runs/gap-w4-3-colab-l4-1000/worker-w2_2_state_tex_stencil.json",
+                "sha256": "0f5c2d898a65ec6a0022914bb0cd95d4106c55e3f28d856b18af542e631ff56b"
+              },
+              "w2_3_shaders_lines": {
+                "path": "@evidence/build/runs/gap-w4-3-colab-l4-1000/worker-w2_3_shaders_lines.json",
+                "sha256": "1c3e1e19172c4332779e96ba6dec4d770d8f13b247590afaae69adf809785de9"
+              },
+              "w2_4_scientific_scene": {
+                "path": "@evidence/build/runs/gap-w4-3-colab-l4-1000/worker-w2_4_scientific_scene.json",
+                "sha256": "82e667454ec1477d8d9baa3740e08d91b0b11e8d6d953e7f4d7fc80a20bbee2d"
+              },
+              "w3_3_plot_transforms_collections": {
+                "path": "@evidence/build/runs/gap-w4-3-colab-l4-1000/worker-w3_3_plot_transforms_collections.json",
+                "sha256": "3828e3d1453196b173db8ec9d03f09c807f0ac6a4ee4af5089a7d1c1edf641f5"
+              },
+              "w2_5_qt6_tk_msaa": {
+                "path": "@evidence/build/runs/gap-w4-3-colab-l4-1000/worker-w2_5_qt6_tk_msaa.json",
+                "sha256": "892980a5c8410d71aa84031cf77afec2dda869a9ee427865f44957e34b88a468"
+              }
+            },
+            "pytest_reports": {
+              "w1_readback_query": {
+                "path": "@evidence/build/runs/gap-w4-3-colab-l4-1000/pytest-w1_readback_query.json",
+                "sha256": "d40a8bc7f5ecd3793bbc425a0142cdc3ce0f02c48f583a8fa6d5e77ea9514e11"
+              },
+              "w2_2_state_tex_stencil": {
+                "path": "@evidence/build/runs/gap-w4-3-colab-l4-1000/pytest-w2_2_state_tex_stencil.json",
+                "sha256": "d709ff0f8691f43a5b96197a754a89b55a142f890913154f239f4683430435ff"
+              },
+              "w2_3_shaders_lines": {
+                "path": "@evidence/build/runs/gap-w4-3-colab-l4-1000/pytest-w2_3_shaders_lines.json",
+                "sha256": "c6ed282caf92c147e4b9a607484447eaef3137cc449ec3c7078d840f9cc2b4e9"
+              },
+              "w2_4_scientific_scene": {
+                "path": "@evidence/build/runs/gap-w4-3-colab-l4-1000/pytest-w2_4_scientific_scene.json",
+                "sha256": "ac2ba71e1abdc2baa927c134a68bd3d13302770b70960a8b5399055496605c97"
+              },
+              "w3_3_plot_transforms_collections": {
+                "path": "@evidence/build/runs/gap-w4-3-colab-l4-1000/pytest-w3_3_plot_transforms_collections.json",
+                "sha256": "188c57f70c0cb71a437b2d6709a8bf2bd0a2913ce6d1e00992807c9bd199e235"
+              },
+              "w2_5_qt6_tk_msaa": {
+                "path": "@evidence/build/runs/gap-w4-3-colab-l4-1000/pytest-w2_5_qt6_tk_msaa.json",
+                "sha256": "294e13b1ab0aafaa08069a8629cc40ba015a0d6d298a560f37bb9a8dc986e0c5"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "hygiene_audit": {
+    "run_id": "gap-w4-hygiene-check-1001",
+    "owner": "janitor-3",
+    "status": "PASS_WITH_PREEXISTING_S_CACHE_NOTE",
+    "scratch_bytes": 0,
+    "active_leases_count": 0,
+    "default_sessions_path": "C:\\Users\\HEQ\\.config\\colab-cli\\sessions.json",
+    "default_sessions_sha256": "2b47d642a1f797965521ffa6709195b7f46e3cae807cc2039d013a5b5cce631c",
+    "historical_997_default_sessions_sha256": "d8dd9602ec45dfe8be3f066dd3a685cb2779da7bb0c0e43f0606d740ab94a6d5",
+    "default_sessions_unchanged": true,
+    "unredacted_proxy_urls": [],
+    "ya29_tokens": [],
+    "emails": [],
+    "cr_failures": [],
+    "terminal_mismatches": [],
+    "artifacts": {
+      "verification": {
+        "path": "@evidence/build/runs/gap-w4-hygiene-check-1001/verification.json",
+        "sha256": "7a26baecb74629d358ffaf9f70f652497ddccb2971e666e4403b59fc29e6fadc"
+      },
+      "processes": {
+        "path": "@evidence/build/runs/gap-w4-hygiene-check-1001/processes.json",
+        "sha256": "8f9fa15a39a30f3624d4d33a5dc4019fc35e5cb566183c5ee99ed6c746505636"
+      },
+      "terminal_source_only": {
+        "path": "@evidence/build/runs/gap-w4-hygiene-check-1001/terminal-source-only.json",
+        "sha256": "9f5327b8f043d086f3b5395b384534c741e6598bdc7373964e9ee94639f34cb4"
+      },
+      "hygiene_registry_613": {
+        "path": "@evidence/build/.hygiene/registry-preparation10-successor-613.json",
+        "sha256": "68377cfaafdcb279072f4d6066d0790e9ef0624588891a65279383059165d5f0"
+      }
+    }
+  },
+  "evidence": [
+    {
+      "path": "@evidence/build/.hygiene/registry-preparation10-successor-613.json",
+      "sha256": "68377cfaafdcb279072f4d6066d0790e9ef0624588891a65279383059165d5f0"
+    },
+    {
+      "path": "@evidence/build/artifacts/e600b29e5259b896cc9d0fe36bbb5760260946aef53c013f8fc74e2fd0153007/vispy-0.17.0+vulkan.2-cp312-cp312-manylinux_2_39_x86_64.whl",
+      "sha256": "e600b29e5259b896cc9d0fe36bbb5760260946aef53c013f8fc74e2fd0153007"
+    },
+    {
+      "path": "@evidence/build/runs/gap-w4-1-colab-t4-core-998/bundle-manifest.json",
+      "sha256": "0a30be5d1988d444149726ddb14ef65bdae0620b481d37ab730b862df5f7551f"
+    },
+    {
+      "path": "@evidence/build/runs/gap-w4-1-colab-t4-core-998/cleanup-plan.json",
+      "sha256": "61c0b82aeab47cc80f6bfb2f80cbd9a6b09980c454abce7207684606c40f876e"
+    },
+    {
+      "path": "@evidence/build/runs/gap-w4-1-colab-t4-core-998/cleanup-result.json",
+      "sha256": "f38e4fd2afc371c3d25508ce298fc425466ca60b2669f1741ee4164f36657af9"
+    },
+    {
+      "path": "@evidence/build/runs/gap-w4-1-colab-t4-core-998/junit-w1_readback_query.xml",
+      "sha256": "9fb50b24d934227a820737826c82ac4736b7405067c2087f74de7880ef4d1dca"
+    },
+    {
+      "path": "@evidence/build/runs/gap-w4-1-colab-t4-core-998/junit-w2_2_state_tex_stencil.xml",
+      "sha256": "e7d2424c82776fccfd121b0c5106b9ceae8372f7a11196c91d3228c011b1f5c6"
+    },
+    {
+      "path": "@evidence/build/runs/gap-w4-1-colab-t4-core-998/junit-w2_3_shaders_lines.xml",
+      "sha256": "108309e3ad944dd0fca64a124798fd027d3bbed5869658f2fe3c3c94acedd077"
+    },
+    {
+      "path": "@evidence/build/runs/gap-w4-1-colab-t4-core-998/junit-w2_4_scientific_scene.xml",
+      "sha256": "c65b163479bd05a6b6190ed7ef20104edac06e7193e4aa6da5a75caab1458f93"
+    },
+    {
+      "path": "@evidence/build/runs/gap-w4-1-colab-t4-core-998/junit-w3_3_plot_transforms_collections.xml",
+      "sha256": "ad0ce96e3309fb5276c10d2ece783437eb025d7ba3677990ddd6aa6a205658db"
+    },
+    {
+      "path": "@evidence/build/runs/gap-w4-1-colab-t4-core-998/processes.json",
+      "sha256": "451317ad65fb9aede19300496cebba3e04ccc1669813f5170e7f75e9a30b3a88"
+    },
+    {
+      "path": "@evidence/build/runs/gap-w4-1-colab-t4-core-998/remote-report.json",
+      "sha256": "aa3097c19dc61cafb4b6133a5892d5d0d74e5bb5ca730016d6a615cd80e911ef"
+    },
+    {
+      "path": "@evidence/build/runs/gap-w4-1-colab-t4-core-998/terminal.json",
+      "sha256": "45ee84c74ab1a0be56a55e6e577307acdd283a196f1520657141c0cda0e84b81"
+    },
+    {
+      "path": "@evidence/build/runs/gap-w4-1-colab-t4-core-998/verification.json",
+      "sha256": "1bbfe27564d7fe422cefb21744921bc1ad2619de7d6a26980a60cf3e68fe4c92"
+    },
+    {
+      "path": "@evidence/build/runs/gap-w4-2-colab-t4-gui-999/bundle-manifest.json",
+      "sha256": "14e7db02066b13af90df6e5e26efd9dc78399bfecafbf3e895724556a678eb1e"
+    },
+    {
+      "path": "@evidence/build/runs/gap-w4-2-colab-t4-gui-999/cleanup-plan.json",
+      "sha256": "fd3b4b851315378939ccdecd5a554e373e007fc0738de0b306a34ceb0d585530"
+    },
+    {
+      "path": "@evidence/build/runs/gap-w4-2-colab-t4-gui-999/cleanup-result.json",
+      "sha256": "d4547626f63e4908dd224a87ef7c965bb0cf773eddb22e72fb65dd6dd84442ee"
+    },
+    {
+      "path": "@evidence/build/runs/gap-w4-2-colab-t4-gui-999/junit-w2_5_qt6_tk_msaa.xml",
+      "sha256": "a2dee7ef950c09df2b3b8f6b1c9d2fffd8ec1a6946e67dec50eecd7c74d4c5da"
+    },
+    {
+      "path": "@evidence/build/runs/gap-w4-2-colab-t4-gui-999/junit-w3_1_tk_native_wsi_probe.xml",
+      "sha256": "bb491cbf6d720e87dbbe856de9f10af49dbf5aa67342adc7b0a31fc6d5e904ee"
+    },
+    {
+      "path": "@evidence/build/runs/gap-w4-2-colab-t4-gui-999/junit-w3_2_pyqt5.xml",
+      "sha256": "44945db4deab2624d806a09ef677c43ac649e29eb31d0ec1a6452cd9cc6be121"
+    },
+    {
+      "path": "@evidence/build/runs/gap-w4-2-colab-t4-gui-999/junit-w3_2_pyqt6.xml",
+      "sha256": "91e8cbd02bdacb922e28354ea7ba4876d87aecffb566a070e152f0edebb94d70"
+    },
+    {
+      "path": "@evidence/build/runs/gap-w4-2-colab-t4-gui-999/junit-w3_2_pyside6.xml",
+      "sha256": "99248bb059385ed5dddeffe3ceb7729928f8227f77ebbbefdb5c38815ee3c34a"
+    },
+    {
+      "path": "@evidence/build/runs/gap-w4-2-colab-t4-gui-999/processes.json",
+      "sha256": "ab75ee665c5aa384466a4f3b7195af07c9e73d7e1faf10ecd8ddf03fdc91d6b5"
+    },
+    {
+      "path": "@evidence/build/runs/gap-w4-2-colab-t4-gui-999/pytest-w2_5_qt6_tk_msaa.json",
+      "sha256": "294e13b1ab0aafaa08069a8629cc40ba015a0d6d298a560f37bb9a8dc986e0c5"
+    },
+    {
+      "path": "@evidence/build/runs/gap-w4-2-colab-t4-gui-999/pytest-w3_1_tk_native_wsi_probe.json",
+      "sha256": "d0706e19ab0aa4f465f7ac41560921697dd2ec1f3644b7687c997736801ae23c"
+    },
+    {
+      "path": "@evidence/build/runs/gap-w4-2-colab-t4-gui-999/pytest-w3_2_pyqt5.json",
+      "sha256": "d2484060d44b4a18217a2992e3d4d4d8d67a03a7aae5ffbcd6901b239fcb9e4b"
+    },
+    {
+      "path": "@evidence/build/runs/gap-w4-2-colab-t4-gui-999/pytest-w3_2_pyqt6.json",
+      "sha256": "e42a745958715261324cd50989e8d1360b2a50ec1f173b5cd3c6b0ee51f7dce6"
+    },
+    {
+      "path": "@evidence/build/runs/gap-w4-2-colab-t4-gui-999/pytest-w3_2_pyside6.json",
+      "sha256": "fdf2e3b1adb1f0f19910e1c2025fd5ddb741ec91a62ecec763173cdd71003c83"
+    },
+    {
+      "path": "@evidence/build/runs/gap-w4-2-colab-t4-gui-999/remote-report.json",
+      "sha256": "82954c4bd3d1c0318e8586d53603b0c001d7e63ff61110c51e8c7b64b0d45cf4"
+    },
+    {
+      "path": "@evidence/build/runs/gap-w4-2-colab-t4-gui-999/terminal.json",
+      "sha256": "4aca99f0e34377de7eae621e7ea30f6843efcb27f8fa16d06adf380d637cc707"
+    },
+    {
+      "path": "@evidence/build/runs/gap-w4-2-colab-t4-gui-999/verification.json",
+      "sha256": "c6aec5e3a349fdbac8227b175d05d575bcd118e9ab8087afe598ec2b121214bc"
+    },
+    {
+      "path": "@evidence/build/runs/gap-w4-2-colab-t4-gui-999/worker-w2_5_qt6_tk_msaa.json",
+      "sha256": "c96d4e3c0cd5814c44ec1b2b27852ab7e9cb23430a54ae7791766bcea4df5509"
+    },
+    {
+      "path": "@evidence/build/runs/gap-w4-2-colab-t4-gui-999/worker-w3_1_tk_native_wsi_probe.json",
+      "sha256": "1fdddde7f46b20a9f52f62d79444018b4daa9b5236f4ebbc6ccadc64534e9c83"
+    },
+    {
+      "path": "@evidence/build/runs/gap-w4-2-colab-t4-gui-999/worker-w3_2_pyqt5.json",
+      "sha256": "c79d9074c8884bc4f33484cba3d9280f552d86b82907c30e34bb16a1303e4102"
+    },
+    {
+      "path": "@evidence/build/runs/gap-w4-2-colab-t4-gui-999/worker-w3_2_pyqt6.json",
+      "sha256": "fe2d58a10895d4a1503f6ffdc114b281043ae6cbd386987fe3ecd3179913c32f"
+    },
+    {
+      "path": "@evidence/build/runs/gap-w4-2-colab-t4-gui-999/worker-w3_2_pyside6.json",
+      "sha256": "da8aa8cb12a4f93d1cf01d239ed7fc51817f74d04818a300cbc8309ddc4ef663"
+    },
+    {
+      "path": "@evidence/build/runs/gap-w4-3-colab-l4-1000/bundle-manifest.json",
+      "sha256": "4374e79172ef6edf5871e5f7870491ffbbdb2f3e2ec06b1a38b4f07bf6ae0c41"
+    },
+    {
+      "path": "@evidence/build/runs/gap-w4-3-colab-l4-1000/cleanup-plan.json",
+      "sha256": "ae247c0dd08b383c2b1521adc47f509f71606111d2e0c17f58c285d3c0ec0cf3"
+    },
+    {
+      "path": "@evidence/build/runs/gap-w4-3-colab-l4-1000/cleanup-result.json",
+      "sha256": "7013e067aed547016ce71defa7d7b45393cc82fc6e828c8ccd7219603780cb63"
+    },
+    {
+      "path": "@evidence/build/runs/gap-w4-3-colab-l4-1000/junit-w1_readback_query.xml",
+      "sha256": "dd501b73342ffbb7ce010ada45e2f71ac77b8e956b9ae788922fb76792c4a85d"
+    },
+    {
+      "path": "@evidence/build/runs/gap-w4-3-colab-l4-1000/junit-w2_2_state_tex_stencil.xml",
+      "sha256": "216f741ac6c97b83cfcfa5672ce0bfa5b4d3baa668debc16e68aea52bdf8b168"
+    },
+    {
+      "path": "@evidence/build/runs/gap-w4-3-colab-l4-1000/junit-w2_3_shaders_lines.xml",
+      "sha256": "ae2583e959baf521c14beb985fe0c415f1639037423703b1730bcb3c07e9dd98"
+    },
+    {
+      "path": "@evidence/build/runs/gap-w4-3-colab-l4-1000/junit-w2_4_scientific_scene.xml",
+      "sha256": "6d522b25a7350013ead0249669c95f462370073ae140ceba43619f789e13197b"
+    },
+    {
+      "path": "@evidence/build/runs/gap-w4-3-colab-l4-1000/junit-w2_5_qt6_tk_msaa.xml",
+      "sha256": "e7be1b030c526aa15575a77a8ba39ff0451415238ee9b3dadcaf089ab4ba31c5"
+    },
+    {
+      "path": "@evidence/build/runs/gap-w4-3-colab-l4-1000/junit-w3_3_plot_transforms_collections.xml",
+      "sha256": "6934b5062c587a3dc43baa07a0d1831c24c132ad77545f842dbac158f9cb3065"
+    },
+    {
+      "path": "@evidence/build/runs/gap-w4-3-colab-l4-1000/processes.json",
+      "sha256": "2eb06d8880f47773f4349f5b02a5b26af51096400876a697fb7757dcec62f6b0"
+    },
+    {
+      "path": "@evidence/build/runs/gap-w4-3-colab-l4-1000/pytest-w1_readback_query.json",
+      "sha256": "d40a8bc7f5ecd3793bbc425a0142cdc3ce0f02c48f583a8fa6d5e77ea9514e11"
+    },
+    {
+      "path": "@evidence/build/runs/gap-w4-3-colab-l4-1000/pytest-w2_2_state_tex_stencil.json",
+      "sha256": "d709ff0f8691f43a5b96197a754a89b55a142f890913154f239f4683430435ff"
+    },
+    {
+      "path": "@evidence/build/runs/gap-w4-3-colab-l4-1000/pytest-w2_3_shaders_lines.json",
+      "sha256": "c6ed282caf92c147e4b9a607484447eaef3137cc449ec3c7078d840f9cc2b4e9"
+    },
+    {
+      "path": "@evidence/build/runs/gap-w4-3-colab-l4-1000/pytest-w2_4_scientific_scene.json",
+      "sha256": "ac2ba71e1abdc2baa927c134a68bd3d13302770b70960a8b5399055496605c97"
+    },
+    {
+      "path": "@evidence/build/runs/gap-w4-3-colab-l4-1000/pytest-w2_5_qt6_tk_msaa.json",
+      "sha256": "294e13b1ab0aafaa08069a8629cc40ba015a0d6d298a560f37bb9a8dc986e0c5"
+    },
+    {
+      "path": "@evidence/build/runs/gap-w4-3-colab-l4-1000/pytest-w3_3_plot_transforms_collections.json",
+      "sha256": "188c57f70c0cb71a437b2d6709a8bf2bd0a2913ce6d1e00992807c9bd199e235"
+    },
+    {
+      "path": "@evidence/build/runs/gap-w4-3-colab-l4-1000/remote-report.json",
+      "sha256": "eae247fc79ab19a6bc422c7d48c383602a724184b722c5c149891b739ddb79c3"
+    },
+    {
+      "path": "@evidence/build/runs/gap-w4-3-colab-l4-1000/terminal.json",
+      "sha256": "97232ae1aa89720ecd6af3f9b4bdd968e74ec9f40ff12239549af9d976bea78d"
+    },
+    {
+      "path": "@evidence/build/runs/gap-w4-3-colab-l4-1000/verification.json",
+      "sha256": "747a7b0cf756c5dad1fd12b867fd82101f154530dbfeb71dd569d6a76f276775"
+    },
+    {
+      "path": "@evidence/build/runs/gap-w4-3-colab-l4-1000/worker-w1_readback_query.json",
+      "sha256": "e3d7d60d2f8f065439205bf2f075364d67b5345bf3a438f587b11d07e1eaa477"
+    },
+    {
+      "path": "@evidence/build/runs/gap-w4-3-colab-l4-1000/worker-w2_2_state_tex_stencil.json",
+      "sha256": "0f5c2d898a65ec6a0022914bb0cd95d4106c55e3f28d856b18af542e631ff56b"
+    },
+    {
+      "path": "@evidence/build/runs/gap-w4-3-colab-l4-1000/worker-w2_3_shaders_lines.json",
+      "sha256": "1c3e1e19172c4332779e96ba6dec4d770d8f13b247590afaae69adf809785de9"
+    },
+    {
+      "path": "@evidence/build/runs/gap-w4-3-colab-l4-1000/worker-w2_4_scientific_scene.json",
+      "sha256": "82e667454ec1477d8d9baa3740e08d91b0b11e8d6d953e7f4d7fc80a20bbee2d"
+    },
+    {
+      "path": "@evidence/build/runs/gap-w4-3-colab-l4-1000/worker-w2_5_qt6_tk_msaa.json",
+      "sha256": "892980a5c8410d71aa84031cf77afec2dda869a9ee427865f44957e34b88a468"
+    },
+    {
+      "path": "@evidence/build/runs/gap-w4-3-colab-l4-1000/worker-w3_3_plot_transforms_collections.json",
+      "sha256": "3828e3d1453196b173db8ec9d03f09c807f0ac6a4ee4af5089a7d1c1edf641f5"
+    },
+    {
+      "path": "@evidence/build/runs/gap-w4-hygiene-check-1001/processes.json",
+      "sha256": "8f9fa15a39a30f3624d4d33a5dc4019fc35e5cb566183c5ee99ed6c746505636"
+    },
+    {
+      "path": "@evidence/build/runs/gap-w4-hygiene-check-1001/terminal-source-only.json",
+      "sha256": "9f5327b8f043d086f3b5395b384534c741e6598bdc7373964e9ee94639f34cb4"
+    },
+    {
+      "path": "@evidence/build/runs/gap-w4-hygiene-check-1001/verification.json",
+      "sha256": "7a26baecb74629d358ffaf9f70f652497ddccb2971e666e4403b59fc29e6fadc"
+    }
+  ],
+  "boundaries": {
+    "PLAT-01": "Colab CPython 3.12 x86_64 glibc 2.39 Linux physical NVIDIA discrete GPU verification (Tesla T4 117/117 + 31/31 and NVIDIA L4 136/136 at installed-functional tier, plus separate 11/11 installed-experimental W3-1 native Tk X11 WSI probe on T4) covers the exact manylinux_2_39_x86_64 wheel e600b29e... alongside the existing WSL software Vulkan qualification under PLAT-01, without claiming additional Python ABIs (PLAT-02), non-NVIDIA Linux GPUs or Mesa NVK, native Wayland (PLAT-05), physical monitor scanout, or strict release/artifact/public promotion (scoped_admitted=false, artifact_admitted=false, publicly_delivered=false).",
+    "PLAT-03": "Establishes installed-functional evidence on physical Linux NVIDIA discrete GPUs (Tesla T4 Turing + NVIDIA L4 Ada Lovelace, NVIDIA 580.82.07, Vulkan 1.4.312, Linux x86_64 glibc 2.39 / kernel 6.6.159+ with Ubuntu 24.04.4 LTS observed via /etc/os-release in 998, Xvfb :99) for exact manylinux_2_39_x86_64 wheel e600b29e...; parent PLAT-03 remains open because non-NVIDIA Linux GPUs (AMD RADV, Intel ANV) and Mesa NVK, physical Xorg monitor scanout vs Xvfb, physical HID/multi-monitor, native Wayland (PLAT-05), and strict release/scoped admission remain open.",
+    "PLAT-08": "Adds two physical Linux NVIDIA discrete GPU architecture cells (Turing Tesla T4 device_id=7864 and Ada Lovelace NVIDIA L4 device_id=10168 on proprietary driver 580.82.07) at installed-functional tier; parent PLAT-08 remains open for non-NVIDIA vendors (AMD RADV, Intel ANV, Apple/MoltenVK), Mesa NVK and additional driver branches, physical scanout/HID/multi-monitor, and strict release admission.",
+    "LIF-07-NATIVE-ADMISSION": "W3-1 native Tk X11 WSI probe (11/11 on Tesla T4 in 999) is strictly installed-experimental (native_admitted_mandatory_matrix=false, default_presentation='raster', wsi_boundary_observed=false).",
+    "LIF-06_LIF-08": "Qt5/Qt6/PySide6 callbacks, focus routing, and programmatic 1.5x HiDPI scaling are verified under Xvfb :99; physical HID hardware input, physical multi-monitor hotplug/moves, and physical display scanout remain unclaimed (physical_hid_claimed=false, physical_multimonitor_claimed=false, physical_display_scanout_claimed=false)."
+  },
+  "scope": "Wave 4 installed-wheel physical Linux NVIDIA discrete GPU execution on Google Colab Linux x86_64 glibc 2.39 (kernel 6.6.159+; Ubuntu 24.04.4 LTS observed via /etc/os-release in gap-w4-1-colab-t4-core-998; Xvfb :99, NVIDIA 580.82.07, Vulkan 1.4.312) binding exact wheel vispy-0.17.0+vulkan.2-cp312-cp312-manylinux_2_39_x86_64.whl (e600b29e..., _dawn fcf0c5a8..., source 613cacfb..., repo_main_base 3ba0cd50..., 537/537 members verified before/after, 0 source overrides, 10/10 zero Dawn shutdown gauges in every worker, default_sessions_unchanged=true, all Colab sessions terminated with 0 leaked sessions and scratch cleaned). Covers Cell 1 Tesla T4 (998: 117/117 core installed-functional across 5 -B -I workers; 999: 31/31 GUI installed-functional across PyQt5 5.15.11, PyQt6 6.12.1, PySide6 6.12.0, tkinter 8.6 with 0 competing Qt modules + 11/11 installed-experimental W3-1 native Tk X11 WSI probe) and Cell 2 NVIDIA L4 (1000: 136/136 core+GUI installed-functional across 6 -B -I workers), audited by 1001. Recorded at installed-functional tier (with W3-1 strictly installed-experimental); does not claim non-NVIDIA Linux GPUs or Mesa NVK, physical monitor scanout, physical HID/multi-monitor, Wayland, scoped/artifact admission, or public release delivery."
+}
